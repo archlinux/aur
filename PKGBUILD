@@ -1,6 +1,6 @@
 # Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
 pkgname=jamovi-rbundle
-pkgver=2017.09.28
+pkgver=2017.11.13
 pkgrel=1
 epoch=
 pkgdesc="R Bundle for Jamovi"
@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.jamovi.org"
 license=('GPL')
 depends=('r' 'r-cran-rcpp')
-makedepends=('nodejs' 'r' 'r-cran-rcpp')
+makedepends=('nodejs' 'r' 'npm')
 source=("rbundle.R"
 	"rbundleJMV.R"
 	"git+https://github.com/jamovi/jamovi-compiler.git"
@@ -37,7 +37,7 @@ build() {
 	npm install ./
 	
 	cd $srcdir/jmv/
-	node ../jamovi-compiler/index.js --install ./ --to $srcdir/jmvBundle/ --home /usr/lib/jamovi
+	node ../jamovi-compiler/index.js --install ./ --to $srcdir/jmvBundle/ --home /usr/lib/jamovi --rhome /usr/lib/R/
 	
 }
 
