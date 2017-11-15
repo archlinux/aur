@@ -8,6 +8,7 @@ pkgbase = ccid-git
 	license = LGPL
 	license = GPL
 	makedepends = pkg-config
+	makedepends = git
 	depends = pcsclite
 	depends = libusb
 	depends = flex
