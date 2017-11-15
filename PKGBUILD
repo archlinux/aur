@@ -6,10 +6,10 @@
 # The source is over 8 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
-pkgver=4.18.0
+pkgver=4.18.1
 # shellcheck disable=SC2034
 {
-  pkgrel=2
+  pkgrel=1
   pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
   arch=('x86_64')
   url='https://www.unrealengine.com/'
@@ -23,7 +23,6 @@ pkgver=4.18.0
     'ignore-return-value-error.patch'
     'disable-pie.patch'
     'only-generate-makefile.patch'
-    'xlocale-crash.patch'
     'html5-build.patch'
   )
 
@@ -32,7 +31,6 @@ sha256sums=('SKIP'
             '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
             'a8bb46ad630c077dd302cd8397f2c8d79d6bb13dbff1cbfbbdad447033ad3c6e'
             'dba4b1910dd6424d50a8d95a461c5cf3a96f3e7df0b015624d9bf1c97dc317d3'
-            '6ce0247e233d4eafc7ae294482038addeee7fe2064de627e33839bcc4398a549'
             '9fd6d16d56fbe0489a2580b86359df84b83a6987b5760a9e57ae0898f51943ac')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
@@ -66,9 +64,9 @@ prepare() {
   #git clean -xdf
 
   ./Setup.sh
-  
+
   dos2unix "$ue4src/ThirdParty/Linux/LibCxx/include/c++/v1/__locale"
-  patch "$ue4src/ThirdParty/Linux/LibCxx/include/c++/v1/__locale" "$srcdir/xlocale-crash.patch"
+  #patch "$ue4src/ThirdParty/Linux/LibCxx/include/c++/v1/__locale" "$srcdir/xlocale-crash.patch"
   patch "$ue4src/Programs/UnrealBuildTool/Platform/HTML5/HTML5SDKInfo.cs" "$srcdir/html5-build.patch"
   ./GenerateProjectFiles.sh
 }
