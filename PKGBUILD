@@ -1,7 +1,7 @@
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp-git
 pkgver=r1443.34fac26
-pkgrel=2
+pkgrel=3
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -12,7 +12,7 @@ optdepends=('accel-ppp-ipoe-dkms-git' 'accel-ppp-vlanmon-dkms-git' 'logrotate')
 conflicts=('accel-ppp')
 install='accel-ppp.install'
 options=('docs')
-backup=('etc/accel-ppp.conf' 'etc/accel-ppp.lua' 'etc/snmp/accel-ppp.conf')
+backup=('etc/accel-ppp.conf' 'etc/accel-ppp.lua' 'etc/snmp/accel-ppp.conf' 'usr/share/accel-ppp/radius/dictionary')
 source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
 	'accel-ppp.logrotate'
 	'accel-ppp.lua'
