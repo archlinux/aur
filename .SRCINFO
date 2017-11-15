@@ -3,7 +3,6 @@ pkgbase = xf86-input-libinput-git
 	pkgver = 0.22.0.6.r200.ga61e156
 	pkgrel = 3
 	url = https://cgit.freedesktop.org/xorg/driver/xf86-input-libinput/
-	arch = i686
 	arch = x86_64
 	groups = xorg-drivers
 	groups = xorg

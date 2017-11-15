@@ -8,7 +8,7 @@ pkgname=xf86-input-libinput-git
 pkgver=0.22.0.6.r200.ga61e156
 pkgrel=3
 pkgdesc="Generic input driver for the X.Org server based on libinput - Git version"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom')
 url="https://cgit.freedesktop.org/xorg/driver/xf86-input-libinput/"
 depends=('libinput>=1.2.0')
