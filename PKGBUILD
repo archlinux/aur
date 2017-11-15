@@ -6,7 +6,7 @@ pkgver=0.5.0
 pkgrel=4
 pkgdesc='Open Text Summarizer'
 url='https://libots.sourceforge.net/'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
 depends=('libxml2' 'glib2' 'popt')
 # disappeared from sourceforge as of 2017-03-01, unclear what new upstream should be
