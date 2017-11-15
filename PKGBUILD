@@ -1,8 +1,9 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: Jonhoo <jon at thesquareplanet.com>
 
 pkgname=signal-desktop
-pkgver=1.0.37
-pkgrel=2
+pkgver=1.0.38
+pkgrel=1
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
 license=('GPL3')
@@ -33,5 +34,9 @@ package() {
   install -Dm755 -t ${pkgdir}/usr/bin ${pkgname}
   install -Dm644 -t ${pkgdir}/usr/share/applications ${pkgname}.desktop
   for i in 16 24 32 48 64 128 256 512; do install -Dm644 ${_basename}/build/icons/png/${i}x${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png; done
-  cp -r ${srcdir}/${_basename}/dist/linux-unpacked/* ${pkgdir}/usr/lib/${pkgname}/
+  cd ${pkgdir}/usr/lib/${pkgname}
+  cp -r ${srcdir}/${_basename}/dist/linux-unpacked/* .
+  find . -type d | xargs chmod 755
+  find . -type f | xargs chmod 644
+  chmod +x ${pkgname}
 }
