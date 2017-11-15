@@ -5,7 +5,7 @@
 pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xdmx-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-xwayland-git' 'xorg-server-common-git' 'xorg-server-devel-git')
 pkgver=1.19.0.99.r15877.g3f9507e
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="http://cgit.freedesktop.org/xorg/xserver/"
