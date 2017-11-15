@@ -5,7 +5,7 @@
 # Contributor: Philipp Überbacher <murks at lavabit dot com>
 
 pkgname=jack_capture
-pkgver=0.9.71
+pkgver=0.9.73
 pkgrel=1
 pkgdesc="Simple command line tool to record JACK audio output to a file"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('jack' 'lame' 'liblo')
 optdepends=('meterbridge: levels monitor'
             'zenity: gtk2 gui')
 source=("$url$pkgname-$pkgver.tar.gz")
-md5sums=('9f5f39d2183c32a790612ca0257fdcc4')
+md5sums=('5daf67e963dc587eec358274cfd14a88')
 
 
 build() {
