@@ -1,6 +1,6 @@
 pkgbase = mpris-scrobbler
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mariusor/mpris-scrobbler
 	arch = x86
 	arch = x86_64
