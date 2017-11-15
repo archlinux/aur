@@ -3,7 +3,7 @@
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgname=libopenshot
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('imagemagick' 'ffmpeg' 'libx264' 'libopenshot-audio' 'python' 'jsoncpp' 'qt5-multimedia' 'zeromq')
 makedepends=('cmake' 'doxygen' 'swig' 'unittestpp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot/archive/v$pkgver.tar.gz")
-sha256sums=('a9b0706433c5c0e6edc9b1cc3c0ff1af4c8b7e8e31b5e071445a113fbb365d45')
+sha256sums=('2547969818092d77a1c742e27cf416b34b4d326abf6b089fc10b921f4a4141ec')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
