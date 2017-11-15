@@ -3,10 +3,9 @@ pkgbase = ld-lsb
 	pkgver = 3
 	pkgrel = 7
 	url = http://www.linuxfoundation.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
-	depends_x86_64 = lib32-glibc
+	depends = lib32-glibc
 
 pkgname = ld-lsb
 
