@@ -5,16 +5,14 @@ _pkg="gbt"
 _gopkg="github.com/jtyr/$_pkg"
 
 pkgname="$_pkg-git"
-pkgver=r6.2d36a5a
+pkgver=r59.7f984c9
 pkgrel=1
-pkgdesc='Bullettrain prompt builder written in Go'
+pkgdesc='Highly configurable prompt builder for Bash and ZSH written in Go.'
 url="https://github.com/jtyr/gbt"
 arch=('any')
 license=('MIT')
 makedepends=('go')
 optdepends=('nerd-fonts-complete')
-source=()
-sha256sums=()
 
 
 pkgver() {
@@ -39,8 +37,8 @@ build() {
 
 package() {
     msg2 'Installing files'
-    install -Dm644 -t "$pkgdir/usr/doc/$_pkg"           "$srcdir/src/$_gopkg/"{LICENSE,README.md}
-    install -Dm644 -t "$pkgdir/usr/share/$_pkg/sources" "$srcdir/src/$_gopkg/sources/"*
-    install -Dm644 -t "$pkgdir/usr/share/$_pkg/themes"  "$srcdir/src/$_gopkg/themes/"*
-    install -Dm755 -t "$pkgdir/usr/bin"                 "$srcdir/bin/$_pkg"
+    install -Dm755 "$srcdir/bin/$_pkg" -t "$pkgdir/usr/bin"
+    install -Dm644 "$srcdir/src/$_gopkg/"/{LICENSE,README.md} -t "$pkgdir/usr/doc/$_pkg"
+    mkdir -p "$pkgdir/usr/share/$_pkg/"
+    cp -r "$srcdir/src/$_gopkg/"{sources,themes} "$pkgdir/usr/share/$_pkg/"
 }
