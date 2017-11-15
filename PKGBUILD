@@ -7,10 +7,10 @@
 # Contributor: LeCrayonVert <sunrider@laposte.net>
 # Contributor: jelly <jelle@vdwaa.nl>
 # Contributor: evr <evanroman at gmail>
-
+# https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20170831.fc6b2b5.tar.gz
 pkgname=agedu
-pkgver=20160920
-_pkghash=853cea9
+pkgver=20170831
+_pkghash=fc6b2b5
 pkgrel=1
 pkgdesc="Track down wasted disk space"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ url="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
 license=('MIT')
 depends=('glibc')
 source=("http://www.chiark.greenend.org.uk/~sgtatham/$pkgname/$pkgname-$pkgver.$_pkghash.tar.gz")
-md5sums=('678f47a7f15357cb8c4c8550ca6416a0')
+md5sums=('cd6105b842b957078c0577a602330ccf')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver.$_pkghash"
