@@ -1,6 +1,6 @@
 pkgbase = signal-desktop-bin
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.0.37
+	pkgver = 1.0.38
 	pkgrel = 1
 	url = https://github.com/WhisperSystems/Signal-Desktop
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = signal-desktop-bin
 	provides = signal-desktop
 	conflicts = signal
 	options = !strip
-	source = https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.0.37_amd64.deb
+	source = https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.0.38_amd64.deb
 	source = signal-desktop
-	sha512sums = ab8e52f9c176b6def63c4f001f1b1cafd648f80fad749054d73f043e42e577cfda115bbc755d3194756b9f5bebc7d9c2d1ea81bbac84c8e68020ca907d11d7a6
+	sha512sums = a9b01dd4b991e2208613e5b0a70d615a06e9aa95202a15958cb6765612218022b807a8907e49bef6c2c9b7b865250f2682cbc675520364f251a9ed32cd937fb5
 	sha512sums = 7db7ee79a07fb86fec471e63c5189d61e8a2ca8fc2e659ea89ef22516e24e0a3c9f32c93f8ee520f56abc187b9b9304355e8aadb427c4920cda4f663ab1489fa
 
 pkgname = signal-desktop-bin
