@@ -5,14 +5,14 @@
 _name=wifiphisher
 pkgname=${_name}-git
 
-pkgver=567.e9e7690
+pkgver=611.b4dfab2
 pkgrel=1
 groups=('blackarch' 'blackarch-wireless' 'blackarch-social')
 pkgdesc='Fast automated phishing attacks against WPA networks.'
 arch=('any')
 url='https://github.com/sophron/wifiphisher'
 license=('MIT')
-depends=('python2' 'python2-blessings' 'python2-pyric' 'python2-tornado' 'scapy' 'dnsmasq' 'hostapd' 'net-tools')
+depends=('python2' 'python2-blessings' 'python2-pbkdf2' 'python2-pyric' 'python2-tornado' 'scapy' 'dnsmasq' 'hostapd' 'net-tools')
 makedepends=('git')
 provides=('wifiphisher')
 conflicts=('wifiphisher')
