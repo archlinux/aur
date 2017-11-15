@@ -7,7 +7,7 @@
 # Contributor: LeCrayonVert <sunrider@laposte.net>
 # Contributor: jelly <jelle@vdwaa.nl>
 # Contributor: evr <evanroman at gmail>
-# https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20170831.fc6b2b5.tar.gz
+
 pkgname=agedu
 pkgver=20170831
 _pkghash=fc6b2b5
