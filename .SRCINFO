@@ -13,6 +13,7 @@ pkgbase = iproute2-cake
 	depends = libelf
 	optdepends = linux-atm: ATM support
 	provides = iproute
+	provides = iproute2
 	conflicts = iproute
 	conflicts = iproute2-doc
 	replaces = iproute

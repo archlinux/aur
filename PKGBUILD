@@ -14,7 +14,7 @@ url='https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git'
 depends=('glibc' 'iptables' 'libelf')
 optdepends=('linux-atm: ATM support')
 groups=('base')
-provides=('iproute')
+provides=('iproute' 'iproute2')
 #950 patch: https://raw.githubusercontent.com/lede-project/source/master/package/network/utils/iproute2/patches/950-add-cake-to-tc.patch
 #tc-cake.8 man page: https://github.com/dtaht/tc-adv/blob/master/man/man8/tc-cake.8
 # Upstream commit b2fd7a0e6efa7b85a041b5cb9ea6fc1a6a798fd3 removed old documentation.
