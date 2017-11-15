@@ -9,7 +9,7 @@ pkgrel=4
 pkgdesc='Run-time shared library for locking devices, using _both_ FSSTND and SVr4 methods.'
 url='http://packages.qa.debian.org/l/lockdev.html'
 license=("GPL")
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('glibc' 'systemd')
 source=("http://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${_pkgver}.orig.tar.gz"
 	"http://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${pkgver/_/-}.diff.gz"
