@@ -5,26 +5,17 @@
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
 pkgver=387.22
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
 options=('!strip')
-
-# Installer name
-case "$CARCH" in
-  i686)   _pkg="NVIDIA-Linux-x86-$pkgver" ;;
-  x86_64) _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32" ;;
-esac
-
-# Source
-source=('10-nvidia-drm-outputclass.conf'
+_pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
+        '10-nvidia-drm-outputclass.conf'
         '20-nvidia.conf')
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-md5sums=('4f5562ee8f3171769e4638b35396c55d'
+md5sums=('b21f9bafb20409b337505c9b1d362c34'
+         '4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('abdbb3c813e52148f7435308121e6a37')
-md5sums_x86_64=('b21f9bafb20409b337505c9b1d362c34')
 
 _create_links() {
   # create missing soname links
