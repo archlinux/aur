@@ -3,7 +3,7 @@
 
 pkgname=urw-classico
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="URW Classico font from CTAN (for texlive)"
 arch=("any")
 license=("CUSTOM:alladin")
