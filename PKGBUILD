@@ -6,7 +6,7 @@ _channel=developer
 _locale="en-US"
 pkgname="${_name}-${_channel}"
 pkgver=58.0b3
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -22,8 +22,8 @@ source_i686=("${_srcurl}/${pkgver}/linux-${CARCH}/${_locale}/${_name}-${pkgver}.
 source_x86_64=("${_srcurl}/${pkgver}/linux-${CARCH}/${_locale}/${_name}-${pkgver}.tar.bz2")
 sha512sums=('9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-sha512sums_i686=('624387a778b16df5e592746955b5eaea346173d6931525cdd89d4ec5080fae2d08762187ca41b947a262d759ef524f3bd097145f446eb09701d237fb76bea39c')
-sha512sums_x86_64=('d6bc17d5a9c9adfd6f3a50811b8ffe4955b8b581b6bcff7e611c835842cbd1aaa4ea1da1ce4758f826717dd62501fd38f6e835bf7251e86c7f47a6a707e73f0e')
+sha512sums_i686=('784d98e5289b7a245b73b316059c5ad728547d5f212ce3faffcdd6d4f7f0413fee2493a30e0eea39a2f5b78e190db582ef1fa8db3ad43c1d3cbe1365fe74de7c')
+sha512sums_x86_64=('8f0727d0c48457f99b07e67f5f3d464217a104f4abd37eae63856ebb06fe0dd34bcc6a8377b3b9f336acb38daca21ac546f6dad3e9d317f18d9bdeb6bd3b67bc')
 
 package() {
   OPT_PATH="opt/${pkgname}"
