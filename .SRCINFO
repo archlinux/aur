@@ -6,7 +6,6 @@ pkgbase = grub
 	url = https://www.gnu.org/software/grub/
 	install = grub.install
 	arch = x86_64
-	arch = i686
 	license = GPL3
 	makedepends = git
 	makedepends = rsync

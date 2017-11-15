@@ -25,7 +25,7 @@ pkgver=2.02
 pkgrel=3
 epoch=2
 url="https://www.gnu.org/software/grub/"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('GPL3')
 backup=('boot/grub/grub.cfg'
         'etc/default/grub'
