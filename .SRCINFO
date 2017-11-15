@@ -1,0 +1,16 @@
+pkgbase = gajim-plugin-httpupload-gtk3
+	pkgdesc = Gajim plugin to implement http uploads <XEP-0363>.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://dev.gajim.org/gajim/gajim-plugins/wikis/HttpUploadPlugin
+	arch = any
+	license = GPL
+	depends = gajim-git
+	optdepends = python-cryptography
+	provides = gajim-plugin-httpupload
+	conflicts = gajim-plugin-httpupload
+	source = https://dev.gajim.org/gajim/gajim-plugins/repository/gtk3/archive.zip
+	sha512sums = SKIP
+
+pkgname = gajim-plugin-httpupload-gtk3
+
