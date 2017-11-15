@@ -3,7 +3,6 @@ pkgbase = pyrit
 	pkgver = 0.5.0
 	pkgrel = 2
 	url = https://github.com/JPaulMora/Pyrit
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	checkdepends = python2-sqlalchemy
