@@ -6,7 +6,7 @@ pkgname=babeltrace
 pkgver=1.5.3
 pkgrel=2
 pkgdesc="Command-line trace converter"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://diamon.org/babeltrace"
 license=('MIT' 'GPL2' 'LGPL2.1')
 depends=('popt' 'util-linux' 'glib2>=2.22.0' 'elfutils>=0.154')
