@@ -1,17 +1,18 @@
 pkgbase = perl-text-bidi
-	pkgdesc = Unicode bidi algorithm using libfribidi
-	pkgver = 2.11
-	pkgrel = 1
+	pkgdesc = Perl/CPAN Module Text::Bidi: Unicode bidi algorithm using libfribidi
+	pkgver = 2.12
+	pkgrel = 2
 	url = https://metacpan.org/release/Text-Bidi
-	arch = any
-	license = GPL
+	arch = i686
+	arch = x86_64
 	license = PerlArtistic
-	makedepends = perl-extutils-pkgconfig
-	depends = perl
+	license = GPL
+	depends = fribidi>=0.19.7
+	depends = perl>=5.10.0
 	options = !emptydirs
-	options = purge
-	source = https://cpan.metacpan.org/authors/id/K/KA/KAMENSKY/Text-Bidi-2.11.tar.gz
-	md5sums = 09bf3b9212795a66877439751f3c8664
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAMENSKY/Text-Bidi-2.12.tar.gz
+	md5sums = 075019229cd1e6ce452494fb87959f32
+	sha512sums = 02e391ec1324cad2577ddbf823214dea5e8cd7f846c6d5f16367da90ca3db0c15922a08233f5877f9f223ed9a89374177f488001bd539859dc49e850a2577053
 
 pkgname = perl-text-bidi
 
