@@ -9,15 +9,15 @@ _gccver=4.9.4
 
 pkgbase=${_target}-gcc49-linaro-bin
 pkgver=${_reldate}
-pkgrel=4
+pkgrel=5
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM64 target"
 arch=('i686' 'x86_64')
 url="http://www.linaro.org/downloads/"
 license=('GPL' 'LGPL')
 pkgname=("${_target}-gcc49-linaro-bin"
-		 "${_target}-binutils-linaro-bin"
-		 "${_target}-eglibc-linaro-bin"
-		 "${_target}-gdb-linaro-bin")
+		 "${_target}-binutils224-linaro-bin"
+		 "${_target}-eglibc219-linaro-bin"
+		 "${_target}-gdb710-linaro-bin")
 options=(!emptydirs !strip staticlibs)
 source_i686=("http://releases.linaro.org/components/toolchain/binaries/${_relver}-${_reldate}/${_target}/gcc-linaro-${_gccver}-${_reldate}-i686_${_target}.tar.xz")
 source_x86_64=("http://releases.linaro.org/components/toolchain/binaries/${_relver}-${_reldate}/${_target}/gcc-linaro-${_gccver}-${_reldate}-x86_64_${_target}.tar.xz")
@@ -49,9 +49,9 @@ package_aarch64-linux-gnu-gcc49-linaro-bin() {
 
 	provides=("${_target}-gcc")
 	conflicts=("${_target}-gcc")
-	depends=("${_target}-binutils-linaro-bin=2.24_${_reldate}"
-			 "${_target}-eglibc-linaro-bin=2.19_${_reldate}")
-	pkgver="${_gccver}_${_reldate}"
+	depends=("${_target}-binutils224-linaro-bin=${_reldate}"
+			 "${_target}-eglibc219-linaro-bin=${_reldate}")
+# 	pkgver="${_gccver}_${_reldate}"
 
 	cd ${pkgdir}
 
@@ -85,12 +85,12 @@ package_aarch64-linux-gnu-gcc49-linaro-bin() {
 	ln -sf	${_target}-gcc{,-4.9.4}
 }
 
-package_aarch64-linux-gnu-eglibc-linaro-bin() {
+package_aarch64-linux-gnu-eglibc219-linaro-bin() {
 
 	provides=("${_target}-glibc")
 	conflicts=("${_target}-glibc")
-	depends=("${_target}-gcc49-linaro-bin=${_gccver}_${_reldate}")
-	pkgver="2.19_${_reldate}"
+	depends=("${_target}-gcc49-linaro-bin=${_reldate}")
+# 	pkgver="2.19_${_reldate}"
 	pkgdesc="Embedded C Library ARM64 target"
 
 	cd ${pkgdir}
@@ -101,11 +101,11 @@ package_aarch64-linux-gnu-eglibc-linaro-bin() {
 	mv ${srcdir}/${_path}/${_target}/libc opt/$pkgbase/${_target}/
 }
 
-package_aarch64-linux-gnu-gdb-linaro-bin() {
+package_aarch64-linux-gnu-gdb710-linaro-bin() {
 
 	provides=("${_target}-gdb")
 	conflicts=("${_target}-gdb")
-	pkgver="7.10_${_reldate}"
+# 	pkgver="7.10_${_reldate}"
 	pkgdesc="The GNU Debugger for the ARM64 target"
 
 	cd ${pkgdir}
@@ -124,11 +124,11 @@ package_aarch64-linux-gnu-gdb-linaro-bin() {
 	ln -sf	../../opt/$pkgbase/bin/* ./
 }
 
-package_aarch64-linux-gnu-binutils-linaro-bin() {
+package_aarch64-linux-gnu-binutils224-linaro-bin() {
 
 	provides=("${_target}-binutils")
 	conflicts=("${_target}-binutils")
-	pkgver="2.24_${_reldate}"
+# 	pkgver="2.24_${_reldate}"
 	pkgdesc="A set of programs to assemble and manipulate binary and object files for the ARM64 target"
 
 	cd ${pkgdir}
