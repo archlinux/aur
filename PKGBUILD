@@ -8,7 +8,7 @@ _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.mozilla.org/en-US/firefox/channel/#beta"
 license=('MPL' 'GPL' 'LGPL')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
@@ -21,19 +21,16 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'upower: Battery API')
 provides=("firefox=$pkgver")
 install=$pkgname.install
-source=("$_pkgname.sh"
+source=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
+        "$_pkgname.sh"
         "$pkgname.desktop")
-source_i686=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-i686/en-US/firefox-$pkgver.tar.bz2")
-source_x86_64=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2")
 # RC
 if [[ $_build = ? ]]; then
-  source_i686=("firefox-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-i686/en-US/firefox-$_major.tar.bz2")
-  source_x86_64=("firefox-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
+  source[0]=("firefox-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
 fi
-sha256sums=('367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
+sha256sums=('cb96925a29cfaf88fbc4e017f75f87c42a10559c9b27955ded8d942566b9f249'
+            '367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
             '92f58532757365f38382e016d250836e4faf8415599cefb6ddace0de77486658')
-sha256sums_i686=('9a94a993fa4a7a319f974729297a0e5d36705b17580250a32c1aa0e37f3fce07')
-sha256sums_x86_64=('cb96925a29cfaf88fbc4e017f75f87c42a10559c9b27955ded8d942566b9f249')
 
 package() {
   # Create directories
