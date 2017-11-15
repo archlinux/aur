@@ -1,14 +1,14 @@
 # Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
 
 pkgname='macos-icon-theme'
-pkgver=4.1
-pkgrel=3
+pkgver=4.1.5
+pkgrel=1
 pkgdesc='macOS Icon Theme'
 arch=('any')
 url='https://www.gnome-look.org/p/1102582/'
 depends=('gtk-update-icon-cache')
-source=('https://dl.opendesktop.org/api/files/download/id/1507938583/macOS.tar.xz')
-md5sums=('f8ae00459837db8db380b744e72f875f')
+source=('https://dl.opendesktop.org/api/files/download/id/1510321229/macOS.tar.xz')
+md5sums=('056982040d0efdcf4fa93b0e5bc9bc3d')
 
 prepare() {
     cd "$srcdir"
