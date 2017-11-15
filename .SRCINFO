@@ -4,7 +4,6 @@ pkgbase = vuze
 	pkgrel = 1
 	url = http://sourceforge.net/projects/azureus/
 	install = vuze.install
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = desktop-file-utils
