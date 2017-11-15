@@ -30,14 +30,14 @@ _srcUS="${_name}-${_version}.en-US.linux"
 source=("${pkgname}.desktop" 'vendor.js')
 # source_i686=("${_url}/${_src}-i686.tar.bz2"{,.asc} "${_urlUS}/${_srcUS}-i686.txt")
 # source_x86_64=("${_url}/${_src}-x86_64.tar.bz2"{,.asc} "${_urlUS}/${_srcUS}-x86_64.txt")
-#source_i686=("${_url}/${_src}-i686.tar.bz2" "${_urlUS}/${_srcUS}-i686.txt")
-#source_x86_64=("${_url}/${_src}-x86_64.tar.bz2" "${_urlUS}/${_srcUS}-x86_64.txt")
+source_i686=("${_url}/${_src}-i686.tar.bz2" "${_urlUS}/${_srcUS}-i686.txt")
+source_x86_64=("${_url}/${_src}-x86_64.tar.bz2" "${_urlUS}/${_srcUS}-x86_64.txt")
 sha512sums=('3ec0f118d778b5d2a655edbbb66e9dc572e6d8cf85d954f95c08d4e57b0c0bd3aa576ad78b7dc7686a29433437669b3308373af3f88f425d1d7ca95938dce259'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 # sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
 # sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
-#sha512sums_i686=('SKIP' 'SKIP')
-#sha512sums_x86_64=('SKIP' 'SKIP')
+sha512sums_i686=('SKIP' 'SKIP')
+sha512sums_x86_64=('SKIP' 'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla's GnuPG release key
 
 pkgver() {
