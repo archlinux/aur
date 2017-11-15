@@ -4,7 +4,7 @@
 
 pkgname=dwarftherapist-git
 epoch=2
-pkgver=r1229.fd5d9a0
+pkgver=r1249.42ccaa7
 pkgrel=1
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/Hello71/Dwarf-Therapist"
@@ -34,8 +34,8 @@ build() {
 package() {
   cd Dwarf-Therapist
   install -Dm755 "DwarfTherapist" "$pkgdir/usr/bin/dwarftherapist"
-  install -dm755 "$pkgdir/usr/share/dwarftherapist/memory_layouts"
-  cp -a share/memory_layouts/* "$pkgdir/usr/share/dwarftherapist/memory_layouts"
+  install -dm755 "$pkgdir/usr/share/dwarf-therapist/memory_layouts"
+  cp -a share/memory_layouts/* "$pkgdir/usr/share/dwarf-therapist/memory_layouts"
   install -Dm644 "dist/dwarftherapist.desktop" \
     "$pkgdir/usr/share/applications/dwarftherapist.desktop"
   install -Dm644 resources/img/hammer.png \

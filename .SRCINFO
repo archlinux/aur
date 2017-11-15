@@ -1,6 +1,6 @@
 pkgbase = dwarftherapist-git
 	pkgdesc = Heavily modified version of the original Dwarf Therapist.
-	pkgver = r1229.fd5d9a0
+	pkgver = r1249.42ccaa7
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/Hello71/Dwarf-Therapist
