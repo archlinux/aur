@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro
 pkgname='woff2'
-pgkdesc='Web fonts compression reference code'
+pkgdesc='Web fonts compression reference code'
 pkgver='1.0.2'
-pkgrel='1'
+pkgrel='2'
 url='https://github.com/google/woff2'
 license=('Apache')
 arch=('i686' 'x86_64')
