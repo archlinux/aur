@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro
 pkgname='woff2'
 pgkdesc='Web fonts compression reference code'
-pkgver='1.0.1'
-pkgrel='3'
+pkgver='1.0.2'
+pkgrel='1'
 url='https://github.com/google/woff2'
 license=('Apache')
 arch=('i686' 'x86_64')
@@ -11,11 +11,12 @@ makedepends=('cmake')
 conflicts=('woff2-git')
 source=("https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz"
         'cmake-install-tools.patch')
-sha512sums=('d3257164e004e3319001a6e7015050b894ecff751da01a1f2eea226f0730f142c6001b04a959af2e16546a63fab216706b32b0d543cade210ecd54fa70f6e55c'
+sha512sums=('c788bba1530aec463e755e901f9342f4b599e3a07f54645fef1dc388ab5d5c30625535e5dd38e9e792e04a640574baa50eeefb6b7338ab403755f4a4e0c3044d'
             '31342cea2b8efd17e105905471238709fe91e40fa3b4ff29cfe17ee04a6ef0f60fd425496834fd2601b0a7fbb2e0af8582f873d8e9c583bac4915f0ff3fe62cc')
 
 prepare () {
-	patch -p1 < cmake-install-tools.patch
+	cd "${pkgname}-${pkgver}"
+	patch -p2 < "${srcdir}/cmake-install-tools.patch"
 }
 
 build () {
