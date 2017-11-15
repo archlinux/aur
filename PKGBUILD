@@ -6,7 +6,7 @@ pkgver=3.26.0
 pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=(GPL)
 depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutter-gst clutter-gtk
          libcanberra librsvg gnome-desktop libgudev dconf)
