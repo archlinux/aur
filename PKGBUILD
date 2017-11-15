@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=('python-grpcio-tools' 'python2-grpcio-tools')
 pkgver=1.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python protobuf generator for GRPC"
 arch=('any')
 url="https://grpc.io/"
@@ -20,14 +20,14 @@ sha512sums=('9205f9804b13f01d2543e037496bcab1eb026d35daa0f3e3a3da87cfb561be5f61d
             'SKIP')
 
 package_python-grpcio-tools() {
-  depends=('python' 'python-grpcio')
+  depends=('python' 'python-grpcio' 'python-protobuf')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-grpcio-tools() {
-  depends=('python2' 'python2-grpcio')
+  depends=('python2' 'python2-grpcio' 'python2-protobuf')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
