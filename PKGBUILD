@@ -9,7 +9,7 @@ pkgrel=4
 
 pkgdesc="PDF support for Zathura (MuPDF backend) (Supports PDF, ePub, and OpenXPS)"
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('zlib')
 
 conflicts=('zathura-pdf-poppler')
