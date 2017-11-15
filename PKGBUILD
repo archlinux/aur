@@ -65,10 +65,10 @@ _kyber_disable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.13.12
+pkgver=4.13.13
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -82,7 +82,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.13"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.13"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
-_bfq_mq_ver='20171111'
+_bfq_mq_ver='20171114'
 _bfq_mq_patch="4.13-bfq-sq-mq-git-${_bfq_mq_ver}.patch"
 source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -131,10 +131,10 @@ source=(# mainline kernel patches
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            'd5830f31cf8522986fb530e69b3b9b023f0298c4f88d897541ff0776dc805828'
+            '7414baa3aa0037ee370aaad4998f88f583cf5badb3be9b17016a529eee8e2a24'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
-            '6cd1a0cd7aada3910181a547c07d6d11e7a36feedd6f529216f251741194b1bd'
+            '0cfc2877c3772c946855c4dedb442843a7ec71d6cf47dfee69c40fd329405824'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'd68ab3571d922337d1ff862c8fa087a20b73cc651fde99c87bd397df778d0d76'
             '388b210b15913d6e46d85d3c997d21f796957d2e3eb082ba8ffda1371eaa1f3b'
@@ -168,8 +168,8 @@ prepare() {
   msg "Fix naming schema in BFQ-MQ patch"
   sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
       -i -e "s|PATCHLEVEL = 14|PATCHLEVEL = 13|g" \
-      -i -e "s|EXTRAVERSION = -rc8|EXTRAVERSION =|g" \
-      -i -e "s|EXTRAVERSION = -rc8-bfq-mq|EXTRAVERSION =|g" ../${_bfq_mq_patch}
+      -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
+      -i -e "s|EXTRAVERSION = -bfq-mq|EXTRAVERSION =|g" ../${_bfq_mq_patch}
 
   msg "-> Apply BFQ-MQ patch"
   patch -Np1 -i ../0001-bfq-sq-mq-fix-patching-error-with-20171109.patch
