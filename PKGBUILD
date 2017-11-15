@@ -1,6 +1,6 @@
 # Maintainer: Chris Magyar <c.magyar.ec@gmail.com>
 pkgname=ramroot
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Load root filesystem completely to RAM during boot"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('sudo')
 conflicts=('liveroot')
 install=ramroot.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('874206597881d3cba474b6b56b67f1ea')
+md5sums=('b197ef1610b696ff1da9abf2ec7489ea')
 
 package() {
 	cd "$pkgname-$pkgver"
