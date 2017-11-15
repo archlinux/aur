@@ -2,8 +2,8 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=softethervpn-beta
-pkgver=4.24.9651.beta
-pkgrel=1
+pkgver=v4.24.9651.beta
+pkgrel=2
 pkgdesc="Multi-protocol VPN software from University of Tsukuba build with source code from 
 official website's download center."
 url="http://www.softether.org/"
@@ -16,7 +16,8 @@ sha1sums=('12a3919aabcdd7531320056a4b43072892232925'
           '06cd320553daf0dffdf6a81a22d630fbe211fc33')
 license=('GPL2')
 depends=('bash' 'openssl' 'zlib')
-makedepends=('git')
+makedepends=('tar')
+conflicts=('softethervpn' 'softethervpn-git')
 
 prepare() {
   # clean existing sources if any
