@@ -2,7 +2,7 @@
 # Based on PKGBUILD firefox-extension-useragentswitcher
 
 _plugin_name=tree_style_tab
-_plugin_version=2.2.3
+_plugin_version=2.2.7
 _plugin_id=5890
 _plugin_filename="${_plugin_name}-${_plugin_version}-an+fx"
 
@@ -17,7 +17,7 @@ url="http://piro.sakura.ne.jp/xul/_treestyletab.html.en"
 depends=("firefox>=57")
 source=("https://addons.cdn.mozilla.net/user-media/addons/${_plugin_id}/${_plugin_filename}.xpi")
 noextract=("${_plugin_filename}.xpi")
-sha256sums=('65ba805eb99103d8f57208fc4d594e2e834834698997aa8846b9b114de2feeb0')
+sha256sums=('89be05711d9cb4df3bfecced944a937e1e362310f54d1b3fd0a207ae34754795')
 
 package() {
   cd "${srcdir}"
