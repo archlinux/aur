@@ -2,7 +2,7 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-text-git
-pkgver=20171015.1b1b899
+pkgver=20171115.6c8fbe5
 pkgrel=1
 pkgdesc="Advanced text editor built in accordance with Material Design"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
