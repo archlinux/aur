@@ -6,12 +6,12 @@ _channel=developer
 _locale="en-US"
 pkgname="${_name}-${_channel}"
 pkgver=58.0b3
-pkgrel=2
+pkgrel=3
 pkgdesc='Standalone web browser from mozilla.org, developer build'
-arch=(i686 x86_64)
-license=(MPL GPL LGPL)
+arch=('i686' 'x86_64')
+license=('MPL' 'GPL' 'LGPL')
 url='http://www.mozilla.org/firefox/developer'
-depends=(dbus-glib gtk2 gtk3 libxt nss)
+depends=('dbus-glib' 'gtk2' 'gtk3' 'libxt' 'nss')
 optdepends=('pulseaudio: audio/video playback'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
@@ -28,24 +28,24 @@ sha512sums_x86_64=('8f0727d0c48457f99b07e67f5f3d464217a104f4abd37eae63856ebb06fe
 package() {
   OPT_PATH="opt/${pkgname}"
 
-  install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
-  cp -r firefox $pkgdir/${OPT_PATH}
+  install -d "$pkgdir"/{usr/{bin,share/{applications,pixmaps}},opt}
+  cp -r firefox "$pkgdir"/"${OPT_PATH}"
 
-  ln -s /${OPT_PATH}/firefox $pkgdir/usr/bin/${_name}-${_channel}
+  ln -s /"${OPT_PATH}"/firefox "$pkgdir"/usr/bin/"${_name}-${_channel}"
 
-  SRC_LOC="${srcdir}"/${_name}/browser
+  SRC_LOC="${srcdir}"/"${_name}"/browser
   DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
   for i in 16 32 48; do
-    install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
+    install -Dm644 "${SRC_LOC}"/chrome/icons/default/default"${i}".png "${DEST_LOC}"/"${i}"x"${i}"/apps/"${pkgname}".png
   done
 
-  install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
+  install -m644 "$srcdir"/firefox/browser/icons/mozicon128.png "$pkgdir"/usr/share/pixmaps/"$pkgname"-icon.png
 
-  install -m644 $srcdir/${_name}-${_channel}.desktop $pkgdir/usr/share/applications/
-  install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
+  install -m644 "$srcdir"/"${_name}"-"${_channel}".desktop "$pkgdir"/usr/share/applications/
+  install -Dm644 "$srcdir"/vendor.js "$pkgdir"/opt/firefox-"$_channel"/browser/defaults/preferences/vendor.js
 
   # Use system-provided dictionaries
-  rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
-  ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
-  ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
+  rm -rf "${pkgdir}"/"${OPT_PATH}"/{dictionaries,hyphenation}
+  ln -sf /usr/share/hunspell "${pkgdir}"/"${OPT_PATH}"/dictionaries
+  ln -sf /usr/share/hyphen "${pkgdir}"/"${OPT_PATH}"/hyphenation
 }
