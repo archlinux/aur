@@ -5,7 +5,7 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=57.0.14
+pkgver=58.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
@@ -20,7 +20,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
-source=("https://archive.mozilla.org/pub/firefox/releases/57.0b14/source/firefox-57.0b14.source.tar.xz"
+source=("https://archive.mozilla.org/pub/firefox/releases/58.0b3/source/firefox-58.0b3.source.tar.xz"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$name.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-install-dir.patch
@@ -46,7 +46,8 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disabl
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-install-dir.patch
 )
-sha256sums=('1a94235f4e9783ea0528361d6fc601f8cb3a448eb69bcd0f521aed192e90dd10'
+
+sha256sums=('779079b0c1a4914a4254a524e9a91c66c8b74c8e418e8420bf28cbcbeabe8415'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -89,7 +90,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd firefox-57.0b14
+  cd firefox-58.0b3
   patch -Np1 -i ../firefox-install-dir.patch
 
 
@@ -141,7 +142,7 @@ END
 }
 
 build() {
-  cd firefox-57.0b14
+  cd firefox-58.0b3
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -157,7 +158,7 @@ build() {
 }
 
 package() {
-  cd firefox-57.0b14
+  cd firefox-58.0b3
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
