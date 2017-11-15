@@ -10,7 +10,7 @@ _lib32=0
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
 pkgver=387.22
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
 makedepends=('linux-headers')
@@ -18,25 +18,23 @@ options=('!strip')
 
 # Installer name
 _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
-if [[ $CARCH = i686 ]]; then
-  _pkg="NVIDIA-Linux-x86-$pkgver"
-elif [[ $_lib32 = 1 ]] || pacman -Q lib32-nvidia-utils-full-beta &>/dev/null; then
+if [[ $_lib32 = 1 ]] || pacman -Q lib32-nvidia-utils-full-beta &>/dev/null; then
   pkgname+=('lib32-nvidia-utils-full-beta' 'lib32-nvidia-libgl-full-beta' 'lib32-opencl-nvidia-full-beta')
   _pkg="NVIDIA-Linux-x86_64-$pkgver"
 fi
 
 # Source
-source=('10-nvidia-drm-outputclass.conf'
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
+        '10-nvidia-drm-outputclass.conf'
         '20-nvidia.conf')
-#        'linux-4.11.patch')
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-md5sums=('4f5562ee8f3171769e4638b35396c55d'
+md5sums=('b21f9bafb20409b337505c9b1d362c34'
+         '4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7')
-#         'cc8941b6898d9daa0fb67371f57a56b6')
-md5sums_i686=('abdbb3c813e52148f7435308121e6a37')
-md5sums_x86_64=('b21f9bafb20409b337505c9b1d362c34')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('5989b02e94ce3f171e473e0837f52e24')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]=('5989b02e94ce3f171e473e0837f52e24')
+
+# Patch
+#source+=('linux-4.11.patch')
+#md5sums+=('cc8941b6898d9daa0fb67371f57a56b6')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
@@ -62,9 +60,7 @@ _create_links() {
 
 prepare() {
   # Remove previous builds
-  if [[ -d $_pkg ]]; then
-    rm -rf $_pkg
-  fi
+  [[ -d $_pkg ]] && rm -rf $_pkg
 
   # Extract
   msg2 "Self-Extracting $_pkg.run..."
@@ -77,7 +73,7 @@ prepare() {
     # Version variables
     _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
     _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
-      
+
     # Check version
     if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
       msg2 "Applying $_patch..."
@@ -332,10 +328,8 @@ package_nvidia-full-beta() {
          "$pkgdir"/usr/lib/modules/$_extramodules/nvidia.ko
 
   # Install UVM Module: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
-  if [[ $CARCH = x86_64 ]]; then
-    install -Dm644 $_pkg/kernel/nvidia-uvm.ko \
-           "$pkgdir"/usr/lib/modules/$_extramodules/nvidia-uvm.ko
-  fi
+  install -Dm644 $_pkg/kernel/nvidia-uvm.ko \
+         "$pkgdir"/usr/lib/modules/$_extramodules/nvidia-uvm.ko
 
   # Install Modeset module:
   #
