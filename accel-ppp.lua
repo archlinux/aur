@@ -24,8 +24,8 @@ function mac(pkt)
 	local mac=pkt:hdr("chaddr")
 	return mac
 end
-function username(pkt)
-	local username = string.sub(pkt:ifname(), string.find(pkt:ifname(), ".", 1, true)+1, 32)
-	return username
+function qinq(pkt)
+	local qinq = string.sub(pkt:ifname(), string.find(pkt:ifname(), ".", 1, true)+1, 32)
+	return qinq
 end
 

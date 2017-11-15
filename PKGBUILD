@@ -2,7 +2,7 @@
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp
 pkgver=1.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -13,7 +13,7 @@ optdepends=('accel-ppp-ipoe-dkms' 'accel-ppp-vlanmon-dkms' 'logrotate')
 conflicts=('accel-ppp-git')
 install='accel-ppp.install'
 options=('docs')
-backup=('etc/accel-ppp.conf' 'etc/accel-ppp.lua' 'etc/snmp/accel-ppp.conf')
+backup=('etc/accel-ppp.conf' 'etc/accel-ppp.lua' 'etc/snmp/accel-ppp.conf' 'usr/share/accel-ppp/radius/dictionary')
 source=("http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2"
 	'accel-ppp.logrotate'
 	'accel-ppp.lua'
@@ -78,7 +78,7 @@ package() {
 
 md5sums=('81a3312cd0ff468ab5ee5edad3424a91'
          '0536dd60960e76cf5a6cdbf0518782d8'
-         '816dd5ea9534a077dfd63b6cd529738a'
+         '1faebf39e7a665d756cae3e0e33831a9'
          '312fd63b9688a05b71a6b33ddd3a9f4b'
          'a171d28760bf411be85dc4a964df2c0a'
          '4e0d4fc5975ea8794ea286e8fbfa56cd'
