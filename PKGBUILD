@@ -1,6 +1,6 @@
 pkgname=pantheon-git-meta
 pkgver=20171114
-pkgrel=3
+pkgrel=4
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
@@ -22,7 +22,7 @@ depends=(appcenter-git
 	pantheon-notes-git
 	pantheon-session-git
 	pantheon-screenshot-git
-	slingshot-launcher-git
+	pantheon-applications-menu-git
 	switchboard-git
 	switchboard-plug-a11y-git
 	switchboard-plug-about-git
