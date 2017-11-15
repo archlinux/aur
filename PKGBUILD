@@ -9,7 +9,7 @@ _hash=aa0333dd3019491ca4f6ddbe78cdb6d0
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 license=('custom:Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-environment-common' 'java-runtime-common' 'nss' 'xdg-utils')
@@ -40,25 +40,22 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/psfont.properties.ja"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
-[[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
+source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-x64.tar.gz"
+        "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-i586.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-x64.tar.gz")
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
+md5sums=('20dddd28ced3179685a5f58d3fcbecd8'
+         'b3c7031bc65c28c2340302065e7d00d3'
          '8a66f50efdc867ffd6a27168bc93b210'
          '1cbde70639abd98db4bace284dbf2bc4'
          'f0b39865361437f3778ecbe6ffbc0a06'
          '89704501aff8efe859c31968d8d168e6')
-md5sums_i686=('0c70ea43ad5baf0349a16c734bc2fb41')
-md5sums_x86_64=('20dddd28ced3179685a5f58d3fcbecd8')
 ## Alternative mirror, if your local one is throttled:
-#source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$_pkgname-$pkgver-linux-x64.gz")
+#source[0]=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$_pkgname-$pkgver-linux-x64.gz")
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
@@ -122,10 +119,7 @@ package() {
     done
 
     # Link NPAPI plugin
-    case "$CARCH" in
-        i686)   ln -sf $_jvmdir/jre/lib/i386/libnpjp2.so  "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-        x86_64) ln -sf $_jvmdir/jre/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-    esac
+    ln -sf $_jvmdir/jre/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts jre/lib/security/cacerts
