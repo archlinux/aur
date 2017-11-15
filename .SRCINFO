@@ -4,7 +4,6 @@ pkgbase = utorrent
 	pkgrel = 1
 	url = https://www.utorrent.com/
 	install = utorrent.install
-	arch = i686
 	arch = x86_64
 	license = freeware
 	depends = desktop-file-utils
