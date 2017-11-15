@@ -6,7 +6,7 @@ pkgname=ruby-$_gemname
 pkgver=3.2.0
 pkgrel=1
 pkgdesc='Ruby/GdkPixbuf2 is a Ruby binding of GdkPixbuf-2.x.'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
 license=(LGPL2.1)
 depends=(ruby ruby-gio2=$pkgver gdk-pixbuf2)
