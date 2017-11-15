@@ -1,7 +1,7 @@
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp-git
 pkgver=r1443.34fac26
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -21,15 +21,6 @@ source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
 	'dictionary.abills'
 	'dictionary.accel_ipoe'
         'shaper.patch')
-
-md5sums=('SKIP'
-         '0536dd60960e76cf5a6cdbf0518782d8'
-         '816dd5ea9534a077dfd63b6cd529738a'
-         '312fd63b9688a05b71a6b33ddd3a9f4b'
-         'a171d28760bf411be85dc4a964df2c0a'
-         '4e0d4fc5975ea8794ea286e8fbfa56cd'
-         '7e58716f1249f924ce218bd348d4c03a'
-         'c203b966d62f3b04bf413f7b46af4212')
 
 _pkgname=accel-ppp
 
@@ -91,3 +82,11 @@ package() {
 	install -Dm0644 "$srcdir/$_pkgname/COPYING" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
+md5sums=('SKIP'
+         '0536dd60960e76cf5a6cdbf0518782d8'
+         '1faebf39e7a665d756cae3e0e33831a9'
+         '312fd63b9688a05b71a6b33ddd3a9f4b'
+         'a171d28760bf411be85dc4a964df2c0a'
+         '4e0d4fc5975ea8794ea286e8fbfa56cd'
+         '7e58716f1249f924ce218bd348d4c03a'
+         'c203b966d62f3b04bf413f7b46af4212')
