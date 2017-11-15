@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.93.0.r455.g77efc60a15
+	pkgver = 3.93.0.r459.g13ca03efb1
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = i686
@@ -9,9 +9,6 @@ pkgbase = gtk4-git
 	makedepends = gobject-introspection-git
 	makedepends = gtk-doc
 	makedepends = git
-	makedepends = colord
-	makedepends = rest
-	makedepends = libcups
 	makedepends = meson
 	makedepends = ninja
 	depends = at-spi2-atk
