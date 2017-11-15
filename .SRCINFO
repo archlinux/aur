@@ -4,7 +4,6 @@ pkgbase = jre8
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre8.install
-	arch = i686
 	arch = x86_64
 	license = custom:Oracle
 	depends = ca-certificates-java
@@ -36,14 +35,12 @@ pkgbase = jre8
 	backup = etc/java-jre8/psfont.properties.ja
 	backup = etc/java-jre8/psfontj2d.properties
 	backup = etc/java-jre8/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jre-8u152-linux-x64.tar.gz
 	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
 	source = policytool-jre8.desktop
+	md5sums = 32c9a36d3869b13db18e8bd5bfc14dcb
 	md5sums = b3c7031bc65c28c2340302065e7d00d3
 	md5sums = ef3ff483db5d38ed106e0b819006bdae
-	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jre-8u152-linux-i586.tar.gz
-	md5sums_i686 = 1ea9344c8d223694e05865e32edc3656
-	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jre-8u152-linux-x64.tar.gz
-	md5sums_x86_64 = 32c9a36d3869b13db18e8bd5bfc14dcb
 
 pkgname = jre8
 
