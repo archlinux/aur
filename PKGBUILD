@@ -2,40 +2,19 @@
 # Maintainer: Jiri Tyr <jiri.tyr@gmail.com>
 
 pkgname='gbt'
-pkgver='1.0.0'
+pkgver='1.1.0'
 pkgrel=1
-pkgdesc='Bullettrain prompt builder written in Go'
+pkgdesc='Highly configurable prompt builder for Bash and ZSH written in Go.'
 url="https://github.com/jtyr/gbt"
-arch=('any')
+arch=('x86_64')
 license=('MIT')
-makedepends=('go')
 optdepends=('nerd-fonts-complete')
-source=()
-sha256sums=()
-
-_gopkg="github.com/jtyr/$pkgname"
-
-
-prepare() {
-    msg2 'Fetching Go package'
-    rm -fr "$srcdir/src/$_gopkg"
-    GOPATH="$srcdir" go get -u "$_gopkg"
-    cd "$srcdir/src/$_gopkg"
-    git checkout "v$pkgver"
-}
-
-
-build() {
-    msg2 'Building binary'
-    rm -f "$srcdir/bin/$pkgname"
-    GOPATH="$srcdir" go install "$_gopkg"
-}
-
+source=("https://github.com/jtyr/gbt/releases/download/v$pkgver/$pkgname-$pkgver-linux-amd64.tar.gz")
+sha256sums=('6b5c8c14777bc6f3dd1f375499f8869dec7d872ebfe2a7a9b8ac8dc0cd70438e')
 
 package() {
-    msg2 'Installing files'
-    install -Dm644 -t "$pkgdir/usr/doc/$pkgname"           "$srcdir/src/$_gopkg/"{LICENSE,README.md}
-    install -Dm644 -t "$pkgdir/usr/share/$pkgname/sources" "$srcdir/src/$_gopkg/sources/"*
-    install -Dm644 -t "$pkgdir/usr/share/$pkgname/themes"  "$srcdir/src/$_gopkg/themes/"*
-    install -Dm755 -t "$pkgdir/usr/bin"                    "$srcdir/bin/$pkgname"
+    install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname" -t "$pkgdir/usr/bin"
+    install -Dm644 "$srcdir/$pkgname-$pkgver/"{LICENSE,README.md} -t "$pkgdir/usr/doc/$pkgname"
+    mkdir -p "$pkgdir/usr/share/$pkgname/"
+    cp -r "$srcdir/$pkgname-$pkgver/"{sources,themes} "$pkgdir/usr/share/$pkgname/"
 }

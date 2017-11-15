@@ -1,12 +1,13 @@
 pkgbase = gbt
-	pkgdesc = Bullettrain prompt builder written in Go
-	pkgver = 1.0.0
+	pkgdesc = Highly configurable prompt builder for Bash and ZSH written in Go.
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/jtyr/gbt
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = go
 	optdepends = nerd-fonts-complete
+	source = https://github.com/jtyr/gbt/releases/download/v1.1.0/gbt-1.1.0-linux-amd64.tar.gz
+	sha256sums = 6b5c8c14777bc6f3dd1f375499f8869dec7d872ebfe2a7a9b8ac8dc0cd70438e
 
 pkgname = gbt
 
