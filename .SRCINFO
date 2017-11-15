@@ -1,0 +1,18 @@
+pkgbase = hide-ff-title-bar-git
+	pkgdesc = Hide the firefox title bar, for GNOME. This package provides the native helper (a Python script) for the firefox addon.
+	pkgver = r16.aee86d1
+	pkgrel = 1
+	url = https://github.com/GKFX/hide-ff-title-bar
+	arch = any
+	license = MPL
+	makedepends = git
+	depends = firefox>=57.0
+	depends = python>=3.5
+	depends = wmctrl
+	provides = hide-ff-title-bar
+	conflicts = hide-ff-title-bar
+	source = git+https://github.com/GKFX/hide-ff-title-bar.git
+	md5sums = SKIP
+
+pkgname = hide-ff-title-bar-git
+
