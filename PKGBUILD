@@ -13,6 +13,7 @@ depends=('gtk3' 'libxt' 'dbus-glib' 'nss')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'ffmpeg: additional video and audio decoders'  # Not sure this is useful
             'hunspell: Spell checking'
+            'hyphen': 'Hyphenation'
             'libnotify: Notification integration'
             'pulseaudio: Audio support')
 makedepends=('perl-file-slurp' 'perl-lwp-protocol-https' 'perl-switch')
@@ -31,9 +32,10 @@ package() {
   cp -r firefox "${pkgdir}/usr/lib/${_mypkgn}"
   install -m755 ${srcdir}/firefox-beta.sh ${pkgdir}/usr/bin/firefox-beta
 
-  # Use system-provided dictionaries
+  # Use system-provided dictionaries and hyphenation
   rm -rf "${pkgdir}/usr/lib/${_mypkgn}/dictionaries"
   ln -Ts /usr/share/hunspell "${pkgdir}/usr/lib/${_mypkgn}/dictionaries"
+  ln -Ts /usr/share/hyphen "${pkgdir}/usr/lib/${_mypkgn}/hyphenation"
 
   install -m644 firefox-beta-bin.desktop ${pkgdir}/usr/share/applications/
   install -m644 ${srcdir}/firefox/browser/icons/mozicon128.png ${pkgdir}/usr/share/pixmaps/${_mypkgn}.png
