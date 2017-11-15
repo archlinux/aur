@@ -2,7 +2,7 @@
 
 _pkgname=scanpy
 pkgname=$_pkgname-git
-pkgver=0.2.3+2.g5624f7d
+pkgver=0.2.9.1+38.g9f36c3d
 pkgrel=1
 pkgdesc='Efficient tools for analyzing and simulating large-scale single-cell data'
 arch=(any)
@@ -12,6 +12,7 @@ url='https://github.com/theislab/scanpy'
 license=(GPL3)
 depends=(
 	cython
+	python-anndata
 	python-matplotlib
 	python-pandas
 	python-scipy
