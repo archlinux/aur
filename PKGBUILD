@@ -3,7 +3,7 @@
 # Contributor: Ricardo Honorato Z.
 
 pkgname=vmd
-pkgver=1.9.4a8
+pkgver=1.9.4a9
 pkgrel=1
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
@@ -15,8 +15,10 @@ optdepends=('netcdf: MMTK and AMBER 9 trajectories support'
             'openbabel: additional file formats support'
             'sqlite: dmsplugin')
 # You MUST download the package from the VMD url and put it in the PKGBUILD folder!
-source=("local://${pkgname}-${pkgver}.bin.LINUXAMD64-CUDA9-OptiX411-OSPRay131.opengl.tar.gz")
-md5sums=('bb17afbb656ea719bf6bfe10ab939cf2')
+# Current download should be:
+# LINUX_64 OpenGL, CUDA, OptiX, OSPRay (Linux (RHEL 6.7 and later) 64-bit Intel/AMD x86_64 SSE, with CUDA 9.x, OptiX, OSPRay)
+source=("local://${pkgname}-${pkgver}.bin.LINUXAMD64-CUDA9-OptiX411-OSPRay140.opengl.tar.gz")
+md5sums=('4283b474b264b837ddc88bcc447929c0')
 
 package() {
   cd $srcdir/${pkgname}-${pkgver}
