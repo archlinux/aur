@@ -2,9 +2,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=obs-service-format_spec_file
-pkgver=20160929
+pkgver=20170204
 pkgrel=1
-_pkgver=1.1
+_pkgver=1.3
 pkgdesc='An OBS source service: reformats a spec file to SUSE standard'
 arch=('any')
 url='https://build.opensuse.org/package/show/openSUSE:Factory/obs-service-format_spec_file'
@@ -12,7 +12,7 @@ url='https://build.opensuse.org/package/show/openSUSE:Factory/obs-service-format
 license=('GPL2')
 depends=('obs-service-source_validator' 'perl-date-parse')
 source=("http://download.opensuse.org/source/factory/repo/oss/suse/src/${pkgname}-${pkgver}-${_pkgver}.src.rpm")
-sha256sums=('01ceb354e15aff0784bee976859a0072cee1029efaad6ed3cf6b55b8526c8511')
+sha256sums=('08a8cd963b84987393c6a055ce0c2af3816f2f422fdc424fe3b4d6ebe43a2697')
 
 prepare() {
   cd "$srcdir"
