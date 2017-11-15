@@ -2,7 +2,6 @@ pkgbase = x264-git
 	pkgver = 152.20170626.r2851
 	pkgrel = 1
 	url = https://www.videolan.org/developers/x264.html
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = nasm
