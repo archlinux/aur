@@ -1,6 +1,6 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
-pkgname=pantheon-session-bzr
+pkgname=pantheon-session-git
 pkgver=r82
 pkgrel=1
 pkgdesc='The Pantheon Session Handler'
