@@ -4,7 +4,6 @@ pkgbase = vuze-dev
 	pkgrel = 1
 	url = http://dev.vuze.com/
 	install = vuze-dev.install
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = desktop-file-utils
