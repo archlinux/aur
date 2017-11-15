@@ -3,17 +3,14 @@ pkgbase = jdk-demos
 	pkgver = 8u152
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
-	arch = i686
 	arch = x86_64
 	license = custom:Oracle
 	optdepends = java-runtime>=8: Run examples
 	optdepends = java-environment>=8: Compile and run examples
 	optdepends = gradle: Compile examples
 	options = !strip
-	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u152-b16-demos/aa0333dd3019491ca4f6ddbe78cdb6d0/jdk-8u152-linux-i586-demos.tar.gz
-	md5sums_i686 = 71b6332fd84d4668704e0c4588b83409
-	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u152-b16-demos/aa0333dd3019491ca4f6ddbe78cdb6d0/jdk-8u152-linux-x64-demos.tar.gz
-	md5sums_x86_64 = b7ef81c03716504dbdc07f795c100023
+	source = http://download.oracle.com/otn-pub/java/jdk/8u152-b16-demos/aa0333dd3019491ca4f6ddbe78cdb6d0/jdk-8u152-linux-x64-demos.tar.gz
+	md5sums = b7ef81c03716504dbdc07f795c100023
 
 pkgname = jdk-demos
 
