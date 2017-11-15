@@ -1,0 +1,21 @@
+pkgbase = magicavoxel
+	pkgdesc = A free lightweight 8-bit voxel editor and interactive path tracing renderer, enjoy :)
+	pkgver = 0.98.2
+	pkgrel = 1
+	url = http://ephtracy.github.io/
+	arch = any
+	license = Feel free to use it for any project, no commercial licences required, credits are appreciated
+	makedepends = unzip
+	depends = wine
+	noextract = MagicaVoxel-0.98.2-win.zip
+	source = http://192.241.207.218/uploads/MagicaVoxel-0.98.2-win.zip
+	source = http://ephtracy.github.io/favicon.png
+	source = magicavoxel
+	source = magicavoxel.desktop
+	md5sums = 97d6dc76fdb02bd4b77bfb1c38a648eb
+	md5sums = 64ba6d1187827aa3ff3577c9ef9419fc
+	md5sums = f4c23c8e58253215628e3c0acd14522e
+	md5sums = d6c5be935d1588955be51ffbb2c1516b
+
+pkgname = magicavoxel
+

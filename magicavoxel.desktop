@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MagicaVoxel
+Exec=/usr/bin/magicavoxel %F
+Comment=A free lightweight 8-bit voxel editor and interactive path tracing renderer
+Type=Application
+StartupNotify=true
+Icon=magicavoxel
+Categories=Graphics;3DGraphics;
+Terminal=false
