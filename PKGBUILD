@@ -5,39 +5,34 @@ pkgname=google-earth6
 pkgver=6.2.2.6613
 pkgrel=2
 pkgdesc="Legacy 3D interface to explore the globe, terrain, streets, buildings and other planets"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.google.com/earth/index.html"
 license=('custom')
-depends=('desktop-file-utils' 'hicolor-icon-theme' 'ld-lsb' 'shared-mime-info' 'xdg-utils')
-depends_i686=('fontconfig' 'glu' 'libgl' 'libsm' 'libxrender' 'mesa')
-depends_x86_64=('lib32-curl' 'lib32-fontconfig' 'lib32-gcc-libs' 'lib32-glu'
-                'lib32-libgl' 'lib32-libsm' 'lib32-libxrender' 'lib32-mesa')
-optdepends=('qt4: For changing the font size with qtconfig'
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'ld-lsb' 'shared-mime-info' 'xdg-utils' 'lib32-curl'
+         'lib32-fontconfig' 'lib32-gcc-libs' 'lib32-glu' 'lib32-libgl' 'lib32-libsm' 'lib32-libxrender'
+         'lib32-mesa')
+optdepends=('lib32-catalyst-utils: For AMD Catalyst'
+            'lib32-nvidia-utils: For the NVIDIA driver'
+            'qt4: For changing the font size with qtconfig'
             'ttf-ms-fonts: Fonts')
-optdepends_i686=('catalyst-utils: For AMD Catalyst'
-                 'nvidia-utils: For the NVIDIA driver')
-optdepends_x86_64=('lib32-catalyst-utils: For AMD Catalyst'
-                   'lib32-nvidia-utils: For the NVIDIA driver')
 options=('!emptydirs')
 install=$pkgname.install
-source=('googleearth.sh'
+source=("http://ftp.kspu.ru/mint/packages/pool/import/g/googleearth/googleearth_$pkgver-r0_amd64.deb"
+        'googleearth.sh'
         "$pkgname.desktop"
         "$pkgname.menu"
         'Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html'
         'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
-source_i686=("http://ftp.kspu.ru/mint/packages/pool/import/g/googleearth/googleearth_$pkgver-r0_i386.deb")
-source_x86_64=("http://ftp.kspu.ru/mint/packages/pool/import/g/googleearth/googleearth_$pkgver-r0_amd64.deb")
-md5sums=('e5f591e3bd44743539722e019611b773'
+md5sums=('bd1960eb3e2d061b319c3f38835840d7'
+         'e5f591e3bd44743539722e019611b773'
          'bfacc99dae6bc5ded73cd9b3bd2c9087'
          '3e87399f2051321102a59227e6d6ded7'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
-md5sums_i686=('e38c0d806cf1d581213fb6f4f204ec9c')
-md5sums_x86_64=('bd1960eb3e2d061b319c3f38835840d7')
 
 _instdir=/opt/google/earth/legacy
 
