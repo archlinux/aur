@@ -1,14 +1,14 @@
 pkgbase = nvidia-container-runtime
 	pkgdesc = NVIDIA container runtime
-	pkgver = 1.0.0+1.docker17.09.0
+	pkgver = 1.1.0+1.docker17.09.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-container-runtime
 	arch = x86_64
 	license = custom
 	depends = libseccomp
 	depends = libnvidia-container-tools
-	source_x86_64 = https://nvidia.github.io/nvidia-container-runtime/centos7/x86_64/nvidia-container-runtime-1.0.0-1.docker17.09.0.x86_64.rpm
-	sha256sums_x86_64 = 216ce2eacbf44a5b814019f87b173121317038478485b9411ad8238fe5967431
+	source_x86_64 = https://nvidia.github.io/nvidia-container-runtime/centos7/x86_64/nvidia-container-runtime-1.1.0-1.docker17.09.0.x86_64.rpm
+	sha256sums_x86_64 = 1a5529d78f9e3abcf43f432b9bbbf83f010ac4cdd485b5a02e9288f0e4d104a5
 
 pkgname = nvidia-container-runtime
 
