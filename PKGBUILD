@@ -24,7 +24,7 @@ _hgtag=${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgver=${_java_ver}.u${_jdk_update}
 pkgrel=1
 pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
 license=('GPL')
 makedepends=('java-environment-openjdk=8' 'bison' 'gperf' 'gtk2'
