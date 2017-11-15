@@ -1,7 +1,7 @@
 # Maintainer: Kiril Zyapkov <kiril.zyapkov@gmail.com>
 pkgname=mos-git
-pkgver=2017111421
-pkgrel=2
+pkgver=20171115_100329
+pkgrel=1
 pkgdesc="Mongoose-OS build tool (latest)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -20,25 +20,33 @@ source=(git+https://github.com/cesanta/mongoose-os.git#branch=master)
 
 md5sums=('SKIP')
 
-pkgver() {
+prepare() {
     cd "$srcdir/mongoose-os"
-    sed -i 's,/usr/bin/env python,/usr/bin/env python2,g' "common/tools/fw_meta.py"
-    python2 common/tools/fw_meta.py gen_build_info \
-            --json_output=build_info.json >/dev/null 2>&1
+    sed -i 's,/usr/bin/env python$,/usr/bin/env python2,g' \
+            "common/tools/fw_meta.py"
 
-    jshon -F build_info.json -e build_id -u > mos/version/build_id
-    jshon -F build_info.json -e build_version -u > mos/version/version
-    cat mos/version/version
+    mkdir -p "$srcdir/go/src"
+    test -d "$srcdir/go/src/cesanta.com" && rm -rf "$srcdir/go/src/cesanta.com"
+    mv "$srcdir/mongoose-os" "$srcdir/go/src/cesanta.com"
+}
+
+pkgver() {
+    cd "$srcdir/go/src/cesanta.com"
+    python2 common/tools/fw_meta.py gen_build_info \
+                --json_output=build_info.json >/dev/null 2>&1
+    local build_id=`jshon -F build_info.json -e build_id -u`
+    local version=`echo ${build_id} | cut -d '/' -f 1 | sed 's/-/_/'`
+    local short_id=`echo ${build_id} | cut -d '/' -f 2`
+    mkdir -p debian
+    echo "(${version}+${short_id})" > debian/changelog
+    echo "$version"
 }
 
 build() {
     export GOPATH="$srcdir/go"
     export PATH="$srcdir/go/bin:$PATH"
 
-    mkdir -p "$srcdir/go/src"
-    mv "$srcdir/mongoose-os" "$srcdir/go/src/cesanta.com"
     cd "$srcdir/go/src/cesanta.com"
-
     govendor sync
 
     # these should not be needed, but they are
