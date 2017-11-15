@@ -9,7 +9,7 @@ _build=b06
 pkgver=${_major}u${_minor}
 pkgrel=4
 pkgdesc="Oracle Java $_major Runtime Environment (public release - end of support)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.java.com/en/download/faq/java_$_major.xml"
 license=('custom')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
@@ -39,28 +39,21 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/psfont.properties.ja"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
-[[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip"
+#source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.bin"
+source=('https://www.dropbox.com/s/w1y1ftw174bb5lc/jre-6u45-linux-x64.bin'
+        "http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip"
         "policytool-$_jname.desktop"
         'javaws-launcher')
-#source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin")
-#source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.bin")
-source_i686=('https://www.dropbox.com/s/kiaooneyl2lhl33/jre-6u45-linux-i586.bin')
-source_x86_64=('https://www.dropbox.com/s/w1y1ftw174bb5lc/jre-6u45-linux-x64.bin')
-md5sums=('b20f9d6ed14e55d73a5ed204bca01e7a'
+md5sums=('4a4569126f05f525f48bacf761f7185c'
+         'b20f9d6ed14e55d73a5ed204bca01e7a'
          '1ae1bd8b6f12af6c30a2558a39da0fe4'
          '45c15a6b4767288f2f745598455ea2bf')
-md5sums_i686=('1d8001ef61a2e3a11fe7b9eec9f08948')
-md5sums_x86_64=('4a4569126f05f525f48bacf761f7185c')
 
 package() {
     msg2 "Extracting the .bin"
     rm -rf ${_pkgname}1.${_major}.0_${_minor}
-    case "$CARCH" in
-        x86_64) sh $_pkgname-$pkgver-linux-x64.bin &>/dev/null ;;
-        i686)   sh $_pkgname-$pkgver-linux-i586.bin &>/dev/null ;;
-    esac
+    sh $_pkgname-$pkgver-linux-x64.bin &>/dev/null
 
     cd ${_pkgname}1.${_major}.0_${_minor}
 
@@ -117,10 +110,7 @@ package() {
     done
 
     # Link NPAPI plugin
-    case "$CARCH" in
-        i686)   ln -sf $_jvmdir/lib/i386/libnpjp2.so  "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-        x86_64) ln -sf $_jvmdir/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-    esac
+    ln -sf $_jvmdir/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
