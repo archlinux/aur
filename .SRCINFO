@@ -3,7 +3,6 @@ pkgbase = npapi-vlc-git
 	pkgver = 2.2.1.95.r1444.gd5accd8
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/npapi-vlc
-	arch = i686
 	arch = x86_64
 	license = GPL2+
 	makedepends = git
