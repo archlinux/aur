@@ -12,7 +12,7 @@ depends=('php>=7' 'php-apache' 'apache' 'php-pgsql' 'postgresql' 'sqlite' 'maria
 
 build()
 {
-	composer create-project imperium/aphrodite $pkgname
+	composer create-project imperium/aphrodite $pkgname $pkgver 
  
 }
 
