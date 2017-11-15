@@ -1,0 +1,55 @@
+pkgname=pantheon-git-meta
+pkgver=20171114
+pkgrel=1
+pkgdesc='Meta package for the complete Pantheon desktop & apps'
+arch=(any)
+url='http://elementary.io'
+license=(LGPL)
+depends=(appcenter-bzr
+	audience-git
+	cerbere-git
+	contractor-git
+	elementary-dpms-helper-git
+	elementary-icon-theme-git
+	gala-git
+	granite-git
+	gtk-theme-elementary-git
+	lightdm-pantheon-greeter-bzr
+	pantheon-backgrounds-bzr
+	pantheon-calculator-git
+	pantheon-default-settings-git
+	pantheon-files-git
+	pantheon-notes-git
+	pantheon-session-git
+	screenshot-tool-git
+	slingshot-launcher-git
+	switchboard-git
+	switchboard-plug-a11y-git
+	switchboard-plug-about-git
+	switchboard-plug-applications-git
+	switchboard-plug-datetime-git
+	switchboard-plug-desktop-git
+	switchboard-plug-display-git
+	switchboard-plug-keyboard-git
+	switchboard-plug-locale-git
+	switchboard-plug-mouse-touchpad-git
+	switchboard-plug-network-git
+	switchboard-plug-notifications-git
+	switchboard-plug-parental-controls-git
+	switchboard-plug-power-git
+	switchboard-plug-printers-git
+	switchboard-plug-security-privacy-git
+	switchboard-plug-sharing-git
+	switchboard-plug-useraccounts-git
+	wingpanel-git
+	wingpanel-indicator-bluetooth-git
+	wingpanel-indicator-datetime-git
+	wingpanel-indicator-network-git
+	wingpanel-indicator-notifications-git
+	wingpanel-indicator-power-git
+	wingpanel-indicator-session-git
+	wingpanel-indicator-sound-git)
+
+package(){
+  /bin/true
+}
