@@ -10,7 +10,7 @@ pkgname=firefox-always-nightly
 pkgdesc='Standalone web browser from mozilla.org, nightly build, always updating'
 url='https://blog.nightly.mozilla.org/'
 pkgver=99.0a1
-pkgrel=14
+pkgrel=15
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _srcurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
@@ -52,6 +52,6 @@ package() {
 
   ln -s /opt/firefox-nightly/firefox "${pkgdir}/usr/bin/firefox-nightly"
   install -m644 "${srcdir}"/{firefox-nightly.desktop,firefox-nightly-safe.desktop} "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/firefox/browser/icons/mozicon128.png" "${pkgdir}/usr/share/pixmaps/firefox-nightly-icon.png"
+  install -m644 "${srcdir}/firefox/browser/chrome/icons/default/default128.png" "${pkgdir}/usr/share/pixmaps/firefox-nightly-icon.png"
   install -Dm644 "${srcdir}/vendor.js" "${pkgdir}/opt/firefox-nightly/browser/defaults/preferences/vendor.js"
 }
