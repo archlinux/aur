@@ -15,6 +15,7 @@ arch=('any')
 url="http://piro.sakura.ne.jp/xul/_treestyletab.html.en"
 depends=("firefox>=57")
 source=("https://addons.cdn.mozilla.net/user-media/addons/${_plugin_id}/${_plugin_name}-${pkgver}${_plugin_ext}.xpi")
+noextract=("${_plugin_name}-${pkgver}${_plugin_ext}.xpi")
 sha256sums=('65ba805eb99103d8f57208fc4d594e2e834834698997aa8846b9b114de2feeb0')
 
 package() {
