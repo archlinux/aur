@@ -6,13 +6,12 @@
 
 pkgname=afnix
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-threaded functional programming language'
 arch=('x86_64')
 url='http://www.afnix.org'
 license=('custom')
-depends=('ncurses' 'gcc-libs')
-makedepends=('libtinfo')
+depends=('ncurses' 'gcc-libs' 'ncurses')
 source=("$url/ftp/afnix-src-$pkgver.tgz")
 sha256sums=('d6505024ce3dc1e051772b1d853197405d4f7e10d54dfcc15c73f8d82411ec72')
 
