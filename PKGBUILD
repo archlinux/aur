@@ -10,7 +10,7 @@ _build=b15
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit (public release - end of support)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html'
 license=('custom')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-environment-common' 'java-runtime-common' 'nss' 'xdg-utils')
@@ -42,27 +42,21 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/psfont.properties.ja"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
-[[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJDK$_major.zip"
+#source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.tar.gz"
+source=('https://www.dropbox.com/s/lni4xcu2eqhqjq9/jdk-7u80-linux-x64.tar.gz'
+        "http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJDK$_major.zip"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
-#source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
-#source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.tar.gz")
-source_i686=('https://www.dropbox.com/s/tof6j0eyqbljugy/jdk-7u80-linux-i586.tar.gz')
-source_x86_64=('https://www.dropbox.com/s/lni4xcu2eqhqjq9/jdk-7u80-linux-x64.tar.gz')
-md5sums=('c47e997b90ddfd0d813a37ccc97fb933'
+md5sums=('6152f8a7561acf795ca4701daa10a965'
+         'c47e997b90ddfd0d813a37ccc97fb933'
          'c72336327d7cefadf4ffd74c014c7c2e'
          'ac3f149795f62cdf5bdfdd6061fb8184'
          '1b692eac219a0b34fd7ec13f09cea078'
          'daf7f23efea899b8c575145d1eb73aab')
-md5sums_i686=('0811a4045714bd8f1e1577e318528597')
-md5sums_x86_64=('6152f8a7561acf795ca4701daa10a965')
-## Alternative mirror, if your local one is throttled:
-#source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$_pkgname-$pkgver-linux-x64.gz")
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
@@ -129,10 +123,7 @@ package() {
     done
 
     # Link NPAPI plugin
-    case "$CARCH" in
-        i686)   ln -sf $_jvmdir/jre/lib/i386/libnpjp2.so  "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-        x86_64) ln -sf $_jvmdir/jre/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-    esac
+    ln -sf $_jvmdir/jre/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts jre/lib/security/cacerts
