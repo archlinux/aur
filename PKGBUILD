@@ -5,7 +5,7 @@ pkgname=netcf
 pkgver=0.2.8
 pkgrel=5
 pkgdesc="A library for configuring network interfaces"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('LGPL')
 url="https://pagure.io/netcf"
 depends=('augeas>=0.7.4' 'libxslt' 'libxml2' 'libnl')
