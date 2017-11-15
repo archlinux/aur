@@ -3,7 +3,6 @@ pkgbase = libpciaccess-git
 	pkgver = 0.13.2.9.r277.g9b1bf11
 	pkgrel = 1
 	url = http://cgit.freedesktop.org/xorg/lib/libpciaccess/
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
