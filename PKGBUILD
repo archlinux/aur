@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='http://picard.musicbrainz.org/'
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('python2-pyqt4' 'mutagen')
 optdepends=('chromaprint: fingerprinting'
             'python2-discid: cd lookup')
