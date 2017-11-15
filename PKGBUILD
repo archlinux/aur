@@ -14,7 +14,7 @@ source=("http://mirrors.ctan.org/install/fonts/urw/classico.tds.zip"
         "license")
 noextract=("classico.tds.zip")
 md5sums=('166eb8e7f2e1ca764b02e00aae5e86fb'
-         '9a675e3b5016e8b1a15a228c6caf1fda'
+         '41c8becd00896ae086209308e1ea86b3'
          '7689a58e80bcc8546b76e397b83a572b')
 
 package() {
