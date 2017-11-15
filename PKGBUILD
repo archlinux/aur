@@ -1,11 +1,11 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-session-git
-pkgver=r82
+pkgver=r106.81b95c3
 pkgrel=1
 pkgdesc='The Pantheon Session Handler'
 arch=('any')
-url='https://code.launchpad.net/~elementary-os/elementaryos/pantheon-xsession-settings'
+url='https://github.com/elementary/session-settings'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('cerbere-git' 'dconf' 'gala-git' 'gconf' 'gnome-keyring'
@@ -14,21 +14,18 @@ depends=('cerbere-git' 'dconf' 'gala-git' 'gconf' 'gnome-keyring'
          'xdg-user-dirs-gtk')
 makedepends=('bzr')
 optdepends=('pantheon-default-settings-bzr')
-source=('pantheon-session::git+https://github.com/elementary/session-settings')
+source=("pantheon-session::git+https://github.com/elementary/session-settings#branch=meson")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $srcdir/pantheon-session
-}
-
-prepare() {
-  cd $srcdir/pantheon-session
-  meson .
-  ninja
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd $srcdirpantheon-session
+  cd $srcdir/pantheon-session
+  meson --prefix=/usr --datadir=share builddir
+  cd builddir
   DESTDIR=$pkgdir ninja install
 }
 
