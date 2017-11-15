@@ -4,7 +4,7 @@
 
 pkgbase=python-flickrapi
 pkgname=(python-flickrapi python2-flickrapi)
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="The official Python interface to the Flickr API"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-docutils' 'python2-docutils' 'python-setuptools' 'python2-s
              'python-requests-oauthlib' 'python2-requests-oauthlib' 'python-six' 'python2-six')
 checkdepends=('python-nose' 'python2-nose')
 source=("https://pypi.io/packages/source/f/flickrapi/flickrapi-$pkgver.tar.gz")
-sha512sums=('1d86873bbc8fccba1121f6fd51c0e22b62cff363c7a755236940581ecf4f3fa95cbff005b50e9c388505d5337d0e5ef91062c59737ec87a223d162b0e70f2fda')
+sha512sums=('f17bbbae15718517942effe6e574f802205cb18483dcc3b9c699dd4de0ebe17dcea787f1e0d59e09f772c71f82c9d39bcaa2273d9b25307b692aed87a776fde7')
 
 prepare() {
   cp -a flickrapi-$pkgver{,-py2}
