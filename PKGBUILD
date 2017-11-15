@@ -10,7 +10,7 @@ pkgname=google-earth-pro
 pkgver=7.3.0.3832
 pkgrel=1
 pkgdesc="3D interface to explore the globe, terrain, streets, buildings and other planets - Pro"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.google.com/earth/index.html"
 license=('custom:earth')
 depends=('glu' 'hicolor-icon-theme' 'ld-lsb>=3-5' 'libsm' 'libxrender' 'nss')
@@ -20,24 +20,21 @@ optdepends=('catalyst-utils: For AMD Catalyst'
 provides=('google-earth')
 options=('!emptydirs')
 install=$pkgname.install
-source=('googleearth.sh'
+#source=("google-earth-pro-stable_${pkgver}_amd64.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_amd64.deb"
+source=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_$pkgver-r0_amd64.deb"
+        'googleearth.sh'
         'baifaao.cpp'
         'Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html'
         'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
-#source_i686=("google-earth-pro-stable_${pkgver}_i386.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_i386.deb")
-#source_x86_64=("google-earth-pro-stable_${pkgver}_amd64.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_amd64.deb")
-source_i686=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_$pkgver-r0_i386.deb")
-source_x86_64=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_$pkgver-r0_amd64.deb")
-md5sums=('34c413a93b06010e66a1a1c4c9386696'
+md5sums=('b9d8281257b7ebf0dfac1ab1d3578681'
+         '34c413a93b06010e66a1a1c4c9386696'
          '598d579a1c3199c77850d86ba78f7b44'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
-md5sums_i686=('5c298610ae4bd604fcfd54fdc32e53dd')
-md5sums_x86_64=('b9d8281257b7ebf0dfac1ab1d3578681')
 
 _instdir=/opt/google/earth/pro/
 
