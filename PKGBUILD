@@ -1,9 +1,9 @@
 # Maintainer: Lenovsky <lenovsky@protonmail.ch>
 
 pkgname=telegram-desktop-git
-pkgver=1.1.23.r16.g62463d2c
+pkgver=1.1.23.r17.g1c8db1e2
 pkgrel=1
-pkgdesc="Official desktop version of Telegram messaging app."
+pkgdesc="Official desktop version of Telegram messaging app (dev branch)"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
