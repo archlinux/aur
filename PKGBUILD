@@ -3,7 +3,7 @@
 # Contributor: Tom Wambold <tom5760@gmail.com>
 
 pkgname='frogatto'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 pkgver=1.3.1
 pkgrel=24
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
