@@ -10,7 +10,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=multipath-tools
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='Multipath tools for Linux (including kpartx)'
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,21 +22,11 @@ optdepends=('ceph: support for RADOS Block Devices (needs to be installed at bui
 makedepends=('git')
 conflicts=('multipath-tools-git')
 install=multipath-tools.install
-source=("multipath-tools::git+http://git.opensvc.com/multipath-tools/.git#tag=${pkgver}"
-        0001-multipathd-fix-build-without-systemd.patch
-        0001-multipath-tools-libdmmp-Fix-build-for-members-of-sam.patch)
-sha256sums=('SKIP'
-            '753a7c4c09fe9c93c42beddaf25a913a92cb1bf91bddc6f5cb22c722e9d60bf7'
-            'aadc18d22dfdb9813bb8c3d207c444a2758e4831148e4d1e86e548512a63eae7')
+source=("multipath-tools::git+http://git.opensvc.com/multipath-tools/.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
   cd  "${srcdir}/${pkgname}"
-
-  # Patch multipathd to build when no systemd is installed
-  patch -p1 < "${srcdir}"/0001-multipathd-fix-build-without-systemd.patch
-
-  # Path libdmmp to allow building it for samba domain users
-  patch -p1 < "${srcdir}"/0001-multipath-tools-libdmmp-Fix-build-for-members-of-sam.patch
 
   # Fix bindir in Makefile
   sed -i 's|$(exec_prefix)/sbin|$(exec_prefix)/bin|g' Makefile.inc
