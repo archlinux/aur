@@ -3,19 +3,19 @@
 pkgname=("pivx-daemon" "pivx-cli" "pivx-qt")
 pkgbase=pivx
 _pkgbase=${pkgbase^^}
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 arch=("i686" "x86_64")
 url="https://pivx.org/"
 depends=("boost-libs")
 pkgdesc="Transactional security and privacy-focused decentralized open source cryptocurrency "
 license=("MIT")
-source=("https://github.com/PIVX-Project/PIVX/archive/v3.0.4.tar.gz")
-source_i686=("https://github.com/PIVX-Project/PIVX/releases/download/v3.0.4/pivx-3.0.4-i686-pc-linux-gnu.tar.gz")
-source_x86_64=("https://github.com/PIVX-Project/PIVX/releases/download/v3.0.4/pivx-3.0.4-x86_64-linux-gnu.tar.gz")
-sha256sums=("51b2286481d3838dc7b2b44d559256e007b85a47242f94b7b25638ac724b6d5f")
-sha256sums_i686=("29dec844094e7b76f554ee676afdcbb092b529ec43bf7efabe7cb1d0f47f9c4c")
-sha256sums_x86_64=("b862fa00998797bae4982bd7ad03d6ebd4653bba38564c053245c9460094db3e")
+source=("https://github.com/PIVX-Project/PIVX/archive/v$pkgver.tar.gz")
+source_i686=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-i686-pc-linux-gnu.tar.gz")
+source_x86_64=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-x86_64-linux-gnu.tar.gz")
+sha256sums=("593cb3b6b8b9c7e2fc18ea72ce362a2dc27230301ca0d0d1ea176cc754c9a33c")
+sha256sums_i686=("a5370abd762a41f0d1ada67cbf7b2d5f79a81fe65f23f796876f5227e717749f")
+sha256sums_x86_64=("0fb92d41f197e5eb8ef30029846d36927a5fbf6a6d570e417a5f3a9ebf3882fa")
 
 package_pivx-daemon() {
   pkgdesc+="(daemon)"
