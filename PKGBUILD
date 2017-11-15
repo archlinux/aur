@@ -1,7 +1,7 @@
 # Maintainer: Benoit Brummer <trougnouf at gmail dot com>
 pkgname='mabe-git'
 pkgver=r173.3ea8481
-pkgrel=1
+pkgrel=2
 pkgdesc='Modular Agent Based Evolution Framework'
 url='https://github.com/Hintzelab/MABE'
 depends=()
@@ -20,6 +20,8 @@ pkgver() {
 }
 build() {
 	cd "${srcdir}/MABE"
+	sed -i 's~"World/NumeralClassifierWorld/mnist.train.discrete.28x28-only100"~"/usr/share/MABE/World/NumeralClassifierWorld/mnist.train.discrete.28x28-only100"~g' World/NumeralClassifierWorld/NumeralClassifierWorld.cpp
+	sed -i 's~"World/SOFWorld/scoreMap_20x20_2peaks.txt"~"/usr/share/MABE/World/SOFWorld/scoreMap_20x20_2peaks.txt"~g' World/SOFWorld/SOFWorld.cpp
 	python "PythonTools/MBuild.py"
 }
 
@@ -27,4 +29,10 @@ build() {
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
 	cp "${srcdir}/MABE/MABE" "${pkgdir}/usr/bin"
+	mkdir -p "${pkgdir}/usr/share/MABE/World/NumeralClassifierWorld"
+	cp "${srcdir}/MABE/World/NumeralClassifierWorld/mnist.train.discrete.28x28-only100" "${pkgdir}/usr/share/MABE/World/NumeralClassifierWorld"
+	cp "${srcdir}/MABE/World/NumeralClassifierWorld/mnist.train.subset.discrete.28x28" "${pkgdir}/usr/share/MABE/World/NumeralClassifierWorld"
+	mkdir -p "${pkgdir}/usr/share/MABE/World/SOFWorld"
+	cp "${srcdir}/MABE/World/SOFWorld/scoreMap_20x20_2peaks.txt" "${pkgdir}/usr/share/MABE/World/SOFWorld"
+	cp "${srcdir}/MABE/World/SOFWorld/scoreMap_100x100_smallANDlarge.txt" "${pkgdir}/usr/share/MABE/World/SOFWorld"
 }
