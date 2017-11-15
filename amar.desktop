@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Amar Installer
+Type=Application
+Comment=Install AMAR
+Terminal=false
+Exec=python /usr/bin/amar.py
+Icon=amar
+StartupNotify=true
+Categories=System;
+GenericName=Amar Installer
+Keywords=amar
