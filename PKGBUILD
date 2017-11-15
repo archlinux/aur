@@ -4,8 +4,8 @@
 pkgname=mediawriter
 _pkgname=MediaWriter
 _author=MartinBriza
-pkgver=4.1.0
-pkgrel=7
+pkgver=4.1.1
+pkgrel=1
 pkgdesc='Fedora Media Writer is a tool that helps users put Fedora (and custom) images on their portable drives such as flash disks.'
 arch=('x86_64')
 url="https://github.com/${_author}/${_pkgname}"
@@ -14,7 +14,7 @@ depends=('qt5-base' 'qt5-imageformats' 'qt5-tools' 'qt5-declarative' 'qt5-graphi
 optdepends=('udisks2: Disk Management Service for disk installation' 'storaged: LVM DBus add-on for udisks for disk installation')
 makedepends=('transifex-client')
 source=("https://github.com/${_author}/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('18003b21dfb966d186c10fdddf92581f0576c5cabfe080daf16d4d98cb23b147')
+sha256sums=('91e92f28915eb344e1117dd2db613dbc9eeb389b578920607c3e5ea2191aa261')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
