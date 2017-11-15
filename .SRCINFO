@@ -4,7 +4,6 @@ pkgbase = vuze-extreme-mod
 	pkgrel = 1
 	url = http://www.sb-innovation.de/f41/
 	install = vuze-extreme-mod.install
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = desktop-file-utils

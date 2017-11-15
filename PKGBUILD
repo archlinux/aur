@@ -9,7 +9,7 @@ pkgver=5.7.5.0
 _ver=5750
 pkgrel=1
 pkgdesc="A modded version of the Vuze BitTorrent client with multiple spoofing capabilities"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.sb-innovation.de/f41/"
 license=('GPL')
 depends=('desktop-file-utils' 'java-runtime')
@@ -35,38 +35,31 @@ md5sums=('fb8f224700331de86caa8648418fb41b'
          'db19086ba7bd8eefee05538f4c65aa68')
 
 package() {
-  # Remove previous mod
   rm -rf VPEM_*
-  
-  # Cd in place
   cd vuze
 
   msg2 "Creating directory structure..."
-  install -d "$pkgdir"/opt/vuze-extreme-mod/
+  install -d "$pkgdir"/opt/$pkgname/
   install -d "$pkgdir"/usr/bin/
   install -d "$pkgdir"/usr/share/applications/
-  install -d "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
+  install -d "$pkgdir"/usr/share/licenses/$pkgname/
   install -d "$pkgdir"/usr/share/pixmaps/
 
   msg2 "Moving stuff in place..."
   # Launcher
-  mv vuze "$pkgdir"/usr/bin/vuze-extreme-mod
+  mv vuze "$pkgdir"/usr/bin/$pkgname
 
   # swt.jar
-  case "$CARCH" in
-    i686)   mv swt/swt32.jar "$pkgdir"/opt/vuze-extreme-mod/swt.jar ;;
-    x86_64) mv swt/swt64.jar "$pkgdir"/opt/vuze-extreme-mod/swt.jar ;;
-  esac
+  mv swt/swt64.jar "$pkgdir"/opt/$pkgname/swt.jar
 
   # Icon and desktop 
-  mv vuze.png "$pkgdir"/usr/share/pixmaps/vuze-extreme-mod.png
-  mv vuze.desktop "$pkgdir"/usr/share/applications/vuze-extreme-mod.desktop
+  mv vuze.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  mv vuze.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 
   # Licenses
-  mv GPL.txt      "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
-  mv GPLv3.txt    "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
-  mv LICENSES.txt "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
-  mv TOS.txt      "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
+  for i in GPL.txt GPLv3.txt LICENSES.txt TOS.txt; do
+    mv $i "$pkgdir"/usr/share/licenses/$pkgname/
+  done
 
   msg2 "Removing redundancies..."
   rm -r swt/
@@ -76,22 +69,21 @@ package() {
   rm    vuze.schemas
 
   msg2 "Installing to /opt..."
-  mv * "$pkgdir"/opt/vuze-extreme-mod/
+  mv * "$pkgdir"/opt/$pkgname/
 
   msg2 "Fixing paths..."
-  sed 's|#PROGRAM_DIR=.*|PROGRAM_DIR="/opt/vuze-extreme-mod"|' \
-      -i "$pkgdir"/usr/bin/vuze-extreme-mod
+  sed -i "s|#PROGRAM_DIR=.*|PROGRAM_DIR=\"/opt/$pkgname\"|" "$pkgdir"/usr/bin/$pkgname
 
   msg2 "Adding support for magnet links..."
-  sed -r -e 's|Name=Vuze|Name=Vuze Extreme Mod|' \
-         -e 's|Exec=vuze %f|Exec=vuze-extreme-mod %U|' \
-         -e 's|Icon=vuze.png|Icon=vuze-extreme-mod.png|' \
-         -e 's|(x-bittorrent)|\1;x-scheme-handler/magnet;|' \
-      -i "$pkgdir"/usr/share/applications/vuze-extreme-mod.desktop
+  sed -r -e "s|Name=Vuze|Name=Vuze Extreme Mod|" \
+         -e "s|Exec=vuze %f|Exec=$pkgname %U|" \
+         -e "s|Icon=vuze.png|Icon=$pkgname.png|" \
+         -e "s|(x-bittorrent)|\1;x-scheme-handler/magnet;|" \
+         -i "$pkgdir"/usr/share/applications/$pkgname.desktop
 
   msg2 "Installing Extreme Mod..."
   bsdtar -xf "$srcdir"/$(basename ${source[1]})
-  mv "$srcdir"/vuze/VPEM_*/* "$pkgdir"/opt/vuze-extreme-mod/
+  mv "$srcdir"/vuze/VPEM_*/* "$pkgdir"/opt/$pkgname/
 
   # Different icons for menus and systray
   if [[ $_icon = blue ]] || [[ $_icon = gray ]]; then
@@ -99,10 +91,9 @@ package() {
 
     # Menus
     cd "$srcdir"
-    install -m644 ${_icon}_128.png "$pkgdir"/usr/share/pixmaps/vuze-extreme-mod.png
+    install -m644 ${_icon}_128.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
 
-    ## Systray
-    # Extract Azureus2.jar from Extreme Mod tarball
+    # Extract .jar
     install -d tmp/
     bsdtar -xf $(basename ${source[1]}) Azureus2.jar
     bsdtar -xf Azureus2.jar -C tmp/
@@ -112,11 +103,11 @@ package() {
       install -m644 ${_icon}_${i}.png tmp/org/gudy/azureus2/ui/icons/a${i}.png
     done
 
-    # Recreate Azureus2.jar
+    # Recreate .jar
     cd tmp
     jar cf Azureus2.jar ./*/
 
     # Install
-    install -m644 Azureus2.jar "$pkgdir"/opt/vuze-extreme-mod/
+    install -m644 Azureus2.jar "$pkgdir"/opt/$pkgname/
   fi
 }
