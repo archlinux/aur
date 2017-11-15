@@ -1,0 +1,15 @@
+pkgbase = uhasselt-print-canon
+	pkgdesc = CUPS driver for the Canon iR ADV C5540i
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.canon-europe.com/support/products/imagerunner/imagerunner-advance-c5045.aspx?type=drivers&language=EN&os=LINUX
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = p7zip
+	depends = cups
+	source = data.dmg::http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNzU4MjA4&cmp=ABX&lang=EN
+	sha512sums = 59f17c45e99cec7399aa916b90fee99fbac8269712e3fdbaf9789fe6fa890d6736a13f6c47c0051db4c72f30c4a27ff170d99255ccabc71f878eaea648596294
+
+pkgname = uhasselt-print-canon
+
