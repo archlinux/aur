@@ -15,7 +15,7 @@ pkgrel=2
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL2")
-arch=('i686' 'x86_64')
+arch=('x86_64')
 makedepends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd'
 'systemd' 'pam' 'libnm-glib' 'python' 'ruby' 'mariadb' 'python-setuptools')
 depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 'pam')
