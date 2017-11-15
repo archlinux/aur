@@ -1,7 +1,7 @@
 pkgbase = ttf-google-fonts-git
 	pkgdesc = TrueType fonts from the Google Fonts project (git version)
 	pkgver = r1212.a16b8302
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/google/fonts
 	arch = any

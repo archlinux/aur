@@ -10,46 +10,76 @@
 
 pkgname=ttf-google-fonts-git
 pkgver=r1212.a16b8302
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
-arch=(any)
+arch=('any')
 url="https://github.com/google/fonts"
 license=('custom:SIL Open Font License' 'custom:Ubuntu Font License v1.0')
 
-depends=(fontconfig
-         xorg-mkfontdir
-         xorg-mkfontscale
-         xorg-fonts-encodings
-         noto-fonts
-         noto-fonts-extra
-         ttf-fira-sans
-         ttf-fira-mono
-         ttf-ubuntu-font-family
-         ttf-croscore
-         ttf-roboto
-         ttf-inconsolata
-         cantarell-fonts
-         ttf-merriweather
-         ttf-merriweather-sans
-         ttf-opensans
-         ttf-oswald
-         ttf-quintessential
-         ttf-signika)
-makedepends=(git)
-conflicts=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
-           lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
-           ttf-lato
-           ttf-lora-cyrillic ttf-lekton ttf-medievalsharp
-           ttf-nova ttf-oxygen
-           ttf-oxygen-git ttf-pt-fonts ttf-roboto-mono
-           ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx ttf-vollkorn-ibx ttf-arabeyes-fonts)
-provides=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
-          lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
-          ttf-lato
-          ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-nova ttf-oxygen
-          ttf-oxygen-git ttf-pt-fonts ttf-roboto-mono
-          ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx ttf-vollkorn-ibx)
+depends=('fontconfig'
+         'xorg-mkfontdir'
+         'xorg-mkfontscale'
+         'xorg-fonts-encodings'
+         'noto-fonts'
+         'noto-fonts-extra'
+         'ttf-fira-sans'
+         'ttf-fira-mono'
+         'ttf-ubuntu-font-family'
+         'ttf-croscore'
+         'ttf-roboto'
+         'ttf-inconsolata'
+         'cantarell-fonts'
+         'ttf-merriweather'
+         'ttf-merriweather-sans'
+         'ttf-opensans'
+         'ttf-oswald'
+         'ttf-quintessential'
+         'ttf-signika')
+makedepends=('git')
+conflicts=('adobe-source-code-pro-fonts'
+           'adobe-source-sans-pro-fonts'
+           'jsmath-fonts'
+           'lohit-fonts'
+           'ttf-andika'
+           'ttf-anonymous-pro'
+           'ttf-cardo'
+           'ttf-comfortaa'
+           'ttf-lato'
+           'ttf-lora-cyrillic'
+           'ttf-lekton'
+           'ttf-medievalsharp'
+           'ttf-nova'
+           'ttf-oxygen'
+           'ttf-oxygen-git'
+           'ttf-pt-fonts'
+           'ttf-roboto-mono'
+           'ttf-sil-fonts'
+           'ttf-source-code-pro-ibx'
+           'ttf-source-sans-pro-ibx'
+           'ttf-vollkorn-ibx'
+           'ttf-arabeyes-fonts')
+provides=('adobe-source-code-pro-fonts'
+          'adobe-source-sans-pro-fonts'
+          'jsmath-fonts'
+          'lohit-fonts'
+          'ttf-andika'
+          'ttf-anonymous-pro'
+          'ttf-cardo'
+          'ttf-comfortaa'
+          'ttf-lato'
+          'ttf-lora-cyrillic'
+          'ttf-lekton'
+          'ttf-medievalsharp'
+          'ttf-nova'
+          'ttf-oxygen'
+          'ttf-oxygen-git'
+          'ttf-pt-fonts'
+          'ttf-roboto-mono'
+          'ttf-sil-fonts'
+          'ttf-source-code-pro-ibx'
+          'ttf-source-sans-pro-ibx'
+          'ttf-vollkorn-ibx')
 source=(git+"${url}".git)
 sha512sums=('SKIP')
 
