@@ -13,7 +13,7 @@ pkgver=0.42
 _extradir=/usr/lib/modules/extramodules-4.9-lts
 pkgrel=21
 pkgdesc="Modules for ThinkPad's SMAPI functionality"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/evgeni/tp_smapi'
 license=('GPL')
 depends=('linux-lts>=4.9.59' 'linux-lts<4.10')
