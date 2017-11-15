@@ -9,7 +9,7 @@ _build=b15
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment (public release - end of support)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html'
 license=('custom')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
@@ -40,18 +40,14 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/psfont.properties.ja"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
-[[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJDK$_major.zip"
+#source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.tar.gz"
+source=('https://www.dropbox.com/s/77b7n7wkjzpzhfd/jre-7u80-linux-x64.tar.gz'
+        "http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJDK$_major.zip"
         "policytool-$_jname.desktop")
-#source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
-#source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.tar.gz")
-source_i686=('https://www.dropbox.com/s/omxrvt66z0calk6/jre-7u80-linux-i586.tar.gz')
-source_x86_64=('https://www.dropbox.com/s/77b7n7wkjzpzhfd/jre-7u80-linux-x64.tar.gz')
-md5sums=('c47e997b90ddfd0d813a37ccc97fb933'
+md5sums=('c0e01ae8683b2d8924ce79cd6ce6a691'
+         'c47e997b90ddfd0d813a37ccc97fb933'
          'db24e699517801b35343cc7ebc93ce88')
-md5sums_i686=('ff0f6847e51b6be5c241615a73043005')
-md5sums_x86_64=('c0e01ae8683b2d8924ce79cd6ce6a691')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
@@ -106,10 +102,7 @@ package() {
     done
 
     # Link NPAPI plugin
-    case "$CARCH" in
-        i686)   ln -sf $_jvmdir/lib/i386/libnpjp2.so  "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-        x86_64) ln -sf $_jvmdir/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-    esac
+    ln -sf $_jvmdir/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
