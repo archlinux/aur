@@ -4,7 +4,7 @@ pkgname=gtk-engines
 pkgver=2.21.0
 pkgrel=3
 pkgdesc="Theme engines for GTK+ 2"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=('GPL' 'LGPL')
 depends=('gtk2>=2.24.0')
 makedepends=('pkg-config' 'intltool' 'gnome-common' 'git')
