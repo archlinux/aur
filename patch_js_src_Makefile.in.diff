@@ -1,0 +1,19 @@
+diff -Naur mozjs-45.0.2-orig/js/src/Makefile.in mozjs-45.0.2/js/src/Makefile.in
+--- mozjs-45.0.2-orig/js/src/Makefile.in	2017-11-14 02:27:34.021241107 +0300
++++ mozjs-45.0.2/js/src/Makefile.in	2017-11-14 02:29:07.255550711 +0300
+@@ -175,10 +175,13 @@
+ SCRIPTS = $(JS_CONFIG_NAME)
+ SDK_BINARY = $(JS_CONFIG_NAME)
+ 
+-$(LIBRARY_NAME).pc: js.pc
++$(JS_CONFIG_NAME).pc: js.pc
+ 	cp $^ $@
+ 
+-install:: $(LIBRARY_NAME).pc
++$(JS_LIBRARY_NAME).pc: js.pc
++	cp $^ $@
++
++install:: $(JS_CONFIG_NAME).pc
+ 	$(SYSINSTALL) $^ $(DESTDIR)$(libdir)/pkgconfig
+ 
+ install:: js-config.h

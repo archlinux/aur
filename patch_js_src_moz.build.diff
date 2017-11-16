@@ -1,0 +1,17 @@
+diff -Naur mozjs-45.0.2-orig/js/src/moz.build mozjs-45.0.2/js/src/moz.build
+--- mozjs-45.0.2-orig/js/src/moz.build	2017-11-15 19:53:21.810535115 +0300
++++ mozjs-45.0.2/js/src/moz.build	2017-11-15 19:50:45.435537988 +0300
+@@ -66,7 +66,12 @@
+     'js.pc',
+ ]
+ 
+-if not CONFIG['JS_STANDALONE']:
++if CONFIG['JS_STANDALONE']:
++    DEFINES['IMPL_MFBT'] = True
++    USE_LIBS += [
++        'mfbt',
++    ]
++else:
+     CONFIGURE_SUBST_FILES += [
+         '../../config/autoconf-js.mk',
+         '../../config/emptyvars-js.mk',

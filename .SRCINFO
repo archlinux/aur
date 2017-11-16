@@ -1,7 +1,7 @@
 pkgbase = spidermonkey
 	pkgdesc = Mozilla's JavaScript engine
 	pkgver = 45.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://developer.mozilla.org/en/SpiderMonkey
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,12 @@ pkgbase = spidermonkey
 	conflicts = spidermonkey-git
 	source = https://ftp.mozilla.org/pub/spidermonkey/releases/45.0.2/mozjs-45.0.2.tar.bz2
 	source = patch_js_src_configure.diff
+	source = patch_js_src_Makefile.in.diff
+	source = patch_js_src_moz.build.diff
 	sha256sums = 570530b1e551bf4a459d7cae875f33f99d5ef0c29ccc7742a1b6f588e5eadbee
 	sha256sums = 4a3688e7232a9fef0d5c48edc7b28c918e878415af49572008eefc9aa709cdd7
+	sha256sums = 3b68b66cfe30fce81aa37e2ed21ffad517b88437b5cd1b18243b05fd1ab8d5db
+	sha256sums = 76ba065716684f35d79af6bbd81b746ee6a6f60824b4f45bff87ed67d9fc3bda
 
 pkgname = spidermonkey
 
