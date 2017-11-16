@@ -26,20 +26,18 @@ _use_MUQSS="yes"		# "yes":	Use MUQSS cpu scheduler.
 _use_KSM="no"		# "yes":	Enable Kernel SamePage Merging (KSM).
 			# "no":		Don't use Kernel SamePage Merging (KSM).
 
-_use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
-			# "no": Use normal 32-bit config
 ###########################################################################################################
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.13
-_minor=11
+_minor=13
 pkgver=${__basekernel}.${_minor}
-pkgrel=2
-lqxrel=2
+pkgrel=1
+lqxrel=1
 pkgbase=linux-lqx
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
 _lqxpatchname="${pkgver}-${lqxrel}.patch"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL2')
 url="http://liquorix.net/"
 
@@ -54,17 +52,13 @@ install='linux.install'
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
         "https://liquorix.net/sources/${_lqxpatchname}.gz"
-        "https://liquorix.net/sources/${__basekernel}/config.i386"
-        "https://liquorix.net/sources/${__basekernel}/config.i386-pae"
         "https://liquorix.net/sources/${__basekernel}/config.amd64"
         "linux.preset"
         "90-linux.hook")
 
 sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f3119aea6cbd7b61df30ca6ef3ec57044d524b7babbaabddf8b08b8bafa7d2'
             'SKIP'
-            '6b52b6858e5236fc59b64e8af651cc5cb8a57acea047b911b641e1709804dabf2b7c62430a89e5ff3604c3f890955df5642a6d8cddfe9b11321550667c9e79f8'
-            '66e6eb9d8e3ada51eecf08ee555d7ba0d3be8a9dec1f45882a2f6af2643193b3216e78f8dfb633087a634af3bcc24a60cc0fe9045086383b7b7d7d13d0545676'
-            '8a57f8fe8511607ad868493593fb772420fcca2d057b14d9ca8d171176367e7135c8bf4ef61dc7e54a3c3cb56d4608fe8a7a9240d647ea4517ad0a4e0e30a8e6'
+            'ba0fbdf8918b8fe7a2fc2420484bed42520ab22f36191561e58e2d84481694393f5b9bebaea83269039f4ee7505fc1f67e8190a3dd2ea4007d325a16a9873fa6'
             'd95da6a65c6f8e8c112d25e8b60acf5a7a07c698e13a37bd106c8c67908d92bfc86d354def7539698fddedfa67cda16383ae32538a64065aee98edfe247a7824'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22')
@@ -92,13 +86,7 @@ prepare() {
       exit 1
     fi         
   else
-    if [ "$CARCH" = "x86_64" ]; then
       cat ../config.amd64 >./.config
-    elif [ "${_use_32bit_pae}" = "yes" ]; then
-      cat ../config.i386-pae >./.config
-    else
-      cat ../config.i386 >./.config
-    fi
   fi
 
   if [ "${_kernelname}" != "" ]; then
@@ -248,10 +236,6 @@ local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
   install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
-
-  if [[ ${CARCH} = i686 ]]; then
-    install -t "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile_32.cpu
-  fi
 
   cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
 
