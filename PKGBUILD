@@ -5,7 +5,7 @@
 
 pkgname=aseprite
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
@@ -40,9 +40,13 @@ build() {
     -DUSE_SHARED_LIBLOADPNG=OFF \
     -DUSE_SHARED_TINYXML=ON \
     -DENABLE_UPDATER=OFF \
-    -DUSE_SHARED_FREETYPE=ON \
-    -DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
+    -DUSE_SHARED_FREETYPE=OFF \
     -DCMAKE_INSTALL_PREFIX:STRING=/usr ..
+
+  # TODO: Note that using the shared freetype library was disabled for aseprite v1.24 due to a missing header
+  # Double check if we can use the shared library later on to minimize package size
+  #-DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
+
   make $MAKEFLAGS
 }
 
