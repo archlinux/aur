@@ -1,0 +1,8 @@
+*.asc
+*.tgz
+*.pkg.tar.xz
+*.sig
+*.rpm
+logs/
+pkg/
+src/
