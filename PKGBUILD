@@ -10,7 +10,7 @@
 
 pkgname=ttf-google-fonts-git
 pkgver=r1212.a16b8302
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=('any')
@@ -99,7 +99,7 @@ package() {
                                     [open-sans]=1 [oswald]=1 [quintessential]=1)
 
   while IFS= read -rd '' file; do
-    font_family=$(fc-query -f '%{family[0]|downcase|translate( ,-)}\n' "$file" | sed -n '2p')
+    font_family=$(fc-query -f '%{family[0]|downcase|translate( ,-)}\n' "$file" | sed -n '1p')
 
     # NOTE: Skip the rest of the loop if we're not supposed to be touching this family
     ((omitted_font_families["$font_family"])) && continue
