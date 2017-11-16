@@ -1,14 +1,14 @@
 pkgbase = nodejs-redis-commander
 	pkgdesc = Redis web-based management tool written in node.js
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = http://joeferner.github.io/redis-commander/
 	arch = any
 	license = MIT
 	depends = nodejs
-	noextract = redis-commander-0.4.3.tgz
-	source = http://registry.npmjs.org/redis-commander/-/redis-commander-0.4.3.tgz
-	sha1sums = baf3165eeee512b8e409b98d2c0f5c22a94fc688
+	noextract = redis-commander-0.4.4.tgz
+	source = http://registry.npmjs.org/redis-commander/-/redis-commander-0.4.4.tgz
+	sha1sums = 463ee58f658744db1669b3a53a3c081723360979
 
 pkgname = nodejs-redis-commander
 
