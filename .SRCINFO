@@ -27,9 +27,7 @@ pkgname = jack2-git
 	depends = libffado
 	optdepends = python2: jack_control
 	provides = jack
-	provides = jackmp
-	provides = jackdmp
-	provides = jackdbus
+	provides = jack2
 	conflicts = jack
 
 pkgname = jack2-dbus-git
@@ -41,9 +39,6 @@ pkgname = jack2-dbus-git
 	optdepends = python2: jack_control
 	provides = jack
 	provides = jack2
-	provides = jackmp
-	provides = jackdmp
-	provides = jackdbus
 	conflicts = jack
 	conflicts = jack2
 
