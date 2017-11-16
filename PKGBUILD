@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=arch-upgrade
-pkgver=1.9
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 pkgdesc="Desktop app to upgrade your Arch Linux system"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
@@ -10,7 +10,7 @@ depends=("curl" "python-html2text" "python-unidecode")
 backup=("etc/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 install=install.sh
-md5sums=('5573f62cf0dd586608f6217d25c3b3a1')
+md5sums=('d15cf3b3f8ac208446f8f8e8e4b58902')
 
 package() {
   cd "$pkgname-$pkgver"
