@@ -1,7 +1,7 @@
 # Maintainer: Alexis Couronne <alexis@skitoo.net>
 
 # I maintain this on Github, feel free to submit a pull request to
-# https://github.com/skitoo/magicavoxel-archlinux.git
+# https://github.com/skitoo/magicavoxel-archlinux
 
 pkgname=magicavoxel
 pkgver=0.98.2
