@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x)"
 url="http://psi-plus.com"
 license=('GPL2')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5'
 	 'libidn' 'aspell' 'libxss' 'qt5-svg')
 makedepends=('git' 'patch' 'qconf-git')
