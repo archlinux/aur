@@ -1,4 +1,5 @@
-# Maintainer: Tasos Latsas < tlatsas2000 at gmail dot com >
+# Maintainer: Alexandre Moine < nobrakal at cthugha dot org >
+# Contributor: Tasos Latsas < tlatsas2000 at gmail dot com >
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: arjan <arjan@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
@@ -6,33 +7,38 @@
 
 pkgname=tuxmath
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An arcade game that helps kids practice their math facts"
 arch=('i686' 'x86_64')
 url="http://tux4kids.alioth.debian.org/tuxmath/"
-license=('GPL' 'custom')
-depends=('t4k_common')
+license=('GPL' 'custom:OFL' 'custom')
+depends=('t4kcommon')
 makedepends=('make')
 options=('!docs')
-source=(http://distro.ibiblio.org/slitaz/sources/packages/t/${pkgname}_w_fonts-$pkgver.tar.gz)
-sha1sums=('74510bc342d6cefb6dae101cfc8c1207f29d7db9')
+source=(https://github.com/tux4kids/$pkgname/archive/upstream/$pkgver.tar.gz)
+sha256sums=('ab91bd6df17eb9377e5608701030bd32110a3588933bf0e4c26b5697fb2a4698')
 
 build() {
-  cd "$srcdir/${pkgname}_w_fonts-$pkgver"
+  cd "$srcdir/${pkgname}-upstream-$pkgver"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname}_w_fonts-$pkgver"
+  cd "$srcdir/${pkgname}-upstream-$pkgver"
 
   make DESTDIR=$pkgdir install
 
   # install .desktop file and icons
   mkdir -p $pkgdir/usr/share/{applications,pixmaps}
-  install -D -m644 tuxmath.desktop $pkgdir/usr/share/applications/tuxmath.desktop
-  install -D -m644 data/images/icons/icon.png $pkgdir/usr/share/pixmaps/tuxmath.png
+  install -D -m644 tuxmath.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -D -m644 data/images/icons/icon.png $pkgdir/usr/share/pixmaps/$pkgname.png
+
+  # Install doc
+  mkdir -p $pkgdir/usr/share/doc/$pkgname
+  install -D -m644 doc/README \
+   $pkgdir/usr/share/doc/$pkgname/README
 
   # install licenses
   install -D -m644 doc/OFL \
