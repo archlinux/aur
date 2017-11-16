@@ -1,9 +1,10 @@
 # Maintainer: Josef Vybíhal (josef.vybihal@gmail.com)
 # Note: My first PKGBUILD ever, bare with me :) I have been inpired a lot in other PKGBUILDs, like google-chrome's one.
+# Release notes: https://support.google.com/webdesigner/topic/6350071?hl=en&ref_topic=3249465
 
 pkgname=google-webdesigner
-pkgver=1.9.0.0619
-pkgrel=3
+pkgver=2.0.0.1113
+pkgrel=1
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
 url="https://www.google.com/webdesigner"
@@ -17,7 +18,7 @@ _source_arch="i386"
 [ "${CARCH}" = 'x86_64' ] && _source_arch="amd64"
 #[ "${CARCH}" = 'i686' ] && md5sums[0]='04ab693e6baa641ebcbdcc9512d4f57e' # i686 not tested by me
 source=("google-webdesigner_current_${_source_arch}.deb::https://dl.google.com/linux/direct/google-webdesigner_current_${_source_arch}.deb")
-sha256sums=('ce740c944f46ba025bd9abf52c75f239680b5b6c137b0fc9b1bbea59cb17b1a0')
+sha256sums=('e318e1b4a4595cd513834e712da3e072ac06ec673c4e1c421892bb88d2d763bf')
 
 package() {
   msg2 "Extracting the data.tar.xz"
