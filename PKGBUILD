@@ -1,15 +1,15 @@
 # Maintainer: Boris Timofeev <mashin87@gmail.com>
 pkgname=punes
-pkgver=0.100
+pkgver=0.101
 pkgrel=1
 epoch=
 pkgdesc="Nintendo Entertaiment System emulator"
 arch=('i686' 'x86_64')
-url="http://forums.nesdev.com/viewtopic.php?t=6928"
+url="https://github.com/punesemu/puNES"
 license=('GPL2')
 groups=()
 depends=('sdl' 'qt5-base' 'alsa-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'nvidia-cg-toolkit')
-makedepends=('autoconf-archive')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
@@ -22,7 +22,7 @@ changelog=
 source=("https://github.com/punesemu/puNES/archive/v$pkgver.tar.gz")
 noextract=()
 
-md5sums=('f4659d85e3f5d1b53b9ee5574eedd871')
+md5sums=('d61094156c239c3cca299e1d22245e31')
 
 build() {
   cd "$srcdir/puNES-$pkgver"
