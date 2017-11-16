@@ -2,13 +2,11 @@
 # Contributor: Mohammad Alsaleh <msal@tormail.org>
 # Maintainer: Steven Allen <steven@stebalien.com>
 
-_date(){
-  date +%Y-%m-%d
-}
+
+_date=2017-11-16
 pkgname=rust-nightly-bin
-pkgver=1.23.0_2017.11.14
+pkgver=1.23.0_2017.11.15
 pkgrel=1
-_date=2017-11-15
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
 url='https://www.rust-lang.org/'
@@ -21,12 +19,13 @@ source=("rust-nightly-${_date}-${CARCH}-unknown-linux-gnu.tar.gz.asc::https://st
 )
 
 sha256sums=('SKIP'
-            '04661794b17c8a0d195bceb5d9ebf30f4ec5cff18af4d962a2abc59ffa600d9f')
+            'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE')
 options=(staticlibs !strip)
 
 pkgver() {
   cd ${srcdir}/rust-nightly-${CARCH}-unknown-linux-gnu
+  _date=$(date +%Y-%m-%d)
   ver="$(expr "$(cat version)" : '\(.*\)-nightly')"
   date="$(expr "$(cat version)" : '.* \(.*\))')"
   echo "${ver}_${date//\-/.}"
