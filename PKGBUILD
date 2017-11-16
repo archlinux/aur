@@ -3,7 +3,7 @@
 
 pkgname=transmission-remote-gui-qt4
 _pkgname=transgui
-pkgver=5.10.0
+pkgver=5.11.0
 pkgrel=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ provides=(transmission-remote-gui)
 conflicts=(transmission-remote-gui-gtk2 transmission-remote-gui-svn transmission-remote-gui)
 source=(https://github.com/leonsoft-kras/transmisson-remote-gui/archive/v${pkgver}.zip
         ${_pkgname}.desktop)
-md5sums=('4c31bffce89cad97ccac18eb3918f8ef'
+md5sums=('32a23925642f7e7eea5f38aae54de0a2'
          'c0504cb6d4e970892ac7be9206c787b5')
 _ws=qt
 
