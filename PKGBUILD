@@ -1,15 +1,15 @@
 # Maintainer: Kelsey Maes <kelseymaes at outlook dot com>
 pkgname=python-adal
-pkgver=0.4.5
+pkgver=0.4.7
 pkgrel=1
 pkgdesc='ADAL for Python'
 arch=('any')
 url="https://github.com/AzureAD/azure-activedirectory-library-for-python"
 license=('MIT')
 depends=('python-cryptography' 'python-dateutil' 'python-pyjwt' 'python-requests')
-source=("https://github.com/AzureAD/azure-activedirectory-library-for-python/archive/0.4.5.tar.gz")
+source=("https://github.com/AzureAD/azure-activedirectory-library-for-python/archive/${pkgver}.tar.gz")
+md5sums=('4b48343e0d67dc02461450dde9ecd070')
 makedepends=('python-setuptools')
-md5sums=('fbd16b5888d775e7c4a38de704b7f2ff')
 
 build() {
   cd "azure-activedirectory-library-for-python-$pkgver"

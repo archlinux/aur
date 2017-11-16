@@ -1,6 +1,6 @@
 pkgbase = python-adal
 	pkgdesc = ADAL for Python
-	pkgver = 0.4.5
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/AzureAD/azure-activedirectory-library-for-python
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-adal
 	depends = python-dateutil
 	depends = python-pyjwt
 	depends = python-requests
-	source = https://github.com/AzureAD/azure-activedirectory-library-for-python/archive/0.4.5.tar.gz
-	md5sums = fbd16b5888d775e7c4a38de704b7f2ff
+	source = https://github.com/AzureAD/azure-activedirectory-library-for-python/archive/0.4.7.tar.gz
+	md5sums = 4b48343e0d67dc02461450dde9ecd070
 
 pkgname = python-adal
 
