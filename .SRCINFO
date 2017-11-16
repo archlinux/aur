@@ -1,10 +1,11 @@
 pkgbase = amar-installer
 	pkgdesc = Install AMAR repository
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tuxnvape.fr/
 	arch = x86_64
 	license = GPL3
+	depends = gksu
 	depends = tk
 	depends = python-pillow
 	source = amar.py

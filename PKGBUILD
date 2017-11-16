@@ -2,12 +2,12 @@
 
 pkgname=amar-installer
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Install AMAR repository"
 arch=('x86_64')
 license=('GPL3')
 url="https://www.tuxnvape.fr/"
-depends=('tk' 'python-pillow')
+depends=('gksu' 'tk' 'python-pillow')
 source=("amar.py"
         "amar.png"
         "amar.desktop")
