@@ -7,7 +7,8 @@ index 7a534c9..245eeb4 100644
  # Compiler Settings
  OUTPUT = ctrtool
 -CXXFLAGS = -I.
-+CXXFLAGS = -O2 -Wall -I.
- CFLAGS = -O2 -Wall -Wno-unused-variable  -Wno-unused-result -I. -std=c99
+-CFLAGS = -O2 -Wall -Wno-unused-variable  -Wno-unused-result -I. -std=c11
++CXXFLAGS = -O2 -Wall -I. -fPIC
++CFLAGS = -O2 -Wall -Wno-unused-variable  -Wno-unused-result -I. -std=c11 -fPIC
  CC = gcc
  CXX = g++

@@ -1,13 +1,13 @@
 # Maintainer: angelsl
 pkgbase=projectctr-git
 pkgname=('projectctr-ctrtool-git' 'projectctr-makerom-git')
-pkgver=1487357388.7dcc166
+pkgver=1509277700.bbd9a90
 pkgrel=1
 pkgdesc="Project CTR tools"
 arch=('i686' 'x86_64')
 url="https://github.com/profi200/Project_CTR"
 license=('MIT')
-sha256sums=('SKIP' 'be54e068b07532b7b0972a93d4a61da99fc947063664574ff93df8267c49da35')
+sha256sums=('SKIP' '2b9f4fed8e35d271b06a1901668210f7f622e1e769f229711d9370b2d501fed2')
 
 _gitroot='https://github.com/profi200/Project_CTR.git'
 _gitname='pctr'
