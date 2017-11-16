@@ -3,7 +3,6 @@ pkgbase = krusader-git
 	pkgver = 2.6.1.beta.r5714.ga55ed0de
 	pkgrel = 1
 	url = http://www.krusader.org
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
