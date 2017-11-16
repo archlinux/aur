@@ -1,7 +1,7 @@
 # Maintainer: Bachir Soussi Chiadmi (scbh at g-u-i dot me)
 pkgname=nodebox
-pkgver=3.0.44
-tag="579ef04883e192f85b76b532883cb135f1fb684d"
+pkgver=3.0.50
+tag="15464085e8ab519b4f63220c23c9cde1dcf9851c"
 pkgrel=1
 pkgdesc="Node-based software application for generative design."
 arch=('any')
