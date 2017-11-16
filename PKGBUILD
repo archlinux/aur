@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=src
-pkgver=1.15
+pkgver=1.17
 pkgrel=1
 pkgdesc="Simple Revision Control with modern UI for single-file projects"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'rcs')
 optdepends=('rcs-fast-import: required for src fast-import'
             'sccs: alternative backend')
 source=("$url$pkgname-$pkgver.tar.gz")
-sha512sums=('e2cde2fbab63e7222faace2aed3fde3455b89e46c222dc78045e7dd9d81ab455b19ef48a3da4d92cdd491899e149accdf2a3217b17d2e686460d06e58f490849')
+sha512sums=('d22671d82ab103ef6cfc4d47d05491d99c4502d7c37f6321ad2f4e16de997c48e88c17e222c2c214b9df44847e15f73db3e5cd57bea52bf4235766afca7d8d97')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
