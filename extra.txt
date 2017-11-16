@@ -1,0 +1,7 @@
+-XX:+UseStringDeduplication
+-XX:+DisableExplicitGC
+-Xmx2G
+-Xms2G
+-XX:+UseParallelGC
+-XX:+UseParallelOldGC
+

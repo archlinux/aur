@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# $Id: projectx 5338 2009-10-22 21:55:03Z dhoover $
+#
+# Runs the Spiral Knights game updater/launcher.
+
+INSTDIR=`dirname $0`
+
+echo "Using INSTDIR=$INSTDIR"
+
+# do our best to locate the appropriate version of Java
+# JAVA=java
+# if [ -x $INSTDIR/java/bin/java ]; then
+#     JAVA=$INSTDIR/java/bin/java
+# elif [ -x $JAVA_HOME/bin/java ]; then
+#     JAVA=$JAVA_HOME/bin/java
+# fi
+
+# use custom java32
+JAVA="java32"
+
+echo "Using JAVA=$JAVA"
+
+# run the updater/launcher
+$JAVA $* -jar $INSTDIR/getdown-pro.jar $INSTDIR
+
+echo "Finished"
+

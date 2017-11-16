@@ -1,0 +1,27 @@
+pkgbase = spiral-knights-steam
+	pkgdesc = Spiral Knights Linux client with Steam support
+	pkgver = 1
+	pkgrel = 1
+	url = https://store.steampowered.com/app/99900/Spiral_Knights/
+	arch = x86_64
+	license = unknown
+	depends = xdg-utils
+	depends = bin32-jre
+	depends = steam
+	source = spiral-knights.desktop
+	source = spiral-knights.png
+	source = steam_appid.txt
+	source = libsteam_api.so
+	source = extra.txt
+	source = spiral32
+	sha512sums = b45f60b9a257d0a1aa4593bdb73b9454b467eef6f588225d5d7188be5a06db2254ba61b6e4ef8f7f61f65dc5949f9c2836623bdce905204b9b93d0e253395248
+	sha512sums = 08d5165d510755ea84ebe189803dbf66e50efd0c5b35d92b48a164f593544bce85b2852e24a41d218c733116e93994e315cafa677b8dc62d2d163a35687c52d8
+	sha512sums = 35b91557cb0c4521833bb181ad344e64364e524597d91c0533df4c974254039ca6f63d45936c75fdc3383d91b901fab5639d1c62c3729c357f186ca43ef32a73
+	sha512sums = 99924737fc91a2634cf301a4a1d5b4f2885f813ef80988af5a537d34f2a893f8f7efd5d30b30ae0b70de6a717fa6d239af4253c299a898641c8215491d5ffc93
+	sha512sums = 72b523346ebe40b603245eeeada75002d1889c32f9d738c18d556a710f5cdb97e393317957097c14dd06a3d099b1183a443b072a13c6b43e7a02202e19a33e7d
+	sha512sums = 4d392dbe03b0e3822a87b2a45de57383957d68f0512e201d3a1e3f44362594fec9e4e8031c422653472218fa23a8ffb6189cd6c8beb7e8ad4c7056b6ab1bcf36
+	source_x86_64 = https://github.com/liberodark/Spiral-Knights/releases/download/1.0.0/spiral.tar.gz
+	sha512sums_x86_64 = 818b8f4ff61b2cbd98ffcd9962771fd383860285d31f54e6b057c3244e056ac986e930324c0e0afe924017658badfdde423062e291161b79803811ef226e832e
+
+pkgname = spiral-knights-steam
+

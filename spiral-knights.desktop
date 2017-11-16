@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Spiral Knights
+Exec=/opt/spiral-knights-steam/spiral32
+Icon=spiral-knights.png
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Application;
