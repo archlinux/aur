@@ -2,7 +2,7 @@
 
 pkgname=php-zookeeper
 _extname=zookeeper
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="PHP extension for interfacing with Apache ZooKeeper"
 arch=("i686" "x86_64")
@@ -29,4 +29,4 @@ package() {
 	install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
 }
 
-sha256sums=('701cfcc2a6b611e001940f6be323e9322085e1ea7386a3091c49e475e8855476')
+sha256sums=('de319a28534485f13e4b84db6cb2e5abf41c1549653caf65276fa87dc391b2a9')

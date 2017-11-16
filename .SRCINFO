@@ -1,6 +1,6 @@
 pkgbase = php-zookeeper
 	pkgdesc = PHP extension for interfacing with Apache ZooKeeper
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/php-zookeeper/php-zookeeper
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = php-zookeeper
 	depends = php
 	depends = libzookeeper
 	backup = etc/php/conf.d/zookeeper.ini
-	source = http://pecl.php.net/get/zookeeper-0.3.0.tgz
-	sha256sums = 701cfcc2a6b611e001940f6be323e9322085e1ea7386a3091c49e475e8855476
+	source = http://pecl.php.net/get/zookeeper-0.4.0.tgz
+	sha256sums = de319a28534485f13e4b84db6cb2e5abf41c1549653caf65276fa87dc391b2a9
 
 pkgname = php-zookeeper
 
