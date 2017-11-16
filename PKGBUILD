@@ -7,7 +7,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/mi-g/vdhcoapp"
 license=('GPL2')
 groups=()
-makedepends=('npm' 'gulp')
 depends=()
 source=("firefox-net.downloadhelper.coapp.json"
         "chrome-net.downloadhelper.coapp.json")
@@ -37,7 +36,6 @@ package() {
   install chrome-net.downloadhelper.coapp.json -m 0644 ${pkgdir}/etc/chromium/native-messaging-hosts/net.downloadhelper.coapp.json
 
   mkdir -p ${pkgdir}/usr/bin
-  mkdir -p ${pkgdir}/usr/share/${pkgname}
 
   cd ${srcdir}/net.downloadhelper.coapp-${pkgver}
 
