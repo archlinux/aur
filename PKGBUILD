@@ -2,12 +2,12 @@
 
 pkgname=correctpony
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Passphrase generator based on http://xkcd.com/936/"
 arch=('any')
 url="https://github.com/maandree/correctpony"
 license=('AGPL3')
-depends=('java-runtime>=6' 'argparser-java')
+depends=('java-runtime-headless>=6' 'argparser-java')
 makedepends=('java-environment>=6' 'argparser-java' 'make' 'sed' 'coreutils' 'auto-auto-complete' 'texinfo' 'gzip')
 provides=('correctpony')
 conflicts=('correctpony')
