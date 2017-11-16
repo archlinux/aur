@@ -1,0 +1,14 @@
+pkgbase = vdhcoapp
+	pkgdesc = Companion application for Video DownloadHelper browser add-on.
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/mi-g/vdhcoapp
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = https://github.com/mi-g/vdhcoapp/archive/v1.0.7.tar.gz
+	md5sums = f1e2ca2339beb49224da807155eccede
+	sha1sums = 6bf5213c8c0cd81a29ed88bdde3dc90d54d3278d
+
+pkgname = vdhcoapp
+

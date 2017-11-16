@@ -1,0 +1,17 @@
+{
+	"name": "net.downloadhelper.coapp",
+	"description": "Video DownloadHelper companion app",
+	"path": "/usr/bin/net.downloadhelper.coapp-linux",
+	"type": "stdio",
+	"allowed_origins": [
+		
+			
+			"chrome-extension://ocgbelnknlgoiofcepicgpicjibclfdg/"
+		
+			,
+			"chrome-extension://lpheobkpibijgligoklmllibbbdhfghg/"
+		
+			,
+			"chrome-extension://amnobfikmbfolbaeeadnkcppghfdjeke/"
+		]
+}
