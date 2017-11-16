@@ -92,7 +92,7 @@ package_jack2-git() {
   depends=('libsamplerate' 'opus' 'celt' 'libffado')
   optdepends=('python2: jack_control')
   conflicts=('jack')
-  provides=('jack' 'jackmp' 'jackdmp' 'jackdbus')
+  provides=('jack' 'jack2')
 
   cd "$srcdir/$_gitname"
 
@@ -117,7 +117,7 @@ package_jack2-dbus-git() {
   depends=('libsamplerate' 'celt' 'opus' 'libffado')
   optdepends=('python2: jack_control')
   conflicts=('jack' 'jack2')
-  provides=('jack' 'jack2' 'jackmp' 'jackdmp' 'jackdbus')
+  provides=('jack' 'jack2')
 
   cd "$srcdir/$_gitname-dbus"
 
