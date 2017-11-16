@@ -2,9 +2,9 @@ _basename='firefox-developer'
 _locale='fi'
 _srcurl='https://download-installer.cdn.mozilla.net/pub/devedition/releases'
 pkgname="${_basename}-${_locale,,}"
-pkgdesc='Standalone web browser from mozilla.org, developer build - Finnish'
+pkgdesc='Firefox Developer Edition is the blazing fast browser that offers cutting edge developer tools and latest features like CSS Grid support and framework debugging - Finnish'
 url="https://www.mozilla.org/${_locale}/firefox/developer/"
-pkgver='57.0b14'
+pkgver='58.0b4'
 pkgrel='1'
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -13,8 +13,8 @@ source_i686=("${pkgname}_${pkgver}_i686.tar.bz2::${_srcurl}/${pkgver}/linux-i686
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.bz2::${_srcurl}/${pkgver}/linux-x86_64/${_locale}/firefox-${pkgver}.tar.bz2")
 sha512sums=('9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-sha512sums_i686=('2b8fea1ec3f317fb4bfa85fbe8276e6a096b419b2fd7e2abb23bfc33461c6e6fa5290c604e1096f673d872889872da632a15504c1ffe6cde38a1f69646c732de')
-sha512sums_x86_64=('68f87984b0128ee4395f6a088cb8a9706eac9821f24307f7befe1caf77eb425cbb919331a8a4f9288bce9e884bb7173d451f3bca3bf9c66ab9e5d06118e9c106')
+sha512sums_i686=('8e4befad6924531e976011cabad34fdcabce459249729486dfd9947121dcd75d3f48ed11b90e262eed94e04c5367bdfd7a7d69191b2e81dba7431995c561b21a')
+sha512sums_x86_64=('d029e5d281e2a0d0447c7953c17f576ffe118cdc66e3087903a02e97b2cfc2f115f15338cdb4d86a7daa13eb959ceca92026bec2c1eb36128b92fe32c65f171c')
 
 provides=("${_basename}")
 conflicts=("${_basename}")
