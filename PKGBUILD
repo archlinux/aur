@@ -5,7 +5,7 @@
 
 pkgname=aseprite
 pkgver=1.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
@@ -61,6 +61,10 @@ package() {
   install -Dm644 "../EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
   # WARNING: fix for upstream including gtest and cmark in "make install"
   rm -rf "$pkgdir/usr/include" "$pkgdir/usr/lib" "$pkgdir/usr/share/man" "$pkgdir/usr/bin/cmark"
+
+  # Remove conflicting files with libarchive
+  # TODO: With the current compilation options, looks like aseprite build process builds these binaries. Disable the compilation of the following files later on:
+  rm -f "$pkgdir/usr/bin/"{bsdcat,bsdcpio,bsdtar}
 }
 
 # vim:set ts=2 sw=2 et:
