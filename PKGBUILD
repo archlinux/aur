@@ -1,16 +1,17 @@
-# Maintainer: Martin Minka <https://github.com/k2s>
+# Maintainer: Popolon <popolon@popolon.org>
+# Contributor: Martin Minka <https://github.com/k2s>
 # Contributor: migerh <https://github.com/migerh>
 # Submitter: hollunder <murks at tuxfamily dot org>
 
 pkgname=wxlua-svn
 _pkgname=wxlua
 pkgver=252
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of bindings to the wxWidgets library for the Lua programming language - svn version"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'armv8')
 url="http://wxlua.sourceforge.net"
 license=('custom:wxWindows')
-depends=('desktop-file-utils' 'wxgtk' 'webkitgtk2' 'lua52')
+depends=('desktop-file-utils' 'wxgtk' 'webkit2gtk' 'lua52')
 makedepends=('subversion' 'cmake')
 provides=('wxlua' 'wxstedit')
 conflicts=('wxlua' 'wxstedit')
@@ -46,6 +47,8 @@ build() {
            -DwxLua_LUA_LIBRARY=/usr/lib/liblua.so.5.2 \
            -DwxLua_LUA_LIBRARY_USE_BUILTIN=0 \
            -DwxLua_LUA_LIBRARY_VERSION=5.2 \
+           -DwxWidgets_COMPONENTS="stc;gl;html;aui;adv;core;net;base" \
+           -DwxLuaBind_COMPONENTS="stc;gl;html;aui;adv;core;net;base" \
            -DBUILD_SHARED_LIBS=TRUE
   make
 }
@@ -61,6 +64,11 @@ package() {
   # desktop file
   install -Dm644 ../distrib/autopackage/wxlua.desktop \
     "$pkgdir/usr/share/applications/wxlua.desktop"
+  sed -i s/Exec=wxluaedit/Exec=wxLuaEdit/ "$pkgdir/usr/share/applications/wxlua.desktop"
+
+  # icon file
+  install -Dm644 ../art/wxlualogo.xpm \
+    "$pkgdir/usr/share/icons/wxlualogo.xpm"
 
   # mime file
   install -Dm644 ../distrib/autopackage/wxlua.xml \
