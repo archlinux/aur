@@ -3,7 +3,7 @@
 pkgname=ascii-patrol-git
 _pkgname=ascii-patrol
 _pkgname2=asciipat
-pkgver=r16.0f19d87
+pkgver=r24.f1340dc
 pkgrel=1
 pkgdesc="Ascii Patrol is an ASCII game project which was mainly inspired by 'Moon Patrol'."
 arch=('any')
