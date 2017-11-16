@@ -1,0 +1,23 @@
+[Unit]
+Description=GitLab Pages
+After=syslog.target network.target
+ConditionFileIsExecutable=/usr/bin/gitlab-pages
+
+[Service]
+User=gitlab
+Group=gitlab
+StartLimitInterval=5
+StartLimitBurst=10
+ExecStart=/usr/bin/gitlab-pages -config /etc/gitlab-pages/config.cfg
+Restart=always
+RestartSec=120
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=gitlab-pages
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
