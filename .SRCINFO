@@ -1,0 +1,17 @@
+pkgbase = linedict
+	pkgdesc = A simple dictionary using Youdao webpage source
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/WingT/linedict
+	arch = x86_64
+	license = MIT
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = pcre
+	depends = curl
+	source = https://github.com/WingT/linedict
+	sha256sums = SKIP
+
+pkgname = linedict
+
