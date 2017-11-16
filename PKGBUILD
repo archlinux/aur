@@ -2,13 +2,13 @@
 pkgname=timescaledb-git
 _name="${pkgname%-git}"
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source time-series database optimized for fast ingest and complex queries."
 arch=(x86_64)
 url="http://www.timescale.com/"
 license=(Apache)
 depends=("postgresql>=9.6.0")
-makedepends=(git)
+makedepends=(git cmake)
 provides=("$_name")
 conflicts=("$_name")
 install="${_name}.install"
