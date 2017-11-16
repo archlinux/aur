@@ -1,0 +1,27 @@
+pkgbase = fontconfig
+	pkgdesc = A library for configuring and customizing font access
+	pkgver = 2.12.6+5+g665584a
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/fontconfig/
+	install = fontconfig.install
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = gperf
+	makedepends = python-lxml
+	makedepends = python-six
+	makedepends = docbook-utils
+	makedepends = docbook-sgml
+	makedepends = perl-sgmls
+	makedepends = texlive-formatsextra>=2017
+	makedepends = lynx
+	depends = expat
+	depends = freetype2
+	source = git+https://anongit.freedesktop.org/git/fontconfig#commit=665584a19b0ec227c93643ffb0540d11ac8ecf7f
+	source = fontconfig.hook
+	sha256sums = SKIP
+	sha256sums = 672f6a1c5e164671955ce807e670306194142a1794ce88df653aa717a972e274
+
+pkgname = fontconfig
+
