@@ -12,14 +12,14 @@ pkgbase=java8-openjdk-jetbrains
 _java_ver=8
 # Found @ https://github.com/JetBrains/jdk8u/releases
 _jdk_update=152
-_jdk_build=915.10
+_jdk_build=1024.8
 pkgver=${_java_ver}.u${_jdk_update}.b${_jdk_build}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/JetBrains/jdk8u'
 license=('GPL2')
-makedepends=('java-environment-openjdk' 'ccache' 'cpio' 'unzip' 'zip'
+makedepends=('java-environment-openjdk' 'cpio' 'unzip' 'zip' 'gcc6'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=https://github.com/JetBrains/jdk8u
 source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
@@ -31,14 +31,14 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}_langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}_nashorn/archive/${_repo_ver}.tar.gz)
 
-sha256sums=('4ea2840b6b605b339920e0449bb515d6c2a488183a54e2762fa055196b9130e5'
-            'f48ce3190987ccc9402c9685d99bee245599af88f361aff3af3fa2fef81db430'
-            '12a67ede4b3762d9c82384dcbc2e47e2fd92359087c9584b5b619c33bbcbff96'
-            '721533e6e827d6a36511792875aef393ae47bdc957a6122571149618d549bf32'
-            '11a493951e25f842ddd8fba8d778e8103f842269bd3c12a564db955dfed20143'
-            '638ec10a1f9ede06d9b720993a7208df55e3dcf2345050a42d12f24d031c808e'
-            '1dca9e2e741b05ad9fe27629e49046cbae0a4a035da244821e94b49577ca1f7b'
-            '84467378285e9679a1a4292affea7944eb53c5ea6abf9f4c13deb3c7f09c20a2')
+sha256sums=('343d164234cd0561a2601a1bb6b54b37307ba482ed04094e4ea62c67f3f15682'
+            'c8ed680aee75d0537bb2cc2fb9e113ecc67ff3d22c0c1f293c29b2f78958ee75'
+            '0bc2124f4a597d628239863862a18a9a054e5f53c90233390e143c4e3ff36598'
+            'd2fbf68a8156fa75e1ed3c22a476ffeb70e521ee26ba21c8a9e158c5010ab9a7'
+            '99d99294e3776c287ed6c76da342766ce5679a45be175c46b98cbeb33b801645'
+            '4b454d8e3c65bdec8048b0d5c29cee152175fe382841cbebdd2b271521ae97d4'
+            '1f0c3c34ea20a80c49b6466afa162ab5c213b8b29d1bbd604406f968b35868f5'
+            'dc64ff3d2ed6246bcc09ffed5300981c884c9613ce57db2e5c0bb33abc98c457')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
@@ -74,6 +74,8 @@ build() {
   # https://hydra.nixos.org/build/41230444/log
   export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
 
+  export CC=gcc-6 CXX=g++-6
+
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \
     --prefix="${srcdir}/${_prefix}" \
@@ -81,21 +83,17 @@ build() {
     --with-build-number="b${_jdk_build}" \
     --with-milestone="fcs" \
     --enable-unlimited-crypto \
-    --with-zlib=system \
-    --with-extra-cflags="$CFLAGS" \
-    --with-extra-cxxflags="$CXXFLAGS" \
-    --with-extra-ldflags="$LDFLAGS"
+    --with-zlib=system
 
     # TODO OpenJDK does not want last version of giflib (add 'giflib' as dependency once fixed)
     #--with-giflib=system \
 
   # Without 'DEBUG_BINARIES', i686 won't build
   # http://mail.openjdk.java.net/pipermail/core-libs-dev/2013-July/019203.html
-  # make \
-  #   DEBUG_BINARIES=true
+  make \
+    DEBUG_BINARIES=true
   # These help to debug builds:
-  #LOG=trace HOTSPOT_BUILD_JOBS=1
-  make
+  # LOG=trace HOTSPOT_BUILD_JOBS=1
 
   make docs
 
