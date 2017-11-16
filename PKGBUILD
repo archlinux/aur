@@ -3,14 +3,11 @@
 # Contributor (Parabola): Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgname=linux-libre-firmware
-_pkgver=4.13-gnu
-
-_srcname=linux-${_pkgver%-*}
-pkgver=${_pkgver//-/_}
+pkgver=1.0
 pkgrel=1
 pkgdesc='Firmware files for Linux-libre'
 arch=('any')
-url='https://linux-libre.fsfla.org/'
+url='https://jxself.org/firmware'
 license=('GPL2')
 depends=('ath9k-htc-firmware' 'openfwwf')
 provides=('linux-firmware')
@@ -28,19 +25,22 @@ conflicts=('linux-firmware'
            'rt2x00-rt61-fw'
            'rt2x00-rt71w-fw'
            'amd-ucode')
-source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz"
-        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz.sign")
-sha512sums=('9ad6866c68f29f7e4f8b53d0b857f9b3c7f6abd0054460675c76f3100db34a77c2777d7f4191831008b532cb2ab6f686d8c4f457a4d005226c73f90937963518'
+source=("https://jxself.org/firmware/${pkgname}-${pkgver}.tar.lz"
+        "https://jxself.org/firmware/${pkgname}-${pkgver}.tar.lz.asc")
+sha512sums=('d5367457304464f71e085e944bc36f2abfff132a27f36061edb7eb45d4cd2f61166e7388411e88561a4e7f27ca897cb06a9b109a29cefc491a1e346203ee6b1e'
             'SKIP')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
 )
 
+build() {
+  cd "${pkgname}-${pkgver}/src"
+  make
+}
+
 package() {
-  cd "${srcdir}/${_srcname}"
-
+  cd "${pkgname}-${pkgver}/src"
   install -d -m755 "$pkgdir"/usr/lib/firmware
-  make INSTALL_FW_PATH="$pkgdir"/usr/lib/firmware firmware_install
-
-  install -Dm644 firmware/WHENCE $pkgdir/usr/share/licenses/$pkgname
+  make prefix="${pkgdir}/usr/lib/firmware" install
+  install -Dm644 WHENCE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
