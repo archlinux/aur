@@ -4,7 +4,6 @@ pkgbase = netbsd-pkgsrc
 	pkgrel = 1
 	url = http://www.netbsd.org/docs/software/packages.html
 	install = bootstrap.install
-	arch = i686
 	arch = x86_64
 	license = BSD
 	provides = bmake
