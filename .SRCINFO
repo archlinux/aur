@@ -3,7 +3,6 @@ pkgbase = psi-plus-plugins-git
 	pkgver = 1.1.21.g8161e5c
 	pkgrel = 1
 	url = http://psi-plus.com
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = libotr
