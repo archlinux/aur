@@ -2,13 +2,14 @@
 # Contributor: Nicole Fontenot <nfontenot27@gmail.com>
 
 pkgname=osu-lazer-git
-pkgver=2017.1014.0_27_g9eb220af8
+pkgver=2017.1116.0
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
 url='https://osu.ppy.sh'
 license=('MIT')
-makedepends=('nuget'
+makedepends=('nuget4'
+             'msbuild-stable'
              'git')
 depends=('ffmpeg'
          'libgl'
@@ -52,11 +53,11 @@ build() {
 	git submodule update --recursive
 
 	# Download dependencies
-	nuget restore -configfile NuGet.config || true
 	nuget restore
+	nuget restore -configfile "$srcdir/NuGet.config"
 
 	# Build
-	xbuild /property:Configuration=Release
+	msbuild /property:Configuration=Release
 }
 
 package() {
