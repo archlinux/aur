@@ -1,0 +1,31 @@
+pkgbase = discord-always-canary
+	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
+	pkgver = 99.0.0
+	pkgrel = 0
+	url = https://discordapp.com/
+	install = DiscordCanary.install
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	depends = gconf
+	depends = libnotify
+	depends = libxss
+	depends = glibc
+	depends = alsa-lib
+	depends = nspr
+	depends = nss
+	depends = libc++
+	optdepends = libpulse: For pulseaudio support
+	optdepends = noto-fonts-emoji: Google font for emoji support.
+	optdepends = ttf-symbola: Font for emoji support.
+	provides = discord
+	conflicts = discord-canary
+	source = DiscordCanary.desktop
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = SKIP
+	source_x86_64 = https://discordapp.com/api/download/canary?platform=linux&format=tar.gz
+	md5sums_x86_64 = SKIP
+
+pkgname = discord-always-canary
+
