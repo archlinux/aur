@@ -1,39 +1,35 @@
 pkgbase = houdini
 	pkgdesc = High-end 3D animation package
-	pkgver = 15.0.416
+	pkgver = 16.5.268
 	pkgrel = 1
 	url = http://www.sidefx.com/
-	install = houdini.install
 	arch = x86_64
 	license = Custom: Side Effects Software
 	options = !strip
-	source = file://houdini-15.0.416-linux_x86_64_gcc4.8.tar.gz
+	source = file://houdini-16.5.268-linux_x86_64_gcc4.8.tar.gz
 	source = LICENSE
 	source = sesinetd.service
-	sha1sums = a74634756bcf870af1145a92b3e3a698636b4443
-	sha1sums = 3b639ee438fdb390b8b302000987d80df100a3c9
+	sha1sums = c9c9538d075ad8c8ed8f13b2d4a3590398b31fe7
+	sha1sums = 25317e6850d453e86f8bc868efe1ef95f81a2174
 	sha1sums = b6eca8f67aeedb9c5b7a5863c3d24edaf2b93cf3
 
 pkgname = houdini
-	depends = intel-tbb>=4.3
-	depends = boost-libs>=1.55.0
-	depends = zlib>=1.2.7
-	depends = libtiff>=3.9.2
-	optdepends = python2>=2.7.5: Python scripting
-	optdepends = python2-demjson: Python scripting
-	optdepends = libxml2>=2.8.0: Scripting
-	optdepends = bullet>=2.81: Dynamic solver
-	optdepends = ode>=0.10.1: Dynamic solver
-	optdepends = fbx-sdk>=4.3: Data exchange
-	optdepends = alembic>=1.5.2: Data exchange
-	optdepends = openexr>=2.2.0: Data exchange
-	optdepends = opensubdiv
-	optdepends = python2-flask: In application documentation browser
-	optdepends = python2-pygments: In application documentation browser
+	depends = expat
+	depends = fontconfig
+	depends = glu
+	depends = icu
+	depends = libx11
+	depends = libglvnd
+	depends = ocl-icd
+	depends = python2-mako
 
 pkgname = houdini-maya-engine
-	url = http://www.sidefx.com/index.php?option=com_content&task=view&id=2738&Itemid=381
-	depends = houdini=15.0.416
+	url = https://www.sidefx.com/products/houdini-engine/maya-plug-in/
+	depends = houdini=16.5.268
+
+pkgname = houdini-unity-engine
+	url = https://www.sidefx.com/products/houdini-engine/unity-plug-in/
+	depends = houdini=16.5.268
 
 pkgname = python2-hqueue
 	depends = mysql

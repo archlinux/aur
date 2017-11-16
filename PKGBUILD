@@ -3,11 +3,11 @@
 # Note: You will need to start the sesinetd service before running houdini
 # Note: You may want to add /opt/houdini/bin to your PATH
 
-pkgname=('houdini' 'houdini-maya-engine' 'python2-hqueue')
+pkgname=('houdini' 'houdini-maya-engine' 'houdini-unity-engine' 'python2-hqueue')
 pkgbase=houdini
-_pkgver_major=15
-_pkgver_minor=0
-_pkgver_build=416
+_pkgver_major=16
+_pkgver_minor=5
+_pkgver_build=268
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_build}
 pkgrel=1
 pkgdesc="High-end 3D animation package"
@@ -17,7 +17,6 @@ license=('Custom: Side Effects Software')
 depends=()
 makedepends=()
 options=('!strip')
-install=houdini.install
 
 _gccver=$(gcc -dumpversion)
 _gccver=${_gccver%.[0-9]*}
@@ -27,50 +26,51 @@ _validgccs=(4.8)
 
 # The file needs to be downloaded manually
 source=(file://${pkgname}-${pkgver}-linux_x86_64_gcc${_gccver}.tar.gz)
-[[ "$_gccver" == 4.8 ]] && sha1sums=('a74634756bcf870af1145a92b3e3a698636b4443')
+[[ "$_gccver" == 4.8 ]] && sha1sums=('c9c9538d075ad8c8ed8f13b2d4a3590398b31fe7')
 
 source+=('LICENSE' 'sesinetd.service')
-sha1sums+=('3b639ee438fdb390b8b302000987d80df100a3c9' 'b6eca8f67aeedb9c5b7a5863c3d24edaf2b93cf3')
+sha1sums+=('25317e6850d453e86f8bc868efe1ef95f81a2174' 'b6eca8f67aeedb9c5b7a5863c3d24edaf2b93cf3')
+
+_install_houdini_file() {
+	# From installDesktopItems.py:__installHoudiniFile
+	src="$1"
+	dest="$2"
+	sed -i '
+	s|${HFS}|/opt/houdini|g
+	s|${VER_MAJOR}|'${_pkgver_major}'|g
+	s|${VER_MINOR}|'${_pkgver_minor}'|g
+	' "$src"
+	install -Dm644 "$src" "$dest"
+}
 
 package_houdini() {
-	depends=('intel-tbb>=4.3' 'boost-libs>=1.55.0' 'zlib>=1.2.7' 'libtiff>=3.9.2')
-	optdepends=('python2>=2.7.5: Python scripting'
-	'python2-demjson: Python scripting'
-	'libxml2>=2.8.0: Scripting'
-	'bullet>=2.81: Dynamic solver'
-	'ode>=0.10.1: Dynamic solver'
-	'fbx-sdk>=4.3: Data exchange'
-	'alembic>=1.5.2: Data exchange'
-	'openexr>=2.2.0: Data exchange'
-	'opensubdiv'
+	depends=(
+	'expat' 'fontconfig' 'glu' 'icu' 'libx11' 'libglvnd' 'ocl-icd' 'python2-mako'
+	)
+	optdepeds=(
+	'alsa-lib: Audio support'
+	'ilmbase: OpenEXR file format support'
 	'python2-flask: In application documentation browser'
 	'python2-pygments: In application documentation browser'
 	)
-#Collada: Data exchange
-#openvdb: Data exchange
-#field3d: Data exchange
 
 	cd ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}
 
 	install -d ${pkgdir}/opt/houdini
 	tar xzf houdini.tar.gz -C ${pkgdir}/opt/houdini
 
-	for i in {gplay,hkey,houdini,houdinifx,hescape,hindie,mplay,hview,happrentice,orbolt_url};
+	for i in {gplay,hkey,houdini,houdinifx,houdinicore,hindie,mplay,hview,happrentice,orbolt_url};
 	do
-		sed -i 's|${HFS}|/opt/houdini|g' desktop/sesi_${i}.desktop
-		sed -i 's|${VER_MAJOR}|'${_pkgver_major}'|g' desktop/sesi_${i}.desktop
-		sed -i 's|${VER_MINOR}|'${_pkgver_minor}'|g' desktop/sesi_${i}.desktop
-		sed -i 's|${VER_BUILD}|'${_pkgver_build}'|g' desktop/sesi_${i}.desktop
-		install -Dm644 desktop/sesi_${i}.desktop ${pkgdir}/usr/share/applications/sesi_${i}.desktop
+		_install_houdini_file desktop/sesi_${i}.desktop ${pkgdir}/usr/share/applications/sesi_${i}.desktop
 	done
 
-	install -Dm644 desktop/sesi_houdini.menu ${pkgdir}/etc/xdg/menus/applications-merged/sesi_houdini.menu
+	_install_houdini_file desktop/sesi_houdini.menu ${pkgdir}/etc/xdg/menus/applications-merged/sesi_houdini.menu
 
-	install -Dm644 desktop/sesi_houdini.menu ${pkgdir}/etc/xdg/menus/kde-applications-merged/sesi_houdini.menu
+	_install_houdini_file desktop/sesi_houdini.menu ${pkgdir}/etc/xdg/menus/kde-applications-merged/sesi_houdini.menu
 
 	for i in {hip,hiplc,hipnc,otl,otllc,otlnc,hda,hdalc,hdanc,pic,piclc,picnc,geo,bgeo,orbolt}
 	do
-		install -Dm644 "mime/application-x-${i}.xml" "${pkgdir}/usr/share/mime/packages/application-x-${i}.xml"
+		_install_houdini_file "mime/application-x-${i}.xml" "${pkgdir}/usr/share/mime/packages/application-x-${i}.xml"
 	done
 
 	# installing license
@@ -80,7 +80,7 @@ package_houdini() {
 }
 
 package_houdini-maya-engine() {
-	url="http://www.sidefx.com/index.php?option=com_content&task=view&id=2738&Itemid=381"
+	url="https://www.sidefx.com/products/houdini-engine/maya-plug-in/"
 	depends=("houdini=$pkgver")
 
 	cd ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}
@@ -91,11 +91,30 @@ package_houdini-maya-engine() {
 	sed -i -e 's|REPLACE_WITH_HFS|/opt/houdini|' \
 		$(find "${pkgdir}/opt/houdini/engine/maya" -mindepth 2 -maxdepth 2 -type f -name "houdiniEngine-*")
 
-	for year in {2012,2013,2013.5,2014,2015,2016}
+	for maya_version in {2014,2015,2016,2016.5,2017,2018}
 	do
-		install -d ${pkgdir}/usr/autodesk/maya${year}-x64/modules
-		cp ${pkgdir}/opt/houdini/engine/maya/maya${year}/houdiniEngine-maya${year} ${pkgdir}/usr/autodesk/maya${year}-x64/modules
+		if [[ $maya_version == 2014 || $maya_version == 2015 ]]
+		then
+			maya_dir="${pkgdir}/usr/autodesk/maya${maya_version}-x64"
+		else
+			maya_dir="${pkgdir}/usr/autodesk/maya${maya_version}"
+		fi
+		module_dir="${maya_dir}/modules"
+		install -d "$module_dir"
+		cp ${pkgdir}/opt/houdini/engine/maya/maya${maya_version}/houdiniEngine-maya${maya_version} "$module_dir"
 	done
+
+	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}
+
+package_houdini-unity-engine() {
+	url="https://www.sidefx.com/products/houdini-engine/unity-plug-in/"
+	depends=("houdini=$pkgver")
+
+	cd ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}
+
+	install -d ${pkgdir}/opt/houdini/engine/unity
+	tar xzf engine_unity.tar.gz -C ${pkgdir}/opt/houdini/engine/unity
 
 	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
