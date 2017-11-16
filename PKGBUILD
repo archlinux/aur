@@ -4,7 +4,7 @@
 pkgname=vivaldi-widevine
 pkgdesc="A browser plugin designed for the viewing of premium video content, standalone for vivaldi"
 pkgver=1.4.8.1029
-pkgrel=1
+pkgrel=2
 _chrome_ver=62.0.3202.94
 epoch=1
 arch=('x86_64')
@@ -27,7 +27,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 libwidevinecdm.so -t "$pkgdir/opt/google/chrome/"
-  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/vivaldi-widevine/"
+  install -Dm644 opt/google/chrome/libwidevinecdm.so -t "$pkgdir/opt/google/chrome/"
+  install -Dm644 chrome-eula_text.html -t "$pkgdir/usr/share/licenses/vivaldi-widevine/"
 }
 
