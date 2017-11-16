@@ -2,9 +2,9 @@ _basename='firefox-developer'
 _locale='es-AR'
 _srcurl='https://download-installer.cdn.mozilla.net/pub/devedition/releases'
 pkgname="${_basename}-${_locale,,}"
-pkgdesc='Standalone web browser from mozilla.org, developer build - Spanish (Argentina)'
+pkgdesc='Firefox Developer Edition is the blazing fast browser that offers cutting edge developer tools and latest features like CSS Grid support and framework debugging - Spanish (Argentina)'
 url="https://www.mozilla.org/${_locale}/firefox/developer/"
-pkgver='57.0b14'
+pkgver='58.0b4'
 pkgrel='1'
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -13,8 +13,8 @@ source_i686=("${pkgname}_${pkgver}_i686.tar.bz2::${_srcurl}/${pkgver}/linux-i686
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.bz2::${_srcurl}/${pkgver}/linux-x86_64/${_locale}/firefox-${pkgver}.tar.bz2")
 sha512sums=('9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-sha512sums_i686=('b1eafda5102dc2c20aa278b22099cc27614947d0c7dd691691a506b0dd56f8f37a1d026654aae38471df09727bbe04eb5e27b502d42dbf6c8190d58746f5b65e')
-sha512sums_x86_64=('bd0c282ab6d46607c26c51980a73544c8f3aa09c47a641b8a006a0c86d6e98a599751f695f3115fe5f3dfdd274d3d4b7fb2be7849b13efce2e3fb0bf99e7b9dc')
+sha512sums_i686=('829b6992915287f1025fd7054796d5b9d98e4b8f3c45586ddc6af166c303d6d766b3b2d0bb787076f4bed76fd5be4a4e7d8fbd4981679afaa20bd03c50040f92')
+sha512sums_x86_64=('599ca348058d31d4b2ca9bb4813b14514e849ef088152514a2355a8d1350b785a5b3508e6d6508e4264aafd281003e3875e7fddf5512f2fb87985d0bc37be53b')
 
 provides=("${_basename}")
 conflicts=("${_basename}")
