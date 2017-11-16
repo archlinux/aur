@@ -2,7 +2,7 @@
 
 pkgname=openbazaar
 pkgver=2.0.17
-pkgrel=2
+pkgrel=3
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
 url="http://openbazaar.org"
@@ -45,5 +45,5 @@ package(){
 
 md5sums=('3bea757fb365f59794a751598bfb2024'
          '122a3e23d7ecfef0a82e756cb97c3e98'
-         'f48876b52eee00c24abb7bbbb53d8e6c'
-         '90f70698f1593b1dda1349b1353451fd')
+         '43c9c9ef1d3ca873eea6b6343ca072e8'
+         'c8d61887729b1326c611aafba89e0df1')
