@@ -7,24 +7,21 @@
 
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=2.0.0.r5311.0de4dffa
+pkgver=2.0.0.r5325.ad14f649
 _upver=2.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://qt-project.org/wiki/PySide"
-# "python"{,2}"-shiboken2-git"
-makedepends=('python' 'python2' 'cmake' 'clang'
+makedepends=("python"{,2}"-shiboken2-git" 'cmake'
              'phonon-qt5' 'git' 'python2-sphinx' 'graphviz' 'qt5-base'
              'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative'
              'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-webchannel'
              'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.9"
-        "fix-module-name.patch"
-        "sphinx-build2.patch")
-md5sums=('SKIP'
-         '0d000a2cdd7f18bcaf8450998707da2e'
-         '0431767d635147c638063c71a2a138b3')
+        "fix-module-name.patch")
+sha256sums=('SKIP'
+         'b1a9e2d93b2fe130fb2f026777858a2474fefb8b55da5df9a59eac673304f5d5')
 
 pkgver() {
     cd "$srcdir/$pkgbase"
@@ -33,45 +30,39 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$pkgbase"
-    #patch -Np1 -i "$srcdir/sphinx-build2.patch"
     #patch -Np1 -i "$srcdir/fix-module-name.patch"
 }
 
 build(){
-    # Build shiboken here waiting for AUR package shiboken2-git to be orphaned
-    cd "$srcdir"/$pkgbase/sources/shiboken2
-    mkdir -p build-py2 && cd build-py2
-    cmake -DCMAKE_INSTALL_PREFIX=$PWD/install \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DUSE_PYTHON_VERSION=2 \
-          -DBUILD_TESTS=OFF ..
-    make install
-
     # Build for python2.
     cd "$srcdir"/$pkgbase/sources/pyside2
     mkdir -p build-py2 && cd build-py2
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DUSE_PYTHON_VERSION=2 \
-          -DBUILD_TESTS=OFF \
-          -DShiboken2_DIR="$srcdir"/$pkgbase/sources/shiboken2/build-py2/install/lib/cmake/Shiboken2-2.0.0 \
-          ..
-    make
+    cmake \
+        -DCMAKE_C_COMPILER=/usr/bin/clang \
+        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_PYTHON_VERSION=2 \
+        -DBUILD_TESTS=OFF ..
+    make VERBOSE=1
 
     # Build for python3.
     cd "$srcdir"/$pkgbase/sources/pyside2
     mkdir -p build-py3 && cd build-py3
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-             -DCMAKE_BUILD_TYPE=Release \
-             -DUSE_PYTHON_VERSION=3 \
-             -DBUILD_TESTS=OFF
+    cmake \
+        -DCMAKE_C_COMPILER=/usr/bin/clang \
+        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_PYTHON_VERSION=3 \
+        -DBUILD_TESTS=OFF ..
     make
 }
 
 package_pyside2-common-git(){
     pkgdesc="LGPL Qt bindings for Python (Common Files)"
 
-    cd "$srcdir/$pkgbase/build-py3"
+    cd "$srcdir"/$pkgbase/sources/pyside2/build-py3
     make DESTDIR="$pkgdir" install
 
     rm -rf "$pkgdir"/usr/lib/pkgconfig
@@ -86,7 +77,7 @@ package_python-pyside2-git(){
                 'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg'
                 'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 
-    cd "$srcdir/$pkgbase/build-py3"
+    cd "$srcdir"/$pkgbase/sources/pyside2/build-py3
     make DESTDIR="$pkgdir" install
 
     rm -rf "$pkgdir"/usr/include
@@ -102,7 +93,7 @@ package_python2-pyside2-git(){
                 'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg'
                 'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 
-    cd "$srcdir/$pkgbase/build-py2"
+    cd "$srcdir"/$pkgbase/sources/pyside2/build-py2
     make DESTDIR="$pkgdir" install
 
     mv "$pkgdir"/usr/lib/pkgconfig/pyside2{,-py2}.pc
