@@ -1,0 +1,13 @@
+pkgbase = mtime-utils
+	pkgdesc = A collection of tools for accessing and working with mtime (modification time) and other stat properties
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/kata198/mtime_utils
+	arch = i686
+	arch = x86_64
+	license = LGPLv3
+	source = https://github.com/kata198/mtime_utils/archive/1.1.1.tar.gz
+	sha512sums = 84c7dad00ad0a00a29603b0464f8ba31c61185f2885c99bddf5196dde1feac2884acdc9bdb53ef5c574af2049de6c6aa892e5f542a44b2013a0989230b4b2f81
+
+pkgname = mtime-utils
+
