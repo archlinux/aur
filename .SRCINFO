@@ -3,7 +3,6 @@ pkgbase = psi-plus-webkit-git
 	pkgver = 1.2.105.1.g6e2bdef
 	pkgrel = 1
 	url = http://psi-plus.com
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
