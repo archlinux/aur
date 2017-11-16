@@ -1,6 +1,6 @@
 pkgbase = zephir
 	pkgdesc = Zephir is a compiled high level language aimed to the creation of C-extensions for PHP http://zephir-lang.com/
-	pkgver = 0.10.4
+	pkgver = 0.10.6
 	pkgrel = 1
 	url = https://github.com/phalcon/zephir
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = zephir
 	depends = json-c
 	depends = php-zephir-parser
 	backup = etc/php/conf.d/zephir.ini
-	source = https://github.com/phalcon/zephir/archive/0.10.4.tar.gz
-	sha256sums = 32edf290659a228e1953ccdc3443dcbbe77678f7476c8b45b95a64e1f7d26182
+	source = https://github.com/phalcon/zephir/archive/0.10.6.tar.gz
+	sha256sums = 0cb956294604d362d698b7492e8e97483bff611b2bb24eb28d0b6f3fc421fde5
 
 pkgname = zephir
 
