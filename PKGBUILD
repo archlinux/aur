@@ -1,6 +1,6 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
-# Tests broken due to needed upstream code changes
+# Tests broken due to needed upstream code changes...
 
 pkgname='perl-www-aur'
 pkgver='0.22'
