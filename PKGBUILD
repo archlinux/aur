@@ -72,7 +72,7 @@ _pkgver=4.13
 _srcname=bfq-mq
 pkgver=4.13.bb4162667e47
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
@@ -116,7 +116,7 @@ source=(# bfq-mq repository
         # mailing-list (ML2) patches
         "${_mlpath_2}/ML2-0001-block-bfq-Disable-writeback-throttling.patch"
         # the main kernel config files
-        'config.i686' 'config.x86_64'
+        'config'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
@@ -133,7 +133,6 @@ sha256sums=('SKIP'
             '19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0'
             '7c51d0053053a3a0f6ed8759a5464ed5a3275a9dd832513a5678c3bcead9e5d5'
             '5e57c8d1d87a63e1c5947aba02346862992f39be2b2761ea142b3897995495aa'
-            '253a4225171213cbca0eaf28113b6b797aeac8a88766fdcfee0f1fbe5359b5b6'
             '97c59875e8f9eab965d6bd13030e52c0328c67243f5084105a3a2131cd58734f'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -184,7 +183,7 @@ prepare() {
   # Clean tree and copy ARCH config over
   make mrproper
 
-  cp -Tf ../config.${CARCH} .config
+  cp -Tf ../config .config
 
   ### Optionally set tickrate to 1000
   if [ -n "$_1k_HZ_ticks" ]; then
@@ -214,22 +213,20 @@ prepare() {
   fi
 
   ### Optionally disable NUMA for 64-bit kernels only
-  # (x86 kernels do not support NUMA)
-  if [ -n "$_NUMAdisable" ]; then
-    if [ "${CARCH}" = "x86_64" ]; then
-      msg "Disabling NUMA from kernel config..."
-      sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-        -i -e '/CONFIG_AMD_NUMA=y/d' \
-        -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-        -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-        -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-        -i -e '/CONFIG_NODES_SHIFT=6/d' \
-        -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-        -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-        -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-        -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-    fi
-  fi
+        # (x86 kernels do not support NUMA)
+        if [ -n "$_NUMAdisable" ]; then
+            msg "Disabling NUMA from kernel config..."
+            sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+                -i -e '/CONFIG_AMD_NUMA=y/d' \
+                -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+                -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+                -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+                -i -e '/CONFIG_NODES_SHIFT=6/d' \
+                -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+                -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+                -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+                -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+        fi
 
   ### Optionally use running kernel's config
   # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -306,7 +303,7 @@ prepare() {
   yes "" | make config >/dev/null
 
   # save configuration for later reuse
-  cat .config > "${startdir}/config.${CARCH}.last"
+  cat .config > "${startdir}/config.last"
 }
 
 build() {
@@ -389,10 +386,6 @@ _package-headers() {
 
   install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
   install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
-
-  if [[ ${CARCH} = i686 ]]; then
-    install -t "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile_32.cpu
-  fi
 
   cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
 
