@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.13.5-1 Kernel Configuration
+# Linux/x86 4.13.9-1 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -7453,7 +7453,7 @@ CONFIG_ACPI_ALS=m
 # CONFIG_CM36651 is not set
 # CONFIG_IIO_CROS_EC_LIGHT_PROX is not set
 # CONFIG_GP2AP020A00F is not set
-# CONFIG_SENSORS_ISL29018 is not set
+CONFIG_SENSORS_ISL29018=m
 # CONFIG_SENSORS_ISL29028 is not set
 # CONFIG_ISL29125 is not set
 CONFIG_HID_SENSOR_ALS=m
