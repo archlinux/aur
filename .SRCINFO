@@ -1,7 +1,7 @@
 pkgbase = python-msrestazure
-	pkgdesc = AutoRest swagger generator Python client runtime. Azure-specific module.
-	pkgver = 0.4.7
-	pkgrel = 2
+	pkgdesc = The runtime library "msrestazure" for AutoRest generated Python clients.
+	pkgver = 0.4.16
+	pkgrel = 1
 	url = https://github.com/Azure/msrestazure-for-python
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = python-msrestazure
 	depends = python-adal
 	depends = python-keyring
 	depends = python-msrest
-	source = https://github.com/Azure/msrestazure-for-python/archive/v0.4.7.tar.gz
-	md5sums = 4c1f622e49b6d99c3c65b17e8d19b06c
+	source = https://github.com/Azure/msrestazure-for-python/archive/v0.4.16.tar.gz
+	md5sums = 9f63e8cb7afa976e99b9e0ac3bca65b6
 
 pkgname = python-msrestazure
 
