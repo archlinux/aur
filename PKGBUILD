@@ -1,6 +1,6 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=rust-clippy
-pkgver=0.0.170
+pkgver=0.0.171
 pkgrel=1
 pkgdesc="A bunch of lints to catch common mistakes and improve your Rust code"
 arch=('i686' 'x86_64')
@@ -15,4 +15,3 @@ package() {
   mv "$srcdir/build" "$pkgdir/usr"
   rm -f "$pkgdir/usr/.crates.toml"
 }
-
