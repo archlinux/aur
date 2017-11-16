@@ -1,6 +1,6 @@
 # Maintainer: EagleXiang <eagle.xiang@outlook.com>
 pkgname=msbuild-stable
-_pkgver=15.4xamarinxplat.2017.09.14.16.14-0xamarin1ubuntu1404b1
+_pkgver=15.4+xamarinxplat.2017.09.14.16.14-0xamarin1+ubuntu1404b1
 pkgver=${_pkgver//[+-]/_}
 pkgrel=3
 pkgdesc="Xamarin implementation of the Microsoft build system"
