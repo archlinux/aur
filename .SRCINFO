@@ -3,7 +3,6 @@ pkgbase = cmake-git
 	pkgver = 3.10.0.rc2.91.g6dec363028
 	pkgrel = 1
 	url = http://www.cmake.org/
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = qt5-base
