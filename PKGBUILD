@@ -1,23 +1,26 @@
 # Maintainer: Kelsey Maes <kelseymaes at outlook dot com>
 
-_name=azure-storage
+_name=azure-multiapi-storage
 pkgname=python-$_name
-pkgver=0.34.0
+pkgver=0.1.6
 pkgrel=1
-pkgdesc="Microsoft Azure Storage Client Library for Python"
+pkgdesc="Azure Storage Data Plane SDK supporting multiple API versions"
 arch=('any')
-url="https://github.com/Azure/azure-storage-python"
-license=('Apache')
+url="https://github.com/Azure/azure-multiapi-storage-python"
+license=('MIT')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.zip")
-md5sums=('6342a92b968cf350193e460a6329f3f0')
+source=("https://github.com/Azure/azure-multiapi-storage-python/archive/${pkgver}.tar.gz")
+md5sums=('ae4b1032d040949c2434d7c5261fa5cb')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$_name-python-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$_name-python-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
+
+  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/__init__.py
+  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/__pycache__/__init__.*
 }

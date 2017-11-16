@@ -1,13 +1,13 @@
-pkgbase = python-azure-storage
-	pkgdesc = Microsoft Azure Storage Client Library for Python
-	pkgver = 0.34.0
+pkgbase = python-azure-multiapi-storage
+	pkgdesc = Azure Storage Data Plane SDK supporting multiple API versions
+	pkgver = 0.1.6
 	pkgrel = 1
-	url = https://github.com/Azure/azure-storage-python
+	url = https://github.com/Azure/azure-multiapi-storage-python
 	arch = any
-	license = Apache
+	license = MIT
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/a/azure-storage/azure-storage-0.34.0.zip
-	md5sums = 6342a92b968cf350193e460a6329f3f0
+	source = https://github.com/Azure/azure-multiapi-storage-python/archive/0.1.6.tar.gz
+	md5sums = ae4b1032d040949c2434d7c5261fa5cb
 
-pkgname = python-azure-storage
+pkgname = python-azure-multiapi-storage
 
