@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _pkgname=peek
 pkgname=${_pkgname}-git
-pkgver=1.1.0.r70.ga8357ff
+pkgver=1.1.0.r180.g3787013
 pkgrel=1
 pkgdesc="Simple screen recorder with an easy to use interface (latest development release)"
 arch=('i686' 'x86_64')
@@ -30,7 +30,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=ON \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGSETTINGS_COMPILE=OFF
+    -DGSETTINGS_COMPILE=OFF \
+    -DENABLE_FILECHOOSERNATIVE=ON
   make
 }
 
