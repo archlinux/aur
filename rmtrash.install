@@ -1,0 +1,13 @@
+post_install() {
+  echo ">> It is very convenient to create the following aliases:"
+  echo ">> alias rm='rmtrash'"
+  echo ">> alias rmdir='rmdirtrash'"
+  echo ">> alias sudo='sudo '"
+}
+
+post_remove() {
+  echo ">> Make sure to delete the following aliases if you created them:"
+  echo ">> alias rm='rmtrash'"
+  echo ">> alias rmdir='rmdirtrash'"
+  echo ">> alias sudo='sudo '"
+}

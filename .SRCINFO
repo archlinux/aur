@@ -1,0 +1,15 @@
+pkgbase = rmtrash
+	pkgdesc = trash-put made compatible to GNUs rm and rmdir
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://github.com/PhrozenByte/rmtrash
+	install = rmtrash.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = trash-cli
+	source = rmtrash-1.12.tar.gz::https://github.com/PhrozenByte/rmtrash/archive/v1.12.tar.gz
+	sha256sums = 23a39883c2706a105ba291b3eaf0d10119f40aedfd58abe2b302ec2c97280353
+
+pkgname = rmtrash
+
