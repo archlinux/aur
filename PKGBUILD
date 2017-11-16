@@ -104,7 +104,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_gcc_path}/${_gcc_patch}"
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
          # the main kernel config files
-        'config.i686' 'config.x86_64'
+        'config'
          # pacman hook for initramfs regeneration
         '90-linux.hook'
          # standard config files for mkinitcpio ramdisk
@@ -178,7 +178,7 @@ prepare() {
 	msg "Running make mrproper to clean source tree"
 	make mrproper
 
-	cp -Tf ../config.${CARCH} .config
+	cp -Tf ../config .config
         
     ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -208,23 +208,21 @@ prepare() {
 		sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
 	fi
 
-    ### Optionally disable NUMA since >99% of users have mono-socket systems.
-	# For more, see: https://bugs.archlinux.org/task/31187
-	if [ -n "$_NUMAdisable" ]; then
-		if [ "${CARCH}" = "x86_64" ]; then
-			msg "Disabling NUMA from kernel config..."
-			sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-				-i -e '/CONFIG_AMD_NUMA=y/d' \
-				-i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-				-i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-				-i -e '/# CONFIG_NUMA_EMU is not set/d' \
-				-i -e '/CONFIG_NODES_SHIFT=6/d' \
-				-i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-				-i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-				-i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-				-i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-		fi
-	fi
+    ### Optionally disable NUMA for 64-bit kernels only
+        # (x86 kernels do not support NUMA)
+        if [ -n "$_NUMAdisable" ]; then
+            msg "Disabling NUMA from kernel config..."
+            sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+                -i -e '/CONFIG_AMD_NUMA=y/d' \
+                -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+                -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+                -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+                -i -e '/CONFIG_NODES_SHIFT=6/d' \
+                -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+                -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+                -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+                -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+        fi
 
 	### Set extraversion to pkgrel
 	sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
@@ -270,7 +268,7 @@ prepare() {
 	yes "" | make config >/dev/null
 
 	### Save configuration for later reuse
-	cat .config > "${startdir}/config.${CARCH}.last"
+	cat .config > "${startdir}/config.last"
 }
 
 build() {
@@ -353,10 +351,6 @@ _package-headers() {
 
     install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
     install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
-
-    if [[ ${CARCH} = i686 ]]; then
-    install -t "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile_32.cpu
-    fi
 
     cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
 
@@ -457,7 +451,6 @@ sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f
             'a1ccc22354a420467fb912f822585ed4573e68f4694f02ab83d7c8e352da88be495acb3cb4c451c27ca0cf0befe5925b8734d37205bb3dfdaf86d2dedef0798f'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            '4f3647d5652fafa9cf592a7909459a44d88b2ad87cd03637a0db615255384692891cc5823f98ac15f649777c5f09f2f1b5bd1a03aa720263a72da9f4eaaf0127'
             'f035251c89fcc4d0221ae5a82ed24be53aff6ea77220c348051d3dcccd82240ee77965a04bc8437ca02938ca064100162ca402aae001f48e9237992664cde4a1'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
