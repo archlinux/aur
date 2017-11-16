@@ -12,8 +12,8 @@
 
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
-_pkgbasever=4.13-gnu
-_pkgver=4.13.10-gnu
+_pkgbasever=4.14-gnu
+_pkgver=4.14-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -32,8 +32,8 @@ makedepends_armv7h=('git')
 options=('!strip')
 source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+#        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+#        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_clut224.ppm"
         "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_clut224.ppm.sig"
         "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_mono.pbm"
@@ -61,10 +61,10 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
         '0009-disable-USB3-port-on-ODROID-XU.patch'
         '0010-ARM-dove-enable-ethernet-on-D3Plug.patch')
-sha512sums=('9ad6866c68f29f7e4f8b53d0b857f9b3c7f6abd0054460675c76f3100db34a77c2777d7f4191831008b532cb2ab6f686d8c4f457a4d005226c73f90937963518'
+sha512sums=('0d4b0b8ec1ffc39c59295adf56f6a2cccf77cad56d8a8bf8072624bbb52ba3e684147ebed91d1528d2685423dd784c5fca0f3650f874f2b93cfc6b7689b9a87f'
             'SKIP'
-            '2cb1afa8755071d8cb386403bf0f8cb81b0c6e1b77da08e6af379cd289f95c70953f25390766fe66de13ba4e4af41aebe3e4ce8277ca1fc1de512242272cb4e6'
-            'SKIP'
+#            '2cb1afa8755071d8cb386403bf0f8cb81b0c6e1b77da08e6af379cd289f95c70953f25390766fe66de13ba4e4af41aebe3e4ce8277ca1fc1de512242272cb4e6'
+#            'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
