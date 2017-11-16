@@ -1,0 +1,15 @@
+pkgbase = noto-fonts-emoji-lollipop
+	pkgdesc = Google Noto emoji fonts (Android Lollipop blob version with B&W emoji)
+	pkgver = 2015.09.29.license.apache
+	pkgrel = 1
+	url = https://www.google.com/get/noto/
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	provides = noto-fonts-emoji
+	conflicts = noto-fonts-emoji
+	source = git+https://github.com/googlei18n/noto-emoji
+	sha256sums = SKIP
+
+pkgname = noto-fonts-emoji-lollipop
+
