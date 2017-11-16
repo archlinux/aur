@@ -2,7 +2,6 @@ pkgbase = virtualbox-modules-lqx
 	pkgver = 5.2.0
 	pkgrel = 1
 	url = http://virtualbox.org
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = linux-lqx-headers

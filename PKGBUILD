@@ -7,7 +7,7 @@ pkgbase=virtualbox-modules-lqx
 pkgname=('virtualbox-host-modules-lqx' 'virtualbox-guest-modules-lqx')
 pkgver=5.2.0
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-lqx-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
