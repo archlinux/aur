@@ -2,7 +2,7 @@
 pkgname=timescaledb-git
 _name="${pkgname%-git}"
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source time-series database optimized for fast ingest and complex queries."
 arch=(x86_64)
 url="http://www.timescale.com/"
@@ -22,10 +22,12 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_name"
-    make
+    ./bootstrap
+    cd build && make
 }
 
 package() {
     cd "$srcdir/$_name"
+    cd build
     make DESTDIR="$pkgdir/" install
 }
