@@ -9,11 +9,13 @@ todo.o: todo.cpp
 .PHONY: clean mrproper
 
 clean:
-	rm *.o
-	rm todo
+	rm -f *.o
+	rm -f todo
 
 mrproper: clean
-	rm todo
+	rm -f todo
+	rm -Rf src todo-git
+	rm -f todo.cpp-git-*any.pkg.tar.xz
 
 mrpropest: mrproper
 	rm .todo.txt
