@@ -1,7 +1,7 @@
 pkgbase = franz-bin
 	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more.
 	pkgver = 5.0.0_beta.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/meetfranz/franz
 	arch = x86_64
 	license = Apache
@@ -11,6 +11,7 @@ pkgbase = franz-bin
 	makedepends = xorriso
 	makedepends = git
 	makedepends = python2
+	depends = gconf
 	depends = nodejs
 	depends = libx11
 	depends = libxext

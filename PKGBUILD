@@ -2,10 +2,10 @@
 #Contributor: Lars Jose <larsjose77@gmail.com>
 pkgname=franz-bin
 pkgver=5.0.0_beta.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
 arch=('x86_64')
-depends=('nodejs' 'libx11' 'libxext' 'libxss' 'libxkbfile')
+depends=('gconf' 'nodejs' 'libx11' 'libxext' 'libxss' 'libxkbfile')
 makedepends=('tar' 'yarn' 'npm' 'xorriso' 'git' 'python2')
 conflicts=('franz')
 url='https://github.com/meetfranz/franz'
