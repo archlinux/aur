@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=encfsui
-pkgver=1.2.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Encrypted filesystem encfs GUI wrapper"
 url="https://github.com/bulletmark/$pkgname"
@@ -8,7 +8,7 @@ license=("GPL3")
 arch=("any")
 depends=("encfs" "fuse2" "zenity" "xdg-utils")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('817d4eb2979d1d812857e9e8d9421c85')
+md5sums=('c79e2a84b2f1dfbd81f1b3ef86787aeb')
 
 package() {
   cd "$pkgname-$pkgver"
