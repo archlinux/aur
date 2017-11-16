@@ -3,7 +3,6 @@ pkgbase = sddm-git
 	pkgver = 0.16.0.1.gd19d874
 	pkgrel = 1
 	url = https://github.com/sddm/sddm
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
