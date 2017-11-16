@@ -1,7 +1,7 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=thunar-extended
-pkgver=1.6.11
+pkgver=1.6.12
 pkgrel=1
 pkgdesc="Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ url="http://thunar.xfce.org"
 groups=('xfce4')
 conflicts=('thunar')
 replaces=('thunar')
-provides=('thunar=1.6.11')
+provides=('thunar=1.6.12')
 depends=('desktop-file-utils' 'libexif' 'hicolor-icon-theme' 'libnotify' 'udev' \
          'gtk2' 'exo' 'libxfce4util' 'libxfce4ui' 'libpng' 'gstreamer')
 makedepends=('intltool' 'pkgconfig' 'xfce4-panel' 'xfce4-dev-tools')
@@ -58,7 +58,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('9749be8247cb19ed0fd36e4118c6236a'
+md5sums=('1bdf3c4a57ff886c512341f24b5e0e88'
          '9f52b207f090b280ac25ceafe3032137'
          'd87f154a5fbd3709511ded0c9b9b0317'
          '69aa416e8694b8b608f767769b6dcd98'
