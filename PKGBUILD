@@ -1,9 +1,9 @@
 # Maintainer: Marco Pompili <aur (at) emarcs (dot) org>
 
 _npmname=lerna
-_npmver=2.4.0
+_npmver=2.5.1
 pkgname=lerna # All lowercase
-pkgver=2.4.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Tool for managing JavaScript projects with multiple packages"
 arch=(any)
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_npmname}/${_npmname}/archive/v${_npmver}.tar.gz")
-sha256sums=('97a740947c0d86474b9329de7b8faa8328ef130b076477ff7e873522111533a2')
+sha256sums=('4313420a415f28f1d88c2460b9dc7ddf5de7a38665abbcf8966c5e6d2b33bf95')
 noextract=(${_npmname}-${_npmver}.tgz)
 
 package() {
