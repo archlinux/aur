@@ -1,7 +1,10 @@
+# Maintainer: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
+# Contributor: Denis Gagnon <gagnon88 at gm41l dot com>
+
 pkgname=fftw-mpi
 pkgver=3.3.7
-pkgrel=1
-pkgdesc="fftw, compiled with MPI and OpenMP support"
+pkgrel=2
+pkgdesc="FFTW, compiled with MPI and OpenMP support: header files, static and shared libraries"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.fftw.org/"
@@ -10,6 +13,7 @@ conflicts=('fftw')
 makedepends=('gcc-fortran')
 source=("http://www.fftw.org/fftw-${pkgver}.tar.gz")
 provides=('fftw')
+options=('staticlibs')
 install=fftw.install
 sha1sums=('2ae980a8d44c161ce4a09c6e2d1c79243ecbabb2')
 
@@ -35,7 +39,7 @@ build() {
 
   # build double precision
   cd ${srcdir}/fftw-${pkgver}-double
-  $CONFIGURE --enable-sse2
+  $CONFIGURE --enable-sse2 --enable-avx
   make
 
   # build & install long double precission
@@ -45,7 +49,7 @@ build() {
 
   # build & install single precision
   cd ${srcdir}/fftw-${pkgver}-single
-  $CONFIGURE --enable-float --enable-sse
+  $CONFIGURE --enable-float --enable-sse --enable-avx
   make
 }
 
