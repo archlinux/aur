@@ -11,7 +11,7 @@ pkgdesc="Dlib is a general purpose cross-platform C++ library designed using con
 arch=('any')
 url="http://www.dlib.net/"
 license=('Boost Software License')
-makedepends=('cmake' 'boost' 'cuda' 'gcc-6' 'python' 'python2')
+makedepends=('cmake' 'boost' 'cuda' 'gcc6' 'python' 'python2')
 optdepends=('cblas: for BLAS support'
             'lapack: for LAPACK support'
             'libjpeg-turbo: for JPEG support'
