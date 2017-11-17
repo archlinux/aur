@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv7h')
 license=('BSD')
 depends=('glibc')
 makedepends=('jbuilder' 'ocaml-findlib' 'ocamlbuild' 'clingo' 'python2')
-url=('https://github.com/mjambon/cppo')
+url="https://github.com/mjambon/cppo"
 source=("https://github.com/mjambon/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('29cb0223adc1f0c4c5238d6c7bf8931b909505aed349fde398fbf1a39eaa1819')
 
