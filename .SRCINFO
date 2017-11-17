@@ -1,6 +1,6 @@
 pkgbase = pacman-utils
 	pkgdesc = Some utils and helper scripts for archlinux packages
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/kata198/pacman-utils
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = pacman-utils
 	depends = python-cmp_version
 	depends = python-func_timeout
 	optdepends = pacman-utils-data: Data for whatprovides_upstream
-	source = https://github.com/kata198/pacman-utils/archive/0.8.2.tar.gz
-	sha512sums = cd65fa8ceb5f7a9565ddd9bf74bdce255ea70ad626cd8a122b51034142e1576065ee1e6ec535429de1a42cffbc04c3afc2d567d4858bad324a1826529a7144d0
+	source = https://github.com/kata198/pacman-utils/archive/0.8.3.tar.gz
+	sha512sums = 71442458e5be22fe7313becc7b2b3b959edf74eb7b0fd816b6ebf9c2a19a3bcd46e6310246f1e0d1e3d7fda78f0110392dac9295941899945af1fa9f29644030
 
 pkgname = pacman-utils
 
