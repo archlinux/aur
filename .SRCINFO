@@ -1,13 +1,15 @@
 pkgbase = javafx-scenebuilder
-	pkgdesc = Gluon Scene Builder for Java 8, based on debian package, this version is recognized by Netbeans,it was released on Sep 26, 2017.
+	pkgdesc = Gluon Scene Builder for Java 8, based on debian package, this version is recognized by Netbeans,it was released on Oct 17, 2017.
 	pkgver = 8.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gluonhq.com/labs/scene-builder/
 	arch = x86_64
 	arch = i686
 	license = BSD License
-	source = http://download.gluonhq.com/scenebuilder/8.4.0/install/linux/scenebuilder-8.4.0.deb
-	sha1sums = b3fe3e52946844d439a6c89009ed422d9ce8423f
+	source_x86_64 = scenebuilder-8.4.1-x86_64.deb::http://download.gluonhq.com/scenebuilder/8.4.1/install/linux/scenebuilder-8.4.1.deb
+	sha1sums_x86_64 = 366ad019e175e35bfaea5bd67efe6e954672cb34
+	source_i686 = scenebuilder-8.4.1-i686.deb::http://download.gluonhq.com/scenebuilder/8.4.1/install/linux-x86/scenebuilder-8.4.1.deb
+	sha1sums_i686 = 391e4690fc88cf62059e0abf603c97c28c5ce44d
 
 pkgname = javafx-scenebuilder
 
