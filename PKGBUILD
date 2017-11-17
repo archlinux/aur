@@ -2,7 +2,7 @@
 
 _pkgname=thesubberkt
 pkgname=thesubberkt-git
-pkgver=v0.1.1a.r0.gd201105
+pkgver=v0.1.1a.r3.gb193577
 pkgrel=1
 pkgdesc="thesubdb.com client for download subtiltes"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('java-runtime' 'java-openjfx')
 makedepends=('java-environment' 'gradle')
 source=('thesubberkt.sh'
         "$_pkgname::git+https://gitlab.com/vaurelios/TheSubberKt.git")
-md5sums=('291f3b64e7d1c2bdbaab4b494215a0fe'
+md5sums=('6d8c8fb0aea6e7413f1c941ef9d25e9e'
          'SKIP')
 
 pkgver() {
