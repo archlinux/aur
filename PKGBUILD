@@ -2,7 +2,7 @@
 
 pkgname=beamer-theme-kalgan-mule-git
 pkgver=r4.9b61330
-pkgrel=1
+pkgrel=2
 pkgdesc="Kalgan template and mule colour scheme for beamer presentations"
 arch=(any)
 url="https://github.com/kartikprabhu/Kalgan-Mule-template"
@@ -23,10 +23,14 @@ pkgver() {
 package() {
 	cd "$srcdir"/Kalgan-Mule-template
         mkdir -p $pkgdir/usr/share/texmf-dist/tex/latex/beamer/themes/{color,theme}
+        mkdir -p $pkgdir/usr/share/texmf-dist/tex/latex/kmbeamer/kmbeamer_bg
 
         install -m644 beamercolorthememule.sty \
                 "$pkgdir/usr/share/texmf-dist/tex/latex/beamer/themes/color/"
 
         install -m644 beamerthemeKalgan.sty \
                 "$pkgdir/usr/share/texmf-dist/tex/latex/beamer/themes/theme/"
+
+        install -m644 kmbeamer_bg/* \
+                "$pkgdir/usr/share/texmf-dist/text/latex/kmbeamer/kmbeamer_bg/"
 }
