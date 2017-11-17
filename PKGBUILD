@@ -32,6 +32,15 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 
+	#
+	# CUDD is rather strange, so we need to make it work by copying some
+	# required files that aren't installed by `make install`.
+	#
+	# We rename `config.h` to `cudd-config.h`, but we can't do the same
+	# for `util.h` because some existing packages (e.g. http://hackage.haskell.org/package/cudd)
+	# depends on `util.h` unfortunately.
+	#
+
 	#cp util/cudd-util.h $pkgdir/usr/include
 	cp util/util.h $pkgdir/usr/include
 	#sed -i 's/config.h/cudd-config.h/g' $pkgdir/usr/include/cudd-util.h
@@ -40,5 +49,7 @@ package() {
 
 	cp mtr/mtr.h $pkgdir/usr/include
 
+	# This seems to be a 4-clause BSD license
+	# (https://en.wikipedia.org/wiki/BSD_licenses#4-clause_license_.28original_.22BSD_License.22.29)
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
