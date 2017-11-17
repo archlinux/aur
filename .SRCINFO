@@ -1,0 +1,17 @@
+pkgbase = beamer-theme-torino-git
+	pkgdesc = A pretty theme for LaTeX Beamer
+	pkgver = r3.d664ecb
+	pkgrel = 1
+	url = https://github.com/bbatsov/beamer-torino-theme
+	install = beamer-theme-torino-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = texlive-core
+	provides = beamer-theme-torino
+	conflicts = beamer-theme-torino
+	source = git://github.com/bbatsov/beamer-torino-theme.git
+	md5sums = SKIP
+
+pkgname = beamer-theme-torino-git
+
