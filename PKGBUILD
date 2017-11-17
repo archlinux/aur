@@ -26,7 +26,7 @@ build() {
 
 check() {
   cd rink-rs-$pkgver
-  cargo test --release --lib --tests
+  cargo test --release
 }
 
 package() {
