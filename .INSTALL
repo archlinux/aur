@@ -1,0 +1,36 @@
+post_install() {
+    if [ -f /opt/drivesync/config.yml ]; then
+        rm /tmp/drivesync/config.yml
+        cp /opt/drivesync/config.yml /tmp/drivesync/config.yml
+        sudo rm -R /opt/drivesync
+    fi
+
+	sudo mv /tmp/drivesync/ /opt/
+
+    echo "To use type in console 'drivesync'"
+    echo "To modify the configuration, modify the file /opt/drivesync/config.yml"
+    echo "To add as cronjob use crontab -e and paste"
+    echo "'*/1 * * * * ruby /opt/drivesync/drivesync.rb' (without quote)"
+}
+
+post_upgrade() {
+    if [ -f /opt/drivesync/config.yml ]; then
+        rm /tmp/drivesync/config.yml
+        cp /opt/drivesync/config.yml /tmp/drivesync/config.yml
+        sudo rm -R /opt/drivesync
+    fi
+
+	sudo mv /tmp/drivesync/ /opt/
+
+    echo "To use type in console 'drivesync'"
+    echo "To modify the configuration, modify the file /opt/drivesync/config.yml"
+    echo "To add as cronjob use crontab -e and paste"
+    echo "'*/1 * * * * ruby /opt/drivesync/drivesync.rb' (without quote)"
+}
+
+post_remove() {
+    sudo rm /opt/drivesync
+    echo "Make sure to erase the cronjob with crontab -e"
+    echo "and remove the line 'alias drivesync='ruby /opt/drivesync/drivesync.rb'"
+    echo "from your .bashrc"
+}
