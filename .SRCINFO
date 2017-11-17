@@ -1,0 +1,17 @@
+pkgbase = beamer-theme-hsrm-git
+	pkgdesc = A pretty theme for LaTeX Beamer
+	pkgver = r10.600bcdc
+	pkgrel = 1
+	url = https://github.com/benjamin-weiss/hsrmbeamertheme
+	install = beamer-theme-hsrm-git.install
+	arch = any
+	license = GLP
+	makedepends = git
+	depends = texlive-core
+	provides = beamer-theme-hsrm
+	conflicts = beamer-theme-hsrm
+	source = git://github.com/benjamin-weiss/hsrmbeamertheme.git
+	md5sums = SKIP
+
+pkgname = beamer-theme-hsrm-git
+
