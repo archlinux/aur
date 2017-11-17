@@ -1,8 +1,7 @@
 # Maintainer: Thomas Bork <tab.epic@gmail.com>
 
 pkgname=pamac-classic
-_pkgver=6.6.2
-pkgver=6.6.2
+pkgver=6.6.3
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - classic version"
 arch=('x86_64')
@@ -17,16 +16,16 @@ conflicts=('pamac' 'pamac-aur')
 provides=('pamac' 'pamac-aur')
 install=pamac-classic.install
 
-source=("pamac-classic-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha256sums=('d2dc59fda6e09ca1fcead6727f083bd598067744d6e252ba1f7078a26f16cac0')
+source=("pamac-classic-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('74518cd35347972df10b63a5a107869374f8c027bb25a5aaeb2c8d51b40a7e50')
 
 #prepare() {
-#  cd "${srcdir}/pamac-classic-$_pkgver"
+#  cd "${srcdir}/pamac-classic-$pkgver"
 #  # patches here
 #}
 
 build() {
-  cd "${srcdir}/pamac-classic-$_pkgver"
+  cd "${srcdir}/pamac-classic-$pkgver"
 
   # configure with AUR - add --disable-aur to disable AUR support
   ./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc --disable-icon-update
@@ -36,6 +35,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/pamac-classic-$_pkgver"
+  cd "${srcdir}/pamac-classic-$pkgver"
   make DESTDIR="$pkgdir" install
 }
