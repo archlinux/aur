@@ -1,0 +1,20 @@
+pkgbase = emojione-fonts
+	pkgdesc = Colored emoji fonts from EmojiOne project.
+	pkgver = 3.1.2
+	pkgrel = 3
+	url = https://github.com/emojione/emojione
+	arch = any
+	license = custom
+	depends = fontconfig
+	provides = ttf-emojione
+	conflicts = noto-fonts-emoji
+	conflicts = ttf-emojione
+	source = https://github.com/emojione/emojione-assets/releases/download/3.1.2/emojione-android.ttf
+	source = 70-emojione-color.conf
+	source = license-free.pdf
+	sha256sums = 6efb1a43873876bcc9476562e20cf8d875eca20bab456d83a580f46a39321139
+	sha256sums = a059c1fa2070d7eb778d8a6048f975d76e343da9e7d946780ccd03d0a83e2cad
+	sha256sums = 2898feeb41e03acd1a655ba5ddad0072aac83a014ee184fdcdebc7a66d353650
+
+pkgname = emojione-fonts
+
