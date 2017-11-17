@@ -1,0 +1,29 @@
+pkgbase = vscode-insiders
+	pkgdesc = Code editing Redefined..
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = https://code.visualstudio.com
+	install = vscode-insiders.install
+	arch = x86_64
+	license = commercial
+	depends = fontconfig
+	depends = libxtst
+	depends = gtk2
+	depends = python
+	depends = cairo
+	depends = alsa-lib
+	depends = gconf
+	depends = nss
+	depends = gcc-libs
+	depends = libnotify
+	depends = libxss
+	depends = gvfs
+	provides = visual-studio-code-insiders
+	replaces = visual-studio-code-insiders
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://vscode-update.azurewebsites.net/latest/linux-deb-x64/insider
+	sha512sums_x86_64 = f0ca99c54cc8878818f8b3768d911e7d8d7fced507abf32d9d51a2f8fa4da6badaff5591d748abfeca9ab5e82d4ff3473a26a0d2914557fdd87ed23bdce79aec
+
+pkgname = vscode-insiders
+
