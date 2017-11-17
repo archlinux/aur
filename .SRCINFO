@@ -1,7 +1,7 @@
 pkgbase = mock
 	pkgdesc = A simple chroot build environment manager for building RPMs
 	pkgver = 1.4.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rpm-software-management/mock
 	install = mock.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = mock
 	depends = distribution-gpg-keys
 	depends = python
 	depends = python-distro
+	depends = python-pyroute2
 	optdepends = createrepo_c: for mockchain command
 	optdepends = dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia
 	optdepends = lvm2: for lvm_root plugin
