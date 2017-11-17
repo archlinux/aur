@@ -1,17 +1,17 @@
 # Maintainer: Damien Guihal <dguihal@gmail.com>
 
 pkgname=perl-net-sftp
-pkgver=0.10
-pkgrel=4
+pkgver=0.12
+pkgrel=1
 pkgdesc="Secure File Transfer Protocol client"
 _dist=Net-SFTP
 url="http://search.cpan.org/~dbrobins/Net-SFTP/"
+license=('Artistic License')
 #depends=('perl' 'perl-net-ssh-perl')
 depends=('perl')
 arch=('i686' 'x86_64')
-license="Artistic License"
-source=(http://www.cpan.org/authors/id/D/DB/DBROBINS/Net-SFTP-$pkgver.tar.gz)
-sha256sums=('00cd1169cc50151926af96cad61f070c52d7236dd6bd996b7cc63952fb0a7de5')
+source=("http://www.cpan.org/authors/id/L/LK/LKINLEY/Net-SFTP-$pkgver.tar.gz")
+sha256sums=('828e676ee35499127a47f3f3e5828d7f87d1b88eb55da3be2ab8dbdd83804f18')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
