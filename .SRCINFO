@@ -1,0 +1,17 @@
+pkgbase = beamer-themes-kmaeda-git
+	pkgdesc = Theme collection by kmaeda
+	pkgver = r3.d664ecb
+	pkgrel = 1
+	url = https://github.com/kmaed/kmbeamer/
+	install = beamer-themes-kmaeda-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = texlive-core
+	provides = beamer-themes-kmaeda
+	conflicts = beamer-themes-kmaeda
+	source = git://github.com/kmaed/kmbeamer.git
+	md5sums = SKIP
+
+pkgname = beamer-themes-kmaeda-git
+
