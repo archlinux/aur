@@ -1,10 +1,10 @@
 # Maintainer: arch AT nnamuab DOT de
 pkgname=phreeqc
-pkgver=3.3.12
-_pkgsvn=12704
+pkgver=3.4.0
+_pkgsvn=12927
 pkgrel=1
 pkgdesc="A Computer Program for Speciation, Batch-Reaction, One-Dimensional Transport, and Inverse Geochemical Calculations"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/"
 license=('custom')
 groups=()
@@ -23,7 +23,7 @@ source=("ftp://brrftp.cr.usgs.gov/pub/charlton/phreeqc/phreeqc-$pkgver-$_pkgsvn.
         install.sh
         phreeqc.el
         "https://raw.githubusercontent.com/jaalto/project-emacs--folding-mode/master/folding.el")
-md5sums=('d893ad155e02554e08a25c6cc36c2d67'
+md5sums=('03e5c35fbfef89bbc8cd621d23e10ddc'
          '8facd6e784cd1985b2c57c092b753002'
          '2661645b6a28535f172b2314303c400b'
          'd262512bd4a19a68805914d35f8f9019')
@@ -31,7 +31,7 @@ md5sums=('d893ad155e02554e08a25c6cc36c2d67'
 build() {
   cd "$srcdir/$pkgname-$pkgver-$_pkgsvn"
   ./configure --prefix=/usr
-  make -j6 CCFLAGS="-O3 -Wall -ansi -pedantic -DHAVE_ISFINITE -DNDEBUG -mtune=native"
+  make CCFLAGS="-O3 -Wall -ansi -pedantic -DHAVE_ISFINITE -DNDEBUG -mtune=native"
 }
 
 package() {
