@@ -1,6 +1,6 @@
 # Maintainer: Koyu Berteon <me@koyu.space>
 pkgname=minecraft-launcher-tar
-pkgver=2.0.1005.2
+pkgver=2.0.1005.3
 pkgrel=2
 pkgdesc="Updated Minecraft Launcher built with tar file"
 arch=('x86_64')
