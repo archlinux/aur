@@ -1,0 +1,21 @@
+pkgbase = brother-mfcj245
+	pkgdesc = Driver for the Brother DCP-j245 wifi multifuncional printer
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	install = brother-mfcj245.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	makedepends = rpmextract
+	depends = a2ps
+	depends = cups
+	source = fix_lp.patch
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj245lpr-3.0.0-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj245cupswrapper-3.0.0-1.i386.rpm
+	md5sums = b890daa9317b3cbec2e0a077b4be221f
+	md5sums = 514702c4b09b195a1a6fbe67f8327bd9
+	md5sums = 31c4664b7f0eb6751decf1d04819c100
+
+pkgname = brother-mfcj245
+
