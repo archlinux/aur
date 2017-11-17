@@ -1,7 +1,7 @@
 pkgbase = discord-always-canary
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
 	pkgver = 99.0.0
-	pkgrel = 1
+	pkgrel = 15
 	url = https://discordapp.com/
 	install = DiscordCanary.install
 	arch = x86_64
