@@ -1,7 +1,7 @@
 pkgbase = beamer-themes-kmaeda-git
 	pkgdesc = Theme collection by kmaeda
-	pkgver = r3.d664ecb
-	pkgrel = 1
+	pkgver = r32.6486ea7
+	pkgrel = 2
 	url = https://github.com/kmaed/kmbeamer/
 	install = beamer-themes-kmaeda-git.install
 	arch = any

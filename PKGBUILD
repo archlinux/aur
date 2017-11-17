@@ -2,7 +2,7 @@
 
 pkgname=beamer-themes-kmaeda-git
 pkgver=r32.6486ea7
-pkgrel=1
+pkgrel=2
 pkgdesc="Theme collection by kmaeda"
 arch=(any)
 url="https://github.com/kmaed/kmbeamer/"
@@ -23,6 +23,7 @@ pkgver() {
 package() {
 	cd "$srcdir"/kmbeamer
         mkdir -p $pkgdir/usr/share/texmf-dist/tex/latex/beamer/themes/{color,font,theme}
+        mkdir -p $pkgdir/usr/share/texmf-dist/tex/latex/kmbeamer/kmbeamer_bg
 
         install -m644 beamercolortheme*.sty \
                 "$pkgdir/usr/share/texmf-dist/tex/latex/beamer/themes/color/"
@@ -35,5 +36,8 @@ package() {
 
         install -m644 beamertheme*.sty \
                 "$pkgdir/usr/share/texmf-dist/tex/latex/beamer/themes/theme/"
+
+        install -m644 kmbeamer_bg/* \
+                "$pkgdir/usr/share/texmf-dist/tex/latex/kmbeamer/kmbeamer_bg/"
 
 }
