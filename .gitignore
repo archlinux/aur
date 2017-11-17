@@ -3,6 +3,7 @@
 *.pkg.tar.xz
 *.sig
 *.rpm
+LICENSE
 logs/
 pkg/
 src/
