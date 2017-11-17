@@ -1,10 +1,9 @@
 pkgbase = git-git
 	pkgdesc = A fast distributed version control system
 	pkgver = 2.15.0.r276.g89ea799ffc
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git-scm.com/
 	install = git-git.install
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = python2

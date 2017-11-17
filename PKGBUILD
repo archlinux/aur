@@ -4,9 +4,9 @@
 _name=git
 pkgname=$_name-git
 pkgver=2.15.0.r276.g89ea799ffc
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast distributed version control system'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://git-scm.com/'
 license=('GPL2')
 depends=('curl' 'expat>=2.0' 'perl-error' 'perl>=5.14.0' 'openssl' 'pcre2'
