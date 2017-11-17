@@ -1,13 +1,13 @@
-
+# Maintainer: Jose Riha <jose1711 gmail com>
 pkgname=gimp-plugin-refocusit
 pkgdesc="Iterative refocus plug-in for GIMP"
 arch=('i686' 'x86_64')
 
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 
 url="http://refocus-it.sourceforge.net/"
-license="GPL"
+license=("GPL")
 
 depends=('gimp' 'perl-xml-parser')
 conflicts=('gimp-plugin-exif-browser')
@@ -16,9 +16,13 @@ source=("http://netcologne.dl.sourceforge.net/project/refocus-it/refocus-it/${pk
 md5sums=('7a874598e48029e754c631c899055788')
 
 
-package() {
+build() {
   	cd ${srcdir}/refocus-it-${pkgver}
 	./configure --prefix=/usr
-	make || return 1
+	make
+}
+
+package() {
+  	cd ${srcdir}/refocus-it-${pkgver}
 	make DESTDIR=${pkgdir} install
 }
