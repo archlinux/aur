@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=halo-icons-git
 pkgver=1.5
-pkgrel=1
-pkgdesc="Halo is an icon theme for Linux desktops, the set is inspired by the latest flat design trend."
+pkgrel=2
+pkgdesc="Halo is an icon theme for Linux desktops, the set is inspired by the latest flat design trend from Alejandro Camarena"
 arch=('any')
 url="https://github.com/archmerge/Halo-icons"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
