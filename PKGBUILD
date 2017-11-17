@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=faf-ice-adapter
-pkgver=6.0.2
+pkgver=6.1.0.pre1
 pkgrel=1
 epoch=0
 pkgdesc="A P2P connection proxy for Supreme Commander: Forged Alliance using ICE"
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPL3')
 groups=()
 depends=('')
-makedepends=('git' 'ninja' 'cmake' 'gcc' 'libwebrtc-static')
+makedepends=('git' 'ninja' 'cmake' 'gcc' 'libwebrtc-static>=1.0.0.faf4-1' 'clang')
 checkdepends=()
 optdepends=()
 provides=()
@@ -26,12 +26,12 @@ validpgpkeys=()
 
 pkgver() {
   cd "ice-adapter"
-  git describe --tags --abbrev=0 | cut -d v -f 2
+  git describe --tags --abbrev=0 | cut -d v -f 2 | sed 's/-/./g'
 }
 
 build() {
   cd "ice-adapter"
-  cmake -G Ninja -DWEBRTC_LIBRARIES="/usr/lib/libwebrtc.a" -DCMAKE_BUILD_TYPE=Release .
+  cmake -G Ninja -DCMAKE_CXX_COMPILER="/usr/bin/clang++" -DCMAKE_CXX_FLAGS="-stdlib=libc++" -DWEBRTC_LIBRARIES="/usr/lib/libwebrtc.a" -DCMAKE_BUILD_TYPE=Release .
   ninja
 }
 
