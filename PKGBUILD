@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
-pkgver=0.0.3
-pkgrel=4
+pkgver=0.0.4
+pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
@@ -13,30 +13,32 @@ options=('!strip')
 source=("https://github.com/RPCS3/$pkgname/archive/v$pkgver.tar.gz"
     'GSL.tar.gz::https://github.com/Microsoft/GSL/archive/fc5fce4f4f8d64fbda523d1b0d55115f5ca68774.tar.gz'
     'cereal.tar.gz::https://github.com/USCiLab/cereal/archive/v1.2.0.tar.gz'
-    'ffmpeg.tar.gz::https://github.com/hrydgard/ppsspp-ffmpeg/archive/8dd84dc1ea8bc70da1a345109383f62974a9c2fc.tar.gz'
-    'hidapi.tar.gz::https://github.com/RPCS3/hidapi/archive/c095a22c53f13ccafc54dc59b5c882cd4036afd9.tar.gz'
+    'ffmpeg.tar.gz::https://github.com/hrydgard/ppsspp-ffmpeg/archive/7b7ae7b06705bf5539b222e77c779d4b649b53ef.tar.gz'
+    'hidapi.tar.gz::https://github.com/RPCS3/hidapi/archive/ca39ce8939e490ffcadb38ff978447aac1c17662.tar.gz'
     'libpng.tar.gz::https://github.com/RPCS3/libpng/archive/1dcba4d6eb1bad9500be877cbd1b0442fa92cfa6.tar.gz'
     'pugixml.tar.gz::https://github.com/RPCS3/pugixml/archive/f205aaf6e1c90f1dda943edd4f82922118a85648.tar.gz'
     'zlib.tar.gz::https://github.com/madler/zlib/archive/v1.2.11.tar.gz'
-    'Vulkan-LoaderAndValidationLayers.tar.gz::https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/115665a3b59059b9706e0afed6ce348bd58b1c38.tar.gz'
-    'glslang.tar.gz::https://github.com/KhronosGroup/glslang/archive/0e07119ae295b5624006518a9046c3fcd16087e2.tar.gz'
+    'Vulkan-LoaderAndValidationLayers.tar.gz::https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/85926a33d427ee62f395a50886db980127063c72.tar.gz'
+    'glslang.tar.gz::https://github.com/KhronosGroup/glslang/archive/cf571f7310f58e6eb4ea35600ef1401bc76db0d2.tar.gz'
     'asmjit.tar.gz::https://github.com/kobalicek/asmjit/archive/1370fe6a26a82f18500faedac66798953961a916.tar.gz'
     'llvm.tar.gz::https://github.com/llvm-mirror/llvm/archive/4423e351176a92975739dd4ea43c2ff5877236ae.tar.gz'
-    'rsx-debugger.tar.gz::https://github.com/RPCS3/rsx-debugger/archive/3b11b9652d5b47792521495d9e4bc8343ac3e1d3.tar.gz')
+    'optional.tar.gz::https://github.com/akrzemi1/Optional/archive/f27e79084a9176672ed1eae50b3397fa8035d50d.tar.gz'
+    'git-version.h')
 
-sha256sums=('cf92c7fbf38a4986adf50927637f572fbb669da90177d88819e42bb5a95bbce1'
+sha256sums=('fad33644c99db5f7582140052b604ae842de3b80fd9428156ef0fbeaaf431763'
             '0699d2fbfff96f09b170c5d5d93a7d782bf028a4fbe3c7cc9c5edfedf1124b2d'
             '1ccf3ed205a7a2f0d6a060415b123f1ae0d984cd4435db01af8de11a2eda49c1'
-            'f116908aaee7c6334b91b828833eb0fbfdf59894e6331ebe9a063ff4d5e2af56'
-            'c983e09c061417e787f77ce57aaa792efdcff99ed5a8943c076d6191843c1c9b'
+            '1596acf40444d17e17ef574b9ad8c7f2de9cbc429273da0b90883bffdb493071'
+            '408e65ce23481bdb289f01930602afc36c238e41ffcc7e4915fb8457799c24bb'
             'c8fbec2f447b2e09b68b6970ee8c3e5cdd5775aff9ec1e2db6ed5f06fc273312'
             '5e4c4a76061ef0917372ad80dfbd477e676a263595f4a15e5456ac849ec3832d'
             '629380c90a77b964d896ed37163f5c3a34f6e6d897311f1df2a7016355c45eff'
-            'c0e8dc8bbb3f7f07b29718915d955fe750e087d9b490bf9a6c4457ffc5afcb4e'
-            '392008129055d8bc4b421bb7135d11e92109ee2d01dd76339d1df4ff883b9d6e'
+            '52067f486c8650a0e1a4a18ef691563433f680889c539b2c6555481798a8f5e4'
+            '482c46287ea534c6f8bb346f91fc26199997d832cff4ae6dab0c9d6bb8307608'
             'e4ec96d7dd8d90e7e448b6f034b3a812865435b1e795893a35526002e722ce6a'
-            '16dc99ccbe614bba047f35f4338a23fc0f9e071d4fcca65dc4fd211ecf2a7254'
-            'a3ec4a36f0eb6de76bb24c57f926e784274e29decc35c546ee9629b7d5cb7c07')
+            '47c76fdca1b53059f688095631f96b60575cc9d4c6106d23f1062488e2b449ce'
+            '0e7fc73bf95be5a8fe92373c68dab07b09646fba7d9b76eb047a1b665f4e45c6'
+            '4602a47515c0a976da699931358a25e9b9f3c953d2abff9c862c6be9ba2708a6')
 
 prepare()
 {
@@ -47,25 +49,25 @@ prepare()
     rmdir 3rdparty/cereal
     ln --symbolic --force ../../cereal-1.2.0 3rdparty/cereal
     rmdir 3rdparty/ffmpeg
-    ln --symbolic --force ../../ppsspp-ffmpeg-8dd84dc1ea8bc70da1a345109383f62974a9c2fc 3rdparty/ffmpeg
+    ln --symbolic --force ../../ppsspp-ffmpeg-7b7ae7b06705bf5539b222e77c779d4b649b53ef 3rdparty/ffmpeg
     rmdir 3rdparty/hidapi
-    ln --symbolic --force ../../hidapi-c095a22c53f13ccafc54dc59b5c882cd4036afd9 3rdparty/hidapi
+    ln --symbolic --force ../../hidapi-ca39ce8939e490ffcadb38ff978447aac1c17662 3rdparty/hidapi
     rmdir 3rdparty/libpng
     ln --symbolic --force ../../libpng-1dcba4d6eb1bad9500be877cbd1b0442fa92cfa6 3rdparty/libpng
+    rmdir 3rdparty/Optional
+    ln --symbolic --force ../../Optional-f27e79084a9176672ed1eae50b3397fa8035d50d 3rdparty/Optional
     rmdir 3rdparty/pugixml
     ln --symbolic --force ../../pugixml-f205aaf6e1c90f1dda943edd4f82922118a85648 3rdparty/pugixml
     rmdir 3rdparty/zlib
     ln --symbolic --force ../../zlib-1.2.11 3rdparty/zlib
     rmdir Vulkan/Vulkan-LoaderAndValidationLayers
-    ln --symbolic --force ../../Vulkan-LoaderAndValidationLayers-115665a3b59059b9706e0afed6ce348bd58b1c38 Vulkan/Vulkan-LoaderAndValidationLayers
+    ln --symbolic --force ../../Vulkan-LoaderAndValidationLayers-85926a33d427ee62f395a50886db980127063c72 Vulkan/Vulkan-LoaderAndValidationLayers
     rmdir Vulkan/glslang
-    ln --symbolic --force ../../glslang-0e07119ae295b5624006518a9046c3fcd16087e2 Vulkan/glslang
+    ln --symbolic --force ../../glslang-cf571f7310f58e6eb4ea35600ef1401bc76db0d2 Vulkan/glslang
     rmdir asmjit
     ln --symbolic --force ../asmjit-1370fe6a26a82f18500faedac66798953961a916 asmjit
     rmdir llvm
     ln --symbolic --force ../llvm-4423e351176a92975739dd4ea43c2ff5877236ae llvm
-    rmdir rsx-debugger
-    ln --symbolic --force ../rsx-debugger-3b11b9652d5b47792521495d9e4bc8343ac3e1d3 rsx-debugger
 
     if [ ! -d build ]
     then
@@ -81,6 +83,8 @@ prepare()
         -DCMAKE_SKIP_RPATH='ON' \
         -DUSE_SYSTEM_FFMPEG='ON' \
         -DUSE_SYSTEM_LIBPNG='ON'
+
+    cp ../../../git-version.h ../rpcs3/
 }
 
 build()
