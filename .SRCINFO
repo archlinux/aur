@@ -1,0 +1,12 @@
+pkgbase = python2-leap.pixelated-www
+	pkgdesc = Static Assets for the Pixelated User Agent UI
+	pkgver = 1.0.201709121424
+	pkgrel = 1
+	url = http://github.com/leapcode/pixelated-user-agent
+	arch = any
+	license = AGPL3
+	source = https://files.pythonhosted.org/packages/source/l/leap.pixelated-www/leap.pixelated-www-1.0.201709121424.tar.gz
+	sha256sums = 142477d3fe31921af2bfbbec4c7fe9472edf8c15e5c5317f96631a6b66398f0f
+
+pkgname = python2-leap.pixelated-www
+
