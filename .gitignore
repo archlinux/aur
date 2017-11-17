@@ -11,3 +11,4 @@
 *.tar.xz
 *.tar.xz.sig
 *.src.tar.gz
+*.log
