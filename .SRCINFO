@@ -1,16 +1,14 @@
 pkgbase = plasp
-	pkgdesc = A translator from PDDL to ASP
-	pkgver = 3.0.3
+	pkgdesc = ASP planning tools for PDDL
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/potassco/plasp
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = boost
 	makedepends = cmake
-	depends = boost-libs
-	source = https://github.com/potassco/plasp/archive/v3.0.3.tar.gz
-	md5sums = 2ecd24c675b69fb9fda8c50b8ffefede
+	source = https://github.com/potassco/plasp/releases/download/v3.1.0/plasp-3.1.0-source.tar.gz
+	sha512sums = 80fbe86bde9490d064f28ab60c7b0782568fe2356df6e24607b2342df453902161638070f14a721a0efbe6f34d2f1cdb7204dbba2c98408abf39642c24eb3c89
 
 pkgname = plasp
 

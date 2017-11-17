@@ -1,31 +1,17 @@
 # Maintainer: Patrick Lühne <patrick-arch@luehne.de>
 pkgname=plasp
-pkgver=3.0.3
+pkgver=3.1.0
 pkgrel=1
-epoch=
-pkgdesc="A translator from PDDL to ASP"
+pkgdesc='ASP planning tools for PDDL'
 arch=('x86_64' 'i686')
-url="https://github.com/potassco/plasp"
+url='https://github.com/potassco/plasp'
 license=('MIT')
-groups=()
-depends=('boost-libs')
-makedepends=('boost' 'cmake')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/potassco/$pkgname/archive/v$pkgver.tar.gz")
-noextract=()
-md5sums=('2ecd24c675b69fb9fda8c50b8ffefede')
-validpgpkeys=()
+makedepends=('cmake')
+source=("https://github.com/potassco/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-source.tar.gz")
+sha512sums=('80fbe86bde9490d064f28ab60c7b0782568fe2356df6e24607b2342df453902161638070f14a721a0efbe6f34d2f1cdb7204dbba2c98408abf39642c24eb3c89')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd ${pkgname}-${pkgver}
 	mkdir build
 	cd build
 	cmake .. -DCMAKE_BUILD_TYPE=Release
@@ -33,7 +19,8 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd ${pkgname}-${pkgver}
 	install -D build/bin/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 README.md -t ${pkgdir}/usr/share/doc/${pkgname}
+	install -D -m644 LICENSE.md -t ${pkgdir}/usr/share/licenses/${pkgname}
 }
