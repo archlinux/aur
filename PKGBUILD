@@ -2,7 +2,7 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-ql700'
-pkgver=1.0.2r0
+pkgver=1.1.4r0
 pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-700 label printer'
 url='http://solutions.brother.com/linux/en_us/'
@@ -18,8 +18,8 @@ install="$pkgname.install"
 source=("http://download.brother.com/welcome/dlfp002191/ql700lpr-${pkgver/r/-}.i386.rpm"
         "http://download.brother.com/welcome/dlfp002193/ql700cupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
-sha256sums=('54f6573cedca9e467c339e3c2e47615cca4c0cef052dc3b92ece551611dd73b1'
-            '1629d0c35eca5796aa12780edf5bdf80cb0a524f17968b34ffddee52184aed7e'
+sha256sums=('7467978a6900a69f3b016ba4c0b1c2322e2ebb6db2693a25b5be10edaa024d9b'
+            'fd2815f2d2ed23273feb582cea5e56201c24bde7ab81271781e4d1a68b0128d9'
             'cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811')
 
 prepare()
