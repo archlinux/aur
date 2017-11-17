@@ -2,7 +2,7 @@
 _basename="SceneBuilder"
 pkgname="javafx-scenebuilder"
 _debpkg=scenebuilder
-pkgver="8.4.0"
+pkgver="8.4.1"
 pkgrel=1
 pkgdesc="Gluon Scene Builder for Java 8, based on debian package, this version is recognized by Netbeans,it was released on Sep 26, 2017."
 arch=('x86_64' 'i686')
