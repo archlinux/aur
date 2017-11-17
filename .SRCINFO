@@ -1,5 +1,5 @@
 pkgbase = beamer-theme-hsrm-git
-	pkgdesc = A pretty theme for LaTeX Beamer
+	pkgdesc = Beamer theme that complies with the corporate design of the RheinMain University of Applied Sciences.
 	pkgver = r10.600bcdc
 	pkgrel = 1
 	url = https://github.com/benjamin-weiss/hsrmbeamertheme

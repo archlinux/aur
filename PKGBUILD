@@ -3,7 +3,7 @@
 pkgname=beamer-theme-hsrm-git
 pkgver=r10.600bcdc
 pkgrel=1
-pkgdesc="A pretty theme for LaTeX Beamer"
+pkgdesc="Beamer theme that complies with the corporate design of the RheinMain University of Applied Sciences. "
 arch=(any)
 url="https://github.com/benjamin-weiss/hsrmbeamertheme"
 license=('GLP')
