@@ -1,7 +1,7 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
 pkgver=r13153.13f99e495
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -52,7 +52,11 @@ package() {
   cd "$srcdir/$pkgname/build"
 
   make DESTDIR="$pkgdir" install
+
   rm "$pkgdir/usr/lib/libopenrct2.a"
   rm "$pkgdir/usr/lib/libdiscord-rpc.a"
+  rmdir "$pkgdir/usr/lib"
+
   rm "$pkgdir/usr/include/discord-rpc.h"
+  rmdir "$pkgdir/usr/include"
 }
