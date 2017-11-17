@@ -6,14 +6,14 @@ _mypkgn=firefox-beta
 pkgdesc='Perl script for installing latest FF beta in the language of your choice'
 url='https://www.mozilla.com/firefox/channel/#beta'
 pkgver=58.0b4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk3' 'libxt' 'dbus-glib' 'nss')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'ffmpeg: additional video and audio decoders'  # Not sure this is useful
             'hunspell: Spell checking'
-            'hyphen': 'Hyphenation'
+            'hyphen: Hyphenation'
             'libnotify: Notification integration'
             'pulseaudio: Audio support')
 makedepends=('perl-file-slurp' 'perl-lwp-protocol-https' 'perl-switch')
