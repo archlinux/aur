@@ -1,7 +1,4 @@
-# Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
-# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
-# Contributor: Sergei Lebedev <superbobry@gmail.com>
-# Contributor: Justin Davis <jrcd 83 at gmail>
+# Maintainer: nerflad <nerflad@gmail.com>
 
 pkgname=ocaml-biniou
 _oname=biniou
@@ -13,12 +10,12 @@ options=('!strip' '!makeflags' 'staticlibs')
 license=('BSD')
 depends=('glibc')
 makedepends=('ocaml-easy-format' 'ocaml-findlib' 'ocamlbuild')
-url='http://mjambon.com/biniou.html'
+url=('https://github.com/mjambon/biniou')
 source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
 sha256sums=('b946e720d94d524b95bb0401d9e47a971e9234df808fe5f12601140ab09ec686')
 build() {
   cd $srcdir/$_oname-$pkgver
-  make && make doc   
+  make && make doc
 }
 
 package() {
