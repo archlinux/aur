@@ -1,7 +1,7 @@
 # Maintainer: Harsha Kuchampudi <harshakuchampudi@gmail.com>
 pkgname=windscribe-cli
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Port of Windscribe's VPN command line interface"
 arch=('any')
 url="https://windscribe.com/"
@@ -32,7 +32,10 @@ package() {
   [Service]
   Type=simple
   ExecStart=/usr/bin/windscribe start
+  ExecStop=/usr/bin/windscribe stop
   Restart=on-failure
+  KillMode=control-group
+  SuccessExitStatus=SIGKILL
   PIDFile=/etc/windscribe/windscribe.pid
 
   [Install]
