@@ -1,6 +1,7 @@
 [Unit]
     Description=RoonBridge
-    After=network.target
+    After=network-online.target sound.target
+    Wants=network-online.target
 
     [Service]
     Type=simple
