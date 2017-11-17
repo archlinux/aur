@@ -1,4 +1,4 @@
-src
-pkg
-*.xz
-*.rpm
+/*.tar.gz
+/*.tar.xz
+/pkg/
+/src/
