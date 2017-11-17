@@ -1,7 +1,7 @@
 pkgbase = ttf-emojione
 	pkgdesc = Official colorful EmojiOne font
 	pkgver = 3.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/emojione/emojione
 	arch = any
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = ttf-emojione
 	source = 70-emojione-color.conf
 	source = license-free.pdf
 	sha256sums = 6efb1a43873876bcc9476562e20cf8d875eca20bab456d83a580f46a39321139
-	sha256sums = 306972affb6fa8e543e2158e5fb0aa3d8d2e7d6d8c3532871608a3c0ea9427eb
+	sha256sums = 2489d0211cb2c8b119df8d69fdd4b12a5ebc9f28c47853f7af24e646f69e9df6
 	sha256sums = 2898feeb41e03acd1a655ba5ddad0072aac83a014ee184fdcdebc7a66d353650
 
 pkgname = ttf-emojione
