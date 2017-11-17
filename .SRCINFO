@@ -1,23 +1,23 @@
 pkgbase = vdhcoapp
-	pkgdesc = Companion application for Video DownloadHelper browser add-on.
+	pkgdesc = Companion application for Video DownloadHelper browser add-on
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mi-g/vdhcoapp
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = firefox-net.downloadhelper.coapp.json
-	source = chrome-net.downloadhelper.coapp.json
-	md5sums = e959d300fbfcf7ff49ce3100a97e18f1
-	md5sums = 894202d812000cf1498e5a1a77493126
-	sha1sums = f1dcdc8d798d05474ac03ed0b73fc0b971103709
-	sha1sums = 9921d68bde6f84c8f53671f1c8a1d36b4415fc01
-	source_i686 = https://github.com/mi-g/vdhcoapp/releases/download/v1.0.7/net.downloadhelper.coapp-1.0.7-1_i386.tar.gz
-	md5sums_i686 = 2dac02fcddd866902761660feffa1e9c
-	sha1sums_i686 = 5dcdd00db1ac1b5f863170b4c39afbb4dbc29989
-	source_x86_64 = https://github.com/mi-g/vdhcoapp/releases/download/v1.0.7/net.downloadhelper.coapp-1.0.7-1_amd64.tar.gz
-	md5sums_x86_64 = 6e49ae2a1dfd2ac28692c0e5ad8ab449
-	sha1sums_x86_64 = 69fb6d34f0ee0041db2ede7c3d2e5dc4c1e566b5
+	makedepends = gulp
+	makedepends = npm
+	depends = ffmpeg
+	options = !strip
+	source = vdhcoapp-1.0.7.tar.gz::https://github.com/mi-g/vdhcoapp/archive/v1.0.7.tar.gz
+	source = vdhcoapp.patch
+	source = vdhcoapp-install.hook
+	source = vdhcoapp-remove.hook
+	sha256sums = ddd39d9ab848b34e49f71625e4a3f71eceafca4e4b2bb0439ab370a62dcd6842
+	sha256sums = b8a1ca51a71c1390f3ad9d725435726390a7009116865fa98c7c4f8ca048cab1
+	sha256sums = 9f8cbe84b2543738390b70d770551259c6db2b67235b7792e9094908cecbc955
+	sha256sums = 448ee36b350b6bcd304d33cf7638c13bda88d5086f2256e823d73ccc22e52ce0
 
 pkgname = vdhcoapp
 

@@ -1,51 +1,49 @@
 # Maintainer: Damien Guihal <dguihal@gmail.com>
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+
 pkgname=vdhcoapp
 pkgver=1.0.7
-pkgrel=1
-pkgdesc="Companion application for Video DownloadHelper browser add-on."
+pkgrel=2
+pkgdesc="Companion application for Video DownloadHelper browser add-on"
 arch=('i686' 'x86_64')
 url="https://github.com/mi-g/vdhcoapp"
 license=('GPL2')
-groups=()
-depends=()
-source=("firefox-net.downloadhelper.coapp.json"
-        "chrome-net.downloadhelper.coapp.json")
-source_x86_64=("https://github.com/mi-g/vdhcoapp/releases/download/v${pkgver}/net.downloadhelper.coapp-${pkgver}-1_amd64.tar.gz")
-source_i686=("https://github.com/mi-g/vdhcoapp/releases/download/v${pkgver}/net.downloadhelper.coapp-${pkgver}-1_i386.tar.gz")
-#generate with 'makepkg -g'
-md5sums=('e959d300fbfcf7ff49ce3100a97e18f1'
-         '894202d812000cf1498e5a1a77493126')
-md5sums_i686=('2dac02fcddd866902761660feffa1e9c')
-md5sums_x86_64=('6e49ae2a1dfd2ac28692c0e5ad8ab449')
-sha1sums=('f1dcdc8d798d05474ac03ed0b73fc0b971103709'
-          '9921d68bde6f84c8f53671f1c8a1d36b4415fc01')
-sha1sums_i686=('5dcdd00db1ac1b5f863170b4c39afbb4dbc29989')
-sha1sums_x86_64=('69fb6d34f0ee0041db2ede7c3d2e5dc4c1e566b5')
+depends=('ffmpeg')
+makedepends=('gulp' 'npm')
+options=(!strip)
+source=($pkgname-$pkgver.tar.gz::https://github.com/mi-g/vdhcoapp/archive/v${pkgver}.tar.gz
+        vdhcoapp.patch
+        vdhcoapp-install.hook
+        vdhcoapp-remove.hook)
+sha256sums=('ddd39d9ab848b34e49f71625e4a3f71eceafca4e4b2bb0439ab370a62dcd6842'
+            'b8a1ca51a71c1390f3ad9d725435726390a7009116865fa98c7c4f8ca048cab1'
+            '9f8cbe84b2543738390b70d770551259c6db2b67235b7792e9094908cecbc955'
+            '448ee36b350b6bcd304d33cf7638c13bda88d5086f2256e823d73ccc22e52ce0')
+
+prepare() {
+    patch -Np1 -i "${srcdir}/vdhcoapp.patch"
+}
+
+build() {
+    cd "${pkgname}-${pkgver}"
+
+    npm install
+
+    gulp
+}
 
 package() {
-  # From setup-linux-system.sh
+    cd "${pkgname}-${pkgver}"
 
-  # Firefox
-  mkdir -p ${pkgdir}/usr/lib/mozilla/native-messaging-hosts
-  install firefox-net.downloadhelper.coapp.json -m 0755 ${pkgdir}/usr/lib/mozilla/native-messaging-hosts/net.downloadhelper.coapp.json
+    install -Dm755 bin/net.downloadhelper.coapp-* "${pkgdir}/usr/bin/vdhcoapp"
+    install -Dm644 config.json "${pkgdir}/usr/share/vdhcoapp/config.json"
 
-  # Chrome & Chromium
-  mkdir -p  ${pkgdir}/etc/opt/chrome/native-messaging-hosts
-  install chrome-net.downloadhelper.coapp.json -m 0644 ${pkgdir}/etc/opt/chrome/native-messaging-hosts/net.downloadhelper.coapp.json
-  mkdir -p  ${pkgdir}/etc/chromium/native-messaging-hosts
-  install chrome-net.downloadhelper.coapp.json -m 0644 ${pkgdir}/etc/chromium/native-messaging-hosts/net.downloadhelper.coapp.json
+    install -dm755 "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/"
+    install -dm755 "${pkgdir}/etc/opt/chrome/native-messaging-hosts/"
+    install -dm755 "${pkgdir}/etc/chromium/native-messaging-hosts/"
 
-  mkdir -p ${pkgdir}/usr/bin
-
-  cd ${srcdir}/net.downloadhelper.coapp-${pkgver}
-
-  if [[ $CARCH == 'i686' ]]; then
-    install bin/net.downloadhelper.coapp-linux-32 -m 0755 ${pkgdir}/usr/bin/net.downloadhelper.coapp-linux
-  else
-    install bin/net.downloadhelper.coapp-linux-64  -m 0755 ${pkgdir}/usr/bin/net.downloadhelper.coapp-linux
-  fi
-
+    install -Dm644 "${srcdir}/vdhcoapp-install.hook" "${pkgdir}/usr/share/libalpm/hooks/vdhcoapp-install.hook"
+    install -Dm644 "${srcdir}/vdhcoapp-remove.hook" "${pkgdir}/usr/share/libalpm/hooks/vdhcoapp-remove.hook"
 }
 
 # vim:set ts=2 sw=2 et:
-
