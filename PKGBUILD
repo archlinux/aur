@@ -3,48 +3,51 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.1r20160115.597de0d
-pkgrel=2
+pkgver=5.3r20171114.4a7af63fd
+pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility -- inofficial github fork"
 arch=('i686' 'x86_64')
 url="https://github.com/gnuplot/gnuplot"
 license=('custom')
-depends=('gd' 'qt5-svg' 'lua' 'wxgtk')
-makedepends=('git' 'emacs' 'texlive-core' 'texlive-latexextra' 'qtchooser' 'qt5-tools')
-provides=('gnuplot=5.1')
+depends=('gd' 'lua' 'qt5-svg' 'pango')
+makedepends=('git' 'emacs' 'texlive-core' 'texlive-latexextra' 'qt5-tools')
+provides=('gnuplot=5.3'c)
 conflicts=('gnuplot')
-source=('git://github.com/gnuplot/gnuplot.git#commit=597de0d' lua53_compat.patch)
-md5sums=('SKIP' 'c84be2980e0d90037f20a5cf18f9868a')
+source=('gnuplot::git+https://git.code.sf.net/p/gnuplot/git-trunk' lua53_compat.patch)
+md5sums=('SKIP'
+         'c84be2980e0d90037f20a5cf18f9868a')
 options=('!makeflags')
 _gitname="gnuplot"
 
 pkgver() {
   cd $srcdir/$_gitname
-  printf "5.1r%s.%s" $(git log -1 --format="%cd" --date=short | tr -d '-') "$(git rev-parse --short HEAD)"
+  printf "5.3r%s.%s" $(git log -1 --format="%cd" --date=short | tr -d '-') "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "$srcdir/$_gitname"
-  mv configure.in configure.ac
   patch -p1 < $srcdir/lua53_compat.patch
-  sed -i 's+-fPIE+-fPIC+' configure.ac 
-}  
-
-build() {
-  cd "$srcdir/$_gitname"
-  ./prepare
+  sed -i 's+-fPIE+-fPIC+' configure.ac
   # fix default source location; use the GDFONTPATH variable 
   # to modify at runtime 
   sed -i 's|/usr/X11R6/lib/X11/fonts/truetype|/usr/share/fonts/TTF|' \
     src/variable.c
   sed -i 's|/X11R6/lib/X11/fonts/Type1|/usr/share/fonts/Type1|' \
     src/variable.c
+}  
 
+build() {
+  cd "$srcdir/$_gitname"
+  ./prepare
   TERMLIBS='-lX11' ./configure --prefix=/usr \
-	  --libexecdir=/usr/bin \
+	  --libexecdir=/usr/lib \
 	  --with-gihdir=/usr/share/gnuplot \
+	  --with-texdir=/usr/share/texmf \
 	  --with-readline=gnu \
-	  --enable-wxwidgets --with-qt=qt5 
+	  --disable-wxwidgets \
+	  --without-libcerf \
+	  --with-qt=qt5 
+	  
   make pkglibexecdir=/usr/bin
   cd docs
   make info
@@ -52,7 +55,7 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 
   install -Dm644 Copyright \
 	  "$pkgdir/usr/share/licenses/$pkgname/Copyright"
