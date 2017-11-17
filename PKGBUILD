@@ -5,7 +5,7 @@
 
 gitname="biosdisk"
 pkgname="${gitname}-git"
-pkgver=v0.75.18.g42a22fe
+pkgver=v0.75.20.gf534dd2
 pkgrel=1
 arch=('any')
 pkgdesc="Utility for creating Dell BIOS flash disks"
@@ -35,6 +35,7 @@ package() {
 	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}dosdisk.img
 	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}dosdisk288.img
 	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}dosdisk8192.img
+	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}dosdisk20480.img
 	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}biosdisk-mkrpm-redhat-template.spec
 	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}biosdisk-mkrpm-generic-template.spec
 
