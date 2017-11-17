@@ -28,9 +28,6 @@ pkgver() {
 
 prepare() {
     cd "$srcdir"/$pkgbase/sources/pyside2
-
-    # WebKitWidgets fails
-    sed -i "s|WebKitWidgets WebSockets|WebSockets|g" CMakeLists.txt
 }
 
 build(){
@@ -43,7 +40,8 @@ build(){
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_PYTHON_VERSION=2 \
-        -DBUILD_TESTS=OFF ..
+        -DBUILD_TESTS=OFF \
+        -DQt5WebKitWidgets_FOUND=FALSE ..
     make
 
     # Build for python3.
@@ -55,7 +53,8 @@ build(){
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_PYTHON_VERSION=3 \
-        -DBUILD_TESTS=OFF ..
+        -DBUILD_TESTS=OFF \
+        -DQt5WebKitWidgets_FOUND=FALSE ..
     make
 }
 
