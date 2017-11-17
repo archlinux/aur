@@ -1,0 +1,14 @@
+pkgbase = cudd
+	pkgdesc = A package for the manipulation of Binary Decision Diagrams (BDDs) and similar structures
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://vlsi.colorado.edu/~fabio/CUDD
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gcc-libs
+	source = ftp://vlsi.colorado.edu/pub/cudd-3.0.0.tar.gz
+	md5sums = 4fdafe4924b81648b908881c81fe6c30
+
+pkgname = cudd
+
