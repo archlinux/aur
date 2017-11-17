@@ -6,25 +6,24 @@
 
 pkgbase=linux-mptcp
 _srcname=mptcp
-pkgver=0.92.2
+pkgver=0.93
 pkgrel=1
 epoch=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://github.com/multipath-tcp/mptcp/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz"
         # the main kernel config files
-        'config.i686' 'config.x86_64'
+        'config'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-sha256sums=('4e52ba689ca99ef3a3376a8fcaaf9436252dbd2c5e62faa5e77fb89ba52856c7'
-            'fd08d8ae23138ed4f8f2b164988d33d0d5a1bd73a61971295b3388147e2bba6b'
-            'b587dd89f69508f3016193b1bb362263daa0af00726e1d1137193329d3bd85cb'
+sha256sums=('99f8ecc8d66b3e29fa3a79947940afe0e05a09bc2fecb2a67da75075b9debfa3'
+            'c93896497847aeb9b2c35b1b34b52fbce2638dce84da9573eb9664af7095fecf'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '567bdc00dbecae3e03c4d5306c8156d4a76485925404cf0c30f15f2c3661d32f')
@@ -39,7 +38,7 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  cat "${srcdir}/config.${CARCH}" > ./.config
+  cat "${srcdir}/config" > ./.config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -71,13 +70,13 @@ build() {
   cd "${srcdir}/${_srcname}-${pkgver}"
 
   # save configuration for later reuse
-  cat .config > "${startdir}/config.${CARCH}.last"
+  cat .config > "${startdir}/config.last"
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.4.88)"
+  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.9.60)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
@@ -168,10 +167,6 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
 
   cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-
-  if [ "${CARCH}" = "i686" ]; then
-    cp arch/${KARCH}/Makefile_32.cpu "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-  fi
 
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
