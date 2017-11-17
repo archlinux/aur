@@ -4,6 +4,7 @@ pkgrel=1
 pkgdesc="Consolas with Powerline"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
+url="https://github.com/v1v1anb3nson/ttf-consolas-with-powerline"
 source=("git+https://github.com/v1v1anb3nson/$pkgname.git")
 sha256sums=('SKIP')
 

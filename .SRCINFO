@@ -2,6 +2,7 @@ pkgbase = ttf-consolas-with-powerline
 	pkgdesc = Consolas with Powerline
 	pkgver = 5b42778
 	pkgrel = 1
+	url = https://github.com/v1v1anb3nson/ttf-consolas-with-powerline
 	arch = any
 	depends = fontconfig
 	depends = xorg-font-utils
