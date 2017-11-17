@@ -6,7 +6,7 @@
 
 pkgname=asymptote-git
 epoch=1
-pkgver=2.42r15.gbdb0c70c9
+pkgver=2.42r16.g07604b6d3
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
@@ -19,13 +19,19 @@ optdepends=('python2:           for the xasy GUI'
             'tix:               for the xasy GUI')
 conflicts=('asymptote')
 provides=('asymptote')
-source=('git+https://github.com/vectorgraphics/asymptote.git')
-md5sums=('SKIP')
+source=('git+https://github.com/vectorgraphics/asymptote.git' glrender.diff)
+md5sums=('SKIP'
+         'f6579c62d997d7c724494ae2a4631e75')
 _gitname=asymptote
 
 pkgver() {
   cd "$srcdir/${_gitname}"
   git describe --tags|sed s+-+.+g|sed s+git.+r+
+}
+
+prepare() {
+  cd "$srcdir/${_gitname}"
+  patch -Np1 < "$srcdir"/glrender.diff
 }
 
 build() {
