@@ -43,4 +43,5 @@ package() {
   mkdir -p $pkgdir/usr
   cp -r ./include $pkgdir/usr/include
   cp -r ./lib $pkgdir/usr/lib
+  sed -i "/  virtual ~MessageHandler();/c\  virtual ~MessageHandler(){};" $pkgdir/usr/include/webrtc/rtc_base/messagehandler.h
 }
