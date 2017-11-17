@@ -1,0 +1,16 @@
+pkgbase = firefox-extension-textern-native-git
+	pkgdesc = Native component of Textern Firefox extension
+	pkgver = 0.4.2bb962d
+	pkgrel = 1
+	url = https://github.com/jlebon/textern
+	arch = any
+	license = GPL
+	depends = python
+	depends = firefox
+	source = git+https://github.com/jlebon/textern
+	source = git+https://github.com/chrisjbillington/inotify_simple
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = firefox-extension-textern-native-git
+
