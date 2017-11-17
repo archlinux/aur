@@ -1,7 +1,7 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=libwebrtc-static
-pkgver=1.0.0.faf3
-pkgrel=2
+pkgver=1.0.0.faf4
+pkgrel=1
 epoch=0
 pkgdesc="Google's WebRTC as static library"
 url="https://webrtc.org/native-code/development/"
@@ -34,7 +34,7 @@ build() {
   mkdir -p /tmp/python_for_libwebrtc_build
   ln -s /usr/bin/python2 /tmp/python_for_libwebrtc_build/python || true
   export PATH=/tmp/python_for_libwebrtc_build:$PATH
-  cmake -G "Ninja" -DCMAKE_INSTALL_PREFIX=$pkgdir/usr -DCMAKE_BUILD_TYPE=Release -DWEBRTC_BRANCH_HEAD=refs/branch-heads/60 -DBUILD_TESTS=ON .
+  cmake -G "Ninja" -DCMAKE_INSTALL_PREFIX=$pkgdir/usr -DCMAKE_BUILD_TYPE=Release -DWEBRTC_BRANCH_HEAD=refs/branch-heads/62 -DBUILD_TESTS=ON .
   ninja
 }
 
