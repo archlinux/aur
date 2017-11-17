@@ -16,12 +16,10 @@ url="http://qt-project.org/wiki/PySide"
 makedepends=("python"{,2}"-shiboken2-git" 'cmake'
              'phonon-qt5' 'git' 'python2-sphinx' 'graphviz' 'qt5-base'
              'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative'
-             'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-webchannel'
-             'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
-source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.9"
-        "fix-module-name.patch")
-sha256sums=('SKIP'
-         'b1a9e2d93b2fe130fb2f026777858a2474fefb8b55da5df9a59eac673304f5d5')
+             'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d'
+             'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
+source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.9")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgbase"
@@ -29,8 +27,10 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$pkgbase"
-    #patch -Np1 -i "$srcdir/fix-module-name.patch"
+    cd "$srcdir"/$pkgbase/sources/pyside2
+
+    # WebKitWidgets fails
+    sed -i "s|WebKitWidgets WebSockets|WebSockets|g" CMakeLists.txt
 }
 
 build(){
@@ -44,7 +44,7 @@ build(){
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_PYTHON_VERSION=2 \
         -DBUILD_TESTS=OFF ..
-    make VERBOSE=1
+    make
 
     # Build for python3.
     cd "$srcdir"/$pkgbase/sources/pyside2
@@ -74,7 +74,7 @@ package_python-pyside2-git(){
     depends=('python' "python-shiboken2-git" "pyside2-common-git" "qt5-base")
     pkgdesc="LGPL Qt bindings for Python 3"
     optdepends=('qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia'
-                'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg'
+                'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d'
                 'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 
     cd "$srcdir"/$pkgbase/sources/pyside2/build-py3
@@ -90,7 +90,7 @@ package_python2-pyside2-git(){
     depends=('python2' "python2-shiboken2-git" "pyside2-common-git" "qt5-base")
     pkgdesc="LGPL Qt bindings for Python 2"
     optdepends=('qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia'
-                'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg'
+                'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d'
                 'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 
     cd "$srcdir"/$pkgbase/sources/pyside2/build-py2
