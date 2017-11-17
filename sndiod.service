@@ -9,4 +9,3 @@ ExecStart=/usr/bin/sndiod -dd $OPTS
 
 [Install]
 WantedBy=default.target
-
