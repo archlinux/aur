@@ -5,12 +5,12 @@
 # AUR Category: devel
 pkgname=tortoisehg
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 #_pkgchangeset=169d552db075
 pkgdesc="Graphical tools for Mercurial"
 url="https://tortoisehg.bitbucket.io"
 license=("GPL")
-depends=('python2' 'mercurial>=4.2' 'python2-pyqt4>=4.10' 'python2-qscintilla' 'python2-iniparse')
+depends=('python2' 'mercurial>=4.2' 'mercurial<4.4' 'python2-pyqt4>=4.10' 'python2-qscintilla' 'python2-iniparse')
 builddepends=(python2)
 arch=('any')
 optdepends=('python2-pygments: syntax highlighting'
