@@ -1,11 +1,11 @@
 # Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=lastpass
-pkgver=4.2.0a
-pkgrel=2
+pkgver=4.2.1.21
+pkgrel=1
 _universalver=4.1.44
 _chromever=4.1.52
-_amo_file=742770
+_amo_file=765898
 _crx_id=hdokiejnpimakedhajhdlcegeplioahd
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/
         "License.txt")
 noextract=("${pkgname}-${pkgver}.xpi"
            "lpchrome-${_chromever}.crx")
-sha256sums=('ecf12f9b64a9633426683e6e3f5ff83e93947e9032db5d06febfe698e8d44843'
+sha256sums=('c663a19a31b41a2ccf84c6ee4c5d592c5c570c7b8e22dbd59e00911ca0dffc43'
             '47937f48972b73f024a1e616547405d41e368cb3756f97958423d20d2196762d'
             'adb0e91f8d212d34dbb85db0b11738fe36db1a741ad5674d7070c4019a9fc75e'
             'e8eb3b585809d6644807727c5bd0a74ead96dd2c5a7e6d2ce29e0b6ea28b9e59'
@@ -53,10 +53,14 @@ package() {
     cd "${srcdir}"
 
     # Firefox
-    _extension_id="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' ${pkgname}-${pkgver}/install.rdf)"
+    if [[ -f ${pkgname}-${pkgver}/install.rdf ]]; then
+        _extension_id="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' ${pkgname}-${pkgver}/install.rdf)"
+    else
+        _extension_id="$(sed -n 's/.*"id": "\(.*\)".*/\1/p' ${pkgname}-${pkgver}/manifest.json)"
+    fi
     _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
     # Should this extension be unpacked or not?
-    if grep '<em:unpack>true</em:unpack>' ${pkgname}-${pkgver}/install.rdf > /dev/null; then
+    if grep -q '<em:unpack>true</em:unpack>' ${pkgname}-${pkgver}/install.rdf 2>/dev/null; then
         install -dm755 "${_extension_dest}"
         cp -R ${pkgname}-${pkgver}/* "${_extension_dest}"
         chmod -R ugo+rX "${_extension_dest}"
