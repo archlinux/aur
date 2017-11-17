@@ -1,15 +1,11 @@
-# Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
-# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
-# Contributor: Sergei Lebedev <superbobry@gmail.com>
-# Contributor: kfgz <kfgz at interia pl>
-# Contributor: Justin Davis <jrcd 83 at gmail>
+# Maintainer: nerflad <nerflad@gmail.com>
 
 pkgname=ocaml-easy-format
 _oname=easy-format
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="Data pretty printing made easy"
-url="http://mjambon.com/easy-format.html"
+url=('https://github.com/mjambon/easy-format')
 arch=('i686' 'x86_64' 'armv7h')
 options=('!strip' 'staticlibs')
 license=('BSD')
