@@ -21,4 +21,8 @@ package() {
     # the original pandoc executable is provided by a different package.
     rm "${srcdir}/pandoc-${pkgver}/bin/pandoc"
     rm "${srcdir}/pandoc-${pkgver}/share/man/man1/pandoc.1.gz"
+
+	mkdir "${pkgdir}/usr"
+	cp -r "${srcdir}/pandoc-${pkgver}/bin" "${pkgdir}/usr"
+	cp -r "${srcdir}/pandoc-${pkgver}/share" "${pkgdir}/usr"
 }
