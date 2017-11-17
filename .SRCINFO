@@ -22,6 +22,7 @@ pkgbase = cirkuit-kf5-git
 	depends = kdelibs4support
 	depends = hicolor-icon-theme
 	optdepends = dpic
+	optdepends = gnuplot
 	provides = cirkuit
 	conflicts = cirkuit
 	options = !makeflags
