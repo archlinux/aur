@@ -7,8 +7,10 @@
 #       - https://github.com/Sude-/lgogdownloader
 
 pkgname='gog-hollow-knight'
-pkgver=2.6.0.7
+pkgver=1.2.2.1
 pkgrel=1
+# Versioning shenanigans for v1.2.2.1
+epoch=1
 pkgdesc="Hollow Knight is a challenging 2D action-adventure. You’ll explore twisting caverns, battle tainted creatures and escape intricate traps, all to solve an ancient long-hidden mystery."
 url='http://hollowknight.com/'
 license=('custom')
@@ -17,12 +19,12 @@ arch=('x86_64')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  "file://${pkgname//-/_}_${pkgver}.sh"
+  'file://hollow_knight_en_1_2_2_1_16377.sh'
 )
 sha256sums=(
   '5cd14be9e18be6277fc0daa39dd416d78d4e4445fe8998d3ddcf37a201a843b0'
   '8860a0daf52181f78711c2b1099d7a09a30ba09331c68e8aae71182a996a0acd'
-  '71fb8de27656fcd9b868c80afff5d30f79263258f6d633f075b92aaeff79e71d'
+  '530b1653961c067934f27298b05f99679da40f02c958f7fc73a689413f31816f'
 )
 
 prepare() {
@@ -42,6 +44,9 @@ package() {
   install -m 755           \
     "${srcdir}/${pkgname}" \
     "${pkgdir}/usr/bin/${pkgname}"
+  install -m 644         \
+    data/noarch/gameinfo \
+    "${pkgdir}/opt/${pkgname}/"
   install -m 755         \
     data/noarch/start.sh \
     "${pkgdir}/opt/${pkgname}/"
