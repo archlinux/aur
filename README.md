@@ -36,7 +36,7 @@ makepkg -si
 Clone the repo, change directory to the repo, run `makepkg -si`
 or use your favorite AUR package manager.
 ```
-git clone https://github.com/winksaville/ponyc-rpm
+git clone https://aur.archlinux.org/ponyc-rpm.git
 cd ponyc-rpm
 makepkg -si
 ```
