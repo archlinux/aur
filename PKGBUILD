@@ -2,7 +2,7 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-ql1050n'
-pkgver=1.0.1r0
+pkgver=1.0.5r0
 pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-1050N label printer'
 url='http://solutions.brother.com/linux/en_us/'
@@ -16,8 +16,8 @@ install="$pkgname.install"
 source=("http://download.brother.com/welcome/dlfp002227/ql1050lpr-${pkgver/r/-}.i386.rpm"
         "http://download.brother.com/welcome/dlfp002229/ql1050cupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
-sha256sums=('77b087b31a0a4fbe8732a9c343ea4d3a2771acde38104ad0c553a043e076a340'
-            '5ead2a83a89a646ba968a95e6caab2f1ce3671cd7432aebe69b3bfaafaecd484'
+sha256sums=('dd1b15fa423847220450149f3c06b302ab7ac5a73756aa48ff2520d59eb6f1aa'
+            '813f1ed6191bc295f5b7d9550ed7466aec1cbfcfdae6d8c7cec204e8c1e2c073'
             'cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811')
 
 prepare()
