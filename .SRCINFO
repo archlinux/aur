@@ -1,0 +1,17 @@
+pkgbase = beamer-theme-kalgan-mule-git
+	pkgdesc = Kalgan template and mule colour scheme for beamer presentations
+	pkgver = r4.9b61330
+	pkgrel = 1
+	url = https://github.com/kartikprabhu/Kalgan-Mule-template
+	install = beamer-theme-kalgan-mule-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = texlive-core
+	provides = beamer-theme-kalgan-mule
+	conflicts = beamer-theme-kalgan-mule
+	source = git://github.com/kartikprabhu/Kalgan-Mule-template.git
+	md5sums = SKIP
+
+pkgname = beamer-theme-kalgan-mule-git
+
