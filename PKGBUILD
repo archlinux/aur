@@ -4,7 +4,7 @@ pkgbase="python-pytorch-git"
 pkgname=("python-pytorch-git" "python2-pytorch-git")
 _pkgname="pytorch"
 pkgver=0.1.10.r46.gbe6322e4
-pkgrel=3
+pkgrel=4
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://github.com/pytorch/pytorch"
@@ -29,6 +29,7 @@ prepare() {
   cd "$srcdir/${_pkgname}"
   git submodule update --init
 
+  cd "$srcdir"
   cp -a "${_pkgname}" "${_pkgname}-py2"
   cd "${_pkgname}"
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
