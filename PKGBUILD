@@ -4,12 +4,13 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=dhcplease-git
 pkgver=v1.0.0.r3.gf400437
-pkgrel=1
+pkgrel=2
 pkgdesc="A parser for dhcpcd lease files (/var/lib/dhcpcd/dhcpcd*.leases)"
 arch=('i686' 'x86_64')
 url="https://github.com/igordcard/dhcplease"
 license=( 'GPL3' )
 _pkgname=dhcplease
+conflicts=('dhcplease')
 install=
 changelog=
 noextract=()
