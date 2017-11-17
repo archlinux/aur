@@ -23,7 +23,7 @@ source=("$url/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
         "$pkgname.desktop")
 
 sha256sums=('c2cae016089e816c03283a359c582efab3bca34e6048ecc2382b43c1eb342457'
-            '76d1bed3aed9ca12c8dea9a0647db7b2217dae4b12c32dfaac17e637dbccc4d3')
+            'ece8c24a133910f5961cce36483c5313dcdfad410fc95017e93b71bbdb75d702')
 
 package() {
   # Create directories
