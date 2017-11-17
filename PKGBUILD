@@ -1,9 +1,9 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=logitechmediaserver-git
-pkgver=7.9.1
+pkgver=20171117.2fae540
 _gitver=7.9
-pkgrel=4
+pkgrel=1
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Git-Version, if you prefer stability consider using logitechmediaserver instead)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/stefansielaff/slimserver'
@@ -48,7 +48,7 @@ depends=('perl>=5.26'
 	 'perl-xml-simple'
 	 'perl-yaml-libyaml'
 	 'ffmpeg' 'giflib' 'libexif' 'libjpeg-turbo' 'libpng')
-makedepends=('yasm' 'rsync' 'gd' 'zlib')
+makedepends=('git' 'yasm' 'rsync' 'gd' 'zlib')
 optdepends=('perl-io-socket-ssl: support for https streams')
 optdepends_x86_64=('lib32-glibc: transcoding on 64-bit systems' 'lib32-gcc-libs: transcoding on 64-bit systems')
 install=install
@@ -91,3 +91,6 @@ package() {
 	printf "ARCH-AUR-GIT.%s\n%s" "${pkgver}" "$(date)" > "${pkgdir}/opt/${pkgname}/revision.txt"
 }
 
+pkgver() {
+    printf "%s.%s" "$(date +%Y%m%d)" "$(git ls-remote ${url} HEAD | cut -c 1-7)"
+}
