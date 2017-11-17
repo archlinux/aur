@@ -2,14 +2,14 @@
 
 pkgname=roonserver
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The music player for music lovers"
 arch=('x86_64')
 url="https://roonlabs.com/"
 license=('custom')
 depends=('alsa-lib' 'glibc' 'ffmpeg' 'cifs-utils')
 source=("http://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2" 'roonserver.service' 'copyright')
-sha256sums=('SKIP' '7ac838aad87b9632d2dea02356ab63f9fd26ab239e7e272fa25914a380b5b38a' '31b6cac147644ad4d0908906b91e631752111939be88031e03da72182de5be93')
+sha256sums=('SKIP' '37e646b7dfe98d6838ad765757ab0978a5d6c1caf97e9f8f508fbcd7e08f39d4' '31b6cac147644ad4d0908906b91e631752111939be88031e03da72182de5be93')
 
 package() {
    cd "$srcdir"
