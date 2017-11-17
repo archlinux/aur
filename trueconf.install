@@ -1,0 +1,13 @@
+post_install() {
+
+if [ ! -L /usr/bin/trueconf ]; then
+  ln -s /opt/trueconf/trueconf-bin /usr/bin/trueconf
+else
+  rm /usr/bin/trueconf
+fi
+gtk-update-icon-cache -fq /usr/share/icons/hicolor
+}
+
+post_remove() {
+  post_install
+}
