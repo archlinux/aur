@@ -9,10 +9,10 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=3.0.0.r15354.g0710485dc3
+pkgver=3.0.0.r15403.ge0fe3ddb3e
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL3')
 depends=('a52dec' 'faad2' 'ffmpeg' 'libdca' 'libdvbpsi' 'libdvdnav' 'libmad'
