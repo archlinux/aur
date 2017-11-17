@@ -1,7 +1,7 @@
 pkgbase = coin-or-lemon
 	pkgdesc = A C++ template library providing many common graph algorithms
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lemon.cs.elte.hu/trac/lemon
 	arch = i686
 	arch = x86_64

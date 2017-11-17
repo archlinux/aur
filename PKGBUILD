@@ -7,7 +7,7 @@ url="http://lemon.cs.elte.hu/trac/lemon"
 license=('BSD')
 groups=('coin-or')
 depends=('coin-or-cbc' 'coin-or-clp' 'glpk')
-makedepends=('rsync' 'cmake')
+makedepends=('cmake')
 source=("http://lemon.cs.elte.hu/pub/sources/lemon-${pkgver}.tar.gz")
 sha1sums=('b23d64c21b4b9088ad51e85316964a4a4138f82a')
 
