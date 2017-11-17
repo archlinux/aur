@@ -5,6 +5,7 @@
 !.mailmap
 /src
 /pkg
+/discord-rpc
 /openrct2-git
 *.tar
 *.tar.xz
