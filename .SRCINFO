@@ -1,6 +1,6 @@
 pkgbase = minecraft-launcher-tar
 	pkgdesc = Updated Minecraft Launcher built with tar file
-	pkgver = 2.0.1005
+	pkgver = 2.0.1005.1
 	pkgrel = 2
 	url = https://koyu.space/
 	arch = x86_64

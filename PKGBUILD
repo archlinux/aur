@@ -1,6 +1,6 @@
 # Maintainer: Koyu Berteon <me@koyu.space>
 pkgname=minecraft-launcher-tar
-pkgver=2.0.1005
+pkgver=2.0.1005.1
 pkgrel=2
 pkgdesc="Updated Minecraft Launcher built with tar file"
 arch=('x86_64')
@@ -20,7 +20,7 @@ sha256sums=(
 
 build() {
 
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/minecraft-launcher-2.0.1005"
 
 }
 
@@ -37,7 +37,7 @@ package ()
 
    install -Dm644 "$srcdir/minecraft-launcher.desktop"    "$pkgdir/usr/share/applications/minecraft-launcher.desktop"
 
-  cp -Rv "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
+  cp -Rv "$srcdir/minecraft-launcher-2.0.1005" "$pkgdir/opt/$pkgname"
   ln -s "/opt/$pkgname/minecraft-launcher.sh" "$pkgdir/usr/bin/minecraft-launcher"
 
 }
