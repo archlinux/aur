@@ -4,7 +4,7 @@ pkgname=firefox-quantum
 pkgver=57.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org - quantum"
 arch=('x86_64')
 url="https://ftp.mozilla.org/pub/firefox/releases"
@@ -23,7 +23,7 @@ source=("$url/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
         "$pkgname.desktop")
 
 sha256sums=('c2cae016089e816c03283a359c582efab3bca34e6048ecc2382b43c1eb342457'
-            'ece8c24a133910f5961cce36483c5313dcdfad410fc95017e93b71bbdb75d702')
+            '2e4ea328c895b7cc3f930ebbd3c3f544b6e86049e8144a48120734fe8b9dd8a2')
 
 package() {
   # Create directories
