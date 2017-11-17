@@ -11,7 +11,7 @@ url="https://github.com/gnuplot/gnuplot"
 license=('custom')
 depends=('gd' 'lua' 'qt5-svg' 'pango')
 makedepends=('git' 'emacs' 'texlive-core' 'texlive-latexextra' 'qt5-tools')
-provides=('gnuplot=5.3'c)
+provides=('gnuplot=5.3')
 conflicts=('gnuplot')
 source=('gnuplot::git+https://git.code.sf.net/p/gnuplot/git-trunk' lua53_compat.patch)
 md5sums=('SKIP'
