@@ -1,0 +1,16 @@
+pkgbase = cargo-vendor
+	pkgdesc = Cargo subcommand to vendor crates.io dependencies
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/alexcrichton/cargo-vendor
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	source = https://github.com/alexcrichton/cargo-vendor/archive/0.1.13/cargo-vendor-0.1.13.tar.gz
+	sha256sums = c189f3d5a1882215e3197a0611f6d570614e97170e85c885daebe73fd8f59f2a
+	sha512sums = 67c196c3299d5b952c7181b4a535fc43bf728eddec5a895b5da896678202484fd8b9f050f1c108a6d43876c9a6326b23fd9211a8ed5f8474818d375a9ec6c118
+
+pkgname = cargo-vendor
+
