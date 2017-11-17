@@ -1,0 +1,5 @@
+# Normalize line endings on checkin
+* text=auto
+
+# Force a specific kind of line endings on checkout
+*.sh text eol=lf
