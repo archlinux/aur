@@ -1,7 +1,7 @@
 pkgbase = unixbench
 	pkgdesc = UnixBench is a simple benchmark whose purpose is to provide a basic indicator of the performance of a Unix-like system.
 	pkgver = 5.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kdlucas/byte-unixbench
 	arch = i686
 	arch = x86_64
@@ -10,20 +10,20 @@ pkgbase = unixbench
 	arch = armv7h
 	license = GPL
 	depends = perl
-	source = https://github.com/kdlucas/byte-unixbench/archive/v5.1.3.tar.gz
+	source = unixbench-5.1.3.tar.gz::https://github.com/kdlucas/byte-unixbench/archive/v5.1.3.tar.gz
 	source = no-make.patch
 	source = use_volatile.patch
 	source = make_maxcopies_unbound_for_misc_and_system_suites.patch
 	source = unreasonable_multicore-whetstone_results_fix.patch
 	source = modern_compiler_optimizations.patch
 	source = ubench
-	md5sums = bf94e09faa4f620bf3bc49e70dd9851c
-	md5sums = f3e196a745ec70bc80e552867394a3e5
-	md5sums = 62fb020a60ac5b8059bf670517f460ca
-	md5sums = 6dfea87ef70147d6961160529a5a4d00
-	md5sums = 5de4883d86ab9e77120773790aea7ddf
-	md5sums = 794cb884d98479d7d270d58bdea0def3
-	md5sums = d0a6a418559410ca65206ec3165b8e23
+	sha256sums = 3a6bb00f270a5329682dff20fd2c1ab5332ef046eb54a96a0d7bd371005d31a3
+	sha256sums = 4b12e902ff32ffd82fd2db889b21617f1eafaa42f9335b24d28b217e70175003
+	sha256sums = cd7dbd374630fa4dafae7388f5535be63d32a33c681cab0da2ead499e0805948
+	sha256sums = d574a7b4c21f764ab62c9e0bc8f9f7f3704c0655618c63e6cff32925c9fe0895
+	sha256sums = 138e57267273e83f4f701246498f783e7066cea4ecc58658079d6f673041fda9
+	sha256sums = aba3d5aa768d99763ab7cb662e4f34ba395c1342ae2f72623b1eafe2e5682b1b
+	sha256sums = bfbb545d11fb9b5c695c4cee0fe8a9e28f1e934c0058423d37531c9bcf711f44
 
 pkgname = unixbench
 
