@@ -1,4 +1,5 @@
-# Maintainer: Eduardo Sánchez Muñoz
+# Maintainer: Jacob Henner <code@ventricle.us>
+# Contributor: Eduardo Sánchez Muñoz
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: BlackEagle <ike.devolder@gmail.com>
@@ -7,7 +8,7 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.3.1.r334.gf8f6feff3
+pkgver=1.3.1.r392.g83e860eab
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 url='http://www.clementine-player.org/'
