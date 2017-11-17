@@ -7,7 +7,7 @@
 pkgname=brother-mfcj245
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="Driver for the Brother DCP-j245 wifi multifuncional printer"
+pkgdesc="Driver for the Brother MFC-j245 wifi multifuncional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')
 depends=('a2ps' 'cups')
