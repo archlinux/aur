@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=python2-pynacl-git
 pkgver=1.0.1.r16.g42ef7df
