@@ -1,7 +1,7 @@
 # Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=2.1.11
+pkgver=2.1.13
 pkgrel=1
 pkgdesc="Python IDE for beginners."
 arch=('any')
@@ -9,7 +9,7 @@ url="http://thonny.cs.ut.ee/"
 license=('MIT')
 depends=('openssl' 'python' 'python-beautifulsoup4' 'python-jedi' 'tcl' 'tk')
 source=("https://bitbucket.org/plas/$pkgname/downloads/$pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('00f6a8b6a8fa5ba6cd21079057889125f608177f45c7a3e30b0ea4f4192d3bf8')
+sha256sums=('0b243b02b8d9f09c6c5137cae664da19adfe8a52db14ed20e2123f59e6ff470b')
 
 package() {
 
