@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Python library & console tool for controlling Xiaomi smart appliances"
 url="https://github.com/rytilahti/python-miio"
 arch=('any')
-license=('custom')
+license=('GPL3')
 depends=('python>=3.4' 'python-android-backup-tools' 'python-attrs' 'python-click' 'python-construct' 'python-cryptography' 'python-pycryptodomex' 'python-pretty-cron' 'python-pytz' 'python-zeroconf')
 source=("https://github.com/rytilahti/${pkgname}/archive/${pkgver}.tar.gz"
         'cryptodome-typing.patch')

@@ -4,7 +4,7 @@ pkgbase = python-miio
 	pkgrel = 1
 	url = https://github.com/rytilahti/python-miio
 	arch = any
-	license = custom
+	license = GPL3
 	depends = python>=3.4
 	depends = python-android-backup-tools
 	depends = python-attrs
