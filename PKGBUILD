@@ -6,7 +6,7 @@
 
 pkgname=asymptote-git
 epoch=1
-pkgver=2.42r16.g07604b6d3
+pkgver=2.42r17.g1e314cf9
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
@@ -19,23 +19,16 @@ optdepends=('python2:           for the xasy GUI'
             'tix:               for the xasy GUI')
 conflicts=('asymptote')
 provides=('asymptote')
-source=('git+https://github.com/vectorgraphics/asymptote.git' glrender.diff)
-md5sums=('SKIP'
-         'f6579c62d997d7c724494ae2a4631e75')
-_gitname=asymptote
+source=('git+https://github.com/vectorgraphics/asymptote.git')
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${_gitname}"
+  cd "$srcdir/${pkgname%-git}"
   git describe --tags|sed s+-+.+g|sed s+git.+r+
 }
 
-prepare() {
-  cd "$srcdir/${_gitname}"
-  patch -Np1 < "$srcdir"/glrender.diff
-}
-
 build() {
-  cd "$srcdir/${_gitname}"
+  cd "$srcdir/${pkgname%-git}"
 
   ./autogen.sh
   ./configure --enable-gc=/usr \
@@ -48,12 +41,12 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${_gitname}"
+  cd "$srcdir/${pkgname%-git}"
   make check-all
 }
 
 package() {
-  cd "$srcdir/${_gitname}"
+  cd "$srcdir/${pkgname%-git}"
   make -j1 DESTDIR="${pkgdir}" install-all
   sed -i -e 's@env python@env python2@' ${pkgdir}/usr/share/asymptote/GUI/*.py
   # this dir contains png files that are already embedded in the pdf documentation:
