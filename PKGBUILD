@@ -1,4 +1,4 @@
-# Maintainer: Robin Nehls <aur@manol.is>
+# Maintainer: robertfoster
 
 pkgname=libtpms
 pkgver=0.5.2.1
