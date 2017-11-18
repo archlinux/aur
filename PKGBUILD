@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Contributor: Sigmund Vestergaard <sigmundv at gmail dot com>
 # Contributor: Denis Wernert <denis@wernert.info>
 
