@@ -1,4 +1,4 @@
-# Mantainer: M0Rf30
+# Maintainer: robertfoster
 _name=drbl
 pkgname=${_name}-experimental
 pkgver=2.25.10
