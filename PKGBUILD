@@ -8,11 +8,11 @@
 _clang=1  # Use Clang instead of GCC for compilation
 
 pkgname=inox
-pkgver=62.0.3202.89
+pkgver=62.0.3202.94
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
@@ -65,7 +65,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/9000-disable-metrics.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/9001-disable-profiler.patch)
 
-sha256sums=('9f79760dc22f7183602a07af3d37d2226bd63ab0ca7163d88ac0d81982de9469'
+sha256sums=('cabc4d267bf08aabe11c5739048c43dde18c61acf595223a1c3aa1d3499558d4'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
@@ -112,9 +112,9 @@ declare -rgA _system_libs=(
   [flac]=flac
   #[freetype]=freetype2      # https://crbug.com/pdfium/733
   [harfbuzz-ng]=harfbuzz-icu
-  [icu]=icu
+  #[icu]=icu
   [libdrm]=
-  [libjpeg]=libjpeg-turbo
+  [libjpeg]=libjpeg
   #[libpng]=libpng           # https://crbug.com/752403#c10
   #[libvpx]=libvpx           # https://bugs.gentoo.org/611394
   [libwebp]=libwebp
@@ -287,6 +287,11 @@ build() {
     export NM=llvm-nm
     export CFLAGS="${CFLAGS//-fno-plt/} -Wno-unknown-warning-option"
     export CXXFLAGS="${CXXFLAGS//-fno-plt/} -Wno-unknown-warning-option"
+  fi
+
+  # Set exclude_unwind_tables to save disk space
+  if check_option strip y; then
+    _flags+=('exclude_unwind_tables=true')
   fi
 
   msg2 'Building GN'
