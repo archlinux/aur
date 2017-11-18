@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkg=linux-sgx-driver
 pkgname=$pkg-dkms-git
