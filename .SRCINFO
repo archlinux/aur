@@ -8,6 +8,7 @@ pkgbase = python-android-backup-tools-git
 	makedepends = git
 	depends = python
 	provides = python-android-backup-tools
+	conflicts = python-android-backup-tools
 	source = git://github.com/bluec0re/android-backup-tools.git
 	md5sums = SKIP
 
