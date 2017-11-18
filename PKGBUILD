@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=python-soundcloud-git
 pkgver=r89.ac799b0
