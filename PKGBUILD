@@ -3,12 +3,12 @@
 pkgname=nuvolaruntime-mse
 _pkgname=nuvolaruntime
 pkgver=4.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
 arch=("any")
 url=https://github.com/tiliado/nuvolaruntime/
 license=('custom:BSD')
-provides=('nuvolaplayer' 'nuvolarutime')
+provides=('nuvolaplayer' 'nuvolaruntime')
 conflicts=('nuvolaplayer' 'nuvolaruntime')
 depends=('python' 'vala' 'diorite>=4.7.0' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'libnotify' 'gstreamer' 'libdri2-git' 'libdrm' 'webkit2gtk-mse')
 makedepends=('scour' 'dri2proto')
