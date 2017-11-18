@@ -1,4 +1,4 @@
-# Maintainer : M0Rf30
+# Maintainer: robertfoster
 
 pkgname=akabeiclient-git
 pkgver=301.de5b490
