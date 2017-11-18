@@ -1,4 +1,4 @@
-#Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=appglass-git
 pkgver=1.0.1.g162fc1d
