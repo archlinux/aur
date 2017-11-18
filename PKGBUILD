@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=openbazaar
 pkgver=2.0.17
