@@ -1,4 +1,4 @@
-# Packager: M0Rf30
+# Packager: robertfoster
 
 pkgname=perl-x500-dn
 pkgver=0.29
