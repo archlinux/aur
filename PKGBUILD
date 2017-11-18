@@ -1,4 +1,4 @@
-# Maintainer : M0Rf30
+# Maintainer: robertfoster
 
 pkgname=akabei-git
 pkgver=286.d29fab4
