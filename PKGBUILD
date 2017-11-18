@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30 
+# Maintainer: robertfoster
 # Contributor: Tobias Luther <tobias [at] tonstrom [dot] de> 
 # Contributor: GraveDigger 
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
