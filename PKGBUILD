@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Fix: devnull@libcrack.so 13/9/2015
 
 pkgname=ccdebug
