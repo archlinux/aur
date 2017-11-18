@@ -6,18 +6,18 @@
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
-_kernel_rel=4.13
-_branch=drm-next-amd-dc-staging
+_kernel_rel=4.14
+_branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.13.708545.49e37ba07a3a
-pkgrel=2
+pkgver=4.14.708912.85d09ce5e503
+pkgrel=1
 arch=('x86_64')
-url='https://cgit.freedesktop.org/~airlied/linux/'
+url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
 source=(
-        "${pkgbase}::git://people.freedesktop.org/~airlied/linux#branch=${_branch}"
+        "${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
         # The main kernel config files
         'config.x86_64'
         # Pacman hook for initramfs regeneration
@@ -25,7 +25,7 @@ source=(
         # Standard config files for mkinitcpio ramdisk
         'linux.preset')
 sha256sums=('SKIP'
-            '28da7d06a07f83d11120fa5e146a6148ec10c7a4f0bed62c4fed61b67d0f3d78'
+            '185171ab6fd7fc0c5ee543750662ac510fa735528d71e1d634a134780bf16441'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
