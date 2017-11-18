@@ -3,14 +3,14 @@
 _upstream=RazerGenie
 _pkgname=razergenie
 pkgname=razergenie-git
-pkgver=0.4.r1.g5462132
+pkgver=0.5.r1.gbe9818e
 pkgrel=1
 pkgdesc="Standalone Qt application for configuring your Razer devices under GNU/Linux."
 arch=("x86_64" "i686")
 url="https://github.com/z3ntu/RazerGenie"
 license=('GPL3')
 depends=('qt5-base' 'hicolor-icon-theme' 'openrazer-daemon')
-makedepends=('git' 'cmake' 'extra-cmake-modules')
+makedepends=('git' 'meson' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/z3ntu/RazerGenie.git')
@@ -21,17 +21,12 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../$_upstream -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib
-  make
+  arch-meson "$_upstream" build
+
+  ninja -C build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
