@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=kodi-addon-pulsar
 pkgver=0.6.1
