@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 _pkgname=python2-obelisk
 pkgname=$_pkgname-git
