@@ -2,7 +2,7 @@
 _pkgname=pkhex
 pkgname=${_pkgname}-git
 pkgver=r3745.69cf1eaa
-pkgrel=2
+pkgrel=3
 pkgdesc="Pokémon core series save editor, programmed in C#."
 arch=(any)
 url="https://github.com/kwsch/PKHeX"
