@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=kodi-addon-stream
 pkgver=1.4.6RC3
