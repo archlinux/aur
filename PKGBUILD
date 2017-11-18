@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=sha3sum
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Keccak-family checksum calculator, including SHA-3"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(libkeccak)
 makedepends=(libkeccak sed)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(e33fb93c7dedbda474ef8b184a43175cfa03cc3aa06432ca494c3a3adcbc76f4)
+sha256sums=(3143bc3214d83372e28a2ad72956250c23f6f89804a44aa950aba5d17d494273)
 
 
 build() {
