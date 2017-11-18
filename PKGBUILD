@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 _pkgname=python2-rudp
 pkgname=${_pkgname}-git
 pkgver=30.e7f74dd
