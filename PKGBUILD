@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=jackeventcmd-git
 pkgver=2.fd76b9a
