@@ -1,10 +1,10 @@
-# Maintainer: M0Rf30 < morf3089 at gmail dot com >
+# Maintainer: robertfoster
 
 pkgname=kdeplasma-applets-veromix-git
 pkgver=29.813dcbd
 pkgrel=2
 pkgdesc="A plasmoid mixer for the Pulseaudio sound server"
-url="https://github.com/M0Rf30/veromix-plasmoid"
+url="https://github.com/robertfoster/veromix-plasmoid"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('kdebindings-python2' 'kdebase-workspace' 'python2-pyqt4' 'pulseaudio' 'pyxdg' 'python2-dbus')
@@ -12,7 +12,7 @@ conflicts=('kdeplasma-applets-veromix' 'veromix-git')
 makedepends=('git' 'kde-dev-scripts')
 optdepends=('pulseaudio-equalizer'
             'swh-plugins: equalizer and other effects support')
-source=('veromix-plasmoid::git://github.com/M0Rf30/veromix-plasmoid.git#branch=stable')
+source=('veromix-plasmoid::git://github.com/robertfoster/veromix-plasmoid.git#branch=stable')
 install=${pkgname}.install
 
 build() {
