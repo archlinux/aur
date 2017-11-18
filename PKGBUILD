@@ -1,4 +1,4 @@
-# Maintainer : M0Rf30 <morf3089@gmail.com>
+# Maintainer: robertfoster
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 _pkg=pjproject
