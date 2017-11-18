@@ -1,4 +1,4 @@
-# Maintainer: archtux <antonio dot arias99999 at gmail dot com>
+# Maintainer: robertfoster
 
 pkgname=gmediafinder-git
 pkgver=121.694694c
