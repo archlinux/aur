@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=kdeplasma-applets-qrcodeplasmoid-git
 pkgver=10.9af2b9a
