@@ -1,4 +1,4 @@
-# Maintainer M0Rf30
+# Maintainer: robertfoster
 
 pkgname=dnschain-git
 pkgver=344.67c567e
