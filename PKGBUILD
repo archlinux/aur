@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Contributor: quantax -- contact via Arch Linux forum or AUR
 
 pkgname=makepkg-unreal
