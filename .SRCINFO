@@ -1,13 +1,13 @@
 pkgbase = soundpipe
-	pkgdesc = A lightweight music DSP library.
-	pkgver = 1.5.0
+	pkgdesc = A lightweight music DSP library
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://paulbatchelor.github.io/proj/soundpipe.html
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = libsndfile
-	source = https://github.com/PaulBatchelor/soundpipe/archive/v1.5.0.tar.gz
-	md5sums = e9bd3c1f2b47f05a76cc89e47f2f68b1
+	source = https://github.com/PaulBatchelor/soundpipe/archive/v1.6.0.tar.gz
+	sha256sums = 107a890a87005a8bb1859e91a2f9eeb1b14ab489f86f8b2b42002db81bde04b2
 
 pkgname = soundpipe
 
