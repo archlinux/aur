@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=nightmode-git
 _pkgname=nightmode
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'automoc4' 'kdelibs')
 depends=('kdebase-workspace')
 provides=('nightmode')
 conflicts=('nightmode')
-source=("nightmode::git+https://github.com/M0Rf30/nightmode.git"
+source=("nightmode::git+https://github.com/robertfoster/nightmode.git"
 	"patch"	)
 
 
