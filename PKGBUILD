@@ -9,7 +9,7 @@ url="https://github.com/robertfoster/aliwe"
 license=('GPL3')
 depends=(openssl)
 makedepends=('git')
-source=('aliwe::git://github.com/robertfoster/aliwe.git')
+source=('aliwe::git://github.com/roberfoster/aliwe.git')
 
 build() {
   cd aliwe
