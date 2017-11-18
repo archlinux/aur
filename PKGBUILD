@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname='python2-pyuserinput-git'
 pkgver=86.9fd2879
