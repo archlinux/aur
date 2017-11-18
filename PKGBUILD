@@ -26,15 +26,25 @@ provides=($_pkgname)
 options=('!emptydirs')
 install=mpv.install
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
-        '0001-opengl-backend-support-multiple-backends.patch')
+        '0001-opengl-backend-support-multiple-backends.patch'
+        '0002-vaapi-Use-libva2-message-callbacks.patch'
+        '0003-demux_lavf-return-AVERROR_EOF-on-file-end.patch')
 sha256sums=('341d8bf18b75c1f78d5b681480b5b7f5c8b87d97a0d4f53a5648ede9c219a49c'
-            '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a')
+            '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a'
+            '3c3517f4f4c71e39e1e04ea440688fc8d7b3dc55e6bc0a9398d11a9b75bde07d'
+            '5de6c616428c87cf9b39d8ba24446d65d175050c083e1054194d93cf03d5816a')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
 
-  # --opengl-backend: support multiple backends (#4384) (FS#53962)
+   # --opengl-backend: support multiple backends (#4384) (FS#53962)
   patch -Np1 < "${srcdir}"/0001-opengl-backend-support-multiple-backends.patch
+
+  # vaapi: Use libva2 message callbacks
+  patch -Np1 < "${srcdir}"/0002-vaapi-Use-libva2-message-callbacks.patch
+
+  # demux_lavf: return AVERROR_EOF on file end
+  patch -Np1 < "${srcdir}"/0003-demux_lavf-return-AVERROR_EOF-on-file-end.patch
 
   ./bootstrap.py
 }
