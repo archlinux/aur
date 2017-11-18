@@ -1,5 +1,5 @@
 
-# Pimper : M0Rf30
+# Pimper : robertfoster
 
 pkgname=rapid-spring-git
 pkgver=233.df54975
