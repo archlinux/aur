@@ -9,7 +9,7 @@ pkgdesc="XBase C++ library"
 arch=('i686' 'x86_64')
 url='https://github.com/graywolf/xbase'
 license=('LGPL')
-makedepends=('git')
+makedepends=('git' 'cmake')
 
 source=("git+https://github.com/graywolf/xbase#tag=${pkgver}")
 sha512sums=('SKIP')
