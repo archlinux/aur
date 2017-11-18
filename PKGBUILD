@@ -1,9 +1,9 @@
 # Maintainer: Alia Skywol <skywol@qq.com>
 pkgname=deepin.com.wechat
-pkgver=2.4.5.48deepin2
+pkgver=2.6.0.40deepin1
 pkgrel=1
 epoch=
-pkgdesc="Deepin Wine Wechat 2.4.5"
+pkgdesc="Deepin Wine Wechat 2.6.0"
 arch=('i686' 'x86_64')
 url="http://weixin.qq.com/"
 license=('Proprietary')
