@@ -3,9 +3,9 @@
 
 pkgname=qtwebflix-git
 _gitname=qtwebflix
-pkgver=r31.833ef83
+pkgver=r37.3618d55
 pkgrel=1
-pkgdesc='Standalone Netflix Browser using qtwebengine'
+pkgdesc='Standalone Netflix Browser using qt5-webengine'
 arch=('i686' 'x86_64')
 url='https://github.com/gort818/qtwebflix'
 license=('GPL3')
