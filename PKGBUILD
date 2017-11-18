@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Contributor: <kfgz at interia dot pl>
 
 pkgname=nwipe
