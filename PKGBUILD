@@ -4,12 +4,12 @@
 
 pkgname=xbase
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="XBase C++ library"
 arch=('i686' 'x86_64')
 url='https://github.com/graywolf/xbase'
 license=('LGPL')
-depends=('bash' 'gcc-libs')
+makedepends=('git')
 
 source=("git+https://github.com/graywolf/xbase#tag=${pkgver}")
 sha512sums=('SKIP')
