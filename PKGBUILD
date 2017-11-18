@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=assaultcube-reloaded-git
 pkgver=717.dddd73b
