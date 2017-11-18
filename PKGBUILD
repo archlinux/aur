@@ -6,13 +6,13 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}-unstable
-pkgver=3886_4.13.3_r72_g7141063a
+pkgver=3900_4.14_rc1_r62_g1ea61e3c
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
 url="http://btrfs.wiki.kernel.org/index.php/Main_Page"
 license=('GPL')
-depends=('glibc' 'e2fsprogs' 'lzo' 'zlib')
+depends=('glibc' 'e2fsprogs' 'lzo' 'zlib' 'zstd')
 makedepends=('git' 'asciidoc' 'xmlto')
 provides=('btrfs-progs')
 conflicts=('btrfs-progs')
