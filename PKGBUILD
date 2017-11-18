@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=airtime-git
 pkgver=2.5.2.1.r81.g7b3d2ec11
