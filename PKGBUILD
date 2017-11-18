@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgbase=python-html5lib-git
 pkgname=('python2-html5lib-git' 'python-html5lib-git')
