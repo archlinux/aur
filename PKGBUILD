@@ -1,6 +1,6 @@
 # Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
 
-pkgname=caelum
+pkgname=caelum-ogre1.9
 pkgver=0.6.3
 pkgrel=1
 pkgdesc="Library for OGRE targeted to help create nice-looking atmospheric effects."
