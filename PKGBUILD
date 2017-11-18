@@ -1,4 +1,4 @@
-#Mantainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=portage-git
 pkgver=13974.b87f77d
 pkgrel=1
