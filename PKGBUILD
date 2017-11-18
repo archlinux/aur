@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 _pkgname=fabric-chaintool
 pkgname=hyperledger-${_pkgname}
