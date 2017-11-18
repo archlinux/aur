@@ -1,0 +1,26 @@
+pkgbase = python-rootpy-git
+	pkgdesc = Pythonic interface with ROOT on top of the existing PyROOT bindings
+	pkgver = r3965.457e0740
+	pkgrel = 1
+	url = http://www.rootpy.org/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = root
+	optdepends = python-numpy: Increase speed
+	optdepends = python-root_numpy: Increase speed
+	optdepends = python-matplotlib: Plotting
+	optdepends = python-pytables: HDF5 IO in rootpy.root2hdf5
+	optdepends = readline: Roosh (interactive root shell)
+	optdepends = python-termcolor: Roosh (interactive root shell)
+	optdepends = python-uncertainties: Uncertainties handeling
+	provides = python-rootpy
+	conflicts = python-rootpy
+	options = !emptydirs
+	source = git+https://github.com/rootpy/rootpy
+	sha256sums = SKIP
+
+pkgname = python-rootpy-git
+
