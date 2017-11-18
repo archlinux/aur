@@ -1,0 +1,15 @@
+pkgbase = python-android-backup-tools-git
+	pkgdesc = Unpack and repack android backups
+	pkgver = r7.49fc127
+	pkgrel = 1
+	url = https://github.com/bluec0re/android-backup-tools
+	arch = any
+	license = apache
+	makedepends = git
+	depends = python
+	provides = python-android-backup-tools
+	source = git://github.com/bluec0re/android-backup-tools.git
+	md5sums = SKIP
+
+pkgname = python-android-backup-tools-git
+
