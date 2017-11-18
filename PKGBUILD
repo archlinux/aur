@@ -1,14 +1,14 @@
-# Maintainer Yurii Kolesnykov <yurikoles@gmail.com>
+# Maintainer Kirill Kovshov <kirillnow@gmail.com>
 # Credit: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=gstreamer0.10-good
 _pkgname=gst-plugins-good
 pkgname=('gstreamer0.10-good' 'gstreamer0.10-good-plugins')
 pkgver=0.10.31
-pkgrel=27
+pkgrel=29
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
-makedepends=('intltool' 'pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'libavc1394' 'libiec61883' 'aalib' 'libshout' 'libdv' 'flac' 'gconf' 'wavpack' 'taglib' 'libsoup-gnome' 'v4l-utils' 'libcaca' 'bzip2' 'gdk-pixbuf2' 'libpulse' 'jack' 'git' 'cairo' 'libgudev')
+makedepends=('intltool' 'pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'libavc1394' 'libiec61883' 'aalib' 'libshout' 'libdv' 'flac' 'gconf' 'wavpack' 'taglib' 'libsoup' 'v4l-utils' 'libcaca' 'bzip2' 'gdk-pixbuf2' 'libpulse' 'jack' 'git' 'cairo' 'libgudev')
 url="https://github.com/triceratops1/gstreamer0"
 options=(!emptydirs)
 source=("git+https://gitlab.com/gstreamer-sdk/$_pkgname.git#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9"
@@ -40,6 +40,9 @@ build() {
     --with-package-name="GStreamer Good Plugins (Archlinux)" \
     --with-package-origin="http://www.archlinux.org/"
 
+  #quick and dirty fix
+  echo "#define GST_PLUGIN_DEFINE2(a,b,c,d,e,f,g,h,i) GST_PLUGIN_DEFINE(a,b, #c ,d,e,f,g,h,i)" >>config.h  
+
   make
   sed -e 's/gst sys ext/gst/' -i Makefile
 }
@@ -54,7 +57,7 @@ package_gstreamer0.10-good() {
 }
 
 package_gstreamer0.10-good-plugins() {
-  depends=("gstreamer0.10-good=${pkgver}" 'libavc1394' 'libiec61883' 'aalib' 'libshout' 'libdv' 'flac' 'gconf' 'wavpack' 'taglib' 'libsoup-gnome' 'v4l-utils' 'libcaca' 'libpng' 'libjpeg' 'jack' 'libpulse' 'cairo' 'gdk-pixbuf2' 'libgudev')
+  depends=("gstreamer0.10-good=${pkgver}" 'libavc1394' 'libiec61883' 'aalib' 'libshout' 'libdv' 'flac' 'gconf' 'wavpack' 'taglib' 'libsoup' 'v4l-utils' 'libcaca' 'libpng' 'libjpeg' 'jack' 'libpulse' 'cairo' 'gdk-pixbuf2' 'libgudev')
   pkgdesc="GStreamer Multimedia Framework Good Plugins (gst-plugins-good)"
   groups=('gstreamer0.10-plugins')
   replaces=('gstreamer0.10-aalib' 'gstreamer0.10-wavpack' 'gstreamer0.10-shout2' 'gstreamer0.10-taglib' 'gstreamer0.10-libcaca' 'gstreamer0.10-libpng' 'gstreamer0.10-jpeg' 'gstreamer0.10-cairo' 'gstreamer0.10-flac' 'gstreamer0.10-speex' 'gstreamer0.10-gdkpixbuf' 'gstreamer0.10-dv1394' 'gstreamer0.10-annodex' 'gstreamer0.10-gconf' 'gstreamer0.10-esd' 'gstreamer0.10-cdio' 'gstreamer0.10-dv' 'gstreamer0.10-soup' 'gstreamer0.10-pulse')
