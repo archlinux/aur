@@ -2,30 +2,25 @@
 
 _upstream=RazerGenie
 pkgname=razergenie
-pkgver=0.4
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="Standalone Qt application for configuring your Razer devices under GNU/Linux."
 arch=("x86_64" "i686")
 url="https://github.com/z3ntu/RazerGenie"
 license=('GPL3')
-depends=('qt5-base' 'hicolor-icon-theme' 'openrazer-daemon')
-makedepends=('cmake' 'extra-cmake-modules')
+depends=('qt5-base' 'openrazer-daemon')
+makedepends=('meson' 'qt5-tools')
 source=("https://github.com/z3ntu/RazerGenie/releases/download/v$pkgver/RazerGenie-$pkgver.tar.xz"{,.asc})
-sha512sums=('b8ea90f982ed25231c10c7244615c8e6db97cb36a7740ab02855c0c5efdf22c19f8c770f1d51080f8d5d68ff6c212f290fc213bf393baf60517fe622b8b77cc9'
+sha512sums=('0a7d84481ec9a5a07fc86fd8bc1fd2ed71499d0f5a4b831043919cb3afea85cf2950e94295598e18d018221b6d032bce2a8f89fd78fe00697b298d730def5adb'
             'SKIP')
-validpgpkeys=('BD04DA24C971B8D587B2B8D7FAF69CF6CD2D02CD') # Luca Weiss <luca@z3ntu.xyz>
-
-prepare() {
-  mkdir -p build
-}
+validpgpkeys=('BD04DA24C971B8D587B2B8D7FAF69CF6CD2D02CD') # Luca Weiss
 
 build() {
-  cd build
-  cmake ../$_upstream-$pkgver -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib
-  make
+  arch-meson "$_upstream-$pkgver" build
+
+  ninja -C build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
