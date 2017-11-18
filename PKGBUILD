@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 
 pkgname=hyperd
-pkgver=0.8.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Hypervisor-agnostic Docker Runtime"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('hyperstart: boot files for hyperd instances')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyperhq/${pkgname}/archive/v${pkgver}.tar.gz"
         'btrfs-progs-4.5.diff')
-sha256sums=('4b82884cbc75115006000f755e1ad5833309911c6d020977d874dffb0882628f'
+sha256sums=('0fe48e9b2ad62517f26fd08aa1cc8dfe83208e4240028b037b41517eb0477507'
             '12fe84f2711fdcb35811765d5efb117e947a893c11fdc2e6f1e060e63917ee9d')
 
 prepare() {
@@ -39,9 +39,9 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
 
-    install -D hyperctl "${pkgdir}/usr/bin/hyperctl"
-    install    hyperd   "${pkgdir}/usr/bin/hyperd"
-    install    vmlogd   "${pkgdir}/usr/bin/vmlogd"
+    install -D cmd/hyperctl/hyperctl "${pkgdir}/usr/bin/hyperctl"
+    install    cmd/hyperd/hyperd     "${pkgdir}/usr/bin/hyperd"
+    install    cmd/vmlogd/vmlogd     "${pkgdir}/usr/bin/vmlogd"
     install -D -m644 package/dist/etc/hyper/config "${pkgdir}/etc/hyper/config"
     install -D -m644 package/dist/lib/systemd/system/hyperd.service "${pkgdir}/usr/lib/systemd/system/hyperd.service"
     install    -m644 package/dist/lib/systemd/system/hyper-vmlogd.service "${pkgdir}/usr/lib/systemd/system/hyper-vmlogd.service"
