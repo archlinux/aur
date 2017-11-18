@@ -1,4 +1,4 @@
-# Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
+# Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 
 pkgname=caelum-ogre1.9
 pkgver=0.6.3
