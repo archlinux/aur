@@ -17,7 +17,7 @@ sha512sums=('f415810932c56521369fe5b12d151159ca73486dad415df7c3ae2e10dea81de28fe
 build() {
   export PKG_CONFIG_PATH="/opt/OGRE-1.9/lib/pkgconfig"
 
-  cd ${srcdir}/ogre-caelum-0.6.3
+  cd ${srcdir}/ogre-caelum-${pkgver}
 
   # get a clean build dir
   [[ -d build ]] && rm -rf build
@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/caelum-${pkgver}/build
+  cd ${srcdir}/ogre-caelum-${pkgver}/build
   make DESTDIR=${pkgdir} install
 }
