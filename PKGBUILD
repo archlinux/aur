@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=openca-base
 pkgver=1.5.0
 pkgrel=1
