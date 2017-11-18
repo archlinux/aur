@@ -11,7 +11,7 @@ license=('GPL')
 depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'gawk' 'grep' 'iproute2' 'iptables' 'libarchive' 'procps-ng' 'qemu-arch-extra' 'sudo' 'util-linux' 'wget')
 makedepends=('git')
 install=
-source=("simonpi::git+https://github.com/M0Rf30/simonpi.git")
+source=("simonpi::git+https://github.com/roberfoster/simonpi.git")
 
 pkgver() {
   cd $srcdir/simonpi
