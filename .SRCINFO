@@ -1,0 +1,27 @@
+pkgbase = mingw-w64-python-setuptools
+	pkgdesc = Easily download, build, install, upgrade, and uninstall Python packages (mingw-w64)
+	pkgver = 36.7.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/setuptools
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-python-pip
+	makedepends = mingw-w64-python2-pip
+	depends = wine
+	source = https://github.com/pypa/setuptools/archive/v36.7.2.tar.gz
+	source = 0001-mingw-python-fix.patch
+	source = 0002-Allow-usr-bin-env-in-script.patch
+	source = 0003-MinGW-w64-Look-in-same-dir-as-script-for-exe.patch
+	source = 0004-dont-execute-msvc.patch
+	md5sums = 5c76d4500cecfc2ba2465a42daad5099
+	md5sums = 9a47748aa98d1263b4b056f0c46b11b1
+	md5sums = c89605bb93f8e6ab683ec8e3ca2ff9df
+	md5sums = 12685e2e10a64e7b0615098d4b0a1c41
+	md5sums = 41da2b739443e65a72f9bb4ae454eb57
+
+pkgname = mingw-w64-python-setuptools
+	depends = mingw-w64-python>=3.3
+
+pkgname = mingw-w64-python2-setuptools
+	depends = mingw-w64-python2>=2.7
+
