@@ -3,46 +3,36 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=xbase
-pkgver=2.0.0
-pkgrel=4
-pkgdesc="A compatible C++ class library"
+pkgver=3.2.0
+pkgrel=1
+pkgdesc="XBase C++ library"
 arch=('i686' 'x86_64')
-url='http://linux.techass.com/projects/xdb/'
+url='https://github.com/graywolf/xbase'
 license=('LGPL')
 depends=('bash' 'gcc-libs')
-source=("http://downloads.sourceforge.net/xdb/${pkgname}-${pkgver}.tar.gz"
-        'fix-build.patch'
-        'gcc43.patch'
-        'gcc47.patch')
-md5sums=('9b29362031716a12491beb9f8cc882f2'
-         'f66c1d19a51552b1748ab9158156b103'
-         '0d5a59a59eb2c79d172bd4339de35372'
-         '879bf5107605eee2cbec2dca116edac6')
+
+source=("git+https://github.com/graywolf/xbase#tag=${pkgver}")
+sha512sums=('SKIP')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
-
-  patch -p1 -i "${srcdir}/fix-build.patch"
-  patch -p1 -i "${srcdir}/gcc43.patch"
-  patch -p1 -i "${srcdir}/gcc47.patch"
+	cd "${pkgname}"
+	mkdir -p build
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+	cd "${pkgname}/build"
 
-  unset CPPFLAGS
-
-  # Workaround to build on x86_64
-  ./configure --host=i686-pc-linux-gnu --prefix=/usr
-  make
+	cmake \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX="${pkgdir}" \
+		..
+	make
 }
 
-check() {
-  cd ${pkgname}-${pkgver}
-  make -k check
-}
+#check() {
+#}
 
 package() {
-  cd ${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
+	cd "${pkgname}/build"
+	make install
 }
