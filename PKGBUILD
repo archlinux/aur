@@ -12,7 +12,7 @@ url="https://github.com/michaellass/archlinux-java-run"
 license=('MIT')
 depends=(bash java-runtime-common)
 makedepends=(git)
-source=(archlinux-java-run::git+https://github.com/michaellass/archlinux-java-run.git#tag=v${pkgver})
+source=("archlinux-java-run::git+https://github.com/michaellass/archlinux-java-run.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 package() {
