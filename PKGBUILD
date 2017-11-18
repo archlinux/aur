@@ -2,7 +2,7 @@
 pkgname=vscode-insiders
 pkgver=1.19.0
 pkgrel=1510899402
-pkgdesc="Visual Studio Code Insiders. Code editing Redefined.."
+pkgdesc="Visual Studio Code Insiders: code editing Redefined.."
 arch=('x86_64')
 url="https://code.visualstudio.com"
 license=('commercial')

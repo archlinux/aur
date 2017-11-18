@@ -1,5 +1,5 @@
 pkgbase = vscode-insiders
-	pkgdesc = Code editing Redefined..
+	pkgdesc = Visual Studio Code Insiders: code editing Redefined..
 	pkgver = 1.19.0
 	pkgrel = 1510899402
 	url = https://code.visualstudio.com
