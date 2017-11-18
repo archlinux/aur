@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=apache-mime4j
 pkgver=0.7.2
