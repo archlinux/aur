@@ -1,29 +1,19 @@
-# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=bcftools
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
-pkgdesc="Reading/writing BCF2/VCF/gVCF files and calling/filtering/summarising SNP and short indel sequence variants"
+pkgdesc="A program for variant calling and manipulating files in the Variant Call Format (VCF) and its binary counterpart BCF"
 arch=('i686' 'x86_64')
 url="http://samtools.github.io/bcftools/"
 license=('GPL')
-depends=('gsl' 'htslib')
-optdepends=('python2: needed for some scripts')
-source=(https://github.com/samtools/bcftools/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
-
-prepare() {
-  cd $srcdir/$pkgname-$pkgver
-
-  # prevent shipped htslib to be used
-  rm -rf htslib-$pkgver
-
-  sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' \
-      -e 's|#!/usr/bin/python|#!/usr/bin/env python2|' \
-      -i misc/plot-roh.py misc/guess-ploidy.py
-}
+depends=('gsl' 'htslib' 'python-matplotlib' 'python')
+source=(https://github.com/samtools/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
+sha256sums=('293010736b076cf684d2873928924fcc3d2c231a091084c2ac23a8045c7df982')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   ./configure \
     --prefix=/usr \
@@ -35,16 +25,8 @@ build() {
   make
 }
 
-check() {
-  cd $srcdir/$pkgname-$pkgver
-
-  make check
-}
-
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   make DESTDIR=$pkgdir install
 }
-
-md5sums=('e43efe3df5f9c55acb4b48cee214d281')
