@@ -3,12 +3,12 @@
 _pkgname=basilisk
 pkgname=${_pkgname}-bin
 pkgver=55.0.2017.11.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Basilisk Browser from the makers of Pale Moon"
 url="http://www.basilisk-browser.org"
 arch=('x86_64')
 license=('GPL')
-depends=('gtk2' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu')
+depends=('gtk2' 'gtk3' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu')
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
