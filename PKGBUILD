@@ -1,4 +1,4 @@
-#Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=openbazaard
 pkgver=0.9.4
