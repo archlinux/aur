@@ -1,4 +1,4 @@
-# Mantainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=authpuppy
 pkgver=1.0.0
