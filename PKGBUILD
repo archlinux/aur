@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=jacknotifier-git
 pkgver=11.0de9ea9
