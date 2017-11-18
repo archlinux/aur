@@ -6,7 +6,7 @@ _gitname=rigs-of-rods
 
 pkgname=$_pkgname-git
 pkgver=0.4.7.0.r235.g2e4eebef
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
 url="http://rigsofrods.org"
@@ -24,7 +24,7 @@ source=("git+https://github.com/RigsOfRods/$_gitname.git"
         "rigsofrods.sh"
         "rigsofrods-config.sh")
 sha512sums=('SKIP'
-            'aaf465b9afa2acde5300c5721d46147e54a25d74ca42efc560e47fd2e1197717904a33deef3bedcf4a94103228c25129b77f200d386567424a5c1f96fb55b339'
+            '45da7604f07357ee14724dae80c83bd0dc0166a1e8da342c168751ef142f0a6c5d20a14fcc89a90cf8a98b7fdc710dc475fd2d2aa82758cd1aeb8df88e8b216c'
             '8280ddec6dba37e66c323e469c1894bacc3b592b6ea1f7fd3876bc9e7253b14b4949c3c51d7dd47ad7bd78e085fbe51aad83b1e8d0b0755deda426129e4a6710'
             '40a000061d72245265d53d7c2ce0c4acc81eb3dddb6f6beda4b693a154e34922b8eb5c8400062b58c5f43a74be6cdaab938c1cd6427aebfc691d1fa52517fe2d'
             'b0c04df93fa622d27ba485df1253ee786ebe42acb2c7b2f5d9657f22623503ee995845905f782c7b550625a4db0dbfdd924e4757b2daf21f84bb9cb3f6d683af'
