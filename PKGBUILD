@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=marytts
 pkgver=5.2
 pkgrel=1
