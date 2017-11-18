@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname='python2-pyleapmouse-git'
 pkgver=63.97d8839
