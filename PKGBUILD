@@ -1,4 +1,4 @@
-#Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 _pkgname=gnome-multi-writer
 pkgname=${_pkgname}-git
