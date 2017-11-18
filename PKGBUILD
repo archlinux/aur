@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=63.0.3218.0
+pkgver=64.0.3251.0
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
@@ -17,21 +17,20 @@ source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
   'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r19.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r2.patch'
+  'chromium-gcc5-r5.patch'
+  'chromium-exclude_unwind_tables_r2.patch'
 )
-sha512sums=('a55bb2475c8423e21d0448b4fb7a2af73811b29e2fb67d11febf1611b549363cdd6b68ac50c1397a934bedfefaf51e55d8721ad58593ca0d9b6c4b7310376e1b'
+sha512sums=('fb3aad57f7efc97e24d515c9fea347e4a8faa9d317ca5ccb2a7a023513241c7ac2c60d3f5728126e068772dba3fd88270e6e85ad5508d11063a85479fcb56214'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
             '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c'
-            'd9c65b05eab6e1d5e0b2d9453edffd229b3cdfe9fe01e3594153ae51308a8eefd599d33bac2b5417d4e150278965d2a7a6091d25808d243223878a7d467f5021'
-            '55723ffe9c34b5336450e75db8354c1ce5d6429b7296cbf575941eef5f3de3cdc40836e8f9b6905b4153913b10136a12d4c6d37f6a9f447677aa40588bfac182')
+            'ab4eedc4903a03305790e3bdd14ec8db86ffd8f30b04600271fe67cc48d4467948687f29154a96aaf88d0daa60bd24fff38e99084e3bc1f3d065b3c733ab10d7'
+            '5275a9ad964152dced1f542eabb6116cdeeadc2391abb3788e64994a475af75350c8443f1737cf07e4b95da0c5df0b58e27552952aa5c4095b4f90a2873ede7d')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
   # Use Python 2
-  find . -name '*.py' -exec sed -r 's|/usr/bin/python$|&2|g' -i {} +
-  find . -name '*.py' -exec sed -r 's|/usr/bin/env python$|&2|g' -i {} +
+  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i
   # There are still a lot of relative calls which need a workaround
   [[ -d "$srcdir/python2-path" ]] && rm -rf "$srcdir/python2-path"
   mkdir "$srcdir/python2-path"
@@ -43,8 +42,8 @@ prepare() {
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
   patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r19.patch"
-  patch -p1 -i "$srcdir/chromium-gcc5-r2.patch"
+  patch -p1 -i "$srcdir/chromium-gcc5-r5.patch"
+  patch -p1 -i "$srcdir/chromium-exclude_unwind_tables_r2.patch"
 }
 
 build() {
