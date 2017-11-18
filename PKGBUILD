@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 _pkgsrcname=PyRIC
 pkgname=python2-pyric
