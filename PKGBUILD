@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 _pkgsrcname=txjson-rpc
 pkgname=python2-${_pkgsrcname}
