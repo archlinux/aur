@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=python2-gnupg-hg
 _pkgsrcname=python-gnupg
