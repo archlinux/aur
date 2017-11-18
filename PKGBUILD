@@ -1,12 +1,13 @@
-# Maintainer: Gui||aume <michaudg[at]gmail[dot]com>
+# Maintainer: Noeljunior <liamgliam {at} gmail {dot} com>
 # Contributor: zach <zach {at} zach-adams {dot} com>
+# Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de
 
 pkgname=gtk-theme-arc-solid-git
 _pkgname=arc-theme
 _pkgauthor=horst3180
-pkgver=571.211dd7a
+pkgver=663.8290cb8
 pkgrel=1
-pkgdesc="A flat theme for GTK 3, GTK 2 and Gnome-Shell. With --disable-transparency build option. Latest commit from the master branch on Github."
+pkgdesc="A flat theme without transparent elements for GTK 3, GTK 2 and Gnome-Shell. Latest commit from the master branch on Github."
 arch=('any')
 url="https://github.com/horst3180/${_pkgname}"
 license=('GPL3')
@@ -14,7 +15,8 @@ depends=('gtk3' 'gtk-engine-murrine')
 makedepends=('git')
 source=(${_pkgname}::"git+https://github.com/horst3180/${_pkgname}.git")
 sha256sums=('SKIP')
-conflicts=('gtk-theme-arc', 'gtk-theme-arc-git')
+conflicts=('arc-gtk-theme')
+provides=('arc-gtk-theme')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
