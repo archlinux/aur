@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=openca-tools
 pkgver=1.3.0
 pkgrel=2
