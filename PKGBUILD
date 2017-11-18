@@ -1,4 +1,4 @@
-# Contributor: M0Rf30
+# Contributor: robertfoster
 
 pkgname=capanalysis
 pkgver=v1.2.0.r45.gbc8e15d
@@ -9,8 +9,8 @@ url="http://www.capanalysis.net/"
 license=('GPL')
 depends=('glibc' 'libpcap' 'libpqxx' 'sqlite' 'openssl' 'zlib' 'wireshark-cli' 'apache' 'php-apache' 'php-sqlite' 'php-pgsql' 'postgresql' 'ndpi')
 makedepends=('xxd')
-source=('capanalysis::git+https://github.com/M0Rf30/CapAnalysis.git'
-	'xplico::git+https://github.com/M0Rf30/xplico.git'
+source=('capanalysis::git+https://github.com/robertfoster/CapAnalysis.git'
+	'xplico::git+https://github.com/robertfoster/xplico.git'
 	capanalysis.service
 	capana.conf)
 install=capanalysis.install
