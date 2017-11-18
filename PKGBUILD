@@ -1,4 +1,4 @@
-# Contributor: M0Rf30
+# Contributor: robertfoster
 
 pkgname=dboxfe2
 pkgver=0.1.3
