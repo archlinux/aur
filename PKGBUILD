@@ -7,7 +7,7 @@
 
 pkgname=chromium-gtk2
 _pkgname=chromium
-pkgver=62.0.3202.89
+pkgver=62.0.3202.94
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security (GTK2 version)"
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-gn-bootstrap-r17.patch
         chromium-widevine.patch
         fix-nav-button-layout.patch)
-sha256sums=('9f79760dc22f7183602a07af3d37d2226bd63ab0ca7163d88ac0d81982de9469'
+sha256sums=('cabc4d267bf08aabe11c5739048c43dde18c61acf595223a1c3aa1d3499558d4'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -49,7 +49,7 @@ declare -rgA _system_libs=(
   [flac]=flac
   #[freetype]=freetype2      # https://crbug.com/pdfium/733
   [harfbuzz-ng]=harfbuzz-icu
-  [icu]=icu
+  #[icu]=icu                 # https://crbug.com/772655
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng           # https://crbug.com/752403#c10
