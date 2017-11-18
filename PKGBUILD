@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=rtcwcoop-git
 pkgver=1.0.2.r3.g8695325f 
