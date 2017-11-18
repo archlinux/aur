@@ -3,15 +3,18 @@
 pkgname=cquery-git
 _pkgname=cquery
 pkgver=662.a60f93b
-pkgrel=1
+pkgrel=2
 pkgdesc='Low-latency vscode language server for large C++ code-bases, powered by libclang.'
 arch=('any')
 url='https://github.com/jacobdufault/cquery/'
 license=('MIT')
 depends=('clang')
 makedepends=("git" "python2")
-source=('git+https://github.com/jacobdufault/cquery.git')
-md5sums=('SKIP')
+source=('git+https://github.com/jacobdufault/cquery.git' 'cquery-sh')
+md5sums=(
+    'SKIP'
+    'cdefbd32658ab9c6a531deb64c512c5d'
+)
 
 pkgver() {
     cd $_pkgname
@@ -22,6 +25,7 @@ prepare() {
     cd $_pkgname
     git submodule update --init --recursive
     sed -e "s/, '-Werror'//g" -i ./wscript
+    sed -e "s/rpath=\[CLANG_LIB_DIR\]/rpath=\['libs'\]/g" -i ./wscript
 }
 
 build() {
@@ -37,6 +41,10 @@ check() {
 
 package() {
     cd $_pkgname/build
+    install -m 755 -d "${pkgdir}/opt/cquery/"
+    install -m 755 ./app "${pkgdir}/opt/cquery/cquery"
+    install -m 755 -d "${pkgdir}/opt/cquery/libs"
+    install -m 755 -t  "${pkgdir}/opt/cquery/libs" clang+llvm*/lib/*.so*
     install -m 755 -d "${pkgdir}/usr/bin"
-    install -m 755 ./app "${pkgdir}/usr/bin/cquery"
+    install -D -m 755 "${srcdir}/cquery-sh" "${pkgdir}/usr/bin/cquery"
 }
