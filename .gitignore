@@ -1,0 +1,9 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!gog-west-of-loathing
+!gog-west-of-loathing.desktop

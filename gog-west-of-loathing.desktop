@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=West of Loathing
+Comment=Say howdy to West of Loathing -- a single-player slapstick comedy adventure role-playing game set in the wild west of the Kingdom of Loathing universe.
+Exec=gog-west-of-loathing
+Icon=gog-west-of-loathing
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

@@ -1,0 +1,18 @@
+pkgbase = gog-west-of-loathing
+	pkgdesc = Say howdy to West of Loathing -- a single-player slapstick comedy adventure role-playing game set in the wild west of the Kingdom of Loathing universe.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://westofloathing.com/
+	arch = x86_64
+	groups = games
+	groups = gog
+	license = custom
+	source = gog-west-of-loathing
+	source = gog-west-of-loathing.desktop
+	source = file://west_of_loathing_en_1_0_3_16426.sh
+	sha256sums = 8125c647c046682ffa7738e1218f67b8d67662f7057b27eccc1fc1a6fb94aca9
+	sha256sums = 8b94a2a0a277bb91522476d723a80c0e1a075b36e87b9a770cdea9f7bf9ea21e
+	sha256sums = 02965e6a96b46004060c20bf6a14c334c256dc4e178e9d1d4fad8f9db9fba213
+
+pkgname = gog-west-of-loathing
+
