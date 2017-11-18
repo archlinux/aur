@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=libpki
 pkgver=0.8.8
 pkgrel=2
