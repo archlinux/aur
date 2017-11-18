@@ -1,4 +1,4 @@
-# Maintainer:  M0Rf30
+# Maintainer: robertfoster
 # Contributor: c-mauderer
 
 pkgname=hyde-git
