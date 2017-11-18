@@ -1,4 +1,4 @@
-# Mantainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=qjackctl-svn
 pkgver=734
 pkgrel=1
