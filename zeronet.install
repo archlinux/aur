@@ -4,6 +4,10 @@ post_install() {
         useradd --system --user-group -m --home /var/lib/zeronet zeronet
         echo "done"
     } # NOTE: we do not autoremove user due to security concerns (Arch policy)
+
+    mkdir -p /var/log/zeronet
+    chown zeronet:zeronet /var/log/zeronet
+
     post_upgrade
 
     # Don't run thesre operations automatically, because they are security-sensitive
