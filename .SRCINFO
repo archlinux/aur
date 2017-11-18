@@ -1,13 +1,13 @@
 pkgbase = kscript
 	pkgdesc = Enhanced scripting support for Kotlin on *nix-based systems
-	pkgver = 2.1.1
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/holgerbrandl/kscript
 	arch = any
 	license = MIT
 	depends = kotlin
-	source = kscript-2.1.1.bin.zip::https://github.com/holgerbrandl/kscript/releases/download/v2.1.1/kscript-2.1.1-bin.zip
-	sha256sums = dc9bcf83b8152c5fa507e476446db11cd18e35bd882d249f9c6525a4f04d1a2f
+	source = kscript-2.2.1.bin.zip::https://github.com/holgerbrandl/kscript/releases/download/v2.2.1/kscript-2.2.1-bin.zip
+	sha256sums = 8d2f901466e85a1ea207803945d4e8b3277c6e082a707c6b2bf2261d3fd82456
 
 pkgname = kscript
 
