@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('65a297ea7ec081cb43b68e1b32ab63b3')
+md5sums=('75f258819b3000ba05522b32f23529a2')
 validpgpkeys=()
 
 prepare() {
