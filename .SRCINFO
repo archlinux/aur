@@ -1,6 +1,6 @@
 pkgbase = firefox-developer-it
 	pkgdesc = Standalone web browser from mozilla.org, Developer Edition - Italian
-	pkgver = 58.0b2
+	pkgver = 58.0b4
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/developer/
 	arch = i686
@@ -33,10 +33,10 @@ pkgbase = firefox-developer-it
 	source = vendor.js
 	sha512sums = f536b6790233d609182ae4940193727e1e0188b6e49f0c47a5d8ade1bb15a3e311160636d17ce78ab9766781025171d2b6a4a14131d2a40ab490bdbb7c144354
 	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
-	source_i686 = firefox-i686-58.0b2.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/58.0b2/linux-i686/it/firefox-58.0b2.tar.bz2
-	sha512sums_i686 = 617dacd7122d8920c9b51974136b7834c079adf0486e9476f4e203805621864c47138a6bb79f05496f075071d37e45baf6279815e17a3640a805e80b7489b61a
-	source_x86_64 = firefox-x86_64-58.0b2.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/58.0b2/linux-x86_64/it/firefox-58.0b2.tar.bz2
-	sha512sums_x86_64 = bfded5c6a7aabd2120cc56c756d900b2b71766d4ea6cc6c5cc9905ec14068cc98f10a8ee54862f8223b6d7ae43b09346dae87e5b146df8bae1a63dc84686ec69
+	source_i686 = firefox-i686-58.0b4.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/58.0b4/linux-i686/it/firefox-58.0b4.tar.bz2
+	sha512sums_i686 = 79e42cb21d29344e7e76a2d2a6202dfd24451cea34b5eeb0ab44ecc68085535805fea37a45393702553dc230a2ef110de5f01b0868baec91b26cb766d5430f81
+	source_x86_64 = firefox-x86_64-58.0b4.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/58.0b4/linux-x86_64/it/firefox-58.0b4.tar.bz2
+	sha512sums_x86_64 = acdaa6d72ce4019740ca3c1a9fa9ba4166aadf7381e28ca1b740a31e02583e989fcb9af38e8edbd3fd37f66823425fcf1ceb628be3df0e5e4b5996b7e0021ca5
 
 pkgname = firefox-developer-it
 
