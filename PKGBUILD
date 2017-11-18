@@ -1,4 +1,4 @@
-# Maintainer: Maxim A. Mikityanskiy <maxtram95@gmail.com>
+# Maintainer: robertfoster
 pkgname=musicpaused-git
 pkgver=8.c8a4f14
 pkgrel=1
