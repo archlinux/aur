@@ -2,17 +2,17 @@
 # Contributor: yescalona <yescalona[at]ug[dot]uchile[dot]cl>
 # Contributor : soeren <nonick[at]posteo[dot]de>
 pkgname='blast+-bin'
-pkgver=2.5.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="New suite of BLAST tools that utilizes the NCBI C++ Toolkit"
 arch=('x86_64')
 url="http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastHome"
 license=('custom')
-depends=('perl' 'zlib')
+depends=('perl' 'zlib' 'libidn')
 provides=('blast+')
 conflicts=('blast+')
 source=("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-x64-linux.tar.gz")
-md5sums=('633039829d04fb9fa8d0fe1ae5debb65')
+md5sums=('9d31dff42ab2b0d9565f761ce340e4ba')
 
 package() {
   install -d "$pkgdir"/usr/bin
