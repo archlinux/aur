@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-python-wheel
+	pkgdesc = A built-package format for Python (mingw-w64)
+	pkgver = 0.30.0
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/wheel
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-python-setuptools
+	makedepends = mingw-w64-python2-setuptools
+	makedepends = fakeroot
+	makedepends = lib32-fakeroot
+	depends = wine
+	source = https://github.com/pypa/wheel/archive/0.30.0.tar.gz
+	md5sums = a7341e955a3563e806abd44efabad9cb
+
+pkgname = mingw-w64-python-wheel
+	depends = mingw-w64-python
+	optdepends = mingw-w64-python-keyring: for wheel.signatures
+
+pkgname = mingw-w64-python2-wheel
+	depends = mingw-w64-python2
+	optdepends = mingw-w64-python2-keyring: for wheel.signatures
+
