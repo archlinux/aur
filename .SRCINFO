@@ -6,7 +6,7 @@ pkgbase = python-miio
 	arch = any
 	license = GPL3
 	depends = python>=3.4
-	depends = python-android-backup-tools
+	depends = python-android-backup-tools-git
 	depends = python-attrs
 	depends = python-click
 	depends = python-construct
