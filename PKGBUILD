@@ -1,4 +1,4 @@
-#Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=openicc
 pkgver=1.3.1
