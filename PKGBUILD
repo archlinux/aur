@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Dylon Edwards <deltaecho@archlinux.us>
 
