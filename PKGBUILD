@@ -2,7 +2,7 @@
 
 pkgname=caelum-ogre1.9
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for OGRE targeted to help create nice-looking atmospheric effects."
 arch=('i686' 'x86_64')
 url="http://www.ogre3d.org/tikiwiki/Caelum"
@@ -25,9 +25,9 @@ build() {
   CXXFLAGS+=' -std=gnu++98'
 
   cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/opt/Caelum-OGRE1.9/
 
-  make -j1
+  make 
 }
 
 package() {
