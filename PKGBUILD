@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=libshout-idjc-git
 pkgver=898.4b1539c
