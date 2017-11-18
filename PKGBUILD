@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30 <morf3089@gmail.com>
+# Maintainer: robertfoster
 
 pkgname=mediadownloader
 pkgver=1.5.2
