@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Contributor: Sebastian Jug <seb AT stianj DOT ug>
 
 pkgname=openbazaar-bin
