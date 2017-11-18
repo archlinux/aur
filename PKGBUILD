@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30 < morf3089 at gmail dot com >
+# Maintainer: robertfoster
 
 pkgname=kdeplasma-applets-actos-soundmenu-git
 pkgver=4.b6d5fa2
