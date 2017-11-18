@@ -1,4 +1,4 @@
-#Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=g4l
 pkgver=0.53
