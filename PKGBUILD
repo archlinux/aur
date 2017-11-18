@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=kodi-addon-superrepo-adult
 pkgver=0.7.04
