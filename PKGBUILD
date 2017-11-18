@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Gorodinskii
 pkgname=vscode-insiders
-pkgver=1.19.0.1510899402
-pkgrel=1
+pkgver=1.19.0
+pkgrel=1510899402
 pkgdesc="Visual Studio Code Insiders. Code editing Redefined.."
 arch=('x86_64')
 url="https://code.visualstudio.com"
