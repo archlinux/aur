@@ -1,6 +1,6 @@
 pkgbase = vscode-insiders
 	pkgdesc = Code editing Redefined..
-	pkgver = 1.19.0
+	pkgver = 1.19.0.1510899402
 	pkgrel = 1
 	url = https://code.visualstudio.com
 	install = vscode-insiders.install
