@@ -1,4 +1,4 @@
-#Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=libmimic-qt-git
 pkgver=12.7893d0c
