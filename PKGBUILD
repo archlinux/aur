@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 _pkgname=darkcoin_hash
 pkgname=python2-${_pkgname}
