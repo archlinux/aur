@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=knightos-sdk
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 license=('MIT')
 pkgdesc='The KnightOS developer SDK'
 depends=(
@@ -22,5 +22,5 @@ sha1sums=('afffd76b2caa880032c6c2dc21cbb5a7844c86c5')
 package() {
 	cd "${srcdir}/sdk-${pkgver}"
 
-	make install DESTDIR="$pkgdir/usr/" PREFIX="/usr/"
+	python3 setup.py install --root="$pkgdir/" --optimize=1
 }
