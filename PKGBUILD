@@ -5,8 +5,8 @@ _pkgname=rigsofrods
 _gitname=rigs-of-rods
 
 pkgname=$_pkgname-git
-pkgver=0.4.7.0.r234.g4245c2c1
-pkgrel=1
+pkgver=0.4.7.0.r235.g2e4eebef
+pkgrel=2
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
 url="http://rigsofrods.org"
@@ -67,8 +67,7 @@ package() {
     cd $srcdir
 
     mkdir -p "$pkgdir/opt/$_pkgname"
-    cp $srcdir/$_gitname/build/bin/RoR "$pkgdir/opt/$_pkgname/"
-    cp $srcdir/$_gitname/build/bin/RoRConfig "$pkgdir/opt/$_pkgname/"
+    cp -r $srcdir/$_gitname/build/bin/* "$pkgdir/opt/$_pkgname/"
 
     install -Dm755 rigsofrods.png "$pkgdir/usr/share/pixmaps/rigsofrods.png"
     install -Dm755 RoR.desktop "$pkgdir/usr/share/applications/RoR.desktop"
