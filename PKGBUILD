@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
   
 pkgname=libreengineering
 pkgver=0.5.0
