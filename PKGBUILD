@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Submitter: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-miniupnpc
