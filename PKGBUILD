@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname='pyload-git'
 pkgver=v0.4.9.r4021.ga5c07bf2c
