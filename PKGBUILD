@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgbase=iortcw-git
 pkgname=('iortcw-git' 'iortcw-rend2-git')
