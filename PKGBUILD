@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname='python2-desktopleapr'
 pkgver=2.a7a0789
