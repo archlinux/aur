@@ -2,7 +2,7 @@
 
 pkgname=ruby-in_threads
 gemname=in_threads
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Execute ruby code in parallel.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${gemname}-${pkgver}.gem")
 noextract=("${gemname}-${pkgver}.gem")
-sha512sums=('6f3228687c2bba42beecaa12d8f348a24cd7088c159665cf50679ed11e37fe38e064b29cf9b8e881bbf46fabb3881874d0e1f3a48f9248ccb3142af17437b754')
+sha512sums=('9565c295d89ee3d40cf71d9cd9296b3e4cd4df90b92e063607a6cb6c2073668445e46be6e91c61d88543fe8b088e7410cd3e2fb86fa941af0ca30ce7ad4326ab')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
