@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Contributor: OK100 <ok100@lavabit.com>
 # Contributor: Jeremy Newton (Mystro256)
 # Contributor: Ivan Nikolaev <voidexp@gmail.com>
