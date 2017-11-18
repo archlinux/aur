@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'automoc4' 'kdelibs')
 depends=('kdebase-workspace')
 provides=('nightmode')
 conflicts=('nightmode')
-source=("nightmode::git+https://github.com/robertfoster/nightmode.git"
+source=("nightmode::git+https://github.com/roberfoster/nightmode.git"
 	"patch"	)
 
 
