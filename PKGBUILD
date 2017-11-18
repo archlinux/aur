@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-restclient
-pkgver=1.2.4
-pkgrel=3
+pkgver=1.2.5
+pkgrel=1
 pkgdesc="A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtRestClient"
@@ -22,7 +22,8 @@ prepare() {
 build() {
   cd build
 
-  qmake -r "../$_pkgfqn/"
+  qmake "../$_pkgfqn/"
+  make qmake_all
   make
 }
 
