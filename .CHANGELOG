@@ -1,6 +1,24 @@
 Version history
 ===============
 
+0.9.3
+-----
+
+2017-11-18
+
+Music: Download http://www.lixgame.com/dow/lix-music.zip and extract
+into your Lix root dir. You can create additional subfolders in ./music/
+and put your own tracks inside -- ideally as .ogg, .mod, .xm, .it, or .s3m.
+Lix will play a random track per level.
+
+Fix #216: The manual savestate function will now always overwrite the
+savestate replay with the current replay.
+
+Improved the mouse handling on Windows, there should be fewer odd jumps
+of Lix's cursor over half the game window.
+
+When you restart a level during pause, the game unpauses.
+
 0.9.2
 -----
 

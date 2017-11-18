@@ -2,11 +2,13 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 conflicts=("${pkgname}-git")
-source=(${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver})
-sha512sums=('SKIP')
+source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
+		"${pkgname}-music-1.zip::http://www.lixgame.com/dow/lix-music.zip")
+sha512sums=('SKIP'
+            '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425')
 
 prepare()
 {
@@ -17,7 +19,7 @@ prepare()
 }
 
 _pkgname=${pkgname}
-# template start; name=lix; version=0.1;
+# template start; name=lix; version=0.2;
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -63,6 +65,6 @@ package()
 	# https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
 	mkdir -p "${pkgdir}/usr/share/${_pkgname}" "${pkgdir}/usr/share/doc/${_pkgname}"
 	cp -dpr --no-preserve=ownership "doc/." "${pkgdir}/usr/share/doc/${_pkgname}/"
-	cp -dpr --no-preserve=ownership "data" "images" "levels" "${pkgdir}/usr/share/${_pkgname}"
+	cp -dpr --no-preserve=ownership "data" "images" "levels" "${srcdir}/music" "${pkgdir}/usr/share/${_pkgname}"
 }
 # template end;
