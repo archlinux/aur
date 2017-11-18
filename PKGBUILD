@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=friture-git
 pkgver=v0.24.r0.g75e8cd8
