@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
 pkgname='monero-wallet-qt'
-_monerover=0.11.0.0
+_monerover=0.11.1.0
 pkgver=${_monerover}
 pkgrel=1
 arch=('x86_64' 'i686')
@@ -20,33 +20,29 @@ makedepends=('git' 'cmake' 'boost')
 
 pkgdesc="Official QT GUI wallet for Monero, a private, secure, untraceable peer-to-peer currency"
 
-source=("https://github.com/monero-project/monero-core/archive/v${pkgver}.tar.gz"
-        "link-libreadline.patch")
+source=("https://github.com/monero-project/monero-gui/archive/v${pkgver}.tar.gz")
 
-md5sums=('f75ca71a3cb1ede3d063c489a0fbe1d5'
-         '398e643b9c4addd1607d582d2712cbf0')
+md5sums=('94203a93054f78226722f6b29d5b7281')
 
-_srcdir=monero-core-$_monerover
+_srcdir=monero-gui-$_monerover
 
 prepare() {
-	cd "$srcdir/$_srcdir"
+    cd "$srcdir/$_srcdir"
 
     echo "var GUI_VERSION = \"$pkgver\"" > version.js
     echo "var GUI_MONERO_VERSION = \"$_monerover\"" >> version.js
-
-    patch -p1 < ../link-libreadline.patch
 }
 
 build() {
-	cd "$srcdir/$_srcdir"
+    cd "$srcdir/$_srcdir"
 
     make -C src/zxcvbn-c
 
-	qmake
-	make
+    qmake
+    make
 }
 
 package() {
-	install -D -m755 "$srcdir/$_srcdir/release/bin/monero-wallet-gui" "$pkgdir/usr/bin/monero-wallet-qt"
-	install -D -m644 "$srcdir/$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m755 "$srcdir/$_srcdir/release/bin/monero-wallet-gui" "$pkgdir/usr/bin/monero-wallet-qt"
+    install -D -m644 "$srcdir/$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
