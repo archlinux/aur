@@ -4,40 +4,38 @@ pkgdesc="ROS - OpenCV 3.x."
 url='http://opencv.org'
 
 pkgname='ros-kinetic-opencv3'
-pkgver='3.2.0'
-_pkgver_patch=4
+pkgver='3.3.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=8
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=()
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python2-numpy
+  v4l-utils
   ffmpeg
-  libtiff
   libjpeg-turbo
   vtk
   zlib
-  v4l-utils
-  jasper
+  python2-numpy
+  python2
+  libtiff
   protobuf
   libpng
-  python2)
+  jasper)
 
 ros_depends=(ros-kinetic-catkin)
 depends=(${ros_depends[@]}
-  python2-numpy
   protobuf
   libjpeg-turbo
   vtk
   zlib
-  jasper
-  ffmpeg
-  libpng
+  python2-numpy
   python2
-  qt5-base
-  libxt)
+  jasper
+  libpng
+  ffmpeg)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/opencv3/${pkgver}-${_pkgver_patch}
@@ -47,15 +45,8 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="opencv3-release-release-kinetic-opencv3-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/opencv3-release/archive/release/kinetic/opencv3/${pkgver}-${_pkgver_patch}.tar.gz"
-		cmake_fix.patch)
-sha256sums=('e8360d978bc0d0c878877e2748e5da219018b19a69b920649ea96a54ce05824d'
-            '1549289a92fff0464bfa343756f15b087e625bdd3e6ac74674a5a75b7a15bfaf')
-
-prepare() {
-  cd ${srcdir}
-  patch -p1 < cmake_fix.patch
-}
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/opencv3-release/archive/release/kinetic/opencv3/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('103f28d76c6451d2371a09fb693f0c466da6dfaf374a4fa92f7dac2ad5a7f4ab')
 
 build() {
   # Use ROS environment variables
@@ -78,8 +69,7 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DENABLE_PRECOMPILED_HEADERS=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
 
