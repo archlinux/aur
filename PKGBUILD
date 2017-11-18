@@ -2,8 +2,9 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=printrun
-pkgver=20150310
+pkgver=1.6.0
 pkgrel=1
+epoch=1
 _projectname='Printrun'
 _gittag="printrun-${pkgver}"
 pkgdesc='Pronterface, Pronsole, and Printcore - Pure Python 3D printing host software and GUI'
@@ -12,7 +13,7 @@ url='https://github.com/kliment/Printrun'
 license=('GPL')
 provides=('printrun-git')
 conflicts=('printrun-git')
-depends=('python2-pyserial' 'wxpython' 'pyglet' 'desktop-file-utils')
+depends=('python2-pyserial' 'wxpython' 'pyglet')
 optdepends=(
   'python2-cairo: to use Projector feature'
   'python2-cairosvg: to use Projector feature'
@@ -20,9 +21,8 @@ optdepends=(
   'python2-dbus: to inhibit sleep when printing'
   'python2-psutil: to increase process priority when printing')
 makedepends=('cython2')
-install="${pkgname}.install"
 source=("https://github.com/kliment/${_projectname}/archive/${_gittag}.tar.gz")
-sha256sums=('6edaa533df5a590f55039b81e47f61881d2a47de07c3391d53bfb6d847f46d2e')
+sha256sums=('fefcb4c5793fc77205a14263bc915616cde0523cd60704f356191b9ae34ba65d')
 
 build() {
   cd "${srcdir}/${_projectname}-${_gittag}"
