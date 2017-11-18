@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30 <morf3089@gmail.com>
+# Maintainer: robertfoster
 
 pkgname=sacks
 pkgver=12.67f6745
@@ -9,7 +9,7 @@ url="http://adunanzadigitale.org"
 depends=('libvncserver' 'python2' 'python2-pyqt4' 'vlc' 'python-dnspython' 'openssl' 'python2-pjproject' 'pyvnc' 'xmpppy') 
 makedepends=('git')
 license=('GPL3') 
-source=("sacks::git://github.com/M0Rf30/sacks.git"
+source=("sacks::git://github.com/roberfoster/sacks.git"
 	sacks-bin
         sacks.desktop 
         )
