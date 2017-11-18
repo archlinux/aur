@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=mips-2011-mips-linux-gnu
 pkgver=2011.03
