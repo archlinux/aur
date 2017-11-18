@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=kodi-addon-superrepo-all
 pkgver=0.7.04
