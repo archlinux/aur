@@ -21,15 +21,15 @@ source=("http://www.yworks.com/resources/yed/demo/yEd-${pkgver}.zip"
         'yed')
 sha256sums=('d49a53fe372e377ce737d333fb313478c1c8af6ddfe5d0b7ab0e3e7fa27a613a'
             '342dba6defac88d035253b22e6377d9570858f59367cd486dba4a4dba1621f91'
-            'cea06705c5b9981874bf5b84924bdf3b1d0cf9445e91c32f8d6bb117011f8e02')
+            '7cf41f9b408071cbc3371f4ff6286d773dfb0a9a231eb59a0a7e426100985d43')
 
 install=${pkgname}.install
 
 package() {
   # Install jars
-  install -Dm644 ${srcdir}/yed-${pkgver}/yed.jar ${pkgdir}/usr/share/yed/yed.jar
-  install -dm755 ${pkgdir}/usr/share/yed/lib
-  install -m644 ${srcdir}/yed-${pkgver}/lib/* ${pkgdir}/usr/share/yed/lib/
+  install -Dm644 ${srcdir}/yed-${pkgver}/yed.jar ${pkgdir}/usr/share/java/yed/yed.jar
+  install -dm755 ${pkgdir}/usr/share/java/yed/lib
+  install -m644 ${srcdir}/yed-${pkgver}/lib/* ${pkgdir}/usr/share/java/yed/lib/
 
   # Install license
   install -Dm644 ${srcdir}/yed-${pkgver}/license.html ${pkgdir}/usr/share/licenses/yed/license.html
