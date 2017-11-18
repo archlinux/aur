@@ -7,22 +7,30 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.13.99.name.tab.beta1
-pkgrel=9
+pkgrel=10
+
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1506676810
+epoch=1511029686
+
 
 # Release commit for nc0.13.99-name-tab-beta1
 _commit=a11e75411af3b612a36e3516e461934838c0c53b
 
-pkgdesc='This package provides the Namecoin Core GUI client and CLI daemon. This package does not create a systemd service.'
+
+pkgdesc='This package provides the Namecoin Core GUI client and CLI daemon.'
+pkgdesc="$pkgdesc This package does not create a systemd service."
+
 arch=('i686' 'x86_64')
 url='https://namecoin.org/'
 license=('MIT')
-depends=('desktop-file-utils' 'openssl' 'db4.8' 'boost' 'boost-libs' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
-provides=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
-conflicts=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
+depends=('desktop-file-utils' 'openssl' 'db4.8' 'boost' 'boost-libs' 'libevent'
+         'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
+provides=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
+          'namecoin-qt' 'namecoin-tx')
+conflicts=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
+           'namecoin-qt' 'namecoin-tx')
 source=('git://github.com/namecoin/namecoin-core'
         'namecoin.desktop'
         'namecoin1500x1500.png'
@@ -32,6 +40,7 @@ sha256sums=('SKIP'
             'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04'
             'e34a576066c39b2ca4ad192683b3c75fe86c9fedc30176dc60306d539863a139')
 
+
 build() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
@@ -40,10 +49,30 @@ build() {
     patch -p0 -i patch.diff
     cd "$srcdir/namecoin-core/"
     ./autogen.sh
-    ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5 --disable-tests
+
+    # I have not tested the static build process on 32 bit machines yet,
+    # so I'm leaving i686 with the normal dynamic build.
+    if [ "$CARCH" == i686 ]; then
+        ./configure --prefix=/usr --enable-upnp-default --enable-hardening \
+                    --with-gui=qt5 --disable-tests
+
+    # This should produce a static build that doesn't brick every time Arch
+    # rolls out updates to the system libraries.
+    elif [ "$CARCH" == x86_64 ]; then
+        ./configure LDFLAGS="-static-libstdc++" \
+                   --prefix=/usr \
+                   --enable-glibc-back-compat \
+                   --enable-reduce-exports \
+                   --enable-upnp-default \
+                   --enable-hardening \
+                   --with-gui=qt5 \
+                   --disable-tests
+    fi
+
     make DESTDIR="$srcdir/tmp"
     make DESTDIR="$srcdir/tmp" install
 }
+
 
 # Namecoin does not include any man pages.
 # Or rather, it has Bitcoin's man pages completely unchanged.
