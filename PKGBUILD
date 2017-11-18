@@ -69,11 +69,10 @@ package() {
   # Install icons
   SRC_LOC="${srcdir}"/${_name}/browser
   DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
-  for i in 16 32 48
+  for i in 16 32 48 64 128
   do
       install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${_pkgname}.png
   done
-  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png "${DEST_LOC}"/128x128/apps/${_pkgname}.png
 
   # Disable auto-updates
   install -Dm644 "${srcdir}"/vendor.js -t "${pkgdir}"/${OPT_PATH}/browser/defaults/preferences
