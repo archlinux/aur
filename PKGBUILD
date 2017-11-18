@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Contributor: carlsagan12
 
 pkgname=dakota
