@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=62.0.3202.94
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'clang')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -92,6 +92,9 @@ prepare() {
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-gn-bootstrap-r17.patch
 
+  # Remove compiler flag not supported by our system clang
+  sed -i '/"-Wno-enum-compare-switch",/d' build/config/compiler/BUILD.gn
+
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
 
@@ -128,8 +131,15 @@ build() {
   export TMPDIR="$srcdir/temp"
   mkdir -p "$TMPDIR"
 
+  export CC=clang
+  export CXX=clang++
+  export AR=ar
+  export NM=nm
+
   local _flags=(
-    'is_clang=false'
+    'custom_toolchain="//build/toolchain/linux/unbundle:default"'
+    'host_toolchain="//build/toolchain/linux/unbundle:default"'
+    'is_clang=true'
     'clang_use_chrome_plugins=false'
     'is_debug=false'
     'fatal_linker_warnings=false'
