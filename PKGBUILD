@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=cakephp
 pkgver=1.3.21
 pkgrel=1
