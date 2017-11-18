@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Contributor: Alper KANAT <alperkanat@raptiye.org>
 
 pkgname=loggerhead
