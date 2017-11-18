@@ -5,13 +5,13 @@ _pkgname=rigsofrods
 _gitname=rigs-of-rods
 
 pkgname=$_pkgname-git
-pkgver=0.4.7.0.r95.g5cf716d5
+pkgver=0.4.7.0.r234.g4245c2c1
 pkgrel=1
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
 url="http://rigsofrods.org"
 license=('GPL')
-depends=('openal' 'wxgtk' 'ogre-1.8' 'caelum-ogre1.8' 'mygui-ogre1.8' 'ogre-1.8-pagedgeometry' 'socketw' 'angelscript-2.22.1' 'jsoncpp')
+depends=('openal' 'wxgtk' 'ogre-1.9' 'caelum-ogre1.9' 'mygui-ogre1.9' 'ogre-1.9-pagedgeometry' 'socketw' 'angelscript' 'jsoncpp')
 optdepends=('sh: for being able to run the commands rigsofrods and rigsofrods-config instead of /opt/rigsofrods/RoR and /opt/rigsofrods/RoRConfig')
 makedepends=('cmake' 'git')
 conflicts=('rigsofrods' 'rigsofrods-hg' 'rigsofrods-noangelscript-git')
@@ -39,23 +39,27 @@ pkgver() {
 build() {
     cd "$srcdir/$_gitname"
 
-    export PKG_CONFIG_PATH="/opt/OGRE-1.8/lib/pkgconfig:/opt/MyGUI-OGRE1.8/lib/pkgconfig:/opt/Caelum-OGRE1.8/lib/pkgconfig:/opt/PagedGeometry-OGRE1.8/lib/pkgconfig:$PKG_CONFIG_PATH"
-    export LD_LIBRARY_PATH="/opt/OGRE-1.8/lib:/opt/MyGUI-OGRE1.8/lib:/opt/Caelum-OGRE1.8/lib:/opt/PagedGeometry-OGRE1.8/lib:$LD_LIBRARY_PATH"
+    export PKG_CONFIG_PATH="/opt/OGRE-1.9/lib/pkgconfig:/opt/MyGUI-OGRE1.9/lib/pkgconfig:/opt/Caelum-OGRE1.9/lib/pkgconfig:/opt/PagedGeometry-OGRE1.9/lib/pkgconfig:$PKG_CONFIG_PATH"
+    export LD_LIBRARY_PATH="/opt/OGRE-1.9/lib:/opt/MyGUI-OGRE1.9/lib:/opt/Caelum-OGRE1.9/lib:/opt/PagedGeometry-OGRE1.9/lib:$LD_LIBRARY_PATH"
 
     # get a clean build dir
-    [[ -d build ]] && rm -rf build && find ./bin -type f -maxdepth 1 ! -name resources -delete
+    [[ -d build ]] && rm -rf build 
     mkdir build && cd build
 
     cmake .. \
-    -DROR_USE_MYGUI="TRUE" \
     -DROR_USE_OPENAL="TRUE" \
     -DROR_USE_SOCKETW="TRUE" \
     -DROR_USE_PAGED="TRUE" \
     -DROR_USE_CAELUM="TRUE" \
     -DROR_USE_ANGELSCRIPT="TRUE" \
     -DCMAKE_BUILD_TYPE=RELEASE \
-    -DMYGUI_OGRE_PLATFORM="/opt/MyGUI-OGRE1.8/lib/"
-    
+    -DMyGUI_INCLUDE_DIR:PATH=/opt/MyGUI-OGRE1.9/include/MYGUI \
+    -DMyGUI_MyGUIEngine_LIBRARY_REL:FILEPATH=/opt/MyGUI-OGRE1.9/lib/libMyGUIEngine.so \
+    -DMyGUI_OgrePlatform_LIBRARY_REL:FILEPATH=/opt/MyGUI-OGRE1.9/lib/libMyGUI.OgrePlatform.a \
+    -DPagedGeometry_INCLUDE_DIR:PATH="/opt/PagedGeometry-OGRE1.9/include/PagedGeometry" \
+    -DPagedGeometry_LIBRARY:FILEPATH="/opt/PagedGeometry-OGRE1.9/lib/libPagedGeometry.a" \
+    -DCaelum_INCLUDE_DIR:PATH="/opt/Caelum-OGRE1.9/include/Caelum" \
+    -DCaelum_LIBRARY:FILEPATH="/opt/Caelum-OGRE1.9/lib/libCaelum.so"    
     make
 }
 
@@ -63,7 +67,6 @@ package() {
     cd $srcdir
 
     mkdir -p "$pkgdir/opt/$_pkgname"
-    cp -r $srcdir/$_gitname/bin/* "$pkgdir/opt/$_pkgname/"
     cp $srcdir/$_gitname/build/bin/RoR "$pkgdir/opt/$_pkgname/"
     cp $srcdir/$_gitname/build/bin/RoRConfig "$pkgdir/opt/$_pkgname/"
 
