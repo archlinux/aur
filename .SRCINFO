@@ -8,7 +8,7 @@ pkgbase = inkdrop
 	source = inkdrop.png
 	source = inkdrop.desktop
 	md5sums = 7958b69a1fc0f069fde15b334314c2aa
-	md5sums = becb1509712eeba758e550e6373541ff
+	md5sums = af55c435a39d56a0b9e6ffe03683d340
 	source_x86_64 = inkdrop-3.14.2.zip::https://d3ip0rje8grhnl.cloudfront.net/v3.14.2/Inkdrop-3.14.2-Linux.zip
 	md5sums_x86_64 = 7a7744de539c825d3104cadf5d3f1e41
 

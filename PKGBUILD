@@ -14,7 +14,7 @@ source=(
 )
 md5sums=(
     '7958b69a1fc0f069fde15b334314c2aa'
-    'becb1509712eeba758e550e6373541ff'
+    'af55c435a39d56a0b9e6ffe03683d340'
 )
 source_x86_64=(${_pkgname}-${pkgver}.zip::https://d3ip0rje8grhnl.cloudfront.net/v${pkgver}/Inkdrop-${pkgver}-Linux.zip)
 md5sums_x86_64=('7a7744de539c825d3104cadf5d3f1e41')
