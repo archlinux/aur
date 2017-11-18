@@ -1,4 +1,4 @@
-# Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
+# Maintainer: robertfoster
 
 pkgname=liquidsoap
 pkgver=1.3.3
