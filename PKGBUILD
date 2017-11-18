@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=gnome-pie-git
 pkgver=316.6d9b7ba
