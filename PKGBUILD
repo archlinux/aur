@@ -1,4 +1,4 @@
-#Mantainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=printerd-git
 pkgver=117.b69008d
