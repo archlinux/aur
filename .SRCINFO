@@ -1,6 +1,6 @@
 pkgbase = mpris-scrobbler
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/mariusor/mpris-scrobbler
 	arch = x86
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = mpris-scrobbler
 	depends = curl
 	depends = expat
 	depends = openssl
-	source = https://github.com/mariusor/mpris-scrobbler/archive/v0.1.0.tar.gz
+	source = https://github.com/mariusor/mpris-scrobbler/archive/v0.1.1.tar.gz
 	validpgpkeys = A9A02AFEFF4B4D3CCC80F6168218F7122969D484
-	sha256sums = 2aa73a22212f172038827c14f426fe6c3344cd91a191fa5507718d2139a8eee3
+	sha256sums = 12dd73e7930511d2295d2b3a8ab19771234b645c95ecd82327ebcdb9b284763d
 
 pkgname = mpris-scrobbler
 
