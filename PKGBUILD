@@ -1,4 +1,4 @@
-
+# Maintainer: robertfoster
 pkgname=grub-theme-midna
 _pkgname=midna
 pkgver=3.0
