@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=bzzwolfsp-svn
 pkgver=1634 
 pkgrel=1
