@@ -1,4 +1,4 @@
-# Mantainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=clonezilla-experimental
 _name=clonezilla
 pkgver=3.27.17
