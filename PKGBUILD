@@ -72,7 +72,7 @@ backup=('etc/airtime/airtime.conf'
         'etc/logrotate.d/airtime-php')
 install=airtime.install
 
-source=("airtime::git+https://github.com/robertfoster/airtime"
+source=("airtime::git+https://github.com/roberfoster/airtime"
         'airtime-media-monitor.service'
         'airtime-liquidsoap.service'
         'airtime-playout.service'
