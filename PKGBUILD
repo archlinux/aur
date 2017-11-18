@@ -1,4 +1,4 @@
-# Maintainer: ultraviolet <ultravioletnanokitty@gmail.com>
+# Maintainer: robertfoster
 
 pkgname=iio-sensor-proxy-git
 _pkgname="iio-sensor-proxy"
