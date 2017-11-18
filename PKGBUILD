@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 _pkgsrcname=txrudp
 pkgname=python2-${_pkgsrcname}
