@@ -28,4 +28,5 @@ build() {
 package() {
 	cd ${_name}
 	python setup.py install --prefix=/usr --root="${pkgdir}"
+	install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
