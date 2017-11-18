@@ -9,7 +9,7 @@ pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages
 arch=(any)
 url="https://pypi.python.org/pypi/setuptools"
 license=('MIT')
-makedepends=('mingw-w64-python-pip' 'mingw-w64-python2-pip')
+makedepends=('mingw-w64-python-pip' 'mingw-w64-python2-pip' 'fakeroot' 'lib32-fakeroot')
 depends=('wine')
 source=("https://github.com/pypa/setuptools/archive/v${pkgver}.tar.gz"
         '0001-mingw-python-fix.patch'
