@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 _pkgname=fabric
 pkgname=hyperledger-${_pkgname}
