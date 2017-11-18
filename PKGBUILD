@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30 <morf3089@gmail.com>
+# Maintainer: robertfoster
 
 pkgname=cupp-v3	
 pkgver=3.0
