@@ -1,17 +1,17 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=abricotine
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A markdown editor with inline preview"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
 depends=('gconf')
 makedepends=('npm')
 source=("https://github.com/brrd/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('6e84be88c8b4d791024d45ba6310374d7dd50a5a36f8dd472d62c50412a2f899'
+sha256sums=('3725dfe19bc71e3dbd6040ba323999da8c24a3a68100f468ff8d77f627301f74'
             'dba9226026a0afb735428bb3203360365939b1c802a120b616038edadea752f4')
 
 build() {
