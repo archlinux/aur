@@ -1,4 +1,4 @@
-#Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=soundcloud-dl-git
 pkgver=v1.3.3b1.r100.g5a41cf2
