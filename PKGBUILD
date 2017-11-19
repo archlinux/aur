@@ -2,7 +2,7 @@
 
 pkgname=devtools32-git
 _pkgname=devtools
-pkgver=20171108
+pkgver=20171118
 pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('namcap' 'openssh' 'subversion' 'rsync' 'arch-install-scripts'
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 source=("https://sources.archlinux.org/other/$pkgname/$pkgname-$pkgver.tar.gz"{,.sig})
-source=("$pkgname::git+https://github.com/archlinux32/devtools32.git")
+source=("$pkgname::git+https://github.com/bbidulock/devtools32.git")
 validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53'
               '4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC'
               '86CFFCA918CF3AF47147588051E8B148A9999C34'
