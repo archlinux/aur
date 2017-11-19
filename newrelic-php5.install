@@ -14,12 +14,8 @@ post_install() {
 # Create the newrelic user and group
 useradd --system -M --home / --shell /sbin/nologin newrelic || true
 
-# Symlink for PHP extension
-ln -s /usr/lib/php/modules/newrelic-20131226-zts.so /usr/lib/php/modules/newrelic-zts.so
-ln -s /usr/lib/php/modules/newrelic-20131226.so /usr/lib/php/modules/newrelic.so
-
 # Kludge the permissions
-mkdir /var/log/newrelic
+mkdir -p /var/log/newrelic
 chmod 1777 /var/log/newrelic
 
 inifile=/etc/php/conf.d/newrelic.ini
@@ -43,15 +39,15 @@ if sed -e '/^[        ]*#/d' "${inifile}" 2> /dev/null | grep -q 'REPLACE_WITH_R
 ***
 ***  You can do this by edit file /etc/php/conf.d/newrelic.ini,
 ***  fint the line newrelic.license="REPLACE_WITH_REAL_KEY"
-***  and replace with your real key. More information here: 
+***  and replace with your real key. More information here:
 ***
 ***  https://docs.newrelic.com/docs/php/new-relic-for-php#installation
-*** 
+***
 ***  No data will be reported until the server monitor can start.
 ***  You can get your New Relic key from the 'Configuration' section
 ***  of the 'Support' menu of your New Relic account (accessible at
 ***  https://rpm.newrelic.com).
-***  
+***
 ***
 *********************************************************************
 *********************************************************************
@@ -91,8 +87,6 @@ pre_remove() {
 post_remove() {
   # do something here
   userdel newrelic || true
-  unlink /usr/lib/php/modules/newrelic.so 
-  unlink /usr/lib/php/modules/newrelic-zts.so 
   rm -rf /var/log/newrelic
 }
 
