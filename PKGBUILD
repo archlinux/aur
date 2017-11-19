@@ -1,4 +1,4 @@
-# Mantainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=unrealtournament-rocketarena
 pkgver=1.6
