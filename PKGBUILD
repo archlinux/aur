@@ -5,7 +5,7 @@ _pkg="gbt"
 _gopkg="github.com/jtyr/$_pkg"
 
 pkgname="$_pkg-git"
-pkgver=r71.55dc37a
+pkgver=r71.1f869e4
 pkgrel=1
 pkgdesc='Highly configurable prompt builder for Bash and ZSH written in Go'
 url="https://github.com/jtyr/gbt"
