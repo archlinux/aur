@@ -1,20 +1,21 @@
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
-pkgname='perl-webservice-musicbrainz'
-pkgver='0.93'
-pkgrel='1'
+pkgname=perl-webservice-musicbrainz
+_pkgname=WebService-MusicBrainz
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Web service API to MusicBrainz database"
 arch=('any')
+url="http://search.cpan.org/dist/WebService-MusicBrainz"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
 depends=('perl-class-accessor>=0.30' 'perl-uri>=1.35' 'perl-xml-libxml>=1.63' 'perl-libwww>=0' 'perl>=5.7.0')
-makedepends=()
-url='http://search.cpan.org/dist/WebService-MusicBrainz'
-source=('http://search.cpan.org/CPAN/authors/id/B/BF/BFAIST/WebService-MusicBrainz-0.93.tar.gz')
-md5sums=('120bdefa3fc317a44aa00a92bd29297c')
-sha512sums=('52b61dc10dd406aafec3eaac01aa7cebd240176bc3ef10fd00be543b146ac23ef8f90ec6c1bab37ea5440292cf3fd9f599bc0df92a09d749f3df4f7c546ac2c8')
-_distdir="WebService-MusicBrainz-0.93"
+provides=('perl-webservice-musicbrainz')
+conflicts=('perl-webservice-musicbrainz' 'perl-webservice-musicbrainz0')
+options=('!emptydirs')
+source=("http://search.cpan.org/CPAN/authors/id/B/BF/BFAIST/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('b2a32e931788c50bcd0e855880ee54e3')
+sha512sums=('fc5f2744ad52d01e671c6dfcf011c334762f3655d200e47ab8aa48752755a74530f854870961243e2ccea727b287df549fbebe579c6ca5bb70d94edf5c508ce6')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -23,14 +24,14 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$srcdir/${_pkgname}-${pkgver}"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$srcdir/${_pkgname}-${pkgver}"
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
