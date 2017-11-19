@@ -1,0 +1,16 @@
+pkgbase = ispc_texcomp
+	pkgdesc = Fast ISPC Texture Compressor
+	pkgver = r17.d38d5ac
+	pkgrel = 1
+	url = https://software.intel.com/en-us/articles/fast-ispc-texture-compressor-update
+	arch = x86_64
+	license = MIT
+	makedepends = ispc
+	makedepends = git
+	provides = ispc_texcomp
+	conflicts = ispc_texcomp
+	source = ispc_texcomp::git+https://github.com/GameTechDev/ISPCTextureCompressor.git
+	md5sums = SKIP
+
+pkgname = ispc_texcomp-git
+
