@@ -2,13 +2,13 @@
 
 pkgname=vmware-ovftool
 pkgver=4.2.0.4586971
-pkgrel=1
+pkgrel=2
 pkgdesc="VMware Open Virtualization Format tool"
 arch=('i686' 'x86_64')
 url="https://www.vmware.com/support/developer/ovf/"
 license=('custom:vmware')
 makedepends=('xorg-server-xvfb')
-depends=('curl' 'expat' 'libgpg-error' 'libpng12' 'xerces-c' 'zlib')
+depends=('curl' 'expat' 'libgpg-error' 'libpng12' 'libxerces-c-3.1' 'zlib')
 source_i686=("http://url.muflone.com/VMware-ovftool-${pkgver%.*}-${pkgver##*.}-lin.i386.bundle")
 source_x86_64=("http://url.muflone.com/VMware-ovftool-${pkgver%.*}-${pkgver##*.}-lin.x86_64.bundle")
 sha256sums_i686=('53b894dfa977fbbdc7154b8e94e4746f7801e0a22b5881dd725b32638340bff6')
