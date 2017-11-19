@@ -8,7 +8,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=spearmint-git
 _pkgname=spearmint
-pkgver=r4130.f80caa0
+pkgver=r4627.232769ac
 pkgrel=1
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
@@ -171,8 +171,8 @@ package() {
   ## ENGINE ##
   install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}_${_ARCH} ${pkgdir}/opt/spearmint/${_pkgname}
   install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}-server_${_ARCH} ${pkgdir}/opt/spearmint/${_pkgname}-server
-  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/mint-renderer-opengl1_${_ARCH}.so ${pkgdir}/opt/spearmint/
-  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/mint-renderer-opengl2_${_ARCH}.so ${pkgdir}/opt/spearmint/
+  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}-renderer-opengl1_${_ARCH}.so ${pkgdir}/opt/spearmint/
+  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}-renderer-opengl2_${_ARCH}.so ${pkgdir}/opt/spearmint/
   # docs
   install -m 644 ${srcdir}/${_pkgname}-engine/id-readme.txt ${pkgdir}/usr/share/doc/${_pkgname}/
   install -m 644 ${srcdir}/${_pkgname}-engine/md4-readme.txt ${pkgdir}/usr/share/doc/${_pkgname}/
