@@ -11,11 +11,17 @@ depends=('cmake' 'systemd' 'libthinkpad' 'libsystemd' 'libxrandr')
 source=("http://thinkpads.org/ftp/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('a3606e57095cd536d636edc7541af9f4')
 
+prepare () {
+    mkdir -p "$srcdir/$pkgname-$pkgver/etc"
+}
+
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}" || exit 1 
     cmake . -DCMAKE_INSTALL_PREFIX=/usr
     make 
-    install -Dm644 ./${pkgname}.desktop -t "${pkgdir}"/usr/share/applications
+    install -Dm644 ./${pkgname}.desktop -t "${pkgdir}"/etc/xdg/autostart
     install -Dm755 ./dockd "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 -d etc "$pkgdir/etc/$pkgname"
+
 }
 
