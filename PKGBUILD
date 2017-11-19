@@ -15,6 +15,7 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}" || exit 1 
     cmake . -DCMAKE_INSTALL_PREFIX=/usr
     make 
+    install -Dm644 ./${pkgname}.desktop -t "${pkgdir}"/usr/share/applications
     install -Dm755 ./dockd "$pkgdir/usr/bin/$pkgname"
 }
 
