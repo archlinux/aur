@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-no-title-bar
 _gitname=no-title-bar
-pkgver=v6.r6.gb2724e9
+pkgver=v6.r9.g05e740e
 pkgrel=0
 pkgdesc="No Title Bar removes the title bar, moves the window title and buttons to the top panel."
 arch=('any')
@@ -17,16 +17,17 @@ source=('git://github.com/franglais125/no-title-bar.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${_gitname}"
+  cd "${srcdir}/${_gitname}"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/${_gitname}"
+  _extid="no-title-bar@franglais125.gmail.com"
+  cd "${srcdir}/${_gitname}"
   make _build
   mv _build no-title-bar@franglais125.gmail.com
   
   install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname%-*}"
   install -d "${pkgdir}/usr/share/gnome-shell/extensions"
-  cp -af "no-title-bar@franglais125.gmail.com" "${pkgdir}/usr/share/gnome-shell/extensions/"
+  cp -af "${_extid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
 }
