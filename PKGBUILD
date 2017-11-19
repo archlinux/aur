@@ -11,12 +11,9 @@ depends=('cmake' 'systemd')
 source=("https://github.com/libthinkpad/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('80d1a19ea47dc42e3a9cf4f4ee745edb')
 
-build() {
-  cd "$pkgname-$pkgver"
-   
+package() {
+    cd "${srcdir}/${pkgname}-${pkgver}/src"
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr
+    sudo make install
 }
 
-package() {
-  cd "$pkgname-$pkgver"
-  cmake  -DCMAKE_INSTALL_PREFIX=/usr
-}
