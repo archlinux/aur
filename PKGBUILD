@@ -9,7 +9,7 @@ url="https://bitbucket.org/mathematicalcoffee/status-area-horizontal-spacing-gno
 license=('unknow')
 depends=('gnome-shell')
 source=('https://bitbucket.org/mathematicalcoffee/status-area-horizontal-spacing-gnome-shell-extension/get/default.tar.gz')
-sha256sums=('7634799b6869fc0aa019ba82a452b269b955e9978fac95a20ca941d540b3446a')
+sha256sums=('SKIP')
 
 package() {
   _uuid='status-area-horizontal-spacing@mathematical.coffee.gmail.com'
