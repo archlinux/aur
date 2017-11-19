@@ -1,4 +1,4 @@
-#Mantainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=wp-download-git
 pkgver=18.13abbc8
 pkgrel=1
