@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=unrealtournament-bonuspack1
 pkgver=20000225
