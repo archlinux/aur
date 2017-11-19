@@ -1,0 +1,16 @@
+pkgbase = plasma5-applets-mpdnowplaying
+	pkgdesc = MPD plasmoid for Plasma 5.
+	pkgver = 0.4
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	provides = plasma5-applets
+	conflicts = plasma5-applets
+	source = https://dl.opendesktop.org/api/files/download/id/1511089109/mpdnowplaying-0.4.tar.bz2
+	md5sums = 4988eaac0ebceba173b747f1beb736ca
+
+pkgname = plasma5-applets-mpdnowplaying
+
