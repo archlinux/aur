@@ -1,4 +1,4 @@
-#Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=swg-git
 pkgver=62.bf962e4
