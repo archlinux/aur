@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=64.0.3260.2
+pkgver=64.0.3269.3
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -106,10 +106,13 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/CP.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/888.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/narnia1.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/meme.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/p1.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/p2.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/e3.patch
 )
 
 
-sha256sums=('1d54669f1ff0ea37d1095e8934d307f1dc5e93119f1ea621ee93ca8d032ff64e'
+sha256sums=('14a64bc25b48309566a0e9a9016336b53ae0443da500f2933292773a90b7542a'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -171,11 +174,11 @@ sha256sums=('1d54669f1ff0ea37d1095e8934d307f1dc5e93119f1ea621ee93ca8d032ff64e'
             '51ee1c87a7889f9fae1fd0ecad57d97394cc89b1cea83bafdbaa8992a87e6561'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
-            'c4437d174967a4bbe4f466a614cde853d1ce58be0b5826a0d71f63fcd88ccf2e'
+            '355eda11493ae7c89955e455014ae6ce53a5c3431071701c883fb8a492d49b20'
             '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
             '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
-            '5a8b8c2bd45dd2f057b9d8b803b33661fb4ffe89ef35ecc5e61f44fe24c07a74'
+            '3c95bf62701f762b166e78c88e06752caf057a00fdaaae87de561fafc321b20b'
             '127747c5c692b0b0ef62f0e6ae79c894cd4798846bba53bf23b0b8bbe6974ba0'
             '065a69ca6547e89f84ded7b95e29a7fb3ac762eaac3aa940ab1ec5a3ecbe3a2f'
             '0526518bd42da73113a88a440739a50fb85fb0c1e8528b1a8340747d901e3f5b'
@@ -184,22 +187,24 @@ sha256sums=('1d54669f1ff0ea37d1095e8934d307f1dc5e93119f1ea621ee93ca8d032ff64e'
             'dc5b12678bea3a694a722e3e88277300c4a15050ceb35c9f7d873a5f8ab1ba54'
             '6130351d4c918e5b60f0ea4914e7e2f26fe4221ac97bcecacb4161fd2d23906c'
             'fb3abae54309adf69b98bd2435fbc23f17bc526dbf1d1e97907da87e7cf0aeed'
-            'a92129a1d018906a299b9b05c4a96375b115fdd6a3c019d3b326a30a4c107181'
-            '2f1f0aa9592fad53ce9bc07fc91193257874247cf604421aac7e60911b2a6804'
-            'ec350d3afdd23e3fdd51f0168244a33051cea9671ffdc4e455ddba3fc0da8349'
-            '4e6c51c78d1990731ecec5240bb6d07bff6ce0562d94725892693ee4a50fb4bb'
-            '698ffaa7d99a10c51cf19e31f5bafb071da91e780e738f401f2152877e527449'
-            '399e1e6dd0d83fc9af2b74817db730661b963e99befc172a1ce0717f869575e6'
+            'd3791ca30ef833be0ddb4cff59ff42362ed195629d760cfd1a2e427507e624c3'
+            'ff99e980b62102ba5d42474cf7c77946e6bc3af575eb8e2bb0e059acdc395ba4'
+            '38af0293f67513b2480047aebbd84fd5998ab3a20fb1af7a3f1e52b97dd27b20'
+            '6d3251fb5aa200725a8cdc977d203ef98aaf8ed1564d0a4fa3b67c29a56520a9'
+            'aaf6af367fcd478499f306cb1db44bbd4f58fadfc4b969046ec9fb47a2327db7'
+            '51a336bee649d77a623b5da536c3b77b81ea67dbc9c1c34f9539c739d420379e'
             'a72bfdbea4e1bf9c273a78ef9c186968b1e7dd3e993a4a381488d8b9c9613552'
             '502b4eca6edf10fe1d036ab2c65363b4300de91b381ce687e08bd96dc254c898'
-            '0d7c128d362697e3ba80b7647826f8577b6fadea32462ad6fa37c877bc8f7643'
+            '717d8d042c8c8e64d01c173090c52172fab4f09e8857e8510fbdd5f7361e0e5e'
             'eea10be17469d859f6731e056d9914e91e8049698012ba399d441846d218d68b'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
             '35266f58367b808d6edb3f8810f7bdadfa2ebf961504169f2557912741397a24'
-            'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5')
-
+            'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5'
+            '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
+            '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
+            '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -208,7 +213,7 @@ declare -rgA _system_libs=(
   [flac]=flac
   #[freetype]=freetype2      # https://crbug.com/pdfium/733
   #[harfbuzz-ng]=harfbuzz-icu
-  [icu]=icu
+  #[icu]=icu
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng           # https://crbug.com/752403#c10
@@ -323,8 +328,9 @@ patch -Np1 -i ../l3.patch
 patch -Np1 -i ../m.patch
 patch -Np1 -i ../n.patch
 patch -Np1 -i ../o.patch
-patch -Np1 -i ../p.patch
-
+patch -Np1 -i ../p1.patch
+patch -Np1 -i ../p2.patch
+patch -Np1 -i ../e3.patch
 
 #patch -Np1 -i ../9k.patch
 #patch -Np1 -i ../048.patch
