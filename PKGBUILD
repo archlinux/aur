@@ -1,6 +1,6 @@
 # Maintainer: Claudio d'Angelis <claudiodangelis at gmail dot com>
 pkgname=draw.io
-pkgver=7.4.3
+pkgver=7.6.6
 pkgrel=1
 pkgdesc="Flowcharts, process diagrams, org charts, UML, ER and network diagrams"
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=(
     "https://github.com/jgraph/drawio-desktop/releases/download/v${pkgver}/draw.io-amd64-${pkgver}.deb"
 )
 md5sums=(
-    "6c433dc35149c97d8e1504ee29473410"
+    "e3044032ebb692d299ed1d823fd62601"
 )
 depends=(gconf libxss libnotify libxtst nss)
 
