@@ -8,10 +8,9 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=spearmint
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
-_upver='0.5'
 pkgdesc="An ioquake3-based engine with multiple improvements (note: requires pak files from original Q3 CD; incompatible with ioquake3)"
 url="http://${pkgname}.pw"
 license=("GPL3" "custom")
@@ -24,13 +23,13 @@ optdepends=('curl: use native curl'
 conflicts=("${pkgname}-git")
 install=${pkgname}.install
 source=("git+https://github.com/zturtleman/${pkgname}.git"
-	"https://github.com/zturtleman/${pkgname}/releases/download/release-${_upver}/${pkgname}-${_upver}-data.tar.xz"
+	"https://github.com/zturtleman/${pkgname}/releases/download/release-${pkgver}/${pkgname}-${pkgver}-data.tar.xz"
 	"http://ioquake3.org/files/${_ioq3v1}/data/ioquake3-q3a-${_ioq3v2}.run"
 	"${pkgname}.desktop"
 	"${pkgname}.service"
 	"${pkgname}.launcher"
 	"${pkgname}-server.launcher"
-	"${pkgname}-${_upver}-data.tar.xz.sig"
+	"${pkgname}-${pkgver}-data.tar.xz.sig"
 	"ioquake3-q3a-${_ioq3v2}.run.sig"
 	"${pkgname}.desktop.sig"
 	"${pkgname}.service.sig"
@@ -52,7 +51,7 @@ sha512sums=('SKIP'
 
 prepare() {
   cd ${srcdir}/${pkgname}
-  git checkout release-${_upver}
+  git checkout release-${pkgver}
 
   # Quake 3 point release pk3s
   cd ${srcdir}
@@ -100,15 +99,15 @@ package() {
   install -m 640 ${srcdir}/${pkgname}/build/release-linux-${_ARCH}/${pkgname}-renderer-opengl1_${_ARCH}.so ${pkgdir}/opt/${pkgname}/
   install -m 640 ${srcdir}/${pkgname}/build/release-linux-${_ARCH}/${pkgname}-renderer-opengl2_${_ARCH}.so ${pkgdir}/opt/${pkgname}/
 
-  # https://github.com/zturtleman/${pkgname}/releases/download/release-${_upver}/${pkgname}-${_upver}-data.tar.xz
-  install -m 640 ${srcdir}/${pkgname}-${_upver}-data/gamecontrollerdb.txt ${pkgdir}/opt/${pkgname}/
-  install -m 640 ${srcdir}/${pkgname}-${_upver}-data/${pkgname}-gamelist.txt ${pkgdir}/opt/${pkgname}/
-  install -D -m 644 ${srcdir}/${pkgname}-${_upver}-data/LIBERATION_LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/fonts.license.txt
-  find ${srcdir}/${pkgname}-${_upver}-data/ -maxdepth 1 -type f -name "*.txt" -exec install -m 644 '{}' ${pkgdir}/usr/share/doc/${pkgname}/. \;
+  # https://github.com/zturtleman/${pkgname}/releases/download/release-${pkgver}/${pkgname}-${pkgver}-data.tar.xz
+  install -m 640 ${srcdir}/${pkgname}-${pkgver}-data/gamecontrollerdb.txt ${pkgdir}/opt/${pkgname}/
+  install -m 640 ${srcdir}/${pkgname}-${pkgver}-data/${pkgname}-gamelist.txt ${pkgdir}/opt/${pkgname}/
+  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}-data/LIBERATION_LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/fonts.license.txt
+  find ${srcdir}/${pkgname}-${pkgver}-data/ -maxdepth 1 -type f -name "*.txt" -exec install -m 644 '{}' ${pkgdir}/usr/share/doc/${pkgname}/. \;
   for d in baseq3 missionpack missionpackoa tademo baseoa demoq3 fonts;
   do
   	install -d -m 750 ${pkgdir}/opt/${pkgname}/${d}
-	install -m 640 ${srcdir}/${pkgname}-${_upver}-data/${d}/* ${pkgdir}/opt/${pkgname}/${d}/
+	install -m 640 ${srcdir}/${pkgname}-${pkgver}-data/${d}/* ${pkgdir}/opt/${pkgname}/${d}/
   done
 
   # http://ioquake3.org/files/${_ioq3v1}/data/ioquake3-q3a-${_ioq3v2}.run
