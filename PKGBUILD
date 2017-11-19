@@ -5,29 +5,30 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.13.12
-xanmod=19
-pkgrel=1
+pkgver=4.14.0
+xanmod=2
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
-        # standard config files for mkinitcpio ramdisk
-        # pacman hook for initramfs regeneration
-        '90-linux.hook'
-        # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset")
+
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=65b12e4c878bd9da2849289974d0e3a3137c0284
-source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux&id=${arch_config_trunk}")
-source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=${arch_config_trunk}")
-sha256sums=('d310509978e05ae5bd45965d27bbe51efbbf57514224fde28e3f5e771d45e7ac'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+arch_config_trunk=8aee2fcbaf3fe676199bde199f9074e90f736681
+
+source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
+       '60-linux.hook'  # pacman hook for depmod
+       '90-linux.hook'  # pacman hook for initramfs regeneration
+       "$pkgbase.preset"   # standard config files for mkinitcpio ramdisk
+)
+source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
+
+sha256sums=('dd900531015d486cd0cea2beb75e3a49a3c43be6a14a59a6a4243d563863307f'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
-sha256sums_i686=('9b1d9fcb55782e6149aca4dc2d3b250dd4cedf1bf4bd8c6f0968acab0e2e0ee4')
-sha256sums_x86_64=('9c6c4d27d59638d0569ea09a97138bfcfb219f17cdf1138be141380e6654f302')
+sha256sums_x86_64=('a68e94064f040d60e8e4c3380efeee085b54d252d527e960dd17ac688505d5b6')
 
 _kernelname=${pkgbase#linux}
 
@@ -35,7 +36,7 @@ prepare() {
   cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
 
   msg2 "What config you want?"
-  echo -en "     1. upstream Xanmod\n     2. Archlinux stock\n   Selection: "
+  echo -en "     1. upstream Xanmod\n     2. Archlinux stock (only x86_64)\n   Selection: "
   read -n 1 answer && echo
   case $answer in
     1) true ;;
@@ -99,42 +100,53 @@ _package() {
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
-  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
+  mkdir -p "${pkgdir}"/{boot,lib/{modules,firmware},usr}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-  # set correct depmod command for install
-  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
-    "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
+  # make room for external modules
+  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  ln -s "../${_extramodules}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
 
-  # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/${pkgbase}.preset" |
-    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  # add real version for building modules and running depmod from hook
+  echo "${_kernver}" |
+    install -Dm644 /dev/stdin "${pkgdir}/lib/modules/${_extramodules}/version"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # make room for external modules  EDIT: xanmod already has _kernelname at the end
-  ln -s "../extramodules-${_basekernel}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  # add real version for building modules and running depmod from post_install/upgrade  EDIT: xanmod already has _kernelname at the end
-  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}"
-  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}/version"
 
   # Now we call depmod...
   depmod -b "${pkgdir}" -F System.map "${_kernver}"
+
+  # add vmlinux
+  install -Dt "${pkgdir}/lib/modules/${_kernver}/build" -m644 vmlinux
 
   # move module tree /lib -> /usr/lib
   mkdir -p "${pkgdir}/usr"
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
-  # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  # sed expression for following substitutions
+  local _subst="
+    s|%PKGBASE%|${pkgbase}|g
+    s|%KERNVER%|${_kernver}|g
+    s|%EXTRAMODULES%|${_extramodules}|g
+  "
+
+  # hack to allow specifying an initially nonexisting install file
+  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
+  true && install=${install}.pkg
+
+  # install mkinitcpio preset file
+  sed "${_subst}" ../linux.preset |
+    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hooks
+  sed "${_subst}" ../60-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "${_subst}" ../90-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 }
 
 _package-headers() {
