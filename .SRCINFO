@@ -1,7 +1,7 @@
 pkgbase = chromium-vaapi
 	pkgdesc = Chromium compiled with VA-API support for Intel Graphics
 	pkgver = 62.0.3202.94
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = chromium-vaapi
 	makedepends = ninja
 	makedepends = nodejs
 	makedepends = git
+	makedepends = clang
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
