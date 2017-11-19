@@ -1,4 +1,4 @@
-# P1mper : M0Rf30
+# P1mper : robertfoster
 pkgname=watchvideo-svn
 pkgver=120
 pkgrel=1
