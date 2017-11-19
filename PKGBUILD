@@ -5,45 +5,32 @@ pkgname="lattice-diamond"
 pkgdesc="Lattice Diamond design software"
 url="http://www.latticesemi.com/"
 license=('custom')
-pkgver=3.9
-_revision="99-2"
-pkgrel=2
+pkgver=3.10
+_revision="111-2"
+pkgrel=1
 arch=('x86_64')
+install="${pkgname}.install"
 source=("http://files.latticesemi.com/Diamond/${pkgver}/diamond_${pkgver/"."/"_"}-base_x64-${_revision}-${arch}-linux.rpm"
-		"lattice-diamond.png"
-		"lattice-diamond.desktop")
-sha512sums=('ee4ef401f7e6db6b54061e612224666ee0f3218499653f82b66a2865a0fdf3e6c8986c7a70d6c92da7d1276b6e21081866603d544d6fdc0c60fcccbcfa7b683a'
+		"${pkgname}.png"
+		"${pkgname}.desktop"
+        "${pkgname}.install")
+sha512sums=('423f4df79c3f07a7cf9cfd17914019f3c06187c4c1a04f13d48e255d3f75dfea2e1e9641506da59c06e276bef46737c14f502df668a3a7ac6ebe63a3cdd4cd1d'
 			'772fa260bb1a4ed7c4e328a99b3cd16b625e8880d7731abbe0cd59dbe4d743265e169a26ceba7b619a87c1cb9638a268a5501d3358863171ee808e59b2d3b0ac'
-			'376ff8219222f4cecec686356ccbbd19ee5e721ab991d4ec335a32248431e4a26433d29476cd900fb3dee7e441a875eaacbf2b197273482d7b39bff76c8db70c')
+			'b5365ac137c6114bdd3e1d6bd1f9e2f8f5306cbf763d457190567c0f8d3086bf3dde11f50a22d35e759b62860f0014c66d631d463fd369d09162905fd5732c07'
+            'e9b7613fe4cd42085515bccd0bcbf96b0a6185e2c4b1daa1609f888b9e71cca806bb74aca300bfb8c5cd8ef305c34e070e67d4d2bb9ee85e5a7b5f1cffcdb048')
 options=('!strip' '!upx')
 #PKGEXT=".pkg.tar" # The package is over 3 GB, uncomment this line if you prefer not compressing it
 
 prepare() {
 	# Extract all the packages
-	cd ${srcdir}/usr/local/diamond/${pkgver}_x64/bin
-	tar -xzf bin.tar.gz
-	rm bin.tar.gz
-	cd ${srcdir}/usr/local/diamond/${pkgver}_x64/cae_library
-	tar -xzf cae_library.tar.gz
-	rm cae_library.tar.gz
-	cd ${srcdir}/usr/local/diamond/${pkgver}_x64/data
-	tar -xzf data.tar.gz
-	rm data.tar.gz
-	cd ${srcdir}/usr/local/diamond/${pkgver}_x64/embedded_source
-	tar -xzf embedded_source.tar.gz
-	rm embedded_source.tar.gz
-	cd ${srcdir}/usr/local/diamond/${pkgver}_x64/examples
-	tar -xzf examples.tar.gz
-	rm examples.tar.gz
-	cd ${srcdir}/usr/local/diamond/${pkgver}_x64/ispfpga
-	tar -xzf ispfpga.tar.gz
-	rm ispfpga.tar.gz
-	cd ${srcdir}/usr/local/diamond/${pkgver}_x64/synpbase
-	tar -xzf synpbase.tar.gz
-	rm synpbase.tar.gz
-	cd ${srcdir}/usr/local/diamond/${pkgver}_x64/tcltk
-	tar -xzf tcltk.tar.gz
-	rm tcltk.tar.gz
+    for package in bin cae_library data embedded_source examples ispfpga synpbase tcltk
+    do
+        echo -n Extracting ${package}... 
+        cd ${srcdir}/usr/local/diamond/${pkgver}_x64/${package}
+        tar -xzf ${package}.tar.gz
+        rm ${package}.tar.gz
+        echo ' done!'
+    done
 }
 
 package() {

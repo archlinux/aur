@@ -1,0 +1,4 @@
+post_upgrade() {
+	echo 'Warning: If you had a license file in /usr/local/diamond/<version>/license/license.dat, it will not be automatically removed.'
+	echo 'You can manually delete or move it to the new install directory.'
+}
