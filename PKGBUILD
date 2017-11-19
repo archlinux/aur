@@ -1,4 +1,4 @@
-# Maintainer : M0Rf30
+# Maintainer: robertfoster
 
 pkgname=torrential
 pkgver=1.0.7
