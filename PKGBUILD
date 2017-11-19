@@ -14,7 +14,7 @@ provides=('rider')
 conflicts=('rider')
 
 _installdir='/usr/share'
-_pkgdir="Rider-${pkgver}"
+_pkgdir="JetBrains Rider-${pkgver}"
 _srcfile="JetBrains.Rider-${pkgver}.tar.gz"
 source=("https://download-cf.jetbrains.com/resharper/${_srcfile}"
         'rider.desktop')
