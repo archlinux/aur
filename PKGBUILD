@@ -1,10 +1,12 @@
 pkgname=file-commander-git
-pkgver=0.9.3.2.r41.gf33c7b3
+_pkgname=file-commander
+pkgver=0.9.3.3.r39.g3852e7f
 pkgrel=1
 pkgdesc='Qt-based cross-platform Total Commander-like orthodox file manager for Windows, Mac and Linux'
 arch=('i686' 'x86_64')
 url="https://github.com/VioletGiraffe/file-commander"
 license=('GPL3')
+options=(debug)
 depends=('qt5-base' 'qt5-multimedia' 'hunspell')
 makedepends=('qt5-tools')
 source=("$pkgname::git+$url")
@@ -22,15 +24,15 @@ prepare(){
 
 build() {
   cd "$srcdir/$pkgname"
-  qmake PREFIX=/opt/$pkgname
+  qmake PREFIX=/opt/$_pkgname
   make
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  mkdir -p $pkgdir/opt/$pkgname
-  cp $srcdir/$pkgname/bin/release/* $pkgdir/opt/$pkgname
+  mkdir -p $pkgdir/opt/$_pkgname
+  cp -r $srcdir/$pkgname/bin/release/x64/* $pkgdir/opt/$_pkgname
   mkdir -p $pkgdir/usr/bin/
-  install -Dm755 $pkgdir/opt/$pkgname/FileCommander $pkgdir/usr/bin
+  install -Dm755 $pkgdir/opt/$_pkgname/FileCommander $pkgdir/usr/bin
 
 }
