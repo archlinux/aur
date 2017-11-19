@@ -1,4 +1,4 @@
-#Mantainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=wolfsp-git
 pkgver=69.046504e
 pkgrel=1
