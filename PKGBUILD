@@ -70,14 +70,14 @@ build() {
 }
 
 package_linux-linode() {
-  KARCH=x86
   cd "${srcdir}/${_srcname}"
   _kernver="$(make LOCALVERSION= kernelrelease)"
-  mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  rm -rf "${pkgdir}"/lib/{firmware,modules/${_kernver}/{source,build}}
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuzll-${pkgname}"
-  install -D -m644 vmlinux "${pkgdir}/lib/modules/${_kernver}/build/vmlinux"
+  emdir="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  mkdir -p "${pkgdir}"/{usr/lib/modules/"$emdir",boot/grub}
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
+  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuzll-${pkgname}"
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
   install -D -m644 "${srcdir}/preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   install -D -m644 "${srcdir}/98-linux-linode.hook" "${pkgdir}/usr/share/libalpm/hooks/98-linux-linode.hook"
   install -D -m644 "${srcdir}/99-grub-ll.hook"      "${pkgdir}/usr/share/libalpm/hooks/99-grub-ll.hook"
@@ -90,14 +90,8 @@ package_linux-linode() {
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|" \
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
-
-  emdir="extramodules-${_basekernel}${_kernelname:--ARCH}"
-  mkdir -p "${pkgdir}/lib/modules/${emdir}"
-  ln -s "../${emdir}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  echo "${_kernver}" >| "${pkgdir}/lib/modules/${emdir}/version"
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
-  mkdir -p "${pkgdir}/usr"
-  mv "${pkgdir}/"{lib,usr/}
-  mkdir -p ${pkgdir}/boot/grub
-  sed "s/%VER%/${pkgver}-${pkgrel}/ig" ${srcdir}/menu.lst > ${pkgdir}/boot/grub/menu.lst
+  ln -s "../${emdir}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
+  echo "${_kernver}" >| "${pkgdir}/usr/lib/modules/${emdir}/version"
+  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
+  sed "s/%VER%/${pkgver}-${pkgrel}/ig" "${srcdir}/menu.lst" > "${pkgdir}/boot/grub/menu.lst"
 }
