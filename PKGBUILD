@@ -3,7 +3,7 @@
 
 pkgname='frr'
 pkgver='3.0.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
@@ -72,8 +72,6 @@ package() {
 
   install -Dm0644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  rm -rfv "${pkgdir}/usr/bin/${pkgname}"
-  rm -rfv "${pkgdir}/usr/bin/${pkgname}-reload.py"
-  # frr:frrvty
-  chown -R 177:178 "${pkgdir}/etc/frr" 
+  rm -rfv "${pkgdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}-reload.py"
+  chown -R 177:177 "${pkgdir}/etc/frr"
 }
