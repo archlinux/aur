@@ -1,8 +1,8 @@
 # Contributor: Chris Brannon <cmbrannon79@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nmh
-pkgver=1.6
-pkgrel=3
+pkgver=1.7
+pkgrel=1
 epoch=
 pkgdesc="Powerful electronic mail handling system, based on a set of command-line utilities."
 arch=('i686' 'x86_64')
@@ -47,9 +47,9 @@ install=
 source=("http://download.savannah.nongnu.org/releases/nmh/$pkgname-$pkgver.tar.gz")
 noextract=()
 options=()
-md5sums=('766ff2d37736aef76243df9c6610cb77')
-sha1sums=('d424a7520c85abfdbd492f70cdae7fce51a88a7f')
-sha256sums=('29338ae2bc8722fe8a5904b7b601a63943b72b07b6fcda53f3a354edb6a64bc3')
+md5sums=('f6f8adbc9665bca76b153b07ff2fe294')
+sha1sums=('626e4c759807fa0714a825bcc4f4c60ba9360ea5')
+sha256sums=('cd05c7ca2cae524ae99f6ba673463a5cdeff62df93e85913aa9277ae8304ce44')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
