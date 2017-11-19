@@ -3,19 +3,19 @@
 
 pkgname=referenceassemblies-3.5-bin
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mono runtime - compiler compatibility for .NET 3.5'
 arch=('any')
 url='https://github.com/mono/reference-assemblies'
 license=('MIT')
 depends=('mono')
 makedepends=('curl')
-source=('https://github.com/mono/reference-assemblies/raw/master/v3.5/Microsoft.Build.Engine.dll'
-        'https://github.com/mono/reference-assemblies/raw/master/v3.5/Microsoft.Build.Framework.dll'
-        'https://github.com/mono/reference-assemblies/raw/master/v3.5/Microsoft.Build.Tasks.v3.5.dll'
-        'https://github.com/mono/reference-assemblies/raw/master/v3.5/Microsoft.Build.Utilities.v3.5.dll'
-        'https://github.com/mono/reference-assemblies/raw/master/v3.5/Mono.XBuild.Tasks.dll'
-        'https://github.com/mono/reference-assemblies/raw/master/LICENSE')
+source=('https://github.com/mono/reference-assemblies/raw/7be495e540f133a21aa82f047a75447b5adc6a3a/v3.5/Microsoft.Build.Engine.dll'
+        'https://github.com/mono/reference-assemblies/raw/7be495e540f133a21aa82f047a75447b5adc6a3a/v3.5/Microsoft.Build.Framework.dll'
+        'https://github.com/mono/reference-assemblies/raw/7be495e540f133a21aa82f047a75447b5adc6a3a/v3.5/Microsoft.Build.Tasks.v3.5.dll'
+        'https://github.com/mono/reference-assemblies/raw/7be495e540f133a21aa82f047a75447b5adc6a3a/v3.5/Microsoft.Build.Utilities.v3.5.dll'
+        'https://github.com/mono/reference-assemblies/raw/7be495e540f133a21aa82f047a75447b5adc6a3a/v3.5/Mono.XBuild.Tasks.dll'
+        'https://github.com/mono/reference-assemblies/raw/7be495e540f133a21aa82f047a75447b5adc6a3a/LICENSE')
 sha256sums=('055a6d272ee4d34bb23adb275a650969bb2248eebcbbc174333ca245bf06299d' 
             '348b93dd8a8a2266d5b35215910b580852c8db7686b159a5f8a597fb7e92a01b' 
             '50fa2eda486c798b7c25b3ed8d29d2eb90cedf3cd1f1213558c8bfc3f2d2dcb8' 
