@@ -21,7 +21,7 @@ package() {
     make 
     install -Dm644 ./${pkgname}.desktop -t "${pkgdir}"/etc/xdg/autostart
     install -Dm755 ./dockd "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 -d etc "$pkgdir/etc/$pkgname"
+    install -Dm755 -d etc "$pkgdir/etc/$pkgname"
 
 }
 
