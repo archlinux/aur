@@ -3,7 +3,7 @@
 pkgname=dockd
 pkgver=1.20
 pkgrel=2
-pkgdesc="A general purpose userspace ThinkPad library"
+pkgdesc="Lenovo ThinkPad Dock Management Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/libthinkpad/dockd"
 license=('BSD-2')
@@ -15,13 +15,16 @@ prepare () {
     mkdir -p "$srcdir/$pkgname-$pkgver/etc"
 }
 
-package() {
+build() {
     cd "${srcdir}/${pkgname}-${pkgver}" || exit 1 
     cmake . -DCMAKE_INSTALL_PREFIX=/usr
     make 
+}
+
+package() {
+    cd "${srcdir}/${pkgname}-${pkgver}" || exit 1 
     install -Dm644 ./${pkgname}.desktop -t "${pkgdir}"/etc/xdg/autostart
     install -Dm755 ./dockd "$pkgdir/usr/bin/$pkgname"
     install -Dm755 -d etc "$pkgdir/etc/$pkgname"
-
 }
 
