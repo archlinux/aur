@@ -1,0 +1,18 @@
+pkgbase = delft-icon-theme-git
+	pkgdesc = Continuation of Faenza icon theme with up to date app icons
+	pkgver = 0.2.r0.g0ff8995
+	pkgrel = 1
+	url = https://github.com/madmaxms/iconpack-delft
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-update-icon-cache
+	depends = librsvg
+	provides = delft-icon-theme
+	conflicts = delft-icon-theme
+	options = !strip
+	source = delft-icon-theme::git+https://github.com/madmaxms/iconpack-delft.git
+	md5sums = SKIP
+
+pkgname = delft-icon-theme-git
+
