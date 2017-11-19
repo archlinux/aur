@@ -1,7 +1,7 @@
 pkgbase = python-ceilometerclient
 	pkgdesc = Python client library for Ceilometer
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.openstack.org/developer/python-ceilometerclient/
 	arch = any
 	license = Apache
