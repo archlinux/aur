@@ -4,8 +4,8 @@
 pkgname=coreboot-utils-git
 pkgver=4.6.r2144.gda6b1bc9e2
 pkgrel=1
-pkgdesc='Tools and utilities to work with Coreboot firmware'
-url='http://www.coreboot.org/'
+pkgdesc='Tools and utilities to work with coreboot firmware'
+url='https://www.coreboot.org/'
 license=(GPL)
 arch=(i686 x86_64)
 depends=(pciutils)
