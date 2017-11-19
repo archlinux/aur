@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-night-light-slider-git
+	pkgdesc = Gnome Shell CPU Frequency Monitor and Governor Manager.
+	pkgver = 24.edf5967
+	pkgrel = 0
+	url = https://github.com/TimurKiyivinski/gnome-shell-night-light-slider-extension
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = gnome-shell
+	source = git://github.com/TimurKiyivinski/gnome-shell-night-light-slider-extension.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-night-light-slider-git
+
