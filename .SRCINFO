@@ -1,12 +1,12 @@
 pkgbase = kube-aws
 	pkgdesc = CLI tool to automate Kubernetes cluster deployment to AWS
-	pkgver = v0.9.6
+	pkgver = v0.9.8
 	pkgrel = 1
 	url = https://github.com/coreos/kube-aws
 	arch = x86_64
 	license = Apache
-	source = https://github.com/coreos/kube-aws/releases/download/v0.9.6/kube-aws-linux-amd64.tar.gz
-	sha512sums = b4796e8b4c582f69bd4e6f52a4658022ad2390fd0fd2b6896a476de2b0396827ea405b34f3cec61c0b78dac46a4985943e60dcf78dd0d075a1fc6de637369d38
+	source = https://github.com/coreos/kube-aws/releases/download/v0.9.8/kube-aws-linux-amd64.tar.gz
+	sha512sums = fd1c9825b3e52c3eb021830d8b2d687f61f871ad1b9ae366d2f43b5c78f1575970cb7da1939c0d338c92d701599cbd46e02dc981ec135f02aace848f2d99a79c
 
 pkgname = kube-aws
 
