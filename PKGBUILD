@@ -8,7 +8,7 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
