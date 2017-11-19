@@ -1,0 +1,18 @@
+pkgbase = btops-git
+	pkgdesc = bspwm desktop management
+	pkgver = 0.1.0.r0.g7ecfa08
+	pkgrel = 1
+	url = https://github.com/cmschuetz/btops
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = btops
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/cmschuetz/btops.git
+	sha256sums = SKIP
+
+pkgname = btops-git
+
