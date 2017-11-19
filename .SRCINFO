@@ -1,15 +1,15 @@
 pkgbase = libthinkpad
 	pkgdesc = A general purpose userspace ThinkPad library
-	pkgver = 2.0
-	pkgrel = 1
+	pkgver = 2.3
+	pkgrel = 2
 	url = https://github.com/libthinkpad/libthinkpad
 	arch = i686
 	arch = x86_64
 	license = BSD-2
 	depends = cmake
 	depends = systemd
-	source = https://github.com/libthinkpad/libthinkpad/archive/2.0.tar.gz
-	md5sums = 80d1a19ea47dc42e3a9cf4f4ee745edb
+	source = http://thinkpads.org/ftp/libthinkpad/libthinkpad-2.3.tar.gz
+	md5sums = da6791c1880e73a43879023c1d7770a3
 
 pkgname = libthinkpad
 
