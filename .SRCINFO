@@ -1,12 +1,32 @@
 pkgbase = vkaudiosaver
 	pkgdesc = A tool for listening & downloading the music from social network VK.COM
-	pkgver = 1.5.1
-	pkgrel = 2
+	pkgver = 2.0.6
+	pkgrel = 1
 	url = http://vkaudiosaver.ru/
 	arch = i686
 	arch = x86_64
 	groups = network
 	license = custom
+	depends = fontconfig
+	depends = freetype2
+	depends = libstdc++5
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = zlib
+	depends = libpng12
+	depends = lib32-fontconfig
+	depends = lib32-freetype2
+	depends = lib32-libxext
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = lib32-libxrandr
+	depends = lib32-libstdc++5
+	depends = lib32-libpng12
+	source = http://vkaudiosaver.ru/download/vkaudiosaver-2.0.6-amd64.deb
+	source = vkaudiosaver.desktop
+	sha256sums = ac83eaab81896f2ca0d70f9a3607369c381c4cd77f28e64b843e0c3277b9c929
+	sha256sums = afed971e597cc4d4c3170284e52a80115ffa8afd630fbb806c831413a3177994
 
 pkgname = vkaudiosaver
 
