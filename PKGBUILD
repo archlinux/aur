@@ -64,17 +64,17 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _srcname=linux-4.13
-_pkgver=4.13.10
-_rtver=3
+_pkgver=4.13.13
+_rtver=5
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
-_bfq_sq_mq_ver='20171030'
+_bfq_sq_mq_ver='20171111'
 _bfq_sq_mq_patch="4.13-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.13"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.13"
@@ -88,6 +88,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/4.13/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/4.13/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_sq_mq_patch}"
+        "${_lucjanpath}/0001-bfq-sq-mq-fix-patching-error-with-20171109.patch"
         "${_lucjanpath}/blk-mq-v10/0050-blk-mq-sched-dispatch-from-scheduler-only-after-progress-is-made-on->dispatch.patch"
         "${_lucjanpath}/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
         "${_lucjanpath}/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
@@ -131,10 +132,11 @@ prepare() {
     ### Patch source with BFQ-SQ-MQ
         msg "Fix naming schema in BFQ-SQ-MQ patch"
         sed -i -e "s|PATCHLEVEL = 14|PATCHLEVEL = 13|g" \
-            -i -e "s|SUBLEVEL = 0|SUBLEVEL = 10|g" \
-            -i -e "s|EXTRAVERSION = -rc7|EXTRAVERSION =|g" \
-            -i -e "s|EXTRAVERSION =-bfq|EXTRAVERSION =|g" \
+            -i -e "s|SUBLEVEL = 0|SUBLEVEL = 13|g" \
+            -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
             -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" ../${_bfq_sq_mq_patch}
+        msg "Fix patching error with 20171109 and newer"
+        patch -Np1 -i ../0001-bfq-sq-mq-fix-patching-error-with-20171109.patch
         msg "Patching source with BFQ-SQ-MQ patches"
         patch -Np1 -i ../${_bfq_sq_mq_patch}
         
@@ -431,11 +433,12 @@ done
 
 sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f3119aea6cbd7b61df30ca6ef3ec57044d524b7babbaabddf8b08b8bafa7d2'
             'SKIP'
-            '634d81ea509aac5555d8d11631babe9bb04ea771c873f084cea7067313a566d5cad291b0c311002ae8d1d6dd498a93a9a43517923aa449eebb405fb4c1e34753'
+            '27966bedc01ef5e2d023ee0b91224ca5ab3c5019f431305a9daa62b3acddf80e4e4c201ec47ca06243aba7778810d5ecb95e9d115e15935153a4a5d061af3fac'
             'SKIP'
-            '560e1c7575db3dac623fd196dcf2d35a2ad936c732426a07c6c4bfe795e8a922d0cc820dfa7ba6ad08e5d245831faa1e2dbea3344a76d596ee243de458018335'
+            '15a776bbc6eb26aee343ad59f4671cd35d0bcac1c9ea09ccf64bd6d2f2f3146df938ba092a70875d660373b2e29621d9173a1be33712ccaef146e741b4a9e768'
             'SKIP'
-            '89fd03de4e0e250d70d20524f7d94a6605b1c8a2898170249986c9a926063d832240defdb8af11226799c4e0344c681ebab0ecef63f75e4fc41557d69eaec3fd'
+            'ca648669527eeec3e5cfd8cb734c834ba4306bfcaea09bccca0187cb3a6ec436fa71ffd5b4e8bc7915cadeb485f40c42c95c82db3e2d7540421fbf34f41f9db7'
+            '44d358294fa2b3be846b3ad2041b102c0af21ceca6806456a4c3dd033b2c0b91fa69858200e29491963f551f35af29e2972ba4ab46e741e20f6776d61e63266f'
             '11dd363137d680d1bde1e332c3829246773e49d5fd0d2ef4ab77723ca0d2ecb3ad80a77a08dca8c4ce817ff0f966709673453e754f15e3e1527f943725d547ff'
             'ca6a40800668c0fcf478bd1bc555e5a496f5259739594bf83cc4963756b7a9a0a5b406e91f760d35f1bce1268c01d779fe2a7e749eccf9412e826152a5f013ef'
             '1434cc3957ef77fb83c9385a348f36ca43a73459b8995d3061143d1d15b307f944c39abc0eb109d20869c1749348d608c58cf5b92fd81ad65cad2d362e346549'
