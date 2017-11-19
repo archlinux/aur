@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # This file is part of BlackArch Linux ( http://blackarch.org ).
 # See COPYING for license details.
 
