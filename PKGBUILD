@@ -3,7 +3,7 @@
 
 pkgname=dockbarx
 pkgver=0.92
-pkgrel=3
+pkgrel=4
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i686' 'x86_64')
 url="https://github.com/M7S/dockbarx"
@@ -24,7 +24,7 @@ sha256sums=('eb7630c0cebeb84ba9f66c60d77ec082afe56b264db4139436913ebdf2b1b7ea'
             '6eba00088c1094aee041b26407d5c8e9f19da2eaee491cc9aff92a11285efba2')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i ../freedesktop_quicklist.patch
 }
 
