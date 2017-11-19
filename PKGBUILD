@@ -3,50 +3,41 @@
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
 pkgname=mailpile
-pkgver=0.5.2
-pkgrel=3
+pkgver=1.0.0rc1
+pkgrel=1
 pkgdesc="A modern, fast web-mail client with user-friendly encryption and privacy features."
 arch=('any')
 url="http://www.mailpile.is"
 license=('AGPL3')
-depends=('gnupg1' 'python2-jinja>=2.6' 'python2-lxml>=2.3.2' 'python2-markupsafe' 'python2-pgpdump' 'python2-pillow' 'python2-pydns' 'spambayes>=1.1a6')
+depends=('gnupg' 'python2-appdirs' 'python2-cryptography' 'python2-jinja>=2.6' 'python2-lxml>=2.3.2' 'python2-markupsafe' 'python2-pbr' 'python2-pgpdump' 'python2-pillow' 'python2-pydns' 'python2-setuptools' 'spambayes>=1.1a6')
 install=${pkgname}.install
-source=("https://github.com/pagekite/${pkgname}/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.zip::https://github.com/mailpile/Mailpile/archive/88ae8e5831dddc628c827c44224166dbdbed91f1.zip"
+        #"https://github.com/mailpile/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('2619dd0711628e25e216bec196d42381e50d45d943a727177f11f8ce89e26004'
+sha256sums=('7eeb45c261341dce5b3d56fecd1799825fc914b5a4392a3cbcc0c4b53c00fae5'
             '07adbd61cda225bf11818d39776240ee1077a3f2ddc9e5ef0f11825dd4ca504d')
 
 prepare() {
-  cd "${srcdir}/Mailpile-${pkgver}"
+  cd "${srcdir}/Mailpile-"*
 
-  # Set absolute paths for static files
-  sed -i "s^('static/^('/usr/share/mailpile/static/^g" mailpile/config.py
-  sed -i '/os.path.dirname(              # scripts/d' mp
-  sed -i 's^__file__))^"/usr/share/mailpile/mailpile")^g' mp
-
-  # Use gnupg 1.4
-  sed -i "s/gpg'/gpg1'/g" mailpile/crypto/gpgi.py
-  sed -i "s/gpg /gpg1 /g" mailpile/plugins/crypto_gnupg.py
+  # Set absolute path
+  sed -i '5,9c mailpile_root = "/usr/share/mailpile"' mp
 }
 
 build() {
-  cd "${srcdir}/Mailpile-${pkgver}"
+  cd "${srcdir}/Mailpile-"*
 
   # Compile bytecode
   python2 -m compileall -f mailpile
 }
 
 package() {
-  cd "${srcdir}/Mailpile-${pkgver}"
+  cd "${srcdir}/Mailpile-"*
 
   install -d "${pkgdir}/usr/share/${pkgname}"
 
-  cp -r static "${pkgdir}/usr/share/${pkgname}/"
+  cp -r shared-data/* "${pkgdir}/usr/share/${pkgname}/"
   cp -r mailpile "${pkgdir}/usr/share/${pkgname}/"
-  cp -r locale "${pkgdir}/usr/share/${pkgname}/"
-
-  find "${pkgdir}/usr/share/${pkgname}" -type f -exec chmod 644 '{}' ';'
-  find "${pkgdir}/usr/share/${pkgname}" -type d -exec chmod 755 '{}' ';'
 
   install -D mp -t "${pkgdir}/usr/bin"
   install -Dm644 "../${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
