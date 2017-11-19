@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=whatweb
 pkgver=0.4.7
