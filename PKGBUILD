@@ -1,7 +1,7 @@
 pkgbase=('python-pygdbmi')
 pkgname=('python-pygdbmi')
 _module='pygdbmi'
-pkgver='0.7.4.3'
+pkgver='0.7.4.4'
 pkgrel=1
 pkgdesc="Parse gdb machine interface output with Python"
 url="https://github.com/cs01/pygdbmi"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/p/pygdbmi/pygdbmi-${pkgver}.tar.gz")
-md5sums=('5ef8c4b4b1b4b4122b16c4f18a8e378b')
+md5sums=('7deefc291275592b081d8193b58e8114')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
