@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster 
 
 pkgbase=ziftrcoin
 pkgname=('ziftrcoin-daemon' 'ziftrcoin-cli' 'ziftrcoin-qt')
