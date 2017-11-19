@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=usbtranfer
 pkgver=3.0.1
