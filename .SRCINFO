@@ -1,0 +1,12 @@
+pkgbase = create-react-app
+	pkgdesc = Create React apps with no build configuration.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/facebookincubator/create-react-app
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+
+pkgname = create-react-app
+
