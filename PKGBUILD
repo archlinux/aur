@@ -6,12 +6,12 @@ pkgname=foxitreader
 pkgver=2.4.1.0609
 _frrev_i686=r08f07f8
 _frrev_x86_64=${_frrev_i686}
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast, secure and complete PDF viewer"
 arch=('i686' 'x86_64')
 url="https://www.foxitsoftware.com/products/pdf-reader/"
 license=('custom:EULA')
-makedepends=('qt-installer-framework' 'qt5-tools' 'p7zip')
+makedepends=('qt-installer-framework>=3.0.1' 'qt5-tools' 'p7zip')
 depends=('libsecret' 'qt5-webkit')
 source=("https://www.foxitsoftware.com/products/pdf-reader/eula.html"
         "${pkgname}.patch")
