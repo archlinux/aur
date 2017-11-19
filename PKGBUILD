@@ -2,7 +2,7 @@
 
 pkgname=pacui
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash script providing advanced Pacman and Pacaur/Yaourt functionality in a simple UI"
 arch=(any)
 url="https://github.com/excalibur1234/$pkgname"
@@ -23,6 +23,6 @@ md5sums=('e627b465b4bc42eff552394c26e3bfd4')
 #  2. delete .tar.gz file
 
 package () {
-	cd "$srcdir"
-        install -Dm755 "$srcdir/$pkgname/pacui" "$pkgdir/usr/bin/pacui"
+        cd "$srcdir/$pkgname-$pkgver"
+        install -Dm755 "pacui" "$pkgdir/usr/bin/pacui"
 }
