@@ -1,7 +1,7 @@
 # Maintainer: tobias <tobias@archlinux.org>
 
 pkgname=gtk-sharp-2
-pkgver=2.12.42
+pkgver=2.12.45
 pkgrel=1
 pkgdesc="gtk2 bindings for C#"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=('pkgconfig' 'monodoc')
 conflicts=('gtk#')
 options=('!makeflags')
 source=(https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-${pkgver}.tar.gz)
-sha256sums=('f3b009bb73e3251378063b6f09786609cd4c061f3f8bf552f0ea663245c045c9')
+sha256sums=('02680578e4535441064aac21d33315daa009d742cab8098ac8b2749d86fffb6a')
 
 build() {
   cd gtk-sharp-${pkgver}
