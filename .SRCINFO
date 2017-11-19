@@ -1,0 +1,14 @@
+pkgbase = boram
+	pkgdesc = Cross-platform WebM converter
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/Kagami/boram#readme
+	arch = x86_64
+	license = CC0-1.0
+	depends = mpv
+	depends = ffmpeg
+	source = https://github.com/Kagami/boram/releases/download/v0.3.7/boram-v0.3.7-linux-x64.7z
+	md5sums = 9d7791778bc9a3477b216ac3a9b17dbc
+
+pkgname = boram
+

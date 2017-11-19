@@ -1,0 +1,5 @@
+.directory
+pkg
+src
+*.xz
+*.7z
