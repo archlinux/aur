@@ -29,7 +29,7 @@ post_upgrade() {
 }
 
 post_remove() {
-    sudo rm /opt/drivesync
+    sudo rm -R /opt/drivesync
     echo "Make sure to erase the cronjob with crontab -e"
     echo "and remove the line 'alias drivesync='ruby /opt/drivesync/drivesync.rb'"
     echo "from your .bashrc"
