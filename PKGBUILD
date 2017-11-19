@@ -1,4 +1,4 @@
-# Mantainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=unrealtournament-chaosut
 pkgver=1.1
