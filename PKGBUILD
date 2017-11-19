@@ -99,7 +99,7 @@ _package() {
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
-  mkdir -p "${pkgdir}"/{boot,lib/{modules,firmware},usr}
+  mkdir -p "${pkgdir}"/{boot,lib/modules,usr}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
@@ -113,9 +113,6 @@ _package() {
 
   # remove build and source links
   rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-
-  # remove the firmware
-  rm -r "${pkgdir}/lib/firmware"
 
   # now we call depmod...
   depmod -b "${pkgdir}" -F System.map "${_kernver}"
