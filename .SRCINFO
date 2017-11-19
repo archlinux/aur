@@ -1,6 +1,6 @@
 pkgbase = gbt-git
 	pkgdesc = Highly configurable prompt builder for Bash and ZSH written in Go
-	pkgver = r71.262576f
+	pkgver = r72.cf62b70
 	pkgrel = 1
 	url = https://github.com/jtyr/gbt
 	arch = any
