@@ -4,15 +4,15 @@
 pkgname=firefox-nightly-ru
 pkgdesc='Web browser from mozilla.org, nightly build, russian version'
 url='http://nightly.mozilla.org/'
-_version=58.0a1
-pkgver=58.0a1.20170930
+_version=59.0a1
+pkgver=59.0a1.20171119
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _filename="firefox-${_version}.ru.linux-${CARCH}"
 _baseurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n"
 _sha512sum="$(curl -vs "${_baseurl}/${_filename}.checksums" 2>&1 | grep bz | grep sha512 | cut -d " " -f1 | head -n 1)"
-_date="$(curl -sL https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/ | grep -A2 "firefox-57.0a1.ru.linux-x86_64.tar.bz2\"" | tail -n1 | cut -f2 -d'>' | cut -f1 -d' ' | date +%Y%m%d)"
+_date="$(curl -sL https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/ | grep -A2 "firefox-${_version}.ru.linux-x86_64.tar.bz2\"" | tail -n1 | cut -f2 -d'>' | cut -f1 -d' ' | date +%Y%m%d)"
 source=('firefox-nightly.desktop'
         'firefox-nightly-ru.install'
         'vendor.js'
@@ -35,6 +35,6 @@ package() {
   cp -r firefox "${pkgdir}/opt/firefox-nightly-ru"
   ln -s /opt/firefox-nightly-ru/firefox "${pkgdir}/usr/bin/firefox-nightly"
   install -m644 "${srcdir}/firefox-nightly.desktop" "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/firefox/browser/icons/mozicon128.png" "${pkgdir}/usr/share/pixmaps/firefox-nightly-icon.png"
+  install -m644 "${srcdir}/firefox/browser/chrome/icons/default/default128.png" "${pkgdir}/usr/share/pixmaps/firefox-nightly-icon.png"
   install -Dm644 "${srcdir}/vendor.js" "${pkgdir}/opt/firefox-nightly-ru/browser/defaults/preferences/vendor.js"
 }
