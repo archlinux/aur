@@ -1,8 +1,8 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
 pkgname='monero-wallet-qt-git'
-_monerover=0.11.0.0
-pkgver=${_monerover}
+_monerover=0.11.1.0
+pkgver=0.11.1.0.r79.gda020fd
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://getmonero.org/"
@@ -21,12 +21,12 @@ makedepends=('git' 'cmake' 'boost')
 
 pkgdesc="Official QT GUI wallet for Monero, a private, secure, untraceable peer-to-peer currency"
 
-_repourl=https://github.com/monero-project/monero-core
+_repourl=https://github.com/monero-project/monero-gui
 source=("git+$_repourl")
 
 md5sums=('SKIP')
 
-_srcdir=monero-core
+_srcdir=monero-gui
 
 pkgver() {
     cd "$srcdir/$_srcdir"
@@ -38,17 +38,6 @@ prepare() {
 
     echo "var GUI_VERSION = \"$pkgver\"" > version.js
     echo "var GUI_MONERO_VERSION = \"$_monerover\"" >> version.js
-
-    #patch -p1 < ../link-libreadline.patch
-
-    # Otherwise pull fails
-    git config user.name makepkg
-    git config user.email makepkg@localhost
-
-    git remote add up $_repourl
-
-    git pull --no-edit up refs/pull/868/head # add -lreadline
-    git pull --no-edit up refs/pull/793/head # subaddresses
 }
 
 build() {
