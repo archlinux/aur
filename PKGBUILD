@@ -1,21 +1,20 @@
 _name=vlc
 pkgname=vlc-clang-git
-pkgver=3.0.r72422.g4470059611
+pkgver=3.0.r72962.g69409cf591
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player. Development GIT Version."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL2')
 
 
-depends=('directfb' 'libfdk-aac' 'xosd' 'zvbi' 'a52dec' 'libdvbpsi' 'libxpm' 'qt5-base'
+depends=('libfdk-aac' 'xosd' 'zvbi' 'a52dec' 'libdvbpsi' 'libxpm' 'qt5-base' 'qt5-svg' 'sndio'
          'sdl_image' 'libdvdnav' 'lua' 'libmatroska'
          'libmpcdec' 'ffmpeg' 'faad2' 'libupnp'
          'libmad' 'libmpeg2' 'xcb-util-keysyms'
          'libxinerama'
          'x264' 'fluidsynth' 'x265')
-makedepends=('live-media' 'libbluray' 'flac' 'kdelibs4support'
-             'libdc1394' 'libavc1394' 'lirc-utils'
+makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'lirc-utils'
              'librsvg' 'projectm'
              'twolame' 'aalib' 'libdvdcss'
              'vcdimager' 'opus' 'libssh2' 'mesa'
@@ -86,7 +85,7 @@ build() {
               --enable-wayland \
               --enable-archive \
               --enable-nls \
-              --disable-sndio \
+              --enable-sndio \
               --enable-libtar \
               --enable-lirc \
               --enable-ncurses \
@@ -105,7 +104,6 @@ build() {
               --disable-dca \
               --disable-debug \
               --disable-decklink \
-              --enable-directfb \
               --disable-directx \
               --disable-fribidi \
               --disable-gme \
