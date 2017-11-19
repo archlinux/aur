@@ -4,7 +4,7 @@
 
 pkgname=rust-nightly-bin
 pkgver=1.23.0_2017.11.15
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
 url='https://www.rust-lang.org/'
@@ -23,7 +23,6 @@ options=(staticlibs !strip)
 
 pkgver() {
   cd ${srcdir}/rust-nightly-${CARCH}-unknown-linux-gnu
-  _date=$(date +%Y-%m-%d)
   ver="$(expr "$(cat version)" : '\(.*\)-nightly')"
   date="$(expr "$(cat version)" : '.* \(.*\))')"
   echo "${ver}_${date//\-/.}"
