@@ -1,0 +1,21 @@
+pkgbase = kdevelop-valgrind-git
+	pkgdesc = A plugin offering a full integration of the valgrind suite to KDevelop. (GIT version)
+	pkgver = r1116.2e096e1
+	pkgrel = 1
+	url = http://www.kdevelop.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = valgrind
+	provides = kdevelop-valgrind
+	conflicts = kdevelop-valgrind
+	conflicts = kdev-valgrind
+	source = git://anongit.kde.org/kdev-valgrind.git
+	sha1sums = SKIP
+
+pkgname = kdevelop-valgrind-git
+
