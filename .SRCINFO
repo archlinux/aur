@@ -1,19 +1,27 @@
 pkgbase = tunslip
-	pkgdesc = tunslip and tunslip6 are tools to establish an IPv6 SLIP tunnel interface
-	pkgver = 3.0
-	pkgrel = 2
+	pkgdesc = tools to establish an IPv6 SLIP tunnel interface
+	pkgver = 3.1
+	pkgrel = 1
 	url = http://www.contiki-os.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = BSD
 	depends = glibc
-	source = https://raw.githubusercontent.com/contiki-os/contiki/3.0/tools/tunslip.c
-	source = https://raw.githubusercontent.com/contiki-os/contiki/3.0/tools/tunslip6.c
-	source = https://raw.githubusercontent.com/contiki-os/contiki/3.0/LICENSE
-	sha1sums = bf11557c1b09b48e4344666af40e926ad42060d5
-	sha1sums = 68055e2db448c52861fdad524114d9b7777d25bf
-	sha1sums = df1b720ae19914bab200bce652a824b72cadbbb6
+	source = https://raw.githubusercontent.com/contiki-os/contiki/10d54f228b961d3d8a3d33b925ced361aaa4926f/tools/tunslip.c
+	source = https://raw.githubusercontent.com/contiki-os/contiki/10d54f228b961d3d8a3d33b925ced361aaa4926f/tools/tunslip6.c
+	source = https://raw.githubusercontent.com/contiki-os/contiki/10d54f228b961d3d8a3d33b925ced361aaa4926f/tools/tools-utils.c
+	source = https://raw.githubusercontent.com/contiki-os/contiki/10d54f228b961d3d8a3d33b925ced361aaa4926f/tools/tools-utils.h
+	source = https://raw.githubusercontent.com/contiki-os/contiki/10d54f228b961d3d8a3d33b925ced361aaa4926f/LICENSE
+	source = gettimeofday.patch
+	source = usage.patch
+	sha256sums = 6d1576669121e15c353966450fc7b7f221db674f7f80d679fd19f4ba4878b21f
+	sha256sums = 3e5f96ddd6bd179672922176f16013041f99b218df6f1b7a21f849383869d287
+	sha256sums = 0022ac78fba0530fe2648b0f36a87adb21c455f274ee177073df9b0534867157
+	sha256sums = 7b92e7468fa7d9038d53efb8c4effb05d67e52fc38d26de8f3deb2efdd1bdda8
+	sha256sums = 727c253b4fa0469b6bfa6277269c1503fd4ba8fa2da899903e6c723906ccd5a7
+	sha256sums = 213e1cfc03010e7a43ec3398bf46eca8398f46f946908279d88c93bd49ffda15
+	sha256sums = 010a4cb4ec40abd65c0d7fca018aa1b378d3c6aa463ef383b57a5deb320a321d
 
 pkgname = tunslip
 
