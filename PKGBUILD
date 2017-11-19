@@ -1,6 +1,6 @@
 _name=vlc
 pkgname=vlc-clang-git
-pkgver=3.0.r72962.g69409cf591
+pkgver=3.0.0.r72962.g69409cf591
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player. Development GIT Version."
 arch=('x86_64')
@@ -55,7 +55,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  echo "3.0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+  printf '3.0.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
 }
 
 
@@ -136,12 +136,11 @@ build() {
               --disable-udev \
               --disable-update-check \
               --enable-zvbi \
-							--enable-projectm \
+              --enable-projectm \
               --enable-fdkaac \
               --enable-merge-ffmpeg \
               --enable-dvbpsi \
               LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
-              RCC=/usr/bin/rcc-qt5
 
   msg 'Done. Starting make...'
   ./compile
