@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core
-pkgver=0.15.0.1
-pkgrel=3
+pkgver=0.15.1
+pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://bitcoin.org"
@@ -23,7 +23,7 @@ source=(https://bitcoin.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('b57e9e756018e4082f5557a4216195b0cd197c5a62473b6fe0509a0aa71e519b'
+sha256sums=('34de2dbe058c1f8b6464494468ebe2ff0422614203d292da1c6458d6f87342b4'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
@@ -39,7 +39,7 @@ _nproc=$(($(nproc)/2))
 [[ ${_nproc} < 1 ]] && _nproc=1
 
 build() {
-  cd "$srcdir/${pkgname%-core}-0.15.0"
+  cd "$srcdir/${pkgname%-core}-$pkgver"
 
   msg2 'Building...'
   ./autogen.sh
@@ -58,14 +58,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${pkgname%-core}-0.15.0"
+  cd "$srcdir/${pkgname%-core}-$pkgver"
 
   msg2 'Testing...'
   make -j$_nproc check
 }
 
 package() {
-  cd "$srcdir/${pkgname%-core}-0.15.0"
+  cd "$srcdir/${pkgname%-core}-$pkgver"
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-core}"
