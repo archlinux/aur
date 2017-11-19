@@ -5,8 +5,9 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=58.0.1
+pkgver=58.0.4
 pkgrel=1
+ver=58.0b4
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -20,7 +21,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
-source=("https://archive.mozilla.org/pub/firefox/releases/58.0b3/source/firefox-58.0b3.source.tar.xz"
+source=("https://archive.mozilla.org/pub/firefox/releases/58.0b3/source/firefox-$ver.source.tar.xz"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$name.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-install-dir.patch
@@ -90,7 +91,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd firefox-58.0b3
+  cd firefox-$ver
   patch -Np1 -i ../firefox-install-dir.patch
 
 
@@ -142,7 +143,7 @@ END
 }
 
 build() {
-  cd firefox-58.0b3
+  cd firefox-$ver
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -158,7 +159,7 @@ build() {
 }
 
 package() {
-  cd firefox-58.0b3
+  cd firefox-$ver
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
