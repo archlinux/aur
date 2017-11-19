@@ -19,10 +19,6 @@ build () {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-#    install -Dm755 ./libthinkpad.so "$pkgdir/usr/lib/libthinkpad.so"
-#    install -Dm755 ./libthinkpad.so.1 "$pkgdir/usr/lib/libthinkpad.so.1"
-#    install -Dm755 ./libthinkpad.so.2.3 "$pkgdir/usr/lib/libthinkpad.so.2.3"
-    cd "$srcdir/$pkgname-$pkgver"
     make DESTDIR=$pkgdir install
 }
 
