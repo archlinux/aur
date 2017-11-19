@@ -7,7 +7,8 @@ pkgdesc="A general purpose userspace ThinkPad library"
 arch=('i686' 'x86_64')
 url="https://github.com/libthinkpad/libthinkpad"
 license=('BSD-2')
-depends=('cmake' 'systemd')
+depends=('systemd')
+makedepends=('cmake')
 source=("http://thinkpads.org/ftp/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('da6791c1880e73a43879023c1d7770a3')
 
