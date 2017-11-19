@@ -1,8 +1,8 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=corebird
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc="Native Gtk+ Twitter Client"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -25,17 +25,9 @@ depends=('gtk3>=3.20'
 optdepends=('noto-fonts-emoji: Emoji support'
             'emojione-fonts: Emoji support')
 makedepends=('vala>=0.28' 'meson')
-source=("https://github.com/baedert/corebird/archive/${pkgver}.tar.gz"
-        "d3cc0b068b4f3b1d0d97e4bd7c9e723d002636c1.patch")
-sha256sums=('dabaafa812924e40c9046d99cd547727ed2b520afb4a0f10eb4cca8f90e145e3'
-            'e878bdf915734b3f9f1261601d993835252ec07dd1cac39935186b44f983f90d')
+source=("https://github.com/baedert/corebird/archive/${pkgver}.tar.gz")
+sha256sums=('9690990492479118d5d878ae027f6e788d96c93f3628b8b238afa5cd340c8c90')
 conflicts=('corebird-git')
-
-prepare() {
-	cd ${pkgname}-${pkgver}
-
-	patch -p1 < ${srcdir}/d3cc0b068b4f3b1d0d97e4bd7c9e723d002636c1.patch
-}
 
 build() {
   cd ${pkgname}-${pkgver}
