@@ -9,60 +9,49 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=spearmint-git
 _pkgname=spearmint
 pkgver=r4627.232769ac
+_upver=r4627.232769ac
 pkgrel=1
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
-_upver='0.2'  # upstream release- needed for some pk3's.
-
-## What games do you want to build in support for?
-## baseq3 should at the LEAST be enabled.
-## See https://github.com/zturtleman/spearmint-patch-data.git
-## and https://github.com/zturtleman/spearmint/wiki ("Engine Feature Support").
-## "missionpack" is Q3:Team Arena
-_games=("baseq3"
-	"missionpack")
-
-pkgdesc="An ioquake3-based engine with multiple improvements (note: requires pak files from original Q3 CD; incompatible with ioquake3)-git master:HEAD"
-url="http://spearmint.pw"
-license=("GPL3")
+_upver='0.5'
+pkgdesc="An ioquake3-based engine with multiple improvements (note: requires pak files from original Q3 CD; incompatible with ioquake3)"
+url="http://${_pkgname}.pw"
+license=("GPL3" "custom")
 arch=('i686' 'x86_64')
 depends=('sdl2')
+makedepends=('sdl2' 'git')
 optdepends=('curl: use native curl'
 	    'openal: use native openal'
-	    'mumble: support for positional audio (as alternative to in-game VOIP feature)')
-makedepends=('sdl2')
-conflicts=('spearmint')
-provides=('spearmint')
-install=spearmint.install
-source=("upstream.tar.xz::https://github.com/zturtleman/${_pkgname}/releases/download/release-${_upver}/${_pkgname}-${_upver}-linux.tar.xz"
-	"${_pkgname}-engine::git+https://github.com/zturtleman/spearmint.git"
+	    'mumble: support for positional Mumble VoIP (as alternative to in-game VoIP feature)')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+install=${_pkgname}.install
+source=("https://github.com/zturtleman/${_pkgname}/releases/download/release-${_upver}/${_pkgname}-${_upver}-data.tar.xz"
+	"git+https://github.com/zturtleman/${_pkgname}.git"
+	"${_pkgname}-engine::git+https://github.com/zturtleman/${_pkgname}.git"
 	"${_pkgname}-game::git+https://github.com/zturtleman/mint-arena.git"
-	"${_pkgname}-patch::git+https://github.com/zturtleman/spearmint-patch-data.git"
-	"https://raw.githubusercontent.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt"
-	"Makefile.local"
-	"spearmint.desktop"
-	"spearmint.service"
-	"spearmint.launcher"
-	"spearmint-server.launcher"
+	"${_pkgname}-patch::git+https://github.com/zturtleman/${_pkgname}-patch-data.git"
 	"http://ioquake3.org/files/${_ioq3v1}/data/ioquake3-q3a-${_ioq3v2}.run"
-	"Makefile.local.sig"
-	"spearmint.desktop.sig"
-	"spearmint.service.sig"
-	"spearmint.launcher.sig"
-	"spearmint-server.launcher.sig"
-	"ioquake3-q3a-${_ioq3v2}.run.sig")
-noextract=("upstream.tar.xz")
-sha512sums=('53a3b3b2bb139b9e5ecbd12c5876048dd2b2cffab07acf2db5fd7697f5624af24d503539bfe4a9acf721fdb6886063ff24d848637781f6639550e79f4a1abd26'
+	"${_pkgname}.desktop"
+	"${_pkgname}.service"
+	"${_pkgname}.launcher"
+	"${_pkgname}-server.launcher"
+	"${_pkgname}-${_upver}-data.tar.xz.sig"
+	"ioquake3-q3a-${_ioq3v2}.run.sig"
+	"${_pkgname}.desktop.sig"
+	"${_pkgname}.service.sig"
+	"${_pkgname}.launcher.sig"
+	"${_pkgname}-server.launcher.sig")
+sha512sums=('f2c9746fcfd69efed2e9a3c7ba3f1f4a5d7f90352d5355dada6bf27b8c4a64975d65de19e66da548df1bcb6f38d2ae9524ffb869fa2fcd0da33c2fa533969fab'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2ca85a1fc28feaa0f7609d419f5ae81f830e9e9244bccfb8d881f1e44c6151af168bc5cc1e8ebcb1f212d345d34ea967b00763f682c35db720612b0b7162a522'
+            '2ff6eff394119697b1c0a76f9c6d70cec21f90aecd89b72f6459661d04821a799a9c70d80f390b2ae7822d5830e247033a79022cd6d3d1754f7780fadd2d418b'
             '9e70a201f26265e29fb9ce2d198d943de8e12094b9d04b5e2fad630508787f036c0ee318604a2899ad4a74b4cef8ba3bffd1e7817de8bcbd512a6f80783aea1a'
             '84c60900e2db08e2e8dc39236d268fea392fcbc7cb51af051b5981301bfd5d6c10cafd29284096728048ed4b54baa580ee3f9824a2a1435ba42e91d644547cc0'
             '92fb1693b91fc7e7ba97612990369a0344b23dbdcfd0c3ecbfc5e7519f86caf9348b63e9a641f081ef8ba913fb1f50a4ca830a7107bc939be5c345e89223f640'
             '91b9af20e64223d7d7f21e7eb18cac168c9374409358e4e4d7ddad6576ceb68532d67ba82bc525833cd4ae4d8260ea44429299facbfb9186f72f16790f45a023'
-            '2ff6eff394119697b1c0a76f9c6d70cec21f90aecd89b72f6459661d04821a799a9c70d80f390b2ae7822d5830e247033a79022cd6d3d1754f7780fadd2d418b'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -74,84 +63,34 @@ pkgver() {
   cd "${srcdir}/${_pkgname}-engine"
   (
      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  #( set -o pipefail
-  #  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-  #  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  #)
   )
 }
 
 prepare() {
-
-  if [[ "${CARCH}" == 'i686' ]];
-  then
-    _ARCH='x86'
-    _MKARCH='i86pc'
-  elif [[ "${CARCH}" == 'x86_64' ]];
-  then
-    _ARCH=${CARCH}
-    _MKARCH='amd64'
-  fi
-
-  # soooo $pkgdir, if i recall correctly, isn't available in prepare(). which is kind of stoopit.
-  # so i guess we cross our fingers.
-  sed -i \
-	-e "s@%%_MKARCH%%@${_MKARCH}@g" \
-	-e "s@%%_ARCH%%@${_ARCH}@g" \
-	-e "s@%%_SRCDIR%%@${pkgdir}@g" ${srcdir}/Makefile.local
-
-  cp ${srcdir}/Makefile.local ${srcdir}/${_pkgname}-engine/.
-  cp ${srcdir}/Makefile.local ${srcdir}/${_pkgname}-game/.
-  mkdir -p ${srcdir}/${_pkgname}-{engine,game}/tmp
-
-  ## Extra .pk3 files needed
-  # Demo/ioq3
+  # Quake 3 point release pk3s
   cd ${srcdir}
+  mkdir -p paks
   chmod 700 ioquake3-q3a-${_ioq3v2}.run
-  install -d -m 750 ${srcdir}/${_pkgname}/{baseq3,missionpack}
-  ./ioquake3-q3a-${_ioq3v2}.run --tar --wildcards -xO ./idpatch*.tar 2> /dev/null | tar -xC ${srcdir}/${_pkgname}/baseq3/. > /dev/null 2>&1  # i am ashamed to admit how long it took me to figure this out.
-  ./ioquake3-q3a-${_ioq3v2}.run --tar --wildcards -xO ./idtapatch*.tar 2> /dev/null | tar -xC ${srcdir}/${_pkgname}/missionpack/. > /dev/null 2>&1
-  # upstream
+  ./ioquake3-q3a-${_ioq3v2}.run --tar xfC ${srcdir}/paks/.
+  for d in baseq3 missionpack;
+  do
+    mkdir -p ${srcdir}/q3a/${d}
+  done
+  tar -C ${srcdir}/q3a/baseq3 -xf ${srcdir}/paks/idpatchpk3s.tar
+  tar -C ${srcdir}/q3a/missionpack -xf ${srcdir}/paks/idtapatchpk3s.tar
   cd ${srcdir}
-  tar --strip-components=1 -C ${srcdir}/${_pkgname}/ --wildcards -xf upstream.tar.xz spearmint-*-linux/baseq3/* spearmint-*-linux/missionpack/*
-  # done with these, let's save some disk space because these are big and a lot of people run makepkg in /tmp.
-  rm -rf ${srcdir}/ioquake3-q3a-${_ioq3v2}.run ${srcdir}/upstream.tar.xz
+  # don't need this anymore.
+  rm -rf ${srcdir}/paks
 }
 
 build() {
-
-  if [[ "${CARCH}" == 'i686' ]];
-  then
-    _ARCH='x86'
-  elif [[ "${CARCH}" == 'x86_64' ]];
-  then
-    _ARCH=${CARCH}
-  fi
-
-  ## ENGINE ##
-  cd ${srcdir}/${_pkgname}-engine
+  cd ${srcdir}/${_pkgname}
   make
 
-  cd build/release-linux-${_ARCH}
-  if [ ! -f "${_pkgname}-server" ];
-  then
-    if [[ "${CARCH}" == 'i686' ]];
-    then
-      rm -f ${_pkgname}{,-server}_x86_64
-    elif [[ "${CARCH}" == 'x86_64' ]];
-    then
-      rm -rf ${_pkgname}{,-server}_x86
-    fi
-  fi
-
-
-  ## GAME ##
   cd ${srcdir}/${_pkgname}-game
-  make
-
-  ## PATCH ##
-  # does not require any building.
-
+  make BUILD_GAME_SO=0 # baseq3, missionpack
+  make BUILD_GAME_SO=0 BASEGAME=demoq3 MISSIONPACK=tademo
+  make BUILD_GAME_SO=0 BASEGAME=baseoa MISSIONPACK=missionpackoa
 }
 
 package() {
@@ -163,72 +102,51 @@ package() {
     _ARCH=${CARCH}
   fi
 
-  ## Base dirs ##
+  # Base dirs
   install -d -m 755 ${pkgdir}/usr/bin
   install -d -m 755 ${pkgdir}/usr/share/doc/${_pkgname}
-  install -d -m 750 ${pkgdir}/opt/spearmint/{baseq3,missionpack}
+  install -d -m 755 ${pkgdir}/usr/share/${_pkgname}
+  install -d -m 750 ${pkgdir}/opt/${_pkgname}
 
-  ## ENGINE ##
-  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}_${_ARCH} ${pkgdir}/opt/spearmint/${_pkgname}
-  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}-server_${_ARCH} ${pkgdir}/opt/spearmint/${_pkgname}-server
-  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}-renderer-opengl1_${_ARCH}.so ${pkgdir}/opt/spearmint/
-  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}-renderer-opengl2_${_ARCH}.so ${pkgdir}/opt/spearmint/
-  # docs
-  install -m 644 ${srcdir}/${_pkgname}-engine/id-readme.txt ${pkgdir}/usr/share/doc/${_pkgname}/
-  install -m 644 ${srcdir}/${_pkgname}-engine/md4-readme.txt ${pkgdir}/usr/share/doc/${_pkgname}/
-  install -m 644 ${srcdir}/${_pkgname}-engine/opengl2-readme.md ${pkgdir}/usr/share/doc/${_pkgname}/
-  install -m 644 ${srcdir}/${_pkgname}-engine/README.md ${pkgdir}/usr/share/doc/${_pkgname}/README.engine
-  install -m 644 ${srcdir}/${_pkgname}-engine/voip-readme.txt ${pkgdir}/usr/share/doc/${_pkgname}/
-  # icons, etc.
-  for i in ${srcdir}/${_pkgname}-engine/misc/*.{svg,png,ico};
+  # stuff i wrote
+  install -m 750 ${srcdir}/${_pkgname}.launcher ${pkgdir}/opt/${_pkgname}/
+  install -m 750 ${srcdir}/${_pkgname}-server.launcher ${pkgdir}/opt/${_pkgname}/
+
+  # https://github.com/zturtleman/${_pkgname}.git
+  install -m 750 ${srcdir}/${_pkgname}/build/release-linux-${_ARCH}/${_pkgname}_${_ARCH} ${pkgdir}/opt/${_pkgname}/${_pkgname}
+  install -m 750 ${srcdir}/${_pkgname}/build/release-linux-${_ARCH}/${_pkgname}-server_${_ARCH} ${pkgdir}/opt/${_pkgname}/${_pkgname}-server
+  install -m 640 ${srcdir}/${_pkgname}/build/release-linux-${_ARCH}/${_pkgname}-renderer-opengl1_${_ARCH}.so ${pkgdir}/opt/${_pkgname}/
+  install -m 640 ${srcdir}/${_pkgname}/build/release-linux-${_ARCH}/${_pkgname}-renderer-opengl2_${_ARCH}.so ${pkgdir}/opt/${_pkgname}/
+
+  # https://github.com/zturtleman/${_pkgname}/releases/download/release-${_upver}/${_pkgname}-${_upver}-data.tar.xz
+  install -m 640 ${srcdir}/${_pkgname}-${_upver}-data/gamecontrollerdb.txt ${pkgdir}/opt/${_pkgname}/
+  install -m 640 ${srcdir}/${_pkgname}-patch/${_pkgname}-gamelist.txt ${pkgdir}/opt/${_pkgname}/
+  install -D -m 644 ${srcdir}/${_pkgname}-patch/LIBERATION_LICENSE.txt ${pkgdir}/usr/share/licenses/${_pkgname}/fonts.license.txt
+  find ${srcdir}/${_pkgname}-${_upver}-data/ -maxdepth 1 -type f -name "*.txt" -exec install -m 644 '{}' ${pkgdir}/usr/share/doc/${_pkgname}/. \;
+  for d in baseq3 missionpack missionpackoa tademo baseoa demoq3 fonts;
   do
-    install -D -m 644 ${i} ${pkgdir}/usr/share/pixmaps/$(basename ${i})
+  	install -d -m 750 ${pkgdir}/opt/${_pkgname}/${d}
+	install -m 640 ${srcdir}/${_pkgname}-${_upver}-data/${d}/* ${pkgdir}/opt/${_pkgname}/${d}/
   done
 
-  ## GAME ##
-  cd ${srcdir}/${_pkgname}-game/build/release-linux-${_ARCH}
-  # dirs
-  for i in ${_games[@]};
+  # http://ioquake3.org/files/${_ioq3v1}/data/ioquake3-q3a-${_ioq3v2}.run
+  for d in baseq3 missionpack;
   do
-    install -d -m 750 ${pkgdir}/opt/${_pkgname}/${i}/vm
+	install -m 640 ${srcdir}/q3a/${d}/pak?.pk3 ${pkgdir}/opt/${_pkgname}/${d}/
   done
-  # files
-  for g in ${_games[@]};
-  do
-    for f in $(find ${g} -type f -name "*.qvm");
-    do
-      install -m 640 ${f} ${pkgdir}/opt/${_pkgname}/${f}
-    done
-  done
-
-  ## PATCH ##
-  cd ${srcdir}/${_pkgname}-patch
-  for g in ${_games[@]};
-  do
-    for i in $(find ${g} -type d);
-    do
-      install -d -m 750 ${pkgdir}/opt/spearmint/${i}
-    done
-    for i in $(find ${g} -type f);
-    do
-      # per upstream: these should be "loose", not zipped in a pk3. otherwise, version conflicts from clients and other nastiness.
-      install -D -m 640 ${srcdir}/${_pkgname}-patch/${i} ${pkgdir}/opt/spearmint/${i}
-    done
-  done
-
-  # PK3 PAKs from demo and upstream
-  install -m 640 ${srcdir}/${_pkgname}/baseq3/* ${pkgdir}/opt/spearmint/baseq3/
-  install -m 640 ${srcdir}/${_pkgname}/missionpack/* ${pkgdir}/opt/spearmint/missionpack/
 
   cd ${pkgdir}/usr/bin
-  ln -sf /opt/spearmint/${_pkgname}.launcher ${_pkgname}
-  ln -sf /opt/spearmint/${_pkgname}-server.launcher ${_pkgname}-server
-  ln -sf /opt/spearmint/${_pkgname}.launcher spearmint 
+  ln -sf /opt/${_pkgname}/${_pkgname}.launcher ${_pkgname}
+  ln -sf /opt/${_pkgname}/${_pkgname}-server.launcher ${_pkgname}-server
 
-  install -D -m 644 ${srcdir}/spearmint.service ${pkgdir}/usr/lib/systemd/system/spearmint.service
-  install -D -m 644 ${srcdir}/spearmint.desktop ${pkgdir}/usr/share/applications/spearmint.desktop
-  install -m 750 ${srcdir}/${_pkgname}.launcher ${pkgdir}/opt/spearmint/
-  install -m 750 ${srcdir}/${_pkgname}-server.launcher ${pkgdir}/opt/spearmint/
-  install -m 640 ${srcdir}/gamecontrollerdb.txt ${pkgdir}/opt/spearmint/
+  install -D -m 644 ${srcdir}/${_pkgname}.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}.service
+  install -D -m 644 ${srcdir}/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+
+  # icon cleanup
+  mkdir -p ${pkgdir}/usr/share/pixmaps/${pkgname}
+  install -m 644 ${srcdir}/${_pkgname}-engine/misc/${_pkgname}_text.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  mv ${srcdir}/${_pkgname}-engine/misc/*.{svg,png} ${pkgdir}/usr/share/pixmaps/${pkgname}/.
+  find ${pkgdir}/usr/share/${_pkgname}/ -type d -exec chmod 755 '{}' \;
+  find ${pkgdir}/usr/share/${_pkgname}/ -type f -exec chmod 644 '{}' \;
 
 }
