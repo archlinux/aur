@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 # Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 # Contributor: Kessia 'even' Pinheiro <kessiapinheiro at gmail.com>
