@@ -4,7 +4,7 @@
 
 pkgname=gnumeric-minimal
 _pkgname=gnumeric
-pkgver=1.12.35
+pkgver=1.12.36
 pkgrel=1
 pkgdesc="A GNOME-less spreadsheet program"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('gnumeric')
 provides=('gnumeric')
 options=('libtool')
 source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz revert-warnings.patch::https://projects.archlinux.de/svntogit/packages.git/plain/trunk/revert-warnings.patch?h=packages/gnumeric)
-sha256sums=('77b1e3ce523578a807767ad71680fb865ac021d7bfadf93eada99ae094c06c0a'
+sha256sums=('3cbfe25f26bd31b832efed2827ac35c3c1600bed9ccd233a4037a9f4d7c54848'
             'bcafca016b809000c2a5bf911e2e3dfa4de28f9e541d9964574cac5c7ce09e53')
 options=('!makeflags')
 
