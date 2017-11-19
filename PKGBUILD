@@ -7,7 +7,7 @@ pkgname='ros-kinetic-opencv3'
 pkgver='3.3.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=()
@@ -35,7 +35,8 @@ depends=(${ros_depends[@]}
   python2
   jasper
   libpng
-  ffmpeg)
+  ffmpeg
+  libharu)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/opencv3/${pkgver}-${_pkgver_patch}
