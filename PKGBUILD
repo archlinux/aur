@@ -5,8 +5,8 @@
 # and add '--enable-libndi_newtek' to the configure options.
 
 pkgname=ffmpeg-mpv-full-git
-pkgver=3.5.r88561.ga94f4f9a1c
-pkgrel=2
+pkgver=3.5.r89150.gf28bca81c8
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
