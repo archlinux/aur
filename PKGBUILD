@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=2.10.2.r0.gc3a2171e
+pkgver=2.10.2.r14.g16d92d1d
 pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
@@ -19,15 +19,15 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip)
-_gitcommit="c3a2171ebcc92fb3bbe3b94b8ab83916cd1ca275"
+_gitcommit="16d92d1dc662f9dfd18186c9c58ab03f5d1a148e"
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
 		"osqueryd.service"
 		"arch-linux.patch")
 sha256sums=('SKIP'
-            '6a5522f9058fc3d142dd3642f73ccd2758cc0b43bd28644a0f4eee3e5d7aea55'
-            '9fcfe9db909c664f7dfeeb7c56c9d964eb6d7673dbe5a4858c09a3953f13cd4b'
+            'ee15a171f114f47a326d236a7d03a07cc3e711016e9a5039638e6137f63e87ec'
+            '0c28be3fb234325c3279aa3c02a5b0636db833c06f89ec551b77addb86507ce4'
             '97b9f3b92f07797cc8027b4dcaef2ae9025d08367030364befe3a8895ededeb3')
 
 _gitname=${pkgname}
