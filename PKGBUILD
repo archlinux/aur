@@ -7,7 +7,8 @@ pkgdesc="Lenovo ThinkPad Dock Management Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/libthinkpad/dockd"
 license=('BSD-2')
-depends=('cmake' 'systemd' 'libthinkpad' 'libsystemd' 'libxrandr')
+depends=('systemd' 'libthinkpad' 'libsystemd' 'libxrandr')
+makedepends=('cmake')
 source=("http://thinkpads.org/ftp/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('a3606e57095cd536d636edc7541af9f4')
 
@@ -23,8 +24,6 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}" || exit 1 
-    install -Dm644 ./${pkgname}.desktop -t "${pkgdir}"/etc/xdg/autostart
-    install -Dm755 ./dockd "$pkgdir/usr/bin/$pkgname"
     install -Dm755 -d etc "$pkgdir/etc/$pkgname"
+    make DESTDIR=$pkgdir install
 }
-
