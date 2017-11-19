@@ -12,7 +12,7 @@ pkgname=mpv-rpi
 _pkgname=mpv
 epoch=1
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 _waf_version=1.8.12
 pkgdesc='mpv with Raspberry Pi support'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -29,9 +29,13 @@ optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
   '0001-opengl-backend-support-multiple-backends.patch'
+  '0002-vaapi-Use-libva2-message-callbacks.patch'
+  '0003-demux_lavf-return-AVERROR_EOF-on-file-end.patch'
   "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}")
 sha256sums=('341d8bf18b75c1f78d5b681480b5b7f5c8b87d97a0d4f53a5648ede9c219a49c'
   '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a'
+  '3c3517f4f4c71e39e1e04ea440688fc8d7b3dc55e6bc0a9398d11a9b75bde07d'
+  '5de6c616428c87cf9b39d8ba24446d65d175050c083e1054194d93cf03d5816a'
   '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b')
 provides=('mpv')
 conflicts=('mpv')
@@ -41,6 +45,12 @@ prepare() {
 
   # --opengl-backend: support multiple backends (#4384) (FS#53962)
   patch -Np1 < "${srcdir}"/0001-opengl-backend-support-multiple-backends.patch
+
+  # vaapi: Use libva2 message callbacks
+  patch -Np1 < "${srcdir}"/0002-vaapi-Use-libva2-message-callbacks.patch
+
+  # demux_lavf: return AVERROR_EOF on file end
+  patch -Np1 < "${srcdir}"/0003-demux_lavf-return-AVERROR_EOF-on-file-end.patch
 
   install -m755 "${srcdir}"/waf-${_waf_version} waf
 }
