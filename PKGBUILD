@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=xash3d-git
 pkgver=v0.19.r4.g18eb06d
