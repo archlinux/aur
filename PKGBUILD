@@ -2,8 +2,8 @@
 
 pkgname=gnome-shell-extension-night-light-slider-git
 _pkgname=gnome-shell-night-light-slider-extension
-pkgver=24.edf5967
-pkgrel=2
+pkgver=v6.0.r0.gedf5967
+pkgrel=3
 pkgdesc="Manage GNOME night light temperature intensity from the panel."
 arch=('any')
 url="https://github.com/TimurKiyivinski/gnome-shell-night-light-slider-extension"
@@ -15,12 +15,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g')
 }
 
 package() {
   _extid='night-light-slider.timur@linux.com'
-  mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions/"
-  cp -af "${_pkgname}/$_extid" "${pkgdir}/usr/share/gnome-shell/extensions/"
-  mv "${pkgdir}/usr/share/gnome-shell/extensions/${_pkgname}" "${pkgdir}/usr/share/gnome-shell/extensions/${_extid}" 
+  cd "${srcdir}/${_pkgname}"
+  make schema
+
+  install -d "${pkgdir}/usr/share/gnome-shell/extensions"
+  cp -af "${_extid}" "${pkgdir}/usr/share/gnome-shell/extensions/" 
 }
