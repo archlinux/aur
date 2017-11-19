@@ -1,7 +1,7 @@
 pkgbase = gtkam
 	pkgdesc = A GTK frontend for libgphoto2
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gphoto.sourceforge.net/proj/gtkam
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = gtkam
 	depends = libexif-gtk
 	depends = gdk-pixbuf2
 	source = http://downloads.sourceforge.net/project/gphoto/gtkam/1.0/gtkam-1.0.tar.gz
-	source = http://downloads.sourceforge.net/project/gphoto/gtkam/1.0/gtkam-1.0.tar.gz.asc
 	md5sums = f9156394632ac54731d1eea5e2529e7c
-	md5sums = SKIP
 
 pkgname = gtkam
 
