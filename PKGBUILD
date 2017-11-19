@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win32-git
-pkgver=3535.374dc7e2
+pkgver=3746.438fd9c7
 pkgrel=1
 pkgdesc="Carla win32 bridge"
 arch=('i686' 'x86_64')
@@ -10,10 +10,8 @@ conflicts=('carla-bridges-win32')
 provides=('carla-bridges-win32')
 depends=('mingw-w64-crt' 'mingw-w64-winpthreads' 'mingw-w64-pkg-config' 'wine' 'carla-git')
 makedepends=('git' 'mingw-w64-gcc' 'gcc-multilib')
-source=("$pkgname"::'git://github.com/falkTX/Carla.git'
-        'http://www.steinberg.net/sdk_downloads/vstsdk366_27_06_2016_build_61.zip')
-md5sums=('SKIP'
-         '6485724a5a07abedde6c415c5f6ac4e8')
+source=("$pkgname"::'git://github.com/falkTX/Carla.git')
+md5sums=('SKIP')
 
   _path=$PATH
   _cflags=$CFLAGS
@@ -42,8 +40,6 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
   export LDFLAGS="-static"
-  ln -s ../../../VST3\ SDK source/includes/vst2
-  sed -i 's/#if !PLATFORM_64/#if 0/' source/includes/vst2/base/source/fthread.cpp
   make win32 HAVE_LIBLO=false
   export PATH=$_path
   export AR=$_ar
