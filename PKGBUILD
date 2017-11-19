@@ -3,17 +3,17 @@
 
 pkgname=arduino-builder
 pkgver=1.3.25
-pkgrel=1
+pkgrel=3
 pkgdesc="A command line tool for compiling Arduino sketches"
 arch=('x86_64')
 url="https://github.com/arduino/arduino-builder"
 license=('GPL')
 depends=('arduino-ctags')
-makedepends=('go' 'git' 'unzip')
+makedepends=('go-pie' 'git' 'unzip')
 optdepends=('arduino-avr-core: AVR core with upstream avr-gcc and avrdude')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/arduino/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('a64caa7e8ce96d6e5cd32e5b35bcc51c8dba908a14ddea4c95a9e1f8853009c454805777d483fe94db3595e267746c22b475beab8fc511b0ce2470d216eeb55a')
+sha512sums=('3740530800f8a3cfe1fe20a91579e6b632b76c2c4ace68c7b178a2d234032d5887abee3d0360c3039f2fec912a0d5cabe948bf930a7d9ea23221625456ad5357')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
