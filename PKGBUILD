@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 pkgname=xplico
 pkgver=1.2.1
 pkgrel=1
