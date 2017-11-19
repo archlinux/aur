@@ -1,4 +1,4 @@
-# Maintainer: roberfoster
+# Maintainer: robertfoster
 
 pkgname=simonpi-git
 pkgver=54.1111d39
