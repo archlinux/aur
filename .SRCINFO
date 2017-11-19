@@ -2,6 +2,7 @@ pkgbase = plasma5-applets-mpdnowplaying
 	pkgdesc = MPD plasmoid for Plasma 5.
 	pkgver = 0.4
 	pkgrel = 1
+	url = https://www.opendesktop.org/p/999004
 	arch = i686
 	arch = x86_64
 	license = GPL
