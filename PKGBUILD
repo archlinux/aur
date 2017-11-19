@@ -5,7 +5,7 @@
 
 # Build the lib32 packages too? This only needs to be defined once and will
 # remain until the packages are removed. "1" to enable.
-_lib32=1
+_lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
 pkgver=387.22
