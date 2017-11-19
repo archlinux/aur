@@ -5,7 +5,7 @@
 
 pkgname=nextcloud-git
 _pkgname=nextcloud
-pkgver=v13.0.0beta1.r42.gdd5373795f
+pkgver=13.0.0beta1.r42.gdd5373795f
 pkgrel=1
 pkgdesc="A cloud server to store your files centrally on a hardware controlled by you"
 arch=('any')
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "server"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 package() {
@@ -61,6 +61,8 @@ package() {
     find "$pkgdir"/usr/share/webapps/${_pkgname} -type d -exec chmod 0755 {} \;
 
     chmod a+x "$pkgdir"/usr/share/webapps/${_pkgname}/occ
+
+    rm -r "${pkgdir}/usr/share/webapps/${_pkgname}/tests"
 
 #    install -Dm0644 "$srcdir"/nextcloud.hook "$pkgdir"/usr/share/libalpm/hooks/nextcloud.hook
 }
