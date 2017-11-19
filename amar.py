@@ -2,15 +2,16 @@
 # coding: utf-8
 """
 Projet AMAR
-Remerciements : Baba, Fredo, Rhylx, Francky, hRF...
-Date : 14 Oct 2K17
-version :  b2
+Remerciements : Baba, Fredo, Rhylx, Francky, hRF, Pepito...
+Date : 14 Oct 2K17,
+       1.0.1 : 19 Nov 2017
+version :  1.0.1
 gksudo -s python amar.py
 """
 
 import os
 import sys
-from PIL import Image                       #importation des modules nécessaires
+from PIL import Image 
 import subprocess
 from tkinter import *
 
@@ -27,9 +28,12 @@ if os.getuid() != 0:
 pacmanfichier = "/etc/pacman.conf"
 
 try:
+    #On suppose d'abord qu'AMAR est désactivé. On met donc etatamar = 0 au départ.
+    etatamar = 0
     with open(pacmanfichier, 'r') as searchfile:
         for line in searchfile:
-            if 'amar' in line:
+            #Si la chaîne '[AMAR]' est écrit quelque part dans pacman.conf, alors le dépôt est activé et on met etatamar = 1.
+            if '[AMAR]' in line:
                 etatamar = 1
     searchfile.close()
 except OSError:
@@ -37,8 +41,6 @@ except OSError:
     sys.exit(1)
 
 configamar = "\n#Do not disable AMAR manually if you use the app\n[AMAR]\nSigLevel = Never\nServer = https://amar.lagout.org/x86_64/\n"
-etatamar = 0
-
 
 def pressA():
     A.config(state=DISABLED)
