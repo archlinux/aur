@@ -1,4 +1,4 @@
-# Maintainer: M0Rf30
+# Maintainer: robertfoster
 
 pkgname=your-freedom-network
 _pkgname=${pkgname%-network}
