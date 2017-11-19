@@ -7,8 +7,8 @@ pkgbase = plasma5-applets-mpdnowplaying
 	license = GPL
 	makedepends = extra-cmake-modules
 	depends = plasma-framework
-	provides = plasma5-applets
-	conflicts = plasma5-applets
+	provides = plasma5-applets-mpdnowplaying
+	conflicts = plasma5-applets-mpdnowplaying
 	source = https://dl.opendesktop.org/api/files/download/id/1511089109/mpdnowplaying-0.4.tar.bz2
 	md5sums = 4988eaac0ebceba173b747f1beb736ca
 

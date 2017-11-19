@@ -8,8 +8,8 @@ url=
 license=('GPL')
 depends=('plasma-framework')
 makedepends=('extra-cmake-modules')
-conflicts=("${pkgname%-*}")
-provides=("${pkgname%-*}")
+conflicts=("${pkgname}")
+provides=("${pkgname}")
 source=(https://dl.opendesktop.org/api/files/download/id/1511089109/${_pkgname}-${pkgver}.tar.bz2)
 md5sums=('4988eaac0ebceba173b747f1beb736ca')
 
