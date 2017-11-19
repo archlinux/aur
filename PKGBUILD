@@ -3,12 +3,12 @@
 pkgname=cquery-git
 _pkgname=cquery
 pkgver=662.a60f93b
-pkgrel=4
+pkgrel=5
 pkgdesc='Low-latency vscode language server for large C++ code-bases, powered by libclang.'
 arch=('any')
 url='https://github.com/jacobdufault/cquery/'
 license=('MIT')
-depends=('clang' 'ncurses5-compat-libs')
+depends=('clang' 'libtinfo5')
 makedepends=("git" "python2")
 source=('git+https://github.com/jacobdufault/cquery.git' 'cquery-sh')
 md5sums=(
@@ -33,7 +33,7 @@ build() {
     python2 waf configure
     python2 waf build
     cd build
-    ln -s clang+llvm*/lib lib
+    ls -l lib || ln -s clang+llvm*/lib lib
 }
 
 check() {
