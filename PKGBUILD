@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('MIT')
 optdepends=('nerd-fonts-complete')
 source=("https://github.com/jtyr/gbt/releases/download/v$pkgver/$pkgname-$pkgver-linux-amd64.tar.gz")
-sha256sums=('89d0f374168819e3aebefe1063d192e88dea568eba81c1360b890b6c2f5a9558')
+sha256sums=('3c9054af241ac727b268f1766fe6ceaed6153ecfd131c3b179e55cc0ba923f9c')
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname" -t "$pkgdir/usr/bin"
