@@ -7,9 +7,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-wayland-git
-_pkgname=chromium
 pkgver=48.0.2548.0
-pkgrel=2
+pkgrel=3
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -21,8 +20,10 @@ depends=('nss' 'alsa-lib' 'bzip2' 'libevent' 'icu' 'libgcrypt'
          'desktop-file-utils' 'libxslt' 'hicolor-icon-theme' 'libxkbcommon'
          'gtk2' 'libpulse')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'libexif' 'libsecret')
-optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
-            'gnome-keyring: for storing passwords in GNOME keyring')
+optdepends=('pepper-flash: support for Flash content'
+            'kdialog: needed for file dialogs in KDE'
+            'gnome-keyring: for storing passwords in GNOME keyring'
+            'kwallet: for storing passwords in KWallet')
 conflicts=('chromium')
 provides=('chromium')
 options=('!strip')
@@ -77,19 +78,23 @@ prepare() {
   mkdir -p chromium
   cd chromium
 
-  export PATH="/opt/depot_tools:$PATH"
   export PATH="${srcdir}/python2-path:$PATH"
-  export GYP_DEFINES="target_arch=x64"
 
-  gclient config --name=src https://github.com/Igalia/chromium.git
-  gclient sync --with_branch_heads --nohooks
+  /opt/depot_tools/gclient config --name=src https://github.com/Igalia/chromium.git
+  /opt/depot_tools/gclient sync --with_branch_heads --nohooks
 
-  # touch chrome/test/data/webui/i18n_process_css_test.html
+
+  # https://crbug.com/710701
+  local _chrome_build_hash=$(curl -s https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT |
+    base64 -d | grep -Po '^parent \K[0-9a-f]{40}$')
+  if [[ -z $_chrome_build_hash ]]; then
+    error "Unable to fetch Chrome build hash."
+    return 1
+  fi
+  echo "LASTCHANGE=$_chrome_build_hash-" >src/build/util/LASTCHANGE
 
   # Enable support for the Widevine CDM plugin
-  # The actual libraries are not included, but can be copied over from Chrome:
-  #   libwidevinecdmadapter.so
-  #   libwidevinecdm.so
+  # libwidevinecdm.so is not included, but can be copied over from Chrome
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   #sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
   #  patch -Np1
@@ -140,8 +145,7 @@ build() {
 
   cd "${srcdir}/chromium"
 
-  export PATH="/opt/depot_tools:$PATH"
-  export PATH="${srcdir}/python2-path:$PATH"
+  export PATH="$srcdir/python2-path:$PATH"
   export TMPDIR="$srcdir/temp"
   mkdir -p "$TMPDIR"
 
@@ -178,9 +182,9 @@ build() {
 
   cd src
 
-  gclient runhooks
+  /opt/depot_tools/gclient runhooks
 
-  gn gen out/Ozone --args="use_jessie_sysroot=true use_ozone=true enable_package_mash_services=true use_xkbcommon=true" #args
+  /opt/depot_tools/gn gen out/Ozone --args="use_jessie_sysroot=true use_ozone=true enable_package_mash_services=true use_xkbcommon=true" #args
   /usr/bin/ninja -C out/Ozone chrome chrome_sandbox chromedriver widevinecdmadapter
 }
 
@@ -197,15 +201,12 @@ package() {
   install -Dm644 "$srcdir/chromium.desktop" \
     "$pkgdir/usr/share/applications/chromium.desktop"
 
-  #install -Dm4755 out/Ozone/chrome_sandbox \
-  #  "$pkgdir/usr/lib/chromium/chrome-sandbox"
+  install -Dm4755 out/Ozone/chrome_sandbox \
+    "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
-
-# ,chromedriver,libwidevinecdmadapter.so} \
-# out/Ozone/"*.bin" \ 
   cp -a \
     out/Ozone/{chrome_{100,200}_percent,resources}.pak \
-    out/Ozone/{*.bin,*.so} \
+    out/Ozone/{*.bin,chromedriver,*.so,*.nexe} \
     out/Ozone/locales \
     "$pkgdir/usr/lib/chromium/"
 
