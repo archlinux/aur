@@ -7,7 +7,7 @@ pkgver=17.11.0.0rc3
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
 # this will substitute any full stops (.) with hyphens
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.schedmd.com"
@@ -55,6 +55,10 @@ build() {
 	# detects that the required build requirements are present.
 	#
 	# Read https://slurm.schedmd.com/quickstart_admin.html for more information
+
+	# Slurm requires a relaxed build environment, see https://bugs.schedmd.com/show_bug.cgi?id=2443
+	export CFLAGS="${CFLAGS//-z,now/-z,lazy}"
+	export LDFLAGS="${LDFLAGS//-z,now/-z,lazy}"
 
 	./autogen.sh
 	./configure \
