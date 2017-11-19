@@ -5,7 +5,7 @@
 
 # Build the lib32 packages too? This only needs to be defined once and will
 # remain until the packages are removed. "1" to enable.
-_lib32=0
+_lib32=1
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
 pkgver=387.22
@@ -30,7 +30,7 @@ source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
 md5sums=('b21f9bafb20409b337505c9b1d362c34'
          '4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]=('5989b02e94ce3f171e473e0837f52e24')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]='5989b02e94ce3f171e473e0837f52e24'
 
 # Patch
 #source+=('linux-4.11.patch')
