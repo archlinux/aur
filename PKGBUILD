@@ -14,7 +14,6 @@ url="https://restic.github.io"
 license=('BSD')
 depends=('glibc')
 makedepends=('go')
-conflicts=('restic-git')
 source=("https://github.com/restic/restic/archive/v${pkgver}.tar.gz")
 sha256sums=('6d795a5f052b3a8cb8e7571629da14f00e92035b7174eb20e32fd1440f68aaff')
 
