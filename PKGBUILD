@@ -1,13 +1,13 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-backgroundprocess
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="A Library to create background applications with simple, automated foreground control"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtBackgroundProcess"
 license=('BSD')
 depends=('qt5-base')
-makedepends=('qt5-tools' 'git' 'qpm')
+makedepends=('qt5-tools' 'git' 'qpmx-qpmsource')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtBackgroundProcess.git#tag=$pkgver"
@@ -17,15 +17,13 @@ sha256sums=('SKIP'
 
 prepare() {
   mkdir -p build
-
-  cd "$_pkgfqn/src/3rdparty"
-  qpm install
 }
 
 build() {
   cd build
 
-  qmake -r "../$_pkgfqn/"
+  qmake "../$_pkgfqn/"
+  make qmake_all
   make
 }
 
