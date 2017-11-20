@@ -1,7 +1,7 @@
 # Maintainer: Phil Schaf <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=0.2.8
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(x86_64)
@@ -10,6 +10,7 @@ url='https://github.com/theislab/scanpy'
 license=(GPL3)
 depends=(
 	cython
+	python-anndata
 	python-matplotlib
 	python-pandas
 	python-scipy
@@ -28,7 +29,7 @@ depends=(
 	python-tqdm)
 _wheel="$pkgname-$pkgver-cp36-cp36m-manylinux1_x86_64.whl"
 source=("https://files.pythonhosted.org/packages/cp36/${pkgname::1}/$pkgname/$_wheel")
-md5sums=('1f4ae91beb498a9c38f3c9883b8bf5b3')
+md5sums=('f5fc2324b1e51ef279d8ee101494ecba')
 noextract=("$_wheel")
 
 package() {

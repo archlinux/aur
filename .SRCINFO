@@ -1,11 +1,12 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
-	pkgver = 0.2.8
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = x86_64
 	license = GPL3
 	depends = cython
+	depends = python-anndata
 	depends = python-matplotlib
 	depends = python-pandas
 	depends = python-scipy
@@ -24,9 +25,9 @@ pkgbase = scanpy
 	depends = python-tqdm
 	provides = scanpy
 	provides = python-scanpy
-	noextract = scanpy-0.2.8-cp36-cp36m-manylinux1_x86_64.whl
-	source = https://files.pythonhosted.org/packages/cp36/s/scanpy/scanpy-0.2.8-cp36-cp36m-manylinux1_x86_64.whl
-	md5sums = 1f4ae91beb498a9c38f3c9883b8bf5b3
+	noextract = scanpy-0.3.1-cp36-cp36m-manylinux1_x86_64.whl
+	source = https://files.pythonhosted.org/packages/cp36/s/scanpy/scanpy-0.3.1-cp36-cp36m-manylinux1_x86_64.whl
+	md5sums = f5fc2324b1e51ef279d8ee101494ecba
 
 pkgname = scanpy
 
