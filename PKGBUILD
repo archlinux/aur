@@ -1,7 +1,7 @@
 # Maintainer: wilga <wilga at cat3 dot de>
 pkgname=bwsyncandshare
-pkgver=11.3.476
-pkgrel=2
+pkgver=11.4.583
+pkgrel=1
 pkgdesc="file sync and share client"
 arch=('any')
 url="https://bwsyncandshare.kit.edu"
@@ -15,16 +15,16 @@ depends=('jre8' 'gtk2')
 # this will break when a new version is published
 _tarball="bwSyncAndShare_Latest_Linux.tar.gz"
 source=("https://download.bwsyncandshare.kit.edu/clients/$_tarball"
-        "$pkgname-$pkgver.patch")
+        "$pkgname.patch")
 noextract=("$_tarball")
 
-sha256sums=('a26368ec9b930e53a6d749e877d3c396bcfd9ab2ed01550b9352950c28b2b5d6'
+sha256sums=('4bc875f851d0acba0c1d90bf962781caefcb2118c7e61a4742c036c5d13915d8'
             'ebe8be90d0364090744b80609cdc5a71e360fc7f3e3188b2a534c7c4921e6c50')
 
 prepare() {
         tar xvzf $_tarball --exclude="bwSyncAndShare/jre"   # remove bundled Oracle jre
 	cd "bwSyncAndShare"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+	patch -p1 -i "$srcdir/$pkgname.patch"
 }
 
 
