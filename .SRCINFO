@@ -1,6 +1,6 @@
 pkgbase = pacman-utils-data
 	pkgdesc = Additional data for use with pacman-utils (required for provides_upstream)
-	pkgver = 2017_06_07
+	pkgver = 2017_11_20
 	pkgrel = 3
 	url = https://github.com/kata198/pacman-utils-data
 	arch = any

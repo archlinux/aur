@@ -3,7 +3,7 @@
 _basename=pacman-utils
 
 pkgname=pacman-utils-data
-_basever="2017_06_07"
+_basever="2017_11_20"
 pkgver="${_basever}"
 pkgrel=3
 pkgdesc="Additional data for use with pacman-utils (required for provides_upstream)"
