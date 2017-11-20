@@ -1,12 +1,12 @@
 pkgbase = fatresize
 	pkgdesc = A utility to resize FAT filesystems using libparted.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/fatresize/
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = docbook-utils
+	makedepends = docbook-to-man
 	depends = parted
 	depends = glibc
 	source = https://codeload.github.com/ya-mouse/fatresize/tar.gz/v1.0.3
