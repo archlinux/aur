@@ -1,12 +1,13 @@
 pkgbase = github-desktop
 	pkgdesc = GUI for managing Git and GitHub.
-	pkgver = 1.0.4_beta0
-	pkgrel = 5
+	pkgver = 1.0.10_beta0
+	pkgrel = 6
 	url = https://desktop.github.com
-	install = github-desktop.install
 	arch = x86_64
 	license = MIT
 	makedepends = libcurl-openssl-1.0
+	makedepends = xorg-server-xvfb
+	makedepends = yarn
 	depends = gnome-keyring
 	depends = git
 	depends = electron
@@ -14,10 +15,11 @@ pkgbase = github-desktop
 	depends = libcurl-compat
 	depends = libcurl-gnutls
 	optdepends = hub: CLI interface for GitHub.
-	source = https://github.com/gengjiawen/desktop/releases/download/v1.0.4-beta0/desktop_1.0.4-beta0_amd64.deb
-	source = desktop.desktop
-	md5sums = e5285a06a6ab201f36b49f877f87abbc
-	md5sums = f705336933a0a69d03695629726dfa5f
+	source = git+https://github.com/desktop/desktop.git
+	source = github-desktop.desktop
+	source = github-desktop.patch
+	sha256sums = SKIP
+	sha256sums = ce0dae70066703df656aa6f509f9a7f4f59e081e8f05be8aa7a81ee4605661c3
+	sha256sums = 25979a1e08c87361d457a277cb39327bdd82cadb3207f21bd11580579d9ecc62
 
 pkgname = github-desktop
-

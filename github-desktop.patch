@@ -1,0 +1,73 @@
+diff -ura orig/app/src/lib/shells/linux.ts new/app/src/lib/shells/linux.ts
+--- orig/app/src/lib/shells/linux.ts	2017-11-16 13:55:35.000000000 -0800
++++ new/app/src/lib/shells/linux.ts	2017-11-17 05:27:59.832386000 -0800
+@@ -6,11 +6,13 @@
+ export enum Shell {
+   Gnome = 'GNOME Terminal',
+   Tilix = 'Tilix',
++  Urxvt = 'URxvt',
+ }
+
+-export const Default = Shell.Gnome
++export const Default = Shell.Urxvt
+
+ export function parse(label: string): Shell {
++
+   if (label === Shell.Gnome) {
+     return Shell.Gnome
+   }
+@@ -19,6 +21,10 @@
+     return Shell.Tilix
+   }
+
++  if (label === Shell.Urxvt) {
++    return Shell.Urxvt
++  }
++
+   return Default
+ }
+
+@@ -32,6 +38,8 @@
+       return getPathIfAvailable('/usr/bin/gnome-terminal')
+     case Shell.Tilix:
+       return getPathIfAvailable('/usr/bin/tilix')
++    case Shell.Urxvt:
++      return getPathIfAvailable('/usr/bin/urxvt')
+     default:
+       return assertNever(shell, `Unknown shell: ${shell}`)
+   }
+@@ -40,9 +48,10 @@
+ export async function getAvailableShells(): Promise<
+   ReadonlyArray<IFoundShell<Shell>>
+ > {
+-  const [gnomeTerminalPath, tilixPath] = await Promise.all([
++  const [gnomeTerminalPath, tilixPath, urxvtPath] = await Promise.all([
+     getShellPath(Shell.Gnome),
+     getShellPath(Shell.Tilix),
++    getShellPath(Shell.Urxvt),
+   ])
+
+   const shells: Array<IFoundShell<Shell>> = []
+@@ -54,6 +63,10 @@
+     shells.push({ shell: Shell.Tilix, path: tilixPath })
+   }
+
++  if (urxvtPath) {
++    shells.push({ shell: Shell.Urxvt, path: urxvtPath })
++  }
++
+   return shells
+ }
+
+@@ -61,6 +74,11 @@
+   shell: IFoundShell<Shell>,
+   path: string
+ ): Promise<void> {
++  if (shell.shell === Shell.Urxvt) {
++    const commandArgs = ['-cd', path]
++    await spawn(shell.path, commandArgs)
++  }
++
+   const commandArgs = ['--working-directory', path]
+   await spawn(shell.path, commandArgs)
+ }
