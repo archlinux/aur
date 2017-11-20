@@ -3,7 +3,7 @@
 # Contributor: Zack Baldwin <zack@zackb.com>
 
 pkgname=ombi-beta
-pkgver=23f0ef3b0da4eb0aa1723d877ea8606290b24c8e
+pkgver=$(git ls-remote "https://github.com/tidusjar/Ombi.git" | awk "/${_branch}/ {print \$1}" | head -n1)
 pkgrel=1
 _branch="DotNetCore"
 pkgdesc="Ombi v3.0 Open Beta. Gives Plex or Emby users the ability to request content by themselves"
@@ -24,10 +24,6 @@ source=("${pkgname}-${pkgver}.tar.gz::https://ci.appveyor.com/api/projects/tidus
 sha256sums=('SKIP'
             '5f2eae8da2cf938eb7d0014bf7acfe7727eb9df3aa04b96469bcaed753ef9843'
             '27704e4b5c5d944b774bf4d180684ff76f157d37ba9c5e39f7d03493962c81c6')
-
-pkgver() {
-  git ls-remote "https://github.com/tidusjar/Ombi.git" | awk "/${_branch}/ {print \$1}"
-}
 
 package() {
   install -d "${pkgdir}/opt/ombi"
