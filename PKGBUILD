@@ -5,11 +5,11 @@ pkgver=49.92340f8
 pkgrel=1
 pkgdesc="WPA passphrase generator for AGPF Alice Routers in C (WPA script called alish is included)"
 arch=('i686' 'x86_64')
-url="https://github.com/roberfoster/aliwe"
+url="https://github.com/M0Rf30/aliwe"
 license=('GPL3')
 depends=(openssl)
 makedepends=('git')
-source=('aliwe::git://github.com/roberfoster/aliwe.git')
+source=('aliwe::git://github.com/M0Rf30/aliwe.git')
 
 build() {
   cd aliwe
