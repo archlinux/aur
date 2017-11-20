@@ -3,7 +3,7 @@
 # Based on saleae-logic package by Kyle Keen <keenerd@gmail.com>
 
 pkgname=saleae-logic-beta
-pkgver=1.2.5
+pkgver=1.2.15
 pkgrel=1
 pkgdesc="High speed USB logic analyzer."
 arch=('x86_64')
