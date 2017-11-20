@@ -2,29 +2,34 @@
 # Maintainer: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st
-pkgver=0.6
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('libxft')
+depends=('libxft' 'libxext' 'xorg-fonts-misc')
 makedepends=('ncurses')
 url="http://st.suckless.org"
 source=(http://dl.suckless.org/st/$pkgname-$pkgver.tar.gz
         config.h)
+md5sums=('29b2a599cf1511c8062ed8f025c84c63'
+         '9cb789e3912df36f296a219e1b9da850')
+
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+  # skip terminfo which conflicts with nsurses
+  sed -i '/\@tic /d' Makefile
+  cp $srcdir/config.h config.h
+}
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  cp $srcdir/config.h config.h
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  sed -i '/\@tic /d' Makefile
   make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
 }
-md5sums=('1a926f450b4eacb7e2f5ac5b8ffea7c8'
-         '90ce5919be96de000bd9d9429b173490')
