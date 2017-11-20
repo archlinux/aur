@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ndpi-git
-pkgver=261.6f3d5a7
+pkgver=1057.6e62367
 pkgrel=1
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
@@ -26,9 +26,9 @@ build() {
  package() {
    cd ndpi
    make DESTDIR="${pkgdir}/" install
-   mv $pkgdir/usr/include/libndpi-${pkgver}*/libndpi $pkgdir/usr/include
-   rm -r $pkgdir/usr/include/libndpi-${pkgver}*
-   sed -i 's|\/libndpi-2.0.0||g' $pkgdir/usr/lib/pkgconfig/libndpi.pc
+   mv $pkgdir/usr/include/libndpi-*/libndpi $pkgdir/usr/include
+   rm -r $pkgdir/usr/include/libndpi-*
+   sed -i 's|\/libndpi-2.*.*||g' $pkgdir/usr/lib/pkgconfig/libndpi.pc
  }
 
 md5sums=('SKIP')
