@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=ignuit
-pkgver=2.24.2
+pkgver=2.24.3
 pkgrel=1
 pkgdesc="A memorization aid based on the Leitner flashcard system"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ source=(http://homepages.ihug.co.nz/~trmusson/stuff/$pkgname-$pkgver.tar.gz
         $pkgname.desktop
         http://homepages.ihug.co.nz/~trmusson/$pkgname/countries_and_capitals-en.xml
         http://homepages.ihug.co.nz/~trmusson/$pkgname/numbers_days_months-en_ru-without_audio.xml)
-sha256sums=('71d6b21f75a927ab733084603659cf8e0360cad8f83fef62853d96ed7834eebe'
+sha256sums=('0333024c74ba04903701500e342cadf5efba85ebfb738222a3364c592bba33c7'
             '89c160391f5d39b47a9b0ce6dc28080d96acebee356d1a7372a18a8511fea935'
             '60f82b36b02bfa504f5a3f9f0c1c1d96856f675470ecd5fd56dbf4c185e381e7'
             '77523badda6c08af9728f1f45defc04c1c609154cdb285088228f96dc1930191')
