@@ -9,7 +9,7 @@ url="ftp://ftp.internat.freebsd.org/pub/FreeBSD/distfiles/"
 license=('GPL')
 install='wolf-data.install'
 source=("https://dl.dropboxusercontent.com/s/97qyelre9iryv37/wolf-linux-${pkgver}.x86.run"
-	https://github.com/roberfoster/rtcw-assets/raw/master/sp_pak4.pk3)
+	https://github.com/M0Rf30/rtcw-assets/raw/master/sp_pak4.pk3)
 
 package() {
   # Set Install Files to Executable
