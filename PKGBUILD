@@ -17,16 +17,18 @@ pkgver() {
   echo $(git rev-list --count dev).$(git rev-parse --short dev)
 }
 
-build() {
-  cd ndpi
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+build() {                                                                                                                                                                    
+   cd ndpi
+   ./autogen.sh
+   ./configure --prefix=/usr --with-pic --includedir=/usr/include --libdir=/usr/lib
+   make
 }
-         
-package() {
-  cd ndpi
-  make DESTDIR="$pkgdir" install
-}
+ package() {
+   cd ndpi
+   make DESTDIR="${pkgdir}/" install
+   mv $pkgdir/usr/include/libndpi-${pkgver}*/libndpi $pkgdir/usr/include
+   rm -r $pkgdir/usr/include/libndpi-${pkgver}*
+   sed -i 's|\/libndpi-2.0.0||g' $pkgdir/usr/lib/pkgconfig/libndpi.pc
+ }
 
 md5sums=('SKIP')
