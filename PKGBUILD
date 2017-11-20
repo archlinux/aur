@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=kawanime
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Desktop app for anime fans"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 #dpkg is not actually needed, it's just to avoid a build failure
 source=("https://github.com/Kylart/$pkgname/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('e904c5123f782d4177f9a702904b6d4ae1b0090b255a9f8d332a20c2d597b8c3')
+sha256sums=('79d572a261547f35859aca0622b9ecfa982d25b53123659d12b0fe124e037b9f')
 
 package() {
 	cd "$srcdir/"
