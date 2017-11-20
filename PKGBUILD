@@ -51,9 +51,12 @@ checkdepends=(
   'imagemagick' 'librsvg'
 )
 
-source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
+source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"{,.asc})
 
-md5sums=('cd73118c21ec610432e63e6421ec54f1')
+validpgpkeys=('8A11B79A5D0D749A66F0A030102C2C17498D6B9E'
+              'E9BEABB07E7B9CC3F56E62C91425F8CE5EBA0E07')
+md5sums=('cd73118c21ec610432e63e6421ec54f1'
+         'SKIP')
 
 prepare() {
   # souce duplication is required because makefile modify source code
