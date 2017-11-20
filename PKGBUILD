@@ -13,7 +13,7 @@ md5sums=('04aafb8972c0e48281094a49319be11b'
          '422a405d520e18ef9afade2e7c24440b')
 
 pkgver=6.3.1
-pkgrel=2
+pkgrel=3
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
@@ -66,7 +66,7 @@ package() {
 		Name=$_productRename
 		Comment=Offline client for cewe.de service
 		Exec=$pkgname
-		Icon=hps-$_keyaccount
+		Icon=hps-$_keyaccount-$pkgver
 		StartupNotify=true
 		Categories=Graphics;Photography;
 		MimeType=application/x-hps-mcf
