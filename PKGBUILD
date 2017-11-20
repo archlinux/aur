@@ -3,7 +3,7 @@
 
 _pkgname=EnhancedSteam
 pkgname=firefox-extension-enhancedsteam
-pkgver=9.1.1
+pkgver=9.6
 pkgrel=1
 pkgdesc="Plugin for firefox that enhances the steam website and adds new functionality."
 license=('GPL2')
@@ -13,13 +13,7 @@ depends=("firefox")
 makedepends=("unzip")
 source=("https://firefox.enhancedsteam.com/${_pkgname}.xpi")
 noextract=("${_pkgname}.xpi")
-sha256sums=('e5f0988a8ddf0f6b82954f77fef2d9a442bbfecc953aaafab63f2f5b69e3eef1')
-
-prepare() {
-	cd "$srcdir"
-
-	unzip -qqo "${_pkgname}.xpi" -d "${_pkgname}"
-}
+sha256sums=('1a79f3b2f62138e58e0b3e966a19e0d9446e8d06af9095623e261b9b2f7c3890')
 
 package() {
 	cd "${srcdir}"
