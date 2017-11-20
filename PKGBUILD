@@ -1,52 +1,75 @@
-# Maintainer: Szu-Han Chen <sjchen@sjchen.com>
-# Contributor: Eduard "bekks" Warkentin <eduard.warkentin@gmail.com>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=pisg
-pkgdesc="An irc log parser"
 pkgver=0.73
-pkgrel=2
-url="http://pisg.sourceforge.net/"
+pkgrel=3
+pkgdesc="An IRC log parser (fixed)"
+arch=('any')
+url="http://${pkgname}.sourceforge.net/"
 license=('GPL')
-arch=('i686' 'x86_64')
+conflicts=("${pkgname}")
+provides=("${pkgname}")
 depends=('perl')
-backup=('etc/pisg/pisg.cfg')
-source=("http://prdownloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-install=$pkgname.install
-md5sums=('e0d43082c0bc20e19978743ebf2fcf8b')
+install=
+changelog=
+noextract=()
+source=("http://prdownloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+	"${pkgname}-launcher"
+        "${pkgname}-${pkgver}.tar.gz.sig"
+	"${pkgname}-launcher")
+sha512sums=('290656fc556090fa8a263eaf123bad8e12b0ac50a2c1eb4619c50faf70fd3ee8afc7a8d97dbc4ff6338dd0fa9f73f7b19c60ca996b6612def95f1c494b3ef91e'
+	    '1e934b00f376fb90b0fedfd2c58fcb77e039c439b193f16b66d9c82b43dcc720b98284f7628fdf38b82baf5b7f51a03d8ca1c58b20b72f903c26b86bb13cd0fd'
+	    'SKIP'
+            'SKIP')
 
 package() {
 
-  mkdir -p "${pkgdir}/usr/bin/" "${pkgdir}/etc/"
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm755 pisg "${pkgdir}/usr/bin/"
+  _vendordir=$(perl -V:vendorarch | sed -re "s/^(vendorarch='\/)(.*)(';)$/\2/g")
+  _srcdir="${srcdir}/${pkgname}-${pkgver}"
 
-  mkdir -p ${pkgdir}/usr/share/$pkgname/{lang,gfx,layout,scripts/{addalias,pum}}
+  # Launcher
+  install -Dm755 ${srcdir}/${pkgname}-launcher ${pkgdir}/usr/bin/${pkgname}
 
-  install -Dm644 pisg.cfg "${pkgdir}/etc/"
+  # Conf
+  install -Dm644 ${_srcdir}/${pkgname}.cfg ${pkgdir}/etc/${pkgname}.cfg
 
-  install -Dm644 README lang.txt "${pkgdir}/usr/share/$pkgname/"
+  # Scripts
+  install -dm755 ${pkgdir}/usr/share/${pkgname}/scripts/addalias
+  install -dm755 ${pkgdir}/usr/share/${pkgname}/scripts/pum
+  install -Dm755 ${_srcdir}/scripts/addalias/addalias.pl ${pkgdir}/usr/share/${pkgname}/scripts/addalias/
+  install -Dm644 ${_srcdir}/scripts/addalias/README ${pkgdir}/usr/share/${pkgname}/scripts/addalias/
+  install -Dm755 ${_srcdir}/scripts/pum/pum.pl ${pkgdir}/usr/share/${pkgname}/scripts/pum/
+  install -Dm644 ${_srcdir}/scripts/pum/pum.conf ${pkgdir}/usr/share/${pkgname}/scripts/pum/
+  for e in pl awk tcl sed txt; do
+    install -Dm644 ${_srcdir}/scripts/*.${e} ${pkgdir}/usr/share/${pkgname}/scripts/
+  done
+  install -Dm644 ${_srcdir}/scripts/crontab ${pkgdir}/usr/share/${pkgname}/
 
-  cd scripts
-  install -Dm755 addalias/addalias.pl "${pkgdir}/usr/share/$pkgname/scripts/addalias/"
-  install -Dm644 addalias/README "${pkgdir}/usr/share/$pkgname/scripts/addalias/"
-  install -Dm755 pum/pum.pl "${pkgdir}/usr/share/$pkgname/scripts/pum/"
-  install -Dm644 pum/pum.conf "${pkgdir}/usr/share/$pkgname/scripts/pum/"
-  install -Dm644 crontab *.pl *.awk *.tcl *.sed *.txt "${pkgdir}/usr/share/$pkgname/scripts/"
+  # Docs
+  install -dm755 ${pkgdir}/usr/share/doc/${pkgname}/dev
+  install -Dm644 ${_srcdir}/docs/dev/* ${pkgdir}/usr/share/doc/${pkgname}/dev/
+  install -Dm644 ${_srcdir}/README ${pkgdir}/usr/share/doc/${pkgname}/
+  find ${_srcdir}/docs -maxdepth 0 -type f -exec install -Dm644 '{}' ${pkgdir}/usr/share/doc/${pkgname}/ \;
 
-  cd ../docs
-  mkdir -p "${pkgdir}/usr/share/doc/$pkgname/dev/"
-  install -Dm644 dev/* "${pkgdir}/usr/share/doc/$pkgname/dev/"
-  find . -maxdepth 1 -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}" \;
+  # Modules
+  install -dm755 ${pkgdir}/${_vendordir}
+  ## cheating a little here...
+  ## one could do some path transformation with find and sed and use install instead.
+  ## this is a little more readbale, though.
+  cp -a ${_srcdir}/modules/* ${pkgdir}/${_vendordir}/
+  find ${pkgdir}/${_vendordir}/ -type f -exec chmod 644 '{}' \;
+  find ${pkgdir}/${_vendordir} -type d -exec chmod 755 '{}' \;
 
-  cd ../modules
-  perldir="$(perl -V:vendorarch | cut -d"'" -f2)"
-  mkdir -p "${pkgdir}${perldir}/Pisg/Parser/Format"
-  install -Dm644 Pisg/Parser/Format/*.pm "${pkgdir}${perldir}/Pisg/Parser/Format/"
-  install -Dm644 *.pm "${pkgdir}${perldir}/"
-  install -Dm644 Pisg/*.pm "${pkgdir}${perldir}/Pisg/"
-  install -Dm644 Pisg/Parser/*.pm "${pkgdir}${perldir}/Pisg/Parser/"
-
-  install -Dm644 ${srcdir}/$pkgname-$pkgver/gfx/*.png "${pkgdir}/usr/share/$pkgname/gfx/"
-#  install -Dm644 ${srcdir}/$pkgname-$pkgver/lang/* "${pkgdir}/usr/share/$pkgname/lang/"
-  install -Dm644 ${srcdir}/$pkgname-$pkgver/layout/*.css "${pkgdir}/usr/share/$pkgname/layout/"
-
+  # Graphics/Layout/etc.
+  install -dm 755 ${pkgdir}/usr/share/${pkgname}/gfx
+  install -dm 755 ${pkgdir}/usr/share/${pkgname}/layout
+  install -Dm755 ${_srcdir}/${pkgname} ${pkgdir}/usr/share/${pkgname}/${pkgname}
+  install -Dm644 ${_srcdir}/gfx/*.png ${pkgdir}/usr/share/${pkgname}/gfx/
+  install -Dm644 ${_srcdir}/layout/*.css ${pkgdir}/usr/share/${pkgname}/layout/
+  install -Dm644 ${_srcdir}/lang.txt ${pkgdir}/usr/share/${pkgname}/
+  echo "<set PicLocation=\"/usr/share/${pkgname}/gfx/\">" >> ${pkgdir}/etc/${pkgname}.cfg
+  echo "<set CssDir=\"/usr/share/${pkgname}/layout/\">" >> ${pkgdir}/etc/${pkgname}.cfg
+  echo "<set LangFile=\"/usr/share/${pkgname}/lang.txt\">" >> ${pkgdir}/etc/${pkgname}.cfg
 }
