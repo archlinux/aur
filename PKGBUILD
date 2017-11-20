@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('gnome-shell' 'xorg-xprop')
 makedepends=('git')
 provides=('gnome-shell-extension-no-title-bar')
-conflicts=('gnome-shell-extension-no-title-bar' 'gnome-shell-extension-pixel-saver' 'gnome-shell-extension-pixel-saver-git')
+conflicts=('gnome-shell-extension-pixel-saver' 'gnome-shell-extension-pixel-saver-git')
 install=${pkgname}.install
 source=('git://github.com/franglais125/no-title-bar.git')
 sha256sums=('SKIP')
@@ -25,7 +25,7 @@ package() {
   _extid="no-title-bar@franglais125.gmail.com"
   cd "${srcdir}/${_gitname}"
   make _build
-  mv _build no-title-bar@franglais125.gmail.com
+  mv _build ${_extid}
   
   install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname%-*}"
   install -d "${pkgdir}/usr/share/gnome-shell/extensions"

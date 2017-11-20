@@ -10,7 +10,6 @@ pkgbase = gnome-shell-extension-no-title-bar
 	depends = gnome-shell
 	depends = xorg-xprop
 	provides = gnome-shell-extension-no-title-bar
-	conflicts = gnome-shell-extension-no-title-bar
 	conflicts = gnome-shell-extension-pixel-saver
 	conflicts = gnome-shell-extension-pixel-saver-git
 	source = git://github.com/franglais125/no-title-bar.git
