@@ -1,16 +1,17 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype
-pkgver=1.5.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="GNOME audio player for transcription"
 arch=('any')
 url="https://gkarsay.github.io/parlatype/"
 license=('GPL')
 depends=('gtk3' 'gst-plugins-base' 'gst-plugins-good')
-makedepends=('gobject-introspection' 'libreoffice' 'yelp-tools' 'intltool' 'glade' 'gtk-doc')
+makedepends=('libreoffice' 'yelp-tools' 'intltool' 'gobject-introspection')
+# makedepends=('libreoffice' 'yelp-tools' 'intltool' 'gobject-introspection' 'glade' 'gtk-doc')
 optdepends=('libreoffice: LibreOffice macros')
 source=("https://github.com/gkarsay/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1cc0847968911a27d9560d793635945bcc2cbf83a5e579c24c37c66c333da584')
+sha256sums=('584a739770e85dd91249fbb716aafdf490b325e2eea393857af80a16f7080fd4')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -19,14 +20,18 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 	autoreconf
-	# Parlatype ships its own library, libparlatype. Developers might be interested in having a library documentation,
-	# gobject introspection and a glade catalog for the widgets. These are the configure options:
-	# --enable-gtk-doc: install library documentation (default: no)
-	# --enable-introspection: install gobject introspection (default: yes)
-	# --enable-glade-catalog: install a glade catalog (default: no)
+	# Parlatype ships its own library, libparlatype.
+	# Developers might be interested in having a library documentation, gobject introspection
+	# and a glade catalog for the widgets.
+	# These are the configure options:
 	# --with-libreoffice: install LibreOffice macros (default: yes)
+	# --enable-introspection: install gobject introspection (default: yes)
+	# --enable-tests: build unit tests (default: yes)
+	# --enable-gtk-doc: install library documentation (default: no)
+	# --enable-glade-catalog: install a glade catalog (default: no)
+	# --enable-code-coverage: enable gcov/lcov code coverage (default: no)
 	# If you want the program only, you would use --prefix=/usr --disable-introspection.
-	./configure --prefix=/usr --enable-gtk-doc --enable-glade-catalog
+	./configure --prefix=/usr --disable-introspection --disable-tests
 	make
 }
 
