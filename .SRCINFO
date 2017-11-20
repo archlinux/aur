@@ -1,0 +1,13 @@
+pkgbase = adeos-oblogout-git
+	pkgdesc = A simple style theme for "oblogout", totally made with Inkscape and Love <3
+	pkgver = r27.dd25774
+	pkgrel = 1
+	url = https://github.com/bruhensant/Adeos-Oblogout
+	arch = any
+	license = unknown
+	makedepends = git
+	source = adeos-oblogout-git::git+https://github.com/bruhensant/Adeos-Oblogout
+	md5sums = SKIP
+
+pkgname = adeos-oblogout-git
+
