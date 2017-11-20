@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/SteveDeFacto/zsurf/tree/zsurf-webkit"
 license=('GPL3')
 makedepends=('git')
-depends=('qt5-webkit-ng')
+depends=('qt5-webkit')
 provides=('zsurf=$pkgver')
 conflicts=('zsurf-git')
 
