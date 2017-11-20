@@ -6,7 +6,7 @@ pkgver=2.10.0
 pkgrel=1
 
 pkgname=$_pkgname-bin
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://wiki.qemu.org"
 license=('GPL2' 'LGPL2.1')
 depends=()
@@ -14,10 +14,7 @@ makedepends=('perl')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-if [ "$CARCH" = 'i686' ] ; then
-  _arch=i386
-  _csum=31374487e53e533d2fe71fb2cf34d5f4f42e01aadee19a5abd1f76ca92079f84
-elif [ "$CARCH" = 'x86_64' ] ; then
+if [ "$CARCH" = 'x86_64' ] ; then
   _arch=amd64
   _csum=8b9a049de297ebdb9c69200edaee68c4c94b757829bbcb74235db1a067bc7ad1
 else
@@ -89,11 +86,15 @@ create_binfmts() {
           x86_64 \
           ; do
 
-    if [ "$CARCH" = "i686" ] || \
-       [ "$CARCH" = "x86_64" ] ; then
-      [ "$i" = "i386" ] \
-               || [ "$i" = "i486" ] \
-               || [ "$i" = "x86_64" ] && continue
+    # Skip emulator of target machine (and dependents)
+    if [ "$CARCH" = "$i" ] ; then
+      continue
+    elif [ "$CARCH" = "x86_64" ] ; then
+      if [ "$i" = "i386" ] || \
+         [ "$i" = "i486" ] || \
+         [ "$i" = "x86_64" ] ; then
+        continue
+      fi
     fi
 
     grep "/qemu-$i:\$" "${srcdir}/qemu.binfmt" \
