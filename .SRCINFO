@@ -1,5 +1,5 @@
 pkgbase = ruby-liquid
-	pkgdesc = Liquid markup language. Safe, customer facing template language for flexible web apps.
+	pkgdesc = Liquid markup language. Safe, customer facing template language for flexible web apps
 	pkgver = 4.0.0
 	pkgrel = 2
 	url = https://shopify.github.io/liquid/
