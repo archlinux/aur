@@ -3,7 +3,6 @@ pkgbase = yodl
 	pkgver = 4.01.00
 	pkgrel = 1
 	url = https://fbb-git.github.io/yodl/
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = icmake>=8.00.00
