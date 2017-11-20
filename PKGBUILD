@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=just-git
-pkgver=0.3.3.15.g8611735.349
+pkgver=0.3.3.16.gdef1bda.350
 pkgrel=1
 pkgdesc="Just a command runner, like make."
 arch=('x86_64' 'i686')
