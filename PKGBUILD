@@ -1,5 +1,5 @@
 pkgname=distribution-gpg-keys
-_pkgver=1.15
+_pkgver=1.16
 _rpmrel=1
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/xsuchy/$pkgname"
 license=('CC0')
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('69c0b12d85ae82c4c7af7588dd8b6a4a')
+md5sums=('1325b42537c3cd4204b258aab08309a4')
 
 # Uncomment to include GPG keys used by Copr projects
 #_with_copr=1
@@ -25,12 +25,12 @@ package() {
 	((_with_copr)) || rm -r keys/copr
 
 	mkdir -p "$pkgdir/usr/share/$pkgname"
-	cp -a keys/* "$pkgdir/usr/share/$pkgname"
+	cp -Rp keys/* "$pkgdir/usr/share/$pkgname"
 
 	# Do not forget license and documentation files
-	install -Dm644 LICENSE    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 SOURCES.md "$pkgdir/usr/share/doc/$pkgname/SOURCES.md"
+	install -Dp -m644 LICENSE    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dp -m644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dp -m644 SOURCES.md "$pkgdir/usr/share/doc/$pkgname/SOURCES.md"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
