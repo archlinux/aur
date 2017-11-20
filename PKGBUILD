@@ -11,8 +11,8 @@ url="http://wiki.qemu.org"
 license=('GPL2' 'LGPL2.1')
 depends=()
 makedepends=('perl')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("$_pkgname" "qemu-user")
+conflicts=("$_pkgname" "qemu-user")
 
 if [ "$CARCH" = 'x86_64' ] ; then
   _arch=amd64
