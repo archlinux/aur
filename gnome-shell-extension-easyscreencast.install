@@ -1,0 +1,7 @@
+post_install() {
+  echo ''
+  echo '==> To enable EasyScreenCast:'
+  echo '==> Reload Gnome Shell with Alt-F2 r'
+  echo '==> Enable it with gnome-tweak-tool or "gnome-shell-extension-tool -e EasyScreenCast@iacopodeenosee.gmail.com"'
+  echo ''
+}
