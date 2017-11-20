@@ -2,6 +2,7 @@
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: James Feng Cao
 
+set -u
 _pyver="python2"
 _pyverother='python python2 '
 _pyverother="${_pyverother//${_pyver} /}"
@@ -20,7 +21,7 @@ license=('MIT/X')
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
-source=("http://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
 sha256sums=('ba187b93056586a14edd5e630cf63ae96b1cc84b611f55dcddbc997316d9f262')
 
 build() {
@@ -53,3 +54,4 @@ package() {
   #install -Dpm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   set +u
 }
+set +u
