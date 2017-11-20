@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('glibc')
+conflicts=('imake')
 source=(http://xorg.freedesktop.org/archive/individual/util/$pkgname-$pkgver.tar.bz2)
 md5sums=('a47bcd6cecda1a6ebd3395926ea4f53a')
 
