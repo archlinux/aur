@@ -7,10 +7,7 @@ _PXE='0'
 
 #######
 [[ "${CARCH}" == 'x86_64' ]] && _TIANO_ARCH='X64'
-[[ "${CARCH}" == 'i686' ]] && _TIANO_ARCH='IA32'
-
 [[ "${CARCH}" == 'x86_64' ]] && _TIANO_S_ARCH='x64'
-[[ "${CARCH}" == 'i686' ]] && _TIANO_S_ARCH='ia32'
 #######
 
 _pkgname='refind'
@@ -19,7 +16,7 @@ pkgver=0.10.8.1.r558.85e61fb
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='http://www.rodsbooks.com/refind/'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('GPL3' 'custom')
 
 makedepends=('git')
@@ -220,7 +217,7 @@ build() {
 		make fs_tiano
 	fi
 
-	if [[ "${CARCH}" == 'x86_64' ]] && [[ "${_PXE}" == '1' ]]; then
+	if [[ "${_PXE}" == '1' ]]; then
 		cd "${srcdir}/${_pkgname}_build/net"
 
 		# Compile Network support
@@ -244,7 +241,7 @@ package() {
 	install -d "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}"
 	install -D -m0644 "${srcdir}/${_pkgname}_build/gptsync/gptsync_${_TIANO_S_ARCH}.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/gptsync_${_TIANO_S_ARCH}.efi"
 
-	if [[ "${CARCH}" == 'x86_64' ]] && [[ "${_PXE}" == '1' ]]; then
+	if [[ "${_PXE}" == '1' ]]; then
 		install -D -m0644 "${srcdir}/${_pkgname}_build/net/bin/ipxe.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/ipxe_${_TIANO_S_ARCH}.efi"
 		install -D -m0644 "${srcdir}/${_pkgname}_build/net/bin/ipxe_discovery.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/ipxe_discovery_${_TIANO_S_ARCH}.efi"
 	fi
