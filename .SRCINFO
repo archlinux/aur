@@ -1,0 +1,14 @@
+pkgbase = crackle-git
+	pkgdesc = Crack and decrypt BLE encryption
+	pkgver = r100.ff47a48
+	pkgrel = 1
+	url = http://lacklustre.net/projects/crackle/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = libpcap
+	source = crackle-git::git+https://github.com/mikeryan/crackle
+	sha256sums = SKIP
+
+pkgname = crackle-git
+
