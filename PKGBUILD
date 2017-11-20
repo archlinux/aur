@@ -2,10 +2,11 @@
 # Contributor: Ivy Foster <ivy.foster@gmail.com>
 # Contributor: Jeff Parent <jecxjo@sdf.lonestar.org>
 # Contributor: Andy Kosela <spear@protect-ya-neck.com>
+# Contributor: Lev Velykoivanenko <velykoivanenko.lev@gmail.com>
 
 pkgname=frotz
 pkgver=2.44
-pkgrel=5
+pkgrel=6
 pkgdesc='Z-machine interpreter for interactive fiction games'
 arch=('x86_64' 'i686')
 url='http://frotz.sf.net/'
@@ -18,11 +19,11 @@ prepare() {
   for opt in \
     PREFIX="$pkgdir/usr" \
     CONFIG_DIR="$pkgdir/etc" \
-    CURSES='-lncurses' \
+    CURSES='-lncurses -ltinfo' \
     CURSES_DEF='-DUSE_NCURSES_H' \
     MAN_PREFIX="$pkgdir/usr/share" \
     OPTS='${CFLAGS}'
-  do setconf -a "$pkgname-$pkgver/Makefile" $opt; done
+  do setconf -a "$pkgname-$pkgver/Makefile" "$opt"; done
   sed '/@e/d' -i "$pkgname-$pkgver/Makefile"
 }
 
