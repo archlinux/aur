@@ -3,7 +3,7 @@
 _gemname=ruby_dep
 pkgname=ruby-$_gemname
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatically helps determine supported Rubies based on .travis.yml file.'
 url='https://github.com/e2/ruby_dep'
 arch=('any')
@@ -27,7 +27,7 @@ build() {
 
 package() {
   cd ${_gemname}-${pkgver}
-  local _gemdir="$(gem env gemdir)"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
