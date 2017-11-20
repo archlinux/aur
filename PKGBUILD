@@ -9,11 +9,11 @@ _lang='de_DE'
 pkgname=cewe-fotoservice
 conflicts=(cewe-fotobuch)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners'
-md5sums=('576c21a839cbeb4121fce5fb4f5eb46b'
+md5sums=('c55ae2bb719cbd94a6dd702675560d19'
          '422a405d520e18ef9afade2e7c24440b')
 
 pkgver=6.3.1
-pkgrel=1
+pkgrel=2
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
@@ -38,8 +38,8 @@ package() {
 	mkdir -p $_installDir $pkgdir/usr/{bin,share/icons/hicolor,share/mime/packages,share/applications}
 
 	cd $srcdir
-	# don't clear screen, install broken desktop file, or burble
-	sed -i 's/^\(system("clear"\|createDesktopShortcuts(\|printf(\$TRANSLATABLE\).*;//' install.pl
+	# don't clear screen, fail to update system mime database, install broken desktop file, or burble
+	sed -i 's/^\s*\(system("clear"\|system("update-mime-database \|createDesktopShortcuts(\|printf(\$TRANSLATABLE\).*;//' install.pl
 
 	# don't show EULA/ask for confirmation if package is already installed
 	which $pkgname &>/dev/null && update='--update'
