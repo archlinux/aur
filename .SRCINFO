@@ -1,0 +1,15 @@
+pkgbase = postgresql-unit-git
+	pkgdesc = SI Units for PostgreSQL
+	pkgver = 4.0.r2.g7845111
+	pkgrel = 1
+	url = https://github.com/ChristophBerg/postgresql-unit
+	arch = any
+	license = GPL3
+	makedepends = postgresql-libs
+	makedepends = git
+	depends = postgresql
+	source = git+https://github.com/ChristophBerg/postgresql-unit
+	sha1sums = SKIP
+
+pkgname = postgresql-unit-git
+
