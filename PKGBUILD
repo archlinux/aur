@@ -5,8 +5,8 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=pytrainer
-pkgver=1.10.0
-pkgrel=3
+pkgver=1.11.0
+pkgrel=1
 pkgdesc='A tool to log your sport activities.'
 arch=('any')
 url='https://github.com/pytrainer/pytrainer/wiki'
@@ -19,18 +19,24 @@ optdepends=('garmintools: "Garmin via garmintools" plugin'
             'zenity: garmintools and gpsbabel plugins')
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/$pkgname/$pkgname/archive/v${pkgver}.tar.gz"
         $pkgname.sh
-        pathfix.patch)
-md5sums=('66d2c18fccca2f862914f99c4110ccc4'
+        #pathfix.patch
+        )
+md5sums=('e81960234ca2e88ab8856032b62157a3'
          'b39a8511bc63e6d65a615d26defbb05f'
-         'c80aa188dce3a5675b15a703873bf3ad')
-sha256sums=('3e019ab0bb564017e13e6d8736b23597fd9b21433ebfbe597ed5430c86b98250'
+         #'c80aa188dce3a5675b15a703873bf3ad'
+         )
+sha256sums=('9e4d3e00dcce01871b0ddaa5a3c000f9b075cc996a593a5eac7e3bdb66604341'
             'a0bd23c619d6c5c9bc79e90dba2b5951b3405c08764ca927de385b894759449c'
-            'b098e66cbc0e0f53e1ee222eb313417c7589928b66ce7b756c677f73b964fe1e')
+            #'b098e66cbc0e0f53e1ee222eb313417c7589928b66ce7b756c677f73b964fe1e'
+            )
 
 package() {
   cd "$pkgname-$pkgver"
 
-  patch -Np2 < "$srcdir/pathfix.patch"
+  #patch -Np2 < "$srcdir/pathfix.patch"
+  sed -i 's/\/share\/pytrainer\//\/pytrainer\//' $srcdir/$pkgname-$pkgver/bin/$pkgname
+  sed -i 's/\/share\/locale/\/locale/' $srcdir/$pkgname-$pkgver/bin/$pkgname
+  
 
   # Fix python paths
   find "$srcdir/" -name '*.py' -exec \
