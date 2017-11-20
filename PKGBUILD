@@ -17,7 +17,7 @@ optdepends_x86_64=('bin32-jre7-openjdk: to run `emulator`')  # not sure, maybe n
 #makedepends=('zip' 'unzip')  # needed for _CUSTOMIZE_CONFIG_PATH
 provides=('j2me')
 install='sun-wtk.install'
-source=('https://dl.dropboxusercontent.com/u/17413859/sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh'
+source=('sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh::https://www.dropbox.com/s/elxibfgkcxndo3k/sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh?dl=1'
         'sun-wtk.install'
         'sun-wtk.sh'
         'sun-wtk.csh'

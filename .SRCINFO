@@ -8,12 +8,9 @@ pkgbase = sun-wtk
 	arch = x86_64
 	license = custom
 	depends = java-runtime
-	depends = lib32-gcc-libs
-	depends = lib32-libxt
 	optdepends = java-environment: to do development
-	optdepends = bin32-jre7-openjdk: to run `emulator`
 	provides = j2me
-	source = https://dl.dropboxusercontent.com/u/17413859/sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh
+	source = sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh::https://www.dropbox.com/s/elxibfgkcxndo3k/sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh?dl=1
 	source = sun-wtk.install
 	source = sun-wtk.sh
 	source = sun-wtk.csh
@@ -29,6 +26,9 @@ pkgbase = sun-wtk
 	sha256sums = 7749af872ba607cae59f7b5a74811c76d3b73dc42120b4473be8a051f779587e
 	depends_i686 = gcc-libs
 	depends_i686 = libxt
+	depends_x86_64 = lib32-gcc-libs
+	depends_x86_64 = lib32-libxt
+	optdepends_x86_64 = bin32-jre7-openjdk: to run `emulator`
 
 pkgname = sun-wtk
 
