@@ -12,6 +12,7 @@ depends=('glibc' 'libpcap' 'libpqxx' 'sqlite' 'openssl' 'zlib' 'wireshark-cli' '
 makedepends=('xxd')
 source=("https://github.com/xplico/CapAnalysis/archive/v$pkgver.tar.gz"
 	"https://github.com/xplico/xplico/archive/v${_xplicover}.tar.gz"
+	https://github.com/xplico/xplico/commit/1ed30f322b764cbb6d027775c275e4f0a5616a3f.patch
 	capanalysis.service
 	capana.conf)
 install=capanalysis.install
@@ -19,8 +20,10 @@ install=capanalysis.install
 prepare() {
     cd $srcdir
     ln -s xplico-${_xplicover} xplico
+    ln -s xplico/include .
     cd xplico
-    make
+    patch -Np1 -i ../1ed30f322b764cbb6d027775c275e4f0a5616a3f.patch
+    make -j1
     cd ../CapAnalysis-$pkgver
     msg2 "Compiling CapAnalysis..."
     make pkgbin
@@ -37,5 +40,6 @@ package() {
 
 md5sums=('aea82f79f1c42f6ce6dbacef1fdf3a1c'
          'b16b1f1dc8520b3bbc5c3cd9439ca38a'
+         '813a0ca8e13f674d3458173f90ac2e94'
          '9c33942e477795f97539cc7e57e404cf'
          '9c8e3ca78f5dd0b8616b6c8b1e5e4e1e')
