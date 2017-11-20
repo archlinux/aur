@@ -1,7 +1,7 @@
 pkgbase = camllight
 	pkgdesc = Compiler for caml light source code
 	pkgver = 0.75
-	pkgrel = 1
+	pkgrel = 2
 	url = http://caml.inria.fr/
 	arch = i686
 	arch = x86_64
