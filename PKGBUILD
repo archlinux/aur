@@ -2,38 +2,29 @@
 # Contributor: tardo <tardo@nagi-fanboi.net>
 
 pkgname=mono-addins
-pkgver=1.3
+pkgver=1.1
 pkgrel=1
 pkgdesc="A generic framework for creating extensible applications and for creating libraries which extend those applications"
 arch=('x86_64')
 url="http://www.mono-project.com/Mono.Addins"
 license=('custom:MIT')
-depends=('gtk-sharp-2' 'mono')
-makedepends=('pkgconfig' git)
-_commit=92e17db491a2b0c27ceff5fdf156f5b5d9073c68  # pull/78/head~2
-source=("git+https://github.com/mono/mono-addins#commit=$_commit")
-md5sums=('SKIP')
-
-prepare() {
-  cd $pkgname
-  git tag -f 92e17db491a2b0c27ceff5fdf156f5b5d9073c68 mono-addins-1.3.7
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/^mono-addins-//;s/-/+/g'
-}
+depends=('gtk-sharp-2>=2.12.8' 'mono>=3.4.0')
+makedepends=('pkgconfig')
+source=(https://github.com/mono/mono-addins/archive/${pkgname}-${pkgver}.tar.gz)
+md5sums=('bbacbb5243b00ea7e12b7fd9b4d0b6f5')
 
 build() {
   export MONO_SHARED_DIR="${srcdir}/.wabi"
   mkdir -p "${MONO_SHARED_DIR}"
   
-  cd ${srcdir}/${pkgname}-$pkgname
+  cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
   ./autogen.sh
   ./configure --prefix=/usr --enable-gui
   make
 } 
 
 package() {
-  cd ${srcdir}/${pkgname}-$pkgname
+  cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
   make GACUTIL="/usr/bin/gacutil -root ${pkgdir}/usr/lib"  DESTDIR=${pkgdir} install
 
   install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
