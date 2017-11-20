@@ -1,0 +1,18 @@
+pkgbase = fractal-git
+	pkgdesc = Matrix.org gtk+ client
+	pkgver = r225.e693b8d
+	pkgrel = 1
+	url = https://gitlab.gnome.org/danigm/fractal
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gtk3
+	makedepends = rust
+	makedepends = pkg-config
+	makedepends = git
+	depends = gtk3
+	source = git://github.com/danigm/fractal
+	md5sums = SKIP
+
+pkgname = fractal-git
+
