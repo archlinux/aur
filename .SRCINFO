@@ -1,0 +1,15 @@
+pkgbase = pg_hashids-git
+	pkgdesc = Short unique id generator for PostgreSQL, using hashids
+	pkgver = r8.d00cfb1
+	pkgrel = 1
+	url = https://github.com/iCyberon/pg_hashids
+	arch = any
+	license = MIT
+	makedepends = postgresql-libs
+	makedepends = git
+	depends = postgresql
+	source = git+https://github.com/iCyberon/pg_hashids
+	sha1sums = SKIP
+
+pkgname = pg_hashids-git
+
