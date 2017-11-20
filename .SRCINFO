@@ -1,7 +1,7 @@
 pkgbase = python-pykwalify
 	pkgdesc = Python lib/cli for JSON/YAML schema validation
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Grokzen/pykwalify
 	arch = any
 	license = MIT

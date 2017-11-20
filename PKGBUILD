@@ -3,7 +3,7 @@
 pkgname=("python-pykwalify")
 _pkgname=pykwalify
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python lib/cli for JSON/YAML schema validation'
 arch=('any')
 url='https://github.com/Grokzen/pykwalify'
