@@ -2,7 +2,7 @@
 
 pkgname=polyphone
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical user interface for editing sf2 and sfz files"
 arch=('i686' 'x86_64')
 url="http://polyphone-soundfonts.com/"
@@ -12,7 +12,7 @@ source=("https://github.com/davy7125/polyphone/raw/master/versions/polyphone-1.9
         "$pkgname.desktop"
         "$pkgname.mime")
 changelog='ChangeLog'
-md5sums=('780937189d74182078ac7d9a59989bc7'
+md5sums=('ca452acd5364d781ce683de310b7bff4'
          'c796f82cd0ab742741de5c607cd87169'
          'f0808717b27757c80b508f6114a535ce')
 
