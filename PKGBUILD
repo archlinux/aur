@@ -2,7 +2,7 @@
 
 
 pkgname=debops
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A collection of Ansible playbooks, scalable from one container to an entire data center."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python2' 'ansible' 'python2-netaddr' 'python2-ldap' 'python2-passlib' 
 makedepends=('python2-setuptools')
 conflicts=('depops-git')
 source=("https://github.com/$pkgname/debops-tools/archive/v$pkgver.tar.gz")
-sha256sums=('ab84d9e0851a5cc35eadbe48a16f26a5c8812d84f13fa622664fe376e1a23f64')
+sha256sums=('285466d55b50cc628aaa7851e4b8a115307ffed709ce075236964b6db6c78a8f')
 
 build() {
 	cd "$pkgname-tools-$pkgver"
