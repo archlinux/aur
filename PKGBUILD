@@ -12,9 +12,9 @@ depends=('iortcw-data' 'freetype2' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'z
 makedepends=('cmake' 'unzip')
 noextract=("realrtcw$pkgver.zip" "hdpack$pkgver.zip")
 install='realrtcw.install'
-source=("https://github.com/roberfoster/RealRTCW/archive/$pkgver.tar.gz"
-	"https://github.com/roberfoster/RealRTCW-assets/raw/master/realrtcw$pkgver.zip"
-	"https://github.com/roberfoster/RealRTCW-assets/raw/master/hdpack$pkgver.zip"
+source=("https://github.com/M0Rf30/RealRTCW/archive/$pkgver.tar.gz"
+	"https://github.com/M0Rf30/RealRTCW-assets/raw/master/realrtcw$pkgver.zip"
+	"https://github.com/M0Rf30/RealRTCW-assets/raw/master/hdpack$pkgver.zip"
 # Classic renderer
 	realrtcw-sp.launcher
 # Alternative renderer launchers
