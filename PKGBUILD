@@ -17,7 +17,7 @@ optdepends=('lib32-catalyst-utils: For AMD Catalyst'
             'ttf-ms-fonts: Fonts')
 options=('!emptydirs')
 install=$pkgname.install
-source=("http://ftp.kspu.ru/mint/packages/pool/import/g/googleearth/googleearth_$pkgver-r0_amd64.deb"
+source=("ftp://ftp.is.freebsd.org/pub/mint/packages/pool/import/g/googleearth/googleearth_$pkgver-r0_amd64.deb"
         'googleearth.sh'
         "$pkgname.desktop"
         "$pkgname.menu"
