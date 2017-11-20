@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.10.102.r12772.92eaef8d9
+pkgver=2.11.0.r12870.73040fe35
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -37,6 +37,7 @@ depends=('python2'
          'python2-terminaltables>=3.1.0'
          'python2-colorclass>=2.2.0'
          'python2-cherrypy>=3.7.0'
+         'python2-cherrypy<12'
          'python2-flask>=0.7'
          'python2-flask-restful>=0.3.3'
          'python2-flask-restplus=0.10.1'
@@ -97,11 +98,6 @@ build() {
   XDG_CONFIG_HOME="${_srcdir}" bower --config.analytics=false install
   XDG_CONFIG_HOME="${_srcdir}" gulp
 
-  cd "../v2"
-  yarn install
-  yarn run build
-
-
 }
 
 #check() {
@@ -120,7 +116,7 @@ package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Make sure the perms allow reading by all
-  chmod ugo+r ${pkgdir}/usr/lib/python2.7/site-packages/FlexGet-2.10.*.dev0-py2.7.egg-info/*
+  chmod ugo+r ${pkgdir}/usr/lib/python2.7/site-packages/FlexGet-2.11.*.dev0-py2.7.egg-info/*
 
   # install systemd user unit
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
