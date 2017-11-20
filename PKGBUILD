@@ -1,9 +1,9 @@
 # Maintainer: Alex S. shantanna_at_hotmail_dot_com>
 
 pkgname=gnome-shell-extension-easyscreencast-origin-git
-_gitname=easyscreencast
+_gitname=EasyScreenCast
 pkgver=0.10.r67.g9322adf
-pkgrel=0
+pkgrel=1
 pkgdesc="This extension simplifies the use of the video recording function integrated in gnome shell, allows quickly to change the various settings of the desktop recording."
 arch=('any')
 url="https://github.com/EasyScreenCast/EasyScreenCast"
