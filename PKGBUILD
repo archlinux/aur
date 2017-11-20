@@ -5,7 +5,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch" "python-pytorch-cuda" "python2-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="http://pytorch.org"
@@ -112,6 +112,7 @@ package_python-pytorch() {
 package_python2-pytorch-cuda() {
   depends+=('python2' 'python2-yaml' 'python2-numpy')
   optdepends=('cuda' 'cudnn')
+  conflicts=('python2-pytorch')
   cd "$srcdir/${_pkgname}-${pkgver}-py2-cuda"
   python2 setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
@@ -120,6 +121,7 @@ package_python2-pytorch-cuda() {
 package_python-pytorch-cuda() {
   depends+=('python' 'python-yaml' 'python-numpy')
   optdepends=('cuda' 'cudnn')
+  conflicts=('python-pytorch')
   cd "$srcdir/${_pkgname}-${pkgver}-py3-cuda"
   python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
