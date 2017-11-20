@@ -1,5 +1,5 @@
 --- app.ini
-+++ app.ini	2017-11-07 14:03:21.236666669 +0300
++++ app.ini	2017-11-20 12:28:24.436666669 +0300
 @@ -1,12 +1,12 @@
  ; App name that shows on every page title
  APP_NAME = Gitea: Git with a cup of tea
@@ -58,7 +58,7 @@
 +APP_DATA_PATH = /var/lib/gitea/data
  ; Application level GZIP support
  ENABLE_GZIP = false
- ; Landing page for non-logged users, can be "home" or "explore"
+ ; Landing page, can be "home", "explore", or "organizations"
 @@ -169,7 +169,7 @@
  ; Enables git-lfs support. true or false, default is false.
  LFS_START_SERVER = false
