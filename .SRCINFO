@@ -13,6 +13,7 @@ pkgbase = franz
 	depends = libxext
 	depends = libxss
 	depends = libxkbfile
+	depends = gconf
 	conflicts = franz-bin
 	source = https://github.com/meetfranz/franz/archive/v5.0.0-beta.13.tar.gz
 	source = franz.desktop
