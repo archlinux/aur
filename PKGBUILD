@@ -3,7 +3,7 @@
 pkgname=pisg
 pkgdesc="An irc log parser"
 pkgver=0.73
-pkgrel=1
+pkgrel=2
 url="http://pisg.sourceforge.net/"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -15,33 +15,38 @@ md5sums=('e0d43082c0bc20e19978743ebf2fcf8b')
 
 package() {
 
-  mkdir -p "${pkgdir}/usr/bin/"
+  mkdir -p "${pkgdir}/usr/bin/" "${pkgdir}/etc/"
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 pisg "${pkgdir}/usr/bin/"
 
-  mkdir -p ${pkgdir}/etc/${pkgname}/{gfx,layout,scripts/{addalias,pum}}
+  mkdir -p ${pkgdir}/usr/share/$pkgname/{lang,gfx,layout,scripts/{addalias,pum}}
 
-  install -Dm644 COPYING README lang.txt pisg.cfg "${pkgdir}/etc/${pkgname}/"
+  install -Dm644 pisg.cfg "${pkgdir}/etc/"
 
-  cd ./scripts
-  install -Dm755 addalias/addalias.pl "${pkgdir}/etc/${pkgname}/scripts/addalias/"
-  install -Dm644 addalias/README "${pkgdir}/etc/${pkgname}/scripts/addalias/"
-  install -Dm755 pum/pum.pl "${pkgdir}/etc/${pkgname}/scripts/pum/"
-  install -Dm644 pum/pum.conf "${pkgdir}/etc/${pkgname}/scripts/pum/"
-  install -Dm644 crontab *.pl *.awk *.tcl *.sed *.txt "${pkgdir}/etc/${pkgname}/scripts/"
+  install -Dm644 README lang.txt "${pkgdir}/usr/share/$pkgname/"
 
-  cd ..
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/dev/"
-  install -Dm644 ./docs/dev/* "${pkgdir}/usr/share/doc/${pkgname}/dev/"
-  find ./docs -maxdepth 0 -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}" \;
+  cd scripts
+  install -Dm755 addalias/addalias.pl "${pkgdir}/usr/share/$pkgname/scripts/addalias/"
+  install -Dm644 addalias/README "${pkgdir}/usr/share/$pkgname/scripts/addalias/"
+  install -Dm755 pum/pum.pl "${pkgdir}/usr/share/$pkgname/scripts/pum/"
+  install -Dm644 pum/pum.conf "${pkgdir}/usr/share/$pkgname/scripts/pum/"
+  install -Dm644 crontab *.pl *.awk *.tcl *.sed *.txt "${pkgdir}/usr/share/$pkgname/scripts/"
 
-  mkdir -p "${pkgdir}/usr/lib/${pkgname}/modules/Pisg/Parser/Format"
-  install -Dm644 ./modules/Pisg/Parser/Format/*.pm "${pkgdir}/usr/lib/${pkgname}/modules/Pisg/Parser/Format/"
-  install -Dm644 ./modules/*.pm "${pkgdir}/usr/lib/${pkgname}/modules/"
-  install -Dm644 ./modules/Pisg/*.pm "${pkgdir}/usr/lib/${pkgname}/modules/Pisg/"
-  install -Dm644 ./modules/Pisg/Parser/*.pm "${pkgdir}/usr/lib/${pkgname}/modules/Pisg/Parser/"
+  cd ../docs
+  mkdir -p "${pkgdir}/usr/share/doc/$pkgname/dev/"
+  install -Dm644 dev/* "${pkgdir}/usr/share/doc/$pkgname/dev/"
+  find . -maxdepth 1 -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}" \;
 
+  cd ../modules
+  perldir="$(perl -V:vendorarch | cut -d"'" -f2)"
+  mkdir -p "${pkgdir}${perldir}/Pisg/Parser/Format"
+  install -Dm644 Pisg/Parser/Format/*.pm "${pkgdir}${perldir}/Pisg/Parser/Format/"
+  install -Dm644 *.pm "${pkgdir}${perldir}/"
+  install -Dm644 Pisg/*.pm "${pkgdir}${perldir}/Pisg/"
+  install -Dm644 Pisg/Parser/*.pm "${pkgdir}${perldir}/Pisg/Parser/"
 
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/gfx/*.png "${pkgdir}/etc/${pkgname}/gfx/"
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/layout/*.css "${pkgdir}/etc/${pkgname}/layout/"
-}	
+  install -Dm644 ${srcdir}/$pkgname-$pkgver/gfx/*.png "${pkgdir}/usr/share/$pkgname/gfx/"
+#  install -Dm644 ${srcdir}/$pkgname-$pkgver/lang/* "${pkgdir}/usr/share/$pkgname/lang/"
+  install -Dm644 ${srcdir}/$pkgname-$pkgver/layout/*.css "${pkgdir}/usr/share/$pkgname/layout/"
+
+}

@@ -1,7 +1,7 @@
 pkgbase = pisg
 	pkgdesc = An irc log parser
 	pkgver = 0.73
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pisg.sourceforge.net/
 	install = pisg.install
 	arch = i686
