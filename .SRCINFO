@@ -1,5 +1,5 @@
 pkgbase = ruby-ruby_dep
-	pkgdesc = Automatically helps determine supported Rubies based on .travis.yml file.
+	pkgdesc = Automatically helps determine supported Rubies based on .travis.yml file
 	pkgver = 1.5.0
 	pkgrel = 2
 	url = https://github.com/e2/ruby_dep
