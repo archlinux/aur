@@ -3,7 +3,7 @@
 _pkgname=qemu-user-static
 pkgdesc='A generic and open source machine emulator, statically linked'
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 
 pkgname=$_pkgname-bin
 arch=('x86_64')
@@ -16,12 +16,12 @@ conflicts=("$_pkgname" "qemu-user")
 
 if [ "$CARCH" = 'x86_64' ] ; then
   _arch=amd64
-  _csum=8b9a049de297ebdb9c69200edaee68c4c94b757829bbcb74235db1a067bc7ad1
+  _csum=e46e901cdebd73ee8247065b3c21c42ce4d47039b0e6b6d2403d9e52efd8e512
 else
   _arch="$CARCH"
   _csum=SKIP
 fi
-_debsrc="${_pkgname}_${pkgver}+dfsg-1_${_arch}.deb"
+_debsrc="${_pkgname}_${pkgver}+dfsg-2_${_arch}.deb"
 
 source=(
   "qemu-user-static.deb::http://ftp.debian.org/debian/pool/main/q/qemu/${_debsrc}"
@@ -58,6 +58,7 @@ package() {
 create_binfmts() {
   rm -Rf usr/lib/binfmt.d
   mkdir -p usr/lib/binfmt.d
+
   for i in \
           aarch64 \
           alpha \
