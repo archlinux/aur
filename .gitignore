@@ -1,6 +1,4 @@
 *
 !.SRCINFO
 !.gitignore
-!0001-include-fmt-printf.h-to-allow-the-use-of-fmt-sprintf.patch
 !PKGBUILD
-!README.md

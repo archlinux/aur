@@ -18,16 +18,16 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=18.0.r46817.203b86f32f
+pkgver=18.0.r46896.30b5b59b69
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
 makedepends=('afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'git' 'ffmpeg' 'glew'
              'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'libaacs' 'libass' 'libbluray'
-             'libcdio' 'libcec' 'libfmt-git' 'libgl' 'libmariadbclient' 'libmicrohttpd' 'libmodplug'
+             'libcdio' 'libcec' 'fmt' 'libgl' 'libmariadbclient' 'libmicrohttpd' 'libmodplug'
              'libmpeg2' 'libnfs' 'libplist' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'nss-mdns'
-             'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rapidjson-git' 'rtmpdump'
+             'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rapidjson' 'rtmpdump'
              'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'upower')
 source=("$_gitname::git+https://github.com/xbmc/xbmc.git#branch=master")
 sha256sums=('SKIP')
@@ -63,14 +63,9 @@ build() {
 
 package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
-
-  # depends expected for kodi plugins:
-  # 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
-  # depends expeced in FEH.py
-  # 'mesa-demos' 'xorg-xdpyinfo'
   depends=('bluez-libs' 'desktop-file-utils' 'ffmpeg' 'glew' 'hicolor-icon-theme' 'libcdio'
-           'libfmt-git' 'libmariadbclient' 'libmicrohttpd' 'libxrandr' 'libxslt' 'lzo' 'mesa'
-           'python2-pillow' 'python2-simplejson' 'smbclient' 'taglib' 'tinyxml' 'xorg-xdpyinfo')
+           'libmariadbclient' 'libmicrohttpd' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'python2-pillow'
+           'python2-simplejson' 'smbclient' 'taglib' 'tinyxml' 'xorg-xdpyinfo')
   optdepends=('gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
               'afpfs-ng: Apple shares support'
               'bluez: Blutooth support'
