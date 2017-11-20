@@ -2,9 +2,9 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 _npmname=ungit
-_npmver=1.1.29
+_npmver=1.2.3
 pkgname=nodejs-ungit
-pkgver=1.1.29
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Git made easy"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=('nodejs-ungit' 'ungit')
 conflicts=('ungit')
 options=('!emptydirs' '!strip')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/ungit/-/ungit-${pkgver}.tgz")
-sha256sums=('fa15cdb478b5451dc537e315228cb2f8a5b284ad30c80384a01bca78cd3a2929')
+sha256sums=('69c997bc14ee106f7ca15e41c551442596552bf846b742a66a8d23cd9ea80dba')
 
 package() {
   cd ${srcdir}
@@ -27,4 +27,8 @@ package() {
 
   msg2 'Renaming binary from 0ungit-credentials-helper to ungit-credentials-helper'
   mv "${pkgdir}/usr/bin/0ungit-credentials-helper" "${pkgdir}/usr/bin/ungit-credentials-helper"
+
+  # fixing perms
+  chmod 755 ${pkgdir}/usr/bin/
+  chmod -R 755 ${pkgdir}/usr/lib/node_modules/
 }
