@@ -2,7 +2,7 @@
 # Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=expressvpn
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'i686')
@@ -11,6 +11,7 @@ license=('custom')
 # net-tools is needed for old skool ifconfig
 depends=('net-tools')
 _date=$(date +%Y%m%d)
+options=(!strip)
 install=expressvpn.install
 source=("license-${_date}.html::https://www.expressvpn.com/vpn-software/vpn-linux/open-source")
 _url="https://download.expressvpn.xyz/clients/linux"
@@ -18,9 +19,9 @@ source_x86_64=("${_url}/${pkgname}_${pkgver}_amd64.deb"{,.asc})
 source_i686=("${_url}/${pkgname}_${pkgver}_i386.deb"{,.asc})
 
 sha512sums=('SKIP')
-sha512sums_x86_64=('a72a674bb94e92351d8a7790ea83d929c77173c753f9f5dda50da5f0f4fdded8e50f53488c16eca2c82e8efd65d90585a804a85298255417a37c293e0e9d4421'
+sha512sums_x86_64=('8bccd03e837dde245671391c2bb9e3f692c206c3d372e3ad22a65633d6c282636e008830dba215a8cb0c1d07f13321c24dadfcfef25d42cc78427e8afb29c1d4'
                    'SKIP')
-sha512sums_i686=('e3b29dcf085a39cc17de6589f705a5b90feaacfd0806350b91fbab6a32e2d82b1987d2bbd112ee81e1e29bb3abb922baa1eae5f4286b20f95bea366581046303'
+sha512sums_i686=('946a85c7ae5f31a38b3b6c91f6890188a72472f867d71ef69bf8f4f038d02f2ab9a7f137ea5eacad1e87b7de46ae3cd1227345710b2dd9c152221dfc036b2cbb'
                  'SKIP')
 validpgpkeys=('1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38')
 
@@ -36,12 +37,12 @@ package() {
     # Install bash-completion to correct place
     install -Dm644 "${pkgdir}/usr/lib/expressvpn/bash-completion" "${pkgdir}/usr/share/bash-completion/completions/expressvpn"
     
-    # Remove superfluous expressvpn lib dir
-    rm -r "${pkgdir}/usr/lib/expressvpn"
-
     install -Dm644 "${srcdir}/license-${_date}.html" "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
     install -dm755 "$pkgdir/var/lib/expressvpn/certs"
 
-    # Remove emptydir in /etc
-    rmdir "$pkgdir/etc/default"
+    # Remove unused /etc
+    rm -r "$pkgdir/etc/"
+
+    # Remove sysv script
+    rm "$pkgdir/usr/lib/expressvpn/expressvpn.init"
 }
