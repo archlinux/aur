@@ -1,0 +1,14 @@
+[Unit]
+Description=The kolide fleet daemon
+After=network.service
+
+[Service]
+User=kolide
+EnvironmentFile=/etc/conf.d/kolide
+ExecStart=/usr/bin/fleet serve
+Restart=on-failure
+KillMode=process
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target

@@ -1,7 +1,21 @@
+display_requirements () {
+cat <<-EOF
+
+	Configuration parameters can be found in:
+	/etc/conf.d/kolide
+
+	After everything is setup, as root run:
+	systemctl enable --now kolide.service
+
+EOF
+}
+
 post_install() {
 	systemd-sysusers kolide.conf
+
+	display_requirements
 }
 
 post_upgrade() {
-  post_install
+	post_install
 }
