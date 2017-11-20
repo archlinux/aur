@@ -1,22 +1,26 @@
-# Maintainer: Martin Weinelt <hexa@darmstadt.ccc.de>
+# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Contributor: Martin Weinelt <hexa@darmstadt.ccc.de>
  
 pkgname=quaternion
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="Qt5-based IM client for the Matrix protocol"
 arch=('any')
 url="https://github.com/Fxrh/Quaternion"
-license=('GPL')
+license=('GPL3')
 depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols')
 makedepends=('git' 'tar' 'cmake')
 provides=('quaternion')
 conflicts=('quaternion')
-source=('https://github.com/Fxrh/Quaternion/releases/download/v0.0.1/quaternion-source-0.0.1.tar.gz')
-sha256sums=('2fa6708e72a78a1dd1001b059fd077ef4665a4aab53288c688869246cd2db8c5')
+source=("https://github.com/QMatrixClient/Quaternion/archive/v$pkgver.tar.gz"
+        'https://github.com/QMatrixClient/libqmatrixclient/archive/v0.1.tar.gz')
+sha256sums=('8647bd74f24d3225333932a92a461da4fdee10a1a8dd639c38506a20ddb82063'
+            '922c6bc420671a16ecadeb7fb5f4fb3a42308d30e8741d2997bfc11e1053edcf')
 
 prepare() {
 	mkdir $pkgname
-	tar xf quaternion-source-0.0.1.tar.gz -C $pkgname --strip-components=1
+	tar xf v$pkgver.tar.gz -C $pkgname --strip-components=1
+	tar xf v0.1.tar.gz -C $pkgname/lib --strip-components=1
 }
 
 build() {
