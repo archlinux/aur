@@ -29,6 +29,8 @@ build() {
    mv $pkgdir/usr/include/libndpi-*/libndpi $pkgdir/usr/include
    rm -r $pkgdir/usr/include/libndpi-*
    sed -i 's|\/libndpi-2.*.*||g' $pkgdir/usr/lib/pkgconfig/libndpi.pc
- }
+   sed -i 's=#include "../lib/third_party/include/libcache.h"=#include "libcache.h"=' $pkgdir/usr/include/libndpi/ndpi_typedefs.h
+   cp -p src/lib/third_party/include/libcache.h $pkgdir/usr/include/libndpi
+}
 
 md5sums=('SKIP')
