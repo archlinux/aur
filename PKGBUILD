@@ -17,7 +17,7 @@ package() {
     mkdir -p ${pkgdir}/usr/share/pixmaps/
     mkdir -p ${pkgdir}/usr/share/applications/
     mkdir -p ${pkgdir}/usr/bin/
-    install -m 755 medleytext.png ${pkgdir}/usr/share/pixmaps/medleytext.png
-    install -m 755 medleytext.desktop ${pkgdir}/usr/share/applications/medleytext.desktop
+    install -m 644 medleytext.png ${pkgdir}/usr/share/pixmaps/medleytext.png
+    install -m 644 medleytext.desktop ${pkgdir}/usr/share/applications/medleytext.desktop
     install -m 755 medley-latest.AppImage ${pkgdir}/usr/bin/${pkgname}
 }
