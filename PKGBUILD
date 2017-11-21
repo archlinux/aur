@@ -1,7 +1,7 @@
 # Maintainer: coco
 # Co-Maintainer: thatgeek
 pkgname=torguard
-pkgver=0.3.74
+pkgver=0.3.76
 pkgrel=1
 pkgdesc="TorGuard VPN Software
  Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide."
@@ -9,20 +9,23 @@ arch=('x86_64')
 url="www.torguard.com"
 depends=('iproute2')
 license=(custom)
-source=("https://updates.torguard.biz/Software/Linux/torguard-v0.3.74-amd64-arch.tar.gz")
-md5sums=('d8c73ef4c9c4f0add27c913947ffe2e0')
+source=("https://updates.torguard.biz/Software/Linux/torguard-v0.3.76-amd64-arch.tar.gz")
+md5sums=('7123ec888d3a5bc2680f6dff454644e1')
 
 package() {
-	tar -xf "${srcdir}/${pkgname}-v0.3.74-amd64-arch/torguard-v0.3.74-amd64-arch.tar"
-        cp -r "${srcdir}/${pkgname}-v0.3.74-amd64-arch/opt" "${pkgdir}/" -R
-        cp -r "${srcdir}/${pkgname}-v0.3.74-amd64-arch/usr" "${pkgdir}/" -R
+	tar -xf "${srcdir}/${pkgname}-v${pkgver}-amd64-arch/torguard-v${pkgver}-amd64-arch.tar"
+        cp -r "${srcdir}/${pkgname}-v${pkgver}-amd64-arch/opt" "${pkgdir}/" -R
+        cp -r "${srcdir}/${pkgname}-v${pkgver}-amd64-arch/usr" "${pkgdir}/" -R
         find "$pkgdir"/opt/torguard/ -type f -exec chmod 644 {} \;
         find "$pkgdir"/opt/torguard/ -name torguard -exec chmod 755 {} \;
         find "$pkgdir"/opt/torguard/ -name torguard-wrapper -exec chmod 755 {} \;
         find "$pkgdir"/opt/torguard/ -name ss-local -exec chmod 755 {} \;
-        find "$pkgdir"/opt/torguard/ -name openvpn  -exec chmod 755 {} \;
-        find "$pkgdir"/opt/torguard/ -name openconnect  -exec chmod 755 {} \;
-        find "$pkgdir"/opt/torguard/ -name vpnc-script  -exec chmod 755 {} \;
+        find "$pkgdir"/opt/torguard/ -name openvpn_v2_3 -exec chmod 755 {} \;
+        find "$pkgdir"/opt/torguard/ -name openvpn_v2_4 -exec chmod 755 {} \;
+        find "$pkgdir"/opt/torguard/ -name openconnect -exec chmod 755 {} \;
+        find "$pkgdir"/opt/torguard/ -name vpnc-script -exec chmod 755 {} \;
+        find "$pkgdir"/opt/torguard/ -name stunnel -exec chmod 755 {} \;
+
 
         install -d "$pkgdir"/usr/bin/
         ln -s /opt/torguard/bin/torguard-wrapper "$pkgdir"/usr/bin/torguard
