@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 provides=('python2-flask-restplus=0.8.6')
 conflicts=('python2-flask-restplus')
 
-source=("http://pypi.python.org/packages/source/f/flask-restplus/flask-restplus-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/f/flask-restplus/flask-restplus-${pkgver}.tar.gz")
 sha1sums=('455788a4fa4cc9605760041974dbd7e4f46d9899')
 
 build() {
