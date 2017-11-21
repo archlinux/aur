@@ -6,7 +6,7 @@ pkgrel=1
 epoch=
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
 arch=('i686' 'x86_64')
-url="http://www.moneydance.com/"
+url="https://www.moneydance.com/"
 license=('custom')
 groups=()
 depends=('java-runtime' 'bash')
@@ -22,8 +22,8 @@ install=
 changelog=
 source=('moneydance.sh'
         'moneydance.patch')
-source_i686=(${pkgname}_x86-${pkgver}-${pkgrel}.tar.gz::http://infinitekind.com/stabledl/current/Moneydance_linux_x86.tar.gz)
-source_x86_64=(${pkgname}_amd64-${pkgver}-${pkgrel}.tar.gz::http://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz)
+source_i686=(${pkgname}_x86-${pkgver}-${pkgrel}.tar.gz::https://infinitekind.com/stabledl/current/Moneydance_linux_x86.tar.gz)
+source_x86_64=(${pkgname}_amd64-${pkgver}-${pkgrel}.tar.gz::https://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz)
 
 package() {
   # generate directories in $pkgdir
