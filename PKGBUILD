@@ -3,14 +3,13 @@
 
 _name=git
 pkgname=$_name-git
-pkgver=2.15.0.r276.g89ea799ffc
-pkgrel=2
+pkgver=2.15.0.r317.g14c63a9dc0
+pkgrel=1
 pkgdesc='A fast distributed version control system'
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url='http://git-scm.com/'
 license=('GPL2')
-depends=('curl' 'expat>=2.0' 'perl-error' 'perl>=5.14.0' 'openssl' 'pcre2'
-         'libgnome-keyring' 'glib2-git' 'libsecret')
+depends=('curl' 'expat>=2.0' 'perl-error' 'perl>=5.14.0' 'openssl' 'pcre2')
 makedepends=('python2' 'emacs' 'xmlto' 'asciidoc')
 optdepends=('tk: gitk and git gui'
             'perl-libwww: git svn'
@@ -25,7 +24,8 @@ optdepends=('tk: gitk and git gui'
             'python2: various helper scripts'
             'subversion: git svn'
             'cvsps2: git cvsimport'
-            'gnome-keyring: GNOME keyring credential helper')
+            'gnome-keyring: GNOME keyring credential helper'
+            'libsecret: library used for keyring access')
 conflicts=('git')
 provides=('git')
 install=git-git.install
@@ -34,7 +34,7 @@ source=('git+https://github.com/git/git.git'
         'git-daemon.socket'
         'git.sysusers')
 sha512sums=('SKIP'
-            'ad7f81859d5a3b9b93b48ab1fe317919940d666439e583984bf5287b6c62f570c192b990f4a004a5d0a2d983ed5e63aba2ccc95a42e05e1b93242fdbce2d07f5'
+            '1cfed9796391a5339db75e6a2ca4c83760da3445d52cc5b3dcf0ccf1fe33bddf7ab7e74f49011b9543bce330517200513bd442c59767e5de65d37bc9d4a686d0'
             'bd4aff421e547044a2a91b8a77c86ce14f05321008aa2e28aab35154b297803ca716ccba3e0fca3805033d4adb455adb41086ceeca98200b8006582c13f2c7d3'
             '17c6a884904d7336ea9975d28a15298fdc6d3ba8d00c3fc8a0f739b8e2e31e9fe4c558228f5a8509ec3c4481211e83575cf4b0d57dfc8f648c7c1b0729ee4bee')
 

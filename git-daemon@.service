@@ -8,3 +8,7 @@ ExecStart=-/usr/lib/git-core/git-daemon --inetd --export-all --base-path=/srv/gi
 StandardInput=socket
 StandardOutput=inherit
 StandardError=journal
+ProtectSystem=full
+ProtectHome=on
+PrivateDevices=on
+NoNewPrivileges=on
