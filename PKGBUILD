@@ -1,7 +1,7 @@
 # Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
 pkgname=medleytext
 pkgver=0.9.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Take Better Dev Notes"
 arch=('x86_64')
 url="https://medleytext.net/"
@@ -20,4 +20,5 @@ package() {
     install -m 644 medleytext.png ${pkgdir}/usr/share/pixmaps/medleytext.png
     install -m 644 medleytext.desktop ${pkgdir}/usr/share/applications/medleytext.desktop
     cp medley-latest.AppImage ${pkgdir}/usr/local/bin/${pkgname}
+	chmod +x ${pkgdir}/usr/local/bin/${pkgname}
 }
