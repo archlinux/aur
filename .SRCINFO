@@ -1,0 +1,21 @@
+pkgbase = solbuild
+	pkgdesc = The Solus package build system
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://solus-project.com/
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	depends = git
+	depends = libgit2
+	source = https://github.com/solus-project/solbuild/releases/download/v1.4.2/solbuild-1.4.2.tar.gz
+	source = https://github.com/solus-project/solbuild/releases/download/v1.4.2/solbuild-1.4.2.tar.gz.asc
+	source = solbuild.conf
+	validpgpkeys = 8876CC8EDAEC52CEAB7742E778E2387015C1205F
+	sha512sums = eb11a5fade205167e05050dcbd040344ee7c989cfcfa7fb216b2fd8432c9f795d83563092258df517d59840146a8cd15c6f445754bea20f1c584991b598342f9
+	sha512sums = SKIP
+	sha512sums = e3ab36dbb1a84e49f499e6c27cf3adb738961351799bd993ac339d2c22b3c753cf3ead8bde5e7a7ca2c5cc39028c20f024711f3fd68489c666ffb25c7eff323b
+
+pkgname = solbuild
+
