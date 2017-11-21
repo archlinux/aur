@@ -3,7 +3,7 @@
 pkgname='powershell-git'
 _pkgname='powershell'
 binaryname='pwsh'
-pkgver=6.0.0.beta.9.6.g282deb7ee
+pkgver=6.0.0.rc.5.gcc24b88a1
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
