@@ -16,8 +16,8 @@ md5sums=('75ecf9082ad34755f1e98afca8e2eecc'
 package() {
     mkdir -p ${pkgdir}/usr/share/pixmaps/
     mkdir -p ${pkgdir}/usr/share/applications/
-    mkdir -p ${pkgdir}/usr/bin/
+    mkdir -p ${pkgdir}/usr/local/bin/
     install -m 644 medleytext.png ${pkgdir}/usr/share/pixmaps/medleytext.png
     install -m 644 medleytext.desktop ${pkgdir}/usr/share/applications/medleytext.desktop
-    install -m 755 medley-latest.AppImage ${pkgdir}/usr/bin/${pkgname}
+    cp medley-latest.AppImage ${pkgdir}/usr/local/bin/${pkgname}
 }
