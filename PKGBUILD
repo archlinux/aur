@@ -2,9 +2,9 @@
 
 _pkgname=('tambi')
 pkgname=('tambi-git')
-pkgver=598
+pkgver=605
 pkgrel=1
-pkgdesc='A swiss army knife for studiing the bible and much more'
+pkgdesc='A swiss army knife for studying the bible and much more'
 arch=('any')
 licence=('undecided')
 url='https://github.com/nano13/tambi.git'
