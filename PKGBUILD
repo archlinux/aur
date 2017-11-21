@@ -2,7 +2,7 @@
 # Original author: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=freac
-_date=20170902
+_date=20171119
 pkgver=1.1alpha_${_date}
 pkgrel=1
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
