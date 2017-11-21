@@ -7,7 +7,7 @@ pkgdesc="The Solus package build system"
 arch=(x86_64 i686)
 url="https://solus-project.com/"
 license=(Apache)
-depends=(git libgit2)
+depends=(git libgit2 abireport)
 makedepends=(go)
 source=("https://github.com/solus-project/solbuild/releases/download/v$pkgver/solbuild-$pkgver.tar.gz"{,.asc}
         solbuild.conf)

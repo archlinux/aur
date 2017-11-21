@@ -9,6 +9,7 @@ pkgbase = solbuild
 	makedepends = go
 	depends = git
 	depends = libgit2
+	depends = abireport
 	source = https://github.com/solus-project/solbuild/releases/download/v1.4.2/solbuild-1.4.2.tar.gz
 	source = https://github.com/solus-project/solbuild/releases/download/v1.4.2/solbuild-1.4.2.tar.gz.asc
 	source = solbuild.conf
