@@ -39,7 +39,7 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14
+pkgver=4.14.1
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -52,8 +52,8 @@ _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patc
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
   'config'         # the main kernel config file
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -67,6 +67,8 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+            'SKIP'
+            '5af72b487fbcc8e7fd3f5392271490c8498ffb2048e77abaf406971a7382f8d7'
             'SKIP'
             '25e73d0e037b7e5cd5fd59f72dda89b3a155139586aee448bf5b69d6c01cc408'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -82,7 +84,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  #patch -p1 -i ../patch-${pkgver}
+  patch -p1 -i ../patch-${pkgver}
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
