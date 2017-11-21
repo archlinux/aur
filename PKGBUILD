@@ -1,6 +1,6 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 pkgname=metview
-pkgver=4.8.7
+pkgver=4.9.1
 pkgrel=1
 pkgdesc="ECMWF interactive meteorological application"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ options=()
 install=
 source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}-Source.tar.gz)
 noextract=()
-md5sums=('79ebe622c3d6480f3940d524f21db302')
+md5sums=('11d8d64ad0aebc32184da13f84dcb110')
 
 build() {
   cd Metview-${pkgver}-Source
