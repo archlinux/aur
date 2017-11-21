@@ -3,7 +3,7 @@
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=2.34.1
+pkgver=2.34.3
 _attnum=3473464
 pkgrel=4
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
@@ -14,7 +14,7 @@ depends=('qt5-base' 'proj' 'fftw' 'pango' 'netcdf-cxx-legacy' 'eccodes' 'python'
 optdepends=('libaec' 'odb_api')
 makedepends=('perl-xml-parser' 'gcc-fortran' 'swig' 'python2-numpy' 'cmake' 'boost' 'emos')
 source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz patch g++7.patch)
-md5sums=('1ecc5cc20cb0c3f2f0b9171626f09d53'
+md5sums=('b4180bc4114ffd723b80728947f50c17'
          '73b04ae78df8c2f6e88b2a36dcd2dd96'
          '79ff00492ab8bbfce1a1c7b2e82c5e48')
 
@@ -22,6 +22,7 @@ build() {
   cd "$srcdir/${Pkgname}-${pkgver}-Source"
   patch -p0 -i ../patch
   patch -p2 -i ../g++7.patch
+  rm -fr src/boost/range && ln -sf /usr/include/boost/range src/boost
   mkdir -p build
   cd build
   CC=gcc CXX='g++' \
