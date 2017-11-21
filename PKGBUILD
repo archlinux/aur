@@ -2,7 +2,7 @@
 
 pkgname=system-storage-manager
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A single tool to manage your storage'
 arch=('i686' 'x86_64')
 url='https://github.com/system-storage-manager/ssm'
@@ -19,10 +19,10 @@ prepare() {
 	#sed -i "s/ ('/#('/g" setup.py
 	#sed -i "s/\['R/#\['R/g" setup.py
     cd ..
-	python setup.py build
+	#python setup.py build
 }
 
 package() {
     cd $srcdir/ssm-$pkgname-$pkgver
-    python setup.py install --skip-build --prefix="/usr" --root="$pkgdir" --optimize=1
+    python setup.py install --prefix="/usr" --root="$pkgdir" --optimize=1
 }
