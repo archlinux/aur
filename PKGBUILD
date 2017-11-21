@@ -17,7 +17,6 @@ conflicts=('nvidia-340xx-ck' 'nvidia-304xx-ck')
 #groups=('ck-generic')
 #replaces=()
 license=('custom')
-install=readme.install
 options=(!strip)
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 sha256sums=('2056b386f619ed096ee3c2267c495c6b00d1a2a4c933f0635befcf4e69c3856c')
@@ -30,27 +29,18 @@ prepare() {
 
 build() {
 	_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
-	cd "${_pkg}/kernel"
+	cd "${_pkg}"/kernel
 	make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 }
 
 package() {
-	install -Dm644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
-		"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
-	install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-modeset.ko" \
-		"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-modeset.ko"
-	install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-drm.ko" \
-		"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-drm.ko"
+  install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 \
+    "${srcdir}/${_pkg}/kernel"/nvidia{,-modeset,-drm,-uvm}.ko
 
-	if [[ "$CARCH" = "x86_64" ]]; then
-		install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
-			"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
-	fi
+	find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
 
-	gzip -9 "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
-	install -dm755 "${pkgdir}/usr/lib/modprobe.d"
-
-	echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-ck.conf"
+  echo "blacklist nouveau" |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-ck.conf"
 }
 
 # vim:set ts=2 sw=2 et:
