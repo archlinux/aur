@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://meetfranz.com/"
 license=('Apache')
 depends=('nodejs' 'libx11' 'libxext' 'libxss' 'libxkbfile' 'gconf')
-makedepends=('yarn' 'npm')
+makedepends=('yarn' 'npm' 'git' 'python2')
 conflicts=('franz-bin')
 source=("https://github.com/meetfranz/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         "franz.desktop")
