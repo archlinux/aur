@@ -1,11 +1,11 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 
 pkgname=(gtk4-git)
-pkgver=3.93.0.r525.gbd89ff4c9e
+pkgver=3.93.0.r579.ga687fd9aeb
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
-url="http://www.gtk.org/"
+url="https://www.gtk.org/"
 license=('LGPL')
 depends=('at-spi2-atk'  'atk-git>=2.15.1' 'dconf' 'glib2-git>=2.53.7' 'libepoxy>=1.4'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr' 'mesa'
