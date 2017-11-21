@@ -19,7 +19,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}"/"${pkgname}"
+  cd "${srcdir}"/"${pkgname//-git/}"
 
   make
 }
@@ -27,5 +27,5 @@ build() {
 package() {
   mkdir -p "${pkgdir}"/usr/bin/
 
-  cp "${srcdir}"/"${pkgname}"/verticalize "${pkgdir}"/usr/bin/verticalize
+  cp "${srcdir}"/"${pkgname//-git/}"/verticalize "${pkgdir}"/usr/bin/verticalize
 }
