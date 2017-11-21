@@ -1,14 +1,14 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=tcmu-runner-git
-pkgver=v1.2.0.r29.g8b429b8
+pkgver=v1.2.0.r30
 pkgrel=1
 pkgdesc="A daemon that handles the userspace side of the LIO TCM-User backstore."
 arch=('any')
 url="https://github.com/open-iscsi/tcmu-runner"
 license=('GPL3')
 depends=()
-makedepends=('git' 'cmake' 'gcc')
+makedepends=('git' 'cmake' 'gcc' 'python-codegen')
 source=("$pkgname"::"git://github.com/open-iscsi/tcmu-runner.git")
 md5sums=('SKIP')
 
@@ -21,6 +21,7 @@ pkgver() {
 prepare() {
 	cd ${pkgname}
 	cmake ./ \
+		-Dwith-glfs=false \
 		-DCMAKE_INSTALL_PREFIX=/usr/ \
 		-DCMAKE_BUILD_TYPE=Release
 	make
