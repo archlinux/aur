@@ -5,9 +5,9 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.14
-_zenpatch=zen-4.14-d58cde75041b98ecc3c75e866aa97df58098ef8c.diff
-pkgver=4.14
-pkgrel=2
+_zenpatch=zen-4.14.1-8698e146ec8fcc0a7d7989a148e698e5e1054e7f.diff
+pkgver=4.14.1
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -16,8 +16,8 @@ options=('!strip')
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
   "https://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.xz"
   "https://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.sign"
   'config'         # the main kernel config file
@@ -32,7 +32,9 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '5a10dd38ada48d64265638c7939eaffd6f637507a60b777b18855189b8d608b2'
+            '5af72b487fbcc8e7fd3f5392271490c8498ffb2048e77abaf406971a7382f8d7'
+            'SKIP'
+            '764f94165d3dab77c3c833cbb39376269fed7c953e76060f0b59c0a44cf4104e'
             'SKIP'
             '70b96391a0ccdbb3a5fe917bd9d870159001a664da6a27ae44fbc826d2869818'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -45,7 +47,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  #patch -p1 -i ../patch-${pkgver}
+  patch -p1 -i ../patch-${pkgver}
 
   # security patches
 
@@ -104,32 +106,26 @@ _package() {
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
-  mkdir -p "${pkgdir}"/{boot,lib/{modules,firmware},usr}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
+  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
   local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
-  ln -s "../${_extramodules}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook
   echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/lib/modules/${_extramodules}/version"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
 
   # remove build and source links
-  rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-
-  # remove the firmware
-  rm -r "${pkgdir}/lib/firmware"
+  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
 
   # now we call depmod...
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
+  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 
   # add vmlinux
-  install -Dt "${pkgdir}/lib/modules/${_kernver}/build" -m644 vmlinux
-
-  # move module tree /lib -> /usr/lib
-  mv -t "${pkgdir}/usr" "${pkgdir}/lib"
+  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
 
   # sed expression for following substitutions
   local _subst="
@@ -178,7 +174,6 @@ _package-headers() {
   install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
   # http://bugs.archlinux.org/task/20402
