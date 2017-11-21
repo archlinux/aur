@@ -8,7 +8,7 @@
 
 pkgname=chromium-wayland-git
 pkgver=48.0.2548.0
-pkgrel=3
+pkgrel=4
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -78,11 +78,10 @@ prepare() {
   mkdir -p chromium
   cd chromium
 
-  export PATH="${srcdir}/python2-path:$PATH"
+  export PATH="${srcdir}/python2-path:/opt/depot_tools:$PATH"
 
-  /opt/depot_tools/gclient config --name=src https://github.com/Igalia/chromium.git
-  /opt/depot_tools/gclient sync --with_branch_heads --nohooks
-
+  gclient config --name=src https://github.com/Igalia/chromium.git
+  gclient sync -r ozone-wayland-dev --with_branch_heads --nohooks
 
   # https://crbug.com/710701
   local _chrome_build_hash=$(curl -s https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT |
@@ -132,12 +131,14 @@ prepare() {
   #done
 
   # Patching bug while compiling for platform wayland
-  sed -i 's/\[ "wayland-egl" \]/\[ "wayland-egl" , "xkbcommon" \]/' src/ui/ozone/platform/wayland/BUILD.gn
+  #sed -i 's/\[ "wayland-egl" \]/\[ "wayland-egl" , "xkbcommon" \]/' ui/ozone/platform/wayland/BUILD.gn
 
   # Fix for downloading debian jessie sysroot
   # src/build/linux/sysroot_scripts/install-sysroot.py
-  sed -i "s/InstallSysroot('Wheezy', 'amd64')/InstallSysroot('Jessie', 'amd64')/g" src/build/linux/sysroot_scripts/install-sysroot.py 
-  ./src/build/linux/sysroot_scripts/install-sysroot.py --arch=amd64
+  #sed -i "s/InstallSysroot('Wheezy', 'amd64')/InstallSysroot('Jessie', 'amd64')/g" build/linux/sysroot_scripts/install-sysroot.py 
+  #./build/linux/sysroot_scripts/install-sysroot.py --arch=amd64
+
+  #cp -r /opt/depot_tools third_party/
 }
 
 build() {
@@ -145,7 +146,7 @@ build() {
 
   cd "${srcdir}/chromium"
 
-  export PATH="$srcdir/python2-path:$PATH"
+  export PATH="$srcdir/python2-path:/opt/depot_tools:$PATH"
   export TMPDIR="$srcdir/temp"
   mkdir -p "$TMPDIR"
 
@@ -182,9 +183,9 @@ build() {
 
   cd src
 
-  /opt/depot_tools/gclient runhooks
+  gclient runhooks
 
-  /opt/depot_tools/gn gen out/Ozone --args="use_jessie_sysroot=true use_ozone=true enable_package_mash_services=true use_xkbcommon=true" #args
+  gn gen out/Ozone --args="use_ozone=true enable_mus=true  use_xkbcommon=true" # use_jessie_sysroot=true 
   /usr/bin/ninja -C out/Ozone chrome chrome_sandbox chromedriver widevinecdmadapter
 }
 
@@ -197,7 +198,7 @@ package() {
   cd "$srcdir/chromium/src"
 
   install -D out/Ozone/chrome "$pkgdir/usr/lib/chromium/chromium"
-  install -Dm644 out/Ozone/chrome.1 "$pkgdir/usr/share/man/man1/chromium.1"
+  #install -Dm644 out/Ozone/chrome.1 "$pkgdir/usr/share/man/man1/chromium.1"
   install -Dm644 "$srcdir/chromium.desktop" \
     "$pkgdir/usr/share/applications/chromium.desktop"
 
