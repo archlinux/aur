@@ -1,12 +1,14 @@
 pkgbase = polarr
 	pkgdesc = Professional Photo Editing Tools for Everyone.
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.polarr.co
 	arch = x86_64
 	license = custom
+	depends = gconf
+	provides = polarr
 	source = https://s3-us-west-2.amazonaws.com/polarrelectron/ubuntu/polarr_4.0.0_amd64.deb
-	md5sums = d8074eb8fe5c377adc857ac09d0de2e7
+	sha256sums = 4357f0fcbe8b677dfb21e1c44879ff15e38c4eb0d04d1e35bbbba8c9d8a04058
 
 pkgname = polarr
 
