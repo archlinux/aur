@@ -1,0 +1,29 @@
+pkgbase = fonts-et-book
+	pkgdesc = A typeface used in Edward Tufte's books
+	pkgver = 20151005
+	pkgrel = 1
+	url = https://edwardtufte.github.io/et-book
+	arch = any
+	license = MIT
+	source = et-book::git+https://github.com/edwardtufte/et-book.git#commit=5cadf4d
+	source = et-book-ligatures::git+https://github.com/adactio/et-book.git#commit=65f7802
+	source = LICENSE::https://raw.githubusercontent.com/edwardtufte/et-book/gh-pages/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 5ce4d24bc1aeed06dd19a43588702f434392ea79df28111f3149bb809504fa26
+
+pkgname = fonts-et-book
+	pkgdesc = A typeface used in Edward Tufte's books (all types)
+	depends = otf-et-book
+	depends = ttf-et-book
+	depends = type1-et-book
+
+pkgname = otf-et-book
+	pkgdesc = A typeface used in Edward Tufte's books (OTF)
+
+pkgname = ttf-et-book
+	pkgdesc = A typeface used in Edward Tufte's books (TTF)
+
+pkgname = type1-et-book
+	pkgdesc = A typeface used in Edward Tufte's books (Type1)
+
