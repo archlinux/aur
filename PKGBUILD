@@ -1,7 +1,7 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 pkgname=gnome-shell-extension-clipboard-indicator-git
 _gitname=pixel-saver
-pkgver=20161031
+pkgver=20171121
 pkgrel=1
 pkgdesc="Adds a clipboard indicator to the top panel, and saves clipboard history"
 arch=('any')
