@@ -83,7 +83,7 @@ package_lib32-smbclient() {
   depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups'
            'lib32-libgcrypt' 'lib32-libwbclient' 'lib32-pam' 'lib32-systemd'
            'lib32-talloc' 'lib32-tdb' 'lib32-ldb' 'lib32-python2'
-           'lib32-libaio' 'perl-parse-yapp' 'smbclient')
+           'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient')
 
   cd staging
 
