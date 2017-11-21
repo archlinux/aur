@@ -1,5 +1,5 @@
 post_install() {
-  getent passwd searx >/dev/null || useradd -rb /usr/lib/python3.6/site-packages/searx -s /usr/bin/nologin searx
+  getent passwd searx >/dev/null || useradd -rb /usr/lib/python3.6/site-packages -s /usr/bin/nologin searx
   echo "Settings are at /etc/searx/settings.yml"	
 }
 
