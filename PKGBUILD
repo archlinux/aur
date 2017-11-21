@@ -1,6 +1,7 @@
+# maintainer Bernardo Ferrari Mendonca <bernardo.mferrari@gmail.com>
 pkgname=coin-or-lemon
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ template library providing many common graph algorithms"
 arch=('i686' 'x86_64')
 url="http://lemon.cs.elte.hu/trac/lemon"
@@ -8,6 +9,7 @@ license=('BSD')
 groups=('coin-or')
 depends=('coin-or-cbc' 'coin-or-clp' 'glpk')
 makedepends=('cmake')
+options=(staticlibs)
 source=("http://lemon.cs.elte.hu/pub/sources/lemon-${pkgver}.tar.gz")
 sha1sums=('b23d64c21b4b9088ad51e85316964a4a4138f82a')
 
@@ -36,13 +38,8 @@ build() {
 
 package() {
   cd "$srcdir/lemon-$pkgver/build_static"
-  mkdir install
-  make DESTDIR="install" install
-  cd "../build_shared"
-  mkdir install
-  make DESTDIR="install" install
-
-  cp -r "$srcdir/lemon-$pkgver/build_shared/install/." "$pkgdir"
-  cp -r "$srcdir/lemon-$pkgver/build_static/install/usr/lib/." "$pkgdir/usr/lib"
+  make DESTDIR="$pkgdir" install
+  cd "$srcdir/lemon-$pkgver/build_shared"
+  make DESTDIR="$pkgdir" install
 }
 
