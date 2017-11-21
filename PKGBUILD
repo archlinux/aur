@@ -1,30 +1,24 @@
 # Maintainer Robert Booster > boosterdev@linuxmail.org
-# Automatic builder > https://github.com/boosterdev/autobuild
 
-_commit="5bf3bef1dd63d9d81a75ac60479a95e19bfe4f75"
+_pkgname=booster-themes
 pkgname=booster-gtk-themes
-pkgver=20170220
+pkgver=1.2
+pkgdesc='Booster Themes - Military Edition'
 pkgrel=1
 arch=('any')
 url="https://github.com/boosterdev/booster-themes"
 license=('GPL3')
 depends=('gtk3' 'gtk-engine-murrine' 'ttf-ubuntu-font-family')
-optdepends=('arc-firefox-theme: visual integration for firefox')
 makedepends=('git')
-source=("${pkgname}::git+$url.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname}"
-  git log -1 --format="%cd" --date=short | tr -d '-'
-}
+source=("$_pkgname.$pkgver.tar.gz::https://github.com/boosterdev/$_pkgname/archive/$pkgver.tar.gz")
+sha256sums=('aefa3eafa414b8efef34754999971f5f706126ef38d75d17b6c9be5afa18e3fb')
 
 build() {
-  cd "${pkgname}"
+  cd "$_pkgname-$pkgver"
   ./autogen.sh --prefix=/usr
 }
 
 package() {
-  cd "${pkgname}"
+  cd "$_pkgname-$pkgver"
   make DESTDIR="${pkgdir}" install
 }

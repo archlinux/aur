@@ -1,5 +1,6 @@
 pkgbase = booster-gtk-themes
-	pkgver = 20170220
+	pkgdesc = Booster Themes - Military Edition
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/boosterdev/booster-themes
 	arch = any
@@ -8,9 +9,8 @@ pkgbase = booster-gtk-themes
 	depends = gtk3
 	depends = gtk-engine-murrine
 	depends = ttf-ubuntu-font-family
-	optdepends = arc-firefox-theme: visual integration for firefox
-	source = booster-gtk-themes::git+https://github.com/boosterdev/booster-themes.git
-	sha256sums = SKIP
+	source = booster-themes.1.2.tar.gz::https://github.com/boosterdev/booster-themes/archive/1.2.tar.gz
+	sha256sums = aefa3eafa414b8efef34754999971f5f706126ef38d75d17b6c9be5afa18e3fb
 
 pkgname = booster-gtk-themes
 
