@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qesteidutil
-pkgver=3.12.9.1261
+pkgver=3.12.10.1265
 pkgrel=1
 pkgdesc="UI application for managing smart card PIN/PUK codes and certificates"
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=('LGPL2.1')
 depends=('qt5-base' 'opensc' 'ccid' 'hicolor-icon-theme')
 makedepends=('cmake' 'qt5-tools' 'qt5-translations')
 source=("https://installer.id.ee/media/ubuntu/pool/main/q/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
-sha256sums=('f69a8113f0e4ace91d98ea9d95cc69efaae4297cd9e7cdd2006695401afc6321')
+sha256sums=('eff23f778dfc287c9ef883f96c9f61eb4d100369e73f94fb3ce1b0f204f9247d')
 validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
 
 build() {
