@@ -1,11 +1,10 @@
 pkgbase = booster-gtk-themes
 	pkgdesc = Booster Themes - Military Edition
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boosterdev/booster-themes
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = gtk3
 	depends = gtk-engine-murrine
 	depends = ttf-ubuntu-font-family
