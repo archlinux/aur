@@ -2,10 +2,10 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=4.13
+_basekernel=4.14
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.15
+pkgver=${_basekernel}.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -20,25 +20,25 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         '99-grub-ll.hook'
         'menu.lst'
         'preset')
-sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f3119aea6cbd7b61df30ca6ef3ec57044d524b7babbaabddf8b08b8bafa7d2' 'SKIP'
-            '54e1d3b526984efe90a5c759b35ac849ac65525c977b3982ef32b0fbb83e73f1fca92d73c3ffb1f23643d9f72a3083eeb4edb54768b105138722434811f622c4' 'SKIP'
-            'b647c88c0b291494289078df25ade23ab9fb4ac61e0400cdd7d4642318cc95acb5c67aec2594c2c91ade4c78648fc2637112bf5c6923f1222a31949db5c196f5'
+sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8' 'SKIP'
+            '2566d2151cb0e0ad706dda3cb815e293d84ecc804cf2891e511a0f28e359b7714a1732add599a268c98108a63ee40200cf76cbda8181d67d0a64511e815202df' 'SKIP'
+            '3d11cc1eabbd5f36561dadd4ecbe14b00b347921bf2499776a88d1e10cc45cd9a9ba5502689b5a2fc29f27a7a682a6080850d063b1d78cc6f56fb3b3ef6d6011'
             '7a80f858c32a9dd62f43aba0b7119a1196869216117164bcde24ab46022e8a1bbe27821faa26ca690a1633a5a9fe324e98e5cdf14f37591d569cbc71f542482d'
             'c57a6c8d9978cb6a1034bed33ba5e06bef9b134f22113761798d4fa46e8091e7b0bd26f3a14d79122ba780b2f7a93ca26850f4da6a654f81b34cc79c242f683f'
             'db9080b2548e4dcd61eaaf20cd7d37cbbc8c204ce85a2e3408d0671f6b26010f77a61affd2c77e809768714eca29d3afb64765a3f2099317a2c928eff3feb4cf'
             '73cb4c064d8942fddaac48158b7e77d19afc1cb61f83936f21832ba7d7266ccfd3021114252edd5cec5542096204f48cf30544fd6bffff79bc94d96fabe74f52'
             '62870a08f000abfe8eb1f50271afdf04686af108554f7629dc5e1d7610ad14bdc9cd14d2609270b83f9edb745a520b81fa7bfb92ebcc28a146df040c895b549b')
-sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c' 'SKIP'
-            '110744f7ecf675153a1d6b6a622f6dd58a2e4615c36fae61dd846316bfd51c90' 'SKIP'
-            '7f59b560ff9b1b29c1ca1b0aed7cd485ecd325f2782bab59cc58d22e38dc28b1'
+sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7' 'SKIP'
+            '5af72b487fbcc8e7fd3f5392271490c8498ffb2048e77abaf406971a7382f8d7' 'SKIP'
+            'dfb1b62d52606cff048c74dd02aa4da37512a75e278aea27204598feffc2e5e3'
             '7d56a81083d1468d90ebec97a44ec44f80f8cb87bd506ed1918d6664d6309ad5'
             '3efa91fcb4698bde0598678bbf9a4a747c011823af82704eed2c146ed7cd9734'
             '368fb58e7aa465f597e9a72da4b6eea4183c1a85242173412d54ad18d10d8fb3'
             'a055b6005a324240b35c416d9d08fba21c5f614eefb46f244035d04bf085224f'
             '29fa2c1ea75f55a61276496507b788b1a8bde1d7c16bee4f525651db34076e46')
-md5sums=('ab1a2abc6f37b752dd2595338bec4e78' 'SKIP'
-         '01dc2c126e47df3f3d0f7e0e25348320' 'SKIP'
-         '07b056a49e572f90fcc2c022f28e1dbd'
+md5sums=('bacdb9ffdcd922aa069a5e1520160e24' 'SKIP'
+         '67622696833123f68345614fdd512c3f' 'SKIP'
+         '3af6845ad0813ee6b962b869a79b6542'
          'bc30565cf444b710c252675cf65fb46e'
          'c52c29a8502f6c75e309208f0afab11f'
          '625481f015365febcd65aa136ee555f9'
@@ -73,14 +73,14 @@ build() {
 }
 
 package_linux-linode() {
-  KARCH=x86
   cd "${srcdir}/${_srcname}"
   _kernver="$(make LOCALVERSION= kernelrelease)"
-  mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  rm -rf "${pkgdir}"/lib/{firmware,modules/${_kernver}/{source,build}}
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuzll-${pkgname}"
-  install -D -m644 vmlinux "${pkgdir}/lib/modules/${_kernver}/build/vmlinux"
+  emdir="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  mkdir -p "${pkgdir}"/{usr/lib/modules/"$emdir",boot/grub}
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
+  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuzll-${pkgname}"
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
   install -D -m644 "${srcdir}/preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   install -D -m644 "${srcdir}/98-linux-linode.hook" "${pkgdir}/usr/share/libalpm/hooks/98-linux-linode.hook"
   install -D -m644 "${srcdir}/99-grub-ll.hook"      "${pkgdir}/usr/share/libalpm/hooks/99-grub-ll.hook"
@@ -93,14 +93,8 @@ package_linux-linode() {
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|" \
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
-
-  emdir="extramodules-${_basekernel}${_kernelname:--ARCH}"
-  mkdir -p "${pkgdir}/lib/modules/${emdir}"
-  ln -s "../${emdir}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  echo "${_kernver}" >| "${pkgdir}/lib/modules/${emdir}/version"
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
-  mkdir -p "${pkgdir}/usr"
-  mv "${pkgdir}/"{lib,usr/}
-  mkdir -p ${pkgdir}/boot/grub
-  sed "s/%VER%/${pkgver}-${pkgrel}/ig" ${srcdir}/menu.lst > ${pkgdir}/boot/grub/menu.lst
+  ln -s "../${emdir}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
+  echo "${_kernver}" >| "${pkgdir}/usr/lib/modules/${emdir}/version"
+  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
+  sed "s/%VER%/${pkgver}-${pkgrel}/ig" "${srcdir}/menu.lst" > "${pkgdir}/boot/grub/menu.lst"
 }
