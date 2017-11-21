@@ -1,0 +1,16 @@
+pkgbase = libopusenc
+	pkgdesc = High-level API for encoding .opus files
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://opus-codec.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	depends = opus
+	options = staticlibs
+	source = https://archive.mozilla.org/pub/opus/libopusenc-0.1.1.tar.gz
+	sha256sums = 02e6e0b14cbbe0569d948a46420f9c9a81d93bba32dc576a4007cbf96da68ef3
+
+pkgname = libopusenc
+
