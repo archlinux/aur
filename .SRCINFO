@@ -1,0 +1,16 @@
+pkgbase = hyperstart-git
+	pkgdesc = The tiny Init service for HyperContainer
+	pkgver = v1.0.0.r21.59abb74
+	pkgrel = 1
+	url = https://github.com/hyperhq/hyperstart
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = hyperd
+	provides = hyperstart
+	conflicts = hyperstart
+	source = hyperstart::git+https://github.com/hyperhq/hyperstart.git
+	md5sums = SKIP
+
+pkgname = hyperstart-git
+
