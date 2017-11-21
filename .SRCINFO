@@ -1,7 +1,7 @@
 pkgbase = zita-at1
 	pkgdesc = A 'autotuner' Jack application.
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = http://kokkinizita.linuxaudio.org/linuxaudio/zita-at1-doc/quickguide.html
 	arch = i686
 	arch = x86_64
