@@ -1,14 +1,14 @@
 # Maintainer: Julian Hornich <julianhornich@googlemail.com>
 
 pkgname=likwid-git
-pkgver=r793
+pkgver=r1486
 pkgrel=1
 pkgdesc="Lightweight performance tools"
 url="https://github.com/rrze-likwid/likwid"
 arch=('x86_64' 'i686')
 source=('git+https://github.com/RRZE-HPC/likwid.git')
 license=('GPLv3')
-depends=('lua' 'hwloc' 'perl-template-toolkit')
+depends=('lua' 'hwloc')
 makedepends=('gcc' 'make' 'perl')
 optdepends=('perl: for likwid-mpirun and likwid-perfscope'
             'gnuplot: for likwid-perfscope'
@@ -23,7 +23,8 @@ pkgver() {
 
 build() {
   cd ${srcdir}/likwid
-  sed -i "12s:/usr/local:/usr:; 13s:/man:/share/man:; 31s:/sbin:/bin:; 32s:/sbin:/bin:" config.mk
+  #sed -i "12s:/usr/local:/usr:; 13s:/man:/share/man:; 31s:/sbin:/bin:; 32s:/sbin:/bin:" config.mk
+	sed -i "12s:/usr/local:/usr:; 25s:/man:/share/man:; 48s:/sbin:/bin:; 49s:/sbin:/bin:" config.mk
   sed -i "s:/sbin:/bin:" Makefile
   make
 }
