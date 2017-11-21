@@ -1,0 +1,13 @@
+pkgbase = python-pptree
+	pkgdesc = Python tree pretty-print
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/clemtoy/pptree
+	arch = any
+	license = MIT
+	makedepends = python
+	source = https://files.pythonhosted.org/packages/source/p/pptree/pptree-2.0.tar.gz
+	md5sums = fbb8c42f7fab308103d93a81b769e472
+
+pkgname = python-pptree
+
