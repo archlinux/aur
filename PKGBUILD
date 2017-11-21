@@ -17,7 +17,7 @@ build() {
   cd $srcdir
 
   unzip Pantum-P2000-Series-Linux-DriverUbutun12.04V1.00-1.zip
-  # rename unzipped directory, otherwise rpm2cpio breaks
+  # rename unzipped directory, otherwise bsdtar is sad
   mv ' Pantum 2000 Series Linux Driver (Ubutun12.04) V1.00' Pantum-P2000-Series-Linux-DriverUbutun12.04V1.00-1
 
   mkdir -p ${pkgname}-${pkgver}
