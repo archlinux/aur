@@ -1,0 +1,27 @@
+pkgbase = hyperd-git
+	pkgdesc = HyperContainer Daemon
+	pkgver = v1.0.0.r5.f2baf06
+	pkgrel = 1
+	url = https://github.com/hyperhq/hyperd
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = device-mapper
+	makedepends = sqlite3
+	makedepends = libvirt
+	makedepends = btrfs-progs
+	depends = libvirt
+	optdepends = hyperstart: boot files for hyperd instances
+	provides = hyperd
+	conflicts = hyperd
+	options = !strip
+	options = !emptydirs
+	source = hyperd::git+https://github.com/hyperhq/hyperd.git
+	source = btrfs-progs-4.5.diff
+	md5sums = SKIP
+	md5sums = 4858adb29a450c9e5775e4cae875fae7
+
+pkgname = hyperd-git
+
