@@ -1,0 +1,12 @@
+diff --git a/protocols/jabber/libjingle/CMakeLists.txt b/protocols/jabber/libjingle/CMakeLists.txt
+index 7ea8c3eb6..4b73085b8 100644
+--- a/protocols/jabber/libjingle/CMakeLists.txt
++++ b/protocols/jabber/libjingle/CMakeLists.txt
+@@ -288,6 +288,7 @@ set ( call_LIBS
+ 	${MEDIASTREAMER_LIBRARIES}
+ 	${LIBORTP_LIBRARY}
+ 	${CMAKE_DL_LIBS}
++        pthread
+ )
+ 
+ if ( NOT WIN32 )

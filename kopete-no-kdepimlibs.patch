@@ -1,0 +1,1280 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5216807ab..78c7ab500 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,6 @@ project(kopete)
+ find_package(KDE4 REQUIRED)
+ include(KDE4Defaults)
+ include(MacroLibrary)
+-find_package(KdepimLibs REQUIRED)
+ find_package(QImageBlitz REQUIRED)
+ 
+ set(KOPETE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+diff --git a/kopete/contactlist/CMakeLists.txt b/kopete/contactlist/CMakeLists.txt
+index 2219addf9..ea5623a75 100644
+--- a/kopete/contactlist/CMakeLists.txt
++++ b/kopete/contactlist/CMakeLists.txt
+@@ -12,10 +12,8 @@ set(kopetecontactlist_SRCS
+ #kopetegroupviewitem.cpp
+ kopetecontactlistview.cpp
+ kopetelviprops.cpp
+-kopeteaddrbookexport.cpp
+ customnotificationprops.cpp
+ kopetegrouplistaction.cpp
+-kabcexport.cpp
+ contactlistmodel.cpp
+ contactlisttreemodel.cpp
+ contactlistplainmodel.cpp
+@@ -28,9 +26,6 @@ contactlistlayoutitemconfig.cpp
+ kde4_add_ui_files(kopetecontactlist_SRCS
+ kopetegvipropswidget.ui
+ kopetemetalvipropswidget.ui
+-kopeteaddrbookexportui.ui
+-kabcexport_page1.ui
+-kabcexport_page2.ui
+ )
+ 
+ kde4_add_library( kopetecontactlist SHARED ${kopetecontactlist_SRCS} )
+diff --git a/kopete/contactlist/contactlistproxymodel.cpp b/kopete/contactlist/contactlistproxymodel.cpp
+index d0ada7892..cb636dfca 100644
+--- a/kopete/contactlist/contactlistproxymodel.cpp
++++ b/kopete/contactlist/contactlistproxymodel.cpp
+@@ -27,7 +27,6 @@
+ #include "kopetecontact.h"
+ #include "kopeteappearancesettings.h"
+ #include "kopeteitembase.h"
+-#include <kabc/stdaddressbook.h>
+ 
+ namespace Kopete {
+ 
+@@ -272,15 +271,6 @@ bool ContactListProxyModel::searchContactInfo(Kopete::MetaContact *mc, QRegExp s
+ 		return true;
+ 
+ 	// Check the address book
+-	KABC::Addressee addressee = KABC::StdAddressBook::self()->findByUid( mc->kabcId() );
+-	if ( !addressee.isEmpty() )
+-	{
+-		QString emailAddr = addressee.fullEmail();
+-
+-		if ( emailAddr.contains( searchPattern ) )
+-			return true;
+-	}
+-
+ 	// Check alternative names
+ 	foreach( Kopete::Contact* c , mc->contacts() )
+ 	{
+diff --git a/kopete/contactlist/kopetecontactlistview.cpp b/kopete/contactlist/kopetecontactlistview.cpp
+index b32a500cf..9b403d123 100644
+--- a/kopete/contactlist/kopetecontactlistview.cpp
++++ b/kopete/contactlist/kopetecontactlistview.cpp
+@@ -39,7 +39,6 @@
+ #include <KMessageBox>
+ #include <KToolInvocation>
+ #include <kxmlguifactory.h>
+-#include <kabc/stdaddressbook.h>
+ 
+ #include "kopeteuiglobal.h"
+ #include "kopetecontactlistelement.h"
+@@ -529,24 +528,6 @@ void KopeteContactListView::sendMessage()
+ void KopeteContactListView::sendEmail()
+ {
+ 	Kopete::MetaContact* metaContact = metaContactFromIndex( currentIndex() );
+-	if ( metaContact )
+-	{
+-		KABC::Addressee addressee = KABC::StdAddressBook::self()->findByUid( metaContact->kabcId() );
+-		if ( !addressee.isEmpty() )
+-		{
+-			QString emailAddr = addressee.fullEmail();
+-			
+-			kDebug( 14000 ) << "Email: " << emailAddr << "!";
+-			if ( !emailAddr.isEmpty() )
+-				KToolInvocation::invokeMailer( emailAddr, QString() );
+-			else
+-				KMessageBox::queuedMessageBox( this, KMessageBox::Sorry, i18n( "There is no email address set for this contact in the KDE address book." ), i18n( "No Email Address in Address Book" ) );
+-		}
+-		else
+-		{
+-			KMessageBox::queuedMessageBox( this, KMessageBox::Sorry, i18n( "This contact was not found in the KDE address book. Check that a contact is selected in the properties dialog." ), i18n( "Not Found in Address Book" ) );
+-		}
+-	}
+ }
+ 
+ void KopeteContactListView::rename()
+diff --git a/kopete/contactlist/kopetelviprops.cpp b/kopete/contactlist/kopetelviprops.cpp
+index 04ff289a1..84a4c95f8 100644
+--- a/kopete/contactlist/kopetelviprops.cpp
++++ b/kopete/contactlist/kopetelviprops.cpp
+@@ -43,18 +43,12 @@
+ #include <klocale.h>
+ #include <kmessagebox.h>
+ #include <kurlrequester.h>
+-#include <kabc/addresseedialog.h>
+-#include <kabc/stdaddressbook.h>
+-#include <kabc/addressee.h>
+ #include <kstandarddirs.h>
+ 
+-#include "kabcpersistence.h"
+-#include "kopeteaddrbookexport.h"
+ #include "kopetecontact.h"
+ #include "kopetegroup.h"
+ #include "kopeteaccount.h"
+ #include "kopeteprotocol.h"
+-#include "addressbooklinkwidget.h"
+ #include "avatardialog.h"
+ 
+ #include "customnotificationprops.h"
+@@ -186,9 +180,6 @@ KopeteMetaLVIProps::KopeteMetaLVIProps(Kopete::MetaContact *metaContact, QWidget
+ 	hb->setMargin( -1 );
+ 	hb->setObjectName( "soundFromKABClayout" );
+ 
+-	mFromKABC = new QPushButton( i18n( "Sync KABC..." ), mNotificationProps->widget() );
+-	mFromKABC->setObjectName( QLatin1String("getSoundFromKABC") );
+-	hb->addWidget( mFromKABC ); // [ [Button] <-xxxxx-> ]
+ 	hb->addStretch();
+ 	vb->addStretch(); // vert spacer keeps the rest snug
+ 
+@@ -199,10 +190,8 @@ KopeteMetaLVIProps::KopeteMetaLVIProps(Kopete::MetaContact *metaContact, QWidget
+ 	ui_mainWidget->tabWidget->addTab( npMainWidget, i18n( "Custom &Notifications" ) );
+ 	setMainWidget( mainWidget );
+ 
+-	connect( ui_mainWidget->radioNameKABC, SIGNAL(toggled(bool)), SLOT(slotEnableAndDisableWidgets()));
+ 	connect( ui_mainWidget->radioNameContact, SIGNAL(toggled(bool)), SLOT(slotEnableAndDisableWidgets()));
+ 	connect( ui_mainWidget->radioNameCustom, SIGNAL(toggled(bool)), SLOT(slotEnableAndDisableWidgets()));
+-	connect( ui_mainWidget->radioPhotoKABC, SIGNAL(toggled(bool)), SLOT(slotEnableAndDisableWidgets()));
+ 	connect( ui_mainWidget->radioPhotoContact, SIGNAL(toggled(bool)), SLOT(slotEnableAndDisableWidgets()));
+ 	connect( ui_mainWidget->radioPhotoCustom, SIGNAL(toggled(bool)), SLOT(slotEnableAndDisableWidgets()));
+ 	connect( ui_mainWidget->cmbAccountPhoto, SIGNAL(activated(int)), SLOT(slotEnableAndDisableWidgets()));
+@@ -210,7 +199,6 @@ KopeteMetaLVIProps::KopeteMetaLVIProps(Kopete::MetaContact *metaContact, QWidget
+ 
+ 	ui_mainWidget->btnClearPhoto->setIcon( KIcon( (QApplication::layoutDirection() == Qt::RightToLeft) ? "edit-clear-locationbar-ltr" : "edit-clear-locationbar-rtl" ) );
+ 	connect( ui_mainWidget->btnClearPhoto, SIGNAL(clicked()), this, SLOT(slotClearPhotoClicked()) );
+-	connect( ui_mainWidget->widAddresseeLink, SIGNAL(addresseeChanged(KABC::Addressee)), SLOT(slotAddresseeChanged(KABC::Addressee)) );
+ 	connect( ui_mainWidget->btnChoosePhoto, SIGNAL(clicked()), this, SLOT(slotSelectPhoto()));
+ 	ui_mainWidget->chkUseCustomIcons->setChecked( mMetaContact->useCustomIcon() );
+ 
+@@ -235,41 +223,14 @@ KopeteMetaLVIProps::KopeteMetaLVIProps(Kopete::MetaContact *metaContact, QWidget
+ //	ui_mainWidget->icnbAway->setIcon( awayName );
+ //	ui_mainWidget->icnbUnknown->setIcon( unknownName );
+ 
+-	ui_mainWidget->widAddresseeLink->setMetaContact( mMetaContact );
+-
+-	mAddressBookUid = mMetaContact->kabcId();
+-
+ 	mExport = 0L;
+ 
+-	if ( !mAddressBookUid.isEmpty() )
+-	{
+-		KABC::AddressBook *ab = Kopete::KABCPersistence::self()->addressBook();
+-		KABC::Addressee a = ab->findByUid( mAddressBookUid );
+-		ui_mainWidget->widAddresseeLink->setAddressee( a );
+-
+-		if ( !a.isEmpty() )
+-		{
+-			ui_mainWidget->btnImportKABC->setEnabled( true );
+-			ui_mainWidget->btnExportKABC->setEnabled( true );
+-			mExport = new KopeteAddressBookExport( this, mMetaContact );
+-			
+-			mSound = a.sound();
+-			mFromKABC->setEnabled( !( mSound.isIntern() || mSound.url().isEmpty() ) );
+-		}
+-	}
+-	
+ 	slotLoadNameSources();
+ 	slotLoadPhotoSources();
+ 
+ 	connect( this, SIGNAL(okClicked()), this, SLOT(slotOkClicked()) );
+ 	connect( ui_mainWidget->chkUseCustomIcons, SIGNAL(toggled(bool)),
+ 		this, SLOT(slotUseCustomIconsToggled(bool)) );
+-	connect( ui_mainWidget->btnImportKABC, SIGNAL(clicked()),
+-		this, SLOT(slotImportClicked()) );
+-	connect( ui_mainWidget->btnExportKABC, SIGNAL(clicked()),
+-					 this, SLOT(slotExportClicked()) );
+-	connect( mFromKABC, SIGNAL(clicked()),
+-		this, SLOT(slotFromKABCClicked()) );
+ 
+ 	slotUseCustomIconsToggled( ui_mainWidget->chkUseCustomIcons->isChecked() );
+ 	slotEnableAndDisableWidgets();
+@@ -325,7 +286,6 @@ void KopeteMetaLVIProps::slotLoadNameSources()
+ 	Kopete::MetaContact::PropertySource nameSource = mMetaContact->displayNameSource();
+ 	
+ 	ui_mainWidget->radioNameContact->setChecked(nameSource == Kopete::MetaContact::SourceContact);
+-	ui_mainWidget->radioNameKABC->setChecked(nameSource == Kopete::MetaContact::SourceKABC);
+ 	ui_mainWidget->radioNameCustom->setChecked(nameSource == Kopete::MetaContact::SourceCustom);
+ 
+ }
+@@ -361,10 +321,7 @@ void KopeteMetaLVIProps::slotLoadPhotoSources()
+ 	Kopete::MetaContact::PropertySource photoSource = mMetaContact->photoSource();
+ 
+ 	ui_mainWidget->radioPhotoContact->setChecked(photoSource == Kopete::MetaContact::SourceContact);
+-	ui_mainWidget->radioPhotoKABC->setChecked(photoSource == Kopete::MetaContact::SourceKABC);
+ 	ui_mainWidget->radioPhotoCustom->setChecked(photoSource == Kopete::MetaContact::SourceCustom);
+-
+-	ui_mainWidget->chkSyncPhoto->setChecked(mMetaContact->isPhotoSyncedWithKABC());
+ }
+ 
+ void KopeteMetaLVIProps::slotSelectPhoto()
+@@ -379,24 +336,6 @@ void KopeteMetaLVIProps::slotSelectPhoto()
+ 
+ void KopeteMetaLVIProps::slotEnableAndDisableWidgets()
+ {
+-	KABC::AddressBook *ab = Kopete::KABCPersistence::self()->addressBook();
+-	KABC::Addressee a = ab->findByUid( mAddressBookUid );
+-	bool validLink = ! a.isEmpty();
+-	// kabc source requires a kabc link
+-	ui_mainWidget->radioNameKABC->setEnabled(validLink);
+-	// kabc source requires a kabc link
+-	ui_mainWidget->radioPhotoKABC->setEnabled(validLink);
+-	// sync with kabc has no sense if we use kabc as source (sync kabc with kabc? uh?)
+-	// it has also no sense if they are no kabc link
+-	if( selectedPhotoSource() == Kopete::MetaContact::SourceKABC || !validLink )
+-	{
+-		ui_mainWidget->chkSyncPhoto->setEnabled(false);
+-	}
+-	else
+-	{
+-		ui_mainWidget->chkSyncPhoto->setEnabled(true);
+-	}
+-
+ 	ui_mainWidget->radioNameContact->setEnabled(mMetaContact->contacts().count());
+ 	ui_mainWidget->radioPhotoContact->setEnabled(!m_withPhotoContacts.isEmpty());
+ 
+@@ -416,9 +355,6 @@ void KopeteMetaLVIProps::slotEnableAndDisableWidgets()
+ 	QImage photo;
+ 	switch ( selectedPhotoSource() )
+ 	{
+-		case Kopete::MetaContact::SourceKABC:
+-		photo = Kopete::photoFromKABC(mAddressBookUid);
+-		break;
+ 		case Kopete::MetaContact::SourceContact:
+ 		photo = Kopete::photoFromContact(selectedPhotoSourceContact());
+ 		break;
+@@ -434,8 +370,6 @@ void KopeteMetaLVIProps::slotEnableAndDisableWidgets()
+ 
+ Kopete::MetaContact::PropertySource KopeteMetaLVIProps::selectedNameSource() const
+ {
+-	if ( ui_mainWidget->radioNameKABC->isChecked() )
+-		return Kopete::MetaContact::SourceKABC;
+ 	if ( ui_mainWidget->radioNameContact->isChecked() )
+ 		return Kopete::MetaContact::SourceContact;
+ 	if ( ui_mainWidget->radioNameCustom->isChecked() )
+@@ -446,8 +380,6 @@ Kopete::MetaContact::PropertySource KopeteMetaLVIProps::selectedNameSource() con
+ 
+ Kopete::MetaContact::PropertySource KopeteMetaLVIProps::selectedPhotoSource() const
+ {
+-	if ( ui_mainWidget->radioPhotoKABC->isChecked() )
+-		return Kopete::MetaContact::SourceKABC;
+ 	if ( ui_mainWidget->radioPhotoContact->isChecked() )
+ 		return Kopete::MetaContact::SourceContact;
+ 	if ( ui_mainWidget->radioPhotoCustom->isChecked() )
+@@ -490,10 +422,6 @@ Kopete::Contact* KopeteMetaLVIProps::selectedPhotoSourceContact() const
+ 
+ void KopeteMetaLVIProps::slotOkClicked()
+ {
+-	// update meta contact's UID
+-	mMetaContact->setKabcId( mAddressBookUid );
+-	//this has to be done first, in the case something is synced with KABC   (see bug 109494)
+-	
+ 	// set custom display name
+ 	if( ui_mainWidget->edtDisplayName->text() != mMetaContact->customDisplayName() )
+ 		mMetaContact->setDisplayName( ui_mainWidget->edtDisplayName->text() );
+@@ -508,7 +436,6 @@ void KopeteMetaLVIProps::slotOkClicked()
+ 	mMetaContact->setPhotoSourceContact( selectedPhotoSourceContact() );
+ 	if ( !m_photoPath.isEmpty())
+ 		mMetaContact->setPhoto(KUrl(m_photoPath));
+-	mMetaContact->setPhotoSyncedWithKABC( ui_mainWidget->chkSyncPhoto->isChecked() );
+ 	
+ 	mMetaContact->setUseCustomIcon(
+ 		ui_mainWidget->chkUseCustomIcons->isChecked() );
+@@ -550,53 +477,6 @@ void KopeteMetaLVIProps::slotUseCustomIconsToggled(bool on)
+ 	ui_mainWidget->icnbUnknown->setEnabled( on );
+ }
+ 
+-void KopeteMetaLVIProps::slotAddresseeChanged( const KABC::Addressee & a )
+-{
+-	if ( !a.isEmpty() )
+-	{
+-		mSound = a.sound();
+-		mFromKABC->setEnabled( !( mSound.isIntern() || mSound.url().isEmpty() ) );
+-		ui_mainWidget->btnExportKABC->setEnabled( true );
+-		ui_mainWidget->btnImportKABC->setEnabled( true );
+-		// set/update the MC's addressee uin field
+-		mAddressBookUid = a.uid();
+-	}
+-	else
+-	{
+-		ui_mainWidget->btnExportKABC->setEnabled( false );
+-		ui_mainWidget->btnImportKABC->setEnabled( false );
+-		mAddressBookUid.clear();
+-		ui_mainWidget->radioNameContact->setChecked( true );
+-		ui_mainWidget->radioPhotoContact->setChecked( true );
+-	}
+-	slotEnableAndDisableWidgets();
+-}
+-
+-void KopeteMetaLVIProps::slotExportClicked()
+-{
+-	mMetaContact->setKabcId( mAddressBookUid );
+-	delete mExport;
+-	mExport = new KopeteAddressBookExport( this, mMetaContact );
+-	if ( mExport->showDialog() == QDialog::Accepted )
+-		mExport->exportData();
+-}
+-
+-void KopeteMetaLVIProps::slotImportClicked()
+-{
+-	mMetaContact->setKabcId( mAddressBookUid );
+-	if ( Kopete::KABCPersistence::self()->syncWithKABC( mMetaContact ) )
+-		KMessageBox::queuedMessageBox( this, KMessageBox::Information,
+-																	 i18n( "No contacts were imported from the address book." ),
+-																	 i18n( "No Change" ) );
+-}
+-
+-void KopeteMetaLVIProps::slotFromKABCClicked()
+-{
+-#if 0 
+-	mNotificationProps->widget()->customSound->setUrl( mSound.url() );
+-#endif
+-}
+-
+ void KopeteMetaLVIProps::slotOpenSoundDialog( KUrlRequester *requester )
+ {
+ 	// taken from kdelibs/kio/kfile/knotifydialog.cpp
+diff --git a/kopete/contactlist/kopetelviprops.h b/kopete/contactlist/kopetelviprops.h
+index c4c65747c..cae803993 100644
+--- a/kopete/contactlist/kopetelviprops.h
++++ b/kopete/contactlist/kopetelviprops.h
+@@ -21,19 +21,16 @@
+ #define KOPETELVIPROPS_H
+ 
+ #include <kdialog.h>
+-#include <kabc/sound.h>
+ 
+ #include "kopetemetacontact.h"
+ 
+ #include "ui_kopetemetalvipropswidget.h"
+ #include "ui_kopetegvipropswidget.h"
+ 
+-class AddressBookLinkWidget;
+ class CustomNotificationProps;
+ class KopeteAddressBookExport;
+ class KUrlRequester;
+ 
+-namespace KABC { class Addressee; }
+ namespace Kopete {
+ 	class Contact;
+ 	class Group;
+@@ -74,10 +71,8 @@ class KopeteMetaLVIProps: public KDialog
+ 		QPushButton *mFromKABC;
+ 		QWidget* mainWidget;
+ 		Ui::KopeteMetaLVIPropsWidget *ui_mainWidget;
+-		AddressBookLinkWidget *linkWidget;
+ 		Kopete::MetaContact *mMetaContact;
+ 		KopeteAddressBookExport *mExport;
+-		KABC::Sound mSound;
+ 		int m_countPhotoCapable;
+ 		QMap<int, Kopete::Contact *> m_withPhotoContacts;
+ 		QString mAddressBookUid; // the currently selected addressbook UID
+@@ -93,10 +88,6 @@ class KopeteMetaLVIProps: public KDialog
+ 		void slotOkClicked();
+ 		void slotUseCustomIconsToggled( bool on );
+ 		void slotClearPhotoClicked();
+-		void slotAddresseeChanged( const KABC::Addressee & );
+-		void slotExportClicked();
+-		void slotImportClicked();
+-		void slotFromKABCClicked();
+ 		void slotOpenSoundDialog( KUrlRequester *requester );
+ 		void slotLoadNameSources();
+ 		void slotLoadPhotoSources();
+diff --git a/kopete/contactlist/kopetemetalvipropswidget.ui b/kopete/contactlist/kopetemetalvipropswidget.ui
+index c2265367f..d882676f4 100644
+--- a/kopete/contactlist/kopetemetalvipropswidget.ui
++++ b/kopete/contactlist/kopetemetalvipropswidget.ui
+@@ -62,9 +62,6 @@
+           <property name="bottomMargin" >
+            <number>11</number>
+           </property>
+-          <item>
+-           <widget class="Kopete::UI::AddressBookLinkWidget" native="1" name="widAddresseeLink" />
+-          </item>
+           <item>
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+@@ -82,19 +79,6 @@
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+-            <item>
+-             <widget class="QPushButton" name="btnExportKABC" >
+-              <property name="enabled" >
+-               <bool>false</bool>
+-              </property>
+-              <property name="toolTip" >
+-               <string>Export contact's details to the KDE Address Book</string>
+-              </property>
+-              <property name="text" >
+-               <string>E&amp;xport Details...</string>
+-              </property>
+-             </widget>
+-            </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+@@ -111,19 +95,6 @@
+               </property>
+              </spacer>
+             </item>
+-            <item>
+-             <widget class="QPushButton" name="btnImportKABC" >
+-              <property name="enabled" >
+-               <bool>false</bool>
+-              </property>
+-              <property name="toolTip" >
+-               <string>Import contacts from the KDE Address Book</string>
+-              </property>
+-              <property name="text" >
+-               <string>&amp;Import Contacts</string>
+-              </property>
+-             </widget>
+-            </item>
+            </layout>
+           </item>
+          </layout>
+@@ -135,13 +106,6 @@
+           <string>Display Name Source</string>
+          </property>
+          <layout class="QGridLayout" >
+-          <item row="0" column="0" colspan="4" >
+-           <widget class="QRadioButton" name="radioNameKABC" >
+-            <property name="text" >
+-             <string>Use address book &amp;name (needs address book link)</string>
+-            </property>
+-           </widget>
+-          </item>
+           <item row="1" column="0" colspan="2" >
+            <widget class="QRadioButton" name="radioNameContact" >
+             <property name="text" >
+@@ -213,13 +177,6 @@
+           <string>Photo Source</string>
+          </property>
+          <layout class="QGridLayout" >
+-          <item row="0" column="0" >
+-           <widget class="QRadioButton" name="radioPhotoKABC" >
+-            <property name="text" >
+-             <string>U&amp;se address book photo (needs address book link)</string>
+-            </property>
+-           </widget>
+-          </item>
+           <item rowspan="3" row="0" column="1" >
+            <widget class="QLabel" name="photoLabel" >
+             <property name="minimumSize" >
+@@ -513,14 +470,10 @@
+  </customwidgets>
+  <tabstops>
+   <tabstop>tabWidget</tabstop>
+-  <tabstop>btnExportKABC</tabstop>
+-  <tabstop>btnImportKABC</tabstop>
+-  <tabstop>radioNameKABC</tabstop>
+   <tabstop>radioNameContact</tabstop>
+   <tabstop>cmbAccountName</tabstop>
+   <tabstop>radioNameCustom</tabstop>
+   <tabstop>edtDisplayName</tabstop>
+-  <tabstop>radioPhotoKABC</tabstop>
+   <tabstop>radioPhotoContact</tabstop>
+   <tabstop>cmbAccountPhoto</tabstop>
+   <tabstop>radioPhotoCustom</tabstop>
+diff --git a/kopete/kopeteapplication.cpp b/kopete/kopeteapplication.cpp
+index 601b33ae2..0cf1f7952 100644
+--- a/kopete/kopeteapplication.cpp
++++ b/kopete/kopeteapplication.cpp
+@@ -32,7 +32,6 @@
+ #include <solid/networking.h>
+ 
+ #include "addaccountwizard.h"
+-#include "kabcpersistence.h"
+ #include "kopeteaccount.h"
+ #include "kopeteaccountmanager.h"
+ #include "kopetestatusmanager.h"
+@@ -131,11 +130,6 @@ KopeteApplication::~KopeteApplication()
+ 
+ void KopeteApplication::slotLoadPlugins()
+ {
+-	// we have to load the address book early, because calling this enters the Qt event loop when there are remote resources.
+-	// The plugin manager is written with the assumption that Kopete will not reenter the event loop during plugin load,
+-	// otherwise lots of things break as plugins are loaded, then contacts are added to incompletely initialised MCLVIs
+-	Kopete::KABCPersistence::self()->addressBook();
+-
+ 	//Create the command handler (looks silly)
+ 	Kopete::CommandHandler::commandHandler();
+ 
+diff --git a/kopete/kopetewindow.cpp b/kopete/kopetewindow.cpp
+index c6ca7ec4d..564e2a0f5 100644
+--- a/kopete/kopetewindow.cpp
++++ b/kopete/kopetewindow.cpp
+@@ -72,8 +72,6 @@
+ 
+ #include "addcontactpage.h"
+ #include "addressbooklinkwidget.h"
+-#include "ui_groupkabcselectorwidget.h"
+-#include "kabcexport.h"
+ #include "kopeteappearancesettings.h"
+ #include "kopeteapplication.h"
+ #include "kopeteaccount.h"
+@@ -397,11 +395,6 @@ void KopeteWindow::initActions()
+ 	connect ( d->actionDisconnect, SIGNAL (triggered(bool)), this, SLOT (slotDisconnectAll()) );
+ 	d->actionDisconnect->setEnabled ( false );
+ 
+-	d->actionExportContacts = new KAction ( i18n ( "&Export Contacts..." ), this );
+-	d->actionExportContacts->setIcon ( KIcon ( "document-export" ) );
+-	actionCollection()->addAction ( "ExportContacts", d->actionExportContacts );
+-	connect ( d->actionExportContacts, SIGNAL (triggered(bool)), this, SLOT (showExportDialog()) );
+-
+ 	d->actionSetAway = new KAction ( KIcon ( "user-identity", 0, QStringList() << QString() << "user-away" ), i18n ( "&Away" ), this );
+ 	actionCollection()->addAction ( "SetAwayAll", d->actionSetAway );
+ 	connect ( d->actionSetAway, SIGNAL (triggered(bool)), this, SLOT (slotGlobalAway()) );
+@@ -1291,13 +1284,6 @@ void KopeteWindow::slotTrayAboutToShowMenu ( KMenu * popup )
+ 	popup->addAction ( actionCollection->action ( KStandardAction::name ( KStandardAction::Quit ) ) );
+ }
+ 
+-void KopeteWindow::showExportDialog()
+-{
+-	KabcExportWizard* wizard = new KabcExportWizard ( this );
+-	wizard->setObjectName ( QLatin1String ( "export_contact_dialog" ) );
+-	wizard->show();
+-}
+-
+ void KopeteWindow::leaveEvent ( QEvent * )
+ {
+ 	startAutoHideTimer();
+@@ -1413,18 +1399,12 @@ void KopeteWindow::showAddContactDialog ( Kopete::Account * account )
+ 	AddContactPage *addContactPage =
+ 	    account->protocol()->createAddContactWidget ( mainWid, account );
+ 
+-	QWidget* groupKABC = new QWidget ( mainWid );
+-	groupKABC->setObjectName ( "groupkabcwidget" );
+-	Ui::GroupKABCSelectorWidget ui_groupKABC;
+-	ui_groupKABC.setupUi ( groupKABC );
+-
+ 	// Populate the groups list
+ 	Kopete::GroupList groups=Kopete::ContactList::self()->groups();
+ 	QHash<QString, Kopete::Group*> groupItems;
+ 
+ 	// Add top level group
+ 	groupItems.insert ( Kopete::Group::topLevel()->displayName(), Kopete::Group::topLevel() );
+-	ui_groupKABC.groupCombo->addItem ( Kopete::Group::topLevel()->displayName() );
+ 
+ 	foreach ( Kopete::Group *group, groups )
+ 	{
+@@ -1434,7 +1414,6 @@ void KopeteWindow::showAddContactDialog ( Kopete::Account * account )
+ 		if ( !groupname.isEmpty() )
+ 		{
+ 			groupItems.insert ( groupname, group );
+-			ui_groupKABC.groupCombo->addItem ( groupname );
+ 		}
+ 	}
+ 
+@@ -1451,8 +1430,6 @@ void KopeteWindow::showAddContactDialog ( Kopete::Account * account )
+ 			if ( addContactPage->validateData() )
+ 			{
+ 				Kopete::MetaContact * metacontact = new Kopete::MetaContact();
+-				metacontact->addToGroup ( groupItems[ ui_groupKABC.groupCombo->currentText() ] );
+-				metacontact->setKabcId ( ui_groupKABC.widAddresseeLink->uid() );
+ 				if ( addContactPage->apply ( account, metacontact ) )
+ 				{
+ 					Kopete::ContactList::self()->addMetaContact ( metacontact );
+diff --git a/kopete/kopetewindow.h b/kopete/kopetewindow.h
+index 974b27572..d4cedb3b8 100644
+--- a/kopete/kopetewindow.h
++++ b/kopete/kopetewindow.h
+@@ -171,11 +171,6 @@ private slots:
+ 	 */
+ 	void showAddContactDialog( Kopete::Account * );
+ 
+-	/**
+-	 * Show the Export Contacts wizards
+-	 */
+-	void showExportDialog();
+-
+ 	/**
+ 	 * Enable the Connect All and Disconnect All buttons here
+ 	 * along with connecting the accountRegistered and accountUnregistered
+diff --git a/libkopete/CMakeLists.txt b/libkopete/CMakeLists.txt
+index c1df84378..f899810c8 100644
+--- a/libkopete/CMakeLists.txt
++++ b/libkopete/CMakeLists.txt
+@@ -40,10 +40,6 @@ endif (Q_WS_WIN)
+ set(kopete_ui_SRCS
+   ui/accountselector.cpp
+   ui/addcontactpage.cpp
+-  ui/addressbooklinkwidget.cpp
+-  ui/addressbookselectordialog.cpp
+-  ui/addressbookselectorwidget.cpp
+-  ui/addresseeitem.cpp
+   ui/avatardialog.cpp
+   ui/avatarwebcamdialog.cpp
+   ui/avatarselectorwidget.cpp
+@@ -79,7 +75,6 @@ set(kopete_LIB_SRCS
+    ${kopete_ui_SRCS}
+    ${kopete_contactlist_SRCS}
+    ${kopete_tasks_SRCS}
+-   kabcpersistence.cpp
+    kopeteaccount.cpp
+    kopeteaccountmanager.cpp
+    kopeteavatarmanager.cpp
+diff --git a/libkopete/contactlist/xmlcontactstorage.cpp b/libkopete/contactlist/xmlcontactstorage.cpp
+index 5164b3b69..7830a5102 100644
+--- a/libkopete/contactlist/xmlcontactstorage.cpp
++++ b/libkopete/contactlist/xmlcontactstorage.cpp
+@@ -340,9 +340,6 @@ bool XmlContactStorage::parseMetaContact( Kopete::MetaContact *metaContact, cons
+             // custom photo, used for custom photo source
+             metaContact->setPhoto( KUrl(contactElement.text()) );
+ 
+-            bool photoSyncedWithKABC = (contactElement.attribute(QString::fromUtf8("syncWithKABC")) == QString::fromUtf8("1")) || (contactElement.attribute(QString::fromUtf8("syncWithKABC")) == QString::fromUtf8("true"));
+-            metaContact->setPhotoSyncedWithKABC( photoSyncedWithKABC );
+-
+             // retrieve deprecated data (now stored in property-sources)
+             // save temporarely, we will find a Contact* with this later
+             if ( contactElement.hasAttribute(PSCID_ELEM) && contactElement.hasAttribute(PSPID_ELEM) && contactElement.hasAttribute(PSAID_ELEM))
+@@ -450,7 +447,7 @@ bool XmlContactStorage::parseMetaContact( Kopete::MetaContact *metaContact, cons
+         {
+             // lets do the best conversion for the old name tracking
+             // if the custom display name is the same as kabc name, set the source to kabc
+-            if ( !metaContact->kabcId().isEmpty() && ( metaContact->customDisplayName() == nameFromKABC( metaContact->kabcId() )) )
++            if ( !metaContact->kabcId().isEmpty() )
+                 metaContact->setDisplayNameSource( Kopete::MetaContact::SourceKABC );
+             else
+                 metaContact->setDisplayNameSource( Kopete::MetaContact::SourceCustom );
+@@ -466,7 +463,7 @@ bool XmlContactStorage::parseMetaContact( Kopete::MetaContact *metaContact, cons
+         }
+         else
+         {
+-            if ( !metaContact->kabcId().isEmpty() && !photoFromKABC( metaContact->kabcId() ).isNull() )
++            if ( !metaContact->kabcId().isEmpty() )
+                 metaContact->setPhotoSource( Kopete::MetaContact::SourceKABC );
+             else
+                 metaContact->setPhotoSource( Kopete::MetaContact::SourceCustom );
+@@ -705,9 +702,6 @@ const QDomElement XmlContactStorage::storeMetaContact( Kopete::MetaContact *meta
+     // set the contact source for photo
+     _photoSource.setAttribute( QString::fromUtf8("source"), sourceToString( metaContact->photoSource() ) );
+ 
+-    if( !metaContact->kabcId().isEmpty()  )
+-        photo.setAttribute( QString::fromUtf8("syncWithKABC") , QString::fromUtf8( metaContact->isPhotoSyncedWithKABC() ? "true" : "false" ) );
+-
+     if( metaContact->photoSourceContact() )
+     {
+         //kDebug(14010) << "serializing photo source " << nameFromContact(photoSourceContact());
+diff --git a/libkopete/kopeteaccount.cpp b/libkopete/kopeteaccount.cpp
+index e6e7669a9..61f60d872 100644
+--- a/libkopete/kopeteaccount.cpp
++++ b/libkopete/kopeteaccount.cpp
+@@ -42,7 +42,6 @@
+ 
+ #include "kopeteidentity.h"
+ #include "kopeteidentitymanager.h"
+-#include "kabcpersistence.h"
+ #include "kopetecontactlist.h"
+ #include "kopeteaccountmanager.h"
+ #include "kopetecontact.h"
+@@ -392,11 +391,6 @@ Kopete::MetaContact* Account::addContact( const QString &contactId, const QStrin
+ 	if ( c )
+ 	{
+ 		c->setMetaContact( parentContact );
+-		if ( mode == ChangeKABC )
+-		{
+-			kDebug( 14010 ) << " changing KABC";
+-			KABCPersistence::self()->write( parentContact );
+-		}
+ 	}
+ 	else
+ 	{
+@@ -453,12 +447,6 @@ bool Account::addContact(const QString &contactId , MetaContact *parent, AddMode
+ 
+ 	const bool success = createContact(contactId, parent);
+ 
+-	if ( success && mode == ChangeKABC )
+-	{
+-		kDebug( 14010 ) << " changing KABC";
+-		KABCPersistence::self()->write( parent );
+-	}
+-
+ 	return success;
+ }
+ 
+diff --git a/libkopete/kopetecontact.cpp b/libkopete/kopetecontact.cpp
+index 670fba008..7bb5e182b 100644
+--- a/libkopete/kopetecontact.cpp
++++ b/libkopete/kopetecontact.cpp
+@@ -28,7 +28,6 @@
+ #include <kdeversion.h>
+ #include <kinputdialog.h>
+ 
+-#include <kabcpersistence.h>
+ #include <kdialog.h>
+ #include <klocale.h>
+ #include <kicon.h>
+@@ -448,10 +447,6 @@ void Contact::setMetaContact( MetaContact *m )
+ 	{
+ 		m->addContact( this );
+ 		connect( m, SIGNAL(destroyed(QObject*)), this, SLOT(slotMetaContactDestroyed(QObject*)) );
+-		// it is necessary to call this write here, because MetaContact::addContact() does not differentiate
+-		// between adding completely new contacts (which should be written to kabc) and restoring upon restart
+-		// (where no write is needed).
+-		KABCPersistence::self()->write( m );
+ 	}
+ 	sync();
+ }
+diff --git a/libkopete/kopetecontactlist.cpp b/libkopete/kopetecontactlist.cpp
+index fade2ea29..221d5ad56 100644
+--- a/libkopete/kopetecontactlist.cpp
++++ b/libkopete/kopetecontactlist.cpp
+@@ -27,7 +27,6 @@
+ #include <QtCore/QTextStream>
+ 
+ // KDE includes
+-#include <kabc/stdaddressbook.h>
+ #include <kapplication.h>
+ #include <kdebug.h>
+ #include <kglobal.h>
+@@ -434,16 +433,6 @@ void ContactList::slotSaveLater()
+ 	d->saveTimer->start( 17100 /* 17,1 seconds */ );
+ }
+ 
+-void ContactList::slotKABCChanged()
+-{
+-	// TODO: react to changes in KABC, replacing this function, post 3.4 (Will)
+-	// call syncWithKABC on each metacontact to check if its associated kabc entry has changed.
+-/*	for ( MetaContact * mc = d->contacts.first(); mc; mc = d->contacts.next() )
+-
+-		mc->syncWithKABC();*/
+-}
+-
+-
+ } //END namespace Kopete
+ 
+ #include "kopetecontactlist.moc"
+diff --git a/libkopete/kopetecontactlist.h b/libkopete/kopetecontactlist.h
+index abfb8a15f..8313757ea 100644
+--- a/libkopete/kopetecontactlist.h
++++ b/libkopete/kopetecontactlist.h
+@@ -266,10 +266,6 @@ private slots:
+ 	 * Called when the contact list changes. Flags the list dirty and schedules a save for a little while later.
+ 	 */
+ 	void slotSaveLater();
+-	/**
+-	 * Called on contact list load or when KABC has changed, to check if we need to update our contact list from there.
+-	 */
+-	void slotKABCChanged();
+ 
+ private:
+ 	/**
+diff --git a/libkopete/kopetemetacontact.cpp b/libkopete/kopetemetacontact.cpp
+index da9b92bf5..ef181a4ef 100644
+--- a/libkopete/kopetemetacontact.cpp
++++ b/libkopete/kopetemetacontact.cpp
+@@ -23,16 +23,12 @@
+ 
+ #include <QTextDocument>
+ 
+-#include <kabc/addressbook.h>
+-#include <kabc/addressee.h>
+-
+ #include <kdebug.h>
+ #include <klocale.h>
+ #include <kmessagebox.h>
+ #include <kdeversion.h>
+ #include <knotification.h>
+ 
+-#include "kabcpersistence.h"
+ #include "kopetecontactlist.h"
+ #include "kopetecontact.h"
+ #include "kopeteaccountmanager.h"
+@@ -62,10 +58,6 @@ MetaContact::MetaContact()
+ 	connect( this, SIGNAL(contactAdded(Kopete::Contact*)), SIGNAL(persistentDataChanged()) );
+ 	connect( this, SIGNAL(contactRemoved(Kopete::Contact*)), SIGNAL(persistentDataChanged()) );
+ 
+-	// TODO: speed up: this slot is called when any kabc contact is changed and is called in *every* metacontact instance. also slot is slow because it finding kabc id
+-	// Update the KABC picture when the KDE Address book change.
+-	connect(KABCPersistence::self()->addressBook(), SIGNAL(addressBookChanged(AddressBook*)), this, SLOT(slotUpdateAddressBookPicture()));
+-
+ 	// make sure MetaContact is at least in one group
+ 	addToGroup( Group::topLevel() );
+ 			 // I'm not sure this is correct -Olivier
+@@ -242,7 +234,6 @@ void MetaContact::removeContact(Contact *c, bool deleted)
+ 
+ 			kDebug( 14010 ) << "Contact disconnected";
+ 
+-			KABCPersistence::self()->write( this );
+ 		}
+ 
+ 		// Reparent the contact
+@@ -668,14 +659,7 @@ QString MetaContact::customDisplayName() const
+ QString MetaContact::displayName() const
+ {
+ 	PropertySource source = displayNameSource();
+-	if ( source == SourceKABC )
+-	{
+-		// kabc source, try to get from addressbook
+-		// if the metacontact has a kabc association
+-		if ( !kabcId().isEmpty() )
+-			return nameFromKABC(kabcId());
+-	}
+-	else if ( source == SourceContact || d->displayName.isEmpty())
++	if ( source == SourceContact || d->displayName.isEmpty())
+ 	{
+ 		if ( d->displayNameSourceContact==0 )
+ 		{
+@@ -697,25 +681,6 @@ QString MetaContact::displayName() const
+ 	return d->displayName;
+ }
+ 
+-QString nameFromKABC( const QString &id ) /*const*/
+-{
+-	KABC::AddressBook* ab = KABCPersistence::self()->addressBook();
+-	if ( ! id.isEmpty() && !id.contains(':') )
+-	{
+-		KABC::Addressee theAddressee = ab->findByUid(id);
+-		if ( theAddressee.isEmpty() )
+-		{
+-			kDebug( 14010 ) << "no KABC::Addressee found for ( " << id << " ) " << " in current address book";
+-		}
+-		else
+-		{
+-			return theAddressee.formattedName();
+-		}
+-	}
+-	// no kabc association, return null image
+-	return QString();
+-}
+-
+ QString nameFromContact( Kopete::Contact *c) /*const*/
+ {
+ 	if ( !c )
+@@ -787,36 +752,6 @@ QImage photoFromContact( Kopete::Contact *contact) /*const*/
+ 	return img;
+ }
+ 
+-QImage photoFromKABC( const QString &id ) /*const*/
+-{
+-	KABC::AddressBook* ab = KABCPersistence::self()->addressBook();
+-	if ( ! id.isEmpty() && !id.contains(':') )
+-	{
+-		KABC::Addressee theAddressee = ab->findByUid(id);
+-		if ( theAddressee.isEmpty() )
+-		{
+-			kDebug( 14010 ) << "no KABC::Addressee found for ( " << id << " ) " << " in current address book";
+-		}
+-		else
+-		{
+-			KABC::Picture pic = theAddressee.photo();
+-			if ( pic.data().isNull() && pic.url().isEmpty() )
+-				pic = theAddressee.logo();
+-
+-			if ( pic.isIntern())
+-			{
+-				return pic.data();
+-			}
+-			else
+-			{
+-				return QPixmap( pic.url() ).toImage();
+-			}
+-		}
+-	}
+-	// no kabc association, return null image
+-	return QImage();
+-}
+-
+ Contact *MetaContact::displayNameSourceContact() const
+ {
+ 	return d->displayNameSourceContact;
+@@ -926,9 +861,6 @@ void MetaContact::slotPropertyChanged( PropertyContainer* _subcontact, const QSt
+ 			}
+ 			else if(photoSourceContact() == subcontact)
+ 			{
+-				if(d->photoSyncedWithKABC)
+-					setPhotoSyncedWithKABC(true);
+-
+ 				setPhotoSourceContact(subcontact);
+ 			}
+ 		}
+@@ -1120,28 +1052,6 @@ void MetaContact::slotAllPluginsLoaded()
+ 	setPhotoSourceContact( findContact( d->photoSourcePID, d->photoSourceAID, d->photoSourceCID) );
+ }
+ 
+-void MetaContact::slotUpdateAddressBookPicture()
+-{
+-	KABC::AddressBook* ab = KABCPersistence::self()->addressBook();
+-	QString id = kabcId();
+-	if ( !id.isEmpty() && !id.contains(':') )
+-	{
+-		KABC::Addressee theAddressee = ab->findByUid(id);
+-		if ( theAddressee.isEmpty() )
+-		{
+-			kDebug( 14010 ) << "no KABC::Addressee found for ( " << id << " ) " << " in current address book";
+-		}
+-		else
+-		{
+-			KABC::Picture pic = theAddressee.photo();
+-			if ( pic.data().isNull() && pic.url().isEmpty() )
+-				pic = theAddressee.logo();
+-
+-			d->kabcPicture.setPicture(pic);
+-		}
+-	}
+-}
+-
+ bool MetaContact::isTemporary() const
+ {
+ 	return d->temporary;
+@@ -1197,84 +1107,14 @@ void MetaContact::setKabcId( const QString& newKabcId )
+ 	d->kabcId = newKabcId;
+ 	if ( loading() )
+ 	{
+-		// TODO: speed up: this slot is called in *every* metacontact instance and is slow because it finding kabc id
+-		slotUpdateAddressBookPicture();
+ 	}
+ 	else
+ 	{
+-		KABCPersistence::self()->write( this );
+ 		emit onlineStatusChanged( this, d->onlineStatus );
+ 		emit persistentDataChanged();
+ 	}
+ }
+ 
+-bool MetaContact::isPhotoSyncedWithKABC() const
+-{
+-	return d->photoSyncedWithKABC;
+-}
+-
+-void MetaContact::setPhotoSyncedWithKABC(bool b)
+-{
+-	d->photoSyncedWithKABC=b;
+-	if( b && !loading() )
+-	{
+-		QVariant newValue;
+-
+-		switch( photoSource() )
+-		{
+-			case SourceContact:
+-			{
+-				Contact *source = photoSourceContact();
+-				if(source != 0L)
+-					newValue = source->property( Kopete::Global::Properties::self()->photo() ).value();
+-				break;
+-			}
+-			case SourceCustom:
+-			{
+-				if( !d->customPicture.isNull() )
+-					newValue = d->customPicture.path();
+-				break;
+-			}
+-			// Don't sync the photo with KABC if the source is KABC !
+-			default:
+-				return;
+-		}
+-
+-		if ( !d->kabcId.isEmpty() && !newValue.isNull())
+-		{
+-			KABC::Addressee theAddressee = KABCPersistence::self()->addressBook()->findByUid( kabcId() );
+-
+-			if ( !theAddressee.isEmpty() )
+-			{
+-				QImage img;
+-				if(newValue.canConvert( QVariant::Image ))
+-					img=newValue.value<QImage>();
+-				else if(newValue.canConvert( QVariant::Pixmap ))
+-					img=newValue.value<QPixmap>().toImage();
+-
+-				if(img.isNull())
+-				{
+-					// Some protocols like MSN save the photo as a url in
+-					// contact properties, we should not use this url
+-					// to sync with kabc but try first to embed the
+-					// photo data in the kabc addressee, because it could
+-					// be remote resource and the local url makes no sense
+-					QImage fallBackImage = QImage(newValue.toString());
+-					if(fallBackImage.isNull())
+-						theAddressee.setPhoto(newValue.toString());
+-					else
+-						theAddressee.setPhoto(fallBackImage);
+-				}
+-				else
+-					theAddressee.setPhoto(img);
+-
+-				KABCPersistence::self()->addressBook()->insertAddressee(theAddressee);
+-				KABCPersistence::self()->writeAddressBook( theAddressee.resource() );
+-			}
+-
+-		}
+-	}
+-}
+ 
+ QList<Contact *> MetaContact::contacts() const
+ {
+diff --git a/libkopete/kopetemetacontact.h b/libkopete/kopetemetacontact.h
+index 55b202d57..80613ec64 100644
+--- a/libkopete/kopetemetacontact.h
++++ b/libkopete/kopetemetacontact.h
+@@ -64,7 +64,6 @@ class KOPETE_EXPORT MetaContact : public ContactListElement
+ 	Q_PROPERTY( bool canAcceptFiles READ canAcceptFiles )
+ 	//Q_PROPERTY( ulong idleTime READ idleTime )
+ 	Q_PROPERTY( QUuid metaContactId READ metaContactId WRITE setMetaContactId )
+-	Q_PROPERTY( bool photoSyncedWithKABC READ isPhotoSyncedWithKABC WRITE setPhotoSyncedWithKABC )
+ 
+ public:
+ 	typedef QList<MetaContact *> List;
+@@ -275,19 +274,6 @@ public:
+ 	 */
+ 	void setPhotoSourceContact( Contact* contact );
+ 
+-	/**
+-	 * @return true if when a subcontact change his photo, the photo will be set to the kabc contact.
+-	 */
+-	bool isPhotoSyncedWithKABC() const;
+-
+-	/**
+-	 * Set if the photo should be synced with the adressbook when the photosource change his photo
+-	 *
+-	 * If  \p b is true, the photo will be synced immediately if possible
+-	 */
+-	void setPhotoSyncedWithKABC(bool b);
+-
+-
+ 	/**
+ 	 * Temporary contacts will not be serialized.
+ 	 * If they are added to the contact list, they appears in a special "Not in your contact list" group.
+@@ -601,11 +587,6 @@ private slots:
+ 	 */
+ 	void slotContactDestroyed( Kopete::Contact* );
+ 
+-	/**
+-	 * Update the KABC Picture when the addressbook is changed.
+-	 */
+-	void slotUpdateAddressBookPicture();
+-
+ protected:
+ 	//QImage photoFromContact( Kopete::Contact *c) const;
+ 	//QImage photoFromKABC( const QString &id ) const;
+@@ -622,9 +603,7 @@ private:
+ 
+ // util functions shared with metacontact property dialog
+ KOPETE_EXPORT QImage photoFromContact( Kopete::Contact *c) /*const*/;
+-KOPETE_EXPORT QImage photoFromKABC( const QString &id ) /*const*/;
+ KOPETE_EXPORT QString nameFromContact( Kopete::Contact *c) /*const*/;
+-KOPETE_EXPORT QString nameFromKABC( const QString &id ) /*const*/;
+ 
+ } //END namespace Kopete
+ 
+diff --git a/libkopete/kopetepicture.cpp b/libkopete/kopetepicture.cpp
+index c84ab34d2..c5c0e143b 100644
+--- a/libkopete/kopetepicture.cpp
++++ b/libkopete/kopetepicture.cpp
+@@ -18,8 +18,6 @@
+ 
+ #include <qbuffer.h>
+ 
+-#include <kabc/picture.h>
+-
+ #include <kcodecs.h>
+ #include <kstandarddirs.h>
+ #include <kdebug.h>
+@@ -56,12 +54,6 @@ Picture::Picture(const QImage &image)
+ 	setPicture(image);
+ }
+ 
+-Picture::Picture(const KABC::Picture &picture)
+- : d(new Private)
+-{
+-	setPicture(picture);
+-}
+-
+ Picture::Picture(const Picture &other)
+  : d(other.d)
+ {}
+@@ -172,19 +164,6 @@ void Picture::setPicture(const QString &path)
+ 	d->pictureBase64.clear();
+ }
+ 
+-void Picture::setPicture(const KABC::Picture &picture)
+-{
+-	// No need to call detach() here because setPicture will do it.
+-	if ( picture.isIntern())
+-	{
+-		setPicture( picture.data() );
+-	}
+-	else
+-	{
+-		setPicture( picture.url() );
+-	}
+-}
+-
+ void Picture::detach()
+ {
+ 	// there is no detach in KSharedPtr.
+diff --git a/libkopete/ui/addressbooklinkwidget.h b/libkopete/ui/addressbooklinkwidget.h
+index ddb17156d..c33395f60 100644
+--- a/libkopete/ui/addressbooklinkwidget.h
++++ b/libkopete/ui/addressbooklinkwidget.h
+@@ -24,7 +24,6 @@
+ #ifndef ADDRESSBOOKLINKWIDGET_H
+ #define ADDRESSBOOKLINKWIDGET_H
+ 
+-#include <kabc/addressee.h>
+ #include <kopete_export.h>
+ 
+ #include "ui_addressbooklinkwidget_base.h"
+@@ -47,10 +46,6 @@ Q_OBJECT
+ public:
+ 	explicit AddressBookLinkWidget( QWidget * parent = 0, const char * name = 0 );
+ 	~AddressBookLinkWidget() {}
+-	/**
+-	 * Set the currently selected addressee
+-	 */
+-	void setAddressee( const KABC::Addressee& addr );
+ 	/**
+ 	 * Set the current metacontact so that the selector dialog may be preselected
+ 	 */
+@@ -60,11 +55,7 @@ public:
+ 	 */
+ 	QString uid() const;
+ signals:
+-	/**
+-	 * Emitted when the selected addressee changed.  addr is the KABC::Addressee that was selected. If addr.isEmpty() is empty, the clear button was clicked.
+-	 */
+-	void addresseeChanged( const KABC::Addressee& addr );
+-	
++
+ 	/**
+ 	 * Provided so you can perform your own actions instead of opening the AddressBookSelectorWidget.
+ 	 * To do so, QObject::disconnect() btnSelectAddressee and connect your own slot to this signal
+diff --git a/libkopete/ui/contactaddednotifydialog.cpp b/libkopete/ui/contactaddednotifydialog.cpp
+index e5724c42e..d8432e8f8 100644
+--- a/libkopete/ui/contactaddednotifydialog.cpp
++++ b/libkopete/ui/contactaddednotifydialog.cpp
+@@ -26,16 +26,12 @@
+ #include <kpushbutton.h>
+ #include <kiconloader.h>
+ 
+-#include <kabc/addressee.h>
+-
+ #include "kopetegroup.h"
+ #include "kopeteaccount.h"
+ #include "kopeteuiglobal.h"
+ #include "kopeteprotocol.h"
+ #include "kopetecontactlist.h"
+ #include "kopetemetacontact.h"
+-#include "addressbooklinkwidget.h"
+-#include "addressbookselectordialog.h"
+ #include "ui_contactaddednotifywidget.h"
+ 
+ namespace Kopete {
+@@ -99,7 +95,6 @@ ContactAddedNotifyDialog::ContactAddedNotifyDialog(const QString& contactId,
+ 	}
+ 	d->widget->m_groupList->setEditText(QString()); //default to top-level
+ 
+-	connect( d->widget->widAddresseeLink, SIGNAL(addresseeChanged(KABC::Addressee)), this, SLOT(slotAddresseeSelected(KABC::Addressee)) );
+ 	connect( d->widget->m_infoButton, SIGNAL(clicked()), this, SLOT(slotInfoClicked()) );
+ 
+ 	connect( this, SIGNAL(okClicked()) , this , SLOT(slotFinished()));
+@@ -146,19 +141,9 @@ MetaContact *ContactAddedNotifyDialog::addContact() const
+ 	if(!metacontact)
+ 		return 0L;
+ 
+-	metacontact->setKabcId(d->addressbookId);
+-
+ 	return metacontact;
+ }
+ 
+-void ContactAddedNotifyDialog::slotAddresseeSelected( const KABC::Addressee & addr )
+-{
+-	if ( !addr.isEmpty() )
+-	{
+-		d->addressbookId = addr.uid();
+-	}
+-}
+-
+ void ContactAddedNotifyDialog::slotInfoClicked()
+ {
+ 	emit infoClicked(d->contactId);
+diff --git a/libkopete/ui/contactaddednotifydialog.h b/libkopete/ui/contactaddednotifydialog.h
+index d0077b160..5bd8c1b7c 100644
+--- a/libkopete/ui/contactaddednotifydialog.h
++++ b/libkopete/ui/contactaddednotifydialog.h
+@@ -20,10 +20,6 @@
+ #include <kdialog.h>
+ #include "kopete_export.h"
+ 
+-namespace KABC {
+-	class Addressee;
+-}
+-
+ namespace Kopete {
+ 
+ class Group;
+@@ -160,7 +156,6 @@ signals:
+ 
+ 
+ private slots:
+-	void slotAddresseeSelected( const KABC::Addressee &);
+ 	void slotInfoClicked();
+ 	void slotFinished();
+ 
+diff --git a/libkopete/ui/contactaddednotifywidget.ui b/libkopete/ui/contactaddednotifywidget.ui
+index a754917e5..69496c437 100644
+--- a/libkopete/ui/contactaddednotifywidget.ui
++++ b/libkopete/ui/contactaddednotifywidget.ui
+@@ -196,9 +196,6 @@ Leave it empty if you want to see the contact's nickname as their display name.<
+                             </property>
+                         </spacer>
+         </item>
+-        <item>
+-         <widget class="Kopete::UI::AddressBookLinkWidget" name="widAddresseeLink" />
+-        </item>
+        </layout>
+       </item>
+      </layout>
+@@ -236,13 +233,6 @@ Leave it empty if you want to see the contact's nickname as their display name.<
+    <header>klineedit.h</header>
+    <container>0</container>
+    <pixmap></pixmap>
+-  </customwidget>
+-    <customwidget>
+-           <class>Kopete::UI::AddressBookLinkWidget</class>
+-   <extends></extends>
+-	   <header>addressbooklinkwidget.h</header>
+-   <container>0</container>
+-   <pixmap></pixmap>
+   </customwidget>
+   <customwidget>
+    <class>KPushButton</class>
+diff --git a/protocols/bonjour/bonjoureditaccountwidget.cpp b/protocols/bonjour/bonjoureditaccountwidget.cpp
+index 53ee146b5..5b01c5f1e 100644
+--- a/protocols/bonjour/bonjoureditaccountwidget.cpp
++++ b/protocols/bonjour/bonjoureditaccountwidget.cpp
+@@ -28,8 +28,6 @@
+ #include "bonjourprotocol.h"
+ #include <kconfigdialog.h>
+ #include <kuser.h>
+-#include <kpimidentities/identity.h>
+-#include <kpimidentities/identitymanager.h>
+ 
+ BonjourEditAccountWidget::BonjourEditAccountWidget( QWidget* parent, Kopete::Account* account)
+ : QWidget( parent ), KopeteEditAccountWidget( account )
+@@ -63,19 +61,6 @@ BonjourEditAccountWidget::BonjourEditAccountWidget( QWidget* parent, Kopete::Acc
+ 			names = user.property(KUser::FullName).toString().split(' ');
+ 		}
+ 
+-		// Next try via the default identity
+-		KPIMIdentities::IdentityManager manager(true);
+-		const KPIMIdentities::Identity & ident = manager.defaultIdentity();
+-
+-		if (! ident.isNull()) {
+-			// Get the full name from identity (only if not available via KUser)
+-			if ( names.isEmpty() )
+-				names = ident.fullName().split(' ');
+-
+-			// Get the email address
+-			emailAddress = ident.primaryEmailAddress();
+-		}
+-
+ 		// Split the names array into firstName and lastName
+ 		if (! names.isEmpty()) {
+ 			firstName = names.takeFirst();

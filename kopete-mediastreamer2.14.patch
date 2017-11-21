@@ -1,0 +1,83 @@
+diff --git a/cmake/modules/FindMediastreamer.cmake b/cmake/modules/FindMediastreamer.cmake
+index 47fe5c3..31802f0 100644
+--- a/cmake/modules/FindMediastreamer.cmake
++++ b/cmake/modules/FindMediastreamer.cmake
+@@ -24,12 +24,19 @@ IF (MEDIASTREAMER_FOUND)
+       IF (MEDIASTREAMER_VERSION VERSION_LESS 2.9)
+           SET(MEDIASTREAMER_LESS_2_9 TRUE)
+           SET(MEDIASTREAMER_LESS_2_11 TRUE)
++          SET(MEDIASTREAMER_LESS_2_14 TRUE)
+       ELSEIF (MEDIASTREAMER_VERSION VERSION_LESS 2.11)
+           SET(MEDIASTREAMER_LESS_2_9 FALSE)
+           SET(MEDIASTREAMER_LESS_2_11 TRUE)
++          SET(MEDIASTREAMER_LESS_2_14 TRUE)
++      ELSEIF (MEDIASTREAMER_VERSION VERSION_LESS 2.14)
++          SET(MEDIASTREAMER_LESS_2_9 FALSE)
++          SET(MEDIASTREAMER_LESS_2_11 FALSE)
++          SET(MEDIASTREAMER_LESS_2_14 TRUE)
+       ELSE (MEDIASTREAMER_VERSION VERSION_LESS 2.9)
+           SET(MEDIASTREAMER_LESS_2_9 FALSE)
+           SET(MEDIASTREAMER_LESS_2_11 FALSE)
++          SET(MEDIASTREAMER_LESS_2_14 FALSE)
+       ENDIF (MEDIASTREAMER_VERSION VERSION_LESS 2.9)
+   ENDIF (NOT MEDIASTREAMER_FIND_QUIETLY)
+ ELSE (MEDIASTREAMER_FOUND)
+diff --git a/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc b/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc
+index bd3de2b..9379226 100644
+--- a/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc
++++ b/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc
+@@ -151,15 +151,25 @@ LinphoneVoiceChannel::LinphoneVoiceChannel(LinphoneMediaEngine*eng)
+   playport2 = PORT_UNUSED;
+ 
+ #ifdef _DEBUG
++#ifdef MEDIASTREAMER_LESS_2_14
+   ortp_set_log_level_mask(ORTP_DEBUG|ORTP_MESSAGE|ORTP_WARNING|ORTP_ERROR|ORTP_FATAL);
+ #else
++  ortp_set_log_level_mask(NULL, ORTP_DEBUG|ORTP_MESSAGE|ORTP_WARNING|ORTP_ERROR|ORTP_FATAL);
++#endif
++#else
++#ifdef MEDIASTREAMER_LESS_2_14
+   ortp_set_log_level_mask(ORTP_FATAL);
++#else
++  ortp_set_log_level_mask(NULL, ORTP_FATAL);
+ #endif
+-
++#endif
++  
+ #ifdef MEDIASTREAMER_LESS_2_9
+   audio_stream_ = audio_stream_new(-1, 0); /* -1 means that function will choose some free port */
+-#else
++#elseif MEDIASTREAMER_LESS_2_14
+   audio_stream_ = audio_stream_new(-1, -1, 0); /* -1 means that function will choose some free port */
++#else
++  audio_stream_ = audio_stream_new(NULL, -1, -1, 0); /* -1 means that function will choose some free port */
+ #endif
+ 
+ }
+@@ -344,16 +354,24 @@ void LinphoneVoiceChannel::StartRing(bool bIncomingCall)
+       if (engine_->GetRingWav().size() > 0)
+       {
+         LOG(LS_VERBOSE) << "incoming ring. sound file: " << engine_->GetRingWav().c_str() << "\n";
++#ifdef MEDIASTREAMER_LESS_2_14
+         ring_stream_ = ring_start (engine_->GetRingWav().c_str(), 1, sndcard);
+-      }
++#else
++        ring_stream_ = ring_start (NULL, engine_->GetRingWav().c_str(), 1, sndcard);
++#endif
++          }
+     }
+     else
+     {
+       if (engine_->GetCallWav().size() > 0)
+       {
+         LOG(LS_VERBOSE) << "outgoing ring. sound file: " << engine_->GetCallWav().c_str() << "\n";
++#ifdef MEDIASTREAMER_LESS_2_14
+         ring_stream_ = ring_start (engine_->GetCallWav().c_str(), 1, sndcard);
+-      }
++#else
++        ring_stream_ = ring_start (NULL, engine_->GetCallWav().c_str(), 1, sndcard);
++#endif
++          }
+     }
+   }
+ }
