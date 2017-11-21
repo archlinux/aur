@@ -1,3 +1,12 @@
+2017-11-21 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.0.4.7-1:
+    [!] Fixed potential trading notifications loop (ref: #697).
+    Further corrected above bugfix compared to V3.0.4.6 release.
+    ASF OS-specific packages are now link-time optimized with monolinker, which removes unnecessary .NET Core runtime dependencies and results in smaller overall size.
+    Improved OS language detection (ref: #688).
+    Fixed a small regression in ArchiSteamFarm.sh script that affected old bash versions (ref: #683).
+    Fixed missing logic for PasswordRequiredToKickSession (ref: #694).
+    Usual amount of code improvements, optimizations and bugfixes.
 2017-10-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.0.4.1-1:
     Removed CardDropsRestricted and added HoursUntilCardDrops bot config property with default value of 3 in its place.
