@@ -16,7 +16,7 @@ source=("https://github.com/Boomaga/boomaga/archive/v$pkgver.tar.gz")
 
 build() {
  cd $_name-$pkgver
-   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+ cmake . -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
    make 
 }
@@ -24,6 +24,6 @@ build() {
 package() {
   cd $_name-$pkgver
     make "DESTDIR=$pkgdir" install
-  install -D -m755 $srcdir/$_name-$pkgver-2/scripts/installPrinter.sh ${pkgdir}/usr/bin/
+  install -D -m755 $srcdir/$_name-$pkgver/scripts/installPrinter.sh ${pkgdir}/usr/bin/
 }
 sha256sums=('ffdd9c55a2bb104fab3f3d684b56e18906eb33dfb1e7e23c828a21102dc59909')
