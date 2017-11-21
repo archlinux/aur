@@ -10,7 +10,7 @@ url='https://github.com/zoincoin/zoin'
 provides=('zoin')
 conflicts=('zoin')
 license=('MIT')
-depends=('db4.8' 'boost' 'miniupnpc' 'qt5-base' 'qt5-tools' 'openssl-1.0')
+depends=('db4.8' 'boost' 'miniupnpc' 'qt5-base' 'qt5-tools' 'openssl-1.0' 'qrencode')
 makedepends=('wget' 'unzip')
 source=("https://github.com/zoincoin/zoin/releases/download/v0.8.7.5/zoin-master-src-0875.zip" 
 	"quotefix.patch"
