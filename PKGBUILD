@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="https://freedesktop.org/software/realmd/"
 license=(GPL3)
 depends=(krb5 openldap)
-makedepends=(docbook-xsl intltool xmlto)
+makedepends=(docbook-xml docbook-xsl intltool xmlto)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://anongit.freedesktop.org/git/realmd/$_pkgname.git")
