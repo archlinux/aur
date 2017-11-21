@@ -1,12 +1,7 @@
 diff -ruPN a/include/uapi/linux/pkt_sched.h b/include/uapi/linux/pkt_sched.h
 --- a/include/uapi/linux/pkt_sched.h	2017-11-13 13:09:57.000000000 -0500
-+++ b/include/uapi/linux/pkt_sched.h	2017-11-14 22:10:10.049923349 -0500
-@@ -1,4 +1,3 @@
--/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
- #ifndef __LINUX_PKT_SCHED_H
- #define __LINUX_PKT_SCHED_H
- 
-@@ -872,4 +871,86 @@
++++ b/include/uapi/linux/pkt_sched.h	2017-11-21 09:08:22.840713533 -0500
+@@ -872,4 +872,86 @@
  	__u32 maxq;             /* maximum queue size */
  	__u32 ecn_mark;         /* packets marked with ecn*/
  };
@@ -95,7 +90,7 @@ diff -ruPN a/include/uapi/linux/pkt_sched.h b/include/uapi/linux/pkt_sched.h
  #endif
 diff -ruPN a/man/man8/tc-cake.8 b/man/man8/tc-cake.8
 --- a/man/man8/tc-cake.8	1969-12-31 19:00:00.000000000 -0500
-+++ b/man/man8/tc-cake.8	2017-11-14 22:11:31.560677720 -0500
++++ b/man/man8/tc-cake.8	2017-11-21 09:08:45.887499181 -0500
 @@ -0,0 +1,530 @@
 +.TH CAKE 8 "15 October 2015" "iproute2" "Linux"
 +.SH NAME
@@ -629,7 +624,7 @@ diff -ruPN a/man/man8/tc-cake.8 b/man/man8/tc-cake.8
 +to the Linux Networking mailing list <netdev@vger.kernel.org>.
 diff -ruPN a/tc/Makefile b/tc/Makefile
 --- a/tc/Makefile	2017-11-13 13:09:57.000000000 -0500
-+++ b/tc/Makefile	2017-11-14 22:13:12.862396514 -0500
++++ b/tc/Makefile	2017-11-21 09:10:10.654034612 -0500
 @@ -65,6 +65,7 @@
  TCMODULES += q_fq_codel.o
  TCMODULES += q_fq.o
@@ -640,8 +635,8 @@ diff -ruPN a/tc/Makefile b/tc/Makefile
  TCMODULES += e_bpf.o
 diff -ruPN a/tc/q_cake.c b/tc/q_cake.c
 --- a/tc/q_cake.c	1969-12-31 19:00:00.000000000 -0500
-+++ b/tc/q_cake.c	2017-11-14 22:10:59.705337400 -0500
-@@ -0,0 +1,732 @@
++++ b/tc/q_cake.c	2017-11-21 09:11:39.465359749 -0500
+@@ -0,0 +1,736 @@
 +/*
 + * Common Applications Kept Enhanced  --  CAKE
 + *
@@ -705,7 +700,7 @@ diff -ruPN a/tc/q_cake.c b/tc/q_cake.c
 +"                  dual-srchost | dual-dsthost | triple-isolate* ]\n"
 +"                [ nat | nonat* ]\n"
 +"                [ wash | nowash * ]\n"
-+"                [ ack-filter | no-ack-filter * ]\n"
++"                [ ack-filter | ack-filter-aggressive | no-ack-filter * ]\n"
 +"                [ memlimit LIMIT ]\n"
 +"                [ ptm | atm | noatm* ] [ overhead N | conservative | raw* ]\n"
 +"                [ mpu N ] [ ingress | egress* ]\n"
@@ -956,7 +951,9 @@ diff -ruPN a/tc/q_cake.c b/tc/q_cake.c
 +		} else if (strcmp(*argv, "no-ack-filter") == 0) {
 +			ack_filter = 0;
 +		} else if (strcmp(*argv, "ack-filter") == 0) {
-+			ack_filter = 1;
++			ack_filter = 0x0200;
++		} else if (strcmp(*argv, "ack-filter-aggressive") == 0) {
++			ack_filter = 0x0600;
 +
 +		} else if (strcmp(*argv, "memlimit") == 0) {
 +			NEXT_ARG();
@@ -1161,7 +1158,9 @@ diff -ruPN a/tc/q_cake.c b/tc/q_cake.c
 +	if (ingress)
 +		fprintf(f,"ingress ");
 +
-+	if (ack_filter)
++	if (ack_filter == 0x0600)
++		fprintf(f,"ack-filter-aggressive ");
++	else if (ack_filter)
 +		fprintf(f,"ack-filter ");
 +
 +	if (interval)
