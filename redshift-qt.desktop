@@ -4,6 +4,6 @@ Comment=Color temperature adjustment
 Exec=redshift-qt
 Terminal=false
 Type=Application
-StartupNotify=true
+StartupNotify=false
 Icon=redshift
 Categories=Utility;
