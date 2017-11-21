@@ -6,6 +6,7 @@ pkgbase = adcli
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = docbook-xml
 	makedepends = docbook-xsl
 	makedepends = intltool
 	makedepends = xmlto

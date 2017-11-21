@@ -7,7 +7,7 @@ arch=(i686 x86_64)
 url="https://freedesktop.org/software/realmd/"
 license=(GPL3)
 depends=(krb5 openldap)
-makedepends=(docbook-xsl intltool xmlto)
+makedepends=(docbook-xml docbook-xsl intltool xmlto)
 source=("https://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz"
         "https://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz.sig")
 sha256sums=('72f6db406e35d96de2bdc413a5ed69f28a4a735c08670c6556713c3f83921aa4'
