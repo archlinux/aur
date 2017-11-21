@@ -1,0 +1,22 @@
+pkgbase = solbuild-git
+	pkgdesc = The Solus package build system
+	pkgver = 1.4.1.r2.geef38f4
+	pkgrel = 1
+	url = https://solus-project.com/
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	depends = git
+	depends = libgit2
+	depends = abireport
+	provides = solbuild
+	conflicts = solbuild
+	source = git+https://github.com/solus-project/solbuild.git
+	source = solbuild.conf
+	validpgpkeys = 8876CC8EDAEC52CEAB7742E778E2387015C1205F
+	sha512sums = SKIP
+	sha512sums = e3ab36dbb1a84e49f499e6c27cf3adb738961351799bd993ac339d2c22b3c753cf3ead8bde5e7a7ca2c5cc39028c20f024711f3fd68489c666ffb25c7eff323b
+
+pkgname = solbuild-git
+
