@@ -1,17 +1,17 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-hash-merge"
-pkgver="0.298"
+pkgver="0.299"
 pkgrel="1"
 pkgdesc="Merges arbitrarily deep hashes into a single hash"
 arch=("any")
 license=("PerlArtistic" "GPL")
 options=("!emptydirs")
-depends=("perl-clone-choose>=0.008")
+depends=("perl-clone-choose>=0.008" "perl-scalar-list-utils")
 makedepends=("perl-clone" "perl-clone-pp")
 url="http://search.cpan.org/dist/Hash-Merge"
 source=("https://cpan.metacpan.org/authors/id/H/HE/HERMES/Hash-Merge-${pkgver}.tar.gz")
-sha512sums=('7ab15202de01b4f54f76e5b85b41602612d1f85d7a0266507a3197bb38670eb896a1bd2ceb1af12f4f07a03f8373f333abd4a950f133829ac3ffb7ae737072de')
+sha512sums=('eca30f92d575619e221a3a2fdb3ad4023dca13eb61d3f947b60ae95265f11da9fc3c14d8771c49c9a67cb58ad7761283f4e752032eca8ae027b27188d60bf119')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
