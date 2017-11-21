@@ -1,8 +1,8 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
 pkgname=collabora-online-server-nodocker
-pkgver=2.1.4
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -35,7 +35,7 @@ optdepends=(
   'hyphen-hu: Hungarian hyphenation rules for LibreOffice'
   'hyphen-pl: Polish hyphenation rules for LibreOffice'
 )
-depends=()
+depends=(cpio)
 source=(
   'https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/Packages'
   install
@@ -45,8 +45,8 @@ source=(
   tmpfiles
 )
 sha1sums=(
-  'fab66ee561bee5d004068c7c5090b70f91a9fb99'
-  '20e4371fe6f03e53684759a11260b71e0f844401'
+  'c3403b3e7867cfea485f0fd0cd752ed5632ee4fd'
+  '3452d27a4c2dd0e6eee4c1c30302fb9b25eac9b8'
   '68ac242ad285eeeca07cb486c22dfbf3a658fe81'
   'fe998836dbbd5c153de77d4ea877f25719dae304'
   '2d271f9493ea14c675af1bfa76f6b654569dd51f'

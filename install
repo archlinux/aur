@@ -4,21 +4,10 @@ post_install() {
 
   ## From Debian packages ##
 
-  setcap cap_fowner,cap_mknod,cap_sys_chroot=ep usr/bin/loolforkit || true
-  setcap cap_sys_admin=ep usr/bin/loolmount || true
-
-  systemd-sysusers collabora-online-server-nodocker.conf
-  chown lool:lool etc/loolwsd/loolwsd.xml
-  chmod 640       etc/loolwsd/loolwsd.xml
-
   # We assume that the LibreOffice to be used is built TDF-style
   # and installs in /opt/collaboraoffice5.3, and that /opt/lool is
   # on the same file system
   mkdir -p           opt/lool/child-roots
-  chown -R lool:lool opt/lool
-
-  fc-cache opt/collaboraoffice5.3/share/fonts/truetype
-  su lool --shell=/bin/sh -c "loolwsd-systemplate-setup /opt/lool/systemplate /opt/collaboraoffice5.3 >/dev/null 2>&1"
 
   ## From Docker script ##
 
@@ -26,7 +15,6 @@ post_install() {
   [ -d opt/lool/systemplate/etc ] || mkdir -p opt/lool/systemplate/etc
   rm -f opt/lool/systemplate/etc/resolv.conf
   ln -s /etc/resolv.conf opt/lool/systemplate/etc/
-  chown lool:lool opt/lool
 
   # Generate new SSL certificate instead of using the default
   # Replace trusted host and set admin username and password
@@ -53,6 +41,21 @@ pre_upgrade() {
 }
 
 post_upgrade() {
+
+  ## From Debian packages ##
+
+  setcap cap_fowner,cap_mknod,cap_sys_chroot=ep usr/bin/loolforkit || true
+  setcap cap_sys_admin=ep usr/bin/loolmount || true
+
+  systemd-sysusers collabora-online-server-nodocker.conf
+  chown lool:lool etc/loolwsd/loolwsd.xml
+  chmod 640       etc/loolwsd/loolwsd.xml
+
+  chown -R lool:lool opt/lool
+
+  fc-cache opt/collaboraoffice5.3/share/fonts/truetype
+  su lool --shell=/bin/sh -c "loolwsd-systemplate-setup /opt/lool/systemplate /opt/collaboraoffice5.3 >/dev/null 2>&1"
+
   systemctl daemon-reload
   if systemctl list-unit-files loolwsd.service | grep -q 'enabled$'; then
     systemctl start loolwsd.service
