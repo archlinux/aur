@@ -10,7 +10,7 @@ _pybasever=2.7
 pkgdesc="A high-level scripting language (32 bit)"
 arch=('x86_64')
 license=('PSF')
-url="http://www.python.org/"
+url="https://www.python.org/"
 depends=(lib32-{bzip2,db,expat,gdbm,libffi,openssl,sqlite,zlib})
 makedepends=('lib32-tk' 'gcc-multilib')
 optdepends=(
@@ -19,7 +19,7 @@ optdepends=(
 )
 conflicts=('lib32-python<3')
 options=('!makeflags')
-source=("Python-${pkgver}.tar.xz::http://www.python.org/ftp/python/${pkgver%rc?}/Python-${pkgver}.tar.xz"
+source=("https://www.python.org/ftp/python/${pkgver%rc?}/Python-${pkgver}.tar.xz"
         'python-config-32.patch'
         'lib32-distutils-sysconfig.patch')
 sha256sums=('71ffb26e09e78650e424929b2b457b9c912ac216576e6bd9e7d204ed03296a66'
