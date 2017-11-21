@@ -2,13 +2,13 @@
 
 pkgname=system-storage-manager
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A single tool to manage your storage'
 arch=('i686' 'x86_64')
 url='https://github.com/system-storage-manager/ssm'
 license=('GPL2')
-depends=('python' 'lvm2' 'e2fsprogs' 'xfsprogs' 'cryptsetup' 'btrfs-progs' 'device-mapper' 'dmraid')
-makedepends=('git' 'python-sphinx')
+depends=('python' 'btrfs-progs' 'dmraid')
+makedepends=('python-sphinx')
 source=("$url/archive/system-storage-manager-0.5.tar.gz")
 sha256sums=('04ae88f42967a45fb832d8528a2f688f40e4593c11efd5111cb515da842874e2')
 
@@ -23,7 +23,6 @@ prepare() {
 }
 
 package() {
-	cd $srcdir/ssm-$pkgname-$pkgver
-
-	python setup.py install --skip-build --root=$pkgdir --optimize=1
+    cd $srcdir/ssm-$pkgname-$pkgver
+    python setup.py install --skip-build --prefix="/usr" --root="$pkgdir" --optimize=1
 }
