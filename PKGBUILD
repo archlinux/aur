@@ -3,7 +3,7 @@
 pkgname=rambox
 pkgver=0.5.13
 _relver=0.5.13  # for a release tarball containing env.js
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source messaging and emailing app that combines common web applications into one.'
 arch=(i686 x86_64)
 depends=(electron)
@@ -16,7 +16,7 @@ source=("https://github.com/saenzramiro/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname.desktop" "$pkgname.js")
 sha256sums=('7d14d5da8d9c13d6253ad69142ea912c496296600afd4ad6c6bec89b967941f0'
             'eb506db7e1b412dbdbf9e0ab69686cc10f60e3c7f2e338db5c477e45eb05d198'
-            '953d6b589b7acee32d78da6c533e851bc90a11182b775388ddcf158decf66c8e'
+            '3b1c0c47d5d5e46eba7c9a3f92dac18b6378c1f41386602b8f285b506b3c4906'
             '61ad70a929c402e24c79b8868208310f9b3c4d7801db2b791af38293231ee524'
             '3b5ed6f04eea66f239b5ae56ea1ff9e47de156cd38bb54ebc46541daba6091b6')
 noextract=("Rambox-$_relver-x64.tar.gz")
