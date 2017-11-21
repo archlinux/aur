@@ -3,7 +3,7 @@
 pkgname=shadowvpn
 _pkgname=ShadowVPN
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast, safe VPN based on libsodium"
 arch=(any)
 url="https://github.com/rains31/${_pkgname}"
@@ -25,15 +25,15 @@ md5sums=('dd4c985828cd1775c17ddf4c49d1c43a')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
-  #rmdir libsodium
+  rm -rf libsodium
 
-  #sed -e 's|SUBDIRS = ../libsodium||' \
-  #    -e 's|AM_CFLAGS = .*libsodium.*$|AM_CFLAGS = -lsodium|' \
-  #    -e 's|libshadowvpn_la_LIBADD = ../libsodium/src/libsodium/libsodium.la||' \
-  #    -i src/Makefile.am
+  sed -e 's|SUBDIRS = ../libsodium||' \
+      -e 's|AM_CFLAGS = .*libsodium.*$|AM_CFLAGS = -lsodium|' \
+      -e 's|libshadowvpn_la_LIBADD = ../libsodium/src/libsodium/libsodium.la||' \
+      -i src/Makefile.am
   
-  #sed -e 's|AC_CONFIG_SUBDIRS([libsodium])||' \
-  #    -i configure.ac 
+  sed -e 's|AC_CONFIG_SUBDIRS([libsodium])||' \
+      -i configure.ac 
 }
 
 build() {
