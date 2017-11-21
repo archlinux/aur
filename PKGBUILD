@@ -1,5 +1,5 @@
 pkgname=gtkplatform
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Run Qt applications using gtk+ as a windowing system"
 arch=('i686' 'x86_64')
@@ -7,8 +7,8 @@ url="https://github.com/CrimsonAS/gtkplatform"
 license=('LGPL3' 'GPL2')
 depends=('gtk3' 'libnotify' 'qt5-base')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CrimsonAS/gtkplatform/archive/$pkgver.tar.gz")
-md5sums=('c9abdeabf9da5e6bc273e25641c955a5')
-sha512sums=('14207199ca44803a27f1bfc09a8214d3a33820d786adf5ddd3017be91c562289fb51dcbb2187df3a6a1eccde06b7b36b2f3115e44c4c82c170088992cd554c6b')
+md5sums=('d1653ffcc138e2b26e63eae25283e00c')
+sha512sums=('5463fce60acf21b2fa6b8e4963e4e236594cbdfbca672b117b3bc7f00315958ee0baea523e601aa7f6f2f8ed9c590e0c0cbe15f6c8a3302bc0d35ec3bd07e5f7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
