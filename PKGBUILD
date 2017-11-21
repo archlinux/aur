@@ -1,13 +1,13 @@
 # Maintainer: Jack Kamm <jackkamm@gmail.com>
 pkgname=pantum-p2000-driver
 pkgver="1.00_1"
-pkgrel=2
+pkgrel=3
 pkgdesc="Pantum 2000 Series Linux Driver"
-arrch=('x86_64')
+arch=('x86_64')
 url="http://global.pantum.com/global/"
 license=('proprietary')
 depends=('cups')
-makedepends=('rpmextract' 'unzip')
+makedepends=('unzip')
 source=(
   "http://global.pantum.com/global/wp-content/uploads/2016/01/Pantum-P2000-Series-Linux-DriverUbutun12.04V1.00-1.zip"
 )
@@ -23,7 +23,7 @@ build() {
   mkdir -p ${pkgname}-${pkgver}
   cd ./${pkgname}-${pkgver}
 
-  rpm2cpio "../Pantum-P2000-Series-Linux-DriverUbutun12.04V1.00-1/Pantum-0.3-1.${arch}.rpm" | bsdtar -xf -
+  bsdtar -xf "../Pantum-P2000-Series-Linux-DriverUbutun12.04V1.00-1/Pantum-0.3-1.${arch}.rpm"
 }
 
 package() {
