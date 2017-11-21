@@ -105,32 +105,28 @@ package() {
     ((omitted_font_families["$font_family"])) && continue
 
     pkg_font_path="$pkgdir"/usr/share/fonts/"$font_family"
-    install -dm755 "$pkg_font_path" # Create the folder for the font (if it doesn't exist yet)
-    install -Dm644 "$file" -t "$pkg_font_path" # Install the font in the folder
+    install -Dm644 "$file" -t "$pkg_font_path"  # TODO: Check and make sure $font_family is being created
 
-    # NOTE: If the font's license path already exists, we don't need to copy the license into it again.
-    pkg_license_path="$pkgdir"/usr/share/licenses/"$pkgname"/"$font_family"
-    [[ -d "$pkg_license_path" ]] && continue
-
-    # NOTE: We only care about copying over OFL licenses since Apache and Ubuntu are standard.
+    # NOTE: If the font's license already exists, we don't need to copy the license again.
     src_license_path="${file%/*}"/OFL.txt
-    if [[ -f "$src_license_path" ]]; then
-      install -dm755 "$pkg_license_path"
-      install -Dm644 "$src_license_path" "$pkg_license_path"/OFL.txt
+    pkg_font_license="$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE."$font_family"
+    if [[ -f "$src_license_path" && ! -f "$pkg_font_license" ]]; then
+      install -Dm644 "$src_license_path" "$pkg_font_license"
     fi
+
   done < <(find "$srcdir" -type f -iname \*.ttf -print0)
 
   # NOTE: Since the cwtex* Chinese font family has special characters we need to change
   # those folder names to prevent errors during package compression.
   mv "$pkgdir"/usr/share/fonts/cwtex-仿宋體 "$pkgdir"/usr/share/fonts/cwtex-fangsong
-  mv "$pkgdir"/usr/share/licenses/"$pkgname"/cwtex-仿宋體 "$pkgdir"/usr/share/licenses/"$pkgname"/cwtex-fangsong
+  mv "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.cwtex-仿宋體 "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.cwtex-fangsong
 
   mv "$pkgdir"/usr/share/fonts/cwtex-楷書 "$pkgdir"/usr/share/fonts/cwtex-kai
-  mv "$pkgdir"/usr/share/licenses/"$pkgname"/cwtex-楷書 "$pkgdir"/usr/share/licenses/"$pkgname"/cwtex-kai
+  mv "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.cwtex-楷書 "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.cwtex-kai
 
   mv "$pkgdir"/usr/share/fonts/cwtex-明體 "$pkgdir"/usr/share/fonts/cwtex-ming
-  mv "$pkgdir"/usr/share/licenses/"$pkgname"/cwtex-明體 "$pkgdir"/usr/share/licenses/"$pkgname"/cwtex-ming
+  mv "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.cwtex-明體 "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.cwtex-ming
 
   mv "$pkgdir"/usr/share/fonts/cwtex-圓體 "$pkgdir"/usr/share/fonts/cwtex-yen
-  mv "$pkgdir"/usr/share/licenses/"$pkgname"/cwtex-圓體 "$pkgdir"/usr/share/licenses/"$pkgname"/cwtex-yen
+  mv "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.cwtex-圓體 "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.cwtex-yen
 }
