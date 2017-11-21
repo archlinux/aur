@@ -2,8 +2,8 @@
 
 pkgname=shadowvpn
 _pkgname=ShadowVPN
-pkgver=0.2.1
-pkgrel=4
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="A fast, safe VPN based on libsodium"
 arch=(any)
 url="https://github.com/rains31/${_pkgname}"
@@ -21,7 +21,7 @@ backup=('etc/shadowvpn/client.conf'
         'etc/shadowvpn/server_up.sh'
         'lib/systemd/system/shadowvpn@.service')
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/rains31/ShadowVPN/archive/${pkgver}.tar.gz")
-md5sums=('dd4c985828cd1775c17ddf4c49d1c43a')
+md5sums=('f706e7a4d32156d6490f43f1571ef01c')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
