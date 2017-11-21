@@ -1,7 +1,7 @@
 _cranname=chron
-_cranver=2.3-50
+_cranver=2.3-51
 pkgname=r-cran-$_cranname
-pkgver=2.3.50
+pkgver=2.3.51
 pkgrel=2
 pkgdesc="Chronological objects which can handle dates and times."
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
@@ -10,7 +10,7 @@ depends=('r')
 license=('LGPL3')
 depends=('r')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('ce73798b1708072d86129038445758dd')
+md5sums=('ec6d6ee4db34f0f41ccc0612c54623ef')
  
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
