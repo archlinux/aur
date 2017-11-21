@@ -1,11 +1,12 @@
 # Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
 pkgname=medleytext
 pkgver=0.9.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Take Better Dev Notes"
 arch=('x86_64')
 url="https://medleytext.net/"
 license=('unknown')
+depends=('appimage-git')
 source=("https://s3.amazonaws.com/medleytext/releases/medley-latest.AppImage"
 		"medleytext.desktop"
 		"medleytext.png")
