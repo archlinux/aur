@@ -1,7 +1,7 @@
 # Maintainer: Stephen Argent <steve [at] tuxcon [dot] com>
 
 pkgname=ripple-ledger
-pkgdesc='Ripple wallet for the Ledger Hardware Wallet'
+pkgdesc='Ripple wallet GUI for the Ledger Hardware Wallet'
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-wallet-ripple'
 pkgver=1.0.2

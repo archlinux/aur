@@ -1,5 +1,5 @@
 pkgbase = ripple-ledger
-	pkgdesc = Ripple wallet for the Ledger Hardware Wallet
+	pkgdesc = Ripple wallet GUI for the Ledger Hardware Wallet
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-wallet-ripple
