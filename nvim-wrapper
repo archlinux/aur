@@ -92,16 +92,10 @@ def main():
     if session_bus.name_has_owner(APP_ID):
         options = processArgv()
         cmd = [] + TERM_CMD[:-2] + options['gterm'] + TERM_CMD[-2:] + options['nvim']
-        env = os.environ.copy()
-        if 'NVIM_TUI_ENABLE_CURSOR_SHAPE' not in env:
-            env['NVIM_TUI_ENABLE_CURSOR_SHAPE'] = '1'
-        if 'NVIM_TUI_ENABLE_TRUE_COLOR' not in env:
-            env['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
         with open(os.devnull, 'wb') as fnull:
             subprocess.Popen(cmd,
                              stdout=fnull,
-                             stderr=fnull,
-                             env=env)
+                             stderr=fnull)
 
 if __name__ == '__main__':
     main()
