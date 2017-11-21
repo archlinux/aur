@@ -1,6 +1,6 @@
 pkgbase = rssguard
 	pkgdesc = A simple (yet powerful) Qt5 feed reader.
-	pkgver = 3.5.4
+	pkgver = 3.5.5
 	pkgrel = 1
 	url = https://github.com/martinrotter/rssguard/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = rssguard
 	depends = qt5-base
 	depends = qt5-webengine
 	optdepends = mariadb: MySQL/MariaDB storage backend support
-	source = rssguard-3.5.4.tar.gz::https://github.com/martinrotter/rssguard/archive/3.5.4.tar.gz
-	sha256sums = 03828047151ad4f47a7242651cc38e33d37608b95edd7acaf929b79ec55e82f2
+	source = rssguard-3.5.5.tar.gz::https://github.com/martinrotter/rssguard/archive/3.5.5.tar.gz
+	sha256sums = fe79a613d983d552c6b1fac155421969c7db5ff27d404cde20ac21c08388f670
 
 pkgname = rssguard
 

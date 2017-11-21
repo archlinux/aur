@@ -3,7 +3,7 @@
 # Contributor: speps <speps dot aur dot archlinux dot org>
 
 pkgname=rssguard
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
 pkgdesc="A simple (yet powerful) Qt5 feed reader."
 arch=('i686' 'x86_64')
@@ -13,17 +13,14 @@ depends=('qt5-base' 'qt5-webengine')
 makedepends=('qt5-tools')
 optdepends=('mariadb: MySQL/MariaDB storage backend support')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/martinrotter/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('03828047151ad4f47a7242651cc38e33d37608b95edd7acaf929b79ec55e82f2')
-
+sha256sums=('fe79a613d983d552c6b1fac155421969c7db5ff27d404cde20ac21c08388f670')
 
 build() {
   cd $pkgname-$pkgver
-  qmake -r CONFIG+=release PREFIX=/usr INSTALL_ROOT=. LRELEASE_EXECUTABLE=lrelease-qt5
-  make
+  lrelease rssguard.pro
+  qmake -r CONFIG+=release PREFIX=/usr
 
-  # run qmake a second time to ensure translations are generated
-  # https://github.com/martinrotter/rssguard/blob/master/resources/scripts/.travis-install-linux.sh#L8
-  qmake -r CONFIG+=release PREFIX=/usr INSTALL_ROOT=. LRELEASE_EXECUTABLE=lrelease-qt5
+  make
 }
 
 package() {
