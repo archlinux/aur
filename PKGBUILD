@@ -21,7 +21,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=57.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -217,7 +217,7 @@ END
 
   # Use system certificates
   ln -srf "$pkgdir/usr/lib/libnssckbi.so" \
-     "$pkgdir/usr/lib/$pkgname/libnssckbi.so"
+     "$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
 
   #workaround for now
   #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
