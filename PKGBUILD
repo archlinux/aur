@@ -3,14 +3,14 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=udisks2-nosystemd
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="Disk Management Service, version 2"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/udisks"
 license=('GPL2')
 groups=('eudev-base')
-depends=('polkit-consolekit' 'libatasmart' 'libgudev' 'libblockdev')
+depends=('polkit-consolekit' 'libatasmart' 'libgudev' 'libblockdev>=2.14')
 makedepends=('docbook-xsl' 'gobject-introspection' 'gnome-common' 'intltool' 'parted' 'libiscsi')
 optdepends=('gptfdisk: GUID partition table support'
             'parted: partition management'
@@ -24,7 +24,7 @@ replaces=('udisks2' 'udisks2-eudev')
 options=(!libtool)
 source=(https://github.com/storaged-project/udisks/archive/udisks-$pkgver.tar.gz
         disable_logind_support.patch)
-sha512sums=('27761e52527ecfd080711e39efb6669b2e85fe388e9f34b2f99294b2fefdd0da489b74ff3b3c2d53a239ff1bd818d73a1fd8d88eb7a7ef660d51f338ac2c82fe'
+sha512sums=('d0ad6c6d44f53414de3da68e0cdff1be0e9e6e03f900d5fdb4912560db36af52be32a2615d3d2efeaf134d4721a4a0c3e03515fd670f42e96f42ded08c3bf849'
             '379c9600d06a1a6d1a59cc93b2b15fbafc6c756a4dcbcf1b6b7995e991c0758e19db6f08511351b1a764b747d183373423e1bc396147eb8da5b2d85c420c25b4')
 
 prepare() {
