@@ -1,0 +1,16 @@
+pkgbase = litify-git
+	pkgdesc = LITify git
+	pkgver = 96590e0
+	pkgrel = 1
+	url = https://github.com/dudoslav/litify
+	arch = any
+	license = GPL3
+	depends = git
+	depends = pacman
+	optdepends = noto-fonts-emoji
+	optdepends = unicode-emoji
+	source = git+https://github.com/dudoslav/litify.git
+	sha256sums = SKIP
+
+pkgname = litify-git
+
