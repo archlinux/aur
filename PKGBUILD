@@ -7,7 +7,7 @@
 
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.12.0
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -16,7 +16,7 @@ license=(GPL custom)
 groups=('selinux')
 depends=(libsystemd-selinux expat)
 makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz audit libselinux)
-_commit=98294ab81a4d7ef00b6de5149344d92278c38593  # tags/dbus-1.12.0^0
+_commit=0f0968336b9711349023e1d41f075b2bccf7c20b  # tags/dbus-1.12.2^0
 source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit"
         'dbus.sysusers')
 sha256sums=('SKIP'
