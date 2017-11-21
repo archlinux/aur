@@ -7,7 +7,7 @@ _pkgbase=gstreamer0.10-good
 pkgname=('lib32-gstreamer0.10-good' 'lib32-gstreamer0.10-good-plugins')
 _pkgname=('gstreamer0.10-good' 'gstreamer0.10-good-plugins')
 pkgver=0.10.31
-pkgrel=8
+pkgrel=9
 arch=('x86_64')
 license=('LGPL')
 depends=('gstreamer0.10-good' 'gstreamer0.10-good-plugins' "lib32-gstreamer0.10-base")
@@ -47,6 +47,9 @@ NOCONFIGURE=1 ./autogen.sh
   --build=i686-unknown-linux-gnu \
   --with-package-name="GStreamer Good Plugins (Archlinux)" \
   --with-package-origin="http://www.archlinux.org/"
+
+#quick and dirty fix
+echo "#define GST_PLUGIN_DEFINE2(a,b,c,d,e,f,g,h,i) GST_PLUGIN_DEFINE(a,b, #c ,d,e,f,g,h,i)" >>config.h  
 
 make
 sed -e 's/gst sys ext/gst/' -i Makefile
