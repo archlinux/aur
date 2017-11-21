@@ -61,6 +61,7 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         fix_pgo_bug1389436_explicitly_instantiate_gfxFont.patch
         wifi-disentangle.patch wifi-fix-interface.patch
         firefox-install-dir.patch no-crmf.diff
+        0001-Bug-1360278-Add-preference-to-trigger-context-menu-o.patch
 )
 
 
@@ -121,8 +122,10 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../no-crmf.diff
-  
 
+  #  https://bugzilla.mozilla.org/show_bug.cgi?id=1360278
+  patch -Np1 -i ../0001-Bug-1360278-Add-preference-to-trigger-context-menu-o.patch
+  
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i ../wifi-disentangle.patch
   patch -Np1 -i ../wifi-fix-interface.patch
@@ -221,7 +224,7 @@ END
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('SKIP'
-         '068403689bdfcb0c341a9469b0b62538'
+         '6e7ef23754f23c32adaf686a760d369a'
          '14e0f6237a79b85e60256f4808163160'
          'dbf14588e85812ee769bd735823a0146'
          'aa9f776d2187cba09de65cbb02b39ca0'
@@ -240,4 +243,5 @@ md5sums=('SKIP'
          'c6ebac35e9e9c3b031f2cf9ee3e6ed96'
          'a819433292665a6f06a223a0a718e67a'
          'dbf14588e85812ee769bd735823a0146'
-         '196edf030efc516e3de5ae3aa01e9851')
+         '196edf030efc516e3de5ae3aa01e9851'
+         '436dc05b6f1aaec6cc05b1eb904c9af4')
