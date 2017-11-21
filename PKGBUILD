@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.13
-_pkgver=4.13.13
+_pkgver=4.13.14
 pkgver=$_pkgver.a
 pkgrel=1
 arch=('x86_64')
@@ -10,25 +10,24 @@ url="https://github.com/copperhead/linux-hardened"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-        "https://github.com/thestinger/linux-hardened/releases/download/$pkgver/linux-hardened-$pkgver.patch"
-        "https://github.com/thestinger/linux-hardened/releases/download/$pkgver/linux-hardened-$pkgver.patch.sig"
+source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
+        https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign
+        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz
+        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign
+        https://github.com/thestinger/linux-hardened/releases/download/$pkgver/linux-hardened-$pkgver.patch{,.sig}
         # the main kernel config files
-        'config.x86_64'
+        config.x86_64
         # pacman hook for initramfs regeneration
-        '90-linux.hook'
+        90-linux.hook
         # standard config files for mkinitcpio ramdisk
-        'linux.preset')
+        linux.preset)
 replaces=('linux-grsec')
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '7414baa3aa0037ee370aaad4998f88f583cf5badb3be9b17016a529eee8e2a24'
+            'f6d10bf6569f433b8ad6eef54acb395bf15990b709ee34c7a82a95829acaa917'
             'SKIP'
-            '87b33f084ee1b44c2b6d8af1fc0f1244d7de743805b0e299ff034f602276cb82'
+            '55c33fc33c9505d8cb3898f5cb5a1da0036e80c0e6247bdd2a3ea783f826cfc9'
             'SKIP'
             '3d9bb7014b9e6f3a1647769954bc9f2ee3f5389ecb06ddb0269ba40f251fe5e8'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
@@ -42,7 +41,7 @@ validpgpkeys=(
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${_pkgver}"
@@ -83,9 +82,8 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
-
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  cd ${_srcname}
+  make LOCALVERSION= bzImage modules
 }
 
 _package() {
@@ -96,7 +94,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   KARCH=x86
 
@@ -148,7 +146,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
@@ -240,7 +238,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
+      cp -a tools/objtool/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/"
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -270,7 +268,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
