@@ -11,7 +11,7 @@ url="https://github.com/hynek/first/"
 license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("http://pypi.python.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('eb62baf10657717238f9dc674b8b681f')
 
 package() {

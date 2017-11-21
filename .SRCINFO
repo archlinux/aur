@@ -7,7 +7,7 @@ pkgbase = python2-first
 	license = MIT
 	makedepends = python2-setuptools
 	depends = python2
-	source = http://pypi.python.org/packages/source/f/first/first-2.0.1.tar.gz
+	source = https://pypi.python.org/packages/source/f/first/first-2.0.1.tar.gz
 	md5sums = eb62baf10657717238f9dc674b8b681f
 
 pkgname = python2-first
