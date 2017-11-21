@@ -76,6 +76,8 @@ package() {
   # vim syntax
   install -Dm644 'contrib/syntax/vim/syntax/dockerfile.vim' "$pkgdir/usr/share/vim/vimfiles/syntax/dockerfile.vim"
   install -Dm644 'contrib/syntax/vim/ftdetect/dockerfile.vim' "$pkgdir/usr/share/vim/vimfiles/ftdetect/dockerfile.vim"
+
+  warning "Docker CE 17.11 and later won't recognize containers started with previous Docker versions. If using Live Restore, you must stop all containers before upgrading to Docker CE 17.11. If you don't, any containers started by Docker versions that predate 17.11 won't be recognized by Docker after the upgrade and will keep running, un-managed, on the system."
 }
 
 # vim:set ts=2 sw=2 et:
