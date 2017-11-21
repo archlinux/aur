@@ -4,27 +4,24 @@
 
 pkgname=nvidia-ck
 pkgver=387.22
-pkgrel=5
+pkgrel=6
 epoch=1
-_extramodules=extramodules-4.13-ck
+_extramodules=extramodules-4.14-ck
 _pkgdesc="NVIDIA drivers for linux-ck."
 pkgdesc="$_pkgdesc"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-ck>=4.13' 'linux-ck<4.14' 'libgl' "nvidia-utils=${pkgver}")
-makedepends=('linux-ck-headers>=4.13' 'linux-ck-headers<4.14' 'nvidia-libgl')
+depends=('linux-ck>=4.14' 'linux-ck<4.15' 'libgl' "nvidia-utils=${pkgver}")
+makedepends=('linux-ck-headers>=4.14' 'linux-ck-headers<4.15' 'nvidia-libgl')
 conflicts=('nvidia-340xx-ck' 'nvidia-304xx-ck')
 #groups=('ck-generic')
 #replaces=()
 license=('custom')
 install=readme.install
 options=(!strip)
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums_i686=('39544f0a677838a4fb09668d48b91eadd6ba5babecb0aa0cef41c303b0a4649b')
-sha256sums_x86_64=('2056b386f619ed096ee3c2267c495c6b00d1a2a4c933f0635befcf4e69c3856c')
-[[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
-[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+sha256sums=('2056b386f619ed096ee3c2267c495c6b00d1a2a4c933f0635befcf4e69c3856c')
+_pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
     sh "${_pkg}.run" --extract-only
