@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=v2.0.17.r21.g84c4a95a
+pkgver=v2.0.17.r44.g4e26c5c3
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)" 
 arch=(any)
@@ -15,14 +15,12 @@ source=(
 	"${_pkgname}::git+https://github.com/OpenBazaar/openbazaar-desktop.git"
 	"${_pkgname}.js"
     "${_pkgname}.desktop"
-    icons.patch
 )
 install=${_pkgname}.install
 options=('!strip')
 
 build(){
   cd $srcdir/${_pkgname}
-  patch -Np1 -i ../icons.patch
   npm install
   npm run build
   rm -rf {.eslint*,.travis*}
@@ -53,5 +51,4 @@ pkgver() {
 
 md5sums=('SKIP'
          '446ad1e41acd07468c3750a9027dc8f8'
-         '43c9c9ef1d3ca873eea6b6343ca072e8'
-         'c8d61887729b1326c611aafba89e0df1')
+         '43c9c9ef1d3ca873eea6b6343ca072e8')
