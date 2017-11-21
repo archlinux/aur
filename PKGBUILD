@@ -1,6 +1,6 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
-pkgname=verticalize
+pkgname=verticalize-git
 pkgver=r7.903975a
 pkgrel=1
 pkgdesc="Simple tool to verticalize text delimited files."

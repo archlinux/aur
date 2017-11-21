@@ -1,4 +1,4 @@
-pkgbase = verticalize
+pkgbase = verticalize-git
 	pkgdesc = Simple tool to verticalize text delimited files.
 	pkgver = r7.903975a
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = verticalize
 	source = git+https://github.com/lindenb/verticalize.git
 	md5sums = SKIP
 
-pkgname = verticalize
+pkgname = verticalize-git
 
