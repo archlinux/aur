@@ -8,8 +8,8 @@ pkgdesc="is a virtual printer for viewing a document before printing it out usin
 arch=('i686' 'x86_64')
 url="http://www.boomaga.org/"
 license=('LGPL')
-depends=('qt5-tools' 'snappy' 'poppler')
-makedepends=('cmake' 'cups')
+depends=('qt5-tools' 'poppler')
+makedepends=('cmake' 'cups'  'snappy')
 conflicts=('boomaga')
 source=("https://github.com/Boomaga/boomaga/archive/v$pkgver.tar.gz")
 
