@@ -1,0 +1,15 @@
+pkgbase = verticalize
+	pkgdesc = Simple tool to verticalize text delimited files.
+	pkgver = r7.903975a
+	pkgrel = 1
+	url = https://github.com/lindenb/verticalize
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = verticalize
+	conflicts = verticalize
+	source = git+https://github.com/lindenb/verticalize.git
+	md5sums = SKIP
+
+pkgname = verticalize
+
