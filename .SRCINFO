@@ -1,0 +1,16 @@
+pkgbase = medleytext
+	pkgdesc = Take Better Dev Notes
+	pkgver = 0.9.11
+	pkgrel = 1
+	url = https://medleytext.net/
+	arch = x86_64
+	license = unknown
+	source = https://s3.amazonaws.com/medleytext/releases/medley-latest.AppImage
+	source = medleytext.desktop
+	source = medleytext.png
+	md5sums = 75ecf9082ad34755f1e98afca8e2eecc
+	md5sums = 72c9137f873a77eda660bfd7c946ab66
+	md5sums = 9ecf66c64ddfb7e025667c4953028efd
+
+pkgname = medleytext
+

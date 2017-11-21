@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MedleyText
+Comment=Take Better Dev Notes
+Exec=medleytext
+Icon=medleytext
+Terminal=false
+Categories=Utility;TextEditor;
