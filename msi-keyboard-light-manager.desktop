@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=msi_klm-gui
+GenericName=MSI keyboard light manager
+Comment=Control the keyboard lights of your MSI laptop
+
+Exec=msi_klm-gui
+Icon=input-keyboard
+Terminal=false
+Type=Application
+Categories=Settings
