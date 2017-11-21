@@ -1,6 +1,6 @@
 pkgbase = vcvrack-eseries-git
 	pkgdesc = E-Series VCV modules
-	pkgver = r9.8fa5ddb
+	pkgver = v0.4.0.r7.gac990ce
 	pkgrel = 1
 	url = https://github.com/VCVRack/ESeries
 	arch = i686
