@@ -12,8 +12,7 @@ provides=('docker' 'docker-ce')
 conflicts=('docker' 'docker-ce' 'docker-git')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd' 'libseccomp')
 makedepends=('make' 'git' 'go')
-optdepends=('btrfs-progs: btrfs backend support'
-            'lxc: lxc backend support')
+optdepends=('btrfs-progs: btrfs backend support')
 # don't strip binaries! A sha1 is used to check binary consistency.
 options=('!strip')
 source=(
