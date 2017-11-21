@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="http://forge.ocamlcore.org/projects/ocaml-fileutils"
 license=('LGPL')
 depends=('ocaml')
-makedepends=('ocaml-findlib' 'ocaml-ounit')
+makedepends=('ocaml-findlib' 'ocaml-ounit' 'ocamlbuild')
 source=(http://forge.ocamlcore.org/frs/download.php/892/ocaml-fileutils-$pkgver.tar.gz)
 md5sums=('1f43b9333358f47660318bfbe9ae68bf')
 
