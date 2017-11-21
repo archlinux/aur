@@ -21,7 +21,7 @@ _gtk3=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=56.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -216,6 +216,10 @@ END
   rm -rf "$pkgdir"/usr/lib/firefox/{dictionaries,hyphenation}
   ln -s /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
   ln -s /usr/share/hyphen "$pkgdir/usr/lib/firefox/hyphenation"
+
+  # Use system certificates
+  ln -srf "$pkgdir/usr/lib/libnssckbi.so" \
+     "$pkgdir/usr/lib/$pkgname/libnssckbi.so"
 
   #workaround for now
   #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
