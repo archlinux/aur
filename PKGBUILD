@@ -25,7 +25,7 @@ optdepends=('tk: gitk and git gui'
             'subversion: git svn'
             'cvsps2: git cvsimport'
             'gnome-keyring: GNOME keyring credential helper'
-            'libsecret: library used for keyring access')
+            'libsecret: libsecret credential helper')
 conflicts=('git')
 provides=('git')
 install=git-git.install
