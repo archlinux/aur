@@ -4,7 +4,7 @@
 
 pkgname=sam2p
 pkgver=0.49.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A bitmap-to-eps-or-pdf-converter that produces very small files"
 arch=('i686' 'x86_64')
 url="http://www.inf.bme.hu/~pts"
@@ -36,6 +36,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
   install -D -m644 README "$pkgdir"/usr/share/sam2p/docs/README
 }
