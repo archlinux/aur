@@ -21,7 +21,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=57.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -212,12 +212,16 @@ END
   ln -s /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
   ln -s /usr/share/hyphen "$pkgdir/usr/lib/firefox/hyphenation"
 
+  # Use system certificates
+  ln -srf "$pkgdir/usr/lib/libnssckbi.so" \
+     "$pkgdir/usr/lib/$pkgname/libnssckbi.so"
+
   #workaround for now
   #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('SKIP'
-         '6e7ef23754f23c32adaf686a760d369a'
+         '068403689bdfcb0c341a9469b0b62538'
          '14e0f6237a79b85e60256f4808163160'
          'dbf14588e85812ee769bd735823a0146'
          'aa9f776d2187cba09de65cbb02b39ca0'
