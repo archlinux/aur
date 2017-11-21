@@ -1,0 +1,29 @@
+diff -u -r NVIDIA-Linux-x86_64-340.104-no-compat32/kernel/nv-drm.c NVIDIA-Linux-x86_64-340.104-no-compat32-kernel4.14/kernel/nv-drm.c
+--- NVIDIA-Linux-x86_64-340.104-no-compat32/kernel/nv-drm.c	2017-09-15 01:16:51.000000000 +0200
++++ NVIDIA-Linux-x86_64-340.104-no-compat32-kernel4.14/kernel/nv-drm.c	2017-11-19 00:51:45.006654148 +0100
+@@ -173,8 +173,12 @@
+ {
+     int ret = 0;
+ #if defined(NV_DRM_AVAILABLE)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0)
++    ret = drm_legacy_pci_init(&nv_drm_driver, pci_driver);
++#else
+     ret = drm_pci_init(&nv_drm_driver, pci_driver);
+ #endif
++#endif
+     return ret;
+ }
+ 
+@@ -183,8 +187,12 @@
+ )
+ {
+ #if defined(NV_DRM_AVAILABLE)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0)
++    drm_legacy_pci_exit(&nv_drm_driver, pci_driver);
++#else
+     drm_pci_exit(&nv_drm_driver, pci_driver);
+ #endif
++#endif
+ }
+ 
+ RM_STATUS NV_API_CALL nv_alloc_os_descriptor_handle(

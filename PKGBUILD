@@ -6,7 +6,7 @@ pkgver=340.104
 _extramodules=extramodules-4.14-ck
 pkgrel=6
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.nvidia.com/"
 depends=('linux-ck>=4.14' 'linux-ck<4.15' 'libgl' "nvidia-340xx-utils=${pkgver}")
 makedepends=('linux-ck-headers>=4.14' 'linux-ck-headers<4.15' 'nvidia-340xx-libgl')
@@ -14,11 +14,14 @@ conflicts=('nvidia-ck' 'nvidia-304xx-ck')
 #groups=('ck-generic')
 #replaces=()
 license=('custom')
-install=readme.install
 options=(!strip)
-source=('kernel-4.11.patch')
-source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums=('ed112523ae424aea46904d2dcfc769b0263cf552f5bfec0e30601f6f0f95eada')
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+'kernel-4.11.patch'
+'kernel-4.14.patch'
+)
+sha256sums=('ed112523ae424aea46904d2dcfc769b0263cf552f5bfec0e30601f6f0f95eada'
+            '5ba7e6d5e502882c3534d1d8578f7fd29fdf3d2aeb49206efa7b3514a7e3e821'
+            'dd9d17fbb29371ebb51d64ac2f5ec58fde2fce919fb49d95038cde064567c5d7')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
@@ -27,6 +30,7 @@ prepare() {
   
   # patches here
   patch -Np0 < "${srcdir}/kernel-4.11.patch"
+  patch -Np1 < "${srcdir}/kernel-4.14.patch"
 }
 
 build() {
@@ -39,13 +43,13 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
-    "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
-  install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
-    "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
-  gzip -9 "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
-  install -dm755 "${pkgdir}/usr/lib/modprobe.d"
-  echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-340xx-ck.conf"
+  install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 \
+    "${srcdir}/${_pkg}/kernel"/{nvidia,uvm/nvidia-uvm}.ko
+
+  find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
+
+  echo "blacklist nouveau" |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-ck.conf"
 }
 
 # vim:set ts=2 sw=2 et:
