@@ -1,14 +1,14 @@
 # Maintainer: Amos Onn <amosonn at gmail dot com>
 pkgname=python-distributed
-pkgver=1.18.0
-pkgrel=2
+pkgver=1.20.0
+pkgrel=1
 pkgdesc="A python library for distributed computation."
 arch=('any')
 url="http://distributed.readthedocs.org/en/stable/"
 license=('BSD-3-clause')
-depends=('python>=3.5' 'python-tornado>=4.4' 'python-toolz>=0.7.4'
-    'python-cloudpickle>=0.2.2' 'python-dask>=0.14.1' 'python-click>=6.6'
-    'python-psutil' 'python-zict>=0.1.2' 'python-sortedcontainers' 'python-six'
+depends=('python>=3.5' 'python-tornado>=4.5.1' 'python-toolz>=0.7.4'
+    'python-cloudpickle>=0.2.2' 'python-dask>=0.16.0' 'python-click>=6.6'
+    'python-psutil' 'python-zict>=0.1.3' 'python-sortedcontainers' 'python-six'
     'python-tblib' 'python-msgpack')
 # For supporting other versions of python:
 # futures; python_version < '3.0'
@@ -24,7 +24,7 @@ optdepends=(
     'python-ipywidgets' # crick, hdfs-3
 )
 source=(https://codeload.github.com/dask/distributed/tar.gz/$pkgver)
-sha256sums=('3fca385b2e597ef40a0164cd3e7a216ca7654ee5b8a7967054d88dbfc136c493')
+sha256sums=('a73564778771a62a871d53ccfe04663985a654451a67ebb119dbe9999c9ac001')
 
 package() {
   cd $srcdir/distributed-$pkgver
