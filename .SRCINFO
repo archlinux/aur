@@ -1,7 +1,7 @@
 pkgbase = nodejs-json
 	pkgdesc = a 'json' command for massaging JSON on the command line
 	pkgver = 9.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/trentm/json
 	arch = any
 	license = MIT

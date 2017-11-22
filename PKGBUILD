@@ -8,7 +8,7 @@
 _npmname=json
 pkgname=nodejs-json
 pkgver=9.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="a 'json' command for massaging JSON on the command line"
 arch=(any)
 url="http://github.com/trentm/json"
@@ -30,7 +30,6 @@ package() {
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
   chown -R root:root "$pkgdir/usr"
   install -d "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/usr/share"
-  mv "$pkgdir/usr/lib/node_modules/json/man" "$pkgdir/usr/share/"
   ln -s "/usr/lib/node_modules/$_npmname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
