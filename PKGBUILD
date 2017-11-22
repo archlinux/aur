@@ -4,7 +4,7 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com> (for original spotify PKGBUILD)
 
 pkgname=spotio
-_pkgver=1.0.66.478
+_pkgver=1.0.67.582
 _another_pkgver=g1296534d
 _yetanotherpkgrel64=39
 _yetanotherpkgrel32=39
@@ -31,8 +31,8 @@ sha256sums=('989920e9360cadc1a8103b8c04acf0c87cb7911eb9a09dddb0cf4708d6249d34'
 	   '3fdc1ebd9e64bae98cfd2bc9fc3199427bd7ec680254cd6361d9b0f4bb121134'
 	   'abab92b537b10c861023927db10d71c5cd6bcc0afc7ab7a5ffae7094cc3c6f46'
 	   'SKIP')
-sha256sums_x86_64=('a2e739c0ee009df1c899e42c095735bca231312b75b82e311147d41fb72404c1')
-sha256sums_i686=('29795bd5c226e54d531621e645ffe7bd2cc6b4e5c69956c63bdcaade165cb8d9')
+sha256sums_x86_64=('7e5e90b7ae0d797ec3b9b7592d8e2253c773d5f7be90b7014f06f481f82bce1a')
+sha256sums_i686=('cf1ce274475d2468cd93227dc32cff613cd5b2d682c18a7567568a96864d33b4')
 
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel64}_amd64.deb")
 
