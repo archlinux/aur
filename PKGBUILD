@@ -3,7 +3,7 @@
 
 pkgname=inkscape-092-git
 pkgver=20171110.18150
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, from git branch 0.92.x"
 url="https://gitlab.com/inkscape/inkscape"
 arch=('i686' 'x86_64')
@@ -31,14 +31,13 @@ pkgver() {
 prepare() {
   cd "$_gitname"
   #fix for inkscape to use python2 with the python 3 package installed.
-  sed -i '1s|/usr/bin/python\>|/usr/bin/python2|' cxxtest/*.py
-  sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
-  sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
-  sed -i 's|python -c |python2 -c|g' share/extensions/uniconv*.py
-  sed -i 's|"python"|"python2"|g' src/main.cpp
-  sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/svg.py
-  sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/canvas.py
+   sed -i 's|"python"|"python2"|g' src/main.cpp
+  find share -type f -name "*.py" -exec \
+       sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' {} \;
   sed -i '1s|/usr/bin/env python3\>|/usr/bin/env python2|g' CMakeScripts/cmake_consistency_check.py
+  sed -i 's|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
+  sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
+  sed -i 's|"python"|"python2"|g' src/main.cpp
 }
 
 build() {
