@@ -4,7 +4,7 @@ pkgdesc="ROS - Time and Duration implementations for C++ libraries, including ro
 url='http://ros.org/wiki/rostime'
 
 pkgname='ros-kinetic-rostime'
-pkgver='0.6.2'
+pkgver='0.6.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-kinetic-rostime-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/kinetic/rostime/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('08ca7691b3742477ed851f0394fcc85e044379fd3e26fb69adf9da6af3f59953')
+sha256sums=('41ba058b54d4cc0d7e5ba28b944c417adf56e108a7ad08b11d83fba1e75aeb27')
 
 build() {
   # Use ROS environment variables
