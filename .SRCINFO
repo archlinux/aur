@@ -1,0 +1,15 @@
+pkgbase = ttf-nepali-fonts
+	pkgdesc = A collection of popular Nepali Fonts. Preeti,Himalaya,Kantipur,Sagarmatha etc .
+	pkgver = r3.c3f5ee5
+	pkgrel = 1
+	url = http://www.nepali.info/nepali/fonts/
+	arch = any
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = ttf-nepali-fonts
+	source = git+https://github.com/blacpythoz/nepali-fonts
+	md5sums = SKIP
+
+pkgname = ttf-nepali-fonts
+
