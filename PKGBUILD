@@ -4,7 +4,7 @@ pkgdesc="ROS - The State Machine Compiler (SMC) from http://smc.sourceforge.net/
 url='http://smc.sourceforge.net/'
 
 pkgname='ros-kinetic-smclib'
-pkgver='1.7.19'
+pkgver='1.8.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="bond_core-release-release-kinetic-smclib-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/kinetic/smclib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d6732969750091d11ec339b81225068b553ecd2fa1faf95f2b39c597f8c08873')
+sha256sums=('c3223865f9b76284c17efdb4cae211e1c235141e259a38b6704fb6cdfecf0942')
 
 build() {
   # Use ROS environment variables
