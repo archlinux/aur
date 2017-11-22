@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _pkgname=peek
 pkgname=${_pkgname}-git
-pkgver=1.1.0.r180.g3787013
+pkgver=1.1.0.r253.g11dfd12
 pkgrel=1
 pkgdesc="Simple screen recorder with an easy to use interface (latest development release)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,6 @@ optdepends=(
   'gst-plugins-good: WebM output under Gnome Shell'
   'gst-plugins-ugly: MP4 output under Gnome Shell'
   'gifski: High quality GIF animations with thousands of colors'
-  'imagemagick: Use ImageMagick instead of FFmpeg for GIF creation'
 )
 source=(git+https://github.com/phw/${_pkgname}.git)
 sha1sums=('SKIP')
