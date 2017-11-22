@@ -3,7 +3,7 @@
 
 pkgname=pan
 pkgver=0.142
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful Newsgroup Article reader"
 arch=(x86_64)
 url="http://pan.rebelbase.com/"
