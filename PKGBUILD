@@ -2,7 +2,7 @@
 # Maintainer: winlu <derwinlu@gmail.com>
 
 pkgname=rebar3-zsh
-pkgver=3.4.4
+pkgver=3.4.7
 pkgrel=1
 pkgdesc="ZSH completion for rebar3."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/rebar/rebar3"
 license=('APACHE')
 depends=('zsh' 'rebar3'=$pkgver)
 source=("rebar3-$pkgver.tar.gz::https://github.com/rebar/rebar3/archive/${pkgver}.tar.gz")
-md5sums=('049893b4f32585206bad17b1cd7bbbf0')
+md5sums=('045faa4ddf6cf25df7e53d1c3f187c1e')
 
 package() {
   cd "$srcdir/rebar3-$pkgver"
