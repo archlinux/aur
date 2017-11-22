@@ -3,7 +3,7 @@
 
 pkgname=fingerprint-gui
 pkgver=1.09
-pkgrel=3
+pkgrel=4
 pkgdesc="Application for fingerprint-based authentication, automatically support UPEK fingerprint readers with non-free library"
 arch=('i686' 'x86_64')
 url="http://www.ullrich-online.cc/fingerprint/"
@@ -14,9 +14,9 @@ source=("http://www.ullrich-online.cc/fingerprint/download/${pkgname}-${pkgver}.
         "fingerprint-gui-udev-path.patch"
         "fingerprint-gui-udev-0050.patch")
 install="${pkgname}.install"
-md5sums=('699fbdb53d652cabd3c5fdd91078da58'
-         '603612909a3d8b06d5ce4d59ebde4944'
-         '280400756a30b4ca2907e1e58c062875')
+sha512sums=('7ee1c0774d0f7871ec6be00a813b8a273a8e02bd6a285dd2a695c330920da343b21425ab339fe92fba50357cabc0d7350c1f1f5e192a0d65af651ddd25b9fc4f'
+            'a815d5713ae7542efbed560a3f711dec0b0a9e7072873efa7563b695d136d6a0e50bb8e81eaa7d3b4a732a54090ce113d292dd3531deda6c3dbda76094888719'
+            'd3dcc7377e7505332080a6dfa6d127851d8d5f541a67a0f5b7f2b42918e76dd223dfef6ad5cb3d3502050dcbac8a2cf58ddcdc18dc0e0df60c81b70f1b0003b3')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -48,3 +48,4 @@ package() {
 
   install -Dm644 "CHANGELOG" "COPYING" "${pkgdir}/usr/share/doc/${pkgname}/"
 }
+
