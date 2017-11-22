@@ -1,9 +1,9 @@
-diff --git a/donate-level.h b/donate-level.h
-index 7b30212..02085c8 100644
---- a/donate-level.h
-+++ b/donate-level.h
-@@ -8,4 +8,4 @@
-  * Switching is instant, and only happens after a successful connection, so you never loose any hashes.
+diff --git a/xmrstak/donate-level.hpp b/xmrstak/donate-level.hpp
+index 71b7962..53980d4 100644
+--- a/xmrstak/donate-level.hpp
++++ b/xmrstak/donate-level.hpp
+@@ -15,4 +15,4 @@
+  *
   */
  
 -constexpr double fDevDonationLevel = 2.0 / 100.0;
