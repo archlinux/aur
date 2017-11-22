@@ -3,22 +3,22 @@
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=p4v
-pkgver=2017.2.1573260
-pkgrel=2
+pkgver=2017.3.1592764
+pkgrel=1
 pkgdesc="Perforce Visual Client"
 arch=('x86_64')
 url="http://www.perforce.com"
 license=('custom:p4v')
 depends=(libxcb)
 options=('!strip')
-source=(p4v.desktop p4admin.desktop p4merge.desktop LICENSE
+source=(p4v.desktop p4admin.desktop p4merge.desktop LICENSE 
 p4v-${pkgver}.tgz::http://cdist2.perforce.com/perforce/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}.tgz)
 
 sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
             '10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827'
             '139c5e4951ea9ab040912ef1f9705de16a37d32fdf7b8c7116eb5a785829c634'
             'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
-            'f202c09af2df94e89188a15abb763f38a521051febf5f2f0fce72a95062bc228')
+            'ce7523b3c2123efdb73418ffcd2f227dd8b9378e483419595d0af9bbd878e5fe')
 
 package() {
   cd ${pkgname}-${pkgver}/
@@ -32,19 +32,10 @@ package() {
   ln -s /usr/share/p4v/bin/{p4v,p4merge,p4admin,p4vc} "${pkgdir}"/usr/bin
 
   # Install icons
-  mkdir -p "$pkgdir"/usr/share/icons/hicolor/{16x16,24x24,48x48,96x96}/apps
-  install -Dm644 lib/p4v/P4VResources/icons/P4-Admin_16x16.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/p4admin.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-Admin_24x24.png "$pkgdir"/usr/share/icons/hicolor/24x24/apps/p4admin.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-Admin_48x48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/p4admin.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-Admin_96x96.png "$pkgdir"/usr/share/icons/hicolor/96x96/apps/p4admin.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-Merge_16x16.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/p4merge.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-Merge_24x24.png "$pkgdir"/usr/share/icons/hicolor/24x24/apps/p4merge.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-Merge_48x48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/p4merge.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-Merge_96x96.png "$pkgdir"/usr/share/icons/hicolor/96x96/apps/p4merge.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-V_16x16.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/p4v.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-V_24x24.png "$pkgdir"/usr/share/icons/hicolor/24x24/apps/p4v.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-V_48x48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/p4v.png
-  install -Dm644 lib/p4v/P4VResources/icons/P4-V_96x96.png "$pkgdir"/usr/share/icons/hicolor/96x96/apps/p4v.png
+  mkdir -p "$pkgdir"/usr/share/icons/hicolor/scalable/apps
+  install -Dm644 lib/p4v/P4VResources/icons/p4admin.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/p4admin.svg
+  install -Dm644 lib/p4v/P4VResources/icons/p4merge.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/p4merge.svg
+  install -Dm644 lib/p4v/P4VResources/icons/p4v.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/p4v.svg
 
   mkdir -p "${pkgdir}"/usr/share/applications
 
