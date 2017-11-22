@@ -3,14 +3,13 @@
 
 pkgname=networkmanager-openvpn
 pkgver=1.8.1dev+10+ge4d8cda
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
 license=(GPL)
 depends=(libnm libsecret openvpn)
 makedepends=(libnm-gtk intltool python git)
-install=networkmanager-openvpn.install
 _commit=e4d8cda14483b3195dbf2a9d61c565f426108ea3  # master
 source=("git+https://git.gnome.org/browse/network-manager-openvpn#commit=$_commit")
 sha256sums=('SKIP')
@@ -28,7 +27,7 @@ prepare() {
 build() {
   cd network-manager-openvpn
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib/NetworkManager --disable-static
+    --libexecdir=/usr/lib --disable-static
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
@@ -36,4 +35,6 @@ build() {
 package() {
   cd network-manager-openvpn
   make DESTDIR="$pkgdir" install
+  echo 'u nm-openvpn - "NetworkManager OpenVPN"' |
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
