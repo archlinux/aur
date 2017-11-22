@@ -9,7 +9,7 @@
 
 pkgname=firefox-esr-zh-cn
 _pkgname=firefox-esr
-pkgver=52.4.1
+pkgver=52.5.0
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release in zh_CN'
 url='https://www.mozilla.org/zh-CN/firefox/channel/#esr'
@@ -26,7 +26,7 @@ conflicts=('firefox-esr' 'firefox-esr-bin')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
 
-sha512sums=('1331887de3285d4a85b3991d4a785dc580dd24a58f934f723c9a357582149fc059dce93046f69cb23c8f1ec0122d85abb39f85b8e39f2a670715180aaf84cedf'
+sha512sums=('7637f4f5f1628665ab66c10ca182462b1ed536ccd40d458f76b8295286ed9b4c45f3979c4833b4f44aa5b016d0567b918505ca7d204f80424acc1bb3f692238e'
             '02655fae9cc4d833442b59dc53cd14d831e28c4f3adce2da37fa5123c63d75d57dccca90e4415344fb31ca01d2c3dd9b83de1b8e20e04bed9036986ee01412a6'
             '8942b11a7cb3761de1185491397185743adf49daa27a2806d14a328a2be8e2cb566c71dc6449016549cb3bd0d328cfe15944490be749a4add213194f6153c3d0')
 
