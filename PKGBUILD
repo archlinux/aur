@@ -3,7 +3,7 @@
 
 pkgname=vivaldi
 pkgver=1.13.1008.32
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -18,7 +18,6 @@ optdepends=(
     'vivaldi-widevine: Widevine DRM Plugin'
     'libnotify: native notifications'
 )
-source_i686=("https://downloads.vivaldi.com/stable/vivaldi-stable-${pkgver}-1.i386.rpm")
 source_x86_64=("https://downloads.vivaldi.com/stable/vivaldi-stable-${pkgver}-1.x86_64.rpm")
 sha512sums_x86_64=('484000458c4efb749396ba2a5a5485a85f14b7e916890bba06022e9a893ea85f6ba7766c88184efda235bfe58e175e5413dd9b55478d72fcc241f418fc4c4b86')
 
