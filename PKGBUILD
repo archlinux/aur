@@ -7,17 +7,18 @@ pkgdesc="Carnegie Mellon University's open source acoustic model trainer."
 url='http://cmusphinx.sourceforge.net/'
 arch=('i686' 'x86_64')
 license=('BSD')
-makedepends=('python2')
+makedepends=('python')
 depends=('sphinxbase=5prealpha')
-optdepends=('python2: for python support'
-			'python2-scipy: for python support'
-			'python2-numpy: for python support')
+optdepends=('python: for python support'
+			'python-scipy: for python support'
+			'python-numpy: for python support')
 source=("http://downloads.sourceforge.net/project/cmusphinx/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 		'fix_sphinxbase_checking.patch')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
+  sed -i -e '1s/python/python2/' -e '21s/bw//' scripts/sphinxtrain
   patch -p1 < "$srcdir/fix_sphinxbase_checking.patch"
 
   msg2 "Reconfiguring project for current version of Automake"
@@ -30,11 +31,12 @@ build() {
   ./configure \
 	  --prefix=/usr \
 	  --libexecdir="/usr/lib" \
+	  --sysconfdir="/etc" \
 	  --with-sphinxbase=auto
   make
 
-  cd "python"
-  python2 setup.py build
+  #cd "python"
+  #python2 setup.py build
 }
 
 package() {
@@ -42,8 +44,8 @@ package() {
 
   make DESTDIR="${pkgdir}/" install
 
-  cd "python"
-  python2 setup.py install --root=$pkgdir --optimize=1 --skip-build
+  #cd "python"
+  #python2 setup.py install --root=$pkgdir --optimize=1 --skip-build
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
