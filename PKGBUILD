@@ -2,7 +2,7 @@
 
 _gitname="phpbrew"
 pkgname="${_gitname}-git"
-pkgver=1.23.0.5.gffdd326d
+pkgver=1.23.0.10.g3cc8840b
 pkgrel=1
 pkgdesc="Brew & manage PHP versions in pure PHP at HOME"
 arch=("any")
