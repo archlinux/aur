@@ -3,7 +3,7 @@
 # A thanks to Daniel Bermond for some inspiration (code) in the PKGBUILD
 pkgname=caffe-cmake-git
 pkgver=1.0.r50.gc430690aa
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind. Uses cmake to build giving great flexibility."
 arch=('x86_64')

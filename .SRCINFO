@@ -1,7 +1,7 @@
 pkgbase = caffe-cmake-git
 	pkgdesc = A deep learning framework made with expression, speed, and modularity in mind. Uses cmake to build giving great flexibility.
 	pkgver = 1.0.r50.gc430690aa
-	pkgrel = 1
+	pkgrel = 2
 	url = http://caffe.berkeleyvision.org/
 	arch = x86_64
 	license = BSD
