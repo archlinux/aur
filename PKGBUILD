@@ -5,9 +5,9 @@
 
 pkgname=spotio
 _pkgver=1.0.67.582
-_another_pkgver=g1296534d
-_yetanotherpkgrel64=39
-_yetanotherpkgrel32=39
+_another_pkgver=g19436fa3
+_yetanotherpkgrel64=28
+_yetanotherpkgrel32=28
 pkgver=1.0.2_${_pkgver}.${_another_pkgver}
 pkgrel=1
 pkgdesc="A proof-of-concept Rdio-inspired skin for Spotify."
