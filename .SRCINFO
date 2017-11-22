@@ -1,8 +1,8 @@
 pkgbase = gnome-shell-pomodoro
 	pkgdesc = A time management utility for GNOME based on the pomodoro technique
-	pkgver = 0.13.3
+	pkgver = 0.13.4
 	pkgrel = 1
-	url = https://github.com/codito/gnome-shell-pomodoro/
+	url = https://github.com/codito/gnome-pomodoro
 	changelog = NEWS
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = gnome-shell-pomodoro
 	depends = gobject-introspection
 	depends = libpeas
 	depends = appstream-glib
-	source = gnome-shell-pomodoro-0.13.3.tar.gz::https://github.com/codito/gnome-pomodoro/archive/0.13.3.tar.gz
-	sha256sums = 9b76fcd6fc5d314b466318c1d568035182f41d32f2296751d99a51f50328a6d5
+	source = gnome-shell-pomodoro-0.13.4.tar.gz::https://github.com/codito/gnome-pomodoro/archive/0.13.4.tar.gz
+	sha256sums = e1dc54b3beefa51468df9743bf7e55cc656c2a2ead2ab3598f3c58ce25397aad
 
 pkgname = gnome-shell-pomodoro
 
