@@ -6,15 +6,15 @@
 
 pkgname=jack_capture
 pkgver=0.9.73
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple command line tool to record JACK audio output to a file"
 arch=('i686' 'x86_64')
-url="http://www.notam02.no/arkiv/src/"
+url="https://github.com/kmatheussen/jack_capture"
 license=('GPL')
 depends=('jack' 'lame' 'liblo')
 optdepends=('meterbridge: levels monitor'
             'zenity: gtk2 gui')
-source=("$url$pkgname-$pkgver.tar.gz")
+source=("https://github.com/kmatheussen/${pkgname}/archive/$pkgver.tar.gz")
 md5sums=('5daf67e963dc587eec358274cfd14a88')
 
 
