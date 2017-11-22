@@ -1,7 +1,7 @@
 # Contributor: Keerthan Jaic <jckeerthan at gmail dot com>
 pkgname=brainworkshop
 pkgver=4.8.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Brain Workshop is a free open-source version of the Dual N-Back mental exercise"
 arch=('any')
 url="http://brainworkshop.sourceforge.net/"
@@ -18,6 +18,12 @@ sha256sums=('bb1f259eda90e945a803524eedbc0087283e3fb9ae2ab4c16ded88c8c4e95b15'
 prepare () {
   cd "${srcdir}/${pkgname}"
   sed -i "s|halign='middle'|align='center'|g" brainworkshop.pyw
+
+  # ManagedSoundPlayer was deprecated
+  sed -i "s|ManagedSoundPlayer|Player|g" brainworkshop.pyw
+
+  # avbin moved
+  sed -i "s|from pyglet.media import avbin|from pyglet.media.sources import avbin|g" brainworkshop.pyw
 }
 
 package() {
