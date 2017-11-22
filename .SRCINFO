@@ -1,0 +1,13 @@
+pkgbase = man-pages-tr
+	pkgdesc = A collection of Turkish translations of Linux manual pages
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/belgeler/
+	arch = any
+	license = GPL
+	makedepends = sed
+	depends = man-db
+	source = http://downloads.sourceforge.net/project/belgeler/man-pages-tr/man-pages-tr-1.0.5/man-pages-tr-1.0.5.tar.gz
+	md5sums = 8f322a60c80e31c34ef8979edaf68aae
+
+pkgname = man-pages-tr
