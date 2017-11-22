@@ -13,7 +13,8 @@ depends=("seexpr1" "openimageio" "ffmpeg")
 #depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
 makedepends=("git" "expat" "boost")
 optdepends=("openfx-gmic-bin" "natron-plugins")
-source=("openfx-arena::git+https://github.com/MrKepzie/openfx-arena.git#commit=6c9adf4026446cb688fc9878c768cac103582603"
+com=5612c7444163675773bb1f08432d9cf8d939d0ce
+source=("openfx-arena::git+https://github.com/MrKepzie/openfx-arena.git#commit=$com"
 )
 sha512sums=('SKIP'
 )
