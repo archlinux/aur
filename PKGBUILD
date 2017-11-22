@@ -4,28 +4,28 @@ pkgdesc="ROS - ROS Package Tool."
 url='http://wiki.ros.org/rospack'
 
 pkgname='ros-kinetic-rospack'
-pkgver='2.3.3'
+pkgver='2.4.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-cmake-modules
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
+  python2
   gtest
-  pkg-config
   boost
   tinyxml
-  python2)
+  pkg-config)
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  python2-rosdep
-  tinyxml
-  python2-catkin_pkg
   python2
+  python2-rosdep
+  python2-catkin-pkg
+  tinyxml
   boost
   pkg-config)
 
@@ -38,9 +38,9 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rospack-release-release-kinetic-rospack-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/kinetic/rospack/${pkgver}-${_pkgver_patch}.tar.gz"
-	   boost_tr1.patch)
-sha256sums=('4237ed1c53610ec486b7940c91bee16d3d894fcf08db5cbfc1b6eef2d5002322'
-            '205c9748c577a93271c4c80ecd7abd90fc8eb8ae299dcea34d00597649bc72d6')
+		boost_tr1.patch)
+sha256sums=('149f27ece8b24235aaea6ed37ab49d89ec00dad1fa77843ac93fb6836fccf3b4'
+            '0d80fbe8ac777673eb7df2807ddd976b6ff4f5cfc866937c6c60bb19e017f7e8')
 
 prepare() {
   cd ${srcdir}
