@@ -1,0 +1,9 @@
+{
+  "port": 3030,
+  "database_plugin":{
+    "dbPath":"/var/lib/mstream/mstream.db"
+  },
+  "folders": {
+    "media": "/var/lib/mstream/music"
+  }
+}
