@@ -3,7 +3,7 @@ pkgname=blitz
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="C++ Class library for scientific computing"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/blitzpp/blitz"
 # The user is free to choose the license among ('Artistic2.0' 'BSD' 'LGPL3'),
 # but we cannot express it here so we only mention the most permissive.
@@ -24,15 +24,6 @@ prepare() {
 build() {
   local _conditional_options
   cd "$pkgname-$pkgver"
-
-  if [ "$CARCH" = "x86_64" ]; then
-    _conditional_options=--enable-64bit
-  else
-    # According to this bug report on
-    # https://bugs.launchpad.net/ubuntu/+source/blitz++/+bug/1213144
-    # we have to use --enable-simd-width=8
-    _conditional_options=--enable-simd-width=8
-  fi
 
   # Fortran is needed for benchmarks only
   ./configure \

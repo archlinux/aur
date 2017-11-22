@@ -3,7 +3,6 @@ pkgbase = blitz
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/blitzpp/blitz
-	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = boost
