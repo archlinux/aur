@@ -14,7 +14,7 @@ pkgbase = openfx-io-git
 	depends = ffmpeg
 	optdepends = openfx-gmic-bin
 	optdepends = natron-plugins
-	source = openfx-io::git+https://github.com/MrKepzie/openfx-io.git#commit=5d7502e9f81e326d5386f79e16d5e1697969a5b7
+	source = openfx-io::git+https://github.com/MrKepzie/openfx-io.git#commit=16c2ef3877e627ac77a5f9c6cead450ce0b37352
 	sha512sums = SKIP
 
 pkgname = openfx-io-git
