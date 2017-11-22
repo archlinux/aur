@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.14
 pkgver=4.14.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -21,6 +21,7 @@ source=(
   '90-linux.hook'  # pacman hook for initramfs regeneration
   'linux.preset'   # standard config files for mkinitcpio ramdisk
   '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
+  '0001-bio-ensure-__bio_clone_fast-copies-bi_partno.patch'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -34,7 +35,8 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd')
+            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd'
+            '92b8755030d405fa4a9cd31cbe2998fd71584164431e5edc28c2be04fab24d1e')
 
 _kernelname=${pkgbase#linux}
 
@@ -51,6 +53,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56207
   patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
+
+  # https://bugs.archlinux.org/task/56404
+  patch -Np1 -i ../0001-bio-ensure-__bio_clone_fast-copies-bi_partno.patch
 
   cp -Tf ../config .config
 
