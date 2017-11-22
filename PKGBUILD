@@ -3,7 +3,7 @@
 
 pkgname=sfml
 pkgver=2.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('x86_64')
 url='http://www.sfml-dev.org/'
@@ -12,7 +12,7 @@ depends=('libsndfile' 'libxrandr' 'libjpeg' 'openal' 'glew' 'freetype2' 'libx11'
 makedepends=('mesa' 'cmake' 'doxygen' 'git' 'systemd')
 install=sfml.install
 source=("git+git://github.com/LaurentGomila/SFML.git#tag=${pkgver}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 build() {
   cd "$srcdir"/SFML
@@ -32,7 +32,7 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  install -Dm644 "$pkgdir/usr/share/SFML/cmake/Modules/FindSFML.cmake" "$pkgdir/usr/share/cmake-3.9/Modules/FindSFML.cmake"
+  install -Dm644 "$pkgdir/usr/share/SFML/cmake/Modules/FindSFML.cmake" "$pkgdir/usr/share/cmake-3.10/Modules/FindSFML.cmake"
 
   install -Dm644 ../license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
