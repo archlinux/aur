@@ -4,7 +4,7 @@ pkgdesc="ROS - The class_loader package is a ROS-independent package for loading
 url='http://ros.org/wiki/class_loader'
 
 pkgname='ros-kinetic-class-loader'
-pkgver='0.3.6'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,15 +14,15 @@ ros_makedepends=(ros-kinetic-cmake-modules
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  poco
+  console-bridge
   boost
-  console-bridge)
+  poco)
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  poco
+  console-bridge
   boost
-  console-bridge)
+  poco)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/class_loader/${pkgver}-${_pkgver_patch}
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="class_loader-release-release-kinetic-class_loader-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/class_loader-release/archive/release/kinetic/class_loader/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('886bb94323fa6843608c3584210080ca7c1285d1a95e94a245b1d42604705f55')
+sha256sums=('9a645d1442f6cdab1e0e53229fdc5ea0db933a7bf7cd8ff9690e6ba58511e960')
 
 build() {
   # Use ROS environment variables
