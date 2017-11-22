@@ -1,0 +1,19 @@
+pkgbase = synology-drive-beta
+	pkgdesc = An application which sync files between your computers and Synology NAS
+	pkgver = 10165
+	pkgrel = 1
+	url = https://www.synology.com/en-global/beta/2017_Drive_1_0
+	install = synology-drive.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = qt5-base
+	optdepends = nautilus: For nautilus integration
+	conflicts = synology-cloud-station-drive
+	source_i686 = https://global.download.synology.com/download/Tools/SynologyDriveClient/1.0.0-10165/Ubuntu/Installer/x86_64/synology-drive-10165.i686.deb
+	md5sums_i686 = 4eaaae48bebe059973ae1c719db64947
+	source_x86_64 = https://global.download.synology.com/download/Tools/SynologyDriveClient/1.0.0-10165/Ubuntu/Installer/x86_64/synology-drive-10165.x86_64.deb
+	md5sums_x86_64 = c2a09157ee6c76ea2dde17ef3f9fbaea
+
+pkgname = synology-drive-beta
+
