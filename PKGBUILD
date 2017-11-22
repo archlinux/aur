@@ -3,7 +3,7 @@
 pkgname=snappy-player
 _pkgname=snappy
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Powerful media player with a minimalistic interface"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/Snappy"
@@ -12,8 +12,7 @@ depends=('gst-plugins-base' 'clutter-gst' 'clutter-gtk')
 optdepends=('gst-plugins-good: Extra media codecs'
             'gst-plugins-bad: Extra media codecs'            
             'gst-plugins-ugly: Extra media codecs'
-            'gst-libav: Extra media codecs'
-            'gst-vaapi: Hardware accelerated video decode')
+            'gst-libav: Extra media codecs')
 source=(https://download.gnome.org/sources/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.xz
         0001-Set-windowing-backend-to-X11.patch
         clutter-gst3.patch)
