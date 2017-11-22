@@ -54,7 +54,9 @@ build() {
   mkdir "build"
   cd build
   cmake -DBLAS=open ..
-  make -j4 all
+  ## UNCOMMENT if you wish to have a parallelized build. Race conditions may arise.
+  # make -j4 all
+  make all
 }
 
 # uncomment this block if you want to run the checks/tests
