@@ -1,7 +1,7 @@
 pkgbase = koala-bin
 	pkgdesc = Koala is a GUI application for LESS, Sass and CoffeeScript compilation, to help web developers use these tools more efficiently for development.
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = http://koala-app.com/
 	arch = x86_64
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = koala-bin
 	source = koala.desktop
 	sha512sums = 00c273bb8b987f8909162885bf5eca48013fcc81abef0e1d6565a5bd9ce5e8071306fb8186eab790fb025ef2aa960d9770a4b6e656424d6ed92fdf769681167b
 	sha512sums = e0862ffe8fa9431c0d1147e7f3d7f6d7d13bce789f970a0d2fa2b51891eda8161965f05068f7348d7ec12cdc8840bb555532520b839833893cbbda4715e87131
-	source_x86_64 = https://github.com/oklai/koala/releases/download/v2.2.0/koala_2.2.0_x86_64.tar.gz
-	sha512sums_x86_64 = c282bfaa1af9127a005211ed67a19ac09b2c8f4cf16ae98abc959951b9ea55fb41c8bf7d9a43c9711bf6fa8dbf609c27605654b834c752a43880ab8d98fb9dd3
-	source_i686 = https://github.com/oklai/koala/releases/download/v2.2.0/koala_2.2.0_i386.tar.gz
-	sha512sums_i686 = d7084462eabee6e270986391d190889f6c555df5fad3a730e622a847dc431160de673238f936185cb26a02ca1efbdeac78d68e20981e0e67079b1ea385e3a039
+	source_x86_64 = https://github.com/oklai/koala/releases/download/v2.3.0/koala_2.3.0_x86_64.tar.gz
+	sha512sums_x86_64 = 89b18d07be00d1793bd71374d9f308a156de8d948c10bf347050b31b75b090f56b475584bd15ccd213f13acd4de73a85fb1c646162b246c0fdc2c4fbd3208257
+	source_i686 = https://github.com/oklai/koala/releases/download/v2.3.0/koala_2.3.0_i386.tar.gz
+	sha512sums_i686 = 1bea8bdc189f77c1954f5fc0689c8a257ded62ec6bf10189ccdf8c47f81913c93a3781d7d663d3f08b4cd617c557d224c5cdbc3f95a73212c8414cd55d20762c
 
 pkgname = koala-bin
 
