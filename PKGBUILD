@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains common nodelet tools such as a mux, demux a
 url='http://ros.org/wiki/nodelet_topic_tools'
 
 pkgname='ros-kinetic-nodelet-topic-tools'
-pkgver='1.9.10'
+pkgver='1.9.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="nodelet_core-release-release-kinetic-nodelet_topic_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/kinetic/nodelet_topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1e8a8ee4aa86a8231fec4e1e1c0251a1bd084ccc537f455e4a9a33095cef49e0')
+sha256sums=('443517946f7ad2ee23784f83329b2fb60f4203f8306d99b1caa64b44241af1a3')
 
 build() {
   # Use ROS environment variables
