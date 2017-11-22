@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://github.com/libical/libical'
 license=('LGPL' 'MPL')
 depends=('glibc' 'glib2' 'icu' 'db')
-makedepends=('cmake' 'gobject-introspection')
+makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('6405964d596aac64fc82c03c4486387fd6a9c09b1f7af1ff251238e66b9e66e1')
 
