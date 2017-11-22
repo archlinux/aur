@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=3.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('x86_64')
@@ -17,12 +17,12 @@ url='http://ffmpeg.org/'
 license=('GPL3' 'custom:libfdk-aac')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
-         'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
-         'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2'
-         'speex' 'v4l-utils' 'xz' 'zlib'
-         'libass.so' 'libbluray.so' 'libfreetype.so' 'libvidstab.so'
-         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
-         'libxvidcore.so'
+         'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
+         'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex'
+         'v4l-utils' 'xz' 'zlib'
+         'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
+         'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so'
+         'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so'
          'libfdk-aac')
 makedepends=('ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
