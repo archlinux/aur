@@ -9,7 +9,7 @@ arch=('any')
 url="http://www.triplea-game.org/"
 license=('GPL')
 install=${pkgname}.install
-depends=('gradle' 'jdk' 'gtk-update-icon-cache' 'java-runtime')
+depends=('gtk-update-icon-cache' 'java-runtime')
 source=( "https://github.com/triplea-game/triplea/archive/${pkgver}.zip"
          "triplea")
 sha256sums=('04ff41bc359d76d9432eab31008520688844fcdae670455fa6260680355bef7a' '8bdbbb7cf333a042bde7605f03683e560e97d1cbe8ebaabc5bd2134ce30a462d' )
