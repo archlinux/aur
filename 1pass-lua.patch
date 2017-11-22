@@ -25,3 +25,12 @@ diff -ruN 1pass.orig/1pass.lua 1pass/1pass.lua
  local password = argv[2]
  local items = nil
  local faveitems = nil
+@@ -349,7 +349,7 @@
+ 
+ local function build_secret_menuitem_creditcard(menu, info, secure)
+     -- !!! FIXME: there's more data than this in a generic dictionary.
+-    local expiredate = secure.expiry_yy .. "/" .. string.sub("00" .. secure.expiry_mm, -2)
++    local expiredate = (secure.expiry_yy or "") .. "/" .. string.sub("00" .. (secure.expiry_mm or ""), -2)
+     build_secret_menuitem(menu, "Type", secure.type)
+     build_secret_menuitem(menu, "CC number", secure.ccnum, true)
+     build_secret_menuitem(menu, "CVV", secure.cvv, true)
