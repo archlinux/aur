@@ -1,0 +1,25 @@
+pkgbase = libdlib
+	pkgdesc = Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques.
+	pkgver = 19.7
+	pkgrel = 1
+	url = http://www.dlib.net/
+	arch = x86_64
+	arch = i686
+	license = Boost Software License
+	makedepends = cmake
+	depends = glibc
+	optdepends = blas: for BLAS support
+	optdepends = cuda: for CUDA support
+	optdepends = cudnn: for CUDNN support
+	optdepends = giflib: for GIF support
+	optdepends = lapack: for LAPACK support
+	optdepends = libjpeg-turbo: for JPEG support
+	optdepends = libpng: for PNG support
+	optdepends = neon: for neon support
+	optdepends = sqlite: for sqlite support
+	conflicts = dlib
+	source = https://sourceforge.net/projects/dclib/files/dlib/v19.7/dlib-19.7.tar.bz2
+	sha256sums = 825dbe45e0d379a4e5584c2918b1e0cb37e9ed75657766fd7b2b4f3e05f892d6
+
+pkgname = libdlib
+
