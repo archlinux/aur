@@ -2,11 +2,11 @@
 # Contributor: Chad Versace <chad.versace@linux.intel.com>
 # Contributor: Emil Velikov <emil.l.velikov@gmail.com>
 
-pkgname='waffle'
-pkgver='1.5.2'
-pkgrel='3'
+pkgname=waffle
+pkgver=1.5.2
+pkgrel=4
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.waffle-gl.org'
 license=('BSD')
 
