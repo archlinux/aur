@@ -11,7 +11,7 @@ url="https://github.com/gillesdegottex/fmit"
 license=('GPL')
 depends=('fftw' 'qt5-base' 'qt5-multimedia' 'qt5-svg' 'alsa-lib'  'jack' 'portaudio' 'hicolor-icon-theme')
 makedepends=('qt5-tools')
-source=("https://github.com/gillesdegottex/fmit/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gillesdegottex/fmit/archive/v${pkgver}.tar.gz")
 sha512sums=('e1febcd15c2425cda451cd4c4ca8396fe1651788f672f5d38ae4190691b3c2457fdfd8bb7aeb813e3f4c30ce29e6d435861f5df289b3839c9401aab1a607da8b')
 
 build() {
