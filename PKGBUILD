@@ -3,7 +3,7 @@
 
 pkgname=inkscape-git
 pkgver=20171122.19779
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://launchpad.net/inkscape"
 arch=('i686' 'x86_64')
@@ -35,6 +35,9 @@ prepare() {
   find share -type f -name "*.py" -exec \
        sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' {} \;
   sed -i '1s|/usr/bin/env python3\>|/usr/bin/env python2|g' CMakeScripts/cmake_consistency_check.py
+  sed -i 's|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
+  sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
+  sed -i 's|"python"|"python2"|g' src/main.cpp
 }
 
 build() {
