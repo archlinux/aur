@@ -4,7 +4,7 @@ pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with
 url='http://ros.org/wiki/rostest'
 
 pkgname='ros-kinetic-rostest'
-pkgver='1.12.7'
+pkgver='1.12.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rostest-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rostest/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('dfb29fe5175807c9fb871c0bd0d5ff877caba3a1edd6ff567da7ba6afdbd2786')
+sha256sums=('41999c39b8e4d4828251afa8f82d8dd63f0559fc460f2ccffe58a724257dcd6e')
 
 build() {
   # Use ROS environment variables
