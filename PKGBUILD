@@ -4,10 +4,10 @@ pkgdesc="ROS - image_transport should always be used to subscribe to and publish
 url='http://ros.org/wiki/image_transport'
 
 pkgname='ros-kinetic-image-transport'
-pkgver='1.11.12'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-message-filters
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="image_common-release-release-kinetic-image_transport-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/kinetic/image_transport/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c6510bf248d66f17f6cbcab828ea7d2340602fa2143365388e60ee7beacb7e32')
+sha256sums=('6f9e7abf09c1ac9f8b8ea7f6df2c49f88c7708a5feefe25089bda48a877fef22')
 
 build() {
   # Use ROS environment variables
