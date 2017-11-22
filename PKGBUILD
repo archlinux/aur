@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=3.4
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('x86_64')
@@ -31,10 +31,21 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so'
           "ffmpeg=$pkgver")
 conflicts=("$_name")
-source=(https://ffmpeg.org/releases/$_name-$pkgver.tar.xz{,.asc})
+source=("https://ffmpeg.org/releases/$_name-$pkgver.tar.xz"{,.asc}
+        'fs56089.patch')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
 sha256sums=('aeee06e4d8b18d852c61ebbfe5e1bb7014b1e118e8728c1c2115f91e51bffbef'
-            'SKIP')
+            'SKIP'
+            '0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427')
+
+prepare() {
+  cd ffmpeg-${pkgver}
+
+  # https://bugs.archlinux.org/task/56089
+  # Backport of http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=a606f27f4c610708fa96e35eed7b7537d3d8f712
+  patch -Np1 -i ../fs56089.patch
+}
+
 build() {
   cd $_name-$pkgver
 
