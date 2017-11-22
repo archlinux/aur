@@ -10,11 +10,11 @@ url="http://www.freedict.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
 install=$pkgname.install
-source=("https://sourceforge.net/projects/freedict/files/${_lang}/$pkgver/freedict-eng-fra-$pkgver.tar.bz2")
+source=("https://sourceforge.net/projects/freedict/files/${_lang}/$pkgver/freedict-${_lang}-$pkgver.tar.bz2")
 sha512sums=('f72eb5da576a3c8d459f2d39ed4adfa9442442293997319ce4558ad2cc6d2e4428d2b84567163961b338724990732dd98f6094768928c43da483f74183c7c99b')
 
 package()
 {
 	mkdir -p "$pkgdir/usr/share/dictd"
-	cp eng-fra/eng-fra.{dict.dz,index} "$pkgdir/usr/share/dictd/"
+	cp ${_lang}/${_lang}.{dict.dz,index} "$pkgdir/usr/share/dictd/"
 }
