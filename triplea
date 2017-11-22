@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd $(cd $(dirname "$0"); pwd)/../share/triplea
-sudo ./gradlew run
+exec ./triplea_unix.sh "$@"

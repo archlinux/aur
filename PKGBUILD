@@ -2,30 +2,38 @@
 # Maintainer: Parth Nobel <pnob99 *AT* gmail *DOT* com>
 
 pkgname=triplea
-pkgver=1.9.0.0.7594
+pkgver=1.8.0.9
 pkgrel=1
 pkgdesc='An online multiplayer turn based strategy game and board game engine.'
 arch=('any')
-url="http://www.triplea-game.org/"
+url="http://triplea.sf.net"
 license=('GPL')
 install=${pkgname}.install
 depends=('gtk-update-icon-cache' 'java-runtime')
-source=( "https://github.com/triplea-game/triplea/archive/${pkgver}.zip"
-         "triplea")
-sha256sums=('04ff41bc359d76d9432eab31008520688844fcdae670455fa6260680355bef7a' '8bdbbb7cf333a042bde7605f03683e560e97d1cbe8ebaabc5bd2134ce30a462d' )
-
-
-build(){
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    ./gradlew assemble
-}
-
-
+source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${pkgver//./_}_all_platforms.zip"
+        "https://github.com/PTNobel/TripleA/archive/master.zip"
+        "triplea")
+sha256sums=('9e94165cbf2b907563dfaf8db776b2941fdbdd511df45dc19c9304c6df1b01fe'
+            '36e716f54faeb1e29580602c9607ac5472c24282ba67b7b4cce0e83bd09d1220'
+            '4fdd7ad0c1a802a3142e800dc1f354a246586d8bb75b8c17b6dc948b5cf35f05')
 
 package() {
     install -d "${pkgdir}/usr/share/triplea"
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/${pkgname}_${pkgver//./_}
     cp -R * ${pkgdir}/usr/share/triplea
+    cd ${srcdir}/TripleA-master/usr/share/
+    cp -R * ${pkgdir}/usr/share
+    cd ${srcdir}
+
+    find ${pkgdir}/usr/share/triplea -type d -exec chmod 755 {} \;
+    find ${pkgdir}/usr/share/triplea -type f -exec chmod 644 {} \;
+    chmod 755 ${pkgdir}/usr/share/triplea/triplea_unix.sh
+    cd ${pkgdir}/usr/share/triplea/
+    rm triplea_mac_os_x.sh
+    rm triplea_windows.bat
+    rm run-headless-game-host-windows.bat
+    rm MacOS_users_read_this_first.txt
+    rm triplea.exe
     rm -Rf docs 
     install -D -m 0755 ${srcdir}/triplea ${pkgdir}/usr/bin/triplea
 }
