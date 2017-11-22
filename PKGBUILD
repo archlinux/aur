@@ -1,9 +1,9 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=1.0.12
-_commit=b86b9feb6c3c1727cc3992da2f95c4a4f09a982b
-pkgrel=2
+pkgver=1.0.13
+_commit=3ee1d04a8dff26e81aaf17095a0e2472bc70cf36
+pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
@@ -13,60 +13,47 @@ makedepends=('boost' 'cargo' 'cmake' 'git' 'python' 'wget')
 checkdepends=('python' 'python2' 'python2-pyzmq')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         "boost-no-mt-suffix.patch"
-        "use-system-libraries.patch"
         "use-system-rust.patch")
 sha256sums=('SKIP'
-            '15389fe2741b8641d39b9fc0cd155e919d09e6d9317b79d0f4f1bcefb798766c'
-            'ef8ab26635bb2608f03ddf991da3581060670161938171fa2e413758fa4bad3f'
+            'de84cf8c0ee530958300bcd9d92c59f5adb5ccabcf7fbc79ace856b0461d394c'
             '065cd418ca7be72018c7fdada3012872bd079a254a95560312514594381b8028')
 
 prepare() {
     cd ${pkgname}
 
     # Set gitattributes on src/clientversion.cpp
-    mkdir ../${pkgname}-${pkgver}
-    git archive ${_commit} | tar -xC ../${pkgname}-${pkgver}
-    cd ../${pkgname}-${pkgver}
+    git archive --format=tar ${_commit} -- src/clientversion.cpp | tar -xf -
 
     patch -Np1 -i ../boost-no-mt-suffix.patch
-    patch -Np1 -i ../use-system-libraries.patch
     patch -Np1 -i ../use-system-rust.patch
 }
 
 build() {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}
 
     cd depends
-    libs=('bdb' 'googletest' 'googlemock' 'librustzcash' 'libsnark' 'proton')
-    for lib in "${libs[@]}"; do
-        make ${lib}
-    done
-    for lib in "${libs[@]}"; do
-        tar -xzf built/${CARCH}-unknown-linux-gnu/${lib}/${lib}-*.tar.gz \
-            -C ${CARCH}-unknown-linux-gnu
-    done
+    make install \
+        native_packages='' \
+        packages='bdb googletest googlemock librustzcash proton'
     cd ..
 
     CPPFLAGS="${CPPFLAGS} -I$PWD/depends/${CARCH}-unknown-linux-gnu/include"
     LDFLAGS="${LDFLAGS} -L${PWD}/depends/${CARCH}-unknown-linux-gnu/lib -L${PWD}/depends/x86_64-unknown-linux-gnu/lib64"
 
     ./autogen.sh
-    ./configure --prefix=/usr
+    depends_prefix="${PWD}/depends/x86_64-unknown-linux-gnu" ./configure --prefix=/usr
     make
 }
 
 check() {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}
 
-    # ./qa/zcash/full-test-suite.sh
-
-    # Run the RPC tests
     # ./zcutil/fetch-params.sh
-    # ./qa/pull-tester/rpc-tests.sh
+    # ./qa/zcash/full_test_suite.py
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}
 
     make DESTDIR="${pkgdir}" install
 

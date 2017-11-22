@@ -1,11 +1,11 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -778,7 +778,7 @@
-   RUST_LIBS="-lrustzcash"
+@@ -770,7 +770,7 @@
+   LIBSNARK_DEPINST="$prefix"
  fi
  
--LIBZCASH_LIBS="-lsnark -lgmp -lgmpxx -lboost_system-mt -lcrypto -lsodium -fopenmp $RUST_LIBS"
-+LIBZCASH_LIBS="-lsnark -lgmp -lgmpxx -lboost_system -lcrypto -lsodium -fopenmp $RUST_LIBS"
+-LIBZCASH_LIBS="-lgmp -lgmpxx -lboost_system-mt -lcrypto -lsodium -fopenmp $RUST_LIBS"
++LIBZCASH_LIBS="-lgmp -lgmpxx -lboost_system -lcrypto -lsodium -fopenmp $RUST_LIBS"
  
  CXXFLAGS_TEMP="$CXXFLAGS"
  LIBS_TEMP="$LIBS"
