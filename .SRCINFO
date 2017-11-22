@@ -1,7 +1,7 @@
 pkgbase = cuda65
 	pkgdesc = NVIDIA's GPU programming toolkit (for compute capability < 2.0)
 	pkgver = 6.5.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/object/cuda_home.html
 	install = cuda.install
 	arch = x86_64

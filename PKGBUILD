@@ -3,7 +3,7 @@
 pkgname=cuda65
 _pkgname=cuda
 pkgver=6.5.19
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA's GPU programming toolkit (for compute capability < 2.0)"
 arch=('x86_64')
 url="http://www.nvidia.com/object/cuda_home.html"
