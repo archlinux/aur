@@ -1,0 +1,33 @@
+diff --git a/configure.ac b/configure.ac
+index 3b549f2..56cb572 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -119,9 +119,6 @@ if test x$sphinxbase != x && test x$cross_compiling = xyes; then
+    CPPFLAGS="-I$sphinxbase/include -I$sphinxbasebuild/include $CPPFLAGS"
+    LIBS="$LIBS -lsphinxbase"
+    # We include libsphinxbase/.libs because of stupid broken versions of libtool
+-   LDFLAGS="$LDFLAGS -L$sphinxbasebuild/src/libsphinxad \
+-		     -L$sphinxbasebuild/src/libsphinxbase \
+-		     -L$sphinxbasebuild/src/libsphinxbase/.libs"
+ fi
+ if test x$sphinxbase != x && test x$cross_compiling != xyes; then
+    AC_CHECK_FILE($sphinxbase/include/sphinxbase/prim_type.h,CPPFLAGS="-I$sphinxbase/include $CPPFLAGS",
+@@ -131,18 +128,7 @@ if test x$sphinxbase != x && test x$cross_compiling != xyes; then
+ SphinxBase.  Run $0 --help for more information.]))
+ fi
+ # We include libsphinxbase/.libs because of stupid broken versions of libtool
+-if test x$sphinxbasebuild != x && test x$cross_compiling != xyes; then
+-   AC_CHECK_FILE($sphinxbasebuild/src/libsphinxbase/libsphinxbase.la,
+-[CPPFLAGS="-I$sphinxbasebuild/include $CPPFLAGS"
+ LIBS="$LIBS -lsphinxbase"
+-LDFLAGS="$LDFLAGS -L$sphinxbasebuild/src/libsphinxad \
+-		  -L$sphinxbasebuild/src/libsphinxbase \
+-		  -L$sphinxbasebuild/src/libsphinxbase/.libs"],
+-		   AC_ERROR(
+-[SphinxBase libraries were not found in $sphinxbasebuild.
+-Use the --with-sphinxbase-build option to `configure' to specify
+-the build directory for SphinxBase.  Run $0 --help for more information.]))
+-fi
+ 
+ AC_ARG_ENABLE(g2p-decoder,
+  [  --enable-g2p-decoder  Enable the g2p decoder],
