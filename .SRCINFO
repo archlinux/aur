@@ -26,6 +26,7 @@ pkgbase = linphone-desktop-git
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
+	depends = qt5-tools
 	optdepends = pulseaudio
 	provides = linphone-desktop
 	conflicts = linphone-desktop
