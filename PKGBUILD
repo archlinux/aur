@@ -4,7 +4,7 @@ pkgdesc="ROS - Stereo and single image rectification and disparity processing."
 url='http://www.ros.org/wiki/stereo_image_proc'
 
 pkgname='ros-kinetic-stereo-image-proc'
-pkgver='1.12.19'
+pkgver='1.12.21'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -43,7 +43,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="image_pipeline-release-release-kinetic-stereo_image_proc-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/kinetic/stereo_image_proc/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('05b444eb00c187ed6301a5f1beb58ad27e67e1f12359a22cf1d62694a45a4cf6')
+sha256sums=('6be91f55eff9528efcc0e24dd7cf65b17252ff069e0bf9189f72578605104627')
 
 build() {
   # Use ROS environment variables
