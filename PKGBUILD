@@ -2,15 +2,9 @@
 # Contributor: Isaac C. Aronson <isaac@pingas.org> (original PKGBUILD)
 # Contributor: Sergio Correia <sergio@correia.cc> (modifications derived from icecream-git package)
 
-# This package is currently under version control here:
-# https://gitlab.com/bwidawsk/pkgbuild-icecream
-#
-# It is "built" against:
-# 7b4c22ce2e99c6e18c986bd28d31e9e17c85d5ea
-
 pkgname=icecream
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines."
 url="http://en.opensuse.org/Icecream"
 license=('GPL2')
@@ -21,7 +15,7 @@ optdepends=('iceberg-git: A Qt based monitor for icecream nodes'
             'ccache: ccache enabled remote builds.')
 conflicts=('icecream-git')
 backup=('etc/icecream.conf')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 install=icecream.install
 source=("https://github.com/icecc/$pkgname/archive/$pkgver.tar.gz"
         icecream.conf
