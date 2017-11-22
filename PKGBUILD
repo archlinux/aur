@@ -9,7 +9,7 @@ url="https://github.com/trakt/Plex-Trakt-Scrobbler"
 license=('Unknown')
 depends=('plex-media-server')
 source=("https://github.com/trakt/Plex-Trakt-Scrobbler/archive/v${pkgver}.tar.gz")
-sha512sums=('5728cff20b50d5d7116781113db866fbf54bc0830200ac233078a6c2a0e79b1e41ea9ea29d286e32f3d5cb7c0044b0ca54ae720a857fb81e6c490a621961fc55')
+sha512sums=('3b49a2abb0b4c9bef06f03116695548c412cea4491b3fa8c060e5a281d6f204c181af98a21aea93ce81b4307d301ec6bbd9b9e87f6596f180697de8273fd89ac')
 
 package() {
     cd "Plex-Trakt-Scrobbler-${pkgver}"
