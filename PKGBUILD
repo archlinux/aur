@@ -4,7 +4,7 @@ pkgdesc="ROS - Base dependencies and support libraries for ROS."
 url='http://ros.org/wiki/roslib'
 
 pkgname='ros-kinetic-roslib'
-pkgver='1.13.5'
+pkgver='1.13.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-kinetic-roslib-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/kinetic/roslib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9a546840d7514ea593aa05490c0b35d253c306f3730d239d5a72b35e91a62686')
+sha256sums=('fe1fc917253ad67d7454022ca7b5ed556670212c6bcbbdfdb56720b25ba69ed4')
 
 build() {
   # Use ROS environment variables
