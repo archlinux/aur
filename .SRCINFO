@@ -13,6 +13,7 @@ pkgbase = zoin
 	depends = qt5-base
 	depends = qt5-tools
 	depends = openssl-1.0
+	depends = qrencode
 	provides = zoin
 	conflicts = zoin
 	source = https://github.com/zoincoin/zoin/releases/download/v0.8.7.5/zoin-master-src-0875.zip
