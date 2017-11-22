@@ -1,4 +1,4 @@
-pkgname=xmr-stak-cpu-git
+pkgname=xmr-stak-git
 pkgver=r485.79154f7
 pkgrel=1
 pkgdesc="Monero CPU miner"
@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
 license=('GPL3')
 makedepends=('git' 'cmake')
-depends=('libmicrohttpd' 'openssl' 'hwloc')
+depends=('libmicrohttpd' 'openssl' 'hwloc' 'cuda')
 source=('git+https://github.com/fireice-uk/xmr-stak.git'
         'no-donate.patch')
 sha256sums=('SKIP'
@@ -24,11 +24,12 @@ prepare() {
 
 build() {
     cd "$srcdir/xmr-stak"
-    cmake -DCUDA_ENABLE=off .
+    CC=/bin/gcc-6 CXX=/bin/g++-6 cmake .
     make
 }
 
 package() {
     install -D -m755 "$srcdir/xmr-stak/bin/xmr-stak" -t "$pkgdir/usr/bin/"
+    install -D -m644 "$srcdir/xmr-stak/bin/libxmrstak_cuda_backend.so" -t "$pkgdir/usr/lib"
     install -D -m644 "$srcdir/xmr-stak/bin/libxmrstak_opencl_backend.so" -t "$pkgdir/usr/lib"
 }

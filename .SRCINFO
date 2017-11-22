@@ -1,4 +1,4 @@
-pkgbase = xmr-stak-cpu-git
+pkgbase = xmr-stak-git
 	pkgdesc = Monero CPU miner
 	pkgver = r485.79154f7
 	pkgrel = 1
@@ -10,10 +10,11 @@ pkgbase = xmr-stak-cpu-git
 	depends = libmicrohttpd
 	depends = openssl
 	depends = hwloc
+	depends = cuda
 	source = git+https://github.com/fireice-uk/xmr-stak.git
 	source = no-donate.patch
 	sha256sums = SKIP
 	sha256sums = b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a
 
-pkgname = xmr-stak-cpu-git
+pkgname = xmr-stak-git
 
