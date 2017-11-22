@@ -1,6 +1,6 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: Schrottfresse <schrottfresse@gmx.de>
 pkgname=libspatialindex-git
-pkgver=1.8.5
+pkgver=r460.0f5f2d0
 pkgrel=1
 pkgdesc="C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API "
 arch=('i686' 'x86_64')
@@ -10,29 +10,19 @@ depends=('gcc-libs')
 makedepends=('git' 'gtest')
 provides=('libspatialindex')
 conflicts=('libspatialindex')
+source=('git://github.com/libspatialindex/libspatialindex.git')
+md5sums=('SKIP')
 
-_gitroot=https://github.com/libspatialindex/libspatialindex.git
 _gitname=libspatialindex
 
+pkgver() {
+  cd $_gitname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-    cd $_gitname
-    git checkout $pkgver
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  cd $_gitname
+  sed -i -e 's+#!/usr/bin/env python$+#!/usr/bin/env python2+' ./test/gtest/gtest-*/scripts/*.py
 
   ./autogen.sh
   ./configure --prefix=/usr
@@ -40,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd $_gitname
   make DESTDIR="$pkgdir/" install
 }
 
