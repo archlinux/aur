@@ -1,6 +1,6 @@
 # Maintainer: Yann Leprince <yann dot leprince at ylep dot fr>
 pkgname=blitz
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="C++ Class library for scientific computing"
 arch=('i686' 'x86_64')
@@ -11,23 +11,19 @@ license=('BSD')
 depends=('boost')
 makedepends=()
 conflicts=('blitz-cppqed-hg')
-source=("git://github.com/blitzpp/blitz.git#commit=9b74367da3b095f141ea19a186fef702dc30fd0c"
-        "blitz-0.10-gcc47.patch")
-md5sums=('SKIP'
-         '3f1d36d804e0de97b8f090cf2826ca61')
+source=("https://github.com/blitzpp/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('fe43e2cf6c9258bc8b369264dd008971')
 
 prepare() {
-  cd "$pkgname"
-  patch -p1 -i "$srcdir/blitz-0.10-gcc47.patch"
+  cd "$pkgname-$pkgver"
   sed -i -e 's/python/python2/g' \
-      blitz/generate/Makefile* \
+      blitz/generate/Makefile.in \
       blitz/generate/genstencils.py
-  autoreconf -i
 }
 
 build() {
   local _conditional_options
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   if [ "$CARCH" = "x86_64" ]; then
     _conditional_options=--enable-64bit
@@ -51,12 +47,12 @@ build() {
 }
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   make -k check-testsuite
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   install -D -m644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
   make DESTDIR="$pkgdir/" install || return 1
 }
