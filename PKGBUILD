@@ -4,7 +4,7 @@ pkgdesc="ROS - rosbuild contains scripts for managing the CMake-based build syst
 url='http://ros.org/wiki/rosbuild'
 
 pkgname='ros-kinetic-rosbuild'
-pkgver='1.13.5'
+pkgver='1.13.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-kinetic-rosbuild-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/kinetic/rosbuild/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e3e985f2d631ed3826dc530206531a0b77b906a796f8dcacbe8589fa58322ae1')
+sha256sums=('f2bfbca788cfc29e6d88815c9e9ba1f37f55f4a693a110e7c22e615190084e55')
 
 build() {
   # Use ROS environment variables
