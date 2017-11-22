@@ -23,7 +23,7 @@ pkgbase = linux-xanmod-lts
 	sha256sums_x86_64 = 6c4d909ae6594a2956c257539c8b2f67a8de52d7335be172787d6dc8aca12c99
 
 pkgname = linux-xanmod-lts
-	pkgdesc = The Linux kernel and modules with Xanmod patches
+	pkgdesc = The Linux kernel and modules with Xanmod patches - LTS branch
 	install = linux-lts.install
 	depends = coreutils
 	depends = linux-firmware
@@ -33,5 +33,5 @@ pkgname = linux-xanmod-lts
 	backup = etc/mkinitcpio.d/linux-xanmod-lts.preset
 
 pkgname = linux-xanmod-lts-headers
-	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
+	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel - LTS branch
 
