@@ -22,6 +22,9 @@ pkgver() {
 package() {
     cd "$srcdir"/"$_pkgname"
     
+    # initialize submodules
+    git submodule update --init --recursive
+    
     # putting the freedesktop .desktop file and the program icon to the right place
     mkdir -p "$pkgdir"/usr/share/applications
     mkdir -p "$pkgdir"/usr/share/pixmaps
