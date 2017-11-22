@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back to ROS
 url='http://ros.org/wiki/rosbag'
 
 pkgname='ros-kinetic-rosbag'
-pkgver='1.12.7'
+pkgver='1.12.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -21,7 +21,7 @@ ros_makedepends=(ros-kinetic-roscpp-serialization
   ros-kinetic-rosbag-storage)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python2-pillow
+  python2-imaging
   boost)
 
 ros_depends=(ros-kinetic-genmsg
@@ -47,7 +47,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosbag-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosbag/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3a747ee614594c766dca42cb5b615b60cf2d22ce64ede6f2cf4910ad72c2ce72')
+sha256sums=('d1324f5d8718bc34a66a6114d4340d15e8fc04d62fb42d8addd07e2cbf8e7422')
 
 build() {
   # Use ROS environment variables
