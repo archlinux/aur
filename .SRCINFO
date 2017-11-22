@@ -10,6 +10,8 @@ pkgbase = python-fastmat
 	makedepends = python-numpy
 	makedepends = python-scipy
 	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
 	source = https://github.com/EMS-TU-Ilmenau/fastmat/archive/0.1.1.zip
 	sha256sums = cf5d5a4cb869a79ed5ce748cd0e267caa7a0d6690cd836cc35b437924f339f7f
 

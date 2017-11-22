@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/EMS-TU-Ilmenau/fastmat"
 license=('Apache')
 makedepends=('cython' 'gcc' 'python-numpy' 'python-scipy' 'python-setuptools')
+depends=('python-numpy' 'python-scipy')
 source=(
 	"https://github.com/EMS-TU-Ilmenau/fastmat/archive/${pkgver}.zip"
 )
@@ -20,5 +21,5 @@ build() {
 }
 package() {
 	cd fastmat-${pkgver}
-	make install
+	python setup.py install --root="$pkgdir/" --optimize=1
 }
