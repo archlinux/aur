@@ -2,17 +2,16 @@
 
 pkgname='recap'
 pkgdesc="System status reporting"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 arch=('any')
 url="https://github.com/rackerlabs/${pkgname}"
 license=('GPL2')
 provides=(${pkgname})
 conflicts=(${pkgname%-*})
-depends=('bc' 'coreutils' 'gawk' 'grep' 'iotop' 'procps-ng' 'sysstat'
-         'net-tools')
+depends=('coreutils' 'gawk' 'grep' 'iotop' 'procps-ng' 'sysstat' 'iproute2')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=("5f8650a0b68da6fb7a02ebf63a101b8a4e11d2563770bb6088f388f6b3a441af")
+sha256sums=('029c07ee061ab7c95d347336b795559c4d1a4d81742d931e5ee4df959255293f')
 
 package() {
   cd "${pkgname}-${pkgver}"
