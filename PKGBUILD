@@ -48,8 +48,8 @@ prepare() {
 
 package() {
   cd pkg
-  perl install-linux.pl -prefix="${pkgdir}/opt/cuda" -noprompt
-  perl install-sdk-linux.pl -cudaprefix="${pkgdir}/opt/cuda" -prefix="${pkgdir}/opt/cuda/samples" -noprompt
+  PERL5LIB=. perl install-linux.pl -prefix="${pkgdir}/opt/cuda" -noprompt
+  PERL5LIB=. perl install-sdk-linux.pl -cudaprefix="${pkgdir}/opt/cuda" -prefix="${pkgdir}/opt/cuda/samples" -noprompt
 
   # allow gcc 4.9 to work
   sed -i "/unsupported GNU/d" $pkgdir/opt/cuda/include/host_config.h
