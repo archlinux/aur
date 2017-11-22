@@ -4,7 +4,7 @@ pkgdesc="ROS - image_geometry contains C++ and Python libraries for interpreting
 url='http://www.ros.org/wiki/image_geometry'
 
 pkgname='ros-kinetic-image-geometry'
-pkgver='1.12.4'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-kinetic-image_geometry-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/kinetic/image_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('130f9067f473d5ff6a81e4328b21b6f52755ffd3ae4ff5b9836384e02e31885b')
+sha256sums=('66add18697dd701fcbad289f69eb75ef3a26791bfe4dabe3915cea8c647099ec')
 
 build() {
   # Use ROS environment variables
