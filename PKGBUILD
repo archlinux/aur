@@ -3,16 +3,16 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=libical
-pkgver=2.0.0
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="An open source reference implementation of the icalendar data type and serialization format"
 arch=('x86_64')
 url='https://github.com/libical/libical'
 license=('LGPL' 'MPL')
-depends=('glibc')
-makedepends=('cmake')
+depends=('glibc' 'glib2' 'icu' 'db')
+makedepends=('cmake' 'gobject-introspection')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('ab743a66927284ccf42ee28847550144')
+sha256sums=('6405964d596aac64fc82c03c4486387fd6a9c09b1f7af1ff251238e66b9e66e1')
 
 prepare() {
   mkdir build
