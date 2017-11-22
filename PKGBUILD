@@ -4,11 +4,11 @@
 pkgname=randrctl
 pkgdesc="Lightweight profile based screen manager for X"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://github.com/edio/randrctl"
 license=('GPL3')
-makedepends=('python-pip')
+makedepends=('python-pip' 'git')
 depends=('python' 'xorg-xrandr')
 optdepends=('bash-completion')
 source=("https://github.com/edio/$pkgname/archive/$pkgver.tar.gz")
