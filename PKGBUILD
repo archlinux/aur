@@ -1,8 +1,8 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter
 pkgver=5.0.0
-pkgrel=2
-pkgdesc="the simplest + fastest video cutter and joiner"
+pkgrel=3
+pkgdesc="A modern, simple to use, constantly evolving and hella fast MEDIA CUTTER + JOINER w/ frame-accurate SmartCut technology + assistance from Qt5, libmpv, FFmpeg and MediaInfo projects."
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://vidcutter.ozmartians.com"
