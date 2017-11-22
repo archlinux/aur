@@ -20,7 +20,7 @@ license=('BSD')
 arch=('i686' 'x86_64')
 depends=('intel-tbb' 'openexr' 'xine-lib' 'libdc1394' 'gst-plugins-base-libs'
          'gtk3' 'protobuf')
-makedepends=('git' 'cmake' 'python2-numpy' 'python-numpy' 'mesa' 'eigen')
+makedepends=('git' 'cmake' 'python2-numpy' 'python-numpy' 'mesa' 'eigen' 'hdf5')
 optdepends=('opencv-samples'
             'hdf5: Support for HDF5 format'
             'opencl-icd-loader: For coding with OpenCL'

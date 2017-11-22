@@ -12,6 +12,7 @@ pkgbase = opencv-git
 	makedepends = python-numpy
 	makedepends = mesa
 	makedepends = eigen
+	makedepends = hdf5
 	depends = intel-tbb
 	depends = openexr
 	depends = xine-lib
