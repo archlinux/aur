@@ -4,7 +4,7 @@ pkgdesc="ROS - rosmsg contains two command-line tools: rosmsg and rossrv."
 url='http://ros.org/wiki/rosmsg'
 
 pkgname='ros-kinetic-rosmsg'
-pkgver='1.12.7'
+pkgver='1.12.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,8 +15,9 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-kinetic-genmsg
-  ros-kinetic-rosbag
+  ros-kinetic-genpy
   ros-kinetic-roslib
+  ros-kinetic-rosbag
   ros-kinetic-catkin)
 depends=(${ros_depends[@]}
   python2-rospkg)
@@ -30,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosmsg-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosmsg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9aef6586f3f97fb785770f7bdadc4058c833c4a99fb6a945a605c72bfdde9d18')
+sha256sums=('f3139120bebfc87962acb2896bad92789467e0ede26ff104cee4438316816fbe')
 
 build() {
   # Use ROS environment variables
