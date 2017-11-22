@@ -4,7 +4,7 @@ _basename='vcvrack'
 _plugname='sonusmodular'
 
 pkgname='vcvrack-sonusmodular-git'
-pkgver=r262.f3bfb38
+pkgver=r290.dd8630b
 pkgrel=1
 pkgdesc="Sonus Dept. VCV modules"
 url='https://sonusmodular.sonusdept.com'
