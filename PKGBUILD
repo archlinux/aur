@@ -3,13 +3,13 @@
 pkgname='pid-tools'
 pkgdesc="Some commandline tools for dealing with pids, information about processes, and their relations"
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPLv2')
 url="http://github.com/kata198/pid-tools"
 makedepends=('gcc' 'make')
 source=("https://github.com/kata198/pid-tools/archive/${pkgver}.tar.gz")
-sha512sums=("2dddd8459c717d31b57caa8c8933b895a88724cc1a83738d855e6d78de634289e2256fee664efc70aca6b529498ac1571d802edcb53acd428ca6269a9de967b2")
+sha512sums=("091dbc507f0f3678e72610f3e2c943435002ccb415b703cf24335cfeb54bd958739e6cf61cb24ddf0cd0da9257af4d3908d07045bf0644d834542095db7321af")
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
