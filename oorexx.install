@@ -1,0 +1,50 @@
+# arg 1:  the new package version
+pre_install() {
+  /bin/true
+}
+
+# arg 1:  the new package version
+post_install() {
+
+  orx_prefix=/usr
+  bin_dir=${orx_prefix}/bin
+  data_dir=${orx_prefix}/share/ooRexx
+  
+  ln -sf ${data_dir}/rexxtry.rex ${bin_dir}/rexxtry.rex
+
+  # sed -i -e 's|/var/run|/run|g' -e 's|target.wants|target|g' ${data_dir}/rxapid.service
+  ln -s ${data_dir}/rxapid.service /etc/systemd/system/rxapid.service
+  systemctl enable rxapid.service
+  systemctl start  rxapid.service
+
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  /bin/true
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  systemctl stop    rxapid.service
+  systemctl disable rxapid.service
+  rm -f /etc/systemd/system/rxapid.service
+  rm -f /usr/bin/rexxtry.rex
+}
+
+# arg 1:  the old package version
+post_remove() {
+  /bin/true
+}
+
+op=$1
+shift
+$op $*
+
