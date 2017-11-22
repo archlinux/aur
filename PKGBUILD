@@ -5,7 +5,7 @@
 
 pkgname=purple-plugin-pack
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Compilation of plugins for the libpurple family of IM clients"
 arch=('x86_64')
 url="https://bitbucket.org/rekkanoryo/purple-plugin-pack"
