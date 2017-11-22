@@ -1,0 +1,37 @@
+pkgbase = linux-xanmod-lts
+	pkgver = 4.9.64
+	pkgrel = 1
+	url = http://www.xanmod.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://github.com/xanmod/linux/archive/4.9.64-xanmod69.tar.gz
+	source = 90-linux.hook
+	source = linux-lts.preset
+	source = change-default-console-loglevel.patch
+	sha256sums = 5319cdb2ef29450b032001721cb8931dcaeab1952e8adee0ee9397804e037cc6
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = 1e8264f69abb56b25009636693c3e6cf564a90379704a62cae2b3681cd6f66f1
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=26bafcc07e28d3f186bd3be0123c1bcdcfb85810
+	sha256sums_x86_64 = 6c4d909ae6594a2956c257539c8b2f67a8de52d7335be172787d6dc8aca12c99
+
+pkgname = linux-xanmod-lts
+	pkgdesc = The Linux kernel and modules with Xanmod patches
+	install = linux-lts.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-xanmod-lts.preset
+
+pkgname = linux-xanmod-lts-headers
+	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
+
