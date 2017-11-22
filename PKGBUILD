@@ -27,7 +27,7 @@ source=("$pkgname-$pkgver.tar.gz"
 "$pkgname.desktop")
 noextract=()
 md5sums=('108bcae80b33282f046eed9634be853f'
-'2d73d575d7affd6fb5420558206fd793')
+         '9eebac803f7b075c4890877f901cb8a9')
 validpgpkeys=()
 
 prepare() {
