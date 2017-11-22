@@ -1,19 +1,20 @@
 pkgbase = msi-keyboard-light-manager
 	pkgdesc = MSI keyboard light manager
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ruabmbua/msi_klm
 	arch = any
 	license = LGPL
 	makedepends = git
 	makedepends = tar
-	makedepends = xz
+	makedepends = gzip
+	makedepends = rustup
 	depends = libusb
 	depends = gtk3
 	source = msi-keyboard-light-manager-1.0.0.tar.gz
 	source = msi-keyboard-light-manager.desktop
 	md5sums = 108bcae80b33282f046eed9634be853f
-	md5sums = 2d73d575d7affd6fb5420558206fd793
+	md5sums = 9eebac803f7b075c4890877f901cb8a9
 
 pkgname = msi-keyboard-light-manager
 
