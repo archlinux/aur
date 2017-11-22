@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Łaziuk <tlaziuk@gmail.com>
 
 pkgname=worksnaps
-pkgver=1.1.20160810
+pkgver=1.1.20171025
 pkgrel=1
 pkgdesc="Time Tracking with Screenshots for Remote Teams"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://www.worksnaps.com/www/download.shtml"
 license=('unknown')
 depends=('java-runtime')
 source=("http://worksnaps-download.s3.amazonaws.com/WSClient-linux-$pkgver.zip")
-md5sums=('436cbd0628b87d33d75f99c7fbec0035')
+md5sums=('e722ee1fce5313d1ef0caf7124b2fbbf')
 
 prepare() {
     # the main executable file
@@ -23,7 +23,7 @@ exec "$script"'
     chmod a+rx "$filename"
     # make sure everybody has access to the files
     chmod a+r "$srcdir" --recursive
-    # worksnaps requires write access to the sh files, thats unsafe but otherwise an java exception is thrown
+    # worksnaps requires write access to the sh files, thats unsafe but otherwise a java exception is thrown
     find "$srcdir" -type f -name "*.sh" -exec chmod a+rwx {} \; 
 }
 
