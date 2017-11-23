@@ -2,7 +2,7 @@
 
 pkgname=abrowser-bin
 pkgver=57.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary version of Abrowser, safe and easy web browser from Mozilla"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
