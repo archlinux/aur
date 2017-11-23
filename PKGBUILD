@@ -1,4 +1,5 @@
-# Maintainer: Emilio Aburto <eaburto@dcc.uchile.cl>
+# Contributor: Gerad Munsch <gmunsch@unforgivendevelopment.com>
+# Maintainer : Emilio Aburto <eaburto@dcc.uchile.cl>
 
 _pkgname=keeotp
 _pkgname2=KeeOtp
