@@ -1,13 +1,8 @@
 # Maintainer: SrKaysama <srkaysama@waifu.club>
-# Contributor: Cayde Dixon <me@cazzar.net>
-# Contributor: Anthony Anderson <aantony4122@gmail.com>
-
-
-_branch='discord-always-canary'
 
 pkgname=discord-always-canary
 pkgver=99.0.0
-pkgrel=15
+pkgrel=23
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -22,14 +17,19 @@ optdepends=(
 )
 
 install="DiscordCanary.install"
+_latest="https://discordapp.com/api/download/canary?platform=linux&format=tar.gz"
+_version="$(curl -sI $_latest | grep location | sed 's/^.*linux\///' | sed 's/.discord.*//')"
 source=(DiscordCanary.desktop LICENSE)
-source_x86_64=("https://discordapp.com/api/download/canary?platform=linux&format=tar.gz")
+source_x86_64=("https://dl-canary.discordapp.net/apps/linux/${_version}/discord-canary-${_version}.tar.gz")
 md5sums=('SKIP'
          'SKIP')
 md5sums_x86_64=('SKIP')
 
-
 #This is always latest build
+
+pkgver() {
+  echo "${_version}"
+}
 
 package() {
   # Install the main files.
@@ -38,7 +38,6 @@ package() {
 
   # Exec bit
   chmod 755 "${pkgdir}/opt/${conflicts}/DiscordCanary"
-
 
   # Desktop Entry
   install -d "${pkgdir}/usr/share/applications"
