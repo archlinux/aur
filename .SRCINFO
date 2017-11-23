@@ -3,13 +3,17 @@ pkgbase = libthinkpad
 	pkgver = 2.4
 	pkgrel = 3
 	url = https://github.com/libthinkpad/libthinkpad
+	install = libthinkpad.install
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	depends = libsystemd
+	depends = acpid
 	source = http://thinkpads.org/ftp/libthinkpad/libthinkpad-2.4.tar.gz
+	source = libthinkpad.install
 	md5sums = 7f325a94be08685fc2501832888dffd6
+	md5sums = b44e3c7ddac879d57b45a709544df785
 
 pkgname = libthinkpad
 
