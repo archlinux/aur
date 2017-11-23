@@ -5,9 +5,8 @@ pkgbase = libthinkpad
 	url = https://github.com/libthinkpad/libthinkpad
 	arch = i686
 	arch = x86_64
-	license = BSD-2
-	depends = cmake
-	depends = systemd
+	license = BSD
+	makedepends = cmake
 	source = http://thinkpads.org/ftp/libthinkpad/libthinkpad-2.3.tar.gz
 	md5sums = da6791c1880e73a43879023c1d7770a3
 
