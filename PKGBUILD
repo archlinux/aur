@@ -2,7 +2,7 @@
 
 pkgname=wavebox-bin-beta
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation of web-desktop communication"
 arch=('x86_64' 'i686')
 url="https://wavebox.io/"
@@ -37,6 +37,6 @@ package() {
   install -m644 "${srcdir}/wavebox.desktop" "${pkgdir}/usr/share/applications/wavebox.desktop"
   ln -s "/usr/share/wavebox/Wavebox" "${pkgdir}/usr/bin/wavebox"
 
-  chmod 644 "${pkgdir}/usr/share/wavebox/icon.png"
+  chmod 644 "${pkgdir}/usr/share/wavebox/wavebox_icon.png"
   chmod 644 "${pkgdir}/usr/share/wavebox/libnode.so"
 }
