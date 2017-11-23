@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Cabral <ricardo.arturo.cabral@gmail.com>
 
 pkgname=tibia
-pkgver=11.49.5983
+pkgver=11.49.6018
 pkgrel=1
 pkgdesc="fast-paced free massively multiplayer online role-playing game"
 arch=('x86_64')
@@ -15,10 +15,10 @@ source=("${pkgname}-${pkgver}.tar.gz::http://static.tibia.com/download/tibia.x64
         "01_openssl102.patch"
         "02_freetype.patch")
 
-sha256sums=('7feb6618637542714fd4e51e3bcfa8c90374885c3de228ffd631e53481431fed'
+sha256sums=('272e1a9a51724cb6586d2477dfa16eb066e457057f6da68eb17b41f39837feb2'
             '965edf1cf67698f9dcfcbced495e0e96a666207a9a0b91fb769ed386a5f1efe5'
-            'd2f8d84f9ba044291a08f876292d3e43e040c712adb05aff859b589486f2c491'
-            '51175b2e6165d6efff585342c63564c98a27ad42c5b3797b1cda271c0f1881de')
+            '71c8ed82d30210c81bcd9bc96d434bf8e607c945b8fb9e2fb5380c46d4e7f01d'
+            'd50262dc7fbecd8544416e267e8d76343a23340b8ed5145eb7d24c1166eebfa0')
 
 prepare() {
   gendesk -f -n
