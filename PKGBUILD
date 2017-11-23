@@ -16,7 +16,8 @@ source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz
 noextract=($pkgname-$pkgver.tgz)
 
 package() {
-  mkdir -p "${pkgdir}/var/lib/${pkgname}/music"
+  mkdir -p "${pkgdir}/var/lib/${pkgname}/media"
+  chown 49:49 "${pkgdir}/var/lib/${pkgname}/media"
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
   install -d -g 49 -o 49 "${pkgdir}/var/lib/${pkgname}"
   install -Dm644 mstream.service "$pkgdir"/usr/lib/systemd/system/mstream.service
