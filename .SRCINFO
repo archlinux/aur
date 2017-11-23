@@ -1,0 +1,17 @@
+pkgbase = deadbeef-plugin-headerbar-gtk3-git
+	pkgdesc = Headerbar Plugin for the DeaDBeeF audio player (development version)
+	pkgver = r102
+	pkgrel = 1
+	url = https://github.com/saivert/ddb_misc_headerbar_GTK3
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = git+https://github.com/saivert/ddb_misc_headerbar_GTK3
+	md5sums = SKIP
+
+pkgname = deadbeef-plugin-headerbar-gtk3-git
+	depends = deadbeef
+	depends = gtk3
+	provides = deadbeef-plugin-headerbar-gtk3
+	conflicts = deadbeef-plugin-headerbar-gtk3
+
