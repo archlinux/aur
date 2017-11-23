@@ -3,7 +3,7 @@ pkgdesc="ROS - The Robot Pose EKF package is used to estimate the 3D pose of a r
 url='http://wiki.ros.org/robot_pose_ekf'
 
 pkgname='ros-kinetic-robot-pose-ekf'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -40,7 +40,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-robot_pose_ekf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/robot_pose_ekf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a238641bc269614f01bf2fec8b6eb5cfff4df810758168960bf75fe7924fb374')
+sha256sums=('6687e1de0dc7745da334d346cdce88acb13c35c48fa15d476b92e83cc890049c')
 
 build() {
   # Use ROS environment variables
