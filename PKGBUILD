@@ -3,30 +3,30 @@
 # Contributor: Ryan Lee <ryan@swyro.com>
 
 pkgname=apache-flex-sdk
-pkgver=4.16.0
+pkgver=4.16.1
+_player_ver=27.0
 pkgrel=1
 pkgdesc="The open-source framework for building expressive web and mobile applications"
 arch=('any')
 license=('Apache')
-url='http://flex.apache.org/'
+url='https://flex.apache.org/'
 depends=('bash' 'java-runtime')
 optdepends=(
     'adobe-air-sdk: for compiling flex projects into AIR apps'
 )
 source=(
-    "http://www.apache.org/dist/flex/$pkgver/binaries/apache-flex-sdk-$pkgver-bin.tar.gz"{,.asc}
-    "http://download.macromedia.com/get/flashplayer/updaters/11/playerglobal11_1.swc"
-    "http://fpdownload.macromedia.com/get/flashplayer/updaters/15/playerglobal15_0.swc"
+    "https://www.apache.org/dist/flex/$pkgver/binaries/apache-flex-sdk-$pkgver-bin.tar.gz"{,.asc}
+    "https://fpdownload.macromedia.com/get/flashplayer/updaters/${_player_ver%%.*}/playerglobal${_player_ver/./_}.swc"
     "apache-flex-sdk.sh"
 )
-sha256sums=('8a339bd19babca331962b76badc9f10b7455cd67eb7b8b32785a7390afc68c7c'
+sha256sums=('17fda7ac8d3e476cad3127f345455ef316acfb87c6f4322e5897bd8d9b09388e'
             'SKIP'
-            '2bbd5ffff3bb20c117db7206080079479b04c4b55d68dd21ab31b6566c99fb6b'
-            'f997533155615597cf815c3cd8bc9618428f594acde24c6711d63340d9710b67'
+            '4e4cbe1a936a25c405f988293033b50a31a00f23ed6e2401ba5563a4e95b8263'
             '520ae01482825ef28da42c03b3cbadd3d62155ed074d737f3672980f0a97a3fd')
+# Check https://www.apache.org/dist/flex/KEYS for whether a key is really from an Apache developer or not
 validpgpkeys=(
-    '17D73FA2308E1C1E8154D51300397EFE935E15AF'  # Alex Harui
     'E28487967B092453A2AB8DA9E0F28593AEEAD151'  # Justin Mclean
+    '44998F3E242727E94C4BADEB6B0A7EC905061FC8'  # Piotr Zarzycki
 )
 install=apache-flex-sdk.install
 options=('!strip')
@@ -36,10 +36,8 @@ _binary_name="${pkgname}-${pkgver}-bin.tar.gz"
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}-bin/"
-    mkdir -p player/11.1/
-    mkdir -p frameworks/libs/player/15.0
-    cp ../playerglobal11_1.swc player/11.1/playerglobal.swc
-    cp ../playerglobal15_0.swc frameworks/libs/player/15.0/playerglobal.swc
+    mkdir -p player/${_player_ver}/
+    cp ../playerglobal${_player_ver/./_}.swc player/${_player_ver}/playerglobal.swc
 }
 
 package() {
