@@ -34,6 +34,6 @@ package() {
 	cd ${srcdir}/${_gitname}/${_gitname}
 	make DESTDIR=${pkgdir}/ install
 	install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/kvantum/ChangeLog
-	install -Dm644 COPYING ${pkgdir}/usr/share/doc/kvantum/COPYING
+	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/kvantum/COPYING
 	cp -r doc ${pkgdir}/usr/share/doc/kvantum
 }
