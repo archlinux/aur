@@ -3,11 +3,11 @@
 pkgname=stgl-git
 _pkgname=stgl
 pkgver='r1000.35fd0f5'
-pkgrel=1
+pkgrel=2
 pkgdesc='(ex) simple terminal (OpenGL edition!)'
 arch=('x86_64')
 license=('MIT')
-depends=('libxft' 'libxext' 'xorg-fonts-misc' 'adobe-source-code-pro-fonts')
+depends=('libxft' 'libxext' 'xorg-fonts-misc' 'adobe-source-code-pro-fonts' 'glm')
 conflicts=('st')
 makedepends=('ncurses')
 url="https://github.com/bobtwinkles/stgl"

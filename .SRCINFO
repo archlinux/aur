@@ -1,7 +1,7 @@
 pkgbase = stgl-git
 	pkgdesc = (ex) simple terminal (OpenGL edition!)
 	pkgver = r1000.35fd0f5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bobtwinkles/stgl
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = stgl-git
 	depends = libxext
 	depends = xorg-fonts-misc
 	depends = adobe-source-code-pro-fonts
+	depends = glm
 	conflicts = st
 	source = git+https://github.com/bobtwinkles/stgl
 	md5sums = SKIP
