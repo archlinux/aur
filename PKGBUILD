@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 
 pkgname=chisel-tunnel
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A fast TCP tunnel over HTTP"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -17,12 +17,12 @@ source_armv7h=("chisel_armv7h.gz::https://github.com/jpillora/chisel/releases/do
 source_aarch64=("chisel_aarch64.gz::https://github.com/jpillora/chisel/releases/download/$pkgver/chisel_linux_arm.gz")
 md5sums=('a4b9322a6a38e3cdcd11f091241295d4'
          '94a1b56e4b075e50eca71637dca2ba27')
-md5sums_i686=('588094f95dd8a4022280bbb38c6a5d1a')
-md5sums_x86_64=('69e4a6c7322038beea821749568cc2f3')
-md5sums_arm=('1e7fb78655febc1c5ddabdd6d4fc4a12')
-md5sums_armv6h=('1e7fb78655febc1c5ddabdd6d4fc4a12')
-md5sums_armv7h=('1e7fb78655febc1c5ddabdd6d4fc4a12')
-md5sums_aarch64=('1e7fb78655febc1c5ddabdd6d4fc4a12')
+md5sums_i686=('3f252ada8db3eb0de637c734f9cfea64')
+md5sums_x86_64=('2d0fbc8b9856f81cd989f1571f65788d')
+md5sums_arm=('f1227f985767ba517f1cd7037b637264')
+md5sums_armv6h=('f1227f985767ba517f1cd7037b637264')
+md5sums_armv7h=('f1227f985767ba517f1cd7037b637264')
+md5sums_aarch64=('f1227f985767ba517f1cd7037b637264')
 
 package() {
   install -D -m755 "chisel_$CARCH" "$pkgdir/usr/bin/chisel"
