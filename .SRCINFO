@@ -1,6 +1,6 @@
 pkgbase = linux-macbook
 	pkgver = 4.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -25,6 +25,7 @@ pkgbase = linux-macbook
 	source = RFC-v2-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch
 	source = intel-pstate-backport.patch
 	source = 0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
+	source = 0001-bio-ensure-__bio_clone_fast-copies-bi_partno.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
@@ -42,6 +43,7 @@ pkgbase = linux-macbook
 	sha256sums = 09189eb269a9fd16898cf90a477df23306236fb897791e8d04e5a75d5007bbff
 	sha256sums = 3d9fdbb4bee270efa6eef1d8e40a5ae562a87d5a2edae629e0829cc51714de13
 	sha256sums = 6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd
+	sha256sums = 92b8755030d405fa4a9cd31cbe2998fd71584164431e5edc28c2be04fab24d1e
 
 pkgname = linux-macbook
 	pkgdesc = The Linux-macbook kernel and modules
