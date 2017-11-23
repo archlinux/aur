@@ -14,7 +14,7 @@ source=("apitrace-$pkgver.tar.gz::https://github.com/apitrace/apitrace/archive/$
 md5sums=('c5d44dece1e1ca7c63f8b8efbd06ac5a')
 
 build() {
-  cd ${srcdir}/apitrace-*
+  cd "${srcdir}/apitrace-${pkgver}"
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -28,7 +28,7 @@ build() {
 package() {
   depends=('python2' 'lib32-libgl' 'lib32-procps-ng' 'apitrace')
 
-  cd "${srcdir}"/apitrace-*
+  cd "${srcdir}/apitrace-${pkgver}"
   
   make  -C build DESTDIR="${pkgdir}/" install
 
