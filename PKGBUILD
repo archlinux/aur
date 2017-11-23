@@ -2,14 +2,14 @@
 
 pkgname=('python-bittrex' 'python2-bittrex')
 _pkgname=${pkgname[0]}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Python bindings for bittrex'
 url='https://github.com/ericsomdahl/python-bittrex'
 license=('MIT')
 arch=('any')
 source=("$url/archive/$pkgver.tar.gz")
-md5sums=('e0bb9ae854c90f1f238635255de2e727')
+md5sums=('151c538c67b1f4c1278f2d29730df2bd')
 
 package_python-bittrex() {
   depends=('python-requests')
@@ -17,7 +17,7 @@ package_python-bittrex() {
 
   cd "$srcdir/$_pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname[0]}/LICENSE"
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/${pkgname[0]}"
 }
 
 package_python2-bittrex() {
@@ -26,5 +26,5 @@ package_python2-bittrex() {
 
   cd "$srcdir/$_pkgname-$pkgver"
 	python2 setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname[1]}/LICENSE"
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/${pkgname[1]}"
 }
