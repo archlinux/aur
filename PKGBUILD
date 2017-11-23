@@ -33,11 +33,11 @@ md5sums_x86_64=('SKIP')
 
 package() {
   # Install the main files.
-  install -d "${pkgdir}/opt/${pkgname}"
-  cp -a "${srcdir}/DiscordCanary/." "${pkgdir}/opt/${pkgname}"
+  install -d "${pkgdir}/opt/${conflicts}"
+  cp -a "${srcdir}/DiscordCanary/." "${pkgdir}/opt/${conflicts}"
 
   # Exec bit
-  chmod 755 "${pkgdir}/opt/${pkgname}/DiscordCanary"
+  chmod 755 "${pkgdir}/opt/${conflicts}/DiscordCanary"
 
 
   # Desktop Entry
@@ -47,12 +47,12 @@ package() {
   # Main binary
   install -d "${pkgdir}/usr/bin"
   #install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
-  ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${conflicts}/DiscordCanary" "${pkgdir}/usr/bin/${conflicts}"
 
   # Create symbolic link to the icon
   install -d "${pkgdir}/usr/share/pixmaps"
-  ln -s "/opt/${pkgname}/discord.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  ln -s "/opt/${conflicts}/discord.png" "${pkgdir}/usr/share/pixmaps/${conflicts}.png"
 
   # License
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${conflicts}/LICENSE"
 }
