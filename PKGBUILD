@@ -3,7 +3,7 @@ pkgdesc="ROS - This planner attempts to find a legal place to put a carrot for t
 url='http://wiki.ros.org/carrot_planner'
 
 pkgname='ros-kinetic-carrot-planner'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-carrot_planner-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/carrot_planner/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7d5336c8df534d296b72d4b1deef84d86855e14407a62b891c7c4646702e7321')
+sha256sums=('0a4d6c8def6f16b487bd37289b4273535c175d33de69ce1072ae2c52fb9bd2d4')
 
 build() {
   # Use ROS environment variables
