@@ -3,7 +3,7 @@ pkgdesc="ROS - A path planner library and node."
 url='http://wiki.ros.org/global_planner'
 
 pkgname='ros-kinetic-global-planner'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -43,7 +43,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-global_planner-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/global_planner/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('20dfa43cb87cbc994698db08054906f41b7b91436766f93dcf188fba668a21bc')
+sha256sums=('c42d6cfa251663f073f89a8d37c7773cc0cb1fe7753cb76037421e8372f8b4bf')
 
 build() {
   # Use ROS environment variables

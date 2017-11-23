@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-global-planner
 	pkgdesc = ROS - A path planner library and node.
-	pkgver = 1.14.1
+	pkgver = 1.14.2
 	pkgrel = 1
 	url = http://wiki.ros.org/global_planner
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = ros-kinetic-global-planner
 	depends = ros-kinetic-dynamic-reconfigure
 	depends = ros-kinetic-nav-msgs
 	depends = ros-kinetic-pluginlib
-	source = ros-kinetic-global-planner-1.14.1-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/kinetic/global_planner/1.14.1-0.tar.gz
-	sha256sums = 20dfa43cb87cbc994698db08054906f41b7b91436766f93dcf188fba668a21bc
+	source = ros-kinetic-global-planner-1.14.2-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/kinetic/global_planner/1.14.2-0.tar.gz
+	sha256sums = c42d6cfa251663f073f89a8d37c7773cc0cb1fe7753cb76037421e8372f8b4bf
 
 pkgname = ros-kinetic-global-planner
 
