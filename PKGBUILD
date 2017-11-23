@@ -1,8 +1,8 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bisq
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
 url="https://bitsquare.io/"
@@ -35,7 +35,7 @@ package() {
   install -D -m755 "bisq.sh" "${pkgdir}/usr/bin/bisq"
   install -D -m644 "${srcdir}/${pkgname}/gui/target/shaded.jar" "${pkgdir}/usr/share/java/bisq/shaded.jar"
 
-  install -D "${srcdir}/${pkgname}/gui/target/gui-0.5.3.jar" "${pkgdir}/usr/share/java/bisq"
+  install -D "${srcdir}/${pkgname}/gui/target/gui-${pkgver}.jar" "${pkgdir}/usr/share/java/bisq"
 
   install -d "${pkgdir}/usr/share/java/bisq/lib"
   install -D "${srcdir}/${pkgname}/gui/target/lib/bcpg-jdk15on.jar" "${pkgdir}/usr/share/java/bisq/lib"
