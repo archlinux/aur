@@ -16,6 +16,7 @@ pkgbase = python-gdbgui
 	depends = python-gevent
 	depends = python-eventlet
 	depends = python-pygments
+	depends = python-flask-compress
 	source = https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-0.9.0.1.tar.gz
 	md5sums = 1c0613b03841f8b630f59f33483abad2
 
@@ -30,4 +31,5 @@ pkgname = python-gdbgui
 	depends = python-gevent
 	depends = python-eventlet
 	depends = python-pygments
+	depends = python-flask-compress
 
