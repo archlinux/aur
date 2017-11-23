@@ -2,12 +2,12 @@
 
 pkgname=gambit
 pkgver=15.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
 url="http://www.gambit-project.org"
 license=('GPL')
-depends=('wxgtk')
+depends=('wxgtk' 'cython2')
 makedepends=('git' 'gcc6')
 provides=('gambit')
 conflicts=('gambit')
@@ -23,10 +23,14 @@ build() {
   automake --add-missing
   autoconf
   CXX=g++-6 CPP=cpp-6 ./configure --prefix=/usr --disable-enumpoly
-  make 
+  make
+  cd src/python
+  CC=gcc-6 python2 setup.py build
 }
 
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
+  cd src/python
+  CC=gcc-6 python2 setup.py install --root="$pkgdir"
 }
