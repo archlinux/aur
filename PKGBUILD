@@ -27,4 +27,5 @@ build() {
 package() {    
     cd ./${_pkgname}-1.1
     make install DESTDIR="${pkgdir}"
+    mv ${pkgdir}/usr/share/backgrounds/fedora-workstation ${pkgdir}/usr/share/backgrounds/f27-backgrounds
 }
