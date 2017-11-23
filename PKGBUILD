@@ -2,8 +2,8 @@
 
 _pkgname=grv
 pkgname=$_pkgname-git
-pkgver=r227.4ecb757
-pkgrel=2
+pkgver=r229.121ee06
+pkgrel=1
 pkgdesc="terminal interface for viewing git repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/rgburke/$_pkgname"
@@ -34,6 +34,6 @@ build() {
 
 package() {
     export GOROOT="$GOPATH"
-    install -Dm755 "$(pwd)/src/github.com/rgburke/grv/grv" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm755 "$srcdir/src/github.com/rgburke/grv/grv" "$pkgdir/usr/bin/$_pkgname"
 }
 
