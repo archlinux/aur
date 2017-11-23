@@ -25,7 +25,7 @@ source=("git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#c
 sha256sums=('SKIP'
             'dd2d3a9c8a08ce961e263e1847453890f1b24c72a806d8c83a5b69b227a5ccec'
             '477d609aefd991c48aca93dc7ea5a77ebebf46e0481184530cceda4c0d8d72c6'
-            '50bc08476f9c799032230b909c4bdce58726f83cfc654aa3835c17ac99e500cc')
+            '860a772fcc26271f6a25a2baa0d92088e63dbf1770ccc4c25e71653dbe46b96b')
 
 prepare() {
   mkdir -p libnm{,-glib}/usr/{include,lib/{girepository-1.0,pkgconfig},share/{gir-1.0,gtk-doc/html,vala/vapi}}

@@ -1,18 +1,20 @@
+diff --git a/src/devices/wifi/nm-device-wifi.c b/src/devices/wifi/nm-device-wifi.c
+index 5e92f47b7..32e281cd2 100644
 --- a/src/devices/wifi/nm-device-wifi.c
 +++ b/src/devices/wifi/nm-device-wifi.c
-@@ -1364,13 +1364,8 @@ scanning_prohibited (NMDeviceWifi *self,
-    /* Can always scan when disconnected */
-    return FALSE;
-  case NM_DEVICE_STATE_ACTIVATED:
--   /* Prohibit periodic scans when connected; we ask the supplicant to
--    * background scan for us, unless the connection is locked to a specifc
--    * BSSID.
--    */
--   if (periodic)
--     return TRUE;
--   break;
-+   /* Prohibit periodic scans when connected */
-+   return TRUE;
-  }
-
-  /* Prohibit scans if the supplicant is busy */
+@@ -1364,13 +1364,8 @@ scanning_prohibited (NMDeviceWifi *self, gboolean periodic)
+ 		/* Can always scan when disconnected */
+ 		return FALSE;
+ 	case NM_DEVICE_STATE_ACTIVATED:
+-		/* Prohibit periodic scans when connected; we ask the supplicant to
+-		 * background scan for us, unless the connection is locked to a specifc
+-		 * BSSID.
+-		 */
+-		if (periodic)
+-			return TRUE;
+-		break;
++		/* Prohibit periodic scans when connected */
++        return TRUE;
+ 	}
+ 
+ 	/* Prohibit scans if the supplicant is busy */
