@@ -1,6 +1,6 @@
 # Maintainer: smlb <smlb at riseup dot net>
 
-pkgname=libthinkpad
+pkgname=libthinkpad-git
 pkgver=2.3.r7.g5f9256f
 pkgrel=1
 pkgdesc="A general purpose userspace ThinkPad library"
