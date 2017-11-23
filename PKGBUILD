@@ -2,38 +2,39 @@
 # Maintainer: Parth Nobel <pnob99 *AT* gmail *DOT* com>
 
 pkgname=triplea
-pkgver=1.8.0.9
+pkgver=1.9.0.0.7594
 pkgrel=1
 pkgdesc='An online multiplayer turn based strategy game and board game engine.'
 arch=('any')
-url="http://triplea.sf.net"
+url="http://www.triplea-game.org/"
 license=('GPL')
 install=${pkgname}.install
 depends=('gtk-update-icon-cache' 'java-runtime')
-source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${pkgver//./_}_all_platforms.zip"
-        "https://github.com/PTNobel/TripleA/archive/master.zip"
-        "triplea")
-sha256sums=('9e94165cbf2b907563dfaf8db776b2941fdbdd511df45dc19c9304c6df1b01fe'
-            '36e716f54faeb1e29580602c9607ac5472c24282ba67b7b4cce0e83bd09d1220'
-            '4fdd7ad0c1a802a3142e800dc1f354a246586d8bb75b8c17b6dc948b5cf35f05')
+source=( "https://github.com/triplea-game/triplea/releases/download/${pkgver}/triplea-${pkgver}-all_platforms.zip"
+         "https://github.com/chrisfair/tripleapatches/archive/${pkgver}.tar.gz"
+         "triplea")
+sha256sums=('5e419c7bb6a7cfdf375afed292d769694b4be3d910e1734c0533478e244870d2' 
+            'fd7ed202cc25488b3d526d928035224f9de9e32fe6650cb2974b575f65cca6ea'
+            '2774c5d96117330cd5edaf7f4aae0f9a6ffbe757b2d9a8ae4bbc5b0dfde9274f')
+
 
 package() {
-    install -d "${pkgdir}/usr/share/triplea"
-    cd ${srcdir}/${pkgname}_${pkgver//./_}
-    cp -R * ${pkgdir}/usr/share/triplea
-    cd ${srcdir}/TripleA-master/usr/share/
-    cp -R * ${pkgdir}/usr/share
+    install -d "${pkgdir}/usr/share/${pkgname}"
+    cd ${srcdir}/tripleapatches-${pkgver}
+    cp triplea.patch ${srcdir}
     cd ${srcdir}
-
-    find ${pkgdir}/usr/share/triplea -type d -exec chmod 755 {} \;
-    find ${pkgdir}/usr/share/triplea -type f -exec chmod 644 {} \;
-    chmod 755 ${pkgdir}/usr/share/triplea/triplea_unix.sh
-    cd ${pkgdir}/usr/share/triplea/
-    rm triplea_mac_os_x.sh
-    rm triplea_windows.bat
-    rm run-headless-game-host-windows.bat
-    rm MacOS_users_read_this_first.txt
-    rm triplea.exe
-    rm -Rf docs 
-    install -D -m 0755 ${srcdir}/triplea ${pkgdir}/usr/bin/triplea
+    patch -Np4 -i ${srcdir}/triplea.patch 
+    rm ${srcdir}/${pkgver}.tar.gz
+    rm -rf ${srcdir}/tripleapatches-${pkgver}
+    rm ${srcdir}/triplea.patch
+    rm ${srcdir}/triplea-${pkgver}-all_platforms.zip
+    rm ${srcdir}/uninstall
+    rm ${srcdir}/${pkgname}
+    cp ../${pkgname} .
+    chmod +x ${srcdir}/${pkgname}
+    chmod +x ${srcdir}/TripleA
+    cp -rfR ${srcdir} ${pkgdir}/usr/share
+    rm -rf ${pkgdir}/usr/share/${pkgname}
+    mv ${pkgdir}/usr/share/src ${pkgdir}/usr/share/${pkgname} 
+    install -D -m 0755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
