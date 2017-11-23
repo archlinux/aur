@@ -3,11 +3,11 @@
 
 pkgname=geany-themes-git
 _gitname=geany-themes
-pkgver=1.22.26
-pkgrel=2
+pkgver=1.22.82.g480a7bd
+pkgrel=1
 pkgdesc='A collection of color schemes for geany.'
 arch=('any')
-url='https://github.com/codebrainz/${_gitname}'
+url="https://github.com/codebrainz/${_gitname}"
 license=('GPL')
 depends=('geany')
 conflicts=('geany-themes')
@@ -16,12 +16,14 @@ provides=('geany-themes')
 source=("git://github.com/codebrainz/${_gitname}.git")
 md5sums=('SKIP')
 
-pkgver(){
-  cd "${srcdir}/${_gitname}"
-  git describe --always | sed 's|-|.|g'
+pkgver()
+{
+	cd "${srcdir}/${_gitname}"
+	git describe --always | sed 's|-|.|g'
 }
-	
-package(){
+
+package()
+{
 	cd "${srcdir}/${_gitname}"
 	make install COLORSCHEME_DIR="${pkgdir}"/usr/share/geany/colorschemes
 }
