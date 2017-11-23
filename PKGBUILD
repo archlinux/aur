@@ -3,7 +3,7 @@
 
 pkgname=libmodbus
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://libmodbus.org"

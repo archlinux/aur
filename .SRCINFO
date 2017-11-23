@@ -1,7 +1,7 @@
 pkgbase = libmodbus
 	pkgdesc = A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libmodbus.org
 	arch = i686
 	arch = x86_64
