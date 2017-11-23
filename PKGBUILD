@@ -2,14 +2,14 @@
 
 _pkgname=('tambi')
 pkgname=('tambi-git')
-pkgver=605
+pkgver=613
 pkgrel=1
 pkgdesc='A swiss army knife for studying the bible and much more'
 arch=('any')
 licence=('undecided')
 url='https://github.com/nano13/tambi.git'
 makedepends=('git' 'python-setuptools')
-depends=('python3' 'python-pyqt5' 'qt5-charts' 'python-pyqtchart' 'python-pysword' 'python-markdown' 'python-gpsd-git' 'python-geopy' 'python-srtm-git' 'python-pillow')
+depends=('python3' 'python-pyqt5' 'qt5-charts' 'python-pyqtchart' 'python-pysword' 'python-markdown' 'python-gpsd-git' 'python-geopy' 'python-srtm-git' 'python-pillow' 'python-whoosh')
 source=(${_pkgname}::git+https://github.com/nano13/tambi.git
     $_pkgname.sh)
 sha256sums=('SKIP' 'SKIP')
