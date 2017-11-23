@@ -2,7 +2,7 @@ pkgname=drake-git
 pkgver=r1680.g380ccf40
 pkgrel=1
 
-pkgdesc='runtime library replacement for gcc-ada'
+pkgdesc='runtime library replacement for gnat'
 url='https://github.com/ytomino/drake'
 arch=('i686' 'x86_64')
 license=('GPL')
