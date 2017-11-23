@@ -1,4 +1,5 @@
 # Maintainer: Tom Nguyen <tom81094@gmail.com>
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
