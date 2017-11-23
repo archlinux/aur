@@ -1,4 +1,5 @@
 # Maintainer: Tom Nguyen <tom81094@gmail.com>
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -68,9 +69,8 @@ _kyber_disable=
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bfq-mq-git
-_pkgver=4.13
 _srcname=bfq-mq
-pkgver=4.13.bb4162667e47
+pkgver=4.14.0.g344b0aa219f8
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -80,8 +80,8 @@ options=('!strip')
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
 #_mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V4"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.13"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.13"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.14"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14"
 _mlpath_2="${_bfqpath}/mailing-list/block-bfq-disable-wbt"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 source=(# bfq-mq repository
@@ -117,9 +117,13 @@ source=(# bfq-mq repository
         "${_mlpath_2}/ML2-0001-block-bfq-Disable-writeback-throttling.patch"
         # the main kernel config files
         'config'
-        # pacman hook for initramfs regeneration
+         # pacman hook for depmod
+        '60-linux.hook'
+         # pacman hook for initramfs regeneration
         '90-linux.hook'
-        # standard config files for mkinitcpio ramdisk
+         # pacman hook for remove initramfs
+        '99-linux.hook'
+         # standard config files for mkinitcpio ramdisk
         'linux.preset')
 sha256sums=('SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
@@ -133,8 +137,10 @@ sha256sums=('SKIP'
             '19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0'
             '7c51d0053053a3a0f6ed8759a5464ed5a3275a9dd832513a5678c3bcead9e5d5'
             '5e57c8d1d87a63e1c5947aba02346862992f39be2b2761ea142b3897995495aa'
-            '97c59875e8f9eab965d6bd13030e52c0328c67243f5084105a3a2131cd58734f'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'bff46a0a15c349b415aa09007eba6d69bef2651ac7c1feeaed2282eb9acfaf2a'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
+            '907a422cf56189ad9453e9416b13fe8ccd5c1d38dec3bd1b7d60d53f1afe12fa'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
@@ -142,8 +148,8 @@ _kernelname=${pkgbase#linux}
 pkgver() {
   cd ${_srcname}
 
-  #git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
-  echo $(echo ${_pkgver}. && git rev-parse --short HEAD) | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/;s/ //g'
+    _ver="$(cat Makefile | grep -m3 -e VERSION -e PATCHLEVEL -e SUBLEVEL | grep -o "[[:digit:]]*" | paste -sd'.')"
+    echo "${_ver}.g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -322,51 +328,54 @@ _package() {
 
   cd ${_srcname}
 
-  KARCH=x86
+    # get kernel version
+    _kernver="$(make LOCALVERSION= kernelrelease)"
+    _basekernel=${_kernver%%-*}
+    _basekernel=${_basekernel%.*}
 
-  # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  _basekernel=${_basekernel%.*}
+    mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+    make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+    cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+    # make room for external modules
+    local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+    ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
-  # set correct depmod command for install
-  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
-    "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
+    # add real version for building modules and running depmod from hook
+    echo "${_kernver}" |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
 
-  # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" ../linux.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    # remove build and source links
+    rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
 
-  # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+    # now we call depmod...
+    depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 
-  # remove build and source links
-  rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
+    # add vmlinux
+    install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
 
-  # remove the firmware
-  rm -r "${pkgdir}/lib/firmware"
+    # sed expression for following substitutions
+    local _subst="
+        s|%PKGBASE%|${pkgbase}|g
+        s|%KERNVER%|${_kernver}|g
+        s|%EXTRAMODULES%|${_extramodules}|g
+    "
 
-  # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+    # hack to allow specifying an initially nonexisting install file
+    sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
+    true && install=${install}.pkg
 
-  # add real version for building modules and running depmod from post_install/upgrade
-  echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+    # install mkinitcpio preset file
+    sed "${_subst}" ../linux.preset |
+        install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-  # Now we call depmod...
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
-
-  # move module tree /lib -> /usr/lib
-  mv -t "${pkgdir}/usr" "${pkgdir}/lib"
-
-  # add vmlinux
-  install -Dm644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+    # install pacman hooks
+    sed "${_subst}" ../60-linux.hook |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+    sed "${_subst}" ../90-linux.hook |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+    sed "${_subst}" ../99-linux.hook |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"     
 }
 
 _package-headers() {
@@ -375,71 +384,67 @@ _package-headers() {
   depends=("${pkgbase}=${pkgver}")
 
   cd ${_srcname}
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+    local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
-  install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
-  install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
+    install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
+    install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
 
-  mkdir "${_builddir}/.tmp_versions"
+    mkdir "${_builddir}/.tmp_versions"
 
-  cp -t "${_builddir}" -a include scripts
+    cp -t "${_builddir}" -a include scripts
 
-  install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
-  install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
+    install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
+    install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-  cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
+    cp -t "${_builddir}/arch/x86" -a arch/x86/include
 
-  install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
-  install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
+    install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
+    install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
+    # http://bugs.archlinux.org/task/9912
+    install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
-  # http://bugs.archlinux.org/task/13146
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
-  install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+    # http://bugs.archlinux.org/task/13146
+    install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
-  install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-  install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+    # http://bugs.archlinux.org/task/20402
+    install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+    install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+    install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  # add xfs and shmem for aufs building
-  mkdir -p "${_builddir}"/{fs/xfs,mm}
+    # add xfs and shmem for aufs building
+    mkdir -p "${_builddir}"/{fs/xfs,mm}
 
-  # copy in Kconfig files
-  find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
+    # copy in Kconfig files
+    find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
-  if [[ -e tools/objtool/objtool ]]; then
+    # add objtool for external module building and enabled VALIDATION_STACK option
     install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
-  fi
 
-  # remove unneeded architectures
-  local _arch
-  for _arch in "${_builddir}"/arch/*/; do
-    if [[ ${_arch} != */${KARCH}/ ]]; then
-      rm -r "${_arch}"
-    fi
-  done
+    # remove unneeded architectures
+    local _arch
+    for _arch in "${_builddir}"/arch/*/; do
+        [[ ${_arch} == */x86/ ]] && continue
+        rm -r "${_arch}"
+    done
 
-  # remove files already in linux-docs package
-  rm -r "${_builddir}/Documentation"
+    # remove files already in linux-bfq-mq-git-docs package
+    rm -r "${_builddir}/Documentation"
 
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
+    # Fix permissions
+    chmod -R u=rwX,go=rX "${_builddir}"
 
-  # strip scripts directory
-  local _binary _strip
-  while read -rd '' _binary; do
-    case "$(file -bi "${_binary}")" in
-      *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
-      *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
-      *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
-      *) continue ;;
-    esac
-    /usr/bin/strip ${_strip} "${_binary}"
-  done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
+    # strip scripts directory
+    local _binary _strip
+    while read -rd '' _binary; do
+        case "$(file -bi "${_binary}")" in
+        *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
+        *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
+        *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
+        *) continue ;;
+        esac
+        /usr/bin/strip ${_strip} "${_binary}"
+    done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
 }
 
 _package-docs() {
