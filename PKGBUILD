@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=libevhtp-git
-pkgver=1.2.12.1.r42.g2307737
+pkgver=1.2.14.r12.g5f62354
 pkgrel=1
 pkgdesc="A replacement API for Libevent's current HTTP API."
 arch=('i686' 'x86_64')
@@ -21,9 +21,12 @@ pkgver() {
 build() {
 	cd "${pkgname}/build"
 
+	#cmake -Wno-dev .. \
+	#	-DCMAKE_INSTALL_PREFIX=/usr \
+	#	-DOPENSSL_INCLUDE_DIR="/usr/include/openssl-1.0"
+
 	cmake -Wno-dev .. \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DOPENSSL_INCLUDE_DIR="/usr/include/openssl-1.0"
+		-DCMAKE_INSTALL_PREFIX=/usr
 
 	make ${MAKEFLAGS} all
 }
