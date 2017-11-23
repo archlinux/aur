@@ -1,30 +1,22 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
-
 pkgname=mruby-git
-pkgver=1.1.0.r154.ga1d4992
 pkgrel=1
-pkgdesc='Lightweight Ruby (preliminary release for internal team review)'
+pkgver=1.0.0.r4518.g0ab21a9a
+pkgdesc='Lightweight Ruby'
 arch=(i686 x86_64)
-url='https://github.com/mruby/mruby'
 license=(MIT)
+depends=(readline)
 makedepends=(git bison ruby)
-options=(staticlibs)
 conflicts=(mruby)
 replaces=(mruby)
 provides=(mruby)
-source=(git://github.com/mruby/mruby
-        remove_termcap_static_lib.patch)
-sha1sums=('SKIP'
-          '3042fc7811afee7e88535dca43495a1a5486d6a5')
+url='https://github.com/mruby/mruby'
+options=(staticlibs)
+source=(git+https://github.com/mruby/mruby)
+sha1sums=('SKIP')
 
 pkgver() {
   cd mruby
-  git describe --long --tags | sed 's/-/.r/; s/-/./'
-}
-
-prepare() {
-  cd mruby
-  patch -p1 < "$srcdir"/remove_termcap_static_lib.patch
+  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -40,9 +32,10 @@ check() {
 package() {
   cd mruby
 
-  install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib"
+  install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib" "$pkgdir/usr/share/licenses/mruby"
   cp build/host/bin/* "$pkgdir/usr/bin"
   cp build/host/lib/*.a "$pkgdir/usr/lib"
   cp -r include "$pkgdir/usr"
-}
 
+  cp MITL "$pkgdir/usr/share/licenses/mruby/LICENSE"
+}
