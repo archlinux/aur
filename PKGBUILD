@@ -3,7 +3,7 @@ pkgdesc="ROS - This package provides an implementation of the Dynamic Window App
 url='http://wiki.ros.org/dwa_local_planner'
 
 pkgname='ros-kinetic-dwa-local-planner'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -44,7 +44,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-dwa_local_planner-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/dwa_local_planner/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9daedba5e826ac8e6efe077a453bd753d77eaa96409f256683ff066d748457a4')
+sha256sums=('9e5ba3091b957a7ed2cc59efb64a1c3a1f5c792fb23611e3dbe725e8721c6d99')
 
 build() {
   # Use ROS environment variables
