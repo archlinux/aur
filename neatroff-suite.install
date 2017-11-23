@@ -1,7 +1,9 @@
 post_install(){
   echo "==> For hyphenation, you could use \`.hyph' macro, for example:"
   echo "      .hyph de-1996"
+  echo "    or"
+  echo "      .hyph+ de-1996 (without clearing the previous hyphenation patterns)"
   echo "    Languages available (by default):"
-  echo "      en-us de-1996 fr es"
+  echo "      en-us, de-1996, fr, es, it and ru"
 }
 
