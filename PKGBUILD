@@ -3,7 +3,7 @@ pkgdesc="ROS - A 2D navigation stack that takes in information from odometry, se
 url='http://wiki.ros.org/navigation'
 
 pkgname='ros-kinetic-navigation'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=0
@@ -41,7 +41,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-navigation-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/navigation/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a638a6f3791c62c5e123cc6a3eeabeef903ddc74b50365d606d6c56317bcd6cf')
+sha256sums=('29b9b7e32ff22c2670b7bfffbc08d37fae07ca1c7119d1ae221de8ed8cfce029')
 
 build() {
   # Use ROS environment variables
