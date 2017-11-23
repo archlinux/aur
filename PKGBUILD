@@ -3,7 +3,7 @@
 pkgname=dockd-git
 pkgver=1.20.r7.g6e69e13
 pkgrel=1
-pkgdesc="A general purpose userspace ThinkPad library"
+pkgdesc="Lenovo ThinkPad Dock Management Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/libthinkpad/dockd"
 license=('BSD')
