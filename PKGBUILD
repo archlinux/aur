@@ -1,10 +1,11 @@
 # Maintainer: Rudy Matela <rudy@matela.com.br>
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: _le34n$ <4le34n@gmail.com>
+# Contributor: Starfry <archlinux@jelmail.com>
 
 pkgname=nfdump
 pkgver=1.6.15
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of tools to collect and process netflow data."
 arch=('i686' 'x86_64')
 url="https://github.com/phaag/nfdump/"
@@ -28,7 +29,11 @@ build() {
 	#                configure.ac:10: comes from Automake 1.15. You should recreate
 	#                configure.ac:10: aclocal.m4 with aclocal and run automake again
 	#                WARNING: 'automake-1.15' is probably too old."
-	autoreconf
+	# Fix error (2): libtool: Version mismatch error.  This is libtool 2.4.6, but the
+	#                libtool: definition of this LT_INIT comes from libtool 2.4.6.40-6ca5.
+	#                libtool: You should recreate aclocal.m4 with macros from libtool 2.4.6
+	#                libtool: and run autoconf again.
+	autoreconf --force --install
 
 	./configure --prefix=/usr \
 	  --enable-nfprofile \
