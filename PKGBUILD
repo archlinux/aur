@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=simonpi-git
-pkgver=64.75a387d
+pkgver=70.6a7f759
 pkgrel=1
 epoch=
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
