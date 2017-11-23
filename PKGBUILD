@@ -2,7 +2,7 @@
 pkgname=nekojishi
 pkgver=1.01
 pkgdesc='A free furry/kemono visual novel'
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://nekojishi.tw/en-index.html'
 license=('custom:freeware')
@@ -10,7 +10,14 @@ depends=('sh')
 install=${pkgname}.install
 options=(!strip)
 
-source=("https://cdn.nekojishi.tw/Nekojishi_Standard${pkgver}-pc.zip"
+# nekojishi is now hosted on google drive which is a little messy for direct links
+# this is just to make the PKGBUILD a little cleaner.
+IFS=''
+gdrive=('https://doc-0s-7c-docs.googleusercontent.com'
+	'/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/ut3ponk4lq5b7tgg46g71mc50no6esid'
+	'/1511416800000/03311035500713382627/*/1DKqNwQg4gwZmCvMAEiCF0EzYVjZVQvt4?e=download')
+
+source=("Nekojishi_Standard${pkgver}-pc.zip::${gdrive[*]}"
 	"${pkgname}.sh"
 	"${pkgname}.desktop"
 	"${pkgname}.png")
