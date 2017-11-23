@@ -1,45 +1,25 @@
 display_requirements () {
 cat <<-EOF
 
-	To get suspend working properly you must do the following:
+  To get suspend working properly you must do the following:
 
-	Enable the macbook-wakeup service for suspend/resume on LID events:
-	systemctl enable --now macbook-wakeup.service
+  Enable the macbook-wakeup service for suspend/resume on LID events:
+  systemctl enable --now macbook-wakeup.service
 
-	Optionally, include the kernel boot option processor.ignore_ppc=1
-	to allow frequency changing on battery power.
+  Optionally, include the kernel boot option processor.ignore_ppc=1
+  to allow frequency changing on battery power.
 
 EOF
-}
-
-post_install () {
-  # updating module dependencies
-  echo ">>> Updating module dependencies. Please wait ..."
-  depmod %KERNVER%
-
-  display_requirements
 }
 
 post_upgrade() {
   if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
     echo "WARNING: /boot appears to be a separate partition but is not mounted."
   fi
-
-  # updating module dependencies
-  echo ">>> Updating module dependencies. Please wait ..."
-  depmod %KERNVER%
-
-  if [ $(vercmp $2 3.13) -lt 0 ]; then
-    echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
-    echo ">>>          In order to use your keyboard during early init, you MUST"
-    echo ">>>          include the 'keyboard' hook in your mkinitcpio.conf."
-  fi
-
   display_requirements
 }
 
 post_remove() {
-  # also remove the compat symlinks
   rm -f boot/initramfs-%PKGBASE%.img
   rm -f boot/initramfs-%PKGBASE%-fallback.img
 }

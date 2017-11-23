@@ -23,10 +23,11 @@ index ee72ebe..e347047 100644
  	case pci_fixup_enable:
  		start = __start_pci_fixups_enable;
  		end = __end_pci_fixups_enable;
-@@ -4551,6 +4551,24 @@ static void quirk_intel_qat_vf_cap(struct pci_dev *pdev)
+@@ -4762,6 +4769,24 @@
+ }
  DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x443, quirk_intel_qat_vf_cap);
 
- /*
++/*
 + * On Mac Pro 11, the allocation of pci bridge memory resource
 + * broke ACPI Sleep Type register region.
 + */
@@ -44,10 +45,9 @@ index ee72ebe..e347047 100644
 +}
 +DECLARE_PCI_FIXUP_ASSIGN(PCI_VENDOR_ID_INTEL, 0x8c10, quirk_mac_disable_mmio_bar);
 +
-+/*
-  * VMD-enabled root ports will change the source ID for all messages
-  * to the VMD device. Rather than doing device matching with the source
-  * ID, the AER driver should traverse the child device tree, reading
+ /* FLR may cause some 82579 devices to hang. */
+ static void quirk_intel_no_flr(struct pci_dev *dev)
+ {
 diff --git a/drivers/pci/setup-bus.c b/drivers/pci/setup-bus.c
 index 55641a3..730d6fd 100644
 --- a/drivers/pci/setup-bus.c
