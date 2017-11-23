@@ -1,4 +1,5 @@
 pkg
 src
 aptible-*.deb
+aptible-*.tar
 aptible-*.tar.*
