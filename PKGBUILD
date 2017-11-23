@@ -4,7 +4,7 @@
 
 pkgname=sam2p
 pkgver=0.49.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A bitmap-to-eps-or-pdf-converter that produces very small files"
 arch=('i686' 'x86_64')
 url="http://www.inf.bme.hu/~pts"
@@ -17,8 +17,8 @@ optdepends=('ghostscript: PS, EPS, PDF support'
 	    'png22pnm: for png support')
 # 'netpbm: PNG support'
 source=("https://github.com/pts/sam2p/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz" makedep.patch)
-sha256sums=('d23707b2405ca94e2a237cb81f62fb5916f5e4360cf9a705061479c8fa1dff5c'
-            '73c18ac87fa8fc498ea14fb2ed162e50470fa40ce4f273bbc13dfaa2b13c8f7d')
+md5sums=('78015830657f245839d0bcecb3340a6f'
+         '0cd1b3cc7b2781b3df19769342af102b')
 noextract=("$pkgname-$pkgver.tar.gz")
 
 prepare() {
@@ -27,15 +27,11 @@ prepare() {
   patch -p1 < $srcdir/makedep.patch
 }
 
-build() {
-  cd $pkgname-$pkgver
-  autoconf
-  CXX="g++ --std=c++98" PREFIX=/usr ./configure --prefix="$pkgdir"/usr --enable-lzw --enable-gif
-  PERL5LIB+=. make all
-}
-
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
-  install -D -m644 README "$pkgdir"/usr/share/sam2p/docs/README
+  autoconf
+  CXX="g++ --std=c++98" ./configure --prefix=/usr --enable-lzw --enable-gif
+  PERL5LIB+=. make all
+  install -Dm755 sam2p $pkgdir/usr/bin/sam2p
+  install -Dm644 README "$pkgdir"/usr/share/sam2p/docs/README
 }

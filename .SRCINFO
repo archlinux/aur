@@ -1,7 +1,7 @@
 pkgbase = sam2p
 	pkgdesc = A bitmap-to-eps-or-pdf-converter that produces very small files
 	pkgver = 0.49.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.inf.bme.hu/~pts
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = sam2p
 	noextract = sam2p-0.49.4.tar.gz
 	source = https://github.com/pts/sam2p/releases/download/v0.49.4/sam2p-0.49.4.tar.gz
 	source = makedep.patch
-	sha256sums = d23707b2405ca94e2a237cb81f62fb5916f5e4360cf9a705061479c8fa1dff5c
-	sha256sums = 73c18ac87fa8fc498ea14fb2ed162e50470fa40ce4f273bbc13dfaa2b13c8f7d
+	md5sums = 78015830657f245839d0bcecb3340a6f
+	md5sums = 0cd1b3cc7b2781b3df19769342af102b
 
 pkgname = sam2p
 
