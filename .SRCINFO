@@ -1,4 +1,4 @@
-pkgbase = mozc-neologd-ut
+pkgbase = fcitx-mozc-neologd-ut
 	pkgver = 2.20.2677.102.20171002.2
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
@@ -14,12 +14,23 @@ pkgbase = mozc-neologd-ut
 	makedepends = qt4
 	makedepends = zinnia
 	makedepends = fcitx
+	makedepends = qt5-base
 	source = mozc-neologd-ut-2.20.2677.102.20171002.2.tar.xz::https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F16%2F16042%2Fmozc-neologd-ut-2.20.2677.102.20171002.2.tar.xz
 	source = http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.18.2612.102.1.patch
 	source = http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
 	sha1sums = 1f713933d3a15c15767b83635e63e0af5e98e533
 	sha1sums = afeef31bf3d640f9cc630c2187dbfd4507367d78
 	sha1sums = 883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d
+
+pkgname = fcitx-mozc-neologd-ut
+	pkgdesc = Fcitx engine module for Mozc
+	arch = i686
+	arch = x86_64
+	depends = mozc-neologd-ut=2.20.2677.102.20171002.2
+	depends = fcitx
+	replaces = fcitx-mozc
+	replaces = fcitx-mozc-ut2
+	replaces = fcitx-mozc-ut
 
 pkgname = mozc-neologd-ut
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
@@ -33,14 +44,4 @@ pkgname = mozc-neologd-ut
 	conflicts = mozc-ut2
 	conflicts = fcitx-mozc-ut
 	conflicts = mozc-ut
-
-pkgname = fcitx-mozc-neologd-ut
-	pkgdesc = Fcitx engine module for Mozc
-	arch = i686
-	arch = x86_64
-	depends = mozc-neologd-ut=2.20.2677.102.20171002.2
-	depends = fcitx
-	replaces = fcitx-mozc
-	replaces = fcitx-mozc-ut2
-	replaces = fcitx-mozc-ut
 

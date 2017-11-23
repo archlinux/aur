@@ -13,7 +13,7 @@ _fcitxver=2.18.2612.102.1
 
 _pkgbase=mozc
 pkgname=mozc-neologd-ut
-true && pkgname=('mozc-neologd-ut' 'fcitx-mozc-neologd-ut')
+true && pkgname=('fcitx-mozc-neologd-ut' 'mozc-neologd-ut')
 pkgver=${_mozcver}.${_dicver}.${_revision}
 pkgrel=1
 arch=('i686' 'x86_64')
