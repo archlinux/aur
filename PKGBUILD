@@ -2,9 +2,9 @@
 # Previous Maintainer: Atnanasis <ys2000pro@gmail.com>
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-nightly-bin
-pkgver=1.3.4.94
+pkgver=1.3.4.95
 pkgrel=1
-_hash="1.3.4-dev.94"
+_hash="1.3.4-dev.95"
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
