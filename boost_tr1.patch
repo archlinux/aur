@@ -1,6 +1,6 @@
-diff -aur a/rospack-release-release-kinetic-rospack-2.3.3-0/include/rospack/rospack.h src/rospack-release-release-kinetic-rospack-2.3.3-0/include/rospack/rospack.h
---- a/rospack-release-release-kinetic-rospack-2.3.3-0/include/rospack/rospack.h	2017-09-22 21:21:03.468974889 -0700
-+++ src/rospack-release-release-kinetic-rospack-2.3.3-0/include/rospack/rospack.h	2017-09-22 21:33:54.286579268 -0700
+diff -aur a/rospack-release-release-kinetic-rospack-2.4.4-0/include/rospack/rospack.h src/rospack-release-release-kinetic-rospack-2.4.4-0/include/rospack/rospack.h
+--- a/rospack-release-release-kinetic-rospack-2.4.4-0/include/rospack/rospack.h	2017-09-22 21:21:03.468974889 -0700
++++ src/rospack-release-release-kinetic-rospack-2.4.4-0/include/rospack/rospack.h	2017-09-22 21:33:54.286579268 -0700
 @@ -105,8 +105,8 @@
  #ifndef ROSPACK_ROSPACK_H
  #define ROSPACK_ROSPACK_H
@@ -41,9 +41,9 @@ diff -aur a/rospack-release-release-kinetic-rospack-2.3.3-0/include/rospack/rosp
                          std::vector<Stackage*>& deps,
                          bool get_indented_deps,
                          std::vector<std::string>& indented_deps,
-diff -aur a/rospack-release-release-kinetic-rospack-2.3.3-0/src/rospack.cpp src/rospack-release-release-kinetic-rospack-2.3.3-0/src/rospack.cpp
---- a/rospack-release-release-kinetic-rospack-2.3.3-0/src/rospack.cpp	2017-09-22 21:21:03.468974889 -0700
-+++ src/rospack-release-release-kinetic-rospack-2.3.3-0/src/rospack.cpp	2017-09-22 21:34:45.542366683 -0700
+diff -aur a/rospack-release-release-kinetic-rospack-2.4.4-0/src/rospack.cpp src/rospack-release-release-kinetic-rospack-2.4.4-0/src/rospack.cpp
+--- a/rospack-release-release-kinetic-rospack-2.4.4-0/src/rospack.cpp	2017-09-22 21:21:03.468974889 -0700
++++ src/rospack-release-release-kinetic-rospack-2.4.4-0/src/rospack.cpp	2017-09-22 21:34:45.542366683 -0700
 @@ -258,7 +258,7 @@
  
  void Rosstackage::clearStackages()
@@ -197,9 +197,9 @@ diff -aur a/rospack-release-release-kinetic-rospack-2.3.3-0/src/rospack.cpp src/
              it != stackages_.end();
              ++it)
            fprintf(cache, "%s\n", it->second->path_.c_str());
-diff -aur a/rospack-release-release-kinetic-rospack-2.3.3-0/src/utils.cpp src/rospack-release-release-kinetic-rospack-2.3.3-0/src/utils.cpp
---- a/rospack-release-release-kinetic-rospack-2.3.3-0/src/utils.cpp	2017-09-22 21:21:03.468974889 -0700
-+++ src/rospack-release-release-kinetic-rospack-2.3.3-0/src/utils.cpp	2017-09-22 21:34:18.212835473 -0700
+diff -aur a/rospack-release-release-kinetic-rospack-2.4.4-0/src/utils.cpp src/rospack-release-release-kinetic-rospack-2.4.4-0/src/utils.cpp
+--- a/rospack-release-release-kinetic-rospack-2.4.4-0/src/utils.cpp	2017-09-22 21:21:03.468974889 -0700
++++ src/rospack-release-release-kinetic-rospack-2.4.4-0/src/utils.cpp	2017-09-22 21:34:18.212835473 -0700
 @@ -28,7 +28,7 @@
  #include <string>
  #include <vector>

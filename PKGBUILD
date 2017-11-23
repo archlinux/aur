@@ -7,7 +7,7 @@ pkgname='ros-kinetic-rospack'
 pkgver='2.4.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-cmake-modules
@@ -40,7 +40,7 @@ _dir="rospack-release-release-kinetic-rospack-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/kinetic/rospack/${pkgver}-${_pkgver_patch}.tar.gz"
 		boost_tr1.patch)
 sha256sums=('149f27ece8b24235aaea6ed37ab49d89ec00dad1fa77843ac93fb6836fccf3b4'
-            '0d80fbe8ac777673eb7df2807ddd976b6ff4f5cfc866937c6c60bb19e017f7e8')
+            '1e2ca2b01f6e978de06139c9ceadf770b196fd07fd99a2f0e923130920cadc46')
 
 prepare() {
   cd ${srcdir}
