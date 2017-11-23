@@ -1,7 +1,7 @@
 # Maintainer: Michael Egger <michael.egger at tsn at>
 
 pkgname=python-freqtrade-git
-pkgver=0.13.0.r2.g3d61095
+pkgver=0.14.3.r0.ge9dbdc9
 pkgrel=1
 pkgdesc="Simple High Frequency Trading Bot for crypto currencies"
 url="https://github.com/gcarq/freqtrade/"
