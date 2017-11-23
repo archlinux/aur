@@ -3,8 +3,8 @@
 
 _pkgbase='movim'
 pkgname=movim-git
-pkgver=r5307.5705ffc9
-pkgrel=6
+pkgver=r5975.e43f3510
+pkgrel=1
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
 url='https://movim.eu'
