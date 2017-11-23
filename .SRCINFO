@@ -1,0 +1,15 @@
+pkgbase = injeqt
+	pkgdesc = Dependency injection framework for Qt
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/vogel/injeqt
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	depends = qt5-base
+	source = injeqt-1.1.0.tar.gz::https://github.com/vogel/injeqt/archive/1.1.0.tar.gz
+	md5sums = 9a582037c454b1355e808bb2e07126bb
+
+pkgname = injeqt
+
