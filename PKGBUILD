@@ -3,7 +3,7 @@
 
 pkgname=i-nex
 pkgver=7.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
 url="http://i-nex.linux.pl/"
@@ -55,5 +55,5 @@ build() {
 
 package() {
     cd "${srcdir}/I-Nex-${pkgver}"
-    make DESTDIR="${pkgdir}/" install
+    make -j1 DESTDIR="${pkgdir}/" install
 }
