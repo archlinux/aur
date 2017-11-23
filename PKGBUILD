@@ -32,7 +32,7 @@ package() {
 
   install -Dm644 "$srcdir/teamcity-agent.service" "$pkgdir/usr/lib/systemd/system/teamcity-agent.service"
   install -Dm644 "$srcdir/teamcity-server.service" "$pkgdir/usr/lib/systemd/system/teamcity-server.service"
-  install -Dm644 "$srcdir/teamcity.confd" "$pkgdir/etc/conf.d/teamcity"
+  install -Dm644 "$srcdir/teamcity.conf" "$pkgdir/etc/conf.d/teamcity"
   install -Dm644 "$srcdir/teamcity-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/teamcity.conf"
   install -Dm644 "$srcdir/teamcity-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/teamcity.conf"
 
