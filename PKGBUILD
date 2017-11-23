@@ -1,24 +1,24 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=alexandra
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A small and user friendly opensource video library with great potential"
 arch=('i686' 'x86_64')
-url="http://alexandra-qt.sourceforge.net/"
+url="http://melnik.solutions/project/alexandra"
 license=('GPL2')
 depends=('hicolor-icon-theme' 'libmediainfo' 'qt5-base')
 makedepends=('qt5-tools' 'qt5-translations')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jeka-js/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f541144aaf6fb51a4e8eeb23bfc03ef77fd5097b9351ff5efc757c14890f7dbe')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/eugene-melnik/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('fccddf62d46f0b0eb5a2019f1fcc70aa64d99d71cfca73e82b662abd81622cb3')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname-$pkgver"
   qmake-qt5 PREFIX=/usr alexandra.pro
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  make INSTALL_ROOT="${pkgdir}" install
+  cd "$pkgname-$pkgver"
+  make INSTALL_ROOT="$pkgdir" install
 }

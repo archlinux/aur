@@ -1,8 +1,8 @@
 pkgbase = alexandra
 	pkgdesc = A small and user friendly opensource video library with great potential
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
-	url = http://alexandra-qt.sourceforge.net/
+	url = http://melnik.solutions/project/alexandra
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -11,8 +11,8 @@ pkgbase = alexandra
 	depends = hicolor-icon-theme
 	depends = libmediainfo
 	depends = qt5-base
-	source = alexandra-1.5.0.tar.gz::https://github.com/jeka-js/alexandra/archive/1.5.0.tar.gz
-	sha256sums = f541144aaf6fb51a4e8eeb23bfc03ef77fd5097b9351ff5efc757c14890f7dbe
+	source = alexandra-1.5.1.tar.gz::https://github.com/eugene-melnik/alexandra/archive/1.5.1.tar.gz
+	sha256sums = fccddf62d46f0b0eb5a2019f1fcc70aa64d99d71cfca73e82b662abd81622cb3
 
 pkgname = alexandra
 
