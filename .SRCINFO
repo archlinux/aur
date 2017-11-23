@@ -1,5 +1,5 @@
 pkgbase = muzz
-	pkgdesc = Calculates muzzle energy given a mass and a velocity (or does the reverse
+	pkgdesc = Calculates muzzle energy given a mass and a velocity (or does the reverse)
 	pkgver = 1.01
 	pkgrel = 1
 	url = https://github.com/jahendrie/muzz
