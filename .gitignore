@@ -1,8 +1,0 @@
-*
-!.gitignore
-!PKGBUILD
-!.SRCINFO
-!config
-!90-linux.hook
-!linux.install
-!linux.preset
