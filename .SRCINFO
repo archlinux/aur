@@ -1,0 +1,19 @@
+pkgbase = drake-git
+	pkgdesc = runtime library replacement for gcc-ada
+	pkgver = r1680.g380ccf40
+	pkgrel = 1
+	url = https://github.com/ytomino/drake
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc-ada
+	provides = drake
+	conflicts = drake
+	options = !makeflags
+	options = staticlibs
+	source = git+https://github.com/ytomino/drake
+	sha256sums = SKIP
+
+pkgname = drake-git
+
