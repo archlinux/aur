@@ -5,17 +5,16 @@
 
 pkgname=nginx-mainline
 pkgver=1.13.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('x86_64')
 url='https://nginx.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'geoip')
+depends=('pcre' 'zlib' 'openssl' 'geoip' 'mailcap')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
         'etc/nginx/koi-utf'
-        'etc/nginx/mime.types'
         'etc/nginx/nginx.conf'
         'etc/nginx/scgi_params'
         'etc/nginx/uwsgi_params'
@@ -106,6 +105,7 @@ package() {
     -i "$pkgdir"/etc/nginx/nginx.conf
 
   rm "$pkgdir"/etc/nginx/*.default
+  rm "$pkgdir"/etc/nginx/mime.types  # in mailcap
 
   install -d "$pkgdir"/var/lib/nginx
   install -dm700 "$pkgdir"/var/lib/nginx/proxy
