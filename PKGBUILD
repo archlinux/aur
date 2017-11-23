@@ -1,10 +1,10 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=ttygif
 pkgver=1.4.0
 pkgrel=1
 pkgdesc='Convert terminal recordings to animated gifs'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url=https://github.com/icholy/ttygif
 license=('MIT')
 depends=('imagemagick' 'xorg-xwd')
@@ -19,6 +19,8 @@ build() {
 
 package() {
   cd ttygif-$pkgver
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/ttygif/LICENSE
   install -Dm755 ttygif "$pkgdir"/usr/bin/ttygif
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/ttygif/LICENSE
 }
+
+# vim:set ts=2 sw=2 et:
