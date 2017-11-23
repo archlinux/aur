@@ -9,7 +9,7 @@ license=('GPL')
 
 options=('!makeflags' 'staticlibs')
 
-makedepends=('git' 'gcc-ada')
+makedepends=('git' 'gcc-ada' 'headmaster')
 
 provides=('drake')
 conflicts=('drake')

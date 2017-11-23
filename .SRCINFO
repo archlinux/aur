@@ -8,6 +8,7 @@ pkgbase = drake-git
 	license = GPL
 	makedepends = git
 	makedepends = gcc-ada
+	makedepends = headmaster
 	provides = drake
 	conflicts = drake
 	options = !makeflags
