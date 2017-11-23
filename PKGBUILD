@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('snapper: for snapper plugin'
 backup=('etc/dnf/plugins/rpmconf.conf'
         'etc/dnf/plugins/torproxy.conf')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('efa01ceaff9be436d06226f9ed51f352')
+md5sums=('e6709c9d2065e3de0b1ce98d12df9caf')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -41,7 +41,7 @@ package() {
 	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 
-	install -D -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
+	install -Dp -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
