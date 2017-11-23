@@ -11,7 +11,7 @@ depends=('libsystemd')
 makedepends=('cmake' 'git' 'pkg-config')
 options=('!strip')
 source=("git://github.com/libthinkpad/libthinkpad")
-md5sums=('da6791c1880e73a43879023c1d7770a3')
+md5sums=('SKIP')
 
 _gitname=libthinkpad 
 
@@ -30,4 +30,3 @@ package() {
     cd "$srcdir/$_gitname"
     make DESTDIR=$pkgdir install
 }
-md5sums=('SKIP')
