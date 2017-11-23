@@ -9,7 +9,7 @@ arch=('any')
 license=('GPLv3')
 provides=('python-freqtrade')
 makedepends=('python' 'python-setuptools')
-depends=('python-sqlalchemy'
+depends=('python-sqlalchemy' 'python-cachetools'
          'python-arrow' 'python-requests' 'ta-lib' 'python-pip'
          'python-urllib3' 'python-wrapt' 'python-pandas' 'python-scikit-learn'
          'python-scipy' 'python-jsonschema' 'python-numpy' 'python-pytest'
