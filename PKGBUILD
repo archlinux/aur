@@ -1,4 +1,5 @@
-# Maintainer: zoe chp321 at gmail com>
+# Maintainer: zoe <chp321 [at] gmail [dot] com>
+# Contributor: Arnaud Sevin <nono31 [at] gmail [dot] com>, repo at https://github.com/nono031/cewe-monlivrephoto.git
 # forked from cewe-fotoservice by James Crompton, itself forked from cewe-fotobuch, originally by Jozef Riha, updated by Manuel Conzelmann
 # Updated by Zoe <chp321 at gmail dot com>, for french version
 
@@ -20,7 +21,7 @@ md5sums=(SKIP
          '82baecba5be4c2af0cccf0f5bc0e00c7') ## $pkgname.install
 
 pkgver=6.2.6
-pkgrel=1
+pkgrel=2
 url="http://www.livrephoto-cewe.fr/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base-plugins' 'snappy')
