@@ -12,9 +12,9 @@ downloadFile=$(sed -r 's|.*/(.*\.tar\.gz)|\1|' <<< $downloadLink)
 
 sha256sum --status -c "$checksumFile"
 if [ $? -eq 0 ]; then
-    checksum=`sha512sum 'TeamCity-2017.1.4.tar.gz' | cut -d " " -f1`
+    checksum=`sha256sum "TeamCity-$pkgver.tar.gz" | cut -d " " -f1`
     sed -ri "s/pkgver=.*/pkgver=$pkgver/" ./PKGBUILD
-    sed -ri "s/sha512sums=\('.*'/sha512sums=\('$checksum'/" ./PKGBUILD
+    sed -ri "s/sha256sums=\('.*'/sha256sums=\('$checksum'/" ./PKGBUILD
     sed -ri "s|source=\(.*|source=\('$downloadLink'|" ./PKGBUILD
     makepkg --printsrcinfo > .SRCINFO
     rm $checksumFile
