@@ -1,23 +1,18 @@
---- NetworkManager-1.2.0.orig/src/devices/wifi/nm-device-wifi.c	
-2015-02-09 09:44:12.098688713 +0100
-+++ NetworkManager-1.2.0/src/devices/wifi/nm-device-wifi.c	
-2015-02-09 09:44:45.430954930 +0100
-@@ -1362,15 +1362,13 @@
- 	case NM_DEVICE_STATE_IP_CHECK:
- 	case NM_DEVICE_STATE_SECONDARIES:
- 	case NM_DEVICE_STATE_DEACTIVATING:
--		/* Don't scan when unusable or activating */
-+	case NM_DEVICE_STATE_ACTIVATED:
-+		/* Don't scan when unusable, or activating, or activated */
- 		return FALSE;
- 	case NM_DEVICE_STATE_DISCONNECTED:
- 	case NM_DEVICE_STATE_FAILED:
- 		/* Can always scan when disconnected */
- 		return TRUE;
--	case NM_DEVICE_STATE_ACTIVATED:
--		/* Need to do further checks when activated */
--		break;
- 	}
- 
- 	/* Don't scan if the supplicant is busy */
+--- a/src/devices/wifi/nm-device-wifi.c
++++ b/src/devices/wifi/nm-device-wifi.c
+@@ -1364,13 +1364,8 @@ scanning_prohibited (NMDeviceWifi *self,
+    /* Can always scan when disconnected */
+    return FALSE;
+  case NM_DEVICE_STATE_ACTIVATED:
+-   /* Prohibit periodic scans when connected; we ask the supplicant to
+-    * background scan for us, unless the connection is locked to a specifc
+-    * BSSID.
+-    */
+-   if (periodic)
+-     return TRUE;
+-   break;
++   /* Prohibit periodic scans when connected */
++   return TRUE;
+  }
 
+  /* Prohibit scans if the supplicant is busy */

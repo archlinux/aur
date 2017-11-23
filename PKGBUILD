@@ -6,7 +6,7 @@ pkgname=networkmanager-noscan
 provides=('networkmanager')
 replaces=('networkmanager')
 conflicts=('networkmanager')
-pkgver=1.8.4
+pkgver=1.10.1dev+58+gd5dc3df20
 pkgrel=1
 pkgdesc="Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless cards)"
 arch=(i686 x86_64)
@@ -18,14 +18,14 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
              glib2-docs)
 checkdepends=(libx11 python-dbus)
-_commit=51fdc50ab179a0582012d1b50e587761765ad15e  # tags/1.8.4^0
+_commit=d5dc3df20c742cbd196d3047767f99d0d7c2c5ca  # nm-1-10
 source=("git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
         NetworkManager.conf 20-connectivity.conf
         disable_wifi_scan_when_connected.patch)
 sha256sums=('SKIP'
             'dd2d3a9c8a08ce961e263e1847453890f1b24c72a806d8c83a5b69b227a5ccec'
             '477d609aefd991c48aca93dc7ea5a77ebebf46e0481184530cceda4c0d8d72c6'
-            '3dfabdccd97074c948c924ece87935576e64675bdfef478e800a6da882861c2d')
+            '50bc08476f9c799032230b909c4bdce58726f83cfc654aa3835c17ac99e500cc')
 
 prepare() {
   mkdir -p libnm{,-glib}/usr/{include,lib/{girepository-1.0,pkgconfig},share/{gir-1.0,gtk-doc/html,vala/vapi}}
