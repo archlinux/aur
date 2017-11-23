@@ -2,3 +2,5 @@ syncrepo.sh
 src
 pkg
 *pkg.tar.xz
+*.sign
+*.sig
