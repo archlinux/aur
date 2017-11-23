@@ -1,9 +1,9 @@
 pkgname=('ncid' 'ncid-client' 'ncid-tools' 'ncid-extensions' 'ncid-module-alert' 'ncid-module-initmodem' 'ncid-module-skel')
 pkgbase=ncid
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Network caller ID."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://ncid.sourceforge.net/"
 license=('GPL3')
 depends=()
@@ -15,7 +15,7 @@ options=()
 install=
 changelog=
 source=("http://downloads.sourceforge.net/project/ncid/ncid/$pkgver/$pkgbase-$pkgver-src.tar.gz")
-md5sums=('42ff6412b10f9fc05a2c2aacef86c250')
+md5sums=('2425156c4a022168650e447b1f534bd6')
 
 build() {
 	cd "$srcdir/$pkgbase"
@@ -89,7 +89,7 @@ package_ncid-client() {
 
         install -m 644 "$srcdir/$pkgbase/man/ncid.1" "$pkgdir/usr/share/man/man1"
         install -m 644 "$srcdir/$pkgbase/man/ncid.conf.5" "$pkgdir/usr/share/man/man5"
-        install -m 644 "$srcdir/$pkgbase/man/ncid-modules.7" "$pkgdir/usr/share/man/man7"
+        install -m 644 "$srcdir/$pkgbase/man/ncid_modules.7" "$pkgdir/usr/share/man/man7"
 
         install -m 644 "$srcdir/$pkgbase/doc/GPL.md" "$pkgdir/usr/share/doc/ncid-client"
         install -m 644 "$srcdir/$pkgbase/README" "$pkgdir/usr/share/doc/ncid-client"
@@ -120,7 +120,7 @@ package_ncid-tools() {
         install -m 644 "$srcdir/$pkgbase/man/cidupdate.1" "$pkgdir/usr/share/man/man1"
         install -m 644 "$srcdir/$pkgbase/man/ncidutil.1" "$pkgdir/usr/share/man/man1"
         install -m 644 "$srcdir/$pkgbase/man/wct.1" "$pkgdir/usr/share/man/man1"
-        install -m 644 "$srcdir/$pkgbase/man/ncidtools.7" "$pkgdir/usr/share/man/man7"
+        install -m 644 "$srcdir/$pkgbase/man/ncid_tools.7" "$pkgdir/usr/share/man/man7"
 
         install -m 644 "$srcdir/$pkgbase/doc/GPL.md" "$pkgdir/usr/share/doc/ncid-tools"
         install -m 644 "$srcdir/$pkgbase/README" "$pkgdir/usr/share/doc/ncid-tools"
