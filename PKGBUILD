@@ -1,9 +1,8 @@
 # Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 pkgname=lumina-desktop
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
-my_pkgrel=p1
-pkgfullname="${pkgname%-*}-${pkgver}-${my_pkgrel}"
+pkgfullname="${pkgname%-*}-${pkgver}"
 pkgdesc="A Lightweight QT5 Desktop for FreeBSD"
 arch=('x86_64' 'i686')
 url="https://github.com/trueos/lumina"
@@ -14,8 +13,9 @@ makedepends=('qt5-base' 'qt5-tools')
 conflicts=("lumina-de-git" "lumina-desktop-git" "insight-fm")
 provides=("${pkgname%-*}" "insight-fm")
 install="${pkgname%-*}.install"
-source=("https://github.com/trueos/lumina/archive/v${pkgver}-${my_pkgrel}.tar.gz")
-sha512sums=('8490e2b0f2fa08b2d63ec688f9993771ea935129a2947ef7bfa1874424cbede6d8877083ce90658c283858e67397383b5bab536388e9222b440015ebdf8b2919')
+source=("https://github.com/trueos/lumina/archive/v${pkgver}.tar.gz")
+sha512sums=('7243fc366a851832d9431df8ae8cac0f70a7bc92bed1282e78e5775c6593d799a07e2cac7042d770c8d6c4758bb142523027d67227a2282b47ed945b0e617cb0')
+
 
 build(){
     cd "$srcdir/${pkgfullname}"
@@ -28,4 +28,6 @@ package() {
     cd "$srcdir/${pkgfullname}"
     make INSTALL_ROOT="${pkgdir}" install
     mv "${pkgdir}"/usr/etc "${pkgdir}"/etc
+    mv "${pkgdir}"/usr/man "${pkgdir}"/usr/share/man
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
