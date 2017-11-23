@@ -3,7 +3,7 @@ pkgdesc="ROS - This package provides a recovery behavior for the navigation stac
 url='http://wiki.ros.org/rotate_recovery'
 
 pkgname='ros-kinetic-rotate-recovery'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-rotate_recovery-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/rotate_recovery/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6935216f2aa8904bd3c5d9f356a0a0f7b8e559de0eacc01dc99bdeca4734690b')
+sha256sums=('d058e6b5c2d124238cf57622aa068db9390c02552820e02b83b8014656b6dfc2')
 
 build() {
   # Use ROS environment variables
