@@ -3,19 +3,19 @@
 
 pkgname=kvantum-qt5-git
 _gitname=Kvantum
-pkgver=0.10.4.r158.gd2903a1
+pkgver=0.10.5.r15.ge7b20f5
 pkgrel=1
-pkgdesc="SVG-based Qt5 theme engine plus a config tool and extra themes - git version"
+pkgdesc="SVG-based Qt5 theme engine plus a config tool and extra themes"
 arch=('x86_64')
 url="https://github.com/tsujan/Kvantum"
 license=('GPL3')
 groups=('qt')
 depends=('qt5-svg' 'qt5-x11extras' 'hicolor-icon-theme')
-makedepends=('cmake' 'qt5-tools' "git")
+makedepends=('cmake' 'qt5-tools' 'git')
 optdepends=('adapta-aurorae-theme-git: Matching kwin decorations for KvAdapta and KvAdaptaDark')
 conflicts=('kvantum-qt5')
 provides=('kvantum-qt5')
-source=("git+https://github.com/tsujan/Kvantum.git")
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -33,8 +33,7 @@ build() {
 package() {
 	cd ${srcdir}/${_gitname}/${_gitname}
 	make DESTDIR=${pkgdir}/ install
-	mkdir -p ${pkgdir}/usr/share/doc/kvantum
-	cp ChangeLog ${pkgdir}/usr/share/doc/kvantum
-	cp COPYING ${pkgdir}/usr/share/doc/kvantum
+	install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/kvantum/ChangeLog
+	install -Dm644 COPYING ${pkgdir}/usr/share/doc/kvantum/COPYING
 	cp -r doc ${pkgdir}/usr/share/doc/kvantum
 }
