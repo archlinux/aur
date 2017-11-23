@@ -3,7 +3,7 @@
 _pkgname=csvkit
 pkgname=python-$_pkgname
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of utilities for converting to and working with CSV."
 arch=("any")
 url="http://csvkit.readthedocs.org"
@@ -12,6 +12,7 @@ depends=("python"
          "python-agate"
          "python-agate-dbf"
          "python-agate-excel"
+         "python-agate-sql"
          "python-dateutil"
          "python-six"
          "python-sqlalchemy")
