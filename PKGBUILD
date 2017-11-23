@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx-qt5
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Qt5 IM Module for Fcitx"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-qt5"
@@ -11,7 +11,7 @@ groups=('fcitx-im')
 depends=('fcitx' 'libxkbcommon' 'qt5-base')
 makedepends=('extra-cmake-modules')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fcitx/fcitx-qt5/archive/$pkgver.tar.gz")
-sha512sums=('2e8b551f5247a2268228d0e3b7b8a185bb834f413d5d9048ee965b69a53c70dbe45490869971434a926c304dc3d9636eaf903cd0f477d782ffe4aea79291d9cb')
+sha512sums=('33e925cc423c4d9441834ddb5c813599307ce04afab1071c328e3de3b83a6bc965a493360b9f7a6a19cb3d4871f9c993d5b69cd5882a7bffe0b197b8f1827d09')
 
 build() {
   cd $pkgname-$pkgver
