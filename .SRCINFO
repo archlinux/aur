@@ -8,8 +8,8 @@ pkgbase = cobalt
 	license = MIT
 	makedepends = cargo
 	depends = openssl
-	source = cobalt-bin-0.7.5.tar.gz::https://crates.io/api/v1/crates/cobalt-bin/0.7.5/download
-	sha256sums = 48ea0fe0a9a785a81560736c6c821d56db145fcfe401115584f14371beea38e4
+	source = cobalt-bin-0.8.0.tar.gz::https://crates.io/api/v1/crates/cobalt-bin/0.8.0/download
+	sha256sums = 5e12309a05adc35a4c121ec87104268edacf1bd8da25180209f718a868a9c21f
 
 pkgname = cobalt
 
