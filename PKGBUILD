@@ -15,7 +15,7 @@ sha256sums=('5e12309a05adc35a4c121ec87104268edacf1bd8da25180209f718a868a9c21f')
 
 build() {
   cd "$_cratename-$pkgver"
-  cargo build --release
+  cargo build --release --features "syntax-highlight sass"
 }
 
 package() {
