@@ -1,0 +1,10 @@
+[Unit]
+Description=Cerebro, an ElasticSearch web admin tool
+
+[Service]
+WorkingDirectory=/opt/cerebro
+ExecStart=/opt/cerebro/bin/cerebro
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
