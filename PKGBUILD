@@ -1,7 +1,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 _pkgname=hangups
 pkgname=${_pkgname}-git
-pkgver=0.4.2.r5.gaf0c10e
+pkgver=0.4.3.r11.g4e597f4
 pkgrel=1
 epoch=1
 
