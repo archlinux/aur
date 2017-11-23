@@ -1,15 +1,15 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=mdp
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="A command-line based markdown presentation tool"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/visit1985/mdp"
 license=('GPL3')
 depends=('ncurses')
-source=("https://github.com/visit1985/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('893e13a9a61a89bacf29ee141bd9f6e8935710323701e3d36584a4bb90e1372d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/visit1985/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('7384c1ba32bd8e4b11342570d2144165a60682499b4cb54e50c8eb3164cfabc5')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
