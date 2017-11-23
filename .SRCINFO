@@ -1,4 +1,4 @@
-pkgbase = libthinkpad
+pkgbase = libthinkpad-git
 	pkgdesc = A general purpose userspace ThinkPad library
 	pkgver = 2.3.r7.g5f9256f
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = libthinkpad
 	source = git://github.com/libthinkpad/libthinkpad
 	md5sums = SKIP
 
-pkgname = libthinkpad
+pkgname = libthinkpad-git
 
