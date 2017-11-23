@@ -3,7 +3,7 @@ pkgdesc="ROS - The move_base package provides an implementation of an action (se
 url='http://wiki.ros.org/move_base'
 
 pkgname='ros-kinetic-move-base'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -63,7 +63,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-move_base-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/move_base/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('549e0b59fad68eb451c119450138c3a3426a1a54e86ef4ca6e4ebfd98c36e4b6')
+sha256sums=('c768c60913da1102499855e0b2bb6b0db241a67506654e34d631057836b4dc50')
 
 build() {
   # Use ROS environment variables
