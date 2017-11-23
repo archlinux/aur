@@ -1,8 +1,8 @@
 # Maintainer: Jan Neumann <neum DOT ja AT gmail DOT com>
 
 pkgname=adapta-kde-git
-gitname=adapta-kde
-pkgver=r97.c56cf14
+_gitname=adapta-kde
+pkgver=r109.66fc432
 pkgrel=1
 pkgdesc="Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)"
 arch=('any')
@@ -18,12 +18,13 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd ${srcdir}/${gitname}
+  cd ${srcdir}/${_gitname}
 
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  
 }
 
-package() {
-    make -C ${srcdir}/${gitname} DESTDIR=${pkgdir}/ install
+ package() {
+  make -C ${srcdir}/${_gitname} DESTDIR=${pkgdir}/ install
 }
 
