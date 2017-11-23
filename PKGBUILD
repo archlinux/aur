@@ -1,7 +1,7 @@
 # Maintainer: edub4rt <edub4rt@gmail.com>
 pkgname=mingw-w64-luajit
-pkgver=2.0.4
-pkgrel=2
+pkgver=2.0.5
+pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1'
 arch=('i686' 'x86_64')
 url='http://luajit.org/'
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-multilib')
 source=(http://luajit.org/download/LuaJIT-${pkgver/rc/-rc}.tar.gz)
 options=(!strip !buildflags)
-sha256sums=('620fa4eb12375021bef6e4f237cbd2dd5d49e56beb414bee052c746beef1807d')
+sha256sums=('874b1f8297c697821f561f9b73b57ffd419ed8f4278c82e05b48806d30c1e979')
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
