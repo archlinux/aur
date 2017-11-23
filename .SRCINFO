@@ -1,0 +1,25 @@
+pkgbase = oorexx-beta
+	pkgdesc = open source implementation of Object Rexx
+	pkgver = 5.0.0.r11330
+	pkgrel = 1
+	url = http://www.oorexx.org/
+	install = oorexx-beta.install
+	arch = x86_64
+	license = CPL
+	makedepends = subversion
+	makedepends = cmake
+	depends = bash
+	depends = gcc-libs-multilib
+	optdepends = csh: for C shell sample
+	optdepends = sh: for sh shell sample
+	provides = rexx
+	conflicts = oorexx
+	source = oorexx-beta::svn+svn://svn.code.sf.net/p/oorexx/code-0/main/trunk/
+	source = oorexx-beta-5.0.0-rxapid.patch
+	source = oorexx-beta.install
+	sha256sums = SKIP
+	sha256sums = 9b0912eb203f4d53e0ae9098f368d8cff4fc30906dcc5760ebd28ffa14f79808
+	sha256sums = e99c7805023c19f81292fd204f74b21a026b1a62c3fc6c46b4f7356eab477ce1
+
+pkgname = oorexx-beta
+

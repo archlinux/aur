@@ -1,0 +1,17 @@
+--- oorexx-beta-orig/usr/share/ooRexx/rxapid.service
++++ oorexx-beta/usr/share/ooRexx/rxapid.service
+@@ -1,14 +1,14 @@
+ [Unit]
+ Description=ooRexx rxapi service
+ After=network.target
+ 
+ [Service]
+ Type=forking
+ PIDFile=/var/run/ooRexx.pid
+-ExecStartPre=/bin/rm -f /var/run/rxapid.pid
++ExecStartPre=/bin/rm -f /var/run/ooRexx.pid
+ ExecStart=/usr/bin/rxapi
+ Restart=on-abort
+ 
+ [Install]
+ WantedBy=multi-user.target

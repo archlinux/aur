@@ -1,0 +1,46 @@
+# arg 1:  the new package version
+pre_install() {
+  /bin/true
+}
+
+# arg 1:  the new package version
+post_install() {
+
+  orx_prefix=/usr
+  data_dir=${orx_prefix}/share/ooRexx
+  
+  systemctl link /usr/share/ooRexx/rxapid.service
+  systemctl --system daemon-reload
+  systemctl start rxapid.service
+  systemctl enable rxapid.service
+
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  pre_remove $1
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  systemctl disable rxapid.service
+  systemctl stop rxapid.service
+  systemctl --system daemon-reload
+}
+
+# arg 1:  the old package version
+post_remove() {
+  /bin/true
+}
+
+op=$1
+shift
+$op $*
+
