@@ -50,8 +50,8 @@ _use_current=
 
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
-_srcname=linux-4.13
-pkgver=4.13.15
+_srcname=linux-4.14
+pkgver=4.14.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -59,7 +59,7 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 _uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master"
-_uksm_patch="uksm-4.13.patch"
+_uksm_patch="uksm-4.14.patch"
 _gcc_path="https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
 
@@ -71,10 +71,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_uksm_path}/${_uksm_patch}"
          # the main kernel config files
         'config'
+         # pacman hook for depmod
+        '60-linux.hook'
          # pacman hook for initramfs regeneration
         '90-linux.hook'
+         # pacman hook for remove initramfs
+        '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
-        'linux.preset')
+        'linux.preset'
+        '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
+        '0001-bio-ensure-__bio_clone_fast-copies-bi_partno.patch')
         
 _kernelname=${pkgbase#linux} 
 
@@ -84,6 +90,14 @@ prepare() {
     ### Add upstream patch
         msg "Add upstream patch"
         patch -p1 -i ../patch-${pkgver}
+    
+    ### Fix https://bugs.archlinux.org/task/56207
+        msg "Fix bug #56207"
+        patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch    
+            
+    ### Fix https://bugs.archlinux.org/task/56404
+        msg "Fix bug #56404"
+        patch -Np1 -i ../0001-bio-ensure-__bio_clone_fast-copies-bi_partno.patch
             
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -205,58 +219,59 @@ _package() {
 
     cd ${_srcname}
 
-    KARCH=x86
+    # get kernel version
+    _kernver="$(make LOCALVERSION= kernelrelease)"
+    _basekernel=${_kernver%%-*}
+    _basekernel=${_basekernel%.*}
 
-   # get kernel version
-   _kernver="$(make LOCALVERSION= kernelrelease)"
-   _basekernel=${_kernver%%-*}
-   _basekernel=${_basekernel%.*}
+    mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+    make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+    cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+    # make room for external modules
+    local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+    ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
-   # set correct depmod command for install
-   sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
-    "${startdir}/${install}" > "${startdir}/${install}.pkg"
-   true && install=${install}.pkg
+    # add real version for building modules and running depmod from hook
+    echo "${_kernver}" |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
 
-   # install mkinitcpio preset file for kernel
-   sed "s|%PKGBASE%|${pkgbase}|g" ../linux.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    # remove build and source links
+    rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
 
-   # install pacman hook for initramfs regeneration
-   sed "s|%PKGBASE%|${pkgbase}|g" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+    # now we call depmod...
+    depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 
-   # remove build and source links
-   rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
+    # add vmlinux
+    install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
 
-   # remove the firmware
-   rm -r "${pkgdir}/lib/firmware"
+    # sed expression for following substitutions
+    local _subst="
+        s|%PKGBASE%|${pkgbase}|g
+        s|%KERNVER%|${_kernver}|g
+        s|%EXTRAMODULES%|${_extramodules}|g
+    "
 
-   # make room for external modules
-   ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+    # hack to allow specifying an initially nonexisting install file
+    sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
+    true && install=${install}.pkg
 
-   # add real version for building modules and running depmod from post_install/upgrade
-   echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+    # install mkinitcpio preset file
+    sed "${_subst}" ../linux.preset |
+        install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-   # Now we call depmod...
-   depmod -b "${pkgdir}" -F System.map "${_kernver}"
-
-   # move module tree /lib -> /usr/lib
-   mv -t "${pkgdir}/usr" "${pkgdir}/lib"
-
-  # add vmlinux
-  install -Dm644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+    # install pacman hooks
+    sed "${_subst}" ../60-linux.hook |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+    sed "${_subst}" ../90-linux.hook |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+    sed "${_subst}" ../99-linux.hook |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"     
 }
 
 _package-headers() {
     pkgdesc='Header files and scripts to build modules for linux-uksm'
     depends=('linux-uksm')
-
-    install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
     cd ${_srcname}
     local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -268,10 +283,10 @@ _package-headers() {
 
     cp -t "${_builddir}" -a include scripts
 
-    install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
-    install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
+    install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
+    install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-    cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
+    cp -t "${_builddir}/arch/x86" -a arch/x86/include
 
     install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
     install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
@@ -280,7 +295,6 @@ _package-headers() {
     install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
     # http://bugs.archlinux.org/task/13146
-    install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
     install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
     # http://bugs.archlinux.org/task/20402
@@ -295,19 +309,16 @@ _package-headers() {
     find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
     # add objtool for external module building and enabled VALIDATION_STACK option
-    if [[ -e tools/objtool/objtool ]]; then
     install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
-    fi
 
     # remove unneeded architectures
     local _arch
     for _arch in "${_builddir}"/arch/*/; do
-    if [[ ${_arch} != */${KARCH}/ ]]; then
-      rm -r "${_arch}"
-    fi
+        [[ ${_arch} == */x86/ ]] && continue
+        rm -r "${_arch}"
     done
 
-    # remove files already in linux-uksm-docs package
+    # remove files already in linux-uksml-docs package
     rm -r "${_builddir}/Documentation"
 
     # Fix permissions
@@ -316,14 +327,14 @@ _package-headers() {
     # strip scripts directory
     local _binary _strip
     while read -rd '' _binary; do
-    case "$(file -bi "${_binary}")" in
-      *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
-      *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
-      *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
-      *) continue ;;
-    esac
-    /usr/bin/strip ${_strip} "${_binary}"
-   done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
+        case "$(file -bi "${_binary}")" in
+        *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
+        *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
+        *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
+        *) continue ;;
+        esac
+        /usr/bin/strip ${_strip} "${_binary}"
+    done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
 }
 
 _package-docs() {
@@ -348,15 +359,19 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f3119aea6cbd7b61df30ca6ef3ec57044d524b7babbaabddf8b08b8bafa7d2'
+sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            '54e1d3b526984efe90a5c759b35ac849ac65525c977b3982ef32b0fbb83e73f1fca92d73c3ffb1f23643d9f72a3083eeb4edb54768b105138722434811f622c4'
+            '2566d2151cb0e0ad706dda3cb815e293d84ecc804cf2891e511a0f28e359b7714a1732add599a268c98108a63ee40200cf76cbda8181d67d0a64511e815202df'
             'SKIP'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
-            '632c37449c088141dbed4e745c252849396a305a03a86349080a58fb14d7fcd3488f306b890a082a334dab878e179889dfaae0423dfe3d125f48804847abbb39'
-            'a1beab58fa0ed7a815ec9b33aa3b73c5f3e65015956ecbb6c712b1dcde114d57aad8ebea0be48f159560c396c2b315295b85734fcc21f7254b52e2abd30e20b5'
-            'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
+            '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
+            '7e0bddfe4e0511f33beab52b141de3b153d2cb94e5e3a1931f6ff1574509ab9446035ee0642eb162b3efe22b88e4a32164b399273a0e2a29552b2465f3d01168'
+            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+            '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
+            'dc2b69f1463756ce0a7906e9ebedfb227eb4386f889a78932924ef1f576c9e02ad19e2d2510db0b864310e1d92fc3be9c137a39319f8fb0a417d5438540b9bae'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            'd1eb35e93c317a5d0b764cf3a6c183f17f9fadd9a9295dc36f0b9482b89fa6f2aba2b3011b2f3166282a7e3b2ed10f68ec824cb647f2e119ce014d31ba987d8d'
+            'ca19baa5299ef35997473a6dcd3f89c9b2693afabf32b5f9dce2b6527bf9d9b9060c4b59a747a49631c81a117257fd2376eb3bb33f90bb56e9db0577abe5d4bd')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
