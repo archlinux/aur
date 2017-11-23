@@ -1,7 +1,7 @@
 # Maintainer: Nabobalis <nabil dot freij at gmail dot com>
 # Contributor: Nabobalis <nabil dot freij at gmail dot com>
 pkgname=python2-sunpy
-pkgver=0.7.7
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ optdepends=('python2-sqlalchemy: for the database package'
             'python2-pytest: for running tests')
 options=(!emptydirs)
 source=(https://pypi.io/packages/source/s/sunpy/sunpy-$pkgver.tar.gz)
-md5sums=('128f5e211992aaafff88dc88f6fcf9d1')
+md5sums=('eda47d76563485599b3e23badb1bbd06')
 
 package(){
   cd $srcdir/sunpy-$pkgver
