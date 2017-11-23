@@ -4,7 +4,7 @@ pkgdesc="ROS - navfn provides a fast interpolated navigation function that can b
 url='http://wiki.ros.org/navfn'
 
 pkgname='ros-kinetic-navfn'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -41,15 +41,15 @@ ros_depends=(ros-kinetic-nav-core
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
-_tag=release/kinetic/navfn/${pkgver}-${_pkgver_patch}
-_dir=${pkgname}
-source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
-sha256sums=('SKIP')
+# _tag=release/kinetic/navfn/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
 
 # Tarball version (faster download)
-# _dir="navigation-release-release-kinetic-navfn-${pkgver}-${_pkgver_patch}"
-# source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/navfn/${pkgver}-${_pkgver_patch}.tar.gz")
-# sha256sums=('61819cd8d1b7043f7cdfef83f9f63e60d862968e697993e3c78aa3c5ba99c824')
+_dir="navigation-release-release-kinetic-navfn-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/navfn/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('6969f151019893d7f1fcdbb91a0f393bd80d1f33af5013f2639a18c41d7a4a5d')
 
 build() {
   # Use ROS environment variables
