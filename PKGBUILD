@@ -2,7 +2,7 @@
 
 _pyname=conda-verify
 pkgname=python-${_pyname}
-pkgver=2.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Verify conda recipes and packages"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-conda')
 options=(!emptydirs)
 install=
 source=(https://github.com/conda/$_pyname/archive/$pkgver.tar.gz)
-sha512sums=('f0b78234c9f2384b9af09c52793aeb2f89c05a71f653c1beab1ffa2488a1a2b639d6f3e9a2dd77fdb7e4b6f0e4302633989abe2e430ff753eb25935cfe4eb5d3')
+sha512sums=('dad87d089c087374bc088913168fe1c1da50155ae43dacdbba0125b71a42d0b90236a20868e1962c10a662c48f5296ea15af6201c421039e755d4bff7b140adf')
 
 package() {
   cd "$srcdir/${_pyname}-$pkgver"
