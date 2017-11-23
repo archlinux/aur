@@ -3,7 +3,7 @@ pkgdesc="ROS - move_slow_and_clear."
 url='http://wiki.ros.org/move_slow_and_clear'
 
 pkgname='ros-kinetic-move-slow-and-clear'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-move_slow_and_clear-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/move_slow_and_clear/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b3dc83cf3436afa4bb7ca6df718c33f9c758bc1625baf0fac618196f01b3858e')
+sha256sums=('1753d647d8e22e47c786d8d0323e8db12c02360f9803dba4bfa801c5928c313c')
 
 build() {
   # Use ROS environment variables
