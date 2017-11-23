@@ -4,7 +4,7 @@ pkgdesc="ROS -  amcl is a probabilistic localization system for a robot moving i
 url='http://wiki.ros.org/amcl'
 
 pkgname='ros-kinetic-amcl'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,15 +28,15 @@ ros_depends=(ros-kinetic-dynamic-reconfigure
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
- _tag=release/kinetic/amcl/${pkgver}-${_pkgver_patch}
- _dir=${pkgname}
- source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
- sha256sums=('SKIP')
+# _tag=release/kinetic/amcl/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
 
 # Tarball version (faster download)
-# _dir="navigation-release-release-kinetic-amcl-${pkgver}-${_pkgver_patch}"
-# source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/amcl/${pkgver}-${_pkgver_patch}.tar.gz")
-# sha256sums=('5a7afb4c76011a55a0210b920e7debfef8f024bf2b403c380c3955e759c67c5a')
+_dir="navigation-release-release-kinetic-amcl-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/amcl/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e2ef395d43b93c36d5c140b0993f061d9fc1e15ccc683d79a6408ccc42ec3b60')
 
 build() {
   # Use ROS environment variables
