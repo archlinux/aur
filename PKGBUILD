@@ -2,7 +2,7 @@
 # Maintainer: jaap
 # Contributor: jaap
 pkgname=synergy2-bin
-pkgver=2.0.1.stable~b1034+59dd93a0
+pkgver=2.0.2.stable~b1046+665fa610
 pkgrel=1
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('gcc>=5.2' 'bash-completion>=1.18.' 'gcc-libs>=3.0' 'hicolor-icon-theme
 conflicts=('synergy' 'synergy2')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://www.dropbox.com/s/gnvp8gu27hzz2zc/synergy_2.0.1.stable-b1034%2B59dd93a0_amd64.deb?dl=1")
-sha512sums_x86_64=('12a5df374a941122d3dcbc1b9c43ef7b8b04b4f48a6d505f301fcfca6e32a42f3a2ea28d318babf413b85e8f5f0ab10380ae405f6aa7ee570c06a718a5b65148')
+source_x86_64=("https://www.dropbox.com/s/n2c75v5sq8x138e/synergy_2.0.2.stable~b1046%2B665fa610_amd64.deb?dl=1")
+sha512sums_x86_64=('b20fa6e5f0b1d928ed48ef6c03c5bcee623c71c1d17c659b35fb9aa1586a7def6e39537ed811318b954695f2cc5c5a0e528377a4f748619801842de07e3896e5')
 
 package(){
 
@@ -28,5 +28,5 @@ package(){
 	mkdir -p usr/lib 2> /dev/null; cp -r lib/* usr/lib; rm -rf lib
 
 	cd ..
-	tput setaf 1; echo "this is the beta package for the AUR, if you want to stay on the stable builds go and download the synergy2 package. and make sure to remove this one."; tput sgr0
+	tput setaf 1; echo "this is the beta package for the AUR, if you want to move to the stable builds go and download the synergy2 package. and make sure to remove this one."; tput sgr0
 }
