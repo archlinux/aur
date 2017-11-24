@@ -1,0 +1,12 @@
+diff -Naur ./thunar-volman.orig/thunar-volman-settings/main.c ./thunar-volman/thunar-volman-settings/main.c
+--- ./thunar-volman.orig/thunar-volman-settings/main.c	2017-11-24 12:40:49.883100185 -0500
++++ ./thunar-volman/thunar-volman-settings/main.c	2017-11-24 12:40:55.439716611 -0500
+@@ -101,7 +101,7 @@
+       g_signal_connect (plug, "delete-event", G_CALLBACK (gtk_main_quit), NULL);
+       gtk_widget_show (plug);
+ 
+-      list = gtk_container_get_children (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog)));
++      list = gtk_container_get_children (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))));
+       plug_child = list->data;
+       g_list_free (list);
+ 
