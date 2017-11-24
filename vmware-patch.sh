@@ -152,7 +152,7 @@ for kernel in ${kernels[@]}; do
         fi
 
         # Is product version not lower and kernel version not higher in patch name?
-        if (( $(vercmp "$ver_patch" "$ver2") >= 0 )) && (( $(vercmp "$kernel_patch" "$kernel_major") <= 0 )); then
+        if (( $(vercmp "$ver_patch" "$ver2") <= 0 )) && (( $(vercmp "$kernel_patch" "$kernel_major") >= 0 )); then
             patches+=("$patch")
         fi
     done

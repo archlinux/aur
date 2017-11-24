@@ -1,9 +1,9 @@
-# Maintainer: Det <nimetonmaili g-mail>, Rains <rains31@gmail>
+# Maintainer: Det <nimetonmaili g-mail>, Rains <rains31@gmail>, Ben White <ben@creative-heads.org>
 # Contributors: Igor Duarte Cardoso, haagch, Olivier Médoc
 
 pkgname=vmware-patch
 pkgver=14.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/VMware#Configuration"
@@ -68,7 +68,7 @@ package() {
 }
 
 # Generated using 'updpkgsums'
-md5sums=('24d65739dce6549553805756a430e28e'
+md5sums=('f116133678419f2281c59e390e42152e'
          'ba054b375308442d43a408dbae5e9401'
          'ca1382966804d694894539c7bcac6bbb'
          'c12e765985b324585a548718a6ac9b43'
