@@ -1,7 +1,7 @@
 pkgbase = inox-dev
 	pkgdesc = A web browser built for speed, simplicity, and security
 	pkgver = 64.0.3269.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = inox-dev.install
 	arch = i686
@@ -134,6 +134,7 @@ pkgbase = inox-dev
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/p1.patch
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/p2.patch
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/e3.patch
+	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
 	sha256sums = 14a64bc25b48309566a0e9a9016336b53ae0443da500f2933292773a90b7542a
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
 	sha256sums = f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af
@@ -227,6 +228,7 @@ pkgbase = inox-dev
 	sha256sums = 1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0
 	sha256sums = 5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac
 	sha256sums = 862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971
+	sha256sums = SKIP
 
 pkgname = inox-dev
 

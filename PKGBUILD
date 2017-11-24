@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=64.0.3269.3
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -109,6 +109,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/meme.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/p1.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/p2.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/e3.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
 )
 
 
@@ -204,7 +205,9 @@ sha256sums=('14a64bc25b48309566a0e9a9016336b53ae0443da500f2933292773a90b7542a'
             'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
-            '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971')
+            '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
+            'SKIP'
+)
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -290,7 +293,7 @@ patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-
+patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
