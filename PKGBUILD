@@ -39,7 +39,7 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14.1
+pkgver=4.14.2
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -49,6 +49,7 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _ckpatchname="patch-4.14-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
+_preck2='https://github.com/ckolivas/linux/pull/7/commits'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -61,6 +62,12 @@ source=(
   "$_gcc_patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
   "http://ck.kolivas.org/patches/4.0/4.14/4.14-ck${_ckpatchversion}/${_ckpatchname}.xz"
   '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
+  # pre ck2 patches
+  "$_preck2/811cb391e71c1d60387dbbd6ae0bbc4e61f06acb.patch"
+  "$_preck2/6bfb805cbac27b18fb4ad7537fe90dfc39e17f35.patch"
+  "$_preck2/1588e6bf316231685204e358dfe172851b39fd1e.patch"
+  "$_preck2/df2a75f4864b30011ab6a6f365d9378d8eafa53b.patch"
+  "$_preck2/a79d648fcde72fc98048d4435bc86864a59fd01b.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -68,15 +75,20 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '5af72b487fbcc8e7fd3f5392271490c8498ffb2048e77abaf406971a7382f8d7'
+            '2dc86272e55d31c55bdeaa47b3d44fbd6235a396e37d82c2b47aa27f6ba82ee3'
             'SKIP'
-            '25e73d0e037b7e5cd5fd59f72dda89b3a155139586aee448bf5b69d6c01cc408'
+            'a3f066921cbfb65f2fd4d1e3977989d19835396ee27aabf84700f9ba7ff9cd4b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             '44d10c573112dc2b64d39ea33c2a10fbbdd84f9877b8d736acc09b2516299474'
-            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd')
+            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd'
+            '24b74a975e61293cdd4ce37845a27f550102b0481017336e15df3334a82cef02'
+            '453ccb01d9e56ea3a33621516f0d52568e836d1932ff14e26567cc3fe2101a17'
+            'd2f59cf1c5187204eced6e53806b187e90698fcb2309955aed4020a15c659ae1'
+            '3d4d2506795c4bd914959758f5b69ccf5a4f5a21f5d4bfc87bf0aa3b4b58f4c6'
+            '0dbf2d23df0b5d023794332872b8b346d0c4994576b778396364e803acac4498')
 
 _kernelname=${pkgbase#linux}
 
@@ -91,6 +103,11 @@ prepare() {
 
   # Patch source with ck patchset
   patch -Np1 -i "../${_ckpatchname}"
+  patch -Np1 -i ../811cb391e71c1d60387dbbd6ae0bbc4e61f06acb.patch
+  patch -Np1 -i ../6bfb805cbac27b18fb4ad7537fe90dfc39e17f35.patch
+  patch -Np1 -i ../1588e6bf316231685204e358dfe172851b39fd1e.patch
+  patch -Np1 -i ../df2a75f4864b30011ab6a6f365d9378d8eafa53b.patch
+  patch -Np1 -i ../a79d648fcde72fc98048d4435bc86864a59fd01b.patch
 
   # https://bugs.archlinux.org/task/56207
   patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
