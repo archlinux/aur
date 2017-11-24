@@ -4,13 +4,13 @@
 
 pkgname=lib32-libjpeg6-turbo
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='libjpeg derivative with accelerated baseline JPEG compression and decompression'
 arch=('x86_64')
-url='https://libjpeg-turbo.virtualgl.org/'
+url="https://libjpeg-turbo.org/"
 license=('BSD')
 depends=('lib32-glibc')
-makedepends=('nasm' 'gcc-multilib')
+makedepends=('nasm')
 provides=('lib32-libjpeg6')
 conflicts=('lib32-libjpeg6')
 source=("https://downloads.sourceforge.net/project/libjpeg-turbo/${pkgver}/libjpeg-turbo-${pkgver}.tar.gz"{,.sig})
@@ -28,8 +28,15 @@ build() {
     --prefix='/usr' \
     --libdir='/usr/lib32' \
     --mandir='/usr/share/man' \
-    --without-simd
+    --without-simd \
+    --with-build-date="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m%d)"
+
   make
+}
+
+check() {
+  cd libjpeg-turbo-${pkgver}
+  make test
 }
 
 package() {
