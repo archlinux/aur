@@ -29,9 +29,9 @@ install=$_pkgname.install
 source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
         '0002-Adjust-service-file-for-Arch-Linux-package.patch')
-sha512sums=('094dd6b5010128b8a68c3b4a2be389593380be527dd1f1c37882cbd7762ae31ff8da824d047acecb9ef31233ab3c576bc5030c90763adfa32d01b5830d12c04b'
-            '43a337ccc0932a8e6f538d24ec8e13a7b509d1e7c4da40d2e76339a67b043090ab648b323c08311f5a62f81db19911138b6ff2c74fb9a869a401571d9b3770c5'
-            '969a29c3d1a9667e285ebd3490a83c5a684fa037a540ba242dcd86fe8294eef0b1247fc996a4926832ba0d8c56b5d843a117c14c7696899cb813b847b861a5cc')
+sha512sums=('0de420bf2d27ab86f5efd6cb5c4a43d1f8cb0f98abe3791177c14ef9e38437571ba4491c62cf7e9f6366469294197c57cd149a6c633cc08640c612b5ee506838'
+            '2763e4a2a5c98f3e75a1ddcb7c58012ce1e0fc2ad6b85110d9f28dd6c98d9e84a98529a282ffee8a1a21ef02a92b0538f2c790f62e6159b1f1f478340ddcf68a'
+            '361d318ac3c846eaa6b0260baed8fe21ba5d6b079b0618962e8b67ae91928c61b1296eba2311d6bd032c8bca4a09e51d8fb73e6ff67039b35a5179701a0cd868')
 _goroot='/usr/lib/go'
 
 prepare() {
