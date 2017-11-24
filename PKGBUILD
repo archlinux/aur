@@ -51,7 +51,7 @@ _use_current=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
-pkgver=4.14.1
+pkgver=4.14.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -79,8 +79,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
-        '0001-bio-ensure-__bio_clone_fast-copies-bi_partno.patch')
+        '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch')
         
 _kernelname=${pkgbase#linux} 
 
@@ -94,11 +93,7 @@ prepare() {
     ### Fix https://bugs.archlinux.org/task/56207
         msg "Fix bug #56207"
         patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch    
-            
-    ### Fix https://bugs.archlinux.org/task/56404
-        msg "Fix bug #56404"
-        patch -Np1 -i ../0001-bio-ensure-__bio_clone_fast-copies-bi_partno.patch
-            
+
     ### Patch source with UKSM
         msg "Patching source with UKSM"
 	patch -Np1 -i ../${_uksm_patch}
@@ -361,7 +356,7 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            '2566d2151cb0e0ad706dda3cb815e293d84ecc804cf2891e511a0f28e359b7714a1732add599a268c98108a63ee40200cf76cbda8181d67d0a64511e815202df'
+            '04415954c3c4d3044a6a3da979e59fb18f0eda3fd872a8036ac8947fbbadcd6041384a900973b917353de6e5c1a589eff1db63c029edcb78f38b07868a929f9d'
             'SKIP'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
@@ -370,8 +365,7 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             'dc2b69f1463756ce0a7906e9ebedfb227eb4386f889a78932924ef1f576c9e02ad19e2d2510db0b864310e1d92fc3be9c137a39319f8fb0a417d5438540b9bae'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'd1eb35e93c317a5d0b764cf3a6c183f17f9fadd9a9295dc36f0b9482b89fa6f2aba2b3011b2f3166282a7e3b2ed10f68ec824cb647f2e119ce014d31ba987d8d'
-            'ca19baa5299ef35997473a6dcd3f89c9b2693afabf32b5f9dce2b6527bf9d9b9060c4b59a747a49631c81a117257fd2376eb3bb33f90bb56e9db0577abe5d4bd')
+            'd1eb35e93c317a5d0b764cf3a6c183f17f9fadd9a9295dc36f0b9482b89fa6f2aba2b3011b2f3166282a7e3b2ed10f68ec824cb647f2e119ce014d31ba987d8d')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
