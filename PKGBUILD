@@ -9,8 +9,8 @@ arch=('any')
 url="http://opendict.sourceforge.net/"
 license=('GPL')
 depends=('wxpython' 'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache')
-source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('a394292d96c632dc465da8f3569f7603')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/nerijus/${pkgname}/archive/${pkgver}.tar.gz)
+md5sums=('0802d2b1b05ac477339084f3cdda6b3f')
 
 
 prepare() {
