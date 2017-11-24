@@ -1,7 +1,8 @@
-# Maintainer: Youngbin Han <sukso96100@gmail.com>
+# Maintainer: Jake <ja.ke@posteo.de>
+# Contributor: Youngbin Han <sukso96100@gmail.com>
 # Contributor: Andrew Kluger <evilgnome@gmail.com>
 pkgname=micro-git
-pkgver=v1.3.1.e40ff56
+pkgver=v1.3.3.5fc8f84
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
