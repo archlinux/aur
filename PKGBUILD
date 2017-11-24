@@ -4,7 +4,7 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-git
-pkgver=2.1.0.r61.ga161af444
+pkgver=2.1.0.r175.gce9ffd87c
 _branch=2.2
 pkgrel=1
 pkgdesc='git-version of the sheet music editor MuseScore'
@@ -15,6 +15,7 @@ depends=('desktop-file-utils'
     'gtk-update-icon-cache'
     'libpulse'
     'portaudio'
+    'portmidi'
     'qt5-quickcontrols'
     'qt5-svg'
     'qt5-tools'
@@ -31,7 +32,7 @@ install=musescore.install
 source=("git+$url.git#branch=$_branch"
     'metronomeVolume.patch')
 md5sums=('SKIP'
-         '20d2d42d1a4b1510341f1fec2ef8d9b4')
+         '6d024474a62e671d2326edd8449616f0')
 
 pkgver() {
   cd MuseScore
