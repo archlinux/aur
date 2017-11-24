@@ -1,7 +1,9 @@
+# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 # Contributor: Carl George < arch at cgtx dot us >
+
 pkgname=gnome-shell-extension-dash-to-panel-git
-pkgver=r249.cbda4b3
+pkgver=r262.187ac72
 pkgrel=1
 pkgdesc='Extension for GNOME shell to combine the dash and main panel'
 arch=(any)
@@ -16,16 +18,17 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_githubname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_githubname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/${_githubname}"
-    make VERSION="$pkgver" _build
+  cd "${srcdir}/${_githubname}"
+  make VERSION="$pkgver" _build
 }
 
 package() {
-    cd "${srcdir}/${_githubname}"
-    make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${_githubname}"
+  make DESTDIR="$pkgdir" install
 }
+# vim:set ts=2 sw=2 et:
