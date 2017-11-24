@@ -8,7 +8,7 @@
 _lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
-pkgver=387.22
+pkgver=387.34
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -27,10 +27,10 @@ fi
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
         '10-nvidia-drm-outputclass.conf'
         '20-nvidia.conf')
-md5sums=('b21f9bafb20409b337505c9b1d362c34'
+md5sums=('a009bbc502c30e4b483d71be9fa51790'
          '4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]='5989b02e94ce3f171e473e0837f52e24'
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]='93f33ebb102292d40e3200caf6c9eba4'
 
 # Patch
 #source+=('linux-4.11.patch')
