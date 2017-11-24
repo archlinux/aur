@@ -2,15 +2,15 @@
 # Contributor: Giedrius Slavinskas <giedrius25@gmail.com>
 
 pkgname=opendict
-pkgver=0.6.7
-pkgrel=2
+pkgver=0.6.8
+pkgrel=1
 pkgdesc="Multiplatform computer dictionary software"
 arch=('any')
 url="http://opendict.sourceforge.net/"
 license=('GPL')
 depends=('wxpython' 'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache')
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('a274896b4ee943de4f3200cfba4bbdde')
+md5sums=('a394292d96c632dc465da8f3569f7603')
 
 
 prepare() {
