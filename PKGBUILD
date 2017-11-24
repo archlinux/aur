@@ -1,5 +1,6 @@
 pkgname=kde-cdemu-manager
-pkgver=0.7.2
+_pkgname=kde_cdemu
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="KDE CDEmu Manager is a simple frontend for CDEmu."
 arch=('i686' 'x86_64')
@@ -10,8 +11,8 @@ depends=('cdemu-daemon>=2.0')
 provides=('kde-cdemu-manager')
 conflicts=('kde-cdemu-manager')
 makedepends=('cmake' 'extra-cmake-modules')
-source=(https://dl.opendesktop.org/api/files/download/id/1481242372/kde_cdemu-0.7.2.tar.bz2)
-md5sums=('063bc8e39287bc30afe5bf8912dfe2b6')
+source=("https://dl.opendesktop.org/api/files/download/id/1511553040/${_pkgname}-${pkgver}.tar.bz2")
+md5sums=('f65deb825bb50a1c1bbf2a2f7a5b8ac4')
 
 prepare() {
   mkdir -p build
