@@ -1,0 +1,21 @@
+pkgbase = ganache-cli
+	pkgdesc = Personal blockchain for Ethereum development.
+	pkgver = 6.0.3
+	pkgrel = 1
+	url = https://github.com/trufflesuite/ganache-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	optdepends = mocha: testing support
+	optdepends = testrpc: testing support
+	optdepends = geth: contract deployment
+	optdepends = parity: contract deployment
+	provides = ganache-cli
+	conflicts = ganache-cli-git
+	noextract = ganache-cli-6.0.3.tgz
+	source = https://registry.npmjs.org/ganache-cli/-/ganache-cli-6.0.3.tgz
+	sha1sums = 8b9da149707daa29c69da26f0582b89c90113b9c
+
+pkgname = ganache-cli
+
