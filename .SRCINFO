@@ -1,0 +1,19 @@
+pkgbase = libfprint-elantech
+	pkgdesc = Library for fingerprint readers forked for elantech support
+	pkgver = r314.dd5275f
+	pkgrel = 1
+	url = https://github.com/sbechet/libfprint
+	arch = x86_64
+	groups = fprint
+	license = LGPL
+	makedepends = git
+	depends = libusb
+	depends = nss
+	depends = pixman
+	depends = glib2
+	conflicts = libfprint
+	source = git+https://github.com/sbechet/libfprint.git
+	sha256sums = SKIP
+
+pkgname = libfprint-elantech
+
