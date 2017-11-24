@@ -1,0 +1,4 @@
+Makefile
+pkg/
+src/
+*.pkg.tar.xz
