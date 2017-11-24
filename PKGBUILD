@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=libavlbst-git
-pkgver=2.0.0.r15.b318af7
+pkgver=2.1.0.r18.6e7bfca
 pkgrel=1
 epoch=
 pkgdesc="General purpose AVL binary search tree library."
