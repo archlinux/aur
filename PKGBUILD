@@ -10,7 +10,7 @@
 
 pkgname=lwks-beta
 lwksver=14.1.0.0
-lwksbuild=101730
+lwksbuild=101919
 pkgver=$lwksver.$lwksbuild
 pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
@@ -27,7 +27,7 @@ source=(
     )
 
 sha256sums=(
-    '91f59f057ff72eaf4bf7a4624d1381756769f03e609db4c6dfe926454b21bd6c'
+    '5d2b6852c15cbfb3f66c1dbf15c2c17940b6baa4ce991dde8dfe21187d19a178'
     'e9429b3332f90ead771e7cc23d014b60be7311d50f809d353755fa0f50c9b242'
     )
 
