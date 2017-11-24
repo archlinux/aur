@@ -1,0 +1,24 @@
+
+finish_install() {
+    echo "Backing up youtube.luac..."
+    cd /usr/share/vlc/lua/playlists/
+    if [ -e youtube.luac ]; then
+	mv youtube.luac youtube.luac.bak
+    fi
+}
+
+restore_backup(){
+   echo "Restoring youtube.luac..."
+   cd /usr/share/vlc/lua/playlists/
+    if [ -e youtube.luac.bak ]; then
+        mv youtube.luac.bak youtube.luac
+    fi
+}
+
+post_install() {
+   finish_install
+}
+
+post_remove() {
+    restore_backup
+}

@@ -1,0 +1,19 @@
+pkgbase = vlc-youtube
+	pkgdesc = ARC Dark skin for VLC Media Player (git version)
+	pkgver = 20171124
+	pkgrel = 1
+	url = https://github.com/videolan/vlc
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = sudo
+	depends = vlc
+	options = !strip
+	source = https://github.com/videolan/vlc/raw/master/share/lua/playlist/youtube.lua
+	source = .install
+	sha256sums = SKIP
+	sha256sums = 5b50fbd4bef26a5510a0810580a1e9f44c1ac4aa5c126b391bb8d66e6ed44fc0
+
+pkgname = vlc-youtube
+
