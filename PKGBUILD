@@ -2,7 +2,7 @@
 #
 pkgname=sch_cake-dkms
 _modname=sch_cake
-pkgver=r238.032d548
+pkgver=r358.e5ede00
 pkgver() {
 	cd "sch_cake"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -16,7 +16,7 @@ optdepends=('linux-headers: build the module against Arch kernel [requires at le
             'linux-lts-headers: build the module against LTS Arch kernel [requires at least one set of kernel headers]')
 provides=('sch_cake')
 install=sch_cake-dkms.install
-source=('git+https://github.com/dtaht/sch_cake.git'
+source=('git+https://github.com/dtaht/sch_cake.git#branch=cobalt'
 	'dkms.conf.in')
 url="bufferbloat.net"
 
