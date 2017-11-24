@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xviewer
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ url='https://github.com/linuxmint/xviewer'
 install=xviewer.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('fd85824cf70bf3cca4f9aba43508f8e8')
+md5sums=('583cba9c604f3f48b4bf36c18bdc885b')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
