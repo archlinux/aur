@@ -1,10 +1,11 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: eworm <arch@eworm.de>
 # Contributor: pisuka <tekmon@gmail.com>
 
 pkgbase=lightdm-bzr
 pkgname=('lightdm-bzr' 'liblightdm-qt4-bzr' 'liblightdm-qt5-bzr')
-pkgver=r2117
+pkgver=r2506
 pkgrel=1
 pkgdesc='A lightweight display manager'
 arch=('i686' 'x86_64')
