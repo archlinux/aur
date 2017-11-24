@@ -12,7 +12,7 @@ url="https://ieee1394.wiki.kernel.org/index.php/Main_Page"
 license=('LGPL2.1')
 depends=('lib32-glibc' "${_pkgname}")
 makedepends=('gcc-multilib')
-source=(ftp://ftp.kernel.org/pub/linux/libs/ieee1394/${_pkgname}-${pkgver}.tar.xz)
+source=(https://www.kernel.org/pub/linux/libs/ieee1394/${_pkgname}-${pkgver}.tar.xz)
 md5sums=('118060584c04f1aa5e29c4d22c1c235a')
 
 
