@@ -1,0 +1,23 @@
+pkgbase = stm32cubeh7
+	pkgdesc = Embedded software for STM32 H7 series
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.st.com/en/embedded-software/stm32cubeh7.html
+	arch = any
+	license = custom:Mix Ultimate Liberty+OSS+3rd-party V1
+	makedepends = unzip
+	depends = bash
+	depends = perl
+	optdepends = arm-none-eabi-gcc: ARM compiler
+	optdepends = arm-none-eabi-gdb: ARM GDB
+	optdepends = arm-none-eabi-newlib: ARM bare metal files
+	optdepends = arm-none-eabi-binutils: ARM binutils
+	optdepends = openocd: STM32H7 firmware flashing
+	options = !strip
+	source = stm32cubeh7.zip::http://www.st.com/content/ccc/resource/technical/software/firmware/group0/fd/9a/b6/df/a7/3d/41/0d/stm32cubeh7.zip/files/stm32cubeh7.zip/_jcr_content/translations/en.stm32cubeh7.zip
+	source = LICENSE
+	sha512sums = 5aa8eb04e819e35e3242b69f86488bba14c69bbeddf9b35cb99397c9659d23d46991c2a12f7779036e2bc730ce14017f1f8c1fbc09c0ff41ac13018058e0e2fb
+	sha512sums = 8c1a849105e35b5cf1b14a411e6ab5db171a8c284abaf6d673c24963069617115cecfe0cb4fb7a04a2fb5b4e0e20b061de512c10c4d5c106e39506e04edb61e3
+
+pkgname = stm32cubeh7
+
