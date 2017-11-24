@@ -5,6 +5,7 @@ post_install() {
 
 post_upgrade() {
 	systemctl --quiet daemon-reload
+	systemd-tmpfiles --create caddy.conf
 	systemctl --quiet try-restart caddy.service
 }
 
