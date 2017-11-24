@@ -2,10 +2,10 @@
 # Contributor: SoVerySour <gmaiadremailfeis22 at gmail dot com>
 
 pkgname=infra-arcana-git
-pkgver=v19.2.a.181.g9df112c4
+pkgver=v19.2
 pkgrel=1
 
-pkgdesc="Roguelike game inspired by the writings of H.P. Lovecraft"
+pkgdesc="Roguelike game inspired by the writings of H.P. Lovecraft - git version"
 arch=('i686' 'x86_64')
 url="https://github.com/martin-tornqvist/ia"
 license=('custom: Infra Arcana License' 'Apache')
