@@ -1,0 +1,19 @@
+pkgbase = notary-git
+	pkgdesc = Notary is a project that allows anyone to have trust over arbitrary collections of data.
+	pkgver = 0.5.0.r295.ga41821fe
+	pkgrel = 1
+	url = https://github.com/theupdateframework/notary
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = go
+	makedepends = godep
+	provides = notary=0.5.0.r295.ga41821fe
+	conflicts = notary-bin
+	options = !strip
+	options = !emptydirs
+	source = notary-git::git://github.com/theupdateframework/notary.git
+	sha256sums = SKIP
+
+pkgname = notary-git
+
