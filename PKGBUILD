@@ -3,7 +3,7 @@
 pkgname=qmaster
 pkgver=0.1.0
 pkgrel=1
-pkgdecs="Modbus RTU master device emulator for PC"
+pkgdesc="Modbus RTU master device emulator for PC"
 arch=('x86_64')
 url="https://github.com/masivendoo/qmaster.git"
 license=('GPL')
