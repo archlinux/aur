@@ -1,7 +1,7 @@
 # Contributor: Bryan Ischo <bryan@ischo.com>
 pkgname=libs3-git
 _gitname=libs3
-pkgver=184.bc58960
+pkgver=258.fd8b149
 pkgrel=1
 pkgdesc="C Library and Tools for Amazon S3 Access"
 arch=('i686' 'x86_64')
