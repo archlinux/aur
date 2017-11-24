@@ -1,17 +1,18 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Michael DÃ¼ll <mail@akurei.me> PGP-Key: 6D666EC8
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Roozbeh Shafiee <Roozbeh@Roozbeh.us>
 
 pkgname=choqok-git
-pkgver=r1830.5f0ea6f
+pkgver=v1.6.0.r56.g6ec445a7
 pkgrel=1
-pkgdesc='Microblogging client for KDE with support for Pump.io, GNU social and Twitter.com'
+pkgdesc='Microblogging client for KDE with support for Pump.io, GNU social and Twitter.com - git version'
 arch=(i686 x86_64)
 url='http://choqok.gnufolks.org/'
 license=(GPL)
-depends=(knotifyconfig kcmutils kemoticons qoauth-git)
-makedepends=(extra-cmake-modules git kdoctools python)
+depends=(knotifyconfig kcmutils kemoticons qt5-networkauth)
+makedepends=(extra-cmake-modules git kdoctools python qca-qt5)
 conflicts=(choqok)
 provides=(choqok)
 replaces=(choqok-frameworks-git)
@@ -21,7 +22,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd choqok
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
