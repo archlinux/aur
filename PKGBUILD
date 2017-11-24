@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -92,34 +92,7 @@ prepare() {
   cd "${srcdir}/linux-${_basekernel}"
   msg "Applying pf-kernel patch"
   patch -Np1 < ${srcdir}/${_pfpatchname}
-#  msg "applying aufs3 patches"
-#  cd "$srcdir/${_aufs3##*/}"
-#  git checkout origin/aufs${_basekernel} || _aufs3checkout=KRAKRA
- # if [[ ${_aufs3checkout} = "KRAKRA" ]]; then
-  #    echo
-   #   msg "AUFS3 not yet ported to version ${_basekernel}!"
-    #  msg "Skipping related patches."
-     # echo
-     # cd ..
-  #else
-    #        mkdir -p "${pkgdir}/usr/lib/modules/build/${_kernver}/include"
-    #        mv include/linux/Kbuild "${pkgdir}/usr/lib/modules/build/${_kernver}/include/"
-   # rm include/uapi/linux/Kbuild
-    #cp -a {Documentation,fs,include} ${srcdir}/linux-${_basekernel}/
-    #cd ../linux-${_basekernel}
-    #msg "Patching aufs3"
-    #for _patch in ${srcdir}/${_aufs3##*/}/*.patch; do
-    #  patch -Np1 -i ${_patch} || _aufs3fail=KRAKRA
-    #done
-    #if [[ ${_aufs3fail} = "KRAKRA" ]]; then
-#	echo
-    #	warning "Not all aufs3 patches applied correctly. Ignore this if you won't use AUFS."
-    #	warning "Otherwise, press CTRL-C now and fix manually"
-#	warning "Remind me to enable it again if it's aviable again"
- #   	echo
-  #  fi
-  #fi
-  
+
   # linux-ARCH patches
 
   # add latest fixes from stable queue, if needed
@@ -129,10 +102,6 @@ prepare() {
   patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
 
   # end linux-ARCH patches
-
-
-  # added gcc 4.7.1 support for Kconfig and menuconfig
-  # now inclued in pf patchset
 
   # fix ci  invalid PC card inserted issue hopefully
   #patch -Rp1 -i "${srcdir}/cx23885_move_CI_AC_registration_to_a_separate_function.patch" || true
@@ -145,7 +114,6 @@ prepare() {
   fi
 
   sed -ri "s|SUBLEVEL = 0|SUBLEVEL = $_pfrel|" Makefile
-
 
   # Set EXTRAVERSION to -pf
   sed -ri "s|^(EXTRAVERSION =).*|\1|" Makefile
@@ -182,7 +150,8 @@ build() {
   # enable $_BATCH_MODE if batch_opts is found in $srcdir
   if [[ -e $srcdir/batch_opts ]] ; then
       source "$srcdir/batch_opts"
-      if [[ "$CPU" ]] ; then # enable cpu optimisations acording to $CPU and enable pkgopt
+      # enable cpu optimisations acording to $CPU and enable pkgopt
+      if [[ "$CPU" ]] ; then
           sed -e "s|# CONFIG_M$CPU is not set|CONFIG_M$CPU=y|" \
               -e '/CONFIG_GENERIC_CPU=y/d' \
               -i "$srcdir/linux-${_basekernel}/.config"
@@ -237,7 +206,7 @@ build() {
           msg "Running 'make localmodconfig'..."
           make localmodconfig
       else
-        msg "Using stock ARCH kernel .config (with BFS, BFQ and TuxOnIce enabled)."
+        msg "Using stock ARCH kernel .config (with BFS and BFQ)."
       fi
       
       # Make some good use of MAKEFLAGS
@@ -317,7 +286,7 @@ build() {
   fi
 
   # rewrite configuration
-  yes "" | make config >/dev/null
+  yes "" | make config >/dev/null #FIXME
 
   # Build
   # Want extreme and non-sensical optimization? Uncomment the following line!
@@ -349,11 +318,7 @@ package_linux-pf() {
  done  
  replaces=('kernel26-pf' 'aufs3')
 
- #'
-  cd "${srcdir}/linux-${_basekernel}"
-
-  # Remove undeeded aufs3 git tree
-  rm -fr aufs3 2>/dev/null
+ cd "${srcdir}/linux-${_basekernel}"
 
   # work around the AUR parser
   # This allows building cpu-optimized packages with according package names.
@@ -460,8 +425,8 @@ package_linux-pf() {
 	pkgnameopt="${pkgname}"		# this MUST be inside this if-fi
 	pkgname="${pkgbase}"
 	echo pkgname $pkgname
-	cpuopt=`sed -e "s/linux-pf-//" <<<$pkgnameopt`		# get suffix
-	cpuoptdesc=`sed -e "s/${_pkgdesc}//" <<<$pkgdesc`	# get description
+	cpuopt=$(sed -e "s/linux-pf-//" <<<$pkgnameopt)		# get suffix
+	cpuoptdesc=$(sed -e "s/${_pkgdesc}//" <<<$pkgdesc)	# get description
 	conflicts=(${conflicts[@]/linux-pf-${cpuopt}/})		# remove current
 	conflicts=(${conflicts[@]/linux-pf-headers-${cpuopt}/})	# remove current's headers
 	export cpuopt cpuoptdesc
@@ -495,28 +460,28 @@ package_linux-pf() {
   echo # get kernel version
    _kernver="$(make LOCALVERSION= kernelrelease)"
 
-  ### c/p from linux-ARCH
-
   mkdir -p "${pkgdir}"/{usr/lib/modules,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-  # remove build and source links
-  rm -f "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
+  ### c/p from linux-ARCH
+  
   # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
-  # add real version for building modules and running depmod from post_install/upgrade
-  mkdir -p "${pkgdir}/usr/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  echo "${_kernver}" |
-      install -Dm644 /dev/stdin \
-              "${pkgdir}/usr/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
+  # add real version for building modules and running depmod from hook
+  echo "${_kernver}" |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+  # remove build and source links
+  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
+  
   # Now we call depmod...
   depmod -b "$pkgdir/usr" -F System.map "$_kernver"
   
   # add vmlinux
   install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
-
+  
 # end c/p
 
   ###
