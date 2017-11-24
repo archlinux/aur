@@ -4,7 +4,7 @@
 pkgbase=linux-max98090
 _srcname=linux-4.14
 pkgver=4.14.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
