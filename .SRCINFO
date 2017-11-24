@@ -1,7 +1,7 @@
 pkgbase = latex-solarized-git
 	pkgdesc = Provides three LaTeX packages for using the Solarized theme in LaTeX code listings.
 	pkgver = r6.11b24e9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jez/latex-solarized
 	install = latex-solarized-git.install
 	arch = any

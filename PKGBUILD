@@ -3,8 +3,8 @@
 # https://github.com/sinisterstuf/PKGBUILD-latex-solarized
 
 pkgname=latex-solarized-git
-pkgver=VERSION
-pkgrel=1
+pkgver=r6.11b24e9
+pkgrel=2
 pkgdesc="Provides three LaTeX packages for using the Solarized theme in LaTeX code listings."
 arch=('any')
 url="https://github.com/jez/latex-solarized"
