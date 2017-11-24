@@ -4,7 +4,7 @@
 # @see https://wiki.archlinux.org/index.php/Unreal_Engine_4
 
 pkgname='unreal-tournament-4'
-pkgver=r9.7d56068
+pkgver=r24883.3bf4b43c32
 pkgrel=1
 pkgdesc='A first-person shooter by Epic Games based on Unreal Engine 4.'
 arch=('x86_64')
@@ -15,12 +15,14 @@ license=('custom:UnrealTournament')
 source=(
   "git+ssh://git@github.com/EpicGames/UnrealTournament.git#tag=$pkgver"
   'UnrealTournament.desktop'
+  'fix-clang-package-name.patch'
 )
 sha256sums=(
   'SKIP'
   'd0f041443a6c60ad9d1a7c1381b270df4b0576009f13328a4b024868b5387d7b'
+  '255dc9e83d9e20d56ec44f8b7e9b587bdaa8a8c68a657952818aed1e808a29b3'
 )
-options=(staticlibs)
+options=(!strip)
 
 pkgver() {
   cd "$srcdir/UnrealTournament"
@@ -28,6 +30,8 @@ pkgver() {
 }
 
 prepare() {
+  patch "$srcdir/UnrealTournament/Engine/Build/BatchFiles/Linux/Setup.sh" fix-clang-package-name.patch
+
   cd "$srcdir/UnrealTournament"
 
   # clean up old builds before building a new version

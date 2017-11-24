@@ -1,0 +1,4 @@
+156c156
+<     DEPS="clang35 mono python sdl2 qt4 dos2unix cmake"
+---
+>     DEPS="clang mono python sdl2 qt4 dos2unix cmake"
