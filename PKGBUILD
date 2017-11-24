@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=62.0.3202.94
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -101,6 +101,7 @@ https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/o.patch
 https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/p.patch
 https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/888.patch
 https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/hell.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/pt.patch
 )
 
 
@@ -188,7 +189,9 @@ sha256sums=('cabc4d267bf08aabe11c5739048c43dde18c61acf595223a1c3aa1d3499558d4'
             '502b4eca6edf10fe1d036ab2c65363b4300de91b381ce687e08bd96dc254c898'
             '0d7c128d362697e3ba80b7647826f8577b6fadea32462ad6fa37c877bc8f7643'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
-            '2716f2b1905dd909a82d29c942e130618d904bb7e36f03d14d4153e596b7655f')
+            '2716f2b1905dd909a82d29c942e130618d904bb7e36f03d14d4153e596b7655f'
+            'SKIP' 
+)
 
 
 
@@ -274,6 +277,8 @@ patch -Np1 -i ../036.patch
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
 patch -Np1 -i ../888.patch
+patch -Np1 -u ../pt.patch
+
 
 msg2 'Cut media router'
 patch -Np1 -i ../1992.patch

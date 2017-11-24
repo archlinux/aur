@@ -1,7 +1,7 @@
 pkgbase = inox-hard
 	pkgdesc = A web browser built for speed, simplicity, and security
 	pkgver = 62.0.3202.94
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = inox-hard.install
 	arch = i686
@@ -129,6 +129,7 @@ pkgbase = inox-hard
 	source = https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/p.patch
 	source = https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/888.patch
 	source = https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/hell.patch
+	source = https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/pt.patch
 	sha256sums = cabc4d267bf08aabe11c5739048c43dde18c61acf595223a1c3aa1d3499558d4
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
 	sha256sums = ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148
@@ -214,6 +215,7 @@ pkgbase = inox-hard
 	sha256sums = 0d7c128d362697e3ba80b7647826f8577b6fadea32462ad6fa37c877bc8f7643
 	sha256sums = 84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230
 	sha256sums = 2716f2b1905dd909a82d29c942e130618d904bb7e36f03d14d4153e596b7655f
+	sha256sums = SKIP
 
 pkgname = inox-hard
 
