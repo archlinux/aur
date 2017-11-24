@@ -28,5 +28,5 @@ pkgver() {
 
 package() {
   cd "$_gitname"
-  DESTDIR=$pkgdir/usr make install || return 1
+  CFLAGS=-Wno-format-truncation DESTDIR=$pkgdir/usr make install || return 1
 }
