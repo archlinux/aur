@@ -16,6 +16,8 @@ source=('vmware-patch.sh' 'vmware-unpatch.sh' 'common-functions.sh' 'vmware.serv
         'vmmon-14.0.0-4.13.3.patch'
         'vmnet-14.0.0-4.13.3.patch'
         'vmci-14.0.0-4.13.3.patch'
+        # Workstation Pro/Player 12.5.8
+        'vmnet-12.5.8-4.13.12.patch'
         # Workstation Pro/Player 12.5.7
         'vmmon-12.5.7-4.13.3.patch'
         'vmnet-12.5.7-4.13.3.patch'
@@ -77,6 +79,7 @@ md5sums=('f116133678419f2281c59e390e42152e'
          '3c165edb6847fc9bfa04657f346ac4cc'
          'eca2542e4c484ea2ca06b7e9c065b8af'
          'ced58cf32a21adfe21d612366c52116a'
+         'dc020c9dea90f28a69c8957a482f6c12'
          '3c165edb6847fc9bfa04657f346ac4cc'
          'eca2542e4c484ea2ca06b7e9c065b8af'
          'a2c3e2bbbe6dcbf66737a5e33df5b892'
