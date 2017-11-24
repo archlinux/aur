@@ -5,16 +5,17 @@
 pkgname=mist
 pkgver=0.9.3
 _strver=0-9-3
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum wallet and Dapp browser."
 arch=('i686' 'x86_64')
 depends=(
-  'gmp'
-  'readline'
+  'alsa-lib'
   'gconf'
-  'libnotify'
   'gtk2'
+  'libnotify'
   'libxss'
+  'libxtst'
+  'nss'
 )
 provides=(
   'mist'
@@ -70,7 +71,6 @@ package() {
   install -d "${pkgdir}/usr/lib"
   ln -s "/usr/share/${pkgname}/libnode.so" "${pkgdir}/usr/lib/libnode.so"
 
-  ln -sf "/usr/lib/libgcrypt.so.11" "${pkgdir}/usr/share/${pkgname}/libgcrypt.so.11"
   ln -sf "/usr/lib/libnotify.so.4" "${pkgdir}/usr/share/${pkgname}/libnotify.so.4"
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
