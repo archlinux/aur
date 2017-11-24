@@ -1,7 +1,7 @@
 # Maintainer: Nemanja Nedeljkovic <nemanjan00@gmail.com>
 
 pkgname=teamsql
-pkgver=2.3.134
+pkgver=2.4.143
 pkgrel=1
 pkgdesc="Multi-Platform SQL Client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=()
 install=$pkgname.install
 source=("TeamSQL-${pkgver}.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/${pkgver}/TeamSQL-${pkgver}.deb"
         'teamsql.sh')
-md5sums=('ee0de0602ffe2eda5dddfcd49ec15af3'
+md5sums=('e98c232be20a6713ad641be0b959e7ed'
          '7262cf67a1e2634401d6012d8d34e7d8')
 
 package() {
