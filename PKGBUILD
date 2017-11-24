@@ -8,8 +8,7 @@ arch=('any')
 url="http://www.st.com/en/embedded-software/stm32cubeh7.html"
 license=('custom:Mix Ultimate Liberty+OSS+3rd-party V1')
 groups=()
-depends=('bash'
-	'perl')
+depends=()
 makedepends=('libarchive')
 optdepends=('arm-none-eabi-gcc: ARM compiler'
 	'arm-none-eabi-gdb: ARM GDB'
