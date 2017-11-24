@@ -1,61 +1,47 @@
-# Maintainer: Bruno <brogeriofernandes g-mail>
+# Contributor: Egor Malyutin <egorcod.tk@gmail.com>
 
-pkgname=firefox-quantum
+pkgname="firefox-quantum"
 pkgver=57.0
-_major=${pkgver/rc*}
-_build=${pkgver/*rc}
-pkgrel=3
-pkgdesc="Standalone web browser from mozilla.org - quantum"
-arch=('x86_64')
-url="https://ftp.mozilla.org/pub/firefox/releases"
-license=('MPL' 'GPL' 'LGPL')
-depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
-optdepends=('ffmpeg: H264/AAC/MP3 decoding'
-            'hunspell: Spell checking'
-            'hyphen: Hyphenation'
-            'libnotify: Notification integration'
-            'networkmanager: Location detection via available WiFi networks'
-            'pulseaudio: Sound'
-            'upower: Battery API')
-provides=("firefox-quantum=$pkgver")
-#install=$pkgname.install
-source=("$url/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
-        "$pkgname.desktop")
+pkgrel=1
+pkgdesc="Meet Firefox Quantum. Fast for good."
+arch=('i686' 'x86_64')
+url='https://www.mozilla.org/en-US/firefox/'
+license=('unknown')
+groups=()
+depends=()
+makedepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+source=()
+noextract=()
+md5sums=()
 
-sha256sums=('c2cae016089e816c03283a359c582efab3bca34e6048ecc2382b43c1eb342457'
-            '2e4ea328c895b7cc3f930ebbd3c3f544b6e86049e8144a48120734fe8b9dd8a2')
+pkgver() {
+	curl "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" | grep -o 'href=".*"' | sed -r 's,href="(.*)",\1,' | sed -r "s,https://download-installer.cdn.mozilla.net/pub/firefox/releases/(.*?)/.*,\1," | grep -oP "^.*?/" | sed 's,/,,'
+}
+
 
 package() {
-  # Create directories
-  msg2 "Creating directory structure..."
-  mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/share/applications
-  mkdir -p "$pkgdir"/opt
+	cd $pkgdir
+	# Create work dirs
+	mkdir -p usr usr/{lib,bin}
+	cd usr/lib
 
-  msg2 "Moving stuff in place..."
-  # Install
-  cp -r firefox/ "$pkgdir"/opt/$pkgname
+	# Get latest download link
+	link=$(curl "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" | grep -o 'href=".*"' | sed -r 's,href="(.*)",\1,')
+	curl $link >> firefox-quantum.tar.bz2
 
-  # Launchers
-  ln -s "$pkgdir"/opt/$pkgname/firefox-bin "$pkgdir"/usr/bin/$pkgname  # compatibility
-  # ln -sf $pkgname "$pkgdir"/opt/$pkgname/firefox-bin
+	# Extract archive
+	tar xjvf firefox-quantum.tar.bz2
+	rm firefox-quantum.tar.bz2
+	mv ./* firefox-quantum
 
-  # Desktops
-  install -m644 *.desktop "$pkgdir"/usr/share/applications/
+	cd $pkgdir
 
-  # Icons
-  for i in 16x16 32x32 48x48; do
-    install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$pkgname/browser/chrome/icons/default/default${i/x*}.png \
-          "$pkgdir"/usr/share/icons/hicolor/$i/apps/$pkgname.png
-  done
-
-
-  # Use system-provided dictionaries
-  rm -r "$pkgdir"/opt/$pkgname/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$pkgname/dictionaries
-  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$pkgname/hyphenation
-
-  # Use system certificates
-  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$pkgname/libnssckbi.so
+	# Create link
+	ln -sr ./usr/lib/firefox-quantum/firefox ./usr/bin/firefox-quantum
 }
