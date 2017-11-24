@@ -1,21 +1,22 @@
 pkgbase = kbibtex-git
 	pkgdesc = A BibTeX editor for KDE
-	pkgver = 20160618_4349a09
+	pkgver = r2783.4ce7c51f
 	pkgrel = 1
-	url = http://home.gna.org/kbibtex/
-	arch = i686
+	url = https://userbase.kde.org/KBibTeX
+	install = kbibtex-git.install
 	arch = x86_64
-	license = GPL2
-	makedepends = git
+	license = GPL
 	makedepends = extra-cmake-modules
-	makedepends = kdoctools
-	depends = kparts
+	makedepends = qca-qt5
 	depends = poppler-qt5
-	depends = qca-qt5
-	provides = kbibtex
-	conflicts = kbibtex
-	source = git://anongit.kde.org/kbibtex#branch=master
-	md5sums = SKIP
+	depends = kio
+	depends = icu
+	depends = qoauth
+	depends = libxml2
+	depends = libxslt
+	optdepends = okular: Document preview
+	source = git://anongit.kde.org/kbibtex.git
+	sha512sums = SKIP
 
 pkgname = kbibtex-git
 

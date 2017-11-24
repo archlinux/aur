@@ -1,46 +1,42 @@
-# Maintainer: Corelli <corelli AT yepmail DOT net>
-# Contributor: Ray Rashif <schiv@archlinux.org>
-# Contributor: Antonio Rojas <nqn1976 @ gmail.com>
-# Contributor: cmorlok <christianmorlok@web.de>
+# $Id$
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
-_pkgname=kbibtex
 pkgname=kbibtex-git
-pkgver=20160618_4349a09
+pkgver=r2783.4ce7c51f
 pkgrel=1
 pkgdesc="A BibTeX editor for KDE"
-arch=('i686' 'x86_64')
-url='http://home.gna.org/kbibtex/'
-license=('GPL2')
-depends=('kparts' 'poppler-qt5' 'qca-qt5')   
-makedepends=('git' 'extra-cmake-modules' 'kdoctools')
-provides=('kbibtex')
-conflicts=('kbibtex')
-source=("git://anongit.kde.org/kbibtex#branch=master")
-md5sums=('SKIP')
+arch=('x86_64')
+url='https://userbase.kde.org/KBibTeX'
+license=('GPL')
+depends=('poppler-qt5' 'kio' 'icu' 'qoauth' 'libxml2' 'libxslt')
+optdepends=('okular: Document preview')
+makedepends=('extra-cmake-modules' 'qca-qt5')
+source=("git://anongit.kde.org/kbibtex.git")
+install="$pkgname.install"
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  echo "$(git log -1 --format="%cd" --date=short | sed 's|-||g')_$(git rev-parse --short HEAD)"
+  cd "$srcdir"/kbibtex
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-mkdir -p build
-  }
+  cd "$srcdir"
+  mkdir build
+}
 
-build() { 
-  cd build
-  cmake ../$_pkgname  \
+build() {
+  cd "$srcdir"/build
+  cmake ../kbibtex \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DSYSCONF_INSTALL_DIR=/etc \
+    -DLIB_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
 }
 
-
 package() {
-  cd build
+  cd "$srcdir"/build
   make DESTDIR="$pkgdir" install
 }
+sha512sums=('SKIP')
