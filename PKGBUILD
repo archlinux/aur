@@ -4,7 +4,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=173.3727.6
+_buildver=173.3727.88
 _pkgver=2017.3
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
@@ -34,13 +34,19 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
 provides=("pycharm" "pycharm-professional")
 source=("https://download.jetbrains.com/python/pycharm-professional-${_buildver}.tar.gz"
 	"${pkgname}.desktop")
-sha256sums=("fb8909402a4b5b8ad2f3b235bf12e51cfdae979736c19ab93064f67bb4fca124"
+sha256sums=("24032bf5714a57521c44b9084745c2f96034e4d39a76751893b9015aa0c7685b"
 	    "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 
+prepare() {
+	if [ -d $srcdir/pycharm-${_pkgver} ]; then
+		mv $srcdir/pycharm-${_pkgver} $srcdir/pycharm-${_buildver}
+	fi
+}
+
 build() {
-  # compile PyDev debugger used by PyCharm to speedup debugging
-  python2 $srcdir/pycharm-${_buildver}/helpers/pydev/setup_cython.py build_ext --inplace
-  python3 $srcdir/pycharm-${_buildver}/helpers/pydev/setup_cython.py build_ext --inplace
+	# compile PyDev debugger used by PyCharm to speedup debugging
+	python2 $srcdir/pycharm-${_buildver}/helpers/pydev/setup_cython.py build_ext --inplace
+	python3 $srcdir/pycharm-${_buildver}/helpers/pydev/setup_cython.py build_ext --inplace
 }
 
 package() {
