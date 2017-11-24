@@ -12,10 +12,12 @@ makedepends=('cmake' 'git' 'pkg-config')
 conflicts=('libthinkpad')
 provides=('libthinkpad')
 options=('!strip')
-source=("git://github.com/libthinkpad/libthinkpad")
-md5sums=('SKIP')
+_gitname=libthinkpad
+source=("git://github.com/libthinkpad/libthinkpad" "$_gitname.install")
+md5sums=('SKIP'
+         'b44e3c7ddac879d57b45a709544df785')
+install=$_gitname.install
 
-_gitname=libthinkpad 
 
 pkgver() {
     cd "$srcdir/$_gitname"

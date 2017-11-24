@@ -3,6 +3,7 @@ pkgbase = libthinkpad-git
 	pkgver = 2.3.r11.g0a7a74d
 	pkgrel = 1
 	url = https://github.com/libthinkpad/libthinkpad
+	install = libthinkpad.install
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -14,7 +15,9 @@ pkgbase = libthinkpad-git
 	conflicts = libthinkpad
 	options = !strip
 	source = git://github.com/libthinkpad/libthinkpad
+	source = libthinkpad.install
 	md5sums = SKIP
+	md5sums = b44e3c7ddac879d57b45a709544df785
 
 pkgname = libthinkpad-git
 
