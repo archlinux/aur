@@ -3,12 +3,12 @@
 pkgname=docker-systemctl-replacement-git
 _pkgname=docker-systemctl-replacement
 pkgver=516.610695a
-pkgrel=1
+pkgrel=2
 pkgdesc="docker systemctl replacement"
 url='https://github.com/gdraheim/docker-systemctl-replacement'
 arch=('any')
 license=('GPL')
-optdepends=('python2: systemctl.py' 'python3: systemctl3.py')
+optdepends=('python2: systemctl.py' 'python: systemctl3.py')
 source=("${_pkgname}::git+https://github.com/gdraheim/docker-systemctl-replacement")
 sha512sums=('SKIP')
 
