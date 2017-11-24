@@ -16,7 +16,7 @@ PrivateTmp=true
 PrivateDevices=true
 ProtectHome=true
 ProtectSystem=strict
-ReadWriteDirectories=/var/lib/caddy
+ReadWritePaths=/var/lib/caddy /var/log/caddy
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 
 [Install]

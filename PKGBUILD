@@ -7,7 +7,7 @@ _gopkgname='github.com/mholt/caddy'
 
 pkgname=caddy
 pkgver=0.10.10
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -25,8 +25,8 @@ source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
 sha256sums=('aafaeb092e7b1bcff8ec31f19a1ded1253ff95cfdd4441378e5a530508614e8d'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
-            '69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9'
-            'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
+            '0466a41290db84402ca41cf32c0fc5b66b112a9d85b71d1619ae97b5a3dd2740'
+            'c8f002f5ba59985a643600dc3c871e18e110903aa945ef3f2da7c9edd39fbd7a'
             '80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64'
             'f5a0fbb961e7c9ecf99e88d0959a3164cbea54660c1c08c3ba3cdf1d45563929')
 
