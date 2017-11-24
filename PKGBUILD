@@ -13,7 +13,7 @@ _ffmpeg_depend=ffmpeg-mpv-full-git
 #_ffmpeg_depend=ffmpeg-full-git
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.27.0.r360.g921073bf86
+pkgver=0.27.0.r416.g386e8cd16d
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -89,9 +89,9 @@ msg2 "Running bootstrap. Please wait..."
 build() {
   cd "${srcdir}/$_gitname"
 if [[ "$_ffmpeg_depend" = *-mpv* ]]; then
-    export CFLAGS="$CFLAGS -I/usr/include/ffmpeg-mpv-git" \
-           LDFLAGS="$LDFLAGS -L/usr/lib/ffmpeg-mpv-git" \
-           PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}/usr/lib/ffmpeg-mpv-git/pkgconfig"
+      export CFLAGS="${CFLAGS} -I/usr/include/ffmpeg-mpv-git" \
+      export LDFLAGS="${LDFLAGS} -L/usr/lib/ffmpeg-mpv-git" \
+      export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}/usr/lib/ffmpeg-mpv-git/pkgconfig"
   else
     _opt_extra_flags+=("--enable-ffmpeg-upstream")
   fi
