@@ -1,7 +1,7 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=d-feet
-pkgver=0.3.12
+pkgver=0.3.13
 pkgrel=1
 pkgdesc="D-Bus debugger for GNOME"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('gtk3' 'python-gobject')
 makedepends=('intltool' 'itstool' 'gobject-introspection')
 source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('c868c350ea4bb0101d9aeb344661ed4b723f523a5010faf3712ec5984da19014')
+sha256sums=('941a2fda5a06deaeeb1eddd1e02c1eef6ddcaf8d6fb5647423e0e952f4a7a3d5')
 
 build() {
   cd $pkgname-$pkgver
@@ -20,8 +20,7 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  # Needs X
-  #make check
+  make check
 }
 
 package() {
