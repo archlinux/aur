@@ -1,25 +1,20 @@
+# $Id$
 #Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=bootswatch
-pkgver=3.3.7
+pkgver=4.0.0_beta.2
 pkgrel=1
 pkgdesc='A collection of open source themes for Bootstrap.'
 arch=('any')
 url='https://bootswatch.com/'
 license=('MIT')
 depends=('bootstrap')
-provides=("${pkgname}" "bootswatch")
-conflicts=("${pkgname}" "bootswatch")
-source=("https://github.com/thomaspark/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('c967d1e64ff1cc5b43bfc23546ec04951e07d50368224c2af5a00b73254868f3')
+source=("${pkgname}-${pkgver//_/-}.tar.gz::https://github.com/thomaspark/${pkgname}/archive/v${pkgver//_/-}.tar.gz")
+sha256sums=('cf752e1cd7fd99c5533d4d752009fd553cca525dc8ba555f5362bc3599cad5c6')
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  install -d $pkgdir/usr/share/javascript/$pkgname
-  cp -a ./{cerulean,cosmo,cyborg} $pkgdir/usr/share/javascript/$pkgname/
-  cp -a ./{darkly,flatly,journal} $pkgdir/usr/share/javascript/$pkgname/
-  cp -a ./{lumen,paper,readable} $pkgdir/usr/share/javascript/$pkgname/
-  cp -a ./{sandstone,simplex,slate} $pkgdir/usr/share/javascript/$pkgname/
-  cp -a ./{spacelab,superhero,united} $pkgdir/usr/share/javascript/$pkgname/
-  cp -a ./yeti $pkgdir/usr/share/javascript/$pkgname/
+  cd ${pkgname}-${pkgver//_/-}
+  install -d ${pkgdir}/usr/share/javascript/${pkgname}
+  cp -a ./dist/* ${pkgdir}/usr/share/javascript/${pkgname}/
 }
+# vim:set ts=2 sw=2 et:
