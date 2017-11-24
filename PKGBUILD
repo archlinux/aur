@@ -2,7 +2,7 @@
 
 pkgname=python-miio
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library & console tool for controlling Xiaomi smart appliances"
 url="https://github.com/rytilahti/python-miio"
 arch=('any')
@@ -19,4 +19,5 @@ build() {
 package() {
 	cd ${pkgname}-${pkgver}
 	python setup.py install --prefix=/usr --root="${pkgdir}"
+	install -D -m644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
