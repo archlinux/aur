@@ -1,4 +1,5 @@
-# Maintainer: Crotok <crotok [at] mailbox [dot] org>
+# Maintainer: Jake <ja.ke@posteo.de>
+# Previous Maintainer: Crotok <crotok [at] mailbox [dot] org>
 
 _pkgbase=monero
 pkgname=monero-bin
