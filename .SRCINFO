@@ -1,6 +1,6 @@
 pkgbase = file-roller-ja
 	pkgdesc = the file-roller with an additional patch to use unzip-iconv for unzip archive file cp932 charset.
-	pkgver = 3.24.1
+	pkgver = 3.26.2
 	pkgrel = 1
 	url = http://www.gnome.org
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = file-roller-ja
 	makedepends = itstool
 	makedepends = docbook-xsl
 	makedepends = gnome-common
+	makedepends = git
 	depends = desktop-file-utils
 	depends = gtk3
 	depends = dconf
@@ -30,7 +31,7 @@ pkgbase = file-roller-ja
 	provides = file-roller
 	conflicts = file-roller
 	options = !emptydirs
-	source = git+https://git.gnome.org/browse/file-roller#commit=e6ef6fa43a6d5d6e1509f122a206870adc113563
+	source = git+https://git.gnome.org/browse/file-roller#commit=723d45e7c437f87303fd0203132b5770d2775d87
 	source = fc-init.patch
 	source = Z99-zip-cp932.sh
 	sha256sums = SKIP

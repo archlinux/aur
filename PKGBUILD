@@ -2,7 +2,7 @@
 
 pkgname=file-roller-ja
 _pkgname=file-roller
-pkgver=3.24.1
+pkgver=3.26.2
 pkgrel=1
 provides=('file-roller')
 conflicts=('file-roller')
@@ -11,14 +11,14 @@ _pkgname=file-roller
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('desktop-file-utils' 'gtk3' 'dconf' 'libarchive' 'file' 'json-glib' 'libnotify' 'zip' 'unzip-iconv')
-makedepends=('intltool' 'pkg-config' 'libnautilus-extension' 'itstool' 'docbook-xsl' 'gnome-common')
+makedepends=('intltool' 'pkg-config' 'libnautilus-extension' 'itstool' 'docbook-xsl' 'gnome-common' 'git')
 optdepends=('p7zip: 7z, arj, exe and encrypted zip files support'
             'unrar: better RAR archive support'
             'unace: ACE archive support'
             'lrzip: lrzip archive support'
             'cdrkit: ISO image support')
 groups=('gnome-extra')
-_commit=e6ef6fa43a6d5d6e1509f122a206870adc113563
+_commit=723d45e7c437f87303fd0203132b5770d2775d87  # tags/3.26.2^0
 options=('!emptydirs')
 url="http://www.gnome.org"
 source=("git+https://git.gnome.org/browse/file-roller#commit=$_commit"
