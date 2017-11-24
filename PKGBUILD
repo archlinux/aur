@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=pingo
-pkgver=0.92e
+pkgver=0.92h
 pkgrel=1
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
 arch=('i686' 'x86_64')
@@ -11,12 +11,12 @@ depends=('wine')
 options=('!strip')
 source=("https://raw.githubusercontent.com/bermond/shellutils/master/image/${pkgname}")
 sha256sums=('454d976b5b8fdf146f19228ddec5e532f22eabe68d825ac44a153584db2646e9')
-_expected_sha256sum='b97ddf9722622f18ea2350a4b691898b9109f1ce49f2e51a9d72184b3f16e7e8'
+_expected_sha256sum='f9398483c954888652117c1d6ea19ef10a74efe446e493176fbfefc4a3358a64'
 _srcfile="pingo32-${pkgver}.zip"
-_srcurl="https://css-ig.net/downloads/${pkgname}-32.zip"
+_srcurl="https://css-ig.net/downloads/${pkgname}32.zip"
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/62.0.3202.62 \
+                        Chrome/62.0.3202.94 \
                         Safari/537.36"
 _useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
 
@@ -33,13 +33,14 @@ prepare() {
         msg2 "Downloading ${_srcfile} from website..."
         curl \
             -o "../${_srcfile}" \
-            -H 'Host: css-ig.net' \
+            -H 'Accept-Encoding: gzip, deflate, br' \
+            -H 'Accept-Language: en-US,en;q=0.9' \
             -H 'Upgrade-Insecure-Requests: 1' \
             -H "$_useragent" \
             -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' \
             -H 'Referer: https://css-ig.net/pingo.php' \
-            -H 'Accept-Language: en-US,en;q=0.8' \
-            -H 'Cookie: HttpOnly; startBAK=R3415777513; start=R1548480247; HttpOnly' \
+            -H 'Cookie: HttpOnly; startBAK=R3415750288; HttpOnly; start=R118741669' \
+            -H 'Connection: keep-alive' \
             --compressed \
             "$_srcurl" || _exit_makepkg 'download'
     else
