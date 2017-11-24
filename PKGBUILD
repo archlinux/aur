@@ -1,7 +1,7 @@
 # Maintainer: smlb <smlb at riseup dot net>
 
 pkgname=libthinkpad-git
-pkgver=2.3.r7.g5f9256f
+pkgver=2.3.r11.g0a7a74d
 pkgrel=1
 pkgdesc="A general purpose userspace ThinkPad library"
 arch=('i686' 'x86_64')
@@ -9,6 +9,8 @@ url="https://github.com/libthinkpad/libthinkpad"
 license=('BSD')
 depends=('libsystemd')
 makedepends=('cmake' 'git' 'pkg-config')
+conflicts=('libthinkpad')
+provides=('libthinkpad')
 options=('!strip')
 source=("git://github.com/libthinkpad/libthinkpad")
 md5sums=('SKIP')

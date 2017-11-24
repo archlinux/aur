@@ -1,6 +1,6 @@
 pkgbase = libthinkpad-git
 	pkgdesc = A general purpose userspace ThinkPad library
-	pkgver = 2.3.r7.g5f9256f
+	pkgver = 2.3.r11.g0a7a74d
 	pkgrel = 1
 	url = https://github.com/libthinkpad/libthinkpad
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = libthinkpad-git
 	makedepends = git
 	makedepends = pkg-config
 	depends = libsystemd
+	provides = libthinkpad
+	conflicts = libthinkpad
 	options = !strip
 	source = git://github.com/libthinkpad/libthinkpad
 	md5sums = SKIP
