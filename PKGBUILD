@@ -8,7 +8,7 @@ pkgname=inox-beta
 pk=bnox
 name=chromium
 pkgver=63.0.3239.59
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -104,6 +104,7 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/master/r21.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/master/bp.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/master/CP.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/master/888.patch
+https://raw.githubusercontent.com/bn0785ac/ih-beta/master/pt.patch
 )
 
 
@@ -194,7 +195,9 @@ sha256sums=('62aec842b706d7240e86f2a46d852ae1e6d521be69295615d778af595af3467a'
             'eea10be17469d859f6731e056d9914e91e8049698012ba399d441846d218d68b'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
-            '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230')
+            '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
+            'SKIP'
+)
 
 
 
@@ -279,6 +282,7 @@ patch -Np1 -i ../034.patch
 #patch -Np1 -i ../035.patch
 patch -Np1 -i ../360.patch
 patch -Np1 -i ../888.patch
+patch -Np1 -i ../pt.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
