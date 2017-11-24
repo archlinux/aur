@@ -20,6 +20,9 @@ source=(
   '90-linux.hook'  # pacman hook for initramfs regeneration
   'linux.preset'   # standard config files for mkinitcpio ramdisk
   '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
+  'HiFi.conf'
+  'byt-max98090.conf'
+  'orco-bytmax98090.state'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -29,11 +32,14 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
             '5af72b487fbcc8e7fd3f5392271490c8498ffb2048e77abaf406971a7382f8d7'
             'SKIP'
-            '5ba51885f72e86f14520f36b1a8c83774dad33f7928293741d7f6c1a27c87871'
+            '02ca9e7eab3d01ea2f2d908959aa23bc7de8a5964d8fad811f984b7bcd905ed8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd')
+            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd'
+            'f5b0525dc5e3afafe0620ba6b693628518f9cfd296d5aeac2e8220ec59cfb7b2'
+            '2f5bda9e42651f39169d391f0e18dee4bfe0613c712baeca62851d1667a372cf'
+            '8fb2d73e04480720ed70db98a75737c9ac1d10a8a0887b46e99d276c45149926')
 
 _kernelname=${pkgbase#linux}
 
@@ -141,6 +147,11 @@ _package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
   sed "${_subst}" ../90-linux.hook |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  # install ucm files for max98090
+  install -d "${pkgdir}/usr/share/alsa/ucm/byt-max98090"
+  install -Dm644 "${srcdir}/HiFi.conf" "${pkgdir}/usr/share/alsa/ucm/byt-max98090"
+  install -Dm644 "${srcdir}/byt-max98090.conf" "${pkgdir}/usr/share/alsa/ucm/byt-max98090"
+  install -Dm644 "${srcdir}/orco-bytmax98090.state" "${pkgdir}/usr/share/alsa/ucm/byt-max98090"
 }
 
 _package-headers() {
