@@ -2,7 +2,7 @@
 # Contributor: Chris Clonch <chris at theclonchs dot com>
 # Contributor: Justin Dray <justin@dray.be>
 pkgname='chronograf'
-pkgver='1.3.9.0'
+pkgver='1.3.10.0'
 pkgrel='1'
 pkgdesc='Time-series data visualization tool for InfluxDB'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -23,6 +23,7 @@ build() {
 	PATH="$PATH:$GOPATH/bin"
 	/usr/bin/go get -d github.com/influxdata/${pkgname}
 	cd "${GOPATH}"/src/github.com/influxdata/${pkgname}
+        unset LDFLAGS
 	make
 	/usr/bin/go install github.com/influxdata/${pkgname}/cmd/${pkgname}
 }
