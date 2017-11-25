@@ -1,6 +1,6 @@
 pkgname=headmaster-git
 pkgver=0.27.r55.gf6a265e
-pkgrel=1
+pkgrel=2
 
 pkgdesc='translate c header files to another language'
 url='https://github.com/ytomino/headmaster'
@@ -12,6 +12,9 @@ options=('!makeflags')
 
 depends=('mpfr')
 makedepends=('git' 'ocamlbuild' 'python-docutils')
+
+provides=('headmaster')
+conflicts=('headmaster')
 
 source=('git+https://github.com/ytomino/headmaster'
         'git+https://github.com/ytomino/gmp-ocaml'

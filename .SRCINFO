@@ -1,7 +1,7 @@
 pkgbase = headmaster-git
 	pkgdesc = translate c header files to another language
 	pkgver = 0.27.r55.gf6a265e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ytomino/headmaster
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = headmaster-git
 	makedepends = ocamlbuild
 	makedepends = python-docutils
 	depends = mpfr
+	provides = headmaster
+	conflicts = headmaster
 	options = !makeflags
 	source = git+https://github.com/ytomino/headmaster
 	source = git+https://github.com/ytomino/gmp-ocaml
