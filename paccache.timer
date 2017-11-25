@@ -1,0 +1,10 @@
+[Unit]
+Description=Clear pacman cache weekly
+
+[Timer]
+OnCalendar=weekly
+AccuracySec=24h
+Persistent=yes
+
+[Install]
+WantedBy=multi-user.target

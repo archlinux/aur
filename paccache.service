@@ -1,0 +1,10 @@
+[Unit]
+Description=Clear pacman cache
+RequiresMountsFor=/var/cache/pacman/pkg/
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh -c 'paccache -vruk0 && paccache -rv'
+Nice=19
+StandardOutput=journal
+StandardError=journal
