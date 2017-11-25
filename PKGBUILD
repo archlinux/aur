@@ -48,12 +48,3 @@ package() {
     cd "xmr-stak-$pkgver/build"
     make DESTDIR="$pkgdir/" install
 }
-
-# packaging standards
-# underlines in the name ?
-# contributor comment
-# donation comment
-#https://github.com/fireice-uk/xmr-stak#default-developer-donation
-# system configuration comment
-
-#https://github.com/fireice-uk/xmr-stak/blob/master/doc/usage.md
