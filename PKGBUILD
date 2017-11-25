@@ -3,13 +3,13 @@
 
 pkgname='frr'
 pkgver='3.0.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'json-c' 'net-snmp')
-makedepends=('patch' 'gcc' 'net-snmp' 'json-c')
+makedepends=('patch' 'gcc' 'net-snmp' 'json-c' 'bison' 'c-ares' 'perl-xml-libxml')
 conflicts=('quagga' 'quagga_cumulus')
 provides=('quagga' 'quagga_cumulus')
 source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
@@ -23,6 +23,8 @@ sha256sums=('b070a5175ec322ba8661ea01a416d643e794739e2e4281e6ee4d3d9a49199812'
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+
+  # https://github.com/FRRouting/frr/issues/1422
   patch -p1 -i "${srcdir}/${pkgname}_3.0_systemd_arch.patch"
 
   autoreconf -fvi
