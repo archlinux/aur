@@ -9,7 +9,7 @@ license=('GPL')
 
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
-pkgrel=4
+pkgrel=1
 arch=('any')
 url="https://addons.mozilla.org/firefox/addon/$_plugin_id"
 depends=("firefox>=57")
