@@ -1,0 +1,19 @@
+fpath='/etc/jupyter/jupyter_notebook_config.json'
+jpath='.NotebookApp.nbserver_extensions.jupyter_nbextensions_configurator'
+
+if [[ -f "$fpath" ]]; then
+	content=$(cat "$fpath")
+else
+	content='{}'
+fi
+
+post_install() {
+	echo "$content" | jq "$jpath = true" >"$fpath"
+}
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	echo "$content" | jq "del($jpath)" >"$fpath"
+}
