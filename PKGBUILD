@@ -16,8 +16,7 @@ depends=('glew' 'freealut' 'miniupnpc' 'libxrandr' 'sdl2' 'sdl_mixer>=1.2' 'desk
 install=openclonk.install
 makedepends=('cmake' 'boost' 'mesa')
 provides=('openclonk')
-optdepends=('openclonk-music: proprietary music package')
-conflicts=('clonk_rage' 'openclonk' 'clonk_rage-git')
+conflicts=('clonk_rage' 'openclonk' 'openclonk-music')
 source=("$pkgname::git+https://git.openclonk.org/openclonk.git#branch=master")
 md5sums=('SKIP')
 

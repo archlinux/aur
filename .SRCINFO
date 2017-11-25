@@ -19,11 +19,10 @@ pkgbase = openclonk-git
 	depends = desktop-file-utils
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	optdepends = openclonk-music: proprietary music package
 	provides = openclonk
 	conflicts = clonk_rage
 	conflicts = openclonk
-	conflicts = clonk_rage-git
+	conflicts = openclonk-music
 	source = openclonk-git::git+https://git.openclonk.org/openclonk.git#branch=master
 	md5sums = SKIP
 
