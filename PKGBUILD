@@ -1,14 +1,14 @@
 # Maintainer: Marcel Krüger <zauguin at gmail dot com>
 pkgname=stdman
-pkgver=0.2
+pkgver=2017.04.02
 pkgrel=1
 pkgdesc="Formatted C++11/14 stdlib man pages (cppreference)"
 arch=(any)
 url="https://github.com/jeaye/stdman"
 license=('MIT')
 makedepends=('git')
-source=("https://github.com/jeaye/stdman/archive/v0.2.tar.gz")
-md5sums=('5fd4c8c2b760e1c8374ac2709cbfc64f')
+source=("https://github.com/jeaye/$pkgname/archive/$pkgver.tar.gz")
+md5sums=('1989e28d1756423a26ed8eb1a4c57fe2')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
