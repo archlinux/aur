@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-workspace-git
-pkgver=20171009.0833dca
+pkgver=20171104.029c082
 pkgrel=1
 pkgdesc="Liri workspace, programs and plugins"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
