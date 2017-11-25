@@ -6,9 +6,9 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.14.1
-xanmod=3
-pkgrel=4
+pkgver=4.14.2
+xanmod=4
+pkgrel=6
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -22,17 +22,17 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        '60-linux.hook'  # pacman hook for depmod
        '90-linux.hook'  # pacman hook for initramfs regeneration
        "$pkgbase.preset"   # standard config files for mkinitcpio ramdisk
+       'choose-gcc-optimization.sh'
        '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
-       '0001-bio-ensure-__bio_clone_fast-copies-bi_partno.patch'
 )
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('99ac106bc0970bfabab3400801fa85cf012f7ee85e18f24d5414d7bd82d10398'
+sha256sums=('89ac37d90627a4df46c81647878a4d95d731a66a74f09f135761e1cb37c03cac'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd'
-            '92b8755030d405fa4a9cd31cbe2998fd71584164431e5edc28c2be04fab24d1e')
+            '9fd3abfb3e5e6afd5b8476e30af4d7ded762f3da2a724133cb3f26ad21c31e54'
+            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd')
 sha256sums_x86_64=('a68e94064f040d60e8e4c3380efeee085b54d252d527e960dd17ac688505d5b6')
 
 _kernelname=${pkgbase#linux}
@@ -60,8 +60,8 @@ prepare() {
   # https://bugs.archlinux.org/task/56207
   patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
 
-  # https://bugs.archlinux.org/task/56404
-  patch -Np1 -i ../0001-bio-ensure-__bio_clone_fast-copies-bi_partno.patch
+  # EXPERIMENTAL: let's user choose microarchitecture optimization in GCC
+  ${srcdir}/choose-gcc-optimization.sh
 
   # set extraversion to pkgrel
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile

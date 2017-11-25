@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod
-	pkgver = 4.14.1
-	pkgrel = 4
+	pkgver = 4.14.2
+	pkgrel = 6
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -10,18 +10,18 @@ pkgbase = linux-xanmod
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.14.1-xanmod3.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.14.2-xanmod4.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod.preset
+	source = choose-gcc-optimization.sh
 	source = 0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
-	source = 0001-bio-ensure-__bio_clone_fast-copies-bi_partno.patch
-	sha256sums = 99ac106bc0970bfabab3400801fa85cf012f7ee85e18f24d5414d7bd82d10398
+	sha256sums = 89ac37d90627a4df46c81647878a4d95d731a66a74f09f135761e1cb37c03cac
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 9fd3abfb3e5e6afd5b8476e30af4d7ded762f3da2a724133cb3f26ad21c31e54
 	sha256sums = 6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd
-	sha256sums = 92b8755030d405fa4a9cd31cbe2998fd71584164431e5edc28c2be04fab24d1e
 	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=8aee2fcbaf3fe676199bde199f9074e90f736681
 	sha256sums_x86_64 = a68e94064f040d60e8e4c3380efeee085b54d252d527e960dd17ac688505d5b6
 
