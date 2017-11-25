@@ -1,14 +1,14 @@
 pkgbase = spm12
 	pkgdesc = A MATLAB toolbox for the analysis of brain imaging data sequences
-	pkgver = 6906
+	pkgver = 7219
 	pkgrel = 1
 	url = http://www.fil.ion.ucl.ac.uk/spm/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = make
-	source = http://www.fil.ion.ucl.ac.uk/spm/download/restricted/eldorado/spm12.zip
-	sha1sums = 5f6016292557593378e0d396c401594e242b4307
+	source = spm12-r7219.tar.gz::https://github.com/spm/spm12/archive/spm12-r7219.tar.gz
+	sha256sums = 421e337c8685b0c2cfb43802459c4edd7cc322749ffbccdf68ee2e99b95ef843
 
 pkgname = spm12
 
