@@ -5,7 +5,7 @@
 # PERSONALAPPKEY=personal_app_key PERSONALAPPSECRET=personal_app_secret makepkg
 
 pkgname=dbxcli
-pkgver=2.0.6
+pkgver=2.0.8
 pkgrel=1
 pkgdesc='A command line client for Dropbox built using the Go SDK'
 license=('Apache')
@@ -17,7 +17,7 @@ ldflags=" -X github.com/dropbox/dbxcli/cmd.personalAppKey=${PERSONALAPPKEY}"
 ldflags+=" -X github.com/dropbox/dbxcli/cmd.personalAppSecret=${PERSONALAPPSECRET}"
 
 source=("https://github.com/dropbox/dbxcli/archive/v${pkgver}.zip")
-sha256sums=('f1b3ba90fa33be71a741270718021e95e278e260cc0d8fa5b2c55de715dab525')
+sha256sums=('6c74890ffca86b729545a2fbf3c84ad533f292e845c21e8609069cb0d4349ae0')
 
 build() {
   msg2 'Compiling...'
