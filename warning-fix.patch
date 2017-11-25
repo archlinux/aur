@@ -1,6 +1,6 @@
-diff -ura a/gruntfile.js b/gruntfile.js
---- a/gruntfile.js	2017-09-23 10:02:56.000000000 +0200
-+++ b/gruntfile.js	2017-09-24 11:45:31.328097911 +0200
+diff -ura b/gruntfile.js a/gruntfile.js
+--- b/gruntfile.js	2017-11-25 06:41:20.000000000 +0100
++++ a/gruntfile.js	2017-11-25 08:41:59.315502962 +0100
 @@ -6,6 +6,7 @@
  
  module.exports = function (grunt) {
@@ -17,28 +17,30 @@ diff -ura a/gruntfile.js b/gruntfile.js
    const OSX_COMMON_NAME = authCode != null ? authCode.OSX_COMMON_NAME : ''
    const WIN_CERT_PASSWORD = authCode != null ? authCode.WIN_CERT_PASSWORD : ''
  
-@@ -55,9 +57,11 @@
+@@ -74,10 +76,12 @@
  
    grunt.initConfig(initConfig)
    grunt.loadNpmTasks('grunt-electron-installer')
 +  /*
    if (!WIN) {
      grunt.loadNpmTasks('grunt-electron-installer-debian')
+     grunt.loadNpmTasks('grunt-electron-installer-redhat')
    }
 +  */
  
    grunt.registerTask('compile', function () {
      var done = this.async()
-diff -ura a/package.json b/package.json
---- a/package.json	2017-09-23 10:02:56.000000000 +0200
-+++ b/package.json	2017-09-24 11:47:08.785280478 +0200
-@@ -98,15 +98,14 @@
+Alleen in a: node_modules
+diff -ura b/package.json a/package.json
+--- b/package.json	2017-11-25 06:41:20.000000000 +0100
++++ a/package.json	2017-11-25 08:59:51.466808693 +0100
+@@ -102,15 +102,15 @@
      "css-loader": "^0.19.0",
      "devtron": "^1.1.0",
      "dom-storage": "^2.0.2",
 -    "electron-packager": "^6.0.0",
--    "electron-prebuilt": "^1.2.8",
 +    "electron-packager": "^8.6.0",
+     "electron": "^1.6.15",
      "eslint": "^3.13.1",
      "eslint-config-standard": "^6.2.1",
      "eslint-config-standard-jsx": "^3.2.0",
@@ -51,7 +53,7 @@ diff -ura a/package.json b/package.json
      "history": "^1.17.0",
      "jsdom": "^9.4.2",
      "json-loader": "^0.5.4",
-@@ -119,14 +118,11 @@
+@@ -123,15 +123,11 @@
      "react-router-redux": "^4.0.4",
      "standard": "^8.4.0",
      "style-loader": "^0.12.4",
@@ -62,8 +64,10 @@ diff -ura a/package.json b/package.json
      "webpack-dev-server": "^1.12.0"
    },
 -  "optionalDependencies": {
--    "grunt-electron-installer-debian": "^0.2.0"
+-    "grunt-electron-installer-debian": "^0.2.0",
+-    "grunt-electron-installer-redhat": "^0.3.1"
 -  },
    "optional": false,
    "ava": {
      "files": [
+Alleen in a: package-lock.json
