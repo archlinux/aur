@@ -3,16 +3,16 @@
 
 pkgname=tsc
 pkgver=2.0.0
-_ver=$pkgver  # $_ver was used for beta, let's keep it for a while
-pkgrel=2
+pkgrel=3
 pkgdesc="Jump'n'run game with editor and scripting facilities, fork of SMC"
 arch=('i686' 'x86_64')
-url="http://www.secretchronicles.de/en/"
+url='https://secretchronicles.org/en/'
 license=('GPL3')
-depends=("sdl_image" "sdl_ttf" "sdl_mixer" "devil" "boost-libs" "libxml++2.6"
-         "glew" "pcre" "gtk-update-icon-cache" "desktop-file-utils")
-makedepends=("cmake" "ruby" "gperf" "pkg-config" "bison" "boost" "gettext")
-source=("ftp://ftp.secretchronicles.de/releases/TSC-$_ver.tar.xz"
+depends=('sdl_image' 'sdl_ttf' 'sdl_mixer' 'devil' 'boost-libs' 'libxml++2.6'
+         'glew' 'pcre' 'gtk-update-icon-cache' 'desktop-file-utils'
+         'cegui-0.7')
+makedepends=('cmake' 'ruby' 'gperf' 'boost')
+source=("https://ftp.secretchronicles.org/releases/TSC-$pkgver.tar.xz"
         'tsc-2.0.0-mga-mandir.patch'
         'tsc-2.0.0-issue457-utf8-rakefile.patch'
         'tsc-2.0.0-mga-rename-custom-filesystem-relative.patch')
@@ -26,21 +26,19 @@ prepare() {
   patch -p0 -i tsc-2.0.0-mga-mandir.patch
   patch -p0 -i tsc-2.0.0-issue457-utf8-rakefile.patch
   patch -p0 -i tsc-2.0.0-mga-rename-custom-filesystem-relative.patch
+
+  cd TSC-$pkgver/tsc
+  [ -d build ] && rm -rf build
+  mkdir build
 }
 
 build() {
-  cd TSC-$_ver/tsc
-  
-  [ -d build ] && rm -rf build
-  mkdir build
-  cd build
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
-    
+  cd TSC-$pkgver/tsc/build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd TSC-$_ver/tsc/build
+  cd TSC-$pkgver/tsc/build
   make DESTDIR="$pkgdir/" install
 }
