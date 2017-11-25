@@ -12,6 +12,7 @@ arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk8-openj9"
 license=('GPL')
 depends=('java-runtime-common' 'java-environment-common' 'ca-certificates-utils' 'nss')
+conflicts=('jdk8-j9-bin')
 
 provides=(
 'java-environment=8'
