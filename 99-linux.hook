@@ -4,6 +4,6 @@ Operation = Remove
 Target = boot/vmlinuz-%PKGBASE%
 
 [Action]
-Description = Remove linux-%PKGBASE% initramfs files...
+Description = Remove %PKGBASE% initramfs files...
 When = PreTransaction
-Exec = /usr/bin/rm /boot/initramfs-%PKGBASE%.img /boot/initramfs-%PKGBASE%-fallback.img 
+Exec = /usr/bin/rm -f /boot/initramfs-%PKGBASE%.img /boot/initramfs-%PKGBASE%-fallback.img 
