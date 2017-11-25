@@ -5,7 +5,7 @@ pkgname=dnd-tools
 pkgver=84718f4
 pkgrel=1
 pkgdesc='Interactive CLI tools for Dungeons and Dragons 5e'
-depends=('python>=3.6')
+depends=('python')
 makedepends=('git' 'python')
 arch=('i686' 'x86_64')
 url='https://github.com/savagezen/dnd-tools'
