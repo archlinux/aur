@@ -16,6 +16,11 @@ md5sums=('57732229f063f582bfaa3c3cc942dae2'
 
 # todo: handle groups, source firmware
 
+prepare() {
+  cd "$srcdir/$pkgname"
+  sed -i 's/ abs(/ fabs(/' src/dataanalyzer.cpp
+}
+
 build() {
   cd "$srcdir/$pkgname"
   qmake-qt4 PREFIX="/usr"  # Hah, if only.
