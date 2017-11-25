@@ -4,7 +4,7 @@ _basename='vcvrack'
 _plugname='Fundamental'
 
 pkgname='vcvrack-fundamental-git'
-pkgver=v0.4.0.r30.gb6a321a
+pkgver=0.4.0.r30.gb6a321a
 pkgrel=1
 pkgdesc='Fundamental VCV modules'
 url='https://github.com/VCVRack/Fundamental'
@@ -34,7 +34,7 @@ sha256sums=(
 
 pkgver() {
     cd "$_basename-$_plugname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
