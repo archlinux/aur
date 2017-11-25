@@ -2,7 +2,7 @@
 
 pkgname=matcha-gtk-theme
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat design theme for GNOME, MATE, Openbox, Unity, XFCE, Budgie"
 arch=('any')
 url='https://www.gnome-look.org/p/1187179'
@@ -12,8 +12,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://dl.opendesktop.org/api/files/downl
 sha256sums=('7c9205a6bd267239866778815a073c3197589b31f1abf8ad4d6eaf9ee8d6d3cb')
 
 prepare() {
-   cd Matcha-Theme/Matcha/openbox-3
-   sed -i 's/\(menu.border.width:\).*$/\1 1/' themerc
+   cd Matcha-Theme/Matcha
+   sed -i 's/\(menu.border.width:\).*$/\1 1/' openbox-3/themerc
+   sed -i 's/\(bg\[NORMAL\] =\) "#e7e8eb"/\1 "#1b2224"/' gtk-2.0/menubar-toolbar/menubar-toolbar.rc
 }
 
 package() {
