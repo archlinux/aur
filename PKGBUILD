@@ -3,8 +3,8 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-ck
-pkgver=387.22
-pkgrel=6
+pkgver=387.34
+pkgrel=1
 epoch=1
 _extramodules=extramodules-4.14-ck
 _pkgdesc="NVIDIA drivers for linux-ck."
@@ -19,7 +19,7 @@ conflicts=('nvidia-340xx-ck' 'nvidia-304xx-ck')
 license=('custom')
 options=(!strip)
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums=('2056b386f619ed096ee3c2267c495c6b00d1a2a4c933f0635befcf4e69c3856c')
+sha256sums=('d540908e76aeecb1f4a2812acf5ad37346934a6b7c8043c8b3ce230a48ceb440')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
