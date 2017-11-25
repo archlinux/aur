@@ -33,14 +33,14 @@ try:
     with open(pacmanfichier, 'r') as searchfile:
         for line in searchfile:
             #Si la chaîne '[AMAR]' est écrit quelque part dans pacman.conf, alors le dépôt est activé et on met etatamar = 1.
-            if '[AMAR]' in line:
+            if 'amar.conf' in line:
                 etatamar = 1
     searchfile.close()
 except OSError:
     print("pacman.conf non acessible, donnez le chemin vers votre fichier")
     sys.exit(1)
 
-configamar = "\n#Do not disable AMAR manually if you use the app\n[AMAR]\nSigLevel = Never\nServer = https://amar.lagout.org/x86_64/\n"
+configamar = "\n#Do not disable AMAR manually if you use the app\nInclude = /etc/pacman.d/amar.conf\n"
 
 def pressA():
     A.config(state=DISABLED)
@@ -65,9 +65,7 @@ def pressB():
         with open((pacmanfichier), "r") as f:
             lines = f.readlines()
             lines.remove("#Do not disable AMAR manually if you use the app\n")
-            lines.remove("[AMAR]\n")
-            lines.remove("SigLevel = Never\n")
-            lines.remove("Server = https://amar.lagout.org/x86_64/\n")
+            lines.remove("Include = /etc/pacman.d/amar.conf\n")
         with open((pacmanfichier), "w") as new_f:
             for line in lines:
                 new_f.write(line)

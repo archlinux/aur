@@ -1,8 +1,9 @@
 pkgbase = amar-installer
 	pkgdesc = Install AMAR repository
-	pkgver = 1.1
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://www.tuxnvape.fr/
+	install = amar.install
 	arch = x86_64
 	license = GPL3
 	depends = gksu
@@ -11,9 +12,11 @@ pkgbase = amar-installer
 	source = amar.py
 	source = amar.png
 	source = amar.desktop
-	sha256sums = 2032a352c85fc9945bc0b3cb7fd5cde97b7eeb239cc2235e8fa3585029fe2af0
-	sha256sums = 7d55246c919c9e22f7cfdb0ba0b92a3e13dc87ca0414777cbece4c24c3380cd1
+	source = amar.conf
+	sha256sums = d54d10467391247f23c1ee07df0637c64378443847a7ec7ea9a9d5fe41f2f8d4
+	sha256sums = 874700067f446dff59f8e4e6c3b14519ca8afdf31742af629343c80002c71376
 	sha256sums = 0f2f75e7aaf1375b14570067563330f438e2a20158642b76c16a4ff4a8bb3158
+	sha256sums = d8fafeb25a8b2368803565ed62ba147aa38adfe57089fe44125f5e07eea3d21b
 
 pkgname = amar-installer
 

@@ -1,0 +1,10 @@
+post_install() {
+  echo "YOU HAVE TO REENABLE AMAR AFTER THIS UPGRADE"
+  sed -i -e '/^#Do not disable AMAR/,+3d' /etc/pacman.conf 
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim: ts=2 sw=2 et:
