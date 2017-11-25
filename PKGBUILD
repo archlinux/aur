@@ -71,7 +71,7 @@ _kyber_disable=
 pkgbase=linux-bfq-mq-git
 _srcname=bfq-mq
 pkgver=4.14.0.g344b0aa219f8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -140,7 +140,7 @@ sha256sums=('SKIP'
             'bff46a0a15c349b415aa09007eba6d69bef2651ac7c1feeaed2282eb9acfaf2a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            '907a422cf56189ad9453e9416b13fe8ccd5c1d38dec3bd1b7d60d53f1afe12fa'
+            '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
