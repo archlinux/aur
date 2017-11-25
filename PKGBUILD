@@ -1,16 +1,16 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
-pkgname='perl-audio-scan'
-pkgver="0.98"
-pkgrel='5'
+pkgname="perl-audio-scan"
+pkgver="0.99"
+pkgrel="1"
 pkgdesc="Fast C metadata and tag reader for all common audio file formats"
-arch=('i686' 'x86_64' 'arm')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('zlib')
-makedepends=('perl-test-warn')
-url='http://search.cpan.org/dist/Audio-Scan'
+arch=("i686" "x86_64" "arm")
+license=("PerlArtistic" "GPL")
+options=("!emptydirs")
+depends=("zlib")
+makedepends=("perl-test-warn")
+url="http://search.cpan.org/dist/Audio-Scan"
 source=("https://cpan.metacpan.org/authors/id/A/AG/AGRUNDMA/Audio-Scan-${pkgver}.tar.gz")
-sha512sums=('58b30c0a4c0ec2a8612d846e9fe2680444ce745d60c3670f22686c0283245904f0506e3e362767493ad5f4aa28cebd685d12e87db3a7644edc31e2633d7342f2')
+sha512sums=('abbf51c9eb15336527500ac9ce6dd8e05baee6dabdf2a4bc95a62b1787fe24c4ad0abb07d5632647e4add3123a3cfe6374c6fbfd236c5b01c3350b6ee9d74b10')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
