@@ -1,0 +1,27 @@
+pkgbase = vcvrack-vult-git
+	pkgdesc = Vult VCV modules
+	pkgver = 0.5.1.r0.g2cc9bbe
+	pkgrel = 1
+	url = https://github.com/modlfo/VultModules
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = vcvrack-git
+	source = vcvrack-Vult::git+https://github.com/modlfo/VultModules.git
+	source = vcvrack::git+https://github.com/VCVRack/Rack.git
+	source = git+https://github.com/AndrewBelt/osdialog.git
+	source = git+https://github.com/AndrewBelt/oui-blendish.git
+	source = git+https://github.com/mackron/dr_libs.git
+	source = git+https://github.com/memononen/nanosvg.git
+	source = git+https://github.com/memononen/nanovg.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vcvrack-vult-git
+
