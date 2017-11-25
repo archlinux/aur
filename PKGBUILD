@@ -4,7 +4,7 @@ _basename='vcvrack'
 _plugname='Befaco'
 
 pkgname='vcvrack-befaco-git'
-pkgver=v0.4.0.r8.g793bc68
+pkgver=0.4.0.r8.g793bc68
 pkgrel=1
 pkgdesc="Befaco's VCV modules"
 url='https://github.com/VCVRack/Befaco'
@@ -34,7 +34,7 @@ sha256sums=(
 
 pkgver() {
     cd "$_basename-$_plugname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

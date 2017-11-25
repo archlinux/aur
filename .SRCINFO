@@ -1,6 +1,6 @@
 pkgbase = vcvrack-befaco-git
 	pkgdesc = Befaco's VCV modules
-	pkgver = v0.4.0.r8.g793bc68
+	pkgver = 0.4.0.r8.g793bc68
 	pkgrel = 1
 	url = https://github.com/VCVRack/Befaco
 	arch = i686
