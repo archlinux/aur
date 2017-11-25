@@ -1,6 +1,6 @@
 # Maintainer: Patrick Lühne <patrick-arch@luehne.de>
 pkgname=plasp
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='ASP planning tools for PDDL'
 arch=('x86_64' 'i686')
@@ -8,7 +8,7 @@ url='https://github.com/potassco/plasp'
 license=('MIT')
 makedepends=('cmake')
 source=("https://github.com/potassco/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-source.tar.gz")
-sha512sums=('80fbe86bde9490d064f28ab60c7b0782568fe2356df6e24607b2342df453902161638070f14a721a0efbe6f34d2f1cdb7204dbba2c98408abf39642c24eb3c89')
+sha512sums=('0df9f6a29a9924664a8e41c8939a0702a8980168145f480dbfa56359f4203b1a799f47996eba445d9fc2e9fce884f0f4bd3a4d5a977f47bc7dce68e38d2ba027')
 
 build() {
 	cd ${pkgname}-${pkgver}
