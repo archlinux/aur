@@ -1,0 +1,21 @@
+pkgbase = lib32-ncurses-full
+	pkgdesc = System V Release 4.0 curses emulation library, with static and shared libraries, Inclusion of libTinfo.
+	pkgver = 6.0+20170902
+	pkgrel = 1
+	url = http://invisible-island.net/ncurses/ncurses.html
+	arch = x86_64
+	license = MIT
+	depends = lib32-glibc
+	depends = gcc-libs-multilib
+	conflicts = lib32-libtinfo
+	conflicts = lib32-ncurses
+	conflicts = ncurses-full-git
+	conflicts = lib32-ncurses5-compat-libs
+	source = http://invisible-mirror.net/archives/ncurses/current/ncurses-6.0-20170902.tgz
+	source = http://invisible-mirror.net/archives/ncurses/current/ncurses-6.0-20170902.tgz.asc
+	validpgpkeys = C52048C0C0748FEE227D47A2702353E0F7E48EDB
+	md5sums = b7b1cedc484172434855b00831183458
+	md5sums = SKIP
+
+pkgname = lib32-ncurses-full
+
