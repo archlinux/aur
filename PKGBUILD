@@ -24,7 +24,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${srcdir}/${_gitname}
-	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git rev-list --count HEAD).$(git log -1 --format="%h")"
 }
 
 prepare() {
