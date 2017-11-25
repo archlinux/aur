@@ -1,0 +1,20 @@
+pkgbase = kvantum-qt4-git
+	pkgdesc = SVG-based Qt4 theme engine plus a config tool and extra themes
+	pkgver = 0.10.5.r16.g45792f7
+	pkgrel = 1
+	url = https://github.com/tsujan/Kvantum
+	arch = x86_64
+	groups = qt
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = qt4
+	depends = hicolor-icon-theme
+	optdepends = adapta-aurorae-theme-git: Matching kwin decorations for KvAdapta and KvAdaptaDark
+	provides = kvantum-qt4
+	conflicts = kvantum-qt4
+	source = git+https://github.com/tsujan/Kvantum.git
+	md5sums = SKIP
+
+pkgname = kvantum-qt4-git
+
