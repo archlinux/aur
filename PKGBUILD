@@ -4,7 +4,7 @@
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3lock-git
-pkgver=2.9.1.r13.gd4beaa3
+pkgver=2.10
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM"
 arch=('i686' 'x86_64')
