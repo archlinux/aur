@@ -21,7 +21,7 @@ optdepends=(
 source=("https://github.com/falkTX/Carla/archive/${pkgver}.tar.gz"
         "pyqt.patch::https://github.com/falkTX/Carla/commit/9ff1711b8fdf0acb4608498463ed4608889ead1e.patch")
 sha512sums=('f8b7247eace54a49398800a377efa9fb88267d52ccd0297a6fb4b64c04da24ac10260bdfe8ee8f7d15e13928dcc15c3e84a66f7c97c6a11c2bbe0e74b1d60587'
-            'da1a6cef275ef9039a96e0489786cee29f5d961b3c8cf9b5a986ebe67333f2f022c1e41bd853704afb72d5cda6c4c7b33a83eac2cb8ca2a3e5d95bcc7eb00c47')
+            '625e6553cef727138ea855bf81fa634597e23e0e1762fd710b6626d2c86bb5df5aba18ae9a80f3243a7ac41a901166eaa8f9c0c9c8a7d688a85156b1f959c5ee')
 
 prepare() {
   cd "Carla-${pkgver}"
