@@ -3,7 +3,7 @@
 # Contributor: Vladimir Koshelenko <koshelenko@rndavia.ru>
 
 pkgname=start-stop-daemon
-pkgver=1.18.24
+pkgver=1.19.0.4
 pkgrel=1
 pkgdesc='Start and stop system daemon programs'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 url='https://packages.debian.org/source/sid/dpkg'
 depends=('glibc')
 source=("http://http.debian.net/debian/pool/main/d/dpkg/dpkg_$pkgver.tar.xz")
-md5sums=('02e8af8faf1e689228da806c3e8c6882')
+md5sums=('63cfe8d94bc906b6a49daf659600f783')
 
 build() {
   cd dpkg-$pkgver
