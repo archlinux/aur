@@ -1,8 +1,8 @@
 # Maintainer: Shengyu Zhang <arch at srain.im>
 
 pkgname=srain-git
-pkgver=0.713.f41e69b
-pkgrel=1
+pkgver=0.805.ac33912
+pkgrel=2
 pkgdesc="Modern, beautiful IRC client written in GTK+ 3, git version"
 arch=('i686' 'x86_64')
 license=('GPL')
