@@ -1,7 +1,7 @@
 # Maintainer: Bob Allred  <balinbob@gmail.com>
 pkgname=scenic-git
-pkgver=r23.599d0a6
-pkgrel=2
+pkgver=r29.fa59149
+pkgrel=1
 pkgdesc="wallpaper browser/cycler for fluxbox, etc, and batch image-processing frontend for CLI programs such as feh and imagemagick"
 arch=('any')
 url="https://github.com/balinbob/scenic"
@@ -11,7 +11,7 @@ makedepends=('git')
 optdepends=('feh' 'imagemagick')
 options=(!emptydirs)
 source=('git+https://github.com/balinbob/scenic')
-_gitname='scenic'
+_gitname=${pkgname%-git}
 md5sums=('SKIP')
 pkgver () {
   cd "${srcdir}/${_gitname}"
@@ -21,7 +21,7 @@ pkgver () {
   )
 }
 package() {
-    cd "$srcdir/$pkgname"
+    cd "${srcdir}/${_gitname}"
     python2 setup.py install --root="$pkgdir/" --optimize=1
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "resources/scenic-folder.svg" "$pkgdir/usr/share/${pkgname}/scenic-folder.svg"
