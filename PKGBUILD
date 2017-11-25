@@ -1,14 +1,17 @@
-# Maintainer: Sean Bolton <sean at smbolton dot com>
+# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
+# Contributor: Sean Bolton <sean at smbolton dot com>
+
 pkgname=whysynth
-pkgver=20120903
-pkgrel=2
+pkgver=20170701
+pkgrel=1
 pkgdesc="A versatile softsynth plugin for the DSSI Soft Synth Interface"
 url="http://www.smbolton.com/whysynth.html"
 depends=('alsa-lib' 'liblo' 'gtk2' 'fftw')
 makedepends=('dssi')
+conflicts=('whysynth-git')
 license=('GPL')
 source=(http://www.smbolton.com/whysynth/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('b521b63ade13b09062a64c46d2eabee2')
+md5sums=('217bfeea23545c12cd0a1bc93de6ed0f')
 arch=('i686' 'x86_64')
 
 build() {
