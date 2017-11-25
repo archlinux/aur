@@ -10,7 +10,6 @@ url="http://garden.sourceforge.net"
 license=('GPL3')
 depends=('allegro4' 'hicolor-icon-theme')
 provides=('garden')
-install=garden.install
 source=(http://sourceforge.net/projects/garden/files/garden/${pkgver}/garden-${pkgver}.tar.gz)
 md5sums=('b9cce86ab226164279ef325f9d798397')
 
