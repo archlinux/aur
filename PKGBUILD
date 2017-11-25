@@ -1,7 +1,7 @@
 # Maintainer: Tom Tobin <tomxtobin@tomxtobin.com>
 
 pkgname=awless
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A command line interface for Amazon Web Services (AWS)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("https://${_vendor}/archive/v${pkgver}.tar.gz")
-sha256sums=('815d9c0cf4fd8a03cbc76dbd5e8d9bbb039c485df59c2b458b0e9f5cc9556a5b')
+sha256sums=('583e35c7b93788a37f1b193af9beed1ba351c23ecd15f42318831f2106cd0684')
 
 _vendorpath="gopath/src/$_vendor"
 

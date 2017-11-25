@@ -1,6 +1,6 @@
 pkgbase = awless
 	pkgdesc = A command line interface for Amazon Web Services (AWS)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/wallix/awless
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = awless
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = https://github.com/wallix/awless/archive/v0.1.6.tar.gz
-	sha256sums = 815d9c0cf4fd8a03cbc76dbd5e8d9bbb039c485df59c2b458b0e9f5cc9556a5b
+	source = https://github.com/wallix/awless/archive/v0.1.7.tar.gz
+	sha256sums = 583e35c7b93788a37f1b193af9beed1ba351c23ecd15f42318831f2106cd0684
 
 pkgname = awless
 
