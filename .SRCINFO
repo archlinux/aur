@@ -1,0 +1,14 @@
+pkgbase = voidcsfml
+	pkgdesc = C bindings to Simple and Fast Multimedia Library.
+	pkgver = 2.4.10
+	pkgrel = 1
+	url = https://github.com/oprypin/crsfml/tree/master/voidcsfml
+	arch = any
+	license = ZLIB
+	makedepends = cmake
+	depends = sfml
+	source = https://github.com/oprypin/crsfml/archive/v2.4.10.tar.gz
+	md5sums = SKIP
+
+pkgname = voidcsfml
+
