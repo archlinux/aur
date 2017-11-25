@@ -1,0 +1,71 @@
+# Colored makepkg-like functions
+msg_blue() {
+  printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+  printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+_as_service() {
+    cat << EOF
+
+You might want to run ckb-daemon as a systemd service:
+
+    systemctl enable ckb-daemon.service
+    systemctl start ckb-daemon.service
+
+EOF
+}
+
+_terminate_gui_daemon() {
+    msg_blue "Terminating ckb-next GUI"
+
+    killall -TERM ckb 2>/dev/null
+
+
+    msg_blue "Terminating ckb-next daemon"
+
+    running="$(systemctl is-active ckb-daemon.service)"
+    if [[ "$running" = "active" ]]; then
+        systemctl stop ckb-daemon.service
+    fi
+
+    running="$(systemctl is-enabled ckb-daemon.service)"
+    if [[ "$running" = "enabled" ]]; then
+        systemctl disable ckb-daemon.service
+    fi
+}
+
+# arg 1:  the new package version
+post_install() {
+    _as_service
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+    _terminate_gui_daemon
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    systemctl daemon-reload
+    _as_service
+}
+
+# arg 1:  the old package version
+pre_remove() {
+    _terminate_gui_daemon
+}
+
+# arg 1:  the old package version
+post_remove() {
+    systemctl daemon-reload
+}
