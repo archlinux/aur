@@ -1,13 +1,14 @@
 # Contributor: Xyne
 # Contributor: Scott Garrett <Wintervenom@archlinux.us>
 # Contributor: Thomas Dziedzic
+# Contributor: Difarem
 
 # This tries to follow the official LMMS PKGBUILD.
 
 _pkgname=lmms
 pkgname=lmms-git
-pkgver=0.9.92.r79.g6c920df
-pkgrel=4
+pkgver=1.2.0.rc4.r49.g46ef3c6a1
+pkgrel=2
 pkgdesc='The Linux MultiMedia Studio.'
 arch=('i686' 'x86_64')
 url='http://lmms.sourceforge.net/'
@@ -36,6 +37,8 @@ pkgver() {
 prepare() {
   cd -- "$srcdir/$_pkgname"
   sed -i 's|lib64|lib|g' cmake/modules/DetectMachine.cmake
+  git submodule init
+  git submodule update
 }
 
 build() {
