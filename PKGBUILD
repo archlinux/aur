@@ -49,11 +49,10 @@ prepare() {
 
 build() {
     cd "$_basename"
-    local tag
+    local tag flags
     tag=$(git describe --tags --abbrev=0)
-    FLAGS=$(pkg-config --cflags-only-I glew glfw3 jansson samplerate libcurl libzip rtmidi rtaudio gtk+-2.0)
-    export FLAGS
-    make VERSION="${tag##v}"
+    flags=$(pkg-config --cflags-only-I glew glfw3 jansson samplerate libcurl libzip rtmidi rtaudio gtk+-2.0)
+    make VERSION="${tag##v}" FLAGS="$flags"
 }
 
 package() {
