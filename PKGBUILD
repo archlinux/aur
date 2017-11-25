@@ -3,7 +3,7 @@
 _basename='vcvrack'
 
 pkgname='vcvrack-git'
-pkgver=v0.5.0.r4.g264c040
+pkgver=0.5.0.r2.ga17ae2c
 pkgrel=1
 pkgdesc='Open-source virtual Eurorack DAW'
 url='https://github.com/VCVRack/Rack'
@@ -33,7 +33,7 @@ sha256sums=(
 
 pkgver() {
     cd "$_basename"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -51,8 +51,9 @@ build() {
     cd "$_basename"
     local tag flags
     tag=$(git describe --tags --abbrev=0)
-    flags=$(pkg-config --cflags-only-I glew glfw3 jansson samplerate libcurl libzip rtmidi rtaudio gtk+-2.0)
-    make VERSION="${tag##v}" FLAGS="$flags"
+    FLAGS=$(pkg-config --cflags-only-I glew glfw3 jansson samplerate libcurl libzip rtmidi rtaudio gtk+-2.0)
+    export FLAGS
+    make VERSION="${tag##v}"
 }
 
 package() {
