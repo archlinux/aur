@@ -8,7 +8,7 @@ url="http://www.oorexx.org/"
 license=('CPL')
 depends=('bash' 'gcc-libs-multilib')
 makedepends=('subversion' 'cmake')
-optdepends=('csh: for C shell sample'
+optdepends=('tcsh: for C shell sample'
 	    'sh: for sh shell sample')
 provides=("rexx")
 conflicts=("oorexx")
