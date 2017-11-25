@@ -1,15 +1,15 @@
 # Maintainer: Tommaso Falchi Delitala <volalto86@gmail.org>
 pkgname=apm_planner
-pkgver=2.0.24
+pkgver=2.0.25
 pkgrel=1
 pkgdesc="Ground Control Station for MAVlink based autopilots (e.g. Ardupilot)"
 arch=('i686' 'x86_64')
 url="http://planner2.ardupilot.com"
 license=('GPL3')
 source=("https://github.com/diydrones/apm_planner/archive/${pkgver}.tar.gz")
-depends=('qt5-base' 'qt5-serialport' 'qt5-svg' 'qt5-script' 'qt5-declarative' 'sdl2' 'flite' 'libsndfile' 'python')
+depends=('qt5-base' 'qt5-serialport' 'qt5-svg' 'qt5-script' 'qt5-declarative' 'sdl2' 'flite1' 'libsndfile' 'python' 'python-pexpect')
 
-md5sums=('163b818995e407554773f019c50d0d5c')
+md5sums=('cb297dc8740a66e2a3c805a494ae8815')
 
 build() {
   # Uncomment to add support for Pixhawk mavlink dialect (require Google proto buffer) 
