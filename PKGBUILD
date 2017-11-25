@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-wallpapers-git
-pkgver=20170915.45f24d6
+pkgver=20170915.30.45f24d6
 pkgrel=1
 pkgdesc="Wallpapers for Liri OS"
 arch=('any')
