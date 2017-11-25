@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-settings-git
-pkgver=20171006.680b848
+pkgver=20171102.f41d187
 pkgrel=1
 pkgdesc="Settings application and modules for Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
