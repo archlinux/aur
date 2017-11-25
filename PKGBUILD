@@ -2,16 +2,16 @@
 # Maintainer: mimas <mimasgpc@free.fr>
 
 pkgname=openbox-menu
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Dynamic XDG menu for openbox"
 arch=('i686' 'x86_64')
-url="http://mimasgpc.free.fr/openbox-menu.html"
+url="http://fabrice.thiroux.free.fr/openbox-menu_en.html"
 license=('GPL3')
 depends=('gtk2' 'menu-cache')
 optdepends=('lxmenu-data: LXDE menus' 'gnome-menus: GNOME menus')
 source=("https://bitbucket.org/fabriceT/openbox-menu/downloads/${pkgname}-${pkgver}.tar.bz2" "with-svg.patch")
-md5sums=('bd7e746452931e48340788c9e8ececa4'
+md5sums=('0d6f907adf2d47dd4d4198c0ff14721d'
          '484bd49f619e57f9fb2be42931d57dd5')
 
 build() {
