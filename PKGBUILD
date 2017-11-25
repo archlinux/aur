@@ -1,7 +1,7 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=cartaodecidadao
-pkgver=2.4.4.5176
+pkgver=2.4.6.5238
 _rev=${pkgver##*.}
 _ver=${pkgver%.*}
 pkgrel=1
@@ -23,7 +23,7 @@ optdepends=('autenticacao-gov-pt: Necessário para autenticações online'
             'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
             'ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)')
 
-source=("svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/tags/version${_ver}-${_rev}/source/trunk/_src/eidmw"
+source=("svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/tags/version${_ver}-${_rev}/source/_src/eidmw"
         "00-fix_certs_path.patch"
         "01-fix_pteiddialogsQTsrv_path.patch")
 
