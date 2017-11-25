@@ -4,7 +4,7 @@ _basename='vcvrack'
 _plugname='ESeries'
 
 pkgname='vcvrack-eseries-git'
-pkgver=v0.4.0.r7.gac990ce
+pkgver=0.4.0.r7.gac990ce
 pkgrel=1
 pkgdesc='E-Series VCV modules'
 url='https://github.com/VCVRack/ESeries'
@@ -34,7 +34,7 @@ sha256sums=(
 
 pkgver() {
     cd "$_basename-$_plugname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
