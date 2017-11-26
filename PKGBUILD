@@ -2,7 +2,7 @@
 
 pkgname=python-colour
 _pyname=colour
-pkgver=0.1.2
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Colour representations manipulation library (RGB, HSL, web, ...)"
 arch=('i686' 'x86_64')
@@ -19,5 +19,5 @@ package() {
   python setup.py install --root "${pkgdir}"
 
   # Only available on master, not in latest stable:
-  #install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
