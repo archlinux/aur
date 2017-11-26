@@ -1,0 +1,24 @@
+pkgbase = postgresql-92-upgrade
+	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
+	pkgver = 9.2.24
+	pkgrel = 1
+	url = http://www.postgresql.org/
+	arch = i686
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = krb5
+	makedepends = python2
+	makedepends = perl
+	makedepends = tcl>=8.6.0
+	depends = postgresql-libs>=9.2
+	depends = libxml2
+	depends = openssl>=1.0.0
+	depends = pam
+	provides = postgresql-92-upgrade=9.2
+	conflicts = postgresql-old-upgrade
+	conflicts = postgresql-lts-old-upgrade
+	source = http://ftp.postgresql.org/pub/source/v9.2.24/postgresql-9.2.24.tar.bz2
+	sha256sums = a754c02f7051c2f21e52f8669a421b50485afcde9a581674d6106326b189d126
+
+pkgname = postgresql-92-upgrade
+
