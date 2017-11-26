@@ -13,7 +13,7 @@ conflicts=("$_pkgname")
 source=('LICENSE')
 md5sums=('138596cfbe00f6b9ead1829b300f5e83')
 md5sums_x86_64=('07132c95d8bf88fad498fab4b7864b2e')
-md5sums_i686=('6465598ef98157e10170cad12c11e60e')
+md5sums_i686=('1357224cd841ef97b57c1a489e4f37b4')
 source_x86_64=("$url/downloads/software/Samsung_Magician_DC_Linux_64bit.zip")
 source_i686=("$url/downloads/software/Samsung_Magician_DC_Linux_32bit.zip")
 
