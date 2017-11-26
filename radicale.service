@@ -1,12 +1,26 @@
 [Unit]
-Description=Radicale server
+Description=radicale - A simple CalDAV (calendar) and CardDAV (contact) server
 After=syslog.target network.target
+Requires=network.target
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/radicale -f
 User=radicale
 Group=radicale
+Restart=on-failure
+# Deny other users access to the calendar data
+UMask=0027
+# Optional security settings
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+NoNewPrivileges=true
+ReadWritePaths=/var/lib/radicale/collections
 
 [Install]
 WantedBy=multi-user.target
