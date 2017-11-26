@@ -1,6 +1,6 @@
 pkgbase=hyperledger-composer
 pkgname=('hyperledger-composer-cli' 'hyperledger-composer-playground')
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="A framework for building Blockchain business networks"
 arch=(i686 x86_64)
@@ -35,4 +35,5 @@ package_hyperledger-composer-playground() {
   npm install -g --prefix "$pkgdir/usr" composer-playground@$pkgver
   chmod 755 -R $pkgdir/usr/bin/
   npm prune --production
+  rm $pkgdir/usr/lib/node_modules/package-lock.json
 }
