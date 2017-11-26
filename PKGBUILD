@@ -6,8 +6,8 @@ pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
 _pkgver=5.7.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=1
-pkgdesc="Digital photo management application for KDE"
+pkgrel=2
+pkgdesc="An advanced digital photo management application"
 arch=('x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
@@ -15,8 +15,10 @@ makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost
              'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble-common' 'kdesignerplugin'
              'kfilemetadata' 'akonadi-contacts' 'qtav' 'threadweaver' 'kcalcore'
              'knotifyconfig' 'libmediawiki' 'libkvkontakte')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
-sha256sums=('3605ffb5b6e8fbd6b725e5075f74f505d7edee7531789c2882d11df2d20150f5')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
+        digikam-kcalcore-17.12.patch)
+sha256sums=('3605ffb5b6e8fbd6b725e5075f74f505d7edee7531789c2882d11df2d20150f5'
+            '61648bdeb88dcb94d2896b9d9211c6a6b50a39a143701e04465aa040a60053c0')
 
 prepare() {
   mkdir -p build
@@ -25,6 +27,9 @@ prepare() {
   sed -e '/sv/d' -i $pkgname-$pkgver/doc-translated/CMakeLists.txt
 # fix conflicts with libkvkontakte
   rm $pkgbase-$pkgver/po/*/libkvkontakte.po
+# fix build with kcalcore 17.12
+  cd $pkgname-$_pkgver/core
+  patch -p1 -i "$srcdir"/digikam-kcalcore-17.12.patch
 }
 
 build() {
