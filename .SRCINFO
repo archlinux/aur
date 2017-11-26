@@ -1,0 +1,19 @@
+pkgbase = light-read-git
+	pkgdesc = Simple tool reading allowed (TTS) selected and copyed text
+	pkgver = 20171126
+	pkgrel = 1
+	url = http://github.com/lex148/LightRead
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go>=1.3.0
+	makedepends = git
+	depends = xsel
+	depends = xclip
+	depends = festival
+	depends = alsa-utils
+	source = git+https://github.com/lex148/LightRead.git
+	md5sums = SKIP
+
+pkgname = light-read-git
+
