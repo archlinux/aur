@@ -5,10 +5,10 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-_buildver=172.4144.808
-_pkgver=2017.2
+_buildver=173.3801.283
+_pkgver=2017.3-EAP1
 _eap="True"
-pkgver="${_pkgver}.${_buildver}"
+pkgver="${_pkgver//-/.}.${_buildver}"
 pkgrel=1
 epoch=1
 pkgdesc="A cross-platform C# IDE by JetBrains."
@@ -36,7 +36,7 @@ package() {
         "${pkgdir}/usr/share/applications/"
 
     if [[ "True" = "${_eap}" ]]; then
-        cp -R --no-preserve=ownership "${srcdir}/Rider-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
+        cp -R --no-preserve=ownership "${srcdir}/JetBrains Rider-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
     # else
     fi
 
