@@ -6,11 +6,9 @@ pkgrel=1
 pkgdesc='C++-native framework for unit-tests using only a header file'
 arch=(any)
 url='http://catch-lib.net'
-license=('custom:BSL')
-source=("https://raw.githubusercontent.com/catchorg/Catch2/v${pkgver}/single_include/catch.hpp"
-        "LICENSE::https://raw.githubusercontent.com/catchorg/Catch2/v${pkgver}/LICENSE.txt")
-sha256sums=('c6949b68cfb379c0ef7f52aa14780db65f034020b2f90d842be65c55b97915b9'
-            'c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566')
+license=('Boost')
+source=("https://raw.githubusercontent.com/catchorg/Catch2/v${pkgver}/single_include/catch.hpp")
+sha256sums=('c6949b68cfb379c0ef7f52aa14780db65f034020b2f90d842be65c55b97915b9')
 
 pkgver() {
   echo $(grep -oEm1 \
@@ -20,7 +18,6 @@ pkgver() {
 
 package() {
   install -D -m644 catch.hpp "${pkgdir}/usr/include/catch.hpp"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
