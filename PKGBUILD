@@ -13,7 +13,7 @@ optdepends=(cuda)
 sha1sums=('1b68ab3e1bc10755de1aa249e829e5fc4937c6b3'
           'eaea714f2430f85226a5c938ba19dcadb7adb5bf'
           '679c65c90e79b7f748ad1c2d4b5abeebebf05dfd'
-          'c2398008b8416f01b01c31b9fed80e57f155fea0'
+          'db514c2eaa48ae924cb1c26d8b0b25d47a812876'
           '2df550b126a6ec6022a164a18dddffe4e59962f9')
 
 source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
