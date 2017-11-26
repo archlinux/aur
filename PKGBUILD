@@ -1,6 +1,8 @@
-# Maintainer: Alex Merry <dev@randomguy3.me.uk>
+# Maintainer: Mort Yao <soi@mort.ninja>
+# Contributor: Alex Merry <dev@randomguy3.me.uk>
+
 pkgname=polyml
-pkgver=5.7
+pkgver=5.7.1
 pkgrel=1
 epoch=
 pkgdesc="A full implementation of Standard ML (SML)"
@@ -12,7 +14,7 @@ options=('!libtool')
 depends=('gmp' 'libffi')
 install='polyml.install'
 source=(https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=('56c3b06ce6cab785043812185e9b280b')
+md5sums=('3686264cec90793ec57d45af8fda7a9a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
