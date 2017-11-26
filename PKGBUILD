@@ -1,14 +1,14 @@
 # Maintainer: yozi <es.mslj TA xunilhcra> backwards
 # Contributor: Bernd Amend <bernd.amend+extension_system gmail com>
 pkgname='libcatch-cpp-headers'
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='C++-native framework for unit-tests using only a header file'
 arch=(any)
 url='http://catch-lib.net'
 license=('Boost')
 source=("https://raw.githubusercontent.com/catchorg/Catch2/v${pkgver}/single_include/catch.hpp")
-sha256sums=('c6949b68cfb379c0ef7f52aa14780db65f034020b2f90d842be65c55b97915b9')
+sha256sums=('54e9ae9ebc88ff032debfff507dc95bdb305a6200145c053a7b6d4106b326579')
 
 pkgver() {
   echo $(grep -oEm1 \
