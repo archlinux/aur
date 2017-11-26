@@ -1,7 +1,7 @@
 pkgbase = alot
 	pkgdesc = terminal-based MUA for the notmuch mail system
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pazz/alot
 	arch = any
 	license = GPL

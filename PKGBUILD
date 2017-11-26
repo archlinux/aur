@@ -5,7 +5,7 @@
 
 pkgname=alot
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
@@ -49,5 +49,6 @@ package() {
     install -dm755 "$pkgdir/usr/share/doc/$pkgname"
     cp -a docs/build/html/* "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 docs/build/man/alot.1 "$pkgdir/usr/share/man/man1/alot.1"
+    install -Dm644 extra/alot.desktop "$pkgdir/usr/share/applications/alot.desktop"
 }
 md5sums=('db355cfb3e905aede50e757cb723ad4d')
