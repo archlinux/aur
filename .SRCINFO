@@ -1,0 +1,19 @@
+pkgbase = qgit-git
+	pkgdesc = A GIT GUI viewer built on Qt/C++
+	pkgver = original.143.g7b8f1ff
+	pkgrel = 1
+	url = https://github.com/tibirna/qgit/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt5-base
+	depends = git
+	depends = hicolor-icon-theme
+	optdepends = source-highlight
+	provides = qgit
+	conflicts = qgit
+	source = git+https://github.com/tibirna/qgit.git
+	md5sums = SKIP
+
+pkgname = qgit-git
+
