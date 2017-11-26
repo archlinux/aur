@@ -1,17 +1,17 @@
 # Maintainer: Declan Hoare <declanhoare at exemail dot com dot au>
 pkgname=edlin
-pkgver=2.15
+pkgver=2.16
 pkgrel=1
 pkgdesc="FreeDOS line editor"
 arch=('i686' 'x86_64')
 url="http://www.freedos.org/"
 license=('GPL')
 depends=('glibc')
-source=("edlin-2.15.zip::http://downloads.sourceforge.net/project/freedos-edlin/freedos-edlin/2.15/edlin-2.15.zip")
-md5sums=('4b51e2ed2d642fa75b3b0e11d310b961')
-sha1sums=('2a7c3e33ce671fa7058d1303a5f21976c8c5faa9')
-sha224sums=('e4de0e4ac8e72ad5d1ea30356c1a7b2a650f9ded30181fc635e8a9bd')
-sha256sums=('d67954ba065dd6dc5e897e2d4b30dbc34dc81f6b09d58bc4a4257acb359d289f')
+source=("edlin-2.16.zip::http://downloads.sourceforge.net/project/freedos-edlin/freedos-edlin/2.16/edlin-2.16.zip")
+md5sums=('31ce24ff4f286a60521d56770d637363')
+sha1sums=('d69e5a179ba24deb188c45435d7055bb9e0af7cf')
+sha224sums=('f380b1ac5e7cb491ac7d3a9a1b3381b9a6c633cf3195777c3690d281')
+sha256sums=('62335b2f6b3338a485d1e1bd0aaac30559893519ba54ca9a35034ff340a64f05')
 
 build() {
 	cd "$pkgname-$pkgver"
