@@ -1,11 +1,13 @@
 # Maintainer: Thomas Arnhold <thomas@arnhold.org
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Dan McGee <dan@archlinux.org>
 # Contributor: Kuba Kuźma <kuba@jah.pl>
 # Contributor: Matthew Carter <m@ahungry.com>
 # Contributor: Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-9.6
 pkgver=9.6.6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
 pkgdesc="A powerful, open source object-relational database system"
@@ -44,30 +46,27 @@ build() {
   --with-krb5 \
   --with-gssapi \
   --with-libxml \
-  --with-openssl-1.0 \
+  --with-openssl \
   --with-perl \
   --with-python PYTHON=/usr/bin/python2 \
   --with-tcl \
   --with-pam \
   --with-system-tzdata=/usr/share/zoneinfo \
+  --with-uuid=e2fs \
   --enable-nls \
   --enable-thread-safety
 
-  make
-  make -C contrib
+  make world
 }
 
 package() {
   cd "${srcdir}/postgresql-${pkgver}"
 
+  make DESTDIR="${pkgdir}" install-world
+
   # install license
   install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  make DESTDIR="${pkgdir}" install
-  make -C contrib DESTDIR="${pkgdir}" install
-
-#  install -D -m644 "${srcdir}/postgresql.tmpfiles.conf" \
-#    "${pkgdir}/usr/lib/tmpfiles.d/postgresql.conf"
   install -D -m644 "${srcdir}/postgresql.service" \
     "${pkgdir}/usr/lib/systemd/system/postgresql.service"
   install -D -m755 "${srcdir}/postgresql-check-db-dir" \
