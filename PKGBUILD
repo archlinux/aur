@@ -5,10 +5,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20171023
+pkgver=3.0.0v20171125
 _pkgver=3.0.0
-_snapshot_=20171023
-_snapver_=0237
+_snapshot_=20171125
+_snapver_=0230
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -63,7 +63,6 @@ options=("!emptydirs")
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-git.tar.xz" 
         'update-vlc-plugin-cache.hook'
         'https://git.archlinux.org/svntogit/packages.git/plain/trunk/lua53_compat.patch?h=packages/vlc'
-        '0001-Prevent-including-missing-SVGs.patch'
         'find-deps.py')
 
 pkgver() {
@@ -78,7 +77,6 @@ prepare() {
   patch -Np1 -i "${srcdir}/vlc"
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
-  patch -p1 -i "$srcdir/0001-Prevent-including-missing-SVGs.patch"
 }
 
 build() {
@@ -132,8 +130,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('4599182701872f8799102d57ebbd8463897103be8d0b27b30a750ca60c668b71'
+sha256sums=('597c007c11234e615c290c407222eaca24bfaa96f2a42f42b4346ba19d01be9e'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
-            '599ce4bf0db5fc74f54bc03136b662606c22b8435b81440b02fc73f52d09bd7f'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
