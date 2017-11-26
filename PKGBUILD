@@ -27,7 +27,7 @@ _opt_keepdesktop=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre7.dev.5.gc075b50d
+pkgver=2.0pre8.dev.1.g58df46383
 pkgrel=1
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
 arch=('i686' 'x86_64')
