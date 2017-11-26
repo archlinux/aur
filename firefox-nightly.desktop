@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Firefox Nightly
 GenericName=Web Browser
-Icon=firefox-nightly-icon
+Icon=firefox-nightly
 Type=Application
 Categories=Application;Network;
 MimeType=text/html
@@ -9,4 +9,4 @@ Encoding=UTF-8
 Exec=firefox-nightly %u
 Terminal=false
 MultipleArgs=false
-StartupWMClass=Firefox
+StartupWMClass=Nightly
