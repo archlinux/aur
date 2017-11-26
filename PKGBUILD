@@ -11,7 +11,7 @@ arch=('any')
 makedepends=('python-setuptools')
 depends=('python>=3.4')
 conflicts=('python-vincenty')
-source=("http://pypi.python.org/packages/source/v/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/v/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('eaa2f2de835f369cbd71c1a01ccd4e0d412da0f4aeef7c9692242b9ce182785a')
 
 package() {
