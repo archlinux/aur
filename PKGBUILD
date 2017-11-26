@@ -2,8 +2,8 @@
 
 pkgname=cquery-git
 _pkgname=cquery
-pkgver=662.a60f93b
-pkgrel=5
+pkgver=695.336ba46
+pkgrel=1
 pkgdesc='Low-latency vscode language server for large C++ code-bases, powered by libclang.'
 arch=('any')
 url='https://github.com/jacobdufault/cquery/'
@@ -38,12 +38,14 @@ build() {
 
 check() {
     cd $_pkgname/build
-    yes | ./app --test
+    yes | ./app --test-unit --test-index
 }
 
 package() {
-    cd $_pkgname/build
     install -m 755 -d "${pkgdir}/opt/cquery/"
+    cd $_pkgname/
+    cp -rf ./clang_resource_dir ${pkgdir}/opt/cquery/ 
+    cd build/
     install -m 755 ./app "${pkgdir}/opt/cquery/cquery"
     install -m 755 -d "${pkgdir}/opt/cquery/lib"
     install -m 755 -t "${pkgdir}/opt/cquery/lib" lib/*.so*
