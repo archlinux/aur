@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=8989.63d1d8f06
+pkgver=9308.d383ec90d
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ conflicts=('faust')
 # This keeps the static libraries. Remove the 'staticlibs' option if this
 # isn't wanted.
 options=('strip' 'staticlibs')
-source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=faust2"
+source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=master-dev"
 	"git+https://github.com/rukano/emacs-faust-mode.git"
 	"python2-fix.patch")
 md5sums=('SKIP' 'SKIP'
