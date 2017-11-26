@@ -1,5 +1,5 @@
 pkgbase = coolreader
-	pkgdesc = E-book reader for Linux
+	pkgdesc = E-book reader for Linux, QT5 based
 	pkgver = 3.1.2.71
 	pkgrel = 1
 	url = http://sourceforge.net/projects/crengine/
@@ -13,7 +13,7 @@ pkgbase = coolreader
 	depends = libpng
 	depends = libjpeg
 	depends = freetype2
-	depends = qt5
+	depends = qt5-base
 	provides = coolreader3
 	conflicts = coolreader3
 	source = https://dev.gentoo.org/~grozin/coolreader-3.1.2.71.tar.bz2
