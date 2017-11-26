@@ -1,15 +1,15 @@
 pkgbase = tic-80
 	pkgdesc = TIC-80 tiny computer emulator
-	pkgver = 0.47.0
+	pkgver = 0.50.0
 	pkgrel = 1
 	url = https://tic.computer/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source_i686 = https://github.com/nesbox/TIC-80/releases/download/v0.47.0/tic_32bit_0.47.0.tar.gz
-	sha256sums_i686 = e5b840a0747f9569f1db806cc45989a295e76ae95dddff254395bee37f70de87
-	source_x86_64 = https://github.com/nesbox/TIC-80/releases/download/v0.47.0/tic_64bit_0.47.0.tar.gz
-	sha256sums_x86_64 = 338e643686ea5a0368c16599bc842d7615f8fa6bccc5f316433c86181caaff2f
+	source_i686 = https://github.com/nesbox/TIC-80/releases/download/v0.50.0/tic80_32bit_0.50.0.tar.gz
+	sha256sums_i686 = 2b9228c0ea62093d32e73b0c7636a53da7b47456a72ac62e3c4d4da603480938
+	source_x86_64 = https://github.com/nesbox/TIC-80/releases/download/v0.50.0/tic80_64bit_0.50.0.tar.gz
+	sha256sums_x86_64 = b99d9cd05907ca99fce1d6c70deb729c164cf019e588ae5fea021c3939b17b62
 
 pkgname = tic-80
 
