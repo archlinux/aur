@@ -10,7 +10,7 @@ pkgname=firefox-always-nightly
 pkgdesc='Standalone web browser from mozilla.org, nightly build, always updating'
 url='https://blog.nightly.mozilla.org/'
 pkgver=99.0a1
-pkgrel=16
+pkgrel=17
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _srcurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
@@ -24,8 +24,8 @@ pkgver() {
 }
 
 source=("${pkgname}-$(pkgver).tar.bz2::${_srcurl}/${_file}.tar.bz2"
-        'https://design.firefox.com/product-identity/firefox-nightly/firefox-logo-nightly.svg'
-        'https://design.firefox.com/product-identity/firefox-nightly/firefox-logo-nightly.png'
+        'http://design.firefox.com/product-identity/firefox-nightly/firefox-logo-nightly.svg'
+        'http://design.firefox.com/product-identity/firefox-nightly/firefox-logo-nightly.png'
         'firefox-nightly.desktop'
         'firefox-nightly-safe.desktop'
         'vendor.js')
