@@ -1,0 +1,402 @@
+From: Nicolas Iooss
+Date: Sun, 26 Nov 2017 16:47:27 +0100
+Subject: Fix compilation issues with OGRE 1.10.8
+
+* main.cpp requires #include <iostream> in order to use std::cerr
+* Replace calls to deprecated interfaces with the new interface
+  according to https://ogrecave.github.io/ogre/api/1.10/deprecated.html
+  (incliding added a SceneNode for the Camera)
+* Remove some unused variables
+---
+ include/gamecamera.h      | 17 ++++++++++-------
+ include/ogreapp.h         |  7 +++++--
+ src/ballworm.cpp          |  1 -
+ src/bground.cpp           |  2 +-
+ src/game.cpp              |  8 +++++---
+ src/gamecamera.cpp        |  6 +++---
+ src/main.cpp              |  1 +
+ src/mp3stream.cpp         |  3 +--
+ src/mpakogre.cpp          |  4 ++--
+ src/oggstream.cpp         |  4 ++--
+ src/ogreapp.cpp           | 21 ++++++++++-----------
+ src/openalsoundsystem.cpp |  2 +-
+ src/player.cpp            | 24 ++++++++++++------------
+ 13 files changed, 53 insertions(+), 47 deletions(-)
+
+diff --git a/include/gamecamera.h b/include/gamecamera.h
+index 8ae675cc4fb1..5fc043fd398d 100644
+--- a/include/gamecamera.h
++++ b/include/gamecamera.h
+@@ -29,6 +29,7 @@
+ class GameCamera {
+ private:
+ 	Camera *mCamera;			// Pointer to the Ogre camera
++	SceneNode *mCamNode;			// Scene node for the camera
+ 	SceneNode *mTarget;			// Target node
+ 	Real mCamZ;					// Camera Z coordinate (doesn't change)
+ 	Real mCamZoom;				// Zoom target
+@@ -37,14 +38,15 @@ private:
+ 	Quaternion mOriginalOr;		// Original orientation
+ 
+ public:
+-	GameCamera(Camera *cam) {
++	GameCamera(Camera *cam, SceneNode* camNode) {
+ 		mCamera = cam;
++		mCamNode = camNode;
+ 		mTarget = NULL;
+-		mCamZ = cam->getPosition().z;
++		mCamZ = camNode->getPosition().z;
+ 		mZoomIn = false;
+ 		mRotating = 0;
+ 		mCamZoom = 0;
+-		mOriginalOr = cam->getOrientation();
++		mOriginalOr = camNode->getOrientation();
+ 	}
+ 
+ 	void followTarget(Real delta, Real speed);
+@@ -52,7 +54,7 @@ public:
+ 		mTarget = node;
+ 		Vector3 pos = mTarget->getPosition();
+ 		pos.z = mCamZ;
+-		mCamera->setPosition(pos);
++		mCamNode->setPosition(pos);
+ 	}
+ 
+ 	Real getRotation() const { return mRotating; }
+@@ -67,7 +69,7 @@ public:
+ 
+ 	void resetRotation() {
+ 		mRotating = 0;
+-		mCamera->setOrientation(mOriginalOr);
++		mCamNode->setOrientation(mOriginalOr);
+ 	}
+ 
+ 	void setZoomIn(Real zpos) {
+@@ -80,13 +82,14 @@ public:
+ 
+ 	void setZoomOut(Real zpos) {
+ 		mCamZoom = mCamZ;
+-		Vector3 pos = mCamera->getPosition();
++		Vector3 pos = mCamNode->getPosition();
+ 		pos.z = zpos;
+-		mCamera->setPosition(pos);
++		mCamNode->setPosition(pos);
+ 		mZoomIn = false;
+ 	}
+ 
+ 	Camera *getCamera() const { return mCamera; }
++	SceneNode *getCamNode() const { return mCamNode; }
+ };
+ 
+ #endif
+diff --git a/include/ogreapp.h b/include/ogreapp.h
+index d9b4adc438fb..a62cc4919ad2 100644
+--- a/include/ogreapp.h
++++ b/include/ogreapp.h
+@@ -66,6 +66,7 @@ public:
+ protected:
+ 	Root *mRoot;
+ 	Camera *mCamera;
++	SceneNode* mCamNode;
+ 	SceneManager *mSceneMgr;
+ 	RenderWindow *mWindow;
+ 	OgreAppFrameListener *mFrameListener;
+@@ -93,10 +94,12 @@ protected:
+ 
+ 	// Create the camera
+ 	virtual void createCamera() {
++		mCamNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+ 		mCamera = mSceneMgr->createCamera("PlayerCam");
+-		mCamera->setPosition(Vector3(0,0,500));
+-		mCamera->lookAt(Vector3(0,0,-300));
+ 		mCamera->setNearClipDistance(5);
++		mCamNode->attachObject(mCamera);
++		mCamNode->setPosition(Vector3(0,0,500));
++		mCamera->lookAt(Vector3(0,0,-300));
+ 	}
+ 
+     // Create the viewport
+diff --git a/src/ballworm.cpp b/src/ballworm.cpp
+index e60dc530a5d4..73d1533f87fc 100644
+--- a/src/ballworm.cpp
++++ b/src/ballworm.cpp
+@@ -85,7 +85,6 @@ void BallWorm::move(Real delta) {
+ 	if(mPlayer->isDead() || mPlayer->isOnBase() || mPlayer->isGoingToSpecialLevel() || gameApp->getState() != STATE_GAME) return;
+ 
+ 	Vector3 ppos = mPlayer->getPosition();
+-	Vector3 npos = mNode->getPosition();
+ 
+ 	for(int f=0; f<numBalls; f++) {
+ 		if(mBallDestroyed[f]) continue;
+diff --git a/src/bground.cpp b/src/bground.cpp
+index 901aa448f09b..6b84ccff1b21 100644
+--- a/src/bground.cpp
++++ b/src/bground.cpp
+@@ -72,7 +72,7 @@ void createBackground(SceneManager *sceneMgr) {
+ 	Real bgx = rand()%100 < 50 ? -1.0f : 1.0f;
+ 	Real bgy = rand()%100 < 50 ? -1.0f : 1.0f;
+ 	bgRect->setCorners(-bgx, bgy, bgx, -bgy);
+-	bgRect->setMaterial("Background");
++	bgRect->setMaterial(MaterialManager::getSingleton().getByName("Background"));
+ 
+ 	// Render the background before everything else
+ 	bgRect->setRenderQueueGroup(RENDER_QUEUE_SKIES_EARLY);
+diff --git a/src/game.cpp b/src/game.cpp
+index 0731fc2a8ec7..69f746c2a022 100644
+--- a/src/game.cpp
++++ b/src/game.cpp
+@@ -348,12 +348,14 @@ void GameApplication::setEndGame() {
+ 
+ 
+ void GameApplication::createCamera() {
++	mCamNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+ 	mCamera = mSceneMgr->createCamera("MainCam");
+-	mCamera->setPosition(Vector3(0,0,115));
+-	mCamera->lookAt(Vector3(0,0,0));
+ 	mCamera->setNearClipDistance(10);
++	mCamNode->attachObject(mCamera);
++	mCamNode->setPosition(Vector3(0,0,115));
++	mCamera->lookAt(Vector3(0,0,0));
+ 
+-	mGameCamera = new GameCamera(mCamera);
++	mGameCamera = new GameCamera(mCamera, mCamNode);
+ }
+ 
+ 
+diff --git a/src/gamecamera.cpp b/src/gamecamera.cpp
+index a8f114f395d8..41ccc13df9ae 100644
+--- a/src/gamecamera.cpp
++++ b/src/gamecamera.cpp
+@@ -33,7 +33,7 @@ const Real cameraAreaHeight = playfieldHeight - 48.0f;
+ 
+ void GameCamera::followTarget(Real delta, Real speed) {
+ 	Vector3 targetPos = mTarget->getPosition();
+-	Vector3 camPos = mCamera->getPosition();
++	Vector3 camPos = mCamNode->getPosition();
+ 	camPos.z = targetPos.z;
+ 	Vector3 dir = targetPos - camPos;
+ 
+@@ -41,7 +41,7 @@ void GameCamera::followTarget(Real delta, Real speed) {
+ 	// Move towards the target
+ 	Vector3 mov = dir * delta * speed;
+ 	mov.z = 0;
+-	Vector3 pos = mCamera->getPosition() + mov;
++	Vector3 pos = mCamNode->getPosition() + mov;
+ 
+ 	// Rotation
+ 	if(mRotating > 0) {
+@@ -62,5 +62,5 @@ void GameCamera::followTarget(Real delta, Real speed) {
+ 		}
+ 	}
+ 
+-	mCamera->setPosition(pos);
++	mCamNode->setPosition(pos);
+ }
+diff --git a/src/main.cpp b/src/main.cpp
+index 0f9610f23826..10d5dabc1c79 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -24,6 +24,7 @@
+ //***************************************************************************/
+ 
+ #include "game.h"
++#include <iostream>
+ 
+ #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+ #define WIN32_LEAN_AND_MEAN
+diff --git a/src/mp3stream.cpp b/src/mp3stream.cpp
+index 0981c1992d55..477b2032d782 100644
+--- a/src/mp3stream.cpp
++++ b/src/mp3stream.cpp
+@@ -21,7 +21,7 @@
+ //
+ //  3. This notice may not be removed or altered from any source distribution.
+ //
+-//***************************************************************************/
++// **************************************************************************/
+ 
+ // NOTICE: This file is written by Piet (thanks! :), <funguloids@superpiet.de>,
+ // for the Linux version of Funguloids.
+@@ -223,7 +223,6 @@ void MP3Stream::unload( )
+ //----------------------------------------------------------------------------
+ void MP3Stream::rewindFile( )
+ {
+-	int result;
+ 	if ( mFileLoaded )
+ 	{
+ 		// memory file
+diff --git a/src/mpakogre.cpp b/src/mpakogre.cpp
+index e8453c6e4b05..83e02b40346b 100644
+--- a/src/mpakogre.cpp
++++ b/src/mpakogre.cpp
+@@ -79,7 +79,7 @@ void MPakArchive::load() {
+ 		// The following is commented out since it isn't really needed,
+ 		// I'm not planning to use the override directory.. It wasn't compiling on
+ 		// Linux anyways, as the _find* aren't exported currently (Ogre Eihort 1.4.0)
+-/*
++#if 0
+ 		// Find the possible files in the override directory (media) and add them too
+ 		if(mPakFile->override_dir != NULL) {
+ 			// Start searching
+@@ -114,7 +114,7 @@ void MPakArchive::load() {
+ 			if(handle != -1)
+ 				_findclose(handle);
+ 		}
+-*/
++#endif
+ 
+ 	}
+ }
+diff --git a/src/oggstream.cpp b/src/oggstream.cpp
+index f9c9fb465cbf..ffc92ff6a484 100644
+--- a/src/oggstream.cpp
++++ b/src/oggstream.cpp
+@@ -518,7 +518,7 @@ size_t _vorbisRead( void *ptr, size_t byteSize, size_t sizeToRead, void *memfile
+ //----------------------------------------------------------------------------
+ int _vorbisSeek(void *memfile, ogg_int64_t offset, int seekTo )
+ {
+-	size_t spaceToEOF;             // How much more we can read till we hit the EOF marker
++	ogg_int64_t spaceToEOF;             // How much more we can read till we hit the EOF marker
+ 	ogg_int64_t actualOffset;   // How much we can actually offset it by
+ 	OggMemoryFile* vorbisData;             // The data we passed in (for the typecast)
+ 
+@@ -539,7 +539,7 @@ int _vorbisSeek(void *memfile, ogg_int64_t offset, int seekTo )
+ 	case SEEK_CUR:
+ 		// Seek from where we are
+ 		// Make sure we dont go past the end
+-		spaceToEOF = vorbisData->dataSize - vorbisData->dataRead;
++		spaceToEOF = (ogg_int64_t)(vorbisData->dataSize - vorbisData->dataRead);
+ 		if (offset < spaceToEOF)
+ 				actualOffset = (offset);
+ 		else
+diff --git a/src/ogreapp.cpp b/src/ogreapp.cpp
+index 5691b64ecbf7..d9ed3eced4dc 100644
+--- a/src/ogreapp.cpp
++++ b/src/ogreapp.cpp
+@@ -87,16 +87,15 @@ bool OgreApplication::setup() {
+ 	cf.load(String(OGRE_PLUGINS_AND_RESOURCES_PATH) + "resources.cfg");
+ 
+ 	// Parse the resources.cfg
+-	ConfigFile::SectionIterator seci = cf.getSectionIterator();
+-
+-	String secName, typeName, archName;
+-	while(seci.hasMoreElements()) {
+-		secName = seci.peekNextKey();
+-		ConfigFile::SettingsMultiMap *settings = seci.getNext();
+-		ConfigFile::SettingsMultiMap::iterator i;
+-		for(i = settings->begin(); i != settings->end(); ++i) {
+-			typeName = i->first;
+-			archName = i->second;
++	const ConfigFile::SettingsBySection_ &sections = cf.getSettingsBySection();
++	ConfigFile::SettingsBySection_::const_iterator seci;
++	for (seci = sections.begin(); seci != sections.end(); ++seci) {
++		String secName = seci->first;
++		const ConfigFile::SettingsMultiMap &settings = seci->second;
++		ConfigFile::SettingsMultiMap::const_iterator i;
++		for(i = settings.begin(); i != settings.end(); ++i) {
++			String typeName = i->first;
++			String archName = i->second;
+ 			ResourceGroupManager::getSingleton().addResourceLocation(archName, typeName, secName);
+ 		}
+ 	}
+@@ -104,7 +103,7 @@ bool OgreApplication::setup() {
+ 
+ 	// Get the configuration
+ 	if(!mRoot->restoreConfig())
+-		if(!mRoot->showConfigDialog())
++		if(!mRoot->showConfigDialog(NULL))
+ 			return false;
+ 
+ 	// Initialise the system
+diff --git a/src/openalsoundsystem.cpp b/src/openalsoundsystem.cpp
+index d057da741ebf..fe430e477361 100644
+--- a/src/openalsoundsystem.cpp
++++ b/src/openalsoundsystem.cpp
+@@ -415,7 +415,7 @@ void OpenALSoundSystem::loadSound(const String &fileName, Real freqVar, bool loo
+ 
+ 	// open
+ 	soundResource->streamPtr = soundResource->fileArchive->open(soundResource->fileName);
+-	if(soundResource->streamPtr.isNull()) {
++	if(!soundResource->streamPtr) {
+ 		LogManager::getSingleton().logMessage("Could not open " + soundFile + "!");
+ 		return;
+ 	}
+diff --git a/src/player.cpp b/src/player.cpp
+index cfa735f29115..373e8f881e1d 100644
+--- a/src/player.cpp
++++ b/src/player.cpp
+@@ -401,7 +401,7 @@ void Player::move(Real delta, InputHandler *input) {
+ 			}
+ 
+ 			// Cancel the rotation
+-			Quaternion q = mCamera->getCamera()->getOrientation();
++			Quaternion q = mCamera->getCamNode()->getOrientation();
+ 			Degree rot; Vector3 axis;
+ 			q.ToAngleAxis(rot, axis);
+ 			mNode->rotate(Vector3::UNIT_Z, Radian(rot));
+@@ -671,7 +671,7 @@ void Player::afterCollision(MovingObject *other) {
+ 
+ 	// Wrap the camera
+ 	Vector3 pos = getPosition();
+-	Vector3 cPos = mCamera->getCamera()->getPosition();
++	Vector3 cPos = mCamera->getCamNode()->getPosition();
+ 	Real dx = pos.x - cPos.x;
+ 	Real dy = pos.y - cPos.y;
+ 
+@@ -684,7 +684,7 @@ void Player::afterCollision(MovingObject *other) {
+ 	else if(dy < -playfieldHeight)
+ 		cPos.y -= playfieldHeight*2;
+ 
+-	mCamera->getCamera()->setPosition(cPos);
++	mCamera->getCamNode()->setPosition(cPos);
+ }
+ 
+ 
+@@ -787,7 +787,7 @@ void Player::respawn() {
+ void Player::moveTo(const Vector3 &pos) {
+ 	setPosition(pos);
+ 	mFlareNode->setPosition(pos);
+-	mCamera->getCamera()->setPosition(pos);
++	mCamera->getCamNode()->setPosition(pos);
+ 	mCamera->setZoomOut(50);
+ 	mChangeLevel = false;
+ 
+@@ -807,30 +807,30 @@ void Player::wrapAround() {
+ 	bool wrapped = false;
+ 	if(pos.x < -playfieldWidth) {
+ 		pos.x += playfieldWidth*2;
+-		Vector3 camPos = mCamera->getCamera()->getPosition();
++		Vector3 camPos = mCamera->getCamNode()->getPosition();
+ 		camPos.x += playfieldWidth*2;
+-		mCamera->getCamera()->setPosition(camPos);
++		mCamera->getCamNode()->setPosition(camPos);
+ 		wrapped = true;
+ 	}
+ 	else if(pos.x > playfieldWidth) {
+ 		pos.x -= playfieldWidth*2;
+-		Vector3 camPos = mCamera->getCamera()->getPosition();
++		Vector3 camPos = mCamera->getCamNode()->getPosition();
+ 		camPos.x -= playfieldWidth*2;
+-		mCamera->getCamera()->setPosition(camPos);
++		mCamera->getCamNode()->setPosition(camPos);
+ 		wrapped = true;
+ 	}
+ 	if(pos.y < -playfieldHeight) {
+ 		pos.y += playfieldHeight*2;
+-		Vector3 camPos = mCamera->getCamera()->getPosition();
++		Vector3 camPos = mCamera->getCamNode()->getPosition();
+ 		camPos.y += playfieldHeight*2;
+-		mCamera->getCamera()->setPosition(camPos);
++		mCamera->getCamNode()->setPosition(camPos);
+ 		wrapped = true;
+ 	}
+ 	else if(pos.y > playfieldHeight) {
+ 		pos.y -= playfieldHeight*2;
+-		Vector3 camPos = mCamera->getCamera()->getPosition();
++		Vector3 camPos = mCamera->getCamNode()->getPosition();
+ 		camPos.y -= playfieldHeight*2;
+-		mCamera->getCamera()->setPosition(camPos);
++		mCamera->getCamNode()->setPosition(camPos);
+ 		wrapped = true;
+ 	}
+ 	setPosition(pos);

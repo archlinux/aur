@@ -4,7 +4,7 @@
 pkgname=funguloids
 pkgver=1.06.4
 _realver=1.06-4
-pkgrel=9
+pkgrel=10
 pkgdesc="3D game about collecting mushrooms in outerspace"
 arch=('i686' 'x86_64')
 url="http://funguloids.sourceforge.net/"
@@ -24,7 +24,8 @@ source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-linux-${_realver}
         funguloids-compilation.patch
         funguloids-boost-system.patch
         funguloids-ogre-1.9.0.patch
-        funguloids-ogre-1.10.4.patch)
+        funguloids-ogre-1.10.4.patch
+        funguloids-ogre-1.10.8.patch)
 sha256sums=('e9c9074a5d2de11690484a7e8eef7de9dd7d360ea72185ea35c54976646ef5cf'
             'ceaf1c19d5ed694ff3832320ef6b6b268f73cbf16bc5998c15de47c77298885a'
             '753a8ac858ff21e81f2a3466092e297703d081689ceaa1159fe6cb42d97d06a6'
@@ -39,7 +40,8 @@ sha256sums=('e9c9074a5d2de11690484a7e8eef7de9dd7d360ea72185ea35c54976646ef5cf'
             '4ed88c6502601d684fd7e85dbe33684e36669bdf65583f782b24ddd596dcaf3c'
             'e17a559558d49e493f3f19ae6baa147c64fb37497fb384d31e0d3bc7ae484df1'
             'a007990ef35c249fe4440938553737d14f2dd8377407ee97fecdc6f17b1136ec'
-            'd00b04968aaaee97babd99ecca46cc22d567694fdcc341a5ff4124af9b08be95')
+            'd00b04968aaaee97babd99ecca46cc22d567694fdcc341a5ff4124af9b08be95'
+            '6d356bf604073f9314ec581439ad4e6d3d4ea00592e6340f6316c61af48bd863')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -59,6 +61,7 @@ prepare() {
   patch -p1 < ../funguloids-boost-system.patch
   patch -p1 < ../funguloids-ogre-1.9.0.patch
   patch -p1 < ../funguloids-ogre-1.10.4.patch
+  patch -p1 < ../funguloids-ogre-1.10.8.patch
 
   sed -i -e 's;cp bootstrap.mpk "@gameinstalldir@";cp bootstrap.mpk "$(DESTDIR)@gameinstalldir@";' -e 's;funguloids.mpk "@gameinstalldir@";funguloids.mpk "$(DESTDIR)@gameinstalldir@";' bin/Makefile.in
   sed -i -e 's;cp MarylandInMay.ogg "@musicinstalldir@";cp MarylandInMay.ogg "$(DESTDIR)@musicinstalldir@";' bin/music/Makefile.in
