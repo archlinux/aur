@@ -7,8 +7,8 @@
 # Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
 pkgname=git-crypt
-pkgver=0.5.0
-pkgrel=5
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Transparent file encryption in Git"
 arch=('i686' 'x86_64')
 url="https://www.agwa.name/projects/${pkgname}/"
@@ -17,7 +17,7 @@ depends=('git' 'openssl-1.0')
 makedepends=('libxslt')
 conflicts=("${pkgname}-git")
 source=("https://github.com/AGWA/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('5150144a528bc74eeb47a2884cf2fefe978a1d1dc0223bbfcac395fa6a73a410')
+sha256sums=('777c0c7aadbbc758b69aff1339ca61697011ef7b92f1d1ee9518a8ee7702bb78')
 
 build() {
     cd "${pkgname}-${pkgver}"
