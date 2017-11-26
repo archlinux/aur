@@ -1,13 +1,12 @@
 # Maintainer: Vladimir Cerny <blackvladimir@gmail.com>
 pkgname=asco
 pkgver=0.4.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A SPICE Circuit Optimizer."
 arch=('i686' 'x86_64')
 url="http://asco.sourceforge.net"
 license=('GPL')
 depends=(glibc)
-conflicts=('qucs')
 source=("http://downloads.sourceforge.net/sourceforge/asco/ASCO-$pkgver.tar.gz")
 md5sums=('a279c9ba155e66ef8ccaf5f130fa236d')
 
