@@ -1,0 +1,27 @@
+pkgbase = freesurfer-bin
+	pkgdesc = An open source software suite for processing and analyzing (human) brain MRI images. (Precompiled binary version)
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://surfer.nmr.mgh.harvard.edu/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libxss
+	depends = tcl
+	depends = tcsh
+	depends = libxpm
+	depends = pangox-compat
+	depends = libpng12
+	depends = glu
+	depends = libxp
+	depends = gtk2
+	depends = python
+	provides = freesurfer
+	conflicts = freesurfer
+	source = ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+	source = freesurfer.sh
+	sha256sums = 9e68ee3fbdb80ab73d097b9c8e99f82bf4674397a1e59593f42bb78f1c1ad449
+	sha256sums = 30c269a50c825b4a5147337b111ea444389b11a8cefbcd9eb520d01af20984cd
+
+pkgname = freesurfer-bin
+
