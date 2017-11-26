@@ -1,6 +1,6 @@
 pkgbase = lightdm-settings
 	pkgdesc = A configuration tool for the LightDM display manager
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/linuxmint/lightdm-settings
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = lightdm-settings
 	depends = python-gobject
 	depends = python-setproctitle
 	depends = python-xapp
-	source = lightdm-settings-1.1.3.tar.gz::https://github.com/linuxmint/lightdm-settings/archive/1.1.3.tar.gz
-	sha256sums = 8aa50dbb4dccf5a9f66dd62c909207639d6a82012bf5503af494ea105444fb52
+	source = lightdm-settings-1.1.4.tar.gz::https://github.com/linuxmint/lightdm-settings/archive/1.1.4.tar.gz
+	sha256sums = 264eee65a2a7d07a3f5a3ea2c02cd1988bf2c285751b3a0aebbf6b0f329a201c
 
 pkgname = lightdm-settings
 
