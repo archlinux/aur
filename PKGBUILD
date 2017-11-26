@@ -6,7 +6,7 @@
 
 pkgname=mutant
 pkgrel=1
-pkgver=0.1.0
+pkgver=0.1.2
 pkgdesc="Linux Spotlight Productivity launcher, but more customizable."
 url="https://github.com/m0n0l0c0/mutant"
 provides=('mutant')
