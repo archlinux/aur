@@ -3,7 +3,7 @@
 
 pkgname=vmware-patch
 pkgver=14.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/VMware#Configuration"
@@ -70,7 +70,7 @@ package() {
 }
 
 # Generated using 'updpkgsums'
-md5sums=('f116133678419f2281c59e390e42152e'
+md5sums=('5242a190e20e6366fd90a745a2b8410c'
          'ba054b375308442d43a408dbae5e9401'
          'ca1382966804d694894539c7bcac6bbb'
          'c12e765985b324585a548718a6ac9b43'
@@ -79,7 +79,7 @@ md5sums=('f116133678419f2281c59e390e42152e'
          '3c165edb6847fc9bfa04657f346ac4cc'
          'eca2542e4c484ea2ca06b7e9c065b8af'
          'ced58cf32a21adfe21d612366c52116a'
-         'dc020c9dea90f28a69c8957a482f6c12'
+         '05932f9797d1c3cca52f4d523d6f759d'
          '3c165edb6847fc9bfa04657f346ac4cc'
          'eca2542e4c484ea2ca06b7e9c065b8af'
          'a2c3e2bbbe6dcbf66737a5e33df5b892'

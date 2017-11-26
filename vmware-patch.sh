@@ -152,10 +152,15 @@ for kernel in ${kernels[@]}; do
         fi
 
         # Is product version not lower and kernel version not higher in patch name?
-        if (( $(vercmp "$ver_patch" "$ver2") <= 0 )) && (( $(vercmp "$kernel_patch" "$kernel_major") >= 0 )); then
+        if (( $(vercmp "$ver_patch" "$ver2") == 0 )) && (( $(vercmp "$kernel_patch" "$kernel_major") >= 0 )); then
+            printf 'Patch: %s, %s\n' "$ver_patch" "$ver2"
+            printf 'Kernel: %s, %s\n' "$kernel_patch" "$kernel_major"
             patches+=("$patch")
         fi
     done
+
+    # Debug print to see patches before application.
+    printf '%s\n' "${patches[@]}" 
 
     # Patch
     # 1) Make sure we can build
