@@ -2,8 +2,8 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.3.1
-pkgrel=6
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=("any")
 url="https://cryptomator.org/"
@@ -15,7 +15,7 @@ source=("antkit-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/rel
         'cryptomator.desktop'
         'cryptomator-vault.xml'
         'logback.xml')
-sha256sums=('ceb34e70a9f68544d8ff7be524bfb597238183adcd0a29d50e4509bc1dfa3a57'
+sha256sums=('76602471b608b0c23a92ae28a0de33b086e828e33dd5635132e997cac935c00e'
             '544b707a5e5d5d2f7694b6044f9bedc8a4bb7a783bc427d6c46bf7d3a22eaa1f'
             '1193f85b545298f6d474c7f17865433f25c73995b00894e0d7d7bc873c696464'
             '78537ead26dcc1488d7fff02f47fce559f70f9bb2d7fa7fa1741ad3cd151bfad'
