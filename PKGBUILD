@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.3.r512.4aa89132d
+pkgver=0.0.4.r54.1344f15ef
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -17,13 +17,13 @@ provides=('rpcs3')
 conflicts=('rpcs3')
 source=('git+https://github.com/RPCS3/rpcs3.git'
         'rpcs3-common::git+https://github.com/RPCS3/common.git'
-        'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git#commit=ca39ce8'
-        'rpcs3-pugixml::git+https://github.com/RPCS3/pugixml.git#commit=f205aaf'
-        'git+https://github.com/kobalicek/asmjit.git#commit=1370fe6'
-        'git+https://github.com/Microsoft/GSL.git#commit=fc5fce4'
-        'git+https://github.com/KhronosGroup/glslang.git#commit=cf571f7'
-        'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git#commit=85926a3'
-        'git+https://github.com/akrzemi1/Optional.git#commit=f27e790')
+        'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git'
+        'git+https://github.com/kobalicek/asmjit.git'
+        'git+https://github.com/Microsoft/GSL.git'
+        'git+https://github.com/KhronosGroup/glslang.git'
+        'git+https://github.com/akrzemi1/Optional.git'
+        'git+https://github.com/zeux/pugixml.git'
+        'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -49,7 +49,7 @@ prepare() {
   git config submodule.GSL.url ../GSL
   git config submodule.hidapi.url ../rpcs3-hidapi
   git config submodule.Optional.url ../Optional
-  git config submodule.pugixml.url ../rpcs3-pugixml
+  git config submodule.pugixml.url ../pugixml
   git config submodule.Vulkan-LoaderAndValidationLayers ../Vulkan-LoaderAndValidationLayers
   git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml} asmjit Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
 
