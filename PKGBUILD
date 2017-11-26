@@ -1,7 +1,7 @@
 # Maintainer: Carlos Toro <ertsheiker at gmail dot com>
 
 pkgname=minergate
-pkgver=7.0
+pkgver=7.1
 pkgrel=1
 pkgdesc='Cryptocurrency GUI miner and Mining Pool'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='http://www.minergate.com/'
 provides=('minergate')
 license=('custom')
 source=('https://minergate.com/download/ubuntu')
-md5sums=('51804a97bd5dbb4e431bba94047ab766')
+md5sums=('67df418c0c6ee1a980e93cb89759ff4a')
 depends=('qt5-base'
          'gcc-libs-multilib'
          'qt5-websockets'
