@@ -9,10 +9,10 @@ license=('GPLv3')
 
 pkgname=firefox-extension-useragentswitcher
 pkgver=$_plugin_version
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://chrispederick.com/work/user-agent-switcher/"
-depends=("firefox>=4")
+depends=("firefox<57")
 source=("https://addons.mozilla.org/firefox/downloads/latest/59/addon-59-latest.xpi")
 sha256sums=('1a81e4d9058d567600eecfa5732be9960cd33c12b9525f28d1e52cb1fe26422d')
 
