@@ -17,6 +17,6 @@ package() {
   cd "${srcdir}/Gnomenu-gno-menu.v${pkgver}"
   rm README.md Screenshot.png
 
-  install -Dm644 extension.js -t "${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
-  install -Dm644 metadata.json -t "${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_extname}"
+  cp -r . "$pkgdir/usr/share/gnome-shell/extensions/${_extname}/"
 }
