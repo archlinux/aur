@@ -1,0 +1,16 @@
+pkgbase = terraform-inventory-git
+	pkgdesc = Terraform State -> Ansible Dynamic Inventory
+	pkgver = 0.7.pre.20.g2222e64
+	pkgrel = 1
+	url = https://github.com/adammck/terraform-inventory
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = terraform-inventory
+	conflicts = terraform-inventory
+	source = git+https://github.com/adammck/terraform-inventory
+	md5sums = SKIP
+
+pkgname = terraform-inventory-git
+
