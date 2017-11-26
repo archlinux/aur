@@ -39,8 +39,9 @@ build() {
 package() {
     cd "$_pkgname"
 
-    mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/include" "$pkgdir/usr/lib" "$pkgdir/usr/share/doc"
+    install -dm755 "$pkgdir/usr/"{bin,include,lib}
     make install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    cp -rp examples "$pkgdir/usr/share/doc/$pkgname"
+    install -dm755 "$pkgdir/usr/share/doc"
+    cp -a examples "$pkgdir/usr/share/doc/$pkgname"
 }
