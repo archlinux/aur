@@ -1,11 +1,11 @@
 pkgbase = drake-git
 	pkgdesc = runtime library replacement for gnat
-	pkgver = r1680.g380ccf40
+	pkgver = r1684.ge8764516
 	pkgrel = 2
 	url = https://github.com/ytomino/drake
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = MIT
 	makedepends = git
 	makedepends = gcc-ada
 	makedepends = headmaster
