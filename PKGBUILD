@@ -8,7 +8,7 @@ pkgver=1.0.64.407
 _commit=g9bd02c2d
 _ver_x86_64=26
 _ver_i686=26
-pkgrel=2
+pkgrel=3
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64' 'i686')
 license=('custom')
@@ -43,7 +43,7 @@ sha512sums_x86_64=('78352ed0cd116b8ef8c2b9ffc3c186d2fecd3dd5f49f0f732ccf0a3a796b
                    'b2cff3e4a3798a22077941af3cff0d5e840096943996165deeafa4842dfe96801e45636d3b6002a4bd4ca47d97a1559b49655a89d8b26a4ea735a7229940732c')
 sha512sums_i686=('43342faf26b7530dbb3fecafebcb7dac6ed6b7323c845f373bb63760ab309f4f01c6f4dd1cb4ab1bfd9a97b383fb863ba5f2aa7e73d32d1575bf8964dcdf30a5'
                  'd4e75d9a766cc0269140495a3097c649399f95133b83d239f8a857e80888a836dd69bb52a51d7753cf88aa43450dbcfc2a25d67ba30df629e692f72ab2f71cb8')
-validpgpkeys=('BBEBDCB318AD50EC6865090613B00F1FD2C19886') # Spotify <tux@spotify.com>
+validpgpkeys=('0DF731E45CE24F27EEEB1450EFDC8610341D9410') # Spotify <tux@spotify.com>
 
 # Spotify uses different names for the arch
 if [ "${CARCH}" = "i686" ]; then
