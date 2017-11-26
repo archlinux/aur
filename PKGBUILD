@@ -16,21 +16,21 @@ source=("git://github.com/PaulBatchelor/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$_pkgname"
-	make
+    cd "$_pkgname"
+    make
 }
 
 package() {
-	cd "$_pkgname"
+    cd "$_pkgname"
 
-	PREFIX=$pkgdir/usr make install -e
-	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-    mkdir -p $pkgdir/usr/share/doc/$pkgname
-    cp -rp examples $pkgdir/usr/share/doc/$pkgname
+    PREFIX="$pkgdir/usr" make install -e
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+    cp -a examples "$pkgdir/usr/share/doc/$pkgname"
 }
 
