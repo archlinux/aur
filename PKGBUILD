@@ -6,7 +6,7 @@
 
 pkgname=matlab
 pkgver=9.3.0.713579
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -77,6 +77,7 @@ package() {
   install -D -m644 "${pkgdir}/opt/tmw/${pkgname}/license_agreement.txt" "${pkgdir}/usr/share/licenses/tmw/${pkgname}/LICENSE"
 
   msg2 'Creating links for license.dat'
+  mv "${pkgdir}/opt/tmw/${pkgname}/licenses" "${pkgdir}/opt/tmw/${pkgname}/licenses.bak"
   ln -s "/etc/tmw/${pkgname}/licenses/" "${pkgdir}/opt/tmw/${pkgname}/licenses"
 
   msg2 'Creating links for executables'
