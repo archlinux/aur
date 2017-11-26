@@ -1,0 +1,5 @@
+post_install() {
+    echo ">>> PACKAGES NOTES"
+    echo ">>> --------------"
+    echo ">>> Remember to run \`systemctl enable remove-brcmfmac.service\`"
+}
