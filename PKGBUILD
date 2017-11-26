@@ -4,7 +4,7 @@
 pkgname=light-read-git
 pkgver=20171126
 pkgrel=1
-pkgdesc="Simple tool reading allowed (TTS) selected and copyed text"
+pkgdesc="Simple tool to reading allowed (text to speech - TTS) the clipboard and selected text"
 arch=('x86_64' 'i686')
 url="http://github.com/lex148/LightRead"
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = light-read-git
-	pkgdesc = Simple tool reading allowed (TTS) selected and copyed text
+	pkgdesc = Simple tool to reading allowed (text to speech - TTS) the clipboard and selected text
 	pkgver = 20171126
 	pkgrel = 1
 	url = http://github.com/lex148/LightRead
