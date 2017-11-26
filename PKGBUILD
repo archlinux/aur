@@ -2,7 +2,7 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 pkgname=csfml-bin
 pkgver=1.5ubuntu
-pkgrel=3
+pkgrel=4
 pkgdesc="SFML and CSFML multimedia API. C and C++ binaries from Ubuntu (including soil=0707), version 1.5+repack1"
 arch=('i686' 'x86_64')
 url="http://www.sfml-dev.org"
@@ -10,26 +10,26 @@ license=('zlib')
 depends=('libsndfile' 'openal' 'glew1.5' 'libjpeg6' 'libpng12' 'zlib' 'freetype2')
 provides=('sfml=1.5' 'csfml=1.5' 'soil=0707')
 conflicts=('sfml' 'csfml' 'soil')
+uni_mir="http://mirror.physics.ox.ac.uk/apt-mirror/mirror/ubuntu/pool/universe/"
 
-if [ "${CARCH}" = "i686" ]; then
-source=('http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-audio1.5_1.5+repack1-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-dev_1.5+repack1-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-graphics1.5_1.5+repack1-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-network1.5_1.5+repack1-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-system1.5_1.5+repack1-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-window1.5_1.5+repack1-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml1.5-dbg_1.5+repack1-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-audio1.5_1.5-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-dev_1.5-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-graphics1.5_1.5-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-network1.5_1.5-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-system1.5_1.5-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-window1.5_1.5-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml1.5-dbg_1.5-3_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsoil/libsoil-dev_1.07~20080707.dfsg-2_i386.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsoil/libsoil1_1.07~20080707.dfsg-2_i386.deb')
+source_i686=("${uni_mir}libs/libsfml/libsfml-audio1.5_1.5+repack1-3_i386.deb"
+"${uni_mir}libs/libsfml/libsfml-dev_1.5+repack1-3_i386.deb"
+"${uni_mir}libs/libsfml/libsfml-graphics1.5_1.5+repack1-3_i386.deb"
+"${uni_mir}libs/libsfml/libsfml-network1.5_1.5+repack1-3_i386.deb"
+"${uni_mir}libs/libsfml/libsfml-system1.5_1.5+repack1-3_i386.deb"
+"${uni_mir}libs/libsfml/libsfml-window1.5_1.5+repack1-3_i386.deb"
+"${uni_mir}libs/libsfml/libsfml1.5-dbg_1.5+repack1-3_i386.deb"
+"${uni_mir}libc/libcsfml/libcsfml-audio1.5_1.5-3_i386.deb"
+"${uni_mir}libc/libcsfml/libcsfml-dev_1.5-3_i386.deb"
+"${uni_mir}libc/libcsfml/libcsfml-graphics1.5_1.5-3_i386.deb"
+"${uni_mir}libc/libcsfml/libcsfml-network1.5_1.5-3_i386.deb"
+"${uni_mir}libc/libcsfml/libcsfml-system1.5_1.5-3_i386.deb"
+"${uni_mir}libc/libcsfml/libcsfml-window1.5_1.5-3_i386.deb"
+"${uni_mir}libc/libcsfml/libcsfml1.5-dbg_1.5-3_i386.deb"
+"${uni_mir}libs/libsoil/libsoil-dev_1.07~20080707.dfsg-2_i386.deb"
+"${uni_mir}libs/libsoil/libsoil1_1.07~20080707.dfsg-2_i386.deb")
 
-noextract=('libsfml-audio1.5_1.5+repack1-3_i386.deb'
+noextract_i686=('libsfml-audio1.5_1.5+repack1-3_i386.deb'
 'libsfml-dev_1.5+repack1-3_i386.deb'
 'libsfml-graphics1.5_1.5+repack1-3_i386.deb'
 'libsfml-network1.5_1.5+repack1-3_i386.deb'
@@ -46,7 +46,7 @@ noextract=('libsfml-audio1.5_1.5+repack1-3_i386.deb'
 'libsoil-dev_1.07~20080707.dfsg-2_i386.deb'
 'libsoil1_1.07~20080707.dfsg-2_i386.deb')
 
-md5sums=('2d5735fa6ae99e00743588354076bede'
+md5sums_i686=('2d5735fa6ae99e00743588354076bede'
          '90bbbd1c88ec8b985227970705c9fda7'
          'e74d50cdbe06ed44f76404e3d547fc27'
          '8a58c51ebd07785c0af58773d70d2869'
@@ -62,27 +62,25 @@ md5sums=('2d5735fa6ae99e00743588354076bede'
          '2eacac97d55f84b127f7408f531ebb2c'
          '6554809c95ba49569ac781450aa15234'
          '8681724ca34e2cdb79899c0beb0ef485')
-fi
 
-if [ "${CARCH}" = "x86_64" ]; then
-source=('http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-audio1.5_1.5+repack1-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-dev_1.5+repack1-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-graphics1.5_1.5+repack1-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-network1.5_1.5+repack1-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-system1.5_1.5+repack1-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-window1.5_1.5+repack1-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml1.5-dbg_1.5+repack1-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-audio1.5_1.5-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-dev_1.5-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-graphics1.5_1.5-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-network1.5_1.5-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-system1.5_1.5-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml-window1.5_1.5-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libc/libcsfml/libcsfml1.5-dbg_1.5-3_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsoil/libsoil-dev_1.07~20080707.dfsg-2_amd64.deb'
-'http://de.archive.ubuntu.com/ubuntu/pool/universe/libs/libsoil/libsoil1_1.07~20080707.dfsg-2_amd64.deb')
+source_x86_64=("${uni_mir}libs/libsfml/libsfml-audio1.5_1.5+repack1-3_amd64.deb"
+"${uni_mir}libs/libsfml/libsfml-dev_1.5+repack1-3_amd64.deb"
+"${uni_mir}libs/libsfml/libsfml-graphics1.5_1.5+repack1-3_amd64.deb"
+"${uni_mir}libs/libsfml/libsfml-network1.5_1.5+repack1-3_amd64.deb"
+"${uni_mir}libs/libsfml/libsfml-system1.5_1.5+repack1-3_amd64.deb"
+"${uni_mir}libs/libsfml/libsfml-window1.5_1.5+repack1-3_amd64.deb"
+"${uni_mir}libs/libsfml/libsfml1.5-dbg_1.5+repack1-3_amd64.deb"
+"${uni_mir}libc/libcsfml/libcsfml-audio1.5_1.5-3_amd64.deb"
+"${uni_mir}libc/libcsfml/libcsfml-dev_1.5-3_amd64.deb"
+"${uni_mir}libc/libcsfml/libcsfml-graphics1.5_1.5-3_amd64.deb"
+"${uni_mir}libc/libcsfml/libcsfml-network1.5_1.5-3_amd64.deb"
+"${uni_mir}libc/libcsfml/libcsfml-system1.5_1.5-3_amd64.deb"
+"${uni_mir}libc/libcsfml/libcsfml-window1.5_1.5-3_amd64.deb"
+"${uni_mir}libc/libcsfml/libcsfml1.5-dbg_1.5-3_amd64.deb"
+"${uni_mir}libs/libsoil/libsoil-dev_1.07~20080707.dfsg-2_amd64.deb"
+"${uni_mir}libs/libsoil/libsoil1_1.07~20080707.dfsg-2_amd64.deb")
 
-noextract=('libsfml-audio1.5_1.5+repack1-3_amd64.deb'
+noextract_x86_64=('libsfml-audio1.5_1.5+repack1-3_amd64.deb'
 'libsfml-dev_1.5+repack1-3_amd64.deb'
 'libsfml-graphics1.5_1.5+repack1-3_amd64.deb'
 'libsfml-network1.5_1.5+repack1-3_amd64.deb'
@@ -99,7 +97,7 @@ noextract=('libsfml-audio1.5_1.5+repack1-3_amd64.deb'
 'libsoil-dev_1.07~20080707.dfsg-2_amd64.deb'
 'libsoil1_1.07~20080707.dfsg-2_amd64.deb')
 
-md5sums=('4b20d4d97d4b52663a238447d134f331'
+md5sums_x86_64=('4b20d4d97d4b52663a238447d134f331'
          'edc589e46b3d0795932da5e6c63346c3'
          '45b226276cfcf314e118700c67599088'
          'b0d5ff0b2f338149f9c5e095e5a5b44f'
@@ -115,13 +113,12 @@ md5sums=('4b20d4d97d4b52663a238447d134f331'
          '50479095dcc9b1067ea3c0be8980e226'
          '906276460ddfb171ba4b6c4df52ef787'
          '9ab1c8b20fde7ee7d0352209eee04288')
-fi
 
 package() {
   cd "${pkgdir}"
-  for I in `ls "${srcdir}" | grep '\.deb$'`; do
-          ar x "${srcdir}/$I" data.tar.gz  || return 1;
-          tar -xzf data.tar.gz || return 1;
+  for i in $srcdir/*.deb; do
+          ar x $i data.tar.gz
+          tar -xzf data.tar.gz
           rm "${pkgdir}/data.tar.gz"
   done
 }
