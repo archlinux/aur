@@ -1,0 +1,15 @@
+pkgbase = canon-imageclass-mf5950dw-printer
+	pkgdesc = Drivers for the Canon imageCLASS MF5950dw laser printer.
+	pkgver = 3.40
+	pkgrel = 1
+	url = https://www.usa.canon.com/internet/portal/us/home/support/details/printers/black-and-white-laser/imageclass-mf5950dw
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	source = canon-imageclass-mf5950dw-printer-source.tar.gz::http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMzQ0MDE0
+	sha256sums = ef5421f98ae428ad8ad11ed5d9fb0e53bdc03b2693e79d590cf778fbe68250b5
+	depends_x86_64 = cups
+	depends_x86_64 = libcups
+
+pkgname = canon-imageclass-mf5950dw-printer
+
