@@ -2,41 +2,45 @@
 
 _pkgname=sporth
 pkgname=sporth-git
-pkgver=r807.82b9f8a
+pkgver=r882.7ef5ce7
 pkgrel=1
 pkgdesc="A small stack-based audio language."
-arch=(any)
+arch=('i686' 'x86_64')
 url="http://paulbatchelor.github.io/proj/sporth.html"
-license=(MIT)
-depends=(jack)
-makedepends=(git soundpipe-git)
-provides=(sporth)
-conflicts=(sporth)
+license=('MIT')
+depends=('jack')
+makedepends=('git' 'soundpipe-git')
+provides=('sporth')
+conflicts=('sporth')
 source=("git://github.com/PaulBatchelor/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${_pkgname}"
-	# Replace hardcoded /usr/local prefixes
-	find . -type f -exec sed -i "s|/usr/local|${pkgdir}/usr|g" {} \;
-	# JACK enabled build
-	sed -i '/.*BUILD_JACK=1/s/^[@#] //' config.def.mk
+    cd "$_pkgname"
+
+    # Replace hardcoded /usr/local prefixes
+    find . -type f -exec sed -i "s|/usr/local|${pkgdir}/usr|g" {} \;
+
+    # Enable JACK support
+    # Comment this out and remove jack from depends if you do not need it
+    sed -i '/.*BUILD_JACK=1/s/^[@#] //' config.def.mk
 }
 
 build() {
-	cd "${_pkgname}"
-	make
+    cd "$_pkgname"
+    make
 }
 
 package() {
-	cd "${_pkgname}"
-	mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/include" "${pkgdir}/usr/lib"
-	make install
+    cd "$_pkgname"
 
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/include" "$pkgdir/usr/lib" "$pkgdir/usr/share/doc"
+    make install
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cp -rp examples "$pkgdir/usr/share/doc/$pkgname"
 }
