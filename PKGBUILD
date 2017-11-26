@@ -16,5 +16,5 @@ sha256sums_i686=('2b9228c0ea62093d32e73b0c7636a53da7b47456a72ac62e3c4d4da6034809
 sha256sums_x86_64=('b99d9cd05907ca99fce1d6c70deb729c164cf019e588ae5fea021c3939b17b62')
 
 package() {
-	install -Dm755 tic "${pkgdir}/usr/bin/tic80"
+	install -Dm755 tic80 "${pkgdir}/usr/bin/tic80"
 }
