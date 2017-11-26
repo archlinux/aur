@@ -17,6 +17,7 @@ pkgbase = coolreader
 	provides = coolreader
 	conflicts = coolreader3
 	conflicts = coolreader-git
+	conflicts = cr3
 	source = https://dev.gentoo.org/~grozin/coolreader-3.1.2.71.tar.bz2
 	source = cr3.1.2.71-r1_qt5_wx.diff
 	source = cr3ini.diff
