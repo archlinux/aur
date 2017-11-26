@@ -28,7 +28,7 @@ source=(
   "mutant-packager::https://github.com/m0n0l0c0/mutant-packager/archive/v0.1.2.tar.gz"
 )
 sha256sums=(
-  'a2d8ce8c386043b4579decbfd0602d77fa628775a568af6804c9a7782bcd1ea0'
+  'cc33c447d4ffb86e03d97234d651837c6247db58e4b7d31c8275a01b7828547c'
   '4f2751e3e5129de18c0ca22654f5305df3298ab146ee3eb492df6bdfc6501842'
 )
 
