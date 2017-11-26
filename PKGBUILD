@@ -1,8 +1,8 @@
-# Maintainer: Ivan Naumeiko  wildhorror  AT gmail DOT com
+# Maintainer: Ivan Naumeiko  <Ivan.Naumeiko  AT gmail DOT com>
 pkgname=coolreader
 pkgver=3.1.2.71
 pkgrel=1
-pkgdesc="E-book reader for Linux"
+pkgdesc="E-book reader for Linux, QT5 based"
 arch=("i686" "x86_64")
 url="http://sourceforge.net/projects/crengine/"
 license=("GPL2")
