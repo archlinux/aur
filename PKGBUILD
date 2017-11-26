@@ -1,7 +1,7 @@
 pkgbase=dolphin-emu-ishiiruka-git
 pkgname=('dolphin-emu-ishiiruka-git' 'dolphin-emu-ishiiruka-cli-git') #Disabled because https://github.com/Tinob/Ishiiruka/issues/97 'dolphin-emu-ishiiruka-qt-git')
-pkgver=r12064.066c5d628
-pkgrel=1
+pkgver=r12073.e5f43ee9c
+pkgrel=2
 pkgdesc='A GameCube / Wii / Triforce emulator'
 arch=('x86_64')
 url='https://forums.dolphin-emu.org/Thread-unofficial-ishiiruka-dolphin-custom-version'
@@ -28,8 +28,6 @@ pkgver() {
 
 prepare() {
   cd dolphin-emu
-  # Fix https://github.com/Tinob/Ishiiruka/issues/99
-  git revert -n 3f5c5e512d9ecbf91d42a5f84f3d3e824f3bd99a
 
   if [[ -d build ]]; then
     rm -rf build

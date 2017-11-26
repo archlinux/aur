@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-ishiiruka-git
 	pkgdesc = A GameCube / Wii / Triforce emulator
-	pkgver = r12064.066c5d628
-	pkgrel = 1
+	pkgver = r12073.e5f43ee9c
+	pkgrel = 2
 	url = https://forums.dolphin-emu.org/Thread-unofficial-ishiiruka-dolphin-custom-version
 	arch = x86_64
 	license = GPL
