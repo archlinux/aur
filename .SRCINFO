@@ -1,0 +1,31 @@
+pkgbase = coolreader
+	pkgdesc = E-book reader for Linux
+	pkgver = 3.1.2.71
+	pkgrel = 1
+	url = http://sourceforge.net/projects/crengine/
+	install = coolreader.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = zlib
+	depends = libpng
+	depends = libjpeg
+	depends = freetype2
+	depends = qt5
+	provides = coolreader3
+	conflicts = coolreader3
+	source = https://dev.gentoo.org/~grozin/coolreader-3.1.2.71.tar.bz2
+	source = cr3.1.2.71-r1_qt5_wx.diff
+	source = cr3ini.diff
+	source = lvstsheet.diff
+	source = coolreader.install
+	sha256sums = 746345984be549284713a450686f0c8b04f1485f9a28bedc457940ea1b52f7d1
+	sha256sums = 54090908b2e20a33888a85cf8d5a371b624c54a002ea164b1a01ff5cfe856838
+	sha256sums = 8028aaf8bb1b3dbf0d48333240f83bbb9ef1b71a344b1ddce4bbe47cd9c35f29
+	sha256sums = 108881fa591be677d4a78444557d543d47b3ec8fd22f6c665a764edcf3fb25e6
+	sha256sums = e84837cb485712690df4e0034e2d402d259813aae1b58b411919afc8df3b7c97
+
+pkgname = coolreader
+

@@ -1,0 +1,22 @@
+--- old/crengine/src/lvstsheet.cpp	2017-08-30 17:48:31.000000000 +0200
++++ new/crengine/src/lvstsheet.cpp	2017-11-25 22:17:10.000000000 +0100
+@@ -967,7 +967,7 @@
+             for (;;)
+             {
+                 node = node->getParentNode();
+-                if (node->isNull())
++                if (node->isNull()||node->isRoot())
+                     return false;
+                 if (node->getNodeId() == _id)
+                     return true;
+@@ -1045,8 +1045,8 @@
+         {
+             lString16 val = node->getAttributeValue(attr_class);
+             val.lowercase();
+-//            if ( val.length() != _value.length() )
+-//                return false;
++            if ( val.length() != _value.length() )
++                return false;
+             //CRLog::trace("attr_class: %s %s", LCSTR(val), LCSTR(_value) );
+             return val == _value;
+         }
