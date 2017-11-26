@@ -1,0 +1,24 @@
+pkgbase = postgresql-95-upgrade
+	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
+	pkgver = 9.5.10
+	pkgrel = 1
+	url = http://www.postgresql.org/
+	arch = i686
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = krb5
+	makedepends = python2
+	makedepends = perl
+	makedepends = tcl>=8.6.0
+	depends = postgresql-libs>=9.5
+	depends = libxml2
+	depends = openssl>=1.0.0
+	depends = pam
+	provides = postgresql-95-upgrade=9.5
+	conflicts = postgresql-old-upgrade
+	conflicts = postgresql-lts-old-upgrade
+	source = http://ftp.postgresql.org/pub/source/v9.5.10/postgresql-9.5.10.tar.bz2
+	sha256sums = 945d7ade094dded6b95495d8f1561a12ac9608276858ed30adf3c3658275f281
+
+pkgname = postgresql-95-upgrade
+
