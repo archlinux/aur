@@ -4,7 +4,7 @@ pkgname=android-file-transfer-linux-git
 _pkgname="${pkgname/-git/}"
 _gitbranch=master
 _gitauthor=whoozle
-pkgver=3.0.r5.ged32199
+pkgver=3.2.r26.gb966969
 pkgrel=1
 pkgdesc="An interactive MTP client implemented in C++ using Qt toolkit"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ build() {
   cd build
 
   cmake -G Ninja .. \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_EXE_LINKER_FLAGS=-Wl,-O1,--sort-common,-z,relro,-z,now
 
   ninja
 }
