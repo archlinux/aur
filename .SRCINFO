@@ -1,0 +1,21 @@
+pkgbase = libretro-fsuae-git
+	pkgdesc = A port of the Commodore Amiga Emulator to libretro (WIP)
+	pkgver = 1712.7990f7ad
+	pkgrel = 1
+	url = https://github.com/libretro/libretro-fsuae
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	groups = libretro
+	license = GPL3
+	makedepends = git
+	depends = zlib
+	source = git+https://github.com/libretro/libretro-fsuae.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/fsuae_libretro.info
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libretro-fsuae-git
+
