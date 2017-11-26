@@ -2,7 +2,7 @@
 # Contributor: Marius O<marius@habarnam.ro>
 
 pkgname=('coedit-bin')
-pkgver=3_update_4
+pkgver=3_update_5
 pkgrel=1
 pkgdesc="Coedit is an IDE for the DMD D2 compiler."
 url="https://github.com/BBasile/Coedit"
@@ -23,20 +23,15 @@ optdepends=(
 )
 provides=("coedit")
 conflicts=("coedit")
-arch=("x86" "x86_64")
+arch=("x86_64")
 
-source_i686=(
-	"https://github.com/BBasile/Coedit/releases/download/$pkgver/${pkgname%-bin}.${pkgver//_}.linux32.zip"
-	"coedit.desktop"
-)
-
-source_x86_64=(
+source=(
 	"https://github.com/BBasile/Coedit/releases/download/$pkgver/${pkgname%-bin}.${pkgver//_}.linux64.zip"
 	"coedit.desktop"
 )
 
-sha256sums_x86_64=('e39207bd6621f8c499d3b27426ce7ced984edd2008c9389c27964929794ffd03'
-                   '9bcecc4297d96667bafe7a3d30b6e36095c1e91d7fa687afc6fc8fda5f1842ab')
+sha256sums=('7f1823833df933e9feefcbb30ecf75d92ff21f866086164d3c547cfba1c27747'
+            '9bcecc4297d96667bafe7a3d30b6e36095c1e91d7fa687afc6fc8fda5f1842ab')
 
 
 package() {
