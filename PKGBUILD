@@ -9,9 +9,6 @@
 ### Thx to Tom 'monotykamary' Nguyen
 _use_tentative_patches=
 
-### Use patches from https://github.com/pfactum/pf-kernel/
-_use_pfkernel_patches=
-
 ### Use patches from https://marc.info/?l=linux-block&m=150797307912556&w=1
 _use_blk_mq_patches=
 
@@ -63,21 +60,21 @@ _use_current=
 
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
-_srcname=linux-4.13
-_pkgver=4.13.13
-_rtver=5
+_srcname=linux-4.14
+_pkgver=4.14.1
+_rtver=3
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 _bfq_sq_mq_ver='20171114'
-_bfq_sq_mq_patch="4.13-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.13"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.13"
+_bfq_sq_mq_patch="4.14-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.14"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14"
 _gcc_path="https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
 
@@ -85,10 +82,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.13/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.13/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.14/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.14/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_sq_mq_patch}"
-        "${_lucjanpath}/0001-bfq-sq-mq-fix-patching-error-with-20171109.patch"
         "${_lucjanpath}/blk-mq-v10/0050-blk-mq-sched-dispatch-from-scheduler-only-after-progress-is-made-on->dispatch.patch"
         "${_lucjanpath}/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
         "${_lucjanpath}/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
@@ -98,18 +94,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_lucjanpath}/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch"
         "${_lucjanpath}/blk-mq-v10/0057-blk-mq-SCSI-implement-get-budget-and-put_budget-for-blk-mq.patch"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
-        "${_lucjanpath}/0200-BFQ-MQ-bugfix-from-pfkernel-2.patch"
-        "${_lucjanpath}/0200-BFQ-MQ-bugfix-from-pfkernel-3.patch"
-        "${_lucjanpath}/0200-BFQ-MQ-bugfix-from-pfkernel-4.patch"
         "${_lucjanpath}/0300-Disable-writeback-throttling.patch"
         "${_gcc_path}/${_gcc_patch}"
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
          # the main kernel config files
         'config'
+         # pacman hook for depmod
+        '60-linux.hook'
          # pacman hook for initramfs regeneration
         '90-linux.hook'
+         # pacman hook for remove initramfs
+        '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
-        'linux.preset')
+        'linux.preset'
+        '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch')
         
 _kernelname=${pkgbase#linux} 
 
@@ -131,12 +129,10 @@ prepare() {
             
     ### Patch source with BFQ-SQ-MQ
         msg "Fix naming schema in BFQ-SQ-MQ patch"
-        sed -i -e "s|PATCHLEVEL = 14|PATCHLEVEL = 13|g" \
-            -i -e "s|SUBLEVEL = 0|SUBLEVEL = 13|g" \
+        sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = 1|g" \
             -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
-            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" ../${_bfq_sq_mq_patch}
-        msg "Fix patching error with 20171109 and newer"
-        patch -Np1 -i ../0001-bfq-sq-mq-fix-patching-error-with-20171109.patch
+            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" \
+            -i -e "s|NAME = Fearless Coyote|NAME = Petit Gorille|g" ../${_bfq_sq_mq_patch}
         msg "Patching source with BFQ-SQ-MQ patches"
         patch -Np1 -i ../${_bfq_sq_mq_patch}
         
@@ -145,14 +141,6 @@ prepare() {
         msg "Apply tentative patches"
         for p in "${srcdir}"/0100*.patch*; do 
         msg " $p"
-        patch -Np1 -i "$p"; done
-        fi
-        
-    ### Patches from https://github.com/pfactum/pf-kernel/
-        if [ -n "$_use_pfkernel_patches" ]; then
-        msg "Apply pfkernel patches"
-        for p in "${srcdir}"/0200*.patch*; do 
-        msg " $p" 
         patch -Np1 -i "$p"; done
         fi
         
@@ -288,58 +276,59 @@ _package() {
 
     cd ${_srcname}
 
-    KARCH=x86
+    # get kernel version
+    _kernver="$(make LOCALVERSION= kernelrelease)"
+    _basekernel=${_kernver%%-*}
+    _basekernel=${_basekernel%.*}
 
-   # get kernel version
-   _kernver="$(make LOCALVERSION= kernelrelease)"
-   _basekernel=${_kernver%%-*}
-   _basekernel=${_basekernel%.*}
+    mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+    make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+    cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+    # make room for external modules
+    local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+    ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
-   # set correct depmod command for install
-   sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
-    "${startdir}/${install}" > "${startdir}/${install}.pkg"
-   true && install=${install}.pkg
+    # add real version for building modules and running depmod from hook
+    echo "${_kernver}" |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
 
-   # install mkinitcpio preset file for kernel
-   sed "s|%PKGBASE%|${pkgbase}|g" ../linux.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    # remove build and source links
+    rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
 
-   # install pacman hook for initramfs regeneration
-   sed "s|%PKGBASE%|${pkgbase}|g" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+    # now we call depmod...
+    depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 
-   # remove build and source links
-   rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
+    # add vmlinux
+    install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
 
-   # remove the firmware
-   rm -r "${pkgdir}/lib/firmware"
+    # sed expression for following substitutions
+    local _subst="
+        s|%PKGBASE%|${pkgbase}|g
+        s|%KERNVER%|${_kernver}|g
+        s|%EXTRAMODULES%|${_extramodules}|g
+    "
 
-   # make room for external modules
-   ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+    # hack to allow specifying an initially nonexisting install file
+    sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
+    true && install=${install}.pkg
 
-   # add real version for building modules and running depmod from post_install/upgrade
-   echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+    # install mkinitcpio preset file
+    sed "${_subst}" ../linux.preset |
+        install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-   # Now we call depmod...
-   depmod -b "${pkgdir}" -F System.map "${_kernver}"
-
-   # move module tree /lib -> /usr/lib
-   mv -t "${pkgdir}/usr" "${pkgdir}/lib"
-
-  # add vmlinux
-  install -Dm644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+    # install pacman hooks
+    sed "${_subst}" ../60-linux.hook |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+    sed "${_subst}" ../90-linux.hook |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+    sed "${_subst}" ../99-linux.hook |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"    
 }
 
 _package-headers() {
     pkgdesc='Header files and scripts to build modules for linux-rt-bfq.'
     depends=('linux-rt-bfq')
-
-    install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
     cd ${_srcname}
     local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -351,10 +340,10 @@ _package-headers() {
 
     cp -t "${_builddir}" -a include scripts
 
-    install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
-    install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
+    install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
+    install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-    cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
+    cp -t "${_builddir}/arch/x86" -a arch/x86/include
 
     install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
     install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
@@ -363,7 +352,6 @@ _package-headers() {
     install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
     # http://bugs.archlinux.org/task/13146
-    install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
     install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
     # http://bugs.archlinux.org/task/20402
@@ -378,16 +366,13 @@ _package-headers() {
     find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
     # add objtool for external module building and enabled VALIDATION_STACK option
-    if [[ -e tools/objtool/objtool ]]; then
     install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
-    fi
 
     # remove unneeded architectures
     local _arch
     for _arch in "${_builddir}"/arch/*/; do
-    if [[ ${_arch} != */${KARCH}/ ]]; then
-      rm -r "${_arch}"
-    fi
+        [[ ${_arch} == */x86/ ]] && continue
+        rm -r "${_arch}"
     done
 
     # remove files already in linux-rt-bfq-docs package
@@ -399,14 +384,14 @@ _package-headers() {
     # strip scripts directory
     local _binary _strip
     while read -rd '' _binary; do
-    case "$(file -bi "${_binary}")" in
-      *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
-      *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
-      *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
-      *) continue ;;
-    esac
-    /usr/bin/strip ${_strip} "${_binary}"
-   done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
+        case "$(file -bi "${_binary}")" in
+        *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
+        *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
+        *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
+        *) continue ;;
+        esac
+        /usr/bin/strip ${_strip} "${_binary}"
+    done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
 }
 
 _package-docs() {
@@ -431,14 +416,13 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f3119aea6cbd7b61df30ca6ef3ec57044d524b7babbaabddf8b08b8bafa7d2'
+sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            '27966bedc01ef5e2d023ee0b91224ca5ab3c5019f431305a9daa62b3acddf80e4e4c201ec47ca06243aba7778810d5ecb95e9d115e15935153a4a5d061af3fac'
+            '2566d2151cb0e0ad706dda3cb815e293d84ecc804cf2891e511a0f28e359b7714a1732add599a268c98108a63ee40200cf76cbda8181d67d0a64511e815202df'
             'SKIP'
-            '15a776bbc6eb26aee343ad59f4671cd35d0bcac1c9ea09ccf64bd6d2f2f3146df938ba092a70875d660373b2e29621d9173a1be33712ccaef146e741b4a9e768'
+            'd3c54d260e16d2726145d110c2b170b8caaba041f915c470b7be64cb7157737342ddddbe2f493d775791d6b3e07c0c3d4dcfb1592f5bdc74d45ea264c66bcbfe'
             'SKIP'
             '264efe19f7cfc27bc2fd2c59b361821ac89e5505e1a55ab23e8a1f93e7095c509cfb8cf6eb2079b8113b7bc3283b2bec5d6d3776a8afd2b258f3688edb1f0615'
-            '44d358294fa2b3be846b3ad2041b102c0af21ceca6806456a4c3dd033b2c0b91fa69858200e29491963f551f35af29e2972ba4ab46e741e20f6776d61e63266f'
             '11dd363137d680d1bde1e332c3829246773e49d5fd0d2ef4ab77723ca0d2ecb3ad80a77a08dca8c4ce817ff0f966709673453e754f15e3e1527f943725d547ff'
             'ca6a40800668c0fcf478bd1bc555e5a496f5259739594bf83cc4963756b7a9a0a5b406e91f760d35f1bce1268c01d779fe2a7e749eccf9412e826152a5f013ef'
             '1434cc3957ef77fb83c9385a348f36ca43a73459b8995d3061143d1d15b307f944c39abc0eb109d20869c1749348d608c58cf5b92fd81ad65cad2d362e346549'
@@ -448,15 +432,15 @@ sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f
             '82e624f91c6609bec6ebbc284c8413e638802d3306d6e3826524631fd3a4fdaaed9a85a366e9d3deab2d1b1638f2225a64942e754145ea30da896fc3155574eb'
             '75403516c0e64e13c66602ade9ac12fd553ec811628b4bba79686e183e12a798281566dfdbbe0ba1217ebe8ee1d294a7ca904c36d7b760bcb558ddca0cb7f260'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
-            '862918504ae7f05af830582492f387918d6be0be4036fa0b65765c97cbacfe637edf44a3e510fd042e077a226e447169cc28129f59c7175eacd82019eab45aa4'
-            'e607eb2a937f6055ff1216377091f6e23858f94fbfe532089849f1558d8539700220500262f501bb9a4d4d61cfe32372aa2a4745a5cb630a49b23482eab36d4c'
-            'c1f1584feabd894551d8ca083f233b1c3d850ae295b2034360635986bc7850a654f8dc2af16e342b98c10c8927d5d3fd99d5d0f48cccc1f363dd377f0dd6f85b'
             'a1ccc22354a420467fb912f822585ed4573e68f4694f02ab83d7c8e352da88be495acb3cb4c451c27ca0cf0befe5925b8734d37205bb3dfdaf86d2dedef0798f'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            'f035251c89fcc4d0221ae5a82ed24be53aff6ea77220c348051d3dcccd82240ee77965a04bc8437ca02938ca064100162ca402aae001f48e9237992664cde4a1'
-            'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
+            '8965ca71818ecae4795b4d9f235f7b92a557d30f44b2dae5f5e1ae742cbc826470e6ea09b2059e77cbe84cc599e1637be52a2ad4f47fc8baac40fdd6ac54aece'
+            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+            '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
+            '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            'd1eb35e93c317a5d0b764cf3a6c183f17f9fadd9a9295dc36f0b9482b89fa6f2aba2b3011b2f3166282a7e3b2ed10f68ec824cb647f2e119ce014d31ba987d8d')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
