@@ -7,8 +7,9 @@ pkgdesc="A library for configuring and customizing font access, optimized for fr
 date=20171017
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
-pkgver=2.12.6
+pkgver=2.12.6+5+g665584a
 pkgrel=1
+_commit=665584a19b0ec227c93643ffb0540d11ac8ecf7f
 arch=('i686' 'x86_64')
 groups=('infinality-bundle')
 depends=('expat' 'freetype2-infinality-ultimate')
@@ -27,7 +28,7 @@ backup=('etc/fonts/fonts.conf'
         'etc/fonts/conf.avail.infinality/38-repl-webfonts-custom.conf'
         'etc/fonts/conf.avail.infinality/97-selective-rendering-custom.conf')
 install=fontconfig-ultimate.install
-source=("git+https://anongit.freedesktop.org/git/fontconfig#tag=${pkgver}"
+source=("git+https://anongit.freedesktop.org/git/fontconfig#commit=${_commit}"
         https://raw.githubusercontent.com/archfan/infinality_bundle/820e74be8345a0da2cdcff0a05bf5fa10fd85740/02_fontconfig-iu/fontconfig-ultimate-git.tar.bz2
         fc-cache-ib.hook
         0001-configure-${date}.patch
@@ -40,6 +41,11 @@ source=("git+https://anongit.freedesktop.org/git/fontconfig#tag=${pkgver}"
 # a nice page to test font matching:
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
 
+pkgver() {
+    cd ${_basename}
+      git describe --tags | sed 's/-/+/g'
+
+}
 prepare() {
 
   patches=(0001-configure-${date}.patch
