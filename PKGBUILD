@@ -6,7 +6,7 @@
 
 pkgname=geany-plugins-gtk3
 _pkgname=geany-plugins
-pkgver=1.31
+pkgver=1.32
 pkgrel=1
 pkgdesc='Plugins for Geany'
 arch=('x86_64' 'i686')
@@ -17,8 +17,10 @@ makedepends=('intltool' 'vala' 'gdb' 'cppcheck' 'libgit2')
 optdepends=('hspell: hebrew spell checker')
 provides=("geany-plugins")
 conflicts=("geany-plugins")
-source=("http://plugins.geany.org/${_pkgname}/${_pkgname}-$pkgver.tar.bz2")
-md5sums=('808f9048b77fd9704569ed2ba12a56e9')
+source=("http://plugins.geany.org/${_pkgname}/${_pkgname}-$pkgver.tar.bz2"
+	'enchant-2.patch')
+md5sums=('70d7771373ad0e39cc9193f7834eb35d'
+         '678552d47bfae0b9a76406ecaaa0f2da')
 
 build() {
 cd "${_pkgname}-$pkgver"
