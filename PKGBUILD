@@ -1,32 +1,36 @@
-# Maintainer: Teteros <teteros -at- openmailbox -dot- org>
+# Maintainer: Teteros <teteros at teknik dot io>
+# Maintainer: Andrew O'Neill <andrew at meanjollies dot com>
 
 _pkgname=Soundpipe
 pkgname=soundpipe-git
-pkgver=v1.5.0.r0.g3e0c985
+pkgver=v1.6.0.r0.g39002ef
 pkgrel=1
 pkgdesc="A lightweight music DSP library."
-arch=(any)
+arch=('i686' 'x86_64')
 url="http://paulbatchelor.github.io/proj/soundpipe.html"
-license=(MIT)
-makedepends=(git libsndfile)
-provides=(soundpipe)
-conflicts=(soundpipe)
+license=('MIT')
+makedepends=('git' 'libsndfile')
+provides=('soundpipe')
+conflicts=('soundpipe')
 source=("git://github.com/PaulBatchelor/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
+	cd "$_pkgname"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${_pkgname}"
+	cd "$_pkgname"
 	make
 }
 
 package() {
-	cd "${_pkgname}"
-	PREFIX="${pkgdir}/usr" make install -e
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "$_pkgname"
+
+	PREFIX=$pkgdir/usr make install -e
+	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    mkdir -p $pkgdir/usr/share/doc/$pkgname
+    cp -rp examples $pkgdir/usr/share/doc/$pkgname
 }
 
