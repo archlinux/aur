@@ -7,8 +7,8 @@ FSLEXTINC=${FSLDIR}/extras/include
 FSLEXTBIN=${FSLDIR}/extras/bin
 
 # GD library
-LIB_GD = /usr/lib
 INC_GD = /usr/include
+LIB_GD = /usr/lib
 
 # GDC library
 LIB_GDC = ${FSLEXTLIB}
@@ -49,13 +49,12 @@ LIB_ZLIB = /usr/lib
 INC_ZLIB = /usr/include
 
 # BOOST library
-BOOSTDIR = /usr/include/boost
-LIB_BOOST = ${BOOSTDIR}
-INC_BOOST = /usr/lib
+INC_BOOST = /usr/include/boost
+LIB_BOOST = /usr/lib
 
 # FFTW3 library
-LIB_FFTW3 = /usr/include
-INC_FFTW3 = /usr/lib
+INC_FFTW3 = /usr/include
+LIB_FFTW3 = /usr/lib
 
 # VTK library 
 VTKDIR_INC = /opt/vtk6/include/vtk

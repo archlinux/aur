@@ -2,18 +2,18 @@
 
 pkgname=fsl
 pkgver=5.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("i686" "x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
 license=(custom)
 depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk6 sqlite)
-makedepends=()
+makedepends=(boost fftw)
 optdepends=(cuda)
-sha1sums=('34a4a3a0c3bc9e6fbf9a9745636c7b3b4479ecdf'
-          '35108d2da18a6dfe1f9f6f6ff81b1a0836235c3c'
+sha1sums=('1b68ab3e1bc10755de1aa249e829e5fc4937c6b3'
+          'eaea714f2430f85226a5c938ba19dcadb7adb5bf'
           '679c65c90e79b7f748ad1c2d4b5abeebebf05dfd'
-          'f7841c51fb221a74017400e4daef7de640679887'
+          'c2398008b8416f01b01c31b9fed80e57f155fea0'
           '2df550b126a6ec6022a164a18dddffe4e59962f9')
 
 source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
