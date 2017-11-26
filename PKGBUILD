@@ -1,6 +1,6 @@
 # Maintainer: Phil Sidler <phil_sidler@hotmail.com>
 pkgname=oorexx-beta
-pkgver=5.0.0.r11330
+pkgver=5.0.0.r11333
 pkgrel=1
 pkgdesc="open source implementation of Object Rexx"
 arch=('x86_64')
