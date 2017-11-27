@@ -1,22 +1,5 @@
 pkgbase = python2-pptx
 	pkgdesc = Python library for creating and updating PowerPoint (.pptx) files
-	pkgver = 0.6.6
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/python-pptx
-	arch = any
-	license = MIT
-	makedepends = python2-setuptools
-	depends = python2
-	depends = python2-pillow
-	depends = python2-lxml
-	depends = python2-xlsxwriter
-	source = https://pypi.python.org/packages/eb/8f/24cf444517959ebd46bda3eea176c5832f9dacec1556e7b5d8d61ee1a8a8/python-pptx-0.6.6.tar.gz
-	sha256sums = b7508d6ab2954854b6efeb2ffc2653ff0e8185fb314df6c8673c534b0caeed50
-
-pkgname = python2-pptx
-
-pkgbase = python2-pptx
-	pkgdesc = Python library for creating and updating PowerPoint (.pptx) files
 	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/python-pptx
