@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc
 pkgver=3.13.4.1515
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt based UI application for verifying and signing digital signatures"
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
@@ -18,6 +18,7 @@ prepare() {
 
 build() {
   cd "$pkgname-build"
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
   cmake .. -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
