@@ -2,7 +2,7 @@
 # Maintainer: Alexej Grigorjew <alexg91@gmx.de>
 
 pkgname=python2-pptx
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Python library for creating and updating PowerPoint (.pptx) files"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://pypi.python.org/pypi/python-pptx"
 license=('MIT')
 depends=('python2' 'python2-pillow' 'python2-lxml' 'python2-xlsxwriter')
 makedepends=('python2-setuptools')
-source=(https://pypi.python.org/packages/eb/8f/24cf444517959ebd46bda3eea176c5832f9dacec1556e7b5d8d61ee1a8a8/python-pptx-$pkgver.tar.gz)
+source=(https://pypi.python.org/packages/ee/dc/efe3de2b80c944ef22db07940fcbde124663b763d41b3cc2f3c9e9c8ae93/python-pptx-$pkgver.tar.gz)
 
 package() {
   cd "$srcdir/python-pptx-$pkgver"
@@ -18,4 +18,4 @@ package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums=('b7508d6ab2954854b6efeb2ffc2653ff0e8185fb314df6c8673c534b0caeed50')
+sha256sums=('c24f15a73a497f9efac6d06099138bfbfdd26ffbe1f36d43f3a2086e23695821')
