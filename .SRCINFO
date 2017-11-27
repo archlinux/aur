@@ -1,6 +1,6 @@
 pkgbase = ckb-next-newfw-git
 	pkgdesc = Corsair Keyboard and Mouse Input Driver, git newfw branch
-	pkgver = 0.2.8.r229.gc7ed718
+	pkgver = 0.2.8.r246.ga35db6e
 	pkgrel = 1
 	url = https://github.com/mattanger/ckb-next
 	install = ckb-next-newfw-git.install
@@ -10,6 +10,8 @@ pkgbase = ckb-next-newfw-git
 	makedepends = git
 	depends = qt5-base
 	depends = hicolor-icon-theme
+	optdepends = libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)
+	optdepends = libappindicator-gtk3: Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library)
 	provides = ckb-next
 	conflicts = ckb-git
 	conflicts = ckb-git-latest
