@@ -4,7 +4,7 @@
 pkgbase=linux-vfio
 _srcname=linux-4.13
 pkgver=4.13.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -31,7 +31,7 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             '9c6c4d27d59638d0569ea09a97138bfcfb219f17cdf1138be141380e6654f302'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
-            '05467ff4108e13c8a1fed9e2cc5b4e7b50c83e97e39b82d5478ea89b4af475ea'
+            'd08e95336be54792b3ded0a5c9b0aeddd47a38d61752af2cbaf38bb6d158d521'
             '19fd3b81b4b081ceb100c89fb6bab012a8d708da6ca8cee53d771abca4770236')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds

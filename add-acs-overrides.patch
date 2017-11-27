@@ -1,7 +1,7 @@
-From 9c86ad69c5c974e229de02c8cdf32120e302269d Mon Sep 17 00:00:00 2001
+From 2c6fca56ec527524700a1d2f26ea77ae2d5e561f Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
-Date: Fri, 29 Sep 2017 17:20:25 -0400
-Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.13+)
+Date: Sun, 26 Nov 2017 21:47:18 -0500
+Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.13)
 
 This an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2013/5/30/513
@@ -70,7 +70,7 @@ index d9c171ce4190..e1d4b9cdfc8d 100644
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 140760403f36..01398d2d0e47 100644
+index 140760403f36..a7a58d814a17 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
 @@ -3671,6 +3671,106 @@ static int __init pci_apply_final_quirks(void)
@@ -118,7 +118,7 @@ index 140760403f36..01398d2d0e47 100644
 +			}
 +			acs_on_ids[max_acs_id].vendor = val;
 +		p += strcspn(p, ":");
-+		if (*p != ';') {
++		if (*p != ':') {
 +			pr_warn("PCIe ACS invalid ID\n");
 +			goto next;
 +			}
@@ -189,5 +189,5 @@ index 140760403f36..01398d2d0e47 100644
  };
  
 -- 
-2.14.2
+2.15.0
 
