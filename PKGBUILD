@@ -1,13 +1,13 @@
 pkgname=python-gdal
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='Geospatial Data Abstraction Library for Python 3'
 url='https://pypi.python.org/pypi/GDAL/'
 arch=('any')
 license=('MIT')
 depends=('python' 'gdal')
-source=("https://pypi.python.org/packages/11/cd/edef955a6ef6cb4f2113647d7465b34663e074451b66919e734466ba5197/GDAL-2.2.2.tar.gz")
-sha256sums=('ca9bc2b77e370153230d4640f8e000f51c2a468fdf8bfad4cf21410e3a1b2b45')
+source=("https://pypi.python.org/packages/fb/62/e4c597c0b52bf0ddf7073c57e998c96cd98a8281a2cf40a8c036b34e4ec0/GDAL-2.2.3.tar.gz")
+sha256sums=('561a952394bc1d9291179a8677eb6f5dafbf3e361c851f3dbb59db604c9b8e8b')
 
 package() {
   cd GDAL-$pkgver
