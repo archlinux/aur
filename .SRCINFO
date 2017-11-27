@@ -5,6 +5,7 @@ pkgbase = copay-bin
 	url = https://github.com/bitpay/copay
 	arch = x86_64
 	license = MIT
+	depends = unzip
 	provides = copay
 	conflicts = copay
 	options = !strip
