@@ -1,28 +1,29 @@
 # Maintainer: (XavierCLL) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ksvnupdater
-pkgver=1.4.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="ksvnupdater is a utility oriented KDE translation teams. Through it you can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more."
 url="http://www.eloihr.net/ksvnupdater"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('kdebase-runtime' 'pology')
-makedepends=('cmake' 'automoc4' 'docbook-xsl')
+depends=('kfilemetadata' 'kio' 'knotifications' 'kitemviews' 'kiconthemes' 'karchive' 'qt5-base')
+makedepends=('extra-cmake-modules' 'kdoctools')
+optdepends=('lokalize' 'pology' 'kdiff3' 'gettext' 'openssh' 'which')
 install=${pkgname}.install
 source=(http://www.eloihr.net/ksvnupdater/files/ksvnupdater-$pkgver.tar.bz2)
-md5sums=('e35a7c5e61c92928be6f96ce2aa74392')
+md5sums=('248a94ef80c117e10fd1e460f5218f48')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DQT_QMAKE_EXECUTABLE=qmake4 ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make clean 
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver/build
+  cd $pkgname-$pkgver/build
   make DESTDIR=${pkgdir} install
 }
