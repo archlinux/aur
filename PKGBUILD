@@ -11,7 +11,7 @@ makedepends=('cmake')
 source=("https://github.com/oprypin/crsfml/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
-build() { ls
+build() {
 	cd "$srcdir/crsfml-$pkgver/$pkgname"
 	cmake . && make
 }
