@@ -2,7 +2,7 @@
 
 _pkgbase=intel_nuc_led
 pkgname=${_pkgbase}-dkms-git
-pkgver=1
+pkgver=r1.a59a129
 pkgrel=1
 pkgdesc="Intel NUC7i[x]BN and NUC6CAY LED Control for Linux (DKMS)"
 arch=('i686' 'x86_64')
@@ -16,6 +16,11 @@ source=("git+https://github.com/milesp20/intel_nuc_led.git"
         'dkms.conf')
 md5sums=('SKIP'
          '3c4f2898ea26607de03f03a75af731c8')
+
+pkgver() {
+  cd "$intel_nuc_led"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   :
