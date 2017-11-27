@@ -1,9 +1,8 @@
 pkgbase = emacs-pretest
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version
-	pkgver = 25.2
-	pkgrel = 0.2
+	pkgver = 26.0.90
+	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/emacs.html
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = librsvg
@@ -21,11 +20,11 @@ pkgbase = emacs-pretest
 	depends = gnutls
 	provides = emacs
 	conflicts = emacs
-	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-25.2-rc2.tar.xz
-	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-25.2-rc2.tar.xz.sig
+	source = https://alpha.gnu.org/gnu/emacs/pretest/emacs-26.0.90.tar.xz
+	source = https://alpha.gnu.org/gnu/emacs/pretest/emacs-26.0.90.tar.xz.sig
 	validpgpkeys = B29426DEFB07724C3C35E5D36592E9A3A0B0F199
 	validpgpkeys = 28D3BED851FDF3AB57FEF93C233587A47C207910
-	sha512sums = 95e1b127beec5a6c8c5b54545b489e28d8c31051d82d6603ec8907b3cdfddd8a16a3b00287932bf8d69babfce44aa464236593bcb4e20864c823830f32f7be49
+	sha512sums = c263d1d1a12d8b21cc43ddcb46a28ce3a54d0ef09e240518f19bfdabf4c4ceebc3c2d1521aae9808cafdd3e731c93dd22b4f1e7e619e38076aa4ffdbaadea93b
 	sha512sums = SKIP
 
 pkgname = emacs-pretest
