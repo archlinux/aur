@@ -1,20 +1,16 @@
 pkgbase = libdigidocpp
-	pkgdesc = Library for creating DigiDoc signature files
+	pkgdesc = Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards.
 	pkgver = 3.13.2.1355
-	pkgrel = 2
+	pkgrel = 4
 	url = http://www.id.ee/
 	arch = x86_64
 	arch = i686
 	license = LGPL
 	makedepends = cmake
 	makedepends = xsd>=4.0
-	makedepends = pcsclite
-	makedepends = opensc
 	makedepends = xxd
 	depends = xml-security-c
-	depends = libdigidoc
 	source = https://installer.id.ee/media/ubuntu/pool/main/libd/libdigidocpp/libdigidocpp_3.13.2.1355.orig.tar.xz
-	validpgpkeys = 43650273CE9516880D7EB581B339B36D592073D4
 	sha256sums = 5f48ecaf79813a6bbd267479dd21ca0a0a984c41ac37587e5b29dc8b688096c2
 
 pkgname = libdigidocpp
