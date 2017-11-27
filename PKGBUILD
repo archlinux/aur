@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://goodies.xfce.org/projects/thunar-plugins/thunar-archive-plugin"
 license=('GPL2')
 groups=('xfce4-goodies')
-depends=('thunar-git' 'hicolor-icon-theme')
+depends=('thunar>=1.7.0' 'hicolor-icon-theme')
 makedepends=('intltool' 'xfce4-dev-tools' 'git')
 optdepends=('file-roller'
             'ark'
