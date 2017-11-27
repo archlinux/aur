@@ -20,7 +20,8 @@ ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectControlGroups=true
 NoNewPrivileges=true
-ReadWritePaths=/var/lib/radicale/collections
+# set this to your collection
+#ReadWritePaths=/var/lib/radicale/collections
 
 [Install]
 WantedBy=multi-user.target
