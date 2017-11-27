@@ -39,7 +39,7 @@ package() {
   install -Dm0644 $srcdir/$pkgname.tmpfilesd $pkgdir/usr/lib/tmpfiles.d/liquidsoap.conf
 }
 
-md5sums=('a28dc02526b777d5b82317504c710dba'
+md5sums=('9b24051b3662fb9d6cff8fcf22baf21c'
          'f2e0f1966f3258f737300947e729edb6'
          '762d6607ff0889e34b8c874970b38bc9'
          'f9106e5c42cabc21c4c8464d9b1ad63e')
