@@ -9,9 +9,10 @@ _origpkgname=mpv
 pkgname=${_origpkgname}-vittgam
 epoch=1
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
+_gitcommit=63728742acb493ef668ccf9c0cff66af61c58276
 _waf_version=1.8.12
-pkgdesc='my stable and sensible version of the mpv player that does not make me curse when newer upstream versions break and/or change things at random. :)'
+pkgdesc='My stable and sensible version of the mpv player that does not make me curse when newer upstream versions break and/or change things at random. :)'
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
 depends=(
@@ -20,34 +21,24 @@ depends=(
   'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
   'libxrandr' 'jack' 'smbclient' 'rubberband'
 )
-makedepends=('mesa' 'python-docutils' 'ladspa' 'hardening-wrapper')
+makedepends=('mesa' 'python-docutils' 'ladspa')
 optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
-conflicts=('mpv')
-provides=('mpv')
-source=("$_origpkgname-$pkgver.tar.gz::https://github.com/VittGam/mpv/archive/v$pkgver.tar.gz"
-  "https://github.com/VittGam/mpv/commit/26b6d7448421b879a3dab2e619d7e5da630966dd.patch"
-  "https://github.com/VittGam/mpv/commit/6167048bed58765ec43b5f28ffd9aa9ab0624551.patch"
-  "https://github.com/VittGam/mpv/commit/4664f005b6367cd3193dd91dc16348b97e018998.patch"
+conflicts=("${_origpkgname}")
+provides=("${_origpkgname}")
+source=("${pkgname}-${_gitcommit}.tar.gz::https://github.com/VittGam/${pkgname}/archive/${_gitcommit}.tar.gz"
   "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}")
-sha256sums=('602cd2b0f5fc7e43473234fbb96e3f7bbb6418f15eb8fa720d9433cce31eba6e'
-  '86619c541c362f43973bbbd1f77325200287e3d38b6e2fe0236079ad7520e835'
-  '0c2fd23c38635a4f87f1804264b1a0a9bc59908a47526bda246486e948a5cb01'
-  'b3f59380148d6eeb2ed9ed557e2456e6910001cfa8318b1239284160ba98eca7'
-  '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b')
+sha512sums=('83de9b7506afe69de6d32d6f21ff8ba7674810af04f3a8c4174b5bf02a6e66e6c5695de9a7e7a3ecfdffabed2f870aef4dcb2ecc5b58ea5e329752c9a387b0c0'
+  '8e47112abb134f965f15a27a600b4453cad3075afb5dadc17f2f6dac33d80ec68b679ac0ebc5f8a0245cbd07ae9fc7b899e69afc1bd021cce74e7af2ab457939')
 
 prepare() {
-  cd ${_origpkgname}-${pkgver}
-
-  patch -Np1 < "${srcdir}"/26b6d7448421b879a3dab2e619d7e5da630966dd.patch
-  patch -Np1 < "${srcdir}"/6167048bed58765ec43b5f28ffd9aa9ab0624551.patch
-  patch -Np1 < "${srcdir}"/4664f005b6367cd3193dd91dc16348b97e018998.patch
+  cd ${pkgname}-${_gitcommit}
 
   install -m755 "${srcdir}"/waf-${_waf_version} waf
 }
 
 build() {
-  cd ${_origpkgname}-${pkgver}
+  cd ${pkgname}-${_gitcommit}
 
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
@@ -60,7 +51,7 @@ build() {
 }
 
 package() {
-  cd ${_origpkgname}-${pkgver}
+  cd ${pkgname}-${_gitcommit}
 
   ./waf install --destdir="$pkgdir"
 
