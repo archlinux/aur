@@ -1,12 +1,12 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=flit
 pkgver=0.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple packaging tool for simple Python packages.'
 arch=('any')
 url="http://$pkgname.readthedocs.io"
 license=('BSD')
-depends=('python')
+depends=(python python-pytoml python-requests python-requests_download python-docutils)
 makedepends=('python-pip')
 _wheel="$pkgname-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
