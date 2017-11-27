@@ -9,7 +9,7 @@
 
 pkgname=archey4
 pkgver=v4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Maintained fork of the original Archey Linux system tool"
 arch=('any')
 url="https://git.io/archey4"
@@ -18,7 +18,7 @@ depends=('python3' 'lsb-release')
 optdepends=('dnsutils: `WAN_IP` will be detected 5x faster'
 			'wmctrl: [graphical env.] `WindowManager` will be more accurate'
 			'virt-what: [virtual env.] `Model` will contain details about the hypervisor')
-provides=('archey', 'archey4')
+provides=('archey' 'archey4')
 conflicts=('archey' 'archey-git' 'archey-plus' 'archey2' 'archey3-git' 'pyarchey')
 source=("https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=()
