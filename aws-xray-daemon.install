@@ -1,0 +1,5 @@
+post_install() {
+	echo "Don't forget to edit /etc/amazon/xray/cfg.yaml to specify region and credentials,"
+	echo "or else the daemon won't work."
+	echo "Start it with 'systemctl start xray', as usual."
+}
