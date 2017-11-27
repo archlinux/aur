@@ -3,7 +3,7 @@
 # original code by Sunday87: https://bbs.archlinux.org/viewtopic.php?pid=1253365#p1253365
 
 pkgname=texlive-most-doc
-pkgver=20170921
+pkgver=20171127
 pkgrel=1
 pkgdesc="Most TeXLive documentation"
 url="http://tug.org/texlive/"
@@ -15,7 +15,8 @@ install='texlive-most-doc.install'
 options=('!strip'  '!purge')
 
 build() {
-  wget -r -l inf -N -nH -nv --cut-dirs=3 -P "$srcdir/usr/share/" ftp://tug.org/texlive/Contents/live/texmf-dist/doc
+  mkdir -p "$srcdir/usr/share/texmf-dist"
+  rsync -av --no-o --no-g --chmod=D755,F644 rsync://tug.org/texlive/Contents/live/texmf-dist/doc "$srcdir/usr/share/texmf-dist/"
 }
 
 package() {
