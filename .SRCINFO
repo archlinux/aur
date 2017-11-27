@@ -1,0 +1,20 @@
+pkgbase = python-jautolock-git
+	pkgdesc = An automatic X screen-locker/screen-saver
+	pkgver = 0.9.r1.91db75d
+	pkgrel = 1
+	url = https://github.com/johnchen902/python-jautolock
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-xdg
+	depends = python-xlib
+	provides = python-jautolock
+	conflicts = jautolock
+	conflicts = python-jautolock
+	source = git+https://github.com/johnchen902/python-jautolock.git
+	md5sums = SKIP
+
+pkgname = python-jautolock-git
+
