@@ -6,7 +6,10 @@ pkgdesc="AWS operations by cli should be simpler"
 arch=('any')
 url="AWS operations by cli should be simpler"
 license=('MIT')
-depends=('python')
+depends=('python' 
+         'python-boto3'
+         'python-botocore'
+         'python-click')
 makedepends=()
 provides=()
 conflicts=()
