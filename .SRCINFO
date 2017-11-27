@@ -6,6 +6,7 @@ pkgbase = aws-xray-daemon
 	arch = i686
 	arch = x86_64
 	license = Apache
+	depends = glibc
 	source = https://s3.dualstack.us-east-2.amazonaws.com/aws-xray-assets.us-east-2/xray-daemon/aws-xray-daemon-2.0.0.rpm
 	md5sums = ab96cb73e17dffb757d395a0f0ebd6df
 
