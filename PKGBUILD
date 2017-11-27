@@ -2,8 +2,8 @@
 # Contributor: Sebba <sebba at cock dot li>
 pkgname=transmission-remote-gui-bin
 _pkgname=transgui
-pkgver=5.11.0
-_pkgver=5.11.0
+pkgver=5.12.0
+_pkgver=5.12.0
 pkgrel=1
 pkgdesc="Cross platform remote GUI for the Transmission daemon"
 arch=(x86_64)
@@ -14,7 +14,7 @@ provides=(transmission-remote-gui)
 conflicts=(transmission-remote-gui-gtk2 transmission-remote-gui-qt4 transmission-remote-gui-svn transmission-remote-gui)
 source=(https://github.com/leonsoft-kras/transmisson-remote-gui/releases/download/v$_pkgver/$_pkgname-$pkgver-$arch-linux.txz
         ${_pkgname}.desktop)
-sha256sums=('f0c68c2299ffe95320e4d7a8404f5ca2317d0c021567776a17f795e1521456bb'
+sha256sums=('5e87cd0388fd8186146d940d854cb0f452354b2d9b951f141084bf7defc026b7'
             '2ba5d396699c2f0267a8f64f03ccb8e076552b3f8a5ba0a91899b9d246e6a87d')
 
 package() {
