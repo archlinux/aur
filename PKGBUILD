@@ -24,12 +24,9 @@ noextract=()
 md5sums=('ab96cb73e17dffb757d395a0f0ebd6df')
 validpgpkeys=()
 
-prepare() {
-	# the rpm we downloaded contains init scripts for both upstart and systemd;
-	# but we don't need initctl so let's remove it.
-	rm -rf etc/init
-}
-
 package() {
-	cp -a etc usr $pkgdir/
+	install -Dm 755 usr/bin/xray $pkgdir/usr/bin/
+	# fix target directory: we want system-installed service files to live in /usr/lib, not /etc
+	install -Dm 644 etc/systemd/system/xray.service $pkgdir/usr/lib/systemd/system/
+	install -Dm 644 etc/amazon/xray/cfg.yaml $pkgdir/etc/amazon/xray/
 }
