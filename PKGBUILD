@@ -3,17 +3,17 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=harminv
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A free program to solve the problem of harmonic inversion"
 arch=('i686' 'x86_64')
-url="http://ab-initio.mit.edu/wiki/index.php/Harminv"
+url="https://github.com/stevengj/harminv"
 license=('GPL')
 depends=('lapack')
 makedepends=('gcc-fortran')
 options=('!libtool')
-source=(http://ab-initio.mit.edu/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('b95e24a9bc7e07d3d2202d1605e9e86f')
+source=("https://github.com/stevengj/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('e1b923c508a565f230aac04e3feea23b888b47d8e19b08816a97ee4444233670')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver

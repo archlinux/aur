@@ -1,16 +1,16 @@
 pkgbase = harminv
 	pkgdesc = A free program to solve the problem of harmonic inversion
-	pkgver = 1.4
+	pkgver = 1.4.1
 	pkgrel = 1
-	url = http://ab-initio.mit.edu/wiki/index.php/Harminv
+	url = https://github.com/stevengj/harminv
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
 	depends = lapack
 	options = !libtool
-	source = http://ab-initio.mit.edu/harminv/harminv-1.4.tar.gz
-	md5sums = b95e24a9bc7e07d3d2202d1605e9e86f
+	source = https://github.com/stevengj/harminv/releases/download/v1.4.1/harminv-1.4.1.tar.gz
+	sha256sums = e1b923c508a565f230aac04e3feea23b888b47d8e19b08816a97ee4444233670
 
 pkgname = harminv
 
