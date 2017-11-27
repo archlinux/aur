@@ -1,0 +1,24 @@
+pkgbase = archey4
+	pkgdesc = Maintained fork of the original Archey Linux system tool
+	pkgver = v4.2.2
+	pkgrel = 1
+	url = https://git.io/archey4
+	arch = any
+	license = GPL
+	depends = python3
+	depends = lsb-release
+	optdepends = dnsutils: `WAN_IP` will be detected 5x faster
+	optdepends = wmctrl: [graphical env.] `WindowManager` will be more accurate
+	optdepends = virt-what: [virtual env.] `Model` will contain details about the hypervisor
+	provides = archey,
+	provides = archey4
+	conflicts = archey
+	replaces = archey-git
+	replaces = archey-plus
+	replaces = archey2
+	replaces = archey3-git
+	replaces = pyarchey
+	source = https://github.com/HorlogeSkynet/archey4/archive/v4.2.2.tar.gz
+	md5sums = 3e1a22376d102e4fd35cece84a9b14e2
+
+pkgname = archey4
