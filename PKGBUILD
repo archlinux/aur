@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 
 pkgname=mega-sdk
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Official mega.nz SDK"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=('c-ares'
          'sqlite'
          'zlib')
 source=("https://github.com/meganz/sdk/archive/v$pkgver.tar.gz")
-md5sums=('502322689dc2c8149c2c7a6d868d9568')
+md5sums=('3d5ea4035d761178890fc26975a86cd2')
 
 build() {
   cd "sdk-$pkgver"
