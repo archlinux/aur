@@ -1,12 +1,12 @@
 # Maintainer: Evgeniy Filimonov <evgfilim1@gmail.com>
 pkgname=('python-telegram-bot-git')
-pkgver=8.0.r7.5614af1
+pkgver=8.1.1.r8.e8fac19
 pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
 arch=('any')
 url="https://github.com/${pkgname%-git}/${pkgname%-git}"
 license=('LGPL3')
-depends=('python-future>=0.15.2' 'python-certifi')
+depends=('python-future>=0.16.0' 'python-certifi')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-pysocks: SOCKS or HTTP proxy'
             'python-ujson: Ultra fast JSON parsing')
