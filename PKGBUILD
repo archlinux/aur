@@ -1,8 +1,8 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
 _npmname=thumbsup
-_npmver=2.1.0
+_npmver=2.2.0-alpha.1
 pkgname=nodejs-thumbsup # All lowercase
-pkgver=2.1.0
+pkgver=${_npmver//-/}
 pkgrel=1
 pkgdesc="Photo / video gallery generator"
 arch=(any)
@@ -10,9 +10,10 @@ url="https://github.com/thumbsup/thumbsup#readme"
 license=()
 depends=('nodejs' 'npm' 'perl-image-exiftool' 'graphicsmagick')
 optdepends=('ffmpeg: for video support')
+makedepends=('git' 'python' 'python2')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(7d46c2008216c86f371b7f3730559df57e316677)
+sha1sums=('37fdd421fb3558946aa9c7181e95586859a21811')
 
 package() {
   cd $srcdir
