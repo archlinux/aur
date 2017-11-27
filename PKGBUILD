@@ -15,10 +15,15 @@ provides=('borgmatic')
 install="${pkgname}.install"
 # Main repository moved over to gittea. Switch to using commits until tags are
 # fixed:
-source=('git+https://projects.torsion.org/witten/borgmatic.git#commit=425e27dee5443e3121d18340b990974a6de51071'
-        "${pkgname}.install")
-sha256sums=('SKIP'
-            '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b')
+_commit='3e26e70d0c188641efa978d777202064c7200b99'
+source=(
+  "git+https://projects.torsion.org/witten/borgmatic.git#commit=${commit}"
+  "${pkgname}.install"
+)
+sha256sums=(
+  'SKIP'
+  '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b'
+)
 
 prepare() {
   cd "${pkgname}"

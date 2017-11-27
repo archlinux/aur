@@ -12,7 +12,7 @@ pkgbase = borgmatic
 	depends = python-pykwalify
 	depends = python-ruamel-yaml
 	provides = borgmatic
-	source = git+https://projects.torsion.org/witten/borgmatic.git#commit=425e27dee5443e3121d18340b990974a6de51071
+	source = git+https://projects.torsion.org/witten/borgmatic.git#commit=
 	source = borgmatic.install
 	sha256sums = SKIP
 	sha256sums = 2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b
