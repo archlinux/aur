@@ -1,6 +1,6 @@
 pkgbase = ckb-next-latest-git
 	pkgdesc = Corsair Keyboard and Mouse Input Driver, git newdev branch
-	pkgver = 0.2.7.r236.g31c629c
+	pkgver = 0.2.8.r238.ge86a65e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mattanger/ckb-next
@@ -11,6 +11,8 @@ pkgbase = ckb-next-latest-git
 	makedepends = git
 	depends = qt5-base
 	depends = hicolor-icon-theme
+	optdepends = libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)
+	optdepends = libappindicator-gtk3: Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library)
 	provides = ckb-next
 	conflicts = ckb-git
 	conflicts = ckb-git-latest
