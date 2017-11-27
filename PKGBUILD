@@ -1,4 +1,4 @@
-pkgname=xmr-stak-cpu-nicehash-git
+pkgname=xmr-stak-cpu-git
 pkgver=r246.5a03fc1
 pkgrel=1
 pkgdesc="Monero CPU miner"
