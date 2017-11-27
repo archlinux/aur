@@ -1,0 +1,17 @@
+pkgbase = knightsgame
+	pkgdesc = A free multiplayer competitive game involving knights, dungeons, and quests.
+	pkgver = 025
+	pkgrel = 1
+	url = http://www.knightsgame.org.uk/
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	depends = boost-libs
+	depends = sdl
+	depends = curl
+	depends = fontconfig
+	source = http://www.knightsgame.org.uk/files/knights_025_src.tar.gz
+	md5sums = 99d55713c2a0ca605252d87641817da4
+
+pkgname = knightsgame
+
