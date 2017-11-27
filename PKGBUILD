@@ -2,7 +2,7 @@
 # Maintainer: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
 # Contributor: Kristof Marussy <kris7topher@gmail.com>
 pkgname=liblinear
-pkgver=2.1
+pkgver=211
 pkgrel=1
 pkgdesc="A Library for Large Linear Classification"
 arch=('i686' 'x86_64')
@@ -12,18 +12,19 @@ groups=()
 depends=('coreutils')
 makedepends=()
 optdepends=(
-'python: bindings for latest python version'
-'python2: bindings for python 2'
-'gcc-libs')
+    'python: bindings for latest python version'
+    'python2: bindings for python 2'
+    'gcc-libs'
+)
 provides=()
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=
-source=("http://www.csie.ntu.edu.tw/~cjlin/cgi-bin/liblinear.cgi?+http://www.csie.ntu.edu.tw/~cjlin/liblinear+tar.gz")
+source=("https://github.com/cjlin1/liblinear/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=('0d87a71d054ed17c5ee7656efba06e89')
+md5sums=('9aa46bea862a82d7bdb86017e94feffc')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
