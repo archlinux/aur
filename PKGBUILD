@@ -1,3 +1,6 @@
+#Maintainor TJM <tjm@member.fsf.org> PGP: 0xC62463BE9F6B2D7D
+#Contributor Huiyiqun <huiyiqun@gmail.com>
+
 pkgname=xmr-stak-cpu-git
 pkgver=r246.5a03fc1
 pkgrel=1
