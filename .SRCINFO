@@ -1,13 +1,13 @@
 pkgbase = termplay
 	pkgdesc = Play an image/video in your terminal!
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jD91mZM2/termplay
 	arch = x86_64
-	license = MIT,
+	license = MIT
 	license = custom
-	makedepends = cargo,
-	makedepends = openal,
+	makedepends = cargo
+	makedepends = openal
 	makedepends = libsndfile
 	depends = libsixel
 	optdepends = maim: Screen-mirroring support

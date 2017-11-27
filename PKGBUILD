@@ -1,12 +1,12 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname=termplay
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Play an image/video in your terminal!"
 arch=("x86_64")
 url="https://github.com/jD91mZM2/termplay"
-license=("MIT", "custom")
-makedepends=("cargo", "openal", "libsndfile")
+license=("MIT" "custom")
+makedepends=("cargo" "openal" "libsndfile")
 optdepends=("maim: Screen-mirroring support")
 depends=("libsixel")
 source=("https://github.com/jD91mZM2/$pkgname/archive/v$pkgver.tar.gz")
