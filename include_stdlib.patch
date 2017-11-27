@@ -1,0 +1,11 @@
+--- pstr.c	2015-09-12 03:33:37.000000000 -0700
++++ pstr.c	2017-11-26 16:47:30.039637971 -0800
+@@ -16,7 +16,7 @@
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301 USA
+  */
+-
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #include <pstr.h>
