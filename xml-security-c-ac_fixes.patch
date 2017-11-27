@@ -1,0 +1,24 @@
+--- xml-security-c-1.7.3/configure.ac~	2015-01-30 03:55:09.000000000 +0000
++++ xml-security-c-1.7.3/configure.ac	2017-08-30 10:10:04.161889660 +0100
+@@ -26,16 +26,13 @@
+ 
+ AC_ARG_ENABLE(debug,
+     AS_HELP_STRING([--enable-debug],[Have GCC compile with symbols (Default = no)]),
+-    enable_debug=$enableval, enable_debug=no)
+-
+-if test "$enable_debug" = "yes" ; then
++    [
+     GCC_CFLAGS="$CFLAGS -g -D_DEBUG"
+     GCC_CXXFLAGS="$CXXFLAGS -g -D_DEBUG"
+-else
+-    GCC_CFLAGS="$CFLAGS -O2 -DNDEBUG"
+-    GCC_CXXFLAGS="$CXXFLAGS -O2 -DNDEBUG"
+-fi
+-
++    ],[
++    GCC_CFLAGS="$CFLAGS -DNDEBUG"
++    GCC_CXXFLAGS="$CXXFLAGS -DNDEBUG"
++    ])
+ 
+ # Define the files we wish to generate
+ 

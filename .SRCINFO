@@ -1,20 +1,24 @@
 pkgbase = xml-security-c
 	pkgdesc = C++ Implementation of W3C security standards for XML
 	pkgver = 1.7.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://santuario.apache.org/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = Apache
+	depends = xerces-c
 	depends = xalan-c
-	depends = openssl-1.0
-	source = http://www.apache.org/dist/santuario/c-library/xml-security-c-1.7.3.tar.gz
-	source = http://www.apache.org/dist/santuario/c-library/xml-security-c-1.7.3.tar.gz.asc
-	source = xmlsec-1.6.1-cxx11.patch
+	source = https://www.apache.org/dist/santuario/c-library/xml-security-c-1.7.3.tar.gz.asc
+	source = https://www.apache.org/dist/santuario/c-library/xml-security-c-1.7.3.tar.gz
+	source = xml-security-c-1.7.3_openssl1.1.patch
+	source = xml-security-c-ac_fixes.patch
+	source = xml-security-c-cxx11.patch
 	validpgpkeys = DCAA15007BED9DE690CD9523378B845402277962
-	sha256sums = e5226e7319d44f6fd9147a13fb853f5c711b9e75bf60ec273a0ef8a190592583
 	sha256sums = SKIP
-	sha256sums = fd9813d980dae148e4cf5f507381f682a81f08bf6c62f20ceaedd384b13961ec
+	sha256sums = e5226e7319d44f6fd9147a13fb853f5c711b9e75bf60ec273a0ef8a190592583
+	sha256sums = 05de31738ccd09702309d00985a52036171bd56e9c59f7eef2a1bf08877ae5de
+	sha256sums = 6c40f007ea75fc66754c6deba59a96e55229ccb3998e1709e16059c019ad7c1a
+	sha256sums = dc3789452a4d011c9bbd0ce58f6dfc8bf9f3d392535492d6bfc78ca5135faf08
 
 pkgname = xml-security-c
 
