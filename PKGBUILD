@@ -2,7 +2,7 @@
 #Contributor: matthiaskrgr <matthias · krueger _strange_curved_character_ famsike · de>
 
 pkgname=widelands-bzr
-pkgver=r8411
+pkgver=r8507
 pkgrel=1
 pkgdesc="A realtime strategy game with emphasis on economy and transport - development version"
 arch=(i686 x86_64)
@@ -47,7 +47,8 @@ build() {
 	cmake .. -DCMAKE_BUILD_TYPE=Release \
 		-DOPTION_BUILD_WEBSITE_TOOLS=OFF \
 		-DCMAKE_INSTALL_PREFIX=/usr/bin \
-		-DWL_INSTALL_DATADIR=/usr/share/widelands 
+		-DWL_INSTALL_DATADIR=/usr/share/widelands \
+		-DOPTION_ASAN=OFF
 	msg2 "Running make..."
 	make
 }

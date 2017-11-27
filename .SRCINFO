@@ -1,6 +1,6 @@
 pkgbase = widelands-bzr
 	pkgdesc = A realtime strategy game with emphasis on economy and transport - development version
-	pkgver = r8411
+	pkgver = r8507
 	pkgrel = 1
 	url = http://wl.widelands.org
 	changelog = changelog
