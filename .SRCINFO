@@ -1,7 +1,7 @@
 pkgbase = archey4
 	pkgdesc = Maintained fork of the original Archey Linux system tool
 	pkgver = v4.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.io/archey4
 	arch = any
 	license = GPL
@@ -13,11 +13,11 @@ pkgbase = archey4
 	provides = archey
 	provides = archey4
 	conflicts = archey
-	replaces = archey-git
-	replaces = archey-plus
-	replaces = archey2
-	replaces = archey3-git
-	replaces = pyarchey
+	conflicts = archey-git
+	conflicts = archey-plus
+	conflicts = archey2
+	conflicts = archey3-git
+	conflicts = pyarchey
 	source = https://github.com/HorlogeSkynet/archey4/archive/v4.2.2.tar.gz
 	md5sums = 3e1a22376d102e4fd35cece84a9b14e2
 
