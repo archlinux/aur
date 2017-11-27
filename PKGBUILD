@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgbase=python-thrift
-pkgname=(python-thrift)
+pkgname=(python-thrift python2-thrift)
 _pkgname=thrift
 pkgver=0.10.0
 pkgrel=1
