@@ -1,23 +1,22 @@
 pkgbase = qdigidoc
 	pkgdesc = Qt based UI application for verifying and signing digital signatures
 	pkgver = 3.13.4.1515
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.id.ee/
 	arch = x86_64
 	arch = i686
-	license = LGPL
+	license = LGPL2.1
 	makedepends = cmake
-	makedepends = opensc
 	makedepends = qt5-tools
 	makedepends = qt5-translations
 	depends = libdigidocpp>=3.13.2.1355
+	depends = opensc
 	depends = qt5-base
 	depends = shared-mime-info
 	depends = ccid
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	source = https://installer.id.ee/media/ubuntu/pool/main/q/qdigidoc/qdigidoc_3.13.4.1515.orig.tar.xz
-	validpgpkeys = 43650273CE9516880D7EB581B339B36D592073D4
 	sha256sums = 7741e1fb176e13a012b281fab4d38dabbd3ccab762160a9e5bfd84915610ca97
 
 pkgname = qdigidoc
