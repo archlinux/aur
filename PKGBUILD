@@ -6,7 +6,7 @@
 
 pkgname=mutant
 pkgrel=1
-pkgver=0.1.2
+pkgver=0.1.3
 pkgdesc="Linux Spotlight Productivity launcher, but more customizable."
 url="https://github.com/m0n0l0c0/mutant"
 provides=('mutant')
@@ -28,7 +28,7 @@ source=(
   "mutant-packager::https://github.com/m0n0l0c0/mutant-packager/archive/v0.1.2.tar.gz"
 )
 sha256sums=(
-  'cc33c447d4ffb86e03d97234d651837c6247db58e4b7d31c8275a01b7828547c'
+  '031366dc7856cdfc79199a956bb6b7520ba322b956ec51b916f069255dfd05e8'
   '4f2751e3e5129de18c0ca22654f5305df3298ab146ee3eb492df6bdfc6501842'
 )
 
