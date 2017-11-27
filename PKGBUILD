@@ -2,7 +2,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=uniconvertor2-git
-pkgver=r3476.5dd2cec9
+pkgver=r3498.4914d7bf
 pkgrel=1
 pkgdesc="A universal vector graphics translator"
 url="https://sk1project.net/"
