@@ -1,7 +1,7 @@
 # Maintainer: Jokler <jokler.contact@gmail.com>
 
 pkgname=netdata-ts3-git
-pkgver=21.5c12ce2
+pkgver=26.115b8ef
 pkgrel=1
 pkgdesc="TS3 statistics for netdata"
 arch=('i686' 'x86_64')
