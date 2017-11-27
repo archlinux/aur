@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-prime-util-gmp'
-pkgver='0.48'
+pkgver='0.49'
 pkgrel='1'
 pkgdesc="Utilities related to prime numbers and factoring, using GMP"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('glibc>=2.24' 'gmp>=6.1.1' 'perl>=5.6.2')
 makedepends=()
 url='https://metacpan.org/release/Math-Prime-Util-GMP'
 source=("https://cpan.metacpan.org/authors/id/D/DA/DANAJ/Math-Prime-Util-GMP-$pkgver.tar.gz")
-md5sums=('83b8958d511f5d17975142d048e80e66')
-sha512sums=('7b7ef70d499dbe00acf6a0b88109b4b9d52672e73c0988b9f5b35cd0a7a203010adf73cb216522e9e7c73f979bb18ba22934e4544d37d268bc66bef08107bd6e')
+md5sums=('6955f2808b6412c9657e3eaf11d648d0')
+sha512sums=('588c458b2ae4e6cbb719ebf6cfe3f35ecd5092d85d252ca4ea3fb6a3048a604a6a5d9341b3c32a5bc5423078a3edbbd7bac663f682758ed2619759680d69529e')
 _distdir="Math-Prime-Util-GMP-$pkgver"
 
 build() {
