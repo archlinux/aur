@@ -2,14 +2,14 @@
 
 _pkgname=thunar-media-tags-plugin
 pkgname=${_pkgname}-git
-pkgver=0.2.1.r173.gea240bf
+pkgver=0.2.1.r174.g99ad573
 pkgrel=1
 pkgdesc="Adds special features for media files to the Thunar File Manager (git checkout)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://goodies.xfce.org/projects/thunar-plugins/thunar-media-tags-plugin"
 groups=('xfce4-goodies')
-depends=('taglib' 'thunar-git')
+depends=('taglib' 'thunar>=1.7.0')
 makedepends=('intltool' 'xfce4-dev-tools' 'git')
 provides=("${_pkgname}=${pkgver%\.r*}")
 conflicts=("${_pkgname}")
