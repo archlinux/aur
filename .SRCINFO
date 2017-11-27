@@ -1,0 +1,14 @@
+pkgbase = jungle-git
+	pkgdesc = AWS operations by cli should be simpler
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = AWS operations by cli should be simpler
+	arch = any
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = git+https://github.com/achiku/jungle.git
+	md5sums = SKIP
+
+pkgname = jungle-git
+
