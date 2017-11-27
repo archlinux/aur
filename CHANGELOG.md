@@ -1,3 +1,33 @@
+# [v1.4.11 - 2017-11-21](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.10)
+
+## Added
+
+- Added buttons to conflict hunks to choose 'ours' or 'theirs' changes.
+- Disallow staging conflicted files that still contain conflict markers.
+- Log all merge abort actions.
+- Added log text to explain conflict resolution process.
+
+## Fixed
+
+- Fixed failure to show stashes or possible crash in some cases.
+- Fixed regression in updating commit list reference badges when references are added and deleted.
+
+# [v1.4.10 - 2017-11-10](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.9)
+
+## Added
+
+- Changed background color of conflict badges.
+- Added status text to indicate the number of unresolved conflicts.
+- Added conflict hunk background colors on ours and theirs lines.
+
+## Fixed
+
+- Fixed issue with spaces in .gitignore files.
+- Fixed a small memory leak.
+- Fixed conflict hunk check state.
+- Fixed conflict hunk line number issue.
+- (Mac) Fixed issue that prevented the disk image from mounting on systems older than macOS 10.12.
+
 # [v1.4.9 - 2017-11-06](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.8)
 
 ## Added
