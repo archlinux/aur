@@ -8,7 +8,7 @@
 
 pkgname=chromium-wayland-git
 pkgver=48.0.2548.0
-pkgrel=4
+pkgrel=5
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -28,14 +28,20 @@ conflicts=('chromium')
 provides=('chromium')
 options=('!strip')
 install=chromium.install
-source=(chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-62.0.3202.94.tar.xz
+        chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        chromium-widevine.patch
-        unbundle-libvpx_new-fix.patch)
-sha256sums=('4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
+        breakpad-use-ucontext_t.patch
+        crc32c-string-view-check.patch
+        chromium-gn-bootstrap-r17.patch
+        chromium-widevine.patch)
+sha256sums=('cabc4d267bf08aabe11c5739048c43dde18c61acf595223a1c3aa1d3499558d4'
+            '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221'
-            '6a2fd2d8ce5363a67452f6531a6b83f1e535f800286119fd9910d3b31c76c3bc')
+            '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
+            '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
+            'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
+            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
