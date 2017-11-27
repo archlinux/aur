@@ -1,7 +1,5 @@
-diff --git a/xmrstak/donate-level.hpp b/xmrstak/donate-level.hpp
-index 71b7962..53980d4 100644
---- a/xmrstak/donate-level.hpp
-+++ b/xmrstak/donate-level.hpp
+--- donate-level.h	2017-11-26 17:07:27.672510855 -0800
++++ donate-level.h	2017-11-26 17:06:09.625697737 -0800
 @@ -15,4 +15,4 @@
   *
   */

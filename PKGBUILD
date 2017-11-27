@@ -1,34 +1,34 @@
-pkgname=xmr-stak-cpu-git
+pkgname=xmr-stak-cpu-nicehash-git
 pkgver=r246.5a03fc1
 pkgrel=1
 pkgdesc="Monero CPU miner"
 arch=('x86_64')
-url="https://github.com/fireice-uk/xmr-stak"
+url="https://github.com/nicehash/xmr-stak-cpu"
 license=('GPL3')
 makedepends=('git' 'cmake')
-depends=('libmicrohttpd' 'openssl')
+depends=('libmicrohttpd' 'openssl' 'hwloc')
 source=('git+https://github.com/fireice-uk/xmr-stak-cpu.git'
         'no-donate.patch')
 sha256sums=('SKIP'
-            'b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a')
+			'69c46b44922b9dbdc371d8af60413753538e3d4169227cd3614e3d7d2ecd958e')
 
 pkgver() {
-    cd "$srcdir/xmr-stak"
+    cd "$srcdir/xmr-stak-cpu"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/xmr-stak"
-    #patch -p1 -i ../../no-donate.patch
+    cd "$srcdir/xmr-stak-cpu"
+    patch -i ../../no-donate.patch
 }
 
 build() {
-    cd "$srcdir/xmr-stak"
-    cmake -DCUDA_ENABLE=off .
+    cd "$srcdir/xmr-stak-cpu"
+    cmake .
     make
 }
 
 package() {
-    install -D -m755 "$srcdir/xmr-stak/bin/xmr-stak" -t "$pkgdir/usr/bin/"
-    install -D -m644 "$srcdir/xmr-stak/bin/libxmrstak_opencl_backend.so" -t "$pkgdir/usr/lib"
+    install -D -m755 "$srcdir/xmr-stak-cpu/bin/xmr-stak-cpu" -t "$pkgdir/usr/bin/"
+    install -D -m644 "$srcdir/xmr-stak-cpu/config.txt" "$pkgdir/etc/xmr-stak-cpu.json"
 }
