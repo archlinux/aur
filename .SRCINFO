@@ -1,7 +1,7 @@
 pkgbase = termplay
 	pkgdesc = Play an image/video in your terminal!
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jD91mZM2/termplay
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,9 @@ pkgbase = termplay
 	makedepends = openal
 	makedepends = libsndfile
 	depends = libsixel
+	optdepends = ffmpeg: Video support
 	optdepends = maim: Screen-mirroring support
+	optdepends = youtube-dl: YouTube support
 	source = https://github.com/jD91mZM2/termplay/archive/v1.2.0.tar.gz
 	sha256sums = d30e4c3b3e20ac467fdd5ba9f725f1a71e388ff8b8fe81d74447fddb95e49609
 
