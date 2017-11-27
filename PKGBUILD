@@ -1,11 +1,12 @@
 # Maintainer: Lorens Gwine <lorensgwine@gmail.com>
 pkgname=tc-twitch-git
 _pkgname=tc-twitch
+_realname=tc
 pkgver=10.2.0.r0.ge8ed5df
 pkgrel=1
 pkgdesc="The chat client for Twitch™"
 arch=('any')
-url="https://github.com/mccxiv/${_pkgname}"
+url="https://github.com/mccxiv/${_realname}"
 license=('custom')
 provides=($_pkgname)
 conflicts=($_pkgname)
