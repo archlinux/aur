@@ -1,13 +1,13 @@
 pkgname=nbmanager-git
 _gitname=nbmanager
-pkgver=33.a8cf7f6
+pkgver=43.c90aac4
 pkgrel=1
 pkgdesc='A GUI to view and manager running IPython notebook servers'
 arch=(any)
 url='https://github.com/takluyver/nbmanager'
 license=(BSD)
 makedepends=(git)
-depends=(python python-pyqt5 jupyter)
+depends=(python python-pyqt5 jupyter python-qtico)
 provides=(nbmanager ipython-nbmanager)
 conflicts=(nbmanager ipython-nbmanager)
 source=("git://github.com/takluyver/nbmanager.git")
