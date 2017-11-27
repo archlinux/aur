@@ -1,7 +1,7 @@
 # Contributor: muhas <muhas@mail.ru>
 pkgname=fbless
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="fictionbook console viewer"
 url="http://pybookreader.narod.ru/misc.html"
 license=("GPL")
@@ -12,7 +12,7 @@ source=()
 md5sums=()
 
 _gitdir="fbless"
-_giturl="https://github.com/matimatik/fbless.git"
+_giturl="https://github.com/ashinkarov/fbless"
 _gitbranch="master"
 _commit="baa99b59a429af7bb3de877ac11df82fb7d46935"
 
