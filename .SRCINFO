@@ -1,0 +1,13 @@
+pkgbase = tarberd-units-git
+	pkgdesc = A fork from the C++ units lib from nholthaus
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = http://nholthaus.github.io/units/
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = git+http://github.com/tarberd/units.git#branch=master
+	md5sums = SKIP
+
+pkgname = tarberd-units-git
+
