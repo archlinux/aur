@@ -1,0 +1,14 @@
+pkgbase = python-numberjack
+	pkgdesc = A Python platform for combinatorial optimisation
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/numberjack
+	arch = any
+	license = GPLv2
+	makedepends = swig
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/N/Numberjack/Numberjack-1.2.0.tar.gz
+	md5sums = 98a4757dc3ee20da0a7a69999afc4dbc
+
+pkgname = python-numberjack
+
