@@ -6,9 +6,9 @@ pkgbase = phraseapp-client
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source_i686 = https://github.com/phrase/phraseapp-client/releases/download/1.6.0/phraseapp_linux_386.tar.gz
+	source_i686 = phraseapp_linux_386-1.6.0.tar.gz::https://github.com/phrase/phraseapp-client/releases/download/1.6.0/phraseapp_linux_386.tar.gz
 	sha256sums_i686 = 95eda05ee7abfec07f6cc36fb94011cfc49afc8f1c3d6eac0e4246a16a14529f
-	source_x86_64 = https://github.com/phrase/phraseapp-client/releases/download/1.6.0/phraseapp_linux_amd64.tar.gz
+	source_x86_64 = phraseapp_linux_amd64-1.6.0.tar.gz::https://github.com/phrase/phraseapp-client/releases/download/1.6.0/phraseapp_linux_amd64.tar.gz
 	sha256sums_x86_64 = f1ee5ed491d99ccb54735d3083344ef19bdda2649d4954a31e96c7d516b0bdfd
 
 pkgname = phraseapp-client
