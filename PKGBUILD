@@ -25,8 +25,8 @@ md5sums=('ab96cb73e17dffb757d395a0f0ebd6df')
 validpgpkeys=()
 
 package() {
-	install -Dm 755 usr/bin/xray $pkgdir/usr/bin/
+	install -Dm 755 usr/bin/xray $pkgdir/usr/bin/xray
 	# fix target directory: we want system-installed service files to live in /usr/lib, not /etc
-	install -Dm 644 etc/systemd/system/xray.service $pkgdir/usr/lib/systemd/system/
-	install -Dm 644 etc/amazon/xray/cfg.yaml $pkgdir/etc/amazon/xray/
+	install -Dm 644 etc/systemd/system/xray.service $pkgdir/usr/lib/systemd/system/xray.service
+	install -Dm 644 etc/amazon/xray/cfg.yaml $pkgdir/etc/amazon/xray/cfg.yaml
 }
