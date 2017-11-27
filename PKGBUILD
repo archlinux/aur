@@ -1,6 +1,6 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 pkgname=brave
-pkgver=0.19.88
+pkgver=0.19.95
 _pkgver=$pkgver
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
@@ -17,7 +17,8 @@ source=("browser-laptop-"$_pkgver"dev.tar.gz::https://github.com/brave/browser-l
 build() {
 	cd "$srcdir"/browser-laptop-"$_pkgver"dev
 
-	#npm install extract-zip@1.6.0
+	# Temporary workaround for https://github.com/brave/browser-laptop/pull/12007
+	npm install bat-publisher@1.3.0 --save
 
 	npm install
 	CHANNEL=dev npm run build-package
@@ -175,4 +176,4 @@ END
 
 	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
-md5sums=('5e1297198b964f1ad0643fe0aba6d09f')
+md5sums=('98c425934bc4624c95685faea18532d5')
