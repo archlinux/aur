@@ -1,6 +1,6 @@
 # Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
 pkgname=web-media-controller-mpris-git
-pkgver=9999
+pkgver=r68.e657bec
 pkgrel=1
 pkgdesc="MPRIS proxy for usage with Web Media Controller on GNU/Linux "
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
 
-  git describe --long --tags | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
