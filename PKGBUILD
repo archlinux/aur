@@ -62,6 +62,9 @@ _CFQ_disable=
 ### Disable Kyber I/O scheduler
 _kyber_disable=
 
+### Enable MQ scheduling 
+_mq_enable=
+
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bfq-mq
@@ -69,7 +72,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.14.2
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -150,7 +153,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0'
             '7c51d0053053a3a0f6ed8759a5464ed5a3275a9dd832513a5678c3bcead9e5d5'
             '5e57c8d1d87a63e1c5947aba02346862992f39be2b2761ea142b3897995495aa'
-            'a81c8a378a4092b040a928940b4ca625b775e4a57d5b18d583de052f3c8aa076'
+            '0e0f00379d0a55d6fbef826d0724dce4f8819a0fb469f14ef9ef68ab63ee0d55'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
@@ -295,6 +298,13 @@ prepare() {
   if [ -n "$_kyber_disable" ]; then
     msg "Disabling Kyber I/O scheduler..."
     sed -i -e s'/CONFIG_MQ_IOSCHED_KYBER=y/# CONFIG_MQ_IOSCHED_KYBER is not set/' ./.config
+  fi
+  
+  ### Enable MQ scheduling
+  if [ -n "$_mq_enable" ]; then
+    msg "Enable MQ scheduling..."
+    sed -i -e s'/^# CONFIG_SCSI_MQ_DEFAULT is not set/CONFIG_SCSI_MQ_DEFAULT=y/' \
+        -i -e s'/^# CONFIG_DM_MQ_DEFAULT is not set/CONFIG_DM_MQ_DEFAULT=y/' ./.config
   fi
 
   if [ "${_kernelname}" != "" ]; then
