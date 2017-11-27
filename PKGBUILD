@@ -7,7 +7,8 @@ pkgdesc='For protein structural dynamics analysis.'
 arch=('any')
 url='http://prody.csb.pitt.edu/'
 license=('MIT')
-depends=('python>=3.4' 'python2>=2.7' 'python-numpy>=1.10')
+# Only either one of the python version is required
+depends=('python3>=3.4' 'python2>=2.7' 'python-numpy>=1.10')
 source=("https://github.com/prody/prody/archive/v${pkgver}.tar.gz")
 md5sums=('3e4e535b8a9c02aece3fe4ce22b79792')
 
