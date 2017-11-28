@@ -9,7 +9,7 @@ _pkgname="gitea"
 _gourl="code.gitea.io"
 
 pkgname=gitea-git
-pkgrel=1
+pkgrel=3
 pkgver=v1.1.0.r803.g0c69b768
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
@@ -67,7 +67,7 @@ package() {
   install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"
 
   install -dm0755 "${pkgdir}/usr/share/${_pkgname}/"
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/custom/conf" "${pkgdir}/usr/share/${_pkgname}"
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/custom" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/public" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/templates" "${pkgdir}/usr/share/${_pkgname}"
 
