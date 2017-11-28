@@ -1,7 +1,10 @@
-post_upgrade() {
-  echo "To use UFMG network: copy the template..."
-  echo "    cp /etc/netctl/examples/ufmg /etc/netctl/ufmg"
+post_install() {
+  echo -e "\nTo use UFMG network: copy the example to the netctl folder"
+  echo "    # cp /etc/netctl/examples/ufmg /etc/netctl/ufmg"
   echo "Then edit the file. Replace <wireless-interface> by the name of your wireless network interface."
-  echo "Use iw dev or ip link to find out your interface name."
-  echo "Also fill the username and password sections with your credentials from minhaUFMG"
+  echo "Use \"$ iw dev\" or \"$ ip link\" to find out your interface name."
+  echo "Also fill the identity and password sections with your username and password from minhaUFMG"
+  echo "You should also set the permissions of the file to 600, as it contains a text plain password"
+  echo "    # chmod 600 /etc/netctl/ufmg"
+  echo -e "This example also work for the SSID UFMGT.\n"
 }

@@ -1,17 +1,13 @@
 Description='Federal University of Minas Gerais - Wireless network'
-Interface=<wireless-interface>
 Connection=wireless
-Security=wpa-configsection
+Interface=<wireless-interface>
 IP=dhcp
+Security=wpa-configsection
 WPAConfigSection=(
     'ssid="UFMG"'
     'key_mgmt=WPA-EAP'
     'eap=PEAP'
     'phase2="auth=MSCHAPV2"'
-    'group=TKIP'
-    'pairwise=TKIP CCMP'
-    'anonymous_identity="anonymous"'
     'identity="<username from minhaUFMG>"'
     'password="<password from minhaUFMG>"'
-    'priority=1'
 )
