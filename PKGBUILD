@@ -48,7 +48,7 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disabl
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-install-dir.patch
 )
 
-sha256sums=('b5b4d9f34a95debe2cca585d995198c0b97cef81669fa68d0b90103a5dcca20a'
+sha256sums=('ee5439963930c004bef840729c8e10f22ab685a1e312723610be9dbb48f98f30'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
