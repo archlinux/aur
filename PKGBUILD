@@ -1,5 +1,5 @@
 pkgname=perl-pgtap
-pkgver=3.31
+pkgver=3.33
 pkgrel=1
 pkgdesc='Stream TAP from pgTAP test scripts'
 _dist=TAP-Parser-SourceHandler-pgTAP
@@ -7,8 +7,8 @@ arch=('any')
 url="http://pgtap.org"
 license=('PerlArtistic')
 depends=(perl perl-module-build)
-source=("http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/$_dist-$pkgver.tar.gz")
-md5sums=("a3f1d214b825596ea6f37b7698dff0b8")
+source=("https://cpan.metacpan.org/authors/id/D/DW/DWHEELER/$_dist-$pkgver.tar.gz")
+md5sums=("538e590181de80492f5654ebd5b687d7")
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
