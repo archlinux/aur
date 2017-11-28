@@ -1,0 +1,12 @@
+--- src/mpvconfigurator.pro.orig	2017-11-28 21:32:41.445023996 +0800
++++ src/mpvconfigurator.pro	2017-11-28 21:31:36.494128593 +0800
+@@ -52,8 +52,7 @@
+     tabmisc.ui \
+     tabextensions.ui \
+     unknownsettingstab.ui \
+-    tabconfig.ui \
+-    tempfix.ui
++    tabconfig.ui 
+ 
+ QMAKE_CXXFLAGS += -std=c++11
+ 

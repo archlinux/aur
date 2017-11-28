@@ -1,0 +1,16 @@
+pkgbase = mpvconfigurator
+	pkgdesc = Generate config for MPV using GUI
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/haasnhoff/mpvconfigurator
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base
+	conflicts = mpvconfigurator-git
+	source = mpvconfigurator-0.2.tar.gz::https://github.com/haasnhoff/mpvconfigurator/archive/0.2.tar.gz
+	source = remove-tempfix-ui.patch
+	sha256sums = 06ede788f05ac97cddbf98f917f17f8271a2db5e4088b380c7ca1570867607b0
+	sha256sums = 9b7666548b43e19465feb3f8ddd56b6b5b59a17026880b7c424c78d2bd09cf69
+
+pkgname = mpvconfigurator
+
