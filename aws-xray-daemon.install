@@ -1,5 +1,8 @@
 post_install() {
-	echo "Don't forget to edit /etc/amazon/xray/cfg.yaml to specify region and credentials,"
+	echo "Start the daemon with 'systemctl start xray', as usual."
+	echo "Don't forget to edit /etc/amazon/xray/cfg.yaml to specify region,"
 	echo "or else the daemon won't work."
-	echo "Start it with 'systemctl start xray', as usual."
+	echo "Also you should make sure credentials are provided with regular AWS way,"
+	echo "most likely you will put them in /root/.aws/credentials -"
+	echo "for details see http://docs.aws.amazon.com/xray/latest/devguide/xray-daemon.html#xray-daemon-permissions"
 }
