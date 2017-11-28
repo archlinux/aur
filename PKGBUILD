@@ -6,7 +6,7 @@ pkgdesc="Brain Workshop is a free open-source version of the Dual N-Back mental 
 arch=('any')
 url="http://brainworkshop.sourceforge.net/"
 license=('GPL')
-depends=('python2' 'python2-pyglet' 'avbin7' 'openal')
+depends=('python2' 'python2-pyglet' 'avbin' 'openal')
 install='brainworkshop.install'
 source=(http://downloads.sourceforge.net/brainworkshop/$pkgname-$pkgver.zip
         brainworkshop.sh
