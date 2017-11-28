@@ -1,7 +1,7 @@
 pkgbase = ckb-next-newfw-git
 	pkgdesc = Corsair Keyboard and Mouse Input Driver, git newfw branch
 	pkgver = 0.2.8.r246.ga35db6e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mattanger/ckb-next
 	install = ckb-next-newfw-git.install
 	arch = i686

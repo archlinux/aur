@@ -2,7 +2,7 @@
 
 pkgname=ckb-next-newfw-git
 pkgver=0.2.8.r246.ga35db6e
-pkgrel=1
+pkgrel=2
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git newfw branch"
 arch=('i686' 'x86_64')
 url="https://github.com/mattanger/ckb-next"
