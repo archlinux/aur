@@ -2,8 +2,8 @@
 
 pkgname=nuvolaplayer_3.0
 _pkgname=nuvolaruntime
-pkgver=3.0.8
-pkgrel=2
+pkgver=3.0.9
+pkgrel=1
 
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,7 +11,7 @@ pkgdesc='Cloud music integration for your Linux desktop stable 3.0 branch.'
 url='https://tiliado.eu/nuvolaplayer/'
 
 source=("nuvolaplayer-${pkgver}.tar.gz::https://github.com/tiliado/nuvolaplayer/archive/${pkgver}.tar.gz")
-sha256sums=('d160ab23db432ac8ddaa75e3be931a7eb8e70d66f762acc283cb4cb1946dcd30')
+sha256sums=('1c226ae331e37041fb5f8740a0a999880adde41cba43c8291ed550bdedf1bb98')
 
 depends=('diorite_0.2.x' 'webkit2gtk' 'libarchive')
 makedepends=('python' 'vala')
