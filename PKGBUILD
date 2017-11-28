@@ -1,6 +1,6 @@
 # Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
 pkgname=mpristester-git
-pkgver=9999
+pkgver=r62.a1edbd4
 pkgrel=1
 pkgdesc="Tester for MPRIS2 clients functionality"
 arch=('i686' 'x86_64')
@@ -14,6 +14,12 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=("${pkgname%-git}::git+https://github.com/randomguy3/mpristester.git")
 sha1sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
