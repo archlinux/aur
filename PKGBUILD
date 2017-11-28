@@ -4,7 +4,7 @@
 pkgname=asbru-cm-git
 _pkgname=${pkgname%-git}
 pkgver=5.0.0_RC4
-pkgrel=2
+pkgrel=3
 arch=('any')
 license=('GPL3')
 pkgdesc="A free and open-source connection manager. GIT version"
@@ -13,15 +13,12 @@ depends=('perl-gnome2-gconf' 'glade-perl' 'openssh' 'perl-crypt-blowfish' 'perl-
 makedepends=('git')
 #conflicts=()
 source=("git+https://github.com/asbru-cm/asbru-cm.git"
-         0000-fix-xfreerdp-synthax.patch
          fix-pacmanager-crash-getXWindowsList.patch)
 sha256sums=('SKIP'
-            '8a31936ff2aa9da31ea4abbff27582fbf583ce0ff7760e9096c4293312a1338e'
             'b2bd4fcdc9e16869f990ae4be47f2a23e81e25fff8a7169a03792864caee1606')
 
 prepare() {
 	cd ${srcdir}/${_pkgname}
-	patch -Np1 -i ${srcdir}/0000-fix-xfreerdp-synthax.patch
 	patch -Np1 -i ${srcdir}/fix-pacmanager-crash-getXWindowsList.patch
 }
 
