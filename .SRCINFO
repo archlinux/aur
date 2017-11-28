@@ -21,12 +21,12 @@ pkgbase = dfhack-twbt-bin
 	conflicts = dfhack-bin
 	source = dfhack.sh
 	source = dfhack-run.sh
-	source = https://github.com/DFHack/dfhack/releases/download/0.43.05-r2/dfhack-0.43.05-r2-Linux-64-gcc-4.8.tar.bz2
-	source = https://github.com/mifki/df-twbt/releases/download/v6.21/twbt-6.21-linux.zip
+	source = https://github.com/DFHack/dfhack/releases/download/0.43.05-r3/dfhack-0.43.05-r3.1-Linux-64-gcc-4.8.tar.bz2
+	source = https://github.com/mifki/df-twbt/releases/download/v6.22/twbt-6.22-linux.zip
 	md5sums = af6d938767d1f09608df67dc4c0fd1a1
 	md5sums = 3853c6f890d3541f710f2c4833a9e696
-	md5sums = 0d674cf4a060ecee1e8dec90dd5596c8
-	md5sums = 6cc2a103c0bdd3aa86b4171b567dd61d
+	md5sums = 1f554475788da26e9c06c944eb19782d
+	md5sums = 49d18ce5ad1cebb8238cb267a840ead2
 
 pkgname = dfhack-twbt-bin
 
