@@ -1,0 +1,14 @@
+pkgbase = duviz-git
+	pkgdesc = Command line disk space usage visualization utility
+	pkgver = r48.3ae1f98
+	pkgrel = 1
+	url = http://soxofaan.github.com/duviz/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	source = git+https://github.com/soxofaan/duviz.git
+	md5sums = SKIP
+
+pkgname = duviz-git
+
