@@ -1,7 +1,7 @@
 # Maintainer: Pochang Chen <johnchen902@gmail.com>
 
 pkgname=python-jautolock-git
-pkgver=0.9.r1.91db75d
+pkgver=1.0.r0.da2de08
 pkgrel=1
 pkgdesc="An automatic X screen-locker/screen-saver"
 license=("GPL3")

@@ -1,6 +1,6 @@
 pkgbase = python-jautolock-git
 	pkgdesc = An automatic X screen-locker/screen-saver
-	pkgver = 0.9.r1.91db75d
+	pkgver = 1.0.r0.da2de08
 	pkgrel = 1
 	url = https://github.com/johnchen902/python-jautolock
 	arch = any
