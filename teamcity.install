@@ -9,3 +9,8 @@ post_install() {
   echo
   echo "Default TeamCity port is 8111."
 }
+
+post_upgrade() {
+  systemd-sysusers teamcity.conf
+  chown -R teamcity /opt/teamcity /var/lib/teamcity
+}
