@@ -3,7 +3,7 @@
 pkgname=libretro-vice-git
 pkgver=19926.8139feb92
 pkgrel=1
-pkgdesc="A port of the Commodore 64 Emulator to libretro (WIP)"
+pkgdesc="A port of the C64 Emulator to libretro (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/vice-libretro"
 license=('GPL3')
