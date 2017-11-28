@@ -1,6 +1,6 @@
 pkgbase = brackets-git
 	pkgdesc = An open source code editor for the web, written in JavaScript, HTML and CSS.
-	pkgver = 1.5
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://brackets.io
 	install = brackets-git.install

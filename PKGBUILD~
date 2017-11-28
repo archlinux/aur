@@ -9,7 +9,7 @@ _version_prefix=release-
 
 # Package
 pkgname=brackets-git
-pkgver=1.9
+pkgver=1.1
 pkgrel=1
 pkgdesc="An open source code editor for the web, written in JavaScript, HTML and CSS."
 arch=("i686" "x86_64")
