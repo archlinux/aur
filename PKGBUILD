@@ -5,7 +5,7 @@
 
 pkgname=dvdstyler
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform DVD authoring application"
 arch=('i686' 'x86_64')
 url="http://www.dvdstyler.de/"
@@ -18,14 +18,7 @@ optdepends=('dvdisaster: ECC support'
 	    'smplayer: DVD preview player')
 options=('!makeflags')
 source=(http://downloads.sourceforge.net/dvdstyler/${pkgver}/DVDStyler-${pkgver}.tar.bz2)
-sha1sums=('f703eeacd78186e0070f3cc7e5e67c6e5a5fde19')
-
-prepare() {
-	cd "${srcdir}/DVDStyler-${pkgver}"
-
-	sed -i "s|WX_CONFIG_CHECK(\[3.0\]|WX_CONFIG_CHECK(\[3.0.3\]|" configure.ac
-	./autogen.sh
-}
+sha1sums=('0ff6de099d177c05c34f536defc1562e520b9703')
 
 build() {
   cd "${srcdir}/DVDStyler-${pkgver}"
