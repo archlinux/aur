@@ -2,7 +2,7 @@
 # code adapted from: Meow < a.li.devtty at gmail dot com >
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=1.1.383
+pkgver=1.1.392
 pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
 
 #_x86md5=21ca14bffcdc1a2361ead2d763d0313d
-_x64md5=3eede231b7206a7eebbf090f4991358f
+_x64md5=65a965aa2b6169e21fc2d969b76cd708
 
 case "$CARCH" in
 	'i686')
