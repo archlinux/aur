@@ -3,7 +3,7 @@
 pkgbase=('nordnm')
 pkgname=('nordnm')
 _module='nordnm'
-pkgver='0.0a14'
+pkgver='0.0a15'
 pkgrel=1
 pkgdesc="A CLI tool for automating the importing, securing and usage of NordVPN OpenVPN servers through NetworkManager."
 url="https://github.com/Chadsr/NordVPN-NetworkManager"
