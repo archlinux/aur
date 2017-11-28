@@ -1,5 +1,5 @@
 pkgbase = netctl-ufmg
-	pkgdesc = Example of a netctl profile for wireless network of Federal University of Minas Gerais
+	pkgdesc = Example of a netctl profile for the wireless network of the Federal University of Minas Gerais
 	pkgver = 20171117
 	pkgrel = 1
 	url = https://github.com/saviocmc/netctl-ufmg
