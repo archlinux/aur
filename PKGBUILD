@@ -2,7 +2,7 @@
 # Contributor: Willy Micieli <fumseckworld at gmail dot com>
 
 pkgname=aphrodite
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Manage all server websites from one interface"
 arch=('any')
