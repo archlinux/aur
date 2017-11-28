@@ -9,7 +9,7 @@
 declare -rgA _system_libs=(
   #[ffmpeg]=ffmpeg
   [flac]=flac
-  [harfbuzz-ng]=harfbuzz-icu
+  #[harfbuzz-ng]=harfbuzz-icu
   #[icu]=icu
   [libjpeg]=libjpeg
   [libpng]=libpng
@@ -24,7 +24,7 @@ declare -rgA _system_libs=(
 )
 
 pkgname=iridium
-pkgver=58.0
+pkgver=61.0
 pkgrel=2
 _launcher_ver=3
 pkgdesc="a free, open, and libre browser modification of the Chromium code base"
@@ -43,7 +43,7 @@ optdepends=('kdialog: needed for file dialogs in KDE'
 conflicts=('chromium')
 replaces=('chromium')
 options=('!strip')
-source=(https://downloads.iridiumbrowser.de/source/iridium-browser-${pkgver}.tar.xz
+source=(https://downloads.iridiumbrowser.de/source/iridium-browser-2017.10.tar.gz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         sandbox-linux-build.patch
