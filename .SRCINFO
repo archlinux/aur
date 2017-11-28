@@ -1,0 +1,18 @@
+pkgbase = thedm
+	pkgdesc = Display Manager
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/vicr123/thedm
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = the-libs
+	depends = xorg-xrandr
+	depends = kscreen
+	source = thedm-0.1::git+https://github.com/vicr123/thedm#branch=master
+	md5sums = SKIP
+
+pkgname = thedm
+
