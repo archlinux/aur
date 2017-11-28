@@ -1,0 +1,10 @@
+--- a/third_party/WebKit/Source/platform/graphics/gpu/SharedGpuContext.h
++++ b/third_party/WebKit/Source/platform/graphics/gpu/SharedGpuContext.h
+@@ -5,6 +5,7 @@
+ #include "platform/PlatformExport.h"
+ #include "wtf/ThreadSpecific.h"
+ 
++#include <functional>
+ #include <memory>
+ 
+ namespace gpu {

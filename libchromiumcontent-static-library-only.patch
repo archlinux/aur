@@ -1,0 +1,54 @@
+--- a/script/build
++++ b/script/build
+@@ -11,7 +11,7 @@ from lib.util import get_configuration, get_output_dir
+ SOURCE_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+ VENDOR_DIR = os.path.join(SOURCE_ROOT, 'vendor')
+ TARGETS = ['chromiumcontent_all']
+-COMPONENTS = ['static_library', 'shared_library', 'ffmpeg']
++COMPONENTS = ['static_library']
+ 
+ NINJA = 'ninja'
+ if sys.platform == 'win32':
+--- a/script/create-dist
++++ b/script/create-dist
+@@ -59,7 +59,7 @@
+     'libffmpeg.dylib',
+   ],
+   'linux': [
+-    'libffmpeg.so',
++    # 'libffmpeg.so',
+   ],
+   'win32': [
+     'd3dcompiler_47.dll',
+@@ -312,7 +312,7 @@
+       copy_generated_sources(target_arch, component)
+       copy_locales(target_arch, component)
+ 
+-  copy_ffmpeg(target_arch)
++  # copy_ffmpeg(target_arch)
+   copy_sources()
+   generate_licenses()
+   if not args.no_zip:
+@@ -429,9 +429,9 @@
+     elif target_arch == 'arm':
+       binaries = [ 'chromedriver', 'clang_x86_v8_arm/mksnapshot' ]
+     else:
+-      binaries = [ 'chromedriver', 'mksnapshot' ]
++      binaries = [ 'mksnapshot' ]
+ 
+-    ffmpeg_output_dir = get_output_dir(SOURCE_ROOT, target_arch, 'ffmpeg')
++    ffmpeg_output_dir = get_output_dir(SOURCE_ROOT, target_arch, 'static_library')
+     for binary in binaries:
+       shutil.copy2(os.path.join(ffmpeg_output_dir, binary), target_dir)
+ 
+--- a/script/update
++++ b/script/update
+@@ -19,7 +19,7 @@ VENDOR_DIR = os.path.join(SOURCE_ROOT, 'vendor')
+ SRC_DIR = os.path.join(SOURCE_ROOT, 'src')
+ CHROMIUMCONTENT_SOURCE_DIR = os.path.join(SOURCE_ROOT, 'chromiumcontent')
+ CHROMIUMCONTENT_DESTINATION_DIR = os.path.join(SRC_DIR, 'chromiumcontent')
+-COMPONENTS = ['static_library', 'shared_library', 'ffmpeg']
++COMPONENTS = ['static_library']
+ DEPOT_TOOLS = os.path.join(VENDOR_DIR, 'depot_tools')
+ 
+ NINJA = os.path.join(DEPOT_TOOLS, 'ninja')

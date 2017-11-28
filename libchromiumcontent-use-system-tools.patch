@@ -1,0 +1,43 @@
+--- a/script/build
++++ b/script/build
+@@ -13,7 +13,7 @@ VENDOR_DIR = os.path.join(SOURCE_ROOT, 'vendor')
+ TARGETS = ['chromiumcontent_all']
+ COMPONENTS = ['static_library', 'shared_library', 'ffmpeg']
+ 
+-NINJA = os.path.join(VENDOR_DIR, 'depot_tools', 'ninja')
++NINJA = 'ninja'
+ if sys.platform == 'win32':
+   NINJA = '{0}.exe'.format(NINJA)
+ 
+--- a/script/update
++++ b/script/update
+@@ -39,16 +39,14 @@ def main():
+   else:
+     print "Skipping Chromium Source Tarball Download"
+ 
+-  if sys.platform == 'linux2':
+-    install_sysroot()
+-  elif sys.platform in ['win32', 'cygwin']:
+-    update_toolchain_json()
++  # if sys.platform == 'linux2':
++  #   install_sysroot()
++  # elif sys.platform in ['win32', 'cygwin']:
++  #   update_toolchain_json()
+ 
+   target_arch = args.target_arch
+   return (apply_patches() or
+           copy_chromiumcontent_files() or
+-          update_clang() or
+-          update_gn() or
+           run_gn(target_arch, args.defines))
+ 
+ 
+@@ -192,7 +190,7 @@
+   if sys.platform in ['win32', 'cygwin']:
+     gn = os.path.join(SRC_DIR, 'buildtools', 'win', 'gn.exe')
+   elif sys.platform == 'linux2':
+-    gn = os.path.join(SRC_DIR, 'buildtools', 'linux64', 'gn')
++    gn = os.path.join(SRC_DIR, 'out', 'Release', 'gn')
+   elif sys.platform == 'darwin':
+     gn = os.path.join(SRC_DIR, 'buildtools', 'mac', 'gn')
+ 

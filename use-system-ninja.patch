@@ -1,0 +1,11 @@
+--- a/script/build.py
++++ b/script/build.py
+@@ -19,7 +19,7 @@ 
+   # Update the VS build env.
+   import_vs_env(get_target_arch())
+ 
+-  ninja = os.path.join('vendor', 'depot_tools', 'ninja')
++  ninja = 'ninja'
+   if sys.platform == 'win32':
+     ninja += '.exe'
+ 

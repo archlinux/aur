@@ -1,0 +1,13 @@
+--- a/script/bootstrap.py
++++ b/script/bootstrap.py
+@@ -165,8 +165,8 @@ def update_node_modules(dirname, env=None):
+   if env is None:
+     env = os.environ.copy()
+   if PLATFORM == 'linux':
+-    # Use prebuilt clang for building native modules.
+-    set_clang_env(env)
++    env['CC']  = 'clang'
++    env['CXX'] = 'clang++'
+     env['npm_config_clang'] = '1'
+   with scoped_cwd(dirname):
+     args = [NPM, 'install']

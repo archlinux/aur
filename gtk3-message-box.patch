@@ -1,0 +1,11 @@
+--- a/atom/browser/ui/message_box_gtk.cc
++++ b/atom/browser/ui/message_box_gtk.cc
+@@ -197,7 +197,7 @@
+ }
+ 
+ void GtkMessageBox::OnCheckboxToggled(GtkWidget* widget) {
+-  checkbox_checked_ = GTK_TOGGLE_BUTTON(widget)->active;
++  checkbox_checked_ = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
+ }
+ 
+ }  // namespace

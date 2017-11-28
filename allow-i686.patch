@@ -1,0 +1,14 @@
+--- a/script/update.py
++++ b/script/update.py
+@@ -15,11 +15,6 @@ SOURCE_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+ 
+ def main():
+   os.chdir(SOURCE_ROOT)
+-
+-  if PLATFORM != 'win32' and platform.architecture()[0] != '64bit':
+-    print 'Electron is required to be built on a 64bit machine'
+-    return 1
+-
+   update_external_binaries()
+   return update_gyp()
+ 

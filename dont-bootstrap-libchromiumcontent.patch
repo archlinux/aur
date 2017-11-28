@@ -1,0 +1,13 @@
+diff --git a/script/build-libchromiumcontent.py b/script/build-libchromiumcontent.py
+index e0a95f6..1383e70 100755
+--- a/script/build-libchromiumcontent.py
++++ b/script/build-libchromiumcontent.py
+@@ -28,7 +28,7 @@ def main():
+   update = os.path.join(script_dir, 'update')
+   build = os.path.join(script_dir, 'build')
+   create_dist = os.path.join(script_dir, 'create-dist')
+-  execute_stdout([sys.executable, bootstrap])
++  # execute_stdout([sys.executable, bootstrap])
+   execute_stdout([sys.executable, update, '-t', args.target_arch,
+                   '--defines', args.defines])
+   execute_stdout([sys.executable, build, '-R', '-t', args.target_arch])

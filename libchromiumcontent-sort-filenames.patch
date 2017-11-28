@@ -1,0 +1,11 @@
+--- a/tools/generate_filenames_gypi.py
++++ b/tools/generate_filenames_gypi.py
+@@ -98,7 +98,7 @@
+ 
+ 
+ def searh_files(src, suffix, exclude):
+-  files = glob.glob(os.path.join(src, '*.' + suffix))
++  files = sorted(glob.glob(os.path.join(src, '*.' + suffix)))
+   files = [f for f in files if os.path.basename(f) not in exclude]
+   return ([os.path.abspath(f) for f in files if not is_v8_library(f)],
+           [os.path.abspath(f) for f in files if is_v8_library(f)])

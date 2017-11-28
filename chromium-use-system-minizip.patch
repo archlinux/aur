@@ -1,0 +1,14 @@
+--- a/third_party/zlib/google/zip_reader.cc
++++ b/third_party/zlib/google/zip_reader.cc
+@@ -278,10 +278,9 @@
+ 
+   current_entry_info_.reset();
+   reached_end_ = false;
+-  const int kDefaultCaseSensivityOfOS = 0;
+   const int result = unzLocateFile(zip_file_,
+                                    path_in_zip.AsUTF8Unsafe().c_str(),
+-                                   kDefaultCaseSensivityOfOS);
++                                   NULL);
+   if (result != UNZ_OK)
+     return false;
+ 

@@ -1,0 +1,91 @@
+--- a/atom/browser/ui/views/menu_bar.cc
++++ b/atom/browser/ui/views/menu_bar.cc
+@@ -16,8 +16,6 @@
+ 
+ #if defined(OS_WIN)
+ #include "ui/gfx/color_utils.h"
+-#elif defined(USE_X11)
+-#include "chrome/browser/ui/libgtkui/skia_utils_gtk.h"
+ #endif
+ 
+ namespace atom {
+@@ -30,18 +28,71 @@ const char kViewClassName[] = "ElectronMenuBar";
+ const SkColor kDefaultColor = SkColorSetARGB(255, 233, 233, 233);
+ 
+ #if defined(USE_X11)
++SkColor GdkRGBAToSkColor(GdkRGBA color) {
++  return SkColorSetARGB(round(color.alpha * 255),
++                        round(color.red * 255),
++                        round(color.green * 255),
++                        round(color.blue * 255));
++}
++
+ void GetMenuBarColor(SkColor* enabled, SkColor* disabled, SkColor* highlight,
+                      SkColor* hover, SkColor* background) {
++  GtkWidget* window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+   GtkWidget* menu_bar = gtk_menu_bar_new();
+-
+-  GtkStyle* style = gtk_rc_get_style(menu_bar);
+-  *enabled = libgtkui::GdkColorToSkColor(style->fg[GTK_STATE_NORMAL]);
+-  *disabled = libgtkui::GdkColorToSkColor(style->fg[GTK_STATE_INSENSITIVE]);
+-  *highlight = libgtkui::GdkColorToSkColor(style->fg[GTK_STATE_SELECTED]);
+-  *hover = libgtkui::GdkColorToSkColor(style->fg[GTK_STATE_PRELIGHT]);
+-  *background = libgtkui::GdkColorToSkColor(style->bg[GTK_STATE_NORMAL]);
+-
++  GtkWidget* menu_item = gtk_menu_item_new_with_label("");
++  GtkWidget* label = gtk_bin_get_child(GTK_BIN(menu_item));
++  GtkStyleContext* window_style_ctx = gtk_widget_get_style_context(window);
++  GtkStyleContext* menu_bar_style_ctx =
++    gtk_widget_get_style_context(menu_bar);
++  GtkStyleContext* menu_item_style_ctx =
++    gtk_widget_get_style_context(menu_item);
++  GtkStyleContext* label_style_ctx = gtk_widget_get_style_context(label);
++  GdkRGBA normal_color;
++  GdkRGBA backdrop_color;
++  GdkRGBA prelight_color;
++  GdkRGBA* background_color_ptr;
++
++  gtk_container_add(GTK_CONTAINER(window), menu_bar);
++  gtk_menu_shell_append(GTK_MENU_SHELL(menu_bar), menu_item);
++
++  gtk_style_context_get(menu_bar_style_ctx,
++                        GTK_STATE_FLAG_NORMAL,
++                        "background-color",
++                        &background_color_ptr,
++                        NULL);
++
++  if (background_color_ptr->alpha == 0.0)
++    gtk_style_context_get(window_style_ctx,
++                          GTK_STATE_FLAG_NORMAL,
++                          "background-color",
++                          &background_color_ptr,
++                          NULL);
++
++  *background = GdkRGBAToSkColor(*background_color_ptr);
++  gdk_rgba_free(background_color_ptr);
++
++  gtk_style_context_get_color(label_style_ctx,
++                              GTK_STATE_FLAG_NORMAL,
++                              &normal_color);
++  *enabled = GdkRGBAToSkColor(normal_color);
++  *hover = GdkRGBAToSkColor(normal_color);
++
++  gtk_style_context_set_state(menu_item_style_ctx, GTK_STATE_FLAG_PRELIGHT);
++  gtk_style_context_get_color(label_style_ctx,
++                              GTK_STATE_FLAG_NORMAL,
++                              &prelight_color);
++  gtk_style_context_set_state(menu_item_style_ctx, GTK_STATE_FLAG_NORMAL);
++  *highlight = GdkRGBAToSkColor(prelight_color);
++
++
++  gtk_style_context_get_color(label_style_ctx,
++                              GTK_STATE_FLAG_BACKDROP,
++                              &backdrop_color);
++  *disabled = GdkRGBAToSkColor(backdrop_color);
++
++  gtk_widget_destroy(menu_item);
+   gtk_widget_destroy(menu_bar);
++  gtk_widget_destroy(window);
+ }
+ #endif
+ 

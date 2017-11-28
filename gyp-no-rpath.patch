@@ -1,0 +1,12 @@
+--- a/pylib/gyp/generator/ninja.py
++++ b/pylib/gyp/generator/ninja.py
+@@ -1221,9 +1221,6 @@
+         rpath = 'lib/'
+         if self.toolset != 'target':
+           rpath += self.toolset
+-          ldflags.append(r'-Wl,-rpath=\$$ORIGIN/%s' % rpath)
+-        else:
+-          ldflags.append('-Wl,-rpath=%s' % self.target_rpath)
+         ldflags.append('-Wl,-rpath-link=%s' % rpath)
+     self.WriteVariableList(ninja_file, 'ldflags',
+                            map(self.ExpandSpecial, ldflags))

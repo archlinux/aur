@@ -1,0 +1,65 @@
+--- a/atom/browser/ui/file_dialog_gtk.cc
++++ b/atom/browser/ui/file_dialog_gtk.cc
+@@ -2,6 +2,8 @@
+ // Use of this source code is governed by the MIT license that can be
+ // found in the LICENSE file.
+ 
++#include <glib/gi18n.h>
++
+ #include "atom/browser/ui/file_dialog.h"
+ 
+ #include "atom/browser/native_window_views.h"
+@@ -39,20 +41,20 @@ class FileChooserDialog {
+                     const DialogSettings& settings)
+       : parent_(static_cast<atom::NativeWindowViews*>(settings.parent_window)),
+         filters_(settings.filters) {
+-    const char* confirm_text = GTK_STOCK_OK;
++    const char* confirm_text = _("_OK");
+ 
+     if (!settings.button_label.empty())
+       confirm_text = settings.button_label.c_str();
+     else if (action == GTK_FILE_CHOOSER_ACTION_SAVE)
+-      confirm_text = GTK_STOCK_SAVE;
++      confirm_text = _("_Save");
+     else if (action == GTK_FILE_CHOOSER_ACTION_OPEN)
+-      confirm_text = GTK_STOCK_OPEN;
++      confirm_text = _("_Open");
+ 
+     dialog_ = gtk_file_chooser_dialog_new(
+         settings.title.c_str(),
+         NULL,
+         action,
+-        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
++        _("_Cancel"), GTK_RESPONSE_CANCEL,
+         confirm_text, GTK_RESPONSE_ACCEPT,
+         NULL);
+     if (parent_) {
+--- a/atom/browser/ui/message_box_gtk.cc
++++ b/atom/browser/ui/message_box_gtk.cc
+@@ -2,6 +2,8 @@
+ // Use of this source code is governed by the MIT license that can be
+ // found in the LICENSE file.
+ 
++#include <glib/gi18n.h>
++
+ #include "atom/browser/ui/message_box.h"
+ 
+ #include "atom/browser/browser.h"
+@@ -126,13 +128,13 @@ class GtkMessageBox {
+   const char* TranslateToStock(int id, const std::string& text) {
+     std::string lower = base::ToLowerASCII(text);
+     if (lower == "cancel")
+-      return GTK_STOCK_CANCEL;
++      return _("_Cancel");
+     else if (lower == "no")
+-      return GTK_STOCK_NO;
++      return _("_No");
+     else if (lower == "ok")
+-      return GTK_STOCK_OK;
++      return _("_OK");
+     else if (lower == "yes")
+-      return GTK_STOCK_YES;
++      return _("_Yes");
+     else
+       return text.c_str();
+   }

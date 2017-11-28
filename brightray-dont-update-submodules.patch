@@ -1,0 +1,11 @@
+--- a/script/bootstrap
++++ b/script/bootstrap
+@@ -24,7 +24,7 @@ def main():
+     print "Error: All options of libchromiumcontent are required OR let " \
+           "brightray choose it"
+     sys.exit(0)
+-  update_submodules()
++  # update_submodules()
+   setup_libchromiumcontent(args.dev, args.commit, args.target_arch, args.url,
+                            args.libcc_source_path,
+                            args.libcc_shared_library_path,

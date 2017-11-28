@@ -1,0 +1,50 @@
+--- a/common.gypi
++++ b/common.gypi
+@@ -22,12 +22,12 @@
+     'node_install_npm': 'false',
+     'node_prefix': '',
+     'node_shared': 'true',
+-    'node_shared_cares': 'false',
+-    'node_shared_http_parser': 'false',
++    'node_shared_cares': 'true',
++    'node_shared_http_parser': 'true',
+     'node_shared_libuv': 'false',
+     'node_shared_openssl': 'false',
+     'node_shared_v8': 'true',
+-    'node_shared_zlib': 'false',
++    'node_shared_zlib': 'true',
+     'node_tag': '',
+     'node_use_dtrace': 'false',
+     'node_use_etw': 'false',
+@@ -109,18 +109,6 @@
+         'conditions': [
+           ['OS=="linux"', {
+             'cflags': [
+-              '-Wno-parentheses-equality',
+-              '-Wno-unused-function',
+-              '-Wno-sometimes-uninitialized',
+-              '-Wno-pointer-sign',
+-              '-Wno-string-plus-int',
+-              '-Wno-unused-variable',
+-              '-Wno-unused-value',
+-              '-Wno-deprecated-declarations',
+-              '-Wno-return-type',
+-              '-Wno-shift-negative-value',
+-              '-Wno-format',
+-              '-Wno-varargs', # https://git.io/v6Olj
+               # Required when building as shared library.
+               '-fPIC',
+             ],
+@@ -160,6 +148,12 @@
+             ],
+           }],
+           ['OS=="linux" and libchromiumcontent_component==0', {
++            'libraries': [
++              '-lcares',
++              '-lcrypto',
++              '-lhttp_parser',
++              '-lz',
++            ],
+             # Prevent the linker from stripping symbols.
+             'ldflags': [
+               '-Wl,--whole-archive',
