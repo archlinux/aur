@@ -26,6 +26,6 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 "bin/$pkgname" "$pkgdir/usr/sbin/$pkgname"
-	install -Dm644 -d config "$pkgdir/etc/$pkgname"
+	install -Dm755 "bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 config/firegrid.toml "$pkgdir/etc/$pkgname/firegrid.toml"
 }
