@@ -3,7 +3,7 @@
 
 pkgname=ckb-next-latest-git
 pkgver=0.2.8.r238.ge86a65e
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git newdev branch"
 arch=('i686' 'x86_64')
