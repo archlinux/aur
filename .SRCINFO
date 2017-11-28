@@ -28,7 +28,7 @@ pkgbase = gitea-git
 	source = 0001-Adjust-config-for-Arch-Linux-package.patch
 	source = 0002-Adjust-service-file-for-Arch-Linux-package.patch
 	sha256sums = SKIP
-	sha256sums = febf332989e091f328602a8497315c7b1e7da3a30c715c7b05efce1c5332f592
+	sha256sums = a41f10f85d4ea0e91a0da5b6450845afa4e1ddb39032c37c0ee2abb746ce6cc8
 	sha256sums = 6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73
 
 pkgname = gitea-git

@@ -34,7 +34,7 @@ source=("git://github.com/go-gitea/gitea.git"
         "0001-Adjust-config-for-Arch-Linux-package.patch"
         "0002-Adjust-service-file-for-Arch-Linux-package.patch")
 sha256sums=('SKIP'
-            'febf332989e091f328602a8497315c7b1e7da3a30c715c7b05efce1c5332f592'
+            'a41f10f85d4ea0e91a0da5b6450845afa4e1ddb39032c37c0ee2abb746ce6cc8'
             '6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73')
 
 pkgver() {
@@ -50,7 +50,7 @@ prepare() {
   cp -r "${srcdir}/${_pkgname}" "${srcdir}/src/${_gourl}"
 
   msg2 "Patch config and service file"
-  patch -Np1 -i "${srcdir}/0001-Adjust-config-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/custom.sample/app.ini"
+  patch -Np1 -i "${srcdir}/0001-Adjust-config-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/custom/conf/app.ini.sample"
   patch -Np1 -i "${srcdir}/0002-Adjust-service-file-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service"
 }
 
@@ -67,11 +67,11 @@ package() {
   install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"
 
   install -dm0755 "${pkgdir}/usr/share/${_pkgname}/"
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/custom.sample" "${pkgdir}/usr/share/${_pkgname}"
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/custom/conf" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/public" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/templates" "${pkgdir}/usr/share/${_pkgname}"
 
-  install -Dm0644 "${pkgdir}/usr/share/${_pkgname}/custom.sample/app.ini" "${pkgdir}/etc/${_pkgname}/app.ini"
+  install -Dm0644 "${pkgdir}/usr/share/${_pkgname}/custom/conf/app.ini.sample" "${pkgdir}/etc/${_pkgname}/app.ini"
   install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
   install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
