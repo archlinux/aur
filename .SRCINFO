@@ -3,6 +3,7 @@ pkgbase = aws-xray-daemon
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://docs.aws.amazon.com/xray/latest/devguide/xray-daemon.html
+	install = aws-xray-daemon.install
 	arch = i686
 	arch = x86_64
 	license = Apache
