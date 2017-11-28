@@ -1,0 +1,38 @@
+From 9577618e2ae679988231cfa2162eb48cdb6ce5a0 Mon Sep 17 00:00:00 2001
+Message-Id: <9577618e2ae679988231cfa2162eb48cdb6ce5a0.1511732020.git.jan.steffens@gmail.com>
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Sun, 26 Nov 2017 22:32:36 +0100
+Subject: [PATCH] entry: Undo ABI breakage from addition of insert_emoji
+
+---
+ gtk/gtkentry.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gtk/gtkentry.h b/gtk/gtkentry.h
+index 073e703d0deea6a6..0372752f2963c940 100644
+--- a/gtk/gtkentry.h
++++ b/gtk/gtkentry.h
+@@ -146,19 +146,19 @@ struct _GtkEntryClass
+   void (* copy_clipboard)     (GtkEntry             *entry);
+   void (* paste_clipboard)    (GtkEntry             *entry);
+   void (* toggle_overwrite)   (GtkEntry             *entry);
+-  void (* insert_emoji)       (GtkEntry             *entry);
+ 
+   /* hooks to add other objects beside the entry (like in GtkSpinButton) */
+   void (* get_text_area_size) (GtkEntry       *entry,
+ 			       gint           *x,
+ 			       gint           *y,
+ 			       gint           *width,
+ 			       gint           *height);
+   void (* get_frame_size)     (GtkEntry       *entry,
+                                gint           *x,
+                                gint           *y,
+ 			       gint           *width,
+ 			       gint           *height);
++  void (* insert_emoji)       (GtkEntry             *entry);
+ 
+   /*< private >*/
+ 
+-- 
+2.15.0
+
