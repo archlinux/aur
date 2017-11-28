@@ -85,12 +85,7 @@ EOF
 
 sfdisk --activate ${loop} 1
 
-# To use the pacman cache from the host system, arrange for
-# /usr/share/buildstuff/proxy.cgi to be run as CGI when called as
-# http://10.0.2.2/proxy.cgi and make /var/cache/pacman/pkg writeable by it.
-
 install -Dm644 /etc/pacman.d/mirrorlist etc/pacman.d/mirrorlist
-sed -i etc/pacman.d/mirrorlist -e '1i Server = http://10.0.2.2/proxy.cgi/$repo/os/$arch/'
 
 umount boot
 popd

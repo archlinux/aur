@@ -19,11 +19,7 @@ Enable hardware virtualization.
 
 Make /tmp a tmpfs. (This is where the copy-on-write drive is stored.)
 
-Make the host and guest share their pacman package cache using the proxy.cgi
-script:
-- install any HTTP server on the host
-- make this sript run as CGI when called as http://10.0.2.2/proxy.cgi
-- make /var/cache/pacman/pkg writeable by this CGI instance
+Install a caching pacman mirror proxy on your local network and use it.
 
 
 REQUIREMENTS FOR ARCH.INSTALL

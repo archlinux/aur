@@ -1,7 +1,7 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=buildstuff
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Stuff to build packages in virtual machines'
 url='http://arch.vesath.org/'
@@ -11,7 +11,6 @@ depends=('qemu-headless' 'openssh' 'e2fsprogs' 'parted'
          'arch-install-scripts')
 source=('README'
         'LICENSE'
-        'proxy.cgi'
         'arch.build'
         'arch.install')
 
@@ -21,12 +20,10 @@ package() {
 	install arch.* "${pkgdir}/usr/bin"
 	install -d "${pkgdir}/var/lib/buildstuff"
 	install -Dm644 README "${pkgdir}/usr/share/${pkgname}/README"
-	install -Dm755 proxy.cgi "${pkgdir}/usr/share/${pkgname}/proxy.cgi"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums=('386c1300cf5ce851a7532d8ee903c077193f61e2c01007c7991283b887228faf'
+sha256sums=('6225e9cd7dbd46692d3b3ebde37a182c05863459879e99dbca5b3a4125e5eb1d'
             'acf683446e1162104759b1a75d18859b1a36ac6f3eeabb241025d0e6c37c7960'
-            '8db3fcc4ac6d7d4238b921c4a28b1802426868be58111006340d101718c15a98'
             '72307901efa866bdedf86c00dde6578cf5ce16ec801880f562d5fa57a82ad0d6'
-            '9be8c53b30e3029d0ae7ff7765c182105b0b3773420c69da69024ef5d8398c41')
+            'fce69f6429e05953fd964ab531f1b2d320385f5fa34d00d0a6d186e3fffa54f9')
