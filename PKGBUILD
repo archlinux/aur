@@ -2,7 +2,7 @@
 
 pkgname=franz
 pkgver=5.0.0_beta.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Free messaging app for services like WhatsApp, Slack, Messenger and many more."
 arch=('i686' 'x86_64')
 url="https://meetfranz.com/"
@@ -23,7 +23,7 @@ prepare() {
 build() {
   cd "$pkgname-${pkgver//_/-}"
   yarn install --production --non-interactive
-  yarn add electron-builder gulpjs/gulp#4.0
+  yarn add electron-builder@19.45.5 gulpjs/gulp#4.0
   node_modules/.bin/gulp build
   node_modules/.bin/electron-builder --linux dir
 }
