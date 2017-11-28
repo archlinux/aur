@@ -8,13 +8,13 @@ _pkgmin=
 _tarname="gnucobol-${_pkgmaj}${_pkgmin}"
 
 pkgver="${_pkgmaj}${_pkgmin}"
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source GNU COBOL compiler"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/open-cobol/"
 license=('GPL')
 depends=('db' 'gmp')
-makedepends=('help2man')
+makedepends=('gcc' 'help2man')
 options=('!libtool')
 source=("http://sourceforge.net/projects/open-cobol/files/${pkgname}/${_pkgmaj}/${_tarname}.tar.xz"
 	"cob-cflags.patch")
