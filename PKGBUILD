@@ -1,15 +1,15 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com?>
 pkgname=pcb-rnd-svn
 _pkgname=pcb-rnd-svn
-pkgver=r2689
+pkgver=r13074
 pkgrel=1
 pkgdesc="Fork of Geda-PCB with embedded scripting and other improvements."
 url="http://repo.hu/projects/pcb-rnd/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gd' 'libjpeg' 'lesstif' 'gtk2')
+depends=('gd' 'libjpeg' 'openmotif' 'gtk2')
 # - glib and gtk if you are using the gtk frontend
-# - motif or lesstif if you are using the lesstif frontend
+# - openmotif or lesstif if you are using the lesstif frontend
 # - gdlib if you are using the png HID
 makedepends=('svn')
 provides=('pcb-rnd')
