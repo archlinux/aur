@@ -1,7 +1,7 @@
 pkgbase = manserver
 	pkgdesc = Man to HTML converter which can act as an HTTP server on port 8888
 	pkgver = 1.08
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.squarebox.co.uk/users/rolf/download/manServer.shtml
 	arch = i686
 	arch = x86_64
@@ -12,11 +12,13 @@ pkgbase = manserver
 	source = manserver.service
 	source = manserver.rc
 	source = manpath.config
+	source = escape_more.diff
 	md5sums = a506e0be8eb47ff5661aa9b16bb3135c
 	md5sums = aad616695f21d344fddde257876d80c3
 	md5sums = 857f1784b306aa236ac433377643e04e
 	md5sums = 6bc451bd812fec0703d9ea7f792761a3
 	md5sums = 715455f372831b1d95133a6a54311c20
+	md5sums = a0d92c785dcd039b7c766a44d4ac8f5d
 
 pkgname = manserver
 

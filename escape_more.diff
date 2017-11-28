@@ -1,0 +1,25 @@
+--- manServer.pl.orig	2017-11-27 23:19:27.000000000 -0500
++++ manServer.pl	2017-11-27 23:19:36.000000000 -0500
+@@ -582,8 +582,8 @@
+ 	s,\\t,\t,g;
+ 
+ 	s,\\%,&nbsp;,g;
+-	s,\\{,,g;
+-	s,\\},,g;
++	s,\\\{,,g;
++	s,\\\},,g;
+ 	s,\\$,,g;
+ 
+ 	s,\\e,&#92;,g;
+@@ -1953,9 +1953,9 @@
+ 				$rowref->[$troffCol] .= "$style2</TD>";
+ 				++$troffCol;
+ 			}
+-			elsif ($col =~ m/T{/) #}
++			elsif ($col =~ m/T\{/) #}
+ 			{
+-				$col =~ s/T{//; #}
++				$col =~ s/T\{//; #}
+ 				$rowref->[$troffCol] = "<TD$align>$style1$col";
+ 				$troffMultiline = 1;
+ 			}
