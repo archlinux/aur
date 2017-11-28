@@ -8,7 +8,7 @@
 
 _name=gajim
 pkgname="$_name-git"
-pkgver=r14743.ab23757f0
+pkgver=r14904.92917c18f
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('python-dbus: dbus support'
             'farstream: for video/voice support'
             'gst-plugins-bad: for video/voice support'
             'gst-python: for video/voice support'
-            'gtkspell3: for spelling support'
+            'gspell: for spell checking support'
             'libxss: for idle module'
             'notification-daemon: for desktop notification'
             'gnome-keyring: to store passwords encrypted in GNOME Keyring'
