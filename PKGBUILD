@@ -7,12 +7,12 @@
 # Contributor: Massimiliano Brocchini <brocchini@netseven.it>
 
 pkgname=camlp5-transitional-git
-pkgver=7.02
+pkgver=7.03
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A preprocessor-pretty-printer of OCaml. (transitional)'
 conflicts=(camlp5 camlp5-git camlp5-transitional)
-provides=(camlp5-transitional)
+provides=(camlp5 camlp5-git camlp5-transitional)
 url='https://camlp5.github.io/'
 license=('BSD')
 depends=('ocaml')
