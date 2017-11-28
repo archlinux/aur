@@ -6,7 +6,7 @@ _pkgname='github-desktop'
 pkgname="${_pkgname}"
 pkgver=1.0.10_beta2
 gitname="release-${pkgver//_/-}"
-pkgrel=7
+pkgrel=8
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
@@ -16,7 +16,7 @@ optdepends=('hub: CLI interface for GitHub.')
 makedepends=('libcurl-openssl-1.0' 'xorg-server-xvfb' 'yarn')
 DLAGENTS=("http::/usr/bin/git clone --branch ${gitname} --single-branch %u")
 source=(
-  git+https://github.com/desktop/desktop.git
+  git+https://github.com/desktop/desktop.git#tag=${gitname}
   ${_pkgname}.desktop
   ${_pkgname}.patch
 )

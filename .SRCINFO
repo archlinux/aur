@@ -1,7 +1,7 @@
 pkgbase = github-desktop
 	pkgdesc = GUI for managing Git and GitHub.
 	pkgver = 1.0.10_beta2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://desktop.github.com
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = github-desktop
 	depends = libcurl-compat
 	depends = libcurl-gnutls
 	optdepends = hub: CLI interface for GitHub.
-	source = git+https://github.com/desktop/desktop.git
+	source = git+https://github.com/desktop/desktop.git#tag=release-1.0.10-beta2
 	source = github-desktop.desktop
 	source = github-desktop.patch
 	sha256sums = SKIP
