@@ -17,7 +17,7 @@ arch=('i686' 'x86_64')
 url="http://www.fil.ion.ucl.ac.uk/spm/"
 license=('GPL2')
 makedepends=(make)
-source=("${pkgname}-r${pkgver}.tar.gz::https://github.com/spm/${pkgname}/archive/${pkgname}-r${pkgver}.tar.gz")
+source=("${pkgname}-r${pkgver}.tar.gz::https://github.com/spm/${pkgname}/archive/r${pkgver}.tar.gz")
 sha256sums=('421e337c8685b0c2cfb43802459c4edd7cc322749ffbccdf68ee2e99b95ef843')
 
 prepare() {
