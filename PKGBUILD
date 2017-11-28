@@ -104,7 +104,7 @@ sha256sums=(
   'f9440479f3ae5ad0a39bba3150276627878bf83d6879444fb327c53a1dbb5a4d'
   '70301aa4eff4f42d7d39b276445dc7d8f44b8a0e184775e8a9e3055bb9d8590a'
   'e3812b78158672c7d96b6a58877681462f3fbdfe99a948b32c80c755c8682450'
-  'f9297948eba55fbaa6c9d1846b92070f27fda17afe78b41ed0e4c2eaa452b56c'
+  'a651de50e91f386057d69d11e2cdf6e020229aae0631f25073ca09fbb878d1db'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
@@ -135,7 +135,7 @@ source+=(
 sha256sums+=(
   '3aeee4ddad2e94e5dbd8da3f995ad3f887f35a241d82e8c64a22f792c159cc44'
   '2c6076d55da659723fb7b7871baaee95df3bdcd90e448955ed1ec53df6a1f2d0'
-  'a3877c72e4eaed6546a2d066f73f71665c51ea87cc752655185d99340deb7d70'
+  '522203ef0fa9cc621a67ba3df9d2070bbc21d9fdc85536ed10ebd85b99b83251'
 )
 
 _fusion_isoimages=(darwin darwinPre15)
@@ -180,9 +180,7 @@ if [ -n "$_enable_macOS_guests" ]; then
     rm manifest.plist
   done
 
-  sed -i -e "s/vmx_path = '/vmx_path = '${pkgdir//\//\\/}/" \
-      -i -e "s/vmwarebase = '/vmwarebase = '${pkgdir//\//\\/}/" \
-      -i -e "s/vmx_version = .*$/vmx_version = 'VMware Player ${_pkgver/_/ build-}'/" "$srcdir/unlocker.py"
+  sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
 fi
 }
 
@@ -367,10 +365,9 @@ package() {
     sed -i 's,@@LIBCONF_DIR@@,/usr/lib/vmware/libconf,g' "$pkgdir/usr/lib/vmware/libconf/etc/$file"
   done
 
-  sed -i 's,@@BINARY@@,/usr/bin/vmware,' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
+  sed -i 's,@@BINARY@@,/usr/lib/vmware/bin/vmware,' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
+  sed -i 's,@@BINARY@@,/usr/lib/vmware/bin/vmplayer,' "$pkgdir/usr/share/applications/vmware-player.desktop"
   sed -i 's,@@BINARY@@,/usr/bin/vmware-netcfg,' "$pkgdir/usr/share/applications/vmware-netcfg.desktop"
-  sed -i 's,@@VMWARE_INSTALLER@@,/usr/bin/vmware,' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
-  sed -i 's,@@BINARY@@,/usr/bin/vmplayer,' "$pkgdir/usr/share/applications/vmware-player.desktop"
 
   sed -i 's,@@AUTHD_PORT@@,902,' "$pkgdir/usr/lib/vmware/hostd/docroot/client/clients.xml"
 
