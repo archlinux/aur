@@ -1,12 +1,12 @@
 pkgbase = texlive-most-doc
 	pkgdesc = Most TeXLive documentation
-	pkgver = 20171127
+	pkgver = 20171128
 	pkgrel = 1
 	url = http://tug.org/texlive/
 	install = texlive-most-doc.install
 	arch = any
 	license = unknown
-	makedepends = wget
+	makedepends = rsync
 	optdepends = texlive-bin: The texdoc program and some more documentation
 	options = !strip
 	options = !purge
