@@ -69,5 +69,7 @@ ac_add_options --disable-mobile-optimize
 ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-profiling
+ac_add_options --disable-signmar
+ac_add_options --disable-stylo
 
 # vim:set ft=sh:

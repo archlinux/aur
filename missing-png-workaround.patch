@@ -1,0 +1,12 @@
+diff --git a/browser/themes/linux/jar.mn b/browser/themes/linux/jar.mn
+index 631b5e7823a3..303024c0325e 100644
+--- a/browser/themes/linux/jar.mn
++++ b/browser/themes/linux/jar.mn
+@@ -28,7 +28,6 @@ browser.jar:
+   skin/classic/browser/reload-stop-go@2x.png
+   skin/classic/browser/searchbar.css
+   skin/classic/browser/setDesktopBackground.css
+-  skin/classic/browser/slowStartup-16.png
+   skin/classic/browser/webRTC-indicator.css  (../shared/webRTC-indicator.css)
+ * skin/classic/browser/controlcenter/panel.css        (controlcenter/panel.css)
+ #ifndef MOZ_PHOTON_THEME
