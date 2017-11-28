@@ -1,8 +1,9 @@
-# Maintainer: Michael Adler <therisen06 plus aur at gmail a-dot com>
+# Maintainer: Bernardas Ališauskas <bernardas.alisauskas@protonmail.com>
+# Previous Contributors: Michael Adler <therisen06 plus aur at gmail a-dot com>
 # Previous Contributors: kainlite <kainlite@gmail.com>
 
 pkgname=libcouchbase
-pkgver=2.7.5
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="The C library provides fast access to documents in the latest Couchbase Server"
 arch=('i686' 'x86_64')
@@ -13,18 +14,13 @@ depends=('libevent')
 makedepends=('cmake')
 install=$pkgname.install
 source=(
-    "http://packages.couchbase.com/clients/c/libcouchbase-${pkgver}.tar.gz"
-    "fix_cbc_name_clash.patch"
+    "https://github.com/couchbase/libcouchbase/releases/download/2.8.3/libcouchbase-${pkgver}.tar.gz"
 )
-sha1sums=('644bf75188e0cba07b01bef4d0da8abeff1c780d'
-          'abee74d11d177a10ee3b3075d50b0e587def2ccb')
+sha1sums=('7aac810b40ddb32397c5086f5c0cad97cc911c77')
 
 build() {
   tar -xzf "libcouchbase-${pkgver}.tar.gz" -C "${srcdir}/libcouchbase-${pkgver}"
   cd "${srcdir}/libcouchbase-${pkgver}"
-
-  msg2 "Fixing cbc name clash..."
-  patch -p1 -i ../fix_cbc_name_clash.patch
 
   # For debugging:
   # cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr CMakeLists.txt
