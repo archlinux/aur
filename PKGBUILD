@@ -4,7 +4,7 @@
 # Contributor: Ferik <djferik at gmail dot com>
 
 pkgname=masterpdfeditor-qt4
-pkgver=4.2.68
+pkgver=4.3.61
 pkgrel=1
 pkgdesc='A complete solution for creation and editing PDF files - Qt4 version'
 url='https://code-industry.net/free-pdf-editor/'
@@ -15,8 +15,8 @@ source=('masterpdfeditor.desktop')
 source_i686=("http://get.code-industry.net/public/master-pdf-editor-${pkgver}_i386.tar.gz")
 source_x86_64=("http://get.code-industry.net/public/master-pdf-editor-${pkgver}_qt4.amd64.tar.gz")
 sha1sums=('5b3a0392390e49d4f7f4e478dd336476436f5cfa')
-sha1sums_i686=('8a2c0229934194a24f882696a4296c4e1be736b9')
-sha1sums_x86_64=('96d8861fea7fdd2c3f14c63d28dac0004c789ceb')
+sha1sums_i686=('2b71064461d5c5429659a70a1c4eb1445e4ad0be')
+sha1sums_x86_64=('90b4ef0f5218b1a171e9f4ce4f2e3fbbaa3bbdb9')
 
 package() {
   depends=('gcc-libs' 'glibc' 'qt4' 'sane')
