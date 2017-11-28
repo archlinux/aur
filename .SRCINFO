@@ -1,0 +1,37 @@
+pkgbase = apacman-git
+	pkgdesc = AUR package manager helper and pacman wrapper, forked from packer adding many new features
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://github.com/oshazard/apacman
+	install = apacman-git.install
+	arch = any
+	license = GPL
+	depends = bash
+	depends = binutils
+	depends = ca-certificates
+	depends = curl
+	depends = fakeroot
+	depends = file
+	depends = grep
+	depends = jshon
+	depends = sed
+	depends = tar
+	depends = wget
+	optdepends = apacman-deps: Required AUR build depends
+	optdepends = apacman-utils: Useful AUR tools
+	optdepends = bash-bats: Run unit tests
+	optdepends = customizepkg: Tool to auto-patch AUR PKGBUILDs
+	optdepends = git: Fetch old version of AUR PKGBUILDs
+	optdepends = pkgfile: Search local package metadata
+	optdepends = proot: Allows running unit tests as user
+	optdepends = man: Debug network errors
+	optdepends = rsync: Built-in ABS support
+	provides = apacman
+	conflicts = apacman
+	options = !strip
+	backup = etc/apacman.conf
+	source = https://github.com/oshazard/apacman/releases/download/v3.1/apacman-3.1.tar.gz
+	md5sums = 66950d9890b3f5a7eb07cd60b096b846
+
+pkgname = apacman-git
+
