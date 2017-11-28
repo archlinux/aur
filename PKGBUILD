@@ -1,7 +1,7 @@
 # Maintainer: Wouter Haffmans <wouter@simply-life.net>
 pkgname=tomtomsportsconnect
-pkgver=3.3.4
-pkgrel=2
+pkgver=3.3.6
+pkgrel=1
 pkgdesc="TomTom Sports Connect"
 arch=(x86_64)
 url="http://us.support.tomtom.com/app/answers/detail/a_id/24742/~/linux-version-of-tomtom-sports-connect"
@@ -19,7 +19,7 @@ source=(
     fix-desktop-file.patch
     90-tomtomsports.rules)
 noextract=()
-md5sums=('809ef329d824aebe73fbd0073d57f751'
+md5sums=('9dd3f132de4aad8de5f6990d0c4ba020'
          '23de8b949214475945e4aa6537e26319'
          '9176bd3daa77589fea115735fadee288')
 
