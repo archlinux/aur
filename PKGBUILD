@@ -2,7 +2,7 @@
 
 pkgbase=linux-surfacepro3-git
 _srcname=linux
-pkgver=4.15rc1.r0.g4fbd8d194f06
+pkgver=4.15rc1.r20.g43f462f1c2e1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '4633ae19b9a9871a3cfffba98ec7c3cd240f64bef8a0eebcf1212219c80972fd'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             '56152d1f7cac31d0a9a7414e950106c3945d5de8d50bc75cf7385fa46078b1de'
-            'c9f73523cf56964b98cfd843f58b580d0e4ee856eb16f4e3de315e1f01094f6f'
+            '66c405b1ebb5eb8bd0b55ed3cba5dd176697880dd70be910c543a35f54ef05de'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
             '31d109a2f5864d865b3ce3c310158b2e9ae77f9c424f2af5a7e45548d62a2eb3')
@@ -47,23 +47,23 @@ prepare() {
   patch -p1 -F5 -i "${srcdir}/touchscreen_multitouch_fixes2.patch"
 
   # Personal patches
-  if [ "$personal" = 'y' ]; then
+  if [[ "$personal" == y ]]; then
     for i in init kconfig xattr; do
       patch -p1 -F5 -i "${srcdir}/${i}.patch"
     done
   fi
 
   ## If sp3config='y' use personal config as a base
-  if [ "$sp3config" = 'y' ]; then
+  if [[ "$sp3config" == y ]]; then
     cat "${srcdir}/config.sp3" >./.config
-  elif [ "$CARCH" = "x86_64" ]; then
+  elif [[ "$CARCH" == x86_64 ]]; then
     cat "${srcdir}/config.x86_64" >./.config
   else
     cat "${srcdir}/config" > ./.config
   fi
 
   # set localversion to kernel name
-  if [ "${_kernelname}" != "" ]; then
+  if [[ -n "${_kernelname}" ]]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   else
@@ -80,33 +80,31 @@ prepare() {
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make xconfig # X-based configuration
+  # make menuconfig # CLI menu for configuration
+  # make xconfig # X-based configuration
   # make oldconfig # using old config from previous kernel verson
   # make nconfig # new CLI menu for configuration
   # make olddefconfig # old config from previous kernel, defaults for new options
   # ... or manually edit .config
 
-  printf '\n \033[32m %s \033[0m ' "[Run local([m]odconfig|[y]esconfig) or [s]kip? (m/y/S)]"
-  read -r -n 1; echo
-  case "$REPLY"  in
-  [Mm]*)
+  printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run local([m]odconfig|[y]esconfig) or [s]kip? (m/y/S)]"
+  read -r; echo; case "${REPLY:1:1}" in
+  [Mm])
     make localmodconfig ;;
-  [Yy]*)
+  [Yy])
     make localyesconfig ;;
   *)
-    printf ' \033[32m %s \n\033[0m ' "Continuing..." ;;
+    printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
   esac
 
-  printf '\n \033[32m %s \033[0m ' "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"
-  read -r -n 1; echo
-  case "$REPLY"  in
-  [Nn]*)
+  printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"
+  read -r; echo; case "${REPLY:1:1}" in
+  [Nn])
     make nconfig ;;
-  [Oo]*)
+  [Oo])
     make olddefconfig ;;
   *)
-    printf ' \033[32m %s \n\033[0m ' "Continuing..."; ;;
+    printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
   esac
 
   # rewrite configuration
