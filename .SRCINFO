@@ -17,7 +17,7 @@ pkgbase = ckb-next-latest-git
 	conflicts = ckb-git
 	conflicts = ckb-git-latest
 	conflicts = ckb-next
-	source = ckb-next::git+https://github.com/mattanger/ckb-next.git#branch=newdev
+	source = ckb-next-latest-git::git+https://github.com/mattanger/ckb-next.git#branch=newdev
 	md5sums = SKIP
 
 pkgname = ckb-next-latest-git

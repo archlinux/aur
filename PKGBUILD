@@ -16,7 +16,7 @@ optdepends=('libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (
 conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next')
 provides=('ckb-next')
 install=ckb-next-latest-git.install
-source=('ckb-next::git+https://github.com/mattanger/ckb-next.git#branch=newdev')
+source=('ckb-next-latest-git::git+https://github.com/mattanger/ckb-next.git#branch=newdev')
 md5sums=('SKIP')
 
 pkgver() {
