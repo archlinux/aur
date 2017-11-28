@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=62.0.3202.94
-pkgrel=2
+pkgrel=3
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -202,7 +202,7 @@ declare -rgA _system_libs=(
   [flac]=flac
   #[freetype]=freetype2      # https://crbug.com/pdfium/733
   [harfbuzz-ng]=harfbuzz-icu
-  [icu]=icu                 
+  #[icu]=icu                 
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng           # https://crbug.com/752403#c10
@@ -277,7 +277,7 @@ patch -Np1 -i ../036.patch
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
 patch -Np1 -i ../888.patch
-patch -Np1 -u ../pt.patch
+patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
