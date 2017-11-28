@@ -6,7 +6,7 @@ pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
 _pkgver=5.7.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced digital photo management application"
 arch=('x86_64')
 license=('GPL')
@@ -16,9 +16,11 @@ makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost
              'kfilemetadata' 'akonadi-contacts' 'qtav' 'threadweaver' 'kcalcore'
              'knotifyconfig' 'libmediawiki' 'libkvkontakte')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
-        digikam-kcalcore-17.12.patch)
+        digikam-kcalcore-17.12.patch
+        digikam-qt-5.9.3.patch::"https://cgit.kde.org/digikam.git/patch/?id=855ba5b7")
 sha256sums=('3605ffb5b6e8fbd6b725e5075f74f505d7edee7531789c2882d11df2d20150f5'
-            '61648bdeb88dcb94d2896b9d9211c6a6b50a39a143701e04465aa040a60053c0')
+            '61648bdeb88dcb94d2896b9d9211c6a6b50a39a143701e04465aa040a60053c0'
+            '03822e596321028d0971ec82351337dad76abeda93c9cef3b1d2a31807e02661')
 
 prepare() {
   mkdir -p build
@@ -30,6 +32,8 @@ prepare() {
 # fix build with kcalcore 17.12
   cd $pkgname-$_pkgver/core
   patch -p1 -i "$srcdir"/digikam-kcalcore-17.12.patch
+# fix thumbnails with Qt 5.9.3
+  patch -p1 -i "$srcdir"/digikam-qt-5.9.3.patch
 }
 
 build() {
