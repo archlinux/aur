@@ -1,0 +1,4 @@
+/pkg/
+/src/
+f*.tar.gz
+firegrid-*.pkg.tar.xz
