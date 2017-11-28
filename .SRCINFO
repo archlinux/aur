@@ -11,6 +11,7 @@ pkgbase = apacman-utils-git
 	depends = pkgbuild-introspection
 	provides = apac-migrate
 	provides = aurpush
+	provides = apacman-utils
 	conflicts = apacman-utils
 	source = https://github.com/oshazard/apacman-utils/archive/master.tar.gz
 	md5sums = 8fa845cc88f80d42c153a17e5a1c169c
