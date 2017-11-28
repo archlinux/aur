@@ -1,9 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz-bin
 _vendorname=cliqz
-pkgver=1.16.3
-_cqzbuildid=20171109085129
-_mozver=56.0.2
+pkgver=1.17.0
+_cqzbuildid=20171127205425
+_mozver=57.0
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser, repackaged from debian official cliqz repository"
 arch=('x86_64')
@@ -15,7 +15,9 @@ depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-gli
          nss hunspell sqlite ttf-font libpulse)
 source=("http://repository.cliqz.com.s3.amazonaws.com/dist/debian-release/pool/main/c/cliqz/${_vendorname}-${pkgver}-release.${_cqzbuildid}.x86_64.deb"
         "https://raw.githubusercontent.com/cliqz-oss/browser-f/master/LICENSE")
-sha256sums=('7b86814b482f96067a20e213c61538ec56d44bf620adb2b5141985f7832ca41b'
+
+deb_sha=$(curl -s http://repository.cliqz.com.s3.amazonaws.com/dist/debian-release/dists/stable/main/binary-amd64/Packages | sed -n 's/^SHA256: \(.*\)$/\1/p')
+sha256sums=("$deb_sha"
             '866824541983ecabc2a8de3296d780e6a22dccba12f3b74ef9abf4f87d71bcbf')
 
 prepare() {
