@@ -1,0 +1,14 @@
+pkgbase = vcfanno
+	pkgdesc = Annotate a VCF with other VCFs/BEDs/tabixed files
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://github.com/brentp/vcfanno
+	arch = x86_64
+	license = MIT
+	provides = vcfanno
+	conflicts = vcfanno
+	source = https://github.com/brentp/vcfanno/releases/download/v0.2.8/vcfanno_linux64
+	md5sums = e5c665b0ffee8cb09a732768cdaae733
+
+pkgname = vcfanno
+
