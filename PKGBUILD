@@ -1,6 +1,5 @@
-# Maintainer: Danilo Kuehn <dk at nogo-software dot de>
-# Git: https://github.com/nogo/archlinux-pkgbuild
-# Brackets v0.34
+# Maintainer: Morgana  <morganamilo@gmail.com>
+# Contributor: Danilo Kuehn <dk at nogo-software dot de>
 
 _shell=brackets-shell
 _shell_version=linux-1547
@@ -12,20 +11,27 @@ _version_prefix=release-
 pkgname=brackets-git
 pkgver=1.5
 pkgrel=1
-pkgdesc="Adobe Brackets - An open source code editor for the web, written in JavaScript, HTML and CSS."
+pkgdesc="An open source code editor for the web, written in JavaScript, HTML and CSS."
 arch=("i686" "x86_64")
 url="http://brackets.io"
 license=("MIT")
-depends=("gconf" "libgcrypt15" "nodejs" "npm" "libudev.so.0" "nspr" "nss")
-optdepends=("chromium: for live view" "google-chrome: for live view")
-makedepends=("git" "p7zip" "gyp-git")
+depends=("alsa-lib" "gconf" "libgcrypt15" "nodejs" "npm" "libudev0" "nspr" "nss" "desktop-file-utils")
+optdepends=(
+	"google-chrome: to enable Live Preview"
+	"gnuplot: to enable node benchmarking"
+	"gtk2: to enable native UI"
+	"ruby: to enable LiveDevelopment Inspector"
+	"hicolor-icon-theme: for hicolor theme hierarchy"
+)
+makedepends=("git" "unzip" "gtk2" "python2" "npm" "gcc5")
 provides=("brackets" "adobe-brackets")
 conflicts=('brackets' 'brackets-bin')
 install=${pkgname}.install
-source=("${_shell}::git+https://github.com/adobe/brackets-shell.git"
-        "${_brackets}::git+https://github.com/adobe/brackets.git")
-md5sums=("SKIP"
-         "SKIP")
+source=(
+	"${_shell}::git+https://github.com/adobe/brackets-shell.git"
+        "${_brackets}::git+https://github.com/adobe/brackets.git"
+)
+md5sums=("SKIP" "SKIP")
 
 pkgver() {
   if [[ -z "${_brackets_version}" ]]; then  
@@ -50,16 +56,20 @@ prepare() {
 }
 
 build() {
+  cd ${srcdir}/${_brackets}
+  npm install
+  node_modules/grunt-cli/bin/grunt build
+
   cd ${srcdir}/${_shell}
+  sed -i 's/python/python2/' gyp/gyp
   npm install
   node_modules/grunt-cli/bin/grunt setup
-  make
+  LINK=g++-5 make
 }
 
 package() {
   cd ${srcdir}/${_shell}
  
-  msg2 "  -> Installing program..." 
   install -dm755 "${pkgdir}/opt/brackets"
   cp -R out/Release/lib "${pkgdir}/opt/brackets/lib"
   cp -R out/Release/locales "${pkgdir}/opt/brackets/locales"
@@ -77,7 +87,6 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /opt/brackets/brackets "$pkgdir/usr/bin/brackets"
 
-  msg2 "  -> Installing icons and license..." 
   install -dm755 "${pkgdir}/usr/share"
   install -Dm644 installer/linux/debian/brackets.desktop "${pkgdir}/usr/share/applications/brackets.desktop"
   install -Dm755 installer/linux/debian/package-root/usr/share/doc/brackets/copyright ${pkgdir}/usr/share/licenses/brackets/copyright
@@ -88,7 +97,6 @@ package() {
   done
   
   cd ${srcdir}/${_brackets}
-  msg2 "  -> Installing samples..."
   cp -R "samples" "${pkgdir}/opt/brackets/samples"
   cp -R "src" "${pkgdir}/opt/brackets/www"
 }
