@@ -5,8 +5,8 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-git"
-pkgver=1.0.10.beta0.r29.gc6a57140e
-pkgrel=1
+pkgver=1.0.10.beta2.r59.g97b1f2fb5
+pkgrel=2
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
@@ -18,21 +18,15 @@ provides=('github-desktop')
 conflicts=('github-desktop')
 source=(
   git+https://github.com/desktop/desktop.git
-  $_pkgname.desktop
-  $_pkgname.patch
+  ${_pkgname}.desktop
 )
 sha256sums=(
   'SKIP'
   ce0dae70066703df656aa6f509f9a7f4f59e081e8f05be8aa7a81ee4605661c3
-  25979a1e08c87361d457a277cb39327bdd82cadb3207f21bd11580579d9ecc62
 )
 pkgver() {
   cd desktop
   git describe --long --tags | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-prepare() {
-  cd desktop
-  patch -p1 -i "$srcdir/$_pkgname.patch"
 }
 build() {
   cd desktop
@@ -42,11 +36,11 @@ build() {
   yarn build:prod
 }
 package() {
-  install -d "$pkgdir/opt/$_pkgname"
-  cp -r --preserve=mode desktop/dist/GitHub\ Desktop-linux-x64/* "$pkgdir/opt/$_pkgname/"
-  printf '#!/bin/sh\n\nLD_PRELOAD=libcurl.so.3 /opt/github-desktop/GitHub\ Desktop "$@"\n' | install -Dm755 /dev/stdin "$pkgdir/usr/bin/github-desktop"
-  install -D "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -D "desktop/app/static/logos/1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$_pkgname.png"
-  install -D "desktop/app/static/logos/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
-  install -D "desktop/app/static/logos/256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+  install -d "${pkgdir}/opt/${_pkgname}"
+  cp -r --preserve=mode desktop/dist/GitHub\ Desktop-linux-x64/* "${pkgdir}/opt/${_pkgname}/"
+  printf '#!/bin/sh\n\n/opt/github-desktop/GitHub\ Desktop "$@"\n' | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/github-desktop"
+  install -D "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -D "desktop/app/static/logos/1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
+  install -D "desktop/app/static/logos/512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+  install -D "desktop/app/static/logos/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 }
