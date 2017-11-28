@@ -1,7 +1,7 @@
 # Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
 pkgname=plasma5-applets-playbar2-git
-pkgver=9999
-pkgrel=2
+pkgver=2.5.r44.g8b66075
+pkgrel=1
 pkgdesc="Applet that shows now playing music"
 arch=('i686' 'x86_64')
 url="https://github.com/audoban/PlayBar2/"
