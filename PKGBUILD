@@ -1,6 +1,6 @@
 # Maintainer: Adrien Folie <folie.adrien@gmail.com>
 pkgname=firegrid
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Click anywhere with only 3 keystrokes"
 arch=(any)
