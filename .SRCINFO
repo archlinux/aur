@@ -1,0 +1,15 @@
+pkgbase = libconfig9
+	pkgdesc = C/C++ Configuration File Library 1.6 release
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/hyperrealm/libconfig
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	depends = libconfig
+	conflicts = libconfig=1.6
+	source = https://archive.archlinux.org/packages/l/libconfig/libconfig-1.6-2-x86_64.pkg.tar.xz
+	md5sums = SKIP
+
+pkgname = libconfig9
+
