@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/n/nordnm/nordnm-${pkgver}.tar.gz")
-md5sums=('512eaa5db4de2e22ea071ced58e91c7b')
+md5sums=('5f001b944b2ebd23d1c4da39f598b6b2')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
