@@ -1,60 +1,52 @@
-# Maintainer: Ben Widawsky <ben@bwidawsk.net>
-# Contributor: Chris Forbes <chad.versace@intel.com>
-# Contributor: Chad Versace <chrisf@ijw.co.nz>
-# Contributor: Emil Velikov <emil.l.velikov@gmail.com>
-
+# Maintainer: Clayton Craft <clayton@craftyguy.net>
 
 pkgname=waffle-git
-pkgver=20150217
-pkgrel=2
-pkgdesc="a library for choosing window system and OpenGL API at runtime (git version)"
-arch=('i686' 'x86_64')
-url="http://www.waffle-gl.org/"
+pkgver=1.5.2.3.r209.g1ded029
+pkgrel=1
+pkgdesc='a library for choosing window system and OpenGL API at runtime'
+arch=('x86_64')
+url='http://www.waffle-gl.org'
+provides=('waffle')
+conflicts=('waffle')
 license=('BSD')
+
 depends=('libx11' 'libxcb' 'wayland')
-makedepends=('git' 'cmake' 'xcb-proto' 'libegl' 'libgbm' 'libgl' 'libxslt' 'docbook-xsl')
-provides=("${pkgname%-git}" "$pkgname")
-conflicts=("${pkgname%-git}")
-backup=()
-options=()
-install=
-source=('waffle::git+https://github.com/waffle-gl/waffle.git#branch=master')
-md5sums=('SKIP')
+makedepends=('cmake' 'xcb-proto' 'mesa-libgl' 'mesa' 'libxslt' 'docbook-xsl')
+
+options=('docs' '!strip' 'debug')
+source=('git://github.com/waffle-gl/waffle')
+sha1sums=('SKIP')
+
+_gitname='waffle'
 
 pkgver() {
-	date +%Y%m%d
+  cd "$srcdir/$_gitname"
+  git describe --long | sed 's/^debian\///;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/$_gitname"
 
-	cmake \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		-DCMAKE_BUILD_TYPE=Release \
-		-Dwaffle_has_gbm=1 \
-		-Dwaffle_has_glx=1 \
-		-Dwaffle_has_x11_egl=1 \
-		-Dwaffle_has_wayland=1 \
-		-Dwaffle_build_manpages=1 \
-		-Dwaffle_build_htmldocs=1 \
-		-Dwaffle_build_examples=0
-	make
-}
-
-check() {
-	cd "$srcdir/${pkgname%-git}"
-
-	make -k check
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -Dwaffle_has_gbm=1 \
+    -Dwaffle_has_glx=1 \
+    -Dwaffle_has_x11_egl=1 \
+    -Dwaffle_has_wayland=1 \
+    -Dwaffle_build_manpages=1 \
+    -Dwaffle_build_htmldocs=1 \
+    -Dwaffle_build_examples=0
+  make
 }
 
 package() {
-	optdepends=('libegl: for x11_egl, gbm or wayland support' 'libgbm: for gbm support')
+  cd "$srcdir/$_gitname"
 
-	cd "$srcdir/${pkgname%-git}"
-
-	make DESTDIR="$pkgdir/" install
-	install -m755 -d "$pkgdir/usr/share/licenses/${pkgname%-git}"
-	install -m644 "$pkgdir/usr/share/doc/waffle1/LICENSE.txt" \
-		      "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.txt"
+  make DESTDIR="$pkgdir/" install
+  install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 "$pkgdir/usr/share/doc/waffle1/LICENSE.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
+
