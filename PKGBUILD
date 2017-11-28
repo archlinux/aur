@@ -9,7 +9,7 @@
 
 pkgname=archey4
 pkgver=v4.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Maintained fork of the original Archey Linux system tool"
 arch=('any')
 url="https://git.io/archey4"
@@ -30,5 +30,5 @@ package() {
 	ln -s /usr/bin/${pkgname} ${pkgdir}/usr/bin/archey
 
 	install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-	install -D -m644 LICENSE ${pkgdir}/usr/share/doc/${pkgname}/README.md
+	install -D -m644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README
 }

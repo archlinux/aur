@@ -1,7 +1,7 @@
 pkgbase = archey4
 	pkgdesc = Maintained fork of the original Archey Linux system tool
 	pkgver = v4.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.io/archey4
 	arch = any
 	license = GPL
