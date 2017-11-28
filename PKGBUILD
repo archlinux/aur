@@ -1,7 +1,9 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer:
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
+
 pkgname=asublim
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Clone of the xsublim screensaver'
 arch=('x86_64')
 depends=('xorg-rgb' 'xorg-xlsfonts' 'xosd' 'zsh')
