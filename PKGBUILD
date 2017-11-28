@@ -2,7 +2,7 @@
 pkgname=pt1_drv-dkms-hg
 _pkgname=pt1_drv
 pkgver=r141.c8688d7d6382
-pkgrel=2
+pkgrel=3
 pkgdesc="PT1/2 driver sources for DKMS"
 arch=('i686' 'x86_64')
 url="http://hg.honeyplanet.jp/pt1/"
@@ -14,7 +14,8 @@ install=dkms.install
 source=("$pkgname"::hg+'http://hg.honeyplanet.jp/pt1/'
         dkms.conf
         99-pt1_drv.rules
-        linux-4.2-vmalloc.patch)
+        linux-4.2-vmalloc.patch
+        linux-4.12-copy-user.patch)
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -24,6 +25,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   patch -Np1 -i "$srcdir/linux-4.2-vmalloc.patch"
+  patch -Np1 -i "$srcdir/linux-4.12-copy-user.patch"
 }
 
 build() {
@@ -43,4 +45,5 @@ package() {
 sha1sums=('SKIP'
           'af3fc15f2b7e9e1fc9a8559546a0ed733f7115c6'
           'ad3c58078fbd48b8f97ea24af2b084be29210b47'
-          '547f63e6449a73e9072681babc89a7be12e2c07b')
+          '547f63e6449a73e9072681babc89a7be12e2c07b'
+          'ad636e6a198628703b7d18c67f091f6271f7cd0f')
