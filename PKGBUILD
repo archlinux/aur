@@ -1,22 +1,23 @@
-# Maintainer: Marcs <aur (at) emarcs [.] org>
+# Maintainer: Marcs <aur (at) mg.odd.red>
 # Contributor: OmeGa <omega [U+0040] mailoo [.] org>
 # Contributor: Vinycius Maia <suportevg@uol.com.br>
 
 pkgname=firefox-extension-greasemonkey
-_file=402242
-pkgver=3.17
+_file=758417
+pkgver=4.0
 pkgrel=1
 pkgdesc="Customize the way a web page displays or behaves, by using small bits of JavaScript."
 arch=('any')
 url="http://www.greasespot.net/"
 license=('MPL')
-depends=('firefox>=38.0')
-source=("https://addons.mozilla.org/firefox/downloads/file/$_file/greasemonkey-$pkgver.xpi")
-sha1sums=('d1a43b10e9ffadaf95d0558bb57dd467758e6de2')
+makedepends=('jq')
+depends=('firefox>=52.0')
+source=("https://addons.mozilla.org/firefox/downloads/file/$_file/greasemonkey-$pkgver-an+fx-linux.xpi")
+sha1sums=('7949d0fbedf6880e9f57a51ecbe4f10b2f297d44')
 
 package() {
   cd ${srcdir}
-  local _emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
+  local _emid=$(cat manifest.json | jq -r '.applications.gecko.id')|| return 1
   test ! -z "${_emid}"
   local _file=(*.xpi)
   test "${#_file[@]}" -eq 1
