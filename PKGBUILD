@@ -23,5 +23,6 @@ package() {
 
 	for lib in audio graphics network system window; do
 		install -Dm644 "libvoidcsfml-$lib.so.2.4" "$pkgdir/usr/lib/libvoidcsfml-$lib.so.2.4"
+		install -Dm644 "libvoidcsfml-$lib.so.2.4" "$pkgdir/usr/lib/libvoidcsfml-$lib.so"
 	done
 }
