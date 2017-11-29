@@ -1,6 +1,6 @@
-# Maintainer: TrekDev <trekdev0 at gmail dot com>
+# Maintainer: Francisco Giordano <frangio.1@gmail.com>
 pkgname=truffle
-pkgver=3.4.9
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='A development framework for Ethereum'
 url='https://github.com/trufflesuite/truffle'
@@ -11,12 +11,8 @@ noextract=("truffle-${pkgver}.tgz")
 makedepends=('npm')
 depends=('nodejs')
 conflicts=('truffle-git')
-sha1sums=('9186a2b8d51696fffae1439bf8eea3dd3deed44e')
+sha1sums=('d8661a4ad7a6ca094b7517d29b199c60e6dde665')
 provides=('truffle')
-optdepends=('mocha: testing support'
-            'testrpc: testing support'
-            'geth: contract deployment'
-            'parity: contract deployment')
 
 package() {
   npm install -g --production --prefix "$pkgdir/usr" "truffle-${pkgver}.tgz"

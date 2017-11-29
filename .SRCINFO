@@ -1,21 +1,17 @@
 pkgbase = truffle
 	pkgdesc = A development framework for Ethereum
-	pkgver = 3.4.9
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/trufflesuite/truffle
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	optdepends = mocha: testing support
-	optdepends = testrpc: testing support
-	optdepends = geth: contract deployment
-	optdepends = parity: contract deployment
 	provides = truffle
 	conflicts = truffle-git
-	noextract = truffle-3.4.9.tgz
-	source = https://registry.npmjs.org/truffle/-/truffle-3.4.9.tgz
-	sha1sums = 9186a2b8d51696fffae1439bf8eea3dd3deed44e
+	noextract = truffle-4.0.1.tgz
+	source = https://registry.npmjs.org/truffle/-/truffle-4.0.1.tgz
+	sha1sums = d8661a4ad7a6ca094b7517d29b199c60e6dde665
 
 pkgname = truffle
 
