@@ -10,7 +10,7 @@ pkgbase = minikube
 	optdepends = virtualbox
 	optdepends = docker-machine-kvm
 	source = minikube_0.24.0::https://storage.googleapis.com/minikube/releases/v0.24.0/minikube-linux-amd64
-	sha256sums = 
+	sha256sums = fb624bfda432c764d19212fcaab2a368db8bb0e8427b7ff04b5b684faab0b463
 
 pkgname = minikube
 

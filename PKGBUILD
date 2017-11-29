@@ -19,7 +19,7 @@ optdepends=(
 makedepends=()
 
 source=(minikube_$pkgver::https://storage.googleapis.com/minikube/releases/v$pkgver/minikube-linux-amd64)
-sha256sums=('')
+sha256sums=('fb624bfda432c764d19212fcaab2a368db8bb0e8427b7ff04b5b684faab0b463')
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
