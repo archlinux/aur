@@ -1,0 +1,16 @@
+pkgbase = jbe-bin
+	pkgdesc = Java bytecode editing tool
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://set.ee/jbe
+	arch = any
+	license = unknown
+	depends = java-environment
+	provides = jbe
+	source = http://set.ee/jbe/jbe-0.1.1.zip
+	source = jbe.sh
+	sha256sums = f3a8a79b4f6df6dbe0dfeaff04b9c3b47e240df97eb70f2cc8ff63f9917284bc
+	sha256sums = 7bcfc91e980fa88da7594476e28c0ab7ac2a7dffc5ad18ff60e77369963c1010
+
+pkgname = jbe-bin
+
