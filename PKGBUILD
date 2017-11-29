@@ -31,7 +31,7 @@ package(){
 
 	msg2 "Installing Openbazaar data"
 	install -d $pkgdir/${appdir%%/${pkgname%%-git}}
-	cp -rf $pkgname-desktop-$pkgver $pkgdir/$appdir
+	cp -rf ${pkgname%%-git} $pkgdir/$appdir
 
 	msg2 "Installing execution script"
 	install -Dm755 ${pkgname%%-git}.js $pkgdir/usr/bin/${pkgname%%-git}
@@ -44,7 +44,7 @@ package(){
 	cd $pkgdir/$appdir
 	rm -rf .travis
 	cp -rf prod/* js/
-    	find "${pkgname%%-git}"/${appdir} \
+    	find "${pkgdir}"/${appdir} \
         	-name "bin" -prune -exec rm -r '{}' \; \
         	-or -name "example" -prune -exec rm -r '{}' \; \
        	 	-or -name "examples" -prune -exec rm -r '{}' \; \
