@@ -8,6 +8,7 @@ pkgdesc="The Exploit Database (EDB) an ultimate archive of exploits and vulnerab
 url="https://github.com/SYWorks/wireless-ids"
 license=("custom")
 arch=('any')
+provides=("wireless-ids")
 depends=('python2' 'aircrack-ng' 'wireshark-cli' 'mlocate')
 options=('!strip')
 source=("git+https://github.com/SYWorks/${_gitname}.git" "wids.default" "wireless-ids.service")
