@@ -1,8 +1,9 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot[de>
 # Co-Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+
 pkgname=moodle
-pkgver=3.3.2
-_pkgver='stable33'
+pkgver=3.4
+_pkgver='stable34'
 pkgrel=1
 pkgdesc='Moodle is a open-source software learning management system'
 arch=('any')
@@ -12,7 +13,7 @@ depends=('php' 'php-intl' 'php-gd')
 conflicts=('moodle-plus')
 options=('!strip')
 source=("https://download.moodle.org/${_pkgver}/moodle-${pkgver}.tgz")
-sha256sums=('1a34c8e85d05bb693a1f4f5e70b63f527cac655101236ab1e474aa295843fbf1')
+sha256sums=('06888238944d951009f19d2705c2fe8ed64fe6f5e526310f52646a4129612277')
 
 package() {
     cd "$pkgdir"
@@ -29,5 +30,4 @@ package() {
 
     # php.ini
     install -dm0755 $pkgdir/etc/php/conf.d/
-    echo 'open_basedir = ${open_basedir}:/usr/share/webapps/moodle:/usr/share/webapps/moodledata:/var/lib/moodle' > $pkgdir/etc/php/conf.d/moodle.ini
 }
