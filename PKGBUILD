@@ -5,8 +5,8 @@
 # Contributor: denn
 
 pkgname=i2pd
-pkgver=2.15.0
-pkgrel=2
+pkgver=2.16.0
+pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/PurpleI2P/$pkgname"
@@ -38,38 +38,37 @@ package(){
 
 	cd build
 	make DESTDIR=$pkgdir install
-  install -Dm0644 ../contrib/debian/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
-  install -Dm0644 ../contrib/debian/$pkgname.tmpfile $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
+	install -Dm0644 ../contrib/debian/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
+	install -Dm0644 ../contrib/debian/$pkgname.tmpfile $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
 
-  install -Dm0644 $srcdir/$pkgname-$pkgver/contrib/$pkgname.conf $pkgdir/${_conf_dest}/$pkgname.conf
-  install -Dm0644 $srcdir/$pkgname-$pkgver/contrib/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
-  install -Dm0644 $srcdir/$pkgname-$pkgver/contrib/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
+	install -Dm0644 $srcdir/$pkgname-$pkgver/contrib/$pkgname.conf $pkgdir/${_conf_dest}/$pkgname.conf
+	install -Dm0644 $srcdir/$pkgname-$pkgver/contrib/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
+	install -Dm0644 $srcdir/$pkgname-$pkgver/contrib/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
 
-  install -d -m0750 $pkgdir/${_home_dest}
-  ln -s /${_conf_dest}/$pkgname.conf $pkgdir/${_home_dest}/$pkgname.conf
-  ln -s /${_conf_dest}/tunnels.conf $pkgdir/${_home_dest}/tunnels.conf
-  ln -s /${_conf_dest}/subscriptions.txt $pkgdir/${_home_dest}/subscriptions.txt
+	install -d -m0750 $pkgdir/${_home_dest}
+	ln -s /${_conf_dest}/$pkgname.conf $pkgdir/${_home_dest}/$pkgname.conf
+	ln -s /${_conf_dest}/tunnels.conf $pkgdir/${_home_dest}/tunnels.conf
+	ln -s /${_conf_dest}/subscriptions.txt $pkgdir/${_home_dest}/subscriptions.txt
 
-  cd $srcdir/$pkgname-$pkgver/contrib
-  _dest="$pkgdir/${_share_dest}/${pkgname}"
-  find ./certificates -type d -exec install -d {} ${_dest}/{} \;
-  find ./certificates -type f -exec install -Dm644 {} ${_dest}/{} \;
-  ln -s /${_share_dest}/${pkgname}/certificates $pkgdir/${_home_dest}/certificates
+	cd $srcdir/$pkgname-$pkgver/contrib
+	_dest="$pkgdir/${_share_dest}/${pkgname}"
+	find ./certificates -type d -exec install -d {} ${_dest}/{} \;
+	find ./certificates -type f -exec install -Dm644 {} ${_dest}/{} \;
+	ln -s /${_share_dest}/${pkgname}/certificates $pkgdir/${_home_dest}/certificates
 
-  # license
-  install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir/${_share_dest}/licenses/${pkgname}/LICENSE"
+	# license
+	install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir/${_share_dest}/licenses/${pkgname}/LICENSE"
 
-  # docs
-  _dest="$pkgdir/${_share_dest}/doc/${pkgname}"
-  install -Dm644 $srcdir/$pkgname-$pkgver/README.md "${_dest}/README.md"
+  	# docs
+	_dest="$pkgdir/${_share_dest}/doc/${pkgname}"
+  	install -Dm644 $srcdir/$pkgname-$pkgver/README.md "${_dest}/README.md"
 
-  # remove src folder and LICENSE
-  rm -r $pkgdir/usr/{src,LICENSE}
+  	# remove src folder and LICENSE
+  	rm -r $pkgdir/usr/{src,LICENSE}
 
-  #man
-  install -Dm644 $srcdir/$pkgname-$pkgver/debian/$pkgname.1 "$pkgdir/${_share_dest}/man/man1/$pkgname.1"
-
-  chmod -R o= $pkgdir/${_home_dest}
+  	#man
+  	install -Dm644 $srcdir/$pkgname-$pkgver/debian/$pkgname.1 "$pkgdir/${_share_dest}/man/man1/$pkgname.1"
+  	chmod -R o= $pkgdir/${_home_dest}
 }
 
-md5sums=('8d37d0eacc2bf1f4be6d70250f5542d2')
+md5sums=('fda55bfaedec3a8706fb11befdf12563')
