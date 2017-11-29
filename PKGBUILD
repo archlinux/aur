@@ -1,7 +1,7 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname=pyethereum-git
-pkgver=20150731
+pkgver=20171127
 pkgrel=1
 pkgdesc="Ethereum Python client"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('git' 'python2-setuptools')
 groups=('ethereum')
 url="https://github.com/ethereum/pyethereum"
 license=('MIT')
-source=(git+https://github.com/ethereum/pyethereum)
+source=("git+https://github.com/ethereum/pyethereum")
 sha256sums=('SKIP')
 provides=('pyethereum')
 conflicts=('pyethereum')
