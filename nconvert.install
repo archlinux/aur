@@ -1,0 +1,7 @@
+post_install() {
+  printf "If you intend to use NConvert commercially, you must purchase a license.\n"
+}
+
+post_upgrade() {
+  post_install
+}
