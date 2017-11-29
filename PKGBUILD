@@ -43,7 +43,7 @@ package() {
   cd "${pkgname}"
   python setup.py install --prefix /usr --root "${pkgdir}" --optimize=1
 
-  chmod 644 "${pkgdir}/usr/lib/python3.6/site-packages/fail2ban-0.10.0a2-py3.6.egg-info"/*
+  chmod 644 "${pkgdir}/usr/lib/python3.6/site-packages/fail2ban-0.11.0.dev0-py3.6.egg-info"/*
 
   install -Dm644 files/fail2ban.service \
     "${pkgdir}"/usr/lib/systemd/system/fail2ban.service
