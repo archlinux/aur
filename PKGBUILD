@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/${pkgname}.git"
 license=('MIT')
 depends=('glibc')
+makedepends=('cmake')
 source=("https://github.com/Snaipe/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
