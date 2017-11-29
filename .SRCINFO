@@ -1,7 +1,7 @@
 pkgbase = banshee-git
 	pkgdesc = Music management and playback for GNOME (fork by arfbtwn)
-	pkgver = 2.9.1.r327.gd6f7b6294
-	pkgrel = 1
+	pkgver = 2.9.1.r352.gc2b1fa99a
+	pkgrel = 2
 	url = https://github.com/arfbtwn/banshee
 	arch = i686
 	arch = x86_64

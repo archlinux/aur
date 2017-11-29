@@ -2,8 +2,8 @@
 
 pkgname=banshee-git
 _pkgbase=banshee
-pkgver=2.9.1.r327.gd6f7b6294
-pkgrel=1
+pkgver=2.9.1.r352.gc2b1fa99a
+pkgrel=2
 pkgdesc="Music management and playback for GNOME (fork by arfbtwn)"
 arch=('i686' 'x86_64')
 url="https://github.com/arfbtwn/banshee"
@@ -23,9 +23,8 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
+build() {
   cd $_pkgbase
-  git checkout feature/mediapanel
 #  autoreconf -fvi
   NOCONFIGURE=1 ./autogen.sh
   export MONO_SHARED_DIR="$srcdir/.wabi"
@@ -47,17 +46,13 @@ prepare() {
               --disable-user-help \
               --disable-youtube \
               --disable-gio-hardware \
+              --enable-treeview \
               --with-vendor-build-id=ArchLinux
-}
 
-build() {
   export MONO_SHARED_DIR="$srcdir/.wabi"
   mkdir -p "$MONO_SHARED_DIR"
   export LIBGPODSHARP='-r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/pango-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/atk-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/gdk-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/gtk-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/glib-sharp.dll'
-
   cd "$srcdir/$_pkgbase"
-  sed 's/CollectionExtensions/Hyena.Collections.CollectionExtensions/g' -i src/Core/Banshee.Services/Banshee.Preferences/Collection.cs
-
   make
 }
 
