@@ -2,7 +2,7 @@
 
 pkgname=bludit
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bludit is a small an leightweight CMS without any DB"
 arch=("any")
 url="https://www.bludit.com/"
@@ -20,6 +20,5 @@ package() {
     rm -Rf usr/share/webapps/${pkgname}/bl-content
     ln -s ../../../../var/lib/${pkgname} usr/share/webapps/${pkgname}/bl-content 
 
-    chown -R http:http usr/share/webapps/${pkgname}
     chown -R http:http var/lib/${pkgname}
 }
