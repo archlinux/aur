@@ -1,6 +1,6 @@
 # Maintainer: jynn <uaggz@student.kit.edu>
 pkgname=dnsblock-git
-pkgver=r132.0afbee4
+pkgver=r135.c07e03a
 pkgrel=1
 pkgdesc="get a list of servers to block ads using your dns"
 arch=('any')
@@ -21,6 +21,7 @@ check() {
 }
 
 pkgver() {
+	cd "${srcdir}/dnsblock"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
