@@ -1,4 +1,5 @@
-# Maintainer: Carl George < arch at cgtx dot us >
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Carl George < arch at cgtx dot us >
 
 _name="click-plugins"
 _module="${_name}"
