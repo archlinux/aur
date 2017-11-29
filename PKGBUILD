@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=pd-jacktime-git
-pkgver=7.4fc6da2
+pkgver=8.7fa6d37
 pkgrel=1
 pkgdesc="Jack transport client for Pd"
 arch=("i686" "x86_64")
