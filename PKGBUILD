@@ -21,7 +21,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git://github.com/01org/mkl-dnn.git")
+source=("git+https://github.com/01org/mkl-dnn.git")
 sha1sums=('SKIP')
 
 build() {

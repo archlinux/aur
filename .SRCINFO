@@ -8,7 +8,7 @@ pkgbase = mkl-dnn
 	makedepends = git
 	makedepends = cmake>=2.8
 	makedepends = doxygen>=1.8.5
-	source = git://github.com/01org/mkl-dnn.git
+	source = git+https://github.com/01org/mkl-dnn.git
 	sha1sums = SKIP
 
 pkgname = mkl-dnn
