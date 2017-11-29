@@ -20,6 +20,7 @@ build(){
 	cd $srcdir/$pkgname-desktop-$pkgver
 	npm install
 	npm run build
+	rm -rf {.eslint*,.travis*}
 	cp -rf prod/* js/
 	npm prune --production
 }
@@ -38,18 +39,6 @@ package(){
 	msg2 "Installing icons and desktop menu entry"
 	install -Dm644 $pkgname-desktop-$pkgver/imgs/icon.png $pkgdir/usr/share/pixmaps/$pkgname.png
 	install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
-
-	# Clean up
-	find "${pkgdir}"${appdir} \
-		-name "package.json" \
-            	-exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${appdir}|" \
-                -i {} \; \
-	        -or -name ".*" -prune -exec rm -r '{}' \; \
-        	-or -name "bin" -prune -exec rm -r '{}' \; \
-	        -or -name "example" -prune -exec rm -r '{}' \; \
-        	-or -name "examples" -prune -exec rm -r '{}' \; \
-	        -or -name "test" -prune -exec rm -r '{}' \; \
-        	-or -executable -type f -exec rm -r '{}' \;
 }
 
 md5sums=('245c699cbca72ee71c7cdc1487cb285f'
