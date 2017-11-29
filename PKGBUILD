@@ -6,23 +6,25 @@
 #_GPU_TARGET=Fermi
 #_GPU_TARGET=Kepler
 #_GPU_TARGET=Maxwell
-# Can also be one of these: sm20 sm30 sm35 sm50
-_GPU_TARGET=sm30
+#_GPU_TARGET=Pascal
+#_GPU_TARGET=Volta
+# Can also be one of these: sm_20 sm_30 sm_50 sm_60 sm_70 etc.
+_GPU_TARGET=sm_30
 # Set _USE_CMAKE=1 to use CMake
 _USE_CMAKE=0
 ##### End
 
 pkgname=magma
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems. (with CUDA)"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://icl.cs.utk.edu/magma/"
 license=(custom)
 depends=("cuda>=6.5.0" "gsl" "python" "openblas-lapack")
 makedepends=("gcc-fortran")
 options=('staticlibs')
-sha256sums=('df5d4ace417e5bf52694eae0d91490c6bde4cde1b0da98e8d400c5c3a70d83a2')
+sha256sums=('010a4a057d7aa1e57b9426bffc0958f3d06913c9151463737e289e67dd9ea608')
 source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}.tar.gz")
 
 build() {
