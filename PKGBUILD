@@ -18,7 +18,7 @@ package_python-django-rest-framework() {
     'python-pygments: Pygments support for API docs'
     'python-markdown: Markdown support for the browsable API'
     'python-django-crispy-forms: Improved HTML display for filtering'
-    'python-core-api: Schema generation support'
+    'python-coreapi: Schema generation support'
   )
   cd "$srcdir/django-rest-framework-$pkgver"
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -31,7 +31,7 @@ package_python2-django-rest-framework() {
     'python2-pygments: Pygments support for API docs'
     'python2-markdown: Markdown support for the browsable API'
     'python2-django-crispy-forms: Improved HTML display for filtering'
-    'python2-core-api: Schema generation support'
+    'python2-coreapi: Schema generation support'
   )
   cd "$srcdir/django-rest-framework-$pkgver"
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
