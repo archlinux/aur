@@ -9,6 +9,7 @@ pkgbase = glorytun
 	makedepends = libsodium
 	makedepends = pkgconfig
 	depends = libsodium
+	depends = iproute2
 	source = https://github.com/angt/glorytun/releases/download/v0.0.92-mud/glorytun-0.0.92-mud.tar.gz
 	md5sums = adc94aea7b138cf9e33b0869b37c2e8a
 
