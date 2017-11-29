@@ -28,7 +28,11 @@ build() {
   cd "${srcdir}/mkl-dnn"
   git checkout v0.10
   cd scripts && ./prepare_mkl.sh && cd -
-  mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr .. && make mkldnn
+  mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr .. && make doc mkldnn
+  mkdir -p /usr/include/mkldnn/include/
+  cp -r external/mkl*/include/* /usr/include/mkldnn/include/
+  mkdir -p /usr/lib/mkldnn/lib/
+  cp -r external/mkl*/lib/* /usr/include/mkldnn/lib/
 }
 
 #check() {}
