@@ -1,6 +1,6 @@
 /pkg/
 /src/
 /*.pkg.tar
-/*.pkg.tar.gz
+/*.pkg.tar.xz
 
 /mergerfs-tools/
