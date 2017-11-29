@@ -1,0 +1,16 @@
+pkgbase = gumbo-gq-git
+	pkgdesc = GQ is a CSS Selector Engine for Gumbo Parser written in C++11
+	pkgver = r138.f2051cc
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	conflicts = gumbo-gq
+	source = gumbo-gq::git://github.com/TechnikEmpire/GQ.git
+	source = 0001-Add-CMake-install.patch
+	md5sums = SKIP
+	md5sums = 2a050ea524fdceac7c6af6596b7d9c80
+
+pkgname = gumbo-gq-git
+

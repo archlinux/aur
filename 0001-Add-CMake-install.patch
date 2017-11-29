@@ -1,0 +1,77 @@
+From fc943805cc2da8e7b715feea81ffd0038d39a9f0 Mon Sep 17 00:00:00 2001
+From: Steven Joruk <steven@joruk.com>
+Date: Fri, 1 Dec 2017 20:12:19 +0000
+Subject: [PATCH] Add CMake install
+
+---
+ CMakeLists.txt | 22 +++++++++++++++++++++-
+ GQ.pc.in       | 13 +++++++++++++
+ 2 files changed, 34 insertions(+), 1 deletion(-)
+ create mode 100644 GQ.pc.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7525ce3..aaeae60 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,6 +2,8 @@
+ # This is meant to be used within a cmake project
+ cmake_minimum_required(VERSION 3.0)
+ 
++set(PROJECT_VERSION 1.0.0)
++
+ if(UNIX)
+   
+   # C++14
+@@ -15,6 +19,8 @@ pkg_check_modules(GUMBO REQUIRED gumbo)
+ include_directories(${GUMBO_INCLUDE_DIRS})
+ link_directories(${GUMBO_LIBRARY_DIRS})
+ 
++file(GLOB_RECURSE HEADERS "src/*.hpp")
++
+ add_library(GQ SHARED
+ 
+   src/AttributeSelector.cpp
+@@ -50,6 +56,20 @@ add_library(GQ SHARED
+ 
+ target_link_libraries(GQ ${GUMBO_LIBRARIES})
+ 
++set_target_properties(GQ PROPERTIES PUBLIC_HEADER "${HEADERS}")
+ 
++configure_file(
++  "${CMAKE_CURRENT_SOURCE_DIR}/GQ.pc.in"
++  "${CMAKE_CURRENT_BINARY_DIR}/GQ.pc" @ONLY
++)
+ 
+-  
++install(
++  TARGETS GQ
++  LIBRARY DESTINATION lib
++  PUBLIC_HEADER DESTINATION include/GQ
++)
++
++install(
++  FILES "${CMAKE_CURRENT_BINARY_DIR}/GQ.pc"
++  DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig"
++)
+diff --git a/GQ.pc.in b/GQ.pc.in
+new file mode 100644
+index 0000000..969b128
+--- /dev/null
++++ b/GQ.pc.in
+@@ -0,0 +1,13 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
++sharedlibdir=${libdir}
++includedir=${prefix}/include/GQ
++
++Name: GQ
++Description: A C++ CSS Selector Engine for Gumbo Parser
++Version: @PROJECT_VERSION@
++
++Requires:
++Libs: -L${libdir} -L${sharedlibdir} -lGQ
++Cflags: -I${includedir}
+-- 
+2.15.0
+
