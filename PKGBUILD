@@ -2,7 +2,7 @@
 
 pkgname=mkl-dnn
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 
 epoch=
 pkgdesc="Intel® Math Kernel Library for Deep Neural Networks"
@@ -27,8 +27,8 @@ sha1sums=('SKIP')
 build() {
   cd "${srcdir}/mkl-dnn"
   git checkout v0.10
-  cd scripts && ./prepare_mkl.sh && cd -
-  mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr .. && make doc mkldnn
+  ([[ ! -d external ]] && (cd scripts && ./prepare_mkl.sh && cd -)) || true
+  mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr .. && make doc && make -j2 mkldnn
 }
 
 #check() {}
@@ -36,8 +36,8 @@ build() {
 package() {
   cd "${srcdir}/mkl-dnn/build"
   make install
-  mkdir -p /usr/include/mkldnn/include/
-  cp -r external/mkl*/include/* /usr/include/mkldnn/include/
-  mkdir -p /usr/lib/mkldnn/lib/
-  cp -r external/mkl*/lib/* /usr/include/mkldnn/lib/
+  mkdir -p ${pkgdir}/usr/include/mkldnn/include/
+  cp -r ../external/mkl*/include/* ${pkgdir}/usr/include/mkldnn/include/
+  mkdir -p ${pkgdir}/usr/lib/mkldnn/lib/
+  cp -r ../external/mkl*/lib/* ${pkgdir}/usr/lib/mkldnn/lib/
 }
