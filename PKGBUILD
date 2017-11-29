@@ -3,7 +3,7 @@
 
 pkgname=teamcity
 pkgver=2017.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
 url="http://www.jetbrains.com/teamcity/"
@@ -18,7 +18,7 @@ source=('https://download.jetbrains.com/teamcity/TeamCity-2017.2.tar.gz'
         'teamcity.conf')
 sha256sums=('bb8a4f00e422e39e1901eadb12dfbf70bf1ae69b9d24c13cafb53f0d09b71e82'
             'b66ca4d1963138be8f88c4bf7cf358b1bf096711a618f2f501ce9805fafdbb20'
-            'b0639bd4bf1608e4312f2c43020054fc4d893de5e6f1a0845a0fdd9ce94143d5'
+            '59e68ab2524e66f7c074ac4215a0449ed9242160946ef3364d378e015525e749'
             'b74128251ac1943ff48956bb2849731423b712d078ec76f1a8959532f0161c91'
             'f6d9b522a2730f9e6b6e044cb6f76fa31767788a4f7f21ab4e751dc1f88f6143'
             '7d140cac121eb725990edc2323682a0dbaeb15393b8fda10fb043af994843248')
