@@ -1,13 +1,19 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=heaptrack-git
-pkgver=379.cbec4a5
+pkgver=682.c6ef628
 pkgrel=1
 pkgdesc="A heap memory profiler"
 arch=('i686' 'x86_64')
 url="http://milianw.de/tag/heaptrack"
 license=('APACHE')
-depends=('libunwind' 'elfutils' 'boost-libs')
-makedepends=('git' 'cmake' 'boost')
+# dependencies with GUI enabled
+depends=('kdiagram' 'threadweaver' 'kitemmodels' 'kio' 'boost-libs')
+makedepends=('git' 'extra-cmake-modules' 'boost' 'sparsehash')
+# minimal dependencies
+#depends=('libunwind' 'boost-libs')
+#makedepends=('git' 'cmake' 'boost')
+provides=('heaptrack')
+conflicts=('heaptrack')
 source=('git+git://anongit.kde.org/heaptrack')
 md5sums=('SKIP')
 
