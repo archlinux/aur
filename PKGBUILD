@@ -1,5 +1,5 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
-
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname=pyethereum-git
 pkgver=20150731
 pkgrel=1
