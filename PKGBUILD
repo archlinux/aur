@@ -18,20 +18,18 @@ options=('!strip')
 
 build(){
 	cd $srcdir/$pkgname-desktop-$pkgver
-	npm install
+	npm install --silent --ignore-scripts
 	npm run build
-	rm -rf {.eslint*,.travis*}
-	cp -rf prod/* js/
 	npm prune --production
 }
 
 package(){
 	cd $srcdir
-	appdir=/usr/lib/
+	appdir="usr/lib/$pkgname"
 
 	msg2 "Installing Openbazaar data"
-	install -d $pkgdir/$appdir
-	cp -r $pkgname-desktop-$pkgver $pkgdir/$appdir$pkgname
+	install -d $pkgdir/${appdir%%/$pkgname}
+	cp -rf $pkgname-desktop-$pkgver $pkgdir/$appdir
 
 	msg2 "Installing execution script"
 	install -Dm755 $pkgname.js $pkgdir/usr/bin/$pkgname
@@ -39,6 +37,17 @@ package(){
 	msg2 "Installing icons and desktop menu entry"
 	install -Dm644 $pkgname-desktop-$pkgver/imgs/icon.png $pkgdir/usr/share/pixmaps/$pkgname.png
 	install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+	
+	# Cleanup
+	cd $pkgdir/$appdir
+	rm -rf .travis
+	cp -rf prod/* js/
+    	find "${pkgdir}"/${appdir} \
+        	-name "bin" -prune -exec rm -r '{}' \; \
+        	-or -name "example" -prune -exec rm -r '{}' \; \
+       	 	-or -name "examples" -prune -exec rm -r '{}' \; \
+        	-or -name "test" -prune -exec rm -r '{}' \; \
+        	-or -executable -type f -exec rm -r '{}' \;
 }
 
 md5sums=('245c699cbca72ee71c7cdc1487cb285f'
