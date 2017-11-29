@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=pyethereum
-pkgver=1.6.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Ethereum Python client"
 arch=('any')
@@ -20,8 +20,8 @@ url="https://github.com/ethereum/pyethereum"
 license=('MIT')
 options=(!emptydirs)
 source=("https://github.com/ethereum/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('00dd2203cc5c9bbf283c667828e23f30')
-sha256sums=('9b1a29614720cbeb9c974aa30d7b114cb99e88cd4266beff252996a17a64c30c')
+md5sums=('17c051bb42eaecc85ce3c830a16be3ab')
+sha256sums=('da9c6d8ec0e42ea453344b3569ae66de6fc519b8baad8f93e400f31c8afc91e8')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
