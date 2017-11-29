@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=glsl-language-server
-pkgver=0.3.0
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A language server implementation for GLSL"
 arch=('x86_64')
@@ -30,6 +30,7 @@ package() {
   cd "$pkgname"/build
 
   make DESTDIR="$pkgdir/" install
+  install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
