@@ -9,7 +9,6 @@ pkgdesc="To Do List / Time Tracker with Jira Integration."
 arch=('x86_64')
 url="http://www.super-productivity.com"
 license=('MIT')
-provides=('super-productivity')
 makedepends=('npm' 'electron' 'gyp' 'gulp' 'bower')
 source=("${pkgname}-{$pkgver}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v$pkgver.tar.gz")
 md5sums=('998485e4eeb3b7e1fbe54b64a79d28d0')
