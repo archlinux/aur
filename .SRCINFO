@@ -1,12 +1,12 @@
 pkgbase = reactotron
 	pkgdesc = Package archlinux for Reactotron
-	pkgver = 1.11.2
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/infinitered/reactotron
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
-	source = https://github.com/infinitered/reactotron/releases/download/v1.11.2/Reactotron-linux-x64.zip
+	source = https://github.com/infinitered/reactotron/releases/download/v1.13.0/Reactotron-linux-x64.zip
 	source = reactotron.png
 	source = reactotron.desktop
 	sha256sums = 40437732b62a80dd114c7ef2d8bae16e24d54700f424866f6abb20968f6e2478
@@ -14,4 +14,3 @@ pkgbase = reactotron
 	sha256sums = 90a4434cfd00204fd6e1122caea254658c6f603289f15256a02955bfd7bec9ed
 
 pkgname = reactotron
-
