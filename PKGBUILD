@@ -1,6 +1,7 @@
 # Maintainer: Mani Zaeim <mani.zaeim@gmail.com>
 # Contributor: slithery, Lone_Wolf, Eschwartz <eschwartz@archlinux.org>
-#Special Thanks to the contributors who helped me to make thins PKGBUILD
+# Special Thanks to the contributors who helped me to make thins PKGBUILD
+# Thanks to Lone_Wolf for suggestions and guidance
 pkgname="super-productivity"
 pkgver=1.5.2
 pkgrel=1
