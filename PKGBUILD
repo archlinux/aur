@@ -2,7 +2,7 @@
 
 pkgname=mkl-dnn
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 
 epoch=
 pkgdesc="Intel® Math Kernel Library for Deep Neural Networks"
