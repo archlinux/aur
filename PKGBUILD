@@ -19,7 +19,8 @@ options=('!strip')
 
 build(){
   cd $srcdir/${pkgname%%-git}
-	npm install --silent --ignore-scripts
+	npm install --silent --ignore-scripts 
+	npm install node-sass
 	npm run build
 	npm prune --production
 }
@@ -36,7 +37,7 @@ package(){
 	install -Dm755 ${pkgname%%-git}.js $pkgdir/usr/bin/${pkgname%%-git}
 
 	msg2 "Installing icons and desktop menu entry"
-	install -Dm644 ${pkgname%%-git}-desktop-$pkgver/imgs/icon.png $pkgdir/usr/share/pixmaps/${pkgname%%-git}.png
+	install -Dm644 ${pkgname%%-git}/imgs/icon.png $pkgdir/usr/share/pixmaps/${pkgname%%-git}.png
 	install -Dm644 ${pkgname%%-git}.desktop $pkgdir/usr/share/applications/${pkgname%%-git}.desktop
 	
 	# Cleanup
