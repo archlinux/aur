@@ -1,9 +1,10 @@
 [Desktop Entry]
+Version=1.0
 Type=Application
-Exec=jcryptool
 Name=JCrypTool
+GenericName=Cryptography e-learning platform
+TryExec=jcryptool
+Exec=jcryptool
 Icon=jcryptool
-GenericName=Crypthography e-learning platform
 Terminal=false
 Categories=Education;
-Version=1.0
