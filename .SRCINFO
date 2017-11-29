@@ -1,6 +1,6 @@
 pkgbase = mesos
 	pkgdesc = A cluster manager that simplifies the complexity of running applications on a shared pool of servers
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = http://mesos.apache.org/
 	arch = i686
@@ -20,11 +20,10 @@ pkgbase = mesos
 	depends = libnl>=3.2.28
 	depends = libevent>=2
 	optdepends = openssl: ssl support
-	source = ftp://apache.cs.utah.edu/apache.org/mesos/1.4.0/mesos-1.4.0.tar.gz
-	source = https://apache.org/dist/mesos/1.4.0/mesos-1.4.0.tar.gz.asc
+	source = ftp://apache.cs.utah.edu/apache.org/mesos/1.4.1/mesos-1.4.1.tar.gz
+	source = https://apache.org/dist/mesos/1.4.1/mesos-1.4.1.tar.gz.asc
 	source = mesos-master.service
 	source = mesos-slave.service
-	source = locale.patch
 	validpgpkeys = 4BF2061E73003185CA06E30FF99D6AD0F6FB762C
 	validpgpkeys = CE2C077CF6F6F7002DB0DB6AB5DA0D371B207A4D
 	validpgpkeys = 90A7F1E40A9BE920A82F4302CD56EF3924E79653
@@ -45,7 +44,6 @@ pkgbase = mesos
 	md5sums = SKIP
 	md5sums = 42e6bb21d7682b8a8f036c23532e4fe9
 	md5sums = 55cc5e556bb0622f5f913a1999f17766
-	md5sums = a7581a776e41616d5870b56b840cc416
 
 pkgname = mesos
 
