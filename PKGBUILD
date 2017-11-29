@@ -1,7 +1,7 @@
 # Mantainer: Bruno Galeotti <bgaleotti@gmail.com>
 
 pkgname=php-ds
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Data structures for PHP 7.'
 url='https://github.com/php-ds/extension'
@@ -12,7 +12,7 @@ conflicts=('php-ds-git')
 backup=('etc/php/conf.d/ds.ini')
 source=(https://github.com/php-ds/extension/archive/v$pkgver.tar.gz
         ds.ini)
-md5sums=('79144786738f536742b539f8c43c6662'
+md5sums=('a304112c3e8941cbb8d8c53efebe5c52'
          'a50c990f8285a21242caa1a955a35707')
 
 build() {
