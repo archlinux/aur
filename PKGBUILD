@@ -8,15 +8,15 @@ arch=("any")
 url="https://www.bludit.com/"
 license=("MIT")
 depends=("php")
-source=("https://df6m0u2ovo2fu.cloudfront.net/builds/${pkgname}-v${pkgver}.zip")
-sha256sums=("8b3dd7b9609d52a931b4a5b3ef85f94a1b7b84a8b9e342a635ca20ea8e91d3b1")
+source=("https://github.com/bludit/bludit/archive/${pkgver}.tar.gz")
+sha256sums=("bc74e965914549e258ad2647efb537bf9bde990f1854b2bbe4282a908c713d55")
 
 package() {
     cd "$pkgdir"
     install -dm0755 usr/share/webapps/${pkgname}
     install -dm0755 var/lib/${pkgname}
 
-    cp -a $srcdir/${pkgname}-v${pkgver}/* usr/share/webapps/${pkgname}
+    cp -a $srcdir/${pkgname}-${pkgver}/* usr/share/webapps/${pkgname}
     rm -Rf usr/share/webapps/${pkgname}/bl-content
     ln -s ../../../../var/lib/${pkgname} usr/share/webapps/${pkgname}/bl-content 
 
