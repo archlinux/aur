@@ -3,10 +3,8 @@ pkgbase = krankerl
 	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/ChristophWurst/krankerl
-	arch = i686
 	arch = x86_64
 	license = GPL-3.0
-	makedepends = cargo
 	source = krankerl::https://github.com/ChristophWurst/krankerl/releases/download/v0.4.2/krankerl
 	sha256sums = 1f198e78111cf2a6439d2d7359bec16f1481ea9f78607f8ff39c2a1ddfc9eae9
 
