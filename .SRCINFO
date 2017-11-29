@@ -1,7 +1,7 @@
 pkgbase = virtualbox-modules-lts
 	pkgdesc = Virtualbox kernel modules for LTS Kernel
-	pkgver = 5.1.28
-	pkgrel = 3
+	pkgver = 5.2.2
+	pkgrel = 1
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = virtualbox-modules-lts
 	makedepends = linux-lts<4.10
 	makedepends = linux-lts-headers>=4.9
 	makedepends = linux-lts-headers<4.10
-	makedepends = virtualbox-host-dkms>=5.1.28
-	makedepends = virtualbox-guest-dkms>=5.1.28
+	makedepends = virtualbox-host-dkms>=5.2.2
+	makedepends = virtualbox-guest-dkms>=5.2.2
 
 pkgname = virtualbox-host-modules-lts
 	pkgdesc = Virtualbox host kernel modules for LTS Kernel

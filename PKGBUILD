@@ -6,8 +6,8 @@
 pkgdesc='Virtualbox kernel modules for LTS Kernel'
 pkgbase=virtualbox-modules-lts
 pkgname=('virtualbox-host-modules-lts' 'virtualbox-guest-modules-lts')
-pkgver=5.1.28
-pkgrel=3
+pkgver=5.2.2
+pkgrel=1
 # remember to also adjust the .install file!
 _linux_major=4
 _linux_minor=9
