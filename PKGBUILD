@@ -19,6 +19,7 @@ depends_x86_64=(
 	'lib32-libjpeg6-turbo'
   'lib32-libxtst'
   'lib32-freetype2'
+  'lib32-dbus'
   'libxtst')
 depends_i686=(
 	'fontconfig'
