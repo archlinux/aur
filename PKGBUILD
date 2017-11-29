@@ -2,14 +2,14 @@
 
 _pkgname=sslh
 pkgname=$_pkgname-git
-pkgver=1.18.r13.g718fe0e
+pkgver=1.18.r43.g85b94c3
 pkgrel=1
 pkgdesc="Network port multiplexer. Allows sharing of HTTP, SSL, SSH, OpenVPN, tinc, XMPP, etc. on the same port"
 arch=('i686' 'x86_64')
 url='http://www.rutschle.net/tech/sslh.shtml'
 license=('GPL2')
 depends=('libcap' 'libconfig' 'libwrap' 'systemd')
-makedepends=('git')
+makedepends=('git' 'pcre-static')
 provides=($_pkgname)
 conflicts=($_pkgname)
 backup=('etc/sslh.conf')
