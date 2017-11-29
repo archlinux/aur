@@ -2,7 +2,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname='perl-moose'
-pkgver='2.2008'
+pkgver='2.2009'
 pkgrel='1'
 pkgdesc="A postmodern object system for Perl 5"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=('perl-test-cleannamespaces>=0.13' 'perl-test-fatal>=0.001' 'perl-test-requires>=0.05')
 url='https://metacpan.org/release/Moose'
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Moose-$pkgver.tar.gz")
-md5sums=('a4c582bf4bbac1eed0f8730fa3e3af00')
-sha512sums=('a955f6b8d48ff012568322a489ef407b6131e0000cd75fdd993ea855b94939c87f66319596a0bb8701d7ca6f76cbe59bd71c794946e36ea47da6be0d21fb0fe4')
+md5sums=('5527b1a5abc29b5c57fc488447e76ccd')
+sha512sums=('dc3c0cd4cdea39436f98d7849cfb268ac8168617970b23ce3217ad11715777266208ca623297a5a2dbd2a19c00909fe9a81b1f102ed5f8a7e13845c31751c05d')
 _distdir="Moose-$pkgver"
 
 build() {
