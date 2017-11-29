@@ -4,13 +4,12 @@ After=network.target
 
 [Service]
 EnvironmentFile=/etc/conf.d/teamcity
-ExecStart=/opt/teamcity/bin/teamcity-server.sh start
+ExecStart=/opt/teamcity/bin/teamcity-server.sh run
 ExecStop=/opt/teamcity/bin/teamcity-server.sh stop
-Type=forking
+Type=simple
 PIDFile=/opt/teamcity/logs/teamcity.pid
 Restart=no
 TimeoutSec=30
-RemainAfterExit=yes
 User=teamcity
 
 [Install]
