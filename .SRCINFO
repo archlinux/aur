@@ -1,6 +1,6 @@
 pkgbase = bosh-cli
 	pkgdesc = BOSH command line interface tool
-	pkgver = 2.0.44
+	pkgver = 2.0.45
 	pkgrel = 1
 	url = https://bosh.io/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = bosh-cli
 	license = Apache2
 	makedepends = go
 	optdepends = openssh: bosh ssh
-	source = https://github.com/cloudfoundry/bosh-cli/archive/v2.0.44.tar.gz
-	sha256sums = 5cdff5e409e143465c898b60f1a6aecfc00a6ce8972f4d1ed8e1f2eeb8ae99d3
+	source = https://github.com/cloudfoundry/bosh-cli/archive/v2.0.45.tar.gz
+	sha256sums = e1c66e58b3d177cc11616a921144750799ed5972a6e75af693f76d9252c79730
 
 pkgname = bosh-cli
 

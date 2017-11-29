@@ -1,7 +1,7 @@
 # Maintainer: Luan Santos <aur@luan.sh>
 
 pkgname=bosh-cli
-pkgver=2.0.44
+pkgver=2.0.45
 pkgrel=1
 pkgdesc="BOSH command line interface tool"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('go')
 optdepends=('openssh: bosh ssh')
 source=("https://github.com/cloudfoundry/bosh-cli/archive/v${pkgver}.tar.gz")
-sha256sums=('5cdff5e409e143465c898b60f1a6aecfc00a6ce8972f4d1ed8e1f2eeb8ae99d3')
+sha256sums=('e1c66e58b3d177cc11616a921144750799ed5972a6e75af693f76d9252c79730')
 
 build() {
   mkdir -p gopath/src/github.com/cloudfoundry
