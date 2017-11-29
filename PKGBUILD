@@ -1,6 +1,6 @@
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=linux-minidisc
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 pkgdesc='Free software for accessing MiniDisc devices'
 arch=('i686' 'x86_64' 'armv7h')
@@ -8,7 +8,7 @@ url='https://wiki.physik.fu-berlin.de/linux-minidisc/doku.php'
 depends=('qt5-base' 'glib2' 'libgcrypt' 'libmad' 'sox' 'libid3tag' 'libusbx' 'taglib')
 license=('GPL')
 source=($pkgname-$pkgver.tar.gz::https://github.com/glaubitz/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('a49c09968523df30ec8e092577f58060')
+md5sums=('890085b93a0ff94b198df8b16329e751')
 
 build() {
 	cd $pkgname-$pkgver
