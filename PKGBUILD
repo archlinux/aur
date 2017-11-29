@@ -9,8 +9,8 @@ license=('GPL2')
 url="http://downloads.sourceforge.net/project/staybox"
 depends=('gtk2')
 makedepends=('pkgconfig')
-source=(http://downloads.sourceforge.net/project/staybox/${pkgname}-${pkgver}.tar.gz)
-md5sums=('25dc697817a2952a4468c5d2a2f206d2')
+source=(https://downloads.sourceforge.net/project/staybox/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('55f8844f9c82ed063d26ee34622ec698db3e9338175865e49e34b1e254f4d4f5')
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
