@@ -1,0 +1,3 @@
+# Default Config for wireless intrusion Detection system
+
+LOGFILE=/var/log/wids.log

@@ -1,0 +1,17 @@
+[Unit]
+Description=Wireless Intrusion Detection Service
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/wids
+ExecStart=/usr/share/wireless-ids/wids.py >> $LOGFILE
+Restart=always
+RestartSec=1
+User=root
+Group=root
+TimeoutSec=15
+
+[Install]
+WantedBy=multi-user.target
+

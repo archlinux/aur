@@ -1,0 +1,8 @@
+post_install(){
+  echo "test"
+  ln -s "/usr/share/wireless-ids/wids.py" "/usr/bin/wids.py"
+}
+
+pre_remove(){
+  unlink "/usr/bin/wids.py"
+}
