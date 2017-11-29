@@ -14,6 +14,12 @@ makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-rest-framework() {
   depends=('python-django')
+  optdepends=(
+    'python-pygments: Pygments support for API docs'
+    'python-markdown: Markdown support for the browsable API'
+    'python-django-crispy-forms: Improved HTML display for filtering'
+    'python-core-api: Schema generation support'
+  )
   cd "$srcdir/django-rest-framework-$pkgver"
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python setup.py install --root="$pkgdir/" --optimize=1
@@ -21,6 +27,12 @@ package_python-django-rest-framework() {
 
 package_python2-django-rest-framework() {
   depends=('python2-django')
+  optdepends=(
+    'python2-pygments: Pygments support for API docs'
+    'python2-markdown: Markdown support for the browsable API'
+    'python2-django-crispy-forms: Improved HTML display for filtering'
+    'python2-core-api: Schema generation support'
+  )
   cd "$srcdir/django-rest-framework-$pkgver"
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python2 setup.py install --root="$pkgdir/" --optimize=1
