@@ -1,6 +1,6 @@
 # Maintainer: Payet Guillaume <nvidiux@rungp.redirectme.net>
 pkgname=nvidiux
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="(En)Python interface for overclock/underclock your nvidia gpu with proprietary driver - (FR)Interface en pyqt pour overclocker/underclocker les gpu nvidia avec le pilote proprio"
 arch=(any)
@@ -15,9 +15,9 @@ depends=('gksu'
 )
 package()
 {
-	cd "$srcdir/Nvidiux-1.4.4"
+	cd "$srcdir/Nvidiux-1.4.5"
 	cp -r usr $pkgdir
 }
-source=(https://github.com/RunGp/Nvidiux/archive/1.4.4.tar.gz)
-md5sums=('307273c7a09499260fdaf6030fa6e65c')
+source=(https://github.com/RunGp/Nvidiux/archive/1.4.5.tar.gz)
+md5sums=('776602b69829b2306090b50d0c2f78ec')
 
