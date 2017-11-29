@@ -1,19 +1,17 @@
 pkgbase = super-productivity
-	pkgdesc = To Do List / Time Tracker with Jira Integration. Makes you super productive!
+	pkgdesc = To Do List / Time Tracker with Jira Integration.
 	pkgver = 1.5.2
 	pkgrel = 1
-	epoch = 1
 	url = http://www.super-productivity.com
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	makedepends = electron
-	makedepends = gyp-git
+	makedepends = gyp
 	makedepends = gulp
 	makedepends = bower
 	provides = super-productivity
-	options = !strip
-	source = https://github.com/johannesjo/super-productivity/archive/v1.5.2.tar.gz
+	source = super-productivity-{1.5.2}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v1.5.2.tar.gz
 	md5sums = 998485e4eeb3b7e1fbe54b64a79d28d0
 
 pkgname = super-productivity
