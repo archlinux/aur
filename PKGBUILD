@@ -1,8 +1,7 @@
 # Maintainer: robertfoster
 
-_pkgname=openbazaar
-pkgname=${_pkgname}-git
-pkgver=v2.0.17.r44.g4e26c5c3
+pkgname=openbazaar-git
+pkgver=v2.0.18.r2.g70e0e618
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)" 
 arch=(any)
@@ -11,41 +10,49 @@ license=('MIT')
 depends=(electron)
 makedepends=(git npm)
 conflicts=('openbazaar')
-source=(
-	"${_pkgname}::git+https://github.com/OpenBazaar/openbazaar-desktop.git"
-	"${_pkgname}.js"
-    "${_pkgname}.desktop"
+source=("${pkgname%%-git}::git+https://github.com/OpenBazaar/openbazaar-desktop.git"
+        "${pkgname%%-git}.js"
+        "${pkgname%%-git}.desktop"
 )
-install=${_pkgname}.install
+install=${pkgname%%-git}.install
 options=('!strip')
 
 build(){
-  cd $srcdir/${_pkgname}
-  npm install
-  npm run build
-  rm -rf {.eslint*,.travis*}
-  cp -rf prod/* js/
-  npm prune --production
+  cd $srcdir/${pkgname%%-git}
+	npm install --silent --ignore-scripts
+	npm run build
+	npm prune --production
 }
 
 package(){
-  cd $srcdir
-	appdir=/usr/lib/
+	cd $srcdir
+	appdir="usr/lib/${pkgname%%-git}"
 
 	msg2 "Installing Openbazaar data"
-	install -d $pkgdir/$appdir
-	cp -r ${_pkgname} $pkgdir/$appdir${_pkgname}
+	install -d $pkgdir/${appdir%%/${pkgname%%-git}}
+	cp -rf $pkgname-desktop-$pkgver $pkgdir/$appdir
 
 	msg2 "Installing execution script"
-	install -Dm755 ${_pkgname}.js $pkgdir/usr/bin/${_pkgname}
+	install -Dm755 ${pkgname%%-git}.js $pkgdir/usr/bin/${pkgname%%-git}
 
 	msg2 "Installing icons and desktop menu entry"
-	install -Dm644 ${_pkgname}/imgs/icon.png $pkgdir/usr/share/pixmaps/${_pkgname}.png
-	install -Dm644 ${_pkgname}.desktop "$pkgdir"/usr/share/applications/${_pkgname}.desktop
+	install -Dm644 ${pkgname%%-git}-desktop-$pkgver/imgs/icon.png $pkgdir/usr/share/pixmaps/${pkgname%%-git}.png
+	install -Dm644 ${pkgname%%-git}.desktop $pkgdir/usr/share/applications/${pkgname%%-git}.desktop
+	
+	# Cleanup
+	cd $pkgdir/$appdir
+	rm -rf .travis
+	cp -rf prod/* js/
+    	find "${pkgname%%-git}"/${appdir} \
+        	-name "bin" -prune -exec rm -r '{}' \; \
+        	-or -name "example" -prune -exec rm -r '{}' \; \
+       	 	-or -name "examples" -prune -exec rm -r '{}' \; \
+        	-or -name "test" -prune -exec rm -r '{}' \; \
+        	-or -executable -type f -exec rm -r '{}' \;
 }
 
 pkgver() {
-  cd $srcdir/${_pkgname}
+  cd $srcdir/${pkgname%%-git}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
