@@ -1,7 +1,7 @@
 pkgbase = vmware-patch
 	pkgdesc = A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)
 	pkgver = 14.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.archlinux.org/index.php/VMware#Configuration
 	install = vmware-patch.install
 	arch = i686
