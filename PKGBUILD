@@ -1,6 +1,6 @@
 # Maintainer: Francisco Lopes <francisco@oblita.com>
 pkgname=interception-caps2esc
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='caps2esc: transforming the most useless key ever in the most useful one'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('interception-tools')
 makedepends=('cmake' 'gcc')
 conflicts=('caps2esc')
 source=("https://gitlab.com/interception/linux/plugins/caps2esc/repository/archive.tar.gz?ref=v${pkgver}")
-md5sums=('a493a0c2a3ca056998e8eb0fd77f6a93')
+md5sums=('71d77f1fe4211dd33d4713770d5615be')
 
 build() {
     cd ${srcdir}/caps2esc-v${pkgver}-*
