@@ -4,13 +4,13 @@
 
 pkgname='borgmatic'
 pkgver=1.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
 url='https://torsion.org/borgmatic/'
 license=('GPL3')
 depends=('borg' 'python-pykwalify' 'python-ruamel-yaml')
-makedepends=('python-setuptools' 'python-tox')
+makedepends=('make' 'python-setuptools' 'python-tox')
 provides=('borgmatic')
 install="${pkgname}.install"
 # Main repository moved over to gittea. Switch to using commits until tags are
