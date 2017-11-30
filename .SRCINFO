@@ -9,9 +9,9 @@ pkgbase = plexdrive
 	license = MIT
 	makedepends = go
 	depends = fuse
-	conflicts = -bin
-	conflicts = -git
-	conflicts = -dev-git
+	conflicts = plexdrive-bin
+	conflicts = plexdrive-git
+	conflicts = plexdrive-dev-git
 	source = https://github.com/dweidenfeld/plexdrive/archive/5.0.0.tar.gz
 	md5sums = 4babdf453fd969776a4e3480079ec698
 
