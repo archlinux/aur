@@ -4,7 +4,7 @@
 
 pkgname=gdrivefs
 _gitname=GDriveFS
-pkgver=0.14.8
+pkgver=0.14.9
 pkgrel=2
 pkgdesc='A complete FUSE adapter for Google Drive'
 url='https://github.com/dsoprea/GDriveFS'
@@ -14,7 +14,7 @@ makedepends=('python2-distribute')
 license=('GPL2')
 arch=('any')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7c7f0f8f3b7079f7823c0d27c751f3ae43c0ca0e7f6bbdf93da6dc29150890b5')
+sha256sums=('eacc6633716823d93ca4a3ac5e1aaeeaa49513051136d6f8df681667cbc882d5')
 
 build() {
   cd ${srcdir}/${_gitname}-${pkgver}
@@ -24,9 +24,6 @@ build() {
 
   # Add support to utf8 instead of ASCII
   patch -p1 < ../../pull_154_utf8.patch
-
-  # Fix for oauth2client.util library
-  patch -p1 < ../../issue_166.patch
 
   python2 setup.py build
 }
