@@ -1,8 +1,8 @@
 # Maintainer: Campbell Barton <ideasman42@gmail.com>
-
+export GIT_LFS_SKIP_SMUDGE=1
 _pkgname=opentoonz
 _version=git
-pkgver=1.1.2.877
+pkgver=1.1.3.1250
 pkgname=${_pkgname}-${_version}
 pkgrel=1
 pkgdesc="2D Animation software."
@@ -16,8 +16,9 @@ depends=(
     'qt5-base' 'qt5-svg' 'qt5-script' 'qt5-tools' 'qt5-multimedia'
     'lz4' 'libusb' 'lzo' 'libjpeg-turbo'
     'glew' 'freeglut' 'sdl2' 'freetype2'
-    'blas' 'cblas' 'superlu')
-makedepends=('cmake' 'make' 'git')
+    'blas' 'cblas' 'superlu' 'libmypaint')
+# note: ideally we could avoid git-lfs since we don't need any files it provides
+makedepends=('cmake' 'make' 'git' 'git-lfs')
 optdepends=()
 provides=()
 conflicts=()
@@ -53,7 +54,7 @@ pkgver() {
 build() {
   # make libtiff
   cd $_pkgname/thirdparty/tiff-4.0.3
-  CFLAGS="-fPIC" ./configure && make $MAKEFLAGS
+  ./configure --with-pic --disable-jbig && make $MAKEFLAGS
   cd -
 
   cmake -H$_pkgname/toonz/sources \
