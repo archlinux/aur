@@ -1,0 +1,17 @@
+pkgbase = lemongrab
+	pkgdesc = An attempt at a cross-platform version of the popular "screenfetch" script.
+	pkgver = 0.1dev
+	pkgrel = 1
+	url = https://github.com/Aareon/lemongrab/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	provides = lemongrab
+	source = git+https://github.com/Aareon/lemongrab.git
+	source = lemongrab.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lemongrab
+
