@@ -1,8 +1,8 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=prerex  
 pkgver=6.5.4
-_vver=6.4.3
-pkgrel=1
+_vver=6.5.1
+pkgrel=2
 pkgdesc="a LaTeX document style for prerequisite charts"
 url="http://www.prerex.com"
 arch=('i686' 'x86_64')
@@ -14,11 +14,11 @@ source=("http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/$pkgname/doc/$pkgn
 	"http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/$pkgname/$pkgname.sty"
 	http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/prerex/doc/prerex.sty.7
        http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/prerex/doc/intro.pdf)
-md5sums=('84ae35504e18ad5925d035f3d9c53556'
-         '8e80e9bfb21d9b8a00790561649a4da2'
-         '926c526842ca745239157aa354d58d23'
-         'b382f8e2dd3c73efa592cea0228fa565'
-         '750ae217b798355c75974267d4a7c979')
+sha256sums=('9a4a288120fc9284510b0b2da3af2661f8f378c682106c4449bd8d97dd18a1f3'
+            'fef226574a214d39d4f09017b29167b4efc24bc9f592d69f56127d7e0d33245b'
+            '5c194defee4c917a82232b410547b9a3ecefa8a714f727a1028860a878cf1ca1'
+            'fedb558717e115d79c1a3610001b4ecfaaf9236c89ccc4336d147b7427a5a448'
+            '18fe08ff3cdc7ed0d3f7887858e42dcffb485e8b1f49956fe5b926e9b21849fa')
 
 prepare () {
   cd $srcdir/$pkgname-$pkgver
@@ -32,7 +32,7 @@ build() {
   make 
   
   cd $srcdir/v$pkgname-$_vver
-  qmake-qt4 vprerex.pro
+  qmake-qt5 vprerex.pro
   make
 }
 
