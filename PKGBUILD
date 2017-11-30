@@ -4,14 +4,14 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=r112577.5728865725b
+pkgver=5.4.1.7.r1887.73c6a2ee50c
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
 arch=('i686' 'x86_64')
 license=('custom=MITX11' 'custom=MSPL' 'BSD' 'GPL' 'LGPL2.1' 'MPL')
 depends=('ca-certificates' 'libgdiplus' 'python' 'zlib')
-makedepends=('git' 'mono')
+makedepends=('cmake' 'git' 'mono')
 provides=('mono' 'monodoc')
 conflicts=('mono' 'monodoc')
 install="${_gitname}.install"
@@ -47,11 +47,12 @@ sha256sums=(
 pkgver() {
 	cd "${_gitname}"
 
-  # Tags are 'broken' for now, use revisions since the beginning of
-  # history:
-  printf "r%s.%s"                  \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  local -r tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+  local -r revision=$(git rev-list --count "${tag}"...HEAD)
+  local -r hash=$(git rev-parse --short HEAD)
+
+  # Suggestions for improvement welcome!
+  echo "${tag/mono-}.r${revision}.${hash}"
 }
 
 prepare() {
