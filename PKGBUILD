@@ -1,4 +1,4 @@
-# Maintainer: Augusto Modanese <spamme AT modanese DOT net>
+# Maintainer: Augusto Modanese <augusto DOT modanese AT student DOT kit DOT edu>
 # Contributor: Max Zhao <alcasa.mz@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Kevin Peters <65bones AT gmail DOT com>
