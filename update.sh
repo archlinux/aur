@@ -60,3 +60,4 @@ awk \
     }
 ' \
     'PKGBUILD.bak' > 'PKGBUILD'
+git diff 'PKGBUILD'
