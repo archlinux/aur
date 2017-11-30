@@ -1,0 +1,8 @@
+[Unit]
+Description=Node.js HomeKit Server
+
+[Service]
+ExecStart=/usr/bin/homebridge -U %h/.homebridge
+
+[Install]
+WantedBy=default.target

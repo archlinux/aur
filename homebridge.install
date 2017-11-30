@@ -1,0 +1,29 @@
+_NAME=homebridge
+
+post_install() {
+	mkdir -p /var/lib/${_NAME}
+	getent passwd ${_NAME} > /dev/null || useradd -d /var/lib/${_NAME} -s /bin/false -r ${_NAME} > /dev/null
+	chown -R ${_NAME}:${_NAME} /var/lib/${_NAME}
+
+    echo ""
+    echo "A sample configuration file is provided at /usr/lib/node_modules/homebridge/config-sample.json"
+    echo "Copy this to /var/lib/${_NAME}/config.json and edit accordingly"
+    echo "  cp /usr/lib/node_modules/homebridge/config-sample.json /var/lib/${_NAME}/config.json"
+    echo "  chown ${_NAME}:${_NAME} /var/lib/${_NAME}/config.json"
+    echo "  \$EDITOR /var/lib/${_NAME}/config.json"
+    echo ""
+    echo "You can then start the service as follows:"
+    echo "  systemctl start homebridge"
+    echo ""
+    echo "If you get a DNS related error on startup, make sure avahi-daemon is running (systemctl status -l avahi-daemon.service)"
+    echo ""
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	echo "Some files have not been removed because they are created by ${_NAME} itself."
+	userdel -f ${_NAME}
+}
