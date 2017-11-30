@@ -1,15 +1,15 @@
 # Maintainer: Nicolas Martyanoff <khaelin@gmail.com>
 
 pkgname=ccl
-pkgver=1.11
-pkgrel=2
+pkgver=1.11.5
+pkgrel=1
 pkgdesc="A Common Lisp implementation."
 arch=("x86_64")
 url="http://ccl.clozure.com"
 license=("Apache")
 provides=("ccl")
 source=("https://github.com/Clozure/ccl/releases/download/v$pkgver/$pkgname-$pkgver-linuxx86.tar.gz")
-sha256sums=("08e885e8c2bb6e4abd42b8e8e2b60f257c6929eb34b8ec87ca1ecf848fac6d70")
+sha256sums=("b80850d8d6ca8662499975f1cd76bf51affdd29e2025796ddcff6576fe704143")
 
 build() {
   cd "$srcdir/$pkgname"
@@ -23,13 +23,15 @@ package() {
 
   libdir="$usrdir/lib/$pkgname"
   install -d $libdir
+  cp -a bin/ $libdir/
+  cp -a cocoa-ide/ $libdir/
   cp -a compiler/ $libdir/
-  cp -a contrib/ $libdir/
   cp -a level-0/ $libdir/
   cp -a level-1/ $libdir/
   cp -a lib/ $libdir/
   cp -a library/ $libdir/
   cp -a lisp-kernel/ $libdir/
+  cp -a mac-ui/ $libdir/
   cp -a objc-bridge/ $libdir/
   cp -a tools/ $libdir/
   cp -a x86-headers64/ $libdir/
