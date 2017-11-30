@@ -2,12 +2,12 @@
 
 pkgname=libtins
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level, multiplatform C++ network packet sniffing and crafting library"
 arch=('i686' 'x86_64')
 url="http://libtins.github.io/"
 license=('BSD')
-depends=('libpcap' 'openssl')
+depends=('libpcap' 'openssl' 'boost')
 makedepends=('cmake')
 options=('!libtool')
 source=("https://github.com/mfontanini/libtins/archive/v${pkgver}.tar.gz")
