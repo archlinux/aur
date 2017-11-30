@@ -1,16 +1,20 @@
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: Alexander Kuznecov <alexander@kuznetcov.me>
 
-_pkgname="nginx"
-_user="http"
-_group="http"
+shopt -s extglob # for excluding one of the tests, see testresults.txt
+
+_pkgname=nginx
+_user='http'
+_group='http'
 _doc_root="/usr/share/${_pkgname}/html"
-_sysconf_path="etc"
+_sysconf_path='etc'
 _conf_path="${_sysconf_path}/${_pkgname}"
 _tmp_path="/var/spool/${_pkgname}"
-_pid_path="/run"
-_lock_path="/var/lock"
-_log_path="/var/log/${_pkgname}"
+_pid_path='/run'
+_lock_path='/var/lock'
+_access_log_path="/var/log/${_pkgname}/access.log"
+#_error_log_path="/var/log/${_pkgname}/error.log"
+_error_log_path='stderr'
 
 # 3d party modules
 _cachepurge_ver="2.3"
@@ -41,15 +45,15 @@ _accesskey_ver="2.0.4"
 _accesskey_dirname="ngx_accesskey"
 
 pkgname=nginx-custom
-pkgver=1.12.1
-pkgrel=2
+pkgver=1.12.2
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server (with standard, additional and 3rd party modules)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 
-depends=('pcre' 'zlib' 'openssl' 'pam' 'geoip' 'geoip-database' 'gd' 'libxslt')
-#checkdepends=('perl' 'perl-gd' 'perl-io-socket-ssl' 'perl-fcgi' 'perl-cache-memcached'
-#              'memcached' 'ffmpeg' 'inetutils')
-makedepends=('libxslt' 'gd' 'git')
+depends=('pcre' 'zlib' 'openssl' 'pam' 'geoip' 'geoip-database' 'gd' 'libxslt' 'mailcap')
+checkdepends=('perl' 'perl-gd' 'perl-io-socket-ssl' 'perl-fcgi' 'perl-cache-memcached'
+              'memcached' 'ffmpeg' 'inetutils')
+makedepends=('libxslt' 'gd' 'mercurial')
 
 url='https://nginx.org'
 license=('custom')
@@ -59,7 +63,6 @@ backup=("${_conf_path}/fastcgi.conf"
         "${_conf_path}/fastcgi_params"
         "${_conf_path}/koi-win"
         "${_conf_path}/koi-utf"
-        "${_conf_path}/mime.types"
         "${_conf_path}/nginx.conf"
         "${_conf_path}/scgi_params"
         "${_conf_path}/uwsgi_params"
@@ -73,6 +76,7 @@ source=("nginx.sh"
         "nginx.logrotate"
         "nginx.service"
         "https://nginx.org/download/nginx-$pkgver.tar.gz"{,.asc}
+        hg+http://hg.nginx.org/nginx-tests#revision=cbda704b3093
         "${_fancyindex_dirname}.tar.gz::https://github.com/aperezdc/ngx-fancyindex/archive/${_fancyindex_ver}.tar.gz"
         "${_cachepurge_dirname}.tar.gz::http://labs.frickle.com/files/ngx_cache_purge-${_cachepurge_ver}.tar.gz"
         "${_slowfscache_dirname}.tar.gz::http://labs.frickle.com/files/ngx_slowfs_cache-${_slowfscache_ver}.tar.gz"
@@ -87,14 +91,14 @@ source=("nginx.sh"
         "${_davext_dirname}.tar.gz::https://github.com/arut/nginx-dav-ext-module/archive/${_davext_ver}.tar.gz"
         "${_naxsi_dirname}.tar.gz::https://github.com/nbs-system/naxsi/archive/${_naxsi_ver}.tar.gz"
         "${_accesskey_dirname}.tar.gz::https://github.com/Martchus/nginx-accesskey/archive/v${_accesskey_ver}.tar.gz"
-#        hg+http://hg.nginx.org/nginx-tests#revision=8821e405b91e
 )
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
          '845cab784b50f1666bbf89d7435ac7af'
          'b50a547d387c4af8e9b89a5e79d22fed'
          '4d8529216812e5cc35a28c721e239b9e'
-         'a307e74aca95403e5ee00f153807ce58'
+         '4d2fc76211435f029271f1cf6d7eeae3'
+         'SKIP'
          'SKIP'
          'e1dd79f0ec82415bbf8a1cb938988955'
          '3d4ec04bbc16c3b555fa20392c1119d1'
@@ -128,10 +132,11 @@ prepare() {
   mv naxsi* ${_naxsi_dirname}
 }
 
-#check() {
-#  cd nginx-tests
-#  TEST_NGINX_BINARY="$srcdir/$pkgname-$pkgver/objs/nginx" prove .
-#}
+check() {
+  cd nginx-tests
+  warning "Ignore failing auth_request_satisfy.t for now, see testresults.txt"
+  TEST_NGINX_BINARY="$srcdir/${_pkgname}-${pkgver}/objs/nginx" prove !(auth_request_satisfy).t
+}
 
 build() {
   local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
@@ -148,8 +153,8 @@ build() {
     --http-fastcgi-temp-path=${_tmp_path}/fastcgi_temp \
     --http-uwsgi-temp-path=${_tmp_path}/uwsgi_temp \
     --http-scgi-temp-path=${_tmp_path}scgi_temp \
-    --http-log-path=${_log_path}/access.log \
-    --error-log-path=${_log_path}/error.log \
+    --http-log-path=${_access_log_path} \
+    --error-log-path=${_error_log_path} \
     --user=${_user} \
     --group=${_group} \
     --with-compat \
@@ -223,6 +228,7 @@ package() {
 
   mv "${pkgdir}/${_conf_path}/html/"* "${pkgdir}/${_doc_root}"
   rm -rf "${pkgdir}/${_conf_path}/html"
+  rm "$pkgdir"/etc/nginx/mime.types # in mailcap
 
   install -D -m555 "${srcdir}/nginx.sh" "${pkgdir}/etc/rc.d/${_pkgname}"
   install -D -m644 "${srcdir}/nginx.logrotate" "${pkgdir}/etc/logrotate.d/${_pkgname}"
