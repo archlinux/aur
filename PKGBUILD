@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=geiser-git
-pkgver=0.9r1213.0947b0e
+pkgver=0.9r1214.17fde7d
 pkgrel=1
 pkgdesc="Emacs environment to hack in Scheme, version from git"
 arch=('any')
