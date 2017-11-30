@@ -3,7 +3,7 @@
 pkgname=adom-noteye
 epoch=1
 pkgver=2.3.8
-pkgrel=3
+pkgrel=4
 pkgdesc="A roguelike game with a quest-centric, plot driven structure (+ GUI)"
 arch=("x86_64")
 url="http://www.adom.de/"
@@ -17,7 +17,7 @@ license=('custom: "adom"')
 source_x86_64=(${_source_url}/adom_noteye_64_2.3.8.tar.gz)
 
 # PACKAGES
-sha256sums_x86_64=('bfed98d97c429beddd1707cdf3913c30b2c4a363943de0c1bc7a31885b533301')
+sha256sums_x86_64=('b7bc418e872dbf290f2279d8c554c4ac19f58ae0ace2e8f3c16b1cf4fb87dc26')
 
 package() {
   # Copy entire contents of the archive to /opt

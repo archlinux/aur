@@ -1,7 +1,7 @@
 pkgbase = adom-noteye
 	pkgdesc = A roguelike game with a quest-centric, plot driven structure (+ GUI)
 	pkgver = 2.3.8
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = http://www.adom.de/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = adom-noteye
 	conflicts = adom-restricted
 	conflicts = adom-noteye
 	source_x86_64 = https://repo.sshadm.in/archlinux/eldios/x86_64/adom_noteye_64_2.3.8.tar.gz
-	sha256sums_x86_64 = 3fc5d7cc0d40a796e6f38ddea9ae6eb7d0f88424be7fd8680364823e1e132751
+	sha256sums_x86_64 = b7bc418e872dbf290f2279d8c554c4ac19f58ae0ace2e8f3c16b1cf4fb87dc26
 
 pkgname = adom-noteye
 
