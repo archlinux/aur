@@ -3,7 +3,7 @@
 
 pkgname=torrent-file-editor-qt4-git
 _pkgname=torrent-file-editor
-pkgver=v0.3.6.r21.g2b485fb
+pkgver=0.3.8.r0.g46550b4
 pkgrel=1
 pkgdesc="Qt based GUI tool designed to create and edit .torrent files. Qt4 build"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
