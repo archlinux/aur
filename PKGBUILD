@@ -1,8 +1,11 @@
 # Maintainer(s):	remspoor <remspoor AT linuxmail DOT org>
 #			Jake <ja.ke@posteo.de>
 
+versionmajor=1
+versionminor=492
+
 pkgname=next
-pkgver=1.486
+pkgver=$versionmajor.$versionminor
 pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('i686' 'x86_64')
@@ -12,11 +15,11 @@ optdepends=(	'joyutils: jscal, jstest, and jsattach utilities for the Linux joys
 		'controllermap: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG')
 
 install="${pkgname}.install"
-source=('http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit.zip'
-        'next.desktop'
-        'next.sh')
+source=("http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit-$versionmajor$versionminor.zip"
+        "next.desktop"
+        "next.sh")
 
-sha256sums=('bb8ab0169b0bc8974e1651eea05cc3bc1dd667aa1b86e67ca56efa2ed13a9577'
+sha256sums=('6b59b20505220bc8703a7818360ffab57fabe2c580514eefeec040ecb1a6c1f2'
             '31972ec9835d29109e490a54b49865dd69084c5552344cfe2fec9b534a5fa8a2'
             '167bf2f656980495a5de69cc6fb0eb1063ddf065d021525cb73cf4e10425c2d8')
 
