@@ -5,12 +5,12 @@ _passengerver=5.1.6
 
 pkgname=nginx-passenger
 pkgver=1.12.1
-pkgrel=3
+pkgrel=4
 pkgdesc="HTTP Server with Passenger Module"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://nginx.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'geoip' 'curl' 'gd' 'ruby')
+depends=('pcre' 'zlib' 'openssl' 'geoip' 'curl' 'gd' 'ruby' 'mailcap')
 optdepends=('python: Support for python web apps'
             'nodejs: Support for node.js web apps'
             'geoip-database: For country geolocation'
@@ -122,6 +122,7 @@ package() {
     -i "$pkgdir"/etc/nginx/nginx.conf
 
     rm "$pkgdir"/etc/nginx/*.default
+    rm "$pkgdir"/etc/nginx/mime.types  # in mailcap
 
     install -d "$pkgdir"/var/lib/nginx
     install -dm700 "$pkgdir"/var/lib/nginx/proxy
