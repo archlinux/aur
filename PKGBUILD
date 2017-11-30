@@ -3,14 +3,15 @@
 
 pkgname=gnome-keysign
 pkgver=0.9.5
-pkgrel=3
+pkgrel=4
 pkgdesc="An easier way to sign OpenPGP keys over the local network."
 arch=('any')
 url="https://github.com/gnome-keysign/gnome-keysign"
 license=('GPL3')
 install=gnome-keysign.install
-depends=('python' 'python-requests' 'python-gobject' 'python-qrcode'
-         'python-twisted' 'python-gpgme' 'avahi' 'dbus' 'zbar')
+depends=('python' 'python-cairo' 'python-dbus' 'python-requests' 'python-gobject'
+         'python-qrcode' 'python-twisted' 'python-gpgme' 'avahi' 'dbus'
+	 'gst-plugins-good' 'gst-plugins-bad' 'zbar')
 optdepends=('python-pybluez')
 makedepends=('python-setuptools')
 source=(https://github.com/gnome-keysign/gnome-keysign/archive/${pkgver}.tar.gz
