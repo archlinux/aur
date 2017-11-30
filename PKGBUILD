@@ -22,12 +22,12 @@ options=()
 install=
 changelog=
 source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/${deepin_name}_${pkgvers}_all.deb")
-noextract=("${deepin_name}_${pkgvers}_i386.deb")
+noextract=("${deepin_name}_${pkgvers}_all.deb")
 md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	ar -x ${deepin_name}_${pkgvers}_i386.deb
+	ar -x ${deepin_name}_${pkgvers}_all.deb
 	mkdir ${deepin_name}-${pkgvers}
 	tar -xf data.tar.xz --directory="${deepin_name}-${pkgvers}"	
 }
