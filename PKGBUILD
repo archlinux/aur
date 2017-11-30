@@ -1,8 +1,8 @@
 # Contributor: ShadowKyogre <shadowkyogre-ala-gmail.com>
-# Maintainer: L.G. Sarmiento <lgsarmientop-ala-unal.edu.co>
+# Maintainer: L.G. Sarmiento <Luis.Sarmiento-ala-nuclear.lu.se>
 pkgname=artha
 pkgver=1.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='A free cross-platform English thesaurus based on WordNet'
 arch=('i686' 'x86_64')
 url="http://artha.sourceforge.net/wiki/index.php/Home"
@@ -12,7 +12,7 @@ optdepends=('enchant: spell checking support'
   'libnotify: notification support'
   'aspell-en: to show suggestion with aspell in English')
 options=('!emptydirs')
-source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2")
+source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2")
 md5sums=('9bc69f5666a1f494e21a0a0add9ebb16')
 
 build() {
