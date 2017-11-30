@@ -7,8 +7,8 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=64.0.3269.3
-pkgrel=2
+pkgver=64.0.3278.0
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -113,7 +113,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
 )
 
 
-sha256sums=('14a64bc25b48309566a0e9a9016336b53ae0443da500f2933292773a90b7542a'
+sha256sums=('cc90b3827e1d73437272a5ac42d7308f0b5bb2abb20c5a7e48a318bdb4900c1d'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -126,7 +126,7 @@ sha256sums=('14a64bc25b48309566a0e9a9016336b53ae0443da500f2933292773a90b7542a'
             '5c8c3ad7d5b4ebda7508e3aee13349fc8ad627d7a7e3147168e214f03e433168'
             '085c00b8f760b2262218ef772038a0d439bf208d61664ae15cf6088cc142fe47'
             '8696919f69ef927f095944ae7ef869b283450a4b2cdd4efdebc51fc2b1e747e0'
-            'bd233779119f47a6f25d562dee0f725b47cf88b646a4828fd2c517d46839fd3e'
+            'b9899b26e65a6fc376bffd8cb685667b0ec1b04e90c8250f40c969bf4602c5a0'
             'fd5fdc83665113677951e2e713a4696d999a070d6b59bb57319df357b35d4fad'
             '3850ad42d0cb4ca011d46b9d569a0a2bf83476f0c3da70c74d4f011cec59f885'
             '7beb0f3bbc55960092347767d423415860a3867525f6d1bbb057b3d72fae0618'
@@ -152,7 +152,7 @@ sha256sums=('14a64bc25b48309566a0e9a9016336b53ae0443da500f2933292773a90b7542a'
             'cabe339110369d08b2cef0b4308ee8eb8385054583815c3927421588ae94d9e7'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
             '4570a87cb632896818f8bf96eb38157bcbcfec55e702683e36d8bc63b16764af'
-            '3289899320780afe2face6a996e2a09bbfcdd4c159b900d4425ae01d25a8806f'
+            '6a016da94025ddf28f589e86c953b9eb7561d97709871231c96b0fe7f0778cb7'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '1e9fc91a973977bdd03fddb65610f34e60a0fbd357033137dbb12f4657b14cf8'
             'e5f43c7014d140fd6b4c6cf478ae4edb107d963b8868dda0e19f74523f7385da'
@@ -175,7 +175,7 @@ sha256sums=('14a64bc25b48309566a0e9a9016336b53ae0443da500f2933292773a90b7542a'
             '51ee1c87a7889f9fae1fd0ecad57d97394cc89b1cea83bafdbaa8992a87e6561'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
-            '355eda11493ae7c89955e455014ae6ce53a5c3431071701c883fb8a492d49b20'
+            '33369c2c13df92b16759a4ec56650cc52353110454775016bde277c1bce96ee5'
             '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
             '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
@@ -201,13 +201,13 @@ sha256sums=('14a64bc25b48309566a0e9a9016336b53ae0443da500f2933292773a90b7542a'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
-            '35266f58367b808d6edb3f8810f7bdadfa2ebf961504169f2557912741397a24'
+            '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d'
             'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
-            'SKIP'
-)
+            'ba9f4b345150ed5a2df7b713ab1e441be7ab8aeead4e2eb0c384334cf15ad436')
+
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -334,6 +334,7 @@ patch -Np1 -i ../o.patch
 patch -Np1 -i ../p1.patch
 patch -Np1 -i ../p2.patch
 patch -Np1 -i ../e3.patch
+patch -Np1 -i ../narnia1.patch
 
 #patch -Np1 -i ../9k.patch
 #patch -Np1 -i ../048.patch
@@ -341,7 +342,6 @@ patch -Np1 -i ../e3.patch
 patch -Np1 -i ../12.patch
 patch -Np1 -i ../16.patch
 
-patch -Np1 -i ../narnia1.patch
 
 
 patch -Np1 -i ../k1.patch
@@ -370,11 +370,13 @@ msg2 'py2'
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
 
-
+msg2 'replacing libs'
 
 
   python2 build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
+
+msg2 'downloading build tools'
 python2 tools/clang/scripts/update.py
 
   cd "$srcdir/chromium-launcher-$_launcher_ver"
@@ -419,7 +421,7 @@ build() {
     'enable_remoting=false'
     'enable_google_now=false'
     'enable_hotwording=false'
-    'enable_print_preview=false'
+    'enable_print_preview=true'
   )
 
       _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
