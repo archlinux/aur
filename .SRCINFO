@@ -1,0 +1,14 @@
+pkgbase = blender-plugin-io-three
+	pkgdesc = Blender addon for exporting Three.js' ASCII JSON format.
+	pkgver = r88
+	pkgrel = 1
+	url = https://github.com/mrdoob/three.js/tree/master/utils/exporters/blender
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = blender
+	source = io-three::git+https://github.com/mrdoob/three.js.git#tag=r88
+	md5sums = SKIP
+
+pkgname = blender-plugin-io-three
+
