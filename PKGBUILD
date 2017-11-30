@@ -9,7 +9,8 @@ arch=('x86_64')
 url="https://github.com/google/autofdo"
 license=('Apache')
 depends=()
-makedepends=('git')
+makedepends=('git' 'llvm')
+optdepends=('llvm: for LLVM support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("$_pkgname::git+$url")
@@ -22,7 +23,9 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	./configure --prefix=/usr
+	./configure \
+		--prefix=/usr \
+		--with-llvm=/usr/lib
 	make
 }
 
