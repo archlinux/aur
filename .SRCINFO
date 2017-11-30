@@ -1,0 +1,13 @@
+pkgbase = roundcubemail-plugin-keyboard-shortcuts-ng
+	pkgdesc = Roundcube plugin that enables keyboard shortcuts, and makes associations configurable by Roundcube admin.
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://plugins.roundcube.net/packages/teon/keyboard_shortcuts_ng
+	arch = any
+	license = AGPL3
+	depends = roundcubemail
+	source = https://github.com/teonsystems/roundcube-plugin-keyboard-shortcuts-ng/archive/v0.9.4.tar.gz
+	md5sums = c83f2792485f599dea68536638959d60
+
+pkgname = roundcubemail-plugin-keyboard-shortcuts-ng
+
