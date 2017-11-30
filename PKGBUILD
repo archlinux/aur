@@ -1,7 +1,7 @@
 # Maintainer: Giulio De Pasquale <me@giugl.io>
 pkgname=dike
 pkgver=6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Tool di firma e rinnovo online per i certificati digitali emessi da InfoCert S.p.A."
 #arch=( 'i686' 'x86_64')
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=('https://www.firma.infocert.it/pdf/licenza-dike6.pdf')
 source_x86_64=('https://rinnovofirma.infocert.it/download/x86_64/latest')
 sha256sums=('c3c0df98ff788b40c31ff4915ebfcbcb71dea389733a71f71e7fe72f145120aa')
 #sha256sums_i686=('d99fc97a773580ad240b18efae7d7463ce54f3ff0383240a616e70c90e468cde')
-sha256sums_x86_64=('ef80075b5d6739b854beb5578525fb62b7cd49aaac92420684963613abfee6ec')
+sha256sums_x86_64=('110d5d4c272970be6b6959a162898862298aa95187bfa27de5399e3f48cef5a2')
 
 package() {
     cd ${srcdir}
