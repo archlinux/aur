@@ -2,10 +2,10 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='xmrig'
-pkgver='2.4.2'
-pkgrel='2'
+pkgver='2.4.3'
+pkgrel='1'
 pkgdesc='High Perf CPU Miner'
-arch=('any')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
 depends=('libuv')
 optdepends=('monero: wallet')
@@ -16,7 +16,7 @@ backup=("etc/${pkgname}/${pkgname}.conf")
 source=("${pkgname}.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('2107c5ca279a1184d0052a9e4fce4d70f0472354807adb1faa1fd6ff3925cdac'
-            '72ecbf76cde84bad7af3ed0af20d82223fb6ccb2de37f8a4ea90959200b1e605')
+            '56a4eb05e0b310b044ae30203dfb63664cdfb520c9c28dac29fa1886ca59cbc2')
 prepare() {
   cd "${pkgname}-${pkgver}"
   mkdir build
