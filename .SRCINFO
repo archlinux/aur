@@ -9,7 +9,9 @@ pkgbase = tc-twitch-git
 	makedepends = npm
 	provides = tc-twitch
 	conflicts = tc-twitch
+	source = tc-twitch.desktop
 	source = tc-twitch-git::git+https://github.com/mccxiv/tc.git
+	md5sums = 72e3fe4d7076cd6e7c26d5d3819b1c0a
 	md5sums = SKIP
 
 pkgname = tc-twitch-git

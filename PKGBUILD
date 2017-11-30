@@ -11,8 +11,9 @@ license=('custom')
 provides=($_pkgname)
 conflicts=($_pkgname)
 makedepends=('git' 'npm')
-source=("$pkgname::git+https://github.com/mccxiv/tc.git")
-md5sums=('SKIP')
+source=("$_pkgname.desktop" "$pkgname::git+https://github.com/mccxiv/tc.git")
+md5sums=('72e3fe4d7076cd6e7c26d5d3819b1c0a'
+         'SKIP')
 
 pkgver() {
   cd $pkgname
@@ -38,5 +39,9 @@ package() {
   install -d "$pkgdir"/{usr/bin,opt}
   cp -a $srcdir/$pkgname/dist/linux-unpacked $pkgdir/opt/$_pkgname
   ln -s $pkgdit/opt/$_pkgname/Tc $pkgdir/usr/bin/tc-twitch
-  install -Dm644 $srcdir/$pkgname/LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+  install -Dm644 $srcdir/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
+  install -Dm644 $srcdir/$pkgname/LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
+  # icons
+  install -Dm644 $srcdir/$pkgname/src/assets/icon16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/$_pkgname.png
+  install -Dm644 $srcdir/$pkgname/src/assets/icon256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png
 }
