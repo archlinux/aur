@@ -2,7 +2,7 @@
 
 pkgname=repetier-server
 pkgver=0.86.2
-pkgrel=2
+pkgrel=3
 pkgdesc='repetier server component'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://www.repetier-server.com/'

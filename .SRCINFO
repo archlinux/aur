@@ -1,7 +1,7 @@
 pkgbase = repetier-server
         pkgdesc = repetier server component
         pkgver = 0.86.2
-        pkgrel = 2
+        pkgrel = 3
         url = https://www.repetier-server.com/
         arch = i686
         arch = x86_64
