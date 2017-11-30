@@ -1,15 +1,15 @@
 pkgbase = qtcdrp
 	pkgdesc = Common libraries for the- applications by Victor Tran
 	pkgver = 1.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/vicr123/QtcDRP
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	depends = qtcreator
 	depends = discord-rpc-api
-	source = qtcdrp-1.1::https://github.com/vicr123/QtcDRP/releases/download/v1.1/linux-release.tar.gz
-	md5sums = 62258ba08697846ce04e1b9e77aa9ddc
+	source = qtcdrp-1.1::https://github.com/vicr123/QtcDRP/releases/download/v1.1.1/linux-release.tar.gz
+	md5sums = 9f8b24f8059b3c269f43b523f055d361
 
 pkgname = qtcdrp
 
