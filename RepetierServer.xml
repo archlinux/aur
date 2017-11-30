@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<server>
+    <installation-directory>/opt/RepetierServer/</installation-directory>
+    <storage-directory>/opt/RepetierServer/data/</storage-directory>
+    <default-language>en</default-language>
+    <port>3344</port>
+    <disableIPV6>true</disableIPV6><!-- setting to false can cause problems with external access -->
+    <logging>true</logging>
+    <backlog-size>1000</backlog-size>
+    <update-info-url>http://download.repetier-server.com/files/server/debian-armhf/updateinfo.txt</update-info-url>
+    <printer-frontend-url>/modules/front2/www/app.html</printer-frontend-url>
+    <web-frontend-url>/</web-frontend-url>
+</server>
+

@@ -1,0 +1,29 @@
+post_install() {
+    echo "Install Repetier-Server"
+    id -u repetierserver &>/dev/null || adduser --quiet --home /opt/RepetierServer --system --disabled-login --ingroup repetierserver
+    adduser repetierserver uucp
+    chown -R repetierserver /opt/RepetierServer
+    chmod 755 /opt/RepetierServer/modules/firmware/bin/avrdude
+    chmod 755 /opt/RepetierServer/modules/firmware/bin/bossac
+    chmod 755 /opt/RepetierServer/modules/firmware/bin/teensy_loader_cli
+    systemctl --system daemon-reload
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    echo "Removing repetierserver system user"
+    id -u repetierserver &>/dev/null && userdel repetierserver
+    id -g repetierserver &>/dev/null && groupdel repetierserver
+}
+
+pre_remove() {
+    echo "stopping Repetier-Server"
+    systemctl stop RepetierServer
+}
+
+op=$1
+shift
+$op $*

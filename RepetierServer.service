@@ -1,0 +1,20 @@
+[Unit]
+Description=Repetier-Server 3D Printer Server
+After=network.target
+
+[Service]
+Type=forking
+PermissionsStartOnly=true
+LimitNICE=-20
+Nice=-20
+KillMode=process
+User=repetierserver
+ExecStartPre=/bin/mkdir -p /opt/RepetierServer/data/
+ExecStartPre=/bin/chown -R repetierserver /opt/RepetierServer/data
+ExecStart=/opt/RepetierServer/bin/RepetierServer -c /opt/RepetierServer/etc/RepetierServer.xml --daemon
+Restart=on-failure
+RestartSec=0
+
+[Install]
+WantedBy=multi-user.target
+
