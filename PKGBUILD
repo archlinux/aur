@@ -9,8 +9,8 @@ license=('MIT')
 depends=('bc' 'xclip')
 optdepends=('dmenu: required if rofi is not installed'
             'rofi: required if dmenu is not installed')
-source=("git+https://github.com/sumnerevans/menu-calc")
-md5sums=('SKIP')
+source=("https://github.com/sumnerevans/menu-calc/archive/v1.2.0.tar.gz")
+md5sums=('f8526328f9e75e2ce1c718cb3c8939fd')
 
 package() {
     cd "$pkgname"
