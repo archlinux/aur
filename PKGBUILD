@@ -4,7 +4,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=pithos
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
@@ -20,15 +20,18 @@ optdepends=('libkeybinder3: for media keys plugin'
 makedepends=('meson' 'appstream-glib')
 source=(
   "https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz"{,.asc}
-  "dbus.service"
   "systemd.service"
 )
-sha256sums=('4c025d7e1e055292849b80c37d8ad3862e0f2cbd9c7327664deb8ac0389952ac'
+sha256sums=('ebc30213ae85716d5a57e30b912f083b2fdb374a793d5adfec00a064fdfc165c'
             'SKIP'
-            '2b80c9bb84f7de8de0e36dc16465c6633cb74de7bf777efcad76393e88a6e62a'
             '6d29178697384fb046d9d25c6c2482f353a4484ec4f0a5b9080d1a26aa24f839')
 
 validpgpkeys=('108BF2212A051F4A72B18448B3C7CE210DE76DFC')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  echo "SystemdService=pithos.service" >> "data/io.github.Pithos.service.in"
+}
 
 build() {
   cd "${srcdir}"
@@ -42,6 +45,5 @@ build() {
 package() {
   cd "${srcdir}/build"
   DESTDIR="${pkgdir}" ninja install
-  install -Dm644 "${srcdir}/dbus.service" "${pkgdir}/usr/share/dbus-1/services/io.github.Pithos.service"
   install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/user/pithos.service"
 }
