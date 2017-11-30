@@ -1,7 +1,7 @@
 pkgbase = powerline-rs
 	pkgdesc = powerline-shell rewritten in Rust. Inspired by powerline-go.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jD91mZM2/powerline-rs
 	arch = x86_64
 	arch = i386
@@ -13,6 +13,7 @@ pkgbase = powerline-rs
 	license = custom:MIT
 	makedepends = libgit2
 	makedepends = cargo
+	makedepends = cmake
 	source = https://github.com/jD91mZM2/powerline-rs/archive/v0.1.0.tar.gz
 	sha256sums = dee56f8808babb898ed848ebe2cdee88f1e903c6cc39dac0fbae5e05b8e00e3e
 
