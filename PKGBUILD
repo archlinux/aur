@@ -12,7 +12,7 @@ depends=('bcg729' 'belcard-git' 'belle-sip-git' 'belr-git' 'bzrtp-git'
     'linphone-git' 'libpulse' 'libxv' 'mediastreamer-git' 'ortp-git' 
     'libsoup' 'libnotify' 'qt5-quickcontrols'
     'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-tools')
-makedepends=('cmake' 'pkg-config' 'python-pystache' 'perl-xml-parser' 'intltool')
+makedepends=('cmake' 'graphviz' 'intltool' 'pkg-config' 'python-pystache' 'perl-xml-parser')
 optdepends=('pulseaudio')
 options=('!emptydirs')
 provides=('linphone-desktop')
