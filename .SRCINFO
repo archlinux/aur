@@ -1,7 +1,7 @@
 pkgbase = repetier-server
         pkgdesc = repetier server component
         pkgver = 0.86.2
-        pkgrel = 1
+        pkgrel = 2
         url = https://www.repetier-server.com/
         arch = i686
         arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = repetier-server
         sha256sums = 6d43a743737fa8aaaf73fa81d4b04c3e593b96137b160e37724b9e410fd9ee7c
         source_i686 = http://download.repetier.com/files/server/debian-intel32/Repetier-Server-0.86.2-Linux.deb
         sha256sums_i686 = 40f918f7a6ad0acb2917fd1fe1c66d5ff4bb1a76b5c1b6b2e88d1f1c70baf22e
-        source_x86_64 = http://download.repetier.com/files/server/debian-amd64/Repetier-Server-0.86.2-Linux.de
+        source_x86_64 = http://download.repetier.com/files/server/debian-amd64/Repetier-Server-0.86.2-Linux.deb
         sha256sums_x86_64 = bceb56fab73fa200075fa0fcdc9314455f100f2dbba5a644e7af414e1873906e
         source_armv7h = http://download.repetier.com/files/server/debian-armhf/Repetier-Server-0.86.2-Linux.deb
         sha256sums_armv7h = 9dae5a58bbed515bb0ffd623a6c9510c82fe1bfce5f99fcf000415dd4bade21d
