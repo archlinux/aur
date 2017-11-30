@@ -2,10 +2,10 @@
 
 pkgname=fortune-mod-darkestdungeon
 pkgver=20171129
-pkgrel=2
+pkgrel=3
 pkgdesc="Fortune cookies: Darkest Dungeon (game)."
 arch=('any')
-license=('CC BY-NC-SA 3.0')
+license=('CCPL:by-nc-sa')
 depends=(fortune-mod)
 url="https://darkestdungeon.gamepedia.com/Narrator"
 
