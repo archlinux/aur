@@ -9,5 +9,5 @@ pkgbase = flat-remix-gnome-git
 	source = flat-remix-gnome-git::git+https://github.com/daniruiz/Flat-Remix-GNOME-theme.git
 	sha256sums = SKIP
 
-pkgname = flat-remix-gnome
+pkgname = flat-remix-gnome-git
 
