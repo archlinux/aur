@@ -10,7 +10,7 @@ license=('Apache')
 depends=('flatbuffers' 'rapidjson' 'boost-libs')
 checkdepends=()
 optdepends=()
-makedepends=('cmake' 'boost' 'brotli-static' 'lz4-static' 'zlib-static' 'zstd-static')
+makedepends=('cmake' 'boost' 'brotli-static' 'lz4-static' 'zlib-static' 'zstd-static' 'snappy-static')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
 sha256sums=('22667b9d3f4d36c2060d5ade8c904c528325ea4ffcea2e71671013addcd033af')
 

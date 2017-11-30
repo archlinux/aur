@@ -12,6 +12,7 @@ pkgbase = arrow
 	makedepends = lz4-static
 	makedepends = zlib-static
 	makedepends = zstd-static
+	makedepends = snappy-static
 	depends = flatbuffers
 	depends = rapidjson
 	depends = boost-libs
