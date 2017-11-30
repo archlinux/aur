@@ -1,13 +1,13 @@
 pkgbase = fortune-mod-darkestdungeon
 	pkgdesc = Fortune cookies: Darkest Dungeon (game).
 	pkgver = 20171129
-	pkgrel = 1
+	pkgrel = 2
 	url = https://darkestdungeon.gamepedia.com/Narrator
 	arch = any
 	license = CC BY-NC-SA 3.0
 	depends = fortune-mod
 	source = darkestdungeon
-	sha256sums = de7394863ebc9285cbc5f2ad948ff765c3f4496407ac9676d347725348454320
+	sha256sums = 7123ad0b8e4970cb4d7c2579445fd368bddd596b6b9c34e17c3a8272a6a0795f
 
 pkgname = fortune-mod-darkestdungeon
 
