@@ -1,0 +1,21 @@
+pkgbase = ros-kinetic-marker-msgs
+	pkgdesc = ROS - This package defines messages for marker/fiducial system.
+	pkgver = 0.0.5
+	pkgrel = 2
+	url = http://wiki.ros.org/marker_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-std-msgs
+	makedepends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-geometry-msgs
+	source = ros-kinetic-marker-msgs-0.0.5::git+https://github.com/tuw-robotics/marker_msgs#tag=0.0.5
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-marker-msgs
+
