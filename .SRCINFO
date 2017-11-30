@@ -1,6 +1,6 @@
 pkgbase = vault
 	pkgdesc = A tool for managing secrets
-	pkgver = 0.8.3
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://vaultproject.io/
 	install = vault.install
@@ -12,10 +12,10 @@ pkgbase = vault
 	depends = glibc
 	conflicts = vault-git
 	backup = etc/vault.hcl
-	source = https://github.com/hashicorp/vault/archive/v0.8.3.tar.gz
+	source = https://github.com/hashicorp/vault/archive/v0.9.0.tar.gz
 	source = vault.service
 	source = vault.hcl
-	sha512sums = e2b273ebb761246f6d85fc040d911a3f3a7beb0951fed4adcbe5df4106dd0cb013328b5816ef4153b2c4d363f7f2a14ae1c82bae9baaea74ef707ff0934d6c8d
+	sha512sums = c5755bd8a696764af2375ac51b955759ece36796e6c138e6fc3e8abd487c10ac41c8927501234e0cdfcd448021254b2f09097d8e00a6278b44f971d8b8442da6
 	sha512sums = 5dfa4775e2dc43bb3db8090a0ffa436d2c83245d7777476ef3f3c0f0b1799114b34c02dbb3780ab0ec889fa7e40057c0934884c1d092ec42cda5d3407162672e
 	sha512sums = 46106cc76151eef2dd5e4b2caa6a96aae4d6ce1ecbf977dcc8667a3f6c829cbea95133622adafcb15cdfaa066ecc94c73c983e7613ee2f6573694981569729fe
 
