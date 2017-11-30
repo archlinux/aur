@@ -1,0 +1,30 @@
+pkgbase = qt3dstudio-git
+	pkgdesc = A world class 3D User Interface design tool.
+	pkgver = 2b75758
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = fbx-sdk
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-declarative
+	depends = qt5-tools
+	provides = qt3dstudio
+	conflicts = qt3studio
+	options = docs
+	source = git+https://code.qt.io/qt3dstudio/qt3dstudio.git
+	source = git+https://code.qt.io/qt3dstudio/qt3dstudio-collada-dom.git
+	source = git+https://code.qt.io/qt3dstudio/qt3dstudio-eastl.git
+	source = git+https://code.qt.io/qt3dstudio/qt3dstudio-lua.git
+	source = git+https://code.qt.io/qt3dstudio/qt3dstudio-pcre.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = qt3dstudio-git
+
