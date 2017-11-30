@@ -10,7 +10,7 @@ arch=('any')
 url='https://torsion.org/borgmatic/'
 license=('GPL3')
 depends=('borg' 'python-pykwalify' 'python-ruamel-yaml')
-makedepends=('make' 'python-setuptools' 'python-tox')
+makedepends=('git' 'python-setuptools' 'python-tox')
 provides=('borgmatic')
 install="${pkgname}.install"
 # Main repository moved over to gittea. Switch to using commits until tags are
