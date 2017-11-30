@@ -26,7 +26,7 @@ prepare() {
       ar p $f data.tar.xz | tar -Jx
       rm $f
   done
-#  rm control.tar.gz data.tar.xz debian-binary
+  rm control.tar.gz data.tar.xz debian-binary
 }
 
 package() {
