@@ -1,0 +1,19 @@
+pkgbase = spoticord
+	pkgdesc = Display your current Spotify song on Discord using the RPC API
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/nations/spoticord/
+	arch = any
+	makedepends = npm>=5
+	depends = nodejs>=8
+	depends = discord
+	depends = spotify>=1
+	provides = spoticord
+	options = emptydirs
+	source = git+https://github.com/nations/spoticord.git
+	source = spoticord.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = spoticord
+
