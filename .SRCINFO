@@ -1,0 +1,17 @@
+pkgbase = silluq-git
+	pkgdesc = Tool for simply versifying markdown urtext and checking citation completion
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/Beacon515L/silluq
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	provides = silluq-git
+	conflicts = silluq
+	source = git+https://github.com/Beacon515L/silluq.git
+	md5sums = SKIP
+
+pkgname = silluq-git
+
