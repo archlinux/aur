@@ -1,6 +1,6 @@
 # Maintainer: Adrien Gallouët <adrien@gallouet.fr>
 pkgname=glorytun
-pkgver=0.0.92_mud
+pkgver=0.0.93_mud
 pkgrel=1
 pkgdesc="A small, simple and secure VPN"
 arch=(x86_64)
