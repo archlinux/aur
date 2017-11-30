@@ -1,4 +1,5 @@
-# Maintainer: Max Zhao <alcasa.mz@gmail.com>
+# Maintainer: Augusto Modanese <spamme AT modanese DOT net>
+# Contributor: Max Zhao <alcasa.mz@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Kevin Peters <65bones AT gmail DOT com>
 # Contributor: Ali H. Caliskan <ali.h.caliskan AT gmail DOT com>
