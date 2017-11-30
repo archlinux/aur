@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # We need to force Java 8 here since both Java 7 and 9 currently causes the game to crash
-export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
+export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:/usr/lib/jvm/java-8-jre/jre/bin/:$PATH
 
 # Since launching the minecraft launch from the home directory bypass the update mechanism, I'm adding this
 # small piece of code that will do a checksum of the versions.json file provided by mojang, if a new version
