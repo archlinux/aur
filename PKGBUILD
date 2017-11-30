@@ -3,14 +3,14 @@
 pkgname=adom-noteye
 epoch=1
 pkgver=2.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A roguelike game with a quest-centric, plot driven structure (+ GUI)"
 arch=("x86_64")
 url="http://www.adom.de/"
 conflicts=('adom' 'adom-restricted' 'adom-noteye')
 provides=('adom')
 depends=('ncurses' 'mesa' 'sdl_image' 'sdl_net' 'sdl_mixer' 'lua51'
-         'libtinfo' 'libbsd')
+         'libbsd')
 _source_url="https://repo.sshadm.in/archlinux/eldios/${arch}"
 
 license=('custom: "adom"')
