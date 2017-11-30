@@ -10,7 +10,7 @@ depends=('libsodium' 'iproute2')
 makedepends=('meson' 'libsodium' 'pkgconfig')
 _pkgnamever=$pkgname-${pkgver//_/-}
 source=("$url/releases/download/v${pkgver//_/-}/$_pkgnamever.tar.gz")
-md5sums=('adc94aea7b138cf9e33b0869b37c2e8a')
+md5sums=('92300f047f2ea75c06de122f17d7e756')
 
 build() {
   cd "$srcdir/$_pkgnamever"
