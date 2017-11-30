@@ -21,15 +21,18 @@ makedepends=('git' 'meson' 'appstream-glib')
 provides=("$_pkgname")
 conflicts=("$_pkgname-bzr" "$_pkgname")
 sha256sums=('SKIP'
-            '2b80c9bb84f7de8de0e36dc16465c6633cb74de7bf777efcad76393e88a6e62a'
             '6d29178697384fb046d9d25c6c2482f353a4484ec4f0a5b9080d1a26aa24f839')
 source=('git+https://github.com/pithos/pithos.git'
-        'dbus.service'
         'systemd.service')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
   git describe --tags | sed 's/-/.r/; s/-/./'
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  echo "SystemdService=pithos.service" >> "data/io.github.Pithos.service.in"
 }
 
 build() {
@@ -44,6 +47,5 @@ build() {
 package() {
   cd "$srcdir/build"
   DESTDIR="$pkgdir" ninja install
-  install -Dm644 "${srcdir}/dbus.service" "${pkgdir}/usr/share/dbus-1/services/io.github.Pithos.service"
   install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/user/pithos.service"
 }
