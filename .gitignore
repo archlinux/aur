@@ -12,3 +12,9 @@ src/
 *.txt
 *.xz
 *.zip
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.tar
+tmp/
