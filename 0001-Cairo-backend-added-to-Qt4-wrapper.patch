@@ -1,4 +1,4 @@
-From bc66e168dd4cfe4afee20e90bc5aa2898b1f6008 Mon Sep 17 00:00:00 2001
+From c791b85224237ab10d12cc87ee4052eca09808a8 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 20 May 2009 11:42:28 +0100
 Subject: [PATCH 1/4] Cairo backend added to Qt4 wrapper
@@ -198,5 +198,5 @@ index a01a638a..69ce63bc 100644
    string(REPLACE "-" "" test_name ${exe})
    set(${test_name}_SOURCES
 -- 
-2.15.0
+2.15.1
 

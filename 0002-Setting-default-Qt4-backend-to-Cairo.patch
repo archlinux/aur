@@ -1,4 +1,4 @@
-From dac62d3467a9060c93f8c03bf3fbfa94357c22d2 Mon Sep 17 00:00:00 2001
+From 719e3795d57d8652bacea947277abac0458f51da Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 20 May 2009 13:17:29 +0100
 Subject: [PATCH 2/4] Setting default Qt4 backend to Cairo
@@ -21,5 +21,5 @@ index 1338a185..b6ca064a 100644
          m_hints = 0;
          m_optContentModel = 0;
 -- 
-2.15.0
+2.15.1
 

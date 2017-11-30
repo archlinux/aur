@@ -1,4 +1,4 @@
-From 01951266ac6d701f705432aa015ccca1e9122db9 Mon Sep 17 00:00:00 2001
+From 2c81fe47d02e3bb2745f819d06db001b68b918df Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -135,7 +135,7 @@ index a375e0af..5f23bba9 100644
    if (cairo_font_face_set_user_data (l->font_face,
  				     &_ft_cairo_key,
 diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
-index 43c604f0..9ed3c151 100644
+index cc8a161b..91f4abea 100644
 --- a/poppler/CairoOutputDev.cc
 +++ b/poppler/CairoOutputDev.cc
 @@ -208,6 +208,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
@@ -311,5 +311,5 @@ index 97b70a0c..6786b40b 100644
    Object getAnnotsObject(XRef *xrefA = nullptr) { return annotsObj.fetch(xrefA ? xrefA : xref); }
    // Add a new annotation to the page
 -- 
-2.15.0
+2.15.1
 
