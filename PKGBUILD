@@ -1,7 +1,7 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=ghc-pristine
 pkgver=8.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Symlinks to GHC with only boot libs, useful for building static binaries"
 arch=(any)
 url=https://www.haskell.org/ghc/
@@ -39,7 +39,7 @@ package() {
                     if [ "$head" = "#!" ]; then
                         n=`basename "$f"`
                         cp -p "$f" "$pkgdir$prefix/bin/"
-                        sed -i 's?topdir=.*?topdir="'"$prefix"'"/lib?;s?exec "/usr/bin/ghc?exec "'"$prefix"'"/bin/ghc?' "$pkgdir$prefix/bin/$n"
+                        sed -i 's?topdir=.*?topdir="'"$prefix"'"/lib?;s?exec "/usr/bin/ghc?exec "'"$prefix"'/bin/ghc?' "$pkgdir$prefix/bin/$n"
                     fi
                 fi
                 ;;
