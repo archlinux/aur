@@ -1,13 +1,13 @@
 pkgbase = ccl
 	pkgdesc = A Common Lisp implementation.
-	pkgver = 1.11
-	pkgrel = 2
+	pkgver = 1.11.5
+	pkgrel = 1
 	url = http://ccl.clozure.com
 	arch = x86_64
 	license = Apache
 	provides = ccl
-	source = https://github.com/Clozure/ccl/releases/download/v1.11/ccl-1.11-linuxx86.tar.gz
-	sha256sums = 08e885e8c2bb6e4abd42b8e8e2b60f257c6929eb34b8ec87ca1ecf848fac6d70
+	source = https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-linuxx86.tar.gz
+	sha256sums = b80850d8d6ca8662499975f1cd76bf51affdd29e2025796ddcff6576fe704143
 
 pkgname = ccl
 
