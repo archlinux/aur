@@ -1,0 +1,17 @@
+pkgbase = qualimap
+	pkgdesc = Evaluating next generation sequencing data
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://qualimap.bioinfo.cipf.es/
+	install = qualimap.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = r>=3.1 java-runtime>=6 java-runtime-openjdk>=6
+	provides = qualimap
+	conflicts = qualimap
+	source = https://bitbucket.org/kokonech/qualimap/downloads/qualimap_v2.2.1.zip
+	md5sums = a13afe4325ec2f9a065f48a7f0880280
+
+pkgname = qualimap
+
