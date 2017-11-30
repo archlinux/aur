@@ -8,6 +8,7 @@ pkgbase = homebridge-git
 	license = apache
 	makedepends = git
 	makedepends = npm
+	makedepends = python2
 	depends = nodejs>=4.3.2
 	depends = avahi
 	provides = homebridge

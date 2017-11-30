@@ -9,7 +9,11 @@ arch=('any')
 url="https://github.com/nfarina/homebridge"
 license=('apache')
 depends=('nodejs>=4.3.2' 'avahi')
-makedepends=('git' 'npm')
+makedepends=(
+  'git'
+  'npm'
+  'python2' # Needed for node-gyp for building native modules
+)
 provides=('homebridge')
 conflicts=('homebridge')
 options=(!emptydirs)
