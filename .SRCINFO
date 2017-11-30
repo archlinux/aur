@@ -18,7 +18,7 @@ pkgbase = python-caiman-git
 	depends = python-peakutils
 	optdepends = python-cvxpy
 	optdepends = python-spams-svn
-	source = python-caiman-git-r1421.dd9c889::git+https://github.com/simonsfoundation/CaImAn.git
+	source = python-caiman-git::git+https://github.com/simonsfoundation/CaImAn.git
 	md5sums = SKIP
 
 pkgname = python-caiman-git

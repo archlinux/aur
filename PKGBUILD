@@ -15,25 +15,25 @@ makedepends=('git' 'cython')
 checkdepends=()
 optdepends=('python-cvxpy' 'python-spams-svn')
 options=()
-source=("$pkgname-$pkgver::git+${url}")
+source=("$pkgname::git+${url}")
 md5sums=('SKIP')
 
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	python setup.py build_ext
 	python setup.py build
 }
 
 
 pkgver() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	python setup.py install --root=${pkgdir} --prefix=/usr
 	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
