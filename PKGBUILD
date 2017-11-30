@@ -2,10 +2,10 @@
 # Contributor: Previous Ismo Toijala <ismo.toijala@gmail.com>
 # Contributor: Previous Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 # Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
-# Previous maintainer: 
+# Previous maintainer:
 
 pkgname=python-numpydoc
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Sphinx extension to support docstrings in Numpy format"
 arch=('any')
@@ -13,8 +13,8 @@ url="https://github.com/numpy/numpydoc"
 license=('BSD')
 depends=('python' 'python-sphinx')
 options=(!emptydirs)
-source=(http://pypi.python.org/packages/source/n/numpydoc/numpydoc-$pkgver.tar.gz)
-sha256sums=('1ec573e91f6d868a9940d90a6599f3e834a2d6c064030fbe078d922ee21dcfa1')
+source=(https://pypi.python.org/packages/21/94/0e087bd669bb69da3b0996acfee97cee9f7d91c825991ad76eb863dc020d/numpydoc-$pkgver.tar.gz)
+sha256sums=('2dc7b2c4e3914745e38e370946fa4c109817331e6d450806285c08bce5cd575a')
 
 package() {
   cd "$srcdir/numpydoc-$pkgver"
