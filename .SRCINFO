@@ -1,0 +1,16 @@
+pkgbase = deepin.com.qq.office-git
+	pkgdesc = Deepin Wine TIM 1.2.0
+	pkgver = 1.2.0deepin0
+	pkgrel = 2
+	url = http://office.qq.com/
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	depends = deepin-wine-git
+	noextract = deepin.com.qq.office_1.2.0deepin0_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.qq.office/deepin.com.qq.office_1.2.0deepin0_i386.deb
+	md5sums = SKIP
+
+pkgname = deepin.com.qq.office-git
+
