@@ -8,9 +8,9 @@ pkgbase = bbswitch-ck
 	arch = x86_64
 	license = GPL
 	makedepends = linux-ck-headers>=4.14
-	makedepends = linux-ck-headers<4.14.3
+	makedepends = linux-ck-headers<=4.14.3
 	depends = linux-ck>=4.14
-	depends = linux-ck<4.14.3
+	depends = linux-ck<=4.14.3
 	provides = bbswitch
 	source = v0.8.tar.gz::http://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
 	md5sums = 5b116b31ace3604ddf9d1fc1f4bc5807
