@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=rtags
-pkgver=2.15
+pkgver=2.16
 pkgrel=1
 pkgdesc='RTags is a client/server application that indexes C/C++ code'
 arch=('i686' 'x86_64')
