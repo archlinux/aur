@@ -1,6 +1,38 @@
 Version history
 ===============
 
+0.9.4
+-----
+
+2017-11-30
+
+ClamLix is included, a singleplayer pack with 113 levels. All levels are
+proven solvable. Thanks, Clam, Forestidia, and mobius!
+
+New multiplayer maps by Arty, Flopsy, and Yung. In particular, more maps for 7
+and 8 players. Some fixes to multiplayer maps by geoo and Steve.
+
+lemforum's Eye of the Needle: removed a backroute. Rubix's Holly Jingle: save
+99/99 -> save 10/10.
+
+Restarting a level disables fast-forward or turbo-fast-forward.
+
+Fix #267: Allow multiple hotkeys per skill.
+
+Fix #257: When A's lix enters B's exit, B will hear the saving sound.
+
+Splat ruler. In multiplayer, the splat ruler is combined with the
+exit-highlighting-function. Needs feedback.
+
+Score graph marks players who nuked with black-and-white squares. Ideally, I
+find a better solution.
+
+Fix: Disable editor grid-size hotkey whenever an editor window is open.
+
+Fixed an assertion failure in the debugging build when dragging quickly in the editor.
+
+Fix #258: The multiplayer server crashed when somebody left, then the remaining players started a game. Still needs field testing.
+
 0.9.3
 -----
 
