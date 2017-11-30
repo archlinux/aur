@@ -2,8 +2,8 @@
 # Author: Andrey Ovsankin aka EvilBeaver
 
 pkgname=onescript
-pkgver=1.0.16
-_pkgver=1_0_16
+pkgver=1.0.18
+_pkgver=1_0_18
 pkgrel=1
 pkgdesc="This project is an alternative implementation of the virtual machine, execute scripts in the language of the 1C:Enterprise"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ source=(
         "source.deb::http://oscript.io/downloads/$_pkgver/deb"
         )
 
-md5sums=('7e7d0d287c525508d5c21f7e113e4149')
+md5sums=('2dccc72382964249de8a5904f1b68280')
 
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
       ar p $f data.tar.xz | tar -Jx
       rm $f
   done
-  rm control.tar.gz data.tar.xz deb debian-binary
+#  rm control.tar.gz data.tar.xz debian-binary
 }
 
 package() {
