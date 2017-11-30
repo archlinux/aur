@@ -1,7 +1,7 @@
 post_install() {
     echo "Install Repetier-Server"
-    id -u repetierserver &>/dev/null || adduser --quiet --home /opt/RepetierServer --system --disabled-login --ingroup repetierserver
-    adduser repetierserver uucp
+    id -u repetierserver &>/dev/null || useradd --home-dir /opt/RepetierServer --system -U repetierserver
+    usermod -G uucp -a repetierserver
     chown -R repetierserver /opt/RepetierServer
     chmod 755 /opt/RepetierServer/modules/firmware/bin/avrdude
     chmod 755 /opt/RepetierServer/modules/firmware/bin/bossac
