@@ -1,0 +1,16 @@
+pkgbase = python2-ana
+	pkgdesc = A python project to provide easy distributed data storage
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://github.com/zardus/ana
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	source = https://pypi.python.org/packages/6b/1a/7f609ff9867056d2cbabed5e3f98792a55189e37f6c8cfa585e4391775b9/ana-0.03.zip
+	source = https://raw.githubusercontent.com/zardus/ana/master/LICENSE
+	md5sums = 0233cc4a840734d6404cff4c6ae426a3
+	md5sums = 92da168ebb0065f567f0ea48bed0f512
+
+pkgname = python2-ana
+
