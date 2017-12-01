@@ -1,0 +1,42 @@
+pkgbase = linux-ryzen-git
+	pkgver = 4.15rc1.r179.ga0908a1b7d68
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+	source = config.x86_64
+	source = linux-ryzen-git.preset
+	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch
+	sha256sums = SKIP
+	sha256sums = 03215fd466917a0045f5f51e7c46ffe21f14c078fb8bcd1ff99e740363afbb55
+	sha256sums = 95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7
+	sha256sums = 8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8
+
+pkgname = linux-ryzen-git
+	pkgdesc = The Linux kernel and modules (git version)
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-ryzen-git.preset
+
+pkgname = linux-ryzen-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	provides = linux-headers
+
+pkgname = linux-ryzen-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	provides = linux-docs
+
