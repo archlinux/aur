@@ -1,0 +1,2 @@
+d /var/lib/chronograf   0755 chronograf chronograf
+x /var/lib/chronograf/*
