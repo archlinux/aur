@@ -1,6 +1,6 @@
 pkgbase = minikube
 	pkgdesc = Minikube is a tool that makes it easy to run Kubernetes locally
-	pkgver = 0.24.0
+	pkgver = 0.24.1
 	pkgrel = 1
 	url = https://github.com/kubernetes/minikube
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = minikube
 	optdepends = kubectl-bin: to manage the cluster
 	optdepends = virtualbox
 	optdepends = docker-machine-kvm
-	source = minikube_0.24.0::https://storage.googleapis.com/minikube/releases/v0.24.0/minikube-linux-amd64
-	sha256sums = fb624bfda432c764d19212fcaab2a368db8bb0e8427b7ff04b5b684faab0b463
+	source = minikube_0.24.1::https://storage.googleapis.com/minikube/releases/v0.24.1/minikube-linux-amd64
+	sha256sums = 1261de09386fd1f4ee7a4645958757c2c9e69f419a2a4ca8aff475017a7e036e
 
 pkgname = minikube
 
