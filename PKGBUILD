@@ -1,11 +1,11 @@
 # Maintainer: Please see AUR page for current maintainer and contact information.
 
-## Note: Sometime the build will break at the first attemp, if so, try again with
-##       "makepkg -e" to finish it.
+## Note: Sometime the build will break at the first attempt, if so, try again with
+## `makepkg` -e to finish it.
 
 pkgname=brave-git
-pkgver=0.21.0.^3.0.17897.
-pkgrel=2
+pkgver=0.22.0.^3.0.18419.
+pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -18,7 +18,6 @@ optdepends=('cups: To print stuff'
 provides=('brave' 'brave-browser')
 conflicts=('brave')
 source=("$pkgname::git://github.com/brave/browser-laptop.git")
-#source=("$pkgname::git://github.com/brave/browser-laptop.git#branch=dev-channel")
 sha384sums=('SKIP')
 
 pkgver() {
@@ -48,7 +47,7 @@ package() {
   cd "$srcdir/$pkgname"
 
   install -d -m0755 "$pkgdir"/usr/lib
-  cp -a --reflink=auto Brave-linux-x64 "$pkgdir/usr/lib/$pkgname"
+  cp -a --reflink=auto brave-linux-x64 "$pkgdir/usr/lib/$pkgname"
 
   _launcher="$pkgdir/usr/bin/$pkgname"
   install -Dm0755 /dev/stdin "$_launcher"<<END
@@ -183,7 +182,7 @@ Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
 END
 
-  install -Dm0644 res/app.png "$pkgdir"/usr/share/pixmaps/brave.png
+  install -Dm0644 res/nightly/app.png "$pkgdir"/usr/share/pixmaps/brave.png
 
   install -Dm0755 LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/MPL2
 
