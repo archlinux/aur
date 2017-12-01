@@ -11,12 +11,12 @@ index 74192da240..0ede281aad 100755
 +        os.execvp('jupyter-notebook', ['jupyter-notebook'] + argv)
  
  
- class SageNBExport(NotebookJupyter):
+ class NotebookJupyterlab(object):
 diff --git a/src/sage/repl/ipython_kernel/install.py b/src/sage/repl/ipython_kernel/install.py
 index 3912b8cdf5..bd40cdadda 100644
 --- a/src/sage/repl/ipython_kernel/install.py
 +++ b/src/sage/repl/ipython_kernel/install.py
-@@ -281,7 +281,6 @@ def have_prerequisites(debug=True):
+@@ -280,7 +280,6 @@ def have_prerequisites(debug=True):
          True
      """
      try:

@@ -1,6 +1,6 @@
 --- a/src/sage/interfaces/r.py
 +++ b/src/sage/interfaces/r.py
-@@ -331,7 +331,7 @@
+@@ -332,7 +332,7 @@
                    prompt = '> ', #default, later comes the change
  
                    # This is the command that starts up your program

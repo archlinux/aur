@@ -42,8 +42,8 @@ index 40b9c23..d188cf0 100644
 +    void exhaustive_search_wrapper(int n, int n_eqs, int degree, int ***coeffs, solution_callback_t callback, void* callback_state, int verbose, int T)
  
  
- include 'sage/ext/interrupt.pxi'  #sig_on(), sig_off()
-@@ -219,7 +221,7 @@ def exhaustive_search(eqs,  max_sols=Infinity, verbose=False):
+ from sage.rings.integer import Integer
+@@ -217,7 +217,7 @@ def exhaustive_search(eqs,  max_sols=Infinity, verbose=False):
  
      # ------- runs the library
      sig_on()

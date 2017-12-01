@@ -2,7 +2,7 @@ diff --git a/src/sage/graphs/digraph.py b/src/sage/graphs/digraph.py
 index 8c29602da6..e7a185d586 100644
 --- a/src/sage/graphs/digraph.py
 +++ b/src/sage/graphs/digraph.py
-@@ -751,7 +751,7 @@ class DiGraph(GenericGraph):
+@@ -755,7 +755,7 @@ class DiGraph(GenericGraph):
              self.allow_multiple_edges(multiedges,check=False)
              self.allow_loops(loops,check=False)
              self.add_vertices(data.nodes())

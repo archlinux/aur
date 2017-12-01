@@ -8,10 +8,10 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.1.beta9.r0.gbc45dab36e
+pkgver=8.1.rc3.r0.g20007d522c
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
 depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 python2-fpylll python2-psutil python2-cypari2
@@ -37,20 +37,21 @@ makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhom
 source=(git://git.sagemath.org/sage.git#branch=develop
         env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-ecl-no-sigfpe.patch sagemath-threejs.patch
-        sagemath-detect-igraph.patch sagemath-networkx2.patch)
+        sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-linbox-1.5.patch)
 sha256sums=('SKIP'
-            'e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571'
-            '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
-            'c6836783251d94c00f0229c1e671de86c58c6c6fb0f6959725317817abc64ca8'
-            '889b65598d2a15e73eb482f543ec9b28d8992eeb57b07883c2e9627dfee15a9b'
-            '27aa73d427d92aeb2c181a233aa3a574a4158cd7dee33832808f69edaec55ea2'
-            '81d08c6a760f171f3381455b66a6c84789c9f0eefddbe6ca5794075514ad8c3a'
-            'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf'
-            'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
+            '8c4ed4c1f3bb79fb279efa5267a78d0d093c718377b5aa0457b642e50f60811a'
+            'c41ae665499c6cd775d40bbe178f8786830b0931ee26bf11ee02f7d83bcc8107'
+            '0b680e674c11c47afa86162d8b49645620b8912722e08133d23357c29ca9310a'
+            '2cad308f8adbb6c54e6603fa22b2f0eb60f6f09248d5d015000c3932ac14f646'
+            '962ce805c87147212b21fc2ab0ac9af9bd0033942c7a6905b9906645b48e8a4f'
+            'ef94908d4ab28d13af622e6e58ec191aa78817d17e4466c7bb6f64ee72a813b9'
+            'afd0952b9bb8f52fd428eae36cf719a58ff85a894baae88cbb2124e043768cc7'
+            '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             'c31809f887bf9acc45c5bd9dd30bb93e73601d3efbf3016594c3c1d241731c8a'
             '514135b920a43f999571a15e97b41e14f5bed59f65b19643864dc23555a7b830'
-            '90be1d1a90120bd5bd3620769480106ba809dd23e896bc4a3f8931e5340f3cda'
-            'a1a0ab5b794136b518f5f66fe9f1689411fabb3b81560b159eae81f6f69000e3')
+            '28d7789b8d777922ab8871ca43b6afab751428cae875c0343d3962e6a2030b88'
+            '37c5c1e694a2aca06c0f1c7d99622ff81fd2bc6a51e8745762294889fa4673f6'
+            'a52d03e04c9d64bb957a1f8dcdae3280ebb9450a7fd76aaf5ae5de5c6f74774f')
 
 pkgver() {
   cd sage
@@ -90,6 +91,8 @@ prepare(){
   patch -p1 -i ../fes02.patch
 # disable SIGFPE for ecl https://trac.sagemath.org/ticket/22191
 # patch -p1 -i ../sagemath-ecl-no-sigfpe.patch
+# fix build with linbox 1.5 https://trac.sagemath.org/ticket/24214
+  patch -p1 -i ../sagemath-linbox-1.5.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*

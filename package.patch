@@ -1,6 +1,6 @@
 --- src/sage/misc/package.py.orig	2014-11-23 15:58:13.000000000 +0100
 +++ src/sage/misc/package.py	2015-01-22 20:32:25.651383902 +0100
-@@ -343,7 +343,7 @@
+@@ -320,7 +320,7 @@
          sage: for pkg in list_packages('pip', local=True):
          ....:     assert not is_package_installed(pkg)
      """

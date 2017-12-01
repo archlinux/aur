@@ -2,7 +2,7 @@ diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
 index 252984f..ce19682 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
-@@ -7876,10 +7875,12 @@ class GenericGraph(GenericGraph_pyx):
+@@ -8188,10 +8188,12 @@ class GenericGraph(GenericGraph_pyx):
          if algorithm is None:
              if vertex_bound:
                  algorithm = "LP"

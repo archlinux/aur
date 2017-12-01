@@ -10,7 +10,7 @@
  
  
  class SageKernelSpec(object):
-@@ -208,7 +208,7 @@
+@@ -225,7 +225,7 @@
              sage: spec._symlink_resources()    # not tested
          """
          path = os.path.join(SAGE_EXTCODE, 'notebook-ipython')
