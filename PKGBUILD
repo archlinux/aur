@@ -11,7 +11,6 @@ pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages
 arch=('any')
 license=('PSF')
 url="http://pypi.python.org/pypi/setuptools"
-#source=("https://pypi.io/packages/source/s/setuptools/setuptools-${pkgver}.zip")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.zip")
 sha512sums=('43fda5f6148e03070a2574671ca1b0cf1906b981bc45f4255fa95d28bb3a9bd967b9f3d631e286a391a32287881e2dbabb2c6fbe9b3e198993e1846444d19c45')
 makedepends=('pypy3' 'pypy')
