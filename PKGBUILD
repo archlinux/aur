@@ -4,7 +4,7 @@
 
 pkgname=python2-cooldict
 pkgver=1.02
-pkgrel=3
+pkgrel=4
 pkgdesc="Some useful dict-like structures"
 url="https://github.com/zardus/cooldict"
 depends=('python2' 'python2-ana')
@@ -12,9 +12,9 @@ makedepends=('python2-distribute' )
 license=('BSD')
 arch=('any')
 source=('https://pypi.python.org/packages/9e/81/c82755762a5c17f0011e96f9d2e79dbcb6423cac184b1c49847db7fd2584/cooldict-1.02.tar.gz'
-        'https://github.com/zardus/cooldict/blob/master/LICENSE')
+        'https://raw.githubusercontent.com/zardus/cooldict/master/LICENSE')
 md5sums=('1f01b0689979e1be604e11e6039e1ee2'
-         '3b53173041ff1777d16e1388e11e400f')
+         '92da168ebb0065f567f0ea48bed0f512')
 
 build() {
     cd $srcdir/cooldict-1.02
