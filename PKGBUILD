@@ -2,7 +2,7 @@
 # Contributor: Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=cbmc-bin
-pkgver=5.7
+pkgver=5.8
 pkgrel=1
 pkgdesc="Bounded Model Checking for ANSI-C"
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ license=('custom')
 provides=('cbmc')
 conflicts=('cbmc' 'cbmc-bin')
 if test "$CARCH" == x86_64; then
-  source=("http://www.cprover.org/cbmc/download/cbmc-5-7-linux-64.tgz")
-  sha256sums=('6ba7f84f38385de8e38b8ee40725ea068bc020ee0e0213aac0c7a06e92b30f55')
+  source=("http://www.cprover.org/cbmc/download/cbmc-5-8-linux-64.tgz")
+  sha256sums=('fdb91b32baa7ba54d62024a8b271cd8ee1426c5a4341e24dba5c5ae82303ba74')
 else
-  source=("http://www.cprover.org/cbmc/download/cbmc-5-7-linux-32.tgz")
-  sha256sums=('e3a2af95db990ac3fceaea2160743f61bdac2779c4bc17c989ae7764f95e487a')
+  source=("http://www.cprover.org/cbmc/download/cbmc-5-8-linux-32.tgz")
+  sha256sums=('8140c0dda9ec3d2808c38235ad7d1e00dd3f118cd46dfe0b2f14610b93627185')
 fi
 
 package() {
