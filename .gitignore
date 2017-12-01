@@ -1,0 +1,7 @@
+*.tar.gz
+*.tar.xz
+.BUILDINFO
+.MTREE
+.PKGINFO
+pkg/
+src/
