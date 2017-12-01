@@ -1,10 +1,10 @@
-# Maintainer: Markus Hovorka <m.hovorka@live.de>
+# Contributor: Markus Hovorka <m.hovorka@live.de>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: kachelaqa <kachelaqa at gmail dot com>
 
 pkgbase='pyside2-tools-git'
 pkgname=('python2-pyside2-tools-git' 'python-pyside2-tools-git' 'pyside2-tools-common-git')
-pkgver=2.0.0.r108.f68388c
+pkgver=2.0.0.r109.413ecc7
 _upver=2.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -23,19 +23,18 @@ build() {
     # Build for python2.
     cd "$srcdir/$pkgbase"
     mkdir -p build-py2 && cd build-py2
-    cmake .. \
+    cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DPYTHON_EXTENSION_SUFFIX=-python2.7 \
-        -DPYTHON_BASENAME=-python2.7
+        -DPYTHON_CONFIG_SUFFIX="-python2.7" \
+        -DCMAKE_BUILD_TYPE=Release ..
     make
 
     # Build for python3.
     cd "$srcdir/$pkgbase"
     mkdir -p build-py3 && cd build-py3
-    cmake .. \
+    cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_BUILD_TYPE=Release ..
     make
 }
 
