@@ -1,7 +1,7 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=mint-y-theme
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Linux Mint 18 theme"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gtk-engine-murrine')
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.xz::http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('0ecabfcccc1e8b9ee5202fb9b2ba7263926ca0fe500aff206d848d0dbe435b2d')
+sha256sums=('afc3176a0b272460c6bff201249604516df64a1eef87d2a3c49816992104dcf0')
 
 package() {
 	cp -ar --no-preserve=ownership "${srcdir}/${pkgname}"/usr "${pkgdir}"
