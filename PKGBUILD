@@ -15,7 +15,7 @@ provides=("terminus-terminal")
 conflicts=("terminus-terminal")
 replaces=('terminus-terminal')
 source=("$url/releases/download/v${_pkgver}-alpha.$alpha/${_pkgname}_${_pkgver}-alpha.${alpha}_amd64.deb")
-sha256sums=('88955458155c6feb1d782cb9214623ffa24f258172edb3af04cfb3d6ffd6b8bf')
+sha256sums=('685c4215b399e221f902faa765423ecf7342598c1f997dc6d8b15f69a1c67550')
 
 pkgver(){
   echo ${_pkgver}.${alpha}
