@@ -3,7 +3,7 @@ pkgname=healpix
 _pkgname=${pkgname}
 pkgver='3.31_2016Aug26'
 _dir='Healpix_3.31'
-pkgrel=3
+pkgrel=4
 pkgdesc="Software for pixelization, hierarchical indexation, synthesis, analysis, and visualization of data on the sphere."
 arch=(any)
 url="https://sourceforge.net/projects/healpix/"
@@ -25,9 +25,9 @@ build() {
     mkdir -p lib include
     make -j
 }
-check() {
-    cd "${srcdir}/${_dir}"
-}
+#check() {
+#    cd "${srcdir}/${_dir}"
+#}
 package() {
     cd "${srcdir}/${_dir}"
     install -Dm755 lib/libchealpix.so "$pkgdir/usr/lib/libchealpix.so"
