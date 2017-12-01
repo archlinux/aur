@@ -1,0 +1,17 @@
+pkgbase = lll
+	pkgdesc = The Lovely Little Language compiler for Ethereum smart contracts
+	pkgver = 0.4.19
+	pkgrel = 1
+	url = https://github.com/ethereum/solidity
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	provides = lllc
+	source = git+https://github.com/ethereum/solidity.git#commit=c4cbbb054b5ed3b8ceaa21ee5b47b0704762ff40
+	sha256sums = SKIP
+
+pkgname = lll
+
