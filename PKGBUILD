@@ -9,8 +9,8 @@ url="https://github.com/dalibo/pgbadger"
 license=("custom:Dalibo")
 depends=(perl)
 optdepends=(
-  "perl-text-csv-xs: to parse PostgreSQL CSV log files"
-  "perl-json-xs: to export statistics as JSON file"
+  "perl-text-csv-xs: parse PostgreSQL CSV log files"
+  "perl-json-xs: export statistics as JSON file"
 )
 options=('!emptydirs' purge)
 source=("https://github.com/dalibo/pgbadger/archive/v${pkgver}.tar.gz")
