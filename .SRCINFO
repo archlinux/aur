@@ -7,6 +7,7 @@ pkgbase = deepin-fonts-wine-git
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
+	conflicts = deepin-fonts-wine
 	noextract = deepin-fonts-wine_2.18-2_all.deb
 	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-fonts-wine_2.18-2_all.deb
 	md5sums = SKIP
