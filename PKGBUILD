@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@ctrl-d.org>
 
 pkgname=shaderc-git
-pkgver=r432.259ca18.glslang_r2345
+pkgver=r438.98ab88b.glslang_r2450
 pkgrel=1
 pkgdesc="A collection of tools, libraries and tests for shader compilation"
 url="https://github.com/google/shaderc"
