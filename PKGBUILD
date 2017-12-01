@@ -20,8 +20,6 @@ build() {
   cd "$srcdir/pgbadger-$pkgver"
   /usr/bin/perl Makefile.PL
   make
-  # Strip unnecesary directory.
-  rm --dir "$srcdir/pgbadger-$pkgver/"
 }
 
 package() {
