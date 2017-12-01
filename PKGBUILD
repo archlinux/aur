@@ -45,8 +45,8 @@ check() {
 package() {
   cd "$_pkgname"
 
+  mkdir -p ~/.platformsh
   install -Dm755 platform.phar "$pkgdir/usr/share/webapps/platform/platform.phar"
   install -dm755 "$pkgdir/usr/bin"
   ln -s /usr/share/webapps/platform/platform.phar "$pkgdir/usr/bin/platform"
-  mkdir -p ~/.platform
 }
