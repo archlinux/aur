@@ -1,0 +1,13 @@
+pkgbase = kamil-scripts-crypted
+	pkgdesc = Kamil Cukrowski crypted private package with custom scripts. Do NOT USE
+	pkgver = 0.3.1.r3.g8242aea
+	pkgrel = 3
+	url = https://github.com/Kamilcuk/kamil-scripts-crypted
+	arch = any
+	license = MIT
+	license = custom:Beerware
+	source = kamil-scripts-crypted::git+https://github.com/Kamilcuk/kamil-scripts-crypted.git
+	md5sums = SKIP
+
+pkgname = kamil-scripts-crypted
+
