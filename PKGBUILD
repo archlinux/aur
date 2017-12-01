@@ -2,7 +2,7 @@
 # Maintainer: François Freitag <mail@franek.fr>
 pkgname=pgbadger
 pkgver=9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast PostgreSQL log analysis report"
 arch=("any")
 url="https://github.com/dalibo/pgbadger"
