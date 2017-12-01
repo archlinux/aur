@@ -1,11 +1,11 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-lua
-pkgver=0.10.10
+pkgver=0.10.11
 pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.6
+_nginxver=1.13.7
 
 pkgdesc='Lua script engine module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -19,9 +19,9 @@ source=(
 	openssl-1.1.patch
 )
 
-sha256sums=('8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8'
-            'b4acb84e2d631035a516d61830c910ef6e6485aba86096221ec745e0dbb3fbc9'
-            '60aed346397e06f870c7e17798f6e3ce11f078c5ae6e573098d53132c1afdb58')
+sha256sums=('beb732bc7da80948c43fd0bf94940a21a21b1c1ddfba0bd99a4b88e026220f5c'
+            'c0fb91fcfd1c6e7dec34ca64826ef81ffebafdef6174d254467636f380566626'
+            'de8975aa6dafa9c84d4d639716f17876f39258d07e8294ff22d95005d887fb3b')
 
 prepare() {
 	cd "$srcdir"/$_modname-nginx-module-$pkgver

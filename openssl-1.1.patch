@@ -1,8 +1,8 @@
 diff --git a/src/ngx_http_lua_socket_tcp.c b/src/ngx_http_lua_socket_tcp.c
-index 382a94de..07164746 100644
+index f0988bc..17d3db2 100644
 --- a/src/ngx_http_lua_socket_tcp.c
 +++ b/src/ngx_http_lua_socket_tcp.c
-@@ -1316,9 +1316,8 @@ ngx_http_lua_socket_tcp_sslhandshake(lua_State *L)
+@@ -1320,9 +1320,8 @@ ngx_http_lua_socket_tcp_sslhandshake(lua_State *L)
                      return 2;
                  }
  
@@ -14,7 +14,7 @@ index 382a94de..07164746 100644
              }
          }
  
-@@ -1583,9 +1582,8 @@ ngx_http_lua_ssl_handshake_retval_handler(ngx_http_request_t *r,
+@@ -1587,9 +1586,8 @@ ngx_http_lua_ssl_handshake_retval_handler(ngx_http_request_t *r,
      } else {
          *ud = ssl_session;
  
@@ -26,7 +26,7 @@ index 382a94de..07164746 100644
  
          /* set up the __gc metamethod */
          lua_pushlightuserdata(L, &ngx_http_lua_ssl_session_metatable_key);
-@@ -5365,9 +5363,8 @@ ngx_http_lua_ssl_free_session(lua_State *L)
+@@ -5386,9 +5384,8 @@ ngx_http_lua_ssl_free_session(lua_State *L)
  
      psession = lua_touserdata(L, 1);
      if (psession && *psession != NULL) {
@@ -39,7 +39,7 @@ index 382a94de..07164746 100644
          ngx_ssl_free_session(*psession);
      }
 diff --git a/src/ngx_http_lua_ssl_ocsp.c b/src/ngx_http_lua_ssl_ocsp.c
-index 31b4f243..9ec8b509 100644
+index 31b4f24..9ec8b50 100644
 --- a/src/ngx_http_lua_ssl_ocsp.c
 +++ b/src/ngx_http_lua_ssl_ocsp.c
 @@ -468,7 +468,11 @@ ngx_http_lua_ffi_ssl_set_ocsp_status_resp(ngx_http_request_t *r,
@@ -55,7 +55,7 @@ index 31b4f243..9ec8b509 100644
          return NGX_DECLINED;
      }
 diff --git a/src/ngx_http_lua_ssl_session_fetchby.c b/src/ngx_http_lua_ssl_session_fetchby.c
-index 556b7320..5289cb92 100644
+index 3a3c1f5..2c75f6a 100644
 --- a/src/ngx_http_lua_ssl_session_fetchby.c
 +++ b/src/ngx_http_lua_ssl_session_fetchby.c
 @@ -171,8 +171,11 @@ ngx_http_lua_ssl_sess_fetch_by_lua(ngx_conf_t *cf, ngx_command_t *cmd,
@@ -72,7 +72,7 @@ index 556b7320..5289cb92 100644
  {
      lua_State                       *L;
      ngx_int_t                        rc;
-@@ -284,7 +287,7 @@ ngx_http_lua_ssl_sess_fetch_handler(ngx_ssl_conn_t *ssl_conn, u_char *id,
+@@ -287,7 +290,7 @@ ngx_http_lua_ssl_sess_fetch_handler(ngx_ssl_conn_t *ssl_conn, u_char *id,
      cctx->exit_code = 1;  /* successful by default */
      cctx->connection = c;
      cctx->request = r;
@@ -82,7 +82,7 @@ index 556b7320..5289cb92 100644
      cctx->entered_sess_fetch_handler = 1;
      cctx->done = 0;
 diff --git a/src/ngx_http_lua_ssl_session_fetchby.h b/src/ngx_http_lua_ssl_session_fetchby.h
-index 5a6f96f5..50c6616d 100644
+index 5a6f96f..50c6616 100644
 --- a/src/ngx_http_lua_ssl_session_fetchby.h
 +++ b/src/ngx_http_lua_ssl_session_fetchby.h
 @@ -25,7 +25,11 @@ char *ngx_http_lua_ssl_sess_fetch_by_lua_block(ngx_conf_t *cf,
@@ -99,7 +99,7 @@ index 5a6f96f5..50c6616d 100644
  
  
 diff --git a/src/ngx_http_lua_ssl_session_storeby.c b/src/ngx_http_lua_ssl_session_storeby.c
-index bae8273d..dc1fad9b 100644
+index f83e85d..ce832ea 100644
 --- a/src/ngx_http_lua_ssl_session_storeby.c
 +++ b/src/ngx_http_lua_ssl_session_storeby.c
 @@ -172,6 +172,8 @@ int
@@ -111,7 +111,7 @@ index bae8273d..dc1fad9b 100644
      lua_State                       *L;
      ngx_int_t                        rc;
      ngx_connection_t                *c, *fc = NULL;
-@@ -246,11 +248,13 @@ ngx_http_lua_ssl_sess_store_handler(ngx_ssl_conn_t *ssl_conn,
+@@ -247,11 +249,13 @@ ngx_http_lua_ssl_sess_store_handler(ngx_ssl_conn_t *ssl_conn,
          }
      }
  
@@ -128,7 +128,7 @@ index bae8273d..dc1fad9b 100644
  
      dd("setting cctx");
 diff --git a/t/129-ssl-socket.t b/t/129-ssl-socket.t
-index 1c3f7cd0..daa95005 100644
+index e7447a7..aa9c208 100644
 --- a/t/129-ssl-socket.t
 +++ b/t/129-ssl-socket.t
 @@ -108,10 +108,10 @@ sent http request: 59 bytes.
@@ -322,7 +322,7 @@ index 1c3f7cd0..daa95005 100644
  $/
  --- error_log
  lua ssl server name: "openresty.org"
--SSL: TLSv1.2, cipher: "ECDHE-RSA-AES256-SHA 
+-SSL: TLSv1.2, cipher: "ECDHE-RSA-AES256-SHA SSLv3
 +SSL: TLSv1.2, cipher: "ECDHE-RSA-AES256-SHA
  --- no_error_log
  SSL reused session
@@ -341,7 +341,7 @@ index 1c3f7cd0..daa95005 100644
  $/
  --- error_log
  lua ssl server name: "openresty.org"
--SSL: TLSv1, cipher: "ECDHE-RSA-AES256-SHA 
+-SSL: TLSv1, cipher: "ECDHE-RSA-AES128-SHA SSLv3
 +SSL: TLSv1, cipher: "ECDHE-RSA-AES256-SHA
  --- no_error_log
  SSL reused session
@@ -556,7 +556,7 @@ index 1c3f7cd0..daa95005 100644
  --- error_log
  lua ssl certificate verify error: (18: self signed certificate)
 diff --git a/t/142-ssl-session-store.t b/t/142-ssl-session-store.t
-index 73b6e197..260fe490 100644
+index 825d016..cc3a664 100644
 --- a/t/142-ssl-session-store.t
 +++ b/t/142-ssl-session-store.t
 @@ -32,7 +32,7 @@ __DATA__
@@ -568,7 +568,7 @@ index 73b6e197..260fe490 100644
  
          server_tokens off;
      }
-@@ -102,7 +102,7 @@ ssl_session_store_by_lua_block:1: ssl session store by lua is running!
+@@ -107,7 +107,7 @@ ssl_session_store_by_lua_block:1: ssl session store by lua is running!,
          server_name   test.com;
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
@@ -577,7 +577,7 @@ index 73b6e197..260fe490 100644
  
          server_tokens off;
      }
-@@ -177,7 +177,7 @@ API disabled in the context of ssl_session_store_by_lua*
+@@ -182,7 +182,7 @@ API disabled in the context of ssl_session_store_by_lua*
          server_name   test.com;
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
@@ -586,7 +586,7 @@ index 73b6e197..260fe490 100644
  
          server_tokens off;
      }
-@@ -267,9 +267,9 @@ my timer run!
+@@ -272,9 +272,9 @@ my timer run!
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name   test.com;
  
@@ -597,7 +597,7 @@ index 73b6e197..260fe490 100644
  
          server_tokens off;
      }
-@@ -335,9 +335,9 @@ API disabled in the context of ssl_session_store_by_lua*
+@@ -340,9 +340,9 @@ API disabled in the context of ssl_session_store_by_lua*
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name test.com;
@@ -608,7 +608,7 @@ index 73b6e197..260fe490 100644
  
          server_tokens off;
      }
-@@ -407,9 +407,9 @@ ngx.exit does not yield and the error code is eaten.
+@@ -412,9 +412,9 @@ ngx.exit does not yield and the error code is eaten.
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name test.com;
@@ -619,7 +619,7 @@ index 73b6e197..260fe490 100644
  
          server_tokens off;
      }
-@@ -480,9 +480,9 @@ ssl_session_store_by_lua*: handler return value: 0, sess new cb exit code: 0
+@@ -485,9 +485,9 @@ ssl_session_store_by_lua*: handler return value: 0, sess new cb exit code: 0
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name test.com;
@@ -630,7 +630,7 @@ index 73b6e197..260fe490 100644
  
          server_tokens off;
      }
-@@ -548,9 +548,9 @@ should never reached here
+@@ -553,9 +553,9 @@ should never reached here
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name test.com;
@@ -641,7 +641,7 @@ index 73b6e197..260fe490 100644
  
          server_tokens off;
      }
-@@ -621,7 +621,7 @@ get_phase: ssl_session_store
+@@ -626,7 +626,7 @@ get_phase: ssl_session_store
          }
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
@@ -650,7 +650,7 @@ index 73b6e197..260fe490 100644
  
          server_tokens off;
      }
-@@ -690,7 +690,7 @@ qr/elapsed in ssl cert by lua: 0.(?:09|1[01])\d+,/,
+@@ -695,7 +695,7 @@ qr/elapsed in ssl cert by lua: 0.(?:09|1[01])\d+,/,
          server_name   test.com;
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
@@ -659,7 +659,7 @@ index 73b6e197..260fe490 100644
  
          server_tokens off;
      }
-@@ -760,7 +760,6 @@ a.lua:1: ssl store session by lua is running!
+@@ -765,7 +765,6 @@ a.lua:1: ssl store session by lua is running!
          ssl_session_store_by_lua_block {
              print("handler in test.com")
          }
@@ -667,7 +667,7 @@ index 73b6e197..260fe490 100644
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
  
-@@ -770,7 +769,6 @@ a.lua:1: ssl store session by lua is running!
+@@ -775,7 +774,6 @@ a.lua:1: ssl store session by lua is running!
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name test.com;
@@ -675,7 +675,7 @@ index 73b6e197..260fe490 100644
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
  
-@@ -836,7 +834,7 @@ qr/\[emerg\] .*? "ssl_session_store_by_lua_block" directive is not allowed here
+@@ -841,7 +839,7 @@ qr/\[emerg\] .*? "ssl_session_store_by_lua_block" directive is not allowed here
          server_name   test.com;
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
@@ -685,7 +685,7 @@ index 73b6e197..260fe490 100644
          server_tokens off;
      }
 diff --git a/t/143-ssl-session-fetch.t b/t/143-ssl-session-fetch.t
-index 701ead72..3626f0fb 100644
+index 7be180f..4dc992d 100644
 --- a/t/143-ssl-session-fetch.t
 +++ b/t/143-ssl-session-fetch.t
 @@ -33,7 +33,7 @@ __DATA__
@@ -697,7 +697,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -114,7 +114,7 @@ qr/ssl_session_fetch_by_lua_block:1: ssl fetch sess by lua is running!/s
+@@ -119,7 +119,7 @@ ssl_session_fetch_by_lua_block:1: ssl fetch sess by lua is running!,
          server_name   test.com;
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
@@ -706,7 +706,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -198,7 +198,7 @@ qr/elapsed in ssl fetch session by lua: 0.(?:09|1[01])\d+,/,
+@@ -203,7 +203,7 @@ qr/elapsed in ssl fetch session by lua: 0.(?:09|1[01])\d+,/,
          server_name   test.com;
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
@@ -715,7 +715,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -297,9 +297,9 @@ qr/my timer run!/s
+@@ -302,9 +302,9 @@ qr/my timer run!/s
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name   test.com;
@@ -726,7 +726,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -377,9 +377,9 @@ qr/received memc reply: OK/s
+@@ -382,9 +382,9 @@ qr/received memc reply: OK/s
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name test.com;
@@ -737,7 +737,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -458,9 +458,9 @@ should never reached here
+@@ -463,9 +463,9 @@ should never reached here
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name test.com;
@@ -748,7 +748,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -540,9 +540,9 @@ should never reached here
+@@ -545,9 +545,9 @@ should never reached here
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name test.com;
@@ -759,7 +759,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -621,9 +621,9 @@ should never reached here
+@@ -626,9 +626,9 @@ should never reached here
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name test.com;
@@ -770,7 +770,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -704,9 +704,9 @@ should never reached here
+@@ -709,9 +709,9 @@ should never reached here
      server {
          listen unix:$TEST_NGINX_HTML_DIR/nginx.sock ssl;
          server_name test.com;
@@ -781,7 +781,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -787,7 +787,7 @@ should never reached here
+@@ -792,7 +792,7 @@ should never reached here
          server_name   test.com;
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
@@ -790,7 +790,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -872,7 +872,7 @@ qr/get_phase: ssl_session_fetch/s
+@@ -877,7 +877,7 @@ qr/get_phase: ssl_session_fetch/s
          }
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
@@ -799,7 +799,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -956,7 +956,7 @@ ssl store session by lua is running!
+@@ -961,7 +961,7 @@ ssl store session by lua is running!
          server_name   test.com;
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
@@ -808,7 +808,7 @@ index 701ead72..3626f0fb 100644
  
          server_tokens off;
      }
-@@ -1036,7 +1036,7 @@ qr/\S+:\d+: ssl fetch sess by lua is running!/s
+@@ -1041,7 +1041,7 @@ qr/\S+:\d+: ssl fetch sess by lua is running!/s
          server_name   test.com;
          ssl_certificate $TEST_NGINX_CERT_DIR/cert/test.crt;
          ssl_certificate_key $TEST_NGINX_CERT_DIR/cert/test.key;
