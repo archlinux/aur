@@ -1,7 +1,7 @@
 # Maintainer: Max Struebing mxstrbng@gmail.com
 
 pkgname=tldr-go-client-git
-pkgver=1.1.0.r2.g5446a1a
+pkgver=1.1.0.r3.g5b4ab00
 pkgrel=1
 pkgdesc="fast TLDR client written in Golang"
 arch=(any)
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/tldr" 
+    go get -u github.com/mstruebing/tldr
     make build
 }
 

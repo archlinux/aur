@@ -1,6 +1,6 @@
 pkgbase = tldr-go-client-git
 	pkgdesc = fast TLDR client written in Golang
-	pkgver = 1.1.0.r2.g5446a1a
+	pkgver = 1.1.0.r3.g5b4ab00
 	pkgrel = 1
 	url = https://github.com/mstruebing/tldr
 	arch = any
