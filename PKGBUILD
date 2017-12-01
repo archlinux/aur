@@ -26,5 +26,8 @@ package() {
   cd "${srcdir}/pgbadger-${pkgver}"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+  make pure_vendor_install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+
+  # Remove perllocal.pod and .packlist
+  find "${pkgdir}" \( -name .packlist -o -name perllocal.pod \) -delete
 }
