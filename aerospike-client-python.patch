@@ -1,0 +1,12 @@
+diff -ura aerospike-2.2.3/setup.py aerospike-2.2.3-new/setup.py
+--- aerospike-2.2.3/setup.py	2017-10-11 00:29:24.000000000 +0200
++++ aerospike-2.2.3-new/setup.py	2017-12-01 17:16:32.561130177 +0100
+@@ -202,7 +202,7 @@
+         '-rdynamic', '-finline-functions',
+         '-DMARCH_x86_64'
+         ]
+-    libraries = libraries + ['rt']
++    libraries = libraries + ['rt', 'uv']
+     if AEROSPIKE_C_HOME:
+         PREFIX = AEROSPIKE_C_HOME + '/target/Linux-x86_64'
+ else:
