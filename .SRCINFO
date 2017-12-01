@@ -7,6 +7,7 @@ pkgbase = deepin-wine-binfmt-git
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
+	conflicts = deepin-wine-binfmt
 	noextract = deepin-wine-binfmt_2.18-2_all.deb
 	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-wine-binfmt_2.18-2_all.deb
 	md5sums = SKIP
