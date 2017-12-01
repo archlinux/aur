@@ -1,0 +1,16 @@
+pkgbase = python2-z3-solver
+	pkgdesc = an efficient SMT solver library
+	pkgver = 4.5.1.0.post2
+	pkgrel = 1
+	url = https://github.com/Z3Prover/z3
+	arch = any
+	license = CUSTOM
+	makedepends = python2-distribute
+	depends = python2
+	source = https://pypi.python.org/packages/23/40/e2340141ac1b374b3e7cc641c66ade04290676662bc80e1f40281d225b57/z3-solver-4.5.1.0.post2.tar.gz
+	source = https://raw.githubusercontent.com/Z3Prover/z3/master/LICENSE.txt
+	md5sums = 73cfbdb65c015494ce67cdc6e4504fb0
+	md5sums = 5f03ad1486a2e4ce71200ce0f9721557
+
+pkgname = python2-z3-solver
+
