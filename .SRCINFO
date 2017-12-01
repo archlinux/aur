@@ -1,4 +1,4 @@
-pkgbase = kamil-scripts-crypted
+pkgbase = cukrowski.kamil-scripts-crypted
 	pkgdesc = Kamil Cukrowski crypted private package with custom scripts. Do NOT USE
 	pkgver = 0.3.1.r3.g8242aea
 	pkgrel = 3
@@ -9,5 +9,5 @@ pkgbase = kamil-scripts-crypted
 	source = kamil-scripts-crypted::git+https://github.com/Kamilcuk/kamil-scripts-crypted.git
 	md5sums = SKIP
 
-pkgname = kamil-scripts-crypted
+pkgname = cukrowski.kamil-scripts-crypted
 

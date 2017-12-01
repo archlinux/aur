@@ -2,13 +2,13 @@
 # Maintainer: Kamil Cukrowski <kamilcukrowski@gmail.com>
 
 pkgbase=
-pkgname=kamil-scripts-crypted
+pkgname=cukrowski.kamil-scripts-crypted
 pkgver=0.3.1.r3.g8242aea
 pkgrel=3
 epoch=
 pkgdesc="Kamil Cukrowski crypted private package with custom scripts. Do NOT USE"
 arch=(any)
-url="https://github.com/Kamilcuk/$pkgname"
+url="https://github.com/Kamilcuk/${pkgname##*.}"
 license=('MIT' 'custom:Beerware')
 groups=()
 depends=()
@@ -22,7 +22,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname##*.}::git+${url}.git")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
