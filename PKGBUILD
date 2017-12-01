@@ -1,9 +1,9 @@
-# Contributor: Nicola Hinssen <nicola.hinssen@gmail.com>
+# Maintainer: Nicola Hinssen <nicola.hinssen@gmail.com>
 # Contributor: Andrew Rabert <draje@nullsum.net>
 
 pkgname=emby-server-dev-unlocked
 pkgver=3.2.40.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Latest development version of Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='https://github.com/nicolahinssen/emby-dev-unlocked'
