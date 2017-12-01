@@ -1,0 +1,9 @@
+####
+# Maintainer: Kamil Cukrowski <kamilcukrowski@gmail.com>
+
+. PKGBUILD
+
+package() {
+	cp -a ../../resources/* "$pkgdir"
+	chown -R root:root "$pkgdir"
+}

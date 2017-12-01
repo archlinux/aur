@@ -1,0 +1,16 @@
+pkgbase = kamil-scripts
+	pkgdesc = These are Kamil Cukrowski private/public scripts. Do not use.
+	pkgver = 0.3.3
+	pkgrel = 3
+	url = https://github.com/Kamilcuk/kamil-scripts
+	arch = any
+	license = MIT
+	license = custom:Beerware
+	depends = pacutils
+	backup = etc/bash_completion.d/kamil-scripts.sh
+	backup = etc/rc-local/01-example-script
+	source = kamil-scripts::git+https://github.com/Kamilcuk/kamil-scripts.git
+	md5sums = SKIP
+
+pkgname = kamil-scripts
+
