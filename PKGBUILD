@@ -5,14 +5,14 @@
 
 pkgname=microchip-mplabx-bin
 pkgver=4.05
-pkgrel=1
+pkgrel=2
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
 url='http://www.microchip.com/mplabx'
 license=(custom)
 depends=(gtk2 alsa-lib libxslt libxtst "java-runtime>=7" "java-openjfx")
 makedepends=(fakechroot desktop-file-utils)
-makedepends_x86_64=(lib32-fakeroot)
+makedepends_x86_64=(lib32-fakechroot lib32-fakeroot)
 optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs'
             'microchip-mplabxc16-bin: C compiler for PIC24 MCUs and dsPIC DSCs'
             'microchip-mplabxc32-bin: C Compiler for PIC32 MCUs'
@@ -31,11 +31,9 @@ _mplabcomm_dir="/opt/microchip/mplabcomm"
 
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.tar"
         "LICENSE")
-source_x86_64=("fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/")
 
 md5sums=('1f5d6bb6daa432026869858c36595c8e'
          'a34a85b2600a26f1c558bcd14c2444bd')
-md5sums_x86_64=('a12f5c06479f3cd0678e705e08b95233')
 
 backup=("etc/mplab_ide.conf")
 
@@ -58,7 +56,6 @@ package() {
   # Create install script in chroot
   cat << EOF > "${pkgdir}/tmp/install.sh"
 #!/bin/sh
-LD_LIBRARY_PATH="${srcdir}/usr/lib/libfakeroot/fakechroot:\$LD_LIBRARY_PATH"
 PATH=/bin
 echo Running MPLABX installer...
 tmp/${_mplabx_installer}.run --mode unattended
