@@ -13,16 +13,16 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=r33899.aea31ab242
+pkgver=r34007.3a9ab941ad
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
 arch=('i686' 'x86_64')
 url="https://github.com/docker/docker"
 license=('Apache License Version 2.0')
-depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd')
-optdepends=('vndr')
-makedepends=('glibc' 'git' 'go' 'btrfs-progs' 'go-md2man' 'apparmor-libapparmor' 'cmake')
+depends=('bridge-utils' 'iproute2' 'sqlite' 'systemd')
+optdepends=('vndr' 'device-mapper')
+makedepends=('glibc' 'git' 'go' 'btrfs-progs' 'go-md2man' 'apparmor-libapparmor' 'cmake' 'device-mapper')
 provides=('docker')
 conflicts=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
 replaces=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
