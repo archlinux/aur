@@ -1,11 +1,11 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 _pkgname=sandsifter
 pkgname="${_pkgname}-git"
-pkgver=r1.dff6324
-pkgrel=3
+pkgver=r22.d0e9e8e
+pkgrel=1
 pkgdesc="The x86 processor fuzzer"
 arch=("i686" "x86_64")
-url="https://github.com/xoreaxeaxeax/${_pkgname}"
+url="https://github.com/rigred/${_pkgname}"
 # see https://github.com/xoreaxeaxeax/sandsifter/issues/13
 license=("unknown")
 groups=()
@@ -16,7 +16,7 @@ conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}"
 	"${pkgname}.patch")
 sha256sums=('SKIP'
-            'ee35e3e5d6a6c018e5a138af388d78d0dce3b1605b53ddfe1241cfdef9daa18a')
+            'fbe1e12694f8be31ab3128932c6a5e91950f14fd1c22196559dd74711b9d080f')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"

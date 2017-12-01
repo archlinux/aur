@@ -1,16 +1,10 @@
 diff --git a/sifter.py b/sifter.py
-index 856b607..47d2d88 100755
+index fa28f93..803c59a 100755
 --- a/sifter.py
 +++ b/sifter.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/env python2
- 
- # instruction injector frontend
- 
-@@ -27,10 +27,10 @@ import code
- import copy
- from ctypes import *
+@@ -33,10 +33,10 @@ try:
+ except NameError:
+     raw_input = input  # Python 3
  
 -INJECTOR = "./injector"
 +INJECTOR = "/opt/sandsifter/injector"
@@ -21,13 +15,3 @@ index 856b607..47d2d88 100755
  LOG  = OUTPUT + "log"
  SYNC = OUTPUT + "sync"
  TICK = OUTPUT + "tick"
-diff --git a/summarize.py b/summarize.py
-index 44d524f..014b58d 100755
---- a/summarize.py
-+++ b/summarize.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/env python2
- 
- # we had a much more automated and intelligent approach to reducing the log, but
- # could not come up with a reasonable way to differentiate between a modr/m byte
