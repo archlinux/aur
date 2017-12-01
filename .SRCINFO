@@ -1,0 +1,23 @@
+pkgbase = xmrig-nvidia
+	pkgdesc = Monero cryptocurrency GPU miner, HTTP API disabled
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/xmrig/xmrig-nvidia
+	changelog = CHANGELOG.md
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = libuv
+	makedepends = cuda
+	depends = libuv
+	depends = cuda
+	optdepends = monero: wallet
+	source = https://github.com/xmrig/xmrig-nvidia/archive/v2.4.2.tar.gz
+	source = README.md
+	source = CHANGELOG.md
+	sha256sums = 9a51fb5494131ec516bfd708c82ebf6eb2b39309181ca7e395b581ab5299d267
+	sha256sums = fb078354728344095ad35ca85d26ffd69ea89de293ca2950ed40e5bce16d576b
+	sha256sums = 17207f715a2b1245965ac95d68273bd853235db2e4446ffdbc5de39770e3c22f
+
+pkgname = xmrig-nvidia
+
