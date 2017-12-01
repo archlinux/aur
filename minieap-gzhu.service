@@ -1,0 +1,12 @@
+[Unit]
+Description=Minieap-gzhu Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/minieap-gzhu -w -u <id> -p <password> -n <network device> --pkt-plugin rjv3 -d 1 -a 1 --rj-option 79:02
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

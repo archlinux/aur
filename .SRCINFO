@@ -1,0 +1,17 @@
+pkgbase = minieap-gzhu-git
+	pkgdesc = An open source client for ruijie on gzhu.
+	pkgver = r133.b6bc7c9
+	pkgrel = 1
+	url = https://github.com/GZHU-Dress/minieap
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = glibc
+	source = minieap-gzhu-git::git+https://github.com/GZHU-Dress/minieap.git
+	source = minieap-gzhu.service
+	md5sums = SKIP
+	md5sums = a9e80450c7d9836f0170e025293b838b
+
+pkgname = minieap-gzhu-git
+
