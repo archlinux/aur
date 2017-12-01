@@ -1,0 +1,14 @@
+pkgbase = python2-pygit
+	pkgdesc = Pythonic bindings for git
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://code.istique.net
+	arch = any
+	license = LGPL
+	makedepends = python2-distribute
+	depends = python2
+	source = https://pypi.python.org/packages/cd/e8/839dacf13a5de30eff7e0815a3cfc051bd80532f83d862e0c14433b03286/pygit-0.1.tar.gz
+	md5sums = 8ccaa2a30c9224366362c9c29bc50d93
+
+pkgname = python2-pygit
+
