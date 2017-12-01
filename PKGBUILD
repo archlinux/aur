@@ -4,10 +4,10 @@
 
 pkgname=python2-claripy
 pkgver=7.7.9.21
-pkgrel=1
+pkgrel=2
 pkgdesc="An abstraction layer for constraint solvers"
 url="https://github.com/angr/claripy"
-depends=('python2' 'python2-ana' 'python2-future' 'python2-z3-solver')
+depends=('python2' 'python2-ana' 'python2-future' 'z3')
 makedepends=('python2-distribute' )
 license=('BSD')
 arch=('any')
