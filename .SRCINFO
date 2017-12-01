@@ -1,0 +1,14 @@
+pkgbase = tgcd
+	pkgdesc = tgcd, tcp gender change daemon (reverse tunnel)
+	pkgver = v1.1.1.0.g4222d3e
+	pkgrel = 1
+	url = http://tgcd.sourceforge.net/#lbAD
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	options = !buildflags
+	source = git+https://github.com/archimedepitagorico/tgcd.git#tag=v1.1.1
+	sha1sums = SKIP
+
+pkgname = tgcd
+
