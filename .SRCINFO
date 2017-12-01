@@ -1,7 +1,7 @@
 pkgbase = android-dumpkey
 	pkgdesc = Python port of com.android.dumpkey.DumpPublicKey
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/tgalal/android-dumpkey/
 	arch = any
 	license = Apache

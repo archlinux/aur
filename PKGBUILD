@@ -3,7 +3,7 @@
 
 pkgname=android-dumpkey
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python port of com.android.dumpkey.DumpPublicKey"
 url="http://github.com/tgalal/android-dumpkey/"
 depends=('python2' 'python2-m2crypto')
@@ -15,10 +15,10 @@ md5sums=('c821bd9e5464b3ac3c0d7419dfda3acb')
 
 build() {
     cd $srcdir/android-dumpkey-0.1.1
-    python setup.py build
+    python2 setup.py build
 }
 
 package() {
     cd $srcdir/android-dumpkey-0.1.1
-    python setup.py install --root="$pkgdir" --optimize=1 
+    python2 setup.py install --root="$pkgdir" --optimize=1 
 }
