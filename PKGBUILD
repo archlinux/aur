@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=class
 pkgname=python-$_modulename
-pkgver=2.6
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="CLASS: Cosmic Linear Anisotropy Solving System"
 arch=(any)
@@ -16,10 +16,10 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('f642b3e99996387f6e66ec726886cb2aaff365d9203ecda3708fc39d49486f30')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('e0bf856ed51ff93b565bef0d9b4bb2c17f673ee9b8c7b2b8a6fc71a61b4c067e')
 package() {
-  cd "$srcdir/class_public-$pkgver/"
+  cd "$srcdir/class_public-${pkgver}/"
   make -j libclass.a
   cd python
   sed -i 's/libraries=\["class"\]/libraries=["class", "mvec", "m"]/' setup.py
