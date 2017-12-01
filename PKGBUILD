@@ -4,7 +4,7 @@
 
 pkgname=python2-cooldict
 pkgver=1.02
-pkgrel=2
+pkgrel=3
 pkgdesc="Some useful dict-like structures"
 url="https://github.com/zardus/cooldict"
 depends=('python2' 'python2-ana')
