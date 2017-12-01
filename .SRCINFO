@@ -1,4 +1,4 @@
-pkgbase = kamil-scripts
+pkgbase = cukrowski.kamil-scripts
 	pkgdesc = These are Kamil Cukrowski private/public scripts. Do not use.
 	pkgver = 0.3.3
 	pkgrel = 3
@@ -12,5 +12,5 @@ pkgbase = kamil-scripts
 	source = kamil-scripts::git+https://github.com/Kamilcuk/kamil-scripts.git
 	md5sums = SKIP
 
-pkgname = kamil-scripts
+pkgname = cukrowski.kamil-scripts
 
