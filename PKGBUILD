@@ -5,13 +5,13 @@
 # Contributor: AdriÃ¡n Chaves FernÃ¡ndez (Gallaecio) <adriyetichaves@gmail.com>
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
-pkgver=19901
+pkgver=20113
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
 license=('GPL2' 'CCPL')
 depends=('binutils' 'boost-libs' 'curl' 'enet' 'libogg' 'libpng' 'libvorbis'
-         'libxml2' 'openal' 'sdl2' 'wxgtk' 'zlib' 'libgl' '0ad-data' 'glu'
+         'libxml2' 'openal' 'sdl2' 'wxgtk' 'zlib' 'libgl' 'glu'
          'gloox' 'miniupnpc' 'icu' 'nspr')
 makedepends=('boost' 'cmake' 'mesa' 'zip' 'python2' 'libsm' 'git')
 source=("git+https://github.com/0ad/0ad.git")
@@ -39,10 +39,10 @@ build() {
       --datadir=/usr/share/${pkgname}/data
 
   cd "$srcdir/${_pkgname}/libraries/source/fcollada/src"
-  make
+  make -j9
 
   cd "$srcdir/${_pkgname}/build/workspaces/gcc"
-  make
+  make -j9
 }
 
 package_0ad-git() {
