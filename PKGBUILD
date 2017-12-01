@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="a fast PostgreSQL log analysis report"
 arch=("any")
 url="https://github.com/dalibo/pgbadger"
-license=("custom:PostgreSQL")
+license=("custom:Dalibo")
 depends=(perl)
 optdepends=(
   "perl-text-csv-xs: to parse PostgreSQL CSV log files"
@@ -26,5 +26,6 @@ build() {
 
 package() {
   cd "$srcdir/pgbadger-$pkgver"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
