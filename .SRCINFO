@@ -20,6 +20,7 @@ pkgbase = deepin-wine-git
 	depends = lib32-alsa-lib
 	depends = lib32-mesa
 	optdepends = lib32-freetype2-infinality-ultimate: for better font view
+	conflicts = deepin-wine
 	noextract = deepin-wine_2.18-2_all.deb
 	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-wine_2.18-2_all.deb
 	md5sums = SKIP
