@@ -1,7 +1,7 @@
 pkgbase = python2-dpkt-fix
 	pkgdesc = dumb packet module
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kbandla/dpkt
 	arch = any
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = python2-dpkt-fix
 	source = https://pypi.python.org/packages/25/3c/bc19ab90abd0e47f848d04dca71f8795dd857b369fb30df6d8c037afd0f9/dpkt-fix-1.7.tar.gz
 	source = https://raw.githubusercontent.com/kbandla/dpkt/master/LICENSE
 	md5sums = b4431b0c1c410c4f9f7db0de75569e51
-	md5sums = 08c793748e8791cdf4acb70f13a1a37d
+	md5sums = 331b9d636187a21a45111966949ad115
 
 pkgname = python2-dpkt-fix
 

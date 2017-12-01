@@ -4,7 +4,7 @@
 
 pkgname=python2-dpkt-fix
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="dumb packet module"
 url="https://github.com/kbandla/dpkt"
 depends=('python2' )
@@ -16,7 +16,7 @@ arch=('any')
 source=('https://pypi.python.org/packages/25/3c/bc19ab90abd0e47f848d04dca71f8795dd857b369fb30df6d8c037afd0f9/dpkt-fix-1.7.tar.gz'
         'https://raw.githubusercontent.com/kbandla/dpkt/master/LICENSE')
 md5sums=('b4431b0c1c410c4f9f7db0de75569e51'
-         '08c793748e8791cdf4acb70f13a1a37d')
+         '331b9d636187a21a45111966949ad115')
 
 build() {
     cd $srcdir/dpkt-fix-1.7
