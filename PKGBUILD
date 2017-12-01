@@ -2,7 +2,7 @@
 
 pkgname='xmrig-nvidia'
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Monero cryptocurrency GPU miner, HTTP API disabled'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-nvidia'
@@ -33,6 +33,6 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm775 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 src/config.json "${pkgdir}/usr/share/doc/xmrig-nvidia/config.json.example"
-  install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/xmrig/README.md"
-  install -Dm644 "${srcdir}/CHANGELOG.md" "${pkgdir}/usr/share/doc/xmrig/CHANGELOG.md"
+  install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/xmrig-nvidia/README.md"
+  install -Dm644 "${srcdir}/CHANGELOG.md" "${pkgdir}/usr/share/doc/xmrig-nvidia/CHANGELOG.md"
 }
