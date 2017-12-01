@@ -2,13 +2,13 @@
 pkgname=glue
 _pkgname=${pkgname}
 pkgver=1.54.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
 license=('unknown')
-groups=('lalsuite')
-depends=()
+groups=()
+depends=('python' 'python2')
 makedepends=()
 provides=()
 conflicts=()
@@ -21,4 +21,5 @@ sha256sums=('455173163b9ec95341d5456009ccb264ef99234682f3a8ed4398321a46d356c8')
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1
+    python2 setup.py install --root="$pkgdir/" --optimize=1
 }
