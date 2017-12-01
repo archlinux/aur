@@ -22,10 +22,10 @@ pkgver() {
 package() {
     cd "${srcdir}/${pkgname}"
     sudo pip install git+git://github.com/Aareon/lemongrab@master
-
+    
     # Files
     install -d "${pkgdir}/opt/${pkgname}"
-    cp -a "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/"
+    cp -a "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/${pkgname}.sh"
 
     # Exec
     chmod 755 "${pkgdir}/opt/${pkgname}/${pkgname}.sh"
