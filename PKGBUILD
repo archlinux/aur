@@ -3,12 +3,13 @@
 
 pkgbase=
 pkgname=cukrowski.kamil-scripts
-pkgver=0.3.3
-pkgrel=3
+_gitname=${pkgname##*.}
+pkgver=0.3.3.r7.g839ba90
+pkgrel=1
 epoch=
 pkgdesc='These are Kamil Cukrowski private/public scripts. Do not use.'
 arch=('any')
-url="https://github.com/Kamilcuk/${pkgname##*.}"
+url="https://github.com/Kamilcuk/${_gitname}"
 license=('MIT' 'custom:Beerware')
 groups=()
 depends=(pacutils)
@@ -22,16 +23,16 @@ backup=(etc/bash_completion.d/kamil-scripts.sh etc/rc-local/01-example-script)
 options=()
 install=""
 changelog=
-source=("${pkgname##*.}::git+${url}.git")
+source=("${_gitname}::git+${url}.git")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "$pkgname"
+	cd "$_gitname"
 	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 package() {
-	cp -a "$pkgname"/resources/* "$pkgdir"
+	cp -a "$_gitname"/resources/* "$pkgdir"
 	chown -R root:root "$pkgdir"
 }
