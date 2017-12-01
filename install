@@ -5,6 +5,5 @@ post_install() {
   echo "Use \"$ iw dev\" or \"$ ip link\" to find out your interface name."
   echo "Also fill the identity and password sections with your username and password from minhaUFMG"
   echo "You should also set the permissions of the file to 600, as it contains a text plain password"
-  echo "    # chmod 600 /etc/netctl/ufmg"
-  echo -e "This example also work for the SSID UFMGT.\n"
+  echo -e "    # chmod 600 /etc/netctl/ufmg\n"
 }
