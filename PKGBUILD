@@ -1,15 +1,18 @@
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=xyscan
-pkgver=4.1.0
+pkgver=4.2.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tool to extract data points from graphical plots'
 url='http://rhig.physics.yale.edu/~ullrich/software/xyscan/'
 license=('GPL')
 depends=('qt5-multimedia>=5.2.0' 'poppler-qt5')
-source=(http://rhig.physics.yale.edu/~ullrich/software/$pkgname/Distributions/4.10/$pkgname-4.10-src.tgz
+
+# Version in filename lacks last dot
+pkgverf=${pkgver%.*}${pkgver##*.}
+source=(http://rhig.physics.yale.edu/~ullrich/software/$pkgname/Distributions/$pkgverf/$pkgname-$pkgverf-src.tgz
 	xyscan.desktop)
-md5sums=('8a64dcf11690c9b88d6aa2f54af221f4'
+md5sums=('f38c2c6676db6d92519d850ab6f358d9'
          '2df01c952f8425d05e0d138778ca5be9')
 install=xyscan.install
 
