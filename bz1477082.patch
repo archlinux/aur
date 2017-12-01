@@ -1,0 +1,38 @@
+diff --git a/src/lib/libast/features/stdio b/src/lib/libast/features/stdio
+--- a/src/lib/libast/features/stdio
++++ b/src/lib/libast/features/stdio
+@@ -6,6 +6,8 @@ cat{
+ 	#define _FILE_DEFINED	1
+ 	#define _FILE_defined	1
+ 	#define _FILEDEFED	1
++	#define __FILE_defined  1
++	#define ____FILE_defined    1
+ 
+ 	#ifndef __FILE_TAG
+ 	#define __FILE_TAG	_sfio_s
+diff --git a/src/lib/libast/include/ast.h b/src/lib/libast/include/ast.h
+index ebf82d7..f4bbe6d 100644
+--- a/src/lib/libast/include/ast.h
++++ b/src/lib/libast/include/ast.h
+@@ -59,9 +59,21 @@ struct _sfio_s;
+ #ifndef	__FILE_typedef
+ #define __FILE_typedef	1
+ #endif
++#ifndef	_FILE_DEFINED
++#define _FILE_DEFINED   1
++#endif
++#ifndef	_FILE_defined
++#define _FILE_defined   1
++#endif
+ #ifndef _FILEDEFED
+ #define _FILEDEFED	1
+ #endif
++#ifndef __FILE_defined
++#define __FILE_defined  1
++#endif
++#ifndef ____FILE_defined
++#define ____FILE_defined  1
++#endif
+ #endif
+ 
+ /*

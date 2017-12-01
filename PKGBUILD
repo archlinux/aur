@@ -108,7 +108,8 @@ source[1]="ast-base.2014-06-25.tgz::https://github.com/nathanmkaya/ksh-arch/blob
 # :; is to keep updpkgsums from removing all our sums
 :;sha256sums=('8852b9d37d5034e3780aeb5f963726381eeb4e08bb5bee1fbfa7e3f529c10e1b'
             '58588b07b076f05dbbd5f4f095d5753309a8356ba1e5475262ce77d6bff42dae'
-            '37495cc625a2174b22a43542acac1d69402ee4992ee084a84690546c5b932b39')
+            '37495cc625a2174b22a43542acac1d69402ee4992ee084a84690546c5b932b39'
+            '9cfd9a549ed8913e9edc98a6e596c441d2538f145f8c4711ad3d46ce79fa104e')
 else
 pkgver='2012.08.01'
 pkgrel='5'
@@ -120,9 +121,11 @@ source=("http://${_opt_EPLUSERE}:${_opt_EPLPASS}@www2.research.att.com/~astopen/
 source[1]="http://download.openpkg.org/components/cache/nmake/ast-base.2012-08-01.tgz"
 :;sha256sums=('8852b9d37d5034e3780aeb5f963726381eeb4e08bb5bee1fbfa7e3f529c10e1b'
             '3bd668dbd922790f1d24c78e3522ef4816501e9cf80abf3c480f554c74f4dbac'
-            '37495cc625a2174b22a43542acac1d69402ee4992ee084a84690546c5b932b39')
+            '37495cc625a2174b22a43542acac1d69402ee4992ee084a84690546c5b932b39'
+            '9cfd9a549ed8913e9edc98a6e596c441d2538f145f8c4711ad3d46ce79fa104e')
 fi
 source[0]="INIT.2014-12-24.tgz::https://github.com/nathanmkaya/ksh-arch/blob/master/INIT.2014-12-24.tgz?raw=true"
+source+=('bz1477082.patch') # https://github.com/att/ast/pull/63 https://bugzilla.redhat.com/show_bug.cgi?id=1477082
 # makepkg unpacking deb files into the src folder isn't particularly useful.
 noextract=("${_debfile}")
 
@@ -236,6 +239,8 @@ prepare() {
   # https://forums.opensuse.org/showthread.php/508185-GCC-5/page2
   # https://build.opensuse.org/package/view_file/home:Andreas_Schwab:Factory/ksh/cpp.patch?expand=1
   sed -i -e 's:$cc -E:$cc -E -P:g' 'src/cmd/INIT/iffe.sh'
+
+  patch -Nbup1 -i "${srcdir}/bz1477082.patch"
   set +u
 }
 
