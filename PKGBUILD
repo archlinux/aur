@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-modsecurity-git
 pkgver=a2a5858
-pkgrel=3
+pkgrel=4
 
 _modname=ModSecurity-nginx
-_nginxver=1.13.6
+_nginxver=1.13.7
 
 pkgdesc='ModSecurity v3 Nginx Connector (module for mainline nginx)'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=(
 	git+https://github.com/SpiderLabs/ModSecurity-nginx.git
 )
 
-sha256sums=('8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8'
+sha256sums=('beb732bc7da80948c43fd0bf94940a21a21b1c1ddfba0bd99a4b88e026220f5c'
             'SKIP')
 
 pkgver() {
