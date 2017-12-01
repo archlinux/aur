@@ -25,7 +25,7 @@ noextract=('platform.phar')
 build() {
   mv platform.phar platform
   chmod +x platform
-  mkdir -p ~/.platform
+  mkdir -p ~/.platformsh
   ./platform self:install -y
 }
 
