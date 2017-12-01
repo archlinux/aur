@@ -1,6 +1,6 @@
 pkgbase = jre-devel
 	pkgdesc = Oracle Java 10 Runtime Environment Snapshot
-	pkgver = 10b33
+	pkgver = 10b34
 	pkgrel = 1
 	url = http://jdk.java.net/10/
 	install = jre-devel.install
@@ -32,10 +32,10 @@ pkgbase = jre-devel
 	backup = etc/java-jre10/psfont.properties.ja
 	backup = etc/java-jre10/psfontj2d.properties
 	backup = etc/java-jre10/sound.properties
-	source = http://download.java.net/java/jdk10/archive/33/binaries/jre-10-ea+33_linux-x64_bin.tar.gz
+	source = http://download.java.net/java/jdk10/archive/34/binaries/jre-10-ea+34_linux-x64_bin.tar.gz
 	source = policytool-jre10.desktop
 	source = LICENSE-Early-Adopter-Development-Agreement.txt
-	sha256sums = ee074a2c3b088bbba35afb78508396e9c8b3acafc3f5419546918410d993439c
+	sha256sums = 7783d32996446a4de219ed30e820b8773b6f3131f862886272d5a37f363c1b36
 	sha256sums = 011f461fa94df5684f90779a0335e87aab91de23e0e64bd45ee9f19c5804c390
 	sha256sums = 36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89
 
