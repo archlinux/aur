@@ -12,7 +12,7 @@ makedepends=(dos2unix convmv)
 source=('http://www.cns11643.gov.tw/AIDB/Open_Data.zip'
         'LICENSE-zh_TW'
         'LICENSE')
-sha1sums=('7ce00665aa4e4be6a73630e658f5e92629b829b1'
+sha1sums=('67d5ad4a5a61f2f522761d4c69c7b63c66735cfa'
           '08c5ee06a2248340613d9bd7314a824883851bd1'
           '6be77081aa46e90e417ec73027e0477c3297a1c9')
 
