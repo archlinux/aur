@@ -1,0 +1,15 @@
+pkgbase = python-flask-redis-helper
+	pkgdesc = Redis support for Flask without breaking PyCharm inspections.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Robpol86/Flask-Redis-Helper
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-redis
+	depends = python-flask
+	source = python-flask-redis-helper-1.0.0.tar.gz::https://codeload.github.com/Robpol86/Flask-Redis-Helper/tar.gz/v1.0.0
+	sha256sums = 7ea88c1e40013cb34d9f62562754f9885c61ded522521dfdb7350831351a5fed
+
+pkgname = python-flask-redis-helper
+
