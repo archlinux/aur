@@ -1,7 +1,7 @@
 # Maintainer: Python Shell <pythonshell@yeah.net>
 
 pkgname=cbmc-git
-pkgver=cbmc.5.5.r387.5ec88cd
+pkgver=cbmc.5.8.r2000.994037085
 pkgrel=1
 pkgdesc="Bounded Model Checking for ANSI-C"
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}/src/"
     make minisat2-download
-    make libzip-download zlib-download
-    make libzip-build
+    #make libzip-download zlib-download
+    #make libzip-build
     make
 }
 
