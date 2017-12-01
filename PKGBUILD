@@ -3,7 +3,7 @@
 pkgbase=ttf-twcns-fonts
 pkgname=("$pkgbase" "$pkgbase"-doc)
 pkgdesc='Chinese TrueType fonts by Ministry of Education of Taiwan government, support CNS11643 standard, including Kai and Sung fontface.'
-pkgver=20171116
+pkgver=20171117
 pkgrel=1
 arch=('any')
 url='http://data.gov.tw/node/5961'
