@@ -28,11 +28,10 @@ package() {
     rm -Rf ${srcdir}/${pkgname}/logs/
     ln -s ../../../../var/log/${pkgname}/ usr/share/webapps/${pkgname}/logs
     chown http: -R var/lib/${pkgname}/ var/log/${pkgname}/
+    chmod o-rwx -R var/lib/${pkgname}/ var/log/${pkgname}/
 
     cp -a $srcdir/${pkgname}/* usr/share/webapps/${pkgname}/
 
     cd ${pkgdir}/usr/share/webapps/${pkgname}
     rm -Rf *.md composer.json composer.lock 
-    
-
 }
