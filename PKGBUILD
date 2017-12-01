@@ -2,8 +2,8 @@
 # Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 
 pkgname=vdhcoapp
-pkgver=1.0.7
-pkgrel=2
+pkgver=1.0.10
+pkgrel=1
 pkgdesc="Companion application for Video DownloadHelper browser add-on"
 arch=('i686' 'x86_64')
 url="https://github.com/mi-g/vdhcoapp"
@@ -15,13 +15,15 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/mi-g/vdhcoapp/archive/v${pkg
         vdhcoapp.patch
         vdhcoapp-install.hook
         vdhcoapp-remove.hook)
-sha256sums=('ddd39d9ab848b34e49f71625e4a3f71eceafca4e4b2bb0439ab370a62dcd6842'
+sha256sums=('c7621eb3c5af90e12957761687d5b013d979482b1d530e80fd284c7132f4aa0a'
             'b8a1ca51a71c1390f3ad9d725435726390a7009116865fa98c7c4f8ca048cab1'
             '9f8cbe84b2543738390b70d770551259c6db2b67235b7792e9094908cecbc955'
             '448ee36b350b6bcd304d33cf7638c13bda88d5086f2256e823d73ccc22e52ce0')
 
 prepare() {
-    patch -Np1 -i "${srcdir}/vdhcoapp.patch"
+    cd ${pkgname}-${pkgver}
+
+    patch -Np2 -i "${srcdir}/vdhcoapp.patch"
 }
 
 build() {
