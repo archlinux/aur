@@ -1,7 +1,7 @@
 # Maintainer: Please see AUR package page for current maintainer(s) and contact information.
 
 pkgname=brave-bin
-pkgver=0.19.95
+pkgver=0.19.105
 _pkgver=$pkgver
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Binary release."
@@ -16,7 +16,7 @@ conflicts=('brave')
 source=("$pkgname-$_pkgver".tar.bz2::https://github.com/brave/browser-laptop/releases/download/v"$_pkgver"dev/Brave.tar.bz2
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt")
 options=(!strip)
-sha512sums=('cc72ef4ecb773f898136bdd4d79f3c8b3282b0c7323777d7298bf05633bd3d23fbc01f0aa8c52f440bbc5415d92481e21faa20bf979d7c6decccb94895879e98'
+sha512sums=('ca61d35c9217ece44fde8b7e1b6814f34b040dcbf22b848052ef79e08256d0d561fe779bd4cc3551f5dfd0b1b6788b44a1432444bf219fec711287d817c11558'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f')
 
 _bdir=Brave-linux-x64
