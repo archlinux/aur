@@ -2,7 +2,7 @@
 pkgname=lalapps
 _pkgname=${pkgname}
 pkgver=6.21.0
-pkgrel=7
+pkgrel=9
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
@@ -18,20 +18,16 @@ options=(!emptydirs)
 install=
 source=("http://software.ligo.org/lscsoft/source/lalsuite/${_pkgname}-${pkgver}.tar.xz")
 sha256sums=('2b997406b7bca358295e6d060919346fd5281ec0217a357c91849012bc2c9973')
-prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    sed -i 's/\-Werror//g' configure
-    2to3 -wn src/pulsar/HeterodyneSearch/make_frame_cache
-}
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    ./configure --prefix=${pkgdir}/usr CFLAGS=-O3
+    2to3 -wn src/pulsar/HeterodyneSearch/make_frame_cache
+    ./configure --prefix=${pkgdir}/usr CFLAGS='-O3 -Wno-error'
     make -j
 }
-check() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    make -j check
-}
+#check() {
+#    cd "${srcdir}/${_pkgname}-${pkgver}"
+#    make -j check
+#}
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make install
