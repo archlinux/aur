@@ -1,6 +1,7 @@
 # Contributor: Victor van den Elzen <victor.vde@gmail.com>
+# Maintainer: François Freitag <mail@franek.fr>
 pkgname=pgbadger
-pkgver=9.1
+pkgver=9.2
 pkgrel=1
 pkgdesc="a fast PostgreSQL log analysis report"
 arch=("any")
@@ -13,26 +14,17 @@ optdepends=(
 )
 options=('!emptydirs' purge)
 source=("https://github.com/dalibo/pgbadger/archive/v${pkgver}.tar.gz")
-sha256sums=('2fd7166d74692cc7d87f00b37cc5c7c1c6eddf156372376d382a40f67d694011')
+sha256sums=('2107466309a409fb9e40f11bb77cac1f9ba7910d5328e7b2e08eb7a1c6d760ec')
 
 build() {
   cd "$srcdir/pgbadger-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   /usr/bin/perl Makefile.PL
   make
-}
-
-check() {
-  cd "$srcdir/pgbadger-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
-  make test
+  # Strip unnecesary directory.
+  rm --dir "$srcdir/pgbadger-$pkgver/"
 }
 
 package() {
   cd "$srcdir/pgbadger-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
