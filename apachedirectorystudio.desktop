@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Apache Directory Studio
+Comment=Eclipse based LDAP browser and directory client
+Exec=apachedirectorystudio
+Icon=/usr/share/pixmaps/apachedirectorystudio.png
+Terminal=false
+Type=Application
+Categories=Java;Network;
+StartupNotify=false
