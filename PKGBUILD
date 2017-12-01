@@ -2,8 +2,8 @@
 
 pkgname=dotnet-runtime-1.1-compat
 pkgver=1.1.5
-pkgrel=1
-pkgdesc=Provides the .NET core shared framework 1.1
+pkgrel=2
+pkgdesc='Provides the .NET core shared framework 1.1'
 arch=(x86_64)
 url=https://www.microsoft.com/net/download/linux
 license=('MIT')

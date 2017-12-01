@@ -1,6 +1,7 @@
 pkgbase = dotnet-runtime-1.1-compat
+	pkgdesc = Provides the .NET core shared framework 1.1
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/download/linux
 	arch = x86_64
 	license = MIT

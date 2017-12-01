@@ -1,0 +1,5 @@
+# Sources & Build packages
+*.gz
+*.xz
+pkg/
+src/
