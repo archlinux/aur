@@ -4,7 +4,7 @@ pkgname=superproductivity-git
 _pkgname=superProductivity
 _reponame=super-productivity
 _binname=superproductivity
-pkgver=1.6.3.r0.gd0ec283
+pkgver=1.6.8.r2.gc814857
 pkgrel=1
 pkgdesc='To Do List / Time Tracker with Jira Integration.'
 arch=('x86_64')
@@ -31,7 +31,10 @@ build() {
 	tar -xf "data.tar.xz"
 }
 
+
+
 package() {
+	cd ${srcdir}/${_reponame}
 	install -d "${pkgdir}/opt/${_pkgname}"
 	cp -a "${srcdir}/${_reponame}/dist/opt/${_pkgname}/." "${pkgdir}/opt/${_pkgname}"
 
@@ -43,8 +46,9 @@ package() {
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/${_pkgname}/${_binname}" "${pkgdir}/usr/bin/${_binname}"
 
-	install -d "${pkgdir}/usr/share/icons/hicolor"
-	cp -a ${srcdir}/${_reponame}/dist/usr/share/icons/hicolor/  ${pkgdir}/usr/share/icons/hicolor/
+	for size in 16 24 32 48 64 96 128 256 512; do
+		install -Dm644 "${srcdir}/${_reponame}/dist/usr/share/icons/hicolor/${size}x${size}/apps/${_binname}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_binname}.png"
+    	done
 
 	install -Dm644 "${srcdir}/${_reponame}/LICENSE" "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
 
