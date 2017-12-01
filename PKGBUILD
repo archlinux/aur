@@ -2,7 +2,7 @@
 
 pkgname=freeplane-srcbuild
 _pkgname=freeplane
-pkgver=1.6.7
+pkgver=1.6.10
 pkgrel=1
 pkgdesc="A free mindmapping and knowledge management tool"
 arch=('i686' 'x86_64')
@@ -12,10 +12,9 @@ makedepends=('gradle')
 depends=('java-runtime' 'bash' 'libxtst')
 conflicts=('freeplane' 'freeplane-beta' 'freeplane-bzr')
 source=(http://downloads.sourceforge.net/sourceforge/freeplane/freeplane_src-${pkgver}.tar.gz 'freeplane.desktop' 'freeplane.run')
-sha256sums=('3137cae7371d39db2b02efbf33d7cc6b2cfc07921c71cdcc7fb4cd7525f64af4'
+sha256sums=('601be6ce66fdd4710d06e17aa6736cdcde5936b9183858d3d280a7a92f66a2a1'
             'a1c7e9b276c9566fcb806322b6e3ad8e6ce66718d788b42a1063683e39f9de4c'
             'e7b7d4e0fddce2af3909a1ebbd18928bcc917a809fe460c140978e7b0530387c')
-
 
 
 build() {
