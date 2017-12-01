@@ -17,13 +17,14 @@ source=("https://github.com/dalibo/pgbadger/archive/v${pkgver}.tar.gz")
 sha256sums=('2107466309a409fb9e40f11bb77cac1f9ba7910d5328e7b2e08eb7a1c6d760ec')
 
 build() {
-  cd "$srcdir/pgbadger-$pkgver"
+  cd "${srcdir}/pgbadger-${pkgver}"
   /usr/bin/perl Makefile.PL
   make
 }
 
 package() {
-  cd "$srcdir/pgbadger-$pkgver"
+  cd "${srcdir}/pgbadger-${pkgver}"
+
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
