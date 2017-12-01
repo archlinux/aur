@@ -1,0 +1,16 @@
+pkgbase = android-dumpkey
+	pkgdesc = Python port of com.android.dumpkey.DumpPublicKey
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://github.com/tgalal/android-dumpkey/
+	arch = any
+	license = Apache
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-m2crypto
+	source = https://pypi.python.org/packages/0e/26/b05815cdd8272b0a71641e36d10bcf8e9854e21b505ec38481dd24841203/android-dumpkey-0.1.1.tar.gz
+	md5sums = c821bd9e5464b3ac3c0d7419dfda3acb
+
+pkgname = android-dumpkey
+
