@@ -2,9 +2,9 @@
 # Based on the rbdoom3-bfg-git package by M0Rf30
 
 pkgname=rbdoom-3-bfg
-_commit=c8e3cd9fe2f4d3e7604f0ca1ead51a3b2a91ca79
-pkgver=1.1.0preview3.r115.gc8e3cd9f
-pkgrel=2
+_commit=d75169010b834196f39cfc3ca4c1358ee277e520
+pkgver=1.1.0preview3.r119.gd7516901
+pkgrel=1
 pkgdesc="Enhanced Doom 3: BFG Edition engine"
 arch=('i686' 'x86_64')
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
@@ -24,7 +24,7 @@ source=("https://github.com/RobertBeckebans/RBDOOM-3-BFG/archive/${_commit}.tar.
         50-system-rapidjson.patch
         60-spelling-errors.patch
         70-disable-hdr-by-default.patch)
-sha512sums=('e20b2e86c9b9f12268401aae075bb648708ff7b21d17d92cf431182e1fe823959c59b2fb2d52a96e00bd4fa632983f3b347e9d4db85fee44b62f6401c7dd777e'
+sha512sums=('3d3a423519b4881db748e10f2bc15976938f059ee044902cc0f4c6316ed75467a3f85cd631e0d182dbfba3b636e69bdb5a8c82b305da3a2c5fb2c6db1c16d98b'
             'f1a74a79c369bec1c371eb74f7e8c415b4d1993fae995b0e476eb7c7e3b0a42dfb8ee5ae1f2e960c1443603f36abe37409ffeac0c29fd085ef5045388ff905f8'
             'db8c51b9bcdb35e81bdc8c5a0ba2575060948ed2fb9837f92cfb9ff73b5f709d8f0909b12cc7715d72dad91cf79d769fd27817c8442bf642af967b1d237974fd'
             'c60b508f5f5c3e19a0ef2431b3d2119b405e8f610356a98c931c16a53ac1b319c485ebe9d454b884a6d66829573377e3f94220bc50dc70efde45c9312f172859'
