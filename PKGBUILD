@@ -1,18 +1,18 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Frédéric Potvin <frederic.potvin@platform.sh>
 
 pkgname=platformsh-cli-git
 _pkgname=${pkgname%-git}
-pkgver=3.3.5.r0.g63a69c1
+pkgver=3.3.5.r1.g63a69c1
 pkgrel=1
 pkgdesc="The unified tool for managing your Platform.sh services from the command line."
 arch=('any')
-url="https://github.com/jamesan/$_pkgname"
-license=('GPL')
+url="https://github.com/platformsh/$_pkgname"
+license=('MIT')
 depends=('git' 'php')
 optdepends=('drush' 'composer')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("$_pkgname"::"git+https://github.com/${_pkgname%-cli}/$_pkgname.git#branch=master")
+source=("$_pkgname"::"git+$url.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
@@ -48,4 +48,5 @@ package() {
   install -Dm755 platform.phar "$pkgdir/usr/share/webapps/platform/platform.phar"
   install -dm755 "$pkgdir/usr/bin"
   ln -s /usr/share/webapps/platform/platform.phar "$pkgdir/usr/bin/platform"
+  mkdir -p ~/.platform
 }
