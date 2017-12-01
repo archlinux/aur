@@ -1,6 +1,6 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=xx-net
-pkgver=3.8.3
+pkgver=3.8.5
 pkgrel=1
 
 pkgdesc="XX-Net, a web proxy tool."
@@ -21,12 +21,12 @@ install=$pkgname.install
 
 
 source=(
-	"https://github.com/XX-net/$pkgname/archive/$pkgver.tar.gz"
+	"https://codeload.github.com/XX-net/XX-Net/tar.gz/$pkgver"
 	"XX-net.ini"
 		)
 noextract=()
 md5sums=(
-	'323ab32585363abc6194d4a41c375257'
+	'6dc162b00d4c606d91ed257976a27201'
 	'd439251c0022e4537231bbde87d36bac'
 		)
 validpgpkeys=()
