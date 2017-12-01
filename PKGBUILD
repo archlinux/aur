@@ -25,7 +25,8 @@ source=('ftp://ftp.hercules.com/pub/webupdate/DJCSeries/Legacy/Hercules_DJSeries
 	'kernel_2.6.39_fix.patch'
 	'kernel_3.6_fix.patch'
 	'kernel_3.7_fix.patch'
-	'kernel_3.16_fix.patch')
+	'kernel_3.16_fix.patch'
+	'kernel_4.11_fix.patch')
 	   
 md5sums=('498cf0ff144f20106718932ab22571ce'
          '464f8a8eda9d4c2ec83cf1c43e5dbee3'
@@ -36,7 +37,8 @@ md5sums=('498cf0ff144f20106718932ab22571ce'
          '9cc3e1cb4c7877ebf09e389e67b19182'
          '8bf580fcfe06f48ce8247272b55633ce'
          'f40801f32abc47088a54c8893aa27e75'
-         '03b1ec1382d9d79a78cc79525cae06e4')
+         '03b1ec1382d9d79a78cc79525cae06e4'
+         'c411e703a3e6eb25d9a83399465c31d2')
 
 build() {
 	# Obtain source files
@@ -68,23 +70,26 @@ build() {
 	# Fifth patch fixes build errors with kernel 2.6.37
 	patch -p0 < $srcdir/kernel_2.6.37_fix.patch
 	
-	# Sixth patch fixes build errors with kernel 2.6.39 (from OpenSUSE Factory)
+	# Sixth patch fixes build errors with kernel 2.6.39 (by Matthias Bach <marix@marix.org>)
 	patch -p0 < $srcdir/kernel_2.6.39_fix.patch
 	
-	# Seventh patch fixes build errors with kernel 3.6.x (from OpenSUSE Factory)
+	# Seventh patch fixes build errors with kernel 3.6.x (by Matthias Bach <marix@marix.org>)
 	patch -p0 < $srcdir/kernel_3.6_fix.patch
 	
-	# Eighth patch fixes build errors with kernel 3.7.x (from OpenSUSE Factory)
+	# Eighth patch fixes build errors with kernel 3.7.x (by Matthias Bach <marix@marix.org>)
 	patch -p0 < $srcdir/kernel_3.7_fix.patch
 	
 	# Ninth patch fixes build errors with kernel 3.16.x (by Fabian Zimmermann / fabian-zimmermann.net)
 	patch -p0 < $srcdir/kernel_3.16_fix.patch
 	
+	# Another patch to fix build errors with kernel 4.11.x (by Matthias Bach <marix@marix.org>)
+	patch -p0 < $srcdir/kernel_4.11_fix.patch	
+	
 	# Fix again the path to slab.h in bulk.h
 	sed -i s@/usr/src/linux-$(uname -r)/include/linux/slab.h@/usr/lib/modules/$(uname -r)/build/include/linux/slab.h@ bulk.h
 	
-	# Patches 5->8 by Matthias Bach <marix@marix.org>
-	# http://download.opensuse.org/repositories/hardware/openSUSE_Factory/src/
+	# Most patches borrowed from OpenSUSE maintainers:
+	# http://download.opensuse.org/repositories/hardware/openSUSE_Tumbleweed/src/
 		
 	# Compile...
 	make	

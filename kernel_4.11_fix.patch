@@ -1,0 +1,33 @@
+From: Matthias Bach <marix@marix.org>
+Date: 20117-05-26 20:20:00 +0200
+Subject: Fix compile on kernel 4.11
+Upstream: to be done
+
+The module no longer compiled on 4.11
+
+diff -Naru bulk.c bulk.c
+--- bulk.c	2009-01-27 15:25:50.000000000 +0100
++++ bulk.c	2017-05-26 20:00:46.941268724 +0200
+@@ -37,6 +37,9 @@
+ #if ( LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,24) )
+ #include <sound/driver.h>
+ #endif
++#if ( LINUX_VERSION_CODE >= KERNEL_VERSION(4,11,0) )
++#include <linux/sched/signal.h>
++#endif
+ #include <sound/core.h>
+ #include <sound/info.h>
+ #include <sound/initval.h>
+diff -Naru configuration_manager.c configuration_manager.c
+--- configuration_manager.c	2009-01-27 15:25:50.000000000 +0100
++++ configuration_manager.c	2017-05-26 20:02:11.079953245 +0200
+@@ -29,6 +29,9 @@
+ #if ( LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,24) )
+ #include <sound/driver.h>
+ #endif
++#if ( LINUX_VERSION_CODE >= KERNEL_VERSION(4,11,0) )
++#include <linux/sched/signal.h>
++#endif
+ #include <sound/core.h>
+ #include <sound/info.h>
+ #include <sound/initval.h>
