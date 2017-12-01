@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=salome-meca-bin
 pkgver=2017.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Integration of the Code_Aster solver in the Salome platform'
 arch=('x86_64')
 url='https://www.code-aster.org/spip.php?article303'
@@ -45,7 +45,7 @@ build() {
 	# use the bundled libraries and Python version 
 	_path='PATH=/opt/salome_meca/V2017.0.2/prerequisites/Python-2710/bin/:$PATH'
 	_ld_path='LD_LIBRARY_PATH=$(find /opt/salome_meca/V2017.0.2/ -type d -name lib  | tr '"'"'\\n'"'"' '"'"':'"'"' | sed '"'"'s/:$//'"'"'):$LD_LIBRARY_PATH'
-	sed -e "s,APPLIDIR,$_path $_ld_path /opt/salome_meca/appli_V2017.0.2/salome," \
+	sed -e "s,APPLIDIR,$_path $_ld_path /opt/salome_meca/appli_V2017.0.2," \
 		-e "s,SALOMEDIR,/opt/salome_meca/V2017.0.2," \
 		${srcdir}/salome_meca/V2017.0.2/.salome_meca_V2017.0.2.desktop \
 		> ${srcdir}/salome_meca.desktop
