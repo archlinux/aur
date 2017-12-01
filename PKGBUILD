@@ -8,8 +8,8 @@ pkgdesc="The unified tool for managing your Platform.sh services from the comman
 arch=('any')
 url="https://github.com/platformsh/$_pkgname"
 license=('MIT')
-depends=('git' 'php')
-optdepends=('drush' 'composer')
+depends=('git' 'php' 'composer' 'php-box')
+optdepends=('drush')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname"::"git+$url.git#branch=master")
