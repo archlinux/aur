@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=glsl-language-server
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A language server implementation for GLSL"
 arch=('x86_64')
