@@ -1,7 +1,7 @@
 pkgbase = inox-beta
 	pkgdesc = A web browser built for speed, simplicity, and security
-	pkgver = 63.0.3239.59
-	pkgrel = 3
+	pkgver = 63.0.3239.70
+	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = inox-beta.install
 	arch = i686
@@ -41,7 +41,7 @@ pkgbase = inox-beta
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-63.0.3239.59.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-63.0.3239.70.tar.xz
 	source = chromium-launcher-5.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v5.tar.gz
 	source = https://raw.githubusercontent.com/bn0785ac/ih-beta/master/bnox.desktop
 	source = https://raw.githubusercontent.com/bn0785ac/ih-beta/master/breakpad-use-ucontext_t.patch
@@ -130,7 +130,7 @@ pkgbase = inox-beta
 	source = https://raw.githubusercontent.com/bn0785ac/ih-beta/master/CP.patch
 	source = https://raw.githubusercontent.com/bn0785ac/ih-beta/master/888.patch
 	source = https://raw.githubusercontent.com/bn0785ac/ih-beta/master/pt.patch
-	sha256sums = 62aec842b706d7240e86f2a46d852ae1e6d521be69295615d778af595af3467a
+	sha256sums = 0f29df3f4768ae32abbe504ba99cfa3b72c820f175b96a43c737a3d66f83f959
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
 	sha256sums = 1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883
 	sha256sums = 6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8
@@ -218,7 +218,7 @@ pkgbase = inox-beta
 	sha256sums = a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438
 	sha256sums = e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265
 	sha256sums = 84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230
-	sha256sums = SKIP
+	sha256sums = ba9f4b345150ed5a2df7b713ab1e441be7ab8aeead4e2eb0c384334cf15ad436
 
 pkgname = inox-beta
 
