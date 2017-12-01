@@ -7,6 +7,7 @@ pkgbase = deepin-libwine-git
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
+	conflicts = deepin-libwine
 	noextract = deepin-libwine_2.18-2_i386.deb
 	options = !strip
 	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-libwine_2.18-2_i386.deb
