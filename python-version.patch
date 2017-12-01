@@ -1,0 +1,63 @@
+diff -ura claripy-7.7.9.21.orig/claripy/frontend_mixins/constraint_expansion_mixin.py claripy-7.7.9.21.new/claripy/frontend_mixins/constraint_expansion_mixin.py
+--- claripy-7.7.9.21.orig/claripy/frontend_mixins/constraint_expansion_mixin.py	2017-11-21 12:34:44.443988338 -0500
++++ claripy-7.7.9.21.new/claripy/frontend_mixins/constraint_expansion_mixin.py	2017-11-21 12:34:46.745893350 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import logging
+ l = logging.getLogger("claripy.frontends.cache_mixin")
+diff -ura claripy-7.7.9.21.orig/claripy/frontend.py claripy-7.7.9.21.new/claripy/frontend.py
+--- claripy-7.7.9.21.orig/claripy/frontend.py	2017-11-21 12:34:44.437304730 -0500
++++ claripy-7.7.9.21.new/claripy/frontend.py	2017-11-21 12:34:46.762594396 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import logging
+ import numbers
+diff -ura claripy-7.7.9.21.orig/claripy/frontends/constrained_frontend.py claripy-7.7.9.21.new/claripy/frontends/constrained_frontend.py
+--- claripy-7.7.9.21.orig/claripy/frontends/constrained_frontend.py	2017-11-21 12:34:44.443988338 -0500
++++ claripy-7.7.9.21.new/claripy/frontends/constrained_frontend.py	2017-11-21 12:34:46.749233559 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import logging
+ 
+diff -ura claripy-7.7.9.21.orig/claripy/frontends/hybrid_frontend.py claripy-7.7.9.21.new/claripy/frontends/hybrid_frontend.py
+--- claripy-7.7.9.21.orig/claripy/frontends/hybrid_frontend.py	2017-11-21 12:34:44.443988338 -0500
++++ claripy-7.7.9.21.new/claripy/frontends/hybrid_frontend.py	2017-11-21 12:34:46.749233559 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import logging
+ 
+diff -ura claripy-7.7.9.21.orig/claripy/frontends/light_frontend.py claripy-7.7.9.21.new/claripy/frontends/light_frontend.py
+--- claripy-7.7.9.21.orig/claripy/frontends/light_frontend.py	2017-11-21 12:34:44.443988338 -0500
++++ claripy-7.7.9.21.new/claripy/frontends/light_frontend.py	2017-11-21 12:34:46.749233559 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import logging
+ l = logging.getLogger("claripy.frontends.light_frontend")
+diff -ura claripy-7.7.9.21.orig/claripy/frontends/replacement_frontend.py claripy-7.7.9.21.new/claripy/frontends/replacement_frontend.py
+--- claripy-7.7.9.21.orig/claripy/frontends/replacement_frontend.py	2017-11-21 12:34:44.443988338 -0500
++++ claripy-7.7.9.21.new/claripy/frontends/replacement_frontend.py	2017-11-21 12:34:46.749233559 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import logging
+ import numbers
+diff -ura claripy-7.7.9.21.orig/claripy/__init__.py claripy-7.7.9.21.new/claripy/__init__.py
+--- claripy-7.7.9.21.orig/claripy/__init__.py	2017-11-21 12:34:44.450671947 -0500
++++ claripy-7.7.9.21.new/claripy/__init__.py	2017-11-21 12:34:46.762594396 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # pylint: disable=F0401,W0401,W0603,
+ 
+ import os

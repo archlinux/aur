@@ -1,0 +1,21 @@
+pkgbase = python2-claripy
+	pkgdesc = An abstraction layer for constraint solvers
+	pkgver = 7.7.9.21
+	pkgrel = 1
+	url = https://github.com/angr/claripy
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-ana
+	depends = python2-future
+	depends = python2-z3-solver
+	source = https://pypi.python.org/packages/b1/ab/323241b2f6ccb97828aa8221579905391d3103d4b45fba3c3d35fb244fc1/claripy-7.7.9.21.tar.gz
+	source = https://raw.githubusercontent.com/angr/claripy/master/LICENSE
+	source = python-version.patch
+	md5sums = 0e2c8246e8b23849b5e97d4a0e9dc30e
+	md5sums = 92da168ebb0065f567f0ea48bed0f512
+	md5sums = 71519b586ac229fd40597714e1f66b85
+
+pkgname = python2-claripy
+
