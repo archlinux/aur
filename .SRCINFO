@@ -1,0 +1,18 @@
+pkgbase = python2-networkx-1.11
+	pkgdesc = Python package for creating and manipulating graphs and networks
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://networkx.github.io/
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	provides = python2-networkx==1.11
+	conflicts = python2-networkx
+	source = https://pypi.python.org/packages/3b/d4/1b6ca16678d13ffd426bcd199231f3d5effaa6d234747fb88899e649dec3/networkx-1.11.zip
+	source = https://raw.githubusercontent.com/networkx/networkx/v1.11/LICENSE.txt
+	md5sums = c7690890aa28eb2e061f9e50c20ebada
+	md5sums = 925586ea588eb990de840dc71ea3752f
+
+pkgname = python2-networkx-1.11
+
