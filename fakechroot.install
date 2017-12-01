@@ -1,0 +1,11 @@
+post_install() {
+  sbin/ldconfig -r .
+}
+
+post_upgrade() {
+  sbin/ldconfig -r .
+}
+
+post_remove() {
+  sbin/ldconfig -r .
+}
