@@ -5,7 +5,7 @@
 # Contributor: AdriÃ¡n Chaves FernÃ¡ndez (Gallaecio) <adriyetichaves@gmail.com>
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
-pkgver=20113
+pkgver=20244
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
