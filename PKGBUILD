@@ -2,7 +2,7 @@
 pkgname=superproductivity
 _pkgname=superProductivity
 pkgver=1.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc='To Do List / Time Tracker with Jira Integration.'
 arch=('x86_64')
 url="http://super-productivity.com/"
@@ -19,6 +19,7 @@ prepare() {
 }
 
 package() {
+	cd ${srcdir}
 	install -d "${pkgdir}/opt/${_pkgname}"
 	cp -a "${srcdir}/opt/${_pkgname}/." "${pkgdir}/opt/${_pkgname}"
 	
@@ -30,8 +31,9 @@ package() {
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/${_pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-	install -d "${pkgdir}/usr/share/icons/hicolor"
-	cp -a ${srcdir}/usr/share/icons/hicolor/  ${pkgdir}/usr/share/icons/hicolor/
+	for size in 16 24 32 48 64 96 128 256 512; do
+        	install -Dm644 "${srcdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+    	done
 
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
