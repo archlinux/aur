@@ -2,7 +2,7 @@
 
 pkgname=grav-admin
 pkgver=1.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Grav is a modern open source flat-file CMS with admin plugin"
 arch=("any")
 url="https://getgrav.org"
@@ -34,4 +34,5 @@ package() {
 
     cd ${pkgdir}/usr/share/webapps/${pkgname}
     rm -Rf *.md composer.json composer.lock 
+    chown http: tmp/
 }
