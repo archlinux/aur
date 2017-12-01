@@ -1,0 +1,20 @@
+pkgbase = inception-android
+	pkgdesc = Hands-off auto-configuration tools for android devices
+	pkgver = 0.9.11
+	pkgrel = 1
+	url = https://github.com/tgalal/inception
+	arch = any
+	license = GPL3
+	makedepends = python2-setuptools
+	makedepends = gcc
+	depends = python2
+	depends = python2-argparse
+	depends = python2-dulwich
+	depends = android-dumpkey
+	depends = cpio
+	optdepends = jre8-openjdk-headless: signing packages
+	source = https://github.com/tgalal/inception/archive/0.9.11.tar.gz
+	md5sums = 54ef7cf0cc3c41263b0daee149348d05
+
+pkgname = inception-android
+
