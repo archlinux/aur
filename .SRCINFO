@@ -11,6 +11,7 @@ pkgbase = ros-kinetic-mrpt-bridge
 	makedepends = mrpt
 	makedepends = ros-kinetic-catkin
 	makedepends = ros-kinetic-geometry-msgs
+	makedepends = ros-kinetic-marker-msgs
 	makedepends = ros-kinetic-message-generation
 	makedepends = ros-kinetic-message-runtime
 	makedepends = ros-kinetic-mrpt-msgs

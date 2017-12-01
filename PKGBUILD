@@ -11,6 +11,7 @@ pkgrel=0
 license=('BSD')
 
 ros_makedepends=('ros-kinetic-catkin' 'ros-kinetic-geometry-msgs' 
+                 'ros-kinetic-marker-msgs'
                  'ros-kinetic-message-generation' 'ros-kinetic-message-runtime' 
                  'ros-kinetic-mrpt-msgs' 'ros-kinetic-nav-msgs' 
                  'ros-kinetic-pcl-conversions' 'ros-kinetic-roscpp' 
