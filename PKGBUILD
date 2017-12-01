@@ -25,7 +25,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         )
 sha256sums=('SKIP'
             '03215fd466917a0045f5f51e7c46ffe21f14c078fb8bcd1ff99e740363afbb55'
-            '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7'
+            '6c4ab77d0be624799b9b8e12b228fe181577b298d73355b14618ebf1f5675fa7'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             )
 
@@ -71,7 +71,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules (git version)"
+  pkgdesc="The Linux kernel and modules (git version), with GCC optimization patch and Ryzen-friendly config flags (CONFIG_RCU_NOCB_CPU=y) to enable the rcu_nocbs=0-x boot argument"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
