@@ -1,7 +1,7 @@
 pkgbase = lemongrab
 	pkgdesc = An attempt at a cross-platform version of the popular "screenfetch" script.
 	pkgver = 0.1dev
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Aareon/lemongrab/
 	arch = any
 	license = MIT

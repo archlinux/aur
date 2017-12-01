@@ -2,7 +2,7 @@
 
 pkgname=lemongrab
 pkgver=0.1dev
-pkgrel=1
+pkgrel=3
 pkgdesc='An attempt at a cross-platform version of the popular "screenfetch" script.'
 arch=( 'any' )
 url='https://github.com/Aareon/lemongrab/'
@@ -33,7 +33,6 @@ package() {
     
     # Bin
     install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "${pkgdir}/opt/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-    
 }
