@@ -3,7 +3,7 @@
 pkgname=pgbadger
 pkgver=9.2
 pkgrel=1
-pkgdesc="a fast PostgreSQL log analysis report"
+pkgdesc="A fast PostgreSQL log analysis report"
 arch=("any")
 url="https://github.com/dalibo/pgbadger"
 license=("custom:Dalibo")
