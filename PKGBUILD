@@ -2,7 +2,7 @@
 _npmname=ArkClient
 _appname=arkclient
 pkgname=ark-desktop
-pkgver=1.2.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Multi Platform Ark Lite Client"
 arch=(any)
@@ -22,9 +22,9 @@ source=(
   "$_appname.png"
 )
 sha1sums=(
-  "56872f135d6e0b86adfdd3d72a6c2c4880750c6c"
+  "945c04d6124eb2eb11ba547f0ac9318d112ece12"
   "687295fc60638fdd828646e7fc44eaf38eca3cd0"
-  "66dadafaa8f6c03c1790a9fa1acf33ec0bfeaa64"
+  "77c1f8707a779be883283150732d3477709af7da"
 )
 
 package() {
@@ -38,5 +38,5 @@ package() {
   install -Dm644 "$srcdir/$_appname.desktop" "$pkgdir/usr/share/applications/$_appname.desktop"
   install -Dm644 "$srcdir/$_appname.png" "$pkgdir/usr/share/pixmaps/$_appname.png"
 
-  chmod -R ugo+rX $pkdir/opt
+  chmod -R ugo+rX $pkgdir/opt
 }
