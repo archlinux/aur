@@ -1,6 +1,6 @@
 pkgbase = snappy-static
 	pkgdesc = A fast compressor/decompressor library
-	pkgver = 1.1.4
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://google.github.io/snappy/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = snappy-static
 	provides = snappy
 	conflicts = snappy
 	options = staticlibs
-	source = https://github.com/google/snappy/releases/download/1.1.4/snappy-1.1.4.tar.gz
-	md5sums = c328993b68afe3e5bd87c8ea9bdeb028
+	source = https://github.com/google/snappy/archive/1.1.7.tar.gz
+	sha256sums = 3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4
 
 pkgname = snappy-static
 

@@ -4,7 +4,7 @@
 
 pkgname=snappy-static
 _pkgname=snappy
-pkgver=1.1.4
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='A fast compressor/decompressor library'
 arch=('i686' 'x86_64')
@@ -15,31 +15,26 @@ provides=('snappy')
 conflicts=('snappy')
 checkdepends=('zlib')
 options=('staticlibs')
-source=("https://github.com/google/snappy/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-md5sums=('c328993b68afe3e5bd87c8ea9bdeb028')
+source=("https://github.com/google/snappy/archive/$pkgver.tar.gz")
+sha256sums=('3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4')
 
 build() {
   cd "$_pkgname-$pkgver"
-
-  # compile without assertions
-  CXXFLAGS+=" -DNDEBUG -fPIC"
-
-  ./configure --prefix=/usr
-  make
-}
-
-check() {
-  # compile without assertions
-  CXXFLAGS+=\ -DNDEBUG
-
-  make -C "$_pkgname-$pkgver" check
+  mkdir -p build
+  cd build
+  CXXFLAGS+=" -fPIC"
+  cmake -DSNAPPY_BUILD_TESTS=off \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    ..
 }
 
 package() {
   cd "$_pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir" install
   install -m644 -D COPYING "$pkgdir/usr/share/licenses/snappy/LICENSE"
+
+  cd build
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
