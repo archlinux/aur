@@ -1,0 +1,19 @@
+pkgbase = python2-idalink
+	pkgdesc = An interface to the insides of IDA!
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://github.com/zardus/idalink
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-rpyc
+	source = https://pypi.python.org/packages/db/31/1c26b8c2293ab16934821d36568b8cf855063f2c8bb22e38343745bd9f50/idalink-0.11.tar.gz
+	source = https://raw.githubusercontent.com/zardus/idalink/master/LICENSE
+	source = python-version.patch
+	md5sums = 4482c5a7dd44167c2451a09f12eb0eac
+	md5sums = 92da168ebb0065f567f0ea48bed0f512
+	md5sums = 91a64ddfb82b6b277e8679da30e993b4
+
+pkgname = python2-idalink
+

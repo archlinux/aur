@@ -1,0 +1,36 @@
+diff -ura idalink-0.11-orig/idalink/idalink.py idalink-0.11-new/idalink/idalink.py
+--- idalink-0.11-orig/idalink/idalink.py	2017-11-21 15:41:48.039099873 -0500
++++ idalink-0.11-new/idalink/idalink.py	2017-11-21 15:42:16.768004309 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ # Copyright (C) 2013- Yan Shoshitaishvili aka. zardus
+diff -ura idalink-0.11-orig/idalink/__init__.py idalink-0.11-new/idalink/__init__.py
+--- idalink-0.11-orig/idalink/__init__.py	2017-11-21 15:41:48.039099873 -0500
++++ idalink-0.11-new/idalink/__init__.py	2017-11-21 15:42:35.183410176 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ # Copyright (C) 2013- Yan Shoshitaishvili aka. zardus
+diff -ura idalink-0.11-orig/idalink/memory.py idalink-0.11-new/idalink/memory.py
+--- idalink-0.11-orig/idalink/memory.py	2017-11-21 15:41:48.039099873 -0500
++++ idalink-0.11-new/idalink/memory.py	2017-11-21 16:21:11.496530528 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ # Copyright (C) 2013- Yan Shoshitaishvili aka. zardus
+diff -ura idalink-0.11-orig/idalink/server.py idalink-0.11-new/idalink/server.py
+--- idalink-0.11-orig/idalink/server.py	2017-11-21 15:41:48.039099873 -0500
++++ idalink-0.11-new/idalink/server.py	2017-11-21 15:42:23.431533749 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ # Copyright (C) 2013- Yan Shoshitaishvili aka. zardus
