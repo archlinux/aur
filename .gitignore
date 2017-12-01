@@ -1,0 +1,6 @@
+*.tar.*
+*.zip
+pkg/
+src/
+*.un~
+*.sw*
