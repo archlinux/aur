@@ -7,6 +7,7 @@ pkgbase = deepin-wine-helper-git
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
+	conflicts = deepin-wine-helper
 	noextract = deepin-wine-helper_1.0deepin27_i386.deb
 	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine-helper/deepin-wine-helper_1.0deepin27_i386.deb
 	md5sums = SKIP
