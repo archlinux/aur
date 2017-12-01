@@ -1,7 +1,7 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=gracegtk
-pkgver=0.9.4
+pkgver=1.0.0rc1
 pkgrel=1
 pkgdesc="A port of the Grace plotting tool to gtk2"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="http://plasma-gate.weizmann.ac.il/Grace/"
 depends=('libjpeg' 'fftw' 't1lib' 'netcdf' 'pdflib-lite' 'gtk2')
 makedepends=('linuxdoc-tools' 'gcc-fortran')
 license=('GPL')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}_2016_04_20_16h15.tgz window_close.patch $pkgname.png $pkgname.desktop $pkgname-mimetypes ggrace)
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}_2017_07_17_11h11.tgz window_close.patch $pkgname.png $pkgname.desktop $pkgname-mimetypes ggrace)
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -49,4 +49,9 @@ package() {
   install -D -m644 "$srcdir/$pkgname-mimetypes" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 }
 
-md5sums=('b6716781546a5ff89825cc7f9f3799b8' '05b430f86615ab1aea79cee6ca204792' 'ef085e503d30207035f5dfbef648ed36' '8427067a73698b5425901866ca3195d0' '3beba5237f56a2ff28b6cd878865b25c' 'c22c24f810bf0e1f9b8ca8713be19e3e')
+md5sums=('07cdfacac1141159daa9357071ca1600'
+         '05b430f86615ab1aea79cee6ca204792'
+         'ef085e503d30207035f5dfbef648ed36'
+         '8427067a73698b5425901866ca3195d0'
+         '3beba5237f56a2ff28b6cd878865b25c'
+         'c22c24f810bf0e1f9b8ca8713be19e3e')
