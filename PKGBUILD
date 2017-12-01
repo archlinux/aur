@@ -1,5 +1,5 @@
-# Contributor: Victor van den Elzen <victor.vde@gmail.com>
-# Maintainer: François Freitag <mail@franek.fr>
+# Maintainer: François Freitag <mail at franek dot fr>
+# Contributor: Victor van den Elzen <victor.vde at gmail dot com>
 pkgname=pgbadger
 pkgver=9.2
 pkgrel=2
