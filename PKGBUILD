@@ -1,6 +1,6 @@
 pkgname=openmodelica-dev-omoptim
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The Open Source Modelica Suite - OpenModelica Model Optimizer"
 arch=('i686' 'x86_64')
@@ -41,8 +41,8 @@ build() {
 
 package() {
   cd "$srcdir/$_name/build"
-  mkdir -p ${pkgdir}/usr
-  cp -r * ${pkgdir}/usr
+  mkdir -p ${pkgdir}/usr/bin
+  cp  bin  ${pkgdir}/usr/bin/OMOptim
 
   cd "$srcdir/$_name"
   mkdir -p "$srcdir/tmp"
