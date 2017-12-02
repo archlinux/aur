@@ -1,6 +1,6 @@
 pkgbase = cobalt
 	pkgdesc = Static site generator written in Rust
-	pkgver = 0.7.5
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/cobalt-org/cobalt.rs
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cobalt
 	license = MIT
 	makedepends = cargo
 	depends = openssl
-	source = cobalt-bin-0.8.0.tar.gz::https://crates.io/api/v1/crates/cobalt-bin/0.8.0/download
-	sha256sums = 5e12309a05adc35a4c121ec87104268edacf1bd8da25180209f718a868a9c21f
+	source = cobalt-bin-0.9.0.tar.gz::https://crates.io/api/v1/crates/cobalt-bin/0.9.0/download
+	sha256sums = a72fea238db0b9ccc5d9ef80e285e1803c420da2c2cecad1da1d856e3fa6f588
 
 pkgname = cobalt
 
