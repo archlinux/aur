@@ -1,0 +1,16 @@
+pkgbase = qtmidi-qt5
+	pkgdesc = A midi plugin for Qt.
+	pkgver = git
+	pkgrel = 1
+	url = https://gitlab.com/tp3/qtmidi
+	arch = x86
+	arch = x86_64
+	license = GPL3
+	depends = alsa-lib
+	depends = qt5-base
+	provides = libQt5Midi
+	source = git+https://gitlab.com/tp3/qtmidi.git
+	md5sums = SKIP
+
+pkgname = qtmidi-qt5
+
