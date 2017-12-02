@@ -1,6 +1,6 @@
 # Maintainer: Vincent Pasquier <vincentpasquier@posteo.net>
 _pkgname=rpi-rgb-led-matrix
-pkgbase="${_pkgname}-git"
+pkgbase="${_pkg}"
 pkgname="${_pkgname}-git"
 pkgver=1
 pkgrel=1
