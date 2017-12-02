@@ -4,17 +4,17 @@
 
 pkgname=zstd-static
 _pkgname=${pkgname%-static}
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Zstandard - Fast real-time compression algorithm'
 arch=('i686' 'x86_64')
 url='http://www.zstd.net/'
 license=('BSD')
-depends=('zlib' 'xz')
+depends=('zlib' 'xz' 'lz4')
 makedepends=('gtest')
 options=('staticlibs')
 source=("https://github.com/facebook/zstd/archive/v${pkgver}.tar.gz")
-sha1sums=('1b254a1a7092886c7e17957b5f672b8c1b972b08')
+sha256sums=('ac5054a3c64e6510bc1ae890d05e3d271cc33ceebc9d06ac9f08105766d2798a')
 provides=('zstd')
 conflicts=('zstd')
 
@@ -31,5 +31,4 @@ package() {
     install -D -m755 zstdmt "$pkgdir/usr/bin/zstdmt"
     install -D -m755 contrib/pzstd/pzstd "$pkgdir/usr/bin/pzstd"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -D -m644 PATENTS "$pkgdir/usr/share/licenses/$pkgname/PATENTS"
 }
