@@ -26,7 +26,7 @@ build() {
   cd build
 
   qmake-qt5 -r .. "PKGDIR=$pkgdir/" "EPT_INSTALL_BIN_RDIR=usr/bin" "EPT_INSTALL_DATA_RDIR=usr/share" "EPT_INSTALL_LIB_RDIR=usr/lib"
-  make -j
+  make
 }
 
 package() {
