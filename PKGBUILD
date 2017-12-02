@@ -6,7 +6,7 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.3.r504.g75c2b30a2
+pkgver=4.3.r734.g4433c27d8
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -43,16 +43,24 @@ build() {
     cd "${srcdir}/${_gitname}"
     ./configure --prefix=/usr --mandir=/usr/share/man/man1 --release \
         --python=python3 \
+        --enable-avahi \
+        --enable-zlib \
         --disable-ffmpeg_static --enable-libav \
         --disable-libx264_static --enable-libx264 \
         --disable-libx265_static --enable-libx265 \
-        --disable-libvpx_static \
-        --disable-libtheora_static \
-        --disable-libvorbis_static \
+        --disable-libvpx_static --enable-libvpx \
+        --disable-libtheora_static --enable-libtheora \
+        --disable-libvorbis_static --enable-libvorbis \
         --disable-libfdkaac_static --enable-libfdkaac \
-        --disable-libopus_static \
-        --disable-libmfx_static --disable-qsv \
+        --disable-libopus_static --enable-libopus \
         --disable-nvenc \
+        --enable-vaapi \
+        --enable-inotify \
+        --enable-epoll \
+        --disable-pcre --enable-pcre2 \
+        --enable-uriparser \
+        --enable-dvben50221 \
+        --enable-dbus_1 \
         --disable-hdhomerun_static
     make
 }
