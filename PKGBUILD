@@ -1,20 +1,20 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname="mkdocs"
-pkgver="0.16.3"
+pkgver="0.17.2"
 pkgrel="1"
 pkgdesc="Project documentation with Markdown."
 arch=("any")
 url="http://www.mkdocs.org"
 license=("BSD")
 makedepends=("python-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}.bash_completion")
-sha256sums=('ac0ac5313dbbf0973ac254b9697f2ab6935cf31bc7fd76432875db166d03367d'
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
+        "$pkgname.bash_completion")
+sha256sums=('4a6b6b062347448ed42d5e8c0dce8f912e647ce4bd480fdea25017cd63aaa3a1'
             '66edd841378428e23fd617ff046fd8ea50b5cc5b70f3f3d50ac29bd5d33fd11f')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$srcdir/$pkgname-$pkgver"
     python setup.py build
 }
 
@@ -27,8 +27,8 @@ package() {
         "python-yaml>=3.10"
         "python-tornado>=4.1"
     )
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/${pkgname}.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+    cd "$srcdir/$pkgname-$pkgver"
+    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/$pkgname.bash_completion" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 }

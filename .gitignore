@@ -1,3 +1,7 @@
+# build
+pkg/
+src/
+
 # sources
 *.tar.gz
 
