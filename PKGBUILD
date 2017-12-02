@@ -6,7 +6,7 @@
 
 pkgname=ortp-git
 _pkgname=ortp
-pkgver=1.0.2.r11.g5f8fcdd
+pkgver=1.0.2.r29.g4cea5e6
 pkgrel=1
 pkgdesc="A Real-time Transport Protocol (RTP) library"
 arch=('i686' 'x86_64')
