@@ -8,7 +8,7 @@ pkgbase = stirfs
 	depends = fuse3
 	depends = openssl
 	source = https://fenua.org/gaetan/src//stirfs-2.0.c
-	sha256sums = 0a42e9d87f922cb973aa7df16dc701d8370a0341c300587240e47870e10f47c9
+	sha256sums = 46676619f71572e77ec492a3f9fc9de69ffc0f93be22ec4fbdc416fe56598d22
 
 pkgname = stirfs
 

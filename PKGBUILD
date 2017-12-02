@@ -9,7 +9,7 @@ license=('ISC')
 depends=('fuse3' 'openssl')
 arch=('x86_64')
 source=("${url}/${pkgname}-${pkgver}.c")
-sha256sums=('0a42e9d87f922cb973aa7df16dc701d8370a0341c300587240e47870e10f47c9')
+sha256sums=('46676619f71572e77ec492a3f9fc9de69ffc0f93be22ec4fbdc416fe56598d22')
 
 build() {
 	cd "${srcdir}"
