@@ -2,9 +2,9 @@
 
 pkgname=nightcode
 _name=Nightcode
-pkgver=2.3.7
+pkgver=2.5.3
 pkgrel=1
-pkgdesc="A simple IDE for Clojure and ClojureScript."
+pkgdesc="An IDE that bundles a smart editor, the Leiningen and Boot build tools, and a home screen with quick access to the Clojure cheatsheet and REPL."
 arch=('any')
 url="https://sekao.net/nightcode/"
 license=('custom')
@@ -13,7 +13,7 @@ conflicts=('nightcode-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oakes/Nightcode/archive/${pkgver}.tar.gz"
         "https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh"
         "nightcode.desktop")
-sha256sums=('7509ed86625290762476ea90a7244be4527bef7cf0afbd27715ab069c837eebf'
+sha256sums=('3a00a2febab8cce46c93c5afc340ccbbb69df98ad8efc9054207ae26079f263a'
             '895def8ef37f4b78bb37a26566ce970dc24219e880154a18ef7ade5a778d3a2f'
             '8fb613946bb9cb3dc636933ff2f0c7de8c61d2b43e49b9d6baf380b07377eaa1')
 noextract=('boot.sh')
