@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Gnee
+GenericName=X11 Recorder
+Comment=For replay action under X11 environment
+Exec=gnee
+Icon=/usr/share/pixmaps/xnee.png
+Terminal=false
+Type=Application
+Categories=Utility;
