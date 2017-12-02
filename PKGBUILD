@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=just-git
-pkgver=0.3.3.16.gdef1bda.350
+pkgver=0.3.3.27.g661342b.361
 pkgrel=1
 pkgdesc="Just a command runner, like make."
 arch=('x86_64' 'i686')
@@ -27,5 +27,5 @@ build() {
 package() {
   cd ${pkgname%-git}
   install -Dm755 "$srcdir"/${pkgname%-git}/target/release/just "$pkgdir"/usr/bin/just
-  install -Dm644 "$srcdir"/${pkgname%-git}/LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
+  install -Dm644 "$srcdir"/${pkgname%-git}/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
