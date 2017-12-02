@@ -1,0 +1,5 @@
+post_install() {
+	echo ''
+	echo 'Configuration is done either through environment variables (KODI_HOST,KODI_PORT, KODI_USER, KODI_PASS) or through a .kodirc in $HOME (an example is included in /usr/share/doc/kodi-cli/kodirc-example'
+	echo ''
+}

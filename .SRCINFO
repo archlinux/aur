@@ -1,0 +1,17 @@
+pkgbase = kodi-cli-git
+	pkgdesc = Kodi/XBMC bash script to send Kodi commands from the command line
+	pkgver = r49.e97efce
+	pkgrel = 1
+	url = https://github.com/nawar/kodi-cli
+	install = kodi-cli-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = curl
+	provides = kodi-cli
+	conflicts = kodi-cli
+	source = git+https://github.com/nawar/kodi-cli
+	md5sums = SKIP
+
+pkgname = kodi-cli-git
+
