@@ -13,7 +13,7 @@ optdepends=('free42-skins: Additional skins')
 source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz"
         "0001_makefile.patch"
         "0002_system-skins.patch")
-md5sums=('ac1d14b92036ba71956d576217c39324'
+md5sums=('a044787aa940b4e386c906d86b12525f'
          'd3edd7b3b03991e451d513c353885775'
          '8c0522e3efa3c7fd54985af456b689b7')
 
