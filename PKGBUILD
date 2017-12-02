@@ -1,4 +1,4 @@
-# Maintainer: Marco Pompili <aur (at) emarcs (dot) org>
+# Maintainer: Marco Pompili <aur (at) mg.odd.red>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
@@ -6,7 +6,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8
-pkgver=6.0.286.57
+pkgver=6.4.388.2
 pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
             '3a67793d1a7a93cec00f2693f11e79749364d2541edfb99d0be3f9c132382d1f'
-            '14ee52de490515d23fe14376258921d45c45a4011b5cd3344cde026d8b494774')
+            'db2f7e8b37d99a396b488d7657d6febb475371d42ec30fff8ffbb69983a9a09f')
 
 
 #
@@ -116,8 +116,8 @@ prepare() {
   msg2 "Using system libraries for ICU"
   ./build/linux/unbundle/replace_gn_files.py --system-libraries icu
 
-  msg2 "Applying gcc7 compatibility patch"
-  patch -p1 -i ${srcdir}/gcc7.patch
+  #msg2 "Applying gcc7 compatibility patch"
+  #patch -p1 -i ${srcdir}/gcc7.patch
 
   msg "Applying ctest patch"
   patch -p1 -i ${srcdir}/ctest.patch
@@ -163,7 +163,7 @@ check() {
 
   cd v8
 
-  msg2 "Testing, this will take also a while..."
+  msg2 "Testing, this will also take a while..."
   tools/run-tests.py --no-presubmit \
                      --outdir=out.gn \
                      --buildbot \
