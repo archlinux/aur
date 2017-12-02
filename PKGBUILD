@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --disable-ssh #--enable-x11
+  ./configure --disable-ssh --disable-upnp #--enable-x11
 
   # no reason to hard code versions
   sed -i 's|aclocal-1.14|aclocal|' Makefile
