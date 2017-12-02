@@ -1,12 +1,12 @@
 # Contributor: Keerthan Jaic <jckeerthan at gmail dot com>
 pkgname=brainworkshop
 pkgver=4.8.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Brain Workshop is a free open-source version of the Dual N-Back mental exercise"
 arch=('any')
 url="http://brainworkshop.sourceforge.net/"
 license=('GPL')
-depends=('python2' 'python2-pyglet' 'avbin' 'openal')
+depends=('python2' 'python2-pyglet' 'avbin7' 'openal')
 install='brainworkshop.install'
 source=(http://downloads.sourceforge.net/brainworkshop/$pkgname-$pkgver.zip
         brainworkshop.sh
