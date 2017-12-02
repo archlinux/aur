@@ -1,2 +1,4 @@
 *.pkg.tar.xz
 pkg/
+src/
+umonitor/
