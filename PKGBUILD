@@ -12,6 +12,7 @@ depends=('python' 'python-setuptools')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
+            'python-crypto: for hlsnative downloader'
             'phantomjs')
 source=(http://youtube-dl.org/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz{,.sig})
 sha256sums=('0a523db989f0f75e7e91676d6e416dad22a0e1ef3341cec652bf5b06c07fc5e1'
