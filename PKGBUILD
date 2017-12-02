@@ -1,12 +1,12 @@
 pkgname=auracle-git
 _pkgname=auracle
-pkgver=r13.b7da67f
-pkgrel=2
+pkgver=r25.ac13e38
+pkgrel=1
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
 url="https://github.com/falconindy/auracle.git"
 license=('MIT')
-depends=('pacman' 'libarchive.so' 'libcurl.so')
+depends=('pacman' 'libarchive.so' 'libcurl.so' 'nlohmann-json')
 makedepends=('meson' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")

@@ -1,7 +1,7 @@
 pkgbase = auracle-git
 	pkgdesc = A flexible client for the AUR
-	pkgver = r13.b7da67f
-	pkgrel = 2
+	pkgver = r25.ac13e38
+	pkgrel = 1
 	url = https://github.com/falconindy/auracle.git
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = auracle-git
 	depends = pacman
 	depends = libarchive.so
 	depends = libcurl.so
+	depends = nlohmann-json
 	provides = auracle
 	conflicts = auracle
 	source = git+https://github.com/falconindy/auracle.git
