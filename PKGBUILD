@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win32-git
-pkgver=3748.b4035023
+pkgver=3839.0e301dc5
 pkgrel=1
 pkgdesc="Carla win32 bridge"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ build() {
   make win32 HAVE_LIBLO=false
   export PATH=$_path
   export AR=$_ar
-  export CC=$_cc
+  export CC=gcc 
   export CXX=$_cxx
   export PKG_CONFIG_PATH=$_pkg_config_path
   export CFLAGS=$_cflags
