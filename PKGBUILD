@@ -2,7 +2,7 @@
 # Maintainer: meepzh <meep.aur@meepzh.com>
 
 pkgname=minify
-pkgver=2.3.1
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Minifier CLI for HTML, CSS, JS, JSON, SVG and XML"
 arch=('x86_64' 'i686')
@@ -14,10 +14,10 @@ if [ "$CARCH" = "i686" ]; then
 else
   _PKGARCH=amd64
 fi
-source_x86_64=("https://github.com/tdewolff/minify/releases/download/v2.3.1/minify_2.3.1_linux_amd64.tar.gz")
-source_i686=("https://github.com/tdewolff/minify/releases/download/v2.3.1/minify_2.3.1_linux_386.tar.gz")
-sha256sums_x86_64=('79dacbac822de54cb25568abf5e79f6f97c6b0e82aba199144d3c8b49f04ea30')
-sha256sums_i686=('eb62a7533d1a72ecbaf278e9a138ae6fbae901aa7c1c5918b04fbb604a142d45')
+source_x86_64=("https://github.com/tdewolff/minify/releases/download/v2.3.4/minify_2.3.4_linux_amd64.tar.gz")
+source_i686=("https://github.com/tdewolff/minify/releases/download/v2.3.4/minify_2.3.4_linux_386.tar.gz")
+sha256sums_x86_64=('f35f1cc0ad00c928da83d705cf822013d3ae5fd83ac90d0c895610d841d82ffe')
+sha256sums_i686=('d62a00049885f6dabcd03ac036b16689fc76cc8d00b847172579918c4726d329')
 
 package() {
   install -D -m755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
