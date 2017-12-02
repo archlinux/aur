@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="tgcd, tcp gender change daemon (reverse tunnel)"
 arch=('x86_64')
 url='http://tgcd.sourceforge.net/#lbAD'
-license=('GNU-GPL2')
+license=('GPLv2')
 source=('git+https://github.com/archimedepitagorico/tgcd.git#tag=v1.1.1'
         )
 #install=$pkgname.install
