@@ -1,7 +1,7 @@
 # Maintainer: Stefan Damm <autama at nurfuerspam dot de>
 
 pkgname=qtmidi-qt5
-pkgver=qtmid-qt5-git
+pkgver=git
 pkgrel=1
 pkgdesc="A midi plugin for Qt."
 arch=('i686' 'x86_64')
