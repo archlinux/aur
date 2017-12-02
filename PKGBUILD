@@ -3,9 +3,9 @@
 
 pkgname=trezord
 pkgver=1.2.1
-pkgrel=1
-_commitcrypto='cfe8f39cd436bf98e864775a9131e81e554e7bf1'
-_commitcommon='fac66c686735246f32fe6b1f276a5a8e2d9c61d8'
+pkgrel=2
+_commitcrypto='95a522bf1a453880050521661258d7943e966d1f' #Nov 3, 2017
+_commitcommon='8aca4dd2895b4a16c84f59bb45697129608580f6' #Dec 2, 2017
 pkgdesc='TREZOR Communication Daemon'
 arch=('i686' 'x86_64')
 url='https://github.com/trezor'
