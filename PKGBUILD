@@ -1,24 +1,28 @@
 # Maintainer: Python Shell <pythonshell@yeah.net>
 
 pkgname=cbmc
-pkgver=5.7
+pkgver=5.8
 pkgrel=1
 pkgdesc="Bounded Model Checking for ANSI-C"
 arch=('i686' 'x86_64')
 url="http://www.cprover.org/cbmc/"
 license=('custom')
-makedepends=('subversion' 'flex' 'bison' 'make' 'patch' 'perl-libwww')
+# No longer need subversion
+makedepends=('flex' 'bison' 'make' 'patch' 'perl-libwww')
 provides=('cbmc')
 conflicts=('cbmc' 'cbmc-git' 'cbmc-bin')
-source=("https://github.com/diffblue/cbmc/archive/cbmc-5.7.tar.gz")
-sha256sums=('4f98cdce609532d3fc2587299ee4a6544f63aff5cf42e89d2baaa3d3562edf3e')
+source=("https://github.com/diffblue/cbmc/archive/cbmc-5.8.tar.gz")
+sha256sums=('8d40a4c2f25315df769773eb01f939d94db1fdc1c39a7953d510289fec142fd6')
 
 _pkg_src_root="${pkgname}-${pkgname}-${pkgver}"
 
 build() {
     cd "${srcdir}/${_pkg_src_root}/src/"
     # Makefile typo fix
-    sed -i '/libzip_1.1.2.orig/a\\t\@mv libzip_1.1.2.orig.tar.gz libzip-1.1.2.tar.gz' Makefile
+    # No longer typo in 5.8, 20171201
+    #sed -i '/libzip_1.1.2.orig/a\\t\@mv libzip_1.1.2.orig.tar.gz libzip-1.1.2.tar.gz' Makefile
+    # Remove -Werror in config.inc::CXXFLAGS
+    sed -i '/  CXXFLAGS += -Wall -pedantic -Werror/c\  CXXFLAGS += -Wall -pedantic' config.inc
     make minisat2-download
     # No longer need these two
     #make libzip-download zlib-download
