@@ -1,9 +1,10 @@
 # Contributor: quantax -- contact via Arch Linux forum or AUR
-# Mantainer: M0Rf30
+#              M0Rf30
+# Mantainer: XenGi
 pkgname=unrealtournament
 pkgver=451
-pkgrel=9
-pkgdesc="The classic Unreal Tournament from 1999. Retail CD or DVD required."
+pkgrel=10
+pkgdesc="The classic Unreal Tournament from 1999 (Retail CD or DVD required)"
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament.com/"
 license=('custom')
@@ -42,7 +43,7 @@ sha512sums=('e3ab99af410eaa486a62cc21a40c5047996d0667ace963ccf2db666e5af9365ec49
 
 # Detect the mount point of the install medium.
 _detect_cdpath() {
-    echo "Searching for mount point of install medium... "
+    echo "Searching for mount point of install medium..."
 
     for mountpoint in $(egrep "(iso9660|udf)" /etc/mtab | awk '{print $2}'); do
         if [ -f "${mountpoint}/SYSTEM/UnrealTournament.exe" ] || [ -f "${mountpoint}/Disk1/data1.hdr" ]; then
@@ -52,19 +53,19 @@ _detect_cdpath() {
     done
 
     if [ -z "${_cdpath}" ]; then
-	    cat << __EOF__ >&2
-    No mounted valid Unreal Tournament CD or Unreal Anthology
-    DVD has been detected while scanning all "iso9660"
-    and all "udf" filesystems in "/etc/mtab" for the file
-    "SYSTEM/UnrealTournament.exe" or the file "Disk1/data1.hdr".
-    Make sure you mounted the right disk correctly.  If it still
-    doesn't work you can try setting the "_cdpath" and/or the
-    "_cdversion" variable in this PKGBUILD to your mount point and
-    your version of UT manually.
-__EOF__
+	    cat << EOF >&2
+No mounted valid Unreal Tournament CD or Unreal Anthology
+DVD has been detected while scanning all "iso9660"
+and all "udf" filesystems in "/etc/mtab" for the file
+"SYSTEM/UnrealTournament.exe" or the file "Disk1/data1.hdr".
+Make sure you mounted the right disk correctly.  If it still
+doesn't work you can try setting the "_cdpath" and/or the
+"_cdversion" variable in this PKGBUILD to your mount point and
+your version of UT manually.
+EOF
         return 1
     else
-        echo "    ${_cdpath} looks promising."
+        echo "${_cdpath} looks promising."
     fi
 }
 
@@ -140,7 +141,7 @@ _install_patches() {
 
     tar xfC data.tar.gz "${pkgdir}/opt/ut" --exclude=System/UnrealTournament.ini.PATCH || return 1
     chmod 644 -- "${pkgdir}/opt/ut/System/OpenGLDrv.int"
-    install --mode=644 -D -- "${pkgdir}/opt/ut/System/License.int"
+    install --mode=644 -D -- "${pkgdir}/opt/ut/System/License.int" \
                              "${pkgdir}/usr/share/licenses/${pkgname}/License.int"
 
     tar xfC UT436-OpenGLDrv-Linux-090602.tar.gz "${pkgdir}/opt/ut" || return 1
