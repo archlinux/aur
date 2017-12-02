@@ -1,0 +1,15 @@
+pkgbase = win32pe
+	pkgdesc = C++ library for working with Win32 PE files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://github.com/nathan-osman/win32pe
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = boost>=1.58
+	source = win32pe-0.1.0.tar.gz::https://github.com/nathan-osman/win32pe/archive/0.1.0.tar.gz
+	sha256sums = 479a8ca8b84c30ff0737d43ab0c80d843c1870d76e77186ad0034e2f9de9eb5e
+
+pkgname = win32pe
+
