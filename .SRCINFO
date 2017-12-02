@@ -1,0 +1,21 @@
+pkgbase = entropy-piano-tuner
+	pkgdesc = Free Software for Piano Tuning
+	pkgver = git
+	pkgrel = 1
+	url = https://gitlab.com/tp3/Entropy-Piano-Tuner
+	arch = x86
+	arch = x86_64
+	license = GPL3
+	depends = qtmidi-qt5
+	depends = qwt
+	depends = libuv
+	depends = hicolor-icon-theme
+	depends = qt5-multimedia
+	depends = fftw
+	source = git+https://gitlab.com/tp3/Entropy-Piano-Tuner.git
+	source = rpath.patch
+	md5sums = SKIP
+	md5sums = e7f34645ebe707be6d417f1f4bc31ebd
+
+pkgname = entropy-piano-tuner
+

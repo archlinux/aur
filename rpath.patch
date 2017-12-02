@@ -1,0 +1,13 @@
+diff --git a/app/app.pro b/app/app.pro
+index 78f9f6d..2b357ef 100644
+--- a/app/app.pro
++++ b/app/app.pro
+@@ -420,7 +420,7 @@ RESOURCES += \
+ 
+ contains(EPT_CONFIG, install) {
+     # add the install dir for the core the the rpath
+-    unix:QMAKE_RPATHDIR += $$EPT_INSTALL_LIB_RDIR/entropypianotuner
++    unix:QMAKE_RPATHDIR += "/$$EPT_INSTALL_LIB_RDIR/entropypianotuner"
+ 
+     target.path = $$EPT_INSTALL_BIN_DIR
+ 
