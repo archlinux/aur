@@ -3,12 +3,12 @@
 pkgname=dowse-git
 pkgver=v0.9.r971.g0b0fc46
 pkgrel=1
-pkgdesc='Minimalistic tool to configure the routing of a local area network'
+pkgdesc='The Awareness Hub for the Internet of Things'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/dyne/dowse'
 license=('GPL')
-depends=('zsh' 'hiredis' 'jemalloc' 'libltdl' 'libsodium' 'ldns' 'libnetfilter_queue' 'uuid' 'cmake' 'liblo' 'nmap' 'python-flask' 'python-redis' 'xmlstarlet' 'wget')
-makedepends=('git')
+depends=('zsh' 'hiredis' 'jemalloc' 'libltdl' 'libsodium' 'ldns' 'libnetfilter_queue' 'uuid' 'liblo' 'nmap' 'python-flask' 'python-redis' 'xmlstarlet')
+makedepends=('git' 'cmake' 'wget')
 conflicts=('dowse')
 provides=('dowse')
 backup=('etc/dowse/network.dist' 'etc/dowse/settings.dist')
