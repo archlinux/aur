@@ -2,7 +2,7 @@
 
 pkgname=collabora-online-server-nodocker
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -45,7 +45,7 @@ source=(
   tmpfiles
 )
 sha1sums=(
-  'c3403b3e7867cfea485f0fd0cd752ed5632ee4fd'
+  'SKIP'
   '3452d27a4c2dd0e6eee4c1c30302fb9b25eac9b8'
   '68ac242ad285eeeca07cb486c22dfbf3a658fe81'
   'fe998836dbbd5c153de77d4ea877f25719dae304'
