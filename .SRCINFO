@@ -7,6 +7,7 @@ pkgbase = gumbo-gq-git
 	makedepends = cmake
 	makedepends = git
 	depends = gumbo-git
+	depends = boost
 	source = gumbo-gq::git://github.com/TechnikEmpire/GQ.git
 	source = 0001-Add-CMake-install.patch
 	md5sums = SKIP

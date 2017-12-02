@@ -8,7 +8,7 @@ url=""
 arch=("x86_64")
 license=("MIT")
 makedepends=("cmake" "git")
-depends=("gumbo-git")
+depends=("gumbo-git" "boost")
 
 source=(
   "${pkgname%-git}"::"git://github.com/TechnikEmpire/GQ.git"
