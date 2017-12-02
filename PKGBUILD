@@ -1,8 +1,8 @@
-# Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 # Contributor: Giorgio Lando <patroclo7@gmail.com>
 # Contributor: Leslie P. Polzer <polzer@gnu.org>
 # Contributor: Mark Pustjens <pustjens@dds.nl>
+# Contributor: Tom Tobin <archlinux@tomxtobin.com>
 
 _pkgname=isync
 pkgname=$_pkgname-git
