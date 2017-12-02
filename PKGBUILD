@@ -1,8 +1,8 @@
 # Maintainer: Ricky Liou <rliou92@gmail.com>
 pkgname=umonitor-git
 _gitname=umonitor
-pkgver=20170805
-pkgrel=2
+pkgver=r146.e8b76d3
+pkgrel=1
 pkgdesc="Dynamic monitor configuration"
 arch=('i686' 'x86_64')
 url="https://github.com/rliou92/umonitor"
