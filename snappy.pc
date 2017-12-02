@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: snappy
+Description: A fast compression/decompression library
+Version: 1.1.4
+Libs: -L${libdir} -lsnappy
+Cflags: -I${includedir}
