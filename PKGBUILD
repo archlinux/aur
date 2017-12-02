@@ -1,7 +1,7 @@
-# Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Contributor: Tom Tobin <archlinux@tomxtobin.com>
 
 pkgname=texinfo-legacy
 pkgver=4.13a
