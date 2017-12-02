@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='QML based X11 and Wayland display manager'
 arch=('x86_64')
 url='http://github.com/sddm/sddm'
@@ -18,7 +18,7 @@ provides=('display-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         sddm.sysusers sddm.tmpfiles)
 sha256sums=('83a34a5f7a5af5e62f0c1bb8a9ce79c7c0ee55b3e0a9bb7ca437dc42f8ce4292'
-            '421d6d137a32b7a749427f4ab770e5adeef7dac66b138ab6e216ddc0cf4e2cb6'
+            '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'
             'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677')
 
 prepare() {
