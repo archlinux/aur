@@ -1,0 +1,22 @@
+pkgbase = daedalus
+	pkgdesc = Cryptocurrency wallet
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/input-output-hk/daedalus
+	arch = any
+	license = MIT
+	makedepends = asar
+	makedepends = git
+	makedepends = daedalus-bridge
+	makedepends = npm
+	makedepends = python2
+	depends = electron
+	source = git+https://github.com/input-output-hk/daedalus.git#commit=1490060fbcbaebba59fae5e10f9d96043c1c1309
+	source = daedalus.desktop
+	source = daedalus.js
+	sha256sums = SKIP
+	sha256sums = 965733a8cdbd1f983ce66413908da6da1ebfaa9e73e5a949620aa6347d2db294
+	sha256sums = 8e2b172d2ebcf172135d9fffb25b8c2ab0319e9abbbba0f0827381e9bd043cab
+
+pkgname = daedalus
+

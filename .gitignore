@@ -1,0 +1,4 @@
+/daedalus/
+/*.pkg.tar.*
+/pkg/
+/src/

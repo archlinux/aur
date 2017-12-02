@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Daedalus
+GenericName=Wallet
+Comment=Cryptocurrency Wallet
+Icon=daedalus
+Exec=daedalus
+Categories=Finance;GTK;Network;P2P;
+StartupNotify=true
