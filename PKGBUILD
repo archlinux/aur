@@ -8,10 +8,8 @@ arch=('i686' 'x86_64')
 url='https://github.com/getreu/grpn'
 license=('GPL')
 depends=('gtk2')
-source=($pkgname-$pkgver.tar.gz::https://github.com/getreu/$pkgname/archive/v${pkgver}.tar.gz
-        $pkgname.desktop)
-sha256sums=('c786ac498f6038079a9e66d3a9130ffd152c4436ebe6598ca213b813b2582fc0'
-            '2c0f7685e7423e14f93c38fca951b8497009da4705f4b629f01c4048b32697ab')
+source=($pkgname-$pkgver.tar.gz::https://github.com/getreu/$pkgname/archive/v${pkgver}.tar.gz)
+sha256sums=('c786ac498f6038079a9e66d3a9130ffd152c4436ebe6598ca213b813b2582fc0')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver/src
@@ -26,7 +24,7 @@ package() {
   install -Dm644 $pkgname.1 "${pkgdir}"/usr/share/man/man1/$pkgname.1
 
 #.desktop file + icon
-  install -D -m644 "${srcdir}"/$pkgname.desktop \
+  install -D -m644 "${srcdir}"/$pkgname-$pkgver/src/debian/$pkgname.desktop \
     "${pkgdir}"/usr/share/applications/$pkgname.desktop
   install -D -m644 "${srcdir}"/$pkgname-$pkgver/src/icon.png \
     "${pkgdir}"/usr/share/pixmaps/$pkgname.png
