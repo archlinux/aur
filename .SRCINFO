@@ -1,0 +1,16 @@
+pkgbase = python2-flawfinder
+	pkgdesc = a program that examines source code looking for security weaknesses
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = http://www.dwheeler.com/flawfinder
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	provides = flawfinder
+	options = !emptydirs
+	source = http://www.dwheeler.com/flawfinder/flawfinder-2.0.4.tar.gz
+	sha256sums = 43ffe3bd19cafbc4f24c53c6d80810297ebfbf9a72b693e58e59775813ee66ec
+
+pkgname = python2-flawfinder
+
