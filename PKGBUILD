@@ -2,6 +2,7 @@
 pkgname=tc-twitch-git
 _pkgname=tc-twitch
 _realname=tc
+_icons_dir="additional-icons"
 pkgver=10.2.0.r16.g0e5ed56
 pkgrel=1
 pkgdesc="The chat client for Twitch™"
@@ -11,8 +12,9 @@ license=('custom')
 provides=($_pkgname)
 conflicts=($_pkgname)
 makedepends=('git' 'npm')
-source=("$_pkgname.desktop" "$pkgname::git+https://github.com/mccxiv/tc.git")
+source=("$_pkgname.desktop" "$_icons_dir.tar.gz" "$pkgname::git+https://github.com/mccxiv/tc.git")
 md5sums=('72e3fe4d7076cd6e7c26d5d3819b1c0a'
+         '3c4992d5dcc6f5e2fb212fa95e96e99f'
          'SKIP')
 
 pkgver() {
@@ -44,4 +46,8 @@ package() {
   # icons
   install -Dm644 $srcdir/$pkgname/src/assets/icon16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/$_pkgname.png
   install -Dm644 $srcdir/$pkgname/src/assets/icon256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png
+  # additional icons
+  for i in 22 24 32 36 48 64 72 96 128 192; do
+	install -Dm644 $srcdir/$_icons_dir/icon$i.png $pkgdir/usr/share/icons/hicolor/$ix$i/apps/$_pkgname.png
+  done 
 }
