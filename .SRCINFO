@@ -1,15 +1,13 @@
 pkgbase = microchip-libraries-for-applications
 	pkgdesc = Microchip Libraries for Applications (Current)
 	pkgver = v2017_03_06
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.microchip.com/MLA
 	install = microchip-libraries-for-applications.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = fakechroot
-	depends = lib32-glibc
-	depends = lib32-fakeroot
 	optdepends = java-runtime: Graphics and TCP/IP utilities support
 	options = !strip
 	options = libtool
@@ -20,8 +18,9 @@ pkgbase = microchip-libraries-for-applications
 	source = LICENSE
 	md5sums = fe71f62784eb5c63f5c8bf2a56686573
 	md5sums = a79e3095ffcc446517b27707c8a60d7b
-	source_x86_64 = fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/
-	md5sums_x86_64 = SKIP
+	depends_x86_64 = lib32-glibc
+	makedepends_x86_64 = lib32-fakechroot
+	makedepends_x86_64 = lib32-fakeroot
 
 pkgname = microchip-libraries-for-applications
 
