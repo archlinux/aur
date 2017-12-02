@@ -5,7 +5,7 @@
 
 _pkgname=lmms
 pkgname=lmms-qt5-git
-pkgver=v1.2.0.rc3.r148.g30020ebc8
+pkgver=v1.2.0.rc4.r248.g03e988960
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio (Qt5 Version).'
 url='http://lmms.io'
@@ -20,8 +20,9 @@ optdepends=('wine: Windows VST support (experimental)'
             'sdl_sound: Optional SDL audio backend'
             'pulseaudio: Optional PulseAudio backend'
             'oss: Optional OSS backend'
-            'libsoundio: For soundio support')
-makedepends=('qt5-tools' 'git' 'cmake' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib')
+            'libsoundio: For soundio support'
+            'lame: For exporting MP3 format')
+makedepends=('qt5-tools' 'git' 'cmake' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib' 'lame')
 options=('!strip')
 provides=('lmms')
 conflicts=('lmms' 'lmms-git')
@@ -33,10 +34,14 @@ pkgver() {
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  git submodule update --init --recursive
+}
+
 build() {
   cd -- "$srcdir/$_pkgname"
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_QT5=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
-  make -j$(nproc)
+  make
 }
 
 package() {
