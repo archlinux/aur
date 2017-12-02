@@ -1,4 +1,4 @@
-# Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
+# Contributor: Tom Tobin <archlinux@tomxtobin.com>
 
 pkgname=rocker-compose
 pkgver=0.1.6
