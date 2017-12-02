@@ -1,0 +1,14 @@
+pkgbase = revinetd
+	pkgdesc = revinetd, tcp reverse tunnel (TCP change of gender)
+	pkgver = v1.0.2.0.gf81f000
+	pkgrel = 1
+	url = http://revinetd.sourceforge.net
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	options = !buildflags
+	source = git+https://github.com/archimedepitagorico/revinetd.git#tag=v1.0.2
+	sha1sums = SKIP
+
+pkgname = revinetd
+
