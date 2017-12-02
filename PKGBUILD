@@ -2,25 +2,24 @@
 
 pkgname=microchip-libraries-for-applications-legacy
 pkgver=v2013_06_15
-pkgrel=3
+pkgrel=4
 pkgdesc="Microchip Libraries for Applications (Legacy)"
 arch=('i686' 'x86_64')
 url="http://www.microchip.com/MLA"
 license=('custom')
 optdepends=('java-runtime: Graphics and TCP/IP utilities support')
 makedepends=('fakechroot')
-depends_x86_64=('lib32-glibc' 'lib32-fakeroot')
+makedepends_x86_64=('lib32-fakechroot' 'lib32-fakeroot')
+depends_x86_64=('lib32-glibc')
 options=(!strip libtool staticlibs emptydirs !zipman)
 install=$pkgname.install
 _instdir=/opt/microchip_solutions
 _installer=${pkgname//-legacy/}-${pkgver//_/-}-linux-installer.run
 source=(http://ww1.microchip.com/downloads/en/softwarelibrary/$_installer
         LICENSE)
-source_x86_64=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
 
 md5sums=('d3d6597c7aebe122325dd491b41022d6'
          'dd2eec20ed33d2924fa301cea78467fa')
-md5sums_x86_64=('SKIP')
 
 package() {
   cd "$srcdir"
@@ -48,7 +47,6 @@ package() {
 
   # do not use $pkgdir$_instdir as installation directory because of the fakechroot environment
   echo "#!/bin/bash
-  LD_LIBRARY_PATH=\"$srcdir/usr/lib/libfakeroot/fakechroot\":\$LD_LIBRARY_PATH
   ./$_installer --prefix "$_instdir" --mode text < inst_input &> /dev/null || true"> "$pkgdir/chroot_input.sh"
   chmod 0755 "$pkgdir/chroot_input.sh"
 
