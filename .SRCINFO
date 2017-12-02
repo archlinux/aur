@@ -1,0 +1,18 @@
+pkgbase = rpi-rgb-led-matrix-git
+	pkgdesc = C++ library to draw on led matrix. Python, C, C++ APIs.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/hzeller
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL
+	makedepends = python
+	makedepends = python-setuptools
+	optdepends = python
+	optdepends = python-pillow
+	source = git+https://github.com/hzeller/rpi-rgb-led-matrix
+	md5sums = SKIP
+
+pkgname = rpi-rgb-led-matrix-git
+
