@@ -5,19 +5,21 @@
 # Contributor: Simon Zilliken <simon____AT____zilliken____DOT____name>
 
 pkgname=paraview-salome
-pkgver=5.0.1p1
-_salomever=7.8.0
-pkgrel=2
+pkgver=5.1.2plus
+_salomever=8.3.0
+_salomepkg=DB08
+pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK - This version is built to be linked against salome modules'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('qtwebkit' 'python2' 'ffmpeg' 'boost' 'expat' 'freetype2' 'hdf5-salome' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'protobuf' 'openmpi' 'gl2ps')
+depends=('python2' 'ffmpeg' 'boost' 'expat' 'freetype2' 'hdf5-salome' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'protobuf' 'openmpi' 'gl2ps' 'qt5-x11extras' 'qt5-tools')
 makedepends=('cmake' 'mesa' 'eigen3' 'doxygen')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language' 'python2-numpy: Needed for using some filters such as "Python Calculator"')
-source=("http://files.salome-platform.org/Salome/Salome${_salomever}/SALOME-${_salomever}-OPENSOURCE-DB08.tgz"
-	"${pkgname}.png" "${pkgname}.desktop"
-	"ffmpeg3.patch" )
+source=("http://files.salome-platform.org/Salome/Salome${_salomever}/SALOME-${_salomever}-${_salomepkg}.tgz"
+	"${pkgname}.png" "${pkgname}.desktop" )
+provides=("icet")
+conflicts=("icet")
 
 options=(staticlibs)
 provides=("paraview=${pkgver:0:5}")
@@ -32,10 +34,7 @@ prepare(){
     rm -rf build
   fi
 
-  bsdtar -xf "${srcdir}/SALOME-${_salomever}-OPENSOURCE-DB08/PREREQUISITES/SOURCES/ParaView-5.0.1p1.tar.gz"
-
-  cd "${srcdir}/ParaView-${pkgver}"
-  patch -Np1 -i ../ffmpeg3.patch
+  bsdtar -xf "${srcdir}/SALOME-${_salomever}-${_salomepkg}/ARCHIVES/ParaView-${pkgver}.tar.gz"
 }
 
 build() {
@@ -56,7 +55,7 @@ build() {
   cmake_options+=" -DBUILD_TESTING:BOOL=OFF"
   cmake_options+=" -DBUILD_EXAMPLES:BOOL=OFF"
   cmake_options+=" -DBUILD_DOCUMENTATION:BOOL=OFF"
-  cmake_options+=" -DDOCUMENTATION_HTML_HELP:BOOL=ON"
+  # cmake_options+=" -DDOCUMENTATION_HTML_HELP:BOOL=ON"
 
   # verbose mode
   cmake_options+=" -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF"
@@ -85,7 +84,10 @@ build() {
   # activating VTK_RENDERING_BACKEND=OpenGL2, gl2ps on archlinux repository is
   # too old; you must use gl2ps on the package (change to OFF following option)
   cmake_options+=" -DVTK_USE_SYSTEM_GL2PS:BOOL=ON"
-  
+
+#  cmake_options+=" -DVTK_USE_SYSTEM_ICET:BOOL=ON"
+#  cmake_options+=" -Dicet_DIR:STRING=/usr/lib"
+
   ### OpenMP to speed computation of some filters
   # https://blog.kitware.com/simple-parallel-computing-with-vtksmptools-2/
   # https://blog.kitware.com/accelerated-filters-in-paraview-5/
@@ -93,10 +95,10 @@ build() {
   
   # Qt settings
   cmake_options+=" -DPARAVIEW_BUILD_QT_GUI:BOOL=ON"
-  cmake_options+=" -DPARAVIEW_QT_VERSION=4"
-  cmake_options+=" -DVTK_QT_VERSION=4"
-  cmake_options+=" -DQT_HELP_GENERATOR:STRING=/usr/bin/qhelpgenerator-qt4"
-  cmake_options+=" -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4"
+  cmake_options+=" -DPARAVIEW_QT_VERSION=5"
+  cmake_options+=" -DVTK_QT_VERSION=5"
+  cmake_options+=" -DQT_HELP_GENERATOR:STRING=/usr/bin/qhelpgenerator-qt5"
+  cmake_options+=" -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5"
 
   # Python settings
   cmake_options+=" -DPARAVIEW_ENABLE_PYTHON:BOOL=ON"
@@ -128,7 +130,7 @@ build() {
   cmake_options+=" -DHDF5_INCLUDE_DIRS:PATH=/usr/include/hdf5_18/"
   cmake_options+=" -DHDF5_C_COMPILER_EXECUTABLE:FILEPATH=/usr/bin/h5cc_18"
   cmake_options+=" -DHDF5_C_LIBRARY_hdf5:FILEPATH=/usr/lib/hdf5_18/libhdf5.so"
-  cmake_options+=" -DHDF5_CXX_LIBRARY_hdf5:FILEPATH=/usr/lib/hdf5_18/libhdf5.so"
+  # cmake_options+=" -DHDF5_CXX_LIBRARY_hdf5:FILEPATH=/usr/lib/hdf5_18/libhdf5.so"
   cmake_options+=" -DHDF5_C_LIBRARY_hdf5_hl:FILEPATH=/usr/lib/hdf5_18/libhdf5_hl.so"
   cmake_options+=" -DHDF5_DIFF_EXECUTABLE:FILEPATH=/usr/bin/h5diff_18"
 
@@ -157,9 +159,9 @@ build() {
   cmake_options+=" -DFREETYPE_LIBRARY:STRING=/usr/lib/libfreetype.so"
 
   # Extra options since OCC presta to improve Paraview for Salome
-  cmake_options+=" -DPARAVIEW_USE_3DGLYPH:BOOL=OFF"
-  cmake_options+=" -DPARAVIEW_USE_EXTENDED_OPENFILEDIALOG:BOOL=ON"
-  cmake_options+=" -DPARAVIEW_USE_TIMECONTROL_SLIDER:BOOL=ON"
+  # cmake_options+=" -DPARAVIEW_USE_3DGLYPH:BOOL=OFF"
+  # cmake_options+=" -DPARAVIEW_USE_EXTENDED_OPENFILEDIALOG:BOOL=ON"
+  # cmake_options+=" -DPARAVIEW_USE_TIMECONTROL_SLIDER:BOOL=ON"
 
   # Extra options (switch off non-used Paraview plug-ins)
   cmake_options+=" -DPARAVIEW_BUILD_PLUGIN_Moments:BOOL=OFF"
@@ -216,7 +218,6 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   desktop-file-install --dir="${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
 }
-md5sums=('53c07c80009555d1ffc5e0bf13cfbf20'
+md5sums=('0d355acf763aa054e064b2495579ae8c'
          'db623002bc71a257ddfdd0c9c7b14c3f'
-         'e3ba22be644f91da7018f429c3b7dd39'
-         'ec32574de308796bc8086a896eb8c2f9')
+         'e3ba22be644f91da7018f429c3b7dd39')
