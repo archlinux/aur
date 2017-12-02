@@ -1,4 +1,4 @@
-# Maintainer: Tom Tobin <tomxtobin@tomxtobin.com>
+# Contributor: Tom Tobin <archlinux@tomxtobin.com>
 
 pkgname=dep
 pkgver=0.3.2
