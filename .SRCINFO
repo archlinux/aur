@@ -1,6 +1,6 @@
 pkgbase = linphone-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 3.12.0.r226.g8d4d87548
+	pkgver = 3.12.0.r273.g20efb4ad4
 	pkgrel = 1
 	url = http://www.linphone.org
 	install = linphone.install
@@ -34,7 +34,7 @@ pkgbase = linphone-git
 	provides = linphone
 	conflicts = linphone
 	options = !emptydirs
-	source = git+https://github.com/BelledonneCommunications/linphone.git#commit=8d4d875486e7263354c12dedb3a3b589c52a9bda
+	source = git+https://github.com/BelledonneCommunications/linphone.git
 	sha256sums = SKIP
 
 pkgname = linphone-git
