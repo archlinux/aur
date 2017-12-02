@@ -2,7 +2,7 @@
 pkgname=tc-twitch-git
 _pkgname=tc-twitch
 _realname=tc
-pkgver=10.2.0.r0.ge8ed5df
+pkgver=10.2.0.r16.g0e5ed56
 pkgrel=1
 pkgdesc="The chat client for Twitch™"
 arch=('any')
@@ -38,7 +38,7 @@ build() {
 package() {
   install -d "$pkgdir"/{usr/bin,opt}
   cp -a $srcdir/$pkgname/dist/linux-unpacked $pkgdir/opt/$_pkgname
-  ln -s $pkgdit/opt/$_pkgname/Tc $pkgdir/usr/bin/tc-twitch
+  ln -s $pkgdit/opt/$_pkgname/tc $pkgdir/usr/bin/tc-twitch
   install -Dm644 $srcdir/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
   install -Dm644 $srcdir/$pkgname/LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
   # icons
