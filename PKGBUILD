@@ -1,4 +1,4 @@
-# Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
+# Contributor: Tom Tobin <archlinux@tomxtobin.com>
 
 pkgname=virtualgo
 _reponame=vg
