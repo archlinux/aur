@@ -1,7 +1,7 @@
 pkgbase = kde-cdemu-manager
 	pkgdesc = KDE CDEmu Manager is a simple frontend for CDEmu.
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.linux-apps.com/p/998461
 	arch = i686
 	arch = x86_64

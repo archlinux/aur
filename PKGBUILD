@@ -1,7 +1,7 @@
 pkgname=kde-cdemu-manager
 _pkgname=kde_cdemu
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE CDEmu Manager is a simple frontend for CDEmu."
 arch=('i686' 'x86_64')
 url="https://www.linux-apps.com/p/998461"
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` \
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         ../kde_cdemu
 
