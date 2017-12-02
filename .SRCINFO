@@ -1,15 +1,15 @@
 pkgbase = matcha-gtk-theme
 	pkgdesc = A flat design theme for GNOME, MATE, Openbox, Unity, XFCE, Budgie
-	pkgver = 2.6
-	pkgrel = 2
+	pkgver = 2.7
+	pkgrel = 1
 	url = https://www.gnome-look.org/p/1187179
 	arch = any
 	license = GPL3
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = gtk3
-	source = matcha-gtk-theme-2.6.tar.gz::https://dl.opendesktop.org/api/files/download/id/1511178505/Matcha-Theme.tar.xz
-	sha256sums = 7c9205a6bd267239866778815a073c3197589b31f1abf8ad4d6eaf9ee8d6d3cb
+	source = matcha-gtk-theme-2.7.tar.gz::https://dl.opendesktop.org/api/files/download/id/1512132306/Matcha-Theme.tar.xz
+	sha256sums = eb569f28676a0d39832e7e038a2de1a4a56cd7a3821c25e000cdb77cadbdfee9
 
 pkgname = matcha-gtk-theme
 
