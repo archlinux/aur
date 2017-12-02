@@ -4,12 +4,12 @@
 
 pkgname=simon
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source speech recognition program for replacing mouse and keyboard"
 arch=('i686' 'x86_64')
 url="http://simon.kde.org/"
 license=('GPL')
-depends=('portaudio' 'qwt' 'kdebase-runtime' 'kdepimlibs')
+depends=('portaudio' 'qwt-qt4' 'kdebase-runtime' 'kdepimlibs')
 makedepends=('automoc4' 'cmake' 'flex' 'docbook-xml' 'boost')
 optdepends=('htk: create and modify the speech models'
             'julius: for speech recognition')
@@ -20,7 +20,7 @@ sha256sums=('8d55bc3f607a89e15efd51b844d93daf67d9967ad243f54efae324754859342d')
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
 
-  mkdir -p build
+  install -d build
   cd build
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DQT_QMAKE_EXECUTABLE=qmake-qt4 ..
