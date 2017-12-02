@@ -19,7 +19,7 @@ build() {
   mkdir -p build
   cd build
   qmake-qt5 -r ..
-  make -j
+  make
 }
 
 package() {
