@@ -7,7 +7,7 @@
 
 pkgname=v8
 pkgver=6.4.388.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/v8/"
@@ -20,14 +20,12 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
         "v8_libbase.pc"
         "v8_libplatform.pc"
 	"d8"
-	"gcc7.patch"
 	"ctest.patch")
 sha256sums=('SKIP'
             '3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
-            '3a67793d1a7a93cec00f2693f11e79749364d2541edfb99d0be3f9c132382d1f'
             'db2f7e8b37d99a396b488d7657d6febb475371d42ec30fff8ffbb69983a9a09f')
 
 
@@ -178,11 +176,14 @@ package() {
 
   install -d ${pkgdir}/usr/lib/v8
 
+  install -Dm755 $OUTFLD/cctest ${pkgdir}/usr/lib/v8/cctest
   install -Dm755 $OUTFLD/d8 ${pkgdir}/usr/lib/v8/d8
 
-  install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/libv8.so
+  install -Dm755 $OUTFLD/libc++.so ${pkgdir}/usr/lib/v8/libc++.so
+  install -Dm755 $OUTFLD/libv8_for_testing.so ${pkgdir}/usr/lib/libv8_for_testing.so
   install -Dm755 $OUTFLD/libv8_libbase.so ${pkgdir}/usr/lib/libv8_libbase.so
   install -Dm755 $OUTFLD/libv8_libplatform.so ${pkgdir}/usr/lib/libv8_libplatform.so
+  install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/libv8.so
 
   install -Dm755 $OUTFLD/natives_blob.bin ${pkgdir}/usr/lib/v8/natives_blob.bin
   install -Dm755 $OUTFLD/snapshot_blob.bin ${pkgdir}/usr/lib/v8/snapshot_blob.bin
