@@ -1,11 +1,11 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=salome-gui
-pkgver=7.8.0
-pkgrel=4
+pkgver=8.3.0
+pkgrel=1
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - GUI Module"
 url="http://www.salome-platform.org"
-depends=("salome-kernel>=${pkgver}" "salome-kernel<${pkgver:0:2}$((${pkgver:2:1}+1)).0" "qt4" "python2-pyqt4" "opencascade>=6.9.0" "qwt" "paraview-salome=5.0.1p1" "sip>=4.19.0")
+depends=("salome-kernel>=${pkgver}" "salome-kernel<${pkgver:0:2}$((${pkgver:2:1}+1)).0" "qt5-base" "python2-pyqt5" "opencascade7" "qwt" "paraview-salome=5.1.2plus" "sip>=4.19.0")
 makedepends=('doxygen' 'swig2' 'boost' 'optipng' 'python2-sphinx')
 arch=('i686' 'x86_64')
 conflicts=()
@@ -13,13 +13,13 @@ provides=()
 license=('LGPL')
 source=("${pkgname}.sh" "salome.desktop" "sip-4.19.patch" "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz")
 
-_source=GUI_SRC
+_source=GUI_SRC_${pkgver}
 #_source=gui
 _basedir=/opt/salome
 _installdir=${_basedir}
 _profiledir=${_basedir}/env.d
 _paraviewrootdir=/usr
-_paraviewver=5.0
+_paraviewver=5.1
 
 prepare(){
 #  msg "Connecting to git server..."
@@ -31,20 +31,19 @@ prepare(){
 #  git checkout V${pkgver:0:1}_${pkgver:2:1}_${pkgver:4:1}
 #  msg "GIT checkout done or server timeout"
 
-  cd "${srcdir}/${_source}"
 
-  # error "sip: Q_PID is undefined"
-  sed -e 's|from PyQt4 import pyqtconfig;|from PyQt4 import QtCore;|' \
-      -i adm_local/cmake_files/FindPyQt4.cmake
-  sed -e "s|pyqtconfig.Configuration().pyqt_sip_flags|QtCore.PYQT_CONFIGURATION['sip_flags']|" \
-      -i adm_local/cmake_files/FindPyQt4.cmake
-
-  # pyuic4 -> python2-pyuic4
-  sed -e 's|pyuic4|python2-pyuic4|' \
-      -i adm_local/cmake_files/FindPyQt4.cmake
-
+  cd "${srcdir}"
+  
   # DESTDIR
-  sed -e 's|\\"\${CMAKE_INSTALL_PREFIX}/\\\${INSTALL_TS_DIR}\\"|\\"\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\\\${INSTALL_TS_DIR}\\"|' -i adm_local/cmake_files/UseQt4Ext.cmake
+  sed -e 's|\\"\${CMAKE_INSTALL_PREFIX}/\\\${INSTALL_PYIDL_DIR}\\"|\\"\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\\\${INSTALL_PYIDL_DIR}\\"|' -i CONFIGURATION_${pkgver}/cmake/UseOmniORB.cmake
+
+  # pyuic5 -> python2-pyuic5
+  sed -e 's|pyuic5|python2-pyuic5|' \
+      -i "${srcdir}/CONFIGURATION_${pkgver}/cmake/FindPyQt5.cmake"
+  sed -e 's|pyrcc5|python2-pyrcc5|' \
+      -i "${srcdir}/CONFIGURATION_${pkgver}/cmake/FindPyQt5.cmake"
+
+  cd "${srcdir}/${_source}"
 
   # python -> python2
   for _FILE in `grep -Rl "/usr/bin/env python" * `
@@ -72,7 +71,6 @@ build() {
   # generic options
   cmake_options+=" -DCMAKE_BUILD_TYPE=Release"
   cmake_options+=" -DCMAKE_INSTALL_PREFIX=${_installdir}"
-  cmake_options+=" -DCMAKE_CXX_STANDARD=98"
 
   # debug options
   cmake_options+=" -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF"
@@ -85,13 +83,24 @@ build() {
   cmake_options+=" -DSALOME_USE_MPI:BOOL=ON"
 
   # qwt
-  cmake_options+=" -DQWT_ROOT_DIR=/usr"
+  cmake_options+=" -DQWT_INCLUDE_DIR=/usr/include/qwt"
+  cmake_options+=" -DQWT_LIBRARY=/usr/lib/libqwt.so"
 
   # opencascade
-  cmake_options+=" -DCAS_ROOT_DIR=/opt/opencascade"
+  cmake_options+=" -DCAS_ROOT_DIR=/opt/opencascade7"
 
   # sip
   cmake_options+=" -DSIP_ROOT_DIR=/usr"
+
+  # Qt
+  cmake_options+=" -DQT5_ROOT_DIR=/usr"
+  for _QT_CMP in ui Core Gui Widgets Network Xml OpenGL PrintSupport Help Test Sql Sensors Positioning Quick Qml Multimedia MultimediaWidgets WebChannel UiTools X11Extras
+  do
+    cmake_options+=" -DQt5${_QT_CMP}_DIR=/usr/lib64/cmake/Qt5${_QT_CMP}"
+  done
+
+  # pyqt
+  cmake_options+=" -DPYQT5_ROOT_DIR=/usr"
 
   # VTK
   cmake_options+=" -DVTK_DIR=${_paraviewrootdir}/lib/cmake/paraview-${_paraviewver}"
@@ -112,8 +121,14 @@ build() {
   cmake_options+=" -DHDF5_C_LIBRARY_hdf5:FILEPATH=/usr/lib/hdf5_18/libhdf5.so"
   cmake_options+=" -DHDF5_DIFF_EXECUTABLE:FILEPATH=/usr/bin/h5diff_18"
   
-  cmake ${cmake_options} ..
+  # salome configuration root dir
+  cmake_options+=" -DCONFIGURATION_ROOT_DIR=${srcdir}/CONFIGURATION_${pkgver}"
 
+  cmake_options+=" -DCMAKE_INSTALL_RPATH=/opt/opencascade7/lib"
+
+  cmake ${cmake_options} ..
+  
+  # -Wdev --trace 
   make
 }
 
@@ -147,7 +162,7 @@ package() {
   ln -s ${_installdir}/share/salome/resources/gui/SalomeApp.xml ${pkgdir}${_installdir}
   ln -s ${_installdir}/share/salome/resources/gui/LightApp.xml ${pkgdir}${_installdir}
 }
-md5sums=('fd7abc074e23a95ed3dabe841faa7586'
+md5sums=('c8d47db1bf99e03fcd48b6aa375de206'
          'a102063b779e332914ef0b73843e928a'
-         '9f7b52a2a332681cdd90bf3094dd1ed7'
-         '0f6de10ad9d9c646fce3ca21a7dab46a')
+         '866b71d9d8efc02245ac4f9c0cff7bbb'
+         'f571984862eb4215dc546edb2464ab4d')
