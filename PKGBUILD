@@ -5,7 +5,7 @@ pkgdesc="A smart pointers library for the C programming language"
 arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/libcsptr.git"
 license=('MIT')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=('libcsptr')
 conflicts=('libcsptr')
 
