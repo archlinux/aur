@@ -1,17 +1,17 @@
 pkgbase = perl-http-headers-fast
 	pkgdesc = A faster implementation of HTTP::Headers
-	pkgver = 0.19
+	pkgver = 0.21
 	pkgrel = 1
 	url = https://metacpan.org/release/HTTP-Headers-Fast
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-requires
-	makedepends = perl-module-build>=0.38
+	makedepends = perl-module-build-tiny>=0.035
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOKUHIROM/HTTP-Headers-Fast-0.19.tar.gz
-	md5sums = c9493ff2fe0e1b9009d9add281a94be4
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOKUHIROM/HTTP-Headers-Fast-0.21.tar.gz
+	md5sums = 024fde06808fc47db61a62655afacb41
 
 pkgname = perl-http-headers-fast
 

@@ -9,7 +9,7 @@ pkgdesc='A faster implementation of HTTP::Headers'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-makedepends=('perl-module-build>=0.38')
+makedepends=('perl-module-build-tiny>=0.035')
 depends=('perl')
 checkdepends=('perl-test-requires')
 source=([% source %])
