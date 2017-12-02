@@ -1,6 +1,6 @@
 pkgbase = copay-bin
 	pkgdesc = Copay is a secure bitcoin wallet platform for both desktop and mobile devices.
-	pkgver = 3.9.0
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://github.com/bitpay/copay
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = copay-bin
 	provides = copay
 	conflicts = copay
 	options = !strip
-	source = Copay-linux.zip::https://github.com/bitpay/copay/releases/download/v3.9.0/Copay-linux.zip
+	source = Copay-linux.zip::https://github.com/bitpay/copay/releases/download/v3.9.1/Copay-linux.zip
 	source = copay.desktop
-	md5sums = 38b30c656c3b07763d0f70b930a86e82
+	md5sums = b3dbe4b91950bdc56bc8f51f155e46b4
 	md5sums = e05610d1b08a2c688efccf9d687b8b92
 
 pkgname = copay-bin
