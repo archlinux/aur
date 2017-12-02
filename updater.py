@@ -22,6 +22,20 @@ import subprocess
 
 lang = "it"
 local_arch = "x86_64"
+current_status = 0
+old_status = 0
+
+try:
+    old_status = int(open("status").read())
+except:
+    pass
+
+def save_status():
+    global current_status
+    current_status += 1
+    f = open("status", "w")
+    f.write(str(current_status))
+    f.close()
 
 class FirefoxDeveloperVersionExtractor(HTMLParser):
     td_count = 0
@@ -80,87 +94,107 @@ parser.feed(str(f.read()))
 
 if old_version == parser.version:
     print("No new versions available\n")
-    exit(0)
+    if old_status == 0:
+        exit(0)
 
-print("New version available: {}\n".format(parser.version))
+if old_status <= current_status:
+    print("New version available: {}\n".format(parser.version))
 
-#download new version files
-print("Downloading new version...\n")
-os.system("curl https://ftp.mozilla.org/pub/devedition/releases/{0}/linux-i686/{1}/firefox-{0}.tar.bz2 > firefox-i686-{0}.tar.bz2".format(parser.version, lang))
-os.system("curl https://ftp.mozilla.org/pub/devedition/releases/{0}/linux-x86_64/{1}/firefox-{0}.tar.bz2 > firefox-x86_64-{0}.tar.bz2".format(parser.version, lang))
-os.system("curl https://ftp.mozilla.org/pub/devedition/releases/{0}/SHA512SUMS.asc > SHA512SUMS.asc".format(parser.version))
-os.system("curl https://ftp.mozilla.org/pub/devedition/releases/{0}/SHA512SUMS > SHA512SUMS".format(parser.version))
+    #download new version files
+    print("Downloading new version...\n")
+    os.system("curl https://ftp.mozilla.org/pub/devedition/releases/{0}/linux-i686/{1}/firefox-{0}.tar.bz2 > firefox-i686-{0}.tar.bz2".format(parser.version, lang))
+    os.system("curl https://ftp.mozilla.org/pub/devedition/releases/{0}/linux-x86_64/{1}/firefox-{0}.tar.bz2 > firefox-x86_64-{0}.tar.bz2".format(parser.version, lang))
+    os.system("curl https://ftp.mozilla.org/pub/devedition/releases/{0}/SHA512SUMS.asc > SHA512SUMS.asc".format(parser.version))
+    os.system("curl https://ftp.mozilla.org/pub/devedition/releases/{0}/SHA512SUMS > SHA512SUMS".format(parser.version))
+    
+save_status()
 
-#check SHA512SUMS file's signature
-print("\nChecking SHA512SUMS file's signature...\n")
-subprocess.run(["gpg", "--verify", "SHA512SUMS.asc"], check=True)
+if old_status <= current_status:
+    #check SHA512SUMS file's signature
+    print("\nChecking SHA512SUMS file's signature...\n")
+    subprocess.run(["gpg", "--verify", "SHA512SUMS.asc"], check=True)
 
-#check SHA512SUM
-print("\nChecking SHA512SUM...\n")
-#calculate SHA512SUM
-sha512sum_i686 = str(subprocess.run(["sha512sum", "firefox-i686-{0}.tar.bz2".format(parser.version)], stdout=subprocess.PIPE).stdout, encoding='utf-8').split(" ")[0]
-sha512sum_x86_64 = str(subprocess.run(["sha512sum", "firefox-x86_64-{0}.tar.bz2".format(parser.version)], stdout=subprocess.PIPE).stdout, encoding='utf-8').split(" ")[0]
+    #check SHA512SUM
+    print("\nChecking SHA512SUM...\n")
+    #calculate SHA512SUM
+    sha512sum_i686 = str(subprocess.run(["sha512sum", "firefox-i686-{0}.tar.bz2".format(parser.version)], stdout=subprocess.PIPE).stdout, encoding='utf-8').split(" ")[0]
+    sha512sum_x86_64 = str(subprocess.run(["sha512sum", "firefox-x86_64-{0}.tar.bz2".format(parser.version)], stdout=subprocess.PIPE).stdout, encoding='utf-8').split(" ")[0]
 
-#compare SHA512SUMs of downloaded files with those in SHA512SUMS file
-sha512sum_i686_ok = False
-sha512sum_x86_64_ok = False
-sha512sum_file = open("SHA512SUMS")
-line = sha512sum_file.readline()
-while len(line) > 0:
-    if line.count(" linux-i686/{0}/firefox-{1}.tar.bz2".format(lang, parser.version)) > 0:
-        if line.split(" ")[0] == sha512sum_i686:
-            sha512sum_i686_ok = True
-    if line.count(" linux-x86_64/{0}/firefox-{1}.tar.bz2".format(lang, parser.version)) > 0:
-        if line.split(" ")[0] == sha512sum_x86_64:
-            sha512sum_x86_64_ok = True
+    #compare SHA512SUMs of downloaded files with those in SHA512SUMS file
+    sha512sum_i686_ok = False
+    sha512sum_x86_64_ok = False
+    sha512sum_file = open("SHA512SUMS")
     line = sha512sum_file.readline()
+    while len(line) > 0:
+        if line.count(" linux-i686/{0}/firefox-{1}.tar.bz2".format(lang, parser.version)) > 0:
+            if line.split(" ")[0] == sha512sum_i686:
+                sha512sum_i686_ok = True
+        if line.count(" linux-x86_64/{0}/firefox-{1}.tar.bz2".format(lang, parser.version)) > 0:
+            if line.split(" ")[0] == sha512sum_x86_64:
+                sha512sum_x86_64_ok = True
+        line = sha512sum_file.readline()
 
-if not sha512sum_i686_ok or not sha512sum_x86_64_ok:
-    exit(1)
+    if not sha512sum_i686_ok or not sha512sum_x86_64_ok:
+        exit(1)
 
-#update PKGBUILD
-print("Updating PKGBUILD...\n")
-buf = ""
-pkgbuild = open("PKGBUILD")
-line = pkgbuild.readline()
-while len(line) > 0:
-    if line.startswith("pkgver="):
-        buf += "pkgver={}\n".format(parser.version)
-    elif line.startswith("sha512sums_i686="):
-        buf += "sha512sums_i686=('{}')\n".format(sha512sum_i686)
-    elif line.startswith("sha512sums_x86_64="):
-        buf += "sha512sums_x86_64=('{}')\n".format(sha512sum_x86_64)
-    else:
-        buf += line
+save_status()
+
+if old_status <= current_status:
+    #update PKGBUILD
+    print("Updating PKGBUILD...\n")
+    buf = ""
+    pkgbuild = open("PKGBUILD")
     line = pkgbuild.readline()
-pkgbuild.close()
+    while len(line) > 0:
+        if line.startswith("pkgver="):
+            buf += "pkgver={}\n".format(parser.version)
+        elif line.startswith("sha512sums_i686="):
+            buf += "sha512sums_i686=('{}')\n".format(sha512sum_i686)
+        elif line.startswith("sha512sums_x86_64="):
+            buf += "sha512sums_x86_64=('{}')\n".format(sha512sum_x86_64)
+        else:
+            buf += line
+        line = pkgbuild.readline()
+    pkgbuild.close()
 
-pkgbuild = open("PKGBUILD", "w")
-pkgbuild.write(buf)
-pkgbuild.close()
+    pkgbuild = open("PKGBUILD", "w")
+    pkgbuild.write(buf)
+    pkgbuild.close()
 
-#build package
-print("Building package...\n")
-subprocess.run(["makepkg"], check=True)
+save_status()
 
-#install package
-print("Installing package...\n")
-subprocess.run(["sudo", "pacman", "-U", "firefox-developer-{}-{}-{}-{}.pkg.tar.xz".format(lang, parser.version, pkgrel, local_arch)], check=True)
+if old_status <= current_status:
+    #build package
+    print("Building package...\n")
+    subprocess.run(["makepkg"], check=True)
 
-#update .SRCINFO
-print("Updating .SRCINFO...\n")
-os.system("makepkg --printsrcinfo > .SRCINFO")
+save_status()
 
-#commit changes
-print("Commiting changes...\n")
+if old_status <= current_status:
+    #install package
+    print("Installing package...\n")
+    subprocess.run(["sudo", "pacman", "-U", "firefox-developer-{}-{}-{}-{}.pkg.tar.xz".format(lang, parser.version, pkgrel, local_arch)], check=True)
 
-os.system("git add PKGBUILD .SRCINFO")
-os.system("git commit -m 'Automatic upgrade to version {}.'".format(parser.version))
-os.system("git push origin master")
+save_status()
 
-#clean big source files and built package
-subprocess.run(["rm", "firefox-i686-{0}.tar.bz2".format(parser.version)], check=True)
-subprocess.run(["rm", "firefox-x86_64-{0}.tar.bz2".format(parser.version)], check=True)
-subprocess.run(["rm", "firefox-developer-{}-{}-{}-{}.pkg.tar.xz".format(lang, parser.version, pkgrel, local_arch)], check=True)
+if old_status <= current_status:
+    #update .SRCINFO
+    print("Updating .SRCINFO...\n")
+    os.system("makepkg --printsrcinfo > .SRCINFO")
 
-print("DONE")
+    #commit changes
+    print("Commiting changes...\n")
+
+    os.system("git add PKGBUILD .SRCINFO updater.py")
+    os.system("git commit -m 'Automatic upgrade to version {}.'".format(parser.version))
+    os.system("git push origin master")
+
+    #clean big source files and built package
+    subprocess.run(["rm", "firefox-i686-{0}.tar.bz2".format(parser.version)], check=True)
+    subprocess.run(["rm", "firefox-x86_64-{0}.tar.bz2".format(parser.version)], check=True)
+    subprocess.run(["rm", "firefox-developer-{}-{}-{}-{}.pkg.tar.xz".format(lang, parser.version, pkgrel, local_arch)], check=True)
+
+    print("DONE")
+
+current_status = -1
+save_status()
