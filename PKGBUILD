@@ -1,9 +1,9 @@
 # Maintainer: Vincent Pasquier <vincentpasquier@posteo.net>
 _pkgname=rpi-rgb-led-matrix
-pkgbase="${_pkg}"
+pkgbase="${_pkgname}"
 pkgname="${_pkgname}-git"
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library to draw on led matrix. Python, C, C++ APIs." arch=("armv7h" "armv6h" "aarch64")
 url="https://github.com/hzeller"
 license=('GPL')
