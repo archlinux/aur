@@ -2,7 +2,7 @@
 # Contributor: Arto Puranen <purcher@gmail.com>
 
 pkgname=arno-iptables-firewall
-pkgver=2.0.1g
+pkgver=2.0.2a
 pkgrel=1
 pkgdesc="A secure stateful firewall for both single and multi-homed machine"
 arch=('any')
@@ -21,22 +21,31 @@ backup=(etc/${pkgname}/firewall.conf
         etc/${pkgname}/plugins/linux-upnp-igd.conf
         etc/${pkgname}/plugins/mac-address-filter.conf
         etc/${pkgname}/plugins/multiroute.conf
+        etc/${pkgname}/plugins/nat-loopback.conf
+        etc/${pkgname}/plugins/outbound-snat.conf
+        etc/${pkgname}/plugins/parasitic-net.conf
+        etc/${pkgname}/plugins/pptp-vpn-passthrough.conf
+        etc/${pkgname}/plugins/pptp-vpn.conf
+        etc/${pkgname}/plugins/rpc.conf
         etc/${pkgname}/plugins/sip-voip.conf
         etc/${pkgname}/plugins/ssh-brute-force-protection.conf
         etc/${pkgname}/plugins/traffic-accounting.conf
         etc/${pkgname}/plugins/traffic-shaper.conf
         etc/${pkgname}/plugins/transparent-dnat.conf
         etc/${pkgname}/plugins/transparent-proxy.conf)
-source=(http://rocky.eld.leidenuniv.nl/$pkgname/${pkgname}_${pkgver}.tar.gz
-        ${pkgname}.patch)
-sha256sums=('0bafd85ddc235752250eaec0c7fdb21e530912483f6807a97f86158ed2d301f7'
+source=($pkgname-$pkgver.tar.gz::https://github.com/arno-iptables-firewall/aif/archive/${pkgver}.tar.gz
+        $pkgname.patch)
+sha256sums=('41df5f37d1d9f34398c35be2640355f841ad2902f455b3653119ae23bfb41590'
             'fbac95bced8565b00f5ff7b403579b1aaf7d386deb61c0f4a9acf50408a8200d')
 
-package() {
-  cd "${srcdir}"/${pkgname}_${pkgver}
+prepare() {
+  cd "${srcdir}"/aif-${pkgver}
 
-# patch
   patch -Np0 -i "${srcdir}"/${pkgname}.patch
+}
+
+package() {
+  cd "${srcdir}"/aif-${pkgver}
 
 # conf files
   install -d -m 0755 etc/${pkgname}/plugins/ "${pkgdir}"/etc/${pkgname}/plugins/
@@ -65,7 +74,7 @@ package() {
   install -Dm0644 share/man/man8/${pkgname}.8 "${pkgdir}"/usr/share/man/man8/${pkgname}.8
 
 # systemd script
-  install -Dm0644 "${srcdir}"/${pkgname}_${pkgver}/lib/systemd/system/${pkgname}.service \
+  install -Dm0644 "${srcdir}"/aif-${pkgver}/lib/systemd/system/${pkgname}.service \
     "${pkgdir}"/usr/lib/systemd/system/${pkgname}.service
   sed 's|local/s||g' -i "${pkgdir}"/usr/lib/systemd/system/${pkgname}.service
 }
