@@ -1,9 +1,9 @@
-# Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
 # Contributor: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
 # Contributor: eric <eric@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Simo L. <neotuli@yahoo.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Tom Tobin <archlinux@tomxtobin.com>
 
 _pkgname=sane
 pkgname=$_pkgname-git
