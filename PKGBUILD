@@ -1,20 +1,19 @@
-# Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Contributor: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-prime-util'
-pkgver='0.69'
+pkgver='0.70'
 pkgrel='1'
-pkgdesc="Utilities related to prime numbers, including fast sieves and factoring"
+pkgdesc="Utilities related to prime numbers, including fast sieves and factoring (ntheory)"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=(
     'glibc>=2.25'
     'perl>=5.6.2'
-    'perl-math-prime-util-gmp>=0.48'
+    'perl-math-prime-util-gmp>=0.50'
 )
 optdepends=(
-    'perl-math-mpfr: for faster Ei, Li, Zeta and R functions.'
     'perl-math-bigint-gmp: for faster BigInt operations.'
 )
 makedepends=()
@@ -36,8 +35,8 @@ provides=(
 )
 url='https://metacpan.org/release/Math-Prime-Util'
 source=("https://cpan.metacpan.org/authors/id/D/DA/DANAJ/Math-Prime-Util-$pkgver.tar.gz")
-md5sums=('aa4ba32c8335317841cb45ab87edac5c')
-sha512sums=('07780f28398b6e2cfbc1ccaa2cce2d3b32ea000ec9fc3909d9650c0c9dc6f24c0982de8ce52bc3dcfc525e10ad2d5a687a1833a6fab82008345fdba78fbfdfeb')
+md5sums=('05a9f360fce5e453ca91b8b68adeddb5')
+sha512sums=('c05964c8a3f76bb7881cbcafa0d31b76ac34ff3aa931e834ee151ae79f5f582b5681b31ad75f51d63d3129b9c11246a458b196635ca7c242dbd6dedaddb64298')
 _distdir="Math-Prime-Util-$pkgver"
 
 build() {
