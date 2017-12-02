@@ -1,4 +1,4 @@
-# Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
+# Contributor: Tom Tobin <archlinux@tomxtobin.com>
 
 pkgname=cl-dpans3r-info
 pkgver=1.05
