@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/bin/zsh
 
-cd /usr/share/dowse
-zsh ./dowse "$@"
+export DOWSE_PREFIX=/usr/share/dowse
+
+source $DOWSE_PREFIX/dowse
+
+dowse-start
