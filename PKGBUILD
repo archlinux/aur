@@ -1,8 +1,8 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=salome-kernel
-pkgver=7.8.0
-pkgrel=2
+pkgver=8.3.0
+pkgrel=1
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module"
 url="http://www.salome-platform.org"
 depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'hdf5-salome' 'graphviz' 'libxml2' 'cppunit' 'lapack' 'net-tools' 'openmpi' 'libbatch')
@@ -11,9 +11,8 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 source=("${pkgname}.sh" "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz")
 options=(!makeflags)
-# options=(debug !strip)
 
-_source=KERNEL_SRC
+_source=KERNEL_SRC_${pkgver}
 # _source=kernel
 _basedir=/opt/salome
 _installdir=${_basedir}
@@ -29,16 +28,15 @@ prepare() {
 #  git checkout V${pkgver:0:1}_${pkgver:2:1}_${pkgver:4:1}
 #  msg "GIT checkout done or server timeout"
 
-  cd ${_source}
-
-  sed -e 's|INSTALL(CODE "FILE(TIMESTAMP \\"\${CMAKE_INSTALL_PREFIX}/\${path}/\${file_name}\\"            py_time)")|INSTALL(CODE "IF(EXISTS \\"\${CMAKE_INSTALL_PREFIX}/\${path}/\${file_we}.py\\") \\n  FILE(TIMESTAMP \\"\${CMAKE_INSTALL_PREFIX}/\${path}/\${file_we}.py\\" py_time) \\n ELSE()\\n  SET(py_time 0) \\n ENDIF() ")|' -i salome_adm/cmake_files/SalomeMacros.cmake
+  cd "${srcdir}"
 
   # DESTDIR
-  sed -e 's|\\"\${CMAKE_INSTALL_PREFIX}/\\\${INSTALL_PYIDL_DIR}\\"|\\"\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\\\${INSTALL_PYIDL_DIR}\\"|' -i salome_adm/cmake_files/UseOmniORB.cmake
-  for _FILE in {"salome_adm/cmake_files/SalomeMacros.cmake","salome_adm/cmake_files/deprecated/install_and_compile_python_file.cmake"}
-  do
-    sed -e "s|'\${CMAKE_INSTALL_PREFIX}|'\\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}|" -i ${_FILE}
-  done
+  sed -e 's|\\"\${CMAKE_INSTALL_PREFIX}/\\\${INSTALL_PYIDL_DIR}\\"|\\"\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\\\${INSTALL_PYIDL_DIR}\\"|' -i CONFIGURATION_${pkgver}/cmake/UseOmniORB.cmake
+
+  cd ${_source}
+
+  # DESTDIR
+  sed -e 's|\\"\${CMAKE_INSTALL_PREFIX}/\\\${INSTALL_PYIDL_DIR}\\"|\\"\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\\\${INSTALL_PYIDL_DIR}\\"|' -i idl/CMakeLists.txt
 
   # python -> python2
   for _FILE in `grep -Rl "/usr/bin/env python" * `
@@ -57,11 +55,7 @@ prepare() {
   do
     sed -e 's|"python |"python2 |' -i ${_FILE}
   done
-  sed -e "s|python|python2|" -i bin/runSalome
-  for _FILE in {"bin/appliskel/runSession","bin/appliskel/runAppli","bin/appliskel/runConsole","bin/appliskel/runRemote.sh"}
-  do
-    sed -e "s|python |python2 |" -i ${_FILE}
-  done
+  sed -e "s|python |python2 |" -i "bin/appliskel/runRemote.sh"
 }
 
 build() {
@@ -118,8 +112,10 @@ build() {
   cmake_options+=" -DDOXYGEN_ROOT_DIR=/usr"
   cmake_options+=" -DGRAPHVIZ_ROOT_DIR=/usr"
 
-  cmake ${cmake_options} ..
+  # salome configuration root dir
+  cmake_options+=" -DCONFIGURATION_ROOT_DIR=${srcdir}/CONFIGURATION_${pkgver}"
 
+  cmake ${cmake_options} ..
 
   make
 }
@@ -164,4 +160,4 @@ package() {
   ln -s "${_installdir}/salome" "${pkgdir}/usr/bin/salome"
 }
 md5sums=('6cc4e82fde36b648a47a11d320033129'
-         '0f6de10ad9d9c646fce3ca21a7dab46a')
+         'f571984862eb4215dc546edb2464ab4d')
