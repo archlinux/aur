@@ -1,0 +1,23 @@
+pkgbase = nazara-engine-git
+	pkgdesc = Nazara engine is an open source C++14 game engine - git version
+	pkgver = r4208.13dfa9dd
+	pkgrel = 1
+	url = https://github.com/DigitalPulseSoftware/NazaraEngine
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = openal
+	depends = libsndfile
+	depends = libxcb
+	depends = xcb-util-cursor
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	depends = libx11
+	depends = freetype2
+	depends = assimp
+	depends = libgl
+	source = git+https://github.com/DigitalPulseSoftware/NazaraEngine.git
+	md5sums = SKIP
+
+pkgname = nazara-engine-git
+
