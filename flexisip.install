@@ -1,0 +1,12 @@
+post_upgrade() {
+  echo "
+In order to generate a default config file, you can use:
+
+mkdir -p /etc/flexisip
+flexisip --dump-all-default > /etc/flexisip/flexisip.conf
+"
+}
+
+post_install() {
+    post_upgrade
+}
