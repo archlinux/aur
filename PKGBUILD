@@ -7,7 +7,7 @@
 
 pkgname=mediastreamer-git
 _pkgname=mediastreamer2
-pkgver=2.16.1.r73.g212ca580
+pkgver=2.16.1.r100.g927dda74
 pkgrel=1
 pkgdesc="A library written in C that allows you to create and run audio and video streams"
 arch=('i686' 'x86_64')
