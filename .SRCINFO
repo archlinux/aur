@@ -1,7 +1,7 @@
 pkgbase = pgbadger
-	pkgdesc = A fast PostgreSQL log analysis report
+	pkgdesc = A fast PostgreSQL Log Analyzer
 	pkgver = 9.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dalibo/pgbadger
 	arch = any
 	license = custom:Dalibo

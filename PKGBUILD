@@ -2,8 +2,8 @@
 # Contributor: Victor van den Elzen <victor.vde at gmail dot com>
 pkgname=pgbadger
 pkgver=9.2
-pkgrel=3
-pkgdesc="A fast PostgreSQL log analysis report"
+pkgrel=4
+pkgdesc="A fast PostgreSQL Log Analyzer"
 arch=("any")
 url="https://github.com/dalibo/pgbadger"
 license=("custom:Dalibo")
