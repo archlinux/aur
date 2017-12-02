@@ -3,7 +3,7 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=55.2.2
+pkgver=56.0
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -22,9 +22,9 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("waterfox=${pkgver}")
 conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
-_patchrev=b2ba34e0dc10
+_patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=1034b9e9972e1d520cf607112af7d2c63d3ba6a3
+_commit=8c17fb8d3c7f389c75054ccac60c6e7b9a77c364
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
@@ -48,8 +48,8 @@ sha256sums=('SKIP'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
-            '512d9a06acdb30b023a0601ecf2f7b5104e2838d4431957b97910f24d98b5bef'
-            'a3af6d55c07fd4cd06c044bc1bf289caf16f40d8eb150bc505e035e37696bfa2'
+            'c4c0a726115eca89ab82a85b364cef6cc897f58317b2890f214510810a30cfa3'
+            'f672e60e22869381e9c4cdd90353a053a0171778eca40d4664bc733822fd535f'
             '774d13c0d319b83a3f90d15ceed093e80ff07a2794038c95ffa79539ca2819cc'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -145,6 +145,7 @@ ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-profiling
 ac_add_options --disable-signmar
+ac_add_options --disable-stylo
 ac_add_options --disable-tests
 ac_add_options --disable-parental-controls
 ac_add_options --disable-accessibility
