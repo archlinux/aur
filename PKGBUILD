@@ -16,6 +16,16 @@ options=('!emptydirs')
 source=("https://github.com/dalibo/pgbadger/archive/v${pkgver}.tar.gz")
 sha256sums=('2107466309a409fb9e40f11bb77cac1f9ba7910d5328e7b2e08eb7a1c6d760ec')
 
+prepare() {
+  # Override perl command line options we don't want. Source:
+  # https://wiki.archlinux.org/index.php/Perl_Policy#Vendor
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    PERL5LIB="" PERL_LOCAL_LIB_ROOT="" \
+    MODULEBUILDRC=/dev/null
+}
+
 build() {
   cd "${srcdir}/pgbadger-${pkgver}"
   /usr/bin/perl Makefile.PL
