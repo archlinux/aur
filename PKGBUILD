@@ -5,8 +5,8 @@
 
 pkgname=nextcloud-git
 _pkgname=nextcloud
-pkgver=13.0.0beta1.r42.gdd5373795f
-pkgrel=2
+pkgver=13.0.0beta1.r182.gcec236f0af
+pkgrel=1
 pkgdesc="A cloud server to store your files centrally on a hardware controlled by you"
 arch=('any')
 url="https://nextcloud.com"
@@ -30,9 +30,35 @@ conflicts=('nextcloud')
 backup=('etc/webapps/nextcloud/apache.example.conf')
 validpgpkeys=('28806A878AE423A28372792ED75899B9A724937A')
 source=('git+https://github.com/nextcloud/server.git'
+        'git+https://github.com/nextcloud/activity.git'
+        'git+https://github.com/nextcloud/files_pdfviewer.git'
+        'git+https://github.com/nextcloud/files_texteditor.git'
+        'git+https://github.com/nextcloud/files_videoplayer.git'
+        'git+https://github.com/nextcloud/firstrunwizard.git'
+        'git+https://github.com/nextcloud/gallery.git'
+        'git+https://github.com/nextcloud/logreader.git'
+        'git+https://github.com/nextcloud/nextcloud_announcements.git'
+        'git+https://github.com/nextcloud/notifications.git'
+        'git+https://github.com/nextcloud/password_policy.git'
+        'git+https://github.com/nextcloud/serverinfo.git'
+        'git+https://github.com/nextcloud/survey_client.git'
+        'git+https://github.com/nextcloud/apps.git' # user_external app
         'apache.example.conf'
         'nextcloud.hook')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '55b892adb86a67c2fa12d79f0980c6aea75aed5c6f6f78f2c2b5e5575a012067'
             'd084cd6423c03f98087884b3c7b81f9510d1bea6c518860b64787a7f976cf0d3')
 
@@ -44,6 +70,19 @@ pkgver() {
 prepare() {
    cd "${srcdir}/server"
    git submodule update --init
+   mv ../activity apps/
+   mv ../files_pdfviewer apps/
+   mv ../files_texteditor apps/
+   mv ../files_videoplayer apps/
+   mv ../firstrunwizard apps/
+   mv ../gallery apps/
+   mv ../logreader apps/
+   mv ../nextcloud_announcements apps/
+   mv ../notifications apps/
+   mv ../password_policy apps/
+   mv ../serverinfo apps/
+   mv ../survey_client apps/
+   mv ../apps/user_external apps/
 }
 
 package() {
