@@ -1,8 +1,8 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=libbatch
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module"
 url="http://www.salome-platform.org"
 depends=('python2')
@@ -46,4 +46,4 @@ package() {
   make DESTDIR="$pkgdir" install
 
 }
-md5sums=('9da297f755832eabe10db0cca311f340')
+md5sums=('fb0dc1228139fd5c0c25065982084d7e')
