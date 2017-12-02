@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/${pkgname}.git"
 license=('MIT')
 depends=('glibc' 'gettext' 'nanomsg' 'dyncall-git' 'libcsptr')
+makedepends=('cmake')
 source=("$pkgname"::"git://github.com/Snaipe/${pkgname}.git#tag=v${_fullver}")
 md5sums=('SKIP')
 
