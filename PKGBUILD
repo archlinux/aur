@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=extempore-git
-pkgver=0.7.0.r306.g30cac218
+pkgver=0.7.0.r360.g624309ff
 pkgrel=1
 pkgdesc="A cyber-physical programming environment for live coding"
 arch=('i686' 'x86_64')
@@ -32,12 +32,12 @@ build() {
   cd "${srcdir}/build"
 
   cmake -DCMAKE_INSTALL_PREFIX=/opt \
-        -DJACK=ON \
-        -DBUILD_DEPS=ON \
-        -DPACKAGE=ON \
+        -DJACK=ON                   \
+        -DBUILD_DEPS=ON             \
+        -DPACKAGE=ON                \
         ../extempore
 
-  make extempore aot_extended assets
+  make
 }
 
 package() {
