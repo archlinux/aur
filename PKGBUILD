@@ -1,9 +1,9 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=bgpq3
 pkgver=0.1.33
-pkgrel=1
+pkgrel=2
 pkgdesc="bgp filtering automation for Cisco and Juniper routers"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/snar/bgpq3"
 license=('BSD')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/snar/$pkgname/archive/v$pkgver.tar.gz"
@@ -13,22 +13,23 @@ sha512sums=('f4faec46eaa5fe77a9118ed76e3d2dddce855cebfe6ead3dadffe0f72ea720502e3
 depends=('glibc')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   patch -p1 -i "$srcdir/bgpq3_man_install.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   mkdir -p "$pkgdir/usr/bin"
   make prefix="$pkgdir/usr" install
   install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
 }
