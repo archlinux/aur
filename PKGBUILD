@@ -2,7 +2,7 @@
 
 pkgname=tibia
 pkgver=11.49.6030
-pkgrel=1
+pkgrel=2
 pkgdesc="fast-paced free massively multiplayer online role-playing game"
 arch=('x86_64')
 url="http://www.tibia.com"
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::http://static.tibia.com/download/tibia.x64
         "01_openssl102.patch"
         "02_freetype.patch")
 
-sha256sums=('a786a8c922222db031a9e8ab65a350b2f8d0d2402c4d2c5e0f1f05f33321becc'
+sha256sums=('1b78a4860e082b6253fc0ffdabf9080a5196db6275aef2ae6655d8a6553f86ec'
             '965edf1cf67698f9dcfcbced495e0e96a666207a9a0b91fb769ed386a5f1efe5'
             '6484f05cc54363d1d4e30293c56476eb9fd079b1e26dcd9b0ba2c05b26f6f399'
             '976fc8d84b5d3dff06644cc9273be404aaa76261051037d268b2bb5266870fc4')
