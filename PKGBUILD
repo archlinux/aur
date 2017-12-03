@@ -4,8 +4,8 @@
 pkgname=openfx-misc-git
 name=openfx-misc
 pkgver=2.3.4
-pkgrel=1
-arch=("i686" "x86_64")
+pkgrel=2
+arch=("x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/devernay/openfx-io"
 license=("GPL2")
@@ -13,7 +13,7 @@ depends=("seexpr1" "openimageio" "ffmpeg")
 #depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
 makedepends=("git" "expat" "boost")
 optdepends=("openfx-gmic-bin" "natron-plugins")
-com=945b91448c4e221578f36bb619c01ddd39e39f83
+com=663e8c43febb43a1d29979292948549c2ac0bf79
 source=("openfx-misc::git+https://github.com/devernay/openfx-misc.git#commit=$com"
 )
 sha512sums=('SKIP'
