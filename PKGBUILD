@@ -6,7 +6,7 @@
 _srcname=vlc
 pkgname=vlc-decklink
 pkgver=2.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
 arch=('i686' 'x86_64')
 url='http://www.videolan.org/vlc/'
@@ -16,12 +16,16 @@ depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt4' 'libproxy'
          'zvbi' 'taglib' 'libmpcdec' 'ffmpeg2.8' 'faad2' 'libupnp'
          'libshout' 'libmad' 'libmpeg2' 'xcb-util-keysyms' 'libtar'
          'libxinerama')
-makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
-             'libdc1394' 'libavc1394' 'lirc' 'libcaca' 'gtk2'
-             'librsvg' 'portaudio' 'libgme' 'xosd' 'projectm'
-             'twolame' 'aalib' 'libmtp' 'libdvdcss' 'smbclient'
-             'libgoom2' 'vcdimager' 'opus' 'libssh2' 'mesa' 'qt4'
-			 'blackmagic-decklink-sdk')
+makedepends=(
+    # official repositories:
+        'live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
+        'libdc1394' 'libavc1394' 'lirc' 'libcaca' 'gtk2'
+        'librsvg' 'portaudio' 'libgme' 'xosd' 'projectm'
+        'twolame' 'aalib' 'libmtp' 'libdvdcss' 'smbclient'
+        'libgoom2' 'vcdimager' 'opus' 'libssh2' 'mesa' 'qt4'
+    # AUR:
+        'blackmagic-decklink-sdk'
+)
 optdepends=('avahi: for service discovery using bonjour protocol'
             'libnotify: for notification plugin'
             'ncurses: for ncurses interface support'
