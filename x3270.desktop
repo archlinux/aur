@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=x3270
+Comment=IBM 3270 terminal emulator for the X Window System
+Icon=/usr/share/pixmaps/x3270-icon2.xpm
+Exec=/usr/bin/x3270
+Terminal=false
+Type=Application
+Categories=Application;Utility;

@@ -1,0 +1,3 @@
+Section "Files"
+    FontPath     "/usr/share/fonts/3270/"
+EndSection
