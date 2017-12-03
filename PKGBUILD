@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-glpk
-pkgver=4.60
+pkgver=4.64
 pkgrel=1
 pkgdesc="GNU Linear Programming Kit : solve LP, MIP and other problems. (mingw-w64)"
 arch=('any')
@@ -10,21 +10,19 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
 source=(http://ftp.gnu.org/gnu/glpk/glpk-${pkgver}.tar.gz)
-sha1sums=('4e55a3d2aa38b19c5bdd8a195738dbaf44e91e90')
+sha256sums=('539267f40ea3e09c3b76a31c8747f559e8a097ec0cda8f1a3778eec3e4c3cc24')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}/glpk-${pkgver}"
-  sed -i "s|-version-info|-no-undefined -version-info|g" src/Makefile.am
-  autoreconf -vfi
 }
 
 build() {
   cd "${srcdir}/glpk-${pkgver}"
   for _arch in ${_architectures}; do 
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure
+    CPPFLAGS="-D__WOE__" ${_arch}-configure
     make
     popd
   done
