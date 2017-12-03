@@ -1,0 +1,12 @@
+pkgbase = phraseapp-client-git
+	pkgdesc = PhraseApp CLI tool
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/phrase/phraseapp-client
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = go
+
+pkgname = phraseapp-client-git
+
