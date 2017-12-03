@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Duolingo
+Comment=A desktop client for Duolingo
+Exec=/opt/duolingo-desktop/duolingo-desktop
+Path=/opt/duolingo-desktop
+Terminal=false
+Type=Application
+Icon=duolingo
+Categories=Education

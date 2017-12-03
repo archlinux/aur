@@ -1,0 +1,22 @@
+pkgbase = duolingo-desktop-git
+	pkgdesc = Desktop client for Duolingo, using Electron
+	pkgver = 20171203
+	pkgrel = 1
+	url = https://github.com/morganamilo/duolingo-desktop
+	arch = x86_64
+	license = GPL
+	makedepends = npm
+	depends = gtk2
+	depends = libxss
+	depends = gconf
+	depends = nss
+	depends = nspr
+	depends = libxtst
+	depends = alsa-lib
+	source = git+https://github.com/morganamilo/duolingo-desktop
+	source = duolingo-desktop.desktop
+	md5sums = SKIP
+	md5sums = a28956619c5618f993feb417e9fa8dfc
+
+pkgname = duolingo-desktop-git
+
