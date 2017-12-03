@@ -1,16 +1,16 @@
 pkgbase = perl-log-report-optional
 	pkgdesc = Perl package providing Log::Report or ::Minimal
-	pkgver = 1.01
+	pkgver = 1.04
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Log-Report-Optional
+	url = https://metacpan.org/release/Log-Report-Optional
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl>=5.10.1
-	depends = perl-string-print>=0.13
+	depends = perl-string-print>=0.91
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/Log-Report-Optional-1.01.tar.gz
-	md5sums = fb379bb1f84c2fa1dee5ea8998fe2426
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/Log-Report-Optional-1.04.tar.gz
+	md5sums = 26be27b5f1eda1a10ca2fd937a28cb69
 
 pkgname = perl-log-report-optional
 
