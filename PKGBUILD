@@ -1,10 +1,10 @@
 # Maintainer: Remi Gacogne <rgacogne-arch at archlinux dot org>
 pkgname=powerdns-recursor-git
-pkgver=r13091.820b9318d
+pkgver=r13393.4461bb7c3
 pkgrel=1
 pkgdesc='Resolving DNS server'
-arch=('i686' 'x86_64')
-url='http://www.powerdns.com/'
+arch=('x86_64')
+url='https://www.powerdns.com/'
 license=('GPL2')
 source=("${pkgname}::git+https://github.com/PowerDNS/pdns")
 sha512sums=('SKIP')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/pdns/recursordist"
+  cd "${pkgname}/pdns/recursordist"
   ./bootstrap
   ./configure \
       --prefix=/usr \
@@ -35,8 +35,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/pdns/recursordist/"
+  cd "${pkgname}/pdns/recursordist/"
   make DESTDIR="${pkgdir}" install
   mv "${pkgdir}/etc/powerdns/recursor.conf-dist" "${pkgdir}/etc/powerdns/recursor.conf"
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
