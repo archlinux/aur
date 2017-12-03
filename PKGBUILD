@@ -1,4 +1,4 @@
-# Maintainer: Phil Sidler <phil_sidler@hotmail.com>
+# Maintainer: sardo <sardonimous@hotmail.com>
 pkgname=oorexx
 pkgver=4.2.0
 pkgrel=1
@@ -11,6 +11,7 @@ makedepends=('automake' 'autoconf' 'libtool')
 optdepends=('tcsh: for C shell sample'
 	    'sh: for sh shell sample')
 provides=("rexx")
+conflicts=("oorexx-beta")
 install=${pkgname}.install
 source=(https://sourceforge.net/projects/oorexx/files/oorexx/$pkgver/ooRexx-$pkgver-source.tar.gz
 	oorexx-4.2.0-fix-build.patch
