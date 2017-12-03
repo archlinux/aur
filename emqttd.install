@@ -1,0 +1,62 @@
+## arg 1:  the new package version
+pre_install() {
+	true
+}
+
+## arg 1:  the new package version
+post_install() {
+ 	if ! getent group emqtt >/dev/null 2>&1; then
+		groupadd -r emqtt
+	fi
+
+	if getent passwd emqtt >/dev/null 2>&1; then
+		usermod -d /var/lib/emqttd emqtt || true
+	else
+		useradd -r -g emqtt \
+			 --home /var/lib/emqttd \
+			 --comment "emqtt user" \
+			 --shell /bin/bash \
+			 emqtt
+	fi
+
+	for i in lib run log; do
+		chown -R emqtt:emqtt /var/$i/emqttd
+	done
+
+	chown -R emqtt:emqtt /usr/lib/emqttd
+	chown -R emqtt:emqtt /etc/emqttd
+
+	chmod 0755 /var/run/emqttd /etc/emqttd
+	chmod 0644 /etc/emqttd/*
+	chmod -R +X /etc/emqttd
+	chmod 0755 /usr/lib/emqttd/bin/nodetool
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	true
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	true
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	true
+}
+
+## arg 1:  the old package version
+post_remove() {
+	# Remove User & Group, killing any process owned by them
+	if getent passwd emqtt >/dev/null; then
+ 		pkill -u emqtt || true
+		userdel --remove emqtt
+	fi
+	if getent group emqtt >/dev/null; then
+		groupdel emqtt
+	fi
+}

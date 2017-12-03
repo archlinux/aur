@@ -1,0 +1,44 @@
+pkgbase = emq
+	pkgdesc = emqtt: The Massively Scalable MQTT Broker for IoT and Mobile Applications
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://emqtt.io
+	install = emqttd.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = erlang
+	depends = rebar
+	backup = etc/emqttd/emq.conf
+	backup = etc/emqttd/acl.conf
+	backup = etc/emqttd/plugins/ekka.conf.example
+	backup = etc/emqttd/plugins/ekka.config.example
+	backup = etc/emqttd/plugins/emq_auth_clientid.conf
+	backup = etc/emqttd/plugins/emq_auth_http.conf
+	backup = etc/emqttd/plugins/emq_auth_jwt.conf
+	backup = etc/emqttd/plugins/emq_auth_ldap.conf
+	backup = etc/emqttd/plugins/emq_auth_mongo.conf
+	backup = etc/emqttd/plugins/emq_auth_mysql.conf
+	backup = etc/emqttd/plugins/emq_auth_pgsql.conf
+	backup = etc/emqttd/plugins/emq_auth_redis.conf
+	backup = etc/emqttd/plugins/emq_auth_username.conf
+	backup = etc/emqttd/plugins/emq_coap.conf
+	backup = etc/emqttd/plugins/emq_dashboard.conf
+	backup = etc/emqttd/plugins/emq_lua_hook.conf
+	backup = etc/emqttd/plugins/emq_modules.conf
+	backup = etc/emqttd/plugins/emq_plugin_template.config
+	backup = etc/emqttd/plugins/emq_recon.conf
+	backup = etc/emqttd/plugins/emq_reloader.conf
+	backup = etc/emqttd/plugins/emq_retainer.conf
+	backup = etc/emqttd/plugins/emq_sn.conf
+	backup = etc/emqttd/plugins/emq_stomp.conf
+	backup = etc/emqttd/plugins/emq_web_hook.conf
+	source = emq::git+https://github.com/emqtt/emq-relx.git#tag=v2.3.0
+	source = emq.service
+	source = 0001-Update-vars-for-build.patch
+	md5sums = SKIP
+	md5sums = 1091148c71c9498263b4f9179ee8a1fe
+	md5sums = 53da2693269a9de92bf6b3497d2995f3
+
+pkgname = emq
+

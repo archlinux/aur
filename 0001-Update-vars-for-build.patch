@@ -1,0 +1,51 @@
+From 0173df1eed5401f4a73b9a1d8bc9b97efc14e60c Mon Sep 17 00:00:00 2001
+From: Michael Spradling <mike@mspradling.com>
+Date: Sun, 3 Dec 2017 00:01:21 -0500
+Subject: [PATCH] Update vars for build
+
+---
+ vars.config | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/vars.config b/vars.config
+index 14dedd0..7b02f9e 100644
+--- a/vars.config
++++ b/vars.config
+@@ -2,23 +2,23 @@
+ %% ex: ft=erlang ts=4 sw=4 et
+ 
+ %% Platform-specific installation paths
+-{platform_bin_dir,  "bin"}.
+-{platform_data_dir, "data"}.
+-{platform_etc_dir,  "etc"}.
+-{platform_lib_dir,  "lib"}.
+-{platform_log_dir,  "log"}.
++{platform_bin_dir,  "/usr/bin"}.
++{platform_data_dir, "/var/lib/emqttd"}.
++{platform_etc_dir,  "/etc/emqttd"}.
++{platform_lib_dir,  "/usr/libemqttd"}.
++{platform_log_dir,  "/var/log/emqttd"}.
+ 
+ %%
+ %% bin/emqttd
+ %% 
+ %% {runner_script_dir,  "$(cd ${0%/*} && pwd)"}.
+-{runner_root_dir,    ""}.
++{runner_root_dir,    "/lib/emqttd"}.
+ {runner_base_dir,    ""}.
+-{runner_bin_dir,     "$RUNNER_ROOT_DIR/bin"}.
+-{runner_etc_dir,     "$RUNNER_ROOT_DIR/etc"}.
++{runner_bin_dir,     "/usr/bin"}.
++{runner_etc_dir,     "/etc/emqttd"}.
+ {runner_lib_dir,     "$RUNNER_ROOT_DIR/lib"}.
+-{runner_log_dir,     "$RUNNER_ROOT_DIR/log"}.
+-{runner_data_dir,    "$RUNNER_ROOT_DIR/data"}.
++{runner_log_dir,     "/var/log/emqttd"}.
++{runner_data_dir,    "/var/lib/emqttd"}.
+ {pipe_dir,           "/tmp/$RUNNER_SCRIPT/"}.
+-{runner_user,        ""}.
++{runner_user,        "emqtt"}.
+ 
+-- 
+2.15.0
+
