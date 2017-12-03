@@ -2,7 +2,7 @@
 # Contributor: Rogof <rogof /at/ gmx /dot/ com>
 
 pkgname=ccl-git
-pkgver=4744.f1286a7d
+pkgver=4745.6be8298f
 pkgrel=1
 pkgdesc="The Clozure Common Lisp implementation"
 url="http://ccl.clozure.com/"
