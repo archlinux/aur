@@ -2,7 +2,7 @@
 # Based on Marco Scarpetta's PKGBUILD
 
 _name=firefox
-_lang=pl
+_locale=pl
 _channel=developer
 pkgname=firefox-developer-pl
 pkgdesc='Standalone web browser from mozilla.org, Developer Edition - Polish'
@@ -16,8 +16,8 @@ source=(
     "firefox-$_channel.desktop"
     vendor.js
 )
-source_x86_64=(firefox-${pkgver}-${CARCH}.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/${pkgver}/linux-x86_64/${_lang}/firefox-${pkgver}.tar.bz2)
-source_i686=(firefox-${pkgver}-${CARCH}.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/${pkgver}/linux-i686/${_lang}/firefox-${pkgver}.tar.bz2)
+source_x86_64=(firefox-${pkgver}-${CARCH}.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/${pkgver}/linux-x86_64/${_locale}/firefox-${pkgver}.tar.bz2)
+source_i686=(firefox-${pkgver}-${CARCH}.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/${pkgver}/linux-i686/${_locale}/firefox-${pkgver}.tar.bz2)
 depends=(
     gtk3
     gtk2
