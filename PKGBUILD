@@ -1,11 +1,13 @@
 # $Id$
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Jörg Schuck <joerg_schuck@web.de>
+# Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 
-pkgname=enchant
+pkgname=enchant1.6
+_pkgname=enchant
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A wrapper library for generic spell checking"
 arch=('i686' 'x86_64')
 url="https://abiword.github.io/enchant/"
@@ -17,17 +19,17 @@ source=("git+https://github.com/AbiWord/enchant.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd $_pkgname
   git describe --tags | sed 's/^enchant-//;s/-/\./g'
 }
 
 prepare() {
-  cd $pkgname
+  cd $_pkgname
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname
+  cd $_pkgname
   ./configure --prefix=/usr \
     --disable-static \
     --disable-ispell \
@@ -37,6 +39,12 @@ build() {
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="${pkgdir}" install
+  cd $_pkgname
+  local _tempdir=$(readlink -f "./maketarget")
+  make DESTDIR="${_tempdir}" install
+
+  install -dm 755 "${pkgdir}/usr/lib/enchant"
+  cp -a "${_tempdir}/usr/lib/enchant/"* "${pkgdir}/usr/lib/enchant/."
+  cp -a "${_tempdir}/usr/lib/libenchant.so.1"* "${pkgdir}/usr/lib/."
+  
 }
