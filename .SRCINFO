@@ -1,5 +1,5 @@
 pkgbase = hearthlauncher-git
-	pkgdesc = Someone else please figure this out
+	pkgdesc = A Minecraft Launcher and Modpack Installer
 	pkgver = 0.041.r43.g57961b4
 	pkgrel = 1
 	url = https://hearthproject.uk
