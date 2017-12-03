@@ -1,17 +1,15 @@
 pkgbase = firegrid
-	pkgdesc = Click anywhere with only 3 keystrokes
-	pkgver = 0.1.2
+	pkgdesc = Click anywhere with only a few keystrokes
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/foliea/firegrid
 	arch = any
 	license = MIT
 	makedepends = wget
 	makedepends = crystal
-	depends = noto-fonts
-	depends = libx11
-	depends = imagemagick
-	depends = voidcsfml
-	source = https://github.com/foliea/firegrid/archive/0.1.2.tar.gz
+	depends = qt5-base
+	depends = xdotool
+	source = https://github.com/foliea/firegrid/archive/0.2.0.tar.gz
 	md5sums = SKIP
 
 pkgname = firegrid

@@ -1,12 +1,12 @@
 # Maintainer: Adrien Folie <folie.adrien@gmail.com>
 pkgname=firegrid
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Click anywhere with only 3 keystrokes"
+pkgdesc="Click anywhere with only a few keystrokes"
 arch=(any)
 url="https://github.com/foliea/firegrid"
 license=('MIT')
-depends=('noto-fonts' 'libx11' 'imagemagick' 'voidcsfml' 'xdotool')
+depends=('qt5-base' 'xdotool')
 makedepends=('wget' 'crystal')
 source=("https://github.com/foliea/firegrid/archive/$pkgver.tar.gz")
 md5sums=('SKIP')
