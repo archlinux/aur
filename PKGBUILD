@@ -6,7 +6,7 @@ url="https://github.com/nlohmann/json"
 license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('cmake')
-source=("https://github.com/nlohmann/json/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nlohmann/json/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
