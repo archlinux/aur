@@ -48,6 +48,9 @@ optdepends=(
 	'breeze-icons: more fallback icons'
 	'gksu: for applying Spotify theme from GUI without polkit'
 )
+options=(
+	'!strip'
+)
 
 pkgver() {
 	cd oomox
