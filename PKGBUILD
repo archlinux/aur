@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=peek
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Simple screen recorder with an easy to use interface"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=(
   'gifski: High quality GIF animations with thousands of colors'
 )
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/phw/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('d6117baca6810d846831653023eb0517138a435a0f85fea9fc1c28421c0ccb2b')
+sha256sums=('7035ad6817306bf93b0052bf989120793e26b3fbcba51dda3cdf345342214af5')
 
 prepare() {
   mkdir -p build
