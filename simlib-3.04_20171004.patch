@@ -1,0 +1,23 @@
+--- src/Makefile.generic	2016-11-15 19:59:20.000000000 +0100
++++ src/Makefile.generic_patched	2017-12-03 19:21:39.857855485 +0100
+@@ -227,11 +227,6 @@
+ 	install -m0644 $(SIMLIB_HEADERS) $(PREFIX)/include
+ 	install -m0644 $(LIBNAME).a      $(PREFIX)/lib/lib$(LIBNAME).a
+ 	install -m0644 $(LIBNAME).so     $(PREFIX)/lib/lib$(LIBNAME).so
+-	@if ! grep '^'$(PREFIX)/lib'$$' /etc/ld.so.conf >/dev/null; then \
+-	  echo "Add $(PREFIX)/lib to /etc/ld.so.conf ";  \
+-	fi
+-	@echo "This should be run as root"
+-	ldconfig # update dynamic linker cache
+ 
+ #############################################################################
+ # Uninstall library
+@@ -240,8 +235,6 @@
+ 	$(RM) $(foreach headerfile, $(SIMLIB_HEADERS), $(PREFIX)/include/$(headerfile))
+ 	$(RM) $(PREFIX)/lib/lib$(LIBNAME).a
+ 	$(RM) $(PREFIX)/lib/lib$(LIBNAME).so
+-	@echo "This should be run as root"
+-	ldconfig # update dynamic linker cache
+ 
+ #############################################################################
+ # Basic test of functionality
