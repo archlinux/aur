@@ -2,7 +2,7 @@
 
 pkgname=gog-risk-of-rain
 pkgver=2.1.0.6
-pkgrel=1
+pkgrel=2
 pkgdsc="Risk of Rain is an action platformer with roguelike elements."
 url="https://www.gog.com/game/risk_of_rain"
 license=('custom')
@@ -24,7 +24,11 @@ PKGEXT='.pkg.tar'
 prepare(){
     cd "$srcdir/data/noarch"
     # The launcher expects the user to be in the game dir
-    echo -e "#!/bin/sh\ncd /opt/${pkgname}\n./start.sh" > "${srcdir}/${pkgname}"
+    if [ "${CARCH}" == 'x86_64' ]; then
+        echo -e "#!/bin/sh\ncd /opt/${pkgname}\nLD_PRELOAD=/usr/lib32/libcurl.so.3 ./start.sh" > "${srcdir}/${pkgname}"
+    elif [ "${CARCH}" == 'i686' ]; then
+        echo -e "#!/bin/sh\ncd /opt/${pkgname}\nLD_PRELOAD=/usr/lib/libcurl.so.3 ./start.sh" > "${srcdir}/${pkgname}"
+    fi
 }
 
 package(){
@@ -40,11 +44,6 @@ package(){
         "${pkgdir}/opt/${pkgname}/"
     install -Dm755 data/noarch/support/*.{sh,shlib} -t \
         "${pkgdir}/opt/${pkgname}/support"
-
-    # Link to the compat libcurl
-    mkdir -p "${pkgdir}/opt/${pkgname}/lib"
-    [ $CARCH == "x86" ] && ln -s /usr/lib/libcurl.so.3 "${pkgdir}/opt/${pkgname}/lib/libcurl.so.4"
-    [ $CARCH == "x86_64" ] && ln -s /usr/lib32/libcurl.so.3 "${pkgdir}/opt/${pkgname}/lib/libcurl.so.4"
 
     # Desktop integration
     install -Dm 644 "data/noarch/support/icon.png" \
