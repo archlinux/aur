@@ -1,6 +1,6 @@
-diff -ura b/gruntfile.js a/gruntfile.js
---- b/gruntfile.js	2017-11-25 06:41:20.000000000 +0100
-+++ a/gruntfile.js	2017-11-25 08:41:59.315502962 +0100
+diff -ura a/gruntfile.js b/gruntfile.js
+--- a/gruntfile.js	2017-11-25 06:41:20.000000000 +0100
++++ b/gruntfile.js	2017-12-03 17:53:35.083275486 +0100
 @@ -6,6 +6,7 @@
  
  module.exports = function (grunt) {
@@ -30,42 +30,41 @@ diff -ura b/gruntfile.js a/gruntfile.js
  
    grunt.registerTask('compile', function () {
      var done = this.async()
-Alleen in a: node_modules
-diff -ura b/package.json a/package.json
---- b/package.json	2017-11-25 06:41:20.000000000 +0100
-+++ a/package.json	2017-11-25 08:59:51.466808693 +0100
+diff -ura a/package.json b/package.json
+--- a/package.json	2017-12-03 17:30:46.687839000 +0100
++++ b/package.json	2017-12-03 17:47:38.677436194 +0100
 @@ -102,15 +102,15 @@
-     "css-loader": "^0.19.0",
-     "devtron": "^1.1.0",
-     "dom-storage": "^2.0.2",
--    "electron-packager": "^6.0.0",
-+    "electron-packager": "^8.6.0",
-     "electron": "^1.6.15",
-     "eslint": "^3.13.1",
-     "eslint-config-standard": "^6.2.1",
-     "eslint-config-standard-jsx": "^3.2.0",
-     "eslint-plugin-react": "^7.2.0",
-     "faker": "^3.1.0",
--    "grunt": "^0.4.5",
--    "grunt-electron-installer": "^1.2.0",
-+    "grunt": "^1.0.1",
-+    "grunt-electron-installer": "^2.1.0",
-     "history": "^1.17.0",
-     "jsdom": "^9.4.2",
-     "json-loader": "^0.5.4",
+     "css-loader": "0.19.0",
+     "devtron": "1.4.0",
+     "dom-storage": "2.0.2",
+-    "electron-packager": "6.0.2",
++    "electron-packager": "8.6.0",
+     "electron": "1.7.9",
+     "eslint": "3.19.0",
+     "eslint-config-standard": "6.2.1",
+     "eslint-config-standard-jsx": "3.3.0",
+     "eslint-plugin-react": "7.2.0",
+     "faker": "3.1.0",
+-    "grunt": "0.4.5",
+-    "grunt-electron-installer": "1.2.3",
++    "grunt": "1.0.1",
++    "grunt-electron-installer": "2.1.0",
+     "history": "1.17.0",
+     "jsdom": "9.12.0",
+     "json-loader": "0.5.4",
 @@ -123,15 +123,11 @@
-     "react-router-redux": "^4.0.4",
-     "standard": "^8.4.0",
-     "style-loader": "^0.12.4",
--    "stylus": "^0.52.4",
-+    "stylus": "^0.54.5",
-     "stylus-loader": "^2.3.1",
-     "webpack": "^1.12.2",
-     "webpack-dev-server": "^1.12.0"
+     "react-router-redux": "4.0.8",
+     "standard": "8.6.0",
+     "style-loader": "0.12.4",
+-    "stylus": "0.52.4",
++    "stylus": "0.54.4",
+     "stylus-loader": "2.5.1",
+     "webpack": "1.15.0",
+     "webpack-dev-server": "1.16.5"
    },
 -  "optionalDependencies": {
--    "grunt-electron-installer-debian": "^0.2.0",
--    "grunt-electron-installer-redhat": "^0.3.1"
+-    "grunt-electron-installer-debian": "0.2.0",
+-    "grunt-electron-installer-redhat": "0.3.1"
 -  },
    "optional": false,
    "ava": {

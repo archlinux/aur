@@ -280,14 +280,14 @@ diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
        })
        .catch((err) => {
 diff -ura a/package.json b/package.json
---- a/package.json	2017-12-03 03:51:11.000000000 +0100
-+++ b/package.json	2017-12-03 08:11:01.174380873 +0100
+--- a/package.json	2017-12-03 17:30:46.687839000 +0100
++++ b/package.json	2017-12-03 17:56:10.071440319 +0100
 @@ -50,8 +50,6 @@
    "dependencies": {
-     "@rokt33r/markdown-it-math": "^4.0.1",
-     "@rokt33r/season": "^5.3.0",
--    "aws-sdk": "^2.48.0",
--    "aws-sdk-mobile-analytics": "^0.9.2",
-     "codemirror": "^5.19.0",
-     "electron-config": "^0.2.1",
-     "electron-gh-releases": "^2.0.2",
+     "@rokt33r/markdown-it-math": "4.0.2",
+     "@rokt33r/season": "5.3.1",
+-    "aws-sdk": "2.48.0",
+-    "aws-sdk-mobile-analytics": "0.9.2",
+     "codemirror": "5.26.0",
+     "electron-config": "0.2.1",
+     "electron-gh-releases": "2.0.4",
