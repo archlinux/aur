@@ -4,7 +4,7 @@
 pkgname=hearthlauncher-git
 pkgver=0.041.r43.g57961b4
 pkgrel=1
-pkgdesc="Someone else please figure this out"
+pkgdesc="A Minecraft Launcher and Modpack Installer"
 arch=('x86_64')
 url="https://hearthproject.uk"
 license=('GPL')
