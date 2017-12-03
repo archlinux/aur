@@ -1,3 +1,4 @@
+# Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=healpix
 _pkgname=${pkgname}
 pkgver='3.31_2016Aug26'
@@ -22,12 +23,12 @@ build() {
     cd "${srcdir}/${_dir}/src/C/autotools"
     autoreconf --install
     ./configure --prefix="${pkgdir}/usr"
-    make
+    make -j
 
     cd "${srcdir}/${_dir}/src/cxx/autotools"
     autoreconf --install
     ./configure --prefix="${pkgdir}/usr"
-    make
+    make -j
 }
 
 #check() {
