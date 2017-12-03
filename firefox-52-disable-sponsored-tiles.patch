@@ -1,0 +1,150 @@
+--- firefox-52.0esr.bak/browser/modules/DirectoryLinksProvider.jsm	2017-03-09
++++ firefox-52.0esr/browser/modules/DirectoryLinksProvider.jsm	2017-03-09
+@@ -50,16 +50,16 @@
+ const DIRECTORY_LINKS_TYPE = "application/json";
+ 
+ // The preference that tells whether to match the OS locale
+-const PREF_MATCH_OS_LOCALE = "intl.locale.matchOS";
++const PREF_MATCH_OS_LOCALE = "";
+ 
+ // The preference that tells what locale the user selected
+-const PREF_SELECTED_LOCALE = "general.useragent.locale";
++const PREF_SELECTED_LOCALE = "";
+ 
+ // The preference that tells where to obtain directory links
+-const PREF_DIRECTORY_SOURCE = "browser.newtabpage.directory.source";
++const PREF_DIRECTORY_SOURCE = "";
+ 
+ // The preference that tells where to send click/view pings
+-const PREF_DIRECTORY_PING = "browser.newtabpage.directory.ping";
++const PREF_DIRECTORY_PING = "";
+ 
+ // The preference that tells if newtab is enhanced
+ const PREF_NEWTAB_ENHANCED = "browser.newtabpage.enhanced";
+@@ -189,30 +189,6 @@
+    * @return  the selected locale or "en-US" if none is selected
+    */
+   get locale() {
+-    let matchOS;
+-    try {
+-      matchOS = Services.prefs.getBoolPref(PREF_MATCH_OS_LOCALE);
+-    }
+-    catch (e) {}
+-
+-    if (matchOS) {
+-      return Services.locale.getLocaleComponentForUserAgent();
+-    }
+-
+-    try {
+-      let locale = Services.prefs.getComplexValue(PREF_SELECTED_LOCALE,
+-                                                  Ci.nsIPrefLocalizedString);
+-      if (locale) {
+-        return locale.data;
+-      }
+-    }
+-    catch (e) {}
+-
+-    try {
+-      return Services.prefs.getCharPref(PREF_SELECTED_LOCALE);
+-    }
+-    catch (e) {}
+-
+     return "en-US";
+   },
+ 
+@@ -283,13 +259,6 @@
+   },
+ 
+   _fetchAndCacheLinks: function DirectoryLinksProvider_fetchAndCacheLinks(uri) {
+-    // Replace with the same display locale used for selecting links data
+-    uri = uri.replace("%LOCALE%", this.locale);
+-    uri = uri.replace("%CHANNEL%", UpdateUtils.UpdateChannel);
+-
+-    return this._downloadJsonData(uri).then(json => {
+-      return OS.File.writeAtomic(this._directoryFilePath, json, {tmpPath: this._directoryFilePath + ".tmp"});
+-    });
+   },
+ 
+   /**
+@@ -298,33 +267,6 @@
+    * @return promise resolved to json string, "{}" returned if status != 200
+    */
+   _downloadJsonData: function DirectoryLinksProvider__downloadJsonData(uri) {
+-    let deferred = Promise.defer();
+-    let xmlHttp = this._newXHR();
+-
+-    xmlHttp.onload = function(aResponse) {
+-      let json = this.responseText;
+-      if (this.status && this.status != 200) {
+-        json = "{}";
+-      }
+-      deferred.resolve(json);
+-    };
+-
+-    xmlHttp.onerror = function(e) {
+-      deferred.reject("Fetching " + uri + " results in error code: " + e.target.status);
+-    };
+-
+-    try {
+-      xmlHttp.open("GET", uri);
+-      // Override the type so XHR doesn't complain about not well-formed XML
+-      xmlHttp.overrideMimeType(DIRECTORY_LINKS_TYPE);
+-      // Set the appropriate request type for servers that require correct types
+-      xmlHttp.setRequestHeader("Content-Type", DIRECTORY_LINKS_TYPE);
+-      xmlHttp.send();
+-    } catch (e) {
+-      deferred.reject("Error fetching " + uri);
+-      Cu.reportError(e);
+-    }
+-    return deferred.promise;
+   },
+ 
+   /**
+@@ -332,30 +274,6 @@
+    * @return promise resolved immediately if no download needed, or upon completion
+    */
+   _fetchAndCacheLinksIfNecessary: function DirectoryLinksProvider_fetchAndCacheLinksIfNecessary(forceDownload=false) {
+-    if (this._downloadDeferred) {
+-      // fetching links already - just return the promise
+-      return this._downloadDeferred.promise;
+-    }
+-
+-    if (forceDownload || this._needsDownload) {
+-      this._downloadDeferred = Promise.defer();
+-      this._fetchAndCacheLinks(this._linksURL).then(() => {
+-        // the new file was successfully downloaded and cached, so update a timestamp
+-        this._lastDownloadMS = Date.now();
+-        this._downloadDeferred.resolve();
+-        this._downloadDeferred = null;
+-        this._callObservers("onManyLinksChanged")
+-      },
+-      error => {
+-        this._downloadDeferred.resolve();
+-        this._downloadDeferred = null;
+-        this._callObservers("onDownloadFail");
+-      });
+-      return this._downloadDeferred.promise;
+-    }
+-
+-    // download is not needed
+-    return Promise.resolve();
+   },
+ 
+   /**
+@@ -962,16 +880,6 @@
+    */
+   _loadInadjacentSites: function DirectoryLinksProvider_loadInadjacentSites() {
+     return this._downloadJsonData(this._inadjacentSitesUrl).then(jsonString => {
+-      let jsonObject = {};
+-      try {
+-        jsonObject = JSON.parse(jsonString);
+-      }
+-      catch (e) {
+-        Cu.reportError(e);
+-      }
+-
+-      this._inadjacentSites = new Set(jsonObject.domains);
+-    });
+   },
+ 
+   /**

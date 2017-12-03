@@ -1,0 +1,7 @@
+--- firefox-45.0esr.bak/browser/base/content/browser.js	2016-03-15
++++ firefox-45.0esr/browser/base/content/browser.js	2016-03-15
+@@ -1689,4 +1689,2 @@
+ 
+-    if (AppConstants.MOZ_DATA_REPORTING)
+-      gDataNotificationInfoBar.init();
+

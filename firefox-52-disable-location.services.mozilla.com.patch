@@ -1,0 +1,24 @@
+--- firefox-45.0esr.bak/toolkit/components/search/nsSearchService.js	2016-03-13
++++ firefox-45.0esr/toolkit/components/search/nsSearchService.js	2016-03-13
+@@ -436,6 +436,10 @@
+     return;
+   }
+ 
++  // Prevent Firefox from contacting location.services.mozilla.com on a new profile
++  Services.prefs.setCharPref("browser.search.region", "US");
++  return;
++
+   // If we have 'isUS' but no 'countryCode' then we are almost certainly
+   // a profile from Fx 34/35 that set 'isUS' based purely on a timezone
+   // check. If this said they were US, we force region to be US.
+@@ -522,6 +526,10 @@
+     countryCode = Services.prefs.getCharPref("browser.search.countryCode");
+   } catch(e) {}
+ 
++  // No countryCode set, use US as default, don't contact location.services.mozilla.com
++  Services.prefs.setCharPref("browser.search.countryCode", "US");
++  return;
++
+   if (!countryCode) {
+     // We don't have it cached, so fetch it. fetchCountryCode() will call
+     // storeCountryCode if it gets a result (even if that happens after the

@@ -1,139 +1,219 @@
 # $Id$
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-eme-free
-_pkgname=firefox
-pkgver=46.0
+pkgver=57.0.1
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org"
-arch=('i686' 'x86_64')
-license=('MPL' 'GPL' 'LGPL')
+pkgdesc="Deblobbed and EME free Firefox"
+arch=(i686 x86_64)
+license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
-depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'ffmpeg' 'desktop-file-utils' 'hicolor-icon-theme'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'xorg-server-xvfb' 'libpulse' 'inetutils')
+depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
+         nss hunspell sqlite ttf-font libpulse)
+makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
+             autoconf2.13 rust mercurial clang llvm jack)
 optdepends=('networkmanager: Location detection via available WiFi networks'
-            'upower: Battery API')
-install=firefox.install
-conflicts=('firefox')
-provides=('firefox')
-options=('!emptydirs' '!makeflags')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
-        mozconfig
-        firefox.desktop
-        firefox-install-dir.patch
-        vendor.js
-        firefox-symbolic.svg
-        firefox-fixed-loading-icon.png
-        firefox-gtk3-20.patch
-        no-libnotify.patch)
-sha256sums=('b35aa05162362d73cd308066adca207f7aa40ceae10931fa4819371df6c4f8bf'
-            '4e79065e0fd20120eaf3de7a57a27f012db6bd69db4f976732c0f04f41a504a0'
-            'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'speech-dispatcher: Text-to-Speech')
+options=(!emptydirs !makeflags !strip)
+_repo=https://hg.mozilla.org/mozilla-unified
+source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
+        wifi-disentangle.patch wifi-fix-interface.patch
+        0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
+        no-plt.diff plugin-crash.diff glibc-2.26-fix.diff
+        $pkgname.desktop firefox-symbolic.svg firefox-install-dir.patch
+https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
+https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-location.services.mozilla.com.patch
+https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-reader.patch
+https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-sponsored-tiles.patch
+https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
+https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-prefs.patch)
+sha256sums=('SKIP'
+            'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
+            'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
+            'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
+            'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
+            'a7e5d2430bb562f6367deb07417dad4368317e8e8be5d1cfa842c3356de3cfc0'
+            'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8'
+            'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
-            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
-            '440c3e22d98ecf8c44dcedbe90bbb302da3a059e3fc3fba205d89f0eca329cbf'
-            'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7')
-validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
+            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
+            'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
+            '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
+            '7f171b7d69866ac6d8945ab0867b2646964362c791875c6428b4c2c8e3f3fb5b'
+            'a72c657784dc5804509456d9ba39ccc8d5e5998c847f49abbcfeb2a547290815'
+            '24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040'
+            '80d6181d11c200aca2781f69ffeafb59ea23952304d161c2812a2f5a98b273b0')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
 # more information.
-_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
-_google_default_client_id=413772536636.apps.googleusercontent.com
-_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
+
 
 # Mozilla API keys (see https://location.services.mozilla.com/api)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact heftig@archlinux.org for
 # more information.
-_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 
 prepare() {
-  cd $_pkgname-$pkgver
+  mkdir path
+  ln -s /usr/bin/python2 path/python
 
-  cp ../mozconfig .mozconfig
+  cd mozilla-unified
   patch -Np1 -i ../firefox-install-dir.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1234158
-  patch -Np1 -i ../firefox-gtk3-20.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
+  patch -Np1 -i ../wifi-disentangle.patch
+  patch -Np1 -i ../wifi-fix-interface.patch
 
-  # Notifications with libnotify are broken
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
-  patch -Np1 -i ../no-libnotify.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1384062
 
-  echo -n "$_google_api_key" >google-api-key
-  echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
+  patch -Np1 -i ../no-plt.diff
 
-  echo -n "$_google_default_client_id $_google_default_client_secret" >google-oauth-api-key
-  echo "ac_add_options --with-google-oauth-api-keyfile=\"$PWD/google-oauth-api-key\"" >>.mozconfig
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1400175
 
-  echo -n "$_mozilla_api_key" >mozilla-api-key
-  echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
 
-  mkdir "$srcdir/path"
-  ln -s /usr/bin/python2 "$srcdir/path/python"
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
 
-  # configure script misdetects the preprocessor without an optimization level
-  # https://bugs.archlinux.org/task/34644
-  sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
 
-  # Fix tab loading icon (doesn't work with libpng 1.6)
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
-  cp "$srcdir/firefox-fixed-loading-icon.png" \
-    browser/themes/linux/tabbrowser/loading.png
+patch -Np1 -i ../firefox-52-disable-data-sharing-infobar.patch
+patch -Np1 -i ../firefox-52-disable-location.services.mozilla.com.patch
+patch -Np1 -i ../firefox-52-disable-telemetry.patch
+
+
+
+  cat >.mozconfig <<END
+ac_add_options --enable-application=browser
+
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-gold
+ac_add_options --enable-pie
+ac_add_options --enable-optimize="-O2"
+ac_add_options --disable-stylo
+
+# Branding
+ac_add_options --enable-official-branding
+ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.archlinux
+export MOZILLA_OFFICIAL=1
+export MOZ_TELEMETRY_REPORTING=0
+export MOZ_ADDON_SIGNING=1
+export MOZ_REQUIRE_SIGNING=0
+
+# Keys
+# System libraries
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+ac_add_options --disable-gamepad
+ac_add_options --disable-necko-wifi 
+ac_add_options --disable-webspeech
+ac_add_options --disable-webrtc
+
+# Features
+ac_add_options --enable-alsa
+ac_add_options --enable-jack
+ac_add_options --enable-startup-notification
+ac_add_options --enable-crashreporter
+ac_add_options --disable-updater
+END
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd mozilla-unified
+
+  # _FORTIFY_SOURCE causes configure failures
+  CPPFLAGS+=" -O2"
 
   export PATH="$srcdir/path:$PATH"
-  export PYTHON="/usr/bin/python2"
+  export MOZ_SOURCE_REPO="$_repo"
 
   # Do PGO
-  xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
-    make -f client.mk build MOZ_PGO=1
+  #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
+  #  MOZ_PGO=1 ./mach build
+  ./mach build
+  ./mach buildsymbols
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+  cd mozilla-unified
+  DESTDIR="$pkgdir" ./mach install
+  find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
-  install -Dm644 ../vendor.js "$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  install -Dm644 /dev/stdin "$_vendorjs" <<END
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
+
+// Disable default browser checking.
+pref("browser.shell.checkDefaultBrowser", false);
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
+
+// Opt all of us into e10s, instead of just 50%
+pref("browser.tabs.remote.autostart", true);
+END
+
+  _distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
+  install -Dm644 /dev/stdin "$_distini" <<END
+[Global]
+id=archlinux
+version=1.0
+about=Mozilla Firefox for Arch Linux
+
+[Preferences]
+app.distributor=archlinux
+app.distributor.channel=$pkgname
+app.partner.archlinux=archlinux
+END
 
   for i in 16 22 24 32 48 256; do
-      install -Dm644 browser/branding/official/default$i.png \
-        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png"
+    install -Dm644 browser/branding/official/default$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
   install -Dm644 browser/branding/official/content/icon64.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/firefox.png"
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
   install -Dm644 browser/branding/official/mozicon128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/firefox.png"
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
   install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
   install -Dm644 browser/branding/official/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/firefox.png"
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgname.png"
   install -Dm644 ../firefox-symbolic.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/firefox-symbolic.svg"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
 
-  install -Dm644 ../firefox.desktop \
-    "$pkgdir/usr/share/applications/firefox.desktop"
+  install -Dm644 ../$pkgname.desktop \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # Use system-provided dictionaries
-  rm -rf "$pkgdir"/usr/lib/firefox/{dictionaries,hyphenation}
-  ln -s /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
-  ln -s /usr/share/hyphen "$pkgdir/usr/lib/firefox/hyphenation"
+  rm -r "$pkgdir"/usr/lib/$pkgname/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$pkgname/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$pkgname/hyphenation"
 
-  # Replace duplicate binary with symlink
+  # Install a wrapper to avoid confusion about binary path
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
+#!/bin/sh
+exec /usr/lib/$pkgname/firefox "\$@"
+END
+
+  # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
+  ln -srf "$pkgdir/usr/bin/$pkgname" \
+    "$pkgdir/usr/lib/$pkgname/firefox-bin"
+
+  # Use system certificates
+  ln -srf "$pkgdir/usr/lib/libnssckbi.so" \
+    "$pkgdir/usr/lib/$pkgname/libnssckbi.so"
 }
