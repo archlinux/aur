@@ -2,7 +2,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=sk1-git
-pkgver=r3519.8e139fc9
+pkgver=r3532.95c1e80e
 pkgrel=1
 pkgdesc="An open source vector graphics editor for prepress"
 url="https://sk1project.net/"
