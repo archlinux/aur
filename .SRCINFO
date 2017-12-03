@@ -37,7 +37,7 @@ pkgbase = emq
 	source = emq.service
 	source = 0001-Update-vars-for-build.patch
 	md5sums = SKIP
-	md5sums = 1091148c71c9498263b4f9179ee8a1fe
+	md5sums = 50c106030b0fb71dfe64e9fa939a0595
 	md5sums = 53da2693269a9de92bf6b3497d2995f3
 
 pkgname = emq
