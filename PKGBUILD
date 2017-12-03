@@ -11,7 +11,7 @@ depends=("qt5-base" "qtkeychain" "curl")
 makedepends=("cmake" "cpr-git")
 provides=("eifl")
 conflicts=("eifl-git")
-source=("${_pkgname}::git+${url}.git#branch=sql")
+source=("${_pkgname}::git+${url}.git#branch=dev")
 md5sums=("SKIP")
 
 pkgver() {
