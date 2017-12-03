@@ -4,7 +4,7 @@
 pkgname=4l
 pkgver=1.0r6
 _realname=4L-1.0-r6
-pkgrel=8
+pkgrel=9
 pkgdesc="4L: LaCie LightScribe Labeler for Linux"
 arch=('i686')
 url="http://www.lacie.com/products/product.htm?pid=10803"
