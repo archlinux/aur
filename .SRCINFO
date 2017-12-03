@@ -2,7 +2,7 @@ pkgbase = teensy-loader-cli-git
 	pkgdesc = Command line loader for the teensy microprocessor boards
 	pkgver = 2.1.r14.gf5b6d7a
 	pkgrel = 1
-	url = http://www.pjrc.com/teensy/loader_cli.html
+	url = https://www.pjrc.com/teensy/loader_cli.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -12,9 +12,9 @@ pkgbase = teensy-loader-cli-git
 	provides = teensy-loader-cli
 	conflicts = teensy-loader-cli
 	source = teensy-loader-cli-git::git+https://github.com/PaulStoffregen/teensy_loader_cli.git
-	source = http://www.pjrc.com/teensy/49-teensy.rules
-	md5sums = SKIP
-	md5sums = 97a691215b1865bc1d500b134f92427b
+	source = https://www.pjrc.com/teensy/49-teensy.rules
+	sha256sums = SKIP
+	sha256sums = 031de0b26991b5a3b19c497d9c0a17f86c40c55d925b9d07d19ab89f2286469d
 
 pkgname = teensy-loader-cli-git
 
