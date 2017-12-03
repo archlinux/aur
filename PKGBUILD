@@ -4,13 +4,13 @@
 
 pkgname=lightscribe-labeler
 pkgver=1.18.15.1
-pkgrel=4
+pkgrel=5
 pkgdesc="LightScribe Simple Labeler"
 arch=('i686')
 url="http://www.lightscribe.com/downloadSection/linux/index.aspx?id=815"
 license=('custom')
 depends=('lightscribe' 'libstdc++5' 'libxi' 'libxcursor' 'libpng' 'fontconfig' 'libsm' 'libxrandr')
-source=(https://dl.dropboxusercontent.com/u/29095940/oss/lightscribeApplications-1.18.15.1-linux-2.6-intel.rpm)
+source=(http://files.jkvinge.net/packages/lightscribe/lightscribeApplications-1.18.15.1-linux-2.6-intel.rpm)
 options=('!strip')
 
 package() {
