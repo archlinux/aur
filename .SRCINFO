@@ -1,7 +1,7 @@
 pkgbase = helper-debug
 	pkgdesc = Helper debug test
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.google.com/chrome
 	arch = any
 	license = custom
