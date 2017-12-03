@@ -1,0 +1,21 @@
+pkgbase = hearthlauncher-git
+	pkgdesc = Someone else please figure this out
+	pkgver = 0.041.r43.g57961b4
+	pkgrel = 1
+	url = https://hearthproject.uk
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt5-base
+	depends = zlib
+	depends = quazip
+	depends = qt5-svg
+	provides = hearthlauncher
+	conflicts = hearthlauncher
+	source = hearthlauncher-git::git+https://gitlab.com/HearthProject/HearthLauncher.git
+	sha512sums = SKIP
+
+pkgname = hearthlauncher-git
+
