@@ -9,24 +9,35 @@ pkgdesc='Perl package providing printf() alternative'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-depends=('perl>=5.10.1' 'perl-unicode-linebreak')
+depends=('perl>=5.10.1'
+	'perl-html-parser'
+	'perl-timedate>=2.30'
+	'perl-unicode-linebreak')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
 
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1
+}
+
 build() {
 	cd [% distdir %]
-	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	sanitize
+	perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
 	cd [% distdir %]
+	sanitize
 	make test
 }
 
 package() {
 	cd [% distdir %]
+	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
