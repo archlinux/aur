@@ -1,29 +1,30 @@
 # Maintainer: Damien Guihal <dguihal@gmail.com>
+# Do not forget SRCINFO :  makepkg --printsrcinfo > .SRCINFO
 pkgname=soapui
-pkgver=5.3.0
-pkgrel=2
+pkgver=5.4.0
+pkgrel=1
 pkgdesc="A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP."
 arch=('i686' 'x86_64')
 url="http://www.soapui.org/"
 license=('EUPL V.1.1')
 groups=()
 depends=('java-environment' 'hicolor-icon-theme')
-source=("http://cdn01.downloads.smartbear.com/soapui/$pkgver/SoapUI-$pkgver-linux-bin.tar.gz"
+source=("https://s3.amazonaws.com/downloads.eviware/soapuios/$pkgver/SoapUI-$pkgver-EB-linux-bin.tar.gz"
         "http://freeapps.co.uk.s3.amazonaws.com/images/thumbnails/$pkgname.png"
         "$pkgname.desktop"
         "$pkgname")
 #generate with 'makepkg -g'
-md5sums=('50fe94c44018b8a2ad000deeb0015d79'
+md5sums=('37a9cc3df46c1e3e1a2be264a8749291'
          '3cc08aca62edb502fc53013edf69f640'
          'f0e2fa73dd9a7c271e38c179b4e284a3'
          '5c885433a9e32efa30d2a82f3b2a6ad2')
-sha1sums=('367b310a3894e1c63047f39271947baeedc9f2a8'
+sha1sums=('1218f2b43fe0fd7048cc6cd8d298c233fc159e49'
           '9f12e2f0db63083a3fa4e5b6fdfd10c8dfd038c0'
           '4ced7d28c3c5880db600bf4769fdb1a3dc3a6fce'
           'e74e1d3dd08f1b027479ceca30051304ae4b1a08')
 
 build() {
-  cd ${srcdir}/SoapUI-$pkgver
+  cd ${srcdir}/SoapUI-$pkgver-EB
 
   #Correction du bug jxplorer
   sed -i -e 's/^java/${JAVA_HOME}\/bin\/java/' bin/soapui.sh
@@ -32,7 +33,7 @@ build() {
 package() {
   mkdir -p ${pkgdir}/usr/share/soapui
   mkdir -p ${pkgdir}/usr/bin
-  cd ${srcdir}/SoapUI-$pkgver
+  cd ${srcdir}/SoapUI-$pkgver-EB
   cp -R * ${pkgdir}/usr/share/soapui
 
   cd ${srcdir}
