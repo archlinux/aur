@@ -8,7 +8,7 @@ pkgdesc="A Web Framework built on top of Qt, using the simple approach of Cataly
 arch=('i686' 'x86_64')
 url="http://cutelyst.org"
 license=('LGPL2.1')
-depends=('qt5-base grantlee uwsgi')
+depends=('qt5-base' 'grantlee' 'uwsgi')
 makedepends=('cmake' 'doxygen' 'graphviz')
 source=("https://github.com/cutelyst/cutelyst/archive/v${pkgver}.tar.gz")
 
