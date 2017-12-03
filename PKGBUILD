@@ -4,7 +4,7 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}"
-pkgver=1.0.10_beta2
+pkgver=1.0.10_beta3
 gitname="release-${pkgver//_/-}"
 pkgrel=8
 pkgdesc="GUI for managing Git and GitHub."
@@ -18,17 +18,11 @@ DLAGENTS=("http::/usr/bin/git clone --branch ${gitname} --single-branch %u")
 source=(
   git+https://github.com/desktop/desktop.git#tag=${gitname}
   ${_pkgname}.desktop
-  ${_pkgname}.patch
 )
 sha256sums=(
   'SKIP'
   ce0dae70066703df656aa6f509f9a7f4f59e081e8f05be8aa7a81ee4605661c3
-  25979a1e08c87361d457a277cb39327bdd82cadb3207f21bd11580579d9ecc62
 )
-prepare() {
-  cd desktop
-  patch -p1 -i "${srcdir}/${_pkgname}.patch"
-}
 build() {
   cd desktop
   export DISPLAY=':99.0'
