@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <postblue@postblue.info>
 
 pkgname=gog-risk-of-rain
-pkgver=2.1.0.5
+pkgver=2.1.0.6
 pkgrel=1
 pkgdsc="Risk of Rain is an action platformer with roguelike elements."
 url="https://www.gog.com/game/risk_of_rain"
@@ -12,7 +12,7 @@ depends_i686=('alsa-lib' 'libstdc++5' 'libcurl-compat')
 
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop")
-sha256sums=('90d4a692928802602264a6e1690ee1fb2dc43e9c07329cb08cd57d06b06b9562'
+sha256sums=('efb2968d85da4510274ae021d63b79989e4d85ea06f09ec5b69df817ab7ad719'
             'a1f0cc949d89cf5c9601b691989a5e728224f17b1f8c7d03d4c7f82be0a105ca')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
