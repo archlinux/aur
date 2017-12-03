@@ -2,7 +2,7 @@
 
 pkgname=xscreensaver-dbus-screenlock
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="DE neutral integrated screen-locking with xscreensaver"
 arch=('i686' 'x86_64')
 url="http://ubuntuforums.org/showthread.php?t=1865593&s=1c7f28c50a3f258e1d3404e41f098a0b&p=11418175#post11418175"
@@ -34,8 +34,8 @@ package() {
   install -m644 {${srcdir}/org.{freedesktop,gnome}.ScreenSaver.service,${pkgdir}/usr/share/dbus-1/services/}
 
   #XDG Startups
-  install -Ddm755 "${pkgdir}/etc/xdg/autostart"
-  install -m644 {${srcdir}/xscreensaver-dbus-screenlock-{freedesktop,gnome}.desktop,${pkgdir}/etc/xdg/autostart/}
+  #install -Ddm755 "${pkgdir}/etc/xdg/autostart"
+  #install -m644 {${srcdir}/xscreensaver-dbus-screenlock-{freedesktop,gnome}.desktop,${pkgdir}/etc/xdg/autostart/}
 
   #Gconf Schemas (for dependencies)
   install -Dm644 {${srcdir},${pkgdir}/usr/share/glib-2.0/schemas}/apps.light-locker.gschema.xml
