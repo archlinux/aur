@@ -12,7 +12,7 @@ pkgbase = eifl-dev-git
 	depends = curl
 	provides = eifl
 	conflicts = eifl-git
-	source = eifl::git+https://github.com/Quent42340/EIFL.git#branch=sql
+	source = eifl::git+https://github.com/Quent42340/EIFL.git#branch=dev
 	md5sums = SKIP
 
 pkgname = eifl-dev-git
