@@ -1,0 +1,13 @@
+pkgbase = continuous-silence
+	pkgdesc = Continuous silence hack to ensure short audio playback
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://unix.stackexchange.com/questions/362223
+	arch = x86_64
+	license = GPL3
+	depends = sox
+	source = continuous-silence.service
+	md5sums = 618ebd045a15c5742885435a79ba1b5c
+
+pkgname = continuous-silence
+

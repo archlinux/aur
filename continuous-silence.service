@@ -1,0 +1,8 @@
+[Unit]
+Description=continuous-silence
+
+[Service]
+ExecStart=/usr/bin/play -qn
+
+[Install]
+WantedBy=multi-user.target
