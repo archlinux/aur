@@ -1,7 +1,7 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.4.2
-_numix_ver=1.2.8.1
+_oomox_ver=1.4.3
+_numix_ver=1.2.9
 _materia_ver=20171005
 
 pkgname=oomox
@@ -48,8 +48,8 @@ source=(
     'oomoxify-cli'
     'oomox.desktop'
 )
-md5sums=('82ee7d59f42a31128839a925be668062'
-         '983b4dfa91d0f0bc87afa82d28090c18'
+md5sums=('d949862f150b04ac01a7e1a8738e9501'
+         '7ae336350a6f908907d80a528bde7ba4'
          'a557047ab75824fae30f8c4d10bd30cf'
          'efc83d981e1fcfb41c6d439f1013efbd'
          '0d156463416bbc2260c073c15b7f2a70'
