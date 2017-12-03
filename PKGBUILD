@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=keeweb
-pkgver=1.5.6
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('keeweb-desktop')
 source=("https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
         'keeweb')
 
-sha1sums=('b71427470ea8a2f9652c34673ef672589209cfab'
+sha1sums=('7c517c4c5c71c0a06990b9626cbf2b45c2b1cbbf'
           '6f73285126a5d6d948712de73053957528aba0cc')
 
 prepare() {
@@ -60,7 +60,7 @@ prepare() {
 build() {
 	cd "${pkgname}-${pkgver}"
 
-	npm install --no-shrinkwrap
+	npm install
 	node_modules/.bin/grunt --skip-sign build-web-app build-desktop-app-content
 
 	asar p tmp/desktop/app ../keeweb.asar
@@ -72,11 +72,10 @@ package() {
 	install -Dm0644 -t "${pkgdir}/usr/lib/keeweb" ../keeweb.asar
 	install -Dm0755 -t "${pkgdir}/usr/bin"        ../keeweb
 
-	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt LICENSES-DEPS.txt
+	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE LICENSE-DEPS
 
 	install -Dm0644 -t "${pkgdir}/usr/share/mime/packages" package/deb/usr/share/mime/packages/keeweb.xml
 	install -Dm0644 -t "${pkgdir}/usr/share/applications"  package/deb/usr/share/applications/keeweb.desktop
 
 	install -Dm0644 graphics/128x128.png "${pkgdir}/usr/share/pixmaps/keeweb.png"
-
 }
