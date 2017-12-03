@@ -1,8 +1,8 @@
 # Maintainer: SrKaysama <srkaysama@waifu.club>
 
 pkgname=discord-always-canary
-pkgver=99.0.0
-pkgrel=23
+pkgver=0.0.32.20171203
+pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -21,14 +21,13 @@ _latest="https://discordapp.com/api/download/canary?platform=linux&format=tar.gz
 _version="$(curl -sI $_latest | grep location | sed 's/^.*linux\///' | sed 's/.discord.*//')"
 source=(DiscordCanary.desktop LICENSE)
 source_x86_64=("https://dl-canary.discordapp.net/apps/linux/${_version}/discord-canary-${_version}.tar.gz")
-md5sums=('SKIP'
-         'SKIP')
+md5sums=('SKIP' 'SKIP')
 md5sums_x86_64=('SKIP')
 
 #This is always latest build
 
 pkgver() {
-  echo "${_version}"
+  echo "${_version}.$(date +%Y%m%d)"
 }
 
 package() {
