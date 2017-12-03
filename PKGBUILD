@@ -3,7 +3,7 @@ pkgname=tc-twitch-git
 _pkgname=tc-twitch
 _realname=tc
 _icons_dir="additional-icons"
-pkgver=10.2.0.r16.g0e5ed56
+pkgver=10.2.0.r20.g35d8772
 pkgrel=1
 pkgdesc="The chat client for Twitch™"
 arch=('any')
@@ -28,7 +28,7 @@ build() {
   rm -rf _build
   mkdir -p _build
   npm install
-  npm install 7zip-bin-linux 
+  ### npm install 7zip-bin-linux 
   node_modules/.bin/webpack
   cp src/tc-renderer/index.html _build/index.html
   cp src/package.json _build/package.json
