@@ -5,4 +5,4 @@ Description=continuous-silence
 ExecStart=/usr/bin/play -qn
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
