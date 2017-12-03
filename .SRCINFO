@@ -1,6 +1,6 @@
 pkgbase = perl-xml-compile
 	pkgdesc = Perl package providing compilation-based XML processing
-	pkgver = 1.50
+	pkgver = 1.58
 	pkgrel = 1
 	url = https://metacpan.org/release/XML-Compile
 	arch = any
@@ -8,12 +8,13 @@ pkgbase = perl-xml-compile
 	license = GPL
 	checkdepends = perl-test-deep>=0.095
 	depends = perl>=5.13.7
-	depends = perl-xml-libxml>=2.01
+	depends = perl-log-report>=1.20
+	depends = perl-types-serialiser
 	depends = perl-xml-compile-tester>=0.90
-	depends = perl-log-report>=1.03
+	depends = perl-xml-libxml>=2.0107
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-1.50.tar.gz
-	md5sums = e8a7d600ce8c3d261628f2b6bc8c0b5d
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-1.58.tar.gz
+	md5sums = b92acffd7fb6a50953b5b6ac9a707e8c
 
 pkgname = perl-xml-compile
 
