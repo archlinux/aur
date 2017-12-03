@@ -2,7 +2,7 @@
 
 pkgname=php-memcache
 pkgver=3.0.8
-pkgrel=5
+pkgrel=6
 _commit=fdbd46bbc6f53ed6e024521895e142cbfc9b3340
 pkgdesc="Memcache module for PHP"
 arch=('x86_64')
