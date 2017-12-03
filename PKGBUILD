@@ -4,43 +4,39 @@
 
 pkgname=dwarftherapist-git
 epoch=2
-pkgver=r1229.fd5d9a0
+pkgver=39.0.0_r4_g5efed5d
 pkgrel=1
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
-url="https://github.com/Hello71/Dwarf-Therapist"
+url="https://github.com/Dwarf-Therapist/Dwarf-Therapist"
 arch=('x86_64' 'i686')
 license=('MIT')
 depends=('qt5-declarative' 'hicolor-icon-theme' 'libcap')
 makedepends=('git' 'cmake')
 install="dwarftherapist.install"
-source=(git+"https://github.com/Hello71/Dwarf-Therapist.git#branch=DF2016")
+source=(git+"${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd Dwarf-Therapist
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd Dwarf-Therapist
+  git describe --long --tags | sed -e 's:^v::' -e 's:\([^-]*-g\):r\1:' -e 's:-:_:g'
 }
 
 build() {
   cd Dwarf-Therapist
-  cmake -DCMAKE_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release" .
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release" .
   make
 }
 
 package() {
   cd Dwarf-Therapist
-  install -Dm755 "DwarfTherapist" "$pkgdir/usr/bin/dwarftherapist"
-  install -dm755 "$pkgdir/usr/share/dwarftherapist/memory_layouts"
-  cp -a share/memory_layouts/* "$pkgdir/usr/share/dwarftherapist/memory_layouts"
-  install -Dm644 "dist/dwarftherapist.desktop" \
-    "$pkgdir/usr/share/applications/dwarftherapist.desktop"
-  install -Dm644 resources/img/hammer.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/dwarftherapist.png"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make DESTDIR="$pkgdir" install
+  
+  # Rename binary
+  mv "$pkgdir/usr/bin/DwarfTherapist" "$pkgdir/usr/bin/dwarftherapist"
+
+  # Link license to expected location
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s /usr/share/doc/dwarftherapist/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
