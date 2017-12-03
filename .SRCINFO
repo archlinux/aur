@@ -1,6 +1,6 @@
 pkgbase = mpris-scrobbler
-	pkgver = 0.1.99
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/mariusor/mpris-scrobbler
 	arch = x86
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = mpris-scrobbler
 	makedepends = libevent
 	makedepends = curl
 	makedepends = json-c
-	makedepends = openssl
 	makedepends = ragel
 	makedepends = meson
 	makedepends = ninja
@@ -17,10 +16,9 @@ pkgbase = mpris-scrobbler
 	depends = libevent
 	depends = curl
 	depends = json-c
-	depends = openssl
-	source = https://github.com/mariusor/mpris-scrobbler/archive/v0.1.99.tar.gz
+	source = https://github.com/mariusor/mpris-scrobbler/archive/v0.2.0.tar.gz
 	validpgpkeys = A9A02AFEFF4B4D3CCC80F6168218F7122969D484
-	sha256sums = 6d8b388bbbc3b358c7bf2d7ede3abec03a8249b6f4e6cea7fef081f75116e50d
+	sha256sums = 60fc262cb0ee04f035d0ea1d8352f535ed388112defa791075751178e199b587
 
 pkgname = mpris-scrobbler
 

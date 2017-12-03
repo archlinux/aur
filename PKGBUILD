@@ -1,15 +1,15 @@
 # Maintainer: Marius Orcsik <marius@littr.me>
 pkgname=mpris-scrobbler
-pkgver=0.1.99
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc=""
 arch=('x86' 'x86_64')
 url="https://github.com/mariusor/mpris-scrobbler"
 license=('MIT')
-makedepends=('dbus' 'libevent' 'curl' 'json-c' 'openssl' 'ragel' 'meson' 'ninja')
-depends=('dbus' 'libevent' 'curl' 'json-c' 'openssl')
+makedepends=('dbus' 'libevent' 'curl' 'json-c' 'ragel' 'meson' 'ninja')
+depends=('dbus' 'libevent' 'curl' 'json-c')
 source=("https://github.com/mariusor/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('6d8b388bbbc3b358c7bf2d7ede3abec03a8249b6f4e6cea7fef081f75116e50d')
+sha256sums=('60fc262cb0ee04f035d0ea1d8352f535ed388112defa791075751178e199b587')
 validpgpkeys=('A9A02AFEFF4B4D3CCC80F6168218F7122969D484')
 
 build() {
