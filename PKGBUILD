@@ -2,7 +2,7 @@
 
 pkgname=spoticord
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Display your current Spotify song on Discord using the RPC API'
 arch=( 'x86_64' )
 url='https://github.com/nations/spoticord/'
@@ -19,9 +19,15 @@ pkgver() {
     echo "${_version}"
 }
 
+build(){
+    cd "${pkgname}"
+
+}
+
 package(){
     cd "${pkgname}"
     npm i
+    npm i devsnek/discord-rpc
 
     # Files
     install -d "${pkgdir}/opt/${pkgname}"
@@ -33,6 +39,6 @@ package(){
 
     # Bin
     install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "${pkgdir}/opt/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
 }
