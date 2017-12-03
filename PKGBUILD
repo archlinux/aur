@@ -4,7 +4,7 @@ _py=python
 _gitname=python
 
 pkgname=${_py}-vlc-git
-pkgver=r238.3a66100
+pkgver=r290.6b4f486
 pkgrel=1
 pkgdesc="Python bindings for VLC"
 arch=('any')
@@ -27,7 +27,7 @@ prepare() {
   cp setup.py "${srcdir}/${_gitname}/"
 
   # move vlc.py to root
-  cp "${srcdir}/${_gitname}/generated/vlc.py" "${srcdir}/${_gitname}/"
+  cp "${srcdir}/${_gitname}/generated/2.2/vlc.py" "${srcdir}/${_gitname}/"
 }
 
 build() {
