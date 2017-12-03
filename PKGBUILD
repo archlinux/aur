@@ -1,4 +1,4 @@
-# Maintainer: # Maintainer: Phil Sidler <phil_sidler@hotmail.com>
+# Maintainer: sardo <sardonimous@hotmail.com>
 # Parts copied from x3270 package by tuftedocelot <tuftedocelot@fastmail.fm>
 pkgname=x3270-git
 pkgver=3.6alpha1.r1814
