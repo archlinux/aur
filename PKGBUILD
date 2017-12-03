@@ -1,6 +1,6 @@
-# Maintainer: Phil Sidler <phil_sidler@hotmail.com>
+# Maintainer: sardo <sardonimous@hotmail.com>
 pkgname=oorexx-beta
-pkgver=5.0.0.r11335
+pkgver=5.0.0.r11337
 pkgrel=1
 pkgdesc="open source implementation of Object Rexx"
 arch=('x86_64')
@@ -37,7 +37,7 @@ build() {
 package() {
   cd "${pkgname}"
   cd ../build
-  make DESTDIR="${pkgdir}/" install || return 1
+  make DESTDIR="${pkgdir}" install || return 1
   cd "${pkgdir}"
   patch -p1 -i "${srcdir}/oorexx-beta-5.0.0-rxapid.patch"
 }
