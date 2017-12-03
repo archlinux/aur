@@ -2,7 +2,7 @@
 # Do not forget SRCINFO :  makepkg --printsrcinfo > .SRCINFO
 pkgname=soapui
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP."
 arch=('i686' 'x86_64')
 url="http://www.soapui.org/"
@@ -17,11 +17,11 @@ source=("https://s3.amazonaws.com/downloads.eviware/soapuios/$pkgver/SoapUI-$pkg
 md5sums=('37a9cc3df46c1e3e1a2be264a8749291'
          '3cc08aca62edb502fc53013edf69f640'
          'f0e2fa73dd9a7c271e38c179b4e284a3'
-         '5c885433a9e32efa30d2a82f3b2a6ad2')
+         '0f92cc9882a7a6165a642c3a67c9961b')
 sha1sums=('1218f2b43fe0fd7048cc6cd8d298c233fc159e49'
           '9f12e2f0db63083a3fa4e5b6fdfd10c8dfd038c0'
           '4ced7d28c3c5880db600bf4769fdb1a3dc3a6fce'
-          'e74e1d3dd08f1b027479ceca30051304ae4b1a08')
+          '290b3c12781d2242c9dbb9a760a8713f533cbd2c')
 
 build() {
   cd ${srcdir}/SoapUI-$pkgver-EB
