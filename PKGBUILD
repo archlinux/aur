@@ -4,14 +4,14 @@
 
 pkgname=lightscribe
 pkgver=1.18.24.1
-pkgrel=3
+pkgrel=4
 pkgdesc="LightScribe Host Software for Linux"
 arch=('i686')
 url="http://www.lightscribe.com/downloadsection/linux/index.aspx?id=1372"
 license=('custom')
 depends=('libstdc++5')
-source=(https://dl.dropboxusercontent.com/u/29095940/oss/lightscribe-1.18.24.1-linux-2.6-intel.rpm
-		rc.patch)
+source=(http://files.jkvinge.net/packages/${pkgname}/${pkgname}-${pkgver}-linux-2.6-intel.rpm
+	rc.patch)
 options=('!strip')
 
 build() {
