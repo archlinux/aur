@@ -1,13 +1,12 @@
 pkgbase = polybar
 	pkgdesc = A fast and easy-to-use status bar
-	pkgver = 3.0.5
-	pkgrel = 4
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://github.com/jaagr/polybar
 	install = polybar.install
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	makedepends = python
@@ -26,7 +25,7 @@ pkgbase = polybar
 	optdepends = siji-git: Font used in example config
 	optdepends = curl: github module support
 	conflicts = polybar-git
-	source = polybar::git+https://github.com/jaagr/polybar.git#tag=3.0.5
+	source = polybar::git+https://github.com/jaagr/polybar.git#tag=3.1.0
 	md5sums = SKIP
 
 pkgname = polybar
