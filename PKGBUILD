@@ -2,20 +2,20 @@
 # Contributor: Bernard Baeyens (berbae) <berbae52 at sfr dot fr>
 
 pkgname=pan
-pkgver=0.142
-pkgrel=3
+pkgver=0.143
+pkgrel=1
 pkgdesc="A powerful Newsgroup Article reader"
 arch=(x86_64)
 url="http://pan.rebelbase.com/"
 license=(GPL2)
-depends=(gtkspell gmime)
+depends=(gtkspell3 gmime)
 makedepends=(intltool itstool)
 source=("http://pan.rebelbase.com/download/releases/$pkgver/source/$pkgname-$pkgver.tar.bz2")
-sha256sums=('12d776e981a32123a18f02424173910ab3bf5856ead416ea33b83d927ab42f93')
+sha256sums=('3d3b7ff776d887578c1f7662c5d4c4097a8a00380a89f6b148ff2775f159a902')
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr --with-gnutls
+  ./configure --prefix=/usr --with-gnutls --with-gtk3
   make
 }
 
