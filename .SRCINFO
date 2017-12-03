@@ -6,6 +6,7 @@ pkgbase = hearthlauncher-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = clang
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt5-base
