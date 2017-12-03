@@ -6,16 +6,16 @@ pkgver=2.1.r14.gf5b6d7a
 pkgrel=1
 pkgdesc="Command line loader for the teensy microprocessor boards"
 arch=('i686' 'x86_64')
-url="http://www.pjrc.com/teensy/loader_cli.html"
+url="https://www.pjrc.com/teensy/loader_cli.html"
 license=('GPL2')
 makedepends=('gcc' 'make')
 depends=('libusb-compat')
 provides=('teensy-loader-cli')
 conflicts=('teensy-loader-cli')
 source=("${pkgname}::git+https://github.com/PaulStoffregen/teensy_loader_cli.git"
-        "http://www.pjrc.com/teensy/49-teensy.rules")
-md5sums=('SKIP'
-         '97a691215b1865bc1d500b134f92427b')
+        "https://www.pjrc.com/teensy/49-teensy.rules")
+sha256sums=('SKIP'
+         '031de0b26991b5a3b19c497d9c0a17f86c40c55d925b9d07d19ab89f2286469d')
 
 pkgver() {
   cd "$pkgname"
@@ -29,9 +29,7 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -dm755 "${pkgdir}/usr/bin/"
-  install -D -m755 "${srcdir}/${pkgname}/teensy_loader_cli" \
-    "${pkgdir}/usr/bin/teensy_loader_cli"
-  install -D -m644 "${srcdir}/49-teensy.rules" \
+  install -Dm755 "teensy_loader_cli" "${pkgdir}/usr/bin/teensy_loader_cli"
+  install -Dm644 "${srcdir}/49-teensy.rules" \
     "${pkgdir}/etc/udev/rules.d/49-teensy.rules"
 }
