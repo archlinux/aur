@@ -1,6 +1,6 @@
 pkgbase = boostnote
 	pkgdesc = Open source note-taking app for programmers
-	pkgver = 0.8.17
+	pkgver = 0.8.18
 	pkgrel = 1
 	url = https://boostnote.io/
 	arch = any
@@ -10,16 +10,16 @@ pkgbase = boostnote
 	makedepends = git
 	depends = electron
 	depends = nodejs
-	source = boostnote-0.8.17.tar.gz::https://github.com/BoostIO/Boostnote/archive/v0.8.17.tar.gz
+	source = boostnote-0.8.18.tar.gz::https://github.com/BoostIO/Boostnote/archive/v0.8.18.tar.gz
 	source = boostnote.js
 	source = boostnote.desktop
 	source = warning-fix.patch
 	source = remove-analytics.patch
-	sha512sums = 5c28859a459cf54355f88d6abebb9b5a0c1b4f229491d54296a632ea27c43a06227c0699b2858cd4526e835679dadf9981b9c8102aac3894ccc3e8bba1da07e1
+	sha512sums = 8c367f10b5460ebab1d5486537d120ed1cdee6a7507472aee7973bc0c84457b57601e4ec7cb0710119b72648b79d82dc05770ab10f3e7f933298d4913e2fe66d
 	sha512sums = f0abbdcca34d7f74d3dc66ffc2d0995416e7708c715d55fa58c4c2abc31d191ea42f3434e3105292b4817f83ac0ca89f456f5f93007ae80ab2426c8941f615f9
 	sha512sums = 18bcda13580da8ceeaa86793a77ec00a053b8fd51451dad7e2b1a19553fe1a467ac647b44b789212e783f3f6a80968cc9404e884ef7ff6b1f6588473b3229d40
 	sha512sums = 87d883064a58b8bf0e92f42ad40c7da1f3eae4ab4eb1029b3f22f34c47233f6543430b3fe41cb385511d6e6aabcc8eef4c08d0963a7950e331f319f9ebcf0524
-	sha512sums = ba5aa092e3bf29d3ad08be198691ddb24e10f5dff3c1700d5c85da5c54a611e3a94164eb23b149e7e31be7f88afad5ec8b93712922cdd0039f323b8cbe2808d9
+	sha512sums = 090406d39cd25409f4e8bc30c498d84ceb11ff01c83ccb3dbffdfbf10e3e8a6759f1c268b9b15ca7c52f47e2f65f71d12d34f5d78e2387bf8334daafe80be38c
 
 pkgname = boostnote
 
