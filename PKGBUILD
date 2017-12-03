@@ -3,12 +3,12 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=3.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.1')
 url="https://github.com/pi-hole/pi-hole"
-depends=('dnsmasq' 'net-tools')
+depends=('dnsmasq' 'net-tools' 'iproute2')
 conflicts=('pi-hole-server')
 install=$pkgname.install
 backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt'
