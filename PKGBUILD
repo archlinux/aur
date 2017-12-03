@@ -2,7 +2,7 @@
 
 pkgname=openvpn-nordvpn
 pkgver=0.1.32
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenVPN helper script for nordvpn.com"
 arch=(any)
 url="https://github.com/nstinus/nordvpn"
@@ -14,7 +14,8 @@ depends=('openvpn'
          'unzip'
          'sudo'
          'coreutils'
-         'bc')
+         'bc'
+         'fping')
 optdepends=('iputils: run ping and rank functions'
             'vpnfailsafe-git: use instead of update-resolv-conf if available'
             'python-pandas: run nordvpn infos command'
