@@ -1,13 +1,15 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=dnsdist-git
-pkgver=r12686.638dd3d9f
+pkgver=r13393.4461bb7c3
 pkgrel=1
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
-arch=('i686' 'x86_64')
-url='http://dnsdist.org/'
+arch=('x86_64')
+url='https://dnsdist.org/'
 license=('GPL2')
-source=("${pkgname}::git+https://github.com/PowerDNS/pdns")
-sha512sums=('SKIP')
+source=("${pkgname}::git+https://github.com/PowerDNS/pdns"
+        sysusers.conf)
+sha512sums=('SKIP'
+            'd55ccd612cbe08b353815027d30a3b0f0ec7bf6b0d74a0a634939be53ce6e6b41d23e54c2328946f00738c03e9f306ce4f2dabe5e4b11d9fb28d0abf49917893')
 makedepends=('boost' 'git' 'pandoc' 'python-virtualenv' 'ragel' 'systemd')
 depends=('libedit' 'libsodium' 'libsystemd' 'lua' 'net-snmp' 'protobuf' 're2')
 provides=('dnsdist')
@@ -19,7 +21,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/pdns/dnsdistdist"
+  cd "${pkgname}/pdns/dnsdistdist"
   autoreconf -i
   ./configure \
     --prefix=/usr \
@@ -29,11 +31,13 @@ build() {
     --enable-dnscrypt \
     --enable-re2
   make
+  sed -i 's,ExecStart=/usr/bin/dnsdist --supervised --disable-syslog,ExecStart=/usr/bin/dnsdist --supervised --disable-syslog -u dnsdist,' dnsdist.service
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/pdns/dnsdistdist/"
-  sed -i 's,ExecStart=/usr/bin/dnsdist --supervised --disable-syslog,ExecStart=/usr/bin/dnsdist --supervised --disable-syslog -u nobody -g nobody,' dnsdist.service
+  cd "${pkgname}/pdns/dnsdistdist/"
   make DESTDIR="${pkgdir}" install
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "${srcdir}"
+  install -D -m644 sysusers.conf "${pkgdir}/usr/lib/sysusers.d/dnsdist.conf"
 }
