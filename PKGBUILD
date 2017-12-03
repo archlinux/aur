@@ -34,10 +34,7 @@ package() {
 	mkdir -p $pkgdir/run/emqttd
 	mkdir    $pkgdir/usr/lib/emqttd/bin
 	mkdir -p $pkgdir/usr/bin
-<<<<<<< HEAD
-=======
 	mkdir -p $pkgdir/usr/lib/systemd/system
->>>>>>> a9ce46e... Initial version of emq 2.3.0
 
 
 	cp -R _rel/emqttd/lib $pkgdir/usr/lib/emqttd
@@ -58,9 +55,6 @@ package() {
 	mkdir -p $pkgdir/var/lib/emqttd
 
 	cp -R _rel/emqttd/data/* $pkgdir/var/lib/emqttd
-<<<<<<< HEAD
-=======
 
 	cp $srcdir/emq.service $pkgdir/usr/lib/systemd/system
->>>>>>> a9ce46e... Initial version of emq 2.3.0
 }
