@@ -1,0 +1,10 @@
+[Unit]
+Description=RFKill-Block %I
+After=rfkill-unblock@all.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rfkill block %I
+
+[Install]
+WantedBy=multi-user.target

@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/pub/linux/utils/util-linux/
 	arch = i686
 	arch = x86_64
@@ -19,13 +19,19 @@ pkgbase = util-linux-selinux
 	source = pam-common
 	source = pam-su
 	source = util-linux.sysusers
+	source = 60-rfkill.rules
+	source = rfkill-unblock_.service
+	source = rfkill-block_.service
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
 	md5sums = 5b6821c403c3cc6e7775f74df1882a20
 	md5sums = SKIP
 	md5sums = 4368b3f98abd8a32662e094c54e7f9b1
 	md5sums = a31374fef2cba0ca34dfc7078e2969e4
 	md5sums = fa85e5cce5d723275b14365ba71a8aad
-	md5sums = dfc9904f67ebc54bb347ca3cc430ef2b
+	md5sums = 095fb3d048d5304cce5719831bdad6dc
+	md5sums = 63f9bf9264911242e430867a41e8918c
+	md5sums = 3a87d0d77656f005fbd9c3b003dadc90
+	md5sums = a5835e0d5686ad1a12644edc3333d886
 
 pkgname = util-linux-selinux
 	depends = pam-selinux
@@ -38,8 +44,8 @@ pkgname = util-linux-selinux
 	provides = eject
 	provides = zramctl
 	provides = rfkill
-	provides = util-linux=2.31-1
-	provides = selinux-util-linux=2.31-1
+	provides = util-linux=2.31-2
+	provides = selinux-util-linux=2.31-2
 	conflicts = eject
 	conflicts = zramctl
 	conflicts = rfkill
@@ -59,6 +65,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.31-1
+	provides = libutil-linux=2.31-2
 	conflicts = libutil-linux
 

@@ -10,7 +10,7 @@ pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 _pkgmajor=2.31
 pkgver=${_pkgmajor}
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
@@ -26,13 +26,19 @@ options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase/-selinux}-$pkgver.tar."{xz,sign}
         pam-{login,common,su}
-        'util-linux.sysusers')
+        'util-linux.sysusers'
+        '60-rfkill.rules'
+        'rfkill-unblock_.service'
+        'rfkill-block_.service')
 md5sums=('5b6821c403c3cc6e7775f74df1882a20'
          'SKIP'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
          'fa85e5cce5d723275b14365ba71a8aad'
-         'dfc9904f67ebc54bb347ca3cc430ef2b')
+         '095fb3d048d5304cce5719831bdad6dc'
+         '63f9bf9264911242e430867a41e8918c'
+         '3a87d0d77656f005fbd9c3b003dadc90'
+         'a5835e0d5686ad1a12644edc3333d886')
 
 build() {
   cd "${pkgbase/-selinux}-$pkgver"
@@ -98,6 +104,14 @@ package_util-linux-selinux() {
   ### install systemd-sysusers
   install -Dm644 "$srcdir/util-linux.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/util-linux.conf"
+
+  install -Dm644 "$srcdir/60-rfkill.rules" \
+    "$pkgdir/usr/lib/udev/rules.d/60-rfkill.rules"
+
+  install -Dm644 "$srcdir/rfkill-unblock_.service" \
+    "$pkgdir/usr/lib/systemd/system/rfkill-unblock@.service"
+  install -Dm644 "$srcdir/rfkill-block_.service" \
+    "$pkgdir/usr/lib/systemd/system/rfkill-block@.service"
 }
 
 package_libutil-linux-selinux() {
