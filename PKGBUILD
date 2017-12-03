@@ -1,7 +1,7 @@
 # Maintainer: Einar Gangsø <mail@einargangso.no>
 
 pkgname=mediasort
-pkgver=0.11.1
+pkgver=0.12
 pkgrel=1
 pkgdesc='A command line tool for sorting media files'
 
@@ -12,7 +12,7 @@ license=('GPLv2')
 depends=('php>=7.0')
 
 source=("https://github.com/eigan/mediasort/releases/download/${pkgver}/mediasort.phar")
-sha256sums=("0ca0e66b85cf0c6dd4f79a25e33e3cf29036969d24d875c8b1b65547218a9f3a")
+sha256sums=("931395bf18aab7773b3a9bc85aeb4ee8ed602cddbfd74aaa7579256977ff1f46")
 
 
 package() {
