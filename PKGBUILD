@@ -1,19 +1,21 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname='pass-import'
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
-pkgdesc='A generic importer extension for the standard unix password manager pass'
+pkgdesc='A pass extension for importing data from most of the existing password manager.'
 arch=('any')
 url='https://github.com/roddhjav/pass-import'
 license=('GPL3')
-depends=('pass')
-optdepends=('python2: for importer script support'
-            'python3: for importer script support'
-            'ruby: for importer script support'
-            'perl: for importer script support')
-source=(https://github.com/roddhjav/pass-import/archive/v${pkgver}.tar.gz)
-sha512sums=(3aedacec92af75878a9b344e38bfced1b24a84de952440aad1c9b8ef99098587cf4a993e0e16668190bb7b3771dff073809b566828929750bab87eacbc200acd)
+depends=('pass' 'python' 'python-defusedxml')
+source=(https://github.com/roddhjav/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz
+        https://github.com/roddhjav/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc)
+sha512sums=('b77b8521e0c32c986e2df070f01d17e9d8ee380e02f5dd49909f02eea774f526a0326491cffab595c7e639c48fd511054194a0165436fd885906b8e19350b7ac'
+            '611aefc3fbb1cfa5fc643fa1f3aa117dc4f8030afd42dad63bb66d7a73ee8c51b798919fe2cb903eb2011429c86081e2161960032dc6dbd281153e4e29891217')
+
+# The public key is found at https://pujol.io/keys
+# gpg --recv-keys 06A26D531D56C42D66805049C5469996F0DF68EC
+validpgpkeys=('06A26D531D56C42D66805049C5469996F0DF68EC')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
