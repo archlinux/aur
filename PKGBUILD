@@ -4,7 +4,7 @@ pkgname=perl-math-currency
 _lastauthor=M/MS/MSCHOUT
 _pkgname=Math-Currency
 pkgver=0.52
-pkgrel=1
+pkgrel=2
 pkgdesc="Exact Currency Math with Formatting and Rounding"
 arch=('any')
 license=('GPL' 'PerlArtistic')
@@ -21,7 +21,7 @@ prepare() {
 
 	# create currency module for your local monetary system
 	# note: generate only for uncommented in /etc/locale.gen
-	locale -a|grep -- '^.._..$'|xargs -n1 scripts/new_currency|true
+	locale -a|grep -- '^.._..$'|xargs -n1 scripts/new_currency||true
 }
 
 build() {
