@@ -1,0 +1,20 @@
+pkgbase = cutter-git
+	pkgdesc = A Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)
+	pkgver = 1.0.r4.g7c2bd97
+	pkgrel = 1
+	url = https://github.com/radareorg/cutter
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = binutils
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = qt5-base
+	depends = radare2
+	provides = cutter
+	source = cutter-git::git://github.com/radareorg/cutter.git
+	md5sums = SKIP
+
+pkgname = cutter-git
+
