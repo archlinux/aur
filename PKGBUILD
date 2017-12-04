@@ -18,14 +18,18 @@ pkgbase="spl-linux-zen"
 pkgname=("spl-linux-zen" "spl-linux-zen-headers")
 
 pkgver=0.7.3.4.14.3.1
-pkgrel=1
+pkgrel=3
 makedepends=("linux-zen-headers=4.14.3-1")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.3/spl-0.7.3.tar.gz")
-sha256sums=("cd8b8624163577bdec1d1d214c942c5771f183432a04d35c00fc6e7f12fa836b")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.3/spl-0.7.3.tar.gz" '0001-Linux-4.14-compat-vfs_read-vfs_write.patch')
+sha256sums=("cd8b8624163577bdec1d1d214c942c5771f183432a04d35c00fc6e7f12fa836b" 'd20506fbe6e9ee928005e8a73c03e4b4d207268348f684b9c7a33301067793b8')
 license=("GPL")
-depends=("spl-utils-common>=0.7.3" "kmod" "linux-zen=4.14.3-1")
+depends=("spl-utils-common=0.7.3" "kmod" "linux-zen=4.14.3-1")
+prepare() {
+    cd "${srcdir}/spl-0.7.3"
+    patch -Np1 -i ${srcdir}/0001-Linux-4.14-compat-vfs_read-vfs_write.patch
+}
 
 build() {
     cd "${srcdir}/spl-0.7.3"
