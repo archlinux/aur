@@ -2,7 +2,7 @@
 pkgname=mpris-scrobbler
 pkgver=0.2.0
 pkgrel=2
-pkgdesc=""
+pkgdesc="Minimalistic user daemon which submits the currently playing song to libre.fm and compatible services."
 arch=('x86' 'x86_64')
 url="https://github.com/mariusor/mpris-scrobbler"
 license=('MIT')
