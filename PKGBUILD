@@ -2,7 +2,7 @@
 
 pkgname=duolingo-desktop-git
 _pkgname=duolingo-desktop
-pkgver=20171203
+pkgver=20171204
 pkgrel=1
 pkgdesc="Desktop client for Duolingo, using Electron"
 arch=(x86_64)
@@ -36,7 +36,7 @@ package() {
 	install -Dm644 "${srcdir}/${_pkgname}/images/duolingo.png" "${pkgdir}/usr/share/icons/hicolor/128x128/duolingo.png" 
 
 	install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"	
-	install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/licenses/${_pkgname}/README.md"	
+	install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"	
 }
 
 pkgver() {

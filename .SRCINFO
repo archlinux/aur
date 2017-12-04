@@ -1,6 +1,6 @@
 pkgbase = duolingo-desktop-git
 	pkgdesc = Desktop client for Duolingo, using Electron
-	pkgver = 20171203
+	pkgver = 20171204
 	pkgrel = 1
 	url = https://github.com/morganamilo/duolingo-desktop
 	arch = x86_64
