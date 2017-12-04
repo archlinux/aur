@@ -1,6 +1,6 @@
 pkgbase = tc-twitch-git
 	pkgdesc = The chat client for Twitch™
-	pkgver = 10.2.0.r20.g35d8772
+	pkgver = 10.3.0.r0.g99d8fb1
 	pkgrel = 1
 	url = https://github.com/mccxiv/tc
 	arch = any
