@@ -18,7 +18,6 @@ build() {
 	cd ${pkgname}-${pkgver}
 	mkdir build
 	cd build
-#	export CXXFLAGS+=" -std=gnu++98"
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 \
 	      -DUSE_SYSTEM_JSONCPP=ON -DENABLE_RUBY=OFF ../
 	make
