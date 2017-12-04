@@ -1,5 +1,5 @@
 pkgbase = firegrid
-	pkgdesc = Click anywhere with only a few keystrokes
+	pkgdesc = Click anywhere with only a few key strokes
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/foliea/firegrid

@@ -2,7 +2,7 @@
 pkgname=firegrid
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="Click anywhere with only a few keystrokes"
+pkgdesc="Click anywhere with only a few key strokes"
 arch=(any)
 url="https://github.com/foliea/firegrid"
 license=('MIT')
