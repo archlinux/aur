@@ -4,17 +4,17 @@
 pkgname=cuneiform
 pkgver=1.1.0
 _dpkgver=1.1
-pkgrel=17
+pkgrel=18
 pkgdesc="Linux port of an OCR system developed in Russia. Supports more than 20 languages."
 arch=('x86_64')
 url="https://launchpad.net/cuneiform-linux"
 license=('BSD')
-depends=('imagemagick')
+depends=('libmagick6')
 makedepends=('cmake')
 source=(https://launchpad.net/cuneiform-linux/${_dpkgver}/${_dpkgver}/+download/cuneiform-linux-${pkgver}.tar.bz2
 	build-fix.patch)
 sha256sums=('577e0d054de72086c33b4e8ae15033657776509b9a7af6eb272888eefcbdbbad'
-            'd2f746f91c79af8cf15ea1877f39881e3d16d7b15ef99b3106c3c2493acd95a5')
+            '3d9f4d923ec6ca5555550819096b7d66e364a8aeb74a9d1f0d961784d267642b')
 
 prepare() {
   cd "${srcdir}/${pkgname}-linux-${pkgver}"

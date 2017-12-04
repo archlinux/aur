@@ -1,4 +1,13 @@
-diff -wbBur cuneiform-linux-1.1.0/cuneiform_src/Kern/include/utf8-tables.h cuneiform-linux-1.1.0.q/cuneiform_src/Kern/include/utf8-tables.h
+--- cuneiform-1.1.0/cuneiform_src/Kern/hhh/tigerh/h/strings.h	2017-11-30 11:25:24.409125695 +0700
++++ cuneiform-1.1.0-char/cuneiform_src/Kern/hhh/tigerh/h/strings.h	2017-11-30 12:09:26.033501963 +0700
+@@ -80,6 +80,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ 
+ # include "ltconfig.h"
+ # include "c_types.h"
++# include "cttypes.h"
+ 
+ struct _String;
+ typedef struct _String STRING;
 --- cuneiform-linux-1.1.0/cuneiform_src/Kern/include/utf8-tables.h	2011-04-19 16:49:57.000000000 +0400
 +++ cuneiform-linux-1.1.0.q/cuneiform_src/Kern/include/utf8-tables.h	2017-07-05 16:35:34.338871445 +0300
 @@ -68,7 +68,7 @@
