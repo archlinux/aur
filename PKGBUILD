@@ -3,7 +3,7 @@
 # Contributor: nycko <email address unknown>
 pkgname=micro
 pkgver=1.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="This package is deprecated. Please use micro-bin instead."
 #arch=('')
 url="https://github.com/zyedidia/micro"
@@ -22,6 +22,10 @@ license=('MIT')
  #install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
  #echo "This package is deprecated. Please use micro-bin instead"
 #}
-echo "--------------------------------------------------------"
-echo "This package is deprecated. Please use micro-bin instead"
-echo "--------------------------------------------------------"
+echo "-------------------------------------------------"
+echo "********** This package is deprecated. **********"
+echo "* This package is getting merged into micro-bin *"
+echo "*        so it's not usable anymore.            *"
+echo "*  Install micro-bin package if you want to use *"
+echo "*               this editor.                    *"
+echo "-------------------------------------------------"
