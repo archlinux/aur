@@ -3,7 +3,7 @@
 # Contributor: nycko <email address unknown>
 pkgname=micro
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="This package is deprecated. Please use micro-bin instead."
 #arch=('')
 url="https://github.com/zyedidia/micro"
@@ -22,4 +22,6 @@ license=('MIT')
  #install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
  #echo "This package is deprecated. Please use micro-bin instead"
 #}
+echo "--------------------------------------------------------"
 echo "This package is deprecated. Please use micro-bin instead"
+echo "--------------------------------------------------------"
