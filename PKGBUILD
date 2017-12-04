@@ -7,7 +7,7 @@
 _disable_tests=1 #disable tests
 pkgname=luakit-git
 _gitname=luakit
-pkgver=2017.08.10.r176.g766d846d
+pkgver=2017.08.10.r266.ge8899c96
 pkgrel=1
 pkgdesc='Luakit: now updated for WebKit 2'
 arch=('x86_64' 'i686' 'armv7h')
