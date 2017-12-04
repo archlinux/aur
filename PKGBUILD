@@ -6,18 +6,19 @@ _setLibdir="$_setPrefix/lib32"
 _pkgbase=libgcrypt15-git
 
 pkgname=lib32-$_pkgbase
-pkgver=1.5.4.r3.g35cd81f
-pkgrel=2
+pkgver=1.5.6.r1.g7104edfc
+pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG. Latest commit from 1.5 branch - API version 11 (32bit)."
 arch=('x86_64')
 url="http://www.gnupg.org"
 license=('GPL2')
-depends=('lib32-libgpg-error')
-makedepends=('git'
-             'transfig'
+depends=('lib32-glibc'
+         'lib32-libgpg-error')
+makedepends=('automake'
+             'fig2dev'
              'gcc-multilib'
-             'automake'
-             'ghostscript')
+             'ghostscript'
+             'git')
 provides=("lib32-libgcrypt=${pkgver}"
 		  "lib32-libgcrypt15=${pkgver}")
 conflicts=("lib32-libgcrypt15"
@@ -32,9 +33,6 @@ pkgver() {
 }
 
 build() {
-  _cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
-  _jc=$((${_cpucount:-1}))
-
   export CFLAGS="-m32"
   export CXXFLAGS="-m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -45,13 +43,13 @@ build() {
   automake --add-missing
 
   ./configure --enable-maintainer-mode \
-              --prefix=/usr \
-              --disable-static \
-              --disable-padlock-support \
-              --host=$setHost \
+              --prefix=$_setPrefix \
               --libdir=$_setLibdir \
-              --prefix=$_setPrefix
-  make -j $_jc
+              --host=$setHost \
+              --disable-static \
+              --disable-padlock-support
+
+  make
 }
 
 # check() {
