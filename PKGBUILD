@@ -5,9 +5,24 @@
 # Contributor: Ricardo (XenGi) Band <email@ricardo.band>
 
 android_arch=arm64-v8a
+
+if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
+    case "$android_arch" in
+        arm64-v8a)
+            export ANDROID_MINIMUM_PLATFORM=21
+            ;;
+        x86_64)
+            export ANDROID_MINIMUM_PLATFORM=21
+            ;;
+        *)
+            export ANDROID_MINIMUM_PLATFORM=16
+            ;;
+    esac
+fi
+
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
-pkgver=5.9.2
+pkgver=5.9.3
 pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
@@ -24,7 +39,7 @@ makedepends=('libgl'
 depends=('java-runtime-headless>=7'
          'apache-ant'
          'android-ndk'
-         'android-platform'
+         "android-platform-$ANDROID_MINIMUM_PLATFORM"
          'android-sdk'
          'android-sdk-build-tools'
          'android-sdk-platform-tools')
@@ -51,9 +66,11 @@ _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:3}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "JavaScriptCore.pri.patch"
+        "JavaScript.Platform.h.patch"
         "geoservices.pro.patch")
-sha256sums=('6c6171a4d1ea3fbd4212d6a04899650218583df3ec583a8a6a4a589fe18620ff'
+sha256sums=('57acd8f03f830c2d7dc29fbe28aaa96781b2b9bdddce94196e6761a0f88c6046'
             '133dad6c8d0bedaa5d561be26b2f7185e671900c50d11476ecb2e2ef6792d455'
+            'aeec5ce1dbf6feb3fb9d698cad6b086597fd6e391ae5c1e65fbbfdf10405e755'
             'f0770923c55725417b7f334b7558371fc9833ae914b81a456d9beee7a3eeab8b')
 
 prepare() {
@@ -61,6 +78,9 @@ prepare() {
 
     # Platform specific patches.
     case "$android_arch" in
+        mips)
+            patch -Np1 -i "../JavaScript.Platform.h.patch"
+            ;;
         armeabi)
             # Disable JIT.
             patch -Np1 -i "../JavaScriptCore.pri.patch"
@@ -73,10 +93,6 @@ prepare() {
 
 get_last() {
     ls $1 | sort -V | tail -n 1
-}
-
-get_last_platform() {
-    ls $1 | grep 'android-' | sort -V | tail -n 1
 }
 
 build() {
@@ -107,15 +123,13 @@ build() {
     fi
 
     if [ -z "${ANDROID_API_VERSION}" ]; then
-        export ANDROID_API_VERSION=$(get_last ${ANDROID_SDK_ROOT}/platforms)
+        export ANDROID_API_VERSION=android-$ANDROID_MINIMUM_PLATFORM
     fi
 
     export PYTHON=/usr/bin/python2
 
     if [ -z "${ANDROID_NDK_PLATFORM}" ]; then
-        ndkPlatform=$(get_last_platform ${ANDROID_NDK_ROOT}/platforms)
-    else
-        ndkPlatform=${ANDROID_NDK_PLATFORM}
+        export ANDROID_NDK_PLATFORM=android-$ANDROID_MINIMUM_PLATFORM
     fi
 
     _pref=/opt/${_pkgname}/${pkgver}/${android_arch}
@@ -123,6 +137,7 @@ build() {
     configue_opts="
         -confirm-license
         -opensource
+        -silent
         -prefix ${_pref}
         -docdir ${_pref}/doc
         -xplatform android-g++
@@ -139,16 +154,16 @@ build() {
         -qt-zlib
         -qt-freetype
         -android-arch ${android_arch}
-        -android-ndk-platform ${ndkPlatform}"
+        -android-ndk-platform ${ANDROID_NDK_PLATFORM}"
+
+    if [ "$ANDROID_MINIMUM_PLATFORM" -lt 18 ]; then
+             configue_opts+="
+                 -skip qtconnectivity"
+    fi
 
     # Platform specific patches
     case "$android_arch" in
-        x86)
-             configue_opts+="
-                 -no-sql-mysql
-                 -no-sql-psql"
-            ;;
-        x86_64)
+        x86*)
              configue_opts+="
                  -no-sql-mysql
                  -no-sql-psql"
@@ -159,7 +174,7 @@ build() {
 
     ./configure ${configue_opts}
 
-    make || return 1
+    make $MAKEFLAGS || return 1
 }
 
 package() {
