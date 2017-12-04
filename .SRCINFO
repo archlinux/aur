@@ -1,14 +1,14 @@
 pkgbase = splits
 	pkgdesc = A cli tool that splits files into n peices requiring r of them to reconstruct the original
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/lindenk/splits
 	arch = any
 	license = GPLv3
 	depends = python
 	depends = python-simple-crypt
-	source = https://github.com/Lindenk/splits/archive/0.2.0.tar.gz
-	md5sums = 5752421a98afab21367c526f38080d3e
+	source = https://github.com/Lindenk/splits/archive/0.2.1.tar.gz
+	md5sums = 8d224fe858e8e82dd05707d51986302d
 
 pkgname = splits
 
