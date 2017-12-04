@@ -2,16 +2,16 @@
 
 pkgname=sipvicious
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for auditing SIP devices"
 arch=('i686' 'x86_64')
 url="http://blog.sipvicious.org"
 license=('GPLv2')
 depends=('python2')
 install=sipvicious.install
-source=("http://sipvicious.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/EnableSecurity/${pkgname}/archive/v${pkgver}.tar.gz")
 conflicts=('sipvicious-svn')
-sha1sums=('a243ee01a23d7a6305d170213f2a8675820a0df6')
+sha1sums=('6b0af366109bf0e8922cc97578d70b7a6c5913c8')
 
 build() {
 	msg "No build..."
