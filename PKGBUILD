@@ -3,7 +3,7 @@
 pkgname=php-rdkafka
 _extname=rdkafka
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This extension is a librdkafka binding providing a working client for Kafka 0.8, 0.9, 0.10"
 arch=("i686" "x86_64")
 url="https://github.com/arnaud-lb/php-rdkafka"

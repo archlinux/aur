@@ -1,7 +1,7 @@
 pkgbase = php-rdkafka
 	pkgdesc = This extension is a librdkafka binding providing a working client for Kafka 0.8, 0.9, 0.10
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arnaud-lb/php-rdkafka
 	arch = i686
 	arch = x86_64
