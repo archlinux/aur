@@ -18,14 +18,14 @@ pkgbase="zfs-linux-zen"
 pkgname=("zfs-linux-zen" "zfs-linux-zen-headers")
 
 pkgver=0.7.3.4.14.3.1
-pkgrel=1
+pkgrel=3
 makedepends=("linux-zen-headers=4.14.3-1" "spl-linux-zen-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.3/zfs-0.7.3.tar.gz")
 sha256sums=("cb8fc606835d3f91471e49aca31a6a0a71733b1cbe74fa510e0fe0efa670fe51")
 license=("CDDL")
-depends=("kmod" "spl-linux-zen" "zfs-utils-common>=0.7.3" "linux-zen=4.14.3-1")
+depends=("kmod" "spl-linux-zen" "zfs-utils-common=0.7.3" "linux-zen=4.14.3-1")
 
 build() {
     cd "${srcdir}/zfs-0.7.3"
