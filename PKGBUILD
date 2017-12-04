@@ -3,7 +3,7 @@
 pkgname=php-msgpack
 _extname=msgpack
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP extension for interfacing with MessagePack"
 arch=("i686" "x86_64")
 url="http://msgpack.org/"

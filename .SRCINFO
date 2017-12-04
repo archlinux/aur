@@ -1,7 +1,7 @@
 pkgbase = php-msgpack
 	pkgdesc = PHP extension for interfacing with MessagePack
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://msgpack.org/
 	arch = i686
 	arch = x86_64
