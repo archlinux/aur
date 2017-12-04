@@ -1,11 +1,11 @@
 pkgbase = helper-debug
 	pkgdesc = Helper debug test
 	pkgver = 1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.google.com/chrome
 	arch = any
 	license = custom
-	source = eula_text.html
+	source = https://www.google.com/chrome/eula_text.html
 	md5sums = d50d8f0a6940791eabc41c4f64e6a3cf
 
 pkgname = helper-debug

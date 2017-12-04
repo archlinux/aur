@@ -1,11 +1,11 @@
 pkgname=helper-debug
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc="Helper debug test"
 arch=('any')
 url="https://www.google.com/chrome"
 license=('custom')
-source=("eula_text.html")
+source=("$url/eula_text.html")
 md5sums=('d50d8f0a6940791eabc41c4f64e6a3cf')
 
 package() {
