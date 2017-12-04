@@ -1,6 +1,6 @@
 pkgbase = enlightenment-git
 	pkgdesc = Enlightenment window manager - Development version
-	pkgver = 0.22.99.23186.gd4ea0987f
+	pkgver = 0.22.99.23236.g9581a4828
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = enlightenment-git
 	optdepends = gdb: create backtraces on crash
 	optdepends = geoclue2: geolocation module
 	optdepends = packagekit: packagekit module
-	provides = enlightenment=0.22.99.23186.gd4ea0987f
+	provides = enlightenment=0.22.99.23236.g9581a4828
 	provides = notification-daemon
 	conflicts = enlightenment
 	options = debug

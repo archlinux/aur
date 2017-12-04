@@ -5,7 +5,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.22.99.23186.gd4ea0987f
+pkgver=0.22.99.23236.g9581a4828
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64')
