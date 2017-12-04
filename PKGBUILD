@@ -16,7 +16,7 @@ options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('2107466309a409fb9e40f11bb77cac1f9ba7910d5328e7b2e08eb7a1c6d760ec')
 
-prepare() {
+build() {
   # Override perl command line options we don't want. Source:
   # https://wiki.archlinux.org/index.php/Perl_Policy#Vendor
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
@@ -24,15 +24,21 @@ prepare() {
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     PERL5LIB="" PERL_LOCAL_LIB_ROOT="" \
     MODULEBUILDRC=/dev/null
-}
 
-build() {
   cd "${srcdir}/pgbadger-${pkgver}"
   /usr/bin/perl Makefile.PL
   make
 }
 
 package() {
+  # Override perl command line options we don't want. Source:
+  # https://wiki.archlinux.org/index.php/Perl_Policy#Vendor
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    PERL5LIB="" PERL_LOCAL_LIB_ROOT="" \
+    MODULEBUILDRC=/dev/null
+
   cd "${srcdir}/pgbadger-${pkgver}"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
