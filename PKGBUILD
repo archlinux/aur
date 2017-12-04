@@ -1,18 +1,18 @@
 # Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname=trizen
-pkgver=1.25
+pkgver=1.26
 pkgrel=1
 epoch=1
 pkgdesc="Trizen's AUR Package Manager: A lightweight wrapper for AUR."
 arch=('any')
-url="https://github.com/trizen/trizen"
-license=('GPL3');
+url="https://github.com/trizen/${pkgname}"
+license=('GPL3')
 
 depends=(
          'git'
          'diffutils'
-         'perl>=5.14.0'
+         'perl>=5.20.0'
          'perl-libwww'
          'perl-term-ui'
          'pacman'
@@ -27,7 +27,7 @@ optdepends=(
            )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('dec6d5d05974422147c9ea4e21dc17b1c06f877e3e29ed71348bf7bcdc73e437')
+sha256sums=('2da93d9ef019c13eb5b5e2e92ba4afad74349f21ec15af6c90472e3047961535')
 
 package() {
   cd "$pkgname-$pkgver"
