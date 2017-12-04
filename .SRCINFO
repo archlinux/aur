@@ -1,13 +1,13 @@
 pkgbase = hearthlauncher-git
-	pkgdesc = A Minecraft Launcher and Modpack Installer
-	pkgver = 0.041.r43.g57961b4
+	pkgdesc = Someone else please figure this out
+	pkgver = 0.041.r87.gc1db778
 	pkgrel = 1
 	url = https://hearthproject.uk
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = clang
 	makedepends = cmake
+	makedepends = clang
 	makedepends = ninja
 	depends = qt5-base
 	depends = zlib

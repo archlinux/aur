@@ -1,15 +1,14 @@
-# Maintainer: Joona <julia@joonatoona.me> 
-# Maintainer: Primetoxinz <primetoxinzz@gmail.com>
+# Maintainer: Joona <julia@joonatoona.me>
 
 pkgname=hearthlauncher-git
-pkgver=0.041.r43.g57961b4
+pkgver=0.041.r87.gc1db778
 pkgrel=1
-pkgdesc="A Minecraft Launcher and Modpack Installer"
+pkgdesc="Someone else please figure this out"
 arch=('x86_64')
 url="https://hearthproject.uk"
 license=('GPL')
 depends=('qt5-base' 'zlib' 'quazip' 'qt5-svg')
-makedepends=('git' 'clang' 'cmake' 'ninja')
+makedepends=('git' 'cmake' 'clang' 'ninja')
 source=("$pkgname::git+https://gitlab.com/HearthProject/HearthLauncher.git")
 sha512sums=('SKIP')
 provides=('hearthlauncher')
@@ -30,5 +29,7 @@ build() {
 }
 
 package() {
-    install -Dm755 $srcdir/$pkgname/build/HearthLauncher "$pkgdir/usr/bin/hearthlauncher"
+    install -Dm755 $srcdir/$pkgname/build/HearthLauncher $pkgdir/usr/bin/hearthlauncher
+    install -D $srcdir/$pkgname/packaging/HearthLauncher.png $pkgdir/usr/share/pixmaps/hearthlauncher.png
+    install -D $srcdir/$pkgname/packaging/HearthLauncher.desktop $pkgdir/usr/share/applications/hearthlauncher.desktop
 }
