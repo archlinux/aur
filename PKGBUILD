@@ -1,6 +1,6 @@
 pkgname=helper-debug
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Helper debug test"
 arch=('any')
 url="https://www.google.com/chrome"
