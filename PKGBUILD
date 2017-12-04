@@ -1,7 +1,7 @@
 # Maintainer: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=jdupes-git
-pkgver=1.8.r420.d1195b2
+pkgver=1.9+2+g1440f7a
 pkgrel=1
 pkgdesc="jdupes is a program for identifying duplicate files residing within specified directories"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's/^v//;s/-/./g'
+  git describe --tags --long | sed 's/-/+/g; s/^v//'
 }
 
 build() {
