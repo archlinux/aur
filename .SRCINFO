@@ -1,7 +1,7 @@
 pkgbase = mudlet
 	pkgdesc = A modern MUD client with a graphical user inteface and built in Lua scripting
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mudlet.org
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = mudlet
 	depends = lrexlib-pcre5.1
 	depends = qt5-gamepad
 	depends = lua51-utf8
+	depends = lua51-lcf
 	conflicts = mudlet-dev
 	conflicts = mudlet-git
 	conflicts = mudlet-deb
