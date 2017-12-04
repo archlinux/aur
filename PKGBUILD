@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.27.0.r347.g5261d1b099
-pkgrel=2
+pkgver=0.27.0.r488.g9abb710afb
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -16,7 +16,7 @@ depends=(
         'openal' 'smbclient' 'vapoursynth' 'vulkan-icd-loader' 'zlib'
         
     # AUR:
-        'ffmpeg-mpv-git' 'mujs' 'rsound' 'sndio' 'shaderc-git'
+        'ffmpeg-mpv-git' 'mujs' 'rsound' 'sndio' 'shaderc-git' 'crossc'
 )
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
@@ -136,13 +136,14 @@ build() {
         --enable-caca \
         --enable-jpeg \
         --disable-direct3d \
+        --enable-shaderc \
+        --enable-crossc \
         --disable-rpi \
         --disable-ios-gl \
         --enable-plain-gl \
         --disable-mali-fbdev \
         --enable-gl \
         --enable-vulkan \
-        --enable-shaderc \
         \
         --disable-videotoolbox-gl \
         --disable-d3d-hwaccel \
