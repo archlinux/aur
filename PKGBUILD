@@ -1,9 +1,10 @@
+# Maintainre: Primetoxinz <primetoxinzz@gmail.com>
 # Maintainer: Joona <julia@joonatoona.me>
 
 pkgname=hearthlauncher-git
 pkgver=0.041.r87.gc1db778
 pkgrel=1
-pkgdesc="Someone else please figure this out"
+pkgdesc="Minecraft launcher and modpack installer"
 arch=('x86_64')
 url="https://hearthproject.uk"
 license=('GPL')
