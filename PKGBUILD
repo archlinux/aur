@@ -2,29 +2,28 @@
 # Contributor: Aliaksandr Stelmachonak <mail.avatar@gmail.com>
 
 pkgname=zoiper
-pkgver=3.3
-pkgrel=2
-pkgdesc="An IAX and SIP VoIP softphone"
+pkgver=5.2.10
+pkgrel=1
+pkgdesc="A SIP and IAX2 VoIP softphone"
 url="http://www.zoiper.com/"
 arch=("i686" "x86_64")
-[ "$CARCH" = "x86_64" ] && _arch_="64" || _arch_="32"
 license=("custom")
-depends=("gtk2" "libsm" "pangox-compat" "libcanberra")
+depends=("libnotify" "libxss" "v4l-utils")
 source=("LICENSE" "${pkgname}.desktop" "${pkgname}.png" "${pkgname}-24.png" "${pkgname}-48.png" "${pkgname}-96.png")
 
 build() {
 	cd "${srcdir}"
 
 	# Tests
-	if ! test -e ${startdir}/Zoiper_${pkgver}_Linux_Free_32Bit_64Bit.tar.gz; then
+	if ! test -e ${startdir}/${pkgname}5_${pkgver}_${CARCH}.tar.xz; then
 		# Messages
-		warning "There is no longer a direct download link for the Zoiper tarball.  Get it manually from: http://www.zoiper.com/en/voip-softphone/download/zoiper3/for/linux"
+		warning "There is no longer a direct download link for the Zoiper tarball.  Get it manually from: https://www.zoiper.com/en/voip-softphone/download/zoiper5/for/linux"
 		return 1
 	fi
 
 	# Extractions
-	cp ${startdir}/Zoiper_${pkgver}_Linux_Free_32Bit_64Bit.tar.gz ./
-	tar -zxf ${startdir}/Zoiper_${pkgver}_Linux_Free_32Bit_64Bit.tar.gz
+	cp ${startdir}/${pkgname}5_${pkgver}_${CARCH}.tar.xz ./
+	tar -Jxf ${startdir}/${pkgname}5_${pkgver}_${CARCH}.tar.xz
 }
 
 package() {
@@ -33,10 +32,8 @@ package() {
 	# Directories
 	install -d "${pkgdir}"/usr/bin "${pkgdir}"/usr/share/{applications,pixmaps} "${pkgdir}"/usr/share/licenses/${pkgname} "${pkgdir}"/usr/lib/${pkgname}
 
-	# Scripts
-	./Zoiper_${pkgver}_Linux_Free_${_arch_}Bit.run --mode unattended --prefix "${pkgdir}"/usr/lib/${pkgname} || true
-
 	# Files
+	cp -r Zoiper5/* "${pkgdir}"/usr/lib/${pkgname}/
 	chmod 755 "${pkgdir}"/usr/lib/${pkgname}/${pkgname}
 	install -m644 ${pkgname}.png "${pkgdir}"/usr/share/pixmaps/${pkgname}.png
 	install -m644 ${pkgname}-24.png "${pkgdir}"/usr/share/pixmaps/
@@ -44,11 +41,11 @@ package() {
 	install -m644 ${pkgname}-96.png "${pkgdir}"/usr/share/pixmaps/
 	install -m644 ${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 	install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-	ln -sr "${pkgdir}"/usr/lib/${pkgname}/${pkgname} "${pkgdir}"/usr/bin/
+	ln -s /usr/lib/${pkgname}/${pkgname} "${pkgdir}"/usr/bin/
 }
 
-sha1sums=('74e9f2d5dc6ec7174923e824b3db64b47b6d3b3c'
-          '2a9cfa52d01a65137d88241c7ca04976e4be0a5d'
+sha1sums=('645d0003fe2e0975c53e008aa31106cceb0d8dad'
+          'ec8e948442bd0d010004420f7338ccfb08985007'
           'c1eea005beb7587b24b0a0d242eebc49a67f9026'
           '1a0f4c83c6b538584865df327702f800689493b0'
           '7fef1f81c32fc4be2d876fadf34178f60ea0a29e'
