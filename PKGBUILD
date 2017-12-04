@@ -2,7 +2,7 @@
 
 _pkgname=trizen
 pkgname=trizen-git
-pkgver=1.25.1.g8463e3f
+pkgver=1.26
 pkgrel=1
 pkgdesc="Trizen's AUR Package Manager: A lightweight wrapper for AUR (-git version)."
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=('trizen')
 depends=(
          'git'
          'diffutils'
-         'perl>=5.14.0'
+         'perl>=5.20.0'
          'perl-libwww'
          'perl-term-ui'
          'pacman'
