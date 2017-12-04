@@ -6,13 +6,13 @@
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.22.26+47+g3a1a7135a2
 _patchver=543fa1dc7173d896f8d87bece94ae23944dd1e76
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(i686 x86_64)
 url="https://gist.github.com/Dudemanguy911/c172394e30e1e7d0f477ad15c719bc71"
-provides=("gtk3=$pkgver gtk3-print-backends")
-conflicts=("gtk3 gtk3-print-backends")
-replaces=("gtk3-print-backends<=3.22.26.1")
+provides=(gtk3=$pkgver gtk3-print-backends)
+conflicts=(gtk3 gtk3-print-backends)
+replaces=('gtk3-print-backends<=3.22.26.1')
 depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 dconf
          libxcomposite libxdamage pango shared-mime-info at-spi2-atk wayland libxkbcommon
          adwaita-icon-theme json-glib librsvg wayland-protocols desktop-file-utils mesa
