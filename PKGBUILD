@@ -6,14 +6,14 @@
 # https://bugzilla.novell.com/768506
 # https://bugzilla.novell.com/765524
 
-_kver=4.13
+_kver=4.14
 _gitroot=git://repo.or.cz/linux.git
 _gitcommit=linux-$_kver.y
 _cur_kernel="$(uname -r)"
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=4
+pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -28,7 +28,7 @@ source=(
 	kernel.patch
 )
 
-sha256sums=('7cf1b325efe4e2b048c4ec9ad968eb3e74927710b892a0fab9647b30e209e729'
+sha256sums=('ecd0fec3301560c2e5943f30cd3fa56b06d5803aca2d3b31eb7890381d9df1cc'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
             '4f9dddad94b43c8b1659ff03abd9c340d59f174f97986a4c2d64addcf79acacd')
 
