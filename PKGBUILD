@@ -3,16 +3,16 @@
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
 pkgver=1.2a
-pkgrel=1
+pkgrel=2
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64')
 url="https://github.com/arunsivaramanneo/GPU-Viewer/"
 license=('GPL3')
-depends=('gtk3' 'python' 'python-gobject')
+depends=('gtk3' 'python' 'python-gobject' 'vulkan-validation-layers')
 optdepends=('nvidia: Vulkan nvidia driver'
             'mesa'
             'vulkan-radeon: Vulkan AMD drivers'
-            'vulkan-validation-layers: Vulkaninfo support')
+            'vulkan-intel: Vulkan Intel drivers')
 provides=(gpu-viewer)
 source=("https://github.com/arunsivaramanneo/$_pkgname/archive/v$pkgver.tar.gz")
 
