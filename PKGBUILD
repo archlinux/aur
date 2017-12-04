@@ -2,15 +2,15 @@
 
 pkgname=franz4-bin
 pkgver=4.0.4
-pkgrel=1
-pkgdesc='Franz was a free messaging app. Legacy version hosted at my own server, downloaded when Franz upgraded to version 5.0 from the original URL https://github.com/meetfranz/franz-app/releases/download/4.0.4/Franz-linux-x64-4.0.4.tgz . Use at your own risk!'
+pkgrel=2
+pkgdesc='Franz is a free messaging app. Legacy version from before the mandatory account change.'
 arch=('x86_64')
 depends=('alsa-lib' 'bash' 'desktop-file-utils' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'libxss')
 makedepends=('tar')
 url='http://meetfranz.com/'
 license=('custom:github' 'MIT' 'ISC')
 source=("${pkgname}.sh" "${pkgname}.desktop" "${pkgname}.png" "LICENSE" "CHANGELOG")
-source_x86_64=("http://kurocon.nl/Franz-linux-x64-4.0.4.tgz")
+source_x86_64=("https://github.com/meetfranz/franz-app/releases/download/4.0.4/Franz-linux-x64-4.0.4.tgz")
 sha256sums=('55f541ed100cd41ff2b1a289fff445abf3c0de0f9fcf2c04d722a2563817bbcc'
             '81a676dd83ec0bd9b4b6712555aafcd95e18aeab46257dd5b59123ec5b98587a'
             '6e761371afadf155b8bc25e94fd7de371c16130a87338300e5800924916a7a28'
