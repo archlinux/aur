@@ -28,7 +28,6 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  git submodule update --init
   go build -v -o ${pkgname} -ldflags "-s -w -X main.version=${pkgver}"
 }
 
