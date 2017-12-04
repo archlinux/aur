@@ -1,17 +1,18 @@
 pkgbase = kraken
 	pkgdesc = Kraken taxonomic sequence classification system
-	pkgver = 0.10.5
+	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/DerrickWood/
+	url = https://github.com/DerrickWood/kraken
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = coreutils
 	depends = perl
+	depends = jellyfish
 	provides = kraken
 	conflicts = kraken
-	source = https://github.com/DerrickWood/kraken/archive/v0.10.5-beta.tar.gz
-	md5sums = 0231a7bfc067f564ad28fa91e9f71606
+	source = https://github.com/DerrickWood/kraken/archive/v1.0.tar.gz
+	md5sums = e790d6b09662bbd810aa34517ef66586
 
 pkgname = kraken
 
