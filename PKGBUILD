@@ -1,27 +1,27 @@
 # Maintainer: Amadeus Folego <amadeusfolego@gmail.com>
 # Maintainer: Terje Larsen <terlar@gmail.com>
 pkgname=oni
-pkgver=0.2.17
+pkgver=0.2.18
 pkgrel=1
 pkgdesc='An IDE built around Neovim'
-arch=(any)
+arch=(x86_64)
 url="https://github.com/onivim/oni"
 license=('MIT')
 depends=('neovim' 'nodejs' 'gconf' 'libxss')
 makedepends=('tar')
-source=("https://github.com/onivim/${pkgname}/releases/download/v${pkgver}/Oni-${pkgver}-linux.tar.gz"
+source=("https://github.com/onivim/${pkgname}/releases/download/v${pkgver}/Oni-${pkgver}-x64-linux.tar.gz"
         "oni.sh"
         "oni.desktop"
         "icons.tar.gz")
 
-sha256sums=('81360be84a209abc2ab3a01adda3c641a8ecb1d69c17a1e2a348f70d46288087'
+sha256sums=('f63465ae45d2a3e995760e096570e1fec698f8a222fb6a471fcea83ebcaf8106'
             '72a945d501f33cfc2fd0d8e832942ba75c09518abd2248973c4df461c3229aee'
             '72420b6c8588df601b973b715fc88f3d9e4d75ce53b633abff8c7ff848aed59a'
             '9b09686c82ac5670ece59608288ab2124ee3147d404b77ac58c6ba332a6a148a')
 
 package() {
   install -d ${pkgdir}/opt/${pkgname}
-  cp -R ${srcdir}/Oni-${pkgver}-linux/* ${pkgdir}/opt/${pkgname}
+  cp -R ${srcdir}/Oni-${pkgver}-x64-linux/* ${pkgdir}/opt/${pkgname}
   install -Dm755 $srcdir/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
 
   install -Dm644 oni.desktop "$pkgdir/usr/share/applications/oni.desktop"
