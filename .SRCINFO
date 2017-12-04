@@ -1,7 +1,7 @@
 pkgbase = yourkit
 	pkgdesc = Java CPU and memory profiler.
 	pkgver = 2017.02b68
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.yourkit.com
 	arch = i686
 	arch = x86_64

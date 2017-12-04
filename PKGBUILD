@@ -4,7 +4,7 @@ pkgname=yourkit
 _version=2017.02
 _build=68
 pkgver=${_version}b${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="Java CPU and memory profiler."
 arch=(i686 x86_64)
 url="http://www.yourkit.com"
@@ -40,7 +40,7 @@ EOF
 package() {
   msg2 "Install the assembly at /opt/${pkgname}..."
   install -dm755                                      "${pkgdir}/opt/${pkgname}"
-  cp -a "${srcdir}"/yjp-${_version}/* "${pkgdir}/opt/${pkgname}"
+  cp -a "${srcdir}"/YourKit-JavaProfiler-${_version}/* "${pkgdir}/opt/${pkgname}"
 
   msg2 "Install an executable at /usr/bin/${pkgname}..."
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
