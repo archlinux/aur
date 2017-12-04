@@ -19,7 +19,8 @@ url="http://mate-desktop.org/"
 license=('GPL')
 depends=('pluma-1.16<=1.16.9999' 'mate-common')
 conflicts=("${_pkgname}-gtk2")
-source=(${_pkgname}-${pkgver}-${_cygrel}.tar.gz::http://cygwin.cathedral-networks.org/x86/release/${_pkgname}/${_pkgname}-${pkgver}-${_cygrel}-src.tar.xz)
+source=("http://cygwin.cathedral-networks.org/x86/release/${_pkgname}/${_pkgname}-${pkgver}-${_cygrel}-src.tar.xz")
+noextract=("${_pkgname}-${pkgver}-${_cygrel}-src.tar.xz")
 sha256sums=('e4ae4684c074cae81b9f05cc2ea034195e3a1dadff64f2efcb7c362d780a8a1d')
 
 # gtk2 uncomment:
@@ -28,23 +29,34 @@ sha256sums=('e4ae4684c074cae81b9f05cc2ea034195e3a1dadff64f2efcb7c362d780a8a1d')
 #conflicts=("${_pkgname}")
 
 prepare() {
-  cd "$srcdir"
-  bsdtar -xf "$srcdir/${_pkgname}-${pkgver}-${_cygrel}.src/${_pkgname}-${pkgver}.tar.gz"
+	msg2 'Extracting archive...'
+	bsdtar \
+		--extract \
+		--xz \
+		--file "${_pkgname}-${pkgver}-${_cygrel}-src.tar.xz" \
+		--include '^pluma-plugins-*.src/pluma-plugins-*.tar.gz$' \
+		--to-stdout \
+	| bsdtar \
+		--extract \
+		--gzip \
+		--file -
+
+	msg2 'Autogen the configuration tool...'
+	cd "${_pkgname}-${pkgver}"
+	PYTHON=/usr/bin/python2 ./autogen.sh \
+		--prefix="/usr" \
+		--sbindir="/usr/bin" \
+		--libexecdir="/usr/lib/${_pkgname}" \
+		--with-plugins=all \
+		--enable-python
 }
 
 build() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  PYTHON=/usr/bin/python2 ./autogen.sh \
-    --prefix=/usr \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/lib/${_pkgname} \
-    --with-plugins=all \
-    --enable-python
-
-  make
+	cd "${_pkgname}-${pkgver}"
+	make
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir" install
+	cd "${_pkgname}-${pkgver}"
+	make DESTDIR="$pkgdir" install
 }
