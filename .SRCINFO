@@ -6,7 +6,7 @@ pkgbase = apachedirectorystudio
 	arch = i686
 	arch = x86_64
 	license = Apache
-	depends = java-runtime
+	depends = java-runtime>=8
 	depends = gtk2
 	source = apachedirectorystudio.desktop
 	source = apachedirectorystudio.png
