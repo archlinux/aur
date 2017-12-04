@@ -1,7 +1,7 @@
 # Maintainer: Yan Doroshenko <yandoroshenko@protonmail.com>
 
 pkgname=work-hours-counter
-pkgver=0.1.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="Simple GUI work hours calculator written in Scala"
 arch=('any')
@@ -9,9 +9,9 @@ url="https://github.com/YanDoroshenko/work-hours-counter"
 license=('GPL')
 depends=('java-environment')
 source=("https://github.com/YanDoroshenko/"$pkgname"/raw/master/target/"$pkgname"-"$pkgver".jar" "https://github.com/YanDoroshenko/"$pkgname"/raw/master/target/"$pkgname".png" "https://github.com/YanDoroshenko/"$pkgname"/raw/master/target/"$pkgname".desktop")
-sha256sums=('0be093cc006fac7c799b40aebe7a79efdec2c6cdcb6948718da32924249a0feb'
+sha256sums=('1f871f9203d4a9df3bb6997f1d003564a309805d2c9b20f2677718acae890ec8'
 	    'd197ed8c0919d4ff60ddb19f9062ab6476a1370e8cb65f31bd44930c12af0926'
-	    'f0c23b2576f205ada6a016076123013b88c34382a006086b32b244a5278d95c4')
+	    'ea8d7c4316e17dddcabc46405ceb02751e2213b00f141d0b6dd0839eb8751700')
 
 package() {
     mkdir -p "$pkgdir"/usr/share/"$pkgname"
