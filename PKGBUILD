@@ -1,42 +1,37 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
-
 pkgname=myhtml-git
-pkgver=20160420
+pkgver=20171129
 pkgrel=1
 pkgdesc="Fast HTML parser using threads implemented as a pure C99 library with no outside dependencies"
 arch=('i686' 'x86_64')
-makedepends=('cmake' 'git' 'make')
+makedepends=('git')
 url="https://github.com/lexborisov/myhtml"
-license=('Apache')
+license=('LGPL')
 source=(git+https://github.com/lexborisov/myhtml)
 sha256sums=('SKIP')
 provides=('myhtml')
 conflicts=('myhtml')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+	cd myhtml
+	git log -1 --format="%cd" --date=short | sed "s/-//g"
 }
 
 build() {
-  cd ${pkgname%-git}
-
-  msg2 'Building...'
-  cd projects
-  cmake . \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DMyHTML_INSTALL_HEADER=ON
-  make
+	cd myhtml
+	msg2 'Building...'
+	make CFLAGS=-Wno-pedantic prefix=/usr
 }
 
 package() {
-  cd ${pkgname%-git}
+	cd myhtml
 
-  msg2 'Installing documentation...'
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  cp -dpr --no-preserve=ownership docs/* examples \
-    "$pkgdir/usr/share/doc/${pkgname%-git}"
+	msg2 'Installing license...'
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname%-git}/LICENSE
 
-  msg2 'Installing...'
-  make DESTDIR="$pkgdir" install -C projects/
+	msg2 'Installing documentation...'
+	install -Dm644 README.md "$pkgdir"/usr/share/doc/${pkgname%-git}/README.md
+	cp -dpr --no-preserve=ownership examples "$pkgdir"/usr/share/doc/${pkgname%-git}
+
+	msg2 'Installing...'
+	make prefix="$pkgdir/" install
 }
