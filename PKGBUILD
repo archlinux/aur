@@ -2,7 +2,7 @@
 
 pkgname=openbazaar
 pkgver=2.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
 url="http://openbazaar.org"
@@ -19,6 +19,7 @@ options=('!strip')
 build(){
 	cd $srcdir/$pkgname-desktop-$pkgver
 	npm install --silent --ignore-scripts
+	npm install node-sass
 	npm run build
 	npm prune --production
 }
