@@ -3,7 +3,7 @@
 pkgname=php-xdebug
 _extname=xdebug
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Xdebug is an extension for PHP to assist with debugging and development."
 arch=("x86_64")
 url="https://xdebug.org/"
