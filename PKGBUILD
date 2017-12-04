@@ -2,7 +2,7 @@
 # Maintainer: Cédric Bellegarde cedric bellegarde at adishatz dot org
 
 pkgname=eolie
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 pkgdesc="Simple web browser for GNOME"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtkspell3' 'python-beautifulsoup4' 'python-cairo' 'python-gobject' 'webkit2gtk' 'python-pyfxa' 'python-dateutil' 'python-crypto')
 makedepends=('gobject-introspection' 'meson' 'webkit2gtk')
 source=("https://github.com/gnumdk/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('bdb3ec7973fda992d14bb7c5cdcd739aa6a461173c56c913f54f0dacd9e208d2')
+sha256sums=('4d0e2386ce166d2a2ff071e832f75ead636371ac8986d9a27b05c11e6e6f9e3e')
 
 prepare() {
 	mkdir build
