@@ -9,6 +9,8 @@ url='https://github.com/nlohmann/json'
 license=(MIT)
 arch=(x86_64)
 makedepends=(cmake git)
+provides=("$_name")
+conflicts=("$_name")
 source=("git+$url")
 sha256sums=(SKIP)
 
