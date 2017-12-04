@@ -1,6 +1,6 @@
 pkgbase = python2-goodtests
 	pkgdesc = A fast, parallel, featured python unit-testing framework (python2 version)
-	pkgver = 2.2.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://github.com/kata198/GoodTests
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python2-goodtests
 	makedepends = python2
 	depends = python2-setuptools
 	depends = python2
-	source = https://github.com/kata198/GoodTests/archive/2.2.0.tar.gz
-	sha512sums = 1698d96cb2807a344540216057b3a6e76aa06ce8622f2d72dd06229740678dad364b0ab579fb2cc7ed96ba1670aa0c5dc0d6e51bf494ecff77cd3f37183171d9
+	source = https://github.com/kata198/GoodTests/archive/3.0.0.tar.gz
+	sha512sums = afa466ef702d42fcbb675fa8af6b72e99289eaf77994df995aeee43af23aacfa2831c9a6dfcfaa16fca260d423beee49f5818f8c703cc515952b1bc20f4c1fe9
 
 pkgname = python2-goodtests
 
