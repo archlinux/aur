@@ -9,7 +9,7 @@ pkgbase = fastonosql
 	depends = gcc-libs>=4.4.7
 	options = !strip
 	options = !upx
-	source = https://fastonosql.com/downloads/linux/fastonosql-1.11.0-x86_64.deb
+	source = https://fastonosql.com/registered_users_downloads/linux/fastonosql-1.11.0-x86_64.deb
 	source = fastonosql_22.png
 	source = fastonosql_24.png
 	source = fastonosql_32.png
