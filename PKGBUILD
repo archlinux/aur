@@ -1,7 +1,7 @@
 # Maintainer: Marius Orcsik <marius@littr.me>
 pkgname=mpris-scrobbler
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('x86' 'x86_64')
 url="https://github.com/mariusor/mpris-scrobbler"
@@ -14,6 +14,7 @@ validpgpkeys=('A9A02AFEFF4B4D3CCC80F6168218F7122969D484')
 
 build() {
 	cd "$pkgname-$pkgver"
+	rm -rf build/
 	meson --buildtype=release build/
 	ninja -C build/
 }
