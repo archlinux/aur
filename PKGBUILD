@@ -2,7 +2,7 @@
 
 pkgname=plv8
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="V8 Engine Javascript Procedural Language add-on for PostgreSQL"
 url="https://github.com/plv8/plv8"
 arch=('x86_64' 'i686')
@@ -32,7 +32,7 @@ build() {
 
 package() {
   extdir="${pkgdir}/usr/share/postgresql/extension/"
-  install -Dm655 {"${srcdir}/plv8-${pkgver}","${extdir}"}"/plv8.so"
+  install -Dm655 {"${srcdir}/plv8-${pkgver}","${srcdir}/usr/lib/postgresql"}"/plv8.so"
   install -Dm655 {"${srcdir}/plv8-${pkgver}","${extdir}"}"/plv8.control"
   install -Dm655 {"${srcdir}/plv8-${pkgver}","${extdir}"}"/plv8--${pkgver}.sql"
   install -Dm655 {"${srcdir}/plv8-${pkgver}","${extdir}"}"/plcoffee.control"
