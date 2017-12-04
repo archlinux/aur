@@ -1,6 +1,6 @@
 pkgbase = php-swoole
 	pkgdesc = Event-driven asynchronous and concurrent networking engine with high performance for PHP.
-	pkgver = 1.9.20
+	pkgver = 1.9.23
 	pkgrel = 1
 	url = https://github.com/swoole/swoole-src
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = php-swoole
 	makedepends = php
 	depends = nghttp2
 	backup = etc/php/conf.d/swoole.ini
-	source = http://pecl.php.net/get/swoole-1.9.20.tgz
-	sha256sums = 05ed897ffaec750f4437786ed0697c3ec2753a7c53c8a3e233e41432e0f394c1
+	source = http://pecl.php.net/get/swoole-1.9.23.tgz
+	sha256sums = 8ebee7b2fe24fb2c01fe0cabc1f45f7db14d58cf2760c32043d7613c9e6cbcb1
 
 pkgname = php-swoole
 
