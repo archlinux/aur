@@ -1,12 +1,12 @@
 # Maintainer: Irvine <irvinemcminn_at_that gmail_place>
 
 pkgbase=linux-hardened-apparmor
-_srcname=linux-4.13
-_pkgver=4.13.16
-pkgver=$_pkgver.a
+_srcname=linux-4.14
+_pkgver=4.14.3
+pkgver=${_pkgver}.a
 pkgrel=1
+url='https://github.com/copperhead/linux-hardened'
 arch=('x86_64')
-url="https://github.com/copperhead/linux-hardened"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
@@ -14,24 +14,26 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign
-        https://github.com/thestinger/linux-hardened/releases/download/$pkgver/linux-hardened-$pkgver.patch{,.sig}
+        https://github.com/thestinger/linux-hardened/releases/download/${pkgver}/linux-hardened-${pkgver}.patch{,.sig}
         # the main kernel config files
         config.x86_64
         # pacman hook for initramfs regeneration
         90-linux.hook
         # standard config files for mkinitcpio ramdisk
-        linux.preset)
+        linux.preset
+        0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch)
 replaces=('linux-grsec')
 
-sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
+sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'f24980db582b9b3d3ded4c96b16f8c64bc435fca59b91cf3f224611b68216d8a'
+            'e13995c11d0c2d3379c887666dbfaca619200fb8853db6d5d67f97d47fd959b7'
             'SKIP'
-            '0b8f413fcde911fe4f5bae876746bd0cad511e55ed28d2095d69b7dcb1147ae4'
+            '3e75e3887e1388d8fe3eafd59a2a3457a9e0e043ee50368639851f8c0a4083bf'
             'SKIP'
-            '3d9bb7014b9e6f3a1647769954bc9f2ee3f5389ecb06ddb0269ba40f251fe5e8'
+            '6813434a3cf195d7dae3b614d13c14fe14a485c097f84be4b88426cee35c3800'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -48,10 +50,13 @@ prepare() {
 
   # security patches
 
-  patch -p1 -i "${srcdir}/linux-hardened-$pkgver.patch"
+  patch -p1 -i "${srcdir}/linux-hardened-${pkgver}.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # https://bugs.archlinux.org/task/56207
+  patch -p1 -i "${srcdir}/0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
