@@ -1,0 +1,13 @@
+pkgbase = farch
+	pkgdesc = Functional archlinux system configuration tool
+	pkgver = 0.0.20171203c
+	pkgrel = 1
+	url = https://github.com/shawndellysse/farch
+	arch = any
+	makedepends = npm
+	depends = nodejs
+	source = https://github.com/shawndellysse/farch/archive/v0.0.20171203c.tar.gz
+	md5sums = e0a5aa733b32973c9615f7e195e1f8e6
+
+pkgname = farch
+
