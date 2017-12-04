@@ -5,7 +5,7 @@
 
 _pkgname=antigen
 pkgname=antigen-git
-pkgver=v2.2.1.r0.g1d212d1
+pkgver=v2.2.2.r2.gd04bff1
 pkgrel=1
 pkgdesc="A plugin manager for zsh, inspired by oh-my-zsh and vundle."
 arch=('any')
@@ -13,8 +13,8 @@ url="https://github.com/zsh-users/antigen"
 source=("git+https://github.com/zsh-users/antigen")
 md5sums=('SKIP')
 license=('MIT')
-depends=('zsh')
-makedepends=('git' 'make')
+depends=('zsh' 'git')
+makedepends=('make')
 install='antigen.install'
 
 pkgver() {
