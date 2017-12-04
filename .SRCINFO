@@ -1,0 +1,20 @@
+pkgbase = wasm-gc-git
+	pkgdesc = gc-sections for wasm
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/alexcrichton/wasm-gc
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = MIT
+	license = APACHE
+	depends = cargo
+	depends = gcc-libs
+	provides = wasm-gc
+	conflicts = wasm-gc
+	source = git+https://github.com/alexcrichton/wasm-gc.git
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = wasm-gc-git
+
