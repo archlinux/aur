@@ -1,3 +1,15 @@
+# [v1.4.12 - 2017-11-30](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.11)
+
+## Added
+
+- Added tag icon next to tag reference badges.
+- Added option to show the full repository path in the title bar.
+
+## Fixed
+
+- Remember the size and location of the start dialog.
+- Reset selection more consistently to the HEAD branch when it changes.
+
 # [v1.4.11 - 2017-11-21](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.10)
 
 ## Added

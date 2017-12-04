@@ -2,7 +2,7 @@
 
 pkgname=('gitahead')
 pkgrel=1
-pkgver=1.4.11
+pkgver=1.4.12
 pkgdesc='THE MOST POWERFUL GIT GUI'
 url='http://gitahead.scitools.com/'
 provides=('gitahead')
@@ -17,7 +17,7 @@ source=(
   "gitahead.png"
   "gitahead.sh"
 )
-sha256sums=('5785df7fb89423532825eed002da9893204b2ae757c597a45857cf0d05a8787f'
+sha256sums=('875b13203a990105219dcba72c8f93872f0c0f5d0f495f59c67f65608b26a3e7'
             'd71bfb48c954d213986816fc29478c7f80c8bd2dd10d2889bf51897d649eedd6'
             '6070ebf6752f55f8b7d8a79107ce491c3acf04310eeb9a8242b83cfb4df055f2'
             '66cb53fc57eb2ce2e6cd02ff392476fdfb91b723b76ef5da1856e9b5dc1b5c75'
