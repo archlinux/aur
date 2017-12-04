@@ -1,12 +1,12 @@
 pkgbase = work-hours-counter
 	pkgdesc = Simple GUI work hours calculator written in Scala
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/YanDoroshenko/work-hours-counter
 	arch = any
 	license = GPL
 	depends = ('java-environment')
-	source = https://github.com/YanDoroshenko/work-hours-counter/raw/master/target/work-hours-counter-1.0.jar
-	sha256sums = 1f871f9203d4a9df3bb6997f1d003564a309805d2c9b20f2677718acae890ec8
+	source = https://github.com/YanDoroshenko/work-hours-counter/raw/master/target/work-hours-counter-1.1.jar
+	sha256sums = 649aca71ac4c39d3b912e3e8dbebeca6ee4c70ac8ec31dfcccf2b0ce758a7d3e
 
 pkgname = work-hours-counter
