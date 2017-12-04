@@ -1,9 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz-bin
 _vendorname=cliqz
-pkgver=1.17.0
-_cqzbuildid=20171127205425
-_mozver=57.0
+pkgver=1.17.1
+_cqzbuildid=20171130123422
+_mozver=57.0.1
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser, repackaged from debian official cliqz repository"
 arch=('x86_64')
