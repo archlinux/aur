@@ -2,7 +2,7 @@
 
 pkgname=mpv-full-git
 pkgver=0.27.0.r347.g5261d1b099
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -71,8 +71,6 @@ build() {
         --disable-uwp \
         --disable-win32-internal-pthreads \
         --enable-iconv \
-        --enable-termios \
-        --enable-shm \
         --enable-libsmbclient \
         --enable-lua \
         --enable-javascript \
