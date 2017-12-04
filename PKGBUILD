@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=3.0.0_alpha1.r0.g0ed49dd
+pkgver=3.0.0_alpha2.r6.g5d0d366
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -44,7 +44,8 @@ build() {
     --bindir="/usr/bin" \
     --datadir="/usr/share" \
     --sysconfdir="/etc" \
-    -Dconsolekit=false
+    -Dconsolekit=false \
+    -Dlogind=true
   ninja
 }
 
