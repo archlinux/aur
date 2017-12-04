@@ -2,7 +2,7 @@
 
 pkgname=fastonosql
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform open source Redis, Memcached, SSDB, LevelDB, RocksDB, UnQLite, LMDB, UpscaleDB GUI management tool."
 arch=('x86_64')
 license=('GPL3')
@@ -10,7 +10,7 @@ url="http://fastonosql.com"
 options=('!strip' '!upx')
 
 source=(
-	"https://fastonosql.com/downloads/linux/fastonosql-1.11.0-x86_64.deb"
+	"https://fastonosql.com/registered_users_downloads/linux/fastonosql-1.11.0-x86_64.deb"
 	"fastonosql_22.png"
 	"fastonosql_24.png"
 	"fastonosql_32.png"
