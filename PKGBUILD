@@ -3,7 +3,7 @@
 pkgbase=('python-smcp')
 pkgname=('python-smcp' 'python2-smcp')
 pkgdesc="A Python solver for sparse matrix cone programs."
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 arch=('any')
 url='http://smcp.readthedocs.io'
@@ -31,4 +31,4 @@ package_python2-smcp() {
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
-md5sums=('6fb4c65c028f715c2c85443e0467026f')
+md5sums=('e48826e02994edc0885fd01888ea6684')
