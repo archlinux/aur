@@ -5,7 +5,7 @@
 pkgname=dwarftherapist-git
 epoch=2
 pkgver=39.0.0_r4_g5efed5d
-pkgrel=1
+pkgrel=2
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/Dwarf-Therapist/Dwarf-Therapist"
 arch=('x86_64' 'i686')
@@ -33,6 +33,8 @@ package() {
   
   # Rename binary
   mv "$pkgdir/usr/bin/DwarfTherapist" "$pkgdir/usr/bin/dwarftherapist"
+  # Fix .desktop
+  sed -i 's:DwarfTherapist:dwarftherapist:g' "$pkgdir/usr/share/applications/dwarftherapist.desktop"
 
   # Link license to expected location
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
