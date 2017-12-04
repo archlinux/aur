@@ -1,0 +1,21 @@
+pkgbase = plv8
+	pkgdesc = V8 Engine Javascript Procedural Language add-on for PostgreSQL
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/plv8/plv8
+	arch = x86_64
+	arch = i686
+	license = PLV8JS License: https://raw.githubusercontent.com/plv8/plv8/master/COPYRIGHT
+	makedepends = clang
+	makedepends = clang-tools-extra
+	makedepends = ninja
+	makedepends = python2
+	makedepends = python2-virtualenv
+	depends = postgresql>=9.2
+	depends = readline
+	depends = ncurses5-compat-libs
+	source = https://github.com/plv8/plv8/archive/v2.1.0.tar.gz
+	sha512sums = 83c44111138d6804d81752226589bf0f257a513f995d9d5eedfb098579e93cb9c51b4e4f1722b8239e848d399d913e36df4eefa78724875a244b887b39eeb85a
+
+pkgname = plv8
+
