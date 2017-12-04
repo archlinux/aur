@@ -4,6 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
+# Contributor: Radu Potop <radu@wooptoo.com>
 
 #
 # This package tracks the default ffmpeg Arch package closely
