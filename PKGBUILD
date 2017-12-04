@@ -3,7 +3,7 @@
 _pyname=pygments-markdown-lexer
 pkgname=python-$_pyname
 pkgver=0.1.0.dev39
-pkgrel=1
+pkgrel=2
 pkgdesc='A Markdown lexer for Pygments to highlight Markdown code snippets'
 url='https://pypi.python.org/pypi/pygments-markdown-lexer'
 depends=('python-pygments')
@@ -20,7 +20,7 @@ build() {
 
 package() {
   cd $srcdir/$_pyname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 
+  python setup.py install --root="$pkgdir" --optimize=1
   rm -r "$pkgdir/usr/EGG-INFO"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
