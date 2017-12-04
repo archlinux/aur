@@ -1,6 +1,6 @@
 pkgbase = myhtml-git
 	pkgdesc = Fast HTML parser using threads implemented as a pure C99 library with no outside dependencies
-	pkgver = 20171204
+	pkgver = 20171129
 	pkgrel = 1
 	url = https://github.com/lexborisov/myhtml
 	arch = i686

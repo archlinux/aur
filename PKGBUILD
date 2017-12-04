@@ -33,5 +33,5 @@ package() {
 	cp -dpr --no-preserve=ownership examples "$pkgdir"/usr/share/doc/${pkgname%-git}
 
 	msg2 'Installing...'
-	make prefix="$pkgdir/" install
+	make prefix="$pkgdir/usr/" install
 }
