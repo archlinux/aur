@@ -18,12 +18,12 @@ pkgbase="spl-linux-git"
 pkgname=("spl-linux-git" "spl-linux-git-headers")
 
 pkgver=0.7.0.r21.ged19bcc.4.14.3.1
-pkgrel=1
+pkgrel=4
 makedepends=("linux-headers=4.14.3-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git")
-sha256sums=("SKIP")
+source=("git+https://github.com/zfsonlinux/spl.git" '0001-Linux-4.14-compat-vfs_read-vfs_write.patch')
+sha256sums=("SKIP" 'd20506fbe6e9ee928005e8a73c03e4b4d207268348f684b9c7a33301067793b8')
 license=("GPL")
 depends=("spl-utils-common-git>=0.7.0.r21.ged19bcc" "kmod" "linux=4.14.3-1")
 
