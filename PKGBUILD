@@ -3,7 +3,7 @@ pkgbase='aerospike-client-python'
 pkgname=(aerospike-client-python aerospike-client-python2)
 _name=aerospike
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Aerospike Client Library for Python"
 license=('apache')
 arch=('any')
@@ -34,6 +34,7 @@ build_aerospike-client-python2() {
 package_aerospike-client-python() {
   depends=('python' 'python-setuptools')
   cd "${srcdir}/aerospike-${pkgver}"
+  export DOWNLOAD_C_CLIENT=0
   python setup.py install --root="${pkgdir}" --optimize=1
   rm -r "${pkgdir}/usr/aerospike"
 }
@@ -41,6 +42,7 @@ package_aerospike-client-python() {
 package_aerospike-client-python2() {
   depends=('python2' 'python2-setuptools')
   cd "${srcdir}/aerospike-${pkgver}"
+  export DOWNLOAD_C_CLIENT=0
   python2 setup.py install --root="${pkgdir}" --optimize=1
   rm -r "${pkgdir}/usr/aerospike"
 }
