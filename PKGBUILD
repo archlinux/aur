@@ -2,13 +2,13 @@
 
 pkgname=gumbo-gq-git
 pkgver=r138.f2051cc
-pkgrel=1
+pkgrel=2
 pkgdesc="GQ is a CSS Selector Engine for Gumbo Parser written in C++11"
 url=""
 arch=("x86_64")
 license=("MIT")
-makedepends=("cmake" "git")
-depends=("gumbo-git" "boost")
+makedepends=("cmake" "git" "boost")
+depends=("gumbo-git")
 
 source=(
   "${pkgname%-git}"::"git://github.com/TechnikEmpire/GQ.git"
