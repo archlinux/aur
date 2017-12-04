@@ -1,0 +1,11 @@
+--- a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/Platform.h	2017-12-03 15:17:32.109008745 -0300
++++ b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/Platform.h	2017-12-03 15:18:07.382415362 -0300
+@@ -377,7 +377,7 @@
+ 
+ #if (defined(mips) || defined(__mips__) || defined(MIPS) || defined(_MIPS_))
+ #define WTF_CPU_MIPS 1
+-#include <sgidefs.h>
++#include <asm/sgidefs.h>
+ #if defined(__MIPSEB__)
+ #define WTF_CPU_BIG_ENDIAN 1
+ #endif
