@@ -19,14 +19,14 @@ pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
 
 pkgver=0.7.3.4.9.66.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-lts-headers=4.9.66" "libelf" "spl-linux-lts-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.3/zfs-0.7.3.tar.gz")
 sha256sums=("cb8fc606835d3f91471e49aca31a6a0a71733b1cbe74fa510e0fe0efa670fe51")
 license=("CDDL")
-depends=("kmod" "spl-linux-lts" "zfs-utils-common>=0.7.3" "linux-lts=4.9.66")
+depends=("kmod" "spl-linux-lts" "zfs-utils-common=0.7.3" "linux-lts=4.9.66")
 
 build() {
     cd "${srcdir}/zfs-0.7.3"
