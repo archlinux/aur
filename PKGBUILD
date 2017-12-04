@@ -1,27 +1,29 @@
-# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Contributer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=gatk
-_pkgver=3.8-0
-pkgver=${_pkgver/-/.}
+_pkgver=4.beta.6
+pkgver="${_pkgver//.beta/}"
 pkgrel=1
-pkgdesc='Genome Analysis Toolkit - Variant Discovery in High-Throughput Sequencing Data'
+pkgdesc="Genome Analysis Toolkit - Variant Discovery in High-Throughput Sequencing Data"
 arch=('any')
 url="https://software.broadinstitute.org/gatk/"
-license=('custom')
-depends=('bash' 'java-runtime>=8')
-source=("$pkgname-$pkgver.tar.bz2::https://software.broadinstitute.org/gatk/download/auth?package=GATK"
-        'gatk-license.txt'
-        'gatk.sh')
-md5sums=('0581308d2a25f10d11d3dfd0d6e4d28e'
-         'ed8d005306adf1d18c477ee5b19c4b9e'
-         '8a0bd3c67fc4670b36d28bc383dc883b')
+license=('BSD3')
+depends=('bash' 'java-runtime>=8' 'gradle')
+provides=('gatk')
+conflicts=('gatk')
+source=("https://github.com/broadinstitute/${pkgname}/archive/${_pkgver}.tar.gz")
+md5sums=('caff053f04974044e06cd5fc8e344d7c')
+
+build() {
+  cd "${srcdir}/${pkgname}-${_pkgver}"
+  ./gradlew localJar
+}
 
 package() {
-  install -Dm755 $srcdir/gatk.sh $pkgdir/usr/bin/gatk
-
-  install -Dm644 \
-    $srcdir/GenomeAnalysisTK-$_pkgver-*/GenomeAnalysisTK.jar \
-    $pkgdir/usr/share/java/gatk/GenomeAnalysisTK.jar
-
-  install -Dm644 $srcdir/gatk-license.txt $pkgdir/usr/share/licenses/gatk/LICENSE
+  install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/build/libs/gatk-package-unspecified-SNAPSHOT-local.jar" "${pkgdir}/usr/share/java/${pkgname}-${_pkgver}/GenomeAnalysisTK.jar"
+  install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}-${_pkgver}/LICENSE.TXT"
+  install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}-${_pkgver}/README.md"
+  install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/AUTHORS" "${pkgdir}/usr/share/doc/${pkgname}-${_pkgver}/AUTHORS"
 }
+
