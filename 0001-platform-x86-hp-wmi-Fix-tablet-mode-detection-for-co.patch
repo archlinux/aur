@@ -1,0 +1,38 @@
+From 34bc85a1577be5f2f6ccd2c17fc5870c83ab510b Mon Sep 17 00:00:00 2001
+Message-Id: <34bc85a1577be5f2f6ccd2c17fc5870c83ab510b.1510965801.git.jan.steffens@gmail.com>
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 3 Nov 2017 03:01:53 +0100
+Subject: [PATCH] platform/x86: hp-wmi: Fix tablet mode detection for
+ convertibles
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Commit f9cf3b2880cc ("platform/x86: hp-wmi: Refactor dock and tablet
+state fetchers") consolidated the methods for docking and laptop mode
+detection, but omitted to apply the correct mask for the laptop mode
+(it always uses the constant for docking).
+
+Fixes: f9cf3b2880cc ("platform/x86: hp-wmi: Refactor dock and tablet state fetchers")
+Signed-off-by: Stefan BrÃ¼ns <stefan.bruens@rwth-aachen.de>
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/platform/x86/hp-wmi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/hp-wmi.c b/drivers/platform/x86/hp-wmi.c
+index b4ed3dc983d5229c..b4224389febebe46 100644
+--- a/drivers/platform/x86/hp-wmi.c
++++ b/drivers/platform/x86/hp-wmi.c
+@@ -297,7 +297,7 @@ static int hp_wmi_hw_state(int mask)
+ 	if (state < 0)
+ 		return state;
+ 
+-	return state & 0x1;
++	return !!(state & mask);
+ }
+ 
+ static int __init hp_wmi_bios_2008_later(void)
+-- 
+2.15.0
+
