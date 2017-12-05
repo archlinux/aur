@@ -1,0 +1,34 @@
+Baytrail Chromebooks used to be managed with legacy driver which
+is not compatible with atom/sst drivers. Reuse CHT driver to
+handle max98098 codec and allow distributions to support all
+Atom platforms with the same build.
+
+The legacy byt-max98090 can still be used but in a build for
+Baytrail+max98090 only.
+
+Signed-off-by: Pierre-Louis Bossart <pierre-louis.bossart at linux.intel.com>
+---
+ sound/soc/intel/atom/sst/sst_acpi.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/sound/soc/intel/atom/sst/sst_acpi.c b/sound/soc/intel/atom/sst/sst_acpi.c
+index 0e928d5..ff4a517 100644
+--- a/sound/soc/intel/atom/sst/sst_acpi.c
++++ b/sound/soc/intel/atom/sst/sst_acpi.c
+@@ -536,6 +536,14 @@ static struct sst_acpi_mach sst_acpi_bytcr[] = {
+ 		.board = "cht-bsw",
+ 		.pdata = &byt_rvp_platform_data
+ 	},
++	/* use CHT driver to Baytrail Chromebooks */
++	{
++		.id = "193C9890",
++		.drv_name = "cht-bsw-max98090",
++		.fw_filename = "intel/fw_sst_0f28.bin",
++		.board = "cht-bsw",
++		.pdata = &byt_rvp_platform_data
++	},
+ #if IS_ENABLED(CONFIG_SND_SOC_INTEL_BYT_CHT_NOCODEC_MACH)
+ 	/*
+ 	 * This is always last in the table so that it is selected only when
+-- 
+2.9.3

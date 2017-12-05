@@ -1,0 +1,112 @@
+Jacks are created but only enabled when the external TI chip is
+present, this probably never worked as well. Forklift the gpio-based
+code from the legacy byt-max98090 driver, with however a less strict
+error check. It's fine to let users enjoy their device even if
+jack detection doesn't work - it almost never does without quirks...
+
+Tested on Lenovo100s
+
+CC: Andy Shevchenko <andriy.shevchenko at linux.intel.com>
+Signed-off-by: Pierre-Louis Bossart <pierre-louis.bossart at linux.intel.com>
+---
+ sound/soc/intel/boards/cht_bsw_max98090_ti.c | 56 +++++++++++++++++++++++++++-
+ 1 file changed, 55 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/intel/boards/cht_bsw_max98090_ti.c b/sound/soc/intel/boards/cht_bsw_max98090_ti.c
+index a1502c7..74c047a 100644
+--- a/sound/soc/intel/boards/cht_bsw_max98090_ti.c
++++ b/sound/soc/intel/boards/cht_bsw_max98090_ti.c
+@@ -159,6 +159,40 @@ static struct notifier_block cht_jack_nb = {
+ 	.notifier_call = cht_ti_jack_event,
+ };
+ 
++static struct snd_soc_jack_pin hs_jack_pins[] = {
++	{
++		.pin	= "Headphone",
++		.mask	= SND_JACK_HEADPHONE,
++	},
++	{
++		.pin	= "Headset Mic",
++		.mask	= SND_JACK_MICROPHONE,
++	},
++};
++
++static struct snd_soc_jack_gpio hs_jack_gpios[] = {
++	{
++		.name		= "hp",
++		.report		= SND_JACK_HEADPHONE | SND_JACK_LINEOUT,
++		.debounce_time	= 200,
++	},
++	{
++		.name		= "mic",
++		.invert		= 1,
++		.report		= SND_JACK_MICROPHONE,
++		.debounce_time	= 200,
++	},
++};
++
++static const struct acpi_gpio_params hp_gpios = { 0, 0, false };
++static const struct acpi_gpio_params mic_gpios = { 1, 0, false };
++
++static const struct acpi_gpio_mapping acpi_max98090_gpios[] = {
++	{ "hp-gpios", &hp_gpios, 1 },
++	{ "mic-gpios", &mic_gpios, 1 },
++	{},
++};
++
+ static int cht_codec_init(struct snd_soc_pcm_runtime *runtime)
+ {
+ 	int ret;
+@@ -178,15 +212,29 @@ static int cht_codec_init(struct snd_soc_pcm_runtime *runtime)
+ 	jack_type = SND_JACK_HEADPHONE | SND_JACK_MICROPHONE;
+ 
+ 	ret = snd_soc_card_jack_new(runtime->card, "Headset Jack",
+-					jack_type, jack, NULL, 0);
++				    jack_type, jack,
++				    hs_jack_pins, ARRAY_SIZE(hs_jack_pins));
+ 	if (ret) {
+ 		dev_err(runtime->dev, "Headset Jack creation failed %d\n", ret);
+ 		return ret;
+ 	}
+ 
++
+ 	if (ctx->ts3a227e_present)
+ 		snd_soc_jack_notifier_register(jack, &cht_jack_nb);
+ 
++	ret = snd_soc_jack_add_gpiods(runtime->card->dev->parent, jack,
++				      ARRAY_SIZE(hs_jack_gpios),
++				      hs_jack_gpios);
++	if (ret) {
++		/*
++		 * flag error but don't bail if jack detect is broken
++		 * due to platform issues or bad BIOS/configuration
++		 */
++		dev_err(runtime->dev,
++			"jack detection gpios not added, error %d\n", ret);
++	}
++
+ 	/*
+ 	 * The firmware might enable the clock at
+ 	 * boot (this information may or may not
+@@ -363,6 +411,7 @@ static struct snd_soc_card snd_soc_card_cht = {
+ 
+ static int snd_cht_mc_probe(struct platform_device *pdev)
+ {
++	struct device *dev = &pdev->dev;
+ 	int ret_val = 0;
+ 	struct cht_mc_private *drv;
+ 
+@@ -375,6 +424,11 @@ static int snd_cht_mc_probe(struct platform_device *pdev)
+ 		/* no need probe TI jack detection chip */
+ 		snd_soc_card_cht.aux_dev = NULL;
+ 		snd_soc_card_cht.num_aux_devs = 0;
++
++		ret_val = devm_acpi_dev_add_driver_gpios(dev->parent,
++							 acpi_max98090_gpios);
++		if (ret_val)
++			dev_dbg(dev, "Unable to add GPIO mapping table\n");
+ 	}
+ 
+ 	/* register the soc card */
+-- 
+2.9.3

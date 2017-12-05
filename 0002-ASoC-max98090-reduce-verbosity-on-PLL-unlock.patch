@@ -1,0 +1,30 @@
+'commit b8a3ee820f7b ("ASoC: max98090: Add recovery for PLL lock failure")'
+enabled a workaround PLL unlocked issues, but generates annoying
+dev_info "PLL unlocked" messages at a 10ms rate, usually on startup.
+
+Move to dev_info_ratelimited. This issue doesn't seem to impact audio
+functionality.  This trace is commented out in the GalliumOS patches,
+it's better to keep it to check on potential quality issues
+
+Tested on Lenovo 100s (Baytrail Chromebook)
+
+Signed-off-by: Pierre-Louis Bossart <pierre-louis.bossart at linux.intel.com>
+---
+ sound/soc/codecs/max98090.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/codecs/max98090.c b/sound/soc/codecs/max98090.c
+index 13bcfb1..f5075d1 100644
+--- a/sound/soc/codecs/max98090.c
++++ b/sound/soc/codecs/max98090.c
+@@ -2115,7 +2115,7 @@ static void max98090_pll_work(struct work_struct *work)
+ 	if (!snd_soc_codec_is_active(codec))
+ 		return;
+ 
+-	dev_info(codec->dev, "PLL unlocked\n");
++	dev_info_ratelimited(codec->dev, "PLL unlocked\n");
+ 
+ 	/* Toggle shutdown OFF then ON */
+ 	snd_soc_update_bits(codec, M98090_REG_DEVICE_SHUTDOWN,
+-- 
+2.9.3

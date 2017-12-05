@@ -3,13 +3,23 @@
 
 pkgbase=linux-max98090
 _srcname=linux-4.14
-pkgver=4.14.2
+pkgver=4.14.3
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf' 'patch' 'make')
 options=('!strip')
+_patches=(
+  '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
+  '0002-ASoC-max98090-reduce-verbosity-on-PLL-unlock.patch'
+  '0003-ASoC-Intel-cht_bsw_max98090-Fix-I2S-config-unused-code.patch'
+  '0004-ASoC-Intel-cht_bsw_max98090-add-support-for-Baytrail.patch'
+  '0005-ASoC-Intel-atom-use-cht_bsw_max98090-for-Baytrail-Chromebooks.patch'
+  '0006-ASoC-ts3a227e-add-acpi-table.patch'
+  '0007-ASoc-Intel-cht_bsw_max98090_ti-Fix-jack-initialization.patch'
+  '0008-ASoC-Intel-cht_bsw_max98090-add-gpio-based-jack-detection.patch'
+)
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -19,24 +29,29 @@ source=(
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   'linux.preset'   # standard config files for mkinitcpio ramdisk
-  '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
-  #'HiFi.conf'
-  #'byt-max98090.conf'
-  #'orco-bytmax98090.state'
+  "${_patches[@]}"
 )
+
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '2dc86272e55d31c55bdeaa47b3d44fbd6235a396e37d82c2b47aa27f6ba82ee3'
+            'e13995c11d0c2d3379c887666dbfaca619200fb8853db6d5d67f97d47fd959b7'
             'SKIP'
-            '83a0dd958b5ea2e5893e87b9877ebef467af8aaf2d31ea46055b46337636fd57'
+            '02b2ed3fd7765fb311845a54ed3c5b9ba4088b48233995ba42faa4f97dc953ea'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd')
+            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd'
+            'f372da78745f49e5709f2739a1166c39298c91d5eb08d6fb362603481d8395b5'
+            'a1766026aa04cd650da0229399121fc547620617699bbc573c250360182504ed'
+            'fef99b00f76a623a78c2871a204e673d8522f54c4623a529d4839389afefc857'
+            'f09c970935ae9788db015e4ddc2949e909bbd1be81b219ccad0c701e3546cbf7'
+            '2f19a7f5c9e01516da222f69b40599fabd4e5b3c87aeac3ada78012a6d2904b8'
+            '60fabf5d05e1176361cceff6ec1720935762e27e3d590b1a267fa9eb7739a607'
+            'b2b20af5ea14de866b0af3e2cbe27ed517bf22c5c97b51b3bcc778062d4b7217')
 
 _kernelname=${pkgbase#linux}
 
@@ -52,7 +67,11 @@ prepare() {
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # https://bugs.archlinux.org/task/56207
-  patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
+
+for file in "${_patches[@]}"; do
+      echo "Applying patch $(basename $file)..."
+      patch -Np1 <"$srcdir/$(basename ${file})"
+  done
 
   cp -Tf ../config .config
 
@@ -144,11 +163,6 @@ _package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
   sed "${_subst}" ../90-linux.hook |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-  # install ucm files for max98090
-  #install -d "${pkgdir}/usr/share/alsa/ucm/byt-max98090"
-  #install -Dm644 "${srcdir}/HiFi.conf" "${pkgdir}/usr/share/alsa/ucm/byt-max98090"
-  #install -Dm644 "${srcdir}/byt-max98090.conf" "${pkgdir}/usr/share/alsa/ucm/byt-max98090"
-  #install -Dm644 "${srcdir}/orco-bytmax98090.state" "${pkgdir}/usr/share/alsa/ucm/byt-max98090"
 }
 
 _package-headers() {
