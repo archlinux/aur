@@ -1,0 +1,14 @@
+pkgbase = otpnitro
+	pkgdesc = OTP Nitro is a secure One Time Pad library and CLI to use on computers.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://code.haibane.org/capi_x/otpnitro
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	source = http://code.haibane.org/capi_x/otpnitro/archive/0.5.2.tar.gz
+	md5sums = d7b8cef8a3e0bf0b38620bbf05ea5a1d
+
+pkgname = otpnitro
+
