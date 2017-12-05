@@ -1,7 +1,7 @@
 pkgname=libctru-git
 _gitname=ctrulib
 _libname=libctru
-pkgver=v1.1.0.245.g97d6149
+pkgver=v1.4.0.5.g6f64dee3
 pkgrel=1
 epoch=1
 pkgdesc="Library for Nintendo 3DS homebrew development"
