@@ -2,10 +2,10 @@
 # Contributor: Christer Edwards <christer.edwards@gmail.com>
 
 pkgname=salt-git
-pkgver=2017.5.r584.gf0a9767a96
+pkgver=2017.7.1.r5791.g1463e036d7
 pkgrel=1
-pkgdesc="A remote execution and communication system built on zeromq"
-url="https://github.com/saltstack/salt"
+pkgdesc='A remote execution and communication system built on zeromq'
+url='https://github.com/saltstack/salt'
 arch=('any')
 license=('APACHE')
 makedepends=('git' 'gcc')
@@ -33,7 +33,7 @@ backup=('etc/salt/master'
         'etc/salt/minion')
 conflicts=('salt')
 provides=('salt')
-source=("${pkgname}::git://github.com/saltstack/salt.git")
+source=("${pkgname}::git+https://github.com/saltstack/salt.git")
 md5sums=('SKIP')
 
 pkgver() {
