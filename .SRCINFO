@@ -1,0 +1,17 @@
+pkgbase = python-crate-git
+	pkgdesc = A Python client library for CrateDB.
+	pkgver = r547.d752d9d
+	pkgrel = 1
+	url = https://github.com/crate/crate-python
+	arch = any
+	license = custom:APACHE
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = python-crate=r547.d752d9d
+	conflicts = python-crate
+	source = python-crate::git+https://github.com/crate/crate-python
+	md5sums = SKIP
+
+pkgname = python-crate-git
+
