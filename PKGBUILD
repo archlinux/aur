@@ -3,7 +3,7 @@
 # AUR Category: devel
 
 pkgname=clazy
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Qt oriented code checker based on clang framework"
 url="https://github.com/KDE/clazy"
@@ -24,4 +24,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('e4177a1a0e1d03577714fd95091e2af2f9ec0bda6cab1d1eab4f3232f53afb7e')
+sha256sums=('c441224cf9e0e8ecc3b2f591e255073ae79a1d0fcf77bceca4493aa286cc2899')
