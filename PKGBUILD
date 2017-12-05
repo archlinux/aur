@@ -1,13 +1,13 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=appleseed-git
-#_fragment=
-pkgver=1.7.0.beta.r898.ga0b650356
+#_fragment="#tag=1.7.1-beta"
+pkgver=1.8.0.beta.r29.g162d750af
 pkgrel=1
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
 arch=(i686 x86_64)
 url="http://appleseedhq.net"
 license=('MIT')
-depends=(python2 qt4 'seexpr>=2.11' boost openexr opencolorio openimageio openshadinglanguage xerces-c zlib)
+depends=(python2 qt4 'seexpr>=2.11' boost openexr opencolorio openimageio 'openshadinglanguage>=1.8.9' xerces-c zlib)
 makedepends=(git cmake)
 options=()
 source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment}"
