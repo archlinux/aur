@@ -1,3 +1,4 @@
+# Maintainer: fitu996 <fitu996 at gmail dot com>
 pkgname=ffqueue-git
 pkgver=r3.3e4c8ab
 pkgrel=1
