@@ -1,6 +1,6 @@
 pkgbase = sushi-shifter-git
 	pkgdesc = Automatic shifter for SRT and ASS subtitle based on audio streams.
-	pkgver = 0.5.1.r0.gdb0e593
+	pkgver = 0.5.1.r3.g908c0ff
 	pkgrel = 1
 	url = https://github.com/tp7/Sushi
 	arch = i686

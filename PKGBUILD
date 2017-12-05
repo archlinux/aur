@@ -1,7 +1,7 @@
 # Maintainer : Yamashita Ren <lemaitre dot lotus at gmail.com>
 
 pkgname=sushi-shifter-git
-pkgver=0.5.1.r0.gdb0e593
+pkgver=0.5.1.r3.g908c0ff
 pkgrel=1
 pkgdesc="Automatic shifter for SRT and ASS subtitle based on audio streams."
 arch=('i686' 'x86_64')
@@ -17,11 +17,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$pkgname"
-  sed -i 's/env\ python/python2/' sushi.py
 }
 
 package() {
