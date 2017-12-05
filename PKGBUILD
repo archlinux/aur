@@ -12,7 +12,7 @@ _lang=ru
 pkgname="${_name}-${_channel}-ru"
 pkgdesc='Standalone web browser from mozilla.org, developer build - Russian'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=58.0b8
+pkgver=58.0b9
 pkgrel=1
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -62,8 +62,8 @@ package() {
     install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-sha512sums=('153870f69b37e88827be0ac443957d4e5d3be8fceb45b90ab515ae8b1caff2d819c6505f9491b5f2b529020755c1f21f25b28fefda13467cee439ad86f8a22fa'
-            '4a05d5e05c210f79f76bd25d2c86677409d76e600106310cb2d1be70f9a5b0d1c64e87248b7ceca4a1f1b2b383b7b72e7cd612a0f4f72acb2ceff3186b11a472'
-            '046619e7f6cabe07dbfe947d2739f31bc1f202a82697caa2aac13c6b0c0d69ad7318a7f09534a6f8f96310ad67d7692c6e038458ce674f1f5fb4acd994da90ef'
+sha512sums=('886671b66ef73167e6891dbc8f835a64cc44821579c31a5c315dbe6d67c93b21545658c7c9bff651c92c357c22a2df6f0cd9810b5bed4d7ca1761ca996bd99f6'
+            '4465e2304eb9ca3b3824965c7354dfb62fa9b4da13bbc1c1d96d66217b39866456c8ac0c1eddac3c848720aa1239b2df6ac7c32d2b1a73a418578ebcc77e5345'
+            '917730b7785a82f11a70a7fc4ff40a763204bad8b2a4ff24d45f8fe430617f4e63c6e7364feb6e9462325a8c52f7c8c45854cb80cb6d43e38cc0a2e41c2a5660'
             '9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
