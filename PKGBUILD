@@ -3,18 +3,18 @@ pkgname=firegrid
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="Click anywhere with only a few key strokes"
-arch=(any)
+arch=("x86_64")
 url="https://github.com/foliea/firegrid"
-license=('MIT')
-depends=('qt5-base' 'xdotool')
-makedepends=('wget' 'crystal')
+license=("MIT")
+depends=("qt5-base" "xdotool")
+makedepends=("wget" "crystal")
 source=("https://github.com/foliea/firegrid/archive/$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=("SKIP")
 
 prepare() {
-	wget https://github.com/crystal-lang/crystal/releases/download/0.23.1/crystal-0.23.1-3-linux-x86_64.tar.gz
-	tar -xzvf crystal-0.23.1-3-linux-x86_64.tar.gz
-	export PATH="$PWD/crystal-0.23.1-3/bin:$PATH"
+	wget https://github.com/crystal-lang/crystal/releases/download/0.23.0/crystal-0.23.0-1-linux-x86_64.tar.gz
+	tar -xzvf crystal-0.23.0-1-linux-x86_64.tar.gz
+	export PATH="$PWD/crystal-0.23.0-1/bin:$PATH"
 }
 
 build() {
