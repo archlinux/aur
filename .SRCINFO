@@ -1,7 +1,7 @@
 pkgbase = peercoind-git
-	pkgdesc = Peercoin deamon - master branch.
-	pkgver = v0.6.1.rc1.r0.g162f0694
-	pkgrel = 1
+	pkgdesc = Peercoin deamon - develop branch.
+	pkgver = v0.6.2.rc1.r0.gd609c850
+	pkgrel = 3
 	url = peercoin.net
 	arch = x86_64
 	arch = i686
