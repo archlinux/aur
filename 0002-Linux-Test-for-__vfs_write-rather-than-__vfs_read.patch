@@ -1,4 +1,4 @@
-From e5a30e15337cf008d253ae3368d6421ab27e8f2d Mon Sep 17 00:00:00 2001
+From d1e45fa924711f904c256f5055d6ebae6cc18a88 Mon Sep 17 00:00:00 2001
 From: Damien Diederen <ddiederen@sinenomine.net>
 Date: Mon, 18 Sep 2017 11:59:40 +0200
 Subject: [PATCH 2/3] Linux: Test for __vfs_write rather than __vfs_read
@@ -95,5 +95,5 @@ index f46d8dda8..3d9d71791 100644
    .write =	new_sync_write,
  # endif
 -- 
-2.15.0
+2.15.1
 

@@ -1,4 +1,4 @@
-From 8c11a97ec0991800c12311a123134f8b5fd59f5e Mon Sep 17 00:00:00 2001
+From 8bcc735dac68eab9fa4c3f95348c0d2c64aa569b Mon Sep 17 00:00:00 2001
 From: Damien Diederen <ddiederen@sinenomine.net>
 Date: Mon, 18 Sep 2017 12:18:39 +0200
 Subject: [PATCH 3/3] Linux: Use kernel_read/kernel_write when __vfs variants
@@ -138,5 +138,5 @@ index 3d9d71791..051452b34 100644
    .write =	new_sync_write,
  # endif
 -- 
-2.15.0
+2.15.1
 
