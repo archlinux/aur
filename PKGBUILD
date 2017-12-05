@@ -3,11 +3,11 @@
 
 pkgname='xmrig'
 pkgver='2.4.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='High Perf CPU Miner'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
-depends=('libuv')
+depends=('libuv' 'libmicrohttpd')
 optdepends=('monero: wallet')
 makedepends=('cmake' 'libuv' 'libmicrohttpd')
 conflicts=('xmrig-bin')
