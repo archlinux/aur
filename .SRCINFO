@@ -1,5 +1,5 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.14.3
+	pkgver = 4.14.4
 	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = linux-bfq-mq
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.3.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.3.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.4.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.4.sign
 	source = https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/4.14-bfq-sq-mq-git-20171114.patch
 	source = https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch
@@ -31,12 +31,11 @@ pkgbase = linux-bfq-mq
 	source = 90-linux.hook
 	source = 99-linux.hook
 	source = linux.preset
-	source = 0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
 	sha256sums = SKIP
-	sha256sums = e13995c11d0c2d3379c887666dbfaca619200fb8853db6d5d67f97d47fd959b7
+	sha256sums = e9dcf9aad5977289940cd6e3762af02b87a725ba6c1a9f4af86958dc621e3a84
 	sha256sums = SKIP
 	sha256sums = 8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8
 	sha256sums = 0cfc2877c3772c946855c4dedb442843a7ec71d6cf47dfee69c40fd329405824
@@ -55,7 +54,6 @@ pkgbase = linux-bfq-mq
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = 5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd
 
 pkgname = linux-bfq-mq
 	pkgdesc = The Linux-bfq-mq kernel and modules with the BFQ-MQ scheduler
@@ -66,19 +64,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.14.3
-	provides = linux=4.14.3
+	provides = linux-bfq-mq=4.14.4
+	provides = linux=4.14.4
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.14.3
-	provides = linux-bfq-mq-headers=4.14.3
-	provides = linux-headers=4.14.3
+	depends = linux-bfq-mq=4.14.4
+	provides = linux-bfq-mq-headers=4.14.4
+	provides = linux-headers=4.14.4
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.14.3
-	provides = linux-bfq-mq-docs=4.14.3
-	provides = linux-docs=4.14.3
+	depends = linux-bfq-mq=4.14.4
+	provides = linux-bfq-mq-docs=4.14.4
+	provides = linux-docs=4.14.4
 
