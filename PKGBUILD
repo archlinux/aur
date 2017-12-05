@@ -5,8 +5,8 @@
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=crossover
-pkgver=16.2.5
-pkgrel=2
+pkgver=17.0.0
+pkgrel=1
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ install=${pkgname}.install
 replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
 
 source=("http://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
-sha256sums=('e3c110f050cf0e87b564580b809d311f5dc5e81fc720448311a696248952ae41')
+sha256sums=('ce92a39b26ca4161d59f453ecb216678385d4df3c00cab2f2de7c4b74efaba6e')
 
 depends=( 
     'python2' 'desktop-file-utils' 'pygtk' 'python2-dbus'
@@ -28,7 +28,7 @@ optdepends=(
 )
 
 depends_i686=(
-    'glibc>=2.11' 'libice' 'libsm' 'libx11' 'libxext' 'libxi' 'freetype2<2.8.1'
+    'glibc>=2.11' 'libice' 'libsm' 'libx11' 'libxext' 'libxi' 'freetype2'
     'libpng' 'zlib' 'lcms2' 'libgl' 'libxcursor' 'libxrandr' 'glu'
 )
 
@@ -63,7 +63,7 @@ optdepends_i686=(
 
 depends_x86_64=(
     'lib32-glibc>=2.11' 'lib32-libice' 'lib32-libsm' 'lib32-libx11'
-    'lib32-libxext' 'lib32-libxi' 'lib32-freetype2<2.8.1' 'lib32-libpng' 'lib32-zlib'
+    'lib32-libxext' 'lib32-libxi' 'lib32-freetype2' 'lib32-libpng' 'lib32-zlib'
     'lib32-lcms2' 'lib32-libgl' 'lib32-libxcursor' 'lib32-libxrandr'
     'lib32-glu'
 )
