@@ -1,14 +1,17 @@
+# Maintainer: kaptoxic
 # Contributor: Lockheed <qwrules@gmail.com>
-# Contributor: kaptoxic
 
 pkgname=rainlendar-pro
 pkgver=2.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop Calendar, ToDo list and Event list"
 arch=('i686' 'x86_64')
 url="http://www.rainlendar.net/"
 license=('custom')
-depends=('cairo' 'libsm' 'expat>=1.95.8' 'libstdc++5' 'libpng12' 'openssl098' 'librtmp0' 'webkitgtk2')
+depends=('cairo' 'libsm' 'expat>=1.95.8' 'libstdc++5' 'libpng12' 'openssl098' 'librtmp0'
+	# requirements on the old enchant library
+	'enchant1.6'
+	'webkitgtk2')
 provides=('rainlendar2')
 conflicts=('rainlendar-beta' 'rainlendar-beta-unstable' 'rainlendar-lite')
 
@@ -17,7 +20,6 @@ if [ "${CARCH}" == 'x86_64' ]; then
 md5sums=('8aaf1cbbda00a638e5fd20174fd2be9d')
   else
     source=(http://www.rainlendar.net/download/Rainlendar-Pro-$pkgver-i386.tar.bz2)
-md5sums=('17ae4d4205cef84ae6163f38c588e1c6')
 fi
 
 package() {
