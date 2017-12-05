@@ -7,16 +7,14 @@ pkgbase = radare2-cutter-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = binutils
 	makedepends = cmake
-	makedepends = gcc
 	depends = radare2-git
 	depends = capstone
 	depends = qt5-base
 	depends = qt5-svg
 	depends = icu
 	provides = radare2-cutter
-	source = radare2-cutter-git::git://github.com/radareorg/cutter.git
+	source = radare2-cutter-git::git+https://github.com/radareorg/cutter.git
 	md5sums = SKIP
 
 pkgname = radare2-cutter-git
