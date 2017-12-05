@@ -8,11 +8,11 @@ url="https://github.com/radareorg/cutter"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('radare2-git' 'capstone' 'qt5-base' 'qt5-svg' 'icu')
-makedepends=('git' 'binutils' 'cmake' 'gcc')
+makedepends=('git' 'cmake')
 optdepends=()
 provides=('radare2-cutter')
 backup=()
-source=("${pkgname}::git://github.com/radareorg/cutter.git")
+source=("${pkgname}::git+https://github.com/radareorg/cutter.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,12 +25,12 @@ prepare() {
   mkdir -p "${pkgname}/build"
   cd "${pkgname}/build"
 
-  cmake ../src
+  cmake -DCMAKE_BUILD_TYPE=Release ../src
 }
 
 build() {
   cd "${pkgname}/build"
-  make -j$(getconf _NPROCESSORS_ONLN)
+  make
 }
 
 package() {
