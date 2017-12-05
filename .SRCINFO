@@ -1,0 +1,14 @@
+pkgbase = plis
+	pkgdesc = Helps your development process with Docker Compose by asking nicely :)
+	pkgver = v0.0.0.build10
+	pkgrel = 0
+	url = https://github.com/IcaliaLabs/plis
+	arch = x86_64
+	license = MIT
+	optdepends = go
+	conflicts = plis-git
+	source = https://github.com/IcaliaLabs/plis/releases/download/v0.0.0.build10/plis-linux_x86_64
+	sha256sums = 884a18c48b0b37bdf94fc3af74234f45b982ad9da4853585cb09425b1101c84a
+
+pkgname = plis
+
