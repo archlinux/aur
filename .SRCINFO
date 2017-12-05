@@ -1,6 +1,6 @@
 pkgbase = salt-git
 	pkgdesc = A remote execution and communication system built on zeromq
-	pkgver = 2017.5.r584.gf0a9767a96
+	pkgver = 2017.7.1.r5791.g1463e036d7
 	pkgrel = 1
 	url = https://github.com/saltstack/salt
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = salt-git
 	conflicts = salt
 	backup = etc/salt/master
 	backup = etc/salt/minion
-	source = salt-git::git://github.com/saltstack/salt.git
+	source = salt-git::git+https://github.com/saltstack/salt.git
 	md5sums = SKIP
 
 pkgname = salt-git
