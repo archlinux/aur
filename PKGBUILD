@@ -2,7 +2,7 @@
 
 pkgname=vault-client
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Vault-Client is a command-line interface to HashiCorp's Vault inspired by pass."
 arch=(i686 x86_64)
 url="https://github.com/adfinis-sygroup/vault-client.git"
@@ -23,5 +23,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    make DESTDIR="${pkgdir}/usr" install
+    make DESTDIR="${pkgdir}" prefix=/usr install
 }
