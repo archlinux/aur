@@ -2,17 +2,17 @@
 # See https://phalanx.openinfosecfoundation.org/projects/suricata for more info
 
 pkgname=suricata-git
-pkgver=3.2.1.r227.gc3b4dd5a
+pkgver=4.0.1.r82.g84b66b7aa
 pkgrel=1
-pkgdesc="Suricata is a free and open source, mature, fast and robust network threat detection engine"
-url="https://suricata-ids.org"
+pkgdesc='Suricata is a free and open source, mature, fast and robust network threat detection engine'
+url='https://suricata-ids.org'
 arch=('i686' 'x86_64')
 license=('GPL2' 'CUSTOM')
 makedepends=('git' 'autoconf' 'automake' 'make' 'gcc' 'pkg-config' 'fakeroot' 'which')
 depends=('libcap-ng' 'libnet' 'libpcap' 'libyaml' 'pcre')
 #optdepends=('')
 backup=('etc/suricata/suricata.yaml' 'etc/suricata/classification.config' 'etc/suricata/reference.config' 'etc/suricata/threshold.config')
-source=("${pkgname}::git://phalanx.openinfosecfoundation.org/oisf.git" "libhtp::git+https://github.com/OISF/libhtp.git#branch=0.5.x")
+source=("${pkgname}::git+https://github.com/OISF/suricata.git" "libhtp::git+https://github.com/OISF/libhtp.git#branch=0.5.x")
 md5sums=('SKIP' 'SKIP')
 
 pkgver() {
@@ -38,8 +38,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}"
 
-  # Make with parallel jobs
-  make -j$(getconf _NPROCESSORS_ONLN)
+  make
 }
 
 package() {
