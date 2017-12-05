@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 
 pkgname=mega-sdk-git
-pkgver=3.0.0.r0.ge8e66e9f
+pkgver=3.0.0.r1240.g788d4207
 pkgrel=1
 pkgdesc="Official mega.nz SDK (development branch)"
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ depends=('c-ares'
          'libsodium'
          'libuv'
          'openssl'
+         'readline'
          'sqlite'
          'zlib')
 makedepends=('git')
