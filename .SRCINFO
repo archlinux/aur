@@ -1,0 +1,13 @@
+pkgbase = aur-creator-tools
+	pkgdesc = Small tools to create and maintain AUR packages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jD91mZM2/aur-creator-tools
+	arch = x86_64
+	license = MIT,
+	license = custom
+	source = https://github.com/jD91mZM2/aur-creator-tools/archive/v0.1.0.tar.gz
+	sha256sums = f198da3589a947c94fff35c2d6d3aebfac729eca12bd8d620d9434bb08a0933d
+
+pkgname = aur-creator-tools
+
