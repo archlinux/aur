@@ -1,8 +1,9 @@
-# Maintainer: Michael Duell <michael.duell@rub.de> PGP-Key: 5566FF77 Fingerprint FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
+# Maintainer: robertfoster
+# Contributor: Michael Duell <michael.duell@rub.de> PGP-Key: 5566FF77 Fingerprint FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
 
 pkgname=rtl-sdr-git
 pkgrel=1
-pkgver=v0.5.3.r17.g18bf269
+pkgver=v0.5.3.r18.gb04c2f9
 epoch=1
 pkgdesc="Tuner for DVB-T sticks based on the Realtek RTL2832U, which can be used as a cheap SDR, since the chip allows transferring the raw I/Q samples to the host."
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,7 +13,6 @@ depends=('libusb>=1.0')
 makedepends=('git' 'cmake')
 provides=('rtl-sdr')
 source=('rtl-sdr::git://git.osmocom.org/rtl-sdr.git')
-sha384sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/rtl-sdr"
@@ -33,4 +33,4 @@ package() {
   install -D -m644 "${srcdir}/rtl-sdr/rtl-sdr.rules" "${pkgdir}/usr/lib/udev/rules.d/10-rtl-sdr.rules"
 }
 
-# vim:set ts=2 sw=2 et:
+md5sums=('SKIP')
