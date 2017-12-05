@@ -1,0 +1,21 @@
+pkgbase = radare2-cutter
+	pkgdesc = Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/radareorg/cutter
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = radare2-git
+	depends = capstone
+	depends = qt5-base
+	depends = qt5-svg
+	depends = icu
+	source = radare2-cutter::git+https://github.com/radareorg/cutter#commit=6663c3ebeeaa98025f55732f90e084a0ea147f11
+	source = git+https://github.com/radare/radare2
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = radare2-cutter
+
