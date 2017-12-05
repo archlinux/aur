@@ -1,7 +1,7 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 
 pkgname=(gtk4-git)
-pkgver=3.93.0.r579.ga687fd9aeb
+pkgver=3.93.0.r863.g6f00c1b626
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('at-spi2-atk'  'atk-git>=2.15.1' 'dconf' 'glib2-git>=2.53.7' 'libepoxy>=1.4'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr' 'mesa'
          'pango-git>=1.37.3' 'wayland-git>=1.9.91' 'graphene>=1.5.1' 'json-glib'
-         'colord' 'libcups' 'rest')
+         'colord' 'libcups' 'rest' 'vulkan-icd-loader')
 makedepends=('gobject-introspection-git' 'gtk-doc' 'git' 'meson' 'ninja')
 optdepends=('gnome-icon-theme: Default icon theme'
             'gnome-themes-standard: Default widget theme'
@@ -44,6 +44,7 @@ build() {
     --localstatedir=/var \
     --libdir=/usr/lib \
     -Denable-broadway-backend=true \
+    -Denable-vulkan=yes \
     _build .
 
   cd _build

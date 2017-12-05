@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.93.0.r579.ga687fd9aeb
+	pkgver = 3.93.0.r863.g6f00c1b626
 	pkgrel = 1
 	url = https://www.gtk.org/
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = gtk4-git
 	depends = colord
 	depends = libcups
 	depends = rest
+	depends = vulkan-icd-loader
 	optdepends = gnome-icon-theme: Default icon theme
 	optdepends = gnome-themes-standard: Default widget theme
 	optdepends = hicolor-icon-theme: Freedesktop.org Hicolor icon theme
