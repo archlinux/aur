@@ -15,7 +15,7 @@ pkgbase = prads-git
 	depends = bash
 	depends = libpcap
 	backup = etc/prads/prads.conf
-	source = prads-git::git://github.com/gamelinux/prads.git
+	source = prads-git::git+https://github.com/gamelinux/prads.git
 	md5sums = SKIP
 
 pkgname = prads-git

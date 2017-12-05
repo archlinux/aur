@@ -3,15 +3,15 @@
 pkgname=prads-git
 pkgver=0.3.3.r20.g407cf7c
 pkgrel=1
-pkgdesc="A Passive Real-time Asset Detection System"
-url="http://gamelinux.github.io/prads/"
+pkgdesc='A Passive Real-time Asset Detection System'
+url='http://gamelinux.github.io/prads/'
 arch=('i686' 'x86_64')
 license=('custom:Perl')
 makedepends=('git' 'python-docutils' 'fakeroot' 'binutils' 'make' 'gcc')
 depends=('bash' 'libpcap')
 #optdepends=('')
 backup=('etc/prads/prads.conf')
-source=("${pkgname}::git://github.com/gamelinux/prads.git")
+source=("${pkgname}::git+https://github.com/gamelinux/prads.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  make PREFIX=/usr CONFDIR=/etc/prads -j$(getconf _NPROCESSORS_ONLN)
+  make PREFIX=/usr CONFDIR=/etc/prads
 }
 
 package() {
