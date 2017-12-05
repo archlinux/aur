@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=vimpager-git
-pkgver=2.06.r337.ga7d18ce
+pkgver=2.06.r349.g897a467
 pkgrel=1
 pkgdesc='A vim-based script to use as a PAGER - git checkout'
 arch=('any')
@@ -16,8 +16,10 @@ makedepends=('git' 'pandoc')
 conflicts=('vimpager')
 provides=('vimpager')
 backup=('etc/vimpagerrc')
-source=('git+https://github.com/rkitover/vimpager.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/rkitover/vimpager.git'
+        'pandoc-2.0-fix.patch')
+sha256sums=('SKIP'
+            'cdb1619e958a5872a1cfcb5b861720380bd5ed3102516116958b1eb17fb7dd66')
 
 pkgver() {
 	cd vimpager/
@@ -32,6 +34,13 @@ pkgver() {
 			"$(git rev-list --count master)" \
 			"$(git log -1 --format='%h')"
 	fi
+}
+
+prepare() {
+  cd vimpager/
+
+  # Fix pandoc build failure
+  patch -Np1 -i "$srcdir/pandoc-2.0-fix.patch"
 }
 
 package() {
