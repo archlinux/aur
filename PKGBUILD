@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.27.0.r488.g9abb710afb
+pkgver=0.27.0.r493.gf19797dea6
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -9,14 +9,14 @@ license=('GPL3')
 url='http://mpv.io/'
 depends=(
     # official repositories:
-        'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
         'openal' 'smbclient' 'vapoursynth' 'vulkan-icd-loader' 'zlib'
         
     # AUR:
-        'ffmpeg-mpv-git' 'mujs' 'rsound' 'sndio' 'shaderc-git' 'crossc'
+        'mujs' 'rsound' 'sndio' 'shaderc-git' 'crossc'
 )
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
@@ -43,10 +43,6 @@ build() {
     msg2 'Running bootstrap. Please wait...'
     ./bootstrap.py
     
-    CFLAGS="${CFLAGS} -I/usr/include/ffmpeg-mpv-git" \
-    LDFLAGS="${LDFLAGS} -L/usr/lib/ffmpeg-mpv-git" \
-    PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/usr/lib/ffmpeg-mpv-git/pkgconfig" \
-    \
     ./waf configure \
         --color='yes' \
         --prefix='/usr' \
@@ -88,7 +84,6 @@ build() {
         --enable-vapoursynth \
         --enable-vapoursynth-lazy \
         --enable-libarchive \
-        --disable-ffmpeg-upstream \
         --enable-libavdevice \
         --lua='52arch' \
         \
