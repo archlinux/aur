@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Glowing Bear
+Exec=chromium --app="https://glowing-bear.org/"
+Icon=glowing-bear
+Type=Application
+Terminal=False
+Categories=IRCClient;InstantMessaging;Chat;
