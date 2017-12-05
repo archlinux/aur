@@ -2,7 +2,7 @@
 # Contributor: Jonhoo <jon at thesquareplanet.com>
 
 pkgname=signal-desktop
-pkgver=1.0.39
+pkgver=1.0.40
 pkgrel=1
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
