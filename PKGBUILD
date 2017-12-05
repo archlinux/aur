@@ -6,22 +6,20 @@
 
 pkgbase=ppsspp
 pkgname=('ppsspp' 'ppsspp-headless' 'ppsspp-qt')
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.4
+pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('x86_64')
 url='http://www.ppsspp.org/'
 license=('GPL2')
-depends=('glew' 'sdl2')
-makedepends=('cmake' 'git' 'glu' 'libzip' 'qt5-tools')
-_commit='3ae4c122e5131a818ca88c54b1e62a66710d8799'
+makedepends=('cmake' 'git' 'glew' 'libzip' 'sdl2' 'snappy' 'qt5-tools' 'zlib')
+_commit='a1e74d0d4f89ba3fa2d4fe64bac7a0fa16fc146f'
 source=("git+https://github.com/hrydgard/ppsspp.git#commit=${_commit}"
-        'git+https://github.com/hrydgard/ppsspp-ffmpeg.git#commit=a2e98d7ba4c7c5cac08608732c3058cb46e3e0ef'
-        'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git#commit=b16f7e6819267e57c3c244808d1981f0ce34acbc'
-        'git+https://github.com/hrydgard/ppsspp-lang.git#commit=f32328a88cbf368af90eb79bc7ad5420795d6585'
-        'git+https://github.com/Kingcom/armips.git#commit=770365d44df35d6e675c58bb2a774ca412278ef5'
-        'armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git#commit=b7f5a22753c81d834ab5133d655f1fd525280765'
-        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=6381b2ff9c0d975af8fd2974c97aa12a69ab6cc6'
+        'git+https://github.com/hrydgard/ppsspp-ffmpeg.git'
+        'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git'
+        'git+https://github.com/hrydgard/ppsspp-lang.git'
+        'git+https://github.com/Kingcom/armips.git'
+        'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
         'ppsspp.sh'
         'ppsspp-headless.sh'
         'ppsspp-qt.sh'
@@ -29,7 +27,6 @@ source=("git+https://github.com/hrydgard/ppsspp.git#commit=${_commit}"
         'ppsspp-qt.desktop'
         'ppsspp-flags.patch')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -58,16 +55,6 @@ prepare() {
     git submodule update ${submodule}
   done
 
-  pushd ext/armips
-
-  for submodule in ext/tinyformat; do
-    git submodule init ${submodule}
-    git config submodule.${submodule}.url ../../../armips-${submodule#*/}
-    git submodule update ${submodule}
-  done
-
-  popd
-
   for ui in sdl qt; do
     if [[ -d build-$ui ]]; then
       rm -rf build-$ui
@@ -95,8 +82,8 @@ build() {
 }
 
 package_ppsspp() {
+  depends=('gcc-libs' 'glew' 'glibc' 'hicolor-icon-theme' 'libgl' 'libzip' 'sdl2' 'snappy' 'zlib')
   conflicts=('ppsspp-qt')
-  depends+=('hicolor-icon-theme' 'libzip')
 
   cd ppsspp/build-sdl
 
@@ -110,6 +97,8 @@ package_ppsspp() {
 }
 
 package_ppsspp-headless() {
+  depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'sdl2' 'snappy' 'zlib')
+
   cd ppsspp/build-sdl
 
   install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/bin}
@@ -118,8 +107,8 @@ package_ppsspp-headless() {
 }
 
 package_ppsspp-qt() {
+  depends=('gcc-libs' 'glew' 'glibc' 'hicolor-icon-theme' 'libgl' 'libzip' 'qt5-base' 'sdl2' 'snappy' 'zlib')
   conflicts=('ppsspp')
-  depends+=('hicolor-icon-theme' 'libzip' 'qt5-base')
 
   cd ppsspp/build-qt
 
