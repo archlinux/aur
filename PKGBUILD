@@ -3,7 +3,7 @@
 
 pkgname=libpasastro
 pkgver=1.1
-pkgrel=19
+pkgrel=20
 pkgdesc="Provide Pascal interface for standard astronomy libraries"
 arch=('x86_64')
 url="http://www.sourceforge.net/projects/libpasastro/"
@@ -12,7 +12,7 @@ depends=()
 makedepends=()
 options=()
 source=(http://downloads.sourceforge.net/sourceforge/libpasastro/libpasastro-$pkgver-$pkgrel-linux_$arch.tar.xz)
-md5sums=('bad023f979b76ee20ee603713fdd2503')
+md5sums=('c7badbb08010af30833437f6b671f7cf')
 
 package() {
   cd $srcdir/$pkgname

@@ -1,12 +1,12 @@
 pkgbase = libpasastro
 	pkgdesc = Provide Pascal interface for standard astronomy libraries
 	pkgver = 1.1
-	pkgrel = 19
+	pkgrel = 20
 	url = http://www.sourceforge.net/projects/libpasastro/
 	arch = x86_64
 	license = GPLv2
-	source = http://downloads.sourceforge.net/sourceforge/libpasastro/libpasastro-1.1-19-linux_x86_64.tar.xz
-	md5sums = bad023f979b76ee20ee603713fdd2503
+	source = http://downloads.sourceforge.net/sourceforge/libpasastro/libpasastro-1.1-20-linux_x86_64.tar.xz
+	md5sums = c7badbb08010af30833437f6b671f7cf
 
 pkgname = libpasastro
 
