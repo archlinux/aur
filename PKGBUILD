@@ -3,7 +3,7 @@
 # Contributor: Alda <alda@leetchee.fr>
 
 pkgname=signal
-pkgver=1.0.39
+pkgver=1.0.40
 pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
@@ -13,7 +13,7 @@ arch=("i686" "x86_64")
 url='https://whispersystems.org'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WhisperSystems/Signal-Desktop/archive/v${pkgver}.tar.gz"
 	"signal.desktop")
-sha512sums=('784396861abac2062664a347ba744afde22ee34075b0f5ab4410046abc044efec9f5a54a75fb3b0911ba7fe17f3bcd07477fc55a089cf2743086c35e413be055'
+sha512sums=('42fefa1406cfbad98dbeeadd8480fd61de71937fe2810894ff6fc81cc591bad978da049f1eff86e3adc0df89ccfc91ec6200c7b4108d6dd84e668c2a5aeb0d3e'
 	    'a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327')
 
 prepare() {
