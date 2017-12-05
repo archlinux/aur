@@ -7,6 +7,7 @@ pkgdesc="Helps your development process with Docker Compose by asking nicely :)"
 arch=('x86_64')
 url="https://github.com/IcaliaLabs/plis"
 license=('MIT')
+depends=('docker-compose')
 optdepends=('go')
 conflicts=('plis-git')
 source=("https://github.com/IcaliaLabs/plis/releases/download/$pkgver/plis-linux_x86_64")
