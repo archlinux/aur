@@ -2,7 +2,7 @@
 
 pkgname=mega-sdk
 pkgver=3.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Official mega.nz SDK"
 arch=('i686' 'x86_64')
 url="https://github.com/meganz/sdk"
@@ -15,6 +15,7 @@ depends=('c-ares'
          'libsodium'
          'libuv'
          'openssl'
+	 'readline'
          'sqlite'
          'zlib')
 source=("https://github.com/meganz/sdk/archive/v$pkgver.tar.gz")

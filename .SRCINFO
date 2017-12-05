@@ -1,7 +1,7 @@
 pkgbase = mega-sdk
 	pkgdesc = Official mega.nz SDK
 	pkgver = 3.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meganz/sdk
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = mega-sdk
 	depends = libsodium
 	depends = libuv
 	depends = openssl
+	depends = readline
 	depends = sqlite
 	depends = zlib
 	source = https://github.com/meganz/sdk/archive/v3.2.7.tar.gz
