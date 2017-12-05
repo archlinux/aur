@@ -51,7 +51,7 @@ _use_current=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
-pkgver=4.14.3
+pkgver=4.14.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -78,8 +78,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # pacman hook for remove initramfs
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch')
+        'linux.preset')
         
 _kernelname=${pkgbase#linux} 
 
@@ -89,10 +88,6 @@ prepare() {
     ### Add upstream patch
         msg "Add upstream patch"
         patch -p1 -i ../patch-${pkgver}
-    
-    ### Fix https://bugs.archlinux.org/task/56207
-        msg "Fix bug #56207"
-        patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch    
 
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -356,7 +351,7 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            '36a08a4c1c93c4fefb95273f3bfe4cac724d8e7c4f90d6e42a11c3afbbdd35b537f3380985a730c9aca491359f9bbdc4747ac444dd6b2625443c28df285cf74a'
+            '9232c7816a92f1499cd2a58417250af18cb519fe1abf7b250f82470b1a931f99cb473951fcba9e9a8ffd7246b63db2054ddaa127b7aaa9632d440be5f6c00111'
             'SKIP'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
@@ -364,8 +359,7 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'd1eb35e93c317a5d0b764cf3a6c183f17f9fadd9a9295dc36f0b9482b89fa6f2aba2b3011b2f3166282a7e3b2ed10f68ec824cb647f2e119ce014d31ba987d8d')
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
