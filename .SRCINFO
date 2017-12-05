@@ -1,0 +1,15 @@
+pkgbase = qotpnitro
+	pkgdesc = OTP Nitro GUI is a secure One Time Pad implementation to use on computers with Qt.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://code.haibane.org/capi_x/otpnitro
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = otpnitro
+	source = http://code.haibane.org/capi_x/otpnitro/archive/0.5.2.tar.gz
+	md5sums = d7b8cef8a3e0bf0b38620bbf05ea5a1d
+
+pkgname = qotpnitro
+
