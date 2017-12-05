@@ -15,7 +15,7 @@ depends=('c-ares'
          'libsodium'
          'libuv'
          'openssl'
-	 'readline'
+         'readline'
          'sqlite'
          'zlib')
 source=("https://github.com/meganz/sdk/archive/v$pkgver.tar.gz")
