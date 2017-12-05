@@ -12,13 +12,16 @@ depends=('boost-libs' 'curl' 'gstreamer' 'jsoncpp' 'libappindicator-gtk3'
 makedepends=('cmake' 'boost' 'lsb-release')
 optdepends=('python2-lxml: Convert radiotray bookmarks to radiotray-ng format')
 options=('!libtool')
-source=("${pkgname}.tar.gz::https://github.com/ebruck/radiotray-ng/archive/v${pkgver}.tar.gz")
-sha256sums=('4b8496256d28c7754b46cee28481bf857bb17df3fc781e014f056b2282f76fc6')
+source=("${pkgname}.tar.gz::https://github.com/ebruck/radiotray-ng/archive/v${pkgver}.tar.gz"
+        'no_fail_on_warning.patch')
+sha256sums=('4b8496256d28c7754b46cee28481bf857bb17df3fc781e014f056b2282f76fc6'
+            'cedd72d28535e202ca8658d6fbe96d7c1e18a079ecf8810bf79c8a7c09716baf')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   # Build fails when GMock is found, so don't check for it, don't compile tests
   sed -i 's:if (GMOCK_FOUND):if (GMOCK_FOUND AND ENABLE_GMOCK):' CMakeLists.txt
+  patch -uNp2 -r- -i ../no_fail_on_warning.patch
 }
 
 build() {
