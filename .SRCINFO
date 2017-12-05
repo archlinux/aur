@@ -11,8 +11,10 @@ pkgbase = graylog-collector-sidecar
 	backup = etc/graylog/collector-sidecar/collector_sidecar.yml
 	source = https://github.com/Graylog2/collector-sidecar/releases/download/0.1.4/collector-sidecar-0.1.4.tar.gz
 	source = default_collector_sidecar.yml
+	source = graylog-collector-sidecar.install
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = b37bded8801f96ad7992329d9b7cb749
+	md5sums = f5a4157a72707954a1b0f573acf36f0d
 
 pkgname = graylog-collector-sidecar
 

@@ -3,15 +3,16 @@
 pkgname=graylog-collector-sidecar
 pkgver=0.1.4
 pkgrel=1
-pkgdesc="A supervisor process for 3rd party log collectors like NXLog or Filebeat"
-url="https://github.com/Graylog2/collector-sidecar"
+pkgdesc='A supervisor process for 3rd party log collectors like NXLog or Filebeat'
+url='https://github.com/Graylog2/collector-sidecar'
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('filebeat')
 backup=('etc/graylog/collector-sidecar/collector_sidecar.yml')
 source=("https://github.com/Graylog2/collector-sidecar/releases/download/${pkgver//_/-}/collector-sidecar-${pkgver//_/-}.tar.gz"
-        "default_collector_sidecar.yml")
-md5sums=('SKIP' 'SKIP')
+        'default_collector_sidecar.yml'
+        "${pkgname}.install")
+md5sums=('SKIP' 'b37bded8801f96ad7992329d9b7cb749' 'f5a4157a72707954a1b0f573acf36f0d')
 install="${pkgname}.install"
 
 package() {
