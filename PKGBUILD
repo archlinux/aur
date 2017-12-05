@@ -1,16 +1,16 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=lua-penlight-git
-pkgver=1.5.2.r0.g3f8aaa8
+pkgver=1.5.4.r6.g2fb9b30
 pkgrel=1
-pkgdesc="A set of pure Lua libraries focusing on input data handling, functional programming, and OS path management"
-url="https://github.com/stevedonovan/Penlight"
+pkgdesc='A set of pure Lua libraries focusing on input data handling, functional programming, and OS path management'
+url='https://github.com/stevedonovan/Penlight'
 arch=('any')
 license=('MIT')
 conflicts=('lua-penlight')
 provides=('lua-penlight')
-depends=('bash' 'lua')
-source=("${pkgname}::git://github.com/stevedonovan/Penlight.git")
+depends=('bash' 'lua' 'lua-filesystem')
+source=("${pkgname}::git+https://github.com/stevedonovan/Penlight.git")
 md5sums=('SKIP')
 
 pkgver() {

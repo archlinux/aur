@@ -7,9 +7,10 @@ pkgbase = lua-penlight-git
 	license = MIT
 	depends = bash
 	depends = lua
+	depends = lua-filesystem
 	provides = lua-penlight
 	conflicts = lua-penlight
-	source = lua-penlight-git::git://github.com/stevedonovan/Penlight.git
+	source = lua-penlight-git::git+https://github.com/stevedonovan/Penlight.git
 	md5sums = SKIP
 
 pkgname = lua-penlight-git
