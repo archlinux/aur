@@ -2,12 +2,12 @@
 pkgname=qmasterpassword
 _pkgname=qMasterPassword
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="stateless Master Password Manager"
 arch=(x86_64)
 url="https://github.com/bkueng/qMasterPassword"
 license=('GPL')
-depends=("qt5-base" "libscrypt-git" "libxtst") #non git version does not build
+depends=("qt5-base" "libscrypt" "libxtst")
 source=("https://github.com/bkueng/qMasterPassword/archive/v1.2.2.tar.gz")
 md5sums=('3ff8f256a81c30518bce959ea88f3c3d')
 
