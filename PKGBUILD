@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=firefox-umatrix
-pkgver=1.1.12
+pkgver=1.1.16
 pkgrel=1
 pkgdesc='Point and click matrix to filter net requests by source, destination and type'
 url=https://github.com/gorhill/uMatrix
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 source=("https://addons.cdn.mozilla.net/user-media/addons/613250/umatrix-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
-sha256sums=('94633dcdf51a2c6d90dffd84effec706dadf4e3d59d6927c44794a95d1372422')
+sha256sums=('f4dcd35aef61e2cb38b399f039dc191b9015ea305c400d93b77f07995a791681')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/uMatrix@raymondhill.net.xpi
