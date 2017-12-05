@@ -1,17 +1,17 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=bro-git
-pkgver=2.5.r135.g7f292dc4a
+pkgver=2.5.r365.g7c03f4dec
 pkgrel=1
-pkgdesc="A powerful framework for network analysis and security monitoring. (IDS Intrusion Detection System)"
-url="https://www.bro.org"
+pkgdesc='A powerful framework for network analysis and security monitoring. (IDS Intrusion Detection System)'
+url='https://www.bro.org'
 arch=('i686' 'x86_64')
 license=('BSD')
-makedepends=('git' 'fakeroot' 'binutils' 'cmake' 'make' 'gcc' 'flex' 'bison' 'swig')
+makedepends=('git' 'fakeroot' 'cmake' 'make' 'flex' 'bison' 'swig')
 depends=('bash' 'libpcap' 'openssl-1.0' 'zlib' 'python')
 optdepends=('geoip' 'gperftools' 'sendmail' 'curl' 'actor-framework')
 backup=('etc/bro/broctl.cfg' 'etc/bro/networks.cfg' 'etc/bro/node.cfg' 'etc/bro/broccoli.conf')
-source=("${pkgname}::git://git.bro.org/bro")
+source=("${pkgname}::git+https://github.com/bro/bro.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
   cd ${pkgname}
-  make -j$(getconf _NPROCESSORS_ONLN)
+  make
 }
 
 package() {
