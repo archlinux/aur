@@ -1,0 +1,15 @@
+pkgbase = nodejs-javascript-typescript-langserver
+	pkgdesc = JavaScript and TypeScript language server implementation
+	pkgver = 2.5.5
+	pkgrel = 1
+	url = https://github.com/sourcegraph/javascript-typescript-langserver
+	arch = any
+	license = Apache
+	depends = npm
+	depends = nodejs
+	noextract = javascript-typescript-langserver-2.5.5.tgz
+	source = http://registry.npmjs.org/javascript-typescript-langserver/-/javascript-typescript-langserver-2.5.5.tgz
+	md5sums = ea2275bab8f2c0342ae970920d06fa94
+
+pkgname = nodejs-javascript-typescript-langserver
+
