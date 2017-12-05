@@ -3,7 +3,7 @@
 
 _basename=checkstyle
 pkgname='checkstyle-bin'
-pkgver='8.2'
+pkgver='8.5'
 pkgrel=1
 pkgdesc='A tool for helping programmers write Java code that adheres to a coding standard'
 arch=('any')
@@ -16,7 +16,7 @@ url='http://checkstyle.sourceforge.net'
 source=(
   "https://sourceforge.net/projects/checkstyle/files/checkstyle/${pkgver}/${_basename}-${pkgver}-bin.tar.gz/download"
   'checkstyle')
-md5sums=('1a61a8dd39e8886fe59ec350686a033f'
+md5sums=('5ace016b0fd22b6cd86b06119f648815'
          '74f9c7a1d6ceaece01a0035158338849')
 
 package() {
