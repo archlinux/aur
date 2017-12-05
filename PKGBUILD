@@ -1,25 +1,23 @@
 # Maintainer: libernux <dutchman55@gmx.com>
-pkgname="brother-mfc-5890cn"
+pkgname="brother-mfc-5490cn"
 pkgver="1.1.2"
 pkgrel=2
-pkgdesc="LPR and CUPS driver for the Brother MFC-5890cn"
+pkgdesc="LPR and CUPS driver for the Brother MFC-5490cn"
 arch=("i686" "x86_64")
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=("cups")
 install="$pkgname.install"
 source=(
-	"http://www.brother.com/pub/bsc/linux/dlf/mfc5890cnlpr-$pkgver-$pkgrel.i386.rpm"
-	"http://www.brother.com/pub/bsc/linux/dlf/mfc5890cncupswrapper-$pkgver-$pkgrel.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/mfc5490cnlpr-$pkgver-$pkgrel.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/mfc5490cncupswrapper-$pkgver-$pkgrel.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
-md5sums=(
-	'2854f47af4e9a0582851894b5edcf674'
-	'fc8c8b390a118672fe218db231e44eff'
-	'97ad0cffd216059e9d1d3121899d8646'
-	'5e87a3dc0f3e3438c088eda0f3565f0d'
-)
+md5sums=('721c68b452a7dade9297df36423e82c7'
+         'b581bb73943086b27095d9edafbdec0a'
+         '97ad0cffd216059e9d1d3121899d8646'
+         '5e87a3dc0f3e3438c088eda0f3565f0d')
 if test "$CARCH" == x86_64; then
   depends+=('lib32-glibc')
 fi
