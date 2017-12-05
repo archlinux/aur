@@ -3,29 +3,35 @@
 pkgname=('peercoind-git')
 pkgbase=peercoind-git
 _gitname=peercoin
-pkgver=v0.6.1.rc1.r0.g162f0694
-pkgrel=1
-pkgdesc="Peercoin deamon - master branch."
+pkgver=v0.6.2.rc1.r0.gd609c850
+pkgrel=2
+pkgdesc="Peercoin deamon - develop branch."
 makedepends=('gcc' 'make' 'boost' 'miniupnpc' 'openssl')
 depends=('boost-libs' 'openssl' 'miniupnpc')
 replaces=("peercoind")
 arch=('x86_64' 'i686')
 url='peercoin.net'
 license=('MIT')
-source=(git+https://github.com/${_gitname}/${_gitname}.git#branch=master)
+source=(git+https://github.com/peercoin/${_gitname}.git#branch=develop)
 sha256sums=('SKIP')
+
+prepare() {
+	cd "$srcdir/${_gitname}"
+	./autogen.sh
+}
 
 build() {
 	cd "$srcdir/${_gitname}"
 
-	## make peercoind
-  	make -f makefile.unix USE_UPNP=1 -e PIE=1 -C src
+	msg2 'Building...'
+	./configure --with-incompatible-bdb --with-gui=no
+  	make
 }
 
 check() {
   cd "$srcdir/${_gitname}"
   
-  make -f makefile.unix test_${_gitname} -C src
+  make check
 }
 
 pkgver() {
@@ -42,6 +48,7 @@ package_peercoind-git() {
 	install=peercoind-git.install
 
 	cd "$srcdir/${_gitname}"
+	install -Dm755 "src/peercoin-cli" "$pkgdir/usr/bin/peercoin-cli"
 	install -Dm755 "src/peercoind" "$pkgdir/usr/bin/peercoind"
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/peercoin/COPYING"
 	install -Dm644 "contrib/systemd/${_gitname}d-tor@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d-tor@.service"
