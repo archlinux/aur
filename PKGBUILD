@@ -2,7 +2,7 @@
 
 pkgname=arpon-ng
 pkgver=3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Prevents MITM attacks on the Address Resolution Protocol (ARP)"
 arch=('i686' 'x86_64')
 url="http://arpon.sourceforge.net"
@@ -27,7 +27,7 @@ md5sums=('a89ef9bc18e6f0fc9aa8a89aa676a281'
 prepare() {
 	cd "ArpON-${pkgver}-ng"
 	patch -p2 < ../arpon-gcc7.patch
-	patch -p1 < ../arpon-syslog.patch
+	patch -p2 < ../arpon-syslog.patch
 	sed -i -e 's:/sbin:/usr/bin:g' src/CMakeLists.txt README
 	mkdir -p build
 }

@@ -1,50 +1,55 @@
-commit 120264d7527da51b0caf46af9b62a79692cd3d46
-Author: Adrian Günter <adrian@gntr.me>
-Date:   Tue Mar 21 06:43:29 2017 +0000
-
-    Convert log file functionality to syslog
-
-diff --git a/cmake/modules/FindHeaders.cmake b/cmake/modules/FindHeaders.cmake
-index 3a49e61..ded547f 100644
---- a/cmake/modules/FindHeaders.cmake
-+++ b/cmake/modules/FindHeaders.cmake
-@@ -156,6 +156,11 @@ if(NOT HAVE_ASSERT_H)
-     message(FATAL_ERROR "Could not find assert.h!")
- endif(NOT HAVE_ASSERT_H)
- 
-+check_include_file(syslog.h HAVE_SYSLOG_H)
-+if(NOT HAVE_SYSLOG_H)
-+    message(FATAL_ERROR "Could not find syslog.h!")
-+endif(NOT HAVE_SYSLOG_H)
-+
- #
- # EOF
- #
-diff --git a/src/main.c b/src/main.c
-index 7045a13..42c96d3 100644
---- a/src/main.c
-+++ b/src/main.c
-@@ -33,6 +33,7 @@
+diff --git a/ArpON-3.0-ng/src/main.c b/ArpON-3.0-ng/src/main.c
+index 7045a13..23d9f0d 100644
+--- a/ArpON-3.0-ng/src/main.c
++++ b/ArpON-3.0-ng/src/main.c
+@@ -33,6 +33,9 @@
  
  #include <stdio.h>
  #include <stdbool.h>
++#include <stdlib.h>
++#include <string.h>
 +#include <syslog.h>
  
  #include "dmn.h"
  #include "env.h"
-@@ -49,6 +50,8 @@
+@@ -43,12 +46,33 @@
+ #include "sig.h"
+ #include "thd.h"
+ 
++int syslog_verbosity;
++
+ /*
+  * ArpON Main.
+  */
  int
  main(int argc, char **argv, char **envp)
  {
++    char* verbosity = getenv("ARPON_SYSLOG_VERBOSITY");
++
++    if (verbosity == NULL)
++      syslog_verbosity = LOG_INFO;
++    else if (strcmp(verbosity, "CRIT") == 0)
++      syslog_verbosity = LOG_CRIT;
++    else if (strcmp(verbosity, "ERR") == 0)
++      syslog_verbosity = LOG_ERR;
++    else if (strcmp(verbosity, "WARNING") == 0)
++      syslog_verbosity = LOG_WARNING;
++    else if (strcmp(verbosity, "INFO") == 0)
++      syslog_verbosity = LOG_INFO;
++    else if (strcmp(verbosity, "DEBUG") == 0)
++      syslog_verbosity = LOG_DEBUG;
++    else
++      syslog_verbosity = LOG_INFO;
++
 +    /* Initialize syslog. */
 +    openlog("arpon", LOG_CONS | LOG_PID | LOG_NDELAY, LOG_DAEMON);
  
      /* Audit the environment. */
      env_audit(argv, envp);
-diff --git a/src/msg.c b/src/msg.c
-index 77ee70d..292b1c7 100644
---- a/src/msg.c
-+++ b/src/msg.c
+diff --git a/ArpON-3.0-ng/src/msg.c b/ArpON-3.0-ng/src/msg.c
+index 77ee70d..174c6e2 100644
+--- a/ArpON-3.0-ng/src/msg.c
++++ b/ArpON-3.0-ng/src/msg.c
 @@ -42,6 +42,7 @@
  #include <errno.h>
  #include <assert.h>
@@ -53,15 +58,17 @@ index 77ee70d..292b1c7 100644
  
  #include "config.h"
  #include "exit.h"
-@@ -59,22 +60,9 @@
+@@ -58,23 +59,12 @@
+  */
  #define MSG_MESSAGESIZE     512     /* 512 bytes. */
  
- /*
+-/*
 - * Log file permissions to 640.
 - */
 -#define MSG_LOGPERMS        S_IRUSR | S_IWUSR | S_IRGRP
--
--/*
++extern int syslog_verbosity;
+ 
+ /*
   * Function prototypes not exported.
   */
 -static void msg_init(void);
@@ -76,7 +83,7 @@ index 77ee70d..292b1c7 100644
  
  /*
   * Initialize the message mutex.
-@@ -82,7 +70,7 @@ static FILE *log = NULL;
+@@ -82,7 +72,7 @@ static FILE *log = NULL;
  static pthread_mutex_t msg_mtx = PTHREAD_MUTEX_INITIALIZER;
  
  /*
@@ -85,7 +92,12 @@ index 77ee70d..292b1c7 100644
   * The syntax of each message is:
   *
   * timestamp1 [log level] message1
-@@ -98,16 +86,31 @@ msg(FILE *stream, const char *level, const char *fmt, ...)
+@@ -93,21 +83,38 @@ static pthread_mutex_t msg_mtx = PTHREAD_MUTEX_INITIALIZER;
+ void
+ msg(FILE *stream, const char *level, const char *fmt, ...)
+ {
+-
+     do {
          char ts[MSG_TIMESTAMPSIZE], msg[MSG_MESSAGESIZE];
          va_list ap;
          int len1, len2, tot_len = MSG_MESSAGESIZE;
@@ -100,7 +112,9 @@ index 77ee70d..292b1c7 100644
 -            /* Initialize the log file stream of the messages. */
 -            msg_init();
 -        }
-+        if (strcmp(level, "ERROR") == 0)
++        if (strcmp(level, "BUG") == 0)
++          syslog_lvl = LOG_CRIT;
++        else if (strcmp(level, "ERROR") == 0)
 +          syslog_lvl = LOG_ERR;
 +        else if (strcmp(level, "WARN") == 0)
 +          syslog_lvl = LOG_WARNING;
@@ -108,10 +122,11 @@ index 77ee70d..292b1c7 100644
 +          syslog_lvl = LOG_INFO;
 +        else if (strcmp(level, "DEBUG") == 0)
 +          syslog_lvl = LOG_DEBUG;
-+        else if (strcmp(level, "BUG") == 0)
-+          syslog_lvl = LOG_CRIT;
 +        else
 +          syslog_lvl = LOG_NOTICE;
++
++        if (syslog_verbosity < syslog_lvl)
++            return;
 +
 +        va_start(ap, fmt);
 +
@@ -122,7 +137,7 @@ index 77ee70d..292b1c7 100644
  
          /* Get the timestamp of the message. */
          msg_gettimestamp(ts);
-@@ -139,125 +142,17 @@ msg(FILE *stream, const char *level, const char *fmt, ...)
+@@ -139,125 +146,17 @@ msg(FILE *stream, const char *level, const char *fmt, ...)
          /* No message truncated. */
          assert(tot_len > 0);
  
@@ -252,10 +267,11 @@ index 77ee70d..292b1c7 100644
          return;
      } while (0);
  
-@@ -300,64 +195,6 @@ msg_gettimestamp(char *ts)
+@@ -299,64 +198,6 @@ msg_gettimestamp(char *ts)
+     exit(EXIT_FAILURE);
  }
  
- /*
+-/*
 - * Put the message in the log file stream and the file stream.
 - */
 -static void
@@ -313,7 +329,6 @@ index 77ee70d..292b1c7 100644
 -    exit(EXIT_FAILURE);
 -}
 -
--/*
+ /*
   * EOF
   *
-  * vim:ts=4:expandtab
