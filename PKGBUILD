@@ -1,16 +1,16 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
-pkgname=cutter-git
-pkgver=1.0.r4.g7c2bd97
+pkgname=radare2-cutter-git
+pkgver=1.0.r9.gb331dfd
 pkgrel=1
 pkgdesc="A Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)"
 url="https://github.com/radareorg/cutter"
 arch=('i686' 'x86_64')
 license=('GPL')
-makedepends=('git' 'binutils' 'cmake' 'gcc' 'qt5-base')
-depends=('radare2')
+depends=('radare2-git' 'capstone' 'qt5-base' 'qt5-svg' 'icu')
+makedepends=('git' 'binutils' 'cmake' 'gcc')
 optdepends=()
-provides=('cutter')
+provides=('radare2-cutter')
 backup=()
 source=("${pkgname}::git://github.com/radareorg/cutter.git")
 md5sums=('SKIP')
