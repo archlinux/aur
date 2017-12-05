@@ -4,7 +4,7 @@ pkgname=('peercoind-git')
 pkgbase=peercoind-git
 _gitname=peercoin
 pkgver=v0.6.2.rc1.r0.gd609c850
-pkgrel=2
+pkgrel=3
 pkgdesc="Peercoin deamon - develop branch."
 makedepends=('gcc' 'make' 'boost' 'miniupnpc' 'openssl')
 depends=('boost-libs' 'openssl' 'miniupnpc')
@@ -12,7 +12,7 @@ replaces=("peercoind")
 arch=('x86_64' 'i686')
 url='peercoin.net'
 license=('MIT')
-source=(git+https://github.com/peercoin/${_gitname}.git#branch=develop)
+source=(git+https://github.com/peercoin/${_gitname}.git#branch=master)
 sha256sums=('SKIP')
 
 prepare() {
