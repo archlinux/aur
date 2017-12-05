@@ -5,8 +5,8 @@
 # https://github.com/michaellass/AUR
 
 pkgname=openafs
-pkgver=1.6.21.1
-pkgrel=3
+pkgver=1.6.22
+pkgrel=1
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -30,14 +30,14 @@ source=(http://openafs.org/dl/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         0005-Correct-m4-conditionals-in-curses.m4.patch
         0006-gtx-link-against-libtinfo-if-termlib-is-seperated.patch
         tmpfiles.d-openafs.conf)
-sha256sums=('aed896b0f598e3033e9ceb2a1eae24addff9ec0bb2d713ab63945a449ded3a5a'
-            'a8b2482eaa3bd5a3521b8dfde69337e5e01b1b1626c0a2e0a489049834a2983a'
-            '87f08df5c1a2e899fe2ef6fb28cb1f7ad9bb0de640eec55e168c1bc93324feff'
-            '5f31cdf2feca73e7b245138a33bc2132a34cfa331d63bb47292ed30528cbf15c'
-            '161a24a29299e30288d0f8ebfbb22eca1d3563fbc5104a6f2e0f76f46d6458c9'
-            '91f3e85e475358d86dd597022420bc98475c5ab644973e83fd54733e616f9f50'
-            '7ee59c390419b2f09c1dc1874f7ea5e8f4a77be6fa2f7b1b051ad4f7a663d021'
-            'd62a3b24d3b86f9f498b89dec9a43be489a0bb7aebce4efe46007424a0f23595'
+sha256sums=('835410b75d14aec1ac6a1138d8194897f1badeffa3a0c282963ad51996712347'
+            '0e177e007ea802891d23bcecd5a836f7c768e9af0d70aab4259233cd2d474a0f'
+            'd8f7a86b38e23b4cf87e0ee2316dff7181bbc665bda67a675dc038ee863d75e9'
+            '58d4c6ccf6593c1d636f754151f519f1739fadb8b58f09876eac1b186830d53b'
+            '637301787ee0097c879065f1f22a3b240692d97f5d735ec1a3bfb12571c761c6'
+            'a4a944df1b23a1ae90b9af05382b09a624ec80629f3c307dc9f8b245ace7b73e'
+            '0e374c821390685fbb90beab178da9381e765b57608e95ed339d864facd71150'
+            'ee998d2e06c5443f19cfbad811459e962052c1adabf29058d3802dbe54c22681'
             '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
