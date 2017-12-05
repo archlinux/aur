@@ -7,7 +7,7 @@
 
 pkgname=v8
 pkgver=6.4.388.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/v8/"
@@ -194,6 +194,9 @@ package() {
   # But doing it here will break all users. Ideally if they use provided pkgconfig file.
   install -d ${pkgdir}/usr/include
   install -Dm644 include/*.h ${pkgdir}/usr/include
+
+  install -d ${pkgdir}/usr/include/libplatform
+  install -Dm644 include/libplatform/*.h ${pkgdir}/usr/include/libplatform
 
   install -d ${pkgdir}/usr/lib/pkgconfig
   install -m644 $srcdir/v8.pc ${pkgdir}/usr/lib/pkgconfig
