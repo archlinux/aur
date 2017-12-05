@@ -9,7 +9,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=3.4.0.r36.ge7af7af508
+pkgver=3.13.0.r9.g9ede39bcd1
 pkgrel=1
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
@@ -32,7 +32,7 @@ source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
-            '27c66730302a589063faa0b47d55e97011d858c12428bdf9e308948be87f29c6'
+            'be89d68cde2d996e82b813d83704ed6dceed5a86467285be6ed37f0a20bb65b4'
             '6e556d641df670fd74947776001d970216bf24f26389c1575bc11a10a92ee96d')
 
 pkgver() {
