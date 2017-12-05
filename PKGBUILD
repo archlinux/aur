@@ -2,7 +2,7 @@
 pkgname=cxxopts
 #for fragment you can use one of: #commit=, #tag=, #branch=
 #fragment=
-pkgver=1.4.3.r0.g0b76869
+pkgver=2.0.0.r10.g9c2e41a
 pkgrel=1
 pkgdesc="Lightweight C++ command line option parser"
 arch=(any)
@@ -22,6 +22,7 @@ build() {
   mkdir -p build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
 }
 
 package() {

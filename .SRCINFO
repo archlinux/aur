@@ -1,6 +1,6 @@
 pkgbase = cxxopts
 	pkgdesc = Lightweight C++ command line option parser
-	pkgver = 1.4.3.r0.g0b76869
+	pkgver = 2.0.0.r10.g9c2e41a
 	pkgrel = 1
 	url = https://github.com/jarro2783/cxxopts
 	arch = any
