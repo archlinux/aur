@@ -1,7 +1,7 @@
 # Maintainer: Benoit Brummer <trougnouf at gmail dot com>
 pkgname='mabe-git'
-pkgver=r173.3ea8481
-pkgrel=2
+pkgver=r309.0bfe32b
+pkgrel=1
 pkgdesc='Modular Agent Based Evolution Framework'
 url='https://github.com/Hintzelab/MABE'
 depends=()
@@ -20,6 +20,7 @@ pkgver() {
 }
 build() {
 	cd "${srcdir}/MABE"
+	sed -i 's/-/+/g' buildOptions.txt
 	sed -i 's~"World/NumeralClassifierWorld/mnist.train.discrete.28x28-only100"~"/usr/share/MABE/World/NumeralClassifierWorld/mnist.train.discrete.28x28-only100"~g' World/NumeralClassifierWorld/NumeralClassifierWorld.cpp
 	sed -i 's~"World/SOFWorld/scoreMap_20x20_2peaks.txt"~"/usr/share/MABE/World/SOFWorld/scoreMap_20x20_2peaks.txt"~g' World/SOFWorld/SOFWorld.cpp
 	python "PythonTools/MBuild.py"

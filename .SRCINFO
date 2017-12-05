@@ -1,7 +1,7 @@
 pkgbase = mabe-git
 	pkgdesc = Modular Agent Based Evolution Framework
-	pkgver = r173.3ea8481
-	pkgrel = 2
+	pkgver = r309.0bfe32b
+	pkgrel = 1
 	url = https://github.com/Hintzelab/MABE
 	arch = i686
 	arch = x86_64
