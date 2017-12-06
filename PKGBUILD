@@ -1,8 +1,8 @@
 # Maintainer: Marc Mettke <mettke@itmettke.de>
 pkgname=jetbrains-mps
 _pkgname=mps
-_pkgver=2017.2
-pkgver=${_pkgver}.3
+_pkgver=2017.3
+pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="JetBrains Meta Programming System"
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom: MPS license agreement')
 depends=('jdk')
 
 source=("https://download.jetbrains.com/mps/${_pkgver}/MPS-${pkgver}.tar.gz")
-sha256sums=('a6521769d37071d854ec2ebd6acea6e1bc9d79da91375788f2205678805c8644')
+sha256sums=('43ba28a76202489d10880a563d25e280789e6066ac1979b0bad9ba97bbfb8955')
 
 build() {
   cd "${srcdir}"
