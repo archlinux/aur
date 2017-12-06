@@ -1,10 +1,11 @@
 # Maintainer: nycko123 <nycko123 at gmail com>
 # Contributor: haawda <stefan-husmann at t-online de>
-# Previous Maintainer: Youngbin Han <sukso96100 at gmail com>
+# All the credits go to:
+# Previous Maintainer (27.04.2016 - 15.10.2017): Youngbin Han <sukso96100 at gmail com>
 # Previous Contributor: blainester <theblainestory at gmail com>
 pkgname=micro-bin
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
