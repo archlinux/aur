@@ -16,6 +16,7 @@ pkgbase = mve-git
 	depends = libpng
 	depends = libgl
 	depends = qt5-base
+	depends = intel-tbb
 	source = mve-git::git+https://github.com/simonfuhrmann/mve.git
 	source = mve-git-wiki::git+https://github.com/simonfuhrmann/mve.wiki.git
 	source = git+https://github.com/nmoehrle/mvs-texturing.git
