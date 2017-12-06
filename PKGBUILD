@@ -12,6 +12,8 @@ license=('MIT')
 groups=()
 depends=('boost')
 makedepends=('git' 'cmake')
+optdepends=('flann: Support for fast approximate nearest neighbour search'
+            'rapidjson: Support for JSON input and output')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
