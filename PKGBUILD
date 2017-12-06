@@ -5,7 +5,7 @@
 pkgname=crashplan-pro
 _pkgname=crashplan
 pkgver=6.6.0
-pkgrel=2
+pkgrel=3
 _pkgbuild=4347
 _pkgtimestamp=1506661200660
 pkgdesc="An business online/offsite backup solution"
@@ -70,12 +70,11 @@ package() {
   echo "" >> $srcdir/crashplan-install/scripts/run.conf
   echo "LC_ALL=$LANG" >> $srcdir/crashplan-install/scripts/run.conf
 
-  # Use systemctl start/stop commands when it attempts to auto-update
-  sed -i 's/^$ENGINE_SCRIPT stop.*/systemctl stop crashplan-pro >> $logFile 2>\&1/g' "$pkgdir/opt/${_pkgname}/bin/restartLinux.sh"
-  sed -i 's/^$ENGINE_SCRIPT start.*/systemctl start crashplan-pro >> $logFile 2>\&1/g' "$pkgdir/opt/${_pkgname}/bin/restartLinux.sh"
+  # Prevent crashplan from restarting itself repeatedly..
+  echo '#!/bin/sh' > bin/restartLinux.sh
+  echo 'exit' >> bin/restartLinux.sh
 
   install -D -m 644 $srcdir/crashplan-install/install.vars install.vars
-
   install -D -m 755 $srcdir/crashplan-install/scripts/CrashPlanDesktop bin/CrashPlanDesktop
   install -D -m 644 $srcdir/crashplan-install/scripts/run.conf bin/run.conf
   install -D -m 755 $srcdir/crashplan-install/scripts/CrashPlanEngine bin/CrashPlanEngine
