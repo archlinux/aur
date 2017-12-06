@@ -12,13 +12,13 @@ pkgname="${_basename}-${_locale,,}"
 pkgdesc='Firefox Developer Edition is the blazing fast browser that offers cutting edge developer tools and latest features like CSS Grid support and framework debugging - Bengali (Bangladesh)'
 url="https://www.mozilla.org/${_locale}/firefox/developer/"
 pkgver='58.0b9'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 source=("${_basename}.desktop" 'vendor.js')
 source_i686=("${pkgname}_${pkgver}_i686.tar.bz2::${_srcurl}/${pkgver}/linux-i686/${_locale}/firefox-${pkgver}.tar.bz2")
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.bz2::${_srcurl}/${pkgver}/linux-x86_64/${_locale}/firefox-${pkgver}.tar.bz2")
-sha512sums=('c7335c878f1d41e0298cda7f0fb6bc9e508eef121c1195cdfa6b6582529539e077f306dfd116d51a3f797eba38c2bf0a6d9758998df59d7c4009fe17d143baca'
+sha512sums=('ad9d3b7bd3ac4392c40f271741957f5cfa326df45c9dbef9ad014c948eaf28107d64f155a1e9d62c403e63e9a7a98ae826f69d5ce310c7f0a20c5240aae0030f'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 sha512sums_i686=('f2cad13e4c3139bfdef7c3acce4ede468fb45784761b78a1b1deb1d298bd8af58c7accca0b0a2470e521ced55d51c23b9e18a3b68c936abd20f1219a29d4d85b')
 sha512sums_x86_64=('b35467bef3e025b2095ffc8e3aea5b8ff405daa0e8a012e19c97a28f464186fc7f9cfe5f43b6cd120c6fcf9b1e75318807379673ef03f0e905380d0232a744cb')
