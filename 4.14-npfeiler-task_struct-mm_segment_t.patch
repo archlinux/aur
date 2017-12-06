@@ -1,0 +1,12 @@
+--- archive_files/common/lib/modules/fglrx/build_mod/kcl_ioctl.c	2017-12-05 16:21:41.450899943 +0100
++++ archive_filesb/common/lib/modules/fglrx/build_mod/kcl_ioctl.c	2017-12-05 16:24:04.919602271 +0100
+@@ -31,7 +31,9 @@
+  */
+ 
+ #include <linux/cache.h>
++#include <linux/sched.h> // for task_struct in asm/current.h
+ #include <linux/version.h>
++#include <asm/processor.h> // for mm_segment_t in asm/uaccess.h
+ #include <asm/uaccess.h>
+ 
+ #ifdef __x86_64__
