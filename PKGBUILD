@@ -5,8 +5,8 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=3.6.0
-pkgrel=2
+pkgver=3.6.1
+pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
@@ -15,12 +15,13 @@ depends=('yajl' 'qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' 'l
 makedepends=('boost' 'qt5-tools')
 conflicts=('mudlet-dev' 'mudlet-git' 'mudlet-deb')
 source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
-sha256sums=('3f6c51304e448aeee58c7681d99f2da5a9a68fc49825995df30e58cc7d470043')
+sha256sums=('5fbf01d98325418c6da917ebe77d5a0cce2d7529874fcf34acd5d4af64860bd2')
 
 prepare() {
     cd "$srcdir/src"
     sed -i 's,QString path = "../src/mudlet-lua/lua/LuaGlobal.lua";,QString path = "/usr/share/mudlet/lua/LuaGlobal.lua";,' TLuaInterpreter.cpp
     sed -i 's;"mudlet.app/Contents/Resources/mudlet-lua/lua/";"mudlet.app/Contents/Resources/mudlet-lua/lua/", "/usr/share/mudlet/lua/";' mudlet-lua/lua/LuaGlobal.lua
+    sed -i 's|DEFINES += INCLUDE_UPDATER|#DEFINES += INCLUDE_UPDATER|' mudlet.pro
 }
 
 build() {
