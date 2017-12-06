@@ -2,7 +2,7 @@
 
 _gitname=gym
 pkgname=python2-${_gitname}-git
-pkgver=r367.df31701
+pkgver=r761.efeadfd
 pkgrel=1
 pkgdesc="A toolkit for developing and comparing reinforcement learning algorithms."
 arch=('any')
@@ -31,7 +31,7 @@ package() {
   cd "$srcdir/${_gitname}"
   python2 setup.py install --root="$pkgdir/" --optimize=1
   install -Dm 644 README.rst "$pkgdir/usr/share/doc/${pkgname}/README.rst"
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 # vim:set ts=2 sw=2 et:
