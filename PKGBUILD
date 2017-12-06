@@ -6,8 +6,8 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.14.3
-xanmod=6
+pkgver=4.14.4
+xanmod=7_rev2
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -23,16 +23,14 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        '90-linux.hook'  # pacman hook for initramfs regeneration
        "$pkgbase.preset"   # standard config files for mkinitcpio ramdisk
        'choose-gcc-optimization.sh'
-       '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
 )
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('7d2e9078dd0eb8ccf1c51c6eba658a3cb28be986019cb349ccdec05d5666fc18'
+sha256sums=('f56ee8557166ae70db67788f57ff97d666935085d17c36e667ddc0e07b37674e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '9fd3abfb3e5e6afd5b8476e30af4d7ded762f3da2a724133cb3f26ad21c31e54'
-            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd')
+            '9fd3abfb3e5e6afd5b8476e30af4d7ded762f3da2a724133cb3f26ad21c31e54')
 sha256sums_x86_64=('a68e94064f040d60e8e4c3380efeee085b54d252d527e960dd17ac688505d5b6')
 
 _kernelname=${pkgbase#linux}
@@ -56,9 +54,6 @@ prepare() {
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   sed -i "s|# CONFIG_STACK_VALIDATION.*|CONFIG_STACK_VALIDATION=y|" ./.config
-
-  # https://bugs.archlinux.org/task/56207
-  patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
 
   # EXPERIMENTAL: let's user choose microarchitecture optimization in GCC
   ${srcdir}/choose-gcc-optimization.sh
