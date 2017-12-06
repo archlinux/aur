@@ -3,7 +3,7 @@
 
 pkgname=episoder
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple TV show episode reminder'
 arch=('any')
 url=https://github.com/cockroach/episoder
