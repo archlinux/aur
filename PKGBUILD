@@ -3,13 +3,13 @@
 
 pkgname=electroneum-git
 pkgver=0.11.0.0.r12.g31af2ce5
-pkgrel=5
+pkgrel=6
 pkgdesc='Secure, private, mobile based cryptocurrency, git version'
 arch=('any')
 url='https://electroneum.com'
 license=('custom')
-makedepends=('cmake' 'git')
-depends=('boost' 'openssl' 'unbound')
+makedepends=('cmake' 'git' 'boost' 'unbound' 'openssl-1.0')
+depends=('openssl-1.0')
 #checkdepends=('gtest')
 optdepends=(
   'miniupnpc: NAT punching'
