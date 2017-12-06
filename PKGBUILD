@@ -4,32 +4,45 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch" "python-pytorch-cuda" "python2-pytorch-cuda")
 _pkgname="pytorch"
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="http://pytorch.org"
 license=('BSD')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools'
              'python-yaml' 'python2-yaml' 'python-numpy' 'python2-numpy'
-             'gcc6' 'cmake' 'cuda' 'cudnn')
-source=("https://github.com/pytorch/pytorch/archive/v${pkgver}.tar.gz"
+             'gcc6' 'cmake' 'cuda' 'cudnn' 'git')
+source=("${_pkgname}-${pkgver}::git://github.com/pytorch/pytorch.git#tag=v${pkgver}"
+        "git://github.com/facebookincubator/gloo"
+        "git://github.com/pybind/pybind11"
+        "git://github.com/nanopb/nanopb"
         "nccl.tar.gz::https://github.com/NVIDIA/nccl/archive/29a1a916dc14bb2c00feed3d4820d51fa85be1e6.tar.gz"
         2334.patch)
-sha256sums=('b76d61aaa8fc18b928ca3c910c398687be08f5661d6615884c4faba3e8742a26'
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '6387030e37d14762f87eefbc86ee527293ec04745c66ccd820cf7fc0fdc23f92'
             '1933b0e73785cc3d24013815c79f36267380239f2cbf0561b7702e0d5af61daf')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  sed -i -e '144icp -r nccl gloo/third-party/' torch/lib/build_all.sh
-  sed -i -e '470,475d' setup.py
+
+  git submodule init
+  git config submodule."torch/lib/gloo".url ${srcdir}/gloo
+  git config submodule."torch/lib/pybind11".url ${srcdir}/pybind11
+  git config submodule."torch/lib/nanopb".url ${srcdir}/nanopb
+  git submodule update
+
+  # sed -i -e '144icp -r nccl gloo/third-party/' torch/lib/build_all.sh
+  # sed -i -e '470,475d' setup.py
 
   # Hack to build with new cuda 9
-  rm -r torch/lib/nccl/src
-  cp -r "${srcdir}"/nccl-*/* torch/lib/nccl
+  # rm -r torch/lib/nccl/src
+  # cp -r "${srcdir}"/nccl-*/* torch/lib/nccl
 
-  patch -Np1 < ${srcdir}/2334.patch
+  # patch -Np1 < ${srcdir}/2334.patch
 
   cd ..
 
