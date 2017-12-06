@@ -5,6 +5,7 @@ pkgbase = plis
 	url = https://github.com/IcaliaLabs/plis
 	arch = x86_64
 	license = MIT
+	depends = docker-compose
 	optdepends = go
 	conflicts = plis-git
 	source = https://github.com/IcaliaLabs/plis/releases/download/v0.0.0.build10/plis-linux_x86_64
