@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd "${_gitname}"
   ./autogen.sh
-  CFLAGS="-O2" ./configure --build=x86_64-pc-linux-gnu --prefix=/usr/local --enable-shared --disable-static --libdir=/usr/local/lib64 --enable-jit
+  ./configure
   make gen -j 4
   make clean
   make -j 4
