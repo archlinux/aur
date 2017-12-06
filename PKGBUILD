@@ -7,19 +7,16 @@ pkgdesc="A Haskell kernel for Jupyter, built in a sandbox."
 arch=('i686' 'x86_64')
 url="https://github.com/gibiansky/IHaskell"
 license=('MIT')
-depends=('python-pyzmq' 'jupyter' 'haskell-stack' 'ghc7.10-bin')
+depends=('python-pyzmq' 'jupyter' 'stack' 'ghc')
 makedepends=('git' 'happy' 'haskell-gtk2hs-buildtools')
 provides=('ihaskell')
 conflicts=()
-source=("git+https://github.com/gibiansky/IHaskell" "patch")
-sha512sums=('SKIP'
-            '6340595cafddcdcec315d086523d9c35539653fb8079ea56ddf75c15e3103fe81cccf3f98665d37dee9d3d46459985d10ff93ad5b66eb89a3ffb6265b5efec2f')
+source=("git+https://github.com/gibiansky/IHaskell")
+sha512sums=('SKIP')
 
 prepare()
 {
   cd "$srcdir/IHaskell"
-  git checkout 73791d3
-  patch "stack.yaml" "../../patch"
 }
 
 build() {
