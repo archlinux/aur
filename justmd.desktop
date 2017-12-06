@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Justmd
+GenericName=Justmd
+Comment=Markdown Editor
+Exec=/opt/justmd/justmd
+Path=/opt/justmd/
+Icon=justmd
+Terminal=false
+Type=Application
+Category=Office;TextEditor;
+MimeType=text/markdown;
+Keywords=Text;Editor;Markdown;
+
