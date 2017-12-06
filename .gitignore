@@ -1,0 +1,6 @@
+*~
+/src
+/pkg
+/binutils-*.tar.xz
+/binutils-*.tar.xz.sig
+/djgpp-binutils-*.pkg.tar.xz
