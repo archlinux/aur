@@ -1,0 +1,17 @@
+pkgbase = libmfile-git
+	pkgdesc = Library for compressed storage of spectroscopy data in nuclear physics
+	pkgver = r57.a18a066
+	pkgrel = 1
+	url = https://gitlab.ikp.uni-koeln.de/jmayer/libmfile
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	provides = libmfile
+	conflicts = libmfile
+	options = !emptydirs
+	source = git+https://gitlab.ikp.uni-koeln.de/jmayer/libmfile.git#branch=anniversary
+	sha256sums = SKIP
+
+pkgname = libmfile-git
+
