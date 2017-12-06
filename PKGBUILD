@@ -4,7 +4,7 @@
 
 pkgname='checkstyle'
 pkgver='8.5'
-pkgrel=1
+pkgrel=3
 pkgdesc='A tool to help programmers write Java code that adheres to a coding standard'
 arch=('any')
 license=('LGPL2.1')
@@ -23,5 +23,6 @@ package() {
   mkdir -p "${pkgdir}/usr/bin/"
   install -D -m755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -D -m644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}-${pkgver}-all.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
