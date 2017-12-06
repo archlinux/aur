@@ -6,16 +6,17 @@
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 #  - enable GLES
 
-# ALARM: Sergey Slipchenko <faergeek@gmail.com>
+# Sergey Slipchenko <faergeek@gmail.com>
 #  - add videocore paths to PKG_CONFIG_PATH
 #  - enable neon
 #  - enable floathard
+#  - enable videocore
 
 buildarch=4
 
 pkgname=retroarch-rbp
-pkgver=1.6.7
-pkgrel=2.1
+pkgver=1.6.9
+pkgrel=1.1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi)'
 arch=('armv7h')
 url='http://www.libretro.com/'
@@ -51,7 +52,7 @@ optdepends=('libretro-beetle-psx: Sony PlayStation core'
 backup=('etc/retroarch.cfg')
 source=("retroarch-${pkgver}.tar.gz::https://github.com/libretro/RetroArch/archive/v${pkgver}.tar.gz"
         'retroarch-config.patch')
-sha256sums=('212f281d3febde1df27d2edd5de3ced5be86c816b3f13614754495e4a62e778f'
+sha256sums=('66dde69fde9d286e3d8f6c4a5e4b947e9030044415e75b419883b454e05d78b4'
             'f37b12754256b0bcc2f9d738f9aa1c18557fffede670a328eb0eeb2f28a32bbd')
 
 prepare() {
@@ -73,7 +74,8 @@ build() {
     --disable-sdl \
     --enable-opengles \
     --enable-neon \
-    --enable-floathard
+    --enable-floathard \
+    --enable-videocore
 
   make
   make -C libretro-common/audio/dsp_filters
