@@ -2,15 +2,14 @@
 # Maintainer: max-k <max-k AT post DOT com>
 pkgname=pydio
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Sync & share solution, formerly AjaXplorer'
 arch=('any')
 url='https://pydio.com'
 license=('AGPL3')
 depends=('php>=5.5.9'
          'php-gd>=5.5.9'
-         'php-intl>=5.5.9'
-         'php-mcrypt>=5.5.9')
+         'php-intl>=5.5.9')
 optdepends=('mariadb: MySQL database back end'
             'php-apcu: to use caching'
             'php-imap: to browse mailboxes over IMAP and POP3 (access.imap)'
