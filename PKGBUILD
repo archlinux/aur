@@ -5,7 +5,7 @@
 pkgname=crashplan-pro
 _pkgname=crashplan
 pkgver=6.6.0
-pkgrel=3
+pkgrel=4
 _pkgbuild=4347
 _pkgtimestamp=1506661200660
 pkgdesc="An business online/offsite backup solution"
@@ -43,6 +43,7 @@ build() {
   NOW=`date +%Y%m%d`
   echo "INSTALLDATE=$NOW" >> install.vars
 
+  sed -imod 's|\. $TARGETDIR/bin/run\.conf|:|' scripts/CrashPlanEngine
   sed -imod "s|Exec=.*|Exec=/opt/$_pkgname/bin/CrashPlanDesktop|" scripts/CrashPlan.desktop
   sed -imod "s|Icon=.*|Icon=/opt/$_pkgname/bin/icon_app.png|" scripts/CrashPlan.desktop
   sed -imod "s|Categories=.*|Categories=System;|" scripts/CrashPlan.desktop
