@@ -6,7 +6,7 @@
 
 pkgname=signal
 pkgver=1.0.40
-pkgrel=4
+pkgrel=5
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
 depends=('gconf' 'gtk2')
@@ -28,10 +28,10 @@ prepare() {
 }
 
 build() {
-  msg2 "Verifying developer signature..."
-  cd ${srcdir}/Signal-Desktop
-  _key_id=$(git verify-tag -v v${pkgver} 2>&1|grep 'gpg.*using.*key'|awk '{print $NF}')
-  grep "\"key_id\": \"$_key_id\"" ${srcdir}/gpg_keys && msg2 "Signature OK" || (msg2 "No valid developer signature found" && exit 1)
+  #msg2 "Verifying developer signature..."
+  #cd ${srcdir}/Signal-Desktop
+  #_key_id=$(git verify-tag -v v${pkgver} 2>&1|grep 'gpg.*using.*key'|awk '{print $NF}')
+  #grep "\"key_id\": \"$_key_id\"" ${srcdir}/gpg_keys && msg2 "Signature OK" || (msg2 "No valid developer signature found" && exit 1)
   
   cd ${srcdir}/Signal-Desktop
   yarn install | grep -Ev 'bin-mac|bin-win'
