@@ -1,0 +1,17 @@
+pkgbase = python-miniball
+	pkgdesc = Python bindings for the `miniball` software by Gärtner et al.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/weddige/miniball
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	provides = python-miniball
+	conflicts = python-miniball
+	options = !emptydirs
+	source = python-miniball::git+https://github.com/weddige/miniball.git
+	md5sums = SKIP
+
+pkgname = python-miniball
+
