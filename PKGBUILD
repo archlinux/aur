@@ -14,8 +14,17 @@ makedepends=('intltool')
 conflicts=('xfcalendar' 'orage')
 provides=('orage')
 replaces=('xfcalendar' 'orage')
-source=(http://archive.xfce.org/src/apps/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('6cb854f3437e31bab23abfce97bd10afa1636a9a1480d80e14e26c85d06be7c0')
+source=(http://archive.xfce.org/src/apps/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2
+        libical3.patch)
+sha256sums=('6cb854f3437e31bab23abfce97bd10afa1636a9a1480d80e14e26c85d06be7c0'
+            'c9da6ce0e03f9072b16a554ea3e30ed453d5bcb3fb0fdab8b4574582cd375602')
+
+prepare() {
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  # https://bugzilla.redhat.com/show_bug.cgi?id=1512302
+  patch -Np1 -i ../libical3.patch
+}
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
