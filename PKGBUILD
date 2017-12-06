@@ -3,14 +3,14 @@
 
 pkgname=cfunge
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast, small and standard conforming Befunge98 interpreter'
 arch=('x86_64' 'i686')
-url='https://sourceforge.net/projects/cfunge/'
+url='https://github.com/VorpalBlade/cfunge/'
 license=('GPL')
 makedepends=('cmake' 'ninja')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('4e0e1616970045506995bf1d916863ada91ce9def18eca90ad1ae42525a80261')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VorpalBlade/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('bc670123064ea8b75acc1fbba1559cfe3f28d62bd56e5455c9e0fe660474d53a')
 
 build() {
   mkdir -p build
