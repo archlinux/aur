@@ -5,7 +5,7 @@
 # and add '--enable-libndi_newtek' to the configure options.
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r88673.gdfa859b85a
+pkgver=3.5.r89400.g5a412a5c3c
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -21,11 +21,12 @@ depends=(
         'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex'
         'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
         'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
-        'zimg' 'zeromq' 'zvbi' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sdl2'
+        'zeromq' 'zvbi' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sdl2'
         'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'libbs2b' 'libilbc' 'kvazaar' 'openh264'
-        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'libmysofa' 'rockchip-mpp'
+        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'zimg-git' 'libmysofa'
+        'rockchip-mpp'
 )
 depends_x86_64=('cuda' 'nvidia-utils')
 optdepends_x86_64=(
