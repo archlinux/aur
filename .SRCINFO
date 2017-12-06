@@ -1,0 +1,13 @@
+pkgbase = masterm
+	pkgdesc = MasterMind
+	pkgver = 1.1.1b
+	pkgrel = 1
+	url = https://github.com/jstitch/masterm
+	arch = any
+	license = GPL2
+	depends = ncurses
+	source = git+https://github.com/jstitch/masterm.git
+	md5sums = SKIP
+
+pkgname = masterm
+
