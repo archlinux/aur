@@ -1,11 +1,12 @@
 pkgname='python-calc'
-pkgver=6.38bd96b
+pkgver=11.124d491
 pkgrel=1
 pkgdesc='A minimalist scientific calculator for python.'
 arch=('any')
 url='https://github.com/ewtoombs/python-calc'
 license=("MIT")
-makedepends=('python')
+depends=('python')
+makedepends=('python-setuptools')
 source=('git+https://github.com/ewtoombs/python-calc.git')
 md5sums=('SKIP')
 
