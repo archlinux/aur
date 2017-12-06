@@ -3,7 +3,7 @@
 # Contributor: <gilrain +  libre dot arch at castelmo dot re>
 
 pkgname=libreoffice-extension-grammalecte-fr
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="French grammar checker extension for LibreOffice."
 arch=('any')
@@ -20,7 +20,7 @@ provides=('libreoffice-extension-dictionaries-fr')
 source=(
     "http://www.dicollecte.org/grammalecte/oxt/Grammalecte-fr-v${pkgver}.oxt"
 )
-sha512sums=('000322e209b173f812561f29e8d4cdd2c68605b6d8594bd27005f53eb0b545a8006c85859bcfa15e5df2a87d152db41500109dbc1b49931830b37ce281e5ac69')
+sha512sums=('73e9490d2504cb976d12c8628c1dc82fe8f563a1b524b65ca5f4f1d936a0500372e46338b5585e88832dea2e7886691bd41f6315141cedf812ef71ee1c13d82a')
 
 package() {
     install -dm755 ${pkgdir}/usr/lib/libreoffice/share/extensions
