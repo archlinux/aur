@@ -7,7 +7,7 @@
 pkgname=enchant1.6
 _pkgname=enchant
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A wrapper library for generic spell checking"
 arch=('i686' 'x86_64')
 url="https://abiword.github.io/enchant/"
