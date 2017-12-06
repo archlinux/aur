@@ -1,10 +1,17 @@
+# Maintainer: Jat <chat@jat.email>
+# This package generated automatically by https://github.com/jat001/aur-firefox-developer
+# Check out https://product-details.mozilla.org/1.0/firefox_versions.json and
+# https://travis-ci.org/jat001/aur-firefox-developer before you flag this package is out of date.
+# JSON updates always later than download available. Travis might build new packages after a day.
+# Please submit a new issue on GitHub if you have any question.
+
 _basename='firefox-developer'
 _locale='ff'
 _srcurl='https://download-installer.cdn.mozilla.net/pub/devedition/releases'
 pkgname="${_basename}-${_locale,,}"
 pkgdesc='Firefox Developer Edition is the blazing fast browser that offers cutting edge developer tools and latest features like CSS Grid support and framework debugging - Fulah'
 url="https://www.mozilla.org/${_locale}/firefox/developer/"
-pkgver='58.0b8'
+pkgver='58.0b9'
 pkgrel='1'
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -13,8 +20,8 @@ source_i686=("${pkgname}_${pkgver}_i686.tar.bz2::${_srcurl}/${pkgver}/linux-i686
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.bz2::${_srcurl}/${pkgver}/linux-x86_64/${_locale}/firefox-${pkgver}.tar.bz2")
 sha512sums=('c7335c878f1d41e0298cda7f0fb6bc9e508eef121c1195cdfa6b6582529539e077f306dfd116d51a3f797eba38c2bf0a6d9758998df59d7c4009fe17d143baca'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-sha512sums_i686=('902b90793fb917c2aabbdabdfe3296b4c22dedf4953bd1e5be7db5a78d17341c4cfd03dcd3f58c9ea41725a96af7db0b629b43fb70adb24950a4f4a1c99e5902')
-sha512sums_x86_64=('2f7e1e7e989a26c185e8c7a25c83c3f138c24c035aacc1b68ced1304e87842813f6366003c9b5cfcea775a4e0e9672f994dacdb07b5ae9b72d7e296c77a80dc4')
+sha512sums_i686=('4b257024d30ed0a979d8c9ba3085907674a060ccad1b302d8b8e21a89b35e7e5622b746f0f94e734dd50a91d0d429660b291c9aebff5d27124731b90b481f22a')
+sha512sums_x86_64=('fa5a3c7b31baec54f49ce2377660d4e67d916e56f9c50965dbc6f48b37ac7d0a948b2e84ff4a9c04cd9c86b98deef2f980252bb0de02d6cd80f028bd39b84325')
 
 provides=("${_basename}")
 conflicts=("${_basename}")
