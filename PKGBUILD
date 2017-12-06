@@ -5,14 +5,14 @@
 pkgname=crashplan-pro
 _pkgname=crashplan
 pkgver=6.6.0
-pkgrel=4
+pkgrel=5
 _pkgbuild=4347
 _pkgtimestamp=1506661200660
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('x86_64')
 license=('custom')
-depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gconf' 'gtk2')
+depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gconf' 'gtk2' 'libxss')
 makedepends=('cpio')
 conflicts=('crashplan')
 install=crashplan-pro.install
