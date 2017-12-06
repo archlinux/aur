@@ -5,41 +5,40 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.13.16
-_srcname=linux-4.13
+pkgver=4.14.4
+_srcname=linux-4.14
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
+arch_config_trunk=8aee2fcbaf3fe676199bde199f9074e90f736681
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        # pacman hook for initramfs regeneration
-        '99-linux.hook'
+        '60-linux.hook'  # pacman hook for depmod
+	'90-linux.hook'  # pacman hook for initramfs regeneration
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
+        # Arch stock configuration files are directly pulled from specefic trunk
+        "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}"
         # main BLD patch
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
-# Arch stock configuration files are directly pulled from specefic trunk
-arch_config_trunk=65b12e4c878bd9da2849289974d0e3a3137c0284
-source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux&id=${arch_config_trunk}")
-source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
+sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'f24980db582b9b3d3ded4c96b16f8c64bc435fca59b91cf3f224611b68216d8a'
+            'e9dcf9aad5977289940cd6e3762af02b87a725ba6c1a9f4af86958dc621e3a84'
             'SKIP'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            '58939b88d928bbb7844d80ab6952d61d97fe671b2a182fe62ad3885ada80fd76')
-sha256sums_i686=('9b1d9fcb55782e6149aca4dc2d3b250dd4cedf1bf4bd8c6f0968acab0e2e0ee4')
-sha256sums_x86_64=('9c6c4d27d59638d0569ea09a97138bfcfb219f17cdf1138be141380e6654f302')
+            'a68e94064f040d60e8e4c3380efeee085b54d252d527e960dd17ac688505d5b6'
+            '80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -76,7 +75,7 @@ prepare() {
 
 #  msg2 "Patches from Archlinux standard package"
 
-  cat "${srcdir}/config.${CARCH}" > ./.config
+  cp -Tf ../config .config
 
   ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
@@ -152,7 +151,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -165,53 +164,54 @@ package_linux-bld() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux-bld.install
 
-  cd "${srcdir}/${_srcname}"
-
-  KARCH=x86
+  cd ${_srcname}
 
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
-  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-
-  # set correct depmod command for install
-  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
-    "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
-
-  # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux-bld.preset" |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
-
-  # remove build and source links
-  rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-
-  # remove the firmware
-  rm -r "${pkgdir}/lib/firmware"
+  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
-  # add real version for building modules and running depmod from post_install/upgrade
-  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+  # add real version for building modules and running depmod from hook
+  echo "${_kernver}" |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
 
-  # Now we call depmod...
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
+  # remove build and source links
+  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
 
-  # move module tree /lib -> /usr/lib
-  mv -t "${pkgdir}/usr" "${pkgdir}/lib"
+  # now we call depmod...
+  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 
   # add vmlinux
-  install -Dm644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
+
+  # sed expression for following substitutions
+  local _subst="
+    s|%PKGBASE%|${pkgbase}|g
+    s|%KERNVER%|${_kernver}|g
+    s|%EXTRAMODULES%|${_extramodules}|g
+  "
+
+  # hack to allow specifying an initially nonexisting install file
+  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
+  true && install=${install}.pkg
+
+  # install mkinitcpio preset file
+  sed "${_subst}" ../linux-bld.preset |
+    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hooks
+  sed "${_subst}" ../60-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "${_subst}" ../90-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 }
 
 package_linux-bld-headers() {
@@ -227,14 +227,10 @@ package_linux-bld-headers() {
 
   cp -t "${_builddir}" -a include scripts
 
-  install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
-  install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
+  install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
+  install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-  if [[ ${CARCH} = i686 ]]; then
-    install -t "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile_32.cpu
-  fi
-
-  cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
+  cp -t "${_builddir}/arch/x86" -a arch/x86/include
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
@@ -243,7 +239,6 @@ package_linux-bld-headers() {
   install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
   # http://bugs.archlinux.org/task/20402
@@ -258,16 +253,13 @@ package_linux-bld-headers() {
   find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
   # add objtool for external module building and enabled VALIDATION_STACK option
-  if [[ -e tools/objtool/objtool ]]; then
-    install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
-  fi
+  install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
 
   # remove unneeded architectures
   local _arch
   for _arch in "${_builddir}"/arch/*/; do
-    if [[ ${_arch} != */${KARCH}/ ]]; then
-      rm -r "${_arch}"
-    fi
+    [[ ${_arch} == */x86/ ]] && continue
+    rm -r "${_arch}"
   done
 
   # remove files already in linux-docs package
