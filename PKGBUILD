@@ -1,5 +1,6 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 # Contributor: Jan Kašpar < jan.kaspar at gmail dot com >
+# Contributor: Alex Pearce < alex at alexpearce dot me >
 pkgname=xrootd
 pkgver=4.7.1
 pkgrel=2
