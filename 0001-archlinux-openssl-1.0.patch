@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 4f6e6465..9ebd3706 100644
+--- a/Makefile
++++ b/Makefile
+@@ -64,7 +64,7 @@ release-all:
+ 
+ release-static:
+ 	mkdir -p build/release
+-	cd build/release && cmake -D STATIC=ON -D ARCH="x86-64" -D BUILD_64=ON -D CMAKE_BUILD_TYPE=release ../.. && $(MAKE)
++	cd build/release && cmake -D STATIC=ON -D ARCH="x86-64" -D BUILD_64=ON -D CMAKE_BUILD_TYPE=release -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 -DOPENSSL_SSL_LIBRARY=/usr/lib/libssl.so.1.0.0 -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/libcrypto.so.1.0.0 ../.. && $(MAKE)
+ 
+ coverage:
+ 	mkdir -p build/debug

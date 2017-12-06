@@ -1,11 +1,13 @@
-pkgbase = electroneum
-	pkgdesc = Secure, private, mobile based cryptocurrency
-	pkgver = 0.11.0.0
-	pkgrel = 1
+pkgbase = electroneum-git
+	pkgdesc = Secure, private, mobile based cryptocurrency, git version
+	pkgver = 0.11.0.0.r12.g31af2ce5
+	pkgrel = 4
 	url = https://electroneum.com
+	install = electroneum.install
 	arch = any
 	license = custom
 	makedepends = cmake
+	makedepends = git
 	depends = boost
 	depends = openssl
 	depends = unbound
@@ -15,8 +17,16 @@ pkgbase = electroneum
 	optdepends = expat: XML parsing
 	optdepends = doxygen: documentation
 	optdepends = graphviz: documentation
-	source = https://github.com/electroneum/electroneum/archive/v0.11.0.0.tar.gz
-	md5sums = 0c459d99d18db514ba66f1df84e92daa
+	provides = electroneum=0.11.0.0.r12.g31af2ce5
+	conflicts = electroneum
+	options = !strip
+	backup = etc/electroneumd.conf
+	source = electroneum::git+https://github.com/electroneum/electroneum.git
+	source = electroneumd.service
+	source = 0001-archlinux-openssl-1.0.patch
+	md5sums = SKIP
+	md5sums = 614c615d7218e4745bb6016644e71156
+	md5sums = ae1bcb862a92f9996a08a0025d828e0f
 
-pkgname = electroneum
+pkgname = electroneum-git
 
