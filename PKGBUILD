@@ -3,13 +3,13 @@
 # Contributor: Gilles Hamel <hamelg at laposte dot net>
 _pkgname=grafana
 pkgname=${_pkgname}-git
-pkgver=v4.5.1.r205.gfea741d7c
+pkgver=v4.6.0.beta1.r415.g48d9d0d35
 pkgrel=1
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
-arch=('x86_64' 'i686')
+arch=('any')
 license=('APACHE')
-makedepends=('go' 'nodejs-grunt-cli' 'npm')
+makedepends=('go' 'nodejs-grunt-cli' 'npm' 'git' 'yarn' 'python2')
 provides=('grafana')
 options=('!strip' '!emptydirs')
 conflicts=('grafana')
@@ -34,7 +34,7 @@ build() {
 	go run build.go setup
 	go run build.go build
 	# Build frontend assets
-	npm install
+	yarn install --pure-lockfile
 	npm run build
 }
 
