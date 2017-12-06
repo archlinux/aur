@@ -1,7 +1,7 @@
 pkgbase = nwn-gog
 	pkgdesc = Neverwinter Nights is an RPG from Bioware. This requires the GOG version.
 	pkgver = 2.1.0.21
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gog.com/game/neverwinter_nights_diamond_edition
 	install = nwn.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = nwn-gog
 	makedepends = p7zip
 	makedepends = perl
 	makedepends = unzip
+	makedepends = unrar
 	depends = binkplayer
 	depends = perl
 	depends = elfutils
@@ -23,9 +24,9 @@ pkgbase = nwn-gog
 	noextract = nwclienthotu.tar.gz
 	noextract = English_linuxclient169_xp2.tar.gz
 	noextract = setup_nwn_diamond_2.1.0.21-1.bin
-	source = gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_2.1.0.21.exe
-	source = gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_2.1.0.21-1.bin
-	source = gog://neverwinter_nights_diamond_edition/extras/nvn_KingmakerSetup.zip
+	source = setup_nwn_diamond_2.1.0.21.exe::gogdownloader://neverwinter_nights_diamond_edition/en1installer0
+	source = setup_nwn_diamond_2.1.0.21-1.bin::gogdownloader://neverwinter_nights_diamond_edition/en1installer1
+	source = nvn_KingmakerSetup.zip::gogdownloader://neverwinter_nights_diamond_edition/9213
 	source = https://lutris.net/files/games/neverwinter-nights/nwclientgold.tar.gz
 	source = https://lutris.net/files/games/neverwinter-nights/nwclienthotu.tar.gz
 	source = https://lutris.net/files/games/neverwinter-nights/English_linuxclient169_xp2.tar.gz
@@ -61,6 +62,7 @@ pkgbase = nwn-gog
 	depends_x86_64 = lib32-libxcursor
 	depends_x86_64 = lib32-libxdamage
 	depends_x86_64 = lib32-sdl_mixer
+	depends_x86_64 = gcc-multilib
 
 pkgname = nwn-gog
 
