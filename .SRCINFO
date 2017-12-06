@@ -1,14 +1,14 @@
 pkgbase = wasm-gc-git
 	pkgdesc = gc-sections for wasm
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexcrichton/wasm-gc
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	license = MIT
 	license = APACHE
-	depends = cargo
+	makedepends = cargo
 	depends = gcc-libs
 	provides = wasm-gc
 	conflicts = wasm-gc

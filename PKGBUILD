@@ -3,10 +3,11 @@
 _gitname=wasm-gc
 pkgname=wasm-gc-git
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="gc-sections for wasm"
 url="https://github.com/alexcrichton/wasm-gc"
-depends=('cargo' 'gcc-libs')
+depends=('gcc-libs')
+makedepends=('cargo')
 provides=('wasm-gc')
 conflicts=('wasm-gc')
 arch=('i686' 'x86_64' 'armv6h')
