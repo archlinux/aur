@@ -5,8 +5,8 @@
 # Contributor: Gesina Schwalbe <gesina.schwalbe /at/ pheerai /dot/ de>
 
 pkgname=multimarkdown
-pkgver=5.3.0
-pkgrel=2
+pkgver=6.2.3
+pkgrel=1
 pkgdesc="A superset of Markdown with various output formats"
 arch=("i686" "x86_64")
 url="http://fletcherpenney.net/multimarkdown/"
@@ -15,39 +15,40 @@ depends=("bash")
 makedepends=("git" "glib2" "cmake")
 optdepends=("texlive-most: LaTeX and PDF output support")
 options=(!buildflags)
-source=("multimarkdown::git+https://github.com/fletcher/MultiMarkdown-5.git#tag=$pkgver")
+source=("multimarkdown::git+https://github.com/fletcher/MultiMarkdown-6.git#tag=$pkgver")
 sha1sums=("SKIP")
 
 prepare() {
-	cd "$srcdir/multimarkdown"
-	#git submodule init && git submodule update
-	#touch greg/greg.c
-	./link_git_modules
-	./update_git_modules
+        cd "$srcdir/multimarkdown"
+        #git submodule init && git submodule update
+        #touch greg/greg.c
+        ./link_git_modules
+        ./update_git_modules
 }
 
 build() {
-	cd "$srcdir/multimarkdown"
-	make
-	cd "$srcdir/multimarkdown/build"
-	make
+        cd "$srcdir/multimarkdown"
+        make
+        cd "$srcdir/multimarkdown/build"
+        make
 }
 
 package() {
-	cd "$srcdir/multimarkdown"
+        cd "$srcdir/multimarkdown"
 
-	# install executable and helper scripts
-	install -dm755 "$pkgdir/usr/bin"
-	install -Dm755 build/multimarkdown \
-		scripts/mmd2tex \
-		scripts/mmd2pdf \
-		scripts/mmd2opml \
-		scripts/mmd2odf \
-		scripts/mmd2all \
-		"$pkgdir/usr/bin/"
+        # install executable and helper scripts
+        install -dm755 "$pkgdir/usr/bin"
+        install -Dm755 build/multimarkdown \
+                scripts/mmd2tex \
+                scripts/mmd2pdf \
+                scripts/mmd2opml \
+                scripts/mmd2odt \
+                scripts/mmd2epub \
+                scripts/mmd2all \
+                "$pkgdir/usr/bin/"
 
-	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-	cp -a submodules/documentation/* "$pkgdir/usr/share/doc/$pkgname"
+        #install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+        #cp -a submodules/documentation/* "$pkgdir/usr/share/doc/$pkgname"
 
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
