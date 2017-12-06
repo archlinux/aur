@@ -16,15 +16,11 @@ makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools'
 source=("${_pkgname}-${pkgver}::git://github.com/pytorch/pytorch.git#tag=v${pkgver}"
         "git://github.com/facebookincubator/gloo"
         "git://github.com/pybind/pybind11"
-        "git://github.com/nanopb/nanopb"
-        "nccl.tar.gz::https://github.com/NVIDIA/nccl/archive/29a1a916dc14bb2c00feed3d4820d51fa85be1e6.tar.gz"
-        2334.patch)
+        "git://github.com/nanopb/nanopb")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '6387030e37d14762f87eefbc86ee527293ec04745c66ccd820cf7fc0fdc23f92'
-            '1933b0e73785cc3d24013815c79f36267380239f2cbf0561b7702e0d5af61daf')
+            'SKIP')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -34,15 +30,6 @@ prepare() {
   git config submodule."torch/lib/pybind11".url ${srcdir}/pybind11
   git config submodule."torch/lib/nanopb".url ${srcdir}/nanopb
   git submodule update
-
-  # sed -i -e '144icp -r nccl gloo/third-party/' torch/lib/build_all.sh
-  # sed -i -e '470,475d' setup.py
-
-  # Hack to build with new cuda 9
-  # rm -r torch/lib/nccl/src
-  # cp -r "${srcdir}"/nccl-*/* torch/lib/nccl
-
-  # patch -Np1 < ${srcdir}/2334.patch
 
   cd ..
 
