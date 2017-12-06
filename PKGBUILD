@@ -3,21 +3,21 @@
 # Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com>
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
-pkgver=4.9.0
-pkgrel=4
+pkgver=6.6.0
+pkgrel=1
+_pkgbuild=4347
+_pkgtimestamp=1506661200660
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom')
-depends=('bash' 'java-runtime-headless=8')
+depends=('bash' 'java-runtime=8' 'alsa-lib' 'gconf' 'gtk2')
 makedepends=('cpio')
-optdepends=('java-runtime=8: For Crashplan GUI'
-            'gtk2: For Crashplan GUI')
 install=crashplan-pro.install
-source=(https://web-ebm-msp.crashplanpro.com/client/installers/CrashPlanPRO_${pkgver}_1436674888490_33_Linux.tgz
+source=(https://web-ebm-msp.crashplanpro.com/client/installers/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('891426d6180c13a25e65bb935a9c0df36b733be121e547d47f35eb4b7175856d'
+sha256sums=('3345e13e06b9f39006376c33c7fc692febab9f83a40384efa756c47a1d30fdff'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'c631a971f300bfbfe52e3ec8faa4d7b735eaa069d73e11d6021567e29d053dc3')
 
@@ -27,8 +27,7 @@ build() {
   echo ""
   echo "You must review and agree to the EULA before using Crashplan PRO."
   echo "You can do so at:"
-  echo "  - http://support.crashplan.com/doku.php/eula"
-  echo "  - /usr/share/licenses/${pkgname}/LICENSE"
+  echo "  - https://support.code42.com/Terms_and_conditions/Legal_terms_and_conditions/CrashPlan_for_Small_Business_EULA"
   echo ""
 
   echo "" > install.vars
@@ -51,18 +50,12 @@ package() {
   mkdir -p $pkgdir/opt/$pkgname
   cd $pkgdir/opt/$pkgname
 
-  cat $srcdir/crashplan-install/CrashPlanPRO_$pkgver.cpi | gzip -d -c - | cpio -i --no-preserve-owner
+  cat $srcdir/crashplan-install/CrashPlanSmb_$pkgver.cpi | gzip -d -c - | cpio -i --no-preserve-owner
   chmod 777 $pkgdir/opt/$pkgname/log
   sed -i "s|<manifestPath>manifest</manifestPath>|<manifestPath>/opt/$pkgname/manifest</manifestPath>|g" $pkgdir/opt/$pkgname/conf/default.service.xml
 
   mkdir -p $pkgdir/usr/bin
   ln -s "/opt/$pkgname/bin/CrashPlanDesktop" $pkgdir/usr/bin/CrashPlanDesktop
-
-  # Fix for 32 bit: 64 bit libs cannot be stripped from symbols
-  # so we just remove those libs
-  if [ "$CARCH" = "i686" ]; then
-    rm $pkgdir/opt/$pkgname/*64.so
-  fi
 
   # Fix for encoding troubles (CrashPlan ticket 178827)
   # Make sure the daemon is running using the same localization as
@@ -89,4 +82,11 @@ package() {
   install -D -m 755 $srcdir/crashplan-pro $pkgdir/etc/rc.d/crashplan-pro
   # systemd unit
   install -D -m 644 $srcdir/crashplan-pro.service $pkgdir/usr/lib/systemd/system/crashplan-pro.service
+}
+
+post_install() {
+  echo ""
+  echo "Consider raising fs.inotify_max_user_watches as described on the wiki: "
+  echo "  - https://wiki.archlinux.org/index.php/CrashPlan#Real_time_protection"
+  echo ""
 }
