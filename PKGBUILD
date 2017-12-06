@@ -20,7 +20,7 @@ source=(
 	"makefile_1.6.patch"
 )
 sha256sums=('SKIP'
-            'ed2a2be438e6b251a6d512a75936346fcda5f40dbe0967e571e542e4cb611b81')
+            'e36a045b347b1540b9612472563c523e24a354764b21e7734c48f6adaf1bda5d')
 
 pkgver() {
   cd $_pkgname
@@ -29,6 +29,7 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+  patch -p1 < ../makefile_1.6.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -47,8 +48,8 @@ package() {
   local _tempdir=$(readlink -f "./maketarget")
   make DESTDIR="${_tempdir}" install
 
-  install -dm 755 "${pkgdir}/usr/lib/enchant"
-  cp -a "${_tempdir}/usr/lib/enchant/"* "${pkgdir}/usr/lib/enchant/."
+  install -dm 755 "${pkgdir}/usr/lib/enchant1.6"
+  cp -a "${_tempdir}/usr/lib/enchant/"* "${pkgdir}/usr/lib/enchant1.6/."
   cp -a "${_tempdir}/usr/lib/libenchant.so.1"* "${pkgdir}/usr/lib/."
   
 }
