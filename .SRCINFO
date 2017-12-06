@@ -1,7 +1,7 @@
 pkgbase = icu55
 	pkgdesc = International Components for Unicode library
 	pkgver = 55.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.icu-project.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = icu55
 	makedepends = clang
 	depends = gcc-libs>=4.7.1-5
 	depends = sh
-	source = https://svwh.dl.sourceforge.net/project/icu/ICU4C/55.1/icu4c-55_1-src.tgz
+	source = http://downloads.sourceforge.net/project/icu/ICU4C/55.1/icu4c-55_1-src.tgz
 	sha256sums = e16b22cbefdd354bec114541f7849a12f8fc2015320ca5282ee4fd787571457b
 
 pkgname = icu55

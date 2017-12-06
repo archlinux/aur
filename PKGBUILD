@@ -6,14 +6,14 @@
 _pkgname=icu
 pkgname=${_pkgname}55
 pkgver=55.1
-pkgrel=2
+pkgrel=3
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
 url="http://www.icu-project.org/"
 license=('custom:"icu"')
 depends=('gcc-libs>=4.7.1-5' 'sh')
 makedepends=('clang')
-source=(https://svwh.dl.sourceforge.net/project/icu/ICU4C/55.1/icu4c-55_1-src.tgz)
+source=(http://downloads.sourceforge.net/project/icu/ICU4C/55.1/icu4c-55_1-src.tgz)
 sha256sums=('e16b22cbefdd354bec114541f7849a12f8fc2015320ca5282ee4fd787571457b')
 
 build() {
