@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java -jar /usr/share/checkstyle/checkstyle.jar $@
+java -jar /usr/share/java/checkstyle/checkstyle.jar $@

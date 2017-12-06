@@ -15,7 +15,7 @@ source=(
   "https://sourceforge.net/projects/checkstyle/files/checkstyle/${pkgver}/${pkgname}-${pkgver}-bin.tar.gz/download"
   'checkstyle')
 md5sums=('5ace016b0fd22b6cd86b06119f648815'
-         '74f9c7a1d6ceaece01a0035158338849')
+         'eb71b85acb81e0d3c5f0809fe93641dc')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
