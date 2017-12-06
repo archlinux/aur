@@ -1,6 +1,6 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname=cdebootstrap-static
-pkgver=0.7.6
+pkgver=0.7.7+b1
 pkgrel=1
 pkgdesc="Bootstrap a Debian system"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ optdepends=('debian-archive-keyring')
 
 source_i686=(http://httpredir.debian.org/debian/pool/main/c/cdebootstrap/${pkgname}_${pkgver}_i386.deb)
 source_x86_64=(http://httpredir.debian.org/debian/pool/main/c/cdebootstrap/${pkgname}_${pkgver}_amd64.deb)
-md5sums_i686=('3d8ee6748e3c786eba06008cfb25275d')
-md5sums_x86_64=('5d68f94ce5009eb10f3ed844471538b6')
+md5sums_i686=('bcb012c1e670b7219a9ba0716ead2ec7')
+md5sums_x86_64=('ef33d3992997f3eed274b3be2711e2e4')
 
 package() {
   tar xJvf ${srcdir}/data.tar.xz -C ${pkgdir}/
