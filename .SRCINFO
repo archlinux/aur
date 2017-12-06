@@ -1,15 +1,16 @@
 pkgbase = bashish
-	pkgdesc = Bashish is a theme enviroment for text terminals. It can change colors, font, transparency and background image on a per-application basis.
+	pkgdesc = A theme enviroment for text terminals. It can change colors, font, transparency and background image on a per-application basis.
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bashish.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = pkgconfig
 	depends = dialog
-	source = http://downloads.sourceforge.net/bashish/bashish-2.2.4.tar.gz
+	source = https://downloads.sourceforge.net/bashish/bashish-2.2.4.tar.gz
 	md5sums = 0661cc0040878e921ac7a31b071d20e0
+	sha256sums = 3de48bc1aa69ec73dafc7436070e688015d794f22f6e74d5c78a0b09c938204b
 
 pkgname = bashish
 
