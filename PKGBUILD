@@ -10,15 +10,6 @@ url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf' 'patch' 'make')
 options=('!strip')
-_patches=(
-  '0002-ASoC-max98090-reduce-verbosity-on-PLL-unlock.patch'
-  '0003-ASoC-Intel-cht_bsw_max98090-Fix-I2S-config-unused-code.patch'
-  '0004-ASoC-Intel-cht_bsw_max98090-add-support-for-Baytrail.patch'
-  '0005-ASoC-Intel-atom-use-cht_bsw_max98090-for-Baytrail-Chromebooks.patch'
-  '0006-ASoC-ts3a227e-add-acpi-table.patch'
-  '0007-ASoc-Intel-cht_bsw_max98090_ti-Fix-jack-initialization.patch'
-  '0008-ASoC-Intel-cht_bsw_max98090-add-gpio-based-jack-detection.patch'
-)
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -28,7 +19,6 @@ source=(
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   'linux.preset'   # standard config files for mkinitcpio ramdisk
-  "${_patches[@]}"
 )
 
 validpgpkeys=(
@@ -39,17 +29,10 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
             'e9dcf9aad5977289940cd6e3762af02b87a725ba6c1a9f4af86958dc621e3a84'
             'SKIP'
-            '928db3bec093115130adacc872d636c03ae021825345950fda5a6dddbf73a45d'
+            '69b0e9db10155332f13f6715603970d8c858ef25a97a2b0a3e78170c812ba84d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'f372da78745f49e5709f2739a1166c39298c91d5eb08d6fb362603481d8395b5'
-            'a1766026aa04cd650da0229399121fc547620617699bbc573c250360182504ed'
-            'fef99b00f76a623a78c2871a204e673d8522f54c4623a529d4839389afefc857'
-            'f09c970935ae9788db015e4ddc2949e909bbd1be81b219ccad0c701e3546cbf7'
-            '2f19a7f5c9e01516da222f69b40599fabd4e5b3c87aeac3ada78012a6d2904b8'
-            '60fabf5d05e1176361cceff6ec1720935762e27e3d590b1a267fa9eb7739a607'
-            'b2b20af5ea14de866b0af3e2cbe27ed517bf22c5c97b51b3bcc778062d4b7217')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
 
@@ -65,11 +48,6 @@ prepare() {
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # https://bugs.archlinux.org/task/56207
-
-for file in "${_patches[@]}"; do
-      echo "Applying patch $(basename $file)..."
-      patch -Np1 <"$srcdir/$(basename ${file})"
-  done
 
   cp -Tf ../config .config
 
