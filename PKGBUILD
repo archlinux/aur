@@ -9,7 +9,9 @@ license=('GPL3')
 conflicts=('wire-desktop-bin')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss' 'xdg-utils')
 makedepends=('cargo' 'npm' 'python2' 'git')
-optdepends=('hunspell-en: for English spellcheck support')
+optdepends=('hunspell-en: for English spellcheck support'
+            'noto-fonts-emoji: for colorful emoji made by Google'
+            'ttf-emojione: for colorful emoji made by EmojiOne')
 provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz"
         "${pkgname}.desktop")
