@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='QML based X11 and Wayland display manager'
 arch=('x86_64')
 url='http://github.com/sddm/sddm'
@@ -12,8 +12,7 @@ license=('GPL')
 depends=('qt5-declarative' 'xorg-xauth' 'xorg-server')
 makedepends=('extra-cmake-modules' 'python-docutils' 'qt5-tools')
 backup=('usr/share/sddm/scripts/Xsetup'
-        'etc/pam.d/sddm'
-        'etc/sddm.conf')
+        'etc/pam.d/sddm')
 provides=('display-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         sddm.sysusers sddm.tmpfiles)
@@ -42,4 +41,8 @@ package() {
 
   install -Dm644 "$srcdir"/sddm.sysusers "$pkgdir"/usr/lib/sysusers.d/sddm.conf
   install -Dm644 "$srcdir"/sddm.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/sddm.conf
+
+# Move sddm.conf to /usr/lib https://bugs.archlinux.org/task/56609
+  mkdir "$pkgdir"/usr/lib/sddm/sddm.conf.d
+  mv "$pkgdir"/{etc/sddm.conf,usr/lib/sddm/sddm.conf.d}
 }
