@@ -4,7 +4,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r4944.5621a650
+pkgver=r5442.e784434a
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -13,16 +13,28 @@ license=('GPL2')
 makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils')
 source=("$_pkgbase::git+https://github.com/citra-emu/citra"
         'git+https://github.com/citra-emu/ext-boost'
-        'git+https://github.com/svn2github/inih'
         'git+https://github.com/neobrain/nihstro'
         'git+https://github.com/citra-emu/ext-soundtouch'
         'git+https://github.com/philsquared/Catch'
         'git+https://github.com/MerryMage/dynarmic'
-        'git+https://github.com/fmtlib/fmt'
         'git+https://github.com/herumi/xbyak'
+        'git+https://github.com/weidai11/cryptopp'
+        'git+https://github.com/fmtlib/fmt'
+        'git+https://github.com/lsalzman/enet'
         'git+https://github.com/whoshuu/cpr'
-        'git+https://github.com/lsalzman/enet')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        'git+https://github.com/benhoyt/inih')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgbase"
@@ -35,13 +47,16 @@ prepare() {
 
 	git submodule init
 	git config submodule.boost.url "$srcdir/ext-boost"
-	git config submodule.inih.url "$srcdir/inih"
 	git config submodule.nihstro.url "$srcdir/nihstro"
 	git config submodule.soundtouch.url "$srcdir/ext-soundtouch"
 	git config submodule.catch.url "$srcdir/Catch"
 	git config submodule.dynarmic.url "$srcdir/dynarmic"
-	git config submodule.cpr.url "$srcdir/cpr"
+	git config submodule.xbyak.url "$srcdir/xbyak"
+	git config submodule.cryptopp.url "$srcdir/cryptopp"
+	git config submodule.fmt.url "$srcdir/fmt"
 	git config submodule.enet.url "$srcdir/enet"
+	git config submodule.cpr.url "$srcdir/cpr"
+	git config submodule.inih.url "$srcdir/inih"
 	git submodule update
 
 	cd externals/dynarmic
