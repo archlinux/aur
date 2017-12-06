@@ -19,7 +19,7 @@ source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.1/
         'tes3mp-client.desktop'
         'tes3mp-server.desktop'
         'tes3mp-browser.desktop')
-sha256sums=('6f921660d75a56751987e97b55d1abc510a87338a55e37bbafa72d81cda1522b'
+sha256sums=('ccdf7c9ac5b487a0d1d3b5808d5c0cc73e0033c60070c7023abba0cde1a2321f'
           '861e5e8cc7ddec2dbfb842d68cdd45e7cc564079b9cb37ad113ff140bf424fd9'
           '0e855bcaf8986059cc722cafbc3b0b08f270862f28e09201a3564886404407ed'
           '2bd9e9dddda956c7cbdc8bdf2448d42500aa88ffb7fb01d2cbffc58c22fdf57d'
@@ -35,8 +35,8 @@ prepare() {
   rm -f lib/*.a
 
   # Remove junk files
-  rm PluginExamples/README.md
-  rm PluginExamples/LICENSE
+  rm CoreScripts/README.md
+  rm CoreScripts/LICENSE
   rm tes3mp-package-info.txt
 
   # Remove OpenMW junk files
