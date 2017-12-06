@@ -104,6 +104,7 @@ pkgbase = sagemath-git
 	source = sagemath-detect-igraph.patch
 	source = sagemath-networkx2.patch
 	source = sagemath-linbox-1.5.patch
+	source = sagemath-pynac-0.7.14.patch
 	sha256sums = SKIP
 	sha256sums = 8c4ed4c1f3bb79fb279efa5267a78d0d093c718377b5aa0457b642e50f60811a
 	sha256sums = c41ae665499c6cd775d40bbe178f8786830b0931ee26bf11ee02f7d83bcc8107
@@ -118,6 +119,7 @@ pkgbase = sagemath-git
 	sha256sums = 28d7789b8d777922ab8871ca43b6afab751428cae875c0343d3962e6a2030b88
 	sha256sums = 37c5c1e694a2aca06c0f1c7d99622ff81fd2bc6a51e8745762294889fa4673f6
 	sha256sums = a52d03e04c9d64bb957a1f8dcdae3280ebb9450a7fd76aaf5ae5de5c6f74774f
+	sha256sums = 538f7b279d72f4b67edb445d386d267f3f7022c1079031ca7ea06f6ce392c906
 
 pkgname = sagemath-git
 	optdepends = cython2: to compile cython code

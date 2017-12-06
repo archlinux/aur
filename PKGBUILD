@@ -37,7 +37,7 @@ makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhom
 source=(git://git.sagemath.org/sage.git#branch=develop
         env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-ecl-no-sigfpe.patch sagemath-threejs.patch
-        sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-linbox-1.5.patch)
+        sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-linbox-1.5.patch sagemath-pynac-0.7.14.patch)
 sha256sums=('SKIP'
             '8c4ed4c1f3bb79fb279efa5267a78d0d093c718377b5aa0457b642e50f60811a'
             'c41ae665499c6cd775d40bbe178f8786830b0931ee26bf11ee02f7d83bcc8107'
@@ -51,7 +51,8 @@ sha256sums=('SKIP'
             '514135b920a43f999571a15e97b41e14f5bed59f65b19643864dc23555a7b830'
             '28d7789b8d777922ab8871ca43b6afab751428cae875c0343d3962e6a2030b88'
             '37c5c1e694a2aca06c0f1c7d99622ff81fd2bc6a51e8745762294889fa4673f6'
-            'a52d03e04c9d64bb957a1f8dcdae3280ebb9450a7fd76aaf5ae5de5c6f74774f')
+            'a52d03e04c9d64bb957a1f8dcdae3280ebb9450a7fd76aaf5ae5de5c6f74774f'
+            '538f7b279d72f4b67edb445d386d267f3f7022c1079031ca7ea06f6ce392c906')
 
 pkgver() {
   cd sage
@@ -93,6 +94,8 @@ prepare(){
 # patch -p1 -i ../sagemath-ecl-no-sigfpe.patch
 # fix build with linbox 1.5 https://trac.sagemath.org/ticket/24214
   patch -p1 -i ../sagemath-linbox-1.5.patch
+# fix build with pynac 0.7.14 https://trac.sagemath.org/ticket/24329
+  patch -p1 -i ../sagemath-pynac-0.7.14.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
