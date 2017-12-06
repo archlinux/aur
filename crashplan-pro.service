@@ -5,11 +5,11 @@ After=network.target
 [Service]
 
 Type=forking
-PIDFile=/opt/crashplan-pro/CrashPlanEngine.pid
-EnvironmentFile=/opt/crashplan-pro/bin/run.conf
-WorkingDirectory=/opt/crashplan-pro
-ExecStart=/opt/crashplan-pro/bin/CrashPlanEngine start
-ExecStop=/opt/crashplan-pro/bin/CrashPlanEngine stop
+PIDFile=/opt/crashplan/CrashPlanEngine.pid
+EnvironmentFile=/opt/crashplan/bin/run.conf
+WorkingDirectory=/opt/crashplan
+ExecStart=/opt/crashplan/bin/CrashPlanEngine start
+ExecStop=/opt/crashplan/bin/CrashPlanEngine stop
 Restart=always
 
 [Install]
