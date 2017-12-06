@@ -1,14 +1,14 @@
 pkgbase = r-cran-msm
 	pkgdesc = Multi-state Markov and hidden Markov models in continuous time
-	pkgver = 1.6.1
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/msm/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = r
-	source = http://cran.r-project.org/src/contrib/msm_1.6.1.tar.gz
-	md5sums = c189b3c40af2b87d90262dd210fe51c5
+	source = http://cran.r-project.org/src/contrib/msm_1.6.5.tar.gz
+	md5sums = 4f2b1ff15a2bc97d127e53f7e9adbb05
 
 pkgname = r-cran-msm
 
