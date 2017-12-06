@@ -15,8 +15,12 @@ license=('LGPL')
 depends=('aspell' 'hunspell' 'hspell' 'libvoikko' 'glib2')
 makedepends=('git')
 _commit=7c0ec265a89808893a692f6205f2555f30198444  # tags/enchant-1-6-1
-source=("git+https://github.com/AbiWord/enchant.git#commit=$_commit")
-sha256sums=('SKIP')
+source=(
+	"git+https://github.com/AbiWord/enchant.git#commit=$_commit"
+	"makefile_1.6.patch"
+)
+sha256sums=('SKIP'
+            'ed2a2be438e6b251a6d512a75936346fcda5f40dbe0967e571e542e4cb611b81')
 
 pkgver() {
   cd $_pkgname
