@@ -1,6 +1,6 @@
 pkgbase = perl-xml-compile-cache
 	pkgdesc = Perl package providing cache for compiled XML translators
-	pkgver = 1.03
+	pkgver = 1.05
 	pkgrel = 1
 	url = https://metacpan.org/release/XML-Compile-Cache
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = perl-xml-compile-cache
 	depends = perl-xml-libxml-simple>=0.95
 	depends = perl-log-report>=0.19
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-Cache-1.03.tar.gz
-	md5sums = 57e99c0434e1220eaf8fa1ce095ec008
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-Cache-1.05.tar.gz
+	md5sums = f316dbb2e73e333024481325fefb11c7
 
 pkgname = perl-xml-compile-cache
 

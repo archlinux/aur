@@ -20,13 +20,13 @@ md5sums=('[% md5sums %]')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" MODULEBUILDRC=/dev/null
+	export PERL_MM_USE_DEFAULT=1
 }
 
 build() {
 	cd [% distdir %]
 	sanitize
-	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
+	perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
