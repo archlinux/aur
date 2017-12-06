@@ -1,0 +1,17 @@
+pkgbase = aleph-git
+	pkgdesc = A library for exploring persistent homology
+	pkgver = r1578.2822abb
+	pkgrel = 1
+	url = http://submanifold.github.io/Aleph
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	provides = aleph
+	conflicts = aleph
+	source = aleph::git+https://github.com/Submanifold/Aleph.git
+	md5sums = SKIP
+
+pkgname = aleph-git
+
