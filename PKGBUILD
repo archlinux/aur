@@ -3,7 +3,7 @@
 # Contributor: Michael Schubert <mschu.dev at gmail> 
 
 pkgname=gnome-shell-extension-system-monitor-git
-pkgver=792.6fc86f4
+pkgver=868.23cf614
 _gitname=gnome-shell-system-monitor-applet
 pkgrel=1
 pkgdesc="System monitor extension for Gnome-Shell (display mem swap cpu usage)"
