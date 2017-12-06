@@ -1,6 +1,6 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 pkgname=mve-git
-pkgver=r1210.7ce368d
+pkgver=r1217.91c0f3f
 pkgrel=1
 pkgdesc="Image-based geometry reconstruction pipeline, structure-from-motion, (shading-aware) multi-view-stereo, surface-reconstruction, texturing,"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '7e7d7c62d2a191fd4d27dde052035fcf')
+         '523a518b5d99bd6aea4620a0482409fc')
 _binar="apps/sfmrecon/sfmrecon
 apps/meshconvert/meshconvert
 apps/meshalign/meshalign
