@@ -1,6 +1,6 @@
 # Maintainer: krypt.co <aur@>
 pkgname=kr
-pkgver=2.2.7
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="SSH using a key stored in Kryptonite"
 arch=('i686' 'x86_64')
@@ -34,20 +34,17 @@ prepare() {
 
 build() {
 	cd "${srcdir}/src/github.com/kryptco/kr"
-    GOPATH=${srcdir} make
+	GOPATH=${srcdir} make
 }
 
 check() {
 	cd "${srcdir}/src/github.com/kryptco/kr"
-    GOPATH=${srcdir} make check
+	GOPATH=${srcdir} make check
 }
 
 package() {
 	cd "${srcdir}/src/github.com/kryptco/kr"
-    install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/kr/LICENSE"
-    install -D -m 755 "bin/kr" "${pkgdir}/usr/bin/kr"
-    install -D -m 755 "bin/krd" "${pkgdir}/usr/bin/krd"
-    install -D -m 755 "bin/krssh" "${pkgdir}/usr/bin/krssh"
-    install -D -m 755 "bin/krgpg" "${pkgdir}/usr/bin/krgpg"
-    install -D -m 755 "bin/kr-pkcs11.so" "${pkgdir}/usr/lib/kr-pkcs11.so"
+	export PREFIX=${pkgdir}/usr
+	install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/kr/LICENSE"
+	GOPATH=${srcdir} make install
 }
