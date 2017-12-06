@@ -3,7 +3,7 @@
 
 pkgname=electroneum-git
 pkgver=0.11.0.0.r12.g31af2ce5
-pkgrel=4
+pkgrel=5
 pkgdesc='Secure, private, mobile based cryptocurrency, git version'
 arch=('any')
 url='https://electroneum.com'
@@ -27,7 +27,7 @@ source=("electroneum"::"git+https://github.com/electroneum/electroneum.git"
 md5sums=('SKIP'
          '614c615d7218e4745bb6016644e71156'
          'ae1bcb862a92f9996a08a0025d828e0f')
-options=('!strip')
+#options=('!strip')
 backup=('etc/electroneumd.conf')
 install=electroneum.install
 

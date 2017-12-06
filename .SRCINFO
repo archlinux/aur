@@ -1,7 +1,7 @@
 pkgbase = electroneum-git
 	pkgdesc = Secure, private, mobile based cryptocurrency, git version
 	pkgver = 0.11.0.0.r12.g31af2ce5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://electroneum.com
 	install = electroneum.install
 	arch = any
@@ -19,7 +19,6 @@ pkgbase = electroneum-git
 	optdepends = graphviz: documentation
 	provides = electroneum=0.11.0.0.r12.g31af2ce5
 	conflicts = electroneum
-	options = !strip
 	backup = etc/electroneumd.conf
 	source = electroneum::git+https://github.com/electroneum/electroneum.git
 	source = electroneumd.service
