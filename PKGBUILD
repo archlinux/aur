@@ -2,28 +2,30 @@
 
 _gitname=upplay
 pkgname=${_gitname}-git
-pkgver=UPPLAY_0.8.5.r296.gbcca0f0
+pkgver=r492.d686fc5
 pkgrel=1
 pkgdesc="A Qt-based UPnP audio Control point"
 url="http://www.lesbonscomptes.com/upplay/"
 arch=('x86_64')
 license=('GPL2')
-depends=('libupnpp>=0.14.1' 'qtwebkit')
-makedepends=('qtchooser')
-source=("git+https://github.com/medoc92/upplay.git")
+depends=('libupnpp>=0.15.3'
+         'qt5-webkit'
+         'hicolor-icon-theme')
+makedepends=('qt5-script')
+source=("git+https://opensourceprojects.eu/git/p/upplay/code")
 md5sums=('SKIP')
-         
+
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/code"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build(){
-	cd "${srcdir}/${_gitname}"
-	qmake-qt4 PREFIX="/usr"
+build() {
+	cd "${srcdir}/code"
+	qmake -o Makefile upplay.pro PREFIX=/usr
 }
 
-package(){
-	cd "${srcdir}/${_gitname}"
+package() {
+	cd "${srcdir}/code"
 	make install INSTALL_ROOT="${pkgdir}"
 }
