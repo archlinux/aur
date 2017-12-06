@@ -1,12 +1,14 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
-pkgver=0.14.13
+pkgver=0.14.14
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/albertlauncher"
 license=('GPL')
 depends=(
+  'qt5-graphicaleffects'
+  'qt5-quickcontrols'
   'qt5-svg'
   'qt5-x11extras'
   'libx11'
@@ -25,8 +27,6 @@ makedepends=(
 optdepends=(
   'muparser: Calculator plugin'
   'python: Python extension'
-  'qt5-graphicaleffects: QML frontend'
-  'qt5-quickcontrols: QML frontend'
   'virtualbox: VirtualBox plugin'
 )
 provides=('albert')
