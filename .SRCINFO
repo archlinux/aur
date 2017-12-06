@@ -1,7 +1,7 @@
 pkgbase = vscode-insiders
 	pkgdesc = Visual Studio Code Insiders: code editing Redefined..
 	pkgver = 1.19.0
-	pkgrel = 1511504133
+	pkgrel = 1512540970
 	url = https://code.visualstudio.com
 	install = vscode-insiders.install
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = vscode-insiders
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://vscode-update.azurewebsites.net/latest/linux-deb-x64/insider
-	sha512sums_x86_64 = a998146429a564b8cc214f76f53c6a823a364655404f4b50573550a87147a158f8dbcaa851df51b61b7e9f6e010fb3f2dc263c9f604fb5ce83f4fd7a0264d2ee
+	sha512sums_x86_64 = ebb1a134058e4e82c8776bf46fb85fc29d78343330a4455197470d65f35c97d61cd0b0445cc5ed02ff36f86ce9f0ab961f63492e5aea4a2e5828067364251114
 
 pkgname = vscode-insiders
 
