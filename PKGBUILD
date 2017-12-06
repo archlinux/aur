@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}/build
+  cd ${pkgname}
   install -DTm 755 build/cutter "${pkgdir}/usr/bin/cutter"
   install -DTm 644 src/cutter.desktop "${pkgdir}/usr/share/applications/cutter.desktop"
   install -DTm 644 src/img/cutter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutter.svg"
