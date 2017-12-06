@@ -3,14 +3,14 @@
 
 name=cloudcompare
 pkgname=${name}-git
-pkgver=2.8.0.r245.g0c6c33de
+pkgver=2.9.1.r17.gc9e6493d
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('qt5-base' 'glu' 'mesa' 'vxl' 'ffmpeg' 'cgal')
-makedepends=('git' 'cmake' 'pcl' 'doxygen' 'liblas')
+depends=('qt5-base' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cgal')
+makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'doxygen' 'liblas')
 optdepends=('pcl' 'liblas')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git"
         )
@@ -34,6 +34,7 @@ build() {
   cmake .. \
         -DCMAKE_CXX_FLAGS=-fpermissive \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DINSTALL_QRANSAC_SD_PLUGIN=ON \
         -DINSTALL_QCOMPASS_PLUGIN=ON \
         -DINSTALL_QPCL_PLUGIN=ON \
         -DINSTALL_QBLUR_PLUGIN=ON \

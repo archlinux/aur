@@ -1,6 +1,6 @@
 pkgbase = cloudcompare-git
 	pkgdesc = A 3D point cloud (and triangular mesh) processing software
-	pkgver = 2.8.0.r158.gab5f340a
+	pkgver = 2.9.1.r17.gc9e6493d
 	pkgrel = 1
 	url = http://www.danielgm.net/cc/
 	arch = i686
@@ -9,10 +9,13 @@ pkgbase = cloudcompare-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = pcl
+	makedepends = libharu
+	makedepends = proj
 	makedepends = doxygen
 	makedepends = liblas
 	depends = qt5-base
 	depends = glu
+	depends = glew
 	depends = mesa
 	depends = vxl
 	depends = ffmpeg
@@ -21,7 +24,6 @@ pkgbase = cloudcompare-git
 	optdepends = liblas
 	source = cloudcompare::git+https://github.com/CloudCompare/CloudCompare.git
 	md5sums = SKIP
-	md5sums = c731a6b09c7a54ecc8ba67f4557e2b0c
 
 pkgname = cloudcompare-git
 
