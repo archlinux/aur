@@ -1,9 +1,10 @@
+# Maintainer: Amish <contact at via dot aur>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-text-csv-xs'
 pkgver='1.34'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="comma-separated values manipulation routines"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
