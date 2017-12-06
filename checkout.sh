@@ -14,7 +14,7 @@ git clone https://android.googlesource.com/platform/external/f2fs-tools -b $ANDR
 
 # keep the sha in sync with
 # https://android.googlesource.com/platform/external/boringssl/+/master/BORINGSSL_REVISION
-boringssl_sha=54c259dec395bd991cce5691723214ffe588e51d
+boringssl_sha=a5462d3050ac6a68ab488450bf5856475dbef992
 
 git clone https://boringssl.googlesource.com/boringssl
 (cd boringssl; git checkout $borinssl_sha; mkdir build; cd build; cmake -GNinja ..; ninja)

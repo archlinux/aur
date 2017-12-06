@@ -1,5 +1,5 @@
 diff --git a/adb/client/usb_libusb.cpp b/adb/client/usb_libusb.cpp
-index 7025f283c..66fad6564 100644
+index 81201995a..cfd60fce9 100644
 --- a/adb/client/usb_libusb.cpp
 +++ b/adb/client/usb_libusb.cpp
 @@ -21,6 +21,7 @@
@@ -56,7 +56,7 @@ index 2f697a1cc..81aef5758 100644
  #include <memory>
  #include <mutex>
 diff --git a/base/logging.cpp b/base/logging.cpp
-index 6357b4ba7..3c7dbce13 100644
+index 75078e50e..e7bfc229d 100644
 --- a/base/logging.cpp
 +++ b/base/logging.cpp
 @@ -23,6 +23,7 @@
@@ -68,7 +68,7 @@ index 6357b4ba7..3c7dbce13 100644
  // For getprogname(3) or program_invocation_short_name.
  #if defined(__ANDROID__) || defined(__APPLE__)
 diff --git a/libsparse/sparse_read.cpp b/libsparse/sparse_read.cpp
-index bd668735a..76cf43299 100644
+index 437963527..67975fbdf 100644
 --- a/libsparse/sparse_read.cpp
 +++ b/libsparse/sparse_read.cpp
 @@ -18,6 +18,7 @@
@@ -79,3 +79,15 @@ index bd668735a..76cf43299 100644
  #include <inttypes.h>
  #include <fcntl.h>
  #include <stdarg.h>
+diff --git a/libziparchive/zip_archive.cc b/libziparchive/zip_archive.cc
+index 6da5c99bd..0922ace32 100644
+--- a/libziparchive/zip_archive.cc
++++ b/libziparchive/zip_archive.cc
+@@ -31,6 +31,7 @@
+ #include <unistd.h>
+ 
+ #include <memory>
++#include <string_view>
+ #include <vector>
+ 
+ #include <android-base/file.h>

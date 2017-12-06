@@ -21,7 +21,7 @@ def compile(sources, cflags)
       lang_flags = '-std=gnu11 $CFLAGS $CPPFLAGS'
     when '.cpp', '.cc'
       cc = 'cxx'
-      lang_flags = '-std=gnu++14 $CXXFLAGS $CPPFLAGS'
+      lang_flags = '-std=gnu++17 $CXXFLAGS $CPPFLAGS'
     else
         raise "Unknown extension #{ext}"
     end
@@ -132,15 +132,15 @@ logfiles = %w(
 liblog = compile(expand('core/liblog', logfiles), '-DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Icore/log/include -Icore/include')
 
 cutilsfiles = %w(
-  load_file.c
-  socket_local_client_unix.c
-  socket_network_client_unix.c
-  socket_local_server_unix.c
+  load_file.cpp
+  socket_local_client_unix.cpp
+  socket_network_client_unix.cpp
+  socket_local_server_unix.cpp
   sockets_unix.cpp
-  socket_inaddr_any_server_unix.c
+  socket_inaddr_any_server_unix.cpp
   sockets.cpp
   android_get_control_file.cpp
-  threads.c
+  threads.cpp
 )
 libcutils = compile(expand('core/libcutils', cutilsfiles), '-D_GNU_SOURCE -Icore/include')
 
@@ -186,9 +186,6 @@ sparsefiles = %w(
 libsparse = compile(expand('core/libsparse', sparsefiles), '-Icore/libsparse/include -Icore/base/include')
 
 f2fsfiles = %w(
-  f2fs_utils.c
-  f2fs_ioutils.c
-  f2fs_dlutils.c
 )
 f2fs = compile(expand('extras/f2fs_utils', f2fsfiles), '-Iextras/f2fs_utils -If2fs-tools/include -If2fs-tools/mkfs -Icore/libsparse/include -Iselinux/libselinux/include')
 

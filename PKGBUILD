@@ -4,7 +4,7 @@
 # Contributor: Alucryd <alucryd at gmail dot com>
 
 pkgname=android-tools-git
-pkgver=r36242.0db49f9f7c
+pkgver=r36415.1ae6d14f9
 pkgrel=1
 pkgdesc='Android platform tools'
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ makedepends=(git clang gtest ruby cmake ninja go)
 conflicts=(android-tools)
 replaces=(android-tools)
 provides=(android-tools)
-_boringssl_commit=7f8c553d7f4db0a6ce727f2986d41bf8fe8ec4bf # keep it in sync with android https://android.googlesource.com/platform/external/boringssl/+/master/BORINGSSL_REVISION
+_boringssl_commit=a5462d3050ac6a68ab488450bf5856475dbef992 # keep it in sync with android https://android.googlesource.com/platform/external/boringssl/+/master/BORINGSSL_REVISION
 source=(git+https://android.googlesource.com/platform/system/core
         git+https://android.googlesource.com/platform/system/extras
         git+https://android.googlesource.com/platform/external/selinux
@@ -32,8 +32,8 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          'db6569f6d55d447c3d10d7ca32cd638a775e4908'
-          'a672a01934656a7d0b1bf0419762f6365202728b'
+          '5a048d8ae090327d68467b8f6e994eebe9686530'
+          '5bc7472561d3c28049def8212c5e40e560b1583b'
           'ec473160d7445f97bccabd1c32ac0ae2f77900c1'
           '7004dbd0c193668827174880de6f8434de8ceaee')
 
