@@ -1,4 +1,4 @@
-# Maintainer: Genki Sky <arch at genki dot is>
+# Maintainer: Genki Sky <sky at genki dot is>
 
 pkgname=notmuch-extract-patch-git
 pkgver=20170126.f6b282d
