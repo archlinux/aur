@@ -4,7 +4,7 @@
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
 pkgver=0.17.0.0.ga15888b
-pkgrel=1
+pkgrel=2
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
@@ -14,8 +14,7 @@ makedepends=('extra-cmake-modules' 'python-docutils' 'qt5-tools' 'git')
 provides=("$_pkgbase" 'display-manager')
 conflicts=("$_pkgbase")
 backup=('usr/share/sddm/scripts/Xsetup'
-        'etc/pam.d/sddm'
-        'etc/sddm.conf')
+        'etc/pam.d/sddm')
 source=("git://github.com/sddm/sddm.git#branch=master"
 sddm.sysusers sddm.tmpfiles)
 sha256sums=('SKIP'
@@ -51,4 +50,8 @@ package() {
 
   install -Dm644 "$srcdir"/sddm.sysusers "$pkgdir"/usr/lib/sysusers.d/sddm.conf
   install -Dm644 "$srcdir"/sddm.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/sddm.conf
+
+  # Move sddm.conf to /usr/lib https://bugs.archlinux.org/task/56609
+  mkdir "$pkgdir"/usr/lib/sddm/sddm.conf.d
+  mv "$pkgdir"/{etc/sddm.conf,usr/lib/sddm/sddm.conf.d}
 }
