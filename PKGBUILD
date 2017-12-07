@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-webchannel
-_qtver=5.9.3
+_qtver=5.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -13,9 +13,9 @@ pkgdesc='Provides access to QObject or QML objects from HTML clients for seamles
 depends=('qt5-declarative')
 makedepends=()
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
+_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('632795b293f1318e9aaa1e124b6a39b1625c8c1e35b0a9f05a02ea0066458358')
+sha256sums=('f22424dc6235110bb7f587b01ce692738af1497fba2a9739fa90a5e57ba135a3')
 
 prepare() {
   mkdir -p build
