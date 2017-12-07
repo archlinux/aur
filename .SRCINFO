@@ -1,23 +1,21 @@
-pkgbase = remill-git
-	pkgdesc = Machine code to LLVM binary translator.
-	pkgver = 20170215
+pkgbase = remill
+	pkgdesc = Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode
+	pkgver = 20171206_ac62ffc
 	pkgrel = 1
 	url = https://github.com/trailofbits/remill
 	arch = x86_64
-	arch = i686
-	license = Apache License
+	license = Apache
+	makedepends = git
+	makedepends = curl
+	makedepends = patchelf
 	makedepends = cmake
-	makedepends = clang
-	makedepends = llvm
-	depends = gtest
-	depends = protobuf
-	depends = gflags
-	depends = python
-	depends = python-protobuf
-	depends = python2-protobuf
-	depends = xed-intel
-	depends = google-glog-git
+	depends = clang39
+	depends = llvm39
+	depends = llvm39-libs
+	provides = remill
 	conflicts = remill
+	source = remill::git+https://github.com/trailofbits/remill.git#branch=alessandro/feature/archlinux-package
+	sha1sums = SKIP
 
-pkgname = remill-git
+pkgname = remill
 
