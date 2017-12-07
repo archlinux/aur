@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-glib-git libnm-git)
-pkgver=1.9.0.r17339.gdb07b867a
+pkgver=1.11.1.r19132.g993a726c4
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -64,8 +64,8 @@ prepare() {
 build() {
     cd $pkgname/
     ./configure \
-        --sysconfdir=/etc \
-         --prefix=/usr \
+    --sysconfdir=/etc \
+    --prefix=/usr \
     --localstatedir=/var \
     runstatedir=/run \
     --sbindir=/usr/bin \
@@ -89,7 +89,7 @@ build() {
     --enable-polkit-agent \
     --enable-teamdctl \
     --enable-wifi \
-    --with-config-dhcp-default=dhclient \
+    --with-config-dhcp-default=internal \
     --with-config-dns-rc-manager-default=resolvconf \
     --with-config-logging-backend-default=journal \
     --with-config-plugins-default=keyfile,ibft \
