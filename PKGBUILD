@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-scxml
-_qtver=5.9.3
+_qtver=5.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -12,9 +12,9 @@ pkgdesc='Static and runtime integration of SCXML models into Qt code'
 depends=('qt5-declarative')
 makedepends=()
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
+_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d8f51fa8eddd09fef29d8fad6e570e9ca9403469543ab10cb5cfad738786a81b')
+sha256sums=('4bbb19d6b169ab04aec62d09ed4324639cda13d2c25cf584c9061c5d9af65890')
 
 prepare() {
   mkdir -p build
