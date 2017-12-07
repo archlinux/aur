@@ -2,7 +2,7 @@
 
 _name=netbox
 pkgname=${_name}
-pkgver=2.2.4
+pkgver=2.2.7
 _realver="${pkgver}"
 pkgrel=1
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
@@ -12,33 +12,33 @@ license=('Apache-2.0')
 depends=('python'
          'gunicorn'
          'libffi'
-         'libpgf'
-         'openssl'
-				 'python-coreapi'
-         'python-pycryptodomex'
-         'python-django'
-         'python-django-cors-headers'
-         'python-django-debug-toolbar'
-         'python-django-filter'
-         'python-django-mptt'
-         'python-django-rest-framework'
-         'python-django-rest-swagger'
-         'python-django-tables2'
-         'python-graphviz'
-         'python-lxml'
-         'python-markdown'
-         'python-natsort'
-         'python-ncclient'
-         'python-netaddr'
-				 'python-openapi-codec'
-         'python-paramiko'
-				 'python-pillow'
-         'python-py-gfm'
-         'python-pytz'
-         'python-psycopg2'
-				 'python-simplejson'
-         'python-xmltodict'
-				 'python-yaml')
+	 'libpgf'
+	 'openssl'
+	 'python-coreapi'
+	 'python-pycryptodomex'
+	 'python-django'
+	 'python-django-cors-headers'
+	 'python-django-debug-toolbar'
+	 'python-django-filter'
+	 'python-django-mptt'
+	 'python-django-rest-framework'
+	 'python-django-rest-swagger'
+	 'python-django-tables2'
+	 'python-graphviz'
+	 'python-lxml'
+	 'python-markdown'
+	 'python-natsort'
+	 'python-ncclient'
+	 'python-netaddr'
+	 'python-openapi-codec'
+	 'python-paramiko'
+	 'python-pillow'
+	 'python-py-gfm'
+	 'python-pytz'
+	 'python-psycopg2'
+	 'python-simplejson'
+	 'python-xmltodict'
+	 'python-yaml')
 
 conflicts=("${_name}-git")
 replaces=("${_name}-git")
@@ -46,8 +46,8 @@ install="${_name}.install"
 source=("${url}/archive/v${_realver}.tar.gz"
         "${_name}-system.service"
         "${_name}.tmpfile"
-				"gunicorn_config.py")
-sha256sums=('0a3a6cca86b58e6701749766e4882c908272b9c93738abdaa6c2a2b0636b42a8'
+	"gunicorn_config.py")
+sha256sums=('32d4cf9e238c5823fe8bc156e03870981ec1f4937d3b6071ec3fe171ba4f2951'
             'dc83de37ff9151de3d309fd43c6eff3b30886882012b81fd3ff2f3a5a706bea6'
             '1028bac96ddcd18c10646dff26027b4891fcab4381436e2b6ea3302887a5586f'
             '7a5ae05cad7ec14193a43ef080776b5525c80b6258762a6cb6a108db83861ff9')
