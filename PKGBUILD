@@ -28,7 +28,7 @@ build() {
 
 package(){
   mkdir -p "$pkgdir/opt/"
-  cp -a "$srcdir/jpcsp-linux-$_pkgarch/" "$pkgdir/opt/$pkgname/"
+  cp -a "$srcdir/jpcsp-linux-amd64/" "$pkgdir/opt/$pkgname/"
   chmod -R 755 $pkgdir/opt/$pkgnname
   install -D jpcsp.sh $pkgdir/usr/bin/jpcsp
   install -D jpcsp.desktop $pkgdir/usr/share/applications/jpcsp.desktop
