@@ -43,5 +43,5 @@ package() {
     #install -dm577 "$pkgdir"/usr/share/$pkgname/
     
     install -Dm755 "$srcdir"/$_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
-    install -Dm755 "$srcdir"/$_pkgname-cpp.sh "$pkgdir"/usr/bin/$_pkgname-cpp.sh
+    install -Dm755 "$srcdir"/$_pkgname-cpp.sh "$pkgdir"/usr/bin/$_pkgname-cpp
 }
