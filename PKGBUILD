@@ -1,4 +1,4 @@
-# Maintainer: Genki Sky <arch at genki dot is>
+# Maintainer: Genki Sky <sky at genki dot is>
 
 pkgname=mxt-app-git
 pkgver=20161102.6d84bb0
