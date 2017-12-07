@@ -1,0 +1,22 @@
+pkgbase = fcitx5-rime-git
+	pkgdesc = RIME input method for fcitx5
+	pkgver = r96.b7cc06b
+	pkgrel = 1
+	url = https://github.com/fcitx/fcitx5-rime
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = boost-libs
+	depends = curl
+	depends = fcitx5-git
+	depends = librime
+	depends = opencc
+	depends = brise
+	source = git+https://github.com/fcitx/fcitx5-rime.git
+	sha512sums = SKIP
+
+pkgname = fcitx5-rime-git
+
