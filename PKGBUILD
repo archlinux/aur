@@ -1,18 +1,19 @@
 _pkgname=moviepy
 pkgname=python-${_pkgname}
-pkgver=0.2.2.11
-pkgrel=5
+pkgver=0.2.3.2
+pkgrel=1
 pkgdesc="Script-based movie editing with python"
 arch=('any')
 url="http://zulko.github.io/moviepy/"
 license=("MIT")
 makedepends=('python-setuptools')
 depends=('ffmpeg' 'imagemagick' 'opencv'
-	 'python-decorator' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-scipy' 'python-tqdm' 'python-imageio' 'python-pygame')
+	 'python-decorator' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-scipy' 'python-tqdm' 'python-imageio')
+optdepens=('python-pygame')
 provides=('python-moviepy-git')
 conflicts=('python-moviepy-git')
-source=(https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('d937d817e534efc54eaee2fc4c0e70b48fcd81e1528cd6425f22178704681dc3')
+source=(https://github.com/Zulko/${_pkgname}/archive/v${pkgver}.tar.gz)
+sha256sums=('de0a3804125af7f4ff9d2c8b7c800f5d3d56a2fc42df4592b1c8c168ceba4d89')
 
 package() {
 	 cd "${srcdir}/${_pkgname}-${pkgver}"
