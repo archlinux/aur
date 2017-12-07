@@ -1,9 +1,10 @@
-# Maintainer:  VirtualTam   <virtualtam@flibidi.net>
+# Maintainer: David McInnis <dave@dave3.xyz>
+# Contributor:  VirtualTam   <virtualtam@flibidi.net>
 # Contributor: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=libgpuarray-git
 _gitname=libgpuarray
 pkgver=0.6.1.4.g56b2df4
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to manipulate tensors on the GPU"
 arch=('i686' 'x86_64')
 url="https://github.com/Theano/libgpuarray"
