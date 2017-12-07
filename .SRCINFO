@@ -8,7 +8,7 @@ pkgbase = rusty-tags
 	license = BSD
 	makedepends = cargo
 	depends = ctags
-	source = https://github.com/dan-t/rusty-tags/archive/v2.5.1.tar.gz
+	source = rusty-tags-2.5.1.tar.gz::https://github.com/dan-t/rusty-tags/archive/v2.5.1.tar.gz
 	sha256sums = 3359252f8db276f53ff9a7ca6b50d583c9b279280707b2ea0e6c577b15aee7cc
 
 pkgname = rusty-tags

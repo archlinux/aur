@@ -9,7 +9,7 @@ depends=('ctags')
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('BSD')
-source=("https://github.com/dan-t/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dan-t/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('3359252f8db276f53ff9a7ca6b50d583c9b279280707b2ea0e6c577b15aee7cc')
 
 build() {
