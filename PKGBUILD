@@ -108,7 +108,7 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/master/pt.patch
 )
 
 
-sha256sums=('0f29df3f4768ae32abbe504ba99cfa3b72c820f175b96a43c737a3d66f83f959'
+sha256sums=('6de2754dfc333675ae6a67ae13c95666009b35c84f847b058edbf312e42fa3af'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
