@@ -2,7 +2,7 @@
 
 pkgname=httraqt
 name=HTTraQt
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="Is the clone from WinHTTrack tool. GUI is based on Qt5 libriaries."
 arch=('i686' 'x86_64')
@@ -41,4 +41,4 @@ package() {
   #mv $pkgdir/usr/share/httraqt/help $pkgdir/usr/share/doc/
 }
 
-md5sums=('da7b9ec9abf1800b93465c4bdeed4b40')
+md5sums=('61ed52ce2e12e5a0f974542a40b13f78')
