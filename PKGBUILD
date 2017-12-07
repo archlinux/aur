@@ -8,7 +8,7 @@
 
 _name=gajim
 pkgname="$_name-git"
-pkgver=r14904.92917c18f
+pkgver=r14929.94893191e
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
@@ -29,7 +29,8 @@ optdepends=('python-dbus: dbus support'
             'kded: to store passwords encrypted in KSecretService'
             'python-crypto: support for E2E encryption'
             'python-docutils: for RST generator support'
-            'gupnp-igd: for UPnP-IGD support')
+            'gupnp-igd: for UPnP-IGD support'
+            'geoclue2: for sharing your location')
 provides=('gajim=0.17')
 conflicts=('gajim' 'gajim-hg' 'gajim-svn')
 replaces=('gajim-hg' 'gajim-svn')
