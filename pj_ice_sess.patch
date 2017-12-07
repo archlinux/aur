@@ -1,3 +1,10 @@
+Description: Expose the ice session to allow adding candidates.
+ .
+ Ring has other ways than stun to determine its IP address.
+ .
+ See ice_transport.cpp for usage details.
+Author: Stepan Salenikovich <stepan.salenikovich@savoirfairelinux.com>
+
 --- a/pjnath/include/pjnath/ice_strans.h
 +++ b/pjnath/include/pjnath/ice_strans.h
 @@ -845,6 +845,8 @@ PJ_DECL(pj_status_t) pj_ice_strans_sendt

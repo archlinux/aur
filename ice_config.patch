@@ -1,3 +1,22 @@
+Description:
+ Increase PJ_ICE_MAX_CAND to 256. Upstream's default, 16, is
+ not enough to handle cases with numerous local/remote candidates
+ like the case when multiple hosts in IPv6 and IPv4 exists.
+ Tests show that 40 entries are needed with 5 local host IPs.
+ .
+ Increase PJ_ICE_MAX_CHECKS, which would be way too low for the
+ number of candidates.
+ .
+ Increase PJ_ICE_MAX_STUN to 3:
+  - One for IPv4
+  - One for IPv6
+  - One set by the user
+ .
+ Increase PJ_ICE_COMP_BITS so that we can have more components:
+  - 2 Audio components
+  - 2 Video components
+Author: Guillaume Roguez <guillaume.roguez@savoirfairelinux.com>
+
 --- a/pjnath/include/pjnath/config.h
 +++ b/pjnath/include/pjnath/config.h
 @@ -233,3 +233,3 @@

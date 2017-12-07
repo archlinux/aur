@@ -14,8 +14,8 @@ on behalf of Savoir-faire Linux.
 
 ----
 
---- a/pjnath/include/pjnath/config.h	2017-09-27 16:48:31.000000000 -0400
-+++ b/pjnath/include/pjnath/config.h	2017-09-28 08:23:37.000000000 -0400
+--- a/pjnath/include/pjnath/config.h
++++ b/pjnath/include/pjnath/config.h
 @@ -220,6 +220,14 @@
  #   define PJ_TURN_KEEP_ALIVE_SEC		    15
  #endif
@@ -31,8 +31,8 @@ on behalf of Savoir-faire Linux.
  
  /* **************************************************************************
   * ICE CONFIGURATION
---- a/pjnath/include/pjnath/stun_msg.h	2017-01-17 22:50:32.000000000 -0500
-+++ b/pjnath/include/pjnath/stun_msg.h	2017-09-28 08:23:37.000000000 -0400
+--- a/pjnath/include/pjnath/stun_msg.h
++++ b/pjnath/include/pjnath/stun_msg.h
 @@ -92,6 +92,21 @@
       */
      PJ_STUN_CHANNEL_BIND_METHOD		    = 9,
@@ -80,8 +80,8 @@ on behalf of Savoir-faire Linux.
      PJ_STUN_ATTR_ICMP		    = 0x0030,/**< ICMP (TURN)		    */
  
      PJ_STUN_ATTR_END_MANDATORY_ATTR,
---- a/pjnath/include/pjnath/stun_session.h	2013-10-01 01:00:57.000000000 -0400
-+++ b/pjnath/include/pjnath/stun_session.h	2017-09-28 08:23:37.000000000 -0400
+--- a/pjnath/include/pjnath/stun_session.h
++++ b/pjnath/include/pjnath/stun_session.h
 @@ -751,6 +751,13 @@
  					pj_stun_tx_data *tdata);
  
@@ -96,8 +96,8 @@ on behalf of Savoir-faire Linux.
  /**
   * @}
   */
---- a/pjnath/include/pjnath/turn_session.h	2016-11-14 01:13:01.000000000 -0500
-+++ b/pjnath/include/pjnath/turn_session.h	2017-09-28 08:26:16.000000000 -0400
+--- a/pjnath/include/pjnath/turn_session.h
++++ b/pjnath/include/pjnath/turn_session.h
 @@ -184,6 +184,12 @@
      PJ_TURN_STATE_ALLOCATING,
  
@@ -111,7 +111,7 @@ on behalf of Savoir-faire Linux.
       * TURN session has successfully allocated relay resoruce and now is
       * ready to be used.
       */
-@@ -298,6 +304,20 @@
+@@ -298,6 +304,21 @@
  		     pj_turn_state_t old_state,
  		     pj_turn_state_t new_state);
  
@@ -127,12 +127,13 @@ on behalf of Savoir-faire Linux.
 +    void (*on_peer_connection)(pj_turn_session *sess,
 +                               pj_uint32_t conn_id,
 +                               const pj_sockaddr_t *peer_addr,
-+                               unsigned addr_len);
++                               unsigned addr_len,
++                               pj_status_t status);
 +
  } pj_turn_session_cb;
  
  
-@@ -339,6 +359,14 @@
+@@ -339,6 +360,14 @@
       */
      int	    af;
  
@@ -147,7 +148,7 @@ on behalf of Savoir-faire Linux.
  
  } pj_turn_alloc_param;
  
-@@ -741,6 +769,15 @@
+@@ -741,6 +770,15 @@
  					       pj_size_t pkt_len,
  					       pj_size_t *parsed_len);
  
@@ -163,9 +164,9 @@ on behalf of Savoir-faire Linux.
  
  /**
   * @}
---- a/pjnath/include/pjnath/turn_sock.h	2013-10-01 01:00:57.000000000 -0400
-+++ b/pjnath/include/pjnath/turn_sock.h	2017-09-28 08:23:37.000000000 -0400
-@@ -98,6 +98,20 @@
+--- a/pjnath/include/pjnath/turn_sock.h
++++ b/pjnath/include/pjnath/turn_sock.h
+@@ -98,6 +98,23 @@
  		     pj_turn_state_t old_state,
  		     pj_turn_state_t new_state);
  
@@ -176,17 +177,20 @@ on behalf of Savoir-faire Linux.
 +     * @param conn_id		The connection-id to use for connection binding.
 +     * @param peer_addr	Peer address that tried to connect on the TURN server.
 +     * @param addr_len		Length of the peer address.
-+
++     * @param status    PJ_SUCCESS when connection is made, or any errors
++     *                  if the connection has failed (or if the peer has
++     *                  disconnected after an established connection).
 +     */
 +    void (*on_peer_connection)(pj_turn_sock *turn_sock,
 +                               pj_uint32_t conn_id,
 +                               const pj_sockaddr_t *peer_addr,
-+                               unsigned addr_len);
++                               unsigned addr_len,
++                               pj_status_t status);
 +
  } pj_turn_sock_cb;
  
  
-@@ -446,6 +460,13 @@
+@@ -446,6 +463,13 @@
  					       const pj_sockaddr_t *peer,
  					       unsigned addr_len);
  
@@ -200,8 +204,8 @@ on behalf of Savoir-faire Linux.
  
  /**
   * @}
---- a/pjnath/src/pjnath/stun_msg.c	2017-01-17 22:50:32.000000000 -0500
-+++ b/pjnath/src/pjnath/stun_msg.c	2017-09-28 08:23:37.000000000 -0400
+--- a/pjnath/src/pjnath/stun_msg.c
++++ b/pjnath/src/pjnath/stun_msg.c
 @@ -45,6 +45,9 @@
      "Data",			/* 7 */
      "CreatePermission",		/* 8 */
@@ -229,8 +233,8 @@ on behalf of Savoir-faire Linux.
      },
      {
  	/* ID 0x002b is not assigned */
---- a/pjnath/src/pjnath/stun_session.c	2016-01-05 09:34:22.000000000 -0500
-+++ b/pjnath/src/pjnath/stun_session.c	2017-09-28 08:23:37.000000000 -0400
+--- a/pjnath/src/pjnath/stun_session.c
++++ b/pjnath/src/pjnath/stun_session.c
 @@ -1511,3 +1511,14 @@
      return status;
  }
@@ -246,8 +250,8 @@ on behalf of Savoir-faire Linux.
 +	pj_strdup(sess->pool, &sess->next_nonce, nonce);
 +	pj_strdup(sess->pool, &sess->server_realm, realm);
 +}
---- a/pjnath/src/pjnath/turn_session.c	2017-09-27 16:48:31.000000000 -0400
-+++ b/pjnath/src/pjnath/turn_session.c	2017-09-28 08:23:37.000000000 -0400
+--- a/pjnath/src/pjnath/turn_session.c
++++ b/pjnath/src/pjnath/turn_session.c
 @@ -42,6 +42,7 @@
      "Resolving",
      "Resolved",
@@ -309,7 +313,7 @@ on behalf of Savoir-faire Linux.
      /* See if the peer is bound to a channel number */
      ch = lookup_ch_by_addr(sess, addr, pj_sockaddr_get_len(addr), 
  			   PJ_FALSE, PJ_FALSE);
-@@ -1670,6 +1687,32 @@
+@@ -1670,6 +1687,33 @@
  
      sess = (pj_turn_session*)pj_stun_session_get_user_data(stun);
  
@@ -334,7 +338,8 @@ on behalf of Savoir-faire Linux.
 +        if (sess->cb.on_peer_connection) {
 +            (*sess->cb.on_peer_connection)(sess, connection_id_attr->value,
 +                                           &peer_attr->sockaddr,
-+                                           pj_sockaddr_get_len(&peer_attr->sockaddr));
++                                           pj_sockaddr_get_len(&peer_attr->sockaddr),
++                                           PJ_SUCCESS);
 +        }
 +        return PJ_SUCCESS;
 +    }
@@ -342,7 +347,7 @@ on behalf of Savoir-faire Linux.
      /* Expecting Data Indication only */
      if (msg->hdr.type != PJ_STUN_DATA_INDICATION) {
  	PJ_LOG(4,(sess->obj_name, "Unexpected STUN %s indication",
-@@ -2089,3 +2132,16 @@
+@@ -2089,3 +2133,16 @@
      pj_grp_lock_release(sess->grp_lock);
  }
  
@@ -359,8 +364,8 @@ on behalf of Savoir-faire Linux.
 +{
 +	pj_stun_session_set_server_cred(sess->stun, nonce, realm);
 +}
---- a/pjnath/src/pjnath/turn_sock.c	2017-01-19 02:41:25.000000000 -0500
-+++ b/pjnath/src/pjnath/turn_sock.c	2017-09-28 08:23:37.000000000 -0400
+--- a/pjnath/src/pjnath/turn_sock.c
++++ b/pjnath/src/pjnath/turn_sock.c
 @@ -35,9 +35,29 @@
  
  enum { MAX_BIND_RETRY = 100 };
@@ -403,14 +408,15 @@ on behalf of Savoir-faire Linux.
  };
  
  
-@@ -82,6 +107,11 @@
+@@ -82,6 +107,12 @@
  static void turn_on_state(pj_turn_session *sess, 
  			  pj_turn_state_t old_state,
  			  pj_turn_state_t new_state);
 +static void turn_on_peer_connection(pj_turn_session *sess,
 +                                    pj_uint32_t conn_id,
 +                                    const pj_sockaddr_t *peer_addr,
-+                                    unsigned addr_len);
++                                    unsigned addr_len,
++									 pj_status_t status);
 +
  
  static pj_bool_t on_data_read(pj_activesock_t *asock,
@@ -460,7 +466,42 @@ on behalf of Savoir-faire Linux.
      pj_grp_lock_dec_ref(turn_sock->grp_lock);
      pj_grp_lock_release(turn_sock->grp_lock);
  }
-@@ -411,6 +465,9 @@
+@@ -302,6 +356,34 @@
+     }
+ }
+ 
++static void peer_cnx_fail(pj_turn_tcp_data_connection *tcp_cnx,
++                          const char *title, pj_status_t status)
++{
++    pj_turn_sock *turn_sock = tcp_cnx->turn_sock;
++
++    show_err(turn_sock, title, status);
++    if (tcp_cnx->stun_sess) {
++        pj_stun_session_destroy(tcp_cnx->stun_sess);
++        tcp_cnx->stun_sess = NULL;
++    }
++    if (tcp_cnx->active_tcp_sock) {
++        for (int i=0; i < turn_sock->tcp_cnx_count; ++i) {
++            if (&turn_sock->tcp_cnx[i] == tcp_cnx) {
++                turn_on_peer_connection(turn_sock->sess, tcp_cnx->id,
++                                        &tcp_cnx->peer_addr,
++                                        tcp_cnx->peer_addr_len,
++                                        PJ_EEOF);
++                pj_activesock_close(tcp_cnx->active_tcp_sock);
++                tcp_cnx->active_tcp_sock = NULL;
++                tcp_cnx->flags = 0;
++                if (i == turn_sock->tcp_cnx_count-1)
++                    --turn_sock->tcp_cnx_count;
++                break;
++            }
++        }
++    }
++}
++
+ /*
+  * Set user data.
+  */
+@@ -411,6 +489,9 @@
  
      /* Set credental */
      if (cred) {
@@ -470,7 +511,7 @@ on behalf of Savoir-faire Linux.
  	status = pj_turn_session_set_credential(turn_sock->sess, cred);
  	if (status != PJ_SUCCESS) {
  	    sess_fail(turn_sock, "Error setting credential", status);
-@@ -676,11 +733,35 @@
+@@ -676,11 +757,35 @@
  	return PJ_EINVALIDOP;
      }
  
@@ -509,14 +550,15 @@ on behalf of Savoir-faire Linux.
      if (status != PJ_SUCCESS && status != PJ_EPENDING) {
  	show_err(turn_sock, "socket send()", status);
      }
-@@ -927,4 +1008,365 @@
+@@ -927,4 +1032,365 @@
      }
  }
  
 +static void turn_on_peer_connection(pj_turn_session *sess,
 +                                    pj_uint32_t conn_id,
 +                                    const pj_sockaddr_t *peer_addr,
-+                                    unsigned addr_len)
++                                    unsigned addr_len,
++                                    pj_status_t status)
 +{
 +    pj_turn_sock *turn_sock = (pj_turn_sock*) pj_turn_session_get_user_data(sess);
 +    if (turn_sock == NULL || turn_sock->is_destroying) {
@@ -526,7 +568,8 @@ on behalf of Savoir-faire Linux.
 +
 +    if (turn_sock->cb.on_peer_connection) {
 +        (*turn_sock->cb.on_peer_connection)(turn_sock, conn_id,
-+                                            peer_addr, addr_len);
++                                            peer_addr, addr_len,
++                                            status);
 +    }
 +}
 +
@@ -707,17 +750,13 @@ on behalf of Savoir-faire Linux.
 +	pj_assert(tcp_cnx && tcp_cnx->turn_sock);
 +	turn_sock = tcp_cnx->turn_sock;
 +
++    pj_grp_lock_acquire(turn_sock->grp_lock);
++
 +	if (status != PJ_SUCCESS) {
-+		// TODO: error handling
-+		char addrtxt[PJ_INET6_ADDRSTRLEN + 8];
-+		pj_perror(3, turn_sock->pool->obj_name, status,
-+				  "Failed to read data from %s",
-+				  pj_sockaddr_print(&tcp_cnx->peer_addr, addrtxt,
-+									sizeof(addrtxt), 3));
++        peer_cnx_fail(tcp_cnx, "Peer connection closed", status);
++        pj_grp_lock_release(turn_sock->grp_lock);
 +		return PJ_FALSE;
 +	}
- 
-+	pj_grp_lock_acquire(turn_sock->grp_lock);
 +
 +	*remainder = size;
 +	pj_uint8_t* pkt = data;
@@ -731,7 +770,7 @@ on behalf of Savoir-faire Linux.
 +			*remainder = 0;
 +			return PJ_TRUE;
 +		}
-+
+ 
 +		/* STUN session waiting for ConnectBind response */
 +		pj_size_t parsed_len;
 +		unsigned options = PJ_STUN_CHECK_PACKET | PJ_STUN_NO_FINGERPRINT_CHECK;
@@ -741,7 +780,7 @@ on behalf of Savoir-faire Linux.
 +										   tcp_cnx->peer_addr_len);
 +
 +		if (status != PJ_SUCCESS) {
-+			// TODO: error handling
++            peer_cnx_fail(tcp_cnx, "Peer connection closed", status);
 +			pj_grp_lock_release(turn_sock->grp_lock);
 +			return PJ_FALSE;
 +		}
@@ -764,6 +803,8 @@ on behalf of Savoir-faire Linux.
 +{
 +	pj_turn_tcp_data_connection *tcp_cnx;
 +	pj_turn_sock *turn_sock;
++
++    PJ_LOG(1, ("rfc6062", "peer data connection %s", status == PJ_SUCCESS ? "ready" : "failed"));
 +
 +	tcp_cnx = (pj_turn_tcp_data_connection*) pj_activesock_get_user_data(asock);
 +	if (!tcp_cnx)
@@ -875,3 +916,4 @@ on behalf of Savoir-faire Linux.
 +	PJ_LOG(3, ("rfc6062", "peer data connection bind %s", status == PJ_SUCCESS ? "succeed" : "failed"));
 +	pj_grp_lock_release(tcp_cnx->turn_sock->grp_lock);
 +}
+
