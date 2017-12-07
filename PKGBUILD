@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('capnproto-git' 'libfishsound' 'libid3tag' 'liblo'
 'liblrdf' 'libmad' 'liboggz' 'libpulse' 'portaudio' 'qt5-svg'
 'rubberband' 'sord' 'hicolor-icon-theme')
-makedepends=('mercurial' 'git' 'mlton')
+makedepends=('mercurial' 'git' 'mlton' 'vamp-plugin-sdk')
 provides=("${pkgname%-hg}")
 conflicts=("${pkgname%-hg}" "${pkgname%-hg}3")
 source=("hg+https://code.soundsoftware.ac.uk/hg/$_pkgname")
@@ -21,11 +21,6 @@ pkgver() {
     cd "$_pkgname"
     printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
-
-#prepare() {
-#    cd "$_pkgname"
-#    autoreconf -vi
-#}
 
 build() {
     cd "$_pkgname"

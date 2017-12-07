@@ -8,6 +8,7 @@ pkgbase = sonic-visualiser-hg
 	makedepends = mercurial
 	makedepends = git
 	makedepends = mlton
+	makedepends = vamp-plugin-sdk
 	depends = capnproto-git
 	depends = libfishsound
 	depends = libid3tag
