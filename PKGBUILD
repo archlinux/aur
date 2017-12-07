@@ -225,7 +225,6 @@ depends+=(${_system_libs[@]})
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys.
 
-
 prepare() {
   cd "$srcdir/$name-$pkgver"
 
@@ -272,25 +271,27 @@ patch -Np1 -i ../025.patch
 patch -Np1 -i ../027.patch
 patch -Np1 -i ../029.patch
 patch -Np1 -i ../030.patch
-patch -Np1 -i ../031.patch
+patch -Np1 -i ../CP.patch
 patch -Np1 -i ../032.patch
 patch -Np1 -i ../034.patch
-patch -Np1 -i ../035.patch
-patch -Np1 -i ../036.patch
-patch -Np1 -i ../037.patch
-patch -Np1 -i ../038.patch
+#patch -Np1 -i ../035.patch
+patch -Np1 -i ../360.patch
 patch -Np1 -i ../888.patch
 patch -Np1 -i ../pt.patch
 
+patch -Np1 -i ../037.patch
+patch -Np1 -i ../038.patch
+
+
 
 msg2 'Cut media router'
-patch -Np1 -i ../1992.patch
+patch -Np1 -i ../3992.patch
 patch -Np1 -i ../2992.patch
 patch -Np1 -i ../2ka.patch
 
 
 
-patch -Np1 -i ../2kc.patch
+#patch -Np1 -i ../2kc.patch
 patch -Np1 -i ../2kd.patch
 patch -Np1 -i ../2ke.patch
 patch -Np1 -i ../2kf.patch
@@ -327,52 +328,36 @@ patch -Np1 -i ../p.patch
 patch -Np1 -i ../12.patch
 patch -Np1 -i ../16.patch
 
-
+patch -Np1 -i ../k1.patch
+#patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
-  patch -Np1 -i ../breakpad-use-ucontext_t.patch
 
-  patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
 
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
-  patch -Np1 -d third_party/crc32c/src <../crc32c-string-view-check.patch
-
+  
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-gn-bootstrap-r17.patch
 
-msg2 'clean'
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
 
-msg2 'bath'
   # There are still a lot of relative calls which need a workaround
   mkdir "$srcdir/python2-path"
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
-msg 2 'nad'
+
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
 
-msg2 'purge1'
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
-  local _lib
-  for _lib in ${!_system_libs[@]} ${_system_libs[libjpeg]+libjpeg_turbo}; do
-    find -type f -path "*third_party/$_lib/*" \
-      \! -path "*third_party/$_lib/chromium/*" \
-      \! -path "*third_party/$_lib/google/*" \
-      \! -path "*base/third_party/icu/*" \
-      \! -regex '.*\.\(gn\|gni\|isolate\|py\)' \
-      -delete
-  done
 
-msg2 'purge2'
+
+
 
   python2 build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
-msg2 'purge3'
-
 python2 tools/clang/scripts/update.py
 
   cd "$srcdir/chromium-launcher-$_launcher_ver"
@@ -380,6 +365,7 @@ patch -Np1 -i ../20.patch
 
 
 }
+
 
 
 build() {
