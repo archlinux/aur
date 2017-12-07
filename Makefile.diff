@@ -1,0 +1,11 @@
+--- Makefile.old	2017-12-08 00:18:30.750981482 +0100
++++ Makefile	2017-12-08 00:18:36.084061026 +0100
+@@ -16,7 +16,7 @@
+ 	 $(GO) build -o $(BUILD_DIR)/$(NAME) -ldflags "-s -w -X main.version=${VERSION}-$(COMMIT)-dev"
+ 
+ .PHONY: release
+-release: check
++release:
+ 	 $(GO) build -o $(BUILD_DIR)/$(NAME) -ldflags "-s -w -X main.version=${VERSION}"
+ 
+ .PHONY: clean
