@@ -336,16 +336,19 @@ patch -Np1 -i ../16.patch
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-gn-bootstrap-r17.patch
 
+msg2 'clean'
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
 
+msg2 'bath'
   # There are still a lot of relative calls which need a workaround
   mkdir "$srcdir/python2-path"
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
-
+msg 2 'nad'
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
 
+msg2 'purge1'
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
@@ -359,8 +362,12 @@ patch -Np1 -i ../16.patch
       -delete
   done
 
+msg2 'purge2'
+
   python2 build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
+msg2 'purge3'
+
 python2 tools/clang/scripts/update.py
 
   cd "$srcdir/chromium-launcher-$_launcher_ver"
@@ -368,6 +375,7 @@ patch -Np1 -i ../20.patch
 
 
 }
+
 
 build() {
   make -C chromium-launcher-$_launcher_ver
