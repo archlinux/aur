@@ -1,6 +1,6 @@
 pkgbase = andrei-desktop
 	pkgdesc = An openbox based desktop environment focused on productivity and speed
-	pkgver = r240.9735561
+	pkgver = r241.b85d070
 	pkgrel = 1
 	url = https://gitlab.com/webative-open-source/andrei-linux
 	install = andrei-desktop.install
@@ -175,6 +175,7 @@ pkgbase = andrei-desktop
 	optdepends = playonlinux: GUI for managing Windows programs under linux
 	optdepends = redsocks: Transparent redirector for socksify
 	optdepends = remmina: remote desktop client written in GTK+
+	optdepends = safeeyes: A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI)
 	optdepends = simple-scan: Simple scanning utility
 	optdepends = synergy: Share a single mouse and keyboard between multiple computers
 	optdepends = thunderbird: Standalone mail and news reader from mozilla.org

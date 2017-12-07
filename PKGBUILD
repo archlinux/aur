@@ -1,6 +1,6 @@
 # Maintainer: Radu Birzu <radu@webative.net>
 pkgname=andrei-desktop
-pkgver=r240.9735561
+pkgver=r241.b85d070
 pkgrel=1
 pkgdesc="An openbox based desktop environment focused on productivity and speed"
 arch=('any')
@@ -21,6 +21,7 @@ optdepends=('acetoneiso2: An all in one ISO tool'
 	          'playonlinux: GUI for managing Windows programs under linux'
 	          'redsocks: Transparent redirector for socksify'
 	          'remmina: remote desktop client written in GTK+'
+	          'safeeyes: A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI)'
 	          'simple-scan: Simple scanning utility'
 	          'synergy: Share a single mouse and keyboard between multiple computers'
 	          'thunderbird: Standalone mail and news reader from mozilla.org'
