@@ -5,7 +5,7 @@
 
 pkgbase=gtkhash
 pkgname=(gtkhash gtkhash-nemo gtkhash-nautilus gtkhash-thunar gtkhash-caja)
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A GTK+ utility for computing message digests or checksums"
 arch=('i686' 'x86_64' 'mips64el')
@@ -14,13 +14,13 @@ license=('GPL')
 makedepends=('intltool' 'librsvg' 'nemo' 'libnautilus-extension' 'thunar' 'caja') # ← remove FMs here!
 depends=('dconf' 'nettle' 'gtk3')
 source=("https://github.com/tristanheaven/gtkhash/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('c86b7d8dcfc00aad1cd6bc73fa7c5a18006fbd4ae1fa909d4b4a1e255ce5cfa2')
+sha256sums=('a18c09a6af5b26c79bda81ab8a1835679fefbf2b87f1df4858c42ad45729f6bf')
 
 build() {
   cd gtkhash-$pkgver
 
   ./configure --prefix=/usr --disable-schemas-compile --enable-gtkhash \
-              --enable-linux-crypto --enable-nettle --with-gtk=3.0 \
+              --enable-linux-crypto --enable-nettle --disable-blake2 --with-gtk=3.0 \
               --enable-nemo --enable-nautilus --enable-thunar --enable-caja # ← remove FMs here!
   make
 }
