@@ -2,7 +2,7 @@
 
 pkgname='xmrig-nvidia'
 pkgver=2.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Monero cryptocurrency GPU miner, HTTP API disabled'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-nvidia'
@@ -20,7 +20,12 @@ sha256sums=('9a51fb5494131ec516bfd708c82ebf6eb2b39309181ca7e395b581ab5299d267'
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+
+  # create build dir
   [ -d build ] || mkdir build
+
+  # reset default donate level
+  sed -i -e 's/constexpr const int kDonateLevel = 5;/constexpr const int kDonateLevel = 0;/g' src/donate.h
 }
 
 build() {

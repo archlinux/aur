@@ -1,7 +1,7 @@
 pkgbase = xmrig-nvidia
 	pkgdesc = Monero cryptocurrency GPU miner, HTTP API disabled
 	pkgver = 2.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xmrig/xmrig-nvidia
 	changelog = CHANGELOG.md
 	arch = x86_64
