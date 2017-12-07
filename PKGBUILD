@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-location
-_qtver=5.9.3
+_qtver=5.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -14,9 +14,9 @@ depends=('qt5-declarative')
 makedepends=('gypsy' 'gconf')
 optdepends=('gypsy: Gypsy geolocation plugin')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
+_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('80fd425cde8747c1fc79aa90994a9caf921d7c79ff41babec692fe43cdc74ce1')
+sha256sums=('d84dcec7cfbc99a13e048f935783b0c2e1cb540defc82d77ac869a5b76aa85c7')
 
 prepare() {
   mkdir -p build
