@@ -1,6 +1,6 @@
 pkgbase = tambi-git
-	pkgdesc = A swiss army knife for studiing the bible and much more
-	pkgver = 598
+	pkgdesc = A swiss army knife for studying the bible and much more
+	pkgver = 613
 	pkgrel = 1
 	url = https://github.com/nano13/tambi.git
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = tambi-git
 	depends = python-geopy
 	depends = python-srtm-git
 	depends = python-pillow
+	depends = python-whoosh
 	source = tambi::git+https://github.com/nano13/tambi.git
 	source = tambi.sh
 	sha256sums = SKIP
