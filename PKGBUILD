@@ -1,13 +1,12 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=univga
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="(X11) VGA font with unicode glyphs by Dmitry Yu. Bolkhovityanov"
 arch=('any')
 url="http://www.inp.nsk.su/~bolkhov/files/fonts/univga/"
 license=('custom:MIT')
 makedepends=('xorg-font-utils')
-install=univga.install
 source=('http://www.inp.nsk.su/~bolkhov/files/fonts/univga/uni-vga.tgz'
         COPYING)
 md5sums=('60fbba53cb0efec1363fcc5fb8c244d9'
