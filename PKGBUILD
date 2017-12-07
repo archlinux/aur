@@ -1,8 +1,8 @@
 # Maintainer: Javier Tiá <javier.tia at gmail dot com>
 
 pkgname=libtins
-pkgver=3.5
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="A high-level, multiplatform C++ network packet sniffing and crafting library"
 arch=('i686' 'x86_64')
 url="http://libtins.github.io/"
@@ -11,7 +11,7 @@ depends=('libpcap' 'openssl' 'boost')
 makedepends=('cmake')
 options=('!libtool')
 source=("https://github.com/mfontanini/libtins/archive/v${pkgver}.tar.gz")
-sha256sums=('1b0624b2eea3ce077a86f3abd3e625661760c4cfd21cd8f3d3cd3622229ff2cd')
+sha256sums=('2a758d1bed51760bbd57fcaa00610534e0cc3a6d55d91983724e5f46739d66b8')
 
 build() {
   cd "${srcdir}/libtins-${pkgver}"
