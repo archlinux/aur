@@ -3,7 +3,7 @@
 pkgbase=('python2-vcstool')
 pkgname=('python2-vcstool')
 _module='vcstool'
-pkgver='0.1.31'
+pkgver='0.1.32'
 pkgrel=1
 pkgdesc="vcstool provides a command line tool to invoke vcs commands on multiple repositories."
 url="https://github.com/dirk-thomas/vcstool"
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/v/vcstool/vcstool-${pkgver}.tar.gz")
-md5sums=('94c0f81e0d019bce33ccd4f5ad4a16e3')
+md5sums=('299c1f96f23e0529d150062bb49603f4')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
