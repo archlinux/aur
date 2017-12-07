@@ -2,7 +2,7 @@
 
 pkgname='gnome-osx-v-traditional-gtk-theme'
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Gnome-OSX V Traditional GTK Theme'
 arch=('any')
 url='https://www.opendesktop.org/p/1171688/'
