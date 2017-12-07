@@ -1,19 +1,17 @@
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
-
+# Maintainer: Jingbei Li <i@jingbei.li>
+# Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=cub
-pkgver=1.4.1
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="A flexible library of cooperative threadblock primitives and other utilities for CUDA kernel programming."
 arch=('any')
 url='http://nvlabs.github.com/cub/'
-license=('New BSD')
-makedepends=()
+license=('custom')
 optdepends=('cuda')
-
 source=("https://github.com/NVlabs/cub/archive/${pkgver}.zip"
         "cub.pc")
-sha256sums=('f464eda366e4dfe0c1d9ae2a6bbc22c5804cf131f8a67974c01fae4ae8213e8b'
-            'de2d52cbdb9a81936c7cc519cc5a68c4c62012755c2ab3a07bba158a9d4626c4')
+sha256sums=('20a1a39fd97e5da7f40f5f2e7fd73fd2ea59f9dc4bb8a6c5f228aa543e727e31'
+            '5003a9ee6d7dfa32bbdfbd67d2a7cfcc6c1ca54630c85012ec0b18b519d80230')
 
 package() {
   cd "${srcdir}/cub-${pkgver}"
@@ -24,4 +22,6 @@ package() {
 
   # Install pkg-config file
   install -Dm644 "${srcdir}/cub.pc" "${pkgdir}"/usr/lib/pkgconfig/cub.pc
+
+  install -Dm644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
