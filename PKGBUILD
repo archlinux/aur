@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=62.0.3202.94
-pkgrel=2
+pkgver=63.0.3239.84
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -14,7 +14,8 @@ license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'clang')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'clang'
+             'lld')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -23,30 +24,30 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        breakpad-use-ucontext_t.patch
-        crc32c-string-view-check.patch
-        chromium-gn-bootstrap-r17.patch
+        chromium-exclude_unwind_tables.patch
+        chromium-clang-r1.patch
+        chromium-webrtc-r0.patch
         chromium-widevine.patch)
-sha256sums=('cabc4d267bf08aabe11c5739048c43dde18c61acf595223a1c3aa1d3499558d4'
+sha256sums=('6de2754dfc333675ae6a67ae13c95666009b35c84f847b058edbf312e42fa3af'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
-            '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
-            'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
+            'e53dc6f259acd39df13874f8a0f440528fae764b859dd71447991a5b1fac7c9c'
+            'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
+            'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
-  #[ffmpeg]=ffmpeg           # https://crbug.com/731766
+  #[ffmpeg]=ffmpeg              # https://crbug.com/731766
   [flac]=flac
-  #[freetype]=freetype2      # https://crbug.com/pdfium/733
-  [harfbuzz-ng]=harfbuzz-icu
-  #[icu]=icu                 # https://crbug.com/772655
+  #[freetype]=freetype2         # https://crbug.com/pdfium/733
+  #[harfbuzz-ng]=harfbuzz-icu   # https://crbug.com/768938
+  #[icu]=icu                    # https://crbug.com/772655
   [libdrm]=
   [libjpeg]=libjpeg
-  #[libpng]=libpng           # https://crbug.com/752403#c10
-  #[libvpx]=libvpx           # https://bugs.gentoo.org/611394
+  #[libpng]=libpng              # https://crbug.com/752403#c10
+  #[libvpx]=libvpx              # https://bugs.gentoo.org/611394
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -83,17 +84,20 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-  # Fix build with glibc 2.26
-  patch -Np1 -i ../breakpad-use-ucontext_t.patch
-
-  # Fix incorrect inclusion of <string_view> in modes other than >= C++17
-  patch -Np1 -d third_party/crc32c/src <../crc32c-string-view-check.patch
+  # https://chromium-review.googlesource.com/c/chromium/src/+/712575
+  patch -Np1 -i ../chromium-exclude_unwind_tables.patch
 
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-gn-bootstrap-r17.patch
+  patch -Np1 -i ../chromium-clang-r1.patch
+  patch -Np1 -i ../chromium-webrtc-r0.patch
 
-  # Remove compiler flag not supported by our system clang
-  sed -i '/"-Wno-enum-compare-switch",/d' build/config/compiler/BUILD.gn
+  # Remove compiler flags not supported by our system clang
+  sed -i \
+    -e '/"-Wno-enum-compare-switch"/d' \
+    -e '/"-Wno-null-pointer-arithmetic"/d' \
+    -e '/"-Wno-tautological-unsigned-zero-compare"/d' \
+    -e '/"-Wno-tautological-unsigned-enum-zero-compare"/d' \
+    build/config/compiler/BUILD.gn
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -126,6 +130,11 @@ build() {
   make -C chromium-launcher-$_launcher_ver
 
   cd "$srcdir/$pkgname-$pkgver"
+
+  if check_buildoption ccache y; then
+    # Avoid falling back to preprocessor mode when sources contain time macros
+    export CCACHE_SLOPPINESS=time_macros
+  fi
 
   export PATH="$srcdir/python2-path:$PATH"
   export TMPDIR="$srcdir/temp"
@@ -185,24 +194,29 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
-  install -Dm644 out/Release/chrome.1 "$pkgdir/usr/share/man/man1/chromium.1"
-  install -Dm644 "$srcdir/chromium.desktop" \
+  install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
+  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
+
+  install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
+  install -Dm644 chrome/app/resources/manpage.1.in \
+    "$pkgdir/usr/share/man/man1/chromium.1"
+  sed -i \
+    -e "s/@@MENUNAME@@/Chromium/g" \
+    -e "s/@@PACKAGE@@/chromium/g" \
+    -e "s/@@USR_BIN_SYMLINK_NAME@@/chromium/g" \
+    "$pkgdir/usr/share/applications/chromium.desktop" \
+    "$pkgdir/usr/share/man/man1/chromium.1"
 
-  install -Dm4755 out/Release/chrome_sandbox \
-    "$pkgdir/usr/lib/chromium/chrome-sandbox"
-
-  cp -a \
+  cp \
     out/Release/{chrome_{100,200}_percent,resources}.pak \
     out/Release/{*.bin,chromedriver,libwidevinecdmadapter.so} \
-    out/Release/locales \
     "$pkgdir/usr/lib/chromium/"
+  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
     cp out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
   fi
-
-  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   for size in 22 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
