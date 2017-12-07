@@ -7,7 +7,7 @@
 pkgname=enchant1.6
 _pkgname=enchant
 pkgver=1.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A wrapper library for generic spell checking"
 arch=('i686' 'x86_64')
 url="https://abiword.github.io/enchant/"
@@ -30,11 +30,11 @@ pkgver() {
 prepare() {
   cd $_pkgname
   patch -p1 < ../makefile_1.6.patch
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd $_pkgname
+  ./autogen.sh
   ./configure --prefix=/usr \
     --disable-static \
     --disable-ispell \
