@@ -1,10 +1,9 @@
 pkgbase = inox-hard
 	pkgdesc = A web browser built for speed, simplicity, and security
 	pkgver = 63.0.3239.84
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.chromium.org/Home
 	install = inox-hard.install
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = python2
