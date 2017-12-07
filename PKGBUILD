@@ -2,7 +2,7 @@
 # Contributor: Morris Jobke <hey AT morrisjobke DOT de>
 pkgname=php70-blackfire
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Blackfire Profiler - PHP extension'
 arch=('i686' 'x86_64')
 url='https://blackfire.io'
