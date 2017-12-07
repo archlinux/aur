@@ -4,13 +4,12 @@ _pkgname=nginx
 pkgname=$_pkgname-rtmp
 pkgver=1.12.2
 _rtmpver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='NGINX-based Media Streaming Server'
 arch=(x86_64)
 url='https://nginx-rtmp.blogspot.com/'
 license=(custom)
 depends=(pcre zlib openssl geoip mailcap)
-makedepends=(mercurial)
 backup=(etc/nginx/fastcgi.conf
         etc/nginx/fastcgi_params
         etc/nginx/koi-win
@@ -21,16 +20,14 @@ backup=(etc/nginx/fastcgi.conf
         etc/nginx/win-utf
         etc/logrotate.d/nginx)
 install=nginx.install
-source=($url/download/nginx-$pkgver.tar.gz
+source=(https://nginx.org/download/nginx-$pkgver.tar.gz
         https://github.com/arut/nginx-rtmp-module/archive/v$_rtmpver.tar.gz
-        hg+http://hg.nginx.org/nginx-tests#revision=cbda704b3093
         service
         logrotate)
 provides=('nginx')
 conflicts=('nginx')
 md5sums=('4d2fc76211435f029271f1cf6d7eeae3'
          '639ac2b78103adaccbcfe484a92acf44'
-         'SKIP'
          'ef491e760e7c1ffec9ca25441a150c83'
          '6a01fb17af86f03707c8ae60f98a2dc2')
 
