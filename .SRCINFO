@@ -1,19 +1,20 @@
 pkgbase = jpcsp
 	pkgdesc = Java PSP Emulator
-	pkgver = 0.7
+	pkgver = rd24a39e
 	pkgrel = 1
 	url = http://jpcsp.org/
 	install = jpcsp.install
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = p7zip
-	depends = jogl
 	depends = java-runtime
 	options = !strip
-	source = jpcsp0.7.7z::http://jpcsp.googlecode.com/files/jpcsp-3262-linux-x86.7z
+	source = jpcsp-rd24a39e-linux-x86-64.7z::http://files.emunewz.net/builds/jpcsp/2017/12/04/jpcsp-rd24a39e-linux-x86-64.7z
 	source = jpcsp.sh
 	source = jpcsp.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = jpcsp
 
