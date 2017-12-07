@@ -5,7 +5,7 @@
 
 pkgbase=network-manager-applet-git
 pkgname=(nm-connection-editor-git network-manager-applet-git)
-pkgver=1.4.6.r11.gc567a69b
+pkgver=1.8.7.dev.r26.g76c867ca
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
@@ -45,7 +45,8 @@ build() {
     --enable-ld-gc \
     --with-team \
     --with-wwan \
-    --without-appindicator       
+    --without-appindicator \
+    --without-selinux
 	
    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
