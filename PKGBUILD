@@ -5,7 +5,7 @@
 pkgname=dwarftherapist-git
 epoch=2
 pkgver=39.0.0_r4_g5efed5d
-pkgrel=2
+pkgrel=3
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/Dwarf-Therapist/Dwarf-Therapist"
 arch=('x86_64' 'i686')
@@ -13,12 +13,23 @@ license=('MIT')
 depends=('qt5-declarative' 'hicolor-icon-theme' 'libcap')
 makedepends=('git' 'cmake')
 install="dwarftherapist.install"
-source=(git+"${url}.git")
-md5sums=('SKIP')
+source=(git+"${url}.git"
+        0.44.02.patch
+        memlayout-name.patch)
+md5sums=('SKIP'
+         '5a79294e53a1a87b4deb6b7dbc4837c3'
+         '4149e407668de04dfdf89a7538ab836a')
 
 pkgver() {
   cd Dwarf-Therapist
   git describe --long --tags | sed -e 's:^v::' -e 's:\([^-]*-g\):r\1:' -e 's:-:_:g'
+}
+
+prepare() {
+  cd Dwarf-Therapist
+  # Add experimental mem layouts from cvuchener's fork
+  patch -Np1 -i "$srcdir/0.44.02.patch"
+  patch -Np1 -i "$srcdir/memlayout-name.patch"
 }
 
 build() {
