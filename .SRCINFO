@@ -1,0 +1,21 @@
+pkgbase = tomenet
+	pkgdesc = Middle-Earth based roguelike multiplayer
+	pkgver = 4.7.1a
+	pkgrel = 1
+	url = https://www.tomenet.eu/
+	arch = i686
+	arch = x86_64
+	license = custom:Moria
+	license = custom:TRACE
+	license = GPL
+	license = custom:Lua
+	license = BSD
+	depends = bash
+	depends = perl
+	depends = sdl
+	depends = sdl_mixer
+	source = https://www.tomenet.eu/downloads/tomenet-4.7.1a.tar.bz2
+	md5sums = 12d4b62fbfcf4b221009889af8a2dc11
+
+pkgname = tomenet
+
