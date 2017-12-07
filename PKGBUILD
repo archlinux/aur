@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-connectivity
-_qtver=5.9.3
+_qtver=5.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -14,9 +14,9 @@ depends=('qt5-base' 'bluez-libs')
 makedepends=('qt5-declarative')
 optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
+_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('e2891e6e8d91e82e3c4d5667f3146062458067c0b706d65ac0fc7562afce0649')
+sha256sums=('2e3fe2e872449065ec3326955fb97c629106f62b9441e8dfd2e0adfc9fb169a6')
 
 prepare() {
   mkdir -p build
