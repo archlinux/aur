@@ -1,0 +1,29 @@
+pkgbase = sonic-visualiser-hg
+	pkgdesc = A viewer and analyser of music audio files. (hg version)
+	pkgver = r1755.c866f9a77b23
+	pkgrel = 1
+	url = http://www.sonicvisualiser.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = mercurial
+	makedepends = git
+	makedepends = mlton
+	depends = capnproto-git
+	depends = libfishsound
+	depends = libid3tag
+	depends = liblo
+	depends = liblrdf
+	depends = libmad
+	depends = liboggz
+	depends = libpulse
+	depends = portaudio
+	depends = qt5-svg
+	depends = rubberband
+	depends = sord
+	depends = hicolor-icon-theme
+	provides = sonic-visualiser
+	source = hg+https://code.soundsoftware.ac.uk/hg/sonic-visualiser
+	md5sums = SKIP
+
+pkgname = sonic-visualiser-hg
+
