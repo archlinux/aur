@@ -3,12 +3,12 @@
 
 pkgname=klayout
 pkgver=0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
 url="http://www.klayout.org/"
 license=('GPL')
-depends=('qt4' 'ruby')
+depends=('qt4' 'ruby' 'python')
 source=(
 	http://www.klayout.org/downloads/source/klayout-${pkgver}.tar.gz
 	klayoutEditor.desktop
@@ -22,15 +22,24 @@ prepare() {
 build() {
 	cd "$srcdir/klayout-${pkgver}"
 	build_opt="-qmake /usr/lib/qt4/bin/qmake
-		-ruby /usr/bin/ruby"
+		-ruby /usr/bin/ruby
+		-python /usr/bin/python"
 	./build.sh $build_opt
 }
 package() {
 	cd "$srcdir"
-	install -D -m 644 klayout-${pkgver}/etc/logo.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/klayout.png
-	install -D -m 755 klayout-${pkgver}/build-release/klayout ${pkgdir}/usr/bin/klayout
 	install -D -m 644 klayoutEditor.desktop ${pkgdir}/usr/share/applications/klayoutEditor.desktop
 	install -D -m 644 klayoutViewer.desktop ${pkgdir}/usr/share/applications/klayoutViewer.desktop
+	cd klayout-${pkgver}
+	install -D -m 644 etc/logo.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/klayout.png
+	install -D -m 755 build-release/klayout ${pkgdir}/usr/bin/klayout
+	cd bin-release
+	for lib in `find . -type f | grep so`; do
+		install -D -m 755 $lib ${pkgdir}/usr/lib/$lib
+	done
+	for lib in `find . -type l | grep so`; do
+		cp -a $lib ${pkgdir}/usr/lib/$lib
+	done
 }
 #
 md5sums=('c9748925fffe9e7df8ee0b56fd75e223'
