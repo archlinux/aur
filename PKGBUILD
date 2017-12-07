@@ -2,7 +2,7 @@
 # Contributor: naund
 
 pkgname='zsh-autosuggestions'
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Fish-like autosuggestions for zsh'
 url='https://github.com/zsh-users/zsh-autosuggestions'
@@ -13,7 +13,7 @@ provides=('zsh-autosuggestions-git')
 conflicts=('zsh-autosuggestions-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zsh-users/${pkgname}/tarball/v${pkgver}")
 install="${pkgname}.install"
-sha512sums=('863a0c397997bcd9642890fa17fdeabe8dc7f8836b85c33ce70d1a091e6c495a46eae95c5810233e1114b5d9520090107b13be5b555b425d055e6fbb3405e2b7')
+sha512sums=('e80a3fbfda3f5b24a3bbfa6690f877f89c5795e47188c9ea5d07c6484d363119d84992bbee579c6768402882e3f22a0019829b327593d3ebb17658a98043c5df')
 
 package() {
     install -d "${pkgdir}/usr/share/zsh/plugins/${pkgname}"
