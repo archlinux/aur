@@ -1,38 +1,44 @@
 # Maintainer: Hui Yiqun <huiyiqun@gmail.com>
-pkgname=nginx-rtmp
+
 _pkgname=nginx
-pkgver=1.12.1
-_rtmpver=1.2.0
+pkgname=$_pkgname-rtmp
+pkgver=1.12.2
+_rtmpver=1.2.1
 pkgrel=1
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with nginx-rtmp-module'
-arch=('i686' 'x86_64')
-url='https://nginx.org'
-license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'geoip')
-provides=('nginx')
-conflicts=('nginx')
-backup=('etc/nginx/fastcgi.conf'
-        'etc/nginx/fastcgi_params'
-        'etc/nginx/koi-win'
-        'etc/nginx/koi-utf'
-        'etc/nginx/mime.types'
-        'etc/nginx/nginx.conf'
-        'etc/nginx/scgi_params'
-        'etc/nginx/uwsgi_params'
-        'etc/nginx/win-utf'
-        'etc/logrotate.d/nginx')
+pkgdesc='NGINX-based Media Streaming Server'
+arch=(x86_64)
+url='https://nginx-rtmp.blogspot.com/'
+license=(custom)
+depends=(pcre zlib openssl geoip mailcap)
+makedepends=(mercurial)
+checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
+              memcached ffmpeg inetutils)
+backup=(etc/nginx/fastcgi.conf
+        etc/nginx/fastcgi_params
+        etc/nginx/koi-win
+        etc/nginx/koi-utf
+        etc/nginx/nginx.conf
+        etc/nginx/scgi_params
+        etc/nginx/uwsgi_params
+        etc/nginx/win-utf
+        etc/logrotate.d/nginx)
 install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz
         https://github.com/arut/nginx-rtmp-module/archive/v$_rtmpver.tar.gz
+        hg+http://hg.nginx.org/nginx-tests#revision=cbda704b3093
         service
         logrotate)
-md5sums=('a307e74aca95403e5ee00f153807ce58'
-         '1a47951b64f3f726a9d4620774643759'
+provides=('nginx')
+conflicts=('nginx')
+md5sums=('4d2fc76211435f029271f1cf6d7eeae3'
+         '639ac2b78103adaccbcfe484a92acf44'
+         'SKIP'
          'ef491e760e7c1ffec9ca25441a150c83'
          '6a01fb17af86f03707c8ae60f98a2dc2')
 
 _common_flags=(
   --with-compat
+  --with-debug
   --with-file-aio
   --with-http_addition_module
   --with-http_auth_request_module
@@ -86,8 +92,12 @@ build() {
     ${_common_flags[@]} \
     ${_stable_flags[@]}
 
-
   make
+}
+
+check() {
+  cd nginx-tests
+  TEST_NGINX_BINARY="$srcdir/$_pkgname-$pkgver/objs/nginx" prove .
 }
 
 package() {
@@ -100,6 +110,7 @@ package() {
     -i "$pkgdir"/etc/nginx/nginx.conf
 
   rm "$pkgdir"/etc/nginx/*.default
+  rm "$pkgdir"/etc/nginx/mime.types  # in mailcap
 
   install -d "$pkgdir"/var/lib/nginx
   install -dm700 "$pkgdir"/var/lib/nginx/proxy
@@ -125,5 +136,3 @@ package() {
       "$pkgdir/usr/share/vim/vimfiles/$i/nginx.vim"
   done
 }
-
-# vim:set ts=2 sw=2 et:
