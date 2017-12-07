@@ -4,15 +4,13 @@ _pkgname=nginx
 pkgname=$_pkgname-rtmp
 pkgver=1.12.2
 _rtmpver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='NGINX-based Media Streaming Server'
 arch=(x86_64)
 url='https://nginx-rtmp.blogspot.com/'
 license=(custom)
 depends=(pcre zlib openssl geoip mailcap)
 makedepends=(mercurial)
-checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
-              memcached ffmpeg inetutils)
 backup=(etc/nginx/fastcgi.conf
         etc/nginx/fastcgi_params
         etc/nginx/koi-win
@@ -38,7 +36,6 @@ md5sums=('4d2fc76211435f029271f1cf6d7eeae3'
 
 _common_flags=(
   --with-compat
-  --with-debug
   --with-file-aio
   --with-http_addition_module
   --with-http_auth_request_module
@@ -93,11 +90,6 @@ build() {
     ${_stable_flags[@]}
 
   make
-}
-
-check() {
-  cd nginx-tests
-  TEST_NGINX_BINARY="$srcdir/$_pkgname-$pkgver/objs/nginx" prove .
 }
 
 package() {
