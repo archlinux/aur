@@ -39,7 +39,7 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14.3
+pkgver=4.14.4
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -61,7 +61,6 @@ source=(
   'linux.preset'   # standard config files for mkinitcpio ramdisk
   "$_gcc_patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
   "http://ck.kolivas.org/patches/4.0/4.14/4.14-ck${_ckpatchversion}/${_ckpatchname}.xz"
-  '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
   # pre ck2 patches
   "$_preck2/811cb391e71c1d60387dbbd6ae0bbc4e61f06acb.patch"
   "$_preck2/6bfb805cbac27b18fb4ad7537fe90dfc39e17f35.patch"
@@ -75,7 +74,7 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'e13995c11d0c2d3379c887666dbfaca619200fb8853db6d5d67f97d47fd959b7'
+            'e9dcf9aad5977289940cd6e3762af02b87a725ba6c1a9f4af86958dc621e3a84'
             'SKIP'
             '8cb75d76f7923723591bbcca72f98f362ca1e47b8418118142fb1fa9481b0b33'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -83,7 +82,6 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             '44d10c573112dc2b64d39ea33c2a10fbbdd84f9877b8d736acc09b2516299474'
-            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd'
             '24b74a975e61293cdd4ce37845a27f550102b0481017336e15df3334a82cef02'
             '453ccb01d9e56ea3a33621516f0d52568e836d1932ff14e26567cc3fe2101a17'
             'd2f59cf1c5187204eced6e53806b187e90698fcb2309955aed4020a15c659ae1'
@@ -108,9 +106,6 @@ prepare() {
   patch -Np1 -i ../1588e6bf316231685204e358dfe172851b39fd1e.patch
   patch -Np1 -i ../df2a75f4864b30011ab6a6f365d9378d8eafa53b.patch
   patch -Np1 -i ../a79d648fcde72fc98048d4435bc86864a59fd01b.patch
-
-  # https://bugs.archlinux.org/task/56207
-  patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
 
   # Patch source to unlock additional gcc CPU optimizatons
   # https://github.com/graysky2/kernel_gcc_patch
