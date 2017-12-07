@@ -27,9 +27,9 @@ build() {
   cd "${_gitname}"
   ./autogen.sh
   ./configure
-  make gen -j 4
+  make gen
   make clean
-  make -j 4
+  make
 }
 
 package() {
