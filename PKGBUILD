@@ -2,17 +2,18 @@
 
 _pkgname=('tambi')
 pkgname=('tambi-git')
-pkgver=598
+pkgver=660
 pkgrel=1
 pkgdesc='A swiss army knife for studiing the bible and much more'
 arch=('any')
 licence=('undecided')
 url='https://github.com/nano13/tambi.git'
 makedepends=('git' 'python-setuptools')
-depends=('python3' 'python-pyqt5' 'qt5-charts' 'python-pyqtchart' 'python-pysword' 'python-markdown' 'python-gpsd-git' 'python-geopy' 'python-srtm-git' 'python-pillow')
+depends=('pythonqt' 'python3' 'python-pyqt5' 'qt5-charts' 'python-pyqtchart' 'python-pysword' 'python-markdown' 'python-gpsd-git' 'python-geopy' 'python-srtm-git' 'python-pillow')
 source=(${_pkgname}::git+https://github.com/nano13/tambi.git
-    $_pkgname.sh)
-sha256sums=('SKIP' 'SKIP')
+    $_pkgname.sh
+    $_pkgname-cpp.sh)
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -22,6 +23,12 @@ pkgver() {
 package() {
     cd "$srcdir"/"$_pkgname"
     
+    # compile tambi.cpp
+    cd c++
+    qmake-qt5 -o Makefile tambi.pro
+    make
+    
+    cd ..
     # putting the freedesktop .desktop file and the program icon to the right place
     mkdir -p "$pkgdir"/usr/share/applications
     mkdir -p "$pkgdir"/usr/share/pixmaps
@@ -33,4 +40,5 @@ package() {
     #install -dm577 "$pkgdir"/usr/share/$pkgname/
     
     install -Dm755 "$srcdir"/$_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
+    install -Dm755 "$srcdir"/$_pkgname-cpp.sh "$pkgdir"/usr/bin/$_pkgname-cpp.sh
 }
