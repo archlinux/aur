@@ -4,7 +4,7 @@
 # Contributor: Michael Hansen <zrax0111 gmail com>
 
 pkgname=qt5-doc
-_qtver=5.9.3
+_qtver=5.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('any')
@@ -12,11 +12,13 @@ url='http://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework (Documentation)'
 depends=('qt5-base')
-makedepends=('qt5-tools' 'python2' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss' 'libxcomposite' 'git')
+makedepends=('qt5-tools' 'python2' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss' 'libxcomposite' 'gperf' 'nss')
 groups=('qt' 'qt5')
-_pkgfqn="qt-everywhere-opensource-src-${_qtver}"
-source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz")
-sha256sums=('57acd8f03f830c2d7dc29fbe28aaa96781b2b9bdddce94196e6761a0f88c6046')
+_pkgfqn="qt-everywhere-src-${_qtver}"
+source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz"
+        qt-no-statx.patch)
+sha256sums=('936d4cf5d577298f4f9fdb220e85b008ae321554a5fcd38072dc327a7296230e'
+            '5cd1d90622cc53609806a3ce0b2811b28f0e6e20eb835861de4492dddeef6e52')
 
 prepare() {
   cd ${_pkgfqn}
@@ -28,6 +30,10 @@ prepare() {
   cd "$srcdir"
   mkdir -p bin
   ln -s /usr/bin/python2 bin/python
+
+  # Don't use the statx syscall https://bugs.archlinux.org/task/56289 https://bugreports.qt.io/browse/QTBUG-64490
+  cd ${_pkgfqn}/qtbase
+  patch -p1 -i "$srcdir"/qt-no-statx.patch
 }
 
 build() {
