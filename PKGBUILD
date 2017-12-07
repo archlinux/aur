@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=63.0.3239.84 
-pkgrel=3
+pkgrel=4
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -146,9 +146,9 @@ sha256sums=('6de2754dfc333675ae6a67ae13c95666009b35c84f847b058edbf312e42fa3af'
             '9d144732d593d9ee82f99b24009a193e61ef8560aff92a15effdae95a0897c61'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '1e9fc91a973977bdd03fddb65610f34e60a0fbd357033137dbb12f4657b14cf8'
-            '5d879e485053a20b355da27be68ddd7e1eea6565f6053e8e4f604cc8da053246'
+            'ed1a7060c1bdb2697a4342e5d053435367ab4d1330b1fe88624fc38326c1191e'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
-            'bc31df03dbddf8f1389ca482c5ba97dfc1a77834bdfbc952dc60cf4da73713a1'
+            '65103b6d7ccbe4ba115766942a555f6fd50db2a64a328f2b4ebd2b7ae72db88a'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
             '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
             '8f7d2baca6d96b1e668c8c2bcb1efe5daa0e1cb33de89e12165ea22c73ce8741'
