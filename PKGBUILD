@@ -3,16 +3,16 @@
 # Contributor: fabien Cellier <fabien.cellier@gmail.com>
 
 pkgname=pocl
-pkgver=0.14
-pkgrel=2
+pkgver=1.0rc1
+pkgrel=1
 pkgdesc="Portable OpenCL is an open-source implementation of OpenCL which can be easily adapted for new targets"
 arch=('i686' 'x86_64')
 url="http://portablecl.org/"
 license=('GPL')
 depends=('clang' 'hwloc' 'libltdl' 'opencl-headers' 'opencl-icd-loader')
-source=("http://pocl.sourceforge.net/downloads/$pkgname-$pkgver.tar.gz")
-makedepends=('cmake' 'llvm' 'ocl-icd')
-sha512sums=('36bf41222315e13bac6c37cc942b9c09e22af0374abf63052fa8deb1ffe383da0ed9b5dc3548844d52749642d0b1288af5e0128e8dd4deb38e70128adb28c066')
+source=("git+https://github.com/pocl/pocl.git#tag=v1.0-RC1")
+makedepends=('git' 'cmake' 'llvm' 'ocl-icd')
+sha512sums=('SKIP')
 
 build() {
   mkdir -p build
@@ -20,10 +20,9 @@ build() {
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib -D_libdir_set=false \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
-    -DEXTRA_KERNEL_CXX_FLAGS='-std=c++11' \
-    "$srcdir/$pkgname-$pkgver"
+    "$srcdir/pocl"
   make
 }
 
