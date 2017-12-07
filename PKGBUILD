@@ -11,11 +11,11 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.21
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _d3d9ver=$_pkgbasever
-_d3d9ver=2.20
+#_d3d9ver=2.20
 _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
@@ -28,7 +28,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
 		wine-list.h-linked-list-cache-line-prefetching.patch
         )
 sha1sums=('6f6f1f0d8201f14be475a4854b05e925f655ef52'
-          'e99bd3dda3b5c09ce37b8b9dd9ad1d5a3f17aa83'
+          'b861c40010f613181d49f3e79efdd5e8e0163efd'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
 		  'b5a4faccf9109d2da5017779113ea270bf189957'
 		  'f3febb8836f38320742a546c667106608d4c4395'
@@ -62,7 +62,7 @@ _depends=(
 )
 
 makedepends=(autoconf ncurses bison perl fontforge flex
-  'gcc>=4.5.0-2'   'gcc-multilib>=4.5.0-2'
+  'gcc>=4.5.0-2'
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
