@@ -1,0 +1,12 @@
+pkgbase = cnstrokeorder
+	pkgdesc = simplified hanzi stroke order font
+	pkgver = 0.0.4.7
+	pkgrel = 1
+	url = http://rtega.be/chmn/
+	arch = any
+	license = Arphic Public License
+	source = http://rtega.be/chmn/CNstrokeorder-0.0.4.7.ttf
+	sha256sums = 618b4e714bedd55d03c00b3fbdff4a96d726602149362aefc231b238ae09a486
+
+pkgname = cnstrokeorder
+
