@@ -1,4 +1,4 @@
-# Maintainer: Genki Sky <arch at genki dot is>
+# Maintainer: Genki Sky <sky at genki dot is>
 
 pkgname=tla-toolbox
 pkgver=1.5.4
