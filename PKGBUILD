@@ -1,4 +1,4 @@
-# Maintainer: Genki Sky <arch at genki dot is>
+# Maintainer: Genki Sky <sky at genki dot is>
 
 pkgname=dlm-git
 pkgver=20170228.d2ef4558
