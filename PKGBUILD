@@ -6,7 +6,7 @@
 
 pkgname=iproute2-cake
 pkgver=4.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc='IP Routing Utilities'
 arch=('i686' 'x86_64')
 license=('GPL2')
