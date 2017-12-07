@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-sensors
-_qtver=5.9.3
+_qtver=5.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -14,9 +14,9 @@ depends=('qt5-base')
 makedepends=('qt5-declarative')
 optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
+_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('b95ea20b3d616655435357671558631da6fe6970500b7e6d35d1111f0b8cdac1')
+sha256sums=('cd98c5afb25bdb243b03a8e1da1a9643fbad334549c8128328446d0818fe3971')
 
 prepare() {
   mkdir -p build
