@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'jsoncpp>=1.8.0' 'openmp' 'zlib')
 makedepends=('cmake>=3.0' 'git')
 provides=('freebayes')
-conflicts=('freebayes'_)
+conflicts=('freebayes')
 source=(
     "git+git://github.com/ekg/bamtools.git#commit=e77a43f5097ea7eee432ee765049c6b246d49baa"
     "git+git://github.com/walaj/bwa.git#commit=fbd4dbc03904eccd71cdca8cac7aa48da749c19c"

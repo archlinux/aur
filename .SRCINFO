@@ -12,7 +12,7 @@ pkgbase = freebayes
 	depends = openmp
 	depends = zlib
 	provides = freebayes
-	conflicts = freebayes_
+	conflicts = freebayes
 	source = git+git://github.com/ekg/bamtools.git#commit=e77a43f5097ea7eee432ee765049c6b246d49baa
 	source = git+git://github.com/walaj/bwa.git#commit=fbd4dbc03904eccd71cdca8cac7aa48da749c19c
 	source = git+git://github.com/ekg/fastahack.git#commit=c68cebb4f2e5d5d2b70cf08fbdf1944e9ab2c2dd
