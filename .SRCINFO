@@ -1,4 +1,4 @@
-pkgbase = webkitgtk
+pkgbase = webkitgtk2-enchant
 	pkgdesc = Legacy Web content engine with enchant 2.x support
 	pkgver = 2.4.11
 	pkgrel = 1
@@ -28,7 +28,6 @@ pkgbase = webkitgtk
 	optdepends = gst-plugins-base: free media decoding
 	optdepends = gst-plugins-good: media decoding
 	optdepends = gst-libav: nonfree media decoding
-	provides = webkitgtk
 	provides = webkitgtk2
 	options = !emptydirs
 	source = https://webkitgtk.org/releases/webkitgtk-2.4.11.tar.xz
