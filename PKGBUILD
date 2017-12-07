@@ -14,7 +14,7 @@ source=($pkgname.desktop
         awesome.session)
 md5sums=('33833f966597ae644bdc927750409b78'
          'ae7d8d0426c36c8c6f606cf28f13ac02'
-         '5e9ed66f253c060c0b23b7a9a2f907a2')
+         'ed006c80cac026c17648b6cacb1dbd32')
 
 package() {
     cd $srcdir
