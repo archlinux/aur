@@ -1,0 +1,18 @@
+pkgbase = urxvtconfig-git
+	pkgdesc = A graphical user interface tool for configuration of the rxvt-unicode terminal emulator.
+	pkgver = 1.0.r9.gf5140f9
+	pkgrel = 1
+	url = https://github.com/daedreth/URXVTConfig
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = desktop-file-utils
+	depends = qt5-base
+	optdepends = imagemagick: needed to get colours from a file.
+	provides = urxvtconfig
+	conflicts = urxvtconfig
+	source = urxvtconfig::git+https://github.com/daedreth/URXVTConfig.git
+	sha256sums = SKIP
+
+pkgname = urxvtconfig-git
+
