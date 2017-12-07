@@ -1,3 +1,4 @@
+# Maintainer: Philipp Millar <philipp.millar@poxar.net>
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=rusty-tags
