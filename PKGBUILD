@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=63.0.3239.84
-pkgrel=6
+pkgrel=8
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -271,7 +271,9 @@ patch -Np1 -i ../025.patch
 patch -Np1 -i ../027.patch
 patch -Np1 -i ../029.patch
 patch -Np1 -i ../030.patch
+#patch -Np1 -i ../CP.patch
 patch -Np1 -i ../CP.patch
+
 patch -Np1 -i ../032.patch
 patch -Np1 -i ../034.patch
 #patch -Np1 -i ../035.patch
