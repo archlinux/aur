@@ -1,4 +1,4 @@
-pkgname=remill
+pkgname=remill-git
 pkgver=20171206_ac62ffc
 pkgrel=1
 arch=('x86_64')
