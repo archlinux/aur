@@ -6,7 +6,7 @@ pkgver=r1755.c866f9a77b23
 pkgrel=1
 pkgdesc="A viewer and analyser of music audio files. (hg version)"
 arch=('x86_64')
-url="http://www.sonicvisualiser.org/"
+url="https://code.soundsoftware.ac.uk/projects/sonic-visualiser"
 license=('GPL2')
 depends=('capnproto-git' 'libfishsound' 'libid3tag' 'liblo'
 'liblrdf' 'libmad' 'liboggz' 'libpulse' 'portaudio' 'qt5-svg'
