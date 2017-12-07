@@ -4,6 +4,7 @@ pkgname=nodejs-crontab-ui-server
 pkgver=0.3.3
 pkgrel=1
 pkgdesc="Easy management of crontab file - server component"
+url="https://github.com/alseambusher/crontab-ui"
 arch=("any")
 license=("MIT")
 depends=("nodejs")
