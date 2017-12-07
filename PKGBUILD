@@ -2,13 +2,14 @@
 
 pkgname=python-image-git
 pkgver=r152.6995eb0
-pkgrel=1
+pkgrel=2
 pkgdesc="Django application that provides editing for images and videos."
 arch=('any')
 url="https://github.com/francescortiz/image"
 license=('BSD')
 makedepends=('python-setuptools')
 depends=('python' 'python-pillow' 'python-requests')
+provides=('python-image')
 source=("git+https://github.com/francescortiz/image.git")
 sha256sums=('SKIP')
 
