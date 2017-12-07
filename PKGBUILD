@@ -1,7 +1,8 @@
-# Maintainer: Teteros <teteros -at- openmailbox -dot- org>
+# Maintainer: Teteros <teteros at teknik dot io>
+
 _pkgname=E17gtk
 pkgname=gtk-theme-e17gtk-git
-pkgver=V3.22.1.r0.gf17ed44
+pkgver=V3.22.2.r1.gecebae2
 pkgrel=1
 pkgdesc="A dark GTK2/GTK3 theme with sharp corners, which is designed for use in Enlightenment and gives the elegant look of Enlightenment to GTK widgets."
 arch=('any')
@@ -9,7 +10,7 @@ url="https://github.com/tsujan/${_pkgname}"
 license=('GPL')
 optdepends=('enlightenment' 'qt5-styleplugins: GTK+ rendering for QT5')
 makedepends=('git')
-source=("${_pkgname}::git+https://github.com/tsujan/${_pkgname}")
+source=("git://github.com/tsujan/${_pkgname}")
 md5sums=('SKIP')
 
 pkgver() {
@@ -18,6 +19,6 @@ pkgver() {
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/share/themes"
-	mv "${_pkgname}" "${pkgdir}/usr/share/themes/${_pkgname}"
+	install -d "${pkgdir}/usr/share/themes"
+	cp -a "${_pkgname}" "${pkgdir}/usr/share/themes/${_pkgname}"
 }
