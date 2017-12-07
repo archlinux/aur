@@ -3,7 +3,7 @@
 _pkgname=orage
 pkgname=$_pkgname-4.10
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple calendar application with reminders for Xfce"
 arch=('i686' 'x86_64')
 license=('GPL2')
