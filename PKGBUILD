@@ -10,18 +10,13 @@ license=('GPLv3')
 depends=( 'go' )
 checkdepends=( 'go-lint-git' )
 url="https://github.com/vrothberg/vgrep"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vrothberg/${pkgname}/archive/${pkgver}.tar.gz" "Makefile.diff")
-md5sums=('3081c6ffa56e0e46ca2bb8727f542999'
-         'd7a9a61b5b7bd587aeae764e8a5f7634')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vrothberg/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('3081c6ffa56e0e46ca2bb8727f542999')
 
 prepare() {
   mkdir $srcdir/{bin,pkg,src}
   mv $srcdir/${pkgname}-${pkgver}/ $srcdir/src/
   cd $srcdir/src/$pkgname-$pkgver
-
-  # Patch the makefile so as to not run the tests.
-  # This allows reducing the dependency on go-lint-git from AUR
-  patch < $srcdir/Makefile.diff
 }
 
 check() {

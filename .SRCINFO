@@ -10,9 +10,7 @@ pkgbase = vgrep
 	checkdepends = go-lint-git
 	depends = go
 	source = vgrep-2.0.1.tar.gz::https://github.com/vrothberg/vgrep/archive/2.0.1.tar.gz
-	source = Makefile.diff
 	md5sums = 3081c6ffa56e0e46ca2bb8727f542999
-	md5sums = d7a9a61b5b7bd587aeae764e8a5f7634
 
 pkgname = vgrep
 
