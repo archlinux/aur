@@ -4,7 +4,7 @@ _gitname=wpgtk
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=deviantfero # deviantfero
-pkgver=r340.831f495
+pkgver=r408.65a6ef8
 pkgrel=1
 pkgdesc="A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme"
 url="https://github.com/${_gitauthor}/${_gitname}"
@@ -31,6 +31,10 @@ package() {
   install -Dm644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/$_gitname/$_gitname/misc/wpg.conf" \
                  "usr/etc/$_gitname/wpg.conf"
+  install -Dm644 "$srcdir/$_gitname/completions/bash/wpg" \
+                 "usr/share/bash-completion/wpg"
+  install -Dm644 "$srcdir/$_gitname/completions/zsh/_wpg" \
+                 "usr/share/zsh/site-functions/_wpg"
   install -Dm644 "$srcdir/$_gitname/$_gitname/misc/wpg-install.sh" \
                  "usr/bin/wpg-install.sh"
 }
