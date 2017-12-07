@@ -1,57 +1,60 @@
-pkgname=remill-git
-pkgver=20170215
+pkgname=remill
+pkgver=20171206_ac62ffc
 pkgrel=1
-pkgdesc="Machine code to LLVM binary translator."
-url="https://github.com/trailofbits/remill"
-arch=('x86_64' 'i686')
-license=('Apache License')
-# NOTE: Depend on google-glog-git instead of google-glog to force a compilation,
-# which makes glog discover the installed gflags package during compilation.
+arch=('x86_64')
 
-# NOTE: python2-protobuf is needed for IDA's local Python which is at version 2.
-depends=('gtest' 'protobuf' 'gflags' 'python' 'python-protobuf' 'python2-protobuf' 'xed-intel' 'google-glog-git')
-makedepends=('cmake' 'clang' 'llvm')
+pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
+url="https://github.com/trailofbits/remill"
+license=('Apache')
+
+depends=('clang39' 'llvm39' 'llvm39-libs')
+makedepends=('git' 'curl' 'patchelf' 'cmake')
+
+provides=('remill')
 conflicts=('remill')
 
-_gitroot='https://github.com/trailofbits/remill.git'
-_gitname='remill'
+source=("${pkgname}::git+https://github.com/trailofbits/remill.git#branch=alessandro/feature/archlinux-package")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git log -1 --date=format:%Y%m%d --pretty=format:%ad_%h
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  local clang_version=`clang --version | head -n 1 | awk '{ print $3 }' | tr -d '.' | cut -c -2`
+  local cxxcommon_tarball_name="libraries-llvm${clang_version}-ubuntu1604-amd64.tar.gz"
+  local cxxcommon_tarball_url="https://s3.amazonaws.com/cxx-common/${cxxcommon_tarball_name}"
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
+  if [ ! -f "${cxxcommon_tarball_name}" ] ; then
+    echo "Dowloading: ${cxxcommon_tarball_url}"
+    curl "${cxxcommon_tarball_url}" -O
   fi
 
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
+  if [ ! -d "libraries" ] ; then
+    tar xzf "${cxxcommon_tarball_name}"
 
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  # TODO: Remove when https://github.com/trailofbits/remill/issues/96 is resolved.
-  cp "$srcdir/$_gitname/tools/remill_disass/ida/disass.py" "$srcdir/$_gitname-build/tools/remill_disass/ida/disass.py"
-  cd "$srcdir/$_gitname-build"
+    # use the system llvm/clang packages
+    rm -rf "libraries/llvm"
+    sed -i '/llvm/d' "libraries/cmake_modules/repository.cmake"
+  fi
 
-  #
-  # BUILD HERE
-  #
-  echo "[+] Compiling protobufs"
-  ./scripts/unix/compile_protobufs.sh
-  echo "[+] Running cmake"
-  cmake -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" -DLLVM_DIR=/usr/include/llvm -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DCMAKE_LLVM_LINK=/usr/bin/llvm-link .
-  echo "[+] Building semantics"
-  make semantics
-  echo "[+] Building remill"
-  make all
+  export CXX=clang++
+  export CC=clang
+  export TRAILOFBITS_LIBRARIES="$(realpath libraries)"
+
+  if [ -d build ] ; then
+    rm -rf build
+  fi
+
+  mkdir build
+  cd build
+
+  cmake -DCMAKE_C_COMPILER="${CC}" -DCMAKE_CXX_COMPILER="${CXX}" -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_VERBOSE_MAKEFILE=True "${srcdir}/${pkgname}"
+  make -j `nproc`
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  echo "[+] Installing"
-  mkdir -p "$pkgdir/usr/lib/python3.6/site-packages"
-  make PYTHONPATH="$pkgdir/usr/lib/python3.6/site-packages" install
+    cd build
+    make DESTDIR="${pkgdir}" install
 }
