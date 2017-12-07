@@ -1,0 +1,36 @@
+pkgbase = nginx-mainline-openssl-weak
+	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, with weak openssl ciphers enabled for IE8
+	pkgver = 1.13.7+openssl_1.1.0g
+	pkgrel = 1
+	url = https://nginx.org
+	install = nginx.install
+	arch = x86_64
+	license = custom
+	makedepends = mercurial
+	depends = pcre
+	depends = zlib
+	depends = openssl
+	depends = geoip
+	depends = mailcap
+	provides = nginx=1.13.7
+	conflicts = nginx
+	backup = etc/nginx/fastcgi.conf
+	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/koi-win
+	backup = etc/nginx/koi-utf
+	backup = etc/nginx/nginx.conf
+	backup = etc/nginx/scgi_params
+	backup = etc/nginx/uwsgi_params
+	backup = etc/nginx/win-utf
+	backup = etc/logrotate.d/nginx
+	source = https://nginx.org/download/nginx-1.13.7.tar.gz
+	source = service
+	source = logrotate
+	source = https://www.openssl.org/source/openssl-1.1.0g.tar.gz
+	md5sums = 5fcd056b40cb5c47b053fb14a2a89e7d
+	md5sums = ef491e760e7c1ffec9ca25441a150c83
+	md5sums = 6a01fb17af86f03707c8ae60f98a2dc2
+	md5sums = ba5f1b8b835b88cadbce9b35ed9531a6
+
+pkgname = nginx-mainline-openssl-weak
+
