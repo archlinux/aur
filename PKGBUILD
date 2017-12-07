@@ -1,29 +1,22 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 
 pkgname=edk2-ovmf-macboot-git
-pkgver=r21417.30f2b3985d
+pkgver=r22749.471f6d19d7
 pkgrel=1
-pkgdesc="edk2 UEFI firmware with macOS compatibility fixes"
+pkgdesc="edk2 UEFI firmware with macOS compatibility fixes (gsomlo's miscopt branch)"
 arch=('any')
 url="https://www.contrib.andrew.cmu.edu/~somlo/OSXKVM/"
 license=('BSD')
 depends=()
 makedepends=('git' 'nasm' 'iasl')
 optdepends=()
-source=("git+https://github.com/gsomlo/edk2#branch=macboot"
-	   'MdeModulePkg-UefiHiiLib-Fix-incorrect-comparison-exp.patch')
-sha256sums=('SKIP'
-            '64dcc77b7e9abe219d8b82873c826077e51c26d87d5bd17407d19e1c71fca6c7')
+source=("git+https://github.com/gsomlo/edk2#branch=gls-miscopt")
+sha256sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
   cd "$srcdir/edk2"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/edk2"
-  patch -N -p1 -i "${srcdir}/MdeModulePkg-UefiHiiLib-Fix-incorrect-comparison-exp.patch"
 }
 
 build() {
