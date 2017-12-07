@@ -1,6 +1,6 @@
 pkgbase = fcitx5-qt-git
 	pkgdesc = Fcitx Qt Library
-	pkgver = r97.050fe6e
+	pkgver = r111.63e9b36
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = fcitx5-qt-git
 	depends = fcitx5-git
 	depends = qt4
 	depends = qt5-x11extras
+	depends = qt5-quickcontrols
 	source = git+https://github.com/fcitx/fcitx5-qt.git
 	sha512sums = SKIP
 
