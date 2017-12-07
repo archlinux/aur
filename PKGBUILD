@@ -7,7 +7,7 @@ pkgdesc="A tool for finding polymorphisms in high throughput sequence data."
 arch=('x86_64')
 url="https://github.com/ekg/freebayes"
 license=('MIT')
-depends=('gcc-libs' 'openmp' 'zlib')
+depends=('gcc-libs' 'jsoncpp>=1.8.0' 'openmp' 'zlib')
 makedepends=('cmake>=3.0' 'git')
 provides=('freebayes')
 conflicts=('freebayes'_)
@@ -71,8 +71,7 @@ prepare() {
 }
 
 build() {
-  echo
-  #cd "${srcdir}/${pkgname}" && make
+  cd "${srcdir}/${pkgname}" && make
 }
 
 check() {

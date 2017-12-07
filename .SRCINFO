@@ -8,6 +8,7 @@ pkgbase = freebayes
 	makedepends = cmake>=3.0
 	makedepends = git
 	depends = gcc-libs
+	depends = jsoncpp>=1.8.0
 	depends = openmp
 	depends = zlib
 	provides = freebayes
