@@ -4,7 +4,7 @@
 _pkgbase=webkitgtk
 pkgname=webkitgtk2-enchant
 pkgver=2.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Legacy Web content engine with enchant 2.x support"
 arch=(i686 x86_64)
 url="https://webkitgtk.org/"
@@ -68,7 +68,7 @@ package() {
   depends+=(gtk2)
   provides=("libwebkit=${pkgver}")
   conflicts=(libwebkit)
-  replaces=(libwebkit)
+  replaces=(libwebkit webkitgtk2)
 
   make -C build-gtk2 -j1 DESTDIR="$pkgdir" install
   install -Dm644 $_pkgbase-$pkgver/Source/WebKit/LICENSE \
