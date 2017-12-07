@@ -2,10 +2,10 @@
 
 pkgname='macos-icon-theme'
 pkgver=4.1.5
-pkgrel=1
-pkgdesc='macOS Icon Theme'
+pkgrel=2
+pkgdesc='macOS Icons Theme'
 arch=('any')
-url='https://www.gnome-look.org/p/1102582/'
+url='https://www.opendesktop.org/p/1102582/'
 depends=('gtk-update-icon-cache')
 source=('https://dl.opendesktop.org/api/files/download/id/1510321229/macOS.tar.xz')
 md5sums=('056982040d0efdcf4fa93b0e5bc9bc3d')
