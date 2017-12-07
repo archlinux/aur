@@ -1,7 +1,7 @@
 # Maintainer: Darshit Shah <darnir@gmail.com>
 #
 pkgname=vgrep
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 epoch=1
 pkgdesc="Reimpementation of the ancient cgvg perl scripts"
@@ -11,7 +11,7 @@ depends=( 'go' )
 checkdepends=( 'go-lint-git' )
 url="https://github.com/vrothberg/vgrep"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vrothberg/${pkgname}/archive/${pkgver}.tar.gz" "Makefile.diff")
-md5sums=('7ed65621c6471ccaa5fd19644000eb89'
+md5sums=('3081c6ffa56e0e46ca2bb8727f542999'
          'd7a9a61b5b7bd587aeae764e8a5f7634')
 
 prepare() {
