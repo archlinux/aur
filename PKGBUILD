@@ -1,4 +1,4 @@
-# Maintainer: Genki Sky <arch at genki dot is>
+# Maintainer: Genki Sky <sky at genki dot is>
 
 pkgname=human-git
 pkgver=20160501.50c80e6
