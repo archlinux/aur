@@ -13,6 +13,7 @@ depends=('capnproto-git' 'libfishsound' 'libid3tag' 'liblo'
 'rubberband' 'sord' 'hicolor-icon-theme')
 makedepends=('mercurial' 'git' 'mlton')
 provides=("${pkgname%-hg}")
+conflicts=("${pkgname%-hg}" "${pkgname%-hg}3")
 source=("hg+https://code.soundsoftware.ac.uk/hg/$_pkgname")
 md5sums=('SKIP')
 

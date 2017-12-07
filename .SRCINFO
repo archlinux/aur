@@ -22,6 +22,8 @@ pkgbase = sonic-visualiser-hg
 	depends = sord
 	depends = hicolor-icon-theme
 	provides = sonic-visualiser
+	conflicts = sonic-visualiser
+	conflicts = sonic-visualiser3
 	source = hg+https://code.soundsoftware.ac.uk/hg/sonic-visualiser
 	md5sums = SKIP
 
