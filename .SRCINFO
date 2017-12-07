@@ -15,6 +15,7 @@ pkgbase = signal
 	makedepends = git
 	depends = gconf
 	depends = gtk2
+	depends = libxss
 	provides = signal
 	conflicts = signal-desktop
 	conflicts = signal-desktop-beta
