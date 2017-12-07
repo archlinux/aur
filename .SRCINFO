@@ -1,6 +1,6 @@
 pkgbase = slurm-llnl-git
 	pkgdesc = Simple Linux Utility for Resource Management (development version)
-	pkgver = 17.11.0.0pre2.r1285.g9f8f68e3cb
+	pkgver = 17.11.0.1.r116.g6862e2f2dc
 	pkgrel = 1
 	url = https://www.schedmd.com
 	install = slurm-llnl-git.install
@@ -27,7 +27,7 @@ pkgbase = slurm-llnl-git
 	optdepends = numactl: NUMA support in the task/affinity plugin
 	optdepends = ncurses: adds the smap command
 	optdepends = gtk2: enables the sview command, a simple graphical frontend
-	provides = slurm-llnl=17.11.0.0pre2.r1285.g9f8f68e3cb
+	provides = slurm-llnl=17.11.0.1.r116.g6862e2f2dc
 	conflicts = slurm-llnl
 	backup = etc/default/slurm-llnl
 	source = slurm-tmpfiles.conf
