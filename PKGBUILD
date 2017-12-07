@@ -7,7 +7,7 @@
 pkgname=inox-beta
 pk=bnox
 name=chromium
-pkgver=63.0.3239.70
+pkgver=63.0.3239.84
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
