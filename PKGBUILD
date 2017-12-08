@@ -8,14 +8,14 @@ _kernelname=-bld
 pkgver=4.14.4
 _srcname=linux-4.14
 _pkgver2=${_srcname#*-}.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=8aee2fcbaf3fe676199bde199f9074e90f736681
+arch_config_trunk=e42e6ffc6243370215eb33690b3c68f96f181cdb
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -28,6 +28,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}"
         # main BLD patch
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
+        "0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         )
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
@@ -37,8 +38,9 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            'a68e94064f040d60e8e4c3380efeee085b54d252d527e960dd17ac688505d5b6'
-            '80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794')
+            '12a7bd958a820315d8d8be7544976e8a8aa1fb7aa27fcf8377ca68317e3e70a9'
+            '80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794'
+            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -73,7 +75,9 @@ prepare() {
   msg2 "BLD patches"
   patch -Np1 -i "${srcdir}/${_BLDpatch}"
 
-#  msg2 "Patches from Archlinux standard package"
+  msg2 "Patches from Archlinux standard package"
+  # disable USER_NS for non-root users by default
+  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
   cp -Tf ../config .config
 
