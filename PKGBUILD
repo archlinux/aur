@@ -18,7 +18,7 @@ md5sums=(
 
 pkgver() {
     cd $_pkgname
-    echo $(git rev-list --count master).$(git rev-parse --short master)
+    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
