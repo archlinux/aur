@@ -1,0 +1,17 @@
+pkgbase = perl-string-util
+	pkgdesc = String processing utilities
+	pkgver = 1.26
+	pkgrel = 1
+	url = https://metacpan.org/release/String-Util
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-toolbox
+	depends = perl-number-misc
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MI/MIKO/String-Util-1.26.tar.gz
+	md5sums = d0f13f8688bedef7174634bb57f7fbe4
+	sha512sums = 27f4d9a36814695ca2123473f073577cc4ab31c0c1f9feccff8b9af0324c697df45efde981d638ed407521bb8348cf5512ebe1c9a5bfd5149df17b12014ed808
+
+pkgname = perl-string-util
+
