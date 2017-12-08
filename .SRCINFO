@@ -1,6 +1,6 @@
 pkgbase = ohrrpgce
 	pkgdesc = A role playing game creation engine
-	pkgver = dwimmercrafty+1.r9607
+	pkgver = etheldreme.r9869
 	pkgrel = 1
 	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = ohrrpgce
 	depends = ncurses
 	depends = xterm
 	optdepends = timidity-freepats: midi music support
-	source = svn+https://rpg.hamsterrepublic.com/source/rel/dwimmercrafty
+	source = svn+https://rpg.hamsterrepublic.com/source/rel/etheldreme
 	md5sums = SKIP
 
 pkgname = ohrrpgce
