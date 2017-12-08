@@ -1,6 +1,6 @@
 pkgbase = gnucash-gtk3-git
 	pkgdesc = A personal and small-business financial-accounting application (GTK3 development version)
-	pkgver = 2.7.1.r23.g4f9716362
+	pkgver = 2.7.2.r37.gac89797e7
 	pkgrel = 1
 	url = http://www.gnucash.org
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = gnucash-gtk3-git
 	makedepends = gmock
 	makedepends = gtest
 	makedepends = gconf
+	makedepends = cmake
 	depends = guile2.0
 	depends = slib
 	depends = libdbi-drivers
@@ -32,9 +33,7 @@ pkgbase = gnucash-gtk3-git
 	conflicts = gnucash
 	options = !emptydirs
 	source = git+https://github.com/Gnucash/gnucash
-	source = guild-2.0.patch
 	sha1sums = SKIP
-	sha1sums = 5c67cac57f2bbbe9775496dd6eaa32b2d4b4f23c
 
 pkgname = gnucash-gtk3-git
 

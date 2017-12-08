@@ -4,7 +4,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash-gtk3-git
-pkgver=2.7.1.r23.g4f9716362
+pkgver=2.7.2.r37.gac89797e7
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
@@ -13,51 +13,47 @@ license=("GPL")
 conflicts=('gnucash')
 provides=('gnucash')
 depends=('guile2.0' 'slib' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkit2gtk' 'libgnome-keyring' 'dconf' 'boost-libs')
-makedepends=('intltool' 'git' 'boost' 'swig' 'gmock' 'gtest' 'gconf')
+makedepends=('intltool' 'git' 'boost' 'swig' 'gmock' 'gtest' 'gconf' 'cmake')
 optdepends=('evince: for print preview'
 	    'yelp: help browser'
             'perl-finance-quote: for stock information lookups'
             'perl-date-manip: for stock information lookups')
 options=('!emptydirs')
-source=("git+https://github.com/Gnucash/gnucash"
-	"guild-2.0.patch")
-sha1sums=('SKIP'
-          '5c67cac57f2bbbe9775496dd6eaa32b2d4b4f23c')
+source=("git+https://github.com/Gnucash/gnucash")
+sha1sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/gnucash"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${srcdir}/gnucash"
-  patch -N < ../guild-2.0.patch
-}
-
 build() {
   cd "${srcdir}/gnucash"
 
-  # add -O to the boost c++11 compatibility detection so that -D_FORTIFY_SOURCE doesn't cause an error
-  sed -i '/CXXFLAGS="-Werror -std=gnu++11 $BOOST_CPPFLAGS"/s/-Werror/-Werror -O/' configure.ac
+  mkdir -p build
+  cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+    -DWITH_OFX=ON \
+    -DWITH_AQBANKING=ON \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo
 
-  ./autogen.sh
-  ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
-    --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking \
-    --disable-error-on-warning
-
-  make
+  make VERBOSE=1
 }
 
 package() {
-  cd "${srcdir}/gnucash"
+  cd "${srcdir}/gnucash/build"
 
   # make install fails with parallel make, see
   # https://bugzilla.gnome.org/show_bug.cgi?id=644896#c11
   # using -j1 instead
   MAKEFLAGS="${MAKEFLAGS} -j1" make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
 
-  cd libgnucash/doc/design
-  make DESTDIR="${pkgdir}" install-info
+#  cd libgnucash/doc/design
+#  make DESTDIR="${pkgdir}" install-info
+  rm -f "${pkgdir}"/usr/share/glib-2.0/schemas/*.compiled
 
   install -dm755 "${pkgdir}/usr/share/gconf/schemas"
   gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/gnucash.schemas" --domain gnucash "${pkgdir}"/etc/gconf/schemas/*.schemas
