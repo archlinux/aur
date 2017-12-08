@@ -1,0 +1,23 @@
+pkgbase = games_nebula
+	pkgdesc = Unofficial Linux client for GOG
+	pkgver = 20171113
+	pkgrel = 1
+	url = https://github.com/yancharkin/games_nebula
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2-gobject
+	depends = python2-beautifulsoup4
+	depends = python2-lxml
+	depends = python2-pillow
+	depends = innoextract
+	depends = htmlcxx
+	depends = lgogdownloader
+	provides = games_nebula
+	conflicts = games_nebula
+	source = games_nebula_20171113.tar.gz::https://github.com/yancharkin/games_nebula/releases/download/20171113/games_nebula_20171113.tar.gz
+	sha256sums = 73d80897cc72448636b9d3da0356d5c8856746818dafec5ff5e47096a132d895
+
+pkgname = games_nebula
+
