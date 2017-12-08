@@ -11,7 +11,7 @@ depends=('gdb' 'glibc' 'libxaw' 'libxt' 'libx11' 'imake')
 provides=('xxgdb')
 
 source=(
-    "https://fossies.org/linux/misc/old/xxgdb-1.12.tar.gz"
+    "https://fossies.org/linux/misc/old/xxgdb-${pkgver}.tar.gz"
     "xxgdb-pty.patch" # http://zhu-qy.blogspot.com.es/2012/11/slackware-14-i-still-got-xxgdb-all-ptys.html
     )
 
