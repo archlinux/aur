@@ -1,27 +1,30 @@
-# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/palopezv>
+# Maintainer: A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 #######################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
 #                enough rope to hang yourself, but by default it 
 #                only enables the features I use.
 #
-# TL;DR: yaourt users, cry me a river.
+#        TLDR: yaourt users, cry me a river.
+#
+#        Everyone else: do not update blindly this PKGBUILD. At least 
+#        make sure to compare and understand the changes.
 #
 #######################################################################
 
 #######################################################################
-# Track a maintenance branch or by default track master.
+# Track a maintenance branch or, by default, track master.
 #
 # Pick a branch from the output of "git branch" ran on your local copy
 # of the emacs repository.
 # 
 # E.g.: 
+# 
 # BRANCH=master
 # BRANCH=emacs-26
-# BRANCH=emacs-25
-# BRANCH=emacs-24
-# BRANCH=emacs-23
-# BRANCH=xwidget  # If you are a glutton for punishment
+#
+# Take note that I don't expect you to track anything different to master
+# or emacs-26 for obvious reasons. (See below).
 #
 BRANCH=master
 
@@ -35,29 +38,36 @@ BRANCH=master
 #######################################################################
 CLANG=            # Use clang.
 LTO=              # Enable link-time optimization. Experimental.
-ATHENA=           # Use Athena widgets. (83 1337, 83 001d sk00l).
-GTK2=             # Leave empty to compile with gtk+ 3 support.
-                  # No, gtk+ 2 ain't kool, dawg!
-NOGTK3=           # Leave empty to compile with gtk+ 3 support.
+#ATHENA=           # Use Athena widgets. (83 1337, 83 001d sk00l).
+GTK2=             # Leave empty to compile with GTK+ 3 support.
+                  # No, GTK+ 2 ain't kool, dawg!
+NOGTK3=           # Leave empty to compile with GTK+ 3 support.
 GPM=              # Enable gpm support.
-M17N=             # Enable m17n international support.
+M17N=             # Enable m17n international table input support.
+                  # You are far better off using UTF-8 and an input
+                  # method under X/Wayland. But this gives independence
+                  # if you need it.
 OTF="YES"         # OTF font support. Also a secondary dependency
                   # by pulling m17n-lib. Not needed in that case.
-CAIRO=            # Highly experimental.
-XWIDGETS="YES"    # Use GTK+ widgets pulled from webkit2gtk. Usable.
+CAIRO=            # Highly experimental. Maintaner dissapeared.
+XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
-MAGICK="YES"      # Imagemagick is like flash; and still needed :-(
-NOGZ="YES"        # Don't compress el files. Info and man pages are
-                  # compressed by hooks anyway.
+MAGICK=           # Imagemagick, like flash, is bug ridden and won't die. 
+                  # Yet useful... Broken with the transition to IM7.
+NOGZ=             # Don't compress el files.
 #######################################################################
 
 #######################################################################
-pkgname=emacs-git
-pkgver=27.0.50.130834
+if [[ BRANCH = "emacs-26" ]]; then
+  pkgname=emacs26-git
+else
+  pkgname=emacs-git
+fi
+pkgver=27.0.50.131377
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
-arch=('i686' 'x86_64')
+arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
 depends=( 'alsa-lib' )
@@ -68,7 +78,14 @@ makedepends=( 'git' )
 if [[ $CLANG = "YES" ]]; then
   export CC=/usr/bin/clang ;
   export CXX=/usr/bin/clang++ ;
-  makedepends+=( 'clang') ;
+  export CPP="/usr/bin/clang -E" ;
+  export LDFLAGS+=' -fuse-ld=lld' ;
+  makedepends+=( 'clang' 'lld') ;
+fi
+
+if [[ $LTO = "yes" ]]; then
+  export CFLAGS+=" -flto"
+  export tXXFLAGS+=" -flto"
 fi
 
 if [[ $ATHENA = "YES" ]]; then  
@@ -97,11 +114,9 @@ fi
 
 if [[ $MAGICK = "YES" ]]; then 
   depends+=( 'imagemagick' ); 
-  depends+=( 'libxpm' 'libjpeg-turbo' 'libtiff' );
-  depends+=( 'giflib' 'libpng' 'librsvg' );
+  depends+=( 'libjpeg-turbo' 'giflib' );
 elif [[ ! $NOX = "YES" ]]; then
-  depends+=( 'libxpm' 'libjpeg-turbo' 'libtiff' );
-  depends+=( 'giflib' 'libpng' 'librsvg' );
+  depends+=( 'libjpeg-turbo' 'giflib' );
 else
   depends+=();
 fi
@@ -131,12 +146,16 @@ fi
 #######################################################################
 conflicts=('emacs')
 provides=('emacs')
-  #source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=$BRANCH")
-  source=("$pkgname::git+https://github.com/emacs-mirror/emacs.git#branch=$BRANCH")
+source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#branch=$BRANCH")
 md5sums=('SKIP')
+# If Github access is blocked for reasons, use Savannah's servers instead.
+# Edit the config file of your local repo copy as well.
+#source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=$BRANCH")
+#source=("emacs-git::git+https://git.savannah.gnu.org/emacs.git#branch=$BRANCH")
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/emacs-git"
+
   printf "%s.%s" \
     "$(grep AC_INIT configure.ac | \
     sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\?\).\+$/\1/')" \
@@ -147,16 +166,12 @@ pkgver() {
 # There is no need to run autogen.sh after first checkout.
 # Doing so, breaks incremental compilation.
 prepare() {
-  cd "$srcdir/$pkgname"
-
+  cd "$srcdir/emacs-git"
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-
-  # Avoid hardening-wrapper (taken from emacs-pretest, thanks to Thomas Jost).
-  export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
+  cd "$srcdir/emacs-git"
 
   local _conf=(
     --prefix=/usr 
@@ -193,7 +208,7 @@ if [[ $ATHENA = "YES" ]]; then
 fi
 
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
-# dconf and gconf break font settings set in ~/.emacs
+# dconf and gconf break font settings you set in ~/.emacs.
 # If you insist you'll need to play gymnastics with
 # set-frame-font and set-menu-font. Good luck!
 if [[ $GTK2 = "YES" ]]; then 
@@ -212,13 +227,13 @@ if [[ ! $M17N = "YES" ]]; then
   _conf+=( '--without-m17n-flt' ); 
 fi
 
-#if [[ $IMAGICK = "YES" ]]; then 
-#  _conf+=( 
-#    '--with-imagemagick'
-# ); 
-#else
-#  _conf+=( '--without-imagemagick' );
-#fi
+if [[ $MAGICK = "YES" ]]; then 
+  _conf+=( 
+    '--with-imagemagick'
+ ); 
+else
+  _conf+=( '--without-imagemagick' );
+fi
 
 if [[ $CAIRO = "YES" ]]; then 
   _conf+=( '--with-cairo' ); 
@@ -235,6 +250,13 @@ fi
 
 #######################################################################
 
+  # Use gold with gcc, unconditionally.
+  #
+  if [[ ! $CLANG = "YES" ]]; then
+    export LD=/usr/bin/ld.gold
+    export LDFLAGS+=" -fuse-ld=gold";
+  fi
+
   ./configure "${_conf[@]}"
 
   # Using "make" instead of "make bootstrap" enables incremental
@@ -248,7 +270,7 @@ fi
   make
 
   # You may need to run this if 'loaddefs.el' files corrupt.
-  #cd "$srcdir/$pkgname/lisp"
+  #cd "$srcdir/emacs-git/lisp"
   #make autoloads
   #cd ../
 
@@ -262,7 +284,7 @@ fi
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/emacs-git"
 
   make DESTDIR="$pkgdir/" install
 
