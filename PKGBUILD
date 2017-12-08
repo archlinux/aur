@@ -2,7 +2,7 @@
 
 _pkgname=haskell-ide-engine
 pkgname=${_pkgname}-git
-pkgver=0.1.0.0
+pkgver=7017233
 pkgrel=1
 pkgdesc="The engine for haskell ide-integration. Not an IDE."
 arch=('i686' 'x86_64')
@@ -21,6 +21,12 @@ source=("git://github.com/haskell/${_pkgname}.git")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  
+  git describe --always
+}
 
 build() {
   cd "${srcdir}/${_pkgname}"
