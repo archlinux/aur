@@ -5,7 +5,7 @@
 
 _pkgbase=snapd
 pkgname=snapd-git
-pkgver=2.29.3.r611.gdb1fc27cb
+pkgver=2.29.4.1.r1042.gfbee22676
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/snapcore/snapd"
@@ -20,6 +20,7 @@ md5sums=('SKIP')
 
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
+optdepends=('bash-completion: bash completion support')
 provides=($_pkgbase)
 # Community package is split into snapd and snap-confine, make sure we replace
 # both bits
@@ -96,6 +97,9 @@ build() {
     --enable-nvidia-biarch \
     --enable-merged-usr
   make $MAKEFLAGS
+
+  # generate man-pages for snap
+  $GOPATH/bin/snap help --man > "$srcdir/snap.1"
 }
 
 check() {
@@ -108,7 +112,9 @@ check() {
   rm -f cmd/snap-confine/snap-confine-debug
   mv data/info $srcdir/xxx-info
 
-  ./run-checks --unit || /bin/true
+  # Don't run unit tests
+  # ./run-checks --unit || /bin/true
+
   # XXX: Static checks choke on autotools generated cruft. Let's not run them
   # here as they are designed to pass on a clean tree, before anything else is
   # done, not after building the tree.
@@ -184,4 +190,28 @@ package_snapd-git() {
   # and make sure that target exists so that we don't have dangling symlinks
   # after installing the package
   install -d -m 755 "$pkgdir/var/lib/snapd/snap"
+
+  # pre-create directories
+  install -d -m 755 "$pkgdir/var/cache/snapd"
+  install -d -m 755 "$pkgdir/var/lib/snapd/assertions"
+  install -d -m 755 "$pkgdir/var/lib/snapd/desktop/applications"
+  install -d -m 755 "$pkgdir/var/lib/snapd/device"
+  install -d -m 755 "$pkgdir/var/lib/snapd/hostfs"
+  install -d -m 755 "$pkgdir/var/lib/snapd/mount"
+  install -d -m 755 "$pkgdir/var/lib/snapd/seccomp/bpf"
+  install -d -m 755 "$pkgdir/var/lib/snapd/snap/bin"
+  install -d -m 755 "$pkgdir/var/lib/snapd/snaps"
+  install -d -m 755 "$pkgdir/var/lib/snapd/lib/gl"
+  # these dirs have special permissions
+  install -d -m 000 "$pkgdir/var/lib/snapd/void"
+  install -d -m 700 "$pkgdir/var/lib/snapd/cookie"
+  install -d -m 700 "$pkgdir/var/lib/snapd/cache"
+
+  # Install snap(1) man page
+  install -m 644 -D "$srcdir/snap.1" \
+          "$pkgdir/usr/share/man/man1/snap.1"
+
+  # Install the "info" data file with snapd version
+  install -m 644 -D "$GOPATH/src/${_gourl}/data/info" \
+          "$pkgdir/usr/lib/snapd/info"
 }

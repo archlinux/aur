@@ -1,6 +1,6 @@
 pkgbase = snapd-git
 	pkgdesc = Service and tools for management of snap packages.
-	pkgver = 2.29.3.r611.gdb1fc27cb
+	pkgver = 2.29.4.1.r1042.gfbee22676
 	pkgrel = 1
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
@@ -23,6 +23,7 @@ pkgbase = snapd-git
 	depends = squashfs-tools
 	depends = libseccomp
 	depends = libsystemd
+	optdepends = bash-completion: bash completion support
 	provides = snapd
 	conflicts = snapd
 	conflicts = snap-confine
