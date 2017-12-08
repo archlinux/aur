@@ -7,7 +7,7 @@
 
 pkgname=firefox-esr-gtk2
 _pkgname=firefox-esr
-pkgver=52.5.0
+pkgver=52.5.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
         nvidia-GLSL-version.patch
         firefox-52-disable-pocket-leftovers.patch)
-sha256sums=('0e583576f6bbdc9d863656c43b8c97a60f276725bca20459b7511e2afacac85f'
+sha256sums=('7b27825a7446f98e59296f4a46328c65913ffd50d839e0b4359b71ec7250ca4f'
             'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
