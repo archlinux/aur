@@ -1,5 +1,5 @@
 pkgbase = deepin.com.qq.office-git
-	pkgdesc = Deepin Wine TIM 1.2.0
+	pkgdesc = Deepin Wine TIM (on deepin-wine)
 	pkgver = 2.0.0deepin0
 	pkgrel = 2
 	url = http://office.qq.com/
