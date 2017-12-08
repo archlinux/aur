@@ -1,13 +1,13 @@
 pkgbase = haskell-ide-engine
 	pkgdesc = The engine for haskell ide-integration. Not an IDE.
-	pkgver = git
+	pkgver = 0.1.0.0
 	pkgrel = 1
 	url = https://github.com/haskell/haskell-ide-engine
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
 	makedepends = git
-	makedepends = haskell-stack-tool
+	makedepends = stack
 	source = git://github.com/haskell/haskell-ide-engine.git
 	md5sums = SKIP
 
