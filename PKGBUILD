@@ -2,7 +2,7 @@
 _pkgname=linux_media
 _gitname=media_build
 pkgname="tbs-$_pkgname-git"
-pkgver=r943.f54ce3c_4.14.3_1_ARCH
+pkgver=r945.141c48d_4.14.4_1_ARCH
 _extramodules=extramodules-4.14-ARCH
 pkgrel=1
 pkgdesc="TBS linux open source drivers"
@@ -13,7 +13,6 @@ depends=('tbs-firmware')
 makedepends=('git' 'linux-headers' 'patchutils' 'perl-proc-processtable')
 provides=("$_pkgname")
 conflicts=('tbs-dvb-drivers')
-install=tbs-linux_media-git.install
 
 prepare() {
 
