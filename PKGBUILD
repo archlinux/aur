@@ -2,7 +2,7 @@
 pkgname=libzlog
 _realname=zlog
 pkgver=1.2.12
-pkgrel=2
+pkgrel=3
 pkgdesc="a reliable pure C logging library"
 arch=('i686' 'x86_64')
 url="http://hardysimpson.github.com/zlog"
@@ -38,6 +38,17 @@ package()
   cd "$srcdir/$_realname-$pkgver"
 
   make PREFIX="$pkgdir/usr" install
-}
 
+  install -d "$pkgdir/usr/share/$pkgname/doc"
+
+  rename mence mance doc/per*.txt # performence.txt is misspelled: this corrects it.
+
+  for y in doc/{UsersGuide-EN.html,GettingStart-EN.txt,zlog.conf,performance.txt}; do
+    [[ $y == 'doc/zlog.conf' || $y == 'doc/performance.txt' ]] || \
+      cp "$y" "$(tr '[A-Z]' '[a-z]' <<<"$y" | sed 's/-en//')"
+    install -t "$pkgdir/usr/share/$pkgname/doc" "$y"
+  done
+
+
+}
 # vim:set ts=2 sw=2 et:
