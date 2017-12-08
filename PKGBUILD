@@ -43,7 +43,8 @@ build() {
     --sysconfdir=/etc \
     --disable-sanitizers
 
-  make
+  # See https://lists.archlinux.org/pipermail/arch-dev-public/2013-April/024776.html
+  make CPPFLAGS+="-U_FORTIFY_SOURCE"
 }
 
 
