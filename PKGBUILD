@@ -7,13 +7,13 @@
 # Download website:
 # https://developer.nvidia.com/nccl/
 
-_srcver=2.0.5
-_srcrel=3
+_srcver=2.1.2
+_srcrel=1
 _cudaver=9.0
 
 pkgname=nccl
 pkgver="${_srcver}.${_srcrel}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Library for NVIDIA Multi-GPU and multi-node collective communication primitives (needs registration at upstream URL and manual download)'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
@@ -21,11 +21,11 @@ license=('custom')
 depends=('cuda')
 conflicts=('nccl-git')
 options=('!strip')
-source=("file://${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_amd64.txz")
-sha256sums=('20b7313dd791010fe29f5f56957c08a13c978ebfb91b4f7460edc1c441e677b2')
+source=("file://${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_x86_64.txz")
+sha256sums=('095f75586b00e021560e8d5b700600d62b75ca2e2c55dd0fefd8baae56a41dce')
 
 package() {
-    cd "${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_amd64"
+    cd "${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_x86_64"
     
     # include
     install -D -m644 include/nccl.h "${pkgdir}/opt/cuda/include/nccl.h"
