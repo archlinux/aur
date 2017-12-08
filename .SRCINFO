@@ -1,0 +1,15 @@
+pkgbase = perl-test-toolbox
+	pkgdesc = tools for testing
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Toolbox
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MI/MIKO/Test-Toolbox-0.4.tar.gz
+	md5sums = b8a83d332dcd0691b68ed9e0a0a53e7b
+	sha512sums = 99d711a7cce4ac3a4fd37f4b7fc91cf75c5d4978ff83cd084599ed6c1818d22b30a3210a14b03da4646b53cc939b224937da3bea1c49bb13324c5583ee44bf81
+
+pkgname = perl-test-toolbox
+
