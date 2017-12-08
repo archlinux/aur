@@ -4,18 +4,15 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-systemqt
-pkgver=1.1.23
-pkgrel=2
+pkgver=1.1.29
+pkgrel=1
 pkgdesc='Experimental build of Telegram Desktop (using system Qt)'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats')
-makedepends=('cmake' 'libappindicator-gtk2' 'dee' 'git' 'gyp-git' 'libexif' 'libva' 'libwebp' 'mtdev' 'python' 'python2' 'gtk3')
-optdepends=(
-    'libappindicator-gtk2: AppIndicator tray icon'
-    'libappindicator-gtk3: AppIndicator tray icon'
-)
+makedepends=('cmake' 'git' 'gyp-git' 'libexif' 'libva' 'libwebp' 'mtdev' 'range-v3' 'python' 'python2' 'gtk3' 'libappindicator-gtk3' 'dee')
+optdepends=('libappindicator-gtk3: AppIndicator tray icon')
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 install="telegram-desktop.install"
@@ -24,23 +21,23 @@ source=(
     "GSL::git+https://github.com/Microsoft/GSL.git"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
     "variant::git+https://github.com/mapbox/variant.git"
+    "Catch::git+https://github.com/philsquared/Catch"
     "telegram-desktop.desktop"
     "tg.protocol"
     "CMakeLists.inj"
     "tdesktop.patch"
     "libtgvoip.patch"
-    "fix-ime-interrupt.patch"
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
+            'SKIP'
+            'e9f0cf7553e0700285ed38f342c4d5e8ec436d3f5d11b10abe4f1f3f432fb86c'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
             '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
-            '79970991090feafa21bf40724765f0b32464af9d4a99822bb9ad9aadb403043d'
-            '0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075'
-            '024b365d0bc925e6435ef6dd64da66c93ed9f79ac368e7412c1d7bb153edafd6')
+            'e540109539cd3d9b4dd350f372a962f7e6b5451901933d99784b9bb86c008cf6'
+            '0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -48,9 +45,9 @@ prepare() {
     git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
     git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
+    git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
     git submodule update
     patch -Np1 -i "$srcdir/tdesktop.patch"
-    patch -Np1 -i "$srcdir/fix-ime-interrupt.patch"
 
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
@@ -59,12 +56,12 @@ prepare() {
 build() {
     cd "$srcdir/tdesktop"
     export LANG=en_US.UTF-8
-    export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
-    export EXTRA_FLAGS="-DTDESKTOP_DISABLE_AUTOUPDATE -DTDESKTOP_DISABLE_CRASH_REPORTS -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME -Winvalid-pch"
+    export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME,TDESKTOP_DISABLE_UNITY_INTEGRATION"
+    export EXTRA_FLAGS="-Winvalid-pch"
     export CPPFLAGS="$CPPFLAGS $EXTRA_FLAGS"
     export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"
     gyp \
-        -Dbuild_defines=${GYP_DEFINES:1} \
+        -Dbuild_defines=${GYP_DEFINES} \
         -Gconfig=Release \
         --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
     NUM=$((`wc -l < out/Release/CMakeLists.txt` - 2))
