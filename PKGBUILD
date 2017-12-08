@@ -1,7 +1,7 @@
 # Maintainer: Michel Wohlert <michel.wohlert@gmail.com>
 
 pkgname=networkmanager-fortisslvpn-git
-pkgver=1.2.5.dev.r11.g9a6ade4
+pkgver=1.2.7.dev.r10.g868f8b2
 pkgrel=1
 pkgdesc='NetworkManager VPN plugin for fortisslvpn - git checkout'
 arch=('i686' 'x86_64')
