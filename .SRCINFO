@@ -1,0 +1,16 @@
+pkgbase = libvsr-git
+	pkgdesc = versor - a c++ template library for euclidean, conformal and arbitrary geometric algebras
+	pkgver = r234.e5ebef8
+	pkgrel = 1
+	url = http://versor.mat.ucsb.edu/
+	arch = any
+	license = bsd
+	makedepends = git
+	makedepends = cmake
+	depends = glew
+	provides = libvsr
+	source = git://github.com/wolftype/versor.git#branch=devel
+	md5sums = SKIP
+
+pkgname = libvsr-git
+
