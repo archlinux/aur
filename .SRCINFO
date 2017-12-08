@@ -8,6 +8,7 @@ pkgbase = python-minio-git
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
+	depends = python-certifi
 	provides = python-minio=r728.f1130fd
 	conflicts = python-minio
 	source = python-minio::git+https://github.com/minio/minio-py
