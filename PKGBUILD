@@ -1,34 +1,49 @@
-# Maintainer: Thomas Weißschuh <thomas t-8ch de>
-
+# Maintainers:
+#  - Thomas Weißschuh <thomas t-8ch de>
+#  - Mike Javorski (javmorin) <mike.javorski gmail com>
+#
 pkgname=dput-ng
-pkgver=1.6
+pkgver=1.15
 pkgrel=1
-pkgdesc='like dput, but better'
-url='http://dput-ng.debian.net/'
+pkgdesc='Next generation Debian package upload tool'
+url='https://people.debian.org/~paultag/dput-ng/'
 makedepends=('python2-setuptools')
 depends=('python2-debian')
-license=('GPL')
+license=('GPL2')
 arch=('any')
 provides=('dput')
 conflicts=('dput')
-source=("https://pypi.python.org/packages/source/d/dput/dput-${pkgver}.tar.gz"
-        'dput' 'dcut' 'dirt')
+source=("http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('36e6075a705ecc653e428babdb691beba39485718e46083fb5ecc781d5e09dd4')
 
-build() {
-    cd "${srcdir}/dput-${pkgver}"
-    python2 setup.py build
-}
 
 package() {
-    cd "${srcdir}/dput-${pkgver}"
-    python2 setup.py install --skip-build -O1 --root="$pkgdir"
-    install -d "${pkgdir}/usr/bin"
-    install -D "${srcdir}/dput" "${pkgdir}/usr/bin/"
-    install -D "${srcdir}/dirt" "${pkgdir}/usr/bin/"
-    install -D "${srcdir}/dcut" "${pkgdir}/usr/bin/"
-}
+  cd "$pkgname-$pkgver"
+  sed -i 's/#!\/usr\/bin\/env python$/#!\/usr\/bin\/env python2/' bin/* $(find -name '*.py')
 
-sha256sums=('dcbbd3876bfac56304021070069a23e7da2e73c2024f68b0efce0cc0523bb683'
-            'a4c28ed018b8d03249e8e7b94be526f29f659c97f99884d0b84e4236e94125ca'
-            'a260f48111cecf8332c51f2fd45e1972c364582ff26582a5915456966482ea6f'
-            'c9b54bea22ff081c08e9fab4a45135783881808323bba8dc002fa0b56915dd1c')
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+
+  install -d "${pkgdir}/usr/bin"
+  install -m755 bin/{dput,dcut,dirt} "${pkgdir}/usr/bin"
+
+  install -d "${pkgdir}/usr/share/doc/${pkgname}"
+  install -m644 AUTHORS FAQ README.md TODO "${pkgdir}/usr/share/doc/${pkgname}"
+
+  install -d "${pkgdir}/etc/dput.d"
+  for _dir in metas profiles; do
+    install -d "${pkgdir}/etc/dput.d/${_dir}"
+    install -m644 skel/$_dir/* "${pkgdir}/etc/dput.d/${_dir}"
+  done
+
+  install -d "${pkgdir}/usr/share/${pkgname}"
+  for _dir in codenames commands hooks interfaces schemas uploaders; do
+    install -d "${pkgdir}/usr/share/${pkgname}/${_dir}"
+    install -m644 skel/${_dir}/* "${pkgdir}/usr/share/${pkgname}/${_dir}"
+  done
+
+  # install -d "${pkgdir}/usr/share/bash-completion/completions/"
+  install -Dm644 "debian/${pkgname}.bash-completion"  "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+
+  install -d "${pkgdir}/usr/share/${pkgname}/examples"
+  cp -r examples/* "${pkgdir}/usr/share/${pkgname}/examples"
+}
