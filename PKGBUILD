@@ -3,8 +3,8 @@
 
 _user=shirkdog
 pkgname=pulledpork
-pkgver=0.7.2
-pkgrel=6
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Tool to automatically update rules for snort"
 arch=('any')
 url="https://github.com/${_user}/${pkgname}"
@@ -17,21 +17,14 @@ backup=('etc/pulledpork/pulledpork.conf'
         'etc/pulledpork/enablesid.conf'
         'etc/pulledpork/modifysid.conf')
 source=("pulledpork-${pkgver}.tar.gz::https://github.com/${_user}/${pkgname}/archive/${pkgver}.tar.gz"
-        "doubledigitversion.diff"
         "pulledpork.conf"
         "pulledpork_update.sh"
         "pulledpork.cron")
-sha256sums=('50046477d5d1a18aec131a56bd3f21170057d8a31fd6f30af706e31d5b14bd0a'
-            '6bb80fa140ae5ec164ee6cdf6cf559d63f48c2b5a8c5934eb11296fbdc1ac240'
-            '60ae10e636568a216e5629a1e73450d086fd77cd3328f5ba2c90d2483a1e9c08'
+sha256sums=('48c66dc9abb7545186d4fba497263c1d1b247c0ea7f0953db4d515e7898461a2'
+            '361f698adbabdb85eaa559e26ae9feaca0ef1f419e76fe301364d9b67358475c'
             '584326ce79c1694849f60f25e4306ae3f2df6228c34c2e6f3ba30993f53e6a3f'
             'c9213d3076424dc391d09a6c19f769631f668f27206585dd98dcbf9390a1b9ee')
 install=install
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 < ../doubledigitversion.diff
-}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
