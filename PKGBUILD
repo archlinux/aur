@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=hackrf-git
-pkgver=r2038.fb83ad6
+pkgver=r2047.3447863
 pkgrel=1
 pkgdesc="Driver for HackRF, allowing general purpose software defined radio (SDR)."
 arch=('i686' 'x86_64')
@@ -9,6 +9,8 @@ url="https://github.com/mossmann/hackrf"
 license=('GPL2')
 depends=('libusb' 'fftw')
 makedepends=('cmake')
+conflicts=('hackrf')
+provides=('hackrf')
 source=("$pkgname::git+https://github.com/mossmann/hackrf" 'hackrf.conf')
 sha256sums=('SKIP'
             '8246a539049ec2bd6226337d8d9b4f48bd503d77de13408a5751d2a60dc76965')
