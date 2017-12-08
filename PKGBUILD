@@ -3,8 +3,8 @@
 
 pkgname=conky-lua-archers-git
 _pkgname=conky
-pkgver=3166.a58a6d4e
-pkgrel=2
+pkgver=3169.262a2925
+pkgrel=1
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky/"
@@ -33,15 +33,14 @@ makedepends=(
 	'docbook2x'
 	'docbook-xml'
 	'docbook-xsl'
+	'git'
 	'perl-xml-libxml'
 	'perl-xml-sax-expat'
 )
 source=("git://github.com/brndnmtthws/${_pkgname}.git"
-	'asciime.patch'
-	'include.patch')
+	'asciime.patch')
 sha1sums=('SKIP'
-	  'b07407c2be11cee7bd50e046024b89cf2579c448'
-	  '0efe24eab88c48cc1fef0dae001ce935f743c131')
+	  'b07407c2be11cee7bd50e046024b89cf2579c448')
 options=('!strip' 'debug')
 
 pkgver() {
@@ -52,7 +51,6 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	patch -p1 -i ../asciime.patch # db2x_manxml fails on non-ascii chars
-	patch -p1 -i ../include.patch # Build fails with gcc7 due to missing include
 	mkdir -p build/               # as @afaikifreedom recommended
 }
 
