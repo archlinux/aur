@@ -2,7 +2,7 @@
 pkgname=libzlog
 _realname=zlog
 pkgver=1.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="a reliable pure C logging library"
 arch=('i686' 'x86_64')
 url="http://hardysimpson.github.com/zlog"

@@ -1,7 +1,7 @@
 pkgbase = libzlog
 	pkgdesc = a reliable pure C logging library
 	pkgver = 1.2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hardysimpson.github.com/zlog
 	arch = i686
 	arch = x86_64
