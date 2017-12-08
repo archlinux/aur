@@ -3,7 +3,7 @@
 
 pkgname=firefox-beta-bin
 _pkgname=firefox-beta
-pkgver=58.0b9
+pkgver=58.0b10
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -28,7 +28,7 @@ source=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US
 if [[ $_build = ? ]]; then
   source[0]="firefox-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2"
 fi
-sha256sums=('ebda3f6e0f04c4c8659ea35fc720c073c30d45a2f4c6f72e9fa47755e25bf3b1'
+sha256sums=('85e48d472e08b532ee8584377841a7f95f7711adf36c7adda4ecdef8b803fcc6'
             '367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
             '92f58532757365f38382e016d250836e4faf8415599cefb6ddace0de77486658')
 
