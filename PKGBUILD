@@ -2,25 +2,25 @@
 # Contributor: Lucas Hermann Negri <kkndrox@gmail.org>
 
 pkgname=lanes
-pkgver=2.0.3
-pkgrel=2
-pkgdesc="A solution for running Lua multithreaded" 
+pkgver=3.12
+pkgrel=1
+pkgdesc="A solution for running Lua multithreaded"
+url="https://github.com/LuaLanes/lanes"
 arch=("i686" "x86_64")
-url="http://kotisivu.dnainternet.net/askok/bin/lanes/index.html" 
-depends=("lua>=5.1") 
+depends=("lua>=5.1")
 license=("MIT")
-source=(http://luaforge.net/frs/download.php/3927/${pkgname}-${pkgver}.tgz) 
+source=(git+https://github.com/LuaLanes/lanes.git)
 
-build() { 
-	cd "${srcdir}"/${pkgname}-${pkgver}
+build() {
+	cd "${srcdir}"/${pkgname}
 
 	make
 }
 
 package() {
-	cd "${srcdir}"/${pkgname}-${pkgver}
+	cd "${srcdir}"/${pkgname}
 
 	make DESTDIR="${pkgdir}"/usr install
 }
 
-sha1sums=('46d808569124b024f1d8ceaf9c10ea2c43852be3')
+sha1sums=('SKIP')

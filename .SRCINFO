@@ -1,14 +1,14 @@
 pkgbase = lanes
 	pkgdesc = A solution for running Lua multithreaded
-	pkgver = 2.0.3
-	pkgrel = 2
-	url = http://kotisivu.dnainternet.net/askok/bin/lanes/index.html
+	pkgver = 3.12
+	pkgrel = 1
+	url = https://github.com/LuaLanes/lanes
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = lua>=5.1
-	source = http://luaforge.net/frs/download.php/3927/lanes-2.0.3.tgz
-	sha1sums = 46d808569124b024f1d8ceaf9c10ea2c43852be3
+	source = git+https://github.com/LuaLanes/lanes.git
+	sha1sums = SKIP
 
 pkgname = lanes
 
