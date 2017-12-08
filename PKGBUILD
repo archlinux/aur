@@ -12,7 +12,7 @@ arch=('any')
 url='http://readthedocs.org/docs/nose/'
 license=('LGPL2.1')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools' 'python2-sphinx')
-source=("http://pypi.python.org/packages/source/n/nose/nose-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/n/nose/nose-${pkgver}.tar.gz")
 md5sums=('4d3ad0ff07b61373d2cefc89c5d0b20b')
 
 build() {
