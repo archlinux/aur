@@ -2,18 +2,21 @@
 # Maintainer: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 
 pkgname=mattermost
-pkgver=4.3.2
-pkgrel=4
+pkgver=4.4.5
+pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://mattermost.com"
+url='https://mattermost.com'
 license=('AGPL' 'Apache')
 
-makedepends=('git' 'go' 'libpng12' 'npm' 'yarn' 'mozjpeg')
-# mozjpeg isn't needed on amd64, but the version brought with node_modules does
-# not run on an architecture other than amd64. The one provided with Arch Linux
-# does. Including it even for amd64 prevents us to have a bunch of architecture
-# specific makedepends arrays.
+makedepends=('git' 'go' 'libpng12' 'npm' 'python2' 'yarn')
+# python2 is required by the node module node-gyp.
+# mozjpeg isn't needed on amd64, but the version brought with node_modules
+# (mozjpeg implementation) does not run on an architecture other than amd64.
+# The one provided with Arch Linux does.
+if [ "$CARCH" != 'x86_64' ]; then
+    makedepends+=('mozjpeg')
+fi
 optdepends=(
     'mariadb: SQL server storage'
     'percona-server: SQL server storage'
@@ -29,8 +32,8 @@ source=(
     "${pkgname}.tmpfiles"
 )
 sha512sums=(
-    '011a3ef4afa3a6412995c89eb039f079a62d705ce616c0966139585404340c91a1998bc1d0df487bafffa830c22b9a4075ea46a5392d2a72aa3c9cf6b8984167'
-    'ece221a27dbfa30d5b2a8052a6406a3cb87d2f8f026caed24ba8276680434b538c5ec846820117f28a0cc23c7f66afa3356647c6a4d5e2b0a365ef7456046110'
+    '23f65cac1f9cf393f5f04725d7eb703b2edfe30eef2180ee48bcdbe9c7d1064fed598dc56fbd4344216db35e3883671df93611ce27454759eee7e1507e1a0bd2'
+    'ac07848e675cddced2062e4da8c52454c9df3ca4c80af50c622980daf48f5665155b1ebd12d19ad2f10612c68efd7668f06d083ff4bc597e9922395b0b33b40b'
     '3e3d46dc7778be256da9a366ec96cde684fcb07732d0adfd40ea00d6ec61a161a9d7e784f7773d34e4f058e6919b13053ac228255a05f175e7ce20538f07ec93'
     '5fe6c343e9739b12f8ea9390dafd729fa9f980978bbc0fa7eb6a2eb2d437929078d3efede23c28a6b399c407b8b5e92755169a468462088de0eb148b360acc4b'
     'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
