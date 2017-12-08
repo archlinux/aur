@@ -2,7 +2,7 @@
 # Contributor: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=bumblebee-status
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Modular, theme-able status line generator for the i3 window manager'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('xorg-xbacklight: to display a displays brightness'
             'i3ipc-python: display titlebar'
             'fakeroot: dependency of the pacman module')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a4a2fa312a92c66a9fa567a3789684f5406646c59706105b5dc9ae7e1d792db0c9c416a111113c1f3054c6c4e0d0193e2bdf7bf1591265f630c4b779609647a3')
+sha512sums=('68b5d690a5e5c9f1a249adfe8cc3c230fea321eb5f024cc314d91aa1688adc55dbc5ee8d3990b01f33f28cf10e63c757e1f6b0ba47a71515a6dd552612c54ec0')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
