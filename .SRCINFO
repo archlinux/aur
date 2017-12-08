@@ -1,6 +1,6 @@
 pkgbase = osquery-git
 	pkgdesc = SQL powered operating system instrumentation, monitoring, and analytics.
-	pkgver = 2.10.3.r5.g7c95e985
+	pkgver = 2.10.4.r18.g3e83bfbe
 	pkgrel = 1
 	url = https://osquery.io
 	arch = i686
@@ -35,7 +35,6 @@ pkgbase = osquery-git
 	makedepends = rocksdb-lite
 	makedepends = gtest
 	makedepends = gmock
-	makedepends = augeas
 	makedepends = lldpd
 	makedepends = lld
 	makedepends = zstd
@@ -45,13 +44,14 @@ pkgbase = osquery-git
 	makedepends = rpm-org
 	makedepends = python2-jinja
 	makedepends = librdkafka-git
+	makedepends = augeas>=1.9.0
 	makedepends = boost>=1.65.1
 	makedepends = boost-libs>=1.65.1
 	depends = wget
 	depends = unzip
 	options = !strip
 	backup = etc/osquery/osquery.conf
-	source = osquery-git::git+https://github.com/facebook/osquery#commit=7c95e985517558fefebfbe0ba8bb03192177946a
+	source = osquery-git::git+https://github.com/facebook/osquery#commit=3e83bfbe4aa7490415fa343b3c1d5e81eb8f5eea
 	source = osqueryd.conf.d
 	source = osqueryd.service
 	source = arch-linux.patch
