@@ -7,12 +7,9 @@ pkgdesc="a reliable pure C logging library"
 arch=('i686' 'x86_64')
 url="http://hardysimpson.github.com/zlog"
 license=('LGPL')
-groups=()
 depends=(glibc)
 makedepends=(lyx texlive-bin hevea)
 options=(!buildflags)
-install=
-changelog=
 source=("https://github.com/HardySimpson/$_realname/archive/$pkgver.tar.gz"
 	"src-makefile.patch"
        )
@@ -42,13 +39,9 @@ package()
   install -d "$pkgdir/usr/share/$pkgname/doc"
 
   rename mence mance doc/per*.txt # performence.txt is misspelled: this corrects it.
+  cp doc/UsersGuide-EN.html doc/Guide.html
+  cp doc/GettingStart-EN.txt doc/README
 
-  for y in doc/{UsersGuide-EN.html,GettingStart-EN.txt,zlog.conf,performance.txt}; do
-    [[ $y == 'doc/zlog.conf' || $y == 'doc/performance.txt' ]] || \
-      cp "$y" "$(tr '[A-Z]' '[a-z]' <<<"$y" | sed 's/-en//')"
-    install -t "$pkgdir/usr/share/$pkgname/doc" "$y"
-  done
-
-
+  install -t "$pkgdir/usr/share/$pkgname/doc" doc/Guide.html doc/README doc/zlog.conf doc/performance.txt
 }
 # vim:set ts=2 sw=2 et:
