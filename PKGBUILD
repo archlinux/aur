@@ -4,38 +4,38 @@
 
 pkgname=transgui-gtk2-git
 _pkgname=transgui
-pkgver=8b2a878
+pkgver=046e04f
 pkgrel=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=(i686 x86_64)
 url='https://github.com/leonsoft-kras/transmisson-remote-gui'
 license=(GPL2)
 depends=(gtk2 desktop-file-utils)
-makedepends=(lazarus unzip)
+makedepends=(git lazarus unzip)
 provides=(transmission-remote-gui transmission-remote-gui-gtk2)
 conflicts=(transmission-remote-gui-qt4 transmission-remote-gui-svn transmission-remote-gui transmission-remote-gui-gtk2)
 install=transgui-gtk2-git.install
-source=('git://github.com/leonsoft-kras/transmisson-remote-gui.git'
+source=('git://github.com/transmission-remote-gui/transgui.git'
         ${_pkgname}.desktop)
 md5sums=('SKIP'
          'c0504cb6d4e970892ac7be9206c787b5')
 _ws=gtk2
 
 pkgver() {
-	cd "${srcdir}/transmisson-remote-gui"
+	cd "${srcdir}/${_pkgname}"
 	git describe --always | sed 's|-|.|g'
 }
 
 build() {
   mkdir "${srcdir}/config"
-  cd "${srcdir}/transmisson-remote-gui"
+  cd "${srcdir}/${_pkgname}"
 
   lazbuild "${_pkgname}.lpi" --lazarusdir=/usr/lib/lazarus --widgetset=${_ws} \
     --primary-config-path="${srcdir}/config"
 }
 
 package() {
-  cd "${srcdir}/transmisson-remote-gui"
+  cd "${srcdir}/${_pkgname}"
 
   install -D -m 755 "units/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
