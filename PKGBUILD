@@ -13,6 +13,7 @@ conflicts=(chirp)
 provides=(chirp)
 install=
 sha1sums=("d15b57ef76b14002d73518a428161fe1ef040e6e")
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 source=("https://trac.chirp.danplanet.com/chirp_daily/daily-20171204/chirp-daily-20171204.tar.gz")
 
 build() {
