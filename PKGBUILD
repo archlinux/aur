@@ -6,7 +6,7 @@ pkgdesc="A vim-like webkit2gtk browser"
 arch=('x86_64')
 url="https://github.com/jun7/wyeb"
 license=('GPL3')
-depends=('webkit2gtk' 'markdown' 'perl-file-mimeinfo')
+depends=('webkit2gtk' 'discount' 'perl-file-mimeinfo')
 makedepends=('git')
 _branch=master
 source=("git://github.com/jun7/wyeb.git#branch=$_branch")

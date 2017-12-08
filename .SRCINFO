@@ -7,7 +7,7 @@ pkgbase = wyeb-git
 	license = GPL3
 	makedepends = git
 	depends = webkit2gtk
-	depends = markdown
+	depends = discount
 	depends = perl-file-mimeinfo
 	source = git://github.com/jun7/wyeb.git#branch=master
 	md5sums = SKIP
