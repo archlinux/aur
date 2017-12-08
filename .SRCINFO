@@ -1,15 +1,14 @@
 pkgbase = looptools
 	pkgdesc = package for evaluation of scalar and tensor one-loop integrals
 	pkgver = 2.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.feynarts.de/looptools
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gcc-fortran
 	options = staticlibs
 	source = http://www.feynarts.de/looptools/LoopTools-2.14.tar.gz
-	md5sums = b684bea48b4aa6a2584c6708f4f3e949
+	md5sums = e8ea4f2a31940a624e67731da849054f
 
 pkgname = looptools
 
