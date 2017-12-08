@@ -14,6 +14,8 @@ license=(GPL)
 depends=(cyrus-sasl cyrus-sasl-gssapi icu lm_sensors net-snmp libsystemd
          openldap perl-netaddr-ip perl-socket 'svrcore>=4.1.2' libevent)
 makedepends=(doxygen)
+optdepends=('python-lib389: Python managemnt scripts'
+            'python2-lib389: Python2 version')
 
 if [[ "${BUILD_SELINUX}" = "true" ]]; then
   depends+=(selinux-usr-policycoreutils)
@@ -74,3 +76,5 @@ package() {
 
   find "${pkgdir}" -type f -name '*.a' -delete
 }
+
+# vim: set ts=2 sw=2 ft=sh noet:

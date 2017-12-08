@@ -19,6 +19,8 @@ pkgbase = 389-ds-base
 	depends = perl-socket
 	depends = svrcore>=4.1.2
 	depends = libevent
+	optdepends = python-lib389: Python managemnt scripts
+	optdepends = python2-lib389: Python2 version
 	options = !libtool
 	backup = etc/default/dirsrv
 	backup = etc/default/dirsrv.systemd
