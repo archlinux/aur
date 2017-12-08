@@ -2,17 +2,17 @@
 
 _gitname=i3lock-color
 pkgname="$_gitname-git"
-pkgver=r365.baedc43
+pkgver=r421.4318dbe
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
-url="https://github.com/chrjguill/i3lock-color"
+url="https://github.com/PandorasFox/i3lock-color"
 license=('MIT')
-depends=('xcb-util-image' 'xcb-util-keysyms' 'pam' 'libev' 'libx11' 'cairo')
+depends=('xcb-util-image' 'pam' 'libev' 'cairo' 'libxkbcommon-x11')
 provides=('i3lock' 'i3lock-color')
 conflicts=('i3lock')
-makedepends=('git' 'libxkbcommon-x11')
-source=("git+https://github.com/chrjguill/$_gitname.git")
+makedepends=('git')
+source=("git+https://github.com/PandorasFox/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,18 +22,21 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_gitname}"
-    sed -i 's| -m 644 i3lock.1.gz| -Dm 644 i3lock.1.gz|' Makefile
 }
 
 build() {
     cd "${srcdir}/${_gitname}"
     # https://bugs.archlinux.org/task/31544
-    sed -i -e 's:login:system-auth:' i3lock.pam
-    make
+    sed -i -e 's:login:system-auth:' pam/i3lock
+
+    git tag -f "aur-$(git rev-parse --short HEAD)"
+    autoreconf -fi
+    ./configure --prefix="/usr" --sysconfdir="/etc"
+    make -j8
 }
 
 package() {
     cd "${srcdir}/${_gitname}"
     make DESTDIR="$pkgdir" install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
