@@ -1,0 +1,15 @@
+pkgbase = perl-number-misc
+	pkgdesc = handy utilities for numbers
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://metacpan.org/release/Number-Misc
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MI/MIKO/Number-Misc-1.2.tar.gz
+	md5sums = 7a0009b5be60378f204ed1fc9b2d5a19
+	sha512sums = f160de841bc895481f6d9422ed639391fd9e9b65239e3c0adf25b63e88902e7608049496ecec864cae39a046e5f1903f3e3ede1cb71018203f62da2ded67b8eb
+
+pkgname = perl-number-misc
+
