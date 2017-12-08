@@ -9,9 +9,10 @@ depends=('glibc' 'bash')
 makedepends=('go' 'rsync' 'go-bindata')
 optdepends=('etcd: etcd cluster required to run Kubernetes')
 arch=('x86_64' 'i686')
-source=("https://github.com/kubernetes/kubernetes/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-src.tar.gz"
         "https://github.com/kubernetes/contrib/archive/$_contribver.tar.gz"
         "kubernetes.install")
+noextract=("$pkgname-$pkgver.tar.gz")
 url="http://kubernetes.io/"
 license=("APACHE")
 backup=('etc/kubernetes/apiserver'
@@ -21,19 +22,24 @@ backup=('etc/kubernetes/apiserver'
         'etc/kubernetes/proxy'
         'etc/kubernetes/scheduler')
 install=kubernetes.install
-sha256sums=('a29d6cd171ddfe419e2317c4fcbd9d038b1b3566ea9fd3b893e1061c056cc78f'
+sha256sums=('358de791b2bfd85a9b76ee42629dd8d07ae46710ad2bd5a37a20136ec3c7cea8'
             'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
             'fb6fce3ef4b793863286dafb5856ce28027427005d6c6fd44162844921ab714b')
 
+prepare() {
+    mkdir -p $srcdir/$pkgname-$pkgver
+    tar -xf $srcdir/$pkgname-$pkgver.tar.gz -C $srcdir/$pkgname-$pkgver
+}
+
 build() {
-    cd $srcdir/kubernetes-$pkgver
+    cd $srcdir/$pkgname-$pkgver
     
     make -j1
     hack/generate-docs.sh
 }
 
 package() {
-    cd $srcdir/kubernetes-$pkgver
+    cd $srcdir/$pkgname-$pkgver
 
     [ "$CARCH" = 'i686' ] && _kubearch=386
     [ "$CARCH" = 'x86_64' ] && _kubearch=amd64
