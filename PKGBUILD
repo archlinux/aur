@@ -23,6 +23,7 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
         chromium.desktop
         chromium-exclude_unwind_tables.patch
         chromium-clang-r1.patch
@@ -30,6 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-widevine.patch)
 sha256sums=('6de2754dfc333675ae6a67ae13c95666009b35c84f847b058edbf312e42fa3af'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
+            '782a512b8bcf4aa6e58036cc3454d037d0eea69f27d5b673902d494c3fb5b20d'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'e53dc6f259acd39df13874f8a0f440528fae764b859dd71447991a5b1fac7c9c'
             'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
@@ -70,8 +72,8 @@ prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # https://crbug.com/710701
-  local _chrome_build_hash=$(curl -s https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT |
-    base64 -d | grep -Po '^parent \K[0-9a-f]{40}$')
+  local _chrome_build_hash=$(base64 -d ../chromium-$pkgver.txt |
+    grep -Po '^parent \K[0-9a-f]{40}$')
   if [[ -z $_chrome_build_hash ]]; then
     error "Unable to fetch Chrome build hash."
     return 1
