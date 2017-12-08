@@ -1,0 +1,16 @@
+pkgbase = ufo2otf-git
+	pkgdesc = Take UFO font sources and generate OTF’s and webfonts
+	pkgver = r9.9025ba2
+	pkgrel = 1
+	url = https://github.com/fonts/ufo2otf
+	arch = any
+	license = BSD 3-Clause
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python2
+	depends = fontforge
+	source = git+https://github.com/fonts/ufo2otf
+	md5sums = SKIP
+
+pkgname = ufo2otf-git
+
