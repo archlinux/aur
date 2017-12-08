@@ -3,8 +3,10 @@ post_install() {
 	/usr/lib/bareos/scripts/bareos-config initialize_local_hostname
 	/usr/lib/bareos/scripts/bareos-config initialize_passwords
 
-	chown -R bareos:bareos /etc/bareos/bareos-dir.d
-	chmod -R 750 /etc/bareos/bareos-dir.d
+	chown -R bareos:bareos /usr/share/bareos/config/bareos-dir.d
+	chmod -R 750 /usr/share/bareos/config/bareos-dir.d
+
+	chown bareos:bareos /usr/bin/bareos-dir
 
 	/usr/lib/bareos/scripts/bareos-config initialize_database_driver
 	/usr/lib/bareos/scripts/bareos-config apply_dbconfig_settings
@@ -13,4 +15,8 @@ post_install() {
 		#chown bareos:bareos "$dir"
 		#chmod 750 "$dir"
 	#done
+}
+
+post_upgrade() {
+	post_install
 }

@@ -2,7 +2,8 @@
 post_install() {
 	/usr/lib/bareos/scripts/bareos-config initialize_local_hostname
 	/usr/lib/bareos/scripts/bareos-config initialize_passwords
+}
 
-	chown -R bareos:bareos /etc/bareos/bareos-fd.d/
-	chmod -R 750 /etc/bareos/bareos-fd.d/
+post_upgrade() {
+	post_install
 }

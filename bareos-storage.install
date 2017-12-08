@@ -3,11 +3,17 @@ post_install() {
 	/usr/lib/bareos/scripts/bareos-config initialize_local_hostname
 	/usr/lib/bareos/scripts/bareos-config initialize_passwords
 
-	chown -R bareos:bareos /etc/bareos/bareos-sd.d
-	chmod -R 750 /etc/bareos/bareos-sd.d
+	chown -R bareos:bareos /usr/share/bareos/config/bareos-sd.d
+	chmod -R 750 /usr/share/bareos/config/bareos-sd.d
+
+	chown bareos:bareos /usr/bin/bareos-sd
 
 	chown bareos:bareos /var/lib/bareos/storage/
 	chmod 750 /var/lib/bareos/storage/
 
 	/usr/lib/bareos/scripts/bareos-config setup_sd_user
+}
+
+post_upgrade() {
+	post_install
 }
