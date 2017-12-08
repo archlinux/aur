@@ -1,18 +1,18 @@
-# Maintainer: anex <lane.wiscombe_at_gmail_dot_org>
-# Maintainer: Philip Müller <philm_at_manjaro_dot_org>
-# Maintainer: Rob McCathie <rob_at_manjaro_dot_org>
+# Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
+# Contributor: anex <lane.wiscombe_at_gmail_dot_org>
+# Contributor: Philip Müller <philm_at_manjaro_dot_org>
+# Contributor: Rob McCathie <rob_at_manjaro_dot_org>
 
 pkgbase=menda-themes-git
 pkgname=("menda-themes-git" "menda-themes-dark-git")
 pkgver=r85.0ee4e31
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/manjaro/artwork-menda"
 license=('GPL3')
 depends=('gtk-engine-murrine')
 source=(${pkgname}::'git+https://github.com/manjaro/artwork-menda.git')
 sha1sums=('SKIP')
-
 
 pkgver() {
     cd "$pkgname"
