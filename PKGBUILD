@@ -19,4 +19,4 @@ package() {
 }
 
 
-md5sums=('73634f06b4b794777e6dcc588d171b49')
+md5sums=('f8c22d8624ece531312b6305065d47c7')
