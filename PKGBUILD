@@ -7,7 +7,7 @@ pkgbase=linux-zen           # Build -zen kernel
 _srcname=linux-4.14
 _zenpatch=zen-4.14.4-04b958a1496cd8e9070f37702198116fa5f42151.diff
 pkgver=4.14.4
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -36,7 +36,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
             '9e7895f86ee9ad9d7531466717de3e8a8292e29f6e4d18138bc92d985edab650'
             'SKIP'
-            '92025275bb483059fdccf87f4577c729c904abb6b93747002f4590b05cd9266c'
+            'd24ad3957f9d6e272cc983a7d50b4b4b31d87e0d5b6e5cb7fc076caa9898f749'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
