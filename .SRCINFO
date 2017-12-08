@@ -6,7 +6,6 @@ pkgbase = games_nebula
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = python2-gobject
 	depends = python2-beautifulsoup4
 	depends = python2-lxml
