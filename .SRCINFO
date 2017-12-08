@@ -1,0 +1,20 @@
+pkgbase = libzlog
+	pkgdesc = a reliable pure C logging library
+	pkgver = 1.2.12
+	pkgrel = 1
+	url = http://hardysimpson.github.com/zlog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = lyx
+	makedepends = texlive-bin
+	makedepends = hevea
+	depends = glibc
+	options = !buildflags
+	source = https://github.com/HardySimpson/zlog/archive/1.2.12.tar.gz
+	source = src-makefile.patch
+	md5sums = ae9b7ede5cf3a62c3092bacf37f70de4
+	md5sums = 69098be923a08e9773fc07ee24ad2787
+
+pkgname = libzlog
+
