@@ -41,7 +41,6 @@ package() {
   install -dm755 "${pkgdir}/usr/share/smoffice2018"
   tar -xzf "${srcdir}/office.tgz" -C "${pkgdir}/usr/share/smoffice2018"
 
-#  install -d "${pkgdir}/usr/bin"
   install -Dm 755 -t "${pkgdir}/usr/bin" "${srcdir}/planmaker18" "${srcdir}/presentations18" "${srcdir}/textmaker18"
   for size in 16 32 48 64 128 256 512; do
     install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
