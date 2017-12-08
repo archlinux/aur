@@ -2,32 +2,33 @@
 
 _hkgname=apply-refact
 pkgname=haskell-apply-refact
-pkgver=0.3.0.1
-pkgrel=6
+pkgver=0.4.1.0
+pkgrel=1
 pkgdesc="Perform refactorings specified by the refact library"
-arch=('i686' 'x86_64')
 url="https://hackage.haskell.org/package/${_hkgname}"
+arch=('x86_64')
 license=("custom:BSD3")
-depends=("ghc>=8.0.1"
-         "haskell-refact>=0.2"
-         "haskell-ghc-exactprint>=0.5.2"
-         "haskell-syb"
-         "haskell-mtl"
-         "haskell-transformers-base"
-         "haskell-temporary"
-         "haskell-filemanip"
-         "haskell-unix-compat")
+depends=('ghc-libs'
+         'haskell-filemanip'
+         'haskell-ghc-exactprint'
+         'haskell-mtl'
+         'haskell-optparse-applicative'
+         'haskell-refact'
+         'haskell-syb'
+         'haskell-transformers-base'
+         'haskell-temporary'
+         'haskell-unix-compat')
+makedepends=('ghc')
 source=("https://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('1754bd300db92fdf668d4698af053d4da686512264275478946b7e0710c5e814')
+sha512sums=('8909a31715b27e327de0178c0d243390667b0bd5e303097ed21990b830d113dbc874696151b6ba2bcc71ebb021d5ffa4a3cc0420e97a4b77da132411b0c497a9')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
 
-    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic \
-        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
-        --libsubdir=\$compiler/site-local/\$pkgid
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" --datasubdir="$pkgname" \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
-    runhaskell Setup haddock --hoogle --html
     runhaskell Setup register --gen-script
     runhaskell Setup unregister --gen-script
     sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
@@ -39,12 +40,7 @@ package() {
 
     install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
     install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
-    install -d -m755 "${pkgdir}/usr/share/doc/ghc/html/libraries"
-    ln -s "/usr/share/doc/${pkgname}/html" "${pkgdir}/usr/share/doc/ghc/html/libraries/${_hkgname}"
     runhaskell Setup copy --destdir="${pkgdir}"
     install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
-
-    # Remove static libs
-    find "$pkgdir"/usr/lib -name "*.a" -delete
 }
