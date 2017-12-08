@@ -25,6 +25,8 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
+  CFLAGS="-march=${CARCH/_/-} -mtune=generic -O2 -pipe"
+  CXXFLAGS="-march=${CARCH/_/-} -mtune=generic -O2 -pipe"
   ./autogen.sh
   ./configure
   make gen
