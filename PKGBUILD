@@ -15,7 +15,7 @@ sha256sums=('afb222c55fc4eb82c5c9d3c82807fb6dcf3f7d75d50ae4d930a23eed0f343d1e')
 
 package() {
 	cd TIC-80-$pkgver/
-	rm -f TIC-80-$pkgver/lib/linux*/*
+	rm -f lib/linux*/*
 	make linux
 	ls bin
 	install -Dm755 bin/tic80 "${pkgdir}/usr/bin/tic80"
