@@ -1,18 +1,22 @@
 pkgbase = haskell-ghc-exactprint
 	pkgdesc = Using the API Annotations available from GHC 7.10.2, this library provides a means to round trip any code that can be compiled by GHC, currently excluding lhs files.
-	pkgver = 0.5.4.0
-	pkgrel = 4
+	pkgver = 0.5.5.0
+	pkgrel = 1
 	url = https://hackage.haskell.org/package/ghc-exactprint
-	arch = i686
 	arch = x86_64
 	license = custom:BSD3
-	depends = ghc>=7.10.2
-	depends = haskell-ghc-paths>=0.1
-	depends = haskell-mtl>=2.2.1
-	depends = haskell-syb>=0.5
-	depends = haskell-free>=4.12
-	source = https://hackage.haskell.org/package/ghc-exactprint-0.5.4.0/ghc-exactprint-0.5.4.0.tar.gz
-	sha256sums = d39a76c0659290075adb053c22fe4147c395a8e29f512008b16de418039aeece
+	makedepends = ghc
+	makedepends = haskell-filemanip
+	makedepends = haskell-hunit
+	makedepends = haskell-diff
+	makedepends = haskell-silently
+	depends = ghc-libs
+	depends = haskell-ghc-paths
+	depends = haskell-mtl
+	depends = haskell-syb
+	depends = haskell-free
+	source = https://hackage.haskell.org/package/ghc-exactprint-0.5.5.0/ghc-exactprint-0.5.5.0.tar.gz
+	sha512sums = 4f3a23e2fc0009fcfba059b733cc118d8822eaa06fdfe75a5a260a4132072ed432699f627a03f7310165922b8bafc39ad71889e068a5cc306b79ac918aab592a
 
 pkgname = haskell-ghc-exactprint
 
