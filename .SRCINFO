@@ -1,0 +1,21 @@
+pkgbase = aarch64-linux-musl
+	pkgdesc = Lightweight implementation of C standard library
+	pkgver = 1.1.17
+	pkgrel = 1
+	url = http://www.musl-libc.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = aarch64-linux-gnu-binutils
+	makedepends = aarch64-linux-gnu-gcc
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = https://www.musl-libc.org/releases/musl-1.1.17.tar.gz
+	source = https://www.musl-libc.org/releases/musl-1.1.17.tar.gz.asc
+	validpgpkeys = 836489290BB6B70F99FFDA0556BCDB593020450F
+	sha256sums = c8aa51c747a600704bed169340bf3e03742ceee027ea0051dd4b6cc3c5f51464
+	sha256sums = SKIP
+
+pkgname = aarch64-linux-musl
+

@@ -1,0 +1,44 @@
+# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+
+_pkgname=musl
+_target=aarch64-linux-gnu
+pkgname=aarch64-linux-musl
+pkgver=1.1.17
+pkgrel=1
+pkgdesc='Lightweight implementation of C standard library'
+arch=('i686' 'x86_64')
+url='http://www.musl-libc.org/'
+license=('MIT')
+options=('staticlibs' '!buildflags' '!strip')
+makedepends=('aarch64-linux-gnu-binutils' 'aarch64-linux-gnu-gcc')
+validpgpkeys=('836489290BB6B70F99FFDA0556BCDB593020450F')
+source=(https://www.musl-libc.org/releases/musl-$pkgver.tar.gz{,.asc})
+sha256sums=('c8aa51c747a600704bed169340bf3e03742ceee027ea0051dd4b6cc3c5f51464'
+            'SKIP')
+_sysroot=/usr/$_target/lib/musl
+
+build() {
+  cd $_pkgname-$pkgver
+  ./configure --prefix=$_sysroot --sysroot=$_sysroot \
+    --bindir=/usr/bin --target=$_target \
+    --enable-wrapper=all
+  make
+}
+
+package() {
+  cd $_pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+
+  install -dm755 "$pkgdir$_sysroot"
+  mv "$pkgdir"/lib/ld-musl*.so* "$pkgdir$_sysroot"/lib
+  rmdir "$pkgdir"/lib
+
+  pushd "$pkgdir"/usr/bin
+  for _bin in *; do
+    mv "$_bin" $_target-$_bin
+  done
+  popd
+
+  install -Dm0644 README "$pkgdir"/usr/share/doc/$pkgname/README
+  install -Dm0644 COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/COPYRIGHT
+}
