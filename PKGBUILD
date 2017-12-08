@@ -3,7 +3,7 @@
 #Contributor: Travis Hegner <travis.hegner@gmail.com>
 
 pkgname=pjproject
-pkgver=2.7
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Open source SIP stack and media stack"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,7 +13,7 @@ depends=('openssl' 'portaudio' 'speex' 'alsa-lib' 'libsamplerate' 'util-linux' '
 makedepends=('e2fsprogs' 'python')
 install=pjproject.install
 source=(http://www.pjsip.org/release/${pkgver}/pjproject-${pkgver}.tar.bz2)
-sha256sums=('1c80621a11c39151b3c2511f06abc8ef031fc712bb2f9e9923b5301b04b28f6b')
+sha256sums=('59fabc62a02b2b80857297cfb10e2c68c473f4a0acc6e848cfefe8421f2c3126')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
