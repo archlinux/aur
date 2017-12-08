@@ -5,13 +5,13 @@ pkgname=orfeo-toolbox
 pkgver=6.2.0
 _pkgver=6.2
 minorver=0
-pkgrel=6
+pkgrel=8
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
 license=('CeCILL')
 groups=()
-depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python2' 'openthreads' 
+depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python2' 'openthreads' 'boost'
 		'hdf5'  'insight-toolkit' 'libkml' 'ossim' 'libsvm' 'mapnik' 'qwt-qt4' 'opencv' 'glfw' 'openmpi')
 makedepends=('boost' 'swig' 'cmake')
 optdepends=()
@@ -44,18 +44,18 @@ build() {
   msg "Extracting archive..." 
   msg "starting make..."
   
-  if  [ -d "$srcdir/build/" ]; then
-   rm -rf $srcdir/build/
- fi
+ # if  [ -d "$srcdir/build/" ]; then
+ #  rm -rf $srcdir/build/
+ #fi
   
-  mkdir $srcdir/build/
+#  mkdir $srcdir/build/
 
  cd $srcdir/build
 
  cmake ../OTB-release-$_pkgver \
 -DCMAKE_BUILD_TYPE=Release \
--DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
--DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
+-DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC -O3" \
+-DCMAKE_C_FLAGS="$CFLAGS -fPIC -O3" \
 -DCMAKE_INSTALL_PREFIX=/usr \
 -DOTB_USE_CURL=ON \
 -DBUILD_EXAMPLES=OFF \
