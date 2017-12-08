@@ -1,5 +1,5 @@
 pkgname=storjshare-daemon
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 epoch=
 pkgdesc="A CLI Client for running a farming node"
@@ -8,7 +8,7 @@ url="https://github.com/Storj/storjshare-daemon"
 license=('AGPL3')
 groups=()
 makedepends=('npm' 'make' 'gcc' 'git')
-depends=('nodejs-lts-boron' 'python2>=2.7.0')
+depends=('nodejs-lts-carbon' 'python2>=2.7.0')
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,7 +21,7 @@ changelog=
 source=("https://github.com/Storj/storjshare-daemon/archive/v${pkgver}.tar.gz")
 noextract=("v${pkgver}.tar.gz")
 validpgpkeys=()
-sha256sums=('33f0271f4009fe95a5c67e0dccf09620451009b2c370e7917d0a2ea238f8503c')
+sha256sums=('3d35d7e6990958066a7f8899dc0f4f09aecb70443527667e9fcfbc1adcd182b6')
 
 package() {
 	cd "$srcdir"
