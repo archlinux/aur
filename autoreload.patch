@@ -1,0 +1,95 @@
+From 64be2db10c330e442272db5c661cb39c3e6340ef Mon Sep 17 00:00:00 2001
+From: NexAdn <nexadn@yandex.com>
+Date: Wed, 29 Nov 2017 16:29:47 +0100
+Subject: [PATCH] Implement automatic reload on source activation. (#40)
+
+---
+ data/locale/de-DE.ini |  6 ++++++
+ data/locale/en-US.ini |  1 +
+ src/plugin/main.c     | 11 +++++++++++
+ 3 files changed, 18 insertions(+)
+
+diff --git a/data/locale/de-DE.ini b/data/locale/de-DE.ini
+index a2d8649..cedbf7f 100644
+--- a/data/locale/de-DE.ini
++++ b/data/locale/de-DE.ini
+@@ -5,7 +5,13 @@ Width="Breite"
+ Height="Höhe"
+ FPS="FPS"
+ ReloadPage="Seite Neuladen"
++ReloadOnScene="Bei Aktivierung neuladen"
+ FlashPath="Flash Plugin Pfad"
+ FlashVersion="Flash Plugin Version"
+ RestartBrowser="Browser Neustarten"
+ CustomCSS="Eigenes CSS"
++CommandLineArguments="Kommandozeilen-Argumente"
++HideScrollbars="Scrolleisten verstecken"
++Zoom="Zoom"
++ScrollVertical="Vertikal scrollen"
++ScrollHorizontal="Horizontal scrollen"
+\ No newline at end of file
+diff --git a/data/locale/en-US.ini b/data/locale/en-US.ini
+index 0ac91db..ee7edd3 100644
+--- a/data/locale/en-US.ini
++++ b/data/locale/en-US.ini
+@@ -5,6 +5,7 @@ Width="Width"
+ Height="Height"
+ FPS="FPS"
+ ReloadPage="Reload Page"
++ReloadOnScene="Reload on activate"
+ FlashPath="Flash Plugin Path"
+ FlashVersion="Flash Plugin Version"
+ RestartBrowser="Restart Browser"
+diff --git a/src/plugin/main.c b/src/plugin/main.c
+index 56a398e..1e6ef9a 100644
+--- a/src/plugin/main.c
++++ b/src/plugin/main.c
+@@ -34,6 +34,7 @@ struct browser_data {
+ 	uint32_t zoom;
+ 	uint32_t scroll_vertical;
+ 	uint32_t scroll_horizontal;
++	bool reload_on_scene;
+ 
+ 	/* internal data */
+ 	obs_source_t *source;
+@@ -66,6 +67,7 @@ static void browser_update(void *vptr, obs_data_t *settings)
+ 	uint32_t zoom = obs_data_get_int(settings, "zoom");
+ 	uint32_t scroll_vertical = obs_data_get_int(settings, "scroll_vertical");
+ 	uint32_t scroll_horizontal = obs_data_get_int(settings, "scroll_horizontal");
++	data->reload_on_scene = obs_data_get_bool(settings, "reload_on_scene");
+ 
+ 	bool is_local = obs_data_get_bool(settings, "is_local_file");
+ 	const char *url;
+@@ -200,6 +202,13 @@ static bool reload_button_clicked(obs_properties_t *props, obs_property_t *prope
+ 	return true;
+ }
+ 
++static void reload_on_scene(void* vptr)
++{
++	struct browser_data* data = vptr;
++	if (data->reload_on_scene)
++		browser_manager_reload_page(data->manager);
++}
++
+ static bool restart_button_clicked(obs_properties_t *props, obs_property_t *property, void *vptr)
+ {
+ 	UNUSED_PARAMETER(props);
+@@ -251,6 +260,7 @@ static obs_properties_t *browser_get_properties(void *vptr)
+ 			0, 10000000, 1);
+ 
+ 	obs_properties_add_button(props, "reload", obs_module_text("ReloadPage"), reload_button_clicked);
++	obs_properties_add_bool(props, "reload_on_scene", obs_module_text("ReloadOnScene"));
+ 
+ 	obs_properties_add_path(props, "css_file", obs_module_text("CustomCSS"),
+ 			OBS_PATH_FILE, "*.css", NULL);
+@@ -376,6 +386,7 @@ bool obs_module_load(void)
+ 	info.video_tick     = browser_tick;
+ 	info.video_render   = browser_render;
+ 
++	info.activate		= reload_on_scene;
+ 	info.mouse_click    = browser_mouse_click;
+ 	info.mouse_move     = browser_mouse_move;
+ 	info.mouse_wheel    = browser_mouse_wheel;
+--
+libgit2 0.26.0
+
