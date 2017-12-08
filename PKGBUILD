@@ -3,13 +3,13 @@
 
 pkgname=axoloti
 pkgver=1.0.12_1
-pkgrel=1
+pkgrel=3
 pkgdesc='Firmware and GUI for the Axoloti Core'
 arch=('x86_64')
 url='http://www.axoloti.com'
 license=('GPL')
-depends=('java-runtime=7' 'bash' 'gtk2' 'udev' 'lib32-bzip2' 'lib32-zlib' 'lib32-ncurses')
-makedepends=('apache-ant' 'unzip' 'git')
+depends=('java-runtime' 'bash' 'udev' 'lib32-bzip2' 'lib32-zlib' 'lib32-ncurses')
+makedepends=('apache-ant' 'git')
 conflicts=('axoloti-git' 'axoloti-runtime-git')
 options=('!strip')
 install="$pkgname.install"
@@ -27,7 +27,7 @@ _dfu_util_archive=${_dfu_util}.tar.gz
 source=(
   "git+https://github.com/axoloti/axoloti.git"
   "axoloti.sh"
-  "http://sourceforge.net/projects/chibios/files/ChibiOS_RT%20stable/Version%20${_chibios_version}/${_chibios_archive}"
+  "https://sourceforge.net/projects/chibios/files/ChibiOS%20GPL3/Version%20${_chibios_version}/${_chibios_archive}"
   "https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q2-update/+download/${_toolchain_archive}"
   "${_libusb_archive}::http://sourceforge.net/projects/libusb/files/libusb-1.0/${_libusb}/${_libusb_archive}/download"
   "http://dfu-util.sourceforge.net/releases/${_dfu_util_archive}"
@@ -47,7 +47,7 @@ build() {
     git checkout ${pkgver//_/-}
     mkdir -p "$srcdir/${pkgname}-runtime/"{platform_linux/{bin,lib,src},chibios}
     cp -r "$srcdir/$_chibios"/* "$srcdir/${pkgname}-runtime/chibios/"
-    unzip -q -o "$srcdir/${pkgname}-runtime/chibios/ext/fatfs-0.9-patched.zip" -d "$srcdir/${pkgname}-runtime/chibios/ext"
+    bsdtar -xf "$srcdir/${pkgname}-runtime/chibios/ext/fatfs-0.9-patched.zip" -C "$srcdir/${pkgname}-runtime/chibios/ext"
     cp -r "$srcdir/$_toolchain"/* "$srcdir/${pkgname}-runtime/platform_linux/"
     cd "$srcdir/$_libusb"
     patch -N -p1 < "$srcdir/$pkgname/platform_linux/src/libusb.stdfu.patch"
