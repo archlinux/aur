@@ -1,6 +1,6 @@
 pkgbase = intel_nuc_led-dkms-git
 	pkgdesc = Intel NUC7i[x]BN and NUC6CAY LED Control for Linux (DKMS)
-	pkgver = r1.a59a129
+	pkgver = r2.65e93ef
 	pkgrel = 1
 	url = https://github.com/milesp20/intel_nuc_led
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = intel_nuc_led-dkms-git
 	source = git+https://github.com/milesp20/intel_nuc_led.git
 	source = dkms.conf
 	md5sums = SKIP
-	md5sums = 3c4f2898ea26607de03f03a75af731c8
+	md5sums = 80494ee6de55e6ac0e4727fab41da5d2
 
 pkgname = intel_nuc_led-dkms-git
 
