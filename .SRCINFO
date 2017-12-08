@@ -1,14 +1,14 @@
 pkgbase = archaudit-report
 	pkgdesc = Report on applications with inherited security advisories
-	pkgver = 1.04
+	pkgver = 1.05
 	pkgrel = 1
 	url = https://github.com/Irvinehimself/ArchAudit-Report
 	arch = any
 	license = GPL3
 	depends = arch-audit
 	depends = pkgtools
-	source = https://github.com/Irvinehimself/ArchAudit-Report/archive/v1.04.tar.gz
-	sha256sums = 710e86f6421268c84c6c40101d21317addbbeead7aa237a599f688f8a3e09a43
+	source = https://github.com/Irvinehimself/ArchAudit-Report/archive/1.05.tar.gz
+	sha256sums = 90c80802e0a21d4f948348433e43895863e513f568719ee8cdb81059e425322d
 
 pkgname = archaudit-report
 
