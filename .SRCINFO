@@ -1,0 +1,17 @@
+pkgbase = xim-git
+	pkgdesc = Vim-like hex editor.
+	pkgver = r11.e432a7f
+	pkgrel = 1
+	url = https://github.com/FHMS-ITS/Xim
+	arch = x86_64
+	arch = i686
+	license = AGPLv3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = xim
+	source = git+https://github.com/FHMS-ITS/Xim
+	md5sums = SKIP
+
+pkgname = xim-git
+
