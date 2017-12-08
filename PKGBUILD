@@ -323,23 +323,28 @@ package_nvidia-full-beta() {
   _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
   _extramodules=extramodules-$_major-ARCH
 
-  # Install
+  # Nvidia kernel module; provides low-level access to your NVIDIA hardware for the other components. Generally
+  # loaded into the kernel when the X server is started, to be used by the X driver and OpenGL. Consists of two
+  # pieces: the binary-only core, and a kernel interface that must be compiled specifically for your kernel version,
+  # because the Linux kernel doesn't have a consistent binary interface like the X server.
   install -Dm644 $_pkg/kernel/nvidia.ko \
          "$pkgdir"/usr/lib/modules/$_extramodules/nvidia.ko
 
-  # Install UVM Module: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
+  # NVIDIA Unified Memory kernel module; provides functionality for sharing memory between the CPU and GPU in
+  # CUDA programs. Generally loaded into the kernel when a CUDA program is started, and used by the CUDA
+  # driver on supported platforms: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
   install -Dm644 $_pkg/kernel/nvidia-uvm.ko \
          "$pkgdir"/usr/lib/modules/$_extramodules/nvidia-uvm.ko
 
-  # Install Modeset module:
-  #
-  # "nvidia-modeset.ko does not provide any new user-visible functionality or interfaces to third party applications.
-  #  However, in a later release, nvidia-modeset.ko will be used as a basis for the modesetting interface provided by
-  #  the kernel's direct rendering manager (DRM)."
+  # Kernel module responsible for programming the display engine of the GPU. User-mode NVIDIA driver components
+  # such as the NVIDIA X driver, OpenGL driver, and VDPAU driver communicate with nvidia-modeset.ko through the
+  # /dev/nvidia-modeset device file.
   install -Dm644 $_pkg/kernel/nvidia-modeset.ko \
          "$pkgdir"/usr/lib/modules/$_extramodules/nvidia-modeset.ko
 
-  # Install DRM module ("registers as a DRM driver with both PRIME and DRM KMS support")
+  # NVIDIA DRM kernel module; registers as a DRM driver to provide GEM and PRIME DRM capabilities
+  # for atomic DRM KMS and graphics display offload on Optimus notebooks:
+  # https://devtalk.nvidia.com/default/topic/925605/linux/nvidia-364-12-release-vulkan-glvnd-drm-kms-and-eglstreams/
   install -Dm644 $_pkg/kernel/nvidia-drm.ko \
          "$pkgdir"/usr/lib/modules/$_extramodules/nvidia-drm.ko
 
