@@ -1,0 +1,17 @@
+pkgbase = python-minio-git
+	pkgdesc = Minio Python Library for Amazon S3 Compatible Cloud Storage
+	pkgver = r728.f1130fd
+	pkgrel = 1
+	url = https://github.com/minio/minio-py
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = python-minio=r728.f1130fd
+	conflicts = python-minio
+	source = python-minio::git+https://github.com/minio/minio-py
+	md5sums = SKIP
+
+pkgname = python-minio-git
+
