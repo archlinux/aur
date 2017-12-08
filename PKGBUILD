@@ -4,7 +4,7 @@
 pkgname=asbru-cm-git
 _pkgname=${pkgname%-git}
 pkgver=5.0.0_RC4
-pkgrel=3
+pkgrel=4
 arch=('any')
 license=('GPL3')
 pkgdesc="A free and open-source connection manager. GIT version"
@@ -28,11 +28,11 @@ package() {
 	cp -rp res utils lib $pkgdir/opt/asbru/
 	cp -p res/pac_bash_completion $pkgdir/etc/bash_completion.d/asbru_bash_completion
 	cp res/asbru-logo-64.png $pkgdir/usr/share/pixmaps/asbru.png
-	ln -sf /opt/asbru/asbru $pkgdir/usr/bin/asbru
 	cp res/asbru.desktop $pkgdir/usr/share/applications/
 	gzip -c res/pac.1 > $pkgdir/usr/share/man/man1/asbru.1.gz
-	cp -p asbru $pkgdir/opt/asbru/asbru
-	chmod 755 $pkgdir/opt/asbru/asbru
+	cp -p ${_pkgname} $pkgdir/opt/asbru/${_pkgname}
+	chmod 755 $pkgdir/opt/asbru/${_pkgname}
+	ln -sf /opt/asbru/${_pkgname} $pkgdir/usr/bin/${_pkgname}
 }
 
 
