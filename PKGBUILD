@@ -2,7 +2,7 @@
 
 pkgname=cquery-git
 _pkgname=cquery
-pkgver=695.336ba46
+pkgver=791.ebad9e2
 pkgrel=1
 pkgdesc='Low-latency vscode language server for large C++ code-bases, powered by libclang.'
 arch=('any')
@@ -25,7 +25,7 @@ prepare() {
     cd $_pkgname
     git submodule update --init --recursive
     sed -e "s/, '-Werror'//g" -i ./wscript
-    sed -e "s/rpath=\[CLANG_LIB_DIR\]/rpath=\['lib'\]/g" -i ./wscript
+    sed -e "s/rpath=.*,/rpath=\['lib'\],/g" -i ./wscript
 }
 
 build() {
