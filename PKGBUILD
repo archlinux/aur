@@ -17,6 +17,5 @@ package() {
 	cd TIC-80-$pkgver/
 	rm -f lib/linux*/*
 	make linux
-	ls bin
 	install -Dm755 bin/tic80 "${pkgdir}/usr/bin/tic80"
 }
