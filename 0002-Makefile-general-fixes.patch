@@ -1,14 +1,14 @@
-From cb30c146369a1397491272653cab9a5190d50041 Mon Sep 17 00:00:00 2001
+From 1e082c4ed1be48954ff9f61384789525e5bda80e Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:21:54 +0300
-Subject: [PATCH 2/5] Makefile: general fixes
+Subject: [PATCH 2/6] Makefile: general fixes
 
 ---
  Makefile | 58 +++++++++++++++++++++++++++++-----------------------------
  1 file changed, 29 insertions(+), 29 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 8079ddf..022f072 100644
+index bcbb4a3..09388c1 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -43,7 +43,7 @@ FOODB=$(PREFIX)/share/foomatic/db/source
@@ -20,7 +20,7 @@ index 8079ddf..022f072 100644
  ifeq ($(UNAME),Darwin)
      LPuid=-oroot
      LPgid=-gwheel
-@@ -392,8 +392,8 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
+@@ -395,8 +395,8 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
  #
  # The usual build rules
  #
@@ -31,7 +31,7 @@ index 8079ddf..022f072 100644
  	all-done
  
  all-test:
-@@ -626,8 +626,8 @@ command2foo2lava-pjl.o: command2foo2lava-pjl.c
+@@ -629,8 +629,8 @@ command2foo2lava-pjl.o: command2foo2lava-pjl.c
  #
  # Installation rules
  #
@@ -42,7 +42,7 @@ index 8079ddf..022f072 100644
  	    install-gui install-desktop install-filter \
  	    install-man install-doc
  	#
-@@ -676,8 +676,8 @@ install-prog:
+@@ -679,8 +679,8 @@ install-prog:
  	$(INSTALL) -d $(BIN)
  	$(INSTALL) -c $(PROGS) $(SHELLS) $(BIN)/
  	if [ "$(BINPROGS)" != "" ]; then \
@@ -53,7 +53,7 @@ index 8079ddf..022f072 100644
  	fi
  	#
  	# Install gamma correction files.  These are just templates,
-@@ -757,7 +757,7 @@ install-crd:
+@@ -760,7 +760,7 @@ install-crd:
  	# Install prebuilt CRD files (from m2300w project)
  	#
  	$(INSTALL) -d $(SHAREZJS)/
@@ -62,7 +62,7 @@ index 8079ddf..022f072 100644
  	for i in crd/zjs/*.*; do \
  	    $(INSTALL) -c -m 644 $$i $(SHAREZJS)/crd/; \
  	done
-@@ -765,7 +765,7 @@ install-crd:
+@@ -768,7 +768,7 @@ install-crd:
  	# Install prebuilt CRD files for CLP-300/CLP-600
  	#
  	$(INSTALL) -d $(SHAREQPDL)/
@@ -71,7 +71,7 @@ index 8079ddf..022f072 100644
  	for i in crd/qpdl/*cms* crd/qpdl/*.ps; do \
  	    $(INSTALL) -c -m 644 $$i $(SHAREQPDL)/crd/; \
  	done
-@@ -775,7 +775,7 @@ install-psfiles:
+@@ -778,7 +778,7 @@ install-psfiles:
  	# Install prebuilt psfiles files (from m2300w project)
  	#
  	$(INSTALL) -d $(SHAREHP)/
@@ -80,7 +80,7 @@ index 8079ddf..022f072 100644
  	for i in psfiles/*.*; do \
  	    $(INSTALL) -c -m 644 $$i $(SHAREHP)/psfiles/; \
  	done
-@@ -789,14 +789,14 @@ install-extra:
+@@ -792,14 +792,14 @@ install-extra:
  	#
  	$(INSTALL) -d $(SHAREZJS)/
  	# foo2zjs ICM files (if any)
@@ -97,7 +97,7 @@ index 8079ddf..022f072 100644
  	for i in sihp1*.img; do \
  	    if [ -f $$i ]; then \
  		base=`basename $$i .img`; \
-@@ -805,7 +805,7 @@ install-extra:
+@@ -808,7 +808,7 @@ install-extra:
  	    fi; \
  	done
  	# foo2xqx Firmware files (if any)
@@ -106,7 +106,7 @@ index 8079ddf..022f072 100644
  	for i in sihpP*.img; do \
  	    if [ -f $$i ]; then \
  		base=`basename $$i .img`; \
-@@ -814,49 +814,49 @@ install-extra:
+@@ -817,49 +817,49 @@ install-extra:
  	    fi; \
  	done
  	# foo2oak ICM files (if any)
@@ -163,7 +163,7 @@ index 8079ddf..022f072 100644
  	for i in hbpl*.icm; do \
  	    if [ -f $$i ]; then \
  		$(INSTALL) -c -m 644 $$i $(SHAREHBPL)/icm/; \
-@@ -873,14 +873,14 @@ install-ppd:
+@@ -883,14 +883,14 @@ install-ppd:
  	# Install PPD files for CUPS
  	#
  	export PATH=$$PATH:`pwd`:; \
@@ -180,7 +180,7 @@ index 8079ddf..022f072 100644
  	    done; \
  	    ppdmgr -u; \
  	elif [ -d $(PPD) ]; then \
-@@ -896,7 +896,7 @@ install-ppd:
+@@ -907,7 +907,7 @@ install-ppd:
  	    cd PPD; \
  	    for ppd in *.ppd; do \
  		modify-ppd <$$ppd | gzip > $(PPD)/foo2zjs/$$ppd.gz; \
@@ -189,7 +189,7 @@ index 8079ddf..022f072 100644
  	    done; \
  	fi
  	#
-@@ -906,21 +906,21 @@ install-ppd:
+@@ -917,21 +917,21 @@ install-ppd:
  	    cd PPD; \
  	    for ppd in *.ppd; do \
  		modify-ppd <$$ppd | gzip > $(MODEL)/$$ppd.gz; \
@@ -214,7 +214,7 @@ index 8079ddf..022f072 100644
  	    done; \
  	fi
  
-@@ -961,7 +961,7 @@ DEVDDIR=/etc/devd
+@@ -972,7 +972,7 @@ DEVDDIR=/etc/devd
  ifeq ($(UNAME),Darwin)
  install-hotplug: install-hotplug-test install-hotplug-osx
  else
@@ -223,7 +223,7 @@ index 8079ddf..022f072 100644
  endif
  
  install-hotplug-test:
-@@ -1064,8 +1064,8 @@ install-hotplug-osx:
+@@ -1075,8 +1075,8 @@ install-hotplug-osx:
  
  install-filter:
  	if [ "$(CUPS_SERVERBIN)" != "" ]; then \
@@ -235,5 +235,5 @@ index 8079ddf..022f072 100644
  
  CUPSDCONF=/etc/cups/cupsd.conf
 -- 
-2.12.1
+2.15.1
 

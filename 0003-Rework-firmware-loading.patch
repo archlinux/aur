@@ -1,7 +1,7 @@
-From 91820f100be14b1c9db30bcf315537f346e0db62 Mon Sep 17 00:00:00 2001
+From 30bf1a17b94d95e550fa5528260c63f745d74c20 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:18:08 +0300
-Subject: [PATCH 3/5] Rework firmware loading
+Subject: [PATCH 3/6] Rework firmware loading
 
 ---
  Makefile                   | 101 ++++++++++-----------------------
@@ -15,10 +15,10 @@ Subject: [PATCH 3/5] Rework firmware loading
  create mode 100644 usblp.conf
 
 diff --git a/Makefile b/Makefile
-index 022f072..ca39cf3 100644
+index 09388c1..429b842 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -172,6 +172,7 @@ FILES	=	\
+@@ -173,6 +173,7 @@ FILES	=	\
  		ddst.h \
  		ddstdecode.c \
  		ddstdecode.1in \
@@ -26,7 +26,7 @@ index 022f072..ca39cf3 100644
  		foo2zjs-wrapper.in \
  		foo2zjs-wrapper.1in \
  		foo2hp2600-wrapper.in \
-@@ -295,10 +296,7 @@ MANPAGES+=	foo2zjs-pstops.1 arm2hpdl.1 usb_printerid.1
+@@ -298,10 +299,7 @@ MANPAGES+=	foo2zjs-pstops.1 arm2hpdl.1 usb_printerid.1
  MANPAGES+=	printer-profile.1
  LIBJBG	=	jbig.o jbig_ar.o
  BINPROGS=
@@ -38,7 +38,7 @@ index 022f072..ca39cf3 100644
  
  # Compiler flags
  #CFLAGS +=	-O2 -Wall -Wno-unused-but-set-variable
-@@ -392,7 +390,7 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
+@@ -395,7 +393,7 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
  #
  # The usual build rules
  #
@@ -47,7 +47,7 @@ index 022f072..ca39cf3 100644
  	all-icc2ps man doc \
  	all-done
  
-@@ -495,6 +493,18 @@ foo2xqx: foo2xqx.o $(LIBJBG)
+@@ -498,6 +496,18 @@ foo2xqx: foo2xqx.o $(LIBJBG)
  foo2zjs: foo2zjs.o $(LIBJBG)
  	$(CC) $(CFLAGS) -o $@ foo2zjs.o $(LIBJBG)
  
@@ -66,7 +66,7 @@ index 022f072..ca39cf3 100644
  
  foo2ddst-wrapper: foo2ddst-wrapper.in Makefile
  	[ ! -f $@ ] || chmod +w $@
-@@ -950,13 +960,15 @@ install-gui:
+@@ -961,13 +971,15 @@ install-gui:
  	$(INSTALL) -c -m 755 hplj10xx_gui.tcl $(SHAREZJS)
  	
  
@@ -87,7 +87,7 @@ index 022f072..ca39cf3 100644
  
  ifeq ($(UNAME),Darwin)
  install-hotplug: install-hotplug-test install-hotplug-osx
-@@ -997,67 +1009,14 @@ install-hotplug-test:
+@@ -1008,67 +1020,14 @@ install-hotplug-test:
  	#
  
  install-hotplug-prog:
@@ -392,5 +392,5 @@ index 0000000..5a604bf
 @@ -0,0 +1 @@
 +blacklist usblp
 -- 
-2.12.1
+2.15.1
 

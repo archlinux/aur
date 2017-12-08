@@ -1,14 +1,14 @@
-From 8f1dc9498cb4f7969d5700904d4b19d8517c9679 Mon Sep 17 00:00:00 2001
+From 0deabbd1bd926c10b83776251262e7ae2707b455 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 22 Oct 2016 12:35:14 +0300
-Subject: [PATCH 1/5] Makefile: DESTDIR support
+Subject: [PATCH 1/6] Makefile: DESTDIR support
 
 ---
  Makefile | 27 ++++++++++++++-------------
  1 file changed, 14 insertions(+), 13 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 051dc66..8079ddf 100644
+index 450ad58..bcbb4a3 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -39,7 +39,7 @@ INSTALL=install
@@ -20,7 +20,7 @@ index 051dc66..8079ddf 100644
  
  # User ID's
  LPuid=-oroot
-@@ -251,8 +251,9 @@ FILES	=	\
+@@ -253,8 +253,9 @@ FILES	=	\
  
  # CUPS vars
  CUPS_SERVERBIN := $(DESTDIR)$(shell cups-config --serverbin 2>/dev/null)
@@ -32,7 +32,7 @@ index 051dc66..8079ddf 100644
  
  # hpclj2600n-0.icm km2430_0.icm km2430_1.icm km2430_2.icm samclp300-0.icm
  # sihp1000.img sihp1005.img sihp1020.img sihp1018.img
-@@ -676,7 +677,7 @@ install-prog:
+@@ -679,7 +680,7 @@ install-prog:
  	$(INSTALL) -c $(PROGS) $(SHELLS) $(BIN)/
  	if [ "$(BINPROGS)" != "" ]; then \
  	    $(INSTALL) -d $(UDEVBIN); \
@@ -41,7 +41,7 @@ index 051dc66..8079ddf 100644
  	fi
  	#
  	# Install gamma correction files.  These are just templates,
-@@ -730,10 +731,10 @@ install-foo:
+@@ -733,10 +734,10 @@ install-foo:
  	#
  	# Clear foomatic cache and rebuild database if needed
  	#
@@ -56,7 +56,7 @@ index 051dc66..8079ddf 100644
  	    foomatic-combo-xml -O >overview.xml; \
  	fi
  
-@@ -863,7 +864,7 @@ install-extra:
+@@ -873,7 +874,7 @@ install-extra:
  	done
  
  MODEL=$(PREFIX)/share/cups/model
@@ -65,7 +65,7 @@ index 051dc66..8079ddf 100644
  MACMODEL=/Library/Printers/PPDs/Contents/Resources
  PPD=$(PREFIX)/share/ppd
  VARPPD=/var/lp/ppd
-@@ -923,9 +924,9 @@ install-ppd:
+@@ -934,9 +935,9 @@ install-ppd:
  	    done; \
  	fi
  
@@ -78,7 +78,7 @@ index 051dc66..8079ddf 100644
  
  install-desktop:
  	#
-@@ -949,7 +950,7 @@ install-gui:
+@@ -960,7 +961,7 @@ install-gui:
  	$(INSTALL) -c -m 755 hplj10xx_gui.tcl $(SHAREZJS)
  	
  
@@ -88,5 +88,5 @@ index 051dc66..8079ddf 100644
  LIBUDEVDIR=/lib/udev/rules.d
  RULES=hplj10xx.rules
 -- 
-2.12.1
+2.15.1
 
