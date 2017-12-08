@@ -3,16 +3,15 @@
 
 pkgname=subsurface-libdc-git
 _pkgname=libdc
-pkgver=20170709.eed75cb
+pkgver=20171206.db70c58
 pkgrel=1
 pkgdesc='Library for communication with dive computers'
-url='http://git.subsurface-divelog.org/'
+url='https://github.com/Subsurface-divelog/libdc'
 license=('LGPL')
-arch=('i686' 'x86_64')
-depends=('libusb')
-makedepends=('git')
+arch=('x86_64')
 source=('git+https://github.com/Subsurface-divelog/libdc')
 sha256sums=('SKIP')
+makedepends=('git')
 
 conflicts=('subsurface-libdc')
 provides=('subsurface-libdc')
@@ -27,7 +26,7 @@ build() {
 	autoreconf --install
 	./configure \
 		--prefix=/usr \
-		--program-prefix="${_pkgname}-" \
+		--program-prefix=libdc- \
 
 	make
 }
