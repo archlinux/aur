@@ -24,10 +24,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	autoreconf --install
-	./configure \
-		--prefix=/usr \
-		--program-prefix=libdc- \
-
+	./configure --prefix=/usr
 	make
 }
 
