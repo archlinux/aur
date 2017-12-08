@@ -9,6 +9,7 @@ license=('GPL')
 url='https://github.com/yancharkin/games_nebula'
 depends=('python2-gobject' 'python2-beautifulsoup4' 'python2-lxml' 'python2-pillow' 'innoextract' 'htmlcxx' 'lgogdownloader')
 makedepends=('git')
+optdepends=('gksu' 'xterm' 'curl' 'tar' 'p7zip' 'cabextract' 'unshield' 'ffmpeg' 'wine' 'winetricks' 'dosbox' 'scummvm' 'megatools')
 provides=('games_nebula')
 conflicts=('games_nebula')
 source=(${pkgname}_${pkgver}.tar.gz::"https://github.com/yancharkin/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.tar.gz")
