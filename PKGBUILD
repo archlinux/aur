@@ -38,7 +38,8 @@ build() {
 
 check() {
     cd $_pkgname/build
-    yes | ./app --test-unit --test-index
+    ln -sf ../tests tests
+    yes | ./app --test-unit --test-index --clang-sanity-check
 }
 
 package() {
