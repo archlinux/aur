@@ -2,8 +2,8 @@
 pkgbase=python-fontmath
 pkgname=(python-fontmath python2-fontmath)
 _pkgname=fontMath
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.4
+pkgrel=1
 pkgdesc='A set of objects for performing math operations on font data.'
 arch=('any')
 url='https://github.com/typesupply/fontMath'
@@ -13,7 +13,7 @@ depends=('python' 'python-fonttools' 'python-ufolib'
 makedepends=('python-pip' 'python2-pip')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/py2.py3/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}-py2.py3-none-any.whl")
-sha256sums=('de8d28ec5f92c3c5d8af83a2b5c0cfa41834e3fc49e82befde4cde3eea5d74f4')
+sha256sums=('0be82c86eeb620608f7d6c4509e66246d02b95641d686cb8df668a6697ee8f9d')
 
 package_python-fontmath() {
   depends=('python' 'python-fonttools' 'python-ufolib')
