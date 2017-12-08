@@ -31,7 +31,12 @@ start() {
 
 stop() {
   ebegin "Stopping $(basename "${_DAEMON}")"
-  start-stop-daemon --stop --exec "${_DAEMON}"
+  start-stop-daemon --stop --exec "${_DAEMON}" || {
+    _pids="$(pidof "${_DAEMON}")"
+    for _pid in ${_pids}; do
+      kill -9 "${_pid}" &> /dev/null
+    done
+  }
   eend "$?"
 }
 

@@ -42,7 +42,7 @@ case "$1" in
   ;;
   stop)
     stat_busy "Stopping ${_pretty_name}"
-    [ ! -z "$PID" ] && kill $PID &> /dev/null
+    [ ! -z "$PID" ] && kill $PID &> /dev/null || kill -9 $PID &>/dev/null
     if [ $? -gt 0 ]; then
       stat_fail
     else
