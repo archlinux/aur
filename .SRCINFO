@@ -1,7 +1,7 @@
 pkgbase = vmware-workstation
 	pkgdesc = The industry standard for running multiple operating systems as virtual machines on a single Linux PC.
 	pkgver = 14.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.vmware.com/products/workstation-for-linux.html
 	install = vmware-workstation.install
 	arch = x86_64
@@ -78,7 +78,7 @@ pkgbase = vmware-workstation
 	sha256sums = 4f07320c1f9e71e649cf3e98ec107ba5521d52e50ad781ccc9dc1b61817342ae
 	sha256sums = 3aeee4ddad2e94e5dbd8da3f995ad3f887f35a241d82e8c64a22f792c159cc44
 	sha256sums = 2c6076d55da659723fb7b7871baaee95df3bdcd90e448955ed1ec53df6a1f2d0
-	sha256sums = 522203ef0fa9cc621a67ba3df9d2070bbc21d9fdc85536ed10ebd85b99b83251
+	sha256sums = b739b0c99fb20dc44838ce137e254773b7be051f327eb67fd8cb1342a3ecf344
 
 pkgname = vmware-workstation
 
