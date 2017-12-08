@@ -1,0 +1,15 @@
+pkgbase = jool-dkms-git
+	pkgdesc = Open Source SIIT and NAT64 for Linux.
+	pkgver = 3.5.5.r4.g375e1802
+	pkgrel = 1
+	url = https://www.jool.mx
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	depends = libnl
+	source = git+https://github.com/NICMx/Jool.git
+	md5sums = SKIP
+
+pkgname = jool-dkms-git
+
