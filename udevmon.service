@@ -1,8 +1,9 @@
 [Unit]
 Description=udevmon
+After=systemd-user-sessions.service
 
 [Service]
 ExecStart=/usr/bin/nice -n -20 /usr/bin/udevmon -c /etc/udevmon.yaml
 
 [Install]
-WantedBy=basic.target
+WantedBy=multi-user.target
