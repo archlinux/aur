@@ -9,9 +9,9 @@
 #
 
 pkgname='electron-cash-git'
-pkgdesc="Lightweight Bitcoin Cash wallet"
-pkgver=2.9.4.r0.gf493cadb
-pkgrel=2
+pkgdesc='Lightweight Bitcoin Cash wallet'
+pkgver=3.0.r2.gb81a3f34
+pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
 arch=('any')
@@ -19,45 +19,40 @@ license=('MIT')
 makedepends=(
   'git'
   'protobuf'
-  'python2-pycurl'
-  'python2-setuptools'
-  'python2-tox'
+  'python-pycurl'
+  'python-setuptools'
+  'python-tox'
 )
 depends=(
   'hicolor-icon-theme'
-  'python2'
-  'python2-dnspython'
-  'python2-ecdsa'
-  'python2-jsonrpclib-pelix'
-  'python2-pbkdf2'
-  'python2-protobuf'
-  'python2-pyaes'
-  'python2-pyqt4'
-  'python2-pyqt5'
-  'python2-pysocks'
-  'python2-qrcode'
-  'python2-requests'
-  'python2-six'
-  'qt4'
+  'python'
+  'python-dnspython'
+  'python-ecdsa'
+  'python-jsonrpclib-pelix'
+  'python-pbkdf2'
+  'python-protobuf'
+  'python-pyaes'
+  'python-pyqt5'
+  'python-pysocks'
+  'python-qrcode'
+  'python-requests'
+  'python-six'
   'qt5-base'
 )
 optdepends=(
   'desktop-file-utils: update desktop icon'
   'gtk-update-icon-cache: update desktop icon'
-  'python2-amodem: air-gapped transaction signing over audio modem'
-  'python2-btchip: Ledger hardware wallet support'
-  'python2-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
-  'python2-keepkey: KeepKey hardware wallet support'
-  'python2-matplotlib: plot transaction history in graphical mode'
-  'python2-rpyc: send commands to Electrum Python console from an external script'
-  'python2-trezor: Trezor hardware wallet support'
+  'python-btchip: Ledger hardware wallet support'
+  'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
+  'python-matplotlib: plot transaction history in graphical mode'
+  'python-rpyc: send commands to Electrum Python console from an external script'
   'xdg-utils: update desktop icon'
   'zbar: QR code reading support'
 )
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")
 source=(
-  "${pkgname/-git}::git+https://github.com/fyookball/electrum.git"
+  "${pkgname}::git+https://github.com/fyookball/electrum.git"
   "${pkgname}.install"
 )
 sha256sums=(
@@ -67,35 +62,35 @@ sha256sums=(
 install="${pkgname}.install"
 
 pkgver() {
-  cd "${pkgname/-git/}"
+  cd "${pkgname}"
 
   git describe --long --tags \
     | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname/-git/}"
+  cd "${pkgname}"
 
   # Compile the icons file for Qt:
-  python2-pyrcc5 icons.qrc -o gui/qt/icons_rc.py
+  pyrcc5 icons.qrc -o gui/qt/icons_rc.py
   # Compile the protobuf description file:
   protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
   # Create translations (optional):
-  python2 contrib/make_locale
+  python contrib/make_locale
   # Build
-  python2 setup.py build
+  python setup.py build
 }
 
 check() {
-  cd "${pkgname/-git/}"
+  cd "${pkgname}"
 
-  tox2
+  tox -e py36
 }
 
 package() {
-  cd "${pkgname/-git/}"
+  cd "${pkgname}"
 
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 # vim: ts=2 sw=2 et:
