@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Morten Linderud <foxboron@archlinux.org>
 
-pkgbase=taskw
+pkgbase=python2-taskw
 pkgname=(python-taskw python2-taskw)
 pkgver=1.2.0
 pkgrel=1
