@@ -9,7 +9,7 @@ url="http://wxwidgets.org"
 license=('custom:wxWindows')
 provides=('wxbase')
 conflicts=('wxgtk' 'wxwidgets' 'wxbase')
-source=("https://github.com/wxWidgets/wxWidgets/releases/latest")
+source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
 md5sums=('SKIP')
 
 build() {
