@@ -2,7 +2,7 @@
 _hkgname=simtreelo
 pkgname=haskell-simtreelo
 pkgver=0.1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Loads data organized in a tree'
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('GPL3')
@@ -16,7 +16,8 @@ build() {
 	cd ${srcdir}/${_hkgname}-${pkgver}
 
 	runhaskell Setup configure -O --enable-split-objs --enable-shared \
-       --prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid
+       --prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid \
+			 --gch-option -dynamic
 	# runhaskell Setup configure --prefix=/usr --docdir=/usr/share/doc/${pkgname} -O --enable-shared --enable-split-objs --libsubdir=\$compiler/site-local/\$pkgid
 	runhaskell Setup build
 	runhaskell Setup haddock
