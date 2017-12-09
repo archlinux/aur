@@ -1,7 +1,7 @@
 # Maintainer: Jozef Riha <jose1711 at gmail dot com>
 
 pkgname=brickv
-pkgver=2.3.9
+pkgver=2.3.12
 pkgrel=1
 pkgdesc="brick viewer is a testing/flashing tool for tinkerforge brick(let)s"
 url="http://www.tinkerforge.com/"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv7h')
 depends=('pyqwt' 'python2-pyserial' 'brickd' 'python-pyqt4' 'python2-setuptools' 'python2-opengl')
 optdepends=('brickd')
 source=(https://github.com/Tinkerforge/${pkgname}/archive/v${pkgver}.zip)
-md5sums=('e353cf8f685615c086abaee168eb44ac')
+md5sums=('e818d9fd6a44d976e6c1dcddcac0207b')
 
 build() {
   cd $srcdir/$pkgname-$pkgver/src/
