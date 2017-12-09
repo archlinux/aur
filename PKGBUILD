@@ -1,8 +1,8 @@
-# Maintainer : Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-anynum'
-pkgver='0.18'
+pkgver='0.19'
 pkgrel='1'
 pkgdesc="Arbitrary size precision for integers, rationals, floating-points and complex numbers."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-math-gmpq>=0.45' 'perl-math-gmpz>=0.39' 'perl-math-mpc>=1.07' 'pe
 makedepends=()
 url='https://metacpan.org/release/Math-AnyNum'
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Math-AnyNum-${pkgver}.tar.gz")
-md5sums=('5a7640ba9e58b8fa9a501f1644b94471')
-sha512sums=('2352277662810cdf605630c20b61169b752d49c83679fecb75b29c4d3f1ee9f45ab55549c8b4ba57490fd407abf0cfdbdcc7cab2a3096fc41ed01f8ce7299aca')
+md5sums=('198625e7e22c2ad62928abffb2f18e7e')
+sha512sums=('87e624d8b28c405dbe0cb82fe2f42b357215bfd926c2f5cb1f004d82468c36d87554d1d08edf6c21318a0cd99bdbdfa29df31b9b54b01fdf782c82d3610b9b59')
 _distdir="Math-AnyNum-${pkgver}"
 
 build() {
