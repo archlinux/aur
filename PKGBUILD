@@ -4,7 +4,7 @@
 pkgbase=python2-taskw
 pkgname=(python-taskw python2-taskw)
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for your taskwarrior database"
 url="http://github.com/ralphbean/taskw"
 makedepends=('python' 'python-setuptools'
