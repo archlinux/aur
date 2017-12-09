@@ -2,10 +2,11 @@
 
 pkgname='macos-icon-theme'
 pkgver=4.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc='macOS Icons Theme'
 arch=('any')
 url='https://www.opendesktop.org/p/1102582/'
+license=('GPL')
 depends=('gtk-update-icon-cache')
 
 # Hash and Timestamp
