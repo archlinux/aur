@@ -7,7 +7,7 @@
 pkgname=geany-plugins-gtk3
 _pkgname=geany-plugins
 pkgver=1.32
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugins for Geany'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
@@ -21,6 +21,11 @@ source=("http://plugins.geany.org/${_pkgname}/${_pkgname}-$pkgver.tar.bz2"
 	'enchant-2.patch')
 md5sums=('70d7771373ad0e39cc9193f7834eb35d'
          '678552d47bfae0b9a76406ecaaa0f2da')
+         
+prepare() {
+cd "${_pkgname}-$pkgver"
+patch -Np1 -i ../enchant-2.patch
+}
 
 build() {
 cd "${_pkgname}-$pkgver"
