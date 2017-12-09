@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='A simple but powerful graphical interface to gdb'
 arch=('i686' 'x86_64')
 url='ftp://ftp.x.org/contrib/utilities/'
-license=('unknown')
+license=('MIT')
 depends=('gdb' 'glibc' 'libxaw' 'libxt' 'libx11' 'imake')
 provides=('xxgdb')
 
