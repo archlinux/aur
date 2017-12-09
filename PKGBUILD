@@ -1,18 +1,18 @@
 # Maintainer: Ivan Zenin <i.zenin@gmx.com>
 
 pkgname="wxbase"
-pkgver=latest
-pkgrel=5
+pkgver=3.0.3.1
+pkgrel=1
 pkgdesc="wxWidgets base libraries for no X install (3.x branch stable version)"
-arch=('i686' 'x86_64')
+arch=("i686" "x86_64")
 url="http://wxwidgets.org"
-license=('custom:wxWindows')
-provides=('wxbase')
-conflicts=('wxgtk' 'wxwidgets' 'wxbase')
+license=("custom:wxWindows")
+provides=("wxbase")
+conflicts=("wxgtk" "wxwidgets" "wxbase")
+source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
+md5sums=("694ed5f5ea1597e06a9adc6f347d8929")
 
 build() {
-  curl -Lo "wxWidgets-${pkgver}.tar.bz2" "https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2"
-  tar -xmjvf "wxWidgets-${pkgver}.tar.bz2"
   cd "${srcdir}/wxWidgets-${pkgver}"
   ./configure \
  	  --prefix=/usr \
@@ -22,10 +22,6 @@ build() {
 	  --enable-unicode \
 	  --disable-precomp-headers
   make
-}
-
-pkgver() {
-  curl -s https://api.github.com/repos/wxWidgets/wxWidgets/releases/latest | grep tarball_url | sed 's/^.*\/v\(.*\)".*$/\1/'
 }
 
 package() {
