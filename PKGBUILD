@@ -8,14 +8,14 @@ _kernelname=-bld
 pkgver=4.14.4
 _srcname=linux-4.14
 _pkgver2=${_srcname#*-}.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=e42e6ffc6243370215eb33690b3c68f96f181cdb
+arch_config_trunk=6dd2560890bebc9bb1789ba117e91c5bc4a153ec
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -38,7 +38,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            '12a7bd958a820315d8d8be7544976e8a8aa1fb7aa27fcf8377ca68317e3e70a9'
+            'bfde21c325d39013463c38e9fa23d6d6481238b8509eea4ae38906127017e47d'
             '80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794'
             '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85')
 
