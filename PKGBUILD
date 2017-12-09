@@ -11,7 +11,7 @@ license=('custom:MIT')
 depends=('openssl-1.0' 'qt5-base' 'qt5-webengine' 'qt5-webchannel' 'qt5-location' 'qt5-declarative')
 replaces=('sielo-navigateur')
 source=(https://www.feldrise.com/Sielo/Linux/$pkgname-$pkgver.tar.gz)
-md5sums=('7be695a7815649b4e06d4d9851a58ab1')
+md5sums=('617a54a6f3a834fb1883966b762a91af')
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	cp -r usr $pkgdir/
