@@ -1,6 +1,6 @@
 pkgbase = emawp-git
 	pkgdesc = MERA-400 AWP (high-precision arithmetic) library
-	pkgver = 20161106
+	pkgver = 20171209
 	pkgrel = 1
 	url = https://github.com/jakubfi/emelf
 	arch = i686
