@@ -2,12 +2,12 @@
 
 pkgname=amule-daemon-git
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks (daemon only, development version)'
 url='http://www.amule.org'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('crypto++' 'wxbase>=2.8')
+depends=('crypto++' 'wxbase' 'boost')
 makedepends=('git')
 conflicts=('amule')
 source=('git+git://github.com/amule-project/amule.git'
@@ -15,13 +15,13 @@ source=('git+git://github.com/amule-project/amule.git'
         'amuled@.service'
         'amuled.tmpfile')
 md5sums=('SKIP'
-         '402d2249ec2fc6d61c85af8a817e2981'
-         '253895ed04947fa95ca8fcaee9aeee10'
+         '0bb6c56702cd79dc46ff618c4946df33'
+         'f2a109a00db1871fcab05dc2ced6a993'
          '70a7fdf6a76e68794635e3f3a9613e26')
 install="amule-daemon-git.install"
 
 pkgver() {
-  cd ${srcdir}/amule
+  cd "${srcdir}"/amule
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  cd ${srcdir}/amule
+  cd "${srcdir}"/amule
   ./autogen.sh && ./configure \
       --prefix=/usr \
       --mandir=/usr/share/man \
@@ -56,6 +56,7 @@ build() {
       --enable-mmap \
       --disable-nls \
       --disable-ccache \
+	  --with-boost \
       --with-wx-config=/usr/bin/wx-config
   make
 } 

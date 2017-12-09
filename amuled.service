@@ -6,6 +6,7 @@ After=syslog.target network.target
 User=amule
 Group=amule
 ExecStart=/usr/bin/amuled
+LimitNOFILE=32768
 
 [Install]
 WantedBy=multi-user.target
