@@ -1,6 +1,6 @@
 # Maintainer: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 pkgname=kismet-git
-pkgver=2017120
+pkgver=20171209
 pkgrel=1
 pkgdesc="Current development version based on git repo, many crucial changes since official stable Release 2017_07_R1-1"
 arch=('x86_64')
