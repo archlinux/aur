@@ -29,7 +29,7 @@ pkgver() {
 }
 
 package() {
-  cd "${srcdir}/wxWidgets"
+  cd "${srcdir}/wxWidgets-${pkgver}"
   make DESTDIR="${pkgdir}" install
   find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
   install -D -m644 docs/licence.txt "${pkgdir}/usr/share/licenses/wxWidgets/LICENSE"
