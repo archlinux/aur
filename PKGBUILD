@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=ghost-desktop
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Ghost Desktop is a beautiful desktop application that allows you to easily manage multiple Ghost blogs and work without distractions."
 arch=('x86_64' 'i686') 
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk2' 'libgnome-keyring' 'gnome-keyring' 'desktop-file-utils' 'python2' 'gconf' 'nodejs' 'libnotify' 'libxtst' 'nss' 'alsa-lib' 'libxss')
 source=(https://github.com/TryGhost/Ghost-Desktop/releases/download/v${pkgver}/${pkgname}-${pkgver}-debian.deb)
 install=${pkgname}.install
-md5sums=('5dcb77f9d21492fc49d8e83eb9289826')
+md5sums=('6961202a058e6e9f6ac85d4f7d4f07e3')
 package() {
     msg2 "Extracting data.tar.xz..."
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
