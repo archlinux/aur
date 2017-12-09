@@ -1,6 +1,6 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 pkgname=pulseeffects
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Limiter, compressor, reverberation, stereo equalizer and auto volume effects for Pulseaudio applications"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python python-gobject python-cairo gtk3 gst-plugins-good gst-plugins-ba
 makedepends=('meson')
 options=(!emptydirs)
 source=("$pkgname-$pkgver::https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
-md5sums=('6b40fcc20e3fead8505c14b1d0ee7788')
+md5sums=('6d9647a4b96ec133460ef495cdaebeb4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
