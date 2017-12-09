@@ -1,0 +1,16 @@
+pkgbase = rpclib-git
+	pkgdesc = rpclib is a modern c++ msgpack-rpc server and client library
+	pkgver = r524.3b00c4c
+	pkgrel = 1
+	url = http://rpclib.net/
+	arch = any
+	license = mit
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	provides = rpclib
+	source = git://github.com/rpclib/rpclib
+	md5sums = SKIP
+
+pkgname = rpclib-git
+
