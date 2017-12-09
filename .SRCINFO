@@ -1,13 +1,12 @@
 pkgbase = parsec-bin
 	pkgdesc = Remotely connect to a gaming pc for a low latency remote computing experience
 	pkgver = 139_8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://parsec.tv
 	arch = x86_64
 	depends = glibc
 	depends = pulseaudio-module-sndio
 	depends = expat<=2.2.4
-	optdepends = libva-intel-driver: for intel gpu
 	provides = parsec
 	conflicts = parsec
 	source = http://archive.ubuntu.com/ubuntu/pool/universe/i/intel-vaapi-driver/i965-va-driver_1.7.0-1_amd64.deb

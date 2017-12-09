@@ -5,6 +5,9 @@
 ### sudo pacman -U expat-2.2.4*
 ### add expat to the IgnorePkg line in /etc/pacman.conf and uncomment the line
 
+### You do not need to install any VA-API packages. This build includes the
+### specific libraries parsec needs.
+
 ### on first run, parsec will fail to start. This creates the configuration
 ### directories. On second run, parsec will start fine.
 
@@ -14,14 +17,13 @@ UBUNTU_MIRROR="http://archive.ubuntu.com/ubuntu"
 
 pkgname=parsec-bin
 pkgver=139_8
-pkgrel=1
+pkgrel=2
 pkgdesc="Remotely connect to a gaming pc for a low latency remote computing experience"
 url=http://parsec.tv
 arch=('x86_64')
 provides=('parsec')
 conflicts=('parsec')
 depends=('glibc' 'pulseaudio-module-sndio' 'expat<=2.2.4')
-optdepends=('libva-intel-driver: for intel gpu')
 source=(
   "${UBUNTU_MIRROR}/pool/universe/i/intel-vaapi-driver/i965-va-driver_1.7.0-1_amd64.deb"
   "${UBUNTU_MIRROR}/pool/universe/libv/libva/libva-drm1_1.7.0-1_amd64.deb"
