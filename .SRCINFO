@@ -1,6 +1,6 @@
 pkgbase = em400-git
 	pkgdesc = MERA 400 emulator
-	pkgver = 20161106
+	pkgver = 20171209
 	pkgrel = 1
 	url = https://github.com/jakubfi/em400
 	arch = i686
