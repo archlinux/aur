@@ -1,16 +1,33 @@
 pkgbase = parsec-bin
 	pkgdesc = Remotely connect to a gaming pc for a low latency remote computing experience
-	pkgver = 131_4
+	pkgver = 139_8
 	pkgrel = 1
 	url = http://parsec.tv
 	arch = x86_64
 	depends = glibc
 	depends = pulseaudio-module-sndio
+	depends = expat<=2.2.4
+	optdepends = libva-intel-driver: for intel gpu
 	provides = parsec
 	conflicts = parsec
-	noextract = parsec-linux.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/i/intel-vaapi-driver/i965-va-driver_1.7.0-1_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/libv/libva/libva-drm1_1.7.0-1_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/libv/libva/libva-egl1_1.7.0-1_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/libv/libva/libva-glx1_1.7.0-1_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/libv/libva/libva-wayland1_1.7.0-1_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/libv/libva/libva-x11-1_1.7.0-1_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/libv/libva/libva1_1.7.0-1_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/v/vdpau-video/vdpau-va-driver_0.7.4-5_amd64.deb
 	source = https://s3.amazonaws.com/parsec-build/package/parsec-linux.deb
-	md5sums = 0283e54e5943b8c2550818d16dd7fe93
+	md5sums = b2607f82422e4de75df474fc4d9ec682
+	md5sums = d0455e1f955862e60b28dd6a926c9a19
+	md5sums = 76afa64c4c6390c27c83e04fbaf5763a
+	md5sums = af58cfc1cae586235c09616189bfffe3
+	md5sums = c1d54fcc312f51dea259d9e3804b5a6d
+	md5sums = bcdd976b32d1d0f615a202b761379497
+	md5sums = 8b81c77b09b8cb02fa513dc5b72ea762
+	md5sums = 8362265530432f1de9c3db031b0b8779
+	md5sums = 438177b6f9d81f7eb1f093d920193295
 
 pkgname = parsec-bin
 
