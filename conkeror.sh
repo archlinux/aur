@@ -5,4 +5,4 @@
 # Use, modification, and distribution are subject to the
 # terms specified in the COPYING file.
 
-XUL_APP_FILE="/usr/share/conkeror/application.ini" exec xulrunner "$@"
+XUL_APP_FILE="/usr/share/conkeror/application.ini" exec palemoon "$@"
