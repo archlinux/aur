@@ -2,7 +2,7 @@
 
 pkgname="wxbase"
 pkgver=latest
-pkgrel=1
+pkgrel=5
 pkgdesc="wxWidgets base libraries for no X install (3.x branch stable version)"
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
