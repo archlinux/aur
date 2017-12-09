@@ -71,7 +71,6 @@ build() {
     --with-bsrdir=/var/lib/$pkgbase \
     --with-subsys-dir=/run/$pkgbase \
     --with-systemd && make
-    #TODO systemd files
 
     make DESTDIR="$srcdir/install" install install-autostart
 }
