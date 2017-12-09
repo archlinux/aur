@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=2.18.r144.gee7ddd1ed3
+pkgver=3.0rc1.r0.g5a7ce7ccb1
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ _depends=(
     'desktop-file-utils'
 )
 makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
-    'gcc>=4.5.0-2'          'gcc-multilib>=4.5.0-2'
+    'gcc>=4.5.0-2'
     'giflib'                'lib32-giflib'
     'libpng'                'lib32-libpng'
     'gnutls'                'lib32-gnutls'
@@ -82,7 +82,6 @@ then
     # strip lib32 etc. on i686
     _depends=(${_depends[@]/*32-*/})
     makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
-    makedepends=(${makedepends[@]/*-multilib*/})
     optdepends=(${optdepends[@]/*32-*/})
     provides=("wine=${pkgver}")
     conflicts=('wine' 'wine-staging' 'wine-staging-git')
@@ -102,7 +101,7 @@ prepare() {
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.//;s/^v//'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.//;s/^v//;s/\.rc/rc/'
 }
 
 build() {
