@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=2.15.r10.gc5046319+wine.2.15.r151.ge06b7693d6
+pkgver=2.21.r0.g90679f2f+wine.2.21.r0.g53290d2ec4
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ _depends=(
     'desktop-file-utils'
 )
 makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
-    'gcc>=4.5.0-2'          'gcc-multilib>=4.5.0-2'
+    'gcc>=4.5.0-2'
     'giflib'                'lib32-giflib'
     'libpng'                'lib32-libpng'
     'gnutls'                'lib32-gnutls'
@@ -89,7 +89,6 @@ then
     # strip lib32 etc. on i686
     _depends=("${_depends[@]/*32-*/}")
     makedepends=("${makedepends[@]/*32-*/}" "${_depends[@]}")
-    makedepends=("${makedepends[@]/*-multilib*/}")
     optdepends=("${optdepends[@]/*32-*/}")
     provides=(
         "wine=$(        printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
@@ -128,12 +127,12 @@ prepare() {
 
 pkgver() {
     cd "$pkgname"
-    local _staging_tag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//')"
+    local _staging_tag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
     local _staging_version="$(git describe --long --tags \
-                                | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' \
+                                | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
                                 | sed "s/^latest.release/${_staging_tag}/")"
     cd "${srcdir}/wine-git"
-    local _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
+    local _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
     
     printf '%s+%s' "$_staging_version" "$_wine_version"
 }
