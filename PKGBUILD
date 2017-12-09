@@ -1,6 +1,6 @@
 pkgname=tribler
-pkgver=7.0.0rc3
-_pkgver=7.0.0-rc3
+pkgver=7.0.0rc4
+_pkgver=7.0.0-rc4
 pkgrel=1
 pkgdesc="Privacy enhanced BitTorrent client with P2P content discovery"
 url="http://www.tribler.org/"
@@ -11,7 +11,7 @@ depends=('python2-cryptography' 'python2-feedparser' 'python2-apsw' 'python2-che
 optdepends=('vlc: for internal video player')
 makedepends=('python2-setuptools')
 source=("https://github.com/Tribler/tribler/releases/download/v${_pkgver}/Tribler-v${_pkgver}.tar.xz")
-sha256sums=('477daf0947750b4dd6b875f74a52136153bd6bd2c1a74d119ccf87b97e452e38')
+sha256sums=('d0bf5e35469c08da6666950ca7e8938301d1d49616427c88fef6ee737dda039a')
 
 build () {
   cd "${srcdir}/tribler"
