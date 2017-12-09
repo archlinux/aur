@@ -1,10 +1,11 @@
 pkgbase = drpm
 	pkgdesc = A small library for fetching information from deltarpm packages
 	pkgver = 0.3.0
-	pkgrel = 1
-	url = https://fedorahosted.org/drpm/
+	pkgrel = 2
+	url = https://github.com/rpm-software-management/drpm
 	arch = i686
 	arch = x86_64
+	license = BSD
 	license = LGPL3
 	checkdepends = cmocka
 	makedepends = cmake
@@ -14,7 +15,7 @@ pkgbase = drpm
 	depends = rpm-org
 	depends = xz
 	depends = zlib
-	source = https://fedorahosted.org/released/drpm/drpm-0.3.0.tar.bz2
+	source = http://pkgs.fedoraproject.org/repo/pkgs/drpm/drpm-0.3.0.tar.bz2/e1ca38e14f52d0f5229bba45ba8b8904/drpm-0.3.0.tar.bz2
 	md5sums = e1ca38e14f52d0f5229bba45ba8b8904
 
 pkgname = drpm

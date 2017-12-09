@@ -1,15 +1,15 @@
 pkgname=drpm
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small library for fetching information from deltarpm packages"
 arch=('i686' 'x86_64')
-url="https://fedorahosted.org/$pkgname/"
-license=('LGPL3')
+url="https://github.com/rpm-software-management/$pkgname"
+license=('BSD' 'LGPL3')
 depends=('bzip2' 'openssl' 'rpm-org' 'xz' 'zlib')
 makedepends=('cmake' 'doxygen')
 checkdepends=('cmocka')
-source=("https://fedorahosted.org/released/$pkgname/$pkgname-$pkgver.tar.bz2")
 md5sums=('e1ca38e14f52d0f5229bba45ba8b8904')
+source=("http://pkgs.fedoraproject.org/repo/pkgs/$pkgname/$pkgname-$pkgver.tar.bz2/${md5sums[0]}/$pkgname-$pkgver.tar.bz2")
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -38,8 +38,10 @@ package() {
 	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 
-	install -d "$pkgdir"/usr/share/doc/$pkgname
-	cp -a doc/html "$pkgdir"/usr/share/doc/$pkgname/html
+	mkdir -p "$pkgdir"/usr/share/doc/$pkgname
+	cp -Rp doc/html "$pkgdir"/usr/share/doc/$pkgname/html
+
+	install -Dp -m644 ../LICENSE.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
