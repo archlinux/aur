@@ -5,7 +5,7 @@
 
 pkgname=gnucash-gtk3-git
 pkgver=2.7.2.r37.gac89797e7
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
@@ -19,12 +19,19 @@ optdepends=('evince: for print preview'
             'perl-finance-quote: for stock information lookups'
             'perl-date-manip: for stock information lookups')
 options=('!emptydirs')
-source=("git+https://github.com/Gnucash/gnucash")
-sha1sums=('SKIP')
+source=("git+https://github.com/Gnucash/gnucash"
+        "cmake-dbd-dir.patch")
+sha1sums=('SKIP'
+          '9c181b20d320c2ec8c62b5bcbed784d19730bfe9')
 
 pkgver() {
   cd "${srcdir}/gnucash"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/gnucash"
+  patch -Np1 < ../cmake-dbd-dir.patch
 }
 
 build() {
