@@ -10,7 +10,7 @@ _djver=2.05
 _pthver=3.14
 _zlver=1.2.11
 _wattver="2.2-dev.10"
-pkgrel=3
+pkgrel=4
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -90,6 +90,9 @@ prepare() {
 
   # link isl for in-tree build
   ln -fs "../isl-${_islver}" isl
+
+  # hack! - some configure tests for header files break with FORTIFY_SOURCE
+  sed -i "/ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
   # build the lto plugin
   patch -Np0 < ../lto.patch
