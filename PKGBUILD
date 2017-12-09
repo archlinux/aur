@@ -2,7 +2,7 @@
 
 pkgname='macos-icon-theme'
 pkgver=4.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc='macOS Icons Theme'
 arch=('any')
 url='https://www.opendesktop.org/p/1102582/'
