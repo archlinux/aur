@@ -2,15 +2,17 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 pkgname=fasta
-pkgver=36.3.7b
+pkgver=36.3.8e
 pkgrel=1
 pkgdesc="Fast protein or a fast nucleotide comparison"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('zlib')
 url="http://fasta.bioch.virginia.edu/fasta_www2/fasta_list2.shtml"
-source=("http://faculty.virginia.edu/wrpearson/fasta/CURRENT/fasta-$pkgver.tar.gz")
-md5sums=('820a1a475bd9e20c02735eb3ee4506ae')
+source_i686=("http://faculty.virginia.edu/wrpearson/fasta/CURRENT/fasta-$pkgver-linux32.tar.gz")
+source_x86_64=("http://faculty.virginia.edu/wrpearson/fasta/CURRENT/fasta-$pkgver-linux64.tar.gz")
+md5sums_i686=('1bdec4e78caf4e7fa392316c5f35686b')
+md5sums_x86_64=('8c857d80951fedfa870a94fd9ab1438a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"
