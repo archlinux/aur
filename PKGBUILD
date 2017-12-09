@@ -20,7 +20,7 @@ pkgver () {
 
 package(){
     cd "$srcdir/$_pkgname"
-    install -dm644 "$pkgdir/usr/share/themes/${_pkgname}/"
+    install -dm755 "$pkgdir/usr/share/themes/${_pkgname}/"
     cp -r */ "$pkgdir/usr/share/themes/${_pkgname}/"
-    chmod +x "$pkgdir/usr/share/themes/OSX-Arc-White"
+    chmod 755 -R "${pkgdir}/usr/share/themes/${_pkgname}/"
 }
