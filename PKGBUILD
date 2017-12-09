@@ -3,7 +3,7 @@
 
 _gemname=fastlane
 pkgname=$_gemname
-pkgver=2.64.0
+pkgver=2.68.2
 pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
@@ -22,7 +22,7 @@ depends=(
   'ruby-faraday<1' 'ruby-faraday>=0.9'
   'ruby-faraday-cookie_jar>=0.0.6' 'ruby-faraday-cookie_jar<0.1'
   'ruby-faraday_middleware<1' 'ruby-faraday_middleware>=0.9'
-  'ruby-fastimage>=2.1.0' 'ruby-fastimage<3'
+  'ruby-fastimage>=2.1' 'ruby-fastimage<3'
   'ruby-gh_inspector<2' 'ruby-gh_inspector>=1.0.1'
   'ruby-google-api-client>=0.13.1' 'ruby-google-api-client<0.14'
   'ruby-highline<2' 'ruby-highline>=1.7.2'
@@ -40,16 +40,16 @@ depends=(
   ruby-slack-notifier-1
   'ruby-terminal-notifier<2' 'ruby-terminal-notifier>=1.6.2'
   'ruby-terminal-table<2' 'ruby-terminal-table>=1.4.5'
-  'ruby-tty-screen>=0.5' 'ruby-tty-screen<0.6'
+  'ruby-tty-screen>=0.6.2' 'ruby-tty-screen<0.7'
   'ruby-word_wrap<1.1' 'ruby-word_wrap>=1'
-  'ruby-xcodeproj>=1.5' 'ruby-xcodeproj<2'
+  'ruby-xcodeproj>=1.5.2' 'ruby-xcodeproj<2'
   'ruby-xcpretty<1' 'ruby-xcpretty>=0.2.4' 
   'ruby-xcpretty-travis-formatter>=0.0.3'
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('78376973e36789e73575b9f8ffc19ab3fce8a65b')
+sha1sums=('abd414dc6c9eaa71d533076e56534a4f198c7fd1')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
