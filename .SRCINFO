@@ -1,0 +1,25 @@
+pkgbase = kismet-git
+	pkgdesc = Current development version based on git repo, many crucial changes since official stable Release 2017_07_R1-1
+	pkgver = 2017120
+	pkgrel = 1
+	url = https://www.kismetwireless.net/
+	install = kismet.install
+	arch = x86_64
+	license = GPL
+	depends = libmicrohttpd
+	depends = libelf
+	depends = libpcap
+	depends = libnm
+	optdepends = hackrf: use with HackRF compatible software defined radio (SDR)
+	conflicts = kismet
+	backup = etc/kismet/kismet.conf
+	backup = etc/kismet/kismet_alerts.conf
+	backup = etc/kismet/kismet_httpd.conf
+	backup = etc/kismet/kismet_logging.conf
+	backup = etc/kismet/kismet_memory.conf
+	backup = etc/kismet/kismet_storage.conf
+	source = https://github.com/kismetwireless/kismet/archive/master.zip
+	md5sums = SKIP
+
+pkgname = kismet-git
+
