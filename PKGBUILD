@@ -41,7 +41,7 @@ prepare() {
   replace 'aiohttp==2.3.5' 'aiohttp>=2.3.5' setup.py
   replace 'voluptuous==0.10.5' 'voluptuous>=0.9.3' setup.py
   replace 'astral==1.4' 'astral>=1.4' setup.py
-  replace 'yarl==0.15.0' 'yarl>=0.15.0' setup.py
+  replace 'yarl==0.15.0' 'yarl>=0.14.0' setup.py
 }
 
 replace() {
