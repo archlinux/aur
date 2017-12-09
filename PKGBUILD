@@ -1,12 +1,12 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=tpm2-tss
-pkgver=1.2.0
+pkgver=1.3.0
 _gitname=$pkgname
 pkgrel=1
 pkgdesc="TPM (Trusted Platform Module) 2.0 Software Stack (TSS)"
 arch=('i686' 'x86_64')
-url="https://github.com/01org/tpm2-tss"
+url="https://github.com/intel/tpm2-tss"
 license=('custom')
 makedepends=('git' 'cmocka' 'autoconf-archive')
 depends=('gcc-libs')
