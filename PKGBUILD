@@ -2,7 +2,7 @@
 
 pkgname='gnome-osx-shell-theme'
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 epoch=5
 pkgdesc='Gnome-OSX V Shell Theme'
 arch=('any')
@@ -19,10 +19,7 @@ md5sums=('35c18ba062fe7dad1f9666ce264f541c')
 
 _name='Gnome-OSX-Shell-themes-V'
 
-prepare() {
-    cd "$_name"
-}
-
 package() {
+    cd "$_name"
     find */ -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
 }
