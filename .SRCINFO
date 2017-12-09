@@ -1,6 +1,6 @@
 pkgbase = emdas-git
 	pkgdesc = Disassembler for MERA 400
-	pkgver = 20161106
+	pkgver = 20171209
 	pkgrel = 1
 	url = https://github.com/jakubfi/emdas
 	arch = i686
