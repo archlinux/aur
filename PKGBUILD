@@ -71,5 +71,5 @@ package() {
 	cd $srcdir/$_gitname/build/python
 	pip install --root=$pkgdir $pkgname-$pkgver-cp36-cp36m-linux_x86_64.whl
 
-	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 $srcdir/$_gitname/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
