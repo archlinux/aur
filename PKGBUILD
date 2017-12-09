@@ -1,8 +1,8 @@
 # Maintainer : Alexandre Janniaux <alexandre+aur@janniaux.me>
 pkgname=nazara-engine-git
 pkgdesc="Nazara engine is an open source C++14 game engine - git version"
-pkgver=r4208.13dfa9dd
-pkgrel=1
+pkgver=r4210.ff8a452d
+pkgrel=2
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/DigitalPulseSoftware/NazaraEngine"
@@ -30,6 +30,7 @@ build() {
 	cd "$srcdir/NazaraEngine/build"
 	./premake5-linux64 gmake --excludes-examples --excludes-tests --with-extlibs
 	make -C gmake -f NazaraEngine.make config=releasedynamic_x64
+	make -C gmake -f NazaraEngine.make config=debugdynamic_x64
 	./premake5-linux64 package
 }
 
