@@ -2,16 +2,18 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 pkgname=gpxsee-git
 pkgrel=1
-pkgver=r673.443b916
+pkgver=r699.53a4b45
 pkgdesc='GPX viewer and analyzer'
 arch=('any')
 url="http://www.gpxsee.org/"
 license=('gpl3')
 depends=('qt5-tools')
 makedepends=('git')
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '4226c05418da218c2a271e1c5d1453fd')
 
-source=("${pkgname}"::git+http://github.com/tumic0/GPXSee)
+source=("${pkgname}"::git+http://github.com/tumic0/GPXSee
+        "gpxsee.desktop")
 
 pkgver() {
   cd "$srcdir/${pkgname}"
@@ -26,6 +28,8 @@ build() {
 }
 
 package() {
-  install -Dm755 ${srcdir}/${pkgname}/GPXSee ${pkgdir}/usr/bin/GPXSee
-  install -Dm644 ${srcdir}/${pkgname}/src/maps.txt ${pkgdir}/usr/share/GPXSee/maps.txt
+  install -Dm755 ${srcdir}/${pkgname}/GPXSee ${pkgdir}/usr/bin/gpxsee
+  install -Dm644 ${srcdir}/${pkgname}/pkg/maps.txt ${pkgdir}/usr/share/gpxsee/maps.txt
+  install -Dm644 ${srcdir}/${pkgname}/icons/gpxsee.png ${pkgdir}/usr/share/pixmaps/gpxsee.png
+  install -Dm644 ${srcdir}/gpxsee.desktop ${pkgdir}/usr/share/applications/gpxsee.desktop
 }
