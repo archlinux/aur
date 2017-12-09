@@ -1,23 +1,42 @@
 # $Id$
-# Maintainer: Fabien Devaux <fdev31 at gmail dot com>
+# Maintainer: Morten Linderud <foxboron@archlinux.org>
 
-_py=python2
-_n=taskw
-
-pkgname=$_py-$_n
-pkgver=1.1.0
+pkgbase=taskw
+pkgname=(python-taskw python2-taskw)
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Python bindings for your taskwarrior database"
-depends=($_py)
-makedepends=($_py "$_py-distribute")
+url="http://github.com/ralphbean/taskw"
+makedepends=('python' 'python-setuptools'
+             'python2' 'python2-setuptools')
+license=("GPL")
 arch=('any')
 source=(http://pypi.python.org/packages/source/${_n:0:1}/$_n/$_n-$pkgver.tar.gz)
-md5sums=('e5d3eedbbbf00b50bd2f797839888791')
-url="http://github.com/ralphbean/taskw"
-license="GPL"
+source=("${pkgbase}-${pkgname}.tar.gz::https://github.com/ralphbean/taskw/archive/${pkgver}.tar.gz")
+sha256sums=('560c8290705f049ce33d75079adcc50e45cdb8b8373d1fd8384b24a215d84591')
 
-package() {
-  cd $srcdir/$_n-$pkgver
-  $_py setup.py build || return 1
-  $_py setup.py install --root=$pkgdir
+prepare() {
+  cp -a taskw-$pkgver{,-py2}
+}
+
+build(){
+  cd "$srcdir/taskw-$pkgver"
+  python setup.py build
+
+  cd "$srcdir/taskw-$pkgver-py2"
+  python2 setup.py build
+}
+
+package_python2-taskw(){
+    depends=("python2" "python2-six" "python2-pytz" "python2-dateutil")
+
+    cd "$srcdir/taskw-$pkgver-py2"
+    python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+}
+
+package_python-taskw(){
+    depends=("python" "python-six" "python-pytz" "python-dateutil")
+
+    cd "$srcdir/taskw-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
