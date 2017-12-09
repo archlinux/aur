@@ -1,0 +1,9 @@
+[Unit]
+Description=Parity Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/parity
+
+[Install]
+WantedBy=default.target
