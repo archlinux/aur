@@ -28,14 +28,16 @@ build(){
 }
 
 package_python2-taskw(){
-    depends=("python2" "python2-six" "python2-pytz" "python2-dateutil")
+    depends=("python2" "python2-six" "python2-pytz" 
+             "python2-dateutil" "python2-kitchen")
 
     cd "$srcdir/taskw-$pkgver-py2"
     python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 package_python-taskw(){
-    depends=("python" "python-six" "python-pytz" "python-dateutil")
+    depends=("python" "python-six" "python-pytz"
+             "python-dateutil" "python3-kitchen")
 
     cd "$srcdir/taskw-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
