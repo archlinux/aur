@@ -5,7 +5,7 @@
 pkgname="home-assistant"
 pkgdesc='Open-source home automation platform running on Python 3'
 pkgver=0.59.2
-pkgrel=1
+pkgrel=2
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')
