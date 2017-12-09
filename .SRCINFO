@@ -1,6 +1,6 @@
 pkgbase = emelf-git
 	pkgdesc = Executable and Linkable File format for MERA 400
-	pkgver = 20161106
+	pkgver = 20171209
 	pkgrel = 1
 	url = https://github.com/jakubfi/emelf
 	arch = i686

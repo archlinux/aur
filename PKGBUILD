@@ -40,6 +40,8 @@ build() {
 package() {
   cd "$srcdir/$_gitname-build"
   make DESTDIR="$pkgdir/" install
+  cd "$pkgdir/usr/"
+  mv lib64 lib
 }
 
 # vim:set ts=2 sw=2 et:
