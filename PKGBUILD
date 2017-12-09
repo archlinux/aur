@@ -1,6 +1,6 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 
-_rev=r01
+_rev=r02
 _apilevel=27
 pkgname=android-google-apis-x86
 pkgver=${_apilevel}_${_rev}
@@ -16,8 +16,8 @@ conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
 source=("https://dl-ssl.google.com/android/repository/sys-img/google_apis/x86-${pkgver}.zip"
         "source.properties")
-sha512sums=('24ea8b433643a9e35a158a48bb6719a479a9d058ff0b861e7f4b7b5b1459a3888fd11610e5f30943aa4e6e77a8876d929884788b3837841a939331b972450e13'
-            '1f02443217024eaaf6a56e9062467fa656d2600b9fcfb6c6b636eda0609c4a1fcfc5765e847ae8cf391cefc84f7f1e468d0c06f8877ce21af03fd3670c8954b8')
+sha1sums=('1b4557f27fe0220e9e54e5c4eadfec5abd194cf3'
+          '9c1445f63b9136732818eb54925db41b4c59ba4c')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/google_apis/"
