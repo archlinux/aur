@@ -1,5 +1,5 @@
 pkgbase = php-ev
-	pkgdesc = PHP extension for interfacing with MessagePack
+	pkgdesc = PHP extension for interface to libev library
 	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://bitbucket.org/osmanov/pecl-ev
