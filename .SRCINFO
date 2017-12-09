@@ -1,14 +1,12 @@
 pkgbase = ascii-patrol-git
 	pkgdesc = Ascii Patrol is an ASCII game project which was mainly inspired by 'Moon Patrol'.
-	pkgver = r24.f1340dc
+	pkgver = r26.5944c93
 	pkgrel = 1
 	url = https://github.com/msokalski/ascii-patrol
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = libpulse
-	depends = libx11
-	optdepends = curl: get hi-scores from ascii-patrol.com
+	depends = pulseaudio
 	provides = asciipat
 	conflicts = ascii-patrol
 	source = git+https://github.com/msokalski/ascii-patrol.git

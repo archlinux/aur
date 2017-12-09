@@ -3,15 +3,14 @@
 pkgname=ascii-patrol-git
 _pkgname=ascii-patrol
 _pkgname2=asciipat
-pkgver=r24.f1340dc
+pkgver=r26.5944c93
 pkgrel=1
 pkgdesc="Ascii Patrol is an ASCII game project which was mainly inspired by 'Moon Patrol'."
 arch=('any')
 url="https://github.com/msokalski/ascii-patrol"
 license=('GPL')
-depends=('libpulse' 'libx11')
+depends=('pulseaudio')
 makedepends=('git')
-optdepends=('curl: get hi-scores from ascii-patrol.com')
 provides=("${_pkgname2}")
 conflicts=("${_pkgname}")
 source=(git+https://github.com/msokalski/ascii-patrol.git)
