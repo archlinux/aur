@@ -1,8 +1,8 @@
 # Maintainer: Santiago Pelufo <santiagopelufo@gmail.com>
 
 pkgname=clojure-install
-pkgver=1.8.0
-pkgrel=1
+pkgver=1.9.0.273
+pkgrel=2
 pkgdesc='The Clojure Programming Language'
 url='http://clojure.org/'
 arch=('any')
@@ -10,14 +10,15 @@ license=('CPL')
 depends=('java-environment' 'bash')
 makedepends=('java-environment' 'sed')
 optdepends=('rlwrap: friendlier shell with readline support')
-conflicts=('clojure')
-source=("https://download.clojure.org/install/brew/install-clj-1.8.0.119.tar.gz")
-sha256sums=('7e272d3ae13d97c8fb6848d6851112e88995958391f40a1787bd82b6222d779e')
+source=("https://download.clojure.org/install/clojure-tools-$pkgver.tar.gz")
+md5sums=('0433e07caef3b3e0a8dd114f66ed992f')
 
 package() {
-  sed -i s:PREFIX:/usr/share/clojure:g install-clj
-  install -Dm755 clj "$pkgdir/usr/bin/clj"
-  install -Dm755 install-clj "$pkgdir/usr/bin/install-clj"
-  install -Dm644 install-clj-1.8.0.119.jar "$pkgdir/usr/share/clojure/install-clj-1.8.0.119.jar"
-  install -Dm644 clj.props "$pkgdir/usr/share/clojure/clj.props"
+	install -Dm644 "$srcdir/clojure-tools/deps.edn" "$pkgdir/usr/lib/clojure/deps.edn"
+	install -Dm644 "$srcdir/clojure-tools/example-deps.edn" "$pkgdir/usr/lib/clojure/example-deps.edn"
+	install -Dm644 "$srcdir/clojure-tools/clojure-tools-$pkgver.jar" "$pkgdir/usr/lib/clojure/libexec/clojure-tools-$pkgver.jar"
+
+	sed -i -e 's@PREFIX@/usr/lib/clojure@g' "$srcdir/clojure-tools/clojure"
+	install -Dm755 "$srcdir/clojure-tools/clojure" "$pkgdir/usr/bin/clojure"
+	install -Dm755 "$srcdir/clojure-tools/clj" "$pkgdir/usr/bin/clj"
 }
