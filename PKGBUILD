@@ -3,7 +3,7 @@
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 pkgname=lumina-desktop-git
 pkgver=v1.4.0.r76.gb6536c15
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lightweight QT5 Desktop for FreeBSD -- git version"
 arch=('x86_64' 'i686')
 url="https://github.com/pcbsd/lumina"
@@ -33,14 +33,14 @@ pkgver() {
 build(){
     cd "$srcdir/lumina/"
     find $srcdir/lumina -name *.desktop -exec sed -i 's/usr\/local/usr/' {} \;
-    qmake-qt5 QMAKE_CFLAGS_ISYSTEM= PREFIX="/usr" QT5LIBDIR=/usr/lib/qt
+    qmake QMAKE_CFLAGS_ISYSTEM= PREFIX="/usr" LIBPREFIX=/usr/lib QT5LIBDIR=/usr/lib/qt CONFIG+=WITH_I18N L_MANDIR=/usr/share/man L_ETCDIR="/etc"
     make
 }
 
 package() {
     cd "$srcdir/lumina"
     make INSTALL_ROOT="${pkgdir}" install
-    mv "${pkgdir}"/usr/etc "${pkgdir}"/etc
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 
