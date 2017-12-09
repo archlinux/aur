@@ -356,6 +356,8 @@ package_bareos-storage() {
     usr/share/bareos/config/bareos-sd.d/storage/bareos-sd.conf \
     usr/bin/bareos-sd \
     usr/share/man/man8/bareos-sd.8.gz \
+    usr/lib/bareos/libbareossd-$_pkgver.so \
+    usr/lib/bareos/libbareossd.so \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
   done
