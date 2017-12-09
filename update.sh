@@ -27,6 +27,7 @@ makepkg -i
 
 echo "Finished building package"
 
+sudo systemctl daemon-reload
 sudo systemctl restart home-assistant
 
 sudo systemctl --no-pager status home-assistant
