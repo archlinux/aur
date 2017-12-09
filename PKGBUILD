@@ -1,21 +1,34 @@
-# Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 pkgname=lumina-desktop-git
-pkgver=r1872.dfa2c19
+pkgver=v1.4.0.r76.gb6536c15
 pkgrel=1
 pkgdesc="A Lightweight QT5 Desktop for FreeBSD -- git version"
 arch=('x86_64' 'i686')
 url="https://github.com/pcbsd/lumina"
 license=('BSD')
-depends=('qt5-base' 'qt5-svg' 'qt5-multimedia' 'qt5-x11extras' 'fluxbox' 'oxygen' 'oxygen-icons' 'xscreensaver' 'desktop-file-utils')
-optdepends=('xorg-xbacklight: required for changing screen brightness' 'alsa-utils: required for adjusting audio volume' 'acpi: required for monitoring battery life' 'numlockx: required for changign state of numlock at login' 'pavucontrol: required for detatched audio mixer' 'fluxmod-styles: A good set of Fluxbox themes to improve the appearence of window decorations' 'network-manager-applet: Manage network connections from panel' 'xterm: Terminal emulator')
-makedepends=('git' 'qt5-base' 'qt5-tools')
+depends=('poppler-qt5' 'qt5-x11extras' 'qt5-multimedia')
+optdepends=('xorg-xbacklight: required for changing screen brightness'
+            'alsa-utils: required for adjusting audio volume'
+            'acpi: required for monitoring battery life'
+            'numlockx: required for changign state of numlock at login'
+            'pavucontrol: required for detatched audio mixer'
+            'fluxmod-styles: A good set of Fluxbox themes to improve the appearence of window decorations'
+            'network-manager-applet: Manage network connections from panel'
+            'xterm: Terminal emulator'
+            'fluxbox: window manager for Lumina DE')
+provides=("${pkgname%-*}" "insight-fm")
+makedepends=('git' 'qt5-base' 'qt5-tools' 'qt5-svg')
 conflicts=("${pkgname%-*}" "lumina-de-git" "insight-fm")
 provides=("${pkgname%-*-*}" "insight-fm")
-install="${pkgname%-*}.install"
 source=(git+https://github.com/trueos/lumina.git)
 md5sums=(SKIP)
 
+pkgver() {
+  cd "$srcdir/lumina"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build(){
     cd "$srcdir/lumina/"
@@ -30,7 +43,5 @@ package() {
     mv "${pkgdir}"/usr/etc "${pkgdir}"/etc
 }
 
-pkgver() {
-  cd "$srcdir/lumina"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+
+
