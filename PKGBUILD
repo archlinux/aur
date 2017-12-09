@@ -5,18 +5,18 @@
 
 pkgname=python-smbus-git
 _pkgname=python-smbus
-pkgver=r290.9726bed
+pkgver=r317.1831b61
 pkgrel=1
 pkgdesc="Python wrapper for SMBus access over i2c-dev."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.lm-sensors.org/wiki/I2CTools"
+url="https://git.kernel.org/pub/scm/utils/i2c-tools/i2c-tools.git/about/"
 license=('GPL')
 depends=('python' 'i2c-tools-git')
 makedepends=('python' 'git')
 provides=('python-smbus')
 conflicts=('python-smbus')
 options=('!strip')
-source=('python-smbus::git+https://github.com/groeck/i2c-tools.git')
+source=('python-smbus::git+https://git.kernel.org/pub/scm/utils/i2c-tools/i2c-tools.git')
 md5sums=('SKIP')
 
 pkgver() {
