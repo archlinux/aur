@@ -2,7 +2,7 @@
 # Contributor: hotaru70o, ilearn32
 pkgbase=sielo-browser
 pkgname=sielo-browser
-pkgver=1.7.00
+pkgver=1.7.10
 pkgrel=1
 pkgdesc="A simple, customizable and fast web browser"
 arch=(x86_64)
