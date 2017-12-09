@@ -1,6 +1,6 @@
 pkgbase = emcrk-git
 	pkgdesc = Library and tools to manipulate CROOK-5 data structures
-	pkgver = 20161106
+	pkgver = 20171209
 	pkgrel = 1
 	url = https://github.com/jakubfi/emcrk
 	arch = i686
