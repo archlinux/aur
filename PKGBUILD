@@ -11,7 +11,7 @@ provides=('wxbase')
 conflicts=('wxgtk' 'wxwidgets' 'wxbase')
 
 build() {
-  curl -L "https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2"
+  curl -Lo "wxWidgets-${pkgver}.tar.bz2" "https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2"
   tar -xmjvf "wxWidgets-${pkgver}.tar.bz2"
   cd "${srcdir}/wxWidgets-${pkgver}"
   ./configure \
