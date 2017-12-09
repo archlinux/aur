@@ -1,14 +1,14 @@
 pkgbase = python-asgiref
 	pkgdesc = Reference ASGI adapters and channel layers
-	pkgver = 2.0.1
-	pkgrel = 1
+	pkgver = 1.1.2
+	pkgrel = 2
 	url = http://github.com/django/asgiref/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.io/packages/source/a/asgiref/asgiref-2.0.1.tar.gz
-	md5sums = d3cc9ea405098a6e6328c7a723f615ef
+	source = https://pypi.io/packages/source/a/asgiref/asgiref-1.1.2.tar.gz
+	md5sums = 323b849cb9a73f770ed96f3d5d46e43b
 
 pkgname = python-asgiref
 
