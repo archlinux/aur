@@ -10,7 +10,7 @@ _djver=2.05
 _pthver=3.14
 _zlver=1.2.11
 _wattver="2.2-dev.10"
-pkgrel=4
+pkgrel=5
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -112,28 +112,28 @@ prepare() {
 }
 
 build() {
+  OLD_PATH=$PATH
+
   cd gcc-build-$_target
   ../gcc-$pkgver/configure \
     --prefix=/usr \
-    --libexecdir=/usr/$_target/libexec \
+    --libexecdir=/usr/lib \
     --datarootdir=/usr/$_target/share \
     --target="$_target" \
-    --enable-languages=c,c++ \
-    --enable-gold \
     --disable-ld \
     --disable-nls \
+    --enable-gold \
+    --enable-languages=c,c++ \
     --enable-shared --enable-static \
-    --enable-threads \
-    --enable-libstdcxx-threads \
     --with-system-zlib \
     --with-arch=i586 \
     --with-cpu=i586 \
+    --enable-threads \
+    --enable-libstdcxx-threads \
     --enable-lto --disable-dw2-exceptions --disable-libgomp \
     --disable-multilib --enable-checking=release
-
   make all-gcc
 
-  OLD_PATH=$PATH
   export PATH=$srcdir/gcc-build-$_target/gcc:$PATH
 
   # build zlib
@@ -150,8 +150,8 @@ build() {
   echo ...building wattcp
   cd $srcdir/watt/util
 	$srcdir/gcc-build-$_target/gcc/xgcc -P -E errnos0.c \
-		-include /usr/$_target/include/errno.h \
-		-include /usr/$_target/include/sys/version.h \
+		-include $srcdir/gcc-build-${_target}/lib/gcc/$_target/$pkgver/include/errno.h \
+		-include $srcdir/gcc-build-${_target}/lib/gcc/$_target/$pkgver/include/sys/version.h \
 		| sed -e '/^extern/ d' > errnos0.i
 
 	# TCC would also do
@@ -163,7 +163,7 @@ build() {
 
   cd $srcdir/watt/src
 	make -f djgpp.mak \
-		CC=$srcdir/gcc-build-$_target/gcc/xgcc \
+		CC=$srcdir/gcc-build-$_target/gcc/xgcc -I$srcdir/gcc-build-${_target}/lib/gcc/$_target/$pkgver/include \
 		AS=$_target-as \
 		AR=$_target-ar \
 		NASM=/usr/bin/nasm \
@@ -175,16 +175,17 @@ build() {
   export PATH=$OLD_PATH
 
   cd $srcdir/gcc-build-$_target
-  make
+  make all
 }
 
 package_dosbox-gcc() {
+  echo ...installing
   make -C gcc-build-$_target DESTDIR="$pkgdir/" install
   make -C zlib-${_zlver} DESTDIR="$pkgdir/" install
 
   # strip manually, djgpp libs spew errors otherwise
   strip -s "$pkgdir"/usr/bin/$_target-*
-  strip -s "$pkgdir"/usr/$_target/libexec/gcc/$_target/$pkgver/{cc1*,collect2,lto*}
+  strip -s "$pkgdir"/usr/lib/gcc/$_target/$pkgver/{cc1*,collect2,lto*}
 
   # for compatibility
   ln -sf $_target-gcc "$pkgdir"/usr/bin/$_target-cc
