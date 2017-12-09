@@ -3,8 +3,8 @@
 
 _gemname=googleauth
 pkgname=ruby-$_gemname
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='Google Auth Library for Ruby'
 arch=(any)
 url='https://github.com/google/google-auth-library-ruby'
@@ -22,7 +22,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('abc31f64222e20d1184b83290abe847b9fe65b90')
+sha1sums=('41447bc2ddc56e602ba05972f24e6322763fbc33')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
