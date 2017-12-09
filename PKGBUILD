@@ -5,10 +5,11 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20171130
+pkgver=4.0.0v20171209
 _pkgver=4.0.0
-_snapshot_=20171130
-_snapver_=0243
+_snapshot_=20171209
+_snapver_=0235
+_suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot'
@@ -60,7 +61,7 @@ conflicts=("${_appname_}-plugin" "${_appname_}")
 provides=("${_appname_}")
 replaces=("${_appname_}-plugin")
 options=('!emptydirs')
-source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-git.tar.xz" 
+source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-${_suffix_}.tar.xz"
         'update-vlc-plugin-cache.hook'
         'https://git.archlinux.org/svntogit/packages.git/plain/trunk/lua53_compat.patch?h=packages/vlc'
         'find-deps.py')
@@ -70,7 +71,7 @@ pkgver() {
 } 
 
 prepare() {
-  cd "${_appname_}-${_pkgver}-git"
+  cd "${_appname_}-${_pkgver}-${_suffix_}"
 
   ./bootstrap
 
@@ -80,7 +81,7 @@ prepare() {
 }
 
 build() {
-  cd "${_appname_}-${_pkgver}-git"
+  cd "${_appname_}-${_pkgver}-${_suffix_}"
 
   export CFLAGS+=" -I/usr/include/samba-4.0"
   export CPPFLAGS+=" -I/usr/include/samba-4.0" 
@@ -111,12 +112,12 @@ build() {
 }
 
 package() {
-  cd "${_appname_}-${_pkgver}-git"
+  cd "${_appname_}-${_pkgver}-${_suffix_}"
 
   make -i DESTDIR="${pkgdir}" install
 
   for res in 16 32 48 128; do
-    install -D -m644 "${srcdir}/${_appname_}-${_pkgver}-git/share/icons/${res}x${res}/${_appname_}.png" \
+    install -D -m644 "${srcdir}/${_appname_}-${_pkgver}-${_suffix_}/share/icons/${res}x${res}/${_appname_}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_appname_}.png"
   done
 
@@ -130,7 +131,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('8ccdd70f2ea7212142a3335a237c5c135a96aa09f92bd0d567ae0b9359ac7157'
+sha256sums=('453aa3704ec2fccd9fbb1287abe37eb92abf23a091870c038347c9d6af9bdfe6'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')

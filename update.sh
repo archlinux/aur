@@ -19,7 +19,7 @@ srcfile=${BASH_REMATCH[2]}
 msg2 "source file: $srcfile"
 
 msg 'Split file name of latest nightly into components used in the PKGBUILD'
-compregex='vlc-(.*)-(.*)-(.*)-git.tar.xz'
+compregex='vlc-(.*)-(.*)-(.*)-(.*).tar.xz'
 if ! [[ $srcfile =~ $compregex ]]; then
     echo 'Unable to split source file into components used in PKGBUILD'
     exit -1
@@ -27,9 +27,11 @@ fi
 version=${BASH_REMATCH[1]}
 date=${BASH_REMATCH[2]}
 strange_number=${BASH_REMATCH[3]}
+suffix=${BASH_REMATCH[4]}
 msg2 "version:        $version"
 msg2 "date:           $date"
 msg2 "strange number: $strange_number"
+msg2 "suffix:         $suffix"
 
 msg 'Update PKGBUILD'
 mv 'PKGBUILD' 'PKGBUILD.bak'
@@ -38,6 +40,7 @@ awk \
     -v _pkgver="_pkgver=${version}" \
     -v _snapshot_="_snapshot_=${date}" \
     -v _snapver_="_snapver_=${strange_number}" \
+    -v _suffix_="_suffix_=${suffix}" \
 '   /^[[:blank:]]*_pkgver=.*$/ {
         print _pkgver
         next
@@ -52,6 +55,10 @@ awk \
     }
     /^[[:blank:]]*_snapver_=.*$/ {
         print _snapver_
+        next
+    }
+    /^[[:blank:]]*_suffix_=.*$/ {
+        print _suffix_
         next
     }
     1
