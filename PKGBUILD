@@ -2,7 +2,7 @@
 
 pkgname=rss2email-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for delivering news from RSS feeds to your email program (development version)"
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/rss2email"
@@ -11,7 +11,7 @@ depends=("python" "python-html2text" "python-feedparser")
 provides=('rss2email')
 conflicts=('rss2email' 'rss2email-wking')
 makedepends=('git')
-source=("git+git://github.com/wking/rss2email.git")
+source=("git+git://github.com/rss2email/rss2email.git")
 md5sums=('SKIP')
 
 pkgver() {
