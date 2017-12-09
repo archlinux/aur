@@ -3,7 +3,7 @@
 _filename=rn-debugger-linux-x64.zip
 
 pkgname=react-native-debugger
-pkgver=0.7.12
+pkgver=0.7.13
 pkgrel=1
 pkgdesc="The standalone app for React Native Debugger, with React DevTools / Redux DevTools"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "$pkgname.desktop"
     "icon.png"
 )
-sha512sums=('8bde968c6eca8e0c42934c232e1240da69dc7379718920386a711c29dd6783d5879c15c23356406424cf3fb0487820cb8e1cd6847818d319d592f82e03837f31'
+sha512sums=('2c536234b61807fc7a1d3867581b916eb6efd50fd3e30de2568eacc97f287d196dbd3d3e56e7927f46714f7cd387c4b82fc041d54510c23e7faef35e381984d0'
             '146025ecc9ba34a22fba6576b74a042194bdf85357740da574a6aa7f6af657fba95a41e58e84684528c90154ade1eb461621b8a94600908aa254eebf4bf787ab'
             '1b6ad27debf69a041203c9583ad17d4aef71ceaa7d63d74a053d5d9c389d75e8dd5eee99ff66cbc78baf6c1fdd69a40b7ecdb44beac0c182f4c5b4b502816d3b')
 
