@@ -10,8 +10,8 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=2.9.4
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
 arch=('any')
@@ -19,38 +19,33 @@ license=('MIT')
 makedepends=(
   'git'
   'protobuf'
-  'python2-pycurl'
-  'python2-setuptools'
-  'python2-tox'
+  'python-pycurl'
+  'python-setuptools'
+  'python-tox'
 )
 depends=(
   'hicolor-icon-theme'
-  'python2'
-  'python2-dnspython'
-  'python2-ecdsa'
-  'python2-jsonrpclib-pelix'
-  'python2-pbkdf2'
-  'python2-protobuf'
-  'python2-pyaes'
-  'python2-pyqt4'
-  'python2-pyqt5'
-  'python2-pysocks'
-  'python2-qrcode'
-  'python2-requests'
-  'python2-six'
-  'qt4'
+  'python'
+  'python-dnspython'
+  'python-ecdsa'
+  'python-jsonrpclib-pelix'
+  'python-pbkdf2'
+  'python-protobuf'
+  'python-pyaes'
+  'python-pyqt5'
+  'python-pysocks'
+  'python-qrcode'
+  'python-requests'
+  'python-six'
   'qt5-base'
 )
 optdepends=(
   'desktop-file-utils: update desktop icon'
   'gtk-update-icon-cache: update desktop icon'
-  'python2-amodem: air-gapped transaction signing over audio modem'
-  'python2-btchip: Ledger hardware wallet support'
-  'python2-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
-  'python2-keepkey: KeepKey hardware wallet support'
-  'python2-matplotlib: plot transaction history in graphical mode'
-  'python2-rpyc: send commands to Electrum Python console from an external script'
-  'python2-trezor: Trezor hardware wallet support'
+  'python-btchip: Ledger hardware wallet support'
+  'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
+  'python-matplotlib: plot transaction history in graphical mode'
+  'python-rpyc: send commands to Electrum Python console from an external script'
   'xdg-utils: update desktop icon'
   'zbar: QR code reading support'
 )
@@ -58,39 +53,39 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 install="${pkgname}.install"
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/archive/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/archive/${pkgver/.0}.tar.gz"
   "${pkgname}.install"
 )
 sha256sums=(
-  'f14c06a71ba97d1f39faa3cfcaba779f6f03ab8d44a9e3f7971d0bced3ea03b7'
+  'cda2667d937f7ce5b82c2e31111059f5c47eb65a9ea2d9682ce7f3c987032775'
   'd682766321f9981ee38aee26dc050209882d8c1c6006e3e509649b47fa1bb073'
 )
 
 build() {
-  cd "${pkgname/on-cash/um}-${pkgver}"
+  cd "${pkgname/on-cash/um}-${pkgver/.0}"
 
   # python2-pyqt5 and qt5-base are needed for _only_ the icons...
 
   # Compile the icons file for Qt:
-  python2-pyrcc5 icons.qrc -o gui/qt/icons_rc.py
+  pyrcc5 icons.qrc -o gui/qt/icons_rc.py
   # Compile the protobuf description file:
   protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
   # Create translations (optional):
-  python2 contrib/make_locale
+  python contrib/make_locale
   # Build
-  python2 setup.py build
+  python setup.py build
 }
 
 check() {
-  cd "${pkgname/on-cash/um}-${pkgver}"
+  cd "${pkgname/on-cash/um}-${pkgver/.0}"
 
-  tox2
+  tox -e py36
 }
 
 package() {
-  cd "${pkgname/on-cash/um}-${pkgver}"
+  cd "${pkgname/on-cash/um}-${pkgver/.0}"
 
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 
