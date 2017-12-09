@@ -38,6 +38,7 @@ sha256sums=('512ac4db80b1fac4577b269a1b8d9046df5888afc567285544d3aad99cd8166f'
 if   [ "$CARCH" = "i686"   ]; then _arch="32bit"
 elif [ "$CARCH" = "x86_64" ]; then _arch="64bit"
 fi
+options=( !strip )
 
 package() {
 	msg "Creating folders..."
