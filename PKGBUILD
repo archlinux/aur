@@ -5,7 +5,7 @@
 pkgname="home-assistant"
 pkgdesc='Open-source home automation platform running on Python 3'
 pkgver=0.59.2
-pkgrel=2
+pkgrel=3
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')
@@ -38,7 +38,7 @@ prepare() {
   # typing package is a backport of standard library < 3.5
   replace 'typing>=3,<4' '' setup.py
   replace 'chardet==3.0.4' 'chardet>=3.0.4' setup.py
-  replace 'aiohttp==2.3.5' 'aiohttp>=2.3.5' setup.py
+  replace 'aiohttp==2.3.5' 'aiohttp>=2.3.2' setup.py
   replace 'voluptuous==0.10.5' 'voluptuous>=0.9.3' setup.py
   replace 'astral==1.4' 'astral>=1.4' setup.py
   replace 'yarl==0.15.0' 'yarl>=0.14.0' setup.py
