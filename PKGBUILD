@@ -2,7 +2,7 @@
 
 pkgname=xxgdb
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple but powerful graphical interface to gdb'
 arch=('i686' 'x86_64')
 url='ftp://ftp.x.org/contrib/utilities/'
