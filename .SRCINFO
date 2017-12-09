@@ -1,19 +1,23 @@
 pkgbase = edgar-git
-	pkgdesc = Enlightenment module: Load Python gadgets
-	pkgver = 0.2.0.r32.3f954f4
+	pkgdesc = Load Python gadgets in Enlightenment
+	pkgver = r49.63b9e57
 	pkgrel = 1
-	url = https://git.enlightenment.org/enlightenment/modules/edgar.git
-	arch = i686
+	url = https://phab.enlightenment.org/w/emodules/edgar/
+	install = edgar-git.install
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	license = LGPL3
 	makedepends = git
-	depends = enlightenment
-	depends = python-efl
-	provides = edgar=0.2.0.r32.3f954f4
+	depends = enlightenment>=0.17
+	depends = python>=3.2
+	depends = python-efl>=1.11
+	depends = python-dbus
+	depends = python-psutil
+	provides = edgar
 	conflicts = edgar
-	source = git://git.enlightenment.org/enlightenment/modules/edgar.git
-	sha256sums = SKIP
+	source = git+https://git.enlightenment.org/enlightenment/modules/edgar.git
+	md5sums = SKIP
 
 pkgname = edgar-git
 

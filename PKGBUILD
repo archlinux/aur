@@ -1,62 +1,42 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Ye Jingchen <ye[dot]jingchen[at]gmail[dot]com>
 
 _pkgname=edgar
-pkgname=$_pkgname-git
-pkgver=0.2.0.r32.3f954f4
+pkgname=edgar-git
+pkgver=r49.63b9e57
 pkgrel=1
-pkgdesc="Enlightenment module: Load Python gadgets"
-arch=('i686' 'x86_64')
-url="https://git.enlightenment.org/enlightenment/modules/edgar.git"
+pkgdesc="Load Python gadgets in Enlightenment"
+arch=('x86_64' 'i686')
+url="https://phab.enlightenment.org/w/emodules/edgar/"
 license=('GPL3' 'LGPL3')
-depends=('enlightenment' 'python-efl')
+depends=('enlightenment>=0.17' 'python>=3.2' 'python-efl>=1.11' 'python-dbus'
+         'python-psutil')
 makedepends=('git')
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/enlightenment/modules/$_pkgname.git")
-sha256sums=('SKIP')
+provides=(edgar)
+conflicts=(edgar)
+install=edgar-git.install
+source=("git+https://git.enlightenment.org/enlightenment/modules/$_pkgname.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-
-  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
-
-  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  find "$_pkgname/GADGETS" -name Makefile -exec sed -i '/^gadget_folder/ s/ = /&${DESTDIR}/' {} \;
+	cd "$srcdir/$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $_pkgname
-
-  ./autogen.sh \
-    --prefix=/usr \
-    --disable-static
-
-  make
-
-  cd GADGETS
-  for _gadget in *; do
-    make -C "$_gadget"
-  done
+	cd "$srcdir/$_pkgname"
+	./autogen.sh --prefix=/usr --sysconfdir=/etc
+	make -j$(nproc)
 }
 
 package() {
-  cd $_pkgname
+	cd "$srcdir/$_pkgname"
 
-  make DESTDIR="$pkgdir" install
+	# The module
+	make DESTDIR="$pkgdir/" install
 
-  pushd GADGETS
-  for _gadget in *; do
-    make -C "$_gadget" DESTDIR="$pkgdir" install
-  done
-  popd
-
-# compile python files
-  python -m compileall -q "$pkgdir"
-  python -O -m compileall -q "$pkgdir"
-
-# install text files
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS ChangeLog NEWS README
+	# Shipped gadgets
+	cd GADGETS
+	for gadget in *; do
+		make -C "$gadget" prefix="$pkgdir/usr/lib" install
+	done
 }

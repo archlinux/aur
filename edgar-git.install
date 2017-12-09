@@ -1,0 +1,22 @@
+## arg 1:  the new package version
+post_install() {
+	echo "You needed to load the PulseAudio DBus module for audio gadget to work."
+	echo "Run this command to load the dbus module:"
+	echo -e "\tpactl load-module module-dbus-protocol"
+	echo "You may consider adding the following line to /etc/pulse/default.pa"
+	echo -e "\tload-module module-dbus-protocol"
+	echo "for a persistent configuration"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	post_install "$1"
+}
+
+## arg 1:  the old package version
+post_remove() {
+	echo "If you don't needed PulseAudio DBus module anymore (used by this audio gadget),"
+	echo "consider remove the following line in /etc/pulse/default.pa:"
+	echo -e "\tload-module module-dbus-protocol"
+}
