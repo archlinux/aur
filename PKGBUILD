@@ -4,14 +4,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-svn
-pkgver=35456
+pkgver=35457
 pkgrel=1
 pkgdesc='Fully-featured word processor from subversion sources'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.abisource.com'
 depends=('fribidi' 'wv' 'goffice' 'redland' 'libical' 'loudmouth' 
-	 'enchant' 'lasem' 'libwpg' 'libwmf' 'link-grammar' 'gtkmathview' 'aiksaurus'
+	 'enchant1' 'lasem' 'libwpg' 'libwmf' 'link-grammar' 'gtkmathview' 'aiksaurus'
 	 'libots' 'libchamplain' 'psiconv' 'telepathy-glib' 'libwps')
 makedepends=('asio' 'boost' 'gobject-introspection' 'python2' 'libwpd' 'subversion')
 conflicts=('abiword' 'abiword-plugins')
@@ -49,7 +49,6 @@ prepare() {
 
 build() {
   cd ${pkgname%-svn}
-LANG=C
   export CXXFLAGS+=" -O3"
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
