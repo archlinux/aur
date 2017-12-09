@@ -2,14 +2,14 @@
 pkgname=cliqz
 _pkgname=browser-f
 pkgver=1.17.1
-pkgrel=2
+pkgrel=3
 _cqzbuildid=20171130123422
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
 license=(MPL2)
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell sqlite ttf-font libpulse icu libevent)
+         nss hunspell sqlite ttf-font libpulse icu libevent libpng libjpeg-turbo)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm libnotify)
 conflicts=(cliqz-bin)
@@ -77,6 +77,9 @@ END
   # more information.
   echo -n "16674381-f021-49de-8622-3021c5942aff" > browser/mozilla-desktop-geoloc-api.key
 
+  # Please enable stylo!
+  sed -i '/^ac_add_options --disable-stylo$/d' browser/config/cliqz-release.mozconfig
+
   cat >> browser/config/cliqz-release.mozconfig <<END
 
 # Archlinux specific additions
@@ -86,8 +89,8 @@ ac_add_options --disable-tests
 ac_add_options --enable-gold
 ac_add_options --enable-pie
 ac_add_options --enable-hardening
+ac_add_options --enable-optimize="-O2"
 ac_add_options --enable-rust-simd
-ac_add_options --enable-stylo
 ac_add_options --enable-default-toolkit=cairo-gtk3
 
 # System libraries
@@ -95,6 +98,8 @@ ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-libevent
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-png
 ac_add_options --with-system-nss
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-system-hunspell
@@ -109,15 +114,6 @@ END
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
-
-  # Hardening
-  LDFLAGS+=" -Wl,-z,now"
-
-  # Avoid duplicate compilation options
-  march=$(gcc -Q --help=target | grep march | sed -nr 's/^.*\s+([^\s]+)$/\1/p')
-  CFLAGS="-march=${march} -mtune=generic -O2 -fstack-protector-strong -fno-plt -Wno-error=maybe-uninitialized -Wno-error=deprecated-declarations -Wno-error=coverage-mismatch"
-  CPPFLAGS="-D_FORTIFY_SOURCE=2"
-  CXXFLAGS="$CFLAGS"
 
   export CQZ_RELEASE_CHANNEL=release
   export CQZ_VERSION=$pkgver
