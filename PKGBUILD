@@ -3,7 +3,7 @@
 # Contributor: Carl George < arch at cgtx dot us >
 
 pkgname=gnome-shell-extension-dash-to-panel-git
-pkgver=r262.187ac72
+pkgver=11.r23.g9b5f264
 pkgrel=1
 pkgdesc='Extension for GNOME shell to combine the dash and main panel'
 arch=(any)
@@ -12,14 +12,16 @@ _githubowner=jderose9
 url="https://github.com/${_githubowner}/${_githubname}"
 license=(GPL2)
 depends=('gnome-shell>=3.18')
-makedepends=(git gnome-common intltool)
+makedepends=('git' 'gnome-common' 'intltool')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 install='gnome-shell-extension.install'
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_githubname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
