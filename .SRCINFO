@@ -1,0 +1,26 @@
+pkgbase = shotpy
+	pkgdesc = Python script to upload pictures or screenshots to Imgur.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/AyushBhat/shotpy
+	install = shotpy.install
+	arch = any
+	license = GPL
+	depends = curl
+	depends = grep
+	depends = scrot
+	depends = python>=3.6
+	depends = libnotify
+	depends = xclip
+	optdepends = libnotify: for desktop notifications
+	optdepends = scrot: for making screenshots
+	optdepends = xclip: for copying screenshot URLs to clipboard
+	source = git+https://github.com/AyushBhat/shotpy.git
+	source = shotpy.desktop
+	source = shotpy.png
+	md5sums = SKIP
+	md5sums = 459431a977061e56894315ce151d9bef
+	md5sums = 3780c9f2183f7d4705ab86ab077e3885
+
+pkgname = shotpy-git
+
