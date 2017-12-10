@@ -1,6 +1,6 @@
 pkgbase = banshee-git
 	pkgdesc = Music management and playback for GNOME (fork by arfbtwn)
-	pkgver = 2.9.1.r352.gc2b1fa99a
+	pkgver = 2.9.1.r355.g10da4d618
 	pkgrel = 2
 	url = https://github.com/arfbtwn/banshee
 	arch = i686
@@ -20,13 +20,14 @@ pkgbase = banshee-git
 	depends = hicolor-icon-theme
 	depends = media-player-info
 	depends = gst-plugins-bad
-	depends = mono-upnp
+	depends = mono-upnp-git
 	depends = gst-plugins-good
 	depends = gvfs
 	depends = libgpod
 	optdepends = gst-plugins-ugly: Extra media codecs
 	optdepends = gst-libav: Extra media codecs
 	optdepends = brasero: CD burning
+	conflicts = banshee
 	source = git+https://github.com/arfbtwn/banshee.git
 	md5sums = SKIP
 
