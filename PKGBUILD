@@ -3,7 +3,7 @@
 
 _pkgname=azure-vhd-utils
 pkgname=${_pkgname}-git
-pkgver=r36.43293b8
+pkgver=r37.2dd43d8
 pkgrel=1
 pkgdesc="Azure VHD utilities for Go."
 arch=('x86_64' 'i686')
