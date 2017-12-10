@@ -39,7 +39,7 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14.4
+pkgver=4.14.5
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -74,9 +74,9 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'e9dcf9aad5977289940cd6e3762af02b87a725ba6c1a9f4af86958dc621e3a84'
+            'd86eb2fd1c424fec9fbb12afacf7b783756651f5d7d0cf7ac71c3fbbbedddc9c'
             'SKIP'
-            '8cb75d76f7923723591bbcca72f98f362ca1e47b8418118142fb1fa9481b0b33'
+            '565f14038a4e781bdf3914dd374fb16553d7925dd3ead14e8b72c9d308828b45'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
