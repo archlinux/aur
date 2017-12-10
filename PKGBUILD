@@ -2,10 +2,10 @@
 
 _name=chronojump
 pkgname=$_name-git
-pkgver=1.7.0.40.gd9f9425b
+pkgver=1.7.1.187.g58dc443d
 pkgrel=1
 pkgdesc="Measurement, management and statistics of sport short-time tests"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="http://chronojump.org/"
 license=('GPL')
 depends=('gstreamer0.10-base' 'python' 'gtk2')
