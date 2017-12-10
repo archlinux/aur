@@ -27,14 +27,7 @@ sha256sums=(d931a5376b7f38fba7221b01b1010f172c4d662668adae5c38885a646d5ee530
             SKIP)
 
 prepare() {
-  cd Electrum-LTC-$pkgver/
-
-  find ./ -type f -exec sed -i '/#!/s/python$/&2/' {} +
-
-  for i in icons/{electrum_{dark,light}_icon,unpaid}.png
-  do convert $i $i
-  done
-  pyrcc4 icons.qrc >gui/qt/icons_rc.py
+  find Electrum-LTC-$pkgver/ -type f -exec sed -i '/#!/s/python$/&2/' {} +
 }
 
 build() {
