@@ -5,12 +5,12 @@
 pkgname=mono-upnp-git
 _pkgbase=mono-upnp
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="UPNP binding for Mono/.NET"
 arch=('i686' 'x86_64')
 url="https://github.com/mono/mono-upnp"
 license=('MIT')
-depends=('gtk-sharp-2' 'mono-addins' 'taglib-sharp' 'nunit3')
+depends=('gtk-sharp-2' 'mono-addins' 'taglib-sharp-git')
 conflicts=($_pkgbase)
 source=(git+https://github.com/mono/mono-upnp.git
 https://github.com/DynamicDevices/mono-upnp/commit/95780e8ec440c3714a6fcf167cf7cd1d0f55d94a.diff)
