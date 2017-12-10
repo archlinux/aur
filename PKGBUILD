@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/ldap3-$pkgver
-  python setup.py install --root $pkgdir
-  install -D -m644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  cd "$srcdir/ldap3-$pkgver"
+  python setup.py install --root "$pkgdir"
+  install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
