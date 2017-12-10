@@ -2,10 +2,10 @@
 
 pkgname=gnome-shell-extension-gsconnect
 pkgver=7
-pkgrel=1
-pkgdesc="AppIndicator/KStatusNotifierItem support for GNOME Shell"
+pkgrel=2
+pkgdesc="KDE Connect implementation with GNOME Shell integration"
 arch=('any')
-url="https://github.com/ubuntu/gnome-shell-extension-appindicator"
+url="https://github.com/andyholmes/gnome-shell-extension-gsconnect"
 license=('GPL')
 makedepends=('unzip')
 depends=('gnome-shell')
