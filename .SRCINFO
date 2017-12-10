@@ -1,6 +1,6 @@
 pkgbase = ttf-ibm-plex-git
 	pkgdesc = IBM Plex
-	pkgver = 0.0.0
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://ibm.github.io/type/
 	arch = any

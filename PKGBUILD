@@ -1,6 +1,6 @@
 # Maintainer: erk <valdemarerk at gmail dot com>
 pkgname=ttf-ibm-plex-git
-pkgver=0.0.0
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="IBM Plex"
 arch=('any')
