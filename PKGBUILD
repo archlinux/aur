@@ -8,7 +8,7 @@ pkgname=inox-beta
 pk=bnox
 name=chromium
 pkgver=64.0.3282.14
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -281,11 +281,11 @@ patch -Np1 -i ../034.patch
 #patch -Np1 -i ../035.patch
 patch -Np1 -i ../360.patch
 patch -Np1 -i ../888.patch
-patch -Np1 -i ../pt.patch
+patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-
+patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
@@ -323,14 +323,18 @@ patch -Np1 -i ../l3.patch
 patch -Np1 -i ../m.patch
 patch -Np1 -i ../n.patch
 patch -Np1 -i ../o.patch
-patch -Np1 -i ../p.patch
-
+patch -Np1 -i ../p1.patch
+patch -Np1 -i ../p2.patch
+patch -Np1 -i ../e3.patch
+patch -Np1 -i ../narnia1.patch
 
 #patch -Np1 -i ../9k.patch
 #patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
 patch -Np1 -i ../16.patch
+
+
 
 patch -Np1 -i ../k1.patch
 #patch -Np1 -i ../r21.patch
