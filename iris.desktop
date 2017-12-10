@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Iris
+GenericName=System
+Comment=Adjusts the color temperature of your screen according to your surroundings.
+Icon=iris
+Exec=iris %U
+Terminal=false
+Type=Application
+Categories=System
