@@ -8,7 +8,7 @@ pkgname=inox-beta
 pk=bnox
 name=chromium
 pkgver=64.0.3282.14
-pkgrel=6
+pkgrel=10
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -418,7 +418,7 @@ build() {
     'enable_swiftshader=false'
     'enable_nacl_nonsfi=false'
     'enable_google_now=false'
-    'enable_print_preview=false'
+    'enable_print_preview=true'
   )
 
       _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
@@ -441,6 +441,8 @@ build() {
   python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
   out/Release/gn gen out/Release --args="${_flags[*]}" \
     --script-executable=/usr/bin/python2
+
+python2 build/util/lastchange.py -m GPU_LISTS_VERSION --revision-id-only --header gpu/config/gpu_lists_version.h
 
   ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
 }
