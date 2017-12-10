@@ -13,7 +13,6 @@ groups=('base-devel')
 depends=('perl' 'bash')
 makedepends=('autoconf')
 provides=("automake=$pkgver")
-checkdepends=('dejagnu' 'python2' 'java-environment' 'vala' 'emacs' 'cscope')
 install=automake.install
 source=(ftp://ftp.gnu.org/gnu/${_realname}/${_realname}-${pkgver}.tar.xz perl2.6.patch)
 md5sums=('cf4752287ad708f83bd3689da57a32c9'
@@ -39,10 +38,5 @@ package() {
   make DESTDIR=${pkgdir} install
 
   rm -rf "$pkgdir/usr/"{bin/{aclocal,automake},share/{doc,aclocal}}
-
-  for files in "$pkgdir"/usr/share/info/*; do
-    rename "$files" "$(echo $files | sed -r 's/(\.info)/-1.11\1/')" "$files"
-  done
-
   rm "$pkgdir/usr/share/man/man1/"{aclocal,automake}.1
 }
