@@ -1,0 +1,20 @@
+pkgbase = python-qhue
+	pkgdesc = A very lightweight Python wrapper to the Philips Hue API
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/quentinsf/qhue
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-qhue-1.0.8.tar.gz::https://github.com/quentinsf/qhue/archive/1.0.8.tar.gz
+	sha512sums = 98158acef3134f0909fdb72ec80d3af3714ac72cec8171588c842871b7fc049deaaa37bcd6c68eaddd0db6807bf004aeeec4969ccae3fab1a1290717f26e7a56
+
+pkgname = python-qhue
+	depends = python
+	depends = python-requests
+
+pkgname = python2-qhue
+	depends = python2
+	depends = python2-requests
+
