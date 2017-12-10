@@ -1,7 +1,7 @@
 # Maintainer: Niek den Breeje <n.j.den.breeje@gmail.com>
 pkgname=base16-manager-git
 _pkgname=base16-manager
-pkgver=r52.d2504ba
+pkgver=r56.598cb4d
 pkgrel=1
 pkgdesc='A command line tool to install base16 templates and set themes globally.'
 arch=('any')
