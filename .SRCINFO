@@ -1,0 +1,20 @@
+pkgbase = mono-upnp-git
+	pkgdesc = UPNP binding for Mono/.NET
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://github.com/mono/mono-upnp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gtk-sharp-2
+	depends = mono-addins
+	depends = taglib-sharp
+	depends = nunit3
+	conflicts = mono-upnp
+	source = git+https://github.com/mono/mono-upnp.git
+	source = https://github.com/DynamicDevices/mono-upnp/commit/95780e8ec440c3714a6fcf167cf7cd1d0f55d94a.diff
+	md5sums = SKIP
+	md5sums = b2f9bfb0a6d9f64fa8754129db40c44b
+
+pkgname = mono-upnp-git
+
