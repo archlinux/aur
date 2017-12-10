@@ -5,27 +5,24 @@
 
 pkgname=mumudvb
 _gitname=MuMuDVB
-pkgver=1.7.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Redistribute a stream from DVB on a network in multicast or in HTTP unicast"
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv7h)
 url="http://www.mumudvb.net/"
-license=('GPL')
+license=('GPL2')
 depends=('glibc')
-options=(docs emptydirs)
 source=("https://github.com/braice/${_gitname}/archive/${pkgver}.zip"
-        "mumudvb.install"
         "mumudvb.conf")
 install="mumudvb.install"
-sha256sums=('48294d41f135ecb56b07c7c8c6e9effc46658f98441229b2d1a7b1ad38e77b98'
-            '8d6ae9ed0f8c6d00254549bfae6bc20ca0984dce8c85eb1ef00d555e49b41264'
+sha256sums=('43706f0d899cebc934dc7a2076497d221b44464b4d986dc263dd2a6c91ae9088'
             'abe3c74a528f59b990e18f91858cb9bb9dd61c715c8904eb561aa7ee4cb79281')
 
 build() {
   cd "${srcdir}/${_gitname}-${pkgver}"
 
   # Needed for development snapshots
-  # autoreconf -i -f
+  autoreconf -i -f
 
   ./configure --prefix=/usr
   make
@@ -40,14 +37,11 @@ package() {
   install -D -m 0644 ${srcdir}/mumudvb.conf ${pkgdir}/usr/lib/tmpfiles.d/mumudvb.conf
 
   # docs
-  install -d -m 0775 ${pkgdir}/usr/share/doc/mumudvb/configuration_examples
-  install -d -m 0775 ${pkgdir}/usr/share/doc/mumudvb/html
-  install -D -m 0644 doc/mumudvb.8 ${pkgdir}/usr/share/man/man8/mumudvb.8
-  install -m 0644 doc/configuration_examples/* ${pkgdir}/usr/share/doc/mumudvb/configuration_examples
-  install -m 0644 doc/html/* ${pkgdir}/usr/share/doc/mumudvb/html
-  install -m 0644 doc/README* ${pkgdir}/usr/share/doc/mumudvb
-  install -m 0644 doc/QUICKSTART.txt ${pkgdir}/usr/share/doc/mumudvb
-  install -m 0644 doc/WEBSERVICES.txt ${pkgdir}/usr/share/doc/mumudvb
+  install -d -m 0755 ${pkgdir}/usr/share/doc/mumudvb
+  install -d -m 0755 ${pkgdir}/usr/share/man/man8
+  cp -r doc/* ${pkgdir}/usr/share/doc/mumudvb/
+  mv ${pkgdir}/usr/share/doc/mumudvb/mumudvb.8 ${pkgdir}/usr/share/man/man8
+  rm ${pkgdir}/usr/share/doc/mumudvb/Makefile*
 }
 
 # vim:set ts=2 sw=2 et:
