@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=libpam-google-authenticator
-pkgver=1.04
+pkgver=1.05
 pkgrel=1
 pkgdesc='PAM module for google authenticator app'
 arch=('i686' 'x86_64' 'armv7h')
@@ -23,6 +23,7 @@ build() {
 package() {
   cd $srcdir/google-authenticator-libpam-${pkgver}
   make DESTDIR=$pkgdir install
+  libtool --finish $pkgdir/usr/lib/security
 }
 
-md5sums=('4b08a0a5dca2835499c790d67bf8f736')
+md5sums=('c06f0f38fd91ac4b6b0965b932f80eb9')
