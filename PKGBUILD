@@ -14,12 +14,12 @@ source=("git+https://github.com/albfan/jmeld")
 md5sums=('SKIP')
  
 build() {
-	cd "$srcdir"/$pkgname
+	cd "$srcdir"/jmeld
 	mvn -P linux-dist package
 }
  
 package() {
-	cd "$srcdir"/$pkgname
-   unzip target/$pkgname-$pkgver-bin.zip
-   mv $pkgname-$pkgver/* $pkgdir
+	cd "$srcdir"/jmeld
+   unzip target/jmeld-$pkgver-bin.zip
+   mv jmeld-$pkgver/* $pkgdir
 }
