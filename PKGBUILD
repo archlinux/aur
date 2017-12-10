@@ -1,25 +1,28 @@
 pkgname=nmclient
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.0.3
+_date=20160302
+pkgrel=1
 pkgdesc="Novell Messenger Client for Linux"
 url="http://gwclient.provo.novell.com/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=(custom)
-depends=('bash' 'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('unzip' 'rpmextract')
-depends_i686=('jre' 'glib2' 'libxext' 'gtk2')
-depends_x86_64=('bin32-jre' 'lib32-glib2' 'lib32-libxext' 'lib32-gtk2')
+depends=('bin32-jre' 'lib32-glib2' 'lib32-libxext' 'lib32-gtk2'
+         'bash' 'hicolor-icon-theme' 'desktop-file-utils')
+makedepends=('unzip')
 source=(https://gwclient.innerweb.novell.com/client/messenger/nim30linux.zip)
-md5sums=('e332649760df984b166d39c427d2ae9f')
+sha256sums=('0defd9414ba96a66d407c34c6de88fc495f27ff028457afe95a64499e3f5504a')
 
-build() {
+prepare() {
   rm -rf "$pkgname-$pkgver"
   mkdir "$pkgname-$pkgver"
+}
+
+build() {
   cd "$pkgname-$pkgver"
   
   msg2 "Extracting RPM file..."
     # exclude jre from extraction to save 109M
-  bsdtar -xf "$srcdir"/novell-messenger-client-3.0.2-20151117.x86_64.rpm \
+  bsdtar -xf "$srcdir"/novell-messenger-client-$pkgver-$_date.x86_64.rpm \
         --exclude=jre
   chmod +rx opt usr
 }
@@ -39,11 +42,7 @@ package() {
     # install  executable script, and fix java path and LD_LIBRARY_PATH
   mv "$pkgdir"/usr/share/nmclient/run-messenger "$pkgdir"/usr/bin/nmclient
   
-  if [ "$CARCH"  == "i686" ]; then
-    JAVA_BIN=/usr/bin/java
-  elif [ "$CARCH"  == "x86_64" ]; then
-    JAVA_BIN=/usr/bin/java32
-  fi
+  JAVA_BIN=/usr/bin/java32
   
     # set paths
   sed -e "s#^CLIENT_PATH=.*#CLIENT_PATH=/usr/share/nmclient/#" \
