@@ -3,7 +3,7 @@
 
 pkgbase=linux-max98090
 _srcname=linux-4.14
-pkgver=4.14.4
+pkgver=4.14.5
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -27,9 +27,9 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'e9dcf9aad5977289940cd6e3762af02b87a725ba6c1a9f4af86958dc621e3a84'
+            'd86eb2fd1c424fec9fbb12afacf7b783756651f5d7d0cf7ac71c3fbbbedddc9c'
             'SKIP'
-            '69b0e9db10155332f13f6715603970d8c858ef25a97a2b0a3e78170c812ba84d'
+            'aff960f717679d3fc6d6a197d31160f700bbf861b5060679b33065aff768b187'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
