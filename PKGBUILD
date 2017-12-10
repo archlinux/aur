@@ -4,7 +4,7 @@
 # Maintainer: alexmo82 <25396682 AT live DOT it>
 
 pkgname=freefilesync
-pkgver=9.5
+pkgver=9.6
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(
 	)
 
 sha256sums=(
-	 'd1b811c3e6ba84b666fe49c21f7847f3925657c4145098f40be1d2921928f82c'	#ffs source
+	 '9cbb00c71e3df07ee8254ec55cb670fbebad5bab6ac050af4ced90838a266853'	#ffs source
 	 'b381bb9dbda25c3c08a67f18072a2761abe34339ddf3318e1758eb7c349f1a3b'	#FreeFileSync.desktop
 	 '31df3fa1f1310de14bbd379f891d4f8ed2df5b0d68913eb52c88b3be682933fb'	#ffsicon.png
 	 '1502efdbf1638856a18ab9916e0431bf6a53471792cb2daa380345bac33f67c4'	#RealTimeSync.desktop
@@ -49,6 +49,9 @@ prepare() {
 }
 
 build() {
+### speed up compile on multithread machines
+    MAKEFLAGS="-j$(nproc)"
+
 ### just in case of compile errors
     VER=`g++ -dumpversion`
     MAC=`g++ -dumpmachine`
