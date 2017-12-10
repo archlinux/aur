@@ -2,7 +2,7 @@
 _npmscope=@dicy
 _npmname=cli
 pkgname=nodejs-dicy-cli
-pkgver=0.10.0
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="A JavaScript based builder for LaTeX, knitr and literate Haskell that automatically builds dependencies."
 arch=(any)
@@ -19,3 +19,4 @@ package() {
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmscope/$_npmname@$pkgver
 }
+
