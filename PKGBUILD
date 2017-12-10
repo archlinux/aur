@@ -1,4 +1,4 @@
-# Maintainer: ValdikSS <tfeayush@gmail.com>
+# Maintainer: 0xBAAAAAAD <tfeayush@gmail.com>
 
 pkgname=shotpy
 pkgver=0.1
@@ -20,7 +20,7 @@ md5sums=('SKIP'
          '3780c9f2183f7d4705ab86ab077e3885')
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
 
   sed -i 's~$HOME/Pictures/imgur.png~/usr/share/pixmaps/shotpy.png~' shotpy.py
 }
