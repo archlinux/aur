@@ -2,10 +2,10 @@
 
 _name=girl
 pkgname=$_name-git
-pkgver=10.r2.g7834b94
+pkgver=10.r25.g436baf0
 pkgrel=1
 pkgdesc="GNOME Internet Radio Locator"
-arch=(i686 x86_64)
+arch=('x86_64')
 url="https://wiki.gnome.org/Apps/Girl"
 license=(GPL)
 depends=(gst-plugins-base-libs libgnomeui streamripper totem)
