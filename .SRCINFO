@@ -1,0 +1,20 @@
+pkgbase = jdk7r1-j9-bin
+	pkgdesc = IBM® SDK, Java Technology Edition, Version 7 Release 1
+	pkgver = 7.1.4.15
+	pkgrel = 1
+	url = https://developer.ibm.com/javasdk/downloads/sdk7r1/
+	arch = x86_64
+	license = custom
+	makedepends = coreutils
+	makedepends = bash
+	depends = java-environment-common
+	depends = ca-certificates-utils
+	depends = nss
+	provides = java-environment=7
+	provides = java-runtime=7
+	provides = java-runtime-headless=7
+	source = install.bin::https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/7.1.4.15/linux/x86_64/ibm-java-sdk-7.1-4.15-x86_64-archive.bin
+	sha256sums = b7288fcd711d5c512bbe16e0f5e1e019fe0690283b52e1e7ae1dabca6b346c4e
+
+pkgname = jdk7r1-j9-bin
+
