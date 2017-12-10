@@ -2,9 +2,9 @@
 
 pkgname=xplayer
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple media player. X-Apps Project."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('clutter-gtk' 'clutter-gst' 'xplayer-plparser'
     'desktop-file-utils' 'iso-codes' 'yelp-xsl'
