@@ -5,7 +5,7 @@ pkgname=tsc
 pkgver=2.0.0
 pkgrel=3
 pkgdesc="Jump'n'run game with editor and scripting facilities, fork of SMC"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://secretchronicles.org/en/'
 license=('GPL3')
 depends=('sdl_image' 'sdl_ttf' 'sdl_mixer' 'devil' 'boost-libs' 'libxml++2.6'
@@ -27,18 +27,19 @@ prepare() {
   patch -p0 -i tsc-2.0.0-issue457-utf8-rakefile.patch
   patch -p0 -i tsc-2.0.0-mga-rename-custom-filesystem-relative.patch
 
-  cd TSC-$pkgver/tsc
   [ -d build ] && rm -rf build
   mkdir build
 }
 
 build() {
-  cd TSC-$pkgver/tsc/build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cd build
+  cmake ../TSC-$pkgver/tsc/     \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd TSC-$pkgver/tsc/build
+  cd build
   make DESTDIR="$pkgdir/" install
 }
