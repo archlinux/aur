@@ -1,6 +1,6 @@
 pkgbase = xfsdump
 	pkgdesc = Additional XFS filesystem utilities
-	pkgver = 3.1.6
+	pkgver = 3.1.8
 	pkgrel = 1
 	url = http://oss.sgi.com/projects/xfs/
 	arch = i686
@@ -13,10 +13,8 @@ pkgbase = xfsdump
 	options = !makeflags
 	options = !emptydirs
 	options = !libtool
-	source = ftp://oss.sgi.com/projects/xfs/cmd_tars/xfsdump-3.1.6.tar.gz
-	source = ftp://oss.sgi.com/projects/xfs/cmd_tars/xfsdump-3.1.6.tar.gz.sig
-	sha256sums = 7f78c11ca527477d90e5e62b0778f3ad96f2b71c19173044e9aca9515fff42d0
-	sha256sums = SKIP
+	source = https://git.kernel.org/pub/scm/fs/xfs/xfsdump-dev.git/snapshot/xfsdump-dev-3.1.8.tar.gz
+	md5sums = 9059a9c510959aa848f66f6e98814438
 
 pkgname = xfsdump
 
