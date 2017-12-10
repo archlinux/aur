@@ -6,16 +6,18 @@ _module="$_name"
 pkgname=("python-$_module")
 #pkgname=("python-$_module" "python2-$_module") 
 pkgdesc="Set of tools for automatic astrophotography images acquisition and processing"
-pkgver="0.2.6"
+pkgver="0.2.7"
 pkgrel=1
 url="https://github.com/pozar87/apts"
 license=('Apache 2')
 arch=('any')
-makedepends=("python-pbr>=1.9")
+makedepends=("python-pbr>=1.9"
+             "python-igraph"
+             "python-pyephem")
 #             "python2-pbr>=1.9"
 #             "python2-configparser>=3.5")
 source=("https://github.com/pozar87/apts/archive/v$pkgver.tar.gz")
-md5sums=('0391807a9c776dc047ec980074e48f03')
+md5sums=('4bb7dd2af0db505bd3c6e6e243bb5d0e')
 
 build() {
     cd "$_name-$pkgver"
@@ -27,7 +29,6 @@ package_python-apts(){
     depends=('python-igraph'
              'python-pyephem'
              'python-pandas'
-             'python-numpy'
              'python-pint')
     cd "$_name-$pkgver"
     python setup.py install --root="${pkgdir}/" --optimize=1
@@ -39,7 +40,6 @@ package_python-apts(){
 #             'python2-igraph'
 #             'python2-ephem'
 #             'python2-pandas'
-#             'python2-numpy'
 #             'python2-pint')
 #    cd "$_name-$pkgver"             
 #    python2 setup.py install --root="${pkgdir}/" --optimize=1

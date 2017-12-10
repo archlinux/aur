@@ -1,18 +1,19 @@
 pkgbase = python-apts
 	pkgdesc = Set of tools for automatic astrophotography images acquisition and processing
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/pozar87/apts
 	arch = any
 	license = Apache 2
 	makedepends = python-pbr>=1.9
-	source = https://github.com/pozar87/apts/archive/v0.2.6.tar.gz
-	md5sums = 0391807a9c776dc047ec980074e48f03
+	makedepends = python-igraph
+	makedepends = python-pyephem
+	source = https://github.com/pozar87/apts/archive/v0.2.7.tar.gz
+	md5sums = 4bb7dd2af0db505bd3c6e6e243bb5d0e
 
 pkgname = python-apts
 	depends = python-igraph
 	depends = python-pyephem
 	depends = python-pandas
-	depends = python-numpy
 	depends = python-pint
 
