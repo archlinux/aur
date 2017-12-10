@@ -8,12 +8,12 @@
 
 pkgname=visual-studio-code-git
 pkgdesc='Visual Studio Code for Linux, Open Source version from git'
-pkgver=1.1.0.insider.r16716.g37c73f0c71
+pkgver=1.16.0.r4189.g6e71921951
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
 license=('MIT')
-makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2' 'git')
+makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2' 'git' 'yarn')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
          'alsa-lib')
 conflicts=('vscode-oss' 'visual-studio-code-oss')
@@ -66,42 +66,15 @@ prepare() {
     fi
 }
 
-# npm.sh wrapper puts things in the user's home directory...
-# To avoid that, we perform its environment setup manually instead
-npm_wrap() {
-  (
-    ROOT="${srcdir}/vscode"
-    ELECTRON_VERSION=$(
-        cat "$ROOT"/package.json |
-        grep electronVersion |
-        sed -e 's/[[:space:]]*"electronVersion":[[:space:]]*"\([0-9.]*\)"\(,\)*/\1/'
-    )
-
-    ELECTRON_GYP_HOME="${srcdir}/electron-gyp"
-    mkdir -p $ELECTRON_GYP_HOME
-
-    npm_config_disturl=https://atom.io/download/electron \
-    npm_config_target=$ELECTRON_VERSION \
-    npm_config_runtime=electron \
-    HOME=$ELECTRON_GYP_HOME \
-    npm $*
-  )
-}
-
 build() {
     cd "${srcdir}/vscode"
 
-    # The provided shrinkwrap file doesn't work correctly with npm 5.x
-    # Therefore, we install an older version and use that for the build
-    ( cd "${srcdir}" && /usr/bin/npm install 'npm@4.6.1' )
-    PATH="${srcdir}/node_modules/.bin":$PATH
-
-    npm_wrap install --arch=${_vscode_arch}
+    yarn install --arch=${_vscode_arch}
 
     # The default memory limit may be too low for current versions of node
     # to successfully build vscode.  Uncomment this to set it to 2GB, or
     # change it if this number still doesn't work for your system.
-    #mem_limit="--max_old_space_size=2048"
+    mem_limit="--max_old_space_size=2048"
     /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}
 
     # Patch the startup script to know where the app is installed, rather
