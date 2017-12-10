@@ -2,7 +2,7 @@
 # Contributor: Victor van den Elzen <victor.vde at gmail dot com>
 pkgname=pgbadger
 pkgver=9.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A fast PostgreSQL Log Analyzer"
 arch=("any")
 url="https://github.com/dalibo/pgbadger"
