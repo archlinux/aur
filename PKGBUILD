@@ -2,7 +2,7 @@
 
 _gemname=unf_ext
 pkgname=ruby-$_gemname
-pkgver=0.0.7.2
+pkgver=0.0.7.4
 pkgrel=1
 pkgdesc="Unicode Normalization Form support library for CRuby"
 arch=(any)
@@ -11,13 +11,11 @@ license=('MIT')
 depends=('ruby')
 makedepends=('rubygems')
 optdepends=('ruby-bundler' 'ruby-rake' 'ruby-rakecompiler' 'ruby-rdoc' 'ruby-test-unit')
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('e8fa13d09880f8d06d30a86f929a38ba0af6abe61272927a49e6796aee1aa111')
+source=(https://rubygems.org/downloads/${pkgname#ruby-}-$pkgver.gem)
+noextract=(${pkgname#ruby-}-$pkgver.gem)
+sha512sums=('2f90542c899e02c2cae06b54ad381ba0f2084880cb760357b4cedf7f171aa2eb7322a0288fadd253624c531410730624a4c8d51e5eb61a67b3fd91d985847fbb')
 
 package() {
   cd "$srcdir"
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
+  gem install --no-user-install --ignore-dependencies -i "$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')" -n "$pkgdir/usr/bin" "${pkgname#ruby-}-$pkgver.gem"
 }
