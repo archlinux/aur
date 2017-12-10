@@ -7,6 +7,7 @@ pkgbase = csxcad-git
 	arch = x86_64
 	license = LGPL3
 	depends = fparser
+	depends = qt5-webkit
 	depends = tinyxml
 	depends = hdf5
 	depends = vtk

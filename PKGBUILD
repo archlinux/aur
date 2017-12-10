@@ -7,7 +7,7 @@ pkgdesc="A C++ library to describe geometrical objects and their physical or non
 url="https://github.com/thliebig/CSXCAD"
 arch=('i686' 'x86_64')
 license=('LGPL3')
-depends=('fparser' 'tinyxml' 'hdf5' 'vtk' 'boost' 'cgal')
+depends=('fparser' 'qt5-webkit' 'tinyxml' 'hdf5' 'vtk' 'boost' 'cgal')
 provides=('csxcad')
 conflicts=('csxcad')
 
