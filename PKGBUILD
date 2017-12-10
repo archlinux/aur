@@ -1,11 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=whatweb-git
-pkgver=4171.945341b
+pkgver=4245.5aa3d5e4
 pkgrel=1
 pkgdesc="Next generation web scanner that identifies what websites are running."
 arch=('i686' 'x86_64')
+replaces=('whatweb')
 conflicts=('whatweb')
+provides=('whatweb')
 url="http://www.morningstarsecurity.com/research/whatweb"
 license=('GPL')
 depends=('ruby1.8')
