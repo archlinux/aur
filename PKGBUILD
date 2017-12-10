@@ -1,29 +1,16 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.3.3
-_pkgver=10.03.p03
+pkgver=10.4.0
+_pkgver=10.04
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=2.8.2'
          'xerces-c'
-         'qt5-connectivity'
-         'qt5-graphicaleffects'
-         'qt5-imageformats'
-         'qt5-multimedia'
-         'qt5-quick1'
-         'qt5-quickcontrols'
-         'qt5-serialport'
-         'qt5-svg'
-         'qt5-tools'
-         'qt5-translations'
-         'qt5-wayland'
-         'qt5-webengine'
-         'qt5-websockets'
-         'qt5-x11extras'
+         'qt5-base'
          'glu'
          'soxt'
         )
-replaces=('geant4-deb')
+conflicts=('geant4_devel')
 optdepends=('java-environment: for histogram visualizations and
 analysis'
   'tcsh: for C Shell support'
@@ -45,7 +32,7 @@ options=('!emptydirs')
 install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${pkgname}.${_pkgver}.tar.gz"
   "${pkgname}.install")
-md5sums=('ccae9fd18e3908be78784dc207f2d73b'
+md5sums=('b84beeb756821d0c61f7c6c93a2b83de'
          'bfe6791027de966cad240d8584c6b657')
 
 ## Remove this if you want to keep an even smaller package
@@ -53,15 +40,16 @@ md5sums=('ccae9fd18e3908be78784dc207f2d73b'
 PKGEXT='.pkg.tar'
 
 build() {
+
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
+
   env -i \
-      CXXFLAGS="${CXXFLAGS} -std=c++14" \
       QT_SELECT=5 \
       PATH=/usr/bin \
       cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_BUILD_TYPE=RELEASE \
       -DGEANT4_BUILD_MULTITHREADED=ON \
       -DGEANT4_BUILD_CXXSTD=14 \
       -DGEANT4_INSTALL_DATA=OFF \
@@ -79,7 +67,7 @@ build() {
       -DCMAKE_INSTALL_LIBDIR=lib \
       ../${pkgname}.${_pkgver}
 
-  make
+  G4VERBOSE=1 make
 
 }
 
@@ -90,7 +78,7 @@ package() {
   #files are also available on the AUR and the environment variables
   #are set automatically for you from the packages.
 
-  msg "Removing wrongly set environment variables"
+  msg "Removing 'wrongly' set environment variables"
 
   variables=("G4NEUTRONHPDATA" \
                  "G4LEDATA" \
