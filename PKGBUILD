@@ -5,11 +5,11 @@ pkgname=$_name-git
 pkgver=20100517.r251.f3fd7c7
 pkgrel=1
 pkgdesc="Audio generators and effects using an API designed by Jeskola Buzz"
-arch=(i686 x86_64)
+arch=('x86_64')
 url="http://buzztrax.org/"
 license=(LGPL)
 makedepends=('git')
-source=(git+https://github.com/Buzztrax/$_name.git)
+source=("git+https://github.com/Buzztrax/$_name.git")
 md5sums=('SKIP')
 
 pkgver() {
