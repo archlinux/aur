@@ -86,9 +86,9 @@
 
 pkgname=pam_ssh_agent_auth-git
 pkgver=r22.f4b3932
-pkgrel=2
+pkgrel=3
 pkgdesc="PAM module which permits authentication for arbitrary services via ssh-agent. (Git version including experimental ECC support)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://github.com/jbeverly/pam_ssh_agent_auth/"
 license=('custom:OpenSSL')
 depends=('openssl-1.0')
