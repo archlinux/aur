@@ -4,11 +4,12 @@
 pkgname=kore-git
 _gitname=kore
 pkgver=2.0.0.release.r189.gae4201c
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use, scalable and secure web application framework for writing web APIs in C."
 arch=('i686' 'x86_64')
 url="https://kore.io/"
 license=('ISC')
+makedepends=('git')
 depends=('openssl' 'postgresql-libs')
 conflicts=('kore')
 provides=('kore')
