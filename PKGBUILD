@@ -8,7 +8,7 @@
 
 pkgname=mutter-781835-workaround
 _pkgname=mutter
-pkgver=3.26.2
+pkgver=3.26.2+31+gbf91e2b4c
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users."
 url="https://git.gnome.org/browse/mutter"
@@ -16,13 +16,13 @@ arch=(i686 x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
-         libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire)
+         libxkbcommon-x11 gnome-settings-daemon libgudev libinput)
 makedepends=(intltool gobject-introspection git gnome-common)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
 options=(!emptydirs)
-_commit=17e5cd8c46434c030037664242a44d8c67774e70  # tags/3.26.2^0
+_commit=bf91e2b4ca1ef8b0478d1edec46bd33065457153  # gnome-3-26
 source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
         startup-notification.patch)
 sha256sums=('SKIP'
@@ -51,7 +51,7 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --libexecdir=/usr/lib/$_pkgname --disable-static \
       --disable-schemas-compile --enable-compile-warnings=minimum \
-      --enable-gtk-doc --enable-egl-device --enable-remote-desktop
+      --enable-gtk-doc --enable-egl-device --disable-remote-desktop
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' \
