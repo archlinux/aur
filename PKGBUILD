@@ -3,19 +3,19 @@
 _name="apts"
 _module="$_name"
 
-#pkgname=("python-$_module" "python2-$_module") #
 pkgname=("python-$_module")
+#pkgname=("python-$_module" "python2-$_module") 
 pkgdesc="Set of tools for automatic astrophotography images acquisition and processing"
-pkgver="0.2.3"
+pkgver="0.2.6"
 pkgrel=1
 url="https://github.com/pozar87/apts"
 license=('Apache 2')
 arch=('any')
-makedepends=("python-pbr>=1.9" 
-             "python2-pbr>=1.9")
+makedepends=("python-pbr>=1.9")
+#             "python2-pbr>=1.9"
 #             "python2-configparser>=3.5")
 source=("https://github.com/pozar87/apts/archive/v$pkgver.tar.gz")
-md5sums=('c7fe6960d4a2974120aeca289b53427d')
+md5sums=('0391807a9c776dc047ec980074e48f03')
 
 build() {
     cd "$_name-$pkgver"
