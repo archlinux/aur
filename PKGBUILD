@@ -2,14 +2,14 @@
 
 pkgname=xviewer-plugins-git
 _pkgbasename=xviewer-plugins
-pkgver=1.0.3.r0.g0854521
+pkgver=1.2.0.r0.g2fdf842
 pkgrel=1
 pkgdesc="Plugins for xviewer. X-Apps Project (git version)."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('xviewer-git' 'libpeas')
 makedepends=('gnome-common')
-provides=($_pkgname)
+provides=($pkgname $_pkgbasename)
 conflicts=("${_pkgbasename}")
 url='https://github.com/linuxmint/xviewer-plugins'
 
@@ -33,4 +33,3 @@ package(){
     cd ${srcdir}/${pkgname}
     make DESTDIR="$pkgdir/" install
 }
-
