@@ -5,7 +5,7 @@
 # and add '--enable-libndi_newtek' to the configure options.
 
 pkgname=ffmpeg-mpv-full-git
-pkgver=3.5.r89178.ga1630b40e8
+pkgver=3.5.r89366.g65b5fcfbe2
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -91,7 +91,7 @@ build() {
         $_cflags \
         "$_ldflags" \
         \
-        --enable-rpath \
+        --disable-rpath \
         --enable-gpl \
         --enable-version3 \
         --enable-nonfree \
