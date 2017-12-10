@@ -6,10 +6,10 @@ _release=ARAVIS_0_5_10
 pkgrel=1
 pkgdesc="A vision library for genicam based cameras"
 url="https://wiki.gnome.org/Projects/Aravis"
-arch=(i686 x86_64)
+arch=('x86_64')
 license=(LGPL)
-depends=(gtk3 libnotify gst-plugins-base-libs audit libusb)
-makedepends=(intltool gtk-doc gobject-introspection appstream-glib)
+depends=('gtk3' 'libnotify' 'gst-plugins-base-libs' 'audit' 'libusb')
+makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'appstream-glib')
 source=(https://github.com/AravisProject/aravis/archive/${_release}.tar.gz)
 sha256sums=('00731b8319b7c99bd302b5c198598602f22e0912c51c9f552864fc13e74849fa')
 
