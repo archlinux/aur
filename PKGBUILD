@@ -3,23 +3,21 @@
 
 _pkgname=lib32-libglvnd
 pkgname=$_pkgname-git
-pkgver=0.2.999.r548.fe4a384
+pkgver=1.0.0.r0.g005fd3a
 pkgrel=1
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=('x86_64')
 url="https://github.com/NVIDIA/libglvnd"
 license=('custom:BSD-like')
-makedepends=('lib32-libx11' 'lib32-libxext' 'glproto' 'git' 'python' 'gcc-multilib')
+makedepends=('lib32-libx11' 'lib32-libxext' 'glproto' 'python' 'git')
 provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/NVIDIA/libglvnd.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd libglvnd
-  # https://stackoverflow.com/a/7522914
-  _pkgver=$(grep AC_INIT configure.ac | sed 's/[^0-9.]*\([0-9.]*\).*/\1/')
-  printf "%s.r%s.%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -36,11 +34,12 @@ build() {
 package() {
   # lib32-libglvnd needs lib32-mesa for indirect rendering
   depends=('lib32-libxext' 'libglvnd-git' 'lib32-mesa' 'lib32-opengl-driver')
+
   cd libglvnd
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 
-  rm -r "$pkgdir/usr/include"
+  rm -r "$pkgdir"/usr/include
 
-  mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s libglvnd-git "$pkgdir/usr/share/licenses/$pkgname"
+  mkdir -p "$pkgdir"/usr/share/licenses
+  ln -s libglvnd-git "$pkgdir"/usr/share/licenses/$pkgname
 }
