@@ -2,9 +2,9 @@
 
 pkgname=tscdriver
 pkgver=0.2.06
-pkgrel=3
+pkgrel=4
 pkgdesc="Drivers for TSC Printers"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="http://www.tscprinters.com"
 license=('GPL')
 depends=(gtk2)
