@@ -5,6 +5,7 @@
 # Contributor: Matthias Sobczyk <matthias.sobczyk@googlemail.com>
 # Contributor: Kamil Kaminski <kyle@kkaminsk.com>
 
+_pkgname=minidlna
 pkgname=minidlna-custom-icon
 pkgver=1.2.1
 pkgrel=2
@@ -30,25 +31,25 @@ sha256sums=('SKIP'
             '9f871d5dd24fd272b84263b0061ef2ccbeb70a4a952df7ea7b380ae20fe5eeb3')
 
 prepare() {
-  cd "$srcdir/minidlna"
+  cd "$srcdir/$_pkgname"
   sed -i 's|#user=.*|user=minidlna|g' minidlna.conf
   patch -Np1 -i ../minidlna-custom-icon.patch
 }
 
 build() {
-  cd "$srcdir/minidlna"
+  cd "$srcdir/$_pkgname"
   [ -x configure ] || ./autogen.sh
   ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd "$srcdir/mindlna"
+  cd "$srcdir/$_pkgname"
   DESTDIR="$pkgdir" make install
   install -Dm644 minidlna.conf "$pkgdir"/etc/minidlna.conf
   install -Dm0644 "$srcdir"/minidlna.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/minidlna.conf
   install -Dm0644 "$srcdir"/minidlna.sysusers "$pkgdir"/usr/lib/sysusers.d/minidlna.conf
   install -Dm0644 "$srcdir"/minidlna.service "$pkgdir"/usr/lib/systemd/system/minidlna.service
-  install -Dm644 "$srcdir"/$pkgname/minidlna.conf.5 "$pkgdir"/usr/share/man/man5/minidlna.conf.5
-  install -Dm644 "$srcdir"/$pkgname/minidlnad.8 "$pkgdir"/usr/share/man/man8/minidlnad.8
+  install -Dm644 "$srcdir"/$_pkgname/minidlna.conf.5 "$pkgdir"/usr/share/man/man5/minidlna.conf.5
+  install -Dm644 "$srcdir"/$_pkgname/minidlnad.8 "$pkgdir"/usr/share/man/man8/minidlnad.8
 }
