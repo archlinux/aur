@@ -4,7 +4,7 @@ pkgname=direvent-git
 pkgver=5.1.90.r144.d744882
 pkgrel=1
 pkgdesc="Daemon that monitors events in the file system directories"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.gnu.org.ua/software/direvent/"
 license=("GPL")
 conflicts=('direvent')
@@ -26,14 +26,16 @@ pkgver() {
 
 prepare() {
   cd direvent
+
   git submodule init
   git config submodule.grecs.url $srcdir/grecs
   git submodule update
+
+  ./bootstrap
 }
 
 build() {
   cd direvent
-  ./bootstrap
   ./configure --prefix=/usr
   make
 }
