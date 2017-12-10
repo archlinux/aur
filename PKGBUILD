@@ -1,7 +1,8 @@
-# Maintainer: Sebastien Duthil <duthils@free.fr>
+# Maintainer: mickael9 <mickael9@gmail.com>
+# Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-demo
-pkgver=0.15.33
+pkgver=0.15.36
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories."
 arch=('x86_64')
@@ -13,9 +14,9 @@ makedepends=('xz')
 source=(factorio.desktop
         LICENSE)
 source_x86_64=(factorio_demo_x64_${pkgver}.tar.xz::http://www.factorio.com/get-download/${pkgver}/demo/linux64)
-sha256sums=('5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815'
+sha256sums=('c3bbe51c3c35641d6064ff0f8470294f8a317f0413bb149f6bd47461b03804bf'
             '67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21')
-sha256sums_x86_64=('ccb780138a927982f1c0b56b3b01d6598cd839a9c25d7332c0187a3410b1dc0e')
+sha256sums_x86_64=('fcff6735880094ef3690c5c6a70261ec93c44c508cad2050f487f2a3e7438a29')
 
 # no modifications needed, the executable looks for:
 # - data in /usr/share/factorio
