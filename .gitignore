@@ -1,0 +1,6 @@
+*~
+/pkg
+/src
+/isl*.tar.bz2
+/gcc-*.tar.xz
+/djgpp-gcc-*.pkg.tar.xz

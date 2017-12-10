@@ -1,8 +1,9 @@
-# Contributor: carstene1ns <arch carsten-teibes de>
+# Maintainer: Andris Pavenis <andris.pavenis iki fi>
+# Maintainer: carstene1ns <arch carsten-teibes de>
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-gcc
-pkgver=7.1.0
+pkgver=7.2.0
 _target="i686-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
@@ -10,21 +11,20 @@ pkgrel=1
 pkgdesc="GCC for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
-license=('GPL' 'LGPL' 'FDL' 'custom')
+license=('GPL3' 'LGPL3')
 groups=('djgpp')
-depends=('zlib' 'libmpc' 'djgpp-binutils')
+depends=('zlib' 'libmpc' 'djgpp-binutils' 'djgpp-djcrx')
 makedepends=('unzip')
 optdepends=('djgpp-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
-source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.bz2"
+source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
-        "http://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
-        "lto.patch")
-sha256sums=('8a8136c235f64c6fef69cac0d73a46a1a09bb250776a050aec8f9fc880bebc17'
+        "lto.patch"
+	"gcc-7.2.0-djgpp.diff")
+sha256sums=('1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
-            '22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
-            'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0')
-noextract=("djcrx${_djver//./}.zip")
+            'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0'
+            'ef436e945a0bf386c033e6c05a5692621a0927f25fa6c5cedc2e7d1d931fe235')
 
 prepare() {
   cd gcc-$pkgver
@@ -32,36 +32,26 @@ prepare() {
   # link isl for in-tree build
   ln -fs "../isl-${_islver}" isl
 
-  # hack! - some configure tests for header files break with FORTIFY_SOURCE
-  sed -i "/ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-
   # build the lto plugin
   patch -Np0 < ../lto.patch
 
-  # extract bootstrap djcrx
-  mkdir -p ../gcc-build-$_target/lib/gcc/$_target/$pkgver
-  cd ../gcc-build-${_target}/lib/gcc/$_target/$pkgver
-  unzip -qoW "$srcdir/djcrx${_djver//./}.zip" 'include/**' 'lib/*.[oa]'
-  mv lib/* .
-  # ???
-  ln -fs /bin/true stubify
-
-  # monkeypatch libc to prepare for building without an ldscript
-  echo '.comm __environ,16' > environ.s
-  i686-pc-msdosdjgpp-as environ.s -o environ.o
-  i686-pc-msdosdjgpp-ar q libc.a environ.o
+  # Other DJGPP related changes
+  patch -Np1 < ../gcc-7.2.0-djgpp.diff
 }
 
 build() {
+  mkdir gcc-build-$_target
   cd gcc-build-$_target
+  export CPPFLAGS="$CPPFLAGS -O2"
   ../gcc-$pkgver/configure --prefix=/usr --libexecdir=/usr/lib \
     --target="$_target" \
-    --enable-languages=c,c++ \
+    --enable-languages=c,c++,ada,fortran,objc,obj-c++ \
     --enable-shared --enable-static \
-    --enable-threads=no --enable-fully-dynamic-string \
-    --with-system-zlib --with-isl \
-    --enable-lto --disable-dw2-exceptions --disable-libgomp \
-    --disable-multilib --enable-checking=release
+    --enable-threads=no --with-system-zlib --with-isl \
+    --enable-lto --disable-libgomp \
+    --disable-multilib --enable-checking=release \
+    --disable-libstdcxx-pch \
+    --disable-install-libiberty
   make all
 }
 
@@ -70,13 +60,14 @@ package_djgpp-gcc() {
 
   # strip manually, djgpp libs spew errors otherwise
   strip "$pkgdir"/usr/bin/$_target-*
-  strip "$pkgdir"/usr/lib/gcc/$_target/$pkgver/{cc1*,collect2,lto*}
+  strip "$pkgdir"/usr/lib/gcc/$_target/$pkgver/{cc1*,collect2,lto*,f951,gnat1}
 
   # for compatibility
   ln -s $_target-gcc "$pkgdir"/usr/bin/$_target-cc
 
   # remove unnecessary files
   rm -rf "$pkgdir"/usr/share/{man/man7,info,locale}
+  rm -rf "$pkgdir"/usr/share/gcc-$pkgver/python
   rm -rf "$pkgdir"/usr/lib/gcc/$_target/$pkgver/include-fixed
   rm -f "$pkgdir"/usr/lib/libcc1.*
 }
