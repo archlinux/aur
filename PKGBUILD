@@ -1,10 +1,10 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
-pkgname=moolticute_ssh-agent
-pkgver=20170210
+pkgname=mc-agent
+pkgver=20171210
 pkgrel=1
 pkgdesc='Simple ssh-agent that loads keys stored from Moolticute'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('GPL3')
 depends=('moolticute')
 makedepends=('git'
@@ -22,8 +22,8 @@ build() {
 package() {
     cd "${srcdir}"
 
-    install -p -Dm 755 "${srcdir}/bin/moolticute_ssh-agent"                             \
-            "${pkgdir}/usr/bin/moolticute_ssh-agent"
+    install -p -Dm 755 "${srcdir}/bin/mc-agent"                                         \
+            "${pkgdir}/usr/bin/mc-agent"
     install -Dm 644 "${srcdir}/src/${_gourl}/systemd/moolticute-ssh-agent.service"      \
-            "${pkgdir}/usr/lib/systemd/user/moolticute_ssh-agent.service"
+            "${pkgdir}/usr/lib/systemd/user/mc-agent.service"
 }

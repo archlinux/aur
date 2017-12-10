@@ -1,14 +1,14 @@
-pkgbase = moolticute_ssh-agent
+pkgbase = mc-agent
 	pkgdesc = Simple ssh-agent that loads keys stored from Moolticute
-	pkgver = 20170210
+	pkgver = 20171210
 	pkgrel = 1
-	url = https://github.com/raoulh/moolticute_ssh-agent
-	install = moolticute_ssh-agent.install
+	url = https://github.com/raoulh/mc-agent
+	install = mc-agent.install
 	arch = x86_64
-	arch = i686
 	license = GPL3
 	makedepends = git
 	makedepends = go
 	depends = moolticute
 
-pkgname = moolticute_ssh-agent
+pkgname = mc-agent
+
