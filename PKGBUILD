@@ -8,7 +8,7 @@ url='http://www.smlserver.org/smltojs/'
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('gmp')
-makedepends=('mlton>=20051202')
+makedepends=('mlton>=20170725')
 source=("https://github.com/melsman/mlkit/archive/$pkgname-$pkgver.tar.gz"
         Makefiledefault)
 md5sums=('623dcadc4365c7cf0935a8e8540efab8'
