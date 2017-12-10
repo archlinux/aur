@@ -2,9 +2,9 @@
 
 pkgname=xed
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A small and lightweight text editor. X-Apps Project."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('gtksourceview3' 'enchant' 'desktop-file-utils' 'libsm'
         'libpeas')
