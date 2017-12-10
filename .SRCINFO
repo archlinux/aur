@@ -1,7 +1,7 @@
 pkgbase = banshee
 	pkgdesc = Music management and playback for GNOME
 	pkgver = 2.6.2
-	pkgrel = 13
+	pkgrel = 14
 	url = http://banshee.fm/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = banshee
 	depends = hicolor-icon-theme
 	depends = media-player-info
 	depends = gst-plugins-bad
-	depends = mono-upnp
+	depends = mono-upnp-git
 	depends = gst-plugins-good
 	depends = gvfs
 	depends = libgpod

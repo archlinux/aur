@@ -4,14 +4,14 @@
 
 pkgname=banshee
 pkgver=2.6.2
-pkgrel=13
+pkgrel=14
 pkgdesc="Music management and playback for GNOME"
 arch=('i686' 'x86_64')
 url="http://banshee.fm/"
 license=('MIT')
 depends=(libxxf86vm gst-plugins-base-libs mono-addins dbus-sharp-glib libsoup \
 taglib-sharp-git gconf-sharp libmtp mono-zeroconf-git hicolor-icon-theme \
-media-player-info gst-plugins-bad mono-upnp gst-plugins-good gvfs libgpod)
+media-player-info gst-plugins-bad mono-upnp-git gst-plugins-good gvfs libgpod)
 makedepends=('intltool' 'gnome-doc-utils' 'gnome-common')
 optdepends=('gst-plugins-ugly: Extra media codecs'
             'gst-libav: Extra media codecs'
@@ -47,6 +47,9 @@ prepare() {
 # Fix build with mono 4.0 (Fedora)
   sed -i "s#mono/2.0#mono/4.5#g" configure
   sed -i "s#Mono 2.0#Mono 4.5#g" configure
+  sed 's/CollectionExtensions/Hyena.Collections.CollectionExtensions/g'\
+  -i src/Core/Banshee.Services/Banshee.Preferences/Collection.cs
+
 }
 
 build() {
