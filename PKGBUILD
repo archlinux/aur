@@ -4,11 +4,11 @@ pkgname=xplayer-plparser
 pkgver=1.0.2
 pkgrel=2
 pkgdesc="Playlist parser for xplayer. X-Apps Project."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('gmime' 'libsoup' 'libarchive' 'libquvi')
 makedepends=('git' 'gnome-common' 'gtk-doc' 'gobject-introspection')
-provides=($_pkgname)
+provides=($pkgname)
 conflicts=('xplayer-plparser-git')
 url='https://github.com/linuxmint/xplayer-plparser'
 
@@ -27,4 +27,3 @@ package(){
     cd ${srcdir}/${pkgname}-${pkgver}
     make DESTDIR="$pkgdir/" install
 }
-
