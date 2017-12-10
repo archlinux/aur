@@ -1,0 +1,17 @@
+pkgbase = python-csxcad-git
+	pkgdesc = A C++ library to describe geometrical objects and their physical or non-physical properties.
+	pkgver = v0.6.2.r83.g21a0ea1
+	pkgrel = 1
+	url = https://github.com/thliebig/CSXCAD
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cython
+	depends = csxcad
+	provides = python-csxcad
+	conflicts = python-csxcad
+	source = git+https://github.com/thliebig/CSXCAD
+	md5sums = SKIP
+
+pkgname = python-csxcad-git
+
