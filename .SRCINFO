@@ -1,13 +1,12 @@
 pkgbase = i3lock-color
 	pkgdesc = An improved screenlocker based upon XCB and PAM with color configuration support
-	pkgver = 2.9.1
+	pkgver = 2.10.1
 	pkgrel = 2
-	url = https://github.com/chrjguill/i3lock-color
+	url = https://github.com/PandorasFox/i3lock-color
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = xcb-util-image
-	depends = xcb-util-keysyms
 	depends = pam
 	depends = libev
 	depends = cairo
@@ -15,8 +14,8 @@ pkgbase = i3lock-color
 	provides = i3lock
 	provides = i3lock-color
 	conflicts = i3lock
-	source = https://github.com/chrjguill/i3lock-color/archive/2.9.1-c.tar.gz
-	md5sums = SKIP
+	source = https://github.com/PandorasFox/i3lock-color/archive/2.10.1c.tar.gz
+	sha256sums = a38078d63d6fd9d3b208e7c032bc11bc79a44d87006555c1c4399a4c6adb3d85
 
 pkgname = i3lock-color
 
