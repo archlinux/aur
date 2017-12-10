@@ -1,7 +1,7 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=ghc-pristine
-pkgver=8.2.1
-pkgrel=4
+pkgver=8.2.2
+pkgrel=1
 pkgdesc="Symlinks to GHC with only boot libs, useful for building static binaries"
 arch=(any)
 url=https://www.haskell.org/ghc/
