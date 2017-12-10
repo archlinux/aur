@@ -1,10 +1,11 @@
 pkgbase = yubikey-piv-manager
 	pkgdesc = Tool for configuring your PIV-enabled YubiKey.
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.yubico.com/yubikey-piv-manager/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	depends = python2
 	depends = yubico-piv-tool>=1.1.0
