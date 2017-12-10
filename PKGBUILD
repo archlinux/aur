@@ -2,10 +2,10 @@
 
 _name=ddnet
 pkgname=$_name-git
-pkgver=10.8.6.r1.g73d9ad761
+pkgver=10.8.6.r342.g1d55bbda0
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom')
 depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'opusfile' 'curl') #mariadb
