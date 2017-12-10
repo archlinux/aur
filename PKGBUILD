@@ -7,7 +7,8 @@ pkgdesc="A C++ library to describe geometrical objects and their physical or non
 url="https://github.com/thliebig/CSXCAD"
 arch=('i686' 'x86_64')
 license=('LGPL3')
-depends=('fparser' 'qt5-webkit' 'tinyxml' 'hdf5' 'vtk' 'boost' 'cgal')
+depends=('fparser' 'qt5-webkit' 'glew' 'proj' 'tinyxml' 'hdf5' 'vtk' 'boost' 'cgal')
+makedepends=('cmake' 'cython')
 provides=('csxcad')
 conflicts=('csxcad')
 
@@ -30,13 +31,9 @@ build() {
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=${pkgdir} ../
   make
-  cd ../python
-  python setup.py build
 }
 
 package() {
   cd "$srcdir/CSXCAD/build"
   make install
-  cd ../python
-  python setup.py install --root=${pkgdir}
 }
