@@ -3,7 +3,7 @@
 _appname=zeal
 
 pkgname=${_appname}-git
-pkgver=0.4.0.0.g500c705
+pkgver=0.5.0.0.ga5a66ef
 pkgrel=1
 pkgdesc="A simple documentation browser"
 arch=('i686' 'x86_64')
