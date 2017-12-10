@@ -22,5 +22,5 @@ pkgbase = shotpy
 	md5sums = 459431a977061e56894315ce151d9bef
 	md5sums = 3780c9f2183f7d4705ab86ab077e3885
 
-pkgname = shotpy-git
+pkgname = shotpy
 
