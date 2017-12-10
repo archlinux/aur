@@ -1,33 +1,41 @@
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 _name=gst-debugger
 pkgname=$_name-git
-pkgver=0.90.0.18.g5659345
+pkgver=0.90.0.r73.g31e96de
 pkgrel=1
 pkgdesc="Remote GStreamer Debugger"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://wiki.gnome.org/Apps/GstDebugger"
 license=('GPL')
-depends=('graphviz' 'protobuf-c' 'gstreamermm' 'gtkmm3' 'boost-libs' 'gstreamer>1.7.0')
-makedepends=('gnome-common' 'intltool' 'git' 'boost')
-options=(!libtool)
+depends=('gstreamermm' 'gtkmm3' 'graphviz' 'protobuf-c' 'boost-libs')
+makedepends=('git' 'meson' 'boost')
 provides=($_name)
 conflicts=($_name)
-source=(git://git.gnome.org/$_name)
+source=(git+https://git.gnome.org/browse/$_name)
 md5sums=('SKIP')
 
+prepare() {
+  mkdir build || true
+  cd build
+}
+
 pkgver() {
-  cd "$srcdir/$_name"
-  git describe --tags | sed 's/_/./g;s/-/./g'
+  cd $_name
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_name"
+  cd build
+  meson setup --prefix=/usr ../$_name
+}
 
-  ./autogen.sh --prefix=/usr
-  make
+check() {
+  cd build
+  meson test
 }
 
 package() {
-  cd "$srcdir/$_name"
-  make DESTDIR="$pkgdir/" install
+  cd build
+  DESTDIR="$pkgdir" ninja install
 }
