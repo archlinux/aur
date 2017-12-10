@@ -2,10 +2,10 @@
 
 pkgname=xplayer-git
 _pkgbasename=xplayer
-pkgver=1.4.0.r1.gc5d85cd
+pkgver=1.6.1.r0.g680d438
 pkgrel=1
 pkgdesc="Simple media player. X-Apps Project (git version)."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('clutter-gtk' 'clutter-gst' 'xplayer-plparser-git'
     'desktop-file-utils' 'iso-codes' 'yelp-xsl'
@@ -14,7 +14,7 @@ depends=('clutter-gtk' 'clutter-gst' 'xplayer-plparser-git'
     'xapps')
 makedepends=('git' 'gnome-common' 'gtk-doc' 'gobject-introspection' 'vala')
 optdepends=('gst-libav: Extra media codec support')
-provides=($_pkgname)
+provides=($pkgname $_pkgbasename)
 conflicts=(${_pkgbasename})
 url='https://github.com/linuxmint/xplayer'
 install=xplayer.install
