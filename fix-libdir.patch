@@ -1,0 +1,16 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 8903a60..e13f098 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -98,8 +98,9 @@ TARGET_LINK_LIBRARIES( CSXCAD
+ set_target_properties(CSXCAD PROPERTIES VERSION ${LIB_VERSION_STRING}
+                                           SOVERSION ${LIB_VERSION_MAJOR})
+ 
+-INSTALL(TARGETS CSXCAD DESTINATION lib${LIB_SUFFIX})
++INSTALL(TARGETS CSXCAD DESTINATION usr/lib${LIB_SUFFIX})
++
++INSTALL(FILES ${PUB_HEADERS} DESTINATION usr/include/CSXCAD)
+ 
+-INSTALL(FILES ${PUB_HEADERS} DESTINATION include/CSXCAD)
+ 
+ 

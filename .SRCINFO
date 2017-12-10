@@ -1,0 +1,23 @@
+pkgbase = csxcad-git
+	pkgdesc = A C++ library to describe geometrical objects and their physical or non-physical properties.
+	pkgver = v0.6.2.r83.g21a0ea1
+	pkgrel = 1
+	url = https://github.com/thliebig/CSXCAD
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = fparser
+	depends = tinyxml
+	depends = hdf5
+	depends = vtk
+	depends = boost
+	depends = cgal
+	provides = csxcad
+	conflicts = csxcad
+	source = git+https://github.com/thliebig/CSXCAD
+	source = fix-libdir.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = csxcad-git
+
