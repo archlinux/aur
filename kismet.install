@@ -3,7 +3,7 @@ post_install() {
 
     cat << EOP
     If you have not done so already, read the README file and the FAQ file. Additional
-    documentation is in the /usr/share/docs/ directory.  You MUST edit
+    documentation is in the /usr/share/doc/kismet-git/ directory.  You MUST edit
     /etc/kismet/kismet.conf and configure Kismet for your system, or it will NOT run
     properly!
     
