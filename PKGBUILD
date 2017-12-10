@@ -2,8 +2,8 @@
 # Contributor: Tim Diels <timdiels.m@gmail.com>
 
 pkgname=electroneum-git
-pkgver=0.11.0.0.r12.g31af2ce5
-pkgrel=6
+pkgver=0.11.0.0.r13.g2769728b
+pkgrel=1
 pkgdesc='Secure, private, mobile based cryptocurrency, git version'
 arch=('any')
 url='https://electroneum.com'
@@ -25,7 +25,7 @@ source=("electroneum"::"git+https://github.com/electroneum/electroneum.git"
         electroneumd.service
         0001-archlinux-openssl-1.0.patch)
 md5sums=('SKIP'
-         '614c615d7218e4745bb6016644e71156'
+         'f1f3fa56808e8baba7fd3319b23ceb1c'
          'ae1bcb862a92f9996a08a0025d828e0f')
 #options=('!strip')
 backup=('etc/electroneumd.conf')

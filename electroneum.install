@@ -5,7 +5,6 @@ create_user() {
     echo "done"
   } # NOTE: we do not autoremove user due to security concerns (Arch policy)
   mkdir -p /var/log/electroneum && chown electroneum:electroneum /var/log/electroneum
-  mkdir -p /var/run/electroneum && chown electroneum:electroneum /var/run/electroneum
   mkdir -p /var/lib/electroneum && chown electroneum:electroneum /var/lib/electroneum
 }
 

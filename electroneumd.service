@@ -6,11 +6,13 @@ After=network.target
 User=electroneum
 Group=electroneum
 WorkingDirectory=~
-
 Type=forking
+# create pid dir with root permission
+PermissionsStartOnly=true
+ExecStartPre=-/usr/bin/mkdir /var/run/electroneum
+ExecStartPre=/usr/bin/chown -R electroneum:electroneum /var/run/electroneum/
 PIDFile=/var/run/electroneum/electroneumd.pid
-
-
+# start service
 ExecStart=/usr/bin/electroneumd --config-file /etc/electroneumd.conf \
     --detach --pidfile /var/run/electroneum/electroneumd.pid
 
