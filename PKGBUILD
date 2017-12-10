@@ -30,13 +30,9 @@ build() {
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=${pkgdir} ../
   make
-  cd ../python
-  python setup.py build
 }
 
 package() {
   cd "$srcdir/openEMS/build"
   make install
-  cd ../python
-  python setup.py install --root=${pkgdir}
 }
