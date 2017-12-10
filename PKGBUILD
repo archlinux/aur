@@ -12,17 +12,15 @@ pkgver=4.3.1
 _version=4.3.1.0
 pkgrel=1
 pkgdesc="Application for the visualization of CAD drawing files, QT5 version"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.opendesign.com/guestfiles/teigha_viewer"
 license=('custom')
 conflicts=('teighaviewer-qt4')
 depends=('qt5-base' 'libxfixes' 'libgl' 'libxkbcommon-x11' 'bash' 'hicolor-icon-theme')
-source=('license')
-source_i686=(${pkgname}-i686-${_version}.deb::https://download.opendesign.com/guestfiles/TeighaViewer/TeighaViewer_QT5_lnxX86_4.7dll.deb)
-source_x86_64=(${pkgname}-x86_64-${_version}.deb::https://download.opendesign.com/guestfiles/TeighaViewer/TeighaViewer_QT5_lnxX64_4.7dll.deb)
-md5sums=('62b5539acd57c50855e29d1157c10697')
-md5sums_i686=('c98261b3060ae2bce28604dedb11d12b')
-md5sums_x86_64=('eb12be1383cf992ac22d1e5a3e7a5735')
+source=("${pkgname}-x86_64-${_version}.deb::https://download.opendesign.com/guestfiles/TeighaViewer/TeighaViewer_QT5_lnxX64_4.7dll.deb"
+        'license')
+sha256sums=('faf112d69e631ddf6a28290ab4ceee8a38121b5350c2896553ad98dbc1429f57'
+            '770baed2dda51def38a40583d559b1e731a22b94a1e30b8d59f41aea153b25a7')
 
 prepare() {
   rm -rf ${_altname}-${_version}
@@ -37,25 +35,25 @@ package() {
     install -Dm755 usr/bin/TeighaViewer_${_version}/${file} \
         "${pkgdir}/usr/lib/teighaviewer/${file}"
   done
-  
+
     # binary
   install -Dm755 usr/bin/TeighaViewer \
     "${pkgdir}/usr/bin/teighaviewer"
   sed -e "s#usr/bin/TeighaViewer_${_version}#usr/lib/teighaviewer#" \
     -i "${pkgdir}/usr/bin/${_altname}"
-  
+
     # desktop item
   install -Dm644 usr/share/applications/TeighaViewer_${_version}.desktop \
     "${pkgdir}/usr/share/applications/teighaviewer.desktop"
   sed -e "s#/TeighaViewer#/teighaviewer#" \
     -i "${pkgdir}/usr/share/applications/teighaviewer.desktop"
-  
+
     # hicolor icons
   for icon in $(find usr/share/icons -type f); do
     install -Dm644 ${icon} \
         "${pkgdir}/${icon}"
   done
-  
+
     # copyright
   install -Dm644 usr/share/doc/TeighaViewer/copyright \
     "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
