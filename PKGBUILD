@@ -13,7 +13,7 @@ _ffmpeg_depend=ffmpeg-mpv-full-git
 #_ffmpeg_depend=ffmpeg-full-git
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.27.0.r416.g386e8cd16d
+pkgver=0.27.0.r515.g39bc954488
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -45,7 +45,7 @@ makedepends+=('cuda')
 optdepends+=('cuda: for CUVID hardware-acceleration for NVIDIA users')
 fi
     
-provides=('mpv')
+provides=('mpv' 'mpv-git')
 conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' 'mpv-ahjolinna' )
 options=('!emptydirs')
 install=mpv.install
@@ -113,8 +113,6 @@ if [[ "$_ffmpeg_depend" = *-mpv* ]]; then
 	            --disable-clang-database \
 	            --disable-win32-internal-pthreads \
 	            --enable-iconv \
-	            --enable-termios \
-	            --enable-shm \
 	            --enable-libsmbclient \
 	            --enable-lua \
 	            --enable-libass \
