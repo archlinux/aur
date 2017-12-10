@@ -1,4 +1,4 @@
-# Maintainer: Matthew T Hoare <matthew dot t dot hoare at gmail dot com>
+# Maintainer: Matthew T Hoare <matthew.t.hoare at gmail dot com>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Daniel Hommel <dhommel@gmail.com>
 
@@ -6,7 +6,7 @@ pkgname=mksh-static
 _pkgname=mksh
 _pkgver=R56b
 pkgver=56b
-pkgrel=2
+pkgrel=3
 pkgdesc='The MirBSD Korn Shell - an enhanced version of the public domain ksh (static build, linked with musl)'
 url='https://www.mirbsd.org/mksh.htm'
 license=('custom')
