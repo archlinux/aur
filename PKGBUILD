@@ -2,15 +2,15 @@
 
 pkgname=xviewer-git
 _pkgbasename=xviewer
-pkgver=1.2.0.r0.g7cfa671
+pkgver=1.6.1.r0.ge5c57bf
 pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project (git version)."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('gtk3' 'glib2' 'gnome-desktop' 'libpeas')
 makedepends=('git' 'gnome-common' 'libglade' 'gobject-introspection')
 optdepends=('xviewer-plugins-git: Extra plugins')
-provides=($_pkgname)
+provides=($pkgname $_pkgbasename)
 conflicts=("${_pkgbasename}")
 url='https://github.com/linuxmint/xviewer'
 install=xviewer.install
@@ -35,4 +35,3 @@ package(){
     cd ${srcdir}/${pkgname}
     make DESTDIR="$pkgdir/" install
 }
-
