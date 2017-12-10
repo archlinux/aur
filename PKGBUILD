@@ -1,28 +1,23 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=unstickpixels
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Screen loop to try to unstick stuck dots"
 arch=(i686 x86_64)
 url="https://github.com/maandree/unstickpixels"
-license=('GPL3' 'custom:GFDL1.3')
-depends=(glibc libgamma)
-makedepends=(glibc libgamma make coreutils gcc 'texinfo>=4.11')
-install=$pkgname.install
-source=($url/archive/$pkgver.tar.gz)
-sha256sums=(6f41482108a68b8a6deaefcb5d46d6fff4806947af463b717ce8b77cedaec97f)
-
+license=('custom:ISC')
+depends=(libgamma)
+makedepends=(libgamma)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=(8ae08fff8011916f403b46c0bd57689eaac9fb955b0c691b14fc5318d3fba2d4)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+  make PREFIX=/usr
 }
-
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make install N=: DESTDIR="$pkgdir"
+  make PREFIX=/usr install DESTDIR="$pkgdir"
 }
-
