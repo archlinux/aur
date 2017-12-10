@@ -18,8 +18,8 @@ pkgname=(exim-heavy
          exim-lookup-pgsql
          exim-lookup-sqlite)
 pkgname=exim-heavy
-pkgver=4.89
-pkgrel=2
+pkgver=4.89.1
+pkgrel=1
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.exim.org/'
@@ -35,7 +35,7 @@ source=(ftp://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2
         exim@.service
         exim.socket
         exim-submission.socket)
-md5sums=('ef78f2f669e429988c61d2dfb5a340b9'
+md5sums=('6e65d9fc17449dcde6254bd312c64822'
          '4874006f0585253ddab027d441009757'
          'e18a535218718c5eb394ed5c9296fe06'
          'd9c6c3b4c68313d5cdec7d63670f3e21'
