@@ -2,9 +2,9 @@
 
 pkgname=xviewer
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and easy to use image viewer. X-Apps Project."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('gtk3' 'glib2' 'gnome-desktop' 'libpeas')
 makedepends=('gnome-common' 'libglade' 'gobject-introspection')
