@@ -1,25 +1,24 @@
 pkgbase = libglvnd-git
 	pkgdesc = The GL Vendor-Neutral Dispatch library
-	pkgver = 0.2.999.r538.3ed1275
+	pkgver = 1.0.0.r0.g005fd3a
 	pkgrel = 1
 	url = https://github.com/NVIDIA/libglvnd
-	arch = i686
 	arch = x86_64
 	license = custom:BSD-like
 	makedepends = libxext
 	makedepends = libx11
 	makedepends = glproto
-	makedepends = git
 	makedepends = python
+	makedepends = git
 	provides = libgl
 	provides = libegl
 	provides = libgles
-	provides = libglvnd=0.2.999.r538.3ed1275
+	provides = libglvnd=1.0.0.r0.g005fd3a
 	conflicts = libglvnd
 	source = git+https://github.com/NVIDIA/libglvnd.git
 	source = LICENSE
-	sha256sums = SKIP
-	sha256sums = 1a99f7487849c41fc3520e0af3dfcf28a0df05e78956d9ec58c2c52b1f20a77d
+	sha512sums = SKIP
+	sha512sums = bf0f4a7e04220a407400f89226ecc1f798cc43035f2538cc8860e5088e1f84140baf0d4b0b28f66e4b802d4d6925769a1297c24e1ba39c1c093902b2931781a5
 
 pkgname = libglvnd-git
 	depends = libxext
