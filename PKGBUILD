@@ -8,7 +8,7 @@ pkgname=inox-beta
 pk=bnox
 name=chromium
 pkgver=64.0.3282.14
-pkgrel=4
+pkgrel=6
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -105,7 +105,11 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/master/bp.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/master/CP.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/master/888.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/master/pt.patch
-https://raw.githubusercontent.com/bn0785ac/ih-beta/master/meme.patch
+https://raw.githubusercontent.com/bn0785ac/ih-beta/meme.patch
+https://raw.githubusercontent.com/bn0785ac/ih-beta/p1.patch
+https://raw.githubusercontent.com/bn0785ac/ih-beta/p2.patch
+https://raw.githubusercontent.com/bn0785ac/ih-beta/e3.patch
+https://raw.githubusercontent.com/bn0785ac/ih-beta/narnia1.patch
 )
 
 
@@ -198,7 +202,11 @@ sha256sums=('eb6db09426acab82cb328a252cd9baff3765e32407013441c25819b87dedfab9'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
-            'SKIP')
+            'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5'
+            '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
+            '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
+            '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
+            '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d')
 
 
 
