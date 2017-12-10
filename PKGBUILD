@@ -1,9 +1,10 @@
-# Maintainer: Jonathan Arnold <jdarnold@archlinux.us>
+# Maintainer: Colin Arnott <colin@urandom.co.uk>
+# Contributor: Jonathan Arnold <jdarnold@archlinux.us>
 # Contributor: Zhang Hai <dreaming.in.code.zh@gmail.com>
 
 _pkgname="MechanicalSoup"
 pkgname=python2-mechanicalsoup
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A Python library for automating interaction with websites"
 arch=('any')
@@ -12,15 +13,14 @@ license=('MIT')
 depends=('python2' 'python2-beautifulsoup4' 'python2-requests' 'python2-six')
 makedepends=('python2-setuptools')
 source=("https://github.com/hickford/MechanicalSoup/archive/v${pkgver}.tar.gz")
-sha512sums=('3311bd3a45db5235b5798b1d995bb4d6dc5df5b5acdad45ee4f6b6c0fa0230b793cd258c23fa7b6be1987d1f09a695803080014624f4ae6042bf1f987460a78c')
+sha512sums=('92c36db4edff18e76f6bfa359d0c8e123c047cb09ba18901939c83ae68efe39fa808b575f9627a12d0b8fb6dbfa89636f532dda30bc9c5e258143c2c42635c48')
 
 check() {
   cd $srcdir/${_pkgname}-$pkgver 
   python2 setup.py check
 }
 
-package_python2-mechanicalsoup() {
+package() {
   cd $srcdir/${_pkgname}-$pkgver 
   python2 setup.py install --root "${pkgdir}" --optimize=1
 }
-
