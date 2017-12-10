@@ -1,0 +1,30 @@
+From 6fb5dc95f0408cf7fb6d8d8a727c6b8c0205236b Mon Sep 17 00:00:00 2001
+From: Santiago Torres <torresariass@gmail.com>
+Date: Mon, 4 Dec 2017 21:11:59 -0500
+Subject: ENH: reprotest/build: s/arch/uname -m/
+
+uname -m seems to be a more portable, drop-in-replaceable  alternative
+to the arch command.
+---
+ reprotest/build.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/reprotest/build.py b/reprotest/build.py
+index 62d6966..0e5c223 100644
+--- a/reprotest/build.py
++++ b/reprotest/build.py
+@@ -284,9 +284,9 @@ def home(ctx, build, vary):
+ def kernel(ctx, build, vary):
+     _ = build
+     if not vary:
+-        _ = _.append_setup_exec_raw('SETARCH_ARCH=$(arch)')
++        _ = _.append_setup_exec_raw('SETARCH_ARCH=$(uname -m)')
+     else:
+-        _ = _.append_setup_exec_raw('SETARCH_ARCH=$(setarch --list | grep -vF "$(arch)" | shuf | head -n1)')
++        _ = _.append_setup_exec_raw('SETARCH_ARCH=$(setarch --list | grep -vF "$(uname -m)" | shuf | head -n1)')
+         _ = _.append_setup_exec_raw('KERNEL_VERSION=$(uname -r)')
+         _ = _.append_setup_exec_raw('if [ ${KERNEL_VERSION#2.6} = $KERNEL_VERSION ]; then SETARCH_OPTS=--uname-2.6; fi')
+     return _.prepend_to_build_command_raw('setarch', '$SETARCH_ARCH', '$SETARCH_OPTS')
+-- 
+cgit v0.12
+

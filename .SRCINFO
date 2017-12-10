@@ -1,7 +1,7 @@
 pkgbase = reprotest
 	pkgdesc = Run a process twice and check the output for reproducibility
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anonscm.debian.org/cgit/reproducible/reprotest.git/
 	arch = any
 	license = GPL2
@@ -17,7 +17,9 @@ pkgbase = reprotest
 	optdepends = python-progressbar>=3.34.3-1
 	provides = reprotest=0.7.4
 	source = http://reproducible.alioth.debian.org/releases/reprotest/reprotest_0.7.4.tar.xz
+	source = uname-m.patch
 	sha512sums = bf7921a99f05539e310b8d41efc0b23f9388947392710f1c55497e467ed75f07ffc611f79eabdb2e7091a7f917aacd09eaca229bfb5d68eaae726fde15444cc4
+	sha512sums = a656f5dbcbd19296823cd15f27247e999ce0e4a24d0b4e41ed8b6263abb3261a6e82a194bfb6b2b92e4457affb4198fbee1caa899f8d8359cef069fa021767fd
 
 pkgname = reprotest
 	depends = python
