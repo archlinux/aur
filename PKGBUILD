@@ -2,9 +2,9 @@
 
 pkgname=pix
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('desktop-file-utils' 'gconf' 'librsvg' 'clutter-gtk'
         'gst-plugins-base-libs' 'gsettings-desktop-schemas' 'libwebp' 'webkit2gtk')
