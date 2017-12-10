@@ -3,7 +3,7 @@
 _pkgname=haskell-ide-engine
 pkgname=${_pkgname}-git
 pkgver=r1101.7017233
-pkgrel=1
+pkgrel=2
 pkgdesc="The engine for haskell ide-integration. Not an IDE."
 arch=('i686' 'x86_64')
 url="https://github.com/haskell/haskell-ide-engine"
@@ -31,7 +31,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  stack build $_STACK_FLAGS
+  stack build
 }
 
 package() {
