@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=keeweb
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('keeweb-desktop')
 source=("https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
         'keeweb')
 
-sha1sums=('7c517c4c5c71c0a06990b9626cbf2b45c2b1cbbf'
+sha1sums=('6ca904d0db8981612bec63ae644c94474b4671c5'
           '6f73285126a5d6d948712de73053957528aba0cc')
 
 prepare() {
@@ -72,7 +72,7 @@ package() {
 	install -Dm0644 -t "${pkgdir}/usr/lib/keeweb" ../keeweb.asar
 	install -Dm0755 -t "${pkgdir}/usr/bin"        ../keeweb
 
-	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE LICENSE-DEPS
+	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE DEPS-LICENSE
 
 	install -Dm0644 -t "${pkgdir}/usr/share/mime/packages" package/deb/usr/share/mime/packages/keeweb.xml
 	install -Dm0644 -t "${pkgdir}/usr/share/applications"  package/deb/usr/share/applications/keeweb.desktop
