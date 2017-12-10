@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 434218a..7bfd271 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,7 +23,7 @@ ADD_LIBRARY(fparser SHARED ${SOURCES})
+ 
+ set_target_properties(fparser PROPERTIES VERSION ${LIB_VERSION_STRING} SOVERSION ${LIB_VERSION_MAJOR})
+ 
+-INSTALL(TARGETS fparser DESTINATION lib${LIB_SUFFIX})
++INSTALL(TARGETS fparser DESTINATION usr/lib${LIB_SUFFIX})
+ 
+ INSTALL(FILES fparser.hh DESTINATION include)
+ 
