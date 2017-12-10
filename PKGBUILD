@@ -4,10 +4,10 @@
 
 _name=gnome-commander
 pkgname=$_name-git
-pkgver=1.9.0.r15.126aee63
+pkgver=1.9.0.r18.09ef4307
 pkgrel=1
 pkgdesc="Graphical two-pane filemanager for GNOME"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://gcmd.github.io/"
 license=('GPL')
 depends=('libgnomeui' 'gconf' 'python' 'libsm' 'libunique' 'gnome-vfs'
@@ -29,10 +29,15 @@ pkgver() {
   printf "$v.r$r.$h"
 }
 
+prepare() {
+  cd $_name
+  ./autogen.sh NOCONFIGURE=1
+}
+
 build() {
   cd $_name
-  ./autogen.sh --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc \
-               --localstatedir=/var --enable-python
+  ./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc \
+              --localstatedir=/var --enable-python
   make
 }
 
