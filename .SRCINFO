@@ -13,22 +13,19 @@ pkgbase = theshell-blueprint
 	depends = networkmanager
 	depends = xorg-xbacklight
 	depends = redshift
-	depends = tsscreenlock
 	depends = libcups
 	depends = qt5-base
 	depends = ts-qtplatform
-	depends = ts-startsession
 	depends = qt5-charts
 	depends = qt5-location
 	depends = kscreen
 	depends = kdepimlibs4
-	depends = akonadi
 	depends = ts-polkitagent
 	depends = ts-bt
 	depends = ts-bugreport
 	optdepends = alsa-utils: for volume controls
-	optdepends = pocketsphinx: for theWave
-	optdepends = festival: for theWave
+	conflicts = ts-startsession
+	replaces = ts-startsession
 	source = theshell-blueprint-7.1b::git+https://github.com/vicr123/theshell#branch=blueprint
 	md5sums = SKIP
 
