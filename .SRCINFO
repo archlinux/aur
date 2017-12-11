@@ -1,0 +1,16 @@
+pkgbase = drawio-desktop
+	pkgdesc = Diagram drawing application built on web technology
+	pkgver = 7.8.4
+	pkgrel = 1
+	url = https://github.com/jgraph/drawio
+	arch = x86_64
+	license = Apache
+	depends = electron
+	depends = gconf
+	depends = libnotify
+	conflicts = drawio-desktop-bin
+	source = https://github.com/jgraph/drawio/archive/v7.8.4.tar.gz
+	sha256sums = ec1275a4e3eaa3f83413ef429ce56f73521e31983ffa2867cfebe8177eab002c
+
+pkgname = drawio-desktop
+
