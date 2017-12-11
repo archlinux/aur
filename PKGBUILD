@@ -3,7 +3,7 @@
 
 pkgname=oomox-git
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical application for generating different color variations
 of Numix and Materia (ex-Flat-Plat) themes (GTK2, GTK3),
 gnome-colors and ArchDroid icon themes.
@@ -15,8 +15,10 @@ source=(
 	"git+https://github.com/actionless/oomox.git#branch=master"
 	"git+https://github.com/actionless/oomox-gtk-theme.git#branch=master"
 	"git+https://github.com/nana-4/materia-theme.git#branch=master"
+	"git+https://github.com/actionless/oomox-archdroid-icon-theme.git#branch=master"
 )
 md5sums=(
+	"SKIP"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -62,6 +64,7 @@ prepare(){
 	git submodule init
 	git config submodule.gtk-theme.url $srcdir/oomox-gtk-theme
 	git config submodule.materia-theme.url $srcdir/materia-theme
+	git config submodule.archdroid-icon-theme.url $srcdir/oomox-archdroid-icon-theme
 	git submodule update
 }
 
@@ -74,8 +77,6 @@ package() {
 		./CREDITS \
 		./LICENSE \
 		./README.md \
-		./archdroid-icon-theme/ \
-		./archdroid.sh \
 		./colors \
 		./gnome-colors \
 		./gnome_colors.sh \
@@ -115,6 +116,17 @@ package() {
 			${pkgdir}/opt/oomox/materia-theme
 	cd ..
 
+	mkdir ${pkgdir}/opt/oomox/archdroid-icon-theme
+	cd ./archdroid-icon-theme
+	cp -prf \
+		./archdroid-icon-theme \
+		./LICENSE \
+		./README.md \
+		./change_color.sh \
+		./copyright \
+			${pkgdir}/opt/oomox/archdroid-icon-theme
+	cd ..
+
 	python -O -m compileall ${pkgdir}/opt/oomox/oomox_gui
 	mkdir -p ${pkgdir}/usr/bin/
 	mkdir -p ${pkgdir}/usr/share/applications/
@@ -147,7 +159,7 @@ EOF
 	cat > ${pkgdir}/usr/bin/oomox-archdroid-icons-cli <<EOF
 #!/bin/sh
 cd /opt/oomox/
-exec ./archdroid.sh "\$@"
+exec ./archdroid-icon-theme/change_color.sh "\$@"
 EOF
 	chmod +x ${pkgdir}/usr/bin/oomox-archdroid-icons-cli
 
