@@ -23,10 +23,10 @@ md5sums=('a009bbc502c30e4b483d71be9fa51790')
 #source+=('linux-4.11.patch')
 #md5sums+=('cc8941b6898d9daa0fb67371f57a56b6')
 
-# Auto-detect patches (e.g. linux-4.1.patch)
-for _patch in $(find -maxdepth 1 -name '*[0-9].[0-9]*.patch' -printf "%f\n"); do
-  # Don't duplicate those already defined above
-  if [[ ! ${source[@]} =~ $_patch ]]; then
+# Auto-detect patches (e.g. linux-4.19.patch)
+for _patch in $(find -maxdepth 1 -name '*.patch' -printf "%f\n"); do
+  # Don't duplicate those already defined above (https://stackoverflow.com/a/15394738/1821548)
+  if [[ ! " ${source[@]} " =~ " $_patch " ]]; then
     source+=("$_patch")
     md5sums+=('SKIP')
   fi
@@ -41,23 +41,25 @@ prepare() {
   sh $_pkg.run -x
   cd $_pkg
 
-  # Loop for all kernels
+  # Loop kernels
   for _kernel in $(cat /usr/lib/modules/extramodules-*/version); do
     # Use separate source directories
     cp -r kernel kernel-$_kernel
 
-    # Patch?
-    for _patch in $(printf -- '%s\n' ${source[@]} | grep -e [0-9].[0-9] -e .patch); do
+    # Loop patches
+    for _patch in $(printf -- '%s\n' ${source[@]} | grep .patch); do
       # Patch version
       _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
 
       # Cd in place
       cd kernel-$_kernel
 
-      # Check version
+      # Compare versions
       if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
         msg2 "Applying $_patch for $_kernel..."
-        patch -p2 -i "$srcdir"/"$_patch"
+        patch -p2 -i "$srcdir"/$_patch
+      else
+        msg2 "Skipping $_patch..."
       fi
 
       # Return
