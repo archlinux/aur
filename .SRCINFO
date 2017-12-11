@@ -1,0 +1,26 @@
+pkgbase = python-guessit-204
+	pkgdesc = a library for guessing information from video filenames
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/guessit
+	arch = any
+	license = GPL3
+	source = https://pypi.io/packages/source/g/guessit/guessit-2.0.4.tar.gz
+	md5sums = 2fc60912f7a12ca9573e265de23556d6
+
+pkgname = python-guessit-204
+	depends = python
+	depends = python-rebulk>=0.7.0
+	depends = python-babelfish>=0.5.5
+	depends = python-dateutil
+	provides = python-guessit=2.0.4
+	conflicts = python-guessit=2.0.4
+
+pkgname = python2-guessit-204
+	depends = python2
+	depends = python2-rebulk>=0.7.0
+	depends = python2-babelfish>=0.5.5
+	depends = python2-dateutil
+	provides = python2-guessit=2.0.4
+	conflicts = python2-guessit=2.0.4
+
