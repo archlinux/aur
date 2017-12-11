@@ -1,5 +1,5 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
-# Contributor: FredBezeies
+# Contributor: FredBezies
 # Contributor: pavbaranov
 # Contributor: marcin82
 # Based on original PKGBUILD created by:
@@ -7,7 +7,7 @@
 pkgname=lumina-desktop
 _pkgver=1.4.0-p1
 pkgver=1.4.0p1
-pkgrel=1
+pkgrel=2
 pkgfullname="${pkgname%-*}-${_pkgver}"
 pkgdesc="A Lightweight QT5 Desktop for FreeBSD"
 arch=('x86_64' 'i686')
@@ -23,7 +23,7 @@ optdepends=('xorg-xbacklight: required for changing screen brightness'
             'network-manager-applet: Manage network connections from panel'
             'xterm: Terminal emulator'
             'fluxbox: window manager for Lumina DE')
-makedepends=('qt5-base' 'qt5-tools')
+makedepends=('qt5-base' 'qt5-svg' 'qt5-tools')
 conflicts=("lumina-de-git" "lumina-desktop-git" "insight-fm")
 provides=("${pkgname%-*}" "insight-fm")
 install="${pkgname%-*}.install"
