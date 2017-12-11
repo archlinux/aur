@@ -1,7 +1,7 @@
 # Maintainer: deadc0de6 <info@deadc0de.ch>
 
 pkgname=scannerl
-pkgver=0.36
+pkgver=0.37
 pkgrel=1
 pkgdesc="The modular distributed fingerprinting engine"
 arch=('any')
