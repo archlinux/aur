@@ -2,6 +2,7 @@
 # Contributor: Miguel Useche <migueluseche(dot)skatox.com>
 
 pkgname=turpial
+pkgname_=Turpial
 pkgver=3.0
 pkgrel=1
 pkgdesc="A multi-interface Twitter client written in Python."
@@ -19,15 +20,15 @@ optdepends=(
 )
 # TODO is it really correct that pywebkitgtk is required but the GTK UI is optional?
 conflicts=(${pkgname}-git)
-source=(http://files.turpial.org.ve/sources/stable/$pkgname-$pkgver.tar.gz)
-sha1sums=('f47af9b7e4ffbf5b2dcd7ed4d81fd55a212b072c') # ${source[0]}.sha1sum
+source=(https://github.com/satanas/$pkgname_/archive/$pkgver.tar.gz)
+sha256sums=('af13a168f1f109a06f4edfd6426c50eaf8d10105031b8d27355e97b0dab500d9')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname_-$pkgver"
     python2 setup.py build || return 1
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname_-$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1 || return 1
 }
