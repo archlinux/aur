@@ -26,7 +26,7 @@ analysis'
   'geant4-realsurfacedata: Data files for measured optical surface reflectance'
   'geant4-saiddata: Data files from evaluated cross-sections in SAID data-base')
 url="http://geant4.cern.ch/"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('custom: http://geant4.cern.ch/license/')
 options=('!emptydirs')
 install="${pkgname}.install"
