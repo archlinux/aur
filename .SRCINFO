@@ -24,7 +24,7 @@ pkgname = gdc
 	depends = perl
 	depends = binutils
 	depends = libgphobos-devel
-	provides = d-compiler
+	provides = d-compiler=2.068.2
 
 pkgname = libgphobos-devel
 	pkgdesc = Standard library for D programming language, GDC port
