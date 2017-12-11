@@ -4,16 +4,18 @@
 
 pkgname=yfktest
 pkgver=0.0.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Ham Radio Contesting Logger"
 arch=('any')
 url="http://fkurz.net/ham/yfktest.html"
 license=('GPL')
 depends=('perl-curses' 'hamradio-menus' 'cty' 'masterscp')
+makedepends=('subversion')
 optdepends=('hamlib: rig interfacing'
 	    'cwdaemon: transmitting cw'
 	    'winkeydaemon: usb cw xmit'
-	    'bigcty: contest version country files')
+	    'bigcty: contest version country files'
+	    'mplayer: voice keyer')
 source=(
 #http://fkurz.net/ham/$pkgname/$pkgname-$pkgver.tar.gz
 		$pkgname.desktop
@@ -22,7 +24,7 @@ source=(
 
 __svntrunk="svn://svn.fkurz.net/yfktest/"
 __svnmod=('trunk')
-__svnrev=665
+__svnrev=670
 
 prepare() {
 	cd "$srcdir"
@@ -53,7 +55,7 @@ package() {
 
 	cd "$pkgdir/usr/share/$pkgname"
 	cp -a docs/MANUAL docs/FAQ-NEW-INFO .
-	rm -rf cty.dat master.scp README* winkey* yfktest.* docs/ misc/ voice/
+	rm -rf cty.dat master.scp README* winkey* yfktest.* docs/ misc/
 	sed -i s:'.\/yfktest ':'yfktest ': subs/newcontest.pl
 	sed -i s:'.\/yfktest ':'yfktest ': yfktest
 	sed -i s:'.\/yfktest ':'yfktest ': MANUAL
