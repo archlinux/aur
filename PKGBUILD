@@ -2,8 +2,8 @@
 # I'm really sorry but providing our name is dangerous to us. Github: https://github.com/snakesocks
 
 pkgname=snakesocks
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=3
 pkgdesc="An extensible proxy which prevents some ISP from detecting network traffic."
 url="https://github.com/SnakeSocks/$pkgname"
 license=("GPL2")
@@ -14,7 +14,7 @@ conflicts=("$pkgname-bin")
 replaces=("$pkgname-bin")
 backup=("etc/$pkgname/conf/client.conf" "etc/$pkgname/conf/server.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("eaeb4f63dfea44c93c4bb78f5c037e253edf7ee6b0c2c97dbc5c6bb8b712ab2c")
+sha256sums=("68cff712a2a22ca85f3b0886e37df89a38980f00aacb04aeb19ec9fa7577fed4")
 
 package() {
   export pkgdir
