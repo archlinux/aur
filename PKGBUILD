@@ -23,10 +23,10 @@ md5sums=('a009bbc502c30e4b483d71be9fa51790')
 #source+=('linux-4.11.patch')
 #md5sums+=('cc8941b6898d9daa0fb67371f57a56b6')
 
-# Auto-detect patches (e.g. linux-4.1.patch)
-for _patch in $(find -maxdepth 1 -name '*[0-9].[0-9]*.patch' -printf "%f\n"); do
-  # Don't duplicate those already defined above
-  if [[ ! ${source[@]} =~ $_patch ]]; then
+# Auto-detect *.patch
+for _patch in $(find -maxdepth 1 -name '*.patch' -printf "%f\n"); do
+  # Don't duplicate those already defined above (https://stackoverflow.com/a/15394738/1821548)
+  if [[ ! " ${source[@]} " =~ " $_patch " ]]; then
     source+=("$_patch")
     md5sums+=('SKIP')
   fi
@@ -41,25 +41,28 @@ prepare() {
   sh $_pkg.run -x
   cd $_pkg
 
+  # Kernel version
+  #_kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
+  _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
+
   # Loop patches
-  for _patch in $(printf -- '%s\n' ${source[@]} | grep -e [0-9].[0-9] -e .patch); do
-    # Version variables
-    _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
+  for _patch in $(printf -- '%s\n' ${source[@]} | grep .patch); do
+    # Patch version
     _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
 
-    # Check version
-    if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
+    # Compare versions
+    if (( $(vercmp "$_major" "$_major_patch") >= 0 )); then
       msg2 "Applying $_patch..."
-      patch -p1 -i "$srcdir"/"$_patch"
+      patch -p1 -i "$srcdir"/$_patch
+    else
+      msg2 "Skipping $_patch..."
     fi
   done
 }
 
 build() {
   # Version of 'linux'
-  _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
-  _extramodules=extramodules-$_major-ARCH
-  _kernel=$(cat /usr/lib/modules/$_extramodules/version)
+  _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
 
   # Build module
   cd $_pkg/kernel
