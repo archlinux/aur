@@ -9,8 +9,8 @@ pkgname=gdal-hdf4
 _pkgname=gdal
 provides=('gdal')
 conflicts=('gdal')
-pkgver=2.2.2
-pkgrel=4
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('x86_64')
 url="http://www.gdal.org/"
@@ -25,7 +25,7 @@ options=('!emptydirs')
 changelog=$_pkgname.changelog
 source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz
         gdal-perl-vendor.patch)
-sha256sums=('eb25d6ee85f4f5ac1d5581958f8c6eed9b1d50746f82866fe92e507541def35b'
+sha256sums=('a328d63d476b3653f5a25b5f7971e87a15cdf8860ab0729d4b1157ba988b8d0b'
             '20989e5fa499206b42c92280ce084fdf7b2f661a4233fc349611cc57102fe114')
 
 prepare() {
