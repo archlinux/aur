@@ -1,0 +1,14 @@
+pkgbase = python-pathlib
+	pkgdesc = This module offers a set of classes featuring all the common operations on paths in an easy, object-oriented way
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://pathlib.readthedocs.org/en/1.0.1/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.io/packages/source/p/pathlib/pathlib-1.0.1.tar.gz
+	md5sums = 5099ed48be9b1ee29b31c82819240537
+
+pkgname = python-pathlib
+
