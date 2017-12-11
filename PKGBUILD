@@ -1,4 +1,4 @@
-# Maintainer: Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com>
+# Maintainer: Jeremy Audet <jerebear@protonmail.com>
 # Contributor: Mike Redd <mredd -at- 0 tue 0 dot com>
 #
 # `epoch=1` because `pkgver` formerly used dates. For example: `pkgver=20130203`
