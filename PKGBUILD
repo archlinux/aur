@@ -1,5 +1,5 @@
 pkgname=tomcat9
-pkgver=9.0.1
+pkgver=9.0.2
 pkgrel=2
 pkgdesc='Open source implementation of the Java Servlet 4.0 and JavaServer Pages 2.3 technologies'
 arch=('any')
@@ -21,7 +21,7 @@ source=(https://archive.apache.org/dist/tomcat/tomcat-9/v${pkgver}/bin/apache-to
         systemd_tmpfiles.d_${pkgname}.conf)
 validpgpkeys=('DCFD35E0BF8CA7344752DE8B6FB21E8933C60243'  # Mark E D Thomas
               '713DA88BE50911535FE716F5208B0AB1D63011C7') # Violeta Georgieva Georgieva
-sha256sums=('976d9aa996fc34d387ef8de87eed79c5f20c0679b76c1a1fcf331eaa7cdf758f'
+sha256sums=('689844c8f373bd7db6a0c5ce7414b825d500bf64300273656dba8b05e29f5e29'
             'SKIP'
             'df2199080b3e4061eb8d454045428d7d340e527972c497309f69392ab2e3186f'
             '63d8a28af96e6c7232595e7eab3bb7930f0eebcd89a5b1e3bc17b80cb2580db5'
