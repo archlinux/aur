@@ -1,6 +1,6 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
-pkgname=('moksha-modules-extra-git' 'moksha-module-alarm-git' 'moksha-module-calendar-git' 'moksha-module-cpu-git' 'moksha-module-engage-git' 'moksha-module-flame-git' 'moksha-module-forecasts-git' 'moksha-module-mail-git' 'moksha-module-news-git' 'moksha-module-penguins-git' 'moksha-module-photo-git' 'moksha-module-places-git' 'moksha-module-rain-git' 'moksha-module-screenshot-git' 'moksha-module-share-git' 'moksha-module-slideshow-git' 'moksha-module-snow-git' 'moksha-module-tclock-git' 'moksha-module-trash-git' 'moksha-module-winlist-ng-git' 'moksha-module-winselector-git')
+pkgname=('moksha-modules-extra-git' 'moksha-module-alarm-git' 'moksha-module-calendar-git' 'moksha-module-engage-git' 'moksha-module-flame-git' 'moksha-module-forecasts-git' 'moksha-module-mail-git' 'moksha-module-news-git' 'moksha-module-penguins-git' 'moksha-module-photo-git' 'moksha-module-places-git' 'moksha-module-rain-git' 'moksha-module-screenshot-git' 'moksha-module-share-git' 'moksha-module-slideshow-git' 'moksha-module-snow-git' 'moksha-module-tclock-git' 'moksha-module-trash-git' 'moksha-module-winlist-ng-git' 'moksha-module-winselector-git')
 pkgver=752dafe
 pkgrel=1
 _pkgname=moksha-modules-extra
@@ -13,7 +13,6 @@ makedepends=('moksha-module-emprint-git' 'git')
 _module_list=(
   'alarm'
   'calendar'
-  'cpu'
   'engage'
   'flame'
   'forecasts'
@@ -77,24 +76,6 @@ package_moksha-module-calendar-git() {
 
   cd "${srcdir}/${_pkgname}/calendar"
   msg2 "Installing calendar"
-  make DESTDIR="${pkgdir}" install
-
-#  install text files
-  [[ -e ChangeLog ]] && install -Dm644 ChangeLog "${pkgdir}/usr/share/doc/${pkgname%-*}/ChangeLog" || true
-  [[ -e NEWS ]] && install -Dm644 NEWS "${pkgdir}/usr/share/doc/${pkgname%-*}/NEWS" || true
-  [[ -e README ]] && install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname%-*}/README" || true
-
-#  install license files
-  [[ -e AUTHORS ]] && install -Dm644 AUTHORS "${pkgdir}/usr/share/licenses/$pkgname/AUTHORS" || true
-  [[ -e COPYING ]] && install -Dm644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING" || true
-  [[ -e COPYING-PLAIN ]] && install -Dm644 COPYING-PLAIN "${pkgdir}/usr/share/licenses/$pkgname/COPYING-PLAIN" || true
-}
-
-package_moksha-module-cpu-git() {
-  pkgdesc="Moskha cpu module built from git sources"
-
-  cd "${srcdir}/${_pkgname}/cpu"
-  msg2 "Installing cpu"
   make DESTDIR="${pkgdir}" install
 
 #  install text files
