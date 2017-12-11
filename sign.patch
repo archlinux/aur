@@ -1,0 +1,13 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 9c6e3c6..30d8ac3 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -24,7 +24,7 @@ taglib_policy_configs = $(POLICIES:.dll=.config)
+ taglib_policy_configs_in = $(POLICIES:.dll=.config.in)
+ 
+ $(ASSEMBLY): $(TAGLIB_CSFILES) $(taglib_generated_sources) taglib-sharp.snk
+-	$(CSC) /target:library $(LIBFLAGS) $(DOCFLAGS) /define:SIGN /out:$@ $(TAGLIB_CSFILES) $(taglib_generated_sources)
++	$(CSC) /target:library $(LIBFLAGS) $(DOCFLAGS) /define:SIGN /keyfile:taglib-sharp.snk /out:$@ $(TAGLIB_CSFILES) $(taglib_generated_sources)
+ 
+ policy.%.$(ASSEMBLY_NAME).dll: policy.%.$(ASSEMBLY_NAME).config
+ 	$(AL) /link:$< /out:$@ /keyfile:taglib-sharp.snk

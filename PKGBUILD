@@ -5,8 +5,8 @@
 
 _pkgbase=taglib-sharp
 pkgname=$_pkgbase-git
-pkgver=2.1.0.0.r90.gceda04a
-pkgrel=2
+pkgver=2.1.0.0.r138.g9c1f8ca
+pkgrel=3
 pkgdesc="Library for reading and writing metadata in media files for Mono - source from git for working opus files"
 arch=('i686' 'x86_64')
 url="https://github.com/mono/taglib-sharp"
@@ -14,12 +14,20 @@ license=('LGPL2.1')
 depends=('mono')
 conflicts=(taglib-sharp)
 provides=("taglib-sharp=${pkgver%%.r*}")
-source=(git+https://github.com/mono/taglib-sharp.git)
-md5sums=('SKIP')
+source=(git+https://github.com/mono/taglib-sharp.git
+sign.patch)
+md5sums=('SKIP'
+44eb44c64b6781e4da809bf974434a84)
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
   git describe --long | sed 's/^taglib-sharp-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$_pkgbase"
+#  git reset --hard 2ab021d38a561e09e95d85212765cbec141bbd7f
+  patch -p1 -i "$srcdir/sign.patch"
 }
 
 build() {
