@@ -1,13 +1,12 @@
 # Maintainer: Jake <ja.ke@posteo.de>
-# Previous Maintainer: Crotok <crotok [at] mailbox [dot] org>
+# Contributor: Crotok <crotok [at] mailbox [dot] org>
 
-_pkgbase=monero
 pkgname=monero-bin
 pkgver=0.11.1.0
 pkgrel=1
-pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
+pkgdesc="Monero: the secure, private, untraceable currency - CLI release version (includes daemon, wallet and miner)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-conflicts=("${_pkgbase}")
+conflicts=("${pkgname%-bin}")
 url="https://getmonero.org/"
 license=("BSD")
 backup=("etc/monerod.conf")
