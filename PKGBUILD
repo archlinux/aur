@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=9308.d383ec90d
+pkgver=9355.bdfca8fd4
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
@@ -39,6 +39,7 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$pkgname
+  git submodule update --init
   # fix up scripts like faust2md which need python2 to run
   patch -Np1 < $srcdir/python2-fix.patch
 }
@@ -62,7 +63,7 @@ package() {
 
   # docs
   install -d "$pkgdir/usr/share/doc/faust"
-  install -Dm644 documentation/*.{pdf,html} "$pkgdir/usr/share/doc/faust"
+  for x in documentation/*.{pdf,html}; do test -f $x && install -Dm644 $x "$pkgdir/usr/share/doc/faust"; done
 
   # examples
   install -d "$pkgdir/usr/share/faust/examples"
