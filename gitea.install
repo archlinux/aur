@@ -1,4 +1,5 @@
-post_install(){
+post_install()
+  usermod -d /var/lib/gitea git
   chown -R git:git /var/lib/gitea /var/log/gitea
   chown -R root:git /etc/gitea
   systemctl daemon-reload
@@ -11,4 +12,5 @@ post_upgrade() {
 pre_remove() {
   systemctl stop gitea.service
   systemctl disable gitea.service
+  usermod -d / git
 }
