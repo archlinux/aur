@@ -2,8 +2,8 @@
 
 _pkgname=fabric
 pkgname=hyperledger-${_pkgname}
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(armv6h armv7h arm aarch64 i686 x86_64)
 url="https://github.com/hyperledger/fabric"
@@ -61,7 +61,7 @@ msg2 "Install conf file"
   mkdir -p $pkgdir/var/hyperledger/{db,production}
 }
 
-md5sums=('00175d84c2365f6989a6b489efeda994'
+md5sums=('f2f2f3099eed8bbe593b8ece4851b776'
          'ac4694c8c49e21c816df94535a60ddfe'
          'a0bafaaeb3be191ed2893662fe9a6fc7'
          'e3c871420b7b5af4ab6d6f7b4091d2da'
