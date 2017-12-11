@@ -9,7 +9,7 @@ _pkgname="gitea"
 _gourl="code.gitea.io"
 
 pkgname=gitea-git
-pkgrel=6
+pkgrel=1
 pkgver=r5926.b82519ca
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
@@ -42,6 +42,8 @@ pkgver() {
 }
 
 prepare() {
+  sed -i -e "s/\"main.Version.*$/\"main.Version=${pkgver}\"/" "${srcdir}/${_pkgname}/Makefile"
+
   mkdir -p "${srcdir}/src/${_gourl}/${_pkgname}"
   cp -r "${srcdir}/${_pkgname}" "${srcdir}/src/${_gourl}"
 
