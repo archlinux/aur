@@ -3,7 +3,7 @@
 _varname='G4ABLADATA'
 _packagename='geant4-abladata'
 _foldername='G4ABLA'
-_dataversion=3.0
+_dataversion=3.1
 
 _add() {
     echo "export ${_varname}=/usr/share/${_packagename}/${_foldername}${_dataversion}" >> /etc/profile.d/geant4.sh
