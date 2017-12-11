@@ -1,4 +1,5 @@
-# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Maintainer: Jeremy Audet <jerebear@protonmail.com>
+# Contributor: Tom Vincent <http://tlvince.com/contact/>
 pkgname=ruby-w3c_validators
 _pkgname=w3c_validators
 pkgver=1.3.3
