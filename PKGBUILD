@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -36,6 +36,7 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 	$_pkgname-logtruncate.timer
 	mimic_setupVars.conf.sh
 	version.patch
+	https://github.com/pi-hole/pi-hole/commit/80e17ab72180f15ac4d5ff0044d4e8eafd95bc29.patch
   )
 
 md5sums=('12b29c41a1e8e2892da2684fea566ebb'
@@ -50,7 +51,8 @@ md5sums=('12b29c41a1e8e2892da2684fea566ebb'
          '94d5aa0e8aa3d4170bcea71078a9da25'
          '291d3c95e445fe65caf40c3605efd186'
          'c227ffa88ddebc34cb715b73640cd845'
-         '93fe5e50cf3fcb08b24cf29b0cace85b')
+         '93fe5e50cf3fcb08b24cf29b0cace85b'
+         'cc37c7f1fc27c9246b442f0464fc1886')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
@@ -204,6 +206,7 @@ prepare() {
 
   cd "$srcdir"/"$_pkgname"-"$pkgver"
   patch -p1 -i "$srcdir"/version.patch
+  patch -p1 -i "$srcdir"/80e17ab72180f15ac4d5ff0044d4e8eafd95bc29.patch
   cd "$srcdir"
 
   sed -n "/{{corever}}/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
