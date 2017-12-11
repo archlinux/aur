@@ -16,7 +16,7 @@ pkgbase = snakesocks
 	backup = etc/snakesocks/conf/client.conf
 	backup = etc/snakesocks/conf/server.conf
 	source = snakesocks-1.3.0.tar.gz::https://github.com/SnakeSocks/snakesocks/archive/v1.3.0.tar.gz
-	sha256sums = 68cff712a2a22ca85f3b0886e37df89a38980f00aacb04aeb19ec9fa7577fed4
+	sha256sums = 5220419a6149efe99741585be3da227369ec7112ef46d26de81c99c94e4a1640
 
 pkgname = snakesocks
 
