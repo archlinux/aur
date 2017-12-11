@@ -2,7 +2,7 @@
 
 pkgname=abireport
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to create ABI reports from ELF binaries in packaging"
 arch=('i686' 'x86_64')
 url="https://github.com/clearlinux/abireport"
