@@ -4,7 +4,7 @@
 
 pkgname='perl-par-packer'
 pkgver='1.041'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="PAR Packager"
 arch=('any')
 url='http://search.cpan.org/dist/PAR-Packer'
@@ -16,7 +16,7 @@ source=("http://search.cpan.org/CPAN/authors/id/R/RS/RSCHUPP/PAR-Packer-${pkgver
 md5sums=('e7c13f7af896cbc00728897db7b76d1e')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB="${srcdir}/PAR-Packer-${pkgver}/lib"                 \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
