@@ -2,7 +2,7 @@
 # Old Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=ubridge
-pkgver=0.9.11
+pkgver=0.9.13
 pkgrel=1
 pkgdesc='Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ groups=('gns3')
 depends=('libpcap')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=('4057224ff1173e0ac5dfbe69170b4fa71106db976cd0db617405ef272cf8ed3e')
+sha256sums=('6d1f791f6c103b19d8968c339626c9882f8b348d0e9cf9dc8a7973ecd8905afb')
 
 build() {
   cd "${pkgname}-${pkgver}"
