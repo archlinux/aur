@@ -5,14 +5,14 @@
 
 pkgname=tuned
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${pkgname}"
 license=('GPL')
-depends=('ethtool' 'python2-configobj' 'python2-pyudev' 'python2-gobject2' 'python2-decorator' 'python2-dbus' 'python2-gobject' 'dbus-glib')
-optdepends=('virt-what' 'systemtap')
-makedepends=('git')
+depends=('ethtool' 'python2-configobj' 'python2-pyudev' 'python2-gobject2' 'python2-decorator' 'python2-dbus' 'python2-gobject' 'python2-linux-procfs' 'dbus-glib')
+optdepends=('virt-what: For use with virtual machines' 'systemtap: Disk and net statistic monitoring systemtap scripts')
+makedepends=('desktop-file-utils')
 backup=('etc/tuned/active_profile')
 install="${pkgname}.install"
 source=("https://github.com/redhat-performance/${pkgname}/archive/v${pkgver}.tar.gz")
