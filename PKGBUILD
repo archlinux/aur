@@ -4,15 +4,16 @@
 # Contributor: farnsworth517 
 
 pkgname=soulseekqt
-pkgver=20170830
-_pkgver=2017-8-30
+pkgver=20171121
+_pkgver=2017-11-21
 pkgrel=4
 pkgdesc="A desktop client for the Soulseek peer-to-peer file sharing network"
 arch=('x86_64')
 url="http://www.soulseekqt.net/news/"
 license=('CUSTOM')
 depends=('fontconfig' 'libxext' 'libxrender' 'qt5-multimedia')
-source=("https://www.dropbox.com/s/wborsit53rlj7bz/SoulseekQt-$_pkgver-64bit.AppImage"
+makedepends=('libselinux')
+source=("https://www.dropbox.com/s/ru2mvycljfrejcx/SoulseekQt-$_pkgver-64bit.AppImage"
 	$pkgname.desktop
         $pkgname.png
 )
@@ -20,9 +21,7 @@ source=("https://www.dropbox.com/s/wborsit53rlj7bz/SoulseekQt-$_pkgver-64bit.App
 package () {
   cd $srcdir
 
-  chmod +x SoulseekQt-$_pkgver-64bit.AppImage
-
-  ./SoulseekQt-$_pkgver-64bit.AppImage  --appimage-extract
+   ./SoulseekQt-${_pkgver}-64bit  --appimage-extract
 
   cd squashfs-root
 
@@ -31,6 +30,6 @@ package () {
   install -vDm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/soulseek.png"
 }
 
-md5sums=('ff459e9c5a2b677185be7fc50f9733c8'
+md5sums=('19af4fe0f7fbd382e3e68eb92f32c52b'
          '810a4200a3c8568257b66b6bdea5c29c'
          '958e9c06bd684e812b6d27515b88b97c')
