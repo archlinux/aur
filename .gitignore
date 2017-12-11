@@ -4,6 +4,9 @@
 /GSL
 /variant
 /libtgvoip
+/fcitx
+/hime
+/qt*
 /gyp
 /pkg
 /src
