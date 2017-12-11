@@ -4,7 +4,7 @@
 
 pkgname=dvbsnoop
 pkgver=1.4.50
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 pkgrel=2
 license=('GPL')
 pkgdesc="dvbsnoop is a DVB / MPEG stream analyzer program, which enables you to watch (live) stream information in human readable form"
