@@ -1,13 +1,13 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-git
-pkgver=0.5.Beta.r237.g5841bea
+pkgver=1.0.r261.gabcd4e3
 pkgrel=1
 pkgdesc='Tiny Qt Music Player to keep your favorite songs at hand'
 arch=('i686' 'x86_64')
 url="https://babe.kde.org/"
 license=('GPL3')
-depends=('desktop-file-utils' 'gtk-update-icon-cache' 'ki18n' 'knotifications' 'qt5-webengine' 'taglib')
+depends=('desktop-file-utils' 'gtk-update-icon-cache' 'ki18n' 'knotifications' 'qt5-webengine' 'qt5-websockets' 'taglib')
 makedepends=('git')
 optdepends=('youtube-dl: youtube support')
 provides=("${pkgname%-*}")
