@@ -1,4 +1,4 @@
-# Maintainer: Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com>
+# Maintainer: Jeremy Audet <jerebear@protonmail.com>
 #
 # namcap incorrectly states that python{,2}-{django,six} are unnecessary deps.
 
