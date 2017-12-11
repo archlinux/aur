@@ -1,0 +1,18 @@
+pkgbase = python-qiskit-api-git
+	pkgdesc = A Python library for the Quantum Experience API.
+	pkgver = 1.8.19.r0.g1133844
+	pkgrel = 1
+	url = http://www.qiskit.org
+	arch = any
+	groups = QISKit
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-qiskit-api
+	conflicts = python-qiskit-api
+	source = git+https://github.com/QISKit/qiskit-api-py.git
+	md5sums = SKIP
+
+pkgname = python-qiskit-api-git
+
