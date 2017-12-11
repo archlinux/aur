@@ -1,4 +1,4 @@
-# Maintainer: Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com>
+# Maintainer: Jeremy Audet <jerebear@protonmail.com>
 # Contributor: Jose Riha <jose1711 [at] gmail (dot) com>
 
 pkgname=osmupdate
