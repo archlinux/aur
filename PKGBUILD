@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('qt5-base')
 optdepends=('qt5-tools: for QtDesigner integration'
             'qtcreator: for QtCreator integration')
-makedepends=('git cmake')
+makedepends=('git' 'cmake')
 provides=('qt-color-widgets-common')
 conflicts=('qt-color-widgets-common')
 replaces=('qt5-color-picker')
@@ -27,7 +27,7 @@ pkgver() {
 build() {
 	cd $pkgname
 	eval "qmake-${pkgname::3} PREFIX=${pkgdir}/usr"
-	
+
 	# Ensure build is an empty directory
 	rm -rf 'build'
 	mkdir -p 'build'
