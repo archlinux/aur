@@ -1,5 +1,5 @@
 pre_install() {
-  usermod -d /var/lib/gitea git
+  usermod -d /var/lib/gitea -s /usr/bin/bash git
 }
 
 post_install() {
@@ -23,5 +23,5 @@ pre_remove() {
 }
 
 post_remove() {
-  usermod -d / git
+  usermod -d / -s /usr/bin/git-shell git
 }
