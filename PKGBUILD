@@ -2,7 +2,7 @@
 
 _pkgname=('tambi')
 pkgname=('tambi-git')
-pkgver=660
+pkgver=678
 pkgrel=1
 pkgdesc='A swiss army knife for studying the bible and much more'
 arch=('any')
@@ -30,6 +30,7 @@ package() {
     cd c++
     qmake-qt5 -o Makefile tambi.pro
     make
+    make clean
     
     cd ..
     # putting the freedesktop .desktop file and the program icon to the right place

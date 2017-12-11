@@ -1,6 +1,6 @@
 pkgbase = tambi-git
 	pkgdesc = A swiss army knife for studying the bible and much more
-	pkgver = 660
+	pkgver = 678
 	pkgrel = 1
 	url = https://github.com/nano13/tambi.git
 	arch = any
