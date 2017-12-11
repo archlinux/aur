@@ -1,6 +1,6 @@
 pkgbase = electrum-mona
 	pkgdesc = A lightweight Monacoin wallet
-	pkgver = 3.0.1
+	pkgver = 3.0.2.1
 	pkgrel = 1
 	url = https://github.com/wakiyamap/electrum-mona
 	arch = any
@@ -17,12 +17,12 @@ pkgbase = electrum-mona
 	depends = python-dnspython
 	depends = python-jsonrpclib-pelix
 	depends = python-pysocks
-	depends = python-pyqt4
+	depends = python-pyqt5
 	depends = python-certifi
 	depends = gettext
 	optdepends = python-matplotlib: for plot history
-	source = electrum-mona-3.0.1.tar.gz::https://github.com/wakiyamap/electrum-mona/archive/3.0.1.tar.gz
-	sha512sums = 5a2d1f5672402a41b0b40a45dc8f21b966d7b05e72e128fa9e914e1935ec8a19b767909acda50248530c8c2b9410be5d1cfc044e6fb6788de193d0ec9ffc5ce8
+	source = electrum-mona-3.0.2.1.tar.gz::https://github.com/wakiyamap/electrum-mona/archive/3.0.2.1.tar.gz
+	sha512sums = 59e1f85bb078521b8624306ba773261397975c668b46aa8d1b07f4cfeb6421a0a9b3c7c1271802d70e1fb871a91fc2540800031abd27462674240e35ca02b583
 
 pkgname = electrum-mona
 
