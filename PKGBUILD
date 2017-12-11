@@ -7,12 +7,8 @@ pkgdesc="Icon set based on Neutral and jaguarx themes (white version)"
 arch=('any')
 url="http://gnome-look.org/content/show.php/Neutral%2B%2B+White?content=108143"
 license=('Artistic2.0')
-source=(http://gnome-look.org/CONTENT/content-files/108143-Neutral++_White-1.1.1.tar.xz)
+source=(https://dl.opendesktop.org/api/files/downloadfile/id/1460734982/s/904ddc5bf06f7fd6ab7d1e02e46940f8/t/1513036428/108143-Neutral++_White-1.1.1.tar.xz)
 md5sums=('acf67334d7c6ea30e8a6008f07c4f94c')
-
-build() {
-  true
-}
 
 package() {
   cd "${srcdir}"
