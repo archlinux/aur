@@ -1,4 +1,4 @@
-# Maintainer: Jeremy "Ichimonji110" Audet <ichimonji10 at gmail dot com>
+# Maintainer: Jeremy Audet <jerebear@protonmail.com>
 # Contributor: Lucky <archlinux@builds.lucky.li>
 #
 # Note: namcap warns that ruby-colored is an unnecessary dependency. This is
