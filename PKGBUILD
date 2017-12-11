@@ -24,7 +24,7 @@ md5sums=('a009bbc502c30e4b483d71be9fa51790')
 #md5sums+=('cc8941b6898d9daa0fb67371f57a56b6')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
-for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
+for _patch in $(find -maxdepth 1 -name '*[0-9].[0-9]*.patch' -printf "%f\n"); do
   # Don't duplicate those already defined above
   if [[ ! ${source[@]} =~ $_patch ]]; then
     source+=("$_patch")
@@ -42,7 +42,7 @@ prepare() {
   cd $_pkg
 
   # Loop patches
-  for _patch in $(ls "$srcdir"/*.patch 2>/dev/null); do
+  for _patch in $(printf -- '%s\n' ${source[@]} | grep -e [0-9].[0-9] -e .patch); do
     # Version variables
     _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
     _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
@@ -50,7 +50,7 @@ prepare() {
     # Check version
     if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
       msg2 "Applying $_patch..."
-      patch -p1 -i "$_patch"
+      patch -p1 -i "$srcdir"/"$_patch"
     fi
   done
 }
