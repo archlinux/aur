@@ -1,4 +1,4 @@
-# Maintainer: Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com>
+# Maintainer: Jeremy Audet <jerebear@protonmail.com>
 # Contributor: Mizuchi <ytj000+AUR@gmail.com>
 # Contributor: Rhinoceros <aurarchlinux@plast.id.au>
 
