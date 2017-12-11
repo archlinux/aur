@@ -1,23 +1,7 @@
-pre_install() {
-  if ! getent group gitea >/dev/null; then
-    groupadd --system gitea
-  fi
-  if ! getent passwd gitea >/dev/null; then
-    useradd -m --system -c 'gitea daemon users' -g gitea -s /bin/false gitea -d /var/lib/gitea
-  fi
-  chsh gitea -s /bin/bash
-}
-
 post_install(){
-  chown -R gitea:gitea /var/log/gitea
-  chown -R gitea:gitea /var/lib/gitea
-  chown -R gitea:gitea /etc/gitea
-
+  chown -R git:git /var/lib/gitea /var/log/gitea
+  chown -R root:git /etc/gitea
   systemctl daemon-reload
-}
-
-pre_upgrade(){
-  pre_install $1
 }
 
 post_upgrade() {
@@ -27,13 +11,4 @@ post_upgrade() {
 pre_remove() {
   systemctl stop gitea.service
   systemctl disable gitea.service
-}
-
-post_remove() {
-  if getent passwd gitea >/dev/null; then
-    userdel -r gitea
-  fi
-  if getent group gitea >/dev/null; then
-    groupdel gitea
-  fi
 }

@@ -1,11 +1,8 @@
 --- app.ini.sample
-+++ app.ini.sample	2017-11-28 15:33:05.569999999 +0300
-@@ -5,12 +5,12 @@
- ; App name that shows on every page title
- APP_NAME = Gitea: Git with a cup of tea
++++ app.ini.sample	2017-12-11 15:07:54.936666668 +0300
+@@ -7,10 +7,10 @@
  ; Change it if you run locally
--RUN_USER = git
-+RUN_USER = gitea
+ RUN_USER = git
  ; Either "dev", "prod" or "test", default is "dev"
 -RUN_MODE = dev
 +RUN_MODE = prod

@@ -9,22 +9,21 @@ _pkgname="gitea"
 _gourl="code.gitea.io"
 
 pkgname=gitea-git
-pkgrel=3
-pkgver=v1.1.0.r803.g0c69b768
+pkgrel=1
+pkgver=r5926.b82519ca
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
 license=("MIT")
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 depends=("git")
 makedepends=("go")
-optdepends=("sqlite: SQLite support"
-            "mariadb: MariaDB support"
-            "postgresql: PostgreSQL support"
-            "mssql-server: MSSQL support"
-            "redis: Redis support"
-            "memcached: MemCached support"
-            "openssh: GIT over SSH support"
-            "pam: Authentication via PAM support")
+optdepends=('sqlite: SQLite support'
+            'mariadb: MariaDB support'
+            'postgresql: PostgreSQL support'
+            'pam: Authentication via PAM support'
+            'redis: Redis support'
+            'memcached: MemCached support'
+            'openssh: GIT over SSH support')
 conflicts=("gitea")
 provides=("gitea")
 options=("!strip" "emptydirs")
@@ -33,16 +32,13 @@ install=gitea.install
 source=("git://github.com/go-gitea/gitea.git"
         "0001-Adjust-config-for-Arch-Linux-package.patch"
         "0002-Adjust-service-file-for-Arch-Linux-package.patch")
-sha256sums=('SKIP'
-            'a41f10f85d4ea0e91a0da5b6450845afa4e1ddb39032c37c0ee2abb746ce6cc8'
-            '6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73')
+sha512sums=('SKIP'
+            'd80d9bb906337d89f09edfc4e958ee75213d957e386ae8f420098e4d6a5b79ed6834ac1be28e69d8b99cb6614a36c87de1880ac262134273020e4f031c38f5cd'
+            'db4ad287cfc9f42495bd20771135e140656271b3678827e3e751ec023c1e90b99bfd097d57562b19fc8fa983bd8be877350ef7dcb071c14c310800a7485e9896')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -61,17 +57,17 @@ build() {
 }
 
 package() {
-  install -Dm0755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -dm 750 "${pkgdir}/var/log/${_pkgname}/"
+  install -dm 750 "${pkgdir}/var/lib/${_pkgname}/"
+  install -dm 755 "${pkgdir}/usr/share/${_pkgname}/"
+  install -dm 775 "${pkgdir}/etc/gitea/"
 
-  install -dm0700 "${pkgdir}/var/log/${_pkgname}/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"
-
-  install -dm0755 "${pkgdir}/usr/share/${_pkgname}/"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/custom" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/public" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/templates" "${pkgdir}/usr/share/${_pkgname}"
 
-  install -Dm0644 "${pkgdir}/usr/share/${_pkgname}/custom/conf/app.ini.sample" "${pkgdir}/etc/${_pkgname}/app.ini"
-  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -Dm755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${pkgdir}/src/${_gourl}/${_pkgname}/custom/conf/app.ini.sample" "${pkgdir}/etc/${_pkgname}/app.ini"
+  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
 }

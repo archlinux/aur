@@ -1,20 +1,16 @@
 --- gitea.service
-+++ gitea.service	2017-10-02 23:31:14.000000000 +0300
-@@ -15,12 +15,12 @@
- #LimitMEMLOCK=infinity
- #LimitNOFILE=65535
++++ gitea.service	2017-12-11 15:10:35.090000002 +0300
+@@ -18,10 +18,10 @@
  Type=simple
--User=git
--Group=git
+ User=git
+ Group=git
 -WorkingDirectory=/home/git/gitea
 -ExecStart=/home/git/gitea/gitea web
-+User=gitea
-+Group=gitea
 +WorkingDirectory=/var/lib/gitea
 +ExecStart=/usr/bin/gitea web --config /etc/gitea/app.ini
  Restart=always
 -Environment=USER=git HOME=/home/git
-+Environment=USER=gitea HOME=/var/lib/gitea
++Environment=USER=git HOME=/var/lib/gitea
  
  [Install]
  WantedBy=multi-user.target
