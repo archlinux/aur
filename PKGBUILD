@@ -1,8 +1,8 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell-blueprint
-pkgver=7.1b
-pkgrel=3
+pkgver=7.2b
+pkgrel=0
 pkgdesc="Desktop Shell that gets out of your way"
 arch=("x86_64")
 url="https://github.com/vicr123/theshell"
