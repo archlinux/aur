@@ -1,4 +1,4 @@
-post_install()
+post_install() {
   usermod -d /var/lib/gitea git
   chown -R git:git /var/lib/gitea /var/log/gitea
   chown -R root:git /etc/gitea
