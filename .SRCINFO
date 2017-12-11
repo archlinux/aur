@@ -1,0 +1,27 @@
+pkgbase = python-qiskit-sdk-git
+	pkgdesc = Python software development kit for writing quantum computing experiments, programs, and applications.
+	pkgver = 0.3.8.r42.g1a80896
+	pkgrel = 1
+	url = http://www.qiskit.org
+	arch = any
+	groups = QISKit
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-networkx
+	depends = python-ply
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-sphinx
+	depends = python-sympy
+	depends = python-qiskit-api
+	provides = python-qiskit-sdk
+	conflicts = python-qiskit-sdk
+	source = git+https://github.com/QISKit/qiskit-sdk-py.git
+	md5sums = SKIP
+
+pkgname = python-qiskit-sdk-git
+
