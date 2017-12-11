@@ -4,7 +4,7 @@
 
 pkgname=bsdmainutils
 pkgver=9.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Some BSD-style programs including ncal and lorder."
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/bsdmainutils"
@@ -14,7 +14,7 @@ source=(
     'archlinux-ncal.patch'
     'archlinux-libtinfo.patch'
 )
-depends=(bash)
+depends=(bash libbsd)
 makedepends=(gcc make ncurses patch quilt)
 sha256sums=(
     '8e97b383aac8821dafd5f2992a33d8a713cfced31ae782db743976575f05d40d'
