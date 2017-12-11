@@ -2,8 +2,8 @@
 
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
-pkgver=3.1.4
-pkgrel=5
+pkgver=3.2
+pkgrel=1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.1')
@@ -21,15 +21,19 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	$_pkgname-gravity.timer
 	mimic_setupVars.conf.sh)
 
-md5sums=('e231722332116b7ffab316d5c66a828e'
+md5sums=('12b29c41a1e8e2892da2684fea566ebb'
          'b955136ef15be29a468e8d9f85f24b8c'
          '0bab89977a2d4357ec8befb4ff85ee3d'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
-         'd01db2332f2d1039dbecf91b69f93dc9')
+         '7821b6dfe380955073701e5acd1587a2')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
+  
+  # the return of service management
+  sed -i "s|service dnsmasq \${svcOption}|systemctl \${svcOption} dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: the return of service management" && return 1 ; fi
 
   # setting up and securing pihole wrapper script
   sed -n "/debugFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
@@ -90,16 +94,11 @@ prepare() {
 # -----------------
 
   # setup gravity.sh
-  sed -n "/#ensure \/etc\/dnsmasq\.d\//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s|/usr/local/bin/|/usr/bin/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setup gravity.sh 1" && return 1 ; fi
-  sed -i '/#ensure \/etc\/dnsmasq\.d\//,+5d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
-#  sed -n "/#Overwrite /w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-#  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setup gravity.sh 2" && return 1 ; fi
-#  sed -i '/#Overwrite /,+1d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  sed -i "s|/usr/local/bin/pihole|/usr/bin/pihole|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s|/etc/\.|/etc/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setup gravity.sh 2" && return 1 ; fi
-  sed -i "s|/etc/.pihole|/etc/pihole|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setup gravity.sh 3" && return 1 ; fi
+
 
 # -----------------
 

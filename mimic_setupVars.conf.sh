@@ -15,7 +15,7 @@ getIPv6stuff()
 {
 	if [ -e /proc/net/if_inet6 ]; then
 		# change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6
-		IPv6_ADDRESS="::"
+		IPV6_ADDRESS="::"
 	fi
 }
 
@@ -28,7 +28,7 @@ finalExports() {
     {
     echo "PIHOLE_INTERFACE=${IPV4DEV}"
     echo "IPV4_ADDRESS=${IPV4_ADDRESS}"
-    echo "IPV6_ADDRESS=${IPv6_ADDRESS}"
+    echo "IPV6_ADDRESS=${IPV6_ADDRESS}"
     }>> "${setupVars}"
 }
 
