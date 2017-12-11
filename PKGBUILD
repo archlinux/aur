@@ -1,27 +1,23 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=bus
-pkgver=3.1.6
-pkgrel=2
+pkgver=3.1.7
+pkgrel=1
 pkgdesc="A simple daemonless system for broadcasting messages locally"
 arch=(i686 x86_64)
 url="https://github.com/maandree/bus"
-license=('MIT')
+license=('custom:ISC')
 depends=()
 makedepends=()
-install=bus.install
-source=($url/archive/$pkgver.tar.gz)
-sha256sums=(79683d48e8bcea44a564510b27d438ebf46a1080e8d51c6d2eeae324b87b087a)
-
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=(0f045b016c94e137c44834d37ae59ffef3c91eb6501b3dfbf32468185c86a1c8)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   make PREFIX=/usr
 }
 
-
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr install DESTDIR="$pkgdir"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
