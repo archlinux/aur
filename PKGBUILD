@@ -2,13 +2,13 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=sk1-git
-pkgver=r3577.4a06102a
+pkgver=r3585.ac45a0dc
 pkgrel=1
 pkgdesc="An open source vector graphics editor for prepress"
 url="https://sk1project.net/"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('lcms2' 'cairo' 'imagemagick' 'pango' 'wxpython' 'python2-cairo' 
+depends=('lcms2' 'cairo' 'libmagick6' 'pango' 'wxpython' 'python2-cairo' 
 	 'python2-pillow' 'python2-reportlab' 'python2-pycups')
 makedepends=('git' 'python2')
 provides=('sk1')
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-*}"
+  export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
   LANG=en_US.UTF-8 python2 setup-sk1.py build
 }
 
