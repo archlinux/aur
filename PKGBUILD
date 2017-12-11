@@ -23,10 +23,10 @@ md5sums=('a009bbc502c30e4b483d71be9fa51790')
 #source+=('linux-4.11.patch')
 #md5sums+=('cc8941b6898d9daa0fb67371f57a56b6')
 
-# Auto-detect patches (e.g. linux-4.19.patch)
-for _patch in $(find -maxdepth 1 -name '*.patch' -printf "%f\n"); do
-  # Don't duplicate those already defined above (https://stackoverflow.com/a/15394738/1821548)
-  if [[ ! " ${source[@]} " =~ " $_patch " ]]; then
+# Auto-detect *.patch
+for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
+  # Don't duplicate those already defined above
+  if [[ ! " ${source[@]} " =~ " $_patch " ]]; then  # https://stackoverflow.com/a/15394738/1821548
     source+=("$_patch")
     md5sums+=('SKIP')
   fi
@@ -47,7 +47,7 @@ prepare() {
     cp -r kernel kernel-$_kernel
 
     # Loop patches
-    for _patch in $(printf -- '%s\n' ${source[@]} | grep .patch); do
+    for _patch in $(printf -- '%s\n' ${source[@]} | grep .patch); do  # https://stackoverflow.com/a/21058239/1821548
       # Patch version
       _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
 
