@@ -1,8 +1,8 @@
 # Maintainer:  <clu>
 
 pkgname=stiff  
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="is a program that converts scientific FITS images to the more popular TIFF format for illustration purposes."
 url="http://www.astromatic.net/software/stiff"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 backup=()
 source=(http://www.astromatic.net/download/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('a5424ab71865a5e5a7a600fa27566771a4e5e273')
+sha1sums=('4554772a432d1f6c3779933c1971469b81526b14')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
