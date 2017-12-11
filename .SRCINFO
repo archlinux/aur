@@ -24,7 +24,7 @@ pkgbase = synergy2-bin
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://www.dropbox.com/s/t00chh9rgvo94pf/synergy_2.0.3.stable_b1125%2B8a08e664_amd64.deb?dl=1
-	sha512sums_x86_64 = b20fa6e5f0b1d928ed48ef6c03c5bcee623c71c1d17c659b35fb9aa1586a7def6e39537ed811318b954695f2cc5c5a0e528377a4f748619801842de07e3896e5
+	sha512sums_x86_64 = 08dfd4c5c79af4504fc034c7bb811e19011f86a3e00557f378bebe305406120a1f32d1d06e8dfc6cc76092d1a8b7f88e1b4802f7706a6037ed0c9b562ff9d88c
 
 pkgname = synergy2-bin
 
