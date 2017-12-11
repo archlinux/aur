@@ -1,0 +1,15 @@
+pkgbase = kiibohd-configurator-bin
+	pkgdesc = Client Side Configuration & Flashing Software for Kiibohd compatible keyboards
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/kiibohd/configurator
+	arch = x86_64
+	license = GPL3
+	depends = dfu-util
+	provides = kiibohd-configurator
+	conflicts = kiibohd-configurator
+	source = https://github.com/kiibohd/configurator/releases/download/v0.4.1/kiibohd-configurator-0.4.1-linux-amd64.deb
+	sha256sums = 39bf9c96551d4eb4db7818319b2455de8ef18fdb1d9ef91cb7d194d486d0299c
+
+pkgname = kiibohd-configurator-bin
+
