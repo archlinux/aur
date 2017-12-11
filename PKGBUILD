@@ -1,15 +1,15 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=opentoonz
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='2D animation software based on Toonz Studio Ghibli Version.'
 url='https://opentoonz.github.io'
 license=('BSD')
 arch=('x86_64')
 conflicts=('opentoonz-git')
-depends=('cblas' 'freeglut' 'glew' 'lzo' 'qt5-multimedia' 'qt5-script' 'sdl2' 'superlu')
-makedepends=('boost' 'boost-libs' 'cmake' 'qt5-tools')
+depends=('cblas' 'freeglut' 'glew' 'libmypaint' 'lzo' 'qt5-multimedia' 'qt5-script' 'sdl2' 'superlu')
+makedepends=('boost' 'boost-libs' 'cmake' 'git' 'qt5-tools')
 source=(
   "git+https://github.com/opentoonz/opentoonz.git#tag=v${pkgver}"
   "${pkgname}.desktop"
@@ -30,7 +30,9 @@ build() {
     -H"${pkgname}/toonz/sources" \
     -B"${pkgname}-build" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DMYPAINT_LIB_INCLUDE_DIRS=/usr/include/libmypaint \
+    -DMYPAINT_LIB_LDFLAGS=/usr/lib/libmypaint-1.3.so
   cd "${pkgname}-build"
   make
 }
