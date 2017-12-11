@@ -1,4 +1,4 @@
-# Maintainer: Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com>
+# Maintainer: Jeremy Audet <jerebear@protonmail.com>
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 #
 # namcap warns that ruby-sexp_processor is an unnecessary dependency. This is
