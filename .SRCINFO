@@ -1,7 +1,7 @@
 pkgbase = tsscreenlock
 	pkgdesc = Screen Locker for theShell
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vicr123/tsscreenlock
 	arch = x86_64
 	license = GPL3

@@ -2,7 +2,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=tsscreenlock
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen Locker for theShell"
 arch=("x86_64")
 url="https://github.com/vicr123/tsscreenlock"
@@ -23,4 +23,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make install INSTALL_ROOT=$pkgdir
+	chmod u+s "$pkgdir/usr/bin/tscheckpass"
 }
