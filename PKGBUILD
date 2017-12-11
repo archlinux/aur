@@ -7,8 +7,8 @@ license=(GPL2)
 depends=(python)
 arch=(i686 x86_64)
 source=(
-	https://github.com/passff/passff/releases/download/$pkgver/passff.py
-	https://github.com/passff/passff/releases/download/$pkgver/passff.json
+	passff-$pkgver.py::https://github.com/passff/passff/releases/download/$pkgver/passff.py
+	passff-$pkgver.json::https://github.com/passff/passff/releases/download/$pkgver/passff.json
 )
 
 _native_messaging=(
@@ -21,16 +21,16 @@ _native_messaging=(
 _bindir="/usr/lib/passff"
 
 build() {
-	sed -i -e "s-PLACEHOLDER-$_bindir/passff.py-" "$srcdir/passff.json"
+	sed -i -e "s-PLACEHOLDER-$_bindir/passff.py-" "$srcdir/passff-$pkgver.json"
 }
 
 package() {
 	install -d "$pkgdir$_bindir"
-	install -m 0755 "$srcdir/passff.py" "$pkgdir$_bindir/"
+	install -m 0755 "$srcdir/passff-$pkgver.py" "$pkgdir$_bindir/passff.py"
 
 	for d in "${_native_messaging[@]}"; do
 		install -d "$pkgdir$d"
-		install -m 0644 "$srcdir/passff.json" "$pkgdir$d/"
+		install -m 0644 "$srcdir/passff-$pkgver.json" "$pkgdir$d/passff.json"
 	done
 }
 

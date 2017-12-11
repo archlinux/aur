@@ -1,5 +1,5 @@
 /src/
 /pkg/
-/passff.json
-/passff.py
+/passff*.json
+/passff*.py
 /*.pkg*
