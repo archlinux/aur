@@ -4,19 +4,19 @@
 # Contributor: Tom <reztho at archlinux dot org>
 
 pkgname=tuned
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
-url='https://fedorahosted.org/tuned/'
+url="https://github.com/redhat-performance/${pkgname}"
 license=('GPL')
 depends=('ethtool' 'python2-configobj' 'python2-pyudev' 'python2-gobject2' 'python2-decorator' 'python2-dbus' 'python2-gobject' 'dbus-glib')
 optdepends=('virt-what' 'systemtap')
 makedepends=('git')
 backup=('etc/tuned/active_profile')
 install="${pkgname}.install"
-source=("https://jskarvad.fedorapeople.org/${pkgname}/download/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('3da453af1d1f13ac46966499b1f1373cf3718bdb3207f82aca8b66e894e69bc7')
+source=("https://github.com/redhat-performance/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('0863896aff15c924afe7ee9449d16121c840d8bf768055aa749d0d050518efe5')
 
 package() {
 	cd "${pkgname}-${pkgver}"
