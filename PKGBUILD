@@ -101,7 +101,7 @@ build() {
 
 package_gdc() {
 	depends=('gcc' 'perl' 'binutils' 'libgphobos-devel')
-	provides=("d-compiler")
+	provides=("d-compiler=2.068.2")
 	pkgdesc="Compiler for D programming language which uses gcc backend"
 
 	# compiler
