@@ -1,18 +1,14 @@
 # Maintainer: Daniel Maslowski <info at orangecms dot org>
 _gitname=neopg
 pkgname=neopg-git
-pkgver=0.0.1
+pkgver=406.9a139fc
 pkgrel=1
 pkgdesc="The multiversal cryptoengine!"
 arch=('i686' 'x86_64')
 url="https://github.com/das-labor/neopg"
 license=('BSD-2')
-depends=('botan' 'zlib' 'sqlite')
+depends=('boost' 'botan-with-compression' 'gettext' 'sqlite')
 makedepends=('git' 'cmake')
-optdepends=('gnutls'
-            'bzip2'
-            'readline'
-            'libusb: For smartcard support')
 source=('git://github.com/das-labor/neopg.git')
 sha256sums=('SKIP')
 
