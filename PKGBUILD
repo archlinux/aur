@@ -1,22 +1,20 @@
-# Maintainer: Alex "grevus" Lobtsov <alex@lobtsov.com>
+# Maintainer: Félix "passcod" Saparelli <felix @ passcod . name>
+# Contributor: Alex "grevus" Lobtsov <alex@lobtsov.com>
 pkgname=php-gearman
-pkgver=1.1.2
-pkgrel=3
+pkgver=2.0.3
+pkgrel=4
 pkgdesc="PHP wrapper to libgearman"
-url="http://pecl.php.net/package/gearman"
+url="https://github.com/wcgallego/pecl-gearman"
 arch=('x86_64' 'i686')
 license=('PHP')
 depends=('php' 'gearman')
 backup=('etc/php/conf.d/gearman.ini')
 
-source=(
-    http://pecl.php.net/get/gearman-${pkgver}.tgz
-)
-
-sha256sums=('c30a68145b4e33f4da929267f7b5296376ca81d76dd801fc77a261696a8a5965')
+source=("https://github.com/wcgallego/pecl-gearman/archive/gearman-${pkgver}.tar.gz")
+sha512sums=('d9a390d34c54f6a922a6b21a6b8a0412cbc4986f27012d52b0e6dc55d6db502e7c097472a81c0219c0b7f8075af5baa742b4dae6971bbf3cedc9e5fc5eb93cfd')
 
 build() {
-  cd "$srcdir/gearman-$pkgver"
+  cd "${srcdir}/pecl-gearman-gearman-${pkgver}"
 
   phpize
   ./configure --prefix=/usr
@@ -24,9 +22,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/gearman-$pkgver"
+  cd "${srcdir}/pecl-gearman-gearman-${pkgver}"
 
-  make INSTALL_ROOT="$pkgdir" install
-  echo ';extension=gearman.so' > gearman.ini
-  install -Dm644 gearman.ini "$pkgdir/etc/php/conf.d/gearman.ini"
+  make INSTALL_ROOT="${pkgdir}" install
+  echo 'extension=gearman.so' > gearman.ini
+  install -Dm644 gearman.ini "${pkgdir}/etc/php/conf.d/gearman.ini"
 }
