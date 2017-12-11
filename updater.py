@@ -186,11 +186,11 @@ if old_status <= current_status:
     print("Commiting changes...\n")
 
     os.system("git add PKGBUILD .SRCINFO updater.py")
-    os.system("git commit -m 'Automatic upgrade to version {}.'".format(parser.version))
+    os.system("git commit -m 'Automatic upgrade to version {}'".format(parser.version))
     os.system("git push origin master")
 
     #clean big source files and built package
-    subprocess.run(["rm", "firefox-i686-{0}.tar.bz2".format(parser.version)], check=True)
+    #subprocess.run(["rm", "firefox-i686-{0}.tar.bz2".format(parser.version)], check=True)
     subprocess.run(["rm", "firefox-x86_64-{0}.tar.bz2".format(parser.version)], check=True)
     subprocess.run(["rm", "firefox-developer-{}-{}-{}-{}.pkg.tar.xz".format(lang, parser.version, pkgrel, local_arch)], check=True)
 
