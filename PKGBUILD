@@ -1,29 +1,30 @@
 #Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=bareos-webui
-pkgver=16.2.6
-pkgrel=2
+pkgver=17.2.4
+_pkgver=17.2.4-rc2
+pkgrel=1
 pkgdesc="A PHP-Frontend to manage Bareos over the web."
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 license=('AGPLv3')
 url='https://github.com/bareos/bareos-webui/'
 depends=('php' 'php-fpm' 'jansson')
 optdepend=('nginx' 'apache')
-source=("https://github.com/bareos/bareos-webui/archive/Release/${pkgver}.tar.gz")
+source=("https://github.com/bareos/bareos-webui/archive/Release/${_pkgver}.tar.gz")
 backup=('etc/bareos-webui/configuration.ini'
         'etc/bareos-webui/directors.ini'
         'etc/bareos/bareos-dir.d/console/admin.conf.example'
         'etc/bareos/bareos-dir.d/profile/webui-admin.conf')
-sha256sums=('bf40ad8465380dba6458d979860c5a768a15a50c2f64135f6edc1239ab51a71b')
+sha256sums=('6aceaa2aaebb1b49c4391799b6c2af7badfac2a0bac33e25075e2bd6dfc5a2da')
 
 build() {
-        cd "${srcdir}/bareos-webui-Release-${pkgver}"
+        cd "${srcdir}/bareos-webui-Release-${_pkgver}"
         ./configure
         make
 }
 
 package() {
-        cd "${srcdir}/bareos-webui-Release-${pkgver}"
+        cd "${srcdir}/bareos-webui-Release-${_pkgver}"
         mkdir -p "${pkgdir}/etc/bareos-webui"
         mkdir -p "${pkgdir}/usr/share/webapps/bareos-webui"
         cp -a "install/." "${pkgdir}/etc/bareos-webui/"
