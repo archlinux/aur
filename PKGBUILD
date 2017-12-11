@@ -1,4 +1,4 @@
-# Maintainer: Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com>
+# Maintainer: Jeremy Audet <jerebear@protonmail.com>
 #
 # namcap warns that 'libcups' is an unnecessary dependency. This is untrue.
 # Splitter will produce the following exception if libcups is not installed:
