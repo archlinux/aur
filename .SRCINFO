@@ -1,7 +1,7 @@
 pkgbase = python-aiofiles
 	pkgdesc = an Apache2 licensed library, written in Python, for handling local disk files in asyncio applications.
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tinche/aiofiles
 	arch = any
 	license = Apache 2.0
