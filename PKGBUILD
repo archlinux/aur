@@ -12,8 +12,8 @@ license=(GPL3)
 depends=(python2-oauth python2-requests python2-simplejson)
 makedepends=(git python2-setuptools)
 conflicts=(${pkgname}-git)
-source=(http://files.turpial.org.ve/sources/stable/$pkgname-$pkgver.tar.gz)
-sha1sums=(eca4870ceeda43865136c92056205b146ab88ffb) # ${source[0]}.sha1sum
+source=(https://github.com/satanas/$pkgname/archive/$pkgver.tar.gz)
+sha256sums=('f104667920576248c663ebcad905bfc23172ce02d06e1b31181221ca97e80f79')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
