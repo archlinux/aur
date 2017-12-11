@@ -1,16 +1,16 @@
+ownership() {
+    systemd-sysusers bubbleupnpserver.conf
+
+    [ -e var/lib/bubbleupnp ] || mkdir var/lib/bubbleupnp
+    chown bubbleupnp:bubbleupnp var/lib/bubbleupnp
+    
+}
+
 post_install() {
+	
+
 	echo "
 ========================================================================
-
-Before starting BubbleUPnP Server, have a look at the default config
-file located at /etc/default/bubbleupnpserver and make sure the defaults
-are OK.
-
-To start BubbleUPnP, you must first enable the service unit file:
-	# systemctl enable bubbleupnpserver
-
-Then start the service:
-	# systemctl start bubbleupnpserver
 
 To complete the configuration once the service has been started, point
 your web browser to:
@@ -23,11 +23,23 @@ Full documentation is available at:
 
 ========================================================================
 "
+ownership
 }
 
 post_upgrade() {
+
 	echo "
+
 ========================================================================
+
+If you're upgrading from 0.9.27-1 or prior you may want to look at these
+important changes:
+
+- The server is no longer running as root
+- The working directory is now /var/lib/bubbleupnp
+  - You must move your config to this directory
+
+=========================================================================
 
 If BubbleUPnP is already running, you need to restart it to finish the
 upgrade.
@@ -40,4 +52,5 @@ Full documentation is available at:
 
 ========================================================================
 "
+ownership
 }

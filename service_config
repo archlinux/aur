@@ -1,0 +1,2 @@
+# Use this file to pass arguments to the bubbleupnp executable
+RUN_ARGS="-nologfile -disableAutoUpdate"

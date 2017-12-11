@@ -1,0 +1,11 @@
+[Unit]
+Description=BubbleUPnP Server
+[Service]
+User=bubbleupnp
+Group=bubbleupnp
+WorkingDirectory=/var/lib/bubbleupnp
+EnvironmentFile=-/etc/conf.d/bubbleupnpserver
+ExecStart=/usr/share/bubbleupnpserver/launch.sh -dataDir /var/lib/bubbleupnp ${RUN_ARGS}
+SuccessExitStatus=1 2 SIGKILL
+[Install]
+WantedBy=network.target
