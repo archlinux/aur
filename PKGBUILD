@@ -1,7 +1,7 @@
 #Maintainer: max-k <max-k AT post DOT com>
 pkgname=ampache
 pkgver=3.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP web based audio/video streaming application and file manager"
 arch=('i686' 'x86_64')
 url="http://www.ampache.org/"
@@ -28,13 +28,15 @@ build() {
 }
 
 package() {
-  cd ${srcdir}
+  cd "$srcdir" || exit 1
   _targetdir="${pkgdir}/usr/share/webapps/${pkgname}"
   _docdir="${pkgdir}/usr/share/doc/${pkgname}"
-  mkdir -p ${_targetdir}
-  cp -r * ${_targetdir}/
-  unlink ${_targetdir}/${pkgname}-${pkgver}_all.zip
-  unlink ${_targetdir}/nginx-example.conf
-  mkdir -p ${_docdir}
-  install -D -m644 ${srcdir}/nginx-example.conf ${_docdir}/
+  mkdir -p "$_targetdir"
+  cp -r ./* "${_targetdir}/"
+  unlink "${_targetdir}/${pkgname}-${pkgver}_all.zip"
+  unlink "${_targetdir}/nginx-example.conf"
+  mkdir -p "$_docdir"
+  install -D -m644 "${srcdir}/nginx-example.conf" "${_docdir}/"
+  find "$_targetdir" -type d -exec chmod 755 {} \;
+  find "$_docdir" -type d -exec chmod +x {} \;
 }
