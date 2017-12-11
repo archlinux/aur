@@ -8,15 +8,17 @@ pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, Developer Edition - Italian'
 url='https://www.mozilla.org/firefox/developer/'
 pkgver=58.0b10
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 
 source=("firefox-$_channel.desktop"
-        'vendor.js')
+        'vendor.js'
+        "firefox-${_channel}.svg::https://raw.githubusercontent.com/mozilla/gecko-dev/4ff29d14f80105572fd605f154aec691e8a9a532/devtools/shim/aboutdevtools/images/dev-edition-logo.svg")
 
 sha512sums=('f536b6790233d609182ae4940193727e1e0188b6e49f0c47a5d8ade1bb15a3e311160636d17ce78ab9766781025171d2b6a4a14131d2a40ab490bdbb7c144354'
-            'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
+            'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
+            '2ffeae488a03b70dc153d155a3111611e4360516e2b41354fa19132da7ec5f8b58353926bb27f65f6905d9c82b7a2e8e51322c0b7b3c4c4220fc424fd7607108')
 
 #source_i686=("firefox-i686-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-i686/$_lang/firefox-$pkgver.tar.bz2")
 source_x86_64=("firefox-x86_64-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-x86_64/$_lang/firefox-$pkgver.tar.bz2")
@@ -41,6 +43,7 @@ package() {
 
     ln -s /opt/firefox-$_channel/firefox $pkgdir/usr/bin/firefox-$_channel
     install -m644 $srcdir/firefox-$_channel.desktop $pkgdir/usr/share/applications/
+    install -Dm644 $srcdir/firefox-${_channel}.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/firefox-${_channel}.svg
     install -Dm644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/icons/hicolor/128x128/apps/firefox-${_channel}.png
     install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
