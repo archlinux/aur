@@ -2,7 +2,7 @@
 _pkgname=openelp
 pkgname=${_pkgname}-git
 pkgver=r54.0d1a16e
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source EchoLink proxy for Linux and Windows"
 arch=(i686 x86_64 armv7h)
 url="https://github.com/cottsay/openelp"
@@ -38,5 +38,6 @@ check() {
 package() {
 	cd "$srcdir/${_pkgname}/build"
 	make DESTDIR="$pkgdir/" install
+	chmod go-r "$pkgdir/etc/ELProxy.conf"
 	install -Dt "$pkgdir/usr/share/licenses/$pkgname/" ../LICENSE
 }

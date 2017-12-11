@@ -1,7 +1,7 @@
 pkgbase = openelp-git
 	pkgdesc = An open source EchoLink proxy for Linux and Windows
 	pkgver = r54.0d1a16e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cottsay/openelp
 	arch = i686
 	arch = x86_64
