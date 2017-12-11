@@ -2,7 +2,7 @@
 # Maintainer: jaap
 # Contributor: jaap
 pkgname=synergy2
-pkgver=2.0.2.stable~b1046+665fa610
+pkgver=2.0.3.stable~b1125+8a08e664
 pkgrel=1
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
@@ -13,8 +13,9 @@ depends=('gcc>=5.2' 'bash-completion>=1.18.' 'gcc-libs>=3.0' 'hicolor-icon-theme
 conflicts=('synergy' 'synergy2-bin')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://www.dropbox.com/s/n2c75v5sq8x138e/synergy_2.0.2.stable~b1046%2B665fa610_amd64.deb?dl=1")
+source_x86_64=("https://www.dropbox.com/s/t00chh9rgvo94pf/synergy_2.0.3.stable_b1125%2B8a08e664_amd64.deb?dl=1")
 sha512sums_x86_64=('b20fa6e5f0b1d928ed48ef6c03c5bcee623c71c1d17c659b35fb9aa1586a7def6e39537ed811318b954695f2cc5c5a0e528377a4f748619801842de07e3896e5')
+
 package(){
 
 	# Extract package data
