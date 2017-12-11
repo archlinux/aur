@@ -1,7 +1,7 @@
 pkgbase = geogebra-classic
 	pkgdesc = Dynamic mathematics software with interactive graphics, algebra and spreadsheet
-	pkgver = 6.0.394.0
-	pkgrel = 2
+	pkgver = 6.0.410.0
+	pkgrel = 1
 	url = http://www.geogebra.org
 	arch = x86_64
 	license = CCPL:by-nc
@@ -16,8 +16,8 @@ pkgbase = geogebra-classic
 	depends = nodejs
 	depends = xdg-utils
 	depends = libxss
-	source = http://www.geogebra.net/linux/pool/main/g/geogebra-classic/geogebra-classic_6.0.394.0-201710241029_amd64.deb
-	sha256sums = e597891908f6626ea494fd3c856175ef295482cf3149c9ec543bc5863ef9c905
+	source = http://www.geogebra.net/linux/pool/main/g/geogebra-classic/geogebra-classic_6.0.410.0-201712102344_amd64.deb
+	sha256sums = 57adb6cd1c676d1cfbe9ac6c35276d87053ef83dcc4f20c47f46bb4d398335ca
 
 pkgname = geogebra-classic
 
