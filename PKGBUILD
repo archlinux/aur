@@ -8,7 +8,7 @@ pkgdesc="An extensible proxy which prevents some ISP from detecting network traf
 url="https://github.com/SnakeSocks/$pkgname"
 license=("GPL2")
 arch=("i686" "x86_64")
-depends=("glibc>=2.14")
+depends=("glibc>=2.14" "gcc-libs")
 makedepends=("boost>=1.55" "go" "cmake>=3.5" "make")
 conflicts=("$pkgname-bin")
 replaces=("$pkgname-bin")

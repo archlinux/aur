@@ -11,6 +11,7 @@ pkgbase = snakesocks
 	makedepends = cmake>=3.5
 	makedepends = make
 	depends = glibc>=2.14
+	depends = gcc-libs
 	conflicts = snakesocks-bin
 	replaces = snakesocks-bin
 	backup = etc/snakesocks/conf/client.conf
