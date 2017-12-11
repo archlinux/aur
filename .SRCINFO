@@ -1,7 +1,7 @@
 pkgbase = otf-zilla-slab
 	pkgdesc = Mozilla's Zilla Slab Type Family
 	pkgver = 1.002
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla/zilla-slab
 	install = otf-zilla-slab.install
 	arch = any

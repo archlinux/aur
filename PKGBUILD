@@ -3,7 +3,7 @@
 pkgbase=otf-zilla-slab
 pkgname=('otf-zilla-slab' 'ttf-zilla-slab')
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 pkgdesc="Mozilla's Zilla Slab Type Family"
 url=https://github.com/mozilla/zilla-slab
 arch=('any')
@@ -14,13 +14,13 @@ install=${pkgname}.install
 license=("custom: SIL Open Font License")
 
 package_otf-zilla-slab() {
-    cd  "${srcdir}/otf/"
+    cd  "${srcdir}/zilla-slab/otf/"
 	find . -name '*.otf' -execdir install -Dm644 {} $pkgdir/usr/share/fonts/OTF/{} \;
 	# install -D -m644 "${srcdir}/zilla-slab/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname[0]}/LICENSE"
 }
 
 package_ttf-zilla-slab() {
-cd  "${srcdir}/ttf/"
+cd  "${srcdir}/zilla-slab/ttf/"
 	find . -name '*.ttf' -execdir install -Dm644 {} $pkgdir/usr/share/fonts/TTF/{} \;
 	# install -D -m644 "${srcdir}/zilla-slab/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname[1]}/LICENSE"
 }
