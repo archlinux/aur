@@ -1,0 +1,18 @@
+pkgbase = python-gyb-git
+	pkgdesc = Command line tool for backing up Gmail messages to your computer
+	pkgver = 1.0.r16.g07ff2da
+	pkgrel = 11
+	url = https://github.com/jay0lee/got-your-back
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python>=3.5.0
+	depends = python-google-api-python-client
+	provides = gyb
+	conflicts = got-your-back
+	options = !emptydirs
+	source = git+https://github.com/jay0lee/got-your-back.git
+	sha256sums = SKIP
+
+pkgname = python-gyb-git
+
