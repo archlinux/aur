@@ -2,13 +2,13 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=uniconvertor2-git
-pkgver=r3577.4a06102a
+pkgver=r3585.ac45a0dc
 pkgrel=1
 pkgdesc="A universal vector graphics translator"
 url="https://sk1project.net/"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('lcms2' 'cairo' 'imagemagick' 'pango' 'python2-cairo' 
+depends=('lcms2' 'cairo' 'libmagick6' 'pango' 'python2-cairo' 
 	 'python2-pillow' 'python2-reportlab' 'python2-pycups')
 makedepends=('git' 'python2')
 provides=('uniconvertor')
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-*}"
+  export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
   LANG=en_US.UTF-8 python2 setup-uc2.py build
 }
 
