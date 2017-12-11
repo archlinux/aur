@@ -9,7 +9,7 @@ _pkgname="gitea"
 _gourl="code.gitea.io"
 
 pkgname=gitea-git
-pkgrel=1
+pkgrel=2
 pkgver=r5927.3b525d56
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
@@ -30,8 +30,8 @@ options=("!strip" "emptydirs")
 backup=("etc/gitea/app.ini")
 install=gitea.install
 source=("git://github.com/go-gitea/gitea.git"
-        "0001-Adjust-config-for-Arch-Linux-package.patch"
-        "0002-Adjust-service-file-for-Arch-Linux-package.patch")
+        "01-adjust-config.patch"
+        "02-adjust-service.patch")
 sha512sums=('SKIP'
             'd80d9bb906337d89f09edfc4e958ee75213d957e386ae8f420098e4d6a5b79ed6834ac1be28e69d8b99cb6614a36c87de1880ac262134273020e4f031c38f5cd'
             'db4ad287cfc9f42495bd20771135e140656271b3678827e3e751ec023c1e90b99bfd097d57562b19fc8fa983bd8be877350ef7dcb071c14c310800a7485e9896')
@@ -43,13 +43,11 @@ pkgver() {
 
 prepare() {
   sed -i -e "s/\"main.Version.*$/\"main.Version=${pkgver}\"/" "${srcdir}/${_pkgname}/Makefile"
+  patch -Np1 -i "${srcdir}/01-adjust-config.patch" "${srcdir}/${_pkgname}/custom/conf/app.ini.sample"
+  patch -Np1 -i "${srcdir}/02-adjust-service.patch" "${srcdir}/${_pkgname}/contrib/systemd/${_pkgname}.service"
 
   mkdir -p "${srcdir}/src/${_gourl}/${_pkgname}"
   cp -r "${srcdir}/${_pkgname}" "${srcdir}/src/${_gourl}"
-
-  msg2 "Patch config and service file"
-  patch -Np1 -i "${srcdir}/0001-Adjust-config-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/custom/conf/app.ini.sample"
-  patch -Np1 -i "${srcdir}/0002-Adjust-service-file-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service"
 }
 
 build() {
