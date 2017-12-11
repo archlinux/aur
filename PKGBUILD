@@ -10,7 +10,7 @@ _gourl="code.gitea.io"
 
 pkgname=gitea-git
 pkgrel=1
-pkgver=r5926.b82519ca
+pkgver=r5927.3b525d56
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
 license=("MIT")
@@ -59,17 +59,16 @@ build() {
 }
 
 package() {
-  install -dm 750 "${pkgdir}/var/log/${_pkgname}/"
-  install -dm 750 "${pkgdir}/var/lib/${_pkgname}/"
-  install -dm 755 "${pkgdir}/usr/share/${_pkgname}/"
-  install -dm 775 "${pkgdir}/etc/gitea/"
+  install -dm0700 "${pkgdir}/var/log/${_pkgname}/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"
+  install -dm0755 "${pkgdir}/usr/share/${_pkgname}/"
 
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/custom" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/public" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/templates" "${pkgdir}/usr/share/${_pkgname}"
 
-  install -Dm755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/custom/conf/app.ini.sample" "${pkgdir}/etc/${_pkgname}/app.ini"
-  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -Dm0755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/custom/conf/app.ini.sample" "${pkgdir}/etc/${_pkgname}/app.ini"
+  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
