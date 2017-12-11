@@ -1,7 +1,7 @@
 pkgbase = xcursor-neutral++-white
 	pkgdesc = Icon set based on Neutral and jaguarx themes (white version)
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gnome-look.org/content/show.php/Neutral%2B%2B+White?content=108143
 	arch = any
 	license = Artistic2.0

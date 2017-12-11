@@ -2,7 +2,7 @@
 
 pkgname=xcursor-neutral++-white
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Icon set based on Neutral and jaguarx themes (white version)"
 arch=('any')
 url="http://gnome-look.org/content/show.php/Neutral%2B%2B+White?content=108143"
