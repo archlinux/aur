@@ -1,7 +1,7 @@
 pkgbase = razercommander
 	pkgdesc = Razer device manager for Linux
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1.1
+	pkgrel = 1
 	url = https://github.com/gabmus/razercommander
 	arch = any
 	license = GPL3
@@ -9,8 +9,8 @@ pkgbase = razercommander
 	depends = python-openrazer
 	depends = gtk3
 	depends = python
-	source = razercommander-1.2.0.tar.gz::https://github.com/GabMus/razerCommander/archive/1.2.0.tar.gz
-	sha512sums = 91a7c5dc028cd9ee745e29954a889ad58af2ec06eb621d690a5a7921611ad6af33307430a5d11be9f60e22f0a2c77e8f0a96432e69641fba67f8b7f96bdb6bb8
+	source = razercommander-1.2.1.1.tar.gz::https://github.com/GabMus/razerCommander/archive/1.2.1.1.tar.gz
+	sha512sums = 2904f934d75e3336f1bbe2e90f570feae282bab423abcde6598e4af035489147293ba1efb0631d6af666565631116129489ae059dc3188e2f2237fda638f164b
 
 pkgname = razercommander
 
