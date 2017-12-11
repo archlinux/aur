@@ -1,23 +1,18 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=drawio-batch
-pkgver=7.6.7
+pkgver=7.8.4
 pkgrel=1
 pkgdesc="Command line converter for draw.io diagrams"
 arch=(any)
 url="https://github.com/languitar/drawio-batch"
 license=('APACHE')
 depends=('python' 'phantomjs')
-makedepends=('git' 'python-setuptools' 'npm')
+makedepends=('git' 'python-setuptools')
 source=("https://github.com/languitar/drawio-batch/archive/${pkgver}.tar.gz")
-md5sums=('84df4618ff8545e25ba91e4423daf0ec')
-
-prepare() {
-    npm install -g --prefix node_modules html-inline
-}
+md5sums=('eaecffda10655bb8dfa666836c2ecb23')
 
 package() {
     cd "${pkgname}-${pkgver}"
-    PATH="../node_modules/bin:$PATH" ./prepare.sh
     python3 setup.py install --root="$pkgdir/"
 }
