@@ -12,6 +12,7 @@ pkgbase = csxcad-git
 	depends = qt5-webkit
 	depends = glew
 	depends = proj
+	depends = libharu
 	depends = tinyxml
 	depends = hdf5
 	depends = vtk
