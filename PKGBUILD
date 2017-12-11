@@ -3,7 +3,7 @@
 pkgname=pi-hole-ftl
 _pkgname=FTL
 pkgver=2.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
@@ -25,6 +25,11 @@ md5sums=('97b328deae11133d489db76006ecd0a6'
 
 prepare() {
   _ssc="/tmp/sedcontrol"
+
+  # as of 2.12
+  # adjusted db commit timings
+  sed -i "s|#define DBinterval 60|#define DBinterval 3600|w $_ssc" "$srcdir"/$_pkgname-$pkgver/FTL.h
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: adjusted db commit timings" && return 1 ; fi
 
   # git descriptions setup
   sed -i "s|^GIT_BRANCH := .*$|GIT_BRANCH := master|w $_ssc" "$srcdir"/$_pkgname-$pkgver/Makefile
