@@ -1,4 +1,4 @@
-# Maintainer: Jeremy 'Ichimonji10' Audet <ichimonji10 at gmail dot com>
+# Maintainer: Jeremy Audet <jerebear@protonmail.com>
 
 pkgname=vim-dwm-git
 _repository=dwm.vim
