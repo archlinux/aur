@@ -23,9 +23,9 @@ md5sums=('a009bbc502c30e4b483d71be9fa51790')
 #source+=('linux-4.11.patch')
 #md5sums+=('cc8941b6898d9daa0fb67371f57a56b6')
 
-# Auto-detect *.patch
+# Auto-add *.patch files from $startdir to source=()
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
-  # Don't duplicate those already defined above
+  # Don't duplicate already listed ones
   if [[ ! " ${source[@]} " =~ " $_patch " ]]; then  # https://stackoverflow.com/a/15394738/1821548
     source+=("$_patch")
     md5sums+=('SKIP')
@@ -41,25 +41,25 @@ prepare() {
   sh $_pkg.run -x
   cd $_pkg
 
-  # Loop kernels
+  # Loop kernels (4.15.0-1-ARCH, 4.14.5-1-ck, ...)
   for _kernel in $(cat /usr/lib/modules/extramodules-*/version); do
     # Use separate source directories
     cp -r kernel kernel-$_kernel
 
-    # Loop patches
-    for _patch in $(printf -- '%s\n' ${source[@]} | grep .patch); do  # https://stackoverflow.com/a/21058239/1821548
-      # Patch version
-      _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
+    # Loop patches (linux-4.15.patch, lol.patch, ...)
+    for _p in $(printf -- '%s\n' ${source[@]} | grep .patch); do  # https://stackoverflow.com/a/21058239/1821548
+      # Patch version (4.15, "", ...)
+      _patch=$(echo $_p | grep -Po "\d+\.\d+")
 
       # Cd in place
       cd kernel-$_kernel
 
       # Compare versions
-      if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
-        msg2 "Applying $_patch for $_kernel..."
-        patch -p2 -i "$srcdir"/$_patch
+      if (( $(vercmp "$_kernel" "$_patch") >= 0 )); then
+        msg2 "Applying $_p for $_kernel..."
+        patch -p2 -i "$srcdir"/$_p
       else
-        msg2 "Skipping $_patch..."
+        msg2 "Skipping $_p..."  # List these, instead of ignoring silently
       fi
 
       # Return
