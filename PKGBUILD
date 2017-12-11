@@ -1,6 +1,6 @@
 pkgbase=hyperledger-composer
 pkgname=('hyperledger-composer-cli' 'hyperledger-composer-playground')
-pkgver=0.15.2
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="A framework for building Blockchain business networks"
 arch=(i686 x86_64)
@@ -17,8 +17,7 @@ package_hyperledger-composer-cli() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" composer-cli@$pkgver
-  npm prune --production
+  npm install -g --prefix "$pkgdir/usr" --ignore-scripts --production composer-cli@$pkgver
 
 msg2 "Renaming composer to composer-cli (it's not php composer)"
   chmod 755 -R $pkgdir/usr/bin/
@@ -32,8 +31,6 @@ package_hyperledger-composer-playground() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" composer-playground@$pkgver
+  npm install -g --prefix "$pkgdir/usr" --ignore-scripts --production composer-playground@$pkgver
   chmod 755 -R $pkgdir/usr/bin/
-  npm prune --production
-  rm $pkgdir/usr/lib/node_modules/package-lock.json
 }
