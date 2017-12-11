@@ -1,11 +1,10 @@
 # Maintainer: Benjamin Auder <benjamin.a@mailoo.org>
 pkgname=fuse-zip
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 epoch=
-pkgdesc="FUSE file system to navigate, extract, create and modify ZIP and
-ZIP64 archives"
-arch=('i686' 'x86_64')
+pkgdesc="FUSE file system to navigate, extract, create and modify ZIP and ZIP64 archives"
+arch=('i686' 'x86_64' 'armv7h')
 url="https://bitbucket.org/agalanin/fuse-zip"
 license=('GPL')
 groups=()
