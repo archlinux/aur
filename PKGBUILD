@@ -7,7 +7,7 @@
 pkgname=enchant1.6
 _pkgname=enchant
 pkgver=1.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A wrapper library for generic spell checking"
 arch=('i686' 'x86_64')
 url="https://abiword.github.io/enchant/"
@@ -30,11 +30,14 @@ pkgver() {
 prepare() {
   cd $_pkgname
   patch -p1 < ../makefile_1.6.patch
+  # Shitty workaround, but the package only seems to build on systems
+  # if autogen actually ran twice, even if it fails once …
+  ./autogen.sh  || true
 }
 
 build() {
   cd $_pkgname
-  ./autogen.sh
+  NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
     --disable-static \
     --disable-ispell \
