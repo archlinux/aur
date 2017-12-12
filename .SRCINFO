@@ -3,11 +3,11 @@ pkgbase = mbrola-bin-armv7l
 	pkgver = 3.0
 	pkgrel = 5
 	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
-	arch = armv7l
+	arch = armv7h
 	license = custom:Mbrola
 	source = http://tcts.fpms.ac.be/synthesis/mbrola/bin/raspberri_pi/mbrola.tgz
 	sha256sums = 37c520082e6770de35230a3737dcfb32dd33431ed38927d4e4b22b85416e9733
-	depends_armv7l = glibc
+	depends_armv7h = glibc
 
 pkgname = mbrola-bin-armv7l
 
