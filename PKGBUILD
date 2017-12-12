@@ -1,12 +1,11 @@
 pkgname=pantheon-git-meta
-pkgver=20171114
-pkgrel=4
+pkgver=20171212
+pkgrel=1
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
 license=(LGPL)
-depends=(appcenter-git
-	audience-git
+depends=(audience-git
 	cerbere-git
 	contractor-git
 	elementary-dpms-helper-git
