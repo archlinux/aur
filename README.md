@@ -7,6 +7,8 @@ basic code from https://github.com/jeremyb31/rtl8822bu
 
 fixed to compile against kernel 4.12
 got from https://github.com/cybik/rtl8822bu
+fixed to compile against kernel 4.12 
+got from William Grunow
 
 compiles against kernel 4.9 (linux-lts) as well
 
