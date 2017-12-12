@@ -4,7 +4,7 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
-pkgver=3.4.10
+pkgver=3.4.11
 pkgrel=1
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
@@ -24,7 +24,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_zookeeper.conf
         systemd_tmpfiles.d_zookeeper.conf)
 
-sha256sums=('7f7f5414e044ac11fee2a1e0bc225469f51fb0cdf821e67df762a43098223f27'
+sha256sums=('f6bd68a1c8f7c13ea4c2c99f13082d0d71ac464ffaf3bf7a365879ab6ad10e84'
             'b59e0641de1951ad149ca39df5b5ec37dc6229f1aa987b0ed9d7e82e570be9ed'
             'a3fd2566648f57c0cdd75cd48b7b60fa55eb59ee67dd716de1e1aa6a57823b88'
             'e863b63650c15a8823cfb2b507c375c999a71cda24805062de36af0250de5daa'
