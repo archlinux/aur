@@ -1,6 +1,6 @@
 pkgbase = inadyn-fork-git
 	pkgdesc = Dynamic DNS client with SSL/TLS support
-	pkgver = 2.1.r64.gfc1d555
+	pkgver = 2.2.1.r0.gb9d9196
 	pkgrel = 1
 	url = http://troglobit.com/inadyn.html
 	arch = i686
@@ -14,9 +14,7 @@ pkgbase = inadyn-fork-git
 	conflicts = inadyn
 	backup = etc/inadyn.conf
 	source = inadyn-fork-git::git+https://github.com/troglobit/inadyn.git
-	source = inadyn.conf
 	sha256sums = SKIP
-	sha256sums = 4967d5fad250f38167b78c53862674afec7851f7c7bb648d00afe34db062bc60
 
 pkgname = inadyn-fork-git
 
