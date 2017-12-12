@@ -1,24 +1,24 @@
 # Maintainer: Nils Czernia (DL1CAF) <nils@czserver.de>
-# Contributer: Carsten Feuls (DL1CAF) 'Der Techniker' <dl1caf@vfdb.org>
+# Contributer: Carsten Feuls (DL1CAF) "Der Techniker" <dl1caf@vfdb.org>
 # Contributer: Amateurfunk Station der Hochschule Niederrhein (DF0FN) <df0fn@hs-niederrhein.de>
 
-pkgname=('qtel-git')
-_pkgname=('svxlink')
+pkgname=("qtel-git")
+_pkgname=("svxlink")
 pkgver=14.08.2.766.g380e5333
 pkgrel=1
-arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
+arch=("i686" "x86_64" "armv5h" "armv6h" "armv7h")
 url="http://www.svxlink.org/"
-license=('GPL')
+license=("GPL")
 source=("${_pkgname}::git+https://github.com/sm0svx/svxlink.git")
-conflicts=("svxlink")
-sha256sums=('SKIP')
-depends=('alsa-utils' 'alsa-lib' 'libsigc++' 'gsm' 'libgcrypt' 'popt' 'tcl' 'speex' 'opus')
-makedepends=('cmake')
+conflicts=("svxlink" "qtel")
+sha256sums=("SKIP")
+depends=("alsa-utils" "alsa-lib" "libsigc++" "gsm" "libgcrypt" "popt" "tcl" "speex" "opus")
+makedepends=("cmake")
 pkgdesc="Graphical Userinteface for Echolink written in QT"
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --always | sed -e 's|-|.|g' 
+  git describe --always | sed -e "s|-|.|g" 
 }
 
 build(){
