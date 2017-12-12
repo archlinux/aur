@@ -4,18 +4,18 @@
 # Contributor: Paolo Herms
 
 pkgname=why3
-pkgver=0.88.1
-_pkgvercode=37185 # Update when bumping release
+pkgver=0.88.2
+_pkgvercode=37236 # Update when bumping release
 pkgrel=1
 pkgdesc='A platform for deductive program verification'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 options=('!makeflags')
 url='http://why3.lri.fr/'
 license=('LGPL')
 depends=('gtksourceview2')
 makedepends=('ocaml' 'ocaml-menhir' 'rubber' 'gtksourceview2' 'lablgtk2' 'ocaml-ocamlgraph' 'zarith' 'coq' 'isabelle')
 source=(https://gforge.inria.fr/frs/download.php/file/$_pkgvercode/$pkgname-$pkgver.tar.gz)
-sha256sums=('7ce28e92d67619f52eb7c61a4f37d628e7f48e882a9d2b716e1b443d4c0240e2')
+sha256sums=('83f2c8887aa9717d5dcc03bde16b495a93819826f7a06277adbdf2f3be33d8f8')
 
 build() {
   cd $pkgname-$pkgver

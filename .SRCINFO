@@ -1,10 +1,9 @@
 pkgbase = why3
 	pkgdesc = A platform for deductive program verification
-	pkgver = 0.88.1
+	pkgver = 0.88.2
 	pkgrel = 1
 	url = http://why3.lri.fr/
 	arch = x86_64
-	arch = i686
 	license = LGPL
 	makedepends = ocaml
 	makedepends = ocaml-menhir
@@ -17,8 +16,8 @@ pkgbase = why3
 	makedepends = isabelle
 	depends = gtksourceview2
 	options = !makeflags
-	source = https://gforge.inria.fr/frs/download.php/file/37185/why3-0.88.1.tar.gz
-	sha256sums = 7ce28e92d67619f52eb7c61a4f37d628e7f48e882a9d2b716e1b443d4c0240e2
+	source = https://gforge.inria.fr/frs/download.php/file/37236/why3-0.88.2.tar.gz
+	sha256sums = 83f2c8887aa9717d5dcc03bde16b495a93819826f7a06277adbdf2f3be33d8f8
 
 pkgname = why3
 
