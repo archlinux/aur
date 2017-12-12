@@ -2,7 +2,8 @@
 
 pkgname=dockbarx-git
 _pkgname=dockbarx
-pkgver=595.1aa7665
+epoch=1
+pkgver=0.92+10+g34fe342
 pkgrel=1
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i686' 'x86_64')
@@ -21,31 +22,24 @@ makedepends=('git')
 conflicts=('dockbarx' 'dockbarx-awn-applet-bzr')
 replaces=('dockbarx-awn-applet-bzr' 'dockbarx-bzr')
 provides=('dockbarx=0.92')
-source=("${_pkgname}"::git+https://github.com/M7S/dockbarx.git
-        'freedesktop_quicklist.patch::https://github.com/M7S/dockbarx/commit/db984a935c60253dcf3c5cbdb2e623b4692b038d.patch')
-sha256sums=('SKIP'
-            '6eba00088c1094aee041b26407d5c8e9f19da2eaee491cc9aff92a11285efba2')
+source=("${_pkgname}"::git+https://github.com/M7S/dockbarx.git)
+sha256sums=('SKIP')
 
 pkgver() { 
   cd "${srcdir}/${_pkgname}" 
-  echo $(git rev-list --count master).$(git rev-parse --short master) 
-}
-
-prepare() {
-  cd ${srcdir}/${_pkgname}
-  patch -Np1 -i ../freedesktop_quicklist.patch
+  git describe --long --tags | sed -r "s/-/+/g"
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
+  cd "${srcdir}/${_pkgname}"
 
-  python2 setup.py install --root ${pkgdir}
+  python2 setup.py install --root "${pkgdir}"
 
-  mkdir -p ${pkgdir}/usr/share/avant-window-navigator/applets
-  cp -r ${srcdir}/${_pkgname}/AWN/* ${pkgdir}/usr/share/avant-window-navigator/applets
+  mkdir -p "${pkgdir}"/usr/share/avant-window-navigator/applets
+  cp -r "${srcdir}/${_pkgname}"/AWN/* "${pkgdir}"/usr/share/avant-window-navigator/applets
   
-  mkdir -p ${pkgdir}/usr/share/pixmaps
-  install -Dm644 ${srcdir}/${_pkgname}/icons/hicolor/128x128/apps/dockbarx.png ${pkgdir}/usr/share/pixmaps/dockbarx.png
+  mkdir -p "${pkgdir}"/usr/share/pixmaps
+  install -Dm644 "${srcdir}/${_pkgname}"/icons/hicolor/128x128/apps/dockbarx.png "${pkgdir}"/usr/share/pixmaps/dockbarx.png
 
-  sed -i 's:^Categories=.*:Categories=GTK;GNOME;Settings;X-GNOME-PersonalSettings;:' ${pkgdir}/usr/share/applications/dbx_preference.desktop
+  sed -i 's:^Categories=.*:Categories=Settings:' "${pkgdir}"/usr/share/applications/dbx_preference.desktop
 }
