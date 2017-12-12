@@ -9,8 +9,8 @@ _pkgname="gitea"
 _gourl="code.gitea.io"
 
 pkgname=gitea-git
-pkgrel=3
-pkgver=r5927.3b525d56
+pkgrel=1
+pkgver=r5932.9f033bf2b
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
 license=("MIT")
@@ -42,7 +42,7 @@ pkgver() {
 }
 
 prepare() {
-  sed -i -e "s/\"main.Version.*$/\"main.Version=${pkgver}\"/" "${srcdir}/${_pkgname}/Makefile"
+  sed -i -e "s/\"main.Version.*$/\"main.Version=$(pkgver)\"/" "${srcdir}/${_pkgname}/Makefile"
   patch -Np1 -i "${srcdir}/01-adjust-config.patch" "${srcdir}/${_pkgname}/custom/conf/app.ini.sample"
   patch -Np1 -i "${srcdir}/02-adjust-service.patch" "${srcdir}/${_pkgname}/contrib/systemd/${_pkgname}.service"
 
