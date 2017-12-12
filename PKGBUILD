@@ -4,16 +4,15 @@ pkgbase=('python-chompack')
 pkgname=('python-chompack' 'python2-chompack')
 pkgdesc="A Python library for chordal matrix computations."
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='http://chompack.readthedocs.io'
 license=('gpl3')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/cvxopt/chompack/archive/v${pkgver}.tar.gz")
 
 package_python-chompack() {
-	makedepends+=('python-setuptools')
-	depends+=('python-cvxopt')
+	depends=('python-cvxopt')
 
 	cd "${srcdir}/chompack-${pkgver}"
 
@@ -22,8 +21,7 @@ package_python-chompack() {
 }
 
 package_python2-chompack() {
-	makedepends+=('python2-setuptools')
-	depends+=('python2-cvxopt')
+	depends=('python2-cvxopt')
 
 	cd "${srcdir}/chompack-${pkgver}"
 
