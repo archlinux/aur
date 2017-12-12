@@ -4,16 +4,15 @@ pkgbase=('python-smcp')
 pkgname=('python-smcp' 'python2-smcp')
 pkgdesc="A Python solver for sparse matrix cone programs."
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='http://smcp.readthedocs.io'
 license=('gpl3')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/cvxopt/smcp/archive/v${pkgver}.tar.gz")
 
 package_python-smcp() {
-	makedepends+=('python-setuptools')
-	depends+=('python-cvxopt' 'python-chompack')
+	depends=('python-cvxopt' 'python-chompack')
 
 	cd "${srcdir}/smcp-${pkgver}"
 
@@ -22,8 +21,7 @@ package_python-smcp() {
 }
 
 package_python2-smcp() {
-	makedepends+=('python2-setuptools')
-	depends+=('python2-cvxopt' 'python-chompack')
+	depends=('python2-cvxopt' 'python-chompack')
 
 	cd "${srcdir}/smcp-${pkgver}"
 
