@@ -3,18 +3,18 @@
 # Forked from https://aur.archlinux.org/packages/nuget3/
 
 pkgname=nuget4
-pkgver=4.1.0
+pkgver=4.4.1
 pkgrel=0
 pkgdesc="Package manager for .NET."
 arch=('any')
 url="http://www.nuget.org"
 license=('APACHE')
 depends=('mono>=5.0.0' 'sh')
-conflicts=('nuget', 'nuget3')
+conflicts=('nuget' 'nuget3')
 source=(https://dist.nuget.org/win-x86-commandline/v${pkgver}/nuget.exe
 				'nuget')
 install="${pkgname}.install"
-sha384sums=('c88f175201cef01aac7eadaad8d077523cc9d8f6eb053e4c7ac6dffe810d5c36dac370de008707828193b4df330edade'
+sha384sums=('7c0f27eaf0b6f9141031e9ccdc6906f2d5223f3a543bfdb473e20cd15c3bcf8cb5e0550c962a43ded8c8cd45c280518b'
             '8cb9ce863e6b0669e28e7710a844985baf0c11626deed243d62995a2406eb135e634a4c381a757a26072edd017ea3232')
 
 package() {
