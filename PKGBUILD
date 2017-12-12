@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.4.4.r3743.606d4482
+pkgver=2.4.5.r3754.baa62422
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -58,11 +58,9 @@ options=('!makeflags' '!strip')
 # deal with situations where upstream lags behind on already submitted merge
 # requests with important bugfixes and additions.
 source=("$pkgname::git+https://git.purrdata.net/aggraef/purr-data.git#branch=release"
-	"RTcmix-pd-LCPLAY-stabilize.patch"
-	"userconfig.patch")
+	"RTcmix-pd-LCPLAY-stabilize.patch")
 md5sums=('SKIP'
-         '39c53063dc18681f29b12c08d9c453aa'
-         '056770a94f3c13799c09d3ece273154f')
+         '39c53063dc18681f29b12c08d9c453aa')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
 nwjsver=0.22.1
@@ -108,8 +106,6 @@ prepare() {
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
   # make the sources compile with gcc 6.1+
   cd $srcdir/$pkgname/externals/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
-  # patch the user config dir name so that purr-data can coexist with pd-l2ork
-  cd $srcdir/$pkgname && patch -Np1 < $srcdir/userconfig.patch
 }
 
 build() {
