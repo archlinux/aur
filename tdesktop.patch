@@ -544,9 +544,10 @@ index f6918c224..583602662 100644
 @@ -119,8 +111,7 @@
        }], ['not_need_gtk!="True"', {
          'cflags_cc': [
-           '<!(pkg-config 2> /dev/null --cflags appindicator-0.1)',
+-          '<!(pkg-config 2> /dev/null --cflags appindicator-0.1)',
 -          '<!(pkg-config 2> /dev/null --cflags gtk+-2.0)',
 -          '<!(pkg-config 2> /dev/null --cflags glib-2.0)',
++          '<!(pkg-config 2> /dev/null --cflags appindicator3-0.1)',
 +          '<!(pkg-config 2> /dev/null --cflags gtk+-3.0)',
            '<!(pkg-config 2> /dev/null --cflags dee-1.0)',
          ],
