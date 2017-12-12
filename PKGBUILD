@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/bitcoin-scrypt"
-  patch -Np1 -i ../bitcoin-scrypt-boost.patch
+  patch -Np1 -i ../bitcoin-scrypt-git-boost.patch
   qmake-qt4 USE_QRCODE=1 USE_DBUS=1 USE_UPNP=1 OPENSSL_INCLUDE_PATH=/usr/include/openssl-1.0 OPENSSL_LIB_PATH=/usr/lib/openssl-1.0 Bitcoin-sCrypt.pro
   SUBLIBS="-L/usr/lib/openssl-1.0 -lssl -lcrypto" make
 }
