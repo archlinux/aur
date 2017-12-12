@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 68685 2012-03-31 16:54:07Z arodseth $
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 # Contributor: Thomas Weißschuh <thomas_weissschuh lavabit.com>
