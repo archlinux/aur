@@ -4,7 +4,7 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='http://www.ros.org/wiki/cv_bridge'
 
 pkgname='ros-lunar-cv-bridge'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,15 +15,11 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-sensor-msgs
+  opencv
   ros-lunar-rosconsole)
 depends=(${ros_depends[@]}
   boost
-  opencv
   python2)
-
-ros_checkdepends=(ros-lunar-rostest)
-checkdepends=(${ros_checkdepends[@]}
-  python2-numpy)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/cv_bridge/${pkgver}-${_pkgver_patch}
@@ -34,7 +30,7 @@ checkdepends=(${ros_checkdepends[@]}
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-lunar-cv_bridge-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/lunar/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bf51aa2c481f5c586fadda45d00f3ffe01d3aa286bf15d1baa5ca292052c68b0')
+sha256sums=('136e001b8aff9974349e9219b8d672c2c39734c2f7e55d8e2fb20a53e80d4094')
 
 build() {
   # Use ROS environment variables
