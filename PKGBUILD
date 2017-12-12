@@ -4,37 +4,14 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-lunar-gazebo-plugins'
-pkgver='2.7.2'
+pkgver='2.7.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD, Apache 2.0')
 
-ros_makedepends=(ros-lunar-rospy
-  ros-lunar-angles
-  ros-lunar-diagnostic-updater
-  ros-lunar-dynamic-reconfigure
-  ros-lunar-nav-msgs
-  ros-lunar-camera-info-manager
-  ros-lunar-std-srvs
-  ros-lunar-catkin
-  ros-lunar-roscpp
-  ros-lunar-tf
-  ros-lunar-rosconsole
-  ros-lunar-geometry-msgs
-  ros-lunar-tf2-ros
-  ros-lunar-sensor-msgs
-  ros-lunar-message-generation
-  ros-lunar-urdf
-  ros-lunar-polled-camera
-  ros-lunar-std-msgs
-  ros-lunar-nodelet
-  ros-lunar-image-transport
-  ros-lunar-trajectory-msgs
-  ros-lunar-rosgraph-msgs
-  ros-lunar-gazebo-dev
-  ros-lunar-gazebo-msgs
-  ros-lunar-cv-bridge)
+ros_makedepends=(ros-lunar-catkin
+  ros-lunar-message-generation)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
@@ -73,7 +50,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/lunar/gazebo_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a5846c2126d3686523857f11dc68d01de1cacba26d90375d574b92396f6e12ac')
+sha256sums=('c33ef47c379218e6a9f05691aca9137230ecebe43261863a0731a76252ecbb0d')
 
 build() {
   # Use ROS environment variables
@@ -81,14 +58,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -96,7 +73,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
