@@ -4,7 +4,7 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.4.1.8
+pkgver=3.4.1.10
 pkgrel=1
 pkgdesc='A development tool that is primarily used to create graphical adventure games'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('allegro4' 'dumb-a4' 'libogg' 'libtheora' 'libvorbis')
 makedepends=('wxgtk')
 optdepends=('wine: for installing and configuring the game')
 source=("https://github.com/adventuregamestudio/ags/archive/v.${pkgver}.tar.gz")
-sha256sums=('2664dd5fc92c54053ea65334300d2542612d9fea464f86726298a5e08e01c413')
+sha256sums=('7dd75df2131333f1b6885c89db275e0dee3f7b55d3d9c4e8afae612c94aca4e2')
 
 prepare() {
   sed -i 's/-Wfatal-errors\ //' "ags-v.$pkgver/Engine/Makefile-defs.linux"
