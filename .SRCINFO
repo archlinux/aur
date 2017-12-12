@@ -1,6 +1,6 @@
 pkgbase = python-quantlib
 	pkgdesc = A Python binding for QuantLib.
-	pkgver = 1.10
+	pkgver = 1.11
 	pkgrel = 1
 	url = http://quantlib.org
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = python-quantlib
 	license = BSD
 	makedepends = make
 	makedepends = gcc
-	depends = quantlib>=1.10
+	depends = quantlib>=1.11
 	depends = python
 	options = !libtool
-	source = http://downloads.sourceforge.net/project/quantlib/QuantLib/1.10/other%20languages/QuantLib-SWIG-1.10.tar.gz
-	md5sums = e6b7b98f37f920a6778c1eab35aca1ee
+	source = http://downloads.sourceforge.net/project/quantlib/QuantLib/1.11/other%20languages/QuantLib-SWIG-1.11.tar.gz
+	md5sums = 958fcd92ba1fb2bb967ba915ae7b2782
 
 pkgname = python-quantlib
 
