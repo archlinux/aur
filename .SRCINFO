@@ -11,6 +11,7 @@ pkgbase = obs-linuxbrowser
 	depends = obs-studio>=20.0.1
 	depends = cef-minimal
 	optdepends = pepper-flash: Flash support
+	conflicts = obs-linuxbrowser-bin
 	source = obs-linuxbrowser::git+https://github.com/bazukas/obs-linuxbrowser.git
 	sha256sums = SKIP
 
