@@ -1,9 +1,10 @@
 # Maintainer: Pieter Robyns <pieter.robyns@uhasselt.be>
+# Contributors: remspoor
 # Upstream URL: https://github.com/rpp0/gr-lora
 # Based on Yuval Adam <yuval at y3xz dot com>'s gr-gsm PKGBUILD
 
 pkgname=gr-lora-git
-pkgver=0.3
+pkgver=0.6.2.3
 pkgrel=1
 pkgdesc="GNURadio blocks for receiving LoRa modulated radio messages using SDR"
 arch=('any')
@@ -18,7 +19,7 @@ _gitname=gr-lora
 
 pkgver() {
   cd $_gitname
-  echo $(git describe --always | sed 's/-/./g')
+  echo $(git describe --always | sed 's/-/./g' | sed 's/^v//g')
 }
 
 build() {

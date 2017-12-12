@@ -1,6 +1,6 @@
 pkgbase = gr-lora-git
 	pkgdesc = GNURadio blocks for receiving LoRa modulated radio messages using SDR
-	pkgver = 0.3
+	pkgver = 0.6.2.3
 	pkgrel = 1
 	url = https://github.com/rpp0/gr-lora
 	arch = any
