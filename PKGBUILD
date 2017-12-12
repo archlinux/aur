@@ -1,15 +1,15 @@
 # Maintainer: Timur Kiyivinski <timur@linux.com>
 
 pkgname=lbry-app-bin
-pkgver=0.19.0rc2
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.io/'
 license=('MIT')
 depends=('nodejs' 'npm' 'gnome-keyring')
-source=('https://github.com/lbryio/lbry-app/releases/download/v0.19.0-rc2/LBRY_0.19.0-rc2_amd64.deb')
-sha256sums=('4816474b5a6c2f33b48667e7c721b1d62afe65679ef5e4926b2da20b87561ddf')
+source=('https://github.com/lbryio/lbry-app/releases/download/v0.19.0/LBRY_0.19.0_amd64.deb')
+sha256sums=('8726cc32cfc4d01712e0caae7b7fb2912f82acb90a6872c27bc140f31c56cd4f')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
