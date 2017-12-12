@@ -1,0 +1,23 @@
+pkgbase = newsboat-git
+	pkgdesc = An RSS/Atom feed reader for text terminals
+	pkgver = r2.10.1.r110.g7f119a4
+	pkgrel = 1
+	url = https://newsboat.org/
+	arch = x86_64
+	license = custom: MIT
+	makedepends = swig
+	makedepends = gettext
+	makedepends = asciidoc
+	depends = curl
+	depends = json-c
+	depends = libxml2
+	depends = sqlite
+	depends = stfl
+	provides = newsboat
+	replaces = newsbeuter
+	options = !emptydirs
+	source = newsboat-git::git+https://github.com/newsboat/newsboat.git
+	sha256sums = SKIP
+
+pkgname = newsboat-git
+
