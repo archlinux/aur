@@ -5,7 +5,7 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=8.1.1
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
@@ -28,14 +28,13 @@ optdepends=('bullet>=2.82: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen' 'pkg-config>=0.26')
 install="${pkgname}.install"
-source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2" "ogre-1.10.patch")
-sha256sums=('bca3e36c064d80993a6c4cd53c369e0762c4a8e51e0ee145c20d005fd8d63949'
-            '99c9e6c24422163cb58a1af0a174b38929bc0dbe90f7fd9690d9d4b3d50ba00b')
+source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2" "tinyxml6.patch")
+sha256sums=('2c663c446d93eec4718fd5b4985d1b85dbf29828788f6d214cce1253153d983e'
+            'ca4822ea22bba6f3df1fc7e1d79cff8ea3f5c51b7af0d26b7a99e86f93ca3081')
 
 prepare() {
-  cd "${srcdir}"
-  patch -p1 < ${srcdir}/ogre-1.10.patch
   cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 < ${srcdir}/tinyxml6.patch
 
   mkdir -p build && cd build
 
