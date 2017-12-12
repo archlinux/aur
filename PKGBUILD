@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail.com>
 
 pkgname=faustlive-git
-pkgver=787.46f15b9
+pkgver=799.0207de7
 pkgrel=1
 pkgdesc="A graphical frontend to the Faust compiler."
 arch=('i686' 'x86_64')
@@ -15,14 +15,17 @@ depends=('qt4' 'faust2-git' 'jack2' 'qrencode' 'libmicrohttpd' 'openssl' 'liblo'
 makedepends=('git')
 provides=('faustlive')
 conflicts=('faustlive')
-source=("$pkgname::git+https://github.com/grame-cncm/faustlive.git")
+source=("$pkgname::git+https://github.com/grame-cncm/faustlive.git#branch=dev")
 md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$pkgname
-  # Make sure that we get the dev branch.
-  git checkout dev > /dev/null 2>&1
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $srcdir/$pkgname
+  git submodule update --init
 }
 
 build() {
