@@ -1,7 +1,7 @@
 pkgbase = postgresqltuner
 	pkgdesc = Simple script to analyse your PostgreSQL database configuration inspired by mysqltuner.pl
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jfcoz/postgresqltuner
 	arch = any
 	license = GPL
