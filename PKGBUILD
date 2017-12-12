@@ -2,14 +2,14 @@
 
 _pkgname=haskell-ide-engine
 pkgname=${_pkgname}-git
-pkgver=r1101.7017233
-pkgrel=2
+pkgver=r1108.5656f07
+pkgrel=1
 pkgdesc="The engine for haskell ide-integration. Not an IDE."
 arch=('i686' 'x86_64')
 url="https://github.com/haskell/haskell-ide-engine"
 license=('custom:BSD3')
 depends=()
-makedepends=('git' 'stack')
+makedepends=('git' 'stack' 'cabal-install')
 provides=()
 conflicts=()
 replaces=()
