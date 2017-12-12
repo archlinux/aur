@@ -4,8 +4,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=173.3727.88
+_buildver=173.3942.24
 _pkgver=2017.3
+_verextra=1
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
@@ -34,12 +35,12 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
 provides=("pycharm" "pycharm-professional")
 source=("https://download.jetbrains.com/python/pycharm-professional-${_buildver}.tar.gz"
 	"${pkgname}.desktop")
-sha256sums=("24032bf5714a57521c44b9084745c2f96034e4d39a76751893b9015aa0c7685b"
+sha256sums=("e3e016cc6f7e87bd094f0e004428bfce78a6f55df09ef505d23f3f3b92825501"
 	    "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 
 prepare() {
-	if [ -d $srcdir/pycharm-${_pkgver} ]; then
-		mv $srcdir/pycharm-${_pkgver} $srcdir/pycharm-${_buildver}
+	if [ -d $srcdir/pycharm-${_pkgver}.${_verextra} ]; then
+		mv $srcdir/pycharm-${_pkgver}.${_verextra} $srcdir/pycharm-${_buildver}
 	fi
 }
 
