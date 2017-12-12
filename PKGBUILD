@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/foliea/firegrid"
 license=("MIT")
 depends=("qt5-base" "xdotool")
-makedepends=("wget" "crystal")
+makedepends=("wget" "crystal" "shards")
 source=("https://github.com/foliea/firegrid/archive/$pkgver.tar.gz")
 md5sums=("SKIP")
 

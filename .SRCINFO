@@ -7,6 +7,7 @@ pkgbase = firegrid
 	license = MIT
 	makedepends = wget
 	makedepends = crystal
+	makedepends = shards
 	depends = qt5-base
 	depends = xdotool
 	source = https://github.com/foliea/firegrid/archive/0.2.0.tar.gz
