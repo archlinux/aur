@@ -1,4 +1,5 @@
-# Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
+# Maintainer: flurb
+# Previously pyamsoft <pyam(dot)soft(at)gmail(dot)com>
 
 # Please read the comments in the PKGBUILD if you wish to attempt to use
 # multiple versions of the dolphin emulator.
