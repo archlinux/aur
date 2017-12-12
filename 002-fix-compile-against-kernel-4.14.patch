@@ -1,0 +1,84 @@
+diff -ur rtl8822bu.old/core/efuse/rtw_efuse.c rtl8822bu.new/core/efuse/rtw_efuse.c
+--- rtl8822bu.old/core/efuse/rtw_efuse.c	2017-12-11 18:36:34.307012086 +0200
++++ rtl8822bu.new/core/efuse/rtw_efuse.c	2017-12-11 18:54:48.692455806 +0200
+@@ -2564,7 +2564,11 @@
+ 	set_fs(KERNEL_DS);
+ 
+ 	for (i = 0 ; i < HWSET_MAX_SIZE ; i++) {
+-		vfs_read(fp, temp, 2, &pos);
++		#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
++			kernel_read(fp, temp, 2, &pos);
++		#else
++			vfs_read(fp, temp, 2, &pos);
++		#endif
+ 		if (sscanf(temp, "%hhx", &buf[i]) != 1) {
+ 			if (0)
+ 				RTW_ERR("%s sscanf fail\n", __func__);
+@@ -2572,10 +2576,18 @@
+ 		}
+ 		if ((i % EFUSE_FILE_COLUMN_NUM) == (EFUSE_FILE_COLUMN_NUM - 1)) {
+ 			/* Filter the lates space char. */
+-			vfs_read(fp, temp, 1, &pos);
++			#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
++				kernel_read(fp, temp, 1, &pos);
++			#else
++				vfs_read(fp, temp, 1, &pos);
++			#endif
+ 			if (strchr(temp, ' ') == NULL) {
+ 				pos--;
+-				vfs_read(fp, temp, 2, &pos);
++				#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
++					 kernel_read(fp, temp, 2, &pos);
++				#else
++					 vfs_read(fp, temp, 2, &pos);
++				#endif
+ 			}
+ 		} else {
+ 			pos += 1; /* Filter the space character */
+@@ -2631,8 +2643,11 @@
+ 
+ 	fs = get_fs();
+ 	set_fs(KERNEL_DS);
+-
+-	vfs_read(fp, source_addr, 18, &pos);
++	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
++		kernel_read(fp, source_addr, 18, &pos);
++	#else
++		vfs_read(fp, source_addr, 18, &pos);
++	#endif
+ 	source_addr[17] = ':';
+ 
+ 	head = end = source_addr;
+diff -ur rtl8822bu.old/core/rtw_wlan_util.c rtl8822bu.new/core/rtw_wlan_util.c
+--- rtl8822bu.old/core/rtw_wlan_util.c	2017-12-11 18:36:34.317012173 +0200
++++ rtl8822bu.new/core/rtw_wlan_util.c	2017-12-11 18:58:47.144388310 +0200
+@@ -4724,7 +4724,11 @@
+ 	source = rtw_zmalloc(2048);
+ 
+ 	if (source != NULL) {
+-		len = vfs_read(fp, source, len, &pos);
++		#if(LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
++			len = kernel_read(fp, source, len, &pos);
++		#else
++			 len = vfs_read(fp, source, len, &pos);
++		#endif
+ 		rtw_parse_cipher_list(nlo_info, source);
+ 		rtw_mfree(source, 2048);
+ 	}
+Binary files rtl8822bu.old/.git/index and rtl8822bu.new/.git/index differ
+diff -ur rtl8822bu.old/os_dep/osdep_service.c rtl8822bu.new/os_dep/osdep_service.c
+--- rtl8822bu.old/os_dep/osdep_service.c	2017-12-11 18:36:34.370345975 +0200
++++ rtl8822bu.new/os_dep/osdep_service.c	2017-12-11 18:45:31.185853016 +0200
+@@ -1961,7 +1961,11 @@
+ 
+ 	while (sum < len) {
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
++		rlen = kernel_read(fp, buf + sum, len - sum, &fp->f_pos);
++#else
+ 		rlen = __vfs_read(fp, buf + sum, len - sum, &fp->f_pos);
++#endif
+ #else
+ 		rlen = fp->f_op->read(fp, buf + sum, len - sum, &fp->f_pos);
+ #endif
+Only in rtl8822bu.new/os_dep: .osdep_service.c.swp
