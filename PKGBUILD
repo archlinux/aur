@@ -27,7 +27,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.0.25
+pkgver=7.0.26
 pkgrel=1
 pkgdesc="PHP scripting language package for stable release of 7.0 series"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ makedepends=('apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu'
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         )
-sha256sums=('5cc14bd20fb2226f6d34465662425cd100441bde9042ea1cef2e4506d6ded8cc'
+sha256sums=('ed5cbb4bbb0ddef8985f100bba2e94002ad22a230b5da2dccfe148915df5f199'
             'SKIP'
             '819f05d2fd5a75c96e93c863517ca77dbd021a1224dc2d8096f758fb2937df6a'
             'df075b89484eb3a08402788580de16d23123f95541b2e9aed8d928105de9b874'
@@ -253,10 +253,14 @@ package_php70-cgi() {
 package_php70-apache() {
 	pkgdesc='Apache SAPI for PHP'
 	depends=("${pkgbase}" 'apache')
-	backup=("etc/httpd/conf/extra/${_pkgbase}_module.conf")
-
-	install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/libphp7.so
-	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/php70_module.conf
+	backup=("etc/httpd/conf/extra/${pkgbase}_module.conf")
+	echo "# End of LoadModule in httpd.conf - see ArchWiki Apache HTTP Server"
+	echo "LoadModule php7_module modules/libphp70.so"
+	echo "AddHandler php7-script .php"
+	echo "# End of Include List"
+	echo "Include conf/extra/php70_module.conf"
+	install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/lib${pkgbase}.so
+	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${pkgbase}_module.conf
 }
 
 package_php70-fpm() {
