@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-virtualjaguar-git
-pkgver=209.f073823
+pkgver=212.2b19495
 pkgrel=1
 pkgdesc="libretro implementation of Virtual Jaguar. (Atari Jaguar)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
