@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-defusedxml' 'python-dulwich' 'python-icalendar' 'python-jinja')
 makedepends=('python-setuptools')
 source=("xandikos-$pkgver.tar.gz::https://www.jelmer.uk/code/xandikos/tarball/v$pkgver")
-sha512sums=('43572c5dce87fc2ee44b644ad49980409f9eb65cb534035cd9cb12d7be0d17e6e99f97dfefd4d9d67804011968f8ffabebed3713a153f7d83c7ae5ae291e6fd9')
+sha512sums=('fd7d930283114c7dcee32ce4e4c3031bb09ec3a50ad0cb93da01269fafcf9d3ed96d7e24b0ba820a1b74e7cc03b656d6265827451e6178ea5b2cf291b7acb5b3')
 
 build() {
   python setup.py build
