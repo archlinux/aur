@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar-git
-pkgver=v2.0.18.r2.g70e0e618
+pkgver=v2.0.18.r37.g750f650a
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)" 
 arch=(any)
@@ -19,8 +19,7 @@ options=('!strip')
 
 build(){
   cd $srcdir/${pkgname%%-git}
-	npm install --silent --ignore-scripts 
-	npm install node-sass
+	npm install --silent
 	npm run build
 	npm prune --production
 }
@@ -42,6 +41,7 @@ package(){
 	
 	# Cleanup
 	cd $pkgdir/$appdir
+	rm -rf .git*
 	rm -rf .travis
 	cp -rf prod/* js/
     	find "${pkgdir}"/${appdir} \
