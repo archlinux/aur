@@ -1,12 +1,13 @@
 # Maintainer: Nils Czernia (DL1CAF) <nils@czserver.de>
 # Contributer: Carsten Feuls (DL1CAF) 'Der Techniker' <dl1caf@vfdb.org>
 # Contributer: Amateurfunk Station der Hochschule Niederrhein (DF0FN) <df0fn@hs-niederrhein.de>
+
 pkgname=('qtel-git')
 _pkgname=('svxlink')
 pkgver=14.08.2.766.g380e5333
 pkgrel=1
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
-url="http://sourceforge.net/projects/svxlink/"
+url="http://www.svxlink.org/"
 license=('GPL')
 source=("${_pkgname}::git+https://github.com/sm0svx/svxlink.git")
 conflicts=("svxlink")
@@ -24,7 +25,7 @@ build(){
   cd "${srcdir}/${_pkgname}/src"
   mkdir -p build 
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DLOCAL_STATE_DIR=/var ..
+  cmake -DSBIN_INSTALL_DIR=/usr/bin -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DLOCAL_STATE_DIR=/var ..
   make
   make doc
 }
