@@ -3,16 +3,17 @@
 pkgbase=('python-pyscipopt')
 pkgname=('python-pyscipopt' 'python2-pyscipopt')
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python Interface to the SCIP Optimization Suite.'
 arch=('any')
 url='http://scip.zib.de'
 license=('MIT')
+depends=('scipoptsuite')
 makedepends=('cython' 'python-setuptools' 'python2-setuptools')
 source=("https://github.com/SCIP-Interfaces/PySCIPOpt/archive/v${pkgver}.tar.gz")
 
 package_python-pyscipopt() {
-	depends=('scipoptsuite' 'python')
+	depends+=('python')
 
 	cd "${srcdir}/PySCIPOpt-${pkgver}"
 
@@ -20,7 +21,7 @@ package_python-pyscipopt() {
 }
 
 package_python2-pyscipopt() {
-	depends=('scipoptsuite' 'python2')
+	depends+=('python2')
 
 	cd "${srcdir}/PySCIPOpt-${pkgver}"
 
