@@ -1,17 +1,17 @@
 pkgbase = python-uncompyle6
 	pkgdesc = Python byte-code disassembler and source-code converter.
-	pkgver = 2.13.2
+	pkgver = 2.14.1
 	pkgrel = 1
 	url = https://github.com/rocky/python-uncompyle6/
 	arch = any
 	license = MIT
 	makedepends = python
-	depends = python-spark-parser>=1.7.0
-	depends = python-spark-parser<1.8.0
-	depends = python-xdis>=3.6.0
+	depends = python-spark-parser>=1.8.4
+	depends = python-spark-parser<1.9.0
+	depends = python-xdis>=3.6.2
 	depends = python-xdis<3.7.0
 	depends = python-six
-	source = git://github.com/rocky/python-uncompyle6.git#commit=3f309cebab5222a82a9cea4c5c6824c6dbc3384f
+	source = git://github.com/rocky/python-uncompyle6.git#commit=3ac1e64c56bdaba9cea33f8862b792ec1d005ec5
 	sha256sums = SKIP
 
 pkgname = python-uncompyle6
