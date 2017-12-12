@@ -2,8 +2,8 @@
 # Contributor: Damien Flament <damien.flament@gmx.com>
 
 pkgname=voxelshop
-pkgver=1.8.11
-pkgrel=2
+pkgver=1.8.19
+pkgrel=1
 pkgdesc='An extremely intuitive and powerful cross-platform software to modify and create voxel objects which was designed from the ground up in close collaboration with artists.'
 
 _application_name="VoxelShop"
@@ -32,7 +32,7 @@ noextract=("${_source_filename}")
 sha256sums=('1f1535bd452294f1f8261bdd0432e0100e43f41650ff25aa67d92cf786be7df8'
             '510d8a61c162af0cfed35548fbd5c5a7351ac9735ab27ff7da7a7dbb44346a15'
             '9117799a571cd29a0402bc43a58c2d3b7caf590a2bcf530347ab3f709e1ee25b'
-            '913cc42e789f5914ab894ed6157be94bcedc5d5cb528481bf6e167b0e3d70354')
+            '884b15f5dd222c3dc0a2f09ad29f3e4856878897731bd7c09387b098bc53368a')
 arch=('any')
 
 
