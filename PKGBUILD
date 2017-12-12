@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=nodejs-lua-fmt
 _srcname="lua-fmt"
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A pretty-printer for Lua code"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_srcname/-/$_srcname-$pkgver.tgz")
 noextract=($_srcname-$pkgver.tgz)
-sha512sums=('81a7fa1310a847ebff54344103b7869623b32ac1b6fb273212e4274f68977a1d0206e466d53cd5eb97464fd8018956a35b24c729f2ab0ef9db7d39295d8a9ed0')
+sha512sums=('9f6b030629a0503b46df8efbad74939fcad4863c7a078a88c96002418eb1d1f25a7742cd2e82950030f863e34e7081f3c2425bc619cae5f741c8c6106529828c')
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_srcname-$pkgver.tgz"
   rm -rf "$pkgdir/usr/etc"
