@@ -1,7 +1,7 @@
 pkgbase = kickshaw
 	pkgdesc = A menu editor for openbox
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/natemaia/kickshaw
 	arch = x86_64
 	license = GPL2

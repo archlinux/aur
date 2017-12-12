@@ -4,7 +4,7 @@
 
 pkgname=kickshaw
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A menu editor for openbox'
 url='https://github.com/natemaia/kickshaw'
 arch=('x86_64')
@@ -26,6 +26,6 @@ package() {
 
   # license , copying readme in license directory for provide author
   cd ../
-  install -Dm755 README.md "${pkgdir}/usr/share/licenses/kickshaw/README.md"
-  install -Dm755 COPYING "${pkgdir}/usr/share/licenses/kickshaw/COPYING"
+  install -Dm644 README.md "${pkgdir}/usr/share/licenses/kickshaw/README.md"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/kickshaw/COPYING"
 }
