@@ -1,5 +1,6 @@
 # $Id$
 # Maintainer: Jörg Schuck <joerg_schuck@web.de>
+# Contributor: T. Baumann <arch AT nnamuab DOT de>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
