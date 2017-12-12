@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-ar1
+	pkgdesc = An Arabic male voice for the MBROLA synthesizer
+	pkgver = 001015
+	pkgrel = 1
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-ar
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/ar1/ar1-981103.zip
+	sha256sums = 38e65ce5f667fc6a9ded5e8c45f1924f2b4cd920c12ba1fbc9dfbe190a573d42
+
+pkgname = mbrola-voices-ar1
+
