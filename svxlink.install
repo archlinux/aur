@@ -1,0 +1,41 @@
+post_install(){
+/usr/bin/egrep -i "^svxlink" /etc/group >> /dev/zero
+if [ ! $? -eq 0 ]
+then
+	groupadd svxlink
+fi
+
+/usr/bin/egrep -i "^svxlink" /etc/passwd >> /dev/zero
+if [ ! $? -eq 0 ]
+then
+	useradd svxlink -m -d /var/spool/svxlink -g svxlink -G uucp,tty,audio
+	
+fi
+chown -R svxlink:svxlink ${pkgdir}/var/spool/svxlink
+}
+
+
+pre_remove(){
+systemctl stop svxlink.service
+}
+
+
+post_remove(){
+/usr/bin/egrep -i "^svxlink" /etc/passwd >> /dev/zero
+if [ $? -eq 0 ]
+then
+        userdel svxlink
+fi
+
+/usr/bin/egrep -i "^svxlink" /etc/group >> /dev/zero
+if [ $? -eq 0 ]
+then
+        groupdel svxlink
+fi
+}
+
+post_upgrade(){
+gpasswd -a svxlink uucp
+gpasswd -a svxlink tty
+gpasswd -a svxlink audio
+}
