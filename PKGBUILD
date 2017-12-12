@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=63.0.3239.90
-pkgrel=4
+pkgrel=6
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -333,8 +333,7 @@ patch -Np1 -i ../16.patch
   patch -Np1 -i ../gnb.patch
 
 
-  # Fix incorrect inclusion of <string_view> in modes other than >= C++17
-  patch -Np1 -d third_party/crc32c/src <../crc32c-string-view-check.patch
+
 
   # Fixes from Gentoo
 
