@@ -2,8 +2,8 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='pop-gtk-theme-bin'
-pkgver='2.99.2'
-_pkgdir="3.0.0-b2"
+pkgver='2.99.4'
+_pkgdir="3.0.0-b4"
 pkgrel=1
 pkgdesc='Version 2 of the Pop GTK+ Theme'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL2' 'CCPL:by-sa')
 conflicts=('pop-gtk-theme')
 provides=('pop-gtk-theme')
 source=("https://github.com/pop-os/gtk-theme/releases/download/${_pkgdir}/pop-gtk-theme_${pkgver}_all.deb")
-sha256sums=('56beb922d115650f06f805facd181b40c202febe8b396c5c79b520f2b7deafce')
+sha256sums=('5b0f04466a255191500b333c2d9a7129c58ca19ce1420a815df27a5d7a07d3f5')
 
 package() {
   cd "${srcdir}"
