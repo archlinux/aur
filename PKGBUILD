@@ -4,7 +4,7 @@ pkgdesc="ROS - Packages for interfacing ROS with OpenCV, a library of programmin
 url='http://www.ros.org/wiki/vision_opencv'
 
 pkgname='ros-lunar-vision-opencv'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,9 +18,6 @@ ros_depends=(ros-lunar-image-geometry
   ros-lunar-cv-bridge)
 depends=(${ros_depends[@]})
 
-ros_checkdepends=()
-checkdepends=(${ros_checkdepends[@]})
-
 # Git version (e.g. for debugging)
 # _tag=release/lunar/vision_opencv/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -30,7 +27,7 @@ checkdepends=(${ros_checkdepends[@]})
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-lunar-vision_opencv-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/lunar/vision_opencv/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f78f829e4b78658965c7a7f83d05f5cbe325851294934e60081ffd9b23552b41')
+sha256sums=('0c327d4c3c644094a02e0ea8a9e0f2fd04ee0075c6876549dceea9c28fc0698a')
 
 build() {
   # Use ROS environment variables
