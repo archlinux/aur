@@ -1,6 +1,6 @@
 pkgbase = pulseeffects
 	pkgdesc = Limiter, compressor, reverberation, stereo equalizer and auto volume effects for Pulseaudio applications
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = pulseeffects
 	depends = lilv
 	depends = calf
 	options = !emptydirs
-	source = pulseeffects-3.1.1::https://github.com/wwmm/pulseeffects/archive/v3.1.1.tar.gz
-	md5sums = 6d9647a4b96ec133460ef495cdaebeb4
+	source = pulseeffects-3.1.2::https://github.com/wwmm/pulseeffects/archive/v3.1.2.tar.gz
+	md5sums = c52a4bce7c6f0d0955b0de7460830f5c
 
 pkgname = pulseeffects
 
