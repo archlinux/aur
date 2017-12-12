@@ -1,6 +1,6 @@
 # Maintainer: Fabio Zanini <fabio DOOT zanini AAT fastmail DOOT fm>
 pkgname=aliview
-pkgver=1.19
+pkgver=1.20
 pkgrel=1
 pkgdesc="Software for aligning viewing and editing dna/aminoacid sequences."
 arch=('any')
@@ -13,7 +13,7 @@ options=()
 install=
 changelog=
 source=("http://www.ormbunkar.se/${pkgname}/downloads/linux/linux-version-$pkgver/$pkgname.tgz")
-md5sums=('daad9d6d5234dada73cf67d02748f034')
+md5sums=('049cccf1438c886b7a2b2d4fedd3a4ba')
 
 build() {
 	cd $srcdir
