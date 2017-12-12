@@ -27,7 +27,7 @@ source=(
 	"${_pkgname}-${_version}.desktop"
 	"atom.install"
 )
-sha256sums=('3f5af9fb41c1f081b9b0814dd8deb539cc50fb302bf3a5588408faddd774d27e'
+sha256sums=('24c3051d961d57c17ddab1c9917752119cf283a526dc0fea8ca4a357035b6f2b'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
             '9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e')
 
