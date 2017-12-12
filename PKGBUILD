@@ -9,7 +9,7 @@ _building=true
 pkgname=qtcreator-prerelease
 _pkgvermajmin=4.5
 pkgver=${_pkgvermajmin}.0
-_verpostfix="beta1"
+_verpostfix=""
 pkgrel=1
 _pkgver=${pkgver}
 _urlbase="https://download.qt.io/official_releases"
@@ -38,7 +38,7 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('4dff363bae87c8a6899bc8238f9c543b641e9d2fb317dde80e7a84291b75c47f')
+sha256sums=('140256a5d99e9e6060a492699a68118f16afcebce70d4221fabff7215475d9f9')
 
 _qmake_cmd=qmake
 _tmp_dir=$(mktemp -d)
@@ -52,7 +52,7 @@ fi
 
 prepare() {
   cd ${srcdir}/${_filename}
-  patch -p1 < ${startdir}/0001-Fix-linux-breaking-shit.patch
+  patch -p1 < ${startdir}/0001-Enable-high-dpi-on-Linux.patch
 }
 
 build() {
