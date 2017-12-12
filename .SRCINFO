@@ -1,0 +1,14 @@
+pkgbase = effuvv
+	pkgdesc = Functional archlinux system configuration tool
+	pkgver = 0.0.20171212
+	pkgrel = 1
+	url = https://github.com/shawndellysse/effuvv
+	arch = any
+	makedepends = npm
+	depends = nodejs
+	conflicts = farch
+	source = https://github.com/shawndellysse/effuvv/archive/v0.0.20171212.tar.gz
+	md5sums = 63bf5b34ce5f3e9b9691907f664d36b1
+
+pkgname = effuvv
+
