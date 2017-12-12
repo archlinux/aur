@@ -16,7 +16,7 @@ source=('git+https://github.com/jeremyb31/rtl8822bu.git'
         )
 sha256sums=('SKIP'
             'c42a9c930ec7f5286b74a57c216bd15004d6342bc8167085748465324436e7c6'
-            'cfaa8fecd603d867850406dd279d7902a2d416bd'
+            'eb82499677179afc9f375b9a5d7f5c9b3e0539cfb50f7c186b2bf73db7ccd4ed'
             '470b74a26d924adbe721b47617f806b8a571b6f4ec06c5e079653da8915f4d89'
            )
 install="${pkgname}.install"
