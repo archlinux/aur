@@ -1,4 +1,5 @@
-# Maintainer: Edgard Castro <castro@edgard.org>
+# Maintainer: NBonaparte <nbonaparte@protonmail.com>
+# Contributor: Edgard Castro <castro@edgard.org>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Helge Willum Larsen <helgesdk@gmail.com>
 # Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
@@ -7,7 +8,7 @@
 # Contributor: wertarbyte (original author of auto-disper and autorandr)
 
 pkgname=autorandr-git
-pkgver=1.0.r16.g855c18b
+pkgver=1.3.r0.gcbb5662
 pkgrel=1
 pkgdesc="Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr. Formerly autodisper. No disper support."
 arch=('any')
