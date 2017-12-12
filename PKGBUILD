@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 
 pkgname=megazeux
-pkgver=2.90c
+pkgver=2.91
 pkgrel=1
 pkgdesc="Game creation system"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=(libvorbis libpng sdl2)
 makedepends=()
 _base=mzx${pkgver/.}
 _filename=${_base}src.tar.xz
-_sha256sum=0de1aa76ce92cdc7db0c51f58e1561206b30939b5cc7a82705cc7921348ca4c6
-source=("${_filename}::http://vault.digitalmzx.net/download.php?rid=2168&f=${_sha256sum}")
+_sha256sum=6ba768b8143a3964cf66e66807f0f68e2f3569b96fcf7dd5432636d85b6f93a7
+source=("${_filename}::http://vault.digitalmzx.net/download.php?rid=2197&f=${_sha256sum}")
 sha256sums=("${_sha256sum}")
 DLAGENTS=("http::/usr/bin/curl -A 'Mozilla' -fLC - -o %o %u")
 
