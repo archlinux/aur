@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver
-pkgver=5.0.3
+pkgver=5.0.6
 pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
@@ -12,24 +12,24 @@ depends=('nodejs' 'icu55')
 optdepends=('rabbitmq' 'redis' 'postgresql')
 license=('AGPL')
 source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-${pkgver}.tar.gz"
-	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/e69c1677b29b5a97dcba65b093de464fac480a8f.tar.gz"
+	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/e7bbbec0de5a18bea3fa579352fb8c482e7e4cbe.tar.gz"
 	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/cb1c784c5489dc2afdf339069a70584b02188abb.tar.gz"
-	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/83abcebaeb7950f6ef69fdb61fe9e79ce08a10ec.tar.gz"
-	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/dae8b532a7c167aba1d0f7ee16b12ee110850bc3.tar.gz"
-	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/d65f448c1ff51fa72e050bb6c9ab4b451a06910c.tar.gz"
-	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/2696c3c75c017566ffb7ead7c086220888ccba49.tar.gz"
+	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/57662fae243d118b242c297ec6dd55d45afdc5cb.tar.gz"
+	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/248aef0a8af74ad41d82b5ff13f5038665860d20.tar.gz"
+	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/e868cfd7a3f1a42cde9a078ac451c77bb27a77a5.tar.gz"
+	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/2aa82b55c0970aee78fba8cec56a3ad00863aa6b.tar.gz"
 	"docbuilder_p.patch"
 	"server_makefile.patch"
 	"onlyoffice-fileconverter.service"
 	"onlyoffice-spellchecker.service"
 	"onlyoffice-docservice.service")
-sha512sums=('1be0cce50382fd2a026bbecfa15d3d24a262586d08d09c63fcc13d5e2f03a13629eeabc6e3a0075b441994498bb7420fa4dec849efd22395e7b230b0ef703674'
-            '9bbf5c7228d5e5f5202551148c867574062df73eebe7dedd41aac47e0a18fa87ea2164fe4eee4da889f85872eeb5dfd3f80444a43ad0247f4beca4e2127f7a86'
+sha512sums=('f077b0f749a54a2ee8b23876328cbc2114dd6de374fc8b92da5866f98bf3d6dcdd2ffa321b24e7e5a2e8a27b46c132f7cf2fd20295a0cf21b9839295f579e7f2'
+            '1e97ce4db85f73925773e598230e40e71ca32519f22677e2cd70c81366a6ccf317ecf0a1126443316ddac1125a13891f03b718f03d23cf917b46de1fc0999a80'
             '4dde4ca95516f78443d54803ac9f303daec1b3b799358ff68acdef253eee25a9918b07b66da762e4ba05720522dc9f63adb5029972c24e00543f71c29cc02134'
-            '0ba62ab91714e5dacf455163db2456516a58efacbef67056c89fea6fa8be6fd80a57974e9580d57b01978a24af1d9f3921ad23244cf2c23d18ccd51cd83e21e0'
-            'de6ab6270afcbfbd79a1ae5d2a7d5a1eaf3ab08720e797c8e82134e0a35f5ccc5a578157b6c95693709a9e3f74a9919d0aeef37fbb549c624cae9b377eebf584'
-            'eaa3067ab1bec2745b472f2e86de95106d922435cb818f5a966afe6d79cf221f6bae697673f3e1c4e5a56dfec11a851250f31a610bf4382f21bbe8ab377ace1c'
-            '5e7ea900121725b1b65a297369124b7e9cd099baade1caeef8c708ac1145ee9633a2190652410c8498aa67b1d2a62f931a4ca2d321d90387b7862b2a3fa13d1a'
+            '0291aa72bbe0b3ccb6c854e55a9f154802e769dd83e621df6a19520e7ae62dd161d84c87bb450b10e88436f434478836ffbd7dc298240a9fce39924f2689c606'
+            '00161073ac32a91e40abc442af5090dbc38ecddd1f3ce0d6ddf1c5ce39132ded63e7a829376a6b1ce611007a479ef88d50379676a2ce09f2804eb4cf83073512'
+            '9a0418030d165e295f93a3b0a2c89e3cf352201629fda8e7f049dd61271382b3f13dd31da8033350a4c03375569c941295ec00f9dcb28d9421066b2d498747c1'
+            '39b4d47bf9365ebcd0bae0dd1cd0d15f6220c20fae9d2445f6e2a08e041d44e8d70c351742d0171d92a391de5a7b3c401a41c7d5a04556265069de9b47ef02fd'
             '4875f25a76731e43c4a08f7c2b557d337224c34ddf2a9b0348c4bf325bfcfc11c6b4f834d5c7da486957ec0380cfaaf45b83dd920e6e660fb6f4d1f3857fd787'
             'b3e399258eeabb870c8735d28ab92095d7b5f3b58b45ee001efcce013027d29ba4cf18b06256453dd9f2c73ea0c156efb011a381865647c2573e825cefc039ea'
             '5c691e07eccd51f543de92cc7f7fd5a5aac77fa2a6cf786f439a4ea43abc7606180aa5a9dd3762200091a4b3a479860881f94aefd0297d8e7ed955bf25c37417'
