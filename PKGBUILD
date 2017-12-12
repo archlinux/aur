@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_topic provides a GUI plugin for displaying debug information 
 url='http://wiki.ros.org/rqt_topic'
 
 pkgname='ros-lunar-rqt-topic'
-pkgver='0.4.9'
+pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,9 +22,6 @@ ros_depends=(ros-lunar-python-qt-binding
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-ros_checkdepends=()
-checkdepends=(${ros_checkdepends[@]})
-
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rqt_topic/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -34,7 +31,7 @@ checkdepends=(${ros_checkdepends[@]})
 # Tarball version (faster download)
 _dir="rqt_topic-release-release-lunar-rqt_topic-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_topic-release/archive/release/lunar/rqt_topic/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bdd9acfd488861ceb83f89309ecb3f84abf1c5979a8fc70f02d6a1d11f9b9283')
+sha256sums=('67ab0b30fdef851892aa73955f88554f292cd5bdc6cdbe45f60705621b5aae01')
 
 build() {
   # Use ROS environment variables
