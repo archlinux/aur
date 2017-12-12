@@ -7,23 +7,22 @@
 _name=inadyn
 pkgname=inadyn-fork
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic DNS client with SSL/TLS support"
 arch=('i686' 'x86_64')
 url="http://troglobit.com/inadyn.html"
 license=('GPL')
-#depends=('ca-certificates' 'confuse' 'openssl')
-depends=('ca-certificates' 'confuse' 'libite' 'openssl')
+depends=('ca-certificates' 'confuse' 'openssl')
 provides=('inadyn')
 backup=('etc/inadyn.conf')
 source=(https://github.com/troglobit/inadyn/releases/download/v$pkgver/$_name-$pkgver.tar.xz
         inadyn.conf)
 sha256sums=('e7a74fcf8b7c069990940c0dc4d4d18071005be225667fdfcfa4156c44384579'
-            '4967d5fad250f38167b78c53862674afec7851f7c7bb648d00afe34db062bc60')
+            'a8203feb57e02d52f2ce4857e0ee8193b51da945b5f6966d223dd04dc6efdcbc')
 
 build() {
   cd $_name-$pkgver
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --enable-openssl
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --enable-openssl
   make
 }
 
@@ -31,9 +30,6 @@ package() {
   install -Dm600 inadyn.conf "$pkgdir/etc/inadyn.conf"
 
   cd $_name-$pkgver
-  #install -Dm644 examples/dyndns.conf "$pkgdir/usr/share/inadyn/examples/dyndns.conf"
-  #install -Dm644 examples/freedns.conf "$pkgdir/usr/share/inadyn/examples/freedns.conf"
-  #install -Dm644 examples/custom.conf "$pkgdir/usr/share/inadyn/examples/custom.conf"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install-strip
 }
 
