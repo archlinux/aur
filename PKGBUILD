@@ -2,7 +2,7 @@
 # Contributor: rtfreedman
 
 pkgname=csoundqt
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="A frontend for Csound featuring a highlighting editor with autocomplete, interactive widgets and integrated help"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("https://github.com/CsoundQt/CsoundQt/archive/$pkgver.tar.gz"
         "http://www.music.mcgill.ca/~gary/rtmidi/release/${_rtmidi}.tar.gz"
         "csoundqt-mime.xml"
         "csoundqt-icons.tar.gz")
-sha256sums=('fd7555c997ef0ec6fc89ba0e3008dd22ae7adf3a4d06fc79e65fd1f7291f3286'
+sha256sums=('adf9c48be719226ec553cc67019b191d1730f6643ee41ce2996cd3a88dd12eab'
             '6d08233ee50eec15bbcb59f1edcee56626264fb37590603bc88af4764e8dda9d'
             'a0a59226614b878e7c32890cb7c38a6fe48a97082baf4913297d4c3958a9b3ac'
             '2d78945761ff6f673ac93f7d879a691eb77466e73a40ef77e4a8f3c3c374d599'
