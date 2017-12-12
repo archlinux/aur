@@ -4,23 +4,16 @@ pkgdesc="ROS - The control toolbox contains modules that are useful across all c
 url='http://ros.org/wiki/control_toolbox'
 
 pkgname='ros-lunar-control-toolbox'
-pkgver='1.15.0'
+pkgver='1.16.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin
-  ros-lunar-roscpp
-  ros-lunar-control-msgs
-  ros-lunar-realtime-tools
-  ros-lunar-cmake-modules
-  ros-lunar-dynamic-reconfigure
-  ros-lunar-std-msgs
   ros-lunar-message-generation)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  tinyxml)
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-roscpp
   ros-lunar-control-msgs
@@ -41,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="control_toolbox-release-release-lunar-control_toolbox-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/control_toolbox-release/archive/release/lunar/control_toolbox/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f70698efc16544dd14861f5782efe48c47cc2dc98329ba20defa3df508ba0846')
+sha256sums=('b38d1b39b0328ba87e4f7c6b777039183c65a8a3007063f84b491a202a0f8610')
 
 build() {
   # Use ROS environment variables
@@ -49,14 +42,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -64,7 +57,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
