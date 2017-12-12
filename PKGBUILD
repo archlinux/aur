@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=9357.d668eb9d0
+pkgver=2.5.10.r22.g86beb2f31
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
@@ -34,7 +34,9 @@ md5sums=('SKIP' 'SKIP'
 
 pkgver() {
   cd $srcdir/$pkgname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  # use un-annotated tags per
+  # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
