@@ -3,7 +3,7 @@
 
 _gitname=poldi
 pkgname=${_gitname}-git
-pkgver=r122.ee253cc
+pkgver=r142.d9a9ff9
 pkgrel=1
 pkgdesc="PAM module for authentication using a smartcard"
 arch=('i686' 'x86_64')
@@ -56,6 +56,7 @@ package() {
 
   install -d -m 755 "$pkgdir/usr/lib/security"
   cp src/pam/pam_poldi.so "$pkgdir/usr/lib/security/"
+  install -d -m 755 "$pkgdir/usr/bin"
   cp tests/pam-test "$pkgdir/usr/bin/pam-test-poldi"
 
   install -d -m 755 "$pkgdir/etc/pam.d"

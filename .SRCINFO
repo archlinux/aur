@@ -1,6 +1,6 @@
 pkgbase = poldi-git
 	pkgdesc = PAM module for authentication using a smartcard
-	pkgver = r122.ee253cc
+	pkgver = r142.d9a9ff9
 	pkgrel = 1
 	url = http://git.gnupg.org/cgi-bin/gitweb.cgi?p=poldi.git
 	install = poldi.install
