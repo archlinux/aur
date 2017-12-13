@@ -6,7 +6,7 @@
 # The source is over 8 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
-pkgver=4.18.1
+pkgver=4.18.2
 # shellcheck disable=SC2034
 {
   pkgrel=1
