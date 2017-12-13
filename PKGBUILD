@@ -2,10 +2,10 @@
 # Contributor: Frederic Bezies < fredbezies at gmail dot com>
 # Contributor: Ian Brunelli (brunelli) <ian@brunelli.me>
 
-pkgname=lollypop-git
-_gitname=lollypop
+pkgname='lollypop-git'
+_gitname="${pkgname/-git}"
 pkgdesc='Lollypop is a new GNOME music playing application.'
-pkgver=0.9.244.r67.ga77dff23
+pkgver=0.9.304.r34.g917656fd
 pkgrel=1
 url='https://gnumdk.github.io/lollypop-web/'
 arch=('i686' 'x86_64')
@@ -20,6 +20,11 @@ optdepends=(
   'easytag: tag editing'
   'flatpak: Flatpak Portal'
   'gst-libav: FFmpeg plugin for GStreamer'
+  'gst-plugins-bad: GStreamer Multimedia Framework Bad Plugins'
+  'gst-plugins-base: GStreamer Multimedia Framework Base Plugins'
+  'gst-plugins-base-libs: GStreamer Multimedia Framework Base Plugin libraries'
+  'gst-plugins-good: GStreamer Multimedia Framework Good Plugins'
+  'gst-plugins-ugly: GStreamer Multimedia Framework Ugly Plugins'
   'kid3-qt: Store covers in tags'
   'libsecret: Last.FM support'
   'python-wikipedia: Wikipedia support'
@@ -28,14 +33,11 @@ optdepends=(
 conflicts=("${_gitname}")
 provides=("${_gitname}")
 source=(
-  "git://github.com/gnumdk/${_gitname}.git"
-  "git://github.com/gnumdk/${_gitname}-help.git"
-  "git://github.com/gnumdk/${_gitname}-po.git"
-  "git://github.com/gnumdk/${_gitname}-portal.git"
-  
+  "git+https://gitlab.gnome.org/gnumdk/${_gitname}.git"
+  "git+https://gitlab.gnome.org/gnumdk/${_gitname}-po.git"
+  "git+https://gitlab.gnome.org/gnumdk/${_gitname}-portal.git" 
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -49,10 +51,9 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${_gitname}"
+  cd "${_gitname}"
 
-  local submodules=(
-  'lollypop-help'
+  local -r submodules=(
   'lollypop-po'
   )
 
@@ -62,8 +63,9 @@ prepare() {
     git config "submodule.${submodule}.url" "${srcdir}/${module}"
     git submodule update "${submodule}"
   done
-  
-  cd "${srcdir}/${_gitname}"
+
+  cd ..
+  cd "${_gitname}"
 
   if [[ -d build ]]; then
     # This should be removed when 'meson [OPTIONS] ..' can be run
@@ -71,7 +73,8 @@ prepare() {
     rm -rf build
   fi
 
-  cd "${srcdir}/${_gitname}-portal"
+  cd ..
+  cd "${_gitname}-portal"
 
   if [[ -d build ]]; then
     # This should be removed when 'meson [OPTIONS] ..' can be run
@@ -81,21 +84,23 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
+  cd "${_gitname}"
 
   meson build --prefix=/usr
   
-  cd "${srcdir}/${_gitname}-portal"
+  cd ..
+  cd "${_gitname}-portal"
 
   meson build --prefix=/usr
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd "${_gitname}"
 
 	DESTDIR="$pkgdir" ninja -C build install
 	
-  cd "${srcdir}/${_gitname}-portal"
+  cd ..
+  cd "${_gitname}-portal"
 
 	DESTDIR="$pkgdir" ninja -C build install
 }
