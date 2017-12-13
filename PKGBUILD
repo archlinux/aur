@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=63.0.3239.90
-pkgrel=8
+pkgrel=12
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -209,7 +209,7 @@ declare -rgA _system_libs=(
   #[ffmpeg]=ffmpeg           # https://crbug.com/731766
   [flac]=flac
   #[freetype]=freetype2      # https://crbug.com/pdfium/733
-  [harfbuzz-ng]=harfbuzz-icu
+  #[harfbuzz-ng]=harfbuzz-icu
   #[icu]=icu                 
   [libdrm]=
   [libjpeg]=libjpeg
@@ -222,7 +222,7 @@ declare -rgA _system_libs=(
   [re2]=re2
   [snappy]=snappy
   [yasm]=
-  [zlib]=minizip
+  #[zlib]=minizip
 )
 depends+=(${_system_libs[@]})
 
@@ -398,7 +398,6 @@ build() {
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
     'remove_webcore_debug_symbols=true'
-    'exclude_unwind_tables=true'
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
     'link_pulseaudio=true'
@@ -416,15 +415,32 @@ build() {
     'enable_nacl=false'
     'enable_swiftshader=false'
     'enable_nacl_nonsfi=false'
-    'enable_remoting=false'
     'enable_google_now=false'
-    'enable_hotwording=false'
-    'enable_print_preview=false'
+    'enable_print_preview=true'
   )
+
+      _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
+      _c_compiler="${_clang_path}/clang"
+      _cpp_compiler="${_clang_path}/clang++"
+      export CXXFLAGS="${CXXFLAGS//-fno-plt/}"
+      export CFLAGS="${CFLAGS//-fno-plt/}"
+      CFLAGS+=' -Wno-unknown-warning-option'
+      CXXFLAGS+=' -Wno-unknown-warning-option'
+
+
+  # Export compilers
+  msg2 "Setup ${_compiler} compiler${_compiler_msg}"
+  export AR=ar
+  export NM=nm
+  export CC="${_c_compiler}"
+  export CXX="${_cpp_compiler}"
+
 
   python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
   out/Release/gn gen out/Release --args="${_flags[*]}" \
     --script-executable=/usr/bin/python2
+
+#python2 build/util/lastchange.py -m GPU_LISTS_VERSION --revision-id-only --header gpu/config/gpu_lists_version.h
 
   ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
 }
@@ -438,7 +454,6 @@ package() {
   cd "$srcdir/$name-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/$pk/$pk"
-  install -Dm644 out/Release/chrome.1 "$pkgdir/usr/share/man/man1/inox.1"
   install -Dm644 "$srcdir/inox.desktop" \
     "$pkgdir/usr/share/applications/inox.desktop"
 
