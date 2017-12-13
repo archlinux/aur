@@ -39,9 +39,11 @@ pkgbase = mpv-smb
 	source = mpv-0.27.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.27.0.tar.gz
 	source = 0001-opengl-backend-support-multiple-backends.patch
 	source = http://www.freehackers.org/~tnagy/release/waf-1.8.12
+	source = 0002-vaapi-Use-libva2-message-callbacks.patch
 	sha256sums = 341d8bf18b75c1f78d5b681480b5b7f5c8b87d97a0d4f53a5648ede9c219a49c
 	sha256sums = 609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a
 	sha256sums = 01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b
+	sha256sums = 68f84d609fbcc792ce5ee592f77b0acfbb0ac82f0e5dcadc9ff13213d8a31282
 
 pkgname = mpv-smb
 

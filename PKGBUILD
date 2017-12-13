@@ -26,16 +26,19 @@ conflicts=(mpv)
 options=('!emptydirs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
   '0001-opengl-backend-support-multiple-backends.patch'
-  "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}")
+  "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}"
+  "0002-vaapi-Use-libva2-message-callbacks.patch")
 sha256sums=('341d8bf18b75c1f78d5b681480b5b7f5c8b87d97a0d4f53a5648ede9c219a49c'
   '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a'
-  '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b')
+  '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b'
+  '68f84d609fbcc792ce5ee592f77b0acfbb0ac82f0e5dcadc9ff13213d8a31282')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
 
   # --opengl-backend: support multiple backends (#4384) (FS#53962)
   patch -Np1 < "${srcdir}"/0001-opengl-backend-support-multiple-backends.patch
+  patch -Np1 < "${srcdir}"/0002-vaapi-Use-libva2-message-callbacks.patch
 
   install -m755 "${srcdir}"/waf-${_waf_version} waf
 }
