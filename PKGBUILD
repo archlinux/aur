@@ -1,5 +1,6 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
+# Contributor: Earnestly <zibeon AT googlemail.com>
 pkgname=gprbuild-bootstrap-git
 pkgver=r3154.7e996a6c
 pkgrel=1
