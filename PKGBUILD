@@ -60,11 +60,13 @@ install="libvirt.install"
 validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F')
 source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz" #{,.asc}
 	libvirtd.conf.d
-	libvirtd-guests.conf.d)
+	libvirtd-guests.conf.d
+	libvirt.sysusers.d)
 #	"ae102b5d7bccd29bc6015a3e0acefeaa90d097ac.patch::https://libvirt.org/git/?p=libvirt.git;a=patch;h=ae102b5d7bccd29bc6015a3e0acefeaa90d097ac")
 sha256sums=('89fc63213291d329d537ea96e363fd609160da080322973bd1126d431ff63424'
             '9d0597bbf2bd7892420cebaf0563236fe1483b83ae95ee6263c1ce7f44a44134'
-            '0896c30100e9e40aee1eb4a2cf0cac2c0bdd5fd7b077b9d2680d90e77435ea66')
+            '0896c30100e9e40aee1eb4a2cf0cac2c0bdd5fd7b077b9d2680d90e77435ea66'
+            '6dc7907d6d4d883ac5ea15c195af673c97cff13f4c0493d23196e94bc87f04db')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -111,6 +113,7 @@ package() {
 
   install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirt-guests
+  install -D -m644 "$srcdir"/libvirt.sysusers.d "$pkgdir"/usr/lib/sysusers.d/libvirt.conf
 
   chown 0:102 "$pkgdir"/usr/share/polkit-1/rules.d
   chmod 0750 "$pkgdir"/usr/share/polkit-1/rules.d
