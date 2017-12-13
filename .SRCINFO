@@ -1,6 +1,6 @@
 pkgbase = phorward
-	pkgdesc = A free toolkit for parser development, lexical analysis, regular expressions and more.
-	pkgver = 0.20.0
+	pkgdesc = A free C library for parser development, lexical analysis, regular expressions and more.
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://phorward.info
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = phorward
 	arch = armv6h
 	license = BSD
 	optdepends = txt2tags: Documentation generator
-	source = https://phorward.info/products/phorward/phorward-0.20.0.tar.gz
-	md5sums = 1ceb888d26fb4330ec24be0e94048c05
+	source = https://phorward.info/download/phorward/phorward-0.21.0.tar.gz
+	md5sums = 0a584b69b01c2ada9249eb6b34da92a0
 
 pkgname = phorward
 

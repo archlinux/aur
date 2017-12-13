@@ -1,9 +1,9 @@
 # Maintainer: Jan Max Meyer <codepilot@phorward.info>
 pkgname=phorward
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 epoch=
-pkgdesc="A free toolkit for parser development, lexical analysis, regular expressions and more."
+pkgdesc="A free C library for parser development, lexical analysis, regular expressions and more."
 arch=('i686' 'x86_64' 'armv6h')
 url="https://phorward.info"
 license=('BSD')
@@ -11,8 +11,8 @@ makedepends=()
 checkdepends=()
 optdepends=('txt2tags: Documentation generator')
 #changelog=CHANGELOG
-source=("https://phorward.info/products/phorward/$pkgname-$pkgver.tar.gz")
-md5sums=('1ceb888d26fb4330ec24be0e94048c05')
+source=("https://phorward.info/download/phorward/$pkgname-$pkgver.tar.gz")
+md5sums=('0a584b69b01c2ada9249eb6b34da92a0')
 
 build() {
 	cd "$pkgname-$pkgver"
