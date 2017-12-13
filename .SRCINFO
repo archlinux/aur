@@ -1,0 +1,17 @@
+pkgbase = cpp-ethereum-git
+	pkgdesc = Ethereum C++ client
+	pkgver = r31888.04e8ca5af
+	pkgrel = 1
+	url = https://github.com/ethereum/cpp-ethereum/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake>=3.4.3
+	depends = leveldb
+	provides = cpp-ethereum
+	conflicts = cpp-ethereum
+	source = git://github.com/ethereum/cpp-ethereum/
+	sha512sums = SKIP
+
+pkgname = cpp-ethereum-git
+
