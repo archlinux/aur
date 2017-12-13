@@ -1,129 +1,123 @@
 # Maintainer: flurb
 # Previously pyamsoft <pyam(dot)soft(at)gmail(dot)com>
 
-# Please read the comments in the PKGBUILD if you wish to attempt to use
-# multiple versions of the dolphin emulator.
-#
-# Installing multiple versions alongside each other is not tested too often,
-# use at own risk. Please report build issues.
+# This build can be installed alongside dolphin-emu
+# Run using dolphin-emu-faster-melee
+# Make sure to set CPUS_DESIRED for faster compilation
+
+# Uses a modified version of https://github.com/FasterMelee/FasterMelee-installer (thank you!)
 
 pkgname=dolphin-emu-faster-melee
-# shellcheck disable=SC2034
-pkgver=5.0.3
-# shellcheck disable=SC2034
-pkgrel=4
-# shellcheck disable=SC2034
+pkgver=5.8.7
+pkgrel=1
 pkgdesc='The FasterMelee NetPlay build of the Dolphin Emulator'
-# shellcheck disable=SC2034
 arch=('x86_64')
-# shellcheck disable=SC2034
 url='http://fastermelee.net'
-# shellcheck disable=SC2034
 license=('GPL')
-# shellcheck disable=SC2034
-install="faster-melee.install"
-# shellcheck disable=SC2034
-makedepends=('cmake')
-# shellcheck disable=SC2034
-depends=('bluez-libs' 'enet' 'ffmpeg' 'libao' 'libevdev' 'mbedtls' 'miniupnpc'
-         'portaudio' 'sfml' 'soundtouch' 'xdg-utils' 'wxgtk')
-# shellcheck disable=SC2034
+makedepends=('cmake' 'wget')
+depends=('bluez-libs' 'curl' 'enet' 'ffmpeg' 'glu' 'libao' 'libevdev' 'libsystemd' 'libusb' 'libxext' 'mbedtls' 'mesa' 'miniupnpc' 'openal' 'portaudio' 'soundtouch' 'xdg-utils' 'wxgtk3')
 optdepends=('pulseaudio: PulseAudio backend')
-# shellcheck disable=SC2034
 options=('!emptydirs')
-# The commit for FasterMelee 4.3 (unchanged for FasterMelee 4.4)
-# shellcheck disable=SC2034
-source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=d462ca38724db65d7f92f3edbd16b6657291e420"
-        "GALE01r0.ini"
-        "GALE01r1.ini"
-        "GALE01r2.ini"
-        "GALE01.ini"
-        "MNCE02.ini"
-        "GKYE01.ini"
-        "NMNB01.ini"
-        "PALE02.ini"
-       )
-# shellcheck disable=SC2034
-sha256sums=('SKIP'
-            'be5bc1ed63fc6a030b39786e8dbc7074304a0b82c0333dfe27edb061b7e2dad8'
-            '1d8a2553af3581f3a80e36c95d8e01d334015ec7cd3cfc9c19b12e77230567b2'
-            'ac0c39f7fe27f1e232523b02347b0645404d40dc0e6ef328d1e37993ab94de0c'
-            '6cfb98a6592dbc597b90a7c0562c4179a5f2db5f7ce293e8fad1a0bd19e8c861'
-            '858158866197425edcda5b176aa4da289eca8e5422252145c40ea1337c4a1b63'
-            '1ad7113b73fe9298a037c020cad63dded4ba842565fb7477e6240cd5d58749e9'
-            '11b5a9d907207e9732d9d1b02d99487d0cbed416f033b248baa56c47391d79f6'
-            '858158866197425edcda5b176aa4da289eca8e5422252145c40ea1337c4a1b63')
-# shellcheck disable=SC2034
-provides=('dolphin-emu')
 
-# Pulled directly from github.com/ccl2of4
-# Thank you
+COMMITHASH="6ababb9222fb8bb9723ae137e1263a27196fcd47"
+
+source=("https://github.com/FasterMelee/Ishiiruka/archive/$COMMITHASH.tar.gz"
+        "https://github.com/FasterMelee/FasterMelee-installer/raw/master/config/$pkgver-fmconfig.tar.gz")
+
+sha256sums=('02a645a4cc91d0e5c3ff64e2c849c31fe439d9a8ca30e9b072d8899066ac4b66'
+            'b2ba6b74bbc6df5ffb86fb696cb3d1198c6a9b18862b3e2ace9ad1dd211032c3')
+
+CPUS_DESIRED=3
+
 prepare() {
-  # shellcheck disable=SC2154
-  cd "${srcdir}/${pkgname}" || {
-        msg "Failed to cd into ${srcdir}/${pkgname}"
-        return 1
-   }
+  cd "$srcdir"
+  
+  echo "Extracting..."
+  tar -xzf "$pkgver-fmconfig.tar.gz" && rm "$pkgver-fmconfig.tar.gz"	
+  echo "Extracting..."
+  tar -xzf "$COMMITHASH.tar.gz" && rm "$COMMITHASH.tar.gz"
+  mv "Ishiiruka-$COMMITHASH" Ishiiruka
+  cd Ishiiruka
+
+  # --- Temporary patch for updated glibc
+  echo "Patching xlocale.h requirement..."
+  sed -i "s|#define wxUSE_XLOCALE 1|#define wxUSE_XLOCALE 0|g" Externals/wxWidgets3/wx/wxcocoa.h
+  sed -i "s|#define wxUSE_XLOCALE 1|#define wxUSE_XLOCALE 0|g" Externals/wxWidgets3/wx/wxgtk.h
+  # ---
+
+  # --- Patch tarball to display correct hash to other netplay clients
+  echo "Patching tarball..."
+  sed -i "s|\${GIT_EXECUTABLE} rev-parse HEAD|echo $COMMITHASH|g" CMakeLists.txt
+  # --set scm_rev_str everywhere to actual commit hash when downloaded
+  sed -i "s|\${GIT_EXECUTABLE} describe --always --long --dirty|echo FM v$pkgver BETA|g" CMakeLists.txt
+  # ensures compatibility w/ netplay
+  sed -i "s|\${GIT_EXECUTABLE} rev-parse --abbrev-ref HEAD|echo HEAD|g" CMakeLists.txt
+  # ---
+  
+  # --- move necessary config files into the build folder
+  echo "Adding FM config files..."
+  mkdir build && cd build
+  mv ../../Binaries .
+  mv ../Data/dolphin-emu.png Binaries/
+  # ---
 }
 
 build() {
-  # shellcheck disable=SC2154
-  cd "${srcdir}/${pkgname}" || {
-        msg "Failed to cd into ${srcdir}/${pkgname}"
-        return 1
-  }
+ 
+  cd "$srcdir"
+  
+  if [ ! -d "$srcdir/bin" ]; then # ...then we need to compile !
+    # --- Attempts to determine the number of cores in the CPU. ---
+    # Source: https://gist.github.com/jj1bdx/5746298
+    # Linux and similar...
+    CPUS=$(getconf _NPROCESSORS_ONLN 2>/dev/null)
+    # FreeBSD and similar...
+    [ -z "$CPUS" ] && CPUS=$(getconf NPROCESSORS_ONLN)
+    # Solaris and similar...
+    [ -z "$CPUS" ] && CPUS=$(ksh93 -c 'getconf NPROCESSORS_ONLN')
+    # Give up...
+    [ -z "$CPUS" ] && CPUS=1
 
-  mkdir build
-  cd build || {
-        msg "Failed to cd into ${srcdir}/${pkgname}/build"
-        return 1
-  }
+    # --- for -j flag (# of cores utilized)
 
-  # To install multiple versions of the Dolphin emulator, use
-  #
-  #  -DCMAKE_INSTALL_PREFIX='/opt/dolphin-emu-faster-melee'
-  #
-  # instead of
-  #
-  #  -DCMAKE_INSTALL_PREFIX='/usr'
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_CXX_FLAGS='-fno-pie' \
-    -DENABLE_LTO='TRUE' \
-    -DUSE_SHARED_ENET='TRUE' \
-    -DDISTRIBUTOR='aur.archlinux.org'
-  make
+    echo ""
+    echo "CPU Threads detected: $CPUS"
+    if [ "$CPUS_DESIRED" -ge 1 ] 2> /dev/null && [ "$CPUS_DESIRED" -le $((CPUS + 1)) ] 2> /dev/null; then
+	    CPUS=$CPUS_DESIRED 
+    else
+	    CPUS=1
+    fi
+    echo "Using $CPUS thread(s)!"
+    
+    # --- cmake and compile
+    cd Ishiiruka/build
+    echo "cmaking..."
+    cmake .. -DLINUX_LOCAL_DEV=true \
+             -DDISTRIBUTOR='aur.archlinux.org'
+    echo "Compiling..."
+    make -j $CPUS
+
+    echo "Cleaning up..."
+    cd ../..
+    mv Ishiiruka/build/Binaries bin/
+    rm -rf Ishiiruka
+  fi
 }
 
 package() {
-  cd "${srcdir}/${pkgname}" || {
-        msg "Failed to cd into ${srcdir}/${pkgname}"
-        return 1
-  }
+  cd "$srcdir"
 
-  cd build || {
-        msg "Failed to cd into ${srcdir}/${pkgname}/build"
-        return 1
-  }
 
-  # shellcheck disable=SC2154
-  make DESTDIR="${pkgdir}" install
+	echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"' > 51-gcadapter.rules
+  install -Dm 644 "${srcdir}"/51-gcadapter.rules -t "${pkgdir}"/usr/lib/dev/rules.d/
 
-  # To install multiple versions of the Dolphin emulator,
-  # install the repository dolphin-emu first as it includes this file.
-  # Then comment out this line.
-  install -Dm 644 ../Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
+  install -d "${pkgdir}"/usr/share/
+  cp -r "${srcdir}"/bin "${pkgdir}"/usr/share/dolphin-emu-faster-melee/
+  
+  echo "#!/bin/sh
+/usr/share/dolphin-emu-faster-melee/dolphin-emu \"\$@\"" > dolphin-emu-faster-melee
+  install -Dm 755 "${srcdir}"/dolphin-emu-faster-melee -t "${pkgdir}"/usr/bin/
 
-  # Patch Gecko Codes
-  #
-  # To install multiple versions of the Dolphin emulator, use
-  #
-  # cp -f "${srcdir}/GALE01r2.ini" "${pkgdir}"/opt/dolphin-emu-faster-melee/dolphin-emu/sys/GameSettings/GALE01r2.ini
-  #
-  # Instead of the line below
-  cp -f "${srcdir}/GALE01r0.ini" "${pkgdir}"/usr/share/dolphin-emu/sys/GameSettings/GALE01r0.ini
-  cp -f "${srcdir}/GALE01r1.ini" "${pkgdir}"/usr/share/dolphin-emu/sys/GameSettings/GALE01r1.ini
-  cp -f "${srcdir}/GALE01r2.ini" "${pkgdir}"/usr/share/dolphin-emu/sys/GameSettings/GALE01r2.ini
 }
 
 # vim: ts=2 sw=2 et:
