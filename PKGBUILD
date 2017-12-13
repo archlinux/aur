@@ -40,6 +40,6 @@ package () {
 	cd "${srcdir}/${gitname}"
 	cd build/
 
-	install -D usr/bin/eth ${pkgdir}/usr/bin/eth
+	install -D eth/eth ${pkgdir}/usr/bin/eth
 }
 
