@@ -9,11 +9,9 @@
 # different system ffmpeg. You can build mpv against the system ffmpeg instead
 # by uncommenting the second line below, but this may sometimes fail to build
 # when mpv depends on a feature that hasn't been merged into upstream ffmpeg.
-_ffmpeg_depend=ffmpeg-mpv-full-git
-#_ffmpeg_depend=ffmpeg-full-git
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.27.0.r515.g39bc954488
+pkgver=0.27.0.r531.g26cdd52801
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -21,7 +19,7 @@ arch=('x86_64')
 license=('GPL')
 url='http://mpv.io'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
-depends=('pulseaudio' 'lcms2' "$_ffmpeg_depend" 'mujs' 'libdvdread' 'libgl' 'libvdpau'
+depends=('pulseaudio' 'crossc' 'lcms2' "$_ffmpeg_depend" 'mujs' 'libdvdread' 'libgl' 'libvdpau'
          'libxinerama' 'libxv' 'libxkbcommon' 'libva'  'libass' 'uchardet' 
 	 'wayland' 'v4l-utils' 'lua52' 'rsound' 'sndio' 'libdvdnav' 'libcdio-paranoia' 'libbluray' 'libxss'
          'enca' 'libguess' 'harfbuzz' 'libxrandr' 'rubberband' 'smbclient' "${_undetected_depends[@]}")
@@ -36,7 +34,7 @@ optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'adobe-source-sans-pro-fonts: Font as shown in the conf'
             )
 
-makedepends=('mesa' 'python-docutils' 'ladspa' 'x264' 'x265' 'openal' 'jack'
+makedepends=('mesa' 'python-docutils' 'ladspa' 'x264-git' 'x265' 'openal' 'jack'
              'samba' 'acpitool' 'inxi' 'git' 'vapoursynth' 'libvdpau' 'libva'
               'streamlink' 'youtube-dl')
 # check kind of graphic card
@@ -48,7 +46,6 @@ fi
 provides=('mpv' 'mpv-git')
 conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' 'mpv-ahjolinna' )
 options=('!emptydirs')
-install=mpv.install
 source=('git+https://github.com/mpv-player/mpv'
         'git+https://github.com/ahjolinna/mpv-conf'
         'find-deps.py'
@@ -88,13 +85,6 @@ msg2 "Running bootstrap. Please wait..."
 
 build() {
   cd "${srcdir}/$_gitname"
-if [[ "$_ffmpeg_depend" = *-mpv* ]]; then
-      export CFLAGS="${CFLAGS} -I/usr/include/ffmpeg-mpv-git" \
-      export LDFLAGS="${LDFLAGS} -L/usr/lib/ffmpeg-mpv-git" \
-      export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}/usr/lib/ffmpeg-mpv-git/pkgconfig"
-  else
-    _opt_extra_flags+=("--enable-ffmpeg-upstream")
-  fi
  ./waf configure \
 	            --color=yes \
 	            --prefix=/usr \
@@ -115,6 +105,7 @@ if [[ "$_ffmpeg_depend" = *-mpv* ]]; then
 	            --enable-iconv \
 	            --enable-libsmbclient \
 	            --enable-lua \
+              --enable-crossc \
 	            --enable-libass \
 	            --enable-libass-osd \
 	            --enable-encoding \
@@ -181,14 +172,13 @@ if [[ "$_ffmpeg_depend" = *-mpv* ]]; then
 	            --enable-libv4l2 \
 	            --enable-audio-input \
 	            --enable-dvbin \
-	            --disable-apple-remote \
-              "${_opt_extra_flags[@]}"
-	
+	            --disable-apple-remote
+
 	./waf build
 }
 package() {
   cd "$srcdir/$_gitname"
-  ./waf install --destdir="${pkgdir}" 
+  ./waf install --destdir="${pkgdir}"
 
 
  # install the .desktop files
@@ -198,10 +188,8 @@ package() {
   install -Dm644 "${srcdir}/mpv-MVtools.desktop" "${pkgdir}/usr/share/applications/mpv-MVtools.desktop"
   install -Dm644 "${srcdir}/mpv-CUDA.desktop" "${pkgdir}/usr/share/applications/mpv-CUDA.desktop"
   install -Dm644 "${srcdir}/mpv-SVP.desktop" "${pkgdir}/usr/share/applications/mpv-SVP.desktop"
-  
-  
-  
-  
+
+
   # install BT.709 ICC profiles (https://github.com/mpv-player/mpv/issues/534#issuecomment-35823203)
 
    cd ${srcdir}/mpv-conf/PKGBUILD
@@ -209,16 +197,14 @@ package() {
    install -Dm755 "BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.gamma.1.95.icc"
    install -Dm755 "BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.icc"
    install -Dm755 "BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.linear.icc"
-  
-  
+
     #install ahjolinna "config-build" files
  cp -R ${srcdir}/mpv-conf/mpv/etc/* ${pkgdir}/etc/mpv
     install -d "${pkgdir}/etc/mpv/"
-  
 
   # Update dependencies automatically based on dynamic libraries
   _detected_depends=($("$srcdir"/find-deps.py "$pkgdir"/usr/{bin/mpv,lib/libmpv.so}))
-  
+
   msg 'Auto-detected dependencies:'
   echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
   depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
