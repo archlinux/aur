@@ -2,16 +2,16 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=3.1.1-RELEASE
+_swiftver=4.0.3-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=5
+pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses' 'libblocksruntime')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl'
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=5.0' 'python2-six' 'perl'
              'python2-sphinx' 'python2-requests' 'rsync')
 
 source=(
@@ -25,36 +25,34 @@ source=(
     "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
+    "swift-compiler-rt-${_swiftver}.tar.gz::https://github.com/apple/swift-compiler-rt/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "sourcekit_link_order.patch"
     "icu59.patch"
-    "sphinx1.6.patch"
     "lldb_missing_include.patch"
     "glibc-2.26.patch"
-    "clang5.patch"
+    "glibc-2.26-compiler-rt-compat.patch"
 )
-sha256sums=('fe4dcb9ee1247acd6653fe193684e9cb212c6551e0b0b44849899bec99df3297'
-            '385b587b825adae9a9f7e5789e151ae0554e6e62f2f2f81ff3b623ef578b39bc'
-            'bf9ec0c157501eea69ea1eb3c4b8bf56058110ec6c6a870d81d53868b67d1b96'
-            '498fd3cc048759dbdf3319a66bcca05de19d037ab8e5129be68897b77ade449d'
-            '51db8067f11976a7ca38a6ff9f173d3d9e3df290991be87835cdc003e0b62e4e'
-            'a5b0a69e3785ce483053a7c1d2b2fe3c6ccc81832a930afee7969a9147316165'
-            '8ba05b5399b266615cf0d2055698dd3f23b57111120e98419f56139301981914'
-            '188272552bf35c411c73ad35345e0e8893e67d8d098a805fb26ad220291421e3'
-            '36769d2db180ec1de8c8a4a84c9928badcfc5f0a94b1ae35e7287d4e10ee93b4'
-            'b711a5afaf027ac2cfefc144cd3760dd1d6a99689864be6ecb73a62cbb21b04f'
-            'fff8f596a7104ba5fc202dc5a80683032a33a298cf9ede7fdd12f7faf629a45c'
-            'c9aa6e167a57ed31002471204d39bf24bb4ebecc38322571515ac73f02b237b6'
-            '3fedb626b375f6ad8b4601abd336f4560718a9c9134716f0c3a4e823b8c12857'
-            '3c06dcc15bef6cbda7ce7b8a6a4f89bd16599ddbd1b964add9f2048cdda4700b'
+sha256sums=('026d596dd4a24580a5e442409e8c58259197bd73ddbb77e5aade96da982ea39b'
+            'a611487a82636142bc1ea8ef5b21401a5c75e57fb0dbf041ef8f2e85a472db2e'
+            'c940bd48c88f71622fb00167d92a619dd1614093893e1a09982c08da42259404'
+            '7f695a33ee5cb75be18ba962045e1b57405abf17bd354c3e2a15c29b4b296bcb'
+            'e95d0b54a0e897e768c9437dd67d56ec887909d0294cf6536ba240accd0d294f'
+            '92001e449b54a47516086a4e7d5f575bffa2847ae1f658540b2ec6f6dee6c6e7'
+            '4c26d333a01c239de8aa96b0536b7ff7218b7a322851a7d3b3b91b59fb4ce244'
+            '868c4e23842218c895d333e7d6dbaa1c583b5a1ac2a32b26fff42f4a5c577357'
+            'c20877e7fc658ef872d6acc9d1cad0d93a683bfeaef28e2bf665166540e539e5'
+            '0a6d503f7ec4ce367a4aa63f68478ce7c998ec36a60b0b01445e048ab69600a8'
+            '1c2da685e8f424cb4460ed1daaf0c308f8deff63e7a3716c8a881cef60fbc7d8'
+            '7c720b23d542d34296ee4cf5290e05c7c7c55b7e8187dfaa5b185ea021c4ab9d'
+            '18b7895fba15702419e86ae593531669c3966d1c8aa9a83361c5c8ef9d54f893'
             'be61c69ae7bb626f7f07f95cb5c0074013725c1b90a3ca68aa0c0f989d75e41e'
-            'f3eca044354ee371072aaf81452468cce1ff2abf9efc746db964dfdb400f88ab'
-            '78da7fe1f8bffc729168c8224707cc14ee460c7adcba9a48fd77e2b22614fca3')
+            '215473272ec550c58fd2852c3e1c4aa4482a7d2b4980308df14f4a18676775a9'
+            '2311adf234f52831af3b326d0d589fceae0a5336aa8576fdfd62afe71c195124')
 
 prepare() {
     # Use python2 where appropriate
     find "$srcdir" -type f -print0 | \
-         xargs -0 sed -i 's|/usr/bin/env python$|&2|'
+         xargs -0 sed -i 's|/usr/bin/env python$|&2|;s|/usr/bin/python$|&2|'
     find "$srcdir/swift-lldb-swift-${_swiftver}" -name Makefile -print0 | \
          xargs -0 sed -i 's|python-config|python2-config|g'
     sed -i '/^cmake_minimum_required/a set(Python_ADDITIONAL_VERSIONS 2.7)' \
@@ -66,7 +64,7 @@ prepare() {
          "$srcdir/swift-swift-${_swiftver}/test/sil-passpipeline-dump/basic.test-sh"
 
     # Use directory names which build-script expects
-    for sdir in llvm clang lldb cmark llbuild; do
+    for sdir in llvm clang lldb cmark llbuild compiler-rt; do
         ln -sf swift-${sdir}-swift-${_swiftver} ${sdir}
     done
     for sdir in corelibs-xctest corelibs-foundation corelibs-libdispatch \
@@ -77,23 +75,18 @@ prepare() {
     ln -sf swift-swift-${_swiftver} swift
     ln -sf swift-package-manager-swift-${_swiftver} swiftpm
 
-    # Fix library link order for sourcekitd-test
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/sourcekit_link_order.patch" )
-
     # ICU 59 changed the type of UChar to char16_t
     ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/icu59.patch" )
-
-    # Fix documentation build against Sphinx 1.6
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/sphinx1.6.patch" )
 
     # LLDB is missing an include for std::bind with libstdc++/gcc7
     ( cd "${srcdir}/lldb" && patch -p1 -i "${srcdir}/lldb_missing_include.patch" )
 
-    # glibc 2.26 removed the non-standard xlocale.h and SIGUNUSED
+    # glibc 2.26 compatibility fixes
     ( cd "${srcdir}" && patch -p1 -i "${srcdir}/glibc-2.26.patch" )
+    ( cd "${srcdir}/compiler-rt" && patch -p1 -i "${srcdir}/glibc-2.26-compiler-rt-compat.patch" )
 
-    # Clang 5.0 fixed an obscure issue with standards-compliance
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/clang5.patch" )
+    # Skip failing test for now (see https://bugs.swift.org/browse/SR-6176)
+    rm "${srcdir}/swift/test/Constraints/tuple_arguments.swift"
 }
 
 _common_build_params=(
@@ -119,14 +112,11 @@ build() {
     cd "$srcdir/swift"
 
     export PATH="$PATH:/usr/bin/core_perl"
-    _build_script_wrapper -R "${_common_build_params[@]}"
-
-    # Run the build a second time, this time with SourceKit enabled
-    # This is required because SourceKit depends on libdispatch, which
-    # in turn depends on swift, where SourceKit is located
+    # sourcekitd-test and sourcekitd-repl currently don't link
+    # correctly on Linux.  Disable for now :(
     _build_script_wrapper -R "${_common_build_params[@]}" \
-        --extra-cmake-options="-DSWIFT_BUILD_SOURCEKIT=TRUE" \
-        --reconfigure
+        --extra-cmake-options="-DSWIFT_BUILD_SOURCEKIT=FALSE" \
+        --skip-test-sourcekit
 }
 
 check() {
@@ -138,7 +128,7 @@ check() {
     sed -i "/import_module('_lldb')/s/_lldb/lldb.&/" \
         "${srcdir}/build/Ninja-ReleaseAssert/lldb-linux-${CARCH}/lib/python2.7/site-packages/lldb/__init__.py"
 
-    _build_script_wrapper -R -t
+    _build_script_wrapper -R -t --skip-test-sourcekit
 }
 
 package_swift() {
@@ -163,7 +153,7 @@ package_swift() {
         ln -s swift "$pkgdir/usr/bin/swiftc"
         ln -s swift "$pkgdir/usr/bin/swift-autolink-extract"
 
-        install -m644 lib/libsourcekitdInProc.so "$pkgdir/usr/lib"
+        #install -m644 lib/libsourcekitdInProc.so "$pkgdir/usr/lib"
 
         install -dm755 "$pkgdir/usr/share/man/man1"
         install -m644 docs/tools/swift.1 "$pkgdir/usr/share/man/man1"
