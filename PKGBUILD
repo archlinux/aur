@@ -7,7 +7,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=3.3.5
+pkgver=3.4.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -18,7 +18,7 @@ depends=('bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'lame' 'libmodplug'
          'libtheora' 'libva-headless'
          'libwebp' 'opencore-amr' 'openjpeg2' 'opus'
-         'schroedinger' 'speex' 'v4l-utils' 'xz' 'zlib'
+         'speex' 'v4l-utils' 'xz' 'zlib'
          'libbluray.so'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
          'libx264.so' 'libx265.so' 'libxvidcore.so'
@@ -29,16 +29,13 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so' "ffmpeg")
 conflicts=('ffmpeg')
 replaces=('ffmpeg')
-source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz"
-        "openjpeg223.patch")
+source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
 #validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('a893490c3a8a7caaa9c47373b789c0335d0ac3572f2ba61059de842b9e45d802'
-            '0320d866ed10b19b14ebed45ececf2d65845187ff9d98deb74d5c0b2e1b70c0a')
+sha256sums=('5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
 
-  patch -Np1 -i ../openjpeg223.patch
 }
 
 build() {
@@ -69,7 +66,6 @@ build() {
     --enable-libopenjpeg \
     --enable-libopus \
     --disable-libpulse \
-    --enable-libschroedinger \
     --disable-libsoxr \
     --enable-libspeex \
     --disable-libssh \
