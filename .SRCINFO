@@ -1,0 +1,14 @@
+pkgbase = zencash-swing-wallet-ui-bin
+	pkgdesc = Desktop GUI Wallet for ZenCash
+	pkgver = 0.75.3
+	pkgrel = 1
+	url = https://github.com/ZencashOfficial/zencash-swing-wallet-ui
+	arch = any
+	license = MIT
+	depends = zencash,
+	depends = java-runtime
+	source = https://zencashofficial.github.io/repo/pool/main/z/zencash-desktop-gui-wallet/zencash-desktop-gui-wallet_0.75.3_all.deb
+	sha512sums = e49796f6fe4ed6cb3247d6c642c899b1e2be43ec5dc718500addeb420c73645c9d78d3baa3c4e8f329ad333ff9de25374cec575b827cc8ea927b4410dbe868c7
+
+pkgname = zencash-swing-wallet-ui-bin
+
