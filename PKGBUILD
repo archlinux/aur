@@ -88,11 +88,11 @@ if $_testing; then
   _dev_suffix="beta3"
   pkgrel=3
 else
-  _pkgvermajmin="5.9"
-  _pkgverpatch=".1"
+  _pkgvermajmin="5.10"
+  _pkgverpatch=".0"
   # {alpha/beta/beta2/rc}
   _dev_suffix=""
-  pkgrel=5
+  pkgrel=4
 fi
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
@@ -184,16 +184,11 @@ $_debug && _additional_configure_flags="$_additional_configure_flags -force-debu
 _libspkgname="${pkgname}-target-libs"
 _libsdebugpkgname="${pkgname}-target-libs-debug"
 _packaginguser=$(whoami)
-if $_testing; then
-  _qt_package_name_prefix="qt-everywhere-src"
-  _source_package_name=${_qt_package_name_prefix}-${_pkgver}
-else
-  _qt_package_name_prefix="qt-everywhere-opensource-src"
-  if [[ -n ${_dev_suffix} ]]; then
+_qt_package_name_prefix="qt-everywhere-src"
+if [[ -n ${_dev_suffix} ]]; then
     _pkgver=${pkgver}-${_dev_suffix}
-  fi
-  _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 fi
+_source_package_name=${_qt_package_name_prefix}-${_pkgver}
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
 
@@ -316,20 +311,14 @@ _core_configure_options="\
                  \
                  -reduce-exports"
 
-if ! $_testing; then
-  _core_configure_options="\
-                    $_core_configure_options \
-                    -reduce-relocations"
-fi
-
 if $_testing; then
   _tar_xz_sha256="7139adf57f703761fd4cac29bf6ee81a10b93c1fa11e5643d4c98e1367e20972"
 else
-  _tar_xz_sha256="7b41a37d4fe5e120cdb7114862c0153f86c07abbec8db71500443d2ce0c89795"
+  _tar_xz_sha256="936d4cf5d577298f4f9fdb220e85b008ae321554a5fcd38072dc327a7296230e"
 fi
 
 if ! $_build_from_head; then
-  source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${pkgver}-${_dev_suffix}/single/${_source_package_name}.tar.xz")
+  source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
   sha256sums=("SKIP" "$_tar_xz_sha256")
 fi
 
@@ -407,37 +396,6 @@ if ! $_target_host; then
   # Get our mkspec
   rm -Rf $_mkspec_dir
   cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
-fi
-
-if $_patching; then
-  # build qtwebengine with our mkspec
-
-if ! $_testing; then
-  echo "INCLUDEPATH += ${_sysroot}/usr/include/openssl-1.0" >> ${_basedir}/src/network/network.pro
-  # hard coded off, so we have to hard code it on
-  local _reducerelocations="${_basedir}/config.tests/unix/reduce_relocs/bsymbolic_functions.c"
-  sed -i "s/error/warning/" ${_reducerelocations} || exit 1
-fi
-
-  cd ${_basedir}
-  #patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
-
-if ! $_testing; then
-  cd ${_declarativedir}
-  bunzip2 ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch.bz2 -c > ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch
-  patch -p1 < ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch
-fi
-  #patch -p1 < ${startdir}/0001-Fix-crash-in-QQuickPixmapReader-friends.patch
-  #patch -p1 < ${startdir}/0001-Fix-build-with-qreal-as-float.patch
-
-  cd ${_waylanddir}
-  patch -p1 < ${startdir}/0001-Put-xcomposite-config-test-on-a-leash.patch
-  #patch -p1 < ${startdir}/0001-Fix-brcm-egl-build-by-correcting-commit-usage.patch
-  #patch -p1 < ${startdir}/0001-Avoid-double-deletion-of-mBuffer.patch
-
-  #cd ${_webenginedir}
-  # reverse patch which breaks dynamic loading of EGL/GLESvs with rpi proprietary drivers
-  #patch -p1 < ${startdir}/0001-Revert-Fully-qualify-libEGL.so.1-libEGLESv2.so.2-lib.patch
 fi
 
   rm -Rf ${_bindir}
