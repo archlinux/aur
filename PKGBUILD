@@ -6,8 +6,8 @@ pkgdesc='Microsoft "compress.exe/expand.exe" compatible (de)compressor'
 arch=("i686" "x86_64")
 url="http://martin.hinner.info/mscompress/"
 license=("GPL2")
+#source=("ftp://ftp.penguin.cz/pub/users/mhi/mscompress/$pkgname-$pkgver.tar.bz2")
 source=("https://mirrors.kernel.org/gentoo/distfiles/$pkgname-$pkgver.tar.bz2")
-md5sums=('e85fe2fb0df95a7a921ecd867933ff89')
 sha1sums=('76fd76b08ca62b20cf4aacef78e5030a4b08c285')
 
 build() {

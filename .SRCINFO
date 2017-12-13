@@ -7,6 +7,7 @@ pkgbase = mscompress
 	arch = x86_64
 	license = GPL2
 	source = https://mirrors.kernel.org/gentoo/distfiles/mscompress-0.3.tar.bz2
+	sha1sums = 76fd76b08ca62b20cf4aacef78e5030a4b08c285
 
 pkgname = mscompress
 
