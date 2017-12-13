@@ -5,7 +5,7 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=7
+pkgrel=8
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
@@ -60,6 +60,9 @@ SRC += environ.c' src/libc/crt0/makefile
 
   # be verbose
   #sed -i '/@$(MISC) echo - / d; s/^\t@/\t/' src/makefile.inc src/libc/makefile src/utils/makefile
+
+  # optimize for pentium
+  sed -i "s/march=i386/march=i586/" src/makefile.cfg
 }
 
 build() {
