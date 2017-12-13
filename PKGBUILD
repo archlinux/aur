@@ -3,7 +3,7 @@
 # Contributor: William Giokas (KaiSforza) <1007380@gmail.com>
 
 pkgname=libbitcoin-network
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Bitcoin P2P Network Library"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-network"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('cab9142d2b94019c824365c0b39d7e31dbc9aaeb98c6b4bf22ce32b829395c19')
+sha256sums=('3ef864289fc0085dd695f34e0a2dc8619011b3d6dbd7cffe1e19651ceff27ed9')
 
 # half of available processing units or one if only one is available
 _nproc=$(($(nproc)/2))
