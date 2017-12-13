@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-cz1
+	pkgdesc = A Czech male voice for the MBROLA synthesizer
+	pkgver = 991020
+	pkgrel = 1
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-cz
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/cz1/cz1-991020.zip
+	md5sums = e9ffbbc4411e247d505e760773d11b31
+
+pkgname = mbrola-voices-cz1
+
