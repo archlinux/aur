@@ -1,0 +1,27 @@
+pkgbase = openteacher
+	pkgdesc = learning aid a variety of subjects
+	pkgver = 3.3
+	pkgrel = 1
+	url = http://openteacher.org
+	arch = any
+	license = GPL3
+	depends = desktop-file-utils
+	depends = espeak
+	depends = hicolor-icon-theme
+	depends = python2-chardet
+	depends = python2-docutils
+	depends = python2-opengl
+	depends = python2-pillow
+	depends = python2-pyenchant
+	depends = python2-pyqt5
+	depends = python2-urwid
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = qt5-webkit
+	depends = tesseract
+	depends = xdg-utils
+	source = https://sourceforge.net/projects/openteacher/files/openteacher/3.3/openteacher_3.3_linux.tar.gz
+	sha256sums = 030c3839e9ce6be2c8b21c125b7acd6d91a6737bec96b0fb95839251f2f940dd
+
+pkgname = openteacher
+
