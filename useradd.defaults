@@ -1,6 +1,6 @@
 # useradd defaults file for ArchLinux
 # original changes by TomK
-GROUP=100
+GROUP=users
 HOME=/home
 INACTIVE=-1
 EXPIRE=
