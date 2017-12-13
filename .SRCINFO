@@ -1,7 +1,7 @@
 pkgbase = msbuild-bin
 	pkgdesc = Microsoft Build Engine
 	pkgver = 0.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dotnet/corefx/blob/8b6efd4a91288d94b13f9757c6f1a3b356d39dd8/build.sh#L102
 	arch = i686
 	arch = x86_64

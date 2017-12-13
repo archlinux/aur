@@ -1,6 +1,6 @@
 pkgname=msbuild-bin
 pkgver=0.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Build Engine"
 arch=(i686 x86_64)
 license=('MIT')
@@ -27,6 +27,7 @@ mono /usr/share/msbuild/MSBuild.exe "$@"
 ' > "$pkgdir/usr/bin/MSBuild.exe"
 chmod +x "$pkgdir/usr/bin/MSBuild.exe"
 ln -s MSBuild.exe "$pkgdir/usr/bin/msbuild.exe"
+ln -s MSBuild.exe "$pkgdir/usr/bin/msbuild"
 }
 
 md5sums=('14345c2f2dc53aa902a89419e234d2d4')
