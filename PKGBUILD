@@ -16,8 +16,8 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r17.patch'
+  'chromium-FORTIFY_SOURCE-r2.patch'
+  'chromium-gn-bootstrap-r17.patch'
   'chromium-gcc5-r2.patch'
 )
 sha512sums=('09e05aec663de94633fb7b658154a5b0146159dea0f434ef412405530274daefc5e554be8120653b840d2b55f5e35202be1a653ece7796d00956df58bc7608ad'
