@@ -1,5 +1,5 @@
 --- app.ini.sample
-+++ app.ini.sample	2017-12-11 15:07:54.936666668 +0300
++++ app.ini.sample	2017-12-14 01:55:01.863333335 +0300
 @@ -7,10 +7,10 @@
  ; Change it if you run locally
  RUN_USER = git
@@ -63,7 +63,7 @@
 -LFS_CONTENT_PATH = data/lfs
 +LFS_CONTENT_PATH = /var/lib/gitea/data/lfs
  ; LFS authentication secret, changed this to yourself.
- LFS_JWT_SECRET   =
+ LFS_JWT_SECRET =
  
 @@ -189,22 +189,22 @@
  DB_TYPE = mysql

@@ -10,7 +10,7 @@ _gourl="code.gitea.io"
 
 pkgname=gitea-git
 pkgrel=1
-pkgver=r5932.9f033bf2b
+pkgver=r5939.b6d2243ac
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
 license=("MIT")
@@ -33,8 +33,8 @@ source=("git://github.com/go-gitea/gitea.git"
         "01-adjust-config.patch"
         "02-adjust-service.patch")
 sha512sums=('SKIP'
-            'd80d9bb906337d89f09edfc4e958ee75213d957e386ae8f420098e4d6a5b79ed6834ac1be28e69d8b99cb6614a36c87de1880ac262134273020e4f031c38f5cd'
-            'db4ad287cfc9f42495bd20771135e140656271b3678827e3e751ec023c1e90b99bfd097d57562b19fc8fa983bd8be877350ef7dcb071c14c310800a7485e9896')
+            '5d1c61eb21315887a5362ac061ce600c42aa915136c7261ac1748eacb6f0ff53bd668e1626d9e3b98b7b32741f21ee71101bd024b73d999725b208164cc28e82'
+            '24c0a5701562503d96ea09c7a6cd9db1a7a2140c1daa5ebb1b1e7b7e52387551e81601a867b3f726570aea815f1d8b84ade50230268b5420f036760981e13ccf')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
