@@ -11,8 +11,8 @@ _commit='743b771c559c6101544f7358a42c8c519fe4b0db'
 # Bump this to latest major release for signed tag verification,
 # the commit count is handled by pkgver() function.
 pkgver=235.38
-pkgrel=2
-arch=('i686' 'x86_64')
+pkgrel=4
+arch=('x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' 'libelf'
@@ -192,7 +192,10 @@ package_systemd-selinux() {
   install -Dm644 "$srcdir/initcpio-install-udev" "$pkgdir/usr/lib/initcpio/install/udev"
   install -Dm644 "$srcdir/initcpio-hook-udev" "$pkgdir/usr/lib/initcpio/hooks/udev"
 
-  # ensure proper permissions for /var/log/journal. This is only to placate
+  # ensure proper permissions for /var/log/journal
+  # The permissions are stored with named group by tar, so this works with
+  # users and groups populated by systemd-sysusers. This is only to prevent a
+  # warning from pacman as permissions are set by systemd-tmpfiles anyway.
   chown root:systemd-journal "$pkgdir/var/log/journal"
   chmod 2755 "$pkgdir/var/log/journal"
 

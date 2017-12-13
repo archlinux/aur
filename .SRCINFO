@@ -1,8 +1,7 @@
 pkgbase = systemd-selinux
 	pkgver = 235.38
-	pkgrel = 2
+	pkgrel = 4
 	url = https://www.github.com/systemd/systemd
-	arch = i686
 	arch = x86_64
 	groups = selinux
 	makedepends = acl
@@ -91,7 +90,7 @@ pkgname = systemd-selinux
 	provides = nss-myhostname
 	provides = systemd-tools=235.38
 	provides = udev=235.38
-	provides = systemd=235.38-2
+	provides = systemd=235.38-4
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -120,15 +119,15 @@ pkgname = libsystemd-selinux
 	depends = libselinux
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = libsystemd=235.38-2
+	provides = libsystemd=235.38-4
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=235.38-2
-	provides = selinux-systemd-sysvcompat=235.38-2
+	provides = systemd-sysvcompat=235.38-4
+	provides = selinux-systemd-sysvcompat=235.38-4
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
