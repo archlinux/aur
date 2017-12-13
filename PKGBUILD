@@ -2,7 +2,7 @@
 
 # Main package information
 pkgname=scylla
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Scylla is an open source NoSQL drop-in replacement for Apache Cassandra with fast throughput and low latency"
 arch=('x86_64')
