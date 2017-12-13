@@ -1,12 +1,3 @@
-post_upgrade(){
-	update-desktop-database -q
-}
-
-post_remove() {
-	update-desktop-database -q
-}
-
 post_install() {
 	echo "Run imdb-thumbnailer --set-thunar if you use thunar, and imdb-thumbnailer --set-nautilus if you use nautilus"
-	update-desktop-database -q
 }
