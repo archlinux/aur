@@ -15,12 +15,12 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR='/usr/lib' -DCMAKE_BUILD_TYPE=Release
   make cbor cbor_shared
 }
 
 package() {
-  cd "${srcdir}/libcbor-c-support/build"
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
 
   make DESTDIR="${pkgdir}/" install
 }
