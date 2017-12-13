@@ -9,7 +9,7 @@ pkgdesc="A personal and small-business financial-accounting application with Bit
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('guile' 'slib' 'goffice0.8' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'libgnome-keyring' 'libgnomecanvas' 'dconf', 'enchant1.6')
+depends=('guile' 'slib' 'goffice0.8' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'libgnome-keyring' 'libgnomecanvas' 'dconf' 'enchant1.6')
 makedepends=('intltool' 'gcc' 'pkgconfig')
 optdepends=('evince: for print preview'
 			'yelp: help browser'
