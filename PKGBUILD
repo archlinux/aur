@@ -60,13 +60,11 @@ install="libvirt.install"
 validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F')
 source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz" #{,.asc}
 	libvirtd.conf.d
-	libvirtd-guests.conf.d
-	libvirt.tmpfiles.d)
+	libvirtd-guests.conf.d)
 #	"ae102b5d7bccd29bc6015a3e0acefeaa90d097ac.patch::https://libvirt.org/git/?p=libvirt.git;a=patch;h=ae102b5d7bccd29bc6015a3e0acefeaa90d097ac")
 sha256sums=('89fc63213291d329d537ea96e363fd609160da080322973bd1126d431ff63424'
             '9d0597bbf2bd7892420cebaf0563236fe1483b83ae95ee6263c1ce7f44a44134'
-            '0896c30100e9e40aee1eb4a2cf0cac2c0bdd5fd7b077b9d2680d90e77435ea66'
-            '5c26353833944db8dc97aa63843734519d6521bd8d88497d94d910ee9d3169d8')
+            '0896c30100e9e40aee1eb4a2cf0cac2c0bdd5fd7b077b9d2680d90e77435ea66')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -81,8 +79,6 @@ prepare() {
     tools/{libvirt-guests.service,libvirt-guests.sh,virt-pki-validate}.in \
     src/locking/virtlockd.service.in
   sed -i 's|@sbindir@|/usr/bin|g' src/locking/virtlockd.service.in
-  # 78 is kvm group: https://wiki.archlinux.org/index.php/DeveloperWiki:UID_/_GID_Database
-  sed -i 's|#group =.*|group="78"|' src/qemu/qemu.conf
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
     src/qemu/qemu{.conf,_conf.c} \
     src/qemu/test_libvirtd_qemu.aug.in
@@ -102,7 +98,7 @@ build() {
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" --sbindir=/usr/bin \
 	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
 	--with-init-script=systemd \
-	--with-qemu-user=nobody --with-qemu-group=nobody \
+	--with-qemu-user=nobody --with-qemu-group=kvm \
 	--with-netcf --with-interface --with-lxc --with-storage-iscsi
 	# --with-audit
   make
@@ -115,18 +111,15 @@ package() {
 
   install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirt-guests
-  install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
-
-  chown -R 0:78 "$pkgdir"/var/lib/libvirt/qemu
-  chmod 0770 "$pkgdir"/var/lib/libvirt/qemu
 
   chown 0:102 "$pkgdir"/usr/share/polkit-1/rules.d
   chmod 0750 "$pkgdir"/usr/share/polkit-1/rules.d
 
   rm -rf \
 	"$pkgdir"/var/run \
-	"$pkgdir"/etc/sysconfig \
-	"$pkgdir"/etc/rc.d
+	"$pkgdir"/var/lib/libvirt/qemu \
+	"$pkgdir"/var/cache/libvirt/qemu \
+	"$pkgdir"/etc/sysconfig
 
   rm -f "$pkgdir"/etc/libvirt/qemu/networks/autostart/default.xml
 }
