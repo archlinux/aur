@@ -18,24 +18,24 @@
 pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
 
-pkgver=0.7.3.4.9.66.1
-pkgrel=2
-makedepends=("linux-lts-headers=4.9.66" "libelf" "spl-linux-lts-headers")
+pkgver=0.7.4.4.9.68.1
+pkgrel=1
+makedepends=("linux-lts-headers=4.9.68" "libelf" "spl-linux-lts-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.3/zfs-0.7.3.tar.gz")
-sha256sums=("cb8fc606835d3f91471e49aca31a6a0a71733b1cbe74fa510e0fe0efa670fe51")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.4/zfs-0.7.4.tar.gz")
+sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-lts" "zfs-utils-common=0.7.3" "linux-lts=4.9.66")
+depends=("kmod" "spl-linux-lts" "zfs-utils-common=0.7.4" "linux-lts=4.9.68")
 
 build() {
-    cd "${srcdir}/zfs-0.7.3"
+    cd "${srcdir}/zfs-0.7.4"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.7.3 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.9.66-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.9.66-1-lts/build
+                --libexecdir=/usr/lib/zfs-0.7.4 --with-config=kernel \
+                --with-linux=/usr/lib/modules/4.9.68-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.9.68-1-lts/build
     make
 }
 
@@ -45,7 +45,7 @@ package_zfs-linux-lts() {
     provides=("zfs")
     groups=("archzfs-linux-lts")
     conflicts=('zfs-linux-lts-git')
-    cd "${srcdir}/zfs-0.7.3"
+    cd "${srcdir}/zfs-0.7.4"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
@@ -55,10 +55,10 @@ package_zfs-linux-lts() {
 
 package_zfs-linux-lts-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-archiso-linux-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers'  'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
-    cd "${srcdir}/zfs-0.7.3"
+    conflicts=('zfs-archiso-linux-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers'  'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-vfio-headers' 'zfs-linux-vfio-git-headers' 'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
+    cd "${srcdir}/zfs-0.7.4"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.9.66-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.9.68-1-lts/Module.symvers
 }
