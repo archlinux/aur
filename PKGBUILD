@@ -7,54 +7,56 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-wayland-git
+pkgname_=chromium
 pkgver=48.0.2548.0
-pkgrel=5
+pkgver_=63.0.3239.84
+pkgrel=6
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
 url="https://github.com/Igalia/chromium"
 license=('BSD')
-depends=('nss' 'alsa-lib' 'bzip2' 'libevent' 'icu' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'flac' 'snappy' 'pciutils'
-         'harfbuzz' 'libvpx' 'perl' 'perl-file-basedir'
-         'desktop-file-utils' 'libxslt' 'hicolor-icon-theme' 'libxkbcommon'
-         'gtk2' 'libpulse')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'libexif' 'libsecret')
+depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
+         'desktop-file-utils' 'hicolor-icon-theme')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'clang'
+             'lld' 'depot-tools-git' 'libtinfo5')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
 conflicts=('chromium')
 provides=('chromium')
-options=('!strip')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-62.0.3202.94.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/${pkgname_}-${pkgver_}.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/${pkgver_}?format=TEXT
         chromium.desktop
-        breakpad-use-ucontext_t.patch
-        crc32c-string-view-check.patch
-        chromium-gn-bootstrap-r17.patch
+        chromium-exclude_unwind_tables.patch
+        chromium-clang-r1.patch
+        chromium-webrtc-r0.patch
         chromium-widevine.patch)
-sha256sums=('cabc4d267bf08aabe11c5739048c43dde18c61acf595223a1c3aa1d3499558d4'
+sha256sums=('6de2754dfc333675ae6a67ae13c95666009b35c84f847b058edbf312e42fa3af'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
+            '782a512b8bcf4aa6e58036cc3454d037d0eea69f27d5b673902d494c3fb5b20d'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
-            '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
-            'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
+            'e53dc6f259acd39df13874f8a0f440528fae764b859dd71447991a5b1fac7c9c'
+            'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
+            'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
-  #[ffmpeg]=ffmpeg           # https://crbug.com/731766
+  #[ffmpeg]=ffmpeg              # https://crbug.com/731766
   [flac]=flac
-  #[freetype]=freetype2      # https://crbug.com/pdfium/733
-  [harfbuzz-ng]=harfbuzz-icu
-  #[icu]=icu                 # https://crbug.com/772655
+  #[freetype]=freetype2         # https://crbug.com/pdfium/733
+  #[harfbuzz-ng]=harfbuzz-icu   # https://crbug.com/768938
+  #[icu]=icu                    # https://crbug.com/772655
   [libdrm]=
   [libjpeg]=libjpeg
-  #[libpng]=libpng           # https://crbug.com/752403#c10
-  #[libvpx]=libvpx           # https://bugs.gentoo.org/611394
+  #[libpng]=libpng              # https://crbug.com/752403#c10
+  #[libvpx]=libvpx              # https://bugs.gentoo.org/611394
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -84,7 +86,8 @@ prepare() {
   mkdir -p chromium
   cd chromium
 
-  export PATH="${srcdir}/python2-path:/opt/depot_tools:$PATH"
+  cp -r /opt/depot_tools ${srcdir}/
+  export PATH="${srcdir}/python2-path:${srcdir}/depot_tools:$PATH"
 
   gclient config --name=src https://github.com/Igalia/chromium.git
   gclient sync -r ozone-wayland-dev --with_branch_heads --nohooks
@@ -152,7 +155,7 @@ build() {
 
   cd "${srcdir}/chromium"
 
-  export PATH="$srcdir/python2-path:/opt/depot_tools:$PATH"
+  export PATH="${srcdir}/python2-path:${srcdir}/depot_tools:$PATH"
   export TMPDIR="$srcdir/temp"
   mkdir -p "$TMPDIR"
 
@@ -191,8 +194,8 @@ build() {
 
   gclient runhooks
 
-  gn gen out/Ozone --args="use_ozone=true enable_mus=true  use_xkbcommon=true" # use_jessie_sysroot=true 
-  /usr/bin/ninja -C out/Ozone chrome chrome_sandbox chromedriver widevinecdmadapter
+  gn gen out/Release --args="use_ozone=true enable_mus=true  use_xkbcommon=true" # use_jessie_sysroot=true 
+  /usr/bin/ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
 }
 
 package() {
@@ -203,25 +206,30 @@ package() {
 
   cd "$srcdir/chromium/src"
 
-  install -D out/Ozone/chrome "$pkgdir/usr/lib/chromium/chromium"
-  #install -Dm644 out/Ozone/chrome.1 "$pkgdir/usr/share/man/man1/chromium.1"
-  install -Dm644 "$srcdir/chromium.desktop" \
+  install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
+  install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
+  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
+
+  install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
+  install -Dm644 chrome/app/resources/manpage.1.in \
+    "$pkgdir/usr/share/man/man1/chromium.1"
+  sed -i \
+    -e "s/@@MENUNAME@@/Chromium/g" \
+    -e "s/@@PACKAGE@@/chromium/g" \
+    -e "s/@@USR_BIN_SYMLINK_NAME@@/chromium/g" \
+    "$pkgdir/usr/share/applications/chromium.desktop" \
+    "$pkgdir/usr/share/man/man1/chromium.1"
 
-  install -Dm4755 out/Ozone/chrome_sandbox \
-    "$pkgdir/usr/lib/chromium/chrome-sandbox"
-
-  cp -a \
-    out/Ozone/{chrome_{100,200}_percent,resources}.pak \
-    out/Ozone/{*.bin,chromedriver,*.so,*.nexe} \
-    out/Ozone/locales \
+  cp \
+    out/Release/{chrome_{100,200}_percent,resources}.pak \
+    out/Release/{*.bin,chromedriver,*.so,*.nexe} \
     "$pkgdir/usr/lib/chromium/"
+  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
-    cp out/Ozone/icudtl.dat "$pkgdir/usr/lib/chromium/"
+    cp out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
   fi
-
-  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   for size in 22 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
