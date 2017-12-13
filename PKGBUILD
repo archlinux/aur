@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-mlpack
-pkgver=2.2.2
+pkgver=2.2.5
 pkgrel=1
 pkgdesc='a scalable c++ machine learning library (mingw-w64)'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-armadillo' 'mingw-w64-boost' 'mingw-w64-lapack' 'mingw-w64-l
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://www.mlpack.org/files/mlpack-${pkgver}.tar.gz")
-sha1sums=('b49bbd28c1fa30ca0ef47d748b4c9bd70f69cda6')
+sha256sums=('e24e64d8451a3db23eafb7c94f9fa075dd540f5ac04953c82260a9d4d9fc4fcf')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
