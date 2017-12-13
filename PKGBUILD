@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-consensus
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Bitcoin Consensus Library"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-consensus"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('ae581f7c42a52fb6f4a233300f76f2a2d03a22eee6d4bfe22b233e9b52f029b4')
+sha256sums=('36ad75df7a2d629500e96932df3c577d08e648cb4a0e8f388e3e150705a9f43f')
 
 # half of available processing units or one if only one is available
 _nproc=$(($(nproc)/2))
