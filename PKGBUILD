@@ -4,7 +4,7 @@
 
 _pkgname="micropython"
 pkgname="${_pkgname}-git"
-pkgver=1.9.2.83.g6e06512e0
+pkgver=1.9.3.161.g43141ddb5
 pkgrel=1
 epoch=1
 pkgdesc="A Python 3 implementation for microcontrollers and constrained environments (Unix version)."
@@ -41,5 +41,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}/ports/unix"
   make PREFIX="$pkgdir/usr" install
+  install "${srcdir}/${_pkgname}/mpy-cross/mpy-cross" "$pkgdir/usr/bin"
   install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
