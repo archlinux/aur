@@ -15,7 +15,7 @@ pkgbase = monero-gui-bin
 	provides = monero-wallet-cli=0.11.1.0
 	provides = monero-wallet-rpc=0.11.1.0
 	conflicts = monero
-	source = monero-gui-bin-0.11.1.0.tar.bz2::https://downloads.getmonero.org/gui/linux64
+	source = monero-gui-bin-0.11.1.0.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v0.11.1.0/monero-gui-linux-x64-v0.11.1.0.tar.bz2
 	source = monero-wallet-gui
 	sha256sums = e18a13f39a3b4aa87c9afdd9c87dfc087ed4940d99cf18c16ec59037e5f68eaf
 	sha256sums = 8b69aac7caae305676ccebc6dbfa803c9aadf8b82d2ca1ecf2d8302a0d79cfc9

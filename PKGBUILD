@@ -18,7 +18,7 @@ provides=("monerod=${pkgver}"
           "monero-wallet-rpc=${pkgver}"
 )
 
-source=("${pkgname}-${pkgver}.tar.bz2::https://downloads.getmonero.org/gui/linux64"
+source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v${pkgver}/monero-gui-linux-x64-v${pkgver}.tar.bz2"
     "monero-wallet-gui"
 )
 
@@ -27,7 +27,7 @@ sha256sums=("e18a13f39a3b4aa87c9afdd9c87dfc087ed4940d99cf18c16ec59037e5f68eaf"
 )
 
 if [ "$CARCH" = 'i686' ]; then
-    source[0]="${pkgname}-${pkgver}.tar.bz2::https://downloads.getmonero.org/gui/linux32"
+    source[0]="${pkgname}-${pkgver}.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v${pkgver}/monero-gui-linux-x86-v${pkgver}.tar.bz2"
     sha256sums[0]="5df6ebeab728a653eaf64352bc60d8dddbf4d6a47a422856015d7e93ce5dc411"
 fi
 
