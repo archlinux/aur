@@ -1,0 +1,12 @@
+diff -Nur bitcoin-scrypt/src/net.cpp bitcoin-scrypt-boost/src/net.cpp
+--- bitcoin-scrypt/src/net.cpp	2017-06-19 14:18:02.809218054 +0200
++++ bitcoin-scrypt-boost/src/net.cpp	2017-06-19 14:17:37.272436173 +0200
+@@ -50,7 +50,7 @@
+ static bool vfLimited[NET_MAX] = {};
+ static CNode* pnodeLocalHost = NULL;
+ uint64 nLocalHostNonce = 0;
+-array<int, THREAD_MAX> vnThreadsRunning;
++boost::array<int, THREAD_MAX> vnThreadsRunning;
+ static std::vector<SOCKET> vhListenSocket;
+ CAddrMan addrman;
+ 
