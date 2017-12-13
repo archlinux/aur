@@ -1,5 +1,4 @@
-# Maintainer: Muflone <webreg@vbsimple.net>
-# Contributor: Changaco <me@changaco.net>
+# Maintainer: Valdis Vitolins <valdis.vitolins@odo.lv>
 pkgname=mbrola-voices-es3
 pkgver=1
 pkgrel=1
