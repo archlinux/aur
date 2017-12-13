@@ -1,5 +1,6 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
+# Contributor: Earnestly <zibeon AT googlemail.com>
 pkgname=xmlada-git
 pkgver=r1524.9dd5a10
 pkgrel=1
