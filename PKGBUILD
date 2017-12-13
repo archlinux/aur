@@ -4,7 +4,7 @@
 _gitname=tinyMediaManager
 
 pkgname=tiny-media-manager
-pkgver=2.9.5
+pkgver=2.9.6
 pkgrel=1
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://github.com/tinyMediaManager/tinyMediaManager/archive/$_gitname-
 			  "tinyMediaManager.desktop"
 				"tinymediamanager"
 				"tinymediamanager-cli")
-md5sums=('f7308e04c08cd9c2340cd00ecaeb3527'
+md5sums=('7bfe843735ff10ffe9d9ecb894b3c38a'
          '4a8fd16c1295e18ec4fe9c0a8ad61d87'
          '8f4e0cc5eac31bf05bf273fd78d654cf'
          '9bead0995ae09ac68850a83159b1b70d')
