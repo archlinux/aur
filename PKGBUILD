@@ -21,12 +21,12 @@ sha512sums=('2d46db7a62ac8be519c3e6487277aca6705a9aec9ee5db50fdac89956a27e9a3d3c
             'f24d70646babc2d248d6159442e3b9d5518276e7d8e33004f13d260953ebcd741067c507a47de25c24842e4391f4c403cdb46dc989b52fa1dde38a7312382db1')
 
 prepare() {
-	cd "$_fullname"
+    cd "$_fullname"
 
-	# All this git version junk fails, just remove it we already have the version
-	sed -i 's|include(GetGitRevisionDescription)||
-	        s|get_git_head_revision(REFSPEC FULL_GIT_REVISION)||' \
-	       CMakeModules/VersionConfiguration.cmake
+    # All this git version junk fails, just remove it we already have the version
+    sed -i 's|include(GetGitRevisionDescription)||
+            s|get_git_head_revision(REFSPEC FULL_GIT_REVISION)||' \
+           CMakeModules/VersionConfiguration.cmake
 
     conan_remote="https://conan.plex.tv"
     msg2 "Checking for plex conan remote"
@@ -37,24 +37,24 @@ prepare() {
         conan remote add plex "$conan_remote"
     fi
 
-	mkdir -p build
+    mkdir -p build
     cd build
     conan install ..
 }
 
 build() {
-	cd "$_fullname/build"
+    cd "$_fullname/build"
 
-	cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE='Release' -DCMAKE_SKIP_RPATH=1 \
-	      -DFULL_GIT_REVISION="$_gitver" -DQTROOT='/usr/share/qt' ..
-	make
+    cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE='Release' -DCMAKE_SKIP_RPATH=1 \
+          -DFULL_GIT_REVISION="$_gitver" -DQTROOT='/usr/share/qt' ..
+    make
 }
 
 package() {
-	cd "$_fullname/build"
+    cd "$_fullname/build"
 
-	DESTDIR="$pkgdir" make install
+    DESTDIR="$pkgdir" make install
 
-	install -Dm644 "$srcdir/plex-media-player.desktop" "$pkgdir/usr/share/applications/plex-media-player.desktop"
-	install -Dm644 ../resources/images/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/plex-media-player.png"
+    install -Dm644 "$srcdir/plex-media-player.desktop" "$pkgdir/usr/share/applications/plex-media-player.desktop"
+    install -Dm644 ../resources/images/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/plex-media-player.png"
 }
