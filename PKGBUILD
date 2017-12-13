@@ -13,7 +13,7 @@ license=('GPL' 'custom:FIPL')
 url="http://freeimage.sourceforge.net/"
 depends=('gcc-libs')
 makedepends=('dos2unix' 'clang') # Remove clang when this compiles with gcc 5.1
-source=("http://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip")
+source=("https://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip")
 md5sums=('459e15f0ec75d6efa3c7bd63277ead86')
 
 build() {
