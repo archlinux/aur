@@ -1,0 +1,16 @@
+pkgbase = sierrabreeze-aurorae-theme-git
+	pkgdesc = OSX-like window decoration for KDE Plasma written in C++ (git version)
+	pkgver = r13.22aec27
+	pkgrel = 1
+	url = https://github.com/ishovkun/SierraBreeze
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = kwin
+	source = git+https://github.com/ishovkun/SierraBreeze.git
+	sha256sums = SKIP
+
+pkgname = sierrabreeze-aurorae-theme-git
+
