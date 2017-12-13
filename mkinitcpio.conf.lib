@@ -1,4 +1,5 @@
 . /etc/linuxpba/linuxpba.conf
+. /etc/linuxpba/mkinitcpio.conf
 
 if [[ "$USE_SEDUTIL_PBA" -eq 0 ]]
 then

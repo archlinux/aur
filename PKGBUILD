@@ -2,7 +2,7 @@
 
 pkgname=sedutil
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -20,17 +20,19 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Drive-Trust-Alliance/${
         'mklinuxpba-diskimg'
         'linuxpba-arch'
         'linuxpba.conf.etc'
-        'linuxpba.conf.lib'
+        'mkinitcpio.conf.etc'
+        'mkinitcpio.conf.lib'
         'linuxpba.hook'
         'linuxpba.install'
         'getpasswd.c')
 sha256sums=('9259466b4f73af276153c5245834a56f48f8721ea7263611b5d5e8326bc43d9e'
             '40d785c16a28a5a8a43050d1731174482ee24459be215d2e4e27ffba3b2e28b2'
-            '77c725e4eee095dbede512d2bca13b8f2c139a67b9b87a11d98be94e6df0e1d7'
+            'ee3171da9eeab5170815713280588db99118a5fba73eea6373f8555451ab1e5c'
             'b860d4d6fcc14a61d110c1d805d919fdfcf0fffaa8f0175b5ecddf60051f7941'
             'afc39b504456263e55d137847ff20ec5bb0a399ef8e17bb4ca13f0a2bd80052a'
-            '5920733d52a2ba7e4df06ea4df51a0a35d365bd3e4af5019374a7265022e797f'
-            '753677785dd89ff036b70774d1d4ad4f3bce8e28de54932e86460e2a81b897de'
+            'e5c3acb3027c7a3c5082d5cf0f5193f190788e64045d2c79a9fd1598b56f151f'
+            '44ba634f4b35b1267d62b8b1505fa08a3d5bafa33ebb651ad7b09b53941c40eb'
+            'daaa13d48b9e72e3185594a0f7c54d2966711ef03b5444141d41be9994710c82'
             'd9a7b66d8365e7f4eb0233b30c0ab70b5e978f6554960bf12994a1f0910c1447'
             'f31a0ba891dd705ef68174afeb651bdc3426a63202d058d98510907de43248f7'
             'e94d011c98bd336f37d6d4923e5d63a22ebd10d8f2c6486b6bcd6617524d6484')
@@ -64,6 +66,7 @@ package() {
     install -Dm644 "${srcdir}/linuxpba.hook" "${pkgdir}/usr/lib/initcpio/hooks/linuxpba"
     install -Dm644 "${srcdir}/linuxpba.install" "${pkgdir}/usr/lib/initcpio/install/linuxpba"
     install -Dm644 "${srcdir}/linuxpba.conf.etc" "${pkgdir}/etc/linuxpba/linuxpba.conf"
-    install -Dm644 "${srcdir}/linuxpba.conf.lib" "${pkgdir}/usr/lib/linuxpba/linuxpba.conf"
+    install -Dm644 "${srcdir}/mkinitcpio.conf.etc" "${pkgdir}/etc/linuxpba/mkinitcpio.conf"
+    install -Dm644 "${srcdir}/mkinitcpio.conf.lib" "${pkgdir}/usr/lib/linuxpba/mkinitcpio.conf"
     install -Dm644 "${srcdir}/syslinux.cfg" "${pkgdir}/usr/lib/linuxpba/syslinux.cfg"
 }

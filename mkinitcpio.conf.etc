@@ -1,0 +1,8 @@
+MODULES=()
+BINARIES=()
+FILES=(/etc/udev/rules.d/10-cryptkey-devices.rules)
+HOOKS=(base udev autodetect block keymap keyboard linuxpba)
+
+#COMPRESSION=<gzip|bzip2|lzma|xz|lzop|lz4>
+COMPRESSION="gzip"
+#COMPRESSION_OPTIONS=()
