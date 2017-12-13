@@ -7,14 +7,14 @@
 #
 pkgname="zfs-utils-common-git"
 
-pkgver=0.7.0.r200.gd4677269f
-pkgrel=2
+pkgver=2017.12.08.r3208.4e9b15696
+pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("")
 makedepends=("git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git"
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=4e9b156960562373e005798575a3fbc6d66e32ff"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook")
@@ -29,17 +29,12 @@ install=zfs-utils.install
 conflicts=('zfs-utils-common' 'zfs-utils-linux-git' 'zfs-utils-linux' 'zfs-utils-linux-lts' 'zfs-utils-linux-lts-git')
 replaces=("zfs-utils-linux", "zfs-utils-linux-lts")
 
-pkgver() {
-    cd "${srcdir}/zfs"
-    git describe --long | sed 's/^zfs-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
     cd "${srcdir}/zfs"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
-                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.7.3 \
+                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.7.4 \
                 --with-config=user
     make
 }
