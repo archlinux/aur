@@ -7,7 +7,7 @@ pkgdesc="Universal parser generator for C and Python"
 arch=('i686' 'x86_64' 'armv6h')
 url="https://phorward.info"
 license=('BSD')
-depends=('phorward')
+depends=('phorward>=0.20.0')
 makedepends=()
 checkdepends=()
 #changelog=CHANGELOG

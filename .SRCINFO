@@ -7,7 +7,7 @@ pkgbase = unicc
 	arch = x86_64
 	arch = armv6h
 	license = BSD
-	depends = phorward
+	depends = phorward>=0.20.0
 	source = https://phorward.info/products/unicc/unicc-1.2.0.tar.gz
 	source = https://phorward.info/products/unicc/unicc.pdf
 	md5sums = fa8bc7f8cdead9fa381279d35b4a20fa
