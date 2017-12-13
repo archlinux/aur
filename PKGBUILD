@@ -1,17 +1,14 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=opengate
-pkgver=7.2
+pkgver=8.0
 pkgrel=1
 pkgdesc="Open GATE - numerical simulations in medical imaging and radiotherapy"
 arch=('x86_64')
 url="https://github.com/OpenGATE/Gate"
 license=('LGPL3')
 groups=()
-makedepends=('cmake'
-	'root'
-	'geant4'
-	'gcc')
-depends=()
+makedepends=('cmake' 'gcc')
+depends=('root' 'geant4')
 provides=()
 conflicts=()
 replaces=()
@@ -19,11 +16,9 @@ backup=()
 options=('!emptydirs' 'staticlibs' 'libtool' '!strip')
 install=
 changelog=
-source=("https://github.com/OpenGATE/Gate/archive/v${pkgver}.tar.gz"
-	"root6.patch")
+source=("https://github.com/OpenGATE/Gate/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('6b15b179ccc79065a4aef63156b3e5de'
-         '2407ba187903e35fd551c63555bfd7bd')
+md5sums=('5297e3a67d53e98548cc71b1491435e8')
 
 # Do not compress the package for installation
 # PKGEXT='.pkg.tar'
@@ -38,14 +33,18 @@ prepare() {
 	echo "work with Geant4 in multithreaded mode."
 	cd ${srcdir}
 
-	# Patch
-	patch -Np0 -i ${startdir}/root6.patch
-
 	[ -d build ] || mkdir build
 	cd build
 	cmake \
+		-DGATE_USE_ECAT7=OFF \
+		-DGATE_USE_GPU=OFF \
+		-DGATE_USE_ITK=OFF \
+		-DGATE_USE_LMF=OFF \
 		-DGATE_USE_OPTICAL=ON \
+		-DGATE_USE_RTK=OFF \
 		-DGATE_USE_STDC11=ON \
+		-DGATE_USE_DAVIS=OFF \
+		-DGEANT4_USE_SYSTEM_CLHEP=OFF \
 		../Gate-${pkgver}
 :
 }
@@ -58,4 +57,7 @@ build() {
 package() {
 	cd ${srcdir}/build
 	make DESTDIR="${pkgdir}/" install
+
+	echo "Optional dependencies: lmf_v3.0 and ecat7"
+	echo "Done"
 }
