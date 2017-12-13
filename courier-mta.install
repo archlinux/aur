@@ -26,8 +26,7 @@ post_upgrade() {
 pre_remove() {
   # there may be many files not part of the original installation that would be useful to save
   # so save the whole configuration directory rather than try to list all possibilities
-  # in backup(). Also avoids creation of .pacsave files in the alias and smtpaccess directories that
-  # process all contained files
+  # in backup().
   mv -f /etc/courier /etc/courier-$1
   echo "/etc/courier has been saved as /etc/courier-$1 - you may remove this folder if you wish."
 

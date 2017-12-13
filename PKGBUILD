@@ -8,7 +8,7 @@
 
 pkgname=courier-mta
 pkgver=0.78.2
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -19,6 +19,8 @@ makedepends=('pam' 'expect' 'gnupg' 'libldap' 'gamin')
 provides=('smtp-server' 'smtp-forwarder' 'imap-server' 'pop3-server' 'courier-imap' 'courier-maildrop')
 conflicts=('courier-imap' 'smtp-forwarder' 'smtp-server' 'imap-server' 'courier-maildrop' 'ucspi-tcp')
 options=(!libtool !staticlibs)
+# Specify some files to backup that aren't managed by sysconftool during an upgrade
+backup=('etc/courier/aliases/system' 'etc/courier/smtpaccess/default' 'etc/courier/webadmin/password' 'etc/courier/imapd.cnf' 'etc/courier/esmtpd.cnf' 'etc/courier/pop3d.conf')
 install=courier-mta.install
 source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/courier-${pkgver}.tar.bz2
 	courier-imapd.service
