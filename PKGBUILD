@@ -9,6 +9,7 @@ arch=('any')
 url="http://search.cpan.org/dist/Term-Shell/"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-text-autoformat')
+makedepends=('perl-module-build')
 options=('!emptydirs')
 source=(http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/${_cpanname}-${pkgver}.tar.gz)
 sha256sums=('092cf1ce6d3df66066db5cd53edd63be6f63789f21e3af3631f10e6faa549afc')
