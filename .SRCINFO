@@ -1,6 +1,6 @@
 pkgbase = meld-git
 	pkgdesc = Visual diff and merge tool
-	pkgver = 3.16.0.184.g18ff8a6
+	pkgver = 3.18.0.121.gbd9936eb
 	pkgrel = 1
 	url = http://meldmerge.org/
 	install = meld.install
@@ -19,10 +19,9 @@ pkgbase = meld-git
 	depends = python-cairo>=1.10.0-6
 	optdepends = python-dbus: open a new tab in an already running instance
 	provides = meld
-	conflicts = meld
-	replaces = meld
+	conflicts = meld meld-dev
 	options = !emptydirs
-	source = git://git.gnome.org/meld
+	source = git+https://gitlab.gnome.org/GNOME/meld.git
 	sha256sums = SKIP
 
 pkgname = meld-git

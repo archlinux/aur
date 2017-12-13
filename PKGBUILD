@@ -2,9 +2,9 @@
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.16.0.184.g18ff8a6
+pkgver=3.18.0.121.gbd9936eb
 pkgrel=1
-_realver=3.16.0.16
+_realver=3.18.0.121
 pkgdesc='Visual diff and merge tool'
 arch=('any')
 url='http://meldmerge.org/'
@@ -18,12 +18,11 @@ depends=('python>=3.3'
         'python-cairo>=1.10.0-6')
 makedepends=('intltool' 'gnome-doc-utils' 'git' 'itstool')
 optdepends=('python-dbus: open a new tab in an already running instance')
-replaces=('meld')
-provides=("meld=${_realver}")
-conflicts=('meld-dev')
+conflicts=('meld','meld-dev')
+provides=('meld')
 install=meld.install
 options=('!emptydirs')
-source=("git://git.gnome.org/meld")
+source=("git+https://gitlab.gnome.org/GNOME/meld.git")
 sha256sums=('SKIP')
 
 pkgver() {
