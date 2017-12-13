@@ -1,0 +1,19 @@
+pkgbase = suplemon
+	pkgdesc = Console text editor with multi cursor support.
+	pkgver = 0.1.63
+	pkgrel = 1
+	url = https://github.com/richrd/suplemon/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-pygments
+	depends = python-wcwidth
+	optdepends = python-pygments: For support for syntax highlighting over 300 languages.
+	optdepends = flake8: For showing linting for Python files.
+	optdepends = xsel: For system clipboard support on X Window (Linux).
+	source = https://pypi.python.org/packages/ee/3a/d71a82a5ff32157249875914f0aa1c70cee3796e689cd9ccb05f75c5998b/Suplemon-0.1.63.tar.gz
+	sha512sums = 116c37826367e17fbb298dcf7fb51689e9b75bfa5745bbc084b975d95c0957f5eb15a1db0fe7d7b0ac563db381a94b57df93ae8de16c68603352e1e6b9f37706
+
+pkgname = suplemon
+
