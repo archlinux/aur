@@ -4,8 +4,8 @@
 # Maintainer: Peter Sutton <foxxy@foxdogstudios.com>
 
 _pkgver_year=2017
-_pkgver_month=02
-_pkgver_day=02
+_pkgver_month=11
+_pkgver_day=19
 
 pkgname=abcmidi
 pkgver="${_pkgver_year}${_pkgver_month}${_pkgver_day}"
@@ -14,29 +14,30 @@ pkgdesc="A set of tools for converting ABC files to MIDI files and vice versa, a
 url="http://abc.sourceforge.net/abcMIDI/"
 license=('GPL')
 depends=()
-makedepends=()
+makedepends=('unzip')
 changelog=ChangeLog
-source=("https://github.com/leesavide/abcmidi/archive/abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.tar.gz")
-arch=(i686 x86_64)
-sha256sums=('cd2b5caa9971ae8ea666cb2be16029a73b9f4463847dd2db2cca202f1f934af2')
-
-_srcdir=abcmidi-abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}
+source=("https://netix.dl.sourceforge.net/project/abc/abcmidi/abcmidi/abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.zip")
+arch=(x86_64)
+sha256sums=('e967b97be2f310ef1fbba665e57387c179845be9e6cf0f66e2394403d8d3ced4')
 
 build() {
-    cd $srcdir/$_srcdir
+    cd "$srcdir"/abcmidi
     make 'binaries=abc2midi midi2abc abc2abc mftext midicopy abcmatch'
 }
 
 package() {
-    cd $srcdir/$_srcdir
-    mkdir -p $pkgdir/usr/bin
-    make prefix=$pkgdir/usr 'binaries=abc2midi midi2abc abc2abc mftext midicopy abcmatch' install
-    # install programming documentation to docdir
-    install -m 755 -d $pkgdir/usr/share/doc/$pkgname/programming
+    cd "$srcdir"/abcmidi
+    mkdir -p "$pkgdir"/usr/bin
+
+    make prefix="$pkgdir"/usr 'binaries=abc2midi midi2abc abc2abc mftext midicopy abcmatch' install
+
+    # Install programming documentation to docdir
+    install -m 755 -d "$pkgdir"/usr/share/doc/$pkgname/programming
     install -m 644 doc/programming/*.txt doc/programming/*.abc \
-        $pkgdir/usr/share/doc/$pkgname/programming
-    # install example ABC files to docdir
-    install -m 755 -d $pkgdir/usr/share/doc/$pkgname/samples
-    install -m 644 samples/*.abc $pkgdir/usr/share/doc/$pkgname/samples
+                   "$pkgdir"/usr/share/doc/$pkgname/programming
+
+    # Install example ABC files to docdir
+    install -m 755 -d "$pkgdir"/usr/share/doc/$pkgname/samples
+    install -m 644 samples/*.abc "$pkgdir"/usr/share/doc/$pkgname/samples
 }
 
