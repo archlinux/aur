@@ -3,10 +3,10 @@
 # Contributor: Joerie de Gram <j.de.gram@gmail.com>
 # Contributor: bender02 at archlinux dot us
 pkgname=aespipe
-pkgver=2.4d
-pkgrel=2
+pkgver=2.4e
+pkgrel=1
 pkgdesc="Encrypts data from stdin to stdout"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://loop-aes.sourceforge.net"
 license=('GPL')
 depends=('sharutils')
@@ -18,9 +18,17 @@ sha384sums=('SKIP' 'SKIP') # We use GPG for verification instead.
 #validpgpkeys=('12D64C3ADCDA0AA427BDACDFF0733C808132F189') # Jari Ruusu
 
 build() {
+    cd "$srcdir/$pkgname-v$pkgver"
+    export CFLAGS="${CFLAGS} -fPIC"
+#    export LDFLAGS="${LDFLAGS} -Wl,-z,relro"
+    
+    ./configure --prefix=/usr --disable-asm
+    make
+}
+
+check() {
   cd "$srcdir/$pkgname-v$pkgver"
-  ./configure --prefix=/usr
-  make
+  make tests
 }
 
 package() {
