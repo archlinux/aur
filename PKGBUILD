@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=56.0+394096b8a96f
+pkgver=56.0.1+36318d870cf1
 pkgrel=1
 pkgdesc="64-Bit optimized Firefox fork, no data collection, allows unsigned extensions"
 arch=('i686' 'x86_64')
@@ -29,8 +29,7 @@ source=(git://github.com/MrAlex94/Waterfox
 		default24.png
 		default256.png
 		default32.png
-		default48.png
-		missing-png-workaround.patch)
+		default48.png)
 sha512sums=('SKIP'
             '480f59c7fa43fc18b996fbbfcf0f318b95e9cc9cd4a475c21038480dafd465724a46b50158081dc612445810fc4ebb80bfaccfeabadc438c5e6bb3fc9a6a7ef2'
             '93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3'
@@ -42,8 +41,7 @@ sha512sums=('SKIP'
             'a038a805a41e55c89cd601a07e6ae756e7017f4eb9eb65525f6cb9d86e2f94bda559961b6ab1e66a0dfa7436db6f1da166c2fc84bfc6cad5fcaec6a82ffb0a96'
             '33afbb1ec2eb62412965bc698bdf1cc3c177645c51369397e92bdba7a7891709ccf1f3d2f9e234866e7c452a3ae8bfe289e0cbfd6047ec5efa1c7c568b9e7888'
             '64f9e8b812d00d39239f9aa00aa51c937113fa3833652d2da318ae8c9627ac7b0372bffc2c1c0a2c1ea69ec97a3dc11fafee58175cbdab503aef299543f3fd90'
-            'e5000a4e25bf6a15eae99a1e9b3cc4f9a1712b7aacc783eb0c25b20d04d8bbc9e9e80e95ce8c709aba595f699aa2dc4ba6104ea0f0375b00ff2cc2353d93c8f1'
-            '276165081345c25cc97fde79caa14c0844c0d0299d8da38f25adb7bade6b905698cd93128956aad39b78f401068061d944097b98ae5454fde217fa0c49159231')            
+            'e5000a4e25bf6a15eae99a1e9b3cc4f9a1712b7aacc783eb0c25b20d04d8bbc9e9e80e95ce8c709aba595f699aa2dc4ba6104ea0f0375b00ff2cc2353d93c8f1')            
 # don't compress the package - we're just going to uncompress during install in a moment
 PKGEXT='.pkg.tar'   
 
@@ -65,9 +63,6 @@ prepare() {
   
   # alter the install dir
   patch -Np1 -i ../firefox-install-dir.patch
-
-  # work around png missing blocker
-  patch -Np1 -i ../missing-png-workaround.patch
 
   # these fix PGO partially
   # patch -Np1 -i ../clang-profile.patch
