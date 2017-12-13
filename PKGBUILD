@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-blockchain
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Bitcoin Blockchain Library"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-blockchain"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('c97762f37e30b0d41b5f9d70499dbf9ca70096924410e98a15781e4cb5c39966')
+sha256sums=('65251a7148ec9fc8456f924e6319194fc38771c192326b2daf1d4abca2f55c76')
 
 # half of available processing units or one if only one is available
 _nproc=$(($(nproc)/2))
