@@ -2,20 +2,19 @@
 # Contributor: Callan Barrett <wizzomafizzo@gmail.com>
 
 pkgname=9wm
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="Window manager modeled after Plan 9's 8 1/2"
+pkgdesc="X11 Window Manager inspired by Plan 9's rio"
 arch=('i686' 'x86_64')
-url="https://woozle.org/neale/src/9wm/"
+url="https://github.com/9wm/9wm"
 license=('MIT')
 depends=('libxext' 'libxau' 'libxdmcp')
-source=(http://woozle.org/neale/g.cgi/x11/$pkgname/snapshot/$pkgname-$pkgver.tar.gz)
-sha256sums=('d6dc8daa2d880077e4a6bb535d23d03b51dd7f5aee58315e000c1e739cb01bda')
+source=($pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz)
+sha256sums=('a4edc21011a80aba8481325d2b3ea7656e594b882343346d70378497e704e36e')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
 
-  CPPFLAGS=""
   make
 }
 
@@ -25,5 +24,5 @@ package () {
   install -Dm755 $pkgname "${pkgdir}"/usr/bin/$pkgname
   install -Dm644 $pkgname.man "${pkgdir}"/usr/share/man/man1/$pkgname.1
 #license
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
