@@ -14,9 +14,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir"/problemtools
-    pwd
-    make || return 1
-    python2 setup.py build || return 1
+    python2 setup.py build
 }
 
 package() {
