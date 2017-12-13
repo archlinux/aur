@@ -12,6 +12,7 @@ pkgbase = shelldap
 	depends = perl-algorithm-diff
 	depends = perl-term-readkey
 	depends = perl-term-readline-gnu
+	depends = perl-term-shell
 	optdepends = perl-io-socket-ssl: for use with ldaps:// servers
 	optdepends = perl-authen-sasl: SASL authentication
 	provides = shelldap
