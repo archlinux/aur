@@ -1,0 +1,16 @@
+pkgbase = perl-term-shell
+	pkgdesc = A simple command-line shell framework for Perl
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Term-Shell/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-text-autoformat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Term-Shell-0.09.tar.gz
+	sha256sums = 092cf1ce6d3df66066db5cd53edd63be6f63789f21e3af3631f10e6faa549afc
+
+pkgname = perl-term-shell
+
