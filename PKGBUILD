@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar
-pkgver=2.0.18
-pkgrel=2
+pkgver=2.0.19
+pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
 url="http://openbazaar.org"
@@ -18,8 +18,7 @@ options=('!strip')
 
 build(){
 	cd $srcdir/$pkgname-desktop-$pkgver
-	npm install --silent --ignore-scripts
-	npm install node-sass
+	npm install --silent 
 	npm run build
 	npm prune --production
 }
@@ -41,6 +40,7 @@ package(){
 	
 	# Cleanup
 	cd $pkgdir/$appdir
+	rm -rf .git*
 	rm -rf .travis
 	cp -rf prod/* js/
     	find "${pkgdir}"/${appdir} \
@@ -51,6 +51,6 @@ package(){
         	-or -executable -type f -exec rm -r '{}' \;
 }
 
-md5sums=('245c699cbca72ee71c7cdc1487cb285f'
+md5sums=('1cb583ad758d091e23e7dceadf221583'
          '122a3e23d7ecfef0a82e756cb97c3e98'
          '43c9c9ef1d3ca873eea6b6343ca072e8')
