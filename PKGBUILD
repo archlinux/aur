@@ -1,9 +1,9 @@
 # Maintainer: EinBaum <mail@einbaum.org>
 
 pkgrel=1
-pkgver=1.0.0
-_commit='0fbf747b80586a3e80a98f196986b7d741bce7db'
-sha256sums=('8751711229248b2fee231a6765be595afb86377c18e575ef00802b7b76e3d375')
+pkgver=1.1.0
+_commit='ff4584376b9956e1147804ed3a6b19c5d3376768'
+sha256sums=('244569b40f5efbeac916f239a996c55c0c4711de99d8696c8f77a8883ea067ea')
 
 pkgname=redmond-themes-git
 pkgdesc='Aims to provide the complete Windows experience for easy use on Linux and GNOME-compatible OSes'
