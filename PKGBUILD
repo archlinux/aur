@@ -1,5 +1,6 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
+# Contributor: Earnestly <zibeon AT googlemail.com>
 pkgname=libgpr-git
 pkgver=r3152.ba7dba01
 pkgrel=1
