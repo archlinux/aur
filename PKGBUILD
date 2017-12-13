@@ -24,7 +24,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '60-linux.hook'
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset"
+        'linux.preset'
         0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
         )
 
@@ -106,7 +106,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("${pkgbase}=${pkgver}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=${pkgbase}.install
+  install=linux.install
 
   cd ${_srcname}
 
