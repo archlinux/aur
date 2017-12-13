@@ -120,7 +120,7 @@ _package() {
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  local _extramodules="extramodules-${_basekernel}${_kernelname:--tomoyo}"
   ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook
