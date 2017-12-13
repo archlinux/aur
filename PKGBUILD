@@ -18,5 +18,5 @@ package() {
 	cp -r ${srcdir}/opt ${pkgdir}/
 	cp -r ${srcdir}/usr ${pkgdir}/
 	mkdir -p ${pkgdir}/usr/bin/
-	ln -s /opt/weweChat/wewechat ${pkgdir}/usr/bin/
+	ln -s /opt/wewechat/wewechat ${pkgdir}/usr/bin/
 }
