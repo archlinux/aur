@@ -12,6 +12,6 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}
 md5sums=('3de4ce48d6d4ecf92f11317c6c02de28')
 
 package() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
 }
