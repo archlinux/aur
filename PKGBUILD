@@ -4,15 +4,15 @@
 
 pkgname=conkeror
 pkgver=1.0.4
-pkgrel=1
+pkgrel=3
 pkgdesc='A highly programmable web browser based on Mozilla XULRunner'
 arch=('i686' 'x86_64')
 url='http://conkeror.org/'
 license=('MPL' 'GPL' 'LGPL')
 depends=('palemoon-bin')
 source=("$pkgname-$pkgver.tar.gz::http://repo.or.cz/conkeror.git/snapshot/685f24e3aeffc408dcea883e1d0c738cb18bbe8d.tar.gz" conkeror.sh)
-sha256sums=('8c86f9517f7e529a985f1eb579f9d87ee288770c2a4e37db12a5ab16061a6f44'
-            '3def19870f3413fca75ce2dad7ac2336114aac1b189c09bd53a003ec6ce2a84a')
+sha256sums=('0cc13ac0415f6f8d9f1641f45b00bcd173347c45aba3b3de6d7951b1d1f03dbe'
+            '83b99b57ff5f397ff97561dc82bf604a223b3fdb2e80716edf12f006ae94d88c')
 
 build() {
   cd $pkgname-$pkgver*/
