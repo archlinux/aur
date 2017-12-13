@@ -23,7 +23,7 @@ else
   args+=("-dbPath $dbPath")
 fi
 
-args+=$additionalArgs
+args+=($additionalArgs)
 
 command=java
 
