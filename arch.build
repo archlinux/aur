@@ -32,6 +32,8 @@ start_vm() {
 		ssh $vhost 'curl -o /dev/null -s vesath.org' &&
 		break
 	done
+	cat /etc/pacman.d/mirrorlist |
+	ssh $vhost 'sudo dd of=/etc/pacman.d/mirrorlist'
 }
 
 stop_vm() {

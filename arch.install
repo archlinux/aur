@@ -85,8 +85,6 @@ EOF
 
 sfdisk --activate ${loop} 1
 
-install -Dm644 /etc/pacman.d/mirrorlist etc/pacman.d/mirrorlist
-
 umount boot
 popd
 umount ${mnt}

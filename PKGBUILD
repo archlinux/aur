@@ -1,7 +1,7 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=buildstuff
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Stuff to build packages in virtual machines'
 url='http://arch.vesath.org/'
@@ -25,5 +25,5 @@ package() {
 
 sha256sums=('6225e9cd7dbd46692d3b3ebde37a182c05863459879e99dbca5b3a4125e5eb1d'
             'acf683446e1162104759b1a75d18859b1a36ac6f3eeabb241025d0e6c37c7960'
-            '72307901efa866bdedf86c00dde6578cf5ce16ec801880f562d5fa57a82ad0d6'
-            'fce69f6429e05953fd964ab531f1b2d320385f5fa34d00d0a6d186e3fffa54f9')
+            'd79c506c8e15ac24c8509c5a90fe5cad78afcb583e68d0222c4a8176aad30847'
+            'ec7d572a0a6fd43eb24d0388a30f16e3b35a48d645f0cdf426929f4cbba47d48')
