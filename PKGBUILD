@@ -4,7 +4,7 @@ _gitname=cpp-ethereum
 pkgname=('cpp-ethereum-git')
 pkgdesc="Ethereum C++ client"
 pkgver=r31888.04e8ca5af
-pkgrel=1
+pkgrel=2
 arch=('x86' 'x86_64')
 makedepends=('git' 'cmake>=3.4.3')
 depends=('leveldb')
