@@ -1,0 +1,11 @@
+--- idazki-desktop.desktop	2017-10-10 11:01:25.000000000 +0200
++++ idazki-desktop.desktop.new	2017-12-13 22:18:48.226207117 +0100
+@@ -2,7 +2,7 @@
+ Encoding=UTF-8
+ Name=Idazki Desktop Protocol
+ Comment=Protocolo idazki
+-Exec=/usr/local/idazki-desktop/jre/bin/java -Xmx512m -Xms512m -jar /usr/local/idazki-desktop/idazki-desktop-protocol.jar %U
++Exec=/opt/idazki-desktop/jre/bin/java -Xmx512m -Xms512m -jar /opt/idazki-desktop/idazki-desktop-protocol.jar %U
+ Terminal=false
+ Type=Application
+ Icon=
