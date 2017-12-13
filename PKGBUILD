@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mk-configure
-pkgver=0.29.1
+pkgver=0.29.3
 pkgrel=1
 pkgdesc="Lightweight replacement for GNU autotools"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('bmake' 'bmkdep' 'makedepend')
 url="https://github.com/cheusov/mk-configure"
 license=('BSD')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cheusov/$pkgname/tar.gz/$pkgname-$pkgver)
-sha256sums=('3350707b519560b0cf99979d06bf806949df6558f84306a33aec419b766f57ca')
+sha256sums=('fbdbacb8eb04566890dd71c1e65226c9714a2557f7f6f3283f6e2a6bc22d4fa9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver"
