@@ -2,20 +2,20 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=gtg-git
-pkgver=r5172.8415e62
+pkgver=r5174.117bd7b4
 pkgrel=1
 pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git version."
 url="http://gtgnome.net/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('pygtk' 'pygobject' 'python2-configobj' 'pyxdg' 'dbus-python'
+depends=('pygtk' 'python2-gobject2' 'python2-configobj' 'pyxdg' 'dbus-python'
 'hicolor-icon-theme' 'desktop-file-utils' 'python2-gnomekeyring'
 'python-liblarch-git' 'python-dbus' 'python-cairo' 'python-xdg')
 makedepends=('git' 'python2-gconf')
 optdepends=(
-'python-bugz: for Bugzilla plugin'
+'python2-bugzilla: for Bugzilla plugin (python-bugz)'
 'python-cheetah: for Export and print plugin'
-'pdflatex: for Export and print plugin'
+'texlive-bin: for Export and print plugin (for pdflatex)'
 'pdftk: for Export and print plugin'
 'pdfjam: for Export and print plugin'
 'python-geoclue: for Geolocalized tasks plugin'
@@ -24,7 +24,7 @@ optdepends=(
 'python-champlain: for Geolocalized tasks plugin'
 'python-champlain-gtk: for Geolocalized tasks plugin'
 'hamster-time-tracker: for Hamster Time Tracker Integration to integrate with'
-'python-appindicator: for Notification area plugin'
+'python2-libappindicator: for Notification area plugin (python-appindicator)'
 'python-dbus: for Tomboy/Gnote plugin'
 'python-evolution: for Evolution synchronization service'
 'python-dateutil: for Evolution and RememberTheMilk synchronization services'
