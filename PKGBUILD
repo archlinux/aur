@@ -3,12 +3,12 @@
 pkgname="bitcoin-scrypt-git-qt"
 pkgdesc="Bitcoin Scrypt is a decentralised currency and using the Scrypt algorithm - Qt"
 pkgver=20150909.815a15f
-pkgrel=1
+pkgrel=2
 arch=("i686" "x86_64")
 url="http://bitcoinscrypt.co/"
 license=("MIT")
 depends=("boost-libs" "qt4" "miniupnpc" "qrencode" "openssl-1.0")
-makedepends=("boost" "automoc4" "qrencode" "miniupnpc")
+makedepends=("boost" "automoc4")
 provides=("bitcoin-scrypt-qt")
 source=(
   "bitcoin-scrypt::git://github.com/bitcoin-scrypt/bitcoin-scrypt"
