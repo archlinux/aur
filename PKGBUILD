@@ -10,7 +10,7 @@ _djver=2.05
 _pthver=3.14
 _zlver=1.2.11
 _wattver="2.2-dev.10"
-pkgrel=5
+pkgrel=6
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -141,7 +141,7 @@ build() {
   cd $srcdir/zlib-${_zlver}
   CC=$srcdir/gcc-build-$_target/gcc/xgcc \
   CHOST=${_target} \
-  CFLAGS="-march=i586 -Ofast -I$srcdir/gcc-build-${_target}/lib/gcc/$_target/$pkgver/include -pipe"\
+  CFLAGS="-march=i586 -Ofast -DHAVE_VSNPRINTF -I$srcdir/gcc-build-${_target}/lib/gcc/$_target/$pkgver/include -pipe" \
   ../zlib-${_zlver}/configure --const --prefix=/usr/$_target --static
   sed -i 's/-DNO_STRERROR -DNO_vsnprintf//' Makefile
   make libz.a
@@ -199,13 +199,14 @@ package_dosbox-gcc() {
   # install wattcp
 	cd "$srcdir/watt/inc"
 
-	install -dm0755     "$pkgdir/usr/$_target/include/watt32"
-	install -Dm0644 *.h "$pkgdir/usr/$_target/include/watt32"
+	install -dm0755 "$pkgdir/usr/$_target/include/watt32"
+	install -m0644 *.h "$pkgdir/usr/$_target/include/watt32"
 	for _d in netinet6 protocol netinet net rpc rpcsvc sys arpa; do
 		install -dm0755 "$pkgdir/usr/$_target/include/watt32/$_d"
-		install -Dm0644 "$_d"/*.h "$pkgdir/usr/$_target/include/watt32/$_d"
+		install -m0644 "$_d"/*.h "$pkgdir/usr/$_target/include/watt32/$_d"
 	done
-	install -Dm0644 sys/djgpp.err "$pkgdir/usr/$_target/include/watt32/sys/djgpp.err"
+	install -dm0755 "$pkgdir/usr/$_target/include/sys"
+	install -m0644 sys/djgpp.err "$pkgdir/usr/$_target/include/sys/djgpp.err"
 
 	cd "$srcdir/watt/lib"
 	install -Dm0644 libwatt.a "$pkgdir/usr/$_target/lib/libwatt.a"
