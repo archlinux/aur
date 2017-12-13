@@ -2,13 +2,13 @@
 
 _pkgname=xs
 pkgname=${_pkgname}-git
-pkgver=r809.a843a47
+pkgver=r999.ba6704e
 pkgrel=1
 pkgdesc="An extensible shell descended from es and rc. (GIT version)"
 arch=('x86_64' 'i686')
 url="https://github.com/TieDyedDevil/XS"
 license=('Custom')
-depends=('gc')
+depends=('boost' 'libffi' 'gc')
 makedepends=('git' 'meson' 'ninja')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -23,14 +23,13 @@ pkgver() {
 
 build() {
   cd ${_pkgname}
-  CPPFLAGS=-I/usr/lib/libffi-3.2.1/include meson --prefix /usr --buildtype release build
+  meson --prefix /usr --buildtype release build
   ninja -C build
-  #ninja -C build test
 }
 
 package() {
   cd ${_pkgname}
-  install -D -m644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -D -m644 "doc/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   DESTDIR=${pkgdir} ninja -C build install
 }
 

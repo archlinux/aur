@@ -1,6 +1,6 @@
 pkgbase = xs-git
 	pkgdesc = An extensible shell descended from es and rc. (GIT version)
-	pkgver = r809.a843a47
+	pkgver = r999.ba6704e
 	pkgrel = 1
 	url = https://github.com/TieDyedDevil/XS
 	install = xs.install
@@ -10,6 +10,8 @@ pkgbase = xs-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	depends = boost
+	depends = libffi
 	depends = gc
 	provides = xs
 	conflicts = xs
