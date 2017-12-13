@@ -5,7 +5,7 @@
 
 _pkgname=lmms
 pkgname=lmms-qt5-git
-pkgver=v1.2.0.rc4.r248.g03e988960
+pkgver=1.2.0.rc4.r252.g3660ac9a6
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio (Qt5 Version).'
 url='http://lmms.io'
@@ -22,7 +22,7 @@ optdepends=('wine: Windows VST support (experimental)'
             'oss: Optional OSS backend'
             'libsoundio: For soundio support'
             'lame: For exporting MP3 format')
-makedepends=('qt5-tools' 'git' 'cmake' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib' 'lame')
+makedepends=('qt5-tools' 'git' 'cmake' 'ninja' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib' 'lame' 'perl-list-moreutils')
 options=('!strip')
 provides=('lmms')
 conflicts=('lmms' 'lmms-git')
@@ -35,18 +35,19 @@ pkgver() {
 }
 
 prepare() {
+  cd -- "$srcdir/$_pkgname"
   git submodule update --init --recursive
 }
 
 build() {
   cd -- "$srcdir/$_pkgname"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_QT5=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
-  make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_QT5=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -GNinja
+  ninja
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
 }
 
 # vim:set ts=2 sw=2 et:
