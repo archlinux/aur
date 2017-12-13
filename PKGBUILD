@@ -9,7 +9,7 @@
 
 pkgname=dolphin-emu-faster-melee
 pkgver=5.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc='The FasterMelee NetPlay build of the Dolphin Emulator'
 arch=('x86_64')
 url='http://fastermelee.net'
@@ -109,7 +109,7 @@ package() {
 
 
 	echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"' > 51-gcadapter.rules
-  install -Dm 644 "${srcdir}"/51-gcadapter.rules -t "${pkgdir}"/usr/lib/dev/rules.d/
+  install -Dm 644 "${srcdir}"/51-gcadapter.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 
   install -d "${pkgdir}"/usr/share/
   cp -r "${srcdir}"/bin "${pkgdir}"/usr/share/dolphin-emu-faster-melee/
