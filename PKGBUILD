@@ -13,7 +13,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('lib32-glibc' $_pkgbasename)
 makedepends=('xmlto' 'docbook-xsl' 'docbook-xml')
-source=(http://downloads.sourceforge.net/sourceforge/giflib/${_pkgbasename}-${pkgver}.tar.bz2)
+source=(https://downloads.sourceforge.net/sourceforge/giflib/${_pkgbasename}-${pkgver}.tar.bz2)
 md5sums=('2c171ced93c0e83bb09e6ccad8e3ba2b')
 
 build() {
