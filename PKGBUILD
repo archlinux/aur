@@ -3,7 +3,7 @@
 
 srcname=nextcloud
 pkgname=${srcname}-testing
-pkgver=13.0.0beta1
+pkgver=13.0.0beta2
 pkgrel=1
 pkgdesc="Testing Release -- A cloud server to store your files centrally on a hardware controlled by you"
 arch=('any')
@@ -30,10 +30,10 @@ validpgpkeys=('28806A878AE423A28372792ED75899B9A724937A')
 source=("https://download.nextcloud.com/server/prereleases/nextcloud-${pkgver}.tar.bz2"{,.asc}
         'apache.example.conf'
         'nextcloud.hook')
-sha256sums=('158f7bc66f2ce5ef8f197d4e76053ecc94fd896e9f19fb91f996e8be304542af'
+sha512sums=('1c4806f6376810a309070c41aefb4fbe7172b5a6e038b14b629e372c6df4beca82399e63219a85767b3998c4eb6d997b05655be8ca049a47bb560c5f6f843dca'
             'SKIP'
-            '55b892adb86a67c2fa12d79f0980c6aea75aed5c6f6f78f2c2b5e5575a012067'
-            'd084cd6423c03f98087884b3c7b81f9510d1bea6c518860b64787a7f976cf0d3')
+            '2fd1bf60b1e28e5dfeb1783a576ae728dc549ad517ebabc8048f566381b14ea316c69b2ea24336666d5e96e92d014d43f5163da16deb157a040909c4b190d2db'
+            'e1a522965872ab3bad951daa0e24a3d281652bd6ce44a4337af1975808d86b1552c76f4a1216ac30f5e46c2f3da43e264afa61a6b422ff7241e55c14c3097a64')
 
 package() {
     # install project
