@@ -1,7 +1,7 @@
-From 2c6fca56ec527524700a1d2f26ea77ae2d5e561f Mon Sep 17 00:00:00 2001
+From 77026d26e851bbdc1bf5d5f1b6f21be7bbac86f1 Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
-Date: Sun, 26 Nov 2017 21:47:18 -0500
-Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.13)
+Date: Wed, 13 Dec 2017 15:30:35 -0500
+Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.14)
 
 This an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2013/5/30/513
@@ -50,10 +50,10 @@ your customers the hassle of this boot option.
  2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index d9c171ce4190..e1d4b9cdfc8d 100644
+index 05496622b4ef..d4c793024f7c 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -2914,6 +2914,15 @@
+@@ -2937,6 +2937,15 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
@@ -70,10 +70,10 @@ index d9c171ce4190..e1d4b9cdfc8d 100644
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 140760403f36..a7a58d814a17 100644
+index f66f9375177c..7c1867f29b7f 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -3671,6 +3671,106 @@ static int __init pci_apply_final_quirks(void)
+@@ -3673,6 +3673,106 @@ static int __init pci_apply_final_quirks(void)
  
  fs_initcall_sync(pci_apply_final_quirks);
  
@@ -180,14 +180,14 @@ index 140760403f36..a7a58d814a17 100644
  /*
   * Following are device-specific reset methods which can be used to
   * reset a single function if other methods (e.g. FLR, PM D0->D3) are
-@@ -4474,6 +4574,7 @@ static const struct pci_dev_acs_enabled {
- 	{ 0x10df, 0x720, pci_quirk_mf_endpoint_acs }, /* Emulex Skyhawk-R */
- 	/* Cavium ThunderX */
+@@ -4505,6 +4605,7 @@ static const struct pci_dev_acs_enabled {
  	{ PCI_VENDOR_ID_CAVIUM, PCI_ANY_ID, pci_quirk_cavium_acs },
-+	{ PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
+ 	/* APM X-Gene */
+ 	{ PCI_VENDOR_ID_AMCC, 0xE004, pci_quirk_xgene_acs },
++    { PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
  	{ 0 }
  };
  
 -- 
-2.15.0
+2.15.1
 

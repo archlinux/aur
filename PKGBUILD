@@ -2,10 +2,10 @@
 # Maintainer: Mark Weiman <markzz@archlinux.net>
 
 pkgbase=linux-vfio
-_srcname=linux-4.13
-pkgver=4.13.12
-pkgrel=2
-arch=('i686' 'x86_64')
+_srcname=linux-4.14
+pkgver=4.14.5
+pkgrel=1
+arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
@@ -15,24 +15,25 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches for pci passthrough
         'add-acs-overrides.patch'
-        'i915-vga-arbiter.patch')
-sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
+        'i915-vga-arbiter.patch'
+        0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch)
+sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'd5830f31cf8522986fb530e69b3b9b023f0298c4f88d897541ff0776dc805828'
+            'd86eb2fd1c424fec9fbb12afacf7b783756651f5d7d0cf7ac71c3fbbbedddc9c'
             'SKIP'
-            '9b1d9fcb55782e6149aca4dc2d3b250dd4cedf1bf4bd8c6f0968acab0e2e0ee4'
-            '9c6c4d27d59638d0569ea09a97138bfcfb219f17cdf1138be141380e6654f302'
+            'bfde21c325d39013463c38e9fa23d6d6481238b8509eea4ae38906127017e47d'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
-            'd08e95336be54792b3ded0a5c9b0aeddd47a38d61752af2cbaf38bb6d158d521'
-            '19fd3b81b4b081ceb100c89fb6bab012a8d708da6ca8cee53d771abca4770236')
+            'c238969a3c3a44b41c868a883880d8c4dc475e457427e91c649e9f24170b2c7d'
+            'eaf70cd805cdb43cf6227d354a6d54f67645b6df99e06136a8055d7494d7439c'
+            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -49,11 +50,10 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  # disable USER_NS for non-root users by default
+  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+
+  cat "${srcdir}/config" > ./.config
 
   # patches for vga arbiter fix in intel systems
   echo '==> Applying i915 VGA arbitration patch'
