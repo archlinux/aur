@@ -1,7 +1,7 @@
 pkgbase = mc-agent
 	pkgdesc = Simple ssh-agent that loads keys stored from Moolticute
 	pkgver = 20171210
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raoulh/mc-agent
 	install = mc-agent.install
 	arch = x86_64
