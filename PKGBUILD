@@ -40,13 +40,13 @@ prepare() {
   rm *.tar.gz || true 2>/dev/null
   
   git submodule update
-  cmake cmake -D RAIBLOCKS_GUI=ON ./
+  cmake cmake -D RAIBLOCKS_GUI=ON -D ENABLE_AVX2=ON -D PERMUTE_WITH_GATHER=ON -D PERMUTE_WITH_SHUFFLES=ON ./
 }
 
 build() {
   cd "$srcdir/raiblocks"
   make rai_wallet
-  
+  make rai_node  
 }
 
 package() {
