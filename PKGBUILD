@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/champloohq/tusk"
 license=('MIT')
 depends=('xdg-utils')
-source_x86_64=("https://github.com/champloohq/tusk/releases/download/v${pkgver}/tusk-${pkgver}-linux-amd64.deb")
+source_x86_64=("https://github.com/champloohq/tusk/releases/download/v${pkgver}/tusk_${pkgver}_linux-amd64.deb")
 source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('33332116be04baff7111b8b10dfb49511649e6f3a6ee9c63af314ad6571d02d4de369691499b6b34aefda2a871467b4a9a517afb699e6d9ae878a445b10b67f0'
