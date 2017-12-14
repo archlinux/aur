@@ -2,19 +2,14 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix-git
-pkgver=r973.a2b7c3f
-pkgrel=3
-pkgdesc="An action-puzzle game inspired by Lemmings"
-arch=('i686' 'x86_64')
-url="http://www.lixgame.com/"
-license=('custom:CC0')
-changelog=.CHANGELOG
-depends=('allegro')
-makedepends=('git' 'gendesk' 'dmd' 'dub')
+pkgver=r1054.560ec520
+pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(${pkgname%-git}::git+https://github.com/SimonN/LixD.git)
-sha512sums=('SKIP')
+source=("${pkgname%-git}::git+https://github.com/SimonN/lix-unstable.git"
+		"${pkgname%-git}-music-1.zip::http://www.lixgame.com/dow/lix-music.zip")
+sha512sums=('SKIP'
+            '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425')
 
 pkgver()
 {
@@ -38,9 +33,19 @@ prepare()
 	git -C "${srcdir}/${pkgname%-git}" log --graph -10 > "${startdir}/.CHANGELOG"	
 }
 
+_pkgname=${pkgname%-git}
+# template start; name=lix; version=0.3;
+pkgdesc="An action-puzzle game inspired by Lemmings"
+arch=('i686' 'x86_64')
+url="http://www.lixgame.com/"
+license=('custom:CC0')
+changelog=.CHANGELOG
+depends=('allegro' 'enet')
+makedepends=('git' 'gendesk' 'dmd' 'dub')
+
 build()
 {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${srcdir}/${_pkgname}"
 	
 	# force an upgrade of the dependencies to the local folder, without --cache=local they get added to the users home directory
 	dub upgrade --cache=local
@@ -52,7 +57,7 @@ build()
 	dub add-local enumap-*/enumap
 	
 	# force FHS compatibility with '-b releaseXDG'
-	dub build -b releaseXDG --cache=local
+	dub build -f -b releaseXDG --cache=local
 	
 	# remove local dependencies from search path so dub don't find them later again
 	dub remove-local allegro-*/allegro
@@ -65,15 +70,16 @@ build()
 package()
 {
 	cd "${srcdir}"
-	install -Dm644 "${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+	install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	
-	cd "${pkgname%-git}"
-	install -Dm644 "data/images/lix_logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
-	install -Dm644 "doc/copying.txt" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-	install -Dm755 "bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+	cd "${_pkgname}"
+	install -Dm644 "data/images/${_pkgname}_logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+	install -Dm644 "doc/copying.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+	install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 	
 	# https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
-	mkdir -p "${pkgdir}/usr/share/${pkgname%-git}" "${pkgdir}/usr/share/doc/${pkgname%-git}"
-	cp -dpr --no-preserve=ownership "doc/." "${pkgdir}/usr/share/doc/${pkgname%-git}/"
-	cp -dpr --no-preserve=ownership "data" "images" "levels" "${pkgdir}/usr/share/${pkgname%-git}"
+	mkdir -p "${pkgdir}/usr/share/${_pkgname}" "${pkgdir}/usr/share/doc/${_pkgname}"
+	cp -dpr --no-preserve=ownership "doc/." "${pkgdir}/usr/share/doc/${_pkgname}/"
+	cp -dpr --no-preserve=ownership "data" "images" "levels" "${srcdir}/music" "${pkgdir}/usr/share/${_pkgname}"
 }
+# template end;
