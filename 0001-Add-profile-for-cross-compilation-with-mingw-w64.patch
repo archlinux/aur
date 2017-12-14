@@ -1,7 +1,7 @@
-From 76b918b0c930c9c4c704f4ce947822e30c1bf1ec Mon Sep 17 00:00:00 2001
+From af6803389ebba50abfe7ad299bbf99c9c8d1a8aa Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
-Subject: [PATCH 01/33] Add profile for cross compilation with mingw-w64
+Subject: [PATCH 01/34] Add profile for cross compilation with mingw-w64
 
 ---
  mkspecs/mingw-w64-g++/qmake.conf      | 126 +++++++++++++++++++++++++++
@@ -12,7 +12,7 @@ Subject: [PATCH 01/33] Add profile for cross compilation with mingw-w64
 
 diff --git a/mkspecs/mingw-w64-g++/qmake.conf b/mkspecs/mingw-w64-g++/qmake.conf
 new file mode 100644
-index 0000000000..c929483fcd
+index 0000000000..0979611a53
 --- /dev/null
 +++ b/mkspecs/mingw-w64-g++/qmake.conf
 @@ -0,0 +1,126 @@
@@ -133,7 +133,7 @@ index 0000000000..c929483fcd
 +                              $$system($${QMAKE_PKG_CONFIG} --static --libs harfbuzz) \
 +                              $$system($${QMAKE_PKG_CONFIG} --static --libs freetype2)
 +QMAKE_LIBS_NETWORK          = -lws2_32 -lcrypt32 -ldnsapi
-+QMAKE_LIBS_NETWORK_STATIC   = $${CROSS_COMPILE_PREFIX}/lib/openssl-1.0/libssl.a $${CROSS_COMPILE_PREFIX}/lib/openssl-1.0/libcrypto.a -lgdi32
++QMAKE_LIBS_NETWORK_STATIC   = $$system($${QMAKE_PKG_CONFIG} --static --libs openssl) -ldnsapi
 +QMAKE_LIBS_DBUS             = $$system($${QMAKE_PKG_CONFIG} --static --libs dbus-1)
 +QMAKE_LIBS_OPENGL           = -lglu32 -lopengl32 -lgdi32 -luser32
 +QMAKE_LIBS_OPENGL_ES2       = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -ld3d9 -ldxguid -lgdi32 -luser32
@@ -304,5 +304,5 @@ index 0000000000..c5a70b1445
 +
 +#endif // QPLATFORMDEFS_H
 -- 
-2.14.2
+2.15.1
 

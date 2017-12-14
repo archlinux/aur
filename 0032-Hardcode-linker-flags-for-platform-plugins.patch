@@ -1,18 +1,16 @@
-From f7bb119102d28e22b764cce82ee491e747034247 Mon Sep 17 00:00:00 2001
+From aa947be7429528caf04ad7db6f077fe695bcfe82 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
-Subject: [PATCH 32/33] Hardcode linker flags for platform plugins
+Subject: [PATCH 32/34] Hardcode linker flags for platform plugins
 
 Otherwise incorrect order of libs leads to errors
 when building libqminimal.dll, libqoffscreen.dll
 and libqwindows.dll
-
-Change-Id: I594ddcc15599c63bb8ac5e998f59c4561a18eb26
 ---
- src/plugins/platforms/minimal/minimal.pro     | 15 +++++++++++++--
- src/plugins/platforms/offscreen/offscreen.pro | 14 ++++++++++++--
- src/plugins/platforms/windows/windows.pro     | 19 +++++++++++++++----
- 3 files changed, 40 insertions(+), 8 deletions(-)
+ src/plugins/platforms/minimal/minimal.pro     | 15 +++++++++++--
+ src/plugins/platforms/offscreen/offscreen.pro | 14 ++++++++++--
+ src/plugins/platforms/windows/windows.pro     | 32 +++++++++++++++++++--------
+ 3 files changed, 48 insertions(+), 13 deletions(-)
 
 diff --git a/src/plugins/platforms/minimal/minimal.pro b/src/plugins/platforms/minimal/minimal.pro
 index 8cfb68824e..46834a71fc 100644
@@ -66,36 +64,47 @@ index 6652cefd86..a322b17cc5 100644
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/windows/windows.pro b/src/plugins/platforms/windows/windows.pro
-index 23168c10dc..eb4af726ca 100644
+index 174bc7b609..e66488e364 100644
 --- a/src/plugins/platforms/windows/windows.pro
 +++ b/src/plugins/platforms/windows/windows.pro
-@@ -1,11 +1,22 @@
+@@ -1,14 +1,28 @@
  TARGET = qwindows
  
- QT += \
+-QT += \
 -    core-private gui-private \
--    eventdispatcher_support-private accessibility_support-private \
+-    eventdispatcher_support-private \
 -    fontdatabase_support-private theme_support-private
-+    core-private gui-private
- 
+-
+-qtConfig(accessibility): QT += accessibility_support-private
+-qtConfig(vulkan): QT += vulkan_support-private
+-
 -LIBS += -lgdi32 -ldwmapi
++QT += core-private gui-private
++
 +# Fix linker error when building libqwindows.dll by specifying linker flags for
 +# required modules manually (otherwise order is messed)
 +LIBS += \
 +    -lQt5EventDispatcherSupport \
-+    -lQt5AccessibilitySupport \
 +    -lQt5FontDatabaseSupport \
 +    -lQt5ThemeSupport \
 +    -lfreetype -lole32 -lgdi32 -ldwmapi
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
 +    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
-+    $$QT_SOURCE_TREE/include/QtAccessibilitySupport/$${QT_VERSION} \
 +    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION} \
 +    $$QT_SOURCE_TREE/include/QtThemeSupport/$${QT_VERSION}
++# Same for private support libs for accessibility and vulkan, if those are enabled
++qtConfig(accessibility) {
++    LIBS += -lQt5AccessibilitySupport
++    INCLUDEPATH += $$QT_SOURCE_TREE/include/QtAccessibilitySupport/$${QT_VERSION}
++}
++qtConfig(vulkan) {
++    LIBS += -lQt5VulkanSupport
++    INCLUDEPATH += $$QT_SOURCE_TREE/include/QtVulkanSupport/$${QT_VERSION}
++}
  
  include(windows.pri)
  
 -- 
-2.14.2
+2.15.1
 

@@ -1,7 +1,7 @@
-From 5cb315e62e7c4114d62767c274952c58ebe88b06 Mon Sep 17 00:00:00 2001
+From 834b94ccb1897cd5325557fa6051ef2cb4bb70a0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
-Subject: [PATCH 21/33] Use *.dll.a as import lib extension
+Subject: [PATCH 21/34] Use *.dll.a as import lib extension
 
 The variables used here are provided by
 mingw-w64 specific mkspec
@@ -64,5 +64,5 @@ index 737f3abc3a..2e6d5d94a9 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.14.2
+2.15.1
 

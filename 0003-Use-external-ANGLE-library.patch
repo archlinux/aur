@@ -1,7 +1,7 @@
-From 00b0e801caf246047f3ea18bead0ffc7c7631dad Mon Sep 17 00:00:00 2001
+From 036909a4c082a17bee90c451842ebaee896e1893 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
-Subject: [PATCH 03/33] Use external ANGLE library
+Subject: [PATCH 03/34] Use external ANGLE library
 
 ---
  src/gui/Qt5GuiConfigExtras.cmake.in       | 4 ++--
@@ -28,7 +28,7 @@ index 07869efd7d..2e32911a64 100644
  
  _qt5_Gui_check_file_exists(${Qt5Gui_EGL_INCLUDE_DIRS})
 diff --git a/src/gui/gui.pro b/src/gui/gui.pro
-index f7d077e656..b7fc6fadaf 100644
+index f8cec00b82..d09c9fd49c 100644
 --- a/src/gui/gui.pro
 +++ b/src/gui/gui.pro
 @@ -18,12 +18,6 @@ MODULE_PLUGIN_TYPES = \
@@ -66,7 +66,7 @@ index 016db46405..02f1204f0f 100644
  HEADERS += qgl.h \
             qgl_p.h \
 diff --git a/src/plugins/platforms/windows/windows.pri b/src/plugins/platforms/windows/windows.pri
-index 6d01d05fcc..181ac2cb3b 100644
+index b7790a66e3..046fe34a06 100644
 --- a/src/plugins/platforms/windows/windows.pri
 +++ b/src/plugins/platforms/windows/windows.pri
 @@ -4,6 +4,7 @@ LIBS += -lole32 -luser32 -lwinspool -limm32 -lwinmm -loleaut32
@@ -78,10 +78,10 @@ index 6d01d05fcc..181ac2cb3b 100644
  mingw: LIBS *= -luuid
  # For the dialog helpers:
 diff --git a/src/src.pro b/src/src.pro
-index 43fc06f2e5..4188d4ea6b 100644
+index a2064b1362..b9ba606b03 100644
 --- a/src/src.pro
 +++ b/src/src.pro
-@@ -175,10 +175,6 @@ qtConfig(gui) {
+@@ -180,10 +180,6 @@ qtConfig(gui) {
          SUBDIRS += src_3rdparty_harfbuzzng
          src_gui.depends += src_3rdparty_harfbuzzng
      }
@@ -93,5 +93,5 @@ index 43fc06f2e5..4188d4ea6b 100644
          SUBDIRS += src_3rdparty_libpng
          src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.14.2
+2.15.1
 

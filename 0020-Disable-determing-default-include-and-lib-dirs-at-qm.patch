@@ -1,7 +1,7 @@
-From 98a2adad712fb0c23ad2813e1a35a793317461ad Mon Sep 17 00:00:00 2001
+From 81a6a9a34e71a08fd5a8b87f44c71803d7f07797 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:20:25 +0200
-Subject: [PATCH 20/33] Disable determing default include and lib dirs at qmake
+Subject: [PATCH 20/34] Disable determing default include and lib dirs at qmake
  time when building with mingw-w64
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 20/33] Disable determing default include and lib dirs at qmake
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mkspecs/features/toolchain.prf b/mkspecs/features/toolchain.prf
-index 35175f1744..96afeeca57 100644
+index ba41598be1..6416db4d58 100644
 --- a/mkspecs/features/toolchain.prf
 +++ b/mkspecs/features/toolchain.prf
 @@ -31,7 +31,7 @@ isEmpty($${target_prefix}.INCDIRS) {
@@ -18,9 +18,9 @@ index 35175f1744..96afeeca57 100644
      #
 -    gcc {
 +    !win32:gcc {
-         !equals(QMAKE_HOST.os, Windows) {
-             cmd_prefix = "LC_ALL=C"
-             cmd_suffix = "</dev/null >/dev/null"
+         cmd_suffix = "<$$QMAKE_SYSTEM_NULL_DEVICE >$$QMAKE_SYSTEM_NULL_DEVICE"
+         equals(QMAKE_HOST.os, Windows): \
+             cmd_prefix = "set LC_ALL=C&"
 -- 
-2.14.2
+2.15.1
 
