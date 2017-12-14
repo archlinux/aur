@@ -11,7 +11,7 @@
 # x86_64: all from i686 and ffmpeg-full-git
 
 pkgname=mpv-semifull-git
-pkgver=0.25.0.r216.g33cfb71ed
+pkgver=0.27.0.r537.gd7d670fcbf
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player [With most librarys excluding CUDA and INTEL for 
 now...]'
@@ -83,8 +83,6 @@ build() {
 	            \
 	            --disable-win32-internal-pthreads \
 	            --enable-iconv \
-	            --enable-termios \
-	            --enable-shm \
 	            --enable-libsmbclient \
 	            --enable-lua \
 	            --enable-libass \
@@ -150,8 +148,6 @@ build() {
 	            --disable-mali-fbdev \
 	            --enable-gl \
 	            \
-	            --enable-vaapi-hwaccel \
-	            --enable-vdpau-hwaccel \
 	            --disable-d3d-hwaccel \
 	            "$_cuda" \
 	            \
