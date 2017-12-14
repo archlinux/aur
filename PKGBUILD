@@ -3,7 +3,7 @@
 _pkgname=betterlockscreen
 pkgname=${_pkgname}-git
 pkgver=r30.14ead9b
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
 url="https://github.com/pavanjadhaw/betterlockscreen"
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
 	mkdir -p $pkgdir/usr/bin
-	cp "$srcdir/$_pkgname/lock.sh" $pkgdir/usr/bin/$_pkgname
+	cp "$srcdir/$_pkgname/$_pkgname" $pkgdir/usr/bin/$_pkgname
 }
