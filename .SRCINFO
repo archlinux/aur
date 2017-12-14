@@ -1,0 +1,25 @@
+pkgbase = snakemake-git
+	pkgdesc = Python-based language and execution environment for GNU Make-like workflows
+	pkgver = 4.3.0.79.gbb1a966
+	pkgrel = 1
+	url = https://bitbucket.org/snakemake/snakemake
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-appdirs
+	depends = python-configargparse
+	depends = python-ratelimiter
+	depends = python-requests
+	depends = python-yaml
+	depends = python-wrapt
+	optdepends = graphviz: For DAG visualization
+	optdepends = python-docutils: For report generation
+	provides = snakemake
+	conflicts = snakemake
+	options = !emptydirs
+	source = git+https://bitbucket.org/snakemake/snakemake.git
+	md5sums = SKIP
+
+pkgname = snakemake-git
+
