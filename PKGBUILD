@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-company-mode-git
-pkgver=0.9.4.40.ga4e14ed
+pkgver=0.9.4.42.g4004c7f
 pkgrel=1
 pkgdesc="Modular in-buffer completion framework for Emacs - git checkout"
 url="http://company-mode.github.io"
