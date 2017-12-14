@@ -5,7 +5,7 @@ pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable 
 arch=('i686' 'x86_64')
 url="http://raiblocks.com/"
 license=('BSD 2-clause')
-depends=('qt5'  'boost' 'boost-libs')
+depends=('qt5-base'  'boost' 'boost-libs')
 provides=(raiblocks)
 pkgver() {
   cd "raiblocks"
