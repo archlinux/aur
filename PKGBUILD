@@ -33,9 +33,14 @@ depends=('cfitsio'
          'xmlrpc-c')
 optdepends=('blas: Optional extensions to TMVA'
             'fcgi: Language independent, high performant extension to CGI'
+            'go: Go language support'
             'gcc-fortran: Enable the Fortran components of ROOT'
+            'ocaml: OCAML support'
+            'pythia: Pythia8 support'
+            'python-numpy: numpy bindings'
             'tcsh: Legacy CSH support'
-            'z3: A high-performance theorem prover')
+            'xrootd: XRootD support'
+            'z3: Z3 Theorem prover support')
 options=('!emptydirs')
 install=root.install
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
