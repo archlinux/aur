@@ -1,7 +1,7 @@
 pkgbase = openfx-arena-git
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
-	pkgver = 2.3.4
-	pkgrel = 4
+	pkgver = 2.3.5
+	pkgrel = 1
 	url = https://github.com/MrKepzie/openfx-io
 	arch = x86_64
 	license = GPL2
