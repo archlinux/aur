@@ -6,7 +6,7 @@ pkgdesc="Minio Python Library for Amazon S3 Compatible Cloud Storage"
 arch=('any')
 url="https://github.com/minio/minio-py"
 license=('APACHE')
-depends=('python' 'python-certifi' 'python-urllib3')
+depends=('python' 'python-certifi')
 makedepends=('python-setuptools')
 
 makedepends+=('git')
