@@ -2,11 +2,11 @@
 # Git: https://github.com/nogo/archlinux-pkgbuild
 
 # Uncomment, if you want tha last release
-_version=2.3.2
+_version=2.3.3
 
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
