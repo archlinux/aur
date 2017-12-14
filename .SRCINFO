@@ -1,19 +1,19 @@
 pkgbase = anyremote
 	pkgdesc = Remote control (console-oriented) through bluetooth or IR connection
-	pkgver = 6.4
+	pkgver = 6.6.1
 	pkgrel = 1
 	url = http://anyremote.sourceforge.net
 	install = anyremote.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = bluez-libs
 	depends = bluez
 	depends = dbus-glib
 	depends = libxtst
 	optdepends = irda-utils: IRDA support
-	source = http://downloads.sourceforge.net/sourceforge/anyremote/anyremote-6.4.tar.gz
-	md5sums = 050d5625e97b5844e10c83efdb7abc51
+	source = http://downloads.sourceforge.net/sourceforge/anyremote/anyremote-6.6.1.tar.gz
+	md5sums = 40f766e4ac90c9f8453c83a6158b79ed
 
 pkgname = anyremote
 
