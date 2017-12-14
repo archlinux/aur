@@ -6,7 +6,7 @@ _branch='discord-canary'
 
 pkgname=discord-canary
 pkgver=0.0.35
-pkgrel=2
+pkgrel=3
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
