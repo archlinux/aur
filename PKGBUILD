@@ -8,7 +8,7 @@
 
 _qt_module=qtcanvas3d
 pkgname="mingw-w64-qt5-canvas3d"
-pkgver=5.9.2
+pkgver=5.10.0
 pkgrel=1
 arch=('any')
 pkgdesc="A JavaScript 3D rendering API for Qt Quick (mingw-w64)"
@@ -18,9 +18,9 @@ options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('84a8d66c2c35b67af84376037cac71fe77a105df09ffef7906a9cb1aeafb3eea')
+_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('d289626f06236f2c0e3065416fd6a8a72b8895cb5253ee2d9b6320df5b452987')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
