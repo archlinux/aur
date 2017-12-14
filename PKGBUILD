@@ -13,11 +13,11 @@ source=("http://tcts.fpms.ac.be/synthesis/mbrola/dba/${_pkgfile}/${_pkgfile}-${p
 md5sums=('e9ffbbc4411e247d505e760773d11b31')
 
 package(){
-  cd "${srcdir}"
+  cd "${srcdir}/${_pkgfile}"
   # Install license file
   install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # Install files
-  for file in cz1 cz1.txt Test/*
+  for file in cz1 cz1.txt TEST/*
   do
     install -D -m 644 "${file}" "${pkgdir}/usr/share/mbrola/${_pkgfile}/${file}"
   done
