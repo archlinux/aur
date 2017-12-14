@@ -8,7 +8,7 @@
 
 _qt_module=qtcharts
 pkgname="mingw-w64-qt5-charts"
-pkgver=5.9.2
+pkgver=5.10.0
 pkgrel=1
 arch=('any')
 pkgdesc="Provides a set of easy to use chart components (mingw-w64)"
@@ -19,9 +19,9 @@ options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('4e7af70a73828ee1eb9606bd2c071cc7347c5f928aaf07b420dce7376b1c6aa4')
+_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('12ce2c4a8467d349ecfdba831cc03c539f2b207aa21082a4e1043dcf8f1b31ef')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
