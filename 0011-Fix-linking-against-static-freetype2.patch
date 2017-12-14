@@ -1,19 +1,19 @@
-From 531643d6b3f73cd23ccd6e8d1229874c306d3057 Mon Sep 17 00:00:00 2001
+From 6e4e751d6f39c6869cacb6d4148f5358f58bb54e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 20:51:19 +0100
-Subject: [PATCH 11/31] Fix linking against static freetype2
+Subject: [PATCH 11/34] Fix linking against static freetype2
 
 ---
  src/gui/configure.json | 7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index 3f07fba4d5..b000d00801 100644
+index 4ca919c6da..5d524b1d73 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
-@@ -107,8 +107,11 @@
-             "label": "FreeType",
-             "test": "unix/freetype",
+@@ -158,8 +158,11 @@
+                 ]
+             },
              "sources": [
 -                { "type": "pkgConfig", "args": "freetype2" },
 -                { "type": "freetype", "libs": "-lfreetype" }
@@ -26,5 +26,5 @@ index 3f07fba4d5..b000d00801 100644
          },
          "fontconfig": {
 -- 
-2.13.2
+2.15.1
 

@@ -84,7 +84,7 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base-dynamic
-pkgver=5.9.1
+pkgver=5.10.0
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
@@ -92,14 +92,14 @@ isStatic && arch=('any') || arch=('i686' 'x86_64')
 url='https://www.qt.io/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-sqlite'
-         'mingw-w64-libpng' 'mingw-w64-openssl-1.0' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
+         'mingw-w64-libpng' 'mingw-w64-openssl' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
          'mingw-w64-pcre2')
 groups=('mingw-w64-qt5')
 optdepends=('mingw-w64-postgresql: PostgreSQL support' 'mingw-w64-mariadb-connector-c: MySQL support')
 makedepends=('mingw-w64-gcc' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c' 'mingw-w64-pkg-config')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
-_pkgfqn="qtbase-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+_pkgfqn="qtbase-everywhere-src-${pkgver}"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Add-profile-for-cross-compilation-with-mingw-w64.patch'
         '0002-Ensure-GLdouble-is-defined-when-using-dynamic-OpenGL.patch'
         '0003-Use-external-ANGLE-library.patch'
@@ -122,47 +122,53 @@ source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/sub
         '0020-Disable-determing-default-include-and-lib-dirs-at-qm.patch'
         '0021-Use-.dll.a-as-import-lib-extension.patch'
         '0022-Merge-shared-and-static-library-trees.patch'
-        '0023-Allow-usage-of-static-version-with-CMake.patch'
-        '0024-Adjust-linker-flags-for-static-build-with-cmake-ming.patch'
-        '0025-Use-correct-pkg-config-static-flag.patch'
-        '0026-Fix-macro-invoking-moc-rcc-and-uic.patch'
-        '0027-Ignore-errors-about-missing-feature-static.patch'
-        '0028-Enable-and-fix-use-of-iconv.patch'
-        '0029-Ignore-failing-pkg-config-test.patch'
-        '0030-Prevent-qmake-from-messing-static-lib-dependencies.patch'
-        '0031-Hardcode-linker-flags-for-platform-plugins.patch')
-sha256sums=('bc9a21e9f6fff9629019fdf9f989f064751d5073c3a28dc596def92f4d4275c6'
-            'f52c581e355a7da69c96c0b31dd42f13b298f11bb616945e6215804fef06866b'
-            'e540286f502a72dc55649006d671c9bcca5eef174ad4c275087a88f56bc40bfd'
-            'dc6d77dfa426aabcebbbda7e05f0bf8746a1700519a9bcbc4bf590b47af51eee'
-            'cb799952f673b18ab9e81528f31b0748adc9313335eccc2a8a3b30cb202d458f'
-            '79634ff2647f5c7c93462ea97e9fca5b2be386450a2c9b27c26ec6f6cfc1f0ee'
-            'c447040e2fbaae9aae2bda5c8ed21e71cf2f83f9aa57ceba9cce6e1d1386ed12'
-            '99735144a8437b8bc03141e998c5f750b6b5f82490cca5e31c67c013ec7f5b36'
-            '7866105da64a96722a2676318e90951d2ac3e7bbe5793557af2ea5a73d0f321a'
-            '37397374c1e373c74a69c4608834dc642832b51ef5532baad5313889ad477fc4'
-            'd67c33f9b990ebbd486ad38f5d5907a0f2d4989e5c2c5057ff017ee06e6493b1'
-            '1a4f497ca54cecbb055303d4dd25eb63f5b2261d32d0b045eea4ae8f4e3bbbe5'
-            '11e329848dbfe42abda9c9531370437ee5a0d69483c333766655e847d2b05a62'
-            'd3b395a536afb2986a0fc4aabaddc9c5ac465b4f7eb7a58a30c9918be07f2f62'
-            '864ba163f331620ecc4df00132dc7fd9b85427038a8209571ddf7b43e5bb2ecd'
-            '68220dc824e0294e604512cec9e6d40e55184d86bf7577dcb5b1af6462da9c66'
-            '1ba5e6862f81456c94e3f57cc37a303d67912269661028357c716de8bf21aeb9'
-            'a4c60391632d84a085896db61aa4e94f1742be34448c23a97a1aa0910cd2e29a'
-            '3db5c1fe5f6957cecdaef9ce767f27e4d5fdd4d9d775d527dba6c093808f371d'
-            'd3e0d6d4daea62fd710416f4549c943f601b7c0e5e84c5cc8c524fabb1dd402b'
-            '569a2f1d7e07d439c82754703b1b007ce6907b12743211b10138a394965258c4'
-            '589955c161c1e975536ee6e21ab1470cf6f8d3a5c50f170ba9ee9d855e347c59'
-            'b1b43064960ca3eb35eb3baed7abf28b00f606d32baeb38d53ffbf96c21dc716'
-            'cbfbb01f52c17cd37d6724e5fad0708d8337d4ba11b87f59dbbe108863aca7dd'
-            'f9b1e01c870a1640865d2d57cb756a9c754c047c66ef78f8cadc6e609677ede0'
-            '25138daad7bfc00cb6f6556da53e6efb2ad0c7b09743cfc3633c86b46ad538cc'
-            '19809d59b5b1fd9ffea8bee6afeca0a3992170f362d0cb99d9f20b2148b859a4'
-            'e0841bd69b6037303bfba1de3072bd55a31ca12c57b8d4e01c28d4ef447b1bed'
-            '4d9204b4e4d634391704954ba152651ccfdd0a00efaabc892c62c710fc6068b4'
-            'b0e505ceef8cf052a9ceef9a508c9c1f5e4c1b4d49e08f954bcb42e4c1aed79e'
-            '389bee66acc6aa9d36f6ab206d217e43b0aca8ba290dc7b1d170c98b79d64cf2'
-            'e2dde7f878d8b5176d5aa925aedeaf60e7b3bf14f98a55327af5f7adcff2eb8c')
+        '0023-Pull-dependencies-of-static-libraries-in-CMake-modul.patch'
+        '0024-Allow-usage-of-static-version-with-CMake.patch'
+        '0025-Adjust-linker-flags-for-static-build-with-cmake-ming.patch'
+        '0026-Use-correct-pkg-config-static-flag.patch'
+        '0027-Fix-macro-invoking-moc-rcc-and-uic.patch'
+        '0028-Ignore-errors-about-missing-feature-static.patch'
+        '0029-Enable-and-fix-use-of-iconv.patch'
+        '0030-Ignore-failing-pkg-config-test.patch'
+        '0031-Prevent-qmake-from-messing-static-lib-dependencies.patch'
+        '0032-Hardcode-linker-flags-for-platform-plugins.patch'
+        '0033-Fix-linking-against-static-plugins-with-qmake.patch'
+        '0034-Don-t-use-the-statx-syscall.patch')
+sha256sums=('fd5578cd320a13617c12cf2b19439386b203d6d45548e855f94e07be9829f762'
+            'd2784f40a1f8f3f7041c94b89702404a21ef2fd1d6c63bbffe14e26321265745'
+            'c695a25e6dc0ddd8b1dd07adba6eee518294ffb69b689f373dde861f935c876b'
+            '4a7a855fe8abffe0aa3da450981439a1c26f7f65fe456149f627bccd603ad5b7'
+            '46a42a20a4bed03f9f0b7abd55904be3e560dfd4e10e586d68479a5060ce06e2'
+            '70550f6cbe95c5a14ccb7e9ba5fab7cb595a0fc49b889c9ac735cca41148ab5b'
+            'fa16872915ce6d24bc217ee7c5e42c3c61e29034f832e32f2971da85eb4f3d08'
+            '19b01e55dd3eb311c182d2ef682f15a2739556d5585d9e19de633e92dba9a788'
+            'e13936a6f7d17a6c38c95e9cc9e19209a3d03970cf5157931f309edf45530132'
+            '978a2f5a53c0fe50780a12c09bbc81ee8efe60d1437425b08b3c5b4a4edb217c'
+            '8ffb5f68ebe09e99580d45c1279dc39ef811d0de7e4d363173af3be2cf3c9ee8'
+            '305f18d1b011033fbb12ca544d3af47cb45a1b6d324bf68b671cb007dc2a8a0a'
+            '53fb05efee9c024643cd607c623eda745a122cddc2880d6554b3168778942316'
+            '927188133dc2708345f7c831e1253b59338a9554b544c1d2cfdf02493b92573f'
+            '125f0b758bf2088589a31ced00146dc2cce28fa93bdd84684857ae60850c96b8'
+            '016c3a2980060365dd7e83a001f274b6a7f736af2519fa7c5263b0def10e2703'
+            '48930971f0ce225795bd0b6292c4e3ad27843ec0c95113b95be44274435b6623'
+            'a6f8e6111b6960b86b347c3927251f41c8fa235aabf90e89965063326c7cedd3'
+            'a57e452177fd1aa7f0d22b1a83f29dd18010dfef7b007157a7dc8d6399232471'
+            '07b1ab8b25a02e1ed369017178847081afe937817e71384dfb17ab56ff278a0e'
+            '2b426ab2aa774110c2b628c4987748520925e7ebfda2f524407cdc606315696b'
+            'a78df9e2a5f3da89f944328a217ae5dd75fabd37f5b5c9ebc8eb75678f31910a'
+            '8470c121a04702b1a0ef4f52d310e69906bab0c066fcb6c7601bcb678655b959'
+            'ac09e38e4f555e5bae1bc0f01b70a67624b15ecf5affc06d85eaccbc85f3c1da'
+            '0c1939eff41143bc78a6bf6e8b51515f4ba68337b9723674e6e7ab696167edae'
+            'ed64b7a36a01d30bc9d35fed47186f9161e5ceba7dd92da7c60d288026fa8856'
+            '3f42240d83d09c62b8a7d9a98fe2d6a9d9fcf8ba6b5ff3d303a941411ef7d1a4'
+            'd44bdc6363d1e5e1cbcdb5b61e0a788a38368ab3090746c165981bd0a5eb0854'
+            '15c0691f6fd058bf70be79b221ab4ace66cc574728b68d9f15bafe1877f46266'
+            '05aec6b0c2d9add0e4181246b52096d4cf2f4176f4c0e9f467d5244492844c28'
+            'ed1237884607a368190cb1ac4de2a12f00e54ecfcea901c7f1980ac37b94b57b'
+            '4a83eb1549be9477bc002a6b939e24a6f1b6fd14bfcc804235771d484762aa3e'
+            'a100076b67008b64f73fd4fd4b131e1774b84b24b61198cabecdb5916d634887'
+            'fe9ecf6e82b64b3a955f688d51c87ca82a4aa4ad59e419c7c284ce18b72e223c'
+            'cbc0e2570ca5b52681d99ab15e7a7a79a286e498203d34c2d67493a78dd6b84d')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -228,8 +234,6 @@ build() {
   unset PKG_CONFIG_PATH
 
   for _arch in ${_architectures}; do
-    echo "INCLUDEPATH += /usr/${_arch}/include/openssl-1.0" >> src/network/network.pro
-
     # To prevent conflicts with the mingw-w64-qt4 package we have
     # to put tools in a dedicated folder
 
@@ -310,22 +314,26 @@ build() {
     # Fix MariaDB
     qt_configure_args+=" -I/usr/${_arch}/include/mariadb"
 
+    msg2 'Configure and build qmake'
     mkdir -p ../build-${_arch} && pushd ../build-${_arch}
     if isStatic; then
-      export OPENSSL_LIBS="/usr/${_arch}/lib/openssl-1.0/libssl.a /usr/${_arch}/lib/openssl-1.0/libcrypto.a -lws2_32 -lgdi32 -lcrypt32"
+      export OPENSSL_LIBS="/usr/${_arch}/lib/libssl.a /usr/${_arch}/lib/libcrypto.a -lws2_32 -lgdi32 -lcrypt32"
       ../${_pkgfqn}/configure \
         $qt_configure_args \
         -static \
         -openssl-linked
+      msg2 'Build static Qt libraries'
       make
     else
       # The LD_LIBRARY_PATH override is needed because libQt5Bootstrap* are shared
       # libraries which various compiled tools (like moc) use. As the libQt5Bootstrap*
       # libraries aren't installed at this point yet, we have to workaround this
-      ../${_pkgfqn}/configure $qt_configure_args \
+      ../${_pkgfqn}/configure \
+        $qt_configure_args \
         -shared \
         -openssl-runtime \
         -device-option 'CROSS_COMPILE_CUSTOM_CONFIG=actually_a_shared_build'
+      msg2 'Build shared Qt libraries'
       LD_LIBRARY_PATH="$PWD/lib" LDFLAGS="-L$PWD/lib" make
     fi
     popd
@@ -347,6 +355,7 @@ package() {
         "${pkgdir}/usr/${_arch}/lib/"{lib,}qt5main* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5AccessibilitySupport* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5DeviceDiscoverySupport* \
+        "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5EdidSupport* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5EventDispatcherSupport* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5FbSupport* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5FontDatabaseSupport* \
