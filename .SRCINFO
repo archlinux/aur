@@ -1,14 +1,16 @@
 pkgbase = opensysusers
 	pkgdesc = A standalone utility for handling systemd-style sysusers.d users and groups
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/artix-linux/opensysusers
 	arch = any
 	license = custom:BSD2
 	depends = shadow
 	depends = openrc
 	source = opensysusers-0.3.2.tar.gz::https://github.com/artix-linux/opensysusers/archive/0.3.2.tar.gz
+	source = opensysusers.hook
 	sha256sums = 0a3ffb2bf5a3baa9bd49ef522d4bef7fbfa2f51ca6cce24d6354a7ae3c0344d8
+	sha256sums = 90fdf362a29138f1ed65e86e8b97d1251adb6b2e94d829cceb0094a63d00252a
 
 pkgname = opensysusers
 

@@ -1,0 +1,12 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/sysusers.d/*
+Target = etc/sysusers.d/*
+Target = run/sysusers.d/*
+
+[Action]
+Description = Updating system users and groups
+When = PostTransaction
+Exec = /usr/bin/sysusers
