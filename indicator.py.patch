@@ -154,9 +154,9 @@
 -        fmin, fmax, governor = cpufreq.get_policy(self.cpus[0])
 +        govFile = open("/sys/devices/system/cpu/cpufreq/policy0/scaling_governor", 'r')
 +        governor = govFile.readline().strip("\n")
-+        fmnFile = open("/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq", 'r')
++        fmnFile = open("/sys/devices/system/cpu/cpufreq/policy0/cpuinfo_min_freq", 'r')
 +        fmin = int(fmnFile.readline().strip("\n"))
-+        fmxFile = open("/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq", 'r')
++        fmxFile = open("/sys/devices/system/cpu/cpufreq/policy0/cpuinfo_max_freq", 'r')
 +        fmax = int(fmxFile.readline().strip("\n"))
          # use the highest freq among cores for display
 -        freq = max([cpufreq.get_freq_kernel(cpu) for cpu in self.cpus])

@@ -33,7 +33,7 @@ sha512sums=('SKIP'
 pkgver() {
   cd indicator-cpufreq
 
-  printf "r%s" "$(bzr revno).8"
+  printf "r%s" "$(bzr revno).9"
 }
 
 prepare() {
