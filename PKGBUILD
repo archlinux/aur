@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='arrow'
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ checkdepends=()
 optdepends=()
 makedepends=('cmake' 'boost' 'brotli-static' 'lz4-static' 'zlib-static' 'zstd-static' 'snappy-static')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('22667b9d3f4d36c2060d5ade8c904c528325ea4ffcea2e71671013addcd033af')
+sha256sums=('c61a60c298c30546fc0b418a35be66ef330fb81b06c49928acca7f1a34671d54')
 
 build(){
   cd "$srcdir"
@@ -24,7 +24,8 @@ build(){
                                       -DARROW_BUILD_TESTS=OFF \
                                       -DARROW_ALTIVEC=OFF \
                                       -DCMAKE_INSTALL_PREFIX="/usr" \
-                                      -DCMAKE_INSTALL_LIBDIR="lib"
+                                      -DCMAKE_INSTALL_LIBDIR="lib" \
+                                      -DARROW_USE_SSE=ON
   make
 }
 
