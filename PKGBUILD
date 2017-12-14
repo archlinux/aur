@@ -4,12 +4,13 @@
 _pkgbase=webkitgtk
 pkgname=webkitgtk2-enchant
 pkgver=2.4.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Legacy Web content engine with enchant 2.x support"
 arch=(i686 x86_64)
 url="https://webkitgtk.org/"
 license=(custom)
 provides=('webkitgtk2')
+conflicts=('webkitgtk2')
 depends=(libxt libxslt sqlite libsoup enchant libgl geoclue2 gst-plugins-base-libs
          libsecret libwebp harfbuzz-icu)
 makedepends=(gtk3 gtk2 gperf gobject-introspection python2 mesa ruby)

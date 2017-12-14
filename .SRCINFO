@@ -1,7 +1,7 @@
 pkgbase = webkitgtk2-enchant
 	pkgdesc = Legacy Web content engine with enchant 2.x support
 	pkgver = 2.4.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
 	arch = i686
@@ -29,6 +29,7 @@ pkgbase = webkitgtk2-enchant
 	optdepends = gst-plugins-good: media decoding
 	optdepends = gst-libav: nonfree media decoding
 	provides = webkitgtk2
+	conflicts = webkitgtk2
 	options = !emptydirs
 	source = https://webkitgtk.org/releases/webkitgtk-2.4.11.tar.xz
 	source = webkitgtk-2.4.9-abs.patch
