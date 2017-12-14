@@ -1,0 +1,9 @@
+src/
+pkg/
+beast/
+cryptopp/
+lmdb/
+miniupnp/
+phc-winner-argon2/
+raiblocks/
+*.pkg.*
