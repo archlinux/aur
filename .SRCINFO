@@ -1,0 +1,25 @@
+pkgbase = inbox-app-git
+	pkgdesc = Google Inbox packaged as Electron app
+	pkgver = 58.f96347d
+	pkgrel = 1
+	url = https://github.com/fgnass/inbox-app
+	arch = any
+	license = custom:UNLICENSE
+	makedepends = git
+	makedepends = npm
+	makedepends = gendesk
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	provides = inbox-app
+	conflicts = inbox-app
+	source = git://github.com/fgnass/inbox-app.git
+	md5sums = SKIP
+
+pkgname = inbox-app-git
+
