@@ -7,32 +7,38 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
          qemu-patched-block-{iscsi,rbd,gluster} qemu-patched-guest-agent)
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
-pkgver=2.10.1
-pkgrel=2
-arch=(i686 x86_64)
+pkgver=2.11.0
+pkgrel=1
+arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
 _headlessdeps=(seabios gnutls libpng libaio numactl jemalloc xfsprogs libnfs
-               lzo snappy curl vde2 libcap-ng spice libcacard usbredir)
-depends=(virglrenderer sdl2 vte3 brltty "${_headlessdeps[@]}")
+               lzo snappy curl vde2 libcap-ng spice libcacard usbredir pulseaudio)
+depends=(virglrenderer sdl2 vte3 "${_headlessdeps[@]}")
 makedepends=(spice-protocol python2 ceph libiscsi glusterfs)
 source=("$url/download/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
-        qemu.sysusers
         qemu-ga.service
         65-kvm.rules
         allow_elf64.patch
         cpu-pinning.patch
         audio-improvements.patch
-        v2_qemu_zen_smt_cache.patch)
-sha256sums=('8e040bc7556401ebb3a347a8f7878e9d4028cf71b2744b1a1699f4e741966ba8'
+        v2_qemu_zen_smt_cache.patch
+        v4_ivshmem_1.patch
+        v4_ivshmem_2.patch
+        v4_ivshmem_3.patch
+        v4_ivshmem_4.patch)
+sha256sums=('c4f034c7665a84a1c3be72c8da37f3c31ec063475699df062ab646d8b2e17fcb'
             'SKIP'
-            'dd43e2ef062b071a0b9d0d5ea54737f41600ca8a84a8aefbebb1ff09f978acfb'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
-            '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7'
+            'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
             '13a6d9e678bdc9e1f051006cfd0555f5a80582368f54c8a1bb5a78ece3832ac4'
             '8d4a7e35ab1a0a465f737cf60fc0392afc430e22354a40a89505f8766a3a3ee8'
             '23338655345d0ee535f34acc124f1ddd75e5ad4483e2bd87294b7ac4fe3fa859'
-            'adf3f389849e92c5ea4c4cee0abf1ac5df61a176d296e9263ac773194ba86e57')
+            'adf3f389849e92c5ea4c4cee0abf1ac5df61a176d296e9263ac773194ba86e57'
+            '2626aa6c13ad0596a02501e7b31800c7536c629d89297c4b7ba11e311e4cd4e8'
+            '87dcd51a3500382c2b0e1462eb99c21ec355ab0d2b41705f7e0a356827accceb'
+            'fd619e15797dd38bdfe822d36b3d41064b5585e0961a7cde0cf88c21c9dcd466'
+            'e5f81c6df9f8344b78f70023bafa87fe2e950c0302ab234da08309e45c9f1be6')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -51,6 +57,10 @@ prepare() {
   patch -p1 < ../cpu-pinning.patch
   patch -p0 < ../audio-improvements.patch
   patch -p1 < ../v2_qemu_zen_smt_cache.patch
+  patch -p1 < ../v4_ivshmem_1.patch
+  patch -p1 < ../v4_ivshmem_2.patch
+  patch -p1 < ../v4_ivshmem_3.patch
+  patch -p1 < ../v4_ivshmem_4.patch
 }
 
 build() {
@@ -64,8 +74,7 @@ build() {
     --disable-gtk \
     --disable-vte \
     --disable-opengl \
-    --disable-virglrenderer \
-    --disable-brlapi
+    --disable-virglrenderer
 }
 
 _build() (
@@ -123,7 +132,6 @@ _package() {
 
   # systemd stuff
   install -Dm644 65-kvm.rules "$pkgdir/usr/lib/udev/rules.d/65-kvm.rules"
-  install -Dm644 qemu.sysusers "$pkgdir/usr/lib/sysusers.d/qemu.conf"
 
   # remove conflicting /var/run directory
   cd "$pkgdir"
