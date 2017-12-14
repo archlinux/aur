@@ -9,7 +9,6 @@ arch=(
 )
 url="https://packages.ubuntu.com/zesty/amd64/chromium-codecs-ffmpeg-extra/download"
 license=('LGPL')
-depends=('yandex-browser-beta')
 provides=(
   'yandex-browser-ffmpeg-codecs'
 )

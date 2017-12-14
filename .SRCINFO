@@ -5,7 +5,6 @@ pkgbase = yandex-browser-codecs-ffmpeg-extra-bin
 	url = https://packages.ubuntu.com/zesty/amd64/chromium-codecs-ffmpeg-extra/download
 	arch = x86_64
 	license = LGPL
-	depends = yandex-browser-beta
 	provides = yandex-browser-ffmpeg-codecs
 	conflicts = yandex-browser-ffmpeg-codecs
 	source = http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_63.0.3239.84-0ubuntu0.17.10.1_amd64.deb
