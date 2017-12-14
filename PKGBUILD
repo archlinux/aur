@@ -9,7 +9,7 @@
 
 _qt_module=qtwebsockets
 pkgname="mingw-w64-qt5-websockets"
-pkgver=5.9.2
+pkgver=5.10.0
 pkgrel=1
 arch=('any')
 pkgdesc="Provides WebSocket communication compliant with RFC 6455 (mingw-w64)"
@@ -19,9 +19,9 @@ options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('afddc1bd915ea47ccbec968a7af02e2a5405c717830e4671924fe35b55e81674')
+_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('17ab0fa22007e5485bf98cb5fef5387628274548d5e96923f45d097838f49403')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
