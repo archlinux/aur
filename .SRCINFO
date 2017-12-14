@@ -1,0 +1,23 @@
+pkgbase = sqlcheck-git
+	pkgdesc = Automatically identify anti-patterns in SQL queries
+	pkgver = r187.e10f5f9
+	pkgrel = 1
+	url = https://github.com/jarulraj/sqlcheck
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	depends = gcc-libs
+	provides = sqlcheck
+	conflicts = sqlcheck
+	source = git+https://github.com/jarulraj/sqlcheck.git
+	source = git+https://github.com/gflags/gflags.git
+	source = git+https://github.com/google/googletest.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = sqlcheck-git
+
