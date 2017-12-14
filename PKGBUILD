@@ -9,7 +9,7 @@ url="http://tcts.fpms.ac.be/synthesis/mbrola.html"
 groups=(mbrola-voices-es mbrola-voices gespeaker-mbrola-voices)
 depends=(mbrola)
 license=(custom)
-source=("http://tcts.fpms.ac.be/synthesis/mbrola/dba/${_pkgfile}/${_pkgfile}zip")
+source=("http://tcts.fpms.ac.be/synthesis/mbrola/dba/${_pkgfile}/${_pkgfile}.zip")
 md5sums=('c57824d9b0fc6ba9d261cb7f83afff73')
 
 package(){
