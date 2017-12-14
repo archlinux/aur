@@ -9,7 +9,7 @@
 
 _qt_module=qtsvg
 pkgname="mingw-w64-qt5-svg"
-pkgver=5.9.2
+pkgver=5.10.0
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for displaying the contents of SVG files (mingw-w64)"
@@ -19,9 +19,9 @@ options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('ba96ebfbb60d2793547295b7122a127d21ba44cf586bfd3c8212c59d68661108')
+_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('4a2aa7cae70a3156846655422b9ed884d8b08b3707b95858e49c7cf9afe5e7b0')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
