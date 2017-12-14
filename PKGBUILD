@@ -4,8 +4,8 @@
 
 _pkgname=browser-beta
 pkgname=yandex-${_pkgname}
-pkgver=17.9.1.982_1
-_pkgver=17.9.1.982-1
+pkgver=17.10.1.1202_1
+_pkgver=17.10.1.1202-1
 pkgrel=1
 #epoch=1
 
@@ -17,7 +17,7 @@ categories=("network")
 
 options=(!strip)
 
-depends=("flac" "gconf" "gtk2" "harfbuzz-icu" "libxss" "nss" "opus" "snappy" "ttf-font" "xdg-utils" "libxkbfile")
+depends=("flac" "gconf" "gtk2" "harfbuzz-icu" "libxss" "nss" "opus" "snappy" "ttf-font" "xdg-utils" "libxkbfile" "yandex-browser-codecs-ffmpeg-extra-bin")
 optdepends=(
     "speech-dispatcher" 
     "kdebase-kdialog: needed for file dialogs in KDE"
@@ -26,7 +26,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.deb::http://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${_pkgver}_amd64.deb")
-md5sums=("358eeb911e5a1d5e8c1f6e8ef314ad8e")
+md5sums=("e61630a6ac7327862f8699df7eb10f4e")
 
 prepare() {
     tar -xf data.tar.xz
