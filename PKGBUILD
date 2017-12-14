@@ -1,7 +1,7 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=gitit
 pkgver=0.12.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A wiki backed by a git, darcs, or mercurial filestore"
 arch=(i686 x86_64)
 url=https://hackage.haskell.org/package/gitit
@@ -9,8 +9,8 @@ license=(GPL)
 depends=(libffi gmp zlib)
 optdepends=("git: git support" "mercurial: mercurial support")
 makedepends=(ghc-pristine ghc-static)
-source=(https://github.com/jgm/gitit/archive/$pkgver.tar.gz)
-sha256sums=('017cd716c8844036600e8aee858861ac41d8ef3c1ab02b43cd50532e4d5472b9')
+source=(https://hackage.haskell.org/package/gitit-$pkgver/gitit-$pkgver.tar.gz)
+sha256sums=('15114e589f90bb4361fda3cbaec23c82c2a765f4e09debc93b2b46ac698053f4')
 
 prepare() {
     mkdir -p "$srcdir/.cabal"
@@ -27,7 +27,7 @@ build() {
     cd "$srcdir/gitit-$pkgver"
     cabal --config="$srcdir/.cabal/config" update
     cabal --config="$srcdir/.cabal/config" sandbox init
-    cabal --config="$srcdir/.cabal/config" install --enable-relocatable --datadir='$prefix/share/gitit' --docdir='$prefix/share/doc/$abi/$pkgid' --ghc-options=-rtsopts
+    cabal --config="$srcdir/.cabal/config" install --enable-relocatable --force-reinstalls --datadir='$prefix/share/gitit' --docdir='$prefix/share/doc/$abi/$pkgid' --ghc-options=-rtsopts --constraint='pandoc>=1.19.2.2'
 }
 
 package() {
