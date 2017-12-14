@@ -1,0 +1,18 @@
+pkgbase = python2-wsgidav-seafile
+	pkgdesc = Seafile webdav server
+	pkgver = 6.2.2
+	pkgrel = 1
+	url = https://github.com/haiwen/seafdav
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-seafobj
+	conflicts = python2-wsgidav
+	source = https://github.com/haiwen/seafdav/archive/v6.2.2-server.tar.gz
+	source = setup.py
+	sha256sums = 11cd801d8e8aa1ea2511cad6e6aa2707387cd01f2b579c539d8bb0e9cf48a975
+	sha256sums = 3b265447a36918994bf3cbfaa318227c0b251c8d4ffca4f9d0aab2d1d7342b3d
+
+pkgname = python2-wsgidav-seafile
+
