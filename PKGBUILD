@@ -1,7 +1,7 @@
 pkgname=cava-gui-git
 _pkgname=cava
-pkgver=0.4.3
-pkgrel=3
+pkgver=0.6.0
+pkgrel=4
 pkgdesc='Console/GUI Audio Visualizer for Alsa/Pulseaudio'
 arch=('i686' 'x86_64')
 url='https://github.com/nikp123/cava-gui'
