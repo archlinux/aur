@@ -1,9 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.17.1
-pkgrel=3
-_cqzbuildid=20171130123422
+pkgver=1.17.2
+pkgrel=1
+_cqzbuildid=20171208103543
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
@@ -19,7 +19,7 @@ source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         no-plt.diff
         0001-Bug-1360278-Add-preference-to-trigger-context-menu-o.patch
         0002-Bug-1419426-Implement-browserSettings.contextMenuSho.patch)
-sha256sums=('a13c32904e8e7e15fe12283ada81ad09f2f9c1c86476776beb43f346861b54ac'
+sha256sums=('de64afc830a55d81f3607a73e122e6dfe15869e0484211d99ed574daa215b237'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
