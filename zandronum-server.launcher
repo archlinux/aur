@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export LD_LIBRARY_PATH=/usr/share/zandronum/lib
+exec /usr/share/zandronum/zandronum-server "${@}"
