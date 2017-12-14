@@ -2,7 +2,7 @@
 # Maintaienr: Guillaume Horel <guillaume.horel@gmail.com>
 _pkgname=exchangelib
 pkgname=python-exchangelib
-pkgver=1.10.0
+pkgver=1.10.6
 pkgrel=1
 pkgdesc="Client for Microsoft Exchange Web Services (EWS)"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python' 'python-cached-property' 'python-dnspython' 'python-requests-n
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
 "LICENSE")
-sha256sums=('dfc4023ac5bcfa6c3cbdac44d150d1b8732e392d650c8762d60046f8d7e81199'
+sha256sums=('ef8c45a273cf2a75a3ba8a146eb2f9d7c031f4db1b0a75ed9b5f49241fe474a7'
             '650d8ac6b0ab9a2c946b021bf12933cad611b6397d0eaff31beb28f6a243afa9')
 
 build() {
