@@ -3,7 +3,7 @@
 
 pkgname=atlauncher
 pkgrel=1
-pkgver=3.2.3.7
+pkgver=3.2.3.9
 pkgdesc="ATLauncher is a Launcher for Minecraft which integrates multiple different ModPacks to allow you to download and install ModPacks easily and quickly. Installs latest released jar."
 arch=('any')
 url="http://www.atlauncher.com/"
