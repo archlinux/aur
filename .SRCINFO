@@ -1,7 +1,7 @@
 pkgbase = kwin-presentwindows-close
 	pkgdesc = An easy to use, but flexible, composited Window Manager
 	pkgver = 5.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = kwin-presentwindows-close
 	makedepends = python
 	depends = kscreenlocker
 	depends = xcb-util-cursor
-	depends = hicolor-icon-theme
 	depends = plasma-framework
 	depends = kcmutils
 	depends = breeze
