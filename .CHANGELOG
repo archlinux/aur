@@ -1,6 +1,54 @@
 Version history
 ===============
 
+0.9.5
+-----
+
+2017-12-13
+
+In NepsterLix/Moon, 10 levels got backroute fixes on 2017-11-30. All levels
+are proven solvable.
+
+In ClamLix/Outtakes, beautified Korean Border Crossing (version from
+2017-12-13) and Abridged Version v1. All levels remain solvable.
+
+Merged multiplayer maps by Arty: Blow Your Top, Shaft of Chaos, Showdown at
+Chainsaw Gap.
+
+Distinguished the pillars in matt/bricks from steel by yellow-brown color.
+Still to do: Distinguish pillars in geoo/construction from steel.
+
+Fix #272: Always draw splat ruler in front of terrain. Draw splat ruler even
+when it doesn't snap to anything.
+
+Fix #263, fix #269: Network game computes correct overtime when somebody
+nukes before saving lix, then saves some. This fixes crashes from assertion
+failures in the debugging build.
+
+Fix #209: The replay verifier called from the replay browser creates
+checkmarks when it finds solving replays whose player name matches the user's
+name. Command-line verification doesn't create any checkmarks.
+
+Fix #271: Verifier distinguishes normal failures without lix left from
+failures from running more than 5 minutes after the final skill assignment.
+
+Fix #157: Playing back winning replays on a wrong level version turned your
+correct checkmarks into '?!'. Now, replays will only affect checkmarks when
+the played level matches exactly.
+
+Fix #260: When you interrupt or modify a replay, then save it, your name
+replaces the old player name in the replay.
+
+Better key names on Windows when remapping hotkeys. If you still see keycode
+numbers instead of a proper key name, please tell me key and number.
+
+Translated leftover options to German: Sound and music volume, fast movement
+frees mouse, unpause on skill assignment.
+
+Fixed links in the build instructions that were still pointing to asdfasdf;
+they now point to lixgame.com.
+
+
 0.9.4
 -----
 
@@ -29,9 +77,11 @@ find a better solution.
 
 Fix: Disable editor grid-size hotkey whenever an editor window is open.
 
-Fixed an assertion failure in the debugging build when dragging quickly in the editor.
+Fixed an assertion failure in the debugging build when dragging quickly in the
+editor.
 
-Fix #258: The multiplayer server crashed when somebody left, then the remaining players started a game. Still needs field testing.
+Fix #258: The multiplayer server crashed when somebody left, then the
+remaining players started a game. Still needs field testing.
 
 0.9.3
 -----
@@ -65,7 +115,8 @@ Cunning, Raindow Road down to Quirky.
 Fix #252: Level search queries won't match the prefix 'levels/' in the
 filenames because all levels would match.
 
-Fix #256: When you export levels to images or save replays manually, the button replacement will not say "done", but instead tell you the filename.
+Fix #256: When you export levels to images or save replays manually, the
+button replacement will not say "done", but instead tell you the filename.
 
 Fix #254: When you run out of VRAM during a level, the game won't crash, but
 instead stop making internal savestates. This won't display a warning, it will

@@ -2,7 +2,7 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 conflicts=("${pkgname}-git")
 source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
@@ -19,13 +19,13 @@ prepare()
 }
 
 _pkgname=${pkgname}
-# template start; name=lix; version=0.2;
+# template start; name=lix; version=0.3;
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
 license=('custom:CC0')
 changelog=.CHANGELOG
-depends=('allegro')
+depends=('allegro' 'enet')
 makedepends=('git' 'gendesk' 'dmd' 'dub')
 
 build()
