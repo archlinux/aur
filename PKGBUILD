@@ -5,9 +5,10 @@
 pkgname=lib32-fakechroot
 _pkgname=fakechroot
 pkgver=2.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Gives a fake chroot environment (32-bit)"
-depends=(fakechroot)
+depends=(fakechroot lib32-glibc)
+makedepends=(gcc-multilib)
 arch=('x86_64')
 url="https://github.com/dex4er/fakechroot/wiki"
 license=('LGPL')
