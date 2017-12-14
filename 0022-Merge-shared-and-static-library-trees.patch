@@ -1,7 +1,7 @@
-From 0401a8dd7051a1d6aca6288fd5a5d0bef006168e Mon Sep 17 00:00:00 2001
+From 4502d0a9e9102067541a4307e80444a4fb44717c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
-Subject: [PATCH 22/33] Merge shared and static library trees
+Subject: [PATCH 22/34] Merge shared and static library trees
 
 Allow installation of shared and static build in the same prefix
 ---
@@ -99,7 +99,7 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index c7e075b5bc..d61f7b05e5 100644
+index 0d07d6c333..5e84628e72 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
 @@ -3163,6 +3163,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
@@ -126,5 +126,5 @@ index c7e075b5bc..d61f7b05e5 100644
  
      t << endl;
 -- 
-2.14.2
+2.15.1
 

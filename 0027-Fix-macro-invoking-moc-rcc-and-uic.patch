@@ -1,7 +1,7 @@
-From 4f332ea7f376d8a77d7dbfe82ab6e5eb6b6f1fe9 Mon Sep 17 00:00:00 2001
+From 0f6a4852f4bf5d43aa856f2af475f5f526b76daf Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
-Subject: [PATCH 27/33] Fix macro invoking moc, rcc and uic
+Subject: [PATCH 27/34] Fix macro invoking moc, rcc and uic
 
 * Otherwise the arguments aren't passed correctly leading to errors like
   ```
@@ -70,5 +70,5 @@ index f5e7b7f050..18d120f0c7 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          list(APPEND ${outfiles} ${outfile})
 -- 
-2.14.2
+2.15.1
 

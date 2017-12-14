@@ -1,7 +1,7 @@
-From 198b5f7e944f21a7f9caaeb686afddfc9e87c768 Mon Sep 17 00:00:00 2001
+From 1c595c81473d93a87b339df137820624cafdc373 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:54:12 +0200
-Subject: [PATCH 05/33] Make sure *.pc files are installed correctly
+Subject: [PATCH 05/34] Make sure *.pc files are installed correctly
 
 ---
  qmake/generators/makefile.cpp          | 8 ++++++--
@@ -10,7 +10,7 @@ Subject: [PATCH 05/33] Make sure *.pc files are installed correctly
  3 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index a1f3352aa3..0be4b1ef01 100644
+index 82573347b6..b9871ff49c 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
 @@ -3146,7 +3146,7 @@ MakefileGenerator::openOutput(QFile &file, const QString &build) const
@@ -62,5 +62,5 @@ index 75bb5d236d..737f3abc3a 100644
                      uninst.append("\n\t");
                  uninst.append("-$(DEL_FILE) " + escapeFilePath(dst_pc));
 -- 
-2.14.2
+2.15.1
 
