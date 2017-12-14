@@ -1,5 +1,6 @@
 [Unit]
 Description=caps2esc
+After=systemd-user-sessions.service
 
 [Service]
 ExecStart=/usr/bin/nice -n -20 /usr/bin/caps2esc

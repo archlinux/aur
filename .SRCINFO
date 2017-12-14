@@ -1,17 +1,18 @@
 pkgbase = caps2esc
 	pkgdesc = caps2esc: transforming the most useless key ever in the most useful one
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/oblitum/caps2esc
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc
 	depends = libevdev
-	source = https://raw.githubusercontent.com/oblitum/caps2esc/v1.0.3/caps2esc.c
+	source = https://raw.githubusercontent.com/oblitum/caps2esc/v1.0.4/caps2esc.c
+	source = https://raw.githubusercontent.com/oblitum/caps2esc/v1.0.4/LICENSE.md
 	source = caps2esc.service
-	md5sums = 92b302db9c965b5e5046ac51f018cc70
-	md5sums = b522d1654f2d04f703b8409ef4d5e7d0
+	md5sums = 45e8290bc91e9a297a1496770238d89c
+	md5sums = 5ce903a740b8b693400618c62409e14d
+	md5sums = 404cfae39ca29735e26e2c37f93fe6b1
 
 pkgname = caps2esc
 
