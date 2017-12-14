@@ -1,0 +1,16 @@
+pkgbase = python2-seafobj
+	pkgdesc = Python library for accessing seafile data model
+	pkgver = 6.2.2
+	pkgrel = 1
+	url = https://github.com/haiwen/seafobj
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://github.com/haiwen/seafobj/archive/v6.2.2-server.tar.gz
+	source = setup.py
+	sha256sums = c51d4f48bd5be64bf399b9c3ab3a592349917b73615344cf6ed2171b3a103c19
+	sha256sums = ce6dcf2a525aa6fde928ad806259cbf0353a6754e8f7936f444d01a8e88f9978
+
+pkgname = python2-seafobj
+
