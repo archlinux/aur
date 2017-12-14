@@ -1,13 +1,13 @@
 # Maintainer: Franklyn Tackitt <franklyn@tackitt.net>
 
 # Editing these should update the package
-_postgres_ver=9.6
-_next_postgres_ver=$(echo ${_postgres_ver}+0.1 | bc)
+_postgres_ver=10
+_next_postgres_ver=$(echo ${_postgres_ver} 1.0 | awk '{print $1 + $2}')
 _v8_ver=3.14
 
 pkgname=plv8-bin
 pkgver=1.4.10
-pkgrel=2
+pkgrel=3
 pkgdesc="plv8js is a procedural language add-on for PostgreSQL"
 url="https://code.google.com/p/plv8js/"
 arch=('i686' 'x86_64')
@@ -20,8 +20,8 @@ provides=('plv8')
 
 source_i686=("http://apt.postgresql.org/pub/repos/apt/pool/main/p/plv8/postgresql-${_postgres_ver}-plv8_${pkgver}.ds-1.pgdg16.04+1_i386.deb")
 source_x86_64=("http://apt.postgresql.org/pub/repos/apt/pool/main/p/plv8/postgresql-${_postgres_ver}-plv8_${pkgver}.ds-1.pgdg16.04+1_amd64.deb")
-md5sums_i686=('e506aaa996adf813ae5eca3dfd6615e8')
-md5sums_x86_64=('fea8cb25810f6e169813e954d5b50253')
+md5sums_i686=('cc2431186df88202ab9afd3a2f771f17')
+md5sums_x86_64=('465c34b6498a36876a2880d36ff09500')
 
 package() {
   msg2 "Unpacking data.tar.xz (Ubuntu package files)"
