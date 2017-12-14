@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
 url="http://raiblocks.com/"
-license=('GPL')
+license=('BSD 2-clause')
 depends=('qt5'  'boost' 'boost-libs')
 provides=(raiblocks)
 pkgver() {
