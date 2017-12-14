@@ -33,7 +33,7 @@ index 4267113..3b46102 100644
 -ifeq "$(UI_TYPE)" "gtk"
 -  UILIBS = $(shell pkg-config --libs gtk+-2.0 gio-2.0) -lpng -ljpeg
 -endif
-+MOC = /usr/bin/bin/moc-qt5
++MOC = /usr/bin/moc-qt5
 +QTINCLUDE = $(shell pkg-config --cflags Qt5Gui Qt5Widgets Qt5Network)
 +UILIBS = $(shell pkg-config --libs Qt5Gui Qt5Widgets Qt5Network)
  
