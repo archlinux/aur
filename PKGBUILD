@@ -1,25 +1,27 @@
-# Maintainer: Andrea Fagiani <andfagiani_at_gmail_dot_com> 
+# Maintainer: Miles McLean <mills00013@gmail.com>
+# Contributor: Andrea Fagiani <andfagiani_at_gmail_dot_com>
 # Contributor: hb <hb.at.spamers.dot.net>
 # Contributor: Lisa Denia <eiffel56@gmail.com>
 
 pkgname=anyremote
-pkgver=6.5
+pkgver=6.6.1
 pkgrel=1
 pkgdesc="Remote control (console-oriented) through bluetooth or IR connection"
 arch=('i686' 'x86_64')
 url="http://anyremote.sourceforge.net"
-license=('GPL')
+license=('GPL3')
 depends=('bluez-libs' 'bluez' 'dbus-glib' 'libxtst')
 optdepends=("irda-utils: IRDA support")
 install=anyremote.install
 source=(http://downloads.sourceforge.net/sourceforge/anyremote/$pkgname-$pkgver.tar.gz)
-md5sums=('2ebd8d41b2a525e186bd9a3199896fec')
+md5sums=('40f766e4ac90c9f8453c83a6158b79ed')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
+
 package() {
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
