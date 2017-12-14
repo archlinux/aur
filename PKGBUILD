@@ -36,11 +36,15 @@ prepare() {
   git config submodule.lmdb.url $srcdir/lmdb
   git config submodule.miniupnp.url $srcdir/miniupnp
   git config submodule.phc-winner-argon2.url $srcdir/phc-winner-argon2
-
-  rm *.tar.gz || true 2>/dev/null
-  
   git submodule update
-  cmake cmake -D RAIBLOCKS_GUI=ON -D ENABLE_AVX2=ON -D PERMUTE_WITH_GATHER=ON -D PERMUTE_WITH_SHUFFLES=ON ./
+
+  if grep avx2 /proc/cpuinfo; then
+    echo "build with AVX2 optimizations"
+    cmake -D RAIBLOCKS_GUI=ON -D ENABLE_AVX2=ON -D PERMUTE_WITH_GATHER=ON -D PERMUTE_WITH_SHUFFLES=ON ./
+  else
+    echo "build without AVX2 optimizations"
+    cmake -D RAIBLOCKS_GUI=ON ./
+  fi
 }
 
 build() {
