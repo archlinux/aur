@@ -1,13 +1,13 @@
 pkgbase = rundeck-cli
 	pkgdesc = CLI tool for Rundeck
-	pkgver = 1.0.20
+	pkgver = 1.0.21
 	pkgrel = 1
 	url = https://github.com/rundeck/rundeck-cli
 	arch = any
 	license = Apache
 	depends = java-runtime-headless
-	source = https://github.com/rundeck/rundeck-cli/releases/download/v1.0.20/rd-1.0.20.zip
-	sha256sums = 6add94d7f60488bea4f479dba0df06407986aa9cf9df1969a34766f7ce8217b2
+	source = https://github.com/rundeck/rundeck-cli/releases/download/v1.0.21/rd-1.0.21.zip
+	sha256sums = 62dced273d6756ce58954a455dbd1d8b39dc9509e435e6d94e10996c7f6cf1bb
 
 pkgname = rundeck-cli
 
