@@ -69,12 +69,11 @@ package() {
   sed -i 's|/usr/share/john/korelogic.conf|/etc/john/korelogic.conf|g' ${srcdir}/${_pkgname}-${_commit}/run/john.conf
   sed -i 's|/usr/share/john/repeats16.conf|/etc/john/repeats16.conf|g' ${srcdir}/${_pkgname}-${_commit}/run/john.conf
   sed -i 's|/usr/share/john/repeats32.conf|/etc/john/repeats32.conf|g' ${srcdir}/${_pkgname}-${_commit}/run/john.conf
-  sed -i 's|.include <regex_alphabets.conf>|.include /etc/john/regex_alphabets.conf|g' ${srcdir}/${_pkgname}-${_commit}/run/john.conf
-  sed -i 's|.include <dynamic.conf>|.include /etc/john/dynamic.conf|g' ${srcdir}/${_pkgname}-${_commit}/run/john.conf
-  sed -i 's|.include "/usr/share/john/john.local.conf"|#.include "/usr/share/john/john.local.conf"|g' ${srcdir}/${_pkgname}-${_commit}/run/john.conf
+  sed -i 's|.include <|.include "/etc/john/|g' ${srcdir}/${_pkgname}-${_commit}/run/*.conf
+  sed -i 's|conf>|conf"|g' ${srcdir}/${_pkgname}-${_commit}/run/*.conf
   install -dm755 ${pkgdir}/etc/john
   install -m644 ${srcdir}/${_pkgname}-${_commit}/run/*.conf ${pkgdir}/etc/john/
-  
+
   # docs
   install -d -m755 ${pkgdir}/usr/share/doc/john
   install -m644 ${srcdir}/${_pkgname}-${_commit}/doc/* ${pkgdir}/usr/share/doc/john/
@@ -82,6 +81,9 @@ package() {
   install -m644 ${srcdir}/${_pkgname}-${_commit}/run/*.chr ${pkgdir}/usr/share/john/
   install -m644 ${srcdir}/${_pkgname}-${_commit}/run/password.lst ${pkgdir}/usr/share/john/
   install -Dm644 ${srcdir}/${_pkgname}-${_commit}/doc/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+
+  # fix python version
+  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' ${srcdir}/${_pkgname}-${_commit}/run/*.py
 
   # install binaries
   cd ${srcdir}/${_pkgname}-${_commit}/run/
