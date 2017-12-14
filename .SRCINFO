@@ -1,0 +1,15 @@
+pkgbase = ttf-consolas-with-yahei
+	pkgdesc = Consolas-with-Yahei is a hybrid font(add CJK characters from MS-Yahei to Consolas)
+	pkgver = 0.1.1
+	pkgrel = 0
+	url = https://github.com/edward-p/Consolas-with-Yahei
+	install = ttf-consolas-with-yahei.install
+	arch = any
+	makedepends = tar
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/edward-p/Consolas-with-Yahei/releases/download/v0.1.1/consya.tar.xz
+	md5sums = 7b018121106df894cde2522c32dc6c0b
+
+pkgname = ttf-consolas-with-yahei
+
