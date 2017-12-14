@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-appcenter-git
-pkgver=20171104.114.21eaffc
+pkgver=20171209.114.c5ff5a2
 pkgrel=1
 pkgdesc="App Center for Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
