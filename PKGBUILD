@@ -4,7 +4,7 @@
 
 pkgname=fbreader-qt5
 pkgver=0.99.4
-pkgrel=6
+pkgrel=7
 pkgdesc="An e-book reader for Linux"
 arch=('x86_64')
 url="http://www.fbreader.org/"
@@ -14,7 +14,7 @@ provides=('fbreader')
 conflicts=('fbreader')
 source=(https://www.fbreader.org/files/desktop/fbreader-sources-$pkgver.tgz
     "git+https://github.com/lokesh-krishna/FBreader-elementary-theme.git"
-	"fbreader-0.99.4.patch"
+    "fbreader-0.99.4.patch"
     "fbreader-narrowing-conversion.patch"
     "qt5.patch")
 sha256sums=('3d7c31d5ea314589d2a963290ad16f4d3d631a41e802b8b39f8be0c9f71eb8e9'
