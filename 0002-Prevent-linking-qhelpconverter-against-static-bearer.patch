@@ -1,4 +1,4 @@
-From b9026077022561e57a47e69bab84dc547344d0ab Mon Sep 17 00:00:00 2001
+From 0521fdd2a6c98c63117345fcf320d1a868153373 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 15 Oct 2017 22:25:22 +0200
 Subject: [PATCH 2/2] Prevent linking qhelpconverter against static bearer
@@ -27,5 +27,5 @@ index d60aae7c..99943618 100644
  SOURCES += conversionwizard.cpp \
             inputpage.cpp \
 -- 
-2.14.2
+2.15.1
 

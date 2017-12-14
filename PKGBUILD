@@ -16,7 +16,7 @@
 
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
-pkgver=5.9.2
+pkgver=5.10.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
@@ -26,17 +26,17 @@ options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-linguist-macro.patch'
         '0002-Prevent-linking-qhelpconverter-against-static-bearer.patch')
-sha256sums=('2bb996118b68e9939c185a593837e5a41bb3667bf5d4d5134fac02598bd2d81a'
-            '76cc91d9b26bc89365ab84bffa20a1ab1f92eb1771c3250914997ffa30628ba0'
-            'c04718ab919840800149d927d0741c27d8e0703a103f592806935323b75b775c')
+sha256sums=('1ff5dc747b7935de85257673424dfdffb231f3409f09a5f833d37e2f625cfe32'
+            'b56db6e1c9aae96ec1fa6949481155972bfd05f0c9b2ffff2ae2216efb459132'
+            '9395445dd8a9eba7f9b14b3643fdd7e2f0175aa92b1658c6aef9425cb303588c')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-# can not use static MySQL plugin because mariadb-connector-c uses already OpenSSL 1.1 -> Qt 5.10 will fix this
-# for now, disable linking against that plugin (by adding other SQL plugins explicitely)
+# can not use static MySQL plugin because mariadb-connector-c comes with its own pthread implementation
+# which has conflicting symbols with the pthread library Qt uses
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
