@@ -1,7 +1,7 @@
 # Maintainer: Christian Pinedo <chr.pinedo@gmail.com>
 pkgname=ca-certificates-izenpe
 pkgver=20171213
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Izenpe CA certificates"
 arch=('any')
@@ -37,11 +37,11 @@ noextract=()
 validpgpkeys=()
 
 package() {
-    install -Dm644 "usr/share/izenpe-certificates/AAPPNR_cert_sha256.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AAPPNR_cert_sha256.crt"
-    install -Dm644 "usr/share/izenpe-certificates/AAPPR2_cert_sha256.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AAPPR2_cert_sha256.crt"
-    install -Dm644 "usr/share/izenpe-certificates/AAPPR_cert_sha256.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AAPPR_cert_sha256.crt"
-    install -Dm644 "usr/share/izenpe-certificates/CCEENR_cert_sha256.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/CCEENR_cert_sha256.crt"
-    install -Dm644 "usr/share/izenpe-certificates/CCEER_cert_sha256.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/CCEER_cert_sha256.crt"
-    install -Dm644 "usr/share/izenpe-certificates/RAIZ2007_cert_sha256.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/RAIZ2007_cert_sha256.crt"
-    install -Dm644 "usr/share/izenpe-certificates/SSLEV_cert_sha256.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/SSLEV_cert_sha256.crt"
+    install -Dm644 "$srcdir/usr/share/izenpe-certificates/AAPPNR_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/AAPPNR_cert_sha256.crt"
+    install -Dm644 "$srcdir/usr/share/izenpe-certificates/AAPPR2_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/AAPPR2_cert_sha256.crt"
+    install -Dm644 "$srcdir/usr/share/izenpe-certificates/AAPPR_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/AAPPR_cert_sha256.crt"
+    install -Dm644 "$srcdir/usr/share/izenpe-certificates/CCEENR_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/CCEENR_cert_sha256.crt"
+    install -Dm644 "$srcdir/usr/share/izenpe-certificates/CCEER_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/CCEER_cert_sha256.crt"
+    install -Dm644 "$srcdir/usr/share/izenpe-certificates/RAIZ2007_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/RAIZ2007_cert_sha256.crt"
+    install -Dm644 "$srcdir/usr/share/izenpe-certificates/SSLEV_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/SSLEV_cert_sha256.crt"
 }

@@ -1,7 +1,7 @@
 pkgbase = ca-certificates-izenpe
 	pkgdesc = Izenpe CA certificates
 	pkgver = 20171213
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.izenpe.eus
 	arch = any
 	license = unknown
