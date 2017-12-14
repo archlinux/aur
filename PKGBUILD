@@ -1,7 +1,7 @@
 pkgname=yozo-office
-_pkgver=6.1.0418.131ZH.CL01
-pkgver=2013.$_pkgver
-pkgrel=3
+_pkgver=7.0.0299.131ZH.CL01
+pkgver=7.0.0299.131ZH.CL01
+pkgrel=1
 pkgdesc="Yozo Office - An M$ Office Compatible Office Suit"
 url="http://www.yozosoft.com/person/"
 depends=('libxtst' 'libxt')
@@ -9,16 +9,14 @@ optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
 			'ttf-ms-fonts-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.')
 options=('!strip')
 license=("unknown")
-source=("http://download.yozosoft.com/free/zh/2013/Yozo_Office_${_pkgver}.deb")
 arch=('i686' 'x86_64') 
 install=yozo-office.install
-md5sums=(5422a094fa5f7f05707073516917d1a6)
 
-[[ $CARCH == 'x86_64' ]] && {
-#depends=('lib32-libxext')
-source=("http://download.yozosoft.com/free/zh/2013/64/Yozo_Office_${_pkgver}.deb")
-md5sums=(4b13b4d33a20fb30afb904d6bcd91497)
-}
+source_i686=('https://mirrors.ustc.edu.cn/deepin/pool/non-free/y/yozo-office-zh-cn/yozo-office-zh-cn_7.0.0299.131ZH.CL01_i386.deb')
+source_x86_64=('https://mirrors.ustc.edu.cn/deepin/pool/non-free/y/yozo-office-zh-cn/yozo-office-zh-cn_7.0.0299.131ZH.CL01_amd64.deb')
+md5sums_i686=('9ef25d439e7a8e0e227582568c205188')
+md5sums_x86_64=('5a2f98be0465615a1a7b021fa1c43261')
+
 package() {
 cd "$srcdir"
 tar zxf data.tar.gz
@@ -28,35 +26,8 @@ targetP="${pkgdir}/usr/local/Yozosoft/Yozo_Office"
 unpackP="${targetP}/Jre/bin/unpack200"
 libP="${targetP}/Jre/lib"
 
-"$unpackP" -r "$libP/rt.pack.gz"        "$libP/rt.jar"
-"$unpackP" -r "$libP/jsse.pack.gz"      "$libP/jsse.jar"
-"$unpackP" -r "$libP/charsets.pack.gz"  "$libP/charsets.jar"
-"$unpackP" -r "$libP/plugin.pack.gz"    "$libP/plugin.jar"
-"$unpackP" -r "$libP/javaws.pack.gz"    "$libP/javaws.jar"
-"$unpackP" -r "$libP/deploy.pack.gz"    "$libP/deploy.jar"
-"$unpackP" -r "$libP/resources.pack.gz" "$libP/resources.jar"
-
-"$unpackP" -r "$libP/ext/localedata.pack.gz" \
-	"$libP/ext/localedata.jar"
-"$unpackP" -r "$libP/ext/bcprov-jdk14-124.pack.gz" \
-	"$libP/ext/bcprov-jdk14-124.jar"
-"$unpackP" -r "$libP/ext/jai_core.pack.gz" \
-	"$libP/ext/jai_core.jar"
-"$unpackP" -r "$libP/ext/tools.pack.gz" \
-	"$libP/ext/tools.jar"
-"$unpackP" -r "$libP/ext/ojdbc14.pack.gz" \
-	"$libP/ext/ojdbc14.jar"
-"$unpackP" -r "$libP/ext/mysql-connector-java-5.1.18-bin.pack.gz" \
-	"$libP/ext/mysql-connector-java-5.1.18-bin.jar"
-"$unpackP" -r "$libP/ext/swt.pack.gz"    "$libP/ext/swt.jar"
-"$unpackP" -r "$libP/ext/DJNativeSwing-SWT.pack.gz" \
-	"$libP/ext/DJNativeSwing-SWT.jar"
-"$unpackP" -r "$libP/ext/jhall.pack.gz" \
-	"$libP/ext/jhall.jar"
-"$unpackP" -r "$libP/ext/bcel-5.1.pack.gz" \
-	"$libP/ext/bcel-5.1.jar"
-
-"$unpackP" -r "${targetP}/Yozo_Office.pack.gz" \
-	"${targetP}/Yozo_Office.jar"
+find "${pkgdir}" -type f -name '*.pack.gz' | while read x;do
+"$unpackP" -r "$x" "${x%pack.gz}jar"
+done
 
 }
