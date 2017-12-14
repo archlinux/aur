@@ -1,7 +1,7 @@
 pkgbase = qdigidoc
 	pkgdesc = Qt based UI application for verifying and signing digital signatures
 	pkgver = 3.13.4.1515
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.id.ee/
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = qdigidoc
 	makedepends = qt5-translations
 	depends = libdigidocpp>=3.13.2.1355
 	depends = opensc
-	depends = qt5-base
+	depends = qt5-base>=5.10.0
 	depends = shared-mime-info
 	depends = ccid
 	depends = hicolor-icon-theme
