@@ -1,6 +1,6 @@
 pkgbase = etherwall
 	pkgdesc = Ethereum GUI Wallet (QT5)
-	pkgver = 2.1.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://etherwall.com
 	arch = i686
@@ -14,9 +14,11 @@ pkgbase = etherwall
 	depends = protobuf
 	depends = hidapi
 	depends = libsystemd
-	source = https://github.com/almindor/etherwall/archive/v2.1.2.tar.gz
+	source = https://github.com/almindor/etherwall/archive/v2.2.0.tar.gz
+	source = https://github.com/almindor/ew-node/archive/v1.0.1.tar.gz
 	source = https://github.com/trezor/trezor-common/archive/4ac8e8c.tar.gz
-	sha256sums = 67b17f6c2b972d5c9a68c5998fa33ec5800ff75ee0eadb6394409219d050835a
+	sha256sums = bee8cabfe7a7b37ca3360a309ae52b598aeb5f0c9d990024e40bb3174d450809
+	sha256sums = 48f10e003e6c949c4dac81bd3ecc89733cbc3d4f6ae26be38386d70e68a001b4
 	sha256sums = 95bc637d7b49697d06567b35ef2cbb2fdba1ce8c8e27d95e9cd242ec2b3fa459
 
 pkgname = etherwall
