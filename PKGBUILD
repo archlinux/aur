@@ -1,6 +1,6 @@
 pkgname=john-mpi
 pkgver=1.8.0
-pkgrel=4
+pkgrel=5
 _patchlevel=jumbo-1
 _commit=76109448e1a42e6a900d61ee87d0c9e3b6f76215
 _pkgname=JohnTheRipper
@@ -11,7 +11,7 @@ license=('GPL')
 provides=('john')
 conflicts=('john' 'john-latest')
 # For OpenCL support change swap the {make}depends arrays
-depends=('mpich' 'libpcap' 'gcc6-libs')
+depends=('mpich' 'libpcap')
 optdepends=('perl' 'python2' 'ruby')
 makedepends=('mpich' 'unzip')
 # Remember to include one of the following packages into the depends
