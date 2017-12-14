@@ -2,23 +2,23 @@
 
 pkgname=dgraph-bin
 _pkgname=dgraph
-pkgver=0.7.7
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='a low latency, high throughput, native and distributed graph database'
 arch=('x86_64')
 url='https://github.com/dgraph-io/dgraph'
 license=('APACHE')
 #depends=('gcc-libs')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/dgraph-io/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-v${pkgver}.tar.gz" 'dgraph.service')
-sha256sums=('a46c83c21bc2d9c70dd2fd26695123a70ae4a66d6b1902bb8f037118e2dcb18b' '8bde63f163c6a925ecb884ca12aede192a307693042ff7dddf230d3e4ec2fd7e')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/dgraph-io/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-v${pkgver}.tar.gz" 'dgraph.service' 'dgraph-zero.service')
+sha256sums=('29d96e3f0b794c3f710320aad8c7a0b867f16ccf292f062724efc02e308088a5' '6b9e93aa8cc93fd2d163e9fe963bbde998f624fdf7a558b664079bedcb716444' 'b917a94ad1ccf6a5831bf103ccdfac64bfdc617ef00ddf8840069de3e31962bc')
 
 package() {
-  cd "$srcdir/dgraph"
-  for binary in dgraph dgraphloader; do
+  cd "$srcdir"
+  for binary in dgraph; do
     install -Dm755 $binary "$pkgdir/usr/bin/$binary"
   done
-  cd "$srcdir"
   install -Dm644 dgraph.service "$pkgdir/usr/lib/systemd/system/dgraph.service"
+  install -Dm644 dgraph-zero.service "$pkgdir/usr/lib/systemd/system/dgraph-zero.service"
   install -d "$pkgdir/var/lib/dgraph/data"
 }
 
