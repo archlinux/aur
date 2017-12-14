@@ -1,0 +1,22 @@
+pkgbase = python-snakemake-git
+	pkgdesc = Snakemake is a workflow management system that aims to reduce the complexity of creating workflows.
+	pkgver = r2526.bb1a966
+	pkgrel = 1
+	url = https://bitbucket.org/snakemake/snakemake
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-appdirs
+	depends = python-configargparse
+	depends = python-ratelimiter
+	depends = python-requests
+	depends = python-yaml
+	depends = python-wrapt
+	provides = python-snakemake
+	conflicts = python-snakemake
+	options = !emptydirs
+	source = git+https://bitbucket.org/snakemake/snakemake.git
+	md5sums = SKIP
+
+pkgname = python-snakemake-git
+
