@@ -2,7 +2,7 @@
 # Contributor: Dave Blair <mail@dave-blair.de>
 pkgname=autokey-py3
 pkgver=0.93.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features."
 url="https://github.com/guoci/autokey-py3"
 depends=('python' 'wmctrl' 'hicolor-icon-theme' 'python-dbus' 'python-pyinotify'
@@ -11,9 +11,7 @@ depends=('python' 'wmctrl' 'hicolor-icon-theme' 'python-dbus' 'python-pyinotify'
   'gtk-update-icon-cache')
 makedepends=('python-setuptools')
 optdepends=('python-atspi'
-            'qt-at-spi: to work with KDE/Qt applications'
-            'python-qscintilla: for Qt GUI (deprecated)'
-            'kdebindings-python: for Qt GUI (deprecated)')
+            'qt-at-spi: to work with KDE/Qt applications')
 conflicts=('autokey' 'autokey-gtk' 'autokey-data')
 license=('GPL3')
 arch=('any')
