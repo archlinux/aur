@@ -10,7 +10,7 @@
 
 _qt_module=qtscxml
 pkgname="mingw-w64-qt5-scxml"
-pkgver=5.9.2
+pkgver=5.10.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Static and runtime integration of SCXML models into Qt code (mingw-w64)"
@@ -20,9 +20,9 @@ options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('9d2b1292bc632305aa1963bfbfc06e8b4489ca0f9ed380ea6410c9dc38aeb15d')
+_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('4bbb19d6b169ab04aec62d09ed4324639cda13d2c25cf584c9061c5d9af65890')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
