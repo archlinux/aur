@@ -1,12 +1,12 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=ngraph-gtk
-pkgver=6.07.03
+pkgver=6.07.05
 pkgrel=1
 pkgdesc="A tool for creating scientific 2-dimensional graphs"
-url="https://github.com/htrb/ngraph-gtk"
+url="http://hito.music.coocan.jp/ngraph/ngraph-gtk.html"
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('gsl' 'gtk3' 'ruby')
 optdepends=('ttf-liberation: alternative to Times, Arial, and Courier')
 source=("https://github.com/htrb/ngraph-gtk/releases/download/v${pkgver}/ngraph-gtk-${pkgver}.tar.gz")
@@ -34,4 +34,4 @@ package() {
   install -Dm644 ngraph.applications "${pkgdir}/usr/share/application-registry/ngraph.applications"
 }
 
-md5sums=('b6cc9713661fa3ee93b1b80e2a04d25c')
+md5sums=('457ce83a70e9b716f9506b0af5615468')
