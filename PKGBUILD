@@ -3,7 +3,7 @@
 
 pkgname=mnemosyne
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A flash-card tool with a sophisticated card review algorithm"
 arch=('i686' 'x86_64')
 url='http://www.mnemosyne-proj.org'
@@ -18,13 +18,10 @@ conflicts=('mnemosyne-bzr')
 install='mnemosyne.install'
 
 source=("http://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-${pkgver}.tar.gz")
-sha256sums=('43220030b3cef56bb20f33aa45ccfa674d6b6bb93f9edb44e02a8681c51e907b')
+sha256sums=('e4e90cda5490dabe28a7c06a38c73e45f09f782f7b2eef59797ab955a62eeb2c')
 
 build() {
   cd "Mnemosyne-${pkgver}/"
-  
-  # Fix "bad interpreter: /usr/bin/python^M" error caused by CRLF line break
-  sed -i 's/\r//' mnemosyne/pyqt_ui/mnemosyne
   
   python setup.py build
 }
