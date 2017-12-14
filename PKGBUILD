@@ -8,7 +8,7 @@ url='https://github.com/nikp123/cava-gui'
 license=('MIT')
 depends=('fftw' 'alsa-lib' 'iniparser' 'ncurses' 'libx11' 'sdl2')
 makedepends=('libtool' 'automake' 'git')
-source=('git+https://github.com/karlstav/cava#branch=gui')
+source=('git+https://github.com/nikp123/cava')
 conflicts=($_pkgname)
 provides=($_pkgname)
 sha1sums=('SKIP')

@@ -17,7 +17,7 @@ pkgbase = cava-gui-git
 	depends = sdl2
 	provides = cava
 	conflicts = cava
-	source = git+https://github.com/karlstav/cava#branch=gui
+	source = git+https://github.com/nikp123/cava
 	sha1sums = SKIP
 
 pkgname = cava-gui-git
