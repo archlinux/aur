@@ -1,4 +1,4 @@
-From 81791388b2bf15a35d64c0ec2d7d382cd5bdb255 Mon Sep 17 00:00:00 2001
+From bb44cfccb2ff6cb24f16293e874d3ff335b17b51 Mon Sep 17 00:00:00 2001
 From: Jose Santiago <jsantiago@haivision.com>
 Date: Thu, 3 Nov 2016 14:36:10 -0500
 Subject: [PATCH 2/2] Fix build with ANGLE
@@ -8,14 +8,14 @@ Subject: [PATCH 2/2] Fix build with ANGLE
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/src/plugins/common/evr/evrd3dpresentengine.cpp b/src/plugins/common/evr/evrd3dpresentengine.cpp
-index 043d0ad7..bdf25a9c 100644
+index fd9ccdef..bdf25a9c 100644
 --- a/src/plugins/common/evr/evrd3dpresentengine.cpp
 +++ b/src/plugins/common/evr/evrd3dpresentengine.cpp
 @@ -49,9 +49,9 @@
  #include <private/qmediaopenglhelper_p.h>
  
  #ifdef MAYBE_ANGLE
--# include <qtgui/qguiapplication.h>
+-# include <qguiapplication.h>
 -# include <qpa/qplatformnativeinterface.h>
 -# include <qopenglfunctions.h>
 +# include <QtGui/qguiapplication.h>
@@ -25,5 +25,5 @@ index 043d0ad7..bdf25a9c 100644
  #endif
  
 -- 
-2.14.2
+2.15.1
 
