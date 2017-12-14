@@ -37,11 +37,11 @@ noextract=()
 validpgpkeys=()
 
 package() {
-    install -Dm644 "$srcdir/usr/share/izenpe-certificates/AAPPNR_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/AAPPNR_cert_sha256.crt"
-    install -Dm644 "$srcdir/usr/share/izenpe-certificates/AAPPR2_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/AAPPR2_cert_sha256.crt"
-    install -Dm644 "$srcdir/usr/share/izenpe-certificates/AAPPR_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/AAPPR_cert_sha256.crt"
-    install -Dm644 "$srcdir/usr/share/izenpe-certificates/CCEENR_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/CCEENR_cert_sha256.crt"
-    install -Dm644 "$srcdir/usr/share/izenpe-certificates/CCEER_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/CCEER_cert_sha256.crt"
-    install -Dm644 "$srcdir/usr/share/izenpe-certificates/RAIZ2007_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/RAIZ2007_cert_sha256.crt"
-    install -Dm644 "$srcdir/usr/share/izenpe-certificates/SSLEV_cert_sha256.crt" "$pkgdir/usr/share/ca-certificates/trust-source/anchors/SSLEV_cert_sha256.crt"
+    install -Dm 644 "$srcdir/AAPPNR_cert_sha256.crt"	"$pkgdir/usr/share/ca-certificates/trust-source/anchors/AAPPNR_cert_sha256.crt"
+    install -Dm 644 "$srcdir/AAPPR2_cert_sha256.crt"	"$pkgdir/usr/share/ca-certificates/trust-source/anchors/AAPPR2_cert_sha256.crt"
+    install -Dm 644 "$srcdir/AAPPR_cert_sha256.crt"	"$pkgdir/usr/share/ca-certificates/trust-source/anchors/AAPPR_cert_sha256.crt"
+    install -Dm 644 "$srcdir/CCEENR_cert_sha256.crt"	"$pkgdir/usr/share/ca-certificates/trust-source/anchors/CCEENR_cert_sha256.crt"
+    install -Dm 644 "$srcdir/CCEER_cert_sha256.crt"	"$pkgdir/usr/share/ca-certificates/trust-source/anchors/CCEER_cert_sha256.crt"
+    install -Dm 644 "$srcdir/RAIZ2007_cert_sha256.crt"	"$pkgdir/usr/share/ca-certificates/trust-source/anchors/RAIZ2007_cert_sha256.crt"
+    install -Dm 644 "$srcdir/SSLEV_cert_sha256.crt"	"$pkgdir/usr/share/ca-certificates/trust-source/anchors/SSLEV_cert_sha256.crt"
 }
