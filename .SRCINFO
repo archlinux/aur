@@ -13,7 +13,7 @@ pkgbase = openfx-arena-git
 	depends = ffmpeg
 	optdepends = openfx-gmic-bin
 	optdepends = natron-plugins
-	source = openfx-arena::git+https://github.com/MrKepzie/openfx-arena.git#commit=30e817645b28b64176e5adc8e22ee7ff10f01c27
+	source = openfx-arena::git+https://github.com/MrKepzie/openfx-arena.git#commit=47f3c073676928c1b063dacd20ca8089fa8657c6
 	sha512sums = SKIP
 
 pkgname = openfx-arena-git
