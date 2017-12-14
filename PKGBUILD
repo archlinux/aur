@@ -6,13 +6,13 @@ _branch='discord-canary'
 
 pkgname=discord-canary
 pkgver=0.0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
 provides=('discord')
 license=('custom')
-depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'libc++')
+depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'libc++', 'xdg-utils')
 optdepends=(
   'libpulse: For pulseaudio support'
   'noto-fonts-emoji: Google font for emoji support.'
