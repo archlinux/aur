@@ -47,7 +47,8 @@ build() {
     --enable-gimp-console \
     --enable-gimp-remote \
     --enable-python \
-    --enable-gtk-doc
+    --enable-gtk-doc \
+    --without-webkit
   make
 }
 
