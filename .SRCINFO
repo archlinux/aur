@@ -12,6 +12,7 @@ pkgbase = retdec-git
 	depends = graphviz
 	depends = bc
 	depends = upx
+	depends = wget
 	provides = retdec
 	conflicts = retdec
 	source = retdec-git::git+https://github.com/avast-tl/retdec.git
