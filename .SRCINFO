@@ -1,7 +1,7 @@
 pkgbase = qesteidutil
 	pkgdesc = UI application for managing smart card PIN/PUK codes and certificates
 	pkgver = 3.12.10.1265
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.id.ee/
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = qesteidutil
 	makedepends = cmake
 	makedepends = qt5-tools
 	makedepends = qt5-translations
-	depends = qt5-base
+	depends = qt5-base>=5.10.0
 	depends = opensc
 	depends = ccid
 	depends = hicolor-icon-theme
