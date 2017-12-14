@@ -22,7 +22,7 @@ fi
 
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
-pkgver=5.9.3
+pkgver=5.10.0
 pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
@@ -62,16 +62,16 @@ case "$android_arch" in
         ;;
 esac
 
-_pkgfqn="qt-everywhere-opensource-src-${pkgver}"
+_pkgfqn="qt-everywhere-src-${pkgver}"
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
-source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:3}/${pkgver}/single/${_pkgfqn}.tar.xz"
+source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
+        "geoservices.pro.patch"
         "JavaScriptCore.pri.patch"
-        "JavaScript.Platform.h.patch"
-        "geoservices.pro.patch")
-sha256sums=('57acd8f03f830c2d7dc29fbe28aaa96781b2b9bdddce94196e6761a0f88c6046'
-            '133dad6c8d0bedaa5d561be26b2f7185e671900c50d11476ecb2e2ef6792d455'
-            'aeec5ce1dbf6feb3fb9d698cad6b086597fd6e391ae5c1e65fbbfdf10405e755'
-            'f0770923c55725417b7f334b7558371fc9833ae914b81a456d9beee7a3eeab8b')
+        "JavaScript.Platform.h.patch")
+md5sums=('c5e275ab0ed7ee61d0f4b82cd471770d'
+         'de535e2ce98e9f75e9ec0ed1c52a2647'
+         'd0b3bb4de8a44520c2923e14a8b4f9f1'
+         '4c9bbe21230e34fa07c2cbd5119ceda9')
 
 prepare() {
     cd ${_pkgfqn}
@@ -163,6 +163,10 @@ build() {
 
     # Platform specific patches
     case "$android_arch" in
+        armeabi)
+             configue_opts+="
+                 -skip qtwebglplugin"
+            ;;
         x86*)
              configue_opts+="
                  -no-sql-mysql
