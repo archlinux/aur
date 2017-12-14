@@ -6,7 +6,7 @@ pkgdesc="A Python client library for CrateDB."
 arch=('any')
 url="https://github.com/crate/crate-python"
 license=('custom:APACHE')
-depends=('python')
+depends=('python' 'python-urllib3')
 makedepends=('python-setuptools')
 
 makedepends+=('git')

@@ -8,6 +8,7 @@ pkgbase = python-crate-git
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
+	depends = python-urllib3
 	provides = python-crate=r547.d752d9d
 	conflicts = python-crate
 	source = python-crate::git+https://github.com/crate/crate-python
