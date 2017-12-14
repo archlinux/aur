@@ -4,12 +4,12 @@ pkgname=getver
 pkgver=0.52
 pkgrel=1
 pkgdesc='Find the latest package versions'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://github.com/xyproto/getver/'
 license=('MIT')
 makedepends=('git' 'go')
 depends=('setconf')
-source=("git://github.com/xyproto/getver.git#tag=$pkgver")
+source=("https+git://github.com/xyproto/getver.git#tag=$pkgver")
 md5sums=('SKIP')
 
 build() {
@@ -31,5 +31,5 @@ package() {
   install -m755 "scripts/allversions.sh" "$pkgdir/usr/bin/allversions"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
 # getver: raw.githubusercontent.com/xyproto/getver/master/README.md
