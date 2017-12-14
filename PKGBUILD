@@ -4,8 +4,8 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=makeself
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=0
 pkgdesc="Utility to create self-extracting packages"
 arch=('any')
 url="http://megastep.org/makeself"
@@ -27,4 +27,4 @@ package() {
 	install -m755 makeself-header.sh $pkgdir/usr/share/$pkgname
 }
 
-sha256sums=('e89ceeabc28246e62887177942adc9c466c9eab04809a2854eb42c6ce66630fa')
+sha512sums=('7fb869b7d468e01b7f30fbed16256e2ba591ffef9138eed24da3c647832ac80f1f5163fba5a6dfb580eed3a6436503341cae3ca4348973679532e625b0fb7f56')
