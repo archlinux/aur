@@ -7,26 +7,28 @@
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
+# Skip building mapboxgl as it increases compile time significantly and
+# likely not a lot of people actually using it; if you need it, just remove the
+# following line:
+_mapboxcfg='QT.global.disabled_features+=geoservices_mapboxgl'
+
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.9.2
+pkgver=5.10.0
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-angleproject')
-optdepends=('mingw-w64-angleproject: Mapbox GL plugin')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch'
-        '0002-Enforce-use-of-ANGLE-in-Mapbox-GL-plugin.patch')
-sha256sums=('c81a42e44ebd4e9c33f7195e86af3deab9fde72ef0ad8dcb04acee250d356b0c'
-            '888b3f9c8f6765abf66f67fa0f4931ef9713462a33cd9c4b583bf6dcdc431097'
-            '6dcd0992504153a7f720ff46c4998717d4db74e69f88295d2de8fc1cb981d4d1')
+_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch')
+sha256sums=('d84dcec7cfbc99a13e048f935783b0c2e1cb540defc82d77ac869a5b76aa85c7'
+            'a4380c11444f11f79f5c78d76121e45aa27add611bc53204bb867fdf0832888c')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -52,7 +54,7 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_mapboxcfg}
       make
       popd
     done
