@@ -8,22 +8,20 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=v2.11.0.rc5.r0.g6afd0c1998
+pkgver=v2.11.0.r53.g0ef0583d5a
 pkgrel=1
-epoch=2
+epoch=3
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
 _headlessdeps=(gnutls libpng libaio numactl jemalloc xfsprogs libnfs
-               lzo snappy curl vde2 libcap-ng spice libcacard usbredir)
-depends=(seabios dtc virglrenderer sdl2 vte3 brltty "${_headlessdeps[@]}")
+               lzo snappy curl vde2 libcap-ng spice libcacard usbredir pulseaudio)
+depends=(seabios dtc virglrenderer sdl2 vte3 "${_headlessdeps[@]}")
 makedepends=(spice-protocol python2 ceph libiscsi glusterfs git)
 source=(git://git.qemu.org/qemu.git
-        qemu.sysusers
         qemu-ga.service
         65-kvm.rules)
 sha256sums=('SKIP'
-            'dd43e2ef062b071a0b9d0d5ea54737f41600ca8a84a8aefbebb1ff09f978acfb'
             '0b4f3283973bb3bc876735f051d8eaab68f0065502a3a5012141fad193538ea1'
            '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7')
 
@@ -57,8 +55,7 @@ build() {
     --disable-gtk \
     --disable-vte \
     --disable-opengl \
-    --disable-virglrenderer \
-    --disable-brlapi
+    --disable-virglrenderer 
 }
 
 _build() (
@@ -118,8 +115,7 @@ _package() {
 
   # systemd stuff
   install -Dm644 65-kvm.rules "$pkgdir/usr/lib/udev/rules.d/65-kvm.rules"
-  install -Dm644 qemu.sysusers "$pkgdir/usr/lib/sysusers.d/qemu.conf"
-
+  
   # remove conflicting /var/run directory
   cd "$pkgdir"
   rm -r var
