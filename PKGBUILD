@@ -3,7 +3,7 @@
 pkgname=procdump
 pkgver=1.0
 pkgrel=1
-pkgdesc='Generate coredumps based off performance trigger'
+pkgdesc='Generate coredumps based off performance triggers'
 arch=('x86_64')
 url=https://github.com/Microsoft/ProcDump-for-Linux
 license=('MIT')
