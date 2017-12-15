@@ -1,7 +1,7 @@
 pkgname=ipmiview
-pkgver=2.13.0
+pkgver=2.13.1
 _pkgname=IPMIView
-_pkgrev=170504
+_pkgrev=171024
 _pkgver=${_pkgver}_${_pkgrev}
 pkgrel=1
 pkgdesc="Supermicro IPMI tool"
@@ -17,7 +17,7 @@ license=('custom:"Super Micro Computer"')
 url="http://www.supermicro.com/products/nfo/ipmi.cfm"
 source=("ftp://ftp.supermicro.com/utility/IPMIView/Linux/${_pkgname}_${pkgver}_build.${_pkgrev}_bundleJRE_Linux_${_pkgarch}.tar.gz"
         "ipmiview.desktop")
-sha256sums=('c687d7c74eeb691033d0b5f75586fac82e03c5d6e20d66c1c37bbc4ecd2bdcc1'
+sha256sums=('2d25b117b29e159cdd4db3fc341b8e977edde49613fddcb778849f3e1ee4ca80'
             '41d5fa089912ee10d476a0f6aa3c12765861c1a71cf4f811efaf2e47c4ce9351')
 
 package() {
