@@ -4,12 +4,12 @@ pkgver=1.1
 pkgrel=1
 pkgdesc="A stateful tail command"
 arch=('i686' 'x86_64')
-url="http://welz.org.za/projects/since"
+url="https://github.com/philipp-classen/since"
 license=('GPL')
 
 depends=(glibc)
 makedepends=(gcc)
-source=(http://welz.org.za/projects/since/since-${pkgver}.tar.gz)
+source=(https://github.com/philipp-classen/since/releases/download/1.1/since-${pkgver}.tar.gz)
 md5sums=('7a6cfe573d0d2ec7b6f53fe9432a486b')
 sha256sums=('739b7f161f8a045c1dff184e0fc319417c5e2deb3c7339d323d4065f7a3d0f45')
 
