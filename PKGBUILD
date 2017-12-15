@@ -1,6 +1,6 @@
 pkgname=hashcat-utils-git
-pkgver=1.2.r1.g9135127
-pkgrel=2
+pkgver=v1.8.r7.g0dd8834
+pkgrel=1
 pkgdesc="Hashcat-utils are a set of small utilities that are useful in advanced password cracking."
 arch=('i686' 'x86_64')
 url="https://github.com/hashcat/hashcat-utils"
@@ -29,7 +29,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname/src"
 
-  make linux
+  make
   strip *.bin
 }
 
