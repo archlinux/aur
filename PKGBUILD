@@ -3,21 +3,29 @@
 
 pkgname=tracktion-6
 pkgver=6.3.1
-pkgrel=1
-pkgdesc="Commercial Proprietary Music Production Software"
+pkgrel=2
+pkgdesc="Free-to-use Proprietary Digital Audio Workstation"
 arch=('x86_64')
-url="http://www.tracktion.com/"
+url="https://www.tracktion.com/"
 license=('custom')
-depends=('alsa-lib' 'mesa' 'desktop-file-utils' 'shared-mime-info' )
+depends=('alsa-lib' 'freetype2' 'mesa' 'libxinerama')
+makedpeends=('prelink')
 optdepends=(
+    'caps: The LADSPA C* Audio Plugin Suite'
+	'fil-plugins: LADSPA four-band parametric equaliser plugins'
 	'jack: A low-latency audio server'
-	'ladspa-plugins: a set of ladspa plugins'
-	)
+	'ladspa: a basic set of ladspa plugins'
+	'mcp-plugins: a set of LADSPA filters plugins'
+	'rev-plugins: LADSPA stereo and ambisonic reverb plugin based on zita-rev1'
+	"swh-plugins: Steve Harris' LADSPA plug-ins suite"
+	"tap-plugins: Tom's LADSPA Plugins"
+	"wah-plugins: LADSPA Wah filter plugin"
+)
 conflicts=()
 source=("https://s3-us-west-2.amazonaws.com/tracktion-marketplace-public/archive/t6/TracktionInstall_6_3_1_Linux_64Bit.deb"
 	'license'
 	'Tracktion6.desktop'
-	)
+)
 install="tracktion.install"
 md5sums=('77393f2440c1b3da9d5ea8e4fa315828'
          'd7bac73a1a52d26b337761a1d7ec561d'
@@ -25,27 +33,8 @@ md5sums=('77393f2440c1b3da9d5ea8e4fa315828'
 
 package() {
 	tar -x --lzma -f data.tar.lzma -C "${pkgdir}"
+    execstack -c "$pkgdir/usr/bin/Tracktion6"
 	rm "$pkgdir/usr/share/applications/tracktion6.desktop"
-	install -Dm644 "$startdir/license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$startdir/Tracktion6.desktop" "$pkgdir/usr/share/applications/"
-
-        msg "---||-------------------------------------------------||"
-        msg "---|| All fine and dandy...                           ||"
-        msg "---|| Tracktion is no longer free nor open source     ||"
-        msg "---|| and in demo mode.                               ||"
-        msg "---||                                                 ||"
-        msg "---|| As of v6.1 Tracktion for Linux is considered    ||"
-        msg "---|| production-ready and licenses now need to be    ||"
-        msg "---|| purchased for new installs.                     ||"
-        msg "---||                                                 ||"
-        msg "---|| If you obtained a free license for T6.0 it      ||"
-        msg "---|| should continue to work on the machine you      ||"
-        msg "---|| registered it on for the lifetime of the T6     ||"
-        msg "---|| series                                          ||"
-        msg "---||                                                 ||"
-        msg "---|| Alternatively try out an older version          ||"
-        msg "---|| Tracktion-4-Free at AUR                         ||"
-        msg "---||                                                 ||"
-        msg "---|| Visit www.tracktion.com for more info           ||"
-        msg "---||-------------------------------------------------||"
-        }
+	install -Dm644 "$startdir/license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
