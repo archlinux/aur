@@ -2,18 +2,18 @@
 
 pkgbase=decred
 pkgname=('dcrd' 'dcrwallet')
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-makedepends=('git' 'glide' 'go')
+makedepends=('dep' 'git' 'go')
 groups=('decred')
 url="https://decred.org"
 license=('ISC')
 options=('!strip' '!emptydirs')
 source=(dcrd-$pkgver.tar.gz::https://codeload.github.com/decred/dcrd/tar.gz/v$pkgver
         dcrwallet-$pkgver.tar.gz::https://codeload.github.com/decred/dcrwallet/tar.gz/v$pkgver)
-sha256sums=('bc5a565e9b60880b54548fe7857ad2e09c8ceda59f123351701815576ec08d90'
-            '26c91f38e293e739dc833472e89f37255e9bde809882c09d7126338aaf2d7796')
+sha256sums=('2a7d207142d1e1f2257e4b718f56a2ddc0b84417c362309b41aa942173f87ab4'
+            'f40239b11a223b6d07c8ec8d29d7649aef88c0a1a607fcd1f8cecf891438f983')
 
 prepare() {
   export GOPATH="$srcdir"
@@ -29,12 +29,12 @@ build() {
 
   msg2 'Building dcrd and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrd"
-  glide install
-  go install $(glide novendor)
+  dep ensure
+  go install . ./cmd/...
 
   msg2 'Building dcrwallet and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrwallet"
-  glide install
+  dep ensure
   go install . ./cmd/...
 
   msg2 'Prepending dcr to unqualified binaries...'
@@ -68,7 +68,6 @@ package_dcrd() {
               dcrcheckdevpremine \
               dcrctl \
               dcrd \
-              dcrdbtool \
               dcrfindcheckpoint \
               dcrgencerts \
               dcrpromptsecret; do
