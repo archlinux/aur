@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrdocs
-pkgver=20170913
+pkgver=20171214
 pkgrel=1
 pkgdesc="Documentation for Decred"
 arch=('any')
@@ -29,10 +29,7 @@ build() {
     --no-cache-dir \
     --disable-pip-version-check \
     install \
-    https://github.com/mkdocs/mkdocs/archive/master.zip \
-    fontawesome-markdown \
-    mkdocs-bootswatch \
-    python-markdown-math
+    -r requirements.txt
   bin/mkdocs build --clean
 }
 
