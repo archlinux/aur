@@ -34,7 +34,7 @@ build() {
   cd cemu$pkgver
   bsdtar -x -f ../../cemuhook_1112_0554.zip
   cd graphicPacks
-  bsdtar -x -f ../../../graphicPacks_2-484.zip
+  bsdtar -x -f ../../../graphicPacks_2-486.zip
 }
 package() {
   cd $srcdir
