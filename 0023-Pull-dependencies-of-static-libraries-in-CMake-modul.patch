@@ -1,4 +1,4 @@
-From f73b460094294c7cd9f9d9cd481fbf1cef5a2a49 Mon Sep 17 00:00:00 2001
+From 787ef35985d51e5ce1f48fae320c8998b29654b7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 23/34] Pull dependencies of static libraries in CMake modules
@@ -13,7 +13,7 @@ the final application.
  3 files changed, 128 insertions(+), 38 deletions(-)
 
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index 55c74aad66..85a0ae4307 100644
+index 55c74aad66..b401db5ac2 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -55,35 +55,52 @@ but not all the files it references.
@@ -97,7 +97,7 @@ index 55c74aad66..85a0ae4307 100644
 +    macro(_populate_plugin_target_dependencies_from_prl_file PLUGIN_TARGET_NAME PRL_FILE_LOCATION CONFIGURATION LIB_DIRECTORY LIB_LOCATION)
 +        file(STRINGS "${PRL_FILE_LOCATION}" prl_strings REGEX "QMAKE_PRL_LIBS_FOR_CMAKE")
 +        string(REGEX REPLACE \"QMAKE_PRL_LIBS_FOR_CMAKE *= *([^\n]*)\" \"\\\\1\" static_depends ${prl_strings})
-+        string(REGEX REPLACE \"\\\\$\\\\$\\\\[QT_INSTALL_LIBS\\\\]\" \"${_qt5Svg_install_prefix}/lib\" static_depends \"${static_depends}\")
++        string(REGEX REPLACE \"\\\\$\\\\$\\\\[QT_INSTALL_LIBS\\\\]\" \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/lib\" static_depends \"${static_depends}\")
 +        set_property(TARGET ${PLUGIN_TARGET_NAME} PROPERTY
 +            INTERFACE_LINK_LIBRARIES ${static_depends}
 +        )

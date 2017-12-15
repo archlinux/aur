@@ -1,4 +1,4 @@
-From af6803389ebba50abfe7ad299bbf99c9c8d1a8aa Mon Sep 17 00:00:00 2001
+From ae97e360a3e6402957a7e72d89adf71b94fc5730 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
 Subject: [PATCH 01/34] Add profile for cross compilation with mingw-w64
@@ -12,7 +12,7 @@ Subject: [PATCH 01/34] Add profile for cross compilation with mingw-w64
 
 diff --git a/mkspecs/mingw-w64-g++/qmake.conf b/mkspecs/mingw-w64-g++/qmake.conf
 new file mode 100644
-index 0000000000..0979611a53
+index 0000000000..c49336845b
 --- /dev/null
 +++ b/mkspecs/mingw-w64-g++/qmake.conf
 @@ -0,0 +1,126 @@
@@ -128,7 +128,7 @@ index 0000000000..0979611a53
 +QMAKE_PKG_CONFIG            = $${CROSS_COMPILE}pkg-config
 +
 +QMAKE_LIBS                  =
-+QMAKE_LIBS_CORE             = -lz -lpcre2-16 -lversion -lole32 -luuid -lwinmm -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
++QMAKE_LIBS_CORE             = -lz -lpcre2-16 -lversion -lnetapi32 -luserenv -lole32 -luuid -lwinmm -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
 +QMAKE_LIBS_GUI              = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng \
 +                              $$system($${QMAKE_PKG_CONFIG} --static --libs harfbuzz) \
 +                              $$system($${QMAKE_PKG_CONFIG} --static --libs freetype2)
