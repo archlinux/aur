@@ -5,7 +5,7 @@
 
 pkgname=mutter-hide-legacy-decorations
 _pkgname=mutter
-pkgver=3.26.1+15+gb48c34979
+pkgver=3.26.2+31+gbf91e2b4c
 pkgrel=1
 pkgdesc="A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)"
 url="https://git.gnome.org/browse/mutter"
@@ -13,7 +13,7 @@ arch=(i686 x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
-         libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire)
+         libxkbcommon-x11 gnome-settings-daemon libgudev libinput)
 makedepends=(intltool gobject-introspection git gnome-common)
 replaces=('mutter-wayland' 'mutter')
 conflicts=('mutter-wayland' 'mutter')
@@ -21,7 +21,7 @@ provides=("mutter=${pkgver}")
 groups=(gnome)
 options=(!emptydirs)
 
-_commit=b48c3497940883816416735f992aaae61396fbda  # gnome-3-26
+_commit=bf91e2b4ca1ef8b0478d1edec46bd33065457153  # gnome-3-26
 source=("git://git.gnome.org/mutter#commit=$_commit"
         "startup-notification.patch"
         "hideTitlebar.patch")
@@ -48,14 +48,10 @@ prepare() {
 build() {
   cd "$_pkgname"
 
-  # Try to get a bit more performance out of this fps-critical component
-  CFLAGS+=" -O3 -flto=jobserver"
-  LDFLAGS+=" $CFLAGS"
-
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --libexecdir=/usr/lib/$pkgname --disable-static \
       --disable-schemas-compile --enable-compile-warnings=minimum \
-      --enable-gtk-doc --enable-egl-device --enable-remote-desktop
+      --enable-gtk-doc --enable-egl-device --disable-remote-desktop
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' \
