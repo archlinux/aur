@@ -1,12 +1,12 @@
 pkgbase = nakacli-bin
 	pkgdesc = CLI Client for Nakadi
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/amrhassan/nakacli/
 	arch = x86_64
 	license = MIT
-	source = https://github.com/amrhassan/nakacli/releases/download/0.3.0/nakacli-0.3.0-x86_64-unknown-linux-gnu.tar.bz2
-	md5sums = c5422538cef6c59b187105f64157760f
+	source = https://github.com/amrhassan/nakacli/releases/download/0.3.1/nakacli-0.3.1-x86_64-unknown-linux-gnu.tar.bz2
+	md5sums = 661e232693a73c3532a1bfcbd98cf8c4
 
 pkgname = nakacli-bin
 
