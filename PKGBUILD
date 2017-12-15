@@ -2,7 +2,7 @@
 
 pkgbase=decred-git
 pkgname=('dcrd-git' 'dcrwallet-git')
-pkgver=20171009
+pkgver=20171214
 pkgrel=1
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 makedepends=('dep' 'git' 'go')
