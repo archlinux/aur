@@ -3,13 +3,13 @@
 
 pkgname=tracktion-6
 pkgver=6.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free-to-use Proprietary Digital Audio Workstation"
 arch=('x86_64')
 url="https://www.tracktion.com/"
 license=('custom')
 depends=('alsa-lib' 'freetype2' 'mesa' 'libxinerama')
-makedpeends=('prelink')
+makedepends=('prelink')
 optdepends=(
     'caps: The LADSPA C* Audio Plugin Suite'
 	'fil-plugins: LADSPA four-band parametric equaliser plugins'
