@@ -1,3 +1,38 @@
+# [v2.0.0 - 2017-12-14](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.14)
+
+## GitAhead 2.0 requires a new license!
+
+- All current commercial users can upgrade their license at no cost. Check your email for details.
+- Non-commercial users can sign up for a free non-commercial account through a link in the app.
+- The two week evaluation period will reset for all users, so a new license isn't required immediately.
+- If you have any questions please contact us at support@gitahead.com.
+
+## Added
+
+- Added support for custom themes.
+
+## Fixed
+
+- Fixed failure to cleanup after conflict resolution in some cases.
+
+# [v1.4.14 - 2017-12-11](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.13)
+
+## Fixed
+
+- Fixed regression in selecting the status (uncommitted changes) row after the working directory changes.
+- Fixed failure to persist conflict resolution selections after refresh.
+
+# [v1.4.13 - 2017-12-06](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.12)
+
+## Fixed
+
+- Fixed possible crash on newly initialized repos.
+- Fixed crash on submodule update after fetch when new submodules are added.
+
+## Changed
+
+- Disallow automatic update to new major versions.
+
 # [v1.4.12 - 2017-11-30](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.11)
 
 ## Added
