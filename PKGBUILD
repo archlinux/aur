@@ -2,7 +2,7 @@
 
 pkgname=drawio-desktop
 pkgver=7.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Diagram drawing application built on web technology'
 arch=('x86_64')
 url='https://github.com/jgraph/drawio'
@@ -44,7 +44,7 @@ package() {
   '[Desktop Entry]' \
   'Name=draw.io' \
   'Comment=draw.io desktop' \
-  'Exec="/usr/bin/draw.io" %U' \
+  'Exec=/bin/bash -c '"'"'exec /usr/bin/draw.io "$@" > /dev/null 2> /dev/null'"'"' -- bash %U' \
   'Terminal=false' \
   'Type=Application' \
   'Icon=draw.io' \

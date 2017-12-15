@@ -1,7 +1,7 @@
 pkgbase = drawio-desktop
 	pkgdesc = Diagram drawing application built on web technology
 	pkgver = 7.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jgraph/drawio
 	arch = x86_64
 	license = Apache
