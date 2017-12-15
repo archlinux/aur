@@ -1,6 +1,6 @@
 pkgbase = piglit-git
 	pkgdesc = OpenGL implementation testing suite. Provides a simple means to perform regression tests.
-	pkgver = r8676.4d667d4
+	pkgver = r9890.827d37435
 	pkgrel = 1
 	url = http://piglit.freedesktop.org/
 	install = piglit.install
