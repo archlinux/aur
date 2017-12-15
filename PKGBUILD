@@ -9,7 +9,7 @@ license=('CCPL:cc-by')
 url='http://www.cmake.org/documentation/'
 # rename to include version of each release
 # (prevents accidentally using the file of an older version)
-source=("CMake-$pkgver.qch::https://www.cmake.org/cmake/help/v${pkgver:0:3}/CMake.qch")
+source=("CMake-$pkgver.qch::https://www.cmake.org/cmake/help/v${pkgver%.*}/CMake.qch")
 md5sums=('4efb5fcd1df5c7bd1be026da76ce2f19')
 
 package() {
