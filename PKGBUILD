@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=firefox-vimium
-pkgver=1.62.2
+pkgver=1.62.6
 pkgrel=1
 pkgdesc='Provides keyboard shortcuts for navigation and control in the spirit of Vim'
 url=https://github.com/philc/vimium
@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 source=("https://addons.cdn.mozilla.net/user-media/addons/808538/vimium_ff-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
-sha256sums=('ab7868a1dde07c17bf563aec7da53cc784d742b39510cb8e454375d2ca55a6b6')
+sha256sums=('985330849f743d20f2eeb9573940fd41d32781137ea3e7db14d896a80c14a7e9')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/{d7742d87-e61d-4b78-b8a1-b469842139fa}.xpi
