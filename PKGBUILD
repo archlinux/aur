@@ -1,4 +1,5 @@
-# Maintainer:  Ivy Foster <joyfulgirl@archlinux.us>
+# Maintainer:  Esben Haabendal <esben@haabendal.dk>
+# Contributor: Ivy Foster <joyfulgirl@archlinux.us>
 # Contributor: Stefan Husmann <stefan.husmann@t-online.de>
 # Contributor: Peter Simons <simons@cryp.to>
 # Contributor: Just Lest <just.lest@gmail.com>
