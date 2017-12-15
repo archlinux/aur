@@ -6,7 +6,7 @@
 # Contributor: Daniel White <daniel@whitehouse.id.au>
 
 pkgname=emacs-magit-git
-pkgver=2.11.0
+pkgver=2.11.0.r347.c7f6bfe7
 pkgrel=1
 pkgdesc="It's Magit! A Emacs mode for Git."
 arch=('any')
@@ -23,8 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_github_repo}"
-  # Latest annotated tag (release)
-  git describe --abbrev=0
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
