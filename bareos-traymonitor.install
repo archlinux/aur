@@ -9,3 +9,7 @@ post_install() {
 	chown -R root:bareos /etc/bareos/tray-monitor.d/
 	chmod -R 755 /etc/bareos/tray-monitor.d
 }
+
+post_upgrade() {
+	post_install
+}

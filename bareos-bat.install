@@ -1,8 +1,0 @@
-## arg 1:  the new package version
-post_install() {
-	/usr/lib/bareos/scripts/bareos-config initialize_local_hostname
-	/usr/lib/bareos/scripts/bareos-config initialize_passwords
-
-	chown root:bareos /etc/bareos/bat.conf
-	chmod 640 /etc/bareos/bat.conf
-}
