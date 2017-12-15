@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('dee' 'gtk3' 'libdbusmenu-glib')
 makedepends=('gnome-common' 'gobject-introspection' 'intltool' 'vala')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/libunity_$pkgver+17.10.20170605.orig.tar.gz")
-sha256sums=('SKIP')
+md5sums=('0fc16e278838e6f6f46a4f7433df07a8')
 
 build() {
   cd ${srcdir}
