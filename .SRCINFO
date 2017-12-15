@@ -1,6 +1,6 @@
 pkgbase = natron-portable
 	pkgdesc = Video compositing software similar to Nuke and Adobe After Effects, portable snapshot
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = http://natron.fr/
 	install = natron-portable.install
@@ -19,8 +19,8 @@ pkgbase = natron-portable
 	md5sums = ca5186feb5a7f336517c015f72d0f8c8
 	md5sums = 60eb9f97a0ddeab5acda48d15894559a
 	md5sums = 475e14142c51d8b545f7cbc4b5426ce2
-	source_x86_64 = natron-port-2.3.3-1-x86_64.pkg.tar.tgz::https://sourceforge.net/projects/natron/files/Linux/64/releases/Natron-2.3.3-Linux-x86_64bit.tgz/download
-	md5sums_x86_64 = 75b795a410c8d38b4b0e065f6abc158b
+	source_x86_64 = natron-port-2.3.4-1-x86_64.pkg.tar.tgz::https://sourceforge.net/projects/natron/files/Linux/64/releases/Natron-2.3.4-Linux-x86_64bit.tgz/download
+	md5sums_x86_64 = 6191af3cd7cafe62e7cf5d01361d86b5
 
 pkgname = natron-portable
 

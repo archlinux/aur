@@ -1,5 +1,5 @@
 post_install() {
-	/tmp/Natron-2.3.3-Linux-x86_64bit
-	rm /tmp/Natron-2.3.3-Linux-x86_64bit
+	/tmp/Natron-2.3.4-Linux-x86_64bit
+	rm /tmp/Natron-2.3.4-Linux-x86_64bit
 }
 
