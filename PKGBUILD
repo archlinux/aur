@@ -21,15 +21,14 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-filedaemon-python-plugin"
          "${pkgbase}-storage-python-plugin")
 
-pkgver=17.2.4rc2
-_pkgver=17.2.4
+pkgver=17.2.4
 pkgrel=1
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-source=("git+https://github.com/bareos/bareos.git#tag=Release/$_pkgver-rc2")
+source=("git+https://github.com/bareos/bareos.git#tag=Release/$pkgver")
 md5sums=('SKIP')
 
 prepare() {
@@ -88,11 +87,11 @@ package_bareos-common() {
   install=bareos-common.install
 
   for f in \
-    usr/lib/bareos/libbareos-$_pkgver.so \
+    usr/lib/bareos/libbareos-$pkgver.so \
     usr/lib/bareos/libbareos.so \
-    usr/lib/bareos/libbareoscfg-$_pkgver.so \
+    usr/lib/bareos/libbareoscfg-$pkgver.so \
     usr/lib/bareos/libbareoscfg.so \
-    usr/lib/bareos/libbareosfind-$_pkgver.so \
+    usr/lib/bareos/libbareosfind-$pkgver.so \
     usr/lib/bareos/libbareosfind.so \
     usr/lib/bareos/scripts/bareos-config \
     usr/lib/bareos/scripts/bareos-config-lib.sh \
@@ -130,9 +129,9 @@ package_bareos-database-common() {
   depends=("bareos-common=$pkgver" 'libcap' 'lzo' 'zlib' 'openssl' 'bash' 'jansson')
 
   for f in \
-    usr/lib/bareos/libbareoscats-$_pkgver.so \
+    usr/lib/bareos/libbareoscats-$pkgver.so \
     usr/lib/bareos/libbareoscats.so \
-    usr/lib/bareos/libbareossql-$_pkgver.so \
+    usr/lib/bareos/libbareossql-$pkgver.so \
     usr/lib/bareos/libbareossql.so \
     usr/lib/bareos/scripts/create_bareos_database \
     usr/lib/bareos/scripts/drop_bareos_database \
@@ -153,7 +152,7 @@ package_bareos-database-mysql() {
   install=bareos-database-mysql.install
 
   for f in \
-    usr/lib/bareos/backends/libbareoscats-mysql-$_pkgver.so \
+    usr/lib/bareos/backends/libbareoscats-mysql-$pkgver.so \
     usr/lib/bareos/backends/libbareoscats-mysql.so \
     usr/lib/bareos/scripts/ddl/drops/mysql.sql \
     usr/lib/bareos/scripts/ddl/grants/mysql.sql \
@@ -178,7 +177,7 @@ package_bareos-database-postgresql() {
   install='bareos-database-postgresql.install'
 
   for f in \
-    usr/lib/bareos/backends/libbareoscats-postgresql-$_pkgver.so \
+    usr/lib/bareos/backends/libbareoscats-postgresql-$pkgver.so \
     usr/lib/bareos/backends/libbareoscats-postgresql.so \
     usr/lib/bareos/scripts/ddl/drops/postgresql.sql \
     usr/lib/bareos/scripts/ddl/grants/postgresql-change_owner.dbconfig-template.sql \
@@ -205,7 +204,7 @@ package_bareos-database-sqlite3() {
   depends=("bareos-database-common=$pkgver" "sqlite3")
 
   for f in \
-    usr/lib/bareos/backends/libbareoscats-sqlite3-$_pkgver.so \
+    usr/lib/bareos/backends/libbareoscats-sqlite3-$pkgver.so \
     usr/lib/bareos/backends/libbareoscats-sqlite3.so \
     usr/lib/bareos/scripts/ddl/creates/sqlite3.sql \
     usr/lib/bareos/scripts/ddl/updates/sqlite3.10_11.sql \
@@ -288,7 +287,7 @@ package_bareos-storage-fifo() {
   pkgdesc="${pkgdesc} - FIFO support for storage daemon"
   depends=("bareos-storage=$pkgver" 'zlib' 'libcap' 'openssl' 'jansson' 'lzo')
   for f in \
-    usr/lib/bareos/backends/libbareossd-fifo-$_pkgver.so \
+    usr/lib/bareos/backends/libbareossd-fifo-$pkgver.so \
     usr/lib/bareos/backends/libbareossd-fifo.so \
     usr/share/bareos/config/bareos-dir.d/storage/NULL.conf.example \
     usr/share/bareos/config/bareos-sd.d/device/NULL.conf.example \
@@ -355,7 +354,7 @@ package_bareos-storage() {
     usr/share/bareos/config/bareos-sd.d/storage/bareos-sd.conf \
     usr/bin/bareos-sd \
     usr/share/man/man8/bareos-sd.8.gz \
-    usr/lib/bareos/libbareossd-$_pkgver.so \
+    usr/lib/bareos/libbareossd-$pkgver.so \
     usr/lib/bareos/libbareossd.so \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
@@ -375,9 +374,9 @@ package_bareos-storage-tape() {
     usr/share/bareos/config/bareos-dir.d/storage/Tape.conf.example \
     usr/share/bareos/config/bareos-sd.d/autochanger/autochanger-0.conf.example \
     usr/share/bareos/config/bareos-sd.d/device/tapedrive-0.conf.example \
-    usr/lib/bareos/backends/libbareossd-gentape-$_pkgver.so \
+    usr/lib/bareos/backends/libbareossd-gentape-$pkgver.so \
     usr/lib/bareos/backends/libbareossd-gentape.so \
-    usr/lib/bareos/backends/libbareossd-tape-$_pkgver.so \
+    usr/lib/bareos/backends/libbareossd-tape-$pkgver.so \
     usr/lib/bareos/backends/libbareossd-tape.so \
     usr/lib/bareos/scripts/mtx-changer \
     usr/share/man/man8/bscrypto.8.gz \
