@@ -1,6 +1,6 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=psc-package
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 epoch=
 pkgdesc="A package manager for PureScript based on package sets"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/purescript/psc-package/releases/download/v$pkgver/linux64.tar.gz")
 noextract=()
-sha1sums=('6b7e745642d15161c0390abd1b8c709782106ad3')
+sha1sums=('287b560277cc37e4d51370e23bcdb7bf3bceed6b')
 validpgpkeys=()
 
 prepare() {
