@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname"
-    mkdir build
+    mkdir -p build
     cd build
     cmake -DUSE_QT5=true -DCMAKE_INSTALL_PREFIX=/usr ..
     make
