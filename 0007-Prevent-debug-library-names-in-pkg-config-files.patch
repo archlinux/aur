@@ -1,4 +1,4 @@
-From b02e8af19e3d94f9c39bbcaf94e91ab6dc6ca3f8 Mon Sep 17 00:00:00 2001
+From 08fec3af6cd36be649cbab317ded9e2ff4a5a4c4 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:01:14 +0200
 Subject: [PATCH 07/34] Prevent debug library names in pkg-config files

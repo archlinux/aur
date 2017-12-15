@@ -1,4 +1,4 @@
-From 6e4e751d6f39c6869cacb6d4148f5358f58bb54e Mon Sep 17 00:00:00 2001
+From 0d67a3dc557e4b4cc77e9c667dc427539a60c2af Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 20:51:19 +0100
 Subject: [PATCH 11/34] Fix linking against static freetype2
