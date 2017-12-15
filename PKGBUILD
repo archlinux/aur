@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.14
-_pkgver=4.14.5
+_pkgver=4.14.6
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/copperhead/linux-hardened'
@@ -19,18 +19,22 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         60-linux.hook  # pacman hook for depmod
         90-linux.hook  # pacman hook for initramfs regeneration
         linux.preset   # standard config files for mkinitcpio ramdisk
+        0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+        0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 )
 replaces=('linux-grsec')
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'd86eb2fd1c424fec9fbb12afacf7b783756651f5d7d0cf7ac71c3fbbbedddc9c'
+            'c75b40f450f147014a08987949aafb71d9fcd3e91e443f5c8e4edbf1bbc386c6'
             'SKIP'
-            '6484bd199fd89dc5bcc2d20e3e4faabb6f3f162b538f9b5b0d997325c1e5eca1'
+            '8e2521a893bc8c5f8262a5916f8af59c2cf3933aac200b79d1496650feea168d'
             'SKIP'
-            '502e550997ab376d956856d45542437014a3c70ed55f486685eb435f3a82d80d'
+            'ec535a417e3f55a34ab8c44bdcbbfa807e26fc66a5e718ee41f88eeb0fd1fc10'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
+            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -42,16 +46,23 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${_pkgver}"
+  patch -p1 -i ../patch-${_pkgver}
 
   # security patches
 
-  patch -p1 -i "${srcdir}/linux-hardened-${pkgver}.patch"
+  # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
+  patch -p1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+
+  # linux hardened patch
+  patch -p1 -i ../linux-hardened-${pkgver}.patch
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  cat "${srcdir}/config.${CARCH}" > ./.config
+  # https://bugs.archlinux.org/task/56575
+  patch -p1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+
+  cp -Tf ../config.${CARCH} .config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
