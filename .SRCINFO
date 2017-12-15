@@ -1,0 +1,19 @@
+pkgbase = jackmidi2osc-git
+	pkgdesc = Github version of ulam compiler and MFM simulator
+	pkgver = 0.2.r2.gedc653c
+	pkgrel = 1
+	url = https://github.com/x42/jackmidi2osc
+	arch = any
+	license = (L)GPL3
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	depends = liblo
+	depends = jack
+	options = !buildflags
+	options = !makeflags
+	source = git://github.com/x42/jackmidi2osc
+	md5sums = SKIP
+
+pkgname = jackmidi2osc-git
+
