@@ -12,7 +12,7 @@ _extractiondir=unity-editor-${_version}${_build}
 
 pkgname=('unity-editor' 'monodevelop-unity')
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
@@ -28,7 +28,8 @@ depends=('desktop-file-utils'
          'libpng12'
          'libxtst'
          'libpqxx'
-         'npm')
+         'npm'
+         'lib32-gcc-libs')
 optdepends=('ffmpeg: for WebGL exporting'
             'nodejs: for WebGL exporting'
             'java-runtime: for WebGL exporting'
