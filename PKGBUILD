@@ -1,7 +1,7 @@
 # Mantainer: MCMic <come@chilliet.eu>
 
 pkgname=python-pyscroll
-pkgver=74402d3
+pkgver=cfe684f
 pkgrel=1
 pkgdesc="some basic modules to make scrolling pygame games"
 arch=('any')
