@@ -34,5 +34,7 @@ package ()
         install -m755 bin/$file $pkgdir/usr/bin/$file
     done
     mkdir -p $pkgdir/usr/share/licenses/$pkgname
+    mkdir -p $pkgdir/usr/share/bash-completion/completions
+    install -m755 bash_completion/tsv-utils-dlang $pkgdir/usr/share/bash-completion/completions/tsv-utils
     install -m644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
 }
