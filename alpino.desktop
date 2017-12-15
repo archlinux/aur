@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Alpino
+Comment=Alpino dependency parser for Dutch
+Exec=/usr/bin/alpino
+Terminal=true
+Categories=Science;Education
+Icon=alpino
