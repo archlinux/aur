@@ -1,9 +1,8 @@
 pkgbase = logrotate-selinux
 	pkgdesc = Rotates system logs automatically with SELinux support
-	pkgver = 3.12.3
+	pkgver = 3.13.0
 	pkgrel = 1
 	url = https://github.com/logrotate/logrotate
-	arch = i686
 	arch = x86_64
 	groups = selinux
 	license = GPL
@@ -11,16 +10,16 @@ pkgbase = logrotate-selinux
 	depends = gzip
 	depends = acl
 	depends = libselinux
-	provides = logrotate=3.12.3-1
-	provides = selinux-logrotate=3.12.3-1
+	provides = logrotate=3.13.0-1
+	provides = selinux-logrotate=3.13.0-1
 	conflicts = logrotate
 	conflicts = selinux-logrotate
 	backup = etc/logrotate.conf
-	source = https://github.com/logrotate/logrotate/releases/download/3.12.3/logrotate-3.12.3.tar.xz
-	source = https://github.com/logrotate/logrotate/releases/download/3.12.3/logrotate-3.12.3.tar.xz.asc
+	source = https://github.com/logrotate/logrotate/releases/download/3.13.0/logrotate-3.13.0.tar.xz
+	source = https://github.com/logrotate/logrotate/releases/download/3.13.0/logrotate-3.13.0.tar.xz.asc
 	source = logrotate.conf
 	validpgpkeys = 992A96E075056E79CD8214F9873DB37572A37B36
-	md5sums = a560c57fac87c45b2fc17406cdf79288
+	md5sums = 78ef24d6fddcc4df8e412dd75c551b4c
 	md5sums = SKIP
 	md5sums = 94dae4d3eded2fab9ae879533d3680db
 
