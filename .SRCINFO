@@ -1,27 +1,16 @@
 pkgbase = litecoin-daemon
-	pkgdesc = Peer-to-peer network based digital currency (daemon)
-	pkgver = 0.10.2.2
-	pkgrel = 2
-	url = http://www.litecoin.org/
+	pkgdesc = Peer-to-peer digital currency, official binary release (includes litecoind and litecoin-cli)
+	pkgver = 0.14.2
+	pkgrel = 3
+	url = https://github.com/litecoin-project/litecoin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = boost
-	makedepends = automoc4
-	makedepends = qrencode
-	makedepends = miniupnpc
-	makedepends = protobuf
-	depends = boost-libs
-	depends = miniupnpc
 	depends = openssl
-	depends = protobuf
-	conflicts = litecoin
-	source = https://github.com/litecoin-project/litecoin/archive/v0.10.2.2.tar.gz
-	source = litecoind@.service
-	source = upnp-1.9.patch
-	sha256sums = 952c84b181323db17a8fa23217f59b576ad3ebad92c158b3a7c29d458a1130dc
-	sha256sums = 3e0afef47970cdf304a376b51dbbb44759ac7eeb232be1ea4b2b995817b5df88
-	sha256sums = 3060917f8e327002da842534265392a1849239ec5049f25c1ae8a81c3952e7b1
+	options = !strip
+	conflicts = litecoin-bin
+	source = https://download.litecoin.org/litecoin-0.14.2/linux/litecoin-0.14.2-x86_64-linux-gnu.tar.gz
+	sha256sums = 05f409ee57ce83124f2463a3277dc8d46fca18637052d1021130e4deaca07b3c
 
 pkgname = litecoin-daemon
 
