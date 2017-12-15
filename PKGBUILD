@@ -2,7 +2,7 @@
 pkgname=star-seq-alignment
 pkgver=v2.5.3a
 pkgrel=1
-pkgdesc="An RNA-seq alignment suite, by Alexander Doin"
+pkgdesc="An RNA-seq alignment suite, by Alexander Dobin"
 arch=('i686' 
       'x86_64')
 url="https://github.com/alexdobin/STAR"
