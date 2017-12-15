@@ -4,7 +4,7 @@ pkgbase=linux-hardened-apparmor
 _srcname=linux-4.14
 _pkgver=4.14.6
 pkgver=${_pkgver}.a
-pkgrel=2
+pkgrel=3
 url='https://github.com/copperhead/linux-hardened'
 arch=('x86_64')
 license=('GPL2')
@@ -29,7 +29,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
             '8e2521a893bc8c5f8262a5916f8af59c2cf3933aac200b79d1496650feea168d'
             'SKIP'
-            'ec535a417e3f55a34ab8c44bdcbbfa807e26fc66a5e718ee41f88eeb0fd1fc10'
+            '628fad8eb5811a4a6851bb7717627ec4132a44374df42f55b50d9a69b49a62df'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
