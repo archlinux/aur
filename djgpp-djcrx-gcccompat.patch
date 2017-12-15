@@ -1,0 +1,184 @@
+diff -r -U3 src.orig/libc/ansi/string/makefile src/libc/ansi/string/makefile
+--- src.orig/libc/ansi/string/makefile	1995-06-16 08:03:22.000000000 +0300
++++ src/libc/ansi/string/makefile	2017-12-06 13:00:01.244066674 +0200
+@@ -28,3 +28,5 @@
+ SRC += syserr3.c
+ 
+ include $(TOP)/../makefile.inc
++
++strlen.o: EXTRA_CFLAGS += -fno-builtin-strlen
+Vain hakemistossa src/libc/ansi/string: makefile~
+Vain hakemistossa src.orig/libc/c99/math: fp-asm.h
+diff -r -U3 src.orig/libc/c99/math/makefile src/libc/c99/math/makefile
+--- src.orig/libc/c99/math/makefile	2013-10-20 13:57:11.000000000 +0300
++++ src/libc/c99/math/makefile	2017-12-06 13:02:20.175232384 +0200
+@@ -36,3 +36,7 @@
+ 
+ clean::
+ 	$(MISC) rm fp-asm.h
++
++nan.o: EXTRA_CFLAGS += -fno-builtin-nan
++nanf.o: EXTRA_CFLAGS += -fno-builtin-nanf
++nanl.o: EXTRA_CFLAGS += -fno-builtin-nanl
+Vain hakemistossa src/libc/c99/math: makefile~
+diff -r -U3 src.orig/libc/compat/string/makefile src/libc/compat/string/makefile
+--- src.orig/libc/compat/string/makefile	2003-01-19 13:03:56.000000000 +0200
++++ src/libc/compat/string/makefile	2017-12-06 13:03:42.369270356 +0200
+@@ -22,3 +22,7 @@
+ SRC += strupr.c
+ 
+ include $(TOP)/../makefile.inc
++
++stpcpy.o:	EXTRA_CFLAGS += -fno-builtin-stpcpy
++stpncpy.o:	EXTRA_CFLAGS += -fno-builtin-stpncpy
++strdup.o:	EXTRA_CFLAGS += -fno-builtin-strdup
+Vain hakemistossa src/libc/compat/string: makefile~
+diff -r -U3 src.orig/libc/dos/process/dosexec.c src/libc/dos/process/dosexec.c
+--- src.orig/libc/dos/process/dosexec.c	2015-05-02 07:32:23.000000000 +0300
++++ src/libc/dos/process/dosexec.c	2017-12-06 13:09:42.825915209 +0200
+@@ -406,7 +406,7 @@
+   if ((initial_tbuf_selector != tbuf_selector) && proxy_off)
+   {
+     char temp[65], *s, t2[5];
+-    sprintf (t2, "%04lX", tbuf_beg>>4);
++    sprintf (t2, "%04X", (unsigned short)(tbuf_beg>>4));
+     dosmemget (tbuf_beg+proxy_off, 64, temp);
+     temp[64] = 0;
+     s = strchr(temp,'\r');
+@@ -1107,9 +1107,9 @@
+   proxy_cmdline = (char *)alloca (34);
+   
+   sprintf(proxy_cmdline, "%s=%04x %04x %04x %04x %04x",
+-    __PROXY, argc,
+-   (unsigned)(tbuf_beg >> 4), rm_off & 0xffff,
+-   (unsigned)(tbuf_beg >> 4), si_off & 0xffff);
++    __PROXY, (unsigned short)argc,
++    (unsigned short)(tbuf_beg >> 4), (unsigned short)(rm_off & 0xffff),
++    (unsigned short)(tbuf_beg >> 4), (unsigned short)(si_off & 0xffff));
+   if (!found_si)
+     proxy_cmdline[22] = 0; /* remove stubinfo information */
+ 
+Vain hakemistossa src/libc/dos/process: dosexec.c.diff
+diff -r -U3 src.orig/libc/posix/string/makefile src/libc/posix/string/makefile
+--- src.orig/libc/posix/string/makefile	2013-11-14 20:00:17.000000000 +0200
++++ src/libc/posix/string/makefile	2017-12-06 13:10:54.246587865 +0200
+@@ -8,3 +8,5 @@
+ SRC += strnlen.c
+ 
+ include $(TOP)/../makefile.inc
++
++strndup.o:	EXTRA_CFLAGS += -fno-builtin-strndup
+Vain hakemistossa src/libc/posix/string: makefile~
+diff -r -U3 src.orig/libm/math/e_asin.c src/libm/math/e_asin.c
+--- src.orig/libm/math/e_asin.c	1998-02-07 13:18:28.000000000 +0200
++++ src/libm/math/e_asin.c	2016-04-21 20:10:21.000000000 +0300
+@@ -91,10 +91,10 @@
+ 		if(huge+x>one) return x;/* return x with inexact if x!=0*/
+ 	    } else 
+ 		t = x*x;
+-		p = t*(pS0+t*(pS1+t*(pS2+t*(pS3+t*(pS4+t*pS5)))));
+-		q = one+t*(qS1+t*(qS2+t*(qS3+t*qS4)));
+-		w = p/q;
+-		return x+x*w;
++	    p = t*(pS0+t*(pS1+t*(pS2+t*(pS3+t*(pS4+t*pS5)))));
++	    q = one+t*(qS1+t*(qS2+t*(qS3+t*qS4)));
++	    w = p/q;
++	    return x+x*w;
+ 	}
+ 	/* 1> |x|>= 0.5 */
+ 	w = one-fabs(x);
+Vain hakemistossa src/libm/math: e_asin.c~
+diff -r -U3 src.orig/libm/math/ef_asin.c src/libm/math/ef_asin.c
+--- src.orig/libm/math/ef_asin.c	1998-02-07 14:13:26.000000000 +0200
++++ src/libm/math/ef_asin.c	2016-04-21 20:10:21.000000000 +0300
+@@ -58,10 +58,10 @@
+ 		if(huge+x>one) return x;/* return x with inexact if x!=0*/
+ 	    } else 
+ 		t = x*x;
+-		p = t*(pS0+t*(pS1+t*(pS2+t*(pS3+t*(pS4+t*pS5)))));
+-		q = one+t*(qS1+t*(qS2+t*(qS3+t*qS4)));
+-		w = p/q;
+-		return x+x*w;
++	    p = t*(pS0+t*(pS1+t*(pS2+t*(pS3+t*(pS4+t*pS5)))));
++	    q = one+t*(qS1+t*(qS2+t*(qS3+t*qS4)));
++	    w = p/q;
++	    return x+x*w;
+ 	}
+ 	/* 1> |x|>= 0.5 */
+ 	w = one-fabsf(x);
+diff -r -U3 src.orig/libm/math/ef_jn.c src/libm/math/ef_jn.c
+--- src.orig/libm/math/ef_jn.c	2002-03-16 13:32:53.000000000 +0200
++++ src/libm/math/ef_jn.c	2016-04-21 20:10:22.000000000 +0300
+@@ -20,7 +20,6 @@
+ #else
+ static float
+ #endif
+-invsqrtpi=  5.6418961287e-01, /* 0x3f106ebb */
+ two   =  2.0000000000e+00, /* 0x40000000 */
+ one   =  1.0000000000e+00; /* 0x3F800000 */
+ 
+diff -r -U3 src.orig/libm/math/kf_rem_pio2.c src/libm/math/kf_rem_pio2.c
+--- src.orig/libm/math/kf_rem_pio2.c	1997-04-15 08:39:48.000000000 +0300
++++ src/libm/math/kf_rem_pio2.c	2016-04-21 20:10:22.000000000 +0300
+@@ -77,7 +77,8 @@
+ 
+     /* compute q[0],q[1],...q[jk] */
+ 	for (i=0;i<=jk;i++) {
+-	    for(j=0,fw=0.0;j<=jx;j++) fw += x[j]*f[jx+i-j]; q[i] = fw;
++	    for(j=0,fw=0.0;j<=jx;j++) fw += x[j]*f[jx+i-j];
++	    q[i] = fw;
+ 	}
+ 
+ 	jz = jk;
+diff -r -U3 src.orig/libm/math/k_rem_pio2.c src/libm/math/k_rem_pio2.c
+--- src.orig/libm/math/k_rem_pio2.c	1997-04-15 08:39:48.000000000 +0300
++++ src/libm/math/k_rem_pio2.c	2016-04-21 20:10:22.000000000 +0300
+@@ -187,7 +187,8 @@
+ 
+     /* compute q[0],q[1],...q[jk] */
+ 	for (i=0;i<=jk;i++) {
+-	    for(j=0,fw=0.0;j<=jx;j++) fw += x[j]*f[jx+i-j]; q[i] = fw;
++	    for(j=0,fw=0.0;j<=jx;j++) fw += x[j]*f[jx+i-j];
++	    q[i] = fw;
+ 	}
+ 
+ 	jz = jk;
+Vain hakemistossa src/libm/math: k_rem_pio2.c~
+diff -r -U3 src.orig/libm/math/sf_cos.c src/libm/math/sf_cos.c
+--- src.orig/libm/math/sf_cos.c	1997-04-15 08:39:52.000000000 +0300
++++ src/libm/math/sf_cos.c	2016-04-21 20:10:24.000000000 +0300
+@@ -16,12 +16,6 @@
+ #include "fdlibm.h"
+ 
+ #ifdef __STDC__
+-static const float one=1.0;
+-#else
+-static float one=1.0;
+-#endif
+-
+-#ifdef __STDC__
+ 	float cosf(float x)
+ #else
+ 	float cosf(x)
+diff -r -U3 src.orig/libm/math/sf_scalbn.c src/libm/math/sf_scalbn.c
+--- src.orig/libm/math/sf_scalbn.c	1998-10-04 10:48:42.000000000 +0300
++++ src/libm/math/sf_scalbn.c	2016-04-21 20:10:24.000000000 +0300
+@@ -29,7 +29,6 @@
+ #endif
+ two25   =  3.355443200e+07,	/* 0x4c000000 */
+ twom25  =  2.9802322388e-08,	/* 0x33000000 */
+-huge   = 1.0e+30,
+ tiny   = 1.0e-30;
+ 
+ #ifdef __STDC__
+diff -r -U3 src.orig/libm/math/s_scalbn.c src/libm/math/s_scalbn.c
+--- src.orig/libm/math/s_scalbn.c	1998-10-04 10:48:42.000000000 +0300
++++ src/libm/math/s_scalbn.c	2016-04-21 20:10:23.000000000 +0300
+@@ -66,7 +66,6 @@
+ #endif
+ two54   =  1.80143985094819840000e+16, /* 0x43500000, 0x00000000 */
+ twom54  =  5.55111512312578270212e-17, /* 0x3C900000, 0x00000000 */
+-huge   = 1.0e+300,
+ tiny   = 1.0e-300;
+ 
+ #ifdef __STDC__
