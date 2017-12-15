@@ -1,0 +1,39 @@
+post_install() {
+  __port2=`lpinfo -v | grep -i 'usb://Brother/DCP-145C' | head -1`
+  if [ "$__port2" = '' ];then
+          __port2=`lpinfo -v | grep 'usb://' | head -1`
+  fi
+  __port=`echo $__port2| sed s/direct//g`
+  if [ "$__port" = '' ];then
+          __port="usb:/dev/usb/lp0"
+  fi
+
+  lpadmin -p DCP-145C -E -v $__port -P /usr/share/cups/model/brdcp145c.ppd
+  echo "If CUPS is not running now, start it after installation"
+  echo "and type command:" 
+  echo "  lpadmin -p DCP-145C -E -v URL -P /usr/share/cups/model/brdcp145c.ppd"
+  echo "where URL can be found using command:"
+  echo "  lpinfo -v | grep -i 'Brother'"
+  echo "You can also register new printer using web interface at:"
+  echo "  http://localhost:631/"
+  echo " "
+  echo "Note: To change paper type with correct alignment, edit main"
+  echo "printer configuration file:"
+  echo "  eg: sudo nano /usr/share/brother/Printer/dcp145c/inf/brdcp145crc"
+  echo "  (due to incompatibilities between drivers and cups)"
+}
+
+post_upgrade() {
+  /bin/true
+}
+
+pre_remove() {
+  lpadmin -x DCP-145C
+}
+
+
+op=$1
+shift
+
+$op "$@"
+

@@ -1,0 +1,20 @@
+pkgbase = brother-dcp-145c
+	pkgdesc = Brother DCP-145C CUPS driver
+	pkgver = 1.1.2_2
+	pkgrel = 1
+	url = http://support.brother.com/g/b/downloadtop.aspx?c=eu_ot&lang=en&prod=dcp145c_eu_as
+	install = brother-dcp-145c.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	source = brother-dcp-145c.patch
+	source = http://download.brother.com/welcome/dlf005444/dcp145ccupswrapper-1.1.2-2.i386.rpm
+	source = http://download.brother.com/welcome/dlf005442/dcp145clpr-1.1.2-2.i386.rpm
+	md5sums = 2be122a6f63654cd9a1b6a9427235394
+	md5sums = 58ec23ccb3e8d7617006b9659fb36a95
+	md5sums = bd8b8ab373172266eed34040658344be
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcp-145c
+
