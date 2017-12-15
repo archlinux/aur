@@ -3,7 +3,7 @@
 pkgname=jaspersoftstudio
 _pkgname=JaspersoftStudio
 _binname="Jaspersoft Studio"
-pkgver=6.4.3
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="Eclipse based Jasper Reports generator"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ license=('Eclipse')
 depends=('java-runtime' 'gtk2')
 source_x86_64=("http://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-${pkgver}/TIB_js-studiocomm_${pkgver}.final_linux_x86_64.tgz")
 source_i686=("http://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-${pkgver}/TIB_js-studiocomm_${pkgver}.final_linux_x86.tgz")
-md5sums_x86_64=('3989edfb3f303fb3a76a48f91cb7492d')
-md5sums_i686=('dc31252b74162ccd1225c44c9ab43192')
+md5sums_x86_64=('211040d3d99cef2821aab4b5daf56a6a')
+md5sums_i686=('5be6b15839252f4b07949823ade2d05d')
 
 package() {
 install -d -m 0755 ${pkgdir}/opt/${pkgname}
