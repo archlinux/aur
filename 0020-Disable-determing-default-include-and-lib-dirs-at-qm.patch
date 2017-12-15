@@ -1,4 +1,4 @@
-From 81a6a9a34e71a08fd5a8b87f44c71803d7f07797 Mon Sep 17 00:00:00 2001
+From 440c61802ae80ceda51ed8d405ab922dddaa2d45 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:20:25 +0200
 Subject: [PATCH 20/34] Disable determing default include and lib dirs at qmake

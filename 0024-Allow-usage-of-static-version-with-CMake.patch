@@ -1,4 +1,4 @@
-From 903ed5730e5a25ea6fda815fcd88cc36e3d8639e Mon Sep 17 00:00:00 2001
+From 169e2241bd5f8a47ff647a2ce1e8af43265fb32f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Aug 2017 21:14:26 +0200
 Subject: [PATCH 24/34] Allow usage of static version with CMake
@@ -244,7 +244,7 @@ index 15fc070008..13bd362092 100644
  # We are generating cmake files. Most developers of Qt are not aware of cmake,
  # so we require automatic tests to be available. The only module which should
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index 85a0ae4307..42053ac0c0 100644
+index b401db5ac2..e6dd749c9e 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -9,6 +9,33 @@ if (CMAKE_VERSION VERSION_LESS 3.0.0)
