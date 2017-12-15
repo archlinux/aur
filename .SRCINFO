@@ -14,6 +14,7 @@ pkgbase = nordnm
 	depends = networkmanager-openvpn
 	depends = python-requests
 	depends = python-numpy
+	provides = nordnm
 	source = https://files.pythonhosted.org/packages/source/n/nordnm/nordnm-0.1.0.tar.gz
 	md5sums = 10589e27bf1cd0495ec133c5b5ac3537
 
