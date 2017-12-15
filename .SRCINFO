@@ -1,6 +1,6 @@
 pkgbase = selinux-refpolicy-git
 	pkgdesc = Modular SELinux reference policy including headers and docs
-	pkgver = RELEASE_2_20170805.r8.g0ba1970b7cd4
+	pkgver = RELEASE_2_20170805.r150.g94f1a1b3f30f
 	pkgrel = 1
 	url = https://github.com/TresysTechnology/refpolicy/wiki
 	install = selinux-refpolicy-git.install

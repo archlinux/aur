@@ -2,7 +2,7 @@
 
 pkgname=selinux-refpolicy-git
 _policyname=refpolicy-git
-pkgver=RELEASE_2_20170805.r8.g0ba1970b7cd4
+pkgver=RELEASE_2_20170805.r150.g94f1a1b3f30f
 pkgrel=1
 pkgdesc="Modular SELinux reference policy including headers and docs"
 arch=('any')
@@ -55,6 +55,10 @@ package() {
   make install-docs \
     DESTDIR="${pkgdir}" NAME="${_policyname}" DISTRO=arch SYSTEMD=y UBAC=n \
     PKGNAME="${_policyname}"
+
+  # Create /var/lib/selinux, which is necessary for loading policy,
+  # which is done via install script.
+  install -d -m0755 "${pkgdir}/var/lib/selinux"
 
   # Install main SELinux config file defaulting to refpolicy
   install -m644 -D "${srcdir}/config" "${pkgdir}/etc/selinux/config.${_policyname}"

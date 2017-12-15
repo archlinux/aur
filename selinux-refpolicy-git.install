@@ -1,12 +1,14 @@
 post_install() {
-  echo ">>> Building refpolicy-git policy store. Please wait ..."
-  /usr/bin/semodule -s refpolicy-git -i /usr/share/selinux/refpolicy-git/*.pp
+  # Configure /etc/selinux/config
   if [ -e /etc/selinux/config ]
   then
     echo ">>> In order to use this policy, set SELINUXTYPE=refpolicy-git in /etc/selinux/config."
   else
     /usr/bin/ln -v -s config.refpolicy-git /etc/selinux/config
   fi
+
+  echo ">>> Building refpolicy-git policy store. Please wait..."
+  /usr/bin/semodule -s refpolicy-git -i /usr/share/selinux/refpolicy-git/*.pp
   echo ">>> Relabeling the filesystem may be needed."
   echo ">>> This can be done with: /usr/bin/restorecon -rF /"
 }
