@@ -5,8 +5,8 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-git"
-pkgver=1.0.10.beta2.r59.g97b1f2fb5
-pkgrel=2
+pkgver=1.0.12.beta0.r9.g724cf61f1
+pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
@@ -37,7 +37,7 @@ build() {
 }
 package() {
   install -d "${pkgdir}/opt/${_pkgname}"
-  cp -r --preserve=mode desktop/dist/GitHub\ Desktop-linux-x64/* "${pkgdir}/opt/${_pkgname}/"
+  cp -r --preserve=mode desktop/dist/desktop-linux-x64/* "${pkgdir}/opt/${_pkgname}/"
   printf '#!/bin/sh\n\n/opt/github-desktop/GitHub\ Desktop "$@"\n' | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/github-desktop"
   install -D "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -D "desktop/app/static/logos/1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
