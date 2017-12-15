@@ -1,6 +1,6 @@
 pkgbase = chromium-vaapi
 	pkgdesc = Chromium compiled with VA-API support for Intel Graphics
-	pkgver = 63.0.3239.84
+	pkgver = 63.0.3239.108
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = chromium.install
@@ -48,9 +48,9 @@ pkgbase = chromium-vaapi
 	optdepends = libva-intel-driver: Needed to support VA-API for Intel graphics cards
 	provides = chromium
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-63.0.3239.84.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-63.0.3239.108.tar.xz
 	source = chromium-launcher-5.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v5.tar.gz
-	source = chromium-63.0.3239.84.txt::https://chromium.googlesource.com/chromium/src.git/+/63.0.3239.84?format=TEXT
+	source = chromium-63.0.3239.108.txt::https://chromium.googlesource.com/chromium/src.git/+/63.0.3239.108?format=TEXT
 	source = chromium.desktop
 	source = chromium-exclude_unwind_tables.patch
 	source = chromium-clang-r1.patch
@@ -58,9 +58,9 @@ pkgbase = chromium-vaapi
 	source = chromium-widevine.patch
 	source = chromium-vaapi-r15.patch
 	source = chromium-libva-r2.patch
-	sha256sums = 6de2754dfc333675ae6a67ae13c95666009b35c84f847b058edbf312e42fa3af
+	sha256sums = 47d80798194da78bdd519b7ce012425b13cf89d6eb287e22a34342a245c31a2b
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
-	sha256sums = 782a512b8bcf4aa6e58036cc3454d037d0eea69f27d5b673902d494c3fb5b20d
+	sha256sums = 6da2cc8e4ae13547763f946c331b2f819fbb8af01681b8b90564a95f8a423e58
 	sha256sums = 028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9
 	sha256sums = e53dc6f259acd39df13874f8a0f440528fae764b859dd71447991a5b1fac7c9c
 	sha256sums = ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6
