@@ -1,12 +1,12 @@
-# Maintainter: Ian MacKay <immackay0@gmail.com>
+# Maintainer: Ian MacKay <immackay0@gmail.com>
 # Prior Maintainer: Mikel Pintado <mikelaitornube2010@gmail.com>
 # Contributor: Jiawen Geng
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}"
-pkgver=1.0.10_beta3
+pkgver=1.0.12_beta0
 gitname="release-${pkgver//_/-}"
-pkgrel=8
+pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
@@ -32,7 +32,7 @@ build() {
 }
 package() {
   install -d "${pkgdir}/opt/${_pkgname}"
-  cp -r --preserve=mode desktop/dist/GitHub\ Desktop-linux-x64/* "${pkgdir}/opt/${_pkgname}/"
+  cp -r --preserve=mode desktop/dist/desktop-linux-x64/* "${pkgdir}/opt/${_pkgname}/"
   printf '#!/bin/sh\n\nLD_PRELOAD=libcurl.so.3 /opt/github-desktop/GitHub\ Desktop "$@"\n' | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/github-desktop"
   install -D "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -D "desktop/app/static/logos/1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
