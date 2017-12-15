@@ -1,12 +1,12 @@
 pkgbase = bubbleswm-git
 	pkgdesc = bubbles is opinionated, tiny, bloat-less (=> fast) floating window manager for X.
-	pkgver = 8984443
+	pkgver = r197.a0f45ba
 	pkgrel = 1
 	url = https://github.com/svexican/bubbleswm
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = libconfig
+	makedepends = autoconf
 	depends = libx11
 	depends = libxft
 	depends = libxinerama
