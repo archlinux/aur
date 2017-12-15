@@ -8,7 +8,7 @@ setup(
     author = "Seafile Ltd.",
     author_email = "info@seafile.com",
     description = ("Seafile webdav server"),
-    license = "Apache2",
+    license = "MIT",
     url = "https://github.com/haiwen/seafdav",
     packages = find_packages(exclude=["tests.*", "tests", "wsgidav.samples"])
 )
