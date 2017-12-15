@@ -3,7 +3,7 @@
 pkgname=pi-hole-ftl
 _pkgname=FTL
 pkgver=2.12
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
@@ -17,24 +17,24 @@ source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
 	"$pkgname.service"
 	"$pkgname.conf"
 	"$pkgname.sysuser"
-	167.patch
-	172.patch)
+  db_adjustment.patch::https://github.com/pi-hole/FTL/compare/95bdd62777347f2117070ce8060b2ca1cc3072c0...8ab56e58f29fc3e5263ab51b80534154832ffbd6.patch
+  )
 md5sums=('97b328deae11133d489db76006ecd0a6'
          'a10e77e81c900819dfe78e1484e1e226'
          '0f65203b2585fb83e02826091d220386'
          '2d6ae93eea48a09ce5bc5bf62e081dd4'
          '68e78907dc2a0c89421d02377e76d353'
-         '2f328c04db7e096bf3308a7cb7115798'
-         '2aa307ca6d7145156541d9bed6003fdf')
+         'dabe06956efdacf23a45884d00a48f54')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
 
-  # pull #172 - Make DB interval adjustable
-  # pull #167 - Make long-term database location adjustable
   cd "$srcdir"/"$_pkgname"-"$pkgver"
-  patch -p1 -i "$srcdir"/172.patch
-  patch -p1 -i "$srcdir"/167.patch
+
+  # all commits around PR#172 PR#167
+  # see https://github.com/pi-hole/FTL/pull/172#issuecomment-351853956
+  
+  patch -Np1 -i "$srcdir"/db_adjustment.patch
   cd "$srcdir"
 
   # git descriptions setup
