@@ -2,7 +2,7 @@
 
 pkgname='responder'
 pkgver=2.3.3.9
-pkgrel=3
+pkgrel=1
 pkgdesc='A LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication'
 arch=('any')
 depends=('python2')
