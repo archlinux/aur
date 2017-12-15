@@ -2,16 +2,16 @@
 # PACKAGE SHOULD BE BUILT FROM SOURCE UNDER THIS NAME
 # Maintainer: Youngbin Han <sukso96100@gmail.com>
 # Contributor: blainester <theblainestory@gmail.com>
-# Contributor: nycko <email address unknown>
+# Contributor: nycko123 <email address unknown>
 pkgname=micro
 pkgver=1.3.3
 pkgrel=4
-pkgdesc="This package is deprecated. Please use micro-bin instead."
+pkgdesc="This package is deprecated."
 #arch=('')
 url="https://github.com/zyedidia/micro"
 license=('MIT')
 #optdepends=('xclip: Required for copying/pasting text')
-#conflicts=("micro-git")
+#conflicts=('micro-git' 'micro-bin' 'micro-nightly-bin')
 
 #source_x86_64=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux64.tar.gz")
 #source_i686=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux32.tar.gz")
@@ -21,8 +21,7 @@ license=('MIT')
 
 #package(){
  #install -Dm755 "${srcdir}/${pkgname}-${pkgver}/micro" "${pkgdir}/usr/bin/micro"
- #install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
- #echo "This package is deprecated. Please use micro-bin instead"
+ #install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 #}
 echo "-------------------------------------------------"
 echo "********** This package is deprecated. **********"
