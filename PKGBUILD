@@ -1,3 +1,5 @@
+# Maintainer: Philipp Claßen <philipp.classen@posteo.de>
+#
 # Concerning the _pkgver_base HACK (copied from gcc-git AUR):
 #
 #    * _pkgver_base is hard coded at the moment to 6.0.0; can't parse from source
@@ -8,7 +10,7 @@
 
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git')
-pkgver=8.0.0.r153878.495cd7fe2dc
+pkgver=8.0.0.r158636.6b74e46fb96
 _pkgver_base=8.0.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
@@ -144,15 +146,12 @@ package_gcc-multilib-git()
         make -C gcc DESTDIR=${pkgdir} install-mkheaders
         make -C lto-plugin DESTDIR=${pkgdir} install
 
-        make -C $_CHOST/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
-        install-nodist_cilkincludeHEADERS
         make -C $_CHOST/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
         install-nodist_libsubincludeHEADERS
         make -C $_CHOST/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
         make -C $_CHOST/libquadmath DESTDIR=${pkgdir} install-nodist_libsubincludeHEADERS
         make -C $_CHOST/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
         make -C $_CHOST/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-        make -C $_CHOST/32/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
         make -C $_CHOST/32/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
         make -C $_CHOST/32/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
         make -C $_CHOST/32/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
@@ -227,7 +226,7 @@ package_gcc-libs-multilib-git()
         make -C $_CHOST/libgcc DESTDIR=${pkgdir} install-shared
         [ -f ${pkgdir}/${_libdir}/libgcc_eh.a ] && rm ${pkgdir}/${_libdir}/libgcc_eh.a
 
-        for lib in libatomic libcilkrts libgfortran libgomp \
+        for lib in libatomic libgfortran libgomp \
         libitm libquadmath libsanitizer/{a,l,ub}san libstdc++-v3/src libvtv; do
                 [ -d $_CHOST/$lib ] && make -C $_CHOST/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
         done
@@ -264,7 +263,7 @@ package_lib32-gcc-libs-git()
         make -C $_CHOST/32/libgcc DESTDIR=${pkgdir} install-shared
         [ -f ${pkgdir}/${_libdir}/32/libgcc_eh.a ] && rm ${pkgdir}/${_libdir}/32/libgcc_eh.a
 
-        for lib in libatomic libcilkrts libgfortran libgomp libitm libquadmath \
+        for lib in libatomic libgfortran libgomp libitm libquadmath \
         libsanitizer/{a,l,ub}san libstdc++-v3/src libvtv; do
                 [ -d $_CHOST/32/$lib ] && make -C $_CHOST/32/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
         done
