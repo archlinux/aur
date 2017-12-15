@@ -1,14 +1,14 @@
 # Maintainer: Adrià Arrufat <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.18.0
+pkgver=2.19.3
 pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
 url="http://webkitgtk.org/"
 license=('custom')
 depends=(libxt libxslt enchant geoclue2 gst-plugins-base-libs
-	 libsecret libwebp harfbuzz-icu gtk3 libnotify hyphen)
+	 libsecret libwebp harfbuzz-icu gtk3 libnotify hyphen woff2)
 makedepends=(gtk2 gperf gobject-introspection ruby gtk-doc cmake python python2 ninja)
 optdepends=('gtk2: Netscape plugin support'
             'gst-plugins-base: free media decoding'
@@ -19,7 +19,7 @@ provides=(webkit2gtk)
 options=('!emptydirs')
 
 source=(http://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz)
-sha1sums=('e4d6cc7cff8729aa5ae6c17e10ed5ddf31048983')
+sha1sums=('bc9128bc6ea6a52b132696990b1b7f6d125c4ae1')
 
 prepare() {
   [ -d build ] && rm -rf build
