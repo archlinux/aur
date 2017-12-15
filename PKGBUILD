@@ -10,9 +10,9 @@ makedepends=('git' 'gcc' 'make')
 source=("http://www.landoleet.org/${pkgname}${pkgver//.}_linux_x86_64.tar.xz"
 	"git+http://www-dev.cockos.com/wdl/WDL.git"
 	'https://stash.reaper.fm/30638/reaper-desktop-support.zip')
-md5sums=('2e5f5cd5220984cd7ad4aa4bf6a4b61f'
-         'SKIP'
-         'f2a03f018f87e2ea11f358e32d6c2f79')
+sha256sums=('1bba30413e0c1c5e85a525911085749fafcfe8e7308e25b5f4e7c0016b0f103c'
+            'SKIP'
+            'c16c8d8d66502852f4948d0c2d3f48f7fd17e598d1f14b05cec54e6cfd8c01b7')
 
 build() {
   cd "${srcdir}/WDL/WDL/swell"
