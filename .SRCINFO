@@ -1,7 +1,7 @@
 pkgbase = qtspell
 	pkgdesc = Spell checking for Qt text widgets
-	pkgver = 0.8.2
-	pkgrel = 4
+	pkgver = 0.8.4
+	pkgrel = 1
 	url = https://github.com/manisandro/qtspell
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qtspell
 	depends = enchant
 	depends = iso-codes
 	depends = qt5-tools
-	source = git+https://github.com/manisandro/qtspell.git#tag=0.8.2
+	source = git+https://github.com/manisandro/qtspell.git#tag=0.8.4
 	sha256sums = SKIP
 
 pkgname = qtspell

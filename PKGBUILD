@@ -2,8 +2,8 @@
 # Contributor: Tristelune <tristelune@archlinux.info>
 
 pkgname=qtspell
-pkgver=0.8.2
-pkgrel=4
+pkgver=0.8.4
+pkgrel=1
 pkgdesc="Spell checking for Qt text widgets"
 arch=('i686' 'x86_64')
 url="https://github.com/manisandro/qtspell"
