@@ -1,6 +1,6 @@
 pkgbase = adapta-kde-git
 	pkgdesc = Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)
-	pkgver = r113.91fc923
+	pkgver = r116.7ac12f6
 	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/adapta-kde
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = adapta-kde-git
 	optdepends = yakuake: For the Yakuake skin
 	optdepends = adapta-gtk-theme: Matching GTK theme
 	conflicts = adapta-kde
+	conflicts = kvantum-theme-adapta
 	conflicts = adapta-aurorae-theme-git
 	source = git+https://github.com/PapirusDevelopmentTeam/adapta-kde.git
 	sha256sums = SKIP
