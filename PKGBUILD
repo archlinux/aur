@@ -96,7 +96,11 @@ _find_pkgpath_from_input() {
     read -rp "Please provide the path to the directory containing ${_gamepkg} or leave blank to download it using your Factorio credentials: " pkgpath
     [[ -z $pkgpath ]] && break
 
-    # also accept a full path to the file if it has the good name
+    # perform tilde expansion
+    pkgpath="${pkgpath/#"~/"/$HOME/}"
+    [[ $pkgpath = "~" ]] && pkgpath="$HOME"
+
+    # also accept a full path to the file if it has the right name
     if [[ -f $pkgpath && ${pkgpath##*/} = ${_gamepkg} ]]; then
       pkgpath=${pkgpath%/*}
     fi
