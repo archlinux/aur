@@ -2,13 +2,13 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.26.0+20+g068b93e9e
+pkgver=3.27.3+5+g07ecaf9e9
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
 url="http://www.gnome.org/projects/epiphany/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=(webkit2gtk gcr gnome-desktop libhttpseverywhere libdazzle-git)
+depends=(webkit2gtk gcr gnome-desktop libhttpseverywhere libdazzle)
 makedepends=(meson docbook-xml startup-notification lsb-release
              gobject-introspection yelp-tools autoconf-archive appstream-glib git)
 groups=(gnome)
