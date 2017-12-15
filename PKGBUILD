@@ -8,12 +8,12 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.18.1
+pkgver=1.19.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
 license=('MIT')
-makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2' 'git')
+makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2' 'git' 'yarn')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
          'alsa-lib')
 conflicts=('vscode-oss')
@@ -54,43 +54,17 @@ prepare() {
 
     if (( VSCODE_NONFREE )); then
         patch -p1 -i "${srcdir}/product_json.patch"
-        _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
+        local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
+        local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
         sed -e "s/@COMMIT@/${_commit}/" -e "s/@DATE@/${_datestamp}/" \
             -i product.json
     fi
 }
 
-# npm.sh wrapper puts things in the user's home directory...
-# To avoid that, we perform its environment setup manually instead
-npm_wrap() {
-  (
-    ROOT="${srcdir}/vscode"
-    ELECTRON_VERSION=$(
-        cat "$ROOT"/package.json |
-        grep electronVersion |
-        sed -e 's/[[:space:]]*"electronVersion":[[:space:]]*"\([0-9.]*\)"\(,\)*/\1/'
-    )
-
-    ELECTRON_GYP_HOME="${srcdir}/electron-gyp"
-    mkdir -p $ELECTRON_GYP_HOME
-
-    npm_config_disturl=https://atom.io/download/electron \
-    npm_config_target=$ELECTRON_VERSION \
-    npm_config_runtime=electron \
-    HOME=$ELECTRON_GYP_HOME \
-    npm $*
-  )
-}
-
 build() {
     cd "${srcdir}/vscode"
 
-    # The provided shrinkwrap file doesn't work correctly with npm 5.x
-    # Therefore, we install an older version and use that for the build
-    ( cd "${srcdir}" && /usr/bin/npm install 'npm@4.6.1' )
-    PATH="${srcdir}/node_modules/.bin":$PATH
-
-    npm_wrap install --arch=${_vscode_arch}
+    yarn install --arch=${_vscode_arch}
 
     # The default memory limit may be too low for current versions of node
     # to successfully build vscode.  Uncomment this to set it to 2GB, or
