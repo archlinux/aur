@@ -6,7 +6,7 @@
 pkgname=micro
 pkgver=1.3.3
 pkgrel=4
-pkgdesc="This package is deprecated."
+pkgdesc="This package is deprecated"
 #arch=('')
 url="https://github.com/zyedidia/micro"
 license=('MIT')
