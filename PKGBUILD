@@ -2,7 +2,7 @@
 
 pkgname="jackmidi2osc-git"
 pkgver=0.2.r2.gedc653c
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Github version of ulam compiler and MFM simulator"
 arch=('any')
@@ -13,6 +13,7 @@ depends=('liblo'
 	'jack')
 makedepends=('make'
 	'gcc'
+	'perl'
 	'git')
 checkdepends=()
 optdepends=()
@@ -29,6 +30,10 @@ md5sums=('SKIP')
 pkgver(){
 	cd jackmidi2osc
 	git describe --tags| sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare(){
+	perl -0777 -i -pe 's/(\/usr)\/local/$1/' jackmidi2osc/Makefile
 }
 
 build() {
