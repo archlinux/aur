@@ -5,7 +5,7 @@
 pkgbase=python-mechanicalsoup
 pkgname=(python-mechanicalsoup python2-mechanicalsoup)
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python library for automating interaction with websites"
 arch=('any')
 url="https://github.com/hickford/MechanicalSoup"
@@ -20,14 +20,14 @@ check() {
 }
 
 package_python2-mechanicalsoup() {
-  depends=('python2' 'python2-beautifulsoup4' 'python2-requests' 'python2-six')
+  depends=('python2' 'python2-beautifulsoup4' 'python2-requests' 'python2-six' 'python2-lxml')
   cd $srcdir/MechanicalSoup-$pkgver 
 
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python-mechanicalsoup() {
-  depends=('python' 'python-beautifulsoup4' 'python-requests' 'python-six')
+  depends=('python' 'python-beautifulsoup4' 'python-requests' 'python-six' 'python-lxml')
   cd $srcdir/MechanicalSoup-$pkgver 
 
   python setup.py install --root="$pkgdir/" --optimize=1
