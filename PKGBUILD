@@ -1,7 +1,7 @@
 # Maintainer: Yunhui Fu <yhfudev@gmail.com>
 
 pkgname=tulip
-pkgver=4.8.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Tulip is an information visualization framework dedicated to the analysis and visualization of relational data.'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
@@ -24,8 +24,8 @@ source=(
     "https://sourceforge.net/projects/auber/files/tulip/tulip-${pkgver}/tulip-${pkgver}_src.tar.gz"
     #"tulip-svn::svn+http://svn.code.sf.net/p/auber/code/"
     )
-md5sums=('ec62ef69cdc0217faac61e3e0e6ae982')
-sha1sums=('7cdd8e900f81f9027daa08c79ce9322fe7f91fbd')
+md5sums=('f29fc38efe91e2402adbffea695bd794')
+sha1sums=('9d615400cd9b854547698cb5efb231c7dbef7e63')
 
 pkgver_git() {
     cd "${srcdir}/${pkgname}"
