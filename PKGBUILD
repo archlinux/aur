@@ -1,6 +1,6 @@
 pkgname=wp-cli
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
 arch=('any')
@@ -43,7 +43,13 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./vendor/bin/phpunit
+  if [[ -z $(hash phpunit > /dev/null 2>&1 || echo $?) ]]; then
+    echo "Using system-level phpunit..."
+    phpunit
+  else
+    echo "Using included phpunit..."
+    ./vendor/bin/phpunit
+  fi
   php ./wp-cli.phar --version
 }
 
