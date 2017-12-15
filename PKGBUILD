@@ -1,3 +1,5 @@
+# THIS IS AN OLD PKBUILD OF DEPRECATED PACKAGE, FEEL FREE TO CHANGE IT IF YOU"D LIKE TO MAINTAIN IT
+# PACKAGE SHOULD BE BUILT FROM SOURCE UNDER THIS NAME
 # Maintainer: Youngbin Han <sukso96100@gmail.com>
 # Contributor: blainester <theblainestory@gmail.com>
 # Contributor: nycko <email address unknown>
