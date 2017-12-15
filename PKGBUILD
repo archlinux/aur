@@ -13,9 +13,7 @@ makedepends=('git' 'dub' 'ldc' 'liblphobos' 'make')
 source=(
     "git+https://github.com/eBay/tsv-utils-dlang.git#tag=v$pkgver"
 )
-sha1sums=(
-    'SKIP'
-)
+sha1sums=('SKIP')
 
 bin_files=(
     'csv2tsv' 'number-lines' 'tsv-filter' 'tsv-pretty' 'tsv-select' 'tsv-uniq'
@@ -26,8 +24,6 @@ build ()
 {
     cd $srcdir/$_pkgname
     make DCOMPILER=ldc2
-    dub upgrade
-    dub build
 }
 
 package ()
