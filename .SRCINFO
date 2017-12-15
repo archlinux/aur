@@ -1,24 +1,17 @@
 pkgbase = frp
 	pkgdesc = A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/fatedier/frp
 	install = frp.install
-	arch = i686
 	arch = x86_64
 	license = Apache
 	source = frps.service
 	source = frpc.service
-	source = frps@.service
-	source = frpc@.service
-	sha256sums = a83bf9e3bec4cc134391c49fccb32f517a2e90307c7217236513c7408f9b1b8f
-	sha256sums = 422d9e7c79257bfdcf19133e9f37d74bf0478d81f039bce18f63935505a18963
-	sha256sums = 34432236e6ef21108700c017604ebb0f6c20f463c02054060912ea061ca31d8d
-	sha256sums = d7267378516cc782e08794bc3ec73fc719620b0c2c451224b366e4985335bccd
-	source_i686 = https://github.com/fatedier/frp/releases/download/v0.14.0/frp_0.14.0_linux_386.tar.gz
-	sha256sums_i686 = 8bf5236409081d862b6a0da265e8655bd02635411f6fc918ad29022e5d7926b4
-	source_x86_64 = https://github.com/fatedier/frp/releases/download/v0.14.0/frp_0.14.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 58613aa1474610ec53812bf7efa5f69dfcd3dc8d973bd666c5c828240805436a
+	source = https://github.com/fatedier/frp/releases/download/v0.14.1/frp_0.14.1_linux_amd64.tar.gz
+	md5sums = 6f9c6681357f3f984983457151d7f0c5
+	md5sums = d704eacd9f769de32c8ab2c875d9f34a
+	md5sums = e2b44adbe40d24ef44514013d7463410
 
 pkgname = frp
 
