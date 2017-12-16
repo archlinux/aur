@@ -1,7 +1,7 @@
 pkgbase = python-expense_manager
 	pkgdesc = A command-line expense manager and bank account logger.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/RcrdBrt/expense_manager
 	arch = any
 	license = MIT
@@ -14,6 +14,8 @@ pkgbase = python-expense_manager
 	depends = python-tabulate
 	depends = python-pysqlcipher3
 	depends = python-normality
+	depends = python-banal
+	depends = xclip
 	options = !emptydirs
 	source = https://github.com/RcrdBrt/expense_manager/archive/0.1.1.tar.gz
 	sha256sums = SKIP
