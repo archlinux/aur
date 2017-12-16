@@ -1,6 +1,6 @@
 pkgbase = leanote
 	pkgdesc = Knowledge, Blog, Sharing, Cooperation.
-	pkgver = 2.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://leanote.com/
 	arch = i686
@@ -13,15 +13,15 @@ pkgbase = leanote
 	depends = gconf
 	provides = leanote
 	conflicts = leanote
-	noextract = leanote-2.5.zip
+	noextract = leanote-2.6.zip
 	source = leanote.desktop
 	source = leanote
 	sha256sums = 8dab30fe0835432e44b5a3a1d46aebde8716a2a47ba4031cbe2a01560987aa83
 	sha256sums = 57155a0e423bc98f0e83acb35f03ace06b3de54bdc64b2373128671c801727b1
-	source_i686 = leanote-2.5.zip::https://sourceforge.net/projects/leanote-desktop-app/files/2.5/leanote-desktop-linux-ia32-v2.5.zip/download
-	sha256sums_i686 = ed68dc2d91b77c1d43ccc452b43a90dbb803b38ad8ddd8bebbccc22e8e0061b2
-	source_x86_64 = leanote-2.5.zip::https://sourceforge.net/projects/leanote-desktop-app/files/2.5/leanote-desktop-linux-x64-v2.5.zip/download
-	sha256sums_x86_64 = c27c7075c270f1833b02e33a2680f2ee7027be9169297055d1953771384a7b2b
+	source_i686 = leanote-2.6.zip::https://sourceforge.net/projects/leanote-desktop-app/files/2.6/leanote-desktop-linux-ia32-v2.6.zip/download
+	sha256sums_i686 = decef71d12f841e88c8910af95ba7d65652fc4a960a9d4d61dae7cabf13df786
+	source_x86_64 = leanote-2.6.zip::https://sourceforge.net/projects/leanote-desktop-app/files/2.6/leanote-desktop-linux-x64-v2.6.zip/download
+	sha256sums_x86_64 = 125c167daa6d98f080ca4e436ad3debf3f90951b3839f1a0f934b188b755e105
 
 pkgname = leanote
 
