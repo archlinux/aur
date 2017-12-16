@@ -9,7 +9,10 @@ pkgname='lucas-simpsons-hit-and-run-mod-launcher'
 pkgver='1.16.2'
 pkgrel='1'
 pkgdesc="Mod launcher for The Simpsons: Hit & Run."
-arch=('any')
+arch=(
+    'x86_64'
+    'i686'
+)
 url="https://donutteam.com/"
 # The mod launcher uses the ZLIB and Lua licenses, but it doesn't make sense to redownload them for
 # this because said licenses should be managed by Linux packages, and Windows licenses left up to
