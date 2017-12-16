@@ -11,8 +11,8 @@ url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
 depends=('emacs' 'git' 'emacs-dash>=2.13.0' 'emacs-with-editor-git>=2.6.0')
 makedepends=('git' 'ed')
-provides=('emacs-magit')
-conflicts=('emacs-magit')
+provides=('emacs-magit' 'emacs-magit-popup')
+conflicts=('emacs-magit-git' 'emacs-magit-popup')
 install="${pkgname}.install"
 source=("git+https://github.com/${_github_org}/${_github_repo}.git#tag=$pkgver")
 md5sums=('SKIP')
