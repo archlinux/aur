@@ -1,7 +1,7 @@
 pkgbase = julia-git
 	pkgdesc = High-level, high-performance, dynamic programming language
 	pkgver = 0.7.0.DEV.r39764.ge89a2b8123
-	pkgrel = 2
+	pkgrel = 3
 	url = http://julialang.org
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = julia-git
 	source = git://github.com/JuliaLang/julia.git#branch=master
 	source = Make.user
 	md5sums = SKIP
-	md5sums = 88c5523c984fe3dcd03a746c882a691c
+	md5sums = 589cb7c38c49ab46682f371fcb8fcb82
 
 pkgname = julia-git
 	depends = arpack

@@ -6,7 +6,7 @@ _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
 pkgver=0.7.0.DEV.r39764.ge89a2b8123
-pkgrel=2
+pkgrel=3
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
 url="http://julialang.org"
@@ -22,7 +22,7 @@ options=('!emptydirs')
 source=(git://github.com/JuliaLang/julia.git#branch=master
         Make.user)
 md5sums=('SKIP'
-         '88c5523c984fe3dcd03a746c882a691c')
+         '589cb7c38c49ab46682f371fcb8fcb82')
 
 
 pkgver() {
