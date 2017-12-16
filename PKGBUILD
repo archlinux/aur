@@ -35,4 +35,7 @@ package() {
 
   install -D -m644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    grep -FRlZ "$startdir" "$pkgdir" | \
+    xargs -0 -- sed -i "s|$startdir|/tmp/build|g"
 }
