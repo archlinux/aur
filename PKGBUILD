@@ -6,8 +6,8 @@
 
 pkgbase=linux-xanmod-lts
 _srcname=linux-4.9
-pkgver=4.9.68
-xanmod=73
+pkgver=4.9.69
+xanmod=74
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -26,7 +26,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         change-default-console-loglevel.patch)
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${arch_config_trunk}")
 
-sha256sums=('9d7334def6aa5b500fcbdbfc35fdc233c4d3efc58e9abb4b0101e5a23aa61716'
+sha256sums=('16ba6b59e207c08a0fa8bd0c3f1315f5749b253f9fe82fe8ab64f02a2af5ffe7'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1e8264f69abb56b25009636693c3e6cf564a90379704a62cae2b3681cd6f66f1'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
