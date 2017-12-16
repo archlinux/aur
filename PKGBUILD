@@ -1,7 +1,7 @@
 pkgname='lout-dejavu-git'
 pkgdesc="AFM files and koi8-r mapping for DejaVu TrueType fonts(for Lout)"
 pkgrel=1
-pkgver=r2.b40e7e2
+pkgver=b40e7e2
 arch=('any')
 license=('GPL3')
 depends=('lout' 'ttf-dejavu')
@@ -12,11 +12,7 @@ sha256sums=('SKIP')
 
 pkgver () {
   cd "$pkgname"
-    (
-        set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  git rev-parse --short HEAD
 }
 
 package () {
