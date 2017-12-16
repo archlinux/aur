@@ -1,6 +1,6 @@
 # Maintainer: Michael Yeatts <mwyeatts at gmail dot com>
 
-pkgname=zzzpython-keepkey
+pkgname=python-keepkey
 pkgver=4.0.2
 pkgrel=1
 pkgdesc="Python library for communicating with KeepKey Hardware Wallet"
@@ -19,7 +19,6 @@ provides=('keepkeyctl' 'python-keepkey')
 conflicts=('keepkeyctl')
 
 package() {
-    ls
   cd "$srcdir/keepkey-$pkgver"
 
   msg2 'Installing...'
