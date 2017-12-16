@@ -29,6 +29,11 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+check() {
+    cd "${srcdir}/${pkgname}"
+    python setup.py test
+}
+
 build() {
     cd "${srcdir}/${pkgname}"
     python setup.py build
