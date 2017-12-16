@@ -2,7 +2,7 @@
 
 pkgname=bolt
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Thunderbolt 3 security system daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/gicmo/bolt"
@@ -33,4 +33,5 @@ package() {
   DESTDIR="${pkgdir}" ninja -C ../build install
 # Fixup mode to match polkit
   install -d -o root -g 102 -m 750 "${pkgdir}/usr/share/polkit-1/rules.d"
+  install -d "${pkgdir}"/var/lib/thunderbolt
 }
