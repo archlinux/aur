@@ -6,13 +6,13 @@
 pkgname=lib32-twolame
 _pkgname=twolame
 pkgver=0.3.13
-pkgrel=2
+pkgrel=3
 pkgdesc="An optimized MPEG Audio Layer 2 (MP2) encoder (32-bit)"
 arch=('i686' 'x86_64')
 url="http://www.twolame.org/"
 license=('LGPL')
 depends=('libsndfile')
-source=("http://heanet.dl.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/njh/twolame/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('4113d8aa80194459b45b83d4dbde8ddb')
 
 build() {
