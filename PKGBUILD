@@ -1,7 +1,7 @@
 # Mantainer: MCMic <come@chilliet.eu>
 
 pkgname=wyrmsun
-pkgver=2.3.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Real-time strategy game based on history, mythology and fiction"
 arch=('i686' 'x86_64')
@@ -12,9 +12,9 @@ makedepends=('cmake' 'gendesk')
 source=("wyrmsun-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v${pkgver}.tar.gz" 
         "wyrmgus-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v${pkgver}.tar.gz"
         "oaml-1.0.tar.gz::https://github.com/marcelofg55/oaml/archive/v1.0.tar.gz")
-md5sums=('cf01ded12043350d599dfff8c38ec8d7'
-         '478e41d0432ca94258f4df03bf3a041e'
-         '97019b32af9a809d812a457a97ed1344')
+md5sums=('d30b9698a47e8c62a1ba7fb54568a6ab'
+         '917f6ed1fa4c4c1b918f50c6ef8c30d3'
+	 '97019b32af9a809d812a457a97ed1344')
 _name='Wyrmsun'
 _categories='Game;StrategyGame'
 
