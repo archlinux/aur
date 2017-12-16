@@ -1,0 +1,13 @@
+pkgbase = ethabi
+	pkgdesc = Ethereum ABI tools
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/paritytech/ethabi
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	source = https://github.com/paritytech/ethabi/archive/v4.1.0.tar.gz
+	sha512sums = 19d4d06953181cff1fdba6269ec7f80aa235132457daab7e81bb9c8f684bafec3d0f2ad87eb68e8c52bf21637b0dde2296fbbf9f861a6adf45c9725e445b31e2
+
+pkgname = ethabi
+
