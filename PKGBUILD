@@ -3,7 +3,7 @@
 
 pkgname=openbazaar-bin
 _name=${pkgname%-bin}
-pkgver=2.0.17
+pkgver=2.0.20
 pkgrel=1
 pkgdesc="OpenBazaar Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries"
 arch=('i686' 'x86_64')
@@ -15,7 +15,6 @@ conflicts=('openbazaar')
 install="$pkgname.install"
 source_i686=("https://github.com/OpenBazaar/openbazaar-desktop/releases/download/v${pkgver}/openbazaar2_${pkgver}_i386.deb")
 source_x86_64=("https://github.com/OpenBazaar/openbazaar-desktop/releases/download/v${pkgver}/openbazaar2_${pkgver}_amd64.deb")
-source=(icons.patch)
 
 case "$CARCH" in
   x86_64) export GOARCH=amd64 ;;
@@ -38,12 +37,10 @@ package() {
     cd $pkgdir/usr/lib/openbazaar2/resources/app
 
     msg2 "Final Clean..."
-    patch -Np1 -i $srcdir/icons.patch
     
     cd $pkgdir/usr/lib/openbazaar2/resources/app/temp/
     find . -type f ! -name "${_name}-go-linux-$GOARCH" -exec rm -f {} \;
 }
 
-md5sums=('02853da14a649da6ee5632eb38d7e02f')
-md5sums_i686=('ab5b16b64ebc704009a6da93b56cb8fb')
-md5sums_x86_64=('98c282b376d2c1c008dd1e59939ff9c2')
+md5sums_i686=('802c072c3980458cfa0f351e9bc1d225')
+md5sums_x86_64=('9b97c4571c472f5db46785049f524989')
