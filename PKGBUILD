@@ -16,7 +16,8 @@ optdepends=('file-roller'
             'xarchiver'
             'engrampa')
 provides=("${_pkgname}=${pkgver%\.r*}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" 'engrampa-thunar')
+replaces=('engrampa-thunar')
 source=("${_pkgname}::git://git.xfce.org/thunar-plugins/thunar-archive-plugin")
 sha256sums=('SKIP')
             
