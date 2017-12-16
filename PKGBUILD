@@ -24,6 +24,7 @@ package() {
   export NODE_ENV=production
 
   npm install -g discord-irc --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+  echo "/etc/discord-irc" > "$pkgdir/usr/lib/node_modules/$_npmname/.discord-irc_home"
 
   install -dm700 "$_etc"
   install -Dm600 \
