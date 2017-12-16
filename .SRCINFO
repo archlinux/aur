@@ -1,7 +1,7 @@
 pkgbase = gog-jazz-jackrabbit-2-secret-files
 	pkgdesc = Jazz Jackrabbit 2 Collection. GOG version (Wine).
 	pkgver = 1.24hf_16886
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gog.com/game/jazz_jackrabbit_2_collection
 	arch = x86_64
 	license = custom

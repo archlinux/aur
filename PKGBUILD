@@ -6,7 +6,7 @@ gogver=1.24hf
 gogrel=16886
 
 pkgver=${gogver}_${gogrel}
-pkgrel=2
+pkgrel=3
 pkgbase=${pkgname}
 pkgdesc='Jazz Jackrabbit 2 Collection. GOG version (Wine).'
 arch=('x86_64')
@@ -44,7 +44,7 @@ package() {
     _gog_id="$( innoextract -s --gog-game-id "setup_jazz_jackrabbit_2_${gogver}_(${gogrel}).exe")"
 
     msg2 'Packaging game icon'
-    install -Dm644 -T "${srcdir}/app/goggame-"${_gog_id?}".ico" "${pkgdir}/usr/share/pixmaps/${pkgname}.ico"
+    install -Dm644 -T "${srcdir}/app/goggame-"${_gog_id?}".ico" "${pkgdir}/usr/share/pixmaps/${pkgname#gog-}.ico"
     
     msg2 'Packaging license'
     install -Dm644 "${srcdir}/app/License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
