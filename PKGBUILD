@@ -15,10 +15,8 @@ sha256sums=('cf95074d91dcc39a718b1adf755ed0d8865744416f3adadda2e3c0b1675f4b3b')
 prepare() {
   cd "$srcdir/drawio-$pkgver"
 
-  # disable logger and updater
+  # disable logger
   sed -e "/require('electron-log')/d" \
-  -e '/^autoUpdater.* = .*$/d' \
-  -e "s/require('electron-updater').autoUpdater/{on: () => {}, checkForUpdates: () => {}}/" \
   -i 'war/electron.js'
 }
 
