@@ -1,7 +1,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=siren
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A text-based audio player."
 arch=(i686 x86_64)
@@ -15,9 +15,9 @@ optdepends=('libao: audio output support'
             'libmad: mpeg decoder support'
             'wavpack: wav decoder support')
 source=("http://www.kariliq.nl/siren/dist/$pkgname-$pkgver.tar.gz")
-md5sums=('cd13e688064c5ac533bda682c1f84731')
-sha1sums=('6c3a304e5e9a4816aa2872669335109d018e70f2')
-sha256sums=('5ac944e5d2737942afa1270bf66d72d631b896d37b4c084bdd3a766a5e735a14')
+md5sums=('5820f32955ee97a70866e1832f978c25')
+sha1sums=('86db8ee690899474663fca1a590217b89571853a')
+sha256sums=('9be67c83c9ef127127ce4645a5919bd3f963e47d3c12492bc8fbc7c1d20b3d3c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
