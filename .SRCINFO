@@ -1,25 +1,25 @@
 pkgbase = virtualbox-modules-uksm
-	pkgver = 5.2.0
+	pkgver = 5.2.2
 	pkgrel = 1
 	url = http://virtualbox.org
 	arch = x86_64
 	license = GPL
 	makedepends = linux-uksm-headers
-	makedepends = virtualbox-host-dkms>=5.2.0
-	makedepends = virtualbox-guest-dkms>=5.2.0
+	makedepends = virtualbox-host-dkms>=5.2.2
+	makedepends = virtualbox-guest-dkms>=5.2.2
 	makedepends = dkms
 
 pkgname = virtualbox-host-modules-uksm
 	pkgdesc = Host kernel modules for VirtualBox running under Linux-uksm.
-	install = host.install
 	license = GPL
 	depends = linux-uksm>=4.13
 	depends = linux-uksm<4.14
+	provides = VIRTUALBOX-HOST-MODULES
 
 pkgname = virtualbox-guest-modules-uksm
 	pkgdesc = Guest kernel modules for VirtualBox running under Linux-uksm.
-	install = guest.install
 	license = GPL
 	depends = linux-uksm>=4.13
 	depends = linux-uksm<4.14
+	provides = VIRTUALBOX-GUEST-MODULES
 
