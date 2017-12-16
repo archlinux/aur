@@ -1,18 +1,18 @@
-# Maintainer: Raansu <Gero3977@gmail.com>
+# Maintainer: David Parrish <daveparrish@tutanota.com>
 
-pkgname=bitcoin-git
-_gitname=bitcoin
-pkgver=v0.13.0
+pkgname=bitcoin-gold-git
+_gitname=BTCGPU
+pkgver=0.15.0.1
 pkgrel=1
-pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
+pkgdesc="A peer-to-peer network based digital currency. This package provides bitcoin-gold-core binaries: bgoldd, bgold-qt, bgold-tx, and bgold-cli"
 arch=('any')
-url="https://bitcoin.org"
+url="https://bitcoingold.org/"
 license=('MIT')
 depends=('gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf')
 makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
-provides=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-cli')
-conflicts=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-core' 'bitcoin-core-git')
-source=('git://github.com/bitcoin/bitcoin.git')
+provides=('bgold' 'bgold-qt' 'bgoldd' 'bgold-tx' 'bgold-cli')
+#conflicts=('bgold' 'bgold-qt' 'bgoldd')
+source=('git://github.com/BTCGPU/BTCGPU.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,32 +25,31 @@ build() {
   ./autogen.sh
   ./configure --with-gui=qt5
    make -j$(nproc)
-
 }
 
 package() {
-	# install bitcoin-qt client
-	msg2 'Installing bitcoin-qt...'
-	install -Dm755 "$srcdir/$_gitname/src/qt/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
-	install -Dm644 "$srcdir/$_gitname/share/pixmaps/bitcoin128.xpm" "$pkgdir/usr/share/pixmaps/bitcoin128.xpm"
-	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/bitcoin-qt.desktop"
+	# install bgold-qt client
+	msg2 'Installing bgold-qt...'
+	install -Dm755 "$srcdir/$_gitname/src/qt/bitcoin-qt" "$pkgdir/usr/bin/bgold-qt"
+	#install -Dm644 "$srcdir/$_gitname/share/pixmaps/bitcoin128.xpm" "$pkgdir/usr/share/pixmaps/bitcoin128.xpm"
+	#desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/bitcoin-qt.desktop"
 	
-	# install bitcoin-daemon
-	msg2 'Installing bitcoin-daemon...'
-	install -Dm755 "$srcdir/$_gitname/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoind.1" "$pkgdir/usr/share/man/man1/bitcoind.1"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin.conf.5" "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
+	# install bgold-daemon
+	msg2 'Installing bgold-daemon...'
+	install -Dm755 "$srcdir/$_gitname/src/bgoldd" "$pkgdir/usr/bin/bgoldd"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/bitcoingold.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoingold.conf"
+	#install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bgold-cli.1"
+	#install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bgold-qt.1"
+	#install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoind.1" "$pkgdir/usr/share/man/man1/bgoldd.1"
+	#install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin.conf.5" "$pkgdir/usr/share/man/man5/bgold.conf.5"
 
-	# install bitcoin-cli
-	msg2 'Installing bitcoin-cli...'
-	install -Dm755 "$srcdir/$_gitname/src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
+	# install bgold-cli
+	msg2 'Installing bgold-cli...'
+	install -Dm755 "$srcdir/$_gitname/src/bgold-cli" "$pkgdir/usr/bin/bgold-cli"
 
-	# install bitcoin-tx
-	msg2 'Installing bitcoin-tx...'
-	install -Dm755 "$srcdir/$_gitname/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
+	# install bgold-tx
+	msg2 'Installing bgold-tx...'
+	install -Dm755 "$srcdir/$_gitname/src/bitcoin-tx" "$pkgdir/usr/bin/bgold-tx"
 
 	# install license
 	install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
