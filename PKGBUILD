@@ -2,9 +2,9 @@
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.18.0.121.gbd9936eb
+pkgver=3.18.0.143.gde64e9fa
 pkgrel=1
-_realver=3.18.0.121
+_realver=3.18.0.143
 pkgdesc='Visual diff and merge tool'
 arch=('any')
 url='http://meldmerge.org/'
@@ -22,7 +22,7 @@ conflicts=('meld','meld-dev')
 provides=('meld')
 install=meld.install
 options=('!emptydirs')
-source=("git+https://gitlab.gnome.org/GNOME/meld.git")
+source=("git+https://github.com/GNOME/meld.git")
 sha256sums=('SKIP')
 
 pkgver() {
