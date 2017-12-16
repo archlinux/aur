@@ -1,0 +1,12 @@
+pkgbase = ethrun
+	pkgdesc = Directly run EVM bytecode
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/dapphub/ethrun
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/dapphub/ethrun/releases/download/v0.2.4/ethrun-v0.2.4-linux.tar.gz
+	sha512sums = 52de13065393c665de857451d89f86fcf773822b1da1b26c37e4bd347cedfa83ed948d1eb08c15371100ac0ddcb9c55b54f89f45bb64cdfe7cbbaefb6af01b7e
+
+pkgname = ethrun
+
