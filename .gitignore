@@ -1,0 +1,8 @@
+/pkg/
+/src/
+
+/Dockerfile
+/dotty-*.tar.gz
+/scala-dotty-*.pkg.tar
+/scala-dotty-*-package.log
+/start.sh

@@ -16,7 +16,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/scala-dotty"
 	cp -r "$srcdir/dotty-$_pkgverWithHyphen/bin" "$pkgdir/opt/scala-dotty"
 	cp -r "$srcdir/dotty-$_pkgverWithHyphen/lib" "$pkgdir/opt/scala-dotty"
-	ln -s "$pkgdir/opt/scala-dotty/bin/dotc" "$pkgdir/usr/bin/dotc"
-	ln -s "$pkgdir/opt/scala-dotty/bin/dotd" "$pkgdir/usr/bin/dotd"
-	ln -s "$pkgdir/opt/scala-dotty/bin/dotr" "$pkgdir/usr/bin/dotr"
+	ln -s "/opt/scala-dotty/bin/dotc" "$pkgdir/usr/bin/dotc"
+	ln -s "/opt/scala-dotty/bin/dotd" "$pkgdir/usr/bin/dotd"
+	ln -s "/opt/scala-dotty/bin/dotr" "$pkgdir/usr/bin/dotr"
 }
