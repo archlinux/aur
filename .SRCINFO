@@ -1,0 +1,15 @@
+pkgbase = python-banal
+	pkgdesc = Commons of banal micro-functions for Python.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://github.com/pudo/banal
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/banal/banal-0.3.1.tar.gz
+	md5sums = f7fd8af0656f013e51c61f6799ae810f
+
+pkgname = python-banal
+	depends = python
+
