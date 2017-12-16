@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.27.0.308.g3413fe4dfd
+pkgver=v0.27.0.548.g3c4667c862
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -64,7 +64,7 @@ conflicts=('mpv')
 options=('!emptydirs')
 source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
-        'git+https://github.com/mpv-player/ffmpeg-mpv.git'
+        'git+https://github.com/ffmpeg/ffmpeg.git'
         'git+https://github.com/libass/libass.git'
         'https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/4933.patch'
         )
@@ -94,7 +94,7 @@ pkgver() {
 prepare() {
   cd mpv-build
   git clone "${srcdir}/mpv"
-  git clone "${srcdir}/ffmpeg-mpv" ffmpeg
+  git clone "${srcdir}/ffmpeg"
   git clone "${srcdir}/libass"
 
   # Set ffmpeg/libass/mpv flags
