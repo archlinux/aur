@@ -7,6 +7,7 @@ license=('GPL3')
 depends=('lout' 'ttf-dejavu')
 url="https://github.com/i-kuzmin/lout-dejavu"
 source=("${pkgname}::git+${url}")
+provides=(lout-dejavu)
 sha256sums=('SKIP')
 
 pkgver () {
