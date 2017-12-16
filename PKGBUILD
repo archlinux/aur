@@ -1,8 +1,8 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
 _oomox_ver=1.4.3
-_numix_ver=1.2.9
-_materia_ver=20171005
+_numix_ver=1.3.0
+_materia_ver=20171213
 
 pkgname=oomox
 pkgver=${_oomox_ver}_${_numix_ver}_${_materia_ver}
@@ -35,6 +35,9 @@ optdepends=(
     'breeze-icons: more fallback icons'
     'gksu: for applying Spotify theme from GUI without polkit'
 )
+options=(
+    '!strip'
+)
 provides=('oomox')
 conflicts=('oomox-git')
 source=(
@@ -49,8 +52,8 @@ source=(
     'oomox.desktop'
 )
 md5sums=('d949862f150b04ac01a7e1a8738e9501'
-         '7ae336350a6f908907d80a528bde7ba4'
-         'a557047ab75824fae30f8c4d10bd30cf'
+         'fe454b208e64db2d2d94c0166d908da9'
+         'c12b3b8813f1fe5a92525e55d68afa9e'
          'efc83d981e1fcfb41c6d439f1013efbd'
          '0d156463416bbc2260c073c15b7f2a70'
          '57cfcc4141ce6e346da7ab8bab411b14'
