@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=prettier
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="An opinionated code formatter for JavScript, ES2017, JSX, Flow, TypeScript, JSON, CSS, LESS, SCSS, GraphQL, Markdown"
 arch=(any)
@@ -20,5 +20,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('41638a0d47c1efbd1b7d5a742aaa5548eab86d70')
-sha256sums=('6d4774f6d6f02321b1958e8c78abc54ddc0c4ba251bc00936a351b26b918bcb2')
+sha1sums=('96bc2132f7a32338e6078aeb29727178c6335827')
+sha256sums=('1eaf676100c3526c68d194b09af6a941437a73aec2e829053d5cb7e7356c1c60')
