@@ -61,6 +61,8 @@ package_libxfce4ui-git() {
 package_glade-plugin-libxfce4ui-git() {
   pkgdesc='Glade GTK3 interface designer plugin for libxfce4ui'
   depends=('glade' "${_pkgname}>=${pkgver%.r*}")
+  provides=("glade-plugin-libxfce4ui=${pkgver%.r*}")
+  conflicts=('glade-plugin-libxfce4ui')
 
   cd "${_pkgname}"/glade
 
@@ -70,7 +72,9 @@ package_glade-plugin-libxfce4ui-git() {
 package_glade-gtk2-plugin-libxfce4ui-git() {
   pkgdesc='Glade GTK2 interface designer plugin for libxfce4ui'
   depends=('glade-gtk2' "${_pkgname}>=${pkgver%.r*}")
-
+  provides=("glade-gtk2-plugin-libxfce4ui=${pkgver%.r*}")
+  conflicts=('glade-gtk2-plugin-libxfce4ui')
+  
   cd "${_pkgname}"
   ./configure \
     --prefix=/usr \
