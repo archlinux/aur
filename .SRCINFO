@@ -1,0 +1,15 @@
+pkgbase = seth
+	pkgdesc = The command-line Swiss army knife for Ethereum
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = https://github.com/dapphub/seth
+	arch = any
+	license = GPL3
+	depends = curl
+	depends = ethabi
+	depends = jshon
+	source = https://github.com/dapphub/seth/archive/v0.5.11.tar.gz
+	sha512sums = ab9ad66845d66e073303a75d1ccfdfb5d0d1da20e1e8d195a8d146d0b7cd3d366f0513cc8f1e30c1477aea1e9a1cbe1e5b89a32f4131e945d53823292f4c0eb1
+
+pkgname = seth
+
