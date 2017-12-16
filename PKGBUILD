@@ -1,13 +1,13 @@
 # Maintainer: Justus Piater <Justus-dev at Piater dot name>
 pkgname=('syncevolution' 'syncevolution-http')
 pkgver=1.5.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Synchronize PIM data via various protocols"
 arch=('i686' 'x86_64')
 url="https://syncevolution.org/"
 license=('LGPL')
 depends=('evolution-data-server' 'libgnome-keyring' 'neon' 'openobex' 'python2' 'libunique')
-makedepends=('intltool' 'boost')
+makedepends=('intltool' 'boost' 'python')
 #changelog=
 source=("https://download.01.org/syncevolution/syncevolution/sources/syncevolution-$pkgver.tar.gz"
 	"$pkgname-$pkgver-libical3.patch"

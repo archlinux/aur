@@ -1,13 +1,14 @@
 pkgbase = syncevolution
 	pkgdesc = Synchronize PIM data via various protocols
 	pkgver = 1.5.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://syncevolution.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = intltool
 	makedepends = boost
+	makedepends = python
 	depends = evolution-data-server
 	depends = libgnome-keyring
 	depends = neon
