@@ -6,7 +6,7 @@ gogver=1.24hf
 gogrel=16886
 
 pkgver=${gogver}_${gogrel}
-pkgrel=1
+pkgrel=2
 pkgbase=${pkgname}
 pkgdesc='Jazz Jackrabbit 2 Collection. GOG version (Wine).'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 sha512sums=(
     'df6fc47abf24aaa1895df5f897f698b53865fdc499e2454e07b273eddc8fcdeeebe8fc2992292fb27e077da252d3d5728823ce6a2e83412c150fb8742a52116f'
-    '6ebd8a384fde18daaa6fc2ae30e61ea64ad788aa5e99fc69c24e8a14d8222981dcd2ab61da223d9c9576eca897c14ddd6e78990fdcce83119623edc4e9749f1e'
+    'b0562ec86e51da42fe8985058b66d82e215e28c64f8df8a2141eb26f738603256bd9d88475c32efd4447ff4040917309de1ebc0b6e7de341475b1a260f0be242'
     'fe00e70800986a37b2b02bb175fe6589dd1f00f216b3c5c858d669f901b12b4022eda64e5c618d99767d01b16de9c70c77c17fc7c474dd52ff98e85d5726e13c'
 )
 

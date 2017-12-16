@@ -109,7 +109,7 @@ if [ $_arg_fullscreen = "on" ]; then
     wine "${EXE}"
 else
     echo >&2 "Launching ${APPNAME} via wine (windowed)"
-    wine explorer /desktop="JJ2",$_arg_resolution "${EXE}" /Windowed
+    wine explorer /desktop="JJ2",$_arg_resolution "${EXE}" -Windowed
 fi
 
 echo >&2 "Finished"
