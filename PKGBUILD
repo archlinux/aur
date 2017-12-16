@@ -2,9 +2,9 @@
 
 pkgname=bsod
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Bsod displays the famous windows xp blue screen of death on the console"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://www.vanheusden.com/bsod/"
 license=('GPL')
 depends=('ncurses')
