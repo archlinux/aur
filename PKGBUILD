@@ -16,7 +16,7 @@
 # 
 # Maintainer: Bernard Baeyens (berbae)  <berbae52 at sfr dot fr>
 pkgname=udisksvm
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="GUI UDisks wrapper for removable media"
 arch=('any')
@@ -27,7 +27,7 @@ install=udisksvm.install
 changelog=ChangeLog
 source=("https://github.com/berbae/udisksvm/raw/master/$pkgname-$pkgver.tar.gz")
 
-sha256sums=('75c2f3ea6e6e1666e873857015fcea8a405dbf378bfdba1cecda35f5779ffbe3')
+sha256sums=('7b6f60f5b289ac73b07989e6d26fff231b61dd9d45c04ab025bf7c594a1fdc7c')
 
 package() {
   cd $srcdir

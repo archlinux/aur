@@ -196,3 +196,7 @@
 	added GPLv2 license
 	switch again to the Qt5 GUI toolkit through Python bindings PyQt5
 	updated the icon theme path
+2017-12-16
+        * 2.6.3-1 :
+	don't use GLib Mainloop anylonger in traydvm script
+	it doesn't work with Qt 5.10
