@@ -14,15 +14,16 @@ arch=(
     'i686'
 )
 url="https://donutteam.com/"
-# The mod launcher uses the ZLIB and Lua licenses, but it doesn't make sense to redownload them for
-# this because said licenses should be managed by Linux packages, and Windows licenses left up to
-# the Windows app to display. The mod launcher itself has no particular license.
+# The mod launcher uses libraries under the ZLIB and Lua licenses, but it doesn't make sense to
+# bundle them with this package because said licenses should be managed by their respective Linux
+# packages (e.g. the TinyXML ZLIB license installed by the Linux zlib package.) and Windows licenses
+# left up to the Windows program to display.
+# The mod launcher itself has no particular license.
 license=('unknown')
 depends=(
-    # Zenity is needed for the mod launcher script's dialogs shown while installing the runtime.
+    # Zenity is needed for the mod launcher launcher's dialogs shown while installing the runtime.
     'zenity'
-    # Wine is needed to run the mod launcher. Currently limited to staging due to a bug in Wine
-    # stable that prevents .NET 2.0 SP2 from being installed.
+    # Wine is needed to run the mod launcher.
     'wine'
     # Wine's Mono implementation is needed for booting up an instance of Wine.
     'wine-mono'
@@ -87,6 +88,7 @@ package() {
   # At one point, I conisdered installing multiple icon sizes, but went against it because the
   # downscaled icons didn't look great, so only the original high quality icons are installed. This
   # is the original code for installing a few different sizes:
+
   # for SIZE in 16 32 48 64 128 256; do
   #   install -Dm644 "$pkgname-$SIZE.png" \
   #       "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/$pkgname.png"
@@ -94,11 +96,13 @@ package() {
   #       "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/the-simpsons-hit-and-run.png"
   # done
 
-  # And here's some code to run in your shell to generate some downscaled images with ImageMagick.
+  # And here's some code to run in your shell to generate some downscaled images with ImageMagick:
+
   # for SIZE in 16 32 48 64 128 256; do
   #   convert -resize $SIZEx$SIZE
   #       the-simpsons-hit-and-run-256.png the-simpsons-hit-and-run-$SIZE.png
   # done
+
   install -Dm644 "$pkgname.png" \
       "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
   install -m644 "the-simpsons-hit-and-run.png" \
