@@ -1,7 +1,7 @@
 # Maintainer: Jendrik Wenke <jendrikwenke+aur at gmail dot com>
 
 pkgname=scala-dotty
-pkgver=0.4.0_RC1
+pkgver=0.5.0_RC1
 _pkgverWithHyphen=${pkgver//_/-}
 pkgrel=1
 pkgdesc='A platform to try out new language concepts and compiler technologies for Scala'
@@ -10,7 +10,7 @@ url='http://dotty.epfl.ch'
 license=('BSD')
 depends=('java-environment=8')
 source=("https://github.com/lampepfl/dotty/releases/download/$_pkgverWithHyphen/dotty-$_pkgverWithHyphen.tar.gz")
-sha1sums=('e083234157edc6f6979c497e14d09ef63d54d1e4')
+sha1sums=('4c39b81f54f6b663da60ab90f9ddb5d28a2da670')
 
 package() {
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/scala-dotty"
