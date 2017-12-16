@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=RaiBlocks Wallet
+Comment=RaiBlocks, the scalable, fast, zero-fee cryptocurrency.
+Exec=rai_wallet %u
+Terminal=false
+Type=Application
+Icon=raiblocks128
+MimeType=x-scheme-handler/xrb;
+Categories=Office;Finance;
