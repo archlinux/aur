@@ -2,8 +2,8 @@
 
 pkgname=bareos-webui
 pkgver=17.2.4
-_pkgver=17.2.4-rc2
-pkgrel=1
+_pkgver=${pkgver}
+pkgrel=2
 pkgdesc="A PHP-Frontend to manage Bareos over the web."
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 license=('AGPLv3')
@@ -15,7 +15,7 @@ backup=('etc/bareos-webui/configuration.ini'
         'etc/bareos-webui/directors.ini'
         'etc/bareos/bareos-dir.d/console/admin.conf.example'
         'etc/bareos/bareos-dir.d/profile/webui-admin.conf')
-sha256sums=('6aceaa2aaebb1b49c4391799b6c2af7badfac2a0bac33e25075e2bd6dfc5a2da')
+sha256sums=('80229d4dcb2fd364c79bf467c82c0b9eedc790626c706901c231e2563cc60953')
 
 build() {
         cd "${srcdir}/bareos-webui-Release-${_pkgver}"
