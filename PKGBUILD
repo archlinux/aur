@@ -3,13 +3,13 @@
 
 _pkgname=gnome-usage
 pkgname=$_pkgname-git
-pkgver=0.4.5.60.ge656a5b
+pkgver=0.4.5.144.g0901cb9
 pkgrel=1
 pkgdesc="A nice way to view information about use of system resources"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://wiki.gnome.org/Apps/Usage"
 license=('AGPL3')
-depends=('gtk3' 'libgtop')
+depends=('gtk3' 'libgtop' 'accountsservice')
 makedepends=('git' 'vala' 'gobject-introspection' 'meson')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   rm -rf build
-  meson --prefix=/usr --buildtype=plain --strip "$_pkgname" build
+  arch-meson "$_pkgname" build
   ninja -v -C build
 }
 
