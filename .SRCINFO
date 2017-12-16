@@ -1,6 +1,6 @@
 pkgbase = git-repo-git
 	pkgdesc = Tool for managing remote repositories from your git CLI!
-	pkgver = 1.10.2.r1.g1181207
+	pkgver = 1.10.3.r10.ge80d990
 	pkgrel = 1
 	url = https://github.com/guyzmo/git-repo
 	arch = any
@@ -16,7 +16,10 @@ pkgbase = git-repo-git
 	depends = python-github3
 	depends = python-gitlab>=0.18
 	depends = python-gogs-client
-	depends = python-pybitbucket_fork-git
+	depends = python-pybitbucket_fork
+	depends = python-attrs
+	conflicts = git-repo
+	replaces = git-repo
 	source = git-repo-git::git+https://github.com/guyzmo/git-repo
 	sha256sums = SKIP
 
