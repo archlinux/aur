@@ -4,17 +4,16 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='https://arrayfire.com'
 pkgver=3.5.1
 arch=('x86_64')
-pkgrel=3
+pkgrel=4
 license=('BSD')
-makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'glfw' 'glew' 'boost' 'git' 'python' 'ocl-icd' 'gcc6')
-makedepends_x86_64=('cuda' 'nvidia-utils')
+makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'glfw' 'glew' 'boost' 'git' 'python' 'ocl-icd' 'gcc6' 'cuda' 'nvidia-utils')
 depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
             'libclc: Required for using OpenCL backend')
 options=('!buildflags')
 source=("http://arrayfire.com/arrayfire_source/arrayfire-full-${pkgver}.tar.bz2")
-sha512sums=('e9d696e8fa9d9c9a89497d6f0615cb2bdf8583237193ae354a365bbcb403891279795a65a03c364cadf9403b7a62412a1b6b5c5eee2f2e763329d1e3a6954c52')
+sha512sums=('1b521f93abdef985f54443f42e2b0270787da1194a5cdbb06a91af285672bf66fe0e6dbba2e5616968051052ff0face5b518b27014ccd10925008ecb3e53bf76')
 
 prepare() {
   cd "${srcdir}/arrayfire-full-${pkgver}"
