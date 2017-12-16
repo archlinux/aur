@@ -2,7 +2,7 @@
 
 _pkgname=thunar-archive-plugin
 pkgname=${_pkgname}-git
-pkgver=0.3.1.r121.g7d3aa28
+pkgver=0.4.0.r2.g3d98109
 pkgrel=1
 pkgdesc="Create and extract archives in Thunar (git checkout)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('intltool' 'xfce4-dev-tools' 'git')
 optdepends=('file-roller'
             'ark'
             'xarchiver'
-            'engrampa-thunar')
+            'engrampa')
 provides=("${_pkgname}=${pkgver%\.r*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git://git.xfce.org/thunar-plugins/thunar-archive-plugin")
