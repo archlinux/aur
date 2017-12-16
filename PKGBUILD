@@ -16,7 +16,7 @@ conflicts=('mutt')
 backup=('etc/Muttrc')
 install=$pkgname.install
 source=("http://ftp.mutt.org/pub/mutt/mutt-${pkgver}.tar.gz"{,.asc})
-sha256sums=('9b81746d67ffeca5ea44f60893b70dc93c86d4bc10187d4dd360185e4d42ed42'
+sha256sums=('a2e152a352bbf02d222d54074199d9c53821c19f700c4cb85f78fa85faed7896'
             'SKIP')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
 
