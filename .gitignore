@@ -4,7 +4,6 @@
 !PKGBUILD
 !add_settings_pluginui_message_error.patch
 !build-x264-x265-status-message-add-empty-lines.patch
-!ffmpeg-parallel-build-use-processorcount.patch
 !fix_nvenc_check.patch
 !fix_verbose.patch
 !opus_check.patch
