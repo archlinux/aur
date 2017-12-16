@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 72a5305..7f5501a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -82,7 +82,7 @@ target_link_libraries(kdevclangtidy
+     Qt5::Network
+     )
+ 
+-add_subdirectory(tests)
++# add_subdirectory(tests)
+ 
+ # kdebugsettings file
+ install(FILES kdevclangtidy.categories DESTINATION ${KDE_INSTALL_CONFDIR})
