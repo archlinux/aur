@@ -11,7 +11,7 @@ url="https://github.com/manjaro/$_pkgname/"
 arch=('any')
 license=('LGPL')
 depends=('bash')
-makedepends=('extra-cmake-modules')
+makedepends=('qt5-base' 'extra-cmake-modules')
 source=("$url/archive/$_gitcommit.tar.gz")
 sha256sums=('3de5e77c07b8c41ef1ddd41431b114e9c6a1dad269699b5bfc914129986498b6')
 
