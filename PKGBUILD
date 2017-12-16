@@ -3,12 +3,12 @@
 pkgname=particle-cli
 pkgdesc='CLI tool for the Particle hardware platform'
 pkgver=1.27.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='http://particle.io/'
 license=('GPL')
 depends=('libusb' 'nodejs')
-makedepends=('npm' 'git' 'python')
+makedepends=('npm' 'git' 'python2')
 optdepends=('dfu-util: local flashing'
             'openssl: local flashing')
 source=(http://registry.npmjs.org/$pkgname/-/${pkgname}-${pkgver}.tgz)
