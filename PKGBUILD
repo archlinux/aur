@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-proc
-pkgver=0.11
+pkgver=0.14
 pkgrel=1
 pkgdesc="Simple interface to Linux process information"
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python" "python-coloredlogs" "python-executor" "python-humanfriendly" "python-property-manager")
 makedepends=("python-setuptools")
 source=("https://github.com/xolox/python-proc/archive/${pkgver}.tar.gz")
-sha512sums=("b023d20ba3f28c4ed81b95ba0b00b3ca808229cea44b4a213fcbcad7af1a690cc20e6df1e11059473c24689d058b8ea511692a66fe8a440f732a4d69c6e85395")
+sha512sums=("8f92ca025cc60f9ba17c178a6294714b111a1efda2466311f2643b40ed1d5a81f0da232cb65be54eb7b4d922f73c68b14f2fcf2e02725b7ddc20d3e2dbf1e357")
 
 package() {
     cd "python-proc-${pkgver}"
