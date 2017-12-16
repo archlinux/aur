@@ -28,10 +28,8 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        '90-linux.hook'  # pacman hook for initramfs regeneration
        "$pkgbase.preset"   # standard config files for mkinitcpio ramdisk
        'choose-gcc-optimization.sh'
-       "${arch_patches[0]}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${arch_patches[0]}?h=packages/linux&id=${arch_config_trunk}"
-       "${arch_patches[1]}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${arch_patches[1]}?h=packages/linux&id=${arch_config_trunk}"
-       "${arch_patches[2]}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${arch_patches[2]}?h=packages/linux&id=${arch_config_trunk}"
 )
+for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
 sha256sums=('efc6e70863422bbe458ac61fd474d25de2bd2dbdeff18411311cd08d21a2741e'
