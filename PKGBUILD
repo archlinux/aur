@@ -6,8 +6,8 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.14.5
-xanmod=8
+pkgver=4.14.6
+xanmod=9
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -16,22 +16,33 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=6dd2560890bebc9bb1789ba117e91c5bc4a153ec
+arch_config_trunk=21974ba817377021dde4233a34b61a6b5fba798b
+
+# Arch additional patches
+arch_patches=(0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+              0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+              0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch)
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        '60-linux.hook'  # pacman hook for depmod
        '90-linux.hook'  # pacman hook for initramfs regeneration
        "$pkgbase.preset"   # standard config files for mkinitcpio ramdisk
        'choose-gcc-optimization.sh'
+       "${arch_patches[0]}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${arch_patches[0]}?h=packages/linux&id=${arch_config_trunk}"
+       "${arch_patches[1]}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${arch_patches[1]}?h=packages/linux&id=${arch_config_trunk}"
+       "${arch_patches[2]}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${arch_patches[2]}?h=packages/linux&id=${arch_config_trunk}"
 )
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('3fbe575a09278b95941aa972e5e22ae8b61a03845d60ee8ce6b7277e0f9ee040'
+sha256sums=('efc6e70863422bbe458ac61fd474d25de2bd2dbdeff18411311cd08d21a2741e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '9fd3abfb3e5e6afd5b8476e30af4d7ded762f3da2a724133cb3f26ad21c31e54')
-sha256sums_x86_64=('bfde21c325d39013463c38e9fa23d6d6481238b8509eea4ae38906127017e47d')
+            '9fd3abfb3e5e6afd5b8476e30af4d7ded762f3da2a724133cb3f26ad21c31e54'
+            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85'
+            'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
+            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2')
+sha256sums_x86_64=('3d139e6cfc42a0bb52a6c49a2bb94ff523dc728b8d548178dbc0a90726eb4151')
 
 _kernelname=${pkgbase#linux}
 
@@ -54,6 +65,12 @@ prepare() {
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   sed -i "s|# CONFIG_STACK_VALIDATION.*|CONFIG_STACK_VALIDATION=y|" ./.config
+
+  # Archlinux patches
+  # [0] disable USER_NS for non-root users by default
+  # [1] https://bugs.archlinux.org/task/56575
+  # [2] https://nvd.nist.gov/vuln/detail/CVE-2017-8824
+  for n in ${arch_patches[@]} ; do patch -Np1 -i ../$n ; done
 
   # EXPERIMENTAL: let's user choose microarchitecture optimization in GCC
   ${srcdir}/choose-gcc-optimization.sh
