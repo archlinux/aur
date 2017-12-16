@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=dolphin-megasync-git
-pkgver=v3.1.4.0.3.g2dcb710b
+pkgver=v3.5.0.0.32.g5eb57c4f
 pkgrel=1
 pkgdesc="Upload your files to your Mega account from Dolphin file manager. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=('git+https://github.com/meganz/MEGAsync.git'
         'kf5.patch'
         )
 sha256sums=('SKIP'
-            '1637e860d76a179420c2a58667bae8fc67e944c7216c765e6ce5794b58974fc5'
+            'd99c53c8a393e2b3896c55ccbffaec55d9ab439c0079485780c9388bf70eac6d'
             )
 
 pkgver() {
@@ -39,7 +39,8 @@ build() {
   cd build
   cmake ../MEGAsync/src/MEGAShellExtDolphin \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
 
   make
 }
