@@ -11,8 +11,9 @@ license=('MIT')
 depends=('gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf')
 makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool' 'libsodium')
 provides=('bgold' 'bgold-qt' 'bgoldd' 'bgold-tx' 'bgold-cli')
-#conflicts=('bgold' 'bgold-qt' 'bgoldd')
-source=('git://github.com/BTCGPU/BTCGPU.git')
+
+# Use the 0.15 branch because master is the staging branch according to h4x3rotab on Slack channel.
+source=('git://github.com/BTCGPU/BTCGPU.git#branch=0.15')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -37,7 +38,7 @@ package() {
 	# install bgold-daemon
 	msg2 'Installing bgold-daemon...'
 	install -Dm755 "$srcdir/$_gitname/src/bgoldd" "$pkgdir/usr/bin/bgoldd"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/bitcoingold.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoingold.conf"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoingold.conf"
 	#install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bgold-cli.1"
 	#install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bgold-qt.1"
 	#install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoind.1" "$pkgdir/usr/share/man/man1/bgoldd.1"
