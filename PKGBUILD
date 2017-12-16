@@ -5,7 +5,7 @@
 
 pkgname=avahi-nosystemd
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour'
 url='https://github.com/lathiat/avahi'
 license=('LGPL')
@@ -25,7 +25,8 @@ provides=("avahi=${pkgver}")
 replaces=('avahi')
 conflicts=('avahi')
 makedepends=('qt4' 'pygtk' 'mono' 'intltool' 'python-dbus' 'python-gobject'
-             'gtk-sharp-2' 'gobject-introspection' 'gtk3' 'xmltoman' 'git')
+             'gtk-sharp-2' 'gobject-introspection' 'gtk3' 'xmltoman' 'git'
+             'doxygen' 'graphviz')
 backup=('etc/avahi/hosts'
         'etc/avahi/avahi-daemon.conf'
         'usr/lib/avahi/service-types.db')
