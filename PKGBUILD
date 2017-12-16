@@ -1,7 +1,7 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=zimg-git
-pkgver=2.3.0.g9cbe9b0
+pkgver=2.6.3.64.gf578889
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ conflicts=('zimg'
            'vapoursynth-plugin-zimg-git'
            )
 source=('git+https://github.com/sekrit-twc/zimg.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd zimg
@@ -35,6 +35,7 @@ build() {
   cd zimg
   ./configure \
     --prefix=/usr
+
   make
 }
 
