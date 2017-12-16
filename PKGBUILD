@@ -2,7 +2,7 @@
 
 _pkgname=xfdesktop
 pkgname=${_pkgname}-git
-pkgver=4.13.1.r113.g25ae88bd
+pkgver=4.13.1.r117.g10473391
 pkgrel=1
 pkgdesc="A desktop manager for Xfce (git version)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 # Desktop plugin has been ported to thunarx-3. If thunar-git is installed, it will be built so 
 # add to dependencies, otherwise add missing dependencies that thunar would otherwise satisfy.
-[[ "$( pacman -Qq thunar-git 2>/dev/null )" != '' ]] && depends+=('thunar-git') || depends+=('exo>=0.11.0' 'libnotify')
+[[ "`pkg-config --modversion thunarx-3 2>/dev/null`" != '' && $( vercmp '1.7.0' "`pkg-config --modversion thunarx-3 2>/dev/null`" ) -ge 0 ]] && depends+=('thunar>=1.7.0') || depends+=('exo>=0.11.0' 'libnotify')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
