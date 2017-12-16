@@ -1,6 +1,7 @@
-# Maintainer: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
+# Maintainer: Joseph Carta <cartakid@gmail.com>
+# Contributor: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
 pkgname=photofilmstrip
-pkgver=3.1.1
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Create video clips from photos"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ optdepends=('gst-plugins-bad: additional rendering formats'
 	    'gst-plugins-ugly: additional rendering formats'
 	    'gst-libav: additional rendering formats')
 source=("https://sourceforge.net/projects/photostoryx/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('7ce58966595f90e1e666ec60152693e8')
+md5sums=('42fefba0fc25a5182133b63d4aa5edd8')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
