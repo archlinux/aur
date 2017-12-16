@@ -1,11 +1,12 @@
 post_install() {
-getent group adbusers >> /dev/null || /usr/sbin/groupadd adbusers || return 1
-/bin/cat << EOF
+cat << EOF
 ===> If you have problems with printers or other devices please comment the relevant line
 ===> in "/usr/lib/udev/rules.d/51-android.rules"
 
 ===> Some devices (particularly MediaTek and Xiaomi) also require an entry in $HOME/.android/adb_usb.ini. 
 ===> You can use the adb_usb.ini under /usr/share/android/adb_usb.ini
+===> Remember to add your user to adbusers group.
+===> 	gpasswd -a youruser adbusers
 EOF
 }
 
@@ -14,5 +15,8 @@ post_install
 }
 
 post_remove() {
-getent group adbusers &>/dev/null && /usr/sbin/groupdel adbusers
+cat <<EOF
+==> Remember to delete your user from adbusers group.
+===> 	gpasswd -d youruser adbusers
+EOF
 }
