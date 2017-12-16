@@ -15,7 +15,7 @@ source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
