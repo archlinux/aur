@@ -9,24 +9,28 @@ url='https://github.com/jgraph/drawio'
 license=('Apache')
 depends=(electron gconf libnotify)
 conflicts=(drawio-desktop-bin)
-source=("https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz")
+source=("drawio-desktop-$pkgver.zip::https://github.com/jgraph/drawio/releases/download/v$pkgver/draw.war")
+noextract=("drawio-desktop-$pkgver.zip")
 sha256sums=('cf95074d91dcc39a718b1adf755ed0d8865744416f3adadda2e3c0b1675f4b3b')
 
 prepare() {
+  rm -rf "$srcdir/drawio-$pkgver"
+  mkdir "$srcdir/drawio-$pkgver"
   cd "$srcdir/drawio-$pkgver"
+
+  bsdtar -xf "../drawio-desktop-$pkgver.zip" -C .
+  rm -rf "META-INF" "WEB-INF"
 
   # disable logger
   sed -e "/require('electron-log')/d" \
-  -i 'war/electron.js'
+  -i 'electron.js'
 }
 
 package() {
   cd "$srcdir/drawio-$pkgver"
 
   mkdir -p "$pkgdir/usr/share/webapps"
-  cp -rp 'war' "$pkgdir/usr/share/webapps/draw.io"
-  rm -rf "$pkgdir/usr/share/webapps/draw.io/META-INF"
-  rm -rf "$pkgdir/usr/share/webapps/draw.io/WEB-INF"
+  cp -rp . "$pkgdir/usr/share/webapps/draw.io"
 
   # create run script
   mkdir -p "$pkgdir/usr/bin"
@@ -50,12 +54,10 @@ package() {
   > "$pkgdir/usr/share/applications/draw.io.desktop"
 
   # create icons
-  find 'war/images' -regex '.*/drawlogo[0-9]+\.png' |
+  find 'images' -regex '.*/drawlogo[0-9]+\.png' |
   grep -o '[0-9]\+' |
   while read size; do
-    install -Dm644 "war/images/drawlogo$size.png" \
+    install -Dm644 "images/drawlogo$size.png" \
     "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/draw.io.png"
   done
-
-  install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/drawio-desktop/LICENSE"
 }
