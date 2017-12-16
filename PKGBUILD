@@ -3,8 +3,8 @@
 
 pkgbase=freetype2-git
 pkgname=('freetype2-git' 'freetype2-demos-git' 'freetype2-docs-git')
-pkgver=2.8.1+p0+g39ce3ac4
-pkgrel=1
+pkgver=2.8.1+p145+g2c048a8a6
+pkgrel=3
 epoch=1
 pkgdesc="Font rasterization library (from git)"
 arch=(i686 x86_64)
@@ -17,15 +17,17 @@ makedepends=('libx11' 'git' 'python2')
 source=(git://git.sv.gnu.org/freetype/freetype2.git
         git://git.sv.gnu.org/freetype/freetype2-demos.git
         0001-Enable-table-validation-modules.patch
-        0003-Enable-infinality-subpixel-hinting.patch
-        0004-Enable-long-PCF-family-names.patch
+        0002-Enable-infinality-subpixel-hinting.patch
+        0003-Enable-long-PCF-family-names.patch
+        0004-Enable-old-engines-but-keep-adobe-as-default.patch
         0005-freetype-2.5.2-more-demos.patch
         freetype2.sh)
 sha1sums=('SKIP'
           'SKIP'
-          'c3e91e668936206d3c158bffde0f69788a086a5b'
-          '81586014ea44375ddc85dd9dbcabae6e91c34d62'
-          '334f229875039794adeb574e27d365bb445fb314'
+          'b69531770c343d403be294b7e4d25ac45738c833'
+          '3d26a569f0cb94c28a550577f5dcaadb4e193d91'
+          '770f1981734a837bcf065564c91644b4cc5e256a'
+          '6b551a5df41c9f02152b8456a457392ab5a4367e'
           '72cfecbe738085eec475e012617661ad0cc9b76f'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
@@ -46,8 +48,9 @@ prepare() {
 
   cd freetype2
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-  patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
-  patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
+  patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
+  patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
+  patch -Np1 -i ../0004-Enable-old-engines-but-keep-adobe-as-default.patch
 
   ./autogen.sh
 
