@@ -7,7 +7,7 @@
 
 pkgname='lucas-simpsons-hit-and-run-mod-launcher'
 pkgver='1.16.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Mod launcher for The Simpsons: Hit & Run."
 arch=(
     'x86_64'
@@ -33,34 +33,22 @@ depends=(
     'winetricks'
 )
 source=(
+    # Official mod launcher download for the current release.
     "$pkgname.zip::https://donutteam.com/apps/\
 Lucas'%20Simpsons%20Hit%20&%20Run%20Mod%20Launcher%20${pkgver}.zip"
-    "$pkgname.sh"
-    "the-simpsons-hit-and-run.sh"
-    "$pkgname.xml"
-    "$pkgname.png"
-    "the-simpsons-hit-and-run.png"
-    "com.donutteam.$pkgname.desktop"
-    "the-simpsons-hit-and-run.desktop"
-    "check-for-duplicate-lmlms.sh"
+    # Unofficial mod launcher Linux launcher download for the latest master branch.
+    "$pkgname-linux-launcher.zip::https://github.com/TheKoopaKingdom/\
+lucas-simpsons-hit-and-run-mod-launcher-linux-launcher/archive/master.zip"
 )
 md5sums=(
-    "e5007494840121bdd0bc2431146858e6"  # Mod launcher ZIP archive.
-    "eadcf24b2aa741cbd6e8ba4b2a2a0671"  # Mod launcher launcher Bash script.
-    "118c8447bee61faba9126b33067799b7"  # SHAR launcher Bash script.
-    "5cb3ea57491d4252d1e5473c365eb187"  # LMLM/LMLH XML MIME type.
-    "28fcaf84f934fe0d7ce0320bc670d1e0"  # Mod launcher PNG icon.
-    "4d1053736cc3616ae09c3b3829f3306c"  # SHAR launcher PNG icon.
-    "179ffc615c04ddf4c8bcc8ca567264f7"  # Mod launcher desktop entry.
-    "6b67d38033e5f6f962485e5e9ae9a74c"  # SHAR launcher desktop entry.
-    "a7952fc64976886f82e00b684bb888e8"  # LMLM duplicate checking Bash script.
+    # Skip the mod launcher ZIP because no hashes are provided by upstream.
+    "SKIP"
+    # SKip the mod launcher Linux launcher ZIP because the latest master is subject to change.
+    "SKIP"
 )
 
 package() {
-  # Fullscreen: never use the game's fullscreen. Use the resizeable window hack, and your DE's
-  # native fullscreen function.
-
-  # Install the mod launcher files.
+  # Stage 1: Install the mod launcher files.
 
   # Install the Windows executable to /usr/lib/lucas-simpsons-hit-and-run-mod-launcher/ because it's
   # an executable, but not meant to be ran as-is.
@@ -73,6 +61,9 @@ package() {
   # Install the default mods to /usr/share/lucas-simpsons-hit-and-run-mod-launcher/mods/ because
   # they aren't really shared objects, but just data like textures and models.
   install -Dm644 -t "$pkgdir/usr/share/$pkgname/mods/" Mods/*.lmlm
+
+  # Stage 2: Install the mod launcher Linux launcher files.
+  cd "$pkgname-linux-launcher-master"
 
   # Install the launchers.
 
