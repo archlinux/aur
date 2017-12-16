@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=bolt-git
-pkgver=r271.6d86460
+pkgver=r299.96c0f6f
 pkgrel=1
 pkgdesc="Thunderbolt 3 security system daemon"
 arch=('i686' 'x86_64')
@@ -40,4 +40,5 @@ package() {
   DESTDIR="${pkgdir}" ninja -C build install
 # Fixup mode to match polkit
   install -d -o root -g 102 -m 750 "${pkgdir}/usr/share/polkit-1/rules.d"
+  install -d "${pkgdir}"/var/lib/thunderbolt
 }
