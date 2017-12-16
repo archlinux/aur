@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname="asf"
-pkgver="3.0.4.7"
+pkgver="3.0.5.5"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('any')
@@ -18,13 +18,13 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/JustArchi/ArchiSteamFarm/r
         "${pkgname}-user.service"
         "${pkgname}.sysusers"
         "NLog.config")
-sha256sums=('28b1a284c981806752a3afcad60185861d03134d07f85b3d848a6f2d4f168ecb'
+sha256sums=('cbc77af98ab4323d0c950a98ea76adc5fca6cb97cae8044e8faf5e588f5fe420'
             '8d76996c1024b80704b25af8a8800ef3f8a8a518d19c2a1e85ba62b58b22cdfd'
             'e63b55f65e1c0c935945bd788f47a77be82e96a409b64660b5a96b9c190964ff'
             'dcaf43586125e07488e338438158097b31ba335fcb238127dfb785a41d223f49'
             '883373be23f6f49ae597f61c1310d8cd45bce7c3ee1b5d456ffc9fedbe7dd486'
             'cd2c704c01217c103f8ad1729920a142f63f686351c6a9557c50a33fb3c723fe')
-noextract=('asf-3.0.4.7.zip')
+noextract=('asf-3.0.5.5.zip')
 
 prepare() {
     7z x -o"${srcdir}/asf" ${pkgname}-${pkgver}.zip
@@ -47,6 +47,6 @@ package() {
     install -D -m644 "${srcdir}/NLog.config" "${pkgdir}/usr/lib/${pkgname}/NLog.config"
 
     # disable auto-updates and version checks
-    sed -i 's/"AutoUpdates": true,/"AutoUpdates": false,/g' "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
     sed -i 's/"UpdateChannel": 1/"UpdateChannel": 0/g' "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
+    sed -i 's/"UpdatePeriod": 24/"UpdatePeriod": 0/g' "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
 }

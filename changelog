@@ -1,3 +1,18 @@
+2017-12-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.0.5.5-1:
+    [!] As initially stated, IPC was rewritten with new API endpoints and updated documentation in preparation for building IPC GUI. You will probably need to slightly modify your existing tools or scripts (ref: #667).
+    Added workaround for Steam offline bug uncovered in V3.0.4.6 release.
+    Added Steam winter sale 2017 to global blacklist (ref: #705).
+    Added UseLoginKeys bot config property.
+    Added IPCPassword global config property.
+    Re-enabled Double Fine Adventure for idling with updated idling code.
+    Fixed out-of-range arguments being always concatenated using , delimiter.
+    Fixed !restart sent via IPC (ref: #700).
+    Fixed CORS in IPC for non-local scripts (ref: #701).
+    Removed mapping of _ character into space in !nickname and !owns commands, since ASF supports out-of-range arguments for a while now.
+    Removed AutoUpdates and added UpdatePeriod global config property.
+    Removed !api command, its functionality is now realized with appropriate API endpoint.
+    Usual amount of code improvements, optimizations and bugfixes.
 2017-11-21 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.0.4.7-1:
     [!] Fixed potential trading notifications loop (ref: #697).
