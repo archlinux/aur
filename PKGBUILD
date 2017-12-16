@@ -1,6 +1,6 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname="aur-creator-tools"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Small tools to create and maintain AUR packages"
 url="https://github.com/jD91mZM2/aur-creator-tools"
@@ -10,7 +10,7 @@ makedepends=()
 optdepends=()
 depends=()
 source=("https://github.com/jD91mZM2/aur-creator-tools/archive/v$pkgver.tar.gz")
-sha256sums=('b4fc77fc337a6abd909247290825976837ddfea08e5f3a88edac09409672972e')
+sha256sums=('50815faf36a39232eafb3e46145307f502061ffc861c8988245e06b09acfe1a6')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
