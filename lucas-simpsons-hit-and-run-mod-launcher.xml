@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-lmlm">
+    <glob pattern="*.lmlm"/>
+    <comment>Lucas' Simpsons Hit &amp; Run Mod Launcher Mod</comment>
+    <acronym>LMLM</acronym>
+    <expanded-acronym>Lucas' Mod Launcher Mod</expanded-acronym>
+    <icon name="application-x-lmlm"/>
+  </mime-type>
+  <mime-type type="application/x-lmlh">
+    <glob pattern="*.lmlh"/>
+    <comment>Lucas' Simpsons Hit &amp; Run Mod Launcher Hack</comment>
+    <acronym>LMLH</acronym>
+    <expanded-acronym>Lucas' Mod Launcher Hack</expanded-acronym>
+    <icon name="application-x-lmlh"/>
+  </mime-type>
+</mime-info>

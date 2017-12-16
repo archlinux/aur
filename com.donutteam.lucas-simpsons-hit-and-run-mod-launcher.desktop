@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Lucas' Simpsons Hit & Run Mod Launcher
+Name[en_US]=Lucas' Simpsons Hit & Run Mod Launcher
+GenericName=Mod Launcher
+Comment=Run mods for The Simpsons: Hit & Run.
+Icon=lucas-simpsons-hit-and-run-mod-launcher
+TryExec=/usr/bin/lucas-simpsons-hit-and-run-mod-launcher
+Exec=lucas-simpsons-hit-and-run-mod-launcher %F
+MimeType=application/x-lmlm;application/x-lmlh
+Categories=Utility
+Keywords=SHAR
+StartupWMClass=lucas-simpsons-hit-and-run-mod-launcher.exe
