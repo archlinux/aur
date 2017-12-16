@@ -6,6 +6,7 @@ pkgbase = lout-dejavu-git
 	arch = any
 	license = GPL3
 	depends = lout ttf-dejavu
+	depends = ttf-dejavu
 	provides = lout-dejavu
 	source = lout-dejavu-git::git+https://github.com/i-kuzmin/lout-dejavu
 	sha512sums = SKIP
