@@ -2,8 +2,8 @@
 
 pkgname=('python-expense_manager')
 _pkgname='expense_manager'
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A command-line expense manager and bank account logger."
 arch=('any')
 url="https://github.com/RcrdBrt/expense_manager"
