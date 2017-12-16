@@ -1,0 +1,16 @@
+[Unit]
+Description=Connects Discord and IRC channels by sending messages back and forth.
+After=network.target
+
+[Service]
+User=discord-irc
+Group=discord-irc
+Type=simple
+ExecStart=/usr/bin/discord-irc --config /etc/discord-irc/conf.json
+ProtectSystem=yes
+ProtectHome=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

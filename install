@@ -1,0 +1,10 @@
+post_install() {
+  groupadd discord-irc &>/dev/null
+  useradd -g discord-irc -d /etc/discord-irc -s /bin/false discord-irc &> /dev/null
+  chown -R discord-irc:discord-irc /etc/discord-irc &> /dev/null
+}
+
+pre_remove() {
+  getent passwd discord-irc &>/dev/null && userdel discord-irc &> /dev/null
+}
+
