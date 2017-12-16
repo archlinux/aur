@@ -4,7 +4,7 @@
 # Contributor: Tom Vincent <http://www.tlvince.com/contact/>
 
 pkgname=mutt-kiss
-pkgver=1.8.3
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL"
 arch=('i686' 'x86_64')
