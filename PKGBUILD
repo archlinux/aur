@@ -6,22 +6,21 @@ arch=(x86_64)
 url=https://centrabit.com/
 license=(GPL3)
 depends=(qt5-multimedia qt5-script)
-source=(https://downloads.sourceforge.net/project/bitcointrader/SRC/QtBitcoinTrader-$pkgver.tar.gz
-        https://raw.githubusercontent.com/JulyIGHOR/QtBitcoinTrader/master/src/julyaes256.cpp)
-sha256sums=(b40c1a58e92c22bfc1d3384c3162cdf0e60b1a93884c7fce45b57f0590fe245c
-            7fb8d145dadd3b75552d93830cb73b6f6027d04285a5c884e26895b66503135f)
+source=(
+QtBitcoinTrader-$pkgver.tar.gz::https://codeload.github.com/JulyIGHOR/QtBitcoinTrader/tar.gz/cd71ad9
+)
+sha256sums=(461a36f19dbea42aa6b9550bd88361af30b70590461a43f12312e40e9ba0e349)
 
 prepare() {
-  sed -i 1,4d QtBitcoinTrader-$pkgver/src/QtBitcoinTrader_Desktop.pro
-  cp julyaes256.cpp QtBitcoinTrader-$pkgver/src/
+  sed -i 1,4d QtBitcoinTrader-*/src/QtBitcoinTrader_Desktop.pro
 }
 
 build() {
-  cd QtBitcoinTrader-$pkgver/src/
+  cd QtBitcoinTrader-*/src/
   qmake-qt5 QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS"
   make
 }
 
 package() {
-  make -C QtBitcoinTrader-$pkgver/src/ INSTALL_ROOT=$pkgdir install
+  make -C QtBitcoinTrader-*/src/ INSTALL_ROOT=$pkgdir install
 }
