@@ -21,5 +21,5 @@ sha256sums=('703eca26eb0da2229b5e5ee9445c30f5ad458bc1ba69fb23a426f971d4afce62')
 
 
 package() {
-    install -Dm755 ${srcdir}/engrampa.tap ${pkgdir}/usr/lib/xfce4/thunar-archive-plugin/engrampa.tap
+    install -Dm755 "${srcdir}"/engrampa.tap "${pkgdir}"/usr/lib/xfce4/thunar-archive-plugin/engrampa.tap
 }
