@@ -12,6 +12,7 @@ license=('GPL3')
 depends=('emacs>=24.4' 'emacs-dash=2.13.0')
 makedepends=('git')
 provides=('emacs-magit-popup')
+conflicts=('emacs-magit<=2.11.0')
 install="${pkgname}.install"
 source=("git+https://github.com/${_github_org}/${_github_repo}.git#tag=v${pkgver}")
 md5sums=('SKIP')
