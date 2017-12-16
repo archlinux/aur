@@ -7,7 +7,7 @@
 
 pkgname=emacs-magit-git
 pkgver=2.11.0.r347.c7f6bfe7
-pkgrel=1
+pkgrel=2
 pkgdesc="It's Magit! A Emacs mode for Git."
 arch=('any')
 _github_org="magit"
