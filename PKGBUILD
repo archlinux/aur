@@ -11,7 +11,7 @@ pkgname=('libmega-git'
          'python2-megasync-git'
          'fuse-megasync-git'
          )
-pkgver=v3.1.4.0.0.g11a7ede0
+pkgver=v3.5.0.0.32.g5eb57c4f
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,6 @@ makedepends=('qt5-base'
              'curl'
              'crypto++'
              'libsodium'
-             'hicolor-icon-theme'
              'git'
              'qt5-tools'
              'cython'
@@ -59,7 +58,7 @@ prepare() {
 
   cd MEGAsync
   git config submodule.src/MEGASync/mega.url "${srcdir}/sdk"
-  git submodule update --init # --remote
+  git submodule update --init
 
   cd src/MEGASync/mega
   ./autogen.sh
@@ -89,14 +88,14 @@ build() {
   make
 
   msg2 "Build MEGASync"
-  cd ${srcdir}/MEGAsync/src/MEGASync/mega
+  cd "${srcdir}/MEGAsync/src/MEGASync/mega"
   ./configure \
     --prefix=/usr \
     --without-freeimage
 
-  cd ..
+  cd "${srcdir}/MEGAsync/src/MEGASync"
   lrelease-qt5 MEGASync.pro
-  qmake-qt5 CONFIG+=release MEGASync.pro
+  qmake-qt5 CONFIG+=debug MEGASync.pro
   make
 }
 
@@ -119,7 +118,7 @@ package_megasync-git() {
   install -Dm755 MEGAsync/src/MEGASync/megasync "${pkgdir}/usr/bin/megasync"
   install -Dm644 MEGAsync/src/MEGASync/platform/linux/data/megasync.desktop "${pkgdir}/usr/share/applications/megasync.desktop"
   sed 's|System;||g' -i "${pkgdir}/usr/share/applications/megasync.desktop"
-  install -Dm644 "${srcdir}/mega.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mega.svg"
+  install -Dm644 "${srcdir}/mega.svg" "${pkgdir}/usr/share/pixmaps/mega.svg"
 }
 
 package_libmega-git() {
