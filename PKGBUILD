@@ -1,8 +1,8 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 _github_url=https://github.com/lopsided98/dnsupdate
 pkgname=dnsupdate
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc="A modern and flexible dynamic DNS client"
 arch=('any')
 url="${_github_url}"
@@ -13,6 +13,7 @@ makedepends=(
     'python-setuptools'
     'python-sphinx'
     'python-sphinx-argparse'
+    'python-commonmark'
 )
 optdepends=(
      'python-beautifulsoup4: router address scraping'
@@ -28,6 +29,11 @@ build() {
 
     # Build man pages
     python setup.py build_docs -b man
+}
+
+check() {
+    cd "${srcdir}/${pkgname}"
+    python setup.py test
 }
 
 package() {
