@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.1.rc3.r0.g20007d522c
+pkgver=8.2.beta0.r0.g8d9c008a75
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -16,7 +16,7 @@ url="http://www.sagemath.org"
 license=(GPL)
 depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 python2-fpylll python2-psutil python2-cypari2
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-future libgap flintqs lcalc lrcalc arb
-  eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox rubiks pari-galdata pari-seadata-small planarity rankwidth
+  eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
 optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cython code'
   'jmol: 3D plots' 'sage-notebook: Flask notebook interface (deprecated)'
@@ -31,15 +31,16 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
   'meataxe: faster matrix arithmetic over finite fields'
   'sirocco: for computing the fundamental group of the complement of a plane curve'
-  'three.js: alternative 3D plots engine' 'tachyon: alternative 3D plots engine')
+  'three.js: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
   mcqd coxeter3 bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
 source=(git://git.sagemath.org/sage.git#branch=develop
-        env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
-        r-no-readline.patch fes02.patch sagemath-ecl-no-sigfpe.patch sagemath-threejs.patch
-        sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-linbox-1.5.patch sagemath-pynac-0.7.14.patch)
+        sagemath-env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
+        r-no-readline.patch fes02.patch sagemath-threejs.patch pari-stackwarn.patch
+        sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-linbox-1.5.patch sagemath-pynac-0.7.14.patch
+        sagemath-matplotlib2.patch sagemath-scipy-1.0.patch sagemath-lrs.patch sagemath-ipython-prompt.patch)
 sha256sums=('SKIP'
-            '8c4ed4c1f3bb79fb279efa5267a78d0d093c718377b5aa0457b642e50f60811a'
+            '39b76a189365464998cab9355d177581bc2b15dff10858f316faa85f2efa0426'
             'c41ae665499c6cd775d40bbe178f8786830b0931ee26bf11ee02f7d83bcc8107'
             '0b680e674c11c47afa86162d8b49645620b8912722e08133d23357c29ca9310a'
             '2cad308f8adbb6c54e6603fa22b2f0eb60f6f09248d5d015000c3932ac14f646'
@@ -47,12 +48,16 @@ sha256sums=('SKIP'
             'ef94908d4ab28d13af622e6e58ec191aa78817d17e4466c7bb6f64ee72a813b9'
             'afd0952b9bb8f52fd428eae36cf719a58ff85a894baae88cbb2124e043768cc7'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
-            'c31809f887bf9acc45c5bd9dd30bb93e73601d3efbf3016594c3c1d241731c8a'
             '514135b920a43f999571a15e97b41e14f5bed59f65b19643864dc23555a7b830'
+            'bfd2a20a33ab19a8a8b216a77d07f62e809fe1e1879c4f171ce5dca62fd482e9'
             '28d7789b8d777922ab8871ca43b6afab751428cae875c0343d3962e6a2030b88'
-            '37c5c1e694a2aca06c0f1c7d99622ff81fd2bc6a51e8745762294889fa4673f6'
+            '1024f3a6a9a1a6ae96d9962bb7d1f5842f4a4a5ff5098afad81a60188b7d5160'
             'a52d03e04c9d64bb957a1f8dcdae3280ebb9450a7fd76aaf5ae5de5c6f74774f'
-            '538f7b279d72f4b67edb445d386d267f3f7022c1079031ca7ea06f6ce392c906')
+            '538f7b279d72f4b67edb445d386d267f3f7022c1079031ca7ea06f6ce392c906'
+            'b9ab2bb5f381ea425e8763b81b8b3a108a3951c594fb1f37f7df921e7c77e26d'
+            '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
+            'c0f65534a845ba802de6196229159fe67fcc3f72f0cb1ce57d4ae5c9fe10282c'
+            '937a0081e7aea56bda645ef5f0d34b8e356acd62a7dd128a35163f46e7836131')
 
 pkgver() {
   cd sage
@@ -66,7 +71,7 @@ prepare(){
 # assume all optional packages are installed
   patch -p0 -i ../package.patch
 # set env variables
-  patch -p0 -i ../env.patch
+  patch -p0 -i ../sagemath-env.patch
 # don't list optional packages when running tests
   patch -p0 -i ../test-optional.patch
 # set jupyter path
@@ -82,20 +87,28 @@ prepare(){
    -i src/sage/databases/cremona.py
 # fix python-igraph detection
   patch -p1 -i ../sagemath-detect-igraph.patch
+# fix lrs detection
+  patch -p1 -i ../sagemath-lrs.patch
 # adapt to networkx 2 changes
   patch -p1 -i ../sagemath-networkx2.patch
 # fix three.js plotting backend
   patch -p1 -i ../sagemath-threejs.patch
+# don't show PARI stack size increase warnings during doctesting (Debian)
+  patch -p1 -i ../pari-stackwarn.patch
+# remove deprecated scipy parameters
+  patch -p1 -i ../sagemath-scipy-1.0.patch
+# fix ipython prompt in pexpect interface
+  patch -p1 -i ../sagemath-ipython-prompt.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
   patch -p1 -i ../fes02.patch
-# disable SIGFPE for ecl https://trac.sagemath.org/ticket/22191
-# patch -p1 -i ../sagemath-ecl-no-sigfpe.patch
 # fix build with linbox 1.5 https://trac.sagemath.org/ticket/24214
   patch -p1 -i ../sagemath-linbox-1.5.patch
 # fix build with pynac 0.7.14 https://trac.sagemath.org/ticket/24329
   patch -p1 -i ../sagemath-pynac-0.7.14.patch
+# port away from deprecated and removed functions in matplotlib 2 https://trac.sagemath.org/ticket/23696
+  patch -p1 -i ../sagemath-matplotlib2.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
@@ -112,7 +125,6 @@ build() {
 
   cd src
 
-  export SAGE_LOCAL="/usr"
   export SAGE_ROOT="$PWD"
   export SAGE_SRC="$PWD"
 
@@ -121,9 +133,8 @@ build() {
 
 package_sagemath-git() {
   optdepends+=('sagemath-jupyter: Jupyter kernel')
-  conflicts=(sage-mathematics sagemath)
-  replaces=(sage-mathematics) 
-  provides=(sage-mathematics sagemath)
+  conflicts=(sagemath)
+  provides=(sagemath)
 
   cd sage/src
 
