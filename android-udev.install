@@ -11,7 +11,9 @@ EOF
 }
 
 post_upgrade() {
-post_install
+ 	groupdel adbusers
+	systemd-sysusers
+	post_install
 }
 
 post_remove() {
