@@ -2,7 +2,7 @@
 
 pkgbase=linux-surfacepro3-git
 _srcname=linux
-pkgver=4.15rc1.r20.g43f462f1c2e1
+pkgver=4.15rc3.r270.g7a3c296ae08f
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '4633ae19b9a9871a3cfffba98ec7c3cd240f64bef8a0eebcf1212219c80972fd'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             '56152d1f7cac31d0a9a7414e950106c3945d5de8d50bc75cf7385fa46078b1de'
-            '66c405b1ebb5eb8bd0b55ed3cba5dd176697880dd70be910c543a35f54ef05de'
+            'c57aead7f9d21ef2c9b17e1db9ea253411935f49f38f2c64d64486bcee5fc48e'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
             '31d109a2f5864d865b3ce3c310158b2e9ae77f9c424f2af5a7e45548d62a2eb3')
@@ -88,7 +88,7 @@ prepare() {
   # ... or manually edit .config
 
   printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run local([m]odconfig|[y]esconfig) or [s]kip? (m/y/S)]"
-  read -r; echo; case "${REPLY:1:1}" in
+  read -r; echo; case "${REPLY:0:1}" in
   [Mm])
     make localmodconfig ;;
   [Yy])
@@ -98,7 +98,7 @@ prepare() {
   esac
 
   printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"
-  read -r; echo; case "${REPLY:1:1}" in
+  read -r; echo; case "${REPLY:0:1}" in
   [Nn])
     make nconfig ;;
   [Oo])
