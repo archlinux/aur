@@ -2,7 +2,7 @@
 pkgbase=python-bbcode
 pkgname=('python-bbcode' 'python2-bbcode')
 _pyname=bbcode
-pkgver=1.0.26
+pkgver=1.0.27
 pkgrel=1
 pkgdesc='A pure Python BBCode parser and formatter.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4091b7a3817ebf3cdfcdd66f223ef0e1')
+md5sums=('a2ae8b1d6c1d4eeccd3268372bc27167')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"

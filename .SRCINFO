@@ -1,6 +1,6 @@
 pkgbase = python-bbcode
 	pkgdesc = A pure Python BBCode parser and formatter.
-	pkgver = 1.0.26
+	pkgver = 1.0.27
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/bbcode
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-bbcode
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.io/packages/source/b/bbcode/bbcode-1.0.26.tar.gz
-	md5sums = 4091b7a3817ebf3cdfcdd66f223ef0e1
+	source = https://pypi.io/packages/source/b/bbcode/bbcode-1.0.27.tar.gz
+	md5sums = a2ae8b1d6c1d4eeccd3268372bc27167
 
 pkgname = python-bbcode
 	depends = python
