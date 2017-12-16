@@ -2,10 +2,10 @@
 
 _plug=svpflow1
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=4.0.0.128
-pkgrel=2
+pkgver=4.2.0.142
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.svp-team.com/wiki/Plugins:_SVPflow'
 license=('GPL')
 depends=('vapoursynth'
@@ -14,10 +14,9 @@ depends=('vapoursynth'
          )
 makedepends=('yasm')
 source=("svpflow1-src-${pkgver}.zip::http://www.svp-team.com/files/gpl/svpflow1-src.zip")
-sha1sums=('7e32bec0c45895b6770ce814f040757f71e145a5')
+sha256sums=('ea68862fa05c114cf7e5386faf8c4c22d3c350978bc5e1a8fb1bd0d2c7f0e4c8')
 
 build() {
-  [ "${CARCH}" = "i686" ] && _config="CONFIG+=X32"
 
   cd svpflow1-src/svpflow1
   qmake-qt5 ${_config}
