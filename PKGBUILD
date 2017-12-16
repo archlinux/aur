@@ -1,0 +1,50 @@
+# Maintainer: Sherlock-Holo <sherlockya@gmail.com>
+
+pkgname=dns-over-https-git
+_pkgname=dns-over-https
+pkgver=git
+pkgrel=1
+pkgdesc="Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol"
+url="https://github.com/m13253/dns-over-https"
+arch=('x86_64' 'i686')
+license=('MIT')
+depends=('glibc')
+makedepends=('go' 'git')
+source=("git+https://github.com/m13253/dns-over-https")
+md5sums=('SKIP')
+
+pkgver(){
+        cd $srcdir/$_pkgname
+        printf "${_pkgver}%s"  "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+        mkdir -p $srcdir/gopath
+        export GOPATH=$srcdir/gopath
+        cd $srcdir/dns-over-https
+        sed -i 's/\/usr\/local/${pkgdir}\/usr/g' Makefile
+        sed -i 's/\/local//g' systemd/doh-client.service
+        sed -i 's/\/local//g' systemd/doh-server.service
+}
+
+build(){
+        cd $srcdir/$_pkgname
+        make
+}
+
+package(){
+        cd $srcdir/$_pkgname
+        install -Dm755 doh-client/doh-client $pkgdir/usr/bin/doh-client
+        install -Dm755 doh-server/doh-server $pkgdir/usr/bin/doh-server
+
+        install -Dm644 doh-client/doh-client.conf $pkgdir/etc/dns-over-https/doh-client.conf
+        install -Dm644 doh-server/doh-server.conf $pkgdir/etc/dns-over-https/doh-server.conf
+
+        install -Dm644 systemd/doh-client.service $pkgdir/usr/lib/systemd/system/doh-client.service
+        install -Dm644 systemd/doh-server.service $pkgdir/usr/lib/systemd/system/doh-server.service
+
+        install -Dm755 NetworkManager/dispatcher.d/doh-client $pkgdir/etc/NetworkManager/dispatcher.d/doh-client
+        install -Dm755 NetworkManager/dispatcher.d/doh-server $pkgdir/etc/NetworkManager/dispatcher.d/doh-server
+
+        install -Dm644 LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
+}
