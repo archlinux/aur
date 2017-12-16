@@ -11,10 +11,13 @@ license=('GPL')
 depends=('vapoursynth'
          'opencv'
          )
+makedepends=('git')
 source=("${_plug}::git+https://github.com/invisiblearts/VapourSynth-Inpaint.git"
-        'patch.patch')
-sha1sums=('SKIP'
-          'a1bedda17d7025f0131b3e0fb12ac622cdd69f0e')
+        'patch.patch'
+        )
+sha256sums=('SKIP'
+            'f2454d793377b7f6a955d2f939dd83be7005a91025bfdca3b6867e49c172cd1c'
+            )
 
 pkgver() {
   cd "${_plug}"
