@@ -1,7 +1,7 @@
 pkgname='lout-dejavu-git'
 pkgdesc="AFM files and koi8-r mapping for DejaVu TrueType fonts(for Lout)"
 pkgrel=1
-pkgver=b40e7e2
+pkgver=61b4690
 arch=('any')
 license=('GPL3')
 depends=('lout' 'ttf-dejavu')
@@ -16,8 +16,8 @@ pkgver () {
 }
 
 package () {
-    install -d "${pkgdir}/usr/lout"
-    cp -r -t "${pkgdir}/usr/lout"  "${pkgname}/"{data,font,include,maps}
+    install -d "${pkgdir}/usr/lib/lout"
+    cp -r -t "${pkgdir}/usr/lib/lout"  "${pkgname}/"{data,font,include,maps}
 }
 
 # vim:set ts=2 sw=2 et:

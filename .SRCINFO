@@ -1,6 +1,6 @@
 pkgbase = lout-dejavu-git
 	pkgdesc = AFM files and KOI8-R mapping for DejaVu TrueType fonts for Lout
-	pkgver = b40e7e2
+	pkgver = 61b4690
 	pkgrel = 1
 	url = https://github.com/i-kuzmin/lout-dejavu
 	arch = any
