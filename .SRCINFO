@@ -1,6 +1,6 @@
 pkgbase = micro
 	pkgdesc = A modern and intuitive terminal-based text editor
-	pkgver = 1.3.4
+	pkgver = 1.3.3
 	pkgrel = 5
 	url = https://github.com/zyedidia/micro
 	arch = x86_64
@@ -9,8 +9,6 @@ pkgbase = micro
 	depends = go
 	optdepends = xclip: Required for copying/pasting text
 	conflicts = micro-git
-	source = https://github.com/zyedidia/micro/archive/v1.3.4.tar.gz
-	sha256sums = SKIP
 
 pkgname = micro
 
