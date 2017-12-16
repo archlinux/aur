@@ -3,8 +3,8 @@
 # Contributor: menta <attila dot toth at ch dot bme dot hu>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp
-pkgver=24
-_pkgver=1415638
+pkgver=25
+_pkgver=c654792
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
@@ -40,9 +40,9 @@ optdepends=(
   'texlive-core: llppac dvi conversion'
 )
 source=("http://repo.or.cz/llpp.git/snapshot/${_pkgver}.tar.gz")
-md5sums=('d02a01aeb3c25e9ab7254257fe5b5ae4')
-sha1sums=('4c95650d805ce9c23e8c74acb26de299b3a40cb1')
-sha256sums=('eff5ab376582a11e7258e7aab0ed73c5baaabb11bd560f39e26b53568d95c407')
+md5sums=('ffc241761238003f16a7759a129e7c24')
+sha1sums=('85fb6b63ef337f7f0a5847a89accf7a24cb5bdb2')
+sha256sums=('ca4b6e4c27ba57b5af9f8a92b1859f5013987115b3b4b5544931122ed1c74df2')
 options=('!strip')
 
 prepare() {
