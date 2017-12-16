@@ -1,5 +1,5 @@
 pkgname=pipewire-git
-pkgver=0.1.5.4.gaa2a189
+pkgver=0.1.7.34.ge5e360d5
 pkgrel=1
 pkgdesc="Multimedia processing graphs. (GIT version)"
 arch=('i686' 'x86_64')
@@ -29,9 +29,6 @@ pkgver() {
 
 prepare() {
   cd pipewire
-
-  rm -fr src/gst
-  for i in $(find . -type f -name '*meson*'); do sed '/gst/d' -i ${i}; done
 
   ./autogen.sh \
     --prefix "/usr" \
