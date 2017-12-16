@@ -1,6 +1,6 @@
 pkgbase = julia-git
 	pkgdesc = High-level, high-performance, dynamic programming language
-	pkgver = 0.7.0.DEV.r37655.gc492a7d762
+	pkgver = 0.7.0.DEV.r39764.ge89a2b8123
 	pkgrel = 1
 	url = http://julialang.org
 	arch = i686
@@ -19,7 +19,6 @@ pkgbase = julia-git
 	makedepends = mbedtls
 	makedepends = mpfr
 	makedepends = openlibm
-	makedepends = openspecfun
 	makedepends = pcre2
 	makedepends = suitesparse
 	makedepends = patchelf
@@ -31,7 +30,7 @@ pkgbase = julia-git
 	source = git://github.com/JuliaLang/julia.git#branch=master
 	source = Make.user
 	md5sums = SKIP
-	md5sums = 521b7fea33a99adc534eefa04c33578d
+	md5sums = 44824845d81f144da7ad898fd1e973c6
 
 pkgname = julia-git
 	depends = arpack
@@ -45,7 +44,6 @@ pkgname = julia-git
 	depends = mbedtls
 	depends = mpfr
 	depends = openlibm
-	depends = openspecfun
 	depends = pcre2
 	depends = suitesparse
 	depends = patchelf

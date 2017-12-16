@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.7.0.DEV.r37655.gc492a7d762
+pkgver=0.7.0.DEV.r39764.ge89a2b8123
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://julialang.org"
 license=('MIT')
 makedepends=('gcc-fortran' 'git')
 makedepends+=('arpack' 'blas>=3.5.0' 'fftw' 'gmp' 'lapack>=3.5.0' 'libgit2'
-              'libunwind' 'llvm39' 'mbedtls' 'mpfr' 'openlibm' 'openspecfun'
+              'libunwind' 'llvm39' 'mbedtls' 'mpfr' 'openlibm'
               'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme'
               'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
 # Needed if building the documentation
@@ -22,7 +22,7 @@ options=('!emptydirs')
 source=(git://github.com/JuliaLang/julia.git#branch=master
         Make.user)
 md5sums=('SKIP'
-         '521b7fea33a99adc534eefa04c33578d')
+         '44824845d81f144da7ad898fd1e973c6')
 
 
 pkgver() {
@@ -63,7 +63,7 @@ build() {
 package_julia-git() {
   backup=('etc/ld.so.conf.d/julia.conf' 'etc/julia/juliarc.jl')
   depends=('arpack' 'blas>=3.5.0' 'fftw' 'gmp' 'lapack>=3.5.0' 'libgit2'
-           'libunwind' 'llvm39' 'mbedtls' 'mpfr' 'openlibm' 'openspecfun'
+           'libunwind' 'llvm39' 'mbedtls' 'mpfr' 'openlibm'
            'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme'
            'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
   optdepends=('openblas-lapack: multithreaded replacement for lapack'
