@@ -1,0 +1,16 @@
+pkgbase = freeroute-git
+	pkgdesc = Automatic PCB track router for KiCad written by Alfons Wirtz
+	pkgver = 1.2.43.752065a
+	pkgrel = 1
+	url = http://www.freerouting.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime
+	optdepends = kicad: for use with PCB editor
+	noextract = FreeRouting.jar
+	source = https://github.com/freerouting/freerouting/raw/master/binaries/FreeRouting.jar
+	md5sums = 212b8886718d0a7b62b57c51362cdcf7
+
+pkgname = freeroute-git
+
