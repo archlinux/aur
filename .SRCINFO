@@ -1,7 +1,7 @@
 pkgbase = julia-git
 	pkgdesc = High-level, high-performance, dynamic programming language
 	pkgver = 0.7.0.DEV.r39764.ge89a2b8123
-	pkgrel = 1
+	pkgrel = 2
 	url = http://julialang.org
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = julia-git
 	makedepends = git
 	makedepends = arpack
 	makedepends = blas>=3.5.0
-	makedepends = fftw
 	makedepends = gmp
 	makedepends = lapack>=3.5.0
 	makedepends = libgit2
@@ -30,12 +29,11 @@ pkgbase = julia-git
 	source = git://github.com/JuliaLang/julia.git#branch=master
 	source = Make.user
 	md5sums = SKIP
-	md5sums = 44824845d81f144da7ad898fd1e973c6
+	md5sums = 88c5523c984fe3dcd03a746c882a691c
 
 pkgname = julia-git
 	depends = arpack
 	depends = blas>=3.5.0
-	depends = fftw
 	depends = gmp
 	depends = lapack>=3.5.0
 	depends = libgit2
@@ -52,6 +50,7 @@ pkgname = julia-git
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	optdepends = openblas-lapack: multithreaded replacement for lapack
+	optdepends = fftw: If using the FFTW package from julia
 	optdepends = gnuplot: If using the Gaston Package from julia
 	provides = julia
 	conflicts = julia
