@@ -4,15 +4,16 @@
 pkgbase=python-pychromecast
 _pkgname=pychromecast
 pkgname=('python-pychromecast' 'python2-pychromecast')
-pkgver=0.8.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc='Library for Python 2 and 3 to communicate with the Google Chromecast'
 arch=('any')
 url=https://github.com/balloob/pychromecast
 license=('MIT')
-makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
+makedepends=('python' 'python-setuptools'
+             'python2' 'python2-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('72442b2a3d9742587a9f7b11b3f502a8929c07b34332dc5197b75a0da0cd8f96fb896c044454fb77c8deaaebc00891070a7c5d27568696d69252c7e4139627fb')
+sha512sums=('48f0d7ae9fb00f4c5c469d805ae70ff612f7b2b47399cd568d2445998da248e33879af5e80406f63c312ef75732780375aca2ab0b9abf64158b8be05d80cf0d5')
 
 prepare() {
   cp -a $_pkgname-$pkgver{,-py2}
@@ -27,7 +28,7 @@ build() {
 }
 
 package_python-pychromecast() {
-  depends=('python' 'python-protobuf' 'python-requests' 'python-zeroconf')
+  depends=('python' 'python-protobuf' 'python-requests' 'python-zeroconf' 'python-six')
   cd $_pkgname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 -t "$pkgdir"/usr/share/$pkgname/examples examples/*
@@ -35,7 +36,7 @@ package_python-pychromecast() {
 }
 
 package_python2-pychromecast() {
-  depends=('python2' 'python2-protobuf' 'python2-requests' 'python2-zeroconf')
+  depends=('python2' 'python2-protobuf' 'python2-requests' 'python2-zeroconf' 'python2-six')
   cd $_pkgname-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 -t "$pkgdir"/usr/share/$pkgname/examples examples/*
