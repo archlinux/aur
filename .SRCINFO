@@ -1,9 +1,16 @@
 pkgbase = micro
-	pkgdesc = This package is deprecated
-	pkgver = 1.3.3
-	pkgrel = 4
+	pkgdesc = A modern and intuitive terminal-based text editor
+	pkgver = 1.3.4
+	pkgrel = 5
 	url = https://github.com/zyedidia/micro
+	arch = x86_64
+	arch = i686
 	license = MIT
+	depends = go
+	optdepends = xclip: Required for copying/pasting text
+	conflicts = micro-git
+	source = https://github.com/zyedidia/micro/archive/v1.3.4.tar.gz
+	sha256sums = SKIP
 
 pkgname = micro
 
