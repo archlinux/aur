@@ -2,9 +2,9 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=3
-arch=("i686" "x86_64")
+arch=("x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/olear/openfx-arena"
 license=("GPL2")
