@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaard
-pkgver=0.10.0 
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
 arch=(i686 x86_64)
@@ -44,5 +44,5 @@ package() {
   ln -sr /usr/bin/${pkgname} $pkgdir/opt/openbazaar-go/${pkgname}
 }
 
-md5sums=('ec9596f95fb0c0812f4d13135c284a50'
+md5sums=('5fc9d28716c230abf7659a5ab70fb4f1'
          '9737f9240006f5b215b128c25f68f6f4')
