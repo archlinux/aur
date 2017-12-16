@@ -3,12 +3,12 @@
 _pkgname=thunar-dropbox
 pkgname=${_pkgname}-git
 pkgver=0.2.1.r2.g61ba51b
-pkgrel=1
-pkgdesc="Plugin for thunar that adds context-menu items for dropbox."
+pkgrel=2
+pkgdesc="Thunar plugin that adds dropbox context-menu (patched for thunarx-3)"
 arch=('i686' 'x86_64')
 url="https://github.com/Maato/thunar-dropbox"
 license=('GPL3')
-depends=('thunar-git')
+depends=('thunar>=1.7.0' 'dropbox')
 makedepends=('python2' 'git')
 source=("${_pkgname}::git+https://github.com/Maato/thunar-dropbox"
         'thunarx-3-port.patch::https://github.com/twa022/thunar-dropbox/commit/2da13dc73c56cea4a1d3de19c4917467954f985d.patch')
