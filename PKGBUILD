@@ -2,7 +2,7 @@
 
 pkgname=color-oracle
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Design for the color impaired, a color blindness simulator'
 arch=('any')
 url='http://colororacle.org/index.html'
@@ -12,7 +12,7 @@ source=("http://colororacle.org/ColorOracleJar.zip"
         "https://github.com/nvkelso/color-oracle-java/blob/master/LICENSE.txt"
         "${pkgname}")
 sha256sums=('174a211edd1350ed41bb1c033d7999083295f6979d4c63c1f57041bdd8c843a4'
-            '6c98d1923f6e9a33f4b53b984a98614771620f9afdc0483374eedae2038b9357'
+            '5495bcea55ee29ce5c9de4841fe5755637e0dcd2965d514ecba8ebcfce5be75d'
             '7b4227c3c71276ae29909fab3c8726fc951192f88c9a3e705283dbb73033d984')
 
 package() {
