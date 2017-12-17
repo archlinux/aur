@@ -1,0 +1,11 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = boot/%KERNEL%
+Target = usr/lib/initcpio/*
+
+[Action]
+Description = Updating linux-x205ta-sound initcpios...
+When = PostTransaction
+Exec = /usr/bin/mkinitcpio -p linux-x205ta-sound

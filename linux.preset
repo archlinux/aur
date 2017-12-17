@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-x205ta-sound' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/%KERNEL%"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/%INITRD%"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/%INITRD%-fallback.img"
+fallback_options="-S autodetect"
