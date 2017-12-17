@@ -7,6 +7,37 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
+# Optionally select a sub architecture by number if building in a clean chroot
+# Leaving this entry blank will require user interaction during the build 
+# which will cause a failure to build if using makechrootpkg. Note that the
+# generic (default) option is 23.
+#
+#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
+#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
+#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
+#  4. AMD Barcelona (MBARCELONA)
+#  5. AMD Bobcat (MBOBCAT)
+#  6. AMD Jaguar (MJAGUAR)
+#  7. AMD Bulldozer (MBULLDOZER)
+#  8. AMD Piledriver (MPILEDRIVER)
+#  9. AMD Steamroller (MSTEAMROLLER)
+#  10. AMD Excavator (MEXCAVATOR)
+#  11. AMD Zen (MZEN)
+#  12. Intel P4 / older Netburst based Xeon (MPSC)
+#  13. Intel Atom (MATOM)
+#  14. Intel Core 2 (MCORE2)
+#  15. Intel Nehalem (MNEHALEM)
+#  16. Intel Westmere (MWESTMERE)
+#  17. Intel Silvermont (MSILVERMONT)
+#  18. Intel Sandy Bridge (MSANDYBRIDGE)
+#  19. Intel Ivy Bridge (MIVYBRIDGE)
+#  20. Intel Haswell (MHASWELL)
+#  21. Intel Broadwell (MBROADWELL)
+#  22. Intel Skylake (MSKYLAKE)
+#  23. Generic-x86-64 (GENERIC_CPU)
+#  24. Native optimizations autodetected by GCC (MNATIVE)
+_subarch=
+
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
 # actually run slower with NUMA enabled. Most users will want to set this option
 # to enabled ... in other words, do not use NUMA on a single CPU system.
@@ -40,7 +71,7 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.14
 pkgver=4.14.6
-pkgrel=2
+pkgrel=3
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -174,7 +205,11 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   # get kernel version
-  make prepare
+  if [ -n "${_subarch}" ]; then
+    yes "$_subarch" | make oldconfig
+  else
+    make prepare
+  fi
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
