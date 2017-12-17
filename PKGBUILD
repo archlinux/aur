@@ -1,18 +1,18 @@
 # Maintainer: zargbell <zargbell@yandex.ru>
 
 _target=aarch64-elf
-_pkgdate=2017.08
-_pkgver=7.1
+_pkgdate=2017.11
+_pkgver=7.2
 
 pkgname=${_target}-newlib-linaro-bin
-pkgver=2.5.0
+pkgver=${_pkgdate}
 pkgrel=1
 epoch=
 pkgdesc="A C standard library implementation intended for use on embedded systems ARM64 (bare metal)"
 arch=('x86_64')
 url="http://www.linaro.org/downloads/"
 license=('BSD')
-groups=(${_target}-linaro-toolchain-bin)
+groups=(${_target}-toolchain-linaro-bin)
 depends=()
 makedepends=()
 checkdepends=()
@@ -25,7 +25,7 @@ options=(!emptydirs !strip)
 install=
 changelog=
 source=(http://releases.linaro.org/components/toolchain/binaries/${_pkgver}-${_pkgdate}/${_target}/sysroot-newlib-linaro-${_pkgdate}-${_target}.tar.xz)
-sha512sums=('de8860a939721c588484072d293b98a892669cc8b5b0089c41a82f2cdab136a38b502e5f180537e5ce59fe80cffab6dc396895c6d9bf9b6e32ce6d076688290c')
+sha512sums=('9cafca6170639b261edb235bee148fc1da17225bd6f0910afef51049c6f24c54066cb3f5b007e398cc2b961a3f8b1775738d94775b89523480b0f0b1f5c4c72a')
 
 
 package() {
