@@ -5,24 +5,24 @@
 
 pkgname='cplex'
 pkgdesc="A commercial solver for mathematical optimization problems."
-pkgver=12.7.1
+pkgver=12.8
 pkgrel=1
 arch=('x86_64')
 url='https://www.ibm.com/software/products/de/ibmilogcpleoptistud'
 license=('custom')
-makedepends=('python2-setuptools') # 'python-setuptools'
+makedepends=('python2-setuptools' 'python-setuptools')
 depends=('gcc-libs')
 optdepends=(
 	'python2: for Python2 bindings'
-#	'python: for Python bindings'
+	'python: for Python bindings'
 )
 options=('!strip')
 
-_basename="cplex_studio${pkgver}.linux-${arch/_/-}"
+_basename="cplex_studio${pkgver//./}.linux-${arch/_/-}"
 _installer="${_basename}.bin"
 _archdir="${arch/_/-}_linux"
 
-source=(${_installer} installer.properties.template)
+source=("file://${_installer}" installer.properties.template)
 
 prepare() {
 	chmod +x "${_installer}"
@@ -40,7 +40,6 @@ package() {
 	cd "${srcdir}/${_basename}"
 
 	# Install binaries.
-	install -Dm755 "./cplex/bin/${_archdir}/convert" "${pkgdir}/usr/bin/cplex-convert"
 	install -Dm755 "./cplex/bin/${_archdir}/cplex" "${pkgdir}/usr/bin/cplex"
 	install -Dm755 "./cplex/bin/${_archdir}/cplexamp" "${pkgdir}/usr/bin/cplexamp"
 
@@ -58,15 +57,14 @@ package() {
 	cd "../../../../"
 
 	# Install Python bindings.
-	# Currently, CPLEX does not support Python 3.6.
-	#cd "./cplex/python/3.5/${_archdir}/"
-	#python3 setup.py install --root="${pkgdir}/" --optimize=1
-	#cd "../../../../"
+	cd "./cplex/python/3.6/${_archdir}/"
+	python3 setup.py install --root="${pkgdir}/" --optimize=1
+	cd "../../../../"
 
 	# Install documentation.
 	install -dm755 "${pkgdir}/usr/share/licenses/cplex"
 	install -m644  "./license/"*.txt "${pkgdir}/usr/share/licenses/cplex/"
 }
 
-md5sums=('c4b6170db9b64c0afa5dbb48bfba79fa'
+md5sums=('1cb4b29131433491a95efd73b145b821'
          'f295f6c4ecd0f3a6d2fdca21788efd0f')
