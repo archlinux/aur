@@ -10,11 +10,12 @@ arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
 depends=(
-	'perl-xml-compile>=1.50'
+	'perl-xml-compile>=1.58'
 	'perl-xml-compile-tester>=0.90'
 	'perl-xml-compile-cache>=1.03'
 	'perl-log-report>=1.05'
 	'perl-libwww>=6.08'
+	'perl-net-http>=6.16'
 	'perl-file-slurp-tiny')
 source=([% source %])
 options=(!emptydirs)
@@ -22,7 +23,7 @@ md5sums=('[% md5sums %]')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" MODULEBUILDRC=/dev/null
+	export PERL_MM_USE_DEFAULT=1
 }
 
 build() {
