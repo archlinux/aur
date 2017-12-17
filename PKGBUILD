@@ -5,10 +5,10 @@
 pkgname=mar-git
 _gitname=mar
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An intuitive syntax mass file renamer'
 
-url='http://dev.0x7be.de/mar.html'
+url='https://github.com/4w/mar'
 arch=('any')
 license=('GPL')
 
@@ -17,11 +17,11 @@ makedepends=('git')
 
 branch='master'
 
-source=("git://github.com/dsohler/mar.git#branch=$branch"
-		"mar.1")
+source=("git://github.com/4w/mar.git#branch=$branch"
+        'mar.1')
 
 sha256sums=('SKIP'
-			'6b6fe3691becdd9e7750a2bc9f71042fbe65adeb44a8af5c5d1cf136cb783256')
+            '6b6fe3691becdd9e7750a2bc9f71042fbe65adeb44a8af5c5d1cf136cb783256')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
