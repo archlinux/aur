@@ -1,16 +1,15 @@
 pkgbase = openfx-misc
 	pkgdesc = Miscellaneous OpenFX plugins
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://github.com/devernay/openfx-misc
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = libgl
 	optdepends = openfx-gmic-bin
 	optdepends = natron-plugins
-	source = openfx-misc::git+https://github.com/devernay/openfx-misc.git#tag=Natron-2.3.3
+	source = openfx-misc::git+https://github.com/devernay/openfx-misc.git#tag=Natron-2.3.4
 	source = git+https://github.com/devernay/openfx.git
 	source = git+https://github.com/devernay/openfx-supportext.git
 	sha512sums = SKIP
