@@ -8,7 +8,6 @@ arch=('any')
 url="https://coinb.in/"
 license=('MIT')
 depends=('bash')
-makedepends=('nodejs-grunt-cli')
 source=("${pkgname}::git+https://github.com/OutCast3k/coinbin.git"
   "coinbin.sh"
   "coinbin.desktop")
