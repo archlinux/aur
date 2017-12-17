@@ -1,9 +1,8 @@
 pkgbase = openhantek-git
 	pkgdesc = Qt5 UI for Hantek DSO2xxx/DSO52xx/6022BE/BL oscilloscopes. Including firmware
-	pkgver = r145.5913ecb
+	pkgver = r175.85aa946
 	pkgrel = 1
 	url = http://www.openhantek.org/
-	install = openhantek-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0
