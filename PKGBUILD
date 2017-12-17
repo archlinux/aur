@@ -1,9 +1,9 @@
 # Maintainer: Guillaume Brogi <gui-gui at netcourrier dot com>
 pkgname=python-pybitbucket_fork-git
 pkgver=r378.6a2fba5
-pkgrel=1
-provides=('python-pybitbucket')
-conflicts=('python-pybitbucket')
+pkgrel=2
+provides=('python-pybitbucket' 'python-pybitbucket_fork')
+conflicts=('python-pybitbucket' 'python-pybitbucket_fork')
 pkgdesc="Tool for managing remote repositories from your git CLI!"
 arch=('any')
 url="https://github.com/guyzmo/pybitbucket"

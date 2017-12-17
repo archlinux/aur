@@ -1,7 +1,7 @@
 pkgbase = python-pybitbucket_fork-git
 	pkgdesc = Tool for managing remote repositories from your git CLI!
 	pkgver = r378.6a2fba5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guyzmo/pybitbucket
 	arch = any
 	license = GPL2
@@ -17,7 +17,9 @@ pkgbase = python-pybitbucket_fork-git
 	depends = python-simplejson
 	depends = python-voluptuous
 	provides = python-pybitbucket
+	provides = python-pybitbucket_fork
 	conflicts = python-pybitbucket
+	conflicts = python-pybitbucket_fork
 	source = python-pybitbucket_fork-git::git+https://github.com/guyzmo/pybitbucket
 	sha256sums = SKIP
 
