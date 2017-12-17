@@ -19,7 +19,6 @@ pkgbase = mpv-build-git
 	makedepends = fontconfig
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
-	makedepends = cuda
 	depends = desktop-file-utils
 	depends = fribidi
 	depends = hicolor-icon-theme
