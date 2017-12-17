@@ -1,42 +1,37 @@
-# Maintainer: David Parrish <daveparrish@gmail.com>
+# Maintainer: David Parrish <daveparrish@tutanota.com>
 
-pkgname=bitaddress-git
-pkgver=3.2.3.r0.gaf91e78
+pkgname=coinbin-git
+pkgver=1.3.r7.g64af126
 pkgrel=1
-pkgdesc="JavaScript Client-Side Bitcoin Wallet Generator"
+pkgdesc="A Open Source Browser Based Bitcoin Wallet"
 arch=('any')
-url="https://www.bitaddress.org"
+url="https://coinb.in/"
 license=('MIT')
 depends=('bash')
 makedepends=('nodejs-grunt-cli')
-source=("${pkgname}::git+https://github.com/pointbiz/bitaddress.org.git"
-  "bitaddress.sh"
-  "bitaddress.desktop")
-sha256sums=("SKIP"
-  "a5798c819761e4367e307c2eba3d29232b65b6f44ae80827fbd18783a55acd7e"
-  "5208ec3016cf12a7f1b1d62802cd488817aa3cef26fb7e672b52251cd40af276")
+source=("${pkgname}::git+https://github.com/OutCast3k/coinbin.git"
+  "coinbin.sh"
+  "coinbin.desktop")
+sha256sums=('SKIP'
+            '3f4cdb3fe4226a4bfceaa5924eb267c5fcd02ae5818c2003e00d6883563e2079'
+            '1b74d74c6b476afe2a012a9a7e02edd0c1e635dc712262a7add22d6befe4a614')
 
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cd "${srcdir}/${pkgname}"
-  npm install
-  grunt
-}
-
 package() {
-  # Install License (License is in README)
-  install -Dm644 $pkgname/README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
+  # Install License
+  install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # Install html file
-  install -Dm644 $pkgname/bitaddress.org.html "$pkgdir/usr/share/$pkgname/bitaddress.org.html"
+  # Install coinbin application files
+  mkdir -p "$pkgdir/usr/share/$pkgname"
+  cp -r $pkgname/* "$pkgdir/usr/share/$pkgname"
 
   # Install binary
-  install -Dm755 bitaddress.sh "${pkgdir}/usr/bin/bitaddress"
+  install -Dm755 coinbin.sh "${pkgdir}/usr/bin/coinbin"
 
   # Install desktop launcher
-  install -Dm644 bitaddress.desktop "${pkgdir}/usr/share/applications/bitaddress.desktop"
+  install -Dm644 coinbin.desktop "${pkgdir}/usr/share/applications/coinbin.desktop"
 }

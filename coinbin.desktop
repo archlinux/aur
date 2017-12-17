@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Coinbin
+Type=Application
+Comment=A Open Source Browser Based Bitcoin Wallet
+Exec=coinbin
+Categories=Utility;Finance;
+GenericName=A Open Source Browser Based Bitcoin Wallet
