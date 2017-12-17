@@ -3,7 +3,7 @@
 
 pkgname=deepspeech
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture"
 arch=('x86_64')
 url="https://github.com/mozilla/DeepSpeech"
@@ -29,7 +29,7 @@ prepare() {
   export TF_NEED_VERBS=0
   export TF_NEED_OPENCL=0
   export TF_NEED_MPI=0
-  ln -s ../DeepSpeech-${pkgver}/native_client ./
+  ln -sf ../DeepSpeech-${pkgver}/native_client ./
 }
 
 build() {
@@ -37,9 +37,13 @@ build() {
   export CC_OPT_FLAGS="-march=x86-64"
   export TF_NEED_CUDA=0
   ./configure
-  bazel build -c opt --copt=-O3 //tensorflow:libtensorflow_cc.so //tensorflow:libtensorflow_framework.so //native_client:deepspeech //native_client:deepspeech_utils //native_client:libctc_decoder_with_kenlm.so //native_client:generate_trie
+  bazel build -c opt --copt=-O3 //tensorflow:libtensorflow_cc.so //tensorflow:libtensorflow_framework.so //native_client:deepspeech //native_client:deepspeech_utils //native_client:ctc_decoder_with_kenlm //native_client:generate_trie
+
+  cd "${srcdir}/DeepSpeech-${pkgver}/native_client"
+  make deepspeech
 }
 
 package() {
-  echo "todo"
+  cd "${srcdir}/DeepSpeech-${pkgver}/native_client"
+  PREFIX=${pkgdir}/usr/local make install
 }
