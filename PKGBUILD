@@ -2,17 +2,19 @@
 
 _pkgname=biboumi
 pkgname="$_pkgname-git"
-pkgver=r1087.5ba66c3
+pkgver=r1207.044a1a0
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://biboumi.louiz.org/"
 license=('ZLIB')
-depends=('expat' 'libidn' 'udns' 'botan' 'sqlite')
-makedepends=('git' 'cmake' 'pandoc')
+depends=('expat' 'libidn' 'udns' 'botan')
+makedepends=('git' 'cmake' 'pandoc' 'sqlite' 'postgresql-libs')
+optdepends=('sqlite: For the SQLite backend.'
+            'postgresql-libs: For the PostgreSQL backend.')
 backup=("etc/$_pkgname/$_pkgname.cfg")
 install="$_pkgname.install"
-source=("$_pkgname::git+https://git.louiz.org/biboumi.git"
+source=("$_pkgname::git+https://lab.louiz.org/louiz/biboumi.git"
         'biboumi.install'
         'sysuser.conf')
 md5sums=('SKIP'
