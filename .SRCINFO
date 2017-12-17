@@ -1,18 +1,23 @@
 pkgbase = gog-jazz-jackrabbit-2-secret-files
 	pkgdesc = Jazz Jackrabbit 2 Collection. GOG version (Wine).
 	pkgver = 1.24hf_16886
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gog.com/game/jazz_jackrabbit_2_collection
 	arch = x86_64
 	license = custom
 	makedepends = lgogdownloader>=2.25
+	makedepends = wget
+	makedepends = grep
+	makedepends = coreutils
 	depends = wine
 	source = setup_jazz_jackrabbit_2_1.24hf_(16886).exe::gogdownloader://jazz_jackrabbit_2_secret_files/en1installer0
+	source = jazz-jackrabbit-2-secret-files.png::gogicon://jazz_jackrabbit_2_secret_files
 	source = jazz-jackrabbit-2-secret-files.bash
 	source = jazz-jackrabbit-2-secret-files.desktop
 	sha512sums = df6fc47abf24aaa1895df5f897f698b53865fdc499e2454e07b273eddc8fcdeeebe8fc2992292fb27e077da252d3d5728823ce6a2e83412c150fb8742a52116f
+	sha512sums = 333138a7f999c4e4dbab53acd57c323f5147f17850ab28d479c123bfb0dd83947069de5ee9dd8044cabfb9b8319f17a6fe47f6e7062e7fb705d84e3f3094d081
 	sha512sums = b0562ec86e51da42fe8985058b66d82e215e28c64f8df8a2141eb26f738603256bd9d88475c32efd4447ff4040917309de1ebc0b6e7de341475b1a260f0be242
-	sha512sums = fe00e70800986a37b2b02bb175fe6589dd1f00f216b3c5c858d669f901b12b4022eda64e5c618d99767d01b16de9c70c77c17fc7c474dd52ff98e85d5726e13c
+	sha512sums = 58814bf283e3a551f068ae9abbc196e6f393377d806a46802c8e771ffa97b2640010675408877a4052a2989576f31ce88aa47a8c2c4b282e71f6716fdf8e5ae6
 
 pkgname = gog-jazz-jackrabbit-2-secret-files
 
