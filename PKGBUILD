@@ -6,7 +6,7 @@ _pkgname=idos-timetable-additionalinfo-chaps-mhd-idsjmk
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_5_24
-pkgrel=3
+pkgrel=4
 pkgdesc="Photographs of some stops within the IDSJMK (Brno region) public transport area, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
@@ -36,8 +36,10 @@ conflicts=(
   "${_pkgname}"
 )
 
+_target="cidsjmk.zip"
+
 source=(
-  "cidsjmk.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/CIDSJMK.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/CIDSJMK.ZIP"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
@@ -49,7 +51,9 @@ sha256sums=(
 )
 
 pkgver() {
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File CIDSJMK.ZIP\(.*\)Zip/CIDSJMK.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+  date -r "${srcdir}/${_target}" +"%Y_%m_%d"
+
+  # wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File CIDSJMK.ZIP\(.*\)Zip/CIDSJMK.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
 }
 
 
