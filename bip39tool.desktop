@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BIP 39 Tool
+Type=Application
+Comment=A tool for converting BIP39 mnemonic phrases to addresses and private keys
+Exec=bip39tool
+Categories=Utility;Finance;
+GenericName=A tool for converting BIP39 mnemonic phrases to addresses and private keys
