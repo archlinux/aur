@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-pid-2018-latest
 	pkgdesc = 2017/2018 Timetable data for the timetable search engines by CHAPS: Trains in Praha public transport reagion (PID).
 	pkgver = 2017_12_12
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
