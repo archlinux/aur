@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-browser-license-installer
 pkgname="${_pkgname}-latest"
 epoch=1
-_pkgver=2016_2017
+_pkgver=2017_2018
 pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation."
@@ -40,9 +40,10 @@ conflicts=(
 
 replaces=("${_pkgname}<=${pkgver}")
 
+_target="iwin.zip"
 
 source=(
-  "iwin.zip::ftp://ttakt.chaps.cz/TTAktual/Win/Zip/IWIN.ZIP"
+  "${_target}::ftp://ttakt.chaps.cz/TTAktual/Win/Zip/IWIN.ZIP"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "copying.txt"
   "installer_settings.inf"

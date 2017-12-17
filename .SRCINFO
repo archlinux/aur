@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-browser-license-installer-latest
 	pkgdesc = If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation.
-	pkgver = 2016_2017
+	pkgver = 2017_2018
 	pkgrel = 1
 	epoch = 1
 	url = http://www.chaps.cz/eng/download/idos-install/
@@ -11,11 +11,11 @@ pkgbase = idos-timetable-browser-license-installer-latest
 	makedepends = unzip
 	makedepends = wine
 	depends = idos-timetable-browser
-	provides = idos-timetable-browser-license-installer=2016_2017
-	provides = idos-timetable-browser-license=2016_2017
+	provides = idos-timetable-browser-license-installer=2017_2018
+	provides = idos-timetable-browser-license=2017_2018
 	conflicts = idos-timetable-browser-license-installer
 	conflicts = idos-timetable-browser-license
-	replaces = idos-timetable-browser-license-installer<=2016_2017
+	replaces = idos-timetable-browser-license-installer<=2017_2018
 	source = iwin.zip::ftp://ttakt.chaps.cz/TTAktual/Win/Zip/IWIN.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = copying.txt
