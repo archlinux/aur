@@ -1,13 +1,13 @@
 pkgbase = mar-git
 	pkgdesc = An intuitive syntax mass file renamer
 	pkgver = 2.0.2
-	pkgrel = 2
-	url = http://dev.0x7be.de/mar.html
+	pkgrel = 3
+	url = https://github.com/4w/mar
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = python>=3.0
-	source = git://github.com/dsohler/mar.git#branch=master
+	source = git://github.com/4w/mar.git#branch=master
 	source = mar.1
 	sha256sums = SKIP
 	sha256sums = 6b6fe3691becdd9e7750a2bc9f71042fbe65adeb44a8af5c5d1cf136cb783256
