@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-zsr-europe+sk-2018-latest
 	pkgdesc = 2017/2018 Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by ŽSR.
 	pkgver = 2017_12_14
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-cp2017-2018-a-aktualizacia-dat-na-stiahnutie.html?page_id=5772
 	arch = any
