@@ -1,12 +1,12 @@
 pkgname=soundconverter-git
-pkgver=3.0.0+beta1
+pkgver=3.0.0+beta1+1+g9919e80
 pkgrel=1
 pkgdesc="A simple sound converter application for GNOME"
 arch=('any')
 url="http://soundconverter.org/"
 license=('GPL3')
 depends=('python-gobject' 'gst-python' 'gst-plugins-ugly' 'desktop-file-utils' 'gst-plugins-good')
-makedepends=('git' 'intltool' 'gnome-common')
+makedepends=('git')
 provides=('soundconverter')
 conflicts=('soundconverter')
 source=("git+https://github.com/kassoulet/soundconverter.git")
