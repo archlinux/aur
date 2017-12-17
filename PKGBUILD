@@ -1,7 +1,7 @@
 # Maintainer: Flat <Flat@imo.uto.moe>
 pkgname=parallel-rust
 pkgver=0.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Inspired by GNU Parallel, a command-line CPU load balancer written in Rust."
 arch=('i686' 'x86_64')
 url="https://github.com/mmstick/parallel"
@@ -14,7 +14,7 @@ source=("https://github.com/mmstick/parallel/archive/$pkgver.tar.gz")
 md5sums=('03645f9059b24493716f7e9ff64241e9')
 
 prepare() {
-  CARGO_HOME=$srcdir/rust RUSTUP_HOME=$srcdir/rust rustup default nightly
+  CARGO_HOME=$srcdir/rust RUSTUP_HOME=$srcdir/rust rustup override set nightly
   CARGO_HOME=$srcdir/rust RUSTUP_HOME=$srcdir/rust rustup target add $CARCH-unknown-linux-musl
 }
 
