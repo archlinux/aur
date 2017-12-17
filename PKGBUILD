@@ -4,8 +4,8 @@
 
 _name=twmn
 pkgname="${_name}-git"
-pkgver=182.1d9c9cc
-pkgrel=3
+pkgver=186.5b92ac5
+pkgrel=1
 pkgdesc="A notification system for tiling window managers"
 arch=('any')
 url="https://github.com/sboli/twmn"
