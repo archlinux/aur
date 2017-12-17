@@ -1,15 +1,17 @@
-# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
+# Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lutris-git
-pkgver=0.4.7.1.r12.3a69635c
+pkgver=0.4.14.r14.bb3bc122
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
-         'python-dbus' 'python-gobject' 'python-yaml' 'xdg-user-dirs')
+         'python-dbus' 'python-gobject' 'python-yaml' 'python-evdev'
+         'lib32-sqlite')
 makedepends=('git' 'python-setuptools')
 optdepends=(
   'python-evdev: Detecting connected joypads.'
