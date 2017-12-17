@@ -1,0 +1,13 @@
+pkgbase = ffmpegthumbnailer-mp3
+	pkgdesc = A very simple integration of ffmpeg to generate thumbnails from mp3(audio/mpeg) files
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Marco98/ffmpegthumbnailer-mp3
+	arch = any
+	makedepends = git
+	depends = ffmpeg
+	source = git://github.com/Marco98/ffmpegthumbnailer-mp3#tag=v1.1
+	md5sums = SKIP
+
+pkgname = ffmpegthumbnailer-mp3
+
