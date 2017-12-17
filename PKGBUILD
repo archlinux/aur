@@ -9,7 +9,7 @@ _pkgname="idos-timetable-data-zsr-sk-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2017_12_14
-pkgrel=1
+pkgrel=2
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the offline railway and other public transport timetable search engines by CHAPS: Slovak train data, provided by ŽSR."
 arch=(any)
 # url="http://www2.zsr.sk/pre-cestujucich/elis-vas-pocitac/instalacny-program-elis-k-cestovnemu-poriadku-cp-2016-2017-vnutrostatne-spoje-2.html"
@@ -71,13 +71,14 @@ sha256sums=(
 )
 
 pkgver() {
-  date -r "${srcdir}/${_target0}" +"%Y_%m_%d"
+  # Do not use metadata of the source file, but do website parsing: So we do not need to download the file to (AUR-)update the package version with our own crude hacked script 'idos-aur-update-versions.sh'.
+  #date -r "${srcdir}/${_target0}" +"%Y_%m_%d"
   
-  # _day="$(basename "${_source0}" .exe | cut -d- -f4)"
-  # _month="$(basename "${_source0}" .exe | cut -d- -f3)"
-  # _year="$(basename "${_source0}" .exe | cut -d- -f2)"
-  # 
-  # echo "${_year}_${_month}_${_day}"
+  _day="$(basename "${_source0}" .exe | cut -d- -f4)"
+  _month="$(basename "${_source0}" .exe | cut -d- -f3)"
+  _year="$(basename "${_source0}" .exe | cut -d- -f2)"
+  
+  echo "${_year}_${_month}_${_day}"
 }
 
 
