@@ -1,0 +1,28 @@
+pkgbase = ros-kinetic-costmap-converter
+	pkgdesc = ROS : converts costmaps
+	pkgver = 0.0.7
+	pkgrel = 1
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = pkg-config
+	makedepends = ros-kinetic-catkin
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-costmap-2d
+	depends = ros-kinetic-cv-bridge
+	depends = ros-kinetic-dynamic-reconfigure
+	depends = ros-kinetic-pluginlib
+	depends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-nav-msgs
+	depends = ros-kinetic-message-generation
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-std-msgs
+	depends = python2-rospkg
+	options = !makeflags
+	source = ros-kinetic-costmap-converter::git+https://github.com/rst-tu-dortmund/costmap_converter.git#tag=
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-costmap-converter
+
