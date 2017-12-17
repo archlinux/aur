@@ -3,7 +3,7 @@ pkgname=postgis-svn
 pkgver=r16091
 pkgrel=1
 
-pkgdesc="Postgres GIS extensions (from git)"
+pkgdesc="Postgres GIS extensions (from svn)"
 url="http://postgis.net/"
 license=('GPL')
 
