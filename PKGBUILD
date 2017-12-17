@@ -3,14 +3,14 @@
 pkgname=gnocl-gconf
 _pkgname=gnoclGconf
 pkgver=0.9.95
-pkgrel=1
+pkgrel=2
 pkgdesc="Tcl/GTK+ bindings, GnoclGconf module"
 arch=("i686" "x86_64")
 license=('custom')
 url="http://www.gnocl.org/"
 depends=('gnocl' 'tcl' 'gtk2' 'libglade' 'libgnomeui')
 makedepends=()
-source=("https://launchpad.net/~dr-graef/+archive/gnocl.precise/+files/${pkgname}_${pkgver}.orig.tar.gz"
+source=("https://launchpad.net/~dr-graef/+archive/ubuntu/pure-lang.xenial/+files/${pkgname}_${pkgver}.orig.tar.gz"
 	"$pkgname-$pkgver.patch")
 md5sums=('67e59d0cf87b537debfca38d83e27dad'
          '436a48474e9f28abf403c6659744cd99')
