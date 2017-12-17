@@ -2,7 +2,7 @@
 # Contributor: Eduardo Sánchez Muñoz
 pkgname=nlohmann-json-git
 _name="${pkgname%-git}"
-pkgver=2.1.1+603+gcc937dea
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Header-only JSON library for Modern C++'
 url='https://github.com/nlohmann/json'

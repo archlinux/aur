@@ -1,6 +1,6 @@
 pkgbase = nlohmann-json-git
 	pkgdesc = Header-only JSON library for Modern C++
-	pkgver = 2.1.1+603+gcc937dea
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/nlohmann/json
 	arch = x86_64
