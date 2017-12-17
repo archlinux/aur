@@ -2,7 +2,7 @@
 
 pkgname=ibazel-git
 pkgver=master
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for building Bazel targets when source files change.'
 arch=('i686' 'x86_64')
 url=https://github.com/bazelbuild/bazel-watcher
