@@ -1,21 +1,21 @@
-# Contributor: Lex Black <autumn-wind at web dot de>
-# Contributor: Mark Huo <markhuomian at gmail dot com>
+# Maintainer: Doron Behar <doron.behar@gmail.com>
 
 pkgname=git-repo
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="Tool for managing remote repositories from your git CLI!"
 arch=('any')
 url="https://github.com/guyzmo/git-repo"
 license=('GPL2')
-depends=('python' 'python-docopt' 'python-progress' 'python-dateutil'
-         'python-lxml' 'python-gitpython' 'python-github3' 'python-gitlab>=0.18'
-         'python-gogs-client' 'python-pybitbucket_fork-git')
+depends=('python' 'python-docopt' 'python-progress' 'python-dateutil' 'python-lxml' 'python-gitpython' 'python-github3' 'python-gitlab' 'python-gogs-client' 'python-pybitbucket_fork' 'python-attrs')
+confilcts=('git-repo-git')
+replaces=('git-repo-git')
 makedepends=('python-setuptools' 'python-pip')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('f6e4f8a1b12b6920d5b75dfc8cd3d70bd5c187f7ad95c12eba52d6fad63eb286')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('a9439f1aad6fc8c83baafcee0913b3b2')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --root="${pkgdir}" --optimize=1
+	cd "$srcdir/$pkgname-${pkgver}"
+	python setup.py install --root="${pkgdir}" --optimize=1
 }
+
