@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-additionalinfo-chaps-mhd-pid-latest
 	pkgdesc = Photographs of some stops within the PID (Praha region) public transport area, to be used with the timetable search engines by CHAPS.
 	pkgver = 2017_3_24
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvainf
 	arch = any

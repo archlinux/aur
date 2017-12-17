@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2017-12-17.
 
 _pkgname=idos-timetable-additionalinfo-chaps-mhd-pid
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2017_3_24
-pkgrel=1
+pkgrel=3
 pkgdesc="Photographs of some stops within the PID (Praha region) public transport area, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
@@ -36,8 +36,10 @@ conflicts=(
   "${_pkgname}"
 )
 
+_target="cpid.zip"
+
 source=(
-  "cpid.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/CPID.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/CPID.ZIP"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
