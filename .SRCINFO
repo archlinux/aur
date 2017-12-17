@@ -1,6 +1,6 @@
 pkgbase = tizonia-all
 	pkgdesc = Command-line cloud music player for Linux with Spotify, Google Play Music, YouTube, SoundCloud, and Dirble support
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://www.tizonia.org
 	arch = x86_64
@@ -27,7 +27,6 @@ pkgbase = tizonia-all
 	depends = alsa-lib
 	depends = libpulse
 	depends = boost
-	depends = dbus-c++
 	depends = check
 	depends = python2-pafy
 	depends = log4c
@@ -36,8 +35,8 @@ pkgbase = tizonia-all
 	depends = python2-soundcloud-git
 	depends = python2-youtube-dl-git
 	depends = python2-pychromecast-git
-	source = tizonia-openmax-il-0.10.0.tar.gz::https://github.com/tizonia/tizonia-openmax-il/archive/v0.10.0.tar.gz
-	md5sums = d26f2e50f8c7bd3b8dbbc7b26a82c594
+	source = tizonia-openmax-il-0.11.0.tar.gz::https://github.com/tizonia/tizonia-openmax-il/archive/v0.11.0.tar.gz
+	md5sums = fe53ce96f527244bb3286bc4c7a632af
 
 pkgname = tizonia-all
 
