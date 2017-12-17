@@ -1,7 +1,7 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
 pkgname=ib-controller
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=0
 pkgdesc='Manages headless Interactive Brokers IB Gateway instances'
 arch=('any')
@@ -17,7 +17,7 @@ source=('https://github.com/ib-controller/ib-controller/releases/download/3.4.0/
 	'edemo.ini'
   	'ibcontroller@.service')
 md5sums=('4e91b8df02123842aef9f211c5e0a4ff'
-         '795a7c605ffa180af4cafbe3f2fa9e4b'
+         '7e1c811c0f6bb1bdc7e98ca77d8676bf'
          '15f1ba10df1fa29068630eeea9e72bfa'
          '2a8c16170d102c855778921cd0391c19'
          'f1038408283433b18a5cb39b30019fe6')
