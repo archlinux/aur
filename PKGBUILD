@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2017-12-17.
 
 _pkgname=idos-timetable-lang-en
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20160720
-pkgrel=2
+pkgrel=3
 pkgdesc="English language ressource file for railway/ public transport timetable search engines by CHAPS."
 arch=(any)
 license=('custom')
@@ -28,8 +28,10 @@ provides=(
 replaces=()
 conflicts=()
 
+_target="ttakt.zip"
+
 source=(
-  "ttakt.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/TTAKT.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/TTAKT.ZIP"
   "TTC-TTe.bdelta.xz"
   "copying.info.txt"
   "license_cc-nc-1.0.html"

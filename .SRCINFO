@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-lang-en
 	pkgdesc = English language ressource file for railway/ public transport timetable search engines by CHAPS.
 	pkgver = 20160720
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	arch = any
 	groups = idos-timetable
