@@ -1,18 +1,21 @@
 pkgbase = customizepkg
-	pkgdesc = A new attempt at evolving customizepkg.
-	pkgver = 0.0.1
+	pkgdesc = A tool to modify automatically PKGBUILD
+	pkgver = 57.f1d7be7
 	pkgrel = 1
 	url = https://github.com/tucho/customizepkg
 	arch = any
-	license = none
+	license = GPL
 	depends = bash
+	depends = diffutils
+	optdepends = vim: for vimdiff
+	optdepends = colordiff: for colored diff output
 	provides = customizepkg
-	conflicts = customizepkg-git
+	conflicts = customizepkg
+	conflicts = customizepkg-ald
 	conflicts = customizepkg-patching
-	conflicts = custpmizepkg-scripting
-	backup = etc/customizepkg.d/
-	source = https://github.com/tucho/customizepkg/archive/0.0.1.tar.gz
-	sha256sums = 313be366a0fa6c20de5618f3c3896608891ff2e382ffff06ea8ff7cf9a98bab6
+	conflicts = customizepkg-scripting
+	source = git+https://github.com/tucho/customizepkg.git
+	sha1sums = SKIP
 
 pkgname = customizepkg
 
