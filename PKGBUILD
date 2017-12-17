@@ -38,7 +38,16 @@ build() {
         # release is needed to get the full dummy and xml2object plugins
 	#qmake CONFIG+=release pgmodeler.pro
 	qmake pgmodeler.pro
- 	make
+ 	make || true
+	# Temporary ugly fix for https://bugreports.qt.io/browse/QTBUG-65251
+	cd libpgmodeler_ui/src
+	for i in *.h
+	do
+		sed -i 's/setShortcut(QLatin1String/setShortcut(QKeySequence/' $i
+	done
+	cd -
+	make
+
 }
 
 package() {
