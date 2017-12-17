@@ -1,6 +1,6 @@
 pkgbase = gradio
 	pkgdesc = A GTK3 app for finding and listening to internet radio stations
-	pkgver = 6.0.2
+	pkgver = 7.0
 	pkgrel = 1
 	url = https://github.com/haecker-felix/gradio
 	arch = i686
@@ -24,12 +24,12 @@ pkgbase = gradio
 	depends = libgee
 	depends = sqlite3
 	depends = libsoup
-	provides = gradio=6.0.2
+	provides = gradio=7.0
 	conflicts = gradio-git
 	conflicts = gradio-bin
 	options = !emptydirs
-	source = https://github.com/haecker-felix/gradio/archive/v6.0.2.tar.gz
-	sha256sums = 941b8abea901699f3110894ada34c74a51df518c6b83ea6cd237ffcac18e2092
+	source = https://github.com/haecker-felix/gradio/archive/v7.0.tar.gz
+	sha256sums = d5cee5749491b2fcad893f1856d6f8ff90345c35e51f5ae2692c14f3de6decef
 
 pkgname = gradio
 
