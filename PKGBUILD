@@ -1,7 +1,7 @@
 # Maintainer: Greg White <gwhite@kupulau.com> 
 pkgname=postgis-src
 _pkgname=${pkgname}
-pkgver=2.3.0
+pkgver=2.4.2
 pkgrel=2
 pkgdesc="Postgres GIS extensions (from source)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('gtk2-appmenu: for GTK support')
 provides=("$_pkgname=$pkgver")
 conflicts=($_pkgname postgis)
 source=("http://download.osgeo.org/postgis/source/postgis-${pkgver}.tar.gz")
-sha256sums=('0dbff06f4a196d49e5ac06ae6cc21bd5253aaa646af624c9bbf19df582d6cf55')
+sha256sums=('23625bc99ed440d53a20225721095a3f5c653b62421c4d597c8038f0d7a321d9')
 
 build() {
   cd postgis-${pkgver}
