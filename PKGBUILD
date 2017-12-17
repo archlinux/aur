@@ -1,53 +1,55 @@
+# Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
+# Contributer: Alessandro Gario
+
 pkgname=manuskript-git
-pkgver=0
-pkgrel=3
+_pkgname=manuskript
+pkgver=0.6.0.r0.gd32ee37
+pkgrel=1
 arch=('any')
 
 pkgdesc="Manuskript is an open-source tool for writers (git version)."
 url="http://www.theologeek.ch/manuskript"
 license=('GPL3')
 
-makedepends=('git')
-depends=('python' 'python-pyqt5' 'qt5-svg' 'python-lxml' 'python-pyenchant' 'hunspell-en')
 provides=('manuskript')
-conflicts=('manuskript' 'manuskript-git')
+conflicts=('manuskript')
+
+makedepends=('git' 'gendesk')
+depends=('python-pyqt5' 'qt5-svg' 'python-lxml')
+optdepends=(
+    'python-pyenchant: spell check support'
+    'python-markdown: export as html'
+    'pandoc: more export formats'
+)
 
 source=("${pkgname}::git+https://github.com/olivierkes/manuskript#branch=master")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git log -1 --date=format:%Y%m%d --pretty=format:%ad_%h
+  cd "${srcdir}/${pkgname}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# base desktop launcher, missing only the icon
-read -r -d '' _base_desktop_launcher << EndOfMessage
-[Desktop Entry]
-Comment=An open-source tool for writers.
-Name=Manuskript
-Terminal=false
-Type=Application
-EndOfMessage
+
+prepare() {
+    # generate a desktop file
+    gendesk -f -n --pkgname ${_pkgname} --pkgdesc "${pkgdesc}" --exec="${_pkgname} %U"
+
+    # add the custom icon
+    printf "\nIcon=/opt/${_pkgname}/icons/Manuskript/icon-512px.png" >> "${_pkgname}.desktop"
+}
+
 
 package() {
-    local install_location="/opt"
-    local bin_location="/usr/local/bin"
 
-    # program files
-    local pkg_install_location="${pkgdir}${install_location}"
-    mkdir -p "$pkg_install_location"
-    rsync -av "${srcdir}/${pkgname}/" "${pkg_install_location}/Manuskript" --exclude '.git'
+    # copy all the files
+    mkdir -p "${pkgdir}/opt/${_pkgname}/"
+    cp -R ${srcdir}/${pkgname}/* "${pkgdir}/opt/${_pkgname}"
 
-    # symlink to the binary folder
-    local pkg_bin_location="${pkgdir}${bin_location}"
-    mkdir -p "$pkg_bin_location"
-    ln -s "${install_location}/Manuskript/bin/manuskript" "${pkg_bin_location}/manuskript"
+    # symlink the runner to $path
+    mkdir -p "${pkgdir}/usr/bin/"
+    ln -s "/opt/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-    # desktop launcher
-    mkdir -p "${pkgdir}/usr/share/applications"
-
-    local desktop_launcher_file="${pkgdir}/usr/share/applications/manuskript.desktop"
-    printf "$_base_desktop_launcher" > "$desktop_launcher_file"
-    printf "\nIcon=${install_location}/Manuskript/icons/Manuskript/icon-512px.png" >> "$desktop_launcher_file"
-    printf "\nExec=${install_location}/Manuskript/bin/manuskript %%U" >> "$desktop_launcher_file"
+    # install the desktop launcher
+    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
