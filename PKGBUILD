@@ -23,7 +23,6 @@ source=(ftp://ftp.springer.de/pub/tex/latex/llncs/latex2e/llncs2e.zip
 http://www.springer.com/cda/content/document/cda_downloaddocument/svmult.zip
 http://www.springer.com/cda/content/document/cda_downloaddocument/svmono.zip
 ftp://ftp.springer.de/pub/tex/latex/svjour3/global.zip
-ftp://ftp.springer.de/pub/tex/latex/lnicst/styles/sprmindx.sty
 ftp://ftp.springer.de/pub/tex/latex/lnicst/styles/svlnicst.clo
 ftp://ftp.springer.de/pub/tex/latex/lnicst/styles/svmultln.cls)
 
@@ -60,7 +59,6 @@ package() {
 }
 
 md5sums=('SKIP'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
