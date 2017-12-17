@@ -54,7 +54,6 @@ pkgbase = mpv-build-git
 	depends = v4l-utils
 	depends = vulkan-icd-loader
 	depends = xdg-utils
-	depends = vapoursynth
 	optdepends = mpv-bash-completion-git: Additional completion definitions for Bash users
 	optdepends = nvidia-utils: for hardware accelerated video decoding with CUDA
 	optdepends = youtube-dl: Another way to view youtuve videos with mpv
