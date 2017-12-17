@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2017-12-17.
 
 _pkgname=idos-timetable-additionalinfo-chaps-mhd-idsjmk
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_5_24
-pkgrel=4
+pkgrel=6
 pkgdesc="Photographs of some stops within the IDSJMK (Brno region) public transport area, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
@@ -51,9 +51,9 @@ sha256sums=(
 )
 
 pkgver() {
-  date -r "${srcdir}/${_target}" +"%Y_%m_%d"
+  # date -r "${srcdir}/${_target}" +"%Y_%m_%d"
 
-  # wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File CIDSJMK.ZIP\(.*\)Zip/CIDSJMK.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File CIDSJMK.ZIP\(.*\)Zip/CIDSJMK.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
 }
 
 
