@@ -2,14 +2,14 @@
 # Contributor: Benjamin Asbach <archlinux-aur.lxd@impl.it>
 
 pkgname=lxd
-pkgver=2.19
+pkgver=2.20
 pkgrel=2
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
 license=('APACHE')
 conflicts=('lxd-lts')
-depends=('lxc' 'squashfs-tools' 'dnsmasq')
+depends=('lxc' 'squashfs-tools' 'dnsmasq' 'sqlite')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 optdepends=(
@@ -22,7 +22,6 @@ optdepends=(
 source=(
     "https://github.com/lxc/$pkgname/archive/$pkgname-$pkgver.tar.gz"
     "lxd.service"
-
     "dnsmasq-lxd.conf"
     "dnsmasq@lxd.service"
     "lxd.netctl"
@@ -30,7 +29,7 @@ source=(
     "networkmanager-dnsmasq-lxd.conf"
 )
 
-md5sums=('e9a59a5255287d50be7d9e2f7d87e1bb'
+md5sums=('f77a393a9b8236d49d42914abc49e33b'
          '5dde136f2fbcdf5773a011a39c82cfc6'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
          '15ae1bc51684d611bded2839ca55a37b'
