@@ -2,7 +2,7 @@
 # Maintainer: Maddie Zhan <maddie@emzee.be>
 
 pkgname=overture
-pkgver=1.3.6rc2
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="A DNS upstream switcher written in Go in order to purify DNS records"
 arch=("i686" "x86_64" "armv6h" "armv7h")
