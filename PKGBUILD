@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2017-12-17.
 
 _pkgname=idos-timetable-tariff-chaps-trains-cz+sk
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2017_11_14
-pkgrel=1
+pkgrel=2
 pkgdesc="Tariff data for the timetable search engines by CHAPS: Czech ans Slovak trains."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatar"
@@ -42,8 +42,10 @@ conflicts=(
   "idos-timetable-tariff-trains-cz"
 )
 
+_target='vlak_p.zip'
+
 source=(
-  "vlak_p.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK_P.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK_P.ZIP"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
