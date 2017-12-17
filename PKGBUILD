@@ -14,7 +14,7 @@ depends=('mingw-w64-crt' 'mingw-w64-pdcurses')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 license=('GPL')
-url="https://cnswww.cns.cwru.edu/php/chet/readline/rltop.html"
+url="https://tiswww.case.edu/php/chet/readline/rltop.html"
 source=("https://ftp.gnu.org/gnu/readline/readline-${_basever}.tar.gz"{,.sig}
         "readline-1.patch")
 if [ $_patchlevel -gt 00 ]; then
