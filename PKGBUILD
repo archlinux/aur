@@ -1,12 +1,14 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2017-12-17.
+
+_year=18
 
 _pkgname=idos-timetable-data-chaps-trains-common
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2017_11_15
-pkgrel=1
+pkgrel=3
 pkgdesc="Common files needed for train timetable data for the timetable search engines by CHAPS."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -35,8 +37,10 @@ conflicts=(
   "${_pkgname}"
 )
 
+_zipfile="VLAK${_year}C.ZIP"
+
 source=(
-  "vlak17c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK17C.ZIP"
+  "vlakc.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
@@ -48,7 +52,7 @@ sha256sums=(
 )
 
 pkgver() {
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File VLAK17C.ZIP\(.*\)Zip/VLAK17C.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
 }
 
 
