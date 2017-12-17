@@ -1,8 +1,8 @@
 # Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
 
-pkgname='macos-icon-theme'
+pkgname=macos-icon-theme
 pkgver=4.1.5
-pkgrel=5
+pkgrel=6
 pkgdesc='macOS Icons Theme'
 arch=('any')
 url='https://www.opendesktop.org/p/1102582/'
@@ -23,5 +23,5 @@ prepare() {
 }
 
 package() {
-    find */ -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/icons/{}" \;
+    find */ -type f -exec install -Dm644 '{}' $pkgdir/usr/share/icons/'{}' \;
 }
