@@ -1,0 +1,18 @@
+pkgbase = pyruse
+	pkgdesc = Route systemd-journal logs to filters and actions (ban, report, etc.)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://yalis.fr/git/yves/pyruse
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.1
+	depends = python-systemd
+	optdepends = nftables: for the action_nftBan module
+	optdepends = smtp-forwarder: for the action_email and action_dailyReport modules
+	source = git+https://yalis.fr/git/yves/pyruse.git#tag=1.0
+	sha1sums = SKIP
+
+pkgname = pyruse
+
