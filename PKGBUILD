@@ -10,7 +10,7 @@ url="https://github.com/Enrico204/Whatsapp-Desktop"
 provides=('whatsapp-desktop')
 arch=('x86_64')
 license=('MIT')
-depends=('libnotify' 'gconf')
+depends=('libnotify' 'gconf' 'gtk2' 'lib32-libxss')
 source=(
   "${url}/releases/download/${_pkgver}/WhatsApp-linux-x64.tar.gz"
   "whatsapp-desktop.desktop"
