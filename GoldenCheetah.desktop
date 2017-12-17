@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=3.3.0
+Type=Application
+Name=GoldenCheetah
+Comment=Cycling Power Analysis Software.
+TryExec=/usr/bin/GoldenCheetah
+Exec=GoldenCheetah
+Icon=/usr/share/pixmaps/gc.png
+Keywords=Cycling;Training;Bike;Ride
+
