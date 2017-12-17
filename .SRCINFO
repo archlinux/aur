@@ -1,6 +1,6 @@
 pkgbase = iease-music
 	pkgdesc = Elegant neteaseMusic desktop app, Rock with NeteaseMusic.
-	pkgver = 1.0.3
+	pkgver = 1.0.9
 	pkgrel = 0
 	url = https://github.com/trazyn/ieaseMusic
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = iease-music
 	depends = python
 	depends = alsa-lib
 	depends = java-environment
-	source = https://github.com/trazyn/ieaseMusic/releases/download/v1.0.3/ieaseMusic-1.0.3-linux-x86_64.rpm
-	sha1sums = 6dedb45af650e30f5d8af74aa20632eb4a059b7c
+	source = https://github.com/trazyn/ieaseMusic/releases/download/v1.0.9/ieaseMusic-1.0.9-linux-x86_64.rpm
+	sha1sums = 33ef11563e0e192d043c0288c2af7f492254001f
 
 pkgname = iease-music
 
