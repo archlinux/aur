@@ -70,8 +70,8 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14.6
-pkgrel=3
+pkgver=4.14.7
+pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -108,7 +108,7 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'c75b40f450f147014a08987949aafb71d9fcd3e91e443f5c8e4edbf1bbc386c6'
+            '5c286695439b4a1a2c7a112cf41aae0441b03ef41dfe83a0d61161c16dc265f5'
             'SKIP'
             '565f14038a4e781bdf3914dd374fb16553d7925dd3ead14e8b72c9d308828b45'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
