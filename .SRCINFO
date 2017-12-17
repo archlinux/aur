@@ -1,0 +1,23 @@
+pkgbase = gog-jazz-jackrabbit-2-christmas-chronicles
+	pkgdesc = Jazz Jackrabbit 2 Collection. GOG version (Wine).
+	pkgver = 1.2x_16742
+	pkgrel = 1
+	url = https://www.gog.com/game/jazz_jackrabbit_2_collection
+	arch = x86_64
+	license = custom
+	makedepends = lgogdownloader>=2.25
+	makedepends = wget
+	makedepends = grep
+	makedepends = coreutils
+	depends = wine
+	source = setup_jazz_jackrabbit_2_cc_1.2x_(16742).exe::gogdownloader://jazz_jackrabbit_2_christmas_chronicles/en1installer0
+	source = jazz-jackrabbit-2-christmas-chronicles.png::gogicon://jazz_jackrabbit_2_christmas_chronicles
+	source = jazz-jackrabbit-2-christmas-chronicles.bash
+	source = jazz-jackrabbit-2-christmas-chronicles.desktop
+	sha512sums = fafce9bb318903970b8ba8e3c08cd261c748180158c162db4f67408d12b436a1a091b2423e2df0859e6c65df5ffe1e7e07d370089b6ebf70f8fc32ff5c260a86
+	sha512sums = 5c91782b50c53b04a4d11931da34136fbb79e2fe5fd3e77cbb43c4b8ff3e5e84975e2c4b8a9fc1f12aeaed96d265342c87b75e0700ac6dd5ad62ba805fc7ed81
+	sha512sums = 641d3cc6afe3d4863f0f4fa7928b595bbba34a05eb583d796c5a6f1daf8177d1fa93a651be0622ab70001f35b7c5a58ae4dcd10b189cc6756637dc65ad0a88ec
+	sha512sums = f6193a29364d4dd07c224596c6a5da6115aed322fa768db430a95e491656473fa805c969e7d97957938b0ad16ed40d93e1e54bc5507882e7b71e686a7e9a902d
+
+pkgname = gog-jazz-jackrabbit-2-christmas-chronicles
+

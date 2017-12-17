@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Jazz Jackrabbit 2: The Christmas Chronicles
+Version=1.2x
+Comment=Jazz Jackrabbit 2: The Christmas Chronicles (GOG.com, Wine)
+Exec=/usr/bin/jazz-jackrabbit-2-christmas-chronicles
+Icon=/usr/share/pixmaps/jazz-jackrabbit-2-christmas-chronicles.png
+Type=Application
+StartupNotify=false
+Categories=Game;
