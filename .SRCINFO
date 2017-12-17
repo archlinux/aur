@@ -1,6 +1,6 @@
 pkgbase = ruby-xcodeproj
 	pkgdesc = Create and modify Xcode projects from Ruby.
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/cocoapods/xcodeproj
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = ruby-xcodeproj
 	depends = ruby-colored2<4
 	depends = ruby-nanaimo>=0.2.3
 	depends = ruby-nanaimo<0.3
-	noextract = xcodeproj-1.5.3.gem
+	noextract = xcodeproj-1.5.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/xcodeproj-1.5.3.gem
-	sha1sums = 8081484c82cb52ec20c981a12ac9be287b2e551e
+	source = https://rubygems.org/downloads/xcodeproj-1.5.4.gem
+	sha1sums = 01e4701281afeba545fe29ffe382635a770906d1
 
 pkgname = ruby-xcodeproj
 

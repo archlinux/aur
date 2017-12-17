@@ -3,7 +3,7 @@
 
 _gemname=xcodeproj
 pkgname=ruby-$_gemname
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='Create and modify Xcode projects from Ruby.'
 arch=(any)
@@ -19,7 +19,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('8081484c82cb52ec20c981a12ac9be287b2e551e')
+sha1sums=('01e4701281afeba545fe29ffe382635a770906d1')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
