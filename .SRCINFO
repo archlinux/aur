@@ -1,0 +1,19 @@
+pkgbase = kerberosio-machinery
+	pkgdesc = An image processing framework, which uses your USB-, IP- or RPi-camera to recognize events (e.g. motion).
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/kerberos-io/machinery
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = CC-NC-ND
+	makedepends = cmake
+	makedepends = autoconf
+	makedepends = automake
+	source = https://github.com/kerberos-io/machinery/archive/v2.4.0.tar.gz
+	source = 0001-Avoid-using-TLS.patch
+	sha1sums = 08a4a99af75152055696aecae9d09c083d2c1c98
+	sha1sums = 79502d1498b507064e7485c743d9f2dc8b5062c4
+
+pkgname = kerberosio-machinery
+
