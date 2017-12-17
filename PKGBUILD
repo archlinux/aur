@@ -1,8 +1,8 @@
 # Maintainer: SrKaysama <srkaysama@waifu.club>
 
 pkgname=discord-always-canary
-pkgver=0.0.32.20171203
-pkgrel=1
+pkgver=99.0.0
+pkgrel=24
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
