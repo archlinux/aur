@@ -7,7 +7,7 @@ pkgbase = scv
 	arch = i686
 	license = Apache License Version 2.0, January 2004
 	depends = systemc
-	provides = scv
+	provides = scv-systemc
 	source = http://www.accellera.org/images/downloads/standards/systemc/scv-2.0.1.tar.gz
 	md5sums = c8791df7ec64a91d04daa418b77bae2b
 
