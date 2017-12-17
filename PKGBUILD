@@ -5,9 +5,7 @@ pkgname=golden-cheetah-dev
 pkgver=3.5
 pkgrel=1
 _devtag=1710
-pkgdesc="Cycling Power Analysis Software. We believe that cyclists and triathletes should be able to download their power data to the
-computer of their choice, analyze it in whatever way they see fit, and share their methods of
-analysis with others."
+pkgdesc="Cycling Power Analysis Software. Development version."
 arch=('i686' 'x86_64')
 url="http://www.goldencheetah.org/"
 license=('GPL')
