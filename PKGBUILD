@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2017-12-17.
 
 _pkgname=idos-timetable-maps-chaps-trains-europe
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2017_10_17
-pkgrel=1
+pkgrel=2
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvamap"
@@ -42,8 +42,10 @@ conflicts=(
   "idos-timetable-maps-chaps-all"
 )
 
+_target='vlak_m.zip'
+
 source=(
-  "vlak_m.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK_M.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK_M.ZIP"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
