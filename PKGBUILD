@@ -1,36 +1,31 @@
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=trayer
-pkgver=1.0
-pkgrel=8
-pkgdesc="A lightweight GTK2-based systray"
+pkgver=1.1.7
+pkgrel=1
+pkgdesc='lightweight GTK2-based systray for UNIX desktop'
+url='https://github.com/sargon/trayer-srg'
 arch=('x86_64')
-url="https://gna.org/projects/fvwm-crystal/"
-license=('GPL' 'MIT')
+license=('MIT')
 depends=('gtk2')
 makedepends=('libxmu')
-options=('!makeflags')
-source=(http://download.gna.org/fvwm-crystal/trayer/${pkgver}/${pkgname}-${pkgver}.tar.gz
-        trayer.diff manpage.diff)
-sha1sums=('f2657693d196578e3776b0812952dfa1c25878cc'
-          '63459c5f74b8cc137d8a16ab997200025225215c'
-          'eb919fd4a6223034e59e7c9fd0de298d40c91242')
-
-prepare() {
-  cd ${pkgname}-${pkgver}
-  patch -p0 -i ../trayer.diff
-  patch -p1 -i ../manpage.diff
-  sed -i 's/$(LIBS) $(OBJ) $(SYSTRAYOBJ)/$(OBJ) $(SYSTRAYOBJ) $(LIBS) -lX11/' Makefile
-}
+provides=('trayer-srg')
+conflicts=('trayer-srg')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/sargon/trayer-srg/archive/trayer-${pkgver}.tar.gz)
+sha512sums=('5bb049af01c3f3f62dc8a5c1932985b92c98e4e2083aebd1dc09256746e097239be54ebc739801773878882a5c8f168a4a13bdac292388f79079ad52c41b2cad')
 
 build() {
-  cd ${pkgname}-${pkgver}
-  make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+  cd trayer-srg-${pkgname}-${pkgver}
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  make PREFIX="${pkgdir}/usr" install
-  install -D -m644 trayer.1 "${pkgdir}/usr/share/man/man1/trayer.1"
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd trayer-srg-${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+  install -Dm 644 man/trayer.1 -t "${pkgdir}/usr/share/man/man1"
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim: ts=2 sw=2 et:
