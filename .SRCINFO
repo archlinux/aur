@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-inprop-mhd-sk-all-latest
 	pkgdesc = Public transport data of many Slovak cities for the IDOS timetable browser, data provided by INPROP.
 	pkgver = 2017_11_2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://www.inprop.sk/download.aspx
 	arch = any
