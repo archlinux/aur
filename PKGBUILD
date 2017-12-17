@@ -1,6 +1,7 @@
+# Maintainer Marcel Campello <tucho@prafrentex.com.br>
 pkgname=customizepkg
 pkgver=57.f1d7be7
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to modify automatically PKGBUILD" 
 url="https://github.com/tucho/customizepkg" 
 license=('GPL')
