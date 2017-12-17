@@ -1,6 +1,6 @@
 pkgbase = nautilus-folder-icons
 	pkgdesc = Nautilus extension that makes changing folders icons easy!
-	pkgver = 2.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/bil-elmoussaoui/nautilus-folder-icons
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = nautilus-folder-icons
 	depends = gtk3
 	depends = python2-nautilus
 	depends = nautilus
-	provides = nautilus-folder-icons=2.1
+	provides = nautilus-folder-icons=2.1.1
 	options = !emptydirs
-	source = https://github.com/bil-elmoussaoui/nautilus-folder-icons/archive/v2.1.tar.gz
-	sha256sums = 4d51b18fcd7b7d0899ef94279658e88fac5d400f9f6c32bd83bf9d3b943c003d
+	source = https://github.com/bil-elmoussaoui/nautilus-folder-icons/archive/2.1.1.tar.gz
+	sha256sums = e00f1d520b899b5974951c523d5d5a0ed7cac409e1c2b7445284123ea406f6d4
 
 pkgname = nautilus-folder-icons
 
