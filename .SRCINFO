@@ -1,6 +1,6 @@
 pkgbase = yoshimi
 	pkgdesc = a fork of the ZynAddSubFX software systhesizer
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = http://yoshimi.sourceforge.net/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = yoshimi
 	depends = mxml
 	depends = cairo
 	depends = lv2
-	source = yoshimi-1.5.5.tar.gz::https://github.com/Yoshimi/yoshimi/archive/1.5.5.tar.gz
-	md5sums = 35cb5cefaf58922ec48b094b65dc1ec8
+	source = yoshimi-1.5.6.tar.gz::https://github.com/Yoshimi/yoshimi/archive/1.5.6.tar.gz
+	md5sums = 1259f0054e8848208c7db62d462c155f
 
 pkgname = yoshimi
 
