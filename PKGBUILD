@@ -2,12 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=blis-git
-pkgver=0.2.2.123.ga32e8a47
+pkgver=0.2.2.124.g99dee87f
 pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('glibc')
+makedepends=('python2')
 url='https://github.com/flame/blis'
 #provides=('blas=3.5.0' 'cblas')
 #conflicts=('blas' 'cblas')
@@ -24,19 +25,21 @@ prepare() {
 # Determine appropriate BLIS kernel for CPU
   cd "${pkgname%-git}/build/auto-detect"
   _bliskernel="$(./auto-detect.sh)"
+  cd ..
+  sed -i '1s+python$+python2+' flatten-headers.py
 }
 
 build() {
   cd "${pkgname%-git}"
   ./configure -p "${pkgdir}/usr" "${_bliskernel}"
-  make  BLIS_ENABLE_DYNAMIC_BUILD:=yes
+  make BLIS_ENABLE_DYNAMIC_BUILD:=yes
 }
 
-#check() {
-#  cd "${pkgname%-git}"/testsuite
-#  make
-#  ./test_libblis.x
-#}
+check() {
+  cd "${pkgname%-git}"/testsuite
+  make
+  ./test_libblis.x
+}
 
 package() {
   mkdir -p "${pkgdir}/etc/profile.d"
