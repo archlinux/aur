@@ -4,7 +4,7 @@ pkgname=mpv-build-git
 pkgver=v0.27.0.548.g3c4667c862
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
-arch=('i686' 'x86_64' )
+arch=('x86_64' )
 depends=(
          'desktop-file-utils'
          'fribidi'
