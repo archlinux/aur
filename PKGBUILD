@@ -1,7 +1,7 @@
 # Maintainer: Dominik Peteler <archlinux@with-h.at>
 
 pkgname=ldap-account-manager
-pkgver=6.1
+pkgver=6.2
 pkgrel=1
 pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
@@ -17,10 +17,10 @@ source=("http://downloads.sourceforge.net/lam/${pkgname}-${pkgver}.tar.bz2"
         "dont-look-for-alternate-perl.patch"
         "fix-htmldir-and-docdir.patch"
         "apache.example.conf")
-md5sums=('362c4b2b136acbf0803f7af71771fb49'
-         'a9674e38ec4a6e2e8c4c939212c60250'
-         'd32a8d1d4863fe89fda04722404a621f'
-         '288c8e57cc9f701050d35b79d70d66e8')
+sha256sums=('7dbefaf734bb836a0d9ab88cce41e04c25e2a543c45254d33d94250ac2011f6f'
+            '013dd520a357ce39e9eda5169d26c73b48d05c7e73c7ce4377f31ace8f4c88a1'
+            'dc4afc691a53f5ff46eec4ef25cc3d593d7a5a2dcbcde070d54f6554027822b3'
+            '229b281a85770f82f449e1e77ebd26b7583b5bc1266b234c653f2778067b1f34')
 
 _webroot="usr/share/webapps/${pkgname}"
 _confdir="etc/webapps/${pkgname}"
