@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2017-12-17.
 
 _pkgname=idos-timetable-maps-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2017_11_15
-pkgrel=1
+pkgrel=2
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport. Note that some timetables need the purchased version of IDOS to run."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvamap"
@@ -70,8 +70,10 @@ conflicts=(
   "idos-timetable-maps-mhd-zlin"
 )
 
+_target='komplet_m.zip'
+
 source=(
-  "komplet_m.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET_M.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET_M.ZIP"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
