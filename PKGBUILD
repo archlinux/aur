@@ -1,4 +1,4 @@
-# Maintainer: Luca P <meti@lplab.net>
+# Maintainer: Luca P <meti at lplab.net>
 # Contributor: Ammann Max <maximilian.ammann@googlemail.com>
 
 pkgname=golden-cheetah-dev
