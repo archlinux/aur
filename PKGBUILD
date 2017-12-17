@@ -6,7 +6,7 @@ _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=1.27_lib2.9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
@@ -42,9 +42,10 @@ conflicts=("${_pkgname}")
 
 replaces=("${_pkgname}<=${pkgver}")
 
+_target="ttakt.zip"
 
 source=(
-  "ttakt.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/TTAKT.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/TTAKT.ZIP"
   "idos-timetable-browser.sh"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
@@ -78,7 +79,7 @@ package() {
   install -d -m755 "${_instdir}"
 
   cd "${_instdir}" && {
-    unzip "${srcdir}/ttakt.zip"
+    unzip "${srcdir}/${_target}"
     chmod 644 *
     chmod 755 TT.exe
   }
