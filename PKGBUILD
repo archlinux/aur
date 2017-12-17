@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2017-12-17.
 
 _pkgname=idos-timetable-additionalinfo-chaps-bus
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2017_12_11
-pkgrel=1
+pkgrel=3
 pkgdesc="Floor plans of some Czech bus stations/ stops, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
@@ -38,8 +38,10 @@ conflicts=(
   "${_pkgname}"
 )
 
+_target="c2.zip"
+
 source=(
-  "c2.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/C2.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/C2.ZIP"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
@@ -51,6 +53,8 @@ sha256sums=(
 )
 
 pkgver() {
+  # date -r "${srcdir}/${_target}" +"%Y_%m_%d"
+  
   wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File C2.ZIP\(.*\)Zip/C2.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
 }
 
