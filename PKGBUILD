@@ -21,7 +21,7 @@ pkgname=chromium-dev
 pkgver=65.0.3294.5
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.chromium.org'
 license=('BSD')
 depends=(
@@ -116,17 +116,12 @@ _google_api_key="AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM"
 _google_default_client_id="413772536636.apps.googleusercontent.com"
 _google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 
-# Build NaCL?. disabled if detect 32bit system
-# VULKAN!! (seems only build with 64 bits) # https://crbug.com/582558 NOTE: disabled by default
-if [ "${CARCH}" = "i686" ]; then
-  _build_nacl=0
-  _nacl=false
-elif [ "${CARCH}" = "x86_64" ]; then
-  _build_nacl=1
-  _nacl=true
-  _vulkan=0
-  makedepends+=('ncurses5-compat-libs')
-fi
+# Build NaCL
+# VULKAN!! # https://crbug.com/582558 NOTE: disabled by default
+_build_nacl=1
+_nacl=true
+_vulkan=0
+makedepends+=('ncurses5-compat-libs')
 
 # Need you use ccache?.
 if [ "${_use_ccache}" = "1" ]; then
@@ -509,23 +504,18 @@ prepare() {
   if [ "${_use_clang}" = "0" ]; then
     _set_gcc
   elif [ "${_use_clang}" = "1" ]; then
-    if [ "${CARCH}" = 'i686' ]; then
-      _set_gcc
-      _compiler_msg=": Build with (bundled) clang is not possible in 32bit systems."
-    elif [ "${CARCH}" = 'x86_64' ]; then
-      _compiler=Clang
-      _flags+=(
-               'is_clang=true'
-               'clang_use_chrome_plugins=true'
-              )
-      _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
-      _c_compiler="${_clang_path}/clang"
-      _cpp_compiler="${_clang_path}/clang++"
-      export CXXFLAGS="${CXXFLAGS//-fno-plt/}"
-      export CFLAGS="${CFLAGS//-fno-plt/}"
-      CFLAGS+=' -Wno-unknown-warning-option'
-      CXXFLAGS+=' -Wno-unknown-warning-option'
-    fi
+    _compiler=Clang
+    _flags+=(
+             'is_clang=true'
+             'clang_use_chrome_plugins=true'
+            )
+    _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
+    _c_compiler="${_clang_path}/clang"
+    _cpp_compiler="${_clang_path}/clang++"
+    export CXXFLAGS="${CXXFLAGS//-fno-plt/}"
+    export CFLAGS="${CFLAGS//-fno-plt/}"
+    CFLAGS+=' -Wno-unknown-warning-option'
+    CXXFLAGS+=' -Wno-unknown-warning-option'
   fi
 
   # Export compilers
