@@ -2,7 +2,7 @@
 # Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
 
 pkgname=ckb-next-git
-pkgver=0.2.8.r241.ge842da0
+pkgver=0.2.8.r264.g142b307
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git master branch"
@@ -45,4 +45,5 @@ package() {
   install -Dm644 usr/ckb.desktop "${pkgdir}/usr/share/applications/ckb.desktop"
 
   install -Dm644 service/systemd/ckb-daemon.service "${pkgdir}/usr/lib/systemd/system/ckb-daemon.service"
+  install -Dm644 udev/99-ckb-daemon.rules "${pkgdir}/etc/udev/rules.d/99-ckb-daemon.rules"
 }
