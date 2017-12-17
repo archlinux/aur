@@ -1,14 +1,14 @@
 pkgbase = openfx-io
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
 	pkgver = 2.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrKepzie/openfx-io
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = expat
 	makedepends = boost
-	depends = seexpr1
+	depends = seexpr
 	depends = openimageio
 	depends = ffmpeg
 	optdepends = openfx-gmic-bin
