@@ -8,7 +8,7 @@ _pkgname=idos-timetable-data-chaps-trains-common
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2017_11_15
-pkgrel=3
+pkgrel=4
 pkgdesc="Common files needed for train timetable data for the timetable search engines by CHAPS."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -38,9 +38,10 @@ conflicts=(
 )
 
 _zipfile="VLAK${_year}C.ZIP"
+_target="vlak${_year}c.zip"
 
 source=(
-  "vlakc.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
