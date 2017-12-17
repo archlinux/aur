@@ -1,15 +1,15 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 pkgname=usbtop
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="top-like utility that shows an estimated instantaneous bandwidth on USB buses and devices"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/aguinet/usbtop"
 license=('BSD')
 depends=('boost-libs' 'libpcap')
 makedepends=('boost' 'cmake')
 source=("$url/archive/release-$pkgver.tar.gz")
-sha256sums=('93456007b8a6f652e104f552ee2f07a68581be86866cfc6fcd31ddb7310200d9')
+sha256sums=('6283454ccbfecab44276344b6bc1bf74e86808fb9f539ca63eb0447d7741487e')
 
 build() {
 	cd "$pkgname-release-$pkgver"
