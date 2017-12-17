@@ -4,8 +4,8 @@
 
 _pkgname=compton-conf
 pkgname=${_pkgname}-git
-pkgver=0.3.0.3.g34a7cb6
-pkgrel=1
+pkgver=0.3.0.11.gae2c110
+pkgrel=2
 pkgdesc='A graphical configuration tool for Compton X composite manager. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/compton-conf'
@@ -17,14 +17,8 @@ makedepends=('cmake' 'git' 'qt5-tools' 'lxqt-build-tools-git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
-source=(
-	"git+https://github.com/lxde/${_pkgname}.git"
-	'desktop_entry.patch'
-)
-sha512sums=(
-	'SKIP'
-	'1874fd90bb791542440c444d7809a03f651045f2acde7db194d309f67c75d81cacf656912f4b4837fade265994737522a0b51b347fc930296ce6ce70051b020e'
-)
+source=("git+https://github.com/lxde/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
 	# Updating package version
@@ -33,10 +27,6 @@ pkgver() {
 }
 
 prepare() {
-	# Patch desktop entry
-	cd "${srcdir}"/${_pkgname}
-	patch -Np1 < ../desktop_entry.patch
-
 	# Build directory
 	mkdir -p "${srcdir}"/build
 }
