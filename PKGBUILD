@@ -4,14 +4,14 @@ pkgname=gnocl-builder
 pkgver=0.9.96+20130128
 _pkgname=gnoclBuilder
 _pkgver=0.9.96
-pkgrel=1
+pkgrel=2
 pkgdesc="Tcl/GTK+ bindings, GnoclBuilder module"
 arch=("i686" "x86_64")
 license=('custom')
 url="http://www.gnocl.org/"
 depends=('gnocl' 'tcl' 'gtk2' 'libglade' 'libgnomeui')
 makedepends=()
-source=("https://launchpad.net/~dr-graef/+archive/gnocl.precise/+files/${pkgname}_${pkgver}.orig.tar.bz2"
+source=("https://launchpad.net/~dr-graef/+archive/ubuntu/pure-lang.xenial/+files/${pkgname}_${pkgver}.orig.tar.bz2"
 	"$pkgname-$pkgver.patch")
 md5sums=('d5ae4c3fd45554be4840e0434e544445'
          'a3b9f8373b60c75bf112ff07d47388ce')
