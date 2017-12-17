@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2017-12-17.
 
 _pkgname=idos-timetable-additionalinfo-chaps-trains
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2017_12_11
-pkgrel=1
+pkgrel=2
 pkgdesc="Links for additional information on Czech trains and railway stations, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
@@ -40,8 +40,10 @@ conflicts=(
   "${_pkgname}"
 )
 
+_target="c1.zip"
+
 source=(
-  "c1.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/C1.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/C1.ZIP"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )

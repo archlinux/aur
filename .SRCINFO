@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-additionalinfo-chaps-trains-latest
 	pkgdesc = Links for additional information on Czech trains and railway stations, to be used with the timetable search engines by CHAPS.
 	pkgver = 2017_12_11
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvainf
 	arch = any
