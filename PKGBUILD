@@ -589,6 +589,7 @@ package() {
          #
          'natives_blob.bin'
          'snapshot_blob.bin'
+         'v8_context_snapshot.bin'
          )
   for i in "${_libs[@]}"; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
