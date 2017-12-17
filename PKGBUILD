@@ -3,7 +3,7 @@
 
 pkgname=oomox-git
 pkgver=1.4.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Graphical application for generating different color variations
 of Numix and Materia (ex-Flat-Plat) themes (GTK2, GTK3),
 gnome-colors and ArchDroid icon themes.
@@ -141,6 +141,7 @@ package() {
 	mkdir ${pkgdir}/opt/oomox/oomoxify
 	cd ./oomoxify
 	cp -prf \
+		./scripts \
 		./oomoxify.sh \
 			${pkgdir}/opt/oomox/oomoxify
 
