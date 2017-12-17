@@ -1,18 +1,18 @@
 pkgbase = aarch64-elf-gcc-linaro-bin
 	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 EABI (bare-metal) target.
-	pkgver = 7.1
+	pkgver = 7.2
 	pkgrel = 1
 	url = http://www.linaro.org/downloads/
 	arch = x86_64
-	groups = aarch64-elf-linaro-toolchain-bin
+	groups = aarch64-elf-toolchain-linaro-bin
 	license = GPL
 	license = LGPL
 	optdepends = aarch64-elf-newlib-linaro-bin: Standard C library optimized for embedded systems
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = http://releases.linaro.org/components/toolchain/binaries/7.1-2017.08/aarch64-elf/gcc-linaro-7.1.1-2017.08-x86_64_aarch64-elf.tar.xz
-	sha512sums = 28031d413573e3c617b29a516625fe086db9a4d1922ac78682128a5a17d5c5c6de1c93d24394c8e8b50d98bb69fb2811706515be793c64aa0bee3d75183c4b92
+	source = http://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/aarch64-elf/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-elf.tar.xz
+	sha512sums = 4ee6c4f8a0c20dd79a53727d912100e9186120807d81d1dbb8fc8bd38c02d872e3f9c984f9afde9c7a60d998ae0634f6453147295f320a47268553555f5976ac
 
 pkgname = aarch64-elf-gcc-linaro-bin
 
