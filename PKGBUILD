@@ -69,10 +69,10 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.14.6
+pkgver=4.14.7
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -141,7 +141,7 @@ source=(# mainline kernel patches
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'c75b40f450f147014a08987949aafb71d9fcd3e91e443f5c8e4edbf1bbc386c6'
+            '5c286695439b4a1a2c7a112cf41aae0441b03ef41dfe83a0d61161c16dc265f5'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             '4febfb31d404f494aa7dff7d1ae84b9c4410c9559b9ecb45d4e4923ee09ee586'
