@@ -18,6 +18,6 @@ build() {
 
 package() {
   cd bazel-watcher
-  install -Dm755 bazel-bin/ibazel/ibazel "$pkgdir"/usr/bin/ibazel
+  install -Dm755 bazel-bin/ibazel/*/ibazel "$pkgdir"/usr/bin/ibazel
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/ibazel/LICENSE
 }
