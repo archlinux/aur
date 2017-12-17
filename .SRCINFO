@@ -1,9 +1,8 @@
 pkgbase = igb
 	pkgdesc = Driver for Intel Ethernet Network Connection
 	pkgver = 5.3.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/e1000/files/igb%20stable/
-	install = igb.install
 	arch = i686
 	arch = x86_64
 	license = GPL
