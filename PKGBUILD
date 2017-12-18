@@ -19,7 +19,7 @@ pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
 
 pkgver=0.7.4.4.9.70.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-lts-headers=4.9.70" "libelf" "spl-linux-lts-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
