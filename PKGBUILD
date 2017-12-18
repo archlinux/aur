@@ -9,7 +9,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/thombashi/pytablereader/archive/v${pkgver}.tar.gz")
-md5sums=('128ac541f075a953f82b8cda6f4757bf')
+md5sums=('b413490da71dd99e5ab150578c1c7ada')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
