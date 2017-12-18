@@ -1,7 +1,7 @@
 # Maintainer: Mikkel Oscar Lyderik Larsen <m@moscar.net>
 
 pkgname=kubernetes-bin
-pkgver=1.8.2
+pkgver=1.9.0
 _contribver=0.7.0
 pkgrel=1
 pkgdesc="Production-Grade Container Scheduling and Management - binary version."
@@ -22,9 +22,9 @@ backup=('etc/kubernetes/apiserver'
 provides=('kubernetes')
 conflicts=('kubernetes')
 install=kubernetes.install
-sha256sums=('3052c0ce35bd1f8a1500588580947c7f17f09f1ddea3a54466036fd62b46c736'
+sha256sums=('270252f91fdcf303283140c06a8bf7d0b14bae424793fa1d687505ce7dee1566'
             'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
-            '8ccd4912473e0d334694434936a5ca9547caddaa39d771a1fb94620c5d6002d4'
+            'a8d7be19e3b662681dc50dc0085ca12045979530a27d0200cf986ada3eff4d32'
             'f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde')
 
 package() {
@@ -39,7 +39,6 @@ package() {
         hyperkube
         kube-aggregator
         kube-scheduler
-        kubefed
         kubectl
     )
     for bin in "${binaries[@]}"; do
