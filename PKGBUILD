@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=instagram-scraper
-pkgver=1.5.17
+pkgver=1.5.18
 pkgrel=1
 pkgdesc="Scrapes and downloads an instagram user's photos and videos"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-requests' 'python-tqdm')
 makedepends=('python-setuptools')
 checkdepends=('python-nose' 'python-requests-mock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('167bfe3fe7f5a02a56925776253a1b0a78fbd17bffcf729e2043b5fa8c2880fb02febc474cb3fa7e60b606e5a69e252da2be842dca7eab0cd8373e2eac813ca4')
+sha512sums=('e658634e7d1ffafe177fcc5b69b57c29ac3abd0f329c4e8a3199c9e0453d35fc854a5b387472b7f24c034a78fd4b232f52c9ce8882540d28d1e2821b49c042f8')
 
 build() {
   cd $pkgname-$pkgver
