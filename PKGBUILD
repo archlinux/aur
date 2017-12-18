@@ -18,7 +18,7 @@ pkgbase="spl-linux-zen-git"
 pkgname=("spl-linux-zen-git" "spl-linux-zen-git-headers")
 
 pkgver=2017.11.15.r1059.ed19bcc.4.14.6.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-zen-headers=4.14.6-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
