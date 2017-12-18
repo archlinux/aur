@@ -19,7 +19,7 @@ pkgbase="zfs-linux-lts-git"
 pkgname=("zfs-linux-lts-git" "zfs-linux-lts-git-headers")
 
 pkgver=2017.12.18.r3214.bbffb59ef.4.9.70.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-lts-headers=4.9.70-1" "libelf" "git" "spl-linux-lts-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
