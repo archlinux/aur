@@ -1,7 +1,7 @@
 pkgbase = webkitgtk
 	pkgdesc = Legacy Web content engine
 	pkgver = 2.4.11
-	pkgrel = 6
+	pkgrel = 7
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
 	arch = i686
@@ -32,9 +32,11 @@ pkgbase = webkitgtk
 	source = https://webkitgtk.org/releases/webkitgtk-2.4.11.tar.xz
 	source = webkitgtk-2.4.9-abs.patch
 	source = icu59.patch
+	source = enchant-2.x.patch
 	sha256sums = 588aea051bfbacced27fdfe0335a957dca839ebe36aa548df39c7bbafdb65bf7
 	sha256sums = ec294bbb5588a1802a68e3615c6718486b22f922645c5fef686d3d103014bf70
 	sha256sums = eb791b9c8dcb84996904846dedf8c3ddf1a5fde32330177f3f0071510bd8ca6d
+	sha256sums = 81a4ad1c921bece16edb9a3cb187096fd8f336db8b89114356119a86f26e3d6d
 
 pkgname = webkitgtk
 	pkgdesc = Legacy Web content engine for GTK+ 3
