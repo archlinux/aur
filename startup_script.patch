@@ -17,7 +17,7 @@ diff -rupN a/bin/code-oss b/bin/code-oss
 -		VSCODE_PATH="/usr/share/code-oss"
 -	fi
 -fi
-+VSCODE_PATH="/usr/share/code-oss"
++VSCODE_PATH="/usr/share/code-git"
  
  ELECTRON="$VSCODE_PATH/code-oss"
  CLI="$VSCODE_PATH/resources/app/out/cli.js"

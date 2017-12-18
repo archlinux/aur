@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=Visual Studio Code (Open Source)
-Comment=Source code editor and debugger for modern web and cloud applications
-Version=1.0
-Exec="/usr/bin/code-oss" %F
-Icon=/usr/share/code-oss/resources/app/resources/linux/code.png
-Type=Application
-Categories=Development;
