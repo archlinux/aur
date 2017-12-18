@@ -9,7 +9,7 @@ pkgdesc="Use the Emacsclient as the $EDITOR of child processes"
 arch=('any')
 url="http://github.com/${_gitprofile}/${_gitrepo}"
 license=('GPL3')
-depends=('emacs>=24.4' 'emacs-dash=2.13.0')
+depends=('emacs>=24.4')
 provides=('emacs-with-editor')
 install="${pkgname}.install"
 source=("git+https://github.com/${_gitprofile}/${_gitrepo}.git")
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   unset EMACS
   cd "$_gitrepo"
-  make EFLAGS="-L /usr/share/emacs/site-lisp -L /usr/share/emacs/site-lisp/dash -L ${srcdir}/${_gitrepo}/lisp" \
+  make EFLAGS="-L /usr/share/emacs/site-lisp -L ${srcdir}/${_gitrepo}/lisp" \
        lisp info
 }
 

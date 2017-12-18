@@ -7,7 +7,6 @@ pkgbase = emacs-with-editor-git
 	arch = any
 	license = GPL3
 	depends = emacs>=24.4
-	depends = emacs-dash=2.13.0
 	provides = emacs-with-editor
 	source = git+https://github.com/magit/with-editor.git
 	md5sums = SKIP
