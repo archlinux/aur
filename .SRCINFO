@@ -1,0 +1,15 @@
+pkgbase = raknet
+	pkgdesc = Cross platform C++ network library
+	pkgver = 4.081
+	pkgrel = 1
+	url = http://www.jenkinssoftware.com/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	provides = raknet=4.081
+	conflicts = raknet-3.261
+	source = https://github.com/facebookarchive/RakNet/archive/1a169895a900c9fc4841c556e16514182b75faf8.zip
+	sha256sums = 60b53557aa084fb5455c8e2e7efe309738dabe7f9db5c0bc103cf41c8f97c0e0
+
+pkgname = raknet
+
