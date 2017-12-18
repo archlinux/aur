@@ -2,7 +2,7 @@
 
 pkgname=wewechat
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial WeChat client built with React, MobX and Electron.'
 arch=('x86_64')
 url='https://github.com/trazyn/weweChat'
