@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=blis-git
-pkgver=0.2.2.124.g99dee87f
+pkgver=0.2.2.126.g0084531d
 pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('i686' 'x86_64')
@@ -33,12 +33,6 @@ build() {
   cd "${pkgname%-git}"
   ./configure -p "${pkgdir}/usr" "${_bliskernel}"
   make BLIS_ENABLE_DYNAMIC_BUILD:=yes
-}
-
-check() {
-  cd "${pkgname%-git}"/testsuite
-  make
-  ./test_libblis.x
 }
 
 package() {
