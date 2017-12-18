@@ -1,9 +1,8 @@
-# $Id$
 # Contributor: Andrew M Taylor <a.m.taylor303 at gmail dot com>
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=shuriken-git
-pkgver=0.5.1.r43.g202937d
+pkgver=0.5.1.r46.g1adb90b
 pkgrel=1
 pkgdesc="An open source beat slicer"
 url="https://rock-hopper.github.io/shuriken"
