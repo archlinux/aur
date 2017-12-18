@@ -8,7 +8,7 @@
 pkgname="zfs-utils-common-git"
 
 pkgver=2017.12.18.r3214.bbffb59ef
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("")
 makedepends=("git")
@@ -35,7 +35,7 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
                 --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.7.4 \
-                --with-config=user
+                --with-config=user --with-systemd
     make
 }
 
@@ -51,6 +51,8 @@ package() {
     # Autoload the zfs module at boot
     mkdir -p "${pkgdir}/etc/modules-load.d"
     printf "%s\n" "zfs" > "${pkgdir}/etc/modules-load.d/zfs.conf"
+    # fix permissions
+    chmod 750 ${pkgdir}/etc/sudoers.d
     # Install the support files
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
