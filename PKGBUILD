@@ -2,7 +2,7 @@
 
 pkgname=pulse-secure
 pkgver=5.3r3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
 license=(custom)
@@ -24,13 +24,36 @@ prepare() {
     popd
 }
 
+# adapted from ConfigurePulse_x86_64.sh
+update_build_info() {
+    pkgdir=$1
+
+    INSTALLDIR="$pkgdir"/usr/local/pulse
+
+    #We expect the version text in format example "Version: 5.3R3 comment"
+    BUILD_VERSION=`grep "Version: " ${INSTALLDIR}/version.txt | awk '{print $2}'`
+    #Fetch the last Number from the version text
+
+    #Fetch Build Number.
+    BUILD_NUMBER=`grep "Build Number: " ${INSTALLDIR}/version.txt | awk '{print $3}'`
+
+    if [ "X$BUILD_VERSION" != "X" ]; then
+        sed -i "s/BUILD_VERSION/${BUILD_VERSION}/g" ${INSTALLDIR}/html/about.html
+    fi
+
+    if [ "X$BUILD_NUMBER" != "X" ]; then
+        sed -i "s/BUILD_NUMBER/${BUILD_NUMBER}/g" ${INSTALLDIR}/html/about.html
+    fi
+}
+
 package() {
   install -Ddm755 "${pkgdir}"/usr/bin
   install -Ddm755 "${pkgdir}"/usr/local/pulse
   install -Ddm755 "${pkgdir}"/usr/share/applications
   install -Ddm755 "${pkgdir}"/usr/share/licenses/$pkgname
 
-  # Skip PulseClient.sh - seems it's not useful here
+  install -Dm755 usr/local/pulse/PulseClient_x86_64.sh "${pkgdir}"/usr/local/pulse/
+  install -Dm644 usr/local/pulse/{README,version.txt} "${pkgdir}"/usr/local/pulse/
   install -Dm755 pulse/{pulsediag,pulseutil} "${pkgdir}"/usr/local/pulse/
   install -Dm4755 pulse/pulsesvc "${pkgdir}"/usr/local/pulse/
   install -Dm755 pulse/pulseUi_centos_7_x86_64 "${pkgdir}"/usr/local/pulse/pulseUi
@@ -44,4 +67,6 @@ package() {
   cp -dr --no-preserve=ownership pulse/html "${pkgdir}"/usr/local/pulse/html
 
   install -Dm644 EULA.txt "${pkgdir}"/usr/share/licenses/$pkgname/
+
+  update_build_info "$pkgdir"
 }
