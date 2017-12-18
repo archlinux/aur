@@ -18,7 +18,7 @@ build() {
     cmake -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=1 \
           -DXC_MAX_ORDER=3 -DXCFUN_ENABLE_TESTS=0 \
           -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-          -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib ..
+          ..
     make
 }
 
