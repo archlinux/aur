@@ -19,7 +19,7 @@ pkgbase="spl-linux-lts-git"
 pkgname=("spl-linux-lts-git" "spl-linux-lts-git-headers")
 
 pkgver=2017.11.15.r1059.ed19bcc.4.9.70.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-lts-headers=4.9.70-1" "libelf" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
