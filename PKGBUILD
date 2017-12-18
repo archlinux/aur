@@ -17,7 +17,7 @@ build() {
     mkdir -p build
     cd build
     cmake -DWITH_F12=ON -DWITH_RANGE_COULOMB=1 -DWITH_COULOMB_ERF=1 \
-          -DCMAKE_INSTALL_LIBDIR:PATH="/usr/lib" \
+          -DCMAKE_INSTALL_LIBDIR:PATH="lib" \
           -DCMAKE_INSTALL_PREFIX:PATH="/usr" ..
     make
 }
