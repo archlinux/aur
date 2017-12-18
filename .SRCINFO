@@ -1,6 +1,6 @@
 pkgbase = autenticacao-gov-pt
 	pkgdesc = O Autenticação.gov.pt é o mecanismo que permite utilizar o Cartão de Cidadão eficientemente e em segurança nos navegadores que suportem ou não plugins Java
-	pkgver = 2.0.15
+	pkgver = 2.0.23
 	pkgrel = 1
 	url = http://autenticacao.gov.pt/
 	install = autenticacao-gov-pt.install
@@ -11,9 +11,9 @@ pkgbase = autenticacao-gov-pt
 	depends = pcsc-tools
 	depends = ccid
 	source = autenticacao-gov-pt.install
-	source = https://autenticacao.gov.pt/fa/ajuda/software/autenticacao.gov.pt.deb
-	sha1sums = 5ab9a56047d7c28f4797462d67d8c0045e74f7cd
-	sha1sums = 8eb3affd47e49e7eb31bbd8a19f6cabc17045a10
+	source = https://autenticacao.gov.pt/fa/ajuda/software/plugin-autenticacao-gov.deb
+	sha1sums = 6e7d1ed2a60dad888026dd82abbe6199e7d4231b
+	sha1sums = e19e42c20a7d6e63bbf367c9871baf616ef5bf33
 
 pkgname = autenticacao-gov-pt
 

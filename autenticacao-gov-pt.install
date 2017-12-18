@@ -4,9 +4,9 @@ post_install() {
 		echo "Error: Could not find xdg-icon-resource" >&2
 		exit 0
 	fi
-	for icon in "/usr/share/autenticacao-gov-pt/autenticacao_gov_pt_"*.png; do
-		size="${icon##*/autenticacao_gov_pt_}"
-		"$XDG_ICON_RESOURCE" install --size "${size%.png}" "$icon" "autenticacao-gov-pt"
+	for icon in "/usr/share/autenticacao-gov-pt/plugin_autenticacao_gov_"*.png; do
+		size="${icon##*/plugin_autenticacao_gov_}"
+		"$XDG_ICON_RESOURCE" install --size "${size%.png}" "$icon" "plugin-autenticacao-gov"
 	done
 }
 
@@ -20,8 +20,8 @@ post_remove() {
 		echo "Error: Could not find xdg-icon-resource" >&2
 		exit 0
 	fi
-	for icon in "/usr/share/autenticacao-gov-pt/autenticacao_gov_pt_"*.png; do
-		size="${icon##*/autenticacao_gov_pt_}"
-		"$XDG_ICON_RESOURCE" uninstall --size "${size%.png}" "$icon" "autenticacao-gov-pt"
+	for icon in "/usr/share/autenticacao-gov-pt/plugin_autenticacao_gov_"*.png; do
+		size="${icon##*/plugin_autenticacao_gov_}"
+		"$XDG_ICON_RESOURCE" uninstall --size "${size%.png}" "$icon" "plugin-autenticacao-gov"
 	done
-} 
+}
