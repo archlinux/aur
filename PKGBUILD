@@ -1,7 +1,7 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=moneydance
-pkgver=2017.1639
+pkgver=2017.1656
 pkgrel=1
 epoch=
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
@@ -51,5 +51,5 @@ package() {
 }
 md5sums=('5f95567e5a015721c6a80292d173a9e7'
          'a2c3a2f8a672ca93d52cd8d207aef3a5')
-md5sums_i686=('7c923aded0827083117210741fcee0c1')
-md5sums_x86_64=('364394134ad304b12848e87f3a63603f')
+md5sums_i686=('5ea85f09fea5828df6635af0650953f1')
+md5sums_x86_64=('7bf2e3cfde1f93f3f19ecbe6fdf4a29e')
