@@ -1,13 +1,13 @@
 pkgbase = python-pathvalidate
 	pkgdesc = A Python library to validate/sanitize a string such as filenames/variable-names/excel-sheet-names.
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://github.com/thombashi/pathvalidate
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/thombashi/pathvalidate/archive/v0.16.1.tar.gz
+	source = https://github.com/thombashi/pathvalidate/archive/v0.16.2.tar.gz
 	md5sums = 083344c144ed3ebe0e7d82731c2ddbf7
 
 pkgname = python-pathvalidate

@@ -1,6 +1,6 @@
 pkgname='python-pathvalidate'
 _module='pathvalidate'
-pkgver='0.16.1'
+pkgver='0.16.2'
 pkgrel=1
 pkgdesc="A Python library to validate/sanitize a string such as filenames/variable-names/excel-sheet-names."
 url="https://github.com/thombashi/pathvalidate"
