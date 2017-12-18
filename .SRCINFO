@@ -1,6 +1,6 @@
 pkgbase = reaper
 	pkgdesc = digital audio workstation
-	pkgver = 5.
+	pkgver = 5.70
 	pkgrel = 1
 	url = http://www.reaper.fm
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = reaper
 	depends = gdk-pixbuf2
 	depends = gtk3
 	depends = jack
-	source = http://www.landoleet.org/reaper5_linux_x86_64.tar.xz
+	source = http://www.landoleet.org/reaper570_linux_x86_64.tar.xz
 	source = git+http://www-dev.cockos.com/wdl/WDL.git
 	source = https://stash.reaper.fm/30638/reaper-desktop-support.zip
 	sha256sums = 1bba30413e0c1c5e85a525911085749fafcfe8e7308e25b5f4e7c0016b0f103c
