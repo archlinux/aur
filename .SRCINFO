@@ -10,6 +10,7 @@ pkgbase = pubs-git
 	depends = python-configobj
 	depends = python-bibtexparser
 	depends = python-beautifulsoup4
+	depends = python-yaml
 	provides = pubs
 	source = git+https://github.com/pubs/pubs.git
 	md5sums = SKIP
