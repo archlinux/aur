@@ -18,7 +18,7 @@ pkgbase = python-tcconfig
 	depends = python-pyparsing>=2.2.0
 	depends = python-six
 	source = https://github.com/thombashi/tcconfig/archive/v0.17.0.tar.gz
-	md5sums = 84eddd4fc6d18dcb07a7913117f4a9d0
+	md5sums = 2da1b88c7fba61685893f8909ccfd18e
 
 pkgname = python-tcconfig
 
