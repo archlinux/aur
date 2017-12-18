@@ -3,14 +3,14 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=imgmin
 pkgname=$_pkgname-git
-pkgver=1.1.r11.gaadce1a
+pkgver=1.1.r17.g3451031
 pkgrel=1
 pkgdesc="Automated lossy JPEG optimization"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/rflynn/imgmin"
 license=('MIT')
 depends=('imagemagick')
-makedepends=('git')
+makedepends=('git libmagick6')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -23,6 +23,9 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
+
+  # Use libmagick6 with MagickWand-config.
+  sed -i 's~\($(MAGICK_CONFIG\)~PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig \1~g' src/Makefile.am src/apache2/Makefile.am
 
   #fix build issue with Apache module on some systems
   sed -i 's/\(MAGICK_CONFIG.*\?xargs\)/\1|sed "s\/-fopenmp\\s\/\/g"/' src/apache2/Makefile.am
