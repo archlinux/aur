@@ -1,0 +1,1 @@
+It has same files as cups has, so it fails install directly. I needed to force that by `pacman -U --force <package>`.
