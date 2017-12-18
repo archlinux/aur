@@ -3,7 +3,7 @@
 
 pkgname=nteract-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.3.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Interactive literate coding notebook"
 url='https://nteract.io'
@@ -19,9 +19,9 @@ optdepends=('ihaskell-git: support for Haskell'
             'sagemath-jupyter: support for SageMath')
 install=$pkgname.install
 
-source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v0.3.1/nteract_0.3.1_amd64.deb"
+source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v0.4.3/nteract_0.4.3_amd64.deb"
         "LICENSE")
-sha256sums=('4597a1f6cb809043d96870d8fac55bf2db47a2d4905a56e1783096b494b743ae'
+sha256sums=('5a2fab27241082d6fe4d1375ee8a3a33eefdc2cf5e0df0624ad8ab8adc475980'
             '9810f3d57c552d3b3f6c82cb3b6f3402d6faf94fc5a63067fe28360fb3b8b688')
 
 prepare() {
