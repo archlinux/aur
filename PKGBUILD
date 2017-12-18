@@ -1,10 +1,10 @@
 pkgname='python-subprocrunner'
 _module='subprocrunner'
-pkgver='0.8.7'
+pkgver='0.10.0'
 pkgrel=1
 pkgdesc="A Python wrapper library for subprocess module."
 url="https://github.com/thombashi/subprocrunner"
-depends=('python' 'python-logbook>=1.1.0' 'python-mbstrdecoder' 'python-six' 'python-typepy>=0.0.19')
+depends=('python' 'python-logbook>=1.1.0' 'python-mbstrdecoder' 'python-six' 'python-typepy>=0.0.20')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
