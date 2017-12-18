@@ -1,0 +1,16 @@
+## arg 1:  the new package version
+post_install() {
+   cat <<EOT
+Conduit has been installed to /usr/bin/conduit. Run
+
+    conduit install | kubectl apply -f -
+
+to deploy Conduit to Kubernetes. Once deployed, run
+
+    conduit dashboard
+
+to view the Conduit UI.
+
+Visit conduit.io for more information.
+EOT
+}
