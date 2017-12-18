@@ -2,8 +2,8 @@
 # Collaborator: user6553591 <Message on Reddit>
 
 pkgname=('python-websockets')
-pkgver=3.4
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="An implementation of the WebSocket Protocol (RFC 6455)"
 arch=('i686' 'x86_64')
 url="https://github.com/aaugustin/websockets"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/aaugustin/websockets/archive/$pkgver.tar.gz")
-sha256sums=('c3ddd55c1a89ea52712be4fe643b4a60d79e28b9b789215b6f8dfb0dd113bc88')
+sha256sums=('da5068655b1ba5487dbdf36919c54c5721aa148c6388077c18b923b539aafddc')
 
 build() {
     cd "$srcdir"/websockets-$pkgver
