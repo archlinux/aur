@@ -14,7 +14,8 @@ builddepends=('binutils' 'p7zip')
 optdepends=('inotify-tools: asynchronous printing support')
 
 source=(http://support.ricoh.com/bb/pub_e/dr_ut_e/0001294/0001294700/V10_22/r75386L2.exe)
-md5sums=('SKIP')
+# mirror at https://ftp.vtyulb.ru/r75386L2.exe
+md5sums=('99d3a64dc492a238305676d9cf7efd44')
 
 build() {
   ar x RICOH-SP-150_1.0-22_amd64.deb
