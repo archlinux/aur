@@ -1,0 +1,29 @@
+pkgbase = python-pydna
+	pkgdesc = Python3 classes for dsDNA simulation of homologous recombination, Gibson assembly and interactive cloning
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/BjornFJohansson/pydna
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-appdirs>=1.3.0
+	depends = python-biopython>=1.65
+	depends = python-networkx>=1.8.1
+	depends = python-orderedset>=2.0
+	depends = python-prettytable>=0.7.2
+	depends = python-pyparsing>=2.1.10
+	depends = python-requests
+	optdepends = python-matplotlib: gel simulation
+	optdepends = python-mpldatacursor: gel simulation
+	optdepends = python-numpy: gel simulation
+	optdepends = python-pint>=0.7.2: gel simulation
+	optdepends = python-scipy: gel simulation
+	provides = python-pydna
+	conflicts = python-pydna
+	options = !emptydirs
+	source = https://github.com/BjornFJohansson/pydna/archive/2.0.1.tar.gz
+	md5sums = 92a7fa5be11350dcf8d652d74f8c1762
+
+pkgname = python-pydna
+
