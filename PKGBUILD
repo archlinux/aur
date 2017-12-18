@@ -76,28 +76,12 @@ package() {
 
   # Install the icons.
 
-  # At one point, I conisdered installing multiple icon sizes, but went against it because the
-  # downscaled icons didn't look great, so only the original high quality icons are installed. This
-  # is the original code for installing a few different sizes:
-
-  # for SIZE in 16 32 48 64 128 256; do
-  #   install -Dm644 "$pkgname-$SIZE.png" \
-  #       "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/$pkgname.png"
-  #   install -Dm644 "the-simpsons-hit-and-run-$SIZE.png" \
-  #       "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/the-simpsons-hit-and-run.png"
-  # done
-
-  # And here's some code to run in your shell to generate some downscaled images with ImageMagick:
-
-  # for SIZE in 16 32 48 64 128 256; do
-  #   convert -resize $SIZEx$SIZE
-  #       the-simpsons-hit-and-run-256.png the-simpsons-hit-and-run-$SIZE.png
-  # done
-
-  install -Dm644 "$pkgname.png" \
-      "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-  install -m644 "the-simpsons-hit-and-run.png" \
-      "$pkgdir/usr/share/icons/hicolor/256x256/apps/the-simpsons-hit-and-run.png"
+  for SIZE in 16 22 32 48 64 256; do
+    install -Dm644 "$pkgname-$SIZE.png" \
+        "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/$pkgname.png"
+    install -Dm644 "the-simpsons-hit-and-run-$SIZE.png" \
+        "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/the-simpsons-hit-and-run.png"
+  done
 
   # Install the desktop entries.
 
