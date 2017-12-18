@@ -1,0 +1,16 @@
+pkgbase = xcfun
+	pkgdesc = Exchange-Correlation functionals with arbitrary order derivatives
+	pkgver = 1.x
+	pkgrel = 1
+	url = http://dftlibs.org/xcfun/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	provides = xcfun=1.x
+	source = xcfun::git+https://github.com/dftlibs/xcfun.git#branch=stable-1.x
+	md5sums = SKIP
+
+pkgname = xcfun
+
