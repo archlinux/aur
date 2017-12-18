@@ -18,7 +18,7 @@ pkgbase="spl-linux"
 pkgname=("spl-linux" "spl-linux-headers")
 
 pkgver=0.7.4.4.14.6.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-headers=4.14.6-1" "libelf" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
