@@ -1,6 +1,8 @@
+# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
 pkgname='persepolis-git'
-pkgver=3.0.0.r0.ga7b8313
+pkgver=3.0.1.r0.gf76881a
 pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features (Github version)."
 arch=('any')
@@ -31,3 +33,4 @@ package() {
 	cd "${srcdir}/${pkgname}"
 	python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
 }
+# vim:set ts=2 sw=2 et:
