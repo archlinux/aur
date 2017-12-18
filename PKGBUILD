@@ -7,7 +7,7 @@ pkgdesc="A run-or-raise application switcher for any X11 desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/mkropat/jumpapp"
 license=('MIT')
-depends=('pandoc' 'wmctrl')
+depends=('wmctrl')
 makedepends=('git')
 provides=('jumpapp','jumpappify-desktop-entry')
 
