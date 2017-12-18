@@ -1,0 +1,17 @@
+pkgbase = clamz
+	pkgdesc = Command-line program to download MP3 files from Amazon.com's music store.
+	pkgver = 0.5
+	pkgrel = 3
+	url = http://code.google.com/p/clamz/
+	arch = x86_64
+	license = GPL3
+	depends = libgcrypt
+	depends = curl
+	depends = expat
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	source = http://clamz.googlecode.com/files/clamz-0.5.tar.gz
+	md5sums = 84543c9346b285bdc218879e241941a8
+
+pkgname = clamz
+
