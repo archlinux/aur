@@ -12,6 +12,7 @@ pkgbase = python-tabledata
 	depends = python-logbook>=1.1.0
 	depends = python-six
 	depends = python-typepy>=0.0.20
+	depends = python-wheel
 	source = https://github.com/thombashi/tabledata/archive/v0.0.5.tar.gz
 	md5sums = 7b6256da07b2381c50cb8db8df1241f9
 

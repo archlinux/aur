@@ -4,7 +4,7 @@ pkgver='0.0.5'
 pkgrel=1
 pkgdesc="A Python library to represent tabular data for pytablewriter/pytablereader/SimpleSQLite."
 url="https://github.com/thombashi/tabledata"
-depends=('python' 'python-pathvalidate>=0.16.2' 'python-dataproperty>=0.29.1' 'python-logbook>=1.1.0' 'python-six' 'python-typepy>=0.0.20')
+depends=('python' 'python-pathvalidate>=0.16.2' 'python-dataproperty>=0.29.1' 'python-logbook>=1.1.0' 'python-six' 'python-typepy>=0.0.20' 'python-wheel')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
