@@ -98,7 +98,6 @@ pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
 _release_type="development_releases"
-_additional_configure_flags="-skip qt3d"
 _profiled_gpu_fn=qpi-proprietary.sh
 
 __pkgconfigpath=${_sysroot}/usr/lib/pkgconfig
@@ -230,43 +229,6 @@ if $_static_build; then
         -no-iconv \
         -no-accessibility \
         -no-gif \
-        -skip qtconnectivity \
-        -skip qtlocation \
-        -skip qtremoteobjects \
-        -skip qtsvg \
-        -skip qtwebglplugin \
-        -skip qt3d \
-        -skip qtdatavis3d \
-        -skip qtmacextras
-        -skip qtscript \
-        -skip qttools \
-        -skip qtwebsockets \
-        -skip qtactiveqt
-        -skip qtmultimedia \
-        -skip qtscxml \
-        -skip qttranslations \
-        -skip qtwebview \
-        -skip qtandroidextras \
-        -skip qtdoc \
-        -skip qtnetworkauth \
-        -skip qtsensors \
-        -skip qtvirtualkeyboard \
-        -skip qtwinextras \
-        -skip qtgamepad \
-        -skip qtpurchasing
-        -skip qtserialbus \
-        -skip qtwayland \
-        -skip qtx11extras \
-        -skip qtcanvas3d \
-        -skip qtgraphicaleffects \
-        -skip qtquickcontrols \
-        -skip qtserialport \
-        -skip qtwebchannel \
-        -skip qtcharts \
-        -skip qtimageformats \
-        -skip qtquickcontrols2 \
-        -skip qtspeech \
-        -skip qtwebengine \
         -no-sql-mysql \
         -no-sql-psql \
         -no-tslib \
@@ -386,9 +348,15 @@ build() {
   adjust_bin_dir
 
   local _basedir="${_srcdir}/qtbase"
-  local _waylanddir="${_srcdir}/qtwayland"
-  local _declarativedir="${_srcdir}/qtdeclarative"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
+
+  if $_static_build; then
+    local _qtpro=${_srcdir}/qt.pro
+    local _tmp_qtpro=$(mktemp)
+    cp $_qtpro $_tmp_qtpro
+    echo "QT_BUILD_MODULES = qtbase qtdeclarative qtxmlpatterns" > $_qtpro
+    cat $_tmp_qtpro >> $_qtpro
+  fi
 
   cd ${_srcdir}
 
