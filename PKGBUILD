@@ -18,22 +18,22 @@
 pkgbase="spl-linux-lts-git"
 pkgname=("spl-linux-lts-git" "spl-linux-lts-git-headers")
 
-pkgver=2017.11.15.r1059.ed19bcc.4.9.68.1
+pkgver=2017.11.15.r1059.ed19bcc.4.9.70.1
 pkgrel=1
-makedepends=("linux-lts-headers=4.9.68-1" "libelf" "git")
+makedepends=("linux-lts-headers=4.9.70-1" "libelf" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git#commit=ed19bccfb651843fa208232b3a2d3d22a4152bc8")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git=2017.11.15.r1059.ed19bcc" "kmod" "linux-lts=4.9.68-1")
+depends=("spl-utils-common-git=2017.11.15.r1059.ed19bcc" "kmod" "linux-lts=4.9.70-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.9.68-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.9.68-1-lts/build \
+                --with-linux=/usr/lib/modules/4.9.70-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.9.70-1-lts/build \
                 --with-config=kernel
     make
 }
@@ -58,5 +58,5 @@ package_spl-linux-lts-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.68-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.70-1-lts/Module.symvers
 }
