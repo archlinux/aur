@@ -9,7 +9,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/thombashi/SimpleSQLite/archive/v${pkgver}.tar.gz")
-md5sums=('34ea04a94f78e6753542b0131eba6c5a')
+md5sums=('8b76de3f90ab8419c355dcbd92711bcf')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
