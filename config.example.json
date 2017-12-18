@@ -1,0 +1,11 @@
+{
+    "host": "files.example.com",
+    "mount_path": "/webdav",
+    "provider_mapping": {"/myfiles": "/path/to/files"},
+    "user_mapping": {
+        "/myfiles": {
+            "myuser": {"password": "mypassword", "description": "", "roles": []}
+        }
+    },
+    "verbose": 1
+}
