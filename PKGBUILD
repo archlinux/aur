@@ -5,31 +5,28 @@
 pkgbase=python-django-tables2
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-django-tables2 python2-django-tables2)
-pkgver=1.16.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='A module for rendering Django data sets as HTML tables.'
 arch=(any)
 url='https://github.com/bradleyayers/django-tables2'
 license=(MIT)
-makedepends=(
-  'python-django>=1.8'
-  python-setuptools
-  'python2-django>=1.8'
-  python2-setuptools
-)
 options=(!emptydirs)
+makedepends=(python-setuptools python2-setuptools)
 source=("https://github.com/bradleyayers/${_pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('98f1995629c7795624f34516c4e71dfc17b658ffde5b54c95edbdcf4061837e4')
+sha256sums=('8c6eaf683b8e9e89a5f94374aa983642841cbe5258dbd4071e5855592ab3c524')
 
 package_python-django-tables2() {
-  depends=('python-django>=1.8')
+  depends=('python-django>=1.11')
+  optdepends=('python-tablib: to export table data as CSV, XLS, etc.')
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-django-tables2() {
-  depends=('python2-django>=1.8')
+  depends=('python2-django>=1.11')
+  optdepends=('python2-tablib: to export table data as CSV, XLS, etc.')
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
