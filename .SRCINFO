@@ -1,14 +1,14 @@
 pkgbase = nodejs-generator-jhipster
 	pkgdesc = JHipster is a fully Open Source, widely used application generator. Easily create high-quality Spring Boot + AngularJS projects!
-	pkgver = 4.10.2
+	pkgver = 4.13.0
 	pkgrel = 1
 	url = https://jhipster.github.io/
 	arch = any
 	license = APACHE
 	depends = nodejs-yeoman
-	noextract = generator-jhipster-4.10.2.tgz
-	source = http://registry.npmjs.org/generator-jhipster/-/generator-jhipster-4.10.2.tgz
-	sha256sums = e8f3af5db3c035e7258a9293dca20f3e4334c942c296c2951cbb0a7c3af25553
+	noextract = generator-jhipster-4.13.0.tgz
+	source = http://registry.npmjs.org/generator-jhipster/-/generator-jhipster-4.13.0.tgz
+	sha256sums = f48ffa50b7ac0782297f9fa74de003d572584c8302fc2b521b94a530da17231b
 
 pkgname = nodejs-generator-jhipster
 
