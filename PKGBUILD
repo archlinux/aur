@@ -35,7 +35,6 @@ _makenconfig=
 #  21. Intel Broadwell (MBROADWELL)
 #  22. Intel Skylake (MSKYLAKE)
 #  23. Generic-x86-64 (GENERIC_CPU)
-#  24. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
