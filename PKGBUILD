@@ -9,7 +9,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/thombashi/pathvalidate/archive/v${pkgver}.tar.gz")
-md5sums=('083344c144ed3ebe0e7d82731c2ddbf7')
+md5sums=('074d4798fd24e75c56f92fcd349abfa6')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
