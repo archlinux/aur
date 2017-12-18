@@ -1,0 +1,14 @@
+pkgbase = python-gevent-websocket
+	pkgdesc = Websocket handler for the gevent pywsgi server, a Python network library
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://www.gitlab.com/noppo/gevent-websocket
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-gevent
+	source = https://files.pythonhosted.org/packages/source/g/gevent-websocket/gevent-websocket-0.10.1.tar.gz
+	sha256sums = 7eaef32968290c9121f7c35b973e2cc302ffb076d018c9068d2f5ca8b2d85fb0
+
+pkgname = python-gevent-websocket
+
