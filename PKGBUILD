@@ -4,12 +4,12 @@
 
 pkgname=wings3d
 pkgver=2.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc='3D modeling program'
 arch=('x86_64')
 url='http://www.wings3d.com/'
 license=('GPL')
-depends=('erlang<=20.0.1' 'desktop-file-utils' 'erlang-sdl' 'erlang-cl')
+depends=('erlang200' 'desktop-file-utils' 'erlang-sdl' 'erlang-cl')
 makedepends=('gendesk' 'imagemagick')
 optdepends=('povray: rendering support via POV-Ray')
 source=("https://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
