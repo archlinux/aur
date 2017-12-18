@@ -17,4 +17,5 @@ package() {
     cp -vp python/*   ${pkgdir}/usr/bin/
     cp -vp shell/*    ${pkgdir}/usr/bin/
     cp -vp systemd/*  ${pkgdir}/usr/lib/systemd/system/
+    chmod a+x ${pkgdir}/usr/bin/*
 }
