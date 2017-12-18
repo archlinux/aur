@@ -12,7 +12,7 @@ pkgbase = python-dataproperty
 	makedepends = python-enum-compat
 	depends = python
 	source = https://github.com/thombashi/DataProperty/archive/v0.29.1.tar.gz
-	md5sums = df89ed846d6a485f2f7ba69a5ee45392
+	md5sums = eca5e3eb2efd1314ee21eebb96cd4896
 
 pkgname = python-dataproperty
 

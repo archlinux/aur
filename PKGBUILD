@@ -9,7 +9,7 @@ makedepends=('python-setuptools' 'python-ipaddress' 'python-logbook>=1.1.0' 'pyt
 license=('MIT')
 arch=('any')
 source=("https://github.com/thombashi/DataProperty/archive/v${pkgver}.tar.gz")
-md5sums=('df89ed846d6a485f2f7ba69a5ee45392')
+md5sums=('eca5e3eb2efd1314ee21eebb96cd4896')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
