@@ -1,6 +1,6 @@
 pkgname=ghdl
-pkgver=0.34
-pkgrel=3
+pkgver=0.35
+pkgrel=1
 _gccver=7.2.0
 _islver=0.18
 arch=('i686' 'x86_64')

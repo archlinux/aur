@@ -1,7 +1,7 @@
 pkgbase = ghdl
 	pkgdesc = VHDL simulator
-	pkgver = 0.34
-	pkgrel = 3
+	pkgver = 0.35
+	pkgrel = 1
 	url = https://github.com/tgingold/ghdl
 	install = ghdl.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = ghdl
 	makedepends = git
 	options = !emptydirs
 	options = staticlibs
-	source = git+https://github.com/tgingold/ghdl#tag=v0.34
+	source = git+https://github.com/tgingold/ghdl#tag=v0.35
 	source = https://gcc.gnu.org/pub/gcc/releases/gcc-7.2.0/gcc-7.2.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
 	md5sums = SKIP
