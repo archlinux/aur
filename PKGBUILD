@@ -1,14 +1,14 @@
 pkgname='vkmark-git'
 pkgdesc='Vulkan benchmark'
-pkgver=r84.7fd7768
+pkgver=r106.868726e
 pkgrel=1
 url='https://github.com/vkmark/vkmark'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('vulkan-icd-loader' 'libpng' 'mesa')
+makedepends=('git' 'vulkan-headers' 'meson' 'ninja' 'glm' 'assimp' 'vulkan-hpp')
 source=('git+https://github.com/vkmark/vkmark.git')
 sha1sums=('SKIP')
-makedepends=('git' 'vulkan-headers' 'meson' 'ninja')
 
 pkgver() {
   cd "${srcdir}"/vkmark
@@ -23,7 +23,7 @@ build() {
   cd "${srcdir}"/vkmark
 
   rm -rf build
-  meson build || true # if you remove rm -rf build before, meson build will thrown an error if build exists from previous builds
+  meson --prefix=/usr build || true # if you remove rm -rf build before, meson build will thrown an error if build exists from previous builds
   ninja -C build
 }
 
