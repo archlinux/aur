@@ -1,6 +1,6 @@
 pkgbase = python-dataproperty
 	pkgdesc = Python library for extract property from data.
-	pkgver = 0.25.6
+	pkgver = 0.29.1
 	pkgrel = 1
 	url = https://github.com/thombashi/DataProperty
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-dataproperty
 	makedepends = python-typepy>=0.0.20
 	makedepends = python-enum-compat
 	depends = python
-	source = https://github.com/thombashi/DataProperty/archive/v0.25.6.tar.gz
+	source = https://github.com/thombashi/DataProperty/archive/v0.29.1.tar.gz
 	md5sums = df89ed846d6a485f2f7ba69a5ee45392
 
 pkgname = python-dataproperty

@@ -1,6 +1,6 @@
 pkgname=python-dataproperty
 _module='DataProperty'
-pkgver='0.25.6'
+pkgver='0.29.1'
 pkgrel=1
 pkgdesc="Python library for extract property from data."
 url="https://github.com/thombashi/DataProperty"
