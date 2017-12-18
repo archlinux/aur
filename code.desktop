@@ -1,14 +1,16 @@
 [Desktop Entry]
-Name=Visual Studio Code
+Encoding=UTF-8
+Version=1.0
+Name=Microsoft Code (Open Source)
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
-Exec=/usr/bin/code %U
-Icon=/usr/share/pixmaps/code.png
+Exec=/usr/bin/code-oss --unity-launch %F
+Icon=/usr/share/code-oss/resources/app/resources/linux/code.png
 Type=Application
 StartupNotify=true
-StartupWMClass=Code
+StartupWMClass=code-oss
 Categories=Utility;TextEditor;Development;IDE;
-MimeType=text/plain;
+MimeType=text/plain;inode/directory;
 Actions=new-window;
 Keywords=vscode;
 
@@ -23,5 +25,5 @@ Name[ko]=새 창
 Name[ru]=Новое окно
 Name[zh_CN]=新建窗口
 Name[zh_TW]=開新視窗
-Exec=/usr/bin/code --new-window %U
-Icon=/usr/share/pixmaps/code.png
+Exec=/usr/bin/code-oss --new-window %F
+Icon=/usr/share/code-oss/resources/app/resources/linux/code.png

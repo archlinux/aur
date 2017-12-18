@@ -1,0 +1,22 @@
+diff -rupN a/product.json b/product.json
+--- a/product.json	2016-09-08 14:48:45.419566181 -0700
++++ b/product.json	2016-09-08 14:49:43.000000000 -0700
+@@ -12,5 +12,15 @@
+ 	"win32AppUserModelId": "Microsoft.CodeOSS",
+ 	"darwinBundleIdentifier": "com.visualstudio.code.oss",
+ 	"reportIssueUrl": "https://github.com/Microsoft/vscode/issues/new",
+-	"urlProtocol": "code-oss"
+-}
+\ No newline at end of file
++	"urlProtocol": "code-oss",
++	"quality": "stable",
++	"extensionsGallery": {
++		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
++		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
++		"itemUrl": "https://marketplace.visualstudio.com/items"
++	},
++	"documentationUrl": "https://github.com/microsoft/vscode-docs",
++	"requestFeatureUrl": "https://github.com/Microsoft/vscode/issues",
++	"commit": "@COMMIT@",
++	"date": "@DATE@"
++}
