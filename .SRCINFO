@@ -1,0 +1,18 @@
+pkgbase = python-fastcluster
+	pkgdesc = Fast hierarchical clustering routines for R and Python.
+	pkgver = 1.1.24
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/fastcluster
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy>=1.9.2
+	provides = python-fastcluster
+	conflicts = python-fastcluster
+	options = !emptydirs
+	source = https://pypi.python.org/packages/1e/00/9910dd324f32582051d0ee6922c3cd4727234aae96366f3867c46a70cd78/fastcluster-1.1.24.tar.gz
+	md5sums = e71235732f43f5f19d71cfaf3b45ff0c
+
+pkgname = python-fastcluster
+
