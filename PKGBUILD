@@ -1,5 +1,5 @@
 pkgname=nlohmann-json
-pkgver=2.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Header-only JSON library for Modern C++"
 url="https://github.com/nlohmann/json"
@@ -20,8 +20,7 @@ build() {
 
 check() {
     cd "$srcdir/nlohmann-json-build"
-    # Tests in this version are broken
-    #CTEST_OUTPUT_ON_FAILURE=1 ctest
+    ctest
 }
 
 package() {
