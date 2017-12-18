@@ -4,13 +4,13 @@
 _pkgname=imgmin
 pkgname=$_pkgname-git
 pkgver=1.1.r17.g3451031
-pkgrel=2
+pkgrel=3
 pkgdesc="Automated lossy JPEG optimization"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/rflynn/imgmin"
 license=('MIT')
 depends=('imagemagick')
-makedepends=('git libmagick6')
+makedepends=("git libmagick6")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
