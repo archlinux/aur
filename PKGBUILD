@@ -4,7 +4,7 @@
 _pkgname=imgmin
 pkgname=$_pkgname-git
 pkgver=1.1.r17.g3451031
-pkgrel=1
+pkgrel=2
 pkgdesc="Automated lossy JPEG optimization"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/rflynn/imgmin"
