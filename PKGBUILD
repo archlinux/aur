@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 pkgname=vale
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable, syntax-aware linter for prose."
 provides=('vale')
 arch=('i686' 'x86_64')
@@ -51,4 +51,8 @@ package() {
     msg2 'Installing...'
     install -Dm755 "${srcdir}/gopath/src/github.com/ValeLint/vale/bin/vale" "${pkgdir}/usr/bin/vale"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/vale/LICENSE"
+    install -d "${pkgdir}/usr/share/vale/styles"
+    cp -r "${srcdir}/gopath/src/github.com/ValeLint/vale/styles"/* "${pkgdir}/usr/share/vale/styles/"
+    chmod -R 644 "${pkgdir}/usr/share/vale/styles"/*
+    find "${pkgdir}/usr/share/vale/styles" -type d -exec chmod 755 {} \;
 }
