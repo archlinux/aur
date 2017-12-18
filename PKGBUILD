@@ -29,8 +29,8 @@ source=("hib://${_installer}"
         'dustforce-hib-dustmod.desktop')
 md5sums=('e2fa7efd5b9ec64fc453f32480f63ad4'
          'fed1b6d82bdbea66d242eaaaf7d3a2f2'
-         '8c1f9539003a616932b190b9c577999f'
-         '32877d6bb3a28297ab6397ffe021f6b4'
+         '99d837c39112c513832fa43baa3a25cd'
+         '88c602ad251f3b49007a44e9a583a0de'
          '7b30db080ff59c0eba443b14da7c39bc'
          'cc98a6127bc6d6cbdcfced14c69327cf')
 # zip with no top-level directory - will extract manually
