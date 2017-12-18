@@ -10,6 +10,7 @@ pkgbase = pubs
 	depends = python-configobj
 	depends = python-bibtexparser
 	depends = python-beautifulsoup4
+	depends = python-yaml
 	provides = pubs
 	source = https://github.com/pubs/pubs/archive/v0.7.0.tar.gz
 	sha256sums = bab7571227eead1eff71191461c57db20461ea8ce6937be7c11be7ff9349cfe3
