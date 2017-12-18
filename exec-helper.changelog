@@ -2,11 +2,17 @@ Changelog
 =========
 
 
-0.1.1_151_g6dd640b
+0.1.1_183_g541b825
 ------------
 
 New
 ~~~
+- Test: Implemented the execute-multiple-statements-predefined-order-
+  duplicates scenario. [Bart Verhagen]
+- Test: Implemented execute-multiple-statements-predefined-order-
+  multiple scenario. [Bart Verhagen]
+- Doc: 1. Improved README 2. Added help target to Makefile for quick
+  installations. [Bart Verhagen]
 - CI: Removed artifact expiration for pages job. [Bart Verhagen]
 - Doc: Added functionality for optionally generating Doxygen XML
   documentation. [Bart Verhagen]
@@ -50,8 +56,17 @@ New
   WARNING_AS_ERROR setting set to yes. [Bart Verhagen]
 - Added the ability to generate a changelog. [Bart Verhagen]
 
+Fix
+~~~
+- CI: Lowered building with multiple threads to fix issues when
+  compiling on the CI system. [Bart Verhagen]
+
 Other
 ~~~~~
+- Merge branch 'dev' of gitlab.com:bverhagen/exec-helper into dev. [Bart
+  Verhagen]
+- Merge branch 'dev' of github.com:bverhagen/exec-helper into dev. [Bart
+  Verhagen]
 - Merge branch 'master' into dev. [Bart Verhagen]
 - Fixed issues reported by coverity that were relevant to the exec-
   helper source code. [Bart Verhagen]
