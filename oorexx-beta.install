@@ -33,6 +33,8 @@ pre_remove() {
   systemctl disable rxapid.service
   systemctl stop rxapid.service
   systemctl --system daemon-reload
+  rm -f /etc/systemd/system/rxapid.service
+  rm -f /usr/bin/rexxtry.rex
 }
 
 # arg 1:  the old package version
