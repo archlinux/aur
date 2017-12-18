@@ -1,7 +1,7 @@
 pkgbase = ogdf-snapshot
 	pkgdesc = OGDF is a self-contained C++ class library for the automatic layout of diagrams. OGDF offers sophisticated algorithms and data structures to use within your own applications or scientific projects.
-	pkgver = 2017_02_16
-	pkgrel = 2
+	pkgver = 2017_07_23
+	pkgrel = 1
 	url = http://amber-v7.cs.tu-dortmund.de/doku.php/start
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = ogdf-snapshot
 	conflicts = coin-or-clp
 	conflicts = coin-or-osi
 	conflicts = coin-or-coinutils
-	source = ogdf-snapshot-2017-02-16.zip::http://amber-v7.cs.tu-dortmund.de/lib/exe/fetch.php/tech:ogdf-snapshot-2017-02-16.zip
-	sha256sums = 5c76b842dfab8e41c4cb6ab829f4c28d9ea2be9bb68a70c94e51e4867b1ca655
+	source = ogdf-snapshot-2017-07-23.zip::http://amber-v7.cs.tu-dortmund.de/lib/exe/fetch.php/tech:ogdf-snapshot-2017-07-23.zip
+	sha256sums = d9165ae319d848466f35cee3d8b5c5bc467eb0acd5d381b6ea0b5f61d6534d30
 
 pkgname = ogdf-snapshot
 
