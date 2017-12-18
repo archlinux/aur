@@ -40,7 +40,7 @@ _dir=${pkgname}
 source=("${_dir}"::"git+https://github.com/rst-tu-dortmund/teb_local_planner.git#tag=${_tag}"
         "https://raw.githubusercontent.com/majorx234/FindG2O.cmake.patch/master/FindG2O.cmake.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            'c6b5c6ed189a2b022a1feeb76d8617f837f63980f2079ef779923d5cbe91a452')
 options=('!makeflags')  
 
 prepare() {
