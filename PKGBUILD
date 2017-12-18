@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('bash' 'python3')
 changelog=ChangeLog
 source=("https://github.com/han-ese/Arch-RPi/archive/v${pkgver}.tar.gz")
-sha512sums=('d70e5c2a6aff7649b956164876e5e7f7d6005c5e9966882d17245046c23b1f77e8624d72ebe07eaa0118e9ec50bb6df19254e03cb81cefac4d7fb57df7d347af')
+sha512sums=('1f230d720d37dea4ff1663879b7776be197f4b86742f20fc578b19408fe91b5230d34a6c8ca88f72cde57a069d39039bc94c1121afee5c590c6e26c41ea2cab4')
 
 package() {
     cd Arch-RPi-${pkgver}
