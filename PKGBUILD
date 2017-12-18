@@ -3,7 +3,7 @@
 _hkgname=apply-refact
 pkgname=haskell-apply-refact
 pkgver=0.4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Perform refactorings specified by the refact library"
 url="https://hackage.haskell.org/package/${_hkgname}"
 arch=('x86_64')
