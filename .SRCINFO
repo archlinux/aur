@@ -1,0 +1,20 @@
+pkgbase = python-polo
+	pkgdesc = Python optimal leaf ordering for hierarchical clustering
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/adrianveres/polo
+	arch = any
+	license = MIT
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy>=1.9.2
+	depends = python-scipy
+	provides = python-polo
+	conflicts = python-polo
+	options = !emptydirs
+	source = https://github.com/adrianveres/polo/archive/0.4.tar.gz
+	md5sums = a5d3d2b09b18b34b4e368b1936197fd6
+
+pkgname = python-polo
+
