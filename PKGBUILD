@@ -1,37 +1,27 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
 # Contributor: Francisco Magalhães <franmagneto gmail com>
 
-# Set this to 1 if you want to enable the proprietary Visual Studio Code
-# features.  Leaving this at 0 will cause the extension manager to work in
-# a local-only mode (you'll have to download and install extensions manually).
-[[ -z "$VSCODE_NONFREE" ]] && VSCODE_NONFREE=0
-
-pkgname=visual-studio-code-oss
-pkgdesc='Visual Studio Code for Linux, Open Source version'
+pkgname=code
+pkgdesc='Microsoft Code -- The Open Source build of Visual Studio Code'
 pkgver=1.19.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
-url='https://code.visualstudio.com/'
+url='https://github.com/Microsoft/vscode'
 license=('MIT')
 makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2' 'git' 'yarn')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
          'alsa-lib')
-conflicts=('vscode-oss')
-provides=('vscode-oss')
+conflicts=('vscode-oss' 'visual-studio-code-oss')
+provides=('vscode-oss' 'visual-studio-code-oss')
 
 source=("vscode::git+https://github.com/Microsoft/vscode#tag=${pkgver}"
+        "${pkgname}.desktop"
         "startup_script.patch"
-        "${pkgname}.desktop")
+        "product_json.patch")
 sha256sums=('SKIP'
+            'f472fb49852ae9048966f02278110efbbe451192a8ae312ec05d1c31093a0ff4'
             '8b2feded3382e5bf6b5b292c14083bfc536c05cd00f3235dd22b75b67fba134d'
-            'd140d0de9998a2a886a6d2ff23f356f8b68c8aae5a53c33ec87826e5d7ad3529')
-
-if (( VSCODE_NONFREE )); then
-    source+=('product_json.patch')
-    sha256sums+=('e90f9d69bd42c0d9fc5f081d3bf7ca307df53e3553efadf00d62ced66b1bb070')
-    install="${pkgname}.nonfree.install"
-    license+=('proprietary')
-fi
+            '7970996eaddbb0265373e71c5452064465472ebb5bd6a393b94e8b84bde24854')
 
 case "$CARCH" in
     i686)
@@ -52,13 +42,13 @@ esac
 prepare() {
     cd "${srcdir}/vscode"
 
-    if (( VSCODE_NONFREE )); then
-        patch -p1 -i "${srcdir}/product_json.patch"
-        local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
-        local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
-        sed -e "s/@COMMIT@/${_commit}/" -e "s/@DATE@/${_datestamp}/" \
-            -i product.json
-    fi
+    # This patch no longer contains proprietary modifications.
+    # See https://github.com/Microsoft/vscode/issues/31168 for details.
+    patch -p1 -i "${srcdir}/product_json.patch"
+    local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
+    local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
+    sed -e "s/@COMMIT@/${_commit}/" -e "s/@DATE@/${_datestamp}/" \
+        -i product.json
 }
 
 build() {
@@ -84,9 +74,6 @@ package() {
 
     # Put the startup script in /usr/bin
     mv "${pkgdir}/usr/share/code-oss/bin" "${pkgdir}/usr"
-
-    # Add symlink to the name we provided in older versions of this package
-    ln -s code-oss "${pkgdir}/usr/bin/${pkgname}"
 
     # Add .desktop file
     install -D -m644 "${srcdir}/${pkgname}.desktop" \

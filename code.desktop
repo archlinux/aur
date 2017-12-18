@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Version=1.0
-Name=Visual Studio Code (Open Source)
+Name=Microsoft Code (Open Source)
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
 Exec=/usr/bin/code-oss --unity-launch %F
