@@ -1,3 +1,4 @@
+# Maintainer: Christoph Haag <haagch+aur@frickel.club>
 pkgname='vkmark-git'
 pkgdesc='Vulkan benchmark'
 pkgver=r106.868726e
