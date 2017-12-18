@@ -1,5 +1,5 @@
 --- app.ini.sample
-+++ app.ini.sample	2017-12-14 01:55:01.863333335 +0300
++++ app.ini.sample	2017-12-18 11:50:27.080000002 +0300
 @@ -7,10 +7,10 @@
  ; Change it if you run locally
  RUN_USER = git
