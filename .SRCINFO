@@ -1,0 +1,38 @@
+pkgbase = ros-kinetic-teb-local-planner
+	pkgdesc = ROS - Teb local Planner provides a path planning algorithm for ROS
+	pkgver = 0.7.0
+	pkgrel = 1
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = pkg-config
+	makedepends = ros-kinetic-catkin
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-base-local-planner
+	depends = ros-kinetic-nav-core
+	depends = ros-kinetic-pluginlib
+	depends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-nav-msgs
+	depends = ros-kinetic-message-generation
+	depends = ros-kinetic-catkin
+	depends = ros-kinetic-costmap-2d
+	depends = ros-kinetic-costmap-converter
+	depends = ros-kinetic-dynamic-reconfigure
+	depends = ros-kinetic-interactive-markers
+	depends = ros-kinetic-message-runtime
+	depends = g2o
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-tf
+	depends = ros-kinetic-tf-conversions
+	depends = ros-kinetic-visualization-msgs
+	depends = python2-rospkg
+	options = !makeflags
+	source = ros-kinetic-teb-local-planner::git+https://github.com/rst-tu-dortmund/teb_local_planner.git#tag=0.7.0
+	source = https://raw.githubusercontent.com/majorx234/FindG2O.cmake.patch/master/FindG2O.cmake.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-teb-local-planner
+
