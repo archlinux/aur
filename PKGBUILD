@@ -6,8 +6,8 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=20.0.1
-_docver=20.0
+pkgver=20.2
+_docver=20.2
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=("git+https://github.com/erlang/otp.git#tag=OTP-$pkgver"
         'epmd.socket'
         'epmd.conf')
 sha256sums=('SKIP'
-            'b7f1542a94a170f8791f5d80a85706f9e8838924ea65d4301032d0c0cfb845cc'
+            '950e088f9e47fc10a98e3f67d6420a990650836c648686a2f5dafe331747cbdf'
             'b121ec9053fb37abca5f910a81c526f93ec30fe13b574a12209223b346886a9e'
             '998a759e4cea4527f9d9b241bf9f32527d7378d63ea40afa38443c6c3ceaea34'
             '78ce5e67b21758c767d727e56b20502f75dc4385ff9b6c6db312d8e8506f2df2')
@@ -66,7 +66,7 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
   # Remove files that are packaged as erlang-unixodbc
-  rm -r "$pkgdir/usr/lib/erlang/"{lib/odbc*,man/man3/odbc.3.gz}
+  rm -rf "$pkgdir/usr/lib/erlang/"{lib/odbc*,man/man3/odbc.3.gz}
 
   # epmd service, socket and conf
   cd "$srcdir"
