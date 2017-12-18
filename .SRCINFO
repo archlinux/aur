@@ -1,6 +1,6 @@
 pkgbase = python-tcconfig
 	pkgdesc = A Simple tc command wrapper tool. Easy to set up traffic control of network bandwidth/latency/packet loss/packet-corruption to a network interface.
-	pkgver = 0.14.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/thombashi/tcconfig
 	arch = any
@@ -8,16 +8,16 @@ pkgbase = python-tcconfig
 	makedepends = python-setuptools
 	depends = python
 	depends = iproute2
-	depends = python-dataproperty>=0.25.6
-	depends = python-simplesqlite>=0.15.0
-	depends = python-subprocrunner>=0.8.7
+	depends = python-dataproperty>=0.29.1
+	depends = python-simplesqlite>=0.19.0
+	depends = python-subprocrunner>=0.10.0
 	depends = python-typepy>=0.0.20
 	depends = python-voluptuous
 	depends = python-ipaddress
 	depends = python-logbook
 	depends = python-pyparsing>=2.2.0
 	depends = python-six
-	source = https://github.com/thombashi/tcconfig/archive/v0.14.1.tar.gz
+	source = https://github.com/thombashi/tcconfig/archive/v0.17.0.tar.gz
 	md5sums = 84eddd4fc6d18dcb07a7913117f4a9d0
 
 pkgname = python-tcconfig

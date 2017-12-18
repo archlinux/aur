@@ -1,10 +1,10 @@
 pkgname='python-tcconfig'
 _module='tcconfig'
-pkgver='0.14.1'
+pkgver='0.17.0'
 pkgrel=1
 pkgdesc="A Simple tc command wrapper tool. Easy to set up traffic control of network bandwidth/latency/packet loss/packet-corruption to a network interface."
 url="https://github.com/thombashi/tcconfig"
-depends=('python' 'iproute2' 'python-dataproperty>=0.25.6' 'python-simplesqlite>=0.15.0' 'python-subprocrunner>=0.8.7' 'python-typepy>=0.0.20' 'python-voluptuous' 'python-ipaddress' 'python-logbook' 'python-pyparsing>=2.2.0' 'python-six')
+depends=('python' 'iproute2' 'python-dataproperty>=0.29.1' 'python-simplesqlite>=0.19.0' 'python-subprocrunner>=0.10.0' 'python-typepy>=0.0.20' 'python-voluptuous' 'python-ipaddress' 'python-logbook' 'python-pyparsing>=2.2.0' 'python-six')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
