@@ -1,7 +1,7 @@
 pkgbase = signal
 	pkgdesc = Signal Private Messenger for the Desktop
 	pkgver = 1.0.41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WhisperSystems/Signal-Desktop
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = signal
 	makedepends = phantomjs
 	makedepends = yarn
 	makedepends = grunt-cli
+	depends = electron
 	depends = gconf
 	depends = gtk2
 	depends = libxss
@@ -20,8 +21,10 @@ pkgbase = signal
 	conflicts = signal-desktop-beta
 	conflicts = signal-desktop-bin
 	source = signal-1.0.41.tar.gz::https://github.com/WhisperSystems/Signal-Desktop/archive/v1.0.41.tar.gz
+	source = signal.sh
 	source = signal.desktop
 	sha512sums = 433423a38404f06d18fc2aa79b925592ace247308b0553c1a4108eb511d505392a98de7a467dd59ca6916ec38e758fa97adcec5fe834a54e0f5f64db25d17781
+	sha512sums = e6ee4914af88b75a520bbae55e4701a4a911b88d698a06b5bf9fdb612b377f2f6f50d19850fcc8737752d32e9f58aa48c3e7026931ab6dc6d796fa91db87c5ee
 	sha512sums = a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327
 
 pkgname = signal
