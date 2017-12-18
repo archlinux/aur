@@ -19,14 +19,8 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-    cd "$srcdir/$pkgname"
-    make
-}
-
 package() {
     cd "$srcdir/$pkgname"
     install -Dm755 jumpapp ${pkgdir}/usr/bin/jumpapp
     install -Dm755 jumpappify-desktop-entry ${pkgdir}/usr/bin/jumpappify-desktop-entry
-    install -Dm644 jumpapp.1 ${pkgdir}/usr/share/man/man1/jumpapp.1
 }
