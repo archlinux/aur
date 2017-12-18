@@ -1,6 +1,6 @@
 pkgbase = star-seq-alignment
-	pkgdesc = An RNA-seq alignment suite, by Alexander Doin
-	pkgver = v2.5
+	pkgdesc = An RNA-seq alignment suite, by Alexander Dobin
+	pkgver = v2.5.3a
 	pkgrel = 1
 	url = https://github.com/alexdobin/STAR
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = star-seq-alignment
 	license = GPLv3
 	makedepends = wget
 	makedepends = gcc
-	source = https://github.com/alexdobin/STAR/archive/2.5.2b.tar.gz
-	md5sums = 31a0c48f4d163f11238e1f7add3ab5c4
+	source = https://github.com/alexdobin/STAR/archive/2.5.3a.tar.gz
+	md5sums = baf8d1b62a50482cfa13acb7652dc391
 
 pkgname = star-seq-alignment
 
