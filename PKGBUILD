@@ -1,30 +1,22 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
-
+# Maintainer: Vitaliy Berdinskikh <ur6lad at gmail dot com>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=java-commons-lang
 pkgver=2.6
-pkgrel=2
-pkgdesc='Implementations of common Lang'
-arch=(i686 x86_64)
+pkgrel=3
+pkgdesc='Provides highly reusable static utility methods, chiefly concerned with adding value to the java.lang classes.'
+arch=(any)
 url='http://commons.apache.org/lang/'
 license=(apache)
-depends=(java-runtime)
-makedepends=(apache-ant junit)
-source=("http://www.apache.org/dist/commons/lang/source/commons-lang-${pkgver}-src.tar.gz")
-md5sums=('37ee469f4caff6cfa28f9d0a0be2d4d2')
-sha512sums=('4a30ed153f93fe6616a28974721bdf005d064203ef8a3dd375d6c1176647c0cdbd29cfde2a580e2c8d26bfa4655be6be7025b8ccae94086dcd816676c5cf8e87')
-
-build() {
-  cd "commons-lang-${pkgver}-src"
-
-  # Tests currently fail
-  #ant jar test
-  ant jar
-}
+depends=('java-runtime' 'bash')
+source=("http://www.apache.org/dist/commons/lang/binaries/commons-lang-${pkgver}-bin.tar.gz")
+md5sums=('444075803459bffebfb5e28877861d23')
+sha256sums=('ff6a244bb71a9a1c859e81cb744d0ce698c20e04f13a7ef7dbffb99c8122752c')
 
 package() {
-  cd "commons-lang-${pkgver}-src/target"
+	cd "$srcdir/commons-lang-${pkgver}"
 
-  install -dm755 "${pkgdir}/usr/share/java/commons-lang/"
-  install -m644 commons-lang-${pkgver}.jar \
-    "${pkgdir}/usr/share/java/commons-lang/commons-lang.jar"
+	msg2 "Install Java libraries in /usr/share/java/commons-lang..."
+	install -d "$pkgdir"/usr/share/java/commons-lang
+	install -m 644 commons-lang-${pkgver}.jar "$pkgdir"/usr/share/java/commons-lang/commons-lang-${pkgver}.jar
+	ln -s commons-lang-${pkgver}.jar "$pkgdir"/usr/share/java/commons-lang/commons-lang.jar
 }
