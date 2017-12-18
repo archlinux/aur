@@ -1,3 +1,26 @@
+Version 2.20.0 - 144 Dec 2017
+- Strip commas from numChapters in CLI for urlchaptercount.
+- Fix to adapter_storiesonlinenet author from GComyn.
+- Apply is_adult&user/pass dialogs to CALIBREONLY update.
+- Adding pre_process_cmd for CLI.
+- Don't 'fix' file:/// to //.
+- Skip #post- URLs in xenforo emails even when on first page.
+- Update translations.
+- Fix author parsing for webnovel.com (#254) from cryzed
+
+Version 2.19.0 - 13 Nov 2017
+- Remove site obidala.net, content moved to AO3.
+- Fix adapter_tolkienfanfiction for site changes, remove strip_chapter_numeral
+  site specific option--use strip_chapter_numbers option.
+- New site added: lightnovelgate.com -- thanks Rikkitp!
+- Add --non-interactive CLI flag (defaults to true when run without a TTY),
+  thanks theit8514, sorry for not adding this earlier.
+- adapter_webnovelcom: normalize story URL.
+- adapter_harrypotterfanfictioncom: https default now.
+- Fix for webnovel.com escaping issue--thanks cryzed.
+- Fix problem with --download-list from plugin CLI, move StringIO for passed
+  INIs down to point of use.
+
 Version 2.18.0 - 16 Oct 2017
 - Remove AO3 login from get_urls_from_page--login is failing and it isn't
   required anymore for 'adult'. 'Restricted' (user-only) won't work.
@@ -20,32 +43,6 @@ Version 2.18.0 - 16 Oct 2017
 - Add delays for base_xenforoforum_adapter.
 - Use thread-title URL for storyUrl with base_xenforo to save redirect
   fetches.
-- Comment out some debug output.
-- Remove webnovel.com manual escaping of HTML entities, the website now seems
-  to take care of it (#224)--thanks cryzed
-
- Version 2.17.1 - 14 Sep 2017
-- Update Translations.
-- Remove AO3 login from get_urls_from_page--login is failing and it isn't
-  required anymore for 'adult'. 'Restricted' (user-only) won't work.
-- Plugin: Save 'Show Download Options' check in gprefs like dialog geometries.
-- Fixes for QQ and AH changes.
-- base_xenforo: Fix for extended chars in threadmark chapter names.
-- base_xenforo: Couple small fixes for corner cases. -- Except one of them
-  isn't, I think it would be pretty common; namely a notice being using as
-  first chapter.
-- adapter_literotica: Build the chapter a little better especially if there is
-  mutiple pages (#225) - Thanks, davidfor
-- base_xenforo: Use '/posts/' not 'post' to find thread vs post URLs.
-- Add sectionUrl metadata and mechanism for internally normalizing story URLs
-  *and* [story URL] sections. For base_xenforo when including thread titles in
-  storyUrl. Doesn't effect base_xenforo *post* URLs.
-- base_xenforo: Move skip_threadmarks_categories to save a fetch if skipping
-  anyway. Will also effect minimum_threadmarks.
-- base_xenforo: Don't include thread title in *chapter* url, perfomance impact
-  is smaller and keeps from marking a bunch of stuff (new).
-- Add delays for base_xenforoforum_adapter.
-- Use thread-title URL for storyUrl with base_xenforo to save redirect fetches.
 - Comment out some debug output.
 - Remove webnovel.com manual escaping of HTML entities, the website now seems
   to take care of it (#224)--thanks cryzed
