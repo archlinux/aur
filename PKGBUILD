@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Toledo <kry0ster@gmail.com>
 
 pkgname=jumpapp-git
-pkgver=r62.8229224
+pkgver=r64.9356ca0
 pkgrel=1
 pkgdesc="A run-or-raise application switcher for any X11 desktop"
 arch=('i686' 'x86_64')
