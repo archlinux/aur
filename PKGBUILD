@@ -5,8 +5,10 @@
 # Contributor: Nathan Hulse <nat.hulse@gmail.com>
 
 pkgname=compiz
-pkgver=0.9.13.1
-pkgrel=4
+_revno=r4138
+_upstream='~compiz-team'
+pkgver=0.9.13.1.${_revno}
+pkgrel=1
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -17,22 +19,22 @@ optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
 conflicts=('compiz-core' 'compiz-gtk' 'compiz-bcop' 'ccsm' 'compiz-fusion-plugins-main' 'compiz-fusion-plugins-extra' 'compiz-fusion-plugins-experimental' 'compizconfig-python' 'libcompizconfig' 'simple-ccsm')
-provides=("compiz-core=${pkgver}" "compiz-bcop=${pkgver}" "ccsm=${pkgver}" "compiz-plugins-main=${pkgver}" "compiz-plugins-extra=${pkgver}" "compizconfig-python=${pkgver}" "libcompizconfig=${pkgver}")
-source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2"
+provides=("compiz-core=${pkgver/.r*/}" "compiz-bcop=${pkgver/.r*/}" "ccsm=${pkgver/.r*/}" "compiz-plugins-main=${pkgver/.r*/}" "compiz-plugins-extra=${pkgver/.r*/}" "compizconfig-python=${pkgver/.r*/}" "libcompizconfig=${pkgver/.r*/}")
+source=(#"https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2"
+        "http://bazaar.launchpad.net/${_upstream}/${pkgname}/${pkgver:0:6}/tarball/${_revno:1}"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
         "reverse-unity-config.patch"
-        "screenshot-launch-fix.patch"
-        "version.patch")
-sha256sums=('9854802ba2a072a497552a55cc03cce1e947ff68ed3755b484c218f688222cbf'
+        "screenshot-launch-fix.patch")
+sha256sums=('SKIP'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
-            '97778fde6eff779e10a03f5c03f26ffdda8bdb89091956fee19ce84d7d8c9ef9'
-            '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
-            '9df571e0f7332aeec6eaea35451439270e9516f1275aa8a639dc1fad9ccc3452')
+            '5da38bf4f7fd127a01ce9c68ab66d21fe69086228051073896d3d59c6bc400e8'
+            '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  #cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${_upstream}/${pkgname}/${pkgver:0:6}"
 
   # Reverse Unity specific configuration patches
   patch -p1 -i "${srcdir}/reverse-unity-config.patch"
@@ -52,13 +54,11 @@ prepare() {
 
   # Fix application launching for the screenshot plugin
   patch -p1 -i "${srcdir}/screenshot-launch-fix.patch"
-
-  # Fix version number, should be 0.9.13.1
-  patch -p1 -i "${srcdir}/version.patch"
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  #cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${_upstream}/${pkgname}/${pkgver:0:6}"
 
   export PYTHON="/usr/bin/python2"
 
@@ -76,13 +76,14 @@ build() {
     -DBUILD_KDE4=Off \
     -DCOMPIZ_BUILD_TESTING=Off \
     -DCOMPIZ_WERROR=Off \
-    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp" \
+    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp"
 
     make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}/build"
+  #cd "${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${_upstream}/${pkgname}/${pkgver:0:6}/build"
   make DESTDIR="${pkgdir}" install
 
   # findcompiz_install needs COMPIZ_DESTDIR and install needs DESTDIR
