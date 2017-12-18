@@ -20,7 +20,6 @@ pkgbase = theshell
 	depends = qt5-charts
 	depends = qt5-location
 	depends = kscreen
-	depends = kdepimlibs4
 	depends = ts-polkitagent
 	depends = ts-bt
 	depends = ts-bugreport
