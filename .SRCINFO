@@ -1,0 +1,14 @@
+pkgbase = python-flask-sockets
+	pkgdesc = Elegant WebSockets for your Flask apps.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/kennethreitz/flask-sockets
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gevent-websocket
+	source = https://github.com/kennethreitz/flask-sockets/archive/v0.2.1.tar.gz
+	sha256sums = 34847325aad2486804ae91677fef6cdd3903ea0db0afbd4f630d9717b3c4a321
+
+pkgname = python-flask-sockets
+
