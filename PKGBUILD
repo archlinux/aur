@@ -18,7 +18,7 @@ pkgbase="zfs-linux-zen-git"
 pkgname=("zfs-linux-zen-git" "zfs-linux-zen-git-headers")
 
 pkgver=2017.12.18.r3214.bbffb59ef.4.14.6.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-zen-headers=4.14.6-1" "git" "spl-linux-zen-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
