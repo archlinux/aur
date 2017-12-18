@@ -1,6 +1,6 @@
 pkgbase = python-pytablereader
 	pkgdesc = A Python library to load structured table data from files/strings/URL with various data format: CSV/Excel/Google-Sheets/HTML/JSON/LTSV/Markdown/SQLite/TSV.
-	pkgver = 0.13.3
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/thombashi/pytablereader
 	arch = any
@@ -11,17 +11,17 @@ pkgbase = python-pytablereader
 	depends = python-path.py>=10.3.1
 	depends = python-markdown2>=2.3.4
 	depends = python-beautifulsoup4>=4.6.0
-	depends = python-dataproperty>=0.25.6
+	depends = python-dataproperty>=0.29.1
 	depends = python-enum-compat
 	depends = python-jsonschema>=2.6.0
 	depends = python-logbook
 	depends = python-mbstrdecoder
-	depends = python-pathvalidate>=0.16.1
+	depends = python-pathvalidate>=0.16.2
 	depends = python-pyparsing>=2.2.0
 	depends = python-requests>=2.18.4
 	depends = python-six
 	depends = python-typepy>=0.0.20
-	source = https://github.com/thombashi/pytablereader/archive/v0.13.3.tar.gz
+	source = https://github.com/thombashi/pytablereader/archive/v0.15.0.tar.gz
 	md5sums = 128ac541f075a953f82b8cda6f4757bf
 
 pkgname = python-pytablereader
