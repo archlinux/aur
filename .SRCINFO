@@ -1,6 +1,6 @@
 pkgbase = color-picker-git
 	pkgdesc = One Color Picker to rule them all! No overhelming menus or settings. An easy tool with the features you need.
-	pkgver = 1.0.1
+	pkgver = 20171218
 	pkgrel = 1
 	url = https://github.com/RonnyDo/ColorPicker
 	arch = i686
