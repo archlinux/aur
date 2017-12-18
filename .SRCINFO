@@ -1,8 +1,8 @@
 pkgbase = qgis
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats
 	pkgver = 2.18.15
-	pkgrel = 1
-	url = http://qgis.org/
+	pkgrel = 2
+	url = https://qgis.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
