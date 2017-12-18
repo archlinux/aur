@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Development
+Exec=pyspread
+Comment=Python power for your tables
+Icon=pyspread
+MimeType=
+Name=pyspread
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+
