@@ -7,7 +7,7 @@
 
 pkgname='lucas-simpsons-hit-and-run-mod-launcher'
 pkgver='1.16.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Mod launcher for The Simpsons: Hit & Run."
 arch=(
     'x86_64'

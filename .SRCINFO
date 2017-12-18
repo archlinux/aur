@@ -1,7 +1,7 @@
 pkgbase = lucas-simpsons-hit-and-run-mod-launcher
 	pkgdesc = Mod launcher for The Simpsons: Hit & Run.
 	pkgver = 1.16.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://donutteam.com/
 	arch = x86_64
 	arch = i686
