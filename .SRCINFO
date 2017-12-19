@@ -1,13 +1,13 @@
 pkgbase = wings3d
 	pkgdesc = 3D modeling program
 	pkgver = 2.1.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.wings3d.com/
 	arch = x86_64
 	license = GPL
 	makedepends = gendesk
 	makedepends = imagemagick
-	depends = erlang200
+	depends = erlang
 	depends = desktop-file-utils
 	depends = erlang-sdl
 	depends = erlang-cl
