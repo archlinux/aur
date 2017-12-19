@@ -45,7 +45,7 @@ conflicts=('nix')
 
 pkgver() {
   cd ${pkgname%-git}
-  _last_commit_date=$(git log -1 --format="%cd" --date=short | sed "s|-||g")
+  _last_commit_date=$(git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g")
   _version=$(cat ./version)
   echo "${_version}.${_last_commit_date}"
 }
