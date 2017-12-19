@@ -2,7 +2,7 @@
 # Previous Maintainer: 2bluesc <2bluesc gmail.com>
 # Maintainer: Vadzim Dambrouski <pftbest gmail.com>
 pkgname=gcc-arm-none-eabi-bin
-pkgver=6_2017_q2_update
+pkgver=7_2017_q4_major
 pkgrel=1
 pkgdesc="GNU Tools ARM Embedded Processors (binary distribution, includes newlib, does NOT include GDB)"
 arch=('x86_64')
@@ -21,10 +21,10 @@ conflicts=('gcc-arm-none-eabi'
 	  'arm-none-eabi-newlib'
     )
 url="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm"
-source=("https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/6-2017q2/gcc-arm-none-eabi-6-2017-q2-update-linux.tar.bz2")
+source=("https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-linux.tar.bz2")
 license=('custom')
 options=(!strip staticlibs)
-sha256sums=('e68e4b2fe348ecb567c27985355dff75b65319a0f6595d44a18a8c5e05887cc3')
+sha256sums=('96a029e2ae130a1210eaa69e309ea40463028eab18ba19c1086e4c2dafe69a6a')
 
 package() {
   mkdir -p $pkgdir/usr
