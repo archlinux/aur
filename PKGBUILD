@@ -1,19 +1,39 @@
 # Maintainer: Hector Mtz-Seara <hseara at gmail dot com>
 
 pkgname=dssp
-pkgver=2.2.1
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Secondary structure assignment for proteins"
 arch=('i686' 'x86_64')
 url="http://swift.cmbi.ru.nl/gv/dssp/HTML/distrib.html"
 license=('custom')
 depends=('boost-libs')
 source=("$pkgname-$pkgver.tar.gz::ftp://ftp.cmbi.ru.nl/pub/software/$pkgname/$pkgname-$pkgver.tgz")
-sha1sums=('b0fe1b2a4c5c04efaac9f89442fa6f2947ff75b7')
+sha1sums=('4b35bc8e7d9f62262b00b918d5b194fbdd65ffaa')
+
+
+#With gcc6 currently there are less errors in the tests
+# also the compilation is possible in cuda capable machines
+export CC=gcc-6
+export CXX=g++-6
+export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
+export CXXFLAGS="${CFLAGS}"
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
         sed -i 's/-static//' makefile
+        sed -i 's:<boost/tr1/tuple.hpp>:<boost/tuple/tuple.hpp>:' ./src/mas.cpp
+        sed -i 's/tr1::tuple/boost::tuple/' ./src/mas.cpp
+        sed -i 's:<boost/tr1/tuple.hpp>:<boost/tuple/tuple.hpp>:' ./src/primitives-3d.h
+        sed -i 's/std::tr1::tuple/boost::tuple/' ./src/primitives-3d.h
+        sed -i 's/std::tr1::tuple/boost::tuple/' ./src/primitives-3d.cpp
+        sed -i 's/std::tr1::tuple/boost::tuple/' ./src/structure.h
+        sed -i 's/std::tr1::tuple/boost::tuple/' ./src/structure.cpp
+        sed -i 's/std::tr1::tie/boost::tie/' ./src/dssp.cpp
+	# HECTOR
+        sed -i 's/std::tr1::make_tuple/boost::make_tuple/' ./src/structure.cpp
+        sed -i 's/std::tr1::make_tuple/boost::make_tuple/' ./src/primitives-3d.cpp
+
 }
 
 build() {

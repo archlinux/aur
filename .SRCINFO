@@ -1,14 +1,14 @@
 pkgbase = dssp
 	pkgdesc = Secondary structure assignment for proteins
-	pkgver = 2.2.1
-	pkgrel = 3
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = http://swift.cmbi.ru.nl/gv/dssp/HTML/distrib.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = boost-libs
-	source = dssp-2.2.1.tar.gz::ftp://ftp.cmbi.ru.nl/pub/software/dssp/dssp-2.2.1.tgz
-	sha1sums = b0fe1b2a4c5c04efaac9f89442fa6f2947ff75b7
+	source = dssp-3.0.0.tar.gz::ftp://ftp.cmbi.ru.nl/pub/software/dssp/dssp-3.0.0.tgz
+	sha1sums = 4b35bc8e7d9f62262b00b918d5b194fbdd65ffaa
 
 pkgname = dssp
 
