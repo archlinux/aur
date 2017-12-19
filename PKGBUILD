@@ -1,4 +1,5 @@
-# Maintainer: Yamakaky <yamakaky@yamaworld.fr>
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: Yamakaky <yamakaky@yamaworld.fr>
 pkgname=bloaty-git
 pkgver=0.0.0.r232.g340c0a7
 pkgrel=1
