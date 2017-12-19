@@ -1,0 +1,28 @@
+pkgbase = movie-monad
+	pkgdesc = A free and simple to use video player built with Haskell.
+	pkgver = 0.0.2.0_0
+	pkgrel = 1
+	url = https://github.com/lettier/movie-monad
+	arch = x86_64
+	license = BSD3
+	makedepends = make
+	makedepends = wget
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = gmp
+	makedepends = zlib
+	makedepends = ncurses
+	depends = gtk3
+	depends = gstreamer
+	depends = gst-libav
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/movie-monad/0.0.2.0/movie-monad-0.0.2.0.tar.gz
+	sha256sums = 3cb2b58c6513c52e7620d0bd64196a105928259c2ce71f070b9c993f5586c431
+
+pkgname = movie-monad
+
