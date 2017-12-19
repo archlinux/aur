@@ -1,16 +1,15 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=matcha-gtk-theme
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="A flat design theme for GNOME, MATE, Openbox, Unity, XFCE, Budgie"
 arch=('any')
 url='https://www.gnome-look.org/p/1187179'
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
-source=("${pkgname}-${pkgver}.tar.gz::https://dl.opendesktop.org/api/files/download/id/1512132306/Matcha-Theme.tar.xz")
-sha256sums=('eb569f28676a0d39832e7e038a2de1a4a56cd7a3821c25e000cdb77cadbdfee9')
-
+source=("${pkgname}-${pkgver}.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1513692672/s/bdc83130954098ce29fe8cee217defdf/t/1513721769/Matcha-Theme.tar.xz")
+sha256sums=('106eb40e82842d2c6e2334430839baea4ea4bb818b74481a5bae01183167309e')
 
 prepare() {
    cd Matcha-Theme/Matcha
