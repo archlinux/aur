@@ -1,6 +1,6 @@
 pkgbase = xim-git
 	pkgdesc = Vim-like hex editor.
-	pkgver = r11.e432a7f
+	pkgver = 9e9568e860d779541d2e0f254e5958d43f810acb
 	pkgrel = 1
 	url = https://github.com/FHMS-ITS/Xim
 	arch = x86_64
