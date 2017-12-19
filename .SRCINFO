@@ -1,0 +1,17 @@
+pkgbase = igvtools
+	pkgdesc = IGV utilities for preprocessing data files
+	pkgver = 2.3.98
+	pkgrel = 1
+	url = https://software.broadinstitute.org/software/igv
+	arch = any
+	license = GPL2
+	depends = java-runtime-openjdk>=6
+	provides = igvtools
+	conflicts = igvtools
+	source = http://data.broadinstitute.org/igv/projects/downloads/2.3/igvtools_2.3.98.zip
+	source = igvtools
+	md5sums = 17ed12a213cd9cdaeb2f2a5c56d84bc4
+	md5sums = 17d307c9586921bccef9f7cb22b3e7ba
+
+pkgname = igvtools
+
