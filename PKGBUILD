@@ -58,7 +58,7 @@ _v_b='163'
 
 _update='1'
 
-pkgrel=1
+pkgrel=2
 
 
 _sp='professional_edition'
@@ -334,6 +334,7 @@ package_intel-compiler-base() {
   extract_rpms 'intel-icc*.rpm'  $xe_build_dir
   extract_rpms 'intel-comp*.rpm'  $xe_build_dir
   extract_rpms 'intel-openmp*.rpm'  $xe_build_dir
+  extract_rpms 'intel-c-*.rpm'  $xe_build_dir
 
 
   echo -e " # intel_compiler-base: Editing variables"
