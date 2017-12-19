@@ -3,7 +3,7 @@
 
 pkgname=pascalabcnet
 pkgver=3.3.0.1599
-pkgrel=1
+pkgrel=2
 pkgdesc="PascalABC.NET compiler"
 arch=('any')
 url="https://github.com/pascalabcnet/pascalabcnet"
@@ -26,8 +26,8 @@ source=(
 )
 sha256sums=(
     'd63890e3316a4c7cc50f373cc0277edb4f29381dd9c9a8c9b663c7f3d6e9e1d7'
-    '62c1e5e946f96b7b0db876c736c6f7dda20a083b5f08b4ac710b95ed4805ff6f'
-    '9066a40e4610924ee29dbae4a1e1045039c3a1afa602a62a494888e60189a5e1'
+    '5903380803609b5eaa0a5a1cfc5ddf86ffffc8a3fce312eb733adab660ce035c'
+    '42fd2a14dffc555046f187a501ba1fffcff11d95cc39f68484fe32204fe73b75'
 )
 
 package() {
