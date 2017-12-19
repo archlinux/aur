@@ -1,0 +1,16 @@
+pkgbase = genometools
+	pkgdesc = A unified set of bioinformatics tools for analyzing genomes
+	pkgver = 1.5.10
+	pkgrel = 1
+	url = http://genometools.org/
+	arch = x86_64
+	license = ISC
+	checkdepends = ruby
+	makedepends = gcc-libs
+	provides = genometools
+	conflicts = genometools
+	source = https://github.com/genometools/genometools/archive/v1.5.10.tar.gz
+	md5sums = 2d2a5ad359d60094a5e941ed7319aa45
+
+pkgname = genometools
+
