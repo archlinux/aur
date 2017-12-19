@@ -12,6 +12,7 @@ pkgbase = shotpy
 	depends = python>=3.6
 	depends = libnotify
 	depends = xclip
+	depends = python-pip
 	optdepends = libnotify: for desktop notifications
 	optdepends = scrot: for making screenshots
 	optdepends = xclip: for copying screenshot URLs to clipboard
