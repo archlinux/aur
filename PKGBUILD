@@ -8,7 +8,7 @@
 
 pkgbase=linux-ryzen-git
 _srcname=linux
-pkgver=4.15rc2.r0.gae64f9bd1d36
+pkgver=4.15rc4.r0.g1291a0d5049d
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -24,7 +24,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
         )
 sha256sums=('SKIP'
-            '03215fd466917a0045f5f51e7c46ffe21f14c078fb8bcd1ff99e740363afbb55'
+            'SKIP'
             '6c4ab77d0be624799b9b8e12b228fe181577b298d73355b14618ebf1f5675fa7'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             )
