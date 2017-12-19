@@ -4,14 +4,14 @@
 _pkgbase=pygobject
 pkgbase=pygobject-git
 pkgname=(python-gobject-git python2-gobject-git pygobject-devel-git)
-pkgver=3.24.0+22+g30228a98
+pkgver=3.27.1+1+gdf77beb7
 pkgrel=1
 pkgdesc="Python Bindings for GLib/GObject/GIO/GTK+"
 url="https://wiki.gnome.org/Projects/PyGObject"
 arch=(x86_64)
 license=(LGPL)
 depends=(gobject-introspection-runtime)
-makedepends=(python-cairo-git python2-cairo gobject-introspection git gnome-common)
+makedepends=(python-cairo python2-cairo gobject-introspection git gnome-common)
 optdepends=('cairo: Cairo bindings')
 source=("git://git.gnome.org/pygobject")
 sha256sums=('SKIP')
