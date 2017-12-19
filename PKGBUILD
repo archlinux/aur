@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=snooze-git
-pkgver=20151106
+pkgver=20160105
 pkgrel=1
 pkgdesc="Run a command at a particular time"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('snooze')
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
 }
 
 build() {
