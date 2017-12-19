@@ -2,7 +2,7 @@
 # Contributor: Brian Knox <taotetek at gmail.com>
 
 pkgname=czmq-git
-pkgver=20160524
+pkgver=20160617
 pkgrel=1
 pkgdesc="High-level C binding for ZeroMQ"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ conflicts=('czmq')
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
 }
 
 build() {
