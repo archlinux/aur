@@ -2,8 +2,8 @@
 # Maintainer: Dan Fuhry <dan@fuhry.us>
 pkgname=kcrap-lnf
 pkgver=0.2.3+grawity1
-pkgrel=3
-_krbver=1.13.2
+pkgrel=4
+_krbver=1.16
 arch=('i686' 'x86_64')
 pkgdesc="Kerberos Challenge Response Authentication Protocol"
 license=('MIT')
