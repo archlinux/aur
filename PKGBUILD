@@ -1,5 +1,6 @@
 # Maintainer: Bas Timmer <basjetimmer at yahoo dot com >
 
+_pkgname=okular
 pkgname=okular-no-purpose
 pkgver=17.12.0
 pkgrel=1
@@ -16,7 +17,7 @@ optdepends=('ebook-tools: mobi and epub support' 'discount: markdown support'
 conflicts=(kdegraphics-okular)
 conflicts=(okular)
 provides=(okular)
-source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('0594eb61bd939a596ea5416a682b14ad56120330c3eba11c92b5d72a5b80ff33' 'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
