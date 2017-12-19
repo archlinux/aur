@@ -1,3 +1,4 @@
+# Maintainer: Orestis Floros <orestisf1993@gmail.com>
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: Benjamin Chrétien <chretien+aur [at] lirmm [dot] fr>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
@@ -7,7 +8,7 @@
 
 pkgname='rofi-git'
 _gitname='rofi'
-pkgver=1.4.0.r4.ga1ea3e26
+pkgver=1.4.2.r114.gcb36bf3c
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
 arch=('i686' 'x86_64')
@@ -40,7 +41,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_gitname}"
+  cd "$_gitname"
 
   for module in libgwater libnkutils; do
     local submodule="subprojects/${module}"
@@ -48,36 +49,30 @@ prepare() {
     git config "submodule.${submodule}.url" "${srcdir}/${module}"
     git submodule update "${submodule}"
   done
-
-  if [[ -d build ]]; then
-    # This should be removed when 'meson [OPTIONS] ..' can be run
-    # repeatedly without generating an error.
-    rm -rf build
-  fi
-
-  mkdir -p build
 }
 
 build() {
-  cd "${_gitname}/build"
+  cd "$_gitname"
 
-  meson --prefix=/usr ..
-  ninja
+  autoreconf -i
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
 }
 
 check() {
-  cd "${_gitname}/build"
+  cd "$_gitname"
 
-  ninja test
+  LC_ALL=C make check
 }
 
 package() {
-  cd "${_gitname}/build"
+  cd "$_gitname"
 
-  DESTDIR="${pkgdir}" ninja install
-  install -d -m 755 "${pkgdir}/usr/share/doc/rofi/examples"
-  install -D -m 644 ../COPYING "$pkgdir/usr/share/licenses/rofi/LICENSE"
-  install -D -m 755 ../Examples/*.sh "$pkgdir/usr/share/doc/rofi/examples"
+  make install install-man DESTDIR="$pkgdir"
+
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/rofi/COPYING"
+  install -dm755 "$pkgdir/usr/share/doc/rofi/examples"
+  install -Dm755 Examples/*.sh "$pkgdir/usr/share/doc/rofi/examples"
 }
 
 # vim: ts=2 sw=2 et:
