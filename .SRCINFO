@@ -1,0 +1,15 @@
+pkgbase = libmaus
+	pkgdesc = Bioinformatics data structures and algorithms in C++
+	pkgver = 2.0.433
+	pkgrel = 1
+	url = https://github.com/gt1/libmaus2
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-libs
+	provides = libmaus
+	conflicts = libmaus
+	source = https://github.com/gt1/libmaus2/archive/2.0.433-release-20171218125839.tar.gz
+	md5sums = 7ab7575a60d43ca5660019b37958b8a3
+
+pkgname = libmaus
+
