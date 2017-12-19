@@ -12,7 +12,7 @@ url="http://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin"
 groups=('xfce4-goodies')
 depends=('xfce4-panel')
 makedepends=('intltool')
-source=(http://archive.xfce.org/src/panel-plugins/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2)
+source=(https://archive.xfce.org/src/panel-plugins/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2)
 sha256sums=('297f3077f7aee52a237449fbd8595e232267bc600b5b9e7ddc5baab306ed67b9')
 
 build() {
