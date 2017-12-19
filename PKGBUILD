@@ -11,10 +11,10 @@ depends=()
 makedepends=('cmake' 'autoconf' 'automake')
 source=(${url}/archive/${_revision}.tar.gz
         0001-Avoid-using-TLS.patch
-        0002-Use-distcc-in-external-projects.patch)
+        0002-Fix-for-distcc.patch)
 sha1sums=('08a4a99af75152055696aecae9d09c083d2c1c98'
           '79502d1498b507064e7485c743d9f2dc8b5062c4'
-          'd31aaef7ffba9daf3df9b7ed1a802c45c198e38d')
+          'b41c3ab8d1665584dac93b8dabab1ab3ed0a19ac')
 
 prepare()
 {

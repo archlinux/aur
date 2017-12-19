@@ -1,0 +1,113 @@
+From 1eac19435dd9142a3bee741ef839c6c1735bc4de Mon Sep 17 00:00:00 2001
+From: Anatolii Sakhnik <sakhnik@gmail.com>
+Date: Tue, 19 Dec 2017 21:17:14 +0200
+Subject: [PATCH] Fix for distcc
+
+---
+ cmake/External-Googletest.cmake |  1 +
+ cmake/External-Mosquitto.cmake  |  1 +
+ cmake/External-OpenMax.cmake    |  1 +
+ cmake/External-RaspiCam.cmake   |  3 ++-
+ cmake/External-Restclient.cmake |  4 ++--
+ cmake/Superbuild.cmake          | 11 +++++++++++
+ 6 files changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/External-Googletest.cmake b/cmake/External-Googletest.cmake
+index fd95600..4b9cb55 100755
+--- a/cmake/External-Googletest.cmake
++++ b/cmake/External-Googletest.cmake
+@@ -8,6 +8,7 @@ ExternalProject_Add(googletest
+   UPDATE_COMMAND ""
+   PATCH_COMMAND ""
+   CMAKE_ARGS
++    ${ep_common_args}
+     -DCMAKE_BUILD_TYPE:STRING=Release
+     -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/thirdparty
+     -Dgtest_force_shared_crt=OFF
+diff --git a/cmake/External-Mosquitto.cmake b/cmake/External-Mosquitto.cmake
+index af8c2e1..8e427e6 100644
+--- a/cmake/External-Mosquitto.cmake
++++ b/cmake/External-Mosquitto.cmake
+@@ -10,6 +10,7 @@ ExternalProject_Add(mosquitto
+   CMAKE_GENERATOR ${gen}
+   INSTALL_COMMAND mkdir -p ../thirdparty/lib/ && cp lib/cpp/libmosquittopp.a ../thirdparty/lib/
+   CMAKE_ARGS
++    ${ep_common_args}
+     -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/thirdparty
+     -DWITH_UUID=no
+     -DWITH_WEBSOCKETS=no
+diff --git a/cmake/External-OpenMax.cmake b/cmake/External-OpenMax.cmake
+index 6f2f55c..90cc7c3 100755
+--- a/cmake/External-OpenMax.cmake
++++ b/cmake/External-OpenMax.cmake
+@@ -24,6 +24,7 @@ ExternalProject_Add(openmax
+   CMAKE_GENERATOR ${gen}
+   INSTALL_COMMAND ""
+   CMAKE_ARGS
++    ${ep_common_args}
+     -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/thirdparty
+     -DBUILD_SHARED_LIBS=OFF
+ )
+diff --git a/cmake/External-RaspiCam.cmake b/cmake/External-RaspiCam.cmake
+index 36e7d1f..cce13c0 100755
+--- a/cmake/External-RaspiCam.cmake
++++ b/cmake/External-RaspiCam.cmake
+@@ -22,6 +22,7 @@ ExternalProject_Add(raspicamera
+   PATCH_COMMAND ""
+   CMAKE_GENERATOR ${gen}
+   CMAKE_ARGS
++    ${ep_common_args}
+     -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/thirdparty
+     -DBUILD_SHARED_LIBS=OFF
+     -DBUILD_UTILS=OFF
+@@ -33,4 +34,4 @@ set(RASPBERRYPI_LIBRARY_DIR ${CMAKE_BINARY_DIR}/thirdparty/lib/)
+ set(RASPBERRYPI_LIBRARIES raspicam.a raspicam_cv.a mmal mmal_core mmal_util)
+ 
+ include_directories(${RASPBERRYPI_INCLUDE_DIR})
+-link_directories(${RASPBERRYPI_LIBRARY_DIR})
+\ No newline at end of file
++link_directories(${RASPBERRYPI_LIBRARY_DIR})
+diff --git a/cmake/External-Restclient.cmake b/cmake/External-Restclient.cmake
+index 5cd3a44..cbb9c1a 100755
+--- a/cmake/External-Restclient.cmake
++++ b/cmake/External-Restclient.cmake
+@@ -7,7 +7,7 @@ ExternalProject_Add(restclient
+   BUILD_IN_SOURCE 1
+   UPDATE_COMMAND ""
+   PATCH_COMMAND ""
+-  CONFIGURE_COMMAND ./autogen.sh && ./configure
++  CONFIGURE_COMMAND ./autogen.sh && CXX=${CMAKE_CXX_COMPILER} ./configure
+   BUILD_COMMAND make && mkdir -p ../thirdparty/lib/ && cp .libs/librestclient-cpp.a ../thirdparty/lib/
+   INSTALL_COMMAND ""
+ )
+@@ -18,4 +18,4 @@ set(RESTCLIENT_LIBRARY_DIR ${CMAKE_BINARY_DIR}/thirdparty/lib/)
+ set(RESTCLIENT_LIBRARIES restclient-cpp curl)
+ 
+ include_directories(${RESTCLIENT_INCLUDE_DIR})
+-link_directories(${RESTCLIENT_LIBRARY_DIR})
+\ No newline at end of file
++link_directories(${RESTCLIENT_LIBRARY_DIR})
+diff --git a/cmake/Superbuild.cmake b/cmake/Superbuild.cmake
+index 99a6082..65ec520 100755
+--- a/cmake/Superbuild.cmake
++++ b/cmake/Superbuild.cmake
+@@ -1,5 +1,16 @@
+ include( ExternalProject )
+ 
++set(ep_common_args
++  -DCMAKE_C_COMPILER:FILEPATH=${CMAKE_C_COMPILER}
++  -DCMAKE_CXX_COMPILER:FILEPATH=${CMAKE_CXX_COMPILER}
++)
++
++if(${CMAKE_BUILD_TYPE})
++  set(ep_common_args ${ep_common_args}
++    -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
++  )
++endif()
++
+ # --------------------------------------------------------------------------
+ # Look for GIT, check if it's installed
+ 
+-- 
+2.15.1
+
