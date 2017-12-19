@@ -4,14 +4,14 @@
 
 pkgname=hsaudiotag
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Read metadata (tags) of mp3, mp4, wma, ogg, flac and aiff files (python2 version)"
 url="http://pypi.python.org/pypi/hsaudiotag"
 arch=(any)
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("http://pypi.python.org/packages/source/h/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/h/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('751a554bd22c8c588bf25dd7ef00b9ac')
 
 build() {
