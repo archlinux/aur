@@ -4,7 +4,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=zeromq-git
-pkgver=20160528
+pkgver=20160724
 pkgrel=1
 pkgdesc="ZeroMQ core engine in C++"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ conflicts=('zeromq')
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
 }
 
 build() {
