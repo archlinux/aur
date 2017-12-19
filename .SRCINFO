@@ -1,0 +1,17 @@
+pkgbase = python-logzero
+	pkgdesc = Robust and effective logging for Python 2 and 3
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/metachris/logzero
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-logzero
+	conflicts = python-logzero
+	options = !emptydirs
+	source = https://github.com/metachris/logzero/archive/v1.3.1.tar.gz
+	md5sums = 4e7082453b9d5844d6132a3760126647
+
+pkgname = python-logzero
+
