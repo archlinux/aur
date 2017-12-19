@@ -3,7 +3,7 @@
 pkgname='powershell-git'
 _pkgname='powershell'
 binaryname='pwsh'
-pkgver=6.0.0.rc.5.gcc24b88a1
+pkgver=6.0.0.rc.2.69.g79ae39691
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
@@ -16,11 +16,13 @@ conflicts=('powershell')
 source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'
         'pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop'
         'googletest::git+https://github.com/google/googletest.git'
-        build.sh)
+        build.sh
+        dotnet-version.patch)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '4c096f1ce88fd387c9ec81f7ac0581ea')
+         'a0d7e3fa753f74e9722f71a5ab3da6d9'
+         '7fc09756121a31bc336498a18edfe6da')
 install=powershell.install
 
 pkgver() {
@@ -36,12 +38,12 @@ prepare() {
   git submodule update
   git clean -dfx
 
-  sed -i -e 's/hash powershell/\/bin\/false/g' ../build.sh
+  cat $srcdir/dotnet-version.patch | patch -p1
 }
 
 build() {
   cd $_pkgname
-  "$srcdir"/build.sh
+  $srcdir/build.sh
 }
 
 check() {
@@ -52,13 +54,13 @@ check() {
 package() {
   cd $_pkgname/src/powershell-unix
 
-  mkdir -p "$pkgdir"/usr/lib/$_pkgname
-  cp -a bin/Linux/netcoreapp*/linux-x64 "$pkgdir"/usr/lib/$_pkgname
-  chmod 755 "$pkgdir"/usr/lib/$_pkgname/linux-x64/$binaryname
+  mkdir -p $pkgdir/usr/lib/$_pkgname
+  cp -a bin/Linux/netcoreapp*/linux-x64 $pkgdir/usr/lib/$_pkgname
+  chmod 755 $pkgdir/usr/lib/$_pkgname/linux-x64/$binaryname
 
-  mkdir -p "$pkgdir"/usr/share/licenses/$_pkgname
-  cp ../../LICENSE.txt "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+  mkdir -p $pkgdir/usr/share/licenses/$_pkgname
+  cp ../../LICENSE.txt $pkgdir/usr/share/licenses/$_pkgname/LICENSE
 
-  mkdir -p "$pkgdir"/usr/bin
-  ln -s /usr/lib/$_pkgname/linux-x64/$binaryname "$pkgdir"/usr/bin/$binaryname
+  mkdir -p $pkgdir/usr/bin
+  ln -s /usr/lib/$_pkgname/linux-x64/$binaryname $pkgdir/usr/bin/$binaryname
 }

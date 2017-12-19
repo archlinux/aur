@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+
 ## Restore
 dotnet restore src/powershell-unix
 dotnet restore src/ResGen
@@ -41,7 +43,6 @@ popd
 pushd src/libpsl-native
 cmake -DCMAKE_BUILD_TYPE=Debug .
 make -j
-make test
 popd
 
 ## Build powershell core
