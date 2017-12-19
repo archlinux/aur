@@ -12,7 +12,7 @@ groups=()
 depends=('fftw' 'gsl' 'glew' 'lpsolve' 'python2' 'qt4' 'libsvm' 'lapack' 'boost-libs' 'libgl')
 makedepends=('eigen' 'flex' 'bison' 'intel-tbb' 'boost')
 provides=()
-source=("http://build-archive.informatik.uni-tuebingen.de/ball/BALL/stable/v1.4.2/${_pkgname}-${pkgver}.tar.gz"
+source=("http://abibuilder.informatik.uni-tuebingen.de/archive/ball/BALL/stable/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 	"${_pkgname}-${pkgver}-PersistentObject_cast.patch"
 	"${_pkgname}-${pkgver}-Qt_macro.patch"
         "${_pkgname}-${pkgver}-link_view_X11.patch"
