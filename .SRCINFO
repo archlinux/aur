@@ -1,0 +1,15 @@
+pkgbase = tin-summer
+	pkgdesc = Find build artifacts that are taking up disk space
+	pkgver = 1.19.8
+	pkgrel = 1
+	url = https://github.com/vmchale/tin-summer
+	arch = x86_64
+	license = custom:BSD
+	makedepends = rust
+	makedepends = cargo
+	provides = tin-summer
+	source = git+https://github.com/vmchale/tin-summer.git#tag=1.19.8
+	sha512sums = SKIP
+
+pkgname = tin-summer
+
