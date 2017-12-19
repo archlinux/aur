@@ -1,0 +1,18 @@
+pkgbase = python-pyvcf
+	pkgdesc = A Variant Call Format reader for Python.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/jamescasbon/PyVCF
+	arch = any
+	license = BSD
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pyvcf
+	conflicts = python-pyvcf
+	options = !emptydirs
+	source = https://github.com/jamescasbon/PyVCF/archive/v0.6.0.tar.gz
+	md5sums = 5e38a610b1bf837e5e74a748e281cec7
+
+pkgname = python-pyvcf
+
