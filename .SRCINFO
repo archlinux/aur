@@ -1,0 +1,14 @@
+pkgbase = kodi-addon-embyrepo
+	pkgdesc = This repo contains the Kodi Emby addon along with compatible Kodi skins
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://superrepo.org/
+	arch = any
+	license = GPL2
+	makedepends = unzip
+	depends = kodi
+	source = http://kodi.emby.media/repository.emby.kodi-1.0.3.zip
+	md5sums = b71cd64d6517e37b3a84e2f62cbd0f70
+
+pkgname = kodi-addon-embyrepo
+
