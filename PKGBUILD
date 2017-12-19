@@ -1,8 +1,8 @@
 # Maintainer: Trevor Bergeron <aur@sec.gd>
 
 pkgname=nginx-mainline-mod-rtmp
-pkgver=1.2.0
-pkgrel=5
+pkgver=1.2.1
+pkgrel=1
 
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            'a8026f5ade30b178a06f12c46dff053cfe12256016ad465a46646183086b16b0')
+            '87aa597400b0b5a05274ee2d23d8cb8224e12686227a0abe31d783b3a645ea37')
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8')
 
 build() {
