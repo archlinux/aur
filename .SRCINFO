@@ -1,0 +1,16 @@
+pkgbase = biobambam
+	pkgdesc = Bioinformatics BAM file pre-processing utilities
+	pkgver = 2.0.79
+	pkgrel = 1
+	url = https://github.com/gt1/biobambam2
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-libs
+	depends = libmaus>=2.0
+	provides = biobambam
+	conflicts = biobambam
+	source = https://github.com/gt1/biobambam2/archive/2.0.79-release-20171006114010.tar.gz
+	md5sums = 534458a7b22e37bfd4b5b6e9c590553f
+
+pkgname = biobambam
+
