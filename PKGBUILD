@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=xiphos-git
-pkgver=r3992
+pkgver=r3993
 pkgrel=1
 pkgdesc="A Bible study tool -- git version"
 arch=('i686' 'x86_64')
