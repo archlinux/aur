@@ -3,7 +3,6 @@ pkgbase = ccid-git
 	pkgver = ccid.1.4.26.r35.g582f882
 	pkgrel = 1
 	url = http://pcsclite.alioth.debian.org/ccid.html
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	license = GPL
