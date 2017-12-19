@@ -29,5 +29,4 @@ package() {
   install -Dm644 "$srcdir/shotpy.png" "$pkgdir/usr/share/pixmaps/shotpy.png"
   install -Dm644 "$srcdir/shotpy.desktop" "$pkgdir/usr/share/applications/shotpy.desktop"
   install -Dm755 shotpy.py "$pkgdir/usr/bin/shotpy"
-  pip3 install pyimgur
 }
