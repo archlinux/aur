@@ -17,12 +17,12 @@ optdepends=('sabnzbd: usenet downloader'
             'jackett: torrent indexer proxy'
             'libgdiplus: provides a gdi+ compatible api')
 install='lidarr.install'
-source=("https://ci.appveyor.com/api/buildjobs/ah2lc954sbtj0ema/artifacts/_artifacts%2FLidarr.develop.0.2.0.184.linux.tar.gz"
+source=("https://ci.appveyor.com/api/buildjobs/62sehco4uq634bdx/artifacts/_artifacts%2FLidarr.develop.0.2.0.197-glcdtiwj.linux.tar.gz"
         "lidarr.service"
         "lidarr.sysusers")
 noextract=()
 
-sha512sums=('b2c2602fe57b128b2a532b8bf6b56613c20fd92bf40663c82616a9524bebac4ac4b5f1dae139bc302fefcc4e805768ee6d50d624aff218e37d170684c8692c1e'
+sha512sums=('ce5f3dc7bdd8d66d125995164b09b50a19465b6d02311bb5f3fa65f6c7d9dc01f3fab32f65f593eb4a5ea61092e17d49d1f77ccd0db7ce439d98460d4d7d1f6e'
             '47bdb3bcefa39fd095aeae7b8ed19c80b43f9d3a90e2537088ee6ec0fdbe3472c7524e9adbe5a949dc800ff47d98f4edd8e1e5427a1a6cd730305d4be65f04cf'
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622')
 
