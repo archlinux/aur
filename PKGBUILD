@@ -7,7 +7,7 @@ _pkgname=texmacs
 pkgver=20171215.10945
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.texmacs.org/"
 license=('GPL')
 depends=('perl' 'guile1.8' 'texlive-core' 'python2' 'libxext' 'freetype2' 'qt4' 'libiconv')
@@ -62,7 +62,7 @@ build() {
               --libexecdir=/usr/lib \
               --with-guile="guile-config1.8" \
               --with-qt=/usr/lib/qt4/bin \
-              LIBS="-ldl" CC="gcc" CXX="c++"
+              LIBS="-ldl" CC="gcc" CXX="g++"
   make -j$(nproc)
 }
 
