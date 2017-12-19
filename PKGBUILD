@@ -2,7 +2,7 @@
 
 pkgname=cni
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Specification and libraries for writing plugins to configure network interfaces in Linux containers"
 arch=('i686' 'x86_64')
 url="https://github.com/containernetworking/cni"
@@ -22,8 +22,8 @@ package() {
   mkdir -p "${pkgdir}/opt/${pkgname}/"
   cp -dr --no-preserve=ownership bin "${pkgdir}/opt/${pkgname}/"
 
-  mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
