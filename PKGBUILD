@@ -18,7 +18,7 @@ conflicts=('avro-c')
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
 }
 
 build() {
