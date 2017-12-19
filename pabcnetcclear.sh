@@ -1,4 +1,4 @@
 #!/bin/bash 
 
 pkgfoldername='PascalABC.NET'
-mono /opt/$pkgfoldername/pabcnetcclear.exe
+mono /opt/$pkgfoldername/pabcnetcclear.exe "$@"
