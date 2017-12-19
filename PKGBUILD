@@ -25,6 +25,7 @@ depends=(
         )
 
 optdepends=(
+            'pacutils: support for ignored packages'
             'perl-json-xs: faster JSON deserialization'
             'perl-term-readline-gnu: for better STDIN support'
            )
