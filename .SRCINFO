@@ -1,6 +1,6 @@
 pkgbase = telegraf
 	pkgdesc = Server-level metric gathering agent for InfluxDB
-	pkgver = 1.4.5
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = http://influxdb.org/
 	install = telegraf.install
@@ -14,7 +14,7 @@ pkgbase = telegraf
 	provides = telegraf
 	options = emptydirs
 	backup = etc/telegraf/telegraf.conf
-	source = git+https://github.com/influxdata/telegraf#tag=1.4.5
+	source = git+https://github.com/influxdata/telegraf#tag=1.5.0
 	source = telegraf.sysusers
 	source = telegraf.tmpfiles
 	md5sums = SKIP
