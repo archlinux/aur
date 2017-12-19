@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+
 ## Restore
 dotnet restore src/powershell-unix
 dotnet restore src/ResGen

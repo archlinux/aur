@@ -3,7 +3,7 @@
 
 pkgname=powershell
 binaryname=pwsh
-_pkgver=6.0.0-rc
+_pkgver=6.0.0-rc.2
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
@@ -15,11 +15,13 @@ depends=('icu')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
         googletest::git+https://github.com/google/googletest.git
-        build.sh)
+        build.sh
+        dotnet-version.patch)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '8f3cdd1186321e277b53bb8596746d03')
+         'a0d7e3fa753f74e9722f71a5ab3da6d9'
+         '7fc09756121a31bc336498a18edfe6da')
 install=powershell.install
 
 prepare() {
@@ -30,7 +32,7 @@ prepare() {
   git submodule update
   git clean -dfx
 
-  sed -i -e 's/hash powershell/\/bin\/false/g' ../build.sh
+  cat $srcdir/dotnet-version.patch | patch -p1
 }
 
 build() {
