@@ -1,7 +1,7 @@
 # Contributor: Daniel Kirchner <daniel@ekpyron.org>
 
 pkgname=mingw-w64-boost
-pkgver=1.64.0
+pkgver=1.66.0
 _boostver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
@@ -13,8 +13,9 @@ makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2' 'wget')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "boost-mingw.patch")
-sha256sums=('7bcc5caace97baa948931d712ea5f37038dbb1c5d89b43ad4def4ed7cb683332'
-            'a89d730a8b7578188adb5421090a2d48c82f002a8c5a20d7bd6c9c01eff62fa7')
+sha256sums=('5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9'
+            '11a5c39852e0513d871a0f74c2f1224efc602a0404db7cd83190712e49a6d3bc')
+
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
 
@@ -23,11 +24,6 @@ prepare() {
 
   # https://svn.boost.org/trac/boost/ticket/7262
   patch -Np0 -i "${srcdir}"/boost-mingw.patch
-
-  # https://svn.boost.org/trac/boost/ticket/12205
-  cd libs/serialization
-  wget -c https://github.com/boostorg/serialization/pull/42.patch
-  patch -p1 -i 42.patch
 
   cd "${srcdir}"
   for _arch in ${_architectures}; do
@@ -74,7 +70,5 @@ package() {
     ${_arch:3}-strip -g "$pkgdir"/usr/${_arch:3}/lib/*.a
     popd
   done
-  install -Dm644 "${srcdir}"/boost_${_boostver}/LICENSE_1_0.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE_1_0.txt
 }
 
