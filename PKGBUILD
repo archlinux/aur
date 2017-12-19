@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="A kernel module for Realtek 8168 network cards(pf kernel)"
 url="http://www.realtek.com.tw"
 license=("GPL")
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('glibc' "linux-pf>=$_kernver" "linux-pf<${_kernver/.*}.$(expr ${_kernver/*.} + 1)")
 makedepends=('linux-pf-headers')
 install=$_pkgname.install
