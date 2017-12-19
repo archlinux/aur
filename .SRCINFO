@@ -1,0 +1,15 @@
+pkgbase = ruby-nats-pure
+	pkgdesc = NATS is an open-source, high-performance, lightweight cloud messaging system.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://nats.io
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = nats-pure-0.2.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/gems/nats-pure-0.2.4.gem
+	sha512sums = 32cd6df93a050004d116b25a0db1b8c3844aaa8f3047b431eaf5285531b4b3ae791272d1e2e20c19fa529ab0329d579b2c8a4393723e3a9fa31410102e9fad11
+
+pkgname = ruby-nats-pure
+
