@@ -1,6 +1,6 @@
 pkgbase = lidarr
 	pkgdesc = Music downloader for usenet and torrents.
-	pkgver = 0.2.0.184
+	pkgver = 0.2.0.197
 	pkgrel = 1
 	url = https://github.com/lidarr/Lidarr
 	install = lidarr.install

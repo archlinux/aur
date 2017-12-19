@@ -1,6 +1,6 @@
 # Maintainer: Sven Frenzel <aur@frenzel.dk>
 pkgname="lidarr"
-pkgver="0.2.0.184"
+pkgver="0.2.0.197"
 pkgrel=1
 pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
