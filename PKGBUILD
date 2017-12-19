@@ -2,8 +2,8 @@
 
 pkgname=dns-over-https-git
 _pkgname=dns-over-https
-pkgver=git
-pkgrel=4
+pkgver=02f848e
+pkgrel=1
 pkgdesc="Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol"
 url="https://github.com/m13253/dns-over-https"
 arch=('x86_64' 'i686')
@@ -31,7 +31,7 @@ prepare(){
 
 build(){
         cd $srcdir/$_pkgname
-        make -j1
+        make
 }
 
 package(){
