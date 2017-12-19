@@ -3,35 +3,33 @@
 
 pkgname=gsas2-svn
 _pkgname=gsas2
-pkgver=2912
-pkgrel=2
+pkgver=3196
+pkgrel=1
 pkgdesc="General Structure Analysis System II - refinement for powder diffraction patterns"
 arch=(i686 x86_64)
 url="https://subversion.xray.aps.anl.gov/trac/pyGSAS"
 license=(unknown)
 depends=(python2 python2-scipy python2-matplotlib wxpython python2-opengl python2-numpy gcc-fortran)
 [ "${CARCH}" = "x86_64" ] && depends=("${depends[@]}")
-makedepends=(subversion scons)
+makedepends=(subversion scons python2-numpy)
 optdepends=(python2-h5py)
 
 source=("${_pkgname}::svn+https://subversion.xray.aps.anl.gov/pyGSAS/trunk/"
 	"GSASII.desktop"
-	"rungsas2"
-	"SConstruct.patch")
+	"rungsas2")
 
 md5sums=('SKIP'
 	'e9d06aed1866e65ce8259cfd5a31e1ce'
-	'62855c475e29b88b23a446ba4ffd91be'
-	'3d4b6dd46d76b39b216e1fac0e72f916')
+	'62855c475e29b88b23a446ba4ffd91be')
 
 pkgver() {
 	  cd "${SRCDEST}/${_pkgname}"
 	  svnversion | tr -d [A-z]
 }
 
-prepare() {
-	cd $srcdir/${_pkgname}/fsource
-	patch -p0 < $srcdir/SConstruct.patch
+prepare()
+{	cd $srcdir/${_pkgname}/fsource
+	sed -i 's/f2py/f2py2/g' SConstruct
 }
 
 build() 
@@ -53,16 +51,11 @@ package()
 	#remove unecessary libraries for other platforms
 	( cd $pkgdir/opt/${_pkgname}
 
-	fortran_libs="fellipse.so  histogram2d.so  histosigma2d.so  pack_f.so  polymask.so  pydiffax.so  pypowder.so  pyspg.so  pytexture.so  unpack_cbf.so"
-	mkdir _fsource
-	for lib in ${fortran_libs}; do
-		cp fsource/${lib} _fsource/lib
-	done
+	#fortran_libs="fellipse histogram2d histosigma2d pack_f polymask pydiffax pypowder pyspg pytexture unpack_cbf"
+	#for lib in ${fortran_libs}; do
+	#	cp bin/${lib}*.so bin/${lib}.so
+	#done
 	rm -r fsource
-	mv _fsource fsource
-
-#	[ "${CARCH}" == "i686" ] && rm -rf binlinux64-2.7
-#	[ "${CARCH}" == "x86_64" ] && rm -rf binlinux2.7
 
 	for _dir in bin{mac,win,linux}{,64-}2.7; do
 		rm -rf ${_dir}

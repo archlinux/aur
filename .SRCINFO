@@ -1,13 +1,14 @@
 pkgbase = gsas2-svn
 	pkgdesc = General Structure Analysis System II - refinement for powder diffraction patterns
-	pkgver = 2912
-	pkgrel = 2
+	pkgver = 3196
+	pkgrel = 1
 	url = https://subversion.xray.aps.anl.gov/trac/pyGSAS
 	arch = i686
 	arch = x86_64
 	license = unknown
 	makedepends = subversion
 	makedepends = scons
+	makedepends = python2-numpy
 	depends = python2
 	depends = python2-scipy
 	depends = python2-matplotlib
@@ -19,11 +20,9 @@ pkgbase = gsas2-svn
 	source = gsas2::svn+https://subversion.xray.aps.anl.gov/pyGSAS/trunk/
 	source = GSASII.desktop
 	source = rungsas2
-	source = SConstruct.patch
 	md5sums = SKIP
 	md5sums = e9d06aed1866e65ce8259cfd5a31e1ce
 	md5sums = 62855c475e29b88b23a446ba4ffd91be
-	md5sums = 3d4b6dd46d76b39b216e1fac0e72f916
 
 pkgname = gsas2-svn
 
