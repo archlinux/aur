@@ -8,10 +8,8 @@ pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://biboumi.louiz.org/"
 license=('ZLIB')
-depends=('expat' 'libidn' 'udns' 'botan')
-makedepends=('git' 'cmake' 'pandoc' 'sqlite' 'postgresql-libs')
-optdepends=('sqlite: For the SQLite backend.'
-            'postgresql-libs: For the PostgreSQL backend.')
+depends=('expat' 'libidn' 'udns' 'botan' 'sqlite' 'postgresql-libs')
+makedepends=('git' 'cmake' 'pandoc')
 backup=("etc/$_pkgname/$_pkgname.cfg")
 install="$_pkgname.install"
 source=("$_pkgname::git+https://lab.louiz.org/louiz/biboumi.git"
