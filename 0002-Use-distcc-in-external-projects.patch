@@ -1,0 +1,33 @@
+From b4bc77fa828e09a3aed4c34d765a68c2bc647e39 Mon Sep 17 00:00:00 2001
+From: Anatolii Sakhnik <sakhnik@gmail.com>
+Date: Tue, 19 Dec 2017 11:09:27 +0200
+Subject: [PATCH] Use distcc in external projects
+
+---
+ cmake/Superbuild.cmake | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/cmake/Superbuild.cmake b/cmake/Superbuild.cmake
+index 99a6082..65ec520 100755
+--- a/cmake/Superbuild.cmake
++++ b/cmake/Superbuild.cmake
+@@ -1,5 +1,16 @@
+ include( ExternalProject )
+ 
++set(ep_common_args
++  -DCMAKE_C_COMPILER:FILEPATH=${CMAKE_C_COMPILER}
++  -DCMAKE_CXX_COMPILER:FILEPATH=${CMAKE_CXX_COMPILER}
++)
++
++if(${CMAKE_BUILD_TYPE})
++  set(ep_common_args ${ep_common_args}
++    -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
++  )
++endif()
++
+ # --------------------------------------------------------------------------
+ # Look for GIT, check if it's installed
+ 
+-- 
+2.15.1
+
