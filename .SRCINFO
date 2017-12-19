@@ -1,0 +1,26 @@
+pkgbase = python-pybedtools
+	pkgdesc = Python wrapper for Aaron Quinlan's bedtools.
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = http://daler.github.io/pybedtools
+	arch = any
+	license = GPL2
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-pysam>=0.8.1
+	depends = python-six
+	optdepends = bedtools: more-or-less required by namesake
+	optdepends = htslib: for working with SAM/BAM/CRAM files
+	optdepends = python-matplotlib: for plotting genomic intervals
+	optdepends = ucsc-kent-genome-tools: for bedgraph to bigwig conversions
+	provides = python-pybedtools
+	conflicts = python-pybedtools
+	options = !emptydirs
+	source = https://github.com/daler/pybedtools/archive/v0.7.10.tar.gz
+	md5sums = 2791d8005a3ce286e597de5adc68a369
+
+pkgname = python-pybedtools
+
