@@ -1,0 +1,17 @@
+pkgbase = python-lzstring
+	pkgdesc = LZ-string compression for Python
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/lzstring/
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-lzstring
+	conflicts = python-lzstring
+	options = !emptydirs
+	source = https://pypi.python.org/packages/2b/e0/06231b1114cae946b6d3505ab8157f7308b207e3f8e3eb58334769dab6c0/lzstring-1.0.3.tar.gz
+	md5sums = 1c636543484629020a26432740f81443
+
+pkgname = python-lzstring
+
