@@ -1,13 +1,13 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 
 pkgname=pcsclite-git
-pkgver=pcsc.1.8.21.r0.gf47cccf
+pkgver=pcsc.1.8.23.r0.g09f0f85
 pkgrel=1
 pkgdesc="PC/SC Architecture smartcard middleware library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://alioth.debian.org/projects/pcsclite/"
 license=('BSD')
-depends=('python2' 'systemd')
+depends=('python' 'systemd')
 makedepends=('pkg-config' 'git')
 conflicts=("pcsclite")
 provides=("pcsclite")
@@ -23,15 +23,14 @@ pkgver() {
 
 build() {
   cd "${srcdir}/PCSC"
-
-  sed -i -e "s:python:python2:g" src/spy/pcsc-spy
   sed -i "/^AC\_INIT/ { s,]),-git]), }" configure.ac
   ./bootstrap
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
-              --enable-libudev \
               --sysconfdir=/etc \
+              --enable-filter \
               --enable-ipcdir=/run/pcscd \
+              --enable-libudev \
               --enable-usbdropdir=/usr/lib/pcsc/drivers \
               --with-systemdsystemunitdir=/usr/lib/systemd/system
 
