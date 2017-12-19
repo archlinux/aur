@@ -3,7 +3,7 @@ pkgname=jsawk-git
 pkgver=1.4.13.g5a14c4a
 pkgrel=1
 pkgdesc="like awk, but for JSON"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://github.com/micha/jsawk"
 source=('jsawk-git::git+https://github.com/micha/jsawk.git#branch=master')
 md5sums=('SKIP')
