@@ -21,8 +21,8 @@ md5sums=('SKIP'
 
 prepare() {
   cd "$srcdir/$pkgname"
-
   sed -i 's~$HOME/Pictures/imgur.png~/usr/share/pixmaps/shotpy.png~' shotpy.py
+  pip3 install pyimgur
 }
 
 package() {
