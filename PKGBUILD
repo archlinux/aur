@@ -26,7 +26,7 @@ url="https://github.com/libbitcoin/libbitcoin"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver
         git+https://github.com/libbitcoin/libbitcoin.wiki)
-sha256sums=('2712b93c3a713df8acdf4f958890af4e96964c4b8ec16a7d96c4e139b2301b21'
+sha256sums=('e30dca732991b52d7d014f4f46f896ef3217cde465b9601c1dc0a85eb865e45f'
             'SKIP')
 provides=('libbitcoin' 'libbitcoin-system')
 conflicts=('libbitcoin')
