@@ -1,0 +1,65 @@
+# Script generated with import_catkin_packages.py
+# For more information: https://github.com/bchretien/arch-ros-stacks
+pkgdesc="ROS - Generate the message type support for dynamic message construction in C++."
+url='http://www.ros.org/'
+
+pkgname='ros-ardent-rosidl-typesupport-introspection-cpp'
+pkgver='0.4.0'
+_pkgver_patch=0
+arch=('any')
+pkgrel=1
+license=('Apache License 2.0')
+
+ros_makedepends=(ros-ardent-ament-cmake)
+makedepends=('cmake' 'ros-build-tools'
+  ${ros_makedepends[@]})
+
+ros_depends=(ros-ardent-rosidl-generator-cpp
+  ros-ardent-rosidl-generator-c
+  ros-ardent-rosidl-typesupport-interface
+  ros-ardent-rosidl-cmake
+  ros-ardent-rosidl-parser
+  ros-ardent-rosidl-typesupport-introspection-c)
+depends=(${ros_depends[@]})
+
+# Git version (e.g. for debugging)
+# _tag=release/ardent/rosidl_typesupport_introspection_cpp/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros2-gbp/rosidl-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rosidl-release-release-ardent-rosidl_typesupport_introspection_cpp-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros2-gbp/rosidl-release/archive/release/ardent/rosidl_typesupport_introspection_cpp/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('457d7b0051f953c97ac79d51b4b6c7ae647721be3f151ebd9a3c195d4b2a9663')
+
+build() {
+  # Use ROS environment variables
+  source /usr/share/ros-build-tools/clear-ros-env.sh
+  [ -f /opt/ros/ardent/setup.bash ] && source /opt/ros/ardent/setup.bash
+
+  # Create build directory
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
+
+  # Fix Python2/Python3 conflicts
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 "${srcdir}/${_dir}"
+
+  # Build project
+  cmake "${srcdir}/${_dir}" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/ardent \
+        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m \
+        -DPYTHON_LIBRARY=/usr/lib/libpython3.5m.so \
+        -DPYTHON_BASENAME=.cpython-35m \
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
+  make
+}
+
+package() {
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}/" install
+}
