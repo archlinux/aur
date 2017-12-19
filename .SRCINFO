@@ -1,0 +1,20 @@
+pkgbase = fgbio-git
+	pkgdesc = Tools for working with genomic and high throughput sequencing data.
+	pkgver = 0.4.0.r19.g4ba4127
+	pkgrel = 1
+	url = https://github.com/fulcrumgenomics/fgbio
+	arch = any
+	license = MIT
+	checkdepends = r
+	checkdepends = r-cran-ggplot2
+	depends = git-lfs
+	depends = java-runtime>=8
+	depends = sbt
+	depends = scala>=2.12
+	provides = fgbio
+	conflicts = fgbio
+	source = fgbio.sh
+	md5sums = 8f3581b03a37ecaf0824f5c38b2c4f19
+
+pkgname = fgbio-git
+
