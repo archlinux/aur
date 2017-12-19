@@ -1,0 +1,29 @@
+pkgbase = python-multiqc
+	pkgdesc = Aggregate results from bioinformatics analyses across many samples into a single report
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/ewels/MultiQC
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-future>0.14.0
+	depends = python-jinja>=2.9
+	depends = python-lzstring
+	depends = python-markdown
+	depends = python-matplotlib
+	depends = python-networkx<2
+	depends = python-numpy>=1.9.2
+	depends = python-requests
+	depends = python-simplejson
+	depends = python-spectra
+	depends = python-yaml
+	provides = python-multiqc
+	conflicts = python-multiqc
+	options = !emptydirs
+	source = https://github.com/ewels/MultiQC/archive/v1.3.tar.gz
+	md5sums = 67c4aae8b85ae40fcb2e98319fb629ac
+
+pkgname = python-multiqc
+
