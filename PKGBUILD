@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname-$pkgver \
+  cmake ../$_pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDEExperimentalPurpose_FOUND=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
