@@ -1,5 +1,5 @@
 pkgname=raiblocks-git
-pkgver=8.0.r128.g3389ef3d
+pkgver=9.0.r11.gc55c1bc9
 pkgrel=2
 pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
@@ -62,6 +62,7 @@ package() {
 
   install -Dm755 rai_wallet "$pkgdir"/usr/bin/rai_wallet
   install -Dm755 rai_node "$pkgdir"/usr/bin/rai_node
+  install -Dm644 librai_lib.so "$pkgdir"/usr/lib/librai_lib.so
 
   install -Dm644 "$srcdir"/raiblocks128.png "$pkgdir"/usr/share/pixmaps/raiblocks128.png
   install -Dm644 "$srcdir"/raiblocks.desktop "$pkgdir"/usr/share/applications/raiblocks.desktop
