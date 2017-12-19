@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
  
 pkgname=linux-steam-integration
-pkgver=0.6
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Helper for enabling better Steam integration on Linux"
 url="https://github.com/solus-project/linux-steam-integration"
@@ -13,7 +13,7 @@ optdepends=('steam-native-runtime: A package for installing all required deps fo
 provides=('linux-steam-integration')
 conflicts=('linux-steam-integration')
 source=("https://github.com/solus-project/linux-steam-integration/releases/download/v${pkgver}/linux-steam-integration-${pkgver}.tar.xz"{,.asc})
-sha512sums=('cff89ccc078a2d1f82260bd08523e632780030c3720c8f682d3e69d66b6f1eaaa520e2d13d6eab97a5b5876f26b53b3c0e973393ec4111ace3d55ce2119a4af4'
+sha512sums=('a12d69cc6fd01fa3df9866b0e4cf267538cd4dec70c8697313fbb80d99e341f7536acc4db7daf911817213be16059e1d7ae28682f2e022cb26a982fd2c737109'
             'SKIP')
 validpgpkeys=('8876CC8EDAEC52CEAB7742E778E2387015C1205F') # Ikey Doherty
 
