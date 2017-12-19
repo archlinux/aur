@@ -20,7 +20,7 @@ prepare()
 {
     cd ${srcdir}/machinery-${pkgver}
     patch -Np1 -i "${srcdir}/0001-Avoid-using-TLS.patch"
-    patch -Np1 -i "${srcdir}/0002-Use-distcc-in-external-projects.patch"
+    patch -Np1 -i "${srcdir}/0002-Fix-for-distcc.patch"
 }
 
 build()
