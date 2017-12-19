@@ -19,7 +19,7 @@ depends=(
   'libxft' 'libxkbcommon' 'libxkbcommon-x11' 'pango' 'startup-notification'
   'xcb-util' 'xcb-util-wm' 'xcb-util-xrm'
 )
-makedepends=('check' 'git' 'meson')
+makedepends=('check' 'git')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=(
