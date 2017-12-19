@@ -1,13 +1,13 @@
 pkgbase = jetbrains-mps
 	pkgdesc = JetBrains Meta Programming System
-	pkgver = 2017.3
+	pkgver = 2017.3.1
 	pkgrel = 1
 	url = http://www.jetbrains.com/mps/index.html
 	arch = any
 	license = custom: MPS license agreement
 	depends = jdk
-	source = https://download.jetbrains.com/mps/2017.3/MPS-2017.3.tar.gz
-	sha256sums = 43ba28a76202489d10880a563d25e280789e6066ac1979b0bad9ba97bbfb8955
+	source = https://download.jetbrains.com/mps/2017.3/MPS-2017.3.1.tar.gz
+	sha256sums = 47889c58047a3aa41d5859fcc4a3e8d4b074e04e3c15f65c4992d66ea325267e
 
 pkgname = jetbrains-mps
 
