@@ -1,6 +1,6 @@
 pkgbase = ccid-git
 	pkgdesc = A generic USB Chip/Smart Card Interface Devices driver (git version)
-	pkgver = ccid.1.4.26.r35.g582f882
+	pkgver = ccid.1.4.28.r9.ge637b6f
 	pkgrel = 1
 	url = http://pcsclite.alioth.debian.org/ccid.html
 	arch = x86_64
