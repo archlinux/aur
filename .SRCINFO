@@ -1,7 +1,7 @@
 pkgbase = vimb
 	pkgdesc = The vim like browser
-	pkgver = 3.0.0.1
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = http://fanglingsu.github.io/vimb
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = vimb
 	conflicts = vimb2
 	conflicts = vimb-gtk2
 	conflicts = vimb-git
-	source = vimb-3.0.0.tar.gz::https://github.com/fanglingsu/vimb/archive/3.0-alpha.tar.gz
-	md5sums = feb013e251eccf2a1b8a7728dd0816e1
-	sha256sums = 0cf8f6226d2471bf43d8ee969f00dedab048601aa869f1d190c1ed47c0acbfe2
+	source = vimb-3.1.0.tar.gz::https://github.com/fanglingsu/vimb/archive/3.1.0.tar.gz
+	md5sums = 52b28e286a2529407684d9f221279822
+	sha256sums = 6efc32b81759b1dfc637b5188831a787902ae296150a12b2813f6cc190009abf
 
 pkgname = vimb
 
