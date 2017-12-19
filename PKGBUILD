@@ -7,7 +7,7 @@
 
 pkgbase=linux-xanmod-git
 _srcname=linux
-pkgver=4.11.0
+pkgver=4.14.0
 _tag=${pkgver}-xanmod1
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -16,14 +16,11 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 source=("git+https://github.com/xanmod/linux.git"
-        # the main kernel config files
-        'config.x86_64'
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            '5111ccd0a71b591c2e86fb49607035be1e09cc90c9b6472e31bf43e7dc2c7b7b'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
@@ -31,13 +28,6 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-
-### We use shipped Xanmod config for i686, but we use a mixed Xanmod/Archlinux config for x86_64
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-#  else
-#    cat "${srcdir}/config" > ./.config
-  fi
 
   # set localversion to git commit
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
