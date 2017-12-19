@@ -1,10 +1,11 @@
-# Maintainer:  Michael Duell <michael.duell@rub.de> PGP Key: 5566FF77 Fingerprint: FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
-# Contirbutor: Juergen Hoetzel <juergen@hoetzel.info>
+# Maintainer:  Bing-Hua Wang <louiswpf@gmail.com>
+# Contributor: Michael Duell <michael.duell@rub.de> PGP Key: 5566FF77 Fingerprint: FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
+# Contributor: Juergen Hoetzel <juergen@hoetzel.info>
 # Contributor: Joerie de Gram <j.de.gram@gmail.com>
 # Contributor: bender02 at archlinux dot us
 pkgname=aespipe
 pkgver=2.4e
-pkgrel=1
+pkgrel=2
 pkgdesc="Encrypts data from stdin to stdout"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://loop-aes.sourceforge.net"
@@ -18,12 +19,10 @@ sha384sums=('SKIP' 'SKIP') # We use GPG for verification instead.
 #validpgpkeys=('12D64C3ADCDA0AA427BDACDFF0733C808132F189') # Jari Ruusu
 
 build() {
-    cd "$srcdir/$pkgname-v$pkgver"
-    export CFLAGS="${CFLAGS} -fPIC"
-#    export LDFLAGS="${LDFLAGS} -Wl,-z,relro"
-    
-    ./configure --prefix=/usr --disable-asm
-    make
+  cd "$srcdir/$pkgname-v$pkgver"
+  # https://git.buildroot.org/buildroot/commit/?id=00ecd72c28f103fc7d166f718db81a8b6c4919fa
+  ./configure LDFLAGS="-no-pie" --prefix=/usr
+  make
 }
 
 check() {
@@ -38,4 +37,3 @@ package() {
   install -D -m755 bz2aespipe "$pkgdir"/usr/bin/
   install -D -m644 README ChangeLog "$pkgdir"/usr/share/doc/$pkgname/
 }
-
