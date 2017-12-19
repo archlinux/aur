@@ -1,6 +1,6 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
-pkgname='python-pybedtools'
+pkgname='python-pybedtools-git'
 pkgver=0.7.10.r21.g7143a86
 pkgrel=1
 pkgdesc="Python wrapper for Aaron Quinlan's bedtools."
