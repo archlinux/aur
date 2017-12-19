@@ -28,10 +28,10 @@ package() {
 	cd "$_pkgname"
 
 	for variant in Mono Sans Serif; do
-		install -d $pkgdir/usr/share/fonts/OTF/ibm-plex/${variant,,}
-		install -Dm644 fonts/${variant}/desktop/mac/*.otf $pkgdir/usr/share/fonts/OTF/ibm-plex/${variant,,}
+		install -d "$pkgdir"/usr/share/fonts/OTF/ibm-plex/${variant,,}
+		install -Dm644 fonts/${variant}/desktop/mac/*.otf "$pkgdir"/usr/share/fonts/OTF/ibm-plex/${variant,,}
 	done
 
 	# License
-	install -Dm644 fonts/Mono/desktop/mac/license.txt $pkgdir/usr/share/licenses/$pkgname/license.txt
+	install -Dm644 fonts/Mono/desktop/mac/license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
 }
