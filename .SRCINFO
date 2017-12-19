@@ -1,7 +1,7 @@
 pkgbase = kcrap-lnf
 	pkgdesc = Kerberos Challenge Response Authentication Protocol
 	pkgver = 0.2.3+grawity1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.spock.org/kcrap/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kcrap-lnf
 	replaces = kcrap
 	backup = etc/kcrap_server.conf
 	source = git://github.com/grawity/kcrap-lnf
-	source = git://github.com/krb5/krb5#tag=krb5-1.13.2-final
+	source = git://github.com/krb5/krb5#tag=krb5-1.16-final
 	sha1sums = SKIP
 	sha1sums = SKIP
 
