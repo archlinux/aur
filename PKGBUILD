@@ -7,7 +7,7 @@ pkgdesc="Python script to upload pictures or screenshots to Imgur."
 arch=('any')
 url="https://github.com/0xBAAAAAAD/shotpy"
 license=('GPL')
-depends=('curl' 'grep' 'scrot' 'python>=3.6' 'libnotify' 'xclip')
+depends=('curl' 'grep' 'scrot' 'python>=3.6' 'libnotify' 'xclip' 'python-pip')
 optdepends=('libnotify: for desktop notifications'
             'scrot: for making screenshots'
             'xclip: for copying screenshot URLs to clipboard')
