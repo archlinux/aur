@@ -8,7 +8,7 @@
 # Contributor: Hilinus <itahilinus at hotmail dot it>
 
 pkgname=teamviewer-beta
-pkgver=13.0.5693
+pkgver=13.0.6634 
 pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings - beta version'
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-x11extras' 'qt5-webkit' 'hicolor-icon
 install=teamviewer.install
 source_x86_64=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
 source_i686=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
-sha256sums_x86_64=('bfbd78928a85cb1e571263f2dcd6f176512d74c627d6e5e434eadaf7274ec44e')
-sha256sums_i686=('79ce14a659947b3cd5337f6507a92ec46b265bf38eb146b0ee4a941a17d4e29c')
+sha256sums_i686=('2a3701d03e1ca7d836139b5f76c70cd0de95ddad90a73d7af5c9855676130e6d')
+sha256sums_x86_64=('92171c89c74764ab0d654093fcc59bb3ffead2d197bd9473bfb5e93f65dc1120')
 
 prepare() {
         tar -xf data.tar.xz
