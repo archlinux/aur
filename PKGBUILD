@@ -4,10 +4,11 @@ pkgname=ccid-git
 pkgver=ccid.1.4.26.r35.g582f882
 pkgrel=1
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver (git version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://pcsclite.alioth.debian.org/ccid.html"
 license=('LGPL' 'GPL')
 depends=('pcsclite' 'libusb' 'flex')
+backup=(etc/reader.conf.d/libccidtwin)
 makedepends=('pkg-config' 'git')
 provides=("ccid")
 conflicts=("ccid")
@@ -49,4 +50,6 @@ package() {
   # move the configuration file in /etc and create a symbolic link
   mv "${pkgdir}/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist" "${pkgdir}/etc/libccid_Info.plist"
   ln -s /etc/libccid_Info.plist ${pkgdir}/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist
+
+  install -Dm644 src/92_pcscd_ccid.rules "${pkgdir}/usr/lib/udev/rules.d/92_pcscd_ccid.rules"
 }
