@@ -1,13 +1,13 @@
 # Maintainer: nerflad (nerflad@gmail.com)
 
 pkgname=gapi-ocaml
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A simple OCaml client for Google Services."
 arch=("x86_64" "i686" "armv7h")
 url="https://astrada.github.io/gapi-ocaml/"
 license=('MIT')
-makedepends=('ocamlbuild')
+makedepends=('jbuilder')
 depends=(
 'ocaml>=4.02.3'
 'ocaml-findlib>=1.2.7'
@@ -20,14 +20,12 @@ depends=(
 )
 source=(https://github.com/astrada/$pkgname/archive/v$pkgver.tar.gz)
 options=('!strip' 'staticlibs')
-sha256sums=('c913341cd29a0a6bb8fcfad4783eeea2d8d1c6d4a287f1bcf538d0d5f8d22f20')
+sha256sums=('bf978936d27f5c06205deea48be963a4d9ac1fe790f17b47660a26b3cfd08cce')
 
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-
-  ocaml setup.ml -configure --prefix /usr --destdir $pkgdir --disable-tests
-  ocaml setup.ml -build
+  jbuilder build @install
 }
 
 package() {
@@ -35,5 +33,5 @@ package() {
   export OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
   install -dm755 "$OCAMLFIND_DESTDIR"
 
-  ocaml setup.ml -install
+  jbuilder install
 }
