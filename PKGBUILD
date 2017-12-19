@@ -1,7 +1,7 @@
 # PKGBUILD for HOOMD-blue. This pulls from git, but uses the "maint" version.
 # Maintainer: Asmund Ervik <aaervik@gmail.com>
 pkgname=hoomd-blue
-pkgver=v2.2.0.r0.g950e9fec2
+pkgver=v2.2.2.r1.g6e386396a
 pkgrel=1
 pkgdesc="A general-purpose particle simulation toolkit using GPUs with CUDA"
 arch=('any')
@@ -24,7 +24,7 @@ build() {
 	mkdir -p build && cd build
   export CC=gcc-5
   export CXX=g++-5
-  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-march=native -DCMAKE_C_FLAGS=-march=native -DENABLE_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
+  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-march=native -DCMAKE_C_FLAGS=-march=native -DENABLE_CUDA=ON -DSINGLE_PRECISION=ON -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
 }
 
 package() {
@@ -37,8 +37,8 @@ package() {
 	make DESTDIR="$pkgdir" install -j8
 
 	# Patch some lines that reference the source build directory
-  sed -i 's/HOOMD_SOURCE_DIR.*/HOOMD_SOURCE_DIR "\/usr\/include\/hoomd"/' "$pkgdir/usr/include/hoomd/HOOMDVersion.h"
-  sed -i 's/HOOMD_BINARY_DIR.*/HOOMD_BINARY_DIR "\/usr\/bin"/' "$pkgdir/usr/include/hoomd/HOOMDVersion.h"
+  sed -i 's/HOOMD_SOURCE_DIR.*/HOOMD_SOURCE_DIR "\/usr\/include\/hoomd"/' "$pkgdir/usr/hoomd/include/HOOMDVersion.h"
+  sed -i 's/HOOMD_BINARY_DIR.*/HOOMD_BINARY_DIR "\/usr\/bin"/' "$pkgdir/usr/hoomd/include/HOOMDVersion.h"
 
   # Uncomment this if you want to test the install (takes quite a long time):
 	#make check -j8
