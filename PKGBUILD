@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.35dev.git20171012
+pkgver=0.36dev.git20171218
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - GCC flavour'
@@ -83,15 +83,15 @@ build() {
 
 	"${srcdir}"/gcc-${_gccver}/configure \
 		--prefix=/usr \
-		--libdir=/usr/lib  \
+		--libdir=/usr/lib \
 		--libexecdir=/usr/lib \
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
-		--disable-bootstrap \
-		--enable-languages=vhdl \
 		--enable-shared \
 		--enable-threads=posix \
+		--enable-libmpx \
 		--with-system-zlib \
+		--with-isl \
 		--enable-__cxa_atexit \
 		--disable-libunwind-exceptions \
 		--enable-clocale=gnu \
@@ -99,16 +99,20 @@ build() {
 		--disable-libssp \
 		--enable-gnu-unique-object \
 		--enable-linker-build-id \
-		--enable-cloog-backend=isl \
+		--enable-lto \
 		--enable-plugin \
 		--enable-install-libiberty \
 		--with-linker-hash-style=gnu \
+		--enable-gnu-indirect-function \
 		--disable-multilib \
 		--disable-werror \
 		--enable-checking=release \
 		--enable-default-pie \
 		--enable-default-ssp \
-		--enable-lto
+		--enable-languages=vhdl \
+		--disable-bootstrap \
+		--disable-libgomp \
+		--disable-libquadmath
 
 	# Build GHDL
 	make
