@@ -10,7 +10,7 @@ url=http://sourceforge.net/projects/pgfplots/
 license=(GPL)
 install=pgfplots.install
 depends=(tetex)
-conflicts=(texlive-pictures)
+conflicts=(texlive-pictures latex-pgfplots)
 source=('pgfplots::git+https://git.code.sf.net/p/pgfplots/code')
 sha256sums=('SKIP')
 
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 package() {
-	cd "$pkgname_"
+    cd "$pkgname_"
     dest=${pkgdir}/usr/share/texmf-dist
     install -d $dest/scripts
     install -d $dest/tex/generic/$pkgname_
