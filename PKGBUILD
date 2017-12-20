@@ -14,7 +14,7 @@ makedepends=('git')
 source=("git+${url}.git"
         "netflix.desktop")
 sha256sums=('SKIP'
-            'aa4310aed2fc068102020e39b2b91ac4c9f54b9876a45bbf44affb47995f5f16')
+            'd148c00cdda8c95254c4f2fa318643514bee3646768a7f5e894e8ac41a790a26')
 
 pkgver() {
    cd ${srcdir}/${_gitname}
