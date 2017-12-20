@@ -2,7 +2,7 @@
 
 pkgname=vim-makejob
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal, asynchronous quickfix commands for Vim 8.0"
 arch=('any')
 url="https://github.com/djmoch/vim-makejob"
@@ -20,3 +20,5 @@ package() {
   install -Dm644 plugin/makejob.vim "$installpath/plugin/makejob.vim"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: ts=2 sts=2 sw=2 et ft=PKGBUILD
