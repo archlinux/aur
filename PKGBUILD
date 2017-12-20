@@ -4,7 +4,7 @@
 # Contributor: Chris <alostengineer at narmos dot org>
 pkgname=pam_ssh_agent_auth
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PAM module which permits authentication for arbitrary services via ssh-agent."
 arch=('i686' 'x86_64')
 url="http://pamsshagentauth.sourceforge.net/"
@@ -12,7 +12,7 @@ license=('custom:OpenSSL')
 source=(http://downloads.sourceforge.net/project/pamsshagentauth/$pkgname/v$pkgver/$pkgname-$pkgver.tar.bz2)
 # I couldn't find a published checksum upstream, but Debian uses this md5sum:
 md5sums=('8dbe90ab3625e545036333e6f51ccf1d')
-makedepends=('openssl-1.0')
+depends=('openssl-1.0')
 optdepends=('openssh: standard ssh-agent'
             'gnupg: gpg ssh-agent' )
 
