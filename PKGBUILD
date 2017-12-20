@@ -3,15 +3,16 @@
 pkgbase=python-requests-cache
 _pyname=requests-cache
 pkgname=('python-requests-cache' 'python2-requests-cache')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-pkgver=0.4.12
-pkgrel=2
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
+             'python-requests' 'python2-requests')
+pkgver=0.4.13
+pkgrel=1
 pkgdesc="Persistent cache for requests library"
 arch=('any')
 url="https://github.com/reclosedev/requests-cache"
 license=('BSD')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/reclosedev/${_pyname}/archive/v${pkgver}.tar.gz")
-sha512sums=('06d563d59c24f311209b81beb96130b75d1e849e0bb94ad636b3ac269eed7c89fdddfed8da86560473c4463425ea98953d30fb3da05efd614907855f130587fc')
+sha512sums=('54d814c9c4da1b1fa6f4ec124faee7e74e7ca52bc90ae7c948f19e9cb7657fe2b41f5de6c5fafe259526312d82dc5efd81ad01a741a66baf12ea2a358334f912')
 
 package_python-requests-cache() {
   depends=('python')
