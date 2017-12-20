@@ -56,17 +56,16 @@ package()
 {
 	cd ${srcdir}/obj
 	make DESTDIR=${pkgdir} install -j2
-	rm -rfv ${pkgdir}/usr/share 
-	rm -rfv ${pkgdir}/usr/include
-	rm -rfv ${pkgdir}/usr/lib/libcc1.*
-	find ${pkgdir} -name '*.py' -delete -o -name '*.la' -delete
+	rm -rf ${pkgdir}/usr/share 
+	rm -rf ${pkgdir}/usr/include
+	rm -rf ${pkgdir}/usr/lib/libcc1.*
+	find ${pkgdir} -name '*.py' -delete 
 
 	# Strip it manually
 	find ${pkgdir} | xargs file | grep -E "executable|shared object" | grep ELF | cut -f 1 -d : | xargs strip 
 
-	find ${pkgdir}/usr/lib/gcc/${_target} -name '*.o' | xargs ${pkgdir}/usr/bin/${_target}-strip -g
-	find ${pkgdir}/usr/${_target}/lib -name '*.o' | xargs ${pkgdir}/usr/bin/${_target}-strip -g
-
+	find ${pkgdir}/usr/lib/gcc/${_target} -type f -name '*.o' -o -name '*.a' | xargs ${pkgdir}/usr/bin/${_target}-strip -g
+	find ${pkgdir}/usr/${_target}/lib -type f -name '*.o' -o -name '*.a' | xargs ${pkgdir}/usr/bin/${_target}-strip -g
 	#fix permissions
 	find ${pkgdir}/usr/${_target}/lib -name '*.a' | xargs chmod 644
 
