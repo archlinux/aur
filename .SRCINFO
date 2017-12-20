@@ -1,5 +1,5 @@
 pkgbase = xorg-server-dev
-	pkgver = 1.19.5
+	pkgver = 1.19.6
 	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
@@ -54,13 +54,13 @@ pkgbase = xorg-server-dev
 	makedepends = libunwind
 	makedepends = systemd
 	makedepends = wayland-protocols
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.19.5.tar.bz2
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.19.5.tar.bz2.sig
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.19.6.tar.bz2
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.19.6.tar.bz2.sig
 	source = nvidia-add-modulepath-support.patch
 	source = xserver-autobind-hotplug.patch
 	source = xvfb-run
 	source = xvfb-run.1
-	sha256sums = 18fffa8eb93d06d2800d06321fc0df4d357684d8d714315a66d8dfa7df251447
+	sha256sums = 3c0e4a354a6b1d5d357b121357946ee8ffdb2f52158b2e63e105be9cef013168
 	sha256sums = SKIP
 	sha256sums = 914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8
 	sha256sums = fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57
@@ -81,7 +81,7 @@ pkgname = xorg-server-dev
 	depends = libpciaccess
 	depends = libdrm
 	depends = libxshmfence
-	provides = xorg-server=1.19.5
+	provides = xorg-server=1.19.6
 	provides = X-ABI-VIDEODRV_VERSION=23
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
@@ -107,7 +107,7 @@ pkgname = xorg-server-xephyr-dev
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = xcb-util-keysyms
-	provides = xorg-server-xephyr=1.19.5
+	provides = xorg-server-xephyr=1.19.6
 	conflicts = xorg-server-xephyr
 
 pkgname = xorg-server-xdmx-dev
@@ -121,7 +121,7 @@ pkgname = xorg-server-xdmx-dev
 	depends = libunwind
 	depends = pixman
 	depends = xorg-server-common-dev
-	provides = xorg-server-xdmx=1.19.5
+	provides = xorg-server-xdmx=1.19.6
 	conflicts = xorg-server-xdmx
 
 pkgname = xorg-server-xvfb-dev
@@ -133,7 +133,7 @@ pkgname = xorg-server-xvfb-dev
 	depends = xorg-server-common-dev
 	depends = xorg-xauth
 	depends = libgl
-	provides = xorg-server-xvfb=1.19.5
+	provides = xorg-server-xvfb=1.19.6
 	conflicts = xorg-server-xvfb
 
 pkgname = xorg-server-xnest-dev
@@ -144,7 +144,7 @@ pkgname = xorg-server-xnest-dev
 	depends = pixman
 	depends = xorg-server-common-dev
 	depends = libsystemd
-	provides = xorg-server-xnest=1.19.5
+	provides = xorg-server-xnest=1.19.6
 	conflicts = xorg-server-xnest
 
 pkgname = xorg-server-xwayland-dev
@@ -154,7 +154,7 @@ pkgname = xorg-server-xwayland-dev
 	depends = libgl
 	depends = pixman
 	depends = xorg-server-common-dev
-	provides = xorg-server-xwayland=1.19.5
+	provides = xorg-server-xwayland=1.19.6
 	conflicts = xorg-server-xwayland
 
 pkgname = xorg-server-common-dev
@@ -163,7 +163,7 @@ pkgname = xorg-server-common-dev
 	depends = xorg-xkbcomp
 	depends = xorg-setxkbmap
 	depends = xorg-fonts-misc
-	provides = xorg-server-common=1.19.5-1
+	provides = xorg-server-common=1.19.6-1
 	conflicts = xorg-server-common
 
 pkgname = xorg-server-devel-dev
@@ -188,6 +188,6 @@ pkgname = xorg-server-devel-dev
 	depends = scrnsaverproto
 	depends = presentproto
 	depends = xorg-util-macros
-	provides = xorg-server-devel=1.19.5
+	provides = xorg-server-devel=1.19.6
 	conflicts = xorg-server-devel
 
