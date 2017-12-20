@@ -1,0 +1,15 @@
+pkgbase = galliumos-base-git
+	pkgdesc = GalliumOS base files
+	pkgver = r70.717a92d
+	pkgrel = 1
+	url = https://github.com/galliumos/galliumos-base
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = galliumos-base
+	conflicts = galliumos-base
+	source = git+https://github.com/galliumos/galliumos-base.git
+	sha256sums = SKIP
+
+pkgname = galliumos-base-git
+
