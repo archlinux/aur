@@ -1,0 +1,17 @@
+[Unit]
+Description=PlexPy Service
+After=plexmediaserver.service
+
+[Service]
+User=plexpy
+Group=plexpy
+GuessMainPID=no
+Type=forking
+
+PermissionsStartOnly=true
+ExecStartPre=-/usr/bin/mkdir -p /var/lib/plexpy
+ExecStartPre=/usr/bin/chown -R plexpy:plexpy /var/lib/plexpy/
+ExecStart=/usr/bin/python2 /opt/plexpy/PlexPy.py --quiet --daemon --nolaunch --config /var/lib/plexpy/config.ini --datadir /var/lib/plexpy --nolaunch
+
+[Install]
+WantedBy=default.target
