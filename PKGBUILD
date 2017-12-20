@@ -2,8 +2,8 @@
 
 pkgname=(cardano-sl daedalus-bridge)
 pkgver=1.0.3
-_commit=e4b77ed9d8502a181fb1584b9f48984ba1399598
-pkgrel=1
+_commit=0c1fab91a7358fcb4c151a3a028ed650f7a36cbd
+pkgrel=2
 pkgdesc='Cryptographic currency implementing Ouroboros PoS protocol'
 arch=('x86_64')
 url='https://github.com/input-output-hk/cardano-sl/'

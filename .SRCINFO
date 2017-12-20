@@ -1,7 +1,7 @@
 pkgbase = cardano-sl
 	pkgdesc = Cryptographic currency implementing Ouroboros PoS protocol
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/input-output-hk/cardano-sl/
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = cardano-sl
 	makedepends = ncurses5-compat-libs
 	makedepends = npm
 	makedepends = stack
-	source = git+https://github.com/input-output-hk/cardano-sl.git#commit=e4b77ed9d8502a181fb1584b9f48984ba1399598
+	source = git+https://github.com/input-output-hk/cardano-sl.git#commit=0c1fab91a7358fcb4c151a3a028ed650f7a36cbd
 	sha256sums = SKIP
 
 pkgname = cardano-sl
