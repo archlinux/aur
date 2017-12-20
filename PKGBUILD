@@ -7,13 +7,13 @@ pkgdesc='Calibre OPDS (and HTML) PHP Server : web-based light alternative to Cal
 arch=('any')
 url='https://github.com/seblucas/cops'
 license=('GPL2')
-depends=('php')
+depends=('php' 'php-gd' 'php-intl' 'php-sqlite')
 optdepends=('apache: Web server to run COPS'
             'nginx: Web server to run COPS'
 	    'cherokee: Web server to run COPS')
 install="$pkgname.install"
-source=("https://github.com/seblucas/cops/archive/1.1.1.tar.gz")
-sha256sums=('c0a08133918afd51d7c558222dd579a5e84d9cf87ab21b7610a4b7e980be807c')
+source=("https://github.com/seblucas/cops/releases/download/1.1.1/cops-1.1.1.zip")
+sha256sums=('242262d0b468b6ce42564d3c125b1ff2ca76d86fd44db78a598ebd2cd3317cb1')
 
 package() {
   cd "${srcdir}/cops-$pkgver"
