@@ -1,0 +1,22 @@
+pkgbase = galliumos-baytrail-git
+	pkgdesc = GalliumOS Bay Trail customizations
+	pkgver = r30.ba48c99
+	pkgrel = 1
+	url = https://github.com/galliumos/galliumos-baytrail
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = galliumos-base
+	provides = galliumos-device
+	conflicts = galliumos-baytrail
+	conflicts = galliumos-sandy
+	conflicts = galliumos-haswell
+	conflicts = galliumos-broadwell
+	conflicts = galliumos-braswell
+	conflicts = galliumos-skylake
+	conflicts = galliumos-samus
+	source = git+https://github.com/galliumos/galliumos-baytrail.git
+	sha256sums = SKIP
+
+pkgname = galliumos-baytrail-git
+
