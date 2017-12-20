@@ -1,6 +1,6 @@
 pkgbase = mp-5
-	pkgver = 5.2.10
-	pkgrel = 2
+	pkgver = 5.2.11
+	pkgrel = 1
 	url = http://www.triptico.com/software/mp.html
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mp-5
 	makedepends = qt4
 	makedepends = kdelibs
 	makedepends = gtk3
-	source = http://triptico.com/download/mp/mp-5.2.10.tar.gz
+	source = http://triptico.com/download/mp/mp-5.2.11.tar.gz
 	source = MinimumProfit.desktop
-	md5sums = 16c425264e2728679ab5975f8e582acb
+	md5sums = 4da91d361597150b1ecf05a292b979ce
 	md5sums = 7eae413ded2d6f69fba8347240b8b875
 
 pkgname = mp-5-qt4
