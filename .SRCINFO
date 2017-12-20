@@ -1,13 +1,13 @@
 pkgbase = kubelet-bin
 	pkgdesc = Kubernetes.io kubelet binary
-	pkgver = 1.8.3
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = http://kubernetes.io
 	arch = x86_64
 	license = apache
 	conflicts = kubernetes
-	source_x86_64 = https://packages.cloud.google.com/apt/pool/kubelet_1.8.3-00_amd64_10bf853bba6b7713f8f3001f92612637ccee6893e699f7c41d91d2b4c3e6e25f.deb
-	sha256sums_x86_64 = 10bf853bba6b7713f8f3001f92612637ccee6893e699f7c41d91d2b4c3e6e25f
+	source_x86_64 = https://packages.cloud.google.com/apt/pool/kubelet_1.9.0-00_amd64_100df9788226fe76ce828503cf24b8c4c6f9705f15504093844c9138e0b2a97f.deb
+	sha256sums_x86_64 = 100df9788226fe76ce828503cf24b8c4c6f9705f15504093844c9138e0b2a97f
 
 pkgname = kubelet-bin
 
