@@ -21,7 +21,7 @@ build() {
 
 package() {
   cd "${_srcname}-${pkgver}"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm755 ${_srcname} "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
