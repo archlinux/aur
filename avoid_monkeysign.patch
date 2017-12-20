@@ -1,6 +1,7 @@
---- gnome-keysign-0.9.5.orig/setup.py	2017-10-03 13:19:46.000000000 +0200
-+++ gnome-keysign-0.9.5.new/setup.py	2017-10-03 15:26:18.639867432 +0200
-@@ -65,14 +65,14 @@
+diff -ura gnome-keysign.orig/setup.py gnome-keysign.new/setup.py
+--- gnome-keysign.orig/setup.py	2017-12-20 22:38:40.009991675 +0100
++++ gnome-keysign.new/setup.py	2017-12-20 22:40:21.835375060 +0100
+@@ -176,14 +176,14 @@
          'keysign.compat',
          'keysign.network',
          ],

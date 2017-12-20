@@ -2,34 +2,35 @@
 # Contributor: Profpatsch <mail AT [nickname] DOT de>
 
 pkgname=gnome-keysign
-pkgver=0.9.5
-pkgrel=4
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="An easier way to sign OpenPGP keys over the local network."
 arch=('any')
 url="https://github.com/gnome-keysign/gnome-keysign"
 license=('GPL3')
 install=gnome-keysign.install
-depends=('python' 'python-cairo' 'python-dbus' 'python-requests' 'python-gobject'
-         'python-qrcode' 'python-twisted' 'python-gpgme' 'avahi' 'dbus'
-	 'gst-plugins-good' 'gst-plugins-bad' 'zbar')
-optdepends=('python-pybluez')
-makedepends=('python-setuptools')
-source=(https://github.com/gnome-keysign/gnome-keysign/archive/${pkgver}.tar.gz
+depends=('python' 'python-cairo' 'python-dbus' 'python-gobject' 'python-gpgme'
+         'python-qrcode' 'python-requests' 'python-twisted' 'avahi' 'dbus'
+         'gst-plugins-good' 'gst-plugins-bad' 'zbar')
+optdepends=('python-pybluez: Bluetooth support')
+makedepends=('git' 'python-setuptools' 'python-lxml')
+_commit=5d1c180dd9de8593036dbf05ab9990cb17534a2f  # tags/0.9.6
+source=("git+https://gitlab.gnome.org/GNOME/gnome-keysign.git#commit=$_commit"
         "avoid_monkeysign.patch")
-sha256sums=('0bb55d834f957fe438dc32b311d7035f12cf36af07c3bded462fc9d72451a224'
-            '74a1ac5d76d21977d2a8c3fcbc7630ccf063600ff94a30ba20df47984c44bf2e')
+sha256sums=('SKIP'
+            'e3aa40aeff35a8f7fcc6b7e79a3a3efb643bc2767766cbdc340a9860484734f2')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd $pkgname
     patch -Np1 -i "${srcdir}/avoid_monkeysign.patch"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd $pkgname
     python setup.py build
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd $pkgname
     python setup.py install --root="${pkgdir}" --prefix="/usr" --optimize=1
 }
