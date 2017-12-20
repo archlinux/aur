@@ -2,7 +2,7 @@
 
 pkgname=vim-makejob
 pkgver=1.2
-pkgrel=2
+pkgrel=1
 pkgdesc="Minimal, asynchronous quickfix commands for Vim 8.0"
 arch=('any')
 url="https://github.com/djmoch/vim-makejob"
