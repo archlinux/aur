@@ -1,7 +1,7 @@
 #Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
 pkgname="social-engineer-toolkit"
-pkgver=7.7
+pkgver=7.7.4
 pkgrel=1
 pkgdesc="The Social-Engineer Toolkit (SET)"
 arch=("any")
@@ -14,7 +14,7 @@ depends=("python2-pexpect" "python2-crypto" "python2-requests"
 optdepends=("metasploit")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trustedsec/social-engineer-toolkit/archive/${pkgver}.tar.gz"
         "setoolkit")
-sha512sums=('0a28eb44bcc391cf2bc005c81724b2356531cf075977eb273413829be797534b60a7596455aa6bbe53dde6783b0460816f914ff4fa0c4719db6fc130166ca488'
+sha512sums=('aee9add5a5f7520283c80e85576fabc31ee47e0fbccdedeeafe8ae22ddadfc5e8635425eeaf6592c55e41384ab5ad3c41e874a7cc6b1b99b9e81576aa2b4baa3'
             '130df5c3be2a75466933c086a10194a8e276b699698389af1528d2aa0f445d1dd41a82bf27e01749d59481df3d1071ac37605c4ee3e57c8bf99dd2410dd23a0b')
 
 build() {
