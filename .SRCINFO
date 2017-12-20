@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.14.7
-	pkgrel = 2
+	pkgver = 4.14.8
+	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
 	license = GPL2
@@ -12,12 +12,11 @@ pkgbase = linux-bfq-mq
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.7.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.7.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.8.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.8.sign
 	source = https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/4.14-bfq-sq-mq-git-20171219.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/4.14-bfq-sq-mq-git-20171220.patch
 	source = https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0050-blk-mq-sched-dispatch-from-scheduler-only-after-progress-is-made-on->dispatch.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/blk-mq-v10/0053-blk-mq-block-kyber-check-if-there-is-request-in-ctx-in-kyber_has_work().patch
@@ -38,12 +37,11 @@ pkgbase = linux-bfq-mq
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
 	sha256sums = SKIP
-	sha256sums = 5c286695439b4a1a2c7a112cf41aae0441b03ef41dfe83a0d61161c16dc265f5
+	sha256sums = 42eaed731b716244514b765c199e8f675d79287d7630e5c2911053ad52a1fa0a
 	sha256sums = SKIP
 	sha256sums = 8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8
-	sha256sums = 18c3a6b9f5338b9c3cfd902174298ea1279121944a6053660d24cef7513a3736
+	sha256sums = d2b6c498d233126837b9c6d87812b3af2a7b729d93722dfe7e1ce2a2b61cb95b
 	sha256sums = eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531
-	sha256sums = 388b210b15913d6e46d85d3c997d21f796957d2e3eb082ba8ffda1371eaa1f3b
 	sha256sums = ed4dec610bb99928c761dee5891b9f79770f0265678c232b0d4c1879beb73e94
 	sha256sums = 40c2bbd7abd390e0674a797d08f7624051750d38a09d4c42ddba1f8341bb362a
 	sha256sums = f41ffe7388b9728061fe76c303afeb074237c4016b9e802f11e99e14d42f3a97
@@ -70,19 +68,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.14.7
-	provides = linux=4.14.7
+	provides = linux-bfq-mq=4.14.8
+	provides = linux=4.14.8
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.14.7
-	provides = linux-bfq-mq-headers=4.14.7
-	provides = linux-headers=4.14.7
+	depends = linux-bfq-mq=4.14.8
+	provides = linux-bfq-mq-headers=4.14.8
+	provides = linux-headers=4.14.8
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.14.7
-	provides = linux-bfq-mq-docs=4.14.7
-	provides = linux-docs=4.14.7
+	depends = linux-bfq-mq=4.14.8
+	provides = linux-bfq-mq-docs=4.14.8
+	provides = linux-docs=4.14.8
 
