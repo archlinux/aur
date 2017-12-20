@@ -1,26 +1,20 @@
 pkgbase = perl-sereal-encoder
 	pkgdesc = Fast, compact, powerful binary serialization
-	pkgver = 3.005
+	pkgver = 3.015
 	pkgrel = 1
 	url = https://metacpan.org/release/Sereal-Encoder
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
-	checkdepends = perl-test-longstring>=0
-	checkdepends = perl-pathtools>=0
-	checkdepends = perl-test-warn>=0
-	checkdepends = perl-test-simple>=0.88
-	checkdepends = perl-scalar-list-utils>=0
-	checkdepends = perl-data-dumper>=0
-	checkdepends = perl-sereal-decoder>=3.00
-	makedepends = perl-extutils-parsexs>=2.21
-	makedepends = perl-file-path>=0
-	depends = perl>=5.8
-	depends = perl-xsloader>=0
+	license = GPL
+	checkdepends = perl-test-longstring
+	checkdepends = perl-test-warn
+	depends = perl-sereal-decoder>=3.00
+	depends = perl>=5.008
 	options = !emptydirs
-	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/Y/YV/YVES/Sereal-Encoder-3.005.tar.gz
-	sha256sums = 4dac10c61e9ca8901b2a000a6d749a22b0ca0c0c262e07007201811e6b15da48
+	source = http://search.cpan.org/CPAN/authors/id/Y/YV/YVES/Sereal-Encoder-3.015.tar.gz
+	md5sums = 78428860e055561e371e3292093c1fc5
+	sha512sums = 82dc43be1f1ec87fb4a582a4cac8bfe5b4e6e8f25645930e2f84c4b253904cf3390e36efdf744781d9211d0e73034da82f5cff131213be6ea20fdfa11a0b397c
 
 pkgname = perl-sereal-encoder
 
