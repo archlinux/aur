@@ -1,8 +1,8 @@
-# Contributor: chris_L <chrislcenter dash mamoru at yahoo.com dot mx>
+# Contributor: chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
 
 pkgname=cemu
 pkgver=1.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin and graphic packs"
 arch=(x86_64)
 url="http://cemu.info/"
@@ -14,10 +14,10 @@ source=(
   cemu.desktop
   http://cemu.info/releases/cemu_1.11.2.zip
   https://files.sshnuke.net/cemuhook_1112_0554.zip
-  https://github.com/slashiee/cemu_graphic_packs/releases/download/appveyor495/graphicPacks_2-495.zip
+  https://github.com/slashiee/cemu_graphic_packs/releases/download/appveyor521/graphicPacks_2-521.zip
 )
 noextract=('cemuhook_1112_0554.zip'
-           'graphicPacks_2-495.zip')
+           'graphicPacks_2-521.zip')
 install=${pkgname}.install
 
 md5sums=('01118cf3e1ef9e453b5c56d2d27f6967'
@@ -34,7 +34,7 @@ build() {
   cd cemu$pkgver
   bsdtar -x -f ../../cemuhook_1112_0554.zip
   cd graphicPacks
-  bsdtar -x -f ../../../graphicPacks_2-495.zip
+  bsdtar -x -f ../../../graphicPacks_2-521.zip
 }
 package() {
   cd $srcdir
