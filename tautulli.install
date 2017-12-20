@@ -1,8 +1,3 @@
-pre_install() {
-	getent passwd plexpy &>/dev/null && userdel -rf plexpy
-	getent group plexpy &>/dev/null && groupdel -f plexpy
-}
-
 post_install(){
 	getent group tautulli &>/dev/null || groupadd -r tautulli >/dev/null
 	getent passwd tautulli &>/dev/null || useradd -r -d /opt/plexpy -g tautulli -s /bin/false tautulli >/dev/null
