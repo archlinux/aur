@@ -1,26 +1,26 @@
 pkgbase = chipmachine
 	pkgdesc = Demoscene/Retro Music Player
-	pkgver = 1.3c
-	pkgrel = 2
+	pkgver = 1.4b3
+	pkgrel = 1
 	url = https://github.com/sasq64/chipmachine
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = vim
-	makedepends = git
 	depends = mpg123
 	depends = glew
 	depends = glfw
 	depends = curl
-	source = chipmachine-1.3c.tar.gz::https://github.com/sasq64/chipmachine/archive/v1.3c.tar.gz
-	source = git+https://github.com/sasq64/apone.git#commit=d320e07159a35f47cbc81ea45f145c27a976f98c
-	source = chipmachine-1.3c-two-missing-std-specifiers.patch
-	source = chipmachine-1.3c-fixed-against-latest-apone.patch
-	sha256sums = fe83080035a6ba23917a79b9133e29b2b934e7711fb21e8039eff3a9411fd354
-	sha256sums = SKIP
-	sha256sums = 7dc76d37e016a5109efb471b30b3c46246ea231ad3cd6e45bd8a6a438cccfd44
-	sha256sums = 531db4559b7cb57e20409e26d500aa82dc8e6c03aa437547affdd88c5cb03997
+	depends = fftw
+	source = chipmachine-v1.4b3.tar.gz::https://github.com/sasq64/chipmachine/archive/v1.4b3.tar.gz
+	source = apone-chipmachine-v1.4b3.tar.gz::https://github.com/sasq64/apone/archive/chipmachine-v1.4b3.tar.gz
+	source = chipmachine
+	source = cm
+	sha256sums = b01f123e157d72eee4f4d3784f82b1ab0cc5b4d968067b0af50163321d3f5cb4
+	sha256sums = e411d6515064bb2c952a95aad6bcfc70c1f6b58f40d7874f671ef26185911156
+	sha256sums = 5b2cc9b2eaa7b7a1fcbad0c405950b0d05f200caa5d99203ce3be988ca1f05ab
+	sha256sums = 75659c95d717851986bbadcf3d3dddb3d72f92720cdd58a97b870e91daf73b5c
 
 pkgname = chipmachine
 
