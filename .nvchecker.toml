@@ -1,0 +1,5 @@
+[telegram-desktop]
+source = "github"
+github = "telegramdesktop/tdesktop"
+use_latest_release = true
+prefix = "v"
