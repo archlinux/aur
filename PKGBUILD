@@ -1,12 +1,13 @@
 pkgname=raiblocks-git
-pkgver=9.0.r11.gc55c1bc9
-pkgrel=2
+pkgver=9.0.r13.g957386c1
+pkgrel=1
 pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
 url="http://raiblocks.com/"
 license=('BSD 2-clause')
 depends=('qt5-base'  'boost' 'boost-libs')
 provides=(raiblocks)
+install=install
 pkgver() {
   cd "raiblocks"
   git describe --long --tags | sed 's/^[vV]//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -14,20 +15,23 @@ pkgver() {
 
 source=(raiblocks.desktop
         raiblocks128.png
+	raiblocks.service
         git+https://github.com/clemahieu/raiblocks.git
 	git+https://github.com/boostorg/beast.git
         git+https://github.com/weidai11/cryptopp.git
         git+https://github.com/LMDB/lmdb.git
         git+https://github.com/miniupnp/miniupnp.git
         git+https://github.com/clemahieu/phc-winner-argon2.git)
-md5sums=('2a43d03fef957acdff063c3890c71552'
-         'cc6dea992d6be78427c2bab5640eaef0'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+
+sha256sums=('74b9bc75c3d5596603e54e2553ff69d367f384789c7565437a72a64dc22f0fdd'
+            '7e08e2b6d50638fb1438c746da78defc49ef317ee8ffa6feeb52635a976a0ea9'
+            '53ed2e7cf24c02172e3e804dd8689674867d82ca21b7d03be590d7a9b3a9c8bb'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   cd "$srcdir/raiblocks"
@@ -66,6 +70,8 @@ package() {
 
   install -Dm644 "$srcdir"/raiblocks128.png "$pkgdir"/usr/share/pixmaps/raiblocks128.png
   install -Dm644 "$srcdir"/raiblocks.desktop "$pkgdir"/usr/share/applications/raiblocks.desktop
+
+  install -Dm644 "$srcdir"/raiblocks.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
 }
 
 # vim:set ts=2 sw=2 et:

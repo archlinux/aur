@@ -1,0 +1,16 @@
+create_user() {
+  getent passwd raiblocks &>/dev/null || {
+    echo -n ">>> Creating raiblocks service user... "
+    useradd --system --user-group -m --home /var/lib/raiblocks raiblocks
+    echo "done"
+  } # NOTE: we do not autoremove user due to security concerns (Arch policy)
+  #chown raiblocks:raiblocks /var/lib/raiblocks
+}
+
+post_install() {
+  create_user
+}
+
+post_upgrade() {
+  create_user
+}

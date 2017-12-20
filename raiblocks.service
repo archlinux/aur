@@ -1,0 +1,15 @@
+[Unit]
+Description=Raiblocks Node
+After=network.target
+
+[Service]
+User=raiblocks
+Group=raiblocks
+WorkingDirectory=~
+RuntimeDirectory=raiblocks
+
+Type=simple
+ExecStart=/usr/bin/rai_node --data_path /var/lib/raiblocks --daemon
+
+[Install]
+WantedBy=multi-user.target
