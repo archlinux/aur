@@ -1,0 +1,14 @@
+pkgbase = bibata-cursor-theme
+	pkgdesc = Material Based Cursor Theme.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/KaizIqbal/Bibata_Cursor.git
+	arch = any
+	license = GPL
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	source = git+https://github.com/KaizIqbal/Bibata_Cursor
+	sha256sums = SKIP
+
+pkgname = bibata-cursor-theme
+
