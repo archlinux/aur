@@ -1,5 +1,5 @@
 pkgbase = isign-chrome-signing
-	pkgdesc = Google Chrome & Mozilla extension for using smartcards with isign.io
+	pkgdesc = Google Chrome & Mozilla native smartcard plugin for isign.io & app.digidoc.ee
 	pkgver = 1.2.7.0
 	pkgrel = 1
 	url = https://www.isign.io/downloads
