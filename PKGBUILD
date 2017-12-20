@@ -1,7 +1,7 @@
 # Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname="q"
-pkgver="1.6.3"
+pkgver="1.7.1"
 pkgrel="1"
 pkgdesc="SQL-like queries on tabular text data, including joins and subqueries"
 url="https://github.com/harelba/q"
@@ -11,8 +11,8 @@ depends=('python2')
 changelog="ChangeLog"
 source=("https://github.com/harelba/${pkgname}/archive/${pkgver}.tar.gz"
         "https://github.com/harelba/packages-for-q/raw/master/rpms/q-text-as-data-${pkgver}-1.noarch.rpm")
-sha1sums=('5898c74b52f9270df1310823c9005d8d68c65123'
-          '5699f52aac37d4b14016f206d232d33f7a2a4c83')
+sha1sums=('ca26b3077b310d547080ba544ffba8a8bcbde7f9'
+          'ae4e4fb508676f60a3ba44171a62cd83ddfb2f2f')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
