@@ -1,0 +1,4 @@
+post_install() {
+	echo "Please add your printer through the CUPS interface."
+	echo "The provided PPDs have been added to the list of available PPDs."
+}
