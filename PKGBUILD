@@ -4,14 +4,15 @@ _base=dijitso
 _fragment="#branch=master"
 pkgname=python-${_base}-git
 pkgdesc="A Python module for distributed just-in-time shared library building"
-pkgver=20161101
+pkgver=20171215
 pkgrel=1
 arch=('any')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('GPL3')
 groups=('fenics-git')
-depends=('python-six')
+depends=('python-numpy')
 makedepends=('git')
+optdepends=('mpi4py: for running tests with MPI')
 options=(!emptydirs)
 source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
 md5sums=('SKIP')
