@@ -1,0 +1,15 @@
+pkgbase = solium
+	pkgdesc = Linter to identify & fix Style & Security issues in Solidity
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/duaraghav8/Solium
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	source = solium-1.1.0::git+https://github.com/duaraghav8/Solium#commit=2c8dcd9
+	sha512sums = SKIP
+
+pkgname = solium
+
