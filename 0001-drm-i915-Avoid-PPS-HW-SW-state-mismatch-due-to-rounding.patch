@@ -1,0 +1,57 @@
+From 6554f952b01268bb37d68bcbe7f3ef5ef86c61af Mon Sep 17 00:00:00 2001
+From: Imre Deak <imre.deak@intel.com>
+Date: Tue, 28 Nov 2017 13:20:32 +0200
+Subject: [PATCH] drm/i915: Avoid PPS HW/SW state mismatch due to rounding
+
+Signed-off-by: Imre Deak <imre.deak@intel.com>
+---
+ drivers/gpu/drm/i915/intel_dp.c | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/intel_dp.c b/drivers/gpu/drm/i915/intel_dp.c
+index bbf2256ba574..d02aba05272d 100644
+--- a/drivers/gpu/drm/i915/intel_dp.c
++++ b/drivers/gpu/drm/i915/intel_dp.c
+@@ -5190,11 +5190,11 @@ intel_pps_readout_hw_state(struct intel_dp *intel_dp, struct edp_power_seq *seq)
+ 		   PANEL_POWER_DOWN_DELAY_SHIFT;
+
+ 	if (IS_GEN9_LP(dev_priv) || HAS_PCH_CNP(dev_priv)) {
+-		seq->t11_t12 = ((pp_ctl & BXT_POWER_CYCLE_DELAY_MASK) >>
+-				BXT_POWER_CYCLE_DELAY_SHIFT) * 1000;
++		seq->t11_t12 = (pp_ctl & BXT_POWER_CYCLE_DELAY_MASK) >>
++			       BXT_POWER_CYCLE_DELAY_SHIFT;
+ 	} else {
+-		seq->t11_t12 = ((pp_div & PANEL_POWER_CYCLE_DELAY_MASK) >>
+-		       PANEL_POWER_CYCLE_DELAY_SHIFT) * 1000;
++		seq->t11_t12 = (pp_div & PANEL_POWER_CYCLE_DELAY_MASK) >>
++			       PANEL_POWER_CYCLE_DELAY_SHIFT;
+ 	}
+ }
+
+@@ -5290,6 +5290,9 @@ intel_dp_init_panel_power_sequencer(struct intel_dp *intel_dp)
+ 	intel_dp->panel_power_cycle_delay = get_delay(t11_t12);
+ #undef get_delay
+
++	/* Convert from the 100usec SW units to 100msec units expected by HW. */
++	final->t11_t12 = DIV_ROUND_UP(final->t11_t12, 1000);
++
+ 	DRM_DEBUG_KMS("panel power up delay %d, power down delay %d, power cycle delay %d\n",
+ 		      intel_dp->panel_power_up_delay, intel_dp->panel_power_down_delay,
+ 		      intel_dp->panel_power_cycle_delay);
+@@ -5357,12 +5360,10 @@ intel_dp_init_panel_power_sequencer_registers(struct intel_dp *intel_dp,
+ 	if (IS_GEN9_LP(dev_priv) || HAS_PCH_CNP(dev_priv)) {
+ 		pp_div = I915_READ(regs.pp_ctrl);
+ 		pp_div &= ~BXT_POWER_CYCLE_DELAY_MASK;
+-		pp_div |= (DIV_ROUND_UP(seq->t11_t12, 1000)
+-				<< BXT_POWER_CYCLE_DELAY_SHIFT);
++		pp_div |= seq->t11_t12 << BXT_POWER_CYCLE_DELAY_SHIFT;
+ 	} else {
+ 		pp_div = ((100 * div)/2 - 1) << PP_REFERENCE_DIVIDER_SHIFT;
+-		pp_div |= (DIV_ROUND_UP(seq->t11_t12, 1000)
+-				<< PANEL_POWER_CYCLE_DELAY_SHIFT);
++		pp_div |= seq->t11_t12 << PANEL_POWER_CYCLE_DELAY_SHIFT;
+ 	}
+
+ 	/* Haswell doesn't have any port selection bits for the panel
+--
+2.13.2
