@@ -2,8 +2,8 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.14
-_pkgver=4.14.7
-pkgver=${_pkgver}.a
+_pkgver=4.14.8
+pkgver=${_pkgver}.b
 pkgrel=1
 url='https://github.com/copperhead/linux-hardened'
 arch=('x86_64')
@@ -25,11 +25,11 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
 replaces=('linux-grsec')
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '5c286695439b4a1a2c7a112cf41aae0441b03ef41dfe83a0d61161c16dc265f5'
+            '42eaed731b716244514b765c199e8f675d79287d7630e5c2911053ad52a1fa0a'
             'SKIP'
-            'd9e38b6c2e9b4e6a22b1b3dbe573f6c609c1e9fa1301ba260422aa40d29a2376'
+            '21741edf5b909b06acb7cd76a78deb144f831e97db450d569cad62b5161aef7a'
             'SKIP'
-            '1cb6cf3c296414a7f0762b51a0d64a5abbff8a108f20bd5a43fe5fcfe985f39c'
+            '4d4fc0b183022519bf8363b69b2774b40e3465992fc4166608e0d7dfd1cfb21e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -46,21 +46,21 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  patch -p1 -i ../patch-${_pkgver}
+  patch -Np1 -i ../patch-${_pkgver}
 
   # security patches
 
   # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  patch -p1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 
   # linux hardened patch
-  patch -p1 -i ../linux-hardened-${pkgver}.patch
+  patch -Np1 -i ../linux-hardened-${pkgver}.patch
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # https://bugs.archlinux.org/task/56575
-  patch -p1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+  patch -Np1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
 
   cp -Tf ../config.${CARCH} .config
 
