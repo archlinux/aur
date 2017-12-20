@@ -1,18 +1,18 @@
 pkgbase = combustion
 	pkgdesc = Sleek, modern web interface for Transmission
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.6.4
+	pkgrel = 1
 	url = https://github.com/Secretmapper/combustion
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = transmission-cli
-	source = git+https://github.com/Secretmapper/combustion.git
+	source = combustion::git+https://github.com/Secretmapper/combustion#commit=e4b15ec
 	source = combustion.sh
 	source = combustion.conf
-	sha1sums = SKIP
-	sha1sums = 1b2e73e143508792e94bd7d35f2e0d68b837527a
-	sha1sums = 449f682b9c6cb896d0650104c45bbdc07afcfece
+	sha256sums = SKIP
+	sha256sums = 3d19c6507db71262cf8757e10c0b692f5386d78314ea2b2cdd569d6d0ebbf90e
+	sha256sums = 32d85f5b3b842f88fe573d1af3e20727797b75d53db0e70b68c4e521a9f8e339
 
 pkgname = combustion
 
