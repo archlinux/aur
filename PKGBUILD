@@ -4,7 +4,7 @@
 
 pkgname=dunst-git
 _gitname=dunst
-pkgver=1.2.0.192.1042.g35dbd00
+pkgver=r1048.5a9f37b
 pkgrel=1
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,12 +22,12 @@ md5sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
-  cd ${srcdir}/${_gitname}
-  printf %s $(git describe --tags | tr -d v | sed 's+-+.+'|sed "s+-+.$(git rev-list --count HEAD).+")
+  cd ${_gitname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd ${srcdir}/${_gitname}
+  cd ${_gitname}
   if [ -e ${srcdir}/config.h ]; then
     msg "Using custom config.h"
     cp ${srcdir}/config.h .
@@ -35,7 +35,7 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/${_gitname}
+  cd ${_gitname}
   if [ -e ${SRCDEST}/config.h ]; then
     CFLAGS=-DSTATIC_CONFIG make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
     CFLAGS=-DSTATIC_CONFIG make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 dunstify
