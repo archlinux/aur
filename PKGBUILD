@@ -1,6 +1,6 @@
 # Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=vim-table-mode
-pkgver=4.6.4.2
+pkgver=4.6.7
 pkgrel=1
 pkgdesc='VIM Table Mode for instant table creation.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('vim-license')
 depends=('vim')
 groups=('vim-plugins')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dhruvasagar/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('ccd001d7b06b007387d6c04e94e8016d4fddc91ba8b994fdb0b4607904189a89288236fa6794759218262fbc262ce60b1734586c3c4bd3ab5a0eda076161ebf9')
+sha512sums=('bc0f1970a61751dc9df5c2fcfdf17008e700722234a33f2a35726279b90b4e8cf71beeb7b11e93a6c02ec9f57958dd9e33837c69cc2475c767bd279560700d81')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
