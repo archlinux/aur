@@ -3,16 +3,16 @@
 # Contributor:  Mike Ressler <mike.ressler@alum.mit.edu>
 
 pkgname=python-pyfits
-pkgver=3.4
-pkgrel=2
+pkgver=3.5
+pkgrel=1
 pkgdesc="A python language interface to FITS formatted data files"
 url="http://www.stsci.edu/resources/software_hardware/pyfits"
 license=('BSD')
 arch=('i686' 'x86_64')
 source=("https://files.pythonhosted.org/packages/source/p/pyfits/pyfits-${pkgver}.tar.gz")
-md5sums=('ae38c61ed5574f29cfd202bfe3091fd9')
+md5sums=('68b6c072ff6883fe91cde29030f8b6e8')
 
-depends=('python>=3.1' 'python-numpy')
+depends=('python>=3.3' 'python-numpy')
 
 build() {
     cd "${srcdir}/pyfits-${pkgver}"
