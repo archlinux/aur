@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=sakemake
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc='Simple way to build your C++17 executables on Linux'
 arch=('x86_64')
