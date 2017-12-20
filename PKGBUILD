@@ -1,12 +1,12 @@
-pkgname=('alacritty-git' 'alacritty-terminfo-git')
+pkgname=('alacritty-scrollback-git' 'alacritty-scrollback-terminfo-git')
 _pkgname="alacritty"
-pkgver=0.1.0.569.g4e9b1c5
+pkgver=0.1.0.749.g6836308
 pkgrel=1
 arch=('x86_64' 'i686')
-url="https://github.com/jwilm/alacritty"
+url="https://github.com/neon64/alacritty"
 license=('Apache-2.0')
 makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'freetype2' 'git' 'ncurses')
-source=("$_pkgname::git+https://github.com/jwilm/alacritty.git")
+source=("$_pkgname::git+https://github.com/neon64/alacritty.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -14,8 +14,8 @@ pkgver() {
 	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git describe --always)"
 }
 
-package_alacritty-git() {
-	pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
+package_alacritty-scrollback-git() {
+	pkgdesc="A cross-platform, GPU-accelerated terminal emulator, with scrollback"
 	depends=('freetype2' 'fontconfig' 'xclip')
 	provides=('alacritty')
 	conflicts=('alacritty')
@@ -28,8 +28,8 @@ package_alacritty-git() {
 	install -D -m644 "$srcdir/$_pkgname/Alacritty.desktop" "$pkgdir/usr/share/applications/Alacritty.desktop"
 }
 
-package_alacritty-terminfo-git() {
-	pkgdesc="Terminfo files for the alacritty terminal emulator"
+package_alacritty-scrollback-terminfo-git() {
+	pkgdesc="Terminfo files for the alacritty terminal emulator, with scrollback"
 	provides=('alacritty-terminfo')
 	conflicts=('alacritty-terminfo')
 
