@@ -12,7 +12,7 @@ license=('LGPL2.1')
 depends=('gtk2')
 makedepends=('pkg-config' 'python')
 source=("https://sources.archlinux.org/other/packages/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('501367b3f50e69a12208dc9c6ad00b18')
+sha256sums=('4c681d38d127ee3950a29bce9aa7aa8a2abe3b4d915f7a0c88e526999c1a46f2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
