@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=bees-git
-pkgver=v0.4.r40.g29d2d51
+pkgver=v0.4.r49.gbfb768a
 pkgrel=1
 pkgdesc="Best-Effort Extent-Same, a btrfs deduplicator daemon"
 arch=('any')
@@ -26,6 +26,9 @@ package() {
 	cd "${pkgname}"
 	make install PREFIX="${pkgdir}"
 	make install_scripts PREFIX="${pkgdir}"
+	mkdir -p ${pkgdir}/usr/bin/
+	[ -f ${pkgdir}/usr/sbin/beesd ] && \
+		mv -v ${pkgdir}/usr/sbin/beesd ${pkgdir}/usr/bin/beesd
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
 	mv -v ${pkgdir}/lib/systemd/system/beesd@.service ${pkgdir}/usr/lib/systemd/system/
 	rm -rf ${pkgdir}/lib
