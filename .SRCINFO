@@ -1,5 +1,5 @@
 pkgbase = erd-git
-	pkgdesc = erd is a utility for generating entity-relationship diagrams from plain-text descriptions
+	pkgdesc = A utility for generating entity-relationship diagrams from plain-text descriptions
 	pkgver = r59.06a5ba5
 	pkgrel = 1
 	url = https://github.com/BurntSushi/erd
