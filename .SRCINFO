@@ -1,7 +1,7 @@
 pkgbase = thunarx-python
 	pkgdesc = Thunarx Python Bindings
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://rabbitvcs.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = thunarx-python
 	depends = python2
 	depends = thunar>=0.4.0
 	depends = pygtk>=2.6.0
-	depends = pygobject>=2.6.0
+	depends = python2-gobject2
 	source = http://archive.xfce.org/src/bindings/thunarx-python/0.3/thunarx-python-0.3.0.tar.bz2
 	source = python2.patch
 	md5sums = 86a28c4c34cae534f2793133b4755794

@@ -3,11 +3,11 @@
 
 pkgname=thunarx-python
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Thunarx Python Bindings"
 arch=('i686' 'x86_64')
 url="http://rabbitvcs.org/"
-depends=('python2' 'thunar>=0.4.0' 'pygtk>=2.6.0' 'pygobject>=2.6.0')
+depends=('python2' 'thunar>=0.4.0' 'pygtk>=2.6.0' 'python2-gobject2')
 license=('GPL')
 
 source=(http://archive.xfce.org/src/bindings/thunarx-python/0.3/${pkgname}-${pkgver}.tar.bz2 python2.patch)
