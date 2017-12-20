@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-git
-pkgver=1.0.r261.gabcd4e3
+pkgver=1.0.r272.g4a1cc5d
 pkgrel=1
 pkgdesc='Tiny Qt Music Player to keep your favorite songs at hand'
 arch=('i686' 'x86_64')
@@ -30,10 +30,9 @@ build() {
  
 package() {
   cd babe
-  install -Dm755 Babe "$pkgdir/usr/bin/babe"
+  install -Dm755 babe "$pkgdir/usr/bin/babe"
   install -Dm644 data/48-apps-babe.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/babe.svg"
   install -Dm644 data/128-apps-babe.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/babe.png"
   install -Dm655 org.kde.babe.appdata.xml "$pkgdir/usr/share/metainfo/org.kde.babe.appdata.xml"
   install -Dm755 org.kde.babe.desktop "$pkgdir/usr/share/applications/org.kde.babe.desktop"
-  sed -i 's|Exec=Babe|Exec=babe|;s|Icon=Babe|Icon=babe|' "${pkgdir}/usr/share/applications/org.kde.babe.desktop"
 }
