@@ -1,38 +1,52 @@
-# Maintainer: Kars Wang <jaklsy AT gmail.com>
+# Maintainer: int <int [ate] arcor [dot] de>
+# Contributor: Kars Wang <jaklsy AT gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-sereal-decoder'
-pkgver=3.005
-pkgrel=1
-pkgdesc='Fast, compact, powerful binary deserialization'
-_dist='Sereal-Decoder'
+pkgver='3.015'
+pkgrel='1'
+pkgdesc="Fast, compact, powerful binary deserialization"
 arch=('i686' 'x86_64')
-url="https://metacpan.org/release/$_dist"
-license=('PerlArtistic')
-depends=('perl>=5.8' 'perl-xsloader>=0')
-checkdepends=('perl-pathtools>=0' 'perl-scalar-list-utils>=0' 'perl-test-warn>=0' 'perl-test-longstring>=0' 'perl-test-simple>=0.88' 'perl-data-dumper>=0')
-makedepends=('perl-file-path>=0' 'perl-xsloader>=0' 'perl-extutils-parsexs>=2.21')
-provides=("perl-sereal-performance=$pkgver")
-options=('!emptydirs' 'purge')
-source=("http://search.cpan.org/CPAN/authors/id/Y/YV/YVES/$_dist-$pkgver.tar.gz")
-sha256sums=('9de58131c6bf12f22366cf50b09c58ac3d2771489c202255a24fffab0bde0930')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl>=5.008')
+makedepends=()
+checkdepends=('perl-test-longstring' 'perl-test-warn')
+url='https://metacpan.org/release/Sereal-Decoder'
+source=("http://search.cpan.org/CPAN/authors/id/Y/YV/YVES/Sereal-Decoder-$pkgver.tar.gz")
+md5sums=('de91784e359e25aee07f87a8b9b2f90b')
+sha512sums=('65582a86ff40d02e350bfe759cfda12c3a541c012c55c2a9bfee6cc6df5facbe8088188cb7306685d4b9ab549e8900a7bd599b207325fec7d30d90de3b68c79e')
+_distdir="Sereal-Decoder-$pkgver"
 
-build() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  /usr/bin/perl Makefile.PL
-  make
-)
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
 
-check() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
-  make test
-)
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
 
-package() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-)
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
+}
+
+package() {
+  cd "$srcdir/$_distdir"
+  make install
+
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
+}
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
