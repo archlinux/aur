@@ -1,7 +1,7 @@
 pkgbase = asbru-cm-git
 	pkgdesc = A free and open-source connection manager. GIT version
 	pkgver = 5.0.0_RC4
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
 	license = GPL3
@@ -23,9 +23,7 @@ pkgbase = asbru-cm-git
 	depends = perl-socket6
 	depends = uuid
 	source = git+https://github.com/asbru-cm/asbru-cm.git
-	source = fix-pacmanager-crash-getXWindowsList.patch
 	sha256sums = SKIP
-	sha256sums = b2bd4fcdc9e16869f990ae4be47f2a23e81e25fff8a7169a03792864caee1606
 
 pkgname = asbru-cm-git
 
