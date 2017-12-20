@@ -1,7 +1,7 @@
 pkgname=vimix-gtk-themes-git
 _pkgname=vimix-gtk-themes
 pkgdesc='Vimix is a flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell'
-pkgver=106.c13bd13
+pkgver=109.7b5fa7c
 pkgrel=1
 arch=('any')
 depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
