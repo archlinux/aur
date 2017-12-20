@@ -7,31 +7,35 @@
 
 pkgname=cutegram
 _pkgname=Cutegram
-pkgver=2.7.0
-pkgrel=3
+pkgver=2.7.1
+pkgrel=4
 pkgdesc="A different telegram client from Aseman team"
 arch=('i686' 'x86_64')
 url="http://aseman.co/en/products/cutegram/"
 license=('GPL')
-depends=('qt5-imageformats' 'qt5-webkit>=5.5' 'telegramqml>=0.9' 'libqtelegram-ae>=2:6.0')
+depends=('qt5-imageformats' 'qt5-webkit' 'telegramqml>=0.9.1' 'libqtelegram-ae>=3:6.1')
 optdepends=('gst-plugins-bad: audio support'
 'gst-plugins-good: audio and notification sound')
+makedepends=('git')
 conflicts=('cutegram-git' 'sigram-git' 'sigram' 'cutegram')
 provides=('cutegram')
 replaces=('cutegram-cn')
 
-source=("https://github.com/Aseman-Land/Cutegram/archive/v$pkgver-stable.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Aseman-Land/Cutegram/archive/v${pkgver}-stable.tar.gz"
+    "asemantools"::"git+https://github.com/Aseman-Land/aseman-qt-tools.git#commit=91bf14b790c749bcaaddb09a8124ef6415a93906")
 
-sha256sums=('5ff195269f2492c625cca4b8eca6134c938e2b5a759019074e486335046c02d9')
+sha256sums=('f1cfc6bd3a1d33c2348f23ea43d923419b33576059791a071f2780db11059cf4'
+            'SKIP')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-$pkgver-stable"
+  git clone $srcdir/asemantools Cutegram/asemantools
   mkdir -p build
 }
 
 build() {
   cd "${srcdir}/${_pkgname}-$pkgver-stable/build"
-  qmake-qt5 -r .. PREFIX=/usr
+  qmake-qt5 -r .. PREFIX=/usr QMAKE_CFLAGS_ISYSTEM=
   make
 }
 
