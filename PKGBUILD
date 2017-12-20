@@ -1,4 +1,5 @@
-# Maintainer: Grant Hames-Morgan <nthmorgan at gmail dot com>
+# Maintainer: Muhammad Fairuzi Teguh <mfairuzit at gmail dot com>
+# Contributor: Grant Hames-Morgan <nthmorgan at gmail dot com>
 pkgname=marp
 pkgver=0.0.11
 pkgrel=1
