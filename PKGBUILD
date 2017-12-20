@@ -3,13 +3,13 @@
 
 _pkgname=fcitx-chewing
 pkgname=${_pkgname}-git
-pkgver=0.2.2.r26.g73e5a87
-pkgrel=1
+pkgver=0.2.3.r4.ge4bb273
+pkgrel=2
 pkgdesc='Fcitx Wrapper for chewing'
 arch=(i686 x86_64)
 url='https://github.com/fcitx/fcitx-chewing'
 license=(GPL)
-depends=(libchewing fcitx)
+depends=(libchewing-git fcitx)
 makedepends=(cmake git)
 source=("git+https://github.com/fcitx/fcitx-chewing.git")
 md5sums=('SKIP')
