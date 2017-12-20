@@ -8,10 +8,8 @@ url="https://github.com/isage/nxengine-evo"
 license=('GPL3')
 depends=(sdl2_mixer libpng)
 makedepends=(cmake sdl2_ttf)
-
 source=("https://github.com/isage/nxengine-evo/archive/${pkgname}-${pkgver}.tar.gz"
         "https://www.cavestory.org/downloads/cavestoryen.zip")
-
 sha256sums=('c893ba034d89249a22fa9a2c2d4f24f48c2e6d5744a430df6b6a87ab35822f87'
             'aa87fa30bee9b4980640c7e104791354e0f1f6411ee0d45a70af70046aa0685f')
 
