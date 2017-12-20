@@ -1,0 +1,29 @@
+pkgbase = electrum-ltc-git
+	pkgdesc = Lightweight Litecoin client
+	pkgver = 2.9.3.1.r820.e50a1b10
+	pkgrel = 1
+	url = https://electrum-ltc.org/
+	arch = any
+	license = MIT
+	makedepends = gettext
+	makedepends = git
+	depends = python-btchip
+	depends = python-dnspython
+	depends = python-ecdsa
+	depends = python-jsonrpclib-pelix
+	depends = python-matplotlib
+	depends = python-pbkdf2
+	depends = python-protobuf
+	depends = python-pyaes
+	depends = python-pycryptodomex
+	depends = python-pyqt5
+	depends = python-pysocks
+	depends = python-qrcode
+	depends = python-requests
+	depends = python-scrypt
+	depends = zbar
+	source = git+https://github.com/pooler/electrum-ltc.git
+	sha256sums = SKIP
+
+pkgname = electrum-ltc-git
+
