@@ -2,7 +2,7 @@
 
 _target=powerpc-none-eabi
 pkgname=$_target-toolchain
-pkgver=20171218
+pkgver=20171220
 pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc')
@@ -15,8 +15,8 @@ _newlib=newlib-2.5.0.20170922
 license=('GPL' 'BSD')
 options=('!strip')
 
-source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz" \
-	"http://gnuftp.uib.no/binutils/${_binutils}.tar.xz" \
+source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz"
+	"http://gnuftp.uib.no/binutils/${_binutils}.tar.xz"
 	"ftp://sourceware.org/pub/newlib/${_newlib}.tar.gz")
 
 sha512sums=('f853cd6530b4055d8d8289da74687cb4c6d5f363598d386332d31852b581bac76c3adb7d61889edec3b779f63d8646f0122840f12965ce4a4389ba535dbbb6e1'
@@ -25,48 +25,46 @@ sha512sums=('f853cd6530b4055d8d8289da74687cb4c6d5f363598d386332d31852b581bac76c3
 
 
 prepare() {
-	cd ${srcdir}/${_gcc}
+	cd "${srcdir}/${_gcc}"
 	
 	#we use libiberty from binutils. Otherwise the compilation will fail.
 	rm -rf libiberty
 
-	for i in bfd binutils gas ld libiberty opcodes; do ln -sv ../binutils-*/$i; done
-	ln -sv ../newlib-*/newlib
-	ln -sv ../newlib-*/libgloss
+	for i in bfd binutils gas ld libiberty opcodes; do ln -sv ../${_binutils}/$i; done
+	for i in newlib libgloss; do ln -sf ../${_newlib}/$i; done
 
 	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
         sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-	mkdir -p ${srcdir}/obj
+	mkdir -p "${srcdir}/obj"
 }
 
 build()
 {
-	cd ${srcdir}/obj
-	${srcdir}/${_gcc}/configure --prefix=/usr --libexecdir=/usr/lib --target=${_target} --enable-languages=c,c++ --disable-libstdcxx-pch \
+	cd "${srcdir}/obj"
+	"${srcdir}/${_gcc}/configure" --prefix=/usr --libexecdir=/usr/lib --target=${_target} --enable-languages=c,c++ --disable-libstdcxx-pch \
 	--with-newlib --with-libgloss --with-system-zlib --disable-nls
 
-	#hack to speed up compilation a bit by replacing debug info with -pipe.
-	sed -i 's/\-g /-pipe /' Makefile
 	make
 }
 
 package()
 {
-	cd ${srcdir}/obj
+	cd "${srcdir}/obj"
 	make DESTDIR=${pkgdir} install -j2
-	rm -rf ${pkgdir}/usr/share 
-	rm -rf ${pkgdir}/usr/include
-	rm -rf ${pkgdir}/usr/lib/libcc1.*
-	find ${pkgdir} -name '*.py' -delete 
+	rm -rf "${pkgdir}/usr/share"
+	rm -rf "${pkgdir}/usr/include"
+	rm -rf "${pkgdir}/usr/lib/libcc1.*"
+	find "${pkgdir}" -name '*.py' -delete 
 
 	# Strip it manually
-	find ${pkgdir} | xargs file | grep -E "executable|shared object" | grep ELF | cut -f 1 -d : | xargs strip 
+	find "${pkgdir}" -print0 | xargs -0 file | grep -E "executable|shared object" | grep ELF | cut -f 1 -d : | xargs -0 strip 
 
-	find ${pkgdir}/usr/lib/gcc/${_target} -type f -name '*.o' -o -name '*.a' | xargs ${pkgdir}/usr/bin/${_target}-strip -g
-	find ${pkgdir}/usr/${_target}/lib -type f -name '*.o' -o -name '*.a' | xargs ${pkgdir}/usr/bin/${_target}-strip -g
-	#fix permissions
-	find ${pkgdir}/usr/${_target}/lib -name '*.a' | xargs chmod 644
+	find "${pkgdir}/usr/lib/gcc/${_target}" -print0 -type f -name '*.o' -o -name '*.a' | xargs -0 ${pkgdir}/usr/bin/${_target}-strip -g
+	find "${pkgdir}/usr/${_target}/lib" -print0 -type f -name '*.o' -o -name '*.a' | xargs ${pkgdir}/usr/bin/${_target}-strip -g
+
+	#fix permissions to please namcap
+	find "${pkgdir}/usr/${_target}/lib" -name '*.a' | xargs chmod 644
 
 }
 
