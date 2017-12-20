@@ -4,8 +4,8 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.4
-pkgrel=3
+pkgver=1.2.6
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
@@ -15,7 +15,7 @@ makedepends=('cmake')
 conflicts=("aseprite-git" "aseprite-gpl")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/Aseprite-v${pkgver}-Source.zip"
 "${pkgname}.desktop")
-sha256sums=( 'f1fddeaf7dbb49b3cb207b01a38732b1758ed6379c735013e5fecbffe24d4bda'
+sha256sums=('e92a9c19cb5d36c64f8ee916ca34f8c2d628beadc58ab75c4718bd99683f8972'
 'c258fa38a0e0bd575f0bd744c4c3b60cf8d59d596c7572f84bd392e1c5e49b4f')
 
 build() {
