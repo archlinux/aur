@@ -8,7 +8,7 @@
 
 pkgname=shadow-selinux
 pkgver=4.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('x86_64')
 url='https://github.com/shadow-maint/shadow'
@@ -44,7 +44,7 @@ sha1sums=('SKIP'
           '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
           '12427b1ca92a9b85ca8202239f0d9f50198b818f'
           '0e56fed7fc93572c6bf0d8f3b099166558bb46f1'
-          'bb3509087947d08bfb6e5d1b5c033856b9146ad9'
+          '81a02eadb5f605fef5c75b6d8a03713a7041864b'
           '12427b1ca92a9b85ca8202239f0d9f50198b818f'
           '611be25d91c3f8f307c7fe2485d5f781e5dee75f'
           'a154a94b47a3d0c6c287253b98c0d10b861226d0'
