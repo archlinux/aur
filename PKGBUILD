@@ -9,7 +9,7 @@
 # Maintainer: Peter <craven@gmx.net>
 pkgname=gerbil-scheme-git
 pkgver=0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Gerbil is an opinionated dialect of Scheme designed for Systems Programming, with a state of the art macro and module system on top of the Gambit runtime."
 arch=(x86_64 i686)
 url="https://github.com/vyzo/gerbil"
@@ -65,7 +65,6 @@ package() {
   cd "$srcdir/$_gitname-build"
   mkdir -p ${pkgdir}/opt/gerbil-scheme-git
   cp -R bin ${pkgdir}/opt/gerbil-scheme-git/bin
-  cp -R bootstrap ${pkgdir}/opt/gerbil-scheme-git/bootstrap
   cp -R doc ${pkgdir}/opt/gerbil-scheme-git/doc
   cp -R etc ${pkgdir}/opt/gerbil-scheme-git/etc
   cp -R lib ${pkgdir}/opt/gerbil-scheme-git/lib
