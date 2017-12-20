@@ -1,6 +1,6 @@
 pkgbase = emacs-bookmarkplus-mode
 	pkgdesc = Bookmark+ mode, which enhances vanilla Emacs bookmarks in many ways
-	pkgver = 2015.04.03
+	pkgver = 2017.02.26
 	pkgrel = 1
 	url = http://www.emacswiki.org/emacs/BookmarkPlus
 	install = emacs-bookmarkplus-mode.install
@@ -16,14 +16,14 @@ pkgbase = emacs-bookmarkplus-mode
 	source = http://www.emacswiki.org/emacs/download/bookmark+-lit.el
 	source = http://www.emacswiki.org/emacs/download/bookmark+-doc.el
 	source = http://www.emacswiki.org/emacs/download/bookmark+-chg.el
-	md5sums = 641cc94ac319257bd06b26f5cf27c720
-	md5sums = 667e07d6c6491edc1d4f53a9b10d6ab2
-	md5sums = 3aa9ecbdac8ac66bb2d686d8ddab7030
-	md5sums = 291f4998329c6799a114dc1afb1b30d7
-	md5sums = cf2d95e1b86d28d2519945b7e4b95af8
-	md5sums = 6780d705e05edf5f2b23a86f58b9ed6a
-	md5sums = 36b7bc555064c8183c6bd9ac8a971131
-	md5sums = 88d15de58484f03621327f43c8037c11
+	md5sums = 4f2f6e6ce4a13c6e5e3f01e093f41413
+	md5sums = 8734bc137b5ab36669c4140bcd5857e6
+	md5sums = 7bc973ca676c98aef6fed52d0ec4ffbe
+	md5sums = aa758c00bd19f69df6e5899e6592d365
+	md5sums = a54a19d4db3a5d7d06dc4771fe2c445d
+	md5sums = 6c362bab1db9c26726b0e490f8fb4ec8
+	md5sums = a2955e140b0a29dd0a837a3adc900cf8
+	md5sums = 57a9fc82e6114b9a3b3c3776a04da41b
 
 pkgname = emacs-bookmarkplus-mode
 
