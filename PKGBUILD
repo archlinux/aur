@@ -5,13 +5,13 @@ _fragment="#branch=master"
 pkgname=python-${_base}-git
 install=${pkgname}.install
 pkgdesc="A Python module allowing for instant inlining of C and C++ code in Python"
-pkgver=20161205
+pkgver=20171205
 pkgrel=1
 arch=('any')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('GPL3')
 groups=('fenics-git')
-depends=('python')
+depends=('python-numpy' 'python-six' 'swig')
 makedepends=('git')
 options=(!emptydirs)
 source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
