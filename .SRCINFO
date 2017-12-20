@@ -1,6 +1,6 @@
 pkgbase = m68k-elf-toolchain
-	pkgdesc = A complete gcc/binutils/newlib toolchain targeting m68k-elf
-	pkgver = 20171218
+	pkgdesc = A complete gcc/binutils/newlib toolchain for m68k-elf
+	pkgver = 20171220
 	pkgrel = 1
 	url = http://www.gnu.org
 	arch = x86_64
