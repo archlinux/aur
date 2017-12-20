@@ -9,6 +9,7 @@ pkgbase = hardcode-tray
 	makedepends = ninja
 	makedepends = meson
 	depends = python
+	depends = gobject-introspection
 	depends = python-gobject
 	depends = python-cairosvg
 	depends = librsvg
