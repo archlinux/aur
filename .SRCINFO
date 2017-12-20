@@ -1,0 +1,14 @@
+pkgbase = su-exec
+	pkgdesc = switch user and group id, setgroups and exec
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/ncopa/su-exec
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	source = https://github.com/ncopa/su-exec/archive/v0.2.tar.gz
+	sha256sums = ec4acbd8cde6ceeb2be67eda1f46c709758af6db35cacbcde41baac349855e25
+
+pkgname = su-exec
+
