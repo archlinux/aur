@@ -1,0 +1,75 @@
+From a2ceb95e2a7d5bf0270f0d342d2edb560f5cfcf4 Mon Sep 17 00:00:00 2001
+From: Jim Warner <james.warner@comcast.net>
+Date: Thu, 17 Aug 2017 01:11:11 -0500
+Subject: [PATCH] top: protect against the anomalous 'Mem' graph display
+
+Until this patch, top falsely assumed that there would
+always be some (small) amount of physical memory after
+subtracting 'used' and 'available' from the total. But
+as the issue referenced below attests, a sum of 'used'
+and 'available' might exceed that total memory amount.
+
+I'm not sure if this is a problem with our calculation
+of the 'used' amount, a flaw in the kernel 'available'
+algorithms or some other reason I cannot even imagine.
+
+Anyway, this patch protects against such a contingency
+through the following single line addition of new code
+. if (pct_used + pct_misc > 100.0 || pct_misc < 0) ...
+
+The check for less than zero is not actually necessary
+as long as the source numbers remain unsigned. However
+should they ever become signed, we'll have protection.
+
+[ Most of the changes in this commit simply separate ]
+[ a variable's definition from its associated logic. ]
+
+Reference(s):
+https://gitlab.com/procps-ng/procps/issues/64
+
+Signed-off-by: Jim Warner <james.warner@comcast.net>
+---
+ top/top.c | 19 ++++++++++++-------
+ 1 files changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/top/top.c b/top/top.c
+index 385df1d..948805e 100644
+--- a/top/top.c
++++ b/top/top.c
+@@ -5249,21 +5249,26 @@ numa_nope:
+             { "%-.*s~4", "%-.*s~6", "%-.*s~6", Graph_blks }
+          };
+          char used[SMLBUFSIZ], util[SMLBUFSIZ], dual[MEDBUFSIZ];
+-         int ix = w->rc.graph_mems - 1;
+-         float pct_used = (float)kb_main_used * (100.0 / (float)kb_main_total),
++         float pct_used, pct_misc, pct_swap;
++         int ix, num_used, num_misc;
++
++         pct_used = (float)kb_main_used * (100.0 / (float)kb_main_total);
+ #ifdef MEMGRAPH_OLD
+-               pct_misc = (float)(kb_main_buffers + kb_main_cached) * (100.0 / (float)kb_main_total),
++         pct_misc = (float)(kb_main_buffers + kb_main_cached) * (100.0 / (float)kb_main_total);
+ #else
+-               pct_misc = (float)(kb_main_total - kb_main_available - kb_main_used) * (100.0 / (float)kb_main_total),
++         pct_misc = (float)(kb_main_total - kb_main_available - kb_main_used) * (100.0 / (float)kb_main_total);
+ #endif
+-               pct_swap = kb_swap_total ? (float)kb_swap_used * (100.0 / (float)kb_swap_total) : 0;
++         if (pct_used + pct_misc > 100.0 || pct_misc < 0) pct_misc = 0;
++         pct_swap = kb_swap_total ? (float)kb_swap_used * (100.0 / (float)kb_swap_total) : 0;
++         ix = w->rc.graph_mems - 1;
+ #ifndef QUICK_GRAPHS
+-         int num_used = (int)((pct_used * Graph_adj) + .5),
+-             num_misc = (int)((pct_misc * Graph_adj) + .5);
++         num_used = (int)((pct_used * Graph_adj) + .5),
++         num_misc = (int)((pct_misc * Graph_adj) + .5);
+          if (num_used + num_misc > Graph_len) --num_misc;
+          snprintf(used, sizeof(used), gtab[ix].used, num_used, gtab[ix].type);
+          snprintf(util, sizeof(util), gtab[ix].misc, num_misc, gtab[ix].type);
+ #else
++         (void)num_used; (void)num_misc;
+          snprintf(used, sizeof(used), gtab[ix].used, (int)((pct_used * Graph_adj) + .5), gtab[ix].type);
+          snprintf(util, sizeof(util), gtab[ix].misc, (int)((pct_misc * Graph_adj) + .4), gtab[ix].type);
+ #endif
+--
+libgit2 0.26.0
+
