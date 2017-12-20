@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=65.0.3294.5
-pkgrel=1
+pkgrel=3
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -165,7 +165,7 @@ sha256sums=('559ff8577fbd81e91ca2db32db2568bc96af24d0696f04fbb86118816af24c5b'
             'b80b351152d3415b5b7dbfaf07edd94bb8f7dd56eab4380c577b102c6b758c10'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
-            '8d9ebc86511704bfd27d18e5e917ae6c0fc44c2e16520dfb98e14f18fe40a6ee'
+            '52a3e05fed6d7486a15c336ba57180218e040b38702ab4ef79d97e2a2c293162'
             '5c1f367e4b5d73401eedb0cb9e872e1955c6f0d4c3720c08afd2a74b54c8dd61'
             '18ad268d9ad1ec4ae136f38ce0a2079820b63528ba062c63210fe44759a6d2f0'
             '73e3a7865b98ab3bfebca6d1f31c5387e0719288fb47fd98b543063dadaaae19'
@@ -207,7 +207,6 @@ sha256sums=('559ff8577fbd81e91ca2db32db2568bc96af24d0696f04fbb86118816af24c5b'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4')
-
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
