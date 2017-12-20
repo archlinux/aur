@@ -1,8 +1,8 @@
 # Maintainer: Takuro Onoue <kusanaginoturugi at gmail.com>
 pkgname=bitzeny
 pkgver=1.1.0
-pkgrel=1
-pkgdesc="Wallet and minor of cryptcurrency"
+pkgrel=2
+pkgdesc="Wallet of cryptcurrency"
 arch=('x86_64')
 url="http://bitzeny.org/"
 license=('MIT')
@@ -17,5 +17,5 @@ package() {
   cd ${pkgname}-${pkgver}-linux/src
   tar xvfz ${pkgname}-${pkgver}.tar.gz
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
-  sed -n '/License/,/ Bernard./p' bitzeny-1.1.0/doc/README.md > ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  sed -n '/License/,/ Bernard./p' ${pkgname}-${pkgver}/doc/README.md > ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
