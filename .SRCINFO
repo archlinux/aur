@@ -19,7 +19,6 @@ pkgbase = gnucash
 	depends = libgnome-keyring
 	depends = libgnomecanvas
 	depends = dconf
-	depends = enchant1.6
 	optdepends = evince: for print preview
 	optdepends = yelp: help browser
 	optdepends = perl-finance-quote: for stock information lookups
