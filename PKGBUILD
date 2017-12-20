@@ -1,6 +1,6 @@
 # Maintainer: DeedleFake <deedlefake at users dot noreply dot github dot com>
 pkgname=iota-wallet-bin
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="The official desktop wallet of the IOTA project."
 arch=(x86_64)
@@ -12,14 +12,14 @@ source=("https://github.com/iotaledger/wallet/releases/download/v$pkgver/iota-$p
 				"iota-wallet.sh"
 				"iota-wallet.desktop"
 				"iota.svg")
-sha512sums=('33084b9d349cf409b782a66174f3a6e2e0f9b3baf0cb119cf5cb4c3aa08532560b4c634b7bf8b546f37a53a024d755a716b4f95489ec54653562d897d53743d4'
-            '35a106e85244c75216b2ea13b67dbb806f00e7817cf267d3faf3d74057e7a648505c309069abcb88c49aa1d502ee658d42cf251adc89141fc0d67c42eff49d81'
-            '252b682b2d2ed66184c0c2b577f619ac09c3e88a17c40a3a9e4da8b744b534f978cce89566a60b0c23ae3756bb4fc6dcd47690dc5166606f61086edeed208ee3'
-            '0bba31e655fbafad65862a98e36890f6e5f8b1707f4c5da2c69b7d62fe1e932cee89f9624fcc92e77ae62ea6adb69f3bb5d0b871d729bbb85b92dc6a795816fa')
-md5sums=('77bbfa93dcfcb6efc3dd3f4a60885104'
+md5sums=('1477db47a72539929244be5cca97feb2'
          '814c1c0deb77202cc59f34134466e409'
          '7cd392933aad6c17bf72c4affed42af5'
          '31b7ae8553bcb5018e02ffd9315363d6')
+sha512sums=('d07cd00f98dd402c250637193d5cc584b1a66345f72ebf751efecf9f23eed2f03433b6a2581a19b4e1be68e3a6301d24d2c34693b3d4f4426fe73df25e0459da'
+            '35a106e85244c75216b2ea13b67dbb806f00e7817cf267d3faf3d74057e7a648505c309069abcb88c49aa1d502ee658d42cf251adc89141fc0d67c42eff49d81'
+            '252b682b2d2ed66184c0c2b577f619ac09c3e88a17c40a3a9e4da8b744b534f978cce89566a60b0c23ae3756bb4fc6dcd47690dc5166606f61086edeed208ee3'
+            '0bba31e655fbafad65862a98e36890f6e5f8b1707f4c5da2c69b7d62fe1e932cee89f9624fcc92e77ae62ea6adb69f3bb5d0b871d729bbb85b92dc6a795816fa')
 
 package() {
 	mkdir "$pkgdir/opt"
