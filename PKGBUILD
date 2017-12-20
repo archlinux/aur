@@ -7,7 +7,7 @@
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=ace
-pkgver=6.4.5
+pkgver=6.4.6
 pkgrel=1
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 url="http://www.dre.vanderbilt.edu/~schmidt/ACE.html"
@@ -18,7 +18,7 @@ options=(!libtool)
 conflicts=('libace')
 source=("http://download.dre.vanderbilt.edu/previous_versions/ACE-${pkgver}.tar.gz"
         "license.txt")
-sha256sums=('8e10b2d6c72fd7cf1dc08d1114be1e4dedf54b67aea3f36c497ae87c9463ff5d'
+sha256sums=('36baa2ae1768060d23e7c78db1cab7e804ee53a5825d093c918e7086398a25e1'
             '4aef434f0bc8c91488f92b25863e5dcbff857598389276718c59903cd8c8c954')
 
 build() {
