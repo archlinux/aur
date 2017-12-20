@@ -4,13 +4,13 @@ _base=ufl
 _fragment="#branch=master"
 pkgname=python-${_base}-git
 pkgdesc="Unified form language."
-pkgver=20161108
+pkgver=20171214
 pkgrel=1
 arch=('any')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('GPL3')
 groups=('fenics-git')
-depends=('python-six')
+depends=('python-numpy')
 makedepends=('git')
 options=(!emptydirs)
 source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
