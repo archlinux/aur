@@ -6,7 +6,7 @@ pkgbase = r-cran-ipsur
 	arch = any
 	license = GPL3
 	depends = r
-	source = http://cran.r-project.org/src/contrib/IPSUR_1.5.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/IPSUR/IPSUR_1.5.tar.gz
 	md5sums = fc87b98777cf4912b723459a96b92d1c
 
 pkgname = r-cran-ipsur

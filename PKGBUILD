@@ -9,7 +9,7 @@ url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('any')
 license=('GPL3')
 depends=('r')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_cranname}_${pkgver}.tar.gz")
 md5sums=('fc87b98777cf4912b723459a96b92d1c')
  
 package() {
