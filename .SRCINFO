@@ -1,14 +1,14 @@
 pkgbase = ripple-ledger
 	pkgdesc = Ripple wallet GUI for the Ledger Hardware Wallet
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-wallet-ripple
 	install = ripple-ledger.install
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source_x86_64 = https://github.com/LedgerHQ/ledger-wallet-ripple/releases/download/1.0.2/ledger_wallet_ripple_linux_x64.deb
-	sha256sums_x86_64 = 59fd8f2a3028bd4d34fe9093c4ac9048c3153e0acf5d13f19ab2628d98c3d416
+	source_x86_64 = https://github.com/LedgerHQ/ledger-wallet-ripple/releases/download/1.0.3/ledger_wallet_ripple_x64_1.0.3.deb
+	sha256sums_x86_64 = 0da4d3571b21e0bb72608624d6aed9c53c484f5e10f61375505220813139bab1
 
 pkgname = ripple-ledger
 
