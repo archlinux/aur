@@ -1,0 +1,17 @@
+pkgbase = emacs-lll-mode-git
+	pkgdesc = An emacs major mode for editing Ethereum LLL code
+	pkgver = v0.1.0.r0.gdecc55c
+	pkgrel = 1
+	url = https://github.com/robmyers/lll-mode
+	install = emacs-lll-mode-git.install
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = emacs
+	provides = emacs-lll-mode
+	conflicts = emacs-lll-mode
+	source = emacs-lll-mode-git::git+https://gitlab.com/veox/emacs-lll-mode.git
+	md5sums = SKIP
+
+pkgname = emacs-lll-mode-git
+
