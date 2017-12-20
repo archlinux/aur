@@ -5,7 +5,7 @@
 
 pkgname=tautulli-beta
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/JonnyWong16/plexpy"
@@ -15,10 +15,10 @@ depends=('python2')
 conflicts=('plexpy-git' 'tautulli' 'plexpy')
 provides=("tautulli")
 replaces=("plexpy")
-install='plexpy.install'
+install='tautulli.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JonnyWong16/plexpy/archive/v$pkgver-beta.tar.gz" 
-        'plexpy.service'
-        'plexpy.install')
+        'tautulli.service'
+        'tautulli.install')
 sha256sums=('94a9dbf79d9f81b3f01014f2513f1a4bfa26a846f8b7b83c8e679a5b7b1ce151'
             '3f07ceae4c5a5c78b21af0ca9b3478f7a3bc7bb6f152021e05bf39c9a7155a78'
             '93d8bc219acc2781f14d832443bc226a4fa6cc751f5ecf5cac5a407187c69160')
@@ -36,7 +36,7 @@ package() {
 
 	cp -a data/ lib/ plexpy/ "${pkgdir}/opt/plexpy/"
 
-	install -Dm644 "${srcdir}/plexpy.service" "${pkgdir}/usr/lib/systemd/system/plexpy.service"
+	install -Dm644 "${srcdir}/tautulli.service" "${pkgdir}/usr/lib/systemd/system/tautulli.service"
 	install -Dm644 "version.txt" "${pkgdir}/opt/plexpy/"
 }
 
