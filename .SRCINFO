@@ -1,0 +1,15 @@
+pkgbase = weather-bar
+	pkgdesc = Weather plug-in for polybar, lemonbar, and others. With geolocation, Weather Underground, and NOAA support
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/chrissnell/weather-bar
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	source = weather-bar-1.0.tar.gz::https://github.com/chrissnell/weather-bar/archive/v1.0.tar.gz
+	sha256sums = 00ce69fa556d433b3498ec23c985969d529b0d1e8fb3162805c6054f6bc8f681
+
+pkgname = weather-bar
+
