@@ -7,6 +7,6 @@ Comment[tr]=Dash, eşten eşe kriptografik sanal para birimi
 Exec=dash-qt %u
 Terminal=false
 Type=Application
-Icon=dash128
+Icon=dash256
 MimeType=x-scheme-handler/dash;
 Categories=Office;Finance;
