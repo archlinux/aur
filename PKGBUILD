@@ -5,10 +5,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20171209
+pkgver=4.0.0v20171220
 _pkgver=4.0.0
-_snapshot_=20171209
-_snapver_=0235
+_snapshot_=20171220
+_snapver_=0237
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -131,7 +131,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('453aa3704ec2fccd9fbb1287abe37eb92abf23a091870c038347c9d6af9bdfe6'
+sha256sums=('e26c1b92ca11f370e8e38c9ad379f598d9249717a61807ca0c465ff187bfb0f9'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
