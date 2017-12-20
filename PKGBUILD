@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.1.371.r343.g267c8453e1
+pkgver=v1.1.371.r430.gc34c3b0742
 _gwtver=2.8.1
 _ginver=2.1.2
 _clangver=3.8.0
@@ -18,7 +18,7 @@ arch=('i686' 'x86_64')
 url="http://www.rstudio.org/"
 license=('AGPL3')
 depends=('r>=2.11.1' 'boost-libs>=1.5' 'openssl' 'mathjax' 'pandoc' 'clang')
-makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'jre8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget')
+makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'jdk8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget')
 install="${pkgname}.install"
 conflicts=('rstudio-server')
 source=('git://github.com/rstudio/rstudio.git'
