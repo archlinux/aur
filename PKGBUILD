@@ -7,7 +7,7 @@
 
 pkgname=chromium-gtk2
 _pkgname=chromium
-pkgver=63.0.3239.84
+pkgver=63.0.3239.108
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security (GTK2 version)"
@@ -35,9 +35,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-webrtc-r0.patch
         chromium-widevine.patch
         fix-nav-button-layout.patch)
-sha256sums=('6de2754dfc333675ae6a67ae13c95666009b35c84f847b058edbf312e42fa3af'
+sha256sums=('47d80798194da78bdd519b7ce012425b13cf89d6eb287e22a34342a245c31a2b'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            '782a512b8bcf4aa6e58036cc3454d037d0eea69f27d5b673902d494c3fb5b20d'
+            '6da2cc8e4ae13547763f946c331b2f819fbb8af01681b8b90564a95f8a423e58'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'e53dc6f259acd39df13874f8a0f440528fae764b859dd71447991a5b1fac7c9c'
             'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
