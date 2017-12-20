@@ -4,21 +4,23 @@
 
 pkgname=gtkimageview
 pkgver=1.6.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple image viewer widget for GTK2"
 arch=('x86_64')
 url="https://github.com/GNOME/gtkimageview"
 license=('LGPL2.1')
 depends=('gtk2')
-makedepends=('pkg-config')
+makedepends=('pkg-config' 'python')
 source=("https://sources.archlinux.org/other/packages/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('501367b3f50e69a12208dc9c6ad00b18')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  ./configure --prefix=/usr \
-              --disable-static
+  ./configure \
+    --prefix=/usr \
+    --disable-static
+  sed -i 's/-Werror//' $(find -name Makefile)
 
   make
 }
