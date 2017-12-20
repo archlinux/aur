@@ -1,0 +1,24 @@
+pkgbase = powerpc-none-eabi-toolchain
+	pkgdesc = A complete gcc/binutils/newlib toolchain for powerpc-none-eabi
+	pkgver = 20171218
+	pkgrel = 1
+	url = http://www.gnu.org
+	arch = x86_64
+	license = GPL
+	license = BSD
+	depends = zlib
+	depends = bash
+	depends = libmpc
+	conflicts = m68k-elf-gcc
+	conflicts = m68k-elf-binutils
+	conflicts = m68k-elf-newlib
+	options = !strip
+	source = http://gnuftp.uib.no/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
+	source = http://gnuftp.uib.no/binutils/binutils-2.29.1.tar.xz
+	source = ftp://sourceware.org/pub/newlib/newlib-2.5.0.20170922.tar.gz
+	sha512sums = f853cd6530b4055d8d8289da74687cb4c6d5f363598d386332d31852b581bac76c3adb7d61889edec3b779f63d8646f0122840f12965ce4a4389ba535dbbb6e1
+	sha512sums = d748d22306477d60d921078804d21943248c23fca0707aac9b016a352c01c75ca69e82624ae37fb0bbd03af3b17088a94f60dfe1a86a7ff82e18ece3c24f0fd0
+	sha512sums = 5f29509c53d2858c0067e2fe33565a8b8e9decfc2761b3616729a274e7747c120a0b82b2c50aae291b182178da274a1540e218d23b86debd56256e17f3651d4b
+
+pkgname = powerpc-none-eabi-toolchain
+
