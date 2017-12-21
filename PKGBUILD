@@ -20,8 +20,8 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=57.0
-pkgrel=3
+pkgver=57.0.2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -62,6 +62,8 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         wifi-disentangle.patch wifi-fix-interface.patch
         firefox-install-dir.patch no-crmf.diff
         0001-Bug-1360278-Add-preference-to-trigger-context-menu-o.patch
+        0002-Bug-1419426-Implement-browserSettings.contextMenuSho.patch 
+        no-plt.diff
 )
 
 
@@ -120,11 +122,17 @@ prepare() {
   # https://bugs.archlinux.org/task/34644
   # sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
+  patch -Np1 -i ../no-plt.diff
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../no-crmf.diff
 
-  #  https://bugzilla.mozilla.org/show_bug.cgi?id=1360278
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1360278
   patch -Np1 -i ../0001-Bug-1360278-Add-preference-to-trigger-context-menu-o.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1419426
+  patch -Np1 -i ../0002-Bug-1419426-Implement-browserSettings.contextMenuSho.patch
   
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i ../wifi-disentangle.patch
@@ -244,4 +252,6 @@ md5sums=('SKIP'
          'a819433292665a6f06a223a0a718e67a'
          'dbf14588e85812ee769bd735823a0146'
          '196edf030efc516e3de5ae3aa01e9851'
-         '436dc05b6f1aaec6cc05b1eb904c9af4')
+         '408d5191d5083ca852d90a1bb858b158'
+         '099fe738095e4da2df8fb662f17d4aa3'
+         'cf3409120d3f05190e5197f48c2b2343')
