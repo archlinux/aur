@@ -7,8 +7,8 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=65.0.3294.5
-pkgrel=3
+pkgver=65.0.3298.3
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -110,10 +110,12 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/p1.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/p2.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/e3.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/narnia3.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/narnia4.patch
 )
 
 
-sha256sums=('559ff8577fbd81e91ca2db32db2568bc96af24d0696f04fbb86118816af24c5b'
+sha256sums=('fda622b7d7e2ab517e1c6993ed43c3d0a5550be1e97f7b0800732372ec30a997'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -206,7 +208,10 @@ sha256sums=('559ff8577fbd81e91ca2db32db2568bc96af24d0696f04fbb86118816af24c5b'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
-            'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4')
+            'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
+            'be55fef656ccb767edd29b53d2e1416db0976a95cd0f4ba24ea2b3e0ce2e68b6'
+            'd38cdb1f3dec117c25d618a228accfa2b5e51cabe28d3bd3a0a5e8d2a0634c9b')
+
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -334,6 +339,9 @@ patch -Np1 -i ../p1.patch
 patch -Np1 -i ../p2.patch
 patch -Np1 -i ../e3.patch
 patch -Np1 -i ../narnia1.patch
+patch -Np1 -i ../narnia3.patch
+patch -Np1 -i ../narnia4.patch
+
 
 #patch -Np1 -i ../9k.patch
 #patch -Np1 -i ../048.patch
@@ -355,7 +363,6 @@ patch -Np1 -i ../k1.patch
   # Fixes from Gentoo
 
   # Use Python 2
-msg2 'py2'
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
 
   # There are still a lot of relative calls which need a workaround
@@ -369,13 +376,11 @@ msg2 'py2'
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
 
-msg2 'replacing libs'
+
 
 
   python2 build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
-
-msg2 'downloading build tools'
 python2 tools/clang/scripts/update.py
 
   cd "$srcdir/chromium-launcher-$_launcher_ver"
@@ -393,7 +398,7 @@ build() {
   export TMPDIR="$srcdir/temp"
   mkdir -p "$TMPDIR"
 
-  local _flags=(
+   local _flags=(
     'symbol_level=0'
     'is_debug=false'
     'fatal_linker_warnings=false'
@@ -403,7 +408,6 @@ build() {
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
     'link_pulseaudio=true'
-    'use_gconf=false'
     'use_gnome_keyring=false'
     'use_gold=false'
     'use_sysroot=false'
@@ -437,12 +441,12 @@ build() {
   export CC="${_c_compiler}"
   export CXX="${_cpp_compiler}"
 
-
   python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
   out/Release/gn gen out/Release --args="${_flags[*]}" \
     --script-executable=/usr/bin/python2
 
 python2 build/util/lastchange.py -m GPU_LISTS_VERSION --revision-id-only --header gpu/config/gpu_lists_version.h
+
 
   ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
 }
@@ -459,16 +463,17 @@ package() {
   install -Dm644 "$srcdir/dnox.desktop" \
     "$pkgdir/usr/share/applications/dnox.desktop"
 
-  install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/$pk/chrome-sandbox"
+  install -Dm4755 out/Release/chrome_sandbox \
+    "$pkgdir/usr/lib/dnox/chrome-sandbox"
 
   cp -a \
     out/Release/{chrome_{100,200}_percent,resources}.pak \
     out/Release/{*.bin,chromedriver} \
     out/Release/locales \
-    "$pkgdir/usr/lib/$pk/"
+    "$pkgdir/usr/lib/dnox/"
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
-    cp out/Release/icudtl.dat "$pkgdir/usr/lib/$pk/"
+    cp out/Release/icudtl.dat "$pkgdir/usr/lib/dnox/"
   fi
 
   ln -s /usr/lib/$pk/dnoxdriver "$pkgdir/usr/bin/dnoxdriver"
