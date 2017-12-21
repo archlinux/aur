@@ -1,0 +1,15 @@
+pkgbase = python-radadb
+	pkgdesc = A lightweight uncomplicated NoSQL schemaless ORM for sqlite3
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/tariqdaouda/rabaDB
+	arch = any
+	license = Apache2
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = https://github.com/tariqdaouda/rabaDB/archive/1.0.4.tar.gz
+	md5sums = 94f32b72000fddf11f65bcaf67eb49cf
+
+pkgname = python-radadb
+
