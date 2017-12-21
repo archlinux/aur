@@ -3,7 +3,7 @@ Description=Watcher server, get movies!
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python /opt/Watcher3/watcher.py
+ExecStart=/usr/bin/python /opt/watcher3/watcher.py
 User=root
 Group=root
 

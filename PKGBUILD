@@ -17,7 +17,7 @@ optdepends=("deluge: supported torrent client"
             "transmission-cli: supported torrent client")
 makedepends=('git')
 source=("git://github.com/${_gitauthor}/${_gitname}.git" "watcher3.service")
-md5sums=('SKIP' '604f14044f43e28e0591dcf9dbdf219c')
+md5sums=('SKIP' '5e5d95d5075cbcccd3a09f9f39dffaa2')
 
 pkgver() {
   cd ${_gitname}

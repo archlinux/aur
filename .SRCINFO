@@ -15,7 +15,7 @@ pkgbase = watcher3
 	source = git://github.com/nosmokingbandit/Watcher3.git
 	source = watcher3.service
 	md5sums = SKIP
-	md5sums = 604f14044f43e28e0591dcf9dbdf219c
+	md5sums = 5e5d95d5075cbcccd3a09f9f39dffaa2
 
 pkgname = watcher3
 
