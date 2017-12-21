@@ -2,5 +2,9 @@
 ChangeLog for han-ese-ops_rpi PKGBUILD
 https://github.com/han-ese/Arch-RPi
 
-* han-ese-ops_rpi-0.1.0 (2017-12-18 - MvdS)
+	* han-ese-ops_rpi-0.1-1 (2017-12-18 - MvdS)
 	Initial PKGBUILD for han-ese-ops_rpi, to be uploaded to AUR
+
+	* han-ese-ops_rpi-0.1-2 (2017-12-21 - MvdS)
+	Add dependency python-sense-hat
+
