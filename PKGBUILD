@@ -8,7 +8,7 @@ arch=('any')
 url='https://www.gnome-look.org/p/1187179'
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
-source=("${pkgname}-${pkgver}.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1513734260/s/9c5ac8e4f422db1c049402e3c0a584d3/t/1513798811/Matcha-Theme.tar.xz")
+source=("${pkgname}-${pkgver}.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1513734260/s/b14a4af4a136bcbf7eff44b1a91a345f/t/1513839589/Matcha-Theme.tar.xz")
 sha256sums=('d670c0e4127b225abbf0d1da4d2a4a6cde40c241b39901fe5484403bcc3a6557')
 
 prepare() {
