@@ -1,9 +1,6 @@
 # Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
-# For building in a clean chroot you first must install texlive-core to the chroot. (FS#52038)
-# e.g.: extra-x86_64-build -- -I /var/cache/pacman/pkg/texlive-core-2017.44918-1-any.pkg.tar.xz
-
 pkgname=freedoko
 pkgver=0.7.16
 pkgrel=3
