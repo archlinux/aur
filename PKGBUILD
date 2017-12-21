@@ -2,14 +2,14 @@
 
 pkgname=pmonitor-git
 pkgver=r15.97604f3
-pkgrel=1
+pkgrel=2
 pkgdesc="Progress monitor: monitor a job's progress"
 arch=('i686' 'x86_64')
 url=https://github.com/dspinellis/"${pkgname//-git/}"
 license=('Apache2.0')
 depends=('lsof')
-provides=('pmonitor-git')
-conflicts=('pmonitor-git')
+provides=('pmonitor')
+conflicts=('pmonitor')
 source=(git+https://github.com/dspinellis/"${pkgname//-git/}".git)
 md5sums=('SKIP')
 
@@ -20,7 +20,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}"/"${pkgname//-git/}"
-
   make
 }
 
