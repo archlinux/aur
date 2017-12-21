@@ -3,8 +3,8 @@
 # Contributor: Martin Stolpe <martinstolpe@gmail.com>
 
 pkgname=lib32-libjpeg6-turbo
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc='libjpeg derivative with accelerated baseline JPEG compression and decompression'
 arch=('x86_64')
 url="https://libjpeg-turbo.org/"
@@ -15,7 +15,7 @@ provides=('lib32-libjpeg6')
 conflicts=('lib32-libjpeg6')
 source=("https://downloads.sourceforge.net/project/libjpeg-turbo/${pkgver}/libjpeg-turbo-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('7D6293CC6378786E1B5C496885C7044E033FDE16') # libjpeg-turbo
-sha256sums=('9098943b270388727ae61de82adec73cf9f0dbb240b3bc8b172595ebf405b528'
+sha256sums=('b24890e2bb46e12e72a79f7e965f409f4e16466d00e1dd15d93d73ee6b592523'
             'SKIP')
 
 build() {
