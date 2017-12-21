@@ -3,7 +3,7 @@ pkgname=marvinc-git
 _gitname=MarvInc
 _lpkg="${_gitname,,}"
 pkgver=1.0.r1.g562bc1b
-pkgrel=1
+pkgrel=2
 pkgdesc="MarvInc is a zachlike puzzle game with a story told through emails."
 arch=('x86_64')
 url="https://github.com/MarvellousSoft/MarvInc/"
@@ -37,10 +37,7 @@ package() {
   mkdir -p "$pkgdir$HOME/.marvinc"
   cp -r * "$pkgdir$HOME/.marvinc/"
 
-  pushd . &> /dev/null
   mkdir -p "$pkgdir/usr/bin"
-  cd "$pkgdir/usr/bin"
-  ln -s "$HOME/.marvinc/marv" marvinc
-  popd &> /dev/null
+  ln -s "$HOME/.marvinc/run.sh" "$pkgdir/usr/bin/marvinc"
 }
 
