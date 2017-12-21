@@ -1,6 +1,6 @@
 pkgbase = batman-adv-dkms-git
 	pkgdesc = batman kernel module (dkms package)
-	pkgver = v2017.3.11.gdcad23d
+	pkgver = v2017.4.26.g8eea9c05
 	pkgrel = 1
 	url = https://www.open-mesh.org/projects/batman-adv
 	arch = any
