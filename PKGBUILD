@@ -2,14 +2,14 @@
 # Contributor: archdaemon
 
 pkgname=untrunc-git
-pkgver=r46.06ee3da
+pkgver=r49.2259a05
 pkgrel=1
 pkgdesc="restore a damaged (truncated) mp4, m4v, mov, 3gp video"
 arch=('x86_64' 'i686')
 url="https://github.com/ponchio/untrunc"
 license=('GPL2')
 depends=('ffmpeg' 'qt5-base')
-makedepends=('qconf')
+makedepends=('qconf' 'yasm')
 source=("${pkgname}"::'git+https://github.com/ponchio/untrunc.git'
         'framealloc.patch'
 	'http://libav.org/releases/libav-12.2.tar.xz')
