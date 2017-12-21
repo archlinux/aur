@@ -29,33 +29,7 @@ _dir="ament_lint-release-release-ardent-ament_cppcheck-${pkgver}-${_pkgver_patch
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros2-gbp/ament_lint-release/archive/release/ardent/ament_cppcheck/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('ee38b6c3c90b4359b1b5311dd03abc750274e36dd7baefd30cb381369229907e')
 
-build() {
-  # Use ROS environment variables
-  source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/ardent/setup.bash ] && source /opt/ros/ardent/setup.bash
-
-  # Create build directory
-  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
-  cd "${srcdir}/build"
-
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 "${srcdir}/${_dir}"
-
-  # Build project
-  cmake "${srcdir}/${_dir}" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/ardent \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.5m.so \
-        -DPYTHON_BASENAME=.cpython-35m \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_ENABLE_TESTING=OFF
-  make
-}
-
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}/" install
+  cd "${srcdir}/${_dir}"
+  python setup.py install --root="$pkgdir" --prefix="/opt/ros/ardent" --optimize=1
 }
