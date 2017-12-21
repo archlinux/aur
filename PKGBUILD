@@ -1,18 +1,18 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 
-pkgname=pacman-contrib-git
 _gitname=pacman-contrib
+pkgname=pacman-contrib-git
 pkgver=0.0.1.r8.g86adc7b
 pkgrel=1
 pkgdesc='pacman contributions (Git version)'
-url=https://git.archlinux.org/$_gitname.git
+url=https://git.archlinux.org/pacman-contrib.git
 arch=('x86_64')
 license=('GPL')
 depends=('bash' 'pacman-git' 'perl') # Change to 'pacman' after release 5.1
 makedepends=('asciidoc' 'git')
 provides=("$_gitname")
-replaces=("$_gitname")
+conflicts=("$_gitname")
 source=("git+$url")
 sha512sums=('SKIP')
 
@@ -31,6 +31,7 @@ build() {
 }
 
 check() {
+  cd $_gitname
   make -C $_gitname check
 }
 
