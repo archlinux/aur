@@ -25,6 +25,12 @@ prepare()
 
 build()
 {
+    if [[ $CARCH == armv7h ]]; then
+        echo "Requested LDFLAGS: $LDFLAGS"
+        echo "Removing --as-needed because it breaks the build for RPI"
+        export LDFLAGS=${LDFLAGS/,--as-needed/}
+        echo "New LDFLAGS: $LDFLAGS"
+    fi
     cd ${srcdir}/machinery-${pkgver}
     mkdir -p BUILD
     cd BUILD
