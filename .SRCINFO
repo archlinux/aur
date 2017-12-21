@@ -1,6 +1,6 @@
 pkgbase = worker
 	pkgdesc = A file manager for the X Window System
-	pkgver = 3.13.0
+	pkgver = 3.14.0
 	pkgrel = 1
 	url = http://www.boomerangsworld.de/worker
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = worker
 	depends = gcc-libs
 	depends = libx11
 	depends = file
-	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-3.13.0.tar.bz2
-	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-3.13.0.tar.bz2.asc
+	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-3.14.0.tar.bz2
+	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-3.14.0.tar.bz2.asc
 	validpgpkeys = F9299EE90A729029E71AF26B667132D0FBC52B37
-	sha256sums = 2b9a957d91193bfa36b21a328d667ae08ff82f7ac9e71148b6530980141f53e5
-	sha256sums = bec74b24924dd4a59fc289aa5096eed771c6fcd530e0e1930d49fecb8556c9c6
+	sha256sums = 192ffbee512d8a0828d33a30193f3a6de900a74556c963464762c18de566151b
+	sha256sums = 55750c4c5c01f43cb976fe7a83ff4a33ebf67aff737ad13351cc7abfef9f4ce7
 
 pkgname = worker
 
