@@ -10,21 +10,21 @@ arch=('any')
 pkgrel=1
 license=('Apache License 2.0')
 
-ros_makedepends=(ros-ardent-rosidl-generator-cpp
-  ros-ardent-rosidl-typesupport-opensplice-cpp
-  ros-ardent-rosidl-typesupport-opensplice-c
-  ros-ardent-rosidl-generator-c
-  ros-ardent-opensplice-cmake-module
-  ros-ardent-ament-cmake
-  ros-ardent-rcutils
-  ros-ardent-rosidl-generator-dds-idl
-  ros-ardent-rosidl-cmake)
+ros_makedepends=(ros-ardent-rosidl-generator-dds-idl
+  ros-ardent-rcutils)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  opensplice)
+  ${ros_makedepends[@]})
 
-ros_depends=(ros-ardent-rmw)
-depends=(${ros_depends[@]})
+ros_depends=(ros-ardent-rosidl-cmake
+  ros-ardent-ament-cmake
+  ros-ardent-rosidl-generator-c
+  ros-ardent-rmw
+  ros-ardent-rosidl-generator-cpp
+  ros-ardent-rosidl-typesupport-opensplice-c
+  ros-ardent-rosidl-typesupport-opensplice-cpp
+  ros-ardent-opensplice-cmake-module)
+depends=(${ros_depends[@]}
+  opensplice-dds)
 
 # Git version (e.g. for debugging)
 # _tag=release/ardent/rmw_opensplice_cpp/${pkgver}-${_pkgver_patch}
@@ -49,17 +49,14 @@ build() {
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 "${srcdir}/${_dir}"
 
+  export PYTHONPATH=/opt/ros/ardent/lib/python3.6/site-packages
+  export AMENT_PREFIX_PATH=/opt/ros/ardent
+
   # Build project
   cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/ardent \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.5m.so \
-        -DPYTHON_BASENAME=.cpython-35m \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_ENABLE_TESTING=OFF
+        -DBUILD_TESTING=Off \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/ardent
   make
 }
 
