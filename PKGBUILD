@@ -16,13 +16,13 @@ url='http://ffmpeg.org/'
 license=('GPL3')
 depends=('bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'lame' 'libmodplug'
-         'libtheora' 'libva-headless'
-         'libwebp' 'opencore-amr' 'openjpeg2' 'opus'
-         'speex' 'v4l-utils' 'xz' 'zlib'
+         'libtheora' 'libwebp'
+         'opencore-amr' 'openjpeg2' 'opus' 'speex'
+         'v4l-utils' 'xz' 'zlib'
          'libbluray.so'
-         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
-         'libx264.so' 'libx265.so' 'libxvidcore.so'
-         'rtmpdump')
+         'libvorbisenc.so' 'libvorbis.so'
+         'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so'
+         'rtmpdump' 'libva-headless')
 makedepends=('yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
