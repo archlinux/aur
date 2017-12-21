@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0.0
+Name=Particl Wallet
+Comment=Particl, P2P Privacy project
+Exec=/usr/bin/particl
+Path=/opt/particl
+Icon=/opt/particl/icon.png
+Terminal=false
+Categories=P2P;Finance;Security;

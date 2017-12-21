@@ -1,0 +1,18 @@
+pkgbase = particl-bin
+	pkgdesc = Particl Wallet from git releases
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/particl/partgui/releases
+	arch = x86_64
+	license = GPL
+	provides = particl
+	conflicts = particl-git
+	source = https://github.com/particl/partgui/releases/download/v1.0.0/particl-1.0.0-linux.tar.gz
+	source = Particl.desktop
+	source = icon.png
+	sha256sums = f2487f8bcc78dabeeac00a19b97db047cc5304486c432a50449cb65d43a875b3
+	sha256sums = 6c4af3e9a51464395d1d477071f95c25e78ff603d11aa5614b10f82c116fca23
+	sha256sums = 24054a6942768b71baf6ccecd9b6b4e965ca5b478bc684feb8d35e1d18f2ccab
+
+pkgname = particl-bin
+
