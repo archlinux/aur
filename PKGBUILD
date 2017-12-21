@@ -5,7 +5,7 @@
 
 pkgname=tautulli-beta
 pkgver=2.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/JonnyWong16/plexpy"

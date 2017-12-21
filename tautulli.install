@@ -1,10 +1,19 @@
+pre_install() {
+        getent passwd plexpy &>/dev/null && userdel -f plexpy
+}
+
 post_install(){
-	getent group tautulli &>/dev/null || groupadd -r tautulli >/dev/null
-	getent passwd tautulli &>/dev/null || useradd -r -d /opt/plexpy -g tautulli -s /bin/false tautulli >/dev/null
+        getent group tautulli &>/dev/null || groupadd -r tautulli >/dev/null
+        getent passwd tautulli &>/dev/null || useradd -r -d /opt/plexpy -g tautulli -s /bin/false tautulli >/dev/null
+        if [ -d /var/lib/plexpy ]; then
+                chown -R tautulli:tautulli /var/lib/plexpy >/dev/null
+        fi
 }
 
 post_upgrade(){
-	if [ ! -d `grep tautulli /etc/passwd | cut -d ":" -f6` ]; then
+        post_install()
+        if [ ! -d `grep tautulli /etc/passwd | cut -d ":" -f6` ]; then
                 usermod -d /opt/plexpy tautulli >/dev/null
         fi
 }
+
