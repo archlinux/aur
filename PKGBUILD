@@ -19,7 +19,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/platformsh/platformsh-cli/releases/download/v3.26.0/platform.phar")
-sha256sums=('3.26.0')
+sha256sums=('8343ce8235535f2c388a5ed0f0a321debc9a1838fd53c006c75445b2e099cbe9')
 noextract=('platform.phar')
 
 build() {
