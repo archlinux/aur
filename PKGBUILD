@@ -1,5 +1,5 @@
 pkgname=electrum-ltc-git
-pkgver=2.9.3.1.r820.e50a1b10
+pkgver=3.0.3.git20171221.f4c968f
 pkgrel=1
 pkgdesc="Lightweight Litecoin client"
 arch=(any)
@@ -26,7 +26,8 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd electrum-ltc/
-  git describe | sed 's/-/.r/; s/-g/./'
+  printf %s%s $(grep ELECTRUM_VERSION lib/version.py | cut -d\' -f2) \
+              $(git log -1 --format=.git%cd.%h --date=short --abbrev=7 | tr -d -)
 }
 
 build() {
