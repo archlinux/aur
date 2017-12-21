@@ -1,0 +1,17 @@
+pkgbase = python-pybigwig
+	pkgdesc = A python extension for quick access to bigWig and bigBed files
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/deeptools/pyBigWig
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = curl
+	depends = python
+	depends = python-numpy
+	options = !emptydirs
+	source = https://github.com/deeptools/pyBigWig/archive/0.3.9.tar.gz
+	md5sums = 1bfb0c95c0e13bb64f6cd88331dcf7ef
+
+pkgname = python-pybigwig
+
