@@ -4,7 +4,7 @@
 
 pkgname=dwarftherapist-git
 epoch=2
-pkgver=39.0.0_r11_gf471a3b
+pkgver=39.1.0_r0_g24bc896
 pkgrel=1
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/Dwarf-Therapist/Dwarf-Therapist"
@@ -12,13 +12,11 @@ arch=('x86_64' 'i686')
 license=('MIT')
 depends=('qt5-declarative' 'hicolor-icon-theme' 'libcap')
 makedepends=('git' 'cmake')
+provides=('dwarftherapist')
+conflicts=('dwarftherapist')
 install="dwarftherapist.install"
-source=(git+"${url}.git"
-        0.44.02.patch
-        memlayout-name.patch)
-md5sums=('SKIP'
-         '5a79294e53a1a87b4deb6b7dbc4837c3'
-         '4149e407668de04dfdf89a7538ab836a')
+source=(git+"${url}.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd Dwarf-Therapist

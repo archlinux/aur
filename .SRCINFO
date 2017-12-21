@@ -1,6 +1,6 @@
 pkgbase = dwarftherapist-git
 	pkgdesc = Heavily modified version of the original Dwarf Therapist.
-	pkgver = 39.0.0_r11_gf471a3b
+	pkgver = 39.1.0_r0_g24bc896
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/Dwarf-Therapist/Dwarf-Therapist
@@ -13,12 +13,10 @@ pkgbase = dwarftherapist-git
 	depends = qt5-declarative
 	depends = hicolor-icon-theme
 	depends = libcap
+	provides = dwarftherapist
+	conflicts = dwarftherapist
 	source = git+https://github.com/Dwarf-Therapist/Dwarf-Therapist.git
-	source = 0.44.02.patch
-	source = memlayout-name.patch
 	md5sums = SKIP
-	md5sums = 5a79294e53a1a87b4deb6b7dbc4837c3
-	md5sums = 4149e407668de04dfdf89a7538ab836a
 
 pkgname = dwarftherapist-git
 
