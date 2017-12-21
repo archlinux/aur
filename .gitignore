@@ -1,0 +1,5 @@
+cinnamon-applet-mailnag-git/*
+*.tar.xz
+*.tar.gz
+*.tar.bz2
+*.log
