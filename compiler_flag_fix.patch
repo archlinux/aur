@@ -1,0 +1,19 @@
+Only in patched: build
+diff -ura orig/rviz-release-release-ardent-rviz_common-2.0.0-5/CMakeLists.txt patched/rviz-release-release-ardent-rviz_common-2.0.0-5/CMakeLists.txt
+--- orig/rviz-release-release-ardent-rviz_common-2.0.0-5/CMakeLists.txt	2017-12-09 10:13:11.000000000 +0100
++++ patched/rviz-release-release-ardent-rviz_common-2.0.0-5/CMakeLists.txt	2017-12-21 22:55:41.276995739 +0100
+@@ -17,13 +17,13 @@
+ endif()
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-  add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+   # TODO(wjwwood): try to remove this -- currently needed to pass on CI
+   include(CheckCXXCompilerFlag)
+   check_cxx_compiler_flag(-Wno-gnu-zero-variadic-macro-arguments HAS_W_FLAG)
+   if(HAS_W_FLAG)
+     add_compile_options(-Wno-gnu-zero-variadic-macro-arguments)
+   endif()
++  add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+ 
+ find_package(ament_cmake REQUIRED)

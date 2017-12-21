@@ -1,0 +1,11 @@
+diff -ura orig/rviz-release-release-ardent-rviz_common-2.0.0-5/src/rviz_common/config.cpp patched/rviz-release-release-ardent-rviz_common-2.0.0-5/src/rviz_common/config.cpp
+--- orig/rviz-release-release-ardent-rviz_common-2.0.0-5/src/rviz_common/config.cpp	2017-12-09 10:13:11.000000000 +0100
++++ patched/rviz-release-release-ardent-rviz_common-2.0.0-5/src/rviz_common/config.cpp	2017-12-21 22:58:35.831305759 +0100
+@@ -143,6 +143,7 @@
+         for (int i = 0; i < num_children; i++) {
+           listAppendNew().copy(source.listChildAt(i));
+         }
++        break;
+       }
+     case Value:
+       setValue(source.getValue());
