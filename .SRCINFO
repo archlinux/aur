@@ -1,0 +1,22 @@
+pkgbase = python-gffutils
+	pkgdesc = GFF and GTF file manipulation and interconversion
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/daler/gffutils
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-argcomplete
+	depends = python-argh
+	depends = python-pyfaidx
+	depends = python-simplejson
+	depends = python-six
+	optdepends = python-biopython: for sequence manipulation
+	optdepends = bedtools: for genomic interval arithemtic
+	optdepends = python-pybedtools: wrapper for bedtools
+	source = https://github.com/daler/gffutils/archive/v0.9.tar.gz
+	md5sums = 819e44d2995175d6b0e575ecf07fc50f
+
+pkgname = python-gffutils
+
