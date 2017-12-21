@@ -3,13 +3,13 @@
 
 pkgname=dep
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 _commitHash="8ddfc8afb2d520d41997ebddd921b52152706c01"
 pkgdesc="Go dependency tool"
 arch=('x86_64' 'i686')
 url="https://github.com/golang/dep"
 license=('BSD')
-makedepends=('go' 'git')
+makedepends=('go')
 options=('!strip' '!emptydirs')
 provides=("dep")
 source=("https://github.com/golang/$pkgname/archive/v$pkgver.tar.gz")

@@ -1,13 +1,12 @@
 pkgbase = dep
 	pkgdesc = Go dependency tool
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/golang/dep
 	arch = x86_64
 	arch = i686
 	license = BSD
 	makedepends = go
-	makedepends = git
 	provides = dep
 	options = !strip
 	options = !emptydirs
