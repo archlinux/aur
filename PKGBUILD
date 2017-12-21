@@ -15,16 +15,15 @@ depends=(
   'python-rednose>=1.1.1'
   'python-termstyle>=0.1.10'
   'python-requests>=2.10.0'
-  'python-xmltodict>=0.10.1'
-)
+  'python-xmltodict>=0.10.1')
 makedepends=('python-setuptools')
 rovides=('python-pyentrezid')
 conflicts=('python-pyentrezid')
 options=(!emptydirs)
-source=("git+https://github.com/lwgray/pyEntrezId.git")
-md5sums=('SKIP')
+source=("https://github.com/lwgray/pyEntrezId/archive/${pkgver}.tar.gz")
+md5sums=('b740cfc50a6ed8b50468557f6872c047')
 
 package() {
-  cd "${srcdir}/pyEntrezId"
+  cd "${srcdir}/pyEntrezId-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }

@@ -16,8 +16,8 @@ pkgbase = python-pyentrezid
 	depends = python-xmltodict>=0.10.1
 	conflicts = python-pyentrezid
 	options = !emptydirs
-	source = git+https://github.com/lwgray/pyEntrezId.git
-	md5sums = SKIP
+	source = https://github.com/lwgray/pyEntrezId/archive/1.4.9.tar.gz
+	md5sums = b740cfc50a6ed8b50468557f6872c047
 
 pkgname = python-pyentrezid
 
