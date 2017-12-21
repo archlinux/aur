@@ -15,7 +15,8 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=()
-depends=(${ros_depends[@]})
+depends=(${ros_depends[@]}
+  python)
 
 # Git version (e.g. for debugging)
 # _tag=release/ardent/python_cmake_module/${pkgver}-${_pkgver_patch}
@@ -40,17 +41,14 @@ build() {
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 "${srcdir}/${_dir}"
 
+  export PYTHONPATH=/opt/ros/ardent/lib/python3.6/site-packages
+  export AMENT_PREFIX_PATH=/opt/ros/ardent
+
   # Build project
   cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/ardent \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.5m.so \
-        -DPYTHON_BASENAME=.cpython-35m \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_ENABLE_TESTING=OFF
+        -DBUILD_TESTING=Off \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/ardent
   make
 }
 
