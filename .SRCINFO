@@ -1,6 +1,6 @@
 pkgbase = latte-dock-git
-	pkgdesc = Replacement dock for Plasma desktops, providing an elegant and intuitive experience for your tasks and plasmoids- git version
-	pkgver = 0.7.1.r187.g0077029
+	pkgdesc = Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids
+	pkgver = 0.7.1.r199.gf1e4d45
 	pkgrel = 1
 	url = https://cgit.kde.org/latte-dock.git/
 	arch = i686

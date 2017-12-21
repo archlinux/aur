@@ -3,9 +3,9 @@
 
 pkgname=latte-dock-git
 gitname=latte-dock
-pkgver=0.7.1.r187.g0077029
+pkgver=0.7.1.r199.gf1e4d45
 pkgrel=1
-pkgdesc='Replacement dock for Plasma desktops, providing an elegant and intuitive experience for your tasks and plasmoids- git version'
+pkgdesc='Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids'
 arch=('i686' 'x86_64')
 url='https://cgit.kde.org/latte-dock.git/'
 license=('GPL')
@@ -18,25 +18,26 @@ source=("git+git://anongit.kde.org/latte-dock.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${gitname}
+   cd ${gitname}
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+   
 }
 
 build() {
-  cd ${gitname}
+   cd ${gitname}
 
-  mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+   mkdir build && cd build
+   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DKDE_L10N_BRANCH=trunk \
         -DKDE_L10N_AUTO_TRANSLATIONS=OFF \
         -DCMAKE_BUILD_TYPE=Release ..
-  make fetch-translations
+   make fetch-translations
   
 }
 
 package() {
-  cd ${gitname}/build
+  
+   make -C ${gitname}/build DESTDIR=${pkgdir} install
 
-  make DESTDIR=${pkgdir} install
 }
