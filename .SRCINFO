@@ -1,7 +1,7 @@
 pkgbase = pmonitor-git
-	pkgdesc = Progress monitor: monitor a job's progress
+	pkgdesc = Monitor a job's progress
 	pkgver = r15.97604f3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dspinellis/pmonitor
 	arch = i686
 	arch = x86_64
