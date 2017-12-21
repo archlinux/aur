@@ -1,0 +1,19 @@
+pkgbase = python-rednose
+	pkgdesc = Pretty output formatter for python-nosetests
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/JBKahn/rednose
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-colorama
+	depends = python-termstyle>=0.1.7
+	provides = python-rednose
+	conflicts = python-rednose
+	options = !emptydirs
+	source = https://github.com/JBKahn/rednose/archive/1.2.3.tar.gz
+	md5sums = 90eb1b96d36db1f807f2fe1285dddd73
+
+pkgname = python-rednose
+
