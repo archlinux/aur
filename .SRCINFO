@@ -1,0 +1,21 @@
+pkgbase = watcher3-git
+	pkgdesc = Automated movie NZB & Torrent searcher and snatcher
+	pkgver = 738.913dd83
+	pkgrel = 1
+	url = https://github.com/{_gitauthor}/Watcher3
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python
+	optdepends = deluge: supported torrent client
+	optdepends = qbittorrent: supported torrent client
+	optdepends = rtorrent: supported torrent client
+	optdepends = sabnzbd: supported NZB downloader
+	optdepends = transmission-cli: supported torrent client
+	source = git://github.com/nosmokingbandit/Watcher3.git
+	source = watcher3.service
+	md5sums = SKIP
+	md5sums = 604f14044f43e28e0591dcf9dbdf219c
+
+pkgname = watcher3-git
+
