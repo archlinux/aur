@@ -2,7 +2,7 @@
 
 pkgname=rtg-tools
 pkgver=3.8.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Utilities for accurate VCF comparison and manipulation"
 arch=('i686' 'x86_64')
 url="https://github.com/RealTimeGenomics/rtg-tools"
@@ -44,7 +44,7 @@ package() {
 
   # Remove the need for a local configuration file, respect only system config
   install -Dm755 rtg "${pkgdir}/usr/bin/rtg"
-  sed -i "s#\$THIS_DIR/rtg.cfg#${pkgdir}/etc/rtg.cfg#g" "${pkgdir}/usr/bin/rtg"
+  sed -i "s#\$THIS_DIR/rtg.cfg#/etc/rtg.cfg#g" "${pkgdir}/usr/bin/rtg"
 
   # Install demo script, data, and bash completions scripts
   cp -r scripts "${pkgdir}/usr/share/${pkgname}"
