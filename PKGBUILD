@@ -20,5 +20,5 @@ md5sums=(
 package() {
   install -Dm775 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm664 "${srcdir}/IGVTools/${pkgname}.jar" "${pkgdir}/usr/share/java/igv/${pkgname}.jar"
-  install -Dm644 "${srcdir}/IGVTools/igvtools_readme.txt" "${pkgdir}/usr/share/docs/${pkgname}-${pkgver%.*}/README.txt"
+  install -Dm644 "${srcdir}/IGVTools/igvtools_readme.txt" "${pkgdir}/usr/share/doc/${pkgname}-${pkgver%.*}/README.txt"
 }
