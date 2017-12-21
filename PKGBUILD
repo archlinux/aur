@@ -3,16 +3,19 @@
 _base=dolfin
 _fragment="#branch=master"
 pkgname=python-${_base}-git
-pkgdesc="the C++/Python interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations."
-pkgver=20170131
+pkgdesc="the Python interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations."
+pkgver=20171219
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('GPL3')
 groups=('fenics-git')
-depends=('cppunit' 'eigen' 'gl2ps' 'hdf5' 'python-dijitso-git' 'python-ffc-git' 'python-instant-git' 'python-ply' 'python-six' 'python-sympy' 'slepc' 'suitesparse')
-optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning')
-makedepends=('git' 'swig')
+depends=('dolfin-git' 'python-instant-git' 'python-pkgconfig' 'python-ply' 'swig')
+optdepends=('mpi4py: MPI library for python'
+						'petsc4py: interface with PETSc from python'
+						'slepc4py: interface with SLEPc from python'
+						'python-matplotlib: plotting support')
+makedepends=('git')
 options=(!emptydirs)
 source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
 md5sums=('SKIP')
@@ -25,32 +28,16 @@ pkgver() {
 }
 
 build() {
-	cd ${_base}
-	[ -d build ] && rm -rf build
-	mkdir build
-	cd build
-
-	local py_interp=`python -c "import os,sys; print(os.path.realpath(sys.executable))"`
-
 	[ -z "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 	[ -z "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
 
-	cmake ..\
-		-DCMAKE_INSTALL_PREFIX="${pkg}"/usr \
-		-DPYTHON_EXECUTABLE="${py_interp}" \
-		-DDOLFIN_USE_PYTHON3=ON \
-		-DDOLFIN_ENABLE_VTK=OFF \
-		-DDOLFIN_ENABLE_DOCS=OFF \
-		-DCMAKE_SKIP_BUILD_RPATH=TRUE \
-		-DCMAKE_SKIP_RPATH=TRUE \
-		-DCMAKE_BUILD_TYPE="Release"
-
-	make
+	cd ${_base}/python
+	python setup.py build
 }
 
 package() {
-	cd ${_base}/build
-	make install DESTDIR="${pkgdir}"
+	cd ${_base}/python
+	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
 
 # vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
