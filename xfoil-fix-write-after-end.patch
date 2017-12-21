@@ -1,0 +1,31 @@
+diff -aur Xfoil/src/xpol.f Xfoil.patched/src/xpol.f
+--- Xfoil/src/xpol.f
++++ Xfoil.patched/src/xpol.f
+@@ -516,6 +516,7 @@
+ C
+ C---- the polar dump file doesn't exist, so write new header
+    60 CONTINUE
++      BACKSPACE(LU)
+       WRITE(LU) NAME, 'XFOIL   ', VERSION
+       WRITE(LU) MINF1, REINF1/1.0E6, ACRIT(1), ACRIT(2)
+       WRITE(LU) MATYP, RETYP
+@@ -948,7 +949,8 @@
+  1000 FORMAT(A)
+       GO TO 10
+ C
+- 90   RETURN
++ 90   BACKSPACE(LU)
++      RETURN
+       END
+ 
+ 
+@@ -958,7 +960,8 @@
+  10   READ(LU,END=90,ERR=90) DUMMY
+       GO TO 10
+ C
+- 90   RETURN
++ 90   BACKSPACE(LU)
++      RETURN
+       END
+ 
+ 
