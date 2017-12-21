@@ -1,0 +1,13 @@
+--- makefile.targets	2017-11-28 18:37:46.000000000 +0900
++++ makefile.targets	2017-12-22 01:20:13.484216058 +0900
+@@ -3,8 +3,8 @@
+ 	@mkdir $(INSTALL_PATH)/include/cleri
+ 	@cp ../inc/cleri/*.h $(INSTALL_PATH)/include/cleri/
+ 	@cp $(FN) $(INSTALL_PATH)/lib/$(FN).$(VERSION)
+-	@ln -s $(INSTALL_PATH)/lib/$(FN).$(VERSION) $(INSTALL_PATH)/lib/$(FN).$(MAJOR)
+-	@ln -s $(INSTALL_PATH)/lib/$(FN).$(VERSION) $(INSTALL_PATH)/lib/$(FN)
++	@ln -s $(DESTDIR)/lib/$(FN).$(VERSION) $(INSTALL_PATH)/lib/$(FN).$(MAJOR)
++	@ln -s $(DESTDIR)/lib/$(FN).$(VERSION) $(INSTALL_PATH)/lib/$(FN)
+ 
+ 
+ .PHONY: uninstall
