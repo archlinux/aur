@@ -5,7 +5,7 @@
 
 # Maintainer: Amr Hassan <amr.hassan@gmail.com>
 pkgname=nakacli-bin
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="CLI Client for Nakadi"
 arch=('x86_64')
@@ -16,4 +16,4 @@ source=("https://github.com/amrhassan/nakacli/releases/download/$pkgver/nakacli-
 package() {
 	install -Dm555 "$srcdir/nakacli" "$pkgdir/usr/bin/nakacli"
 }
-md5sums=('661e232693a73c3532a1bfcbd98cf8c4')
+md5sums=('23ab3d2b1ff623273f81e1eb8a244ede')
