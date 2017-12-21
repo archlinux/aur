@@ -1,7 +1,7 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='python-memoized-property'
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Python decorator for defining properties that only run their fget function once"
 arch=('any')
