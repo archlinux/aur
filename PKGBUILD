@@ -2,7 +2,7 @@
 
 pkgname=gapi-ocaml
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple OCaml client for Google Services."
 arch=("x86_64" "i686" "armv7h")
 url="https://astrada.github.io/gapi-ocaml/"
@@ -26,6 +26,7 @@ sha256sums=('bf978936d27f5c06205deea48be963a4d9ac1fe790f17b47660a26b3cfd08cce')
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   jbuilder build @install
+  sed -i '/doc:\s\[/,$d' _build/default/gapi-ocaml.install
 }
 
 package() {
