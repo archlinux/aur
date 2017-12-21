@@ -1,6 +1,6 @@
 # Maintainer: Carlos Bellino <carlosbellino@gmail>
 
-pkgname=watcher3-git
+pkgname=watcher3
 _gitname=Watcher3
 _gitauthor=nosmokingbandit
 pkgver=738.913dd83
@@ -26,7 +26,7 @@ pkgver() {
 
 package() {
   mkdir -p "${pkgdir}/opt/"
-  cp -r "$srcdir/$_gitname" "${pkgdir}/opt/watcher3"
+  cp -r "$srcdir/$_gitname" "${pkgdir}/opt/${pkgname}"
 
   install -Dm644 "${srcdir}/watcher3.service" "${pkgdir}/usr/lib/systemd/system/watcher3.service"
 }
