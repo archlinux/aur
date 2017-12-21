@@ -1,7 +1,7 @@
 pkgbase = rtg-tools
 	pkgdesc = Utilities for accurate VCF comparison and manipulation
 	pkgver = 3.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RealTimeGenomics/rtg-tools
 	arch = i686
 	arch = x86_64

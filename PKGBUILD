@@ -2,7 +2,7 @@
 
 pkgname=rtg-tools
 pkgver=3.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for accurate VCF comparison and manipulation"
 arch=('i686' 'x86_64')
 url="https://github.com/RealTimeGenomics/rtg-tools"
@@ -35,6 +35,9 @@ package() {
   install -Dm655 rtg.cfg "${pkgdir}/etc/rtg.cfg"
   echo "RTG_JAR=/usr/share/java/${pkgname}/RTG.jar" >> "${pkgdir}/etc/rtg.cfg"
 
+  # Install completion hook in profile.d to be sourced with each shell
+  install -Dm755 rtg.sh "${pkgdir}/etc/profile.d/rtg.sh"
+
   # Install primary JAR file
   cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}-${pkgver}-"*
   install -Dm655 RTG.jar "${pkgdir}/usr/share/java/${pkgname}/RTG.jar"
@@ -43,11 +46,8 @@ package() {
   install -Dm755 rtg "${pkgdir}/usr/bin/rtg"
   sed -i "s#\$THIS_DIR/rtg.cfg#${pkgdir}/etc/rtg.cfg#g" "${pkgdir}/usr/bin/rtg"
 
-  # Install demo script, data, and bash completions scrips
+  # Install demo script, data, and bash completions scripts
   cp -r scripts "${pkgdir}/usr/share/${pkgname}"
-
-  # Install completion hook in profile.d to be sourced with each shell
-  install -Dm755 "scripts/rtg-bash-completion" "${pkgdir}/etc/profile.d/rtg-bash-completer.sh"
 
   # Licenses and documentation
   install -Dm655 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"

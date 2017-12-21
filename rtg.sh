@@ -1,1 +1,1 @@
-source /etc/share/rtg-tools/rtg-bash-completion
+source /usr/share/rtg-tools/rtg-bash-completion
