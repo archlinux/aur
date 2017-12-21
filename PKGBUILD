@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Arlanow <aleksandr@arlanow.ru>
 pkgname=evelauncher
-pkgver=1156239
-pkgrel=2
+pkgver=1222103
+pkgrel=1
 pkgdesc="Unofficial Eve Online Launcher."
 arch=('any')
 url="https://forums.eveonline.com/t/eve-launcher-for-linux/7286"
@@ -16,10 +16,10 @@ depends=('qt5-base'
         'lib32-libldap'
         )
 source=(
-	"https://binaries.eveonline.com/evelauncher-1156239.tar.gz"
+	"https://binaries.eveonline.com/evelauncher-1222103.tar.gz"
 	"evelauncher.desktop"
 	"icon.png")
-md5sums=('41aca0ca85509477cb2942606c8462d2'
+md5sums=('4826d964df741da50b90f23d237e2006'
          '2150407bf15ea647a0854c0c9df4c887'
          'ecd3b7d8dd554f8106045e1d78a885c6')
 
