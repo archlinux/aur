@@ -1,8 +1,9 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com
 
+
 _target=powerpc-none-eabi
 pkgname=$_target-toolchain
-pkgver=20171220
+pkgver=20171221
 pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc')
@@ -51,20 +52,30 @@ build()
 package()
 {
 	cd "${srcdir}/obj"
-	make DESTDIR=${pkgdir} install -j2
-	rm -rf "${pkgdir}/usr/share"
-	rm -rf "${pkgdir}/usr/include"
-	rm -rf "${pkgdir}/usr/lib/libcc1.*"
+	make DESTDIR="${pkgdir}" install -j2
+	rm -rf "${pkgdir}"/usr/share
+	rm -rf "${pkgdir}"/usr/include
+	rm -rf "${pkgdir}"/usr/lib/libcc1.*
 	find "${pkgdir}" -name '*.py' -delete 
 
-	# Strip it manually
-	find "${pkgdir}" -print0 | xargs -0 file | grep -E "executable|shared object" | grep ELF | cut -f 1 -d : | xargs -0 strip 
 
-	find "${pkgdir}/usr/lib/gcc/${_target}" -print0 -type f -name '*.o' -o -name '*.a' | xargs -0 ${pkgdir}/usr/bin/${_target}-strip -g
-	find "${pkgdir}/usr/${_target}/lib" -print0 -type f -name '*.o' -o -name '*.a' | xargs ${pkgdir}/usr/bin/${_target}-strip -g
+	# local variable is scoped to the function, for general tidiness. 
+	local regex='ELF ().*(executable|shared object).*'
+	# read null-terminated filenames from stdin, and use a while loop to operate on each one
+	# for each run of the loop, the filename is stored in the intuitive variable "filename". :) 
+	while read -r -d '' filename; do
+	# test if the output of `file` matches the regular expression defined earlier
+	if [[ $(file -b "$filename") =~ $regex ]]; then
+       	 # awesome, it matches! So, do the standard strip routine since this isn't an $_target executable
+        	strip --strip-unneeded "$filename"
+    	fi
+	# this find command uses process substitution to pass the output of find into the `while read` loop
+	done < <(find "$pkgdir" -type f -print0)
+
+	find "${pkgdir}"/usr/lib/gcc/${_target} "${pkgdir}"/usr/${_target}/lib -type f -name '*.o' -o -name '*.a' -print0 | xargs -0 "${pkgdir}"/usr/bin/${_target}-strip -g
 
 	#fix permissions to please namcap
-	find "${pkgdir}/usr/${_target}/lib" -name '*.a' | xargs chmod 644
+	find "${pkgdir}/usr/${_target}/lib" -name '*.a' -print0 | xargs -0 chmod 644 
 
 }
 
