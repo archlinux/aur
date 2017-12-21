@@ -1,0 +1,21 @@
+pkgbase = python-datacache
+	pkgdesc = Python helpers for transparently downloading datasets
+	pkgver = 0.4.20
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/datacache
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-appdirs>=1.4.0
+	depends = python-biopython>=1.65
+	depends = python-pandas>=0.15.2
+	depends = python-progressbar33>=2.4
+	depends = python-requests>=2.5.1
+	depends = python-typechecks>=0.0.2
+	depends = python-mock
+	source = https://pypi.python.org/packages/b6/d9/81d3eb73746ee94e4acd054bae9466f94c4edeb1d3f4357dc6a1d066db6e/datacache-0.4.20.tar.gz
+	md5sums = 448c7339654a0132c99b2d6656a812f3
+
+pkgname = python-datacache
+
