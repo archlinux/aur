@@ -1,6 +1,6 @@
 pkgbase = gzdoom
 	pkgdesc = Advanced Doom source port with OpenGL support
-	pkgver = 3.2.3
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -42,7 +42,7 @@ pkgbase = gzdoom
 	optdepends = timidity++: Timidity MIDI device
 	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data
 	optdepends = xorg-xmessage: crash dialog (other)
-	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g3.2.3
+	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g3.2.4
 	source = gzdoom.desktop
 	source = 0001-Fix-path-to-FluidR3-soundfont.patch
 	sha256sums = SKIP
