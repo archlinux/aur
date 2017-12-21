@@ -14,13 +14,19 @@ makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/c/catkin_tools/catkin_tools-${pkgver}.tar.gz"
-        "jobserver-make-4.2.patch")
+        "jobserver-make-4.2.patch"
+        "execution-controllers-python3.patch"
+        "trollius-error-on-exit-python3.patch")
 md5sums=('5150b435c79bd952a24dc8c67cc091bc'
-         'eb43f43e0d65a7c84753f187b44050ac')
+         'eb43f43e0d65a7c84753f187b44050ac'
+         '85f3008e2ca09a7aba65c3e7c58e740e'
+         'b1338207d104ece20ed99e5146585e87')
 
 prepare() {
     cd "${srcdir}/${_module}-${pkgver}"
     patch -p1 -i "${srcdir}/jobserver-make-4.2.patch"
+    patch -p1 -i "${srcdir}/execution-controllers-python3.patch"
+    patch -p1 -i "${srcdir}/trollius-error-on-exit-python3.patch"
 }
 
 build() {

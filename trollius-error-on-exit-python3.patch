@@ -1,0 +1,10 @@
+--- a/catkin_tools/execution/executor.py
++++ b/catkin_tools/execution/executor.py
+@@ -367,4 +367,6 @@
+     loop.slow_callback_duration = 1.0
+
+     # Run jobs
+-    return loop.run_until_complete(coroutine)
++    retcode = loop.run_until_complete(coroutine)
++    loop.close()
++    return retcode

@@ -16,8 +16,12 @@ pkgbase = python-catkin_tools
 	conflicts = python-catkin-tools
 	source = https://files.pythonhosted.org/packages/source/c/catkin_tools/catkin_tools-0.4.4.tar.gz
 	source = jobserver-make-4.2.patch
+	source = execution-controllers-python3.patch
+	source = trollius-error-on-exit-python3.patch
 	md5sums = 5150b435c79bd952a24dc8c67cc091bc
 	md5sums = eb43f43e0d65a7c84753f187b44050ac
+	md5sums = 85f3008e2ca09a7aba65c3e7c58e740e
+	md5sums = b1338207d104ece20ed99e5146585e87
 
 pkgname = python-catkin_tools
 
