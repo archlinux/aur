@@ -1,0 +1,16 @@
+pkgbase = tbg
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = unknown
+	makedepends = rust
+	makedepends = cargo
+	depends = feh
+	source = 0.1.0.tar.gz::https://github.com/RealOrangeOne/tbg/archive/0.1.0.tar.gz
+	sha512sums = 8fd01f48ea112aaf8c043a06bfbf10487879ab69cff0edad8ac39610cb91c3777d7a8cd344582f70ba89ba3ca88a9bdad0054b47bb0bc110677a1ecc31f456db
+
+pkgname = tbg
+
