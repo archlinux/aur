@@ -2,7 +2,7 @@
 
 pkgname='python-memoized-property'
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python decorator for defining properties that only run their fget function once"
 arch=('any')
 url="https://pypi.python.org/pypi/memoized-property"
@@ -11,8 +11,8 @@ depends=('python')
 optdepends=()
 makedepends=('python-setuptools')
 ptions=(!emptydirs)
-source=("https://pypi.python.org/packages/42/8d/81892a7858ce247a2e305cf7ff35db13f260fe232d98dd7fe85971b263d1/memoized-property-${pkgver}.tar.gz")
-md5sums=('8b05cbd912d3d4c24c2d62c3ab0f5b7f')
+source=("https://pypi.python.org/packages/70/db/23f8b5d86c9385299586c2469b58087f658f58eaeb414be0fd64cfd054e1/memoized-property-${pkgver}.tar.gz")
+md5sums=('ae9bf3ef40b9a08a4f1798fb322c6865')
 
 package() {
   cd "${srcdir}/memoized-property-${pkgver}"
