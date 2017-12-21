@@ -1,0 +1,15 @@
+pkgbase = python-tinytimer
+	pkgdesc = A tiny benchmarking library for Python
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/tinytimer
+	arch = any
+	license = Apache-2.0
+	makedepends = python-pypandoc
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/5c/87/75d3fbe15aabd45d9b70702241787cf1f7f30dd9fabcd9bc89d828c7661d/tinytimer-0.0.0.tar.gz
+	md5sums = 83d6988d1ca1702fcbd9ba5eae9d4fd7
+
+pkgname = python-tinytimer
+
