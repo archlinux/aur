@@ -14,3 +14,17 @@ pkgbase = plex-sub-zero
 
 pkgname = plex-sub-zero
 
+pkgbase = plex-sub-zero
+	pkgdesc = Subtitles done right
+	pkgver = 2.0.33.1871
+	pkgrel = 1
+	url = https://github.com/pannal/Sub-Zero.bundle
+	arch = any
+	license = custom
+	depends = python
+	depends = plex-media-server
+	source = https://github.com/pannal/Sub-Zero.bundle/releases/download/2.0.33.1871-1/Sub-Zero.bundle-2.0.33.1871-1.zip
+	sha256sums = a72259ba52b9dc73764c838b3372b9ace3964e4c1e43a424ab9f2b9bd01f6729
+
+pkgname = plex-sub-zero
+
