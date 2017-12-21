@@ -1,0 +1,16 @@
+post_install() {
+    run_depmod
+}
+
+post_remove() {
+    run_depmod
+}
+
+post_upgrade() {
+    run_depmod
+}
+
+run_depmod() {
+    echo ">>> Updating SPL module dependencies"
+    depmod -a 4.14.7-1-ARCH
+}
