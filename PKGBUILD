@@ -10,7 +10,7 @@ _minor=14
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=4
+_pfrel=6
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -83,8 +83,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	"${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
    #     "git+$_aufs3#branch=aufs4.$_minor"
-        "90-linux-pf.hook"
-        '0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch'
+        "90-linux.hook"
+        "60-linux.hook"
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
@@ -97,9 +97,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # https://bugs.archlinux.org/task/56207
-  patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
 
   # end linux-ARCH patches
 
@@ -656,9 +653,9 @@ package_linux-pf-preset-default()
   #  install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   
   # install pacman hooks
-  sed "${_subst}" ../60-linux.hook |
+  sed "${_subst}" "${srcdir}"/60-linux.hook |
       install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-  sed "${_subst}" ../90-linux.hook |
+  sed "${_subst}" "${srcdir}"/90-linux.hook |
       install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
   
   # set correct depmod command for install
@@ -681,6 +678,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
             '943e1e6e1518edc8ab86023805f8f88f3672871a4039ccf8a9e97c33e95ae395'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '0c1c57606d99ca556a1bf923fd22e5396049d65c01cb9d6e9c9a1b35f3346718'
-            'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02'
-            '6f1d9b6a119bfab150a0bc1f550609dd9290328df709b67c984f0a6b0abe8afd')
+            '526a4be8913610775f333dbbb41f1a04a3621469aca67799b8bfb4da9eb2367a'
+            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
+
