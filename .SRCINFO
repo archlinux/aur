@@ -1,7 +1,8 @@
 pkgbase = tbg
 	pkgdesc = Use feh to randomize desktop backgrounds from a directory
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
+	url = https://github.com/RealOrangeOne/tbg
 	arch = i686
 	arch = x86_64
 	arch = armv6h
