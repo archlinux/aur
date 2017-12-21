@@ -1,0 +1,18 @@
+pkgbase = python-pyupset
+	pkgdesc = Python implementation of the UpSet suite of visualisation methods by Lex, Gehlenborg et al.
+	pkgver = 0.1.post3
+	pkgrel = 1
+	url = https://github.com/lwgray/pyEntrezId
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pandas
+	depends = python-numpy
+	conflicts = python-pyupset
+	options = !emptydirs
+	source = https://github.com/ImSoErgodic/py-upset/archive/v0.1.post3.tar.gz
+	md5sums = 563dbc3e945280fb4d902b140cc5acd1
+
+pkgname = python-pyupset
+
