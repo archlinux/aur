@@ -10,11 +10,11 @@ arch=('any')
 url="https://github.com/nosmokingbandit/${_gitname}"
 license=('Apache')
 depends=('python')
-optdepends=("deluge: supported torrent client"
-            "qbittorrent: supported torrent client"
-            "rtorrent: supported torrent client"
-            "sabnzbd: supported NZB downloader"
-            "transmission-cli: supported torrent client")
+optdepends=("deluge"
+            "qbittorrent"
+            "rtorrent"
+            "sabnzbd"
+            "transmission-cli")
 makedepends=('git')
 source=("git://github.com/${_gitauthor}/${_gitname}.git" "watcher3.service")
 md5sums=('SKIP' '5e5d95d5075cbcccd3a09f9f39dffaa2')
