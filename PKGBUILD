@@ -1,6 +1,6 @@
 # Maintainer: Wael Nasreddine <wael.nasreddine@gmail.com>
 _name=roca-detect
-pkgname=python-${_pkgname}
+pkgname=python-${_name}
 pkgver=1.2.7
 pkgrel=1
 pkgdesc="ROCA detection tool"

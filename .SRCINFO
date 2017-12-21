@@ -1,6 +1,6 @@
 pkgbase = python-roca-detect
 	pkgdesc = ROCA detection tool
-	pkgver = 1.0.7
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/crocs-muni/roca
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-roca-detect
 	depends = python-coloredlogs
 	depends = python-pgpdump
 	depends = python-dateutil
-	source = https://pypi.python.org/packages/48/37/da3db919e79844180e175d2608c5ab195753c4c92405d4a650ba42a1231b/roca-detect-1.0.7.tar.gz
-	md5sums = 1c85571a20cd606328a5beaa95c5fc25
+	source = https://files.pythonhosted.org/packages/source/r/roca-detect/roca-detect-1.2.7.tar.gz
+	md5sums = e6e1c06b0c2d31724a40bd6c454a003a
 
 pkgname = python-roca-detect
 
