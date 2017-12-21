@@ -1,7 +1,7 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
 pkgver=0.14.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/albertlauncher"
@@ -103,7 +103,8 @@ build() {
     #-DBUILD_TERMINAL=ON
     #-DBUILD_VIRTUALBOX=ON
 
-  VERBOSE=1 make -j $((`nproc`+1))
+  #VERBOSE=1 make
+  make
 }
 
 
