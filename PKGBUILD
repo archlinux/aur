@@ -3,7 +3,7 @@
 
 pkgname=kvantum-qt5-git
 _gitname=Kvantum
-pkgver=0.10.5.r18.g9fe2430
+pkgver=0.10.5.r23.g6bace31
 pkgrel=1
 pkgdesc="SVG-based Qt5 theme engine plus a config tool and extra themes"
 arch=('x86_64')
@@ -19,21 +19,26 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_gitname}
+   cd ${srcdir}/${_gitname}
 
-  git describe --long --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
+   git describe --long --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
 }
 
 build() {
-	cd ${srcdir}/${_gitname}/${_gitname}
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr
-	make
+   cd ${srcdir}/${_gitname}/${_gitname}
+
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr
+   make
+   
 }
 
 package() {
-	cd ${srcdir}/${_gitname}/${_gitname}
-	make DESTDIR=${pkgdir}/ install
-	install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/kvantum/ChangeLog
-	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/kvantum/COPYING
-	cp -r doc ${pkgdir}/usr/share/doc/kvantum
+   cd ${srcdir}/${_gitname}/${_gitname}
+   
+   make DESTDIR=${pkgdir}/ install
+   install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/kvantum/ChangeLog
+   install -Dm644 COPYING ${pkgdir}/usr/share/licenses/kvantum/COPYING
+   cp -r doc ${pkgdir}/usr/share/doc/kvantum
+   
 }
