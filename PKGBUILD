@@ -1,7 +1,8 @@
 # Maintainer: Jake Howard <git+aur@theorangeone.net>
 pkgname=tbg
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
+pkgdesc="Use feh to randomize desktop backgrounds from a directory "
 makedepends=('rust' 'cargo')
 license=('unknown')
 depends=('feh')

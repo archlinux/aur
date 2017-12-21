@@ -1,6 +1,7 @@
 pkgbase = tbg
+	pkgdesc = Use feh to randomize desktop backgrounds from a directory
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	arch = armv6h
