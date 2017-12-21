@@ -9,7 +9,7 @@ url="https://github.com/crocs-muni/roca"
 license=('MIT')
 depends=('python-cryptography' 'python-six' 'python-future' \
 	'python-coloredlogs' 'python-pgpdump' 'python-dateutil')
-source=("https://pypi.python.org/packages/48/37/da3db919e79844180e175d2608c5ab195753c4c92405d4a650ba42a1231b/$_pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 md5sums=('1c85571a20cd606328a5beaa95c5fc25')
 
 package() {
