@@ -1,4 +1,4 @@
-# Maintainer: ubervison <vis0n at protonmail dot com>
+#Maintainer: ubervison <vis0n at protonmail dot com>
 # Contributor: Stephen Baker <baker dot stephen dot e at gmail dot com>
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
 # Contributor: Adam Griffiths <adam_griffithsAATTdart.net.au>
@@ -58,7 +58,7 @@ prepare()
     innoextract -e $srcdir/setup_nwn_diamond_${pkgver}.exe -d $srcdir --gog || echo "failed to extract gog installer"; return 1
 
     # Extract Kingmaker installer
-    unzip $srcdir/nvn_KingmakerSetup.zip -d $srcdir || "failed to extract kingmaker archive"; return 1
+    unzip $srcdir/nvn_KingmakerSetup.zip -d $srcdir || echo "failed to extract kingmaker archive"; return 1
 
     # Extract game icons
     if [ -d $srcdir/icons ]; then
