@@ -1,4 +1,4 @@
-pkgbase = watcher3-git
+pkgbase = watcher3
 	pkgdesc = Automated movie NZB & Torrent searcher and snatcher
 	pkgver = 738.913dd83
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = watcher3-git
 	md5sums = SKIP
 	md5sums = 604f14044f43e28e0591dcf9dbdf219c
 
-pkgname = watcher3-git
+pkgname = watcher3
 
