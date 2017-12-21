@@ -1,0 +1,16 @@
+pkgbase = tarsnapper
+	pkgdesc = Manages tarsnap backups
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/miracle2k/tarsnapper
+	arch = any
+	license = BSD
+	depends = python-argparse>=1.1
+	depends = python-yaml>=3.09
+	depends = python-dateutil>=2.4.0
+	depends = python-pexpect>=3.1
+	source = https://files.pythonhosted.org/packages/source/t/tarsnapper/tarsnapper-0.4.0.tar.gz
+	md5sums = 49668986a47317943fd6ff109b32809c
+
+pkgname = tarsnapper
+
