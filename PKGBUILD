@@ -1,9 +1,9 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=sakemake
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
-pkgdesc='Simple way to build your C++17 executables on Linux'
+pkgdesc='Configuration-free build system for C++17 executables'
 arch=('x86_64')
 url='https://github.com/xyproto/sakemake'
 license=('MIT')
