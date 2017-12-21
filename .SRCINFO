@@ -1,7 +1,7 @@
 pkgbase = python-catkin_tools
 	pkgdesc = Command line tools for working with catkin.
 	pkgver = 0.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://catkin-tools.readthedocs.org/
 	arch = any
 	license = Apache
@@ -15,7 +15,9 @@ pkgbase = python-catkin_tools
 	conflicts = python2-catkin_tools
 	conflicts = python-catkin-tools
 	source = https://files.pythonhosted.org/packages/source/c/catkin_tools/catkin_tools-0.4.4.tar.gz
+	source = jobserver-make-4.2.patch
 	md5sums = 5150b435c79bd952a24dc8c67cc091bc
+	md5sums = eb43f43e0d65a7c84753f187b44050ac
 
 pkgname = python-catkin_tools
 
