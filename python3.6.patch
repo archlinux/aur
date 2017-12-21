@@ -1,0 +1,13 @@
+Only in patched: build
+diff -ura orig/ros_workspace-release-release-ardent-ros_workspace-0.4.0-0/CMakeLists.txt patched/ros_workspace-release-release-ardent-ros_workspace-0.4.0-0/CMakeLists.txt
+--- orig/ros_workspace-release-release-ardent-ros_workspace-0.4.0-0/CMakeLists.txt	2017-12-09 05:27:00.000000000 +0100
++++ patched/ros_workspace-release-release-ardent-ros_workspace-0.4.0-0/CMakeLists.txt	2017-12-20 22:15:29.467345783 +0100
+@@ -3,7 +3,7 @@
+ 
+ find_package(ament_cmake_core REQUIRED)
+ 
+-set(PYTHON_INSTALL_DIR "lib/python3.5/site-packages")
++set(PYTHON_INSTALL_DIR "lib/python3.6/site-packages")
+ set(ament_cmake_package_templates_ENVIRONMENT_HOOK_PYTHONPATH "${CMAKE_INSTALL_PREFIX}/${PYTHON_INSTALL_DIR}/ament_package/template/environment_hook/pythonpath.sh.in")
+ ament_environment_hooks("${ament_cmake_package_templates_ENVIRONMENT_HOOK_PYTHONPATH}")
+ 

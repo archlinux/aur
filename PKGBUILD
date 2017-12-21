@@ -25,8 +25,13 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="ros_workspace-release-release-ardent-ros_workspace-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros2-gbp/ros_workspace-release/archive/release/ardent/ros_workspace/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('da21d49fa61687f2f1985ba0a2798c05fcf433dcabf91a11085c683379e7a56c')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros2-gbp/ros_workspace-release/archive/release/ardent/ros_workspace/${pkgver}-${_pkgver_patch}.tar.gz" "python3.6.patch")
+sha256sums=('da21d49fa61687f2f1985ba0a2798c05fcf433dcabf91a11085c683379e7a56c' "e7e08cfc7698a98d1a9e4e12969758247c900bc9f1c367fa382b48265b6679cf")
+
+prepare() {
+  cd "${srcdir}"
+  patch -Np1 -i "python3.6.patch"
+}
 
 build() {
   # Use ROS environment variables
@@ -40,17 +45,13 @@ build() {
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 "${srcdir}/${_dir}"
 
+  export PYTHONPATH=/opt/ros/ardent/lib/python3.6/site-packages
+
   # Build project
   cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/ardent \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.5m.so \
-        -DPYTHON_BASENAME=.cpython-35m \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_ENABLE_TESTING=OFF
+        -DBUILD_TESTING=Off \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/ardent
   make
 }
 
