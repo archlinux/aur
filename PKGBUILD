@@ -29,13 +29,17 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so' "ffmpeg")
 conflicts=('ffmpeg')
 replaces=('ffmpeg')
-source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-#validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0')
+source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz"
+        'fs56089.patch')
+sha256sums=('5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0'
+            '0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
 
+  # https://bugs.archlinux.org/task/56089
+  # Backport of http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=a606f27f4c610708fa96e35eed7b7537d3d8f712
+  patch -Np1 -i ../fs56089.patch
 }
 
 build() {
