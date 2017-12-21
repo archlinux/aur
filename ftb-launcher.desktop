@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FTB Launcher
+GenericName=FTB Launcher
+Comment=A powerful Minecraft modpack launcher and installer
+Exec=ftb-launcher
+Icon=ftb-launcher
+Terminal=false
+Type=Application
+Categories=Game;AudioVideo;

@@ -1,0 +1,2 @@
+#!/bin/sh
+java -Xmx1024M -Xms512M -jar /usr/share/ftb-launcher/FTB_Launcher.jar

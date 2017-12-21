@@ -1,0 +1,20 @@
+pkgbase = minecraft-ftb-launcher
+	pkgdesc = An easy way to download and play minecraft modpacks
+	pkgver = 20171221
+	pkgrel = 1
+	url = https://www.feed-the-beast.com/
+	arch = any
+	license = unknown
+	depends = java-runtime=8
+	depends = hicolor-icon-theme
+	depends = bash
+	noextract = FTB_Launcher.jar
+	source = http://ftb.cursecdn.com/FTB2/launcher/FTB_Launcher.jar
+	source = ftb-launcher
+	source = ftb-launcher.desktop
+	md5sums = e185c691bdedbfa69aa27117b1b15286
+	md5sums = 31635687fa0eb37d3b955012f5c54d70
+	md5sums = bd1c8e49f866c63efacfb7b6f94e9e31
+
+pkgname = minecraft-ftb-launcher
+
