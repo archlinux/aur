@@ -24,6 +24,7 @@ pkgbase = nwn-gog
 	noextract = nwclienthotu.tar.gz
 	noextract = English_linuxclient169_xp2.tar.gz
 	noextract = setup_nwn_diamond_2.1.0.21-1.bin
+	noextract = nvn_KingmakerSetup.zip
 	source = setup_nwn_diamond_2.1.0.21.exe::gogdownloader://neverwinter_nights_diamond_edition/en1installer0
 	source = setup_nwn_diamond_2.1.0.21-1.bin::gogdownloader://neverwinter_nights_diamond_edition/en1installer1
 	source = nvn_KingmakerSetup.zip::gogdownloader://neverwinter_nights_diamond_edition/9213

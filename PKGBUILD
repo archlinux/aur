@@ -34,7 +34,7 @@ source=("setup_nwn_diamond_$pkgver.exe::gogdownloader://neverwinter_nights_diamo
         "git+https://github.com/nwnlinux/nwuser.git" \
         "git+https://github.com/nwnlinux/nwlogger.git" \
         "git+https://github.com/nwnlinux/nwmovies.git")
-noextract=("nwclientgold.tar.gz" "nwclienthotu.tar.gz" "English_linuxclient169_xp2.tar.gz" "setup_nwn_diamond_$pkgver-1.bin")
+noextract=("nwclientgold.tar.gz" "nwclienthotu.tar.gz" "English_linuxclient169_xp2.tar.gz" "setup_nwn_diamond_$pkgver-1.bin" "nvn_KingmakerSetup.zip")
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 
