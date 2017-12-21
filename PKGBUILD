@@ -57,6 +57,9 @@ prepare()
     # Extract gog setup
     innoextract -e $srcdir/setup_nwn_diamond_${pkgver}.exe -d $srcdir --gog || return 1
 
+    # Extract Kingmaker installer
+    unzip $srcdir/nvn_KingmakerSetup.zip -d $srcdir
+
     # Extract game icons
     if [ -d $srcdir/icons ]; then
         rm -r $srcdir/icons
