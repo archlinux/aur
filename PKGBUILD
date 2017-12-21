@@ -9,8 +9,8 @@ depends=('python' 'python' 'python-flask' 'python-pygdbmi' 'python-enum-compat' 
 makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-${pkgver}.tar.gz")
-md5sums=('9b12f1e08009fee1af65e3489ea90473')
+source=("https://github.com/cs01/gdbgui/archive/${pkgver}.tar.gz")
+md5sums=('6f2ee563f37388112e1290c8979433c7')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
