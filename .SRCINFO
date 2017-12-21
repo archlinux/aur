@@ -1,7 +1,7 @@
 pkgbase = xfoil
 	pkgdesc = Program for design and analysis of subsonic airfoils.
 	pkgver = 6.99
-	pkgrel = 1
+	pkgrel = 2
 	url = http://web.mit.edu/drela/Public/web/xfoil/
 	arch = i686
 	arch = x86_64
