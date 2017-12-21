@@ -1,15 +1,16 @@
 pkgbase = bedtools-git
-	pkgdesc = A powerful toolset for genome arithmetic.
-	pkgver = v2.26.0.r148.gd1953b65
+	pkgdesc = powerful toolset for genome arithmetic.
+	pkgver = v2.27.1.r0.g1de417b9
 	pkgrel = 1
 	url = https://github.com/arq5x/bedtools2
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	checkdepends = python
 	depends = bash
 	depends = zlib
-	provides = bedtools-git
-	conflicts = bedtools-git
+	provides = bedtools
+	conflicts = bedtools
 	source = git+https://github.com/arq5x/bedtools2.git
 	md5sums = SKIP
 
