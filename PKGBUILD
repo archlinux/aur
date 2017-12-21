@@ -31,5 +31,6 @@ package() {
 		mv -v ${pkgdir}/usr/sbin/beesd ${pkgdir}/usr/bin/beesd
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
 	mv -v ${pkgdir}/lib/systemd/system/beesd@.service ${pkgdir}/usr/lib/systemd/system/
+	sed -i -e 's#/usr/sbin/beesd#/usr/bin/beesd#g' ${pkgdir}/usr/lib/systemd/system/beesd@.service
 	rm -rf ${pkgdir}/lib
 }
