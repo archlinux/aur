@@ -1,8 +1,8 @@
 diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
---- FreeDoko-orig/Makefile	2017-09-07 10:42:18.409517998 +0200
-+++ FreeDoko/Makefile	2017-09-07 10:46:34.252094150 +0200
+--- FreeDoko-orig/Makefile	2017-12-21 12:23:41.698040970 +0100
++++ FreeDoko/Makefile	2017-12-21 12:45:55.334319344 +0100
 @@ -320,8 +320,7 @@
- 	echo "Copying the program"
+ 	echo "Kopiere das Programm"
  	mkdir -p $(DESTDIR)$(BIN_DIRECTORY)
  	cp src/FreeDoko $(DESTDIR)$(BIN_DIRECTORY)
 -	-chgrp games $(DESTDIR)$(BIN_DIRECTORY)/FreeDoko
@@ -10,7 +10,7 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
 +	chmod 755 $(DESTDIR)$(BIN_DIRECTORY)/FreeDoko
  	cd $(DESTDIR)$(BIN_DIRECTORY) && ln -sf FreeDoko freedoko
  #	Copying the data files
- 	echo "Copying the data files"
+ 	echo "Kopiere die Daten"
 @@ -341,15 +340,13 @@
  	a2x -f manpage doc/freedoko.adoc
  	mkdir -p $(DESTDIR)$(MAN_DIRECTORY)
@@ -20,18 +20,18 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
 +	chmod 644 $(DESTDIR)$(MAN_DIRECTORY)/freedoko.6
  	cd $(DESTDIR)$(MAN_DIRECTORY)/ && ln -sf freedoko.6 FreeDoko.6
  #	copy the icon
- 	echo "copy the icon"
+ 	echo "Kopiere das Icon"
  	mkdir -p $(DESTDIR)$(ICON_DIRECTORY)
  	cp src/FreeDoko.png $(DESTDIR)$(ICON_DIRECTORY)/
 -	-chgrp games $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
 -	chmod 640 $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
 +	chmod 644 $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
  #	copy the desktop file
+ 	echo "Kopiere den Desktop-Starter"
  	mkdir -p "$(DESTDIR)$(DESKTOP_FILE_DIRECTORY)"
- 	sed "s|Exec=.*$$|Exec=$(BIN_DIRECTORY)/FreeDoko|" bin/FreeDoko.desktop > "$(DESTDIR)$(DESKTOP_FILE_DIRECTORY)/FreeDoko.desktop"
 diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.directories
---- FreeDoko-orig/Makefile.install.directories	2017-09-07 10:42:18.409517998 +0200
-+++ FreeDoko/Makefile.install.directories	2017-09-07 10:46:34.255427430 +0200
+--- FreeDoko-orig/Makefile.install.directories	2017-12-21 12:23:41.698040970 +0100
++++ FreeDoko/Makefile.install.directories	2017-12-21 12:45:55.337652597 +0100
 @@ -4,14 +4,14 @@
  # the different directories for the files
  
@@ -79,8 +79,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories Fre
  
  # release
 diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
---- FreeDoko-orig/data/Makefile	2017-09-07 10:42:19.272837440 +0200
-+++ FreeDoko/data/Makefile	2017-09-07 10:46:34.255427430 +0200
+--- FreeDoko-orig/data/Makefile	2017-12-21 12:23:43.571336580 +0100
++++ FreeDoko/data/Makefile	2017-12-21 12:45:55.337652597 +0100
 @@ -32,8 +32,7 @@
  	for d in cardsets iconsets backgrounds sounds; do \
  	  $(MAKE) -C $$d install; \
@@ -92,8 +92,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Make
  
  ifeq ($(SHELLTYPE), sh)
 diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
---- FreeDoko-orig/doc/Makefile	2017-09-07 10:42:20.392819421 +0200
-+++ FreeDoko/doc/Makefile	2017-09-07 10:46:34.255427430 +0200
+--- FreeDoko-orig/doc/Makefile	2017-12-21 12:23:45.951288614 +0100
++++ FreeDoko/doc/Makefile	2017-12-21 12:46:14.477194179 +0100
 @@ -34,8 +34,7 @@
  	fi
  	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
@@ -105,8 +105,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefi
  endif
  
 diff -ru --no-dereference -x .git FreeDoko-orig/src/Makefile FreeDoko/src/Makefile
---- FreeDoko-orig/src/Makefile	2017-09-07 10:42:21.352803977 +0200
-+++ FreeDoko/src/Makefile	2017-09-07 10:46:34.255427430 +0200
+--- FreeDoko-orig/src/Makefile	2017-12-21 12:23:47.497924084 +0100
++++ FreeDoko/src/Makefile	2017-12-21 12:45:55.340985851 +0100
 @@ -282,7 +282,6 @@
  		-DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' \
  		-DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
