@@ -1,0 +1,25 @@
+Only in patched: build
+diff -ura orig/rviz-release-release-ardent-rviz_yaml_cpp_vendor-2.0.0-5/rviz_yaml_cpp_vendor-extras.cmake.in patched/rviz-release-release-ardent-rviz_yaml_cpp_vendor-2.0.0-5/rviz_yaml_cpp_vendor-extras.cmake.in
+--- orig/rviz-release-release-ardent-rviz_yaml_cpp_vendor-2.0.0-5/rviz_yaml_cpp_vendor-extras.cmake.in	2017-12-09 10:13:15.000000000 +0100
++++ patched/rviz-release-release-ardent-rviz_yaml_cpp_vendor-2.0.0-5/rviz_yaml_cpp_vendor-extras.cmake.in	2017-12-21 22:50:26.424578460 +0100
+@@ -1,14 +1,10 @@
+-find_package(yaml-cpp QUIET)
+-
+-if(NOT yaml-cpp_FOUND)
+-  # add the local Modules directory to the modules path
+-  if(WIN32)
+-    set(yaml-cpp_DIR "${@PROJECT_NAME@_DIR}/../../../opt/rviz_yaml_cpp_vendor/CMake")
+-  else()
+-    set(yaml-cpp_DIR "${@PROJECT_NAME@_DIR}/../../../opt/rviz_yaml_cpp_vendor/lib/cmake/yaml-cpp")
+-  endif()
+-  message(STATUS "Setting yaml-cpp_DIR to: '${yaml-cpp_DIR}'")
++# add the local Modules directory to the modules path
++if(WIN32)
++  set(yaml-cpp_DIR "${@PROJECT_NAME@_DIR}/../../../opt/rviz_yaml_cpp_vendor/CMake")
++else()
++  set(yaml-cpp_DIR "${@PROJECT_NAME@_DIR}/../../../opt/rviz_yaml_cpp_vendor/lib/cmake/yaml-cpp")
+ endif()
++message(STATUS "Setting yaml-cpp_DIR to: '${yaml-cpp_DIR}'")
+ 
+ find_package(yaml-cpp CONFIG REQUIRED QUIET)
+ 

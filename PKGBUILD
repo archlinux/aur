@@ -25,8 +25,13 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="rviz-release-release-ardent-rviz_yaml_cpp_vendor-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros2-gbp/rviz-release/archive/release/ardent/rviz_yaml_cpp_vendor/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a8812a7ae698b6f2a3d59c0aac82ed3881734f476e8d8ca28af2f5577c9e2cb4')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros2-gbp/rviz-release/archive/release/ardent/rviz_yaml_cpp_vendor/${pkgver}-${_pkgver_patch}.tar.gz" "vendor_only.patch")
+sha256sums=('a8812a7ae698b6f2a3d59c0aac82ed3881734f476e8d8ca28af2f5577c9e2cb4' "99ff35aec7d83dc2e818e735bfc3afa9cbd9884e39e0bc4123a35ab155ec02df")
+
+prepare() {
+  cd "${srcdir}"
+  patch -Np1 -i "vendor_only.patch"
+}
 
 build() {
   # Use ROS environment variables
@@ -40,17 +45,14 @@ build() {
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 "${srcdir}/${_dir}"
 
+  export PYTHONPATH=/opt/ros/ardent/lib/python3.6/site-packages
+  export AMENT_PREFIX_PATH=/opt/ros/ardent
+
   # Build project
   cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/ardent \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.5m.so \
-        -DPYTHON_BASENAME=.cpython-35m \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_ENABLE_TESTING=OFF
+        -DBUILD_TESTING=Off \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/ardent
   make
 }
 
