@@ -2,7 +2,7 @@
 
 pkgname=rtg-tools
 pkgver=3.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for accurate VCF comparison and manipulation"
 arch=('i686' 'x86_64')
 url="https://github.com/RealTimeGenomics/rtg-tools"
@@ -16,7 +16,7 @@ source=(
 md5sums=(
   'c5b558cbe845fcb315e943162b7da38e'
   '1e5e1f5df474ab87b5a28a9d694e4e17'
-  '64a6dc8d7c7ed9c3e0ba3d8c42f8194d')
+  'd7c63bf91030230c609c740d28b22d38')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
