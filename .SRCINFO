@@ -1,6 +1,6 @@
 pkgbase = python-telegram-bot-git
 	pkgdesc = A Python wrapper around the Telegram Bot API
-	pkgver = 8.1.1.r8.e8fac19
+	pkgver = 9.0.0.r0.3d4e050
 	pkgrel = 1
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	changelog = CHANGES.rst
