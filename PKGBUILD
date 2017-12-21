@@ -31,7 +31,6 @@ build() {
 }
 
 check() {
-  cd $_gitname
   make -C $_gitname check
 }
 
