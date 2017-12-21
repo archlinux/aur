@@ -1,6 +1,6 @@
 # Maintainer: Anna Schumaker <anna@nowheycreamery.com>
 pkgname=ocarina
-pkgver=6.5.6
+pkgver=6.5.7
 pkgrel=1
 pkgdesc="A simple GTK+ and GStreamer based music player."
 url="http://www.nowheycreamery.com/"
@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("http://nowheycreamery.com/wp-content/ocarina/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('40683ee62ae18233636d54a84b32a00b675d78d0')
+sha1sums=('1ccb8d2c1a17204f74f4baeba8aa5aa16190efb1')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
