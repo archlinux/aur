@@ -36,7 +36,7 @@ package() {
 		sed -i -e 's#/usr/sbin/beesd#/usr/bin/beesd#g' "${pkgdir}/lib/systemd/system/beesd@.service"
 	fi
 
-	if grep 'makepkg' "${pkgdir}/usr/bin/beesd"; then
+	if grep "$pkgname" "${pkgdir}/usr/bin/beesd"; then
 		exit 1
 	fi
 
