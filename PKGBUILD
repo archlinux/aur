@@ -2,7 +2,7 @@
 # Contributor: j1simon
 pkgname=buttercup-desktop
 pkgver=0.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('i686' 'x86_64')
 url="https://github.com/buttercup/buttercup-desktop"
@@ -26,10 +26,6 @@ build() {
   npm install --cache "$srcdir/npm-cache"
   npm run build
   npm run package:linux
-}
-check() {
-  cd "$srcdir/$pkgname-$pkgver"
-  npm test
 }
 package() {
   install -Dm644 "$srcdir/$pkgname-$pkgver/build/badge.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/buttercup.svg"
