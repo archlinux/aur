@@ -3,15 +3,15 @@
 
 pkgname=signal-desktop
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
 license=('GPL3')
 arch=('any')
 url='https://github.com/WhisperSystems/Signal-Desktop'
 conflicts=('signal' 'signal-desktop-bin' 'signal-desktop-beta')
-depends=('alsa-lib' 'fontconfig' 'gconf' 'gtk2' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'libxss' 'nss' 'pulseaudio')
-makedepends=('npm' 'python2' 'yarn')
+depends=('alsa-lib' 'fontconfig' 'gconf' 'gtk2' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'libxss' 'nss')
+makedepends=('git' 'npm' 'python2' 'yarn')
 source=("git+${url}.git#tag=v${pkgver}" 'https://api.github.com/users/scottnonnenberg/gpg_keys' 'signal-desktop.desktop' 'signal-desktop')
 sha256sums=('SKIP'
             'SKIP'
@@ -19,9 +19,10 @@ sha256sums=('SKIP'
             '39509f44492374c830c9d9f305b2d528cde905bb7b2c9aeaa74d1c1b23bd371f')
 
 build() {
-  msg2 "Verifying developer signature..."
+  msg2 "Verifying gpg signature..."
   cd ${_basename}
-  _key_id=$(git verify-tag -v v${pkgver} 2>&1|/bin/grep 'gpg.*using.*key'|awk '{print $NF}')
+  _key_id=$(/bin/git verify-tag v${pkgver} 2>&1|/bin/grep using|awk '{print $NF}')
+  echo "    Signed by: $_key_id"
   /bin/grep "\"key_id\": \"$_key_id\"" ${srcdir}/gpg_keys && msg2 "Signature OK" || (msg2 "No valid developer signature found" && exit 1)
 
   cd ${srcdir}/${_basename}
