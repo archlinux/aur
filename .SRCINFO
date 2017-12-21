@@ -1,0 +1,14 @@
+pkgbase = python-typechecks
+	pkgdesc = Helper functions for runtime type checking
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/typechecks
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/60/8e/ca9aac318aeb8e909b4435881c79a633ed40e4efa6fbb3c32c393b5da512/typechecks-0.0.2.tar.gz
+	md5sums = 07501491d2f9e7a67889df15be1b1ea8
+
+pkgname = python-typechecks
+
