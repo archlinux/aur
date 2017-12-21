@@ -1,0 +1,20 @@
+pkgbase = python-pybwa
+	pkgdesc = Python libraries to interact with the BWA mapper.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/VDBWRAIR/pyBWA
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = bash
+	depends = bwa
+	depends = python
+	depends = python-biopython
+	provides = python-pybwa
+	conflicts = python-pybwa
+	options = !emptydirs
+	source = https://github.com/VDBWRAIR/pyBWA/archive/v0.2.4.tar.gz
+	md5sums = 0789be5883fa70c9c4a40ebf2d0d545d
+
+pkgname = python-pybwa
+
