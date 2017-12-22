@@ -1,4 +1,4 @@
-pkgname=telegram-desktop
+pkgname=telegram-desktop-customqt
 pkgver=1.2.1
 pkgrel=1
 pkgdesc='Official desktop version of Telegram messaging app.'
@@ -60,6 +60,8 @@ makedepends=(
     # For qtwayland
     'wayland'
 )
+provides=('telegram-desktop')
+conflicts=('telegram-desktop')
 qt_version=5.6.2
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
