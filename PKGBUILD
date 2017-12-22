@@ -17,22 +17,22 @@
 pkgbase="zfs-linux-vfio"
 pkgname=("zfs-linux-vfio" "zfs-linux-vfio-headers")
 
-pkgver=0.7.4.4.13.12.2
-pkgrel=2
+pkgver=0.7.5.4.13.12.2
+pkgrel=1
 makedepends=("linux-vfio-headers=4.13.12-2" "spl-linux-vfio-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.4/zfs-0.7.4.tar.gz")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.5/zfs-0.7.5.tar.gz")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-vfio" "zfs-utils-common=0.7.4" "linux-vfio=4.13.12-2")
+depends=("kmod" "spl-linux-vfio" "zfs-utils-common=0.7.5" "linux-vfio=4.13.12-2")
 
 build() {
-    cd "${srcdir}/zfs-0.7.4"
+    cd "${srcdir}/zfs-0.7.5"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.7.4 --with-config=kernel \
+                --libexecdir=/usr/lib/zfs-0.7.5 --with-config=kernel \
                 --with-linux=/usr/lib/modules/4.13.12-2-vfio/build \
                 --with-linux-obj=/usr/lib/modules/4.13.12-2-vfio/build
     make
@@ -45,7 +45,7 @@ package_zfs-linux-vfio() {
     groups=("archzfs-linux-vfio")
     conflicts=('zfs-linux-vfio-git')
     replaces=("zfs-git")
-    cd "${srcdir}/zfs-0.7.4"
+    cd "${srcdir}/zfs-0.7.5"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
@@ -56,7 +56,7 @@ package_zfs-linux-vfio() {
 package_zfs-linux-vfio-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
     conflicts=('zfs-archiso-linux-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers'  'zfs-linux-vfio-git-headers' 'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
-    cd "${srcdir}/zfs-0.7.4"
+    cd "${srcdir}/zfs-0.7.5"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
