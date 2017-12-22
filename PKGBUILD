@@ -23,10 +23,7 @@ source=("$url/download/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
         cpu-pinning.patch
         audio-improvements.patch
         v2_qemu_zen_smt_cache.patch
-        v4_ivshmem_1.patch
-        v4_ivshmem_2.patch
-        v4_ivshmem_3.patch
-        v4_ivshmem_4.patch)
+        v4_ivshmem.patch)
 sha256sums=('c4f034c7665a84a1c3be72c8da37f3c31ec063475699df062ab646d8b2e17fcb'
             'SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
@@ -35,10 +32,7 @@ sha256sums=('c4f034c7665a84a1c3be72c8da37f3c31ec063475699df062ab646d8b2e17fcb'
             '8d4a7e35ab1a0a465f737cf60fc0392afc430e22354a40a89505f8766a3a3ee8'
             '23338655345d0ee535f34acc124f1ddd75e5ad4483e2bd87294b7ac4fe3fa859'
             'adf3f389849e92c5ea4c4cee0abf1ac5df61a176d296e9263ac773194ba86e57'
-            '2626aa6c13ad0596a02501e7b31800c7536c629d89297c4b7ba11e311e4cd4e8'
-            '87dcd51a3500382c2b0e1462eb99c21ec355ab0d2b41705f7e0a356827accceb'
-            'fd619e15797dd38bdfe822d36b3d41064b5585e0961a7cde0cf88c21c9dcd466'
-            'e5f81c6df9f8344b78f70023bafa87fe2e950c0302ab234da08309e45c9f1be6')
+            '4acbbd8834dc5782feb86795748f37e1b1aa4f61b54303234ea4f13bd4c0e068')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -57,10 +51,7 @@ prepare() {
   patch -p1 < ../cpu-pinning.patch
   patch -p0 < ../audio-improvements.patch
   patch -p1 < ../v2_qemu_zen_smt_cache.patch
-  patch -p1 < ../v4_ivshmem_1.patch
-  patch -p1 < ../v4_ivshmem_2.patch
-  patch -p1 < ../v4_ivshmem_3.patch
-  patch -p1 < ../v4_ivshmem_4.patch
+  patch -p1 < ../v4_ivshmem.patch
 }
 
 build() {
