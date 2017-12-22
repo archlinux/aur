@@ -1,6 +1,6 @@
 pkgbase = titan
 	pkgdesc = Command line password manager.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://www.titanpasswordmanager.org/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = titan
 	makedepends = git
 	depends = openssl
 	depends = sqlite
-	source = titan-1.1.tar.gz::https://github.com/nrosvall/titan/archive/v1.1.tar.gz
-	sha256sums = 875f07423ddf2981dc07a464794fc8e258f2415335233c8d533d252a59e1baf0
+	source = titan-1.2.tar.gz::https://github.com/nrosvall/titan/archive/v1.2.tar.gz
+	sha256sums = 1d87fac29da00ebb5c9432d3a2007837818b06c653a8559c43112e322a94823b
 
 pkgname = titan
 

@@ -1,8 +1,9 @@
-# <Contributor: Niko Rosvall <niko@byteptr.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Niko Rosvall <niko@byteptr.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Zachary Matthews <zacharymatt5@gmail.com>
 
 pkgname=titan
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Command line password manager.'
 arch=('i686' 'x86_64')
@@ -11,13 +12,13 @@ license=('GPL')
 depends=('openssl' 'sqlite')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nrosvall/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('875f07423ddf2981dc07a464794fc8e258f2415335233c8d533d252a59e1baf0')
+sha256sums=('1d87fac29da00ebb5c9432d3a2007837818b06c653a8559c43112e322a94823b')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -i -e '/^override/d' \
          -e 's/^\(PREFIX=\/usr\)\/local/\1/' \
-	 Makefile
+         Makefile
 }
 
 build() {
