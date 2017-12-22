@@ -1,13 +1,13 @@
 pkgbase = xcursor-numix
 	pkgdesc = An X-cursor-theme for use along with the numixproject products.
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnome-look.org/p/999876/
 	arch = any
 	license = GPL
 	depends = libxcursor
-	source = xcursor-numix-0.9.1.tar.gz::https://dl.opendesktop.org/api/files/download/id/1460735152/169299-numix-cursor.tar.gz
-	md5sums = b15c1880992292b557890669bcfdb19b
+	source = xcursor-numix-0.9.1.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1460735152/s/a044c4843b2f3ff059b96fdc7d098b01/t/1513931115/169299-numix-cursor.tar.gz
+	sha256sums = 99fa7c724f00e8b113468065ca202fa06105b90eaefc430a4871d66cb35475ac
 
 pkgname = xcursor-numix
 
