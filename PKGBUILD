@@ -7,7 +7,7 @@
 pkgname=inox-beta
 pk=bnox
 name=chromium
-pkgver=64.0.3282.24
+pkgver=64.0.3282.39
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -113,7 +113,7 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/narnia1.patch
 )
 
 
-sha256sums=('f15d5879b57cb1b70f08b15cf7f4019afc8015fb64209ca67775eea60d0e60d7'
+sha256sums=('e41e331801ba0487ee880628d387e42409a5fe5ab20c2785b8603a43396170b8'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
