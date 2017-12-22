@@ -23,10 +23,10 @@ _qdepth='32'
 
 pkgbase=imagemagick-full-git
 pkgname=('libmagick-full-git' 'imagemagick-full-git' 'imagemagick-full-doc-git')
-pkgver=7.0.7.5.r12632.gabac32acf
+pkgver=7.0.7.16.r13021.g45f72690a
 _majorver="${pkgver%%.*}"
 _etcdir="ImageMagick-${_majorver}"
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features, git version)"
 url='http://www.imagemagick.org/'
@@ -40,7 +40,7 @@ depends=(
         'glu' 'libxt' 'bzip2' 'djvulibre' 'fftw' 'freetype2' 'graphviz'
         'jbigkit' 'jemalloc' 'libjpeg-turbo' 'libtiff' 'pango' 'xz' 'zlib'
     # AUR:
-        'autotrace-nomagick' 'flif' 'libfpx' 'libraqm' 'libumem-git'
+        'autotrace-nomagick' 'flif' 'libde265' 'libfpx' 'libraqm' 'libumem-git'
 )
 makedepends=(
     # official repositories:
@@ -52,7 +52,7 @@ makedepends=(
         'glu' 'libxt' 'bzip2' 'djvulibre' 'fftw' 'freetype2' 'graphviz'
         'jbigkit' 'jemalloc' 'libjpeg-turbo' 'libtiff' 'pango' 'xz' 'zlib'
     # AUR:
-        'autotrace-nomagick' 'flif' 'libfpx' 'libraqm' 'libumem-git'
+        'autotrace-nomagick' 'flif' 'libde265' 'libfpx' 'libraqm' 'libumem-git'
 )
 source=("$pkgbase"::'git+https://github.com/ImageMagick/ImageMagick.git'
         'arch-fonts.diff')
@@ -116,6 +116,7 @@ build() {
         --with-raqm \
         --with-gslib \
         --with-gvc \
+        --with-heic \
         --with-jbig \
         --with-jpeg \
         --with-lcms \
