@@ -2,7 +2,7 @@
 
 _srcname=vmaf-git
 pkgname=libvmaf-git
-pkgver=1.3.1.r2.gf713836
+pkgver=1.3.1.r38.gfa8fc43
 pkgrel=1
 pkgdesc='Library for perceptual video quality assessment based on multi-method fusion (git version)'
 arch=('i686' 'x86_64')
@@ -23,10 +23,10 @@ pkgver() {
 
 build() {
     cd "${_srcname}"
-    make PREFIX='/usr' all
+    make INSTALL_PREFIX='/usr' all
 }
 
 package() {
     cd "${_srcname}"
-    make DESTDIR="$pkgdir" PREFIX='/usr' install
+    make DESTDIR="$pkgdir" INSTALL_PREFIX='/usr' install
 }
