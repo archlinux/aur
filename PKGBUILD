@@ -1,7 +1,7 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-winswitch-svn
-pkgver=17256
+pkgver=17723
 pkgrel=1
 pkgdesc="Modified version of xpra by Winswitch"
 arch=('i686' 'x86_64')
@@ -61,6 +61,8 @@ build() {
 package() {
   cd "$srcdir/$_svnmod-build"
   python2 setup.py install --root=${pkgdir} --without-enc_x265
+  mv ${pkgdir}/lib/* ${pkgdir}/usr/lib/
+  rmdir ${pkgdir}/lib
 }
 
 # vim:set ts=2 sw=2 et:
