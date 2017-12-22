@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc
 _srcname=linux-4.14
-_stable=4.14.7
-_patchver=4.14.8
+_stable=4.14.8
+_patchver=4.14.9
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -33,9 +33,9 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '5c286695439b4a1a2c7a112cf41aae0441b03ef41dfe83a0d61161c16dc265f5'
+            '42eaed731b716244514b765c199e8f675d79287d7630e5c2911053ad52a1fa0a'
             'SKIP'
-            '60ffc30324fede5bbee1ee51aef09fa27c56ef82d256d24b124a158af39c7dfd'
+            'f9ad452d924891d347af98848c0f784919fdf52d0c068cf82b739628fc3b2c5a'
             'SKIP'
             'a68e94064f040d60e8e4c3380efeee085b54d252d527e960dd17ac688505d5b6'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
