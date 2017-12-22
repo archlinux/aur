@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=webmacs-git
-pkgver=r203.404e96a
+pkgver=r204.afee97e
 pkgrel=1
 _pythonver=3.6
 pkgdesc="browser for keyboard-based web navigation"
@@ -33,6 +33,6 @@ package() {
 	  $pkgdir/usr/lib/python${_pythonver}/site-packages/${pkgname%-git}/app_style.css
   rm -rf $pkgdir/usr/lib/python${_pythonver}/site-packages/{ruamel,tzlocal,six.py,test_regex.py,pytz,regex*}
   install -d $pkgdir/usr/bin/
-  echo "python -m webmacs.main" > $pkgdir/usr/bin/webmacs
+  echo 'python -m webmacs.main "$@"' > $pkgdir/usr/bin/webmacs
   chmod 755 $pkgdir/usr/bin/webmacs
 }
