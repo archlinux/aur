@@ -1,8 +1,8 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=sakemake
-pkgver=1.1
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc='Configuration-free build system for C++17 executables'
 arch=('x86_64')
 url='https://github.com/xyproto/sakemake'
