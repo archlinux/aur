@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc='QML based X11 and Wayland display manager'
 arch=('x86_64')
 url='http://github.com/sddm/sddm'
@@ -45,4 +45,7 @@ package() {
 # Move sddm.conf to /usr/lib https://bugs.archlinux.org/task/56609
   mkdir "$pkgdir"/usr/lib/sddm/sddm.conf.d
   mv "$pkgdir"/{etc/sddm.conf,usr/lib/sddm/sddm.conf.d}
+
+# Don't set PATH in sddm.conf
+  sed -r 's|DefaultPath=.*|DefaultPath=|g' -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/sddm.conf
 }
