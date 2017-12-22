@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.1.r525.g20edf4eb
+pkgver=0.8.1.r875.gf8e70225
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ depends=(
 )
 makedepends=(
     # official repositories:
-        'git' 'cmake' 'gcc6' 'ninja'
+        'git' 'cmake' 'ninja'
     # AUR:
         'confu-git' 'python-peachpy-git'
 )
@@ -55,8 +55,10 @@ source=(
         'submodule-NNPACK_deps-FP16'::'git+https://github.com/Maratyszcza/FP16.git'
         'submodule-NNPACK_deps-psimd'::'git+https://github.com/Maratyszcza/psimd.git'
         'submodule-aten'::'git+https://github.com/zdevito/ATen.git'
+        'submodule-zstd'::'git+https://github.com/facebook/zstd.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -80,7 +82,7 @@ prepare() {
     local _submodule_list="pybind11 nccl cub eigen googletest nervanagpu benchmark \
                            protobuf android-cmake ios-cmake NNPACK gloo \
                            NNPACK_deps/pthreadpool NNPACK_deps/FXdiv NNPACK_deps/FP16 \
-                           NNPACK_deps/psimd aten"
+                           NNPACK_deps/psimd aten zstd"
     git submodule init
     for _submodule in $_submodule_list
     do
@@ -115,8 +117,6 @@ build() {
         \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
-        -DCMAKE_CXX_COMPILER='/usr/bin/g++-6' \
-        -DCMAKE_C_COMPILER='/usr/bin/gcc-6' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='NO' \
         -DCMAKE_SKIP_RPATH:BOOL='NO' \
@@ -151,6 +151,8 @@ build() {
         -DUSE_ROCKSDB:BOOL='OFF' \
         -DUSE_THREADS:BOOL='ON' \
         -DUSE_ZMQ:BOOL='ON' \
+        -DUSE_ATEN:BOOL='ON' \
+        -DUSE_ASAN:BOOL='ON' \
         \
         -Wno-dev \
         ..
