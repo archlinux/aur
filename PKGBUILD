@@ -1,25 +1,19 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-bsnes-git
-pkgver=r464.6039847
+pkgver=r543.a4800add
 pkgrel=1
 pkgdesc='Super Nintendo Entertainment System cores'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/libretro/bsnes-libretro'
 license=('GPL3')
 groups=('libretro-unstable')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git')
 provides=('libretro-bsnes')
 conflicts=('libretro-bsnes')
-source=('libretro-bsnes::git+https://github.com/libretro/bsnes-libretro'
-        'https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_accuracy_libretro.info'
-        'https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_balanced_libretro.info'
-        'https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_performance_libretro.info')
-sha256sums=('SKIP'
-            '0307d236776f5462dfa4fd7814b03dc7704cd66c1cc1e03a1dd5b1b978bb3fb8'
-            '594296694dd0b99959253f8da066a83c9de17c1c260dcdd058d9b45dbeb8af61'
-            '0cf91d9788336a9e62df448df20003a7b720a8e309eeb6a7f0f00293d4768fff')
+source=('libretro-bsnes::git+https://github.com/libretro/bsnes-libretro')
+sha256sums=('SKIP')
 
 pkgver() {
   cd libretro-bsnes
@@ -47,7 +41,6 @@ package() {
   install -dm 755 "${pkgdir}"/usr/{lib/libretro,share/libretro/info}
   for p in accuracy balanced performance; do
     install -m 644 out/bsnes_${p}_libretro.so "${pkgdir}"/usr/lib/libretro/
-    install -m 644 ../bsnes_${p}_libretro.info "${pkgdir}"/usr/share/libretro/info/
   done
 }
 
