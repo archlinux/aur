@@ -18,15 +18,15 @@
 pkgbase="spl-linux-lts-git"
 pkgname=("spl-linux-lts-git" "spl-linux-lts-git-headers")
 
-pkgver=2017.11.15.r1059.ed19bcc.4.9.70.1
-pkgrel=2
+pkgver=2017.12.21.r1060.c9821f1.4.9.70.1
+pkgrel=1
 makedepends=("linux-lts-headers=4.9.70-1" "libelf" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#commit=ed19bccfb651843fa208232b3a2d3d22a4152bc8")
+source=("git+https://github.com/zfsonlinux/spl.git#commit=c9821f1ccc647dfbd506f381b736c664d862d126")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git=2017.11.15.r1059.ed19bcc" "kmod" "linux-lts=4.9.70-1")
+depends=("spl-utils-common-git=2017.12.21.r1060.c9821f1" "kmod" "linux-lts=4.9.70-1")
 
 build() {
     cd "${srcdir}/spl"
