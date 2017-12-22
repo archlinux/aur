@@ -2,3 +2,9 @@ pkg
 src
 *.tar
 *~
+0001-Cryptomount-support-LUKS-detached-header.patch
+0002-Cryptomount-support-key-files.patch
+0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch
+0004-Cryptomount-support-plain-dm-crypt.patch
+0005-Cryptomount-support-for-hyphens-in-UUID.patch
+0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch
