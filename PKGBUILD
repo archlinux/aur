@@ -4,8 +4,8 @@
 
 pkgname=cairo-infinality-ultimate
 _name=cairo
-pkgver=1.15.8
-pkgrel=3
+pkgver=1.15.10
+pkgrel=1
 pkgdesc="Cairo vector graphics library"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
@@ -13,15 +13,12 @@ url="http://cairographics.org/"
 groups=('infinality-bundle')
 # requires libGL + libEGL - all libgl variants (mesa
 depends=('libpng' 'libxrender' 'libxext' 'fontconfig-infinality-ultimate' 'pixman' 'glib2' 'libgl' 'lzo')
-makedepends=('mesa-libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'gtk-doc' 'valgrind' 'git')
-             # for the test suite:
-             #'ttf-dejavu' 'gsfonts' 'xorg-server-xvfb' ) # 'libdrm')
-#optdepends=('xcb-util: for XCB backend') # really needed?
+makedepends=('libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'gtk-doc' 'valgrind' 'git')
 provides=('cairo-xcb' 'cairo')
 replaces=('cairo-xcb')
-conflicts=('cairo' 'cairo-cleartype' 'cairo-git' 'cairo-gl-git' 'cairo-glitz' 'cairo-ocaml-git' 'cairo-small' 'cairo-ubuntu')
+conflicts=('cairo' 'cairo-cleartype' 'cairo-git' 'cairo-ocaml-git' 'cairo-ubuntu')
 
-source=("git+https://anongit.freedesktop.org/git/cairo#tag=1.15.8"
+source=("git+https://anongit.freedesktop.org/git/cairo#tag=$pkgver"
         cairo-make-lcdfilter-default.patch
         cairo-respect-fontconfig_pb.patch
         cairo-server-side-gradients.patch
@@ -49,6 +46,7 @@ build() {
 	--localstatedir=/var \
 	--disable-static \
 	--enable-tee \
+  --disable-lto \
 	--enable-gl \
 	--enable-egl \
 	--enable-svg \
@@ -56,18 +54,9 @@ build() {
 	--enable-pdf \
 	--enable-gobject \
 	--enable-gtk-doc
-	
-	#--disable-xlib-xcb \
-	#--enable-test-surfaces \ takes ages
-	#--enable-drm # breaks build
-	
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool	
   make
 }
-
-#check() {
-#  cd $_name
-#  make -j4 -k test || /bin/true
-#}
 
 package() {
   cd $_name
