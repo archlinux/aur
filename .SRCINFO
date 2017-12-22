@@ -1,7 +1,7 @@
 pkgbase = powerdns-recursor-41
 	pkgdesc = PowerDNS Recursor, a resolving nameserver. Version 4.1.x
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.powerdns.com/
 	arch = x86_64
 	license = GPL2
