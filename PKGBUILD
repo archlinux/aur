@@ -1,8 +1,8 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=sakemake
-pkgver=0.6
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 pkgdesc='Configuration-free build system for C++17 executables'
 arch=('x86_64')
 url='https://github.com/xyproto/sakemake'
@@ -14,7 +14,6 @@ md5sums=('SKIP')
 
 package() {
   DESTDIR="$pkgdir" make -C $pkgname install
-  install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
