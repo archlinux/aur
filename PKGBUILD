@@ -5,9 +5,7 @@
 pkgname=crashplan-pro
 _pkgname=crashplan
 pkgver=6.6.0
-pkgrel=5
-_pkgbuild=4347
-_pkgtimestamp=1506661200660
+pkgrel=6
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('x86_64')
@@ -16,7 +14,7 @@ depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gconf' 'gtk2' 'libxss')
 makedepends=('cpio')
 conflicts=('crashplan')
 install=crashplan-pro.install
-source=(https://web-ebm-msp.crashplanpro.com/client/installers/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
+source=(https://download.code42.com/installs/linux/install/CrashPlanSmb/CrashPlanSmb_${pkgver}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
 sha256sums=('3345e13e06b9f39006376c33c7fc692febab9f83a40384efa756c47a1d30fdff'
