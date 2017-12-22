@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Stellar Desktop Client
+GenericName=Stellar
+Comment=Desktop client and wallet for Stellar cryptocurrency
+Icon=stellar-desktop-client.png
+Exec=stellar-desktop-client
+
