@@ -1,0 +1,10 @@
+--- caddy/caddymain/run.go	2017-07-31 20:51:58.634825901 +0800
++++ caddy/caddymain/run.go	2017-07-31 20:26:02.553255919 +0800
+@@ -21,6 +21,7 @@
+ 
+ 	"github.com/mholt/caddy/caddytls"
+ 	// This is where other plugins get plugged in (imported)
++	_ "github.com/jung-kurt/caddy-cgi"
+ )
+ 
+ func init() {

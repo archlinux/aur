@@ -1,0 +1,133 @@
+diff --git a/caddyhttp/httpserver/server.go b/caddyhttp/httpserver/server.go
+index eb854d7..eee1f07 100644
+--- a/caddyhttp/httpserver/server.go
++++ b/caddyhttp/httpserver/server.go
+@@ -32,7 +32,6 @@ import (
+ 	"sync"
+ 	"time"
+ 
+-	"github.com/lucas-clemente/quic-go/h2quic"
+ 	"github.com/mholt/caddy"
+ 	"github.com/mholt/caddy/caddyhttp/staticfiles"
+ 	"github.com/mholt/caddy/caddytls"
+@@ -41,7 +40,6 @@ import (
+ // Server is the HTTP server implementation.
+ type Server struct {
+ 	Server      *http.Server
+-	quicServer  *h2quic.Server
+ 	listener    net.Listener
+ 	listenerMu  sync.Mutex
+ 	sites       []*SiteConfig
+@@ -104,12 +102,6 @@ func NewServer(addr string, group []*SiteConfig) (*Server, error) {
+ 
+ 	// if TLS is enabled, make sure we prepare the Server accordingly
+ 	if s.Server.TLSConfig != nil {
+-		// enable QUIC if desired (requires HTTP/2)
+-		if HTTP2 && QUIC {
+-			s.quicServer = &h2quic.Server{Server: s.Server}
+-			s.Server.Handler = s.wrapWithSvcHeaders(s.Server.Handler)
+-		}
+-
+ 		// wrap the HTTP handler with a handler that does MITM detection
+ 		tlsh := &tlsHandler{next: s.Server.Handler}
+ 		s.Server.Handler = tlsh // this needs to be the "outer" handler when Serve() is called, for type assertion
+@@ -236,7 +228,6 @@ func makeHTTPServerWithTimeouts(addr string, group []*SiteConfig) *http.Server {
+ 
+ func (s *Server) wrapWithSvcHeaders(previousHandler http.Handler) http.HandlerFunc {
+ 	return func(w http.ResponseWriter, r *http.Request) {
+-		s.quicServer.SetQuicHeaders(w.Header())
+ 		previousHandler.ServeHTTP(w, r)
+ 	}
+ }
+@@ -319,18 +310,11 @@ func (s *Server) Serve(ln net.Listener) error {
+ 	}
+ 
+ 	err := s.Server.Serve(ln)
+-	if s.quicServer != nil {
+-		s.quicServer.Close()
+-	}
+ 	return err
+ }
+ 
+ // ServePacket serves QUIC requests on pc until it is closed.
+ func (s *Server) ServePacket(pc net.PacketConn) error {
+-	if s.quicServer != nil {
+-		err := s.quicServer.Serve(pc.(*net.UDPConn))
+-		return fmt.Errorf("serving QUIC connections: %v", err)
+-	}
+ 	return nil
+ }
+ 
+diff --git a/caddyhttp/proxy/reverseproxy.go b/caddyhttp/proxy/reverseproxy.go
+index 78fbb6b..cc257df 100644
+--- a/caddyhttp/proxy/reverseproxy.go
++++ b/caddyhttp/proxy/reverseproxy.go
+@@ -37,8 +37,6 @@ import (
+ 
+ 	"golang.org/x/net/http2"
+ 
+-	"github.com/lucas-clemente/quic-go"
+-	"github.com/lucas-clemente/quic-go/h2quic"
+ 	"github.com/mholt/caddy/caddyhttp/httpserver"
+ )
+ 
+@@ -204,12 +202,6 @@ func NewSingleHostReverseProxy(target *url.URL, without string, keepalive int) *
+ 		rp.Transport = &http.Transport{
+ 			Dial: socketDial(target.String()),
+ 		}
+-	} else if target.Scheme == "quic" {
+-		rp.Transport = &h2quic.RoundTripper{
+-			QuicConfig: &quic.Config{
+-				HandshakeTimeout: defaultCryptoHandshakeTimeout,
+-			},
+-		}
+ 	} else if keepalive != http.DefaultMaxIdleConnsPerHost {
+ 		// if keepalive is equal to the default,
+ 		// just use default transport, to avoid creating
+@@ -256,11 +248,6 @@ func (rp *ReverseProxy) UseInsecureTransport() {
+ 		// No http2.ConfigureTransport() here.
+ 		// For now this is only added in places where
+ 		// an http.Transport is actually created.
+-	} else if transport, ok := rp.Transport.(*h2quic.RoundTripper); ok {
+-		if transport.TLSClientConfig == nil {
+-			transport.TLSClientConfig = &tls.Config{}
+-		}
+-		transport.TLSClientConfig.InsecureSkipVerify = true
+ 	}
+ }
+ 
+@@ -276,10 +263,6 @@ func (rp *ReverseProxy) ServeHTTP(rw http.ResponseWriter, outreq *http.Request,
+ 
+ 	rp.Director(outreq)
+ 
+-	if outreq.URL.Scheme == "quic" {
+-		outreq.URL.Scheme = "https" // Change scheme back to https for QUIC RoundTripper
+-	}
+-
+ 	res, err := transport.RoundTrip(outreq)
+ 	if err != nil {
+ 		return err
+diff --git a/caddytls/config.go b/caddytls/config.go
+index 4654c06..3fd340e 100644
+--- a/caddytls/config.go
++++ b/caddytls/config.go
+@@ -23,7 +23,6 @@ import (
+ 	"net/url"
+ 	"strings"
+ 
+-	"github.com/codahale/aesnicheck"
+ 	"github.com/mholt/caddy"
+ 	"github.com/xenolf/lego/acme"
+ )
+@@ -500,11 +499,6 @@ var defaultCiphersNonAESNI = []uint16{
+ //
+ // See https://github.com/mholt/caddy/issues/1674
+ func getPreferredDefaultCiphers() []uint16 {
+-	if aesnicheck.HasAESNI() {
+-		return defaultCiphers
+-	}
+-
+-	// Return a cipher suite that prefers ChaCha20
+ 	return defaultCiphersNonAESNI
+ }
+ 
