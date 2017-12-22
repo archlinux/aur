@@ -6,7 +6,7 @@
 _jqueryver=1.9.1
 pkgname=etherpad-lite
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
 arch=(any)
@@ -78,13 +78,14 @@ package() {
   # custom js and css templates
   install -t "${pkgdir}/etc/${pkgname}/custom" -Dm0640 \
     "src/static/custom/"*.{css,js}
+  rm -r src/static/custom
 
   # move sources
   mv src/* "${pkgdir}/usr/share/${pkgname}/src/"
 
   # symlink directory for custom css and js
-  ln -s "/etc/${pkgname}/custom" \
-    "${pkgdir}/usr/share/${pkgname}/src/static/custom"
+  ln -s "/etc/${pkgname}/custom/" \
+    "${pkgdir}/usr/share/${pkgname}/src/static/"
 
   # symlink needed files (not yet created)
   ln -s /var/lib/etherpad-lite/SESSIONKEY.txt \
