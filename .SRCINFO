@@ -1,6 +1,6 @@
 pkgbase = transmission-remote-gui-bin
 	pkgdesc = Cross platform remote GUI for the Transmission daemon
-	pkgver = 5.12.0
+	pkgver = 5.13.0
 	pkgrel = 1
 	url = https://github.com/leonsoft-kras/transmisson-remote-gui/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = transmission-remote-gui-bin
 	conflicts = transmission-remote-gui-qt4
 	conflicts = transmission-remote-gui-svn
 	conflicts = transmission-remote-gui
-	source = https://github.com/leonsoft-kras/transmisson-remote-gui/releases/download/v5.12.0/transgui-5.12.0-x86_64-linux.txz
+	source = https://github.com/leonsoft-kras/transmisson-remote-gui/releases/download/v5.13.0/transgui-5.13.0-x86_64-linux.txz
 	source = transgui.desktop
-	sha256sums = 5e87cd0388fd8186146d940d854cb0f452354b2d9b951f141084bf7defc026b7
+	sha256sums = dac4b726726cfef720ba0f42878ccc920125df228ad04e339c5640b469dff8be
 	sha256sums = 2ba5d396699c2f0267a8f64f03ccb8e076552b3f8a5ba0a91899b9d246e6a87d
 
 pkgname = transmission-remote-gui-bin
