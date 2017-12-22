@@ -1,0 +1,10 @@
+post_install() {
+	if ! getent passwd laminar >/dev/null; then
+		useradd -r -d /var/lib/laminar -s /usr/sbin/nologin laminar
+		passwd -l laminar >/dev/null
+	fi
+	if [ ! -d /var/lib/laminar ]; then
+		mkdir -p /var/lib/laminar/cfg/{jobs,nodes,scripts}
+		chown -R laminar: /var/lib/laminar
+	fi
+}
