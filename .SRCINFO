@@ -1,0 +1,17 @@
+pkgbase = python-curses-menu
+	pkgdesc = A simple console menu system using curses in Python
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/curses-menu
+	arch = x86_64
+	license = MIT
+	checkdepends = python-tox
+	makedepends = python-pytest-runner
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/3b/7d/82f1492afd33f92e64d44d51f65eff4c39382642cfced65d5748a770bb8f/curses-menu-0.5.0.zip
+	md5sums = 2415e53e7834dba1c97ac1e3839e45eb
+
+pkgname = python-curses-menu
+
