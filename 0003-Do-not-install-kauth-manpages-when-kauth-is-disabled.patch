@@ -1,7 +1,7 @@
-From d64c31ec792b9bd3515d7c1fdaffcf0585f1ae66 Mon Sep 17 00:00:00 2001
+From 7263e86546d2fb657a0b2e56454acd4ba956ac61 Mon Sep 17 00:00:00 2001
 From: Benjamin Kaduk <kaduk@mit.edu>
 Date: Mon, 7 Apr 2014 21:54:46 -0400
-Subject: [PATCH 3/6] Do not install kauth manpages when kauth is disabled
+Subject: [PATCH 3/4] Do not install kauth manpages when kauth is disabled
 
 Commit 5afe7a882b0bb90a515e505d9ffce4f644633f06 added a configure
 option to disable the installation of the kauth suite, but did not

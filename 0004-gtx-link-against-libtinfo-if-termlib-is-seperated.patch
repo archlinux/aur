@@ -1,7 +1,7 @@
-From d3ed4ce1495d88fbbf76709a63314e10238c5753 Mon Sep 17 00:00:00 2001
+From 7942412eecdf8920e381d8281316ec92c1b88f58 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <lass@mail.uni-paderborn.de>
 Date: Thu, 2 Nov 2017 21:16:49 +0100
-Subject: [PATCH 6/6] gtx: link against libtinfo if termlib is seperated
+Subject: [PATCH 4/4] gtx: link against libtinfo if termlib is seperated
 
 If ncurses is built with "./configure --with-termlib=tinfo", gtx fails
 to link because of an undefined reference to the LINES symbol which is
