@@ -10,7 +10,7 @@ post_install() {
   echo "you should store any mods that you download."
   echo ""
   echo "Please note that the gamespy master server for online multiplayer is down."
-  echo "You can use SkywingL's substitute listing server and Visavent's gamespy replacement by modifying your hosts file like so:"
+  echo "To bypass the master server timeout when opening the multiplayer menu, edit your hosts file like so:"
   echo "    echo '199.193.152.27    nwmaster.bioware.com    # SkywingL\'s substitute listing server' >> /etc/hosts"
   echo "    echo '198.23.165.35     nwn.master.gamespy.com  # Visavent\'s gamespy replacement' >> /etc/hosts"
   echo "Visit http://www.neverwinternights.info/builders_hosts.htm and http://www.nwnlist.com for details."
