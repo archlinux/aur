@@ -2,7 +2,7 @@
 
 pkgname=sakemake
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration-free build system for C++17 executables'
 arch=('x86_64')
 url='https://github.com/xyproto/sakemake'
@@ -13,6 +13,7 @@ source=("git+https://github.com/xyproto/sakemake#tag=$pkgver")
 md5sums=('SKIP')
 
 package() {
+  export pkgdir
   make -C $pkgname pkg
 }
 
