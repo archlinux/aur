@@ -1,13 +1,18 @@
 [Unit]
-Description=Etherpad-Lite server
+Description=Etherpad-lite
 After=syslog.target network.target
 
 [Service]
-Type=simple
-User=etherpad
-Group=etherpad
-WorkingDirectory=/var/lib/etherpad-lite
-ExecStart=/usr/share/webapps/etherpad-lite/bin/run.sh
+User=etherpad-lite
+Group=etherpad-lite
+StateDirectory=etherpad-lite
+CacheDirectory=etherpad-lite
+LogsDirectory=etherpad-lite
+WorkingDirectory=/usr/share/etherpad-lite
+ExecStart=/usr/bin/node /usr/share/etherpad-lite/src/node/server.js --settings /etc/etherpad-lite/settings.json
+PrivateTmp=true
+NoNewPrivileges=true
+PrivateDevices=true
 Restart=always
 
 [Install]
