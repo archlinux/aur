@@ -2,7 +2,7 @@
 
 pkgname=sakemake
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration-free build system for C++17 executables'
 arch=('x86_64')
 url='https://github.com/xyproto/sakemake'
@@ -13,7 +13,7 @@ source=("git+https://github.com/xyproto/sakemake#tag=$pkgver")
 md5sums=('SKIP')
 
 package() {
-  PREFIX="$pkgdir" make -C $pkgname install
+  DESTDIR="$pkgdir" make -C $pkgname install
   install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
