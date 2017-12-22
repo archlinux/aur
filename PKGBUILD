@@ -1,11 +1,11 @@
 pkgname=mstpd
-pkgver=0.05
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="User-space RSTP and MSTP daemon"
 url="https://github.com/mstpd/mstpd"
 arch=(i686 x86_64)
 license=(GPL2)
-_commit=3dbd68c11dfed6c8f6f2423f429d3b4a2acc27f8
+_commit=76289208dcaa9b9bfdd69968e19357eb07a4b21f
 source=(git+https://github.com/mstpd/mstpd.git#commit=$_commit
         mstpd.service)
 sha256sums=('SKIP'
