@@ -1,7 +1,7 @@
 # Maintainer: Please see AUR package page for current maintainer(s) and contact information.
 
 pkgname=brave-snapshot-bin
-pkgver=0.19.115
+pkgver=0.19.122
 _pkgver=$pkgver
 pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Binary snapshot."
