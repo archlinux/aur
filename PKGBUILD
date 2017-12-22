@@ -3,7 +3,7 @@
 # Contributor: Lukas Weber <laochailan@web.de>
 
 pkgname=taisei-git
-pkgver=1.1.r349.g72bfb7d
+pkgver=1.1.r354.gf0c8cca
 pkgrel=1
 pkgdesc="Open source Touhou clone (development version)"
 arch=('i686' 'x86_64')
@@ -23,17 +23,15 @@ pkgver() {
 
 build() {
   cd taisei
-  mkdir -p build
-  cd build
-  meson .. --prefix=/usr
-  ninja
+  arch-meson . build
+  ninja -C build
 }
 
 package() {
-  cd taisei/build
+  cd taisei
 
-  DESTDIR="$pkgdir/" ninja install
+  DESTDIR="$pkgdir/" ninja -C build install
 
   # license
-  install -Dm644 ../COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
