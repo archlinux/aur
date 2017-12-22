@@ -64,12 +64,12 @@ _mq_enable=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _srcname=linux-4.14
-_pkgver=4.14.6
-_rtver=7
+_pkgver=4.14.8
+_rtver=9
 _rtpatchver=rt${_rtver}
 _srcpatch="${_pkgver##*\.*\.}"
 pkgver=${_pkgver}.${_rtver}
-pkgrel=7
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -89,7 +89,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/4.14/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/4.14/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_sq_mq_patch}"
-        "${_lucjanpath}/blk-mq-v10/0050-blk-mq-sched-dispatch-from-scheduler-only-after-progress-is-made-on->dispatch.patch"
         "${_lucjanpath}/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
         "${_lucjanpath}/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
         "${_lucjanpath}/blk-mq-v10/0053-blk-mq-block-kyber-check-if-there-is-request-in-ctx-in-kyber_has_work().patch"
@@ -444,12 +443,11 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            'c37b437f740fbb480766149ca1c6ddb5ee763b88b034b9b4eaf3ce000f299545ee19a93638d1a4161ab0c76ec73e1a53b2264b94213d53d6ad7dcda6bee45b8c'
+            '62aa92e671cfc9265cf1690e0d64058dfa779400074cd909161d4e49f5313f58c1303ad301cecdbb64ee85d653f0bcb42fa609f25827289aad3bc94561d94390'
             'SKIP'
-            '3073ad820c5fce77c982ebcc4835b875ac3d5421dee9a476c396d1efe33a87f034bf6d5aa08f7f6c63f45424bd8c74273a908c30ff77a788bec1259ff110a521'
+            '2e722767a224327eb8cf9162997309f8147a4f10d6892e7febedc59068e3cc780e144e9cfd1ebf1796ddb45ac57156903a46f5e1d2584cf18cbe9aa68c51a4eb'
             'SKIP'
             '0a55030c3638386fa0a5ebd7de91dab9665e528c159a6450c82e5143f7f91dbbdc89cf2dc3dfaddb10b1ba269c1a850aa0a2fcadd865ce4b270255d569d283a3'
-            '11dd363137d680d1bde1e332c3829246773e49d5fd0d2ef4ab77723ca0d2ecb3ad80a77a08dca8c4ce817ff0f966709673453e754f15e3e1527f943725d547ff'
             'ca6a40800668c0fcf478bd1bc555e5a496f5259739594bf83cc4963756b7a9a0a5b406e91f760d35f1bce1268c01d779fe2a7e749eccf9412e826152a5f013ef'
             '1434cc3957ef77fb83c9385a348f36ca43a73459b8995d3061143d1d15b307f944c39abc0eb109d20869c1749348d608c58cf5b92fd81ad65cad2d362e346549'
             '49c8619a96d7145e8fe77fad4394db7b24a73d94c1e01866e4a3bc5b044dbbb59c8aa2db62d72ef8460ec777d88959b545ad6373073fe3fd21016e5fc08c9f3c'
