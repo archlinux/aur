@@ -2,14 +2,14 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=sejda-desktop
-pkgver=3.2.1
+pkgver=3.2.5
 pkgrel=1
 license=('custom:EULA')
 pkgdesc='PDF editor'
 arch=('x86_64')
 url='http://www.sejda.com/desktop'
 source=("https://bitbucket.org/sejdapdf/sejda-desktop-public/downloads/sejda-desktop_${pkgver}_amd64.deb")
-sha512sums=('c18eda5dac1a7e457bff31bc77fdd10ff06663e6c12c9059bece468bb5595bdf94321d9f6ede472435cebe1d9f160f38426b6bffb316962f370b67208d8ee6bb')
+sha512sums=('8f6f0e91407259a838ad8d624513f106ed180c195d35a6dd92a3efd4c4819868f3edbbcd2056ee6a58307a62c544e7306c3f235afaa037dbe6be6fd99144c31b')
 options=(!strip)
 
 package() {
@@ -26,4 +26,3 @@ package() {
     ln -s /opt/sejda-desktop/${_i} "${pkgdir}/usr/share/licenses/${pkgname}/${_i}"
   done
 }
-
