@@ -55,10 +55,10 @@ md5sums=('cd809b9d22022adb01b0d1d70c5afa8e'
 prepare()
 {
     # Extract gog setup
-    innoextract -e $srcdir/setup_nwn_diamond_${pkgver}.exe -d $srcdir --gog || echo "failed to extract gog installer" && return 1
+    innoextract -e $srcdir/setup_nwn_diamond_${pkgver}.exe -d $srcdir --gog || return 1
 
     # Extract Kingmaker installer
-    unzip $srcdir/nvn_KingmakerSetup.zip -d $srcdir || echo "failed to extract kingmaker archive" && return 1
+    unzip $srcdir/nvn_KingmakerSetup.zip -d $srcdir || return 1
 
     # Extract game icons
     if [ -d $srcdir/icons ]; then
@@ -68,7 +68,7 @@ prepare()
     icotool -x -p 0 $srcdir/game/goggame-1207658890.ico -o $srcdir/icons
 
     # Extract Kingmaker files
-    7z x $srcdir/KingmakerSetup.exe -xr'!$PLUGINSDIR' -xr'!*.exe' -xr'!*.dat' -o$srcdir/kingmakertmp/ || echo "failed to extract kingmaker files" && return 1
+    7z x $srcdir/KingmakerSetup.exe -xr'!$PLUGINSDIR' -xr'!*.exe' -xr'!*.dat' -o$srcdir/kingmakertmp/ || return 1
     
     # Patch nwlogger so that it finds sys/user.h
     /bin/sed -i 's|linux/user.h|sys/user.h|1' $srcdir/nwlogger/nwlogger/nwlogger_cookie.c
