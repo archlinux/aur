@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=sakemake
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Configuration-free build system for C++17 executables'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("git+https://github.com/xyproto/sakemake#tag=$pkgver")
 md5sums=('SKIP')
 
 package() {
-  DESTDIR="$pkgdir" make -C $pkgname install
+  make -C $pkgname pkg
 }
 
 # vim: ts=2 sw=2 et:
