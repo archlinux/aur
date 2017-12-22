@@ -1,0 +1,71 @@
+--- /tmp/grub/PKGBUILD	2017-12-05 03:21:38.000000000 -0800
++++ PKGBUILD	2017-12-21 18:30:45.749429454 -0800
+@@ -19,8 +19,9 @@
+ [[ "${CARCH}" == "x86_64" ]] && _EMU_ARCH="x86_64"
+ [[ "${CARCH}" == "i686" ]] && _EMU_ARCH="i386"
+ 
+-pkgname="grub"
+-pkgdesc="GNU GRand Unified Bootloader (2)"
++_pkgname="grub"
++pkgname="grub-luks-keyfile"
++pkgdesc="GNU GRand Unified Bootloader (2) with crypto extensions to support for DMCrypt and LUKS volumes with detached headers and key files."
+ pkgver=2.02
+ pkgrel=4
+ epoch=2
+@@ -30,7 +31,7 @@
+ backup=('boot/grub/grub.cfg'
+         'etc/default/grub'
+         'etc/grub.d/40_custom')
+-install="${pkgname}.install"
++install="${_pkgname}.install"
+ options=('!makeflags')
+ 
+ conflicts=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" 'grub-legacy')
+@@ -57,7 +58,7 @@
+ validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' Serbinenko <phcoder@gmail.com>
+               '95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
+ 
+-source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
++source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
+         "https://git.savannah.nongnu.org/cgit/grub-extras.git/snapshot/grub-extras-${_GRUB_EXTRAS_COMMIT}.tar.gz"
+         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
+         '0002-intel-ucode.patch'
+@@ -65,6 +66,11 @@
+         '0004-add-GRUB_COLOR_variables.patch'
+         '0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch'
+         '0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch'
++        'http://grub.johnlane.ie/assets/0001-Cryptomount-support-LUKS-detached-header.patch'
++        'http://grub.johnlane.ie/assets/0002-Cryptomount-support-key-files.patch'
++        'http://grub.johnlane.ie/assets/0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch'
++        'http://grub.johnlane.ie/assets/0004-Cryptomount-support-plain-dm-crypt.patch'
++        'http://grub.johnlane.ie/assets/0005-Cryptomount-support-for-hyphens-in-UUID.patch'
+         'grub.default'
+         'grub.cfg')
+ 
+@@ -78,6 +84,11 @@
+             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
+             '535422c510a050d41efe7720dbe54de29e04bdb8f86fd5aea5feb0b24f7abe46'
+             'c38f2b2caae33008b35a37d8293d8bf13bf6fd779a4504925da1837fd007aeb5'
++            '363f68a9119b4985bc1f66d7589f72feb03766526d56d02733a842baf4a8093e'
++            '1579a1d00020f51225a1b645f47d2bb40edf760d3650d6c9b994f4be3f2bf2c7'
++            'ff7bb70340410d2be8c46b28cd063eb8bec4f2be8e560d7843b9749fd5986aae'
++            '7a7bedccd1c1110314d1eb34f10fe3d358948154bcaaac40b26afc35420cc5dc'
++            'c374a6c6fae95215bfe9f7ee780e2b6518345256c227eb562b922f06544e02b6'
+             '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
+             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
+ 
+@@ -105,6 +116,14 @@
+ 	patch -Np1 -i "${srcdir}/0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch"
+ 	echo
+ 
++	msg "Patch for adding support for DMCrypt and LUKS volumes with detached headers and key files"
++	patch -Np1 -i "${srcdir}/0001-Cryptomount-support-LUKS-detached-header.patch"
++	patch -Np1 -i "${srcdir}/0002-Cryptomount-support-key-files.patch"
++	patch -Np1 -i "${srcdir}/0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch"
++	patch -Np1 -i "${srcdir}/0004-Cryptomount-support-plain-dm-crypt.patch"
++	patch -Np1 -i "${srcdir}/0005-Cryptomount-support-for-hyphens-in-UUID.patch"
++	echo
++
+ 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
+ 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
+ 
