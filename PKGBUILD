@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --tags $(git rev-list --tags --max-count=1) | sed "s/-/./g"
+  git describe --tags $(git rev-list --tags --max-count=1) | sed "s/-/./g;s/^v//g"
 }
 
 build() {
