@@ -15,9 +15,10 @@ then
 fi
 
 pkgname=caddy-with-cgi
+_pkgbase=caddy
 pkgver=0.10.10
 _cgiver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS, with caddy-cgi plugin and gcc-go support'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -27,7 +28,7 @@ install='caddy.install'
 makedepends=('go>=1.8.1' 'git')
 provides=('caddy')
 conflicts=('caddy')
-source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
+source=("https://$_gopkgname/archive/v$pkgver/$_pkgbase-$pkgver.tar.gz"
 	"https://$_cgipkgname/archive/v$_cgiver.tar.gz"
 	'https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg'
 	'index.html'
@@ -50,7 +51,7 @@ prepare() {
 	export GOPATH="$srcdir/build"
 	rm -rf "$GOPATH/src/$gopkgname" "$GOPATH/src/$_cgipkgname"
 	mkdir --parents `dirname "$GOPATH/src/$_gopkgname"` `dirname "$GOPATH/src/$_cgipkgname"`
-	mv -Tv "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$_gopkgname"
+	mv -Tv "$srcdir/$_pkgbase-$pkgver" "$GOPATH/src/$_gopkgname"
 	mv -Tv "$srcdir/caddy-cgi-$_cgiver" "$GOPATH/src/$_cgipkgname"
 	cd "$GOPATH/src/$_gopkgname"
 	patch -p0 -i "$srcdir/plugins.patch"
