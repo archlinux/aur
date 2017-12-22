@@ -1,7 +1,7 @@
 # Maintainer: edward-p <micro.fedora@gmail.com>
 pkgname=deepin.com.qq.office-git
 deepin_name=deepin.com.qq.office
-pkgver=2.0.0deepin0
+pkgver=2.0.0deepin1
 pkgrel=2
 epoch=
 pkgdesc="Deepin Wine TIM (on deepin-wine)"
