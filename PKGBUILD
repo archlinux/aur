@@ -3,7 +3,7 @@
 
 set -u
 pkgname='kat5200'
-pkgver='0.7.1'
+pkgver='0.8.0'
 pkgrel='1'
 pkgdesc='an emulator for the Atari 5200 console and Atari 8-bit computers'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('zlib' 'sdl2' 'sdl2_image' 'guichan')
 _verwatch=("${url}downloads.html" '\s\+Version\s\([0-9\.]\+\)\s*' 'f')
 #_verwatch[1]='\s\+<li><a href="downloads/kat5200-\([0-9\.]\+\)\.tar\.gz.*'
 source=("${url}downloads/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('fca07ef1295bfbb188ef726f52a5bd260524dd4ae2e741de076056eb666067da')
+sha256sums=('8292910fe30a3868dc52a293b35c8873d72c13cbd80200d9d389da9ace199b2b')
 
 prepare() {
   set -u
