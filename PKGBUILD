@@ -1,7 +1,7 @@
 # Maintainer: Joseph Brains <jnbrains@gmail.com>
 _pkgname=gns3-server
 pkgname=${_pkgname}-git
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('dynamips: Cisco router emulator.'
 install="${_pkgname}.install"
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${_pkgname}/archive/v${pkgver}.tar.gz"
         "${_pkgname}@.service")
-md5sums=('0e61b12c06e112e9a2cd70f85312cf2f'
+md5sums=('c36b7b7bcc65718e0aaf394cf6023a5c'
          '3dcc54e56818a62859d0e7614e2aaa18')
 
 package() {
