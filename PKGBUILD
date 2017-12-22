@@ -5,7 +5,7 @@
 # and add '--enable-libndi_newtek' to the configure options.
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r89400.g5a412a5c3c
+pkgver=3.5.r89569.gd2a2bc9a9f
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ makedepends=(
     # official repositories:
         'git' 'nasm' 'opencl-headers'
     # AUR:
-        'blackmagic-decklink-sdk' 'libmfx' 'libvmaf'
+        'blackmagic-decklink-sdk' 'libmfx' 'libvmaf-git'
 )
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
