@@ -10,16 +10,13 @@ groups=('libretro')
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url="https://github.com/libretro/libretro-prboom"
 license=('GPL')
+depends=('libretro-core-info')
 makedepends=('git')
-
 install=libretro-prboom.install
-
 _libname=prboom_libretro
 _gitname=libretro-prboom
-source=("git+https://github.com/libretro/${_gitname}.git"
-        "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-md5sums=('SKIP'
-         'SKIP')
+source=("git+https://github.com/libretro/${_gitname}.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -34,5 +31,4 @@ build() {
 package() {
   install -Dm644 "${_gitname}/prboom.wad" "${pkgdir}/usr/share/libretro/${_libname}/prboom.wad"
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
