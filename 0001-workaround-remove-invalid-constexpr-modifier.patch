@@ -1,0 +1,43 @@
+From f6eeea01b0f25c887fab451af151e43a4c1c65d0 Mon Sep 17 00:00:00 2001
+From: Christoph Haag <haagch@frickel.club>
+Date: Fri, 22 Dec 2017 12:56:32 +0100
+Subject: [PATCH] workaround: remove invalid constexpr modifier
+
+---
+ src/util/math.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/util/math.cpp b/src/util/math.cpp
+index 46e9ede..3af4259 100644
+--- a/src/util/math.cpp
++++ b/src/util/math.cpp
+@@ -54,7 +54,7 @@ static uint32 Float32ToFloatN(float f, const NBitFloatInfo& info);
+ static float FloatNToFloat32(uint32 fBits, const NBitFloatInfo& info);
+ 
+ // Initialize the descriptors for various N-bit floating point representations:
+-static constexpr NBitFloatInfo Float16Info =
++static NBitFloatInfo Float16Info =
+ {
+     16,                                                       // numBits
+     10,                                                       // numFracBits
+@@ -72,7 +72,7 @@ static constexpr NBitFloatInfo Float16Info =
+     (23 - 10),                                                // fracBitsDiff
+ };
+ 
+-static constexpr NBitFloatInfo Float11Info =
++static NBitFloatInfo Float11Info =
+ {
+     11,                                                       // numBits
+     6,                                                        // numFracBits
+@@ -90,7 +90,7 @@ static constexpr NBitFloatInfo Float11Info =
+     23 - 6,                                                   // fracBitsDiff
+ };
+ 
+-static constexpr NBitFloatInfo Float10Info =
++static NBitFloatInfo Float10Info =
+ {
+     10,                                                       // numBits
+     5,                                                        // numFracBits
+-- 
+2.15.1
+

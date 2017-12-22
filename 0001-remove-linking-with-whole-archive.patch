@@ -1,0 +1,46 @@
+From d56190445766f1b8ff7ddeb46f88c3609bd6dea7 Mon Sep 17 00:00:00 2001
+From: Christoph Haag <haagch@frickel.club>
+Date: Fri, 22 Dec 2017 13:46:09 +0100
+Subject: [PATCH] remove linking with --whole-archive
+
+it breaks the build by linking pal twice and duplicating its symbols
+---
+ icd/CMakeLists.txt | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/icd/CMakeLists.txt b/icd/CMakeLists.txt
+index 4e4d669..372783a 100644
+--- a/icd/CMakeLists.txt
++++ b/icd/CMakeLists.txt
+@@ -530,17 +530,17 @@ if (UNIX)
+ 
+     # CMAKE-TODO: What is whole-archive used for?
+     #target_link_libraries(xgl -Wl,--whole-archive ${ICD_LIBS} -Wl,--no-whole-archive)
+-    if(CMAKE_BUILD_TYPE_RELEASE)
+-        execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+-        if (GCC_VERSION VERSION_GREATER 5.3 OR GCC_VERSION VERSION_EQUAL 5.3)
+-            target_link_libraries(xgl PRIVATE -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/src/libpal.a -Wl,--no-whole-archive)
+-            target_link_libraries(xgl PUBLIC -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/metrohash/libmetrohash.a -Wl,--no-whole-archive)
+-            target_link_libraries(xgl PUBLIC -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/gpuopen/libgpuopen.a -Wl,--no-whole-archive)
+-            target_link_libraries(xgl PUBLIC -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/vam/libvam.a -Wl,--no-whole-archive)
+-            target_link_libraries(xgl PUBLIC -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/addrlib/libaddrlib.a -Wl,--no-whole-archive)
+-            target_link_libraries(xgl PUBLIC -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/jemalloc/libjemalloc.a -Wl,--no-whole-archive)
+-        endif()
+-    endif()
++#     if(CMAKE_BUILD_TYPE_RELEASE)
++#         execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
++#         if (GCC_VERSION VERSION_GREATER 5.3 OR GCC_VERSION VERSION_EQUAL 5.3)
++#             target_link_libraries(xgl PRIVATE -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/src/libpal.a -Wl,--no-whole-archive)
++#             target_link_libraries(xgl PUBLIC -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/metrohash/libmetrohash.a -Wl,--no-whole-archive)
++#             target_link_libraries(xgl PUBLIC -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/gpuopen/libgpuopen.a -Wl,--no-whole-archive)
++#             target_link_libraries(xgl PUBLIC -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/vam/libvam.a -Wl,--no-whole-archive)
++#             target_link_libraries(xgl PUBLIC -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/addrlib/libaddrlib.a -Wl,--no-whole-archive)
++#             target_link_libraries(xgl PUBLIC -Wl,--whole-archive ${PROJECT_BINARY_DIR}/pal/jemalloc/libjemalloc.a -Wl,--no-whole-archive)
++#         endif()
++#     endif()
+ 
+     #${ICD_TARGET}.so${SO_VERSION_NUMBER} : ${filter-out -Wl%,$(LLLIBS})
+ 
+-- 
+2.15.1
+

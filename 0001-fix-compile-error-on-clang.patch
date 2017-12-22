@@ -1,0 +1,27 @@
+From d51507637e29281152b47ef30a3488c29c2a0955 Mon Sep 17 00:00:00 2001
+From: Christoph Haag <haagch@frickel.club>
+Date: Fri, 22 Dec 2017 13:03:43 +0100
+Subject: [PATCH] fix compile error on clang
+
+xgl/icd/api/llpc/util/llpcDebug.cpp:116:10: error: reference to scoped enumeration must use 'enum' not 'enum class'
+    enum class ResourceMappingNodeType type)  // Resource map node type
+---
+ icd/api/llpc/util/llpcDebug.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/icd/api/llpc/util/llpcDebug.cpp b/icd/api/llpc/util/llpcDebug.cpp
+index 1273cd6..847786e 100644
+--- a/icd/api/llpc/util/llpcDebug.cpp
++++ b/icd/api/llpc/util/llpcDebug.cpp
+@@ -113,7 +113,7 @@ bool EnableErrs()
+ // Translates enum "ResourceMappingNodeType" to string and output to ostream.
+ raw_ostream& operator<<(
+     raw_ostream&                       out,   // [out] Output stream
+-    enum class ResourceMappingNodeType type)  // Resource map node type
++    enum ResourceMappingNodeType type)  // Resource map node type
+ {
+     const char* pString = nullptr;
+     switch (type)
+-- 
+2.15.1
+
