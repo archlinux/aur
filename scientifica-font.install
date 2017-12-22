@@ -1,0 +1,13 @@
+post_install() {
+  fc-cache -fs
+  mkfontscale usr/share/fonts/misc
+  mkfontdir usr/share/fonts/misc
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
