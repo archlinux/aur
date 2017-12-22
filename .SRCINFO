@@ -1,7 +1,7 @@
 pkgbase = cef-minimal
 	pkgdesc = Chromium Embedded Framework minimal release
-	pkgver = 3.3202
-	pkgrel = 3
+	pkgver = 3.3239
+	pkgrel = 1
 	url = https://bitbucket.org/chromiumembedded/cef
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = cef-minimal
 	depends = gtk2
 	provides = cef
 	conflicts = cef-standard
-	source_i686 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3202.1682.gab7e7f0_linux32_minimal.tar.bz2
-	sha1sums_i686 = 09d094aa8722c56fb53620ffed4884d01157063b
-	source_x86_64 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3202.1682.gab7e7f0_linux64_minimal.tar.bz2
-	sha1sums_x86_64 = 74ff674eef7856ccc9188008f087089c07e7c142
+	source_i686 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3239.1709.g093cae4_linux32_minimal.tar.bz2
+	sha1sums_i686 = d19c952ac2dbf5fb0229199e14c7203b8b359e91
+	source_x86_64 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3239.1709.g093cae4_linux64_minimal.tar.bz2
+	sha1sums_x86_64 = 5a40bb684cd3049c554d56c2e1c5abdbdf7de745
 
 pkgname = cef-minimal
 
