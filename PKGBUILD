@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="7.0.323.1"
+pkgver="7.0.323.2"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -13,7 +13,7 @@ _x64file="EditorV7.x64.msi"
 _installdir="/usr/lib"
 
 source_x86_64+=($_downloadsource/$_x64file)
-sha256sums_x86_64=('fa2f026012842432d1de0cc174cce8865631526f4bf13504aadb171203e3dca1')
+sha256sums_x86_64=('454935b6d71820f3a204266c590f85ad4deb6633c5e347d0f566172a6817df15')
 
 prepare()
 {
