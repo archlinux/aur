@@ -34,7 +34,7 @@ _qdepth='32'
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
 pkgver="$(printf '%s' "$_srcver"| tr '-' '.')" # ImageMagick does not provide a download archive of all previous versions
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='http://www.imagemagick.org/'
@@ -48,7 +48,7 @@ depends=(
         'glu' 'libxt' 'bzip2' 'djvulibre' 'fftw' 'freetype2' 'graphviz'
         'jbigkit' 'jemalloc' 'libjpeg-turbo' 'libtiff' 'pango' 'xz' 'zlib'
     # AUR:
-        'autotrace-nomagick' 'flif' 'libfpx' 'libraqm' 'libumem-git'
+        'autotrace-nomagick' 'flif' 'libde265' 'libfpx' 'libraqm' 'libumem-git'
 )
 makedepends=(
     # official repositories:
@@ -59,7 +59,7 @@ makedepends=(
         'glu' 'libxt' 'bzip2' 'djvulibre' 'fftw' 'freetype2' 'graphviz'
         'jbigkit' 'jemalloc' 'libjpeg-turbo' 'libtiff' 'pango' 'xz' 'zlib'
     # AUR:
-        'autotrace-nomagick' 'flif' 'libfpx' 'libraqm' 'libumem-git'
+        'autotrace-nomagick' 'flif' 'libde265' 'libfpx' 'libraqm' 'libumem-git'
 )
 source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz"
         'arch-fonts.diff')
@@ -116,6 +116,7 @@ build() {
         --with-raqm \
         --with-gslib \
         --with-gvc \
+        --with-heic \
         --with-jbig \
         --with-jpeg \
         --with-lcms \
