@@ -3,7 +3,7 @@
 # Contributor: Lukas Weber <laochailan@web.de>
 
 pkgname=taisei-git
-pkgver=1.1.r136.g33a5da6
+pkgver=1.1.r349.g72bfb7d
 pkgrel=1
 pkgdesc="Open source Touhou clone (development version)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('sdl2_mixer' 'sdl2_ttf' 'libzip' 'hicolor-icon-theme')
 provides=('taisei')
 conflicts=('taisei')
-makedepends=('git' 'cmake')
+makedepends=('git' 'meson')
 source=(taisei::"git+https://github.com/taisei-project/taisei.git")
 md5sums=('SKIP')
 
@@ -23,15 +23,17 @@ pkgver() {
 
 build() {
   cd taisei
-
-  cmake ./ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  mkdir -p build
+  cd build
+  meson .. --prefix=/usr
+  ninja
 }
 
 package() {
-  cd taisei
+  cd taisei/build
 
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja install
+
   # license
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 ../COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
