@@ -71,6 +71,7 @@ source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig
         'http://grub.johnlane.ie/assets/0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch'
         'http://grub.johnlane.ie/assets/0004-Cryptomount-support-plain-dm-crypt.patch'
         'http://grub.johnlane.ie/assets/0005-Cryptomount-support-for-hyphens-in-UUID.patch'
+        '0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch::https://github.com/johnlane/grub/pull/8.patch'
         'grub.default'
         'grub.cfg')
 
@@ -89,6 +90,7 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             'ff7bb70340410d2be8c46b28cd063eb8bec4f2be8e560d7843b9749fd5986aae'
             '7a7bedccd1c1110314d1eb34f10fe3d358948154bcaaac40b26afc35420cc5dc'
             'c374a6c6fae95215bfe9f7ee780e2b6518345256c227eb562b922f06544e02b6'
+            'b27d252cc9a25be424416897496d85fd1aa06ebca8c4cff9c916d90aadffb855'
             '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
 
@@ -122,6 +124,7 @@ prepare() {
 	patch -Np1 -i "${srcdir}/0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch"
 	patch -Np1 -i "${srcdir}/0004-Cryptomount-support-plain-dm-crypt.patch"
 	patch -Np1 -i "${srcdir}/0005-Cryptomount-support-for-hyphens-in-UUID.patch"
+	patch -Np1 -i "${srcdir}/0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch"
 	echo
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
