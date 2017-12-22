@@ -2,7 +2,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=amdvlk-git
-pkgver=r6.2820967
+pkgver=r6.9093c5e
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -15,11 +15,10 @@ provides=(vulkan-amdvlk)
 #             'talloc' 'wayland' 'pkgconfig' 'imake' 'xorg-server-devel' 'python2-mako' 'python' 'git')
 makedepends=('dri2proto')
 
-source=('git+https://github.com/GPUOpen-Drivers/llvm.git'
-	'git+https://github.com/GPUOpen-Drivers/xgl.git'
-	'git+https://github.com/GPUOpen-Drivers/pal.git'
-	'git+https://github.com/GPUOpen-Drivers/AMDVLK.git'
-	'0001-workaround-remove-invalid-constexpr-modifier.patch'
+source=('git+https://github.com/GPUOpen-Drivers/llvm.git#branch=amd-vulkan-master'
+	'git+https://github.com/GPUOpen-Drivers/xgl.git#branch=dev'
+	'git+https://github.com/GPUOpen-Drivers/pal.git#branch=dev'
+	'git+https://github.com/GPUOpen-Drivers/AMDVLK.git#branch=dev'
 	'0001-fix-compile-error-on-clang.patch' # TODO: maybe not necessary on gcc
 	'0001-remove-linking-with-whole-archive.patch'
 	'amdPalSettings.cfg')
@@ -27,7 +26,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '784f2f61f8fbaab84a9015b7f9ade26ece43ccda20fd42b357fe911af5233a2b'
             '9d2399c3cfd424c5c0645892306f1794de61a8270f95683ea1785a78e0326c5c'
             '4669fda7c492ae6f655e9ad3bb2c4782753b49350a29af29883d43c02d627f46'
             '5f798911bf1cbbe5a83f5ae4886107ef0d02be5753450753ae2d3fc6f80e7012')
