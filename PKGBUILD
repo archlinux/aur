@@ -8,7 +8,7 @@ pkgver=1.0.3
 pkgrel=1
 options=('!strip')
 arch=('x86_64')
-deb_package="ledger_wallet_ripple_x64_${pkgver}.deb"
+deb_package="ledger_wallet_ripple_linux_x64_${pkgver}.deb"
 source_x86_64=(
   "${url}/releases/download/${pkgver}/${deb_package}"
 )
