@@ -1,27 +1,22 @@
 pkgbase = balsamiqmockups
-	pkgdesc = The Adobe Air based Mockup client. Not free or open source, there is a 7 day free trial.
-	pkgver = 2.2.29
+	pkgdesc = The Adobe Air based Mockup client. Not free or open source, there is a 30 day free trial.
+	pkgver = 3.5.15
 	pkgrel = 5
 	url = http://balsamiq.com/products/mockups
 	install = balsamiqmockups.install
 	arch = any
 	license = custom
 	makedepends = unzip
-	depends = adobe-air-sdk
+	depends = wine
 	depends = desktop-file-utils
 	depends = lib32-libgl
 	conflicts = balsamiq-mockups
-	noextract = MockupsForDesktop2.2.28-2015.08.24.air
-	source = https://build_archives.s3.amazonaws.com/mockups-desktop/2.2/MockupsForDesktop2.2.28-2015.08.24.air
+	source = https://builds.balsamiq.com/mockups-desktop/Balsamiq_Mockups_3.5.15_bundled.zip
 	source = http://media.balsamiq.com/files/BalsamiqEula.pdf
-	source = fix-filetype-mime.patch
 	source = balsamiqmockups.desktop
-	source = vnd.balsamiq.bmml+xml.xml
-	sha1sums = 4c541244c7214ede9e1e4aa498bf1b8c2df597fd
-	sha1sums = 47d7519e1ee4348797af75df2f15c1c4b0b1714e
-	sha1sums = 279e15c0c1bcffeabc97d9af3882c849735b5aa9
+	sha1sums = 23299c28ca3dfb87ba55df193682a23e31f232cd
+	sha1sums = 28c31aa6fbe94d03f622093e274f0398e7bfdb34
 	sha1sums = cfe7240b7403ff47d63e9f8264581a40112607ff
-	sha1sums = 6f28b1fcc5758cb46c5f149d7896b53bdd027293
 
 pkgname = balsamiqmockups
 
