@@ -4,7 +4,7 @@ pkgname=lmms-beta
 _basever=1.2.0
 _rc=rc5
 pkgver=${_basever}_${_rc}
-pkgrel=1
+pkgrel=2
 pkgdesc='Beta version of the Linux MultiMedia Studio.'
 arch=('x86_64')
 url='https://lmms.io/'
@@ -47,7 +47,7 @@ package() {
   
   # Delete optional weakjack.so
   cd "${pkgdir}"
-  rm -r home/
+  find . -maxdepth 1 -type d -not -name . -not -name usr -exec rm -r {} \;
   
   # Move lib64 files to lib
   cd "${pkgdir}/usr"
