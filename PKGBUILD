@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-gold-git
 _gitname=BTCGPU
-pkgver=v0.15.0.2
+pkgver=0.15.0.2
 pkgrel=1
 pkgdesc="A peer-to-peer network based digital currency. This package provides bitcoin-gold-core binaries: bgoldd, bgold-qt, bgold-tx, and bgold-cli"
 arch=('any')
