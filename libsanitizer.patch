@@ -1,0 +1,27 @@
+diff -rup gcc-4.8.5/libsanitizer/asan/asan_linux.cc gcc-4.8.5/libsanitizer/asan/asan_linux.cc
+--- gcc-4.8.5/libsanitizer/asan/asan_linux.cc	2013-01-23 12:41:33.000000000 +0100
++++ gcc-4.8.5/libsanitizer/asan/asan_linux.cc	2017-12-22 11:20:11.003666354 +0100
+@@ -29,6 +29,11 @@
+ #include <unistd.h>
+ #include <unwind.h>
+ 
++#ifndef SIGSEGV
++	#define SIGSEGV         11
++#endif
++
++
+ #if !ASAN_ANDROID
+ // FIXME: where to get ucontext on Android?
+ #include <sys/ucontext.h>
+diff -rup gcc-4.8.5_orig//libsanitizer/tsan/tsan_platform_linux.cc gcc-4.8.5/libsanitizer/tsan/tsan_platform_linux.cc
+--- gcc-4.8.5/libsanitizer/tsan/tsan_platform_linux.cc	2013-02-21 11:57:10.000000000 +0100
++++ gcc-4.8.5/libsanitizer/tsan/tsan_platform_linux.cc	2017-12-22 11:23:03.644664708 +0100
+@@ -292,7 +292,7 @@ bool IsGlobalVar(uptr addr) {
+ #ifndef TSAN_GO
+ int ExtractResolvFDs(void *state, int *fds, int nfd) {
+   int cnt = 0;
+-  __res_state *statp = (__res_state*)state;
++  struct __res_state *statp = (struct __res_state*)state;
+   for (int i = 0; i < MAXNS && cnt < nfd; i++) {
+     if (statp->_u._ext.nsaddrs[i] && statp->_u._ext.nssocks[i] != -1)
+       fds[cnt++] = statp->_u._ext.nssocks[i];

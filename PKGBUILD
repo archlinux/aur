@@ -59,6 +59,9 @@ prepare() {
 #  patch -p0 -i ${startdir}/texinfo.patch
   patch -p0 -i ${startdir}/gcc.texi.48.patch
 
+  patch -p1 -i ${startdir}/ucontext_t.patch
+  patch -p1 -i ${startdir}/libsanitizer.patch
+
   mkdir -p ${srcdir}/gcc-build
 }
 
