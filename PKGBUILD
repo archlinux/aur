@@ -18,8 +18,8 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=3.4
-pkgrel=4
+pkgver=3.4.1
+pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -49,7 +49,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('aeee06e4d8b18d852c61ebbfe5e1bb7014b1e118e8728c1c2115f91e51bffbef'
+sha256sums=('5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
