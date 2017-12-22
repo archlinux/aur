@@ -1,0 +1,28 @@
+post_install() {
+    systemctl enable smarttrafficmeter
+ 	systemctl start smarttrafficmeter
+ 	echo "#####################################################################"
+ 	echo "#                                                                   #"
+ 	echo "# Smart Traffic Meter should now be running as a service (daemon)   #"
+ 	echo "# Open your web browser and navigate to 127.0.0.1:7676              #"
+ 	echo "# If the page does not open                                         #"
+ 	echo "# you may need to execute the following comands in the command line #"
+ 	echo "# sudo systemctl enable smarttrafficmeter                           #"
+ 	echo "# sudo systemctl start smarttrafficmeter                            #"
+ 	echo "# and restart your computer                                         #"
+ 	echo "#                                                                   #"
+ 	echo "#####################################################################"
+}
+
+pre_upgrade() {
+	systemctl stop smarttrafficmeter
+}
+
+post_upgrade() {
+	systemctl start smarttrafficmeter
+}
+
+pre_remove() {
+	systemctl stop smarttrafficmeter
+	systemctl disable smarttrafficmeter
+}
