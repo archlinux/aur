@@ -1,6 +1,6 @@
 diff -ura openhab2.orig/runtime/bin/oh2_dir_layout openhab2.new/runtime/bin/oh2_dir_layout
---- openhab2.orig/runtime/bin/oh2_dir_layout	2017-06-27 23:14:06.000000000 +0200
-+++ openhab2.new/runtime/bin/oh2_dir_layout	2017-07-01 14:54:58.966716130 +0200
+--- openhab2.orig/runtime/bin/oh2_dir_layout	2017-12-18 11:24:01.000000000 +0100
++++ openhab2.new/runtime/bin/oh2_dir_layout	2017-12-22 16:10:03.211873815 +0100
 @@ -6,7 +6,7 @@
  export OPENHAB_HOME=`cd "$DIRNAME/../.."; pwd`
  
@@ -23,4 +23,4 @@ diff -ura openhab2.orig/runtime/bin/oh2_dir_layout openhab2.new/runtime/bin/oh2_
 +    export OPENHAB_LOGDIR="/var/log/openhab2"
  fi
  
- # Make sure the tmp folder exists as Karaf requires it
+ if [ -z ${OPENHAB_BACKUP} ]; then
