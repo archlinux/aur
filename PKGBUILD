@@ -17,22 +17,22 @@
 pkgbase="spl-linux-git"
 pkgname=("spl-linux-git" "spl-linux-git-headers")
 
-pkgver=2017.11.15.r1059.ed19bcc.4.14.6.1
-pkgrel=2
-makedepends=("linux-headers=4.14.6-1" "git")
+pkgver=2017.12.21.r1060.c9821f1.4.14.7.1
+pkgrel=1
+makedepends=("linux-headers=4.14.7-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#commit=ed19bccfb651843fa208232b3a2d3d22a4152bc8")
+source=("git+https://github.com/zfsonlinux/spl.git#commit=c9821f1ccc647dfbd506f381b736c664d862d126")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git=2017.11.15.r1059.ed19bcc" "kmod" "linux=4.14.6-1")
+depends=("spl-utils-common-git=2017.12.21.r1060.c9821f1" "kmod" "linux=4.14.7-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.14.6-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.14.6-1-ARCH/build \
+                --with-linux=/usr/lib/modules/4.14.7-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.14.7-1-ARCH/build \
                 --with-config=kernel
     make
 }
@@ -58,5 +58,5 @@ package_spl-linux-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.14.6-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.14.7-1-ARCH/Module.symvers
 }
