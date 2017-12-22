@@ -7,7 +7,7 @@
 
 pkgname=powerdns-recursor-41
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PowerDNS Recursor, a resolving nameserver. Version 4.1.x'
 url='https://www.powerdns.com/'
 arch=('x86_64')
@@ -50,7 +50,7 @@ package() {
   install -D -m644 sysusers.conf "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   mv "${pkgdir}/etc/powerdns/recursor.conf"{-dist,}
   for setting in setuid setgid; do
-    sed -i "s/^# ${setting}.*/${setting}=${pkgname}/" "${pkgdir}/etc/powerdns/recursor.conf"
+    sed -i "s/^# ${setting}.*/${setting}=powerdns-recursor/" "${pkgdir}/etc/powerdns/recursor.conf"
   done
 }
 
