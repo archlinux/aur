@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-gold-git
 _gitname=BTCGPU
-pkgver=0.15.0.1
+pkgver=v0.15.0.2
 pkgrel=1
 pkgdesc="A peer-to-peer network based digital currency. This package provides bitcoin-gold-core binaries: bgoldd, bgold-qt, bgold-tx, and bgold-cli"
 arch=('any')
@@ -38,7 +38,7 @@ package() {
 	# install bgold-daemon
 	msg2 'Installing bgold-daemon...'
 	install -Dm755 "$srcdir/$_gitname/src/bgoldd" "$pkgdir/usr/bin/bgoldd"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoingold.conf"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/bitcoingold.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoingold.conf"
 	#install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bgold-cli.1"
 	#install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bgold-qt.1"
 	#install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoind.1" "$pkgdir/usr/share/man/man1/bgoldd.1"
