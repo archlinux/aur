@@ -118,8 +118,11 @@ sha256sums=(
 
 prepare() {
 	cd "$srcdir"/$_appname-$pkgver
-	chmod +x "download-deps.py"
-	python2 "download-deps.py" -r yes
+
+	# Note: Disabled downloading external dependencies since they are included
+	# with Cocos2D-X.  On some releases this might be needed:
+	#chmod +x "download-deps.py"
+	#python2 "download-deps.py" -r yes
 }
 
 
