@@ -20,7 +20,7 @@ pkgbase = synergy2-bin
 	depends = qt5-declarative>=5.5.0
 	depends = qt5-quickcontrols>=5.5.0
 	conflicts = synergy
-	conflicts = synergy2-bin
+	conflicts = synergy2
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://www.dropbox.com/s/t00chh9rgvo94pf/synergy_2.0.3.stable_b1125%2B8a08e664_amd64.deb?dl=1
