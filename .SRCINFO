@@ -1,0 +1,15 @@
+pkgbase = omnia
+	pkgdesc = Omnia is a REPL with almost all the power of a fully fledged editor, without being an editor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AvramRobert/omnia
+	arch = x86_64
+	license = APL
+	depends = java-runtime
+	provides = omnia
+	conflicts = omnia
+	source = https://github.com/AvramRobert/omnia/releases/download/0.1.0-BETA/omnia-0.1.0.tar
+	md5sums = 9e740de0040653cae8b5f650870b9612
+
+pkgname = omnia
+
