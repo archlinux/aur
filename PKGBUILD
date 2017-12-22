@@ -12,7 +12,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/antham/yogo"
 license=('GPL')
 source=("https://github.com/antham/yogo/releases/download/v2.0.1/yogo_linux_386")
-md5sums=("283eb2ee5c9ce65fc0d5e9ee0bbfc1c5")
+md5sums=("f5e5a34f640a11c6e04d0af804e4880f")
 
 package() {
     install -Dm755 "yogo_linux_386" "$pkgdir/usr/bin/$pkgname"
