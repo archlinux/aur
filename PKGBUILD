@@ -7,8 +7,8 @@
 
 pkgname=ffmpeg-full
 _srcname=ffmpeg
-pkgver=3.4
-pkgrel=4
+pkgver=3.4.1
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -52,7 +52,7 @@ conflicts=(
 )
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'LICENSE')
-sha256sums=('aeee06e4d8b18d852c61ebbfe5e1bb7014b1e118e8728c1c2115f91e51bffbef'
+sha256sums=('5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 build() {
