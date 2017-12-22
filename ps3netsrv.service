@@ -1,0 +1,13 @@
+[Unit]
+Description=ps3netsrv (mod by aldostools)
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/ps3netsrv
+User=ps3netsrv
+Group=ps3netsrv
+ExecStart=/usr/bin/ps3netsrv $ROOTDIRECTORY $PORT $WHITELIST
+ExecStop=/usr/bin/kill -TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target
