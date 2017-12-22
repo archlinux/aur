@@ -27,6 +27,8 @@ pkgver() {
 }
 
 prepare() {
+    # ensure a toolchain is selected
+    rustup which cargo || rustup default stable || true
     mkdir -p "${srcdir}/src/github.com/kryptco/"
     rm -rf "${srcdir}/src/github.com/kryptco/kr"
     mv "${srcdir}/kr" "${srcdir}/src/github.com/kryptco/kr"
