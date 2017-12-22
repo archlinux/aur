@@ -1,0 +1,25 @@
+[Desktop Entry]
+
+# The type as listed above
+Type=Application
+
+# The version of the desktop entry specification to which this file complies
+Version=2.4.0
+
+# The name of the application
+Name=WaveDrom Editor
+
+# A comment which can/will be used as a tooltip
+Comment=Timing diagram rendering engine
+
+# The executable of the application.
+Exec=wavedrom-editor
+
+# The name of the icon that will be used to display this entry
+Icon=wavedrom-editor
+
+# Describes whether this application needs to be run in a terminal or not
+Terminal=false
+
+# Describes the categories in which this entry should be shown
+Categories=Development;Science;Graphics
