@@ -1,7 +1,7 @@
 pkgbase = nuvolaruntime-mse
 	pkgdesc = Nuvola Apps Runtime - Tight integration of web apps with your desktop
-	pkgver = 4.8.0
-	pkgrel = 5
+	pkgver = 4.9.0
+	pkgrel = 1
 	url = https://github.com/tiliado/nuvolaruntime/
 	arch = any
 	license = custom:BSD
@@ -52,8 +52,8 @@ pkgbase = nuvolaruntime-mse
 	provides = nuvolaruntime
 	conflicts = nuvolaplayer
 	conflicts = nuvolaruntime
-	source = https://github.com/tiliado/nuvolaruntime/archive/4.8.0.tar.gz
-	md5sums = d251e4928690bf46dedc8c02a072c836
+	source = https://github.com/tiliado/nuvolaruntime/archive/4.9.0.tar.gz
+	md5sums = 0890df8a4e93cb0caf18469b2f9c52c5
 
 pkgname = nuvolaruntime-mse
 
