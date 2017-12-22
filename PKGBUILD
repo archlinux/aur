@@ -1,39 +1,45 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=libde265-git
-_gitname=libde265
-pkgver=v0.1.1087.ga0c81b6
+pkgver=1.0.2.r174.g1df1dfe3
 pkgrel=1
-pkgdesc="Open h.265 video codec implementation"
+pkgdesc='Open H.265 video codec implementation (git version)'
 arch=('i686' 'x86_64')
-url="https://github.com/strukturag/libde265"
+url='https://github.com/strukturag/libde265/'
 license=('LGPL3')
-depends=( "glibc" )
-makedepends=( 'git')
-conflicts=( "$_gitname" )
-provides=( "$_gitname" )
-# The git repo is detected by the 'git:' or 'git+' beginning. The branch
-# 'pacman41' is then checked out upon cloning, expediating versioning:
-#source=('git+https://github.com/falconindy/expac.git'
-source=( "$_gitname::git+$url" )
-# Because the sources are not static, skip Git checksum:
-md5sums=('SKIP')
+depends=('gcc-libs')
+makedepends=('git')
+provides=('libde265')
+conflicts=('libde265')
+source=("$pkgname"::'git+https://github.com/strukturag/libde265.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  # Use the tag of the last commit
-  git describe --always | sed 's|-|.|g'
+    cd "${pkgname}"
+    
+    # git, tags available
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd $_gitname
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+    cd "$pkgname"
+    
+    ./autogen.sh
+    
+    ./configure \
+        --prefix='/usr' \
+        --enable-shared='yes' \
+        --enable-static='no' \
+        --enable-fast-install='yes' \
+        --enable-sse \
+        --disable-dec265 \
+        --disable-sherlock265
+    
+    make
 }
 
 package() {
-  cd $_gitname
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-  find "$pkgdir" -name "*.la" -delete
+    cd "$pkgname"
+    make DESTDIR="$pkgdir" install
 }
