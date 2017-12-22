@@ -24,9 +24,9 @@ index 2d8e6f6..a14166b 100644
  
 -EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE)
 +EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE) $(LINUXINCLUDE)
+ EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/netif_trans_update.c,-DVMW_NETIF_TRANS_UPDATE, )
  
  obj-m += $(DRIVER).o
- 
 diff --git a/vmnet/driver.c b/vmnet/driver.c
 index 7e7ad99..5f508f6 100644
 --- a/vmnet/driver.c

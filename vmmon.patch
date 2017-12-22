@@ -50,17 +50,17 @@ new file mode 100644
 index 0000000..b68d9b2
 --- /dev/null
 +++ b/vmmon-only/include/compat_timer.h
-@@ -0,0 +1,26 @@
+@@ -0,0 +1,33 @@
 +#ifndef __COMPAT_TIMER_H__
 +#define __COMPAT_TIMER_H__
 +
 +#include <linux/timer.h>
 +
-+#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0)) && !defined(timer_setup)
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0)) && !defined(timer_setup)
 +
 +typedef unsigned long compat_timer_arg_t;
 +
-+static inline void timer_setup(struct timer_list *timer,
++static inline void compat_timer_setup(struct timer_list *timer,
 +				      void (*func)(compat_timer_arg_t),
 +				      unsigned int flags)
 +{
@@ -73,6 +73,13 @@ index 0000000..b68d9b2
 +#else /* new timer interface since 4.15 */
 +
 +typedef struct timer_list *compat_timer_arg_t;
++
++static inline void compat_timer_setup(struct timer_list *timer,
++				      void (*func)(compat_timer_arg_t),
++				      unsigned int flags)
++{
++	timer_setup(timer, func, flags);
++}
 +
 +#endif /* new timer interface since 4.15 */
 +
@@ -151,7 +158,7 @@ index 87cf45b..5390a93 100644
  
     HostIF_InitUptime();
 -   init_timer(&tscTimer);
-+   timer_setup(&tscTimer, LinuxDriverEstimateTSCkHzDeferred, 0);
++   compat_timer_setup(&tscTimer, LinuxDriverEstimateTSCkHzDeferred, 0);
     LinuxDriverInitTSCkHz();
     Vmx86_InitIDList();
  
@@ -205,44 +212,6 @@ index fd32013..583d6da 100644
  #include <linux/hrtimer.h>
  #include <linux/signal.h>
  #include <linux/taskstats_kern.h> // For linux/sched/signal.h without version check
-@@ -75,6 +79,37 @@
- #include "pgtbl.h"
- #include "versioned_atomic.h"
- 
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0)
-+#   define global_zone_page_state global_page_state
-+#endif
-+
-+static unsigned long get_nr_slab_unreclaimable(void)
-+{
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
-+   return global_node_page_state(NR_SLAB_UNRECLAIMABLE);
-+#else
-+   return global_page_state(NR_SLAB_UNRECLAIMABLE);
-+#endif
-+}
-+
-+static unsigned long get_nr_unevictable(void)
-+{
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
-+   return global_node_page_state(NR_UNEVICTABLE);
-+#else
-+   return global_page_state(NR_UNEVICTABLE);
-+#endif
-+}
-+
-+static unsigned long get_nr_anon_mapped(void)
-+{
-+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
-+   return global_node_page_state(NR_ANON_MAPPED);
-+ #else
-+   return global_page_state(NR_ANON_PAGES);
-+ #endif
-+}
-+
- #if !defined(CONFIG_HIGH_RES_TIMERS)
- #error CONFIG_HIGH_RES_TIMERS required for acceptable performance
- #endif
 @@ -115,6 +149,10 @@
   */
  #define LOCKED_PAGE_SLACK 10000
@@ -254,28 +223,7 @@ index fd32013..583d6da 100644
  static struct {
     Atomic_uint64     uptimeBase;
     VersionedAtomic   version;
-@@ -1516,16 +1555,11 @@ HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
-    unsigned int reservedPages = MEMDEFAULTS_MIN_HOST_PAGES;
-    unsigned int hugePages = (vm == NULL) ? 0 :
-       BYTES_2_PAGES(vm->memInfo.hugePageBytes);
--   unsigned int lockedPages = global_page_state(NR_PAGETABLE) +
--                              global_page_state(NR_SLAB_UNRECLAIMABLE) +
--                              global_page_state(NR_UNEVICTABLE) +
-+   unsigned int lockedPages = global_zone_page_state(NR_PAGETABLE) +
-+                              get_nr_slab_unreclaimable() +
-+                              get_nr_unevictable() +
-                               hugePages + reservedPages;
--   unsigned int anonPages =
--#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
--      global_page_state(NR_ANON_MAPPED);
--#else
--      global_page_state(NR_ANON_PAGES);
--#endif
-+   unsigned int anonPages = get_nr_anon_mapped();
-    unsigned int swapPages = BYTES_2_PAGES(linuxState.swapSize);
- 
-    if (anonPages > swapPages) {
-@@ -1688,7 +1723,7 @@ HostIFReadUptimeWork(unsigned long *j)  // OUT: current jiffies
+@@ -1705,7 +1714,7 @@ HostIFReadUptimeWork(unsigned long *j)  // OUT: current jiffies
   */
  
  static void
@@ -284,13 +232,13 @@ index fd32013..583d6da 100644
  {
     unsigned long jifs;
     uintptr_t flags;
-@@ -1750,8 +1785,7 @@ HostIF_InitUptime(void)
+@@ -1767,8 +1776,7 @@ HostIF_InitUptime(void)
                    -(tv.tv_usec * (UPTIME_FREQ / 1000000) +
                      tv.tv_sec * UPTIME_FREQ));
  
 -   init_timer(&uptimeState.timer);
 -   uptimeState.timer.function = HostIFUptimeResyncMono;
-+   timer_setup(&uptimeState.timer, HostIFUptimeResyncMono, 0);
++   compat_timer_setup(&uptimeState.timer, HostIFUptimeResyncMono, 0);
     mod_timer(&uptimeState.timer, jiffies + HZ);
  }
  

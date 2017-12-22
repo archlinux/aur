@@ -14,10 +14,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=14.0.0
-_buildver=6661328
+pkgver=14.1.0
+_buildver=7370693
 _pkgver=${pkgver}_${_buildver}
-pkgrel=3
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -88,7 +88,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  'f758e06d302b339c23f9c498d6dbf8a0182cfdfb71e4cdcc209ecfb68e20500a'
+  '522f368c3ce009b4cd442c25215b022fc09a520a668b4e3189af5194f50ca14a'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'd9a5f8b919d52aa2f279d8eaf0bb495780eb9fd8bbc2c58bba223cdca78cc991'
@@ -109,8 +109,8 @@ sha256sums=(
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
   '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  'a3a02e3daff9a122d4d7f45df9555b6e94e3030e024cc9a59890ace5252453cd'
-  '4f07320c1f9e71e649cf3e98ec107ba5521d52e50ad781ccc9dc1b61817342ae'
+  '773442cea744a6bd6420c4a0108749d33dae5ac7e7813c99a6fbfdf47963e9da'
+  '5d69ef50ed407c4948db424549ffb38321c7d1203ba6cd153f6fb3351364aa34'
 )
 options=(!strip emptydirs)
 
@@ -119,7 +119,7 @@ _isoimages=(freebsd linux linuxPreGlibc25 netware solaris windows winPre2k winPr
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=10.0.1_6754183
+_vmware_fusion_ver=10.1.0_7370838
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
@@ -133,8 +133,8 @@ source+=(
   'unlocker.py'
 )
 sha256sums+=(
-  '3aeee4ddad2e94e5dbd8da3f995ad3f887f35a241d82e8c64a22f792c159cc44'
-  '2c6076d55da659723fb7b7871baaee95df3bdcd90e448955ed1ec53df6a1f2d0'
+  '70ee05c2e6098644a619fd0e1f742facd5f234e62d7095ef99186e8af8d6b882'
+  'a18688c5ccbebe3822f71a357e879bec6dd9a5698833d13fd0f27ee72adab1fc'
   'b739b0c99fb20dc44838ce137e254773b7be051f327eb67fd8cb1342a3ecf344'
 )
 
