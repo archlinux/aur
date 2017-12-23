@@ -1,6 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-pkgname=python-sqlalchemy-git
-pkgver=1.2.0b2.106.g08430e689
+
+pkgname=('python-sqlalchemy-git' 'python2-sqlalchemy-git')
+pkgver=origin.108.g1abc8e550
 pkgrel=1
 pkgdesc="Python SQL toolkit and Object Relational Mapper"
 arch=('i686' 'x86_64')
@@ -12,20 +13,21 @@ provides=("python-sqlalchemy=$pkgver")
 conflicts=('python-sqlalchemy')
 source=("git+https://bitbucket.org/zzzeek/sqlalchemy.git")
 md5sums=('SKIP')
-_gitname="sqlalchemy"
 
 pkgver() {
- cd $srcdir/$_gitname
- git describe --tags | sed 's|[_-]|.|g'| cut -c5-
+  cd sqlalchemy
+  git describe --tags | sed 's|[_-]|.|g' |sed s/origin./r/
 }
 
-build() {
-  cd "$srcdir/$_gitname"
-  python setup.py build
+package_python-sqlalchemy-git() {
+  cd sqlalchemy
+  python setup.py install --root="$pkgdir"
+  install -D -m644 LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package() {
-  cd "$srcdir/$_gitname"
+package_python2-sqlalchemy-git() {
+  cd sqlalchemy
   python setup.py install --root="$pkgdir"
   install -D -m644 LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
