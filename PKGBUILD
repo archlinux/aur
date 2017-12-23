@@ -7,7 +7,7 @@
 # Contributor: Hinrich Harms <arch hinrich de>
 
 pkgname=icedove-enigmail
-pkgver=1.9.8.3
+pkgver=1.9.9
 pkgrel=1
 pkgdesc="Icedove extension that enables sending and receiving signed and encrypted e-mail messages"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('zip' 'python2' 'perl>=5.8')
 source=("https://www.enigmail.net/download/source/enigmail-${pkgver}.tar.gz"{,.asc}) # gpg --recv-keys 9369CDF3 DD5F693B
 validpgpkeys=('10B2E4A0E718BB1B2791DAC4F040E41B9369CDF3'
               '4F9F89F5505AC1D1A260631CDB1187B9DD5F693B')
-sha512sums=('d8c08b1824352353c7596750b801604f7216bc5a138563b1fbd5fb890901e9c7c03cb2df099c9158d6bf3125fa17c900f65fb21bc40a8ced67a6812cdc0e02d9'
+sha512sums=('39b37305362c88527d897ed95aa9d8457137d5f026359d19b838ab9df531c14099e157afdc8fefae78a6fa2ddded8dbfbeaf84eb91ac6cfbb05ae808731da2cb'
             'SKIP')
 
 build() {
