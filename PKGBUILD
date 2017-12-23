@@ -36,9 +36,6 @@ pkgver() {
 }
 
 prepare() {
-  cd pal
-  git am -3 ../0001-workaround-remove-invalid-constexpr-modifier.patch
-  cd ..
   cd xgl
   git am -3 ../0001-fix-compile-error-on-clang.patch
   git am -3 ../0001-remove-linking-with-whole-archive.patch
