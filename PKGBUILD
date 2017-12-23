@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-cap32-git
-pkgver=93.37ccb4a
+pkgver=101.3e14ceb
 pkgrel=1
 pkgdesc="libretro implementation of Caprice32 (Amstrad CPC)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -13,10 +13,8 @@ makedepends=('git')
 _libname=cap32_libretro
 _gitname=libretro-cap32
 
-source=("git+https://github.com/libretro/libretro-cap32.git"
-	"https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/cap32_libretro.info")
-sha256sums=('SKIP'
-	'SKIP')
+source=("git+https://github.com/libretro/libretro-cap32.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -30,5 +28,4 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
