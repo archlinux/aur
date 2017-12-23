@@ -4,8 +4,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-svn
-pkgver=35457
-pkgrel=2
+pkgver=35459
+pkgrel=1
 pkgdesc='Fully-featured word processor from subversion sources'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -17,14 +17,14 @@ makedepends=('asio' 'boost' 'gobject-introspection' 'python2' 'libwpd' 'subversi
 conflicts=('abiword' 'abiword-plugins')
 replaces=('abiword' 'abiword-plugins')
 options=('!makeflags')
-source=(abiword::svn+http://svn.abisource.com/abiword/trunk plugin-makefiles.m4 \
-	    aiksaurus-plugin.m4 plugin-builtin.m4 plugin-configure.m4) 
-cxxxsha256sums=('SKIP'
+source=("abiword::svn+http://svn.abisource.com/abiword/trunk"
+	'enchant-2.1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/enchant-2.1.patch?h=packages/abiword'
+	'aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword' 
+	'command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword')
+sha256sums=('SKIP'
+            '444dc2aadea3c80310a509b690097541573f6d2652c573d04da66a0f385fcfb2'
             '5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1'
-            'c2d5851f66755c8b3bae8d16988f6f85a943ca76341c735b898a3635568de10f'
-            '784508cdf5aa426258bc82c05fe79a3bbb7a0738b243b6a55a8fef58314439a6'
-            '99428d00304404e086c81ac9c2c9c68b9c5e532abae87c7b29b4bda22d85db4d'
-            )
+            '2f26826e9d59d80dacd0dae4aceb815804eaa75954e47507a0897794f33e45be')
 _svnmod=abiword
 
 pkgver() {
@@ -37,13 +37,11 @@ prepare() {
   cd ${pkgname%-svn}
   # Install missing m4 files
   install -m644 ../aiksaurus-plugin.m4 plugins/aiksaurus/plugin.m4
-  install -m644 ../plugin-builtin.m4 .
-  install -m644 ../plugin-configure.m4 .
-  install -m644 ../plugin-makefiles.m4 .
+  install -m644 ../command-plugin.m4 .
   
   # Generate m4 file for configure
   find plugins -name plugin.m4 | xargs cat > plugin-list.m4
-# yes "n"|patch -p0 < "$srcdir"/gcc7.diff || true
+  patch -Np1 < "$srcdir"/enchant-2.1.patch || true
 }
 
 build() {
@@ -71,8 +69,3 @@ package() {
   cd ${pkgname%-svn}
   make DESTDIR="$pkgdir" install
 }
-md5sums=('SKIP'
-         '5ef78931991cda6f1aa2dc83ea7cf845'
-         '8d780c2559a18d0dad5a02b11932b88c'
-         'f6f0cd4bf00c2b36ff5705d487c9a1d0'
-         '38de1c6b4d500ffb696d2f37006fdab2')
