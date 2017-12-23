@@ -2,7 +2,7 @@
 
 pkgname=oragono
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
@@ -27,7 +27,7 @@ build() {
     git submodule init 
     git config submodule.vendor.url $srcdir/oragono-vendor
     git submodule update
-    patch -p0 < ../../path.patch
+    patch -p0 < ../path.patch
     cd vendor/github.com/$pkgname
     rm -rf $pkgname
     mkdir -p $pkgname
