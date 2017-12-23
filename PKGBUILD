@@ -10,14 +10,14 @@ pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG edi
 arch=('x86_64')
 url="http://www.texmacs.org/"
 license=('GPL')
-depends=('perl' 'guile1.8' 'texlive-core' 'python2' 'libxext' 'freetype2' 'qt4' 'libiconv')
+depends=('perl' 'guile1.8' 'texlive-core' 'python2' 'libxext' 'freetype2' 'qt5-base' 'libiconv')
 # do not remove texlive-core dependency, as it is needed!
 optdepends=('transfig: convert images using fig2ps'
             'gawk: conversion of some files'
             'ghostscript: rendering ps files'
             'imagemagick: convert images'
             'aspell: spell checking')
-makedepends=('ghostscript')
+makedepends=('ghostscript' 'cmake')
 source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
         "0001-Sage-plugin-fix-which-not-found.patch"
         )
@@ -40,34 +40,28 @@ prepare() {
 
   patch -Np1 -i ../0001-Sage-plugin-fix-which-not-found.patch
 
-  autoreconf
-
   sed -i 's/env python/env python2/' \
     plugins/{mathematica/bin/realpath.py,python/bin/tm_python,sage/bin/tm_sage} \
     TeXmacs/misc/inkscape_extension/texmacs_reedit.py
   sed -i 's/"python"/"python2"/' plugins/python/progs/init-python.scm
-  sed -i '/^LDPATH/d' src/makefile.in
-
- # Don't generate icon-cache and mime-database (namcap tells that they should not be in a package)
-  sed -i '/update-mime-database/d' Makefile.in
-  sed -i '/gtk-update-icon-cache/d' Makefile.in
-  sed -i '\/icons\/gnome 2>\/dev\/null/d' Makefile.in
+  sed -e 's/-Wno-deprecated-register//' -i src/CMakeLists.txt # Remove wrong flag on Linux
 }
 
 build() {
   cd ${_pkgname}-build
 
-  ./configure --prefix=/usr \
-              --mandir=/usr/share/man \
-              --libexecdir=/usr/lib \
-              --with-guile="guile-config1.8" \
-              --with-qt=/usr/lib/qt4/bin \
-              LIBS="-ldl" CC="gcc" CXX="g++"
+  mkdir -p build
+  cd build
+
+  cmake .. \
+        -DCMAKE_BUILD_TYPE=RELEASE \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DGUILECONFIG_EXECUTABLE=/usr/bin/guile-config1.8
   make -j$(nproc)
 }
 
 package() {
-  cd ${_pkgname}-build
+  cd ${_pkgname}-build/build
   make DESTDIR=${pkgdir} install
 
   # fix fig2ps script
