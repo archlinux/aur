@@ -1,7 +1,7 @@
 # Maintainer: Kacper Łukawski <kacluk98@gmail.com>
 pkgname=logicdraw
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to perform simulations of logic gates, in which you can paint your circuit like in raster graphics editor."
 arch=('any')
 url="https://github.com/Wieku/LogicDraw"
