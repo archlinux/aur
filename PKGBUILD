@@ -16,7 +16,7 @@ buildarch=4
 
 pkgname=retroarch-rbp
 pkgver=1.6.9
-pkgrel=1.1
+pkgrel=2.1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi)'
 arch=('armv7h')
 url='http://www.libretro.com/'
@@ -53,12 +53,12 @@ backup=('etc/retroarch.cfg')
 source=("retroarch-${pkgver}.tar.gz::https://github.com/libretro/RetroArch/archive/v${pkgver}.tar.gz"
         'retroarch-config.patch')
 sha256sums=('66dde69fde9d286e3d8f6c4a5e4b947e9030044415e75b419883b454e05d78b4'
-            'f37b12754256b0bcc2f9d738f9aa1c18557fffede670a328eb0eeb2f28a32bbd')
+            '8dca43954d05ea1f989932fb26828b6e8325394eec070c4530dd21eab3f02c44')
 
 prepare() {
   cd RetroArch-${pkgver}
 
-  patch -Np1 -i ../retroarch-config.patch
+  patch -Np0 -i ../retroarch-config.patch
 }
 
 build() {
@@ -87,9 +87,8 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -dm 755 "${pkgdir}"/usr/lib/retroarch/filters/{audio,video}
-  install -m 644 libretro-common/audio/dsp_filters/*.so "${pkgdir}"/usr/lib/retroarch/filters/audio/
-  install -m 644 gfx/video_filters/*.{filt,so} "${pkgdir}"/usr/lib/retroarch/filters/video/
+  install -Dm 644 libretro-common/audio/dsp_filters/*.{dsp,so} -t "${pkgdir}"/usr/lib/retroarch/filters/audio/
+  install -Dm 644 gfx/video_filters/*.{filt,so} -t "${pkgdir}"/usr/lib/retroarch/filters/video/
 }
 
 # vim: ts=2 sw=2 et:

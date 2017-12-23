@@ -1,7 +1,7 @@
 pkgbase = retroarch-rbp
 	pkgdesc = Reference frontend for the libretro API (Raspberry Pi)
 	pkgver = 1.6.9
-	pkgrel = 1.1
+	pkgrel = 2.1
 	url = http://www.libretro.com/
 	arch = armv7h
 	groups = libretro
@@ -59,7 +59,7 @@ pkgbase = retroarch-rbp
 	source = retroarch-1.6.9.tar.gz::https://github.com/libretro/RetroArch/archive/v1.6.9.tar.gz
 	source = retroarch-config.patch
 	sha256sums = 66dde69fde9d286e3d8f6c4a5e4b947e9030044415e75b419883b454e05d78b4
-	sha256sums = f37b12754256b0bcc2f9d738f9aa1c18557fffede670a328eb0eeb2f28a32bbd
+	sha256sums = 8dca43954d05ea1f989932fb26828b6e8325394eec070c4530dd21eab3f02c44
 
 pkgname = retroarch-rbp
 
