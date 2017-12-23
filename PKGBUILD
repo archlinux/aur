@@ -31,8 +31,8 @@ build() {
 
 package() {
         install -dm755 $pkgdir/usr/bin/
-        install -dm755 $pkgdir/usr/local/share/applications/
+        install -dm755 $pkgdir/usr/share/applications/
 	install -Dm755 ${srcdir}/doomcube-$pkgver-02-R1/doomcube $pkgdir/usr/bin/
 	install -Dm755 ${srcdir}/doomcube-feed $pkgdir/usr/bin/
-	install -Dm644 ${srcdir}/doomcube.desktop $pkgdir/usr/local/share/applications/
+	install -Dm644 ${srcdir}/doomcube.desktop $pkgdir/usr/share/applications/
 }
