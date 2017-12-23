@@ -5,7 +5,7 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
@@ -15,17 +15,17 @@ depends=('yajl' 'qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' 'l
 makedepends=('boost' 'qt5-tools')
 conflicts=('mudlet-dev' 'mudlet-git' 'mudlet-deb')
 source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
-sha256sums=('5fbf01d98325418c6da917ebe77d5a0cce2d7529874fcf34acd5d4af64860bd2')
+sha256sums=('d4353f9e81f8fd7d73b3466b8ce9e57f37678afa0b46557e6963ef14aa6dae83')
 
 prepare() {
     cd "$srcdir/src"
     sed -i 's,QString path = "../src/mudlet-lua/lua/LuaGlobal.lua";,QString path = "/usr/share/mudlet/lua/LuaGlobal.lua";,' TLuaInterpreter.cpp
     sed -i 's;"mudlet.app/Contents/Resources/mudlet-lua/lua/";"mudlet.app/Contents/Resources/mudlet-lua/lua/", "/usr/share/mudlet/lua/";' mudlet-lua/lua/LuaGlobal.lua
-    sed -i 's|DEFINES += INCLUDE_UPDATER|#DEFINES += INCLUDE_UPDATER|' mudlet.pro
 }
 
 build() {
     cd "$srcdir/src"
+    WITH_UPDATER=”no”
     qmake-qt5 PREFIX=/usr
     make
 }
