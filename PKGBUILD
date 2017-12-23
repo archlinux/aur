@@ -7,39 +7,62 @@
 
 pkgbase=bacula
 _dir_backends=("${pkgbase}-dir-sqlite3" "${pkgbase}-dir-mariadb" "${pkgbase}-dir-postgresql")
-pkgname=("${pkgbase}-common" "${pkgbase}-console" "${pkgbase}-fd" "${pkgbase}-bat" "${pkgbase}-sd" "${pkgbase}-dir" ${_dir_backends[@]} "${pkgbase}-dir-mysql")
-pkgver=7.4.5
+pkgname=("${pkgbase}-common"
+         "${pkgbase}-console"
+         "${pkgbase}-fd"
+         "${pkgbase}-bat"
+         "${pkgbase}-sd"
+         "${pkgbase}-dir"
+         "${_dir_backends[@]}"
+         "${pkgbase}-dir-mysql")
+pkgver=9.0.6
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="${pkgbase^} - A Network Backup Tool "
 url="http://www.${pkgbase}.org"
 license=('AGPL3')
-optdepends=('openssl: network encryption between daemons')
-makedepends=('sqlite' 'libmariadbclient' 'postgresql-libs' 'qt4')
-source=("http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
+optdepends=('openssl-1.0: network encryption between daemons')
+makedepends=('sqlite' 'libmariadbclient' 'postgresql-libs' 'qt4' 'openssl-1.0')
+install="bacula.install"
+source=("http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
         'bacula-dir.service'
         'bacula-fd.service'
         'bacula-sd.service'
-        '00-qmake4.patch'
-        '01-basename.patch')
+        '00-qmake4.patch')
 
-sha1sums=('2fa4bae903602965b89e000ba698ed7b2f1a42c1'
-          '1a68381bd8d0b78cffe78634d160b1a287333c4e'
-          '151c6d8b06d8be029a9a50be4d6e64954c88f48c'
-          'a682cd35bf2a85fd7274f4241a91483c53c43f37'
-          '58a60e8af9b4735c564c7223c2bf0c25803927f3'
-          'ff9549b8ea326654bad5987c820f6dfd629fce54')
+sha256sums=('44db9d12dd4a510b0dfa6f8ad877ad4c0df04c13ef28f99c690a259314ee2e47'
+            'SKIP'
+            'd1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565'
+            '072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39'
+            'a5e75ee945479f9e38415d2841cf3485200d9d9374d5a68c19c13b39467ca5bb'
+            '9297335f269257093be96be88c1047237f124cd6b358b0fee17f6afaad6b5e80')
+
+# Bacula Distribution Verification Key (www.bacula.org)
+validpgpkeys=('86260C02E82A8FC5CA5FB0638363575EFBD8D142')
 
 _workdir="/var/lib/${pkgbase}"
 
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  cd autoconf
+
+  # Enable tray-monitor
+  sed -i '/src\/qt-console\/install_conf_file \\/asrc\/qt-console\/tray-monitor\/install_conf_file \\\
+src\/qt-console\/tray-monitor\/bacula-tray-monitor.conf \\' configure.in
+
+  # Configure openssl assumes a structure $base/{lib,include}, but Arch has /usr/{lib,include}/openssl-1.0
+  sed -Ei 's/\$with_openssl_directory\/(lib|include)/\$with_openssl_directory\/\1\/openssl-1.0/g' configure.in
+
+  autoconf configure.in > ../configure
+  cd ..
+
   patch -Np3 -i "${srcdir}/00-qmake4.patch" || true
-  patch -Np2 -i "${srcdir}/01-basename.patch" || true
 }
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
+
   ./configure                                \
     --enable-bat                             \
     --enable-smartalloc                      \
@@ -54,41 +77,54 @@ build() {
     --with-systemd=/usr/lib/systemd/system   \
     --with-logdir=/var/log/${pkgbase}        \
     --with-working-dir="${_workdir}"         \
+    --with-openssl=/usr                      \
     --with-x
 
+  make
   make DESTDIR="${srcdir}/install" install
+
+  # Apparently the configure scripts don't have an option to enable building this program
+  cd src/qt-console/tray-monitor
+  chmod +x install_conf_file
+  qmake-qt4
+  make
+  make DESTDIR="${srcdir}/install" install
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 }
 
 package_bacula-bat() {
   pkgdesc+="(management GUI)"
   backup=("etc/${pkgbase}/bat.conf")
   depends=("${pkgbase}-common=${pkgver}" 'qt4')
-  install="bacula.install"
 
   cd "${srcdir}/install"
   cp --parents -a usr/bin/bat "${pkgdir}"
+  cp --parents -a usr/bin/bacula-tray-monitor "${pkgdir}"
   cp --parents -a etc/${pkgbase}/bat.conf "${pkgdir}"
+  cp --parents -a etc/${pkgbase}/bacula-tray-monitor.conf "${pkgdir}"
   cp --parents -a usr/share/man/man1/bat.1.gz "${pkgdir}"
 
-  chmod 755 "${pkgdir}/etc/${pkgbase}" "${pkgdir}/usr/bin/bat"
-  chmod 644 "${pkgdir}/etc/${pkgbase}/bat.conf"
+  chmod 755 "${pkgdir}/etc/${pkgbase}" "${pkgdir}/usr/bin/bat" "${pkgdir}/usr/bin/bacula-tray-monitor"
+  chmod 644 "${pkgdir}/etc/${pkgbase}/bat.conf" "${pkgdir}/etc/${pkgbase}/bacula-tray-monitor.conf"
 
   mkdir -p "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/pixmaps"
   cp -a "${srcdir}/${pkgbase}-${pkgver}/scripts/bat.desktop" "${pkgdir}/usr/share/applications/"
+  cp -a "${srcdir}/${pkgbase}-${pkgver}/scripts/bacula-tray-monitor.desktop" "${pkgdir}/usr/share/applications/"
   cp -a "${srcdir}/${pkgbase}-${pkgver}/src/qt-console/images/bat_icon.png" "${pkgdir}/usr/share/pixmaps/"
 }
 
 package_bacula-fd() {
   pkgdesc+="(file daemon)"
   backup=("etc/${pkgbase}/${pkgname}.conf")
-  install="bacula.install"
-  optdepends=('openssl: network encryption between daemons'
+  optdepends=('openssl-1.0: network encryption between daemons'
               'lzo: LZO compression for Storage Daemon')
   depends=("${pkgbase}-common=${pkgver}")
 
   cd "${srcdir}/install"
   cp --parents -a etc/${pkgbase}/${pkgname}.conf "${pkgdir}"
   cp --parents -a usr/bin/${pkgname} "${pkgdir}"
+  cp --parents -a usr/bin/bfdjson "${pkgdir}"
   cp --parents -a usr/lib/bpipe-fd.so "${pkgdir}"
   cp --parents -a usr/share/man/man8/${pkgname}.8.gz "${pkgdir}"
 
@@ -118,11 +154,11 @@ package_bacula-common() {
 package_bacula-console() {
   pkgdesc+="(management CLI)"
   backup=("etc/${pkgbase}/bconsole.conf")
-  install="bacula.install"
   depends=("${pkgbase}-common=${pkgver}")
 
   cd "${srcdir}/install"
   cp --parents -a usr/bin/bconsole "${pkgdir}"
+  cp --parents -a usr/bin/bbconsjson "${pkgdir}"
   cp --parents -a etc/${pkgbase}/bconsole.conf "${pkgdir}"
   cp --parents -a usr/share/man/man8/bconsole.8.gz "${pkgdir}"
 
@@ -133,7 +169,6 @@ package_bacula-console() {
 package_bacula-dir() {
   pkgdesc+="(Director)"
   depends=("${pkgbase}-common=${pkgver}")
-  install="bacula.install"
   optdepends=("${pkgname}-sqlite3: SQLite support"
               "${pkgname}-mariadb: MariaDB support"
               "${pkgname}-postgresql: PostgreSQL support")
@@ -151,6 +186,7 @@ package_bacula-dir() {
   cp --parents -a etc/${pkgbase}/scripts/make_catalog_backup.pl "${pkgdir}"
   cp --parents -a etc/${pkgbase}/scripts/update_${pkgbase}_tables "${pkgdir}"
   cp --parents -a usr/bin/${pkgname} "${pkgdir}"
+  cp --parents -a usr/bin/bdirjson "${pkgdir}"
   cp --parents -a usr/bin/bregex "${pkgdir}"
   cp --parents -a usr/bin/bsmtp "${pkgdir}"
   cp --parents -a usr/bin/bwild "${pkgdir}"
@@ -182,7 +218,6 @@ package_bacula-dir-mariadb() {
   pkgdesc+="(Director - MariaDB support)"
   depends=("${pkgbase}-dir" 'libmariadbclient')
   conflicts=(${_dir_backends[@]/${pkgname}})
-  install="bacula.install"
   replaces=("${pkgbase}-dir-mysql")
   provides=("${pkgbase}-dir-mysql")
 
@@ -203,7 +238,6 @@ package_bacula-dir-mysql() {
 package_bacula-dir-postgresql() {
   pkgdesc+="(Director - PostgreSQL support)"
   depends=("${pkgbase}-dir" 'postgresql-libs')
-  install="bacula.install"
   conflicts=(${_dir_backends[@]/${pkgname}})
 
   cd "${srcdir}/install"
@@ -219,7 +253,6 @@ package_bacula-dir-sqlite3() {
   pkgdesc+="(Director - SQLite3 support)"
   depends=("${pkgbase}-dir" 'sqlite')
   conflicts=(${_dir_backends[@]/${pkgname}})
-  install="bacula.install"
 
   cd "${srcdir}/install"
   cp --parents -a usr/lib/libbaccats-sqlite3-${pkgver}.so "${pkgdir}"
@@ -233,9 +266,8 @@ package_bacula-dir-sqlite3() {
 package_bacula-sd() {
   pkgdesc+="(Storage Daemon)"
   backup=("etc/${pkgbase}/${pkgname}.conf")
-  install="bacula.install"
   depends=("${pkgbase}-common")
-  optdepends=('openssl: network encryption between daemons'
+  optdepends=('openssl-1.0: network encryption between daemons'
               'lzo: LZO compression for Storage Daemon')
 
   cd "${srcdir}/install"
@@ -245,7 +277,10 @@ package_bacula-sd() {
   cp --parents -a usr/bin/bls "${pkgdir}"
   cp --parents -a usr/bin/bcopy "${pkgdir}"
   cp --parents -a usr/bin/bscan "${pkgdir}"
+  cp --parents -a usr/bin/bsdjson "${pkgdir}"
   cp --parents -a usr/bin/btape "${pkgdir}"
+  cp --parents -a usr/lib/libbacsd-${pkgver}.so "${pkgdir}"
+  cp --parents -a usr/lib/libbacsd.so "${pkgdir}"
   cp --parents -a usr/share/man/man8/${pkgname}.8.gz "${pkgdir}"
   cp --parents -a usr/share/man/man8/bextract.8.gz "${pkgdir}"
   cp --parents -a usr/share/man/man8/bls.8.gz "${pkgdir}"
@@ -253,6 +288,7 @@ package_bacula-sd() {
   cp --parents -a usr/share/man/man8/bscan.8.gz "${pkgdir}"
   cp --parents -a usr/share/man/man8/btape.8.gz "${pkgdir}"
 
+  chmod +x "${pkgdir}/usr/bin"*
   mkdir -p "${pkgdir}${_workdir}"
   mkdir -p "${pkgdir}/usr/lib/systemd/system/"
   cp -f "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/"
