@@ -1,8 +1,8 @@
 # Maintainer: krypt.co <aur@>
 pkgname=kr
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
-pkgdesc="SSH using a key stored in Kryptonite"
+pkgdesc="SSH using a key stored in Krypton"
 arch=('i686' 'x86_64')
 url="https://github.com/kryptco/kr"
 license=('custom')
