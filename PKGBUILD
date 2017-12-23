@@ -3,8 +3,8 @@
 # Contributor: Bernardo Barros
 
 pkgname=csound
-pkgver=6.09.1
-pkgrel=3
+pkgver=6.10.0
+pkgrel=1
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('i686' 'x86_64')
 url="http://csound.github.io"
@@ -18,17 +18,9 @@ optdepends=('csound-doc: The Canonical Csound Reference Manual'
 # Both Libextractor and Csound install /usr/bin/extractor
 conflicts=('libextractor')
 source=("https://github.com/csound/csound/archive/${pkgver}.tar.gz"
-        "python_install_dir.patch"
         "csound.sh")
-sha256sums=('e4d2e9870d3b29305c9bc404dc93806e61420a57fc4bc69577676b4934c71777'
-            '9c13a6d416294f073e481db934c6a816170af012d3b5b8707d8699deb29bee89'
+sha256sums=('a241043521572d00ae3a926611ac52fd6a7e3fe6bafdbe707867aafe32f6d8a3'
             '23db5bda78f13d5f16eceea085bba660d7b7012a89518e477d12dfef82dbadeb')
-
-prepare() {
-  # 6.09.1 tries to install python modules in the home dir.
-  # https://github.com/csound/csound/issues/828#issuecomment-315856126
-  patch -d "csound-$pkgver" -p1 < python_install_dir.patch
-}
 
 build() {
   cd "csound-${pkgver}"
