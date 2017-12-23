@@ -1,9 +1,9 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 # Contributor: Constantin Lorenz <Cons27773964@aol.com>
 
-_tbver=7.5a8
+_tbver=7.5a10
 pkgname=sandboxed-tor-browser
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 pkgdesc="A sandboxed version of the Tor Browser"
 arch=(x86_64)
