@@ -1,8 +1,8 @@
-# Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 _pkgname=youtube-viewer
 pkgname=youtube-viewer-git
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="A command line utility for searching and streaming videos from YouTube."
 arch=('any')
