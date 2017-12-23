@@ -18,7 +18,7 @@ pkgname=(exim-heavy
          exim-lookup-pgsql
          exim-lookup-sqlite)
 pkgname=exim-heavy
-pkgver=4.89.1
+pkgver=4.90
 pkgrel=1
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -35,7 +35,7 @@ source=(ftp://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2
         exim@.service
         exim.socket
         exim-submission.socket)
-md5sums=('6e65d9fc17449dcde6254bd312c64822'
+md5sums=('29a14c4bd29b553c0dfc13036225ebdd'
          '4874006f0585253ddab027d441009757'
          'e18a535218718c5eb394ed5c9296fe06'
          'd9c6c3b4c68313d5cdec7d63670f3e21'
@@ -64,7 +64,6 @@ package_exim-heavy() {
               'exim-lookup-sqlite: for SQLite lookup support')
   provides=('smtp-server' 'smtp-forwarder')
   conflicts=('smtp-server' 'smtp-forwarder')
-  replaces=('exim-pgsql')
   backup=(etc/mail/aliases etc/mail/exim.conf etc/logrotate.d/exim)
   install=exim.install
 
@@ -160,6 +159,7 @@ package_exim-lookup-passwd() {
 
 package_exim-lookup-pgsql() {
   depends=(${pkgbase} 'postgresql-libs')
+  replaces=('exim-pgsql')
   cd "${srcdir}/${_pkgname}-${pkgver}"
   cd build-Linux-*
   install -Dm0755 lookups/pgsql.so "$pkgdir"/usr/lib/exim/lookups/pgsql.so
