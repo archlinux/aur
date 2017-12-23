@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='https://www.titanpasswordmanager.org/'
 license=('GPL')
 depends=('openssl' 'sqlite')
-makedepends=('git')
+makedepends=('gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nrosvall/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('1d87fac29da00ebb5c9432d3a2007837818b06c653a8559c43112e322a94823b')
 
