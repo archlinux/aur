@@ -3,10 +3,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=3.2
-pkgrel=3
+pkgver=3.2.1
+pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=3.2
+_wwwpkgver=3.2.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('EUPL-1.1')
@@ -36,11 +36,10 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 	$_pkgname-logtruncate.timer
 	mimic_setupVars.conf.sh
 	version.patch
-	https://github.com/pi-hole/pi-hole/commit/80e17ab72180f15ac4d5ff0044d4e8eafd95bc29.patch
   )
 
-md5sums=('12b29c41a1e8e2892da2684fea566ebb'
-         '70309212a3c77bfed2112c4f2f4f4e24'
+md5sums=('a0ff29ba87d22b695baa48194b1ebfd2'
+         '948e23bdd0fba84d69231f1ee08957cb'
          '3f1aeea43af0b192edb36b9e5484ff87'
          '7ac346581ada71187b7fd18f164bbee9'
          'a3518f54241ef2e67c17c7b144cb6a93'
@@ -51,8 +50,7 @@ md5sums=('12b29c41a1e8e2892da2684fea566ebb'
          '94d5aa0e8aa3d4170bcea71078a9da25'
          '291d3c95e445fe65caf40c3605efd186'
          'c227ffa88ddebc34cb715b73640cd845'
-         '93fe5e50cf3fcb08b24cf29b0cace85b'
-         'cc37c7f1fc27c9246b442f0464fc1886')
+         '93fe5e50cf3fcb08b24cf29b0cace85b')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
@@ -206,7 +204,6 @@ prepare() {
 
   cd "$srcdir"/"$_pkgname"-"$pkgver"
   patch -p1 -i "$srcdir"/version.patch
-  patch -p1 -i "$srcdir"/80e17ab72180f15ac4d5ff0044d4e8eafd95bc29.patch
   cd "$srcdir"
 
   sed -n "/{{corever}}/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
