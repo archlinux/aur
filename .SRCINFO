@@ -1,0 +1,18 @@
+pkgbase = python-codecov
+	pkgdesc = Hosted coverage reports for Github, Bitbucket and Gitlab
+	pkgver = 2.0.10
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/codecov
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-unittest2
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests>=2.7.9
+	depends = python-coverage
+	options = !emptydirs
+	source = https://pypi.python.org/packages/2f/f0/7953d35f10c36488451773fe0c56ec90c8703588b6d134a7434374870583/codecov-2.0.10.tar.gz
+	md5sums = 751f873eb9427e088e17f41d030fdeee
+
+pkgname = python-codecov
+
