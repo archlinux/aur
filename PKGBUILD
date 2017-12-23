@@ -3,7 +3,7 @@
 
 pkgname=pulseaudio-dlna-git
 pkgver=0.5.2.r98d762f
-pkgrel=1
+pkgrel=2
 pkgdesc="A small DLNA server which brings DLNA/UPnP support to PulseAudio (development version)"
 arch=('i686' 'x86_64')
 url="https://github.com/masmu/pulseaudio-dlna"
