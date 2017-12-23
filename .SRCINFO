@@ -1,0 +1,18 @@
+pkgbase = lzbench-git
+	pkgdesc = An in-memory benchmark of open-source LZ77/LZSS/LZMA compressors
+	pkgver = 1.7.1.r13.gdf29c60
+	pkgrel = 1
+	url = https://github.com/inikep/lzbench
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = gcc-libs
+	provides = lzbench
+	conflicts = lzbench
+	source = lzbench-git::git+https://github.com/inikep/lzbench.git
+	source = no-static.patch
+	sha256sums = SKIP
+	sha256sums = 0e3f1de18f9da318163a7c771a4c15fee38b16c2f26390ee61b51eef0d9eb19e
+
+pkgname = lzbench-git
+
