@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.17.0
-pkgrel=3
+pkgrel=4
 pkgdesc='QML based X11 and Wayland display manager'
 arch=('x86_64')
 url='http://github.com/sddm/sddm'
@@ -47,5 +47,5 @@ package() {
   mv "$pkgdir"/{etc/sddm.conf,usr/lib/sddm/sddm.conf.d}
 
 # Don't set PATH in sddm.conf
-  sed -r 's|DefaultPath=.*|DefaultPath=|g' -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/sddm.conf
+  sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/sddm.conf
 }
