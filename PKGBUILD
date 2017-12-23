@@ -3,10 +3,10 @@
 
 pkgname=ibus-uniemoji
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple input method for ibus that allows you to enter unicode emoji and other symbols by name"
 arch=(i686 x86_64)
-url="https://github.com/lalomartins/ibus-uniemoji"
+url="https://github.com/salty-horse/ibus-uniemoji"
 license=('GPL')
 depends=('python' 'libibus')
 conflicts=('ibus-uniemoji-git')
