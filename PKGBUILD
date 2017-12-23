@@ -1,21 +1,19 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='python-termstyle'
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Console colouring for Python"
 arch=('x86_64')
-url="https://pypi.python.org/pypi/python-termstyle"
+url="https://pypi.python.org/pypi/termstyle"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
-provides=('python-termstyle')
-conflicts=('python-termstyle')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/b3/b0/97086bb087d660cbdb9c0b0dbaa0548ebd9ba9d5e4701bc09b862228110d/${pkgname}-${pkgver}.tar.gz")
-md5sums=('1b227cebbeda209029252420af72e5c7')
+source=("https://pypi.python.org/packages/65/53/4dfdfe12b499f375cc78caca9cf146c01e752bab7713de4510d35e3da306/termstyle-${pkgver}.tar.gz")
+md5sums=('b6ec81a1c7ebe06f139ce3c294bd3ff8')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/termstyle-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
