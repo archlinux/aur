@@ -1,0 +1,11 @@
+--- a/Makefile	2017-06-03 16:15:45.242782528 +0200
++++ b/Makefile	2017-06-03 16:16:02.362922046 +0200
+@@ -148,7 +148,7 @@
+ 
+ dash_I_args = $(LP_CFLAGS) $(GMP_CFLAGS)
+ 
+-CFLAGS = $(OPTFLAGS) $(DEBUG_FLAGS) $(dash_I_args) -Wall -Werror
++CFLAGS = $(OPTFLAGS) $(DEBUG_FLAGS) $(dash_I_args) -Wall -Wno-unused-but-set-variable
+ 
+ PROGRAMS = \
+ 	analyze_ckpt \
