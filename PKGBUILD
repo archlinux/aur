@@ -1,8 +1,8 @@
 # Maintainer: liberodark
 
 pkgname=frostwire
-pkgver=6.6.0
-pkgrel=248
+pkgver=6.6.1
+pkgrel=249
 pkgdesc="FrostWire is a free and easy Downloader, BitTorrent Client and Media Player"
 arch=('x86_64')
 url="http://www.frostwire.com"
@@ -14,7 +14,7 @@ source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('03cb518e110d09dfe9eb3391d43bb61516f12afe45a94fec022747c9a45e482598935912b687480c6423b1cae1550de5e87e6ad0119f2067f961b6e5e6cd5b9a'
          'f0172d8d8435ddbc96e3f3e8ce6f09869ade1b9a32ef3930ae2f8b2522af121f6b2d37e9e8eb081561715845d9bb73f027c848a3756126d3ac989a861bfe2a4e')
-sha512sums_x86_64=('31e101af22269099a63ec7041604c855349ebf0010f229ed7a02e8b07ddfaee055a1472df95af11144167a6955ca4df80557f239e0a64e37d2f5023c99f4c431')
+sha512sums_x86_64=('d3d39b9d2d93f18c3d9d12c088b7cb813743dac902704da4f5e454b3f597867073ffaea56d4f1f2463714e59e3febe2bbd53ca3c2aa5964f1c937cc93830c14e')
         
 package() {
   cd $srcdir
