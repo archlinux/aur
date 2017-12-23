@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.2.beta0.r0.g8d9c008a75
+pkgver=8.2.beta1.r0.gd3b9b396c1
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -37,7 +37,7 @@ makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhom
 source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-threejs.patch pari-stackwarn.patch
-        sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-linbox-1.5.patch sagemath-pynac-0.7.14.patch
+        sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-linbox-1.5.patch
         sagemath-matplotlib2.patch sagemath-scipy-1.0.patch sagemath-lrs.patch sagemath-ipython-prompt.patch)
 sha256sums=('SKIP'
             '39b76a189365464998cab9355d177581bc2b15dff10858f316faa85f2efa0426'
@@ -53,7 +53,6 @@ sha256sums=('SKIP'
             '28d7789b8d777922ab8871ca43b6afab751428cae875c0343d3962e6a2030b88'
             '1024f3a6a9a1a6ae96d9962bb7d1f5842f4a4a5ff5098afad81a60188b7d5160'
             'a52d03e04c9d64bb957a1f8dcdae3280ebb9450a7fd76aaf5ae5de5c6f74774f'
-            '538f7b279d72f4b67edb445d386d267f3f7022c1079031ca7ea06f6ce392c906'
             'b9ab2bb5f381ea425e8763b81b8b3a108a3951c594fb1f37f7df921e7c77e26d'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
             'c0f65534a845ba802de6196229159fe67fcc3f72f0cb1ce57d4ae5c9fe10282c'
@@ -105,8 +104,6 @@ prepare(){
   patch -p1 -i ../fes02.patch
 # fix build with linbox 1.5 https://trac.sagemath.org/ticket/24214
   patch -p1 -i ../sagemath-linbox-1.5.patch
-# fix build with pynac 0.7.14 https://trac.sagemath.org/ticket/24329
-  patch -p1 -i ../sagemath-pynac-0.7.14.patch
 # port away from deprecated and removed functions in matplotlib 2 https://trac.sagemath.org/ticket/23696
   patch -p1 -i ../sagemath-matplotlib2.patch
 
