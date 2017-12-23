@@ -1,8 +1,8 @@
 pkgbase = elektra
 	pkgdesc = Elektra is a universal hierarchical configuration store
-	pkgver = 0.8.19
-	pkgrel = 2
-	url = http://freedesktop.org/wiki/Software/Elektra
+	pkgver = 0.8.21
+	pkgrel = 1
+	url = https://www.libelektra.org
 	arch = i686
 	arch = x86_64
 	arch = lua
@@ -15,8 +15,11 @@ pkgbase = elektra
 	depends = qt5-base
 	depends = python
 	depends = curl
-	source = https://github.com/ElektraInitiative/ftp/raw/master/releases/elektra-0.8.19.tar.gz
-	sha256sums = cc14f09539aa95623e884f28e8be7bd67c37550d25e08288108a54fd294fd2a8
+	depends = boost
+	depends = dbus
+	depends = swig
+	source = https://github.com/ElektraInitiative/libelektra/archive/0.8.21.tar.gz
+	sha256sums = 4a0c226efebb51f6639ab30a49c4eacfb0a9ba7d9c8c7449a788fe8a42222c3f
 
 pkgname = elektra
 

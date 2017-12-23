@@ -1,22 +1,27 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=elektra
-pkgver=0.8.19
-pkgrel=2
+pkgver=0.8.21
+pkgrel=1
 pkgdesc="Elektra is a universal hierarchical configuration store"
-url="http://freedesktop.org/wiki/Software/Elektra"
+url="https://www.libelektra.org"
 license=("BSD")
 arch=('i686' 'x86_64' 'lua')
-depends=('libxml2' 'yajl' 'qt5-base' 'python' 'curl')
+depends=('libxml2' 'yajl' 'qt5-base' 'python' 'curl' 'boost' 'dbus' 'swig')
 makedepends=('docbook-xsl' 'cmake' 'doxygen')
-source=(https://github.com/ElektraInitiative/ftp/raw/master/releases/elektra-$pkgver.tar.gz)
-sha256sums=('cc14f09539aa95623e884f28e8be7bd67c37550d25e08288108a54fd294fd2a8')
+source=(https://github.com/ElektraInitiative/libelektra/archive/$pkgver.tar.gz)
+sha256sums=('4a0c226efebb51f6639ab30a49c4eacfb0a9ba7d9c8c7449a788fe8a42222c3f')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd ${srcdir}/lib$pkgname-$pkgver
   rm -rf build
   mkdir build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DPLUGINS="ALL" \
+        -DTOOLS="ALL" \
+        -DBUILD_STATIC=OFF \
+        -DBINDINGS="ALL" \
+        -DSWIG_EXECUTABLE="/usr/bin/swig" \
         -DLUA_PROGRAM_PATH=/usr/bin/lua \
         -DLUA_INCLUDE_DIR=/usr/include \
         -DLUA_LIBRARY=/usr/lib/liblua.so ..
@@ -25,6 +30,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver/build
+  cd ${srcdir}/lib$pkgname-$pkgver/build
   make DESTDIR=${pkgdir} install
 }
