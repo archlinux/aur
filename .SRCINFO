@@ -1,7 +1,7 @@
 pkgbase = logicdraw
 	pkgdesc = An application to perform simulations of logic gates, in which you can paint your circuit like in raster graphics editor.
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wieku/LogicDraw
 	arch = any
 	license = MIT
