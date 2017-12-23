@@ -1,6 +1,6 @@
 pkgbase = python2-sabyenc
 	pkgdesc = Python2 yEnc package optimized for use within SABnzbd
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/sabnzbd/sabyenc
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = python2-sabyenc
 	license = GPL
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://github.com/sabnzbd/sabyenc/archive/v3.3.1.tar.gz
-	md5sums = 79a1cdd2ae609c08a87b9b16acaec439
+	source = https://github.com/sabnzbd/sabyenc/archive/v3.3.2.tar.gz
+	md5sums = 2163720fcc74691722846d0e28a8e7e0
 
 pkgname = python2-sabyenc
 
