@@ -11,7 +11,7 @@ _srcname=linux-4.14
 _pkgver=4.14.8
 _rtpatchver=rt9
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -27,12 +27,12 @@ source=(
   'config'         # the main kernel config file
   '60-linux-rt.hook'  # pacman hook for depmod
   '90-linux-rt.hook'  # pacman hook for initramfs regeneration
-#  "${pkgbase}.preset"
   'linux-rt.preset'   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
   0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
   0001-drm-i915-Avoid-PPS-HW-SW-state-mismatch-due-to-rounding.patch
+  0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
   fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
 )
 validpgpkeys=(
@@ -56,6 +56,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'ac203ad289f4b0782fe94487450863aaf796cf06e60a09ee097bd8c4338c9572'
             '93f08a383189664579b07b1d7da2a54a8b758bcf03926bf4947484bb4bf4fb4c'
             'b0396825ecd293499907ad86a0eb642cd5e82e534619f95658438ee6ecff10eb'
+            'cbf586270595a89835dc02602983028f4cea80c40a43be3d4871dae4fdb46b84'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 _kernelname=${pkgbase#linux}
@@ -83,6 +84,10 @@ prepare() {
   # fix a harmless i915 boot up msg
   msg "applying 0001-drm-i915-Avoid-PPS-HW-SW-state-mismatch-due-to-rounding.patch"
   patch -Np1 -i ../0001-drm-i915-Avoid-PPS-HW-SW-state-mismatch-due-to-rounding.patch
+
+  # fix a problem with USB audio
+  msg "0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch"
+  patch -Np1 -i ../0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
 
   # add realtime patch
   msg "applying patch-${_pkgver}-${_rtpatchver}.patch"
