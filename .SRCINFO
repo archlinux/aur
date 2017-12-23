@@ -1,0 +1,22 @@
+pkgbase = python-adb
+	pkgdesc = A pure Python implementation of the Android ADB and Fastboot protocols
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = https://github.com/google/python-adb
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/a/adb/adb-1.2.0.tar.gz
+	sha512sums = 2bb02adbd43602471a48f8de92fd660835b9f0dfc41df30ebdbf6408f410ff56fc7e073b0e636ac1f1ed44aa98719e10ed64f646f5e5477d321a676c7f2f1708
+
+pkgname = python-adb
+	depends = python-libusb1
+	depends = python-rsa
+	optdepends = python-progressbar: progressbar for Fastboot
+
+pkgname = python2-adb
+	depends = python2-libusb1
+	depends = python2-m2crypto
+	optdepends = python2-progressbar: progressbar for Fastboot
+
