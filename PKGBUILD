@@ -20,12 +20,12 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir"/"$_name" || exit 1
+  cd "$srcdir"/"$_name" || exit 1
   qmake OneClickBingWallpaper.pro
   make
 }
 
 package() {
-	cd "$srcdir"/"$_name" || exit 1
+  cd "$srcdir"/"$_name" || exit 1
   make install INSTALL_ROOT="$pkgdir"
 }
