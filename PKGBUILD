@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=mingw-w64-fmt-git
-pkgver=4.0.1.r2341.d16c4d2
+pkgver=4.1.1.r2374.3193460
 pkgrel=1
 pkgdesc='An open-source formatting library for C++ (mingw-w64)'
 url='http://fmtlib.net'
@@ -14,7 +14,7 @@ provides=('mingw-w64-fmt')
 source=('git://github.com/fmtlib/fmt.git')
 sha512sums=('SKIP')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 pkgver() {
   mkdir -p build
@@ -56,7 +56,6 @@ package() {
     mkdir -p "$pkgdir"/usr/${_arch}/bin
     mv "$pkgdir"/usr/${_arch}/lib/*.dll "$pkgdir"/usr/${_arch}/bin/
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
   for _arch in ${_architectures}; do
     cd "${srcdir}/build-${_arch}-static"
