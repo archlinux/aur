@@ -1,6 +1,6 @@
 diff -ura a/browser/finder/index.js b/browser/finder/index.js
---- a/browser/finder/index.js	2017-12-03 03:51:11.000000000 +0100
-+++ b/browser/finder/index.js	2017-12-03 08:07:25.822956131 +0100
+--- a/browser/finder/index.js	2017-12-23 04:51:13.000000000 +0100
++++ b/browser/finder/index.js	2017-12-23 09:10:13.812641369 +0100
 @@ -10,7 +10,6 @@
  import NoteList from './NoteList'
  import NoteDetail from './NoteDetail'
@@ -18,17 +18,17 @@ diff -ura a/browser/finder/index.js b/browser/finder/index.js
        e.preventDefault()
      }
 diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/MarkdownNoteDetail.js
---- a/browser/main/Detail/MarkdownNoteDetail.js	2017-12-03 03:51:11.000000000 +0100
-+++ b/browser/main/Detail/MarkdownNoteDetail.js	2017-12-03 08:07:46.213091031 +0100
-@@ -14,7 +14,6 @@
+--- a/browser/main/Detail/MarkdownNoteDetail.js	2017-12-23 04:51:13.000000000 +0100
++++ b/browser/main/Detail/MarkdownNoteDetail.js	2017-12-23 09:10:34.183140928 +0100
+@@ -15,7 +15,6 @@
  import StatusBar from '../StatusBar'
  import _ from 'lodash'
  import { findNoteTitle } from 'browser/lib/findNoteTitle'
 -import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ import ConfigManager from 'browser/main/lib/ConfigManager'
  import TrashButton from './TrashButton'
  import PermanentDeleteButton from './PermanentDeleteButton'
- import InfoButton from './InfoButton'
-@@ -108,7 +107,6 @@
+@@ -111,7 +110,6 @@
            type: 'UPDATE_NOTE',
            note: note
          })
@@ -36,7 +36,7 @@ diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/Mark
        })
    }
  
-@@ -147,7 +145,6 @@
+@@ -150,7 +148,6 @@
  
    handleStarButtonClick (e) {
      const { note } = this.state
@@ -45,8 +45,8 @@ diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/Mark
      note.isStarred = !note.isStarred
  
 diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/SnippetNoteDetail.js
---- a/browser/main/Detail/SnippetNoteDetail.js	2017-12-03 03:51:11.000000000 +0100
-+++ b/browser/main/Detail/SnippetNoteDetail.js	2017-12-03 08:08:28.543371083 +0100
+--- a/browser/main/Detail/SnippetNoteDetail.js	2017-12-23 04:51:13.000000000 +0100
++++ b/browser/main/Detail/SnippetNoteDetail.js	2017-12-23 09:11:17.284197922 +0100
 @@ -17,7 +17,6 @@
  import ConfigManager from 'browser/main/lib/ConfigManager'
  import _ from 'lodash'
@@ -71,7 +71,7 @@ diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/Snipp
  
      note.isStarred = !note.isStarred
  
-@@ -274,9 +271,6 @@
+@@ -295,9 +292,6 @@
      const mode = syntax != null ? syntax.name : null
      if (mode != null) {
        snippets[index].mode = mode
@@ -81,7 +81,7 @@ diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/Snipp
      }
      this.setState({note: Object.assign(this.state.note, {snippets: snippets})})
  
-@@ -298,10 +292,6 @@
+@@ -319,10 +313,6 @@
        }, () => {
          this.save()
        })
@@ -93,8 +93,8 @@ diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/Snipp
    }
  
 diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
---- a/browser/main/Detail/TagSelect.js	2017-12-03 03:51:11.000000000 +0100
-+++ b/browser/main/Detail/TagSelect.js	2017-12-03 08:08:46.293488517 +0100
+--- a/browser/main/Detail/TagSelect.js	2017-12-23 04:51:13.000000000 +0100
++++ b/browser/main/Detail/TagSelect.js	2017-12-23 09:11:30.794529242 +0100
 @@ -3,7 +3,6 @@
  import CSSModules from 'browser/lib/CSSModules'
  import styles from './TagSelect.styl'
@@ -112,8 +112,8 @@ diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
      const newTag = this.refs.newTag.value.trim().replace(/ +/g, '_')
  
 diff -ura a/browser/main/Main.js b/browser/main/Main.js
---- a/browser/main/Main.js	2017-12-03 03:51:11.000000000 +0100
-+++ b/browser/main/Main.js	2017-12-03 08:08:59.813577963 +0100
+--- a/browser/main/Main.js	2017-12-23 04:51:13.000000000 +0100
++++ b/browser/main/Main.js	2017-12-23 09:11:46.414912313 +0100
 @@ -12,7 +12,6 @@
  import ConfigManager from 'browser/main/lib/ConfigManager'
  import modal from 'browser/main/lib/modal'
@@ -134,8 +134,8 @@ diff -ura a/browser/main/Main.js b/browser/main/Main.js
  
      this.state = {
 diff -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/CreateFolderModal.js
---- a/browser/main/modals/CreateFolderModal.js	2017-12-03 03:51:11.000000000 +0100
-+++ b/browser/main/modals/CreateFolderModal.js	2017-12-03 08:09:21.733722985 +0100
+--- a/browser/main/modals/CreateFolderModal.js	2017-12-23 04:51:13.000000000 +0100
++++ b/browser/main/modals/CreateFolderModal.js	2017-12-23 09:12:09.525479066 +0100
 @@ -6,7 +6,6 @@
  import store from 'browser/main/store'
  import consts from 'browser/lib/consts'
@@ -153,8 +153,8 @@ diff -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/Creat
        const { storage } = this.props
        const input = {
 diff -ura a/browser/main/modals/NewNoteModal.js b/browser/main/modals/NewNoteModal.js
---- a/browser/main/modals/NewNoteModal.js	2017-12-03 03:51:11.000000000 +0100
-+++ b/browser/main/modals/NewNoteModal.js	2017-12-03 08:09:38.443833536 +0100
+--- a/browser/main/modals/NewNoteModal.js	2017-12-23 04:51:13.000000000 +0100
++++ b/browser/main/modals/NewNoteModal.js	2017-12-23 09:12:29.765975435 +0100
 @@ -5,7 +5,6 @@
  import { hashHistory } from 'react-router'
  import ee from 'browser/main/lib/eventEmitter'
@@ -182,8 +182,8 @@ diff -ura a/browser/main/modals/NewNoteModal.js b/browser/main/modals/NewNoteMod
  
      dataApi
 diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modals/PreferencesModal/InfoTab.js
---- a/browser/main/modals/PreferencesModal/InfoTab.js	2017-12-03 03:51:11.000000000 +0100
-+++ b/browser/main/modals/PreferencesModal/InfoTab.js	2017-12-03 08:10:35.754212696 +0100
+--- a/browser/main/modals/PreferencesModal/InfoTab.js	2017-12-23 04:51:13.000000000 +0100
++++ b/browser/main/modals/PreferencesModal/InfoTab.js	2017-12-23 09:13:13.267042240 +0100
 @@ -3,7 +3,6 @@
  import styles from './InfoTab.styl'
  import ConfigManager from 'browser/main/lib/ConfigManager'
@@ -261,10 +261,10 @@ diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modal
      )
    }
 diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
---- a/browser/main/NoteList/index.js	2017-12-03 03:51:11.000000000 +0100
-+++ b/browser/main/NoteList/index.js	2017-12-03 08:10:51.344315838 +0100
+--- a/browser/main/NoteList/index.js	2017-12-23 04:51:13.000000000 +0100
++++ b/browser/main/NoteList/index.js	2017-12-23 09:13:27.667395388 +0100
 @@ -15,7 +15,6 @@
- import markdown from 'browser/lib/markdown'
+ import markdown from 'browser/lib/markdownTextHelper'
  import { findNoteTitle } from 'browser/lib/findNoteTitle'
  import store from 'browser/main/store'
 -import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
@@ -281,7 +281,7 @@ diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
        .catch((err) => {
 diff -ura a/package.json b/package.json
 --- a/package.json	2017-12-03 17:30:46.687839000 +0100
-+++ b/package.json	2017-12-03 17:56:10.071440319 +0100
++++ b/package.json	2017-12-23 09:13:37.387633765 +0100
 @@ -50,8 +50,6 @@
    "dependencies": {
      "@rokt33r/markdown-it-math": "4.0.2",
