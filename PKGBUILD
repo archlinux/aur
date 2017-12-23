@@ -9,7 +9,7 @@ url="http://www.frostwire.com"
 license=('custom')
 depends=('xdg-utils' 'jre8-openjdk')
 optdepends=('mplayer')
-source_x86_64=("https://github.com/frostwire/frostwire/releases/download/frostwire-desktop-${pkgver}-build-248/frostwire-${pkgver}.noarch.tar.gz")
+source_x86_64=("https://github.com/frostwire/frostwire/releases/download/frostwire-desktop-${pkgver}-build-${pkgrel}/frostwire-${pkgver}.noarch.tar.gz")
 source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('03cb518e110d09dfe9eb3391d43bb61516f12afe45a94fec022747c9a45e482598935912b687480c6423b1cae1550de5e87e6ad0119f2067f961b6e5e6cd5b9a'
