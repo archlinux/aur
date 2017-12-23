@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.14
-pkgver=4.14.5
+pkgver=4.14.8
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -16,6 +16,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config'
+        # pacman hook for depmod
+        '60-linux.hook'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
@@ -23,17 +25,22 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # patches for pci passthrough
         'add-acs-overrides.patch'
         'i915-vga-arbiter.patch'
-        0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch)
+        0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+        0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+        0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch)
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'd86eb2fd1c424fec9fbb12afacf7b783756651f5d7d0cf7ac71c3fbbbedddc9c'
+            '42eaed731b716244514b765c199e8f675d79287d7630e5c2911053ad52a1fa0a'
             'SKIP'
             'bfde21c325d39013463c38e9fa23d6d6481238b8509eea4ae38906127017e47d'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
             'c238969a3c3a44b41c868a883880d8c4dc475e457427e91c649e9f24170b2c7d'
             'eaf70cd805cdb43cf6227d354a6d54f67645b6df99e06136a8055d7494d7439c'
-            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85')
+            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85'
+            'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
+            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -42,10 +49,12 @@ validpgpkeys=(
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i ../patch-${pkgver}
+
+  # security patches
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -53,15 +62,19 @@ prepare() {
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
-  cat "${srcdir}/config" > ./.config
+  # https://bugs.archlinux.org/task/56575
+  patch -Np1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+
+  # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
+  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 
   # patches for vga arbiter fix in intel systems
-  echo '==> Applying i915 VGA arbitration patch'
   patch -p1 -i "${srcdir}/i915-vga-arbiter.patch"
 
   # Overrides for missing acs capabilities
-  echo '==> Applying ACS override patch'
   patch -p1 -i "${srcdir}/add-acs-overrides.patch"
+
+  cp -Tf ../config .config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -90,73 +103,73 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-_common_package() {
-  cd "${srcdir}/${_srcname}"
-
-  KARCH=x86
-
-  # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  _basekernel=${_basekernel%.*}
-}
-
 _package() {
-  pkgdesc="The Linux kernel and modules with patches to enable GPU passthrough with KVM"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  cd ${_srcname}
 
-  # set correct depmod command for install
-  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
-    "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
+  # get kernel version
+  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _basekernel=${_kernver%%-*}
+  _basekernel=${_basekernel%.*}
 
-  # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" ../linux.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-
-  # remove build and source links
-  rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-
-  # remove the firmware
-  rm -r "${pkgdir}/lib/firmware"
+  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
-  # add real version for building modules and running depmod from post_install/upgrade
+  # add real version for building modules and running depmod from hook
   echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
 
-  # Now we call depmod...
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
+  # remove build and source links
+  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
 
-  # move module tree /lib -> /usr/lib
-  mv -t "${pkgdir}/usr" "${pkgdir}/lib"
+  # now we call depmod...
+  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 
   # add vmlinux
-  install -Dm644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
+
+  # sed expression for following substitutions
+  local _subst="
+    s|%PKGBASE%|${pkgbase}|g
+    s|%KERNVER%|${_kernver}|g
+    s|%EXTRAMODULES%|${_extramodules}|g
+  "
+
+  # hack to allow specifying an initially nonexisting install file
+  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
+  true && install=${install}.pkg
+
+  # install mkinitcpio preset file
+  sed "${_subst}" ../linux.preset |
+    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hooks
+  sed "${_subst}" ../60-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "${_subst}" ../90-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 }
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
+  cd ${_srcname}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
@@ -166,14 +179,10 @@ _package-headers() {
 
   cp -t "${_builddir}" -a include scripts
 
-  install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
-  install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
+  install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
+  install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-  if [[ ${CARCH} = i686 ]]; then
-    install -t "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile_32.cpu
-  fi
-
-  cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
+  cp -t "${_builddir}/arch/x86" -a arch/x86/include
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
@@ -182,7 +191,6 @@ _package-headers() {
   install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
   # http://bugs.archlinux.org/task/20402
@@ -197,16 +205,13 @@ _package-headers() {
   find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
   # add objtool for external module building and enabled VALIDATION_STACK option
-  if [[ -e tools/objtool/objtool ]]; then
-    install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
-  fi
+  install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
 
   # remove unneeded architectures
   local _arch
   for _arch in "${_builddir}"/arch/*/; do
-    if [[ ${_arch} != */${KARCH}/ ]]; then
-      rm -r "${_arch}"
-    fi
+    [[ ${_arch} == */x86/ ]] && continue
+    rm -r "${_arch}"
   done
 
   # remove files already in linux-docs package
@@ -231,6 +236,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
+  cd ${_srcname}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   mkdir -p "${_builddir}"
@@ -244,7 +250,6 @@ pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
-    _common_package
     _package${_p#${pkgbase}}
   }"
 done
