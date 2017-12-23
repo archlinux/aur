@@ -1,6 +1,6 @@
 # Maintainer: Jakob Tsar-Fox <jakob@memeware.net>
 pkgname=chandere2
-pkgver=2.5.0
+pkgver=2.5.0a1
 pkgrel=2
 pkgdesc="An extremely modular asynchronous archiving tool for various imageboards, textboards, and Boorus. "
 arch=('any')

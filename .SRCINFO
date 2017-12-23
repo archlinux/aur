@@ -1,6 +1,6 @@
 pkgbase = chandere2
 	pkgdesc = An extremely modular asynchronous archiving tool for various imageboards, textboards, and Boorus.
-	pkgver = 2.5.0
+	pkgver = 2.5.0a1
 	pkgrel = 2
 	url = https://github.com/TsarFox/chandere
 	arch = any
