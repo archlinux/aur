@@ -8,9 +8,10 @@ pkgver=2.6.3
 pkgrel=1
 arch=('x86_64')
 depends=('jre8-openjdk')
+provides=('duckencoder' 'ducky-encoder-gui')
 options=('!strip')
 license=('unknown')
-url="https://github.com/hak5darren/$reponame"
+url="https://github.com/hak5darren/$_reponame"
 pkgdesc="The USB Rubber Ducky is a Human Interface Device programmable with a simple scripting language allowing penetration testers to quickly and easily craft and deploy security auditing payloads that mimic human keyboard input"
 source=("https://github.com/hak5darren/$_reponame/archive/v$pkgver.tar.gz"
 	"ducky-encoder-gui.desktop"
