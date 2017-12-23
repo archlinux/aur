@@ -1,6 +1,6 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=openlibrary
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=2
 pkgdesc="Set of various toolkits"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=(https://codeload.github.com/Kicer86/$pkgname/tar.gz/v$pkgver)
 noextract=()
-md5sums=('837712af0ec3d71d37090728cd279eb9')
+md5sums=('c6bcbd298538533bf5063f1428331756')
 
 build()
 {
