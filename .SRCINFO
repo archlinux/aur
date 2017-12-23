@@ -23,6 +23,7 @@ pkgbase = pulseaudio-dlna-git
 	depends = python2-zeroconf
 	depends = python2-pyroute2
 	depends = python2-gobject
+	depends = python2-enum34
 	optdepends = lame: MP3 transcoding support
 	optdepends = faac: AAC transcoding support
 	optdepends = flac: FLAC transcoding support
