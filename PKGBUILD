@@ -15,7 +15,7 @@ conflicts=(litecoin)
 install=litecoin-qt.install
 source=("https://github.com/litecoin-project/litecoin/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('953fd6cee2da3ed63779b2dbce8a775e76d7a926be3de5b906d40f6641a2b4d5'
+sha256sums=('4db5473be17fc707acfa4bc5d13b5c07915fa8c28b404ca0e6969fecc41744b2'
             'cfc53dc9028745358235698ddd562d3e6b4a3ea9f896f5efc1aa8cd81f595559')
 
 build() {
