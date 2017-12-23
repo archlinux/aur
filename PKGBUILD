@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python' 'python-aiohttp')
 makedepends=('python-setuptools' 'pandoc')
 source=("https://github.com/TsarFox/chandere/archive/2.5.0a1.tar.gz")
-md5sums=('94cf023035f14e52e6617bdcdffdc694')
+md5sums=('1884d6f761eeb6cc311b356b10aefda8')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
