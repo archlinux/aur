@@ -2,7 +2,7 @@
 
 pkgname=libretro-pcem-git
 pkgver=152.89b3516
-pkgrel=1
+pkgrel=2
 pkgdesc="Libretro port of PCem, based on mooch's personal fork of PCem, based on OBattler's experimental branch"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-pcem"
@@ -13,10 +13,8 @@ makedepends=('git')
 
 _libname=pcem_libretro
 _gitname=libretro-pcem
-source=("git+https://github.com/libretro/${_gitname}.git"
-	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-sha256sums=('SKIP'
-	'SKIP')
+source=("git+https://github.com/libretro/${_gitname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -30,5 +28,4 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/src/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
