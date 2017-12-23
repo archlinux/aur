@@ -37,7 +37,7 @@ pkgver() {
 prepare() {
   cd -- "$srcdir/$_pkgname"
   git submodule update --init --recursive
-  git shortlog -nse | cut -f 2- > docs/CONTRIBUTORS
+  git shortlog -nse | cut -f 2- > doc/CONTRIBUTORS
 }
 
 build() {
