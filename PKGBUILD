@@ -8,13 +8,13 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
 _headlessdeps=(seabios gnutls libpng libaio numactl jemalloc xfsprogs libnfs
-               lzo snappy curl vde2 libcap-ng spice libcacard usbredir pulseaudio)
-depends=(virglrenderer sdl2 vte3 "${_headlessdeps[@]}")
+               lzo snappy curl vde2 libcap-ng spice libcacard usbredir)
+depends=(virglrenderer sdl2 vte3 libpulse "${_headlessdeps[@]}")
 makedepends=(spice-protocol python2 ceph libiscsi glusterfs)
 source=("$url/download/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
         qemu-ga.service
