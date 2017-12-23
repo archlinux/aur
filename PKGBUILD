@@ -15,6 +15,8 @@ md5sums=('bf40612d9b1bbc69973ae0bd51cfa3b1'
          'dbc0616e552aca3bcc4781fefdceea04'
          'a4c84914036108b15892e2c60a36066f')
 validpgpkeys=()
+conflicts=('logicdraw')
+provides=('logicdraw')
 
 package() {
   cd "$srcdir"
