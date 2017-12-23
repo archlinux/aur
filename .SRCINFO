@@ -1,0 +1,20 @@
+pkgbase = one-click-bing-wallpaper-git
+	pkgdesc = A Qt-based program for setting newest Bing Wallpaper, just click the tray icon
+	pkgver = r17.efc3710
+	pkgrel = 1
+	url = https://github.com/ypingcn/BingWallpaper
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-base
+	depends = python-requests
+	depends = python-argparse
+	depends = dtkwidget
+	optdepends = feh: common WM support
+	optdepends = xfconf: xfce support
+	optdepends = glib2: deepin and cinnamon support
+	source = git+https://github.com/ypingcn/BingWallpaper.git
+	md5sums = SKIP
+
+pkgname = one-click-bing-wallpaper-git
+
