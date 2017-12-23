@@ -1,6 +1,6 @@
 pkgbase = stack-static
 	pkgdesc = The Haskell Tool Stack (linked statically)
-	pkgver = 1.6.1
+	pkgver = 1.6.3
 	pkgrel = 1
 	arch = x86_64
 	license = custom:BSD3
@@ -12,12 +12,12 @@ pkgbase = stack-static
 	replaces = stack
 	replaces = haskell-stack
 	source = stack.bash
-	source = https://github.com/commercialhaskell/stack/releases/download/v1.6.1/stack-1.6.1-linux-x86_64-static.tar.gz
-	source = https://github.com/commercialhaskell/stack/releases/download/v1.6.1/stack-1.6.1-linux-x86_64-static.tar.gz.asc
+	source = https://github.com/commercialhaskell/stack/releases/download/v1.6.3/stack-1.6.3-linux-x86_64-static.tar.gz
+	source = https://github.com/commercialhaskell/stack/releases/download/v1.6.3/stack-1.6.3-linux-x86_64-static.tar.gz.asc
 	validpgpkeys = C5705533DA4F78D8664B5DC0575159689BEFB442
 	sha256sums = df46833a748574d01f38d4120e5021ee6fac9b8a70995674ca0bd2cacbd3e3c2
-	sha256sums = 5f7ad6f2934561beb296d472f77034033c38a89a2ec2aeba78edcbb0034af80e
-	sha256sums = 5b47f386e12f35176e84fa3f888a499014411b7f21df222cbdc7354eaae84507
+	sha256sums = c16b6b1fc31edb203dac9cd3745872c25ea088f12ca19dffb368de73e8b2b89b
+	sha256sums = 0d8f006968e03bdf253e392d8ceb0f406e8638eb95e848aee629ed0fda5ee7cb
 
 pkgname = stack-static
 
