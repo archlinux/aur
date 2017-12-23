@@ -3,26 +3,16 @@
 
 pkgname=audacity-git
 _pkgname=audacity
-pkgver=2.1.2.r1722.g2fef7f34
+pkgver=2.2.1.r31.gdb4528069
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
 url="http://www.audacityteam.org/"
 license=('GPL')
-depends=('desktop-file-utils'
-         'ffmpeg'
-         'lame'
-         'libid3tag'
-         'libmad'
-         'lilv'
-         'portsmf'
-         'sbsms'
-         'soundtouch'
-         'vamp-plugin-sdk'
-         'webkitgtk2'
-         'wxgtk')
+depends=('libmad' 'libid3tag' 'wxgtk3' 'lame' 'soundtouch'
+         'ffmpeg' 'vamp-plugin-sdk' 'portsmf' 'twolame' 'suil' 'lilv')
+makedepends=('cmake')
 optdepends=('audacity-extras: nyquist plugins for audacity')
-makedepends=('cmake' 'python2' 'twolame')
 options=('!makeflags')
 provides=('audacity')
 conflicts=('audacity')
@@ -36,7 +26,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  ./configure --prefix=/usr --with-libsamplerate
+  WX_CONFIG=wx-config-gtk3 ./configure --prefix=/usr --with-libsamplerate
   make
 }
 
