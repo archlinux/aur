@@ -6,11 +6,11 @@
 #_with_usermode=1
 
 pkgname=mock
-_pkgver=1.4.7
+_pkgver=1.4.8
 _rpmrel=1
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
-pkgrel=2
+pkgrel=1
 pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
@@ -29,7 +29,7 @@ backup=("etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('1f197683cfc54ca6c5bec85b04bbdec3'
+md5sums=('d18f29762862dc50f4bf3c2c846a6f6c'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
