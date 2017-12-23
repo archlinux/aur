@@ -1,0 +1,33 @@
+pkgbase = gcstar-gitlab
+	pkgdesc = A collection management application
+	pkgver = 1.7.1.1
+	pkgrel = 1
+	url = https://gitlab.com/Kerenoc/GCstar
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = gtk2-perl
+	depends = perl-libwww
+	depends = perl-xml-simple
+	depends = perl-net-snmp
+	depends = perl-xml-parser
+	depends = perl-switch
+	depends = perl-xml-libxml
+	depends = perl-sort-naturally
+	depends = perl-http-message
+	depends = perl-http-date
+	depends = perl-http-cookies
+	depends = perl-gd
+	depends = perl-date-calc
+	depends = perl-lwp-protocol-https
+	depends = perl-archive-zip
+	depends = perl-datetime-format-strptime
+	depends = perl-gdgraph
+	depends = perl-mp3-info
+	provides = gcstar
+	conflicts = gcstar
+	source = git+https://gitlab.com/Kerenoc/GCstar.git
+	md5sums = SKIP
+
+pkgname = gcstar-gitlab
+
