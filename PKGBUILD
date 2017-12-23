@@ -10,7 +10,7 @@ source=(frps.service frpc.service "https://github.com/fatedier/frp/releases/down
 arch=('x86_64')
 md5sums=('6f9c6681357f3f984983457151d7f0c5'
          'd704eacd9f769de32c8ab2c875d9f34a'
-         'e2b44adbe40d24ef44514013d7463410')
+         '506964755339ef478e91d913bb2a680b')
 install=$pkgname.install
 
 package() {
