@@ -2,7 +2,7 @@
 
 _pkgname=blitzloop
 pkgname="$_pkgname-git"
-pkgver=r205.7fb0fd2
+pkgver=r216.c2791c8
 pkgrel=1
 pkgdesc='Open source karaoke software'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ url='https://github.com/marcan/blitzloop'
 license=('GPL')
 depends=('python-opengl' 'python-pympv' 'python-paste' 'python-numpy'
          'python-freetype-py' 'python-bottle' 'python-pillow'
-         'python-configargparse')
+         'python-configargparse' 'python-jaconv')
 optdepends=('python-ffms: for blitzloop-record'
             'jack: for microphone feedback')
 provides=("$_pkgname")
