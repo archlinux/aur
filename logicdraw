@@ -1,0 +1,4 @@
+#!/bin/sh
+mkdir -p $HOME/.local/share/logicdraw/
+cd $HOME/.local/share/logicdraw/
+exec /usr/bin/java -jar '/usr/share/logicdraw/logicdraw.jar' "$@"

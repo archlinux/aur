@@ -1,0 +1,21 @@
+pkgbase = logicdraw-git
+	pkgdesc = An application to perform simulations of logic gates, in which you can paint your circuit like in raster graphics editor.
+	pkgver = r101.1d8805f
+	pkgrel = 1
+	url = https://github.com/Wieku/LogicDraw
+	arch = any
+	license = MIT
+	depends = java-environment
+	depends = libgl
+	depends = gradle
+	provides = logicdraw
+	conflicts = logicdraw
+	source = git+https://github.com/Wieku/LogicDraw.git
+	source = logicdraw
+	source = logicdraw.desktop
+	md5sums = SKIP
+	md5sums = dbc0616e552aca3bcc4781fefdceea04
+	md5sums = a4c84914036108b15892e2c60a36066f
+
+pkgname = logicdraw-git
+
