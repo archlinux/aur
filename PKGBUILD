@@ -1,11 +1,11 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=mkchromecast
-pkgver=0.3.7.1
+pkgver=0.3.8
 pkgrel=1
 pkgdesc='Cast Audio/Video to your Google Cast and Sonos Devices'
 arch=('any')
-url="http://$pkgname.com"
+url=http://mkchromecast.com
 license=('MIT')
 depends=('faac' 'flac' 'gi' 'lame' 'python-flask' 'python-psutil'
          'python-pychromecast' 'sox' 'vorbis-tools')
@@ -20,16 +20,8 @@ optdepends=('alsa-utils: to cast with ALSA'
             'python-soco: Sonos support'
             'youtube-dl: YouTube support')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/muammar/$pkgname/archive/$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/muammar/$pkgname/8ec3f90c0f7231758fdddb704233db0edc8b8ef2/"{$pkgname.desktop,man/$pkgname.1})
-sha512sums=('40d00cf42133cf385165aad6c8822991b200d3ac499f811ea399ec33101a2f8c1fccadf7382b774878ee53905ede3095c9a6eb40a4091401c06c3ae7a238cdf9'
-            '7477ea47368d3105ef9e4ba6a44138d81bb494ae7f711e26626d3ecda740fb4d9805cc3dcedafa9aa4450d3be70ef2465ce9cc0cd5291ca94fa795a7c1537ab9'
-            'f3d3e391d6f45ee37bafc600699388c533e202a28a529d23f058e9177f0c830daa89802892707fda0ed14667fae4060b24c44157b35ee000943f8c3a683c7e3e')
-
-prepare() {
-  cd $pkgname-$pkgver
-  sed -i '170,171d' $pkgname/cast.py # Workaround minor TypeError exception
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/muammar/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('fa3c3924027c3008f61a4adc691643ff6051446c8bbc818faa863b60ceb61255da7f393df5250e75ac54cb61a892f02b7edc97bd50fd350dd4073e584fc25269')
 
 package() {
   cd $pkgname-$pkgver
@@ -40,9 +32,9 @@ package() {
   cp -a --parents images/google* $pkgname nodejs "$pkgdir"/usr/share/$pkgname
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 ../$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
   install -Dm644 images/$pkgname.xpm "$pkgdir"/usr/share/pixmaps/$pkgname.xpm
-  install -Dm644 ../$pkgname.1 "$pkgdir"/usr/share/man/man1/$pkgname.1
+  install -Dm644 man/$pkgname.1 "$pkgdir"/usr/share/man/man1/$pkgname.1
 }
 
 # vim:set ts=2 sw=2 et:
