@@ -1,5 +1,9 @@
 post_install() {
-  update-desktop-database -q usr/share/xde/applications usr/share/xde/fallback
+  update-desktop-database -q \
+	  usr/share/xde/applications \
+	  usr/share/xde/fallback \
+	  usr/share/xde/dockapps \
+	  usr/share/xde/trayicons
 }
 
 post_upgrade() {
