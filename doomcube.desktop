@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DoomCube
+GenericName=Network Modelor
+Comment=Plots network connections as coordinates on a three-dimensional graph.
+Exec=sh -c 'doomcube-feed | doomcube'
+Icon=preferences-system-network
+Categories=Network;System;
+Keywords=Network;System;
