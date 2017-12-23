@@ -1,7 +1,7 @@
 pkgbase = libretro-beetle-psx-git
 	pkgdesc = Sony PlayStation core
-	pkgver = 1845
-	pkgrel = 2
+	pkgver = 1845.a28b1bb
+	pkgrel = 1
 	url = https://github.com/libretro/beetle-psx-libretro
 	arch = x86_64
 	arch = i686

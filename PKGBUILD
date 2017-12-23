@@ -3,8 +3,8 @@
 
 pkgbase=libretro-beetle-psx-git
 pkgname=('libretro-beetle-psx-git' 'libretro-beetle-psx-hw-git')
-pkgver=1845
-pkgrel=2
+pkgver=1845.a28b1bb
+pkgrel=1
 pkgdesc='Sony PlayStation core'
 arch=('x86_64' 'i686')
 url='https://github.com/libretro/beetle-psx-libretro'
@@ -19,7 +19,7 @@ conflicts=('libretro-mednafen-psx-git' 'libretro-mednafen-psx-hw-git')
 
 pkgver() {
 	cd libretro-beetle-psx
-	git rev-list --count HEAD
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
