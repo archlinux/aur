@@ -1,12 +1,12 @@
-# Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="A Gtk2 application for searching and streaming videos from YouTube (-git version)."
 arch=('any')
-url="https://github.com/trizen/youtube-viewer"
+url="https://github.com/trizen/${_pkgname}"
 license=('Artistic2.0')
 makedepends=('git' 'perl-module-build')
 
@@ -29,16 +29,16 @@ optdepends=(
             'gnome-icon-theme: for icons in menus'
             )
 
-source=('git://github.com/trizen/youtube-viewer.git')
-md5sums=('SKIP')
+source=("git://github.com/trizen/${_pkgname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd $_pkgname
+    cd "$_pkgname"
     git describe --always | sed -e 's|-|.|g'
 }
 
 package() {
-    cd $_pkgname
+    cd "$_pkgname"
     /usr/bin/perl Build.PL --destdir "$pkgdir" --installdirs vendor --gtk
     ./Build
     ./Build test
