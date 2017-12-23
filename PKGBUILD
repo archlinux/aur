@@ -2,7 +2,7 @@
 
 pkgname=doomcube
 pkgver=2011
-pkgrel=2
+pkgrel=3
 pkgdesc="The GPL Cube of Potential Doom."
 arch=('i686' 'x86_64')
 url="https://www.kismetwireless.net/doomcube/"
@@ -13,7 +13,7 @@ source=(http://www.kismetwireless.net/code/doomcube-$pkgver-02-R1.tar.gz
 	doomcube-feed
 	quiet.patch)
 sha512sums=('d79794973a836351de87fe4161e9e9d33d48c2235ebe8c6e8d15e23a395e15127023f61f20df37b2fe4af962da3dcb0abca66b63c65b30d6aedc76b4e2a484d9'
-            '96e810d5a0d2b1a45228830aa912083e32e0174c2ed7b0caa67fce302cb0a5596741d4ef82aaddb1243a9329aa6cfe7218104fc7c1c7d908784f187e18c75c9d'
+            '4a90c11dbf06b398243b5e8d8c9afa460f565583530f3e11f0b6d38adc6bd84c81ff666351a6b235bde68acf596b3012e7389f88baa710e95ee1bedb174d442c'
             'd6070617e200cf36fc7d3d04c937e39a01bae40119daca46582806557d43f87105244550b7af2908e54f5413b970a62cb4ef9f7951ae07a66bfdd7b64778fba2')
 
 prepare() {
