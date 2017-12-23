@@ -1,0 +1,3 @@
+#! /usr/bin/sh
+
+java -jar /opt/USB-Rubber-Ducky/duckencoder.jar

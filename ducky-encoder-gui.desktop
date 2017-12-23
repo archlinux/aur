@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ducky Encoder GUI
+Exec=java -jar /opt/USB-Rubber-Ducky/Ducky_Encoder_GUI.jar
+Icon=ducky-encoder
+Categories=Utility;Development;
+Version=2.6.3
+Comment=Duck Encoder used in a GUI
+Comment[fr]=Duck Encoder utilisé dans une interface graphique
+Terminal=False
+Type=Application
