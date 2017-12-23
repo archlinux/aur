@@ -2,7 +2,7 @@
 
 pkgname=libretro-gw-git
 pkgver=218.8f054a1
-pkgrel=1
+pkgrel=2
 pkgdesc="gw-libretro is a libretro core that runs Game & Watch simulators"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/gw-libretro"
@@ -13,10 +13,8 @@ makedepends=('git')
 
 _libname=gw_libretro
 _gitname=gw-libretro
-source=("git+https://github.com/libretro/${_gitname}.git"
-	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-sha256sums=('SKIP'
-	'SKIP')
+source=("git+https://github.com/libretro/${_gitname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -30,6 +28,5 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
   install -Dm644 "${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
