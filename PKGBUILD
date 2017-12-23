@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=ctk-widgets-git
-pkgver=0.1.0.r5270.cfbb46a7
+pkgver=0.1.0.r5382.f904f960
 pkgrel=1
 pkgdesc='A collection of Qt Widgets for usage in biomedical imaging applications'
 arch=('i686' 'x86_64')
