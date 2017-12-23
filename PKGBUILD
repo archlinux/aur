@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.30.2
+pkgver=0.30.3
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -19,17 +19,17 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<2.0.0'
          'python-bottle>=0.12.8' 'python-bottle<0.13'
          'python-distro>=1.0.2' 'python-distro<1.2.0'
          'python-pluginbase>=0.5' 'python-pluginbase<1.0'
-         'python-pylint>=1.6.5' 'python-pylint<=1.8.0'
+         'python-pylint>=1.8.1' 'python-pylint<1.9.0'
          'python-future=0.16.0'
          'python-pygments>=2.0' 'python-pygments<3.0')
-source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "python-distro.patch")
-md5sums=('1ca3e4caa7a15dadd99563e14ed49064'
-         'b3e3f33446bf405a2b6253c2ac1b6e01')
+source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "python-pylint_python-distro.patch")
+md5sums=('3a0f50c21c0442e5fa36acc07564bb2e'
+         '4444ba04f42a4428153695c0777fcf70')
 
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 -i "${srcdir}/python-distro.patch"
+  patch -Np1 -i "${srcdir}/python-pylint_python-distro.patch"
 }
 
 build() {
