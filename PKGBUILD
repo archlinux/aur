@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20171215.10945
+pkgver=20171223.10980
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
@@ -28,15 +28,15 @@ provides=('texmacs')
 conflicts=('texmacs')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd ${_pkgname}
   LANG=en svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
 }
 
 prepare() {
-  rm -rf "${srcdir}/${_pkgname}-build"
-  svn export "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-build"
+  rm -rf ${_pkgname}-build
+  svn export ${_pkgname} ${_pkgname}-build
 
-  cd "${srcdir}/${_pkgname}-build"
+  cd ${_pkgname}-build
 
   patch -Np1 -i ../0001-Sage-plugin-fix-which-not-found.patch
 
@@ -55,7 +55,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-build"
+  cd ${_pkgname}-build
 
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
@@ -67,7 +67,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-build"
+  cd ${_pkgname}-build
   make DESTDIR=${pkgdir} install
 
   # fix fig2ps script
