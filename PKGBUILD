@@ -4,7 +4,7 @@
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
 pkgver=0.17.0.0.ga15888b
-pkgrel=2
+pkgrel=3
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
@@ -54,4 +54,7 @@ package() {
   # Move sddm.conf to /usr/lib https://bugs.archlinux.org/task/56609
   mkdir "$pkgdir"/usr/lib/sddm/sddm.conf.d
   mv "$pkgdir"/{etc/sddm.conf,usr/lib/sddm/sddm.conf.d}
+
+  # Don't set PATH in sddm.conf
+  sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/sddm.conf
 }

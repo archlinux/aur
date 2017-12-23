@@ -1,7 +1,7 @@
 pkgbase = sddm-git
 	pkgdesc = The Simple Desktop Display Manager
 	pkgver = 0.17.0.0.ga15888b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sddm/sddm
 	arch = x86_64
 	license = GPL
