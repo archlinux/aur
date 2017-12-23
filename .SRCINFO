@@ -1,8 +1,9 @@
 pkgbase = xde-helpers-git
 	pkgdesc = XDE .desktop entry helpers
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/bbidulock/xde-helpers
+	install = xde-helpers.install
 	arch = any
 	groups = xde
 	license = GPL
@@ -10,6 +11,7 @@ pkgbase = xde-helpers-git
 	depends = xde-icons
 	depends = xdg-utils
 	depends = gxmessage
+	depends = desktop-file-utils
 	provides = xde-helpers=1.2.5
 	conflicts = xde-helpers
 	source = xde-helpers-git::git+https://github.com/bbidulock/xde-helpers.git
