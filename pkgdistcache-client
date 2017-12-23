@@ -95,6 +95,9 @@ class AvahiBrowser(object):
 		return self.services
 	
 	def new_service(self, interface, protocol, name, stype, domain, flags):
+		if flags & avahi.LOOKUP_RESULT_LOCAL:
+			# The service is on this machine; ignore
+			return
 		try:
 			s = self.server.ResolveService(interface, protocol, name, stype, domain, avahi.PROTO_UNSPEC, dbus.UInt32(0))
 			service = Service(str(s[3]), str(s[2]), str(s[7]), int(s[8])) # service name, host, ip, port
