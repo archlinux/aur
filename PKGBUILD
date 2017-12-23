@@ -4,7 +4,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=nanoc
-pkgver=4.7.9
+pkgver=4.8.17
 pkgrel=1
 pkgdesc='A simple, flexible static site generator written in Ruby.'
 arch=(any)
@@ -25,11 +25,11 @@ conflicts=(ruby-nanoc3 ruby-nanoc)
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nanoc/nanoc/archive/${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('875d1d50be8546f5c465fb5d8daf0bba523923aaa5d105b671c865e82ea11139')
+sha256sums=('07541a6756617a78d62488eb18963a79f000cc645c205ec7495bc3fe51053678')
 
 build() {
   # create gem
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}/nanoc"
   gem build nanoc.gemspec
   cp "${pkgname}-${pkgver}.gem" "${srcdir}/"
   cd -
