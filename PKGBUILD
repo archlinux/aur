@@ -1,7 +1,7 @@
 # Maintainer: Hannes Schulze <projects@guidedlinux.org>
 pkgname=archmaker
 pkgver=0.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Quickly and easily create your own arch-based GNU/Linux-distribution"
 arch=('x86_64')
 url="https://archmaker.guidedlinux.org/"

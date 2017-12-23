@@ -1,7 +1,7 @@
 pkgbase = archmaker
 	pkgdesc = Quickly and easily create your own arch-based GNU/Linux-distribution
 	pkgver = 0.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://archmaker.guidedlinux.org/
 	arch = x86_64
 	license = GPL3
