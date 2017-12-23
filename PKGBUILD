@@ -1,10 +1,9 @@
 # Maintainer: Lettier <movie_monad_aur a@@at@t lettier dd.ot..t ccommm>
 
 _hkgname="movie-monad"
-_ver=0.0.2.0
+_ver=0.0.3.0
 _xrev=0
-_tree_hash="44a705fc46e66dc9e585625e535b8c7d2473af15"
-_ghc_ver="8.0.2"
+_tree_hash="0cf731e4b9a034cb27bac335018e29e6f1713499"
 
 pkgname="movie-monad"
 pkgver=${_ver}_${_xrev}
@@ -17,7 +16,7 @@ makedepends=("make" "wget" "gobject-introspection" "git" "gmp" "zlib" "ncurses")
 depends=("gtk3" "gstreamer" "gst-libav" "gst-plugins-base-libs" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad")
 options=("strip" "staticlibs")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${_ver}/${_hkgname}-${_ver}.tar.gz")
-sha256sums=('3cb2b58c6513c52e7620d0bd64196a105928259c2ce71f070b9c993f5586c431')
+md5sums=('f3bad373d1fec761b7b135200168a835')
 
 build() {
   mkdir -p "${HOME}/.local/bin"
@@ -44,7 +43,6 @@ build() {
   fi
 
   cd "${srcdir}/${_hkgname}-${_ver}"
-  wget "https://raw.githubusercontent.com/lettier/movie-monad/${_tree_hash}/makefile" -O "makefile"
   make cabal_install_relocatable_executable
 }
 
@@ -52,17 +50,18 @@ package() {
   cd "${srcdir}/${_hkgname}-${_ver}"
   wget "https://raw.githubusercontent.com/lettier/${pkgname}/${_tree_hash}/packaging/linux/generic/${pkgname}.desktop" -O "${pkgname}.desktop"
   wget "https://raw.githubusercontent.com/lettier/${pkgname}/${_tree_hash}/packaging/linux/generic/${pkgname}.svg" -O "${pkgname}.svg"
+  _GHC_VER=`stack ghc -- --numeric-version`
   mkdir -p \
     "${pkgdir}/usr/bin" \
-    "${pkgdir}/usr/lib/x86_64-linux-ghc-${_ghc_ver}" \
+    "${pkgdir}/usr/lib/x86_64-linux-ghc-${_GHC_VER}" \
     "${pkgdir}/usr/share/doc/${pkgname}" \
-    "${pkgdir}/usr/share/x86_64-linux-ghc-${_ghc_ver}/${pkgname}-${_ver}" \
+    "${pkgdir}/usr/share/x86_64-linux-ghc-${_GHC_VER}/${pkgname}-${_ver}" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps" \
     "${pkgdir}/usr/share/applications"
   cp ".cabal-sandbox/bin/${pkgname}" "${pkgdir}/usr/bin/"
-  cp ".cabal-sandbox/lib/x86_64-linux-ghc-${_ghc_ver}/"*.so "${pkgdir}/usr/lib/x86_64-linux-ghc-${_ghc_ver}/"
-  cp -R ".cabal-sandbox/share/x86_64-linux-ghc-${_ghc_ver}/${pkgname}-${_ver}" "${pkgdir}/usr/share/x86_64-linux-ghc-${_ghc_ver}/"
-  cp -R ".cabal-sandbox/share/doc/x86_64-linux-ghc-${_ghc_ver}/"* "${pkgdir}/usr/share/doc/${pkgname}/"
+  cp ".cabal-sandbox/lib/x86_64-linux-ghc-${_GHC_VER}/"*.so "${pkgdir}/usr/lib/x86_64-linux-ghc-${_GHC_VER}/"
+  cp -R ".cabal-sandbox/share/x86_64-linux-ghc-${_GHC_VER}/${pkgname}-${_ver}" "${pkgdir}/usr/share/x86_64-linux-ghc-${_GHC_VER}/"
+  cp -R ".cabal-sandbox/share/doc/x86_64-linux-ghc-${_GHC_VER}/"* "${pkgdir}/usr/share/doc/${pkgname}/"
   cp "${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
   cp "${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
 }
