@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mame2014-git
-pkgver=35198.de0b8d9587
+pkgver=35213.3d072c9659
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro implementation of late 2014/early 2015 version of MAME (0.159-ish) (Arcade)"
@@ -12,10 +12,8 @@ makedepends=('git' 'python2')
 
 _libname=mame2014_libretro
 _gitname=mame2014
-source=("git+https://github.com/libretro/${_gitname}.git"
-	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-sha256sums=('SKIP'
-	'SKIP')
+source=("git+https://github.com/libretro/${_gitname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -29,6 +27,5 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
   install -Dm644 "${_gitname}/docs/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
