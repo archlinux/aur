@@ -17,7 +17,7 @@ pkgname=vmware-workstation
 pkgver=14.1.0
 _buildver=7370693
 _pkgver=${pkgver}_${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -66,6 +66,7 @@ source=(
   "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
 
   'bootstrap'
+  'vmware-vix-bootstrap'
   'config'
   'pam.d-vmware-authd'
   'configure-initscript.sh'
@@ -91,6 +92,7 @@ sha256sums=(
   '522f368c3ce009b4cd442c25215b022fc09a520a668b4e3189af5194f50ca14a'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
+  'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
   'd9a5f8b919d52aa2f279d8eaf0bb495780eb9fd8bbc2c58bba223cdca78cc991'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
@@ -193,7 +195,7 @@ package() {
     "$pkgdir/etc"/{cups,pam.d,modprobe.d,profile.d,thnuclnt,vmware} \
     "$pkgdir/usr"/{share,bin} \
     "$pkgdir/usr/include/vmware-vix" \
-    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/"$vmware_installer_version",cups/filter,modules-load.d} \
+    "$pkgdir/usr/lib"/{vmware/{setup,lib/libvmware-vim-cmd.so},vmware-vix,vmware-ovftool,vmware-installer/"$vmware_installer_version",cups/filter,modules-load.d} \
     "$pkgdir/usr/share"/{doc/vmware-vix,licenses/"$pkgname"} \
     "$pkgdir/var/lib/vmware/Shared VMs"
 
@@ -287,6 +289,7 @@ package() {
 
   install -Dm 644 vmware-vmx/extra/modules.xml "$pkgdir/usr/lib/vmware/modules/modules.xml"
   install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
+  install -Dm 644 "$srcdir/vmware-vix-bootstrap" "$pkgdir/etc/vmware-vix/bootstrap"
 
   for hostd_file in config datastores environments proxy; do
     install -Dm 644 "$srcdir/$hostd_file.xml" "$pkgdir/etc/vmware/hostd/$hostd_file.xml"
@@ -341,20 +344,31 @@ package() {
     vmware-hostd \
     vmware-modconfig \
     vmware-modconfig-console \
+    vmware-mount \
     vmware-netcfg \
     vmware-tray \
-    vmware-unity-helper \
     vmware-vim-cmd \
     vmware-vmblock-fuse \
     vmware-vprobe \
     vmware-wssc-adminTool \
-    vmware-zenity
+    vmware-zenity \
+    #vmware-unity-helper
   do
     ln -s /usr/lib/vmware/bin/appLoader "$pkgdir/usr/lib/vmware/bin/$link"
   done
 
+  for link in \
+    vmware-mount \
+    vmware-usbarbitrator
+  do
+    ln -s /usr/lib/vmware/bin/$link "$pkgdir/usr/bin/$link"
+  done
+
   ln -s /usr/lib/vmware/icu "$pkgdir/etc/vmware/icu"
+  ln -s /usr/lib/vmware/lib/diskLibWrapper.so/diskLibWrapper.so "$pkgdir/usr/lib/diskLibWrapper.so"
+  ln -s /usr/lib/vmware/lib/libvmware-hostd.so/libvmware-hostd.so "$pkgdir/usr/lib/vmware/lib/libvmware-vim-cmd.so/libvmware-vim-cmd.so"
   ln -s /usr/lib/vmware-ovftool/ovftool "$pkgdir/usr/bin/ovftool"
+  ln -s /usr/lib/vmware-vix/libvixAllProducts.so "$pkgdir/usr/lib/libvixAllProducts.so"
 
 
   # Replace placeholder "variables" with real paths.
