@@ -3,7 +3,7 @@
 _pkgname=jdk
 pkgname=jdk-devel
 _major=10
-_build=36
+_build=37
 pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
@@ -42,7 +42,7 @@ source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/$
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
-sha256sums=('d1c718f3e53c5a810c02c52827100d154a83214d92e76af2f71711139b851603'
+sha256sums=('b38148955b0c698bd2906f093c91d90fab4b25e653eedadf73b4b0c4c383e9bb'
             '2e429abf6f14f506f8caa643eeed10921ef3c9b6820850778822f6e95a5fc956'
             'c163f149154d8a3f76ba916d49215673f3056595d857b2f2b7074e88496bbd32'
             'fd519f3ffb9ff649ae1c39674d247d9d26af2befb4ac557e885e84c3c4669950'
