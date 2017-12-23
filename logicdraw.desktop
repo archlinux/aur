@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=LogicDraw
+Comment=LogicDraw is an application to perform simulations of logic gates, in which you can paint your circuit like in raster graphics editor.
+Exec=logicdraw
+Icon=
+Terminal=false
+Type=Application
+Categories=Games;

@@ -1,0 +1,18 @@
+pkgbase = logicdraw
+	pkgdesc = LogicDraw is an application to perform simulations of logic gates, in which you can paint your circuit like in raster graphics editor.
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/Wieku/LogicDraw
+	arch = any
+	license = MIT
+	depends = java-runtime
+	depends = libgl
+	source = https://ci.wieku.me/job/LogicDraw/11/artifact/desktop/build/libs/LogicDraw-0.1.11.jar
+	source = logicdraw
+	source = logicdraw.desktop
+	md5sums = bf40612d9b1bbc69973ae0bd51cfa3b1
+	md5sums = dbc0616e552aca3bcc4781fefdceea04
+	md5sums = a4c84914036108b15892e2c60a36066f
+
+pkgname = logicdraw
+
