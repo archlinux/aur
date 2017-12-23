@@ -8,22 +8,19 @@ _libname=nxengine_libretro
 _pkgname=libretro-nxengine
 
 pkgname=${_pkgname}-git
-pkgver=r486.af3762e
+pkgver=r501.f3050ba
 pkgrel=1
 pkgdesc="libretro implementation of NXEngine. (Cave Story)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/libretro/${_gitname}"
 license=('GPL3')
-groups=('libretro')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 install=$pkgname.install
-source=("git+${url}.git"
-        "https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-md5sums=('SKIP'
-         'e3e19e32d2456b63e5d4b3a66166622f')
+source=("git+${url}.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -37,7 +34,6 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 
   mkdir -p "${pkgdir}/usr/share/libretro/${_libname}"
   cp -a "${_gitname}/datafiles" "${pkgdir}/usr/share/libretro/${_libname}"
