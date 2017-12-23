@@ -2,7 +2,7 @@
 
 pkgname=libretro-stella-git
 pkgver=193.dfe86f9
-pkgrel=1
+pkgrel=2
 pkgdesc="libretro implementation of Stella. (Atari 2600)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/stella-libretro"
@@ -12,10 +12,8 @@ makedepends=('git')
 
 _libname=stella_libretro
 _gitname=stella-libretro
-source=("git+https://github.com/libretro/${_gitname}.git"
-	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-sha256sums=('SKIP'
-	'SKIP')
+source=("git+https://github.com/libretro/${_gitname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -29,5 +27,4 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
