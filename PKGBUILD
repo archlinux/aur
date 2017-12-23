@@ -3,7 +3,7 @@ pkgver=20171222.2849_d9ce240c
 pkgrel=1
 pkgdesc="Go dependency management tool"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('Custom')
 depends=(
 )
 makedepends=(
