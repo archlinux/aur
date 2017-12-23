@@ -1,7 +1,7 @@
 pkgbase = litecoin-qt
 	pkgdesc = Peer-to-peer network based digital currency (QT)
 	pkgver = 0.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.litecoin.org/
 	install = litecoin-qt.install
 	arch = i686
