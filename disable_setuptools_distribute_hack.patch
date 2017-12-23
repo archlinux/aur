@@ -1,0 +1,21 @@
+diff -Naur ./tagpy-2013.1.orig/aksetup_helper.py ./tagpy-2013.1/aksetup_helper.py
+--- ./tagpy-2013.1.orig/aksetup_helper.py	2017-12-23 12:41:28.702669821 -0500
++++ ./tagpy-2013.1/aksetup_helper.py	2017-12-23 12:42:55.808264206 -0500
+@@ -1,6 +1,6 @@
+ # dealings with ez_setup ------------------------------------------------------
+-import distribute_setup
+-distribute_setup.use_setuptools()
++#import distribute_setup
++#distribute_setup.use_setuptools()
+ 
+ import setuptools
+ from setuptools import Extension
+@@ -18,7 +18,7 @@
+ 
+ 
+ 
+-if not hasattr(setuptools, "_distribute"):
++if not hasattr(setuptools, "_distribute") and False:
+     print("-------------------------------------------------------------------------")
+     print("Setuptools conflict detected.")
+     print("-------------------------------------------------------------------------")
