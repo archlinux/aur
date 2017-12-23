@@ -3,7 +3,7 @@
 # Contributor: xduugu
 
 pkgname=perl-docs
-pkgver=5.22.0
+pkgver=5.26.1
 pkgrel=1
 pkgdesc="Set of HTML documentation for Perl."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl')
 options=(docs !strip)
 # source=(perldoc-html-$pkgver.tar.gz::http://perldoc.perl.org/perldoc-html.tar.gz)
 source=(http://perldoc.perl.org/perldoc-html.tar.gz)
-sha256sums=('587786dfe158b9f832a02121d017a36eedd158aa47113947ebe9150c60c6c112')
+sha256sums=('c3085bea08eb04f10353a40465254874031fdf41d20436fa2b83337092708e64')
 pkgver() {
   cd "$srcdir"/perldoc-html
   perl -0777  -ne 's{.*?perl_version">(.*?)</div.*}{$1}s;s/^\s+|\s+$//g;@v=m/([\d.]+)/g;print join".",@v' index.html
