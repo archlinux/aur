@@ -2,16 +2,16 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=yle-dl-git
-pkgver=2.27.r3.gac9b2b2
+pkgver=2.30.r0.gf88b077
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=("any")
 url="http://aajanki.github.io/yle-dl/"
 license=("GPL3")
-depends=('ffmpeg' 'php' 'php-mcrypt' 'python2-pyamf' 'python2-crypto' 'python2-lxml' 'python2-requests' 'wget')
-optdepends=('python2-youtube-dl: an alternative downloader backend'
+depends=('ffmpeg' 'php' 'php-mcrypt' 'python-pyamf' 'python-crypto' 'python-future' 'python-lxml' 'python-requests' 'wget')
+optdepends=('youtube-dl: an alternative downloader backend to AdobeHDS.php'
             'rtmpdump: for downloading Areena audio streams')
-makedepends=('git' 'python2-setuptools')
+makedepends=('git' 'python-setuptools')
 provides=(${pkgname%-git}=$pkgver)
 conflicts=(${pkgname%-git})
 source=("$pkgname::git+https://github.com/aajanki/yle-dl.git")
@@ -32,5 +32,6 @@ prepare() {
 
 package() {
   cd "$pkgname"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
+
