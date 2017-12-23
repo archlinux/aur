@@ -3,7 +3,7 @@
 _libname=fmsx_libretro
 _gitname=fmsx-libretro
 pkgname=libretro-fmsx-git
-pkgver=r120.6767026
+pkgver=r123.8ca1dca
 pkgrel=1
 pkgdesc="fMSX libretro core (Microsoft MSX)."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -28,5 +28,4 @@ build() {
 
 package() {
 	install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-	install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
