@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=mingw-w64-coveo-linq-git
-pkgver=r25.94c31cf
+pkgver=r48.17764bb
 pkgrel=1
 pkgdesc="A C++ library implementing LINQ operators similar to .NET's (mingw-w64)"
 url='https://github.com/coveo/linq'
