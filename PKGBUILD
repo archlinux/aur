@@ -3,7 +3,7 @@
 
 pkgname=xfoil
 pkgver=6.99
-pkgrel=1
+pkgrel=2
 pkgdesc="Program for design and analysis of subsonic airfoils."
 arch=('i686' 'x86_64')
 url="http://web.mit.edu/drela/Public/web/xfoil/"
