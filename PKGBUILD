@@ -5,7 +5,7 @@
 
 _pkgname=lmms
 pkgname=lmms-qt5-git
-pkgver=1.2.0.rc4.r252.g3660ac9a6
+pkgver=1.2.0.rc5.r1.g20fc0ad2d
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio (Qt5 Version).'
 url='http://lmms.io'
@@ -26,7 +26,7 @@ makedepends=('qt5-tools' 'git' 'cmake' 'ninja' 'ladspa' 'raptor' 'rasqal' 'libxf
 options=('!strip')
 provides=('lmms')
 conflicts=('lmms' 'lmms-git')
-source=('git+https://github.com/LMMS/lmms.git')
+source=('git+https://github.com/LMMS/lmms.git#branch=stable-1.2')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -37,11 +37,12 @@ pkgver() {
 prepare() {
   cd -- "$srcdir/$_pkgname"
   git submodule update --init --recursive
+  git shortlog -nse | cut -f 2- > docs/CONTRIBUTORS
 }
 
 build() {
   cd -- "$srcdir/$_pkgname"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_QT5=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -GNinja
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_QT5=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -GNinja -DWANT_WEAKJACK=OFF
   ninja
 }
 
