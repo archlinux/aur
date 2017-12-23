@@ -2,7 +2,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=sk1-git
-pkgver=r3673.f9ddbf79
+pkgver=r3694.a598e935
 pkgrel=1
 pkgdesc="An open source vector graphics editor for prepress"
 url="https://sk1project.net/"
@@ -23,6 +23,8 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-*}"
+  cp src/sk1/appconst.py .
+  sed -i 's/from sk1 import appconst/import appconst/' setup-sk1.py
   export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
   LANG=en_US.UTF-8 python2 setup-sk1.py build
 }
