@@ -1,0 +1,16 @@
+pkgbase = karn
+	pkgdesc = Manage multiple Git identities with ease
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/prydonius/karn
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/prydonius/karn/archive/v0.0.3.tar.gz
+	sha256sums = a9336abe63dbf6b952e1e4a3d4c31ed62dda69aa51e53f07902edb894638162d
+
+pkgname = karn
+
