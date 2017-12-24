@@ -9,7 +9,7 @@ url='https://github.com/Kwpolska/upass'
 license=('BSD')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('2241b313ce0eaef1cfde3e1806ee7e19')
+md5sums=('d47e7a761018c140dae46c4580d354be')
 depends=('pass' 'python' 'python-setuptools' 'python-urwid' 'python-pyperclip')
 
 prepare() {
