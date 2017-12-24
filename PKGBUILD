@@ -1,10 +1,10 @@
 # Maintainer: Hexchain Tong <i at hexchain dot org>
 
 pkgname=tpm2-tools
-pkgver=3.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="TPM (Trusted Platform Module) 2.0 tools based on TPM2.0-TSS"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/intel/tpm2-tools"
 license=('BSD')
 makedepends=('git' 'autoconf-archive')
