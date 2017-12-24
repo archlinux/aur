@@ -1,0 +1,18 @@
+pkgbase = corgids-git
+	pkgdesc = A Nintendo DS emulator
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://corgids.wordpress.com/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	provides = corgids
+	options = !emptydirs
+	source = corgids::git+https://github.com/PSI-Rockin/CorgiDS.git
+	sha256sums = SKIP
+
+pkgname = corgids-git
+
