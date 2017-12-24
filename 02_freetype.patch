@@ -1,5 +1,5 @@
---- tibia-11.51.6099/start-tibia.sh
-+++ tibia-11.51.6099/start-tibia.sh
+--- tibia-11.52.6104/start-tibia.sh
++++ tibia-11.52.6104/start-tibia.sh
 @@ -6,5 +6,6 @@
  SCRIPT=$(readlink -f "$0")
  PATH=$(dirname "$SCRIPT")
