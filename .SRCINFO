@@ -1,0 +1,21 @@
+pkgbase = viewnior-hide-scrollbars
+	pkgdesc = A simple, fast and elegant image viewer program
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://xsisqox.github.com/Viewnior/
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = intltool>=0.35
+	makedepends = pkgconfig>=0.9
+	makedepends = perl>=5.8.1
+	makedepends = gnome-common
+	depends = gtk2>=2.12
+	depends = exiv2
+	provides = viewnior
+	conflicts = viewnior
+	source = https://github.com/de-vri-es/Viewnior/archive/viewnior-hide-scrollbars-1.6.tar.gz
+	md5sums = a0ecc4da01caf052dfc916e1349deb90
+
+pkgname = viewnior-hide-scrollbars
+
