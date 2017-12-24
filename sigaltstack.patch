@@ -1,0 +1,15 @@
+--- gcc-4.9.3/libsanitizer/sanitizer_common/sanitizer_stoptheworld_linux_libcdep.cc	2013-12-05 11:28:59.000000000 +0100
++++ gcc-4.9.3/libsanitizer/sanitizer_common/sanitizer_stoptheworld_linux_libcdep.cc	2017-12-24 11:41:46.217141449 +0100
+@@ -67,6 +67,12 @@
+ 
+ COMPILER_CHECK(sizeof(SuspendedThreadID) == sizeof(pid_t));
+ 
++struct sigaltstack {
++	void *ss_sp;
++	int ss_flags;
++	size_t ss_size;
++};
++
+ namespace __sanitizer {
+ // This class handles thread suspending/unsuspending in the tracer thread.
+ class ThreadSuspender {

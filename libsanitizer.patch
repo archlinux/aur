@@ -1,0 +1,25 @@
+--- gcc-4.9.3/libsanitizer/asan/asan_linux.cc	2017-12-24 11:50:02.595136715 +0100
++++ gcc-4.9.3/libsanitizer/asan/asan_linux.cc	2017-12-24 11:51:26.313135917 +0100
+@@ -30,6 +30,11 @@
+ #include <unistd.h>
+ #include <unwind.h>
+ 
++#ifndef SIGSEGV
++	#define SIGSEGV         11
++#endif
++
++
+ #if !SANITIZER_ANDROID
+ // FIXME: where to get ucontext on Android?
+ #include <sys/ucontext.h>
+--- gcc-4.9.3/libsanitizer/tsan/tsan_platform_linux.cc	2013-12-05 10:18:38.000000000 +0100
++++ gcc-4.9.3/libsanitizer/tsan/tsan_platform_linux.cc	2017-12-24 12:07:18.449126836 +0100
+@@ -351,7 +351,7 @@ bool IsGlobalVar(uptr addr) {
+ // closes within glibc. The code is a pure hack.
+ int ExtractResolvFDs(void *state, int *fds, int nfd) {
+   int cnt = 0;
+-  __res_state *statp = (__res_state*)state;
++  struct __res_state *statp = (struct __res_state*)state;
+   for (int i = 0; i < MAXNS && cnt < nfd; i++) {
+     if (statp->_u._ext.nsaddrs[i] && statp->_u._ext.nssocks[i] != -1)
+       fds[cnt++] = statp->_u._ext.nssocks[i];

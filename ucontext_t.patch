@@ -1,0 +1,177 @@
+diff -rup gcc-4.8.5_orig/libgcc/config/aarch64/linux-unwind.h gcc-4.8.5_do_diffa/libgcc/config/aarch64/linux-unwind.h
+--- gcc-4.8.5_orig/libgcc/config/aarch64/linux-unwind.h	2013-02-04 20:06:20.000000000 +0100
++++ gcc-4.8.5_do_diffa/libgcc/config/aarch64/linux-unwind.h	2017-12-22 10:25:38.533697563 +0100
+@@ -39,7 +39,7 @@ aarch64_fallback_frame_state (struct _Un
+   struct rt_sigframe
+   {
+     siginfo_t info;
+-    struct ucontext uc;
++    ucontext_t uc;
+   };
+ 
+   struct rt_sigframe *rt_;
+Only in gcc-4.8.5_do_diffa/libgcc/config/aarch64: linux-unwind.h.bak
+diff -rup gcc-4.8.5_orig/libgcc/config/alpha/linux-unwind.h gcc-4.8.5_do_diffa/libgcc/config/alpha/linux-unwind.h
+--- gcc-4.8.5_orig/libgcc/config/alpha/linux-unwind.h	2013-02-04 20:06:20.000000000 +0100
++++ gcc-4.8.5_do_diffa/libgcc/config/alpha/linux-unwind.h	2017-12-22 10:25:31.719697628 +0100
+@@ -51,7 +51,7 @@ alpha_fallback_frame_state (struct _Unwi
+     {
+       struct rt_sigframe {
+ 	siginfo_t info;
+-	struct ucontext uc;
++	ucontext_t uc;
+       } *rt_ = context->cfa;
+       sc = &rt_->uc.uc_mcontext;
+     }
+Only in gcc-4.8.5_do_diffa/libgcc/config/alpha: linux-unwind.h.bak
+diff -rup gcc-4.8.5_orig/libgcc/config/bfin/linux-unwind.h gcc-4.8.5_do_diffa/libgcc/config/bfin/linux-unwind.h
+--- gcc-4.8.5_orig/libgcc/config/bfin/linux-unwind.h	2013-02-04 20:06:20.000000000 +0100
++++ gcc-4.8.5_do_diffa/libgcc/config/bfin/linux-unwind.h	2017-12-22 10:26:38.745696988 +0100
+@@ -52,7 +52,7 @@ bfin_fallback_frame_state (struct _Unwin
+ 	void *puc;
+ 	char retcode[8];
+ 	siginfo_t info;
+-	struct ucontext uc;
++	ucontext_t uc;
+       } *rt_ = context->cfa;
+ 
+       /* The void * cast is necessary to avoid an aliasing warning.
+Only in gcc-4.8.5_do_diffa/libgcc/config/bfin: linux-unwind.h.bak
+diff -rup gcc-4.8.5_orig/libgcc/config/i386/linux-unwind.h gcc-4.8.5_do_diffa/libgcc/config/i386/linux-unwind.h
+--- gcc-4.8.5_orig/libgcc/config/i386/linux-unwind.h	2013-02-04 20:06:20.000000000 +0100
++++ gcc-4.8.5_do_diffa/libgcc/config/i386/linux-unwind.h	2017-12-22 10:27:17.437696619 +0100
+@@ -58,7 +58,7 @@ x86_64_fallback_frame_state (struct _Unw
+   if (*(unsigned char *)(pc+0) == 0x48
+       && *(unsigned long long *)(pc+1) == RT_SIGRETURN_SYSCALL)
+     {
+-      struct ucontext *uc_ = context->cfa;
++      ucontext_t *uc_ = context->cfa;
+       /* The void * cast is necessary to avoid an aliasing warning.
+          The aliasing warning is correct, but should not be a problem
+          because it does not alias anything.  */
+@@ -138,7 +138,7 @@ x86_fallback_frame_state (struct _Unwind
+ 	siginfo_t *pinfo;
+ 	void *puc;
+ 	siginfo_t info;
+-	struct ucontext uc;
++	ucontext_t uc;
+       } *rt_ = context->cfa;
+       /* The void * cast is necessary to avoid an aliasing warning.
+          The aliasing warning is correct, but should not be a problem
+Only in gcc-4.8.5_do_diffa/libgcc/config/i386: linux-unwind.h.bak
+diff -rup gcc-4.8.5_orig/libgcc/config/libbid/bid_binarydecimal.c gcc-4.8.5_do_diffa/libgcc/config/libbid/bid_binarydecimal.c
+\ No newline at end of file
+diff -rup gcc-4.8.5_orig/libgcc/config/m68k/linux-unwind.h gcc-4.8.5_do_diffa/libgcc/config/m68k/linux-unwind.h
+--- gcc-4.8.5_orig/libgcc/config/m68k/linux-unwind.h	2013-02-04 20:06:20.000000000 +0100
++++ gcc-4.8.5_do_diffa/libgcc/config/m68k/linux-unwind.h	2017-12-22 10:26:44.988696929 +0100
+@@ -33,7 +33,7 @@ see the files COPYING3 and COPYING.RUNTI
+ /* <sys/ucontext.h> is unfortunately broken right now.  */
+ struct uw_ucontext {
+ 	unsigned long	  uc_flags;
+-	struct ucontext  *uc_link;
++	ucontext_t  *uc_link;
+ 	stack_t		  uc_stack;
+ 	mcontext_t	  uc_mcontext;
+ 	unsigned long	  uc_filler[80];
+Only in gcc-4.8.5_do_diffa/libgcc/config/m68k: linux-unwind.h.bak
+diff -rup gcc-4.8.5_orig/libgcc/config/pa/linux-unwind.h gcc-4.8.5_do_diffa/libgcc/config/pa/linux-unwind.h
+--- gcc-4.8.5_orig/libgcc/config/pa/linux-unwind.h	2014-10-26 15:52:49.000000000 +0100
++++ gcc-4.8.5_do_diffa/libgcc/config/pa/linux-unwind.h	2017-12-22 10:25:44.588697505 +0100
+@@ -80,7 +80,7 @@ pa32_fallback_frame_state (struct _Unwin
+   struct sigcontext *sc;
+   struct rt_sigframe {
+     siginfo_t info;
+-    struct ucontext uc;
++    ucontext_t uc;
+   } *frame;
+ 
+   /* rt_sigreturn trampoline:
+Only in gcc-4.8.5_do_diffa/libgcc/config/pa: linux-unwind.h.bak
+diff -rup gcc-4.8.5_orig/libgcc/config/sh/linux-unwind.h gcc-4.8.5_do_diffa/libgcc/config/sh/linux-unwind.h
+--- gcc-4.8.5_orig/libgcc/config/sh/linux-unwind.h	2013-02-04 20:06:20.000000000 +0100
++++ gcc-4.8.5_do_diffa/libgcc/config/sh/linux-unwind.h	2017-12-22 10:26:30.237697070 +0100
+@@ -83,7 +83,7 @@ shmedia_fallback_frame_state (struct _Un
+ 	siginfo_t *pinfo;
+ 	void *puc;
+ 	siginfo_t info;
+-	struct ucontext uc;
++	ucontext_t uc;
+       } *rt_ = context->cfa;
+       /* The void * cast is necessary to avoid an aliasing warning.
+          The aliasing warning is correct, but should not be a problem
+@@ -180,7 +180,7 @@ sh_fallback_frame_state (struct _Unwind_
+     {
+       struct rt_sigframe {
+ 	siginfo_t info;
+-	struct ucontext uc;
++	ucontext_t uc;
+       } *rt_ = context->cfa;
+       /* The void * cast is necessary to avoid an aliasing warning.
+          The aliasing warning is correct, but should not be a problem
+Only in gcc-4.8.5_do_diffa/libgcc/config/sh: linux-unwind.h.bak
+diff -rup gcc-4.8.5_orig/libgcc/config/tilepro/linux-unwind.h gcc-4.8.5_do_diffa/libgcc/config/tilepro/linux-unwind.h
+--- gcc-4.8.5_orig/libgcc/config/tilepro/linux-unwind.h	2013-02-04 20:06:20.000000000 +0100
++++ gcc-4.8.5_do_diffa/libgcc/config/tilepro/linux-unwind.h	2017-12-22 10:26:14.634697218 +0100
+@@ -61,7 +61,7 @@ tile_fallback_frame_state (struct _Unwin
+   struct rt_sigframe {
+     unsigned char save_area[C_ABI_SAVE_AREA_SIZE];
+     siginfo_t info;
+-    struct ucontext uc;
++    ucontext_t uc;
+   } *rt_;
+ 
+   /* Return if this is not a signal handler.  */
+Only in gcc-4.8.5_do_diffa/libgcc/config/tilepro: linux-unwind.h.bak
+diff -rup gcc-4.8.5_orig/libgcc/config/xtensa/linux-unwind.h gcc-4.8.5_do_diffa/libgcc/config/xtensa/linux-unwind.h
+--- gcc-4.8.5_orig/libgcc/config/xtensa/linux-unwind.h	2013-02-04 20:06:20.000000000 +0100
++++ gcc-4.8.5_do_diffa/libgcc/config/xtensa/linux-unwind.h	2017-12-22 10:25:51.457697439 +0100
+@@ -63,7 +63,7 @@ xtensa_fallback_frame_state (struct _Unw
+ 
+   struct rt_sigframe {
+     siginfo_t info;
+-    struct ucontext uc;
++    ucontext_t uc;
+   } *rt_;
+ 
+   /* movi a2, __NR_rt_sigreturn; syscall */
+Only in gcc-4.8.5_do_diffa/libgcc/config/xtensa: linux-unwind.h.bak
+diff -rup gcc-4.8.5_orig/libiberty/configure gcc-4.8.5_do_diffa/libiberty/configure
+diff -rup gcc-4.8.5_orig/libjava/include/i386-signal.h gcc-4.8.5_do_diffa/libjava/include/i386-signal.h
+--- gcc-4.8.5_orig/libjava/include/i386-signal.h	2011-12-20 13:18:26.000000000 +0100
++++ gcc-4.8.5_do_diffa/libjava/include/i386-signal.h	2017-12-22 10:34:54.688692259 +0100
+@@ -29,7 +29,7 @@ static void _Jv_##_name (int, siginfo_t
+ #define HANDLE_DIVIDE_OVERFLOW						\
+ do									\
+ {									\
+-  struct ucontext *_uc = (struct ucontext *)_p;				\
++  ucontext_t *_uc = (struct ucontext *)_p;				\
+   gregset_t &_gregs = _uc->uc_mcontext.gregs;				\
+   unsigned char *_eip = (unsigned char *)_gregs[REG_EIP];		\
+ 									\
+Only in gcc-4.8.5_do_diffa/libjava/include: i386-signal.h.bak
+diff -rup gcc-4.8.5_orig/libjava/include/s390-signal.h gcc-4.8.5_do_diffa/libjava/include/s390-signal.h
+--- gcc-4.8.5_orig/libjava/include/s390-signal.h	2011-01-03 21:52:22.000000000 +0100
++++ gcc-4.8.5_do_diffa/libjava/include/s390-signal.h	2017-12-22 10:34:42.860692372 +0100
+@@ -51,7 +51,7 @@ do									\
+   struct                                                                \
+   {                                                                     \
+     unsigned long int uc_flags;                                         \
+-    struct ucontext *uc_link;                                           \
++    ucontext_t *uc_link;                                           \
+     stack_t uc_stack;                                                   \
+     mcontext_t uc_mcontext;                                             \
+     unsigned long sigmask[2];                                           \
+Only in gcc-4.8.5_do_diffa/libjava/include: s390-signal.h.bak
+diff -rup gcc-4.8.5_orig/libjava/include/x86_64-signal.h gcc-4.8.5_do_diffa/libjava/include/x86_64-signal.h
+--- gcc-4.8.5_orig/libjava/include/x86_64-signal.h	2013-01-04 13:49:55.000000000 +0100
++++ gcc-4.8.5_do_diffa/libjava/include/x86_64-signal.h	2017-12-22 10:34:48.788692315 +0100
+@@ -28,7 +28,7 @@ static void _Jv_##_name (int, siginfo_t
+ #define HANDLE_DIVIDE_OVERFLOW						\
+ do									\
+ {									\
+-  struct ucontext *_uc = (struct ucontext *)_p;				\
++  ucontext_t *_uc = (struct ucontext *)_p;				\
+   gregset_t &_gregs = _uc->uc_mcontext.gregs;				\
+   unsigned char *_rip = (unsigned char *)_gregs[REG_RIP];		\
+ 									\
+Only in gcc-4.8.5_do_diffa/libjava/include: x86_64-signal.h.bak

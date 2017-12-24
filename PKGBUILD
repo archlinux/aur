@@ -56,6 +56,9 @@ prepare() {
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
   patch -p1 -i ${startdir}/cfns.h.diff
+  patch -p1 -i ${startdir}/ucontext_t.patch
+  patch -p1 -i ${startdir}/sigaltstack.patch
+  patch -p1 -i ${startdir}/libsanitizer.patch
 
   mkdir -p ${srcdir}/gcc-build
 }
@@ -68,6 +71,7 @@ build() {
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
+  export LD_PRELOAD=/lib/libstdc++.so.6
 
 
  ${srcdir}/${_basedir}/configure --prefix=/usr/gcc49 --exec-prefix=/usr/gcc49 \
