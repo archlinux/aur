@@ -19,7 +19,7 @@ source=(
   "http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-0ubuntu0.17.10.${pkgrel}_amd64.deb"
 )
 md5sums=(
-  "bf2357ba9271c5409cc7ea7484d822b5"
+  "62449b377d2c2a8060dce62b4e74ddd3"
 )
 install=vivaldi-codecs-ffmpeg-extra-bin.install
 

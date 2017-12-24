@@ -10,7 +10,7 @@ pkgbase = vivaldi-codecs-ffmpeg-extra-bin
 	provides = vivaldi-ffmpeg-codecs
 	conflicts = vivaldi-ffmpeg-codecs
 	source = http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_63.0.3239.84-0ubuntu0.17.10.1_amd64.deb
-	md5sums = bf2357ba9271c5409cc7ea7484d822b5
+	md5sums = 62449b377d2c2a8060dce62b4e74ddd3
 
 pkgname = vivaldi-codecs-ffmpeg-extra-bin
 
