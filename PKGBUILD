@@ -1,6 +1,6 @@
 pkgname=super-user-spark
 pkgver=0.3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Configure your dotfile deployment with a DSL"
 url="https://github.com/NorfairKing/super-user-spark"
 license=('MIT')
@@ -15,6 +15,7 @@ prepare() {
         -e 's/directory *>= 1.2.5 *&& < 1.3/directory >= 1.2.5 \&\& < 1.4/' \
         -e 's/optparse-applicative *>= 0.11 *&& < 0.14/optparse-applicative >= 0.11 \&\& < 0.15/' \
         -e 's/process *>= 1.2 *&& < 1.5/process >= 1.2 \&\& < 1.7/' \
+        -e 's/shelly *>= 1.6 *&& < 1.7/shelly >= 1.6 \&\& < 1.8/' \
         -i $pkgname-$pkgver/$pkgname.cabal
 }
 

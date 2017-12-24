@@ -1,7 +1,7 @@
 pkgbase = super-user-spark
 	pkgdesc = Configure your dotfile deployment with a DSL
 	pkgver = 0.3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NorfairKing/super-user-spark
 	arch = i686
 	arch = x86_64
