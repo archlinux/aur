@@ -1,7 +1,7 @@
 # Contributor: Dmitry Pritykin maisvendoo@gmail.com
 
 pkgname=qmaster
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Modbus RTU master device emulator for PC"
 arch=('x86_64')
