@@ -4,12 +4,12 @@ pkgname=lmms-beta
 _basever=1.2.0
 _rc=rc5
 pkgver=${_basever}_${_rc}
-pkgrel=2
+pkgrel=3
 pkgdesc='Beta version of the Linux MultiMedia Studio.'
 arch=('x86_64')
 url='https://lmms.io/'
 license=('GPL')
-depends=('sdl' 'glib2' 'fluidsynth' 'libpng' 'libvorbis' 'libxft' 'libxinerama' 'qt4' 'qt5-base' 'qt5-x11extras' 'sdl_sound'
+depends=('sdl' 'glib2' 'fluidsynth' 'libpng' 'libvorbis' 'libxft' 'libxinerama' 'qt5-base' 'qt5-x11extras' 'sdl_sound'
          'libsamplerate' 'shared-mime-info' 'fltk')
 optdepends=('wine: VST support (experimental)'
             'fftw: SpectrumAnalyzer plugin'
