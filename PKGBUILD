@@ -10,7 +10,7 @@ url="http://www.scylladb.com/"
 license=('Apache')
 
 # Dependencies
-depends=('scylla-jmx' 'jre8-openjdk-headless' 'python' 'python-yaml')
+depends=('scylla-jmx' 'jre8-openjdk-headless' 'python2' 'python2-yaml')
 
 makedepends=('apache-ant' 'jdk8-openjdk')
 
@@ -41,7 +41,7 @@ package() {
     mkdir -p "${pkgdir}${_datadir}"
 
     cd "$srcdir/${pkgname}-java"
-    cd pylib && python setup.py install --no-compile --root "${pkgdir}"
+    cd pylib && python2 setup.py install --no-compile --root "${pkgdir}"
     cd -
 
     install -m644 dist/common/nodetool-completion "${pkgdir}${_sysconfdir}/bash_completion.d"
