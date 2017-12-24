@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=mkchromecast
-pkgver=0.3.8
+pkgver=0.3.8.1
 pkgrel=1
 pkgdesc='Cast Audio/Video to your Google Cast and Sonos Devices'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('alsa-utils: to cast with ALSA'
             'youtube-dl: YouTube support')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/muammar/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('fa3c3924027c3008f61a4adc691643ff6051446c8bbc818faa863b60ceb61255da7f393df5250e75ac54cb61a892f02b7edc97bd50fd350dd4073e584fc25269')
+sha512sums=('ee66450768f3221500f198bf618120f02b93108797209ca0d6c2be9f882eee36753d3e1038354e51b5d76d130c12d193c7d152b33f80776cb225347a3743f376')
 
 package() {
   cd $pkgname-$pkgver
