@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=peruse-git
-pkgver=1.2.r14.gcc1b720
+pkgver=1.2.r40.gd1e69a0
 pkgrel=1
 pkgdesc="A comic book viewer based on Frameworks 5, for use on multiple form factors."
 url="http://peruse.kde.org/"
@@ -23,9 +23,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  cd peruse
-  git submodule init
-  git submodule update
 }
 
 build() {

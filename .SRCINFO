@@ -1,6 +1,6 @@
 pkgbase = peruse-git
 	pkgdesc = A comic book viewer based on Frameworks 5, for use on multiple form factors.
-	pkgver = 1.2.r14.gcc1b720
+	pkgver = 1.2.r40.gd1e69a0
 	pkgrel = 1
 	url = http://peruse.kde.org/
 	arch = i686
