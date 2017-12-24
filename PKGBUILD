@@ -9,6 +9,7 @@ license=('GPL')
 url="http://goodies.xfce.org/projects/panel-plugins/xfce4-generic-slider"
 groups=('xfce4-goodies')
 depends=('xfce4-panel')
+makedepends=('xfce4-dev-tools')
 source=('git://git.xfce.org/panel-plugins/xfce4-generic-slider')
 
 pkgver() {
@@ -18,6 +19,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir"/xfce4-generic-slider
+	./autogen.sh --prefix=/usr
 	make
 }
 

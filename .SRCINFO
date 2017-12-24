@@ -7,6 +7,7 @@ pkgbase = xfce4-generic-slider-git
 	arch = x86_64
 	groups = xfce4-goodies
 	license = GPL
+	makedepends = xfce4-dev-tools
 	depends = xfce4-panel
 	source = git://git.xfce.org/panel-plugins/xfce4-generic-slider
 	md5sums = SKIP
