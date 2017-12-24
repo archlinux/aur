@@ -2,24 +2,28 @@
 
 __APPNAME=$(basename $0)
 __WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local}/wine/${__APPNAME}"
-__APPDIR="${__WINEPREFIX}/dosdevices/c:/Program Files (x86)/${__APPNAME}"
+__APPDIR="${__WINEPREFIX}/dosdevices/c:/${__APPNAME}"
+
+__symlink() {
+	ln -sf "$1" "${__APPDIR}/${1##*/}"
+}
 
 mkdir -p "${__APPDIR}"
 
-ln -sf "/usr/share/licenses/${__APPNAME}/License.txt" "${__APPDIR}/License.txt"
-ln -sf "/usr/share/doc/${__APPNAME}/MicroSIP Website.url" "${__APPDIR}/MicroSIP Website.url"
-ln -sf "/usr/share/${__APPNAME}/hangup.wav" "${__APPDIR}/hangup.wav"
-ln -sf "/usr/share/${__APPNAME}/messagein.wav" "${__APPDIR}/messagein.wav"
-ln -sf "/usr/share/${__APPNAME}/messageout.wav" "${__APPDIR}/messageout.wav"
-ln -sf "/usr/share/${__APPNAME}/ringin.wav" "${__APPDIR}/ringin.wav"
-ln -sf "/usr/share/${__APPNAME}/ringin2.wav" "${__APPDIR}/ringin2.wav"
-ln -sf "/usr/share/${__APPNAME}/ringout.wav" "${__APPDIR}/ringout.wav"
-ln -sf "/usr/lib/${__APPNAME}/SDL.dll" "${__APPDIR}/SDL.dll"
-ln -sf "/usr/lib/${__APPNAME}/avcodec-57.dll" "${__APPDIR}/avcodec-57.dll"
-ln -sf "/usr/lib/${__APPNAME}/avformat-57.dll" "${__APPDIR}/avformat-57.dll"
-ln -sf "/usr/lib/${__APPNAME}/avutil-55.dll" "${__APPDIR}/avutil-55.dll"
-ln -sf "/usr/lib/${__APPNAME}/microsip.exe" "${__APPDIR}/microsip.exe"
-ln -sf "/usr/lib/${__APPNAME}/swscale-4.dll" "${__APPDIR}/swscale-4.dll"
+__symlink "/usr/share/licenses/${__APPNAME}/License.txt"
+__symlink "/usr/share/doc/${__APPNAME}/MicroSIP Website.url"
+__symlink "/usr/share/${__APPNAME}/hangup.wav"
+__symlink "/usr/share/${__APPNAME}/messagein.wav"
+__symlink "/usr/share/${__APPNAME}/messageout.wav"
+__symlink "/usr/share/${__APPNAME}/ringin.wav"
+__symlink "/usr/share/${__APPNAME}/ringin2.wav"
+__symlink "/usr/share/${__APPNAME}/ringout.wav"
+__symlink "/usr/lib/${__APPNAME}/SDL.dll"
+__symlink "/usr/lib/${__APPNAME}/avcodec-57.dll"
+__symlink "/usr/lib/${__APPNAME}/avformat-57.dll"
+__symlink "/usr/lib/${__APPNAME}/avutil-55.dll"
+__symlink "/usr/lib/${__APPNAME}/microsip.exe"
+__symlink "/usr/lib/${__APPNAME}/swscale-4.dll"
 
 WINEPREFIX="${__WINEPREFIX}" wine "${__APPDIR}/microsip.exe"
 
