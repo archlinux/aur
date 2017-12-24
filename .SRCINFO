@@ -1,0 +1,17 @@
+pkgbase = stl2thumbnail-git
+	pkgdesc = Enables file managers to generate thumbnails for STL files
+	pkgver = v0.1.r1.ge58f3f3
+	pkgrel = 1
+	url = https://github.com/krepa098/stl2thumbnail
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = glm
+	depends = libpng
+	source = stl2thumbnail::git+https://github.com/krepa098/stl2thumbnail.git#branch=master
+	md5sums = SKIP
+
+pkgname = stl2thumbnail-git
+
