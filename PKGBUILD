@@ -2,7 +2,7 @@
 #			Jake <ja.ke@posteo.de>
 
 versionmajor=1
-versionminor=492
+versionminor=497
 
 pkgname=next
 pkgver=$versionmajor.$versionminor
@@ -19,7 +19,7 @@ source=("http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulato
         "next.desktop"
         "next.sh")
 
-sha256sums=('6b59b20505220bc8703a7818360ffab57fabe2c580514eefeec040ecb1a6c1f2'
+sha256sums=('c6441a6e6a1b23c342ad170abc8aeaca3f082e921b30a304446d3f10c391a31f'
             '31972ec9835d29109e490a54b49865dd69084c5552344cfe2fec9b534a5fa8a2'
             '167bf2f656980495a5de69cc6fb0eb1063ddf065d021525cb73cf4e10425c2d8')
 
