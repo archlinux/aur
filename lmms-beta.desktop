@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=LMMS Beta
+Icon=lmms
+Exec=env QT_X11_NO_NATIVE_MENUBAR=1 QT_AUTO_SCREEN_SCALE_FACTOR=1 lmms-beta %f
+Terminal=false
+Type=Application
+Categories=Qt;AudioVideo;Audio;Midi;
+MimeType=application/x-lmms-project;
