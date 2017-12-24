@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /opt/linerider-advanced
+exec mono linerider.exe
