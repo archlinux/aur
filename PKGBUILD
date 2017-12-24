@@ -1,7 +1,7 @@
 # Maintainer: Josh VanderLinden <arch@cloudlery.com>
 _appname=baton
 pkgname=${_appname}-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="CLI / TUI to remotely manage Spotify playback"
 provides=("${_appname}")
@@ -12,7 +12,7 @@ source=(
   "${pkgname}-${pkgver}::https://github.com/joshuathompson/${_appname}/releases/download/${pkgver}/${_appname}_linux_amd64"
   "LICENSE::https://raw.githubusercontent.com/joshuathompson/${_appname}/master/LICENSE"
 )
-sha256sums=('f508f036eeea1f1eb8a2bc8df5f12b47daefa3094a8d14e1197fd00a28beb46a'
+sha256sums=('9b7cccbbc87f4dbf814dcbdd86203be0a56ac505ae4f6639077e7bccb16ce37e'
             '3eec9c2f5c8f98f1875dbc57b9a2985313c869456466e09152259a7090f61d20')
 options=(!strip)
 
