@@ -5,20 +5,20 @@
 #
 _pkgname="Snap4Arduino_desktop-gnu"
 pkgname="snap4arduino"
-pkgver="1.2.3"
+pkgver="1.2.4"
 pkgrel="1"
 pkgdesc="A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board."
 arch=('i686' 'x86_64')
-url="http://snap4arduino.org/"
+url="http://snap4arduino.rocks/"
 license=('GPL3')
 depends=('nss' 'libxtst' 'alsa-lib' 'libxss' 'gtk2' 'gconf' 'freetype2')
 provides=("${pkgname}")
 
-source_i686=("http://${pkgname}.org/downloads/${pkgver}/Snap4Arduino_desktop-gnu-32_${pkgver}.tar.gz")
-source_x86_64=("http://${pkgname}.org/downloads/${pkgver}/Snap4Arduino_desktop-gnu-64_${pkgver}.tar.gz")
+source_i686=("https://github.com/bromagosa/${pkgname}/releases/download/${pkgver}/${_pkgname}-32_${pkgver}.tar.gz")
+source_x86_64=("https://github.com/bromagosa/${pkgname}/releases/download/${pkgver}/${_pkgname}-64_${pkgver}.tar.gz")
 
-sha256sums_i686=('4992756afc07978c57f77b2d5888ddee2f4c02dfdba776bc45a9923fcdb80e76')
-sha256sums_x86_64=('90addb370593ebdc36649fc8e56be505f6bd03306a508a2690d7baa1eb937e06')
+sha256sums_i686=('e25d5c06be8fec042d5853e73386738bfb39e6ab772cf4b95c86122468dca6ad')
+sha256sums_x86_64=('cde1c6fc16fd24e2d004c0bcc3a5156e515926a0a61305c895151b797674a705')
 
 if [[ $CARCH == i686 ]]; then
     _dir="32";
@@ -36,12 +36,13 @@ package() {
     cd "${_pkgname}-${_dir}_${pkgver}"
 
     # Data
-    install -d ${pkgdir}/opt/${pkgname}/{icons,lib,locales,pnacl}
+    install -d ${pkgdir}/opt/${pkgname}/{icons,lib,locales,pnacl,swiftshader}
     install -m 644 icons/* "${pkgdir}/opt/${pkgname}/icons/"
     install -m 755 lib/* "${pkgdir}/opt/${pkgname}/lib/"
     install -m 644 locales/* "${pkgdir}/opt/${pkgname}/locales/"
     install -m 644 pnacl/* "${pkgdir}/opt/${pkgname}/pnacl/"
-    rm -rf ./{icons,lib,locales,pnacl}
+    install -m 644 swiftshader/* "${pkgdir}/opt/${pkgname}/swiftshader/"
+    rm -rf ./{icons,lib,locales,pnacl,swiftshader}
     chmod +x ${pkgdir}/opt/${pkgname}/pnacl/*_nexe
     
     # Desktop file
