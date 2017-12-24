@@ -3,7 +3,7 @@
 pkgname=qslave
 pkgver=1.0.2
 pkgrel=1
-pkgdecs="Modbus RTU network emulator for PC"
+pkgdesc="Modbus RTU network emulator for PC"
 arch=('x86_64')
 url="https://github.com/masivendoo/qslave.git"
 license=('GPL')
