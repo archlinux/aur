@@ -1,8 +1,8 @@
 pkgname=pgroonga
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast fulltext search on PostgreSQL."
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/pgroonga/pgroonga"
 license=('PostgreSQL')
 source=("http://packages.groonga.org/source/pgroonga/$pkgname-$pkgver.tar.gz")

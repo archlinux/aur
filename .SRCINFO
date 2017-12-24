@@ -1,11 +1,12 @@
 pkgbase = pgroonga
 	pkgdesc = Fast fulltext search on PostgreSQL.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pgroonga/pgroonga
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = PostgreSQL
 	depends = groonga
 	depends = postgresql
