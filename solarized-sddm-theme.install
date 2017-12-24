@@ -10,9 +10,9 @@ post_install() {
   echo "[General]"
   echo "displayFont='YourFont'"
   echo
-  echo "Version 0.1.6 brings a new background image"
-  echo "If you want the former background you can find it"
-  echo "in the theme folder as bars_background.png"
+  echo "Version 0.1.7 brings a new background image"
+  echo "If you want the former backgrounds you can find them"
+  echo "in the theme folder as bars_background.png and circles_background.png"
 }
 
 post_upgrade() {

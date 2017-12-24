@@ -1,6 +1,6 @@
 pkgbase = solarized-sddm-theme
 	pkgdesc = A solarized SDDM theme
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/MalditoBarbudo/solarized_sddm_theme
 	install = solarized-sddm-theme.install
@@ -13,8 +13,8 @@ pkgbase = solarized-sddm-theme
 	optdepends = otf-font-awesome: Fontawesome support
 	optdepends = ttf-font-awesome: Fontawesome support
 	optdepends = ttf-google-fonts-git: Open fonts from google, included raleway
-	provides = solarized-sddm-theme=0.1.6
-	source = solarized-sddm-theme::git://github.com/MalditoBarbudo/solarized_sddm_theme.git#tag=0.1.6
+	provides = solarized-sddm-theme=0.1.7
+	source = solarized-sddm-theme::git://github.com/MalditoBarbudo/solarized_sddm_theme.git#tag=0.1.7
 	md5sums = SKIP
 
 pkgname = solarized-sddm-theme

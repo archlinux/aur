@@ -2,7 +2,7 @@
 
 _gitname=solarized_sddm_theme
 pkgname=solarized-sddm-theme
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A solarized SDDM theme"
 arch=('any')
