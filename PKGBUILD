@@ -2,16 +2,16 @@
 # Contributor: Guillaume Friloux <guillaume@friloux.me>
 
 _pkgbase='movim'
-_tagname=v0.12
+_tagname=v0.13
 pkgname=movim
-pkgver=v0.12.2308629f
-pkgrel=5
+pkgver=v0.13.63440788
+pkgrel=1
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
 url='https://movim.eu'
 license=('AGPL3')
 provides=('movim')
-depends=('php-gd' 'php-imagick')
+depends=('php-gd' 'php-imagick' 'php-zmq')
 optdepends=('postgresql: to use the postgresql database backend'
             'php-pgsql: php bindings for postgresql'
             'mariadb: to use the mysql database backend'
