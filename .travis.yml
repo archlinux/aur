@@ -1,0 +1,26 @@
+language: generic
+sudo: true
+env:
+  - PLATFORM=rpi
+  - PLATFORM=rpi-2
+before_install:
+  - sudo chmod 777 .
+  - sudo mkdir root
+install:
+  - sudo apt-get update
+  - sudo apt-get install -y qemu-user-static bsdtar
+  - curl -sSL http://os.archlinuxarm.org/os/ArchLinuxARM-$PLATFORM-latest.tar.gz | sudo bsdtar -xpf - -C root || echo ok
+  - sudo rm -fv root/usr/share/libalpm/hooks/*
+  - git clone --bare https://github.com/libretro/beetle-supergrafx-libretro.git beetle-supergrafx-libretro
+before_script:
+  - sudo mount -o bind root root
+  - sudo mount -o bind /dev root/dev
+  - sudo mount -o bind /proc root/proc
+  - sudo mount -o bind /sys root/sys
+  - sudo mkdir -p root/src
+  - sudo mount -o bind . root/src
+  - sudo cp --remove-destination /etc/resolv.conf root/etc/resolv.conf
+  - sudo cp /usr/bin/qemu-arm-static root/bin/
+  - sudo LC_ALL=C chroot root qemu-arm-static /bin/bash -c "pacman -Sy --needed --noconfirm --noprogressbar base-devel git"
+script:
+  - sudo LC_ALL=C chroot root qemu-arm-static /bin/bash -c "cd /src && su -s /bin/sh -c 'makepkg --noarchive --holdver' nobody"
