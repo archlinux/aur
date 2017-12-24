@@ -31,7 +31,6 @@ build() {
 # Directory prefixes
 _sysconfdir=/etc
 _unitdir=/usr/lib/systemd/system
-_sharedstatedir=/var/lib
 
 package() {
     mkdir -p "${pkgdir}${_sysconfdir}/sysconfig/"
@@ -40,10 +39,10 @@ package() {
     cd "$srcdir/${pkgname}"
     install -m644 dist/common/sysconfig/scylla-jmx "${pkgdir}${_sysconfdir}/sysconfig/"
     install -m644 build/*.service "${pkgdir}${_unitdir}"
-    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/"
-    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/jmx/"
-    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/jmx/symlinks/"
-    install -m644 target/scylla-jmx-1.0.jar "${pkgdir}${_sharedstatedir}/scylla/jmx/"
-    install -m755 scripts/scylla-jmx "${pkgdir}${_sharedstatedir}/scylla/jmx/"
-    ln -sf /usr/bin/java "${pkgdir}${_sharedstatedir}/scylla/jmx/symlinks/scylla-jmx"
+    install -d -m755 "${pkgdir}/usr/lib/scylla/"
+    install -d -m755 "${pkgdir}/usr/lib/scylla/jmx/"
+    install -d -m755 "${pkgdir}/usr/lib/scylla/jmx/symlinks/"
+    install -m644 target/scylla-jmx-1.0.jar "${pkgdir}/usr/lib/scylla/jmx/"
+    install -m755 scripts/scylla-jmx "${pkgdir}/usr/lib/scylla/jmx/"
+    ln -sf /usr/bin/java "${pkgdir}/usr/lib/scylla/jmx/symlinks/scylla-jmx"
 }
