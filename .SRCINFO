@@ -1,0 +1,33 @@
+pkgbase = stellarium-lts
+	pkgdesc = A stellarium with great graphics and a nice database of sky-objects. LTS version for old/weak graphics cards
+	pkgver = 0.12.9
+	pkgrel = 1
+	url = http://stellarium.org/
+	install = stellarium.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = boost
+	makedepends = mesa
+	makedepends = mesa-libgl
+	depends = libpng
+	depends = glu
+	depends = libgl
+	depends = freetype2
+	depends = qt4
+	depends = openssl
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = phonon-qt4
+	provides = stellarium
+	conflicts = stellarium
+	source = http://downloads.sourceforge.net/stellarium/stellarium-0.12.9.tar.gz
+	source = stellarium.desktop
+	source = stellarium.png
+	md5sums = ed95879c38e7370ed895df47ef7b1aac
+	md5sums = b4f9ebd082c4e112c2bbfac9f2c8465d
+	md5sums = 134ab08e73f4f5d995a7931a7957b7a3
+
+pkgname = stellarium-lts
+
