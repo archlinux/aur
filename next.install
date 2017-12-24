@@ -2,13 +2,12 @@ post_install() {
 cat << EOF
 	neXt is built with the Unity3D game engine. As from neXt version 1.473
 	and higher, neXt is built against Unity3D 5.6. From that version on,
-	only SDL2 input controllers are supported. Long story short,
-	you need to setup your USB controller the right way.
-
+	only SDL2 input controllers are supported.
 	More information can be found at:
 	http://next-rc-heli-simulator.xobor.de/t527f15-The-latest-version-v-can-not-find-usb-controller.html
 
-	P.S. This is still work in progress
+	Long story short, you need to setup your USB controller the right way: Use aur/controllermap or aur/antimicro to generate the SDL config string,
+	save it into a simple text file at "~/neXt/controllerconfigs.txt" and it will get automatically loaded at the next startup.
 EOF
 }
 

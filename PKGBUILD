@@ -6,13 +6,14 @@ versionminor=497
 
 pkgname=next
 pkgver=$versionmajor.$versionminor
-pkgrel=1
+pkgrel=2
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('i686' 'x86_64')
 url="http://www.rc-aerobatics.eu/index_e.html"
 license=('custom')
 optdepends=(	'joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver'
-		'controllermap: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG')
+		'controllermap: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG'
+                'antimicro: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG')
 
 install="${pkgname}.install"
 source=("http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit-$versionmajor$versionminor.zip"
@@ -21,7 +22,7 @@ source=("http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulato
 
 sha256sums=('c6441a6e6a1b23c342ad170abc8aeaca3f082e921b30a304446d3f10c391a31f'
             '31972ec9835d29109e490a54b49865dd69084c5552344cfe2fec9b534a5fa8a2'
-            '167bf2f656980495a5de69cc6fb0eb1063ddf065d021525cb73cf4e10425c2d8')
+            'b896113f488803acb89e53ce0c0df2db75a2ca7fbd5ea157c9ad871bad7e1ca1')
 
 
 prepare() {
