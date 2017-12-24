@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+__WINEPREFIX="${HOME}/.config/microsip"
+__APPDIR="${__WINEPREFIX}/dosdevices/c:/Program Files (x86)/microsip"
+
+mkdir -p "${__APPDIR}"
+
+ln -sf "/usr/lib/microsip/License.txt" "${__APPDIR}/License.txt"
+ln -sf "/usr/lib/microsip/MicroSIP Website.url" "${__APPDIR}/MicroSIP Website.url"
+ln -sf "/usr/lib/microsip/SDL.dll" "${__APPDIR}/SDL.dll"
+ln -sf "/usr/lib/microsip/avcodec-57.dll" "${__APPDIR}/avcodec-57.dll"
+ln -sf "/usr/lib/microsip/avformat-57.dll" "${__APPDIR}/avformat-57.dll"
+ln -sf "/usr/lib/microsip/avutil-55.dll" "${__APPDIR}/avutil-55.dll"
+ln -sf "/usr/lib/microsip/hangup.wav" "${__APPDIR}/hangup.wav"
+ln -sf "/usr/lib/microsip/messagein.wav" "${__APPDIR}/messagein.wav"
+ln -sf "/usr/lib/microsip/messageout.wav" "${__APPDIR}/messageout.wav"
+ln -sf "/usr/lib/microsip/microsip.exe" "${__APPDIR}/microsip.exe"
+ln -sf "/usr/lib/microsip/ringin.wav" "${__APPDIR}/ringin.wav"
+ln -sf "/usr/lib/microsip/ringin2.wav" "${__APPDIR}/ringin2.wav"
+ln -sf "/usr/lib/microsip/ringout.wav" "${__APPDIR}/ringout.wav"
+ln -sf "/usr/lib/microsip/swscale-4.dll" "${__APPDIR}/swscale-4.dll"
+
+WINEPREFIX="${__WINEPREFIX}" wine "${__APPDIR}/microsip.exe"
+
