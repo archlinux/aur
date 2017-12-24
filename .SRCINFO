@@ -1,6 +1,6 @@
 pkgbase = xx-net
 	pkgdesc = XX-Net, a web proxy tool.
-	pkgver = 3.8.7
+	pkgver = 3.9.2
 	pkgrel = 1
 	url = https://github.com/XX-net/XX-Net
 	install = xx-net.install
@@ -13,9 +13,9 @@ pkgbase = xx-net
 	optdepends = python2: A high-level scripting language
 	optdepends = supervisor: A system for controlling process state under UNIX
 	options = !strip
-	source = https://codeload.github.com/XX-net/XX-Net/tar.gz/3.8.7
+	source = https://codeload.github.com/XX-net/XX-Net/tar.gz/3.9.2
 	source = XX-net.ini
-	md5sums = 932301a4378b9f023ee24d6f388db88e
+	md5sums = 9503b8c796681afa75bb15c45e558ebf
 	md5sums = d439251c0022e4537231bbde87d36bac
 
 pkgname = xx-net
