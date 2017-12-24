@@ -1,26 +1,27 @@
 # Maintainer: Ronald van Haren <ronald@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=digikam
-pkgname=('digikam' 'kipi-plugins')
+pkgname=(digikam kipi-plugins)
 _pkgver=5.7.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=4
+pkgrel=5
 pkgdesc="An advanced digital photo management application"
 arch=('x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
-makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost'
-             'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble-common' 'kdesignerplugin'
-             'kfilemetadata' 'akonadi-contacts' 'qtav' 'threadweaver' 'kcalcore'
-             'knotifyconfig' 'libmediawiki' 'libkvkontakte')
+makedepends=(extra-cmake-modules libkipi libksane liblqr opencv doxygen lensfun eigen boost kdoctools marble-common
+             kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte)
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
         digikam-kcalcore-17.12.patch
-        digikam-qt-5.9.3.patch::"https://cgit.kde.org/digikam.git/patch/?id=855ba5b7")
+        digikam-qt-5.9.3.patch::"https://cgit.kde.org/digikam.git/patch/?id=855ba5b7"
+        digikam-opencv-3.4.patch)
 sha256sums=('3605ffb5b6e8fbd6b725e5075f74f505d7edee7531789c2882d11df2d20150f5'
             '61648bdeb88dcb94d2896b9d9211c6a6b50a39a143701e04465aa040a60053c0'
-            '03822e596321028d0971ec82351337dad76abeda93c9cef3b1d2a31807e02661')
+            '03822e596321028d0971ec82351337dad76abeda93c9cef3b1d2a31807e02661'
+            'b822cf879216a479134e48e3cfb597ef5b741698454e0993846ab660896caba7')
 
 prepare() {
   mkdir -p build
@@ -34,6 +35,8 @@ prepare() {
   patch -p1 -i "$srcdir"/digikam-kcalcore-17.12.patch
 # fix thumbnails with Qt 5.9.3
   patch -p1 -i "$srcdir"/digikam-qt-5.9.3.patch
+# fix build with opencv 3.4
+  patch -p1 -i "$srcdir"/digikam-opencv-3.4.patch
 }
 
 build() {
@@ -55,8 +58,7 @@ build() {
 
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
-  depends=('liblqr' 'libkipi' 'lensfun' 'opencv' 'akonadi-contacts'
-	'knotifyconfig' 'libksane' 'kfilemetadata' 'qtav' 'marble-common' 'threadweaver' 'kcalcore')
+  depends=(liblqr libkipi lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common threadweaver kcalcore)
   optdepends=('kipi-plugins: export to various online services'
               'hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)')
 
@@ -73,7 +75,7 @@ package_digikam() {
 
 package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
-  depends=('kio' 'libkipi')
+  depends=(kio libkipi)
   optdepends=('libmediawiki: MediaWiki Export plugin'
               'libkvkontakte: VKontakte.ru Exporter plugin')
 
