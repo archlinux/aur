@@ -3,7 +3,7 @@
 # Main package information
 pkgname=scylla-tools
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools to be used with ScyllaDB, such as cqlsh, nodetool and others"
 arch=('any')
 url="http://www.scylladb.com/"
@@ -25,6 +25,7 @@ md5sums=('SKIP')
 build() {
     cd "$srcdir/${pkgname}-java"
     env LANG=en_US.UTF-8 ant jar
+    sed -i -e 's@#!/usr/bin/env python$@#!/usr/bin/env python2@' tools/bin/filter_cassandra_attributes.py
 }
 
 # Directory prefixes
