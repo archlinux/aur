@@ -1,0 +1,16 @@
+pkgbase = wla-dx-git
+	pkgdesc = Yet Another GB-Z80/Z80/6502/65C02/6510/65816/HUC6280/SPC-700 Multi Platform Cross Assembler Package
+	pkgver = v9.5.svn.r361.bfe081d
+	pkgrel = 1
+	url = https://github.com/vhelin/wla-dx
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	provides = wla-dx-git
+	conflicts = wla-dx-git
+	source = git://github.com/vhelin/wla-dx.git
+	md5sums = SKIP
+
+pkgname = wla-dx-git
+
