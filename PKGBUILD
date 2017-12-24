@@ -14,7 +14,7 @@ source=("MicroSIP-${pkgver}.zip"::"https://www.microsip.org/downloads/?file=Micr
 		"${pkgname}.desktop")
 
 sha256sums=('a68cf6b1e49e24c1ad808e98b90e129a0280f57af4602b752b76b88621ea313c'
-            '42969a2fbc22b436f6ade3d496aafc7ec9c2d36b4e5867f793a5e35560757e66'
+            '06e26498b9398c1a1ada387989a36d0e8aa314dec60f714de67541a612440e5c'
             'd588c2b2e38e12d2be3dfdd9f2a63690293b884c7df240c441e271725b9a2ca2')
 
 prepare() {
@@ -28,7 +28,7 @@ prepare() {
 package() {
 	cd "${srcdir}"
 
-	install -Dt "${pkgdir}/usr/share/doc/${pkgname}" -m0644 "License.txt"
+	install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m0644 "License.txt"
 	install -Dt "${pkgdir}/usr/share/doc/${pkgname}" -m0644 "MicroSIP Website.url"
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "hangup.wav"
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "messagein.wav"

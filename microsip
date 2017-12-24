@@ -6,7 +6,7 @@ __APPDIR="${__WINEPREFIX}/dosdevices/c:/Program Files (x86)/${__APPNAME}"
 
 mkdir -p "${__APPDIR}"
 
-ln -sf "/usr/share/doc/${__APPNAME}/License.txt" "${__APPDIR}/License.txt"
+ln -sf "/usr/share/licenses/${__APPNAME}/License.txt" "${__APPDIR}/License.txt"
 ln -sf "/usr/share/doc/${__APPNAME}/MicroSIP Website.url" "${__APPDIR}/MicroSIP Website.url"
 ln -sf "/usr/share/${__APPNAME}/hangup.wav" "${__APPDIR}/hangup.wav"
 ln -sf "/usr/share/${__APPNAME}/messagein.wav" "${__APPDIR}/messagein.wav"
