@@ -1,31 +1,58 @@
 pkgbase = amdgpu-pro-installer
-	pkgver = 17.10.401251
-	pkgrel = 2
+	pkgver = 17.40.492261
+	pkgrel = 1
 	url = http://www.amd.com
 	arch = x86_64
 	license = custom:AMD
 	makedepends = wget
-	source = https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-17.10-401251.tar.xz
+	source = https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-17.40-492261.tar.xz
 	source = 0001-disable-firmware-copy.patch
-	source = 0002-linux-4.9-fixes.patch
-	source = 0003-Change-seq_printf-format-for-64-bit-context.patch
-	source = 0004-fix-warnings-for-Werror.patch
-	source = 0005-add-archlinux-as-build-option.patch
-	sha256sums = 0a10cf39841bf77eacb393ca112ce5f82ca0c4ea728d2fce975732855c039600
-	sha256sums = 6aaf7566a70d1654bfc1ddfc73f25b246518e39c504c350cd131f4c40ce5a583
-	sha256sums = 858828f9292e552dc2a20d838c602ab76e56c32384352d3de26e519c18a16db5
-	sha256sums = 1e22be9d3e3aed6848cc0030f37d3fe710b37322d6db2219521827edf02cf38c
-	sha256sums = 375a0caad148e018774fae57cc1c05926b01b71497c363b38d83163b0e6961ca
-	sha256sums = 4e29fd4c1fd319b22c42d4d9e26e5cc75b9eab61e15f65e8acbe6db8a31ca3fb
+	source = 0003-add-archlinux-as-build-option.patch
+	sha256sums = b0645157577c9ff175dc02487c4c682ded2624c8c2cfd6aa603960962e1d07b0
+	sha256sums = 85359c89d7f1317cf5176bc9c489314aba2db20d962b120a43fc532575466345
+	sha256sums = 2bf8eac2afac3bce0d17f840c15009838b578a72412ff66df6e8caa6c00fade7
 
 pkgname = amdgpu-pro
 	pkgdesc = The AMDGPU Pro driver package
 	install = amdgpu-pro-core.install
 	arch = x86_64
+	depends = binfmt-support
+	depends = libedit>=2.11-20080614
+	depends = libffi>=3.0.9
+	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = ncurses
+	depends = ncurses5-compat-libs>=6
+	depends = zlib>=1.2.0
+
+pkgname = amdgpu-pro-dkms
+	pkgdesc = amdgpu-pro driver in DKMS format.
+	arch = any
+	depends = amdgpu-pro=17.40.492261-1
+	depends = dkms>=1.95
+
+pkgname = amdgpu-pro-gst-omx
+	pkgdesc = GStreamer OpenMAX plugins for AMDGPU Pro
+	arch = x86_64
 	depends = glib2>=2.37.3
 	depends = gst-plugins-base>=1.6.0
 	depends = gstreamer>=1.0.0
 	depends = libomxil-bellagio
+
+pkgname = amdgpu-pro-libdrm
+	pkgdesc = The AMDGPU Pro userspace interface to kernel DRM services
+	arch = x86_64
+	depends = amdgpu-pro=17.40.492261-1
+	depends = bcunit
+	provides = libdrm
+	conflicts = libdrm
+
+pkgname = amdgpu-pro-libgl
+	pkgdesc = The AMDGPU Pro libgl library symlinks
+	arch = x86_64
+	depends = amdgpu-pro-libdrm=17.40.492261-1
+	depends = amdgpu-pro=17.40.492261-1
 	depends = libx11
 	depends = libx11>=1.4.99.1
 	depends = libxcb
@@ -36,59 +63,80 @@ pkgname = amdgpu-pro
 	depends = libxfixes
 	depends = libxshmfence
 	depends = libxxf86vm
-	depends = ncurses5-compat-libs>=6
-	depends = openssl>=1.0.0
-	depends = zlib>=1.2.0
-
-pkgname = amdgpu-pro-dkms
-	pkgdesc = amdgpu-pro driver in DKMS format.
-	arch = any
-	depends = dkms>=1.95
-
-pkgname = amdgpu-pro-libdrm
-	pkgdesc = The AMDGPU Pro userspace interface to kernel DRM services
-	arch = x86_64
-	depends = bcunit
-	provides = libdrm
-	conflicts = libdrm
-
-pkgname = amdgpu-pro-libgl
-	pkgdesc = The AMDGPU Pro libgl library symlinks
-	arch = x86_64
-	depends = amdgpu-pro
 	provides = libgl
 	conflicts = libgl
+
+pkgname = amdgpu-pro-mesa-omx
+	pkgdesc = Mesa OpenMAX video drivers for AMDGPU Pro
+	arch = x86_64
+	depends = amdgpu-pro-libdrm=17.40.492261-1
+	depends = amdgpu-pro=17.40.492261-1
+	depends = libomxil-bellagio
+	depends = libx11
+	depends = libxcb
+	depends = libxcb>=1.8
+	depends = ncurses5-compat-libs>=6
+	depends = zlib>=1.2.0
 
 pkgname = amdgpu-pro-opencl
 	pkgdesc = The AMDGPU Pro OpenCL implementation
 	arch = x86_64
-	depends = 
+	depends = amdgpu-pro=17.40.492261-1
+	depends = pciutils>=3.3.1-1
 	provides = opencl-driver
 
 pkgname = amdgpu-pro-vdpau
 	pkgdesc = The AMDGPU Pro VDPAU driver
 	arch = x86_64
-	depends = amdgpu-pro-libdrm=17.10.401251-2
+	depends = amdgpu-pro-libdrm=17.40.492261-1
+	depends = amdgpu-pro=17.40.492261-1
 	depends = libvdpau>=1.1
 	depends = libxcb
 	depends = libxcb>=1.8
 	depends = ncurses5-compat-libs>=6
-	depends = openssl>=1.0.0
 	depends = zlib>=1.2.0
 
 pkgname = amdgpu-pro-vulkan
 	pkgdesc = The AMDGPU Pro Vulkan driver
 	arch = x86_64
-	depends = amdgpu-pro-libdrm=17.10.401251-2
+	depends = amdgpu-pro=17.40.492261-1
 	provides = vulkan-driver
 
 pkgname = lib32-amdgpu-pro
 	pkgdesc = Meta package to install amdgpu Pro components. (32bit libraries)
 	arch = x86_64
+	depends = binfmt-support
+	depends = lib32-libedit>=2.11-20080614
+	depends = lib32-libffi>=3.0.9
+	depends = lib32-libx11
+	depends = lib32-libxext
+	depends = lib32-libxfixes
+	depends = lib32-ncurses
+	depends = lib32-ncurses5-compat-libs>=6
+	depends = lib32-zlib>=1.2.0
+
+pkgname = lib32-amdgpu-pro-gst-omx
+	pkgdesc = GStreamer OpenMAX plugins for AMDGPU Pro (32bit libraries)
+	arch = x86_64
 	depends = lib32-glib2>=2.37.3
 	depends = lib32-gst-plugins-base>=1.6.0
 	depends = lib32-gstreamer>=1.0.0
 	depends = lib32-libomxil-bellagio
+
+pkgname = lib32-amdgpu-pro-libdrm
+	pkgdesc = The AMDGPU Pro userspace interface to kernel DRM services (32bit libraries)
+	arch = x86_64
+	depends = amdgpu-pro-libdrm=17.40.492261-1
+	depends = amdgpu-pro=17.40.492261-1
+	provides = lib32-libdrm
+	conflicts = lib32-libdrm
+
+pkgname = lib32-amdgpu-pro-libgl
+	pkgdesc = The AMDGPU Pro libgl library symlinks (32bit libraries)
+	arch = x86_64
+	depends = amdgpu-pro-libdrm=17.40.492261-1
+	depends = amdgpu-pro-libgl=17.40.492261-1
+	depends = amdgpu-pro=17.40.492261-1
 	depends = lib32-libx11
 	depends = lib32-libx11>=1.4.99.1
 	depends = lib32-libxcb
@@ -99,58 +147,54 @@ pkgname = lib32-amdgpu-pro
 	depends = lib32-libxfixes
 	depends = lib32-libxshmfence
 	depends = lib32-libxxf86vm
-	depends = lib32-ncurses5-compat-libs>=6
-	depends = lib32-openssl>=1.0.0
-	depends = lib32-zlib>=1.2.0
-
-pkgname = lib32-amdgpu-pro-libdrm
-	pkgdesc = The AMDGPU Pro userspace interface to kernel DRM services (32bit libraries)
-	arch = x86_64
-	depends = amdgpu-pro-libdrm=17.10.401251-2
-	provides = lib32-libdrm
-	conflicts = lib32-libdrm
-
-pkgname = lib32-amdgpu-pro-libgl
-	pkgdesc = The AMDGPU Pro libgl library symlinks (32bit libraries)
-	arch = x86_64
-	depends = lib32-amdgpu-pro
 	provides = lib32-libgl
 	conflicts = lib32-libgl
+
+pkgname = lib32-amdgpu-pro-mesa-omx
+	pkgdesc = Mesa OpenMAX video drivers for AMDGPU Pro (32bit libraries)
+	arch = x86_64
+	depends = amdgpu-pro-libdrm=17.40.492261-1
+	depends = amdgpu-pro=17.40.492261-1
+	depends = lib32-libomxil-bellagio
+	depends = lib32-libx11
+	depends = lib32-libxcb
+	depends = lib32-libxcb>=1.8
+	depends = lib32-ncurses5-compat-libs>=6
+	depends = lib32-zlib>=1.2.0
 
 pkgname = lib32-amdgpu-pro-opencl
 	pkgdesc = The AMDGPU Pro OpenCL implementation
 	arch = x86_64
-	depends = 
+	depends = amdgpu-pro=17.40.492261-1
 	provides = lib32-opencl-driver
 
 pkgname = lib32-amdgpu-pro-vdpau
 	pkgdesc = The AMDGPU Pro VDPAU driver (32bit libraries)
 	arch = x86_64
-	depends = amdgpu-pro-libdrm=17.10.401251-2
+	depends = amdgpu-pro-libdrm=17.40.492261-1
+	depends = amdgpu-pro=17.40.492261-1
 	depends = lib32-libvdpau>=1.1
 	depends = lib32-libxcb
 	depends = lib32-libxcb>=1.8
 	depends = lib32-ncurses5-compat-libs>=6
-	depends = lib32-openssl>=1.0.0
 	depends = lib32-zlib>=1.2.0
 
 pkgname = lib32-amdgpu-pro-vulkan
 	pkgdesc = The AMDGPU Pro Vulkan driver (32bit libraries)
 	arch = x86_64
-	depends = amdgpu-pro-libdrm=17.10.401251-2
+	depends = amdgpu-pro=17.40.492261-1
 	provides = lib32-vulkan-driver
 
 pkgname = xf86-video-amdgpu-pro
 	pkgdesc = The AMDGPU Pro X.org video driver
 	arch = x86_64
-	groups = xorg-driversxorg
-	depends = amdgpu-pro-libdrm=17.10.401251-2
-	depends = amdgpu-pro=17.10.401251-2
-	depends = libepoxy>=1.0
+	groups = xorg-drivers
+	depends = amdgpu-pro-libdrm=17.40.492261-1
+	depends = amdgpu-pro=17.40.492261-1
 	depends = libsystemd>=183
 	provides = xf86-video-amdgpu
 	conflicts = xf86-video-amdgpu
-	conflicts = xorg-server<1.18.0
-	conflicts = xorg-server>=1.19.0X-ABI-VIDEODRV_VERSION<20
-	conflicts = X-ABI-VIDEODRV_VERSION>=21
+	conflicts = xorg-server<1.19.0
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24
 

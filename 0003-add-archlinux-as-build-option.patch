@@ -1,20 +1,20 @@
-From 2acf2e71a6ea4b4bf054b224482be6b5a0ba6f2c Mon Sep 17 00:00:00 2001
+From a15dae29e472aff257f7aa8d536ab057a683c354 Mon Sep 17 00:00:00 2001
 From: David McFarland <corngood@gmail.com>
 Date: Sat, 8 Apr 2017 15:58:42 -0300
-Subject: [PATCH 5/5] add archlinux as build option
+Subject: [PATCH 3/3] add archlinux as build option
 
 ---
  Makefile | 3 +++
  1 file changed, 3 insertions(+)
 
 diff --git a/Makefile b/Makefile
-index e8f360e..019b65d 100644
+index 13b1f74..6b3686b 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -24,6 +24,9 @@ else ifeq ("sled",$(OS_NAME))
+@@ -26,6 +26,9 @@ else ifeq ("sles",$(OS_NAME))
  subdir-ccflags-y += -DOS_NAME_SLE
- else ifeq ("sles",$(OS_NAME))
- subdir-ccflags-y += -DOS_NAME_SLE
+ else ifeq ("amzn",$(OS_NAME))
+ subdir-ccflags-y += -DOS_NAME_AMZ
 +else ifeq ("arch",$(OS_NAME))
 +subdir-ccflags-y += -DOS_NAME_ARCH
 +OS_VERSION = "0.0"
@@ -22,5 +22,5 @@ index e8f360e..019b65d 100644
  subdir-ccflags-y += -DOS_NAME_UNKNOWN
  endif
 -- 
-2.12.2
+2.14.1
 
