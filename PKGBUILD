@@ -47,6 +47,7 @@ build() {
 #}
 
 _package() {
+    depends+=("${pkgbase}-dkms")
     make -C "${srcdir}/${pkgbase}" install-bin \
         PREFIX=/usr \
         DESTDIR="${pkgdir}/" \
