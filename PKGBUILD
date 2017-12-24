@@ -1,8 +1,8 @@
 pkgname=groonga-normalizer-mysql
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A MySQL compatible normalizer plugin for groonga."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://mroonga.org/"
 license=('LGPL2')
 source=("http://packages.groonga.org/source/groonga-normalizer-mysql/$pkgname-$pkgver.tar.gz")
