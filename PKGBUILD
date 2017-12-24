@@ -1,8 +1,8 @@
 pkgname=groonga
 pkgver=7.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource fulltext search engine."
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://groonga.org/"
 license=('LGPL2')
 source=("http://packages.groonga.org/source/groonga/$pkgname-$pkgver.tar.gz"

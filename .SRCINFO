@@ -1,11 +1,12 @@
 pkgbase = groonga
 	pkgdesc = An opensource fulltext search engine.
 	pkgver = 7.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://groonga.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = LGPL2
 	depends = zlib
 	depends = lz4
