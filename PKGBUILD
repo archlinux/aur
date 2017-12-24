@@ -30,6 +30,6 @@ package()
 	install -m755 $srcdir/duckencoder  $pkgdir/usr/bin/
 	install -d "$pkgdir/usr/share/applications"
 	install -d "$pkgdir/usr/share/icons"
-	cp "$srcdir/ducky-encoder-gui.desktop" "$pkgdir/usr/share/applications"
-	cp "$srcdir/ducky-encoder.png" "$pkgdir/usr/share/icons"
+	install -m755 "$srcdir/ducky-encoder-gui.desktop" "$pkgdir/usr/share/applications"
+	install -m644 "$srcdir/ducky-encoder.png" "$pkgdir/usr/share/icons"
 }
