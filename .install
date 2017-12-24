@@ -1,0 +1,45 @@
+## arg 1:  the new package version
+pre_install() {
+    echo "Creating 'scylla' group..."
+    getent group scylla || /usr/sbin/groupadd scylla 2> /dev/null || :
+    echo "Creating 'scylla' user..."
+    getent passwd scylla || /usr/sbin/useradd -g scylla -s /sbin/nologin -r -d /var/lib/scylla scylla 2> /dev/null || :
+    ping -c1 `hostname` > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+    echo
+    echo "**************************************************************"
+    echo "* WARNING: You need to add hostname on /etc/hosts, otherwise *"
+    echo "*          scylla-jmx will not be able to start up.          *"
+    echo "**************************************************************"
+    echo
+    fi
+}
+
+## arg 1:  the new package version
+post_install() {
+	systemctl enable scylla-jmx.service
+	systemctl start scylla-jmx.service
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	:
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	:
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	systemctl stop scylla-jmx.service
+	systemctl disable scylla-jmx.service
+}
+
+## arg 1:  the old package version
+post_remove() {
+    :
+}
