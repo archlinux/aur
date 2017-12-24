@@ -9,8 +9,8 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=49.0.2725.56
-pkgrel=1
+pkgver=49.0.2725.64
+pkgrel=2
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
 options=(!strip !zipman)
@@ -24,13 +24,19 @@ optdepends=(
     'upower: opera battery save'
 )
 source=(
-    "http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
+    "https://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
     "opera"
     "default"
+    'eula.html'
+    'terms.html'
+    'privacy.html'
 )
-sha512sums=('52f757cc92d02963597c979ccb9a13e1252c0550459978acec80b28d1830f343f156810199a3f6efd1dcf02ca4a8218f0007407d1fde8f30f87f889af94f9132'
+sha512sums=('52ce18e0f7ac53b1c17997859dd358576b8798d144cb090fb628eeedb0076a130735488474da47c0d40ec1eb4d1429c76a43c8d2fb7bd64803bed74de87a5d5a'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
-            'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f')
+            'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
+            '285a0633e5863ec9c9af99138ff0b59da155a2dd72a340e784e53de3e801029eb6ca2e4b38846592b85b9f8b99dcb6f6eedbed273057a9216abe31c396d9f28a'
+            '444e27eb486d80fbe3027c10e21b9e18a56de62d218ec5ca26d3a50847567ae9b8233dd1dd9a91efb697822c28c245caa6f28bcdc2ddcdf8a32067ae5a339ace'
+            '9fd239d630f183147ff824c8ce87705e1a919e33b3d912f6871b5e68e123be7f843ffef2e3f2835fecc676ea2f548150eb06f154830cf865bd3392188b008671')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
@@ -63,5 +69,20 @@ package() {
     install -Dm644 \
         "$pkgdir/usr/share/doc/${pkgname}-stable/copyright" \
         "$pkgdir/usr/share/licenses/$pkgname/copyright"
+
+    # eula
+    install -Dm644 \
+        "$srcdir/eula.html" \
+        "$pkgdir/usr/share/licenses/$pkgname/eula.html"
+
+    # terms
+    install -Dm644 \
+        "$srcdir/terms.html" \
+        "$pkgdir/usr/share/licenses/$pkgname/terms.html"
+
+    # privacy
+    install -Dm644 \
+        "$srcdir/privacy.html" \
+        "$pkgdir/usr/share/licenses/$pkgname/privacy.html"
 }
 
