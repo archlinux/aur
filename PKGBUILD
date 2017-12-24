@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=photoflare-git
-pkgver=1.4.0.r246.gc0e722b
+pkgver=1.5.0.r338.g5db4cf2
 pkgrel=1
 pkgdesc="Quick, simple but powerful Cross Platform image editor."
 arch=('i686' 'x86_64')
@@ -22,6 +22,10 @@ pkgver() {
   cd "${pkgname%-*}"
   ver="$(grep 'Version' src/main.cpp | awk -F '"' '{print $2}')"
   printf '%s.r%s.g%s' "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  sed -i '1 s/^/#/' "${pkgname%-*}"/PhotoFlare.pro
 }
 
 build() {
