@@ -1,7 +1,7 @@
 pkgbase = viewnior-hide-scrollbars
 	pkgdesc = A simple, fast and elegant image viewer program
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xsisqox.github.com/Viewnior/
 	arch = x86_64
 	license = GPL3

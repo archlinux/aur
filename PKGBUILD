@@ -5,7 +5,7 @@
 
 pkgname=viewnior-hide-scrollbars
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, fast and elegant image viewer program"
 arch=('x86_64')
 url="http://xsisqox.github.com/Viewnior/"
@@ -29,7 +29,7 @@ prepare() {
 	./autogen.sh
 
 	cd "$srcdir/build"
-	"$_dir"/configure
+	"$_dir"/configure --prefix=/usr
 }
 
 build() {
