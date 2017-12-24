@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=upass
 _pyname=upass
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Console UI for pass'
 arch=('any')
