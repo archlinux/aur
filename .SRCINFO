@@ -1,7 +1,7 @@
 pkgbase = vivaldi-codecs-ffmpeg-extra-bin
 	pkgdesc = Prebuilt ffmpeg-codecs package for vivaldi
-	pkgver = 62.0.3202.94
-	pkgrel = 1388
+	pkgver = 63.0.3239.84
+	pkgrel = 1
 	url = https://packages.ubuntu.com/zesty/amd64/chromium-codecs-ffmpeg-extra/download
 	install = vivaldi-codecs-ffmpeg-extra-bin.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = vivaldi-codecs-ffmpeg-extra-bin
 	depends = vivaldi
 	provides = vivaldi-ffmpeg-codecs
 	conflicts = vivaldi-ffmpeg-codecs
-	source = http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_62.0.3202.94-0ubuntu0.17.10.1388_amd64.deb
+	source = http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_63.0.3239.84-0ubuntu0.17.10.1_amd64.deb
 	md5sums = bf2357ba9271c5409cc7ea7484d822b5
 
 pkgname = vivaldi-codecs-ffmpeg-extra-bin

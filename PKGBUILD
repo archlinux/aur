@@ -1,7 +1,7 @@
 # Maintainer: Fahad Hossain <8bit.demoncoder AT gmail.com>
 pkgname=vivaldi-codecs-ffmpeg-extra-bin
-pkgver=62.0.3202.94
-pkgrel=1388
+pkgver=63.0.3239.84
+pkgrel=1
 pkgdesc="Prebuilt ffmpeg-codecs package for vivaldi"
 arch=(
   "x86_64"
