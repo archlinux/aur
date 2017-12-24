@@ -1,6 +1,6 @@
 pkgbase = way-cooler
 	pkgdesc = Customizeable Wayland compositor written in Rust
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 2
 	epoch = 1
 	url = https://github.com/way-cooler/way-cooler
@@ -15,7 +15,7 @@ pkgbase = way-cooler
 	optdepends = dmenu: default launcher
 	optdepends = way-cooler-bg: draws a background for Way Cooler
 	backup = etc/way-cooler/init.lua
-	source = way-cooler::git+https://github.com/way-cooler/way-cooler.git#tag=v0.6.2
+	source = way-cooler::git+https://github.com/way-cooler/way-cooler.git#tag=v0.7.0
 	md5sums = SKIP
 
 pkgname = way-cooler

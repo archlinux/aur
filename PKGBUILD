@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=way-cooler
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=2
 epoch=1
 pkgdesc="Customizeable Wayland compositor written in Rust"
