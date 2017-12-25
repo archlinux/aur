@@ -1,6 +1,6 @@
 pkgbase = sdl2-rbp-bin
 	pkgdesc = A library for portable low-level access to video, audio and input (debian binary)
-	pkgver = 2.0.5+5rpi
+	pkgver = 2.0.7+2rpi
 	pkgrel = 1
 	url = http://www.libsdl.org
 	arch = arm
@@ -26,10 +26,10 @@ pkgbase = sdl2-rbp-bin
 	depends = libxdmcp
 	provides = sdl2
 	conflicts = sdl2
-	source = http://files.retropie.org.uk/binaries/jessie/rpi2/libsdl2-2.0-0_2.0.5+5rpi_armhf.deb
-	source = http://files.retropie.org.uk/binaries/jessie/rpi2/libsdl2-dev_2.0.5+5rpi_armhf.deb
-	md5sums = ba1c3a13aaebd40275cf0842e398c411
-	md5sums = dfa5d7e8bfad625d9f96a33067ffbfdb
+	source = http://files.retropie.org.uk/binaries/jessie/rpi2/libsdl2-2.0-0_2.0.7+2rpi_armhf.deb
+	source = http://files.retropie.org.uk/binaries/jessie/rpi2/libsdl2-dev_2.0.7+2rpi_armhf.deb
+	md5sums = 3d39db04765be92b942f94ab2e94d9a5
+	md5sums = ed4d0c3ff122fcd78cae54a3878660a2
 
 pkgname = sdl2-rbp-bin
 
