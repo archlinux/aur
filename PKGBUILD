@@ -3,14 +3,14 @@
 
 pkgname=tuxpaint-stamps-git
 pkgver=1516.689013db5
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Additional stamps for Tux Paint, cvs version"
 url="http://www.newbreedsoftware.com/tuxpaint/"
 license=('GPL')
 provides=('tuxpaint-stamps')
 conflicts=('tuxpaint-stamps')
-makedepends=('cvs')
+makedepends=('git')
 source=("git+https://git.code.sf.net/p/tuxpaint/tuxpaint-stamps")
 md5sums=('SKIP')
 
