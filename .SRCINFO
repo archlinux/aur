@@ -1,0 +1,19 @@
+pkgbase = libcdio-paranoia-git
+	pkgdesc = CD paranoia on top of libcdio
+	pkgver = 10.2+0.94+2.r0.gda12cf5
+	pkgrel = 1
+	url = https://www.gnu.org/software/libcdio/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	depends = libcdio
+	provides = libcdio-paranoia
+	conflicts = libcdio-paranoia
+	options = staticlibs
+	source = git+https://github.com/rocky/libcdio-paranoia.git
+	sha256sums = SKIP
+
+pkgname = libcdio-paranoia-git
+
