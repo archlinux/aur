@@ -2,9 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=varuna-git
-pkgver=v0.1.1.393.b0d2ad8
-pkgrel=2
-pkgdesc="Compiler for the language"
+pkgver=0.1.1r393.b0d2ad8
+pkgrel=1
+pkgdesc="Compiler for the varuna language"
 arch=('i686' 'x86_64')
 url="https://varuna-lang.github.io"
 license=('custom:BSD')
@@ -24,7 +24,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    printf "%s.%s.%s" $(git describe 2>&1|head -1|cut -d " " -f6-6|tr -d \') $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+    printf "%sr%s.%s" $(git describe 2>&1|head -1|cut -d " " -f6-6|tr -d \'|tr -d v) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
