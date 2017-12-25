@@ -1,15 +1,15 @@
 # Maintainer: kewl fft <kewl@alto.eu.org>
 
 pkgname=dse
-pkgver=1.00
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 pkgdesc="AES file encryption using a keyfile."
 arch=('any')
 url="http://members.ozemail.com.au/~nulifetv/freezip/freeware/index.html"
 makedepends=('gcc')
 license=('MIT')
-source=("https://github.com/kewlfft/dse/archive/v1.00.tar.gz")
-sha256sums=('df63e3d1f0f35ece3ba02f84210c36e718821f59b347563e826a219ea81ef5e1')
+source=("https://github.com/kewlfft/dse/archive/v$pkgver.tar.gz")
+sha256sums=('15849648e67023e552f3276902af79e854ce7cec786ba703baa76b0f2b6cb342')
 
 build() {
     cd "$srcdir/dse-$pkgver"
