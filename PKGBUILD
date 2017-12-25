@@ -6,7 +6,7 @@
 pkgname=firefox-beta
 name=firefox-beta
 pkgver=58.0.12
-pkgrel=1
+pkgrel=2
 ver=58.0b12
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
@@ -139,6 +139,14 @@ ac_add_options --enable-jack
 ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
+
+# faster build 
+ac_add_options --disable-tests
+
+# please put 1.25 times your number of threads
+
+mk_add_options MOZ_MAKE_FLAGS="-j10"
+
 END
 }
 
