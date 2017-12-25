@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oakes/Nightcode/archive
         "https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh"
         "nightcode.desktop")
 sha256sums=('26e86d224cc3cf17a85155f1c0f2d6d869524a7500c398bc32552c9bd33b3055'
-            '895def8ef37f4b78bb37a26566ce970dc24219e880154a18ef7ade5a778d3a2f'
+            '0ccd697f2027e7e1cd3be3d62721057cbc841585740d0aaa9fbb485d7b1f17c3'
             '8fb613946bb9cb3dc636933ff2f0c7de8c61d2b43e49b9d6baf380b07377eaa1')
 noextract=('boot.sh'
 	   'nightcode.desktop')
