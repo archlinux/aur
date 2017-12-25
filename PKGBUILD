@@ -3,7 +3,7 @@
 # Contributor: max1m <keyworker@rambler.ru>
 
 pkgname=utorrent
-pkgver=3.5.0.44294
+pkgver=3.5.1.44332
 pkgrel=1
 pkgdesc="The world's most popular BitTorrent client (Wine version)"
 arch=('x86_64')
