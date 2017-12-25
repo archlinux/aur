@@ -3,7 +3,7 @@
 pkgname=brave-snapshot-bin
 pkgver=0.20.11
 _pkgver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Binary snapshot."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -19,7 +19,7 @@ options=(!strip)
 sha512sums=('4550e0ad30a65fcb49013dcd8c24ee90f3cba9c81c13799d439a773c3cb1a0989dd55dea564b2a13ae682e367dc86e25e662a6c770104d4576a6340b7d02996e'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f')
 
-_bdir=Brave-linux-x64
+_bdir=brave-beta-linux-x64
 
 build() {
 	if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then

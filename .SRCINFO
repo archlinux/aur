@@ -1,7 +1,7 @@
 pkgbase = brave-snapshot-bin
 	pkgdesc = A web browser that stops ads and trackers by default. Binary snapshot.
 	pkgver = 0.20.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com/
 	arch = x86_64
 	license = custom:several
