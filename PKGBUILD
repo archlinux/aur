@@ -17,7 +17,7 @@ depends=('hwloc' 'systemd' 'collectd' 'python-yaml' 'python2-yaml' 'python-urwid
 makedepends=('git' 'gcc' 'antlr3-cpp-headers-git' 'libyaml' 'yaml-cpp'
                 'lz4' 'zlib' 'snappy' 'jsoncpp' 'gnutls' 'ninja'
                 'ragel' 'libaio' 'crypto++' 'xfsprogs' 'jre8-openjdk-headless'
-                'numactl' 'libpciaccess' 'libxml2' 'thrift' 'lksctp-tools'
+                'numactl' 'libpciaccess' 'libxml2' 'thrift-0.10.0' 'lksctp-tools'
                 'protobuf' 'libunwind' 'systemtap' 'make' 'libtool' 'cmake')
 # Relations
 provides=('scylla')
