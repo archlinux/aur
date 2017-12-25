@@ -1,22 +1,25 @@
 # Maintainer: Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
 pkgname=numix-square-icon-theme
-pkgver=17.09.13
-_pkgver=17-09-13
+pkgver=17.12.25
+_pkgver=17-12-25
 _gitname=numix-icon-theme-square
 pkgrel=1
-pkgdesc="A square-ish shaped icon theme from the  Numix Project"
+pkgdesc="A square-ish shaped icon theme from the Numix Project"
 arch=('any')
 url='https://numixproject.org/'
 license=('GPL3')
-depends=('numix-icon-theme-git')
+provides=("numix-square-icon-theme=${pkgver}")
+depends=('numix-icon-theme-git' 'gtk-update-icon-cache')
 conflicts=("numix-square-icon-theme-git")
 source=("https://github.com/numixproject/${_gitname}/archive/${_pkgver}.tar.gz")
-sha256sums=('a246272c3f9f8a42129474f02bf433498bbdb5b2b0315d33f871ca239345191d')
+sha256sums=('ac6b031afd9ff6bf65902447949fa432bb8074c21979d0622ac4a35a60329167')
 options=('!strip')
 
 package() {
-  install -dm755 "${srcdir}/${_gitname}-${_pkgver}/" "${pkgdir}/usr/share/icons/"
-  cp -r  "${srcdir}/${_gitname}-${_pkgver}/Numix-Square" "${pkgdir}/usr/share/icons/"
-  cp -r "${srcdir}/${_gitname}-${_pkgver}/Numix-Square-Light" "${pkgdir}/usr/share/icons/"
-  install -Dm644 "${srcdir}/${_gitname}-${_pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  _srcdir="${srcdir}/${_gitname}-${_pkgver}"
+  _output="${pkgdir}/usr/share"
+  install -dm755 "${_srcdir}/" "${_output}/icons/"
+  cp -r  "${_srcdir}/Numix-Square" "${_output}/icons/"
+  cp -r "${_srcdir}/Numix-Square-Light" "${_output}/icons/"
+  install -Dm644 "${_srcdir}/LICENSE" "${_output}/licenses/${pkgname}/LICENSE"
 }
