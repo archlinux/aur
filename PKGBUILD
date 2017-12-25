@@ -1,6 +1,6 @@
 # Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
 pkgname=giseditor
-pkgver=0.24
+pkgver=0.25
 pkgrel=1
 epoch=
 pkgdesc="A gis editor for .gpx .gdb and download maps source"
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/dayanuyim/GisEditor/archive/v0.24.tar.gz")
+source=("https://github.com/dayanuyim/GisEditor/archive/v0.25.tar.gz")
 noextract=()
-md5sums=("9f9cbd560a26975bb017d637768d8046")
+md5sums=("c5f0600a6d60486eb10d799f2ecd0671")
 validpgpkeys=()
 package() {
 	mkdir -p $pkgdir/opt/giseditor
