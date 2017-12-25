@@ -8,3 +8,6 @@ https://github.com/han-ese/Arch-RPi
 	* han-ese-ops_rpi-0.1-2 (2017-12-21 - MvdS)
 	Add dependency python-sense-hat
 
+	* han-ese-ops_rpi-0.1-3 (2017-12-25 - MvdS)
+	Add dependency python-netifaces
+
