@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export WINEDLLOVERRIDES="mshtml="
+export WINEDLLOVERRIDES="mscoree=;mshtml="
 export WINEPREFIX="$HOME/.ares"
 
 if [ ! -d "$HOME"/.ares ] ; then
