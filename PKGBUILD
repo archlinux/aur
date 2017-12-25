@@ -4,7 +4,7 @@
 
 _pkgname=gst-plugins-bad
 pkgname=${_pkgname}-glonly
-pkgver=1.12.3
+pkgver=1.12.4
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins, gl plugin only for webkit2gtk"
 url="https://gstreamer.freedesktop.org/"
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 depends=('gst-plugins-base-libs' 'mesa')
 makedepends=('git' 'python')
-_commit=8f66ff25f9cabc170c57d75a74984103c7fcb965  # tags/1.12.3^0
+_commit=cbdbd8d4f6893e6042dbf7b8258e23a8d2aaf081 # tags/1.12.4^0
 source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad#commit=$_commit"
         "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common")
 sha256sums=('SKIP'
@@ -27,8 +27,6 @@ pkgver() {
 
 prepare() {
     cd ${_pkgname}
-
-    git cherry-pick -n ef4d6b93e6078b7056c51a928f5620b13e55e323
 
     git submodule init
     git config --local submodule.common.url "$srcdir/gst-common"

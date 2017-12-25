@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-bad-glonly
 	pkgdesc = GStreamer Multimedia Framework Bad Plugins, gl plugin only for webkit2gtk
-	pkgver = 1.12.3
+	pkgver = 1.12.4
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = gst-plugins-bad-glonly
 	depends = mesa
 	provides = gst-plugins-bad
 	conflicts = gst-plugins-bad
-	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad#commit=8f66ff25f9cabc170c57d75a74984103c7fcb965
+	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad#commit=cbdbd8d4f6893e6042dbf7b8258e23a8d2aaf081
 	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
 	sha256sums = SKIP
 	sha256sums = SKIP
