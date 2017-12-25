@@ -3,10 +3,10 @@
 _pypiname=CurrencyConverter
 pkgname=('python-currencyconverter' 'python2-currencyconverter')
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A currency converter using the European Central Bank data."
 arch=(any)
-url="https://pypi.python.org/pypi/wheel"
+url="https://pypi.python.org/pypi/CurrencyConverter"
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('')
