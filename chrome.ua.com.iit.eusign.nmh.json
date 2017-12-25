@@ -1,0 +1,9 @@
+{
+  "name": "ua.com.iit.eusign.nmh",
+  "description": "IIT End User CA-1. Sign (native messaging host)",
+  "path": "/opt/iit/eu/sw/euscpnmh",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://jffafkigfgmjafhpkoibhfefeaebmccg/"
+  ]
+}
