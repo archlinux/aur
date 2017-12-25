@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+	<enum id="GalaActionType">
+		<value nick='none' value="0" />
+		<value nick="show-workspace-view" value="1" />
+		<value nick="maximize-current" value="2" />
+		<value nick="minimize-current" value="3" />
+		<value nick="open-launcher" value="4" />
+		<value nick="custom-command" value="5" />
+		<value nick="window-overview" value="6" />
+		<value nick="window-overview-all" value="7" />
+	</enum>
+	<enum id="GalaWindowOverviewType">
+		<value nick='grid' value='0'/>
+		<value nick='natural' value='1'/>
+	</enum>
+	
+	<schema path="/org/pantheon/desktop/gala/behavior/" id="org.pantheon.desktop.gala.behavior" gettext-domain="@GETTEXT_PACKAGE@">
+		<key enum="GalaActionType" name="hotcorner-topleft">
+			<default>'none'</default>
+			<summary>Action for the top left corner</summary>
+			<description></description>
+		</key>
+		<key enum="GalaWindowOverviewType" name="window-overview-type">
+			<default>'grid'</default>
+			<summary>Algorithm for window overview layout</summary>
+			<description>Choose the algorithm used for exposing the windows</description>
+		</key>
+		<key enum="GalaActionType" name="hotcorner-topright">
+			<default>'none'</default>
+			<summary>Action for the top right corner</summary>
+			<description></description>
+		</key>
+		<key enum="GalaActionType" name="hotcorner-bottomleft">
+			<default>'none'</default>
+			<summary>Action for the bottom left corner</summary>
+			<description></description>
+		</key>
+		<key enum="GalaActionType" name="hotcorner-bottomright">
+			<default>'none'</default>
+			<summary>Action for the bottom right corner</summary>
+			<description></description>
+		</key>
+		<key type="s" name="hotcorner-custom-command">
+			<default>''</default>
+			<summary>The command that will be executed for the hotcorner action 'custom-command' or multiple</summary>
+			<description>If you just put a single command, it will be used for every hotcorner assigned to 
+				'custom-command'. If you instead use the pattern
+				'hotcorner-topleft:command;;hotcorner-bottomright:command' the specific commands will be used
+				per hotcorner. Possible identifiers are 'hotcorner-[topleft; topright; bottomleft; bottomright]'
+				followed by a ':' and then the command. ';;' is used as delimiter between command defintions.
+			</description>
+		</key>
+		<key type="b" name="edge-tiling">
+			<default>true</default>
+			<summary>Enable edge tiling when dropping windows on screen edges</summary>
+			<description>If enabled, dropping windows on vertical screen edges maximizes them vertically and resizes them horizontally to cover half of the available area. Dropping windows on the top screen edge maximizes them completely.</description>
+		</key>
+		<key type="s" name="panel-main-menu-action">
+			<default>''</default>
+			<summary>Panel main menu action</summary>
+			<description>Sets the command to run when the panel-main-menu keybinding is pressed</description>
+		</key>
+		<key type="s" name="toggle-recording-action">
+			<default>''</default>
+			<summary></summary>
+			<description></description>
+		</key>
+		<key type="s" name="overlay-action">
+			<default>''</default>
+			<summary></summary>
+			<description></description>
+		</key>
+		<key type="b" name="dynamic-workspaces">
+			<default>true</default>
+			<summary>Enable dynamic workspace instead of static ones</summary>
+			<description>Use a dynamically increasing or decreasing number, as needed, of workspaces instead of a static, fixed number</description>
+		</key>
+		<key type="as" name="dock-names">
+			<default><![CDATA[['docky', 'Docky', 'plank']]]></default>
+			<summary>Names that are recognized as dock windows for the window switcher</summary>
+			<description>When launching the window-switcher, gala iterates over this list and attempts to find a window matching the names. If it does, it will hide this window and fade it back in, once the the switcher is closed.</description>
+		</key>
+	</schema>
+	
+	<schema path="/org/pantheon/desktop/gala/keybindings/" id="org.pantheon.desktop.gala.keybindings" gettext-domain="@GETTEXT_PACKAGE@">
+		<key type="as" name="switch-to-workspace-first">
+			<default><![CDATA[['<Super>Home']]]></default>
+			<summary>Shortcut to move to first workspace</summary>
+			<description></description>
+		</key>
+		<key type="as" name="switch-to-workspace-last">
+			<default><![CDATA[['<Super>End', '<Super>0']]]></default>
+			<summary>Shortcut to move to last workspace</summary>
+			<description></description>
+		</key>
+		<key type="as" name="move-to-workspace-first">
+			<default><![CDATA[['<Super><Shift>Home']]]></default>
+			<summary>Shortcut to move the current window to first workspace</summary>
+			<description></description>
+		</key>
+		<key type="as" name="move-to-workspace-last">
+			<default><![CDATA[['<Super><Shift>End', '<Super>0']]]></default>
+			<summary>Shortcut to move the current window to last workspace</summary>
+			<description></description>
+		</key>
+		<key type="as" name="zoom-in">
+			<default><![CDATA[['<Super>plus', '<Super>KP_Add']]]></default>
+			<summary>Zoom in</summary>
+			<description></description>
+		</key>
+		<key type="as" name="zoom-out">
+			<default><![CDATA[['<Super>minus', '<Super>KP_Subtract']]]></default>
+			<summary>Zoom out</summary>
+		</key>
+		<key type="as" name="expose-windows">
+			<default><![CDATA[['<Super>w']]]></default>
+			<summary>Shortcut to open the window overview</summary>
+			<description></description>
+		</key>
+		<key type="as" name="expose-all-windows">
+			<default><![CDATA[['<Super>a']]]></default>
+			<summary>Shortcut to open the window overview for all windows</summary>
+			<description></description>
+		</key>
+		<key type="as" name="cycle-workspaces-next">
+			<default><![CDATA[['<Super>Tab']]]></default>
+			<summary>Cycle to the next workspace to the right or to back to the first</summary>
+		</key>
+		<key type="as" name="cycle-workspaces-previous">
+			<default><![CDATA[['<Super><Shift>Tab']]]></default>
+			<summary>Cycle to the next workspace to the right or to back to the first</summary>
+		</key>
+		<key type="as" name="switch-input-source">
+			<default><![CDATA[['<Alt>space']]]></default>
+			<summary>Cycle to next keyboard layout</summary>
+			<description>DEPRECATED: This key is deprecated and ignored.</description>
+		</key>
+		<key type="as" name="switch-input-source-backward">
+			<default><![CDATA[['']]]></default>
+			<summary>Cycle to previous keyboard layout</summary>
+			<description>DEPRECATED: This key is deprecated and ignored.</description>
+		</key>
+		<key type="as" name="pip">
+			<default><![CDATA[['<Super>f']]]></default>
+			<summary>The shortcut to enable picture-in-picture window</summary>
+			<description>The shortcut to show the selection area to choose a window</description>
+		</key>
+	</schema>
+	
+	<schema path="/org/pantheon/desktop/gala/appearance/" id="org.pantheon.desktop.gala.appearance" gettext-domain="@GETTEXT_PACKAGE@">
+		<key type="b" name="attach-modal-dialogs">
+			<default>false</default>
+			<summary>Attach modal dialogs</summary>
+			<description>When true, instead of having independent titlebars, modal dialogs appear attached to the titlebar of the parent window and are moved together with the parent window.</description>
+		</key>
+		<key type="s" name="button-layout">
+			<default>'close:maximize'</default>
+			<summary>Arrangement of buttons on the titlebar</summary>
+			<description>Arrangement of buttons on the titlebar. The value should be a string, such as "menu:minimize,maximize,spacer,close"; the colon separates the left corner of the window from the right corner, and the button names are comma-separated. Duplicate buttons are not allowed. Unknown button names are silently ignored so that buttons can be added in future metacity versions without breaking older versions. A special spacer tag can be used to insert some space between two adjacent buttons.</description>
+		</key>
+		<key type="b" name="dim-parents">
+			<default>false</default>
+			<summary>Make parent windows that spawn a modal attached dialog being dimmed</summary>
+		</key>
+		<key type="d" name="alt-tab-window-opacity">
+			<range min="0.0" max="1.0"/>
+			<default>0.0</default>
+			<summary>The opacity of the windows located in the background in the alt-tab-switcher.</summary>
+			<description>DEPRECATED: This key is deprecated and ignored.</description>
+		</key>
+		<key type="s" name="workspace-switcher-background">
+			<default>''</default>
+			<summary>Background-image used in the workspace-switcher</summary>
+		</key>
+	</schema>
+	
+	<schema path="/org/pantheon/desktop/gala/animations/" id="org.pantheon.desktop.gala.animations" gettext-domain="@GETTEXT_PACKAGE@">
+		<key type="b" name="enable-animations">
+			<default>true</default>
+			<summary>Enable Animations</summary>
+			<description>Whether animations should be displayed. Note: This is a global key, it changes the behaviour of the window manager, the panel etc.</description>
+		</key>
+		<key type="i" name="open-duration">
+			<default>350</default>
+		</key>
+		<key type="i" name="snap-duration">
+			<default>250</default>
+			<summary>Duration of the snap animation as used by maximize/unmaximize</summary>
+		</key>
+		<key type="i" name="close-duration">
+			<default>300</default>
+			<summary>Duration of the close animation</summary>
+		</key>
+		<key type="i" name="minimize-duration">
+			<default>200</default>
+			<summary>Duration of the minimize animation</summary>
+		</key>
+		<key type="i" name="workspace-switch-duration">
+			<default>300</default>
+			<summary>Duration of the workspace switch animation</summary>
+		</key>
+		<key type="i" name="menu-duration">
+			<default>150</default>
+			<summary>Duration of the menu mapping animation</summary>
+		</key>
+	</schema>
+	
+	<schema path="/org/pantheon/desktop/gala/shadows/" id="org.pantheon.desktop.gala.shadows" gettext-domain="@GETTEXT_PACKAGE@">
+		<key type="as" name="normal-focused">
+			<default>['20', '-1', '0', '15', '220']</default>
+			<summary>Defines the shadow of normal focused windows</summary>
+			<description>The first value is the radius of the blur of the shadow, the second one the top fade (which is usually just -1), the third and fourth the x- and y-offset and the last the opacity. So [blur-radius, top-fade, x-offset, y-offset, opacity]</description>
+		</key>
+		<key type="as" name="normal-unfocused">
+			<default>['8', '-1', '0', '6', '150']</default>
+			<summary>Defines the shadow of a normal unfocused window</summary>
+			<description>See normal-focused</description>
+		</key>
+		<key type="as" name="menu">
+			<default>['7', '-1', '0', '5', '130']</default>
+			<summary>Defines the shadow of a menu</summary>
+			<description>See normal-focused</description>
+		</key>
+		<key type="as" name="dialog-focused">
+			<default>['12', '-1', '0', '7', '190']</default>
+			<summary>Defines the shadow of a focused dialog</summary>
+			<description>See normal-focused</description>
+		</key>
+		<key type="as" name="dialog-unfocused">
+			<default>['7', '-1', '0', '4', '130']</default>
+			<summary>Defines the shadow of an unfocused dialog</summary>
+			<description>See normal-focused</description>
+		</key>
+	</schema>
+	
+	<schema path="/org/pantheon/desktop/gala/notifications/" id="org.pantheon.desktop.gala.notifications" gettext-domain="@GETTEXT_PACKAGE@">
+		<key type="b" name="do-not-disturb">
+			<default>false</default>
+			<summary>Disable all notifications</summary>
+		</key>
+		<child name="applications" schema="org.pantheon.desktop.gala.notifications.application" />
+	</schema>
+
+	<schema id="org.pantheon.desktop.gala.notifications.application" gettext-domain="@GETTEXT_PACKAGE@">
+		<key type="b" name="bubbles">
+			<default>true</default>
+			<summary>Enable bubbles</summary>
+		</key>
+		<key type="b" name="sounds">
+			<default>true</default>
+			<summary>Enable sounds</summary>
+		</key>
+		<key type="b" name="remember">
+			<default>true</default>
+			<summary>Show missed notifications in notification center</summary>
+		</key>
+	</schema>
+	
+	<schema path="/org/pantheon/desktop/gala/mask-corners/" id="org.pantheon.desktop.gala.mask-corners" gettext-domain="@GETTEXT_PACKAGE@">
+		<key type="b" name="enable">
+			<default>true</default>
+			<summary>Enable rounded corner mask</summary>
+		</key>
+		<key type="i" name="corner-radius">
+			<default>4</default>
+			<range min="1" max="32"/>
+			<summary>Corner radius</summary>
+		</key>
+		<key type="b" name="disable-on-fullscreen">
+			<default>true</default>
+			<summary>Disable corner mask on fullscreen</summary>
+			<description>If enabled, when an application is fullscreen (fills the monitor), the corner masks will be disabled on that monitor.</description>
+		</key>
+		<key type="b" name="only-on-primary">
+			<default>false</default>
+			<summary>Only show corner masks on primary monitor</summary>
+		</key>
+	</schema>
+</schemalist>

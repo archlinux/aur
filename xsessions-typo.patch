@@ -1,0 +1,8 @@
+--- src/pantheon-session/xsessions/meson.build~	2017-12-26 01:18:00.411839705 +0900
++++ src/pantheon-session/xsessions/meson.build	2017-12-26 01:38:29.090538935 +0900
+@@ -1,4 +1,4 @@
+ install_data(
+     'pantheon.desktop',
+-    install_dir: join_paths(get_option('datadir'), 'xessions')
++    install_dir: join_paths(get_option('datadir'), 'xsessions')
+ )
