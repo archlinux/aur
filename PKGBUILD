@@ -2,7 +2,7 @@
 pkgname=bitzeny
 pkgver=1.1.0
 pkgrel=2
-pkgdesc="Wallet of cryptcurrency"
+pkgdesc="Wallet of cryptocurrency"
 arch=('x86_64')
 url="http://bitzeny.org/"
 license=('MIT')
