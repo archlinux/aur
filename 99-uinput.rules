@@ -1,0 +1,1 @@
+KERNEL=="uinput", GROUP="uinput", MODE:="0660"
