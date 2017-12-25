@@ -1,14 +1,15 @@
-# Maintainer: David Thurstenson <thurstylark@gmail.com>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: David Thurstenson <thurstylark@gmail.com>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
 
 pkgname='bluez-utils-compat'
 _pkgbase='bluez'
-pkgver=5.45
+pkgver=5.47
 pkgrel=1
 url="http://www.bluez.org/"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL2')
 pkgdesc="Development and debugging utilities for the bluetooth protocol stack. Includes deprecated tools."
 depends=('dbus' 'systemd' 'glib2')
@@ -18,12 +19,12 @@ replaces=('bluez-hcidump' 'bluez<=4.101')
 makedepends=('dbus' 'libical' 'systemd')
 source=(https://www.kernel.org/pub/linux/bluetooth/${_pkgbase}-${pkgver}.tar.{xz,sign})
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('4cacb00703a6bc149cb09502257d321597d43952374a16f3558766ffa85364e9'
+sha256sums=('cf75bf7cd5d564f21cc4a2bd01d5c39ce425397335fd47d9bbe43af0a58342c8'
             'SKIP')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
 
 build() {
-  cd ${_pkgbase}-${pkgver}
+  cd "${_pkgbase}-${pkgver}"
   ./configure \
           --prefix=/usr \
           --mandir=/usr/share/man \
@@ -38,32 +39,31 @@ build() {
 }
 
 check() {
-  cd ${_pkgbase}-${pkgver}
+  cd "${_pkgbase}-${pkgver}"
   make check
 }
 
 package() {
-
-  cd ${_pkgbase}-${pkgver}
-  make DESTDIR=${pkgdir} \
+  cd "${_pkgbase}-${pkgver}"
+  make DESTDIR="${pkgdir}" \
        install-binPROGRAMS \
        install-man1
 
   # add missing tools FS#41132, FS#41687, FS#42716
   for files in `find tools/ -type f -perm -755`; do
-    filename=$(basename $files)
-    install -Dm755 ${srcdir}/${_pkgbase}-${pkgver}/tools/$filename ${pkgdir}/usr/bin/$filename
+    filename="$(basename "$files")"
+    install -Dm755 "${srcdir}/${_pkgbase}-${pkgver}"/tools/$filename "${pkgdir}"/usr/bin/$filename
   done
 
   # add gatttool usefulbdaddr with Bluetooth 4.0LE 
-  install -Dm755 ${srcdir}/${_pkgbase}-${pkgver}/attrib/gatttool ${pkgdir}/usr/bin/gatttool
+  install -Dm755 "${srcdir}/${_pkgbase}-${pkgver}"/attrib/gatttool "${pkgdir}"/usr/bin/gatttool
   
   # libbluetooth.so* are part of libLTLIBRARIES and binPROGRAMS targets
   #make DESTDIR=${pkgdir} uninstall-libLTLIBRARIES
   #rmdir ${pkgdir}/usr/lib
-  rm -rf ${pkgdir}/usr/lib
+  rm -rf "${pkgdir}"/usr/lib
   
   # move the hid2hci man page out
-  mv ${pkgdir}/usr/share/man/man1/hid2hci.1 ${srcdir}/
+  mv "${pkgdir}"/usr/share/man/man1/hid2hci.1 "${srcdir}"/
 }
 
