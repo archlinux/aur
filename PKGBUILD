@@ -15,11 +15,11 @@ depends=('dconf' gnome-{keyring,settings-daemon-{elementary,compat},session,user
 optdepends=("pantheon-default-settings-git: Pantheon configuration and themeing"
             "contractor-git: Service for sharing data between apps"
             "pantheon-print-git: Print settings dialog"
-            "pantheon-agent-polkit-bzr: Polkit Authentication Agent"
+            "pantheon-polkit-agent-git: Polkit Authentication Agent"
             "pantheon-geoclue2-agent-git: Pantheon Geoclue2 Agent"
             "pantheon-dpms-helper-git: Script and settings for X DPMS"
             "xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops")
-makedepends=('bzr' 'intltool')
+makedepends=('git' 'intltool')
 conflicts=(pantheon-session{,-bzr,-git} gala{,-bzr,-git})
 install='gala.install'
 source=("pantheon-session::git+https://github.com/elementary/session-settings#branch=meson"
