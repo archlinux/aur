@@ -1,6 +1,6 @@
 pkgbase = sierrabreeze-kwin-decoration-git
 	pkgdesc = OSX-like window decoration for KDE Plasma written in C++ (git version)
-	pkgver = r13.22aec27
+	pkgver = r18.56ea673
 	pkgrel = 1
 	url = https://github.com/ishovkun/SierraBreeze
 	arch = x86_64

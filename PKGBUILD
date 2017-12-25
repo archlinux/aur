@@ -1,9 +1,8 @@
- 
 # Maintainer: Jan Neumann <neum DOT ja AT gmail DOT com>
 
 pkgname=sierrabreeze-kwin-decoration-git
 _gitname=SierraBreeze
-pkgver=r13.22aec27
+pkgver=r18.56ea673
 pkgrel=1
 pkgdesc="OSX-like window decoration for KDE Plasma written in C++ (git version)"
 arch=('x86_64')
@@ -16,28 +15,29 @@ sha256sums=('SKIP')
 
 pkgver() {
   
-  cd ${srcdir}/${_gitname}
+   cd ${srcdir}/${_gitname}
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   
 }
 
 build() {
   
-  cd ${srcdir}/${_gitname}
+   cd ${srcdir}/${_gitname}
   
-  mkdir build && cd build
-  cmake ..  \
+   mkdir build && cd build
+   cmake ..  \
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_BUILD_TYPE=Release \
             -DKDE_INSTALL_LIBDIR=lib \
             -DBUILD_TESTING=OFF \
             -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+
 }
 
 package() {
     
-  make -C ${srcdir}/${_gitname}/build DESTDIR="$pkgdir" install        
+   make -C ${srcdir}/${_gitname}/build DESTDIR="$pkgdir" install        
 
 }
 
