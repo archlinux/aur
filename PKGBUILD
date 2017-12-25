@@ -2,14 +2,12 @@
 
 pkgname=th07
 pkgver=0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Perfect cherry blossom trial version. Seventh game of the Touhou Project series. (via wine)"
 arch=(i686 x86_64)
 url="http://www16.big.or.jp/~zun/html/th07.html"
 license=('custom')
-depends=()
-[ "$CARCH" = i686   ] && depends=(wine)
-[ "$CARCH" = x86_64 ] && depends=(bin32-wine)
+depends=('wine')
 makedepends=(lha)
 optdepends=('timidity++: to get MIDI background music')
 source=(
@@ -23,11 +21,11 @@ noextract=("youmu_tr011.lzh")
 #http://homepage.ntlworld.com/steven.mitchell83/th07_english_patch_1%5b1%5d.0.exe)
 install=${pkgname}.install
 
-md5sums=('b5fb7535a1ad78b53fd0bc6cdd5bd018'
-  '35d37eb00a1f7e6fc265f47e639ddfbc'
-  '5de1cb787942308b7620f93a176367d9'
-  'ecdec576d60c662738e2495947543b95'
-  '05360e859c1a3ca173b9d57d96a45b9b')
+md5sums=('68444481ddd6d84e18e801ef3b22db84'
+         '35d37eb00a1f7e6fc265f47e639ddfbc'
+         '5de1cb787942308b7620f93a176367d9'
+         'ecdec576d60c662738e2495947543b95'
+         '05360e859c1a3ca173b9d57d96a45b9b')
 
 
 

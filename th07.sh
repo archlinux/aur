@@ -1,6 +1,6 @@
 #!/bin/bash
 export WINEPREFIX="$HOME/.th07/wine"
-export WINEDLLOVERRIDES="mshtml="
+export WINEDLLOVERRIDES="mscoree=;mshtml="
 
 if [ ! -d "$HOME"/.th07 ] ; then
   mkdir -p "$HOME"/.th07/wine || exit 1
