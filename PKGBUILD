@@ -3,7 +3,7 @@
 
 pkgname=tuxpaint-git
 pkgver=2990.471b8036
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Tux Paint is a free drawing program designed for young children."
 url="http://www.newbreedsoftware.com/tuxpaint/"
@@ -12,7 +12,7 @@ depends=('sdl_ttf' 'sdl_mixer' 'sdl_image' 'sdl_pango' 'libpaper' \
   'librsvg' 'python2' 'fribidi' 'fontforge')
 provides=('tuxpaint')
 conflicts=('tuxpaint')
-makedepends=('cvs' 'gperf' 'awk')
+makedepends=('git' 'gperf' 'awk')
 options=('!makeflags')
 source=("git+https://git.code.sf.net/p/tuxpaint/tuxpaint")
 md5sums=('SKIP')
