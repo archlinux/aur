@@ -1,6 +1,6 @@
 pkgbase = factor-git
 	pkgdesc = A general purpose, dynamically typed, stack-based programming language
-	pkgver = 0.96.3614.gc09312d
+	pkgver = 0.97.r3719.g08db99a471
 	pkgrel = 1
 	url = http://factorcode.org
 	arch = i686

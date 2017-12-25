@@ -1,9 +1,11 @@
-# Maintainer: Alain Kalker <a.c.kalker@gmail.com>
+# Maintainer: Sergii Fesenko <megapoliss@ukr.net>
+# Contributor: Alain Kalker <a.c.kalker@gmail.com>
 # Contributor: jedahu <jedahu@gmail.com>
 # Contributor: Leonidas <marek@xivilization.net>
+
 pkgname=factor-git
 _pkgname=factor
-pkgver=0.96.3614.gc09312d
+pkgver=0.97.r3719.g08db99a471
 pkgrel=1
 pkgdesc="A general purpose, dynamically typed, stack-based programming language"
 arch=(i686 x86_64)
@@ -16,14 +18,15 @@ optdepends=(udis86)
 makedepends=(git)
 options=(!strip)
 source=('git://factorcode.org/git/factor.git' # Official
-        #'https://github.com/slavapestov/factor' # Mirror
+        #'https://github.com/factor/factor.git' # Mirror
         'factor.desktop')
-md5sums=('SKIP'
-         '59242ddb19a9be927915e489e2bfca27')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --tags | sed 's/^v//;s/-/./g'
+  cd "${_pkgname}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
@@ -74,5 +77,6 @@ package() {
   install -D "$srcdir/factor.desktop" "$pkgdir/usr/share/applications/factor.desktop"
   install -D misc/icons/Factor_48x48.png "$pkgdir/usr/share/pixmaps/factor.png"
 }
+
 md5sums=('SKIP'
          '59242ddb19a9be927915e489e2bfca27')
