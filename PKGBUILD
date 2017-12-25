@@ -3,7 +3,7 @@
 # Upstream URL: http://gpl.internetconnection.net
 
 pkgname=mtftar
-pkgver=1.0
+pkgver=1.5
 pkgrel=1
 pkgdesc="A tool for translating a MTF stream to a TAR stream."
 arch=('x86_64' 'i686' 'armv7h')

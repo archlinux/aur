@@ -1,6 +1,6 @@
 pkgbase = mtftar
 	pkgdesc = A tool for translating a MTF stream to a TAR stream.
-	pkgver = 1.0
+	pkgver = 1.5
 	pkgrel = 1
 	url = http://gpl.internetconnection.net
 	arch = x86_64
