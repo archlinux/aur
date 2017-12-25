@@ -1,0 +1,24 @@
+pkgbase = python-varcode
+	pkgdesc = Library for manipulating genomic variants and predicting their effects.
+	pkgver = 0.5.15
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/varcode
+	arch = x86_64
+	license = Apache2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-biopython>=1.64
+	depends = python-memoized-property>=1.0.2
+	depends = python-numpy>=1.7
+	depends = python-numpy<2.0
+	depends = python-pandas>=0.15
+	depends = python-pyensembl>=1.0.3
+	depends = python-pyvcf>=0.6.7
+	depends = python-sercol>=0.1.0
+	depends = python-serializable>=0.0.8
+	options = !emptydirs
+	source = https://pypi.python.org/packages/3a/f2/088d572940ebe0d1e87aee7e7a79308c8c18391124061c0d8362a56ff1e7/varcode-0.5.15.tar.gz
+	md5sums = 2dd5164f11ad90ed9b9c3ac8c03764e1
+
+pkgname = python-varcode
+
