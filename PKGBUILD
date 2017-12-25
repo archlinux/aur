@@ -2,7 +2,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo at osvaldobarrera dot com dot ar>
 
 pkgname=hybrid-encoder
-pkgver=171223
+pkgver=171225
 pkgrel=1
 pkgdesc="A very complete gui for video encoding"
 arch=('x86_64')
@@ -52,5 +52,8 @@ md5sums=('c17225858520370ab56e2e2e62a5e972'
          'dd87c6eb6df85049de38c61dfe400347'
          '798dd936a3bc9bcd3b131d5dd6db96e6')
 md5sums=('1951611f788fff7b3a0be68df6e863dc'
+         'dd87c6eb6df85049de38c61dfe400347'
+         '798dd936a3bc9bcd3b131d5dd6db96e6')
+md5sums=('19b40f94c7cde4697fd7779bc85b84d4'
          'dd87c6eb6df85049de38c61dfe400347'
          '798dd936a3bc9bcd3b131d5dd6db96e6')

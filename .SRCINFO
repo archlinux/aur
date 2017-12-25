@@ -1,6 +1,6 @@
 pkgbase = hybrid-encoder
 	pkgdesc = A very complete gui for video encoding
-	pkgver = 171223
+	pkgver = 171225
 	pkgrel = 1
 	url = http://www.selur.de/
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = hybrid-encoder
 	optdepends = tsmuxer: support for TS container
 	optdepends = x264: support for H.264 video encoding
 	optdepends = x265: support for H.265 video encoding
-	md5sums = 1951611f788fff7b3a0be68df6e863dc
+	md5sums = 19b40f94c7cde4697fd7779bc85b84d4
 	md5sums = dd87c6eb6df85049de38c61dfe400347
 	md5sums = 798dd936a3bc9bcd3b131d5dd6db96e6
 
