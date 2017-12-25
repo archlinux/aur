@@ -13,9 +13,6 @@ _use_tentative_patches=
 # ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
 _use_ml1_patches=
 
-# ML2 - [PATCH] block,bfq: Disable writeback throttling: https://marc.info/?l=linux-block&m=150486424501778&w=2
-_use_ml2_patches=
-
 # Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
 
@@ -122,8 +119,6 @@ source=(# mainline kernel patches
         "${_lucjanpath}/blk-mq-v10/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
         "${_lucjanpath}/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch"
         "${_lucjanpath}/blk-mq-v10/0057-blk-mq-SCSI-implement-get-budget-and-put_budget-for-blk-mq.patch"
-        # mailing-list (ML2) patches
-        "${_mlpath_2}/ML2-0001-block-bfq-Disable-writeback-throttling.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -152,7 +147,6 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'cfe7d6be0c243bcf6e30f1145991424ad3fa90d43bda214e0df613de007699b6'
             '19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0'
             '7c51d0053053a3a0f6ed8759a5464ed5a3275a9dd832513a5678c3bcead9e5d5'
-            '5e57c8d1d87a63e1c5947aba02346862992f39be2b2761ea142b3897995495aa'
             '91988cc767d98f5a388901f631a5fd7a012a03ed180fea291048b060a6b08c6c'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -210,14 +204,6 @@ prepare() {
     #for p in ../ML1*.patch; do
     for p in ../*-blk-mq*.patch*; do
     msg " $p"
-    patch -Np1 -i "$p"; done
-  fi
-
-  # ML2 - [PATCH] block,bfq: Disable writeback throttling: https://marc.info/?l=linux-block&m=150486424501778&w=2
-  if [ -n "$_use_ml2_patches" ]; then
-    msg "Apply mailing-list patches 2"
-    for p in ../ML2*.patch; do
-      msg " $p"
     patch -Np1 -i "$p"; done
   fi
 
