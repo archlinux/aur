@@ -1,14 +1,14 @@
 # Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
 pkgname=giseditor
 pkgver=0.25
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A gis editor for .gpx .gdb and download maps source"
 arch=('any')
 url="https://github.com/dayanuyim/GisEditor"
 license=()
 groups=()
-depends=('gpsbabel', 'python-pmw', 'python-pillow', 'ttf-arphic-ukai')
+depends=('gpsbabel' 'python-pmw' 'python-pillow' 'ttf-arphic-ukai')
 makedepends=()
 checkdepends=()
 optdepends=()
