@@ -1,21 +1,17 @@
 pkgname=readeef-client-git
-pkgver=b2f70a2
+pkgver=5e31fc5
 pkgrel=1
 pkgdesc='An electron client for the readeef feed aggregator'
 arch=('i686' 'x86_64')
-url='https://neovim.io'
+url='https://sugr.org/en/products/readeef'
 license=('LGPL3')
 depends=('electron')
 makedepends=('git npm findutils')
 conflicts=('readeef-client')
 source=(
 	"${pkgname}::git+https://github.com/urandom/readeef-electron.git"
-	"remove-electron-prebuilt.patch"
-	"readeef-client"
 )
 sha256sums=(
-	'SKIP'
-	'SKIP'
 	'SKIP'
 )
 provides=("readeef-client=${pkgver}")
@@ -25,17 +21,14 @@ pkgver() {
   git rev-parse --short HEAD
 }
 
-prepare() {
-	cd "${pkgname}"
-
-	patch -p0 -i "${srcdir}/remove-electron-prebuilt.patch"
-}
-
 package() {
+	echo '#!/bin/sh
+
+exec electron /usr/lib/readeef-client/ "$@"' > readeef-client
 	install -Dm0755 "readeef-client" "${pkgdir}/usr/bin/readeef-client"
 
 	cd "${pkgname}"
-	npm install .
+	npm install --production .
 
 	install -Dm0644 "extra/readeef-client.desktop" "${pkgdir}/usr/share/applications/readeef-client.desktop"
 	install -Dm0644 "images/readeef-256.png" "${pkgdir}/usr/share/icons/readeef-client.png"
