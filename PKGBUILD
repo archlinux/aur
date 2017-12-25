@@ -28,7 +28,7 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir"
+	cd "${srcdir}"
 	patch -Nbup1 -i "${srcdir}/utimensat.patch"
 }
 
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  	cd "$srcdir"
+  	cd "${srcdir}"
 	install -dm 755 "${pkgdir}/usr/share/ksh"
 	install -dm 755 "${pkgdir}/usr/share/ksh/functions"
 	install -dm 755 "${pkgdir}/usr/share/doc/ksh"
@@ -69,7 +69,7 @@ package() {
 	done
 	install -Dm 755 "build/src/cmd/${_pkgname}/shcomp" "${pkgdir}/usr/bin/shcomp"
 	local _lib
-	for _lib in 'libast' 'libcmd' 'libcoshell'; do
-		install -Dm 755 "build/src/lib/${_lib}/${_lib}.so" "${pkgdir}/usr/lib/${_lib}.so"
+	for _lib in 'ast' 'cmd' 'coshell'; do
+		install -Dm 755 "build/src/lib/lib${_lib}/lib${_lib}.so" "${pkgdir}/usr/lib/lib${_lib}.so"
 	done
 }
