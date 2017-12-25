@@ -2,7 +2,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-server-minimal
-pkgver=0.20.12
+pkgver=0.20.13
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback as server running under mpd user."
 url="https://www.musicpd.org/"
@@ -17,7 +17,7 @@ source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"
         "${_pkgname}.tmpfiles"
         "${_pkgname}.sysusers"
         "${_pkgname}.conf")
-sha256sums=('e159ac0608fb85c891bd19375ed7056d5f9ec4ba492b052f24820513e774f709'
+sha256sums=('46c1c534d80a52de00263e8ef43a6011ff9d765232443749539ef26b1b48ff40'
             'SKIP'
             '93d5cd794c3b2709d24dd77900574683b04fa382c7eb0a2d26ddb51cbcf7adbf'
             '14d28690bb60d8d182499ebefa583fc42f425093ef00341be25bb66586aecf3d'
