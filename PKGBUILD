@@ -2,9 +2,9 @@
 pkgname=smarttrafficmeter
 pkgver=2.1.1227.6875
 pkgrel=1
-pkgdesc="Software for measuring network usage"
+pkgdesc="Software for measuring network usage."
 arch=('x86_64')
-url="https://bitbucket.org/rafalfr/smarttrafficmeter/overview"
+url="https://github.com/rafalfr/smarttrafficmeter"
 license=('GPL3')
 depends=('boost-libs' 'curl')
 makedepends=('gcc' 'git' 'boost' 'curl' 'binutils')
@@ -23,7 +23,7 @@ md5sums=()
 validpgpkeys=()
 
 build() {
-	git clone --depth 1 "https://rafalfr@bitbucket.org/rafalfr/smarttrafficmeter.git"
+	git clone --depth 1 "https://github.com/rafalfr/smarttrafficmeter.git"
 	cd ${srcdir}/smarttrafficmeter/
 	make -f SmartTrafficMeter.cbp.mak linux_release
 }
