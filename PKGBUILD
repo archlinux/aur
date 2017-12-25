@@ -3,8 +3,8 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=rust-nightly-bin
-pkgver=1.23.0_2017.11.15
-pkgrel=3
+pkgver=1.24.0_2017.12.12
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
 url='https://www.rust-lang.org/'
@@ -12,13 +12,10 @@ license=('MIT' 'Apache' 'custom')
 provides=('rust' 'rust-nightly' 'cargo' 'cargo-nightly' 'rust-docs')
 conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin' 'cargo' 'cargo-git' 'cargo-nightly' 'cargo-nightly-bin' 'rust-docs')
 depends=('gcc-libs' 'zlib' 'sh')
-source=("rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz.asc::https://static.rust-lang.org/dist/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz.asc"
-        "rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz::https://static.rust-lang.org/dist/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"
+source=("rust-nightly-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz::https://static.rust-lang.org/dist/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"
 )
 
-sha256sums=('SKIP'
-            'SKIP')
-validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE')
+sha256sums=('SKIP')
 options=(staticlibs !strip)
 
 pkgver() {
