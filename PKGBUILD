@@ -8,7 +8,7 @@ arch=(x86_64)
 url=https://www.lazarus-ide.org/
 license=(GPL2)
 conflicts=(lazarus-qt lazarus-gtk2)
-depends=(fpc fpc-src qt5-base qt5pas-lazarus lazarus-svn)
+depends=(fpc fpc-src qt5-base qt5pas lazarus-svn)
 makedepends=(subversion)
 source=("$pkgname::svn+https://svn.freepascal.org/svn/lazarus/trunk")
 
