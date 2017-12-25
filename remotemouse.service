@@ -1,0 +1,10 @@
+[Unit]
+ConditionPathExists=/usr/bin/remotemouse
+Description=Use a mobile phone or tablet as a wireless mouse and keyboard
+Documentation=https://remotemouse.net/
+
+[Service]
+ExecStart=/usr/bin/remotemouse
+
+[Install]
+WantedBy=xorg.target
