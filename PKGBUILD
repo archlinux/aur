@@ -3,7 +3,7 @@
 pkgname=brave-snapshot-bin
 pkgver=0.20.11
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=4
 pkgdesc="A web browser that stops ads and trackers by default. Binary snapshot."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -44,7 +44,7 @@ if [[ -r /proc/sys/kernel/unprivileged_userns_clone && \$(< /proc/sys/kernel/unp
 	FLAG=""
 fi
 
-exec /usr/lib/$pkgname/brave "\$FLAG" -- "\$@"
+exec /usr/lib/$pkgname/brave-beta "\$FLAG" -- "\$@"
 END
 
   _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
