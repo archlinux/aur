@@ -2,8 +2,8 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.23.0.r13.g9a8586c5c
-_last_release="0.23.1-3"
+pkgver=0.24.1.r27.ge04565fbd
+_last_release="0.24.1-2"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ optdepends=('shards: To make the crystal deps command work'
 conflicts=('crystal')
 provides=('crystal')
 source=("git+https://github.com/crystal-lang/crystal.git")
-source_i686+=("https://github.com/crystal-lang/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-i686.tar.gz")
-source_x86_64+=("https://github.com/crystal-lang/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-x86_64.tar.gz")
+source_i686+=("https://github.com/crystal-lang/crystal/releases/download/v${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-i686.tar.gz")
+source_x86_64+=("https://github.com/crystal-lang/crystal/releases/download/v${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-x86_64.tar.gz")
 
 pkgver() {
   cd "$srcdir/${pkgname/-git/}"
@@ -33,12 +33,12 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname/-git/}"
 
-  make release=1 \
+  make FLAGS="--release --no-debug" \
        PATH="$srcdir/${pkgname/-git/}-$_last_release/bin:$PATH" \
        CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
        CRYSTAL_CONFIG_PATH="lib:/usr/lib/crystal" \
        CRYSTAL_CACHE_DIR="/tmp/crystal"
-  make doc CRYSTAL_CACHE_DIR="/tmp/crystal"
+  make docs CRYSTAL_CACHE_DIR="/tmp/crystal"
 }
 
 check() {
@@ -64,7 +64,7 @@ package() {
   cp -av src "$pkgdir/usr/lib/crystal"
 
   install -dm755 "$pkgdir/usr/share/doc/crystal"
-  cp -av doc     "$pkgdir/usr/share/doc/crystal/api"
+  cp -av docs     "$pkgdir/usr/share/doc/crystal/api"
   cp -av samples "$pkgdir/usr/share/doc/crystal/"
 
   install -Dm644 etc/completion.bash "$pkgdir/usr/share/bash-completion/completions/crystal"
@@ -76,5 +76,5 @@ package() {
 }
 
 sha256sums=('SKIP')
-sha256sums_i686=('268a39b8d37385ff60d113d4d9fc966472160faa1e3bbf7ae58860ab6678aceb')
-sha256sums_x86_64=('6a84cc866838ffa5250e28c3ce1a918a93f89c06393fe8cfd4068fcbbc66f3ab')
+sha256sums_i686=('4f45f8ea57486be0f8d035c466edda848b7e1a7aa809fff4ea31311fd8ebea97')
+sha256sums_x86_64=('b75df8522f2302270b48e6b77812a0cb0086e338cdf884227e0076afbf83aca7')
