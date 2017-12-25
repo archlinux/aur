@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mlterm-hg
-pkgver=r2599.95386d6b6bbe
+pkgver=r2801.cc526dccc521
 pkgrel=1
 epoch=
 pkgdesc="Multi Lingual TERMinal emulator on X"
