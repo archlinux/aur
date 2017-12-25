@@ -2,15 +2,15 @@
 
 pkgname=pingo
 pkgver=0.92u
-pkgrel=1
+pkgrel=2
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
 arch=('i686' 'x86_64')
 url='http://css-ig.net/pingo/'
 license=('unknown')
 depends=('wine')
 options=('!strip')
-source=("https://raw.githubusercontent.com/bermond/shellutils/master/image/${pkgname}")
-sha256sums=('454d976b5b8fdf146f19228ddec5e532f22eabe68d825ac44a153584db2646e9')
+source=('shellutils-git'::'git+https://github.com/dbermond/shellutils.git')
+sha256sums=('SKIP')
 _expected_sha256sum='10893c585e62408f3ecb262de4bd3e6db5d802ac11ed4f67453b4cb75340022c'
 _srcfile="pingo32-${pkgver}.zip"
 _srcurl="https://css-ig.net/downloads/${pkgname}32.zip"
@@ -70,6 +70,6 @@ prepare() {
 }
 
 package() {
-    install -D -m755 "$pkgname"                            "${pkgdir}/usr/bin/${pkgname}"
+    install -D -m755 "shellutils-git/image/${pkgname}"     "${pkgdir}/usr/bin/${pkgname}"
     install -D -m644 "$pkgname"-"${pkgver}/${pkgname}.exe" "${pkgdir}/usr/share/${pkgname}/${pkgname}.exe"
 }
