@@ -30,7 +30,6 @@ optdepends=('apr-util: adds apr support'
             'mime-types: provides /etc/mime.types'
             'nss: adds support for signed files/macros'
             'openoffice-de-bin: adds additional German language pack'
-            'openoffice-nl-bin: adds additional Dutch language pack'
             'python2: adds python support'
             'raptor1: adds rdf support'
             'sqlite: adds sqlite support')
