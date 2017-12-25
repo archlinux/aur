@@ -3,7 +3,7 @@
 # Main package information
 pkgname=scylla
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scylla is an open source NoSQL drop-in replacement for Apache Cassandra with fast throughput and low latency"
 arch=('x86_64')
 url="http://www.scylladb.com/"
@@ -20,7 +20,7 @@ optdepends=('scylla-jmx: JMX interface for compatibility with tooling such as no
 makedepends=('git' 'gcc' 'antlr3-cpp-headers-git' 'libyaml' 'yaml-cpp'
                 'lz4' 'zlib' 'snappy' 'jsoncpp' 'gnutls' 'ninja'
                 'ragel' 'libaio' 'crypto++' 'xfsprogs' 'jre8-openjdk-headless'
-                'numactl' 'libpciaccess' 'libxml2' 'thrift' 'lksctp-tools'
+                'numactl' 'libpciaccess' 'libxml2' 'thrift-0.10.0' 'lksctp-tools'
                 'protobuf' 'libunwind' 'systemtap' 'make' 'libtool' 'cmake')
 # Relations
 provides=('scylla')
