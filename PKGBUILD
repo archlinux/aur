@@ -8,21 +8,19 @@ pkgdesc="An IDE that bundles a smart editor, the Leiningen and Boot build tools,
 arch=('any')
 url="https://sekao.net/nightcode/"
 license=('custom')
+makedepends=('boot')
 depends=('java-runtime>7' 'java-openjfx')
 conflicts=('nightcode-git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oakes/Nightcode/archive/${pkgver}.tar.gz"
-        "https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oakes/${_name}/archive/${pkgver}.tar.gz"
         "nightcode.desktop")
 sha256sums=('26e86d224cc3cf17a85155f1c0f2d6d869524a7500c398bc32552c9bd33b3055'
-            '0ccd697f2027e7e1cd3be3d62721057cbc841585740d0aaa9fbb485d7b1f17c3'
-            '8fb613946bb9cb3dc636933ff2f0c7de8c61d2b43e49b9d6baf380b07377eaa1')
-noextract=('boot.sh'
-	   'nightcode.desktop')
+            'aa94a3cf9028756b4bd6dbb6f9b27dc23f8aa4d29ca18507736561ef66fbd267')
+noextract=('nightcode.desktop')
 
 build() {
 	cd "${_name}-${pkgver}"
 	msg2 "Building nightcode..."
-	bash ${srcdir}/boot.sh build
+	boot build
 }
 
 package() {
@@ -42,4 +40,5 @@ package() {
 
   #icon
   install -Dm644 ${srcdir}/nightcode.desktop ${pkgdir}/usr/share/applications/nightcode.desktop
+  install -Dm644 ${srcdir}/${_name}-${pkgver}/package/linux/Nightcode.png ${pkgdir}/usr/share/nightcode/Nightcode.png
 }

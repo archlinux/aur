@@ -2,7 +2,7 @@
 Name=Nightcode
 Comment=A handy tool for your Clojure adventures
 Type=Application
-Icon=nightcode
+Icon=/usr/share/nightcode/Nightcode.png
 Exec=nightcode
 Categories=Utility;TextEditor;Development
 Terminal=false
