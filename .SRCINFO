@@ -1,0 +1,20 @@
+pkgbase = libcdio-git
+	pkgdesc = Library for CD-ROM and CD image access
+	pkgver = 2.0.0.r53.g1be3d348
+	pkgrel = 1
+	url = https://www.gnu.org/software/libcdio/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = help2man
+	depends = glibc
+	depends = libcddb
+	provides = libcdio
+	conflicts = libcdio
+	options = staticlibs
+	source = git+https://git.savannah.gnu.org/git/libcdio.git
+	sha256sums = SKIP
+
+pkgname = libcdio-git
+
