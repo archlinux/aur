@@ -14,6 +14,9 @@ depends=('hwloc' 'systemd' 'collectd' 'python-yaml' 'python2-yaml' 'python-urwid
             'pciutils' 'python-pyparsing' 'python2-requests' 'util-linux'
             'python-pyudev' 'python-setuptools' 'boost' 'boost-libs')
 
+optdepends=('scylla-jmx: JMX interface for compatibility with tooling such as nodetool'
+            'scylla-tools: Tools to be used with ScyllaDB, such as cqlsh, nodetool and others')
+
 makedepends=('git' 'gcc' 'antlr3-cpp-headers-git' 'libyaml' 'yaml-cpp'
                 'lz4' 'zlib' 'snappy' 'jsoncpp' 'gnutls' 'ninja'
                 'ragel' 'libaio' 'crypto++' 'xfsprogs' 'jre8-openjdk-headless'
@@ -21,7 +24,7 @@ makedepends=('git' 'gcc' 'antlr3-cpp-headers-git' 'libyaml' 'yaml-cpp'
                 'protobuf' 'libunwind' 'systemtap' 'make' 'libtool' 'cmake')
 # Relations
 provides=('scylla')
-conflicts=('scylla-git')
+conflicts=('cassandra' 'scylla-git')
 
 # Others
 backup=('etc/scylla/scylla.yaml'
