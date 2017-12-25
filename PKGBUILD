@@ -2,7 +2,7 @@
 
 pkgname=pantheon-session-git
 pkgver=r106.81b95c3
-pkgrel=2
+pkgrel=3
 pkgdesc='The Pantheon Session Handler'
 arch=('any')
 url='https://github.com/elementary/session-settings'
@@ -13,7 +13,7 @@ depends=('cerbere-git' 'dconf' 'gala-git' 'gconf' 'gnome-keyring'
          'pantheon-dpms-helper-git' 'plank' 'wingpanel-git'
          'xdg-user-dirs-gtk')
 makedepends=('bzr')
-optdepends=('pantheon-default-settings-bzr')
+optdepends=('pantheon-default-settings-git')
 source=("pantheon-session::git+https://github.com/elementary/session-settings#branch=meson")
 sha256sums=('SKIP')
 
@@ -26,6 +26,7 @@ package() {
   cd $srcdir/pantheon-session
   meson --prefix=/usr --datadir=share builddir
   DESTDIR=$pkgdir ninja -C builddir install
+  mv $pkgdir/usr/share/xessions $pkgdir/usr/share/xsessions
 }
 
 # vim: ts=2 sw=2 et:
