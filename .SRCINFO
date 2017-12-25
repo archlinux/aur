@@ -1,6 +1,6 @@
 pkgbase = xorg-server-dev
 	pkgver = 1.19.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
@@ -60,12 +60,14 @@ pkgbase = xorg-server-dev
 	source = xserver-autobind-hotplug.patch
 	source = xvfb-run
 	source = xvfb-run.1
+	source = udev-changes.diff
 	sha256sums = 3c0e4a354a6b1d5d357b121357946ee8ffdb2f52158b2e63e105be9cef013168
 	sha256sums = SKIP
 	sha256sums = 914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8
 	sha256sums = fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
+	sha256sums = ce9b235c053ac85a9da86fba3b60fcfc48d36a8bd789b94ed79d5d571bc7b0aa
 
 pkgname = xorg-server-dev
 	pkgdesc = Xorg X server - Bleeding edge version
@@ -163,7 +165,7 @@ pkgname = xorg-server-common-dev
 	depends = xorg-xkbcomp
 	depends = xorg-setxkbmap
 	depends = xorg-fonts-misc
-	provides = xorg-server-common=1.19.6-1
+	provides = xorg-server-common=1.19.6-2
 	conflicts = xorg-server-common
 
 pkgname = xorg-server-devel-dev

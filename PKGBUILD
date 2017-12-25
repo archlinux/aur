@@ -4,7 +4,7 @@
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.19.6 # http://lists.x.org/archives/xorg/2017-December/059095.html
-pkgrel=1
+pkgrel=2 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=f29308c7c456c903e507602cd9c51d9577b3c655
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -20,7 +20,8 @@ source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         nvidia-add-modulepath-support.patch
         xserver-autobind-hotplug.patch
         xvfb-run
-        xvfb-run.1)
+        xvfb-run.1
+        udev-changes.diff)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
@@ -30,7 +31,8 @@ sha256sums=('3c0e4a354a6b1d5d357b121357946ee8ffdb2f52158b2e63e105be9cef013168'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
-            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
+            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
+            'ce9b235c053ac85a9da86fba3b60fcfc48d36a8bd789b94ed79d5d571bc7b0aa')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
@@ -40,6 +42,10 @@ prepare() {
 
   msg2 "patch from Fedora, not yet merged"
   patch -Np1 -i ../xserver-autobind-hotplug.patch
+
+  msg2 "https://bugs.archlinux.org/task/56804 
+     https://bugs.freedesktop.org/show_bug.cgi?id=104382"
+  patch -Rp1 -i ../udev-changes.diff
 
   msg2 "Starting autoreconf..."
   autoreconf -vfi
