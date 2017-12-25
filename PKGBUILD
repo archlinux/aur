@@ -5,11 +5,11 @@
 
 pkgname=basilisk
 pkgver=55.0.0
-pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
+pkgrel=2
+pkgdesc="Basilisk Browser from the makers of Pale Moon"
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="https://www.mozilla.org/en-US/firefox/organizations/"
+url="http://www.basilisk-browser.org/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
          libvpx libevent nss hunspell sqlite ttf-font icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
