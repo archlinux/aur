@@ -9,7 +9,7 @@ url='http://thrift.apache.org/'
 license=(APACHE)
 depends=(gcc-libs openssl)
 makedepends=(boost libevent git)
-conflicts=('thrift', 'thrift-git')
+conflicts=('thrift' 'thrift-git')
 provides=('thrift')
 replaces=('thrift')
 source=("git://github.com/apache/thrift.git#tag=${pkgver}")
