@@ -1,6 +1,6 @@
 pkgbase = eolie
 	pkgdesc = Simple web browser for GNOME
-	pkgver = 0.9.15
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = https://gnumdk.github.io/eolie-web/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = eolie
 	depends = python-pyfxa
 	depends = python-dateutil
 	depends = python-crypto
-	source = https://github.com/gnumdk/eolie/releases/download/0.9.15/eolie-0.9.15.tar.xz
-	sha256sums = 4d0e2386ce166d2a2ff071e832f75ead636371ac8986d9a27b05c11e6e6f9e3e
+	source = https://gitlab.gnome.org/gnumdk/eolie/uploads/2d3872b8b4c467740fdcf2cec6a26440/eolie-0.9.16.tar.xz
+	sha256sums = 4b6c07196308b037ddc7d04e0333aef65415ccdf567f6b301b513acdbc1e67f2
 
 pkgname = eolie
 
