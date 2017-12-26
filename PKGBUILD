@@ -1,6 +1,6 @@
 _pkgbase=alx-wol
 pkgname=${_pkgbase}-dkms
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="The alx kernel module with a patch enabling WoL applied"
 license=("GPL")
