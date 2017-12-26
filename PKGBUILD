@@ -9,15 +9,15 @@ depends=('glibc' 'dkms')
 optdepends=('linux-headers: Needed for build the module for Arch kernel'
 	'linux-lts-headers: Needed for build the module for LTS Arch kernel'
 	'linux-zen-headers: Needed for build the module for ZEN Arch kernel')
-source=(https://github.com/angelsl/linux/blob/alx-wol/drivers/net/ethernet/atheros/alx/{alx.h,ethtool.c,hw.c,hw.h,main.c,reg.h}
+source=(https://raw.githubusercontent.com/angelsl/linux/alx-wol/drivers/net/ethernet/atheros/alx/{alx.h,ethtool.c,hw.c,hw.h,main.c,reg.h}
         Kbuild
         dkms.conf)
-sha256sums=('afcd186a4710868ba7206bfcebdee5a6adc48e4853a2f7595f4f7c3df0f345af'
-            'ddba0a3acd62fab181f4de3ffeb85accfcee50110f8aa4762bec6958f235cc0e'
-            'd775716e32c49ab17455067e1027e3039421444ba515d6e477b2aa3558e6932d'
-            '339bb5b3ce4cc99d45740ff8af7afe3a935ee7a7e031027ae91f9e350da38b39'
-            'e82a3d467fc8ca44c8ca1e9ba0d8027bc5491c65569a68471fdf580eb82b624d'
-            'dfe82e1d26935071b582d5f287f98a4487ee6b7a2f470ee23a9e23b841ef3282'
+sha256sums=('b4f78f21c3485680f1533002771a268ce869863f8684c0fc67e8a938a6276ae9'
+            '922f2837b5b7bb51bb112e53a22ee4883acfcb53b83c4b79bf9d7a99d032f6fd'
+            'fa609e88b05e1597f9734c4b625a00771cf4d70aa65b054664b1eda3c29dac77'
+            'a0b0b41752a8b69a5ef31574501897c3631e007ea8f8232732df1e2ebdf28e6f'
+            'af49b2027f8d3ee2f2480fad79b3867054d73e6537612724599eed6bcd2bec6d'
+            '88a23ab8e6fe814efe81910bd8806f5988d367a628458154edaebdf4ccbe4902'
             '8a62bb5adf6e554f470f88f8da58da0ce05cb8276ab56fb45ed5d31c71665d39'
             'f3aefc85fd246a74ee2be831c15b6440d22c497e84fba1f57e152c82f2946d1a')
 
