@@ -2,7 +2,7 @@
 _hkgname=descrilo
 pkgname=haskell-descrilo
 pkgver=0.1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Loads a list of items with fields'
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('GPL3')
@@ -16,12 +16,14 @@ sha256sums=('2531d6b52a6a1a44c00581d952631401cadb3e3b2c9f6111fbdc05ad17b3f58e')
 build() {
 	cd ${srcdir}/${_hkgname}-${pkgver}
 
-	runhaskell Setup configure -O --enable-split-objs --enable-shared \
-		--prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid
-	runhaskell Setup build
-	runhaskell Setup haddock
-	runhaskell Setup register   --gen-script
-	runhaskell Setup unregister --gen-script
+	runhaskell Setup configure -O --enable-shared --prefix=/usr \
+  --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid \
+       --ghc-option -dynamic
+  runhaskell Setup build
+  runhaskell Setup haddock --haddock-options "--optghc -dynamic"
+  runhaskell Setup register   --gen-script
+  runhaskell Setup unregister --gen-script
+
 	sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 package() {

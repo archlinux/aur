@@ -1,7 +1,7 @@
 pkgbase = haskell-descrilo
 	pkgdesc = Loads a list of items with fields
 	pkgver = 0.1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/descrilo
 	install = haskell-descrilo.install
 	arch = i686
