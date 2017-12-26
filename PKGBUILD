@@ -9,17 +9,19 @@ _ippicv_commit='dfe3162c237af211e98b8960018b564bc209261d'
 _bootdesc_commit='34e4206aef44d50e6bbcd0ab06354b52e7466d26'
 _vgg_commit='fccf7cd6a4b12079f73bbfb21745f9babcd4eb1d'
 _dnn_face_detector_commit='b2bfc75f6aea5b1f834ff0f0b865a7c18ff1459f'
+_face_landmakr_model_commit='8afa57abc8229d611c4937165d20e2a2d9fc5a12'
 
 pkgname=opencv-gstreamer
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Open Source Computer Vision Library (no Xine/FFmpeg dependency, uses GStreamer)'
 arch=('i686' 'x86_64')
 url='https://opencv.org/'
 license=('BSD')
 depends=('intel-tbb' 'openexr' 'gstreamer' 'gst-plugins-base-libs' 'v4l-utils'
-         'libdc1394' 'gtkglext' 'libwebp')
-makedepends=('cmake' 'python-numpy' 'python2-numpy' 'mesa' 'eigen' 'hdf5')
+         'libdc1394' 'gtkglext' 'libwebp' 'cblas' 'lapack' 'libgphoto2')
+makedepends=('cmake' 'python-numpy' 'python2-numpy' 'mesa' 'eigen' 'hdf5'
+             'lapacke')
 optdepends=('opencv-samples'
             'hdf5: support for HDF5 format'
             'opencl-icd-loader: For coding with OpenCL'
@@ -32,6 +34,7 @@ source=("opencv-${pkgver}.tar.gz"::"https://github.com/opencv/opencv/archive/${p
         "opencv_contrib-${pkgver}.tar.gz"::"https://github.com/opencv/opencv_contrib/archive/${pkgver}.tar.gz"
         "tinydnn-${_tinydnn_ver}.tar.gz"::"https://github.com/tiny-dnn/tiny-dnn/archive/v${_tinydnn_ver}.tar.gz"
         "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_dnn_face_detector_commit}/${_dnn_face_detector_file}"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_face_landmakr_model_commit}/face_landmark_model.dat"
         "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_bootdesc_commit}/boostdesc_bgm.i"
         "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_bootdesc_commit}/boostdesc_bgm_bi.i"
         "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_bootdesc_commit}/boostdesc_bgm_hd.i"
@@ -48,10 +51,11 @@ source_x86_64=("https://github.com/opencv/opencv_3rdparty/raw/${_ippicv_commit}/
 noextract=("ippicv_${_ippicv_ver}_lnx_ia32_general_${_ippicv_date}.tgz"
            "ippicv_${_ippicv_ver}_lnx_intel64_general_${_ippicv_date}.tgz"
            "tinydnn-${_tinydnn_ver}.tar.gz")
-sha256sums=('5dca3bb0d661af311e25a72b04a7e4c22c47c1aa86eb73e70063cd378a2aa6ee'
-            '6f3ce148dc6e147496f0dbec1c99e917e13bf138f5a8ccfc3765f5c2372bd331'
+sha256sums=('678cc3d2d1b3464b512b084a8cca1fad7de207c7abdf2caa1fed636c13e916da'
+            '699ab3eee7922fbd3e8f98c68e6d16a1d453b20ef364e76172e56466dc9c16cd'
             'e2c61ce8c5debaa644121179e9dbdcf83f497f39de853f8dd5175846505aa18b'
             '2a56a11a57a4a295956b0660b4a3d76bbdca2206c4961cea8efe7d95c7cb2f2d'
+            'eeab592db2861a6c94d592a48456cf59945d31483ce94a6bc4d3a4e318049ba3'
             'c441a027f15b9b8ff6c006b0775cd86781169ebd5b6257a94bdce668010d5df5'
             '3d54b2934f0de963abbce985da303254ee78eebd05eb2af517105f9b0e670566'
             '4b068631287f9914c3aa5bbdab76368b01493cea494ab47f7a70d2fa4f1c3e1b'
@@ -79,12 +83,14 @@ prepare() {
     local _ippicv_dir="${_cmake_cache}/ippicv"
     local _tinydnn_dir="${_cmake_cache}/tiny_dnn"
     local _dnn_face_detector_dir="${_cmake_cache}/dnn_face_detector"
+    local _face_landmakr_model_dir="${_cmake_cache}/data"
     local _boostdesc_dir="${_cmake_cache}/xfeatures2d/boostdesc"
     local _vgg_dir="${_cmake_cache}/xfeatures2d/vgg"
     
     local _ippicv_md5="$(                openssl dgst -md5 "${_ippicv_file}"            | awk '{ print $2 }')"
     local _tinydnn_md5="$(               openssl dgst -md5 "${_tinydnn_file}"           | awk '{ print $2 }')"
     local _dnn_face_detector_md5="$(     openssl dgst -md5 "${_dnn_face_detector_file}" | awk '{ print $2 }')"
+    local _face_landmakr_model_md5="$(   openssl dgst -md5 'face_landmark_model.dat'    | awk '{ print $2 }')"
     local _boostdesc_bgm_md5="$(         openssl dgst -md5 'boostdesc_bgm.i'            | awk '{ print $2 }')"
     local _boostdesc_bgm_bi_md5="$(      openssl dgst -md5 'boostdesc_bgm_bi.i'         | awk '{ print $2 }')"
     local _boostdesc_bgm_hd_md5="$(      openssl dgst -md5 'boostdesc_bgm_hd.i'         | awk '{ print $2 }')"
@@ -97,11 +103,12 @@ prepare() {
     local _vgg_generated_80_md5="$(      openssl dgst -md5 'vgg_generated_80.i'         | awk '{ print $2 }')"
     local _vgg_generated_120_md5="$(     openssl dgst -md5 'vgg_generated_120.i'        | awk '{ print $2 }')"
     
-    mkdir -p "${_cmake_cache}/"{ippicv,tiny_dnn,dnn_face_detector,xfeatures2d/{boostdesc,vgg}}
+    mkdir -p "${_cmake_cache}/"{ippicv,tiny_dnn,dnn_face_detector,data,xfeatures2d/{boostdesc,vgg}}
     
     cp -a "${_ippicv_file}"            "${_ippicv_dir}/${_ippicv_md5}-${_ippicv_file}"
     cp -a "${_tinydnn_file}"           "${_tinydnn_dir}/${_tinydnn_md5}-v${_tinydnn_ver}.tar.gz"
     cp -a "${_dnn_face_detector_file}" "${_dnn_face_detector_dir}/${_dnn_face_detector_md5}-${_dnn_face_detector_file}"
+    cp -a 'face_landmark_model.dat'    "${_face_landmakr_model_dir}/${_face_landmakr_model_md5}-face_landmark_model.dat"
     cp -a 'boostdesc_bgm.i'            "${_boostdesc_dir}/${_boostdesc_bgm_md5}-boostdesc_bgm.i"
     cp -a 'boostdesc_bgm_bi.i'         "${_boostdesc_dir}/${_boostdesc_bgm_bi_md5}-boostdesc_bgm_bi.i"
     cp -a 'boostdesc_bgm_hd.i'         "${_boostdesc_dir}/${_boostdesc_bgm_hd_md5}-boostdesc_bgm_hd.i"
@@ -120,6 +127,7 @@ build() {
     mkdir -p build
     cd build
     
+    # cmake's FindLAPACK doesn't add cblas to LAPACK_LIBRARIES, so we need to specify them manually
     cmake \
         -DBUILD_DOCS:BOOL='OFF' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
@@ -135,15 +143,19 @@ build() {
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+        -D CMAKE_INSTALL_LIBDIR='lib' \
         -DCMAKE_SKIP_RPATH='ON' \
         -DOPENCV_EXTRA_MODULES_PATH="${srcdir}/opencv_contrib-${pkgver}/modules" \
+        -DLAPACK_LIBRARIES='/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so' \
+        -DLAPACK_CBLAS_H='/usr/include/cblas.h' \
+        -DLAPACK_LAPACKE_H='/usr/include/lapacke.h' \
         -DWITH_CUDA:BOOL='OFF' \
         -DWITH_FFMPEG:BOOL='OFF' \
-        -DWITH_GPHOTO2:BOOL='OFF' \
+        -DWITH_GPHOTO2:BOOL='ON' \
         -DWITH_GSTREAMER:BOOL='ON' \
         -DWITH_GTK_2_X:BOOL='ON' \
         -DWITH_IPP:BOOL='ON' \
-        -DWITH_LAPACK:BOOL='OFF' \
+        -DWITH_LAPACK:BOOL='ON' \
         -DWITH_LIBV4L:BOOL='ON' \
         -DWITH_OPENCL='ON' \
         -DWITH_OPENGL='ON' \
