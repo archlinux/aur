@@ -1,6 +1,6 @@
 pkgbase = ossec-hids
 	pkgdesc = Open Source Host-based Intrusion Detection System
-	pkgver = 2.9.2
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://ossec.github.io/
 	install = ossec.install
@@ -9,10 +9,10 @@ pkgbase = ossec-hids
 	depends = openssl
 	options = emptydirs
 	backup = var/ossec/etc/ossec.conf
-	source = https://github.com/ossec/ossec-hids/archive/2.9.2.tar.gz
+	source = https://github.com/ossec/ossec-hids/archive/2.9.3.tar.gz
 	source = ossec.service
 	source = config
-	sha256sums = ba00baa328fb9cc1eb0d5c6fe19d629216c6705d9efb309aa3e53100b0a785a6
+	sha256sums = 6b70a8f93fc2412bfc34a793a53b4d22323568866c09fde87c7d3a9d04e3b313
 	sha256sums = be5f6fe7e10603a0897c2502e0e6913fbb544a66f59674aaaef87d0f31d09eb9
 	sha256sums = 2700c08962a64009ab65b72282141244cdfd7d327c8e8bdde6f5fcc623fdf1b4
 
