@@ -2,7 +2,7 @@
 _hkgname=simtreelo
 pkgname=haskell-simtreelo
 pkgver=0.1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Loads data organized in a tree'
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('GPL3')
@@ -15,12 +15,12 @@ install=${pkgname}.install
 build() {
 	cd ${srcdir}/${_hkgname}-${pkgver}
 
-	runhaskell Setup configure -O --enable-split-objs --enable-shared \
-       --prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid \
-			 --gch-option -dynamic
+	runhaskell Setup configure -O --enable-shared --prefix=/usr \
+	--docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid \
+			 --ghc-option -dynamic
 	# runhaskell Setup configure --prefix=/usr --docdir=/usr/share/doc/${pkgname} -O --enable-shared --enable-split-objs --libsubdir=\$compiler/site-local/\$pkgid
 	runhaskell Setup build
-	runhaskell Setup haddock
+	runhaskell Setup haddock --haddock-options "--optghc -dynamic"
 	runhaskell Setup register   --gen-script
 	runhaskell Setup unregister --gen-script
 	sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh

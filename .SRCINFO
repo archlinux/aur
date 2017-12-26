@@ -1,7 +1,7 @@
 pkgbase = haskell-simtreelo
 	pkgdesc = Loads data organized in a tree
 	pkgver = 0.1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hackage.haskell.org/package/simtreelo
 	install = haskell-simtreelo.install
 	arch = i686
