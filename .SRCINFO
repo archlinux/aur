@@ -164,7 +164,6 @@ pkgname = xorg-server-common-dev
 	depends = xkeyboard-config
 	depends = xorg-xkbcomp
 	depends = xorg-setxkbmap
-	depends = xorg-fonts-misc
 	provides = xorg-server-common=1.19.6-2
 	conflicts = xorg-server-common
 

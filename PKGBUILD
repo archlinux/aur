@@ -111,7 +111,7 @@ build() {
 
 package_xorg-server-common-dev() {
   pkgdesc="Xorg server common files - Bleeding edge version"
-  depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap xorg-fonts-misc)
+  depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
   provides=(xorg-server-common=$pkgver-$pkgrel)
   conflicts=(xorg-server-common)
 
