@@ -1,10 +1,10 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=387.12
+pkgver=387.34
 pkgrel=1
-_goodkver=4.13
-_badkver=4.14
+_goodkver=4.14
+_badkver=4.15
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -20,12 +20,10 @@ conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
   'nvidia-pf-atom' 'nvidia-pf-psc' 'nvidia-pf-p4' 'nvidia-pf-p3'
  'nvidia-pf-pm' 'nvidia-pf-k7')
 license=('custom')
-install=nvidia.install
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('1113b7efb570a7604d9e31d93351c5ff')
-md5sums_x86_64=('0dce5a6685500d9ab6443c82a2210ee9')
+
 
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
@@ -68,3 +66,5 @@ package() {
   echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-pf.conf"
 }
 
+md5sums_i686=('4e356a75541633ac3f9ac0f53bb65823')
+md5sums_x86_64=('a009bbc502c30e4b483d71be9fa51790')
