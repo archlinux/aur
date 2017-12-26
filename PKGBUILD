@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=truepng
-pkgver=0.6.2.4
+pkgver=0.6.2.5
 _srcfile="TruePNG_$(printf '%s' "$pkgver" | sed 's/\.//g').zip"
 _extractdir="${_srcfile%.*}"
-pkgrel=2
+pkgrel=1
 pkgdesc='An advanced and very efficient PNG image optimizer with lossless and lossy modes (uses wine)'
 arch=('i686' 'x86_64')
 url='http://x128.ho.ua/pngutils.html'
@@ -14,7 +14,7 @@ options=('!strip')
 source=("$_srcfile"::"http://x128.ho.ua/clicks/clicks.php?uri=${_srcfile}"
         'shellutils-git'::'git+https://github.com/dbermond/shellutils.git')
 noextract=("$_srcfile")
-sha256sums=('9b735e660e8a39c37bd8239e10f3dd74b39b9e251f70fd8273b82c7ffc835959'
+sha256sums=('a20d7121bf377e9ddb2d7d04995bb4b032d523caeb7f7ea3360acad6bc5901ab'
             'SKIP')
 
 prepare() {
