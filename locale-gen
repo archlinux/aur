@@ -1,0 +1,24 @@
+#!/bin/sh --
+# locale-gen: generate system locales
+
+if [ ! -d /etc/locales ]; then
+    printf '/etc/locales: no such directory\n' >&2
+    exit 1
+fi
+
+for locale in /etc/locales/*; do
+    if [ -f "$locale" ]; then
+        locale=${locale##*/}
+    else
+        continue
+    fi
+
+    printf '%s: generating locale\n' "$locale".UTF-8 >&2
+
+    localedef -i "$locale" -f UTF-8 -c "$locale".UTF-8
+
+    case $? in
+        4) printf '%s: invalid locale\n' "$locale" >&2 ;;
+        1) exit
+    esac
+done

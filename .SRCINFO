@@ -1,0 +1,29 @@
+pkgbase = glibc-git
+	pkgdesc = GNU C Library, from git
+	pkgver = 2.26.r1039.g48a8f83281
+	pkgrel = 1
+	url = https://www.gnu.org/software/libc/
+	install = glibc-git.install
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL
+	license = LGPL
+	makedepends = git
+	depends = linux-api-headers
+	depends = tzdata
+	depends = filesystem
+	optdepends = gd: graph image generation with memusage
+	provides = glibc=2.26
+	conflicts = glibc
+	options = !strip
+	options = staticlibs
+	backup = etc/gai.conf
+	backup = etc/nscd.conf
+	source = git+https://sourceware.org/git/glibc.git
+	source = locale-gen
+	sha256sums = SKIP
+	sha256sums = 7e4a8d3fd37c67ec57b5e27575155d958628a92729098cf8a01ba9aba7078a80
+
+pkgname = glibc-git
+
