@@ -4,7 +4,7 @@
 # Contributor: Themaister    <maister@archlinux.us>
 
 pkgname=retroarch-rbp-git
-pkgver=1.7.0.16.g4b728cd264
+pkgver=1.7.0.18.g2768f639a2
 pkgrel=1
 pkgdesc="Reference frontend for the libretro API."
 arch=('arm' 'armv6h' 'armv7h')
@@ -44,8 +44,6 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-
-  export PKG_CONFIG_PATH="/opt/vc/lib/pkgconfig:$PKG_CONFIG_PATH"
 
   ./configure --prefix=/usr \
     --enable-neon --enable-dispmanx --enable-floathard --enable-udev \

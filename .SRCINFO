@@ -1,6 +1,6 @@
 pkgbase = retroarch-rbp-git
 	pkgdesc = Reference frontend for the libretro API.
-	pkgver = 1.7.0.16.g4b728cd264
+	pkgver = 1.7.0.18.g2768f639a2
 	pkgrel = 1
 	url = http://www.libretro.com
 	arch = arm
@@ -11,8 +11,6 @@ pkgbase = retroarch-rbp-git
 	makedepends = git
 	depends = raspberrypi-firmware
 	depends = libusb
-	depends = openal
-	depends = sdl2
 	optdepends = libretro-desmume: Nintendo DS core
 	optdepends = libretro-gambatte: Nintendo Game Boy/Game Boy Color core
 	optdepends = libretro-genesis-plus: Sega Master System/Genesis/Game Gear/CD/32X core
