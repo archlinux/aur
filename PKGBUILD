@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
-pkgver=3.13.2.1355
-pkgrel=4
+pkgver=3.13.3.1365
+pkgrel=1
 pkgdesc="Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards."
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
@@ -9,7 +9,7 @@ license=('LGPL')
 depends=('xml-security-c')
 makedepends=('cmake' 'xsd>=4.0' 'xxd')
 source=("https://installer.id.ee/media/ubuntu/pool/main/libd/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
-sha256sums=('5f48ecaf79813a6bbd267479dd21ca0a0a984c41ac37587e5b29dc8b688096c2')
+sha256sums=('3c0a99e52fe6256f519fa68a68a5b0fe78cae9facb7c889434f5eadf0b94bbf6')
 
 prepare() {
   [[ -d "$pkgname-build" ]] && rm -r "$pkgname-build"
