@@ -12,7 +12,7 @@ deb_package="ledger_wallet_ripple_linux_x64_${pkgver}.deb"
 source_x86_64=(
   "${url}/releases/download/${pkgver}/${deb_package}"
 )
-sha256sums_x86_64=(0da4d3571b21e0bb72608624d6aed9c53c484f5e10f61375505220813139bab1)
+sha256sums_x86_64=(bc90e18e7747d3a55fc3e4fc9b3301afe071c152169e11f03de4c2c352cae5d8)
 
 install=ripple-ledger.install
 
