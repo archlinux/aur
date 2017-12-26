@@ -1,6 +1,6 @@
 pkgbase = esteidpkcs11loader
 	pkgdesc = Firefox PKCS#11 module loader
-	pkgver = 3.12.0.1070
+	pkgver = 3.12.0.1068
 	pkgrel = 1
 	url = http://www.id.ee/
 	arch = any
@@ -12,9 +12,8 @@ pkgbase = esteidpkcs11loader
 	depends = pcsclite
 	depends = ccid
 	optdepends = chrome-token-signing: signing for firefox 52+
-	source = https://installer.id.ee/media/ubuntu/pool/main/e/esteidpkcs11loader/esteidpkcs11loader_3.12.0.1070.orig.tar.xz
-	validpgpkeys = 43650273CE9516880D7EB581B339B36D592073D4
-	sha256sums = 620cb1aca6bf54216685e842286ae3b288aa71ad9ec542b89a49dbd7eaf82ddf
+	source = https://installer.id.ee/media/ubuntu/pool/main/e/esteidpkcs11loader/esteidpkcs11loader_3.12.0.1068.orig.tar.xz
+	sha256sums = 37ae461a5ea5cf138b9607898ff9545f0665ea5da0023514376fba717337ff29
 
 pkgname = esteidpkcs11loader
 
