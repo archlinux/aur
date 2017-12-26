@@ -3,7 +3,7 @@
 
 _pkgname='mongoengine'
 pkgname="python-${_pkgname}"
-pkgver=0.11.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='An object-document mapper for MongoDB.'
 arch=('any')
@@ -12,7 +12,6 @@ license=('MIT')
 depends=('python-pymongo')
 makedepends=('python' 'python-setuptools')
 source=(https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('39532b0d2d26de3bb2bb174fef0209bb1925f81942b999808050d99917c0c6b9')
 
 check() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -25,3 +24,4 @@ package() {
   # License Files
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+md5sums=('5a389655e6c9c4e030b00495553871f0')
