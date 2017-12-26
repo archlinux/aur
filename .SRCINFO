@@ -1,16 +1,19 @@
 pkgbase = rpg2003-rtp
-	pkgdesc = RPGMaker 2003 Runtime Package
-	pkgver = 100
+	pkgdesc = RPG Maker 2003 Runtime Package (Japanese)
+	pkgver = 2003
 	pkgrel = 1
-	url = http://www.rpgmakerweb.com/download/additional/run-time-packages
+	url = https://tkool.jp/support/download/rpg2003/rtp
 	arch = any
 	license = custom: commercial
-	makedepends = unarchiver
 	makedepends = unshield-git
 	makedepends = convmv
+	makedepends = glibc
+	optdepends = easyrpg-player: game engine for using the RTP
 	noextract = 2003rtp.zip
-	source = http://tkool.jp/assets/files/2003rtp.zip
-	md5sums = 8b15ba45ae77cf06b59bff2ead633c4c
+	source = https://tkool.jp/assets/files/2003rtp.zip
+	source = rpg2003-rtp.sh
+	sha256sums = d388b183cc3a8206db53f58db4ea88c6661c9cf289c03aea1bf9ccd425f49cd1
+	sha256sums = bbf30c73a2a9933c930dc306b01e4dc70790f450567d319e0e0f1602f2e863cd
 
 pkgname = rpg2003-rtp
 

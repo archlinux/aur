@@ -1,26 +1,43 @@
-# Maintainer: maz-1 <ohmygod19993 at gmail dot com>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Contributor: maz-1 <ohmygod19993 at gmail dot com>
+
 pkgname=rpg2003-rtp
-pkgver=100
+pkgver=2003
 pkgrel=1
-pkgdesc="RPGMaker 2003 Runtime Package"
-url='http://www.rpgmakerweb.com/download/additional/run-time-packages'
+pkgdesc="RPG Maker 2003 Runtime Package (Japanese)"
 arch=('any')
+url="https://tkool.jp/support/download/rpg2003/rtp"
 license=('custom: commercial')
-makedepends=('unarchiver' 'unshield-git' 'convmv')
-source=("http://tkool.jp/assets/files/2003rtp.zip")
-md5sums=('8b15ba45ae77cf06b59bff2ead633c4c')
-noextract=2003rtp.zip
+makedepends=('unshield-git' 'convmv' 'glibc')
+optdepends=('easyrpg-player: game engine for using the RTP')
+source=("https://tkool.jp/assets/files/2003rtp.zip"
+        "$pkgname.sh")
+sha256sums=('d388b183cc3a8206db53f58db4ea88c6661c9cf289c03aea1bf9ccd425f49cd1'
+            'bbf30c73a2a9933c930dc306b01e4dc70790f450567d319e0e0f1602f2e863cd')
+noextract=('2003rtp.zip')
+
+prepare() {
+  # extract
+  bsdtar --strip-components 1 --include='*.exe' -xf 2003rtp.zip
+  bsdtar --include='*.txt' -O -xf 2003rtp.zip > TOS-sjis.txt
+  bsdtar -xf RPG2003RTP.exe
+  unshield -R -d rtp x data1.cab
+  # cleanup
+  rm -rf rtp/_*
+  convmv -f SHIFT-JIS -t UTF-8 -r --qfrom --notest rtp
+  iconv -f SHIFT-JIS -t UTF-8 TOS-sjis.txt > TOS.txt
+  mv rtp/"RPGﾂｸｰﾙ2003_ﾗﾝﾀｲﾑﾊﾟｯｹｰｼﾞ" 2003
+}
 
 package() {
-  cd "$srcdir"
-  unar -encoding SHIFT-JIS 2003rtp.zip
-  cd "2003RTPｾｯﾄｱｯﾌﾟ"
-  unar RPG2003RTP.exe
-  cd RPG2003RTP
-  unshield -R x data1.cab
-  convmv -r -f SHIFT-JIS -t utf-8 --notest .
-  
-  mkdir -p "$pkgdir/opt/"
-  cp -r "${srcdir}/2003RTPｾｯﾄｱｯﾌﾟ/RPG2003RTP/RPGﾂｸｰﾙ2003_ﾗﾝﾀｲﾑﾊﾟｯｹｰｼﾞ/RTP" "$pkgdir/opt/$pkgname"
-  install -Dm644 "$srcdir/2003RTPｾｯﾄｱｯﾌﾟ/使用規約.txt" "$pkgdir/opt/$pkgname/使用規約.txt"
+  # data
+  install -d "$pkgdir"/usr/share/rtp
+  cp -r 2003/RTP "$pkgdir"/usr/share/rtp/2003
+  # sane permissions
+  find "$pkgdir"/usr/share/rtp -type d -exec chmod 0755 {} \;
+  find "$pkgdir"/usr/share/rtp -type f -exec chmod 0644 {} \;
+  # export environment variables
+  install -Dm0755 $pkgname.sh "$pkgdir"/etc/profile.d/$pkgname.sh
+  # license
+  install -Dm0644 TOS.txt "$pkgdir"/usr/share/licenses/$pkgname/TOS.txt
 }
