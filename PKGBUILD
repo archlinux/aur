@@ -17,7 +17,7 @@
 pkgbase="zfs-linux-vfio-git"
 pkgname=("zfs-linux-vfio-git" "zfs-linux-vfio-git-headers")
 
-pkgver=2017.12.21.r3220.a8b2e3068.4.13.12.2
+pkgver=2017.12.22.r3222.823d48bfb.4.13.12.2
 pkgrel=1
 makedepends=("linux-vfio-headers=4.13.12-2" "git" "spl-linux-vfio-git-headers")
 arch=("x86_64")
@@ -25,7 +25,7 @@ url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-vfio-git" "zfs-utils-common-git>=2017.12.21.r3220.a8b2e3068" "linux-vfio=4.13.12-2")
+depends=("kmod" "spl-linux-vfio-git" "zfs-utils-common-git>=2017.12.22.r3222.823d48bfb" "linux-vfio=4.13.12-2")
 
 build() {
     cd "${srcdir}/zfs"
@@ -55,7 +55,7 @@ package_zfs-linux-vfio-git() {
 
 package_zfs-linux-vfio-git-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-archiso-linux-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-vfio-headers'  'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
+    conflicts=('zfs-archiso-linux-headers' 'zfs-archiso-linux-git-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-vfio-headers'  'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
