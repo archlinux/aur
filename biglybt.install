@@ -1,0 +1,23 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}${yellow}==>${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note "It is recommended to disable the builtin automatic updater in:
+          Tools > Options > Interface > Start, and
+          Tools > Options > Plugins > Plugin Update"
+}
+
+post_upgrade() {
+    post_install
+}
