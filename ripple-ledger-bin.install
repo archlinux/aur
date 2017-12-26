@@ -1,0 +1,21 @@
+post_install() {
+	echo "Symlink has been installed for /usr/bin/ripple-ledger"
+	ln -s /usr/bin/LedgerWalletRipple /usr/bin/ripple-ledger
+}
+
+post_upgrade() {
+	echo "Symlink upgraded for new binary location"
+	rm -f /usr/bin/ripple-ledger
+	ln -s /usr/bin/LedgerWalletRipple /usr/bin/ripple-ledger
+	#if [ ! -e /usr/bin/ripple-ledger ]; then
+	#	echo "Symlink has been installed for /usr/bin/ripple-ledger"
+	#	ln -s /usr/bin/LedgerWalletRipple /usr/bin/ripple-ledger
+	#else
+		#echo "Symlink already present, not reinstalling"
+	#fi
+}
+
+post_remove() {
+	echo "Symlink to /usr/bin/ripple-ledger has been removed"
+	rm -f /usr/bin/ripple-ledger
+}
