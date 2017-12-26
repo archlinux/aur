@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Razzolinit <grazzolini@gmail.com>
 
 pkgname=keepass-plugin-keeagent-beta
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="SSH Agent Plugin for KeePass - Beta Version"
 license=('GPL')
