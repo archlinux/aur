@@ -4,7 +4,7 @@
 _target=m68k-elf
 pkgname=$_target-toolchain
 pkgver=20171221
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc')
 url="http://www.gnu.org"
@@ -72,10 +72,10 @@ package()
 	# this find command uses process substitution to pass the output of find into the `while read` loop
 	done < <(find "$pkgdir" -type f -print0)
 
-	find "${pkgdir}"/usr/lib/gcc/${_target} "${pkgdir}"/usr/${_target}/lib -type f -name '*.o' -o -name '*.a' -print0 | xargs -0 "${pkgdir}"/usr/bin/${_target}-strip -g
+	find "${pkgdir}/usr/lib/gcc/${_target}" "${pkgdir}/usr/${_target}/lib" -type f -name '*.o' -o -name '*.a' -exec "${pkgdir}"/usr/bin/${_target}-strip -g {} +
 
 	#fix permissions to please namcap
-	find "${pkgdir}/usr/${_target}/lib" -name '*.a' -print0 | xargs -0 chmod 644 
+	find "${pkgdir}/usr/${_target}/lib" -name '*.a' -exec chmod 644 {} +
 
 }
 
