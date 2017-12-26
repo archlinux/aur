@@ -23,7 +23,7 @@ groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-network"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('3ef864289fc0085dd695f34e0a2dc8619011b3d6dbd7cffe1e19651ceff27ed9')
+sha256sums=('36af76fc5359de21c305b1367767f95d01b30914ef48f510b41f765af6482cf5')
 
 # half of available processing units or one if only one is available
 _nproc=$(($(nproc)/2))
