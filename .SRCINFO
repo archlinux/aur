@@ -1,7 +1,7 @@
 pkgbase = opentx-companion
 	pkgdesc = EEPROM Editor for OpenTX RC transmitter firmwares
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.open-tx.org/
 	arch = x86_64
 	license = GPL
@@ -23,6 +23,7 @@ pkgbase = opentx-companion
 	depends = qt5-svg
 	depends = sdl
 	depends = hicolor-icon-theme
+	optdepends = dfu-util: tool for flashing stm32 based radios
 	provides = companion
 	conflicts = companion
 	conflicts = companion9x-svn

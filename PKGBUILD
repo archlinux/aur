@@ -3,12 +3,13 @@
 # Contributer: Arnaud
 pkgname=('opentx-companion')
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
 arch=('x86_64')
 url="http://www.open-tx.org/"
 license=('GPL')
 depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'sdl' 'hicolor-icon-theme')
+optdepends=('dfu-util: tool for flashing stm32 based radios')
 makedepends=('cmake' 'xsd' 'bc' 'python' 'avr-gcc' 'avr-libc' 'sed' 'qt5-tools' 'python-pyqt5' 'arm-none-eabi-gcc' 'arm-none-eabi-binutils' 'arm-none-eabi-newlib' 'fox')
 provides=('companion')
 conflicts=('companion' 'companion9x-svn')
