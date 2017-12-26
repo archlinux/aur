@@ -1,7 +1,7 @@
 pkgbase = lazarus-qt5-svn
 	pkgdesc = Delphi-like IDE for FreePascal qt5 version
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lazarus-ide.org/
 	arch = x86_64
 	license = GPL2
@@ -13,6 +13,7 @@ pkgbase = lazarus-qt5-svn
 	depends = lazarus-svn
 	conflicts = lazarus-qt
 	conflicts = lazarus-gtk2
+	conflicts = lazarus-qt5
 	source = lazarus-qt5-svn::svn+https://svn.freepascal.org/svn/lazarus/trunk
 	sha256sums = SKIP
 

@@ -2,12 +2,12 @@
 
 pkgname=lazarus-qt5-svn
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Delphi-like IDE for FreePascal qt5 version"
 arch=(x86_64)
 url=https://www.lazarus-ide.org/
 license=(GPL2)
-conflicts=(lazarus-qt lazarus-gtk2)
+conflicts=(lazarus-qt lazarus-gtk2 lazarus-qt5)
 depends=(fpc fpc-src qt5-base qt5pas lazarus-svn)
 makedepends=(subversion)
 source=("$pkgname::svn+https://svn.freepascal.org/svn/lazarus/trunk")
