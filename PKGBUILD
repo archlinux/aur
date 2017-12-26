@@ -16,7 +16,7 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=21974ba817377021dde4233a34b61a6b5fba798b
+arch_config_trunk=08b9be792b16e05a6febc3184c286c99a8088b86
 
 # Arch additional patches
 arch_patches=(0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
