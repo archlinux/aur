@@ -17,7 +17,7 @@ pkgname=vmware-workstation
 pkgver=14.1.0
 _buildver=7370693
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=3
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -126,6 +126,7 @@ _vmware_fusion_ver=10.1.0_7370838
 
 makedepends+=(
   python2
+  python2-six
   unzip
 )
 
