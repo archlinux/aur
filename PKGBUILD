@@ -9,7 +9,8 @@ url="https://ossec.github.io/"
 license=('GPL2')
 depends=('openssl')
 backup=('var/ossec/etc/ossec.conf'
-        'var/ossec/etc/client.keys')
+        'var/ossec/etc/client.keys'
+        'var/ossec/rules/local_rules.xml')
 install=ossec.install
 options=('emptydirs')
 source=(https://github.com/ossec/$pkgname/archive/$pkgver.tar.gz \
