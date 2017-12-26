@@ -2,8 +2,8 @@
 # Contributor: Enrico Bacis <enrico.bacis@gmail.com>
 pkgname=edx-downloader-git
 pkgname_git=edx-dl
-pkgver=r576.4e27666
-pkgrel=3
+pkgver=0.1.7.r6.g563cb8a
+pkgrel=1
 pkgdesc='A simple tool to download video lectures from edx.org.'
 arch=('any')
 url='https://github.com/coursera-dl/edx-dl'
