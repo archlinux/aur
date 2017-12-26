@@ -66,7 +66,8 @@ sub _get_data {
     $month =~ s:/::;
     $data->{month} = $month;
 
-    my $release = _get_part($ua, $uri, qr(aurora/$));
+    say "RELEASE: $uri";
+    my $release = _get_part($ua, $uri, qr(comm-central/$));
     $uri .= $release;
     $release =~ /^\d{4}-\d{2}-(?<day>\d+)-(?<hour>\d+)-(?<minute>\d+)-(?<second>\d+)/;
     $data = { %$data, %+ };
@@ -79,8 +80,10 @@ sub _get_data {
     my $package_x86_64_sums = _get_part($ua, $uri, qr($lang.linux-x86_64.checksums$));
     $data->{sha512sums_x86_64} = _get_hashsum($ua, $uri . $package_x86_64_sums, $package_x86_64);
 
-    $data->{version} = $1 if $package_x86_64 =~ /thunderbird-(\d+)/;
-
+    if ($package_x86_64 =~ /thunderbird-(\d+).(\d+\w+\d+)./) {
+        $data->{version} = $1;
+        $data->{alpha}   = $2;
+    }
     return $data;
 }
 
