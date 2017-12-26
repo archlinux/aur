@@ -1,0 +1,156 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f2d9c6212f..6341db8d32 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -245,7 +245,7 @@ endif()
+ if(ENABLE_OPENCV3)
+ 
+     set(OPENCV_MIN_VERSION "3.1.0")
+-    DETECT_OPENCV(${OPENCV_MIN_VERSION} core objdetect imgproc imgcodecs)
++    DETECT_OPENCV(${OPENCV_MIN_VERSION} core objdetect imgproc imgcodecs face)
+ 
+     if(${OpenCV_FOUND})
+         if(${OpenCV_VERSION} VERSION_LESS 3.1.0)
+diff --git a/libs/facesengine/opencv3-face/face.hpp b/libs/facesengine/opencv3-face/face.hpp
+index a99e7b349b..200b5b8b00 100644
+--- a/libs/facesengine/opencv3-face/face.hpp
++++ b/libs/facesengine/opencv3-face/face.hpp
+@@ -47,6 +47,7 @@ the use of this software, even if advised of the possibility of such damage.
+ 
+ */
+ 
++#include "libopencv.h"
+ #include "opencv2/core.hpp"
+ #include "predict_collector.hpp"
+ #include <map>
+@@ -318,8 +319,12 @@ public:
+     The suffix const means that prediction does not affect the internal model state, so the method can
+     be safely called from within different threads.
+      */
++#if OPENCV_TEST_VERSION(3,4,0)
+     CV_WRAP virtual void save(const String& filename) const;
+-
++#else
++    CV_WRAP virtual void write(const String& filename) const;
++#endif
++    
+     /** @brief Loads a FaceRecognizer and its model state.
+ 
+     Loads a persisted model and state from a given XML or YAML file . Every FaceRecognizer has to
+@@ -327,17 +332,29 @@ public:
+     FaceRecognizer::load(FileStorage& fs) in turn gets called by
+     FaceRecognizer::load(const String& filename), to ease saving a model.
+      */
++#if OPENCV_TEST_VERSION(3,4,0)
+     CV_WRAP virtual void load(const String& filename);
+-
++#else
++    CV_WRAP virtual void read(const String& filename);
++#endif
++    
+     /** @overload
+     Saves this model to a given FileStorage.
+     @param fs The FileStorage to store this FaceRecognizer to.
+     */
++#if OPENCV_TEST_VERSION(3,4,0)
+     virtual void save(FileStorage& fs) const = 0;
+-
++#else
++    virtual void write(FileStorage& fs) const = 0;
++#endif
++    
+     /** @overload */
++#if OPENCV_TEST_VERSION(3,4,0)
+     virtual void load(const FileStorage& fs) = 0;
+-
++#else
++    virtual void read(const FileStorage& fs) = 0;
++#endif
++    
+     /** @brief Sets string info for the specified model's label.
+ 
+     The string info is replaced by the provided value if it was set before for the specified label.
+diff --git a/libs/facesengine/opencv3-face/facerec.cpp b/libs/facesengine/opencv3-face/facerec.cpp
+index a58124be1f..21ad5e57e7 100644
+--- a/libs/facesengine/opencv3-face/facerec.cpp
++++ b/libs/facesengine/opencv3-face/facerec.cpp
+@@ -66,21 +66,37 @@ void FaceRecognizer::update(InputArrayOfArrays src, InputArray labels)
+     CV_Error(Error::StsNotImplemented, error_msg);
+ }
+ 
++#if OPENCV_TEST_VERSION(3,4,0)
+ void FaceRecognizer::load(const String &filename)
++#else
++void FaceRecognizer::read(const String &filename)
++#endif
+ {
+     FileStorage fs(filename, FileStorage::READ);
+     if (!fs.isOpened())
+         CV_Error(Error::StsError, "File can't be opened for writing!");
++#if OPENCV_TEST_VERSION(3,4,0)
+     this->load(fs);
++#else
++    this->read(fs);
++#endif
+     fs.release();
+ }
+ 
++#if OPENCV_TEST_VERSION(3,4,0)
+ void FaceRecognizer::save(const String &filename) const
++#else
++void FaceRecognizer::write(const String &filename) const
++#endif
+ {
+     FileStorage fs(filename, FileStorage::WRITE);
+     if (!fs.isOpened())
+         CV_Error(Error::StsError, "File can't be opened for writing!");
++#if OPENCV_TEST_VERSION(3,4,0)
+     this->save(fs);
++#else
++    this->write(fs);
++#endif
+     fs.release();
+ }
+ 
+diff --git a/libs/facesengine/recognition-opencv-lbph/facerec_borrowed.h b/libs/facesengine/recognition-opencv-lbph/facerec_borrowed.h
+index 0ff718fc2f..4561db8af5 100644
+--- a/libs/facesengine/recognition-opencv-lbph/facerec_borrowed.h
++++ b/libs/facesengine/recognition-opencv-lbph/facerec_borrowed.h
+@@ -104,9 +104,12 @@ public:
+ #if OPENCV_TEST_VERSION(3,0,0)
+     using cv::FaceRecognizer::save;
+     using cv::FaceRecognizer::load;
+-#else
++#elif OPENCV_TEST_VERSION(3,4,0)
+     using cv::face::FaceRecognizer::save;
+     using cv::face::FaceRecognizer::load;
++#else
++    using cv::face::FaceRecognizer::write;
++    using cv::face::FaceRecognizer::read;
+ #endif
+ 
+     static cv::Ptr<LBPHFaceRecognizer> create(int radius=1,
+@@ -160,8 +163,10 @@ public:
+      */
+ #if OPENCV_TEST_VERSION(3,1,0)
+     void load(const cv::FileStorage&) {}
+-#else
++#elif OPENCV_TEST_VERSION(3,4,0)
+     void load(const cv::FileStorage&) override {}
++#else
++    void read(const cv::FileStorage&) override {}
+ #endif
+ 
+     /**
+@@ -169,8 +174,10 @@ public:
+      */
+ #if OPENCV_TEST_VERSION(3,1,0)
+     void save(cv::FileStorage&) const {}
+-#else
++#elif OPENCV_TEST_VERSION(3,4,0)
+     void save(cv::FileStorage&) const override {}
++#else
++    void write(cv::FileStorage&) const override {}
+ #endif
+ 
+     /**
