@@ -1,6 +1,6 @@
 # Maintainer: desbma
 pkgname=mpv-scripts
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="Scripts for the mpv media player officially maintained by the mpv authors"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('mpv')
 install=$pkgname.install
 source=("mpv-$pkgver.tar.gz::https://github.com/mpv-player/mpv/archive/v$pkgver.tar.gz")
-sha512sums=('22738f907d84d362095773972f685e3b03ab4c8172a22ddede290fc221a83ab9135b96f8b18191dabe842b2963f68983929cf065097287fc1a054a7d5f1d0ae4')
+sha512sums=('33e889f9ca2dd16ad055ccd9fc5549fcead3fd15dcbc52c6b5f3ef608cf87b3d9952e9236e3dec8e7f32240b68d0b0cff1499f511d39c8f3a0501334f5c57a70')
 
 package() {
     cd "mpv-${pkgver}"
