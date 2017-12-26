@@ -1,0 +1,25 @@
+pkgbase = containernet-git
+	pkgdesc = "Mininet with added Docker support"
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/containernet/containernet/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python2-setuptools
+	makedepends = help2man
+	depends = python2
+	depends = net-tools
+	depends = iputils
+	depends = python2-networkx
+	depends = iperf
+	depends = open-vswitch
+	depends = python-iptables 
+	depends = docker
+	depends = python2-urllib3
+	depends = python2-pytest
+	optdepends = xorg-xhost
+	source = containernet-git::git+https://github.com/containernet/containernet
+	md5sums = SKIP
+
+pkgname = containernet-git
