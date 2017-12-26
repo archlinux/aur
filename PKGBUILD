@@ -1,7 +1,7 @@
 #Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 pkgname=tclkit
-pkgver=8.6.4
-_tcl_tag=tip_412
+pkgver=8.6.4-1
+_tcl_tag=tip-412
 _tk_tag=core_8_6_4
 _kit_tag=8.6.4-7
 pkgrel=7
@@ -16,7 +16,7 @@ source=("https://github.com/stiefel40k/kitgen/archive/${_kit_tag}.tar.gz"
 	"tcl.tar.gz::https://github.com/tcltk/tcl/archive/${_tcl_tag}.tar.gz")
 md5sums=('2f4305a69297deffde0fa4a2a4af2658'
          '4f9b416d393f6b45b972d506a23ed36d'
-         '05843ddb995308a2aaec8e0e76a6c7b5')
+         '9297de5538175b98c000b98ccc469290')
 
 build() {
   mv "kitgen-${_kit_tag}" kitgen
