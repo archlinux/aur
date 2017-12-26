@@ -2,10 +2,10 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tuxpaint-git
-pkgver=2990.471b8036
-pkgrel=2
+pkgver=2994.6736bfc7
+pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc="Tux Paint is a free drawing program designed for young children."
+pkgdesc="A free drawing program designed for young children. Checkout from git"
 url="http://www.newbreedsoftware.com/tuxpaint/"
 license=('GPL')
 depends=('sdl_ttf' 'sdl_mixer' 'sdl_image' 'sdl_pango' 'libpaper' \
