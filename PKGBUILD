@@ -14,7 +14,6 @@ _pfrel=7
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_aufs3="https://github.com/sfjro/aufs4-standalone"
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -82,7 +81,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
 	'config.i686' 'config.x86_64'		# the main kernel config files
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	"${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
-   #     "git+$_aufs3#branch=aufs4.$_minor"
         "90-linux.hook"
         "60-linux.hook"
         '0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
@@ -310,28 +308,23 @@ build() {
 }
 
 package_linux-pf() {
- _pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3."
+ _pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
  pkgdesc=${_pkgdesc}
  groups=('base')
  depends=('coreutils' 'linux-firmware' 'kmod>=9-2' 'mkinitcpio>=0.7')
  optdepends=('linux-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.'
 	    'crda: to set the correct wireless channels of your country'
 	    'pm-utils: utilities and scripts for suspend and hibernate power management'
-	    'tuxonice-userui: TuxOnIce userspace user interface'
-	    'hibernate-script: set of scripts for managing TuxOnIce, hibernation and suspend to RAM'
-	    'nvidia-pf: NVIDIA drivers for linux-pf'
+x	    'nvidia-pf: NVIDIA drivers for linux-pf'
 	    'nvidia-beta-all: NVIDIA drivers for all installed kernels'
 	    'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
- #provides=(${pkgbase}=${_basekernel} 'aufs3')	# for $pkgname-optimized
- provides=(${pkgbase}=$pkgver 'aufs3' 'linux-tomoyo')
- # below 'provides' is for when you have no other kernel (which is a bad idea anyway)
- # provides=(${pkgbase}=${_basekernel} 'linux=${pkgver}' 'aufs3')
+ provides=(${pkgbase}=$pkgver 'linux-tomoyo')
  # If generic build, then conflict with all optimized ones
  conflicts=()
  for _cpusuffix in $_CPUSUFFIXES ; do
    conflicts+=(${pkgbase}-${_cpusuffix}) 
  done  
- replaces=('kernel26-pf' 'aufs3')
+ replaces=('kernel26-pf')
 
  cd "${srcdir}/linux-${_basekernel}"
 
@@ -429,7 +422,7 @@ package_linux-pf() {
      default)
        # Note to me: DO NOT EVER REMOVE THIS. It's for the AUR PKGBUILD parser.
          pkgname="${pkgbase}"
-         pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3"
+         pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)"
          ;;
     esac
 
@@ -689,7 +682,7 @@ package_linux-pf-preset-default()
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 }
 # Work around the AUR parser
-pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3"
+pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 
 # makepkg -g >>PKGBUILD
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
