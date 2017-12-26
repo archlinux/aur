@@ -32,7 +32,7 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Launchers
-  mv $pkgname "$pkgdir"/usr/bin/$pkgname
+  mv $pkgname "$pkgdir"/usr/bin/
 
   # Icon and desktop
   mv $pkgname.svg "$pkgdir"/usr/share/pixmaps/
