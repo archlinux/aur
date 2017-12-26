@@ -18,13 +18,14 @@ prepare() {
   rm -rf $pkgname
 
   msg2 "Extrcting GitHub_BiglyBT_Installer.sh..."
-  sh GitHub_BiglyBT_Installer.sh -q -dir "$pkgdir"/opt/$pkgname
+  sh GitHub_BiglyBT_Installer.sh -q -dir "$srcdir"/$pkgname
 }
 
 package() {
-  cd "$pkgdir"/opt/$pkgname
+  cd "$srcdir"/$pkgname
 
   msg2 "Creating directory structure..."
+  install -d "$pkgdir"/opt/$pkgname
   install -d "$pkgdir"/usr/bin/
   install -d "$pkgdir"/usr/share/applications/
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
@@ -47,10 +48,11 @@ package() {
   rm installer.log
   rm {,un}registerBiglyBT uninstall updateBiglyBT
 
+  msg2 "Installing to /opt..."
+  mv * "$pkgdir"/opt/$pkgname
+  
   msg2 "Fixing paths..."
   sed -i "s|#PROGRAM_DIR=.*|PROGRAM_DIR=\"/opt/$pkgname\"|" "$pkgdir"/usr/bin/$pkgname
   sed -e "s|Exec=.*|Exec=$pkgname %U|" -e "s|Icon=.*|Icon=$pkgname|" \
       -i "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
-
-
