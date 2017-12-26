@@ -1,5 +1,5 @@
 pkgname=gometalinter
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="golang meta linter"
 arch=('i686' 'x86_64')
@@ -9,7 +9,6 @@ makedepends=('go' 'git')
 source=(
 	"gometalinter"
 )
-md5sums=('d8d3640069c485ca415ab3adb18523ef')
 
 depends=('go' 'git')
 
@@ -18,8 +17,8 @@ backup=(
 
 build() {
     export GOPATH="$srcdir/"
-    go get -u -v gopkg.in/alecthomas/gometalinter.v1
-    $srcdir/bin/gometalinter.v1 --install
+    go get -u -v gopkg.in/alecthomas/gometalinter.v2
+    $srcdir/bin/gometalinter.v2 --install
 }
 
 package() {
@@ -28,3 +27,4 @@ package() {
     done
     install -DT $srcdir/gometalinter "$pkgdir/usr/bin/gometalinter"
 }
+md5sums=('a4c9ed1531b6555e6bc9a2140b6218c2')

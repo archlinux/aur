@@ -1,6 +1,6 @@
 pkgbase = gometalinter
 	pkgdesc = golang meta linter
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gometalinter
 	depends = go
 	depends = git
 	source = gometalinter
-	md5sums = d8d3640069c485ca415ab3adb18523ef
+	md5sums = a4c9ed1531b6555e6bc9a2140b6218c2
 
 pkgname = gometalinter
 
