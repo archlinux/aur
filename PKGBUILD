@@ -9,6 +9,7 @@ pkgdesc="Mininet with added Docker support"
 url="https://github.com/containernet/containernet/"
 license=('custom')
 depends=('bash' 'python2' 'python2-networkx' 'net-tools' 'iputils' 'iperf' 'openvswitch' 'docker' 'python2-pytest' 'python2-urllib3' 'python-iptables')
+provides=('mininet')
 optdepends=('xorg-xhost')
 makedepends=('help2man' 'python2-setuptools' 'git')
 install="${pkgname}.install"
