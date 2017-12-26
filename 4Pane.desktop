@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=4Pane
-GenericName=File Manager
-Comment=File manager with 4 panels
-Icon=4Pane
-Exec=4Pane
-Categories=System;FileTools;FileManager;
