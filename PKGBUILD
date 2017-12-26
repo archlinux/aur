@@ -46,9 +46,12 @@ package() {
   _preparevars
   . "$srcdir/config" # load configuration
 
-#  install -dm755 "$pkgdir/etc"
+# install -dm755 "$pkgdir/etc"
   mkdir -p $pkgdir/etc
- USER_DIR="$pkgdir/$_instdir" ./install.sh
+  USER_DIR="$pkgdir/$_instdir" ./install.sh
+
+  # fix DIRECTORY path in ossec-init.conf
+  sed -i '/DIRECTORY=/c\DIRECTORY="/var/ossec"' "$pkgdir/etc/ossec-init.conf"
 
   # install systemd service unit
   install -Dm0644 "$srcdir/ossec.service" "$pkgdir/usr/lib/systemd/system/ossec.service"
