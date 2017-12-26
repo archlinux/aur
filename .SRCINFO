@@ -1,6 +1,6 @@
 pkgbase = retroarch-rbp-git
 	pkgdesc = Reference frontend for the libretro API.
-	pkgver = 1.6.1.139.g3a141cb89
+	pkgver = 1.7.0.16.g4b728cd264
 	pkgrel = 1
 	url = http://www.libretro.com
 	arch = arm
@@ -9,8 +9,7 @@ pkgbase = retroarch-rbp-git
 	groups = libretro
 	license = GPL
 	makedepends = git
-	depends = mesa
-	depends = mesa-libgl
+	depends = raspberrypi-firmware
 	depends = libusb
 	depends = openal
 	depends = sdl2

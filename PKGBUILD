@@ -4,7 +4,7 @@
 # Contributor: Themaister    <maister@archlinux.us>
 
 pkgname=retroarch-rbp-git
-pkgver=1.6.1.139.g3a141cb89
+pkgver=1.7.0.16.g4b728cd264
 pkgrel=1
 pkgdesc="Reference frontend for the libretro API."
 arch=('arm' 'armv6h' 'armv7h')
