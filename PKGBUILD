@@ -9,10 +9,10 @@ pkgver=0.3.3
 pkgrel=8
 pkgdesc="Wraps the best available JSON implementation available in a common interface"
 arch=(any)
-url="http://pypi.python.org/pypi/$_pypiname"
+url="https://pypi.python.org/pypi/$_pypiname"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("http://pypi.python.org/packages/source/a/$_pypiname/$_pypiname-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/a/$_pypiname/$_pypiname-${pkgver}.tar.gz")
 md5sums=('2ea28d6ec311aeeebaf993cb3008b27c')
 
 prepare() {
