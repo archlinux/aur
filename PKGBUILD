@@ -1,6 +1,6 @@
 # Maintainer: tembleking <tembleking at gmail dot com>
 pkgname='python2-googlemaps'
-pkgver=2.4.3
+pkgver=2.5.1
 pkgrel=2
 pkgdesc="Python Client for Google Maps Services"
 arch=("any")
@@ -19,7 +19,8 @@ package() {
 	cd "google-maps-services-python-$pkgver"
 	python2 setup.py install --root="$pkgdir" --optimize=1
 }
-md5sums=('4a258d5bb240d31ac96a5d472fcd9b3d')
-sha1sums=('86ed32c7bc067d5a838c20933680210dbe9e4bda')
-sha256sums=('43d2720a636c1db929af9f838c8dc673c28148f9001604a810e379c57c6466a1')
-sha512sums=('548a3a8868028f219378f0c0fafc52293bb139094a8c7646bd9cca7d5f391c79cd9e62f6cc6e295d123c66c1018b5334101f7e3412d8db9e636d4722e07577d2')
+
+md5sums=('184fe061a1c4a8eb3adfab53c7ef5330')
+sha1sums=('0b7154a9d3530e0fe8c39b19b6b163cde4fccbcd')
+sha256sums=('75c0954e318b5d9e5cbc6f7f86310cb4e33abd16d48b9d6a5b753902acf44b1a')
+sha512sums=('4673df832b7fda3c43da2396f2f910b1957bb8647fdc3eb977cda812a94c2ca51070ce7ed7c29be9c250704edaed3a731a67d39b927734dda12baa85f7147fe1')
