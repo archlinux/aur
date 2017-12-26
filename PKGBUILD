@@ -1,6 +1,6 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=stack-bin
-pkgver=1.6.1
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="The Haskell Tool Stack (tool only -- libraries not included)"
 arch=(i686 x86_64)
@@ -11,8 +11,8 @@ provides=(stack)
 conflicts=(stack)
 source_i686=(https://github.com/commercialhaskell/stack/releases/download/v$pkgver/stack-$pkgver-linux-i386.tar.gz)
 source_x86_64=(https://github.com/commercialhaskell/stack/releases/download/v$pkgver/stack-$pkgver-linux-x86_64.tar.gz)
-sha256sums_i686=('3394eb41e169461fd770fc9a646e96b70ec097c8d0b15cdf070785f0f521492f')
-sha256sums_x86_64=('13f5a4a4e47ea5b7ff3423beae055832a84e413b866420dbe413e1ef927d1912')
+sha256sums_i686=('31696f91a26db6a49dff438aff6bda071ad186356c8af1abfbe093b6a04ea3e8')
+sha256sums_x86_64=('98cab9117a1b3d98207f67fe7abc6381a80dbeaa12780a8577dd1e03add0aab3')
 
 package() {
     cd "$srcdir/stack-$pkgver-linux-"*/
