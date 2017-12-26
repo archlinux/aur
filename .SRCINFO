@@ -1,4 +1,4 @@
-pkgbase = transfer_more
+pkgbase = transfer-more
 	pkgdesc = transfer.sh clone in Crystal-lang based on kemalcr
 	pkgver = v0.3.2.r3.d21502b
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = transfer_more
 	source = transfer_more::git+https://github.com/Nephos/transfer_more
 	md5sums = SKIP
 
-pkgname = transfer_more
+pkgname = transfer-more
 

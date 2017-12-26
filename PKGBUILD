@@ -1,7 +1,7 @@
 # Maintainer: Arthur Poulet (arthur.poulet@sceptique.eu)
-pkgname=transfer_more
+pkgname=transfer-more
 pkgver=v0.3.2.r3.d21502b
-pkgrel=1
+pkgrel=2
 pkgdesc="transfer.sh clone in Crystal-lang based on kemalcr"
 arch=('any')
 url="https://github.com/Nephos/transfer_more"
