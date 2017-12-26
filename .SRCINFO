@@ -1,6 +1,6 @@
 pkgbase = vmap
 	pkgdesc = A Vulnerability-Exploit desktop finder.
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/git-rep/vmap
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = vmap
 	license = GPL
 	depends = qt5-base
 	depends = qt5-svg
-	depends = openssl
+	depends = curl
 	depends = libxml++
-	source = https://github.com/git-rep/vmap/archive/v0.2.tar.gz
-	sha1sums = a6376568ddd0192c39c42d85c81e6a0c995d128d
+	source = https://github.com/git-rep/vmap/archive/v0.3.tar.gz
+	sha1sums = 1c87654a60f85d4d4b6b548bac30284d9b801b0b
 
 pkgname = vmap
 
