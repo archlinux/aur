@@ -1,6 +1,7 @@
 # Maintainer: tuftedocelot tuftedocelot@fastmail.fm<
 _pkgname=neo4j-python-driver
-pkgname=python-$_pkgname
+__pkgname=neo4j-driver
+pkgname=python-$__pkgname
 pkgver=1.5.3
 pkgrel=1
 pkgdesc="Neo4j Bolt driver for Python"
