@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Nav Coin
+Comment=Privacy-oriented cryptocurrency and distributed computing platform
+TryExec=navcoin-qt
+Exec=navcoin-qt %U
+Icon=navcoin
+StartupNotify=true
+Terminal=false
+Type=Application

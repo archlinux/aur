@@ -1,0 +1,18 @@
+[Unit]
+Description=Nav Coin Daemon
+After=network.target
+
+[Service]
+User=navcoin
+Group=navcoin
+WorkingDirectory=~
+RuntimeDirectory=navcoin
+
+Type=forking
+PIDFile=/run/navcoin/navcoind.pid
+
+ExecStart=/usr/bin/navcoind --config-file /etc/navcoind.conf \
+    --detach --pidfile /run/navcoin/navcoind.pid
+
+[Install]
+WantedBy=multi-user.target
