@@ -1,0 +1,14 @@
+pkgbase = transfer_more
+	pkgdesc = transfer.sh clone in Crystal-lang based on kemalcr
+	pkgver = v0.3.2.r3.d21502b
+	pkgrel = 1
+	url = https://github.com/Nephos/transfer_more
+	arch = any
+	license = GPLv3
+	makedepends = crystal
+	makedepends = shards
+	source = transfer_more::git+https://github.com/Nephos/transfer_more
+	md5sums = SKIP
+
+pkgname = transfer_more
+
