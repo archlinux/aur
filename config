@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.14.9-1 Kernel Configuration
+# Linux/x86 4.14.9-2 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -5349,7 +5349,7 @@ CONFIG_FB_EFI=y
 # CONFIG_FB_CARMINE is not set
 # CONFIG_FB_SM501 is not set
 # CONFIG_FB_SMSCUFX is not set
-CONFIG_FB_UDL=m
+# CONFIG_FB_UDL is not set
 # CONFIG_FB_IBM_GXT4500 is not set
 # CONFIG_FB_VIRTUAL is not set
 CONFIG_XEN_FBDEV_FRONTEND=m
