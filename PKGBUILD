@@ -3,7 +3,7 @@
 # Contributor: Walter Dworak <preparationh67@gmail.com>
 
 pkgname=containernet-libvirt-git
-pkgver=20171217
+pkgver=20171220
 pkgrel=1
 pkgdesc="Mininet with added Docker, and libvirt support"
 url="https://github.com/containernet/containernet/"
