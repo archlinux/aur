@@ -7,7 +7,7 @@
 
 pkgname=('python-scipy-mkl' 'python2-scipy-mkl')
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
@@ -58,7 +58,8 @@ build() {
 	fi
 
 	if [ "$use_intel_cc" = true ]; then
-		sh build_python3.sh
+		python3 setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem
+		# sh build_python3.sh
 	fi
 
 	# build for python2
@@ -74,7 +75,8 @@ build() {
 	fi
 
 	if [ "$use_intel_cc" = true ]; then
-		sh build_python2.sh
+		python2 setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem
+		# sh build_python2.sh
 	fi
 
 }

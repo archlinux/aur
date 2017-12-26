@@ -1,7 +1,7 @@
 pkgbase = python-scipy-mkl
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.scipy.org/
 	arch = i686
 	arch = x86_64
