@@ -1,6 +1,47 @@
 Version history
 ===============
 
+0.9.6
+-----
+
+2017-12-26
+
+Added Raymanni's Holiday tileset. Thanks so much for this beautiful set!
+
+Added multiplayer maps by IchoTolot. Removed my worst old multiplayer maps.
+
+Rubix's singleplayer, reduced initial lix in 3 levels to combat long waits
+when route is finished. Cropped small lemforum/Quirky maps with repeating
+decoration from 640x400 to 640x320. Compression Method 2 has a 2nd hatch.
+
+Fix #251: geoo/construction/pillar_* looks hexagonal instead of round, and
+looks more like concrete, to avoid confusion with steel.
+
+Fix #79: geoo/construction/squisher.T has a flashing exclamation sign and
+looks different from pillar terrain. It's now clearer where terrain ends and
+where the trap begins.
+
+Fix #253: Level search matches the level author, too, not merely the level's
+name and path.
+
+Fix #222: When you enter a different windowed resolution, (un)check
+windowed/fullscreen, or load a user config file, the program immediately
+switches to the desired resolution and screen mode. You don't have to exit and
+restart.
+
+Fix #249: Editor, rectangle dragging: Prefer to drag 1xN rectangles instead of
+(full-width)xN on torus maps.
+
+Fix #219: On torus maps, editor draws hatch/goal annotations properly across
+torus seams.
+
+Fix: Restarting the level from the end-of-level dialog resets speed to normal.
+
+Fix #226: Enforce datafiles (= on missing important files, print & log error
+even in release mode), don't assert for datafiles
+
+Log unplayable music only once per file per program start.
+
 0.9.5
 -----
 

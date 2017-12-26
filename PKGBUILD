@@ -2,7 +2,7 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 conflicts=("${pkgname}-git")
 source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
