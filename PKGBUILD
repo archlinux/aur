@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=libevhtp-git
-pkgver=1.2.15.r6.gf7b6ca7
+pkgver=1.2.15.r19.gbc52552
 pkgrel=1
 pkgdesc="A replacement API for Libevent's current HTTP API."
 arch=('i686' 'x86_64')
