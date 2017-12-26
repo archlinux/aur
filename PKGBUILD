@@ -4,7 +4,7 @@
 
 pkgname=emacs-js2-mode
 pkgver=20150909
-pkgrel=1
+pkgrel=2
 pkgdesc="An improved JavaScript mode for GNU Emacs"
 arch=('any')
 url="http://code.google.com/p/js2-mode/"
@@ -19,8 +19,8 @@ build() {
 }
 package() {
   cd "$srcdir"/${pkgname#emacs-}-$pkgver
-  install -Dm644 "$srcdir"/js2-mode.el "$pkgdir"/usr/share/emacs/site-lisp/js2-mode.el
-  install -Dm644 "$srcdir"/js2-mode.elc "$pkgdir"/usr/share/emacs/site-lisp/js2-mode.elc
+  install -Dm644 js2-mode.el "$pkgdir"/usr/share/emacs/site-lisp/js2-mode.el
+  install -Dm644 js2-mode.elc "$pkgdir"/usr/share/emacs/site-lisp/js2-mode.elc
   install -Dm644 js2-old-indent.el "$pkgdir"/usr/share/emacs/site-lisp/js2-old-indent.el
   install -Dm644 js2-imenu-extras.el \
 	  "$pkgdir"/usr/share/emacs/site-lisp/js2-imenu-extras.el
