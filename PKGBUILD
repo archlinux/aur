@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cri-o
-pkgver=1.8.3
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 arch=(i686 x86_64)
@@ -33,8 +33,6 @@ package() {
 	cd "${srcdir}/go/src/github.com/kubernetes-incubator/cri-o"
 
 	install -Dm755 bin/crio $pkgdir/usr/bin/crio
-	install -Dm755 bin/crioctl $pkgdir/usr/bin/crioctl
-
 	install -Dm755 bin/conmon $pkgdir/usr/libexec/crio/conmon
 	install -Dm755 bin/pause $pkgdir/usr/libexec/crio/pause
 
