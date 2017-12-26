@@ -4,17 +4,16 @@
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
 _major=4
-_minor=13
+_minor=14
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=13
+_pfrel=7
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_aufs3="https://github.com/sfjro/aufs4-standalone"
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -82,8 +81,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
 	'config.i686' 'config.x86_64'		# the main kernel config files
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	"${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
-   #     "git+$_aufs3#branch=aufs4.$_minor"
-        "90-linux-pf.hook"
+        "90-linux.hook"
+        "60-linux.hook"
+        '0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
+        '0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
+        '0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
+        '0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch'
+        '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
@@ -91,44 +95,26 @@ prepare() {
   cd "${srcdir}/linux-${_basekernel}"
   msg "Applying pf-kernel patch"
   patch -Np1 < ${srcdir}/${_pfpatchname}
-#  msg "applying aufs3 patches"
-#  cd "$srcdir/${_aufs3##*/}"
-#  git checkout origin/aufs${_basekernel} || _aufs3checkout=KRAKRA
- # if [[ ${_aufs3checkout} = "KRAKRA" ]]; then
-  #    echo
-   #   msg "AUFS3 not yet ported to version ${_basekernel}!"
-    #  msg "Skipping related patches."
-     # echo
-     # cd ..
-  #else
-    #        mkdir -p "${pkgdir}/usr/lib/modules/build/${_kernver}/include"
-    #        mv include/linux/Kbuild "${pkgdir}/usr/lib/modules/build/${_kernver}/include/"
-   # rm include/uapi/linux/Kbuild
-    #cp -a {Documentation,fs,include} ${srcdir}/linux-${_basekernel}/
-    #cd ../linux-${_basekernel}
-    #msg "Patching aufs3"
-    #for _patch in ${srcdir}/${_aufs3##*/}/*.patch; do
-    #  patch -Np1 -i ${_patch} || _aufs3fail=KRAKRA
-    #done
-    #if [[ ${_aufs3fail} = "KRAKRA" ]]; then
-#	echo
-    #	warning "Not all aufs3 patches applied correctly. Ignore this if you won't use AUFS."
-    #	warning "Otherwise, press CTRL-C now and fix manually"
-#	warning "Remind me to enable it again if it's aviable again"
- #   	echo
-  #  fi
-  #fi
-  
+
   # linux-ARCH patches
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
+
+  # disable USER_NS for non-root users by default
+  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  
+  # https://bugs.archlinux.org/task/56605
+  patch -Np1 -i ../0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
+  patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+
+  # https://bugs.archlinux.org/task/56846
+  patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+
+  # https://bugs.archlinux.org/task/56830
+  patch -Np1 -i ../0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
   # end linux-ARCH patches
-
-
-  # added gcc 4.7.1 support for Kconfig and menuconfig
-  # now inclued in pf patchset
 
   # fix ci  invalid PC card inserted issue hopefully
   #patch -Rp1 -i "${srcdir}/cx23885_move_CI_AC_registration_to_a_separate_function.patch" || true
@@ -141,7 +127,6 @@ prepare() {
   fi
 
   sed -ri "s|SUBLEVEL = 0|SUBLEVEL = $_pfrel|" Makefile
-
 
   # Set EXTRAVERSION to -pf
   sed -ri "s|^(EXTRAVERSION =).*|\1|" Makefile
@@ -178,7 +163,8 @@ build() {
   # enable $_BATCH_MODE if batch_opts is found in $srcdir
   if [[ -e $srcdir/batch_opts ]] ; then
       source "$srcdir/batch_opts"
-      if [[ "$CPU" ]] ; then # enable cpu optimisations acording to $CPU and enable pkgopt
+      # enable cpu optimisations acording to $CPU and enable pkgopt
+      if [[ "$CPU" ]] ; then
           sed -e "s|# CONFIG_M$CPU is not set|CONFIG_M$CPU=y|" \
               -e '/CONFIG_GENERIC_CPU=y/d' \
               -i "$srcdir/linux-${_basekernel}/.config"
@@ -233,7 +219,7 @@ build() {
           msg "Running 'make localmodconfig'..."
           make localmodconfig
       else
-        msg "Using stock ARCH kernel .config (with BFS, BFQ and TuxOnIce enabled)."
+        msg "Using stock ARCH kernel .config (with BFS and BFQ)."
       fi
       
       # Make some good use of MAKEFLAGS
@@ -313,7 +299,7 @@ build() {
   fi
 
   # rewrite configuration
-  yes "" | make config >/dev/null
+  yes "" | make config >/dev/null #FIXME
 
   # Build
   # Want extreme and non-sensical optimization? Uncomment the following line!
@@ -322,34 +308,25 @@ build() {
 }
 
 package_linux-pf() {
- _pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3."
+ _pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
  pkgdesc=${_pkgdesc}
  groups=('base')
  depends=('coreutils' 'linux-firmware' 'kmod>=9-2' 'mkinitcpio>=0.7')
  optdepends=('linux-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.'
 	    'crda: to set the correct wireless channels of your country'
 	    'pm-utils: utilities and scripts for suspend and hibernate power management'
-	    'tuxonice-userui: TuxOnIce userspace user interface'
-	    'hibernate-script: set of scripts for managing TuxOnIce, hibernation and suspend to RAM'
-	    'nvidia-pf: NVIDIA drivers for linux-pf'
+x	    'nvidia-pf: NVIDIA drivers for linux-pf'
 	    'nvidia-beta-all: NVIDIA drivers for all installed kernels'
 	    'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
- #provides=(${pkgbase}=${_basekernel} 'aufs3')	# for $pkgname-optimized
- provides=(${pkgbase}=$pkgver 'aufs3' 'linux-tomoyo')
- # below 'provides' is for when you have no other kernel (which is a bad idea anyway)
- # provides=(${pkgbase}=${_basekernel} 'linux=${pkgver}' 'aufs3')
+ provides=(${pkgbase}=$pkgver 'linux-tomoyo')
  # If generic build, then conflict with all optimized ones
  conflicts=()
  for _cpusuffix in $_CPUSUFFIXES ; do
    conflicts+=(${pkgbase}-${_cpusuffix}) 
  done  
- replaces=('kernel26-pf' 'aufs3')
+ replaces=('kernel26-pf')
 
- #'
-  cd "${srcdir}/linux-${_basekernel}"
-
-  # Remove undeeded aufs3 git tree
-  rm -fr aufs3 2>/dev/null
+ cd "${srcdir}/linux-${_basekernel}"
 
   # work around the AUR parser
   # This allows building cpu-optimized packages with according package names.
@@ -445,7 +422,7 @@ package_linux-pf() {
      default)
        # Note to me: DO NOT EVER REMOVE THIS. It's for the AUR PKGBUILD parser.
          pkgname="${pkgbase}"
-         pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3"
+         pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)"
          ;;
     esac
 
@@ -456,8 +433,8 @@ package_linux-pf() {
 	pkgnameopt="${pkgname}"		# this MUST be inside this if-fi
 	pkgname="${pkgbase}"
 	echo pkgname $pkgname
-	cpuopt=`sed -e "s/linux-pf-//" <<<$pkgnameopt`		# get suffix
-	cpuoptdesc=`sed -e "s/${_pkgdesc}//" <<<$pkgdesc`	# get description
+	cpuopt=$(sed -e "s/linux-pf-//" <<<$pkgnameopt)		# get suffix
+	cpuoptdesc=$(sed -e "s/${_pkgdesc}//" <<<$pkgdesc)	# get description
 	conflicts=(${conflicts[@]/linux-pf-${cpuopt}/})		# remove current
 	conflicts=(${conflicts[@]/linux-pf-headers-${cpuopt}/})	# remove current's headers
 	export cpuopt cpuoptdesc
@@ -491,34 +468,28 @@ package_linux-pf() {
   echo # get kernel version
    _kernver="$(make LOCALVERSION= kernelrelease)"
 
-
-  ### c/p from linux-ARCH
-
-  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
+  mkdir -p "${pkgdir}"/{usr/lib/modules,boot}
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-
-
-
-  # remove build and source links
-  rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-  # remove the firmware
-  rm -rf "${pkgdir}/lib/firmware"
+  ### c/p from linux-ARCH
+  
   # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  # add real version for building modules and running depmod from post_install/upgrade
-  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
+  # add real version for building modules and running depmod from hook
+  echo "${_kernver}" |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+  # remove build and source links
+  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
+  
   # Now we call depmod...
-  depmod -b "$pkgdir" -F System.map "$_kernver"
-  # move module tree /lib -> /usr/lib
-  mkdir -p "${pkgdir}/usr"
-  mv "$pkgdir/lib" "$pkgdir/usr"
+  depmod -b "$pkgdir/usr" -F System.map "$_kernver"
+  
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
-
+  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
+  
 # end c/p
 
   ###
@@ -677,7 +648,26 @@ package_linux-pf-preset-default()
   # install fallback mkinitcpio.conf file and preset file for kernel
   install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-  install -D -m644 "${srcdir}/90-linux-pf.hook" "${pkgdir}/usr/share/libalpm/hooks/90-linux-pf.hook"
+  # sed expression for following substitutions
+  local _subst="
+    s|%PKGBASE%|${pkgbase}|g
+    s|%KERNVER%|${_kernver}|g
+    s|%EXTRAMODULES%|${_extramodules}|g
+  "
+
+  # hack to allow specifying an initially nonexisting install file
+  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
+  true && install=${install}.pkg
+
+  # install mkinitcpio preset file
+  #sed "${_subst}" ../linux-pf.preset |
+  #  install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  
+  # install pacman hooks
+  sed "${_subst}" "${srcdir}"/60-linux.hook |
+      install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "${_subst}" "${srcdir}"/90-linux.hook |
+      install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
   
   # set correct depmod command for install
   #sed \
@@ -692,12 +682,19 @@ package_linux-pf-preset-default()
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 }
 # Work around the AUR parser
-pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3"
+pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 
 # makepkg -g >>PKGBUILD
-sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
-            '065ecd7b7a034fd8417f934520dd1d92a4154c6c30a5272fd863eced95c3aca0'
-            '03bfdc7297fd0b9dab918448af9c13292f3a26d6c52363ccba6756cd4ae7c101'
+sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+            '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
+            '943e1e6e1518edc8ab86023805f8f88f3672871a4039ccf8a9e97c33e95ae395'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'b1e1ec9b37f7377ed2a6c1e97cd26b8dee8fedf644cc80124cf0acf5868946da'
-            'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02')
+            '71855b1aa2e4aec2695f4ee12ad7a65fcb33b1fe17315cfcca6ce9162bc9e391'
+            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            'ed3266ab03f836f57de0faf8a10ffd7566c909515c2649de99adaab2fac4aa32'
+            '64a014f7e1b4588728b3ea9538beee67ec63fb792d890c7be9cc13ddc2121b00'
+            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb'
+            '95f0d0a94983b0dafd295f660a663f9be5ef2fcb9646098426a5d12b59f50638'
+            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85')
+
