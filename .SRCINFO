@@ -1,7 +1,7 @@
 pkgbase = transfer-more
-	pkgdesc = transfer.sh clone in Crystal-lang based on kemalcr
-	pkgver = v0.3.2.r3.d21502b
-	pkgrel = 1
+	pkgdesc = Fast and lite file upload server (transfer.sh clone)
+	pkgver = v0.3.2
+	pkgrel = 3
 	url = https://github.com/Nephos/transfer_more
 	arch = any
 	license = GPLv3

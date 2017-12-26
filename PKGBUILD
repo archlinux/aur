@@ -1,8 +1,8 @@
 # Maintainer: Arthur Poulet (arthur.poulet@sceptique.eu)
 pkgname=transfer-more
-pkgver=v0.3.2.r3.d21502b
-pkgrel=2
-pkgdesc="transfer.sh clone in Crystal-lang based on kemalcr"
+pkgver=v0.3.2.r5.532f226
+pkgrel=1
+pkgdesc="Fast and lite file upload server (transfer.sh clone)"
 arch=('any')
 url="https://github.com/Nephos/transfer_more"
 license=('GPLv3')
@@ -27,10 +27,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/transfer_more"
-  make deps release
+  make NAME="transfer-more" deps release
 }
 
 package() {
   cd "$srcdir/transfer_more"
-  make PREFIX="$pkgdir/usr/local" install
+  make PREFIX="$pkgdir/usr/local" NAME="transfer-more" install
 }
