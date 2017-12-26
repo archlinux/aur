@@ -1,7 +1,7 @@
 # Maintainer: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname='singularity-container'
-pkgver='2.4.1'
+pkgver='2.4.2'
 pkgrel='1'
 pkgdesc='Container platform focused on supporting "Mobility of Compute".'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='http://singularity.lbl.gov'
 license=('BSD')
 depends=('bash' 'python' 'squashfs-tools')
 source=("https://github.com/singularityware/singularity/releases/download/${pkgver}/singularity-${pkgver}.tar.gz")
-md5sums=('60755736f6b160a987e89a5a4041e039')
+md5sums=('5b0300cfea1c89bbf8ada8270d230519')
 
 build() {
   cd "${srcdir}/singularity-${pkgver}"
