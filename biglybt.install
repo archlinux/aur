@@ -4,7 +4,7 @@ msg_blue() {
 }
 
 note() {
-    printf "${blue}${yellow}==>${bold} $1${all_off}\n"
+    printf "${yellow}==>${bold} $1${all_off}\n"
 }
 
 all_off="$(tput sgr0)"
