@@ -9,11 +9,11 @@
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 _pkgmajor=2.31
-pkgver=${_pkgmajor}
-pkgrel=2
+pkgver=${_pkgmajor}.1
+pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 groups=('selinux')
 # SELinux package maintenance note:
 #   ArchLinux base packages have a build-time cyclic dependency because
@@ -30,15 +30,15 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-md5sums=('5b6821c403c3cc6e7775f74df1882a20'
-         'SKIP'
-         '4368b3f98abd8a32662e094c54e7f9b1'
-         'a31374fef2cba0ca34dfc7078e2969e4'
-         'fa85e5cce5d723275b14365ba71a8aad'
-         '095fb3d048d5304cce5719831bdad6dc'
-         '63f9bf9264911242e430867a41e8918c'
-         '3a87d0d77656f005fbd9c3b003dadc90'
-         'a5835e0d5686ad1a12644edc3333d886')
+sha256sums=('1a51b16fa9cd51d26ef9ab52d2f1de12403b810fc8252bf7d478df91b3cddf11'
+            'SKIP'
+            '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
+            'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
+            '51eac9c2a2f51ad3982bba35de9aac5510f1eeff432d2d63c6362e45d620afc0'
+            '10b0505351263a099163c0d928132706e501dd0a008dac2835b052167b14abe3'
+            '7423aaaa09fee7f47baa83df9ea6fef525ff9aec395c8cbd9fe848ceb2643f37'
+            '8ccec10a22523f6b9d55e0d6cbf91905a39881446710aa083e935e8073323376'
+            'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
 
 build() {
   cd "${pkgbase/-selinux}-$pkgver"
