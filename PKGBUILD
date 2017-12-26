@@ -2,7 +2,7 @@
 # Contributor: Manuel Kehl <https://launchpad.net/~mank319, https://github.com/mank319/>
 
 pkgname=go-for-it
-pkgver=1.6
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='A stylish to-do list with built-in productivity timer.'
 arch=('i686' 'x86_64')
@@ -10,17 +10,13 @@ url='https://github.com/mank319/Go-For-It'
 license=('GPL3')
 depends=('gtk3' 'libnotify')
 optdepends=()
-makedepends=('vala' 'cmake')
+makedepends=('vala' 'cmake' 'intltool')
 conflicts=('go-for-it-git' 'go-for-it-bzr')
-source=(release_v${pkgver}.tar.gz::https://github.com/mank319/Go-For-It/archive/release_v${pkgver}.tar.gz)
-sha256sums=('0cc8d8a687127c6192b830eb1d2ae177cc50118a2260e8a3d72295931fd6bfc1')
-
-prepare() {
-  mv ${srcdir}/Go-For-It-release_v${pkgver}/* ${srcdir}/
-}
+source=(${pkgver}.tar.gz::https://github.com/mank319/Go-For-It/archive/${pkgver}.tar.gz)
+sha256sums=('8299f2d6d5bfb13b7696b387d52a033101b4f2c303eab768c5c4f8daabb18b67')
 
 build() {
-  cd ${srcdir}
+  cd Go-For-It-${pkgver}
 
   if [[ -d build ]]; then
     rm -rf build
@@ -28,10 +24,12 @@ build() {
   mkdir build && cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
+  make pot
+  make po
 }
 
 package() {
-  cd ${srcdir}/build
+  cd Go-For-It-${pkgver}/build
 
   make DESTDIR="${pkgdir}" install
 }
