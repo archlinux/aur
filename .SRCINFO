@@ -1,0 +1,14 @@
+pkgbase = rtl8723de-dkms
+	pkgdesc = RTL8723 wireless + bluetooth modules (DKMS)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/smlinux/rtl8723de
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	source = https://github.com/smlinux/rtl8723de/archive/4.11-up.zip
+	md5sums = 812c453a8cdb851519ce5cda8f58c962
+
+pkgname = rtl8723de-dkms
+
