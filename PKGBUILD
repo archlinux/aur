@@ -6,8 +6,8 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.14.8
-xanmod=12
+pkgver=4.14.9
+xanmod=13
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -32,7 +32,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('0bd7b84ecf3c40af458d54e403e55df1d6110dfcd77fa230f63c01a98729a518'
+sha256sums=('7642b5be499aa2f6fda1fd7a925d9479cec373eb437b7bf199f1615022366fe6'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
