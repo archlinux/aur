@@ -1,13 +1,13 @@
 pkgbase = dse
 	pkgdesc = AES file encryption using a keyfile.
-	pkgver = 1.10
+	pkgver = 1.20
 	pkgrel = 1
 	url = http://members.ozemail.com.au/~nulifetv/freezip/freeware/index.html
 	arch = any
 	license = MIT
 	makedepends = gcc
-	source = https://github.com/kewlfft/dse/archive/v1.10.tar.gz
-	sha256sums = 15849648e67023e552f3276902af79e854ce7cec786ba703baa76b0f2b6cb342
+	source = https://github.com/kewlfft/dse/archive/v1.20.tar.gz
+	sha256sums = 1e3f7fa35908c52f8f016cfc71ba0465138bd343f25c27c0530a00ae481e0fb7
 
 pkgname = dse
 
