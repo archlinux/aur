@@ -33,11 +33,11 @@ build() {
   _preparevars
   . "$srcdir/config" # load configuration
 
-# fix placement of ossec-init.conf
-sed -i "s|^OSSEC_INIT.*|OSSEC_INIT=\"$pkgdir/etc/ossec-init.conf\"|" src/init/shared.sh
+  # fix placement of ossec-init.conf
+  sed -i "s|^OSSEC_INIT.*|OSSEC_INIT=\"$pkgdir/etc/ossec-init.conf\"|" src/init/shared.sh
 
-cd src
-make TARGET=$USER_INSTALL_TYPE
+  cd src
+  make TARGET=$USER_INSTALL_TYPE
 }
 
 package() {
@@ -46,7 +46,7 @@ package() {
   _preparevars
   . "$srcdir/config" # load configuration
 
-# install -dm755 "$pkgdir/etc"
+  # install -dm755 "$pkgdir/etc"
   mkdir -p $pkgdir/etc
   USER_DIR="$pkgdir/$_instdir" ./install.sh
 
