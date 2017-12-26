@@ -11,7 +11,7 @@ arch=('any')
 url='https://pypi.python.org/pypi/d2to1'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=(http://pypi.python.org/packages/source/d/${pkgname#*-}/${pkgname#*-}-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/d/${pkgname#*-}/${pkgname#*-}-$pkgver.tar.gz)
 sha512sums=('89890afc78b21d78f42ef5c920d377cd58075829e025c512d86138d52943ce8b71d1245bf267f76f775c6a69bf81bf9881322bd64b0e75ae088134e6b66f4d2d')
 
 prepare(){
