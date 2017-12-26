@@ -1,0 +1,4 @@
+post_install() {
+    printf '%s\n' 'For the proper configuration of Intel VAAPI media driver,'
+    printf '%s\n' 'you need to re-login or source /etc/profile.d/intel-media.sh'
+}
