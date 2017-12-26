@@ -2,8 +2,8 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=noblenote-git
-pkgver=560.7b926f9
-pkgrel=2
+pkgver=584.0cbbf47
+pkgrel=1
 pkgdesc="nobleNote aims to be a lightweight, open source alternative to Evernote and OneNote."
 url="https://github.com/hakaishi/nobleNote"
 arch=('i686' 'x86_64')
