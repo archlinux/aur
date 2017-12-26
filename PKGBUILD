@@ -18,6 +18,7 @@ prepare() {
   rm -rf $pkgname
 
   msg2 "Extrcting GitHub_BiglyBT_Installer.sh..."
+  export app_java_home=$(echo /usr/lib/jvm/java-8*/jre)
   sh GitHub_BiglyBT_Installer.sh -q -dir "$srcdir"/$pkgname
 }
 
