@@ -21,6 +21,6 @@ before_script:
   - sudo mount -o bind . root/src
   - sudo cp --remove-destination /etc/resolv.conf root/etc/resolv.conf
   - sudo cp /usr/bin/qemu-arm-static root/bin/
-  - sudo LC_ALL=C chroot root qemu-arm-static /bin/bash -c "pacman -Sy --needed --noconfirm --noprogressbar base-devel git openal sdl2"
+  - sudo LC_ALL=C chroot root qemu-arm-static /bin/bash -c "pacman -Sy --needed --noconfirm --noprogressbar base-devel git"
 script:
   - sudo LC_ALL=C chroot root qemu-arm-static /bin/bash -c "cd /src && su -s /bin/sh -c 'makepkg --noarchive --holdver' nobody"
