@@ -1,7 +1,7 @@
-# Maintainer: Mateusz Paluszkiewicz <aifam96@gmail.com>
+# Maintainer: Tony Lambiris <tony@critialstack.com>
 
 pkgname=(veles-git python-veles-git)
-pkgver=2017.2.0.YAGNI.r178.g80e57c2
+pkgver=2017.06.0.1.r146.g41a1bde
 pkgrel=1
 pkgdesc='Binary data analysis and visualization tool'
 url='https://codisec.com/veles'
