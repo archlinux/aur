@@ -1,0 +1,61 @@
+#!/usr/bin/bash
+
+run_hook() {
+    . /etc/docker-btrfs.sh
+    docker_rwlayer=$(echo $rootflags | grep -o "subvol=[^,]*" | grep -o "[^=]*\$")
+
+    mkdir -p /docker_root
+    mkdir -p /var/lib/docker
+    mkdir -p /top_layer
+
+    msg ":: mounting "$root" at /docker_root"
+    rootdev=$(resolve_device "$root") && root=$rootdev
+    unset rootdev
+    if ! mount -t btrfs "$root" "/docker_root"; then
+        echo "You are now being dropped into an emergency shell."
+        launch_interactive_shell
+        msg "Trying to continue (this will most likely fail) ..."
+    fi
+
+    msg ":: bind mounting "/docker_root/$docker_path" at /var/lib/docker"
+    if ! mount -o bind "/docker_root/$docker_path" "/var/lib/docker"; then
+        echo "You are now being dropped into an emergency shell."
+        launch_interactive_shell
+        msg "Trying to continue (this will most likely fail) ..."
+    fi
+
+    msg ":: getting docker cache subvolume"
+    cd /var/lib/docker/image/btrfs
+    image_id=$(jq ".Repositories.\"$docker_image\".\"$docker_image:$docker_tag\"" repositories.json | sed 's/:/\//g;s/"//g')
+    last_layer_id=$(jq '.rootfs.diff_ids[]' imagedb/content/$image_id | sed 's/"//g' | tail -n 1)
+    cache_id_file=$(grep $last_layer_id -rl layerdb | sed 's/diff/cache-id/g')
+    cache_id=$(cat $cache_id_file)
+
+    msg ":: creating rwlayer"
+    [ -d /docker_root/"$docker_rwlayer" ] && btrfs subvolume delete /docker_root/"$docker_rwlayer"
+    if ! btrfs subvolume snapshot /var/lib/docker/btrfs/subvolumes/$cache_id /docker_root/"$docker_rwlayer"; then
+        echo "You are now being dropped into an emergency shell."
+        launch_interactive_shell
+        msg "Trying to continue (this will most likely fail) ..."
+    fi
+
+    msg ":: mounting top layer drive"
+    toplayerdev=$(resolve_device "$toplayer") && root=$toplayerdev
+    unset toplayerdev
+    if ! mount ${toplayerfstype:+-t $toplayerfstype} ${toplayerflags:+-o $toplayerflags} "$toplayer" "/top_layer"; then
+        echo "You are now being dropped into an emergency shell."
+        launch_interactive_shell
+        msg "Trying to continue (this will most likely fail) ..."
+    fi
+
+    msg ":: applying top layer"
+    cp -r /top_layer/"$toplayer_path"/* /docker_root/"$docker_rwlayer"/
+
+    # cleaning
+    cd /
+    umount /top_layer
+    umount /var/lib/docker
+    umount /docker_root
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

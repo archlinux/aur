@@ -1,0 +1,38 @@
+#!/bin/bash
+
+build() {
+    add_module btrfs
+    add_binary btrfs
+    add_binary btrfsck
+    add_binary jq
+    add_file /etc/docker-btrfs.sh
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook provides support for using docker image as root. Only btrfs
+is supported. This hook creates an rwlayer as a snapshot of the subvolume
+in docker cache of the specified image and use this rwlayer as root.
+The rwlayer is not automatically saved and will be emptied the next time
+during boot.
+
+To setup this hook:
+
+In /etc/docker-btrfs.sh, the user specify the image and tag that would
+be used as root. During installation, this file will be copied to the
+initramfs generated and read by the runtime hook during booting.
+
+While booting, the kernel option "root" should be the drive that contains
+the docker directory (the directory that will become /var/lib/docker after
+boot). The "docker_path" is used to specify the relative path of docker
+directory with respect to "root". The "rootflags" should at least have a
+"subvol=******"; this subvolume will become the rwlayer, and all existing
+data will be emptied. The "toplayer" is the drive that stores top layer
+data which will be applied to rwlayer after rwlayer is mounted. The
+"toplayerfstype", "toplayerflags" playes the same role to top layer as
+"rootfstype", "rootflags" plays to root. The "toplayer_path" is the relative
+path of the directory of the top layer with respect to "toplayer".
+
+HELPEOF
+}
