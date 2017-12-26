@@ -1,8 +1,6 @@
 post_install() {
 	echo "Notice: If you have the full version of the game, you can copy the files into the ~/.th08 directory" 
 	echo " "
-	echo "Also, if you are installing timidity++, remember to start the daemon before play as root with"
-	echo "# /etc/rc.d/timidity++ start"
-	echo "To make it permanent, add it to the DAEMONS section in your /etc/rc.conf."
+	echo "Also, if you want to use timidity++, remember to start the daemon before starting the game"
 }
 
