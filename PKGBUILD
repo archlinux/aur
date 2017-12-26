@@ -8,7 +8,7 @@ pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
 pkgver=1.13.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -68,9 +68,9 @@ build() {
         export FFLAGS="-fopenmp -m64 -mtune=native -O3"
     fi
 
-    if [ "$use_intel_cc" = true ]; then 
-        export __INTEL_PRE_CFLAGS="$__INTEL_PRE_CFLAGS -D_Float128=__float128"
-    fi 
+    # if [ "$use_intel_cc" = true ]; then 
+    #     export __INTEL_PRE_CFLAGS="$__INTEL_PRE_CFLAGS -D_Float128=__float128"
+    # fi 
 
 
     echo "Building Python2"
