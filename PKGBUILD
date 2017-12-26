@@ -11,7 +11,7 @@ makedepends=('python2' 'python' 'python-setuptools' 'python2-setuptools')
 checkdepends=('python-nose' 'python2-nose' 'python-pbr' 'python2-pbr' 'python-six' 'python2-six' 'git')
 license=('BSD')
 arch=('any')
-source=("http://pypi.python.org/packages/source/m/mock/mock-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/m/mock/mock-$pkgver.tar.gz")
 md5sums=('0febfafd14330c9dcaa40de2d82d40ad')
 
 build() {
