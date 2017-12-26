@@ -9,12 +9,7 @@ pkgdesc="Simple C compiler to generate 8086 code"
 arch=('x86_64')
 url="http://v3.sk/~lkundrak/dev86/"
 license=(GPL)
-if [ "${CARCH}" == "x86_64" ]; then
-  depends=('lib32-glibc')
-  makedepends=('bin86' 'gcc-multilib')
-else
-  makedepends=('bin86')
-fi
+makedepends=('bin86')
 options=('!libtool' '!strip' '!makeflags' 'staticlibs')
 source=(http://v3.sk/~lkundrak/dev86/Dev86src-$pkgver.tar.gz
 	mandir.patch)
