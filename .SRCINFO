@@ -1,0 +1,27 @@
+pkgbase = amarok-kf5-git
+	pkgdesc = The powerful music player for KDE - KF5 GIT version
+	pkgver = v2.8.90.176.gc9b5bbb727
+	pkgrel = 1
+	url = http://amarok.kde.org
+	install = amarok-kf5-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	license = FDL
+	depends = taglib
+	depends = threadweaver
+	depends = libmariadbclient
+	depends = kdelibs4support
+	depends = libofa
+	depends = knewstuff
+	depends = ffmpeg
+	depends = kcmutils
+	depends = ktexteditor
+	provides = amarok
+	conflicts = amarok
+	source = git://anongit.kde.org/amarok.git#branch=kf5
+	sha1sums = SKIP
+
+pkgname = amarok-kf5-git
+
