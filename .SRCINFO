@@ -1,0 +1,34 @@
+pkgbase = navcoin-git
+	pkgdesc = Privacy-oriented cryptocurrency and distributed computing platform - Git version
+	pkgver = r809.6f4be6f
+	pkgrel = 1
+	url = https://navcoin.org/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = miniupnpc
+	makedepends = db4.8
+	makedepends = qt5-base
+	makedepends = protobuf
+	makedepends = qrencode
+	makedepends = zeromq
+	depends = boost
+	depends = python
+	optdepends = miniupnpc: Firewall-jumping support
+	optdepends = db4.8: Wallet storage
+	optdepends = qt5-base: GUI toolkit
+	optdepends = protobuf: Data interchange format used for payment protocol
+	optdepends = qrencode: Generate QR codes
+	optdepends = zeromq: Generate ZMQ notifications
+	provides = navcoin-git
+	conflicts = navcoin
+	conflicts = navcoin-bin
+	source = git+https://github.com/NAVCoin/navcoin-core.git
+	source = navcoin.desktop
+	source = navcoind.service
+	md5sums = SKIP
+	md5sums = 1885c0577f19f819aafc56c7ea52f00a
+	md5sums = c67b248610947e2fd11489923eed7fa0
+
+pkgname = navcoin-git
+
