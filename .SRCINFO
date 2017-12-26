@@ -1,6 +1,6 @@
 pkgbase = musl-git
 	pkgdesc = Lightweight implementation of C standard library
-	pkgver = v1.1.12.r35.g8eead3e
+	pkgver = v1.1.18.r51.gd5029bb8
 	pkgrel = 1
 	url = http://www.musl-libc.org/
 	arch = i686
