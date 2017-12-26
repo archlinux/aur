@@ -2,8 +2,8 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.14
-_pkgver=4.14.8
-pkgver=${_pkgver}.b
+_pkgver=4.14.9
+pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/copperhead/linux-hardened'
 arch=('x86_64')
@@ -19,22 +19,46 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         60-linux.hook  # pacman hook for depmod
         90-linux.hook  # pacman hook for initramfs regeneration
         linux.preset   # standard config files for mkinitcpio ramdisk
-        0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
-        0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+
+        # https://bugs.archlinux.org/task/56575
+        e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+        # https://bugs.archlinux.org/task/56830
+        ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
+        # https://bugs.archlinux.org/task/56605
+        Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_state_find.patch
+        xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-lookup.patch
+        # https://bugs.archlinux.org/task/56846
+        cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+
+        CVE-2017-8824-dccp-use-after-free-in-DCCP-code.patch
+        CVE-2017-17448-netfilter-nfnetlink_cthelper-Add-missing-permission-checks.patch
+        CVE-2017-17449-netlink-Add-netns-check-on-taps.patch
+        CVE-2017-17450-netfilter-xt_osf-Add-missing-permission-checks.patch
+        CVE-2017-17712-net-ipv4-fix-for-a-race-condition-in-raw_sendmsg.patch
+        CVE-2017-17741-KVM-Fix-stack-out-of-bounds-read-in-write_mmio.patch
 )
 replaces=('linux-grsec')
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '42eaed731b716244514b765c199e8f675d79287d7630e5c2911053ad52a1fa0a'
+            '5edc955bb67b04c7ed426b1df17a3e322e32ad9fdda9c6abb53ab6eca7faf704'
             'SKIP'
-            '21741edf5b909b06acb7cd76a78deb144f831e97db450d569cad62b5161aef7a'
+            'befa19a5aae4feca5c81b312ae382fcb2674fa55fa9cb1e9e744866fb7783116'
             'SKIP'
-            '4d4fc0b183022519bf8363b69b2774b40e3465992fc4166608e0d7dfd1cfb21e'
+            '0da6fc4a3811cd18ed42c3ac60970dfad008f6df0834bd1dbb62f886d74f1885'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
-            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2')
+            'cbf586270595a89835dc02602983028f4cea80c40a43be3d4871dae4fdb46b84'
+            'f7c86f7aa4c7d671a5ff80bcd92a33db2fa6e95b78188261db0ef260a7d75cd8'
+            '294c928b8252112d621df1d13fbfeade13f28ddea034d44e89db41b66d2b7d45'
+            '721c387db986d883a6df6b0da17941ce6d59811b0647ae6653b978c5ee144f19'
+            '6be803c62b7ce41f1b4de6c867715398812b1c1a3e68a0078512f2872e2a3fa9'
+            'b833ad4354fcd2cc6ee60c971088f77aa5b06a58fce346c40268c0b05b1e8cb5'
+            '830ef08edbf98153ff13a573270cb714605582ef19fb0c3e6eadb8876edd247f'
+            '72efa781c8ee1175a8865e6a12568aaf3bac4b76d4285819c6a75a3e5fe41435'
+            '0ee6eae96743dca76dc018c354dd82e820fba0cb310618131e178684d85fd8c9'
+            'ee125179fdd295266aba52e1aebaef97cb41f4a05d9cd1c2b11b4ce83746e197')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -46,21 +70,26 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
+  msg2 "Applying upstream patch"
   patch -Np1 -i ../patch-${_pkgver}
 
-  # security patches
-
-  # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  # apply all patches
+  for _patch in "${source[@]}"; do
+    _patch=${_patch%%::*}
+    _patch=${_patch##*/}
+    if [[ "${_patch}" =~ \.patch$ ]] &&
+       [[ "${_patch}" != "linux-hardened-${pkgver}.patch" ]]; then
+      msg2 "Applying patch ${_patch}"
+      patch -Np1 < "../${_patch}"
+    fi
+  done
 
   # linux hardened patch
+  msg2 "Applying hardened patch"
   patch -Np1 -i ../linux-hardened-${pkgver}.patch
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # https://bugs.archlinux.org/task/56575
-  patch -Np1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
 
   cp -Tf ../config.${CARCH} .config
 
