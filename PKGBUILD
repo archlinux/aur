@@ -5,7 +5,7 @@
 # and add '--enable-libndi_newtek' to the configure options.
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r89569.gd2a2bc9a9f
+pkgver=3.5.r89615.g0c9ab5ef9c
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=(
         'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex'
         'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
         'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
-        'zeromq' 'zvbi' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sdl2'
+        'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sdl2'
         'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'libbs2b' 'libilbc' 'kvazaar' 'openh264'
@@ -155,6 +155,7 @@ build() {
         --enable-libssh \
         --enable-libtesseract \
         --enable-libtheora \
+        --disable-libtls \
         --enable-libtwolame \
         --enable-libv4l2 \
         --enable-libvidstab \
@@ -176,6 +177,7 @@ build() {
         --enable-libzimg \
         --enable-libzmq \
         --enable-libzvbi \
+        --enable-lv2 \
         --enable-lzma \
         --enable-decklink \
         --enable-libmysofa \
@@ -194,10 +196,12 @@ build() {
         --enable-libdrm \
         --enable-libmfx \
         $_libnpp \
+        --enable-nvdec \
         --enable-nvenc \
         --enable-omx \
         --enable-omx-rpi \
         --enable-rkmpp \
+        --enable-v4l2-m2m \
         --enable-vaapi \
         --enable-vdpau
     make
