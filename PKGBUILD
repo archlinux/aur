@@ -1,13 +1,13 @@
 # Maintainer: Takuro Onoue <kusanaginoturugi at gmail.com>
 pkgname=bitzeny
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Wallet of cryptocurrency"
 arch=('x86_64')
-url="http://bitzeny.org/"
+url="https://github.com/BitzenyCoreDevelopers/bitzeny"
 license=('MIT')
-source=("http://bitzeny.org/bin/${pkgver}/${pkgname}-${pkgver}-linux.tar.gz")
-md5sums=('b84616f360902856f2858359984996f7')
+source=("https://github.com/BitzenyCoreDevelopers/${pkgname}/releases/download/z${pkgver}/${pkgname}-${pkgver}-linux.tar.gz")
+md5sums=('e2e4d0659a48ad21ef579b1c2ed7a852')
 
 package() {
   cd "${srcdir}"
