@@ -1,0 +1,20 @@
+pkgbase = biglybt-extreme-mod
+	pkgdesc = A modded version of the BiglyBT client with multiple spoofing capabilities
+	pkgver = 1.2.0.0b2
+	pkgrel = 1
+	url = http://www.sb-innovation.de/f41/
+	install = biglybt-extreme-mod.install
+	arch = x86_64
+	license = GPL3
+	makedepends = java-runtime=8
+	depends = desktop-file-utils
+	depends = java-runtime>=9
+	noextract = 18442d1511749775-biglybt-extreme-mod-sb-innovation-1-2-0-0-rev2-beta-biglybt_1.2.0.0_20171127.zip
+	options = !strip
+	source = https://github.com/BiglySoftware/BiglyBT/releases/download/v1.2.0.0/GitHub_BiglyBT_Installer.sh
+	source = http://www.sb-innovation.de/attachments/f41/18442d1511749775-biglybt-extreme-mod-sb-innovation-1-2-0-0-rev2-beta-biglybt_1.2.0.0_20171127.zip
+	md5sums = a6f5f9297a9dfdcfdc80d22fe8e2c776
+	md5sums = 4bce24f7eaf62d337f583743292fb0e6
+
+pkgname = biglybt-extreme-mod
+

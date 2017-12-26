@@ -1,0 +1,30 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${yellow}==> NOTE$1: ${bold}$2${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note 1 "To finish installation, as user, run:
+             $ mkdir ~/.biglybt/
+             $ touch ~/.biglybt/java.vmoptions
+             $ echo \"--patch-module=java.base=ghostfucker_utils.jar\" >> ~/.biglybt/java.vmoptions
+             $ echo \"--add-exports=java.base/sun.net.www.protocol=ALL-UNNAMED\" >> ~/.biglybt/java.vmoptions
+             $ echo \"--add-modules=java.xml.bind\" >> ~/.biglybt/java.vmoptions"
+
+    note 2 "It is recommended to disable the builtin automatic updater in:
+             Tools > Options > Interface > Start, and
+             Tools > Options > Plugins > Plugin Update"
+}
+
+post_upgrade() {
+    post_install
+}
