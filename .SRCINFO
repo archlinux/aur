@@ -1,7 +1,7 @@
 pkgbase = veles
-	pkgdesc = Visual reverse engineering tool.
+	pkgdesc = Binary data analysis and visualization tool
 	pkgver = 2017.06.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codisec.com/veles/
 	arch = x86_64
 	license = Apache
