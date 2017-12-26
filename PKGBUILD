@@ -9,7 +9,7 @@ arch=('x86_64')
 url='http://code.google.com/p/clamz/'
 license=('GPL3')
 depends=('libgcrypt' 'curl' 'expat' 'shared-mime-info' 'desktop-file-utils')
-source=("http://clamz.googlecode.com/files/clamz-${pkgver}.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/clamz/clamz-${pkgver}.tar.gz")
 md5sums=('84543c9346b285bdc218879e241941a8')
 
 build() {
