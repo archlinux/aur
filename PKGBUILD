@@ -29,7 +29,7 @@ url="https://github.com/libbitcoin/libbitcoin-explorer"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver
         git+https://github.com/libbitcoin/libbitcoin-explorer.wiki)
-sha256sums=('c604cedb7735b2ba02eb150401a0e1fcf1df56648158f52b59b487b31708b6a4'
+sha256sums=('13f9be60bd707ae93c9792a3c8cbed3366cb471014ae9b49b91a5bcd19cc10f0'
             'SKIP')
 
 # half of available processing units or one if only one is available
