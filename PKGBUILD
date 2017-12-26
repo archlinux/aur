@@ -2,13 +2,13 @@
 
 pkgbase=mgba-git
 pkgname=('libmgba-git' 'mgba-sdl-git' 'mgba-qt-git')
-pkgver=r4771.41e00148
+pkgver=r4949.a6a6e311
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mgba.io/'
 license=('custom:MPL2')
 makedepends=('git' 'cmake' 'qt5-base' 'qt5-multimedia' 'sdl2' 'zlib' 'libpng'
-             'libzip' 'libedit' 'ffmpeg' 'imagemagick' 'desktop-file-utils' 'libepoxy'
+             'libzip' 'libedit' 'ffmpeg' 'libmagick' 'desktop-file-utils' 'libepoxy'
              'libelf' 'sqlite')
 source=("git+https://github.com/mgba-emu/mgba.git")
 sha1sums=('SKIP')
@@ -34,7 +34,7 @@ build() {
 
 package_libmgba-git() {
   pkgdesc='Shared library of mGBA'
-  depends=('zlib' 'libpng' 'libzip' 'libedit' 'ffmpeg' 'imagemagick' 'libelf' 'sqlite')
+  depends=('zlib' 'libpng' 'libzip' 'libedit' 'ffmpeg' 'libmagick' 'libelf' 'sqlite')
   conflicts=('libmgba')
   provides=('libmgba')
 
