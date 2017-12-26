@@ -1,0 +1,27 @@
+pkgbase = navcoin-bin
+	pkgdesc = Privacy-oriented cryptocurrency and distributed computing platform - Developer-provided binary
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://navcoin.org/
+	arch = x86_64
+	license = MIT
+	depends = boost
+	depends = python
+	optdepends = miniupnpc: Firewall-jumping support
+	optdepends = db4.8: Wallet storage
+	optdepends = qt5-base: GUI toolkit
+	optdepends = protobuf: Data interchange format used for payment protocol
+	optdepends = qrencode: Generate QR codes
+	optdepends = zeromq: Generate ZMQ notifications
+	provides = navcoin-bin
+	conflicts = navcoin
+	conflicts = navcoin-git
+	source = https://github.com/NAVCoin/navcoin-core/releases/download/4.1.1/navcoin-4.1.1-x86_64-linux-gnu.tar.gz
+	source = navcoin.desktop
+	source = navcoind.service
+	md5sums = 5359312e753cbd21ae9a04858599a272
+	md5sums = 1885c0577f19f819aafc56c7ea52f00a
+	md5sums = c67b248610947e2fd11489923eed7fa0
+
+pkgname = navcoin-bin
+
