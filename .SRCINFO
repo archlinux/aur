@@ -1,0 +1,27 @@
+pkgbase = ttf-nerd-fonts-knack-complete-git
+	pkgdesc = A typeface designed for source code. Patched with Nerd Fonts iconics.
+	pkgver = 20171226
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = MIT
+	depends = fontconfig
+	source = Knack-Regular-Nerd-Font-Complete.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Knack%20Regular%20Nerd%20Font%20Complete.ttf
+	source = Knack-Regular-Nerd-Font-Complete-Mono.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Knack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+	source = Knack-Bold-Nerd-Font-Complete.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Knack%20Bold%20Nerd%20Font%20Complete.ttf
+	source = Knack-Bold-Nerd-Font-Complete-Mono.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Knack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+	source = Knack-Italic-Nerd-Font-Complete.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Knack%20Italic%20Nerd%20Font%20Complete.ttf
+	source = Knack-Italic-Nerd-Font-Complete-Mono.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Knack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+	source = Knack-BoldItalic-Nerd-Font-Complete.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Knack%20Bold%20Italic%20Nerd%20Font%20Complete.ttf
+	source = Knack-BoldItalic-Nerd-Font-Complete-Mono.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Knack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ttf-nerd-fonts-knack-complete-git
+
