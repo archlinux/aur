@@ -2,8 +2,7 @@ post_install() {
   systemd-sysusers cpcache.conf
   chown cpcache:cpcache "/var/lib/cpcache"
   mkdir -p /var/cache/cpcache/mnesia
-  mkdir -p /var/cache/cpcache/x86/{core,extra,multilib,testing,community}/os/{i686,x86_64}
-  mkdir -p /var/cache/cpcache/arm/{aarch64,arm,armv6h,armv7h}/{alarm,aur,community,extra,core}
+  mkdir -p /var/cache/cpcache/pkg/{core,extra,multilib,testing,community}/os/x86_64
   mkdir -p /var/cache/cpcache/mnesia
   chown -R cpcache:cpcache "/var/cache/cpcache"
 }
