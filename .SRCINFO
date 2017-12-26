@@ -1,0 +1,14 @@
+pkgbase = bulk-git
+	pkgdesc = Executes a command across multiple subdirectories.
+	pkgver = r18.28dc51f
+	pkgrel = 1
+	url = https://github.com/shannonmoeller/bulk
+	arch = any
+	makedepends = git
+	provides = bulk-git
+	conflicts = bulk-git
+	source = git://github.com/shannonmoeller/bulk.git
+	md5sums = SKIP
+
+pkgname = bulk-git
+
