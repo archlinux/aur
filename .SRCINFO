@@ -1,7 +1,7 @@
 pkgbase = oragono
 	pkgdesc = A modern IRC server written in Go.
-	pkgver = 0.10.2
-	pkgrel = 2
+	pkgver = 0.10.3
+	pkgrel = 1
 	url = https://github.com/oragono/oragono
 	install = install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = oragono
 	makedepends = go
 	makedepends = git
 	backup = etc/oragono.conf
-	source = git+https://github.com/oragono/oragono#tag=v0.10.2
+	source = git+https://github.com/oragono/oragono#tag=v0.10.3
 	source = git+https://github.com/oragono/oragono-vendor
 	source = oragono.service
 	source = path.patch

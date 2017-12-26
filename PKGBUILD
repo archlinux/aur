@@ -1,8 +1,8 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 
 pkgname=oragono
-pkgver=0.10.2
-pkgrel=2
+pkgver=0.10.3
+pkgrel=1
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
