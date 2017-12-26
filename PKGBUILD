@@ -1,9 +1,10 @@
-#Maintainer: Franz Müller <ethylisocyanat@gmail.com>
+#Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname=('python-rtree')
-_pyname=Rtree
+_pyname=rtree
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
+
 pkgdesc='Python wrapper for libspatialindex'
 url='http://toblerity.github.com/rtree/'
 arch=('any')
