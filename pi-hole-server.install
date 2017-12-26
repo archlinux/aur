@@ -25,7 +25,7 @@ post_upgrade() {
   # update owner of existing dir
   chown pihole:pihole /etc/pihole
 
-  warning
+  # warning
 
   # keep pacman from throwing errors should none them be on the filesystem
   return 0
