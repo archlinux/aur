@@ -1,0 +1,239 @@
+From 1340575fffa39ba0ff1f58ed762f7d6fde672f9c Mon Sep 17 00:00:00 2001
+From: Dmitry Rogozhkin <dmitry.v.rogozhkin@intel.com>
+Date: Tue, 21 Nov 2017 08:38:53 -0500
+Subject: [PATCH] Provide compatibility with upstream libva
+
+This change makes mediasdk compatible with the following libva:
+git clone https://github.com/01org/libva.git
+git reset --hard df544cd5a31e54d4cbd33a391795a8747ddaf789
+
+     commit df544cd5a31e54d4cbd33a391795a8747ddaf789
+     Author: U. Artie Eoff <ullysses.a.eoff@intel.com>
+     Date:   Mon Nov 27 09:47:02 2017 -0800
+
+         Revert "configure: set strict default compiler flags"
+
+Signed-off-by: Dmitry Rogozhkin <dmitry.v.rogozhkin@intel.com>
+---
+ _studio/mfx_lib/shared/src/mfx_h264_fei_vaapi.cpp | 30 +++++++++++-----------
+ _studio/shared/src/mfx_vpp_vaapi.cpp              | 31 +++++++++++++++--------
+ 2 files changed, 35 insertions(+), 26 deletions(-)
+ mode change 100644 => 100755 _studio/shared/src/mfx_vpp_vaapi.cpp
+
+diff --git a/_studio/mfx_lib/shared/src/mfx_h264_fei_vaapi.cpp b/_studio/mfx_lib/shared/src/mfx_h264_fei_vaapi.cpp
+index 91edb71..c2b3fd1 100644
+--- a/_studio/mfx_lib/shared/src/mfx_h264_fei_vaapi.cpp
++++ b/_studio/mfx_lib/shared/src/mfx_h264_fei_vaapi.cpp
+@@ -328,7 +328,7 @@ mfxStatus VAAPIFEIPREENCEncoder::Execute(
+ 
+     mfxStatus mfxSts = MFX_ERR_NONE;
+     VAStatus  vaSts;
+-    VAPictureFEI past_ref, future_ref;
++    VAPictureStats past_ref, future_ref;
+     VASurfaceID *inputSurface = (VASurfaceID*) surface;
+ 
+     std::vector<VABufferID> configBuffers(MAX_CONFIG_BUFFERS_COUNT + m_slice.size() * 2);
+@@ -433,24 +433,24 @@ mfxStatus VAAPIFEIPREENCEncoder::Execute(
+         mfxSts = m_core->GetExternalFrameHDL(feiCtrl->RefFrame[0]->Data.MemId, &handle);
+         MFX_CHECK_STS(mfxSts);
+ 
+-        VAPictureFEI* l0surfs = &past_ref;
++        VAPictureStats* l0surfs = &past_ref;
+         l0surfs->picture_id = *(VASurfaceID*)handle;
+ 
+         switch (feiCtrl->RefPictureType[0])
+         {
+         case MFX_PICTYPE_TOPFIELD:
+-            l0surfs->flags = VA_PICTURE_FEI_TOP_FIELD;
++            l0surfs->flags = VA_PICTURE_STATS_TOP_FIELD;
+             break;
+         case MFX_PICTYPE_BOTTOMFIELD:
+-            l0surfs->flags = VA_PICTURE_FEI_BOTTOM_FIELD;
++            l0surfs->flags = VA_PICTURE_STATS_BOTTOM_FIELD;
+             break;
+         case MFX_PICTYPE_FRAME:
+-            l0surfs->flags = VA_PICTURE_FEI_PROGRESSIVE;
++            l0surfs->flags = VA_PICTURE_STATS_PROGRESSIVE;
+             break;
+         }
+ 
+         if (IsOn(feiCtrl->DownsampleReference[0]))
+-            l0surfs->flags |= VA_PICTURE_FEI_CONTENT_UPDATED;
++            l0surfs->flags |= VA_PICTURE_STATS_CONTENT_UPDATED;
+ 
+         statParams.stats_params.past_references = l0surfs;
+         // statParams.stats_params.past_ref_stat_buf = IsOn(feiCtrl->DownsampleReference[0]) ? &m_statOutId[surfPastIndexInList] : NULL;
+@@ -468,24 +468,24 @@ mfxStatus VAAPIFEIPREENCEncoder::Execute(
+         mfxSts = m_core->GetExternalFrameHDL(feiCtrl->RefFrame[1]->Data.MemId, &handle);
+         MFX_CHECK_STS(mfxSts);
+ 
+-        VAPictureFEI* l1surfs = &future_ref;
++        VAPictureStats* l1surfs = &future_ref;
+         l1surfs->picture_id = *(VASurfaceID*)handle;
+ 
+         switch (feiCtrl->RefPictureType[1])
+         {
+         case MFX_PICTYPE_TOPFIELD:
+-            l1surfs->flags = VA_PICTURE_FEI_TOP_FIELD;
++            l1surfs->flags = VA_PICTURE_STATS_TOP_FIELD;
+             break;
+         case MFX_PICTYPE_BOTTOMFIELD:
+-            l1surfs->flags = VA_PICTURE_FEI_BOTTOM_FIELD;
++            l1surfs->flags = VA_PICTURE_STATS_BOTTOM_FIELD;
+             break;
+         case MFX_PICTYPE_FRAME:
+-            l1surfs->flags = VA_PICTURE_FEI_PROGRESSIVE;
++            l1surfs->flags = VA_PICTURE_STATS_PROGRESSIVE;
+             break;
+         }
+ 
+         if (IsOn(feiCtrl->DownsampleReference[1]))
+-            l1surfs->flags |= VA_PICTURE_FEI_CONTENT_UPDATED;
++            l1surfs->flags |= VA_PICTURE_STATS_CONTENT_UPDATED;
+ 
+         statParams.stats_params.future_references = l1surfs;
+         // statParams.stats_params.future_ref_stat_buf = IsOn(feiCtrl->DownsampleReference[1]) ? &m_statOutId[surfFutureIndexInList] : NULL;
+@@ -535,20 +535,20 @@ mfxStatus VAAPIFEIPREENCEncoder::Execute(
+     switch (feiCtrl->PictureType)
+     {
+     case MFX_PICTYPE_TOPFIELD:
+-        statParams.stats_params.input.flags = VA_PICTURE_FEI_TOP_FIELD;
++        statParams.stats_params.input.flags = VA_PICTURE_STATS_TOP_FIELD;
+         break;
+ 
+     case MFX_PICTYPE_BOTTOMFIELD:
+-        statParams.stats_params.input.flags = VA_PICTURE_FEI_BOTTOM_FIELD;
++        statParams.stats_params.input.flags = VA_PICTURE_STATS_BOTTOM_FIELD;
+         break;
+ 
+     case MFX_PICTYPE_FRAME:
+-        statParams.stats_params.input.flags = VA_PICTURE_FEI_PROGRESSIVE;
++        statParams.stats_params.input.flags = VA_PICTURE_STATS_PROGRESSIVE;
+         break;
+     }
+ 
+     if (!IsOff(feiCtrl->DownsampleInput) && (0 == feiFieldId))
+-        statParams.stats_params.input.flags |= VA_PICTURE_FEI_CONTENT_UPDATED;
++        statParams.stats_params.input.flags |= VA_PICTURE_STATS_CONTENT_UPDATED;
+ 
+     /* Link output VA buffers */
+     statParams.stats_params.outputs = &outBuffers[0]; //bufIDs for outputs
+diff --git a/_studio/shared/src/mfx_vpp_vaapi.cpp b/_studio/shared/src/mfx_vpp_vaapi.cpp
+old mode 100644
+new mode 100755
+index 237f68c..5317ea8
+--- a/_studio/shared/src/mfx_vpp_vaapi.cpp
++++ b/_studio/shared/src/mfx_vpp_vaapi.cpp
+@@ -1016,18 +1016,17 @@ mfxStatus VAAPIVideoProcessing::Execute(mfxExecuteParams *pParams)
+ #define ENABLE_VPP_VIDEO_SIGNAL(X)
+ #endif
+ 
+-
+     mfxU32  refFourcc = pRefSurf->frameInfo.FourCC;
+     switch (refFourcc)
+     {
+     case MFX_FOURCC_RGB4:
+         m_pipelineParam[0].surface_color_standard = VAProcColorStandardNone;
+-        ENABLE_VPP_VIDEO_SIGNAL(m_pipelineParam[0].input_surface_flag     = VA_SOURCE_RANGE_FULL);
++        ENABLE_VPP_VIDEO_SIGNAL(m_pipelineParam[0].input_color_properties.color_range = VA_SOURCE_RANGE_FULL);
+         break;
+     case MFX_FOURCC_NV12:
+     default:
+         m_pipelineParam[0].surface_color_standard = VAProcColorStandardBT601;
+-        ENABLE_VPP_VIDEO_SIGNAL(m_pipelineParam[0].input_surface_flag     = VA_SOURCE_RANGE_REDUCED);
++        ENABLE_VPP_VIDEO_SIGNAL(m_pipelineParam[0].input_color_properties.color_range = VA_SOURCE_RANGE_REDUCED);
+         break;
+     }
+ 
+@@ -1036,15 +1035,18 @@ mfxStatus VAAPIVideoProcessing::Execute(mfxExecuteParams *pParams)
+     {
+     case MFX_FOURCC_RGB4:
+         m_pipelineParam[0].output_color_standard = VAProcColorStandardNone;
+-        ENABLE_VPP_VIDEO_SIGNAL(m_pipelineParam[0].output_surface_flag   = VA_SOURCE_RANGE_FULL);
++        ENABLE_VPP_VIDEO_SIGNAL(m_pipelineParam[0].output_color_properties.color_range = VA_SOURCE_RANGE_FULL);
+         break;
+     case MFX_FOURCC_NV12:
+     default:
+         m_pipelineParam[0].output_color_standard = VAProcColorStandardBT601;
+-        ENABLE_VPP_VIDEO_SIGNAL(m_pipelineParam[0].output_surface_flag   = VA_SOURCE_RANGE_REDUCED);
++        ENABLE_VPP_VIDEO_SIGNAL(m_pipelineParam[0].output_color_properties.color_range = VA_SOURCE_RANGE_REDUCED);
+         break;
+     }
+ 
++    m_pipelineParam[0].input_color_properties.chroma_sample_location  = VA_CHROMA_SITING_UNKNOWN;
++    m_pipelineParam[0].output_color_properties.chroma_sample_location = VA_CHROMA_SITING_UNKNOWN;
++
+     /* It needs interlaced flag passed only for
+         * deinterlacing and scaling. All other filters must
+         * use progressive even for interlaced content.
+@@ -1098,7 +1100,7 @@ mfxStatus VAAPIVideoProcessing::Execute(mfxExecuteParams *pParams)
+ 
+         if(pParams->VideoSignalInfo[index].NominalRange != MFX_NOMINALRANGE_UNKNOWN)
+         {
+-            m_pipelineParam[0].input_surface_flag = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfo[index].NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
++            m_pipelineParam[0].input_color_properties.color_range = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfo[index].NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
+         }
+     }
+ 
+@@ -1111,13 +1113,16 @@ mfxStatus VAAPIVideoProcessing::Execute(mfxExecuteParams *pParams)
+ 
+         if(pParams->VideoSignalInfoOut.NominalRange != MFX_NOMINALRANGE_UNKNOWN)
+         {
+-            m_pipelineParam[0].output_surface_flag = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfoOut.NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
++            m_pipelineParam[0].output_color_properties.color_range = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfoOut.NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
+         }
+ #else
+         return MFX_ERR_UNSUPPORTED;
+ #endif // #ifdef MFX_ENABLE_VPP_VIDEO_SIGNAL
+     }
+ 
++    m_pipelineParam[0].input_color_properties.chroma_sample_location  = VA_CHROMA_SITING_UNKNOWN;
++    m_pipelineParam[0].output_color_properties.chroma_sample_location = VA_CHROMA_SITING_UNKNOWN;
++
+     /* Scaling params */
+     switch (pParams->scalingMode)
+     {
+@@ -1835,7 +1840,7 @@ mfxStatus VAAPIVideoProcessing::Execute_Composition(mfxExecuteParams *pParams)
+ 
+             if(pParams->VideoSignalInfo[refIdx-1].NominalRange != MFX_NOMINALRANGE_UNKNOWN)
+             {
+-                m_pipelineParam[refIdx].input_surface_flag = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfo[refIdx-1].NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
++                m_pipelineParam[refIdx].input_color_properties.color_range = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfo[refIdx-1].NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
+             }
+         }
+ 
+@@ -1848,9 +1853,11 @@ mfxStatus VAAPIVideoProcessing::Execute_Composition(mfxExecuteParams *pParams)
+ 
+             if(pParams->VideoSignalInfoOut.NominalRange != MFX_NOMINALRANGE_UNKNOWN)
+             {
+-                m_pipelineParam[refIdx].output_surface_flag = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfoOut.NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
++                m_pipelineParam[refIdx].output_color_properties.color_range = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfoOut.NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
+             }
+         }
++    m_pipelineParam[refIdx].input_color_properties.chroma_sample_location  = VA_CHROMA_SITING_UNKNOWN;
++    m_pipelineParam[refIdx].output_color_properties.chroma_sample_location = VA_CHROMA_SITING_UNKNOWN;
+ 
+         switch (pRefSurf->frameInfo.PicStruct)
+         {
+@@ -1996,7 +2003,7 @@ mfxStatus VAAPIVideoProcessing::Execute_Composition(mfxExecuteParams *pParams)
+ 
+             if(pParams->VideoSignalInfo[refIdx-1].NominalRange != MFX_NOMINALRANGE_UNKNOWN)
+             {
+-                m_pipelineParam[refIdx].input_surface_flag = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfo[refIdx-1].NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
++                m_pipelineParam[refIdx].input_color_properties.color_range = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfo[refIdx-1].NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
+             }
+         }
+ 
+@@ -2009,9 +2016,11 @@ mfxStatus VAAPIVideoProcessing::Execute_Composition(mfxExecuteParams *pParams)
+ 
+             if(pParams->VideoSignalInfoOut.NominalRange != MFX_NOMINALRANGE_UNKNOWN)
+             {
+-                m_pipelineParam[refIdx].output_surface_flag = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfoOut.NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
++                m_pipelineParam[refIdx].output_color_properties.color_range = (MFX_NOMINALRANGE_0_255 == pParams->VideoSignalInfoOut.NominalRange) ? VA_SOURCE_RANGE_FULL : VA_SOURCE_RANGE_REDUCED;
+             }
+         }
++        m_pipelineParam[refIdx].input_color_properties.chroma_sample_location  = VA_CHROMA_SITING_UNKNOWN;
++        m_pipelineParam[refIdx].output_color_properties.chroma_sample_location = VA_CHROMA_SITING_UNKNOWN;
+ 
+         /* to process input parameters of sub stream:
+          * crop info and original size*/

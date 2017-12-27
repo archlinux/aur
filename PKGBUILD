@@ -1,96 +1,128 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# NOTE:
-# This package provides only the files for Intel Media SDK.
-# The proper installation requires a specific (older) Linux kernel version,
-# kernel patches and other system modifications. For the sake of the system
-# this package will not touch the kernel or system libraries.  Only the SDK
-# files will be provided in '/opt'.
+_commit='934c36b9d0f01af04de23c35d63b5916ee7b3102'
 
-_year=2017
-_release=R3
-_sdkver=16.5.2
+_srcname=MediaSDK
 pkgname=intel-media-sdk
-pkgver="${_year}.${_release}"
-pkgrel=2
-pkgdesc='Intel Media SDK (only SDK files, no kernel patches, no system modifications)'
-arch=('x86_64')
-url='https://software.intel.com/en-us/intel-media-server-studio/'
-license=('custom')
-makedepends=('poppler')
-options=('!strip' 'staticlibs')
-source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/11800/MediaServerStudioEssentials${_year}${_release}.tar.gz")
-sha256sums=('3037eabad6621c43e1b4ba3e85a06fafd7d494924e0c3b94fbaf3bc675852960')
+pkgver=1.2a
+pkgrel=1
+pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
+arch=('i686' 'x86_64')
+url='https://github.com/Intel-Media-SDK/MediaSDK/'
+license=('MIT')
+depends=(
+    # AUR:
+        'libva-git' 'intel-media-driver-git'
+)
+makedepends=(
+    # official repositories:
+        'perl' 'cmake'
+    # AUR:
+        'gcc5'
+)
+provides=('libmfx')
+conflicts=('intel-media-sdk-git' 'libmfx' 'libmfx-git')
+options=('!emptydirs')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/archive/${pkgver}.tar.gz"
+        'intel-media-sdk-gcc5-fix.patch'
+        'intel-media-sdk-change-gcc-version.patch'
+        'intel-media-sdk-detect-intel-opencl.patch'
+        'intel-media-sdk-add-runtime-libraries.patch'
+        'intel-media-sdk-support-libva-v2.0-branch-next.patch'::"https://github.com/Intel-Media-SDK/MediaSDK/commit/${_commit}.patch"
+        'intel-media-sdk-compatibility-with-upstream-libva.patch')
+sha256sums=('04b11524c9e25dba95524bdcb07bd02b6833277c03ab7c3b83acfec9f83ce8d5'
+            'e8687d509fcdefe0b9d01f12c7437425aa12791795046506fb13483dcca924ab'
+            '1e87af43f125b37b1ed12f5fd9f87a0260fe05204d12ac29567eeb389284de31'
+            '689ebc270532c0e1e5132d39898ff2a93fe3483a5a2673aea396a24fc07ad24c'
+            'a4e02e01fbb289503be58006a3ddfdf4a1e4a1e127bcb64c5b539b94c53700cf'
+            '9899560bf50d999e830786d874ebb36d2b1c4a85c6dc978fa8716876873fdeb6'
+            '7e565f73d7d998d2f580ffa1e9159c4285fe5826a8c446812fdb5ebe9393780f')
 
 prepare() {
-    cd "MediaServerStudioEssentials${_year}${_release}"
-    bsdtar -xf "SDK${_year}Production${_sdkver}.tar.gz"
+    cd "${_srcname}-${pkgver}"
     
-    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic"
-    bsdtar -xf intel-linux-media_generic_"$_sdkver"-*_64bit.tar.gz
-    bsdtar -xf intel-opencl-cpu-*.x86_64.tar.xz
-    bsdtar -xf intel-opencl-devel-*.x86_64.tar.xz
-    bsdtar -xf intel-opencl-r*.x86_64.tar.xz
+    # support upstream libva from 01org (currently needs libva-git)
+    patch -Np1 -i "${srcdir}/intel-media-sdk-support-libva-v2.0-branch-next.patch"
+    patch -Np1 -i "${srcdir}/intel-media-sdk-compatibility-with-upstream-libva.patch"
+    
+    # build fixes
+    patch -Np1 -i "${srcdir}/intel-media-sdk-gcc5-fix.patch"
+    patch -Np1 -i "${srcdir}/intel-media-sdk-change-gcc-version.patch"
+    patch -Np1 -i "${srcdir}/intel-media-sdk-detect-intel-opencl.patch"
+    patch -Np1 -i "${srcdir}/intel-media-sdk-add-runtime-libraries.patch"
+}
+
+build() {
+    cd "${_srcname}-${pkgver}"
+    
+    export MFX_HOME="$(pwd)"
+    
+    export CFLAGS="$(  printf '%s' "$CFLAGS"   | sed 's/-fno-plt//')"
+    export CXXFLAGS="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')"
+    
+    perl tools/builder/build_mfx.pl \
+                            --cmake='intel64.make.release' \
+                            --prefix='/usr' \
+    
+    make -C __cmake/intel64.make.release
 }
 
 package() {
-    mkdir -p "$pkgdir"/etc/OpenCL
-    mkdir -p "$pkgdir"/opt/intel/mediasdk/{doc,include/mfx,lib/lin_x64,lib64,plugins,tools}
-    mkdir -p "$pkgdir"/usr/{include,lib}/"$pkgname"
+    cd "${_srcname}-${pkgver}"
     
-    # copy SDK files
-    cd "MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic/opt/intel/mediasdk"
-    install -D -m644 doc/*               "${pkgdir}/opt/intel/mediasdk/doc"
-    install -D -m644 include/*           "${pkgdir}/opt/intel/mediasdk/include/mfx"
-    install -D -m777 lib/lin_x64/*       "${pkgdir}/opt/intel/mediasdk/lib/lin_x64"
-    install -D -m777 lib64/*             "${pkgdir}/opt/intel/mediasdk/lib64"
-    install -D -m777 plugins/*.so        "${pkgdir}/opt/intel/mediasdk/plugins"
-    install -D -m644 plugins/plugins.cfg "${pkgdir}/opt/intel/mediasdk/plugins/plugins.cfg"
-    cp -af           tools/*             "${pkgdir}/opt/intel/mediasdk/tools"
+    make \
+        -C __cmake/intel64.make.release \
+        DESTDIR="$pkgdir" \
+        install
     
-    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic/opt/intel/common"
-    install -D -m777 mdf/lib64/*         "${pkgdir}/opt/intel/mediasdk/lib64"
+    [ "$CARCH" = 'x86_64' ] && _arch='x64' && _libarch='64'
+    [ "$CARCH" = 'i686'   ] && _arch='x86' && _libarch='32'
     
-    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic/usr"
-    cp -af include/* "${pkgdir}/usr/include/${pkgname}"
-    cp -af lib64/*   "${pkgdir}/usr/lib/${pkgname}"
+    mkdir -p "${pkgdir}/usr/"{include/mfx,lib/pkgconfig,share/"$pkgname"}
     
-    cd "${pkgdir}/opt/intel/mediasdk/include/mfx"
-    for _file in *
+    # remove unneeded directory '/usb/lib64' (or '/usr/lib32')
+    mv -f  "${pkgdir}/usr/lib${_libarch}"/* "${pkgdir}/usr/lib"
+    rm -rf "${pkgdir}/usr/lib${_libarch}"
+    
+    # move samples to a better place
+    mv -f "${pkgdir}/usr/samples" "${pkgdir}/usr/share/${pkgname}"
+    
+    # bellow are fixes for building ffmpeg
+    # (use symlinks to preserve compatibility with binary-only Intel products)
+    
+    # includes
+    cd "${pkgdir}/usr/include"
+    for _header in *.h
     do
-        cd ..
-        ln -sf "mfx/${_file}" "$_file"
         cd mfx
+        ln -sf ../"$_header" "$_header"
+        cd ..
     done
     
-    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic/opt/intel"
-    cp -af opencl "${pkgdir}/opt/intel"
-    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic/etc/OpenCL"
-    cp -af vendors "${pkgdir}/etc/OpenCL"
+    # libraries
+    cd "${pkgdir}/usr/lib/lin_${_arch}"
+    for _lib in *.a
+    do
+        cd ..
+        ln -sf "lin_${_arch}/$_lib" "$_lib"
+        cd "lin_${_arch}"
+    done
     
-    # copy license files
-    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}"
-    pdftotext -layout 'Intel(R)_Media_Server_Studio_EULA.pdf'
-    install -D -m644  'Intel(R)_Media_Server_Studio_EULA.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644  'redist.txt'                            "${pkgdir}/usr/share/licenses/${pkgname}/redist.txt"
-    mv "${pkgdir}/opt/intel/opencl/LICENSE"                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-opencl"
-    mv "${pkgdir}/opt/intel/opencl/NOTICES"                   "${pkgdir}/usr/share/licenses/${pkgname}/NOTICES-opencl"
+    # pkgconfig files
+    cd "${pkgdir}/usr/lib/lin_${_arch}/pkgconfig"
+    ln -sf mfx.pc libmfx.pc
+    cd "${pkgdir}/usr/lib/pkgconfig"
+    ln -sf ../"lin_${_arch}/pkgconfig/mfx.pc"       mfx.pc
+    ln -sf ../"lin_${_arch}/pkgconfig/libmfx.pc" libmfx.pc
     
-    # create a pkgconfig file for libmfx
-    local _mfxver_major="$(grep '#define MFX_VERSION_MAJOR' "${pkgdir}/opt/intel/mediasdk/include/mfx/mfxvideo.h" | awk '{ print $3 }')"
-    local _mfxver_minor="$(grep '#define MFX_VERSION_MINOR' "${pkgdir}/opt/intel/mediasdk/include/mfx/mfxvideo.h" | awk '{ print $3 }')"
-    local _mfxver="${_mfxver_major}.${_mfxver_minor}"
-    mkdir -p  "${pkgdir}/opt/intel/mediasdk/lib/pkgconfig"
-    touch     "${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    chmod 644 "${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    printf '%s\n' 'prefix=/opt/intel/mediasdk'                                >>"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    printf '%s\n' 'exec_prefix=${prefix}'                                     >>"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    printf '%s\n' 'libdir=${prefix}/lib/lin_x64'                              >>"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    printf '%s\n' 'includedir=${prefix}/include'                              >>"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    printf '%s\n'                                                             >>"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    printf '%s\n' 'Name: libmfx'                                              >>"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    printf '%s\n' 'Description: Intel Media SDK dispatcher library'           >>"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    printf '%s\n' "Version: ${_mfxver}"                                       >>"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    printf '%s\n' 'Libs: -L${libdir} -lmfx -lva -lstdc++ -ldl -lva-drm -ldrm' >>"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
-    printf '%s\n' 'Cflags: -I${includedir} -I/usr/include/libdrm'             >>"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
+    # plugins
+    cd "${pkgdir}/usr/plugins"
+    for _plugin in *
+    do
+        ln -sf ../plugins/"$_plugin" ../lib/"$_plugin"
+    done
+    
+    # license
+    cd "${srcdir}/${_srcname}-${pkgver}"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
