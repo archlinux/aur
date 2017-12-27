@@ -1,0 +1,15 @@
+pkgbase = vim-completor-git
+	pkgdesc = Asynchronous code completion framework for vim8
+	pkgver = r227.6e4fba0
+	pkgrel = 1
+	url = https://github.com/maralla/completor.vim
+	install = vimdoc.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim-runtime
+	source = vim-completor-git::git+https://github.com/maralla/completor.vim.git#branch=master
+	md5sums = SKIP
+
+pkgname = vim-completor-git
+
