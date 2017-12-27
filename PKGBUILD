@@ -2,7 +2,7 @@
 
 pkgname=novprog
 pkgver=3.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to graph your progress in writing a NaNoWriMo style novel"
 arch=('i686' 'x86_64')
 url="https://gottcode.org/novprog/"
@@ -19,11 +19,11 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  qmake PREFIX="${pkgdir}/usr"
+  qmake PREFIX=/usr
   make
 }
 
 package() {
   cd $pkgname-$pkgver
-  make install
+  make INSTALL_ROOT="$pkgdir/" install
 }
