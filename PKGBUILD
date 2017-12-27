@@ -2,7 +2,7 @@
 
 _pkgname=trizen
 pkgname=trizen-git
-pkgver=1.35
+pkgver=1.35.8.gf85b003
 pkgrel=1
 pkgdesc="Trizen AUR Package Manager: A lightweight wrapper for AUR (-git version)."
 arch=('any')
@@ -41,4 +41,5 @@ pkgver() {
 package() {
   cd "$_pkgname"
   install -m 755 -D "$_pkgname" "$pkgdir/usr/bin/${_pkgname}"
+  install -m 644 -D "zsh.completion" "$pkgdir/usr/share/zsh/site-functions/_trizen"
 }
