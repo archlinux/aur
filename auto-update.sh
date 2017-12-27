@@ -3,6 +3,7 @@
 if [[ $# -ne 1 ]]
 then
   echo "Usage: './auto-update.sh <version>"
+  echo "For example: './auto-update.sh 8.0.1415"
   exit 0
 fi
 
