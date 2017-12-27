@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-driver-git
-pkgver=r18.0b7e123
-pkgrel=3
+pkgver=r19.035568f.gmmlib.r7.0154744
+pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/media-driver/'
@@ -25,7 +25,14 @@ pkgver() {
     cd "$pkgname"
     
     # git, no tags available
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    _driver_ver="$(printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
+    
+    cd "${srcdir}/gmmlib-git"
+    
+    # git, no tags available
+    _gmmlib_ver="$(printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
+    
+    printf '%s.gmmlib.%s' "$_driver_ver" "$_gmmlib_ver"
 }
 
 build() {
