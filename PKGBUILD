@@ -1,7 +1,7 @@
 # Maintainer: Dan Johansen <strit83 at gmail dot com>
 
 pkgname=arena-tracker
-pkgver=6.01
+pkgver=6.12
 pkgrel=1
 pkgdesc="Tracks your Hearthstone Arena matches and cards. Free version."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -25,6 +25,6 @@ package() {
 	ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
-md5sums=('8c05e46f5e9a01fee00207a85dfc8cd7'
+md5sums=('84125442f77fac38bad092b4c0684fe9'
 	'926afbd5024076726f89aa5eb8937a31'
 	'c81a05fdc3b96092fb363f841267e21f')
