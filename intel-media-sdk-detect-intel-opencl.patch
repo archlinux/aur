@@ -1,0 +1,57 @@
+From f16a0707bf8db4d9078af3b1f0f50f9d64532911 Mon Sep 17 00:00:00 2001
+From: Ruiling Song <ruiling.song@intel.com>
+Date: Tue, 5 Dec 2017 14:31:00 +0800
+Subject: [PATCH] Detect Intel OpenCL SDK exactly.
+
+the rotate_opencl sample tries to access "CL/va_ext.h".
+which is Intel OpenCL SDK specific extension.
+So let's try to only build the sample if user has installed
+Intel OpenCL SDK.
+
+v2:
+slight update the cmake to move make_library under INTEL_OPENCL_SDK.
+
+Signed-off-by: Ruiling Song <ruiling.song@intel.com>
+---
+ builder/FindOpenCL.cmake                            | 8 ++++++++
+ samples/sample_plugins/rotate_opencl/CMakeLists.txt | 6 +++---
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/builder/FindOpenCL.cmake b/builder/FindOpenCL.cmake
+index f763155..7fcd552 100644
+--- a/builder/FindOpenCL.cmake
++++ b/builder/FindOpenCL.cmake
+@@ -23,6 +23,14 @@ find_library( OPENCL_LIBRARY libOpenCL.so PATHS /usr/lib /opt/intel/opencl/)
+ 
+ set( OCL_LIBS "" )
+ 
++if ( EXISTS /etc/OpenCL/vendors/intel.icd )
++  message( STATUS "Intel OpenCL SDK found")
++  set ( INTEL_OPENCL_SDK TRUE )
++else ()
++  message( STATUS "Intel OpenCL SDK not found")
++  set ( INTEL_OPENCL_SDK FALSE )
++endif()
++
+ if ( NOT OPENCL_INCLUDE MATCHES NOTFOUND )
+     if ( NOT OPENCL_LIBRARY MATCHES NOTFOUND )
+         set ( OPENCL_FOUND TRUE )
+diff --git a/samples/sample_plugins/rotate_opencl/CMakeLists.txt b/samples/sample_plugins/rotate_opencl/CMakeLists.txt
+index d06400c..1818c87 100644
+--- a/samples/sample_plugins/rotate_opencl/CMakeLists.txt
++++ b/samples/sample_plugins/rotate_opencl/CMakeLists.txt
+@@ -17,11 +17,11 @@ list( APPEND LIBS_VARIANT sample_common )
+ list(APPEND sources.plus "${PLUGINS_COMMON_PATH}/mfx_plugin_module.cpp")
+ 
+ set(DEPENDENCIES opencl libva libmfx dl)
+-make_library( sample_plugin_opencl none shared "nosafestring" )
+ 
+-install( TARGETS ${target} LIBRARY DESTINATION ${MFX_SAMPLES_INSTALL_LIB_DIR} )
++if ( INTEL_OPENCL_SDK )
++    make_library( sample_plugin_opencl none shared "nosafestring" )
+ 
+-if ( DEFINED OPENCL_FOUND )
++    install( TARGETS ${target} LIBRARY DESTINATION ${MFX_SAMPLES_INSTALL_LIB_DIR} )
+     # copy .cl file into build directory
+     execute_process( COMMAND ${CMAKE_COMMAND} -E copy
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/ocl_rotate.cl"

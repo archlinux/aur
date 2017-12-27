@@ -1,0 +1,24 @@
+From d82d3760800881b62e7d8614cf477d4e3f35896c Mon Sep 17 00:00:00 2001
+From: Ruiling Song <ruiling.song@intel.com>
+Date: Thu, 7 Dec 2017 10:48:40 +0800
+Subject: [PATCH] Add runtime library that we depend on.
+
+so that MediaSDK users like FFmpeg can easily use pkg_config
+to detect MediaSDK and link against mfx correctly.
+
+Signed-off-by: Ruiling Song <ruiling.song@intel.com>
+---
+ api/opensource/mfx_dispatch/pkg-config.pc.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/api/opensource/mfx_dispatch/pkg-config.pc.cmake b/api/opensource/mfx_dispatch/pkg-config.pc.cmake
+index 73e2e9d..7996228 100644
+--- a/api/opensource/mfx_dispatch/pkg-config.pc.cmake
++++ b/api/opensource/mfx_dispatch/pkg-config.pc.cmake
+@@ -5,5 +5,5 @@ Version: @MFX_VERSION_MAJOR@.@MFX_VERSION_MINOR@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ libdir=@CMAKE_INSTALL_PREFIX@/@INSTALL_LIB_PATH@
+ includedir=@CMAKE_INSTALL_PREFIX@/include
+-Libs: -L${libdir} -lmfx
++Libs: -L${libdir} -lmfx -lstdc++ -ldl
+ Cflags: -I${includedir}

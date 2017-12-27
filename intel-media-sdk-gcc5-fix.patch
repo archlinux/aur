@@ -1,0 +1,1132 @@
+From 2d8fe1c38b3ca3f46afdf55d31b48af292194aff Mon Sep 17 00:00:00 2001
+From: Ruiling Song <ruiling.song@intel.com>
+Date: Tue, 5 Dec 2017 14:35:59 +0800
+Subject: [PATCH] Fix build against gcc 5.4 (ubuntu 16.04).
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+mainly fix below compile errors:
+- auto_ptr is deprecated.
+- invalid suffix on literal; C++11 requires a space between literal and
+  string macro [-Werror=literal-suffix]
+- call of overloaded ‘unique_ptr(int)’ is ambiguous
+
+Signed-off-by: Ruiling Song <ruiling.song@intel.com>
+---
+ _studio/hevce_hw/h265/include/mfx_h265_encode_hw.h |  2 +-
+ .../hevce_hw/h265/src/mfx_h265_encode_hw_ddi.cpp   |  2 +-
+ .../decode/h265/include/mfx_h265_dec_decode.h      |  4 +--
+ .../decode/mpeg2/include/mfx_mpeg2_decode.h        |  4 +--
+ .../mfx_lib/decode/vc1/include/mfx_vc1_decode.h    |  4 +--
+ _studio/mfx_lib/decode/vc1/src/mfx_vc1_decode.cpp  |  2 +-
+ .../decode/vp8/include/mfx_vp8_dec_decode_hw.h     |  2 +-
+ .../encode_hw/mjpeg/include/mfx_mjpeg_encode_hw.h  |  2 +-
+ .../mjpeg/src/mfx_mjpeg_encode_hw_utils.cpp        |  2 +-
+ _studio/mfx_lib/fei/h264_la/mfx_h264_la.h          |  2 +-
+ _studio/mfx_lib/fei/h264_pak/mfx_h264_fei_pak.h    |  2 +-
+ _studio/mfx_lib/fei/h264_preenc/mfx_h264_preenc.h  |  2 +-
+ _studio/mfx_lib/plugin/include/mfx_h264la_plugin.h |  2 +-
+ .../mfx_lib/plugin/include/mfx_hevc_dec_plugin.h   |  2 +-
+ .../mfx_lib/plugin/include/mfx_hevc_enc_plugin.h   |  2 +-
+ .../mfx_lib/plugin/include/mfx_vp8_dec_plugin.h    |  2 +-
+ _studio/mfx_lib/plugin/include/mfx_vpp_plugin.h    |  2 +-
+ _studio/mfx_lib/shared/include/mfx_brc_common.h    |  2 +-
+ .../mfx_lib/shared/src/mfx_mpeg2_enc_common_hw.cpp |  2 +-
+ _studio/mfx_lib/vpp/include/mfx_vpp_hw.h           |  2 +-
+ _studio/mfx_lib/vpp/include/mfx_vpp_sw.h           |  2 +-
+ _studio/shared/include/mfx_vpp_interface.h         |  4 +--
+ .../codec/h264_dec/include/umc_h264_au_splitter.h  |  2 +-
+ .../include/umc_h264_segment_decoder_dxva.h        |  2 +-
+ .../h264_dec/include/umc_h264_task_supplier.h      |  7 ++--
+ .../codec/h264_dec/src/umc_h264_task_supplier.cpp  | 14 ++++++++
+ .../jpeg_dec/include/umc_mjpeg_mfx_decode_base.h   |  2 +-
+ api/opensource/mfx_dispatch/CMakeLists.txt         |  2 +-
+ .../mfx_dispatch/include/mfx_dispatcher_log.h      |  2 +-
+ api/opensource/mfx_dispatch/src/main.cpp           | 18 +++++-----
+ .../mfx_dispatch/src/mfx_load_plugin.cpp           |  6 ++--
+ .../mfx_dispatch/src/mfx_plugin_hive_linux.cpp     |  4 +--
+ contrib/SafeStringStaticLibrary/CMakeLists.txt     |  2 +-
+ samples/sample_common/include/avc_spl.h            |  4 +--
+ samples/sample_common/include/base_allocator.h     |  2 +-
+ samples/sample_common/include/brc_routines.h       |  2 +-
+ samples/sample_common/include/general_allocator.h  |  4 +--
+ samples/sample_common/include/plugin_loader.h      |  6 ++--
+ samples/sample_common/include/sample_utils.h       |  4 +--
+ samples/sample_decode/include/pipeline_decode.h    |  6 ++--
+ samples/sample_decode/src/pipeline_decode.cpp      |  2 +-
+ samples/sample_encode/include/pipeline_encode.h    |  4 +--
+ samples/sample_encode/src/pipeline_encode.cpp      |  4 +--
+ samples/sample_encode/src/sample_encode.cpp        |  2 +-
+ samples/sample_fei/src/sample_fei.cpp              |  2 +-
+ .../include/pipeline_transcode.h                   | 38 +++++++++++-----------
+ .../include/sample_multi_transcode.h               |  4 +--
+ .../src/pipeline_transcode.cpp                     | 14 ++++----
+ .../src/sample_multi_transcode.cpp                 |  8 ++---
+ .../rotate_opencl/include/d3d_utils.h              |  2 +-
+ .../rotate_opencl/include/sample_opencl_plugin.h   |  4 +--
+ .../vpp_plugin/include/mfx_vpp_plugin.h            |  2 +-
+ samples/sample_vpp/include/sample_vpp_pts.h        |  2 +-
+ samples/sample_vpp/include/sample_vpp_utils.h      |  4 +--
+ samples/sample_vpp/src/sample_vpp.cpp              |  2 +-
+ samples/sample_vpp/src/sample_vpp_pts.cpp          |  4 +--
+ 56 files changed, 128 insertions(+), 111 deletions(-)
+
+diff --git a/_studio/hevce_hw/h265/include/mfx_h265_encode_hw.h b/_studio/hevce_hw/h265/include/mfx_h265_encode_hw.h
+index 1a1ddb8..c997b78 100644
+--- a/_studio/hevce_hw/h265/include/mfx_h265_encode_hw.h
++++ b/_studio/hevce_hw/h265/include/mfx_h265_encode_hw.h
+@@ -140,7 +140,7 @@ class Plugin : public MFXEncoderPlugin
+     mfxStatus FreeTask(Task& task);
+     mfxStatus WaitForQueringTask(Task& task);
+ 
+-    std::auto_ptr<DriverEncoder>    m_ddi;
++    std::unique_ptr<DriverEncoder>    m_ddi;
+     MFXCoreInterface                m_core;
+ 
+     MfxVideoParam                   m_vpar;
+diff --git a/_studio/hevce_hw/h265/src/mfx_h265_encode_hw_ddi.cpp b/_studio/hevce_hw/h265/src/mfx_h265_encode_hw_ddi.cpp
+index b864ed4..4774870 100644
+--- a/_studio/hevce_hw/h265/src/mfx_h265_encode_hw_ddi.cpp
++++ b/_studio/hevce_hw/h265/src/mfx_h265_encode_hw_ddi.cpp
+@@ -76,7 +76,7 @@ mfxStatus HardcodeCaps(ENCODE_CAPS_HEVC& caps, MFXCoreInterface* core)
+ 
+ mfxStatus QueryHwCaps(MFXCoreInterface* core, GUID guid, ENCODE_CAPS_HEVC & caps)
+ {
+-    std::auto_ptr<DriverEncoder> ddi;
++    std::unique_ptr<DriverEncoder> ddi;
+ 
+     ddi.reset(CreatePlatformH265Encoder(core));
+     MFX_CHECK(ddi.get(), MFX_ERR_UNSUPPORTED);
+diff --git a/_studio/mfx_lib/decode/h265/include/mfx_h265_dec_decode.h b/_studio/mfx_lib/decode/h265/include/mfx_h265_dec_decode.h
+index 5edfec7..4a1f620 100644
+--- a/_studio/mfx_lib/decode/h265/include/mfx_h265_dec_decode.h
++++ b/_studio/mfx_lib/decode/h265/include/mfx_h265_dec_decode.h
+@@ -126,10 +126,10 @@ class VideoDECODEH265 : public VideoDECODE
+     // Get original Surface corresponding to OpaqueSurface
+     mfxFrameSurface1 * GetOriginalSurface(mfxFrameSurface1 *surface);
+ 
+-    std::auto_ptr<MFXTaskSupplier_H265>  m_pH265VideoDecoder;
++    std::unique_ptr<MFXTaskSupplier_H265>  m_pH265VideoDecoder;
+     mfx_UMC_MemAllocator            m_MemoryAllocator;
+ 
+-    std::auto_ptr<mfx_UMC_FrameAllocator>    m_FrameAllocator;
++    std::unique_ptr<mfx_UMC_FrameAllocator>    m_FrameAllocator;
+ 
+     mfxVideoParamWrapper m_vInitPar;
+     mfxVideoParamWrapper m_vFirstPar;
+diff --git a/_studio/mfx_lib/decode/mpeg2/include/mfx_mpeg2_decode.h b/_studio/mfx_lib/decode/mpeg2/include/mfx_mpeg2_decode.h
+index e9156b8..20ab733 100644
+--- a/_studio/mfx_lib/decode/mpeg2/include/mfx_mpeg2_decode.h
++++ b/_studio/mfx_lib/decode/mpeg2/include/mfx_mpeg2_decode.h
+@@ -175,7 +175,7 @@ class VideoDECODEMPEG2InternalBase : public MfxCriticalErrorHandler
+     int32_t m_InitH;
+     int32_t m_InitPicStruct;
+ 
+-    std::auto_ptr<UMC::MPEG2VideoDecoderBase> m_implUmc;
++    std::unique_ptr<UMC::MPEG2VideoDecoderBase> m_implUmc;
+ 
+     bool m_isSWBuf;
+     bool m_isOpaqueMemory;
+@@ -301,7 +301,7 @@ class VideoDECODEMPEG2 : public VideoDECODE
+ {
+ 
+ public:
+-    std::auto_ptr<VideoDECODEMPEG2InternalBase> internalImpl;
++    std::unique_ptr<VideoDECODEMPEG2InternalBase> internalImpl;
+ 
+     static mfxStatus Query(VideoCORE *core, mfxVideoParam *in, mfxVideoParam *out);
+     static mfxStatus QueryIOSurf(VideoCORE *core, mfxVideoParam *par, mfxFrameAllocRequest *request);
+diff --git a/_studio/mfx_lib/decode/vc1/include/mfx_vc1_decode.h b/_studio/mfx_lib/decode/vc1/include/mfx_vc1_decode.h
+index 713a11b..e8fa166 100644
+--- a/_studio/mfx_lib/decode/vc1/include/mfx_vc1_decode.h
++++ b/_studio/mfx_lib/decode/vc1/include/mfx_vc1_decode.h
+@@ -173,8 +173,8 @@ class MFXVideoDECODEVC1 : public VideoDECODE, public MfxCriticalErrorHandler
+ 
+     mfx_UMC_MemAllocator       m_MemoryAllocator;
+     // TBD
+-    std::auto_ptr<mfx_UMC_FrameAllocator>    m_pFrameAlloc;
+-    std::auto_ptr<UMC::VC1VideoDecoder>      m_pVC1VideoDecoder;
++    std::unique_ptr<mfx_UMC_FrameAllocator>    m_pFrameAlloc;
++    std::unique_ptr<UMC::VC1VideoDecoder>      m_pVC1VideoDecoder;
+ 
+     UMC::vc1_frame_constructor*     m_frame_constructor;
+     uint8_t*                          m_pReadBuffer;
+diff --git a/_studio/mfx_lib/decode/vc1/src/mfx_vc1_decode.cpp b/_studio/mfx_lib/decode/vc1/src/mfx_vc1_decode.cpp
+index 83319b9..5e75263 100644
+--- a/_studio/mfx_lib/decode/vc1/src/mfx_vc1_decode.cpp
++++ b/_studio/mfx_lib/decode/vc1/src/mfx_vc1_decode.cpp
+@@ -79,7 +79,7 @@ void MFXVideoDECODEVC1::FillVideoSignalInfo(mfxExtVideoSignalInfo *pVideoSignal)
+ MFXVideoDECODEVC1::MFXVideoDECODEVC1(VideoCORE *core, mfxStatus* mfxSts):VideoDECODE(),
+ m_VideoParams(NULL),
+ m_pInternMediaDataIn(NULL),
+-m_pVC1VideoDecoder(NULL),
++m_pVC1VideoDecoder(nullptr),
+ m_frame_constructor(NULL),
+ m_RBufID((UMC::MemID)-1),
+ m_BufSize(1024*1024),
+diff --git a/_studio/mfx_lib/decode/vp8/include/mfx_vp8_dec_decode_hw.h b/_studio/mfx_lib/decode/vp8/include/mfx_vp8_dec_decode_hw.h
+index 33a1949..e09a401 100644
+--- a/_studio/mfx_lib/decode/vp8/include/mfx_vp8_dec_decode_hw.h
++++ b/_studio/mfx_lib/decode/vp8/include/mfx_vp8_dec_decode_hw.h
+@@ -268,7 +268,7 @@ class VideoDECODEVP8_HW : public VideoDECODE, public MfxCriticalErrorHandler
+     mfxDecodeStat           m_stat;
+     mfxFrameAllocRequest    m_request;
+ 
+-    std::auto_ptr<mfx_UMC_FrameAllocator> m_p_frame_allocator;
++    std::unique_ptr<mfx_UMC_FrameAllocator> m_p_frame_allocator;
+     UMC::VideoAccelerator *m_p_video_accelerator;
+ 
+ };
+diff --git a/_studio/mfx_lib/encode_hw/mjpeg/include/mfx_mjpeg_encode_hw.h b/_studio/mfx_lib/encode_hw/mjpeg/include/mfx_mjpeg_encode_hw.h
+index 1f91d49..5c4c90e 100644
+--- a/_studio/mfx_lib/encode_hw/mjpeg/include/mfx_mjpeg_encode_hw.h
++++ b/_studio/mfx_lib/encode_hw/mjpeg/include/mfx_mjpeg_encode_hw.h
+@@ -129,7 +129,7 @@ class MFXVideoENCODEMJPEG_HW : public VideoENCODE {
+     VideoCORE*          m_pCore;
+     mfxVideoParam       m_vFirstParam;
+     mfxVideoParam       m_vParam;
+-    std::auto_ptr<DriverEncoder> m_ddi;
++    std::unique_ptr<DriverEncoder> m_ddi;
+ 
+     bool                m_bInitialized;
+     bool                m_deviceFailed;
+diff --git a/_studio/mfx_lib/encode_hw/mjpeg/src/mfx_mjpeg_encode_hw_utils.cpp b/_studio/mfx_lib/encode_hw/mjpeg/src/mfx_mjpeg_encode_hw_utils.cpp
+index 6fb137d..af140df 100644
+--- a/_studio/mfx_lib/encode_hw/mjpeg/src/mfx_mjpeg_encode_hw_utils.cpp
++++ b/_studio/mfx_lib/encode_hw/mjpeg/src/mfx_mjpeg_encode_hw_utils.cpp
+@@ -43,7 +43,7 @@ mfxStatus MfxHwMJpegEncode::QueryHwCaps(VideoCORE * core, JpegEncCaps & hwCaps)
+     if (core && core->GetVAType() == MFX_HW_VAAPI && core->GetHWType() < MFX_HW_CHT)
+         return MFX_ERR_UNSUPPORTED;
+ 
+-    std::auto_ptr<DriverEncoder> ddi;
++    std::unique_ptr<DriverEncoder> ddi;
+     ddi.reset( CreatePlatformMJpegEncoder(core) );
+     if (ddi.get() == 0)
+         return MFX_ERR_NULL_PTR;
+diff --git a/_studio/mfx_lib/fei/h264_la/mfx_h264_la.h b/_studio/mfx_lib/fei/h264_la/mfx_h264_la.h
+index b97d5fc..ca3bfa6 100644
+--- a/_studio/mfx_lib/fei/h264_la/mfx_h264_la.h
++++ b/_studio/mfx_lib/fei/h264_la/mfx_h264_la.h
+@@ -299,7 +299,7 @@ class VideoENC_LA:  public VideoENC_Ext
+ private:
+ 
+     MfxHwH264Encode::CmDevicePtr                    m_cmDevice;
+-    std::auto_ptr<MfxEncLA::CmContextLA>            m_cmCtx;
++    std::unique_ptr<MfxEncLA::CmContextLA>            m_cmCtx;
+     MfxHwH264Encode::MfxVideoParam                  m_video;
+     std::vector<MfxHwH264Encode::VmeData>           m_vmeDataStorage;
+         
+diff --git a/_studio/mfx_lib/fei/h264_pak/mfx_h264_fei_pak.h b/_studio/mfx_lib/fei/h264_pak/mfx_h264_fei_pak.h
+index 3e93c31..5378fd1 100644
+--- a/_studio/mfx_lib/fei/h264_pak/mfx_h264_fei_pak.h
++++ b/_studio/mfx_lib/fei/h264_pak/mfx_h264_fei_pak.h
+@@ -89,7 +89,7 @@ class VideoPAK_PAK:  public VideoPAK_Ext
+     VideoCORE*                                    m_core;
+ 
+ 
+-    std::auto_ptr<MfxHwH264Encode::DriverEncoder> m_ddi;
++    std::unique_ptr<MfxHwH264Encode::DriverEncoder> m_ddi;
+     std::vector<mfxU32>                           m_recFrameOrder; // !!! HACK !!!
+     ENCODE_CAPS                                   m_caps;
+ 
+diff --git a/_studio/mfx_lib/fei/h264_preenc/mfx_h264_preenc.h b/_studio/mfx_lib/fei/h264_preenc/mfx_h264_preenc.h
+index a168da3..be7f175 100644
+--- a/_studio/mfx_lib/fei/h264_preenc/mfx_h264_preenc.h
++++ b/_studio/mfx_lib/fei/h264_preenc/mfx_h264_preenc.h
+@@ -72,7 +72,7 @@ class VideoENC_PREENC:  public VideoENC_Ext
+ 
+     std::list <mfxFrameSurface1*>                 m_SurfacesForOutput;
+ 
+-    std::auto_ptr<MfxHwH264Encode::DriverEncoder> m_ddi;
++    std::unique_ptr<MfxHwH264Encode::DriverEncoder> m_ddi;
+     ENCODE_CAPS                                   m_caps;
+ 
+     MfxHwH264Encode::MfxVideoParam                m_video;
+diff --git a/_studio/mfx_lib/plugin/include/mfx_h264la_plugin.h b/_studio/mfx_lib/plugin/include/mfx_h264la_plugin.h
+index a5fb4ec..272c1ce 100644
+--- a/_studio/mfx_lib/plugin/include/mfx_h264la_plugin.h
++++ b/_studio/mfx_lib/plugin/include/mfx_h264la_plugin.h
+@@ -122,7 +122,7 @@ class MFXH264LAPlugin : public MFXEncPlugin
+     mfxSession          m_session;
+     mfxPluginParam      m_PluginParam;
+     bool                m_createdByDispatcher;
+-    std::auto_ptr<MFXPluginAdapter<MFXEncPlugin> > m_adapter;
++    std::unique_ptr<MFXPluginAdapter<MFXEncPlugin> > m_adapter;
+ };
+ #endif //#if defined( AS_H264LA_PLUGIN )
+ 
+diff --git a/_studio/mfx_lib/plugin/include/mfx_hevc_dec_plugin.h b/_studio/mfx_lib/plugin/include/mfx_hevc_dec_plugin.h
+index 69be43f..d728547 100644
+--- a/_studio/mfx_lib/plugin/include/mfx_hevc_dec_plugin.h
++++ b/_studio/mfx_lib/plugin/include/mfx_hevc_dec_plugin.h
+@@ -139,7 +139,7 @@ class MFXHEVCDecoderPlugin : public MFXDecoderPlugin
+     mfxSession          m_session;
+     mfxPluginParam      m_PluginParam;
+     bool                m_createdByDispatcher;
+-    std::auto_ptr<MFXPluginAdapter<MFXDecoderPlugin> > m_adapter;
++    std::unique_ptr<MFXPluginAdapter<MFXDecoderPlugin> > m_adapter;
+ };
+ #endif //#if defined( AS_HEVCD_PLUGIN )
+ 
+diff --git a/_studio/mfx_lib/plugin/include/mfx_hevc_enc_plugin.h b/_studio/mfx_lib/plugin/include/mfx_hevc_enc_plugin.h
+index f9963e8..1cf0869 100644
+--- a/_studio/mfx_lib/plugin/include/mfx_hevc_enc_plugin.h
++++ b/_studio/mfx_lib/plugin/include/mfx_hevc_enc_plugin.h
+@@ -154,7 +154,7 @@ class MFXHEVCEncoderPlugin : public MFXEncoderPlugin
+ 
+     mfxPluginParam      m_PluginParam;
+     bool                m_createdByDispatcher;
+-    std::auto_ptr<MFXPluginAdapter<MFXEncoderPlugin> > m_adapter;
++    std::unique_ptr<MFXPluginAdapter<MFXEncoderPlugin> > m_adapter;
+ };
+ #endif //#if defined( AS_HEVCE_PLUGIN )
+ 
+diff --git a/_studio/mfx_lib/plugin/include/mfx_vp8_dec_plugin.h b/_studio/mfx_lib/plugin/include/mfx_vp8_dec_plugin.h
+index ec8b888..c53d8a1 100644
+--- a/_studio/mfx_lib/plugin/include/mfx_vp8_dec_plugin.h
++++ b/_studio/mfx_lib/plugin/include/mfx_vp8_dec_plugin.h
+@@ -140,7 +140,7 @@ class MFXVP8DecoderPlugin : public MFXDecoderPlugin
+     mfxSession          m_session;
+     mfxPluginParam      m_PluginParam;
+     bool                m_createdByDispatcher;
+-    std::auto_ptr<MFXPluginAdapter<MFXDecoderPlugin> > m_adapter;
++    std::unique_ptr<MFXPluginAdapter<MFXDecoderPlugin> > m_adapter;
+ };
+ #endif //#if defined( AS_VP8D_PLUGIN )
+ 
+diff --git a/_studio/mfx_lib/plugin/include/mfx_vpp_plugin.h b/_studio/mfx_lib/plugin/include/mfx_vpp_plugin.h
+index 36b50a3..c49082f 100644
+--- a/_studio/mfx_lib/plugin/include/mfx_vpp_plugin.h
++++ b/_studio/mfx_lib/plugin/include/mfx_vpp_plugin.h
+@@ -124,7 +124,7 @@ class MFXVPP_Plugin : public MFXVPPPlugin
+     mfxSession          m_session;
+     mfxPluginParam      m_PluginParam;
+     bool                m_createdByDispatcher;
+-    std::auto_ptr<MFXPluginAdapter<MFXVPPPlugin> > m_adapter;
++    std::unique_ptr<MFXPluginAdapter<MFXVPPPlugin> > m_adapter;
+ };
+ #endif //#if defined( AS_VPP_PLUGIN )
+ 
+diff --git a/_studio/mfx_lib/shared/include/mfx_brc_common.h b/_studio/mfx_lib/shared/include/mfx_brc_common.h
+index e17934b..87a5c55 100644
+--- a/_studio/mfx_lib/shared/include/mfx_brc_common.h
++++ b/_studio/mfx_lib/shared/include/mfx_brc_common.h
+@@ -324,7 +324,7 @@ class ExtBRC
+     cHRD       m_hrd;
+     bool       m_bInit;
+     BRC_Ctx    m_ctx;
+-    std::auto_ptr<AVGBitrate> m_avg;
++    std::unique_ptr<AVGBitrate> m_avg;
+ 
+ public:
+     ExtBRC():
+diff --git a/_studio/mfx_lib/shared/src/mfx_mpeg2_enc_common_hw.cpp b/_studio/mfx_lib/shared/src/mfx_mpeg2_enc_common_hw.cpp
+index a81d124..0e1f164 100644
+--- a/_studio/mfx_lib/shared/src/mfx_mpeg2_enc_common_hw.cpp
++++ b/_studio/mfx_lib/shared/src/mfx_mpeg2_enc_common_hw.cpp
+@@ -58,7 +58,7 @@ mfxStatus MfxHwMpeg2Encode::QueryHwCaps(VideoCORE* pCore, ENCODE_CAPS & hwCaps)
+             return MFX_ERR_NONE;
+     }
+ 
+-    std::auto_ptr<DriverEncoder> ddi;
++    std::unique_ptr<DriverEncoder> ddi;
+ 
+     ddi.reset( CreatePlatformMpeg2Encoder(pCore) );
+     if(ddi.get() == NULL)
+diff --git a/_studio/mfx_lib/vpp/include/mfx_vpp_hw.h b/_studio/mfx_lib/vpp/include/mfx_vpp_hw.h
+index 3fee17c..05860c8 100644
+--- a/_studio/mfx_lib/vpp/include/mfx_vpp_hw.h
++++ b/_studio/mfx_lib/vpp/include/mfx_vpp_hw.h
+@@ -834,7 +834,7 @@ namespace MfxHwVideoProcessing
+         mfxU32        m_frame_num;
+         mfxStatus     m_critical_error;
+ 
+-        // Not an auto_ptr anymore since core owns create/delete semantic now.
++        // Not an unique_ptr anymore since core owns create/delete semantic now.
+         VPPHWResMng * m_ddi;
+         bool          m_bMultiView;
+ 
+diff --git a/_studio/mfx_lib/vpp/include/mfx_vpp_sw.h b/_studio/mfx_lib/vpp/include/mfx_vpp_sw.h
+index 1909cd7..6ae4d23 100644
+--- a/_studio/mfx_lib/vpp/include/mfx_vpp_sw.h
++++ b/_studio/mfx_lib/vpp/include/mfx_vpp_sw.h
+@@ -119,7 +119,7 @@ class VideoVPPBase
+   //
+   // HW VPP Support
+   //
+-  std::auto_ptr<MfxHwVideoProcessing::VideoVPPHW>     m_pHWVPP;
++  std::unique_ptr<MfxHwVideoProcessing::VideoVPPHW>     m_pHWVPP;
+ };
+ 
+ class VideoVPP_HW : public VideoVPPBase
+diff --git a/_studio/shared/include/mfx_vpp_interface.h b/_studio/shared/include/mfx_vpp_interface.h
+index 97312e5..e93b734 100755
+--- a/_studio/shared/include/mfx_vpp_interface.h
++++ b/_studio/shared/include/mfx_vpp_interface.h
+@@ -393,7 +393,7 @@ namespace MfxHwVideoProcessing
+ class VPPHWResMng
+ {
+ public:
+-    VPPHWResMng(): m_ddi(0), m_caps() {};
++    VPPHWResMng(): m_ddi(nullptr), m_caps() {};
+ 
+     ~VPPHWResMng() { Close(); };
+ 
+@@ -433,7 +433,7 @@ class VPPHWResMng
+     VPPHWResMng(const VPPHWResMng &);
+     VPPHWResMng &operator=(const VPPHWResMng &);
+ 
+-    std::auto_ptr<MfxHwVideoProcessing::DriverVideoProcessing> m_ddi;
++    std::unique_ptr<MfxHwVideoProcessing::DriverVideoProcessing> m_ddi;
+     MfxHwVideoProcessing::mfxVppCaps                           m_caps;
+ };
+ 
+diff --git a/_studio/shared/umc/codec/h264_dec/include/umc_h264_au_splitter.h b/_studio/shared/umc/codec/h264_dec/include/umc_h264_au_splitter.h
+index 2c1f117..0915cd5 100644
+--- a/_studio/shared/umc/codec/h264_dec/include/umc_h264_au_splitter.h
++++ b/_studio/shared/umc/codec/h264_dec/include/umc_h264_au_splitter.h
+@@ -177,7 +177,7 @@ class AU_Splitter
+ 
+     //Status DecodeHeaders(MediaDataEx *nalUnit);
+ 
+-    std::auto_ptr<NALUnitSplitter> m_pNALSplitter;
++    std::unique_ptr<NALUnitSplitter> m_pNALSplitter;
+ };
+ 
+ } // namespace UMC
+diff --git a/_studio/shared/umc/codec/h264_dec/include/umc_h264_segment_decoder_dxva.h b/_studio/shared/umc/codec/h264_dec/include/umc_h264_segment_decoder_dxva.h
+index 018667f..729c44b 100644
+--- a/_studio/shared/umc/codec/h264_dec/include/umc_h264_segment_decoder_dxva.h
++++ b/_studio/shared/umc/codec/h264_dec/include/umc_h264_segment_decoder_dxva.h
+@@ -78,7 +78,7 @@ class H264_DXVA_SegmentDecoder : public H264_DXVA_SegmentDecoderCommon
+ 
+ protected:
+ 
+-    std::auto_ptr<Packer>  m_Packer;
++    std::unique_ptr<Packer>  m_Packer;
+ 
+ private:
+     H264_DXVA_SegmentDecoder & operator = (H264_DXVA_SegmentDecoder &)
+diff --git a/_studio/shared/umc/codec/h264_dec/include/umc_h264_task_supplier.h b/_studio/shared/umc/codec/h264_dec/include/umc_h264_task_supplier.h
+index e04eea0..53c32de 100644
+--- a/_studio/shared/umc/codec/h264_dec/include/umc_h264_task_supplier.h
++++ b/_studio/shared/umc/codec/h264_dec/include/umc_h264_task_supplier.h
+@@ -268,6 +268,9 @@ struct ViewItem
+     // Copy constructor
+     ViewItem(const ViewItem &src);
+ 
++    // Copy assignment
++    ViewItem &operator =(const ViewItem &src);
++
+     ~ViewItem();
+ 
+     // Initialize th view, allocate resources
+@@ -296,10 +299,10 @@ struct ViewItem
+     int32_t viewId;
+ 
+     // Pointer to the view's DPB
+-    mutable std::auto_ptr<H264DBPList> pDPB[MAX_NUM_LAYERS];
++    mutable std::unique_ptr<H264DBPList> pDPB[MAX_NUM_LAYERS];
+ 
+     // Pointer to the POC processing object
+-    mutable std::auto_ptr<POCDecoder> pPOCDec[MAX_NUM_LAYERS];
++    mutable std::unique_ptr<POCDecoder> pPOCDec[MAX_NUM_LAYERS];
+ 
+     bool m_isDisplayable;
+ 
+diff --git a/_studio/shared/umc/codec/h264_dec/src/umc_h264_task_supplier.cpp b/_studio/shared/umc/codec/h264_dec/src/umc_h264_task_supplier.cpp
+index cdf1fd3..ba6f58e 100644
+--- a/_studio/shared/umc/codec/h264_dec/src/umc_h264_task_supplier.cpp
++++ b/_studio/shared/umc/codec/h264_dec/src/umc_h264_task_supplier.cpp
+@@ -1802,6 +1802,20 @@ ViewItem::ViewItem(const ViewItem &src)
+ 
+ } // ViewItem::ViewItem(const ViewItem &src)
+ 
++ViewItem &ViewItem::operator =(const ViewItem &src)
++{
++    Reset();
++
++    viewId = src.viewId;
++    for (uint32_t i = 0; i < MAX_NUM_LAYERS; i++) {
++        pDPB[i].reset(src.pDPB[i].release());
++        pPOCDec[i].reset(src.pPOCDec[i].release());
++        MaxLongTermFrameIdx[i] = src.MaxLongTermFrameIdx[i];
++    }
++    maxDecFrameBuffering = src.maxDecFrameBuffering;
++    return *this;
++}
++
+ ViewItem::~ViewItem()
+ {
+     Close();
+diff --git a/_studio/shared/umc/codec/jpeg_dec/include/umc_mjpeg_mfx_decode_base.h b/_studio/shared/umc/codec/jpeg_dec/include/umc_mjpeg_mfx_decode_base.h
+index 21d4bcb..3446e68 100644
+--- a/_studio/shared/umc/codec/jpeg_dec/include/umc_mjpeg_mfx_decode_base.h
++++ b/_studio/shared/umc/codec/jpeg_dec/include/umc_mjpeg_mfx_decode_base.h
+@@ -105,7 +105,7 @@ class MJPEGVideoDecoderBaseMFX
+     int                     m_frameSampling;
+ 
+     // JPEG decoders allocated
+-    std::auto_ptr<CJPEGDecoderBase> m_decoder;
++    std::unique_ptr<CJPEGDecoderBase> m_decoder;
+     CJPEGDecoderBase * m_decBase;
+ 
+     FrameAllocator *        m_frameAllocator;
+diff --git a/api/opensource/mfx_dispatch/CMakeLists.txt b/api/opensource/mfx_dispatch/CMakeLists.txt
+index ded78f6..d742917 100644
+--- a/api/opensource/mfx_dispatch/CMakeLists.txt
++++ b/api/opensource/mfx_dispatch/CMakeLists.txt
+@@ -64,7 +64,7 @@ else( )
+ 
+   set(no_warnings "-Wno-unknown-pragmas -Wno-unused")
+ 
+-  set(CMAKE_CXX_FLAGS "-pipe -fPIC")
++  set(CMAKE_CXX_FLAGS "-pipe -fPIC -std=c++11")
+   set(CMAKE_CXX_FLAGS_DEBUG   "-O0 -Wall ${no_warnings} -g -D_DEBUG" CACHE STRING "" FORCE)
+   set(CMAKE_CXX_FLAGS_RELEASE "-O2 -D_FORTIFY_SOURCE=2 -fstack-protector -Wall ${no_warnings} -DNDEBUG"    CACHE STRING "" FORCE)
+ 
+diff --git a/api/opensource/mfx_dispatch/include/mfx_dispatcher_log.h b/api/opensource/mfx_dispatch/include/mfx_dispatcher_log.h
+index 0637e46..7491651 100644
+--- a/api/opensource/mfx_dispatch/include/mfx_dispatcher_log.h
++++ b/api/opensource/mfx_dispatch/include/mfx_dispatcher_log.h
+@@ -172,7 +172,7 @@ class DSSingleTone
+     //if obj != NULL then it store obj
+     inline static T * store_or_load(T * obj = NULL)
+     {
+-        static std::auto_ptr<T> instance;
++        static std::unique_ptr<T> instance;
+         if (NULL != obj)
+         {
+             instance.reset(obj);
+diff --git a/api/opensource/mfx_dispatch/src/main.cpp b/api/opensource/mfx_dispatch/src/main.cpp
+index 98ebe83..a75c6bd 100644
+--- a/api/opensource/mfx_dispatch/src/main.cpp
++++ b/api/opensource/mfx_dispatch/src/main.cpp
+@@ -610,7 +610,7 @@ mfxStatus MFXVideoUSER_Load(mfxSession session, const mfxPluginUID *uid, mfxU32
+         DISPATCHER_LOG_ERROR((("MFXVideoUSER_Load: uid=NULL\n")));
+         return MFX_ERR_NULL_PTR;
+     }
+-    DISPATCHER_LOG_INFO((("MFXVideoUSER_Load: uid="MFXGUIDTYPE()" version=%d\n")
++    DISPATCHER_LOG_INFO((("MFXVideoUSER_Load: uid=" MFXGUIDTYPE() " version=%d\n")
+         , MFXGUIDTOHEX(uid)
+         , version))
+         size_t pluginsChecked = 0;
+@@ -624,7 +624,7 @@ mfxStatus MFXVideoUSER_Load(mfxSession session, const mfxPluginUID *uid, mfxU32
+         //check rest in records
+         if (i->PluginVersion < version)
+         {
+-            DISPATCHER_LOG_INFO((("MFXVideoUSER_Load: registered \"Plugin Version\" for GUID="MFXGUIDTYPE()" is %d, that is smaller that requested\n")
++            DISPATCHER_LOG_INFO((("MFXVideoUSER_Load: registered \"Plugin Version\" for GUID=" MFXGUIDTYPE() " is %d, that is smaller that requested\n")
+                 , MFXGUIDTOHEX(uid)
+                 , i->PluginVersion))
+                 continue;
+@@ -691,7 +691,7 @@ mfxStatus MFXVideoUSER_LoadByPath(mfxSession session, const mfxPluginUID *uid, m
+         return MFX_ERR_NULL_PTR;
+     }
+ 
+-    DISPATCHER_LOG_INFO((("MFXVideoUSER_LoadByPath: %S uid="MFXGUIDTYPE()" version=%d\n")
++    DISPATCHER_LOG_INFO((("MFXVideoUSER_LoadByPath: %S uid=" MFXGUIDTYPE() " version=%d\n")
+         , MSDK2WIDE(path)
+         , MFXGUIDTOHEX(uid)
+         , version))
+@@ -744,10 +744,10 @@ mfxStatus MFXVideoUSER_UnLoad(mfxSession session, const mfxPluginUID *uid)
+     bool bDestroyed = rHandle.pluginFactory.Destroy(*uid);
+     if (bDestroyed) 
+     {
+-        DISPATCHER_LOG_INFO((("MFXVideoUSER_UnLoad : plugin with GUID="MFXGUIDTYPE()" unloaded\n"), MFXGUIDTOHEX(uid)));
++        DISPATCHER_LOG_INFO((("MFXVideoUSER_UnLoad : plugin with GUID=" MFXGUIDTYPE() " unloaded\n"), MFXGUIDTOHEX(uid)));
+     } else 
+     {
+-        DISPATCHER_LOG_ERROR((("MFXVideoUSER_UnLoad : plugin with GUID="MFXGUIDTYPE()" not found\n"), MFXGUIDTOHEX(uid)));
++        DISPATCHER_LOG_ERROR((("MFXVideoUSER_UnLoad : plugin with GUID=" MFXGUIDTYPE() " not found\n"), MFXGUIDTOHEX(uid)));
+     }
+ 
+     return bDestroyed ? MFX_ERR_NONE : MFX_ERR_NOT_FOUND;
+@@ -766,7 +766,7 @@ mfxStatus MFXAudioUSER_Load(mfxSession session, const mfxPluginUID *uid, mfxU32
+         DISPATCHER_LOG_ERROR((("MFXAudioUSER_Load: uid=NULL\n")));
+         return MFX_ERR_NULL_PTR;
+     }
+-    DISPATCHER_LOG_INFO((("MFXAudioUSER_Load: uid="MFXGUIDTYPE()" version=%d\n")
++    DISPATCHER_LOG_INFO((("MFXAudioUSER_Load: uid=" MFXGUIDTYPE() " version=%d\n")
+         , MFXGUIDTOHEX(uid)
+         , version))
+         size_t pluginsChecked = 0;
+@@ -784,7 +784,7 @@ mfxStatus MFXAudioUSER_Load(mfxSession session, const mfxPluginUID *uid, mfxU32
+         //check rest in records
+         if (i->PluginVersion < version)
+         {
+-            DISPATCHER_LOG_INFO((("MFXAudioUSER_Load: registered \"Plugin Version\" for GUID="MFXGUIDTYPE()" is %d, that is smaller that requested\n")
++            DISPATCHER_LOG_INFO((("MFXAudioUSER_Load: registered \"Plugin Version\" for GUID=" MFXGUIDTYPE() " is %d, that is smaller that requested\n")
+                 , MFXGUIDTOHEX(uid)
+                 , i->PluginVersion))
+                 continue;
+@@ -832,10 +832,10 @@ mfxStatus MFXAudioUSER_UnLoad(mfxSession session, const mfxPluginUID *uid)
+     bool bDestroyed = rHandle.pluginFactory.Destroy(*uid);
+     if (bDestroyed) 
+     {
+-        DISPATCHER_LOG_INFO((("MFXAudioUSER_UnLoad : plugin with GUID="MFXGUIDTYPE()" unloaded\n"), MFXGUIDTOHEX(uid)));
++        DISPATCHER_LOG_INFO((("MFXAudioUSER_UnLoad : plugin with GUID=" MFXGUIDTYPE() " unloaded\n"), MFXGUIDTOHEX(uid)));
+     } else 
+     {
+-        DISPATCHER_LOG_ERROR((("MFXAudioUSER_UnLoad : plugin with GUID="MFXGUIDTYPE()" not found\n"), MFXGUIDTOHEX(uid)));
++        DISPATCHER_LOG_ERROR((("MFXAudioUSER_UnLoad : plugin with GUID=" MFXGUIDTYPE() " not found\n"), MFXGUIDTOHEX(uid)));
+     }
+ 
+     return bDestroyed ? MFX_ERR_NONE : MFX_ERR_NOT_FOUND;
+diff --git a/api/opensource/mfx_dispatch/src/mfx_load_plugin.cpp b/api/opensource/mfx_dispatch/src/mfx_load_plugin.cpp
+index 4fa19c9..bb48e7d 100644
+--- a/api/opensource/mfx_dispatch/src/mfx_load_plugin.cpp
++++ b/api/opensource/mfx_dispatch/src/mfx_load_plugin.cpp
+@@ -150,7 +150,7 @@ bool MFX::MFXPluginFactory::RunVerification( const mfxPlugin & plg, const Plugin
+     {
+         if (!dsc.onlyVersionRegistered && pluginParams.CodecId != dsc.CodecId) 
+         {
+-            TRACE_PLUGIN_ERROR("plg->GetPluginParam() returned CodecId="MFXFOURCCTYPE()", but registration has CodecId="MFXFOURCCTYPE()"\n"
++            TRACE_PLUGIN_ERROR("plg->GetPluginParam() returned CodecId=" MFXFOURCCTYPE() ", but registration has CodecId=" MFXFOURCCTYPE() "\n"
+                 , MFXU32TOFOURCC(pluginParams.CodecId), MFXU32TOFOURCC(dsc.CodecId));
+             return false;
+         }
+@@ -163,7 +163,7 @@ bool MFX::MFXPluginFactory::RunVerification( const mfxPlugin & plg, const Plugin
+ 
+         if (pluginParams.PluginUID !=  dsc.PluginUID) 
+         {
+-            TRACE_PLUGIN_ERROR("plg->GetPluginParam() returned UID="MFXGUIDTYPE()", but registration has UID="MFXGUIDTYPE()"\n"
++            TRACE_PLUGIN_ERROR("plg->GetPluginParam() returned UID=" MFXGUIDTYPE() ", but registration has UID=" MFXGUIDTYPE() "\n"
+                 , MFXGUIDTOHEX(&pluginParams.PluginUID), MFXGUIDTOHEX(&dsc.PluginUID));
+             return false;
+         }
+@@ -445,4 +445,4 @@ void MFX::MFXPluginFactory::DestroyPlugin( FactoryRecord & record)
+         sts = MFXVideoUSER_Unregister(mSession, record.plgParams.Type);
+         TRACE_PLUGIN_INFO(" MFXVideoUSER_Unregister for Type=%d, returned %d\n", record.plgParams.Type, sts);
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/api/opensource/mfx_dispatch/src/mfx_plugin_hive_linux.cpp b/api/opensource/mfx_dispatch/src/mfx_plugin_hive_linux.cpp
+index 7ae422e..c5a1ce8 100644
+--- a/api/opensource/mfx_dispatch/src/mfx_plugin_hive_linux.cpp
++++ b/api/opensource/mfx_dispatch/src/mfx_plugin_hive_linux.cpp
+@@ -95,7 +95,7 @@ static bool CheckPluginRecord(PluginDescriptionRecord & descriptionRecord, mfxU3
+ 
+     if (isFieldMissed(foundFields, requiredFields, PluginConfigParser::PARSED_CODEC_ID)) 
+     {
+-        TRACE_HIVE_INFO(alignStr()" : "MFXFOURCCTYPE()" \n", CodecIDKeyName, MFXU32TOFOURCC(descriptionRecord.CodecId));
++        TRACE_HIVE_INFO(alignStr() " : " MFXFOURCCTYPE() " \n", CodecIDKeyName, MFXU32TOFOURCC(descriptionRecord.CodecId));
+     }
+     else
+     {
+@@ -106,7 +106,7 @@ static bool CheckPluginRecord(PluginDescriptionRecord & descriptionRecord, mfxU3
+     {
+         return false;
+     }
+-    TRACE_HIVE_INFO(alignStr()" : "MFXGUIDTYPE()"\n", GUIDKeyName, MFXGUIDTOHEX(&descriptionRecord.PluginUID));
++    TRACE_HIVE_INFO(alignStr()" : " MFXGUIDTYPE() "\n", GUIDKeyName, MFXGUIDTOHEX(&descriptionRecord.PluginUID));
+ 
+     if (isFieldMissed(foundFields, requiredFields, PluginConfigParser::PARSED_PATH)) 
+     {
+diff --git a/contrib/SafeStringStaticLibrary/CMakeLists.txt b/contrib/SafeStringStaticLibrary/CMakeLists.txt
+index 933aeb9..e525b19 100644
+--- a/contrib/SafeStringStaticLibrary/CMakeLists.txt
++++ b/contrib/SafeStringStaticLibrary/CMakeLists.txt
+@@ -32,7 +32,7 @@ else( )
+ 
+   set(no_warnings "-Wno-unknown-pragmas -Wno-unused")
+   
+-  set(CMAKE_CXX_FLAGS "-pipe -fPIC")
++  set(CMAKE_CXX_FLAGS "-pipe -fPIC -std=c++11")
+   set(CMAKE_CXX_FLAGS_DEBUG   "-O0 -Wall ${no_warnings} -Wformat -Wformat-security -g -D_DEBUG")
+   set(CMAKE_CXX_FLAGS_RELEASE "-O2 -D_FORTIFY_SOURCE=2 -fstack-protector -Wall ${no_warnings} -Wformat -Wformat-security -DNDEBUG")
+ 
+diff --git a/samples/sample_common/include/avc_spl.h b/samples/sample_common/include/avc_spl.h
+index 27a44fd..33d3ca1 100644
+--- a/samples/sample_common/include/avc_spl.h
++++ b/samples/sample_common/include/avc_spl.h
+@@ -94,7 +94,7 @@ class AVC_Spl : public AbstractSplitter
+     void ResetCurrentState();
+ 
+ protected:
+-    std::auto_ptr<NALUnitSplitter> m_pNALSplitter;
++    std::unique_ptr<NALUnitSplitter> m_pNALSplitter;
+ 
+     mfxStatus Init();
+ 
+@@ -118,7 +118,7 @@ class AVC_Spl : public AbstractSplitter
+     bool                m_WaitForIDR;
+ 
+     AVCHeaders     m_headers;
+-    std::auto_ptr<AVCFrameInfo> m_AUInfo;
++    std::unique_ptr<AVCFrameInfo> m_AUInfo;
+     AVCFrameInfo * m_currentInfo;
+     AVCSlice * m_pLastSlice;
+ 
+diff --git a/samples/sample_common/include/base_allocator.h b/samples/sample_common/include/base_allocator.h
+index be0b7a8..0fa74fb 100644
+--- a/samples/sample_common/include/base_allocator.h
++++ b/samples/sample_common/include/base_allocator.h
+@@ -81,7 +81,7 @@ class BaseFrameAllocator: public MFXFrameAllocator
+     virtual mfxStatus FreeFrames(mfxFrameAllocResponse *response);
+ 
+ protected:
+-    std::auto_ptr<MSDKMutex> mtx;
++    std::unique_ptr<MSDKMutex> mtx;
+     typedef std::list<mfxFrameAllocResponse>::iterator Iter;
+     static const mfxU32 MEMTYPE_FROM_MASK = MFX_MEMTYPE_FROM_ENCODE | MFX_MEMTYPE_FROM_DECODE | \
+                                             MFX_MEMTYPE_FROM_VPPIN | MFX_MEMTYPE_FROM_VPPOUT | \
+diff --git a/samples/sample_common/include/brc_routines.h b/samples/sample_common/include/brc_routines.h
+index 25e2531..b8b4694 100644
+--- a/samples/sample_common/include/brc_routines.h
++++ b/samples/sample_common/include/brc_routines.h
+@@ -324,7 +324,7 @@ class ExtBRC
+     cHRD       m_hrd;
+     bool       m_bInit;
+     BRC_Ctx    m_ctx;
+-    std::auto_ptr<AVGBitrate> m_avg;
++    std::unique_ptr<AVGBitrate> m_avg;
+ 
+ public:
+     ExtBRC():
+diff --git a/samples/sample_common/include/general_allocator.h b/samples/sample_common/include/general_allocator.h
+index 7ec9566..4af69d5 100644
+--- a/samples/sample_common/include/general_allocator.h
++++ b/samples/sample_common/include/general_allocator.h
+@@ -51,8 +51,8 @@ class GeneralAllocator : public BaseFrameAllocator
+     bool    isD3DMid(mfxHDL mid);
+ 
+     std::map<mfxHDL, bool>                  m_Mids;
+-    std::auto_ptr<BaseFrameAllocator>       m_D3DAllocator;
+-    std::auto_ptr<SysMemFrameAllocator>     m_SYSAllocator;
++    std::unique_ptr<BaseFrameAllocator>       m_D3DAllocator;
++    std::unique_ptr<SysMemFrameAllocator>     m_SYSAllocator;
+ private:
+     DISALLOW_COPY_AND_ASSIGN(GeneralAllocator);
+ 
+diff --git a/samples/sample_common/include/plugin_loader.h b/samples/sample_common/include/plugin_loader.h
+index 138db68..e30fa93 100644
+--- a/samples/sample_common/include/plugin_loader.h
++++ b/samples/sample_common/include/plugin_loader.h
+@@ -27,7 +27,7 @@ or https://software.intel.com/en-us/media-client-solutions-support.
+ //#include "mfx_plugin_module.h"
+ #include <iostream>
+ #include <iomanip> // for std::setfill, std::setw
+-#include <memory> // for std::auto_ptr
++#include <memory> // for std::unique_ptr
+ 
+ class MsdkSoModule
+ {
+@@ -234,12 +234,12 @@ class PluginLoader : public MFXPlugin
+ };
+ 
+ inline MFXPlugin * LoadPluginByType(mfxPluginType type, mfxSession session, const mfxPluginUID & uid, mfxU32 version, const mfxChar *pluginName, mfxU32 len) {
+-    std::auto_ptr<PluginLoader> plg(new PluginLoader (type, session, uid, version, pluginName, len));
++    std::unique_ptr<PluginLoader> plg(new PluginLoader (type, session, uid, version, pluginName, len));
+     return plg->IsOk() ? plg.release() : NULL;
+ }
+ 
+ inline MFXPlugin * LoadPluginByGUID(mfxPluginType type, mfxSession session, const mfxPluginUID & uid, mfxU32 version) {
+-    std::auto_ptr<PluginLoader> plg(new PluginLoader (type, session, uid, version));
++    std::unique_ptr<PluginLoader> plg(new PluginLoader (type, session, uid, version));
+     return plg->IsOk() ? plg.release() : NULL;
+ }
+ 
+diff --git a/samples/sample_common/include/sample_utils.h b/samples/sample_common/include/sample_utils.h
+index b948e82..773ae31 100644
+--- a/samples/sample_common/include/sample_utils.h
++++ b/samples/sample_common/include/sample_utils.h
+@@ -196,14 +196,14 @@ class CH264FrameReader : public CSmplBitstreamReader
+ private:
+     mfxBitstream *m_processedBS;
+     // input bit stream
+-    std::auto_ptr<mfxBitstream>  m_originalBS;
++    std::unique_ptr<mfxBitstream>  m_originalBS;
+ 
+     mfxStatus PrepareNextFrame(mfxBitstream *in, mfxBitstream **out);
+ 
+     // is stream ended
+     bool m_isEndOfStream;
+ 
+-    std::auto_ptr<AbstractSplitter> m_pNALSplitter;
++    std::unique_ptr<AbstractSplitter> m_pNALSplitter;
+     FrameSplitterInfo *m_frame;
+     mfxU8 *m_plainBuffer;
+     mfxU32 m_plainBufferSize;
+diff --git a/samples/sample_decode/include/pipeline_decode.h b/samples/sample_decode/include/pipeline_decode.h
+index a523a16..b99807e 100644
+--- a/samples/sample_decode/include/pipeline_decode.h
++++ b/samples/sample_decode/include/pipeline_decode.h
+@@ -215,7 +215,7 @@ class CDecodingPipeline:
+ 
+ protected: // variables
+     CSmplYUVWriter          m_FileWriter;
+-    std::auto_ptr<CSmplBitstreamReader>  m_FileReader;
++    std::unique_ptr<CSmplBitstreamReader>  m_FileReader;
+     mfxBitstream            m_mfxBS; // contains encoded data
+ 
+     MFXVideoSession         m_mfxSession;
+@@ -224,8 +224,8 @@ class CDecodingPipeline:
+     MFXVideoVPP*            m_pmfxVPP;
+     mfxVideoParam           m_mfxVideoParams;
+     mfxVideoParam           m_mfxVppVideoParams;
+-    std::auto_ptr<MFXVideoUSER>  m_pUserModule;
+-    std::auto_ptr<MFXPlugin> m_pPlugin;
++    std::unique_ptr<MFXVideoUSER>  m_pUserModule;
++    std::unique_ptr<MFXPlugin> m_pPlugin;
+     std::vector<mfxExtBuffer *> m_ExtBuffers;
+     std::vector<mfxExtBuffer *> m_ExtBuffersMfxBS;
+     mfxExtDecVideoProcessing m_DecoderPostProcessing;
+diff --git a/samples/sample_decode/src/pipeline_decode.cpp b/samples/sample_decode/src/pipeline_decode.cpp
+index b07420e..cc21f42 100644
+--- a/samples/sample_decode/src/pipeline_decode.cpp
++++ b/samples/sample_decode/src/pipeline_decode.cpp
+@@ -1271,7 +1271,7 @@ void CDecodingPipeline::SetMultiView()
+ template <typename Buffer>
+ mfxStatus CDecodingPipeline::AllocateExtBuffer()
+ {
+-    std::auto_ptr<Buffer> pExtBuffer (new Buffer());
++    std::unique_ptr<Buffer> pExtBuffer (new Buffer());
+     if (!pExtBuffer.get())
+         return MFX_ERR_MEMORY_ALLOC;
+ 
+diff --git a/samples/sample_encode/include/pipeline_encode.h b/samples/sample_encode/include/pipeline_encode.h
+index 4f84587..eed505b 100644
+--- a/samples/sample_encode/include/pipeline_encode.h
++++ b/samples/sample_encode/include/pipeline_encode.h
+@@ -241,8 +241,8 @@ class CEncodingPipeline
+ 
+     mfxU32 m_InputFourCC;
+ 
+-    std::auto_ptr<MFXVideoUSER> m_pUserModule;
+-    std::auto_ptr<MFXPlugin> m_pPlugin;
++    std::unique_ptr<MFXVideoUSER> m_pUserModule;
++    std::unique_ptr<MFXPlugin> m_pPlugin;
+ 
+     MFXFrameAllocator* m_pMFXAllocator;
+     mfxAllocatorParams* m_pmfxAllocatorParams;
+diff --git a/samples/sample_encode/src/pipeline_encode.cpp b/samples/sample_encode/src/pipeline_encode.cpp
+index dd0b566..73dd28f 100644
+--- a/samples/sample_encode/src/pipeline_encode.cpp
++++ b/samples/sample_encode/src/pipeline_encode.cpp
+@@ -1147,7 +1147,7 @@ mfxStatus CEncodingPipeline::InitFileWriters(sInputParams *pParams)
+     // ViewOutput mode: 3 bitstreams - 2 separate & 1 merged
+     else if ( (MVC_VIEWOUTPUT & pParams->MVC_flags) && (pParams->dstFileBuff.size() <= 3))
+     {
+-        std::auto_ptr<CSmplBitstreamDuplicateWriter> first(new CSmplBitstreamDuplicateWriter);
++        std::unique_ptr<CSmplBitstreamDuplicateWriter> first(new CSmplBitstreamDuplicateWriter);
+ 
+         // init first duplicate writer
+         MSDK_CHECK_POINTER(first.get(), MFX_ERR_MEMORY_ALLOC);
+@@ -1157,7 +1157,7 @@ mfxStatus CEncodingPipeline::InitFileWriters(sInputParams *pParams)
+         MSDK_CHECK_STATUS(sts, "first->InitDuplicate failed");
+ 
+         // init second duplicate writer
+-        std::auto_ptr<CSmplBitstreamDuplicateWriter> second(new CSmplBitstreamDuplicateWriter);
++        std::unique_ptr<CSmplBitstreamDuplicateWriter> second(new CSmplBitstreamDuplicateWriter);
+         MSDK_CHECK_POINTER(second.get(), MFX_ERR_MEMORY_ALLOC);
+         sts = second->Init(pParams->dstFileBuff[1]);
+         MSDK_CHECK_STATUS(sts, "second->Init failed");
+diff --git a/samples/sample_encode/src/sample_encode.cpp b/samples/sample_encode/src/sample_encode.cpp
+index 36241e9..540efce 100644
+--- a/samples/sample_encode/src/sample_encode.cpp
++++ b/samples/sample_encode/src/sample_encode.cpp
+@@ -1069,7 +1069,7 @@ CEncodingPipeline* CreatePipeline(const sInputParams& params)
+ int main(int argc, char *argv[])
+ {
+     sInputParams Params = {};   // input parameters from command line
+-    std::auto_ptr<CEncodingPipeline>  pPipeline;
++    std::unique_ptr<CEncodingPipeline>  pPipeline;
+ 
+     mfxStatus sts = MFX_ERR_NONE; // return value check
+ 
+diff --git a/samples/sample_fei/src/sample_fei.cpp b/samples/sample_fei/src/sample_fei.cpp
+index 84b9bda..3441443 100644
+--- a/samples/sample_fei/src/sample_fei.cpp
++++ b/samples/sample_fei/src/sample_fei.cpp
+@@ -1130,7 +1130,7 @@ mfxStatus ParseInputString(msdk_char* strInput[], mfxU8 nArgNum, AppConfig* pCon
+ int main(int argc, char *argv[])
+ {
+     AppConfig Config;   // input parameters from command line
+-    std::auto_ptr<CEncodingPipeline>  pPipeline;
++    std::unique_ptr<CEncodingPipeline>  pPipeline;
+ 
+     mfxStatus sts = MFX_ERR_NONE; // return value check
+ 
+diff --git a/samples/sample_multi_transcode/include/pipeline_transcode.h b/samples/sample_multi_transcode/include/pipeline_transcode.h
+index b07ee1e..75cb5a6 100644
+--- a/samples/sample_multi_transcode/include/pipeline_transcode.h
++++ b/samples/sample_multi_transcode/include/pipeline_transcode.h
+@@ -471,9 +471,9 @@ namespace TranscodingSample
+     public:
+         FileBitstreamProcessor();
+         virtual ~FileBitstreamProcessor();
+-        virtual mfxStatus SetReader(std::auto_ptr<CSmplBitstreamReader>& reader);
+-        virtual mfxStatus SetReader(std::auto_ptr<CSmplYUVReader>& reader);
+-        virtual mfxStatus SetWriter(std::auto_ptr<CSmplBitstreamWriter>& writer);
++        virtual mfxStatus SetReader(std::unique_ptr<CSmplBitstreamReader>& reader);
++        virtual mfxStatus SetReader(std::unique_ptr<CSmplYUVReader>& reader);
++        virtual mfxStatus SetWriter(std::unique_ptr<CSmplBitstreamWriter>& writer);
+         virtual mfxStatus GetInputBitstream(mfxBitstream **pBitstream);
+         virtual mfxStatus GetInputFrame(mfxFrameSurface1 *pSurface);
+         virtual mfxStatus ProcessOutputBitstream(mfxBitstream* pBitstream);
+@@ -481,10 +481,10 @@ namespace TranscodingSample
+         virtual mfxStatus ResetOutput();
+ 
+     protected:
+-        std::auto_ptr<CSmplBitstreamReader> m_pFileReader;
+-        std::auto_ptr<CSmplYUVReader> m_pYUVFileReader;
++        std::unique_ptr<CSmplBitstreamReader> m_pFileReader;
++        std::unique_ptr<CSmplYUVReader> m_pYUVFileReader;
+         // for performance options can be zero
+-        std::auto_ptr<CSmplBitstreamWriter> m_pFileWriter;
++        std::unique_ptr<CSmplBitstreamWriter> m_pFileWriter;
+         mfxBitstream m_Bitstream;
+     private:
+         DISALLOW_COPY_AND_ASSIGN(FileBitstreamProcessor);
+@@ -604,17 +604,17 @@ namespace TranscodingSample
+ 
+         mfxVersion m_Version; // real API version with which library is initialized
+ 
+-        std::auto_ptr<MFXVideoSession>  m_pmfxSession;
+-        std::auto_ptr<MFXVideoDECODE>   m_pmfxDEC;
+-        std::auto_ptr<MFXVideoENCODE>   m_pmfxENC;
+-        std::auto_ptr<MFXVideoMultiVPP> m_pmfxVPP; // either VPP or VPPPlugin which wraps [VPP]-Plugin-[VPP] pipeline
+-        std::auto_ptr<MFXVideoENC>      m_pmfxPreENC;
+-        std::auto_ptr<MFXVideoUSER>     m_pUserDecoderModule;
+-        std::auto_ptr<MFXVideoUSER>     m_pUserEncoderModule;
+-        std::auto_ptr<MFXVideoUSER>     m_pUserEncModule;
+-        std::auto_ptr<MFXPlugin>        m_pUserDecoderPlugin;
+-        std::auto_ptr<MFXPlugin>        m_pUserEncoderPlugin;
+-        std::auto_ptr<MFXPlugin>        m_pUserEncPlugin;
++        std::unique_ptr<MFXVideoSession>  m_pmfxSession;
++        std::unique_ptr<MFXVideoDECODE>   m_pmfxDEC;
++        std::unique_ptr<MFXVideoENCODE>   m_pmfxENC;
++        std::unique_ptr<MFXVideoMultiVPP> m_pmfxVPP; // either VPP or VPPPlugin which wraps [VPP]-Plugin-[VPP] pipeline
++        std::unique_ptr<MFXVideoENC>      m_pmfxPreENC;
++        std::unique_ptr<MFXVideoUSER>     m_pUserDecoderModule;
++        std::unique_ptr<MFXVideoUSER>     m_pUserEncoderModule;
++        std::unique_ptr<MFXVideoUSER>     m_pUserEncModule;
++        std::unique_ptr<MFXPlugin>        m_pUserDecoderPlugin;
++        std::unique_ptr<MFXPlugin>        m_pUserEncoderPlugin;
++        std::unique_ptr<MFXPlugin>        m_pUserEncPlugin;
+ 
+         mfxFrameAllocResponse           m_mfxDecResponse;  // memory allocation response for decoder
+         mfxFrameAllocResponse           m_mfxEncResponse;  // memory allocation response for encoder
+@@ -727,7 +727,7 @@ namespace TranscodingSample
+ 
+         bool isHEVCSW;
+ 
+-        std::auto_ptr<ExtendedBSStore>        m_pBSStore;
++        std::unique_ptr<ExtendedBSStore>        m_pBSStore;
+ 
+         mfxU32                                m_FrameNumberPreference;
+         mfxU32                                m_MaxFramesForTranscode;
+@@ -775,7 +775,7 @@ namespace TranscodingSample
+     struct ThreadTranscodeContext
+     {
+         // Pointer to the session's pipeline
+-        std::auto_ptr<CTranscodingPipeline> pPipeline;
++        std::unique_ptr<CTranscodingPipeline> pPipeline;
+         // Pointer to bitstream handling object
+         FileBitstreamProcessor *pBSProcessor;
+         // Session implementation type
+diff --git a/samples/sample_multi_transcode/include/sample_multi_transcode.h b/samples/sample_multi_transcode/include/sample_multi_transcode.h
+index cc605b2..b3348c0 100644
+--- a/samples/sample_multi_transcode/include/sample_multi_transcode.h
++++ b/samples/sample_multi_transcode/include/sample_multi_transcode.h
+@@ -73,8 +73,8 @@ namespace TranscodingSample
+         std::vector<SafetySurfaceBuffer*>    m_pBufferArray;
+ 
+         std::vector<FileBitstreamProcessor*> m_pExtBSProcArray;
+-        std::auto_ptr<mfxAllocatorParams>    m_pAllocParam;
+-        std::auto_ptr<CHWDevice>             m_hwdev;
++        std::unique_ptr<mfxAllocatorParams>    m_pAllocParam;
++        std::unique_ptr<CHWDevice>             m_hwdev;
+         msdk_tick                            m_StartTime;
+         // need to work with HW pipeline
+         mfxHandleType                        m_eDevType;
+diff --git a/samples/sample_multi_transcode/src/pipeline_transcode.cpp b/samples/sample_multi_transcode/src/pipeline_transcode.cpp
+index a993f41..617703b 100644
+--- a/samples/sample_multi_transcode/src/pipeline_transcode.cpp
++++ b/samples/sample_multi_transcode/src/pipeline_transcode.cpp
+@@ -3749,7 +3749,7 @@ mfxStatus CTranscodingPipeline::LoadGenericPlugin()
+ {
+     mfxStatus sts = MFX_ERR_NONE;
+ 
+-    std::auto_ptr<MFXVideoVPPPlugin> pVPPPlugin(new MFXVideoVPPPlugin(*m_pmfxSession.get()));
++    std::unique_ptr<MFXVideoVPPPlugin> pVPPPlugin(new MFXVideoVPPPlugin(*m_pmfxSession.get()));
+     MSDK_CHECK_POINTER(pVPPPlugin.get(), MFX_ERR_NULL_PTR);
+ 
+     sts = pVPPPlugin->LoadDLL((msdk_char*)m_sGenericPluginPath.c_str());
+@@ -4255,25 +4255,25 @@ FileBitstreamProcessor::~FileBitstreamProcessor()
+     WipeMfxBitstream(&m_Bitstream);
+ } // FileBitstreamProcessor::~FileBitstreamProcessor()
+ 
+-mfxStatus FileBitstreamProcessor::SetReader(std::auto_ptr<CSmplYUVReader>& reader)
++mfxStatus FileBitstreamProcessor::SetReader(std::unique_ptr<CSmplYUVReader>& reader)
+ {
+-    m_pYUVFileReader = reader;
++    m_pYUVFileReader = std::move(reader);
+ 
+     return MFX_ERR_NONE;
+ }
+ 
+-mfxStatus FileBitstreamProcessor::SetReader(std::auto_ptr<CSmplBitstreamReader>& reader)
++mfxStatus FileBitstreamProcessor::SetReader(std::unique_ptr<CSmplBitstreamReader>& reader)
+ {
+-    m_pFileReader = reader;
++    m_pFileReader = std::move(reader);
+     mfxStatus sts = InitMfxBitstream(&m_Bitstream, 1024 * 1024);
+     MSDK_CHECK_STATUS(sts, "InitMfxBitstream failed");
+ 
+     return MFX_ERR_NONE;
+ }
+ 
+-mfxStatus FileBitstreamProcessor::SetWriter(std::auto_ptr<CSmplBitstreamWriter>& writer)
++mfxStatus FileBitstreamProcessor::SetWriter(std::unique_ptr<CSmplBitstreamWriter>& writer)
+ {
+-    m_pFileWriter = writer;
++    m_pFileWriter = std::move(writer);
+ 
+     return MFX_ERR_NONE;
+ }
+diff --git a/samples/sample_multi_transcode/src/sample_multi_transcode.cpp b/samples/sample_multi_transcode/src/sample_multi_transcode.cpp
+index 249496d..6119164 100644
+--- a/samples/sample_multi_transcode/src/sample_multi_transcode.cpp
++++ b/samples/sample_multi_transcode/src/sample_multi_transcode.cpp
+@@ -182,7 +182,7 @@ mfxStatus Launcher::Init(int argc, msdk_char *argv[])
+         MSDK_CHECK_STATUS(sts, "pAllocator->Init failed");
+         m_pAllocArray.push_back(pAllocator);
+ 
+-        std::auto_ptr<ThreadTranscodeContext> pThreadPipeline(new ThreadTranscodeContext);
++        std::unique_ptr<ThreadTranscodeContext> pThreadPipeline(new ThreadTranscodeContext);
+         // extend BS processing init
+         m_pExtBSProcArray.push_back(new FileBitstreamProcessor);
+ 
+@@ -190,8 +190,8 @@ mfxStatus Launcher::Init(int argc, msdk_char *argv[])
+ 
+         pThreadPipeline->pBSProcessor = m_pExtBSProcArray.back();
+ 
+-        std::auto_ptr<CSmplBitstreamReader> reader;
+-        std::auto_ptr<CSmplYUVReader> yuvreader;
++        std::unique_ptr<CSmplBitstreamReader> reader;
++        std::unique_ptr<CSmplYUVReader> yuvreader;
+         if (m_InputParamsArray[i].DecodeId == MFX_CODEC_VP9)
+         {
+             reader.reset(new CIVFFrameReader());
+@@ -223,7 +223,7 @@ mfxStatus Launcher::Init(int argc, msdk_char *argv[])
+             MSDK_CHECK_STATUS(sts, "m_pExtBSProcArray.back()->SetReader failed");
+         }
+ 
+-        std::auto_ptr<CSmplBitstreamWriter> writer(new CSmplBitstreamWriter());
++        std::unique_ptr<CSmplBitstreamWriter> writer(new CSmplBitstreamWriter());
+         sts = writer->Init(m_InputParamsArray[i].strDstFile);
+ 
+         sts = m_pExtBSProcArray.back()->SetWriter(writer);
+diff --git a/samples/sample_plugins/rotate_opencl/include/d3d_utils.h b/samples/sample_plugins/rotate_opencl/include/d3d_utils.h
+index 7f12f4b..fe737f1 100644
+--- a/samples/sample_plugins/rotate_opencl/include/d3d_utils.h
++++ b/samples/sample_plugins/rotate_opencl/include/d3d_utils.h
+@@ -28,7 +28,7 @@ or https://software.intel.com/en-us/media-client-solutions-support.
+ 
+ #define D3DFMT_NV12 (D3DFORMAT)MAKEFOURCC('N','V','1','2')
+ 
+-// auto_ptr-like behavior
++// unique_ptr-like behavior
+ class LockedD3DDevice
+ {
+ private:
+diff --git a/samples/sample_plugins/rotate_opencl/include/sample_opencl_plugin.h b/samples/sample_plugins/rotate_opencl/include/sample_opencl_plugin.h
+index b92f298..af9766a 100644
+--- a/samples/sample_plugins/rotate_opencl/include/sample_opencl_plugin.h
++++ b/samples/sample_plugins/rotate_opencl/include/sample_opencl_plugin.h
+@@ -198,8 +198,8 @@ class Rotate : public MFXGenericPlugin
+     bool m_bIsInOpaque;
+     bool m_bIsOutOpaque;
+ 
+-    std::auto_ptr<OpenCLFilterVA> m_OpenCLFilter;
+-    std::auto_ptr<OpenCLRotator180Context> m_pOpenCLRotator180Context;
++    std::unique_ptr<OpenCLFilterVA> m_OpenCLFilter;
++    std::unique_ptr<OpenCLRotator180Context> m_pOpenCLRotator180Context;
+     mfxHDL m_device;
+ 
+     mfxCoreInterface *m_pmfxCore;
+diff --git a/samples/sample_plugins/vpp_plugin/include/mfx_vpp_plugin.h b/samples/sample_plugins/vpp_plugin/include/mfx_vpp_plugin.h
+index 7b5f1ac..b98d2fd 100644
+--- a/samples/sample_plugins/vpp_plugin/include/mfx_vpp_plugin.h
++++ b/samples/sample_plugins/vpp_plugin/include/mfx_vpp_plugin.h
+@@ -113,7 +113,7 @@ class MFXVideoVPPPlugin : public MFXVideoMultiVPP
+     SurfacePool             m_SurfacePool2;
+     mfxSession              m_session2; //for two vpp case
+ 
+-    std::auto_ptr<mfxFrameAllocResponse>  m_allocResponses[2];
++    std::unique_ptr<mfxFrameAllocResponse>  m_allocResponses[2];
+     mfxStatus               AllocateFrames(mfxVideoParam *par, mfxVideoParam *par1, mfxVideoParam *par2);
+ 
+     // pipeline implementation
+diff --git a/samples/sample_vpp/include/sample_vpp_pts.h b/samples/sample_vpp/include/sample_vpp_pts.h
+index 499a418..02da062 100644
+--- a/samples/sample_vpp/include/sample_vpp_pts.h
++++ b/samples/sample_vpp/include/sample_vpp_pts.h
+@@ -50,7 +50,7 @@ class PTSMaker
+     // FRC based on pts
+     bool    CheckAdvancedPTS(mfxFrameSurface1 *pSurface);
+ 
+-    std::auto_ptr<BaseFRCChecker>  m_pFRCChecker;
++    std::unique_ptr<BaseFRCChecker>  m_pFRCChecker;
+ 
+     mfxU32  m_FRateExtN_In;
+     mfxU32  m_FRateExtD_In;
+diff --git a/samples/sample_vpp/include/sample_vpp_utils.h b/samples/sample_vpp/include/sample_vpp_utils.h
+index 246a079..0ccb2b0 100644
+--- a/samples/sample_vpp/include/sample_vpp_utils.h
++++ b/samples/sample_vpp/include/sample_vpp_utils.h
+@@ -287,7 +287,7 @@ struct sMemoryAllocator
+     #endif
+ 
+     #ifdef LIBVA_SUPPORT
+-    std::auto_ptr<CLibVA> libvaKeeper;
++    std::unique_ptr<CLibVA> libvaKeeper;
+     #endif*/
+ };
+ 
+@@ -387,7 +387,7 @@ public :
+         mfxFrameSurface1* pSurface);
+ 
+ private:
+-    std::auto_ptr<CRawVideoWriter> m_ofile[8];
++    std::unique_ptr<CRawVideoWriter> m_ofile[8];
+ 
+     bool m_svcMode;
+ };
+diff --git a/samples/sample_vpp/src/sample_vpp.cpp b/samples/sample_vpp/src/sample_vpp.cpp
+index 4bc9623..c0c7ae6 100644
+--- a/samples/sample_vpp/src/sample_vpp.cpp
++++ b/samples/sample_vpp/src/sample_vpp.cpp
+@@ -291,7 +291,7 @@ int main(int argc, msdk_char *argv[])
+ 
+     SurfaceVPPStore     surfStore;
+ 
+-    auto_ptr<PTSMaker> ptsMaker;
++    unique_ptr<PTSMaker> ptsMaker;
+ 
+     /* generators for ROI testing */
+     ROIGenerator       inROIGenerator;
+diff --git a/samples/sample_vpp/src/sample_vpp_pts.cpp b/samples/sample_vpp/src/sample_vpp_pts.cpp
+index 011c777..047b358 100644
+--- a/samples/sample_vpp/src/sample_vpp_pts.cpp
++++ b/samples/sample_vpp/src/sample_vpp_pts.cpp
+@@ -27,7 +27,7 @@ or https://software.intel.com/en-us/media-client-solutions-support.
+ 
+ mfxF64 MaxTimeDifference = 0.015; // 15 ms is an edge
+ 
+-PTSMaker::PTSMaker():m_pFRCChecker(0),
++PTSMaker::PTSMaker():m_pFRCChecker(nullptr),
+ m_FRateExtN_In(0),
+ m_FRateExtD_In(1),
+ m_FRateExtN_Out(0),
+@@ -215,4 +215,4 @@ void  PTSMaker::PrintDumpInfo()
+ 
+ 
+ 
+-/***************************************************************************/
+\ No newline at end of file
++/***************************************************************************/
