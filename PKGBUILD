@@ -1,7 +1,7 @@
 # Maintainer: Steven Cook <visage@deadhexagon.com>
 # Contributor: Adam Eberlin <ae@adameberlin.com>
 pkgname=anope
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="A set of IRC Services designed for flexibility and ease of use"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(
     "anope.service"
     "anope.tmpfiles"
 )
-sha1sums=('a9f7a6f9be5eac61d80d1836fa9371489def163b'
+sha1sums=('bba0c947657f7388da2980241bc11b03f9f64743'
           '6cc27cc78fdbac84efbc7e40986fa9412d5f7e9f'
           '9ffa7e103e05cc7fee52e13794ecf7172f3e3f42'
           '7d38218fef729433ca32b81514264beea9981cf8')
