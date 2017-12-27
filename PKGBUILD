@@ -15,21 +15,14 @@ provides=('ksh')
 install='ksh93.install'
 source=("${_pkgname}::git+http://github.com/att/ast#branch=master"
 'sample.kshrc'
-'utimensat.patch'
 'LICENSE')
 sha512sums=('SKIP'
 'aeb54cb5ec944628ab64a692d364cab14bbc312c1a892b3692058f7f7b1cf72c95a6bfb4a95ffc3c4ddfb8f8ca4d17707023108d5504f912cb3ceb9e8d4da6b3'
-'edd6124ce5d53d183567f056f302dd30cda916b6e96675a36eeca8c771c468fcd1c42bc75a1ce40576c290b5346f9f047637a5a54d3033f6660b6487a05d0471'
 '917ae643f241741919eb7f4633ec7b3cd58fb0d19150a017773562c36b15812bcf5f680024994d546ef18d771ab25aefc4bfe57ebd0c08043c9ad17e9cd7e076')
 
 pkgver() {
 	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "${srcdir}"
-	patch -Nbup1 -i "${srcdir}/utimensat.patch"
 }
 
 build() {
