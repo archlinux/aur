@@ -2,7 +2,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=shuriken-git
-pkgver=0.5.1.r53.gc615eba
+pkgver=0.5.1.r56.g7e44988
 pkgrel=1
 pkgdesc="An open source beat slicer"
 url="https://rock-hopper.github.io/shuriken"
