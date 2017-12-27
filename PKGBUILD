@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Jiri Tyr <jiri.tyr@gmail.com>
 
 pkgname='gbt'
