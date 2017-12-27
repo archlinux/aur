@@ -1,0 +1,13 @@
+post_install() {
+  echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+  echo ">>>                                                  <<<"
+  echo ">>>    If you like this software, don't hesitate     <<<"
+  echo ">>>    to tip its original author on his webpage     <<<"
+  echo ">>>         https://gottcode.org/novprog/            <<<"
+  echo ">>>                                                  <<<"
+  echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+}
+
+post_upgrade() {
+  post_install
+}
