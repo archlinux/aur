@@ -33,9 +33,12 @@ pkgbase = hybrid-encoder
 	optdepends = tsmuxer: support for TS container
 	optdepends = x264: support for H.264 video encoding
 	optdepends = x265: support for H.265 video encoding
-	md5sums = 19b40f94c7cde4697fd7779bc85b84d4
-	md5sums = dd87c6eb6df85049de38c61dfe400347
-	md5sums = 798dd936a3bc9bcd3b131d5dd6db96e6
+	source_x86_64 = http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_171225_64bit_binary_qt521.zip
+	source_x86_64 = hybrid.desktop
+	source_x86_64 = Hybrid.png
+	md5sums_x86_64 = 19b40f94c7cde4697fd7779bc85b84d4
+	md5sums_x86_64 = dd87c6eb6df85049de38c61dfe400347
+	md5sums_x86_64 = 798dd936a3bc9bcd3b131d5dd6db96e6
 
 pkgname = hybrid-encoder
 

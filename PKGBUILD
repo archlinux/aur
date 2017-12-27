@@ -33,14 +33,14 @@ optdepends=('aften: support for AC-3 audio encoding'
 'x265: support for H.265 video encoding')
 url="http://www.selur.de/"
 
-if test "$CARCH" == x86_64; then
-  source=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_64bit_binary_qt521.zip
+#if test "$CARCH" == x86_64; then
+source_x86_64=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_64bit_binary_qt521.zip
           hybrid.desktop
           Hybrid.png)
-  md5sums=('c17225858520370ab56e2e2e62a5e972'
-           'dd87c6eb6df85049de38c61dfe400347'
-           '798dd936a3bc9bcd3b131d5dd6db96e6')
-fi
+md5sums_x86_64=('19b40f94c7cde4697fd7779bc85b84d4'
+                'dd87c6eb6df85049de38c61dfe400347'
+                '798dd936a3bc9bcd3b131d5dd6db96e6')
+#fi
 
 package() {
   cd "${srcdir}"
@@ -48,12 +48,5 @@ package() {
   install -D -m644 hybrid.desktop "${pkgdir}"/usr/share/applications/hybrid.desktop
   install -D -m644 Hybrid.png "${pkgdir}"/usr/share/pixmaps/Hybrid.png
 }
-md5sums=('c17225858520370ab56e2e2e62a5e972'
-         'dd87c6eb6df85049de38c61dfe400347'
-         '798dd936a3bc9bcd3b131d5dd6db96e6')
-md5sums=('1951611f788fff7b3a0be68df6e863dc'
-         'dd87c6eb6df85049de38c61dfe400347'
-         '798dd936a3bc9bcd3b131d5dd6db96e6')
-md5sums=('19b40f94c7cde4697fd7779bc85b84d4'
-         'dd87c6eb6df85049de38c61dfe400347'
-         '798dd936a3bc9bcd3b131d5dd6db96e6')
+
+
