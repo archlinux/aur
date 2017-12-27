@@ -1,0 +1,31 @@
+post_install()
+{
+  pacman -Qi libappindicator-gtk2 2>&1|grep "Required By"|grep -q None
+  if [ $? -eq 0 ]; then
+    echo
+    echo "libappindicator-gtk2 is obsolete and may even break"
+    echo "the tray icon of Signal-Desktop and other Electron apps."
+    echo "As no package depends on it any more it can be safely removed."
+    echo
+    rm -f /var/lib/pacman/db.lck
+    pacman -Rs --noconfirm libappindicator-gtk2
+    touch /var/lib/pacman/db.lck
+  fi
+  
+  ps -e | grep '^.*gnome-session.*$' &>/dev/null
+  if [ $? -eq 0 ]; then
+    pacman -Qi gnome-shell-extension-topicons-plus &>/dev/null
+    if [ $? -ne 0 ]; then
+      echo
+      echo "Tray icons are no longer supported by default on Gnome."
+      echo "If you want use the tray icon of Signal-Desktop:"
+      echo "pacman -S gnome-shell-extension-topicons-plus"
+      echo "Then re-login and enable this extension in 'Tweaks' (gnome-tweak-tool)."
+      echo
+    fi
+  fi
+}
+
+post_upgrade() {
+  post_install
+}

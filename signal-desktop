@@ -1,2 +1,17 @@
 #!/bin/sh
-exec /usr/lib/signal-desktop/signal-desktop "$@"
+
+use_tray_icon=--use-tray-icon
+
+ps -e | grep '^.*gnome-session.*$' &>/dev/null
+if [ $? -eq 0 ]; then
+  pacman -Qi gnome-shell-extension-topicons-plus &>/dev/null
+  if [ $? -ne 0 ]; then
+    use_tray_icon=
+    echo "Tray icons are no longer supported by default on Gnome."
+    echo "If you want use the tray icon of Signal-Desktop:"
+    echo "pacman -S gnome-shell-extension-topicons-plus"
+    echo "Then re-login and enable this extension in 'Tweaks' (gnome-tweak-tool)."
+  fi 
+fi
+
+exec /usr/lib/signal-desktop/signal-desktop $use_tray_icon "$@"
