@@ -1,0 +1,10 @@
+diff -ura package.orig/vulkan-1.7.0.0/src/Graphics/Vulkan/Constants.hs package.new/vulkan-1.7.0.0/src/Graphics/Vulkan/Constants.hs
+--- package.orig/vulkan-1.7.0.0/src/Graphics/Vulkan/Constants.hs	2017-12-17 17:21:11.767442978 +0000
++++ package.new/vulkan-1.7.0.0/src/Graphics/Vulkan/Constants.hs	2017-12-17 17:21:44.487317898 +0000
+@@ -1,5 +1,6 @@
+ {-# LANGUAGE DataKinds #-}
+ {-# LANGUAGE PatternSynonyms #-}
++{-# LANGUAGE ScopedTypeVariables #-}
+ {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+ module Graphics.Vulkan.Constants where
+ 

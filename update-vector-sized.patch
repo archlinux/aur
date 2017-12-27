@@ -1,0 +1,12 @@
+diff -ura package.orig/vulkan-1.7.0.0/vulkan.cabal package.new/vulkan-1.7.0.0/vulkan.cabal
+--- package.orig/vulkan-1.7.0.0/vulkan.cabal	2017-12-17 14:31:25.024480088 +0000
++++ package.new/vulkan-1.7.0.0/vulkan.cabal	2017-12-17 14:31:41.464418071 +0000
+@@ -53,7 +53,7 @@
+                      , Graphics.Vulkan.SparseResourceMemoryManagement
+                      , Graphics.Vulkan.Version
+   build-depends:       base >= 4.9 && < 5
+-                     , vector-sized >= 0.1 && < 0.4
++                     , vector-sized >= 0.1 && < 0.7
+   extra-libraries:     vulkan
+   default-language:    Haskell2010
+ 

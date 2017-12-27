@@ -1,0 +1,19 @@
+pkgbase = haskell-vulkan
+	pkgdesc = Haskell bindings to the Vulkan graphics API
+	pkgver = 1.7.0.0
+	pkgrel = 1
+	url = http://github.com/expipiplus1/vulkan#readme
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-vector-sized
+	source = https://hackage.haskell.org/packages/archive/vulkan/1.7.0.0/vulkan-1.7.0.0.tar.gz
+	source = update-vector-sized.patch
+	source = add-scoped-typed-variables.patch
+	sha256sums = 17c8437061adee81f6c4b34a1ead85a44f98c0c443bc2696025f1849c086e965
+	sha256sums = 09f891c690508b0f74973ee9eec471ac397665f07d74fd87c94dd68e72b8d6e9
+	sha256sums = df9e615b9827a5762ea299a5618fc2c2b4787ea468b32039b076f41e7eea4e2d
+
+pkgname = haskell-vulkan
+
