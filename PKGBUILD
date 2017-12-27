@@ -10,7 +10,7 @@
 ###########################################################
 
 pkgname=archey4
-pkgver=v4.3.0
+pkgver=v4.3.1
 pkgrel=1
 pkgdesc="Maintained fork of the original Archey Linux system tool"
 arch=('any')
@@ -26,8 +26,8 @@ hypervisor')
 provides=('archey' 'archey4')
 conflicts=('archey' 'archey-git' 'archey-plus' 'archey2' 'archey3-git' 'pyarchey')
 source=("https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('56a4babbee0e9999f793f887b9e87159')
-sha256sums=('bbdecd6d3bebecd5f62ac38e5312d2a4add6e2af8fb0b2aa98f497d61b97f71a')
+md5sums=('13d41bb6a99b7ab35f511daf4919cbf4')
+sha256sums=('457dd4d7929cdb01ec1fd3117967cba2307f21417c08680e424db8f525399181')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver:1}"
