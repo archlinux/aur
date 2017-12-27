@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=pkgdistcache
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='A distributed local-network cache for pacman packages'
 arch=('any')
@@ -14,7 +14,7 @@ source=('pkgdistcache-client'
         'pkgdistcache-daemon'
         'pkgdistcache.conf'
         'pkgdistcached.service')
-sha256sums=('612b58f5992a20c241a03c0d205dc92e0f8de10e00ed6a81c99fb0b9fb28ab31'
+sha256sums=('86303871992738372d6ea5d11c3e75a7b894d5ebff1018fdbf213f393fc42be8'
             '8f298c9f1548b56373038fe69f8568dc77e17a700476594155359df20eb275a4'
             'd77ac418aa651bc622cd91204d6907554c6cdb4bb989e484cc54da32342faa51'
             '756c0bd1139e296da88937a89ab19e0b5d6c0d5d0f719034d4029b1fe1ea09e9')

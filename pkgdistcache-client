@@ -124,7 +124,7 @@ def main(argv):
 	pkg = os.path.basename(argv[1])		# argv[1] = %u passed by pacman
 
 	must_download = True
-	if not pkg.endswith('.db.tar.gz'):
+	if not (pkg.endswith('.db') or pkg.endswith('.db.sig')):
 		# find first /tmp/pkgdistcache.* file modified less than CACHE_FILE_LIFE minutes ago
 		cmd = 'find /tmp -name "pkgdistcache.*" -mmin -' + str(config['cache_file_life'])
 		cache_file = runcmd(cmd)['stdout']
