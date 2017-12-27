@@ -1,17 +1,14 @@
 pkgbase = jupyterthemes
 	pkgdesc = Select and install a Jupyter notebook theme
-	pkgver = 0.17.3
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/dunovank/jupyter-themes
 	arch = any
 	license = MIT
 	makedepends = python3
 	depends = python
-	depends = python-matplotlib
-	depends = jupyter-notebook
-	depends = python-lesscpy
-	source = https://pypi.python.org/packages/99/c6/0c5e58bdc3a3f1042e88bb35435e04d346c862745ec2ffe2004bd030ebb3/jupyterthemes-0.17.3.tar.gz
-	md5sums = 01cbc565f6b2170afd1a5151b57274b8
+	source = https://pypi.python.org/packages/5d/a8/37b4cfbf202d77e2ec4ec1ac0be2d0f0831fbf60545cadb9a47d21f81bf5/jupyterthemes-0.18.2.tar.gz
+	md5sums = ac14d29128f121121bb3d20350b72b19
 
 pkgname = jupyterthemes
 
