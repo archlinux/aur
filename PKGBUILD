@@ -4,7 +4,7 @@
 
 _hkgname=OpenGLRaw
 pkgname=haskell-openglraw
-pkgver=3.2.5.0
+pkgver=3.2.7.0
 pkgrel=1
 pkgdesc="A raw binding for the OpenGL graphics system"
 url="http://hackage.haskell.org/package/${_hspkgname}"
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 depends=('ghc-libs' 'libgl' 'haskell-fixed' 'haskell-half' 'haskell-text' 'haskell-transformers-base')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('c8247692f626d552147d20f8f29e2659afeca32df4341fbac831d0fc178521d8228f2d3dd613cfaafa046c74a7f8344a955a3cedc1e191c97b22efafe8140713')
+sha512sums=('1dd2b0966a531be706241d3152d0a93d7e1845a44388745bb7f8f389ace73a21a21da7a2deae62096bc986db700ec64554427d45711a40ecb8ebcec74eca679b')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
