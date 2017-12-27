@@ -1,0 +1,17 @@
+--- src/Makefile.am	2017-05-06 12:09:24.000000000 +0200
++++ src/Makefile.am.new	2017-12-27 13:32:16.040007005 +0100
+@@ -12,14 +12,6 @@
+ pkgicons_DATA = ${srcdir}/../lib/icons/*
+ pkgsound_DATA = ${srcdir}/../lib/sound/*
+ 
+-# Create sysconfdir
+-install-data-local:
+-	$(MKDIR_P) $(sysconfdir)
+-
+-# set suid bit on xcdrwrap
+-install-data-hook:
+-	chmod 4711 $(XCDRLIB_PREFIX)/bin/xcdrwrap
+- 
+ pkgbindir = $(XCDRLIB_PREFIX)/bin
+ pkgiconsdir = $(XCDRLIB_PREFIX)/icons
+ pkgsounddir = $(XCDRLIB_PREFIX)/sound
