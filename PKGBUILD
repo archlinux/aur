@@ -7,6 +7,7 @@ pkgdesc='Highly configurable prompt builder for Bash and ZSH written in Go'
 url="https://github.com/jtyr/gbt"
 arch=('x86_64')
 license=('MIT')
+conflicts=('gbt-git')
 optdepends=('nerd-fonts-complete')
 source=("https://github.com/jtyr/gbt/releases/download/v$pkgver/$pkgname-$pkgver-linux-amd64.tar.gz")
 sha256sums=('811ef1854f2a2f44c99376b96ec2bfd62d58c37647127d6bbb86b8b9f22d2463')
