@@ -4,7 +4,7 @@
 
 pkgname=pantheon-3d
 pkgver=3
-pkgrel=3
+pkgrel=4
 pkgdesc='Pantheon 3d Session (replaces Gala with Compiz)'
 arch=('i686' 'x86_64')
 url='https://bbs.archlinux.org/viewtopic.php?pid=1401967#p1401967'
@@ -16,7 +16,7 @@ provides=("pantheon-3d")
 conflicts=()
 source=(pantheon-compiz.{desktop,session})
 sha512sums=('18d3e1280c315014645e1f2ecf3bc5667e18fb718a83f46a6209b7d7b0fe407f69f23a567f67cddb0cb3dea8a8a99365529814d8093169b57ec308334bec10de'
-            '8eda0a25ee90eabc7262e7f57d764457d651225ed841d5b1235b4792da5421132599e0b58eb41db7e8546a23791785c9a68f3b9860891d37ee5443daed4f17a3')
+            '9fd3ccd2622c53e4f12e2662fb1e98461a08547f81783cccb6d38026eb772a3ee82280de303a790027db846c7a03be17d7608ea975fd95215ad26cf9763d9250')
 
 package() {
   install -Dm655 {,"${pkgdir}"/usr/share/xsessions/}pantheon-compiz.desktop
