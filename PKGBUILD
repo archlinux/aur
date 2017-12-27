@@ -2,7 +2,7 @@
 
 _name=cryptop
 pkgname=$_name
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="command line crypto portfolio"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-requests' 'python-requests-cache')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('081c86945582ea1e17c043cfae7e9b806c88303f8ade92666e952f23113a04837ad51d5379c0c9bd196902ed72023b47b1ccaa4e539386c8a3518a92cc6c49e4')
+sha512sums=('57e120ac27549ba9037fba86c16fc508fed481d0ddfd3e63a2b2692e53a20247fdb897e485ce198897d7b92c9e9bd381cb9b90dbe58ddaab15571f188198221a')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
