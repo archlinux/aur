@@ -4,19 +4,22 @@
 
 pkgname=('termite-nocsd')
 pkgver=12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/thestinger/termite/"
 license=('LGPL')
+conflicts=('termite')
 makedepends=('git' 'vte3-ng' 'ncurses')
-source=("git://github.com/thestinger/termite#tag=v$pkgver" "termite.patch")
-md5sums=('SKIP' 'd0a7aa26ca1ef40951726ac1a24bf0f1')
+source=("git+https://github.com/thestinger/termite#tag=v$pkgver" "termite.patch")
+sha256sums=('SKIP'
+            '4319296a88502b0a0397704177047cf7b0d39816b87d0f477a92ced4d1f16715')
 
 build() {
   cd termite
   git submodule update --init
   make
 }
+
 prepare() {
   cd termite
   patch -Np1 -i "${srcdir}/termite.patch" "${srcdir}/termite/termite.cc" 
