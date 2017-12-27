@@ -1,7 +1,7 @@
 pkgbase = gbm
 	pkgdesc = Game Backup Monitor monitors games and backs up their savegames
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mikemaximus.github.io/gbm-web/linux.html
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = gbm
 	source = gbm.sh
 	sha256sums = e71f8ecfd7432a055abdea9e4198cdf39aff22ccba1440ad8e5d47064f2d2dc3
 	sha256sums = b669167553a07f059b03b3fa060ebcc6df9c6a783bbadecdd9ec59c72a911166
-	sha256sums = 197f53f52d269ad978489f05560c9c0e628cb7a2abd4d57017f6e2f89a1ff723
+	sha256sums = bca2f7c08ecf1ff1be133f4c64a1637f7d0bf410216c9d781fd217b1c091267e
 
 pkgname = gbm
 

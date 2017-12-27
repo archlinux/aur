@@ -10,7 +10,7 @@ dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 echo "Located in ${dir}";
 gbmpath='./';
 #locate GBM.exe
-if [ "${dir}" = '/bin' ] && [ -s '/usr/share/gbm/GBM.exe' ]; then
+if [ "${dir}" = '/usr/bin' ] && [ -s '/usr/share/gbm/GBM.exe' ]; then
     gbmpath='/usr/share/gbm/';
 elif [ "${dir}" = '/usr/local/bin' ] && [ -s '/usr/local/share/gbm/GBM.exe' ]; then
     gbmpath='/usr/local/share/gbm/';
