@@ -17,7 +17,7 @@ pkgname=vmware-workstation
 pkgver=14.1.0
 _buildver=7370693
 _pkgver=${pkgver}_${_buildver}
-pkgrel=3
+pkgrel=4
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -96,7 +96,7 @@ sha256sums=(
   'd9a5f8b919d52aa2f279d8eaf0bb495780eb9fd8bbc2c58bba223cdca78cc991'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
-  'ad2ceafa8a0b9b6e95b10a0650a776b8c0795f863267005751544083c84d31e3'
+  '89b3430bdcc1efc33db2eb556447569204dbb736dca8045c3841e1a55ee5bfbb'
 
   '9f508d5f7ce4b69d9f40f6fb0ff0fb3d5b26a3c48658da994bf63975d1b589ab'
   '434cd4aa440d36b75ee20e0b588aaad874bb0d796173990bc4046667c66f5099'
@@ -380,8 +380,8 @@ package() {
     sed -i 's,@@LIBCONF_DIR@@,/usr/lib/vmware/libconf,g' "$pkgdir/usr/lib/vmware/libconf/etc/$file"
   done
 
-  sed -i 's,@@BINARY@@,/usr/lib/vmware/bin/vmware,' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
-  sed -i 's,@@BINARY@@,/usr/lib/vmware/bin/vmplayer,' "$pkgdir/usr/share/applications/vmware-player.desktop"
+  sed -i 's,@@BINARY@@,/usr/bin/vmware,' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
+  sed -i 's,@@BINARY@@,/usr/bin/vmplayer,' "$pkgdir/usr/share/applications/vmware-player.desktop"
   sed -i 's,@@BINARY@@,/usr/bin/vmware-netcfg,' "$pkgdir/usr/share/applications/vmware-netcfg.desktop"
 
   sed -i 's,@@AUTHD_PORT@@,902,' "$pkgdir/usr/lib/vmware/hostd/docroot/client/clients.xml"
@@ -425,10 +425,11 @@ fi
 
   _create_database_file
 
-  # Define some environment variables for VMware
-  install -Dm 755 "$srcdir/vmware-environment.sh" "$pkgdir/etc/conf.d/vmware"
+  # Define some environment variables for VMware and remove the tests about kernel modules
+  install -Dm 644 "$srcdir/vmware-environment.sh" "$pkgdir/etc/conf.d/vmware"
   for program in vmware vmplayer vmware-netcfg vmware-tray; do
-    sed '/export PRODUCT_NAME/asource /etc/conf.d/vmware' \
+    sed -e '/export PRODUCT_NAME/asource /etc/conf.d/vmware' \
+        -e 's/if "$BINDIR"\/vmware-modconfig --appname=.*/if true ||/' \
         -i "$pkgdir/usr/bin/$program"
   done
 
