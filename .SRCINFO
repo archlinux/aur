@@ -1,6 +1,6 @@
 pkgbase = wabt
-	pkgver = 1370
-	pkgrel = 1
+	pkgver = 1.0
+	pkgrel = 0
 	url = https://github.com/WebAssembly/wabt
 	arch = x86_64
 	license = APACHE
@@ -12,6 +12,6 @@ pkgbase = wabt
 	md5sums = SKIP
 
 pkgname = wabt
-	pkgdesc = WABT (we pronounce it wabbit) is a suite of tools for WebAssembly, including
+	pkgdesc = WABT (we pronounce it wabbit) is a suite of tools for WebAssembly
 	provides = wabt
 
