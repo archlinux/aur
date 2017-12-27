@@ -1,0 +1,21 @@
+pkgbase = libtiff-git
+	pkgdesc = TIFF library and utilities
+	pkgver = 4.0.9.r32.g5848777b
+	pkgrel = 1
+	url = http://www.simplesystems.org/libtiff/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	depends = libjpeg
+	depends = xz
+	depends = zlib
+	provides = libtiff
+	conflicts = libtiff
+	options = staticlibs
+	source = git+https://gitlab.com/libtiff/libtiff.git
+	sha256sums = SKIP
+
+pkgname = libtiff-git
+
