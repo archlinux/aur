@@ -2,7 +2,7 @@
 # Contributor: Guillaume ALAUX <guillaume at archlinux dot org>
 
 pkgname=log4j
-pkgver=2.9.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='Logging library for Java'
 arch=('any')
@@ -10,7 +10,7 @@ url='http://logging.apache.org/log4j/'
 license=('APACHE')
 depends=('java-runtime')
 source=(https://archive.apache.org/dist/logging/${pkgname}/${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz)
-sha256sums=('9c6ccd5281bb745302580a770984548603e3e554e5455f704fe4586c98b96cc8')
+sha256sums=('f4a9e4b3070525538380d805efd145fd5bd6e27c3dcc73fdc4e970e8ff2bb025')
 
 package() {
   cd "${srcdir}/apache-${pkgname}-${pkgver}-bin"
