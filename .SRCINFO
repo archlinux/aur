@@ -36,6 +36,7 @@ pkgbase = hybrid-encoder
 	source_x86_64 = http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_171225_64bit_binary_qt521.zip
 	source_x86_64 = hybrid.desktop
 	source_x86_64 = Hybrid.png
+	source_x86_64 = LICENSE
 	md5sums_x86_64 = 19b40f94c7cde4697fd7779bc85b84d4
 	md5sums_x86_64 = dd87c6eb6df85049de38c61dfe400347
 	md5sums_x86_64 = 798dd936a3bc9bcd3b131d5dd6db96e6
