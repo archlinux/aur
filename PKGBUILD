@@ -8,7 +8,7 @@ url="https://github.com/google/shaderc"
 license=("Apache")
 
 arch=("x86_64")
-makedepends=("git" "ninja" "cmake" "python" "asciidoctor")
+makedepends=("git" "ninja" "cmake" "python2" "asciidoctor")
 depends=("gcc-libs")
 conflicts=("shaderc")
 provides=("shaderc" "glslc")
@@ -47,6 +47,7 @@ build() {
     -DSHADERC_SKIP_TESTS=on \
     -DSKIP_GLSLANG_INSTALL=on \
     -DSKIP_SPIRV_TOOLS_INSTALL=on \
+    -DPYTHON_EXECUTABLE="$(which python2)" \
     -GNinja
 
   ninja
