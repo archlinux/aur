@@ -6,6 +6,7 @@ pkgbase = tempreader
 	arch = x86_64
 	arch = arm
 	license = MIT
+	conflicts = tempreader-git
 	source_x86_64 = https://github.com/jtyr/tempreader/releases/download/v1.0.0/tempreader-1.0.0-linux-amd64.tar.gz
 	sha256sums_x86_64 = b39be7fdd43efa02e1c0b4c00219e9ecee10b65d0fa49c7d57c61daf7e784fdc
 	source_arm = https://github.com/jtyr/tempreader/releases/download/v1.0.0/tempreader-1.0.0-linux-arm.tar.gz
