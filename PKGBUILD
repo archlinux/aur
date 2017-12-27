@@ -20,6 +20,7 @@ md5sums=('b9f59627273275c5a3283a64e9e69714'
 PKGEXT='.pkg.tar'
 
 package() {
+  chmod +x GravitDesigner.AppImage
   ./GravitDesigner.AppImage --appimage-extract
   install -d ${pkgdir}/opt/${pkgname}
   cp -r --no-preserve=all ${srcdir}/squashfs-root/app/* ${pkgdir}/opt/${pkgname}/
