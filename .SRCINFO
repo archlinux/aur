@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-tempreader-widget-git
 	pkgdesc = Plasmoid for Plasma 5 which shows temperature from DS18B20 sensors.
-	pkgver = r3.24b971e
+	pkgver = r6.f81aaf2
 	pkgrel = 1
 	url = https://github.com/jtyr/plasma-tempreader
 	arch = i686

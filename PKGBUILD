@@ -3,26 +3,26 @@
 pkgname=plasma5-applets-tempreader-widget-git
 _pkgname=plasma5-applets-tempreader-widget
 _gitpkgname=plasma-tempreader
-pkgver=r3.24b971e
+pkgver=r6.f81aaf2
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5 which shows temperature from DS18B20 sensors."
 arch=('i686' 'x86_64')
-url="https://github.com/jtyr/${_gitpkgname}"
+url="https://github.com/jtyr/$_gitpkgname"
 license=('MIT')
 depends=('plasma-workspace' 'qt5-graphicaleffects')
 makedepends=('git' 'extra-cmake-modules')
 conflicts=("${_pkgname-*}" 'plasma-applet-tempreader-widget-git')
 provides=("${_pkgname-*}")
-source=("git+https://github.com/jtyr/${_gitpkgname}.git")
+source=("git+https://github.com/jtyr/$_gitpkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitpkgname}"
+  cd "$_gitpkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_gitpkgname}"
+  cd "$_gitpkgname"
 
   mkdir -p build
   cd build
@@ -36,10 +36,9 @@ build() {
 }
 
 package() {
-  cd "${_gitpkgname}"/build
-  make install DESTDIR="${pkgdir}"
+  cd "$srcdir/$_gitpkgname/build"
+  make install DESTDIR="$pkgdir"
 
-  cd ..
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "$srcdir/$_gitpkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$srcdir/$_gitpkgname/README.md" "$pkgdir/usr/share/doc/$pkgname"
 }
