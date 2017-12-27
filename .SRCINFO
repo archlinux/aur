@@ -1,0 +1,15 @@
+pkgbase = xcdroast
+	pkgdesc = X-CD-Roast is a flexible frontend for optical disc authoring.
+	pkgver = 1.18
+	pkgrel = 1
+	url = http://www.xcdroast.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPLv2
+	depends = cdrtools>=3.02a07
+	source = https://downloads.sourceforge.net/project/xcdroast/xcdroast-1.18.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fxcdroast%2F%3Fsource%3Dtyp_redirect&ts=1514374105&use_mirror=netcologne
+	md5sums = 0626a528c4848e4c2cffa184b7c1ba2a
+
+pkgname = xcdroast
+
