@@ -6,6 +6,7 @@ pkgbase = tempreader-git
 	arch = any
 	license = MIT
 	makedepends = go
+	conflicts = tempreader
 
 pkgname = tempreader-git
 

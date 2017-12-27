@@ -10,6 +10,7 @@ pkgdesc='RESTful API to read data from DS18B20 temperature sensors.'
 url="https://github.com/jtyr/tempreader"
 arch=('any')
 license=('MIT')
+conflicts=('tempreader')
 makedepends=('go')
 
 
