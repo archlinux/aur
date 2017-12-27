@@ -1,0 +1,13 @@
+pkgbase = python-elmextensions-git
+	pkgdesc = Python library that contains a few more complex elementary objects for easy importing/usage
+	pkgver = 0.2.1.rc.2
+	pkgrel = 1
+	url = https://github.com/JeffHoogland/python-elm-extensions
+	arch = any
+	license = BSD
+	depends = python-efl
+	source = https://github.com/JeffHoogland/python-elm-extensions/archive/0.2.1.rc.2.tar.gz
+	sha256sums = 36987525267d9bc3bebeb3773aa00fea97186ed02b037eac049e8accdbccc26a
+
+pkgname = python-elmextensions-git
+
