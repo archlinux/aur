@@ -1,0 +1,18 @@
+pkgbase = skabus-git
+	pkgdesc = A suite of programs and libraries for Unix systems that aim to implement a bus, i.e. a many-to-many interprocess communication mechanism
+	pkgver = 1
+	pkgrel = 1
+	url = http://skarnet.org/software/skabus/
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = skalibs
+	makedepends = git
+	depends = s6
+	provides = skabus
+	conflicts = skabus
+	source = git://git.skarnet.org/skabus
+	sha256sums = SKIP
+
+pkgname = skabus-git
+
