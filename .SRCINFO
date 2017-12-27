@@ -1,0 +1,26 @@
+pkgbase = haskell-helm-git
+	pkgdesc = A functionally reactive game engine
+	pkgver = r283.e2d8745
+	pkgrel = 1
+	url = http://github.com/switchface/helm
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-cairo
+	depends = haskell-elerea
+	depends = haskell-linear
+	depends = haskell-mtl
+	depends = haskell-pango
+	depends = haskell-random
+	depends = haskell-sdl2
+	depends = haskell-stm
+	depends = haskell-text
+	provides = haskell-helm
+	conflicts = haskell-helm
+	source = haskell-helm-git::git+https://github.com/z0w0/helm.git
+	sha512sums = SKIP
+
+pkgname = haskell-helm-git
+
