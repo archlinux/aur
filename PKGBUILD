@@ -1,18 +1,18 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: farwayer <farwayer@gmail.com>
 
 _gemname=rubocop
 pkgname=ruby-${_gemname}
-pkgver=0.49.1
-pkgrel=2
+pkgver=0.52.1
+pkgrel=1
 pkgdesc="Automatic Ruby code style checking tool."
 arch=('any')
 depends=(
   ruby
-# uncomment when ruby-parallel will be updated
-#  'ruby-parallel>=1.10' 'ruby-parallel<2'
-  'ruby-parser>=2.3.3.1' 'ruby-parser<3'
+  'ruby-parallel>=1.10' 'ruby-parallel<2'
+  'ruby-parser>=2.4.0.2' 'ruby-parser<3'
   'ruby-powerpack>=0.1' 'ruby-powerpack<1'
-  'ruby-rainbow>=1.99.1' 'ruby-rainbow<3'
+  'ruby-rainbow>=2.2.2' 'ruby-rainbow<4'
   'ruby-ruby-progressbar>=1.7' 'ruby-ruby-progressbar<2'
   'ruby-unicode-display_width>=1.0.1' 'ruby-unicode-display_width<2'
 )
@@ -22,9 +22,7 @@ license=('MIT')
 source=(
 	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
-sha256sums=(
-	'bcb37220633a570611b68bf8d4649414624d90fad83a7bf8310940f61df51ed7'
-)
+sha256sums=('4ec659892e86c64ec25e7a543b4a717f9ee6e9450bdb9541e0d3492b43ce4234')
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
