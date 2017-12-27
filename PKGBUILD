@@ -4,8 +4,8 @@
 
 _pkgname=execline
 pkgname=${_pkgname}-no-conflicts
-pkgver=2.3.0.3
-pkgrel=2
+pkgver=2.3.0.4
+pkgrel=1
 pkgdesc="A (non-interactive) scripting language, like sh; without import or define"
 arch=('i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}/"
@@ -14,7 +14,7 @@ depends=('skalibs')
 conflicts=('execline')
 provides=("execline=$pkgver")
 source=("http://skarnet.org/software/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('1a698425740a410a38be770f98b8faf94c633e29a74ba1d25adddbb294e979f5')
+sha256sums=('e4bb8fc8f20cca96f4bac9f0f74ebce5081b4b687bb11c79c843faf12507a64b')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
