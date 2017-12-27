@@ -1,7 +1,7 @@
 pkgbase = mkinitcpio-docker-hooks
 	pkgdesc = mkinitcpio hooks that provides support for using docker image as root
-	pkgver = 1.1
-	pkgrel = 3
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/zasdfgbnm/mkinitcpio-docker-hooks
 	arch = any
 	groups = base
@@ -16,7 +16,7 @@ pkgbase = mkinitcpio-docker-hooks
 	md5sums = 5ce9a3498b0af7e9fbbe830893da83e3
 	md5sums = b44c59a25ef2ff74e60d20aaabe683fd
 	md5sums = 4df2fd7306aef1e3d94ffc6b05056728
-	md5sums = bcae1950b172498e34c1aa4cb55ecad0
+	md5sums = cdfc2b962060921d415134192a540dd1
 
 pkgname = mkinitcpio-docker-hooks
 
