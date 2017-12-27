@@ -1,6 +1,6 @@
 # Maintainer:  Konstantin Gorodinskii <mail@konstantin.io>
 pkgname='wabt'
-pkgdesc="WABT (we pronounce it "wabbit") is a suite of tools for WebAssembly"
+pkgdesc="The WebAssembly Binary Toolkit is a suite of tools for WebAssembly"
 provides=('wabt')
 url="https://github.com/WebAssembly/wabt"
 pkgver=1.0

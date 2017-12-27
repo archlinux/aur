@@ -12,6 +12,6 @@ pkgbase = wabt
 	md5sums = SKIP
 
 pkgname = wabt
-	pkgdesc = WABT (we pronounce it wabbit) is a suite of tools for WebAssembly
+	pkgdesc = The WebAssembly Binary Toolkit is a suite of tools for WebAssembly
 	provides = wabt
 
