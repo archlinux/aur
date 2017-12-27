@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd "$_origname-$pkgver"
-	bundle install
+	~/.gem/ruby/$(ls ~/.gem/ruby | tail -n 1)/bin/bundle install
 }
 
 package() {
