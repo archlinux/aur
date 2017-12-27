@@ -2,7 +2,7 @@
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>, ZekeSulastin <zekesulastin@gmail.com>
 
 pkgname=fs2_open-git
-pkgver=3.7.5.98af9dd90
+pkgver=3.8.1.98af9dd90
 pkgrel=1
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 'SKIP'
 'SKIP')
 
-version=3.7.5
+version=3.8.1
 
 pkgver () {
 	cd "$srcdir/$pkgname"
