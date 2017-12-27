@@ -1,0 +1,17 @@
+pkgbase = wabt
+	pkgver = 1370
+	pkgrel = 1
+	url = https://github.com/WebAssembly/wabt
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	makedepends = clang
+	source = git+https://github.com/WebAssembly/wabt
+	md5sums = SKIP
+
+pkgname = wabt
+	pkgdesc = WABT (we pronounce it wabbit) is a suite of tools for WebAssembly, including
+	provides = wabt
+
