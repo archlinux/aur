@@ -2,19 +2,19 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=pkgdistcache
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='A distributed local-network cache for pacman packages'
 arch=('any')
 url='http://venator.ath.cx/dw/doku.php?id=linux:pkgdistcache'
 license=('GPL')
-depends=('avahi' 'python-dbus' 'dbus-glib' 'python-gobject' 'curl')
+depends=('avahi' 'python-dbus' 'dbus-glib' 'python-gobject' 'curl' 'python-requests')
 install="${pkgname}.install"
 source=('pkgdistcache-client'
         'pkgdistcache-daemon'
         'pkgdistcache.conf'
         'pkgdistcached.service')
-sha256sums=('af14f26cbcb089467080e80eae25767e60ad1af5aba6ad80fbddeeaf6b75e1b8'
+sha256sums=('612b58f5992a20c241a03c0d205dc92e0f8de10e00ed6a81c99fb0b9fb28ab31'
             '8f298c9f1548b56373038fe69f8568dc77e17a700476594155359df20eb275a4'
             'd77ac418aa651bc622cd91204d6907554c6cdb4bb989e484cc54da32342faa51'
             '756c0bd1139e296da88937a89ab19e0b5d6c0d5d0f719034d4029b1fe1ea09e9')

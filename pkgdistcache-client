@@ -15,6 +15,7 @@ import dbus
 from gi.repository import GObject as gobject
 import dbus.glib
 import pickle
+import requests
 
 colors = {'none': '\033[0m',
 	'black': '\033[0;30m',		'bold_black': '\033[1;30m',
@@ -147,14 +148,27 @@ def main(argv):
 			
 			with open(cache_file, 'wb') as f:
 				pickle.dump(pkgdistcache_clients, f, -1)
-	
+
+		if pkgdistcache_clients:
+			print("-- Discovered hosts: %s" % ", ".join(set([c.host for c in pkgdistcache_clients])))
+		else:
+			print("-- No hosts discovered")
+
 		for client in pkgdistcache_clients:
 			clientip = client.ip
 			if ":" in clientip:
 				clientip = "[" + clientip + "]"
 			url = "http://" + clientip + ":" + str(client.port) + "/" + pkg
+			try:
+				r = requests.head(url, timeout=1)
+			except Exception as e:
+				printwarn("Failed checking host '%s' with ip '%s': %s" % (client.host, clientip, repr(e)))
+				continue
+			if r.status_code != 200:
+				continue
+
 			dst = argv[2]
-			printmsg("Downloading " + pkg + " from host '" + client.host + "'")
+			printmsg("Downloading %s from host '%s'" % (pkg, client.host))
 			download_cmd = download_cmd_template.substitute({'u': url, 'o': dst})
 			try:
 				ret = runcmd2(download_cmd)
@@ -169,6 +183,7 @@ def main(argv):
 	
 	# download package file from mirror if necessary
 	if must_download == True:
+		print(">> Downloading %s from mirror" % pkg)
 		try:
 			download_cmd = download_cmd_template.substitute({'u': argv[1], 'o': argv[2]})
 			return runcmd2(download_cmd)
