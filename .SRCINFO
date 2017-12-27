@@ -1,6 +1,6 @@
 pkgbase = eclipse-pde
 	pkgdesc = Plug-in Development Environment Binary for Eclipse IDE
-	pkgver = 4.6.2
+	pkgver = 4.7.2
 	pkgrel = 1
 	url = http://www.eclipse.org/pde/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = eclipse-pde
 	makedepends = java-environment-common
 	depends = eclipse-rcp-source
 	options = !strip
-	source = http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/eclipse/downloads/drops4/R-4.6.2-201611241400/org.eclipse.pde-4.6.2.zip
-	sha256sums = 09273bf6a66a6340c2622d3701d70412aa043ef630100a3fad4028a2e343f216
+	source = http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/eclipse/downloads/drops4/R-4.7.2-201711300510/org.eclipse.pde-4.7.2.zip
+	sha256sums = d26854f6053bd3c58884002edd80c879b140a024fc2e919391f877642ab8e104
 
 pkgname = eclipse-pde
 
