@@ -1,58 +1,60 @@
-From 889bc96e75eb5f2f3d5da9fb110ce092b8e1a395 Mon Sep 17 00:00:00 2001
+From 7daf66866ca2e221a1e180cdbd182a4048fa7711 Mon Sep 17 00:00:00 2001
 From: Solomon Choina <shlomochoina@gmail.com>
-Date: Wed, 28 Jun 2017 10:32:15 -0400
+Date: Tue, 12 Dec 2017 16:15:51 -0500
 Subject: [PATCH] updating the patch
 
 ---
- CMakeLists.txt                                               | 12 ++++++------
- .../{pantheon-greeter.conf => lightdm-pantheon-greeter.conf} |  0
- ...heon-greeter.desktop => lightdm-pantheon-greeter.desktop} |  4 ++--
- src/PantheonGreeter.vala                                     |  2 +-
- src/Widgets/Wallpaper.vala                                   |  2 +-
+ CMakeLists.txt                                             | 14 +++++++-------
+ ...pantheon-greeter.conf => lightdm-pantheon-greeter.conf} |  0
+ ...eter.desktop.in => lightdm-pantheon-greeter.desktop.in} |  2 +-
+ src/PantheonGreeter.vala                                   |  2 +-
+ src/Widgets/Wallpaper.vala                                 |  2 +-
  5 files changed, 10 insertions(+), 10 deletions(-)
  rename data/{pantheon-greeter.conf => lightdm-pantheon-greeter.conf} (100%)
- rename data/{pantheon-greeter.desktop => lightdm-pantheon-greeter.desktop} (64%)
+ rename data/{pantheon-greeter.desktop.in => lightdm-pantheon-greeter.desktop.in} (83%)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index bd290ff..83f270b 100644
+index a0b6ca0..9785166 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -8,7 +8,7 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
- 
+
  set (CONF_DIR "/etc/lightdm")
  set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 -set (PKGDATADIR "${DATADIR}/pantheon-greeter")
 +set (PKGDATADIR "${DATADIR}/lightdm-pantheon-greeter")
+ set (GETTEXT_PACKAGE ${CMAKE_PROJECT_NAME})
  set (CMAKE_INSTALL_PREFIX /usr)
- set (VERSION "3.1.1")
- 
-@@ -93,10 +93,10 @@ include (GSettings)
+ set (VERSION "3.2.0")
+@@ -85,11 +85,11 @@ include (GSettings)
  include (GResource)
  glib_compile_resources (GLIB_RESOURCES_CSS SOURCE data/css.gresource.xml)
- 
+
 -add_executable (pantheon-greeter ${VALA_C} ${GLIB_RESOURCES_CSS})
 -target_link_libraries(pantheon-greeter m)
 +add_executable (lightdm-pantheon-greeter ${VALA_C} ${GLIB_RESOURCES_CSS})
 +target_link_libraries(lightdm-pantheon-greeter m)
- 
+
 -install (TARGETS pantheon-greeter RUNTIME DESTINATION sbin)
--install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/pantheon-greeter.desktop DESTINATION share/xgreeters)
+-configure_file (${CMAKE_SOURCE_DIR}/data/pantheon-greeter.desktop.in ${CMAKE_BINARY_DIR}/data/pantheon-greeter.desktop)
+-install (FILES ${CMAKE_BINARY_DIR}/data/pantheon-greeter.desktop DESTINATION share/xgreeters)
 -install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/pantheon-greeter.conf DESTINATION ${CONF_DIR})
 +install (TARGETS lightdm-pantheon-greeter RUNTIME DESTINATION bin)
-+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/lightdm-pantheon-greeter.desktop DESTINATION share/xgreeters)
++configure_file (${CMAKE_SOURCE_DIR}/data/lightdm-pantheon-greeter.desktop.in ${CMAKE_BINARY_DIR}/data/lightdm-pantheon-greeter.desktop)
++install (FILES ${CMAKE_BINARY_DIR}/data/lightdm-pantheon-greeter.desktop DESTINATION share/xgreeters)
 +install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/lightdm-pantheon-greeter.conf DESTINATION ${CONF_DIR})
  install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/fingerprint.svg DESTINATION ${PKGDATADIR})
 diff --git a/data/pantheon-greeter.conf b/data/lightdm-pantheon-greeter.conf
 similarity index 100%
 rename from data/pantheon-greeter.conf
 rename to data/lightdm-pantheon-greeter.conf
-diff --git a/data/pantheon-greeter.desktop b/data/lightdm-pantheon-greeter.desktop
-similarity index 64%
-rename from data/pantheon-greeter.desktop
-rename to data/lightdm-pantheon-greeter.desktop
-index 225cd40..3e40fc7 100644
---- a/data/pantheon-greeter.desktop
-+++ b/data/lightdm-pantheon-greeter.desktop
+diff --git a/data/pantheon-greeter.desktop.in b/data/lightdm-pantheon-greeter.desktop.in
+similarity index 83%
+rename from data/pantheon-greeter.desktop.in
+rename to data/lightdm-pantheon-greeter.desktop.in
+index d8de6eb..9d7882a 100644
+--- a/data/pantheon-greeter.desktop.in
++++ b/data/lightdm-pantheon-greeter.desktop.in
 @@ -1,7 +1,7 @@
  [Desktop Entry]
  Name=Pantheon Greeter
@@ -60,15 +62,14 @@ index 225cd40..3e40fc7 100644
 -Exec=pantheon-greeter
 +Exec=lightdm-pantheon-greeter
  Type=Application
- X-Ubuntu-Gettext-Domain=pantheon-greeter
--Name[en_US]=pantheon-greeter
-+Name[en_US]=lightdm-pantheon-greeter
+ X-Ubuntu-Gettext-Domain=@GETTEXT_PACKAGE@
+ Name[en_US]=pantheon-greeter
 diff --git a/src/PantheonGreeter.vala b/src/PantheonGreeter.vala
-index d984635..194a259 100644
+index 40fa94e..51454ac 100644
 --- a/src/PantheonGreeter.vala
 +++ b/src/PantheonGreeter.vala
 @@ -104,7 +104,7 @@ public class PantheonGreeter : Gtk.Window {
-         
+
          settings = new KeyFile ();
          try {
 -            settings.load_from_file (Path.build_filename (Constants.CONF_DIR, "pantheon-greeter.conf"), KeyFileFlags.KEEP_COMMENTS);
@@ -77,7 +78,7 @@ index d984635..194a259 100644
              warning (e.message);
          }
 diff --git a/src/Widgets/Wallpaper.vala b/src/Widgets/Wallpaper.vala
-index 9b6cde1..dcecd1f 100644
+index 00025b9..9e98c9c 100644
 --- a/src/Widgets/Wallpaper.vala
 +++ b/src/Widgets/Wallpaper.vala
 @@ -49,7 +49,7 @@ public class Wallpaper : Gtk.Stack {
@@ -89,3 +90,7 @@ index 9b6cde1..dcecd1f 100644
              default_wallpaper = settings.get_string ("greeter", "default-wallpaper");
          } catch (Error e) {
              warning (e.message);
+--
+2.15.1
+
+
