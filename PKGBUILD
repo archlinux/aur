@@ -4,7 +4,7 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=4.12.7
+pkgver=4.14.8
 _basever=${pkgver%.*}
 pkgrel=1
 pkgdesc='Kernel headers sanitized for use in userspace'
@@ -13,9 +13,9 @@ url='http://www.gnu.org/software/libc'
 license=(GPL2)
 source=(https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.{xz,sign}
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign})
-md5sums=('fc454157e2d024d401a60905d6481c6b'
+md5sums=('bacdb9ffdcd922aa069a5e1520160e24'
          'SKIP'
-         '3ce799c369531ec13a202bc7da6eb847'
+         'e4a4d2abd61516d4eaf4789ca5e113ff'
          'SKIP')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E')  # Greg Kroah-Hartman
