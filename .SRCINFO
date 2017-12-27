@@ -1,20 +1,24 @@
 pkgbase = gravit-designer-bin
 	pkgdesc = A cross-platform, free design tool for the 21st century empowering everyone to design
-	pkgver = 3.2.5
+	pkgver = 3.2.6
 	pkgrel = 1
 	url = https://designer.io/
 	arch = x86_64
-	license = unknow
+	license = custom:freeware
 	depends = alsa-lib
 	depends = libxss
 	depends = gtk2
 	depends = gconf
 	depends = libxtst
 	depends = nss
-	source = https://designer.gravit.io/_downloads/linux/GravitDesigner.zip
-	source = gravitdesigner.desktop
-	md5sums = b2f9ca124af0794b6416c47b5faff0aa
-	md5sums = 377dce4a55e955ffd58e67731a82c745
+	source = gravit-designer-bin-3.2.6.zip::https://designer.gravit.io/_downloads/linux/GravitDesigner.zip?v=3.2.6
+	source = gravit-designer.desktop
+	source = gravit-designer.png
+	source = LICENSE
+	md5sums = b9f59627273275c5a3283a64e9e69714
+	md5sums = 689ceb636418b52236edd98207fb9387
+	md5sums = a9c256cb9eb6bc9a280c5dccee2ad9af
+	md5sums = 021ccafc0993d3c34265ae59048d4bf2
 
 pkgname = gravit-designer-bin
 

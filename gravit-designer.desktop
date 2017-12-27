@@ -4,5 +4,6 @@ Comment=Gravit Designer is a full featured free vector design app right at your 
 Exec=gravit-designer
 Terminal=false
 Type=Application
-Icon=gravit-designer.png
+Icon=/usr/share/pixmaps/gravit-designer.png
 Categories=Graphics;VectorGraphics;GTK;
+Name[it_IT]=gravit-designer.desktop
