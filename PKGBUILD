@@ -1,16 +1,16 @@
-# Maintainer: Andy Kluger <http://t.me/andykluger>
+# Maintainer: Andy Kluger <https://t.me/andykluger>
 # Contributor: philomath <philomath868 AT gmail DOT com>
 # Contributor: Roberto Alsina <ralsina@kde.org>
 pkgname=skalibs
-pkgver=2.6.0.2
-pkgrel=2
+pkgver=2.6.2.0
+pkgrel=1
 pkgdesc="A general-purpose utility library for secure, small C development"
 url="http://www.skarnet.org/software/skalibs/"
 license=('ISC')
 arch=('i686' 'x86_64')
 depends=('glibc')
 source=(http://www.skarnet.org/software/skalibs/$pkgname-$pkgver.tar.gz)
-sha256sums=('349b02d925c795e81c9b2f59f5f281f34c0a5477e22b09cfc7c566194923492e')
+sha256sums=('12f9706b412367c45310ab971d204d959441895d3fea6e5e41ab8ef8d24b71b2')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
