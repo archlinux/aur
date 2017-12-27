@@ -3,11 +3,11 @@
 
 pkgname=pothos
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Pothos data-flow framework"
 arch=('i686' 'x86_64')
 url="https://github.com/pothosware/PothosCore/wiki"
-license=('Boost Software License')
+license=('boost')
 depends=('python' 'poco' 'soapysdr-git' 'portaudio')
 makedepends=('git' 'nlohmann-json')
 source=("git+https://github.com/pothosware/PothosCore.git#tag=pothos-$pkgver")
