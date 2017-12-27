@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
 run_hook() {
-    . /etc/docker-btrfs.sh
     docker_rwlayer=$(echo $rootflags | grep -o "subvol=[^,]*" | grep -o "[^=]*\$")
 
     mkdir -p /docker_root
@@ -25,11 +24,7 @@ run_hook() {
     fi
 
     msg ":: getting docker cache subvolume"
-    cd /var/lib/docker/image/btrfs
-    image_id=$(jq ".Repositories.\"$docker_image\".\"$docker_image:$docker_tag\"" repositories.json | sed 's/:/\//g;s/"//g')
-    last_layer_id=$(jq '.rootfs.diff_ids[]' imagedb/content/$image_id | sed 's/"//g' | tail -n 1)
-    cache_id_file=$(grep $last_layer_id -rl layerdb | sed 's/diff/cache-id/g')
-    cache_id=$(cat $cache_id_file)
+    cache_id=$(get-docker-cache-id)
 
     msg ":: creating rwlayer"
     [ -d /docker_root/"$docker_rwlayer" ] && btrfs subvolume delete /docker_root/"$docker_rwlayer"

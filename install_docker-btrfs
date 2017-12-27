@@ -4,8 +4,8 @@ build() {
     add_module btrfs
     add_binary btrfs
     add_binary btrfsck
-    add_binary jq
-    add_file /etc/docker-btrfs.sh
+    add_binary get-docker-cache-id
+    add_file /etc/docker-btrfs.json
     add_runscript
 }
 
