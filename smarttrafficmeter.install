@@ -1,5 +1,6 @@
 post_install() {
     systemctl enable smarttrafficmeter
+    echo "Please wait for the installation to complete
  	systemctl start smarttrafficmeter
  	echo "#####################################################################"
  	echo "#                                                                   #"
@@ -10,6 +11,13 @@ post_install() {
  	echo "# sudo systemctl enable smarttrafficmeter                           #"
  	echo "# sudo systemctl start smarttrafficmeter                            #"
  	echo "# and restart your computer                                         #"
+ 	echo "#                                                                   #"
+ 	echo "# To start/stop/enable/disable Smart Traffic Meter execute          #"
+ 	echo "# sudo systemctl start/stop/enable/disable smarttrafficmeter        #"
+ 	echo "#                                                                   #"
+ 	echo "# default database directory: /usr/share/smarttrafficmeter          #"
+ 	echo "# default config directory: /etc/smarttrafficmeter                  #"
+ 	echo "# default log directory: /var/log/smarttrafficmeter                 #"
  	echo "#                                                                   #"
  	echo "#####################################################################"
 }
