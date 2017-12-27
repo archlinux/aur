@@ -36,12 +36,12 @@ BRANCH=master
 # =================================================
 #
 #######################################################################
+CHECK=            # Run tests.
 CLANG=            # Use clang.
 LTO=              # Enable link-time optimization. Experimental.
-#ATHENA=           # Use Athena widgets. (83 1337, 83 001d sk00l).
+ATHENA=           # Use Athena widgets. (83 1337, 83 001d sk00l).
 GTK2=             # Leave empty to compile with GTK+ 3 support.
                   # No, GTK+ 2 ain't kool, dawg!
-NOGTK3=           # Leave empty to compile with GTK+ 3 support.
 GPM=              # Enable gpm support.
 M17N=             # Enable m17n international table input support.
                   # You are far better off using UTF-8 and an input
@@ -64,7 +64,7 @@ if [[ BRANCH = "emacs-26" ]]; then
 else
   pkgname=emacs-git
 fi
-pkgver=27.0.50.131377
+pkgver=27.0.50.131638
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
@@ -90,14 +90,10 @@ fi
 
 if [[ $ATHENA = "YES" ]]; then  
   depends+=( 'libxaw' );
-fi
-
-if [[ $GTK2 = "YES" ]]; then
+elif [[ $GTK2 = "YES" ]]; then
   depends+=( 'gtk2' );
 else
-  if [[ ! $NOGTK3 = "YES" ]]; then
-    depends+=( 'gtk3' ); 
-  fi
+  depends+=( 'gtk3' ); 
 fi
 
 if [[ $GPM = "YES" ]]; then 
@@ -199,23 +195,15 @@ if [[ $LTO = "YES" ]]; then
   ); 
 fi
 
-if [[ $ATHENA = "YES" ]]; then
-  _conf+=( 
-    '--with-x-toolkit=athena' 
-    '--without-gconf' 
-    '--without-gsettings' 
-  );
-fi
-
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings you set in ~/.emacs.
 # If you insist you'll need to play gymnastics with
 # set-frame-font and set-menu-font. Good luck!
-if [[ $GTK2 = "YES" ]]; then 
-  #_conf+=( '--with-x-toolkit=gtk2' '--with-gconf' '--without-gsettings' );
+if [[ $ATHENA = "YES" ]]; then
+  _conf+=( '--with-x-toolkit=athena' '--without-gconf' '--without-gsettings' ); 
+elif [[ $GTK2 = "YES" ]]; then 
   _conf+=( '--with-x-toolkit=gtk2' '--without-gconf' '--without-gsettings' );
 else
-  #_conf+=( '--with-x-toolkit=gtk3' '--without-gconf' '--with-gsettings' ); 
   _conf+=( '--with-x-toolkit=gtk3' '--without-gconf' '--without-gsettings' ); 
 fi
 
@@ -281,6 +269,10 @@ fi
   if [[ $DOCS_PDF = "YES" ]]; then 
     make pdf; 
   fi
+  if [[ $CHECK = "YES" ]]; then
+    make check;
+  fi
+
 }
 
 package() {

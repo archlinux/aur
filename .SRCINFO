@@ -1,13 +1,13 @@
 pkgbase = emacs-git
 	pkgdesc = GNU Emacs. Development.
-	pkgver = 27.0.50.131377
+	pkgver = 27.0.50.131638
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = alsa-lib
-	depends = gtk3
+	depends = libxaw
 	depends = libotf
 	depends = libjpeg-turbo
 	depends = giflib
