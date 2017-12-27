@@ -2,7 +2,7 @@
 
 pkgname=intel-media-driver-git
 pkgver=r18.0b7e123
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/media-driver/'
@@ -12,8 +12,8 @@ depends=(
          'libva-git'
 )
 makedepends=('git' 'cmake')
-provides=('intel-vaapi-media-driver')
-conflicts=('intel-vaapi-media-driver')
+provides=('intel-media-driver')
+conflicts=('intel-media-driver')
 options=('!emptydirs')
 install="${pkgname}.install"
 source=("$pkgname"::'git+https://github.com/intel/media-driver.git'
