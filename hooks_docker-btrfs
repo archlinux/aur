@@ -44,7 +44,7 @@ run_hook() {
     fi
 
     msg ":: applying top layer"
-    cp -r /top_layer/"$toplayer_path"/* /docker_root/"$docker_rwlayer"/
+    cp -a /top_layer/"$toplayer_path"/* /docker_root/"$docker_rwlayer"/
 
     # cleaning
     cd /
