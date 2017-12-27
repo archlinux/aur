@@ -1,9 +1,8 @@
 pkgbase = gbm
 	pkgdesc = Game Backup Monitor monitors games and backs up their savegames
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mikemaximus.github.io/gbm-web/linux.html
-	install = gbm.install
 	arch = any
 	license = GPL3
 	makedepends = imagemagick
