@@ -1,0 +1,22 @@
+pkgbase = mjpg-streamer-jacksonliam-git
+	pkgdesc = Stream mjpeg frames from a webcam via http. Newer forked code.
+	pkgver = r299.c1ecfaf
+	pkgrel = 1
+	url = https://github.com/jacksonliam/mjpg-streamer
+	arch = x86_64
+	groups = multimedia
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = gcc
+	depends = libjpeg
+	depends = imagemagick
+	provides = mjpeg-streamer
+	provides = mjpg-streamer
+	conflicts = mjpg-streamer mjpeg-streamer
+	options = !makeflags
+	source = git+https://github.com/jacksonliam/mjpg-streamer.git
+	md5sums = SKIP
+
+pkgname = mjpg-streamer-jacksonliam-git
+
