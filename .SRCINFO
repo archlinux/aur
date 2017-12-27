@@ -1,15 +1,14 @@
 pkgbase = termite-nocsd
-	pkgver = 12
-	pkgrel = 2
+	pkgver = 13
+	pkgrel = 1
 	url = https://github.com/thestinger/termite/
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = vte3-ng
 	makedepends = ncurses
 	conflicts = termite
-	source = git+https://github.com/thestinger/termite#tag=v12
+	source = git+https://github.com/thestinger/termite#tag=v13
 	source = termite.patch
 	sha256sums = SKIP
 	sha256sums = 4319296a88502b0a0397704177047cf7b0d39816b87d0f477a92ced4d1f16715
