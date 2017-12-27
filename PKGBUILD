@@ -2,7 +2,7 @@
 
 pkgname=intel-media-driver-git
 pkgver=r18.0b7e123
-pkgrel=2
+pkgrel=3
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/media-driver/'
@@ -34,7 +34,9 @@ build() {
     
     cmake \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DINSTALL_DRIVER_SYSCONF='ON' \
         -DMEDIA_VERSION='2.0.0' \
         -DBUILD_ALONG_WITH_CMRTLIB='1' \
         -DBS_DIR_GMMLIB="$(pwd)/../gmmlib-git/Source/GmmLib/" \
@@ -49,10 +51,7 @@ build() {
 
 package() {
     cd build
-    
     make DESTDIR="$pkgdir" install
-    
-    [ "$CARCH" = 'x86_64' ] && mv -f "${pkgdir}/usr/lib64/"*.so "${pkgdir}/usr/lib"
     
     # license
     cd "${srcdir}/${pkgname}"
