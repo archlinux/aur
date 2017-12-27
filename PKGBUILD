@@ -3,7 +3,7 @@
 
 _gemname=scss_lint
 pkgname=ruby-$_gemname
-pkgver=0.53.0
+pkgver=0.56.0
 pkgrel=1
 pkgdesc='Configurable tool for writing clean and consistent SCSS.'
 arch=('any')
@@ -14,7 +14,7 @@ noextract=($_gemname-$pkgver.gem)
 depends=('ruby' 'ruby-sass' 'ruby-rainbow')
 makedepends=('rubygems')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-sha256sums=('668b2a4aed536364b63854745c4d2bd316b22cd07069ef008133405c5e290efe')
+sha256sums=('0f04fa7e6a5a45535dc93c4f54026fab71bc8fcec17217c37310c460659e6e05')
 
 package() {
   cd "$srcdir"
