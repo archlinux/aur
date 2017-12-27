@@ -2,7 +2,7 @@
 pkgname=rpcs3-bin
 pkgver=0.0.4
 _pkgbuild='2017-12-25-3cf0fb6-9235'
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
