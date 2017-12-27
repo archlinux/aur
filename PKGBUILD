@@ -3,7 +3,7 @@
 
 pkgname=snapper
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('x86_64')
 url="http://snapper.io"
@@ -15,7 +15,7 @@ backup=('etc/conf.d/snapper')
 source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2"
         "iostream.patch::https://patch-diff.githubusercontent.com/raw/openSUSE/snapper/pull/355.patch")
 sha256sums=('8876b6fa946dc46df5dcbaf747bb11ac4c5a3418dd59c5ba09c47910cbad1835'
-            '20ed5678ff102b8d9ef3c11e38d0f83cc2214b3fca088613bba3154ee4c13bcd')
+            '8bccce57b694179561f0f33aaa2dc040ba7276e4f193dc59ef3f0983dec5acfc')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
