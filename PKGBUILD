@@ -2,7 +2,7 @@
 
 pkgname=ib-controller
 pkgver=3.4.3
-pkgrel=0
+pkgrel=1
 pkgdesc='Manages headless Interactive Brokers IB Gateway instances'
 arch=('any')
 url="https://github.com/ib-controller/ib-controller"
@@ -18,8 +18,8 @@ source=('https://github.com/ib-controller/ib-controller/releases/download/3.4.0/
   	'ibcontroller@.service')
 md5sums=('4e91b8df02123842aef9f211c5e0a4ff'
          '7e1c811c0f6bb1bdc7e98ca77d8676bf'
-         '15f1ba10df1fa29068630eeea9e72bfa'
-         '2a8c16170d102c855778921cd0391c19'
+         '981aa279128e5638f649ca9e7ab23011'
+         '547d187f535c8230a2d4cff4d2d899f2'
          'f1038408283433b18a5cb39b30019fe6')
 
 
