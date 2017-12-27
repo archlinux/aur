@@ -6,6 +6,7 @@ _srcname=MediaSDK
 pkgname=intel-media-sdk
 pkgver=1.2a
 pkgrel=1
+epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('i686' 'x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
