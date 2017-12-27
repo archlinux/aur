@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=omegat
-pkgver=3.6.0_07
+pkgver=3.6.0_08
 pkgrel=1
 pkgdesc="Multiplatform CAT tool application, written in Java"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('omegat-beta')
 options=('!strip')
 source=(http://downloads.sourceforge.net/$pkgname/OmegaT_${pkgver}_Without_JRE.zip
         $pkgname.desktop)
-sha256sums=('9d07bf46a992e3dfd23a88980dbf71fdc72e1be07e97be89a834bcdffb310626'
+sha256sums=('e5a6e7bf388e5d06449d335d824fb88be069c47c153da85f705d94cfcd31ec26'
             'ac480a8244c1a5171b7f2d5892585360067d78e3113ccb45aad6afe7ed69aec5')
 
 package() {
