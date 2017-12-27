@@ -1,6 +1,6 @@
 pkgbase = browserpass
 	pkgdesc = Chrome & Firefox browser extension for pass, a UNIX password manager
-	pkgver = 2.0.7
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = https://github.com/dannyvankooten/browserpass
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = browserpass
 	license = MIT
 	makedepends = go
 	depends = pass
-	source = browserpass-2.0.7.tar.gz::https://github.com/dannyvankooten/browserpass/releases/download/2.0.7/browserpass-src.tar.gz
-	source = browserpass-2.0.7.tar.gz.sig::https://github.com/dannyvankooten/browserpass/releases/download/2.0.7/browserpass-src.tar.gz.sig
+	source = browserpass-2.0.9.tar.gz::https://github.com/dannyvankooten/browserpass/releases/download/2.0.9/browserpass-src.tar.gz
+	source = browserpass-2.0.9.tar.gz.sig::https://github.com/dannyvankooten/browserpass/releases/download/2.0.9/browserpass-src.tar.gz.sig
 	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
-	md5sums = 9c9dd2dfb31e856df56c9c788ae9f581
-	md5sums = 027372fcece49d19a066c83d1298bad5
+	md5sums = 1d2c745ba646c4f7e03f4d00930c36f1
+	md5sums = babd952c6c8377c742925506149bcebb
 
 pkgname = browserpass
 
