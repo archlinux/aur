@@ -1,6 +1,6 @@
 # Maintainer: Adrien Folie <folie.adrien@gmail.com>
 pkgname=firegrid
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Click anywhere with only a few key strokes"
 arch=("x86_64")
