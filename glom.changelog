@@ -1,3 +1,6 @@
+2017-12-27 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+    * glom-1.31.6-5 boost 1.66.0 rebuild
+
 2017-11-13 Jaroslav Lichtblau <svetlemodry@archlinux.org>
     * glom-1.31.6-4 FS#56174 fix
 
