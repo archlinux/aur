@@ -1,12 +1,12 @@
 pkgbase = polarr
 	pkgdesc = Professional Photo Editing Tools for Everyone.
 	pkgver = 4.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.polarr.co
 	arch = x86_64
 	license = custom
 	depends = gconf
-	depends = libvips
+	depends = vips
 	provides = polarr
 	source = https://pickystore.blob.core.windows.net/models/polarr_4.4.5_amd64_xenial.deb
 	sha256sums = 9c6e19bf770f68ca207ac8a4019fad252be05440b23d2d626ba1520a514442bf
