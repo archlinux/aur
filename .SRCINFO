@@ -1,6 +1,6 @@
 pkgbase = nxt
 	pkgdesc = The Nxt Reference Software Client for use with the Nxt Cryptocurrency.
-	pkgver = 1.11.10
+	pkgver = 1.11.11
 	pkgrel = 1
 	url = https://nxt.org
 	install = nxt.install
@@ -8,9 +8,9 @@ pkgbase = nxt
 	license = MIT/GPL
 	makedepends = unzip
 	depends = jre8-openjdk
-	source = https://bitbucket.org/Jelurida/nxt/downloads/nxt-client-1.11.10.zip
+	source = https://bitbucket.org/Jelurida/nxt/downloads/nxt-client-1.11.11.zip
 	source = nxt.service
-	sha256sums = b3d875a157263fcd51789b351a6cea939333538b04e824f43d2d71f56c36bccd
+	sha256sums = 35a8bb6594aedb5bf0d2878fa5062fddd9f78e89311690f0918656ab601e67b2
 	sha256sums = 70717985b18b8af10b68aa6adc205912664ffccdddc52272e80bb02a19bc15fb
 
 pkgname = nxt
