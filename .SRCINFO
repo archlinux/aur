@@ -1,0 +1,12 @@
+pkgbase = sss-cli
+	pkgdesc = Command line tool for secret sharing strings.
+	pkgver = 20171228
+	pkgrel = 1
+	url = https://github.com/dsprenkels/sss-cli
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+
+pkgname = sss-cli
+
