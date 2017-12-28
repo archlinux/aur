@@ -9,6 +9,7 @@ pkgrel=2
 pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
+license=('custom:sonatype')
 depends=('jre8-openjdk-headless')
 replaces=('nexus3')
 provides=($pkgname)
