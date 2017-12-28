@@ -2,7 +2,7 @@
 # Old Maintainer: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
-pkgbase=font-awesome
+pkgbase=ttf-font-awesome-4
 pkgname=(ttf-font-awesome-4 otf-font-awesome-4)
 pkgver=4.7.0
 pkgrel=5
