@@ -1,6 +1,6 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 pkgname=brave
-pkgver=0.19.105
+pkgver=0.19.122
 _pkgver=$pkgver
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
@@ -173,4 +173,4 @@ END
 
 	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
-md5sums=('95b53ef1faa3db3e50eb81d39a264ffe')
+md5sums=('7ad129c440cd925c5b69c7ad89e68f30')
