@@ -11,7 +11,7 @@ post_install()
     pacman -Rs --noconfirm libappindicator-gtk2
     touch /var/lib/pacman/db.lck
   fi
-  
+
   ps -e | grep '^.*gnome-session.*$' &>/dev/null
   if [ $? -eq 0 ]; then
     pacman -Qi gnome-shell-extension-topicons-plus &>/dev/null

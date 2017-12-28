@@ -3,7 +3,7 @@
 
 pkgname=signal-desktop
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
 license=('GPL3')
@@ -14,11 +14,12 @@ depends=('alsa-lib' 'fontconfig' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'libxss' '
 optdepends=('gnome-shell-extension-topicons-plus')
 makedepends=('git' 'npm' 'python2' 'yarn')
 install=signal-desktop.install
-source=("git+${url}.git#tag=v${pkgver}" 'https://api.github.com/users/scottnonnenberg/gpg_keys' 'signal-desktop.desktop' 'signal-desktop')
+source=("git+${url}.git#tag=v${pkgver}" 'https://api.github.com/users/scottnonnenberg/gpg_keys' 'signal-desktop.desktop' 'signal-desktop' 'signal-desktop.install')
 sha256sums=('SKIP'
             'SKIP'
             'e99f7af8a3dbb631485bc513b82d44bfe0826cf8a29868f601e285fd4bf48a42'
-            '1b9696ea39c69d31bffcb4c3d7d3faa2e0439b1ee8e5ecc6a4a123692dfeba1f')
+            '1b9696ea39c69d31bffcb4c3d7d3faa2e0439b1ee8e5ecc6a4a123692dfeba1f'
+            '91e6ab7a997a94326348183cd8de1c8eb07161ef533d357690d297b1a5f15c79')
 
 build() {
   msg2 "Verifying gpg signature..."
