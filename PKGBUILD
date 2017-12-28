@@ -1,6 +1,6 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname="aur-creator-tools-git"
-pkgver=7ceae9b
+pkgver=r6.7ceae9b
 pkgrel=1
 pkgdesc="Small tools to create and maintain AUR packages"
 url="https://github.com/jD91mZM2/aur-creator-tools"
@@ -13,8 +13,8 @@ source=("$pkgname::git+https://github.com/jD91mZM2/aur-creator-tools")
 sha256sums=("SKIP")
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    git rev-parse --short HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
