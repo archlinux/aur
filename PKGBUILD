@@ -4,7 +4,7 @@
 pkgname=secure-delete
 pkgver=3.1
 pkgfile="secure_delete-$pkgver"
-pkgrel=7
+pkgrel=8
 pkgdesc="Secure file, disk, swap, memory erasure utilities"
 url="http://www.thc.org/"
 depends=('glibc' 'sh')
@@ -35,6 +35,10 @@ package()
     install
   # renamed due to naming conflicts
   mv "${pkgdir}/usr/bin/smem" "${pkgdir}/usr/bin/semem"
+  mv "${pkgdir}/usr/share/man/man1/smem.1" "${pkgdir}/usr/share/man/man1/semem.1"
+  sed -i 's/smem/semem/g' "${pkgdir}/usr/bin/the_cleaner.sh"
+  sed -i 's/smem/semem/g' "${pkgdir}/usr/share/man/man1/semem.1"
+  sed -i 's/SMEM/SEMEM/g' "${pkgdir}/usr/share/man/man1/semem.1"
   chmod a+r "${pkgdir}/usr/bin"/*
 }
 
