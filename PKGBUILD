@@ -13,11 +13,11 @@ pkgrel=1
 pkgdesc=" A fast, intuitive linear algebra library for C++ "
 
 
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/rmjarvis/tmv/"
 license=('BSD')
 groups=()
-depends=('cblas')
+depends=('bash' 'cblas')
 makedepends=('git')
 checkdepends=()
 optdepends=()
