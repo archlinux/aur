@@ -3,7 +3,7 @@
 pkgname=zcash
 pkgver=1.0.13
 _commit=3ee1d04a8dff26e81aaf17095a0e2472bc70cf36
-pkgrel=1
+pkgrel=2
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
@@ -14,9 +14,9 @@ checkdepends=('python' 'python2' 'python2-pyzmq')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         "boost-no-mt-suffix.patch"
         "use-system-rust.patch")
-sha256sums=('SKIP'
-            'de84cf8c0ee530958300bcd9d92c59f5adb5ccabcf7fbc79ace856b0461d394c'
-            '065cd418ca7be72018c7fdada3012872bd079a254a95560312514594381b8028')
+sha512sums=('SKIP'
+            '52fe5fb312d310514d70961b8c5c9afd6559b6bd36d531eb08c08264f2071cd94f4f569633e604b4e6e127a40511319ced1ccbe796ae5fc70453352ab15239f7'
+            '3663373af04318aa72d877f399f0c9e956d289ac876583e70afa2933bf4171f7441a399e043b2d29b1df6d19d29390bb69d4053cad4b75bef903a8685fcd23bf')
 
 prepare() {
     cd ${pkgname}
