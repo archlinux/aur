@@ -4,7 +4,7 @@
 
 pkgbase=redshift-git
 pkgname=('redshift-git' 'redshift-gtk-git')
-pkgver=1.10.r32.g5f26b3d
+pkgver=1.11.r132.g91e1d30
 pkgrel=1
 pkgdesc='Adjusts the color temperature of your screen according to your surroundings (development version)'
 arch=('i686' 'x86_64')
@@ -37,16 +37,16 @@ package_redshift-git() {
 
   # remove duplicate redshift-gtk stuff
   rm -rf "$pkgdir"/usr/{bin/redshift-gtk,lib/{python*,systemd/user/redshift-gtk.service}}
-  rm -rf "$pkgdir"/usr/share/{applications,icons,appdata}
+  rm -rf "$pkgdir"/usr/share/{applications/redshift-gtk.desktop,icons,appdata}
 }
 
 package_redshift-gtk-git() {
   depends=("redshift-git=$pkgver" 'gtk3' 'python-xdg' 'python-gobject' 'librsvg'
            'hicolor-icon-theme')
-  install=redshift-gtk-git.install
 
   make -C redshift DESTDIR="$pkgdir" install
 
   # remove duplicate redshift stuff
-  rm -rf "$pkgdir"/usr/{bin/redshift,lib/systemd/user/redshift.service,share/{locale,man}}
+  rm -rf "$pkgdir"/usr/{bin/redshift,lib/systemd/user/redshift.service}
+  rm -rf "$pkgdir"/usr/share/{applications/redshift.desktop,locale,man}
 }
