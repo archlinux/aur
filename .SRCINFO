@@ -13,7 +13,7 @@ pkgbase = mutant
 	depends = librsvg
 	provides = mutant
 	source = mutant::https://github.com/m0n0l0c0/mutant/archive/v0.1.4.tar.gz
-	source = mutant-packager::https://github.com/m0n0l0c0/mutant-packager/archive/v0.1.3.tar.gz
+	source = mutant-packager::https://github.com/m0n0l0c0/mutant-packager/archive/v0.1.4.tar.gz
 	sha256sums = aeadd26d5f712dfb491ba58e9e952a5a8f2bdf6dd33df7889d94aec4512da89c
 	sha256sums = 7a17cc75bbd813ad3c161f6c9fe015ed45180a047de99529e8e49d321e771382
 
