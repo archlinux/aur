@@ -1,4 +1,4 @@
-# Maintainer: David Manouchehri <david@davidmanouchehri.com>
+# Contributor: David Manouchehri
 
 pkgname=vim-javascript-git
 _gitname=$(printf ${pkgname%%-git})
