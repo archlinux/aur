@@ -1,0 +1,17 @@
+pkgbase = adwaita-xfce-theme-git
+	pkgdesc = A Modified Adwaita GTK Theme, designed and optimized for Xfce.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/thearakattack/adwaita-xfce
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = xfwm4
+	optdepends = xfdesktop: The Xfce desktop
+	provides = adwaita-xfce-theme
+	conflicts = adwaita-xfce-theme
+	source = git+https://github.com/thearakattack/adwaita-xfce.git
+	sha256sums = SKIP
+
+pkgname = adwaita-xfce-theme-git
+
