@@ -354,7 +354,7 @@ build() {
     local _qtpro=${_srcdir}/qt.pro
     local _tmp_qtpro=$(mktemp)
     cp $_qtpro $_tmp_qtpro
-    echo "QT_BUILD_MODULES = qtbase qtdeclarative qtxmlpatterns" > $_qtpro
+    echo "QT_BUILD_MODULES = qtbase qtdeclarative" > $_qtpro
     cat $_tmp_qtpro >> $_qtpro
   fi
 
