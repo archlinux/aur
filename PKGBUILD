@@ -2,7 +2,7 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=17.11.0
+pkgver=17.12.0
 pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=(
   "https://github.com/docker/docker-ce/archive/v${pkgver}-ce.tar.gz"
   "docker.sysusers"
 )
-md5sums=('77b6ccb8873ecd7f3e9003ca11f27bce'
-         '6ceb521ab80acc88d086fe6a0e688d67'
+md5sums=('55bcb35391d28fff350076dce4b82d25'
+         '3d2abfc484a55481a81f5e9a10a5f480'
          '9a8b2744db23b14ca3cd350fdf73c179')
 
 build() {
@@ -77,7 +77,7 @@ package() {
   install -Dm644 'contrib/syntax/vim/syntax/dockerfile.vim' "$pkgdir/usr/share/vim/vimfiles/syntax/dockerfile.vim"
   install -Dm644 'contrib/syntax/vim/ftdetect/dockerfile.vim' "$pkgdir/usr/share/vim/vimfiles/ftdetect/dockerfile.vim"
 
-  warning "Docker CE 17.11 and later won't recognize containers started with previous Docker versions. If using Live Restore, you must stop all containers before upgrading to Docker CE 17.11. If you don't, any containers started by Docker versions that predate 17.11 won't be recognized by Docker after the upgrade and will keep running, un-managed, on the system."
+  warning "Docker CE 17.12 and later won't recognize containers started with previous Docker versions. If using Live Restore, you must stop all containers before upgrading to Docker CE 17.12. If you don't, any containers started by Docker versions that predate 17.12 won't be recognized by Docker after the upgrade and will keep running, un-managed, on the system."
 }
 
 # vim:set ts=2 sw=2 et:
