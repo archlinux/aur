@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lesspass
+Comment=Stateless Password Manager
+Exec="/usr/bin/lesspass"
+Terminal=false
+Type=Application
+Icon=lesspass
+StartupWMClass="Lesspass"
+Categories=Network;Security
