@@ -1,7 +1,7 @@
 pkgbase = inox-hard
 	pkgdesc = A web browser built for speed, simplicity, and security
 	pkgver = 63.0.3239.90
-	pkgrel = 12
+	pkgrel = 14
 	url = https://www.chromium.org/Home
 	install = inox-hard.install
 	arch = i686
