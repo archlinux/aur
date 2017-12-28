@@ -4,7 +4,7 @@
 ## `makepkg` -e to finish it.
 
 pkgname=brave-git
-pkgver=0.22.0.^3.0.18419.
+pkgver=0.22.0.^3.0.18546.
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
