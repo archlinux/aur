@@ -1,9 +1,9 @@
 # Maintainer: Oscar Garcia Amor <ogarcia@connectical.com>
 
-_commit='4585f1c81cb46b6f6cc4fdad808ff527d4f57e75'
+_commit='6ddc251fb0ba2f6dd0fbdd04a9560c6e22c0c011'
 pkgbase=python-itunes
 pkgname=('python-itunes' 'python2-itunes')
-pkgver=2015.07.29
+pkgver=2017.10.28
 pkgrel=1
 pkgdesc='A simple python wrapper to access iTunes Store API'
 arch=('any')
@@ -12,8 +12,8 @@ license=('GPL')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/ocelma/python-itunes/archive/${_commit}.tar.gz"
         "python-itunes.patch")
-sha256sums=('9ece82d09049109523fbefcdbe2b5399a0fff341241af735ea081078a81034c8'
-            '0385dd216d5152dc944a2a54ecc9e83765e303cacf1c2169862506974a5448d6')
+sha256sums=('5f9fa69dcaea47e532e5821552e7340d88724a980224b66e19d3d118d7e17ed1'
+            'eec11f7a3be113af34c727efef293dfe57a9474aca3b46fa53a302804f08bc20')
 
 prepare() {
   cp -r python-itunes-${_commit} python-itunes-${pkgver}
