@@ -11,6 +11,7 @@ url="http://fontawesome.io/"
 license=('custom:OFL')
 arch=('any')
 depends=('fontconfig')
+conflicts=('ttf-font-awesome')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FortAwesome/Font-Awesome/archive/v$pkgver.tar.gz"
 	"OFL")
 sha256sums=('de512ba0e1dead382bbfce372cde74b3f18971d876fffb635ee9333f0db05d43'
