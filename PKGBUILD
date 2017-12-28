@@ -3,8 +3,8 @@
 # Special thanks to Grim Kriegor who provide tarball and make special script for easy build TES3MP: https://github.com/GrimKriegor/TES3MP-deploy/tree/development   
 
 pkgname=openmw-tes3mp
-pkgver=0.6.1
-pkgrel=8
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="TES3MP is a project aiming to add multiplayer functionality to OpenMW, a free and open source recreation of the popular Bethesda Softworks game \"The Elder Scrolls III: Morrowind\"."
 arch=('x86_64')
 url="https://github.com/TES3MP/openmw-tes3mp"
@@ -14,14 +14,14 @@ optdepends=('openmw: make engine configuration files')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
-source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.1/tes3mp-GNU.Linux-x86_64-release-0.6.1-f532ab241d-p7.tar.gz'
+source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.2/tes3mp-GNU.Linux-x86_64-release-0.6.2-2f4cd6b713.build1.tar.gz'
         'https://raw.githubusercontent.com/TES3MP/openmw-tes3mp/master/files/tes3mp/tes3mp_logo.png'
-        'tes3mp-client.desktop'
+        'tes3mp.desktop'
         'tes3mp-server.desktop'
         'tes3mp-browser.desktop')
-sha256sums=('ccdf7c9ac5b487a0d1d3b5808d5c0cc73e0033c60070c7023abba0cde1a2321f'
+sha256sums=('121f27feb60e8da1545dd78a8906e37730b6bbb2a4034e253c55ce092e76fc7c'
           '861e5e8cc7ddec2dbfb842d68cdd45e7cc564079b9cb37ad113ff140bf424fd9'
-          '0e855bcaf8986059cc722cafbc3b0b08f270862f28e09201a3564886404407ed'
+          'c7e47f887457d72aee46f29d0f947e7c42a40676c5e80427b502af8d24b299a4'
           '2bd9e9dddda956c7cbdc8bdf2448d42500aa88ffb7fb01d2cbffc58c22fdf57d'
           'ddccf2f35e41c2cbb35816f3bbfc53a9dd5809cd2830e8e324f45550852f6408')
 
@@ -48,7 +48,7 @@ prepare() {
 package() {
   
   # Install .desktop files
-  install -Dm644 tes3mp-client.desktop $pkgdir/usr/share/applications/tes3mp-client.desktop
+  install -Dm644 tes3mp.desktop $pkgdir/usr/share/applications/tes3mp.desktop
   install -Dm644 tes3mp-server.desktop $pkgdir/usr/share/applications/tes3mp-server.desktop
   install -Dm644 tes3mp-browser.desktop $pkgdir/usr/share/applications/tes3mp-browser.desktop
 
