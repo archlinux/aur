@@ -1,7 +1,7 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
 url="https://github.com/Kicer86/photobroom"
@@ -24,6 +24,8 @@ md5sums=('3c43d46dbc4ed591dd9868abd6820495')
 build()
 {
     cd "$pkgname-$pkgver"
+    git submodule init
+    git submodule update
     mkdir -p build
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr
