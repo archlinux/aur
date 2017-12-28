@@ -1,7 +1,7 @@
 pkgbase = dlangide
 	pkgdesc = D language IDE based on DlangUI
 	pkgver = 0.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/buggins/dlangide
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = dlangide
 	license = BSL
 	makedepends = dmd
 	makedepends = dub
+	depends = dtools
 	source = https://github.com/buggins/dlangide/archive/v0.8.10.tar.gz
 	source = dlangide.desktop
 	source = dlangide.install
