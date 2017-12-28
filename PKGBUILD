@@ -6,7 +6,7 @@
 pkgname=('mesa17.1')
 pkgdesc="an open-source implementation of the OpenGL specification. Version 17.1.x only for Intel"
 pkgver=17.1.10
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'wayland' 'elfutils'
@@ -47,9 +47,8 @@ build() {
 
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
-    --with-dri-driverdir=/usr/lib/xorg/modules/dri \
     --without-gallium-drivers \
-    --with-dri-drivers=i965 \
+    --with-dri-drivers=i965,swrast \
     --with-platforms=x11,drm,wayland \
     --without-vulkan-drivers \
     --disable-xvmc \
@@ -91,9 +90,9 @@ package() {
   install -m755 -d ${pkgdir}/usr/share/glvnd/egl_vendor.d
   cp -rv ${srcdir}/fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json ${pkgdir}/usr/share/glvnd/egl_vendor.d/
 
-  install -m755 -d ${pkgdir}/usr/lib/xorg/modules/dri
+   install -m755 -d ${pkgdir}/usr/lib/dri
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast
-  cp -av ${srcdir}/fakeinstall/usr/lib/xorg/modules/dri/* ${pkgdir}/usr/lib/xorg/modules/dri
+  cp -av ${srcdir}/fakeinstall/usr/lib/dri/*_dri.so ${pkgdir}/usr/lib/dri
    
   cp -rv ${srcdir}/fakeinstall/usr/lib/lib{gbm,glapi}.so* ${pkgdir}/usr/lib/
   cp -rv ${srcdir}/fakeinstall/usr/lib/libwayland*.so* ${pkgdir}/usr/lib/

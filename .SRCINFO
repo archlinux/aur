@@ -1,7 +1,7 @@
 pkgbase = mesa17.1
 	pkgdesc = an open-source implementation of the OpenGL specification. Version 17.1.x only for Intel
 	pkgver = 17.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mesa3d.org/
 	arch = i686
 	arch = x86_64
