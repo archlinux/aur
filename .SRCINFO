@@ -1,14 +1,14 @@
 pkgbase = tmv
 	pkgdesc = A fast, intuitive linear algebra library for C++
-	pkgver = r99.6bdc079
+	pkgver = r101.fab5df3
 	pkgrel = 1
 	url = https://github.com/rmjarvis/tmv/
 	arch = x86_64
-	license = unknown
+	license = BSD
 	makedepends = git
 	depends = scons
 	depends = cblas
-	source = tmv-r99.6bdc079::git+https://github.com/rmjarvis/tmv/
+	source = tmv-r101.fab5df3::git+https://github.com/rmjarvis/tmv/
 	md5sums = SKIP
 
 pkgname = tmv

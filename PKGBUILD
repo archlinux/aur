@@ -6,7 +6,7 @@
 # Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor:  M. Jarvis
 pkgname=tmv
-pkgver=r99.6bdc079
+pkgver=r101.fab5df3
 pkgrel=1
 #epoch=
 
@@ -15,9 +15,9 @@ pkgdesc=" A fast, intuitive linear algebra library for C++ "
 
 arch=('x86_64')
 url="https://github.com/rmjarvis/tmv/"
-license=('unknown')
+license=('BSD')
 groups=()
-depends=('scons' 'cblas')
+depends=('cblas')
 makedepends=('git')
 checkdepends=()
 optdepends=()
@@ -53,5 +53,6 @@ package() {
 	scons PREFIX=$pkgdir/usr install
 	# scons install  PREFIX=/data
 	# scons install --prefix "${pkgdir}"
+	install -Dm644 TMV_LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
 }
