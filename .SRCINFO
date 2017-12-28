@@ -1,7 +1,7 @@
 pkgbase = lib32-mesa17.1
 	pkgdesc = an open-source implementation of the OpenGL specification (32-bit) Version 17.1.x only for Intel
 	pkgver = 17.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
 	license = custom

@@ -6,7 +6,7 @@
 pkgname=('lib32-mesa17.1')
 pkgdesc+="an open-source implementation of the OpenGL specification (32-bit) Version 17.1.x only for Intel"
 pkgver=17.1.10
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto' 'libomxil-bellagio'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'gcc-multilib' 'lib32-libelf'
@@ -55,9 +55,8 @@ build() {
     --libdir=/usr/lib32 \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --with-dri-driverdir=/usr/lib32/xorg/modules/dri \
     --without-gallium-drivers \
-    --with-dri-drivers=i965 \
+    --with-dri-drivers=i965,swrast \
     --with-platforms=x11,drm,wayland \
     --without-vulkan-drivers \
     --disable-xvmc \
@@ -93,9 +92,9 @@ build() {
 }
 
 package() {
-  install -m755 -d ${pkgdir}/usr/lib32/xorg/modules/dri
+  install -m755 -d ${pkgdir}/usr/lib32/dri
   # ati-dri, nouveay-dri, intel-dri, swrast
-  cp -av ${srcdir}/fakeinstall/usr/lib32/xorg/modules/dri/* ${pkgdir}/usr/lib32/xorg/modules/dri
+  cp -av ${srcdir}/fakeinstall/usr/lib32/dri/* ${pkgdir}/usr/lib32/dri
 
   install -m755 -d ${pkgdir}/usr/lib32
   cp -rv ${srcdir}/fakeinstall/usr/lib32/lib{gbm,glapi}.so* ${pkgdir}/usr/lib32/
