@@ -1,0 +1,19 @@
+post_install()
+{
+	systemd-sysusers nexus-oss.conf
+	chown -R nexus:nexus var/lib/nexus-oss
+	chmod -R o-rwx var/lib/nexus-oss
+	systemd-tmpfiles --create nexus-oss.conf
+}
+
+post_upgrade()
+{
+	systemctl daemon-reload
+}
+
+post_remove()
+{
+	systemctl stop nexus-oss
+	userdel -r nexus >/dev/null 2>&1
+}
+

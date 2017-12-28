@@ -1,0 +1,16 @@
+-Xms1200M
+-Xmx1200M
+-XX:MaxDirectMemorySize=2G
+-XX:+UnlockDiagnosticVMOptions
+-XX:+UnsyncloadClass
+-XX:+LogVMOutput 
+-XX:LogFile=/var/lib/nexus-oss/log/jvm.log
+-XX:-OmitStackTraceInFastThrow
+-Djava.net.preferIPv4Stack=true
+-Dkaraf.home=.
+-Dkaraf.base=.
+-Dkaraf.etc=etc/karaf
+-Djava.util.logging.config.file=etc/karaf/java.util.logging.properties
+-Dkaraf.data=/var/lib/nexus-oss
+-Djava.io.tmpdir=/var/run/nexus-oss
+-Dkaraf.startLocalConsole=false
