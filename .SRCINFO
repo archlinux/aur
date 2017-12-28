@@ -1,11 +1,13 @@
 pkgbase = zoiper
 	pkgdesc = A SIP and IAX2 VoIP softphone
 	pkgver = 5.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zoiper.com/
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = gtk2
+	depends = gconf
 	depends = libnotify
 	depends = libxss
 	depends = v4l-utils

@@ -3,12 +3,12 @@
 
 pkgname=zoiper
 pkgver=5.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A SIP and IAX2 VoIP softphone"
 url="http://www.zoiper.com/"
 arch=("i686" "x86_64")
 license=("custom")
-depends=("libnotify" "libxss" "v4l-utils")
+depends=("gtk2" "gconf" "libnotify" "libxss" "v4l-utils")
 source=("LICENSE" "${pkgname}.desktop" "${pkgname}.png" "${pkgname}-24.png" "${pkgname}-48.png" "${pkgname}-96.png")
 
 build() {
