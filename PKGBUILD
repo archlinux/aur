@@ -3,7 +3,7 @@
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.7.3
+pkgver=4.7.4
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
              'perl-parse-yapp' 'lib32-jansson')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('06e4152ca1cb803f005e92eb6baedb6cc874998b44ee37c2a7819e77a55bfd2c')
+sha256sums=('fb12d0c4452f85b67b78bbeabd4c762d8feb8ff83e39d044d285120c2c488247')
 
 build() {
   cd samba-${pkgver}
@@ -61,7 +61,9 @@ $(find ${srcdir}/samba-${pkgver}/source4/scripting -type f)"
     --with-pam \
     --with-pammodulesdir='/usr/lib32/security' \
     --bundled-libraries='!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util' \
-    --with-shared-modules="${_samba4_idmap_modules},${_samba4_pdb_modules},${_samba4_auth_modules}"
+    --with-shared-modules="${_samba4_idmap_modules},${_samba4_pdb_modules},${_samba4_auth_modules}" \
+    --without-lttng
+
   make
   make DESTDIR="${srcdir}/staging" install
 }
