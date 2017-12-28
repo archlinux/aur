@@ -3,7 +3,7 @@
 
 pkgname=bctoolbox-git
 _pkgname=bctoolbox
-pkgver=0.6.0.r45.g86566bc
+pkgver=0.6.0.r60.ge0e7e59
 pkgrel=1
 pkgdesc="Utilities library for Belledonne Communications software"
 arch=('i686' 'x86_64')
