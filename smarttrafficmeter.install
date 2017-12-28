@@ -23,14 +23,14 @@ post_install() {
 }
 
 pre_upgrade() {
-	systemctl stop smarttrafficmeter
+    systemctl stop smarttrafficmeter
 }
 
 post_upgrade() {
-	systemctl start smarttrafficmeter
+    systemctl start smarttrafficmeter
 }
 
 pre_remove() {
-	systemctl stop smarttrafficmeter
-	systemctl disable smarttrafficmeter
+    systemctl stop smarttrafficmeter
+    systemctl disable smarttrafficmeter
 }
