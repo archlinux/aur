@@ -2,7 +2,7 @@
 # Contributor: Ali Ukani <ali.ukani@gmail.com>
 
 pkgname=voltra
-pkgver=3.2.3
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Material design music player, based on Electron'
 arch=('x86_64')
@@ -19,11 +19,17 @@ provides=('voltra')
 source=("https://s3.amazonaws.com/download.voltra.co/Voltra-${pkgver}.tar.gz"
         'voltra.png'
         'voltra.desktop'
-        'COPYRIGHT')
-md5sums=('8a6b867c4c16f481f864b09c484e1c7f'
+        'COPYRIGHT'
+        'voltra_EULA.html'
+        'voltra_privacy_policy.html'
+        'voltra_terms_of_services.html')
+md5sums=('58a4ccc3f5a0abd4563b0eefb7b1d24f'
          '86625b67e901dd6556ea691b3ba466fb'
-         'b2af85661a450915f4a91d0ba9f4a4f3'
-         'bad5ffe34c28e007c0b76453082f59fd')
+         'be9f4e3cbcb7495c9b670737406572e3'
+         'bad5ffe34c28e007c0b76453082f59fd'
+         '3f05edb0b98550ad1b2ae6450d8efcbf'
+         '8c659d4fe8182ba17c0ac439b163a9ff'
+         'd91f97b0d0dd198337296a6476646919')
 PKGEXT='.pkg.tar'
 
 package() {
@@ -38,4 +44,5 @@ package() {
   install -d ${pkgdir}/usr/share/licenses/${pkgname}
   mv  ${pkgdir}/opt/Voltra/{LICENSE.electron.txt,LICENSES.chromium.html} ${pkgdir}/usr/share/licenses/${pkgname}/
   install -D ${srcdir}/COPYRIGHT ${pkgdir}/usr/share/licenses/${pkgname}/
+  install -D ${srcdir}/*.html ${pkgdir}/usr/share/licenses/${pkgname}/
 }

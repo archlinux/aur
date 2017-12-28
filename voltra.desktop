@@ -4,5 +4,5 @@ Comment=Voltra Co. Music Player
 Exec=voltra %U
 Terminal=false
 Type=Application
-Icon=voltra
+Icon=/usr/share/pixmaps/voltra.png
 Categories=GNOME;GTK;AudioVideo;Player;Audio;
