@@ -1,9 +1,9 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 # Contributor: Tristelune <tristelune@archlinux.info>
 pkgname=pdfstudio
-pkgver=12.0.3
-_pkgver=v12_0_3
-pkgrel=3
+pkgver=12.0.6
+_pkgver=v12_0_6
+pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('i686' 'x86_64')
 url="http://www.qoppa.com/pdfstudio/"
@@ -15,11 +15,11 @@ depends=('java-runtime>=6' 'desktop-file-utils')
 
 install=${pkgname}.install     
      
-sha256sums=('5fd6f1bea41f5d90eff993cd81ac8dbb6fe8fb93a97a92bd7cd617253770b0c8'
+sha256sums=('454fbc31f8951f3affcaa0c432b78591a3012a428768f196face44c03b5709ec'
             'b82acfb50e1e15a43c54aba7a0712b6c710c10ae74280a26a451343720e965e3'
             '0a3c1c337a22228f3df28412ca65d45d0d8067b508cf7b1cf93810fc17c9b447')
-sha256sums_i686=('127e370740d921ac496ea627be442cfcbd531c67b1b3637845db845953c8bc45')
-sha256sums_x86_64=('2c9071bc635ea16614e4af2ba50429f27fbb2152f97b03d4657d311f05a3db62')
+sha256sums_i686=('98e2f0ba0356e6fa07ba7fad90c70546ded14a4d707b14ca87b0a9dcb836afa2')
+sha256sums_x86_64=('c9c924b6e94881684971ada4620d59f5688ce1903cd3df42c7ed568aff62e8b9')
 source_i686=("http://download.qoppa.com/pdfstudio/v12/PDFStudio_${_pkgver}_linux.deb")
 source_x86_64=("http://download.qoppa.com/pdfstudio/v12/PDFStudio_${_pkgver}_linux64.deb")
 source=(${pkgname}.desktop
