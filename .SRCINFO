@@ -1,6 +1,6 @@
 pkgbase = frogr-git
 	pkgdesc = A flickr remote organizer for GNOME
-	pkgver = 1.2.3.g7ed108a
+	pkgver = 1.4.1.gd873ecb
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Frogr
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = frogr-git
 	makedepends = intltool
 	makedepends = git
 	makedepends = gnome-common
+	makedepends = meson
 	makedepends = yelp-tools
 	depends = desktop-file-utils
 	depends = gstreamer

@@ -3,14 +3,14 @@
 
 _pkgname="frogr"
 pkgname="${_pkgname}-git"
-pkgver=1.2.3.g7ed108a
+pkgver=1.4.1.gd873ecb
 pkgrel=1
 pkgdesc="A flickr remote organizer for GNOME"
 url="https://wiki.gnome.org/Apps/Frogr"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('desktop-file-utils' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'json-glib' 'libexif' 'libsoup')
-makedepends=('intltool' 'git' 'gnome-common' 'yelp-tools')
+makedepends=('intltool' 'git' 'gnome-common' 'meson' 'yelp-tools')
 optdepends=('gst-libav: To support common video formats like .3gp and .MP4')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    ./autogen.sh --prefix=/usr
+    ./configure --prefix=/usr
     make
 }
 
