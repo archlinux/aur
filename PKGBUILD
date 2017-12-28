@@ -1,10 +1,9 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
 #
 # Contributor: uastasi <uastasi at archlinux dot us>
 
 pkgname="frogr"
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="A flickr remote organizer for GNOME"
 url="https://wiki.gnome.org/Apps/Frogr"
@@ -13,12 +12,12 @@ license=('GPL3')
 depends=('gtk3' 'libexif' 'hicolor-icon-theme' 'json-glib' \
 		 'desktop-file-utils' 'libsoup' 'gstreamer'
 )
-makedepends=('gnome-common' 'intltool' 'yelp-tools')
+makedepends=('gnome-common' 'intltool' 'meson' 'yelp-tools')
 optdepends=('gst-libav: To support common video formats like .3gp and .MP4 ')
 conflicts=("${pkgname}-git")
 provides=("${pkgname}")
 source=("http://download.gnome.org/sources/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('94cc6a7ab2553e00cc8e0c2435a1c2610de0fc59ce51e78fe0d758f34d5c7a36')
+sha256sums=('ace4c9e60364fa5e183384a3e25a0c4ee77c77c59f4bb33f8980ba57317ae68e')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
