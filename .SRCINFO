@@ -6,7 +6,6 @@ pkgbase = jumpnbump-levels
 	arch = any
 	license = GPL
 	depends = jumpnbump
-	optdepends = jumpnbump-menu: a pygtk launcher for jumpnbump
 	source = http://mirandir.pagesperso-orange.fr/files/additional-levels.tar.xz
 	sha256sums = 7b4a647681cea9747700eec733d0db4cce9cdabd6200fef4443608e43582fc88
 
