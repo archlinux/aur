@@ -4,6 +4,23 @@ post_install()
 	chown -R nexus:nexus var/lib/nexus-oss
 	chmod -R o-rwx var/lib/nexus-oss
 	systemd-tmpfiles --create nexus-oss.conf
+
+	cat <<EOF
+
+The default URL for this installation is
+
+	http://127.0.0.1:8081/
+
+To change these settings edit the file
+
+	/var/lib/nexus-oss/etc/nexus.properties
+
+Sonatype strongly suggests using the latest Java 8 release version of Java
+available from Oracle. Support for Java 9 has not been verified - DO NOT USE IT.
+
+See https://help.sonatype.com/display/NXRM3/System+Requirements#SystemRequirements-Java
+
+EOF
 }
 
 post_upgrade()
@@ -11,9 +28,13 @@ post_upgrade()
 	systemctl daemon-reload
 }
 
-post_remove()
+pre_remove()
 {
 	systemctl stop nexus-oss
-	userdel -r nexus >/dev/null 2>&1
+}
+
+post_remove()
+{
+	systemctl daemon-reload
 }
 

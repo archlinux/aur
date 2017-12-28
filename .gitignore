@@ -1,3 +1,6 @@
+.*
+!.SRCINFO
+!.gitignore
 pkg
 src
 *.xz
