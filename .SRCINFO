@@ -1,0 +1,22 @@
+pkgbase = python-adminapi-git
+	pkgdesc = The adminapi provides a python module which can talk to the InnoGames serveradmin via an API
+	pkgver = 1.0.r1662.1e52149
+	pkgrel = 1
+	url = https://github.com/InnoGames/serveradmin
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = adminapi::git+https://github.com/InnoGames/serveradmin.git
+	sha1sums = SKIP
+
+pkgname = python-adminapi-git
+	depends = python
+	depends = python-ipaddress
+	depends = python-netaddr
+
+pkgname = python2-adminapi-git
+	depends = python2
+	depends = python2-ipaddress
+	depends = python2-netaddr
+
