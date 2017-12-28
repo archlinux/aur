@@ -1,6 +1,6 @@
 pkgbase = gdc
 	pkgver = 7.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/D-Programming-GDC/GDC
 	arch = i686
 	arch = x86_64
@@ -12,11 +12,13 @@ pkgbase = gdc
 	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	source = git+https://github.com/D-Programming-GDC/GDMD.git
 	source = paths.diff
+	source = init.diff
 	sha256sums = 1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a
 	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = fefe9298f8d5859758ca63bab084984baa8adbbd85b3b3b8798283731321df7b
+	sha256sums = 5f9efcd016389c3940afdc5819c218f44557c816a785f99373d796bebb0e7465
 
 pkgname = gdc
 	pkgdesc = Compiler for D programming language which uses gcc backend

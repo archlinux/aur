@@ -8,7 +8,7 @@
 
 pkgname=('gdc' 'libgphobos-devel' 'libgphobos')
 pkgver=7.2.0
-pkgrel=2
+pkgrel=3
 _islver=0.18
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -21,6 +21,7 @@ source=(
 	gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	git+https://github.com/D-Programming-GDC/GDMD.git
 	paths.diff
+	init.diff
 )
 sha256sums=(
 	'1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
@@ -28,6 +29,7 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'fefe9298f8d5859758ca63bab084984baa8adbbd85b3b3b8798283731321df7b'
+	'5f9efcd016389c3940afdc5819c218f44557c816a785f99373d796bebb0e7465'
 )
 
 _libdir="usr/lib/gcc/$CHOST/$pkgver"
@@ -51,6 +53,7 @@ prepare() {
 	cd $srcdir/gdc
 	git checkout gdc-7
 	git apply $srcdir/paths.diff
+	git apply $srcdir/init.diff
 	./setup-gcc.sh ../gcc-$pkgver
 
 	mkdir $srcdir/gcc-build
