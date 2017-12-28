@@ -2,11 +2,11 @@
 # Contributor: Phillip Schichtel <phillip.public@schich.tel>
 
 pkgname=adapta-gtk-theme-git
-pkgver=3.91.0.22.r1.a1178bd6
+pkgver=3.92.2.63
 pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
 arch=('any')
-url='https://github.com/tista500/Adapta'
+url='https://github.com/adapta-project/adapta-gtk-theme'
 license=('GPL2')
 depends=('gtk-engine-murrine' 'gtk3')
 makedepends=('git' 'gnome-shell' 'inkscape' 'libxml2' 'parallel' 'sassc')
@@ -17,7 +17,7 @@ optdepends=('gnome-shell: The GNOME Shell'
             'xfdesktop: The Xfce desktop')
 provides=('adapta-gtk-theme')
 conflicts=('adapta-gtk-theme')
-source=('adapta-gtk-theme::git+https://github.com/tista500/Adapta.git')
+source=('git+https://github.com/adapta-project/adapta-gtk-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -37,6 +37,7 @@ build() {
     --enable-parallel \
     --enable-chrome \
     --enable-plank \
+    --enable-telegram \
     --disable-unity
   make
 }
