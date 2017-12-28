@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Cuckoo
+Comment=A malware analyze system
+Exec=/usr/bin/cuckoo
+Icon=cuckoo
+Terminal=false
+StartupNotify=false
+Categories=Application;
