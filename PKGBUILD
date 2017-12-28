@@ -1,15 +1,15 @@
 # Maintainer: vimacs <https://vimacs.lcpu.club>
 
 pkgname=xdanmaku
-pkgver=1.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='client for tuna/gdanmaku-server implemented in C for X11'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/mytbk/xdanmaku'
 license=('Apache')
-depends=('json-c' 'libxft' 'curl')
+depends=('json-c' 'libxft' 'libxinerama' 'curl')
 source=("https://github.com/mytbk/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('30428056eb32e02bc54fcb4177b6c05e549a32e5153a2c683f6204e5d33ed5dc')
+sha256sums=('709c8b30ee3f69333910cadccfeaf0b50c09700176209d1ba1c6995d3f34265f')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
