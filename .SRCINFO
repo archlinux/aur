@@ -1,7 +1,7 @@
 pkgbase = ytd
 	pkgdesc = An utility for downloading multimedia content from YouTube and other online streaming services.
 	pkgver = 1.59
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pepak.net/ytd/ytd/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ytd
 	source = ytd.xml
 	source = http://www.pepak.net/files/youtube/ytd-1.59.zip
 	md5sums = cac6d1373933442fe3e5643d45775ea3
-	md5sums = 0f0a71d39ba930014e4612f76028ad8c
+	md5sums = 2689ee73eaf3abbe601c926cb69a3725
 	md5sums = c2d33f588cf2db34c04afcf8dbc4ea9e
 	md5sums = fce75f73f298761474a9634fbe483734
 	md5sums = e0997b348138215f218c6351a2f6729d

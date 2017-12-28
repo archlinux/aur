@@ -2,7 +2,7 @@
 # Contributor: Filip <fila pruda com>
 pkgname=ytd
 pkgver=1.59
-pkgrel=2
+pkgrel=3
 pkgdesc='An utility for downloading multimedia content from YouTube and other online streaming services.'
 arch=('i686' 'x86_64')
 url='http://www.pepak.net/ytd/ytd/'
@@ -18,7 +18,7 @@ source=(
 	)
 md5sums=(
 	'cac6d1373933442fe3e5643d45775ea3'
-	'0f0a71d39ba930014e4612f76028ad8c'
+	'2689ee73eaf3abbe601c926cb69a3725'
 	'c2d33f588cf2db34c04afcf8dbc4ea9e'
 	'fce75f73f298761474a9634fbe483734'
 	'e0997b348138215f218c6351a2f6729d'
