@@ -1,7 +1,7 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=tetzle
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='A tetromino jigsaw puzzle game'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base')
 makedepends=('qt5-tools')
 optdepends=('jhead: auto-orient images')
 source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('2db3705806339efa810494f0bce6b1b3899fbffa3deee0401a25956929a54eb6')
+sha256sums=('9f0aedf6d2bbd815997252b04bcb5b1b618bc632a3b8b73d7d020c1040498da0')
 
 build() {
   cd "$pkgname-$pkgver"
