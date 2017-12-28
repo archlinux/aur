@@ -5,8 +5,8 @@
 
 pkgname=firefox-eme-free
 name=firefox
-pkgver=57.0.2
-pkgrel=2
+pkgver=57.0.3
+pkgrel=1
 pkgdesc="Deblobbed and EME free Firefox"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -129,7 +129,13 @@ ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
 
 # faster build 
+ac_add_options --disable-debug
+ac_add_options --disable-debug-symbols
 ac_add_options --disable-tests
+ac_add_options --disable-parental-controls
+ac_add_options --disable-accessibility
+
+
 
 # please put 1.25 times your number of threads
 
