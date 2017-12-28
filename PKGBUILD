@@ -2,19 +2,19 @@
 # Contributor: vuslkopp <vuslkopp@i2pmail.org>
 
 pkgname=irclog2html
-pkgver=2.15.3
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='Converts IRC log files to HTML with pretty colours.'
 arch=('any')
-license=('GPL')
+license=('GPL2')
 url='http://mg.pov.lt/irclog2html/'
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/i/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('88038cbd808917465a7413f90af6e7bd4c11b55df7026e3d225c1bf69c95ddf3')
+sha256sums=('7a3070be137150f10b9a1186400b4c4883bb66b8559c1d2c1e43a92e2f1ea3c9')
 
 package() {
   cd $pkgname-$pkgver
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
