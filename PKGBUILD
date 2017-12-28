@@ -17,8 +17,8 @@ source=("git://github.com/lesspass/desktop.git"
 	"lesspass-desktop.desktop"
 	"lesspass.sh")
 sha256sums=("SKIP"
-		"da822ae7f5ed272bb3d92c6da49572ee8740a19889f798f74778d44d7a70ab96"
-		"83b2ea4e48956b4f04984442161e236feb9e3e2f1801061dcbaeef9c9c06d445")
+	"da822ae7f5ed272bb3d92c6da49572ee8740a19889f798f74778d44d7a70ab96"
+	"83b2ea4e48956b4f04984442161e236feb9e3e2f1801061dcbaeef9c9c06d445")
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
