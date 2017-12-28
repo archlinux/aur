@@ -18,12 +18,12 @@
 pkgbase=grpc
 pkgname=('grpc' 'php-grpc')
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
 license=('BSD')
-makedepends=('re2c' 'openssl-1.0' 'protobuf>=3' 'php' 'c-ares'
+makedepends=('re2c' 'protobuf>=3' 'php' 'c-ares'
              'chrpath'
 )
 source=(
@@ -42,9 +42,6 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # gRPC is not compatible yet with openssl-1.1
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
   # Core
   # Avoid collision with yaourt's environment variable
