@@ -3,11 +3,11 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=17.11.0.1
+pkgver=17.11.1.1
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
 # this will substitute any full stops (.) with hyphens
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.schedmd.com"
@@ -42,7 +42,7 @@ sha512sums=('61f07699353d607ec43bab2a4fe29b4a380dab10108619e67ca2737193ab044a6e2
             'a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5'
             'ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c'
             '56459e20d7f2624a8e8dd2982693b257e65df22c3609d991afdc1b2f79adaefc0586a76fd5fdd7dc2bdd39b3af0c91f38ddc4b1139081968903450bc28aca304'
-            'f4a4fd767482f4d8bdce6f0f80fb43b085f2014386ee79b283073ecebc62026177713daff276d819c26000b6cb5dc840a588e6a119f5863e8d2cb041092bf40a')
+            '1c20e6a549fc691b1df260dababac6c7f23f8f622a9e911e75132ef4d504003fbce429d0d86db042efa593002bca172856fb98172e1675ddb2833387dfe0779e')
 
 
 build() {
