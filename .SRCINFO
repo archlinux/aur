@@ -1,7 +1,7 @@
 pkgbase = vlc-pause-click-plugin
-	pkgdesc = This plugin allows you to pause/play a video by clicking on the video image
+	pkgdesc = Plugin for VLC that pauses/plays video on mouse click
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nurupo/vlc-pause-click-plugin
 	install = vlc-pause-click-plugin.install
 	arch = i686
