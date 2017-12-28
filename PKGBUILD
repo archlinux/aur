@@ -10,6 +10,7 @@ pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
 depends=('jre8-openjdk-headless')
+replaces=('nexus3')
 provides=($pkgname)
 backup=("var/lib/$pkgname/etc/nexus.properties")
 source=("http://download.sonatype.com/nexus/3/nexus-$_version-$_patch-unix.tar.gz"
