@@ -8,6 +8,7 @@ pkgbase = photobroom
 	license = GPL3
 	makedepends = cmake
 	makedepends = jsoncpp
+	makedepends = exiv2
 	makedepends = openlibrary
 	makedepends = qt5-tools
 	depends = jsoncpp
