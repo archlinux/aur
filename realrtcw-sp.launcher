@@ -1,4 +1,4 @@
 #!/bin/sh
 cd "/opt/realrtcw"
-exec ./RealRTCW.ARCH +set com_homepath ".realrtcw" "$@"
+exec ./RealRTCW.ARCH +set cl_renderer rend2 +set com_homepath ".realrtcw" "$@"
  
