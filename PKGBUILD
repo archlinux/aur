@@ -5,7 +5,7 @@ _patch=02
 
 pkgname=nexus-oss
 pkgver=${_version}.${_patch}
-pkgrel=2
+pkgrel=1
 pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
