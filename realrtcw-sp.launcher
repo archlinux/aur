@@ -1,4 +1,4 @@
 #!/bin/sh
 cd "/opt/realrtcw"
-exec ./iowolfsp.ARCH +set com_homepath ".realrtcw" "$@"
+exec ./RealRTCW.ARCH +set com_homepath ".realrtcw" "$@"
  

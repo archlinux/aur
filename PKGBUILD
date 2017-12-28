@@ -2,8 +2,8 @@
 
 pkgbase=realrtcw
 pkgname=('realrtcw' 'realrtcw-rend2')
-pkgver=2.1
-pkgrel=3
+pkgver=2.2
+pkgrel=1
 pkgdesc="RealRTCW brings some realism to the classic Wolfenstein game. You can expect ruthless AI, new weapons and rebalanced gameplay"
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -12,9 +12,9 @@ depends=('iortcw-data' 'freetype2' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'z
 makedepends=('cmake' 'unzip')
 noextract=("realrtcw$pkgver.zip" "hdpack$pkgver.zip")
 install='realrtcw.install'
-source=("https://github.com/M0Rf30/RealRTCW/archive/$pkgver.tar.gz"
-	"https://github.com/M0Rf30/RealRTCW-assets/raw/master/realrtcw$pkgver.zip"
-	"https://github.com/M0Rf30/RealRTCW-assets/raw/master/hdpack$pkgver.zip"
+source=("https://github.com/wolfetplayer/RealRTCW/archive/$pkgver.tar.gz"
+	"http://www.wolfenstein-files.de/rtcw/mods/$pkgname$pkgver.zip"
+	"http://www.wolfenstein-files.de/rtcw/mods/hdpack$pkgver.zip"
 # Classic renderer
 	realrtcw-sp.launcher
 # Alternative renderer launchers
@@ -37,7 +37,6 @@ package_realrtcw() {
   mkdir -p $pkgdir/opt/realrtcw/main
   cd "$srcdir/RealRTCW-$pkgver"
   
-  cd SP
   make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/realrtcw/ copyfiles
     
   ln -s -r /opt/wolf-data/mp_pak0.pk3   $pkgdir/opt/realrtcw/main
@@ -116,10 +115,10 @@ package_realrtcw-rend2() {
         $pkgdir/usr/share/applications/realrtcw-sp-rend2.desktop
 }
 
-md5sums=('0b40f6d1e2f31fe42d3a54359694dc03'
-         '0e0ef11b046ced39e880638d41c65dd4'
-         '6856b2ec43abce7be5d92233ef3ddaa1'
-         '3de1b5dde5c91ef521c64b5e56cdbccf'
-	 '3cf6ad712d1d797e09c232dcf43c016b'
+md5sums=('784c0978eba01201d8cab96b949b3a61'
+         'a24763c9d08a87e64c567f6f53296dff'
+         '800b2b4f9166a46198c093f9c6365bf3'
+         '9e4b9473a017a92a97d71a5a6429fa8c'
+         '7e3991e5f331662419ad1ed04e49366c'
          '33f08bc165906164461420e1cc6dd86a'
          'f164bb4457675fd05897e2945e2d8c9d')
