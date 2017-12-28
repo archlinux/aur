@@ -12,8 +12,8 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.4.0_devel.97043.06a12f250f
-pkgrel=1
+pkgver=17.4.0_devel.98776.ec1edd0fd2
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'glproto'
              'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 
@@ -52,9 +52,9 @@ pkgver() {
 build () {
   cd mesa
 
+  
   ./autogen.sh --prefix=/usr \
                --sysconfdir=/etc \
-               --with-dri-driverdir=/usr/lib/xorg/modules/dri \
                --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-platforms=x11,drm,wayland \
@@ -77,8 +77,6 @@ build () {
 # --prefix=PREFIX                   install architecture-independent files in PREFIX
 # --sysconfdir=DIR                  read-only single-machine data 
 #                                   [PREFIX/etc]
-# --with-dri-driverdir=DIR          directory for the DRI drivers
-#                                   [${libdir}/dri]
 # --with-gallium-drivers[=DIRS...]  comma delimited Gallium drivers list, e.g. "i915,ilo,nouveau,r300,r600,radeonsi,freedreno,svga,swrast,vc4,virgl"
 #                                   [default=r300,r600,svga,swrast]
 # --with-dri-drivers[=DIRS...]      comma delimited classic DRI drivers list, e.g. "swrast,i965,radeon"
@@ -120,8 +118,6 @@ package_mesa-git() {
 
   cd mesa
   make DESTDIR="$pkgdir" install
-  # remove vulkan headers as they are provided by vulkan-headers package
-  rm -rf "$pkgdir"/usr/include/vulkan/vk_platform.h "$pkgdir"/usr/include/vulkan/vulkan.h
 
   # remove files present in libglvnd
   rm $pkgdir/usr/lib/libGLESv1_CM.so
