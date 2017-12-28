@@ -1,7 +1,7 @@
 # Maintainer: Omar Pakker <archlinux@opakker.nl>
 
 pkgname=looking-glass
-pkgver=a9
+pkgver=a10
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('sdl2_ttf' 'spice-protocol')
 depends=('sdl2_ttf' 'glu' 'openssl' 'fontconfig')
 source=("https://github.com/gnif/LookingGlass/archive/${pkgver}.tar.gz")
-sha512sums=('e1921dd3f5d209ba584270dc78629303840c6c586eaced2813654944264309645d964185bae1f8f76f4da721a0d5dfec41c277f02776dc0f567c88c6e845401b')
+sha512sums=('d58e12218064b41615a579ef0b4e728e6ebbe336ee4a1b6990f6a20c4a434bc4e7892f7ad8a8788c18d48b217b9d6291c5a7648d84be72cbcb909222e1a879ab')
 
 build() {
 	cd "LookingGlass-${pkgver}/client"
