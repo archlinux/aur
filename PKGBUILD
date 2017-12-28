@@ -8,11 +8,17 @@ pkgver=1.3.4
 pkgrel=4
 pkgdesc='M17N engine for IBus'
 arch=('x86_64')
-url='http://code.google.com/p/ibus/'
+url='https://github.com/ibus/ibus/wiki'
 license=('LGPL')
 depends=('python2-pyenchant' 'ibus' 'm17n-db' 'm17n-lib')
-source=("http://ibus.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('068de56caa87c002adeae0de9e908f47e3f9fde9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ibus/ibus-m17n/archive/${pkgver}.tar.gz")
+sha256sums=('33b4f51337fb633a1d5c476a7ec459670a51285f8658d74a5db98ed3c8c706f5')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  autoreconf -fi
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
