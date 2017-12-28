@@ -1,6 +1,6 @@
 pkgbase = omnidb-server
 	pkgdesc = Web tool for database management. Install this in any server, and it allows anybody with a web browser to connect to any database server.
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://omnidb.org/
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = omnidb-server
 	license = MIT
 	depends = python
 	options = !strip
-	source_i686 = https://omnidb.org/dist/2.3.0/omnidb-server_2.3.0-debian-i386.deb
+	source_i686 = https://omnidb.org/dist/2.4.0/omnidb-server_2.4.0-debian-i386.deb
 	sha256sums_i686 = 42f5608b8236ffa8f64b3cbbf1825881e0b1ac82bf15cb28317b5dbc62a90172
-	source_x86_64 = https://omnidb.org/dist/2.3.0/omnidb-server_2.3.0-debian-amd64.deb
+	source_x86_64 = https://omnidb.org/dist/2.4.0/omnidb-server_2.4.0-debian-amd64.deb
 	sha256sums_x86_64 = 18501c7709fff88c2742199d8662475c536a135fd04810cf989b7f427e85b8c4
 
 pkgname = omnidb-server

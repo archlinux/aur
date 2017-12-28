@@ -1,6 +1,6 @@
 # Maintainer: madflow <madflow@web.de>
 pkgname="omnidb-server"
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Web tool for database management. Install this in any server, and it allows anybody with a web browser to connect to any database server."
 arch=('i686' 'x86_64')
