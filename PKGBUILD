@@ -4,33 +4,44 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=5.0.1.84.gad27aa3
+pkgver=5.0.1.r192.ge4f13e62
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('i686' 'x86_64')
 url="http://www.archlinux.org/pacman/"
 license=('GPL')
-depends=('bash' 'curl' 'gpgme' 'libarchive' 'pacman-mirrorlist')
+depends=('archlinux-keyring' 'bash' 'curl' 'gpgme' 'libarchive'
+         'pacman-mirrorlist')
 makedepends=('git' 'asciidoc')
-optdepends=('fakeroot: for makepkg usage as normal user')
 checkdepends=('python2' 'fakechroot')
-provides=("pacman=$pkgver" 'pacman-contrib' 'libalpm.so')
-conflicts=('pacman' 'pacman-contrib')
-options=('!libtool' '!strip')
+provides=("pacman=${pkgver%.r*}")
+conflicts=('pacman')
 backup=(etc/pacman.conf
         etc/makepkg.conf)
-source=(git://git.archlinux.org/pacman.git)
-sha1sums=('SKIP')
+options=('strip' 'debug')
+source=(git+https://git.archlinux.org/pacman.git
+        pacman.conf.i686
+        pacman.conf.x86_64
+        makepkg.conf)
+sha256sums=('SKIP'
+            'cb76123c15ca9f2a467ebecb72af611f618fcc8431cf8b437d40fa2e61c23590'
+            '95b3b2416402059cf6acf3e046082e7ce261e2b88629231dbf579a4200d8a63b'
+            '6066d67d818ee36760bf121c76d5019130f7875b3e5ed179b319b810a3a9685b')
 
 pkgver() {
   cd pacman
-  git describe | sed 's/^v//;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd pacman
+
+  ./autogen.sh
 }
 
 build() {
   cd "pacman"
 
-  ./autogen.sh
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -53,17 +64,29 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+  # install Arch specific stuff
+  install -dm755 "$pkgdir/etc"
+  install -m644 "$srcdir/pacman.conf.$CARCH" "$pkgdir/etc/pacman.conf"
+
   # set things correctly in the default conf file
   case $CARCH in
     i686)
       mychost="i686-pc-linux-gnu"
-      myflags="-march=i686 "
+      myflags="-march=i686"
       ;;
     x86_64)
-      mychost="x86_64-unknown-linux-gnu"
-      myflags="-march=x86-64 "
+      mychost="x86_64-pc-linux-gnu"
+      myflags="-march=x86-64"
       ;;
   esac
+
+  # set things correctly in the default conf file
+  install -m644 "$srcdir/makepkg.conf" "$pkgdir/etc"
+  sed -i "$pkgdir/etc/makepkg.conf" \
+    -e "s|@CARCH[@]|$CARCH|g" \
+    -e "s|@CHOST[@]|$mychost|g" \
+    -e "s|@CARCHFLAGS[@]|$myflags|g"
+
 
   # install completion files
   rm -r "$pkgdir/etc/bash_completion.d"
