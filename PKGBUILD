@@ -1,7 +1,7 @@
 # Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
 
 pkgname=demlo
-pkgver=3.6.3
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="A dynamic and extensible music library organizer"
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ depends=("ffmpeg" "lua" "taglib")
 makedepends=("go" "git")
 optdepends=("chromaprint: Internet tagging")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ambrevar/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('40c7b936b0cf036a0c12ba46807631bf')
+md5sums=('2fbda9956ffd42cd5a0826c971792d70')
 _gourl="github.com/ambrevar/$pkgname"
 
 prepare() {
