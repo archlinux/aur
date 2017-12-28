@@ -10,6 +10,7 @@ pkgbase = way-cooler
 	makedepends = cargo
 	makedepends = rust
 	makedepends = git
+	makedepends = cairo
 	depends = wlc
 	optdepends = weston: default terminal emulator
 	optdepends = dmenu: default launcher

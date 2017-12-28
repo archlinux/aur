@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/way-cooler/way-cooler"
 license=('MIT')
 depends=('wlc')
-makedepends=('cargo' 'rust' 'git')
+makedepends=('cargo' 'rust' 'git' 'cairo')
 optdepends=('weston: default terminal emulator'
             'dmenu: default launcher'
             'way-cooler-bg: draws a background for Way Cooler')
