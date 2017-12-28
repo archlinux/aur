@@ -2,7 +2,7 @@
 Description=Distributed pacman package cache
 
 [Service]
-ExecStart=/usr/bin/pkgdistcache-daemon -F
+ExecStart=/usr/lib/pkgdistcache/pkgdistcache-daemon
 DynamicUser=yes
 NoNewPrivileges=yes
 PrivateTmp=yes
