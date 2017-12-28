@@ -2,7 +2,7 @@
 _name=roca-detect
 pkgname=python-${_name}
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="ROCA detection tool"
 arch=('any')
 url="https://github.com/crocs-muni/roca"
@@ -13,6 +13,6 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
 md5sums=('e6e1c06b0c2d31724a40bd6c454a003a')
 
 package() {
-	cd "$_pkgname-$pkgver"
+	cd "$_name-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1
 }
