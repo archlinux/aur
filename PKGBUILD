@@ -2,7 +2,7 @@
 # Contributor: Vladimir Cerny <blackvladimir@gmail.com>
 
 pkgname=free42
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="A complete re-implementation of the HP-42S calculator and the HP-82240 printer"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('free42-skins: Additional skins')
 source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz"
         "0001_makefile.patch"
         "0002_system-skins.patch")
-md5sums=('a044787aa940b4e386c906d86b12525f'
+md5sums=('5ae6583e4f04b5ef1b1626e321dcb647'
          'd3edd7b3b03991e451d513c353885775'
          '8c0522e3efa3c7fd54985af456b689b7')
 
