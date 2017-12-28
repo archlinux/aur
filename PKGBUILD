@@ -193,7 +193,7 @@ _installprefix=${_baseprefix}/${pkgname}
 
 pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
 arch=("x86_64")
-url="http://chaos-reins.com/qpi/"
+url="http://www.chaos-reins.com/qpi/"
 license=("LGPL3" "GPL3")
 optdepends=('qtcreator: Integrated Raspberry Pi IDE development')
 makedepends=("git" "pkgconfig" "gcc" "gperf" "python")
