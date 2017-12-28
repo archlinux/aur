@@ -1,7 +1,7 @@
 pkgbase = python-roca-detect
 	pkgdesc = ROCA detection tool
 	pkgver = 1.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crocs-muni/roca
 	arch = any
 	license = MIT
