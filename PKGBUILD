@@ -24,7 +24,7 @@ makedepends=("linux-hardened-headers=4.14.9.a-1" "spl-linux-hardened-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.5/zfs-0.7.5.tar.gz")
-sha256sums=("1b826407418423379ff898c0e6ee0ada59c70754e6085a7663028330d0d8a44a")
+sha256sums=("SKIP")
 license=("CDDL")
 depends=("kmod" "spl-linux-hardened" "zfs-utils-common=0.7.5" "linux-hardened=4.14.9.a-1")
 
