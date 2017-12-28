@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ytd>
+	<config>
+		<portable_mode>1</portable_mode>
+	</config>
+	<gui>
+		<check_for_new_version>0</check_for_new_version>
+	</gui>
+</ytd>
