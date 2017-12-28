@@ -1,6 +1,6 @@
 pkgbase = photobroom
 	pkgdesc = Photos managing tool
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Kicer86/photobroom
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = photobroom
 	depends = jsoncpp
 	depends = openlibrary
 	depends = qt5-base
-	source = https://codeload.github.com/Kicer86/photobroom/tar.gz/v1.1.1
-	md5sums = c72a9025f7f59a2d78d403bc07f9e0fe
+	source = https://codeload.github.com/Kicer86/photobroom/tar.gz/v1.2.0
+	md5sums = 3c43d46dbc4ed591dd9868abd6820495
 
 pkgname = photobroom
 
