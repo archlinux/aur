@@ -1,6 +1,6 @@
 post_install() {
     systemctl enable smarttrafficmeter
-    echo "Please wait for the installation to complete
+    echo "Please wait for the installation to complete"
  	systemctl start smarttrafficmeter
  	echo "#####################################################################"
  	echo "#                                                                   #"
