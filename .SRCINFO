@@ -1,6 +1,6 @@
 pkgbase = lyx-git
 	pkgdesc = An advanced WYSIWYM document processor & LaTeX front-end
-	pkgver = 2.3.0beta1.r379.g6cb6f78ae9
+	pkgver = 2.3.0beta1.r535.g8c56e89240
 	pkgrel = 1
 	url = http://www.lyx.org
 	arch = i686
