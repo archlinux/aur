@@ -1,11 +1,10 @@
-# Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
-# Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-wx
 pkgver=0.9932
 _author=M/MD/MDOOTSON
 _perlmod=Wx
-pkgrel=1
+pkgrel=2
 pkgdesc="Wx - interface to the wxWidgets GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Wx"
@@ -21,14 +20,7 @@ xorg-server-xvfb
 #Test::More             => perl
 #Test::Harness          => perl
 )
-case $CARCH in
-  i686)
-  checkdepends=(webkitgtk)
-  ;;
-  x86_64)
-  checkdepends=(webkitgtk2)
-  ;;
-esac
+checkdepends=(webkit2gtk)
 provides=(
 perl-wx-aui
 perl-wx-app
@@ -90,7 +82,7 @@ export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-  /usr/bin/perl Makefile.PL
+  perl Makefile.PL
   make
 }
 check(){
