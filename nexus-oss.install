@@ -1,8 +1,10 @@
 post_install()
 {
 	systemd-sysusers nexus-oss.conf
+	echo -n 'Changing the ownership of var/lib/nexus-oss, be patient...'
 	chown -R nexus:nexus var/lib/nexus-oss
 	chmod -R o-rwx var/lib/nexus-oss
+	echo ' done'
 	systemd-tmpfiles --create nexus-oss.conf
 
 	cat <<EOF
@@ -26,6 +28,13 @@ EOF
 post_upgrade()
 {
 	systemctl daemon-reload
+
+	cat <<EOF
+
+See Release Notes at
+	https://help.sonatype.com/display/NXRM3/2017+Release+Notes
+
+EOF
 }
 
 pre_remove()
@@ -37,4 +46,3 @@ post_remove()
 {
 	systemctl daemon-reload
 }
-
