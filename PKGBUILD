@@ -20,11 +20,11 @@ pkgname=("spl-linux-hardened" "spl-linux-hardened-headers")
 
 pkgver=0.7.5_4.14.9.a.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.14.9.a-1")
+makedepends=("linux-hardened-headers=4.14.9.a-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.5/spl-0.7.5.tar.gz")
-sha256sums=("c4845d9a6123397c53ee003ed1712f2996a50ac2a9a30d1490280771484d08a6")
+sha256sums=("SKIP")
 license=("GPL")
 depends=("spl-utils-common=0.7.5" "kmod" "linux-hardened=4.14.9.a-1")
 
