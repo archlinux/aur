@@ -1,12 +1,11 @@
 
 pkgname=sway
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="i3 compatible window manager for Wayland"
 arch=("x86_64")
 url="http://swaywm.org"
 license=("MIT")
-backup=("etc/sway/security")
 depends=(
 	"wlc" "xorg-server-xwayland" "json-c" "pango" "wayland" "gdk-pixbuf2"
 )
@@ -24,7 +23,7 @@ source=(
 )
 install="$pkgname.install"
 sha256sums=(
-	"4fe62708feb9c3bfc53d5a8133a992078f8a5216581b5e4a519fbef620f9762c"
+	"b4305581587b1072f5cb61387230aaf731ea9ea0d01fdf198856a757e2195149"
 	"SKIP"
 )
 validpgpkeys=(
