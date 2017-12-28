@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=mod_auth_gssapi
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kerberos authentication module for the Apache HTTP Server"
 arch=(i686 x86_64)
 url="https://github.com/modauthgssapi/mod_auth_gssapi"
