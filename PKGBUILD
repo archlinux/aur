@@ -1,15 +1,15 @@
 # Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
 
 pkgname=curecoin-qt-git
-pkgver=r115.442977b
-pkgrel=3
+pkgver=r122.03b18b4
+pkgrel=1
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
 license=('MIT')
 provides=('curecoin-qt')
 conflicts=('curecoin-qt')
-depends=('qt5-base' 'miniupnpc' 'boost-libs' 'openssl-1.0')
+depends=('qt5-base' 'qt5-tools' 'miniupnpc' 'boost-libs' 'openssl-1.0')
 makedepends=('boost' 'db')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git"
         "0001-miniupnpc.patch"
