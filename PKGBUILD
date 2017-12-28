@@ -1,6 +1,6 @@
 # Maintainer: Brian Guthrie <aur at nocm dot org>
 pkgname=apache-karaf
-pkgver=4.1.1
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="JVM application and OSGi container"
 arch=('any')
@@ -13,9 +13,9 @@ backup=("opt/${pkgname}/etc/all.policy"
         "opt/${pkgname}/etc/keys.properties"
         "opt/${pkgname}/bin/setenv")
 
-source=("http://www-eu.apache.org/dist/karaf/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://dist.apache.org/repos/dist/release/karaf/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'apache-karaf.service')
-sha512sums=('b50116e1017f8057f5ec087bd2df0da9944b3aa7a19300f0913703baf8acb440b6d7bef28218a4efe8c13f75a69a1cb3fdcf5898a283190d1e3a45b250945a01'
+sha512sums=('c781afbdfef8b4ce5e8cc2456960770e5e04c8d633c14e0982479b8e81305115f6b50465f58056ad0161f9169aba83a0731d5c3657852cf15b29ab3399834127'
             'bb9b46c01282baf22fd0d37f47023a833c98dac74c42cf54117476af491ec7bf02856c6b74e10776d692053aa2fe0867da1b6da4bc273680666b126995ec3076')
 
 prepare() {
