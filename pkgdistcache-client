@@ -16,6 +16,8 @@ from gi.repository import GObject as gobject
 import dbus.glib
 import pickle
 import requests
+import time
+import xdg.BaseDirectory
 
 colors = {'none': '\033[0m',
 	'black': '\033[0;30m',		'bold_black': '\033[1;30m',
@@ -35,12 +37,6 @@ def printerr(msg):
 
 def printwarn(msg):
 	print("%s!! %s%s" % (colors['bold_yellow'], msg, colors['none']))
-
-# Run a command synchronously, redirecting stdout and stderr to strings
-def runcmd(cmd, cwd=None):
-	pipe = subprocess.Popen(cmd, shell=True, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	(stdout, stderr) = pipe.communicate()	# wait for process to terminate and return stdout and stderr
-	return {'stdout': stdout.strip(), 'stderr': stderr.strip(), 'retcode': pipe.returncode}
 
 # Run a command synchronously, sending stdout and stderr to shell
 def runcmd2(cmd, cwd=None):
@@ -125,27 +121,31 @@ def main(argv):
 
 	must_download = True
 	if not (pkg.endswith('.db') or pkg.endswith('.db.sig')):
-		# find first /tmp/pkgdistcache.* file modified less than CACHE_FILE_LIFE minutes ago
-		cmd = 'find /tmp -name "pkgdistcache.*" -mmin -' + str(config['cache_file_life'])
-		cache_file = runcmd(cmd)['stdout']
-		if len(cache_file) > 0:
-			# recent cache file found, use it
+		runtime_dir = xdg.BaseDirectory.get_runtime_dir(strict=False)
+		cache_file = os.path.join(runtime_dir, 'pkgdistcache')
+		try:
+			# No exception means file exists
+			stat = os.stat(cache_file)
+			# Check age of file
+			cache_life_secs = int(config['cache_file_life']) * 60
+			cache_valid = time.time() < stat.st_mtime + cache_life_secs
+		except FileNotFoundError:
+			cache_valid = False
+		if cache_valid:
 			with open(cache_file, 'rb') as f:
 				pkgdistcache_clients = pickle.load(f)
 		else:
-			# recent cache file not found, discover other pkgdistcache capable hosts via avahi and save result to a new cache file
-			runcmd("rm -f /tmp/pkgdistcache.*")		# remove any old cache file
-			cache_file = runcmd('mktemp /tmp/pkgdistcache.XXXXX')['stdout']		# create new cache file
-	
-			hostname = runcmd('hostname')['stdout']
+			# recent cache file not found, discover other pkgdistcache capable
+			# hosts via avahi and save result to a new cache file
 			browser = AvahiBrowser()
 			clients = browser.browse("_pkgdistcache._tcp")
 			clients = set(clients)	# remove duplicates (eg services offered on more than a network card etc.)
-			pkgdistcache_clients = []
-			for client in clients:
-				if client.host != hostname:		# exclude current machine from results
-					pkgdistcache_clients.append(client)
-			
+			pkgdistcache_clients = list(clients)
+
+			try:
+				os.unlink(cache_file) # remove any old cache file
+			except FileNotFoundError:
+				pass
 			with open(cache_file, 'wb') as f:
 				pickle.dump(pkgdistcache_clients, f, -1)
 
