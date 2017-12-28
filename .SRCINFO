@@ -11,7 +11,7 @@ pkgbase = vim-javascript-git
 	depends = vim
 	provides = vim-javascript
 	conflicts = vim-javascript
-	source = git://github.com/pangloss/vim-javascript.git#branch=develop
+	source = git://github.com/pangloss/vim-javascript.git#branch=master
 	sha512sums = SKIP
 
 pkgname = vim-javascript-git

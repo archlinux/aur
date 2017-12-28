@@ -2,7 +2,7 @@
 
 pkgname=vim-javascript-git
 _gitname=$(printf ${pkgname%%-git})
-_gitbranch=develop
+_gitbranch=master
 _gitauthor=pangloss
 pkgver=0.1.0.r4.ge628cba
 pkgrel=1
