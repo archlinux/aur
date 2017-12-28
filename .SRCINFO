@@ -9,9 +9,9 @@ pkgbase = omnidb-server
 	depends = python
 	options = !strip
 	source_i686 = https://omnidb.org/dist/2.4.0/omnidb-server_2.4.0-debian-i386.deb
-	sha256sums_i686 = 42f5608b8236ffa8f64b3cbbf1825881e0b1ac82bf15cb28317b5dbc62a90172
+	sha256sums_i686 = 2e2fa6a119976d4f87c62c803371bf761ca36f7862b5ae582e55f37739ea72ca
 	source_x86_64 = https://omnidb.org/dist/2.4.0/omnidb-server_2.4.0-debian-amd64.deb
-	sha256sums_x86_64 = 18501c7709fff88c2742199d8662475c536a135fd04810cf989b7f427e85b8c4
+	sha256sums_x86_64 = 4e04967734ab22fe5a26779a6ca6196fb7571111c6369ee98990493c2d458070
 
 pkgname = omnidb-server
 
