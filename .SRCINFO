@@ -1,6 +1,6 @@
 pkgbase = omnidb-app
 	pkgdesc = Web tool for database management. This is a standalone version that can be used to connect to any database server.
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://omnidb.org/
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = omnidb-app
 	license = MIT
 	depends = python
 	options = !strip
-	source_i686 = https://omnidb.org/dist/2.3.0/omnidb-app_2.3.0-debian-i386.deb
-	sha256sums_i686 = 95f44e0c3be5a6a04459f37034277073750854aad84066752710184691e6bbe9
-	source_x86_64 = https://omnidb.org/dist/2.3.0/omnidb-app_2.3.0-debian-amd64.deb
-	sha256sums_x86_64 = 5ff093d8cdac3880735dedbd318eb57621e97e7badf0502ef867b18497203c4c
+	source_i686 = https://omnidb.org/dist/2.4.0/omnidb-app_2.4.0-debian-i386.deb
+	sha256sums_i686 = bae5f061c4bbe144ce8d9b1c2df6b26c8ccf13772e302429bfde7f10161512e0
+	source_x86_64 = https://omnidb.org/dist/2.4.0/omnidb-app_2.4.0-debian-amd64.deb
+	sha256sums_x86_64 = a5a3f49de62c9b1dd9fae7ebb224dcb8df4ad06bb125bcf2851f13a15835dd40
 
 pkgname = omnidb-app
 
