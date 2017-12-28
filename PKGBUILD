@@ -12,13 +12,13 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.4.0_devel.97043.06a12f250f
+pkgver=17.4.0_devel.98776.ec1edd0fd2
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'dri2proto' 'dri3proto' 'presentproto' 
-             'gcc-multilib' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
+             'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
              'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libglvnd' 'wayland-protocols')
-depends=('mesa-git' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
+depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
            'lib32-llvm-libs-svn' 'lib32-libunwind')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opengl-driver' 'lib32-libtxc_dxtn')
@@ -60,7 +60,6 @@ build () {
                --libdir=/usr/lib32 \
                --prefix=/usr \
                --sysconfdir=/etc \
-               --with-dri-driverdir=/usr/lib32/xorg/modules/dri \
                --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-platforms=x11,drm,wayland \
@@ -81,8 +80,6 @@ build () {
 # --prefix=PREFIX                   install architecture-independent files in PREFIX
 # --sysconfdir=DIR                  read-only single-machine data 
 #                                   [PREFIX/etc]
-# --with-dri-driverdir=DIR          directory for the DRI drivers
-#                                   [${libdir}/dri]
 # --with-gallium-drivers[=DIRS...]  comma delimited Gallium drivers list, e.g. "i915,nouveau,r300,r600,radeonsi,freedreno,svga,swrast,vc4,virgl"
 #                                   [default=r300,r600,svga,swrast]
 # --with-dri-drivers[=DIRS...]      comma delimited classic DRI drivers list, e.g. "swrast,i965,radeon"
