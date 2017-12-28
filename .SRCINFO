@@ -1,6 +1,6 @@
 pkgbase = linphone-desktop-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 4.1.1.r163.g36aeecf0
+	pkgver = 4.1.1.r183.gf7e3753c
 	pkgrel = 1
 	url = http://www.linphone.org
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = linphone-desktop-git
 	provides = linphone-desktop
 	conflicts = linphone-desktop
 	options = !emptydirs
-	source = git+https://github.com/BelledonneCommunications/linphone-desktop.git#commit=36aeecf0b008d2c5102d92cd93c9b9914eabac3e
+	source = git+https://github.com/BelledonneCommunications/linphone-desktop.git
 	sha256sums = SKIP
 
 pkgname = linphone-desktop-git

@@ -2,7 +2,7 @@
 
 pkgname=linphone-desktop-git
 _pkgname=linphone-desktop
-pkgver=4.1.1.r163.g36aeecf0
+pkgver=4.1.1.r183.gf7e3753c
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('pulseaudio')
 options=('!emptydirs')
 provides=('linphone-desktop')
 conflicts=('linphone-desktop')
-source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git#commit=36aeecf0b008d2c5102d92cd93c9b9914eabac3e")
+source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git")
 sha256sums=('SKIP')
 
 pkgver() {
