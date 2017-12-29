@@ -4,7 +4,7 @@
 #Contributor: AXilleas Pipinellis <axilleas archlinux.gr>
 pkgname=python2-pylons
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight web framework emphasizing flexibility and rapid development.'
 arch=('any')
 url='http://pylonsproject.com/'
@@ -16,7 +16,7 @@ depends=('python2'                    'python2-routes>=1.12'      'python2-webhe
          'python2-mako>=0.2.4'         'python2-webob>=0.9.6.1'   'python2-weberror>=0.10.1'
          'python2-webtest>=1.1'        'python2-tempita>=0.2')
 makedepends=('python2-distribute')
-source=(http://pypi.python.org/packages/source/P/Pylons/Pylons-${pkgver}.tar.gz)
+source=(https://pypi.python.org/packages/source/P/Pylons/Pylons-${pkgver}.tar.gz)
 replaces=('python-pylons')
 md5sums=('3289f782ae067b865b0ed8181a125e4b')
 
