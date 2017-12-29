@@ -3,18 +3,18 @@
 # Contributors: Flemming Madsen (arch at themadsens dot dk), Sébastien Duquette <ekse.0x@gmail.com>
 pkgname=tclx
 pkgver=8.4.1
-_tclsrcver=8.6.7
-pkgrel=7
+_tclsrcver=8.6.8
+pkgrel=8
 pkgdesc="Provides OS primitives, file scanning, data records etc. for Tcl"
 url="http://tclx.sourceforge.net"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('BSD')
-depends=('tcl=8.6.7' 'tk')
+depends=('tcl=8.6.8' 'tk')
 source=("http://downloads.sourceforge.net/sourceforge/tclx/tclx${pkgver}.tar.bz2" \
         "http://downloads.sourceforge.net/sourceforge/tcl/tcl${_tclsrcver}-src.tar.gz" \
         "interperrorline.patch")
 md5sums=('ac983708f23cf645c07058148f48440c'
-         '5673aaf45b5de5d8dd80bb3daaeb8838'
+         "81656d3367af032e0ae6157eff134f89"
          '3254188674bfa4cdf58605d0d69586d0')
 
 #prepare() {
