@@ -1,0 +1,17 @@
+pkgbase = python-gff3
+	pkgdesc = Manipulate genomic features and validate the syntax and reference sequence of GFF3 files
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/hotdogee/gff3-py
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	provides = python-gff3
+	conflicts = python-gff3
+	options = !emptydirs
+	source = https://github.com/hotdogee/gff3-py/archive/0.3.0.tar.gz
+	md5sums = c030f81eb3487fadc94da376f941ee04
+
+pkgname = python-gff3
+
