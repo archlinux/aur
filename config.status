@@ -427,7 +427,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/brunofernandes/AUR/omnetpp-qt/teste/omnetpp-5.3p1'
+ac_pwd='/home/brunofernandes/AUR/omnetpp-qt/src/omnetpp-5.3p1'
 srcdir='.'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
@@ -589,7 +589,7 @@ S["JAVA_LIBS"]=""
 S["JAVA_CFLAGS"]=""
 S["PREFER_SQLITE_RESULT_FILES"]="no"
 S["WITH_SYSTEMC"]="no"
-S["WITH_OSGEARTH"]="yes"
+S["WITH_OSGEARTH"]="no"
 S["WITH_OSG"]="yes"
 S["WITH_QTENV"]="yes"
 S["WITH_TKENV"]="yes"
@@ -609,7 +609,7 @@ S["MPI_LIBS"]="-pthread -Wl,-rpath -Wl,/usr/lib/openmpi -Wl,--enable-new-dtags -
 S["MPI_CFLAGS"]="-pthread"
 S["ZLIB_LIBS"]="-lz"
 S["ZLIB_CFLAGS"]=""
-S["OSGEARTH_LIBS"]="-losgEarth -losgEarthUtil"
+S["OSGEARTH_LIBS"]=""
 S["OSGEARTH_CFLAGS"]=""
 S["OSG_LIBS"]="-losg -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads"
 S["OSG_CFLAGS"]=""
