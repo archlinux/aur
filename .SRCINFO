@@ -7,7 +7,6 @@ pkgbase = brother-mfcj245
 	arch = i686
 	arch = x86_64
 	license = custom:brother
-	makedepends = rpmextract
 	depends = a2ps
 	depends = cups
 	source = fix_lp.patch
