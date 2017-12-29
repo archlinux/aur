@@ -1,7 +1,7 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname="synac-gtk-git"
-pkgver=r1.acae749
-pkgrel=1
+pkgver=r75.0927f0a
+pkgrel=2
 pkgdesc="The synac GTK+ client"
 url="https://github.com/synac-chat/client-gtk"
 arch=("x86_64")
@@ -26,5 +26,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     install -Dm 755 "target/release/client-gtk" "$pkgdir/usr/bin/synac-gtk"
-    install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/synac-gtk/LICENSE"
+    install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

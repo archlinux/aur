@@ -1,7 +1,7 @@
 pkgbase = synac-gtk-git
 	pkgdesc = The synac GTK+ client
-	pkgver = r1.acae749
-	pkgrel = 1
+	pkgver = r75.0927f0a
+	pkgrel = 2
 	url = https://github.com/synac-chat/client-gtk
 	arch = x86_64
 	license = MIT,
