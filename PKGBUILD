@@ -3,7 +3,7 @@
 pkgname=nvfancontrol
 pkgver=0.3.2
 _pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NVidia dynamic fan control"
 arch=('i686' 'x86_64')
 url="https://github.com/foucault/nvfancontrol"
@@ -26,5 +26,5 @@ build() {
 
 package() {
 	cd "${pkgname}-${_pkgver}"
-	install -Dm744 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
 }
