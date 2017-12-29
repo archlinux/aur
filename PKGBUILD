@@ -1,16 +1,16 @@
 pkgname=dpdk
-pkgver=17.02
+pkgver=17.11
 pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=(x86_64 i686)
 url='http://dpdk.org'
 license=(BSD)
 options=(staticlibs)
-depends=()
+depends=(numactl libelf)
 makedepends=(linux-headers libpcap)
 checkdepends=()
 source=(http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz)
-sha1sums=('77c52b8c071e0ae86c40bcbd6d1e0cf185937f6c')
+sha1sums=('d6eaf8102983208e0ab7f6aa1643c949f6eca2e8')
 
 prepare() {
   cd dpdk-$pkgver
