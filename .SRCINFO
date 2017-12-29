@@ -1,0 +1,19 @@
+pkgbase = zephyr-gtk-theme-git
+	pkgdesc = A dark pastel GTK theme built for Xfce, based on Breeze Dark
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://alanaktion.github.io/zephyr-gtk/
+	arch = any
+	license = LGPL
+	makedepends = gtk2
+	makedepends = gtk3
+	optdepends = gtk2: GTK+2 theme
+	optdepends = gtk3: GTK+3 theme
+	provides = zephyr-gtk-theme
+	conflicts = zephyr-gtk-theme
+	source = git+https://github.com/Alanaktion/zephyr-gtk.git
+	sha256sums = SKIP
+
+pkgname = zephyr-gtk-theme-git
+
+
