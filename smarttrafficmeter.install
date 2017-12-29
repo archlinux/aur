@@ -33,4 +33,16 @@ post_upgrade() {
 pre_remove() {
     systemctl stop smarttrafficmeter
     systemctl disable smarttrafficmeter
+    rm -r /etc/smarttrafficmeter
+    rm -r /var/log/smarttrafficmeter
+    echo "#####################################################################"
+    echo "#                                                                   #"
+    echo "# Smart Traffic Meter has been uninstalled.                         #"
+    echo "#                                                                   #"
+    echo "# The default databse directory /usr/share/smarttrafficmeter        #"
+    echo "# has not been removed so that you can make database backup.        #"
+    echo "# If you do not need the backup,                                    #"
+    echo "# please remove this directory manually.                            #"
+    echo "#                                                                   #"
+    echo "#####################################################################"
 }
