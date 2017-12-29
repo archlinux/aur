@@ -6,10 +6,10 @@
 
 pkgname=tmux-git
 _gitname=tmux
-pkgver=2.1.r290.g4043790
+pkgver=2.6.r93.gad417f6e
 pkgrel=1
 pkgdesc="A terminal multiplexer"
-url="http://tmux.github.io"
+url="https://github.com/tmux/tmux/wiki"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('ncurses' 'libevent')
