@@ -6,8 +6,8 @@
 # Contributor: Jake <ja.ke@posteo.de>
 
 pkgname=signal
-pkgver=1.0.41
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
 depends=('electron' 'gconf' 'gtk2' 'libxss')
@@ -19,13 +19,14 @@ url='https://github.com/WhisperSystems/Signal-Desktop'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WhisperSystems/Signal-Desktop/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha512sums=('433423a38404f06d18fc2aa79b925592ace247308b0553c1a4108eb511d505392a98de7a467dd59ca6916ec38e758fa97adcec5fe834a54e0f5f64db25d17781'
+sha512sums=('f8409ace472f2bf7614741ddb0f612faaf9f130141bd22539dc0ee4987dd8260136dc53965876c101cce8e15bf2769ab8cb30a07ae304491d97704370bc57058'
             'e6ee4914af88b75a520bbae55e4701a4a911b88d698a06b5bf9fdb612b377f2f6f50d19850fcc8737752d32e9f58aa48c3e7026931ab6dc6d796fa91db87c5ee'
             'a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327')
 
 prepare() {
   cd "Signal-Desktop-${pkgver}"
-  sed -i 's/icon-gen \&\& grunt/icon-gen \&\& grunt -f/' package.json
+  # Fix issues/1829
+  sed -i 's/"electron-builder": "^19.29.2"/"electron-builder": "^19.47.0"/' package.json
 }
 
 build() {
