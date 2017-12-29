@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=65.0.3298.3
-pkgrel=3
+pkgrel=4
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -112,6 +112,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/e3.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/narnia3.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/narnia4.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/edgy.patch
 )
 
 
@@ -210,7 +211,9 @@ sha256sums=('fda622b7d7e2ab517e1c6993ed43c3d0a5550be1e97f7b0800732372ec30a997'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
             'be55fef656ccb767edd29b53d2e1416db0976a95cd0f4ba24ea2b3e0ce2e68b6'
-            'd38cdb1f3dec117c25d618a228accfa2b5e51cabe28d3bd3a0a5e8d2a0634c9b')
+            'd38cdb1f3dec117c25d618a228accfa2b5e51cabe28d3bd3a0a5e8d2a0634c9b'
+            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
+
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -350,6 +353,11 @@ patch -Np1 -i ../12.patch
 patch -Np1 -i ../16.patch
 
 
+patch -Np1 -i ../16.patch
+
+
+msg2 'mitigate webrtc'
+patch -Np1 -i ../edgy.patch
 
 patch -Np1 -i ../k1.patch
 #patch -Np1 -i ../r21.patch
