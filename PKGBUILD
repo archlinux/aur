@@ -1,7 +1,7 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=fgbio-git
-pkgver=0.4.0.r19.g4ba4127
+pkgver=0.4.0.r21.gc45e26f
 pkgrel=1
 pkgdesc="Tools for working with genomic and high throughput sequencing data."
 arch=('any')
@@ -12,7 +12,7 @@ checkdepends=('r' 'r-cran-ggplot2')
 provides=('fgbio')
 conflicts=('fgbio')
 source=("fgbio.sh")
-md5sums=("8f3581b03a37ecaf0824f5c38b2c4f19")
+md5sums=("6be7f08531588d04c3417da9e35c9e84")
 
 prepare() {
   # Git LFS fails when used as a 'source'

@@ -1,6 +1,6 @@
 pkgbase = fgbio-git
 	pkgdesc = Tools for working with genomic and high throughput sequencing data.
-	pkgver = 0.4.0.r19.g4ba4127
+	pkgver = 0.4.0.r21.gc45e26f
 	pkgrel = 1
 	url = https://github.com/fulcrumgenomics/fgbio
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = fgbio-git
 	provides = fgbio
 	conflicts = fgbio
 	source = fgbio.sh
-	md5sums = 8f3581b03a37ecaf0824f5c38b2c4f19
+	md5sums = 6be7f08531588d04c3417da9e35c9e84
 
 pkgname = fgbio-git
 
