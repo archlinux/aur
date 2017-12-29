@@ -1,0 +1,26 @@
+From e2e1a0cc23afcd9ca99b087f59ff8b1fcac83d02 Mon Sep 17 00:00:00 2001
+From: sum01 <sum01@protonmail.com>
+Date: Fri, 29 Dec 2017 17:05:34 -0500
+Subject: [PATCH] Fix archlinux
+
+---
+ package.json | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/package.json b/package.json
+index b04ea2a..12ed81c 100644
+--- a/package.json
++++ b/package.json
+@@ -260,7 +260,8 @@
+     "webdav-fs": "^1.3.0",
+     "webpack": "^3.8.1",
+     "webpack-dev-server": "^2.9.4",
+-    "webpack-merge": "^4.1.1"
++    "webpack-merge": "^4.1.1",
++    "7zip-bin-linux": "^1.1.0"
+   },
+   "collective": {
+     "type": "opencollective",
+-- 
+2.15.1
+
