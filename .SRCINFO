@@ -1,14 +1,14 @@
 pkgbase = ksuperkey
 	pkgdesc = Allows you to open the application launcher in KDE Plasma Desktop using the Super key
 	pkgver = 0.4
-	pkgrel = 1
-	url = https://linux-apps.com/content/show.php/ksuperkey?content=154569
+	pkgrel = 2
+	url = https://github.com/hanschen/ksuperkey
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libxtst
-	source = https://dl.opendesktop.org/api/files/download/id/1460972657/154569-ksuperkey-0.4.tar.gz
-	md5sums = d07a6e43132ecf76bcbf8ad344979b44
+	source = https://github.com/hanschen/ksuperkey/archive/v0.4.tar.gz
+	md5sums = 2dd4539de4366e8aa185d5bf375e203b
 
 pkgname = ksuperkey
 
