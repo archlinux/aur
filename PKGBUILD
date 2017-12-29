@@ -66,10 +66,10 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.14.9
+pkgver=4.14.10
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -134,12 +134,11 @@ source=(# mainline kernel patches
         '0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
         '0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
         '0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
-        '0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch')
+        '0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch')
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '5edc955bb67b04c7ed426b1df17a3e322e32ad9fdda9c6abb53ab6eca7faf704'
+            '16f560aa713b46c707f04a226f67dc31fdd280aae57dd19e0413d61df5336c74'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             'e04958faa40e3a20f7e7e2bd9580b4c4c45d4d576ea3c6537d2e19de25ae5160'
@@ -161,8 +160,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2'
             'ed3266ab03f836f57de0faf8a10ffd7566c909515c2649de99adaab2fac4aa32'
             '64a014f7e1b4588728b3ea9538beee67ec63fb792d890c7be9cc13ddc2121b00'
-            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb'
-            '95f0d0a94983b0dafd295f660a663f9be5ef2fcb9646098426a5d12b59f50638')
+            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -197,10 +195,6 @@ prepare() {
   ### Fix https://bugs.archlinux.org/task/56846
       msg "Fix #56846"
       patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-
-  ### Fix https://bugs.archlinux.org/task/56830
-      msg "Fix #56830"
-      patch -Np1 -i ../0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
   
   ### Patch source with BFQ-SQ-MQ
         msg "Fix naming schema in BFQ-SQ-MQ patch"
@@ -237,6 +231,9 @@ prepare() {
   # Clean tree and copy ARCH config over
   make mrproper
 
+  # Fix https://www.spinics.net/lists/stable/msg207374.html
+  chmod +x tools/objtool/sync-check.sh
+  
   cp -Tf ../config .config
 
   ### Optionally set tickrate to 1000
