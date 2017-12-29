@@ -5,25 +5,33 @@
 # https://github.com/michaellass/AUR
 
 pkgname=gbacklight
-pkgver=0.1
-pkgrel=2
+pkgver=r5.6c053a2
+pkgrel=1
+_commit=6c053a2 # corresponds to former version 0.1 plus a README overhaul
 pkgdesc="Graphical frontend to xbacklight for adjusting the display brightness"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/gbacklight/"
-license=("GPL")
+url="https://github.com/fetchinson/gbacklight"
+license=("custom")
 depends=('libxrandr' 'gtk2')
-source=("http://gbacklight.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9177f2cd5667b92b6a878b5b37f71b22feecf3ec037323d22ed892233629ad2e')
+makedepends=('git')
+source=("git+https://github.com/fetchinson/gbacklight.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "$srcdir/$pkgname"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "$srcdir/$pkgname"
 
   make DESTDIR=${pkgdir} install
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
