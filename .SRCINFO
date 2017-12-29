@@ -1,7 +1,7 @@
 pkgbase = python2-pylons
 	pkgdesc = A lightweight web framework emphasizing flexibility and rapid development.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pylonsproject.com/
 	arch = any
 	license = BSD
@@ -23,7 +23,7 @@ pkgbase = python2-pylons
 	depends = python2-webtest>=1.1
 	depends = python2-tempita>=0.2
 	replaces = python-pylons
-	source = http://pypi.python.org/packages/source/P/Pylons/Pylons-1.0.2.tar.gz
+	source = https://pypi.python.org/packages/source/P/Pylons/Pylons-1.0.2.tar.gz
 	md5sums = 3289f782ae067b865b0ed8181a125e4b
 
 pkgname = python2-pylons
