@@ -1,7 +1,7 @@
 # Maintainer: kitsunyan <kitsunyan@inbox.ru>
 
 pkgname=drawio-desktop
-pkgver=7.8.8
+pkgver=7.9.0
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(electron gconf libnotify)
 conflicts=(drawio-desktop-bin)
 source=("drawio-desktop-$pkgver.zip::https://github.com/jgraph/drawio/releases/download/v$pkgver/draw.war")
 noextract=("drawio-desktop-$pkgver.zip")
-sha256sums=('76ca30f42473ff77ef04008e49bcdf61fe10986e95687152e7f43fb8bc9eea40')
+sha256sums=('01b6026d908fa4a49edeb0d202db4c0fab99914d87734cbbae21d79d33840f36')
 
 prepare() {
   rm -rf "$srcdir/drawio-$pkgver"
