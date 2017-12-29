@@ -1,9 +1,9 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 pkgname=open-stage-control
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A libre desktop OSC bi-directionnal control surface application'
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv7h)
 url='http://osc.ammd.net/'
 license=('GPL3')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nodejs' 'nss')
