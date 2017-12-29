@@ -1,0 +1,13 @@
+pkgbase = python-podcastparser
+	pkgdesc = podcast parser for gpodder
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/gpodder/podcastparser
+	arch = any
+	license = ISC
+	depends = python
+	source = https://github.com/gpodder/podcastparser/archive/0.6.2.tar.gz
+	md5sums = fbd743f9deb0c02c1fd52161a4d6f66b
+
+pkgname = python-podcastparser
+
