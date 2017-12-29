@@ -8,7 +8,7 @@ pkgname=inox-beta
 pk=bnox
 name=chromium
 pkgver=64.0.3282.39
-pkgrel=3
+pkgrel=4
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -110,6 +110,7 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/p1.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/p2.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/e3.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/narnia1.patch
+https://raw.githubusercontent.com/bn0785ac/ih-beta/edgy.patch
 )
 
 
@@ -206,7 +207,9 @@ sha256sums=('e41e331801ba0487ee880628d387e42409a5fe5ab20c2785b8603a43396170b8'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
-            '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d')
+            '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d'
+            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
+
 
 
 
@@ -343,7 +346,8 @@ patch -Np1 -i ../narnia1.patch
 patch -Np1 -i ../12.patch
 patch -Np1 -i ../16.patch
 
-
+msg2 'mitigate webrtc'
+patch -Np1 -i ../edgy.patch
 
 patch -Np1 -i ../k1.patch
 #patch -Np1 -i ../r21.patch

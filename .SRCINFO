@@ -1,7 +1,7 @@
 pkgbase = inox-beta
 	pkgdesc = A web browser built for speed, simplicity, and security
 	pkgver = 64.0.3282.39
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.chromium.org/Home
 	install = inox-beta.install
 	arch = i686
@@ -136,6 +136,7 @@ pkgbase = inox-beta
 	source = https://raw.githubusercontent.com/bn0785ac/ih-beta/p2.patch
 	source = https://raw.githubusercontent.com/bn0785ac/ih-beta/e3.patch
 	source = https://raw.githubusercontent.com/bn0785ac/ih-beta/narnia1.patch
+	source = https://raw.githubusercontent.com/bn0785ac/ih-beta/edgy.patch
 	sha256sums = e41e331801ba0487ee880628d387e42409a5fe5ab20c2785b8603a43396170b8
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
 	sha256sums = 1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883
@@ -230,6 +231,7 @@ pkgbase = inox-beta
 	sha256sums = 5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac
 	sha256sums = 862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971
 	sha256sums = 4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d
+	sha256sums = 78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d
 
 pkgname = inox-beta
 
