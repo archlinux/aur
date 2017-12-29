@@ -11,7 +11,6 @@ pkgdesc="Driver for the Brother DCP-j152w wifi multifuncional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')
 depends=('a2ps' 'cups')
-makedepends=('rpmextract')
 install="brother-dcpj152w.install"
 arch=('i686' 'x86_64')
 
