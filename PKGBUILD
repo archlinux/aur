@@ -2,7 +2,7 @@
 # Maintainer: Trevor Bramble <inbox@trevorbramble.com>
 
 pkgname=habitat-git
-pkgver=0.50.3.r12.g8b672dd3
+pkgver=0.51.0.r89.g658c61309
 pkgrel=1
 pkgdesc="Application automation framework that allows you to build applications that have automation built-in"
 arch=('x86_64')
