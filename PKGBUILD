@@ -36,8 +36,8 @@ build() {
 }
 
 package() {
-  install -Dm775 "$srcdir/xmrig-amd/build/xmrig-amd" "$pkgdir/usr/bin/xmrig-amd-git"
-  install -Dm644 "$srcdir/xmrig-amd/src/config.json" "$pkgdir/usr/share/doc/xmrig-amd-git/config.json.example"
-  install -Dm644 "${srcdir}/xmrig-amd/README.md" "${pkgdir}/usr/share/doc/xmrig-amd-git/README.md"
-  install -Dm644 "${srcdir}/xmrig-amd/CHANGELOG.md" "${pkgdir}/usr/share/doc/xmrig-amd-git/CHANGELOG.md"
+  install -Dm775 "$srcdir/xmrig-amd/build/xmrig-amd" "$pkgdir/usr/bin/xmrig-amd"
+  install -Dm644 "$srcdir/xmrig-amd/src/config.json" "$pkgdir/usr/share/doc/xmrig-amd/config.json.example"
+  install -Dm644 "${srcdir}/xmrig-amd/README.md" "${pkgdir}/usr/share/doc/xmrig-amd/README.md"
+  install -Dm644 "${srcdir}/xmrig-amd/CHANGELOG.md" "${pkgdir}/usr/share/doc/xmrig-amd/CHANGELOG.md"
 }
