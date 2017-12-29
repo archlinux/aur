@@ -14,6 +14,5 @@ sha512sums=('bb0f393f7f8314db34f9b5b6de5f34c488518453853dc239bd41402805ec548d687
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
 package() {
-  cd "$pkgname"
-  install -Dm644 zz_snap-pac-grub-post.hook "$pkgdir/usr/share/libalpm/hooks/"
+  install -Dm644 zz_snap-pac-grub-post.hook -t "$pkgdir/usr/share/libalpm/hooks/"
 }
