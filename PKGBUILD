@@ -124,13 +124,13 @@ prepare() {
         msg "Patching source with gcc patch to enable more cpus types"
 	patch -Np1 -i ../${_gcc_patch}
 	
-    ### Clean tree and copy ARCH config over
-	msg "Running make mrproper to clean source tree"
-	make mrproper
-
     ### Fix https://www.spinics.net/lists/stable/msg207374.html
         msg "Fix execvp: ./sync-check.sh error"
         chmod +x tools/objtool/sync-check.sh
+    
+    ### Clean tree and copy ARCH config over
+	msg "Running make mrproper to clean source tree"
+	make mrproper
 	
 	cp -Tf ../config .config
         
