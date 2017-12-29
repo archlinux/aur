@@ -13,7 +13,7 @@
 
 _name=subtitlecomposer
 pkgname=${_name}-git
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
@@ -21,18 +21,25 @@ url="https://github.com/maxrd2/${_name}"
 license=('GPL')
 depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kross' 'kxmlgui' 'ki18n' 'gstreamer')
 makedepends=('extra-cmake-modules' 'git')
+
 # Comment/uncomment the following dependencies to disable/enable
-# building of plugins for MPV and Xine player backends.
+# building the plugins for MPV and Xine player backends and pocketsphinx
 makedepends+=('xine-lib')
 makedepends+=('mpv')
-conflicts=(${_name})
-optdepends=('mpv: for MPV backend'
-            'mplayer: for MPlayer backend'
-            'xine-lib: for Xine backend'
-            'pocketsphinx: for speech recognition'
+makedepends+=('pocketsphinx')
+
+# For consistency, also enable/disable the corresponding optdepends
+optdepends=('mplayer: MPlayer backend'
+            'mpv: MPV backend'
+            'xine-lib: Xine backend'
+            'pocketsphinx: speech recognition'
             'kross-interpreters: for ruby and python scripting support'
-            'ruby: for scripting'
-            'python: for scripting')
+            'ruby: scripting'
+            'python: scripting')
+
+conflicts=($_name)
+provides=($_name)
+
 source=("git+https://github.com/maxrd2/${_name}.git")
 sha256sums=('SKIP')
 
@@ -47,7 +54,7 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
