@@ -1,7 +1,7 @@
 pkgbase = nikola
 	pkgdesc = A modular, fast, simple, static website generator.
-	pkgver = 7.8.10
-	pkgrel = 5
+	pkgver = 7.8.11
+	pkgrel = 1
 	url = https://getnikola.com/
 	arch = any
 	license = MIT
@@ -44,9 +44,9 @@ pkgbase = nikola
 	replaces = python-nikola
 	replaces = python2-nikola
 	options = !emptydirs
-	source = https://pypi.io/packages/source/N/Nikola/Nikola-7.8.10.tar.gz
+	source = https://pypi.io/packages/source/N/Nikola/Nikola-7.8.11.tar.gz
 	source = make_tab_completion.py
-	md5sums = a3a4e7f5417f6ce19b6edbbe8b778131
+	md5sums = 28aef3331ef901430d44981f0586fefc
 	md5sums = 0c5b36c239ac465da024dac76e4892e7
 
 pkgname = nikola

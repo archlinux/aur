@@ -3,8 +3,8 @@
 pkgbase=nikola
 _pyname=Nikola
 pkgname=('nikola' 'python-nikola-doc')
-pkgver=7.8.10
-pkgrel=5
+pkgver=7.8.11
+pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator.'
 arch=('any')
 url='https://getnikola.com/'
@@ -29,7 +29,7 @@ optdepends=('python-jinja: for Jinja2 themes'
             'python-watchdog: for nikola auto')
 source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz"
         "make_tab_completion.py")
-md5sums=('a3a4e7f5417f6ce19b6edbbe8b778131' '0c5b36c239ac465da024dac76e4892e7')
+md5sums=('28aef3331ef901430d44981f0586fefc' '0c5b36c239ac465da024dac76e4892e7')
 conflicts=('python-nikola' 'python2-nikola' 'python-nikola-git' 'python2-nikola-git' 'nikola-git')
 replaces=('python-nikola' 'python2-nikola')
 
