@@ -2,7 +2,7 @@
 # Contributor: E. Sheldon 
 
 pkgname=python-fitsio-git
-pkgver=r640.507ad1c
+pkgver=v0.9.12rc1.r22.507ad1c
 pkgrel=1
 pkgdesc=" A python library to read from and write to FITS files. "
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("${pkgname%-git}::git+${url}")
 md5sums=('SKIP')
 pkgver() {
 	 cd "$srcdir/${pkgname%-git}"
-	 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	 printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
