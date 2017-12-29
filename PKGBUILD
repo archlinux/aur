@@ -27,5 +27,4 @@ package() {
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm755 "bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 config/firegrid.toml "$pkgdir/etc/$pkgname/firegrid.toml"
 }
