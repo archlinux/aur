@@ -18,7 +18,7 @@ index 07cc743698d3668e..4011d68a8ff9305c 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -102,6 +102,11 @@
-
+ 
  #define CREATE_TRACE_POINTS
  #include <trace/events/task.h>
 +#ifdef CONFIG_USER_NS
@@ -26,13 +26,13 @@ index 07cc743698d3668e..4011d68a8ff9305c 100644
 +#else
 +#define unprivileged_userns_clone 0
 +#endif
-
+ 
  /*
   * Minimum number of threads to boot the kernel
 @@ -1555,6 +1560,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
-
+ 
 +	if ((clone_flags & CLONE_NEWUSER) && !unprivileged_userns_clone)
 +		if (!capable(CAP_SYS_ADMIN))
 +			return ERR_PTR(-EPERM);
@@ -43,7 +43,7 @@ index 07cc743698d3668e..4011d68a8ff9305c 100644
 @@ -2348,6 +2357,12 @@ SYSCALL_DEFINE1(unshare, unsigned long, unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
-
+ 
 +	if ((unshare_flags & CLONE_NEWUSER) && !unprivileged_userns_clone) {
 +		err = -EPERM;
 +		if (!capable(CAP_SYS_ADMIN))
@@ -90,12 +90,13 @@ index c490f1e4313b998a..dd03bd39d7bf194d 100644
 @@ -24,6 +24,9 @@
  #include <linux/projid.h>
  #include <linux/fs_struct.h>
-
+ 
 +/* sysctl */
 +int unprivileged_userns_clone;
 +
  static struct kmem_cache *user_ns_cachep __read_mostly;
  static DEFINE_MUTEX(userns_state_mutex);
-
---
+ 
+-- 
 2.15.1
+

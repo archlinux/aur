@@ -11,7 +11,7 @@ _srcname=linux-4.14
 _pkgver=4.14.8
 _rtpatchver=rt9
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -31,8 +31,11 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
   0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0001-drm-i915-Avoid-PPS-HW-SW-state-mismatch-due-to-rounding.patch
+  0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
+  0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
   0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
+  0001-drm-i915-Avoid-PPS-HW-SW-state-mismatch-due-to-rounding.patch
   fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
 )
 validpgpkeys=(
@@ -52,11 +55,14 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '3ef4c7875f0965ac86aa64ce6c2a7e06ca0066d75df51d07db0f11a52160b8dd'
-            'ac203ad289f4b0782fe94487450863aaf796cf06e60a09ee097bd8c4338c9572'
-            '93f08a383189664579b07b1d7da2a54a8b758bcf03926bf4947484bb4bf4fb4c'
+            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85'
+            'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
+            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2'
+            'ed3266ab03f836f57de0faf8a10ffd7566c909515c2649de99adaab2fac4aa32'
+            '64a014f7e1b4588728b3ea9538beee67ec63fb792d890c7be9cc13ddc2121b00'
+            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb'
+            '95f0d0a94983b0dafd295f660a663f9be5ef2fcb9646098426a5d12b59f50638'
             'b0396825ecd293499907ad86a0eb642cd5e82e534619f95658438ee6ecff10eb'
-            'cbf586270595a89835dc02602983028f4cea80c40a43be3d4871dae4fdb46b84'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 _kernelname=${pkgbase#linux}
@@ -81,13 +87,17 @@ prepare() {
   # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
   patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 
-  # fix a harmless i915 boot up msg
-  msg "applying 0001-drm-i915-Avoid-PPS-HW-SW-state-mismatch-due-to-rounding.patch"
-  patch -Np1 -i ../0001-drm-i915-Avoid-PPS-HW-SW-state-mismatch-due-to-rounding.patch
+  # https://bugs.archlinux.org/task/56605
+  patch -Np1 -i ../0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
+  patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
 
-  # fix a problem with USB audio
-  msg "0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch"
+  # https://bugs.archlinux.org/task/56846
+  patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+
+  # https://bugs.archlinux.org/task/56830
   patch -Np1 -i ../0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
+
+  patch -Np1 -i ../0001-drm-i915-Avoid-PPS-HW-SW-state-mismatch-due-to-rounding.patch
 
   # add realtime patch
   msg "applying patch-${_pkgver}-${_rtpatchver}.patch"

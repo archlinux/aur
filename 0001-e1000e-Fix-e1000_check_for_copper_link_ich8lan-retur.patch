@@ -41,7 +41,7 @@ index d6d4ed7acf031172..31277d3bb7dc1241 100644
  	u16 emi_addr, emi_val = 0;
  	bool link;
  	u16 phy_reg;
-
+ 
  	/* We only want to go out to the PHY registers to see if Auto-Neg
  	 * has completed and/or if our link status has changed.  The
  	 * get_link_status flag is set upon receiving a Link Status
@@ -50,7 +50,7 @@ index d6d4ed7acf031172..31277d3bb7dc1241 100644
  	if (!mac->get_link_status)
 -		return 0;
 +		return 1;
-
+ 
  	/* First we want to see if the MII Status Register reports
  	 * link.  If so, then we want to get the current speed/duplex
 @@ -1613,10 +1616,12 @@ static s32 e1000_check_for_copper_link_ich8lan(struct e1000_hw *hw)
@@ -62,11 +62,12 @@ index d6d4ed7acf031172..31277d3bb7dc1241 100644
  		e_dbg("Error configuring flow control\n");
 +		return ret_val;
 +	}
-
+ 
 -	return ret_val;
 +	return 1;
  }
-
+ 
  static s32 e1000_get_variants_ich8lan(struct e1000_adapter *adapter)
---
+-- 
 2.15.1
+
