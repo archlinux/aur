@@ -1,19 +1,19 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=jcloisterzone
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A Java version of the Carcassonne board game."
 arch=('any')
 url="http://jcloisterzone.com/en/"
 license=('AGPL')
-depends=('java-runtime>=8')
+depends=('java-runtime>=8' 'archlinux-java-run')
 source=("http://jcloisterzone.com/builds/JCloisterZone-${pkgver}.tgz"
         'jcloisterzone.sh'
         'jcloisterzone.desktop'
         'ico.png')
-sha256sums=('449f4497dd9ef8b5fa4d633045de2dc2213900da5c78a9ef3b6c81d540ef0950'
-            'b9ccc952f405b9905130f1903cb3eb8d85a738470a98c414ad319e44f8374c83'
+sha256sums=('8bb138886dcd0634047b6cdcee775c081c61bc2d6fe117129eef8d58e52521a6'
+            '47f628afde304e1e6f090cd093f7b5b3027d339a085f129c1c8201b64a17fe9d'
             '7b25dfcdcb9ec286555a5f03e7b16bbc9c71f117f10aefc79b7e4537a72f4253'
             '012a090df7f1fa30fe3ede444eab92cb2f6fd3c37e1b6786f04da9feb3f7cf38')
 
