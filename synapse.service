@@ -1,0 +1,12 @@
+[Unit]
+Description=synapse bittorrent daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env RUST_BACKTRACE=1 /usr/bin/synapse
+WorkingDirectory=%h
+Restart=always
+
+[Install]
+WantedBy=default.target
