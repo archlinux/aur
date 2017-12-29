@@ -1,7 +1,7 @@
 pkgbase = substance-designer
 	pkgdesc = Node-based, non-destructive PBR material authoring tool.
-	pkgver = 2017.2.1
-	pkgrel = 2
+	pkgver = 2017.2.2
+	pkgrel = 1
 	url = https://www.allegorithmic.com/products/substance-designer
 	arch = x86_64
 	license = custom
@@ -11,13 +11,13 @@ pkgbase = substance-designer
 	depends = hicolor-icon-theme
 	depends = libtiff4
 	options = !strip
-	source = https://download.allegorithmic.com/substance-designer/2017.x/Substance_Designer-2017.2.1-590-linux-x64-standard-full.rpm
+	source = https://download.allegorithmic.com/substance-designer/2017.x/Substance_Designer-2017.2.2-687-linux-x64-standard-full.rpm
 	source = substance-designer-icon.png
 	source = substance-designer.desktop
 	source = substance-designer
-	sha256sums = b29051896512b8e334b6eccd0fa578119cd6314c8fbc77b6ad5bbb87a2fa7e8d
+	sha256sums = c7281a1674cfd2c40c7ad91c8e326d41e254562ece8f6660a10a92b53204b457
 	sha256sums = 8f7f090d96dbb3535747d2c09c32970343c8887df610bc7ef92b59871a9bfb35
-	sha256sums = c1f601250bbcd87f3e1016cdc73206842fc98802257286fba7f68df85570db41
+	sha256sums = 5598647d382a41149ce70742dbf6d64a9a3798e0eed176bf034ca953c6f59cce
 	sha256sums = 714d4484f5ca6d1ac0de77729ab60fc6aee53a7dc217fda5a6401fb6f8eee156
 
 pkgname = substance-designer
