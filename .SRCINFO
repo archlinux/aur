@@ -1,6 +1,6 @@
 pkgbase = python-pylstar
 	pkgdesc = pylstar is a free and open source Python implementation of the LSTAR Grammatical inference algorithm. At the moment egg is pulled from git. This is temporary, will be packaged as realease soon.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/gbossert/pylstar
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-pylstar
 	depends = python
 	provides = python-pylstar
 	options = !emptydirs
-	source = pylstar-v0.1.1.tar.gz::https://github.com/gbossert/pylstar/archive/Release/pylstar-0.1.1.tar.gz
-	sha256sums = aa56f8e21e49ce58412d67d0df278de68cbc93c058bdba22e645a68c815389b0
+	source = pylstar-v0.1.2.tar.gz::https://github.com/gbossert/pylstar/archive/Releases/pylstar-0.1.2.tar.gz
+	sha256sums = b65d5977172c3cb90317873aa952e8d01caeebcb51442cc0bc945063ba6ebfb5
 
 pkgname = python-pylstar
 
