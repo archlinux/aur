@@ -1,0 +1,76 @@
+diff --git a/src/filter.c b/src/filter.c
+index d13f10e..105eae9 100755
+--- a/src/filter.c
++++ b/src/filter.c
+@@ -40,6 +40,8 @@
+ #include "epson-escpr-api.h"
+ #include "epson-escpr-services.h"
+ #include "epson-escpr-mem.h"
++#include "epson-escpr-services.h"
++//#include "epson-escpage.h"
+ 
+ #include "err.h"
+ #include "mem.h"
+@@ -48,6 +50,11 @@
+ #include "libprtX.h"
+ #include "optBase.h"
+ #include "linux_cmn.h"
++#include "xfifo.h"
++
++extern EPS_ERR_CODE SetupJobAttrib (const EPS_JOB_ATTRIB*);
++extern EPS_ERR_CODE SendStartJob ();
++extern EPS_ERR_CODE PrintBand (const EPS_UINT8*, EPS_UINT32, EPS_UINT32*);
+ 
+ #define WIDTH_BYTES(bits) (((bits) + 31) / 32 * 4)
+ 
+@@ -431,7 +438,7 @@ main (int argc, char *argv[])
+ 	}
+ 	
+ 	printJob.jobStatus = EPS_STATUS_ESTABLISHED;
+-	int printHeight = 0;
++	EPS_UINT32 printHeight = 0;
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+ 
+ 	print_area_x = printJob.printableAreaWidth;
+@@ -605,7 +612,7 @@ main (int argc, char *argv[])
+ 						memcpy(rever_buf + k*3, startpage + pos + (bandBmp.widthBytes - 6) - k*3, 3);
+ 					}
+ 				}
+-				PrintBand (rever_buf, bandBmp.widthBytes, &printHeight);
++				PrintBand ((const EPS_UINT8 *)rever_buf, bandBmp.widthBytes, &printHeight);
+ 				pos -= bandBmp.widthBytes;
+ 			}
+ 
+@@ -898,7 +905,7 @@ set_pips_parameter (filter_option_t *filter_opt_p, EPS_OPT *printOpt)
+ 
+ 	/* Get number of pages */
+ 	char page_num;
+-	read (STDIN_FILENO, &page_num, 1);
++	(void)read (STDIN_FILENO, &page_num, 1);
+ 	debug_msg("total pages = %d\n", page_num);
+ 
+ 	/* Others */
+@@ -949,7 +956,7 @@ EPS_INT32 print_spool_fnc(void* hParam, const EPS_UINT8* pBuf, EPS_UINT32 cbBuf)
+ 
+ //	fwrite (pBuf, cbBuf, 1, outfp);
+ 
+-	XFIFOWrite(context, pBuf, cbBuf);
++	XFIFOWrite(context, (char *)pBuf, cbBuf);
+ 
+ 	return 1;
+ }
+diff --git a/src/mem.c b/src/mem.c
+index 4b4b118..420eaf5 100755
+--- a/src/mem.c
++++ b/src/mem.c
+@@ -24,6 +24,7 @@
+ 
+ #include <stdlib.h>
+ #include "mem.h"
++#include "err.h"
+ 
+ void *
+ mem_malloc (unsigned int size, bool_t crit)
+-- 
+2.15.1
+
