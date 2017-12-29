@@ -1,12 +1,12 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-ivi-git python2-ivi-git)
-pkgver=0.14.9.r38.gd7ca59d
+pkgver=0.14.9.r97.gcfa45ce
 pkgrel=1
 pkgdesc="Python Interchangeable Virtual Instrument Library"
 arch=('any')
 url="https://github.com/python-ivi/python-ivi"
 license=('MIT')
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 
 _gitroot='https://github.com/python-ivi/python-ivi.git'
 _gitname='python-ivi'
