@@ -1,38 +1,28 @@
 pkgbase = conan
 	pkgdesc = A distributed, open source, C/C++ package manager.
-	pkgver = 0.30.3
+	pkgver = 1.0.0.beta.3
 	pkgrel = 1
 	url = https://conan.io
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-pyjwt>=1.4.0
-	depends = python-pyjwt<2.0.0
 	depends = python-requests>=2.7.0
-	depends = python-requests<3.0.0
 	depends = python-colorama>=0.3.3
-	depends = python-colorama<0.4.0
 	depends = python-yaml>=3.11
-	depends = python-yaml<3.13.0
 	depends = python-patch=1.16
 	depends = python-fasteners>=0.14.1
 	depends = python-six>=1.10.0
 	depends = python-node-semver=0.2.0
 	depends = python-bottle>=0.12.8
-	depends = python-bottle<0.13
 	depends = python-distro>=1.0.2
-	depends = python-distro<1.2.0
 	depends = python-pluginbase>=0.5
-	depends = python-pluginbase<1.0
 	depends = python-pylint>=1.8.1
-	depends = python-pylint<1.9.0
 	depends = python-future=0.16.0
 	depends = python-pygments>=2.0
-	depends = python-pygments<3.0
-	source = https://github.com/conan-io/conan/archive/0.30.3.tar.gz
-	source = python-pylint_python-distro.patch
-	md5sums = 3a0f50c21c0442e5fa36acc07564bb2e
-	md5sums = 4444ba04f42a4428153695c0777fcf70
+	depends = python-astroid>=1.6
+	source = https://github.com/conan-io/conan/archive/1.0.0-beta.3.tar.gz
+	md5sums = 02a2bf1935e870e3551717f3e4e5059f
 
 pkgname = conan
 
