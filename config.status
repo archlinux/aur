@@ -427,7 +427,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/brunofernandes/AUR/omnetpp-qt/src/omnetpp-5.2'
+ac_pwd='/home/brunofernandes/AUR/omnetpp-qt/teste/omnetpp-5.3p1'
 srcdir='.'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
@@ -638,7 +638,7 @@ S["SHLIB_LD"]="clang++ -shared -fPIC"
 S["ARFLAG_OUT"]=""
 S["AR"]="ar cr"
 S["AS"]="as"
-S["NEDTOOL"]="nedtool"
+S["NEDTOOL"]="opp_nedtool"
 S["SMC"]="opp_smc"
 S["MSGC"]="opp_msgc"
 S["TOOLCHAIN_NAME"]="clang"
@@ -655,9 +655,9 @@ S["DEFINES"]=" -DHAVE_SWAPCONTEXT -DWITH_MPI"
 S["CFLAGS_RELEASE"]=" -O3 -march=native -mtune=native -DNDEBUG=1"
 S["CFLAGS_DEBUG"]=" -g -Wall"
 S["OMNETPP_EDITION"]="Academic Public License -- NOT FOR COMMERCIAL USE"
-S["OMNETPP_BUILDID"]="170818-f9241c2"
-S["OMNETPP_VERSION"]="5.2"
-S["OMNETPP_RELEASE"]="omnetpp-5.2"
+S["OMNETPP_BUILDID"]="171221-c6b3c50"
+S["OMNETPP_VERSION"]="5.3p1"
+S["OMNETPP_RELEASE"]="omnetpp-5.3p1"
 S["OMNETPP_PRODUCT"]="OMNeT++"
 S["MPICXX"]=""
 S["MPICPP"]="mpic++"

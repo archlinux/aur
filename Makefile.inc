@@ -3,10 +3,13 @@
 # Your changes will be lost the next time ./configure is run.
 #
 OMNETPP_PRODUCT = OMNeT++
-OMNETPP_RELEASE = omnetpp-5.2
-OMNETPP_VERSION = 5.2
-OMNETPP_BUILDID = 170818-f9241c2
+OMNETPP_RELEASE = omnetpp-5.3p1
+OMNETPP_VERSION = 5.3p1
+OMNETPP_BUILDID = 171221-c6b3c50
 OMNETPP_EDITION = Academic Public License -- NOT FOR COMMERCIAL USE
+
+# variable to show that the message compiler has a temporary patch applied
+OMNETPP_MSGC_PATCH_VER = 1
 
 #
 # Optional features (set to "yes" to enable the feature)
@@ -128,7 +131,7 @@ AS_NEEDED_OFF = -Wl,--no-as-needed
 PIC_FLAGS = -fPIC
 MSGC = opp_msgc
 SMC = opp_smc
-NEDTOOL = nedtool
+NEDTOOL = opp_nedtool
 AS = as
 AR = ar cr
 ARFLAG_OUT = 
