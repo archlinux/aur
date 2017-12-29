@@ -10,7 +10,7 @@ _licensefile=LICENSE
 license=("BSD3")
 arch=('i686' 'x86_64')
 makedepends=('ghc')
-depends=("ghc" "haskell-fclabels>=1.0")
+depends=(ghc-static haskell-fclabels)
 options=('strip')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"

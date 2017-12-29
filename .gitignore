@@ -1,2 +1,5 @@
 codec-mbox-*.tar.gz
+haskell-codec-mbox-*.log
+haskell-codec-mbox-*.pkg.tar.xz*
+PKGBUILD-namcap.log
 src/
