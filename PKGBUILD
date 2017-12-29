@@ -2,7 +2,7 @@
 
 pkgname=osgearth-git
 _gitname=osgearth
-pkgver=r1.a0f0fe2
+pkgver=r2.a943b2c
 pkgrel=1
 pkgdesc="A terrain rendering toolkit for OpenSceneGraph"
 arch=('i686' 'x86_64')
@@ -32,6 +32,7 @@ build() {
     mkdir -p build
     cd build
     cmake .. \
+  			-DLIB_POSTFIX= \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release
     make
