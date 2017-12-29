@@ -1,6 +1,6 @@
 pkgbase = flashplayer-standalone
 	pkgdesc = Adobe Flash Player (Standalone)
-	pkgver = 27.0.0.183
+	pkgver = 28.0.0.126
 	pkgrel = 1
 	url = http://www.adobe.com/support/flashplayer/downloads.html
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = flashplayer-standalone
 	depends = nss
 	optdepends = alsa-lib: for sound through alsa
 	options = !strip
-	source = flash-player-standalone-27.0.0.183.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/25/flash_player_sa_linux.x86_64.tar.gz
+	source = flash-player-standalone-28.0.0.126.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/28/flash_player_sa_linux.x86_64.tar.gz
 	source = license.pdf::http://www.adobe.com/products/eulas/pdfs/PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf
 	source = flashplayer.desktop
-	sha256sums = afe0ec42172cc954ce2a5c0e590a04b05c3a3579f8f972bf89f004255f05a2eb
+	sha256sums = 93557d22ceff2287b01c113b4f08eb995d382b5f992f6403a85ba62b7929b293
 	sha256sums = d30b03c0f70f7c4a7837751286bab579d5033f2e7a1548279a9c09ea905b2849
 	sha256sums = 92851d38791e9501b70861c2ff02ee1c5aa7298be5e6801088f01150c9b31acd
 
