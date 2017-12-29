@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=v0.10.1.rc2.r0.g156b69ba
+pkgver=v0.11.0.rc1.r2.g58a4df05
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
 arch=(arm armv6h armv7h aarch64 i686 x86_64)
@@ -11,12 +11,13 @@ license=('MIT')
 depends=()
 install=${_pkgname}.install
 makedepends=(go git upx)
+conflicts=('openbazaard')
+options=('strip' 'upx')
 _user=github.com/OpenBazaar
 _repo=openbazaar-go
+
 source=("${_repo}::git+https://${_user}/${_repo}.git"
-		"${_pkgname}.service"
-)
-options=('strip' 'upx')
+	"${_pkgname}.service")
 
 export GOOS=linux
 case "$CARCH" in
@@ -51,14 +52,14 @@ package() {
   go build
   
   msg2 "Installing binary file"
-  install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${_pkgname}-next
+  install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${_pkgname}
 
   msg2 "Installing systemd service"
-  install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}-next.service
+  install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
   
   msg2 "Symlinking for gui launch"
   install -dm755 $pkgdir/opt/openbazaar-go/
-  ln -sr /usr/bin/${_pkgname}-next $pkgdir/opt/openbazaar-go/openbazaard
+  ln -sr /usr/bin/${_pkgname} $pkgdir/opt/openbazaar-go/openbazaard
 }
 
 md5sums=('SKIP'
