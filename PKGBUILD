@@ -3,7 +3,7 @@
 pkgver=6.4
 pkgname="ida-pro-${pkgver}"
 pkgrel=1
-pkgdesc="Commercial multi-processor disassembler and debugger."
+pkgdesc="Dependencies for Hex-Rays IDA ${pkgver}"
 url="https://www.hex-rays.com/products/ida/${pkgver}/index.shtml"
 license=('')
 source=()
