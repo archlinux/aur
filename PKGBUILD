@@ -1,11 +1,11 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
+# Maintainer: Jonathon Fernyhough <jonathon manjaro_dot_org>
 # Contributor: twa022 <twa022 at gmail dot com>
 # Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=17.10.15
-_umsver=17.10.23
+pkgver=18.04.0
+_umsver=18.04.1
 pkgrel=1
 pkgdesc="Tweak tool for MATE (fork of MintDesktop)"
 arch=('any')
@@ -21,9 +21,9 @@ optdepends=('mate-applet-dock: for Mutiny panel layout'
             'tilda: to enable pull-down terminal'
             'topmenu-gtk: for Mutiny panel layout')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-mate/$pkgname/archive/$pkgver.tar.gz"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_$_umsver.tar.xz")
-sha256sums=('1bcd01bfd3882cf01c20347649afcec721edab5473af1568a33e880d305322db'
-            '3dfb3c54308b913ebe92c32885708d1f86d47dc1cafed710b63b8964b7a7e64d')
+        "ubuntu-mate-settings-$_umsver.tar.gz::https://github.com/ubuntu-mate/ubuntu-mate-settings/archive/$_umsver.tar.gz")
+sha256sums=('8ab59d2fd49a42259c75fdf11153889858cca2c1572f4de75c890474ea3cbe3b'
+            '9d509825b90250b5b0cec8ba5ec375e08c60d609dba06129922b12329f6b59f9')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -33,5 +33,5 @@ prepare() {
 package() {
   cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
-  cp -r "$srcdir"/ubuntu-mate-settings/usr/share/mate-panel "$pkgdir/usr/share"
+  cp -r "$srcdir"/ubuntu-mate-settings-$_umsver/usr/share/mate-panel "$pkgdir/usr/share"
 }
