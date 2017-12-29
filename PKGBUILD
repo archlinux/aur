@@ -2,7 +2,7 @@
 
 pkgname=mesen
 _pkgname=Mesen
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A cross-platform NES/Famicom emulator"
 arch=("x86_64")
@@ -13,7 +13,7 @@ license=('GPL3')
 source=("https://github.com/SourMesen/Mesen/archive/${pkgver}.tar.gz"
        "${pkgname}.desktop"
        "${pkgname}".sh)
-md5sums=('a1451f44e324156efcc8b8d65bd654e6'
+md5sums=('3c7ab85aeadd863cbc50d0172b5925d1'
          '196970221b064dd78df72500e0df794c'
          '03f0d1ef2d850712a12858d79bc17ddf')
 
