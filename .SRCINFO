@@ -1,6 +1,6 @@
 pkgbase = imeditor
 	pkgdesc = Simple & versatile image editor.
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/ImEditor/ImEditor
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = imeditor
 	depends = python-setuptools
 	depends = python-pillow
 	depends = gtk3
-	source = https://github.com/ImEditor/ImEditor/archive/0.6.1.tar.gz
-	md5sums = 3dfd4081361b307b143b6a7521d761b0
+	source = https://github.com/ImEditor/ImEditor/archive/0.6.2.tar.gz
+	md5sums = c528be351a97db80f9663bf261b8dc04
 
 pkgname = imeditor
 
