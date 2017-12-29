@@ -6,18 +6,18 @@
 # Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: E. Sheldon 
 pkgname=python2-fitsio-git
-pkgver=r639.844055b
+pkgver=r640.507ad1c
 pkgrel=1
 #epoch=
 
 pkgdesc=" A python library to read from and write to FITS files. "
 
 
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/esheldon/fitsio.git"
 license=('BSD')
 groups=()
-depends=('python2' 'python2-numpy')
+depends=('python2')
 makedepends=('git')
 checkdepends=()
 optdepends=()
