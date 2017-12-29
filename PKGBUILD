@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.14
-pkgver=4.14.9
+pkgver=4.14.10
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -26,7 +26,6 @@ source=(
   0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
   0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
   0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-  0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -34,7 +33,7 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '5edc955bb67b04c7ed426b1df17a3e322e32ad9fdda9c6abb53ab6eca7faf704'
+            '16f560aa713b46c707f04a226f67dc31fdd280aae57dd19e0413d61df5336c74'
             'SKIP'
             '4d12ed868b05720c3d263c8454622c67bdee6969400049d7adac7b00907ad195'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -45,8 +44,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2'
             'ed3266ab03f836f57de0faf8a10ffd7566c909515c2649de99adaab2fac4aa32'
             '64a014f7e1b4588728b3ea9538beee67ec63fb792d890c7be9cc13ddc2121b00'
-            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb'
-            '95f0d0a94983b0dafd295f660a663f9be5ef2fcb9646098426a5d12b59f50638')
+            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb')
 
 _kernelname=${pkgbase#linux}
 
@@ -55,6 +53,7 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
+  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
 
   # security patches
 
@@ -76,9 +75,6 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56846
   patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-
-  # https://bugs.archlinux.org/task/56830
-  patch -Np1 -i ../0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
 
   cp -Tf ../config .config
 
