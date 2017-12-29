@@ -51,8 +51,8 @@ _use_current=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
-pkgver=4.14.9
-pkgrel=2
+pkgver=4.14.10
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -84,8 +84,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
         '0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
         '0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
-        '0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch')
+        '0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch')
         
 _kernelname=${pkgbase#linux} 
 
@@ -116,10 +115,6 @@ prepare() {
     ### Fix https://bugs.archlinux.org/task/56846
         msg "Fix #56846"
         patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-
-    ### Fix https://bugs.archlinux.org/task/56830
-        msg "Fix #56830"
-        patch -Np1 -i ../0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -133,6 +128,10 @@ prepare() {
 	msg "Running make mrproper to clean source tree"
 	make mrproper
 
+    ### Fix https://www.spinics.net/lists/stable/msg207374.html
+        msg "Fix execvp: ./sync-check.sh error"
+        chmod +x tools/objtool/sync-check.sh
+	
 	cp -Tf ../config .config
         
     ### Optionally use running kernel's config
@@ -383,7 +382,7 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            '8085944e5b8d49b07075776a1604a25ba87efe8b5a8a1a276a75dc47a87de4e487e72d9ace605166be977340b81a10a3cbc25c84b857509da8bba6d9184513fa'
+            '93b642201235c78ef6c8253ef6338a82f6c38e5b6741c7ec06c3dde84433683809c56fe30aab0117607ab09d3367d1dafbbc81af3353f267676357bf72cd7280'
             'SKIP'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
@@ -397,8 +396,7 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             '93131d8ad8b118a1c1bcabce357ba7e61233c99188f2d0123977c436e2932555bde4e19de4ca63ac27c6e9b26d8373fb99b52db18b7518122433616d7060082d'
             '973bf63857968e76d15286aea5add9589e3248b7b70da25629b91618cfdbbd5784cd0d97daccb3168fd369adb41ebd5768788ad25dc54b7a5c0b9f16e07a9d38'
             '39bf2a3eeca5efce6c8214c49fba001a767fa3c94157255451a8c4739a3adeef74f2644a2ab6a7a423a65e76466c02d7c1f124cdddcfce37145fc3be92d8fa6c'
-            '5ad03cf5b0acfa1ca554a0462d83c0be8ddf9974d7248b9ff9a516e68dad0425a205b224ca4cf680428feedcc4e7a1153d5aa12a12abfa96a503e9a0d65c712a'
-            '6f01527ed7a25bf78d7c0515c8726a47bef0e99cf1c90f07d0f6a59e70f12e04260eed2c4ca831fb339d3a027085bcd73f8ab3b1968582f75b688823b18716cb')
+            '5ad03cf5b0acfa1ca554a0462d83c0be8ddf9974d7248b9ff9a516e68dad0425a205b224ca4cf680428feedcc4e7a1153d5aa12a12abfa96a503e9a0d65c712a')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
