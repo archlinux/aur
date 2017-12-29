@@ -10,7 +10,7 @@ depends=('evolution-data-server' 'libgnome-keyring' 'neon' 'openobex' 'python2' 
 makedepends=('intltool' 'boost' 'python')
 #changelog=
 source=("https://download.01.org/syncevolution/syncevolution/sources/syncevolution-$pkgver.tar.gz"
-	"$pkgname-$pkgver-libical3.patch"
+        "$pkgname-$pkgver-libical3.patch"
         "$pkgname-$pkgver-python2.patch")
 sha256sums=('8b692bd549a63d2259ed7519afb74fc9cab5be10c7a6f51868b66fc98fb48128'
             '36165fd651a2edc088dbf868214bace3d7f52f61dce051af4657ab1eafbe2ac9'
@@ -30,15 +30,15 @@ build() {
     cd "$pkgname-$pkgver"
     ./configure --prefix=/usr                        \
                 --libexecdir=/usr/lib/syncevolution  \
-		--sysconfdir=/etc                    \
-		--enable-bluetooth                   \
-		--enable-core                        \
-		--enable-dbus-service                \
-		--enable-notify                      \
-		--enable-notify-compatibility        \
-		--enable-gui                         \
-		--enable-pbap                        \
-		--enable-dav
+                --sysconfdir=/etc                    \
+                --enable-bluetooth                   \
+                --enable-core                        \
+                --enable-dbus-service                \
+                --enable-notify                      \
+                --enable-notify-compatibility        \
+                --enable-gui                         \
+                --enable-pbap                        \
+                --enable-dav
     make
 }
 
@@ -53,11 +53,11 @@ package_syncevolution-http() {
     pkgdesc="Synchronize PIM data via various protocols (HTTP server)"
     arch=('any')
     depends=('syncevolution'
-	     'python2-dbus'
-	     'python2-twisted'
-	     'python2-gobject2'
-	     'python2-pyopenssl'
-	     'python2-service-identity')
+             'python2-dbus'
+             'python2-twisted'
+             'python2-gobject2'
+             'python2-pyopenssl'
+             'python2-service-identity')
     #changelog=
 
     /usr/bin/install -D "$pkgbase-$pkgver/test/syncevo-http-server.py" \
