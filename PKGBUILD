@@ -2,8 +2,8 @@
 # Maintainer: Trevor Bramble <inbox@trevorbramble.com>
 
 pkgname=habitat-bin
-pkgver=0.50.3
-_builddate=20171202003930
+pkgver=0.51.0
+_builddate=20171219021329
 pkgrel=1
 pkgdesc="Application automation framework that allows you to build applications that have automation built-in"
 arch=('x86_64')
