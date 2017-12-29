@@ -63,6 +63,7 @@ prepare() {
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|g" ./.config
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  chmod +x tools/objtool/sync-check.sh
   make prepare
 }
 
