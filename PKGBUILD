@@ -2,7 +2,7 @@
 
 _pkgname=scientifica
 pkgname=${_pkgname}-font
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Tall and condensed bitmap font for geeks.'
 arch=(any)
@@ -14,7 +14,7 @@ install=scientifica-font.install
 source=(https://raw.githubusercontent.com/sjossi/scientifica-font/master/75-yes-scientifica.conf
         https://raw.githubusercontent.com/NerdyPepper/scientifica/master/scientifica-11.bdf)
 md5sums=('527aa5ed9023e7d2face57d48cfce034'
-         'd134dfeeb97109ce3b582d3c89341035')
+         'a05509a9d48424fd93560344da9829aa')
 
 build()
 {
