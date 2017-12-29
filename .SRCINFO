@@ -1,6 +1,6 @@
 pkgbase = osgearth-git
 	pkgdesc = A terrain rendering toolkit for OpenSceneGraph
-	pkgver = 4764.36f72fa
+	pkgver = r1.a0f0fe2
 	pkgrel = 1
 	url = http://www.osgearth.org
 	arch = i686
@@ -16,9 +16,10 @@ pkgbase = osgearth-git
 	optdepends = sqlite: Flat file cache
 	optdepends = libzip: Archive support
 	provides = osgearth
+	conflicts = osgearth-qt4
 	conflicts = osgearth
 	source = osgearth::git+https://github.com/gwaldron/osgearth
-	sha1sums = SKIP
+	md5sums = SKIP
 
 pkgname = osgearth-git
 

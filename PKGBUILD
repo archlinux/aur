@@ -1,37 +1,36 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Bruno Fernandes <brunofernandes at ua pt>
 
 pkgname=osgearth-git
 _gitname=osgearth
-pkgver=4764.36f72fa
+pkgver=r1.a0f0fe2
 pkgrel=1
 pkgdesc="A terrain rendering toolkit for OpenSceneGraph"
 arch=('i686' 'x86_64')
-url=('http://www.osgearth.org')
+url='http://www.osgearth.org'
 license=('LGPL')
 depends=('openscenegraph' 'gdal' 'expat' 'curl' )
 optdepends=('geos: Improved vector support'
             'sqlite: Flat file cache'
             'libzip: Archive support')
 makedepends=('git' 'cmake')
-source=( "$_gitname::git+https://github.com/gwaldron/osgearth" )
-provides=( "$_gitname" )
-conflicts=( "$_gitname" )
-
-sha1sums=( 'SKIP' )
+source=("$_gitname::git+https://github.com/gwaldron/osgearth")
+provides=('osgearth')
+conflicts=('osgearth-qt4' 'osgearth')
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  # Use the tag of the last commit
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${srcdir}/${_pkgname}"
+	( set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 build() {
-
     cd "$srcdir/$_gitname"
     rm -rf build
     mkdir -p build
     cd build
-
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release
@@ -45,4 +44,3 @@ package() {
    cp -r "$srcdir"/$_gitname/tests "$pkgdir"/usr/share/osgearth
    cp -r "$srcdir"/$_gitname/data "$pkgdir"/usr/share/osgearth
 }
-
