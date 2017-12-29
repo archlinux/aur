@@ -4,7 +4,7 @@
 
 pkgname=python2-paste-script
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A pluggable command-line frontend, including commands to setup package file layouts"
 arch=('any')
 url="http://pythonpaste.org/script/"
@@ -12,7 +12,7 @@ license=('custom')
 depends=('python2' 'python2-paste>=1.7' 'python2-paste-deploy')
 optdepends=('python2-cheetah: for templating' 'python2-flup: utilities for WSGI')
 makedepends=('python2-distribute')
-source=(http://pypi.python.org/packages/source/P/PasteScript/PasteScript-${pkgver}.tar.gz)
+source=(https://pypi.python.org/packages/source/P/PasteScript/PasteScript-${pkgver}.tar.gz)
 replaces=('python-paste-script')
 md5sums=('4c72d78dcb6bb993f30536842c16af4d')
 
