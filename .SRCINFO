@@ -8,7 +8,9 @@ pkgbase = python2-fitsio-git
 	license = BSD
 	makedepends = git
 	depends = python2
-	source = python2-fitsio-git-r640.507ad1c::git+https://github.com/esheldon/fitsio.git
+	provides = python2-fitsio
+	conflicts = python2-fitsio
+	source = python2-fitsio::git+https://github.com/esheldon/fitsio.git
 	md5sums = SKIP
 
 pkgname = python2-fitsio-git
