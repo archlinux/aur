@@ -1,9 +1,9 @@
 # Maintainer: Arun Mahapatra <arun@codito.in>
 
-pkgname="python-tabula"
-pkgdesc='Simple wrapper for tabula, read tables from PDF into DataFrame'
+pkgname=python-tabula
 pkgver=1.0.0
 pkgrel=1
+pkgdesc='Simple wrapper for tabula, read tables from PDF into DataFrame'
 url="https://github.com/chezou/tabula-py"
 license=('MIT')
 arch=('any')
@@ -16,22 +16,6 @@ sha512sums=('24db1a2df9c247a4fd1523849870e0880c0c1d28099799fedb8d3a520b08dd39728
 
 prepare() {
   cd "${srcdir}/${sourcename}-${pkgver}"
-}
-
-replace() {
-  pattern=$1
-  substitute=$2
-  file=$3
-  echo -n "Replacing '$pattern' by '$substitute' in $file..."
-  if grep -q $pattern $file && sed -i "s/$pattern/$substitute/" $file; then
-    echo "DONE"
-  else
-    echo "FAILED"
-    depname=$(echo $pattern | sed 's/[>=<].*$//')
-    echo Current line in $file:
-    grep $depname $file
-    exit 1
-  fi
 }
 
 package() {
