@@ -1,0 +1,19 @@
+pkgbase = python-tabula
+	pkgdesc = Simple wrapper for tabula, read tables from PDF into DataFrame
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/chezou/tabula-py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = java-runtime
+	depends = python
+	depends = python-pandas
+	depends = python-requests
+	depends = python-numpy
+	provides = python-tabula
+	source = python-tabula-1.0.0.tar.gz::https://github.com/chezou/tabula-py/archive/v1.0.0.tar.gz
+	sha512sums = 24db1a2df9c247a4fd1523849870e0880c0c1d28099799fedb8d3a520b08dd397282147d4de7ce353ce82d884271c61b4bcfe01dae95b9ed38b804ec3f6be063
+
+pkgname = python-tabula
+
