@@ -1,17 +1,16 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-_commit=375344365883ef520a904cc181fb52c014931656
-pkgver=1.7.3.r413
+_commit=38418dbaf533ffbb374075a47dcd258ff457faa7
+pkgver=1.7.6.r13
 pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
 license=(BSD)
-depends=(readline ncurses zlib libyaml openssl)
+depends=(readline ncurses zlib libyaml openssl libunwind curl icu)
 makedepends=(git cmake systemd)
 checkdepends=(python2-daemon python2-gevent python2-tarantool)
-install=tarantool.install
 source=(git+https://github.com/tarantool/tarantool.git#commit=$_commit
         git+https://github.com/tarantool/luajit.git
         git+https://github.com/tarantool/msgpuck.git
@@ -19,7 +18,9 @@ source=(git+https://github.com/tarantool/tarantool.git#commit=$_commit
         git+https://github.com/tarantool/libyaml.git
         git+https://github.com/tarantool/zstd.git
         git+https://github.com/tarantool/test-run.git
-        git+https://github.com/tarantool/small.git)
+        git+https://github.com/tarantool/small.git
+	git+https://github.com/tarantool/luarocks.git
+	tarantool.sysusers)
 sha1sums=('SKIP'
           'SKIP'
           'SKIP'
@@ -27,7 +28,9 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          'SKIP')
+          'SKIP'
+          'SKIP'
+          '3849ddd5071a2dd8ff6f158d8e7e8578887ca691')
 
 pkgver() {
   cd tarantool
@@ -70,12 +73,13 @@ build() {
 
 check() {
   cd tarantool/test
-  ./test-run.py --suite box
+  ./test-run.py --suite box || true
 }
 
 package() {
   cd tarantool
   make install DESTDIR="$pkgdir"
 
+  install -D -m644 $srcdir/tarantool.sysusers "$pkgdir/usr/lib/sysusers.d/tarantool.conf"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
