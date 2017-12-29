@@ -1,15 +1,15 @@
 pkgbase = ionic-cli
 	pkgdesc = The Ionic command line interface (CLI) is your go-to tool for developing Ionic apps
-	pkgver = 3.17.0
+	pkgver = 3.19.0
 	pkgrel = 1
 	url = http://ionicframework.com/
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = ionic-3.17.0.tgz
-	source = http://registry.npmjs.org/ionic/-/ionic-3.17.0.tgz
-	sha256sums = d2059b53babc04c3da3f62de5e8dad69aa61470263d389240fc09d09370aae87
+	noextract = ionic-3.19.0.tgz
+	source = http://registry.npmjs.org/ionic/-/ionic-3.19.0.tgz
+	sha256sums = dcee28813b75ee58ea259bd968814565a40648b93d87175275a71b04fd9e9031
 
 pkgname = ionic-cli
 
