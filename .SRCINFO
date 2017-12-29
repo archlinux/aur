@@ -1,6 +1,6 @@
 pkgbase = waf
 	pkgdesc = General-purpose build system modelled after Scons
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = http://waf.io/
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = waf
 	makedepends = unzip
 	depends = python
 	provides = python-waf
-	source = https://waf.io/waf-2.0.3.tar.bz2
+	source = https://waf.io/waf-2.0.4.tar.bz2
 	source = wafdir.patch
 	source = building-waf.md
-	md5sums = 37f6b798337574d1ac5cebcb7418c8c4
+	md5sums = 8638e8e650edd4ad766245fdfecf00b4
 	md5sums = ff472805caa81e02cb15bcf87031f722
 	md5sums = 93fd94b3dc4616c35e9bf13adc63b23c
-	sha256sums = 1b57a3b634020c8bdd47321a2ef5a50d2dbbf315e9bb7a8c64dea8e28d874fdb
+	sha256sums = 36aaa3ee6aff75058a694b6c53c3cdf3080c882e134811dd8d4716ccd8e3b67e
 	sha256sums = 432fb8e21fe31047e16ac068b761961f1a3965785e570bf54aca1c4c07d253f4
 	sha256sums = 3103524b61ac3f3af9bb71f1ac8fcb836a1e67e2bfcf59150f08dbf70a595675
 
