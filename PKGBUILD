@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.14
-pkgver=4.14.8
+pkgver=4.14.9
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -27,10 +27,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'i915-vga-arbiter.patch'
         0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
         0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
-        0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch)
+        0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+        0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
+        0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+        0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch)
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '42eaed731b716244514b765c199e8f675d79287d7630e5c2911053ad52a1fa0a'
+            '5edc955bb67b04c7ed426b1df17a3e322e32ad9fdda9c6abb53ab6eca7faf704'
             'SKIP'
             'bfde21c325d39013463c38e9fa23d6d6481238b8509eea4ae38906127017e47d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -40,7 +43,10 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'eaf70cd805cdb43cf6227d354a6d54f67645b6df99e06136a8055d7494d7439c'
             '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85'
             'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
-            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2')
+            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2'
+            'ed3266ab03f836f57de0faf8a10ffd7566c909515c2649de99adaab2fac4aa32'
+            '64a014f7e1b4588728b3ea9538beee67ec63fb792d890c7be9cc13ddc2121b00'
+            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -67,6 +73,13 @@ prepare() {
 
   # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
   patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+
+  # https://bugs.archlinux.org/task/56605
+  patch -Np1 -i ../0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
+  patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+
+  # https://bugs.archlinux.org/task/56846
+  patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
 
   # patches for vga arbiter fix in intel systems
   patch -p1 -i "${srcdir}/i915-vga-arbiter.patch"
