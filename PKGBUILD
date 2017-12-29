@@ -1,12 +1,12 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-vxi11-git python2-vxi11-git)
-pkgver=0.9.r0.g83fc5b4
+pkgver=0.9.r5.gcc4671d
 pkgrel=1
 pkgdesc="A Python VXI-11 driver for controlling instruments over Ethernet."
 arch=('any')
 url="https://github.com/python-ivi/python-vxi11"
 license=('MIT')
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 
 _gitroot='https://github.com/python-ivi/python-vxi11.git'
 _gitname='python-vxi11'

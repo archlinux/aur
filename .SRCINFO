@@ -1,11 +1,13 @@
 pkgbase = python-vxi11-git
 	pkgdesc = A Python VXI-11 driver for controlling instruments over Ethernet.
-	pkgver = 0.9.r0.g83fc5b4
+	pkgver = 0.9.r5.gcc4671d
 	pkgrel = 1
 	url = https://github.com/python-ivi/python-vxi11
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	source = python-vxi11::git+https://github.com/python-ivi/python-vxi11.git
 	md5sums = SKIP
 
