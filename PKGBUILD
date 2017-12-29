@@ -9,6 +9,8 @@ pkgdesc="Format columns of data using the full range of colours in modern termin
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
+conflicts=('r-pillar')
+provides=('r-pillar')
 depends=('r' 'r-cran-cli' 'r-crayon>=1.3.4' 'r-cran-rlang' 'r-cran-utf8')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('37946c66aceea43c4b8b16256fd2390e')
