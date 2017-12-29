@@ -13,13 +13,13 @@ _cur_kernel="$(uname -r)"
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
 pkgdesc="Synaptics LED enabled psmouse kernel module"
-depends=(linux)
-makedepends=(git linux-headers)
+depends=('linux>=4.14.9')
+makedepends=('git' 'linux-headers>=4.14.9')
 install="$pkgname.install"
 
 source=(
