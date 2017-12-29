@@ -1,202 +1,59 @@
-# Maintainer : Mark Weiman <mark dot weiman at markzz dot com>
-# Contributor: David Hummel <dhummel at eml dot cc>
-# Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
-# Contributor: Andre Osku Schmidt (oskude) <(andre.osku.schmidt) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
-
-################
-_TIANOCORE_GIT_URL="https://github.com/tianocore/edk2"
-_TIANO_DIR_="edk2"
-################
-
-################
-_UDK_OVMF_X64_PKG="OvmfX64"
-_UDK_OVMF_X64_DSC="OvmfPkg/OvmfPkgX64.dsc"
-
-_UDK_OVMF_IA32_PKG="OvmfIa32"
-_UDK_OVMF_IA32_DSC="OvmfPkg/OvmfPkgIa32.dsc"
-
-_UDK_TARGET="RELEASE"
-_COMPILER="GCC49"
-################
-
-################
-_OPENSSL_VERSION="1.1.0e"
-################
-
-_pkgname="ovmf"
-pkgname="${_pkgname}-git"
-
-pkgver=21562.d3e0c996d5
+# Maintainer: Mark Weiman <mark.weiman@markzz.com>
+pkgname=ovmf-git
+pkgver=r23046.f13f306b3b
+epoch=1
 pkgrel=1
-pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - GIT Version"
-url="https://tianocore.github.io/ovmf/"
-arch=('x86_64' 'i686')
-license=('BSD')
-
-makedepends=('git' 'python2' 'iasl' 'nasm')
-
-options=('!strip' 'docs' '!makeflags')
-
-conflicts=('ovmf' 'ovmf-bin' 'ovmf-svn')
-provides=('ovmf' 'ovmf-bin' 'ovmf-svn')
-
-install="${_pkgname}.install"
-
-source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
-        "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz"
-)
-
-sha1sums=('SKIP'
-          '8bbbaf36feffadd3cb9110912a8192e665ebca4b')
-
-noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
+arch=('any')
+pkgdesc="Tianocore UEFI firmware for qemu."
+url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=EDK2"
+license=('custom')
+makedepends=('git' 'python2' 'iasl' 'nasm' 'subversion' 'perl-libwww')
+source=('edk2::git+https://github.com/tianocore/edk2#branch=master')
+sha256sums=('SKIP')
+options=(!makeflags)
+_toolchain_opt=GCC5
 
 pkgver() {
-	
-	cd "${srcdir}/${_TIANO_DIR_}/"
-	echo "$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|\.|g'
-	
-}
-
-_bail_out() {
-	
-	if [[ "${CARCH}" != "x86_64" ]]; then
-		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
-		exit 1
-	fi
-	
-}
-
-_setup_env_vars() {
-	
-	msg "Setup UDK PATH ENV variables"
-	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}"
-	export EDK_TOOLS_PATH="${_UDK_DIR}/BaseTools"
-	
-}
-
-_prepare_tianocore_sources() {
-	
-	cd "${_UDK_DIR}/"
-	
-	msg "Cleanup UDK config files"
-	rm -rf "${_UDK_DIR}/Build/" || true
-	rm -rf "${_UDK_DIR}/Conf/" || true
-	mkdir -p "${_UDK_DIR}/Conf/"
-	mkdir -p "${_UDK_DIR}/Build/"
-	
-	msg "Use python2 for UDK BaseTools"
-	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
-	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/Tests/GNUmakefile"
-	
-	msg "Fix GCC Warning as error"
-	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Source/C/Makefiles/header.makefile" || true
-	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	
-	msg "Remove GCC -g debug option and add -O0 -mabi=ms -maccumulate-outgoing-args"
-	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -O0 -mabi=ms -maccumulate-outgoing-args |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	sed 's|DEFINE GCC44_ALL_CC_FLAGS            = -g |DEFINE GCC44_ALL_CC_FLAGS            = -O0 -mabi=ms -maccumulate-outgoing-args |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	
-	msg "Fix UDK Target Platform"
-	sed "s|ACTIVE_PLATFORM       = Nt32Pkg/Nt32Pkg.dsc|ACTIVE_PLATFORM       = ${_UDK_OVMF_X64_DSC}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
-	sed "s|TARGET                = DEBUG|TARGET                = ${_UDK_TARGET}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
-	sed "s|TOOL_CHAIN_TAG        = MYTOOLS|TOOL_CHAIN_TAG        = ${_COMPILER}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
-	sed "s|IA32|X64|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
-	
-	chmod 0755 "${_UDK_DIR}/BaseTools/BuildEnv"
-	
-}
-
-_prepare_openssl_udk_dir() {
-	
-	cd "${_UDK_DIR}/"
-	
-	msg "Download OpenSSL ${_OPENSSL_VERSION} Sources"
-	bsdtar -C "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/" -xf "${srcdir}/openssl-${_OPENSSL_VERSION}.tar.gz"
-	mv "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/openssl-${_OPENSSL_VERSION}" "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/openssl"
-	echo
+  cd "${srcdir}"/edk2
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	_bail_out
-	
-	_setup_env_vars
-	
-	msg "Prepare Tianocore Sources"
-	_prepare_tianocore_sources
-	echo
-	
-	msg "Prepare OpenSSL ${_OPENSSL_VERSION} Sources"
-	_prepare_openssl_udk_dir
-	echo
-	
+  cd "${srcdir}"
+  # edk2 uses python everywhere, but expects python2
+  mkdir bin
+  ln -s /usr/bin/python2 bin/python
 }
 
 build() {
-	
-	_bail_out
-	
-	_setup_env_vars
-	
-	cd "${_UDK_DIR}/"
-	
-	msg "Unset all compiler FLAGS"
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-	
-	msg "Setup UDK Environment"
-	source "${_UDK_DIR}/BaseTools/BuildEnv" BaseTools
-	echo
-	
-	msg "Compile UDK BaseTools"
-	make -C "${EDK_TOOLS_PATH}"
-	echo
-	
-	if [[ "${CARCH}" == "x86_64" ]]; then
-		msg "Unset all compiler FLAGS"
-		unset CFLAGS
-		unset CPPFLAGS
-		unset CXXFLAGS
-		unset LDFLAGS
-		unset MAKEFLAGS
-		
-		msg "Compile OVMF X64 binary"
-		"${_UDK_DIR}/OvmfPkg/build.sh" -a "X64" -b "${_UDK_TARGET}" -t "${_COMPILER}" -D "SECURE_BOOT_ENABLE=TRUE" -D "FD_SIZE_2MB" --enable-flash
-		echo
-	fi
-	
-	msg "Unset all compiler FLAGS"
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-	
-	msg "Compile OVMF IA32 binary"
-	"${_UDK_DIR}/OvmfPkg/build.sh" -a "IA32" -b "${_UDK_TARGET}" -t "${_COMPILER}" -D "SECURE_BOOT_ENABLE=TRUE" -D "FD_SIZE_2MB" --enable-flash
-	echo
-	
+  if [ "$CARCH" != "x86_64" ]; then
+    error "This package must be built under the x86_64 architecture."
+    false
+  fi
+  export PATH="${srcdir}/bin:$PATH"
+  cd "${srcdir}/"edk2
+  make -C BaseTools
+  export EDK_TOOLS_PATH="${srcdir}"/edk2/BaseTools
+  . edksetup.sh BaseTools
+
+  # Set RELEASE target, toolchain and number of build threads
+  sed "s|^TARGET[ ]*=.*|TARGET = RELEASE|; \
+       s|TOOL_CHAIN_TAG[ ]*=.*|TOOL_CHAIN_TAG = ${_toolchain_opt}|; \
+       s|MAX_CONCURRENT_THREAD_NUMBER[ ]*=.*|MAX_CONCURRENT_THREAD_NUMBER = $(nproc)|;" -i Conf/target.txt
+  # Build OVMF for ia32
+  #sed "s|^TARGET_ARCH[ ]*=.*|TARGET_ARCH = IA32|; \
+  #     s|^ACTIVE_PLATFORM[ ]*=.*|ACTIVE_PLATFORM = OvmfPkg/OvmfPkgIa32.dsc|;" -i Conf/target.txt
+  #./BaseTools/BinWrappers/PosixLike/build
+  # Build OVMF for x64
+  sed "s|^TARGET_ARCH[ ]*=.*|TARGET_ARCH = X64|; \
+       s|^ACTIVE_PLATFORM[ ]*=.*|ACTIVE_PLATFORM = OvmfPkg/OvmfPkgX64.dsc|;" -i Conf/target.txt
+  ./BaseTools/BinWrappers/PosixLike/build
 }
 
 package() {
-	
-	_setup_env_vars
-	
-	if [[ "${CARCH}" == "x86_64" ]]; then
-		msg "Install the OVMF X64 image"
-		install -d "${pkgdir}/usr/share/ovmf/x64/"
-		install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_X64_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/x64/ovmf_x64.bin"
-		install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_X64_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF_CODE.fd" "${pkgdir}/usr/share/ovmf/x64/ovmf_code_x64.bin"
-		install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_X64_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF_VARS.fd" "${pkgdir}/usr/share/ovmf/x64/ovmf_vars_x64.bin"
-	fi
-	
-	msg "Install the OVMF IA32 image"
-	install -d "${pkgdir}/usr/share/ovmf/ia32/"
-	install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_IA32_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/ia32/ovmf_ia32.bin"
-	install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_IA32_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF_CODE.fd" "${pkgdir}/usr/share/ovmf/ia32/ovmf_code_ia32.bin"
-	install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_IA32_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF_VARS.fd" "${pkgdir}/usr/share/ovmf/ia32/ovmf_vars_ia32.bin"
-	
+  #install -D -m644 "${srcdir}"/edk2/Build/OvmfIa32/RELEASE_${_toolchain_opt}/FV/OVMF_CODE.fd "${pkgdir}"/usr/share/ovmf/ovmf_code_ia32.bin
+  #install -D -m644 "${srcdir}"/edk2/Build/OvmfIa32/RELEASE_${_toolchain_opt}/FV/OVMF_VARS.fd "${pkgdir}"/usr/share/ovmf/ovmf_vars_ia32.bin
+  install -D -m644 "${srcdir}"/edk2/Build/OvmfX64/RELEASE_${_toolchain_opt}/FV/OVMF_CODE.fd "${pkgdir}"/usr/share/ovmf/ovmf_code_x64.bin
+  install -D -m644 "${srcdir}"/edk2/Build/OvmfX64/RELEASE_${_toolchain_opt}/FV/OVMF_VARS.fd "${pkgdir}"/usr/share/ovmf/ovmf_vars_x64.bin
+  install -D -m644 "${srcdir}"/edk2/OvmfPkg/License.txt "${pkgdir}"/usr/share/licenses/ovmf/License.txt
 }
