@@ -1,13 +1,13 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=osu-wine-git
-pkgver=10.71dc3cc
+pkgver=11
 pkgrel=1
 pkgdesc="osu!"
 arch=('any')
 url="https://github.com/Nefelim4ag/osu-wine"
 license=('GPL3')
-depends=('wine' 'winetricks' 'bash' 'lib32-gnutls')
+depends=('wine' 'winetricks' 'bash' 'lib32-gnutls' 'wget')
 optdepends=('lib32-libpulse: for audio' 'wine-staging')
 #conflicts=()
 source=("$pkgname"::'git://github.com/Nefelim4ag/osu-wine.git#branch=master')
