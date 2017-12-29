@@ -1,9 +1,9 @@
-# Maintainer: Sergej "winnie" Schmidt <sergej@hex.house>
+# Maintainer: winnie <aur@msgpeek.net>
 
 _py="python"
 _eggname="minepy"
 pkgname=${_py}-${_eggname}
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="minepy provides an ANSI C library for the Maximal Information-based Nonparametric Exploration (MIC and MINE family)"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=("${_py}-setuptools")
 options=(!emptydirs)
 source=(${_eggname}-${pkgver}.tar.gz::https://github.com/minepy/minepy/archive/${pkgver}.tar.gz)
 provides=('python-minepy')
-sha256sums=('4c27086a9303807c88125726c999ceb3331a8e7a00f7801d9989f00e7afdf950')
+sha256sums=('baad837590f1e0c309231534465101dfe775738d1be3335c1dbac9a0e36aab1c')
 
 package() {
   cd "${srcdir}/${_eggname}-${pkgver}"
