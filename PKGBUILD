@@ -6,14 +6,13 @@
 _pkgname=PasteDeploy
 pkgname=python2-paste-deploy
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Load, configure, and compose WSGI applications and servers"
 arch=(any)
-url=http://pythonpaste.org/deploy/
 license=(custom)
 depends=(python2)
 makedepends=(python2-setuptools)
-source=(http://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
+source=(https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha256sums=('d5858f89a255e6294e63ed46b73613c56e3b9a2d82a42f1df4d06c8421a9e3cb')
 sha512sums=('03147b2e735f4504b928066d35f46e7d19a49b85afc506b793fba69c8827a4d5b8185074bdd4a963ac392cc104f5a608d1db9a3538d7d3239da5febcbff4ccab')
 
