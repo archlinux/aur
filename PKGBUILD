@@ -1,12 +1,12 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-pyusb-git python2-pyusb-git)
-pkgver=1.0.0.r18.g1f66ccd
+pkgver=1.0.2.r4.g3ec29ca
 pkgrel=1
 pkgdesc="Easy USB access from Python"
 arch=('any')
 url="http://sourceforge.net/apps/trac/pyusb/"
 license=('BSD')
-depends=('python' 'libusb')
+depends=('python' 'python-setuptools' 'libusb')
 makedepends=('git')
 provides=('python-pyusb')
 
@@ -26,7 +26,7 @@ build() {
 }
 
 package_python-pyusb-git() {
-  depends=('python' 'libusb')
+  depends=('python' 'python-setuptools' 'libusb')
   provides=('python-pyusb')
   conflicts=('python-pyusb')
 
@@ -35,7 +35,7 @@ package_python-pyusb-git() {
 }
 
 package_python2-pyusb-git() {
-  depends=('python2' 'libusb')
+  depends=('python2' 'python2-setuptools' 'libusb')
   provides=('python2-pyusb')
   conflicts=('python2-pyusb')
 
