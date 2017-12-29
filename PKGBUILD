@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.14
-_zenpatch=zen-4.14.9-990350eef2d98f7a9b73965664182dc688b38b83.diff
-pkgver=4.14.9
+_zenpatch=zen-4.14.10-ee4998b75312b877a0c582ef5deb7c222de3d06b.diff
+pkgver=4.14.10
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -32,9 +32,9 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '5edc955bb67b04c7ed426b1df17a3e322e32ad9fdda9c6abb53ab6eca7faf704'
+            '16f560aa713b46c707f04a226f67dc31fdd280aae57dd19e0413d61df5336c74'
             'SKIP'
-            'bb6e8369d8f3a8953459ae521b7c7e636a8a672d782f63c494a312d49e0ba843'
+            'ed5d7a68a699a39f4b1524424190a39f54ec61144c47934c73d27f3eebbebf6f'
             'SKIP'
             '0d44ab53ed9c98d9bb517cea8ad92e7aa1cab3f4256c0816560498d583590df4'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -48,6 +48,7 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
+  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
 
   # security patches
 
