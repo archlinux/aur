@@ -5,7 +5,7 @@
 
 pkgname=python2-weberror
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Web Error handling and exception catching."
 arch=('any')
 url="http://pylonsproject.org"
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python2' 'python2-webob' 'python2-tempita' 'python2-simplejson'
          'python2-paste>=1.7.1' 'python2-pygments')
 makedepends=('python2-distribute')
-source=(http://pypi.python.org/packages/source/W/WebError/WebError-${pkgver}.tar.gz)
+source=(https://pypi.python.org/packages/source/W/WebError/WebError-${pkgver}.tar.gz)
 md5sums=('983459235787b2eefb76fb9b908a8cf7')
 
 package() {
