@@ -1,12 +1,12 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-usbtmc-git python2-usbtmc-git)
-pkgver=0.8.r0.g008052b
+pkgver=0.8.r18.gd9bfb20
 pkgrel=1
 pkgdesc="A Python USBTMC driver for controlling instruments over USB."
 arch=('any')
 url="https://github.com/python-ivi/python-usbtmc"
 license=('MIT')
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 
 _gitroot='https://github.com/python-ivi/python-usbtmc.git'
 _gitname='python-usbtmc'
