@@ -10,7 +10,7 @@
 pkgname=firefox-esr-zh-cn
 _pkgname=firefox-esr
 pkgver=52.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release in zh_CN'
 url='https://www.mozilla.org/zh-CN/firefox/channel/#esr'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'upower: Battery API'
             'speech-dispatcher: Text-to-Speech')
-provides=('firefox=52' 'firefox-esr=$pkgver')
+provides=(firefox=52 firefox-esr=$pkgver)
 conflicts=('firefox-esr' 'firefox-esr-bin')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
