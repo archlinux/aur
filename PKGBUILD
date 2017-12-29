@@ -1,7 +1,7 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname="aur-creator-tools-git"
 pkgver=r6.7ceae9b
-pkgrel=1
+pkgrel=2
 pkgdesc="Small tools to create and maintain AUR packages"
 url="https://github.com/jD91mZM2/aur-creator-tools"
 arch=("x86_64" "i386")
@@ -20,7 +20,7 @@ pkgver() {
 package() {
     cd "$srcdir/$pkgname"
 
-    install -Dm 755 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     for script in aur-create-*; do
         install -Dm 755 "$script" "$pkgdir/usr/bin/$script"
