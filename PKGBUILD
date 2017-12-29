@@ -1,7 +1,7 @@
 # Maintainer: Michael Yeatts <mwyeatts at gmail dot com>
 
 pkgname=lightning-app
-pkgver=0.1.3.1
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Lightning Network Desktop Wallet"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("https://github.com/lightninglabs/lightning-app/releases/download/v${pkg
         "lightning-app.desktop"
         "lightning-app.png")
 noextract=()
-sha256sums=('c1d53bef62b720c7af22c2b00fd639499ab0c89ec9bfbfe2804d5e1d55346d0a'
+sha256sums=('ce25f5d74a8a313c587d1d59b9131ba863260fa97d59366704f7e5955079c266'
             'SKIP'
             'SKIP')
 validpgpkeys=()
