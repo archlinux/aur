@@ -6,7 +6,7 @@ Type = Package
 Target = *
 
 [Action]
-Description = Generate GRUB configuration file
+Description = Generate GRUB config to let grub-btrfs detect new snapshots
 Depends = grub
 When = PostTransaction
 Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg 2> /dev/null
