@@ -1,6 +1,6 @@
-diff -ruN dlib-19.7/dlib/CMakeLists.txt dlib-19.7-patched/dlib/CMakeLists.txt
---- dlib-19.7/dlib/CMakeLists.txt	2017-09-17 20:28:45.000000000 +0800
-+++ dlib-19.7-patched/dlib/CMakeLists.txt	2017-10-26 17:01:29.465982530 +0800
+diff -ruN dlib-19.8/dlib/CMakeLists.txt dlib-19.8-patched/dlib/CMakeLists.txt
+--- dlib-19.8/dlib/CMakeLists.txt	2017-09-17 20:28:45.000000000 +0800
++++ dlib-19.8-patched/dlib/CMakeLists.txt	2017-10-26 17:01:29.465982530 +0800
 @@ -146,7 +146,7 @@
        option(DLIB_LINK_WITH_SQLITE3 ${DLIB_LINK_WITH_SQLITE3_STR} ON)
        option(DLIB_USE_BLAS ${DLIB_USE_BLAS_STR} ON)
