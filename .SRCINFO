@@ -6,23 +6,20 @@ pkgbase = python-pyusb-git
 	arch = any
 	license = BSD
 	makedepends = git
-	depends = python
-	depends = python-setuptools
-	depends = libusb
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	provides = python-pyusb
 	source = pyusb::git+https://github.com/walac/pyusb
 	md5sums = SKIP
 
 pkgname = python-pyusb-git
 	depends = python
-	depends = python-setuptools
 	depends = libusb
 	provides = python-pyusb
 	conflicts = python-pyusb
 
 pkgname = python2-pyusb-git
 	depends = python2
-	depends = python2-setuptools
 	depends = libusb
 	provides = python2-pyusb
 	conflicts = python2-pyusb
