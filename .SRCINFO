@@ -1,0 +1,13 @@
+pkgbase = brother-hl-1112
+	pkgdesc = Brother HL-1112 CUPS Driver
+	pkgver = 3.0.1_1
+	pkgrel = 1
+	url = http://support.brother.com/g/b/producttop.aspx?c=us_ot&lang=en&prod=hl1112_us_eu
+	arch = x86_64
+	license = GPL2
+	depends = cups
+	source = http://download.brother.com/welcome/dlf100422/hl1110cupswrapper-GPL_src-3.0.1-1.tar.gz
+	sha256sums = be1dce6a4608cb253b0b382db30bf5885da46b010e8eb595b15c435e2487761c
+
+pkgname = brother-hl-1112
+
