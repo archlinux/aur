@@ -1,6 +1,6 @@
 pkgbase = substance-painter
 	pkgdesc = 3D painting software allowing you to texture, render and share your work.
-	pkgver = 2017.3.1
+	pkgver = 2017.4.1
 	pkgrel = 1
 	url = https://www.allegorithmic.com/products/substance-painter
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = substance-painter
 	depends = libtiff4
 	options = !strip
 	options = !optipng
-	source = https://download.allegorithmic.com/substance-painter/2017.x/Substance_Painter-2017.3.1-1893-linux-x64-standard-full.rpm
+	source = https://download.allegorithmic.com/substance-painter/2017.x/Substance_Painter-2017.4.1-1981-linux-x64-standard-full.rpm
 	source = substance-painter-icon.png
 	source = substance-painter.desktop
 	source = substance-painter
-	sha256sums = 5bfc1ff42647c04e8ef5a3c8ae55f9fa260a275af7de8ba8d9761e248ffbf76d
+	sha256sums = 66e20d3b1287bc9b267d90f63ac68fb9ab56ae532d8726bc6b4b8ce3a2ebcd40
 	sha256sums = 6744c1fbe8e9fb1fb91bd291e3ef8ac645bbfec1aa97915f440e6fbfebf4edbd
-	sha256sums = 70d973bbc0459f80285a52d6054c2ac72ab2e639c4c7dc42ca1dad81ef892d1d
+	sha256sums = 89e623ed09103c843a976c88368ea3cf062425419a82e34b95695884637b0a1f
 	sha256sums = e736a5e160be09cfe1588d349084e2f769815687db080b8c7b790e8751f185f1
 
 pkgname = substance-painter

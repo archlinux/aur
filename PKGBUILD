@@ -3,8 +3,8 @@
 # Co-maintainer: t-ask <t-ask-aur at agt24.com>
 
 pkgname=substance-painter
-pkgver=2017.3.1
-_build=1893
+pkgver=2017.4.1
+_build=1981
 pkgrel=1
 pkgdesc="3D painting software allowing you to texture, render and share your work."
 arch=('x86_64')
@@ -16,9 +16,9 @@ source=("https://download.allegorithmic.com/substance-painter/2017.x/Substance_P
         'substance-painter-icon.png'
         'substance-painter.desktop'
         'substance-painter')
-sha256sums=('5bfc1ff42647c04e8ef5a3c8ae55f9fa260a275af7de8ba8d9761e248ffbf76d'
+sha256sums=('66e20d3b1287bc9b267d90f63ac68fb9ab56ae532d8726bc6b4b8ce3a2ebcd40'
             '6744c1fbe8e9fb1fb91bd291e3ef8ac645bbfec1aa97915f440e6fbfebf4edbd'
-            '70d973bbc0459f80285a52d6054c2ac72ab2e639c4c7dc42ca1dad81ef892d1d'
+            '89e623ed09103c843a976c88368ea3cf062425419a82e34b95695884637b0a1f'
             'e736a5e160be09cfe1588d349084e2f769815687db080b8c7b790e8751f185f1')
 validpgpkeys=()
 
