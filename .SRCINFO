@@ -1,30 +1,15 @@
 pkgbase = nativescript-cli
-	pkgdesc = NativeScript CLI
-	pkgver = 3.2.1
+	pkgdesc = The NativeScript CLI lets you create, build, and deploy NativeScript-based projects on iOS and Android devices.
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/nativescript
 	arch = any
 	license = Apache 2.0
 	depends = nodejs
 	depends = npm
-	noextract = nativescript-3.2.1.tgz
-	source = http://registry.npmjs.org/nativescript/-/nativescript-3.2.1.tgz
-	sha256sums = 476e66c502869915a0f413b5fd8ea8b5b1520d2354d01b085920ae762ef228f4
-
-pkgname = nativescript-cli
-
-pkgbase = nativescript-cli
-	pkgdesc = NativeScript CLI
-	pkgver = 3.3.0
-	pkgrel = 1
-	url = https://www.npmjs.com/package/nativescript
-	arch = any
-	license = Apache 2.0
-	depends = nodejs
-	depends = npm
-	noextract = nativescript-3.3.0.tgz
-	source = http://registry.npmjs.org/nativescript/-/nativescript-3.3.0.tgz
-	sha256sums = 988bfcfd0008b0b581a8306e0190b89ec0165185654d35d4e05a531435f85219
+	noextract = nativescript-3.4.0.tgz
+	source = http://registry.npmjs.org/nativescript/-/nativescript-3.4.0.tgz
+	sha256sums = c71af9ae94fbb88b4589c868ba2317ba9f4f91e164bebe113747345e07d5a2d3
 
 pkgname = nativescript-cli
 
