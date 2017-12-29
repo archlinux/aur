@@ -5,7 +5,7 @@
 # Maintainer: Nikos Skalkotos <skalkoto (at) Gmail.com>
 
 pkgname=libguestfs
-pkgver=1.36.10
+pkgver=1.36.11
 pkgver_short=${pkgver%.*}
 pkgrel=1
 pkgdesc="Access and modify virtual machine disk image"
@@ -19,7 +19,6 @@ backup=("etc/libguestfs-tools.conf"
 install="appliance.install"
 _pythonver=2
 depends=("qemu-headless"
-#         "febootstrap>=3.21"
          "augeas"
          "hivex>=1.3.2"
          "libconfig"
@@ -64,7 +63,7 @@ provides=("guestfish=${pkgver}")
 options=()
 source=("http://libguestfs.org/download/${pkgver_short}-stable/${pkgname}-${pkgver}.tar.gz"
         "update-libguestfs-appliance")
-sha512sums=('296292fe684a4709e809d9da0c091210c123a8ba603049978bd9b853bd3f3e5b93132b69605e37bd1696e437443f2e94f30ee3ca2cd728aa30c940dff25177f5'
+sha512sums=('81217bc2be1755f108af815238f144ab72ecb5cc6a815bc50246463508bed739848b9b67c6cf8b1d68c3cfa0aca66857e9006c11e3a8fe20fc1ddcb22c562571'
             'b16a8a15d39392ab2d5c51ac4cbbcd0fd1e6e8e064bf5b866e7c9f93a639fb8e96fc4328b05963ac24c3333e454b63a6a700e6e6fb1584c9d671f289ee1bcade')
 
 check() {
