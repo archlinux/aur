@@ -228,11 +228,11 @@ prepare() {
   msg "Patch source with gcc patch to enable more cpus types"
   patch -Np1 -i ../${_gcc_patch}
 
-  # Clean tree and copy ARCH config over
-  make mrproper
-
   # Fix https://www.spinics.net/lists/stable/msg207374.html
   chmod +x tools/objtool/sync-check.sh
+  
+  # Clean tree and copy ARCH config over
+  make mrproper
   
   cp -Tf ../config .config
 
