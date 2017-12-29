@@ -1,0 +1,15 @@
+pkgbase = dvorak-ukp
+	pkgdesc = dvorak-ukp, dvorak with UK punctuation
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://servc.eu/content/dvorak-uk-punctuation
+	arch = any
+	groups = keyboardlayouts
+	license = GPL
+	noextract = dvorak-ukp.map.gz
+	source = https://servc.eu/p/sslf/keymaps/dvorak-ukp.map.gz
+	md5sums = 810ef70b0bdc769e17f33166536d5737
+	sha256sums = 04ce3ca883f287a38229376e0a4eb0036fce54d81de25d722ea20b232a1bd074
+
+pkgname = dvorak-ukp
+
