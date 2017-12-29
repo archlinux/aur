@@ -8,6 +8,8 @@ pkgdesc="Tianocore UEFI firmware for qemu."
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=EDK2"
 license=('custom')
 makedepends=('git' 'python2' 'iasl' 'nasm' 'subversion' 'perl-libwww')
+provides=('ovmf')
+conflicts=('ovmf')
 source=('edk2::git+https://github.com/tianocore/edk2#branch=master')
 sha256sums=('SKIP')
 options=(!makeflags)
