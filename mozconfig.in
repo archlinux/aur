@@ -11,8 +11,8 @@ mk_add_options MOZ_MAKE_FLAGS="-j8"
 
 export CC=gcc-5
 export CXX=g++-5
-export CXXFLAGS+=" -fPIC"
-export CFLAGS+=" -fPIC"
+export CXXFLAGS="-fPIC"
+export CFLAGS="-fPIC"
 
 # let's do some ricing
 ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse -march=native -mtune=native"

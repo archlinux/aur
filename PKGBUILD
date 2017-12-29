@@ -2,7 +2,7 @@
 # Forked from palemoon PKGBUILD by WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-git
-pkgver=27.2.0a1+dfe35096e
+pkgver=27.7.0a2+ce1aca868
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency (git version)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=(git+"https://github.com/MoonchildProductions/Pale-Moon"
 md5sums=('SKIP'
          '95d212604b6c8354f9e255db5c3ce0ea'
          '32231f6e6a532021fd04c6d7b32f4270'
-         'e0c0ea868b019c2d83cec196d600e085')
+         '74a2f5867bde16f004535e70a675823a')
          
 pkgver() {
 	cd Pale-Moon
