@@ -1,6 +1,6 @@
 pkgbase = osgearth-git
 	pkgdesc = A terrain rendering toolkit for OpenSceneGraph
-	pkgver = r1.a0f0fe2
+	pkgver = r2.a943b2c
 	pkgrel = 1
 	url = http://www.osgearth.org
 	arch = i686
