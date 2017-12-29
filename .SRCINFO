@@ -1,12 +1,14 @@
 pkgbase = python-myhdl-git
 	pkgdesc = a Python-Based Hardware Description Language
-	pkgver = 0.9.0.r265.ga56544b
+	pkgver = 0.9.0.r277.g29069ae
 	pkgrel = 1
 	url = http://www.myhdl.org/
 	arch = any
 	license = LGPL
 	makedepends = git
 	makedepends = python-sphinx
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	source = myhdl::git+https://github.com/jandecaluwe/myhdl.git
 	md5sums = SKIP
 

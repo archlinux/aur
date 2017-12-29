@@ -1,12 +1,12 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-myhdl-git python2-myhdl-git)
-pkgver=0.9.0.r265.ga56544b
+pkgver=0.9.0.r277.g29069ae
 pkgrel=1
 pkgdesc="a Python-Based Hardware Description Language"
 arch=('any')
 url="http://www.myhdl.org/"
 license=('LGPL')
-makedepends=('git' 'python-sphinx')
+makedepends=('git' 'python-sphinx' 'python-setuptools' 'python2-setuptools')
 
 _gitroot='https://github.com/jandecaluwe/myhdl.git'
 _gitname='myhdl'
