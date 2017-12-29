@@ -1,9 +1,9 @@
-# Maintainer: Sergej "winnie" Schmidt <sergej@hex.house>
+# Maintainer: winnie <aur@msgpeek.net>
 
 _py="python"
 _eggname="arpreq"
 pkgname=${_py}-${_eggname}
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Python C extension to query the Kernel ARP cache for the MAC address of a given IP address."
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=("${_py}-setuptools")
 options=(!emptydirs)
 source=(${_eggname}-${pkgver}.tar.gz::https://github.com/sebschrader/python-arpreq/archive/v${pkgver}.tar.gz)
 provides=('python-arpreq')
-sha256sums=('6cbf082d1f1d3952b72fb907c0e577b920c1101b54a8a4bd34c32771851f012f')
+sha256sums=('1760783a2278654d5aeecd4d73f84f3ae7c44ded1ec606066c8582a2339a34e3')
 
 package() {
   cd "${srcdir}/${_py}-${_eggname}-${pkgver}"
