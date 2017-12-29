@@ -2,13 +2,13 @@
 
 pkgname=mkinitcpio-docker-hooks
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="mkinitcpio hooks that provides support for using docker image as root"
 arch=(any)
 url="https://github.com/zasdfgbnm/mkinitcpio-docker-hooks"
 license=('GPL')
 groups=('base')
-depends=('mkinitcpio')
+depends=('mkinitcpio' 'btrfs-progs')
 makedepends=('go')
 backup=(etc/docker-btrfs.json)
 source=('install_docker-btrfs' 'hooks_docker-btrfs' 'etc_docker-btrfs.json' 'get-docker-cache-id.go')

@@ -1,13 +1,14 @@
 pkgbase = mkinitcpio-docker-hooks
 	pkgdesc = mkinitcpio hooks that provides support for using docker image as root
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zasdfgbnm/mkinitcpio-docker-hooks
 	arch = any
 	groups = base
 	license = GPL
 	makedepends = go
 	depends = mkinitcpio
+	depends = btrfs-progs
 	backup = etc/docker-btrfs.json
 	source = install_docker-btrfs
 	source = hooks_docker-btrfs
