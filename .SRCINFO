@@ -1,0 +1,17 @@
+pkgbase = bout
+	pkgdesc = Parse and export pdf bank statements to QIF format.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/codito/bout
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click>=6.7
+	depends = python-tabula
+	provides = bout
+	source = bout-1.0.1.tar.gz::https://github.com/codito/bout/archive/v1.0.1.tar.gz
+	sha512sums = 052ad595521415a3cfa8e6fbb58e6258b41b0b8801d563e955ac2fa8a18837a78a0d4ae33ba16a4252a2196d0f417d37d8a4d8c69c47aff86560c1c3e273e5df
+
+pkgname = bout
+
