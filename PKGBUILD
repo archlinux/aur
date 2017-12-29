@@ -1,17 +1,17 @@
 # Maintainer: ainola
 # Contributor: fledge (Giorgio Daino)
 pkgname=residualvm
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A cross-platform 3D game interpreter which allows you to play LucasArts LUA-based 3D adventures."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('LGPL')
 url="http://www.residualvm.org/"
-depends=('sdl' 'libmad' 'libmpeg2' 'libvorbis' 'hicolor-icon-theme'
-         'libjpeg-turbo' 'alsa-lib' 'gcc-libs')
+depends=('sdl2' 'libmad' 'libmpeg2' 'libvorbis' 'hicolor-icon-theme'
+         'libjpeg-turbo' 'alsa-lib' 'glew' 'freetype2')
 optdepends=('fluidsynth: for MIDI SoundFont2 support')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}-sources.tar.bz2)
-sha256sums=('cd2748a665f80b8c527c6dd35f8435e718d2e10440dca10e7765574c7402d924')
+source=("https://github.com/residualvm/residualvm/archive/$pkgver.tar.gz")
+sha256sums=('45d86430475f1a17923d2d19ee08433269dd5da850352baf550bb7461f6aba1c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
