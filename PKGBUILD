@@ -30,10 +30,10 @@ _use_KSM="no"		# "yes":	Enable Kernel SamePage Merging (KSM).
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.14
-_minor=8
+_minor=9
 pkgver=${__basekernel}.${_minor}
-pkgrel=3
-lqxrel=3
+pkgrel=1
+lqxrel=1
 pkgbase=linux-lqx
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
 _lqxpatchname="${pkgver}-${lqxrel}.patch"
@@ -64,8 +64,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            'f2170277cd68cd507e1e3fcbdddbdcb218964c9074100dddfecf7cf4620a09c7fbea0dc84515d7700a30cfaaff58252d2cb20533c005b9f689f03686c3a1d5cb'
-            '77634dfcb4ad99667407ec6e9e18061199c2d32df5668a932d3eaa0fa42dd4646b945a1ae144c4c49ce7dbd421ca585cc13cd90877a72a6777c70938aa3790f5'
+            '51197dc760b42012a412ecf8cd256baf2619440f86168d16278839edf29d9d0af7b0945fc33e67833cc90f60a74ec8bc5e8d10ac22417c2a37635f192bbe06d3'
+            '4c25fe368d913eee0d052874e0672a974dc1552dba5e8a4e63e517bc430416281362709dbfcafcb66723ba3ca42bcf0c0bc6ad1efb8590e3b4b3402888bf2163'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
@@ -84,6 +84,9 @@ prepare() {
 
   # Add Liquorix patches
   patch -Np1 -i ../$_lqxpatchname
+  
+  # https://www.spinics.net/lists/stable/msg207374.html
+  chmod +x tools/objtool/sync-check.sh
   
     # Trying oldcfg if possible and if selected
   if [ "$_config" = "old" ]; then
