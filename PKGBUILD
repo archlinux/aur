@@ -1,9 +1,9 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin.com.qq.office
-pkgver=1.0.4deepin4
+pkgver=2.0.0deepin1
 pkgrel=2
 epoch=
-pkgdesc="Deepin Wine TIM 1.0.4"
+pkgdesc="Deepin Wine TIM 2.0.0"
 arch=('i686' 'x86_64')
 url="http://office.qq.com/"
 license=('Proprietary')
