@@ -2,8 +2,8 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=pkgdistcache
-pkgver=0.4.6
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='A distributed local-network cache for pacman packages'
 arch=('any')
 url='http://venator.ath.cx/dw/doku.php?id=linux:pkgdistcache'
@@ -14,9 +14,9 @@ source=('pkgdistcache-client'
         'pkgdistcache-daemon'
         'pkgdistcache.conf'
         'pkgdistcached.service')
-sha256sums=('4141d8d07a7c67ebd0dba24ca8aa2a97bcf93a2915b7afbebbd85728bbbc356c'
+sha256sums=('f80850ff4cfe775e0dd73961924d5eb934e2c4be6a8d8e3e2c3c404835e7f05b'
             '10379b95265e7aa3c6334197ef255327281e35b958c3c062ae893dd3a646a66e'
-            'd77ac418aa651bc622cd91204d6907554c6cdb4bb989e484cc54da32342faa51'
+            '5628cf4d81adaf7a3dd7243f51af1a30fff73a31b421615a7c0051280618f457'
             'b5fb3b3d40b31af92a1676364dfc42a35f564067988697ea4d56fd71b4b414e3')
 
 package() {
