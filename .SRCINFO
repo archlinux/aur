@@ -1,6 +1,6 @@
 pkgbase = qxmpp-qt5
 	pkgdesc = An XMPP client library based on Qt & C++
-	pkgver = 0.8.3
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/qxmpp-project/qxmpp
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = qxmpp-qt5
 	conflicts = qxmpp-leechcraft-git
 	conflicts = qxmpp-qt5-git
 	conflicts = qxmpp
-	source = https://github.com/qxmpp-project/qxmpp/archive/v0.8.3.tar.gz
-	sha1sums = 63828a91be14b68ec6f091b30a292d47eaf7a3c0
+	source = https://github.com/qxmpp-project/qxmpp/archive/v0.9.3.tar.gz
+	sha1sums = f9391bedd5153ae19f68f25276bf2624c5020d09
 
 pkgname = qxmpp-qt5
 

@@ -5,7 +5,7 @@
 
 _realname='qxmpp'
 pkgname='qxmpp-qt5'
-pkgver='0.8.3'
+pkgver='0.9.3'
 pkgrel='1'
 pkgdesc='An XMPP client library based on Qt & C++'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('speex: required to enable speex audio codec'
 	    'libtheora: required to enable theora video codec') 
 conflicts=('qxmpp-git' 'qxmpp-leechcraft-git' 'qxmpp-qt5-git' 'qxmpp')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha1sums=('63828a91be14b68ec6f091b30a292d47eaf7a3c0')
+sha1sums=('f9391bedd5153ae19f68f25276bf2624c5020d09')
  
 build() {
 	cd "$srcdir/$_realname-$pkgver/"
