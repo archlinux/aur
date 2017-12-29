@@ -1,8 +1,9 @@
 # Maintainer: Mark Kubiak <mkubiak.dev at gmail dot com>
+
 _gitname=wallpaper-reddit
 _gitbranch=master
 pkgname=${_gitname}-git
-pkgver=77ff2d0
+pkgver=r172.928125e
 pkgrel=1
 pkgdesc="Downloads and sets wallpapers pulled from reddit.com"
 arch=('any')
@@ -12,12 +13,12 @@ depends=('python' 'python-pillow')
 makedepends=('git' 'python-setuptools')
 provides=(${_gitname})
 conflicts=(${_gitname})
-source=("git://github.com/markubiak/${_gitname}#branch=${_gitbranch}")
+source=("git+https://github.com/markubiak/${_gitname}#branch=${_gitbranch}")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
-	git describe --always | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = wallpaper-reddit-git
 	pkgdesc = Downloads and sets wallpapers pulled from reddit.com
-	pkgver = 77ff2d0
+	pkgver = r172.928125e
 	pkgrel = 1
 	url = https://github.com/markubiak/wallpaper-reddit
 	arch = any
