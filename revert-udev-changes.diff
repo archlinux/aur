@@ -1,0 +1,105 @@
+From 5a5b6d6cca469521daa6ac9087f3589b7489ab55 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Tue, 26 Sep 2017 15:21:59 +1000
+Subject: config/udev: consider ID_INPUT_FOO=0 as 'unset'
+
+Historically we didn't need to care about this case but more devices are
+having invalid types set and they cannot be unset with a hwdb entry (which
+doesn't handle the empty string). Allow for "0" to mean "unset" because
+anything else would be crazy anyway.
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+(cherry picked from commit 5aad81445c8c3d6b7b30d503cfe26027fa482870)
+---
+ config/udev.c | 65 +++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 32 insertions(+), 33 deletions(-)
+
+(limited to 'config/udev.c')
+
+diff --git a/config/udev.c b/config/udev.c
+index 932f230..e198e86 100644
+--- a/config/udev.c
++++ b/config/udev.c
+@@ -134,7 +134,8 @@ device_added(struct udev_device *udev_device)
+     }
+ #endif
+ 
+-    if (!udev_device_get_property_value(udev_device, "ID_INPUT")) {
++    value = udev_device_get_property_value(udev_device, "ID_INPUT");
++    if (value && !strcmp(value, "0")) {
+         LogMessageVerb(X_INFO, 10,
+                        "config/udev: ignoring device %s without "
+                        "property ID_INPUT set\n", path);
+@@ -237,38 +238,36 @@ device_added(struct udev_device *udev_device)
+         else if (!strcmp(key, "ID_VENDOR")) {
+             LOG_PROPERTY(path, key, value);
+             attrs.vendor = strdup(value);
+-        }
+-        else if (!strcmp(key, "ID_INPUT_KEY")) {
+-            LOG_PROPERTY(path, key, value);
+-            attrs.flags |= ATTR_KEY;
+-        }
+-        else if (!strcmp(key, "ID_INPUT_KEYBOARD")) {
+-            LOG_PROPERTY(path, key, value);
+-            attrs.flags |= ATTR_KEYBOARD;
+-        }
+-        else if (!strcmp(key, "ID_INPUT_MOUSE")) {
+-            LOG_PROPERTY(path, key, value);
+-            attrs.flags |= ATTR_POINTER;
+-        }
+-        else if (!strcmp(key, "ID_INPUT_JOYSTICK")) {
+-            LOG_PROPERTY(path, key, value);
+-            attrs.flags |= ATTR_JOYSTICK;
+-        }
+-        else if (!strcmp(key, "ID_INPUT_TABLET")) {
+-            LOG_PROPERTY(path, key, value);
+-            attrs.flags |= ATTR_TABLET;
+-        }
+-        else if (!strcmp(key, "ID_INPUT_TABLET_PAD")) {
+-            LOG_PROPERTY(path, key, value);
+-            attrs.flags |= ATTR_TABLET_PAD;
+-        }
+-        else if (!strcmp(key, "ID_INPUT_TOUCHPAD")) {
+-            LOG_PROPERTY(path, key, value);
+-            attrs.flags |= ATTR_TOUCHPAD;
+-        }
+-        else if (!strcmp(key, "ID_INPUT_TOUCHSCREEN")) {
+-            LOG_PROPERTY(path, key, value);
+-            attrs.flags |= ATTR_TOUCHSCREEN;
++        } else if (!strncmp(key, "ID_INPUT_", 9)) {
++            const struct pfmap {
++                const char *property;
++                unsigned int flag;
++            } map[] = {
++                { "ID_INPUT_KEY", ATTR_KEY },
++                { "ID_INPUT_KEYBOARD", ATTR_KEYBOARD },
++                { "ID_INPUT_MOUSE", ATTR_POINTER },
++                { "ID_INPUT_JOYSTICK", ATTR_JOYSTICK },
++                { "ID_INPUT_TABLET", ATTR_TABLET },
++                { "ID_INPUT_TABLET_PAD", ATTR_TABLET_PAD },
++                { "ID_INPUT_TOUCHPAD", ATTR_TOUCHPAD },
++                { "ID_INPUT_TOUCHSCREEN", ATTR_TOUCHSCREEN },
++                { NULL, 0 },
++            };
++
++            /* Anything but the literal string "0" is considered a
++             * boolean true. The empty string isn't a thing with udev
++             * properties anyway */
++            if (value && strcmp(value, "0")) {
++                const struct pfmap *m = map;
++
++                while (m->property != NULL) {
++                    if (!strcmp(m->property, key)) {
++                        LOG_PROPERTY(path, key, value);
++                        attrs.flags |= m->flag;
++                    }
++                    m++;
++                }
++            }
+         }
+     }
+ 
+-- 
+cgit v1.1
+
+

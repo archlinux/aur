@@ -4,9 +4,9 @@
 
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
-pkgver=1.19.5
-pkgrel=1
-arch=('i686' 'x86_64')
+pkgver=1.19.6
+pkgrel=2
+arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="http://xorg.freedesktop.org"
@@ -22,17 +22,19 @@ source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${p
         xserver-autobind-hotplug.patch
         xvfb-run
         xvfb-run.1
+	revert-udev-changes.diff
         freedesktop-bug-865.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
 	      'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
 	      '995ED5C8A6138EB0961F18474C09DD83CAAA50B2')
-sha256sums=('18fffa8eb93d06d2800d06321fc0df4d357684d8d714315a66d8dfa7df251447'
+sha256sums=('a732502f1db000cf36a376cd0c010ffdbf32ecdd7f1fa08ba7f5bdf9601cc197'
             'SKIP'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
+	    'ce9b235c053ac85a9da86fba3b60fcfc48d36a8bd789b94ed79d5d571bc7b0aa'
             '460615227a7e42d124639d4ae02e55d1b2a250c7bdf539e018b46de71230364f')
 
 prepare() {
@@ -42,6 +44,10 @@ prepare() {
   patch -Np1 -i ../nvidia-add-modulepath-support.patch
   # patch from Fedora, not yet merged
   patch -Np1 -i ../xserver-autobind-hotplug.patch
+
+  # https://bugs.archlinux.org/task/56804 
+  # https://bugs.freedesktop.org/show_bug.cgi?id=104382
+  patch -Rp1 -i ../revert-udev-changes.diff
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
