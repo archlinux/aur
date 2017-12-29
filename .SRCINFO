@@ -1,0 +1,19 @@
+pkgbase = xmrig-amd-git
+	pkgdesc = Monero cryptocurrency GPU miner (OpenCL for AMD)
+	pkgver = r20.acd215f
+	pkgrel = 1
+	url = https://github.com/xmrig/xmrig-amd
+	changelog = CHANGELOG.md
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = opencl-headers
+	depends = libuv
+	depends = ocl-icd
+	optdepends = monero: wallet
+	source = git+https://github.com/xmrig/xmrig-amd.git
+	sha256sums = SKIP
+
+pkgname = xmrig-amd-git
+
