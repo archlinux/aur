@@ -1,7 +1,7 @@
 pkgbase = brother-hl-1112
 	pkgdesc = Brother HL-1112 CUPS Driver
 	pkgver = 3.0.1_1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support.brother.com/g/b/producttop.aspx?c=us_ot&lang=en&prod=hl1112_us_eu
 	arch = x86_64
 	license = GPL2
