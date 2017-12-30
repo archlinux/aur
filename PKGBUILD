@@ -3,11 +3,11 @@
 
 pkgname=usbguard-nox
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies without gui'
 makedepends=("git" "libxslt" "asciidoctor" "bash-completion")
-depends=("libqb-git" "libsodium" "libcap-ng" "protobuf" "polkit" "dbus-glib")
+depends=("libqb" "libsodium" "libcap-ng" "protobuf" "polkit" "dbus-glib")
 arch=("i686" "x86_64")
 url='https://github.com/dkopecek/usbguard'
 source=(
