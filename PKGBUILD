@@ -7,15 +7,15 @@ arch=(i686 x86_64)
 url='https://bitbucket.org/osafi/dfiler'
 license=('GPL')
 
-source=(https://ftp.gnu.org/gnu/hello/$pkgname-2.10.tar.gz)
+source=(https://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz)
 md5sums=('6cd0ffea3884a4e79330338dcc2987d6')
 
 build(){
-cd "$pkgname-2.10"
+cd "hello-2.10"
 ./configure --prefix=/usr
 make
 }
 package(){
-cd "$pkgname-2.10"
+cd "hello-2.10"
 make DESTDIR="$pkgdir/" install
 }

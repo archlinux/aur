@@ -6,7 +6,7 @@ pkgbase = dfiler
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://ftp.gnu.org/gnu/hello/dfiler-2.10.tar.gz
+	source = https://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz
 	md5sums = 6cd0ffea3884a4e79330338dcc2987d6
 
 pkgname = dfiler
