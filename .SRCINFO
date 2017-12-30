@@ -3,15 +3,17 @@ pkgbase = libmatheval
 	pkgver = 1.1.11
 	pkgrel = 1
 	url = https://www.gnu.org/software/libmatheval/
-	install = libmatheval.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = guile2.0
 	depends = flex
-	source = http://ftp.gnu.org/gnu/libmatheval/libmatheval-1.1.11.tar.gz
+	source = https://ftp.gnu.org/gnu/libmatheval/libmatheval-1.1.11.tar.gz
 	source = removeifndefs.patch
+	source = replace-obsolete-functions.patch
 	md5sums = 595420ea60f6ddd75623847f46ca45c4
 	md5sums = b340ca489388a8c7986654f4be8127f4
+	md5sums = 5a58a75ad710d8847be3931944404429
 
 pkgname = libmatheval
 

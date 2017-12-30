@@ -1,0 +1,33 @@
+diff -aur 1/tests/matheval.c 2/tests/matheval.c
+--- 1/tests/matheval.c	2013-08-14 21:22:08.000000000 +0100
++++ 2/tests/matheval.c	2017-12-30 21:01:53.333215271 +0000
+@@ -51,7 +51,7 @@
+ 
+ /* Guile interface for libmatheval library.  Procedures below are simple
+  * wrappers for corresponding libmatheval procedures. */
+-static scm_sizet evaluator_destroy_scm(SCM evaluator_smob);
++static size_t evaluator_destroy_scm(SCM evaluator_smob);
+ static SCM      evaluator_create_scm(SCM string);
+ static SCM      evaluator_evaluate_scm(SCM evaluator_smob, SCM count,
+ 				       SCM names, SCM values);
+@@ -122,7 +122,7 @@
+ }
+ 
+ /* Wrapper for evaluator_destroy() procedure from libmatheval library. */
+-static          scm_sizet
++static          size_t
+ evaluator_destroy_scm(SCM evaluator_smob)
+ {
+ 	SCM_ASSERT((SCM_NIMP(evaluator_smob)
+@@ -245,9 +245,9 @@
+ 	list = SCM_EOL;
+ 	for (i = 0; i < count; i++)
+ 		list =
+-		    scm_append_x(scm_listify
++		    scm_append_x(scm_list_n
+ 				 (list,
+-				  scm_listify(scm_makfrom0str(names[i]),
++				  scm_list_n(scm_makfrom0str(names[i]),
+ 					      SCM_UNDEFINED),
+ 				  SCM_UNDEFINED));
+ 
