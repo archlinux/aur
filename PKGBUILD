@@ -1,51 +1,19 @@
-# Contributor: Hugo Ideler <hugo at hugoideler dot com>
+# Maintainer: Daniel Milde <daniel@milde.cz>
 pkgname=jaxx
-pkgver=1.2.41
+pkgver=1.3.9
 pkgrel=1
-epoch=
 pkgdesc="Multi-chain cryptocurrency wallet"
 arch=('x86_64')
-# ^ not tested on other platforms
 url="https://jaxx.io/"
 license=('unknown')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://jaxx.io/files/$pkgver/Jaxx-v${pkgver}_linux-x64.tar.gz" "jaxx.desktop")
-noextract=()
-sha256sums=('e8e6ca8fce2ea54e387fffc973aaf2b1d8de52ade7fc3a7cd1532707b738bcc6'
-            '4e4323a365c878378b5ed019a4a78e0cd94148abbc649e0972414ef38e9f7139')
-validpgpkeys=()
-
-prepare() {
-        true
-}
-
-build() {
-        true
-}
-
-check() {
-        true
-}
+options=(!strip)
+source=("https://github.com/Jaxx-io/Jaxx/releases/download/v${pkgver}/jaxx-${pkgver}-x86_64.AppImage")
+sha256sums=("c5eaf8d1edfa61fbb2b95b423df98c49b0ad6a30370a7c4f522c9c993ed26b6b")
 
 package() {
         mkdir -p $pkgdir/opt/$pkgname
-        cp -a Jaxx-v${pkgver}_linux-x64/jaxx-assets/* $pkgdir/opt/$pkgname
+        install -Dm755 jaxx-${pkgver}-x86_64.AppImage "$pkgdir/opt/$pkgname/jaxx-${pkgver}-x86_64.AppImage"
 
-        mkdir -p $pkgdir/usr/bin
-        ln -s ../../opt/$pkgname/Jaxx $pkgdir/usr/bin/$pkgname
-
-        install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+        mkdir -p "$pkgdir/usr/bin"
+        ln -s /opt/$pkgname/jaxx-${pkgver}-x86_64.AppImage "$pkgdir/usr/bin/$pkgname"
 }
-
-# vim: et
