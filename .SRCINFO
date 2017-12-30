@@ -1,7 +1,7 @@
 pkgbase = inox-dev
 	pkgdesc = A web browser built for speed, simplicity, and security
 	pkgver = 65.0.3298.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.chromium.org/Home
 	install = inox-dev.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = inox-dev
 	makedepends = ninja
 	makedepends = nodejs
 	makedepends = git
-	makedepends = ncurses5-compat-lib
+	makedepends = ncurses5-compat-libs
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
