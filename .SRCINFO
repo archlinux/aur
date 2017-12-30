@@ -1,0 +1,14 @@
+pkgbase = syncthingmanager
+	pkgdesc = A commandline tool for configuring Syncthing
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-syncthing
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/s/syncthingmanager/syncthingmanager-0.1.0.tar.gz
+	md5sums = 8a0741f28df3e2f37dd9a93bd833ad6a
+
+pkgname = syncthingmanager
+
