@@ -15,7 +15,7 @@ license=('BSD')
 depends=('gtk2')
 provides=("${_basename}")
 conflicts=("${_basename}" "${_basename}-git")
-source=(https://github.com/dmedvinsky/${_basename}/archive/v${pkgver}.tar.gz)
+source=(${_basename}-${pkgver}.tar.gz::https://github.com/dmedvinsky/${_basename}/archive/v${pkgver}.tar.gz)
 md5sums=('170ac0bdc8663d97dec436e45b195491')
 
 build() {

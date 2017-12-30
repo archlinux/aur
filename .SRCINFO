@@ -10,7 +10,7 @@ pkgbase = gsimplecal-gtk2
 	provides = gsimplecal
 	conflicts = gsimplecal
 	conflicts = gsimplecal-git
-	source = https://github.com/dmedvinsky/gsimplecal/archive/v2.1.tar.gz
+	source = gsimplecal-2.1.tar.gz::https://github.com/dmedvinsky/gsimplecal/archive/v2.1.tar.gz
 	md5sums = 170ac0bdc8663d97dec436e45b195491
 
 pkgname = gsimplecal-gtk2
