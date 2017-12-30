@@ -1,13 +1,13 @@
 pkgbase = vulkan-hpp
 	pkgdesc = C++ Bindings for Vulkan
-	pkgver = 1.0.64
+	pkgver = 1.0.66
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/Vulkan-Hpp
 	arch = any
 	groups = vulkan-devel
 	license = Apache
-	source = https://raw.githubusercontent.com/KhronosGroup/Vulkan-Hpp/e464d695dd6678cc904793a9fe0a839e24794184/vulkan/vulkan.hpp
-	sha256sums = cf1bcf093959e58bc8c33716a7957e6f4e77147080eb40f877af7c36da6fca24
+	source = https://raw.githubusercontent.com/KhronosGroup/Vulkan-Hpp/15ac21442dc8de37d5a210ac298500a56afbb48d/vulkan/vulkan.hpp
+	sha256sums = 422c57999c02eeb5fb0d9a38ff33a1506a728986f120b583c3cf9e9464d1154d
 
 pkgname = vulkan-hpp
 
