@@ -1,7 +1,7 @@
 # Maintainer:  Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-x265
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder (mingw-w64)'
 arch=('any')
@@ -12,12 +12,12 @@ options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-cmake' 'yasm')
 source=("https://bitbucket.org/multicoreware/x265/downloads/x265_${pkgver}.tar.gz"
         mingw.patch)
-sha256sums=('2e53259b504a7edb9b21b9800163b1ff4c90e60c74e23e7001d423c69c5d3d17'
+sha256sums=('1bf0036415996af841884802161065b9e6be74f5f6808ac04831363e2549cdbf'
             'b1953c70b734b91e7916448c4636b70305c1d5bfaf86f17f94b769499635a191')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-    cd x265_${pkgver}
+    cd x265_v${pkgver}
     patch -Np1 -i "${srcdir}/mingw.patch"
 }
 
@@ -35,7 +35,7 @@ build() {
          -DEXPORT_C_API='FALSE' \
          -DENABLE_CLI='FALSE' \
          -DENABLE_SHARED='FALSE' \
-         "${srcdir}"/x265_${pkgver}/source
+         "${srcdir}"/x265_v${pkgver}/source
       make
 
       mkdir -p "${srcdir}"/build-10-${_arch} && cd "${srcdir}"/build-10-${_arch}
@@ -46,7 +46,7 @@ build() {
          -DEXPORT_C_API='FALSE' \
          -DENABLE_CLI='FALSE' \
          -DENABLE_SHARED='FALSE' \
-         "${srcdir}"/x265_${pkgver}/source
+         "${srcdir}"/x265_v${pkgver}/source
       make
 
       mkdir -p "${srcdir}"/build-8-${_arch} && cd "${srcdir}"/build-8-${_arch}
@@ -59,11 +59,11 @@ build() {
          -DENABLE_SHARED='TRUE' \
          -DENABLE_HDR10_PLUS='TRUE' \
          -DEXTRA_LIB='x265_main10.a;x265_main12.a' \
-         -DEXTRA_LINK_FLAGS='-L.' \
+         -DEXTRA_LINK_FLAGS='-L .' \
          -DLINKED_10BIT='TRUE' \
          -DLINKED_12BIT='TRUE' \
          -DENABLE_CLI='TRUE' \
-         "${srcdir}"/x265_${pkgver}/source
+         "${srcdir}"/x265_v${pkgver}/source
       make
     else
       mkdir -p "${srcdir}"/build-8-${_arch} && cd "${srcdir}"/build-8-${_arch}
@@ -71,7 +71,7 @@ build() {
          -DLIB_INSTALL_DIR="lib" \
          -DENABLE_SHARED='TRUE' \
          -DENABLE_CLI='TRUE' \
-         "${srcdir}"/x265_${pkgver}/source
+         "${srcdir}"/x265_v${pkgver}/source
       make
     fi
   done
