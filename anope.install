@@ -1,6 +1,10 @@
 post_install() {
+    # Add anope user and group if they don't exist
     getent group anope &>/dev/null || groupadd -r anope >/dev/null
     getent passwd anope &>/dev/null || useradd -r -g anope -d /var/lib/anope -s /bin/false -c anope anope >/dev/null
+
+    # Make sure log directory is writable by the anope user
+    chown anope:anope /var/log/anope
 
     echo "To configure anope, copy /etc/anope/example.conf to"
     echo "/etc/anope/services.conf and edit it to your liking."
@@ -11,6 +15,8 @@ post_install() {
 }
 
 post_remove() {
+    # Delete the anope user and group
+    # This might fail if anope is running. Need to check this.
     getent passwd anope &>/dev/null && userdel anope >/dev/null
     getent group anope &>/dev/null && groupdel anope >/dev/null
 }

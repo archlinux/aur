@@ -2,7 +2,7 @@
 # Contributor: Adam Eberlin <ae@adameberlin.com>
 pkgname=anope
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of IRC Services designed for flexibility and ease of use"
 arch=('i686' 'x86_64')
 url="http://www.anope.org/"
@@ -21,9 +21,14 @@ source=(
     "anope.tmpfiles"
 )
 sha1sums=('bba0c947657f7388da2980241bc11b03f9f64743'
-          '6cc27cc78fdbac84efbc7e40986fa9412d5f7e9f'
+          '289a9ce8a4cd32bb58b650cb5d9b4bdc8cc7847d'
           '9ffa7e103e05cc7fee52e13794ecf7172f3e3f42'
           '7d38218fef729433ca32b81514264beea9981cf8')
+
+prepare() {
+    echo "If you want to enable any extra modules before building Anope,"
+    echo "please run the ./extras script in the Anope source directory."
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}-source"
