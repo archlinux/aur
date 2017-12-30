@@ -1,7 +1,7 @@
 pkgbase = filelinker
 	pkgdesc = keeps hard links in sync.
-	pkgver = 1.0.10
-	pkgrel = 16
+	pkgver = 1.0.11
+	pkgrel = 17
 	url = http://torben.website/filelinker
 	arch = any
 	license = CC-BY-3.0
