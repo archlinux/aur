@@ -2,11 +2,20 @@
 
 # PKGBUILD taken and modified from telegram-desktop-bin AUR package
 # Contributor:  Giovanni Santini "ItachiSan" <giovannisantini93@yahoo.it>
-# Contributor:  agnotek <agnostic.sn [at]gmail.com>
-# Contributor: agnotek <agnostic.sn [at]gmail.com>
+# Contributor:  agnotek <agnostic.sn [at] gmail.com>
 
 pkgname=telegram-desktop-bin-latest
-pkgver=1.2.4
+releases="$(curl "https://api.github.com/repos/telegramdesktop/tdesktop/releases")"
+pkgver="$(echo $releases | jq --raw-output '.[0] | .tag_name' | sed 's/^v//')"
+
+_dev="$(echo $releases | jq --raw-output '.[0] | .prerelease')"
+if [ "$_dev" == "true" ]
+then
+    _devsuffix=".alpha"
+else
+    _devsuffix=""
+fi
+
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries, latest repo (pre)release"
 arch=('i686' 'x86_64')
@@ -37,16 +46,7 @@ source=(
 	"$pkgname.desktop"
 	tg.protocol
 	https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
-	https://api.github.com/repos/telegramdesktop/tdesktop/releases
 )
-# If this is a dev version
-_dev="$(cat "releases" | jq --raw-output '.[0] | .prerelease')"
-if [ "$_dev" == "true" ]
-then
-	_devsuffix=".alpha"
-else
-	_devsuffix=""
-fi
 
 source_i686=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup32.${pkgver}${_devsuffix}.tar.xz")
 source_x86_64=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup.${pkgver}${_devsuffix}.tar.xz")
@@ -59,23 +59,12 @@ sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
             '10507a1ddc379b00230c6f6e2bd9f94ea0c7caff9cae05335a66b4d10b7571eb'
             '83e3e8eeecadcb3429704626d4ac80ef61ef4e06ba2c6ca2b105a4a436f33032'
             '871f2a6d3bd9d657f8379196e51fd3117c1586e0042e9e993ae138f78b2bcd76'
-            'a9eb77ca5a428b32f6e01f62b859cce788c4c9a170dc2cd080800a9de59faa3d'
-            'SKIP')
+            'a9eb77ca5a428b32f6e01f62b859cce788c4c9a170dc2cd080800a9de59faa3d')
 sha256sums_i686=('SKIP')
 sha256sums_x86_64=('SKIP')
 
 # Some installation information
 install="$pkgname.install"
-
-# Version
-pkgver() {
-
-    cd "$srcdir/"
-
-    cat "releases" | \
-    jq --raw-output '.[0] | .tag_name' | \
-    sed 's/^v//'
-}
 
 package() {
 
