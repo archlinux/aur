@@ -8,7 +8,7 @@ pkgver=1.0
 pkgrel=6
 pkgdesc="An open-source reimplementation of the famous X-COM game"
 arch=('i686' 'x86_64')
-url="http://openxcom.org/"
+url="https://openxcom.org/"
 license=('GPL3')
 depends=('sdl_gfx' 'sdl_mixer' 'sdl_image' 'yaml-cpp' 'mesa')
 makedepends=('boost' 'glu' 'xmlto' 'docbook-xml' 'docbook-xsl')
@@ -24,19 +24,19 @@ sha256sums=('45acb280010a01d60506b1c5f2951ae501c012cc6161aac470bd15c1e6981246'
             '33a412d870d8c1399738b71f772aaa5954d0028a9c42373ca4a27124c154956d')
 
 prepare() {
-  cd OpenXcom-1.0
-  patch -p1 -i "$srcdir/abs-fix.patch"
-  patch -p1 -i "$srcdir/auto_ptr-fix.patch"
+  cd OpenXcom-${pkgver}
+  patch -p1 -i "${srcdir}/abs-fix.patch"
+  patch -p1 -i "${srcdir}/auto_ptr-fix.patch"
 }
 
 build() {
-  cd OpenXcom-1.0
+  cd OpenXcom-${pkgver}
   ./autogen.sh
   ./configure --prefix=/usr --without-docs
   make
 }
 
 package() {
-  cd OpenXcom-1.0
-  make DESTDIR="$pkgdir" install
+  cd OpenXcom-${pkgver}
+  make DESTDIR="${pkgdir}" install
 }
