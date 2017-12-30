@@ -3,7 +3,7 @@
 appname=Pext
 pkgname=pext-git
 pkgver=0.11.1.r16.81d57a2
-pkgrel=2
+pkgrel=3
 pkgdesc="Python-based extendable tool"
 arch=('any')
 url="https://pext.hackerchick.me/"
@@ -11,7 +11,8 @@ license=('GPL3')
 depends=('python-dulwich' 'libnotify' 'python-pip' 'python-pyqt5' 'qt5-quickcontrols')
 makedepends=('python-setuptools')
 optdepends=('pass: password manager support'
-            'ffmpeg: radiobrowser music support')
+            'ffmpeg: radiobrowser music support'
+            'python-opengl: required for correct rendering on some GPUs')
 provides=('pext')
 conflicts=('pext')
 source=("git://github.com/Pext/Pext")
