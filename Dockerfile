@@ -1,8 +1,11 @@
 # Run the following command in the directory where this file lives to build a
-# new docker image: docker-compose --file base.yml build --no-cache
+# new docker image:
+
+# - docker pull finalduty/archlinux && docker-compose --file base.yml build --no-cache
 
 # Run the following command in the directory where this file lives to start:
-# docker-compose --file base.yml up
+
+# - docker-compose --file base.yml up
 
            # region configuration
 FROM       finalduty/archlinux
