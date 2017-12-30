@@ -3412,7 +3412,7 @@ md5sums=('b46ab1beeadcac8c14dd61d69d57865a'
          
 
 package() {
-  _destdir="$pkgdir/usr/share/openxcom/TFTD"
+  _destdir="${pkgdir}/usr/share/openxcom/TFTD"
 
   install -Dm644 "${srcdir}/ADLIB.CAT"                "${_destdir}/SOUND/ADLIB.CAT"
   install -Dm644 "${srcdir}/ALART00.MAP"              "${_destdir}/MAPS/ALART00.MAP"
