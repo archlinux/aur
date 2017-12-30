@@ -1,0 +1,23 @@
+pkgbase = pext
+	pkgdesc = Python-based extendable tool
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://pext.hackerchick.me/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-dulwich
+	depends = libnotify
+	depends = python-pip
+	depends = python-pyqt5
+	depends = qt5-quickcontrols
+	optdepends = pass: password manager support
+	optdepends = ffmpeg: radiobrowser music support
+	optdepends = python-opengl: required for correct rendering on some GPUs
+	provides = pext
+	conflicts = pext
+	source = https://github.com/Pext/Pext/archive/v0.11.1.tar.gz
+	sha256sums = ee55b0b2205d7482b4d01defa8b307545604850b67fa34e9839bf162d603484e
+
+pkgname = pext
+
