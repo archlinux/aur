@@ -1,7 +1,7 @@
 pkgbase = mate-multiload-ng-applet-gtk3-git
 	pkgdesc = Modern graphical system monitor, MATE panel applet
-	pkgver = r933.bc23d06
-	pkgrel = 2
+	pkgver = r938.d023877
+	pkgrel = 3
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = mate-multiload-ng-applet-gtk3-git
 	makedepends = git
 	depends = gtk3
 	depends = cairo
-	depends = mate-panel>=1.7.0
+	depends = mate-panel-gtk3>=1.7.0
+	depends = multiload-ng-common-git
 	conflicts = mate-multiload-ng-applet-gtk2
 	conflicts = mate-multiload-ng-applet-gtk3
 	conflicts = mate-multiload-ng-applet-gtk2-git
