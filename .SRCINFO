@@ -1,0 +1,21 @@
+pkgbase = python-whiteboard-git
+	pkgdesc = Linux whiteboard in python.
+	pkgver = r251.61431aa
+	pkgrel = 1
+	url = https://github.com/pnegre/python-whiteboard
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = python-pybluez
+	depends = python-pyqt4
+	depends = python-numpy
+	depends = python-xlib
+	depends = python-future
+	provides = python-whiteboard
+	conflicts = python-whiteboard
+	source = python-whiteboard-git::git+https://github.com/pnegre/python-whiteboard
+	md5sums = SKIP
+
+pkgname = python-whiteboard-git
+
