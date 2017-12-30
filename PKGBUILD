@@ -1,11 +1,11 @@
-# Maintainer: Manish Munikar <munikarmanish@gmail.com>
+# Maintainer: Red-Code 
 
 pkgname=mcu8051ide
 pkgver=1.4.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical IDE for MCS-51 based microcontrollers"
 arch=('any')
-url="http://www.moravia-microsystems.com/mcu8051ide"
+url="https://sourceforge.net/projects/mcu8051ide/"
 license=('GPLv3')
 depends=('tcl>=8.5.9'
          'tk>=8.5.9'
@@ -22,8 +22,8 @@ optdepends=('cmake: cross-platform make system'
             'nano: for text-editing'
             'le: for text-editing'
             'hunspell: for spell-checking')
-source=("${pkgname}-${pkgver}.rpm::http://www.moravia-microsystems.com/download/mcu8051ide/mcu8051ide/1.4.10/mcu8051ide-1.4-11.noarch.rpm")
-md5sums=('a3b136c26d699a6c9a8c6e9e6a66d316')
+source=("${pkgname}-${pkgver}.rpm::https://sourceforge.net/projects/mcu8051ide/files/mcu8051ide/1.4.9/mcu8051ide-1.4-10.noarch.rpm/download")
+md5sums=('7c3fc2a212e0fe203856bbe27566d3bf')
 
 package() {
     cd ${pkgdir}
