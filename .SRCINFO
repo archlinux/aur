@@ -1,0 +1,17 @@
+pkgbase = python2-palpy-git
+	pkgdesc = PALpy is a python interface to the PAL positional astronomy library
+	pkgver = pypi.1.8.1.r0.a7ad770
+	pkgrel = 1
+	url = https://github.com/Starlink/palpy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2
+	provides = python2-palpy
+	conflicts = python2-palpy
+	source = python2-palpy::git+https://github.com/Starlink/palpy
+	md5sums = SKIP
+
+pkgname = python2-palpy-git
+
