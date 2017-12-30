@@ -503,7 +503,7 @@ writeImageToBlockdevice() {
     #
     # Examples:
     #
-    # >>> writeImageToBlockdevice /data/backup/image.img /dev/mmcblk0
+    # >>> writeImageToBlockdevice /data/private/backup/image.img /dev/mmcblk0
     local source="${ILU_DATA_PATH}temp/image/"*.img && \
     if [[ "$1" ]]; then
         source="$1"
@@ -520,12 +520,12 @@ writeBlockdeviceToImage() {
     #
     # Examples:
     #
-    # >>> writeBlockdeviceToImage /dev/mmcblk0 /data/backup/image.img
+    # >>> writeBlockdeviceToImage /dev/mmcblk0 /data/private/backup/image.img
     local source=/dev/mmcblk0 && \
     if [[ "$1" ]]; then
         source="$1"
     fi
-    local target="${ILU_DATA_PATH}backup/backup-sd-card.img" && \
+    local target="${ILU_DATA_PATH}private/backup/backup-sd-card.img" && \
     if [[ "$2" ]]; then
         target="$2"
     fi
