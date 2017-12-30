@@ -1,0 +1,14 @@
+pkgbase = uinit
+	pkgdesc = uinit -- smallest init possible
+	pkgver = 20171230git
+	pkgrel = 1
+	url = https://github.com/shiftypenguin/uinit
+	arch = i686
+	arch = x86_64
+	license = custom:unlicense
+	makedepends = git
+	source = git+https://github.com/shiftypenguin/uinit.git#commit=8c11abef
+	sha512sums = SKIP
+
+pkgname = uinit
+
