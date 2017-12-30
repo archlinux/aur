@@ -2,19 +2,19 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=libratbag-git
-pkgver=0.8.r2.2b92ab6
+pkgver=0.9.901.r1.cbcdc4b
 pkgrel=1
 pkgdesc='A library to configure gaming mice'
 arch=('x86_64')
 url='https://github.com/libratbag/libratbag'
 license=('MIT')
-depends=('glibc' 'libevdev'
-         'libudev.so')
-makedepends=('doxygen' 'git' 'graphviz' 'systemd' 'meson')
-source=('git+https://github.com/libratbag/libratbag.git')
-sha256sums=('SKIP')
+depends=('glib2' 'glibc' 'libevdev'
+         'libsystemd.so' 'libudev.so')
+makedepends=('doxygen' 'git' 'graphviz' 'meson' 'swig' 'systemd')
 conflicts=('libratbag')
 provides=('libratbag')
+source=('git+https://github.com/libratbag/libratbag.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd libratbag
