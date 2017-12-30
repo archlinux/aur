@@ -4,7 +4,7 @@
 
 pkgname=tuna
 pkgver=0.13.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Thread and IRQ affinity setting GUI and cmd line tool"
 url="https://rt.wiki.kernel.org/index.php/Tuna"
@@ -12,7 +12,7 @@ arch=('any')
 license=('GPL')
 depends=('python2-ethtool' 'python2-linux-procfs' 'python2-schedutils'
 'python2-numpy' 'python2-matplotlib' 'pygtk' 'libglade' 'gksu')
-optdepends=('python2-inet_diag')
+optdepends=('python2-inet_diag: Show network sockets in use by threads')
 source=("https://git.kernel.org/pub/scm/utils/${pkgname}/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.png")
 sha512sums=('cb182f45ac0f55bc392d00df69178e7c19721156a7a88e5ed5a3061192aad7520ffe3f200d3bb95ad2d283615e004af30c380b7aee826079491b3744a73fb314'
