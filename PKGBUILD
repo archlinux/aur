@@ -1,7 +1,7 @@
 # Maintainer: Sherlock Holo <Sherlockya@gmail.com>
 pkgname=python-locust-git
 _pkgname=locust
-pkgver=v0.8.45.g71e4864
+pkgver=v0.8.1.67.g387e7a8
 pkgrel=1
 pkgdesc="An easy-to-use, distributed, user load testing tool."
 arch=('any')
