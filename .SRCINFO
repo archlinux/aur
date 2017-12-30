@@ -1,0 +1,16 @@
+pkgbase = ipwaiter-git
+	pkgdesc = ipwaiter serves iptables
+	pkgver = r9.0f0d49d
+	pkgrel = 1
+	url = https://github.com/pyamsoft/ipwaiter.git
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = iptables
+	provides = ipwaiter
+	conflicts = ipwaiter
+	source = ipwaiter::git+https://github.com/pyamsoft/ipwaiter.git#branch=master
+	sha256sums = SKIP
+
+pkgname = ipwaiter-git
+
