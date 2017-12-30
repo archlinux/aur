@@ -1,7 +1,7 @@
 # Maintainer: Nemo <archlinux [at] captnemo.in>
 
 pkgname=karn
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Manage multiple Git identities with ease"
 arch=('x86_64' 'i686')
@@ -10,12 +10,12 @@ license=('MIT')
 makedepends=('go')
 options=('!strip' '!emptydirs')
 source=("https://github.com/prydonius/karn/archive/v$pkgver.tar.gz")
-sha256sums=('a9336abe63dbf6b952e1e4a3d4c31ed62dda69aa51e53f07902edb894638162d')
+sha256sums=('68d244558ef62cf1da2b87927a0a2fbf907247cdd770fc8c84bf72057195a6cb')
 
 prepare() {
   GOPATH=`pwd`
   cd "$pkgname-$pkgver"
-  go get github.com/codegangsta/cli
+  go get github.com/urfave/cli
 }
 
 build() {
