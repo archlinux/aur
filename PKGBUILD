@@ -32,5 +32,4 @@ package() {
     install -D -m755 ${srcdir}/smarttrafficmeter/bin/linux/release/smarttrafficmeter ${pkgdir}/usr/bin/smarttrafficmeter
     install -D -m755 ${srcdir}/smarttrafficmeter/install/arch/smarttrafficmeter.service ${pkgdir}/usr/lib/systemd/system/smarttrafficmeter.service
     install -D -m755 ${srcdir}/smarttrafficmeter/man/smarttrafficmeter.1 ${pkgdir}/usr/share/man/man1/smarttrafficmeter.1
-    gzip /usr/share/man/man1/smarttrafficmeter.1
- }
+}
