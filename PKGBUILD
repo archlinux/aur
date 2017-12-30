@@ -9,7 +9,7 @@ pkgver=r938.d023877
 pkgrel=3
 
 makedepends=('intltool' 'git')
-depends=('gtk2>=2.20.0' 'cairo' 'mate-panel>=1.7.0' 'multiload-ng-common-git')
+depends=('gtk2>=2.20.0' 'cairo' 'mate-panel-gtk2>=1.7.0' 'multiload-ng-common-git')
 
 conflicts=('mate-multiload-ng-applet-gtk2' 'mate-multiload-ng-applet-gtk3' 'mate-multiload-ng-applet-gtk3-git')
 
