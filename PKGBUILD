@@ -1,9 +1,10 @@
-# Maintainer: Johann Klähn <kljohann@gmail.com>
+# Maintainer: Terin Stock <terinjokes@gmail.com>
+# Contributor: Johann Klähn <kljohann@gmail.com>
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 # Contributor: Ilkka Laukkanen <ilkka.s.laukkanen@gmail.com>
 
 pkgname=stgit
-pkgver=0.17.1
+pkgver=0.18
 pkgrel=1
 pkgdesc="Pushing/popping patches to/from a stack on top of Git, similar to Quilt"
 url="http://www.procode.org/stgit/"
@@ -11,8 +12,8 @@ arch=('any')
 license=('GPL')
 depends=('python2' 'git')
 makedepends=('xmlto' 'asciidoc')
-source=("http://download.gna.org/stgit/stgit-${pkgver}.tar.gz")
-md5sums=('12e10e73276fa865098a23f032effd9b')
+source=("https://github.com/ctmarinas/stgit/archive/v${pkgver}.tar.gz")
+sha256sums=('00c83a0a057ee61a300f2291b8926f85521ffd1c92b4cb5152e2be3bf836d3a5')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
