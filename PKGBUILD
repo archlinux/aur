@@ -10,7 +10,7 @@ pkgver=3.0
 pkgrel=3
 pkgdesc="A GTK volume control tool for PulseAudio"
 arch=(i686 x86_64)
-url="http://freedesktop.org/software/pulseaudio/pavucontrol/"
+url="https://freedesktop.org/software/pulseaudio/pavucontrol/"
 license=(GPL2)
 depends=(gnome-icon-theme libcanberra-pulse gtkmm libsigc++)
 makedepends=(intltool lynx)
@@ -22,19 +22,19 @@ sha256sums=('b3d2ea5a25fc88dcee80c396014f72df1b4742f8cfbbc5349c39d64a0d338890'
             'ca5a9adeae4bb5167fd767d3218b17aeca8513fd55f0395ea390fc685d44478e')
 
 prepare() {
-  cd $_name-$pkgver
-  patch -p1 -i "$srcdir/stream-elipsis.patch"
+  cd ${_name}-${pkgver}
+  patch -p1 -i "${srcdir}/stream-elipsis.patch"
 }
 
 build() {
-  cd $_name-$pkgver
+  cd ${_name}-${pkgver}
   # need to specify c++11 std to compile on latest glibmm and co
-  export CXXFLAGS="$CXXFLAGS -std=c++11"
+  export CXXFLAGS="${CXXFLAGS} -std=c++11"
   ./configure --prefix=/usr --disable-gtk3
   make
 }
 
 package() {
-  cd $_name-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd ${_name}-${pkgver}
+  make DESTDIR="${pkgdir}" install
 }
