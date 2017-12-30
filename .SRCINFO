@@ -1,6 +1,6 @@
 pkgbase = samsung-tools
 	pkgdesc = Tools for Samsung laptops
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://launchpad.net/samsung-tools
 	install = samsung-tools.install
@@ -20,8 +20,8 @@ pkgbase = samsung-tools
 	backup = etc/samsung-tools/scripts/bluetooth-off
 	backup = etc/samsung-tools/scripts/wireless-on
 	backup = etc/samsung-tools/scripts/wireless-off
-	source = http://launchpad.net/samsung-tools/trunk/2.3.1/+download/samsung-tools-2.3.1.tar.gz
-	md5sums = aaf2f0cf07000c826e5cae23dedf0999
+	source = http://launchpad.net/samsung-tools/trunk/2.3.2/+download/samsung-tools-2.3.2.tar.gz
+	md5sums = ddc06ead2e4f8ee54618d866c047406c
 
 pkgname = samsung-tools
 

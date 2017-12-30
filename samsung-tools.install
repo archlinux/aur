@@ -15,4 +15,3 @@ post_remove() {
   rm -rf /usr/share/samsung-tools/
   rm -f /etc/sysctl.d/30-samsung-tools.conf
 }
-
