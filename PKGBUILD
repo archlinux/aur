@@ -2,7 +2,7 @@
 
 pkgname=vim-diffchar
 pkgver=7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Improve vim's diff mode, by finding exact differences between lines, character by character"
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=4932'
