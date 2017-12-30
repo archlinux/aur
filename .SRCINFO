@@ -1,0 +1,17 @@
+pkgbase = gnulium
+	pkgdesc = Make Your Gnu/linux More Readble and Easy to Understand.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/LinArcX/Gnulium
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = qt5-charts
+	depends = jcal-git
+	source = gnulium::git+https://github.com/LinArcX/Gnulium
+	sha256sums = SKIP
+
+pkgname = gnulium
+
