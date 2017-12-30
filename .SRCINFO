@@ -1,0 +1,18 @@
+pkgbase = ttf-agave
+	pkgdesc = The best font ever created
+	pkgver = 008
+	pkgrel = 1
+	url = https://alocy.be/page/agave
+	install = ttf-agave.install
+	arch = any
+	license = MIT
+	provides = ttf-font
+	source = https://github.com/agarick/agave/raw/master/dist/agave-r.ttf
+	source = https://github.com/agarick/agave/raw/master/dist/agave-r-just.ttf
+	source = https://github.com/agarick/agave/raw/master/license.txt
+	md5sums = 8ac1c17d7ed29bb0dcce84253c1790b9
+	md5sums = a67f396e0a091d433cce5c32a0b6d5d7
+	md5sums = d5bb7f17d8d4c8e9bb1d715eba8c9
+
+pkgname = ttf-agave
+
