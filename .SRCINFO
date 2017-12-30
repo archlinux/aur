@@ -14,3 +14,17 @@ pkgbase = r-cran-tibble
 
 pkgname = r-cran-tibble
 
+pkgbase = r-cran-tibble
+	pkgdesc = Tibble: An upgraded data frame class.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/tibble/index.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r>=3.1.0
+	source = http://cran.r-project.org/src/contrib/tibble_1.4.1.tar.gz
+	md5sums = f431e222abfe2778d3e6ffe533ccdc7c
+
+pkgname = r-cran-tibble
+
