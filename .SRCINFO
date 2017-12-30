@@ -1,7 +1,7 @@
 pkgbase = multiload-ng-indicator-gtk2-git
 	pkgdesc = Modern graphical system monitor, AppIndicator plugin
-	pkgver = r933.bc23d06
-	pkgrel = 1
+	pkgver = r938.d023877
+	pkgrel = 3
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = multiload-ng-indicator-gtk2-git
 	depends = gtk2>=2.20.0
 	depends = cairo
 	depends = libappindicator-gtk2>=0.4.92
+	depends = multiload-ng-common-git
 	conflicts = multiload-ng-indicator-gtk2
 	conflicts = multiload-ng-indicator-gtk3
 	conflicts = multiload-ng-indicator-gtk3-git
