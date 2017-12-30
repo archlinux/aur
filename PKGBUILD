@@ -1,14 +1,14 @@
 pkgbase=python-nodeenv
 pkgname=(python-nodeenv python2-nodeenv)
-pkgver=1.1.4
-pkgrel=0
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Node.js virtual environment builder"
 url="https://github.com/ekalinin/nodeenv"
 license=("BSD")
 arch=('any')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/f9/7e/499dc78da542865f9f3d91e8b660883eb6a55fb40a10aa9407af0be66242/nodeenv-1.1.4.tar.gz")
-sha256sums=('1c3f83a794dcb35df357104c1c87310e24f9a73d45a6518fd932c30f27a8f163')
+source=("https://pypi.python.org/packages/9f/0e/dd1c52f02a8ed7563da1984a5a6c740d3c752d4c6bcdb5f87dabf5c0d839/nodeenv-1.2.0.tar.gz")
+sha256sums=('98835dab727f94a713eacc7234e3db6777a55cafb60f391485011899e5c818df')
 
 package_python-nodeenv() {
   depends=('python')
