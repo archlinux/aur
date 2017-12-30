@@ -1,30 +1,28 @@
-# Maintainer: Joakim Hernberg <jhernberg@alchemy.lu>
+# Maintainer: David Runge <dave@sleepmap.de>
+# Contributor: Joakim Hernberg <jhernberg@alchemy.lu>
 # Contributor: Ninez <triplesquarednine@gmail.com>
 
 pkgname=tuna
-epoch=1
 pkgver=0.13.1
-pkgrel=1
-
-pkgdesc="Application tuning GUI & command line utility"
+pkgrel=2
+epoch=1
+pkgdesc="Thread and IRQ affinity setting GUI and cmd line tool"
 url="https://rt.wiki.kernel.org/index.php/Tuna"
 arch=('any')
 license=('GPL')
-
-depends=('python2' 'python2-ethtool' 'python2-linux-procfs' 'python2-schedutils' 'python2-numpy' 'python2-matplotlib' 'pygtk' 'libglade' 'gksu')
+depends=('python2-ethtool' 'python2-linux-procfs' 'python2-schedutils'
+'python2-numpy' 'python2-matplotlib' 'pygtk' 'libglade' 'gksu')
 optdepends=('python2-inet_diag')
-makedepends=('git')
-
-source=("https://www.kernel.org/pub/software/utils/tuna/tuna-${pkgver}.tar.xz" 'tuna.png')
-sha256sums=('552604c20d80d19f11bbfda3bafef3e14bde163cdb7e2417d9867f405583606b'
-            '2f4dc206a7762380355e7bb323d508c205d493add89d67b325d5e55874486ac8')
+source=("https://git.kernel.org/pub/scm/utils/${pkgname}/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}.png")
+sha512sums=('cb182f45ac0f55bc392d00df69178e7c19721156a7a88e5ed5a3061192aad7520ffe3f200d3bb95ad2d283615e004af30c380b7aee826079491b3744a73fb314'
+            '1432c39a1345ff47c893146a4884ccb2317fa623c3340bd4870fce2e4fec3b050db73fad19155d6d6ead51eb29069e11da46fc1bda4a44ac057b2980ee8ad3c1')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  sed -i '1s/python/python2/' tuna-cmd.py
-  sed -i '1s/python/python2/' oscilloscope-cmd.py
-  sed -i -e 's/gtk-preferences/tuna/g' tuna.desktop
-  sed -i -e 's/Exec=tuna --gui/Exec=gksu tuna/g' tuna.desktop
+  sed -i '1s/python/python2/' {tuna-cmd,oscilloscope-cmd}.py
+  sed -i -e 's/gtk-preferences/tuna/g' "${pkgname}.desktop"
+  sed -i -e 's/Exec=tuna --gui/Exec=gksu tuna/g' "${pkgname}.desktop"
 }
 
 build() {
@@ -34,18 +32,20 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python2 setup.py install --skip-build --root="$pkgdir"
-  install -D -m 775 tuna-cmd.py "$pkgdir"/usr/bin/tuna
-  install -m 775 oscilloscope-cmd.py "$pkgdir"/usr/bin/oscilloscope
-  install -D -m 644 etc/tuna/example.conf "$pkgdir"/etc/tuna/example.conf
-  install -m 644 etc/tuna.conf "$pkgdir"/etc
-  install -D -m 644 "$srcdir"/tuna.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/tuna.png
-  install -D -m 644 docs/oscilloscope+tuna.pdf "$pkgdir"/usr/share/tuna/docs
-  install -d -m 755 "$pkgdir"/usr/share/tuna/help/kthreads
-  install -m 644 help/kthreads/* "$pkgdir"/usr/share/tuna/help/kthreads
-  install -m 644 tuna/tuna_gui.glade "$pkgdir"/usr/share/tuna
-  install -D -m 644 tuna.desktop "$pkgdir"/usr/share/applications/tuna.desktop
-  install -D -m 644 org.tuna.policy "$pkgdir"/usr/share/polkit-1/org.tuna.policy
-  install -D -m 644 docs/tuna.8 "$pkgdir"/usr/share/man/man8/tuna.8
+  python2 setup.py install --skip-build \
+    --optimize=1 \
+    --prefix=/usr \
+    --root="${pkgdir}/"
+  install -Dm 775 "${pkgname}-cmd.py" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 775 oscilloscope-cmd.py "${pkgdir}/usr/bin/oscilloscope"
+  install -Dm 644 "etc/${pkgname}/example.conf" "${pkgdir}/etc/${pkgname}/example.conf"
+  install -Dm 644 "etc/${pkgname}.conf" "${pkgdir}/etc/${pkgname}.conf"
+  install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+  install -Dm 644 "docs/oscilloscope+${pkgname}.pdf" "${pkgdir}/usr/share/${pkgname}/docs/oscilloscope+${pkgname}.pdf"
+  install -t "${pkgdir}/usr/share/${pkgname}/help/kthreads" -Dm 644 help/kthreads/*
+  install -Dm 644 "${pkgname}/${pkgname}_gui.glade" "${pkgdir}/usr/share/${pkgname}/${pkgname}_gui.glade"
+  install -Dm 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm 644 "org.${pkgname}.policy" "${pkgdir}/usr/share/polkit-1/actions/org.${pkgname}.policy"
+  install -Dm 644 "docs/${pkgname}.8" "${pkgdir}/usr/share/man/man8/${pkgname}.8"
 }
 # vim:set ts=2 sw=2 et:
