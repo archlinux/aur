@@ -7,7 +7,7 @@ pkgver=1.9.92
 pkgrel=1
 pkgdesc='A Sony PlayStation (PSX) emulator based on the PCSX-df project (Gtk2 version)'
 arch=('i686' 'x86_64')
-url='http://pcsxr.codeplex.com/'
+url='https://pcsxr.codeplex.com/'
 license=('GPL')
 conflicts=('pcsxr')
 depends=('libcdio' 'libgl' 'libglade' 'libxtst' 'libxv' 'sdl')
@@ -22,13 +22,13 @@ md5sums=('28411aed0b4424f97227d94bdefaec83'
          'ce021bfc4c19e553a2cdb95b7ca1eb01')
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    patch -Np1 -i "$srcdir/link_order.patch"
+    cd ${_pkgname}-${pkgver}
+    patch -Np1 -i "${srcdir}/link_order.patch"
     ./configure --prefix=/usr --enable-libcdio --enable-opengl
     make
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+    cd ${_pkgname}-${pkgver}
+    make DESTDIR="${pkgdir}" install
 }
