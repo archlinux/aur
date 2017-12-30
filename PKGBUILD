@@ -1,9 +1,9 @@
 # Maintainer: NexAdn <nexadn@yandex.com>
 pkgname=cef-standard
 pkgver=3.3239
-_subver_i686=1709.g093cae4
+_subver_i686=1716.g735b746
 _subver_x86_64=${_subver_i686}
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium Embedded Framework standard release"
 arch=("i686" "x86_64")
 url="https://bitbucket.org/chromiumembedded/cef"
@@ -18,8 +18,8 @@ source_i686=(
 source_x86_64=(
     "http://opensource.spotify.com/cefbuilds/cef_binary_${pkgver}.${_subver_x86_64}_linux64.tar.bz2"
 )
-sha1sums_i686=('e555a2abf194195b8d8e9c52c508005b290f81ca')
-sha1sums_x86_64=('c154ed21bd81263696d5e47c9acca2ee936f2576')
+sha1sums_i686=('3f8a50f39b6102dc77c91d0909281d718638900c')
+sha1sums_x86_64=('280d13420d81eb2f0512f7d98bcea7ff119c73cb')
 [[ "$CARCH" = "i686" ]] && _arch="32" && _subver=$_subver_i686
 [[ "$CARCH" = "x86_64" ]] && _arch="64" && _subver=$_subver_x86_64
 build() {
