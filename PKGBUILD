@@ -1,4 +1,5 @@
 # Maintainer: Red-Code 
+# Maintainer: Manish Munikar <munikarmanish@gmail.com>
 
 pkgname=mcu8051ide
 pkgver=1.4.10
