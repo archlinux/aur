@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = linux
+Target = systemd
+
+[Action]
+Description = Backing up /boot...
+When = PreTransaction
+Depends = rsync
+Exec = /usr/bin/rsync -azq --delete /boot/ /.bootbackup
+AbortOnFail
