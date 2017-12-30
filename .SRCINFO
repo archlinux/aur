@@ -1,7 +1,7 @@
 pkgbase = multiload-ng-standalone-gtk3
 	pkgdesc = Modern graphical system monitor, standalone version
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = multiload-ng-standalone-gtk3
 	makedepends = intltool
 	depends = gtk3
 	depends = cairo
+	depends = multiload-ng-common
 	conflicts = multiload-ng-standalone-gtk2
 	conflicts = multiload-ng-standalone-gtk2-git
 	conflicts = multiload-ng-standalone-gtk3-git
