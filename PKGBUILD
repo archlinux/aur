@@ -15,8 +15,8 @@
 buildarch=4
 
 pkgname=retroarch-rbp
-pkgver=1.6.9
-pkgrel=2.1
+pkgver=1.7.0
+pkgrel=1.1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi)'
 arch=('armv7h')
 url='http://www.libretro.com/'
@@ -52,7 +52,7 @@ optdepends=('libretro-beetle-psx: Sony PlayStation core'
 backup=('etc/retroarch.cfg')
 source=("retroarch-${pkgver}.tar.gz::https://github.com/libretro/RetroArch/archive/v${pkgver}.tar.gz"
         'retroarch-config.patch')
-sha256sums=('66dde69fde9d286e3d8f6c4a5e4b947e9030044415e75b419883b454e05d78b4'
+sha256sums=('b32fa4a37ff777e9fe45eeef7ccf2e4e06520dd268584034f687a494dc9f5af1'
             '8dca43954d05ea1f989932fb26828b6e8325394eec070c4530dd21eab3f02c44')
 
 prepare() {
