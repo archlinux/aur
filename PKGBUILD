@@ -2,8 +2,8 @@
 
 pkgbase=linux-baytrail49 
 _srcname=linux-baytrail49
-pkgver=4.9.59
-pkgrel=2
+pkgver=4.9.73.96.17386cf99
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
