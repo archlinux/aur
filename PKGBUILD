@@ -8,7 +8,7 @@ pkgname=pstate-frequency-git
 # shellcheck disable=SC2034
 pkgdesc="Easily control Intel p-state driver (git version)"
 # shellcheck disable=SC2034
-pkgver="3.9.7".r871.329c90a
+pkgver="3.9.7".r875.2182d42
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -24,7 +24,7 @@ provides=('pstate-frequency')
 # shellcheck disable=SC2034
 conflicts=('pstate-frequency')
 # shellcheck disable=SC2034
-license=('MIT')
+license=('GPLv2')
 url="https://github.com/pyamsoft/pstate-frequency.git"
 
 ##
