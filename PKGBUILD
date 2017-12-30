@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=63.0.3239.108
-pkgrel=3
+pkgrel=4
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -109,7 +109,7 @@ https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/036.patch
 )
 
 
-sha256sums=('aaa714e14a608efda3b5312735496c2f85fe4b9776a9fcf818cea8d016a0cb49'
+sha256sums=('47d80798194da78bdd519b7ce012425b13cf89d6eb287e22a34342a245c31a2b'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -122,7 +122,7 @@ sha256sums=('aaa714e14a608efda3b5312735496c2f85fe4b9776a9fcf818cea8d016a0cb49'
             '5c8c3ad7d5b4ebda7508e3aee13349fc8ad627d7a7e3147168e214f03e433168'
             '085c00b8f760b2262218ef772038a0d439bf208d61664ae15cf6088cc142fe47'
             '8696919f69ef927f095944ae7ef869b283450a4b2cdd4efdebc51fc2b1e747e0'
-            'bd233779119f47a6f25d562dee0f725b47cf88b646a4828fd2c517d46839fd3e'
+            'f3ced4bbfb6f300ecfccfd573edfe5eb549fd2ab1b54eca2f026799955858247'
             'fd5fdc83665113677951e2e713a4696d999a070d6b59bb57319df357b35d4fad'
             '3850ad42d0cb4ca011d46b9d569a0a2bf83476f0c3da70c74d4f011cec59f885'
             '7beb0f3bbc55960092347767d423415860a3867525f6d1bbb057b3d72fae0618'
@@ -199,7 +199,6 @@ sha256sums=('aaa714e14a608efda3b5312735496c2f85fe4b9776a9fcf818cea8d016a0cb49'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
             'ba9f4b345150ed5a2df7b713ab1e441be7ab8aeead4e2eb0c384334cf15ad436'
             '9d144732d593d9ee82f99b24009a193e61ef8560aff92a15effdae95a0897c61')
-
 
 
 
