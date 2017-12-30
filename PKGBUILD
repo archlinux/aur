@@ -9,14 +9,16 @@ url="https://github.com/feelpp"
 license=('LGPL')
 depends=('cln' 'mumps' 'slepc' 'petsc' 'gmsh' 'fftw')
 makedepends=('cmake' 'eigen3')
-source=("https://github.com/feelpp/feelpp/releases/download/v${pkgver}/feelpp-${pkgver}.tar.gz" fix-compilation.patch)
-sha256sums=('e083b6107cd78eafede8b051e478093b52a52c961748721241c874cfad2b9fe9' SKIP)
+source=("https://github.com/feelpp/feelpp/releases/download/v${pkgver}/feelpp-${pkgver}.tar.gz" fix-compilation.patch d6891c9.patch)
+sha256sums=('e083b6107cd78eafede8b051e478093b52a52c961748721241c874cfad2b9fe9' SKIP SKIP)
 
 prepare() {
   cd $pkgbase-$pkgver
   grep -lr 'COMMAND python' contrib/ginac|xargs sed -i "s|COMMAND python |COMMAND python2 |g"
 
   patch -p1 -i "$srcdir"/fix-compilation.patch
+  patch -p1 -i "$srcdir"/d6891c9.patch
+
 }
 
 
