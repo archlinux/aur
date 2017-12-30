@@ -10,7 +10,7 @@ arch=('x86_64')
 url="http://0pointer.de/lennart/projects/nss-mdns/"
 license=('LGPL')
 depends=('lib32-glibc')
-makedepends=('gcc-multilib')
+makedepends=('lib32-gcc-libs')
 source=("http://pkgs.fedoraproject.org/repo/pkgs/${_pkgname}/${_pkgname}-${pkgver}.tar.gz/03938f17646efbb50aa70ba5f99f51d7/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('03938f17646efbb50aa70ba5f99f51d7')
 
@@ -19,7 +19,7 @@ build() {
     export CXX="g++ -m32"
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd ${_pkgname}-${pkgver}
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd ${_pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
 }
