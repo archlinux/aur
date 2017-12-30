@@ -4,24 +4,22 @@
 
 pkgname='php7-homegear'
 pkgdesc='Patched version of PHP for Homegear'
-pkgver=7.2.0rc4
-_pthreadversion=d596cee020843fd896e40f21a71c44ca96dd4240
+pkgver=7.2.0
+_pthreadversion=b3e691f25cd659bcdb504b61e8da235251cb3b5a
 _pkgbase=php
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('PHP')
 url='http://www.php.net'
-depends=('gmp' 'enchant' 'libmcrypt' 'libedit' 'openssl' 'libxml2')
-source=(#"http://www.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
-        "https://downloads.php.net/~remi/php-${pkgver^^}.tar.gz"
+depends=('gmp' 'enchant' 'libedit' 'libmcrypt' 'libzip' 'libxml2' 'openssl')
+source=("http://www.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "https://github.com/krakjoe/pthreads/archive/${_pthreadversion}.tar.gz")
-sha512sums=('c9f1795078a09867620a988909cd3e701d99e6349caff29037da6111739f8db62228be27a36a8c7e420683f3e4de319d49844654713573aa7210f812e777ef34'
-            'ccecf3483c6ebc71dbfebb270e4909f251328b01062a4f90a8bdbd0caee74a996c5afb90b4db18a56ba64802276475f50a3f3a589e3e1bcef01eb70fe98bf23d')
-replaces=('php7-homegear')
+sha512sums=('828d38727edde0dbc6483add6cdc21d33527b887bffaedad2d7f53e25d58a6f661ac341a23db02741bc37248d161aaffd72026dd8ef85ac851594c127d6c0133'
+            '748894d295d8c5db57261ac0317a43fc49e6365f712be6916d765543341fb622ef37e4ee7113daaafe533c485c127208262c53e52480421385f6c6608449edb5')
 options=(!emptydirs)
 
 prepare() {
-	cd "${srcdir}/${_pkgbase}-${pkgver^^}/ext"
+	cd "${srcdir}/${_pkgbase}-${pkgver}/ext"
 
 	if [ ! -d "pthreads" ]; then
 		mv "${srcdir}/pthreads-${_pthreadversion}" pthreads
@@ -30,7 +28,7 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgbase}-${pkgver^^}"
+	cd "${srcdir}/${_pkgbase}-${pkgver}"
 
     autoconf
 
@@ -59,7 +57,7 @@ build() {
                 --enable-inifile \
                 --enable-flatfile \
                 --enable-dom \
-                --with-enchant=/usr \
+                --with-enchant=shared,/usr \
                 --enable-exif \
                 --with-gettext=/usr \
                 --with-gmp=/usr/include \
@@ -68,7 +66,8 @@ build() {
                 --enable-ftp \
                 --enable-hash \
                 --enable-json \
-                --enable-pdo \
+                --with-libzip \
+                --enable-maintainer-zts \
                 --enable-mbregex \
                 --enable-mbregex-backtrack \
                 --enable-mbstring \
@@ -82,7 +81,6 @@ build() {
                 --enable-libxml \
                 --enable-session \
                 --enable-simplexml \
-                --enable-pthreads \
                 --with-xmlrpc \
                 --enable-soap \
                 --enable-sockets \
@@ -98,7 +96,7 @@ build() {
                 --disable-cli \
                 --disable-cgi \
                 --enable-pcntl \
-                --enable-maintainer-zts
+                --enable-pdo
 
 	make
 }
@@ -106,7 +104,7 @@ build() {
 
 
 package() {
-	cd ${srcdir}/${_pkgbase}-${pkgver^^}
+	cd ${srcdir}/${_pkgbase}-${pkgver}
 
 	make INSTALL_ROOT="${pkgdir}" install
 

@@ -1,6 +1,6 @@
 pkgbase = php7-homegear
 	pkgdesc = Patched version of PHP for Homegear
-	pkgver = 7.2.0rc4
+	pkgver = 7.2.0
 	pkgrel = 1
 	url = http://www.php.net
 	arch = i686
@@ -11,16 +11,16 @@ pkgbase = php7-homegear
 	license = PHP
 	depends = gmp
 	depends = enchant
-	depends = libmcrypt
 	depends = libedit
-	depends = openssl
+	depends = libmcrypt
+	depends = libzip
 	depends = libxml2
-	replaces = php7-homegear
+	depends = openssl
 	options = !emptydirs
-	source = https://downloads.php.net/~remi/php-7.2.0RC4.tar.gz
-	source = https://github.com/krakjoe/pthreads/archive/d596cee020843fd896e40f21a71c44ca96dd4240.tar.gz
-	sha512sums = c9f1795078a09867620a988909cd3e701d99e6349caff29037da6111739f8db62228be27a36a8c7e420683f3e4de319d49844654713573aa7210f812e777ef34
-	sha512sums = ccecf3483c6ebc71dbfebb270e4909f251328b01062a4f90a8bdbd0caee74a996c5afb90b4db18a56ba64802276475f50a3f3a589e3e1bcef01eb70fe98bf23d
+	source = http://www.php.net/distributions/php-7.2.0.tar.xz
+	source = https://github.com/krakjoe/pthreads/archive/b3e691f25cd659bcdb504b61e8da235251cb3b5a.tar.gz
+	sha512sums = 828d38727edde0dbc6483add6cdc21d33527b887bffaedad2d7f53e25d58a6f661ac341a23db02741bc37248d161aaffd72026dd8ef85ac851594c127d6c0133
+	sha512sums = 748894d295d8c5db57261ac0317a43fc49e6365f712be6916d765543341fb622ef37e4ee7113daaafe533c485c127208262c53e52480421385f6c6608449edb5
 
 pkgname = php7-homegear
 
