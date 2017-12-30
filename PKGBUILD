@@ -1,7 +1,7 @@
 #Maintainer: osafi <omeed@safi.ms>
 pkgname=dfiler
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly edit .desktop files to show/hide applications"
 arch=(i686 x86_64)
 url='https://bitbucket.org/osafi/dfiler'
