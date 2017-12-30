@@ -1,0 +1,16 @@
+pkgbase = multiload-ng-common-git
+	pkgdesc = Modern graphical system monitor, common files
+	pkgver = r938.d023877
+	pkgrel = 3
+	url = https://udda.github.io/multiload-ng/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = git
+	conflicts = multiload-ng-common
+	source = git+https://github.com/udda/multiload-ng.git
+	md5sums = SKIP
+
+pkgname = multiload-ng-common-git
+
