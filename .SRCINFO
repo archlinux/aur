@@ -1,7 +1,7 @@
 pkgbase = one-more-cheese
 	pkgdesc = Arcade-puzzle game
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://nwg.pl/cheese
 	arch = i686
 	arch = x86_64
