@@ -3,12 +3,12 @@
 appname=Pext
 pkgname=pext-git
 pkgver=0.11.1.r16.81d57a2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based extendable tool"
 arch=('any')
 url="https://pext.hackerchick.me/"
 license=('GPL3')
-depends=('libnotify' 'python-pip' 'python-pyqt5' 'qt5-quickcontrols' 'python-dulwich')
+depends=('python-dulwich' 'libnotify' 'python-pip' 'python-pyqt5' 'qt5-quickcontrols')
 makedepends=('python-setuptools')
 optdepends=('pass: password manager support'
             'ffmpeg: radiobrowser music support')
