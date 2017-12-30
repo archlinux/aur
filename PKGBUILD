@@ -1,4 +1,4 @@
-# Maintainer: Leandro Kollenberger <lkollenberger at frba.utn.edu.ar>:wq
+# Maintainer: Leandro Kollenberger <lkollenberger at frba.utn.edu.ar>
 pkgname=nmap-vulners
 pkgver='1.1'
 pkgrel=1
