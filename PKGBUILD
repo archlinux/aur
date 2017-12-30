@@ -18,7 +18,7 @@
 
 pkgname='openonload'
 pkgdesc="A high performance network stack from Solarflare."
-pkgver='201606.u1'
+pkgver='201710'
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.openonload.org/'
@@ -31,12 +31,14 @@ source=("http://www.openonload.org/download/openonload-${pkgver//\./-}.tgz"
         'openonload.service'
         'openonload-201310-cpp11-space-literal-fix.patch'
         'openonload-201606-archlinux.patch'
+        'openonload-201710-p74377-glibc.patch'
 )
-sha512sums=('0bf6eeffbd9c1c3275c8bef6f53f8bcab7fc59677da65a26d40125048916da974c9bff7d37f6bdf6d106464e18ff0264a997ff850e91ee1163bd87a254ec72cd'
+sha512sums=('06148af3e21a9222111a71154ea9c2c9cb032b2d0a567c4892b6fea6890a1385772e3ab15cfd2985805a7f235e0e4c5b5f50ebeffc3b9ecd7afd4e1261a7df2d'
             'ac464250f2fb96d13e8ae129bac80c03f8cca62e450fdd765f24ccd064e28e9942e4a16ebc693e75c71fc1eb86c3a1b08337b2e39c6c618e129d8ec87d872bdb'
             'b7e4529e37c64f99c660ca9b58f388cdd8f0d2f250ba875eb210f4909bb1f1c985a065aae64c048ca6f824adc6e3176c6eae1f582c049631326db73e939edd7b'
             'a1d23b60b699c04caee93eb18d855dbe2e65d2115f10eb3771d1a2f04eea8d3b8042550152a5f96140aca759db10c3fbebdde85dbebcf46505c15f2ba7934bdb'
-            'c368ce3ed7987d1b374f1e671eb21bc80af4b927e4db4a229712f334ee4843f5921fb64c7ac83df214a9cc37134f8a3360273e9ba9496ff56c329476d26d050a')
+            'c368ce3ed7987d1b374f1e671eb21bc80af4b927e4db4a229712f334ee4843f5921fb64c7ac83df214a9cc37134f8a3360273e9ba9496ff56c329476d26d050a'
+            '713bec2eb1792781fe01d1df5df579507ae252548f7b3b9f77987904876ac6f8116f96ef7b2a27037f153299807773738560ba046694d2f8592cb22361ec7feb')
 
 install="openonload.install"
 
@@ -51,6 +53,7 @@ prepare() {
 
   patch -p1 < "${srcdir}/openonload-201310-cpp11-space-literal-fix.patch"
   patch -p1 < "${srcdir}/openonload-201606-archlinux.patch"
+  patch -p1 -R < "${srcdir}/openonload-201710-p74377-glibc.patch"
 }
 
 build() {

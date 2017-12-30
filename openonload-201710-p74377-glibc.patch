@@ -1,0 +1,43 @@
+diff -ru openonload-201710/scripts/libc_compat.sh onload201710/openonload-201710/scripts/libc_compat.sh
+--- openonload-201710/scripts/libc_compat.sh	2017-11-06 10:13:41.950953787 +0000
++++ onload201710/openonload-201710/scripts/libc_compat.sh	2017-10-02 14:59:29.000000000 +0100
+@@ -60,11 +60,6 @@
+ echo -n "#define CI_HAVE_SPLICE_RETURNS_SSIZE_T "
+ check_prototype fcntl.h splice \
+     "ssize_t (*foo)(int, loff_t*, int, loff_t*, size_t, unsigned int)"
+-# libc 2.26 changes splice proto again
+-echo -n "#define CI_HAVE_SPLICE_RETURNS___SSIZE_T "
+-check_prototype fcntl.h splice \
+-    "__ssize_t (*foo)(int, __off_t*, int, __off_t*, size_t, unsigned int)"
+-
+ # Some Ubuntus (1504) have timespec parameter in recvmmsg without
+ # "const" keyword.  We assume normal definition of recvmmsg if it is not
+ # present in libc.
+Only in openonload-201710/scripts: setup.py
+diff -ru openonload-201710/src/include/onload/declare_syscalls.h.tmpl onload201710/openonload-201710/src/include/onload/declare_syscalls.h.tmpl
+--- openonload-201710/src/include/onload/declare_syscalls.h.tmpl	2017-11-06 10:13:41.950953787 +0000
++++ onload201710/openonload-201710/src/include/onload/declare_syscalls.h.tmpl	2017-10-02 14:59:30.000000000 +0100
+@@ -47,9 +47,7 @@
+ CI_MK_DECL(int           , setsockopt , (int, int, int, const void*, socklen_t));
+ 
+ #if CI_LIBC_HAS_splice
+-# if CI_HAVE_SPLICE_RETURNS___SSIZE_T
+-#  define ci_splice_return_type __ssize_t
+-# elif CI_HAVE_SPLICE_RETURNS_SSIZE_T
++# if CI_HAVE_SPLICE_RETURNS_SSIZE_T
+ #  define ci_splice_return_type ssize_t
+ # elif CI_HAVE_SPLICE_RETURNS_INT
+ #  define ci_splice_return_type int
+Only in openonload-201710/src/include/onload: declare_syscalls.h.tmpl.orig
+diff -ru openonload-201710/src/include/onload/version.h onload201710/openonload-201710/src/include/onload/version.h
+--- openonload-201710/src/include/onload/version.h	2017-11-06 10:25:25.160880272 +0000
++++ onload201710/openonload-201710/src/include/onload/version.h	2017-10-09 17:38:27.000000000 +0100
+@@ -29,7 +29,7 @@
+ 
+ 
+ #ifndef ONLOAD_VERSION
+-# define ONLOAD_VERSION "201710_bug74377"
++# define ONLOAD_VERSION "201710"
+ #endif
+ 
+ #define ONLOAD_PRODUCT "OpenOnload"
