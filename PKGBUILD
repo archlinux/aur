@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.14
-_pkgver=4.14.9
+_pkgver=4.14.10
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/copperhead/linux-hardened'
@@ -22,8 +22,6 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
 
         # https://bugs.archlinux.org/task/56575
         e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
-        # https://bugs.archlinux.org/task/56830
-        ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
         # https://bugs.archlinux.org/task/56605
         Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_state_find.patch
         xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-lookup.patch
@@ -40,16 +38,15 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
 replaces=('linux-grsec')
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '5edc955bb67b04c7ed426b1df17a3e322e32ad9fdda9c6abb53ab6eca7faf704'
+            '16f560aa713b46c707f04a226f67dc31fdd280aae57dd19e0413d61df5336c74'
             'SKIP'
-            'befa19a5aae4feca5c81b312ae382fcb2674fa55fa9cb1e9e744866fb7783116'
+            '24279be4a0e809c77255183eaa5f077ba457b17e057bd662631d5b9efd46588a'
             'SKIP'
-            '0da6fc4a3811cd18ed42c3ac60970dfad008f6df0834bd1dbb62f886d74f1885'
+            '2e52d9c0238d3343193c22df8864faa1d9ec50fa00bab1bd8e9f82c57e2ac0d2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
-            'cbf586270595a89835dc02602983028f4cea80c40a43be3d4871dae4fdb46b84'
             'f7c86f7aa4c7d671a5ff80bcd92a33db2fa6e95b78188261db0ef260a7d75cd8'
             '294c928b8252112d621df1d13fbfeade13f28ddea034d44e89db41b66d2b7d45'
             '721c387db986d883a6df6b0da17941ce6d59811b0647ae6653b978c5ee144f19'
@@ -72,6 +69,8 @@ prepare() {
   # add upstream patch
   msg2 "Applying upstream patch"
   patch -Np1 -i ../patch-${_pkgver}
+  # XXX: GNU patch doesn't support git-style file mode
+  chmod +x tools/objtool/sync-check.sh
 
   # apply all patches
   for _patch in "${source[@]}"; do
