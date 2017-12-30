@@ -1,7 +1,7 @@
 pkgbase = multiload-ng-systray-gtk3-git
 	pkgdesc = Modern graphical system monitor, system tray version
-	pkgver = r933.bc23d06
-	pkgrel = 1
+	pkgver = r938.d023877
+	pkgrel = 3
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = multiload-ng-systray-gtk3-git
 	makedepends = git
 	depends = gtk3
 	depends = cairo
+	depends = multiload-ng-common-git
 	conflicts = multiload-ng-systray-gtk2
 	conflicts = multiload-ng-systray-gtk3
 	conflicts = multiload-ng-systray-gtk2-git
