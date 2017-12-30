@@ -23,8 +23,8 @@ pkgver() {
 
 package() {
     cd "$pkgname"
-    mkdir -p $pkgdir/usr/bin
+    mkdir -p "$pkgdir"/usr/bin
     mv sleepplan.py sleepplan
 	chmod +x sleepplan
-    cp sleepplan $pkgdir/usr/bin
+    cp sleepplan "$pkgdir"/usr/bin
 }
