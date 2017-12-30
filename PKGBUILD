@@ -14,7 +14,7 @@ depends=('sdl_gfx' 'sdl_mixer' 'sdl_image' 'yaml-cpp' 'mesa')
 makedepends=('boost' 'glu' 'xmlto' 'docbook-xml' 'docbook-xsl')
 optdepends=('openxcom-data-steam: Original XCom data files from steam')
 install="${pkgname}.install"
-source=("https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz"
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz"
         "abs-fix.patch"
         "auto_ptr-fix.patch"
         "${pkgname}.install")
