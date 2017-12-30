@@ -2,7 +2,7 @@
 
 pkgname=flashplayer-standalone
 pkgver="28.0.0.126"
-pkgrel=1
+pkgrel=2
 pkgdesc="Adobe Flash Player (Standalone)"
 arch=("$CARCH")
 url='http://www.adobe.com/support/flashplayer/downloads.html'
@@ -10,7 +10,7 @@ license=('custom')
 depends=('desktop-file-utils' 'gtk2' 'libxt' 'nss')
 optdepends=('alsa-lib: for sound through alsa')
 options=(!strip)
-source=("flash-player-standalone-$pkgver.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/28/flash_player_sa_linux.x86_64.tar.gz"
+source=("flash-player-standalone-$pkgver.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/$(echo $pkgver|awk -F\. '{print $1}')/flash_player_sa_linux.x86_64.tar.gz"
         'license.pdf::http://www.adobe.com/products/eulas/pdfs/PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf'
         'flashplayer.desktop')
 sha256sums=('93557d22ceff2287b01c113b4f08eb995d382b5f992f6403a85ba62b7929b293'
