@@ -1,19 +1,18 @@
 pkgbase = quaternion-git
 	pkgdesc = Qt5-based IM client for the Matrix protocol
-	pkgver = v0.0.1.59.g211b334
+	pkgver = 0.0.1.r352.63efb78
 	pkgrel = 1
-	url = https://github.com/Fxrh/Quaternion
+	url = https://matrix.org/docs/projects/client/quaternion.html
 	arch = any
-	license = LGPL
+	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = make
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-quickcontrols
 	provides = quaternion
 	conflicts = quaternion
-	source = quaternion-git::git+https://github.com/fxrh/quaternion.git
+	source = git://github.com/QMatrixClient/Quaternion
 	md5sums = SKIP
 
 pkgname = quaternion-git
