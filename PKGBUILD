@@ -3,7 +3,7 @@
 # Contributor: Teteros <teteros -at- opmbx -dot- org>
 
 pkgname=radium
-pkgver=5.1.5
+pkgver=5.4.2
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -40,19 +40,14 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "radium"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch"
-        "use-new-cxx11-abi.patch"
 )
-md5sums=('e0690bc1d5eb57348de5f92f9de82d82'
+md5sums=('123b4ee8119010e3bb8c7fc036477ae2'
          '092735a1ff69f02e41b28a0e849179f4'
          'ec8251af460ad72ebba82c718615de1b'
-         'e587c15b18f761ae9af31d86162355ad'
-         'ecc15fbbf114b44a657cfc3c6bf64fb8')
+         'f20b79f1adb0fe9b87acb249094c9103')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-
-    msg2 "Fixing faust2 LLVM ABI problem"
-    patch -Nsp1 < "${srcdir}/use-new-cxx11-abi.patch"
 
     msg2 "Switching to system-wide libxcb"
     patch -Nsp1 < "${srcdir}/use-system-libxcb.patch"
