@@ -1,0 +1,16 @@
+pkgbase = python-syncthing
+	pkgdesc = A
+	pkgver = 2.1.2
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-requests
+	depends = python-six
+	depends = python-wheel
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/s/syncthing/syncthing-2.1.2.tar.gz
+	md5sums = 39f844422a8fa4ba8d2a94d9009cae36
+
+pkgname = python-syncthing
+
