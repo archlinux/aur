@@ -8,7 +8,7 @@ pkgname=update-hosts-git
 # shellcheck disable=SC2034
 pkgdesc="Generate a hosts file based on multiple sources (git)"
 # shellcheck disable=SC2034
-pkgver=r296.728311a
+pkgver=r303.61ee856
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -23,14 +23,13 @@ optdepends=(
   'wget: Optional download client'
   'iprange: Helper to optimize ipset configuration'
   'ipset: Parse ip address sets as an extra blocklist'
-  'sudo: Helper to run as a normal user'
 )
 # shellcheck disable=SC2034
 provides=('update-hosts')
 # shellcheck disable=SC2034
 conflicts=('update-hosts')
 # shellcheck disable=SC2034
-license=('MIT')
+license=('GPLv2')
 url="https://github.com/pyamsoft/update-hosts.git"
 
 ##

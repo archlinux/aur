@@ -1,16 +1,15 @@
 pkgbase = update-hosts-git
 	pkgdesc = Generate a hosts file based on multiple sources (git)
-	pkgver = r296.728311a
+	pkgver = r303.61ee856
 	pkgrel = 1
 	url = https://github.com/pyamsoft/update-hosts.git
 	arch = any
-	license = MIT
+	license = GPLv2
 	makedepends = git
 	optdepends = curl: Default download client
 	optdepends = wget: Optional download client
 	optdepends = iprange: Helper to optimize ipset configuration
 	optdepends = ipset: Parse ip address sets as an extra blocklist
-	optdepends = sudo: Helper to run as a normal user
 	provides = update-hosts
 	conflicts = update-hosts
 	source = update-hosts::git+https://github.com/pyamsoft/update-hosts.git#branch=master
