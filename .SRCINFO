@@ -1,15 +1,17 @@
 pkgbase = qtpass-git
-	pkgdesc = QtPass is a gui for pass.
-	pkgver = 0.0.0.2
+	pkgdesc = QtPass is a multi-platform GUI for pass, the standard unix password manager.
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = http://ijhack.github.io/qtpass
+	url = https://qtpass.org/
 	install = qtpass.install
 	arch = x86_64
 	arch = i686
 	license = GPLv3
 	makedepends = qt5-base
-	depends = pass
+	depends = gpg2
 	optdepends = xdg-utils
+	optdepends = git
+	optdepends = pass
 	source = git://github.com/ijhack/qtpass
 	md5sums = SKIP
 

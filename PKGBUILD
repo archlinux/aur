@@ -1,14 +1,16 @@
-# Maintainer: realitygaps <realitygaps[at]yahoo[dot]com>
+# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Contributor: realitygaps <realitygaps[at]yahoo[dot]com>
+
 pkgname=qtpass-git
-pkgver=0.0.0.2
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="QtPass is a gui for pass."
-url="http://ijhack.github.io/qtpass"
+pkgdesc="QtPass is a multi-platform GUI for pass, the standard unix password manager."
+url="https://qtpass.org/"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('pass')
+depends=('gpg2')
 makedepends=('qt5-base')
-optdepends=('xdg-utils')
+optdepends=('xdg-utils' 'git' 'pass')
 md5sums=("SKIP")
 install=qtpass.install
 source=("git://github.com/ijhack/qtpass")
@@ -20,9 +22,9 @@ build() {
 }
 
 package() {
-  install -Dm555 qtpass/qtpass "$pkgdir/usr/local/bin/qtpass"
-  install -D -m644 "${srcdir}/qtpass/artwork/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/qtpass.png"
-  install -D -m644 "${srcdir}/qtpass/qtpass.desktop" "${pkgdir}/usr/share/applications/qtpass.desktop"
-}
-
+  install -Dm755 "$srcdir/qtpass/main/qtpass" -t "$pkgdir/usr/bin/"
+  install -Dm644 "$srcdir/qtpass/artwork/icon.png" -t "$pkgdir/usr/share/icons/hicolor/512x512/apps/qtpass.png"
+  install -Dm644 "$srcdir/qtpass/qtpass.desktop" -t "$pkgdir/usr/share/applications/qtpass.desktop"
+} 
 # vim:set ts=2 sw=2 et:
+
