@@ -1,7 +1,7 @@
 pkgbase = awn-applet-multiload-ng-gtk2
 	pkgdesc = Modern graphical system monitor, Avant Window Navigator applet
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = awn-applet-multiload-ng-gtk2
 	depends = avant-window-navigator>=0.3.9
 	depends = glibmm>=2.16.0
 	depends = gtkmm>=2.20
+	depends = multiload-ng-common
 	conflicts = awn-applet-multiload-ng-gtk3
 	conflicts = awn-applet-multiload-ng-gtk2-git
 	conflicts = awn-applet-multiload-ng-gtk3-git
