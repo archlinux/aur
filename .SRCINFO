@@ -1,7 +1,7 @@
 pkgbase = reachable-watcher
 	pkgdesc = Check status codes of web servers and sends notification e-mails
-	pkgver = 1.0.12
-	pkgrel = 14
+	pkgver = 1.0.13
+	pkgrel = 15
 	url = http://torben.website/reachableWatcher
 	arch = any
 	license = CC-BY-3.0
