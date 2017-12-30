@@ -1,0 +1,26 @@
+pkgbase = gcc-xtensa-esp32-elf-git
+	pkgdesc = ESP32 GCC Cross-compiler Toolchain
+	pkgver = 1.22.0.r75.gbaf03c2c
+	pkgrel = 1
+	url = https://esp-idf.readthedocs.io/en/latest/get-started/linux-setup.html
+	arch = x86_64
+	license = Apache
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = flex
+	makedepends = bison
+	makedepends = gperf
+	depends = glibc
+	depends = python
+	depends = ncurses
+	depends = python2-pyserial
+	provides = gcc-xtensa-esp32-elf
+	conflicts = gcc-xtensa-esp32-elf-bin
+	options = !libtool
+	options = !buildflags
+	source = git+https://github.com/espressif/crosstool-NG.git#branch=xtensa-1.22.x
+	md5sums = SKIP
+
+pkgname = gcc-xtensa-esp32-elf-git
+
