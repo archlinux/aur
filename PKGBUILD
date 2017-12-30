@@ -13,13 +13,13 @@ arch=('i686' 'x86_64')
 url="http://dmedvinsky.github.com/${_basename}"
 license=('BSD')
 depends=('gtk2')
-provides=("$_basename")
-conflicts=("$_basename" "$_basename-git")
-source=(https://github.com/dmedvinsky/${_basename}/archive/v$pkgver.tar.gz)
+provides=("${_basename}")
+conflicts=("${_basename}" "${_basename}-git")
+source=(https://github.com/dmedvinsky/${_basename}/archive/v${pkgver}.tar.gz)
 md5sums=('170ac0bdc8663d97dec436e45b195491')
 
 build() {
-  cd "$srcdir/${_basename}-$pkgver"
+  cd ${_basename}-${pkgver}
 
   ./autogen.sh
   ./configure --prefix=/usr --enable-gtk2
@@ -28,9 +28,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${_basename}-$pkgver"
+  cd ${_basename}-${pkgver}
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
