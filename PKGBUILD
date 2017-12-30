@@ -7,8 +7,8 @@
 pkgname=inox-hard
 pk=inox
 name=chromium
-pkgver=63.0.3239.90
-pkgrel=15
+pkgver=63.0.3239.108
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'ncurses5-compat-lib')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -316,6 +316,7 @@ patch -Np1 -i ../c.patch
 patch -Np1 -i ../d.patch
 patch -Np1 -i ../e.patch
 patch -Np1 -i ../k.patch
+patch -Np1 -i ../k1.patch
 patch -Np1 -i ../l.patch
 patch -Np1 -i ../l2.patch
 patch -Np1 -i ../l3.patch
