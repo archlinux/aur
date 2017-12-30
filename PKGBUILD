@@ -1,14 +1,14 @@
 # Maintainer: Ryder McMinn <mcminnra at gmail dot com>	
 
 pkgname=bodylogger
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="
 Maintains a user database of personal measurements while giving stats and predictions based on trends."
 url="https://github.com/rmcminn/bodylogger"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-pip' 'tk')
+depends=('python' 'python-pip' 'tk' 'python-setuptools')
 makedepends=('git')
 source=(git://github.com/rmcminn/bodylogger.git)
 md5sums=('SKIP')
