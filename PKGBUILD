@@ -4,7 +4,7 @@ _gitname=wpgtk
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=deviantfero # deviantfero
-pkgver=r408.65a6ef8
+pkgver=r412.1148c12
 pkgrel=1
 pkgdesc="A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme"
 url="https://github.com/${_gitauthor}/${_gitname}"
@@ -16,7 +16,7 @@ depends=('python' 'python-pillow' 'python-gobject' 'gtk3' 'libxslt' 'python-pywa
 optdepends=('feh: set wallpaper'
             'nitrogen: set wallpaper')
 conflicts=("${_gitname}")
-provides=("${_gitname}")
+provides=("${_gitname}=$pkgver")
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
