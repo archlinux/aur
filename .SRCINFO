@@ -1,0 +1,19 @@
+pkgbase = arm-none-eabi-linaro-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the ARM EABI (bare-metal) target
+	pkgver = 2.29.1
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	provides = arm-none-eabi-binutils
+	conflicts = arm-none-eabi-binutils
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.29.1.tar.bz2
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.29.1.tar.bz2.sig
+	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha1sums = 5156099a6c50bd330c3d4c8fc56a9bf725ccaf08
+	sha1sums = SKIP
+
+pkgname = arm-none-eabi-linaro-binutils
+
