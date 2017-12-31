@@ -4,12 +4,12 @@
 #
 pkgname="fatresize"
 pkgver="1.0.4"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A utility to resize FAT filesystems using libparted."
 url="http://sourceforge.net/projects/fatresize/"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('libparted' 'glibc' 'parted')
+depends=('libparted' 'glibc')
 makedepends=('docbook-to-man')
 source=("https://codeload.github.com/ya-mouse/${pkgname}/tar.gz/v${pkgver}")
 sha256sums=('7f3ab7a9ac92335f66d239419860f674359449d49cf67ba1af7a8b686303612b')
