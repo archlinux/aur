@@ -1,6 +1,6 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=freeserf-git
-pkgver=0.2_rc1_340_g8e1eb94
+pkgver=0.2_rc1_351_gab1e267
 pkgrel=1
 pkgdesc="Opensource Settlers 1 clone (requires original game file)"
 arch=('i686' 'x86_64')
@@ -31,5 +31,5 @@ build() {
 package() {
   cd freeserf/build
   # CMake install is currently broken (as of 0.2_rc1_318_g6f61d1e) install manually...
-  install -Dm755 src/FreeSerf "$pkgdir/usr/bin/freeserf"
+  install -Dm755 src/FreeSerf "${pkgdir}/usr/bin/freeserf"
 }
