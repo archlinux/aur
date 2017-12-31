@@ -1,6 +1,6 @@
 pkgbase = macports-base-git
 	pkgdesc = The MacPorts command-line client
-	pkgver = 2.4.0.beta1.r193.g209e78f5
+	pkgver = 2.4.0.beta1.r195.gb22cb0f0
 	pkgrel = 2
 	url = https://www.macports.org/
 	arch = i686
@@ -13,8 +13,13 @@ pkgbase = macports-base-git
 	depends = nmtree
 	depends = openssl
 	depends = sqlite
-	provides = macports-base=2.4.0.beta1.r193.g209e78f5
+	provides = macports-base=2.4.0.beta1.r195.gb22cb0f0
 	conflicts = macports-base
+	backup = opt/local/etc/macports/archive_sites.conf
+	backup = opt/local/etc/macports/macports.conf
+	backup = opt/local/etc/macports/pubkeys.conf
+	backup = opt/local/etc/macports/sources.conf
+	backup = opt/local/etc/macports/variants.conf
 	source = git+https://github.com/macports/macports-base
 	sha256sums = SKIP
 

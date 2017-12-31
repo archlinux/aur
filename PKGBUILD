@@ -2,7 +2,7 @@
 
 _pkgname=macports-base
 pkgname=$_pkgname-git
-pkgver=2.4.0.beta1.r193.g209e78f5
+pkgver=2.4.0.beta1.r195.gb22cb0f0
 pkgrel=2
 pkgdesc='The MacPorts command-line client'
 url='https://www.macports.org/'
@@ -17,6 +17,11 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/macports/$_pkgname")
 sha256sums=('SKIP')
+backup=(opt/local/etc/macports/archive_sites.conf
+        opt/local/etc/macports/macports.conf
+        opt/local/etc/macports/pubkeys.conf
+        opt/local/etc/macports/sources.conf
+        opt/local/etc/macports/variants.conf)
 
 pkgver() {
   cd "${_pkgname}"
