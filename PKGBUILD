@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=v0.11.0.rc1.r2.g58a4df05
+pkgver=v0.11.0.rc1.r7.g73d649f4
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
 arch=(arm armv6h armv7h aarch64 i686 x86_64)
@@ -53,6 +53,9 @@ package() {
   
   msg2 "Installing binary file"
   install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${_pkgname}
+
+  msg2 "Creating user folder"
+  install -d -m0700 -o 44 -g 44  $pkgdir/var/lib/${_pkgname}
 
   msg2 "Installing systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
