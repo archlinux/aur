@@ -7,7 +7,7 @@ pkgdesc='Patched version of PHP for Homegear'
 pkgver=7.2.0
 _pthreadversion=b3e691f25cd659bcdb504b61e8da235251cb3b5a
 _pkgbase=php
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('PHP')
 url='http://www.php.net'
@@ -43,60 +43,58 @@ build() {
                 --program-suffix=-homegear \
                 --sysconfdir=/etc/homegear \
                 --localstatedir=/var \
-                --mandir=${prefix}/man \
-                --disable-debug \
+                --mandir=${prefix}/man \--disable-debug \
+                --disable-opcache \
                 --disable-rpath \
-                --with-pic \
-                --with-layout=GNU \
                 --enable-bcmath \
                 --enable-calendar \
                 --enable-ctype \
                 --enable-dba \
-                --without-gdbm \
-                --without-qdbm \
                 --enable-inifile \
                 --enable-flatfile \
                 --enable-dom \
-                --with-enchant=shared,/usr \
                 --enable-exif \
-                --with-gettext=/usr \
-                --with-gmp=/usr/include \
                 --enable-fileinfo \
                 --enable-filter \
                 --enable-ftp \
                 --enable-hash \
                 --enable-json \
-                --with-libzip \
                 --enable-maintainer-zts \
                 --enable-mbregex \
                 --enable-mbregex-backtrack \
                 --enable-mbstring \
-                --disable-opcache \
                 --enable-phar \
                 --enable-posix \
-                --with-mysqli=mysqlnd \
-                --with-zlib-dir=/usr \
-                --with-openssl \
-                --with-libedit=/usr \
                 --enable-libxml \
                 --enable-session \
                 --enable-simplexml \
-                --with-xmlrpc \
                 --enable-soap \
                 --enable-sockets \
                 --enable-tokenizer \
                 --enable-xml \
                 --enable-xmlreader \
                 --enable-xmlwriter \
-                --with-mhash=yes \
                 --enable-sysvmsg \
                 --enable-sysvsem \
                 --enable-sysvshm \
-                --enable-zip \
+                --enable-zip=shared \
                 --disable-cli \
                 --disable-cgi \
                 --enable-pcntl \
-                --enable-pdo
+                --enable-pdo \
+                --with-enchant=shared,/usr \
+                --with-gettext=/usr \
+                --with-gmp=/usr/include \
+                --with-mhash=yes \
+                --with-mysqli=mysqlnd \
+                --with-openssl \
+                --with-layout=GNU \
+                --with-libedit=/usr \
+                --with-pic \
+                --with-xmlrpc \
+                --with-zlib \
+                --without-gdbm \
+                --without-qdbm
 
 	make
 }

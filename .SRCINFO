@@ -1,7 +1,7 @@
 pkgbase = php7-homegear
 	pkgdesc = Patched version of PHP for Homegear
 	pkgver = 7.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
