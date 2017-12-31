@@ -4,7 +4,7 @@
 
 pkgname=tuna
 pkgver=0.13.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Thread and IRQ affinity setting GUI and cmd line tool"
 url="https://rt.wiki.kernel.org/index.php/Tuna"
@@ -22,7 +22,7 @@ prepare() {
   cd "${pkgname}-${pkgver}"
   sed -i '1s/python/python2/' {tuna-cmd,oscilloscope-cmd}.py
   sed -i -e 's/gtk-preferences/tuna/g' "${pkgname}.desktop"
-  sed -i -e 's/Exec=tuna --gui/Exec=gksu tuna/g' "${pkgname}.desktop"
+  sed -i -e 's/Exec=tuna --gui/Exec=gksudo tuna/g' "${pkgname}.desktop"
 }
 
 build() {
