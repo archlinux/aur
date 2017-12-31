@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Bidar <theodorstormgrade@gmail.com>
 pkgname=csslint
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Automated linting of Cascading Stylesheets"
 arch=('any')
