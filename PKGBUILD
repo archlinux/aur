@@ -1,9 +1,9 @@
-# Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Maintainer: Iván Ruvalcaba <mario.i.ruvalcaba[at]gmail[dot]com>
 # Contributor: Eugenio M. Vigo <emvigo@gmail.com>
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=dianara
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A Qt pump.io client"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://dianara.nongnu.org/"
 license=('GPL')
 depends=('hicolor-icon-theme' 'file' 'qt5-base' 'qoauth')
 source=("http://download-mirror.savannah.gnu.org/releases/${pkgname}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('f3decebf8e40eae413d7f3fcd4563521ae836710e256f24f26b090a655cefd1d')
+sha256sums=('347d632dab989bfe3a2a611033e51568a73dd59e3dd76e9556351db21f054e81')
 
 build() {
   cd "${pkgname}-v${pkgver}"
