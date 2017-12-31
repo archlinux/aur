@@ -1,0 +1,15 @@
+pkgbase = msbuild-15.3-bin
+	pkgdesc = Xamarin implementation of the Microsoft bui ld system
+	pkgver = 15.3_xamarinxplat.2017.07.20.13.52_0xamarin3_ubuntu1404b1
+	pkgrel = 3
+	url = https://github.com/mono/msbuild
+	arch = x86_64
+	license = MIT
+	depends = mono>=5.0.0
+	provides = msbuild
+	conflicts = msbuild
+	source = msbuild-amd64-v15.3+xamarinxplat.2017.07.20.13.52-0xamarin3+ubuntu1404b1.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_15.3+xamarinxplat.2017.07.20.13.52-0xamarin3+ubuntu1404b1_all.deb
+	sha256sums = 82dd69ce80fad051d93bb432bfc83228b300ecd8e9209695b0f4823c0c5427a5
+
+pkgname = msbuild-15.3-bin
+
