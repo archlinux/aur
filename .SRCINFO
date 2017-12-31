@@ -1,6 +1,6 @@
 pkgbase = aphrodite
 	pkgdesc = Manage all server websites from one interface
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/fumseck/aphrodite
 	arch = any
