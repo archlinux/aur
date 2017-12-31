@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname=trizen
-pkgver=1.36
+pkgver=1.37
 pkgrel=1
 epoch=1
 pkgdesc="Trizen AUR Package Manager: A lightweight wrapper for AUR."
@@ -28,7 +28,7 @@ optdepends=(
            )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('54a3330e75a0b516319be9aa81c5b58faf22ba0f955e125f7b71a572e8f3041f')
+sha256sums=('821b28bf12c3ab5cb17c3b834ded59ae55fa5546613bc05baa359a89ddcaf2f9')
 
 package() {
   cd "$pkgname-$pkgver"
