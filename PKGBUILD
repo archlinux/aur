@@ -1,7 +1,7 @@
 # Maintainer: Jan Max Meyer <codepilot@phorward.info>
 pkgname=unicc
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Universal parser generator for C and Python"
 arch=('i686' 'x86_64' 'armv6h')
@@ -11,10 +11,10 @@ depends=('phorward>=0.21.0')
 makedepends=()
 checkdepends=()
 #changelog=CHANGELOG
-source=("https://phorward.info/products/unicc/$pkgname-$pkgver.tar.gz"
-"https://phorward.info/products/unicc/unicc.pdf")
+source=("https://phorward.info/download/unicc/$pkgname-$pkgver.tar.gz"
+"https://phorward.info/download/unicc/unicc.pdf")
 md5sums=('155fff48e1767445aff3639610581efc'
-'b6b676b5e5fc3faab5cd4cb5d85ffd08')
+'9811c687109166f57537177b9da1b31f')
 
 build() {
 	cd "$pkgname-$pkgver"
