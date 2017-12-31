@@ -4,14 +4,13 @@
 _target=arm-none-eabi
 pkgname=$_target-linaro-binutils
 pkgver=2.29.1
-pkgrel=1
+pkgrel=2
 #_commit=2bd25930
 pkgdesc='A set of pograms to assemble and manipulate binary and object files for the ARM EABI target with extra flags'
 arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
-depends=('zlib')
-#makedepends=('isl' 'cloog' 'gmp' 'mpc' 'mpfr') 
+depends=('isl' 'cloog' 'gmp' 'mpc' 'mpfr' 'zlib')
 provides=('arm-none-eabi-binutils')
 conflicts=('arm-none-eabi-binutils')
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})

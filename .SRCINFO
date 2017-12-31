@@ -1,10 +1,15 @@
 pkgbase = arm-none-eabi-linaro-binutils
 	pkgdesc = A set of pograms to assemble and manipulate binary and object files for the ARM EABI target with extra flags
 	pkgver = 2.29.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL
+	depends = isl
+	depends = cloog
+	depends = gmp
+	depends = mpc
+	depends = mpfr
 	depends = zlib
 	provides = arm-none-eabi-binutils
 	conflicts = arm-none-eabi-binutils
