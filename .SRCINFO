@@ -1,0 +1,17 @@
+pkgbase = nginx-unit
+	pkgdesc = Dynamic web application server, designed to run applications in multiple languages.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://unit.nginx.org/
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	optdepends = python
+	optdepends = php-embed
+	source = http://hg.nginx.org/unit/archive/0.3.tar.gz
+	md5sums = 62ac119c9e345e0b447356b543111b33
+
+pkgname = nginx-unit-python
+
+pkgname = nginx-unit-php
+
