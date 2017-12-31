@@ -3,8 +3,8 @@
 
 _target=arm-none-eabi
 pkgname=$_target-newlib-linaro-git
-pkgver=20170623
-pkgrel=2
+pkgver=.17991.eb4bfe462
+pkgrel=1
 _libname=newlib
 _upstream_ver=snapshot-"${pkgver}"
 pkgdesc='A C standard library implementation intended for use on embedded systems (ARM bare metal) Linaro Git Version'
@@ -14,7 +14,7 @@ license=(BSD)
 makedepends=($_target-gcc 'cloog')
 options=(!emptydirs !strip)
 provides=('"${_target}"-newlib')
-source=("git+http://git.linaro.org/toolchain/newlib.git#tag=newslib-snapshot-")
+source=("git+http://git.linaro.org/toolchain/newlib.git#tag=newlib-snapshot-$pkgver")
 sha1sums=('SKIP')
 
 
