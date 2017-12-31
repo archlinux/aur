@@ -1,6 +1,6 @@
 pkgbase = wpgtk-git
 	pkgdesc = A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme
-	pkgver = r412.1148c12
+	pkgver = r421.413248a
 	pkgrel = 1
 	url = https://github.com/deviantfero/wpgtk
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = wpgtk-git
 	depends = python-pywal-git
 	optdepends = feh: set wallpaper
 	optdepends = nitrogen: set wallpaper
-	provides = wpgtk=r412.1148c12
+	provides = wpgtk=r421.413248a
 	conflicts = wpgtk
 	source = git://github.com/deviantfero/wpgtk#branch=master
 	sha512sums = SKIP
