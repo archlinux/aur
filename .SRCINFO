@@ -1,6 +1,6 @@
 pkgbase = rdedup
 	pkgdesc = Data deduplication engine, supporting optional compression and public key encryption
-	pkgver = 1.0.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/dpc/rdedup
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = rdedup
 	license = MPL
 	makedepends = cargo
 	depends = libsodium
-	source = https://github.com/dpc/rdedup/archive/v1.0.2/rdedup-1.0.2.tar.gz
-	sha256sums = 05ffcc2b155137d3ffa72b90253141a0aceb62e582d85a5be3862201d3ef4498
+	source = https://github.com/dpc/rdedup/archive/v2.0.0/rdedup-v2.0.0.tar.gz
+	sha256sums = 5be893fb82a8657b4a47474c429bbb95a7bec8a27f10b96948f52b61f10bdb81
 
 pkgname = rdedup
 
