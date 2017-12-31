@@ -1,0 +1,19 @@
+pkgbase = isl17
+	pkgdesc = Library for manipulating sets and relations of integer points bounded by linear constraints
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = http://isl.gforge.inria.fr/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	depends = gmp
+	provides = isl=0.17.1
+	conflicts = isl-git
+	conflicts = isl
+	options = !libtool
+	source = http://isl.gforge.inria.fr/isl-0.17.1.tar.gz
+	md5sums = 62e67de754e9dce25758892cd4a93b75
+
+pkgname = isl17
+
