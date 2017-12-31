@@ -15,17 +15,18 @@ sha512sums=('SKIP')
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	make
+	make CFLAGS="${CFLAGS}"
 }
 
 package(){
 	cd "${srcdir}/${pkgname}"
 
-	install -d -m0755 ${pkgdir}/{usr,sbin}
+	install -d -m0755 ${pkgdir}/{usr/bin,sbin}
 
 	make DESTDIR="${pkgdir}" install
 
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-	mv ${pkgdir}/sbin ${pkgdir}/usr/.
+	mv ${pkgdir}/sbin/* ${pkgdir}/usr/bin/.
+	rmdir ${pkgdir}/sbin
 }
