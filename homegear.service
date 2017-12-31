@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
+LimitRTPRIO=100
 ExecStart=/usr/bin/homegear
 ExecReload=/usr/bin/kill -HUP $MAINPID
 
