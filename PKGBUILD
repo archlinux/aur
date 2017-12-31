@@ -13,7 +13,7 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-libcups' 'lib32-libgcrypt' 'lib32-pam' 'lib32-python2'
              'lib32-systemd' 'lib32-talloc' 'lib32-tdb' 'lib32-popt'
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
-             'perl-parse-yapp' 'lib32-jansson')
+             'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
 sha256sums=('fb12d0c4452f85b67b78bbeabd4c762d8feb8ff83e39d044d285120c2c488247')
 
