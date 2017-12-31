@@ -1,8 +1,8 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
 pkgname=collabora-online-server-nodocker
-pkgver=2.1.5
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -90,6 +90,7 @@ _upstream_equiv='
   libssl1.0.0         = openssl-1.0
   libstdc++6          = gcc-libs
   libxinerama1        = libxinerama
+  zlib1g              = zlib
 '
 _upstream_handle_dep() {
   local dep="$1"
@@ -146,12 +147,10 @@ package() {
     *) echo "Unknown file format: $data" >&2; exit 1 ;;
     esac
   done
+  chown -R $(id -nu):$(id -ng) .
 
   # /lib is deprecated
   mv {lib,usr/lib}
-
-  # replace the too-generic “code-brand” name
-  mv usr/share/doc/code-brand usr/share/doc/lool-code-brand
 
   # use systemd for user allocation
   install -Dm0644 "$srcdir"/sysusers usr/lib/sysusers.d/$pkgname.conf
