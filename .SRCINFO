@@ -1,4 +1,4 @@
-pkgbase = parted
+pkgbase = libparted
 	pkgdesc = A version with DEBUG defined in its compilation, to provide some necessary functions for other applications.
 	pkgver = 3.2
 	pkgrel = 1
@@ -7,6 +7,7 @@ pkgbase = parted
 	license = GPL3
 	makedepends = pkg-config
 	depends = device-mapper
+	depends = libutil-linux
 	provides = libparted
 	source = https://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
 	source = https://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz.sig

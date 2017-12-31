@@ -4,7 +4,6 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 #
 _pkgname="parted"
-pkgbase=("${_pkgname}")
 pkgname="libparted"
 pkgver=3.2
 pkgrel=1
