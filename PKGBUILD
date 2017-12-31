@@ -1,19 +1,34 @@
 # Maintainer: Davorin Učakar <davorin.ucakar@gmail.com>
+# Contributor: Tilman Blumenbach <tilman+aur@ax86.net>
 
 pkgname=xcursor-openzone
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenZone X11 cursor theme"
 url='https://www.opendesktop.org/p/999999/'
 arch=('any')
+makedepends=('icon-slicer')
 license=('custom:xcursor-openzone')
-source=('https://dl.opendesktop.org/api/files/downloadfile/id/1514377984/s/9f5df49ae77e446a49c724de84f97fb3/t/1514381703/OpenZone-1.2.6.tar.xz')
-md5sums=('45913005bad7180d001642cc0452354a')
+source=("repo::git+https://github.com/ducakar/openzone-cursors.git#tag=v${pkgver:?}")
+sha384sums=('SKIP')
+
+build() {
+  cd repo
+  make
+}
 
 package() {
-  install -D -d -m755 ${pkgdir}/usr/share/icons
-  for theme in Black Black_Slim White White_Slim Ice Ice_Slim Fire Fire_Slim; do
-    tar xf ${srcdir}/openzone-cursors/OpenZone_${theme}-${pkgver}.tar.xz -C ${pkgdir}/usr/share/icons
+  cd repo
+
+  # The "build" step created a number of tarballs, each containing a variant of this cursor
+  # theme.
+  mkdir -p "${pkgdir:?}/usr/share/icons"
+  for archive in OpenZone_*.tar.*; do
+    tar xf "${archive:?}" -C "${pkgdir:?}/usr/share/icons"
   done
-  install -D -m644 ${srcdir}/openzone-cursors/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
+
+  # Install the license:
+  install -D -m644 COPYING "${pkgdir:?}/usr/share/licenses/${pkgname:?}/COPYING"
 }
+
+# vim: ts=2 sw=2 et
