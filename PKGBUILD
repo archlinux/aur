@@ -4,7 +4,7 @@
 
 pkgname=dwarftherapist-git
 epoch=2
-pkgver=39.1.0_r0_g24bc896
+pkgver=39.1.2_r0_gaef412f
 pkgrel=1
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/Dwarf-Therapist/Dwarf-Therapist"
@@ -31,16 +31,16 @@ build() {
 
 package() {
   cd Dwarf-Therapist
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
   
   # Rename binary
-  mv "$pkgdir/usr/bin/DwarfTherapist" "$pkgdir/usr/bin/dwarftherapist"
+  mv "${pkgdir}/usr/bin/DwarfTherapist" "${pkgdir}/usr/bin/dwarftherapist"
   # Fix .desktop
-  sed -i 's:DwarfTherapist:dwarftherapist:g' "$pkgdir/usr/share/applications/dwarftherapist.desktop"
+  sed -i 's:DwarfTherapist:dwarftherapist:g' "${pkgdir}/usr/share/applications/dwarftherapist.desktop"
 
   # Link license to expected location
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s /usr/share/doc/dwarftherapist/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s /usr/share/doc/dwarftherapist/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
