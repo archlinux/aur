@@ -1,13 +1,12 @@
 # $Id$
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
-# Contributor: Martin Schmölzer <mschmoelzer@gmail.com>
+# Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 
 _target=arm-none-eabi
 pkgname=$_target-linaro-binutils
 pkgver=2.29.1
 pkgrel=1
 #_commit=2bd25930
-pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM EABI (bare-metal) target'
+pkgdesc='A set of pograms to assemble and manipulate binary and object files for the ARM EABI target with extra flags'
 arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)

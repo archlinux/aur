@@ -1,5 +1,5 @@
 pkgbase = arm-none-eabi-linaro-binutils
-	pkgdesc = A set of programs to assemble and manipulate binary and object files for the ARM EABI (bare-metal) target
+	pkgdesc = A set of pograms to assemble and manipulate binary and object files for the ARM EABI target with extra flags
 	pkgver = 2.29.1
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
