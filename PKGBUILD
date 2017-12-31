@@ -7,7 +7,7 @@ pkgname=('houdini' 'houdini-maya-engine' 'houdini-unity-engine' 'python2-hqueue'
 pkgbase=houdini
 _pkgver_major=16
 _pkgver_minor=5
-_pkgver_build=268
+_pkgver_build=323
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_build}
 pkgrel=1
 pkgdesc="High-end 3D animation package"
@@ -26,7 +26,7 @@ _validgccs=(4.8)
 
 # The file needs to be downloaded manually
 source=(file://${pkgname}-${pkgver}-linux_x86_64_gcc${_gccver}.tar.gz)
-[[ "$_gccver" == 4.8 ]] && sha1sums=('c9c9538d075ad8c8ed8f13b2d4a3590398b31fe7')
+[[ "$_gccver" == 4.8 ]] && sha1sums=('33ca8891d7cc127953c4272ecbbeab82974f4a08')
 
 source+=('LICENSE' 'sesinetd.service')
 sha1sums+=('25317e6850d453e86f8bc868efe1ef95f81a2174' 'b6eca8f67aeedb9c5b7a5863c3d24edaf2b93cf3')
@@ -125,7 +125,7 @@ package_python2-hqueue() {
 	cd ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}
 	tar xzf hqueue.tar.gz
 
-	for file in {hqserverd,create_shared_drive.sh,hserver}
+	for file in {hqserverd,create_shared_drive.sh}
 	do
 		install -Dm755 hqueue/scripts/$file ${pkgdir}/opt/hqueue/scripts/$file
 	done

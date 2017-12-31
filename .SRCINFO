@@ -1,15 +1,15 @@
 pkgbase = houdini
 	pkgdesc = High-end 3D animation package
-	pkgver = 16.5.268
+	pkgver = 16.5.323
 	pkgrel = 1
 	url = http://www.sidefx.com/
 	arch = x86_64
 	license = Custom: Side Effects Software
 	options = !strip
-	source = file://houdini-16.5.268-linux_x86_64_gcc4.8.tar.gz
+	source = file://houdini-16.5.323-linux_x86_64_gcc4.8.tar.gz
 	source = LICENSE
 	source = sesinetd.service
-	sha1sums = c9c9538d075ad8c8ed8f13b2d4a3590398b31fe7
+	sha1sums = 33ca8891d7cc127953c4272ecbbeab82974f4a08
 	sha1sums = 25317e6850d453e86f8bc868efe1ef95f81a2174
 	sha1sums = b6eca8f67aeedb9c5b7a5863c3d24edaf2b93cf3
 
@@ -25,11 +25,11 @@ pkgname = houdini
 
 pkgname = houdini-maya-engine
 	url = https://www.sidefx.com/products/houdini-engine/maya-plug-in/
-	depends = houdini=16.5.268
+	depends = houdini=16.5.323
 
 pkgname = houdini-unity-engine
 	url = https://www.sidefx.com/products/houdini-engine/unity-plug-in/
-	depends = houdini=16.5.268
+	depends = houdini=16.5.323
 
 pkgname = python2-hqueue
 	depends = mysql
