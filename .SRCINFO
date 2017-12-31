@@ -1,23 +1,21 @@
 pkgbase = gimagereader
 	pkgdesc = A graphical frontend to tesseract-ocr
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/gimagereader/
-	install = gimagereader.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = desktop-file-utils
 	makedepends = intltool
-	makedepends = poppler-glib
 	makedepends = cmake
 	depends = gtksourceviewmm
-	depends = hicolor-icon-theme
 	depends = libxml++2.6
 	depends = sane
 	depends = podofo
 	depends = tesseract
 	depends = gtkspellmm
+	depends = poppler-glib
 	source = https://github.com/manisandro/gImageReader/releases/download/v3.2.3/gimagereader-3.2.3.tar.xz
 	sha256sums = 8ca6b8900671eba7a00fe1f9a728fee6c2ea3ed1ae10cc62dafb0e3f08574420
 
