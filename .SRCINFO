@@ -8,6 +8,7 @@ pkgbase = gnulium
 	makedepends = git
 	makedepends = qt5-base
 	depends = qt5-quickcontrols2
+	depends = qt5-quickcontrols
 	depends = qt5-charts
 	depends = jcal-git
 	source = gnulium::git+https://github.com/LinArcX/Gnulium
