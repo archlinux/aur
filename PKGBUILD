@@ -2,15 +2,16 @@
 
 pkgname=extractpdfmark
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract page mode and named destinations as PDFmark from PDF"
 url="https://www.ctan.org/pkg/extractpdfmark"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gcc-libs' 'poppler')
-source=("$pkgname-$pkgver.zip::http://mirrors.ctan.org/support/extractpdfmark.zip")
-sha256sums=('f0d5d18cb27b850239de81cb5ce63079eb4b1ef86bc8e81043ab42b82c66ee88')
-# or any other CTAN mirror
+source=(https://github.com/trueroad/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.asc})
+validpgpkeys=('49B8ED79B6A8C46E2F6DABB3FCD0C1621E80A02D') # Masamichi Hosoda
+sha256sums=('63f3ababd5b1081ef92ff7a417597302327c1db3902cdb9827fade147558e6db'
+            'SKIP')
 
 build() {
   cd $pkgname
