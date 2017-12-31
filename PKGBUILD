@@ -5,7 +5,7 @@
 
 pkgname=basilisk
 pkgver=55.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Basilisk Browser from the makers of Pale Moon"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -18,7 +18,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags)
-com=029f8127bd714fecb607b13a2896fed5198e09ff
+com=e9211c099f58e2b4a9f8e884574a95733551fb9f
 source=("basil::git+https://github.com/MoonchildProductions/moebius.git#commit=$com"
         https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk.desktop https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk-symbolic.svg
         https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
