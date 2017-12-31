@@ -43,7 +43,8 @@ build() {
                 --program-suffix=-homegear \
                 --sysconfdir=/etc/homegear \
                 --localstatedir=/var \
-                --mandir=${prefix}/man \--disable-debug \
+                --mandir=${prefix}/man \
+                --disable-debug \
                 --disable-opcache \
                 --disable-rpath \
                 --enable-bcmath \
