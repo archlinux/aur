@@ -1,0 +1,15 @@
+--- dbxml-6.1.4/dbxml/configure.orig	2017-12-20 20:25:42.935725726 +0100
++++ dbxml-6.1.4/dbxml/configure	2017-12-20 20:27:11.399427927 +0100
+@@ -3622,10 +3622,10 @@
+ DB_UTIL_PATH="<replace_with:_path_to_db_build>/build_unix"
+ 
+ # Check for a DB install tree. Complain if it contains more than 1 version of DB.
+-if test `ls "$with_berkeleydb"/lib/libdb-*.la 2>/dev/null | wc -l` -gt 0 ; then
++if test `ls "$with_berkeleydb"/lib/libdb-[0-9].so 2>/dev/null | wc -l` -gt 0 ; then
+    	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for Berkeley DB version from install tree" >&5
+ $as_echo_n "checking for Berkeley DB version from install tree... " >&6; }
+-	db_version=`ls "$with_berkeleydb"/lib/libdb-*.la | sed -e 's/.*db-\(.*\).la/\1/' -e 's/\n//g'`
++	db_version=`ls "$with_berkeleydb"/lib/libdb-[0-9].so | sed -e 's/.*db-\([0-9]\).so/\1/' -e 's/\n//g'`
+ 	if test `echo $db_version | wc -w` -gt 1; then
+ 	    as_fn_error "$with_berkeleydb contains more than one version of Berkeley DB:
+ $db_version" "$LINENO" 5;
