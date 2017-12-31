@@ -1,0 +1,5 @@
+post_install() {
+  echo "Add /opt/truestudio/ide to \$PATH or use the desktop shortcuts."
+  echo "Start aksusbd by 'sudo systemctl start aksusbd' before using"
+  echo "the License Manager."
+}

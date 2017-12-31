@@ -1,0 +1,19 @@
+pkgbase = truestudio
+	pkgdesc = A flexible and extensible Arm development and debugging IDE by Atollic.
+	pkgver = 8.1.0
+	pkgrel = 1
+	url = https://atollic.com/truestudio/
+	install = truestudio.install
+	arch = x86_64
+	license = custom
+	depends = aksusbd
+	depends = java-runtime
+	depends = lib32-glibc
+	depends = libusb
+	depends = ncurses5-compat-libs
+	options = !strip
+	source = http://download.atollic.com/TrueSTUDIO/installers/Atollic_TrueSTUDIO_for_ARM_linux_x86_64_v8.1.0_20171023-2304.tar.gz
+	sha256sums = dcc6e2adaada3efa6998db3868c9b5d8ad7a8c9c1dd2f295c5ae3330d3499176
+
+pkgname = truestudio
+
