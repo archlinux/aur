@@ -1,6 +1,6 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 pkgname=pulseeffects
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="Audio Effects for Pulseaudio Applications"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('swh-plugins: limiter, output limiter and compressor plugins'
 makedepends=('meson')
 options=(!emptydirs)
 source=("$pkgname-$pkgver::https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
-md5sums=('b93cf8e6182dd0d85f9f7415c3930818')
+md5sums=('449826023bd3a2283adae435e42d8768')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

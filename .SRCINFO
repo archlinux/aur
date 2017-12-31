@@ -1,6 +1,6 @@
 pkgbase = pulseeffects
 	pkgdesc = Audio Effects for Pulseaudio Applications
-	pkgver = 3.1.5
+	pkgver = 3.1.6
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = pulseeffects
 	optdepends = calf: exciter, bass enhancer and stereo enhancer plugins
 	optdepends = zam-plugins-git: maximizer plugin
 	options = !emptydirs
-	source = pulseeffects-3.1.5::https://github.com/wwmm/pulseeffects/archive/v3.1.5.tar.gz
-	md5sums = b93cf8e6182dd0d85f9f7415c3930818
+	source = pulseeffects-3.1.6::https://github.com/wwmm/pulseeffects/archive/v3.1.6.tar.gz
+	md5sums = 449826023bd3a2283adae435e42d8768
 
 pkgname = pulseeffects
 
