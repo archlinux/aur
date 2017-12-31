@@ -1,12 +1,12 @@
 pkgbase = osx-arc-plus
 	pkgdesc = OSX-Arc-Plus Theme for GTK 3.x
-	pkgver = 1.4.5
-	pkgrel = 3
+	pkgver = 1.4.7
+	pkgrel = 1
 	url = https://www.gnome-look.org/p/1167049/
 	arch = any
 	makedepends = unzip
 	depends = gtk3
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1511459132/s/$_s/t/$_t/OSX-Arc-Plus-v1.4.5.zip
-	md5sums = 0b2f89b0ae2b034eb84d95f094ecf237
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1514574576/s/$_s/t/$_t/OSX-Arc-Plus-v1.4.7.zip
+	md5sums = 49ee59c5017c1511051d61bb42acee67
 
 pkgname = osx-arc-plus
