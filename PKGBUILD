@@ -3,14 +3,14 @@
 pkgname='homegear-homematicwired'
 _gitname='Homegear-HomeMaticWired'
 pkgdesc='HomeMatic Wired module for Homegear'
-pkgver=0.7.10
+pkgver=0.7.12
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 url="https://homegear.eu"
 depends=('homegear')
 source=("https://github.com/Homegear/${_gitname}/archive/${pkgver}.tar.gz")
-sha512sums=('5fe788a5165563f67fb9b49485cf3b7ca2f95a4b6394b7604e1da89e0db01e555a80b243eef14db9104adaa65629a4e935be949aa1f3800329d79aace232c3f4')
+sha512sums=('c53993a8c005e5e3fd24bb2c02bb8d587aa60fc93edaa5edd22795a5ceee8944215359a1cbe15c637cfbe8a569c8b67eeb3b99a8093cb735b5498cea804ab1b5')
 install=homegear-homematicwired.install
 backup=('etc/homegear/families/homematicwired.conf')
 
