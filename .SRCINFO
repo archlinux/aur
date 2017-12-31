@@ -1,6 +1,6 @@
 pkgbase = fbcat-git
 	pkgdesc = A framebuffer screenshot grabber (development version)
-	pkgver = VERSION
+	pkgver = r198.5ed41b4
 	pkgrel = 1
 	url = https://github.com/jwilk/fbcat
 	arch = i686
