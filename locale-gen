@@ -8,17 +8,18 @@ fi
 
 for locale in /etc/locales/*; do
     if [ -f "$locale" ]; then
+        read -r charset < "$locale"
+        charset=${charset:-UTF-8}
         locale=${locale##*/}
     else
         continue
     fi
 
-    printf '%s: generating locale\n' "$locale".UTF-8 >&2
+    printf '%s: generating locale\n' "$locale"."$charset" >&2
 
-    localedef -i "$locale" -f UTF-8 -c "$locale".UTF-8
+    localedef -i "$locale" -f "$charset" -c "$locale"."$charset"
 
     case $? in
-        4) printf '%s: invalid locale\n' "$locale" >&2 ;;
-        1) exit
+        4) printf '%s: invalid locale\n' "$locale"."$charset" >&2
     esac
 done

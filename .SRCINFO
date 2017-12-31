@@ -1,6 +1,6 @@
 pkgbase = glibc-git
 	pkgdesc = GNU C Library, from git
-	pkgver = 2.26.r1039.g48a8f83281
+	pkgver = 2.26.r1049.g3e3c904dae
 	pkgrel = 1
 	url = https://www.gnu.org/software/libc/
 	install = glibc-git.install
@@ -22,8 +22,10 @@ pkgbase = glibc-git
 	backup = etc/nscd.conf
 	source = git+https://sourceware.org/git/glibc.git
 	source = locale-gen
+	source = bz20338.patch
 	sha256sums = SKIP
-	sha256sums = 7e4a8d3fd37c67ec57b5e27575155d958628a92729098cf8a01ba9aba7078a80
+	sha256sums = cdbd47144b319b0b0eca8d0488dc5173bf24158ab888340920ffe6c3d252dfa6
+	sha256sums = 959d4f41edd004bddd9091c4d8c8c3aa07d79a04bfdb89d59f9f26fe5a74d32a
 
 pkgname = glibc-git
 

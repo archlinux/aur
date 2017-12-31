@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.26.r1039.g48a8f83281
+pkgver=2.26.r1049.g3e3c904dae
 pkgrel=1
 pkgdesc='GNU C Library, from git'
 arch=('i686' 'x86_64')
@@ -21,9 +21,11 @@ backup=('etc/gai.conf' 'etc/nscd.conf')
 options=('!strip' 'staticlibs')
 install='glibc-git.install'
 source=('git+https://sourceware.org/git/glibc.git'
-        'locale-gen')
+        'locale-gen'
+        'bz20338.patch')
 sha256sums=('SKIP'
-            '7e4a8d3fd37c67ec57b5e27575155d958628a92729098cf8a01ba9aba7078a80')
+            'cdbd47144b319b0b0eca8d0488dc5173bf24158ab888340920ffe6c3d252dfa6'
+            '959d4f41edd004bddd9091c4d8c8c3aa07d79a04bfdb89d59f9f26fe5a74d32a')
 
 pkgver() {
     cd glibc
@@ -32,8 +34,11 @@ pkgver() {
 }
 
 prepare() {
-    rm -rf build
-    mkdir build
+    mkdir -p build
+
+    cd glibc
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=20338
+    patch -p1 < ../bz20338.patch
 }
 
 build() {
