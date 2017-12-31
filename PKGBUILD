@@ -3,7 +3,7 @@
 pkgname=cloudstation-drive
 pkgver="4.2.5"
 pkgrel="4396"
-pkgdesc=""
+pkgdesc="Cloud Station Drive is an application designed to synchronize files between your Synology NAS and PCs via the Internet, ensuring that your data is always up-to-date and enabling you to easily access your files."
 arch=('i686' 'x86_64')
 url="http://www.synology.com"
 license=('unknown')
