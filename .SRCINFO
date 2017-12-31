@@ -1,0 +1,18 @@
+pkgbase = libhashab-git
+	pkgdesc = libgpod extension to make it talk to iPod nano 6th generation
+	pkgver = r8.9a2dcf8
+	pkgrel = 1
+	url = https://github.com/denydias/libhashab
+	arch = i686
+	arch = x86_64
+	license = unknown
+	license = GPL
+	makedepends = git
+	depends = libgpod
+	source = git://github.com/denydias/libhashab.git
+	source = lib.patch
+	md5sums = SKIP
+	md5sums = 7d5be1e8b685cd1e1c645da5c7c2ffe4
+
+pkgname = libhashab-git
+

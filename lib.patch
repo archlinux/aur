@@ -1,0 +1,42 @@
+commit f46f2e9349a7345d3dcb366b71dfc89dfcc8b608
+Author: NBonaparte <nbonaparte@protonmail.com>
+Date:   Sat Dec 30 23:48:53 2017 -0800
+
+    fix lib location for Arch
+
+diff --git a/src/libhashab.c b/src/libhashab.c
+index 6d9df83..3da4315 100644
+--- a/src/libhashab.c
++++ b/src/libhashab.c
+@@ -39,7 +39,7 @@ int calcHashAB(unsigned char HashAB[57], unsigned char Sha1[20], unsigned char U
+     memset(HashAB, 0, 57);
+ 
+     /* The command header */
+-    sprintf(CmdLine, "linux32 /usr/lib/x86_64-linux-gnu/libgpod/libhashab32_wrapper \"");
++    sprintf(CmdLine, "linux32 /usr/lib/libgpod/libhashab32_wrapper \"");
+ 
+     /* Print the Sha1 Data */
+     for(a = 0; a < 20; a++) {
+diff --git a/src/libhashab32_wrapper.c b/src/libhashab32_wrapper.c
+index 0356bc7..8c76aed 100644
+--- a/src/libhashab32_wrapper.c
++++ b/src/libhashab32_wrapper.c
+@@ -39,15 +39,15 @@ int main(int argc, char *argv[]) {
+     unsigned char Random[23];
+     unsigned char HashAB[57];
+     unsigned char TempVar[3];
+-    
+-    /* Clear the data arrays to 0 */    
++
++    /* Clear the data arrays to 0 */
+     memset(Sha1, 0, 20);
+     memset(UUID, 0, 20);
+     memset(Random, 0, 23);
+     memset(HashAB, 0, 57);
+ 
+     /* Try to open the modified shared library */
+-    lib_handle = dlopen("/usr/lib/x86_64-linux-gnu/libgpod/libhashab32.so", RTLD_LAZY);
++    lib_handle = dlopen("/usr/lib/libgpod/libhashab32.so", RTLD_LAZY);
+ 
+     /* If the library failed to open */
+     if (!lib_handle) {
