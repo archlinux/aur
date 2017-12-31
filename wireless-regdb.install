@@ -1,6 +1,8 @@
 post_install() {
   echo "Uncomment the right regulatory domain in /etc/conf.d/wireless-regdom."
   echo "It will automatically be set on boot."
+  echo "Modified domains are DE, US, 00, GB & BO
+  echo "best use domain BO - full channels @ 30db modded"
   post_upgrade
 }
 

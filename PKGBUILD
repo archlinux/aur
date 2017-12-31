@@ -4,14 +4,14 @@
 pkgname=wireless-regdb-pentest
 _pkgname=wireless-regdb
 pkgver=2017.12.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Central Regulatory Domain Database with txpower/channels modified for pentesters. please respect the law in your country"
 arch=('any')
 url="http://wireless.kernel.org/en/developers/Regulatory"
 backup=(etc/conf.d/wireless-regdom)
 license=('custom')
-depends=('sh')
-makedepends=('gcc5')
+depends=('sh' 'libnl' 'libgcrypt' 'systemd' 'iw')
+makedepends=('python2-m2crypto')
 conflicts=('wireless-regdb' 'crda')
 provides=('wireless-regdb' 'crda')
 source=(https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-${pkgver}.tar.xz
@@ -27,7 +27,7 @@ source=(https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regd
 sha256sums=('0e53e605dd98e7f34429242b5b2afea6dbc91bb913892fa01101e0ec481a4ab9'
             '192428fd959806705356107bffc97b8b379854e79bd013c4ee140e5202326e2b'
             '464037af76e3a90548f30a4a0fcacc35053da8ea9d077c76f9ab728cf0772313'
-            '2473f0132790fc406d4b7d744d0e6415edd25e72b344bef12edf48fadb46f657'
+            '9c266cb90c9492f617c6b89242723fc81ffa2dc8817d0a6f03dfcffd0d077fbf'
             '603ce97da5cce3f5337e99007ce04e2f295bb33a36b308794884011f7bcabaf3'
             '96b2068b27202f8bc78009869520e396cb3f3ac7a826efef06d0fc41047f2520'
             'ff52990cf9295e5cebcf07ebbf2a96e225d97088573edcc898b29ce33a0fb663'
