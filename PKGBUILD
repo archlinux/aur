@@ -3,9 +3,9 @@
 # Contributor: Jochen Schalanda <jochen+aur@schalanda.name>
 # Contributor: Vitaliy Berdinskikh <ur6lad at archlinux.org.ua>
 pkgname=mysql-jdbc
-pkgver=5.1.42
+pkgver=5.1.45
 _fullname=mysql-connector-java-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='The official JDBC driver for MySQL'
 arch=('any')
 url='https://dev.mysql.com/downloads/connector/j/'
@@ -15,8 +15,10 @@ install=mysql-jdbc.install
 source=("https://cdn.mysql.com/Downloads/Connector-J/${_fullname}.tar.gz"{,.asc})
 noextract=(${_fullname}.tar.gz)
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
-md5sums=('bc23a03d813af3f7ac44b8e7a5cb0d54'
+md5sums=('ab9ac454a959859a297b53bdbf156f3c'
          'SKIP')
+sha256sums=('1d289a056c7eb8290108a8d2e3c4717193662a9171adb56cfa3b769b32de3300'
+            'SKIP')
 
 prepare() {
 	cd "$srcdir"
@@ -32,5 +34,5 @@ package() {
 	ln -s ${_fullname}-bin.jar "$pkgdir"/usr/share/java/$pkgname/mysql-connector-java-bin.jar
 
 	install -d "$pkgdir"/usr/share/doc/$pkgname
-	install -m 644 {CHANGES,README,docs/connector-j.*} "$pkgdir"/usr/share/doc/$pkgname
+	install -m 644 {CHANGES,README} "$pkgdir"/usr/share/doc/$pkgname
 }

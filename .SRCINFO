@@ -1,7 +1,7 @@
 pkgbase = mysql-jdbc
 	pkgdesc = The official JDBC driver for MySQL
 	pkgver = 5.1.45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.mysql.com/downloads/connector/j/
 	install = mysql-jdbc.install
 	arch = any
