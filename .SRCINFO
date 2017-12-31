@@ -1,7 +1,7 @@
 pkgbase = arm-none-eabi-gcc60-linaro
 	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target.
 	pkgver = 6.4_2017.11
-	pkgrel = 1
+	pkgrel = 3
 	url = https://releases.linaro.org/
 	arch = i686
 	arch = x86_64

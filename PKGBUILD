@@ -10,7 +10,7 @@ _relverdate=${_relver}-${_reldate}
 #pkgver=${_relver}_${_reldate//-/_}
 pkgver=6.4_2017.11
 _pkgver=6.4-2017.11
-pkgrel=1
+pkgrel=3
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target."
 arch=(i686 x86_64)
 url="https://releases.linaro.org/"
@@ -24,7 +24,7 @@ options=(staticlibs !libtool !emptydirs !strip zipman docs)
 source=(http://snapshots.linaro.org/components/toolchain/gcc-linaro/${_pkgver}/gcc-linaro-${_relverdate}.tar.xz
         0200-gcc-no-exceptions.patch
         0300-gcc-multilib2.patch
-        0400-enable-with-multilib-list-for-arm.patch
+	0400-enable-with-multilib-list-for-arm.patch
         1039-libcc1-fix-libcc1-s-install-path-and-rpath.patch)
 _basedir=gcc-linaro-${_relverdate}
 
@@ -56,6 +56,7 @@ cd ${srcdir}/${_basedir}
                --enable-multilib \
                --enable-languages=c,c++ \
                --enable-interwork \
+	       --program-prefix=arm-none-eabi- \
                --program-suffix=-6 \
                --enable-vtable-verify \
                --with-newlib \
