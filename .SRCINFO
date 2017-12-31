@@ -1,0 +1,20 @@
+pkgbase = parted
+	pkgdesc = A version with DEBUG defined in its compilation, to provide some necessary functions for other applications.
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://www.gnu.org/software/parted/parted.html
+	arch = x86_64
+	license = GPL3
+	makedepends = pkg-config
+	depends = device-mapper
+	provides = libparted
+	source = https://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
+	source = https://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz.sig
+	source = parted-735669-fat16-crash-v1.patch
+	validpgpkeys = 1B49F933916A37A3F45A1812015F4DD4A70FB705
+	sha256sums = 858b589c22297cacdf437f3baff6f04b333087521ab274f7ab677cb8c6bb78e4
+	sha256sums = SKIP
+	sha256sums = 3cbf31765b1653609a4c95687b91e34dd57ad3498d5d02019c966bd46d25d100
+
+pkgname = libparted
+
