@@ -1,10 +1,11 @@
-# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
+# Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
+# Original Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=cloog-isl15
 _origpkgname=cloog
 pkgver=0.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Library that generates loops for scanning polyhedra"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.bastoul.net/cloog/"
