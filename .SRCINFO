@@ -1,6 +1,6 @@
 pkgbase = homegear-insteon
 	pkgdesc = Insteon module for Homegear
-	pkgver = 0.7.10
+	pkgver = 0.7.12
 	pkgrel = 1
 	url = https://homegear.eu
 	install = homegear-insteon.install
@@ -12,8 +12,8 @@ pkgbase = homegear-insteon
 	license = GPL3
 	depends = homegear
 	backup = etc/homegear/families/insteon.conf
-	source = https://github.com/Homegear/Homegear-Insteon/archive/0.7.10.tar.gz
-	sha512sums = ae54c49f2d06cdaacb27366eef507a64d7b1334a7943c5515f1f6fad951a6702ccd59451c44664ae69568f9de45c72ff85e068fac24cad38cf2f8bb64513fd13
+	source = https://github.com/Homegear/Homegear-Insteon/archive/0.7.12.tar.gz
+	sha512sums = 4bb6669c3a7af2d12ebe88fa074fe8014186b9b16e4105baf88527b2977fcc0fd0b5451c3776bacdef307ccd5c1c457e6a5dd8b7b534490f3be20a331b0418df
 
 pkgname = homegear-insteon
 	backup = etc/homegear/families/insteon.conf
