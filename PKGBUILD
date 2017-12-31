@@ -1,9 +1,9 @@
 # Maintainer: Lettier <movie_monad_aur a@@at@t lettier dd.ot..t ccommm>
 
 _hkgname="movie-monad"
-_ver=0.0.3.0
+_ver=0.0.4.0
 _xrev=0
-_tree_hash="0cf731e4b9a034cb27bac335018e29e6f1713499"
+_tree_hash="89a10fc8f4e4248958347cf182cb8f6f04e82707"
 
 pkgname="movie-monad"
 pkgver=${_ver}_${_xrev}
@@ -16,7 +16,7 @@ makedepends=("make" "wget" "gobject-introspection" "git" "gmp" "zlib" "ncurses")
 depends=("gtk3" "gstreamer" "gst-libav" "gst-plugins-base-libs" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad")
 options=("strip" "staticlibs")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${_ver}/${_hkgname}-${_ver}.tar.gz")
-md5sums=('f3bad373d1fec761b7b135200168a835')
+md5sums=('3990015342dce1a7fc6d404dae72f093')
 
 build() {
   mkdir -p "${HOME}/.local/bin"
