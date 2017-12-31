@@ -1,7 +1,7 @@
 # Maintainer: sardo <sardonimous@hotmail.com>
 # Parts copied from x3270 package by tuftedocelot <tuftedocelot@fastmail.fm>
 pkgname=x3270-git
-pkgver=3.6beta3.r1819
+pkgver=3.7alpha1.r1825
 pkgrel=1
 pkgdesc="IBM 3270 terminal emulator for the X Window System"
 arch=('x86_64')
