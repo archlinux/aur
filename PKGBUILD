@@ -1,7 +1,7 @@
 # Maintainer: levinit <levinit@outlook.com>
 
 pkgname=grub-themes-stylishdark
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='stylishdark grub2 theme'
 arch=(any)
@@ -11,7 +11,8 @@ depends=('grub')
 optdepends=('grub-customizer')
 install=${pkgname}.install
 
-source=('https://dl.opendesktop.org/api/files/download/id/1503588288/grub-themes-stylishdark.tar.xz')
+source=('https://dl.opendesktop.org/api/files/downloadfile/id/1513659780/s/dba9843ba21bfd0f5b3bee0fa0a5f86c/t/1514732419/grub-themes-stylishdark.tar.xz')
+
 md5sums=('SKIP')
 
 package() {
