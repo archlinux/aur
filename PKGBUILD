@@ -3,14 +3,14 @@
 pkgname='homegear-intertechno'
 _gitname='Homegear-Intertechno'
 pkgdesc='Intertechno module for Homegear'
-pkgver=0.7.10
+pkgver=0.7.12
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 url="https://homegear.eu"
 depends=('homegear')
 source=("https://github.com/Homegear/${_gitname}/archive/${pkgver}.tar.gz")
-sha512sums=('17b8ba99ccb33e4fefb0861c2af2f285088b1b4f371097de9e701249edf6d9f32a95a0aea2840202d9dee41893952a56e8e707033e1ffa436b5a3a9aef1cdba2')
+sha512sums=('d60838c921a0cdd9d6345770d8357a21d0bf8090ab7a57e5ef036c3e50ebd9ea6a3d7ba71e476eec3943b46ab66ee72f5b0816e01e2288cb3e101177947d8613')
 install=homegear-intertechno.install
 backup=('etc/homegear/families/intertechno.conf')
 
