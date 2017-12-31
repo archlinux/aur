@@ -1,12 +1,12 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=xac
 pkgver=2017.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A markdown- and Pandoc-based content management system (CMS).'
 arch=(any)
 license=(GPL)
 url="https://xyne.archlinux.ca/projects/xac"
-depends=(haskell-pandoc python3)
+depends=(pandoc python3)
 optdepends=('graphviz: plugin support' 'openbabel: plugin support' 'source-highlight: plugin support' 'tex2png: plugin support')
 source=(
   https://xyne.archlinux.ca/projects/xac/src/xac-2017.11.tar.xz
