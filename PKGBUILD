@@ -21,13 +21,12 @@ md5sums_x86_64=('4894cdc3c2009e6d27a0dd7c7d1bc25c')
 
 prepare() {
 	cd "$srcdir"
+	mkdir control data
 	ar x synology-cloud-station-drive-*
+	tar xf data.tar.gz --directory data
 }
 
-# pkgver() {}
-
-# build() {}
-
-# check() {}
-
-# package() {}
+package() {
+	cp -r "$srcdir/data/opt" "$pkgdir/opt"
+	cp -r "$srcdir/data/usr" "$pkgdir/usr"
+}
