@@ -10,17 +10,11 @@ index b975c7a8..5ad461a4 100644
  Q_IMPORT_PLUGIN(QConnmanEnginePlugin)
  Q_IMPORT_PLUGIN(QGenericEnginePlugin)
  Q_IMPORT_PLUGIN(QNetworkManagerEnginePlugin)
-diff --git a/Telegram/ThirdParty/libtgvoip b/Telegram/ThirdParty/libtgvoip
---- a/Telegram/ThirdParty/libtgvoip
-+++ b/Telegram/ThirdParty/libtgvoip
-@@ -1 +1 @@
--Subproject commit 9f78cb85e5db9b39a6c4c3f7847ea3e98c9f544a
-+Subproject commit 9f78cb85e5db9b39a6c4c3f7847ea3e98c9f544a-dirty
 diff --git a/Telegram/gyp/Telegram.gyp b/Telegram/gyp/Telegram.gyp
-index 6fa545e5..dc8383fa 100644
+index 84a06153..88df07bd 100644
 --- a/Telegram/gyp/Telegram.gyp
 +++ b/Telegram/gyp/Telegram.gyp
-@@ -86,27 +86,23 @@
+@@ -88,28 +88,24 @@
      ],
  
      'defines': [
@@ -38,22 +32,36 @@ index 6fa545e5..dc8383fa 100644
        '<(SHARED_INTERMEDIATE_DIR)',
 -      '<(libs_loc)/breakpad/src',
 -      '<(libs_loc)/lzma/C',
--      '<(libs_loc)/libexif-0.6.20',
 -      '<(libs_loc)/zlib',
 -      '<(libs_loc)/ffmpeg',
 -      '<(libs_loc)/openal-soft/include',
 -      '<(libs_loc)/opus/include',
+-      '<(libs_loc)/range-v3/include',
        '<(minizip_loc)',
        '<(sp_media_key_tap_loc)',
        '<(emoji_suggestions_loc)',
        '<(submodules_loc)/GSL/include',
        '<(submodules_loc)/variant/include',
+       '<(submodules_loc)/crl/src',
 +      '/usr/include/breakpad',
      ],
      'sources': [
        '<@(qrc_files)',
+diff --git a/Telegram/gyp/linux_glibc_wraps.gyp b/Telegram/gyp/linux_glibc_wraps.gyp
+index 07a8276f..99ac4cac 100644
+--- a/Telegram/gyp/linux_glibc_wraps.gyp
++++ b/Telegram/gyp/linux_glibc_wraps.gyp
+@@ -27,7 +27,7 @@
+     'sources': [
+       '../SourceFiles/platform/linux/linux_glibc_wraps.c',
+     ],
+-    'conditions': [[ '"<!(uname -p)" == "x86_64"', {
++    'conditions': [[ '"<!(uname -m)" == "x86_64"', {
+       'sources': [
+         '../SourceFiles/platform/linux/linux_glibc_wraps_64.c',
+       ],
 diff --git a/Telegram/gyp/qt.gypi b/Telegram/gyp/qt.gypi
-index 67f7976e..8c960313 100644
+index dea127a3..fd7359a9 100644
 --- a/Telegram/gyp/qt.gypi
 +++ b/Telegram/gyp/qt.gypi
 @@ -38,7 +38,6 @@
@@ -82,9 +90,9 @@ index 67f7976e..8c960313 100644
 -              'xcb-xfixes',
 -              'xcb-render',
 -              'xcb-static',
-+              'Qt5WaylandClient',
 +              'qwayland-generic',
 +              'qwayland-egl',
++              'Qt5WaylandClient',
              ],
            }],
          ],
@@ -96,19 +104,18 @@ index 67f7976e..8c960313 100644
    ],
    'library_dirs': [
      '<(qt_loc)/lib',
-@@ -221,7 +210,6 @@
-         '<(qt_loc)/plugins/platforminputcontexts',
+@@ -225,7 +214,6 @@
        ],
        'libraries': [
+         '<(PRODUCT_DIR)/obj.target/liblinux_glibc_wraps.a',
 -        '<(linux_path_xkbcommon)/lib/libxkbcommon.a',
          '<@(qt_libs_release)',
          '<(linux_lib_ssl)',
          '<(linux_lib_crypto)',
-@@ -234,12 +222,30 @@
+@@ -238,12 +226,30 @@
          '-lgthread-2.0',
          '-lglib-2.0',
          '-lpthread',
--      ],
 +        '-lXi',
 +        '-lXext',
 +        '-lXfixes',
@@ -128,29 +135,29 @@ index 67f7976e..8c960313 100644
 +        '<!(pkg-config 2> /dev/null --libs wayland-client wayland-cursor)',
 +        '-lproxy',
 +        '-lGL',
-+        ],
+       ],
        'include_dirs': [
          '<(qt_loc)/mkspecs/linux-g++',
        ],
        'ldflags': [
 -        '-static-libstdc++',
          '-pthread',
-         '-g',
          '-rdynamic',
+       ],
 diff --git a/Telegram/gyp/settings_linux.gypi b/Telegram/gyp/settings_linux.gypi
-index fde88dcd..1fd1b9cb 100644
+index b93bace4..0f14aa1f 100644
 --- a/Telegram/gyp/settings_linux.gypi
 +++ b/Telegram/gyp/settings_linux.gypi
-@@ -25,7 +25,6 @@
+@@ -24,7 +24,6 @@
+         'linux_common_flags': [
            '-pipe',
-           '-g',
            '-Wall',
 -          '-Werror',
            '-W',
            '-fPIC',
            '-Wno-unused-variable',
 diff --git a/Telegram/gyp/telegram_linux.gypi b/Telegram/gyp/telegram_linux.gypi
-index 721d4f6c..b30c2da7 100644
+index f6918c22..36ef6ad3 100644
 --- a/Telegram/gyp/telegram_linux.gypi
 +++ b/Telegram/gyp/telegram_linux.gypi
 @@ -22,11 +22,20 @@
@@ -180,7 +187,7 @@ index 721d4f6c..b30c2da7 100644
        'linux_path_ffmpeg%': '/usr/local',
        'linux_path_openal%': '/usr/local',
 @@ -37,20 +46,11 @@
-       'linux_path_opus_include%': '<(libs_loc)/opus/include',
+       'linux_path_range%': '/usr/local',
      },
      'include_dirs': [
 -      '/usr/local/include',
@@ -188,13 +195,13 @@ index 721d4f6c..b30c2da7 100644
 -      '<(linux_path_openal)/include',
 -      '<(linux_path_breakpad)/include/breakpad',
        '<(linux_path_opus_include)',
+-      '<(linux_path_range)/include',
 +      '/usr/include',
      ],
      'library_dirs': [
 -      '/usr/local/lib',
 -      '<(linux_path_ffmpeg)/lib',
 -      '<(linux_path_openal)/lib',
--      '<(linux_path_libexif_lib)',
 -      '<(linux_path_va)/lib',
 -      '<(linux_path_vdpau)/lib',
 -      '<(linux_path_breakpad)/lib',
@@ -202,7 +209,7 @@ index 721d4f6c..b30c2da7 100644
      ],
      'libraries': [
        'breakpad_client',
-@@ -58,21 +58,7 @@
+@@ -58,23 +58,14 @@
        'ibusplatforminputcontextplugin',
        'fcitxplatforminputcontextplugin',
        'himeplatforminputcontextplugin',
@@ -223,13 +230,12 @@ index 721d4f6c..b30c2da7 100644
 -#      '<!(pkg-config 2> /dev/null --libs <@(pkgconfig_libs))',
 +      '<!(pkg-config 2> /dev/null --libs <@(pkgconfig_libs))',
      ],
-     'conditions': [['not_need_gtk!="True"', {
-         'cflags_cc': [
-@@ -80,6 +66,7 @@
-             '<!(pkg-config 2> /dev/null --cflags gtk+-2.0)',
-             '<!(pkg-config 2> /dev/null --cflags glib-2.0)',
-             '<!(pkg-config 2> /dev/null --cflags dee-1.0)',
-+            '<!(pkg-config 2> /dev/null --cflags <@(pkgconfig_libs))',
-          ],
-     }]],
-     'configurations': {
+     'cflags_cc': [
++      '<!(pkg-config 2> /dev/null --cflags appindicator-0.1)',
++      '<!(pkg-config 2> /dev/null --cflags gtk+-2.0)',
++      '<!(pkg-config 2> /dev/null --cflags glib-2.0)',
++      '<!(pkg-config 2> /dev/null --cflags dee-1.0)',
++      '<!(pkg-config 2> /dev/null --cflags <@(pkgconfig_libs))',
+       '-Wno-strict-overflow',
+     ],
+     'ldflags': [

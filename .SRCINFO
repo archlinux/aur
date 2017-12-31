@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official desktop version of Telegram messaging app (dev branch)
-	pkgver = 1.1.23.r17.g1c8db1e2
+	pkgver = 1.2.6.r5.g9551cfaf
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = telegram-desktop-git
 	makedepends = fontconfig
 	makedepends = git
 	makedepends = google-breakpad-git
+	makedepends = range-v3
 	makedepends = harfbuzz-icu
 	makedepends = jasper
 	makedepends = libappindicator-gtk2
@@ -57,8 +58,8 @@ pkgbase = telegram-desktop-git
 	source = https://download.qt.io/official_releases/qt/5.6/5.6.2/submodules/qtwayland-opensource-src-5.6.2.tar.xz
 	source = telegram-desktop.desktop
 	source = tg.protocol
-	source = arch-tdesktop.patch
-	source = arch-libtgvoip.patch
+	source = tdesktop.patch
+	source = libtgvoip.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -72,8 +73,8 @@ pkgbase = telegram-desktop-git
 	sha256sums = 035c3199f4719627b64b7020f0f4574da2b4cb78c6981aba75f27b872d8e6c86
 	sha256sums = f47f4b10c8b498ab456ad1dd54754cbd6725b936bb94ffe4fea12d2c2f2b408d
 	sha256sums = d4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb
-	sha256sums = 1e37edeb5d4cac34bde2c50065093dfc788c70e86de1e3f803544938e1841348
-	sha256sums = 0547229c7a32f821e808f4b0d73d74774de5bea81555638bd0fe5201ba773660
+	sha256sums = faebb28c6d5f5bcefa9d0249187dde025ecf52da18b3ba97081c27962d4169b8
+	sha256sums = 00877dd2c6e808313f1dd38c48f0dc656e342adb01e4d8ec58b14e63408b16c6
 
 pkgname = telegram-desktop-git
 

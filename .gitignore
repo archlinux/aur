@@ -4,5 +4,5 @@
 !PKGBUILD
 !telegram-desktop.desktop
 !tg.protocol
-!arch-tdesktop.patch
-!arch-libtgvoip.patch
+!tdesktop.patch
+!libtgvoip.patch

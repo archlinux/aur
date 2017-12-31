@@ -1,7 +1,7 @@
 # Maintainer: Lenovsky <lenovsky@protonmail.ch>
 
 pkgname=telegram-desktop-git
-pkgver=1.1.23.r17.g1c8db1e2
+pkgver=1.2.6.r5.g9551cfaf
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app (dev branch)"
 arch=('i686' 'x86_64')
@@ -9,10 +9,11 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('ffmpeg' 'libproxy' 'libxkbcommon-x11' 'openal' 'openssl-1.0'
          'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm')
-makedepends=('chrpath' 'cmake' 'fontconfig' 'git' 'google-breakpad-git' 'harfbuzz-icu' 'jasper'
-             'libappindicator-gtk2' 'libexif' 'libgl' 'libinput' 'libjpeg-turbo' 'libmng' 'libpng'
-             'libsm' 'libtiff' 'libunity' 'libva' 'libwebp' 'libxi' 'libxrender' 'mtdev' 'python'
-             'python2' 'sqlite' 'tslib' 'wayland')
+makedepends=('chrpath' 'cmake' 'fontconfig' 'git' 'google-breakpad-git'
+             'range-v3' 'harfbuzz-icu' 'jasper' 'libappindicator-gtk2' 'libexif' 'libgl'
+             'libinput' 'libjpeg-turbo' 'libmng' 'libpng' 'libsm' 'libtiff' 'libunity'
+             'libva' 'libwebp' 'libxi' 'libxrender' 'mtdev' 'python' 'python2' 'sqlite'
+             'tslib' 'wayland')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 _qt_version=5.6.2
@@ -29,9 +30,9 @@ source=("git+https://github.com/telegramdesktop/tdesktop.git#branch=dev"
         "https://download.qt.io/official_releases/qt/${_qt_version%.*}/$_qt_version/submodules/qtwayland-opensource-src-$_qt_version.tar.xz"
         "telegram-desktop.desktop"
         "tg.protocol"
-        "arch-tdesktop.patch"
-        "arch-libtgvoip.patch")
-sha256sums=('SKIP' 
+        "tdesktop.patch"
+        "libtgvoip.patch")
+sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -44,11 +45,11 @@ sha256sums=('SKIP'
             '035c3199f4719627b64b7020f0f4574da2b4cb78c6981aba75f27b872d8e6c86'
             'f47f4b10c8b498ab456ad1dd54754cbd6725b936bb94ffe4fea12d2c2f2b408d'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
-            '1e37edeb5d4cac34bde2c50065093dfc788c70e86de1e3f803544938e1841348'
-            '0547229c7a32f821e808f4b0d73d74774de5bea81555638bd0fe5201ba773660')
+            'faebb28c6d5f5bcefa9d0249187dde025ecf52da18b3ba97081c27962d4169b8'
+            '00877dd2c6e808313f1dd38c48f0dc656e342adb01e4d8ec58b14e63408b16c6')
 pkgver() {
   cd "$srcdir/tdesktop"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' 
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare() {
   local _qt_patch_file="$srcdir/tdesktop/Telegram/Patches/qtbase_${_qt_version//./_}.diff"
@@ -57,14 +58,14 @@ prepare() {
   local _hime_dir="$_qt_base_dir/src/plugins/platforminputcontexts/hime"
 
   # Apply Telegram Qt patch
-  cd "$_qt_base_dir" 
+  cd "$_qt_base_dir"
   patch -p1 -i "$_qt_patch_file"
 
   # Use OpenSSL 1.0
   echo "INCLUDEPATH += /usr/include/openssl-1.0" >> "$_qt_base_dir/src/network/network.pro"
 
   # Move additional input method plugins to proper directory
-  [ -d "$_fcitx_dir" ] && rm -rf "$_fcitx_dir" 
+  [ -d "$_fcitx_dir" ] && rm -rf "$_fcitx_dir"
   mv "$srcdir/fcitx" "$_fcitx_dir"
   [ -d "$_hime_dir" ] && rm -rf "$_hime_dir"
   mv "$srcdir/hime" "$_hime_dir"
@@ -85,13 +86,13 @@ prepare() {
   git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
   git submodule update
 
-  # Apply Arch Patches
+  # Apply Arch-specific Patches
   cd "$srcdir/tdesktop"
-  git apply "$srcdir/arch-tdesktop.patch"
+  git apply "$srcdir/tdesktop.patch"
 
   cd "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip"
   git checkout .
-  git apply "$srcdir/arch-libtgvoip.patch"
+  git apply "$srcdir/libtgvoip.patch"
 }
 
 build() {
@@ -115,8 +116,8 @@ build() {
     -no-gtkstyle \
     -static \
     -nomake examples \
-    -nomake tests 
-    make 
+    -nomake tests
+    make
   make install
   export PATH="$srcdir/qt/bin:$PATH"
 
