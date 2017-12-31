@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=photoflare-git
-pkgver=1.5.0.r338.g5db4cf2
+pkgver=1.5.0.r360.gee1c0ce
 pkgrel=1
 pkgdesc="Quick, simple but powerful Cross Platform image editor."
 arch=('i686' 'x86_64')
@@ -13,10 +13,8 @@ makedepends=('git')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}")
 replaces=('photofiltrelx')
-source=("git+https://github.com/PhotoFlare/photoflare.git"
-        "${pkgname%-*}.desktop")
-sha256sums=('SKIP'
-            'b8d8a66f80b744efbd4bd30126dcce4c791662fbd831549d908aa047136240fb')
+source=("git+https://github.com/PhotoFlare/photoflare.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
@@ -37,6 +35,8 @@ build() {
 package() {
   cd "${pkgname%-*}"
   install -Dm755 PhotoFlare "$pkgdir/usr/bin/PhotoFlare"
-  install -Dm644 ../photoflare.desktop "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
-  install -Dm644 pixmaps/logo.png "$pkgdir/usr/share/pixmaps/${pkgname%-*}.png"
+  install -Dm644 installers/deb/DEBIAN/usr/share/applications/photoflare.desktop \
+    "$pkgdir/usr/share/applications/photoflare.desktop"
+  sed -i 's|Icon=PhotoFlare|Icon=/usr/share/pixmaps/PhotoFlare.png|' "$pkgdir/usr/share/applications/photoflare.desktop"
+  install -Dm644 assets/pixmaps/logo.png "$pkgdir/usr/share/pixmaps/PhotoFlare.png"
 }
