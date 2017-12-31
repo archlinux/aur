@@ -1,7 +1,7 @@
 # Maintainer: Fortunato Ventre <vorione AT gmail DOT com>
 
 pkgname=samsung-tools
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Tools for Samsung laptops"
 arch=('any')
@@ -17,7 +17,7 @@ backup=(etc/samsung-tools/system.conf
         etc/samsung-tools/scripts/wireless-off)
 install=samsung-tools.install
 source=(http://launchpad.net/samsung-tools/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz)
-md5sums=('ddc06ead2e4f8ee54618d866c047406c')
+md5sums=('7102595f20eae67e78f73b0826a988a7')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
