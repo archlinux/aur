@@ -3,7 +3,7 @@
 
 pkgname=gsimplecal-git
 _gitname=gsimplecal
-pkgver=2014.12.09.c544ee9
+pkgver=2.1_r1_g2dc6bba
 pkgrel=1
 pkgdesc="Simple and lightweight GTK calendar (git)"
 arch=('i686' 'x86_64')
@@ -12,16 +12,16 @@ license=('GPL')
 depends=('gtk3')
 makedepends=('git')
 conflicts=('gsimplecal-hg' 'gsimplecal')
-source=('git://github.com/dmedvinsky/gsimplecal.git')
+source=(git+'https://github.com/dmedvinsky/gsimplecal.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git log -1 --format="%cd.%h" --date=short | sed 's:-:.:g'
+  cd ${_gitname}
+  git describe --long --tags | sed -e 's:^v::' -e 's:\([^-]*-g\):r\1:' -e 's:-:_:g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd ${_gitname}
 
   ./autogen.sh
   ./configure --prefix=/usr
@@ -29,6 +29,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd ${_gitname}
   make DESTDIR="${pkgdir}" install
 }
