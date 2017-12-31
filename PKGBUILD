@@ -1,8 +1,8 @@
-# Maintainer: Liam Greenough (beacon515@gmail.com)
+# Maintainer: Timo Sarawinski (t.sarawinski@gmail.com)
 #Substantially adapted from the PKGBUILD of isl-git
 
-pkgname=isl15
-pkgver=0.15
+pkgname=isl16
+pkgver=0.16
 pkgrel=1
 pkgdesc="Library for manipulating sets and relations of integer points bounded by linear constraints"
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,27 +12,27 @@ license=('MIT')
 options=('!libtool')
 provides=("isl=${pkgver}")
 conflicts=('isl-git' 'isl')
-source=('http://isl.gforge.inria.fr/isl-0.15.tar.gz')
-md5sums=('ca0e2d172ff0b57764b10867c8fc762f')
+source=('http://isl.gforge.inria.fr/isl-0.16.tar.gz')
+md5sums=('b556a88ad24a42996066383e99826b42')
 
 build() {
-  cd isl-0.15
+  cd isl-0.16
 #  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd isl-0.15
+  cd isl-0.16
   make check
 }
 
 package() {
-  cd isl-0.15
+  cd isl-0.16
   make -j1 DESTDIR="$pkgdir/" install
 
   install -dm755 $pkgdir/usr/share/gdb/auto-load/usr/lib/
-  mv $pkgdir/{,/usr/share/gdb/auto-load/}usr/lib/libisl.so.15.0.0-gdb.py
+  mv $pkgdir/{,/usr/share/gdb/auto-load/}usr/lib/libisl.so.15.1.0-gdb.py
 
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/isl/LICENSE
 }
