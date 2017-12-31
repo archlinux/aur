@@ -2,9 +2,8 @@
 
 _font="libre-caslon-display"
 _group="impallari"
-_update=107
 pkgname=ttf-${_group}-${_font}
-pkgver=1.0
+pkgver=1.002
 pkgrel=1
 pkgdesc="Libre Caslon in Display style, from Pablo Impallari"
 arch=(any)
@@ -14,18 +13,18 @@ license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
 install=updatefont.install
-source=("http://www.impallari.com/media/uploads/prosources/update-${_update}-source.zip")
-md5sums=('e961ccf468a1a5f12f63fbf505c2bd03')
+source=("${_font}-${pkgver}.zip::https://github.com/impallari/Libre-Caslon-Display/archive/master.zip")
+md5sums=('648fd3351f41cb73d2bd3d4dab1f9338')
 
 package() {
-  cd ${srcdir}/L*
+  cd ${srcdir}/Libre-Caslon-Display-master
 
   install -dm755 "${pkgdir}/usr/share/fonts/TTF/${_group}"
-  install -Dpm644 *.ttf "${pkgdir}/usr/share/fonts/TTF/${_group}"
+  install -Dpm644 fonts/TTF/*.ttf "${pkgdir}/usr/share/fonts/TTF/${_group}"
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dpm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -Dpm644 FONTLOG.txt "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dpm644 FONTLOG.txt README.md "${pkgdir}/usr/share/doc/${pkgname}/"
 }
