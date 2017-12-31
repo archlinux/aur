@@ -4,8 +4,8 @@
 pkgname='homegear'
 _gitname='Homegear'
 pkgdesc='Interface your HomeMatic BidCoS, HomeMatic Wired, MAX!, INSTEON or Philips hue devices with your home automation software or your own control scripts'
-pkgver=0.7.10
-pkgrel=2
+pkgver=0.7.12
+pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 url="https://homegear.eu"
@@ -21,15 +21,15 @@ source=("https://github.com/Homegear/${_gitname}/archive/${pkgver}.tar.gz"
 	    'homegear.logrotate'
         'homegear.sysusers'
         'homegear.tmpfiles'
-        'homegear-gnutls.patch'
+        'homegear-makefile.patch'
         'homegear-config.patch'
         'homegear-ssl-optional.patch')
-sha512sums=('f494396d58580c8059a8eea5e7b196372b507380af3c48a5036e45bb720b2c2259340bc4853600218ba0722460801fe54edc7e7cebfd6c03e19335153658dc9d'
+sha512sums=('78f5e904f2c52f44a5a1fb28cc715387cd264bab081737026c8e88e88e6ab17572479d6bfb7453b281f3e388932ab1c394a56efc2a64ccd053c7939548efe59a'
             '52b7b1b37c1d6b958081c97a733a0b17207a66c5b3c2a51f8abd1659aa1220ee6805f9ee47d241fa63b9124534b3958f04fc41b8b2e8132487d904550af5a26c'
             'c58a093cc923551e8482503962bfb9f043ee651b2d9954df6a8bf478715848bdac226dc0f3eb4e4f4aa44cdc9c7ca041560db735e27d6cc89122d02e2ffecc2a'
             '0067d4593d64ec91b4aa15412f09df5c4afc45c8349e33e278cbe80c5d5aa99f25f8f6f14dc14babfa308412bc20d7f4a213da3e61202991bafec871e59451ae'
             '23fb3b1a49f7b3433bd71ca262545aa31d67e7ae88801b41a7c1e306be926a06b7b29389cc63f3342cf8f5e55f908dc0847be6ba7d6b2657018240883a658ce0'
-            'b55c2e38e3aae22ecd1b3af65aebb7767400cf134f317ffad6f139c4f8681c587fbf7268b098c44796439dc51d9e4c05aadb1fe1d864b8ea1d8902f0409c5127'
+            'dbf22df28653890a62fb0c7d41d1de5ee5d5ee1377d51e0470562bff9d0fcbadf6290a113c5ae584ead8a29c005c84be22c9266de0818d7ef43012c19e7c12ea'
             'fd60fe50bedfc3d60cb93159087927c1f5d4d80a7176ec4c53b01e5c254f339ab6df436342684f0240b75d01d37c72f39af4379c57b13b18826e5997810df4fe'
             '5b25817cbbf5a5fb1d7c8414d36441de18cef3c43693329facb84b4312fd83c92bfcf6100937f3e5c9a7329e4ba80de1418cc0b9374c46d14255a612e8617498')
 install='homegear.install'
@@ -39,7 +39,8 @@ backup=('etc/homegear/main.conf'
         'etc/homegear/rpcservers.conf'
         'etc/homegear/php.ini'
         'etc/homegear/families/miscellaneous.conf'
-        'etc/homegear/devices/254/template.xml'
+        'etc/homegear/devices/254/OpenWeatherMap.xml'
+        'etc/homegear/devices/254/VirtualWindowContact.xml'
         'etc/logrotate.d/homegear')
 
 prepare() {
@@ -50,7 +51,7 @@ prepare() {
     # Put the modules in /usr/lib instead of /var/lib because that is where they belong
     sed -i -e 's#libdir = $(localstatedir)/lib/homegear/modules#libdir = $(prefix)/lib/homegear/modules#' homegear-miscellaneous/src/Makefile.am
 
-    patch -p1 -i "${srcdir}"/homegear-gnutls.patch
+    patch -p1 -i "${srcdir}"/homegear-makefile.patch
     patch -p1 -i "${srcdir}"/homegear-config.patch
     patch -p1 -i "${srcdir}"/homegear-ssl-optional.patch
 }
@@ -85,7 +86,9 @@ package() {
     install -dm550 "${pkgdir}"/var/lib/homegear/scripts
     install -dm750 "${pkgdir}"/var/lib/homegear/firmware
 
-    install -Dm755 homegear-miscellaneous/misc/Device\ Description\ Files/Template.xml "${pkgdir}"/etc/homegear/devices/254/template.xml
+    install -dm755 "${pkgdir}"/etc/homegear/devices/254
+    cp -r homegear-miscellaneous/misc/Device\ Description\ Files/* "${pkgdir}"/etc/homegear/devices/254
+    chmod 644 "${pkgdir}"/etc/homegear/devices/254/*
 
     install -Dm755 "${srcdir}"/homegear.service "${pkgdir}"/usr/lib/systemd/system/homegear.service
     install -Dm755 "${srcdir}"/homegear.sysusers "${pkgdir}"/usr/lib/sysusers.d/homegear.conf

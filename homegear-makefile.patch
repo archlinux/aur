@@ -1,0 +1,26 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 5342ae3..1783369 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -8,12 +8,6 @@ LIBS += -Wl,-Bstatic -lphp7-homegear -Wl,-Bdynamic -lz -lexslt -lresolv -ledit -
+ # }}}
+ endif
+ 
+-if HAVE_CURL
+-if HAVE_CURL_HEADERS
+-LIBS += -lcurl-gnutls
+-endif
+-endif
+-
+ if HAVE_MYSQLCLIENT
+ LIBS += -lmysqlclient
+ endif
+@@ -21,7 +15,7 @@ endif
+ 
+ bin_PROGRAMS = homegear
+ homegear_SOURCES = main.cpp Monitor.cpp CLI/CLIClient.cpp CLI/CLIServer.cpp Database/SQLite3.cpp Events/EventHandler.cpp Flows/FlowsClient.cpp Flows/FlowsClientData.cpp Flows/FlowsProcess.cpp Flows/FlowsServer.cpp Flows/NodeManager.cpp Flows/SimplePhpNode.cpp Flows/StatefulPhpNode.cpp IPC/IpcClientData.cpp IPC/IpcServer.cpp GD/GD.cpp Licensing/LicensingController.cpp MQTT/Mqtt.cpp MQTT/MqttSettings.cpp RPC/Auth.cpp RPC/Client.cpp RPC/ClientSettings.cpp RPC/RemoteRpcServer.cpp RPC/RestServer.cpp RPC/RpcClient.cpp RPC/RPCMethods.cpp RPC/RPCServer.cpp RPC/Server.cpp WebServer/WebServer.cpp Systems/DatabaseController.cpp Systems/FamilyController.cpp UPnP/UPnP.cpp User/User.cpp
+-homegear_LDADD = -lpthread -lreadline -lgcrypt -lgnutls -lhomegear-base -lhomegear-node -lgpg-error -lsqlite3
++homegear_LDADD = -lpthread -lreadline -lgcrypt -lgnutls -lhomegear-base -lhomegear-node -lgpg-error -lsqlite3 -latomic
+ 
+ if BSDSYSTEM
+ else
