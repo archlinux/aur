@@ -37,7 +37,7 @@ package() {
   install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${pkgname}
 
   msg2 "Creating user folder"
-  install -d -m0700 -o 44 -g 44  $pkgdir/var/lib/openbazaard
+  install -d -m0700 -o 44 -g 44  $pkgdir/var/lib/${pkgname}
 
   msg2 "Installing systemd service"
   install -Dm644 $srcdir/${pkgname}.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
