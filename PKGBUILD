@@ -1,5 +1,5 @@
 pkgname=telegram-desktop-customqt
-pkgver=1.2.1
+pkgver=1.2.6
 pkgrel=1
 pkgdesc='Official desktop version of Telegram messaging app.'
 arch=('i686' 'x86_64')
@@ -96,7 +96,7 @@ sha256sums=(
     'SKIP'
     'f47f4b10c8b498ab456ad1dd54754cbd6725b936bb94ffe4fea12d2c2f2b408d'
     'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
-    '5ff20e8b76661c9c1f4abe06eaf8fc40b93a9af273880f62e2ae0c5bd172957f'
+    '0e1e893bf89a08b4ceb27582b127233dcf7e0d5ae321816e658df08a66e0f424'
     '00877dd2c6e808313f1dd38c48f0dc656e342adb01e4d8ec58b14e63408b16c6'
 )
 

@@ -11,10 +11,10 @@ index b975c7a8..5ad461a4 100644
  Q_IMPORT_PLUGIN(QGenericEnginePlugin)
  Q_IMPORT_PLUGIN(QNetworkManagerEnginePlugin)
 diff --git a/Telegram/gyp/Telegram.gyp b/Telegram/gyp/Telegram.gyp
-index 31480945..193690e8 100644
+index 84a06153..fa945156 100644
 --- a/Telegram/gyp/Telegram.gyp
 +++ b/Telegram/gyp/Telegram.gyp
-@@ -87,25 +87,21 @@
+@@ -88,25 +88,21 @@
      ],
  
      'defines': [
@@ -43,7 +43,7 @@ index 31480945..193690e8 100644
 +      '/usr/include/breakpad',
        '<(submodules_loc)/GSL/include',
        '<(submodules_loc)/variant/include',
-     ],
+       '<(submodules_loc)/crl/src',
 diff --git a/Telegram/gyp/linux_glibc_wraps.gyp b/Telegram/gyp/linux_glibc_wraps.gyp
 index 07a8276f..99ac4cac 100644
 --- a/Telegram/gyp/linux_glibc_wraps.gyp
