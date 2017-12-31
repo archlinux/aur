@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.2.6
+Name=Telegram Desktop Beta
+Comment=Official desktop version of Telegram messaging app - Beta version
+Exec=telegram-desktop -- %u
+StartupWMClass=telegram-desktop
+Icon=telegram
+Terminal=false
+Type=Application
+Categories=Network;Messaging;
+MimeType=application/x-xdg-protocol-tg;x-scheme-handler/tg;
