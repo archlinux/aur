@@ -1,30 +1,32 @@
 # Maintainer: Brendan Abolivier <brendan@cozycloud.cc>
 pkgname=xqilla
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
-epoch=
 pkgdesc="An XQuery and XPath 2.0 library, written in C++ and built on top of Xerces-C."
-arch=("any")
+arch=("x86_64")
 url="http://xqilla.sourceforge.net/"
 license=("GPL3")
-groups=()
-depends=("xerces-c")
-provides=("xqilla")
-backup=()
-changelog=
-source=("http://downloads.sourceforge.net/project/xqilla/XQilla-2.3.2.tar.gz"
-        "https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-3.1.2.tar.gz")
-noextract=()
-sha256sums=("5ae0aed4091521d5c2f541093e02a81ebe55a9087ba735f80b110068584e217c"
-			"743bd0a029bf8de56a587c270d97031e0099fe2b7142cef03e0da16e282655a0")
+depends=("xerces-c" "icu")
+source=("https://downloads.sourceforge.net/project/xqilla/XQilla-${pkgver}.tar.gz"
+        "xerces-containing-node.patch")
+sha256sums=('8f76b9b4f966f315acc2a8e104e426d8a76ba4ea3441b0ecfdd1e39195674fd6'
+            '36ffb2dff579e5610ca3be2a962942433127b24a78ca454647059d6d54b8e014')
+
+prepare() {
+  cd "XQilla-${pkgver}"
+
+  # Apply patch from Homebrew to make XQilla compatible with Xerces-C 3.2.
+  # See: https://sourceforge.net/p/xqilla/bugs/48/
+  patch -p1 < "${srcdir}/xerces-containing-node.patch"
+}
 
 build() {
-	cd XQilla-2.3.2
-	./configure --with-xerces=`pwd`/../xerces-c-3.1.2/
-	make
+  cd "XQilla-${pkgver}"
+  ./configure --prefix=/usr --with-xerces=/usr
+  make
 }
 
 package() {
-	cd XQilla-2.3.2
-	make DESTDIR="$pkgdir/" install
+  cd "XQilla-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
 }
