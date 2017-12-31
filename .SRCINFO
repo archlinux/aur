@@ -8,14 +8,19 @@ pkgbase = python-galsim-git
 	license = BSD
 	makedepends = git
 	makedepends = scons
-	depends = python
-	depends = boost-libs
-	depends = fftw
-	depends = tmv-git
-	provides = python-galsim
-	conflicts = python-galsim
+	makedepends = boost
 	source = python-galsim::git+https://github.com/GalSim-developers/GalSim.git
 	md5sums = SKIP
 
 pkgname = python-galsim-git
+	depends = python
+	depends = boost-libs
+	depends = fftw
+	depends = tmv-git
+
+pkgname = python2-galsim-git
+	depends = python2
+	depends = boost-libs
+	depends = fftw
+	depends = tmv-git
 
