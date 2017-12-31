@@ -13,7 +13,7 @@ makedepends=(go upx)
 _user=github.com/OpenBazaar
 _repo=openbazaar-go
 source=("https://github.com/OpenBazaar/openbazaar-go/archive/v$pkgver.tar.gz"
-		"${pkgname}.service"
+	"${pkgname}.service"
 )
 options=('strip' 'upx')
 
@@ -36,9 +36,12 @@ package() {
   msg2 "Installing binary file"
   install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${pkgname}
 
+  msg2 "Creating user folder"
+  install -d -m0700 -o 44 -g 44  $pkgdir/var/lib/openbazaard
+
   msg2 "Installing systemd service"
   install -Dm644 $srcdir/${pkgname}.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
-  
+
   msg2 "Symlinking for gui launch"
   install -dm755 $pkgdir/opt/openbazaar-go/
   ln -sr /usr/bin/${pkgname} $pkgdir/opt/openbazaar-go/${pkgname}
