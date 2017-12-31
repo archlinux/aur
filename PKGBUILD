@@ -6,12 +6,13 @@
 _pkgname="parted"
 pkgname="libparted"
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A version with DEBUG defined in its compilation, to provide some necessary functions for other applications."
 arch=('x86_64')
 url="http://www.gnu.org/software/parted/parted.html"
 license=('GPL3')
-provides=("${pkgname}")
+conflicts=('parted' 'parted-git')
+provides=("${_pkgname}")
 depends=('device-mapper' 'libutil-linux')
 makedepends=('pkg-config')
 validpgpkeys=('1B49F933916A37A3F45A1812015F4DD4A70FB705') # Phillip Susi <psusi@ubuntu.com>
@@ -37,7 +38,6 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
-    rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
 
 # vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh:
