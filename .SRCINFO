@@ -7,11 +7,14 @@ pkgbase = python-palpy-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = python
 	provides = python-palpy
 	conflicts = python-palpy
 	source = python-palpy::git+https://github.com/Starlink/palpy
 	md5sums = SKIP
 
 pkgname = python-palpy-git
+	depends = python
+
+pkgname = python2-palpy-git
+	depends = python2
 
