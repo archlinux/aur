@@ -1,6 +1,6 @@
 # Maintainer: DJ Griffin <thewisenoob@gmail.com>
 
-pkgname=omp
+pkgname=omp-git
 _pkgname=OpenMusicPlayer
 pkgver=0.0.1.r3
 pkgrel=2

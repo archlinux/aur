@@ -1,4 +1,4 @@
-pkgbase = omp
+pkgbase = omp-git
 	pkgdesc = GTK3-based Music Player
 	pkgver = 0.0.1.r3
 	pkgrel = 2
@@ -19,5 +19,5 @@ pkgbase = omp
 	sha256sums = SKIP
 	sha256sums = 65398127a90eec9cb79eb11a227305ec2b9f2f3ba1265e2dd1d31934205cd38c
 
-pkgname = omp
+pkgname = omp-git
 
