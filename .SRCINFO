@@ -1,7 +1,7 @@
 pkgbase = lastfm
 	pkgdesc = The official Last.fm desktop application suite
 	pkgver = 2.1.36
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.last.fm/
 	arch = any
 	license = GPL3
@@ -29,11 +29,11 @@ pkgbase = lastfm
 	source = LAV_Source_fix.patch
 	source = lastfm-scrobbler.desktop
 	source = cast-bug.patch
-	md5sums = c5a29ccdc29f1191b561b3964149e52f
-	md5sums = 094d0d092d0244609c0211682479cd03
-	md5sums = 373cd6b862c13b459ff34b4dcd42daca
-	md5sums = fa62e46c1085e8893545e81e063a6a61
-	md5sums = 1571a79e34558688f25e17f069b070c2
+	sha256sums = 871d9d8e0c2942fe1fdce4df445fe55ebd92573fcc4420a669254344eef2c642
+	sha256sums = 882523081fadfd5c52315229414324aab61affeb9d4213543b6ac051c84b4476
+	sha256sums = de2d91e1534348d8d6f4260b23fd9447a443c79ebe65a8e02a9a40e008ea4c85
+	sha256sums = ecaeea027ad77da731f77268afd94da74e1ede4bc3f90765de58b7e407c82210
+	sha256sums = 3b0c66c639b0506692f02ba71c135981f1c5374820200f143485aa473aa6aa67
 
 pkgname = lastfm
 
