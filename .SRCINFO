@@ -1,0 +1,22 @@
+pkgbase = fsa6
+	pkgdesc = Finite state automata utilities
+	pkgver = 280
+	pkgrel = 3
+	url = http://odur.let.rug.nl/~vannoord/Fsa/
+	arch = x86_64
+	license = GPL2
+	depends = tcl
+	depends = tk
+	optdepends = python: generation of Python bindings for C automata
+	optdepends = java-environment: Java support
+	source = http://odur.let.rug.nl/~vannoord/Fsa/binaries/fsa6-280-x86_64-linux-glibc2.19.tar.gz
+	source = fsa6.sh
+	source = fsa6.png
+	source = fsa6.desktop
+	sha256sums = 1b140b9d31bc1a504893ad17b59893e89e2140ea943e7642e9b4efe616f46093
+	sha256sums = 50de3778accfbb989258488a34b00149ae1fc00c989ce8870f16fc8eeb0cacf8
+	sha256sums = d0997dcf378b28bd7051c1d1da1fe53acbef59344787c0bbb925456669d56a0b
+	sha256sums = d82b3baa9f634188bbbe4b005ad2d036e54e45c7df9bf7825d41ba1173a8702a
+
+pkgname = fsa6
+

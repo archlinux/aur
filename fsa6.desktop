@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=FSA Utilities
+Comment=Finite state automata utilities
+Exec=/usr/bin/fsa6 -tk
+Terminal=true
+Categories=Science;Education
+Icon=fsa6
