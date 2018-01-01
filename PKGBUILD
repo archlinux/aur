@@ -5,7 +5,7 @@
 
 pkgname=('python-yowsup' 'python2-yowsup')
 pkgdesc='The open source cross platform Whatsapp library powering Wazapp - Python 2'
-pkgver=2.5.2
+pkgver=2.5.7
 pkgrel=1
 pkgdesc="The open source cross platform Whatsapp library powering Wazapp"
 url="https://github.com/tgalal/yowsup"
@@ -15,11 +15,7 @@ makedepends=('python2-setuptools' 'python2-dateutil' 'python2-argparse' 'python2
 provide=('python-yowsup')
 conflicts=('yowsup-client-git' 'python-yowsup-git')
 source=("${pkgname}-${pkgver}.tag.gz::https://github.com/tgalal/yowsup/archive/v${pkgver}.tar.gz")
-sha512sums=('a4ae60420cebd744c7e16b740c1e46702572f6745239106be18075b58e076cc39d778f8911c0981519588fb0cfea852e0cef8542f0b10c229aff4b04b8d40ec4')
-
-build(){
-    cd $srcdir
-}
+sha512sums=('e64e119e8301d6cd9244a24ce960fdd00a5372a7766cf2f52dfd7610828358086e6c4f77fba6f962c1b84f6b28fa6b6d4d708bbb50c281e5a6563b99634b9495')
 
 package_python-yowsup() {
     cd "${srcdir}/yowsup-${pkgver}"
