@@ -2,7 +2,7 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 pkgname=doclifter
 pkgver=2.17
-pkgrel=1
+pkgrel=2
 pkgdesc="translate troff requests into docbook"
 arch=('any')
 url="http://www.catb.org/~esr/doclifter/"
