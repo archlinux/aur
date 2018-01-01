@@ -3,15 +3,15 @@
 pkgname=(chocolate-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
-pkgver=2.3.0
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
-depends=('libpng' 'libsamplerate' 'sdl_mixer' 'sdl_net')
+depends=('libpng' 'libsamplerate' 'sdl2_mixer' 'sdl2_net')
 makedepends=('python')
 source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz{,.asc})
-sha512sums=('43353875f76432123336ac7f8a37d00c447286f5bf17c2a12f6307568fe2533370ca8e5e0f76fa475e353f20dfdea79e3948c47ea8b079ef5dd9d0a53c305bfc'
+sha512sums=('41f235c0d84ef21070636ad0610e97898dfd366fae7f9244bd2aebf8974db98dcf55f70bcab2f93589b9bf31dd421db32e8af88e0f8e0a655d2b9f1d4ead2afd'
             'SKIP')
 validpgpkeys=('6D2C117E0310664497AA9546F6C2EE9C23354344')
 
@@ -47,11 +47,10 @@ package_chocolate-common() {
   rm -f chocolate-{doom,heretic,hexen,strife}{,-setup}
 
   cd "${pkgdir}"/usr/share
-  rm -rf doc man/man5
+  rm -rf bash-completion doc man/man5
   rm -rf applications/chocolate-{doom,heretic,hexen,strife}.desktop \
      applications/screensavers
   rm -rf appdata
-  rm -rf bash-completion
   cd man/man6
   rm -f chocolate-{doom,heretic,hexen,strife}{,-setup}.6
 }

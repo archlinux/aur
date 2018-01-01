@@ -7,7 +7,5 @@ the engine to easily find them:
 
 Files such as doom2.wad, heretic.wad, hexen.wad, and strife1.wad are
 appropriate for installation and usage with Chocolate engines.
-These must be lower-case file names, unless on a case-insensitive
-file system.
 EOF
 }
