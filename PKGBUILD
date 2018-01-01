@@ -1,7 +1,7 @@
 # Maintainer: wolftankk <wolftankk@gmail.com>
 pkgname=php-phalcon
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
 arch=('x86_64' 'i686')
