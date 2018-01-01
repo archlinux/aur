@@ -2,7 +2,7 @@
 
 pkgbase=cutelyst
 pkgname=('cutelyst' 'cutelyst-docs')
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework."
 arch=('i686' 'x86_64')
@@ -39,4 +39,4 @@ package_cutelyst() {
   make DESTDIR="$pkgdir/" install
 }
 
-sha512sums=('30978e18713679f77772a75864c4245fcb5f4857e8452e12de5dd65f256c6337cfb905f6b2cb9d0dcfe646c0c9557c6485cbdb04b4f34b93dd9fbd9d2193d6d7')
+sha512sums=('b6575d6e22752559968567ce4760cfaad0c5a6636289a62bfbf646ec4ef72175056b7bf7774f0ef9a0fce86fa825149a069b36562020590d57baa82066ca2ea3')
