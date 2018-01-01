@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-ishiiruka-git
 	pkgdesc = A GameCube / Wii / Triforce emulator
-	pkgver = r12064.066c5d628
-	pkgrel = 1
+	pkgver = r12092.02dfa48c7
+	pkgrel = 2
 	url = https://forums.dolphin-emu.org/Thread-unofficial-ishiiruka-dolphin-custom-version
 	arch = x86_64
 	license = GPL
@@ -33,7 +33,6 @@ pkgbase = dolphin-emu-ishiiruka-git
 	depends = pango
 	depends = sfml
 	depends = zlib
-	depends = wxgtk-common>=3.1.0
 	depends = libavcodec.so
 	depends = libavformat.so
 	depends = libavutil.so
