@@ -1,14 +1,14 @@
 pkgbase = python-stscitools
 	pkgdesc = STSCI Tools
-	pkgver = 2.1.9
+	pkgver = 3.4.11
 	pkgrel = 1
-	url = http://www.stsci.edu/institute/software_hardware/pyraf/
+	url = https://github.com/spacetelescope/stsci.tools
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = python
-	source = http://stsdas.stsci.edu/download/pyraf/pyraf-2.1.9.tar.gz
-	md5sums = 8e9d5ed2dd459d521c8fb8c2f20ab3a4
+	source = https://files.pythonhosted.org/packages/source/s/stsci.tools/stsci.tools-3.4.11.tar.gz
+	md5sums = 1b2f59eb444ebb816fd5587781fee63e
 
 pkgname = python-stscitools
 
