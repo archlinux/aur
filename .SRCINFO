@@ -1,6 +1,6 @@
 pkgbase = js-beautify
 	pkgdesc = Beautify JavaScript/JSON (jsbeautifier.org)
-	pkgver = 1.6.14
+	pkgver = 1.7.5
 	pkgrel = 1
 	url = http://jsbeautifier.org/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = js-beautify
 	depends = nodejs
 	depends = npm
 	conflicts = python-jsbeautifier
-	noextract = js-beautify-1.6.14.tgz
-	source = http://registry.npmjs.org/js-beautify/-/js-beautify-1.6.14.tgz
-	md5sums = 622879bacc1b52cd59e4616d98f1a16b
+	noextract = js-beautify-1.7.5.tgz
+	source = http://registry.npmjs.org/js-beautify/-/js-beautify-1.7.5.tgz
+	md5sums = 9ee13ddfc42482f91a661c5dde4348cc
 
 pkgname = js-beautify
 
