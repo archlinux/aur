@@ -2,8 +2,8 @@
 
 pkgname=omp
 _pkgname=OpenMusicPlayer
-pkgver=0.0.1.r2
-pkgrel=1
+pkgver=0.0.1.r3
+pkgrel=2
 pkgdesc='GTK3-based Music Player'
 url='https://openmusicplayer.com/'
 arch=(x86_64)
