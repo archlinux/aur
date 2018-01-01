@@ -17,10 +17,10 @@ package() {
   mkdir -p "$pkgdir/usr/share/sane-qt"
   mkdir -p "$pkgdir/usr/bin"
   cd "$srcdir/$pkgname"
-  install run_script "$pkgdir/usr/share/sane-qt/sane-qt"
+  install run_script "$pkgdir/usr/bin/sane-qt"
   install sane-qt_start.py "$pkgdir/usr/share/sane-qt/sane-qt_start.py"
   install saneqt.py "$pkgdir/usr/share/sane-qt/saneqt.py"
-  ln -sf  "$pkgdir/usr/share/sane-qt/sane-qt" "$pkgdir/usr/bin/sane-qt"
+  
   
 }
 
