@@ -1,11 +1,11 @@
 # Maintainer: Craig Barnes <cr@igbarn.es>
 
 pkgname='dte'
-pkgver='1.5'
+pkgver='1.6'
 pkgrel='1'
-pkgdesc='A small and easy to use text editor'
-url='https://github.com/craigbarnes/dte'
-arch=('i686' 'x86_64' 'armv7l')
+pkgdesc='A small and easy to use console text editor'
+url='https://craigbarnes.gitlab.io/dte/'
+arch=('x86_64' 'i686' 'armv7l' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('glibc' 'ncurses')
 validpgpkeys=('A3FB922E15870DA250D9DCE1FBCC7A6B0330BEB4')
@@ -16,8 +16,8 @@ source=(
 )
 
 sha256sums=(
-    'a59a52bac1d7400c10a13f9b1f45c584efb90bd7315f59b70445498abed889ca'
-    'e04a89a562bf54f1f80b550cb958683ae23464d3ba6bb67741fc1f8c83590d1a'
+    '07a1f39831aa26c23ff635ab440983d84162156da199eaa06f0cb75149a9bbf4'
+    'c39d423d9ec963e9c01ecb25501e47904a5cafb8ae2d826e2f968ab9633899f6'
 )
 
 build() {
