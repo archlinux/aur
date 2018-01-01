@@ -1,6 +1,6 @@
 pkgbase = udp2raw-tunnel
 	pkgdesc = An Encrpyted,Anti-Replay,Multiplexed Udp Tunnel,tunnels udp traffic through fake-tcp or icmp by using raw socket
-	pkgver = 20170918.0
+	pkgver = 20171125.0
 	pkgrel = 1
 	url = https://github.com/wangyu-/udp2raw-tunnel
 	install = udp2raw-tunnel.install
@@ -10,10 +10,10 @@ pkgbase = udp2raw-tunnel
 	makedepends = gcc
 	makedepends = make
 	depends = gcc-libs
-	source = udp2raw-tunnel-20170918.0.tar.gz::https://github.com/wangyu-/udp2raw-tunnel/archive/20170918.0.tar.gz
+	source = udp2raw-tunnel-20171125.0.tar.gz::https://github.com/wangyu-/udp2raw-tunnel/archive/20171125.0.tar.gz
 	source = udp2raw_script.sh
 	source = udp2raw@.service
-	md5sums = 125b292458e06850325730aacbd94445
+	md5sums = df0e758683749e3e3f230ae6da71e11f
 	md5sums = f3c5d10f24eb2a41e9007a47d42f4199
 	md5sums = 1c73eb54f737b77dae29e8f6c7f137f9
 
