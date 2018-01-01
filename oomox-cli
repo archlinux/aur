@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-cd /opt/oomox/
-exec ./gtk-theme/change_color.sh $@

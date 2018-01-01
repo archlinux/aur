@@ -1,7 +1,7 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.4.4.1
-_numix_ver=1.3.1.1
+_oomox_ver=1.4.5
+_numix_ver=1.4
 _materia_ver=20171213
 _archdroid_ver=1bf91f49f76112d48415bfa997aabc2cea84f01d
 _gnome_colors_ver=3c8596ea630b8255b9cf5d5bf90a69658dd32b79
@@ -50,27 +50,13 @@ source=(
     "oomox-archdroid-icon-theme-${_archdroid_ver}.zip::https://github.com/actionless/oomox-archdroid-icon-theme/archive/${_archdroid_ver}.zip"
     "oomox-gnome-colors-icon-theme-${_gnome_colors_ver}.zip::https://github.com/actionless/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_ver}.zip"
     "oomoxify-${_oomoxify_ver}.zip::https://github.com/actionless/oomoxify/archive/${_oomoxify_ver}.zip"
-    'oomox-gui'
-    'oomox-cli'
-    'oomox-materia-cli'
-    'oomox-gnome-colors-icons-cli'
-    'oomox-archdroid-icons-cli'
-    'oomoxify-cli'
-    'oomox.desktop'
 )
-md5sums=('009978ee18d89b254f4a81b51f73f61d'
-         '741a495898d98feadf650c63ed6267a9'
+md5sums=('541b143f46456c01dc8bda165b2c94f6'
+         '2df5eb0181d70ac09c27c59984f4e501'
          'c12b3b8813f1fe5a92525e55d68afa9e'
          'b02338c77e033933c28b8e95d8c74b71'
          '1494fc4bf2d4b17966cf81cfc39212f6'
-         '41d604da88231b844402673b454300ea'
-         '0d156463416bbc2260c073c15b7f2a70'
-         '049ca4cab087c18cf59aed5356962205'
-         'f01aa2280f8e03d6244fe6284c44a03b'
-         'a94039582afe30104b1444783d9c14b9'
-         'e5332b7f719913a06131d3b41c63b0e7'
-         '2a28eaaa7b41a943970561dfc4be23f8'
-         '87f09004fa77db669072e8e6decf5618')
+         '41d604da88231b844402673b454300ea')
 
 prepare() {
     cp -pr "${srcdir}/${pkgname}-gtk-theme-${_numix_ver}"/* "${srcdir}/${pkgname}-${_oomox_ver}/gtk-theme"
@@ -81,17 +67,8 @@ prepare() {
 }
 
 package() {
-    make -C "${srcdir}/${pkgname}-${_oomox_ver}" -f po.mk install
     install -d "${pkgdir}/opt/${pkgname}"
-    cp -pr "${srcdir}/${pkgname}-${_oomox_ver}"/* "${pkgdir}/opt/${pkgname}"
+    cd "${srcdir}/oomox-${_oomox_ver}"
+    ./packaging/install.sh . "${pkgdir}"
     python -O -m compileall "${pkgdir}/opt/${pkgname}/oomox_gui"
-    install -d "${pkgdir}/usr/bin/"
-    install -d "${pkgdir}/usr/share/applications/"
-
-    for script in oomox-gui oomox-cli oomox-materia-cli oomox-gnome-colors-icons-cli oomox-archdroid-icons-cli oomoxify-cli
-    do
-        install -Dm755 "${srcdir}/${script}" "${pkgdir}/usr/bin"
-    done
-
-    install -Dm644 "${srcdir}/oomox.desktop" "${pkgdir}/usr/share/applications"
 }

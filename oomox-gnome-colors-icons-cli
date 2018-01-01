@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-cd /opt/oomox/
-exec ./gnome-colors-icon-theme/change_color.sh $@

@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-cd /opt/oomox/
-exec ./oomoxify/oomoxify.sh $@
