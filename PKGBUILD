@@ -1,31 +1,24 @@
 # Maintainer: kitsunyan <kitsunyan@inbox.ru>
 
 pkgname=systemd-boot-password
-pkgver=0.9.4.232
+pkgver=0.9.5.236
 pkgrel=1
-_commit=a7dc69ee5ad9abfe6fb84e119a9d49ccbe9205a5
 pkgdesc='systemd-boot with password-protected editor'
 arch=('i686' 'x86_64')
-url="https://github.com/kitsunyan/systemd-boot-password"
+url="https://github.com/kitsunyan/$pkgname"
 license=('LGPL2.1')
-depends=('systemd')
 makedepends=('gnu-efi-libs' 'docbook-xsl')
 optdepends=('sbsigntools: signing support')
-source=("git://github.com/kitsunyan/systemd-boot-password.git#commit=$_commit")
-sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  ./autogen.sh
-}
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('eaa7817f12f3090b3174a25515966de52d70dd357bbbaaee05a666358617f81e')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
