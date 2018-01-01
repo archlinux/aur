@@ -1,16 +1,16 @@
 # Maintainer: lilydjwg <lilydjwg@gmail.com>
 pkgname=fbcat
-pkgver=0.4
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A framebuffer screenshot grabber"
 arch=(i686 x86_64)
-url="http://code.google.com/p/fbcat/"
+url="https://github.com/jwilk/fbcat"
 license=("GPLv2")
 optdepends=('imagemagick: for fbgrab' 'netpbm: for fbgrab' 'graphicsmagick: for fbgrab')
 makedepends=('docbook-xsl')
-source=(https://bitbucket.org/jwilk/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz)
+source=(https://github.com/jwilk/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 conflicts=('fbgrab')
-md5sums=('7ae033c7fb3c0624d501c4ce7e06ab4b')
+md5sums=('944fd3854bfe00971bfcd830f6c94497')
 
 build() {
   cd $srcdir/${pkgname}-${pkgver}
@@ -23,6 +23,5 @@ package() {
   install -D -m755 fbgrab ${pkgdir}/usr/bin/fbgrab
   install -D -m644 doc/fbcat.1 ${pkgdir}/usr/share/man/man1/fbcat.1
   install -D -m644 doc/fbgrab.1 ${pkgdir}/usr/share/man/man1/fbgrab.1
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
 # vim:syntax=sh
