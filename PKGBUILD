@@ -1,22 +1,25 @@
-# Maintainer: sinkuu <sinkuupump@gmail.com>
-
+# Maintainer: ValHue <vhuelamo at gmail dot com>
+#
+# Contributor: sinkuu <sinkuupump@gmail.com>
+#
 _install_cron_file=
 _install_logrotate_file="y"
 
-pkgname=clamav-unofficial-sigs
-pkgver=5.6.1
-pkgrel=1
-pkgdesc='ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com'
+pkgname="clamav-unofficial-sigs"
+pkgver="5.6.2"
+pkgrel="1"
+pkgdesc="ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com"
+url="https://github.com/extremeshok/clamav-unofficial-sigs"
 arch=('any')
-url='https://github.com/extremeshok/clamav-unofficial-sigs'
 license=('BSD')
 depends=('clamav' 'rsync' 'bind-tools' 'curl')
 source=("https://github.com/extremeshok/clamav-unofficial-sigs/archive/$pkgver.tar.gz"
     'cron'
     'logrotate'
     'clamav-unofficial-sigs.8'
-    'clamav-unofficial-sigs.service.patch')
-sha256sums=('5c26410470e1010d0bd167fc8ae75a7035c6c0977f2f0af1da4b004064e43c81'
+    'clamav-unofficial-sigs.service.patch'
+)
+sha256sums=('233404d767fcb7d2b82defef831d584cbbcc7105f6bbc586d69a0a960bc0d4df'
             '82d1db1f7f8400d4b5457343a6c6e1c32cffbee06b0f73104c5b11641b58fa74'
             'ad2dee4d8d21483f33f9e95a808c598c98c03014baffa12141ecaefcd2cc3a79'
             '4bc5487486a2bc11ba827eeaf41bf866c5da34633bef7d801af34cbe7f8d1801'
@@ -51,3 +54,5 @@ package() {
     install -d "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 systemd/* "${pkgdir}/usr/lib/systemd/system/"
 }
+
+# vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh:
