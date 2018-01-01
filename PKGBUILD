@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  make -j10
+  make
 }
 
 package() {
