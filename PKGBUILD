@@ -2,7 +2,7 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 pkgname=doclifter
 pkgver=2.17
-pkgrel=2
+pkgrel=3
 pkgdesc="translate troff requests into docbook"
 arch=('any')
 url="http://www.catb.org/~esr/doclifter/"
@@ -11,7 +11,7 @@ depends=(python2)
 install=
 source=(.AURINFO "http://www.catb.org/~esr/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('947b7c74d13169d2d6d808483271d5054f2b753014828cc1d626a09dbc9e9373'
-            '27d2c8df3f2a199389a3baff65378c85bff14132a9026a514da5d00d65b58725')
+            'bb4e34e5fda1bf5ad7180ebb0332090ab4c8330bf54c8213adec734497741ed5')
 
 build() {
 	sed "s/\/env python$/\/env python2/" ${pkgname}-${pkgver}/doclifter > doclifter
