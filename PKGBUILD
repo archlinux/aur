@@ -1,5 +1,5 @@
 pkgname=otrs
-pkgver=5.0.26
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -10,10 +10,12 @@ depends=("perl"
          "perl-gd"
          "perl-dbi"
          "perl-ldap"
+         "perl-ntlm"
          "perl-dbd-pg"
          "perl-gdgraph"
          "perl-json-xs"
          "perl-net-dns"
+         "perl-datetime"
          "perl-timedate"
          "perl-pdf-api2"
          "perl-dbd-odbc"
@@ -23,6 +25,7 @@ depends=("perl"
          "perl-archive-zip"
          "perl-text-csv-xs"
          "perl-xml-libxslt"
+         "perl-authen-sasl"
          "perl-crypt-ssleay"
          "perl-yaml-libyaml"
          "perl-mail-imapclient"
@@ -35,10 +38,8 @@ backup=("etc/webapps/${pkgname}/Config.pm")
 install="${pkgname}.install"
 source=("${pkgname}.install"
         "http://ftp.otrs.org/pub/otrs/${pkgname}-${pkgver}.tar.gz")
-md5sums=("9305e7a2dd41a19a10c0d9ab376965fd"
-         "a0261e084de108a7a80e2ded5d7f9767")
-sha1sums=("d88cdb1d905aebe146cc83bcf31dec9dcff62c30"
-          "5c9b403ef1fc4d13e7bccadc5983d9d0bc7560b5")
+sha256sums=("cb10dda941c7477880ae06362ef69fe0cfb1d06ad9ad1315cb7322d4dd65963e"
+            "046ca4f5792ddeb25c7aba1e56dc7769e95f9304f1e96c4f44c3bfb6a5ae17c8")
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}-cron.service"

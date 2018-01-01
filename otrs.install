@@ -1,14 +1,11 @@
 post_install() {
-  getent passwd otrs > /dev/null || useradd -r -M -N -g http -s /bin/bash -d /usr/share/webapps/otrs otrs > /dev/null
-  /usr/share/webapps/otrs/bin/./otrs.SetPermissions.pl \
-    --otrs-user=otrs  \
-    --web-group=http  \
-      /usr/share/webapps/otrs > /dev/null
-  chmod 2775 /usr/share/webapps/otrs
+    getent passwd otrs > /dev/null 2>&1 || useradd -r -M -N -g http -s /bin/bash -d /usr/share/webapps/otrs otrs > /dev/null 2>&1
+    /usr/share/webapps/otrs/bin/otrs.SetPermissions.pl --otrs-user=otrs --web-group=http /usr/share/webapps/otrs > /dev/null 2>&1
+    chmod 2775 /usr/share/webapps/otrs
 }
 
 post_remove() {
-   userdel -rf otrs
+    getent passwd otrs > /dev/null 2>&1 && userdel -rf otrs > /dev/null 2>&1
 }
 
 pre_upgrade() {
@@ -17,9 +14,6 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-  /usr/share/webapps/otrs/bin/./otrs.SetPermissions.pl \
-    --otrs-user=otrs  \
-    --web-group=http  \
-      /usr/share/webapps/otrs > /dev/null
-  chmod 2775 /usr/share/webapps/otrs
+    /usr/share/webapps/otrs/bin/otrs.SetPermissions.pl --otrs-user=otrs --web-group=http /usr/share/webapps/otrs > /dev/null 2>&1
+    chmod 2775 /usr/share/webapps/otrs
 }
