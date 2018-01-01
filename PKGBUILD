@@ -10,8 +10,8 @@ arch=(x86_64)
 license=(GPL3)
 depends=(gstreamer gtkmm3 libclastfm libconfig taglib)
 makedepends=(boost git)
-provides=('')
-conflicts=('')
+provides=('omp')
+conflicts=('omp')
 source=('git+https://github.com/TheWiseNoob/OpenMusicPlayer.git'
         'omp.desktop')
 sha256sums=('SKIP'
