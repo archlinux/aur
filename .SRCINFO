@@ -1,7 +1,7 @@
 pkgbase = wasm-gc-git
 	pkgdesc = gc-sections for wasm
-	pkgver = 0.0.0
-	pkgrel = 2
+	pkgver = 0.1.0.r0.gfbdc8b1
+	pkgrel = 1
 	url = https://github.com/alexcrichton/wasm-gc
 	arch = i686
 	arch = x86_64
