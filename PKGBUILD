@@ -1,14 +1,14 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
 _pkgname=bootimgtool
 pkgname=$_pkgname-git
-pkgver=20150501.g1c6e2bf
+pkgver=20150607.g9ccd962
 pkgrel=1
 pkgdesc="Android boot.img extractor/assembler handling multiple variants"
 arch=('i686' 'x86_64')
 url="https://github.com/vianney/bootimgtool"
 license=('GPL3')
 depends=('openssl')
-makedepends=('git' 'autoconf' 'automake')
+makedepends=('git' 'cmake')
 source=("git://github.com/vianney/$_pkgname.git")
 md5sums=('SKIP')
 
@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  autoreconf --install
-  ./configure --prefix=/usr
-  make
+  mkdir -p build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cmake --build .
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make install DESTDIR="$pkgdir"
+  cd "$srcdir/$_pkgname/build"
+  DESTDIR="$pkgdir" cmake --build . --target install
 }
