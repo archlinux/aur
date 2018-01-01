@@ -15,7 +15,6 @@ pkgbase = gnucash-git
 	makedepends = gmock
 	makedepends = gconf
 	depends = aqbanking
-	depends = goffice
 	depends = libdbi-drivers
 	depends = libgnomecanvas
 	depends = boost-libs

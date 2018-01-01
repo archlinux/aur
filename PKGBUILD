@@ -3,7 +3,7 @@
 # Based on gnucash-latest <- aur package
 #		^^^^^ Maintainer: Neng Xu <neng2.xu2@gmail.com>
 #		^^^^^ Contributor: quizzmaster
-# Based on gnucash-gtk3-git <- aur package
+# Updated w/ help of gnucash-gtk3-git <- aur package
 #		^^^^^ Maintainer: Jeb Rosen <jeb@jebrosen.com>
 #		^^^^^ Contributor: Juergen Hoetzel <juergen@archlinux.org>
 #		^^^^^ Contributor: Mark Schneider <queueRAM@gmail.com>
@@ -18,7 +18,7 @@ pkgdesc="A personal and small-business financial-accounting application - GIT ve
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('aqbanking' 'goffice' 'libdbi-drivers' 'libgnomecanvas' 'boost-libs' \
+depends=('aqbanking' 'libdbi-drivers' 'libgnomecanvas' 'boost-libs' \
 	 'slib' 'webkit2gtk' 'libgnome-keyring' 'sqlite2')
 optdepends=('evince: for print preview'
 	    'perl-date-manip: for stock information lookups'
