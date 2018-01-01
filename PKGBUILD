@@ -1,12 +1,12 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 pkgname=openhab2
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="openHAB2 open source home automation software"
 arch=('any')
 url="http://www.openhab.org/"
 license=('EPL')
-depends=('java-runtime-headless>=8')
+depends=('java-runtime-headless=8')
 
 conflicts=('openhab-runtime' 'openhab-addons')
 
