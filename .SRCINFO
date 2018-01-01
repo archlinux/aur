@@ -5,7 +5,7 @@ pkgbase = backlight_control
 	url = https://github.com/Hendrikto/backlight_control
 	arch = x86_64
 	license = MIT
-	source = https://github.com/Hendrikto/backlight_control/archive/1.0.tar.gz
+	source = backlight_control-1.0.tar.gz::https://github.com/Hendrikto/backlight_control/archive/1.0.tar.gz
 	md5sums = 0b32929f59852aa7a71d25c889d4255b
 
 pkgname = backlight_control

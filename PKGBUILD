@@ -7,7 +7,7 @@ pkgdesc='Simple backlight brightness control'
 arch=('x86_64')
 url='https://github.com/Hendrikto/backlight_control'
 license=('MIT')
-source=("https://github.com/Hendrikto/backlight_control/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Hendrikto/backlight_control/archive/$pkgver.tar.gz")
 md5sums=('0b32929f59852aa7a71d25c889d4255b')
 
 build() {
