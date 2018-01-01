@@ -1,6 +1,6 @@
 pkgbase = libretro-pcsx-rearmed-git
 	pkgdesc = libretro implementation of PCSX ReARMed. (PlayStation)
-	pkgver = 1281.abaa8b9
+	pkgver = 1342.ec665d1
 	pkgrel = 1
 	url = https://github.com/libretro/pcsx_rearmed
 	arch = i686

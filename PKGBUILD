@@ -3,7 +3,7 @@
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
 pkgname=libretro-pcsx-rearmed-git
-pkgver=1281.abaa8b9
+pkgver=1342.ec665d1
 pkgrel=1
 pkgdesc="libretro implementation of PCSX ReARMed. (PlayStation)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
