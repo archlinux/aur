@@ -12,10 +12,6 @@ license=('custom')
 depends=('gtk3' 'libcups' 'nss' 'gconf' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 makedepends=('w3m')
 optdepends=(
-    'vivaldi-ffmpeg-codecs: playback of proprietary video/audio'
-    'pepper-flash: flash support'
-    'google-chrome: Widevine DRM Plugin'
-    'vivaldi-widevine: Widevine DRM Plugin'
     'libnotify: native notifications'
 )
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-1_armhf.deb")
