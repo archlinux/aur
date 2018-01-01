@@ -1,36 +1,37 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=dwarffortress-ironhand
 _pkgname=dwarffortress
-pkgver=0.43.05
-_pkgver=43_05
-pkgrel=2
+pkgver=0.44.02
+_pkgver=44_02
+pkgrel=1
 pkgdesc="A single-player fantasy game in which you build a dwarven outpost or play an adventurer in a randomly generated world"
-arch=(i686 x86_64)
+arch=('x86_64' 'i686')
 url="http://www.bay12games.com/dwarves/"
 license=('custom:dwarffortress')
 depends=(gtk2 glu sdl_image libsndfile openal sdl_ttf glew gcc-libs glib2)
 makedepends=(git cmake)
 optdepends=('nvidia-utils: If you have nvidia graphics'
-            'catalyst-utils: If you have ATI graphics'
             'alsa-lib: for alsa sound'
             'libpulse: for pulse sound')
 options=('!strip' '!buildflags')
 install=${_pkgname}.install
 # I made a fucking github repo with the sole purpose of unfucking df a bit
 # We try to compile whatever little bit of df is open source
-source=(http://www.bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2
-        git://github.com/svenstaro/dwarf_fortress_unfuck.git#tag=${pkgver}
+source=(git://github.com/svenstaro/dwarf_fortress_unfuck.git#tag=${pkgver}
         dwarffortress
         dwarffortress.desktop
-        "Ironhand_${_pkgver}A.zip::http://dffd.bay12games.com/download.php?id=11349&f=Ironhand_43_05A.zip"
+        "Ironhand_44_02A.zip::http://dffd.bay12games.com/download.php?id=13283&f=Ironhand_44_02A.zip"
         dwarffortress.png)
-sha256sums=('856c13170e8beefb5419ae71ee26c85db9716b3ebd4c7348aa44b896bd490be4'
-            'SKIP'
+source_x86_64=(http://www.bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2)
+source_i686=(http://www.bay12games.com/dwarves/df_${_pkgver}_linux32.tar.bz2)
+sha256sums=('SKIP'
             '211eaec6559d4fd5c08341dbed1f27bfab997a57bdf61fd268f9940e244652c5'
             'e79e3d945c6cc0da58f4ca30a210c7bf1bc3149fd10406d1262a6214eb40445a'
-            '442c02fc034c8cb6eb648e5688068bbf237b325c63e5f84249ed3d02db985ac9'
+            '59621b7cde102e45600d68a44b3ce5e5b1152809c608a280249865c37b3f5fdc'
             '83183abc70b11944720b0d86f4efd07468f786b03fa52fe429ca8e371f708e0f')
+sha256sums_x86_64=('504d0d9ea7d11d64cae0444ee2589bc4afdda7fbb5bb1276ddacac2ebb364bf0')
+sha256sums_i686=('d0721cd577fcc14729b76754c30feb6fda7029275bb0a9b1f6bca940fd9b1ffb')
 
 conflicts=(dwarffortress dwarffortress-obsidian)
 provides=(dwarffortress=$pkgver)
@@ -46,8 +47,6 @@ package() {
   install -dm755 $pkgdir/opt/
   cp -r $srcdir/df_linux $pkgdir/opt/$_pkgname
   rm -r $pkgdir/opt/$_pkgname/df $pkgdir/opt/$_pkgname/libs/* $pkgdir/opt/$_pkgname/g_src
-
-  cp -r $srcdir/"Dwarf Fortress"/* $pkgdir/opt/$_pkgname
 
   find $pkgdir/opt/$_pkgname -type d -exec chmod 755 {} +
   find $pkgdir/opt/$_pkgname -type f -exec chmod 644 {} +
