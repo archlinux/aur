@@ -3,8 +3,8 @@
 pkgname=vuescan-bin
 _pgmname=vuescan
 _srcname=VueScan
-pkgver=9.5
-pkgrel=2
+pkgver=9.6
+pkgrel=1
 pkgdesc="A powerful proprietary scanning tool developed by Hamrick Software"
 arch=('i686' 'x86_64')
 url="http://www.hamrick.com/"
@@ -14,8 +14,8 @@ depends=('gtk2' 'libsm' 'libusb-compat')
 options=(!strip)
 
 source=('LICENSE' 'vuescan.sh' 'vuescan.desktop')
-source_i686=('http://www.hamrick.com/files/vuex3295.tgz')
-source_x86_64=('http://www.hamrick.com/files/vuex6495.tgz')
+source_i686=('http://www.hamrick.com/files/vuex3296.tgz')
+source_x86_64=('http://www.hamrick.com/files/vuex6496.tgz')
 
 md5sums=('e4d56c48bc5ac80b83630238a7ab658d'
          'da269332a033a101a4509d34f1552c10'
