@@ -9,6 +9,7 @@ url='https://github.com/st3fan/dovecot-xaps-daemon'
 license=('MIT')
 makedepends=('git' 'gb')
 conflicts=('dovecot-xaps-daemon-git')
+backup=('etc/xapsd/xapsd.conf')
 source=(https://github.com/st3fan/dovecot-xaps-daemon/archive/v${pkgver}.tar.gz
 		    xapsd.conf
 		    xapsd.service)
