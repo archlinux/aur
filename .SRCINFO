@@ -1,6 +1,6 @@
 pkgbase = packer-io-bin
 	pkgdesc = Hashicorp Packer -- upstream binary build
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://www.packer.io/downloads.html
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = packer-io-bin
 	provides = packer-io
 	conflicts = packer-io
 	replaces = packer-io
-	source = https://releases.hashicorp.com/packer/1.1.2/packer_1.1.2_linux_amd64.zip
-	sha256sums = 7e315a6110333d9d4269ac2ec5c68e663d82a4575d3e853996a976875612724b
+	source = https://releases.hashicorp.com/packer/1.1.3/packer_1.1.3_linux_amd64.zip
+	sha256sums = b7982986992190ae50ab2feb310cb003a2ec9c5dcba19aa8b1ebb0d120e8686f
 
 pkgname = packer-io-bin
 
