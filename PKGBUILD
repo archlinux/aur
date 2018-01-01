@@ -21,8 +21,7 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm 755 run_script "$pkgdir/usr/bin/sane-qt"
-  install -Dm 755 sane-qt_start.py 
-"$pkgdir/usr/share/sane-qt/sane-qt_start.py"
+  install -Dm 755 sane-qt_start.py "$pkgdir/usr/share/sane-qt/sane-qt_start.py"
   install -Dm 755 saneqt.py "$pkgdir/usr/share/sane-qt/saneqt.py"
   install -Dm 644 LICENSE 
 "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
