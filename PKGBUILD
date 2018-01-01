@@ -2,19 +2,18 @@
 
 pkgname=libretro-mupen64plus-git
 _gitname=mupen64plus-libretro
-pkgver=599.1149992
+pkgver=633.6f80cbc
 pkgrel=1
 pkgdesc="libretro port of Mupen64 Plus"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/mupen64plus-libretro"
 license=('custom' 'GPL' 'LGPL')
+depends=('libretro-core-info')
 makedepends=('git')
-source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
-	"https://raw.github.com/libretro/libretro-super/master/dist/info/mupen64plus_libretro.info")
+source=("${_gitname}::git://github.com/libretro/${_gitname}.git")
 groups=('libretro')
 
-md5sums=('SKIP'
-	 'SKIP')
+md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -35,6 +34,5 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/mupen64plus_libretro.info" "${pkgdir}/usr/share/libretro/info/libretro-mupen64plus.info"
   install -Dm644 "${_gitname}/mupen64plus_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-mupen64plus.so"
 }

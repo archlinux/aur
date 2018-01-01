@@ -1,6 +1,6 @@
 pkgbase = libretro-mupen64plus-git
 	pkgdesc = libretro port of Mupen64 Plus
-	pkgver = 599.1149992
+	pkgver = 633.6f80cbc
 	pkgrel = 1
 	url = https://github.com/libretro/mupen64plus-libretro
 	arch = i686
@@ -13,9 +13,8 @@ pkgbase = libretro-mupen64plus-git
 	license = GPL
 	license = LGPL
 	makedepends = git
+	depends = libretro-core-info
 	source = mupen64plus-libretro::git://github.com/libretro/mupen64plus-libretro.git
-	source = https://raw.github.com/libretro/libretro-super/master/dist/info/mupen64plus_libretro.info
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = libretro-mupen64plus-git
