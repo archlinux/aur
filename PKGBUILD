@@ -10,17 +10,15 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/pcsx_rearmed"
 license=('GPL')
 conflicts=('libretro-pcsx_rearmed-git')
-depends=('zlib')
+depends=('zlib' 'libretro-core-info')
 makedepends=('git')
 groups=('libretro')
 
 _libname=pcsx_rearmed_libretro
 _gitname=pcsx_rearmed
-source=("git+https://github.com/libretro/${_gitname}.git"
-        "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
+source=("git+https://github.com/libretro/${_gitname}.git")
 
-md5sums=('SKIP'
-         'SKIP')
+md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -34,5 +32,4 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
-}
+ }

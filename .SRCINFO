@@ -8,14 +8,13 @@ pkgbase = libretro-pcsx-rearmed-git
 	arch = arm
 	arch = armv6h
 	arch = armv7h
-        groups = libretro
+	groups = libretro
 	license = GPL
 	makedepends = git
 	depends = zlib
+	depends = libretro-core-info
 	conflicts = libretro-pcsx_rearmed-git
 	source = git+https://github.com/libretro/pcsx_rearmed.git
-	source = https://raw.github.com/libretro/libretro-super/master/dist/info/pcsx_rearmed_libretro.info
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = libretro-pcsx-rearmed-git
