@@ -17,15 +17,15 @@
 pkgbase="zfs-linux-git"
 pkgname=("zfs-linux-git" "zfs-linux-git-headers")
 
-pkgver=2017.12.28.r3224.390d679ac.4.14.8.1
+pkgver=2017.12.28.r3224.390d679ac.4.14.10.1
 pkgrel=1
-makedepends=("linux-headers=4.14.8-1" "git" "spl-linux-git-headers")
+makedepends=("linux-headers=4.14.10-1" "git" "spl-linux-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git#commit=390d679acdfa6a2498280a4dcd33b7600ace27ce")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-git" "zfs-utils-common-git=2017.12.28.r3224.390d679ac" "linux=4.14.8-1")
+depends=("kmod" "spl-linux-git" "zfs-utils-common-git=2017.12.28.r3224.390d679ac" "linux=4.14.10-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -33,8 +33,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.5 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.14.8-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.14.8-1-ARCH/build
+                --with-linux=/usr/lib/modules/4.14.10-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.14.10-1-ARCH/build
     make
 }
 
@@ -60,5 +60,5 @@ package_zfs-linux-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.14.8-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.14.10-1-ARCH/Module.symvers
 }
