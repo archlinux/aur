@@ -1,6 +1,6 @@
 pkgbase = arm-frc-linux-gnueabi-wpilib-git
 	pkgdesc = The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain
-	pkgver = 1860.ce4c9edd
+	pkgver = 2010.55b6764d
 	pkgrel = 1
 	url = https://github.com/wpilibsuite/allwpilib
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = arm-frc-linux-gnueabi-wpilib-git
 	license = custom=FRC-BSD
 	makedepends = git
 	makedepends = java-environment=8
-	makedepends = doxygen
 	makedepends = unzip
 	depends = arm-frc-linux-gnueabi-gcc
 	provides = arm-frc-linux-gnueabi-wpilib
@@ -17,7 +16,7 @@ pkgbase = arm-frc-linux-gnueabi-wpilib-git
 	options = libtool
 	options = staticlibs
 	options = !emptydirs
-	source = git+git://github.com/calcmogul/allwpilib
+	source = git+git://github.com/wpilibsuite/allwpilib
 	sha512sums = SKIP
 
 pkgname = arm-frc-linux-gnueabi-wpilib-git
