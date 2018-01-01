@@ -1,0 +1,22 @@
+pkgbase = ncpamixer
+	pkgdesc = ncurses PulseAudio Mixer
+	pkgver = 1.2
+	pkgrel = 3
+	url = https://github.com/fulhax/ncpamixer
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = ncurses
+	depends = pulseaudio
+	provides = ncpamixer
+	conflicts = ncpamixer-git
+	replaces = ncpamixer-git
+	source = https://github.com/fulhax/ncpamixer/archive/1.2.tar.gz
+	md5sums = ea470615d8aa317dc51a61446e3a5dc2
+
+pkgname = ncpamixer
+
