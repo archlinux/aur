@@ -1,0 +1,19 @@
+[Unit]
+Description=Apple Push Notification Service
+After=network.target auditd.service
+
+[Service]
+User=root
+EnvironmentFile=/etc/xapsd/xapsd.conf
+ExecStart=/usr/bin/xapsd -key=/etc/xapsd/${KEY_FILE} \
+                         -certificate=/etc/xapsd/${CERT_FILE} \
+                         -database=/var/lib/xapsd/xapsd.json \
+                         -socket=/var/run/dovecot/xapsd.sock \
+                         -debug=${DEBUG}
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
