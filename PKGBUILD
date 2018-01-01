@@ -18,15 +18,15 @@
 pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
 
-pkgver=0.7.5.4.9.72.1
+pkgver=0.7.5.4.9.73.1
 pkgrel=1
-makedepends=("linux-lts-headers=4.9.72" "libelf" "spl-linux-lts-headers")
+makedepends=("linux-lts-headers=4.9.73" "libelf" "spl-linux-lts-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.5/zfs-0.7.5.tar.gz")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-lts" "zfs-utils-common=0.7.5" "linux-lts=4.9.72")
+depends=("kmod" "spl-linux-lts" "zfs-utils-common=0.7.5" "linux-lts=4.9.73")
 
 build() {
     cd "${srcdir}/zfs-0.7.5"
@@ -34,8 +34,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.5 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.9.72-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.9.72-1-lts/build
+                --with-linux=/usr/lib/modules/4.9.73-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.9.73-1-lts/build
     make
 }
 
@@ -60,5 +60,5 @@ package_zfs-linux-lts-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.9.72-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.9.73-1-lts/Module.symvers
 }
