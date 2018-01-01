@@ -2,13 +2,13 @@
 
 pkgname=dovecot-xaps-daemon-git
 _gitname=dovecot-xaps-daemon
-pkgver=60.612d6af
+pkgver=62.f263e27
 pkgrel=1
 pkgdesc='iOS Push Email for Dovecot - xaps daemon'
 arch=('any')
 url='https://github.com/st3fan/dovecot-xaps-daemon'
 license=('MIT')
-makedepends=('git' 'gb')
+makedepends=('git')
 provides=('dovecot-xaps-daemon')
 conflicts=('dovecot-xaps-daemon')
 backup=('etc/xapsd/xapsd.conf')
@@ -24,15 +24,20 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
+prepare() {
+  mkdir -p "${srcdir}/src/github.com/st3fan/"
+  ln -s "${srcdir}/${_gitname}" "${srcdir}/src/github.com/st3fan/${_gitname}"
+}
+
 build() {
-  cd "${srcdir}/${_gitname}"
-  gb build all
+  cd "${srcdir}/src/github.com/st3fan/${_gitname}/"
+  GOPATH="${srcdir}" go build .
 }
 
 package() {
   install -dm755 "${pkgdir}/var/lib/xapsd/"
 
   install -Dm644 -t "${pkgdir}/etc/xapsd/" "${srcdir}/xapsd.conf"
-  install -Dm755 -t "${pkgdir}/usr/bin/" "${srcdir}/${_gitname}/bin/xapsd"
+  install -Dm755 -t "${pkgdir}/usr/bin/xapsd" "${srcdir}/${_gitname}/${_gitname}"
   install -Dm644 -t "${pkgdir}/usr/lib/systemd/system/" "${srcdir}/xapsd.service"
 }
