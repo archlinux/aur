@@ -1,0 +1,23 @@
+pkgbase = easy-boot-creator
+	pkgdesc = Tool to create a bootable usb stick quick and easy
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://einjel-frontend.herokuapp.com
+	arch = x86_64
+	license = GPL
+	depends = tar
+	depends = coreutils
+	depends = util-linux
+	depends = parted
+	depends = gksu
+	depends = git
+	optdepends = ttf-dejavu
+	provides = easy-boot-creator
+	conflicts = easy-boot-creator
+	options = !libtool
+	options = !emptydirs
+	source = git+https://bitbucket.org/eiNjel/easybootcreator.git
+	sha256sums = SKIP
+
+pkgname = easy-boot-creator
+
