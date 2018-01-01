@@ -2,7 +2,7 @@
 # Contributor: Calle Erlandsson <calle@calleerlandsson.com>
 
 pkgname=pick
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='A fuzzy search tool for the command line'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/calleerlandsson/pick'
 license=('MIT')
 depends=('ncurses')
 source=("https://github.com/calleerlandsson/pick/releases/download/v$pkgver/pick-$pkgver.tar.gz")
-sha256sums=('0e87141b9cca7c31d4d77c87a7c0582e316f40f9076444c7c6e87a791f1ae80b')
+sha256sums=('4a596b8f40a316bc4e2c0d8e8842810d7a7b69d464a410e4ee2a6574e01629e3')
 
 build() {
   cd $pkgname-$pkgver
