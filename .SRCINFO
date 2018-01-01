@@ -11,13 +11,13 @@ pkgbase = nginx-unit
 	source = nginx-unit-0.3.tar.gz::https://hg.nginx.org/unit/archive/0.3.tar.gz
 	md5sums = 62ac119c9e345e0b447356b543111b33
 
-pkgname = nginx-unit
+pkgname = nginx-unitd
 
 pkgname = nginx-unit-python
-	depends = nginx-unit
+	depends = nginx-unitd
 	depends = python
 
 pkgname = nginx-unit-php
-	depends = nginx-unit
+	depends = nginx-unitd
 	depends = php
 
