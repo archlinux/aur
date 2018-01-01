@@ -2,7 +2,7 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 pkgname=doclifter
 pkgver=2.17
-pkgrel=3
+pkgrel=4
 pkgdesc="translate troff requests into docbook"
 arch=('any')
 url="http://www.catb.org/~esr/doclifter/"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=(python2)
 install=
 source=(.AURINFO "http://www.catb.org/~esr/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('947b7c74d13169d2d6d808483271d5054f2b753014828cc1d626a09dbc9e9373'
+sha256sums=('6e3e0640bb32b1b3bd23b7362ea101cfafa24172004c9bf9a62d2178b4a959e1'
             'bb4e34e5fda1bf5ad7180ebb0332090ab4c8330bf54c8213adec734497741ed5')
 
 build() {
