@@ -4,7 +4,7 @@ pkgname=dwarffortress-ironhand
 _pkgname=dwarffortress
 pkgver=0.44.02
 _pkgver=44_02
-pkgrel=1
+pkgrel=2
 pkgdesc="A single-player fantasy game in which you build a dwarven outpost or play an adventurer in a randomly generated world"
 arch=('x86_64' 'i686')
 url="http://www.bay12games.com/dwarves/"
@@ -47,6 +47,8 @@ package() {
   install -dm755 $pkgdir/opt/
   cp -r $srcdir/df_linux $pkgdir/opt/$_pkgname
   rm -r $pkgdir/opt/$_pkgname/df $pkgdir/opt/$_pkgname/libs/* $pkgdir/opt/$_pkgname/g_src
+
+  cp -r $srcdir/"Dwarf Fortress"/* $pkgdir/opt/$_pkgname
 
   find $pkgdir/opt/$_pkgname -type d -exec chmod 755 {} +
   find $pkgdir/opt/$_pkgname -type f -exec chmod 644 {} +
