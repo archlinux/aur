@@ -1,0 +1,14 @@
+pkgbase = yubipam-git
+	pkgdesc = YubiPAM is a module for PAM that provides support for One Time Passwords (OTP) authentication.
+	pkgver = r41.9427495
+	pkgrel = 1
+	url = https://github.com/firnsy/yubipam
+	install = yubipam-git.install
+	arch = any
+	license = GPL-2
+	provides = yubipam
+	source = git://github.com/fzerorubigd/yubipam.git
+	md5sums = SKIP
+
+pkgname = yubipam-git
+

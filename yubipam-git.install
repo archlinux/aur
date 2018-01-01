@@ -1,0 +1,11 @@
+post_install() {
+	groupadd yubiauth
+	touch /etc/yubikey
+	chgrp yubiauth /etc/yubikey /usr/local/sbin/yk_chkpwd
+	chmod g+rw /etc/yubikey
+	chmod g+s /usr/local/sbin/yk_chkpwd
+}
+
+post_remove() {
+	groupdel yubiauth
+}
