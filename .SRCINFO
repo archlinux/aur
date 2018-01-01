@@ -1,7 +1,7 @@
 pkgbase = quicklisp
 	pkgdesc = A library manager for Common Lisp
 	pkgver = 20150128
-	pkgrel = 3
+	pkgrel = 1
 	url = https://www.quicklisp.org
 	install = quicklisp.install
 	arch = any

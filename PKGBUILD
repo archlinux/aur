@@ -3,7 +3,7 @@
 
 pkgname=quicklisp
 pkgver="20150128"
-pkgrel=3
+pkgrel=1
 pkgdesc="A library manager for Common Lisp"
 arch=('any')
 url="https://www.quicklisp.org"
