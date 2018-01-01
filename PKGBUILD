@@ -1,6 +1,7 @@
-# Maintainer: Scott Lawrence <bytbox@gmail.com>
+# Maintainer: Mario Blättermann <mario.blaettermann@gmail.com>
+# Contributor: Scott Lawrence <bytbox@gmail.com>
 pkgname=doclifter
-pkgver=2.15
+pkgver=2.17
 pkgrel=1
 pkgdesc="translate troff requests into docbook"
 arch=('any')
@@ -9,8 +10,8 @@ license=('BSD')
 depends=(python2)
 install=
 source=(.AURINFO "http://www.catb.org/~esr/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('67e46e0c737399cc04d5b4ca766864dc'
-         'b4bb10a03c6f9953295c2e92742d342a')
+sha256sums=('947b7c74d13169d2d6d808483271d5054f2b753014828cc1d626a09dbc9e9373'
+            '27d2c8df3f2a199389a3baff65378c85bff14132a9026a514da5d00d65b58725')
 
 build() {
 	sed "s/\/env python$/\/env python2/" ${pkgname}-${pkgver}/doclifter > doclifter
