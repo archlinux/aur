@@ -17,15 +17,15 @@
 pkgbase="zfs-linux-zen"
 pkgname=("zfs-linux-zen" "zfs-linux-zen-headers")
 
-pkgver=0.7.5.4.14.8.1
+pkgver=0.7.5.4.14.10.2
 pkgrel=1
-makedepends=("linux-zen-headers=4.14.8-1" "spl-linux-zen-headers")
+makedepends=("linux-zen-headers=4.14.10-2" "spl-linux-zen-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.5/zfs-0.7.5.tar.gz")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-zen" "zfs-utils-common=0.7.5" "linux-zen=4.14.8-1")
+depends=("kmod" "spl-linux-zen" "zfs-utils-common=0.7.5" "linux-zen=4.14.10-2")
 
 build() {
     cd "${srcdir}/zfs-0.7.5"
@@ -33,8 +33,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.5 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.14.8-1-zen/build \
-                --with-linux-obj=/usr/lib/modules/4.14.8-1-zen/build
+                --with-linux=/usr/lib/modules/4.14.10-2-zen/build \
+                --with-linux-obj=/usr/lib/modules/4.14.10-2-zen/build
     make
 }
 
@@ -60,5 +60,5 @@ package_zfs-linux-zen-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.14.8-1-zen/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.14.10-2-zen/Module.symvers
 }
