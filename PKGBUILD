@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=eclair
-pkgver=0.2alpha3
-_commit=598c7a99ee49bc68c0a0e6fc6721112d231b6dcc
+pkgver=0.2alpha8
+_commit=8edb2a478c4313bb5d593ca6a08083e8c351d2a7
 pkgrel=1
 pkgdesc='A scala implementation of the Lightning Network'
 arch=('any')
@@ -30,7 +30,7 @@ check() {
 package() {
     cd ${pkgname}
 
-    install -Dm644 eclair-node/target/eclair-node_*-capsule-fat.jar \
+    install -Dm644 eclair-node-gui/target/eclair-node-gui-*.jar \
             "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
     install -Dm755 "${srcdir}/eclair.sh" "${pkgdir}/usr/bin/eclair"
 }
