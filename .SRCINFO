@@ -1,0 +1,32 @@
+pkgbase = vivaldi-rpi
+	pkgdesc = An advanced browser made with the power user in mind for Raspberry Pi
+	pkgver = 1.13.1008.40
+	pkgrel = 1
+	url = https://vivaldi.com
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	makedepends = w3m
+	depends = gtk3
+	depends = libcups
+	depends = nss
+	depends = gconf
+	depends = alsa-lib
+	depends = libxss
+	depends = ttf-font
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	optdepends = vivaldi-ffmpeg-codecs: playback of proprietary video/audio
+	optdepends = pepper-flash: flash support
+	optdepends = google-chrome: Widevine DRM Plugin
+	optdepends = vivaldi-widevine: Widevine DRM Plugin
+	optdepends = libnotify: native notifications
+	options = !strip
+	options = !zipman
+	source = https://downloads.vivaldi.com/stable/vivaldi-stable_1.13.1008.40-1_armhf.deb
+	sha512sums = 7b636a8d4f9be825c126863e6761e2e0a1c4a07147984872f46678f1014b70c712071ba7ce15e65d0253d37a70c08e74a2a9fefa0c1f6c356445cb9e2dbcc84a
+
+pkgname = vivaldi-rpi
+
