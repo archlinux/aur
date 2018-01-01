@@ -28,7 +28,6 @@ pkgver() {
 
 prepare() {
   cd dolphin-emu
-  # Fix https://github.com/Tinob/Ishiiruka/issues/99
 
   if [[ -d build ]]; then
     rm -rf build
