@@ -13,7 +13,7 @@ makedepends=('yasm' 'nasm' 'cmake'
 conflicts=()
 source=('https://cinelerra-cv.org/five/src/cin_5.1.20171231-src.tgz' 
 'unblock.patch' )
-md5sums=('4f1ed25ba33cf708d90eb19f9ed5211e'
+md5sums=('3ad63897f753e1ba47e722096b76aeef'
          '25541f98ed8565176ce466558c90b7eb')
 
 
