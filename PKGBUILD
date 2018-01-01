@@ -1,6 +1,6 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=telegram-desktop-dev
-pkgver=1.1.23
+pkgver=1.1.26
 pkgrel=1
 pkgdesc='Official desktop version of Telegram messaging app. Development release.'
 arch=('i686' 'x86_64')
@@ -18,6 +18,7 @@ depends=(
 	'xcb-util-image'
 	'xcb-util-renderutil'
 	'hicolor-icon-theme'
+	'range-v3'
 )
 makedepends=(
 	'chrpath'
@@ -55,6 +56,9 @@ makedepends=(
 	'libwebp'
 	# For qtwayland
 	'wayland'
+	# Removed input packages
+	'fcitx-qt5'
+	'hime'
 )
 optdepends=(
 	'libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
@@ -78,8 +82,9 @@ source=(
 	"telegramdesktop.desktop"
 	"tg.protocol"
 	# Thanks eduardosm, got from his 'telegram-desktop' AUR package
-	"aur-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/aur-fixes.diff?h=telegram-desktop"
-	"libtgvoip-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/libtgvoip-fixes.diff?h=telegram-desktop"
+	#"aur-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/aur-fixes.diff?h=telegram-desktop"
+	"aur-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/aur-fixes.diff?h=telegram-desktop&id=8d880ce2f02cd96354a48ca3c611a89b0b81e672"
+	"libtgvoip-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/libtgvoip-fixes.diff?h=telegram-desktop&id=8d880ce2f02cd96354a48ca3c611a89b0b81e672"
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -141,6 +146,9 @@ prepare() {
 	git apply "$srcdir/aur-fixes.diff"
 	cd "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip"
 	git apply "$srcdir/libtgvoip-fixes.diff"
+	msg2 "Small fixes for proper build"
+	sed -i "$srcdir/Libraries/qt5_6_2/qtbase/src/plugins/platforminputcontexts/platforminputcontexts.pro" \
+		-e 's/fcitx[ \/]*//' -e 's/hime[ \/]*//'
 }
 
 build() {
