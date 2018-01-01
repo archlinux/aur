@@ -5,8 +5,8 @@
 __pkgname="shim"
 pkgname="${__pkgname}-efi"
 
-pkgver=12
-pkgrel=4
+pkgver=14
+pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot"
 url="https://github.com/rhinstaller/${__pkgname}"
 arch=('x86_64')
@@ -24,8 +24,8 @@ install="${__pkgname}.install"
 changelog="${__pkgname}.changelog"
 source=("${url}/releases/download/${pkgver}/${__pkgname}-${pkgver}.tar.bz2"
 	${__pkgname}.patch)
-sha256sums=('d9364983ef91ab09dc231c8d979b413cfa36d4744830ba59f5d3e52b616048b0'
-            'e2715a7aef5ee4d7c6f428d09ab387ce86bdf83969921e2b36eb92696752ebc0')
+sha256sums=('11584881af2cb990a5a782747558ebd3a182b766f2747bd0c0955cbf4786285e'
+            '40f2592eb37ccd7ab79c448f725f36a8ea560f26a10cad11c778a776980e3e7d')
 
 
 # Change to path for your own certificate
@@ -51,20 +51,22 @@ build() {
 
 	local __vendorCertFile="${__certfile}"
 	local __makeArgs
-	if [ -f ${__vendorCertFile} ]; then
+	if [ -f "${__vendorCertFile}" ]; then
 		__makeArgs="VENDOR_CERT_FILE=${__certfile}"
 	fi
 	make ${__makeArgs}
 }
 
 package() {
-
 	cd "${srcdir}/${__pkgname}-${pkgver}/"
 
 	install -d "${pkgdir}/usr/lib/shim/"
 	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/shimx64.efi" "${pkgdir}/usr/lib/shim"
-	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/mmx64.efi.signed" "${pkgdir}/usr/lib/shim"
-	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/fbx64.efi.signed" "${pkgdir}/usr/lib/shim"
-
+	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/mmx64.efi.signed" "${pkgdir}/usr/lib/shim" || echo "No cert at: ${__certfile}"
+	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/fbx64.efi.signed" "${pkgdir}/usr/lib/shim" || echo "No cert at: ${__certfile}"
+	if [ ! -f "${__certfile}" ]; then
+		echo "Certificates required for \${FILE}.signed"
+		echo "Current set location: ${__certfile}"
+		echo "If you want to make your own certificates, use \"make-certs\" in the source directory"
+	fi
 }
-

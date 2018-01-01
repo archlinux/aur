@@ -1,11 +1,11 @@
---- Makefile.old	2017-04-12 15:20:45.296682169 -0600
-+++ Makefile	2017-04-12 15:20:52.366768324 -0600
-@@ -52,7 +52,7 @@
- 	MMNAME	= mmx64
- 	FBNAME	= fbx64
- 	SHIMNAME= shimx64
--	EFI_PATH:=/usr/lib64/gnuefi
-+	EFI_PATH:=/usr/lib64
- 	LIB_PATH:=/usr/lib64
- 
+--- Makefile	2018-01-01 05:35:14.249320339 -0700
++++ src/shim-14/Makefile	2018-01-01 05:36:50.531466485 -0700
+@@ -107,7 +107,7 @@
  endif
+ 
+ FORMAT		?= --target efi-app-$(ARCH)
+-EFI_PATH	?= $(LIBDIR)/gnuefi
++EFI_PATH	?= $(LIBDIR)
+ 
+ MMSTEM		?= mm$(ARCH_SUFFIX)
+ MMNAME		= $(MMSTEM).efi

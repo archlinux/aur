@@ -1,3 +1,35 @@
+14
+	The shim EFI binary cannot have sections whose offset is not a multiple of the
+	file header offset, or else signtool.exe will generate an incorrect signature
+	that cannot be verified. Currently we generate a PLT section that is
+	incorrectly aligned, due to an error in rebasing OpenSSL to fix a different
+	issue. This version rectifies that error, as well as adding --no-undefined to
+	the final link, so that any such missing symbol will cause a build error. This
+	doesn't necessarily solve the file offset problem in all cases, but it does
+	solve it in all the cases we've actually seen so far.
+
+13
+	* OpenSSL reverted to 1.0.2k to make the cert chaining of existing deployments stay working
+	* Better PCR usage for TPM
+	* TPM documentation in README.tpm
+	* More configurable build via make variables:
+		ENABLE_SHIM_CERT
+		ENABLE_SHIM_HASH
+		ENABLE_SBSIGN
+		LIBDIR
+		EFIDIR
+		VENDOR_CERT_FILE
+		VENDOR_DB_FILE
+		Better MoK documentation in MokVars.txt
+		Better debuginfo generation
+		Lots of minor bug fixes.
+
+12
+	* OpenSSL 1.1.0e (glin)
+	* Workaround for signtool.exe bugs (pjones)
+	* Bug fix for wrong options passed to second stage (jsgruber)
+	* Requested that tar.gz/zip downloads not used for this version
+
 11
 	* generate_hash(): fix the regression (Lans Zhang)
 	* Ignore BDS when it tells us we got our own path on the command line.
