@@ -1,10 +1,10 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
-_gamepkg=RimWorldAlpha17bLinux.zip
-_pkg_subver=1557  # see ${srcdir}/Version.txt
+_gamepkg=RimWorldBeta18Linux.zip
+_pkg_subver=1722  # see ${srcdir}/Version.txt
 
 pkgname=rimworld
-pkgver=0.17.${_pkg_subver}
+pkgver=0.18.${_pkg_subver}
 pkgrel=1
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
