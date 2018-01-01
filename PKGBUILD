@@ -17,22 +17,22 @@
 pkgbase="spl-linux-git"
 pkgname=("spl-linux-git" "spl-linux-git-headers")
 
-pkgver=2017.12.21.r1060.c9821f1.4.14.8.1
+pkgver=2017.12.21.r1060.c9821f1.4.14.10.1
 pkgrel=1
-makedepends=("linux-headers=4.14.8-1" "git")
+makedepends=("linux-headers=4.14.10-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git#commit=c9821f1ccc647dfbd506f381b736c664d862d126")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git=2017.12.21.r1060.c9821f1" "kmod" "linux=4.14.8-1")
+depends=("spl-utils-common-git=2017.12.21.r1060.c9821f1" "kmod" "linux=4.14.10-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.14.8-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.14.8-1-ARCH/build \
+                --with-linux=/usr/lib/modules/4.14.10-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.14.10-1-ARCH/build \
                 --with-config=kernel
     make
 }
@@ -58,5 +58,5 @@ package_spl-linux-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.14.8-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.14.10-1-ARCH/Module.symvers
 }
