@@ -14,7 +14,7 @@ license=(MIT)
 depends=(glibc gcc-libs sh)
 provides=(libtinfo5)
 conflicts=(libtinfo5)
-source=(http://invisible-mirror.net/archives/ncurses/current/ncurses-${_pkgver}.tgz{,.asc})
+source=(https://sources.archlinux.org/other/ncurses/ncurses-${_pkgver}.tgz{,.asc})
 md5sums=('b7b1cedc484172434855b00831183458'
          'SKIP')
 validpgpkeys=('C52048C0C0748FEE227D47A2702353E0F7E48EDB')  # Thomas Dickey
