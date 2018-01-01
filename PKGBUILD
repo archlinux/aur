@@ -2,7 +2,7 @@
 
 pkgname=dovecot-xaps-daemon-git
 _gitname=dovecot-xaps-daemon
-pkgver=62.f263e27
+pkgver=64.a467892
 pkgrel=1
 pkgdesc='iOS Push Email for Dovecot - xaps daemon'
 arch=('any')
@@ -36,8 +36,7 @@ build() {
 
 package() {
   install -dm755 "${pkgdir}/var/lib/xapsd/"
-
+  install -Dm755 "${srcdir}/${_gitname}/${_gitname}" "${pkgdir}/usr/bin/xapsd"
   install -Dm644 -t "${pkgdir}/etc/xapsd/" "${srcdir}/xapsd.conf"
-  install -Dm755 -t "${pkgdir}/usr/bin/xapsd" "${srcdir}/${_gitname}/${_gitname}"
   install -Dm644 -t "${pkgdir}/usr/lib/systemd/system/" "${srcdir}/xapsd.service"
 }
