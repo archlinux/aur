@@ -5,18 +5,17 @@
 
 _pkgname=vocal
 pkgname=$_pkgname-git
-pkgver=2.0.19.r182.18487dd
+pkgver=2.1.5.r239.cab7185
 pkgrel=1
 pkgdesc="Podcast Client for the Modern Desktop"
 arch=('i686' 'x86_64')
 url="http://www.vocalproject.net"
 license=('GPL3')
-depends=('clutter-gst' 'clutter-gtk' 'dconf' 'desktop-file-utils' 'granite' 'gstreamer' 'gtk-update-icon-cache' 'gtk3' 'libnotify' 'libxml2' 'sqlite' 'webkit2gtk')
+depends=('clutter-gst' 'clutter-gtk' 'desktop-file-utils' 'granite' 'gstreamer' 'gtk-update-icon-cache' 'gtk3' 'libnotify' 'libxml2' 'sqlite' 'webkit2gtk')
 makedepends=('cmake' 'git' 'vala')
 provides=($_pkgname)
 conflicts=($_pkgname)
-#source=($_pkgname::git://github.com/needle-and-thread/vocal.git)
-source=($_pkgname::git://github.com/vocalapp/vocal.git)
+source=($_pkgname::git://github.com/needle-and-thread/vocal.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,28 +24,17 @@ pkgver() {
   printf "%s.r%s.%s" "$(git tag --sort=-version:refname | head -1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd $_pkgname
-
-  # Use newer version of webkit2gtk
-  sed -i 's/webkit2gtk-3.0/webkit2gtk-4.0/g' CMakeLists.txt
-}
-
 build() {
   cd $_pkgname
   rm -rf build
   mkdir build
 
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DGSETTINGS_COMPILE=0   # -DGSETTINGS_LOCALINSTALL=1
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr   # -DGSETTINGS_COMPILE=0 -DGSETTINGS_LOCALINSTALL=1
   make
 }
 
 package() {
-  # Patch
-  mv $_pkgname/build/com.github.needle-and-thread.vocal.desktop{.in,}
-  mv $_pkgname/data/com.github.needle-and-thread.vocal.appdata.xml.in $_pkgname/build/com.github.needle-and-thread.vocal.appdata.xml
-
   cd $_pkgname/build
   make DESTDIR="$pkgdir/" install
 }
