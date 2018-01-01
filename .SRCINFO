@@ -1,6 +1,6 @@
 pkgbase = gnucash-git
 	pkgdesc = A personal and small-business financial-accounting application - GIT version
-	pkgver = 2.7.3.r1.g310442ffe
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = http://www.gnucash.org
 	install = gnucash.install

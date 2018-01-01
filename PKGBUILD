@@ -11,7 +11,8 @@
 pkgname=gnucash-git
 _pkgname=gnucash
 __pkgname=Gnucash
-pkgver=2.7.3.r1.g310442ffe
+pkgver=2.7.3
+#.r1.g310442ffe
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application - GIT version"
 arch=('i686' 'x86_64')
