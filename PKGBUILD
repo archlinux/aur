@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-session-git
-pkgver=r106.81b95c3
-pkgrel=3
+pkgver=r107.17e088e
+pkgrel=1
 pkgdesc='The Pantheon Session Handler'
 arch=('any')
 url='https://github.com/elementary/session-settings'
@@ -26,7 +26,6 @@ package() {
   cd $srcdir/pantheon-session
   meson --prefix=/usr --datadir=share builddir
   DESTDIR=$pkgdir ninja -C builddir install
-  mv $pkgdir/usr/share/xessions $pkgdir/usr/share/xsessions
 }
 
 # vim: ts=2 sw=2 et:
