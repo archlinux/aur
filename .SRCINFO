@@ -1,7 +1,7 @@
 pkgbase = nginx-unit
 	pkgdesc = Dynamic web application server, designed to run applications in multiple languages.
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://unit.nginx.org/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = nginx-unit
 	makedepends = python
 	source = nginx-unit-0.3.tar.gz::https://hg.nginx.org/unit/archive/0.3.tar.gz
 	md5sums = 62ac119c9e345e0b447356b543111b33
+
+pkgname = nginx-unit
 
 pkgname = nginx-unit-python
 	depends = nginx-unit

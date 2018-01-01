@@ -1,10 +1,10 @@
 # Contributor: Roman Voropaev <voropaev.roma@gmail.com>
 
 pkgbase='nginx-unit'
-pkgname=('nginx-unit-python' 'nginx-unit-php')
+pkgname=('nginx-unit' 'nginx-unit-python' 'nginx-unit-php')
 _shortname='unit'
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Dynamic web application server, designed to run applications in multiple languages."
 arch=('i686' 'x86_64')
 url="http://unit.nginx.org/"
