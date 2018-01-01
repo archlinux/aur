@@ -1,9 +1,4 @@
 post_install() {
-echo ">> New way of selecting sound backend:"
-echo ">> Use the AudioDisableFMODEx, AudioDisableOpenAL, MODExDisableALSA,"
-echo ">> FMODExDisableOSS or FMODExDisablePulseAudio"
-echo ">> Debug Settings."
-
 echo ">>> The version of settings file is:"
 echo ">>> ~/.secondlife/user_settings/settings_coolvlviewer_12620.xml."
 echo ">>> You must also add your user to the 'games' group."
