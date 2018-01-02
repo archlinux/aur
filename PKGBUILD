@@ -8,7 +8,7 @@ pkgdesc="A modular, theme-able status line generator for the i3 window manager."
 arch=('any')
 url="https://github.com/tobi-wan-kenobi/bumblebee-status"
 license=('MIT')
-depends=('python-netifaces' 'python-psutil' 'python-requests')
+depends=('python-netifaces' 'python-psutil' 'python-requests' 'python-yaml')
 optdepends=('xorg-xbacklight: To display a displays brightness'
 	'xorg-xset: Enable/disable automatic screen locking'
 	'libnotify: Enable/disable automatic screen locking'

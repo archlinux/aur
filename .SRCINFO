@@ -9,6 +9,7 @@ pkgbase = bumblebee-status-git
 	depends = python-netifaces
 	depends = python-psutil
 	depends = python-requests
+	depends = python-yaml
 	optdepends = xorg-xbacklight: To display a displays brightness
 	optdepends = xorg-xset: Enable/disable automatic screen locking
 	optdepends = libnotify: Enable/disable automatic screen locking
