@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne [at] depar.is>
 
 pkgname=eg
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Useful examples at the command line"
 license=("MIT")
@@ -9,7 +9,7 @@ url="https://github.com/srsudar/eg"
 depends=("python")
 makedepends=("python-setuptools")
 source=("eg-${pkgver}.tar.gz::https://github.com/srsudar/eg/archive/v${pkgver}.tar.gz")
-sha256sums=('b52aa86a2b2d018c17bb99637c07e9f42f53fdf8890ef2beaaa774a425350ac4')
+sha256sums=('f9fa9ed4a9bcfaf594d9b4acc758def5ca5b464e3263a6f0eb2270d818aef3cc')
 arch=("any")
 options=(!emptydirs)
 
