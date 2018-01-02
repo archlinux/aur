@@ -27,18 +27,12 @@ package(){
 	cd $srcdir
 	appdir="usr/lib/$pkgname"
 
-	msg2 "Installing Openbazaar data"
 	install -d $pkgdir/${appdir%%/$pkgname}
 	cp -rf $pkgname-desktop-$pkgver $pkgdir/$appdir
-
-	msg2 "Installing execution script"
 	install -Dm755 $pkgname.js $pkgdir/usr/bin/$pkgname
-
-	msg2 "Installing icons and desktop menu entry"
 	install -Dm644 $pkgname-desktop-$pkgver/imgs/icon.png $pkgdir/usr/share/pixmaps/$pkgname.png
 	install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 	
-	# Cleanup
 	cd $pkgdir/$appdir
 	rm -rf .git*
 	rm -rf .travis
