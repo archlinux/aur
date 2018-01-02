@@ -19,7 +19,7 @@ source=(raiblocks.desktop
   git+https://github.com/clemahieu/raiblocks.git
   git+https://github.com/boostorg/beast.git
   git+https://github.com/weidai11/cryptopp.git
-  git+https://github.com/LMDB/lmdb.git
+  git+https://github.com/clemahieu/lmdb.git
   git+https://github.com/miniupnp/miniupnp.git
   git+https://github.com/clemahieu/phc-winner-argon2.git)
 
@@ -43,10 +43,8 @@ prepare() {
   git config submodule.lmdb.url $srcdir/lmdb
   git config submodule.miniupnp.url $srcdir/miniupnp
   git config submodule.phc-winner-argon2.url $srcdir/phc-winner-argon2
-  git submodule sync lmdb
-  git submodule update
 
-  #if grep sse4 /proc/cpuinfo; then 
+  git submodule update --init --recursive
   
   _flags=( "-D RAIBLOCKS_GUI=ON" )
   
