@@ -2,8 +2,8 @@
 
 pkgname=unicornscan
 pkgver=0.4.7
+pkgrel=2
 pkgnum=2
-pkgrel=1
 pkgdesc="Scalable, accurate, flexible and efficient network probing"
 url="http://www.unicornscan.org/"
 arch=('x86_64')
@@ -28,11 +28,11 @@ build() {
   #   including unicornscan support directly, maybe with Fedora 13 and/or RHEL 6
   # - MySQL support is only available in ./configure as inside broken and disabled
   ./configure CFLAGS="-D_GNU_SOURCE" LDFLAGS="-lGeoIP" \
-	  --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	  --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-pgsql
   make || return 1
 }
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" INSTALL="install -p" install
 }
