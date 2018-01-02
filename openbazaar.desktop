@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=OpenBazaar
+Comment=Decentralized Peer to Peer Marketplace for Bitcoin
+GenericName=OpenBazaar Desktop Client
+Exec=openbazaar %U
+Icon=openbazaar
+Type=Application
+StartupNotify=true
+Categories=Utility;
+Categories=Application;Network;
+MimeType=application/x-openbazaar;x-scheme-handler/ob;
+StartupWMClass=openbazaar desktop client
