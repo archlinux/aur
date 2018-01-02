@@ -8,7 +8,7 @@
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.9
-pkgver=4.9.68
+pkgver=4.9.73
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -28,7 +28,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'd2e3dbe2ec7b10dec3d9819a0fd6ce4374d939ab7d8fb0b115ba6110d0dfb22a'
+            '2af9c1806d1c4a6b90f5b105bdb6eedba8e0610712d0bab8a906bb015b2993f3'
             'SKIP'
             '6c4d909ae6594a2956c257539c8b2f67a8de52d7335be172787d6dc8aca12c99'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
