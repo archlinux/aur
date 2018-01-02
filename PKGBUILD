@@ -1,6 +1,6 @@
 pkgname=xmr-stak-git
-pkgver=r485.79154f7
-pkgrel=4
+pkgver=r618.2ae7260
+pkgrel=1
 pkgdesc="Unified All-in-one Monero miner"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
@@ -19,7 +19,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/xmr-stak"
-    #patch -p1 -i ../../no-donate.patch
+    #patch -p1 -i ../no-donate.patch
 }
 
 build() {
