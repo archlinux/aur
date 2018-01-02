@@ -16,5 +16,5 @@ package() {
     install -dm755 $pkgdir/usr/bin
     install -dm755 $pkgdir/opt/$pkgname
     cp -dr --no-preserve=ownership $srcdir/NanoWallet-$pkgver-linux64/* $pkgdir/opt/$pkgname
-    ln -s $pkgdir/opt/nem-wallet/NanoWallet $pkgdir/usr/bin/nem-wallet
+    ln -sf /opt/nem-wallet/NanoWallet $pkgdir/usr/bin/nem-wallet
 }
