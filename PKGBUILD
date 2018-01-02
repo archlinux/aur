@@ -22,28 +22,28 @@ url="http://tom.noflag.org.uk/cryptkeeper.html"
 license=('GPL3')
 depends=('gtk2' 'gconf' 'encfs')
 makedepends=('autoconf')
-source=("http://tom.noflag.org.uk/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("$pkgname-$pkgver.zip::https://codeload.github.com/tomm/cryptkeeper/zip/master"
         "cryptkeeper-0.9.5-fix-linking.patch"
         "cryptkeeper-0.9.5-add-unistd-to-lsof.patch")
-md5sums=('d02918b2058854177d2f59b837c2743f'
+md5sums=('9a0f032660df324a4cba8c277b8d866a'
          'aa864cea6a81ef8e8cb3efa5ef2b9541'
          '2e21a1e82942213108774d768e12e4ee')
 
 prepare() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-master
   patch -Np1 < "$srcdir"/cryptkeeper-0.9.5-fix-linking.patch
   patch -Np1 < "$srcdir"/cryptkeeper-0.9.5-add-unistd-to-lsof.patch
 }
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-master
   autoreconf -fvi
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-master
 
   make DESTDIR="$pkgdir" install
 }
