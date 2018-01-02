@@ -1,0 +1,22 @@
+pkgbase = osemu-git
+	pkgdesc = A simple (micro) emu for oscam
+	pkgver = 732
+	pkgrel = 1
+	url = https://github.com/oscam-emu/OSEmu
+	install = osemu.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	depends = oscam-git
+	source = osemu-git::git+https://github.com/oscam-emu/OSEmu.git
+	source = Remove-embedded-SoftCam-key.patch
+	source = Change-default-key-path.patch
+	sha256sums = SKIP
+	sha256sums = b1d6b39908625e97f22d8e7f7a6bdb7be20b5761ceaa6fa2bc3181333877f4c2
+	sha256sums = 6839b6901aa1fdd39bcc6feb47aeab52bb911627a8d32b9c71f138f4948051a6
+
+pkgname = osemu-git
+

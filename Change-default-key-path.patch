@@ -1,0 +1,26 @@
+diff --git a/OSEmu.c b/OSEmu.c
+index 35a3066..39e5745 100755
+--- a/OSEmu.c
++++ b/OSEmu.c
+@@ -494,7 +494,7 @@ int main(int argc, char**argv)
+ 	get_random_bytes_init();
+ 
+ 	if(!read_emu_keyfile(path)) {
+-		read_emu_keyfile("/var/keys/");
++		read_emu_keyfile("/var/lib/oscam/keys/");
+ 	}
+ 
+ 	if(start_relay && !stream_server_thread_init)
+diff --git a/README b/README
+index 2eb749e..f4ec87c 100644
+--- a/README
++++ b/README
+@@ -21,7 +21,7 @@ Run:
+ 
+ - (optional) OSEmu does not require, but will make use of "SoftCam.Key" if available. 
+              "SoftCam.Key" is searched in:
+-              - /var/keys
++              - /var/lib/oscam/keys
+               - The folder specified with the "-c <folder>" option.
+               
+ 

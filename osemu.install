@@ -1,0 +1,6 @@
+post_install() {
+  if [ ! -d /var/lib/oscam/keys/ ]; then
+    mkdir -p /var/lib/oscam/keys/
+    chown -R oscam:oscam /var/lib/oscam/keys/
+  fi
+}

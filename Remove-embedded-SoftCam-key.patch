@@ -1,0 +1,82 @@
+diff --git a/Makefile b/Makefile
+index adbc36c..006c6a1 100755
+--- a/Makefile
++++ b/Makefile
+@@ -44,10 +44,8 @@ else ifdef ANDROID_NDK
+ else ifdef ANDROID_STANDALONE_TOOLCHAIN
+ 	$(Q)$(CC) $(CC_WARN) -o $(BIN) $(OBJS) $(CFLAGS) $(LFLAGS)
+ else
+-	touch SoftCam.Key
+-	$(Q)$(CC) $(CC_WARN) -o $(BIN) $(OBJS) $(CFLAGS) $(LFLAGS) -Wl,--format=binary -Wl,SoftCam.Key -Wl,--format=default	
++	$(Q)$(CC) $(CC_WARN) -o $(BIN) $(OBJS) $(CFLAGS) $(LFLAGS)
+ endif
+-	$(STRIP) $(BIN)
+ 	
+ clean:
+ 	rm -rf $(BIN) $(OBJS) $(DEPS)
+diff --git a/module-emulator-osemu.c b/module-emulator-osemu.c
+index 5f1c76e..8d0c88c 100644
+--- a/module-emulator-osemu.c
++++ b/module-emulator-osemu.c
+@@ -579,46 +579,6 @@ uint8_t read_emu_keyfile(const char *opath)
+ 	return 1;
+ }
+ 
+-#if !defined(__APPLE__) && !defined(__ANDROID__)
+-extern uint8_t SoftCamKey_Data[]    __asm__("_binary_SoftCam_Key_start");
+-extern uint8_t SoftCamKey_DataEnd[] __asm__("_binary_SoftCam_Key_end");
+-
+-void read_emu_keymemory(void)
+-{
+-	char *keyData, *line, *saveptr, keyName[EMU_MAX_CHAR_KEYNAME], keyString[1026];
+-	uint32_t provider, keyLength;
+-	uint8_t *key;
+-	char identifier;
+-
+-	keyData = (char*)malloc(SoftCamKey_DataEnd-SoftCamKey_Data+1);
+-	if(keyData == NULL) {
+-		return;
+-	}
+-	memcpy(keyData, SoftCamKey_Data, SoftCamKey_DataEnd-SoftCamKey_Data);
+-	keyData[SoftCamKey_DataEnd-SoftCamKey_Data] = 0x00;
+-
+-	line = strtok_r(keyData, "\n", &saveptr);
+-	while(line != NULL) {
+-		if(sscanf(line, "%c %8x %11s %1024s", &identifier, &provider, keyName, keyString) != 4) {
+-			line = strtok_r(NULL, "\n", &saveptr);
+-			continue;
+-		}
+-		keyLength = strlen(keyString)/2;
+-		key = (uint8_t*)malloc(keyLength);
+-		if(key == NULL) {
+-			free(keyData);
+-			return;
+-		}
+-
+-		CharToBin(key, keyString, strlen(keyString));
+-		SetKey(identifier, provider, keyName, key, keyLength, 0, NULL);
+-		free(key);
+-		line = strtok_r(NULL, "\n", &saveptr);
+-	}
+-	free(keyData);
+-}
+-#endif
+-
+ // Shared functions
+ 
+ static inline uint16_t GetEcmLen(const uint8_t *ecm)
+diff --git a/OSEmu.c b/OSEmu.c
+index 35a3066..c594f43 100755
+--- a/OSEmu.c
++++ b/OSEmu.c
+@@ -493,10 +493,6 @@ int main(int argc, char**argv)
+ 
+ 	get_random_bytes_init();
+ 
+-#if !defined(__APPLE__) && !defined(__ANDROID__)
+-	read_emu_keymemory();
+-#endif
+-
+ 	if(!read_emu_keyfile(path)) {
+ 		read_emu_keyfile("/var/keys/");
+ 	}
