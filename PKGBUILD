@@ -14,9 +14,10 @@ _opts=(
 
 pkgname=(
 'vala-panel-appmenu-translations-git'
+'vala-panel-appmenu-registrar-git' 
 )
 
-makedepends=('cmake' 'vala' 'gtk3' 'libwnck3' 'bamf>=0.5.0')
+makedepends=('cmake' 'vala' 'gtk3' 'libwnck3' 'bamf>=0.5.0' 'git')
 
 if (("${_disable_mate}" == 0));then
 	_opts+=(-DENABLE_MATE=ON)
@@ -55,12 +56,12 @@ else
 fi
 
 if (("${_disable_unity_gtk_module}" == 0));then
-	_opts+=(-DENABLE_UNITY_GTK_MODULE=ON)
+	_opts+=(-DENABLE_APPMENU_GTK_MODULE=ON)
 	pkgname+=('appmenu-gtk-module-git')
 	makedepends+=('gtk2')
 	msg "AppMenu GTK+ module enabled"
 else
-	_opts+=(-DENABLE_UNITY_GTK_MODULE=OFF)
+	_opts+=(-DENABLE_APPMENU_GTK_MODULE=OFF)
 fi
 msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]"
 
@@ -68,7 +69,7 @@ _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.5.3.r19.g0056790
+pkgver=0.6.0.r3.g339632a
 pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
@@ -110,6 +111,7 @@ package_vala-panel-appmenu-xfce-git() {
   depends=('gtk3' 'bamf>=0.5.0' 'xfce4-panel>=4.11.2' 'xfconf' 'libwnck3')
   optdepends=('gtk2-ubuntu: for hiding gtk2 menus'
             'unity-gtk-module: for gtk2/gtk3 menus'
+            'vala-panel-appmenu-registrar: for DBusMenu registrar' 
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
   cd "${srcdir}/${_pkgbase}"
@@ -127,6 +129,7 @@ package_vala-panel-appmenu-valapanel-git() {
   depends=('gtk3' 'bamf>=0.5.0' 'vala-panel' 'libwnck3')
   optdepends=('gtk2-ubuntu: for hiding gtk2 menus'
             'unity-gtk-module: for gtk2/gtk3 menus'
+            'vala-panel-appmenu-registrar: for DBusMenu registrar' 
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
   cd "${srcdir}/${_pkgbase}"
@@ -144,6 +147,7 @@ package_vala-panel-appmenu-mate-git() {
   depends=('gtk3' 'bamf>=0.5.0' 'mate-panel' 'libwnck3')
   optdepends=('gtk2-ubuntu: for hiding gtk2 menus'
             'unity-gtk-module: for gtk2/gtk3 menus'
+            'vala-panel-appmenu-registrar: for DBusMenu registrar' 
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
   cd "${srcdir}/${_pkgbase}"
@@ -160,6 +164,7 @@ package_vala-panel-appmenu-budgie-git() {
   depends=('gtk3' 'bamf>=0.5.0' 'budgie-desktop' 'libwnck3')
   optdepends=('gtk2-ubuntu: for hiding gtk2 menus'
             'unity-gtk-module: for gtk2/gtk3 menus'
+            'vala-panel-appmenu-registrar: for DBusMenu registrar' 
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
   cd "${srcdir}/${_pkgbase}"
@@ -192,4 +197,13 @@ package_appmenu-gtk-module-git()
   make -C "unity-gtk-module" DESTDIR="${pkgdir}" install
   install -dm755 "${pkgdir}/etc/X11/xinit/xinitrc.d/"
   install -m755  "${srcdir}/80appmenu-gtk-module" "${pkgdir}/etc/X11/xinit/xinitrc.d/"
+}
+
+package_vala-panel-appmenu-registrar-git()
+{
+  pkgdesc="Gtk module for exporting menus"
+  provides=(vala-panel-appmenu-registrar)
+  depends=('gtk3')
+  cd "${srcdir}/${_pkgbase}"
+  make -C "registrar" DESTDIR="${pkgdir}" install
 }
