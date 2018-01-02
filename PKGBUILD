@@ -1,6 +1,6 @@
 pkgname=xdg-utils-no-open
 _pkgname=xdg-utils
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks"
 arch=('any')
@@ -9,10 +9,8 @@ license=('MIT')
 depends=('sh' 'xorg-xset') # xset needed inside xdg-screensaver
 makedepends=('docbook-xsl' 'lynx' 'xmlto' 'git')
 optdepends=('linopen: for xdg-open support')
-source=(http://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz{,.asc})
-md5sums=('2d0aec6037769a5f138ff404b1bb4b15'
-         'SKIP')
-validpgpkeys=('8B75CA7811367175D05F3B03C43570F80CC295E6') # "Per Olofsson <pelle@pqz.se>"
+source=(https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz)
+sha1sums=('20cd4cc5cfaa904b12abf6d584deb568367f4d83')
 
 # Set this 1 to conflict with xdg-utils so you can
 # go without xdg-open for whatever reason

@@ -3,4 +3,5 @@ src
 *.tar.gz
 *.tar.gz.asc
 *.pkg.tar
+*.pkg.tar.xz
 *.pkg.tar.gz
