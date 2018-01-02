@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 url="https://developer.mozilla.org/En/JSS"
 license=(GPL)
 depends=('java-runtime' 'nspr' 'nss')
-makedepends=('java-environment=7')
+makedepends=('java-environment')
 source=("http://pki.fedoraproject.org/pki/sources/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "http://pki.fedoraproject.org/pki/sources/${pkgname}/${pkgver}/jss-HMAC-test-for-AES-encrypt-unwrap.patch"
         "http://pki.fedoraproject.org/pki/sources/${pkgname}/${pkgver}/jss-HMAC-unwrap-keywrap-FIPSMODE.patch"
