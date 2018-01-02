@@ -1,7 +1,7 @@
 pkgbase = mycroft-core
-	pkgdesc = Mycroft Core, the Mycroft Artificial Intelligence platform. Contribute to this package at: https://gitlab.com/rafamanzo/aur-mycroft-core
+	pkgdesc = Mycroft Core, the Mycroft Artificial Intelligence platform.
 	pkgver = 0.9.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MycroftAI/mycroft-core
 	install = mycroft-core.install
 	arch = i686
