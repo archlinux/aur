@@ -1,7 +1,7 @@
 pkgbase = xmrig-amd-git
 	pkgdesc = Monero cryptocurrency GPU miner (OpenCL for AMD)
 	pkgver = r20.acd215f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmrig/xmrig-amd
 	changelog = CHANGELOG.md
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname='xmrig-amd-git'
 pkgver=r20.acd215f
-pkgrel=1
+pkgrel=2
 pkgdesc='Monero cryptocurrency GPU miner (OpenCL for AMD)'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-amd'
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd "$srcdir/xmrig-amd/build"
-  cmake -DWITH_HTTPD=OFF -DCMAKE_C_COMPILER=gcc-6 -DCMAKE_CXX_COMPILER=g++-6 ..
+  cmake -DWITH_HTTPD=OFF ..
   make
 }
 
