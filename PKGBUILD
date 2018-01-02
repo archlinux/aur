@@ -2,7 +2,7 @@
 
 pkgname=lyx-git
 _pkgname=lyx
-pkgver=2.3.0beta1.r535.g8c56e89240
+pkgver=2.3.0beta1.r578.g39a8000589
 pkgrel=1
 pkgdesc="An advanced WYSIWYM document processor & LaTeX front-end"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	./autogen.sh && ./configure --enable-qt5 --without-enchant --prefix=/usr 
-	make
+	make -j4
 }
 
 package() {
