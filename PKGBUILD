@@ -3,7 +3,7 @@
 pkgname=libnitrokey-git
 _gitname=libnitrokey
 pkgver=3.1r593.09f80ac
-pkgrel=1
+pkgrel=2
 pkgdesc="Communicate with Nitrokey stick devices in a clean and easy manner"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
@@ -25,6 +25,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/${_gitname}/"
   mkdir -p build
+
+  sed -i 's|^libdir=@CMAKE_INSTALL_FULL_LIBDIR@$|libdir=/usr/lib|' \
+      libnitrokey.pc.in
 }
 
 build() {
