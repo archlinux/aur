@@ -1,6 +1,6 @@
 pkgname=raiblocks-git
-pkgver=9.0.r56.ga80a9c0d
-pkgrel=2
+pkgver=9.0.r67.g6d354193
+pkgrel=1
 pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
 url="http://raiblocks.com/"
@@ -14,14 +14,14 @@ pkgver() {
 }
 
 source=(raiblocks.desktop
-        raiblocks128.png
-	raiblocks.service
-        git+https://github.com/clemahieu/raiblocks.git
-	git+https://github.com/boostorg/beast.git
-        git+https://github.com/weidai11/cryptopp.git
-        git+https://github.com/LMDB/lmdb.git
-        git+https://github.com/miniupnp/miniupnp.git
-        git+https://github.com/clemahieu/phc-winner-argon2.git)
+  raiblocks128.png
+  raiblocks.service
+  git+https://github.com/clemahieu/raiblocks.git
+  git+https://github.com/boostorg/beast.git
+  git+https://github.com/weidai11/cryptopp.git
+  git+https://github.com/LMDB/lmdb.git
+  git+https://github.com/miniupnp/miniupnp.git
+  git+https://github.com/clemahieu/phc-winner-argon2.git)
 
 sha256sums=('74b9bc75c3d5596603e54e2553ff69d367f384789c7565437a72a64dc22f0fdd'
             '7e08e2b6d50638fb1438c746da78defc49ef317ee8ffa6feeb52635a976a0ea9'
