@@ -1,49 +1,16 @@
-usr=hyperledger
-home=/var/hyperledger
-
 post_install() {
-  _mkuser
-  _chown
 #  cryptogen generate > /dev/null
 #  mv /crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/* /etc/hyperledger/fabric/tls
 #  chmod 644 /etc/hyperledger/fabric/tls/*
 #  rm -rf /crypto-config
-cat << EOF
-===> If you use a Wayland session, please add these 
-===> global variables to ~/.config/environment.d/fabric-peer.conf
-	FABRIC_CFG_PATH="/etc/hyperledger/fabric"
-	CORE_PEER_MSPCONFIGPATH="/etc/hyperledger/fabric/msp"
-
-===> Look at /etc/conf.d/fabric-peer.conf for an example
-EOF
-}
-
-post_upgrade() {
-  _mkuser
-  _chown
 }
 
 post_remove() {
 cat << EOF
-===> Please remove $home and user $usr manually doing
-	userdel -rf $usr
 ===> WARNING!!!"
  Be sure to save your backup data"
  /etc/hyperledger/fabric/tls should be deleted manually"
 
-===> Remember to review ~/.config/environment.d/fabric-peer.conf
+===> Remember to review /usr/lib/environment.d/fabric-peer.conf
 EOF
-}
-
-_chown() {
-  chown -R $usr:$usr $home
-}
-
-_mkuser() {
-  getent passwd $usr &>/dev/null || {
-    echo -n "Creating hyperledger user... "
-    grep -E "^hyperledger:" /etc/group >/dev/null || groupadd $usr
-    useradd -m -d $home -g $usr -s /usr/bin/nologin $usr 2>/dev/null
-    echo "done"
-  }
 }

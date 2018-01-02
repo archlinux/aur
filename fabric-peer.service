@@ -5,8 +5,9 @@ After=network.target
 [Service]
 Type=simple
 User=hyperledger
-WorkingDirectory=/var/hyperledger
+DynamicUser=yes
+StateDirectory=hyperledger hyperledger/db hyperledger/production
+EnvironmentFile=/usr/lib/environment.d/fabric-peer.conf
 ExecStart=/usr/bin/peer node start
-EnvironmentFile=/etc/conf.d/fabric-peer.conf
 PIDFile=/var/run/fabric-peer.pid
 
