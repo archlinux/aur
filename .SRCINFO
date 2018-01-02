@@ -1,13 +1,13 @@
 pkgbase = dosbox-sdl2
 	pkgdesc = Emulator with builtin DOS for running DOS Games (SDL2)
 	pkgver = 0.74.4006
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vogons.org/viewtopic.php?f=32&t=34770
 	install = dosbox-sdl2.install
 	arch = x86_64
 	arch = i686
 	license = GPL
-	makedepends = subversion
+	makedepends = git
 	depends = sdl2
 	depends = sdl2_net
 	depends = sdl_sound-hg

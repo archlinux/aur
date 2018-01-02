@@ -4,11 +4,11 @@
 
 pkgname=dosbox-sdl2
 pkgver=0.74.4006
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator with builtin DOS for running DOS Games (SDL2)"
 arch=("x86_64" "i686")
 depends=("sdl2" "sdl2_net" "sdl_sound-hg" "zlib" "libgl" "libpng" "alsa-lib" "gcc-libs" "hicolor-icon-theme")
-makedepends=("subversion")
+makedepends=("git")
 provides=("dosbox")
 conflicts=("dosbox")
 url="http://www.vogons.org/viewtopic.php?f=32&t=34770"
@@ -28,10 +28,6 @@ sha256sums=("SKIP"
 install="dosbox-sdl2.install"
 
 build() {
-    ln -sf /usr/include/SDL/SDL_sound.h SDL_sound.h
-    export C_INCLUDE_PATH="$srcdir" 
-    export CPLUS_INCLUDE_PATH="$srcdir"
-    
     cd $pkgname/
 
     sh autogen.sh
