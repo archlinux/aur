@@ -1,7 +1,7 @@
 # Maintainer: Ryder McMinn <mcminnra at gmail dot com>	
 
 pkgname=bodylogger
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="
 Maintains a user database of personal measurements while giving stats and predictions based on trends."
