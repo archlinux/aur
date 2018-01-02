@@ -2,7 +2,7 @@
 
 pkgname=libnitrokey-git
 _gitname=libnitrokey
-pkgver=3.1r587.91f88b1
+pkgver=3.1r593.09f80ac
 pkgrel=1
 pkgdesc="Communicate with Nitrokey stick devices in a clean and easy manner"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_gitname}/"
-  curver=$(sed -n 's/^SET(PROJECT_VERSION "\(.*\)")$/\1/p' CMakeLists.txt)
+  curver=$(sed -n 's/^project(libnitrokey LANGUAGES C CXX VERSION \(.*\)\.0)$/\1/p' CMakeLists.txt)
   printf "%sr%s.%s" "$curver" "$(git rev-list --count HEAD)" \
          "$(git rev-parse --short HEAD)"
 }
@@ -31,9 +31,8 @@ build() {
   cd "$srcdir/${_gitname}/build"
 
   cmake .. \
-        -DLIBNITROKEY_STATIC=OFF \
+        -DBUILD_SHARED_LIBS=ON \
         -DCOMPILE_TESTS=OFF \
-        -DUSE_CLANG=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
