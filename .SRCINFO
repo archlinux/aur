@@ -1,0 +1,18 @@
+pkgbase = unicornscan
+	pkgdesc = Scalable, accurate, flexible and efficient network probing
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = http://www.unicornscan.org/
+	arch = x86_64
+	depends = geoip
+	depends = postgresql-libs
+	depends = libdnet
+	source = http://pkgs.fedoraproject.org/repo/pkgs/unicornscan/unicornscan-0.4.7-2.tar.bz2/4c5f272eb38c333c0094c32317edf758/unicornscan-0.4.7-2.tar.bz2
+	source = unicornscan-0.4.7-geoip.patch
+	source = unicornscan-0.4.7-gcc5.patch
+	sha256sums = 06c1e7f7471bcf6d34f0094b8fe4fa117dd945f91e0a0c1c2575e12465f0e2ec
+	sha256sums = fe4d6403168774a487650776d33692db4ba7eb5c592bd17f51f4a9e8a8b23f4c
+	sha256sums = 41a435847827882db771695bf5d2d31fc0b618cc1a957cf542b2b2b4a1882460
+
+pkgname = unicornscan
+

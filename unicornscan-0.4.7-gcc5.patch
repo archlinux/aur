@@ -1,0 +1,51 @@
+Patch by Robert Scheck <robert@fedoraproject.org> for unicornscan >= 0.4.7 to avoid
+build failures with GCC 5.x such as "unicornscan-0.4.7/src/unilib/tsc.c:163:
+undefined reference to `get_tsc'" (occurring in some different source code lines).
+
+--- unicornscan-0.4.7/src/unilib/tsc.c		2006-10-18 18:57:05.000000000 +0200
++++ unicornscan-0.4.7/src/unilib/tsc.c.gcc5	2015-06-20 19:57:35.000000000 +0200
+@@ -30,7 +30,7 @@
+ 	return 1;
+ }
+ 
+-inline tsc_t get_tsc(void) {
++tsc_t get_tsc(void) {
+ 	tsc_t j;
+ 	asm volatile (	"pause\n"
+ 			"nop\n"
+@@ -52,7 +52,7 @@
+ 	 * by Matteo Frigo
+ 	 */
+ 
+-inline tsc_t get_tsc(void) {
++tsc_t get_tsc(void) {
+ 	uint32_t tbl, tbu0, tbu1;
+ 
+ 	asm volatile("nop");
+@@ -75,7 +75,7 @@
+ 	return 1;
+ }
+ 
+-inline tsc_t get_tsc(void) {
++tsc_t get_tsc(void) {
+ 	tsc_t j;
+ 
+ 	asm volatile (
+@@ -96,7 +96,7 @@
+ 	return 1;
+ }
+ 
+-inline tsc_t get_tsc(void) {
++tsc_t get_tsc(void) {
+ 	uint32_t j;
+ 
+ 	/*
+@@ -144,7 +144,7 @@
+ 	return 0;
+ }
+ 
+-inline tsc_t get_tsc(void) {
++tsc_t get_tsc(void) {
+ 	PANIC("Your CPU is not supported by the `tsc' delay, use -d2 or -d3 or edit your config file to use gtod or sleep");
+ }
+ 

@@ -1,0 +1,31 @@
+Patch by Robert Scheck <robert@fedoraproject.org> for unicornscan >= 0.4.7, which adds the
+standard location of GeoIP data at Fedora in front of the original opening try. Unicornscan
+upstream is expecting /etc/unicornscan/GeoIP.dat instead of /usr/share/GeoIP/GeoIP.dat by
+default. This patch is looking for the existence of /usr/share/GeoIP/GeoIP.dat, otherwise
+/etc/unicornscan/GeoIP.dat will be used to not break the standards from upstream, if patch
+gets applied for a future unicornscan release.
+
+--- unicornscan-0.4.7/src/scan_progs/report.c		2006-10-18 18:57:05.000000000 +0200
++++ unicornscan-0.4.7/src/scan_progs/report.c.geoip	2009-11-17 13:16:04.000000000 +0100
+@@ -68,9 +68,18 @@
+ 	report_t=rbinit(123);
+ 
+ #ifdef HAVE_LIBGEOIP
+-	gi=GeoIP_open(CONF_DIR "/GeoIP.dat", GEOIP_MEMORY_CACHE);
+-	if (gi == NULL) {
+-		ERR("error opening geoip database `%s/%s': %s", CONF_DIR, "/GeoIP.dat", strerror(errno));
++
++	if (access("/usr/share/GeoIP/GeoIP.dat", F_OK) == 0) {
++		gi=GeoIP_open("/usr/share/GeoIP/GeoIP.dat", GEOIP_MEMORY_CACHE);
++		if (gi == NULL) {
++			ERR("error opening geoip standard database `/usr/share/GeoIP/GeoIP.dat': %s", strerror(errno));
++		}
++	}
++	else {
++		gi=GeoIP_open(CONF_DIR "/GeoIP.dat", GEOIP_MEMORY_CACHE);
++		if (gi == NULL) {
++			ERR("error opening geoip database `%s/%s': %s", CONF_DIR, "/GeoIP.dat", strerror(errno));
++		}
+ 	}
+ 
+ #endif
