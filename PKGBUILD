@@ -1,8 +1,8 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=libnitrokey
-pkgver=3.0
-pkgrel=3
+pkgver=3.1
+pkgrel=1
 pkgdesc="Communicate with Nitrokey stick devices in a clean and easy manner"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=(hidapi)
 makedepends=('cmake' 'qt5-tools' 'libcatch-cpp-headers')
 source=("https://github.com/Nitrokey/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('9bc47efbd2f97af859d7bb4d07556f7f83e58f6de63fdba92d75b999b578ec15')
+sha256sums=('72444e3c6036ddbf82eae598f0e1d2a7a32048eb4a326df3a454c251220a7390')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver/"
