@@ -1,0 +1,17 @@
+pkgbase = bm3d-gpu-git
+	pkgdesc = CUDA implementation of BM3D
+	pkgver = r11.165b423
+	pkgrel = 1
+	url = https://github.com/DawyD/bm3d-gpu
+	arch = x86_64
+	license = GPL3
+	makedepends = cuda
+	makedepends = gcc
+	makedepends = libpng
+	makedepends = clinfo
+	depends = cuda
+	source = git+https://github.com/DawyD/bm3d-gpu.git
+	sha256sums = SKIP
+
+pkgname = bm3d-gpu-git
+
