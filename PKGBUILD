@@ -8,11 +8,12 @@ pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
 url="https://github.com/pimutils/todoman"
 license=('MIT')
-depends=(python-icalendar python-urwid python-xdg python-ansi
-         python-parsedatetime python-atomicwrites python-click
-         python-setuptools-scm)
+depends=(python-icalendar python-urwid python-xdg python-parsedatetime
+         python-atomicwrites python-click python-setuptools-scm
+         python-configobj python-dateutil python-tabulate python-humanize)
 optdepends=('python-click-repl-git: the repl command.')
-checkdepends=('python-pytest' 'python-hypothesis')
+checkdepends=('python-pytest' 'python-hypothesis' 'python-pytest-runner'
+              'python-freezegun' 'python-pytest-cov')
 conflicts=("todoman")
 provides=("todoman")
 source=(git+https://github.com/pimutils/todoman.git)
