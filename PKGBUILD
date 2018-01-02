@@ -20,6 +20,7 @@ source=(https://downloads.sourceforge.net/project/urquanmastershd/Beta%201/${pkg
         https://downloads.sourceforge.net/project/urquanmastershd/Beta%201/debs/${pkgname}-content_${pkgver}-${pkgrel}_all.deb
         https://downloads.sourceforge.net/project/urquanmastershd/Beta%201/debs/${pkgname}-hires2x_${pkgver}-${pkgrel}_all.deb
         https://downloads.sourceforge.net/project/urquanmastershd/Beta%201/debs/${pkgname}-hires4x_${pkgver}-${pkgrel}_all.deb
+	https://gist.githubusercontent.com/MafiaInc/609aeaa13993d9c409e454e44ac9c326/raw/cb5b4163d82dc495efa5a256b2b3f0e092bbcf1a/0001-Fix-possible-naming-collision-for-_STRINGS_H.patch
        )
 md5sums=('f6ae04927ac9726b20a6faa7e7b7bbf6'
          'ca497b754edf56aab8a5791f1d2c974a'
@@ -28,7 +29,8 @@ md5sums=('f6ae04927ac9726b20a6faa7e7b7bbf6'
          '2c563cf8e4f006d849e80ba82ddbdadb'
          '568454cd3be188e826a2446a0615ac5e'
          'b73e4602312de491803722eef725fc86'
-         'e41e3b39dcdaf3573a23e3ab3022b3fa')
+         'e41e3b39dcdaf3573a23e3ab3022b3fa'
+         '10cacfe459f3be81098d57127495159e')
 noextract=(${pkgname}-content_${pkgver}-${pkgrel}_all.deb
            ${pkgname}-hires2x_${pkgver}-${pkgrel}_all.deb
            ${pkgname}-hires4x_${pkgver}-${pkgrel}_all.deb)
@@ -39,6 +41,7 @@ package() {
   cp $srcdir/config.state .
   sed -e "/INPUT_install_prefix/ s|replaceme|$pkgdir/usr|" \
       -i config.state
+  patch -p1 < $srcdir/0001-Fix-possible-naming-collision-for-_STRINGS_H.patch
 
   ./build.sh uqm reprocess_config
 
