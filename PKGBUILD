@@ -1,13 +1,12 @@
 _ref=""
 pkgname=kakoune-git
-pkgver=r5499.42196b83
+pkgver=r5975.baf3d82b
 pkgrel=1
 pkgdesc='Code editor heavily inspired by Vim'
 arch=('x86_64' 'armv7h')
 url='https://github.com/mawww/kakoune'
 license=('custom:unlicense')
 depends=(
-  'boost-libs'
   'ncurses'
 )
 optdepends=(
@@ -20,7 +19,6 @@ optdepends=(
 )
 makedepends=(
   'asciidoc'
-  'boost'
   'git'
 )
 
