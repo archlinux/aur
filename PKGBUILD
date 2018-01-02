@@ -8,7 +8,7 @@ pkgdesc="A command line utility for building, testing, packaging and running .NE
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
-depends=('dotnet-runtime>=2.0')
+depends=('dotnet-runtime>=2.0.4')
 options=('staticlibs')
 install=dotnet-sdk-2.0.install
 
