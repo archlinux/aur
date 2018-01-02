@@ -2,7 +2,7 @@
 
 pkgname=cerbere
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pantheon Watchdog'
 arch=('x86_64')
 url='https://launchpad.net/cerbere'
@@ -10,7 +10,6 @@ license=('GPL2')
 groups=('pantheon')
 depends=('dconf' 'libgee')
 makedepends=('cmake' 'vala')
-install='cerbere.install'
 source=("https://launchpad.net/cerbere/${pkgver%%.*}.x/${pkgver}/+download/cerbere-${pkgver}.tgz")
 sha256sums=('6d585290105558fe8adf1554228c8650aae1a0cec1457a2614d3c9d78a129606')
 
