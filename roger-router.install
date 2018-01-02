@@ -4,7 +4,7 @@ post_install() {
 	chmod 2770 "$pkgdir/var/spool/roger"
 	chown root:fax "$pkgdir/var/spool/roger"
 
-	echo To add the fax printer run the following command:
+	echo To add the fax printer install cups and run the following command:
 	echo
 	echo "  lpadmin -p \"Roger-Router-Fax\" -E -v roger-cups:/ -P /usr/share/cups/model/roger-fax.ppd"
 	echo

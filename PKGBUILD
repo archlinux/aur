@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
 pkgver=1.9.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
@@ -11,6 +11,7 @@ makedepends=(intltool gobject-introspection)
 # To build all plugins use those dependencies:
 #makedepends=(intltool gobject-introspection evolution gstreamer libnotify libpulse libsecret portaudio libappindicator-gtk3)
 optdepends=(
+	'cups: FAX printer'
 	'evolution: Address book integration'
 	'gstreamer: GStreamer support (recommended)'
 	'libpulse: Pulse Audio support'

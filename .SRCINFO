@@ -1,7 +1,7 @@
 pkgbase = roger-router
 	pkgdesc = Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible
 	pkgver = 1.9.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.tabos.org/
 	install = roger-router.install
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = roger-router
 	depends = libpeas
 	depends = libsoup
 	depends = gupnp
+	optdepends = cups: FAX printer
 	optdepends = evolution: Address book integration
 	optdepends = gstreamer: GStreamer support (recommended)
 	optdepends = libpulse: Pulse Audio support
