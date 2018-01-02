@@ -3,7 +3,7 @@
 
 pkgname=libretro-mednafen-saturn-git
 _gitname=beetle-saturn-libretro
-pkgver=131.63af0ea
+pkgver=363.6d371f0
 pkgrel=1
 pkgdesc="libretro port of Mednafen Saturn"
 arch=('x86_64')
@@ -11,12 +11,10 @@ url="https://github.com/libretro/beetle-saturn-libretro"
 license=('GPLv2')
 makedepends=('git')
 depends=('libglvnd' 'clang')
-source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
-	"https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/mednafen_saturn_libretro.info")
+source=("${_gitname}::git://github.com/libretro/${_gitname}.git")
 groups=('libretro')
 
-md5sums=('SKIP'
-	 'SKIP')
+md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -29,6 +27,5 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/mednafen_saturn_libretro.info" "${pkgdir}/usr/share/libretro/info/mednafen_saturn_libretro.info"
   install -Dm644 "${_gitname}/mednafen_saturn_libretro.so" "${pkgdir}/usr/lib/libretro/mednafen_saturn_libretro.so"
 }
