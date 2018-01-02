@@ -1,0 +1,11 @@
+[Unit]
+Description=Ardor per-user service
+
+[Service]
+Type=forking
+ExecStart=/opt/ardor/start.sh
+ExecStop=/opt/ardor/stop.sh
+Restart=on-abort
+
+[Install]
+WantedBy=default.target

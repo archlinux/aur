@@ -1,0 +1,15 @@
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+pre_upgrade() {
+    rm /opt/ardor/lib/*
+}
+
+post_install() {
+    note "Use 'sudo systemctl enable ardor' to automatically start Ardor at system launch"
+}
+
+post_upgrade() {
+    post_install
+}
