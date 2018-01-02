@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!.gitignore
+!burstcoin-wallet.service

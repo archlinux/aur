@@ -1,0 +1,10 @@
+[Unit]
+Description=BurstCoin Wallet
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/burstcoin-wallet
+ExecStart=/opt/burstcoin-wallet/burst.sh
+
+[Install]
+WantedBy=default.target
