@@ -6,8 +6,7 @@
 pkgbase=linux-rcu_nocd       # Build kernel with a different name
 _srcname=linux-4.14
 pkgver=4.14.4
-pkgrel=1
-pkgdesc="Stock Arch Linux kernel compiled with the rcu_nocbs boot option enabled"
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -84,7 +83,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="Stock Arch Linux kernel and modules compiled with the rcu_nocbs boot option enabled"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -142,7 +141,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase} kernel"
 
   cd ${_srcname}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -209,7 +208,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase} kernel"
 
   cd ${_srcname}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
