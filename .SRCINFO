@@ -1,19 +1,19 @@
 pkgbase = rutorrent-autodl-irssi-community
 	pkgdesc = Community fork of the autodl-irssi rutorrent plugin.
-	pkgver = 1.65.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/autodl-community/autodl-rutorrent
 	install = rutorrent-autodl-irssi-community.install
 	arch = any
 	license = MPL
 	depends = rutorrent
-	depends = autodl-irssi-community>=1.65
+	depends = autodl-irssi-community>=2.0.0
 	provides = rutorrent-autodl-irssi
 	conflicts = rutorrent-autodl-irssi-svn
 	replaces = rutorrent-autodl-irssi-svn
 	backup = usr/share/webapps/rutorrent/plugins/autodl-irssi/conf.php
-	source = https://github.com/autodl-community/autodl-rutorrent/archive/community-v1.65.1.tar.gz
-	md5sums = ed83e7aa325827567be2dc093c83230a
+	source = https://github.com/autodl-community/autodl-rutorrent/archive/community-v2.0.0.tar.gz
+	md5sums = 766f092b272a57aa4cb308db551a963a
 
 pkgname = rutorrent-autodl-irssi-community
 
