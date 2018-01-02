@@ -1,6 +1,6 @@
 pkgbase = python2-js2py
 	pkgdesc = JavaScript to Python translator & JavaScript interpreter written in 100% pure Python
-	pkgver = 0.50
+	pkgver = 0.58
 	pkgrel = 1
 	url = https://github.com/PiotrDabkowski/Js2Py
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = python2-js2py
 	depends = python2-pyjsparser
 	depends = python2-six
 	depends = python2-tzlocal
-	source = https://files.pythonhosted.org/packages/source/J/Js2Py/Js2Py-0.50.tar.gz
+	source = https://files.pythonhosted.org/packages/source/J/Js2Py/Js2Py-0.58.tar.gz
 	source = https://raw.githubusercontent.com/PiotrDabkowski/Js2Py/master/LICENSE.md
-	sha256sums = 99592acc3d2b79cd5f9d13340b305582d16415df87c8c47005cf75cb73a89193
+	sha256sums = 12b1104cba668203151b76f295875888423f0111f8bb98f6d5330f7f67842fd1
 	sha256sums = e477271a50c40c9ac3ad56d02e70c7d7d97f66c7326cf524d13b12f8842cc4e9
 
 pkgname = python2-js2py
