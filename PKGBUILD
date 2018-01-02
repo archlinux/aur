@@ -15,7 +15,7 @@
 
 pkgname=cryptkeeper
 pkgver=0.9.5
-pkgrel=5
+pkgrel=6
 pkgdesc="A Linux system tray applet that manages EncFS encrypted folders."
 arch=(i686 x86_64)
 url="http://tom.noflag.org.uk/cryptkeeper.html"
@@ -23,11 +23,9 @@ license=('GPL3')
 depends=('gtk2' 'gconf' 'encfs')
 makedepends=('autoconf')
 source=("http://tom.noflag.org.uk/$pkgname/$pkgname-$pkgver.tar.gz"
-        "cryptkeeper.desktop"
         "cryptkeeper-0.9.5-fix-linking.patch"
         "cryptkeeper-0.9.5-add-unistd-to-lsof.patch")
 md5sums=('d02918b2058854177d2f59b837c2743f'
-         '37484e52a1557a18c0cc2443b3104007'
          'aa864cea6a81ef8e8cb3efa5ef2b9541'
          '2e21a1e82942213108774d768e12e4ee')
 
@@ -39,6 +37,7 @@ prepare() {
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
+  autoreconf -fvi
   ./configure --prefix=/usr
   make
 }
@@ -47,8 +46,6 @@ package() {
   cd "$srcdir"/$pkgname-$pkgver
 
   make DESTDIR="$pkgdir" install
-
-  install -D -m644 "$srcdir"/$pkgname.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
 }
 
 # vim:set ts=2 sw=2 et:
