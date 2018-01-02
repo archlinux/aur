@@ -11,7 +11,8 @@ depends=(gstreamer gtkmm3 libclastfm libconfig taglib)
 makedepends=(boost git)
 provides=('omp')
 conflicts=('omp')
-source=("$pkgname::git+https://github.com/TheWiseNoob/OpenMusicPlayer.git")
+source=("$pkgname::git+https://github.com/TheWiseNoob/OpenMusicPlayer.git"
+        'omp.desktop')
 sha256sums=('SKIP'
             '65398127a90eec9cb79eb11a227305ec2b9f2f3ba1265e2dd1d31934205cd38c')
 
