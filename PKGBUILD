@@ -2,7 +2,7 @@
 
 pkgname=dotnet-sdk-2.0
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
 arch=(x86_64)
