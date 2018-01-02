@@ -9,7 +9,7 @@ arch=(arm armv6h armv7h aarch64 i686 x86_64)
 url="http://openbazaar.org"
 license=('MIT')
 depends=()
-#install=${_pkgname}.install
+install=${_pkgname}.install
 makedepends=(go git upx)
 conflicts=('openbazaard')
 options=('strip' 'upx')
@@ -38,29 +38,25 @@ pkgver() {
 
 build(){
   cd $srcdir
-  export GOPATH="$PWD"/.gopath
-  mkdir -p "$GOPATH"/src/${_user}
-  ln -sf "$PWD"/${_repo} "$GOPATH"/src/${_user}/${_repo}
+  export GOPATH=$PWD/.gopath
+  mkdir -p $GOPATH/src/${_user}
+  ln -sf $PWD/${_repo} $GOPATH/src/${_user}/${_repo}
 
-  cd "$GOPATH"/src/${_user}/${_repo}
+  cd $GOPATH/src/${_user}/${_repo}
   go get -v
 }
 
 package() {
-  export PATH="$PATH":"$PWD"/.gopath/bin
-  cd "$GOPATH"/src/${_user}/${_repo}
+  export PATH=$PATH:$PWD/.gopath/bin
+  cd $GOPATH/src/${_user}/${_repo}
 
   go build
   
-  install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${_pkgname}
-
+  install -Dm755 $GOPATH/bin/${_repo} $pkgdir/usr/bin/${_pkgname}
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
-  install -D -m644 "${srcdir}/${_pkgname}".conf "$pkgdir/etc/conf.d/${_pkgname}"
-  
-  install -dm755 $pkgdir/opt/openbazaar-go/
-  ln -sr /usr/bin/${_pkgname} $pkgdir/opt/openbazaar-go/openbazaard
+  install -D -m644 $srcdir/${_pkgname}.conf $pkgdir/etc/conf.d/${_pkgname}
 }
 
 md5sums=('SKIP'
-         'a6ee246f8be0b85697eca8d9a86014cd'
-         '93ff9255cb400c6748f6cb45a5456962')
+         'b0193c5364076ce7b112f13edf995ac1'
+         '9fd31f8bc5b6ccc21a52fc1b58fdb9d6')

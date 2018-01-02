@@ -1,0 +1,8 @@
+post_upgrade() {
+cat << EOF
+Please backup your store directory located at:
+	/var/lib/openbazaard/.openbazaar2.0
+This package now use a new directory located at:
+	/var/lib/openbazaar
+EOF
+}
