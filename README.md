@@ -7,8 +7,7 @@ This repository holds instructions for building an Arch Linux package for coursi
 First generate `.SRCINFO` by:
 
 ```
-pacaur -S pkgbuild-introspection-git
-gitmksrcinfo
+makepkg --printsrcinfo > .SRCINFO
 ```
 
 Then push to AUR git repository by:
