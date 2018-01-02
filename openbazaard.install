@@ -1,6 +1,0 @@
-post_install() {
-  if [ ! -d /var/lib/openbazaard ]; then
-    groupadd -g 44 openbazaar &>/dev/null
-    useradd -u 44 -g openbazaar -d /var/lib/openbazaard -s /bin/false openbazaar &> /dev/null
-  fi
-}
