@@ -1,11 +1,11 @@
 # Maintainer: preparationh67 <preparationh67 at gmail.com>
 
 _pkgbase=php
-_phpver=7.1.10
+_phpver=7.2.0
 _pkgname=php-pear
 pkgname=php-pear-src
 pkgver=1.10.5
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP Extension and Application Repository"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -19,7 +19,8 @@ makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
 source=("http://php.net/distributions/${_pkgbase}-${_phpver}.tar.xz"
 	"http://php.net/distributions/${_pkgbase}-${_phpver}.tar.xz.asc")
 
-validpgpkeys=('528995BFEDFBA7191D46839EF9BA0ADA31CBD89E')
+validpgpkeys=('528995BFEDFBA7191D46839EF9BA0ADA31CBD89E'
+	      'B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F')
 
 build() {
 	local _phpconfig="--srcdir=../${_pkgbase}-${_phpver} \
@@ -127,5 +128,5 @@ package() {
 	rm -rf ${pkgdir}/usr/share/${_pkgbase}/pear/.{channels,depdb,depdblock,filemap,lock,registry}
 
 }
-md5sums=('de80c2f119d2b864c65f114ba3e438f1'
-	 'SKIP')
+md5sums=('ef8d4764f16d5f066e9893fe91887a31'
+         'SKIP')
