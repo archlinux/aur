@@ -2,12 +2,13 @@
 
 pkgname=veyon
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
 url="https://github.com/veyon"
 license=('GPLv2')
-depends=('qt5-base' 'libxrandr' 'libxtst' 'kldap' 'pam' 'openssl' 'libjpeg-turbo' 'zlib' 'qca-qt5')
+depends=('qt5-base' 'libxrandr' 'libxtst' 'pam' 'openssl' 'libjpeg-turbo' 'zlib' 'qca-qt5')
+optdepends=('kldap: KDE support')
 makedepends=('git' 'cmake' 'qt5-tools')
 _commit=14ef71781c9c933603bf3ecd83dba6b2841cdff1 #tags/4.0.3
 source=("git+${url}/veyon#commit=$_commit"
