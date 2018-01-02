@@ -1,0 +1,28 @@
+pkgbase = softethervpn-client-manager
+	pkgdesc = SoftEther VPN Client Manager
+	pkgver = v4.20_9608
+	pkgrel = 1
+	url = https://www.softether.org/
+	install = vpncmgr.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = desktop-file-utils
+	depends = wine
+	source = file://hamcore.se2
+	source = file://vpncmgr.exe
+	source = vpncmgr.desktop
+	source = vpncmgr.png
+	source = vpncmgr.sh
+	source = vpncmgr-remote.desktop
+	source = vpncmgr-remote.sh
+	md5sums = 0713e1667e06f7f181aaa9bfee7a4dc7
+	md5sums = d6e42a7d8d2a4d61e4dc08748960c542
+	md5sums = 98c8ca04d44309eb6902e6db718a78e3
+	md5sums = 2700860e1d40d685894aa88b0e0d42f1
+	md5sums = 72769397b0ca79ff92de136dbf8ec7ad
+	md5sums = 4f7f7176fc26843a9eb6e722ecd3ff88
+	md5sums = 572d8e51348aa8e3a4b1402c4ebc82dc
+
+pkgname = softethervpn-client-manager
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SoftEther VPN Client Manager
+Exec=vpncmgr /remote
+Icon=vpncmgr
+Terminal=false
+Categories=Network;
