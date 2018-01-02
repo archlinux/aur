@@ -1,6 +1,6 @@
 pkgname=raiblocks-git
-pkgver=9.0.r13.g957386c1
-pkgrel=1
+pkgver=9.0.r56.ga80a9c0d
+pkgrel=2
 pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
 url="http://raiblocks.com/"
@@ -46,13 +46,24 @@ prepare() {
   git submodule sync lmdb
   git submodule update
 
-  if grep avx2 /proc/cpuinfo; then
-    echo "build with AVX2 optimizations"
-    cmake -D RAIBLOCKS_GUI=ON -D ENABLE_AVX2=ON -D PERMUTE_WITH_GATHER=ON -D PERMUTE_WITH_SHUFFLES=ON ./
+  #if grep sse4 /proc/cpuinfo; then 
+    
+  _flags=( "-D RAIBLOCKS_GUI=ON" )
+  
+  if grep -q avx2 /proc/cpuinfo; then
+    echo "using AVX2 optimizations"
+    _flags+=( "-D ENABLE_AVX2=ON" "-D PERMUTE_WITH_GATHER=ON" "-D PERMUTE_WITH_SHUFFLES=ON" )
   else
-    echo "build without AVX2 optimizations"
-    cmake -D RAIBLOCKS_GUI=ON ./
+    echo "excluding unsupported AVX2 optimizations"
   fi
+  if grep -q sse4 /proc/cpuinfo; then
+    echo "build with SIMD optimizations"
+    _flags+=( "-D RAIBLOCKS_SIMD_OPTIMIZATIONS=ON" )
+  else
+    echo "excluding unsupported SIMD optimizations"
+    _flags+=( "-D RAIBLOCKS_SIMD_OPTIMIZATIONS=OFF" )
+  fi
+  cmake $_flags ./
 }
 
 build() {
