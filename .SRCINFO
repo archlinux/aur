@@ -1,15 +1,15 @@
 pkgbase = nodenv
 	pkgdesc = Manage multiple NodeJS versions
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://github.com/nodenv/nodenv
 	install = nodenv.install
 	arch = any
 	license = MIT
 	optdepends = nodenv-node-build
 	conflicts = nodenv-git
-	source = https://github.com/nodenv/nodenv/archive/v1.0.0.tar.gz
-	md5sums = 7750715a580d81ea9a8a63def8131b6b
+	source = https://github.com/nodenv/nodenv/archive/v1.1.2.tar.gz
+	md5sums = 9fd29cd4672107644a5317808d2c2f89
 
 pkgname = nodenv
 

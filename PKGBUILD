@@ -1,8 +1,9 @@
 # Maintainer: Márk Sági-Kazár <mark.sagi-kazar@gmail.com>
+# Maintainer: Francesco Persico <francesco.persico@gmail.com>
 
 pkgname=nodenv
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Manage multiple NodeJS versions"
 arch=("any")
 url="https://github.com/nodenv/nodenv"
@@ -11,7 +12,7 @@ optdepends=("nodenv-node-build")
 conflicts=("${pkgname}-git")
 install=nodenv.install
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=("7750715a580d81ea9a8a63def8131b6b")
+md5sums=("9fd29cd4672107644a5317808d2c2f89")
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
