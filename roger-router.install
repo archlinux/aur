@@ -6,12 +6,11 @@ post_install() {
 
 	echo To add the fax printer run the following command:
 	echo
-	echo   lpadmin -p \"Roger-Router-Fax\" -E -v roger-cups:/ -P 
-/usr/share/cups/model/roger-fax.ppd
+	echo "  lpadmin -p \"Roger-Router-Fax\" -E -v roger-cups:/ -P /usr/share/cups/model/roger-fax.ppd"
 	echo
 	echo Users have to be in the group \"fax\" to use this printer. Run:
 	echo
-	echo   gpasswd --add [username] fax
+	echo "  gpasswd --add [username] fax"
 }
 
 post_upgrade() {
