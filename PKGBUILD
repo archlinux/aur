@@ -1,7 +1,7 @@
 # Maintainer: Bilal ELmoussaoui <bil.elmoussaoui@gmail.com>
 
 pkgname=whatsapp-desktop
-pkgrel=1
+pkgrel=2
 pkgver=0.4.0
 pkgdesc="Unofficial whatsapp web desktop client. Build with Electron."
 url="https://github.com/Enrico204/Whatsapp-Desktop"
