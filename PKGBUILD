@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: JJDaNiMoTh <jjdanimoth@gmail.com>
 
 pkgname=qmc2
-pkgver=0.187
+pkgver=0.192
 pkgrel=1
 pkgdesc="Qt based UNIX MAME frontend supporting SDLMAME"
 url="http://qmc2.batcom-it.net/"
@@ -11,14 +11,8 @@ license=(GPL)
 arch=(x86_64)
 depends=(qt5-webkit qt5-svg qt5-multimedia sdl2 minizip)
 makedepends=(rsync)
-source=("http://downloads.sourceforge.net/project/qmc2/qmc2/$pkgver/qmc2-$pkgver.tar.bz2" qmc2-qt5.9.patch)
-sha256sums=('8db7e4e8fb22b40c65869e70f8517c6897e20bcf2c78026b09a443a8c4459092'
-            '2eadfc85654bd7a3908e6e9d12f509a735d2fb359f299f07f367f1fc9602c7e0')
-
-prepare() {
-  cd $pkgname
-  patch -p2 -i ../qmc2-qt5.9.patch # Fix build with Qt 5.9
-}
+source=("http://downloads.sourceforge.net/project/qmc2/qmc2/$pkgver/qmc2-$pkgver.tar.bz2")
+sha256sums=('63f89a6839121fef5d5381f7b0baae8ca5e401bf5f32f7d36b36c357e85cee87')
 
 build() {
   cd $pkgname
