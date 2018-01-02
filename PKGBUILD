@@ -3,7 +3,7 @@
 pkgname=zmeventserver-git
 _pkgname=${pkgname%%-git}
 pkgver=20171227.b6a8eca
-pkgrel=1
+pkgrel=2
 pkgdesc='A WSS (Secure Web Sockets) based event notification server that broadcasts new events to any authenticated listeners.'
 arch=(any)
 url='https://github.com/pliablepixels/zmeventserver'
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=(
   SKIP
-  8122983b57e7a7ea86311d832d5c4e613ed470ebfb5ba302b5b267c30a48ddbc
+  24a523f42e0022792db99acdfb27c44f9951e25cd7ddcd92b82abbf60fe4d623
 )
 
 pkgver() {

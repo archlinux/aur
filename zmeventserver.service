@@ -1,5 +1,6 @@
 [Unit]
 Description=WSS-based event notification server for ZoneMinder
+After=zoneminder.service
 
 [Service]
 User=http
