@@ -4,7 +4,7 @@ pkgdesc="ROS - rosconsole_bridge is a package used in conjunction with console_b
 url='http://www.ros.org/wiki/rosconsole_bridge'
 
 pkgname='ros-kinetic-rosconsole-bridge'
-pkgver='0.4.4'
+pkgver='0.5.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rosconsole_bridge-release-release-kinetic-rosconsole_bridge-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rosconsole_bridge-release/archive/release/kinetic/rosconsole_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b507fffc1913f2c4aafa988fc7119a1b2749618d7945b350f91be40ff6c4e49c')
+sha256sums=('3bb580e1d4517762b3a8fbd6ba310235300191660557f29657c79e15dd2104c1')
 
 build() {
   # Use ROS environment variables
