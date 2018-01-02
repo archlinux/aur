@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=kpscript
-pkgver=2.36
+pkgver=2.37
 pkgrel=1
 pkgdesc="KeePass scripting utility"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('keepass')
 source=("http://keepass.info/extensions/v2/kpscript/KPScript-${pkgver}.zip"
         "kpscript")
-md5sums=('555234d53ef80c9203f59f84f5573102'
+md5sums=('0be3557ae93e28258c434e2bb625008b'
          '49aaf670eb8642bc274b73a6756ba04d')
 
 package() {
