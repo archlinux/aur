@@ -1,0 +1,20 @@
+pkgbase = gomics-git
+	pkgdesc = A lightweight and free comic viewer
+	pkgver = r3.28fe39f
+	pkgrel = 1
+	url = https://freeconsole.org/anime/gomics
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = go
+	makedepends = go-bindata
+	depends = gtk3
+	depends = gdk-pixbuf2
+	provides = gomics
+	conflicts = gomics
+	source = git://github.com/salviati/gomics.git
+	sha256sums = SKIP
+
+pkgname = gomics-git
+
