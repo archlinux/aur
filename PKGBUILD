@@ -13,32 +13,30 @@ makedepends=(go upx)
 _user=github.com/OpenBazaar
 _repo=openbazaar-go
 source=("https://github.com/OpenBazaar/openbazaar-go/archive/v$pkgver.tar.gz"
-	"${pkgname}.service"
-	"${pkgname}.conf"
+	"$pkgname.service"
+	"$pkgname.conf"
 )
 options=('strip' 'upx')
 
 build(){
   cd $srcdir
-  export GOPATH="$PWD"/.gopath
-  mkdir -p "$GOPATH"/src/${_user}
-  ln -sf "$PWD"/${_repo}-${pkgver} "$GOPATH"/src/${_user}/${_repo}
+  export GOPATH=$PWD/.gopath
+  mkdir -p $GOPATH/src/${_user}
+  ln -sf $PWD/${_repo}-${pkgver} $GOPATH/src/${_user}/${_repo}
 
-  cd "$GOPATH"/src/${_user}/${_repo}
+  cd $GOPATH/src/${_user}/${_repo}
   go get -v
 }
 
 package() {
-  export PATH="$PATH":"$PWD"/.gopath/bin
-  cd "$GOPATH"/src/${_user}/${_repo}
+  export PATH=$PATH:$PWD/.gopath/bin
+  cd $GOPATH/src/${_user}/${_repo}
 
   go build
   
-  install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${pkgname}
-  install -Dm644 $srcdir/${pkgname}.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
-  install -D -m644 "${srcdir}/${pkgname}".conf "$pkgdir/etc/conf.d/${pkgname}"
-  install -dm755 $pkgdir/opt/openbazaar-go/
-  ln -sr /usr/bin/${pkgname} $pkgdir/opt/openbazaar-go/${pkgname}
+  install -Dm755 $GOPATH/bin/${_repo} $pkgdir/usr/bin/$pkgname
+  install -Dm644 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
+  install -D -m644 $srcdir/$pkgname.conf $pkgdir/etc/conf.d/$pkgname
 }
 
 md5sums=('5fc9d28716c230abf7659a5ab70fb4f1'
