@@ -1,5 +1,5 @@
 pkgname=vtigercrm
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="A free, full-featured, 100% Open Source CRM software ideal for small and medium businesses"
 arch=("any")
@@ -26,7 +26,7 @@ backup=("etc/webapps/${pkgname}/config.php"
 options=("!strip"
          "emptydirs")
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}${pkgver}.tar.gz")
-sha256sums=("45f853a14c85229c4d4d2a8fc1e2243785af486f40abf3c70769c6e856abc5e1")
+sha256sums=("c7436ec0f3692dc5818049673e8dc9b2e6387ab365bb91c8699475cd0540d00d")
 
 package() {
   install -dm 0755                                    "${pkgdir}/etc/webapps/${pkgname}"
