@@ -2,12 +2,12 @@
 
 pkgname=gomics-git
 _pkgname=gomics
-pkgver=r3.28fe39f
+pkgver=r3.8b5056a
 pkgrel=1
 pkgdesc="A lightweight and free comic viewer"
-url="https://freeconsole.org/anime/gomics"
+url="https://github.com/salviati/gomics"
 license=('GPLv3')
-depends=('gtk3' 'gdk-pixbuf2')
+depends=('gtk3' 'gdk-pixbuf2' 'cairo' 'glib2')
 makedepends=('git' 'go' 'go-bindata')
 conflicts=('gomics')
 provides=('gomics')
