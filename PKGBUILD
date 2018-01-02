@@ -2,8 +2,8 @@
 
 pkgname="wireless-ids-git"
 _gitname="wireless-ids"
-pkgver=24.b132071
-pkgrel=1
+pkgver=26.7dfd2fc
+pkgrel=2
 pkgdesc="The Exploit Database (EDB) an ultimate archive of exploits and vulnerable software - A collection of hacks"
 url="https://github.com/SYWorks/wireless-ids"
 license=("custom")
@@ -11,7 +11,7 @@ arch=('any')
 provides=("wireless-ids")
 depends=('python2' 'aircrack-ng' 'wireshark-cli' 'mlocate')
 options=('!strip')
-source=("git+https://github.com/SYWorks/${_gitname}.git" "wids.default" "wireless-ids.service")
+source=("git+https://github.com/GIJack/${_gitname}.git" "wids.default" "wireless-ids.service")
 sha256sums=('SKIP'
             '6eb645517297a7131f2a5a1c57ce239c885db11261ff0c87cac97e6e503505a1'
             '09d6ac0003650d5b6b4cca37d216a33469bde4f9b099c5e74628b59973055aa9')
@@ -25,6 +25,7 @@ pkgver() {
 
 build(){
   cd "${srcdir}/${_gitname}"
+  local logfile="/var/log/wids.log"
   sed -i '1s/python/python2/' "wids.py"
   python2 -m compileall *.py
 }
