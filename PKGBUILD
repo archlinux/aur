@@ -2,7 +2,7 @@
 
 _pkgname=bumblebee-status
 pkgname=bumblebee-status-git
-pkgver=r377.11235d6
+pkgver=r752.1a507ec
 pkgrel=1
 pkgdesc="A modular, theme-able status line generator for the i3 window manager."
 arch=('any')
@@ -19,7 +19,13 @@ optdepends=('xorg-xbacklight: To display a displays brightness'
 	'xorg-xrandr: Enable/disable screen outputs'
     'pacman: Display current status of pacman'
     'iputils: Display a ping'
-    'fakeroot: Dependency of the pacman module')
+    'fakeroot: Dependency of the pacman module'
+    'cmus: Control the cmus player'
+    'gpmdp-remote: Control the Google Play Music Desktop Player'
+    'mpc: Control a MPD instance'
+    'dbus: Dependency of the bluetooth module'
+    'bluez: Dependency of the bluetooth module'
+    'blueman: Dependency of the bluetooth module')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
