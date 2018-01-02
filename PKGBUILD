@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
   install -DCm0755 omp "${pkgdir}/usr/bin/omp"
   install -Dm0644 Images/No_Cover.svg "${pkgdir}/usr/share/pixmaps/no_cover.png"
   install -Dm0644 Images/Icon_Small.png "${pkgdir}/usr/share/pixmaps/omp.png"
