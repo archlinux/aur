@@ -1,7 +1,7 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.4.5
-_numix_ver=1.4
+_oomox_ver=1.4.5.1
+_numix_ver=1.4.0.1
 _materia_ver=20171213
 _archdroid_ver=1bf91f49f76112d48415bfa997aabc2cea84f01d
 _gnome_colors_ver=3c8596ea630b8255b9cf5d5bf90a69658dd32b79
@@ -51,8 +51,8 @@ source=(
     "oomox-gnome-colors-icon-theme-${_gnome_colors_ver}.zip::https://github.com/actionless/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_ver}.zip"
     "oomoxify-${_oomoxify_ver}.zip::https://github.com/actionless/oomoxify/archive/${_oomoxify_ver}.zip"
 )
-md5sums=('541b143f46456c01dc8bda165b2c94f6'
-         '2df5eb0181d70ac09c27c59984f4e501'
+md5sums=('066ee09632d243ab85a90e7f675f5df9'
+         '464f7896aabe2b813bf55dab6f61f364'
          'c12b3b8813f1fe5a92525e55d68afa9e'
          'b02338c77e033933c28b8e95d8c74b71'
          '1494fc4bf2d4b17966cf81cfc39212f6'
