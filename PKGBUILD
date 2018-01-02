@@ -1,22 +1,20 @@
-# Maintainer: Oleg Plakhotniuk <olegus EIGHT AT gmail DOT com>
+# Contributor: Oleg Plakhotniuk <olegus EIGHT AT gmail DOT com>
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=validatornu
-pkgver=20141013
-_pkgver2=20141006
+pkgver=17.11.1
 pkgrel=1
-pkgdesc="A command line tool for HTML5 markup validation"
+pkgdesc="The Nu Html Checker, a command line tool for HTML5 markup validation"
 arch=('any')
-url="http://validator.github.io"
+url="https://validator.github.io/validator/"
 license=('custom')
-depends=('java-environment' 'bash')
+depends=('java-environment')
 makedepends=('unzip')
 source=('validatornu'
-        "https://github.com/validator/validator/releases/download/${_pkgver2}/vnu-${pkgver}.jar.zip")
-md5sums=('5de3977fa83926a7ce6fc96a3228d7f3'
-         '631648b0b42fd5f955b5c8ee07bfe10c')
+        "https://github.com/validator/validator/releases/download/${pkgver}/vnu.jar_${pkgver}.zip")
 
 package() {
-  cd "$srcdir/vnu"
+  cd "$srcdir/dist"
   install -D "$srcdir/validatornu" "$pkgdir/usr/bin/validatornu"
   install -D -m644 vnu.jar "$pkgdir/usr/share/java/$pkgname/vnu.jar"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -25,3 +23,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha256sums=('2bd7de0a9e3a11bf146fe395ed25380ff47b3d28396cbb9e008a48bb3b8056d7'
+            'aaa5b27cce1d10fb4a48099041396a18bd55f8f982c595e0ffcdff1f1d4aedb8')
