@@ -1,6 +1,6 @@
 pkgbase = luaunbound
 	pkgdesc = drop-in replacement for Prosodys internal DNS library with a binding to libunbound
-	pkgver = 2017.03.24
+	pkgver = 2017.11.15
 	pkgrel = 3
 	url = https://www.zash.se/luaunbound.html
 	install = luaunbound.install
