@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 url='http://sokoban.ws/usokoban/usokoban.php'
 license=('GPL3')
 depends=('gtk2' 'sqlite')
-noextract=("usokoban-$pkgver-src.tar.gz")
+noextract=("usokoban-$pkgver-src.tar.gz"
+           "usokoban-$pkgver-i386.b.tar.gz")
 source=("http://sokoban.ws/usokoban/usokoban-$pkgver-src.tar.gz"
         "http://sokoban.ws/usokoban/usokoban-$pkgver-i386.b.tar.gz")
 sha256sums=('91826be91c44fc0fbbedbc90e4bc1b9596d656d53876f092334c01f51603b53c'
@@ -18,8 +19,11 @@ prepare() {
   mkdir -p source
   bsdtar -xf usokoban-$pkgver-src.tar.gz -C source
 
-  sed -i 's|^Exec=.*$|Exec=/usr/bin/usokoban|' usokoban.desktop
-  sed -i 's|^Icon=.*$|Icon=/usr/share/pixmaps/usokoban.png|' usokoban.desktop
+  mkdir -p binary
+  bsdtar -xf usokoban-$pkgver-i386.b.tar.gz -C binary
+
+  sed -i 's|^Exec=.*$|Exec=/usr/bin/usokoban|' binary/usokoban.desktop
+  sed -i 's|^Icon=.*$|Icon=/usr/share/pixmaps/usokoban.png|' binary/usokoban.desktop
 }
 
 build() {
@@ -34,8 +38,8 @@ package() {
   install -Dm755 source/usokoban "$pkgdir"/usr/bin/usokoban
 
   install -d "$pkgdir"/usr/share/games/usokoban
-  install -m644 skin*.png *.txt README "$pkgdir"/usr/share/games/usokoban/
+  install -m644 binary/{skin*.png,*.txt,README} "$pkgdir"/usr/share/games/usokoban/
 
-  install -Dm644 usokoban.desktop "$pkgdir"/usr/share/applications/usokoban.desktop
-  install -Dm644 usokoban.png "$pkgdir"/usr/share/pixmaps/usokoban.png
+  install -Dm644 binary/usokoban.desktop "$pkgdir"/usr/share/applications/usokoban.desktop
+  install -Dm644 binary/usokoban.png "$pkgdir"/usr/share/pixmaps/usokoban.png
 }
