@@ -14,8 +14,7 @@ pkgbase = omp-git
 	depends = taglib
 	provides = omp
 	conflicts = omp
-	source = git+https://github.com/TheWiseNoob/OpenMusicPlayer.git
-	source = omp.desktop
+	source = omp-git::git+https://github.com/TheWiseNoob/OpenMusicPlayer.git
 	sha256sums = SKIP
 	sha256sums = 65398127a90eec9cb79eb11a227305ec2b9f2f3ba1265e2dd1d31934205cd38c
 
