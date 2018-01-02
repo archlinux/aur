@@ -4,7 +4,7 @@
 
 pkgname=easy-boot-creator
 _pkgname=easy-boot-creator
-pkgver=0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="Tool to create a bootable usb stick quick and easy"
 url="https://einjel-frontend.herokuapp.com"
