@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-solidity-mode-git
-pkgver=0.1.2r44.b8ddfd6
+pkgver=0.1.8r69.b5d95ef
 pkgrel=1
 pkgdesc='Solidity mode package for Emacs'
 url='https://github.com/ethereum/emacs-solidity'
@@ -17,16 +17,11 @@ pkgver() {
   printf "%sr%s.%s" "$(awk '/;; Version:/ {print $3}' solidity-mode.el)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd $pkgname
-  emacs -batch -f batch-byte-compile solidity-mode.el
-}
-
 package() {
   cd ${pkgname}
   install -dm0755 $pkgdir/usr/share/emacs/site-lisp/solidity-mode
   install -dm0755 $pkgdir/usr/share/doc/emacs-solidity-mode
-  install -m0644 *.el{,c} -t $pkgdir/usr/share/emacs/site-lisp/solidity-mode
+  install -m0644 *.el -t $pkgdir/usr/share/emacs/site-lisp/solidity-mode
   install -m0644 README.org $pkgdir/usr/share/doc/emacs-solidity-mode/README
   install -Dm644 LICENCSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
