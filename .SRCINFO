@@ -9,7 +9,7 @@ pkgbase = idm-console-framework
 	makedepends = java-environment
 	depends = ldapjdk
 	depends = jss
-	source = http://www.port389.org/sources/idm-console-framework-1.1.17.tar.bz2
+	source = https://fedorapeople.org/groups/389ds//binaries/idm-console-framework-1.1.17.tar.bz2
 	sha256sums = 3438848f3412aaa444836352d785229c51fa7d6723ce9d63c367ce517722c9b7
 
 pkgname = idm-console-framework
