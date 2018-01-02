@@ -2,7 +2,7 @@
 
 pkgname=odrive-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Drive GUI"
 arch=('x86_64')
 url="https://github.com/liberodark/ODrive"
