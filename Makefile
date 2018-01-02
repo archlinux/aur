@@ -2,7 +2,7 @@ PKG:=$(lastword $(subst /, ,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))))
 
 .PHONY: upload clean
 
-all: PKGBUILD src
+all: src
 
 clean:
 	rm -rf .SRCINFO \
@@ -20,7 +20,7 @@ upload: .${PKG}.git .SRCINFO
 .%.git:
 	git clone ssh://aur@aur.archlinux.org/$* $@
 
-src:
+src: PKGBUILD
 	makepkg -do
 
 .SRCINFO: PKGBUILD

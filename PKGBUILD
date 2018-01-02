@@ -9,7 +9,7 @@ pkgname=("${pkgbase}-git"
          "${pkgbase}-core-git"
         )
 
-pkgver=0.12.0.314.g97a9b164
+pkgver=0.12.0.463.g0167e8a2
 pkgrel=1
 url='http://quassel-irc.org'
 license=('GPL')
