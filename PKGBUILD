@@ -47,7 +47,7 @@ prepare() {
   git submodule update
 
   #if grep sse4 /proc/cpuinfo; then 
-    
+  
   _flags=( "-D RAIBLOCKS_GUI=ON" )
   
   if grep -q avx2 /proc/cpuinfo; then
@@ -69,7 +69,7 @@ prepare() {
 build() {
   cd "$srcdir/raiblocks"
   make rai_wallet
-  make rai_node  
+  make rai_node
 }
 
 package() {
