@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=light-locker-git
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='A simple session locker'
 arch=('x86_64')
@@ -11,21 +11,13 @@ depends=('dbus-glib' 'gtk3' 'libxss' 'libxxf86misc' 'lightdm')
 makedepends=('git' 'gnome-common' 'intltool')
 provides=('light-locker')
 conflicts=('light-locker')
-source=('git+https://github.com/the-cavalry/light-locker.git'
-        'light-locker-libsystemd-login.patch')
-sha256sums=('SKIP'
-            '6645624e195f7cc114b95d323dfd55c03bbdf6b01de10e694df6a97d5ef6eeaf')
+source=('git+https://github.com/the-cavalry/light-locker.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd light-locker
 
   printf "%s" "$(git describe --tags | sed 's/-/.r/; s/-g/./; s/^v//')"
-}
-
-prepare() {
-  cd light-locker
-
-  patch -Np1 -i ../light-locker-libsystemd-login.patch
 }
 
 build () {
