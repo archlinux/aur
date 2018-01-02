@@ -5,13 +5,12 @@ After=network.target
 [Service]
 Type=simple
 User=openbazaar
-TimeoutSec=0
-ExecStart=/usr/bin/openbazaard start
+DynamicUser=yes
+EnvironmentFile=/etc/conf.d/openbazaard
+StateDirectory=openbazaar
+ExecStart=/usr/bin/openbazaard start $OB_ARGS
 ExecStop=/usr/bin/openbazaard stop
 ExecReload=/usr/bin/openbazaard restart
-
-## Security
-InaccessibleDirectories=/home
 
 [Install]
 WantedBy=multi-user.target
