@@ -20,7 +20,7 @@ pkgbase = cemu
 	md5sums = 54d70005a8975812ab54fcfef53f7bde
 	md5sums = 9ca016ad209689c61d7a9ff8df4dd371
 	md5sums = e8c253050640eede5d3e1f3b91116ce4
-	md5sums = 664520f537d42df689725653d9146410
+	md5sums = a52d61eab68ee0beeacd661707a9fb77
 	md5sums = 3990c054d9a5191c556e5208f3d4bad3
 
 pkgname = cemu

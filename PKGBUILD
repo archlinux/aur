@@ -26,7 +26,7 @@ md5sums=('01118cf3e1ef9e453b5c56d2d27f6967'
          '54d70005a8975812ab54fcfef53f7bde'
          '9ca016ad209689c61d7a9ff8df4dd371'
          'e8c253050640eede5d3e1f3b91116ce4'
-         '664520f537d42df689725653d9146410'
+         'a52d61eab68ee0beeacd661707a9fb77'
          '3990c054d9a5191c556e5208f3d4bad3')
 
 options=(!strip)
