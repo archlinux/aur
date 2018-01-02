@@ -4,7 +4,7 @@ pkgname=bodylogger
 pkgver=0.7.1
 pkgrel=1
 pkgdesc="
-Maintains a user database of personal measurements while giving stats and predictions based on trends."
+Maintains a database of body weight measurements while giving stats and predictions based on trends."
 url="https://github.com/rmcminn/bodylogger"
 arch=('any')
 license=('MIT')
