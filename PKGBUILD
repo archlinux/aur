@@ -6,7 +6,7 @@
 _pyname=tzlocal
 pkgbase=python-${_pyname}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
-pkgver=1.4
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Tzinfo object for the local timezone"
 arch=('any')
@@ -14,7 +14,7 @@ url='https://pypi.python.org/pypi/tzlocal'
 license=('custom')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/regebro/${_pyname}/archive/${pkgver}.tar.gz")
-sha256sums=('d3cdf502a4ae4b566abf948924e837b6c354aaed082eb1326c6c9043824cb4a7')
+sha256sums=('4fc325121f6881b5872de15ad05e8f534e35171658519872f7c61c0e5bb7f371')
 
 prepare() {
   cp -a ${_pyname}-${pkgver}{,-py2}
