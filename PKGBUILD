@@ -1,8 +1,8 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 
-pkgname='autodl-irssi-community'
 _pkgname='autodl-irssi'
-pkgver=1.65
+pkgname="${_pkgname}-community"
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Community fork of the plugin for irssi which monitors IRC announce channels and downloads torrents based on user defined filters.'
 arch=('any')
@@ -23,7 +23,7 @@ provides=("${_pkgname}")
 replaces=("autodl-irssi-svn")
 conflicts=("autodl-irssi-svn")
 source=("https://github.com/autodl-community/${_pkgname}/archive/community-v${pkgver}.tar.gz")
-md5sums=('96dd306e3bb0ac35842fb392a1e4d95b')
+md5sums=('6fbfb0d4e0ee01156b444c5fdeaf55ca')
 
 package() {
   cd "$srcdir/${pkgname}-v${pkgver}"
@@ -33,7 +33,6 @@ package() {
   # copy over all the IRC/tracker files
   cp -r "AutodlIrssi" "$pkgdir/usr/share/$_pkgname/"
   chmod 755 "$pkgdir/usr/share/$_pkgname/AutodlIrssi"
-  chmod 755 "$pkgdir/usr/share/$_pkgname/AutodlIrssi/trackers"
 	
   install -Dm644 "autodl-irssi.pl" "$pkgdir/usr/share/$_pkgname"
   install -Dm644 "README.md" "$pkgdir/usr/share/$_pkgname"
