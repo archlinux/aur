@@ -2,14 +2,16 @@
 
 pkgbase=rbutil-git
 pkgname=('rbutil-git' 'rbspeex-git')
-pkgver=1.4.0.r540.0f61e38
+pkgver=1.4.0.r1593.9f6ce046cb
 pkgrel=1
 arch=('x86_64')
 url='http://www.rockbox.org/twiki/bin/view/Main/RockboxUtility'
 license=('GPL')
-makedepends=('gendesk' 'git' 'libusb' 'qt5-base' 'qt5-tools' 'speex')
-source=('rbutil::git://git.rockbox.org/rockbox')
-sha256sums=('SKIP')
+makedepends=('crypto++' 'git' 'libusb' 'qt5-base' 'qt5-tools' 'speex' 'speexdsp')
+source=('rbutil::git://git.rockbox.org/rockbox'
+        'rbutil.desktop')
+sha256sums=('SKIP'
+            '6c7e7f8aa3dbbf1ace8cd43dd057649cfd329224e899fb83d739113a8a15be9d')
 
 pkgver() {
   cd rbutil
@@ -20,24 +22,26 @@ pkgver() {
 }
 
 prepare() {
-  gendesk -f -n --pkgname 'rbutil' --pkgdesc "${pkgdesc}" --name='Rockbox Utility' --exec='RockboxUtility' --categories='Application;Utility;' --comment='Rockbox automated installer'
+  sed 's/LIBS += -lz/LIBS += -lz -lcryptopp/' -i rbutil/rbutil/rbutilqt/rbutilqt.pro
 }
 
 build() {
+
   cd rbutil/rbutil/rbutilqt
 
   lrelease-qt5 rbutilqt.pro
   qmake-qt5
   make
 
-  cd ../../tools
+  cd ../../tools/rbspeex
 
-  make -C rbspeex
+  make
 }
 
 package_rbutil-git(){
   pkgdesc='Rockbox Utility'
-  depends=('libusb' 'qt5-base' 'speex')
+  depends=('gcc-libs' 'glibc' 'qt5-base' 'speex' 'speexdsp' 'zlib'
+           'libusb-1.0.so')
   optdepends=('espeak: TTS engine'
               'festival: TTS engine'
               'flite: TTS engine'
@@ -55,7 +59,7 @@ package_rbutil-git(){
 
 package_rbspeex-git(){
   pkgdesc='Rockbox Speex Codec'
-  depends=('speex')
+  depends=('glibc' 'speex' 'speexdsp')
   provides=('rbspeex')
   conflicts=('rbspeex')
 
