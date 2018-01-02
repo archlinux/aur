@@ -1,6 +1,6 @@
 pkgbase = easy-boot-creator
 	pkgdesc = Tool to create a bootable usb stick quick and easy
-	pkgver = 0.1
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://einjel-frontend.herokuapp.com
 	arch = x86_64
