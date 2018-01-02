@@ -9,20 +9,24 @@ pkgdesc='A tool to help programmers write Java code that adheres to a coding sta
 arch=('any')
 license=('LGPL2.1')
 depends=('java-runtime>=8')
-#makedepends=('maven' 'java-environment>=8')
+makedepends=('maven' 'java-environment>=8')
 url='http://checkstyle.sourceforge.net'
-source=(
-  "https://sourceforge.net/projects/checkstyle/files/checkstyle/${pkgver}/${pkgname}-${pkgver}-bin.tar.gz/download"
-  'checkstyle')
-md5sums=('5ace016b0fd22b6cd86b06119f648815'
-         'eb71b85acb81e0d3c5f0809fe93641dc')
+source=("https://github.com/checkstyle/checkstyle/archive/checkstyle-${pkgver}.tar.gz"
+       'checkstyle')
+sha256sums=('52e2646c36e3b2226adda575129b679eb5824dbf24c0c3a11e3617e764a4ad2f'
+            '5bf5f7e688aec23fce2a507384c595ac44339ace5bb9624fc8be61e036688234')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}/"
+  mvn -Passembly clean package
+}
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}/"
   mkdir -p "${pkgdir}/usr/share/java/${pkgname}/"
   mkdir -p "${pkgdir}/usr/bin/"
   install -D -m755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}-${pkgver}-all.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+  install -D -m644 "target/${pkgname}-${pkgver}-all.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
