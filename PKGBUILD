@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
 pkgver=1.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
@@ -60,7 +60,7 @@ package() {
 
 	mkdir -p "$pkgdir/var/spool/roger"
 	chmod 2770 "$pkgdir/var/spool/roger"
-	chown root:lp "$pkgdir/var/spool/roger"
+	chown root:fax "$pkgdir/var/spool/roger"
 
 	mkdir -p "$pkgdir/usr/lib/cups/backend"
 	mv "$pkgdir/usr/share/roger/roger-cups" "$pkgdir/usr/lib/cups/backend/roger-cups"
