@@ -7,7 +7,7 @@ pkgname='ros-kinetic-opencv3'
 pkgver='3.3.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=()
@@ -37,6 +37,7 @@ depends=(${ros_depends[@]}
   libpng
   ffmpeg
   libharu)
+conflicts=(lapacke)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/opencv3/${pkgver}-${_pkgver_patch}
