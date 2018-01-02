@@ -17,12 +17,12 @@ sha256sums=('SKIP'
             '65398127a90eec9cb79eb11a227305ec2b9f2f3ba1265e2dd1d31934205cd38c')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
   make
 }
 
