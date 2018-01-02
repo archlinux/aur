@@ -24,7 +24,7 @@ package() {
   cp -R "${srcdir}/WhatsApp-linux-x64" "${pkgdir}/opt/Whatsapp"
 
   install -d "${pkgdir}/usr/bin"
-  ln -sf "${pkgdir}/opt/Whatsapp/WhatsApp" "${pkgdir}/usr/bin/Whatsapp"
+  ln -sf "../../opt/Whatsapp/WhatsApp" "${pkgdir}/usr/bin/Whatsapp"
 
   install -D -m644 "./${pkgname}.desktop" \
       "${pkgdir}/usr/share/applications/${pkgname}.desktop"
