@@ -1,14 +1,16 @@
 # Maintainer: Étienne Deparis <etienne [at] depar.is>
 
 pkgname=python2-catcher
+_name=python-catcher
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautiful stack traces for Python"
 license=("PSF")
 url="https://pypi.python.org/pypi/python-catcher"
 depends=('python2-requests' 'python2-mako')
 makedepends=('python2-setuptools')
-source=(http://pypi.python.org/packages/source/p/python-catcher/python-catcher-$pkgver.tar.gz)
+source=("https://pypi.python.org/packages/source/p/${_name}/${_name}-${pkgver}.tar.gz")
+md5sums=('eecb82153f46586841162613008bab47')
 arch=('any')
 options=(!emptydirs)
 
@@ -22,5 +24,3 @@ package() {
 
   python2 setup.py install --root=$pkgdir
 }
-
-md5sums=('eecb82153f46586841162613008bab47')
