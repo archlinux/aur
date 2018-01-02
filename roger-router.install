@@ -1,5 +1,8 @@
 post_install() {
 	groupadd -f fax
+	mkdir -p "$pkgdir/var/spool/roger"
+	chmod 2770 "$pkgdir/var/spool/roger"
+	chown root:fax "$pkgdir/var/spool/roger"
 
 	echo To add the fax printer run the following command:
 	echo

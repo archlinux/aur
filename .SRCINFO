@@ -1,7 +1,7 @@
 pkgbase = roger-router
 	pkgdesc = Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible
 	pkgver = 1.9.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.tabos.org/
 	install = roger-router.install
 	arch = i686
