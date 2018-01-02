@@ -1,10 +1,10 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=pantheon-default-settings-git
 pkgver=r310.39b0a63
-pkgrel=1
+pkgrel=2
 arch=('any')
-url='https://code.launchpad.net/~elementary-os/elementaryos/default-settings-loki'
+url='https://github.com/elementary/default-settings'
 license=('GPL')
 groups=('pantheon-unstable')
 makedepends=('git')
