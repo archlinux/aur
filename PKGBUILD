@@ -9,7 +9,7 @@ pkgver=1.7
 pkgrel=4
 pkgdesc="Client library for the my.gpodder.org web service"
 arch=('any')
-url="http://thpinfo.io/2010/mygpoclient/"
+url="https://github.com/gpodder/mygpoclient"
 license=('GPL3')
 depends=('python2')
 conflicts=('python-mygpoclient<=1.5')
