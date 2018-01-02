@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkscreen
-pkgver=5.11.4
+pkgver=5.11.5
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=(x86_64)
@@ -13,11 +13,12 @@ depends=(qt5-x11extras libxrandr kwayland)
 makedepends=(extra-cmake-modules)
 groups=(plasma)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('ede7b9baa5c236f1637d0236d7c2dc3f9cf3ea30e7a0aecc8fa0d25bbfc1636b'
+sha256sums=('eff3b06114777f9b237d378ab7ceeb17220a64ddaab5f01697534872fec9960d'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '348C8651206633FD983A8FC4DEACEA00075E1D76'  # KDE Neon
-              'D07BD8662C56CB291B316EB2F5675605C74E02CF') # David Edmundson
+              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson
+              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 prepare() {
   mkdir -p build
