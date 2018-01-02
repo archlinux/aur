@@ -10,8 +10,6 @@ url="https://www.microsoft.com/net/core"
 license=('MIT')
 depends=('dotnet-runtime>=2.0.4')
 options=('staticlibs')
-install=dotnet-sdk-2.0.install
-
 conflicts=('dotnet-sdk')
 
 source=("https://download.microsoft.com/download/2/9/3/293BC432-348C-4D1C-B628-5AC8AB7FA162/dotnet-sdk-2.1.3-linux-x64.tar.gz")

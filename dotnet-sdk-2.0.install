@@ -1,9 +1,0 @@
-post_install() {
-	echo "Populating local Nuget package cache"
-	dotnet nuget &> /dev/null
-}
-
-post_upgrade() {
-	echo "Populating local Nuget package cache"
-	dotnet nuget &> /dev/null
-}
