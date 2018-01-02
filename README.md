@@ -1,6 +1,9 @@
-# Package build description for [coursier](http://get-coursier.io/)
+# Package build description for coursier [![travis-badge][]][travis]
 
-This repository holds instructions for building an Arch Linux package for coursier.
+[travis]:          https://travis-ci.org/2m/coursier-pkgbuild
+[travis-badge]:    https://travis-ci.org/2m/coursier-pkgbuild.svg?branch=master
+
+This repository holds instructions for building an Arch Linux package for [coursier](http://get-coursier.io/).
 
 ## Pushing to AUR
 
