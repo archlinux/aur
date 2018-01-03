@@ -30,6 +30,7 @@ _arguments -C -A "-*" \
     -s'[size of tomb (MB)]' \
     -k'[path to the key to be used (-k - to read from stdin)]' \
     -n'[do not process hooks found in tomb]' \
+    -p'[preserve ownership of files in tomb]' \
     -o'[mount options used to open]' \
     -f'[force operation]' \
     -g'[use a GnuPG key to encrypt a tomb key]' \
