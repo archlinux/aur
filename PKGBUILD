@@ -1,7 +1,7 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 pkgname=libpredict
-pkgver=1.0.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=3
 pkgdesc="A satellite orbit prediction library"
 arch=('i686' 'x86_64')
 url="https://github.com/la1k/libpredict"
@@ -9,11 +9,11 @@ license=('GPL')
 depends=('glibc')
 makedepends=('cmake')
 source=("https://github.com/la1k/libpredict/archive/v${pkgver}.tar.gz")
-md5sums=('851f4b1a225f6d8801267464ca932dd7')
+md5sums=('b93c7a2f2f18fbe1c5edf487bc89e097')
 
 build() {
 	cd "$pkgname-$pkgver"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
 	make
 }
 
