@@ -5,8 +5,8 @@
 
 _pkgorigname=kwin
 pkgname=kwin-presentwindows-close
-pkgver=5.11.4
-pkgrel=2
+pkgver=5.11.5
+pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(i686 x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
@@ -19,12 +19,13 @@ provides=(kwin)
 groups=(plasma)
 source=("https://download.kde.org/stable/plasma/${pkgver}/${_pkgorigname}-${pkgver}.tar.xz"{,.sig}
         "presentwindows-close.patch")
-sha256sums=('f989b2dbfd79d63e19e2bf1beb9e9088a3fb9a4a0d4a3ceac2b42201bd15d751'
+sha256sums=('9fb0db84fd13568a0dcae7d1fdd3e72e5bbb80120d374941043d4474ea167f19'
             'SKIP'
             'a42e050f873632240595026b0f0f98ce4e109dd36a7768ba6b361d1b4854aefb')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '348C8651206633FD983A8FC4DEACEA00075E1D76'  # KDE Neon
-              'D07BD8662C56CB291B316EB2F5675605C74E02CF') # David Edmundson
+              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson
+              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 prepare() {
   mkdir -p build
