@@ -1,7 +1,7 @@
 pkgbase = netzob
 	pkgdesc = Netzob is an opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://netzob.org
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = netzob
 	conflicts = netzob-git
 	options = !emptydirs
 	source = netzob-Release-netzob-1.0.2.tar.gz::https://github.com/netzob/netzob/archive/Release/netzob-1.0.2.tar.gz
-	sha256sums = 6a8350aac2859e03890f78e9d2135240fa69f05544d346d21c78c0c58ca1c4ae
+	sha256sums = 54934c90cc8e80cca7f1fdbc74ba3cf5bf1fb94536366a6f313ccc92f969e390
 
 pkgname = netzob
 

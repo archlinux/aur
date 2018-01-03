@@ -4,7 +4,7 @@ _py="python"
 pkgname=netzob
 pkgver=1.0.2
 _release_name=${pkgname}-Release-${pkgname}-${pkgver}
-pkgrel=1
+pkgrel=2
 HOLDVER=1
 pkgdesc="Netzob is an opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ options=(!emptydirs)
 install=
 source=(${_release_name}.tar.gz::https://github.com/netzob/netzob/archive/Release/${pkgname}-${pkgver}.tar.gz)
 provides=('netzob')
-sha256sums=('6a8350aac2859e03890f78e9d2135240fa69f05544d346d21c78c0c58ca1c4ae')
+sha256sums=('54934c90cc8e80cca7f1fdbc74ba3cf5bf1fb94536366a6f313ccc92f969e390')
 
 build() {
     cd "${srcdir}/${_release_name}/netzob"
