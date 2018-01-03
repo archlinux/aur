@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.14
-_pkgver=4.14.10
+_pkgver=4.14.11
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/copperhead/linux-hardened'
@@ -28,21 +28,21 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         # https://bugs.archlinux.org/task/56846
         cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
 
+        x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch
+
         CVE-2017-8824-dccp-use-after-free-in-DCCP-code.patch
         CVE-2017-17448-netfilter-nfnetlink_cthelper-Add-missing-permission-checks.patch
-        CVE-2017-17449-netlink-Add-netns-check-on-taps.patch
         CVE-2017-17450-netfilter-xt_osf-Add-missing-permission-checks.patch
-        CVE-2017-17712-net-ipv4-fix-for-a-race-condition-in-raw_sendmsg.patch
         CVE-2017-17741-KVM-Fix-stack-out-of-bounds-read-in-write_mmio.patch
 )
 replaces=('linux-grsec')
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '16f560aa713b46c707f04a226f67dc31fdd280aae57dd19e0413d61df5336c74'
+            'f588b62d7ee1d2ebdc24afa0e256ff2f8812d5cab3bf572bf02e7c4525922bf9'
             'SKIP'
-            '24279be4a0e809c77255183eaa5f077ba457b17e057bd662631d5b9efd46588a'
+            '7bf093ee625cf97560bb57b01fc7ddb1bfb705377cc6b68994911cceb23126d5'
             'SKIP'
-            '2e52d9c0238d3343193c22df8864faa1d9ec50fa00bab1bd8e9f82c57e2ac0d2'
+            '152d0e8cb3971f651357f209c03f697bd4e484d5fcc38bd2611d115124d8b425'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -50,11 +50,10 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'f7c86f7aa4c7d671a5ff80bcd92a33db2fa6e95b78188261db0ef260a7d75cd8'
             '294c928b8252112d621df1d13fbfeade13f28ddea034d44e89db41b66d2b7d45'
             '721c387db986d883a6df6b0da17941ce6d59811b0647ae6653b978c5ee144f19'
+            '086f6ab16a6894db5444007d195f779322f3a5792e7ca0e91a61d4e633ad8f26'
             '6be803c62b7ce41f1b4de6c867715398812b1c1a3e68a0078512f2872e2a3fa9'
             'b833ad4354fcd2cc6ee60c971088f77aa5b06a58fce346c40268c0b05b1e8cb5'
-            '830ef08edbf98153ff13a573270cb714605582ef19fb0c3e6eadb8876edd247f'
             '72efa781c8ee1175a8865e6a12568aaf3bac4b76d4285819c6a75a3e5fe41435'
-            '0ee6eae96743dca76dc018c354dd82e820fba0cb310618131e178684d85fd8c9'
             'ee125179fdd295266aba52e1aebaef97cb41f4a05d9cd1c2b11b4ce83746e197')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -68,7 +67,7 @@ prepare() {
 
   # add upstream patch
   msg2 "Applying upstream patch"
-  patch -Np1 -i ../patch-${_pkgver}
+  patch -Np1 < ../patch-${_pkgver}
   # XXX: GNU patch doesn't support git-style file mode
   chmod +x tools/objtool/sync-check.sh
 
@@ -85,7 +84,7 @@ prepare() {
 
   # linux hardened patch
   msg2 "Applying hardened patch"
-  patch -Np1 -i ../linux-hardened-${pkgver}.patch
+  patch -Np1 < ../linux-hardened-${pkgver}.patch
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
