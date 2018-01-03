@@ -42,6 +42,7 @@ sha512sums=('0a979caf48ba96d6f37a929036e7172855cfb03af8832f479966bce72fad3400903
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
 
 prepare() {
+  # The autogen.sh and the patch are needed to ensure that we don't get a false positive on the boost libraries in the configure step later on.
   cp "${srcdir}/autogen.sh" "${srcdir}/${pkgname}-${pkgver}/autogen.sh" 
   chmod +x "${srcdir}/${pkgname}-${pkgver}/autogen.sh"
   cd "${srcdir}/${pkgname}-${pkgver}"
