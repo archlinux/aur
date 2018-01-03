@@ -1,0 +1,22 @@
+pkgbase = python-vk_api
+	pkgdesc = Module for writing scripts for vk.com (vkontakte)
+	pkgver = 9.3
+	pkgrel = 1
+	url = https://github.com/python273/vk_api
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	provides = python-vk_api
+	provides = python2-vk_api
+	source = https://github.com/python273/vk_api/archive/v9.3.tar.gz
+	sha256sums = cc7cbf1e90ad1003bd38d00867e2352c59034d1bdda98afce91d63160894b636
+
+pkgname = python-vk_api
+	depends = python
+	depends = python-requests
+
+pkgname = python2-vk_api
+	depends = python2
+	depends = python2-requests
+	depends = python2-enum34
+
