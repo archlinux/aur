@@ -14,7 +14,7 @@ install=scientifica-font.install
 source=(https://raw.githubusercontent.com/sjossi/scientifica-font/master/75-yes-scientifica.conf
         https://raw.githubusercontent.com/NerdyPepper/scientifica/master/scientifica-11.bdf)
 md5sums=('527aa5ed9023e7d2face57d48cfce034'
-         'a05509a9d48424fd93560344da9829aa')
+         'de50582940a1203984f18f8fdfabeccc')
 
 build()
 {

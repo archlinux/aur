@@ -14,7 +14,7 @@ pkgbase = scientifica-font
 	source = https://raw.githubusercontent.com/sjossi/scientifica-font/master/75-yes-scientifica.conf
 	source = https://raw.githubusercontent.com/NerdyPepper/scientifica/master/scientifica-11.bdf
 	md5sums = 527aa5ed9023e7d2face57d48cfce034
-	md5sums = a05509a9d48424fd93560344da9829aa
+	md5sums = de50582940a1203984f18f8fdfabeccc
 
 pkgname = scientifica-font
 
