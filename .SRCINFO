@@ -1,0 +1,13 @@
+pkgbase = sound-theme-smooth
+	pkgdesc = Complete system sound theme with 58 event sounds.
+	pkgver = 0
+	pkgrel = 1
+	url = https://www.xfce-look.org/p/1187979/
+	arch = any
+	license = combined free
+	provides = sound-theme-freedesktop
+	source = http://www50.zippyshare.com/d/lZRoF8FZ/5952/Smooth.tar.gz
+	md5sums = 32d2cdd06b1b4e479cf4299380e5cc6f
+
+pkgname = sound-theme-smooth
+
