@@ -3,14 +3,13 @@
 appname=vk_api
 pkgname=(python-vk_api-git python2-vk_api-git)
 pkgver=9.3.r1.ea556a5
-pkgrel=2
+pkgrel=3
 pkgdesc='Module for writing scripts for vk.com (vkontakte)'
 arch=('any')
 url='https://github.com/python273/vk_api'
 license=('APACHE')
 depends=()
 makedepends=('python-setuptools')
-provides=('python-vk_api' 'python2-vk_api')
 source=('git://github.com/python273/vk_api')
 md5sums=('SKIP')
 
