@@ -1,18 +1,16 @@
-# Maintainer: Juraj Fiala <doctorjellyface at riseup dot net>
-# Maintainer: Florian Walch <florian+aur at fwalch dot com>
-# Maintainer: Leonard König <leonard.r.koenig at googlemail dot com>
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
-# Contributor: Ace <a.mad.coder at gmail dot com>
 
-_version=2017.2.0
-_build=f3
-_buildtag=20171013
-_randomstring=ee86734cf592
-_extractiondir=unity-editor-${_version}${_build}
+_version=2017.3.0
+_build=f1
+_buildtag=20171206
+_randomstring=3c89f8d277f5
+_prefix=/opt/Unity
+_unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
+#_keepdownloads=yes
 
-pkgname=('unity-editor' 'monodevelop-unity')
+pkgname=unity-editor
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=5
+pkgrel=1
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
@@ -28,79 +26,64 @@ depends=('desktop-file-utils'
          'libpng12'
          'libxtst'
          'libpqxx'
-         'npm'
-         'lib32-gcc-libs')
-optdepends=('ffmpeg: for WebGL exporting'
-            'nodejs: for WebGL exporting'
-            'java-runtime: for WebGL exporting'
-            'gzip: for WebGL exporting'
-            'java-environment: for Android and Tizen exporting'
-            'android-sdk: for Android Remote'
-            'android-udev: for Android Remote'
-            'monodevelop-unity: for old MonoDevelop + Unity-specific addins')
-conflicts=('unity3d')
-replaces=('unity3d')
-source=("http://beta.unity3d.com/download/${_randomstring}/unity-editor-installer-${_version}${_build}.sh"
-        'EULA'
+         'npm')
+optdepends=('unity-editor-doc'
+            'unity-editor-standardassets'
+            'unity-editor-example'
+            'unity-editor-android'
+            'unity-editor-ios'
+            'unity-editor-mac'
+            'unity-editor-webgl'
+            'unity-editor-windows'
+            'unity-editor-facebook')
+makedepends=('gtk2' 'libsoup' 'libarchive')
+source=("${_unitydownloads}/UnitySetup-${_version}${_build}"
         'unity-editor'
-        'monodevelop-unity'
-        'unity-monodevelop.png')
-noextract=("unity-editor-installer-${_version}${_build}.sh")
-sha1sums=('ca8b798a29d81140193956905937feb2fbe32b71'
-          'b0b08428b5df109916db396717ec7a8ec5f4c0c4'
+        'unity-editor.desktop'
+        'unity-editor-icon.png')
+sha1sums=('864eec744e5ca360c41e6121ddbd4cbb48659fe4'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
-          '8ffbfd8f4577b146d25217720ac6689c5d929e84'
-          'd1ecf758c9816f964febf601d065b0354940d866')
+          '6ba1a3051bc0d5ed08e2fa4551d0f6c679109176'
+          'fddf4861974f88f0565de7f54f7418204e729894')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
+unity-setup() {
+  ./UnitySetup-${_version}${_build} -d "${startdir}" -l "${pkgdir}${_prefix}" -u $@
+}
+
+extract-component() {
+  msg2 "Extracting $1..."
+  yes | unity-setup -c $1 > "/tmp/$1.log"
+}
+
 prepare() {
-  if [ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]; then
-    warning "It seems that you have less than 10GB left. If you are using
-     an AUR-Helper or building on a small partition (like /tmp), you might
-     want to change the build-/cache-directory as this package is rather big."
+  chmod +x "${srcdir}/UnitySetup-${_version}${_build}"
+}
+
+package() {
+  msg2 "Extracting EULA..."
+  echo n | unity-setup | head -n -2 > "${srcdir}/EULA"
+
+  mkdir -p "${pkgdir}${_prefix}"
+  extract-component Unity
+
+  if [ -z "${_keepdownloads}" ]; then
+    rm "${startdir}/Unity.tar.xz"
   fi
-}
-
-build() {
-  msg2 "Extracting archive ..."
-  yes | fakeroot sh $noextract > /dev/null
-  rm $noextract
-}
-
-package_unity-editor() {
-  mkdir -p "${pkgdir}/opt/Unity"
-  mv ${srcdir}/${_extractiondir}/Editor ${pkgdir}/opt/Unity/Editor
 
   # HACK: fixes WebGL builds by adding a symlink (python -> python2) to the PATH
-  ln -s /usr/bin/python2 ${pkgdir}/opt/Unity/Editor/python
+  ln -s /usr/bin/python2 "${pkgdir}${_prefix}/Editor/python"
 
   # Fix permissions
-  find ${pkgdir}/opt/Unity/Editor/Data -type d -exec chmod ga+rx {} \;
+  find "${pkgdir}${_prefix}/Editor/Data" -type d -exec chmod ga+rx {} \;
 
-  # Use the launch scripts in the .desktop files
-  sed -i "/^Exec=/c\Exec=/usr/bin/unity-editor" "${srcdir}/${_extractiondir}/unity-editor.desktop"
+  # Add version to desktop file
+  sed -i "/^Version=/c\Version=${_version}${_build}" "${srcdir}/unity-editor.desktop"
 
-  install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${_extractiondir}/unity-editor.desktop"
-  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${srcdir}/${_extractiondir}/unity-editor-icon.png"
+  install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/unity-editor.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${srcdir}/unity-editor-icon.png"
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/unity-editor"
   install -Dm644 "${srcdir}/EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
 }
 
-package_monodevelop-unity() {
-  pkgdesc="Unity's fork of MonoDevelop."
-  depends=('monodevelop')
-  optdepends=('gnome-sharp' 'referenceassemblies-2.0-bin' 'referenceassemblies-3.5-bin')
-
-  mkdir -p "${pkgdir}/opt/Unity"
-  mv ${srcdir}/${_extractiondir}/MonoDevelop ${pkgdir}/opt/Unity/MonoDevelop
-
-  # Use the launch scripts in the .desktop files
-  sed -i "/^Exec=/c\Exec=/usr/bin/monodevelop-unity" "${srcdir}/${_extractiondir}/unity-monodevelop.desktop"
-
-  install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${_extractiondir}/unity-monodevelop.desktop"
-  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/48x48/apps" "${srcdir}/unity-monodevelop.png"
-  install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/monodevelop-unity"
-  install -Dm644 "${srcdir}/EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
-}
-# vim:set sw=2 sts=2 et:

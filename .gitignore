@@ -1,10 +1,7 @@
 *
 !.gitignore
 !PKGBUILD
-!*.install
-!unity-editor
-!monodevelop-unity
-!EULA
-!update-eula
 !.SRCINFO
-!unity-monodevelop.png
+!unity-editor
+!unity-editor.desktop
+!unity-editor-icon.png
