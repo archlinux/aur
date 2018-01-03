@@ -25,7 +25,7 @@ sha512sums=('78214a4322979ec25486234ab1ecb74fbd3ea817a1a086c1cf6ce48ba3eb25b496d
             'f24d70646babc2d248d6159442e3b9d5518276e7d8e33004f13d260953ebcd741067c507a47de25c24842e4391f4c403cdb46dc989b52fa1dde38a7312382db1')
 
 prepare() {
-    cd "$_fullname"
+    cd "${srcdir}/$_fullname"
 
     # All this git version junk fails, just remove it we already have the version
     sed -i 's|include(GetGitRevisionDescription)||
@@ -41,13 +41,13 @@ prepare() {
     #    conan remote add plex "$conan_remote"
     #fi
 
-    #mkdir -p build
+    mkdir -p build
     #cd build
     #conan install ..
 }
 
 build() {
-    cd "$_fullname/build"
+    cd "${srcdir}/$_fullname/build"
 
     # https://github.com/plexinc/plex-media-player/issues/641#issuecomment-354332463
     RES="${srcdir}/Plex Media Player.app/Contents/Resources/web-client"
@@ -60,7 +60,7 @@ build() {
 }
 
 package() {
-    cd "$_fullname/build"
+    cd "${srcdir}/$_fullname/build"
 
     DESTDIR="$pkgdir" make install
 
