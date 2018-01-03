@@ -3,7 +3,7 @@
 _gemname=async-io
 pkgname=ruby-${_gemname}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides support for asynchonous TCP, UDP, UNIX and SSL sockets'
 url='https://github.com/socketry/async-io'
 arch=('any')
