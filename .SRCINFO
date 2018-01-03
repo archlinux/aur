@@ -1,7 +1,7 @@
 pkgbase = scilab-bin
 	pkgdesc = A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications.
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.scilab.org
 	arch = x86_64
 	arch = i686
