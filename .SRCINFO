@@ -4,12 +4,15 @@ pkgbase = vivaldi-codecs-ffmpeg-extra-bin-rpi
 	pkgrel = 1
 	url = https://packages.ubuntu.com/zesty/amd64/chromium-codecs-ffmpeg-extra/download
 	install = vivaldi-codecs-ffmpeg-extra-bin.install
-	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = LGPL
 	depends = vivaldi
 	provides = vivaldi-ffmpeg-codecs
 	conflicts = vivaldi-ffmpeg-codecs
 	source = http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_63.0.3239.84-0ubuntu0.17.10.1_armhf.deb
+	md5sums = 6755d43b3322bc65935e954b195c40fe
 
 pkgname = vivaldi-codecs-ffmpeg-extra-bin-rpi
 
