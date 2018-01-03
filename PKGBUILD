@@ -2,13 +2,14 @@
 
 pkgname=grub-customizer
 pkgver=5.0.6
-pkgrel=5
+pkgrel=6
 pkgdesc="A graphical grub2 settings manager"
 url="https://launchpad.net/grub-customizer"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtkmm3' 'openssl' 'hicolor-icon-theme' 'grub-common' 'libarchive' )
-optdepends=('hwinfo')
+optdepends=('hwinfo: Additional hardware information'
+            'polkit: Run grub-customizer from menu')
 makedepends=('cmake')
 provides=('grub-customizer')
 backup=('etc/grub-customizer/grub.cfg')
@@ -33,7 +34,8 @@ package(){
   make install DESTDIR="${pkgdir}"
   # configuration
   install -t "${pkgdir}/etc/grub-customizer/" -Dm644 "${srcdir}/grub.cfg"
-  # CHANGELOG
+  # additional documentation
   install -Dm644 changelog "${pkgdir}/usr/share/doc/grub-customizer/CHANGELOG"
+  install -Dm644 README "${pkgdir}/usr/share/doc/grub-customizer/README"
 }
 # vim:set ts=2 sw=2 et:
