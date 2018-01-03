@@ -1,0 +1,23 @@
+post_install() {
+    if ! getent group monetdb > /dev/null; then
+        groupadd --system monetdb
+    fi
+
+    if ! getent passwd monetdb > /dev/null; then
+        useradd --system -c 'MonetDB user' -g monetdb -d '/var/MonetDB' -s /sbin/nologin monetdb
+        passwd -l monetdb &> /dev/null
+    fi
+
+    mkdir -p /var/monetdb5/dbfarm
+    chown monetdb:monetdb /var/monetdb5 /var/monetdb5/dbfarm
+    chmod ug=rwx,g+s,o= /var/monetdb5 /var/monetdb5/dbfarm
+
+    mkdir -p /var/log/monetdb /var/run/monetdb
+    chown monetdb:monetdb /var/log/monetdb /var/run/monetdb
+    chmod ug=rwx,o= /var/log/monetdb
+    chmod ug=rwx,o=rx /var/run/monetdb
+}
+
+post_upgrade() {
+    post_install
+}
