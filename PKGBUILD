@@ -2,16 +2,17 @@
 
 _basename=libgme
 pkgname="lib32-$_basename"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Video game music file emulation/playback library (32-bit)"
-url="http://game-music-emu.googlecode.com/"
+url="https://bitbucket.org/mpyne/game-music-emu"
 license=('LGPL')
 arch=('x86_64')
 depends=('lib32-gcc-libs' 'libgme')
 makedepends=('cmake')
-source=("https://sources.archlinux.org/other/game-music-emu/game-music-emu-${pkgver}.tar.xz")
-md5sums=('b72bc337ea4bd6dab7f0288ed4cd598e')
+source=("https://bitbucket.org/mpyne/game-music-emu/downloads/game-music-emu-$pkgver.tar.bz2"{,.asc})
+md5sums=('d399f4a00aece2813e777dface2b6aab')
+validpgpkeys=(5406ECE83665DA9D201D35720BAF0C9C7B6AE9F2) # Michael Pyne <mpyne@kde.org>
 
 build() {
   cd "${srcdir}/game-music-emu-${pkgver}"
