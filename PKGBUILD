@@ -10,7 +10,7 @@
 
 pkgname=tilix-themes-git
 pkgver=r50.9a60818
-pkgrel=1
+pkgrel=2
 pkgdesc="Tilix themes"
 arch=('any')
 url="https://github.com/storm119/Tilix-Themes"
