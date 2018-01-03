@@ -4,10 +4,10 @@
 #
 pkgname=nunit3-console
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NUnit 3 console runner"
 arch=('any')
-license=('custom')
+license=('MIT')
 url="http://www.nunit.com"
 depends=('mono')
 
