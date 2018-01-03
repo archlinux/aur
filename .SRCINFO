@@ -1,0 +1,16 @@
+pkgbase = cc-proxy-git
+	pkgdesc = cc-proxy works alongside the Clear Containers runtime and shim to provide a VM-based OCI runtime solution.
+	pkgver = 3.0.12.r0.3c6daa6
+	pkgrel = 1
+	url = https://github.com/clearcontainers/proxy
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = dep
+	provides = cc-proxy-git
+	conflicts = cc-proxy-git
+	source = git+https://github.com/clearcontainers/proxy
+	md5sums = SKIP
+
+pkgname = cc-proxy-git
+
