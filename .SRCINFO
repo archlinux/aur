@@ -1,6 +1,6 @@
 pkgbase = python-pygdbmi
 	pkgdesc = Parse gdb machine interface output with Python
-	pkgver = 0.7.4.5
+	pkgver = 0.8.0.0
 	pkgrel = 1
 	url = https://github.com/cs01/pygdbmi
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pygdbmi
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pypeg2
-	source = https://files.pythonhosted.org/packages/source/p/pygdbmi/pygdbmi-0.7.4.5.tar.gz
-	md5sums = bca1f3d36c5461d4800ef804977851d2
+	source = https://files.pythonhosted.org/packages/source/p/pygdbmi/pygdbmi-0.8.0.0.tar.gz
+	md5sums = 28f87e84eaa82221dd6ababb6f1af8be
 
 pkgname = python-pygdbmi
 	depends = python
