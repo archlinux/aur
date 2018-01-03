@@ -1,12 +1,12 @@
 # Maintainer: Pierpaolo Valerio <gondsman@techgeek.co.in>
 pkgname=cirkuit-kf5-git
 pkgver=r406.d9ff4c1
-pkgrel=2
+pkgrel=3
 pkgdesc="KDE interface for LaTeX graphic tools (such as TikZ, Gnuplot, Circuit Macros) to produce publication-ready pictures"
 arch=('i686' 'x86_64')
 url="git://anongit.kde.org/cirkuit.git"
 license=('GPL')
-depends=('poppler-qt5' 'm4' 'ghostscript' 'texlive-pstricks' 'netpbm' 'knewstuff' 'ktexteditor' 'kdelibs4support' 'hicolor-icon-theme')
+depends=('poppler-qt5' 'm4' 'ghostscript' 'texlive-pstricks' 'netpbm' 'knewstuff' 'ktexteditor' 'kdelibs4support' 'hicolor-icon-theme' 'kdoctools')
 optdepends=('dpic: improved circuit macros support' 'gnuplot: Gnuplot backend')
 makedepends=('git' 'texlive-core' 'automoc4' 'cmake' 'extra-cmake-modules' 'kdesignerplugin')
 provides=('cirkuit')
