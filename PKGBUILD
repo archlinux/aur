@@ -13,7 +13,7 @@ optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files')
 source=(${pkgname})
-md5sums=('d602848d18fdb089736644f16c26ecea')
+md5sums=('b056aca7c1b62e472ee352f9ca6356b0')
 
 package() {
 	install -Dm755 youtube-dl-mp3 "${pkgdir}/usr/bin/youtube-dl-mp3"
