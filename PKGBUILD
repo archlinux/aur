@@ -1,21 +1,21 @@
 # Maintainer: Bilal ELmoussaoui <bil.elmoussaoui@gmail.com>
 
 pkgname=whatsapp-desktop
-pkgrel=2
-pkgver=0.4.0
+pkgrel=1
+pkgver=0.4.1
 pkgdesc="Unofficial whatsapp web desktop client. Build with Electron."
 url="https://github.com/Enrico204/Whatsapp-Desktop"
 provides=("whatsapp-desktop=${pkgver}")
 arch=('x86_64')
 license=('MIT')
-depends=('notify-osd' 'libnotify' 'gconf' 'gtk2' 'lib32-libxss')
+depends=('notify-osd' 'libnotify' 'gconf' 'gtk2' 'libxss')
 source=(
   "${url}/releases/download/v${pkgver}/WhatsApp-linux-x64.tar.gz"
   "${pkgname}.desktop"
   "${pkgname}.png"
 )
 sha256sums=(
-  '3db78dcdd03c0a1f5a518320735e38c29c2079b9797f3bd3a20219224563f2a6'
+  '507ba0a11fac05e342566912c61771108a7dfcba36a63efcadd6e65398a53bd9'
   '8153a94ecaff2f7466f1621571505a1f55135299cdcf4604fdfd2e7805cb94dc'
   'c128bdf1366f26b203c2a97b1284d66bd28d63c45812a7456385e1bf4afa27e4'
 )
