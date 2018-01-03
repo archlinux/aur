@@ -4,9 +4,9 @@
 
 
 pkgname=dwarffortress-lnp-git
-pkgver=43.05
-_pkgver=43_05
-_dfhack_pkgrel=r1
+pkgver=44.03
+_pkgver=44_03
+_dfhack_pkgrel=beta1
 pkgrel=1
 epoch=0
 pkgdesc="Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics"
@@ -35,26 +35,24 @@ install=${pkgname}.install
 changelog=
 source=(git+"https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux"
         git+"https://github.com/DFgraphics/Afro-Graphics.git"#tag=${pkgver}
-        git+"https://github.com/DFgraphics/CLA.git"#tag=${pkgver}-v23
+        git+"https://github.com/DFgraphics/CLA.git"#tag=44.01-v24
         git+"https://github.com/DFgraphics/GemSet.git"#tag=${pkgver}
         git+"https://github.com/DFgraphics/Ironhand.git"#tag=${pkgver}
-        git+"https://github.com/DFgraphics/Jolly-Bastion.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Jolly-Bastion.git"#tag=43.04
         git+"https://github.com/DFgraphics/Mayday.git"#tag=${pkgver}
-        git+"https://github.com/DFgraphics/Obsidian.git"#tag=${pkgver}c
-        git+"https://github.com/DFgraphics/Phoebus.git"#tag=${pkgver}c
+        git+"https://github.com/DFgraphics/Obsidian.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Phoebus.git"#tag=${pkgver}
         git+"https://github.com/DFgraphics/Spacefox.git"#tag=${pkgver}
         git+"https://github.com/DFgraphics/Taffer.git"
         git+"https://github.com/DFgraphics/Tergel.git"#tag=${pkgver}
         git+"https://github.com/DFgraphics/Wanderlust.git"#tag=${pkgver}
         git+"https://github.com/DFHack/dfhack.git"#tag=0.${pkgver}-${_dfhack_pkgrel}
         git+"https://github.com/svenstaro/dwarf_fortress_unfuck.git"#tag=0.${pkgver}
-        git+"https://github.com/mifki/df-twbt.git"#tag=v5.84
+        git+"https://github.com/mifki/df-twbt.git"#tag=v6.31
         hg+"https://bitbucket.org/Pidgeot/python-lnp"
         "http://bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2"
         'DFAnnouncementFilter.zip'::'http://dffd.bay12games.com/download.php?id=7905&f=DFAnnouncementFilter.zip'
         "dfhack-twbt.patch"
-        "dfhack-visualizers.patch"
-        "distro-fixes-64-bit.patch"
         "lnp"
         "${pkgname}.desktop"
         "${pkgname}.install"
@@ -79,11 +77,9 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '5b8ee45e906d021c053f816e443c2983'
+         '60a68261747673a91d583fa7129eb6c1'
          'affd6273731c321d364c55a8da314fea'
          '856c54681faed3608cd951bf286d12d5'
-         '5cc79b5dc202d8faa02086293badfcee'
-         'f0bfe1fb2c806289b9970da3e07e4d7b'
          '389e34b6937f843c8f635d5e7326c9fc'
          'bba8ab4d3f70cea8b812e78445fef1f0'
          '1c3b794a7becda3b6ce9ac453de300e6')
@@ -109,15 +105,6 @@ prepare() {
 
   cd $srcdir/dfhack/plugins
   patch -uN CMakeLists.custom.txt $srcdir/dfhack-twbt.patch
-
-  cd $srcdir/dfhack/plugins
-  patch -uN CMakeLists.txt $srcdir/dfhack-visualizers.patch
-
-  cd $srcdir/Lazy-Newb-Pack-Linux/pack/df_linux
-  patch -uN distro_fixes.sh $srcdir/distro-fixes-64-bit.patch
-
-  cd $srcdir/dfhack/plugins/stonesense
-  git checkout 00f0782
 
   mkdir -p $srcdir/dfhack/plugins/df-twbt
   cd $srcdir/df-twbt
@@ -164,6 +151,9 @@ package() {
   cp -r "$srcdir/Lazy-Newb-Pack-Linux/pack/df_linux" "$pkgdir/opt/$pkgname"
 
   cp -r "$srcdir/df_linux" "$pkgdir/opt/$pkgname"
+  cp "$srcdir/df-twbt/dist/shadows.png" "$pkgdir/opt/$pkgname/df_linux/data/art"
+  cp "$srcdir/df-twbt/dist/white1px.png" "$pkgdir/opt/$pkgname/df_linux/data/art"
+  cp "$srcdir/df-twbt/dist/transparent1px.png" "$pkgdir/opt/$pkgname/df_linux/data/art"
   rm -rf "$pkgdir/opt/$pkgname/df_linux/g_src"
 
   #rm "$pkgdir/opt/$pkgname/df_linux/libs/"{libgraphics.so,libgcc_s.so.1,libstdc++.so.6}
@@ -261,7 +251,7 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/lnp.png"
 
   for license in python-lnp/COPYING.txt dfhack/depends/protobuf/COPYING.txt \
-    dfhack/plugins/stonesense/LICENSE dfhack/LICENSE.rst \
+    dfhack/LICENSE.rst \
     ; do
     install -DTm644 "$srcdir/$license" \
     "${pkgdir}/usr/share/licenses/${pkgname}/$license"
