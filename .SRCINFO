@@ -1,0 +1,13 @@
+pkgbase = yn-bin
+	pkgdesc = an interactive Y/n prompt
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/JoshuaRLi/yn
+	arch = x86_64
+	license = MIT
+	provides = yn
+	source_x86_64 = https://github.com/JoshuaRLi/yn/releases/download/1.1.1/yn-1.1.1.tgz
+	sha256sums_x86_64 = b8005810cb23d0fdd402e4220ea762c422e9e708b3e2f786faa0fa60429832ff
+
+pkgname = yn-bin
+
