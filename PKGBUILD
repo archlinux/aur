@@ -3,11 +3,11 @@
 
 _pkgbase=quodlibet
 pkgname=exfalso
-pkgver=3.9.1
-pkgrel=4
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
-url="https://${_pkgbase}.readthedocs.io/"
+url="https://quodlibet.readthedocs.io/"
 license=('GPL2')
 depends=('gtk3' 'python-mutagen' 'python-gobject' 'python-cairo' 'python-feedparser')
 makedepends=('intltool' 'gettext')
@@ -18,15 +18,9 @@ optdepends=('gst-plugins-bad: for "Acoustic Fingerprint" plugins'
             'python-musicbrainzngs: for "MusicBrainz Lookup" plugin')
 conflicts=("${pkgbase}")
 source=("https://github.com/${_pkgbase}/${_pkgbase}/releases/download/release-${pkgver}/${_pkgbase}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('d2b42df5d439213973dc97149fddc779a6c90cec389c24baf1c0bdcc39ffe591'
+sha256sums=('217c9d41e2d97c98c0814f1abbeef47a1f5a37583aaf973501fa21ae3b63a076'
             'SKIP')
 validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter
-
-prepare() {
-    cd ${_pkgbase}-${pkgver}
-
-    sed -i 's|if PY2 or is_release():|if PY2:|' quodlibet/_init.py
-}
 
 build() {
     cd ${_pkgbase}-${pkgver}
