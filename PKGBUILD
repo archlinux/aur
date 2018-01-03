@@ -56,7 +56,7 @@ build() {
     --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking \
     --disable-error-on-warning
 
-  make
+  make -j $(cat /proc/cpuinfo | grep -ci '^processor')
 }
 
 package() {
