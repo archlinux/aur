@@ -12,7 +12,7 @@ makedepends=(extra-cmake-modules)
 source=("http://download.kde.org/stable/plasma/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.sig})
 sha256sums=('236605aa905261d6cc21b3900353c1d1a7d4c33946b8d0930cc7fe8d75ceae79'
             'SKIP')
-validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E')
+validpkgkeys=('1FA881591C26B276D7A5518EEAAF29B42A678C20')
 
 prepare() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
