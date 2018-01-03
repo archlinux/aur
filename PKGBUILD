@@ -2,7 +2,7 @@
 pkgname=cc-runtime-git
 _pkgname=runtime
 pkgver=3.0.12.r2.8311a66
-pkgrel=1
+pkgrel=2
 pkgdesc="cc-runtime is the next generation of Intel® Clear Containers runtime."
 arch=(x86_64)
 url="https://github.com/clearcontainers/runtime"
@@ -41,5 +41,14 @@ check() {
 
 package() {
 	cd "$srcdir/${_pkgname}"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" PREFIX=/usr DESTSYSCONFIG=/etc/clear-containers/configuration.toml install
+        # Fix DESTSYSCONFIG up
+        mkdir -p $pkgdir/etc/clear-containers
+        chmod 0644 $pkgdir/usr/share/defaults/clear-containers/configuration.toml
+        cp $pkgdir/usr/share/defaults/clear-containers/configuration.toml $pkgdir/etc/clear-containers
+        mv $pkgdir/usr/share/defaults/clear-containers/ $pkgdir/usr/share/clear-containers/
+        # Fix bashcompletion up
+        mv $pkgdir/usr/share/bash-completion/completions $pkgdir/usr/share/bash-completion/cc-runtime
+        mkdir $pkgdir/usr/share/bash-completion/completions
+        mv $pkgdir/usr/share/bash-completion/cc-runtime $pkgdir/usr/share/bash-completion/completions
 }
