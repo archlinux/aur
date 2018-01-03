@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: darkapex <me@jailuthra.in>
 # Contributor: sevenfourk <sevenfourk@gmail.com>
 
