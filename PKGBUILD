@@ -2,11 +2,11 @@
 
 pkgname=gool-git
 _pkgname=gool
-pkgver=0.9.5.r3.g28b8a14
+pkgver=0.9.5.r0.gd42032d
 pkgrel=1
 pkgdesc='Go - Online TV Recorder on Linux'
 arch=('x86_64' 'i686')
-url="http://github.com/mipimipi/$pkgname/"
+url="http://github.com/mipimipi/$_pkgname/"
 license=('GPL3')
 depends=('mkvtoolnix-cli')
 makedepends=('go' 'git')

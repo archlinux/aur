@@ -1,8 +1,8 @@
 pkgbase = gool-git
 	pkgdesc = Go - Online TV Recorder on Linux
-	pkgver = 0.9.5.r3.g28b8a14
+	pkgver = 0.9.5.r0.gd42032d
 	pkgrel = 1
-	url = http://github.com/mipimipi/gool-git/
+	url = http://github.com/mipimipi/gool/
 	arch = x86_64
 	arch = i686
 	license = GPL3
