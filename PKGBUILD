@@ -23,7 +23,7 @@ prepare() {
 build() {
   cd "$pkgname-${pkgver//_/-}"
   yarn install --production --non-interactive
-  yarn add electron-builder@19.45.5 gulpjs/gulp#4.0
+  yarn add electron-builder gulpjs/gulp#4.0
   node_modules/.bin/gulp build
   node_modules/.bin/electron-builder --linux dir
 }
