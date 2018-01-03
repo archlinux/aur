@@ -11,7 +11,7 @@ license=('GPL')
 depends=('cmake' 'zlib' 'boost' 'fuse')
 source=("$pkgname-$pkgver-$pkgrel-src.zip"::"https://github.com/plague-doctor/console-client/archive/master.zip")
 
-md5sums=('8b7a8dc205d47e4137282548d22f1cca')
+sha256sums=('1bfe24fccbe798cce95710cd94b5cc6c6202d015e21062df277735144a52e61c')
 
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
