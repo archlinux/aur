@@ -1,8 +1,8 @@
 pkgbase = sound-theme-lbr-calc
 	pkgdesc = Sound theme for Linux desktop made by Japanimation voice actor 'SHIMODA Asami' and OpenSourceSoftwareChannel. This is made for cheering LibreOffice
 	pkgver = 1.0
-	pkgrel = 2
-	url = https://www.oss-ch.jp/lbr/
+	pkgrel = 3
+	url = https://oss-ch.info/lbr/
 	arch = any
 	license = custom
 	source = LICENSE.txt
