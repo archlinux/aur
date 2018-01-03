@@ -1,11 +1,11 @@
 # Maintainer: Michael Healy <horsemanoffaith@gmail.com>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=artful
+# vercheck-ubuntu: name=${pkgname}, repo=bionic
 
 pkgname=ubuntu-themes
 _actual_ver=16.10
-_extra_ver=+17.10.20171012.1
+_extra_ver=+18.04.20171115.1
 _ubuntu_rel=0ubuntu1
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
@@ -21,7 +21,7 @@ provides=(light-themes ubuntu-mono)
 conflicts=(light-themes ubuntu-mono)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz")
 
-sha512sums=('12e185c4d9321a59009ba920b5c89d562066757160d4ae4ea17094bcb471ed3884eae225904e309844ed696bc0fa49394caaddf5d1769f0666f45edbab0129b5')
+sha512sums=('c4d19493b0a421c3f32d8851fe1f6c1d6f39fb6c87281ace414bc662ad533fe5a984773736062f51d592f03deda81091036f1efd93695c338a52cf03a6a53c69')
 
 build() {
    # Python 2 fix
