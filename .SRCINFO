@@ -1,0 +1,16 @@
+pkgbase = cc-runtime-git
+	pkgdesc = cc-runtime is the next generation of Intel® Clear Containers runtime.
+	pkgver = 3.0.12.r2.8311a66
+	pkgrel = 1
+	url = https://github.com/clearcontainers/runtime
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = dep
+	provides = cc-runtime-git
+	conflicts = cc-runtime-git
+	source = git+https://github.com/clearcontainers/runtime
+	md5sums = SKIP
+
+pkgname = cc-runtime-git
+
