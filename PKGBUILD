@@ -9,10 +9,10 @@ url='http://colororacle.org/index.html'
 license=('MIT')
 depends=("java-runtime" "bash")
 source=("http://colororacle.org/ColorOracleJar.zip"
-        "https://github.com/nvkelso/color-oracle-java/blob/master/LICENSE.txt"
+        "https://raw.githubusercontent.com/nvkelso/color-oracle-java/master/LICENSE.txt"
         "${pkgname}")
 sha256sums=('174a211edd1350ed41bb1c033d7999083295f6979d4c63c1f57041bdd8c843a4'
-            '5495bcea55ee29ce5c9de4841fe5755637e0dcd2965d514ecba8ebcfce5be75d'
+            'd6154994f5921696e56843df591e50c4873c08877b80f62c8b8ab94b3948d193'
             '7b4227c3c71276ae29909fab3c8726fc951192f88c9a3e705283dbb73033d984')
 
 package() {
