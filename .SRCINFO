@@ -1,7 +1,7 @@
 pkgbase = photobroom
 	pkgdesc = Photos managing tool
-	pkgver = 1.2.0
-	pkgrel = 5
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/Kicer86/photobroom
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = photobroom
 	depends = jsoncpp
 	depends = openlibrary
 	depends = qt5-base
-	source = https://codeload.github.com/Kicer86/photobroom/tar.gz/v1.2.0
+	source = https://codeload.github.com/Kicer86/photobroom/tar.gz/v1.2.2
 	source = cmake_modules::git+https://github.com/Kicer86/cmake_modules.git
-	md5sums = 3c43d46dbc4ed591dd9868abd6820495
+	md5sums = 303f9a1261c33cd9410562922c827e65
 	md5sums = SKIP
 
 pkgname = photobroom
