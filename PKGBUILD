@@ -19,7 +19,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugi
          'libmysofa' 'libpulse' 'librsvg' 'libsoxr' 'libssh' 'libtheora' 'libva' 
          'libvdpau' 'libwebp' 'libxml2' 'libxv' 'mesa' 'openal' 'opencore-amr'
          'opencv' 'opencl-driver' 'opencl-icd-loader' 'openh264' 
-         'openjpeg2' 'libopenmpt-svn' 'opus' 'rubberband' 'rtmpdump'
+         'openjpeg2' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband' 'rtmpdump'
          'sdl2' 'smbclient' 'speex' 'shine' 'tesseract' 'twolame' 'v4l-utils'
          'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg'
          'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
@@ -63,8 +63,7 @@ build() {
       local _cudasdk='--enable-cuda-sdk'
       local _cuvid='--enable-cuvid'
       local _libnpp='--enable-libnpp'
-      local _cflags='--extra-cflags=-I/opt/cuda/include'
-      
+      local _cflags='-I/opt/cuda/include'      
       # '-L/usr/lib/nvidia' (for cuda_sdk) needs to be enabled only on
       # systems with nvidia-340xx-utils or nvidia-304xx-utils
       if pacman -Qqs '^nvidia-340xx-utils$' | grep -q '^nvidia-340xx-utils$' ||
@@ -72,7 +71,7 @@ build() {
       then
           local _nvidia_340xx_ldflags='-L/usr/lib/nvidia'
       fi
-      local _ldflags="--extra-ldflags=-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
+      local _ldflags="-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
       local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
       
       # strictly specifying nvcc path is needed if package is installing
@@ -86,12 +85,12 @@ build() {
   ## if you have decklink-sdk installed
   ./configure \
     --prefix=/usr \
-    $_cflags \
-    "$_ldflags" \
+    --extra-cflags="${_cflags}" \
+    --extra-ldflags="${_ldflags}" \
     \
     --toolchain=hardened \
     \
-    --enable-rpath \
+    --disable-rpath \
     --enable-gpl \
     --enable-version3 \
     --enable-nonfree \
@@ -189,6 +188,7 @@ build() {
     --enable-opencl \
     --enable-opengl \
     --enable-openssl \
+    --enable-rkmpp \
     --enable-sndio \
     --enable-sdl2 \
     --enable-vaapi \
