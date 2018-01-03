@@ -3,7 +3,7 @@
 
 pkgbase=linux-max98090
 _srcname=linux-4.14
-pkgver=4.14.10
+pkgver=4.14.11
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -26,9 +26,9 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '16f560aa713b46c707f04a226f67dc31fdd280aae57dd19e0413d61df5336c74'
+            'f588b62d7ee1d2ebdc24afa0e256ff2f8812d5cab3bf572bf02e7c4525922bf9'
             'SKIP'
-            '512ecbeb20dacafc747a7ad34a950c625135bec9f48f344268280209984a1bca'
+            '2bfa3c52d192b2370049fc997bbc873129d29b3d51a389951cba246604020579'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -40,6 +40,7 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
+  chmod +x tools/objtool/sync-check.sh
 
   # security patches
 
