@@ -1,0 +1,19 @@
+pkgbase = pam-cryptsetup-git
+	pkgdesc = A PAM module that allows LUKS-based disk encryption passwords to be kept in sync with account passwords.
+	pkgver = r6.bf0d1ba
+	pkgrel = 1
+	url = https://github.com/google/pam-cryptsetup
+	arch = x86_64
+	arch = i386
+	license = Apache
+	makedepends = git
+	depends = pam
+	depends = cryptsetup
+	depends = glib2
+	provides = pam-cryptsetup
+	conflicts = pam-cryptsetup
+	source = git+https://github.com/google/pam-cryptsetup
+	md5sums = SKIP
+
+pkgname = pam-cryptsetup-git
+
