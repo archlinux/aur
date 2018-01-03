@@ -18,8 +18,8 @@ url="http://ounit.forge.ocamlcore.org"
 depends=('ocaml')
 makedepends=('ocaml-findlib' 'ocamlbuild')
 options=('!strip')
-source=("http://forge.ocamlcore.org/frs/download.php/1258/$_pkgname-$pkgver.tar.gz")
-sha512sums=('e12c8fb534ef88de7a83a34e5a578060a90abfce601d8532408412a56e843f69b89cfd6ce69bd7c5519e9a04e306d46339e9b8f13975727a3458afe20cd776d0')
+source=("http://forge.ocamlcore.org/frs/download.php/1722/$_pkgname-$pkgver.tar.gz")
+sha512sums=('466ec1f691a81e0abd93f698c7328e6db4fa2d617d8f5262d9f18b57ede3d389a3ee122ed7bccc8dff20600826fbbae1d17dd88d7c1329562798792fae54417d')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
