@@ -1,7 +1,7 @@
 # Maintainer: Matthias Meulien <orontee@gmail.com>
 
 pkgname=cnijfilter-ip110
-pkgver=5.00
+pkgver=5.20
 pkgrel=1
 pkgdesc="IJ Printer driver for Canon PIXMA iP110"
 arch=(i686 x86_64)
@@ -9,9 +9,9 @@ url="http://canon.driversdown.com/"
 license=("custom:Proprietary to Canon")
 depends=(cups libxml2)
 srcname="cnijfilter2-source"
-source=("http://gdlp01.c-wss.com/gds/3/0100006263/01/$srcname-$pkgver-1.tar.gz")
+source=("http://gdlp01.c-wss.com/gds/0/0100006900/01/$srcname-$pkgver-1.tar.gz")
 noextract=()
-md5sums=('a1bff9ce40526337a6580d3c4d8aeaed')
+md5sums=('6a00fddeb41a5a58d209111d664ed703')
 
 prepare() {
     echo "Using original source, nothing to do"
@@ -99,7 +99,7 @@ package() {
 
     install -c -m644 com/ini/cnnet.ini "$pkgdir/usr/lib/bjlib2"
     install -c -s -m755 com/libs_bin64/*.so.* "$pkgdir/usr/lib"
-    install -D -m644 doc/LICENSE-cnijfilter-5.00EN.txt \
+    install -D -m644 doc/LICENSE-cnijfilter-${pkgver}EN.txt \
 	    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     pushd ppd
