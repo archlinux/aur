@@ -3,7 +3,7 @@
 appname=vk_api
 pkgname=(python-vk_api-git python2-vk_api-git)
 pkgver=9.3.r1.ea556a5
-pkgrel=1
+pkgrel=2
 pkgdesc='Module for writing scripts for vk.com (vkontakte)'
 arch=('any')
 url='https://github.com/python273/vk_api'
@@ -20,13 +20,13 @@ pkgver() {
 }
 
 package_python-vk_api-git() {
-  depends=('python' 'python-requests')
+  depends=('python' 'python-requests' 'python-beautifulsoup4')
   cd "$srcdir/$appname"
   python setup.py install --optimize=1 --root="${pkgdir}/"
 }
 
 package_python2-vk_api-git() {
-  depends=('python2' 'python2-requests' 'python2-enum34')
+  depends=('python2' 'python2-requests' 'python2-enum34' 'python2-beautifulsoup4')
   cd "$srcdir/$appname"
   python2 setup.py install --optimize=1 --root="${pkgdir}/"
 }
