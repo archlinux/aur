@@ -25,7 +25,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data-git
-pkgver=2.4.5.r3756.981540a7
+pkgver=2.4.6.r3765.6b3ae079
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -33,7 +33,7 @@ arch=('i686' 'x86_64')
 license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'flite1' 'fluidsynth' 'freeglut' 'ftgl' 'glew' 'gmerlin'
-  'gsl' 'gsm' 'hicolor-icon-theme' 'imagemagick' 'jack' 'ladspa' 'lame'
+  'gsl' 'gsm' 'hicolor-icon-theme' 'libmagick6' 'jack' 'ladspa' 'lame'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libunicap' 'libraw1394'
   'libsndobj-git' 'libv4l' 'libvorbis' 'portaudio'
@@ -45,9 +45,11 @@ conflicts=('purr-data')
 install=purr-data.install
 options=('!makeflags' '!strip')
 source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git"
-	"RTcmix-pd-LCPLAY-stabilize.patch")
+	"RTcmix-pd-LCPLAY-stabilize.patch"
+	"gem-magick6-fixes.patch")
 md5sums=('SKIP'
-         '39c53063dc18681f29b12c08d9c453aa')
+         '39c53063dc18681f29b12c08d9c453aa'
+         '63c6794adbc47e4c239eeb50ed30bfa8')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
 nwjsver=0.22.1
@@ -93,6 +95,8 @@ prepare() {
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
   # make the sources compile with gcc 6.1+
   cd $srcdir/$pkgname/externals/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
+  # make sure to link Gem with ImageMagick 6, it doesn't compile with 7
+  cd $srcdir/$pkgname && patch -Np1 < $srcdir/gem-magick6-fixes.patch
 }
 
 build() {
@@ -116,8 +120,11 @@ package() {
   mkdir -p "$pkgdir/usr/lib"
   ln -sf $prefix/lib/pd-l2ork "$pkgdir/usr/lib/purr-data"
   # Just remove all the /etc stuff and the Emacs mode for now, we don't really
-  # need these.
+  # need most of these.
   rm -rf "$pkgdir/etc" "$pkgdir/usr/share/emacs"
+  # Add the bash completion file again, and edit it accordingly.
+  mkdir -p "$pkgdir/etc/bash_completion.d"
+  sed -e 's/pd-l2ork/purr-data/g' < "$srcdir/$pkgname/scripts/bash_completion/pd-l2ork" > "$pkgdir/etc/bash_completion.d/purr-data"
   # Edit the library paths in the default user.settings file so that it
   # matches our install prefix.
   cd "$pkgdir$prefix/lib/pd-l2ork"
@@ -146,8 +153,8 @@ package() {
   cd "$pkgdir"
   chmod -R go-w *
   chmod -R a+r *
-  chmod a-x opt/purr-data/lib/pd-l2ork/default.settings
-  find opt/purr-data/lib/pd-l2ork/bin/nw -executable -not -type d -exec chmod a+x {} +
+  chmod a-x .$prefix/lib/pd-l2ork/default.settings
+  find .$prefix/lib/pd-l2ork/bin/nw -executable -not -type d -exec chmod a+x {} +
   #find . -executable -name '*.pd_linux' -exec chmod a-x {} +
   find . -executable -name '*.pd' -exec chmod a-x {} +
   find . -executable -name '*.txt' -exec chmod a-x {} +
