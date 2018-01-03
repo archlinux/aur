@@ -6,7 +6,7 @@
 
 pkgbase=lib32-bluez-libs
 pkgname=("${pkgbase}" 'lib32-bluez-plugins')
-pkgver=5.47
+pkgver=5.48
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('LGPL2.1')
 makedepends=('gcc-multilib' 'gcc-libs-multilib' 'lib32-glib2' 'lib32-systemd')
 source=("http://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar."{xz,sign})
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('cf75bf7cd5d564f21cc4a2bd01d5c39ce425397335fd47d9bbe43af0a58342c8'
+sha256sums=('b9a8723072ef66bae7ec301c774902ebcb444c9c5b149b5a199e60a1ba970e90'
             'SKIP')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
 
