@@ -2,13 +2,13 @@
 
 pkgname=sound-theme-lbr-impress
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sound theme for Linux desktop made by Japanimation voice actor 'TANGE Sakura' and OpenSourceSoftwareChannel. This is made for cheering LibreOffice"
 arch=('any')
-url="https://www.oss-ch.jp/lbr/"
+url="https://oss-ch.info/lbr/"
 license=('custom')
 source=("LICENSE.txt"
-        "http://www.oss-ch.jp/lbr/lbr_ubuntu_impress.tgz")
+        "https://oss-ch.info/lbr/lbr_ubuntu_impress.tgz")
 md5sums=('844cfb9446a71fb16f9bc554940f1e7b'
          '6e9c429fbd3c822b221aad1606f82854')
 
