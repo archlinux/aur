@@ -1,8 +1,8 @@
 # Maintainer: Radostin Stoyanov <rstoyanov1 at gmail dot com>
 pkgname=youtube-dl-mp3
-pkgver=2017.04.14
+pkgver=2018.01.03
 _appname=youtube-dl-mp3
-_release=2017.04.14
+_release=2018.01.03
 pkgrel=1
 pkgdesc="Convert YouTube videos in HQ audio with mp3 format."
 arch=('any')
