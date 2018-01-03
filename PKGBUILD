@@ -3,7 +3,7 @@
 pkgname=appimage-git
 _gitname=AppImageKit
 pkgdesc="Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, Ubuntu, Fedora, debian and derivatives."
-pkgver=r476.ea1f74c
+pkgver=r908.3a2c98d
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://appimage.org"
@@ -36,7 +36,7 @@ prepare() {
 
   ./build.sh --clean
 
-  sed -i "s/find /#find /g" build-appdirs.sh
+  sed -i "s/ctest -V/echo 'Skip Tests...'/g" build.sh
 
   # Generate appimaged.service file
   echo "[Unit]" > appimaged.service
@@ -63,6 +63,7 @@ build() {
   cp resources/usr/share/metainfo/appimaged.appdata.xml appimaged.AppDir/usr/share/metainfo/
 
   # Generate appimage files
+  cd build/out
   appimagetool.AppDir/AppRun -n appimagetool.AppDir appimagetool
   appimagetool.AppDir/AppRun -n appimaged.AppDir appimaged
 }
@@ -74,10 +75,10 @@ package(){
   mkdir -p $pkgdir/usr/share/appimage
   mkdir -p $pkgdir/usr/lib/systemd/user/
 
-  cp appimagetool $pkgdir/usr/bin/
-  cp appimaged $pkgdir/usr/bin/
+  cp build/out/appimagetool $pkgdir/usr/bin/
+  cp build/out/appimaged $pkgdir/usr/bin/
 
-  cp AppRun.c $pkgdir/usr/share/appimage/
+  cp src/AppRun.c $pkgdir/usr/share/appimage/
   cp README.md $pkgdir/usr/share/appimage/
 
   cp appimaged.service $pkgdir/usr/lib/systemd/user/

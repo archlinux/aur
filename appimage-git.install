@@ -1,4 +1,5 @@
-post_install() {
+
+install_appimaged_service() {
   for username in `ls /home`; do
     user_exists=$(id -u $username > /dev/null 2>&1; echo $?)
 
@@ -24,4 +25,12 @@ pre_remove() {
         su - $username -c "XDG_RUNTIME_DIR=/run/user/$user_id /usr/bin/systemctl --user disable appimaged > /dev/null 2>&1"
     fi
   done
+}
+
+post_install() {
+    echo "----------------------------------------------------------------"
+    echo "To enable the appimaged daemon on your account:
+    echo "systemctl --user enable appimaged"
+    echo "systemctl --user start appimaged"
+    echo "----------------------------------------------------------------"
 }
