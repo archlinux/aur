@@ -1,15 +1,15 @@
 # Maintainer: orumin <dev at orum.in>
 
 pkgname=slack-term
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Slack client for your terminal"
 arch=('x86_64')
 url="https://github.com/erroneousboat/slack-term"
 source=("git+$url"
-        "$url/releases/download/v0.2.3/slack-term-linux-amd64")
-sha1sums=(SKIP
-          bed924ec8d107bd1412a69cd7af20914e1d2b182)
+        "$url/releases/download/v${pkgver}/slack-term-linux-amd64")
+sha256sums=('SKIP'
+          'bc669111389a0c4cc244d9e5eb0660c75a7d946c00e6986f3238e9103f0bd42c')
 license=('MIT')
 makedepends=('git')
 options=('!strip' '!emptydirs')
