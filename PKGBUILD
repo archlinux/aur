@@ -2,7 +2,7 @@
 # Contributors: Det, goetzc, Ner0, Lari Tikkanen, oke3, Flamelab, WAntilles
 
 pkgname=smplayer-svn
-pkgver=16.11.0.8339.r8377
+pkgver=17.12.0.r8852
 pkgrel=1
 pkgdesc="Advanced front-end for MPlayer/MPV"
 arch=('i686' 'x86_64')
@@ -18,7 +18,6 @@ optdepends=('smplayer-themes-svn: icon themes collection'
             'mpv: alternative modern backend, based on MPlayer/MPlayer2')
 provides=('smplayer')
 conflicts=('smplayer')
-install="$pkgname.install"
 source=("$pkgname::svn+https://subversion.assembla.com/svn/smplayer/smplayer/trunk/")
 sha256sums=('SKIP')
 
