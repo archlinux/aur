@@ -3,9 +3,9 @@
 pkgname=mccs
 pkgver=1.1
 pkgrel=1
-pkgdesc="PACKage Upgradability Problem solver"
+pkgdesc="Multi  Criteria CUDF Solver"
 arch=('i686' 'x86_64')
-url="http://sat.inesc-id.pt/~mikolas/sw/packup/"
+url="http://www.i3s.unice.fr/~cpjm/misc/mccs.html"
 license=('custom')
 depends=('glpk')
 source=("http://www.i3s.unice.fr/~cpjm/misc/mccs-1.1-srcs.tgz")

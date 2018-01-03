@@ -1,8 +1,8 @@
 pkgbase = mccs
-	pkgdesc = PACKage Upgradability Problem solver
+	pkgdesc = Multi Criteria CUDF Solver
 	pkgver = 1.1
 	pkgrel = 1
-	url = http://sat.inesc-id.pt/~mikolas/sw/packup/
+	url = http://www.i3s.unice.fr/~cpjm/misc/mccs.html
 	arch = i686
 	arch = x86_64
 	license = custom
