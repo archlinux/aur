@@ -1,8 +1,8 @@
 # Maintainer: Hugo Rodrigues <me@hugorodrigues.net>
 
 pkgname="ansible-vim-git"
-pkgver=5f3eb14
-pkgrel=3
+pkgver=20171223
+pkgrel=1
 pkgdesc="A vim plugin for syntax highlighting Ansible's common filetypes "
 arch=('any')
 url='https://github.com/pearofducks/ansible-vim'
@@ -11,10 +11,16 @@ depends=('vim')
 makedepends=('git' 'ansible')
 source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
+_git_hash="6aac3bd"
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    git checkout "${_git_hash}"
+    echo ${_git_hash}
+}
 
 package() {
     cd "${srcdir}/${pkgname}"
-    git checkout "${pkgver}"
     for _dir in *; do
         if [ -d "${_dir}" ] && [ "${_dir}" != "UltiSnips" ]; then
             for _file in $(find "${_dir}" -name "*.vim"); do
