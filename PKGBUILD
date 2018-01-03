@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-rpi
 pkgver=1.13.1008.40
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind for Raspberry Pi'
 arch=('armv6h' 'armv7h' 'aarch64')
 url="https://vivaldi.com"
@@ -13,6 +13,7 @@ depends=('gtk3' 'libcups' 'nss' 'gconf' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-
 makedepends=('w3m')
 optdepends=(
     'libnotify: native notifications'
+    'vivaldi-codecs-ffmpeg-extra-bin-rpi: playback of proprietary video/audio'
 )
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-1_armhf.deb")
 sha512sums=('7b636a8d4f9be825c126863e6761e2e0a1c4a07147984872f46678f1014b70c712071ba7ce15e65d0253d37a70c08e74a2a9fefa0c1f6c356445cb9e2dbcc84a')
