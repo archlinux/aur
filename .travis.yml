@@ -5,7 +5,7 @@ arch:
     - namcap 
   script:
     - namcap PKGBUILD      
-    - makepkg
+    - makepkg --nodeps
     - namcap coursier-*  
     - pacman -Qip coursier-*
     - pacman -Qlp coursier-*
