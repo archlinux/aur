@@ -1,12 +1,12 @@
 pkgbase = linvst
 	pkgdesc = enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's
-	pkgver = 1.7.6
-	pkgrel = 2
+	pkgver = 1.8
+	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
 	depends = wine
-	source = https://github.com/osxmidi/LinVst/releases/download/1.7/LinVst-1.7.6-MIX-Debian-Stretch.zip
-	sha256sums = 9b055ee70942b2930c3f62c15cfa2a18b7586d356aa53a401012e6e07470ca2b
+	source = https://github.com/osxmidi/LinVst/releases/download/1.8/LinVst-1.8-Debian-Stretch.zip
+	sha256sums = 96e72788f11f351d3dabb9c870e658aad215332d4a3065418d72bcb41a266f53
 
 pkgname = linvst
 
