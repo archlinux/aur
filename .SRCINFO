@@ -1,7 +1,7 @@
 pkgbase = grub-customizer
 	pkgdesc = A graphical grub2 settings manager
 	pkgver = 5.0.6
-	pkgrel = 6
+	pkgrel = 7
 	url = https://launchpad.net/grub-customizer
 	arch = i686
 	arch = x86_64

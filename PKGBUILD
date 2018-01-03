@@ -2,7 +2,7 @@
 
 pkgname=grub-customizer
 pkgver=5.0.6
-pkgrel=6
+pkgrel=7
 pkgdesc="A graphical grub2 settings manager"
 url="https://launchpad.net/grub-customizer"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ sha512sums=('4bf29daac0c34b38179866b30ab035f54cd6156c3fbe333d7c0b0f7e715ab047201
 
 prepare(){
   # modifying desktop file
-  sed -i -e '/^Categories=/s/Settings/GTK/' -e '/^X-Ubuntu/d' -e '/^X-KDE/d' \
+  sed -i -e '/^X-Ubuntu/d' -e '/^X-KDE/d' \
     "${srcdir}/${pkgname}-${pkgver}/misc/grub-customizer.desktop"
 }
 
