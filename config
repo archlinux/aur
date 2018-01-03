@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.14.9-2 Kernel Configuration
+# Linux/x86 4.14.11-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -8154,6 +8154,7 @@ CONFIG_SECURITY=y
 # CONFIG_SECURITY_WRITABLE_HOOKS is not set
 CONFIG_SECURITYFS=y
 # CONFIG_SECURITY_NETWORK is not set
+CONFIG_PAGE_TABLE_ISOLATION=y
 # CONFIG_SECURITY_INFINIBAND is not set
 # CONFIG_SECURITY_PATH is not set
 # CONFIG_INTEL_TXT is not set
