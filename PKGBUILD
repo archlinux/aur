@@ -1,14 +1,15 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=meep-git
-pkgver=1.3.r95.ga5669c1
+pkgver=1.3.r125.gfc1b6b0
 pkgrel=1
-pkgdesc='Free finite-difference time-domain (FDTD) software for electromagnetic simulations'
+pkgdesc='Free finite-difference time-domain (FDTD) software for electromagnetic simulations (includes python interface)'
 arch=('i686' 'x86_64')
 url='https://github.com/stevengj/meep'
 license=('GPL2')
-depends=('harminv' 'libctl' 'hdf5' 'gsl' 'fftw' 'openmpi' 'swig' 'python-numpy')
+depends=('harminv-git' 'libctl-git' 'hdf5' 'gsl' 'fftw' 'openmpi' 'swig' 'python-numpy')
 makedepends=('gcc-fortran' 'suitesparse')
 optdepends=('h5utils: visualization and conversion of scientific data'
+						'python-h5py: process HDF5 data from python'
 						'python-mpi4py: use MPI from the python interface'
             'mpb: calculation of electromagnetic modes')
 options=('!libtool' '!makeflags')
