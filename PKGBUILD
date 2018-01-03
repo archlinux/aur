@@ -51,7 +51,7 @@ _use_current=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
-pkgver=4.14.10
+pkgver=4.14.11
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -80,11 +80,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch'
-        '0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
-        '0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
-        '0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch')
+        '0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch'
+        '0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
+        '0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
+        '0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
+        '0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
+        '0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch')
         
 _kernelname=${pkgbase#linux} 
 
@@ -98,23 +99,27 @@ prepare() {
     ### Disable USER_NS for non-root users by default
         msg "Disable USER_NS for non-root users by default"
         patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-    
+  
     ### Fix https://bugs.archlinux.org/task/56575
         msg "Fix #56575" 
-        patch -Np1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+        patch -Np1 -i ../0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
 
     ### Fix https://nvd.nist.gov/vuln/detail/CVE-2017-8824
         msg "Fix CVE-2017-8824"
-        patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-    
+        patch -Np1 -i ../0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  
     ### Fix https://bugs.archlinux.org/task/56605
         msg "Fix #56605"
-        patch -Np1 -i ../0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-        patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-
+        patch -Np1 -i ../0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
+        patch -Np1 -i ../0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  
     ### Fix https://bugs.archlinux.org/task/56846
         msg "Fix #56846"
-        patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+        patch -Np1 -i ../0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  
+    ### For AMD processors, keep PTI off by default
+        msg "For AMD processors, keep PTI off by default"
+        patch -Np1 -i ../0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -382,21 +387,22 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            '93b642201235c78ef6c8253ef6338a82f6c38e5b6741c7ec06c3dde84433683809c56fe30aab0117607ab09d3367d1dafbbc81af3353f267676357bf72cd7280'
+            'dbf5488f0ba4e18b253da02c5cc862096a3253689986fbf5cd89b835c94c2057f4196d8d278973254fdf6dd07629784bf1dc3bdc7d1ac3bb0682c6f9ad9d21ad'
             'SKIP'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
-            '7526b8416124e674b902ddf971b551c6fdc718a465ce194768b6affcd2a188b416a0837d1c5da418c8063d38126587a6aa64ea41fc0463c03e026091000227dc'
+            '8a245a09327b42a7c732ef84c74f183055a9ef9e751aaae0d942930dc927697caf9c25bf9ffc2a7540b77b2bfd424fc93acd3363deb80602b053a8b50d76bf18'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '6fd42090bd39228ac625d0c2074ae55ac3e8368de63f550951c3ac6e6bfdbaf47ab67e018e21890b8ad75bb6706eff5dce05070ad6c281ecedf2a353d8871d96'
-            '4b461e3f194fd11ec4321cfbe63dbc5f59c2ed0ee71cae5753b64761c6cc816e28fe89f9c472f92a6cf22557ab88243c16f7f2d2e754ba0b47f82608dc9ddc25'
-            '93131d8ad8b118a1c1bcabce357ba7e61233c99188f2d0123977c436e2932555bde4e19de4ca63ac27c6e9b26d8373fb99b52db18b7518122433616d7060082d'
-            '973bf63857968e76d15286aea5add9589e3248b7b70da25629b91618cfdbbd5784cd0d97daccb3168fd369adb41ebd5768788ad25dc54b7a5c0b9f16e07a9d38'
-            '39bf2a3eeca5efce6c8214c49fba001a767fa3c94157255451a8c4739a3adeef74f2644a2ab6a7a423a65e76466c02d7c1f124cdddcfce37145fc3be92d8fa6c'
-            '5ad03cf5b0acfa1ca554a0462d83c0be8ddf9974d7248b9ff9a516e68dad0425a205b224ca4cf680428feedcc4e7a1153d5aa12a12abfa96a503e9a0d65c712a')
+            '05f2c577450cfeae4b66a7d022a9dd0dab0dbf36e9738423efa8f45aaf0755b48a89f1f88b042946205e681458f76c5c5177c16869094839b7b234e0e2b27511'
+            'fd9bdc818326fa36c9f1813d0d1821de5e325b646e1c307c197ad38bada7f298d35b4bc1bbf1c2854689f3ba71144879e799a1123037caccd6e3f64edfc22d54'
+            '814517d08c35cc886fe3382619d41107d6139a703c27186d0ce58e187eaf4e84891572e58246750ac8602555794ed6f74d946565b98860787a0aa617fb946dda'
+            '7a5a6edf0879e59437b03166882e5afdc2dea9087819b1ada3aee22861a041896e305f136c61f0b8365cddff34852620fe2b3c51b5408d4c243a840b3dfe3059'
+            'e6605e923c967b5f8db619868b15ea5b0d4254c62cf12bb920f38659933d6ca25a643d3e044c4915a8309071461f5f14c55d0aa0329c113bce4780d4fa3afbb7'
+            '0dec1482efe6e5d762a3061f365e43191484f055b738112452b8ca39e162b935d99cf16b25c0b253d6b532fabc54bde2f5c09be91887156ed6ae06d1558f94b9'
+            'fda8b429d98b9017e0d72c91054c53afec6fab41abb06724bc1ce020863956215a3cdeb7692297d533d7426f8e2cc7f8d03c2570abf71e4b1d4f41fdb5fe63f0')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
