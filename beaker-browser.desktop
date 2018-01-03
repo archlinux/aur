@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=beaker-browser
+Comment=Peer-to-peer browser with tools to create and host website
+GenericName=Beaker Browser
+Exec=/opt/beaker-browser/beaker-browser.sh
+Icon=beaker
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Network;WebBrowser;
+Keywords=web;browser;internet;p2p;
+MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;
