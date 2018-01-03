@@ -1,10 +1,10 @@
-# Maintainer: Sergej "winnie" Schmidt <sergej@hex.house>
+# Maintainer: winnie <aur@msgpeek.net>
 
 _py="python"
 pkgname=netzob
 pkgver=1.0.2
 _release_name=${pkgname}-Release-${pkgname}-${pkgver}
-pkgrel=2
+pkgrel=3
 HOLDVER=1
 pkgdesc="Netzob is an opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols."
 arch=('i686' 'x86_64')
