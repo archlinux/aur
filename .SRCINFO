@@ -1,6 +1,6 @@
 pkgbase = grub-btrfs
 	pkgdesc = Include btrfs snapshots in GRUB boot options
-	pkgver = 1.11
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/Antynea/grub-btrfs
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = grub-btrfs
 	depends = btrfs-progs
 	depends = grub
 	conflicts = grub-btrfs-git
-	source = https://github.com/Antynea/grub-btrfs/archive/v1.11.tar.gz
-	md5sums = 847bdcea497ff1be3c788f10ebf532af
+	source = https://github.com/Antynea/grub-btrfs/archive/v2.0.tar.gz
+	sha256sums = 572a02a8ce8c7393a057969552b7ef1dfce97b4a1cdac3cdb67c8391d8bb035d
 
 pkgname = grub-btrfs
 
