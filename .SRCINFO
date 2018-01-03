@@ -1,6 +1,6 @@
 pkgbase = lib32-opencv
 	pkgdesc = Open Source Computer Vision Library (32-bit)
-	pkgver = 3.2.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = lib32-opencv
 	optdepends = hdf5: support for HDF5 format
 	optdepends = opencl-icd-loader: For coding with OpenCL
 	options = staticlibs
-	source = opencv-3.2.0.tar.gz::https://github.com/Itseez/opencv/archive/3.2.0.zip
-	source = opencv_contrib-3.2.0.tar.gz::https://github.com/Itseez/opencv_contrib/archive/3.2.0.tar.gz
-	md5sums = bfc6a261eb069b709bcfe7e363ef5899
-	md5sums = d7d50c70c31df3b31310f548f31fd2a2
+	source = opencv-3.4.0.tar.gz::https://github.com/opencv/opencv/archive/3.4.0.zip
+	source = opencv_contrib-3.4.0.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.0.tar.gz
+	md5sums = ed60f8bbe7a448f325d0a0f58fcf2063
+	md5sums = 315c3725234ec02fb4f6e55383376d00
 
 pkgname = lib32-opencv
 

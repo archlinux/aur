@@ -1,8 +1,9 @@
 # Maintainer: orumin <dev at orum.in>
+# contributer: yannleretaille <yleretaille at gmail.com>
 
 pkgname=lib32-opencv
 _basename=opencv
-pkgver=3.2.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (32-bit)"
 arch=('x86_64')
@@ -14,10 +15,10 @@ options=('staticlibs')
 optdepends=('opencv-samples'
             'hdf5: support for HDF5 format'
             'opencl-icd-loader: For coding with OpenCL')
-source=("$_basename-$pkgver.tar.gz::https://github.com/Itseez/opencv/archive/$pkgver.zip"
-        "opencv_contrib-$pkgver.tar.gz::https://github.com/Itseez/opencv_contrib/archive/$pkgver.tar.gz")
-md5sums=('bfc6a261eb069b709bcfe7e363ef5899'
-         'd7d50c70c31df3b31310f548f31fd2a2')
+source=("$_basename-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
+        "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
+md5sums=('ed60f8bbe7a448f325d0a0f58fcf2063'
+         '315c3725234ec02fb4f6e55383376d00')
 
 _cmakeopts=('-D WITH_OPENCL=ON'
             '-D WITH_OPENGL=ON'
@@ -44,7 +45,8 @@ _cmakeopts=('-D WITH_OPENCL=ON'
             )
 
 build() {
-  cd "$srcdir/$_basename-$pkgver"
+  mkdir "$srcdir/$_basename-$pkgver/build"
+  cd "$srcdir/$_basename-$pkgver/build"
 
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   export PYTHON='/usr/bin/python2-32'
@@ -52,13 +54,13 @@ build() {
 
   cmake ${_cmakeopts[@]} \
     -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
-    .
+    ..
 
   make
 }
 
 package() {
-  cd "$srcdir/$_basename-$pkgver"
+  cd "$srcdir/$_basename-$pkgver/build"
 
   make DESTDIR="$pkgdir" install
   mv "$pkgdir"/usr/lib "$pkgdir"/usr/lib32
