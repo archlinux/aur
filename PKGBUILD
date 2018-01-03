@@ -2,7 +2,7 @@
 
 _pkgname=libprotobuf
 pkgname=lib32-$_pkgname
-pkgver=v3.3.1.r363.gb04e5cba
+pkgver=3.5.0.1-1
 pkgrel=1
 pkgdesc="A language-neutral, platform-neutral extensible mechanism for 
 serializing structured data."
@@ -11,7 +11,7 @@ license=('custom')
 arch=('x86_64')
 depends=('lib32-zlib' 'lib32-gcc-libs')
 makedepends=('gcc-multilib' 'curl' 'unzip')
-source=("https://github.com/google/protobuf/archive/v3.4.1.zip")
+source=("https://github.com/google/protobuf/archive/v3.5.0.1.zip")
 md5sums=('SKIP')
 
 build() {
