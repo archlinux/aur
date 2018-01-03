@@ -9,6 +9,7 @@ pkgbase = breeze-plymouth
 	depends = plymouth
 	source = http://download.kde.org/stable/plasma/5.11.5/breeze-plymouth-5.11.5.tar.xz
 	source = http://download.kde.org/stable/plasma/5.11.5/breeze-plymouth-5.11.5.tar.xz.sig
+	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = 236605aa905261d6cc21b3900353c1d1a7d4c33946b8d0930cc7fe8d75ceae79
 	sha256sums = SKIP
 
