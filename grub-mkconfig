@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/usr/bin/grub-mkconfig -o /boot/grub/grub.cfg 2>&1 | grep -vi 'Found snapshot'
