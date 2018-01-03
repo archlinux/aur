@@ -3,7 +3,7 @@
 _gemname=gio2
 pkgname=ruby-$_gemname
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/GIO2 is a Ruby binding of gio-2.x.'
 arch=(x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
