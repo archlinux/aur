@@ -29,3 +29,5 @@ package() {
     install -Dm755 ${srcdir}/beaker-browser.sh                          ${pkgdir}/opt/beaker-browser/beaker-browser.sh
     install -Dm755 ${srcdir}/beaker-browser-${pkgver}-${arch}.AppImage  ${pkgdir}/opt/beaker-browser/beaker-browser.AppImage
 }
+
+# for next revision, install /usr/share/appimagekit/no_desktopintegration to get rid of beaker-browser.sh
