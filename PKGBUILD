@@ -3,15 +3,15 @@
 
 name=cloudcompare
 pkgname=${name}-git
-pkgver=2.9.1.r17.gc9e6493d
+pkgver=2.9.1.r39.g1b735d7c
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('qt5-base' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cgal')
-makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'doxygen' 'liblas')
-optdepends=('pcl' 'liblas')
+depends=('qt5-base' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cgal' 'pdal')
+makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'doxygen' 'laz-perf')
+optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git"
         )
 md5sums=('SKIP')
@@ -32,7 +32,9 @@ build() {
   mkdir -p build && cd build
  
   cmake .. \
+        -Wno-dev \
         -DCMAKE_CXX_FLAGS=-fpermissive \
+        -DOPTION_PDAL_LAS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DINSTALL_QRANSAC_SD_PLUGIN=ON \
         -DINSTALL_QCOMPASS_PLUGIN=ON \
@@ -48,7 +50,6 @@ build() {
         -DOPTION_USE_GDAL=ON \
         -DOPTION_USE_DXF_LIB=ON \
         -DINSTALL_QSSAO_PLUGIN=ON \
-        -DOPTION_USE_LIBLAS=ON \
         -DINSTALL_QGMMREG_PLUGIN=ON \
         -DINSTALL_QANIMATION_PLUGIN=ON \
         -DINSTALL_QCSF_PLUGIN=ON \
@@ -62,9 +63,7 @@ build() {
         -DINSTALL_QM3C2_PLUGIN=ON \
         -DINSTALL_QBROOM_PLUGIN=true \
         -DINSTALL_QHOUGH_NORMALS_PLUGIN=true \
-        -DEIGEN_ROOT_DIR=/usr/include/eigen3 \
-        -DLIBLAS_INCLUDE_DIR=/usr/include/liblas \
-        -DLIBLAS_RELEASE_LIBRARY_FILE=/usr/lib/liblas.so
+        -DEIGEN_ROOT_DIR=/usr/include/eigen3 
   make
 }
 
