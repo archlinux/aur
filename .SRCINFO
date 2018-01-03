@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod
-	pkgver = 4.14.10
+	pkgver = 4.14.11
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -10,30 +10,32 @@ pkgbase = linux-xanmod
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.14.10-xanmod14.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.14.11-xanmod15.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod.preset
 	source = choose-gcc-optimization.sh
-	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux&id=cd56162fda382f21319573d9071dde9559eadfb8
-	source = 0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch?h=packages/linux&id=cd56162fda382f21319573d9071dde9559eadfb8
-	source = 0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch?h=packages/linux&id=cd56162fda382f21319573d9071dde9559eadfb8
-	source = 0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch?h=packages/linux&id=cd56162fda382f21319573d9071dde9559eadfb8
-	source = 0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch?h=packages/linux&id=cd56162fda382f21319573d9071dde9559eadfb8
-	source = 0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch?h=packages/linux&id=cd56162fda382f21319573d9071dde9559eadfb8
-	sha256sums = a39f39a679303cb2e05d9f58ca1360b81ef0f979cfc4982647464248be2d3bfc
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
+	source = 0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
+	source = 0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
+	source = 0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
+	source = 0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
+	source = 0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
+	source = 0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
+	sha256sums = 2a19bcd9193c2738c0bf468650f0bce1ef3b4923c172da417293c01856d6e731
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 9fd3abfb3e5e6afd5b8476e30af4d7ded762f3da2a724133cb3f26ad21c31e54
-	sha256sums = 37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85
-	sha256sums = c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3
-	sha256sums = 1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2
-	sha256sums = ed3266ab03f836f57de0faf8a10ffd7566c909515c2649de99adaab2fac4aa32
-	sha256sums = 64a014f7e1b4588728b3ea9538beee67ec63fb792d890c7be9cc13ddc2121b00
-	sha256sums = 3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb
-	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=cd56162fda382f21319573d9071dde9559eadfb8
-	sha256sums_x86_64 = 4d12ed868b05720c3d263c8454622c67bdee6969400049d7adac7b00907ad195
+	sha256sums = 06bc1d8b1cd153c3146a4376d833f5769b980e5ef5eae99ddaaeb48bf514dae2
+	sha256sums = b90bef87574f30ec66c0f10d089bea56a9e974b6d052fee3071b1ff21360724b
+	sha256sums = f38531dee9fd8a59202ce96ac5b40446f1f035b89788ea9ecb2fb3909f703a25
+	sha256sums = 705d5fbfce00ccc20490bdfb5853d67d86ac00c845de6ecb13e414214b48daeb
+	sha256sums = 0a249248534a17f14fab7e14994811ae81fe324668a82ff41f3bcabeeae1460f
+	sha256sums = 8e1b303957ddd829c0c9ad7c012cd32f2354ff3c8c1b85da3d7f8a54524f3711
+	sha256sums = 914a0a019545ad7d14ed8d5c58d417eb0a8ec12a756beec79a545aabda343b31
+	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
+	sha256sums_x86_64 = 24b8cf6829dafcb2b5c76cffaae6438ad2d432f13d6551fa1c8f25e66b751ed4
 
 pkgname = linux-xanmod
 	pkgdesc = The Linux kernel and modules with Xanmod patches
