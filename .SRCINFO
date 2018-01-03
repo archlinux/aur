@@ -1,0 +1,16 @@
+pkgbase = cc-shim-git
+	pkgdesc = cc-shim works alongside the Clear Containers runtime and proxy to provide a VM-based OCI runtime solution.
+	pkgver = 3.0.12.r0.d01f9a7
+	pkgrel = 1
+	url = https://github.com/clearcontainers/shim
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = dep
+	provides = cc-shim-git
+	conflicts = cc-shim-git
+	source = git+https://github.com/clearcontainers/shim
+	md5sums = SKIP
+
+pkgname = cc-shim-git
+
