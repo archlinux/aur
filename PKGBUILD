@@ -5,9 +5,7 @@ pkgname=vivaldi-codecs-ffmpeg-extra-bin-rpi
 pkgver=63.0.3239.84
 pkgrel=1
 pkgdesc="Prebuilt ffmpeg-codecs package for vivaldi"
-arch=(
-  "x86_64"
-)
+arch=('armv6h' 'armv7h' 'aarch64')
 url="https://packages.ubuntu.com/zesty/amd64/chromium-codecs-ffmpeg-extra/download"
 license=('LGPL')
 depends=('vivaldi')
