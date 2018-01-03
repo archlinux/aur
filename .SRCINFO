@@ -15,7 +15,7 @@ pkgbase = beaker-browser-bin
 	source = LICENSE
 	md5sums = fc52cd3de85b7410632be78c9d224565
 	md5sums = 9b63b4e9b329c43ccbf4c9fda09afbd0
-	md5sums = d7c3dc2c0215ca9bd00d726175869918
+	md5sums = 6294b99dbab87ee048a65a202dd05d9b
 	md5sums = 9cbb1795dc2934472f7c2b021294964d
 	md5sums = 3862c029863f42c81265a712f9c17c4c
 

@@ -18,6 +18,6 @@ then
 
     for i in {0..9};
     do
-        echo ${prefix}${resolutions[$i]}${postfix};
+        rm ${prefix}${resolutions[$i]}${postfix};
     done
 fi

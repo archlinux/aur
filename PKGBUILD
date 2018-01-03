@@ -18,7 +18,7 @@ source=("https://github.com/beakerbrowser/beaker/releases/download/${pkgver}/bea
 noextract=()
 md5sums=('fc52cd3de85b7410632be78c9d224565'
          '9b63b4e9b329c43ccbf4c9fda09afbd0'
-         'd7c3dc2c0215ca9bd00d726175869918'
+         '6294b99dbab87ee048a65a202dd05d9b'
          '9cbb1795dc2934472f7c2b021294964d'
          '3862c029863f42c81265a712f9c17c4c')
 
