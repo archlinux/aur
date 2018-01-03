@@ -1,7 +1,7 @@
 pkgbase = jverein
 	pkgdesc = A club management plugin for jameica.
 	pkgver = 2.8.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jverein.de
 	install = jverein.install
 	arch = any

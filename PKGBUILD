@@ -1,6 +1,6 @@
 pkgname=jverein
 pkgver=2.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A club management plugin for jameica."
 arch=('any')
 url="http://www.jverein.de"
@@ -13,6 +13,6 @@ md5sums=('b958152f44c2f082f3c0f9635d4a98f8')
 
 package() {
     mkdir -p "$pkgdir/opt/jameica/plugins"
-    cp -r "$srcdir/$pkgname" "$pkgdir/opt/jameica/plugins"
+    cp -r "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/jameica/plugins"
 }
 
