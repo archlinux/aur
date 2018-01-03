@@ -10,14 +10,14 @@
 
 pkgname=vagrant
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
 depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
-         'ruby' 'xz')
+         'ruby2.3' 'xz')
 makedepends=('git' 'go-pie')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
@@ -26,12 +26,17 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v
 md5sums=('c443ac9e1034d5748b81f01da548d587'
          'SKIP')
 
+prepare() {
+  cd vagrant-installers/substrate/modules/vagrant_substrate
+  sed -i 's_"/usr/bin/ruby"_"/usr/bin/ruby-2.3"_' files/launcher/main.go
+}
+
 build() {
   cd $pkgname-$pkgver
 
   INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate/modules
 
-  gem build $pkgname.gemspec
+  gem-2.3 build $pkgname.gemspec
 
   cd "$INSTALLERS_DIR"/vagrant_substrate/files/launcher
   go get github.com/mitchellh/osext
@@ -53,7 +58,7 @@ package() {
 
   GEM_PATH="$EMBEDDED_DIR"/gems GEM_HOME="$GEM_PATH" \
   GEMRC="$EMBEDDED_DIR"/etc/gemrc \
-    gem install $pkgname-$pkgver.gem --no-ri --no-rdoc
+    gem-2.3 install $pkgname-$pkgver.gem --no-ri --no-rdoc
 
   install -Dm755 "$INSTALLERS_DIR"/vagrant_substrate/files/launcher/vagrant \
     "$pkgdir"/opt/$pkgname/bin/$pkgname
