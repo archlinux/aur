@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.14
-pkgver=4.14.9
+pkgver=4.14.10
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -33,7 +33,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch)
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '5edc955bb67b04c7ed426b1df17a3e322e32ad9fdda9c6abb53ab6eca7faf704'
+            '16f560aa713b46c707f04a226f67dc31fdd280aae57dd19e0413d61df5336c74'
             'SKIP'
             '4d12ed868b05720c3d263c8454622c67bdee6969400049d7adac7b00907ad195'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -59,6 +59,7 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
+  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
 
   # security patches
 
