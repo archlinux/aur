@@ -1,7 +1,7 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 
 pkgname=pokemon-revolution-online-bin
-pkgver=0.98.2.spooky.haunter
+pkgver=0.98.3.jolly.ol.snorlax
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
@@ -28,8 +28,8 @@ package() {
 
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="https://tiny.cc/PROLinux" ##download link
-    __DDLFN="PROSpookyLinux.zip" ##filename
-    __DDLFSHA256="8a18c2136e59f9604b8b0b6c9f5aa4211779ce159eeb0a36eaeeb40b29ff0b4e" #sha256sum
+    __DDLFN="PROLinux64.zip" ##filename
+    __DDLFSHA256="4998dd3eaa8c441ad08d9ae0128705e5b520e8b9511a050b2c9aaeb8b623a7bb" #sha256sum
 
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then

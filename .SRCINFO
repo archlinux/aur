@@ -1,6 +1,6 @@
 pkgbase = pokemon-revolution-online-bin
 	pkgdesc = A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games.
-	pkgver = 0.98.2.spooky.haunter
+	pkgver = 0.98.3.jolly.ol.snorlax
 	pkgrel = 1
 	url = https://pokemon-revolution-online.net
 	install = INSTALL
