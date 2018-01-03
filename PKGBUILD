@@ -15,7 +15,7 @@ source=("https://github.com/google/protobuf/archive/v3.5.0.1.zip")
 md5sums=('SKIP')
 
 build() {
-    cd "${srcdir}/protobuf-3.4.1"
+    cd "${srcdir}/protobuf-3.5.0.1"
 
     ./autogen.sh
     #autoreconf -i
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/protobuf-3.4.1"
+    cd "${srcdir}/protobuf-3.5.0.1"
 
     make DESTDIR="$pkgdir" install
     rm -r "$pkgdir/usr/bin/"
