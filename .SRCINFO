@@ -1,6 +1,6 @@
 pkgbase = terraform-inventory-git
 	pkgdesc = Terraform State -> Ansible Dynamic Inventory
-	pkgver = 0.7.pre.20.g2222e64
+	pkgver = 0.7.pre.23.g1728bbc
 	pkgrel = 1
 	url = https://github.com/adammck/terraform-inventory
 	arch = x86_64

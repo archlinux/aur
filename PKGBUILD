@@ -2,7 +2,7 @@
 
 _gitname="terraform-inventory"
 pkgname="${_gitname}-git"
-pkgver=0.7.pre.20.g2222e64
+pkgver=0.7.pre.23.g1728bbc
 pkgrel=1
 pkgdesc="Terraform State -> Ansible Dynamic Inventory"
 arch=("x86_64")
