@@ -5,7 +5,7 @@
 _pkgname=net-snmp
 pkgname=net-snmp-lmsensors
 pkgver=5.7.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6, with lm-sensors support"
 arch=('i686' 'x86_64')
 url="http://www.net-snmp.org/"
@@ -16,7 +16,7 @@ optdepends=('perl-term-readkey: for snmpcheck application'
             'perl-tk: for snmpcheck and tkmib applications'
             'python2: for the python modules')
 conflicts=("${_pkgname}")
-replaces=("${_pkgname}")
+provides=("${_pkgname}")
 options=('!emptydirs' '!makeflags')
 source=(http://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.gz{,.asc}
         snmpd.service snmptrapd.service net-snmp-5.7.3-perl-5.24.patch fix-openssl-build-errors.patch)
