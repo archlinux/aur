@@ -1,41 +1,29 @@
-# Maintainer: Pablo Lezaeta <prflr88@gmail.com>
+# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
+# Contributor: Pablo Lezaeta <prflr88@gmail.com>
 # Contributor: BlackLotus89 <maxmusterm@gmail.com>
 
 pkgname=toybox
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
-pkgdesc="A BSD-licensed alternative to busybox"
-arch=("i686" "x86_64" "armv6h" "armv7h")
-# I have no problems adding those architectures but in the moment that I get a single
-# complain that not work the I will remove them
-license=("BSD")
-url="http://landley.net/toybox/"
-#makedepends=('')
+pkgdesc='Combines common Linux command line utilities into a single executable'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://landley.net/toybox'
+license=('BSD')
 depends=('attr')
-source=("${pkgname}-${pkgver}.tar.gz::http://landley.net/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
-
-# ToDo, prepare that chage the system minimal UID and user UIDs to the ones used in arch
+source=("${url}/downloads/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('3ada450ac1eab1dfc352fee915ea6129b9a4349c1885f1394b61bd2d89a46c04')
 
 build() {
- cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
- msg "Runing script/make.sh to allow YOU to select the options as upstream want, yeah they ask me to do this"
- make menuconfig
- bash scripts/make.sh
+  make defconfig
+  make
 }
 
 package() {
- msg "Making directories"
- mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
- mkdir -p "${pkgdir}/usr/bin"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
- msg "Creating the file using make install"
- cd "${srcdir}/${pkgname}-${pkgver}"
- PREFIX=${pkgdir}/usr/toybox/ make install
-
- msg "installing license"
- install -m755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/"
- cp "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/toybox/"
+  PREFIX="${pkgdir}/usr/${pkgname}" make install
+  install -Dm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-md5sums=('55ea59a31c7da9510c8fabe70f4bc561')
