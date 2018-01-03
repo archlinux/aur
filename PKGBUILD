@@ -2,13 +2,13 @@
 
 pkgname=sound-theme-lbr-writer
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Sound theme for Linux desktop made by Japanimation voice actor 'TADOKORO Azusa' and OpenSourceSoftwareChannel. This is made for cheering LibreOffice"
 arch=('any')
-url="https://www.oss-ch.jp/lbr/"
+url="https:/oss-ch.info/lbr/"
 license=('custom')
 source=("LICENSE.txt"
-        "http://www.oss-ch.jp/lbr/lbr_ubuntu_writer.tgz")
+        "https://oss-ch.info/lbr/lbr_ubuntu_writer.tgz")
 md5sums=('844cfb9446a71fb16f9bc554940f1e7b'
          '9ffbf11da394d8e618d582fc7881f9b2')
 
