@@ -3,9 +3,9 @@
  
 appname=Quaternion
 pkgname=quaternion-git
-pkgver=0.0.1.r352.63efb78
-pkgrel=1
-pkgdesc="Qt5-based IM client for the Matrix protocol"
+pkgver=0.0.5.r21.63efb78
+pkgrel=2
+pkgdesc='Qt5-based IM client for the Matrix protocol'
 arch=('any')
 url='https://matrix.org/docs/projects/client/quaternion.html'
 license=('GPL3')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $appname
-  echo "$(git describe | sed 's/^v//; s/-/.r/; s/-g/./')"
+  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
 prepare() {
