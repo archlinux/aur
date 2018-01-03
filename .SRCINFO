@@ -1,0 +1,11 @@
+pkgbase = kodelife
+	pkgver = 0.5.1.0
+	pkgrel = 1
+	arch = x86_64
+	license = unknown
+	depends = libcurl-gnutls
+	source = https://hexler.net/pub/kodelife/pkgname-0.5.1.0-linux-x86_64.zip
+	sha256sums = 266a4b8e0d7cd2dd63ad56c9d1fd5e164265b41a6b7be4e39000541ba9f6c199
+
+pkgname = kodelife
+
