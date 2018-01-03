@@ -10,7 +10,7 @@ url="https://gitlab.com/Plague_Doctor/spw"
 license=('GPL')
 depends=('python')
 source=("spw-$pkgver-$pkgrel.tar.bz2"::"https://gitlab.com/Plague_Doctor/spw/repository/archive.tar.bz2?ref=$pkgver")
-md5sums=('770b5407b1161cc938eb1acc2a2c1361')
+sha256sums=('12bd1d225dd66cb593d0a7136d138ae498ed7ac67b7359ae6ef406c3264070d4')
 
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
