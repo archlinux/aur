@@ -2,10 +2,10 @@
 
 pkgname=sound-theme-lbr-draw
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Sound theme for Linux desktop made by Japanimation voice actor 'MATSUI Eriko' and OpenSourceSoftwareChannel. This is made for cheering LibreOffice"
 arch=('any')
-url="https://www.oss-ch.jp/lbr/"
+url="https://oss-ch.info/lbr/"
 license=('custom')
 source=("LICENSE.txt"
         "https://oss-ch.info/lbr/lbr_ubuntu_draw.tgz")
