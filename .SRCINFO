@@ -5,7 +5,7 @@ pkgbase = otf-font-awesome4
 	url = http://fontawesome.io
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = custom:OFL
 	depends = glibc
 	source = https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.tar.gz
 
