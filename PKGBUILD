@@ -8,7 +8,7 @@
 #
 pkgname=arena-chess-gui
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free GUI for chess"
 arch=('x86_64')
 url="http://www.playwitharena.com/"
@@ -32,4 +32,24 @@ package() {
 
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
   printf "See http://www.playwitharena.com/?Legal_Stuff\n" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # This is propably the wrong way to create the Desktop file, but
+  # should be better than nothing, for now.
+  #
+  # TODO: Arena creates this file
+  # /opt/arena/Integration/Desktop/userapp-Arena_linux.desktop.template
+  # I assume using that template is the correct way to create the Desktop file.
+  mkdir -p ${pkgdir}/usr/share/applications
+  printf "[Desktop Entry]
+Version=1.0
+Name=Arena
+Comment=A free GUI for chess.
+Exec=/usr/bin/arena
+Icon=/opt/arena/Arena.bmp
+Categories=Game;BoardGame;
+Type=Application
+Terminal=false
+StartupNotify=false
+" > ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  chmod 644 ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
