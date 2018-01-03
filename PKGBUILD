@@ -2,7 +2,7 @@
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 pkgname=joyce
 pkgrel=1
-pkgver=2.2.10
+pkgver=2.2.12
 pkgdesc="Emulates the Amstrad PCW on Unix"
 arch=('i686' 'x86_64')
 url="http://www.seasip.info/Unix/Joyce/index.html"
@@ -10,10 +10,9 @@ license=('GPL')
 depends=('libpng'
          'libxml2'
          'sdl')
-makedepends=('lyx')
 source=("http://www.seasip.info/Unix/Joyce/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('8ce633278c438c9228c9201c8e2522cd32cc92a6f868a8b8e580e917c5fb2144'
+sha256sums=('3f2f0b385a66c8ff63455b73f4018b562e52c19fc85de7e811800bec4e9837fc'
             'ac4f54be832ff4c3bf434f36c0b28298742b20e4b6051db0a66e57ba636c5a98')
 
 build() {
