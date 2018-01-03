@@ -4,14 +4,14 @@ _base=dolfin
 _fragment="#branch=master"
 pkgname=python-${_base}-git
 pkgdesc="the Python interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations."
-pkgver=20171219
+pkgver=20171221
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('GPL3')
 groups=('fenics-git')
 depends=('dolfin-git' 'python-instant-git' 'python-pkgconfig' 'python-ply' 'swig')
-optdepends=('mpi4py: MPI library for python'
+optdepends=('python-mpi4py: MPI library for python'
 						'petsc4py: interface with PETSc from python'
 						'slepc4py: interface with SLEPc from python'
 						'python-matplotlib: plotting support')
