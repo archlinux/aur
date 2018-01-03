@@ -1,8 +1,8 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildstream-git
-pkgver=0.1+1154+ga10b9ce
+pkgver=1.0.0+1+g07e4d54
 pkgrel=1
-pkgdesc="Flexible and extensible framework for the modelling of build pipelines in a declarative YAML format, written in python"
+pkgdesc="Framework for modelling build pipelines in a declarative YAML format"
 arch=('any')
 url="https://wiki.gnome.org/Projects/BuildStream/"
 license=('LGPL')
@@ -17,10 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd buildstream
-	v=$(grep "^release =" doc/source/conf.py | cut -d= -f2 | sed "s|'||g")
-	r=$(git rev-list --count HEAD)
-	h=$(git rev-parse --short HEAD)
-	printf $v+$r+g$h
+	git describe --tags | sed 's/-/+/g'
 }
 
 package() {
