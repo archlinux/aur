@@ -7,7 +7,7 @@
 
 pkgname=xpdf-motif
 pkgver=3.04
-pkgrel=1
+pkgrel=2
 pkgdesc='Viewer for Portable Document Format (PDF) files, legacy version without qt'
 url='http://www.foolabs.com/xpdf/'
 license=('GPL2')
@@ -18,8 +18,8 @@ provides=('xpdf')
 optdepends=('gsfonts: providing the 14 standard postscript fonts'
 	    'poppler: tools that used to be included in xpdf'
             'desktop-file-utils: for desktop environments')
-source=("http://www.xpdfreader.com/dl/old/${pkgname%-motif}-${pkgver%_*}.tar.gz"
-        '02-permissions.patch'
+source=(https://xpdfreader-dl.s3.amazonaws.com/old/${pkgname%-motif}-${pkgver%_*}.tar.gz
+	'02-permissions.patch'
         'desktop')
 sha1sums=('b9b1dbb0335742a09d0442c60fd02f4f934618bd'
           'f192728680aaf575c178ce25c4aefa92e798a879'
@@ -43,7 +43,7 @@ build() {
     --with-freetype2-includes=/usr/include/freetype2 \
     --x-includes=/usr/include \
     --with-Xm-library=/usr/lib \
-    --with-Xm-includes=/usr/include \
+    --with-Xm-includes=/usr/include 
 
   make
 }
