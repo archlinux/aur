@@ -2,15 +2,13 @@
 # Contributor: Eduardo Sánchez Muñoz
 pkgname=nlohmann-json-git
 _name="${pkgname%-git}"
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Header-only JSON library for Modern C++'
 url='https://github.com/nlohmann/json'
 license=(MIT)
 arch=(x86_64)
 makedepends=(cmake git)
-provides=("$_name")
-conflicts=("$_name")
 source=("git+$url")
 sha256sums=(SKIP)
 
@@ -34,6 +32,8 @@ check() {
 }
 
 package() {
+	provides=("$_name=${pkgver%%+*}")
+	conflicts=("$_name")
 	cd build
 	make "DESTDIR=$pkgdir" install
 	install -Dm644 "-t$pkgdir/usr/share/licenses/$_name" ../json/LICENSE.MIT
