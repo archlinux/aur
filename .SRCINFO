@@ -1,6 +1,6 @@
 pkgbase = cargo-web
 	pkgdesc = A Cargo subcommand for the client-side Web
-	pkgver = 0.4.2
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/koute/cargo-web
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = cargo-web
 	license = APACHE
 	depends = cargo
 	depends = gcc-libs
-	source = cargo-web-0.4.2.tar.gz::https://github.com/koute/cargo-web/archive/0.4.2.tar.gz
-	sha512sums = 553976137596b2e49518b27607155aa22f2a6df10b5302408bee71eb1fb39b0af45a3173d93933a8e7c2bb414572cd81937f228a41ce00a164cb6041c6ec98c9
+	source = cargo-web-0.4.4.tar.gz::https://github.com/koute/cargo-web/archive/0.4.4.tar.gz
+	sha512sums = b8b573d4199ca0a1e889cc7be70dfe95d9dec2488cf7dc3c65379c4882a6f1b1df3e6c77dfc2aed02a4bf88b5f7e5eaf59c2a6d54cae9fdee63ff0da052148a6
 
 pkgname = cargo-web
 
