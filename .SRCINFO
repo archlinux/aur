@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod
 	pkgver = 4.14.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = linux-xanmod
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.14.11-xanmod15.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.14.11-xanmod15_rev2.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod.preset
@@ -22,7 +22,7 @@ pkgbase = linux-xanmod
 	source = 0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
 	source = 0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
 	source = 0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch?h=packages/linux&id=0b8ad988d054cd9952434002d03ba403ff798529
-	sha256sums = 2a19bcd9193c2738c0bf468650f0bce1ef3b4923c172da417293c01856d6e731
+	sha256sums = fad2c3db7668202d01c3b7516805516654f7c9752bec5b718aacef2fded63d00
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
