@@ -5,17 +5,27 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.14.9
+pkgver=4.14.11
 _srcname=linux-4.14
 _pkgver2=${_srcname#*-}.0
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=08b9be792b16e05a6febc3184c286c99a8088b86
+arch_config_trunk=0b8ad988d054cd9952434002d03ba403ff798529
+
+# Arch additional patches
+arch_patches=(0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+  0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
+  0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch)
+
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -28,31 +38,25 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}"
         # main BLD patch
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
-        0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-        0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
-        0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-        0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-        0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-        0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-        0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
         )
+for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '5edc955bb67b04c7ed426b1df17a3e322e32ad9fdda9c6abb53ab6eca7faf704'
+            'f588b62d7ee1d2ebdc24afa0e256ff2f8812d5cab3bf572bf02e7c4525922bf9'
             'SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            '4d12ed868b05720c3d263c8454622c67bdee6969400049d7adac7b00907ad195'
+            '24b8cf6829dafcb2b5c76cffaae6438ad2d432f13d6551fa1c8f25e66b751ed4'
             '80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794'
-            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85'
-            'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
-            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2'
-            'ed3266ab03f836f57de0faf8a10ffd7566c909515c2649de99adaab2fac4aa32'
-            '64a014f7e1b4588728b3ea9538beee67ec63fb792d890c7be9cc13ddc2121b00'
-            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb'
-            '95f0d0a94983b0dafd295f660a663f9be5ef2fcb9646098426a5d12b59f50638')
+            '06bc1d8b1cd153c3146a4376d833f5769b980e5ef5eae99ddaaeb48bf514dae2'
+            'b90bef87574f30ec66c0f10d089bea56a9e974b6d052fee3071b1ff21360724b'
+            'f38531dee9fd8a59202ce96ac5b40446f1f035b89788ea9ecb2fb3909f703a25'
+            '705d5fbfce00ccc20490bdfb5853d67d86ac00c845de6ecb13e414214b48daeb'
+            '0a249248534a17f14fab7e14994811ae81fe324668a82ff41f3bcabeeae1460f'
+            '8e1b303957ddd829c0c9ad7c012cd32f2354ff3c8c1b85da3d7f8a54524f3711'
+            '914a0a019545ad7d14ed8d5c58d417eb0a8ec12a756beec79a545aabda343b31')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -88,24 +92,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/${_BLDpatch}"
 
   msg2 "Patches from Archlinux standard package"
-  # disable USER_NS for non-root users by default
-  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-
-  # https://bugs.archlinux.org/task/56575
-  patch -Np1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
-
-  # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-
-  # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-  patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-
-  # https://bugs.archlinux.org/task/56846
-  patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-
-  # https://bugs.archlinux.org/task/56830
-  patch -Np1 -i ../0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
+  for n in ${arch_patches[@]} ; do patch -Np1 -i ../$n ; done
 
   cp -Tf ../config .config
 
@@ -155,6 +142,9 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
+
+  # Workaround for bad permissions??
+  chmod 755 tools/objtool/sync-check.sh
 
   # get kernel version
   make prepare
