@@ -2,7 +2,7 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=('qt5-tools'
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
 source=("https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_${pkgver}.orig.tar.gz")
-sha256sums=('c35aac11a6dcf9128a2cca3be4646a7b4439b278b28b9e089a61da6d2f9844b4')
+sha256sums=('640f5af3177621316f374a18cd90fc56037fa45231903cd9c05441d9c93856fd')
 
 prepare() {
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
