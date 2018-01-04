@@ -4,22 +4,20 @@ pkgdesc="ROS - position_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-lunar-position-controllers'
-pkgver='0.13.1'
+pkgver='0.13.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+makedepends=(${ros_makedepends[@]}
+  cmake
+  ros-build-tools)
 
 ros_depends=(ros-lunar-forward-command-controller
   ros-lunar-controller-interface)
 depends=(${ros_depends[@]})
-
-ros_checkdepends=()
-checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/position_controllers/${pkgver}-${_pkgver_patch}
@@ -29,8 +27,10 @@ checkdepends=(${ros_checkdepends[@]})
 
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-lunar-position_controllers-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/position_controllers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f96ae8ced61196802788983434345c19557160a70236aede84e0336d354f6efa')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/position_controllers/${pkgver}-${_pkgver_patch}.tar.gz" )
+sha256sums=('02db907749ec0bc8179b59a30514e41b4d7946890ac88aa7a8da67c0e2707594' )
+
+
 
 build() {
   # Use ROS environment variables
@@ -49,6 +49,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
+        -DCMAKE_PREFIX_PATH=/opt/ros/lunar \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
