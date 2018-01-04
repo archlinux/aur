@@ -9,7 +9,9 @@ arch=("i686" "x86_64")
 url="http://amarok.kde.org"
 license=('GPL2' 'LGPL2.1' 'FDL')
 depends=('taglib' 'threadweaver' 'libmariadbclient' 'kdelibs4support' 
-	'libofa' 'knewstuff' 'ffmpeg' 'kcmutils' 'ktexteditor')
+	'libofa' 'knewstuff' 'ffmpeg' 'kcmutils' 'ktexteditor'
+        'extra-cmake-modules' 'knotifyconfig' 'kdnssd' 'plasma-framework'
+        'kdesignerplugin' 'kdoctools')
 makedepends=()
 optdepends=()
 conflicts=('amarok')

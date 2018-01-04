@@ -18,6 +18,12 @@ pkgbase = amarok-kf5-git
 	depends = ffmpeg
 	depends = kcmutils
 	depends = ktexteditor
+	depends = extra-cmake-modules
+	depends = knotifyconfig
+	depends = kdnssd
+	depends = plasma-framework
+	depends = kdesignerplugin
+	depends = kdoctools
 	provides = amarok
 	conflicts = amarok
 	source = git://anongit.kde.org/amarok.git#branch=kf5
