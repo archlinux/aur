@@ -5,6 +5,6 @@ GenericName=Data Recovery Utility
 Comment=Recover Deleted and Damaged Files
 Exec=/usr/local/R-Studio/bin/R-Studio
 Terminal=false
-Icon=r-studio
+Icon=r-studio-for-linux
 Type=Application
 Categories=System;Utility;
