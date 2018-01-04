@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 url="http://dfhack.readthedocs.io/en/v$pkgver/"
 license=('custom')
 depends=(dwarffortress=$pkgver lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
-makedepends=('cmake' 'git' 'python-sphinx')
+makedepends=('cmake' 'git' 'python-sphinx' 'perl-xml-libxml' 'perl-xml-libxslt')
 conflicts=('dfhack-bin' 'dfhack-git')
 
 source=($pkgname::git+https://github.com/DFHack/dfhack#tag=$_pkgver
