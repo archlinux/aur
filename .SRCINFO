@@ -1,0 +1,23 @@
+pkgbase = deepin-wine-thunderspeed
+	pkgdesc = Thunderspeed(Xun Lei) on Deepin Wine For Archlinux(Don't need deepin-wine package)
+	pkgver = 7.10.35.366deepin17
+	pkgrel = 0
+	url = http://dl.xunlei.com/
+	install = deepin-wine-thunderspeed.install
+	arch = x86_64
+	license = custom
+	depends = p7zip
+	depends = wine
+	depends = wine-mono
+	depends = wine_gecko
+	depends = xorg-xwininfo
+	depends = wqy-microhei
+	depends = adobe-source-han-sans-cn-fonts
+	conflicts = deepin.com.thunderspeed
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.thunderspeed/deepin.com.thunderspeed_7.10.35.366deepin17_i386.deb
+	source = run.sh
+	md5sums = f57d11655311c11e109847b3eb6eedd7
+	md5sums = 94a6bd45f579622b0799d664a9d65964
+
+pkgname = deepin-wine-thunderspeed
+

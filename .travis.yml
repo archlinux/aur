@@ -1,0 +1,16 @@
+sudo: required
+
+arch:
+  packages:
+    - p7zip
+    - wine
+    - wine-mono
+    - wine_gecko
+    - xorg-xwininfo
+    - wqy-microhei
+    - adobe-source-han-sans-cn-fonts
+  script:
+    - "makepkg"
+
+script:
+  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
