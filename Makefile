@@ -6,7 +6,7 @@ BINS = getcrypt
 DESTDIR = /usr
 
 $(BINS): $(OBJECTS)
-	$(CC) $(CFLAGS) #(OPT_CFLAGS) $(LIBS) -o $(BINS) $(OBJECTS)
+	$(CC) $(CFLAGS) $(LIBS) -o $(BINS) $(OBJECTS)
 install: $(BINS)
 	install -Dm755 $(BINS) $(DESTDIR)/bin/
 uninstall: $(BINS)
