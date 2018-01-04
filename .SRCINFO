@@ -1,0 +1,14 @@
+pkgbase = iceweasel-https-everywhere
+	pkgdesc = Browser extension that encrypts your communications with many major websites, making your browsing more secure.
+	pkgver = 2017.12.6
+	pkgrel = 1
+	url = https://www.eff.org/https-everywhere
+	arch = any
+	license = GPL3
+	depends = iceweasel
+	noextract = https-everywhere-2017.12.6-eff.xpi
+	source = https://www.eff.org/files/https-everywhere-2017.12.6-eff.xpi
+	sha256sums = 006cba154d6559cd388d8b88330182e98f8c0e18f94d39d061a68e0e6123abca
+
+pkgname = iceweasel-https-everywhere
+
