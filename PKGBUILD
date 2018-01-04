@@ -4,7 +4,7 @@
 _srcname=soledad
 pkgname=python2-leap_$_srcname
 replaces=("python2-leap_${_srcname}_common" "python2-leap_${_srcname}_client")
-pkgver=0.10.4
+pkgver=0.10.5
 pkgrel=1
 pkgdesc='Synchronization Of Locally Encrypted Data Among Devices.'
 arch=('any')
@@ -29,7 +29,7 @@ depends=(
 #  'python2-tox'
 #)
 source=("https://0xacab.org/leap/$_srcname/repository/$pkgver/archive.tar.gz")
-sha512sums=('05442786570c96a231b4b5228d6145d9739132d8fe22fd9b5ddb6eb5ec30c081f890a28912e1ea79395c363cfec8607a9004af558bc36829079e8d10395ed679')
+sha512sums=('175653a7af2570baa795c0eaeb624dc92656fe85ca8e32fb66e0680f0551d28d26fde9068e34a83d438c813144454faaedbf60d2f658bbe2d25f0cafe58c5231')
 noextract=("archive.tar.gz")
 
 prepare() {
