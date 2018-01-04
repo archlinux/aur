@@ -1,0 +1,25 @@
+Only in patched: build
+diff -ura original/ros_comm-release-release-lunar-rosbag_storage-1.13.5-0/src/bz2_stream.cpp patched/ros_comm-release-release-lunar-rosbag_storage-1.13.5-0/src/bz2_stream.cpp
+--- original/ros_comm-release-release-lunar-rosbag_storage-1.13.5-0/src/bz2_stream.cpp	2017-11-09 21:53:05.000000000 +0100
++++ patched/ros_comm-release-release-lunar-rosbag_storage-1.13.5-0/src/bz2_stream.cpp	2018-01-04 21:16:00.658426238 +0100
+@@ -127,7 +127,7 @@
+     case BZ_OK: return;
+     case BZ_STREAM_END:
+         if (getUnused() || getUnusedLength() > 0)
+-            logError("unused data already available");
++            CONSOLE_BRIDGE_logError("unused data already available");
+         else {
+             char* unused;
+             int nUnused;
+diff -ura original/ros_comm-release-release-lunar-rosbag_storage-1.13.5-0/src/lz4_stream.cpp patched/ros_comm-release-release-lunar-rosbag_storage-1.13.5-0/src/lz4_stream.cpp
+--- original/ros_comm-release-release-lunar-rosbag_storage-1.13.5-0/src/lz4_stream.cpp	2017-11-09 21:53:05.000000000 +0100
++++ patched/ros_comm-release-release-lunar-rosbag_storage-1.13.5-0/src/lz4_stream.cpp	2018-01-04 21:16:08.004993287 +0100
+@@ -176,7 +176,7 @@
+     case ROSLZ4_OK: break;
+     case ROSLZ4_STREAM_END:
+         if (getUnused() || getUnusedLength() > 0)
+-            logError("unused data already available");
++            CONSOLE_BRIDGE_logError("unused data already available");
+         else {
+             setUnused(lz4s_.input_next);
+             setUnusedLength(lz4s_.input_left);
