@@ -11,8 +11,8 @@ conflicts=('jamin')
 provides=('jamin')
 options=('!libtool')
 install=${pkgname}.install
-source=()
-md5sums=()
+source=('typefix.patch')
+md5sums=('a0a18224447f431503471b3dfe1b715c')
 
 build() {
 	LDFLAGS="-ldl"
@@ -27,6 +27,7 @@ build() {
 
 
 	cd ${srcdir}/jamin
+	patch -p1 -i ../typefix.patch
 	./autogen.sh --prefix=/usr --libdir=/usr/lib
 	make
 }
