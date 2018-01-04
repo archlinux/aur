@@ -3,16 +3,21 @@
 _pkgname=macports-base
 pkgname=$_pkgname-git
 pkgver=2.4.0.beta1.r195.gb22cb0f0
-pkgrel=2
+pkgrel=3
 pkgdesc='The MacPorts command-line client'
 url='https://www.macports.org/'
 arch=('i686' 'x86_64')
 license=('BSD')
 # man is used for `port help`
 depends=('curl' 'man' 'nmtree' 'openssl' 'sqlite')
-# MacPorts comes with its own vendored tclsh, while a system interpreter
+# tcl: MacPorts comes with its own vendored tclsh, while a system interpreter
 # is still needed to build tcllib
-makedepends=('git' 'tcl')
+# rsync: ./configure checks for `rsync` in $PATH and saves the value in
+# macports_autoconf.tcl, so this should be in makedepends, too
+makedepends=('git' 'tcl' 'rsync')
+optdepends=(
+    'rsync: for syncing sources via rsync'
+)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/macports/$_pkgname")
