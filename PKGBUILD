@@ -29,8 +29,7 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_dir}"
-  mkdir -p build && cd build
+  cd "${srcdir}/${_dir}/build"
 
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
