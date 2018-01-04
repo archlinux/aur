@@ -1,5 +1,5 @@
 pkgname=raiblocks-git
-pkgver=9.0.r67.g6d354193
+pkgver=9.0.r78.gc7bf58d1
 pkgrel=1
 pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
@@ -36,6 +36,9 @@ sha256sums=('74b9bc75c3d5596603e54e2553ff69d367f384789c7565437a72a64dc22f0fdd'
 prepare() {
   cd "$srcdir/raiblocks"
 
+  #revert boost 1.66 commit until it makes it out of [testing] so we can use Arch's 1.65
+  git revert 1530785edf358de5ef50cb430656981e67686bac --no-edit --no-commit
+  
   git submodule init
 
   git config submodule.beast.url $srcdir/beast
@@ -45,7 +48,7 @@ prepare() {
   git config submodule.phc-winner-argon2.url $srcdir/phc-winner-argon2
 
   git submodule update --init --recursive
-  
+
   _flags=( "-D RAIBLOCKS_GUI=ON" )
   
   if grep -q avx2 /proc/cpuinfo; then
