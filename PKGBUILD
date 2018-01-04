@@ -4,15 +4,16 @@ pkgdesc="ROS - Controller for a differential drive mobile base."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-lunar-diff-drive-controller'
-pkgver='0.13.1'
+pkgver='0.13.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+makedepends=(${ros_makedepends[@]}
+  cmake
+  ros-build-tools)
 
 ros_depends=(ros-lunar-nav-msgs
   ros-lunar-realtime-tools
@@ -20,12 +21,6 @@ ros_depends=(ros-lunar-nav-msgs
   ros-lunar-tf
   ros-lunar-urdf)
 depends=(${ros_depends[@]})
-
-ros_checkdepends=(ros-lunar-std-srvs
-  ros-lunar-xacro
-  ros-lunar-rostest
-  ros-lunar-controller-manager)
-checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/diff_drive_controller/${pkgver}-${_pkgver_patch}
@@ -35,8 +30,10 @@ checkdepends=(${ros_checkdepends[@]})
 
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-lunar-diff_drive_controller-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/diff_drive_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d4da09ca15af82de3dd974a8ddfc3d8f03cc0847b530defa1172ab21291e3dea')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/diff_drive_controller/${pkgver}-${_pkgver_patch}.tar.gz" )
+sha256sums=('c2e24340c5d6f84e907f4ecbb10933e67707a6d160edbc2bc5f3b3638ea62e3c' )
+
+
 
 build() {
   # Use ROS environment variables
@@ -55,6 +52,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
+        -DCMAKE_PREFIX_PATH=/opt/ros/lunar \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
