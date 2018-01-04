@@ -3,7 +3,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=python-grpcio
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="HTTP/2-based RPC framework"
 arch=('any')
@@ -16,7 +16,7 @@ noextract=()
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/g/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}.tar.gz.sig")
-sha512sums=('9677172d34beb8d6ea35e0088e16cdaed9bc4d3bc65f9e34936d0f67ccc48fc9bae5cbc519bce4f1ac329f22ea824ef96ccf36325371ec4986fd9919ff3d8697'
+sha512sums=('7ee0f5eaa4909c2220a51d2c911275de1cf0b3d837d10240c386ee350c0f1a0cca9c045ad871ea16892d3aaec376e0a4e07fc6812638d78be44e187cfefc70e5'
             'SKIP')
 
 package_python-grpcio() {
