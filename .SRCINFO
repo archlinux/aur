@@ -1,6 +1,6 @@
 pkgbase = getcrypt
 	pkgdesc = Command line crypto tracker
-	pkgver = 1.0
+	pkgver = 1.001
 	pkgrel = 1
 	url = https://github.com/aokellermann/getcrypt
 	arch = x86_64
