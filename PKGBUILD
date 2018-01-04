@@ -1,9 +1,10 @@
-# Maintainer: Miguel Revilla <yo at  miguelrevilla dot com>
+# Maintainer: Daniel Henry <d at hackr dot pl>
+# Contributor: Miguel Revilla <yo at  miguelrevilla dot com>
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=megasync
-pkgver=3.1.4.0
-pkgrel=2
+pkgver=3.5.3.0
+pkgrel=1
 pkgdesc="Sync your files to your Mega account. Official app"
 arch=('i686' 'x86_64')
 url="https://github.com/meganz/megasync"
@@ -11,16 +12,12 @@ license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
 depends=('curl' 'c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'qt5-base' 'libuv' 'openssl')
 makedepends=('git' 'qt5-tools' 'swig' 'doxygen')
 optdepends=('sni-qt: fix systray issue on KDE and LXQt')
-source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
-		"ucontext.patch")
-md5sums=('SKIP'
-         '269c3d2ff3e911774c2cc8e6de980cb2')
+source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux")
+md5sums=('SKIP')
 
 prepare(){
     cd "${srcdir}/MEGAsync"
     git submodule update --init --recursive
-
-	patch -p1 < "${srcdir}/ucontext.patch"
 }
 
 build(){
