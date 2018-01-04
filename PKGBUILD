@@ -2,7 +2,7 @@
 # Maintainer: alyst <astukalov@gmail.com>
 
 pkgname=gnome-shell-extension-shell-volume-mixer-git
-pkgver=0.11.0.r0.ga615088
+pkgver=0.14.1.r1.gf3f7075
 _pkgver=`echo "$pkgver" | sed -e s/\\\\.r.\\\\+//`
 pkgrel=1
 pkgdesc="PulseAudio mixer providing per-device and per-program volume control"
