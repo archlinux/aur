@@ -2,7 +2,7 @@
 
 pkgname=gool-git
 _pkgname=gool
-pkgver=0.9.6.r0.gce66107
+pkgver=1.0.1.r0.ge38c3e7
 pkgrel=1
 pkgdesc='Go - Online TV Recorder on Linux'
 arch=('x86_64' 'i686')
@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd "$_pkgname"
   export GOPATH=$(pwd)
-  make
+  make VERSION=$pkgver
 }
 
 package() {
