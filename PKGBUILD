@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Zok <tomasz.zok [at] gmail.com>
 pkgname=xplor-nih
-pkgver=2.45
+pkgver=2.47
 pkgrel=1
 pkgdesc="XPLOR-NIH is a structure determination program which builds on the X-PLOR program, including additional tools developed at the NIH"
 arch=('x86_64')
@@ -10,8 +10,8 @@ install=${pkgname}.install
 depends=(ncurses5-compat-libs)
 source=('LICENSE'
         "${pkgname}.md5")
-md5sums=('de4f34dc4d9738669b57850f7ef77a71'
-         '7e9a3ff2e1f59578fd266241482499ee')
+md5sums=('SKIP'
+         'SKIP')
 
 prepare() {
     if [[ ! -r "../${pkgname}-${pkgver}-db.tar.gz" || ! -r "../${pkgname}-${pkgver}-Linux_x86_64.tar.gz" ]]; then
@@ -21,7 +21,7 @@ prepare() {
     if ! md5sum --quiet --check ${pkgname}.md5; then
         echo "Invalid checksum!"
         return 1
-    fi    
+    fi
 
     bsdtar xfz ../${pkgname}-${pkgver}-db.tar.gz
     bsdtar xfz ../${pkgname}-${pkgver}-Linux_x86_64.tar.gz

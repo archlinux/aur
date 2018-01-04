@@ -1,6 +1,6 @@
 pkgbase = xplor-nih
 	pkgdesc = XPLOR-NIH is a structure determination program which builds on the X-PLOR program, including additional tools developed at the NIH
-	pkgver = 2.45
+	pkgver = 2.47
 	pkgrel = 1
 	url = https://nmr.cit.nih.gov/xplor-nih/
 	install = xplor-nih.install
@@ -9,8 +9,8 @@ pkgbase = xplor-nih
 	depends = ncurses5-compat-libs
 	source = LICENSE
 	source = xplor-nih.md5
-	md5sums = de4f34dc4d9738669b57850f7ef77a71
-	md5sums = 7e9a3ff2e1f59578fd266241482499ee
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = xplor-nih
 
