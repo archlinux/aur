@@ -1,0 +1,34 @@
+pkgbase = mathematica-09
+	pkgdesc = A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing, version 9.0.1.
+	pkgver = 9.0.1
+	pkgrel = 1
+	url = http://www.wolfram.com/mathematica/
+	install = mathematica-09.install
+	arch = i686
+	arch = x86_64
+	license = proprietary
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = libx11
+	depends = libxcursor
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxmu
+	depends = libxrender
+	depends = ncurses
+	optdepends = alsa-lib
+	optdepends = cuda
+	optdepends = libxrandr
+	optdepends = libxtst
+	optdepends = r
+	optdepends = unixodbc
+	options = !strip
+	source = file://Mathematica_9.0.1_LINUX.sh
+	md5sums = 7fcbc4d1488757b10ef07740ac30a580
+
+pkgname = mathematica-09
+
