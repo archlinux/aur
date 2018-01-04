@@ -3,7 +3,7 @@
 
 _srcname=leap_pycommon
 pkgname=python2-$_srcname
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Common utilities for leap python modules.'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
 #  'python2-pep8'
 #)
 source=("https://github.com/leapcode/$_srcname/archive/$pkgver.tar.gz")
-sha256sums=('ca236cacf1d08d023a72552c590988b36bec79f4f8588fa9c4f50192777ba194')
+sha256sums=('fd1be902752d7fd62fc7a125493e0845f0945d65d71baf60e9b4af7d36958acd')
 
 build() {
   cd "$srcdir/$_srcname-$pkgver"

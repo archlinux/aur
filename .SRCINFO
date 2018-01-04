@@ -1,6 +1,6 @@
 pkgbase = python2-leap_pycommon
 	pkgdesc = Common utilities for leap python modules.
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://bitmask.net/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python2-leap_pycommon
 	depends = python2-pyzmq
 	depends = python2-txzmq
 	depends = python2-dirspec
-	source = https://github.com/leapcode/leap_pycommon/archive/0.6.2.tar.gz
-	sha256sums = ca236cacf1d08d023a72552c590988b36bec79f4f8588fa9c4f50192777ba194
+	source = https://github.com/leapcode/leap_pycommon/archive/0.6.3.tar.gz
+	sha256sums = fd1be902752d7fd62fc7a125493e0845f0945d65d71baf60e9b4af7d36958acd
 
 pkgname = python2-leap_pycommon
 
