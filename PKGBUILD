@@ -4,8 +4,8 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=3.4.r86991.g16efcfe413
-pkgrel=2
+pkgver=3.5.r89688.g1b283c4a0d
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -13,8 +13,8 @@ license=('GPL3')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
          'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
-         'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex'
-         'v4l-utils' 'xz' 'zlib'
+         'libx11' 'libxcb' 'libxml2' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2'
+         'speex' 'v4l-utils' 'xz' 'zlib'
          'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
          'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so'
          'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so')
@@ -79,6 +79,7 @@ build() {
         --enable-libx264 \
         --enable-libx265 \
         --enable-libxcb \
+        --enable-libxml2 \
         --enable-libxvid \
         --enable-shared \
         --enable-version3
