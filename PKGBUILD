@@ -34,6 +34,18 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/$_dir/build"
+
+  cmake .. -DCMAKE_BUILD_TYPE="Release" \
+           -DCMAKE_INSTALL_PREFIX="/usr" \
+           -DCMAKE_INSTALL_LIBDIR="lib" \
+           -DENABLE_TESTS_COMPILATION:BOOL=True
+
+  make
+  make test
+}
+
 package() {
   cd "$srcdir/$_dir/build"
   make DESTDIR="$pkgdir/" install
