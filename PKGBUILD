@@ -18,7 +18,7 @@ optdepends=("deluge"
 makedepends=('git')
 install=$pkgname.install
 source=("git://github.com/${_gitauthor}/${_gitname}.git" "watcher3.service" "watcher3.install")
-md5sums=('SKIP' 'dd12df67e981c96571be99f5f22440d9' 'd1d656af2c4b35df54b320eeb0822dff')
+md5sums=('SKIP' 'dd12df67e981c96571be99f5f22440d9' '7eb1be1e1a08716e11d18c3ea7dd5e54')
 
 pkgver() {
   cd ${_gitname}

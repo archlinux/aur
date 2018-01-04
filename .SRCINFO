@@ -18,7 +18,7 @@ pkgbase = watcher3
 	source = watcher3.install
 	md5sums = SKIP
 	md5sums = dd12df67e981c96571be99f5f22440d9
-	md5sums = d1d656af2c4b35df54b320eeb0822dff
+	md5sums = 7eb1be1e1a08716e11d18c3ea7dd5e54
 
 pkgname = watcher3
 
