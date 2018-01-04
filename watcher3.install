@@ -1,0 +1,15 @@
+WATCHER_USER="watcher"
+WATCHER_GROUP="watcher"
+WATCHER_DIR="/opt/watcher3"
+
+post_install() {
+    getent group ${WATCHER_GROUP} &> /dev/null || groupadd -r ${WATCHER_GROUP} &> /dev/null
+    getent passwd ${WATCHER_USER} &> /dev/null || useradd -r -g ${WATCHER_GROUP} -d ${WATCHER_DIR} -s /usr/bin/nologin ${WATCHER_USER} &> /dev/null
+    chown -R ${WATCHER_USER}:${WATCHER_GROUP} ${WATCHER_DIR}
+    echo "  >> If you want a custom user or path for Watcher3, remember to edit the service file as well."
+}
+
+post_remove() {
+    userdel ${WATCHER_USER} &> /dev/null
+    groupdel ${WATCHER_GROUP} &> /dev/null || /bin/true
+}

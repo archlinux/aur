@@ -3,9 +3,13 @@ Description=Watcher server, get movies!
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python /opt/watcher3/watcher.py
-User=root
-Group=root
+User=watcher
+Group=watcher
+
+GuessMainPID=no
+Type=forking
+ExecStart=/usr/bin/python /opt/watcher3/watcher.py -d
+Restart=no
 
 [Install]
 WantedBy=multi-user.target

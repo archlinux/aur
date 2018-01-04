@@ -3,8 +3,8 @@
 pkgname=watcher3
 _gitname=Watcher3
 _gitauthor=nosmokingbandit
-pkgver=738.913dd83
-pkgrel=1
+pkgver=744.c28d755
+pkgrel=2
 pkgdesc="Automated movie NZB & Torrent searcher and snatcher"
 arch=('any')
 url="https://github.com/nosmokingbandit/${_gitname}"
@@ -16,8 +16,9 @@ optdepends=("deluge"
             "sabnzbd"
             "transmission-cli")
 makedepends=('git')
-source=("git://github.com/${_gitauthor}/${_gitname}.git" "watcher3.service")
-md5sums=('SKIP' '5e5d95d5075cbcccd3a09f9f39dffaa2')
+install=$pkgname.install
+source=("git://github.com/${_gitauthor}/${_gitname}.git" "watcher3.service" "watcher3.install")
+md5sums=('SKIP' 'dd12df67e981c96571be99f5f22440d9' 'd1d656af2c4b35df54b320eeb0822dff')
 
 pkgver() {
   cd ${_gitname}
