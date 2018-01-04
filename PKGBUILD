@@ -18,7 +18,9 @@ ros_makedepends=(ros-kinetic-rostest
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   sdl_image
-  yaml-cpp)
+  yaml-cpp
+  bullet
+)
 
 ros_depends=(ros-kinetic-rostest
   ros-kinetic-tf

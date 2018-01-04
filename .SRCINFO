@@ -14,6 +14,7 @@ pkgbase = ros-kinetic-map-server
 	makedepends = ros-kinetic-catkin
 	makedepends = sdl_image
 	makedepends = yaml-cpp
+	makedepends = bullet
 	depends = ros-kinetic-rostest
 	depends = ros-kinetic-tf
 	depends = ros-kinetic-nav-msgs
