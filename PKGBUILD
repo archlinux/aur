@@ -1,11 +1,8 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
+# Arch User repository PKGBUILD file
+# Builds the fortran part of the shtools library
 # Maintainer: Roelof Rietbroek <roelof@wobbly.earth>
 pkgname=shtools-fortran
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Tools for working with spherical harmonics"
 arch=('any')
@@ -14,30 +11,33 @@ license=('BSD 3-clause')
 groups=()
 depends=("fftw" "blas" "lapack")
 makedepends=("gcc-fortran")
-source=("ChangeF90stops.patch" "https://github.com/SHTOOLS/SHTOOLS/archive/v$pkgver.tar.gz")
+source=("https://github.com/SHTOOLS/SHTOOLS/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=('98fce6f29ee3e89acaabdfc08fa391f3'
-         'c314c0da11292953bf2bb120601b208a')
+md5sums=('3923b9980a5d5b0795996af44a97ea3b')
 validpgpkeys=()
 
 prepare() {
-        cd ${srcdir}/SHTOOLS-${pkgver}/
-        patch -p1 -i "$srcdir/ChangeF90stops.patch"
+    _startdir=${PWD}
+   # cd ${srcdir}/SHTOOLS-${pkgver}/
 }
 
 build() { 
     cd ${srcdir}/SHTOOLS-${pkgver}/
     make fortran 
     make fortran-mp 
+    cd ${_startdir}
 }
 
 check() {
     cd ${srcdir}/SHTOOLS-${pkgver}/
-    make fortran-tests 
-    make fortran-tests-mp
+    make run-fortran-tests-no-timing
+    cd ${_startdir}
+
 }
 
 package() {
     cd ${srcdir}/SHTOOLS-${pkgver}/
-	make DESTDIR="$pkgdir/" PREFIX=usr/ install-fortran
+    make DESTDIR="$pkgdir/" PREFIX=usr/ install-fortran
+    cd ${_startdir}
 }
+
