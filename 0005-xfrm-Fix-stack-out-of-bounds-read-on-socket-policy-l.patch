@@ -1,10 +1,10 @@
-From 1c3a5e72b70bcfaf342075a3fa5fcbdf99302a3f Mon Sep 17 00:00:00 2001
-Message-Id: <1c3a5e72b70bcfaf342075a3fa5fcbdf99302a3f.1514245012.git.jan.steffens@gmail.com>
-In-Reply-To: <b0bfa7c33cead5dd87267cfd4c29fda47dc1adc4.1514245012.git.jan.steffens@gmail.com>
-References: <b0bfa7c33cead5dd87267cfd4c29fda47dc1adc4.1514245012.git.jan.steffens@gmail.com>
+From 3721d64246982f91a5bf863fc17ac60ff722e0c4 Mon Sep 17 00:00:00 2001
+Message-Id: <3721d64246982f91a5bf863fc17ac60ff722e0c4.1514959852.git.jan.steffens@gmail.com>
+In-Reply-To: <fb89d912d5f7289d3a922c77b671e36e1c740f5e.1514959852.git.jan.steffens@gmail.com>
+References: <fb89d912d5f7289d3a922c77b671e36e1c740f5e.1514959852.git.jan.steffens@gmail.com>
 From: Steffen Klassert <steffen.klassert@secunet.com>
 Date: Fri, 22 Dec 2017 10:44:57 +0100
-Subject: [PATCH 2/3] xfrm: Fix stack-out-of-bounds read on socket policy
+Subject: [PATCH 5/7] xfrm: Fix stack-out-of-bounds read on socket policy
  lookup.
 
 When we do tunnel or beet mode, we pass saddr and daddr from the
@@ -24,7 +24,7 @@ Signed-off-by: Steffen Klassert <steffen.klassert@secunet.com>
  1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/net/xfrm/xfrm_policy.c b/net/xfrm/xfrm_policy.c
-index a2e531bf4f976308..c79ed3bed5d4dc2f 100644
+index 6bc16bb61b5533ef..50c5f46b5cca942e 100644
 --- a/net/xfrm/xfrm_policy.c
 +++ b/net/xfrm/xfrm_policy.c
 @@ -1169,9 +1169,15 @@ static struct xfrm_policy *xfrm_sk_policy_lookup(const struct sock *sk, int dir,
