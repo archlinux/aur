@@ -8,8 +8,8 @@ else
 _arch="x86"
 fi
 
-_major="11.0.0"
-_minor=90668
+_major="11.0.2"
+_minor=90813
 
 pkgname="komodo-ide"
 _bigname="Komodo-IDE"
@@ -30,8 +30,8 @@ source_x86_64=("${_srcbase}/${_major}/${_bigname}-${_major}-${_minor}-linux-x86_
 
 sha256sums=('beb35ae529bffd998784bc1e51468bf5bf64e5d8f84e3eb2c4af07c8807b101a'
             '7f6efb3d3b8959b9a85aa7056094932686b3aea60880a06a559cf12e1f2e6231')
-sha256sums_i686=('f263e4a2a85d8933a33281807b5c01c4b1724f39ca39edd31842d0ef02e7dcbe')
-sha256sums_x86_64=('3496449a7588dd39bf9a211c11cfe67e6ef6038e06513ad973d567a738ba1d2c')
+sha256sums_i686=('638e3866ec3c0c3114f261be8a607df5b1482a8519bd266e0d2a2cc0ec80c1c2')
+sha256sums_x86_64=('218c5f05a80d8bb9049ead32f4480c2794e5257dc8a5846ea775155e9319f3a3')
 
 prepare() {
   cd ${srcdir}/${_bigname}-${_major}-${_minor}-linux-${_arch}
@@ -59,5 +59,10 @@ package() {
   sed -i "s#${pkgdir}##" ${_dfile}
   install -Dm644 ${_dfile} ${pkgdir}/usr/share/applications/${pkgname}.desktop
   install -d ${pkgdir}/usr/bin
-  ln -sf /opt/${pkgname}/bin/komodo ${pkgdir}/usr/bin/komodo
+  if [ -e ${pkgdir}/usr/bin/komodo ]
+  then
+    echo "${pkgdir}/usr/bin/komodo already exists, skipping symlink"
+  else
+    ln -sf /opt/${pkgname}/bin/komodo ${pkgdir}/usr/bin/komodo
+  fi
 }
