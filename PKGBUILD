@@ -1,7 +1,7 @@
 # Maintainer: David Scholl <djscholl at gmail dot com>
 pkgname=sgi-fonts
 pkgver=1.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Bitmapped X11 screen fonts from Silicon Graphics, Inc."
 arch=('any')
 url="http://oss.sgi.com/projects/sgi_propack/"
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('fontconfig' 'xorg-font-utils' 'xorg-fonts-encodings')
 makedepends=('imake')
 install=sgi-fonts.install
-source=(http://download.opensuse.org/repositories/openSUSE:/13.2/standard/src/sgi-bitmap-fonts-1.0-943.1.5.src.rpm sgi-fonts.patch)
-md5sums=('2995971cd23f914df9f745f1117ff5fb' 'a7f1df8c2d785c859ae60eb1c5742407')
+source=(http://ftp.gwdg.de/pub/opensuse/source/distribution/leap/42.3/repo/oss/suse/src/sgi-bitmap-fonts-1.0-949.1.src.rpm sgi-fonts.patch)
+md5sums=('eb7b45c4217e141987c4eba370f54a82' 'a7f1df8c2d785c859ae60eb1c5742407')
 
 build() {
   cd $srcdir
