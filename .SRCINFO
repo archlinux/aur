@@ -1,0 +1,20 @@
+pkgbase = libu2f-server-git
+	pkgdesc = Yubico Universal 2nd Factor (U2F) Server C Library - git checkout
+	pkgver = 1.0.1.r50.g7485f4e
+	pkgrel = 1
+	url = https://github.com/Yubico/libu2f-server
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = check
+	makedepends = git
+	makedepends = gengetopt
+	depends = openssl
+	depends = json-c
+	provides = libu2f-server
+	conflicts = libu2f-server
+	source = git://github.com/Yubico/libu2f-server.git
+	sha256sums = SKIP
+
+pkgname = libu2f-server-git
+
