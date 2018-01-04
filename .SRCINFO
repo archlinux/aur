@@ -1,0 +1,16 @@
+pkgbase = meson-cross-aarch64-linux-gnu
+	pkgdesc = Meson cross file for aarch64
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/dcbaker/archlinux-meson-cross-aarch64-linux-gnu
+	arch = any
+	license = APL2
+	depends = meson
+	depends = aarch64-linux-gnu-binutils
+	depends = aarch64-linux-gnu-gcc
+	depends = aarch64-linux-gnu-glibc
+	source = https://github.com/dcbaker/archlinux-meson-cross-aarch64-linux-gnu/archive/v2.tar.gz
+	sha256sums = b22446cdde4fcd7e52953ff1ef8303164efc3fb48486eed46b764eb57ed65d4d
+
+pkgname = meson-cross-aarch64-linux-gnu
+
