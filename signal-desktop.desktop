@@ -4,6 +4,6 @@ Name=Signal Private Messenger
 GenericName=Messenger
 Comment=Private messaging from your desktop
 Icon=signal-desktop
-Exec=signal-desktop
+Exec=signal-desktop --use-tray-icon
 Categories=Network;Messenger;
 StartupNotify=true
