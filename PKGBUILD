@@ -2,7 +2,7 @@
 
 pkgname=gool-git
 _pkgname=gool
-pkgver=0.9.5.r0.gd42032d
+pkgver=0.9.6.r0.gce66107
 pkgrel=1
 pkgdesc='Go - Online TV Recorder on Linux'
 arch=('x86_64' 'i686')
