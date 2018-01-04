@@ -4,15 +4,16 @@ pkgdesc="ROS - Controller to publish joint state."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-lunar-joint-state-controller'
-pkgver='0.13.1'
+pkgver='0.13.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+makedepends=(${ros_makedepends[@]}
+  cmake
+  ros-build-tools)
 
 ros_depends=(ros-lunar-roscpp
   ros-lunar-pluginlib
@@ -22,9 +23,6 @@ ros_depends=(ros-lunar-roscpp
   ros-lunar-sensor-msgs)
 depends=(${ros_depends[@]})
 
-ros_checkdepends=(ros-lunar-rostest)
-checkdepends=(${ros_checkdepends[@]})
-
 # Git version (e.g. for debugging)
 # _tag=release/lunar/joint_state_controller/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -33,8 +31,10 @@ checkdepends=(${ros_checkdepends[@]})
 
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-lunar-joint_state_controller-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/joint_state_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d6210a084bee08efa9173e5fce7d959bd66dba5e11a90bd7e93e711aecf4b7a1')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/joint_state_controller/${pkgver}-${_pkgver_patch}.tar.gz" )
+sha256sums=('78e8e080ab6959ff1ff9333fe5d61a7ed5ef6686920c902b56c2b920ea238dea' )
+
+
 
 build() {
   # Use ROS environment variables
@@ -53,6 +53,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
+        -DCMAKE_PREFIX_PATH=/opt/ros/lunar \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
