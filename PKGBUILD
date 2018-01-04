@@ -1,8 +1,9 @@
-# Maintainer: Glennie Vignarajah <glennie@glennie.fr>
+# Maintainer: Aetf <aetf at unlimitedcodeworks dot xyz>
+# Contributor: Glennie Vignarajah <glennie@glennie.fr>
 
 pkgname=python-robobrowser
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="RoboBrowser is a simple, Pythonic library for browsing the web without a standalone web browser."
 arch=('any')
 url="https://github.com/jmcarp/robobrowser"
@@ -10,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-pip' 'python-werkzeug' 'python-six')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
-source=("http://pypi.python.org/packages/source/r/robobrowser/robobrowser-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/r/robobrowser/robobrowser-$pkgver.tar.gz")
 md5sums=('333ad401f4a0b320fa873c78bc5fb64d')
 
 
