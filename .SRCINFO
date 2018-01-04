@@ -1,6 +1,6 @@
 pkgbase = kallisto
 	pkgdesc = Quantify abundances of transcripts from RNA-Seq data
-	pkgver = 0.43.0
+	pkgver = 0.43.1
 	pkgrel = 1
 	url = http://pachterlab.github.io/kallisto/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = kallisto
 	makedepends = cmake
 	depends = hdf5
 	depends = zlib
-	source = https://github.com/pachterlab/kallisto/archive/v0.43.0.tar.gz
-	md5sums = 6f28562d3635bf3a6f6d5dfa3ab244f1
+	source = kallisto-0.43.1.tar.gz::https://github.com/pachterlab/kallisto/archive/v0.43.1.tar.gz
+	md5sums = 54fc9b70ca44e4633f02c962cbc59737
 
 pkgname = kallisto
 
