@@ -3,7 +3,7 @@
 
 pkgname='parity-stable'
 _upstreamname='parity'
-pkgver=1.7.10
+pkgver=1.7.11
 pkgrel=1
 pkgdesc='Fast, light, robust Ethereum implementation—stable version.'
 arch=('x86_64')
