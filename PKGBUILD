@@ -1,18 +1,18 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('one-more-cheese')
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Arcade-puzzle game"
 arch=('i686' 'x86_64')
 url="http://nwg.pl/cheese"
 license=('freeware')
 depends=('python3' 'python-pygame' 'python-requests')
-source=("http://nwg.pl/mice/download/one-more-cheese-0.1.0.tar.gz"
+source=("http://nwg.pl/mice/download/one-more-cheese-0.1.1.tar.gz"
 "http://nwg.pl/mice/download/one-more-cheese"
 "http://nwg.pl/mice/download/one-more-cheese.desktop"
 "http://nwg.pl/mice/download/one-more-cheese.png")
 
-md5sums=('b7738c24db1da0516fc694a67ec3fd37'
+md5sums=('6792c01338a590316376c45705f74f94'
          'af54e54383a7bdb5fa13ffa1c023f831'
          '8c44865338673c7a9ff646d23af1b172'
          '15b45413c215260baf7c462cbbdde183')
@@ -29,5 +29,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
-
