@@ -1,15 +1,15 @@
 # Maintainer: Tomasz Zok <tomasz.zok [at] gmail.com>
 pkgname=x3dna
 _pkgver=2.3
-pkgver=${_pkgver}_20170624
+pkgver=${_pkgver}_20171226
 pkgrel=1
 pkgdesc="3DNA is a versatile, integrated software system for the analysis, rebuilding and visualization of three-dimensional nucleic-acid-containing structures. Please see: http://forum.x3dna.org/site-announcements/download-instructions/"
 arch=('x86_64')
-url="http://x3dna.org/"
+url="http://forum.x3dna.org/downloads/3dna-download/"
 license=('custom')
 depends=('ruby')
 source=("${pkgname}.md5")
-md5sums=('623604f828f7eeeb3d4d865291cb7cfd')
+md5sums=('SKIP')
 
 package() {
     archive=${pkgname}-v${_pkgver}-linux-64bit.tar.gz
