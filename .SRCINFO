@@ -1,7 +1,7 @@
 pkgbase = tilix-themes-git
 	pkgdesc = Tilix themes
 	pkgver = r50.9a60818
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/storm119/Tilix-Themes
 	arch = any
 	license = unknown
