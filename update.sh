@@ -19,7 +19,6 @@ oldpkgver=`grep -oP '(?<=pkgver = ).*' .SRCINFO`
 
 verlt $oldpkgver $pkgver
 if [ $? -eq 0 ]; then
-
     wget $downloadLink
     wget $checksumLink
     
