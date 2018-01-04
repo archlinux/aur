@@ -1,7 +1,7 @@
-# Maintainer: Oliver Mangold <o dot mangold at gmail dot com>
+# Maintainer: solaraquarion <shlomochoina@gmail.com>
 
 pkgname=domterm-git
-pkgver=0.72.r278.g4464458
+pkgver=0.72.r295.g014f5c5
 pkgrel=1
 pkgdesc="Terminal emulator capable of display html and images from command output"
 arch=('any')
