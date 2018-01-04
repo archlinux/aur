@@ -24,7 +24,8 @@ ros_makedepends=(ros-kinetic-tf2-ros
   ros-kinetic-catkin
   ros-kinetic-tf2-geometry-msgs
   ros-kinetic-nav-msgs
-  ros-kinetic-tf2)
+  ros-kinetic-tf2
+  ros-kinetic-roslint)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3
