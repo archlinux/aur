@@ -7,7 +7,7 @@ pkgdesc="Fast SSH server and open proxy scanner."
 arch=(i686)
 depends=('libdnet' 'libevent' 'openssl')
 url="http://www.monkey.org/~provos/scanssh/"
-license="GPL"
+license=("GPL")
 arch=(i686 x86_64)
 
 source=(http://www.monkey.org/~provos/$pkgname-$pkgver.tar.gz)
