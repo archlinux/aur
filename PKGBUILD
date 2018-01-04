@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Tom van der Lee <t0m.vd.l33@gmail.com>
 
 pkgname=bir
