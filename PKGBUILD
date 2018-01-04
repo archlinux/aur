@@ -17,7 +17,7 @@ md5sums=('fb511618941cf49f89e0f7ebe34901e7')
 
 _dir="ignitionrobotics-ign-transport-242b31c2579b"
 
-prepare() {
+build() {
   cd "${srcdir}/${_dir}"
   mkdir -p build && cd build
 
@@ -25,11 +25,19 @@ prepare() {
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DBUILD_TESTING=Off
+  make
 }
 
-build() {
-  cd "${srcdir}/${_dir}/build"
+check() {
+  cd "${srcdir}/${_dir}"
+  mkdir -p build && cd build
+
+  cmake .. -DCMAKE_BUILD_TYPE="Release" \
+           -DCMAKE_INSTALL_PREFIX="/usr" \
+           -DCMAKE_INSTALL_LIBDIR="lib" \
+           -DBUILD_TESTING=On
   make
+  make test
 }
 
 package() {
