@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=mkosi-git
-pkgver=r221.9591671
+pkgver=3.r90.gd927f65
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -31,7 +31,15 @@ md5sums=('SKIP')
 pkgver() {
   cd 'mkosi'
 
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed '
+    # v3-90-gd927f65 (tag - number of commits - g(it)hash)
+    s/^v//
+    # 3-90-gd927f65
+    s/\([^-]*-g\)/r\1/
+    # 3-r90-gd927f65
+    s/-/./g
+    # 3.r90.gd927f65
+'
 }
 
 package() {
