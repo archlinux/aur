@@ -1,7 +1,7 @@
 # Maintainer: Daniel Maslowski <info at orangecms dot org>
 pkgname=neopg
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 # dependency versions
 _googletest_ver=1.8.0
 _pegtl_ver=2.3.0
@@ -12,7 +12,7 @@ url="https://neopg.io"
 license=('BSD')
 depends=('boost' 'botan-with-compression' 'curl' 'gettext' 'gnutls' 'libusb' 'sqlite')
 makedepends=('cmake')
-provides=('neopg')
+conflicts=('neopg-git')
 source=(
   "https://github.com/das-labor/${pkgname}/archive/v${pkgver}.tar.gz"
   "https://github.com/google/googletest/archive/release-${_googletest_ver}.tar.gz"
@@ -30,7 +30,7 @@ prepare() {
   rmdir 3rdparty/pegtl && mv "../PEGTL-${_pegtl_ver}" 3rdparty/pegtl
   rmdir 3rdparty/rang && mv "../rang-${_rang_ver}" 3rdparty/rang
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-  cmake -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
 }
 
 build() {
@@ -41,6 +41,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
+  install -Dm 755 src/neopg "${pkgdir}/usr/bin/neopg"
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm 644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
