@@ -1,0 +1,19 @@
+[Desktop Entry]
+Version=1.0
+Name=Thunderbird Nightly
+Comment=Mail & News Reader
+GenericName=Mail Client & News Reader
+Name[it]=Thunderbird Nightly
+Comment[it]=Lettore di email e notizie
+GenericName[it]=Client email e lettore di notizie
+Exec=thunderbird-nightly-it %u
+TryExec=thunderbird-nightly-it
+Icon=thunderbird-nightly-it
+Terminal=false
+Type=Application
+Categories=Network;Email;
+MimeType=message/rfc822;x-scheme-handler/mailto;
+StartupNotify=true
+Categories=Network;
+Keywords=email;mail;e-mail;news;notizie;rss;
+Name[it_IT]=thunderbird-nightly-it

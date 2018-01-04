@@ -1,6 +1,8 @@
 post_install() {
-    update-desktop-database -q
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    echo ""
+    echo "Nota: il file binario si chiama 'thunderbird-nightly-it'"
+    echo ""
+    post_upgrade
 }
 
 post_upgrade() {

@@ -1,8 +1,8 @@
 pkgbase = thunderbird-nightly-it
-	pkgdesc = Standalone Mail/News reader from Mozilla — Localized Nightly build
-	pkgver = 44.0a1.20150814
+	pkgdesc = Standalone Mail/News reader - Nightly build (it)
+	pkgver = 59.0a1.20171126
 	pkgrel = 1
-	url = http://www.mozilla.org/thunderbird/
+	url = http://www.mozilla.org/it/thunderbird
 	install = thunderbird-nightly-it.install
 	arch = i686
 	arch = x86_64
@@ -31,12 +31,19 @@ pkgbase = thunderbird-nightly-it
 	depends = sqlite
 	depends = startup-notification
 	optdepends = libcanberra: for sound support
-	source = http://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/thunderbird-44.0a1.it.linux-.tar.bz2
-	source = thunderbird-nightly.desktop
+	provides = thunderbird=59.0a1
+	source = thunderbird-nightly-it.desktop
 	source = vendor.js
-	sha512sums = 
-	sha512sums = 947bb55980dccaa59e13fb69deb02325cbcbb7d7a8685f143710cb31a9fae1da1d81c18fa764d06d50e60464e3c77d781004ab3edf06d68c73a0068435399adf
-	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
+	sha512sums = 869509c2051987fe3f16ba4bbd016c3f8caf3c0204b52f90d33b9f25ed537d78fd208ce8e3d17f40adcf5dbec668176040ca5c803867cb250d209f8c3b78c50d
+	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
+	source_i686 = https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/thunderbird-59.0a1.it.linux-i686.tar.bz2
+	source_i686 = https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central/thunderbird-59.0a1.en-US.linux-i686.txt
+	sha512sums_i686 = b625b4797ceceb55e0c8392aa7072737d7f307830280285630e5a9a77d1146f4a0cfc67a7177aa6c019586873fb6705f8ee0a1876966bfc238c83a2d884ae1f0
+	sha512sums_i686 = 7251a5cd92a83616aa1fc43f7c105dae5252f5e6e41b7efa5c5eea091016ef1fc3e47a4987c275336328c643d111f90204dde21e8eb7aeff2e6cba336f0b7efa
+	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/thunderbird-59.0a1.it.linux-x86_64.tar.bz2
+	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central/thunderbird-59.0a1.en-US.linux-x86_64.txt
+	sha512sums_x86_64 = b2f8bc12ce952a2f5a14ad7682433568330d60767180069dec7f6a4f781e1e8e261096cebef7411486f9d9d5ce34d02c910b77679b87f6658ef2382ebe28e90c
+	sha512sums_x86_64 = 7251a5cd92a83616aa1fc43f7c105dae5252f5e6e41b7efa5c5eea091016ef1fc3e47a4987c275336328c643d111f90204dde21e8eb7aeff2e6cba336f0b7efa
 
 pkgname = thunderbird-nightly-it
 
