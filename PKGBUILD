@@ -3,7 +3,7 @@
 
 pkgname=('python-spiceypy')
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python wrapper for the NAIF C SPICE Toolkit (N66) written using ctypes."
 arch=('any')
 url="https://github.com/AndrewAnnex/SpiceyPy"
@@ -19,12 +19,14 @@ build() {
 }
 
 package() {
-  depends=('python-six>=1.9.0' 'python-numpy>=1.8.0' 'python-certifi>=2017.1.23')
+  depends=('python-six>=1.9.0' 'python-numpy>=1.8.0')
   optdepends=('python-pytest>=2.9.0: testing')
 
   cd SpiceyPy-$pkgver
 
   python setup.py install --skip-build --root="$pkgdir" --optimize=1
+
+  mv -v $srcdir/SpiceyPy-$pkgver/spiceypy/utils/spice.so $pkgdir/usr/lib/python3*/site-packages/spiceypy/utils/
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
