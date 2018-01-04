@@ -1,12 +1,16 @@
 pkgbase = lead-git
 	pkgdesc = lead provides hot-corners for your desktop, notably for openbox, awesome, i3 and other window managers.
 	pkgver = r23.958fdca
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/mlde/lead
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = clang
+	makedepends = gcc
+	makedepends = make
+	makedepends = libqtxdg
 	depends = qt5-base
 	source = lead-git::git+https://github.com/mlde/lead.git
 	md5sums = SKIP
