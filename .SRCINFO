@@ -1,17 +1,15 @@
 pkgbase = python-structlog
-	pkgdesc = Structured logging for Python
-	pkgver = 16.1.0
+	pkgdesc = Structured Logging for Python
+	pkgver = 17.2.0
 	pkgrel = 1
-	url = http://www.structlog.org
+	url = http://www.structlog.org/
 	arch = any
 	license = Apache
 	license = MIT
-	makedepends = git
 	makedepends = python-setuptools
 	depends = python
-	options = !emptydirs
-	source = git+https://github.com/quomoow/python-structlog.git
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/s/structlog/structlog-17.2.0.tar.gz
+	md5sums = ef9e2f7c72e7f2aa95969b4919930e97
 
 pkgname = python-structlog
 

@@ -1,29 +1,27 @@
-# Maintainer: DATSD <DAStudio *dot* 71e6fd52 *at* gmail *dot* com>
-# Contributor: quomoow <quomoow@gmail.com>
-
-pkgname=python-structlog
-pkgver=16.1.0
+# Maintainer: 71e6fd52 <DAStudio.71e6fd52@gmail.com>
+pkgbase=('python-structlog')
+pkgname=('python-structlog')
+_module='structlog'
+pkgver='17.2.0'
 pkgrel=1
-pkgdesc="Structured logging for Python"
-arch=('any')
+pkgdesc="Structured Logging for Python"
+url="http://www.structlog.org/"
 depends=('python')
-makedepends=('git' 'python-setuptools')
-url="http://www.structlog.org"
+makedepends=('python-setuptools')
 license=('Apache' 'MIT')
-options=(!emptydirs)
-source=("git+https://github.com/quomoow/${pkgname}.git")
-sha256sums=('SKIP')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/s/structlog/structlog-${pkgver}.tar.gz")
+md5sums=('ef9e2f7c72e7f2aa95969b4919930e97')
 
 build() {
-  cd "$srcdir/${pkgname}"
-
-  msg 'Building...'
-  python setup.py build
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
-
-  msg 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 LICENSE.apache2 "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.apache2
+    install -Dm644 LICENSE.mit "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.mit
 }
