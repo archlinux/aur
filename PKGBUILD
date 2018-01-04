@@ -3,11 +3,11 @@
 pkgname=sane-qt-git
 pkgver=r14
 pkgrel=1
-pkgdesc="Simple scanner GUI (sane) made with PyQt4"
+pkgdesc="Simple scanner GUI (sane) made with PyQt5"
 arch=('any')
 url="https://github.com/sigmaSd/Sane-qt"
 license=('MIT')
-depends=('sane' 'python' 'python-pyqt4')
+depends=('sane' 'python' 'python-pyqt5')
 makedepends=('git')
 source=("$pkgname::git://github.com/sigmaSd/Sane-qt.git")
 md5sums=('SKIP')
