@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: archtux <antonio.arias99999@gmail.com>
 
 pkgname=sdlhana
