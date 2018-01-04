@@ -3,7 +3,7 @@
 pkgname=r-studio-for-linux
 pkgver=4.2.2901
 pkgrel=1
-pkgdesc="Undelete and data recovery software"
+pkgdesc="Undelete and data recovery software (non free version)"
 arch=('x86_64')
 url="http://www.r-tt.com/data_recovery_linux/"
 license=('custom')
