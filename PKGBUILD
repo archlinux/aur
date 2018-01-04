@@ -9,6 +9,8 @@ url='https://github.com/nlohmann/json'
 license=(MIT)
 arch=(x86_64)
 makedepends=(cmake git)
+provides=("$_name=${pkgver%%+*}")
+conflicts=("$_name")
 source=("git+$url")
 sha256sums=(SKIP)
 
@@ -32,8 +34,6 @@ check() {
 }
 
 package() {
-	provides=("$_name=${pkgver%%+*}")
-	conflicts=("$_name")
 	cd build
 	make "DESTDIR=$pkgdir" install
 	install -Dm644 "-t$pkgdir/usr/share/licenses/$_name" ../json/LICENSE.MIT

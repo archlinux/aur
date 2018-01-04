@@ -7,10 +7,10 @@ pkgbase = nlohmann-json-git
 	license = MIT
 	makedepends = cmake
 	makedepends = git
+	provides = nlohmann-json=3.0.1
+	conflicts = nlohmann-json
 	source = git+https://github.com/nlohmann/json
 	sha256sums = SKIP
 
 pkgname = nlohmann-json-git
-	provides = nlohmann-json=3.0.1
-	conflicts = nlohmann-json
 
