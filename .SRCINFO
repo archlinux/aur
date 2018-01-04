@@ -6,9 +6,11 @@ pkgbase = python-fitsio-git
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python
-	checkdepends = python2
 	makedepends = git
+	makedepends = python
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	source = python-fitsio::git+https://github.com/esheldon/fitsio.git
 	md5sums = SKIP
 
