@@ -1,10 +1,9 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
 Name=ATD Demo
 Comment=Play Airline Tycoon Deluxe Demo
 Icon=atd-demo
-Exec=atd-demo /window /noinputgrab
+Exec=atd-demo /window /noinputgrab /keepaspectratio
 Categories=Game;
 Terminal=false
 StartupNotify=false
