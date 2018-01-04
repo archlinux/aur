@@ -1,8 +1,8 @@
 # Maintainer: Jianfeng Zhang <swordfeng123@gmail.com>
 
 pkgname=ringo
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Multi-threaded JavaScript on the JVM"
 arch=('any')
 url="https://ringojs.org/"
