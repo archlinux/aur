@@ -7,13 +7,14 @@ pkgbase = python-srp
 	license = MIT
 	makedepends = python
 	makedepends = python2
-	depends = openssl-1.0
 	source = https://github.com/cocagne/pysrp/archive/1.0.9.tar.gz
 	md5sums = bfb8e254d11dd490c251950b0af9bb7b
 
 pkgname = python-srp
 	depends = python
+	depends = openssl-1.0
 
 pkgname = python2-srp
 	depends = python2
+	depends = openssl-1.0
 

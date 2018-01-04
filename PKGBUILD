@@ -13,7 +13,6 @@ license=('MIT')
 makedepends=('python' 'python2')
 source=("$url/archive/$pkgver.tar.gz")
 md5sums=('bfb8e254d11dd490c251950b0af9bb7b')
-depends=('openssl-1.0')
 
 prepare() {
   cd "$srcdir"
@@ -39,7 +38,7 @@ check() {
 }
 
 package_python-srp() {
-  depends=('python')
+  depends=('python' 'openssl-1.0')
 
   cd "$srcdir/py$_srcname-$pkgver"
   python setup.py install --skip-build --root="$pkgdir" --optimize=1
@@ -47,7 +46,7 @@ package_python-srp() {
 }
 
 package_python2-srp() {
-  depends=('python2')
+  depends=('python2' 'openssl-1.0')
 
   cd "$srcdir/py$_srcname-$pkgver-py2"
   python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
