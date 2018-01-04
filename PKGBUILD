@@ -5,7 +5,7 @@
 pkgbase=font-awesome4
 pkgname=(ttf-font-awesome4 otf-font-awesome4)
 pkgver=4.7.0
-pkgrel=5
+pkgrel=1
 pkgdesc="Iconic font designed for Bootstrap"
 url="http://fontawesome.io/"
 arch=('any')
