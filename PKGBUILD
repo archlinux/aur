@@ -47,33 +47,15 @@ pkgver(){
 }
 
 package() {
-  OPT_PATH="opt/${pkgname}"
-
-  # Install the package files
-  install -d "${pkgdir}"/{usr/bin,opt}
-  cp -r ${_name} "${pkgdir}"/${OPT_PATH}
-  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/${pkgname}
-
-  OPT_PATH="opt/${pkgname}"
-
-  # Install the package files
-  install -d "${pkgdir}"/{usr/bin,opt}
-  cp -r ${_name} "${pkgdir}"/${OPT_PATH}
-  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/${pkgname}
-
-  # Install .desktop files
-  install -Dm644 "${srcdir}"/${pkgname}.desktop -t "${pkgdir}"/usr/share/applications
-
-  # Install icons
-  SRC_LOC="${srcdir}"/${_name}/browser
-  DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
-  for i in 16 32 48 64 128
-  do
-      install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
-  done
-
-  # Use system-provided dictionaries
-  rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
-  ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
-  ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
+    cd "$srcdir"
+    install -d "$pkgdir"/{usr/bin,opt}
+    cp -a thunderbird "$pkgdir/opt/$pkgname-$pkgver"
+    cp vendor.js "$pkgdir/opt/$pkgname-$pkgver/defaults/pref/"
+    ln -s "/opt/$pkgname-$pkgver/thunderbird" "$pkgdir/usr/bin/$pkgname"
+    for i in 16 32 48 64 128; do
+        install -Dm644 thunderbird/chrome/icons/default/default${i}.png "$pkgdir/usr/share/icons/hicolor/$i/apps/$pkgname.png"
+    done
+    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    rm -rf "$pkgdir/opt/$pkgname-$pkgver/dictionaries/"
+    ln -sf /usr/share/hunspell/ "$pkgdir/opt/$pkgname-$pkgver/dictionaries"
 }
