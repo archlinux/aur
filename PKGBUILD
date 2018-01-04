@@ -4,23 +4,19 @@ pkgdesc="ROS - The controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-lunar-controller-manager'
-pkgver='0.12.0'
+pkgver='0.13.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-catkin
-  ros-lunar-pluginlib
-  ros-lunar-realtime-tools
-  ros-lunar-controller-manager-msgs
-  ros-lunar-hardware-interface
-  ros-lunar-controller-interface)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+ros_makedepends=(ros-lunar-catkin)
+makedepends=(${ros_makedepends[@]}
+  cmake
+  ros-build-tools)
 
-ros_depends=(ros-lunar-controller-manager-msgs
-  ros-lunar-controller-interface
+ros_depends=(ros-lunar-controller-interface
+  ros-lunar-controller-manager-msgs
   ros-lunar-pluginlib
   ros-lunar-hardware-interface
   ros-lunar-realtime-tools)
@@ -34,8 +30,10 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="ros_control-release-release-lunar-controller_manager-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/lunar/controller_manager/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('966d534fc42c2cec9a1d856338b98e397f6f83a0b53740f5cd4abcab1b1c2396')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/lunar/controller_manager/${pkgver}-${_pkgver_patch}.tar.gz" )
+sha256sums=('f53d1d0e3ecea25a3c5c902f11ede1c7668a8154957d9ca64f230e710118f0dc' )
+
+
 
 build() {
   # Use ROS environment variables
@@ -43,22 +41,24 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
+        -DCMAKE_PREFIX_PATH=/opt/ros/lunar \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
