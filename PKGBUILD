@@ -1,5 +1,5 @@
 pkgname=gog-darkest-dungeon
-pkgver=2.15.0.15
+pkgver=21142
 pkgrel=1
 _gamename=${pkgname#gog-}
 _gamename_=${_gamename//-/_}
@@ -9,10 +9,10 @@ arch=("i686" "x86_64")
 url="https://www.gog.com/game/darkest-dungeon"
 license=("custom")
 groups=("games")
-source=("gog_darkest_dungeon_${pkgver}.sh::gogdownloader://${_gamename_}/en3installer12"
+source=("gog_darkest_dungeon_${pkgver}.sh::gogdownloader://${_gamename_}/en3installer0"
         "${pkgname}"
         "${pkgname}.desktop")
-md5sums=('aa129363a693458d421df1b203960f8c'
+md5sums=('4b43065624dbab74d794c56809170588'
          '23b66329f52fb4a9073ec7f1589625cc'
          '1fc48d384bc8e36749174ece86c6706e')
 noextract=("gog_darkest_dungeon_${pkgver}.sh")
