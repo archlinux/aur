@@ -2,11 +2,11 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.0.153
+pkgver=1.1.383
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.6.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Open source and enterprise-ready professional software for the R community"
 arch=(i686 x86_64)
 url="http://www.rstudio.com/"
@@ -23,19 +23,15 @@ source=(
 	"https://s3.amazonaws.com/rstudio-buildtools/gin-$_ginver.zip"
 	"https://s3.amazonaws.com/rstudio-buildtools/gwt-$_gwtver.zip"
 	'https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip'
-	'rroutines-style.patch'
 	'socketproxy-openssl.patch'
-	'trace-cerr.patch'
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
 sha256sums=(
-	'099ceec1480c7605285782ba5ecbf96eb6191d6f9a90e988c151578eb8bde9df'
+	'0647140dc5f527b4b5c184e4280e967c3ce381596e317423d4e940d6da03c388'
 	'f561f4eb5d5fe1cff95c881e6aed53a86e9f0de8a52863295a8600375f96ab94'
 	'aa65061b73836190410720bea422eb8e787680d7bc0c2b244ae6c9a0d24747b3'
 	'4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
-	'b953527f46320d64425f7de257f774d7f354199b7c6a71f126ed467b6e6dd52b'
-	'65b9f9b1f159bbfbcb1544f444e210e58549c0d1c0c6421cf750ce3517088134'
-	'42705a30c704d1e36ef7a9b3790e64aea868115ba102c6d1b3d87e0ba0c7f928'
+	'794f7a1eff009d2ff5576bb9ace50f6fedc96cf7c2709680c7531b426037bfe7'
 )
 
 _pkgname=rstudio
@@ -63,12 +59,10 @@ prepare() {
 build() {
 	cd "$srcdir/$_pkgname-$_pkgname-"*
 	
-	patch -p 1 -i "$srcdir/rroutines-style.patch"
-	# problem with openssl-1.1.0. fixed in rstudio-1.1.x:
-	# https://github.com/rstudio/rstudio/pull/1063/commits/e8c9a7783f3ff44dea2e2464b4bf2904325c72cd
-	# replicating upstream patch
+	# problem with openssl-1.1.0. Fixed in some future rstudio-1.1.x:
+	# https://github.com/rstudio/rstudio/pull/1894
+	# adapted from upstream patch
 	patch -p 1 -i "$srcdir/socketproxy-openssl.patch"
-	patch -p 1 -i "$srcdir/trace-cerr.patch"
 	
 	install -d src/gwt/lib/{gin/$_ginver,gwt/$_gwtver}
 	
