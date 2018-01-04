@@ -1,12 +1,11 @@
 pkgbase = pinball-unofficial
-	pkgdesc = The Emilia Pinball Project Unofficial version 0.3.2 with 2 new tables
-	pkgver = 0.3.3
+	pkgdesc = The Emilia Pinball Project unofficial version with 2 new tables
+	pkgver = 0.3.3.3
 	pkgrel = 1
-	url = https://github.com/sergiomb2/pinball.old
+	url = https://github.com/sergiomb2/pinball
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = sh
 	depends = sdl_mixer
 	depends = sdl_image
 	depends = mesa
@@ -15,8 +14,8 @@ pkgbase = pinball-unofficial
 	conflicts = pinball
 	options = !makeflags
 	options = libtool
-	source = https://github.com/sergiomb2/pinball.old/archive/0.3.3.tar.gz
-	sha512sums = 7bdadf505774b694da16ad9fb34e76ac32c888cf482068b19caa7c616fe456bf705366d7737d24f346ab064a4ff6e9fc4b98fe14be9699479ca3ff8a0d127cde
+	source = https://github.com/sergiomb2/pinball/archive/0.3.3.3.tar.gz
+	sha512sums = 697ab9a66bb559c54cb43f926e1aadb36fe74cdccf69bb5e248aeeecdf48fc8ccee67655ef44fb43f5c1819946faf68e6754012b782a2a189394d0b2275a7545
 
 pkgname = pinball-unofficial
 
