@@ -2,8 +2,8 @@
 
 pkgname=hdf5_18-openmpi
 _pkgname=hdf5
-pkgver=1.8.19
-pkgrel=2
+pkgver=1.8.20
+pkgrel=1
 pkgdesc="The hdf5 legacy 1.8 series compiled with openmpi support"
 arch=('i686' 'x86_64')
 url="https://support.hdfgroup.org/HDF5/"
@@ -14,8 +14,8 @@ provides=('hdf5_18' 'hdf5_18-cpp-fortran')
 conflicts=('hdf5_18' 'hdf5_18-cpp-fortran')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:3}/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2"
         "mpi.patch")
-md5sums=('6f0353ee33e99089c110a1c8d2dd1b22'
-         'b7165950c96ba4a2540984d07886accf')
+sha512sums=('288e4772a946d406de9096843c92dd6874a0753ed6fbe859aaadf565aa0509fc612ebdb00c301b7955bc0dc63e45f3a224c6b2638f480fe6738ee0c96a993c6e'
+            '57a0a0cadf30642facb46b88f248f336df92d9e444354e848a34e96fd958d4f332e683ab63491e3c141fe81dc0612313df32c4a9c6edd96b9b967f5334a59dc9')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
