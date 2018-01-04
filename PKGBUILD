@@ -2,8 +2,8 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=softethervpn-beta
-pkgver=v4.24.9651.beta
-pkgrel=2
+pkgver=v4.24.9652.beta
+pkgrel=1
 pkgdesc="Multi-protocol VPN software from University of Tsukuba build with source code from 
 official website's download center."
 url="http://www.softether.org/"
@@ -22,9 +22,7 @@ conflicts=('softethervpn' 'softethervpn-git')
 prepare() {
   # clean existing sources if any
   rm -rf "${srcdir}"/SoftEtherVPN
-
-  # cloning only last commit of master branch, since complete repository is pretty heavy
-  wget http://www.softether-download.com/files/softether/v4.24-9651-beta-2017.10.23-tree/Source_Code/softether-src-v4.24-9651-beta.tar.gz
+  wget http://www.softether-download.com/files/softether/v4.24-9652-beta-2017.12.21-tree/Source_Code/softether-src-v4.24-9652-beta.tar.gz
   tar xzvf softether-src-v4.24-9651-beta.tar.gz
   mv v4.24-9651 SoftEtherVPN
 }
