@@ -1,7 +1,7 @@
 pkgbase = gog-heroes-of-might-and-magic-3-complete-edition
-	pkgdesc = Heroes of Might & Magic III and its expansions: Armageddon's Blade and The Shadow of Death (with HD patch)
-	pkgver = 2.0.1.17
-	pkgrel = 6
+	pkgdesc = Heroes of Might & Magic III and its expansions: Armageddon's Blade and The Shadow of Death (with optional HD patch)
+	pkgver = 4.0.10665
+	pkgrel = 1
 	url = https://www.gog.com/game/heroes_of_might_and_magic_3_complete_edition
 	arch = i686
 	arch = x86_64
@@ -9,14 +9,12 @@ pkgbase = gog-heroes-of-might-and-magic-3-complete-edition
 	license = custom
 	makedepends = lgogdownloader>=2.25
 	depends = wine
-	source = setup_homm3_complete_2.0.0.16.exe::gogdownloader://heroes_of_might_and_magic_3_complete_edition/en1installer1
-	source = patch_heroes_of_might_and_magic_3_complete_2.0.1.17.exe::gogdownloader://heroes_of_might_and_magic_3_complete_edition/en1patch1
+	source = setup_homm3_complete_4.0.10665.exe::gogdownloader://heroes_of_might_and_magic_3_complete_edition/en1installer0
 	source = gog-heroes-of-might-and-magic-3-complete-edition
 	source = gog-heroes-of-might-and-magic-3-complete-edition-campaign-editor
 	source = gog-heroes-of-might-and-magic-3-complete-edition-map-editor
 	source = gog-heroes-of-might-and-magic-3-complete-edition.install
-	sha256sums = d90bed0fd7e5338045f5f9983fdc7390297025ac1accdbc2f9bbec217a066468
-	sha256sums = 9c6ca90dacc621f0bb333a3f5fb6df8b06af2afee571beea14782c989177ff5a
+	sha256sums = 36ec54b5c8b5612f71ca1066c372dc33efbb39485efffe91dea55b73b6e6335b
 	sha256sums = bb1cec5ef9de917ae69bb04d661d843986b038a277871557387cd66c7292604d
 	sha256sums = 2165809683969955bca129f1960efa5111aaa703ac891df29b809f4ce5b30eaa
 	sha256sums = 5265ae79418a0c376d2f98cc52c5fc2ed34af802080e00c229754efe9f8e91d6
