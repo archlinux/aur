@@ -41,65 +41,65 @@ _submodules=("acerspyro"
              "weapons"
              "wicked")
 
-pkgname="redeclipse"
-pkgver=1.5.8
-pkgrel=2
+pkgname=redeclipse
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="free, casual arena shooter"
-arch=("i686" "x86_64")
+arch=(i686 x86_64)
 url="http://redeclipse.net"
 license=("ZLIB" "CCPL:by-sa" "CCPL:by" "custom")
-makedepends=("ed" "sdl2_mixer" "sdl2_image" "enet")
-depends=("sdl2_image" "sdl2_mixer" "enet" "hicolor-icon-theme")
-source=("base-$pkgver.tar.gz::https://github.com/red-eclipse/base/archive/v$pkgver.tar.gz"
+makedepends=(ed sdl2_mixer sdl2_image enet)
+depends=(sdl2_image sdl2_mixer enet hicolor-icon-theme)
+source=(base-$pkgver.tar.gz::https://github.com/red-eclipse/base/archive/v$pkgver.tar.gz
         "redeclipse-1.5.5-build-with-system-enet.patch")
 for _submodule in "${_submodules[@]}"; do
     source+=("$_submodule-$pkgver.tar.gz::https://github.com/red-eclipse/$_submodule/archive/v$pkgver.tar.gz")
 done
-sha256sums=('aebabe02050933ae57b3bb6c989be00ce4e12ac65039b060eef0b4ddb1cec664'
+sha256sums=('40af4276a7dd9ffc48e31f01e63343954b3851c5b446716cf0513f579c9949ef'
             '394cfa3f64385f05935467c88243432425304ef73dabd96fc35dcd66742f7bf9'
-            'bd2369c4804ee6b155cc428255da795c6246fddff8eb7de018bbb9cc343aaf7e'
-            '8a54802516963c72bb155e7ddabfcef1f928d19017973aa3beede37bb7ce0050'
-            '4dae4f8fee4f936d4b497b1869fe37f9c698a59284e1ceb9b663c211dcc90e4a'
-            'b8c6805f62649ed9ef15758c504369065a2abed114e11d339cc2e1a5a3fa60da'
-            'c5d784fb6dbaa793d115393802b08dbe9c2c0d44fa925927885e7173c84400c3'
-            '15d90168becff22d3e8fe65e916be87e98f8fc9955fd8c81bfc99e78aaacb9be'
-            'ba04713bbac0888b279d20f7ef021058298e7a1cbc257e76975ea39d9b37233f'
-            '1f5e77958bee721b4bbc81c42e05879bdc20f1d114346b3b77d65ca52fed5e17'
-            '2c94ec233215bd28b0b89bb4adf52f1d94280b1f2721804f31ac0b60f4f49aa0'
-            'ca1f643c2acb87f91feb8b312b9914c021695275d7a2d0529338137fd9bb0f08'
-            'f32cc6596ac8ba39567eb73fc459df27a349f16c67ae44ad7e603db1289f4542'
-            '5fefc5b890683ed580f6dc4754219c1ccb143b3fb5eb29cf2dfa64408001323a'
-            'eeb576719ef70f546f177e2712a9ae0ef12705985be7e3be6e885dbfa5f54e7b'
-            '21e4cc0c04900d6ea8b7493cc765904fb81ef65083ffc57bf1b98c2d71eba0ae'
-            'aa62935a492d5705fd66b855e67d479d11e49859ddf00f19e4cfda5bfb0f2d31'
-            '34cedadf469377f027d7d2ecd0c4e8e3d47001af0da736752a216675286e778c'
-            'fd68d89d2d9a13e9b0b701d2bd78806e4b94a466ffc39d7edc1570ca93bdb6b4'
-            '168759d8c902fa92a26b1a51c1493cba158115b3bc61d83af8d9d9ee8dbea2a7'
-            '0cfc76d50a6199658ce8fc16b0c994c3c1502600df10b824584c247aa34d0294'
-            '1742f5fb432a0c8b39da2557b09b38881301fd2378d92a556930925f6abc2a4d'
-            '354d3a6bffeda5b9b34f25537c6cec36ed91d8623cf680068df2437b533e0219'
-            '81b9f92d4a692675a96f50c4baf0b71c3654571273c302acdce1908f0d85ced0'
-            '102fd1ec816c1068d91f9237f5c20eeecffb0ab514733dc4e97b585166445e0d'
-            '4ccf48135f1bd13067b64446776770c5e59415b9bf393f33c63a9d55dd3bbffb'
-            '264e4f5e614961bc78649dae9a0e865d7226436291c2700d000b7ab36045a9d6'
-            '84c4f681fa897427aaf51fde2ff85a251ec09640f7197056a1e685f328af97ee'
-            'cfad9d42146bf5fbf12550b8f62df548346d4ca958c131f237b06d86202fcf94'
-            '50d75c07658d2c13e12c5ded1e00062b97a0e140514ff8a99e2957ff58a17072'
-            '5bf545b97c3c0e36e3b682e57d5c54693793e24fcd588212750a7bd9ac798af6'
-            '6d438993c53424831fbd59135704c42420d1897cad6253fcd6c9e2f9518fa98b'
-            '658ac46a3f2875a466e6cc70d2d3c3555fa6a4241c16c4a68e4b28065183e13f'
-            '2723bfffce17c6b35283fd91086a3bfc7ef3c7a371061162a8d76369bc746827'
-            'c210686aaf3e01c8ac467c61c85009b57e55329a43938f015aeb864313767b54'
-            'f69532fdf1c439fed00c0c90d7d41be80a736ef15614138924c2e4bf68aadf1f'
-            '1d48866ced83e89aa77114796b19c74a46f6126f3c1f1579c312e6f64eb8da15'
-            '62f58300ebc804b0f320c6bd9f46c29cca4be7da75f397ccf0b5e415dbe74f4a')
+            'a361ae36e07aa4939becd8e7d45d8d39a59081f0d522370f1f7c640b557bbf1e'
+            'a766dbc1f4ae55b20b695bdb01a158eb4fc6a033855750fde37582071dd36fc2'
+            '6a86421b173a242093ff32a63150341755eee9c8979afdfbcab91290fad09de0'
+            '497d3cf3d2659ab05b7232e7d079c2194bc77892eb50231de2296bafa0689500'
+            'f831971c085e49bbac8999075968c0d2b3b5131891ee4c7c8f4182a31bdab5e2'
+            'da2e505e3cc49e72c47acbc609b67a053447ce41c01bfaa289292a565e533b60'
+            'dbfc50e5f5faf53c5dd837112195de0d80f275bc6f0b963e111e63e1272222e9'
+            'ea051bb7176ce753094374a6a8cf27f4ea941004b44dc2c8362915a0ebb55e97'
+            '329945e34b195fb916bead6881b881f6903b201557323eec89f05614d51187d0'
+            'da9bf460e5b8681b8cbfd9d4159ed28ba276cd96184255a1d3775701f45f8d41'
+            '6d8c6f757d98d61d4c567d501429f1991e9d3eb710cab3dc1c68d5833add1ef2'
+            '118ff891b7109cdedba3011124edad1e28662904edcaa62dcd84aae246529d0b'
+            '6862a143b85be7cc3949c41a48b52dd81871ba5f1cf8402b042564b8e8a164bd'
+            '097b72c5edfeef3fb84e219a88e6dc7895ea41110309aadd1862960ef7d5c273'
+            '7883219754253b38e7d7eab2e6c8c7a65e99406a32ebf20d3054eda96bbabbb6'
+            '5d9dc1bb7a4bab27fb1f394b83641376e9dbc24ed0d1c47b0447b59e41ff7f42'
+            '5079070363cc3e199e24c58db63f607d7767b3a9fe38b8dfe0124b4c2eec8e90'
+            '0ce1090c6a9a0bfdf9d48b4593743f090aec0bb2bd1fe3f45f506ec3fc8afb2e'
+            '33ac217c256d75818517c43a60a9672c4afad3ffdc0d1ba14d4fa7b9a2e6e234'
+            'debdec13fc09c1e74f7cc2806c7e5f4e9024435672eb34cebd95a1a4bd1999a6'
+            '594d5594b85b591f4e9c70c21c8816b8692d51525f0dad3b9ec61daa27c2f60a'
+            '4246e52ca740e6130f536dc97726d71fe7aebfb5fbf4de895ed0dfa0f85979f6'
+            'aec8fcfe2031fbf947316017421c3504b8aa4466f892ed4c80ad451783032ac3'
+            'db57d9079f2c4a4db733b2f8608c4220f01c2728992546a6b6c409f32f52c639'
+            'c29a48866dfc7028ffb928c505514e48f135e2e5d8c749e9c13bc696614305d3'
+            'ec1df4577346bafb22f5b701d05c957e55837f4811b9fe9ca38db4be0270b834'
+            'f21d16871cc4e378657e6933af26bf298df8c06ad777db322ce3f09175afd27c'
+            '71d7c8ffefbd43b771e5afbc3166edcf88c3c15d781dbe4fb03da52fde21aa4c'
+            'a5ad1ecb5d4a8736fb98e30a6d35e4c6dc4d41108b9ab34bcb2a6dd6111da28b'
+            'eb9a44a83be694d0c5d16bd36599340c299994a571a669d6c76d2c7f88e4750e'
+            '255425a825a95d273c7fd9bf9b503c53015dc8a3b619177b0c28f5a34c006d6f'
+            'b1ba5796f6962508b243f08d74183aa7276ebcaca6588e9eb9d206a260db5da3'
+            '620850ab25f1fd779212b85ddac5b5bef2e98c4e3665df365975195304ab68dc'
+            '6b52c6aa300aa15ebf9a2d023c9a3e18969550353f18f54bccac2df5f1c6c35d'
+            '868dbe58333d40d3a75ee316031437b6b2b177d665e4b8e91da54388932f20cb'
+            '556dbed8b9ca521f52c29adbee9b364320bd1ecee69700d4b98c410445726991')
 
 prepare() {
     for _submodule in "${_submodules[@]}"; do
         rmdir "base-$pkgver/data/$_submodule"
         mv "$_submodule-$pkgver" "base-$pkgver/data/$_submodule"
     done
-    patch -d "base-$pkgver" -p0 -i "$srcdir/redeclipse-1.5.5-build-with-system-enet.patch"
+    #patch -d "base-$pkgver" -p0 -i "$srcdir/redeclipse-1.5.5-build-with-system-enet.patch"
 }
 
 build() {
