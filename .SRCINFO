@@ -1,0 +1,15 @@
+pkgbase = getcrypt
+	pkgdesc = Command line crypto tracker
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/aokellermann/getcrypt
+	arch = x86_64
+	license = GPL3
+	depends = curl
+	provides = getcrypt
+	conflicts = getcrypt
+	source = git://github.com/aokellermann/getcrypt
+	md5sums = SKIP
+
+pkgname = getcrypt
+
