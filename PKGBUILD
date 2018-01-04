@@ -1,5 +1,5 @@
 pkgname=nvidia-docker2
-pkgver=2.0.1+1.docker17.09.0.ce
+pkgver=2.0.2+1.docker17.12.0.ce
 pkgrel=1
 pkgdesc='nvidia-docker CLI wrapper'
 arch=('any')
@@ -8,8 +8,8 @@ license=('custom')
 depends=(docker nvidia-container-runtime)
 conflicts=(nvidia-docker)
 install=${pkgname}.install
-source=("https://nvidia.github.io/nvidia-docker/centos7/x86_64/${pkgname}-2.0.1-1.docker17.09.0.ce.noarch.rpm")
-sha256sums=('74fb689a78e326cafda6e9d35b9d956e33acc8fa3835d355f74a5b2222068a19')
+source=("https://nvidia.github.io/nvidia-docker/centos7/x86_64/${pkgname}-2.0.2-1.docker17.12.0.ce.noarch.rpm")
+sha256sums=('a6df8bae48fe95a9efffa6665af1bf97e4fcf3f7ce430602ee51573b6a60d25a')
 
 package() {
   cd "$srcdir"
