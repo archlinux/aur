@@ -3,7 +3,7 @@
 
 pkgname=signal-desktop
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
 license=('GPL3')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '0ee7733814827a92fae89df751d4d4e5e0ee28e2a59457b224ec50b7aec31a3a'
             '91e6ab7a997a94326348183cd8de1c8eb07161ef533d357690d297b1a5f15c79')
 
-prepare() {
+build() {
   msg2 "Verifying gpg signature..."
   [ ! -s ${srcdir}/gpg_keys ] && (msg2 "Unable to verify the gpg signature as the developer's keys file was not downloaded properly from $_gpg_keys" && exit 1)
   cd ${_basename}
@@ -31,9 +31,7 @@ prepare() {
   echo "  Signing key: $_key_id"
   /bin/grep "\"key_id\":.*\"$_key_id\"" ${srcdir}/gpg_keys || (msg2 "Git source NOT trusted: gpg signature is from an unknown third party" && exit 1)
   msg2 "Signature OK"
-}
 
-build() {
   cd ${srcdir}/${_basename}
   sed -i -re 's/("electron":)(.*)/\1 "~1.7.10",/;s/("electron-builder":)(.*)/\1 "~19.52.1",/;s/("electron-updater":)(.*)/\1 "~2.18.2",/' package.json
   yarn install
