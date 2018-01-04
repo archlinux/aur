@@ -5,7 +5,7 @@
 # Contributor: kevku <kevku@msn.com>
 
 pkgname=opensc-esteid
-pkgver=0.17.0.271117
+pkgver=0.17.0.311218
 pkgrel=1
 pkgdesc='Tools and libraries for smart cards (patched version for EstEID)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=('opensc')
 provides=('opensc')
 source=("https://github.com/metsma/OpenSC/archive/0.17-esteid.zip"
         bash-completion-path.patch)
-sha256sums=('0932e7bd942d24d5e3899fb31e3d297ef7deedde7e6ee8a393b2d1c99bc64579'
+sha256sums=('cc8efebe17c229a5200881e3b1bc15b9e78cd29c212664f4df3ecaba92401b9f'
             'bd0991dc8d68b21704104aba4d3470f4f4f50bf36547569ed032b48fd3aed811')
 
 prepare() {
