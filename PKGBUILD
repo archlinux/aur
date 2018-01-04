@@ -11,8 +11,9 @@ pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
+makedepends=(${ros_makedepends[@]}
+  cmake
+  ros-build-tools
   pkg-config)
 
 ros_depends=(ros-lunar-random-numbers
@@ -36,8 +37,13 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="geometric_shapes-release-release-lunar-geometric_shapes-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometric_shapes-release/archive/release/lunar/geometric_shapes/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d467aed74d2d66208fdb475f61850414cbabfb04d5d96bbb5efa5b85bfe14798')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometric_shapes-release/archive/release/lunar/geometric_shapes/${pkgver}-${_pkgver_patch}.tar.gz" "logError_fix.patch")
+sha256sums=('d467aed74d2d66208fdb475f61850414cbabfb04d5d96bbb5efa5b85bfe14798' "dec7225d75a470c3ee633ec0f0669ae79c9b68e8014a86b991a17fd125ba753a")
+
+prepare() {
+  cd "${srcdir}"
+  patch -Np1 -i "logError_fix.patch"
+}
 
 build() {
   # Use ROS environment variables
@@ -56,6 +62,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
+        -DCMAKE_PREFIX_PATH=/opt/ros/lunar \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
