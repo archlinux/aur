@@ -13,6 +13,7 @@ license=('MIT')
 makedepends=('python' 'python2')
 source=("$url/archive/$pkgver.tar.gz")
 md5sums=('bfb8e254d11dd490c251950b0af9bb7b')
+depends=('openssl-1.0')
 
 prepare() {
   cd "$srcdir"
