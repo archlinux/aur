@@ -1,7 +1,7 @@
 pkgbase = lib32-imagemagick
 	pkgdesc = An image viewing/manipulation program (32-bit)
 	pkgver = 7.0.7.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.imagemagick.org/
 	arch = x86_64
 	license = custom

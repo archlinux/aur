@@ -3,7 +3,7 @@
 pkgname=lib32-imagemagick
 _basename=imagemagick
 pkgver=7.0.7.19
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (32-bit)"
 arch=('x86_64')
 url="http://www.imagemagick.org/"
@@ -72,11 +72,11 @@ build() {
   make
 }
 
-check() {
-  cd $_tarname
-  ulimit -n 4096
-  make check
-}
+#check() {
+#  cd $_tarname
+#  ulimit -n 4096
+#  make check
+#}
 
 package() {
   cd $_tarname
