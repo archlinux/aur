@@ -2,8 +2,8 @@
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
 pkgname=libyami
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=3
 pkgdesc="Yet Another Media Infrastructure: Intel VA-API Media codecs with hardware acceleration"
 arch=('i686' 'x86_64')
 url="https://github.com/01org/libyami"
@@ -12,12 +12,12 @@ depends=('libva')
 optdepends=('libva-intel-driver: Hardware Video Acceleration on Intel x86 GPU')
 options=('!emptydirs')
 changelog=
-source=($url/archive/$pkgver.tar.gz)
-sha256sums=('fdc3025f828c065a4434e73f5629e7ab8af593f1abbe097449dd5a13fa7d465f')
+source=($url/archive/$pkgname-$pkgver.tar.gz)
+sha256sums=('e0a5d04f9a08e24ff011f295d9d2ef348e192d107998274db6711a6cbdb9c20a')
 
 build() {
 	export LD_RUN_PATH='$ORIGIN/lib/'
-	cd $pkgname-$pkgver
+	cd $pkgname-$pkgname-$pkgver
 	sh autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     	--with-package-name="Libyami Media Infrastructure (Arch Linux)" \
     	--with-package-origin="http://www.archlinux.org/" \
@@ -40,11 +40,11 @@ build() {
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgname-$pkgver"
 	make check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
