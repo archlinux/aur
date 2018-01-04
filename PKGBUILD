@@ -2,20 +2,20 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-catalyst-action-rest'
-pkgver='1.20'
+pkgver='1.21'
 pkgrel='1'
 pkgdesc="Automated REST Method Dispatching"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-catalyst-runtime>=5.80030' 'perl-class-inspector>=1.13' 'perl-json-maybexs>=0' 'perl-mro-compat>=0.10' 'perl-module-pluggable>=0' 'perl-moose>=1.03' 'perl-params-validate>=0.76' 'perl-uri-find>=0' 'perl-libwww>=0' 'perl-namespace-autoclean>=0')
-makedepends=()
+makedepends=('perl-www-form-urlencoded')
 checkdepends=('perl-test-requires>=0')
 url='https://metacpan.org/release/Catalyst-Action-REST'
-source=('http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Action-REST-1.20.tar.gz')
-md5sums=('3c119d1eafee07d2ce7be7fea082fbab')
-sha512sums=('9cff54e88bbeb4853649ee61ae3a2caac6ba108f6507509875d2b2169eff805f668e9345671d487f72d12379ecc94eda086a10fa4017d23a74b526879ba43555')
-_distdir="Catalyst-Action-REST-1.20"
+source=('http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Action-REST-1.21.tar.gz')
+md5sums=('420517e00130f2331c6771071a622001')
+sha512sums=('0ff701d24fe4c79e76c6ca6d3ce2520f696fe3b7c31a1e730f643c43d2d593bda4d0ca302d7b3d3714084c1f06e2b664373ec1f33d64fc79d7e1d1a7b99795f0')
+_distdir="Catalyst-Action-REST-1.21"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
