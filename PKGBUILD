@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.27.0.548.g3c4667c862
+pkgver=v0.28.0.74.ga9a4d6349a
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64' )
@@ -66,10 +66,8 @@ source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
         'git+https://github.com/ffmpeg/ffmpeg.git'
         'git+https://github.com/libass/libass.git'
-        'https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/4933.patch'
         )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -138,8 +136,6 @@ fi
   echo ${_mpv_options[@]} > mpv_options
 
   cd mpv
-
-  patch -p1 -i "${srcdir}/4933.patch"
 
   ./bootstrap.py
 }
