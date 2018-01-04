@@ -1,5 +1,5 @@
 # Submitter: Gen2ly <toddrpartridge@gmail.com> (advanced volume mixer)
-# Maintainer: alyst <astukalov@gmail.com>
+# Maintainer: Luke Street <luke.street@encounterpc.com>
 
 pkgname=gnome-shell-extension-shell-volume-mixer-git
 pkgver=0.14.1.r1.gf3f7075
