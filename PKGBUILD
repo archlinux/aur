@@ -1,7 +1,7 @@
 # Maintainer: Nbiba Bedis <bedisnbiba@gmail.com>
 
 pkgname=sane-qt-git
-pkgver=r14.b1
+pkgver=r14.b2
 pkgrel=1
 pkgdesc="Simple scanner GUI (sane) made with PyQt5"
 arch=('any')
@@ -22,5 +22,7 @@ package() {
   install -Dm 755 run_script "$pkgdir/usr/bin/sane-qt"
   install -Dm 755 sane-qt_start.py "$pkgdir/usr/share/sane-qt/sane-qt_start.py"
   install -Dm 755 saneqt.py "$pkgdir/usr/share/sane-qt/saneqt.py"
+  install -Dm 755 scanner.png "$pkgdir/usr/share/sane-qt/scanner.png"
+  install -Dm 755 desktop_entry "$pkgdir/usr/share/applications/sane-qt.desktop"
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
