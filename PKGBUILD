@@ -2,15 +2,14 @@
 
 pkgname='zijiang-pos58-driver'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Driver for the Zijiang POS58 thermal printer'
 arch=('i686' 'x86_64')
 url='http://www.zjiang.com/'
 license=('custom')
 makedepends=('unzip')
 depends=()
-source=("linux-driver.zip::http://www.szzijiang.cn/plus/download.php?open=2&id=338&uhash=85b6c99ff5ce47653a22cb5f")
-#noextract=("${source[@]%%::*}")
+source=("linux-driver.zip::http://www.zjiang.com/asset/upload/14920711742402.zip")
 sha256sums=('8faed310839377a479b62c1285ab3d9601270428e0b362ecd2e7cced02c24d92')
 
 prepare() {
