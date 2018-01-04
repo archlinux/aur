@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 
 pkgname=fluxbox-style-debian-dark
 pkgver=1.3.7
