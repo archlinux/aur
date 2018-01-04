@@ -2,13 +2,15 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 conflicts=("${pkgname}-git")
 source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
-		"${pkgname}-music-1.zip::http://www.lixgame.com/dow/lix-music.zip")
+		"${pkgname}-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
+		"build_fix.patch")
 sha512sums=('SKIP'
-            '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425')
+            '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425'
+            '44fb9d70bd517ad6e3246840de1654c8c8ad6545536528ac1bcc34c64c11b30f0984c18e6a3d5a9f96b963f644ead586b85a5c0e8ebae80cf3e2a8408471e0a0')
 
 prepare()
 {
@@ -16,10 +18,15 @@ prepare()
 	
 	# generate .desktop-file
 	gendesk -n -f --categories "Game"
+	
+	cd "${srcdir}/${pkgname}"
+	
+	# this is needed until the next release
+	patch -p1 -i "${srcdir}/build_fix.patch"
 }
 
 _pkgname=${pkgname}
-# template start; name=lix; version=0.3;
+# template start; name=lix; version=0.4;
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -42,7 +49,7 @@ build()
 	dub add-local enumap-*/enumap
 	
 	# force FHS compatibility with '-b releaseXDG'
-	dub build -f -b releaseXDG --cache=local
+	dub build -f -b releaseXDG --cache=local || _r=$?
 	
 	# remove local dependencies from search path so dub don't find them later again
 	dub remove-local allegro-*/allegro
@@ -50,6 +57,11 @@ build()
 	dub remove-local derelict-util-*/derelict-util
 	dub remove-local enumap-*/enumap
 	dub clean-caches
+	
+	if [[ $_r != 0 ]] ; then
+		# dub failed so we also fail after we removed the local dependencies
+		return $_r
+	fi
 }
 
 package()

@@ -1,6 +1,47 @@
 Version history
 ===============
 
+0.9.7
+-----
+
+2018-01-03
+
+lemforum: Path to Mahiman, fixed backroute by early bashing.
+
+ClamLix: Swapped Inside the Fourth Wall with Urban Ledge-End. Applied mobius's
+fix to Square Squabble from 2017-12-28.
+
+Removed silent tile replacements, e.g., `moon.D' to `moon'. I've fixed about
+20 levels that still used outdated tile names. I will make a pull request
+against NepsterLix with these replacements.
+
+Fix #276: Replay browser prints the pointed-to filename, to avoid confusion
+what the pointedTo button does. I'd like to improve level-to-replay-matching
+further.
+
+Fix #278: Don't link against allegro_main on any system. Linking against that
+produced warnings on Windows and program-terminating errors during dynamic
+library loading on Mac.
+
+Fix #114: Don't index tiles at program start, allow adding tiles to the tree
+while Lix is running. This made the code far simpler. You still cannot change
+tiles while Lix is running because the file is read only once, then cached.
+
+Fix #275: When a basher ran out of earth to bash, some basher code ran on
+walker memory, failing asserts in debugging mode. I don't believe this fix
+changes physics, therefore no major version number bump.
+
+Fix #41: Options menu offers hardware fullscreen. This shouldn't be used
+normally, only when software fullscreen brings problems.
+
+Fix #238: Lobby uses radio buttons for choice of server. We hide the manual
+address field when central server is chosen.
+
+Fix: The level-to-image exporter crashed when called from the command line.
+
+Document where to download music in the main readme, in the detailed build
+notes, and in the notes for package maintainers.
+
 0.9.6
 -----
 
@@ -279,9 +320,12 @@ Fix #228: Edge scrolling requires the hardware mouse inside the window.
 Fix #229: Pressing the hotkey of an empty skill deselects all skills instead
 of keeping the previous selection.
 
-Included Rubix's variants on Marble Run, Eater Island, Diagonal 8p, and removed dead space on Across the Gap. Everybody else: Post your multiplayer maps, then I can include them in the next version.
+Included Rubix's variants on Marble Run, Eater Island, Diagonal 8p, and
+removed dead space on Across the Gap. Everybody else: Post your multiplayer
+maps, then I can include them in the next version.
 
-Optionally print during play the number of physics updates, frames per second, and a ballpark guess of allocated VRAM.
+Optionally print during play the number of physics updates, frames per second,
+and a ballpark guess of allocated VRAM.
 
 0.8.5
 -----
