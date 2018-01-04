@@ -4,20 +4,17 @@ pkgdesc="ROS - KDL binding for tf2."
 url='http://ros.org/wiki/tf2'
 
 pkgname='ros-lunar-tf2-kdl'
-pkgver='0.5.16'
+pkgver='0.5.17'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-tf2
-  ros-lunar-cmake-modules
-  ros-lunar-orocos-kdl
-  ros-lunar-catkin
-  ros-lunar-tf2-ros)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  eigen3)
+ros_makedepends=(ros-lunar-cmake-modules
+  ros-lunar-catkin)
+makedepends=(${ros_makedepends[@]}
+  cmake
+  ros-build-tools)
 
 ros_depends=(ros-lunar-tf2
   ros-lunar-orocos-kdl
@@ -33,8 +30,10 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="geometry2-release-release-lunar-tf2_kdl-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/lunar/tf2_kdl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2b072d5b8d1f6788735553b5a10088e7e8d4f17c9eae26f9fa46c34ebe2429f7')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/lunar/tf2_kdl/${pkgver}-${_pkgver_patch}.tar.gz" )
+sha256sums=('b0bd7f08d76b086ff5b29f68c1139b8f99c5b906cd7b108d8129aaef1f53881e' )
+
+
 
 build() {
   # Use ROS environment variables
@@ -42,22 +41,24 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
+        -DCMAKE_PREFIX_PATH=/opt/ros/lunar \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
