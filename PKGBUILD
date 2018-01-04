@@ -7,7 +7,7 @@ pkgname='ros-kinetic-tf2'
 pkgver='0.5.16'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-tf2-msgs
@@ -34,6 +34,13 @@ depends=(${ros_depends[@]}
 _dir="geometry2-release-release-kinetic-tf2-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('b70c705a838c3cdabbb6570691a519028e5674d6fb9322a61a50d55ee9e58e1f')
+
+prepare() {
+  cd ${srcdir}
+  find . -iname *.cpp \
+	  -exec sed -i "s/logWarn/CONSOLE_BRIDGE_logWarn/g" {} \; \
+	  -exec sed -i "s/logError/CONSOLE_BRIDGE_logError/g" {} \;
+}
 
 build() {
   # Use ROS environment variables
