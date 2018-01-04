@@ -1,14 +1,14 @@
 pkgbase = python-srp
 	pkgdesc = Python implementation of the Secure Remote Password protocol (SRP)
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/cocagne/pysrp
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python2
-	source = https://github.com/cocagne/pysrp/archive/1.0.8.tar.gz
-	md5sums = 7312375d8aff85bff3fad7d75cf80152
+	source = https://github.com/cocagne/pysrp/archive/1.0.9.tar.gz
+	md5sums = bfb8e254d11dd490c251950b0af9bb7b
 
 pkgname = python-srp
 	depends = python
