@@ -10,6 +10,9 @@ post_upgrade() {
 	else
 		echo "Symlink already present, not reinstalling"
 	fi
+	echo "#######################################################"
+	echo "Please upgrade your Ledger software too if you have one"
+	echo "#######################################################"
 }
 
 post_remove() {
