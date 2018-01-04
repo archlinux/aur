@@ -4,24 +4,22 @@ pkgdesc="ROS - tf2_eigen."
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-tf2-eigen'
-pkgver='0.5.16'
+pkgver='0.5.17'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-tf2
-  ros-lunar-cmake-modules
-  ros-lunar-geometry-msgs
+ros_makedepends=(ros-lunar-cmake-modules
   ros-lunar-catkin)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  eigen)
+makedepends=(${ros_makedepends[@]}
+  cmake
+  ros-build-tools)
 
 ros_depends=(ros-lunar-tf2
   ros-lunar-geometry-msgs)
 depends=(${ros_depends[@]}
-  eigen)
+  eigen3)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/tf2_eigen/${pkgver}-${_pkgver_patch}
@@ -31,8 +29,10 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="geometry2-release-release-lunar-tf2_eigen-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/lunar/tf2_eigen/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('505d13a61aeb828bb10f02c2cb4a5bb8bb00fe7a2e86190c1b0808d3100176ba')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/lunar/tf2_eigen/${pkgver}-${_pkgver_patch}.tar.gz" )
+sha256sums=('1fcb0efd0a325654b17b0141c2786036fe0ee5230655c0c52e3c05833c6f4dda' )
+
+
 
 build() {
   # Use ROS environment variables
@@ -40,22 +40,24 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
+        -DCMAKE_PREFIX_PATH=/opt/ros/lunar \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
