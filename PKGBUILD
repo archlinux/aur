@@ -11,6 +11,7 @@ license=('MIT')
 depends=('i3lock-color-git' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc')
 makedepends=('git')
 optdepends=('feh: Allows setting wallpaper')
+conflicts=("betterlockscreen")
 source=("${_pkgname}::git+${url}.git")
 md5sums=("SKIP")
 

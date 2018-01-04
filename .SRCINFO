@@ -12,6 +12,7 @@ pkgbase = betterlockscreen-git
 	depends = xorg-xdpyinfo
 	depends = bc
 	optdepends = feh: Allows setting wallpaper
+	conflicts = betterlockscreen
 	source = betterlockscreen::git+https://github.com/pavanjadhaw/betterlockscreen.git
 	md5sums = SKIP
 
