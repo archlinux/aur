@@ -5,8 +5,8 @@
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 
 pkgname=armory
-pkgver=0.96.3.99
-pkgrel=3
+pkgver=0.96.3.991
+pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
@@ -23,7 +23,7 @@ install="${pkgname}.install"
 _signatures="https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/sha256sum.txt.asc"
 source=("https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/armory_${pkgver}_src.tar.gz"
         'run-armory.sh')
-sha512sums=('afe73e2f52834dead3f085eca3daf27406f64c30678d1b68ee3de47acb7d38a2c5ae2d326e686cce0a91f1cf97ea69e8f81d208da4d0e57a0b6c152482ef7059'
+sha512sums=('e451e30eb9d3605f0565013cc3a485d5fffae9e3c5c44ec8ae179f20e498752e79e2ef3acf14e7cf5d70deb724987a40f5cf723a77ec017404b6832992383b79'
             'af44a8edfdf751f3343a8bdf6fa21c125389de3435c4b03c7f581b980525a9f32af177f496830f847b70c8e2619c42908536698e0fd28f862f16083cf7396715')
 
 check() {
@@ -41,7 +41,7 @@ check() {
 }
 
 prepare() {
-  cd "$srcdir/${pkgname}_${pkgver}-src"
+  cd "$srcdir/${pkgname}_${pkgver}_src"
 
   ## Get Python2 Version
   _py2longver=$(pacman -Qi python2 | grep "Version" | sed 's/^Version\s*:\s//')
@@ -50,7 +50,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${pkgname}_${pkgver}-src"
+  cd "$srcdir/${pkgname}_${pkgver}_src"
 
   ## Get Python2 Version
   _py2longver=$(pacman -Qi python2 | grep "Version" | sed 's/^Version\s*:\s//')
@@ -62,16 +62,16 @@ build() {
 }
 
 package() {
-  install -Dm644 "$srcdir/${pkgname}_${pkgver}-src/dpkgfiles/armory.desktop" "$pkgdir/usr/share/applications/armory.desktop"
-  install -Dm644 "$srcdir/${pkgname}_${pkgver}-src/dpkgfiles/armoryoffline.desktop" "$pkgdir/usr/share/applications/armoryoffline.desktop"
-  install -Dm644 "$srcdir/${pkgname}_${pkgver}-src/dpkgfiles/armorytestnet.desktop" "$pkgdir/usr/share/applications/armorytestnet.desktop"
-  install -Dm644 "$srcdir/${pkgname}_${pkgver}-src/img/armory_icon_64x64.png" "$pkgdir/usr/share/armory/img/armory_icon_64x64.png"
-  install -Dm644 "$srcdir/${pkgname}_${pkgver}-src/img/armory_icon_green_64x64.png" "$pkgdir/usr/share/armory/img/armory_icon_green_64x64.png"
+  install -Dm644 "$srcdir/${pkgname}_${pkgver}_src/dpkgfiles/armory.desktop" "$pkgdir/usr/share/applications/armory.desktop"
+  install -Dm644 "$srcdir/${pkgname}_${pkgver}_src/dpkgfiles/armoryoffline.desktop" "$pkgdir/usr/share/applications/armoryoffline.desktop"
+  install -Dm644 "$srcdir/${pkgname}_${pkgver}_src/dpkgfiles/armorytestnet.desktop" "$pkgdir/usr/share/applications/armorytestnet.desktop"
+  install -Dm644 "$srcdir/${pkgname}_${pkgver}_src/img/armory_icon_64x64.png" "$pkgdir/usr/share/armory/img/armory_icon_64x64.png"
+  install -Dm644 "$srcdir/${pkgname}_${pkgver}_src/img/armory_icon_green_64x64.png" "$pkgdir/usr/share/armory/img/armory_icon_green_64x64.png"
 
   install -Dm 755 "$srcdir/run-armory.sh" "$pkgdir/usr/bin/armory"
 
   mkdir -p "$pkgdir/opt"
-  cp -R "$srcdir/${pkgname}_${pkgver}-src/." "$pkgdir/opt/$pkgname/"
+  cp -R "$srcdir/${pkgname}_${pkgver}_src/." "$pkgdir/opt/$pkgname/"
 
   mkdir -p "$pkgdir/usr/local/bin"
   ln -s "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/local/bin/$pkgname"
