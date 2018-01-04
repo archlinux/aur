@@ -1,0 +1,12 @@
+diff -ura --color zookeeper-release-3.4.7/src/c/configure.ac new/src/c/configure.ac
+--- zookeeper-release-3.4.7/src/c/configure.ac	2015-11-21 20:07:24.000000000 +0100
++++ new/src/c/configure.ac	2017-12-18 13:38:33.429573797 +0100
+@@ -37,7 +37,7 @@
+    CPPUNIT_INCLUDE=
+    CPPUNIT_LIBS=
+ else
+-   AM_PATH_CPPUNIT(1.10.2)
++   PKG_CHECK_MODULES(CPPUNIT, cppunit >= 1.10.2)
+ fi
+ 
+ if test "$CALLER" = "ANT" ; then

@@ -1,6 +1,6 @@
 pkgbase = libzookeeper
 	pkgdesc = libzookeeper
-	pkgver = 3.4.7
+	pkgver = 3.4.11
 	pkgrel = 1
 	url = https://github.com/apache/zookeeper
 	arch = i686
@@ -8,9 +8,13 @@ pkgbase = libzookeeper
 	license = Apache
 	makedepends = apache-ant
 	makedepends = autoconf
-    makedepends = cppunit
+	makedepends = automake
+	makedepends = cppunit
 	provides = libzookeper
-	source = https://github.com/apache/zookeeper/archive/release-3.4.7.tar.gz
-	md5sums = 6c10db76b92b860c7852343ecdc8372e
+	source = https://github.com/apache/zookeeper/archive/release-3.4.11.tar.gz
+	source = Use-PKG_CHECK_insteadOf-AM_PATH_CPPUNIT.patch
+	md5sums = c21ab388088edab98cade3f1308d352c
+	md5sums = 855b95195ae8bf987f6897ce4d175f07
 
 pkgname = libzookeeper
+
