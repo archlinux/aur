@@ -1,7 +1,7 @@
 # Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
 pkgname=giseditor
 pkgver=0.25
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A gis editor for .gpx .gdb and download maps source"
 arch=('any')
