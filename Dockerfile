@@ -55,7 +55,10 @@ RUN        sed 's/^#//g' --in-place /etc/pacman.d/mirrorlist && \
            # endregion
            # region install needed packages
            # NOTE: "neovim" is only needed for debugging scenarios.
-           yaourt --needed --noconfirm --sync nginx neovim openssl && \
+           yaourt --needed --noconfirm --sync \
+               nginx \
+               neovim \
+               openssl && \
            # endregion
            # region tidy up
            rm /var/cache/* --recursive --force
