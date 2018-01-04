@@ -1,5 +1,5 @@
-pkgbase = compton-git
-	pkgdesc = X Compositor (a fork of xcompmgr-dana) (git-version)
+pkgbase = compton-no-blur-limit-git
+	pkgdesc = X Compositor (a fork of xcompmgr-dana) (git-version with no artificial limit on blur size)
 	pkgver = 0.1_beta2.87.g316eac0
 	pkgrel = 1
 	url = https://github.com/chjj/compton
@@ -24,7 +24,9 @@ pkgbase = compton-git
 	provides = compton
 	conflicts = compton
 	source = git+https://github.com/chjj/compton.git
+	source = no-blur-limit.patch
 	md5sums = SKIP
+	md5sums = 314bafdd671821cf2ed340b866e8004d
 
-pkgname = compton-git
+pkgname = compton-no-blur-limit-git
 

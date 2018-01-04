@@ -1,0 +1,15 @@
+diff --git a/src/compton.c b/src/compton.c
+index 92935a3..eceb681 100644
+--- a/src/compton.c
++++ b/src/compton.c
+@@ -5063,10 +5063,6 @@ parse_matrix(session_t *ps, const char *src, const char **endptr) {
+     printf_errf("(): Width/height not odd.");
+     goto parse_matrix_err;
+   }
+-  if (wid > 16 || hei > 16) {
+-    printf_errf("(): Matrix width/height too large.");
+-    goto parse_matrix_err;
+-  }
+ 
+   // Allocate memory
+   matrix = calloc(wid * hei + 2, sizeof(XFixed));

@@ -1,12 +1,13 @@
+# Maintainer: Charles Milette <charles.milette@gmail.com>
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: OK100 <ok100 at lavabit dot com>
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
-pkgname=compton-git
+pkgname=compton-no-blur-limit-git
 _gitname=compton
 pkgver=0.1_beta2.87.g316eac0
 pkgrel=1
-pkgdesc="X Compositor (a fork of xcompmgr-dana) (git-version)"
+pkgdesc="X Compositor (a fork of xcompmgr-dana) (git-version with no artificial limit on blur size)"
 arch=(i686 x86_64)
 url="https://github.com/chjj/compton"
 license=('MIT')
@@ -17,12 +18,17 @@ optdepends=('dbus:          To control compton via D-Bus'
             'xorg-xprop:    For compton-trans')
 provides=('compton')
 conflicts=('compton')
-source=(git+"https://github.com/chjj/compton.git")
-md5sums=("SKIP")
+source=(git+"https://github.com/chjj/compton.git" "no-blur-limit.patch")
+md5sums=("SKIP" "314bafdd671821cf2ed340b866e8004d")
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
     git describe --tags | sed -e 's:v::' -e 's/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$_gitname"
+  git apply ../no-blur-limit.patch
 }
 
 build() {
