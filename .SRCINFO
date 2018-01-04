@@ -1,6 +1,6 @@
 pkgbase = otf-font-awesome4
 	pkgdesc = version 4.7 of font awesome
-	pkgver = 4.7
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = http://fontawesome.io
 	arch = i686
