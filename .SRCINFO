@@ -1,0 +1,17 @@
+pkgbase = xpacman2
+	pkgdesc = another X pacman game
+	pkgver = 1.002
+	pkgrel = 6
+	url = ftp://ftp.nvg.unit.no/pub/pacman/
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	depends = ncurses
+	depends = gcc-libs
+	source = https://sources.archlinux.org/other/xpacman2/pacman-1_002.tar.gz
+	source = build-fix.patch
+	md5sums = afcbc268d1eff6ea3a834c7a5f715f77
+	md5sums = 4faf33134a2a74f284059a2971833fa1
+
+pkgname = xpacman2
+
