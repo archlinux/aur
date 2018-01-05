@@ -1,0 +1,23 @@
+pkgbase = ibam
+	pkgdesc = An intelligent battery monitor
+	pkgver = 0.5.2
+	pkgrel = 9
+	url = http://ibam.sourceforge.net/
+	install = ibam.install
+	arch = x86_64
+	license = GPL
+	makedepends = sed
+	makedepends = make
+	depends = gcc-libs
+	optdepends = gnuplot: graphs support
+	source = http://downloads.sourceforge.net/sourceforge/ibam/ibam-0.5.2.tar.gz
+	source = 03acpi-check.dpatch
+	source = ibam-0.5.2-sysfs.patch
+	source = ibam-0.5.2-debian-sysfs-lenovo.patch
+	md5sums = 2d5222ff504dd19e7c1ea8acc2f13cf5
+	md5sums = 2f27fc97932bd59cabacbad063a13f0e
+	md5sums = 2a50027f73276d91555105b713687a4d
+	md5sums = 49f0667537a221f9f1ab5b8a1f513adb
+
+pkgname = ibam
+

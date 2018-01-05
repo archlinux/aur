@@ -1,0 +1,28 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 03acpi-check.dpatch by Martin Wuertele <maxx@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: change detection for sysfs and sysfs variable names for 2.6.30+ kernels
+
+@DPATCH@
+--- ibam-0.5.2/ibam.inl.orig    2010-01-03 12:17:10.000000000 +0100
++++ ibam-0.5.2/ibam.inl 2010-01-03 12:17:19.000000000 +0100
+@@ -945,7 +945,7 @@
+    string sysfs_path = "/sys/class/power_supply"; // ...
+    ifstream pmu,acpi,sysfs;
+    pmu.open((pmu_path+"/info").c_str());
+-   acpi.open((acpi_path+"/info").c_str());
++   acpi.open((acpi_path+"/event").c_str());
+    if (pmu.is_open()) {
+ #ifdef IBAM_DEBUG
+       cout << "using pmu" << endl;
+@@ -959,7 +959,7 @@
+       acpi.close();
+       apm = new acpi_status();
+    } else {
+-      sysfs.open((sysfs_path+"/BAT1/charge_full").c_str());
++      sysfs.open((sysfs_path+"/BAT0/present").c_str());
+       if(sysfs.is_open()) {
+ #ifdef IBAM_DEBUG
+       cout << "using sysfs" << endl;
+

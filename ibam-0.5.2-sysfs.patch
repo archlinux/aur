@@ -1,0 +1,17 @@
+diff -wbBur ibam-0.5.2/ibam.inl ibam-0.5.2.q/ibam.inl
+--- ibam-0.5.2/ibam.inl	2009-03-09 19:53:20.000000000 +0300
++++ ibam-0.5.2.q/ibam.inl	2013-11-11 23:45:39.197066574 +0400
+@@ -959,7 +959,13 @@
+       acpi.close();
+       apm = new acpi_status();
+    } else {
+       sysfs.open((sysfs_path+"/BAT0/present").c_str());
++      if(!sysfs.is_open()) {
++        sysfs.open((sysfs_path+"/BAT1/present").c_str());
++      }
++      if(!sysfs.is_open()) {
++        sysfs.open((sysfs_path+"/BAT2/present").c_str());
++      }
+       if(sysfs.is_open()) {
+ #ifdef IBAM_DEBUG
+       cout << "using sysfs" << endl;

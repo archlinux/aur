@@ -1,0 +1,76 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 05_sysfs_lenovo.dpatch by Martin Wuertele <maxx@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: add lenovo sysfs detection
+
+@DPATCH@
+
+--- ibam-0.5.2/ibam.inl.orig	2011-02-15 21:42:39.000000000 +0100
++++ ibam-0.5.2/ibam.inl	2011-02-15 21:41:08.000000000 +0100
+@@ -540,6 +540,7 @@
+          
+          if(present)
+          {
++            // try charge_full
+             in.open((((Path)+battery_entry->d_name)+"/charge_full").c_str());
+             if(!in.fail())
+             {
+@@ -547,10 +548,19 @@
+                total_capacity+=capacity;
+             }
+             in.close();
++	    // try energy_full
++	    in.open((((Path)+battery_entry->d_name)+"/energy_full").c_str());
++            if(!in.fail())
++            {
++               in>>capacity;
++               total_capacity+=capacity;
++            }
++            in.close();
+          }
+          
+          if(present && capacity)
+          {
++            // try charge_now
+             in.open((((Path)+battery_entry->d_name)+"/charge_now").c_str());
+             if(!in.fail())
+             {
+@@ -558,10 +568,19 @@
+                total_remain+=remain;
+             }
+             in.close();
+-         }
++            // try energy_now
++            in.open((((Path)+battery_entry->d_name)+"/energy_now").c_str());
++            if(!in.fail())
++            {
++               in>>remain;
++               total_remain+=remain;
++            }
++            in.close();
++        }
+ 
+          if(present && capacity)
+          {
++            // try current_now
+             in.open((((Path)+battery_entry->d_name)+"/current_now").c_str());
+             if(!in.fail())
+             {
+@@ -569,7 +588,15 @@
+                total_rate+=rate;
+             }
+             in.close();
+-         }
++            // try energy_now
++            in.open((((Path)+battery_entry->d_name)+"/energy_now").c_str());
++            if(!in.fail())
++            {
++               in>>rate;
++               total_rate+=rate;
++            }
++            in.close();
++        }
+          
+          if(present && capacity)
+          {
