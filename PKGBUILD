@@ -2,7 +2,7 @@
 pkgname=cliqz
 _pkgname=browser-f
 pkgver=1.17.2
-pkgrel=1
+pkgrel=2
 _cqzbuildid=20171208103543
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
@@ -92,6 +92,12 @@ ac_add_options --enable-hardening
 ac_add_options --enable-optimize="-O2"
 ac_add_options --enable-rust-simd
 ac_add_options --enable-default-toolkit=cairo-gtk3
+
+# Speed up buildtime (thanks bm456)
+ac_add_options --disable-debug
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-tests
+ac_add_options --disable-parental-controls
 
 # System libraries
 ac_add_options --with-system-zlib
