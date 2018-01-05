@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WhisperSystems/Signal-D
         "${pkgname}.sh"
         "${pkgname}.desktop")
 sha512sums=('f8409ace472f2bf7614741ddb0f612faaf9f130141bd22539dc0ee4987dd8260136dc53965876c101cce8e15bf2769ab8cb30a07ae304491d97704370bc57058'
-            'e6ee4914af88b75a520bbae55e4701a4a911b88d698a06b5bf9fdb612b377f2f6f50d19850fcc8737752d32e9f58aa48c3e7026931ab6dc6d796fa91db87c5ee'
+            '2c7f7ab67b94f5c5ed799eba2c47c466d35bf16a60b6311bac606956e25689b21e3ffa2373cf47289d83d46e20da1213866ade06009eccd8012e840a7428f056'
             'a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327')
 
 prepare() {

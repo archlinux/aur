@@ -1,2 +1,2 @@
 #!/bin/sh 
-electron /usr/lib/signal/resources/app.asar
+electron /usr/lib/signal/resources/app.asar $@
