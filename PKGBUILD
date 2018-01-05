@@ -4,12 +4,13 @@
 
 pkgname=seahub
 pkgver=6.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The web end of seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
 license=('Apache')
-depends=("seafile-server" "python2-virtualenv" "python2-django-pylibmc")
+depends=("seafile-server" "python2-virtualenv" "python2-django-pylibmc"
+         'python2-dateutil' 'python2-qrcode')
 makedepends=('python2-pip')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
