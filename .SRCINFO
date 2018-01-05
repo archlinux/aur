@@ -1,0 +1,23 @@
+pkgbase = gtkglextmm
+	pkgdesc = Cpp C++ bindings for gtkglext
+	pkgver = 1.2.0
+	pkgrel = 11
+	url = http://gtkglext.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	depends = gtkmm
+	depends = gtkglext
+	source = http://downloads.sourceforge.net/sourceforge/gtkglext/gtkglextmm-1.2.0.tar.bz2
+	source = gtkglextmm-1.2.0-aclocal.patch
+	source = fix_ftbfs_gtk_2_20.patch
+	source = fix_ftbfs_gtk_2_36.patch
+	source = fix_ftbfs_gtk_2_37.patch
+	md5sums = 27c05f4d45c5fd07b6fb0f044add3056
+	md5sums = 1f331ecdaa6ea3f9eaec8f0e54d6cd82
+	md5sums = 60a2e7518a148ea3be59669770ee5aaa
+	md5sums = dd08d68c5e076dfa3293b00dd4150633
+	md5sums = c39860d898a9ce24af3762fd351c5266
+
+pkgname = gtkglextmm
+
