@@ -1,0 +1,18 @@
+pkgbase = synce-core
+	pkgdesc = provide a means of communication with a Windows CE device - libraries
+	pkgver = 0.17
+	pkgrel = 4
+	url = http://synce.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = dhclient
+	makedepends = pyrex
+	depends = dbus-glib
+	depends = udev
+	depends = python2
+	depends = libgudev
+	source = http://downloads.sourceforge.net/sourceforge/synce/SynCE/synce-core/synce-core-0.17.tar.gz
+	md5sums = ee0b9369b6fea5e2d1b970503dd7cb0e
+
+pkgname = synce-core
+
