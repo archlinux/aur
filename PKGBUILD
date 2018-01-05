@@ -4,7 +4,7 @@
 # Contributor: ask
 
 pkgname=rust-bindgen-git
-pkgver=0.31.3.eccc0bfa
+pkgver=0.32.1.d5014a1
 pkgrel=1
 pkgdesc="Binding generator for rust language"
 arch=('i686' 'x86_64')
