@@ -8,13 +8,12 @@ url="http://qt-apps.org/content/show.php?content=79286"
 depends=('mingw-w64-crt' 'mingw-w64-qt4')
 makedepends=('mingw-w64-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("https://dl.opendesktop.org/api/files/download/id/1466644899/79286-iistaskpanel-${pkgver}-src.zip")
-md5sums=('5a63ee322d49c404854071592e536c29')
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1466644899/s/79a0cefa07283ed7c96345a7052f820e/t/1515193661/79286-iistaskpanel-0.2.2-src.zip")
+sha256sums=('daaea72d5e06c5c694f0b657af49287ad611b4bfd96a7db7f7c6b2f888e8c353')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"      
 
 build() {
-  unset LDFLAGS
   cd "$srcdir/iistaskpanel-${pkgver}-src"
   sed -i "s|SUBDIRS =  src \\\\|SUBDIRS = src|g" taskpanel.pro
   sed -i "s|tests|#tests|g" taskpanel.pro
