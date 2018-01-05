@@ -3,7 +3,7 @@
 
 pkgname=selfoss-git
 _gitname=selfoss
-pkgver=2.16.r108.ge930324
+pkgver=2.17.r109.ge2dc9e1
 pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
@@ -38,9 +38,6 @@ prepare() {
 
   composer install --no-dev
   git submodule update --init
-
-  # Fix error with translating pathname to UTF-8
-  mv data/fulltextrss/standard/p{*,e}rotin.com.txt
 }
 
 package() {
