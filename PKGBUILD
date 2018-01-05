@@ -2,7 +2,7 @@
 
 pkgname=franz
 pkgver=5.0.0_beta.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Free messaging app for services like WhatsApp, Slack, Messenger and many more."
 arch=('i686' 'x86_64')
 url="https://meetfranz.com/"
@@ -17,7 +17,8 @@ sha256sums=('5dedd748870c9603da06270ae78749b9c22bd834d98e024c74252f47e8b49d39'
 
 prepare() {
   cd "$pkgname-${pkgver//_/-}"
-  sed -i 's/"electron-updater": "[0-9.^]*"/"electron-updater": "^2.16.1"/' package.json
+  sed -i 's/"electron-updater": "[0-9.^]*"/"electron-updater": "^2.18.2"/' package.json
+  sed -i 's/"electron-builder": "[0-9.^]*"/"electron-builder": "^19.47.0"/' package.json
 }
 
 build() {
