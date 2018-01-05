@@ -1,0 +1,63 @@
+diff -wbBur xnc-5.0.4/src/lib/image2/sdl_image/IMG_png.c xnc-5.0.4.my/src/lib/image2/sdl_image/IMG_png.c
+--- xnc-5.0.4/src/lib/image2/sdl_image/IMG_png.c	2002-08-05 14:43:09.000000000 +0400
++++ xnc-5.0.4.my/src/lib/image2/sdl_image/IMG_png.c	2012-01-19 13:46:48.000000000 +0400
+@@ -138,7 +138,7 @@
+ 	 * the normal method of doing things with libpng).  REQUIRED unless you
+ 	 * set up your own error handlers in png_create_read_struct() earlier.
+ 	 */
+-	if ( setjmp(png_ptr->jmpbuf) ) {
++	if ( setjmp(png_jmpbuf(png_ptr)) ) {
+ 		IMG_SetError("Error reading the PNG file.");
+ 		goto done;
+ 	}
+@@ -207,9 +207,9 @@
+ 			Rmask = 0x000000FF;
+ 			Gmask = 0x0000FF00;
+ 			Bmask = 0x00FF0000;
+-			Amask = (info_ptr->channels == 4) ? 0xFF000000 : 0;
++			Amask = (png_get_channels(png_ptr, info_ptr) == 4) ? 0xFF000000 : 0;
+ 		} else {
+-		        int s = (info_ptr->channels == 4) ? 0 : 8;
++		        int s = (png_get_channels(png_ptr, info_ptr) == 4) ? 0 : 8;
+ 			Rmask = 0xFF000000 >> s;
+ 			Gmask = 0x00FF0000 >> s;
+ 			Bmask = 0x0000FF00 >> s;
+@@ -217,7 +217,7 @@
+ 		}
+ 	}
+ 	surface = SDL_AllocSurface(SDL_SWSURFACE, width, height,
+-			bit_depth*info_ptr->channels, Rmask,Gmask,Bmask,Amask);
++			bit_depth*png_get_channels(png_ptr, info_ptr), Rmask,Gmask,Bmask,Amask);
+ 	if ( surface == NULL ) {
+ 		IMG_SetError("Out of memory");
+ 		goto done;
+@@ -252,6 +252,10 @@
+ 	/* read rest of file, get additional chunks in info_ptr - REQUIRED */
+ 	png_read_end(png_ptr, info_ptr);
+ 
++	png_colorp plte;
++	int num_palette;
++	png_get_PLTE(png_ptr, info_ptr, &plte, &num_palette);
++
+ 	/* Load the palette, if any */
+ 	palette = surface->format->palette;
+ 	if ( palette ) {
+@@ -262,12 +266,12 @@
+ 		    palette->colors[i].g = i;
+ 		    palette->colors[i].b = i;
+ 		}
+-	    } else if (info_ptr->num_palette > 0 ) {
+-		palette->ncolors = info_ptr->num_palette; 
+-		for( i=0; i<info_ptr->num_palette; ++i ) {
+-		    palette->colors[i].b = info_ptr->palette[i].blue;
+-		    palette->colors[i].g = info_ptr->palette[i].green;
+-		    palette->colors[i].r = info_ptr->palette[i].red;
++	    } else if (num_palette > 0 ) {
++		palette->ncolors = num_palette;
++		for( i=0; i<num_palette; ++i ) {
++		    palette->colors[i].b = plte[i].blue;
++		    palette->colors[i].g = plte[i].green;
++		    palette->colors[i].r = plte[i].red;
+ 		}
+ 	    }
+ 	}

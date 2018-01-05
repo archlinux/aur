@@ -1,0 +1,24 @@
+pkgbase = xnc
+	pkgdesc = X nortern captain file manager
+	pkgver = 5.0.4
+	pkgrel = 8
+	url = http://xnc.jinr.ru/
+	arch = x86_64
+	license = GPL
+	makedepends = libxt
+	depends = gcc-libs
+	depends = libpng
+	depends = libtiff
+	depends = libsm
+	depends = libxext
+	depends = libjpeg>=7
+	options = !makeflags
+	source = https://sources.archlinux.org/other/community/xnc/xnc-5.0.4.src.tar.gz
+	source = xnc-gcc44.patch
+	source = libpng15.patch
+	md5sums = 62446cdfdf5730f125fb351a658c0bd3
+	md5sums = c0037a081824bca691e59a4ec68b6686
+	md5sums = 7159af1c645fda860f0e5057100651ad
+
+pkgname = xnc
+

@@ -1,0 +1,72 @@
+diff -wbBur xnc-5.0.4/src/include/commonfuncs.h xnc-5.0.4.my/src/include/commonfuncs.h
+--- xnc-5.0.4/src/include/commonfuncs.h	2002-10-16 10:44:17.000000000 +0400
++++ xnc-5.0.4.my/src/include/commonfuncs.h	2011-11-17 18:59:19.000000000 +0400
+@@ -15,7 +15,7 @@
+ extern int   path_to_fullpath(char* dest, char *srcdir);
+ extern void  add_path_content(char *curdir, const char *cont, int vms_host=0);
+ extern void  upper_path(char *curdir, int vms_host=0);
+-extern char* get_first_content(const char *curdir, char *cont);
++extern const char* get_first_content(const char *curdir, char *cont);
+ extern void  get_last_content(char *curdir, char *cont);
+ extern void  get_last_and_rest_content(char* curdir, char* last, char* rest);
+ extern void  str_swap(char *str1, char *str2);
+diff -wbBur xnc-5.0.4/src/lib/tool/commonfuncs.cxx xnc-5.0.4.my/src/lib/tool/commonfuncs.cxx
+--- xnc-5.0.4/src/lib/tool/commonfuncs.cxx	2002-10-16 10:44:20.000000000 +0400
++++ xnc-5.0.4.my/src/lib/tool/commonfuncs.cxx	2011-11-17 18:59:19.000000000 +0400
+@@ -117,9 +117,9 @@
+ }
+ 
+ //Get first content of dirname
+-char*   get_first_content(const char *curdir, char *cont)
++const char*   get_first_content(const char *curdir, char *cont)
+ {
+-        char *b=strchr(curdir,'/');
++        const char *b=strchr(curdir,'/');
+         if(b)
+           {
+                   strncpy(cont,curdir,b-curdir);
+diff -wbBur xnc-5.0.4/src/lib/vfs/afs.cxx xnc-5.0.4.my/src/lib/vfs/afs.cxx
+--- xnc-5.0.4/src/lib/vfs/afs.cxx	2003-11-27 18:36:43.000000000 +0300
++++ xnc-5.0.4.my/src/lib/vfs/afs.cxx	2011-11-17 18:59:19.000000000 +0400
+@@ -29,7 +29,7 @@
+ // The return value is static, so copy it before using the
+ // method again!
+ 
+-char *create_dirs(char *rootdir, char* dirlist)
++char *create_dirs(char *rootdir, const char* dirlist)
+ {
+    char str[L_MAXPATH];
+    char cont[FLIST_NAME];
+@@ -1350,7 +1350,7 @@
+     add_path_content(curdir, to_dir);
+   } else        //If we here then we doing cd not to subdir but to subdir/subdir...
+   {
+-    char *s=to_dir;
++    const char *s=to_dir;
+     if(*s)
+     {
+       do
+diff -wbBur xnc-5.0.4/src/lib/vfs/ftpfs.cxx xnc-5.0.4.my/src/lib/vfs/ftpfs.cxx
+--- xnc-5.0.4/src/lib/vfs/ftpfs.cxx	2002-10-30 15:47:38.000000000 +0300
++++ xnc-5.0.4.my/src/lib/vfs/ftpfs.cxx	2011-11-17 18:59:19.000000000 +0400
+@@ -1413,7 +1413,7 @@
+                  return;
+          if(strcmp(dir,"/"))
+          {
+-                 char *s=dir;
++                 const char *s=dir;
+                  if(*s=='/')         //Skip leading '/'
+                          s++;
+                  do
+diff -wbBur xnc-5.0.4/src/man_page.cxx xnc-5.0.4.my/src/man_page.cxx
+--- xnc-5.0.4/src/man_page.cxx	2002-10-02 16:54:33.000000000 +0400
++++ xnc-5.0.4.my/src/man_page.cxx	2011-11-17 18:59:00.000000000 +0400
+@@ -81,7 +81,7 @@
+       buf[j] = 0;
+       manf->size = j;
+       delete buf;
+-      fp = open(tmps, O_WRONLY | O_CREAT | O_TRUNC);
++      fp = open(tmps, O_WRONLY | O_CREAT | O_TRUNC, 0600);
+       write(fp, buf2, j);
+       close(fp);
+       delete manf;
