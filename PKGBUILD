@@ -8,11 +8,12 @@ pkgdesc="The powerful music player for KDE - KF5 GIT version"
 arch=("i686" "x86_64")
 url="http://amarok.kde.org"
 license=('GPL2' 'LGPL2.1' 'FDL')
-depends=('taglib' 'threadweaver' 'libmariadbclient' 'kdelibs4support' 
-	'libofa' 'knewstuff' 'ffmpeg' 'kcmutils' 'ktexteditor'
-        'extra-cmake-modules' 'knotifyconfig' 'kdnssd' 'plasma-framework'
-        'kdesignerplugin' 'kdoctools')
-makedepends=()
+depends=('kdelibs4support' 'threadweaver' 'plasma-framework'
+         'kcmutils' 'knewstuff' 'ktexteditor' 'knotifyconfig' 'kdnssd'
+         'libmariadbclient' 'taglib-extras' 'loudmouth' 'clamz' 'gst-plugins-bad'
+         'ifuse' 'libgpod' 'libmtp'
+         'qca-qt5' 'liblastfm' 'qjson' 'libmygpo-qt5-git' 'qt5-webkit')
+makedepends=('pkgconfig' 'extra-cmake-modules' 'kdoctools')
 optdepends=()
 conflicts=('amarok')
 provides=('amarok')
