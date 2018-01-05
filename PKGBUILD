@@ -51,7 +51,7 @@ _use_current=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
-pkgver=4.14.11
+pkgver=4.14.12
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -82,10 +82,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch'
         '0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
-        '0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
         '0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
-        '0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch')
+        '0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch')
         
 _kernelname=${pkgbase#linux} 
 
@@ -110,16 +108,11 @@ prepare() {
   
     ### Fix https://bugs.archlinux.org/task/56605
         msg "Fix #56605"
-        patch -Np1 -i ../0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
         patch -Np1 -i ../0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
   
     ### Fix https://bugs.archlinux.org/task/56846
         msg "Fix #56846"
         patch -Np1 -i ../0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-  
-    ### For AMD processors, keep PTI off by default
-        msg "For AMD processors, keep PTI off by default"
-        patch -Np1 -i ../0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -387,7 +380,7 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            'dbf5488f0ba4e18b253da02c5cc862096a3253689986fbf5cd89b835c94c2057f4196d8d278973254fdf6dd07629784bf1dc3bdc7d1ac3bb0682c6f9ad9d21ad'
+            'b11b91503c9eb879b79cb16683204f5dbb467aac62dcfc1b025f889dc38016d990c0fd1879210226430e9f9ac6e168439b13603781188d67d213b12a334b4e5b'
             'SKIP'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
@@ -399,10 +392,8 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             '05f2c577450cfeae4b66a7d022a9dd0dab0dbf36e9738423efa8f45aaf0755b48a89f1f88b042946205e681458f76c5c5177c16869094839b7b234e0e2b27511'
             'fd9bdc818326fa36c9f1813d0d1821de5e325b646e1c307c197ad38bada7f298d35b4bc1bbf1c2854689f3ba71144879e799a1123037caccd6e3f64edfc22d54'
             '814517d08c35cc886fe3382619d41107d6139a703c27186d0ce58e187eaf4e84891572e58246750ac8602555794ed6f74d946565b98860787a0aa617fb946dda'
-            '7a5a6edf0879e59437b03166882e5afdc2dea9087819b1ada3aee22861a041896e305f136c61f0b8365cddff34852620fe2b3c51b5408d4c243a840b3dfe3059'
             'e6605e923c967b5f8db619868b15ea5b0d4254c62cf12bb920f38659933d6ca25a643d3e044c4915a8309071461f5f14c55d0aa0329c113bce4780d4fa3afbb7'
-            '0dec1482efe6e5d762a3061f365e43191484f055b738112452b8ca39e162b935d99cf16b25c0b253d6b532fabc54bde2f5c09be91887156ed6ae06d1558f94b9'
-            'fda8b429d98b9017e0d72c91054c53afec6fab41abb06724bc1ce020863956215a3cdeb7692297d533d7426f8e2cc7f8d03c2570abf71e4b1d4f41fdb5fe63f0')
+            '0dec1482efe6e5d762a3061f365e43191484f055b738112452b8ca39e162b935d99cf16b25c0b253d6b532fabc54bde2f5c09be91887156ed6ae06d1558f94b9')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
