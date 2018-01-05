@@ -3,7 +3,7 @@
 _name=anndata
 pkgname=python-$_name
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A data structure for rectangular numeric data and sample/variable annotations.'
 arch=(any)
 url="https://github.com/theislab/$_name"
@@ -16,5 +16,5 @@ sha256sums=('666b61fea65d8f4b75b78d444746a7b5f6c3a78346bd39f37b0d95e476e081b4')
 noextract=("$_wheel")
 
 package() {
-	pip install --compile --no-deps --root="$pkgdir" "$_wheel"
+	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
 }
