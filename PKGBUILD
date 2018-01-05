@@ -2,9 +2,9 @@
 
 _pkgname=radiotray-ng
 pkgname=${_pkgname}-git
-_pkgver=0.2.0
+_pkgver=0.2.1
 _branch=v${_pkgver}-dev
-pkgver=0.2.0.r45.f80aa5f
+pkgver=0.2.1.r23.bedc2a6
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
