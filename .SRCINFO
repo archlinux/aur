@@ -1,0 +1,15 @@
+pkgbase = enter
+	pkgdesc = Enter is a lightweight graphical login manager for X.
+	pkgver = 0.0.9
+	pkgrel = 4
+	url = http://enter.sf.net
+	arch = x86_64
+	license = GPL
+	depends = libxft
+	depends = imlib2
+	depends = xorg-server
+	source = http://downloads.sourceforge.net/enter/enter-0.0.9.tar.gz
+	md5sums = 47a77ae57e667f887f856c0a126d667a
+
+pkgname = enter
+
