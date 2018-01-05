@@ -6,7 +6,7 @@
 
 pkgname='bluez-utils-compat'
 _pkgbase='bluez'
-pkgver=5.47
+pkgver=5.48
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64' 'armv7h')
@@ -19,7 +19,7 @@ replaces=('bluez-hcidump' 'bluez<=4.101')
 makedepends=('dbus' 'libical' 'systemd')
 source=(https://www.kernel.org/pub/linux/bluetooth/${_pkgbase}-${pkgver}.tar.{xz,sign})
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('cf75bf7cd5d564f21cc4a2bd01d5c39ce425397335fd47d9bbe43af0a58342c8'
+sha256sums=('b9a8723072ef66bae7ec301c774902ebcb444c9c5b149b5a199e60a1ba970e90'
             'SKIP')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
 
@@ -66,4 +66,3 @@ package() {
   # move the hid2hci man page out
   mv "${pkgdir}"/usr/share/man/man1/hid2hci.1 "${srcdir}"/
 }
-
