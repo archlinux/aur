@@ -1,7 +1,8 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
+
 pkgname=flit
-pkgver=0.12.3
-pkgrel=2
+pkgver=0.13
+pkgrel=1
 pkgdesc='Simple packaging tool for simple Python packages.'
 arch=('any')
 url="http://$pkgname.readthedocs.io"
@@ -10,9 +11,9 @@ depends=(python python-pytoml python-requests python-requests_download python-do
 makedepends=('python-pip')
 _wheel="$pkgname-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('ce53f0dacbc1272a5e36ba79cfc37fe5230c94bb6c9ae772886d0ba830a068f1')
+sha256sums=('26bf9a3a9b743fed085420b4eed24f78341c0d2103a5f726980f7e7750400e81')
 noextract=("$_wheel")
 
 package() {
-	pip install --compile --no-deps --root="$pkgdir" "$_wheel"
+	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
 }
