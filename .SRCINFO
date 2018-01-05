@@ -1,0 +1,15 @@
+pkgbase = xpacman
+	pkgdesc = X pacman game (use z x / ' q keys)
+	pkgver = 0.11
+	pkgrel = 7
+	url = http://www.ibiblio.org/pub/X11/contrib/games/
+	arch = x86_64
+	license = custom
+	depends = libx11
+	source = http://www.ibiblio.org/pub/X11/contrib/games/xpacman.tar.gz
+	source = http://www.ibiblio.org/pub/X11/contrib/games/xpacman.README
+	md5sums = b0ad824c4c0ea5c4d1f8f3e7b31f32f9
+	md5sums = 620c226d6d91461ac0d91e88655c9cbf
+
+pkgname = xpacman
+
