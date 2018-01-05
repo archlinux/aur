@@ -2,7 +2,7 @@
 
 pkgname='lightdm-slick-greeter'
 _pkgname='slick-greeter'
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A slick-looking LightDM greeter"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
 depends=('cairo' 'freetype2' 'gnome-common' 'gtk3' 'libcanberra' 'libxext' 'lightdm' 'pixman')
 makedepends=('intltool' 'vala')
 optdepends=("numlockx: enable numerical keypad on supported keyboards")
-sha256sums=('39f88e624d15e46047e3dac8d02392714a25a02deef6ff6feb014b5c54e81877')
+sha256sums=('a73e5f8a448731b6497fbf6a6599a38892ea316f6c075e3b63a14911ffdf565d')
 
 build() {
     cd ${_pkgname}-$pkgver
