@@ -4,7 +4,7 @@ pkgname=superproductivity-git
 _pkgname=superProductivity
 _reponame=super-productivity
 _binname=superproductivity
-pkgver=1.6.8.r2.gc814857
+pkgver=1.7.0.r0.g5089cc7
 pkgrel=1
 pkgdesc='To Do List / Time Tracker with Jira Integration.'
 arch=('x86_64')
@@ -21,8 +21,7 @@ build() {
 	cd ${srcdir}/${_reponame}
 	npm install
 	bower install
-	yarn
-	CHROME_BIN=/usr/bin/chromium  yarn dist -l deb 
+	CHROME_BIN=/usr/bin/chromium npm run dist -- -l deb
 
 	#use the deb because it contains icon files and a .desktop file
 	_pkgver=`git describe --abbrev=0 --tags | sed 's/^.//'`
