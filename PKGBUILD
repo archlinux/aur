@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=screencast
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Command line interface to record a X11 desktop'
 arch=('any')
@@ -12,18 +12,23 @@ optdepends=('bc: fade effect support'
             'imagemagick: watermark effect support'
             'slop: graphical screen region selection support'
             'sound-theme-freedesktop: sound notification support'
+            'optipng: watermark optimization support'
+            'oxipng: watermark optimization support'
+            'littleutils-full: watermark optimization support'
             'truepng: watermark optimization support'
             'pingo: watermark optimization support'
-            'optipng: watermark optimization support'
-            'littleutils-full: watermark optimization support'
-            'advancecomp: watermark optimization support')
+            'advancecomp: watermark optimization support'
+            'bash-completion: bash-completion support')
 conflicts=('screencast-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/bermond/screencast/archive/v${pkgver}.tar.gz")
-sha256sums=('881d1a41cb4df5228f5243b189229877cffea66327d11c591ee43993e1318db8')
+sha256sums=('df3e9180c77f733b3e43f9604b630d2d6ced588505cf007a2c344907a3a97a45')
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    make
+}
 
 package() {
     cd "${pkgname}-${pkgver}"
-    gzip -9f "${pkgname}.1"
-    install -D -m755 "$pkgname"        "${pkgdir}/usr/bin/${pkgname}"
-    install -D -m644 "${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
+    make PREFIX='/usr' DESTDIR="$pkgdir" install
 }
