@@ -1,11 +1,11 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname="cargo-release"
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cargo subcommand "release""
 url="https://github.com/sunng87/cargo-release"
 arch=("x86_64")
-license=("MIT", "APACHE")
+license=("MIT" "APACHE")
 makedepends=("rust")
 optdepends=()
 depends=()
