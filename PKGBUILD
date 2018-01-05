@@ -10,7 +10,7 @@ url='http://dotty.epfl.ch'
 license=('BSD')
 depends=('java-environment=8')
 source=("https://github.com/lampepfl/dotty/releases/download/$_pkgverWithHyphen/dotty-$_pkgverWithHyphen.tar.gz")
-sha1sums=('4c39b81f54f6b663da60ab90f9ddb5d28a2da670')
+sha1sums=('601546cf4c51e354abc6fe11a6ea9f122d86c390')
 
 package() {
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/scala-dotty"
