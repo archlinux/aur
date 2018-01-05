@@ -37,13 +37,6 @@ _makenconfig=
 #  23. Generic-x86-64 (GENERIC_CPU)
 _subarch=
 
-# NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
-# actually run slower with NUMA enabled. Most users will want to set this option
-# to enabled ... in other words, do not use NUMA on a single CPU system.
-#
-# See, https://bugs.archlinux.org/task/31187
-_NUMAdisable=y
-
 # Compile ONLY probed modules
 # As of mainline 2.6.32, running with this option will only build the modules
 # that you currently have probed in your system VASTLY reducing the number of
@@ -69,7 +62,7 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14.10
+pkgver=4.14.11
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -98,11 +91,12 @@ source=(
   "$_preck2/df2a75f4864b30011ab6a6f365d9378d8eafa53b.patch"
   "$_preck2/a79d648fcde72fc98048d4435bc86864a59fd01b.patch"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
-  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-  0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+  0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
+  0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -110,11 +104,11 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '16f560aa713b46c707f04a226f67dc31fdd280aae57dd19e0413d61df5336c74'
+            'f588b62d7ee1d2ebdc24afa0e256ff2f8812d5cab3bf572bf02e7c4525922bf9'
             'SKIP'
-            '6dd496a79efcc9c14e38a271bac6288225f997e9aa966ba9ea43e5445d276bed'
+            '67030bc59cfe1c2d57a1284905e61a03b9aaa1516e1831dd3b74528ff7999ca3'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             '44d10c573112dc2b64d39ea33c2a10fbbdd84f9877b8d736acc09b2516299474'
@@ -123,12 +117,13 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'd2f59cf1c5187204eced6e53806b187e90698fcb2309955aed4020a15c659ae1'
             '3d4d2506795c4bd914959758f5b69ccf5a4f5a21f5d4bfc87bf0aa3b4b58f4c6'
             '0dbf2d23df0b5d023794332872b8b346d0c4994576b778396364e803acac4498'
-            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85'
-            'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
-            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2'
-            'ed3266ab03f836f57de0faf8a10ffd7566c909515c2649de99adaab2fac4aa32'
-            '64a014f7e1b4588728b3ea9538beee67ec63fb792d890c7be9cc13ddc2121b00'
-            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb')
+            '06bc1d8b1cd153c3146a4376d833f5769b980e5ef5eae99ddaaeb48bf514dae2'
+            'b90bef87574f30ec66c0f10d089bea56a9e974b6d052fee3071b1ff21360724b'
+            'f38531dee9fd8a59202ce96ac5b40446f1f035b89788ea9ecb2fb3909f703a25'
+            '705d5fbfce00ccc20490bdfb5853d67d86ac00c845de6ecb13e414214b48daeb'
+            '0a249248534a17f14fab7e14994811ae81fe324668a82ff41f3bcabeeae1460f'
+            '8e1b303957ddd829c0c9ad7c012cd32f2354ff3c8c1b85da3d7f8a54524f3711'
+            '914a0a019545ad7d14ed8d5c58d417eb0a8ec12a756beec79a545aabda343b31')
 
 _kernelname=${pkgbase#linux}
 
@@ -137,22 +132,26 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
+  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
 
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
   # https://bugs.archlinux.org/task/56575
-  patch -Np1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+  patch -Np1 -i ../0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
 
   # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  patch -Np1 -i ../0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 
   # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-  patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  patch -Np1 -i ../0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
+  patch -Np1 -i ../0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
 
   # https://bugs.archlinux.org/task/56846
-  patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  patch -Np1 -i ../0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+
+  # For AMD processors, keep PTI off by default
+  patch -Np1 -i ../0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
@@ -169,29 +168,24 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   patch -Np1 -i "../${_gcc_patch}"
 
-  # https://www.spinics.net/lists/stable/msg207374.html
-  chmod +x tools/objtool/sync-check.sh
-
   # Clean tree and copy ARCH config over
   make mrproper
 
   cp -Tf ../config .config
 
-  ### Optionally disable NUMA for 64-bit kernels only
-  # (x86 kernels do not support NUMA)
-  if [ -n "$_NUMAdisable" ]; then
-    msg "Disabling NUMA from kernel config..."
-    sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-      -i -e '/CONFIG_AMD_NUMA=y/d' \
-      -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-      -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-      -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-      -i -e '/CONFIG_NODES_SHIFT=6/d' \
-      -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-      -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-      -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-      -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-  fi
+  # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
+  # actually run slower with NUMA enabled.
+  # See, https://bugs.archlinux.org/task/31187
+  sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+    -i -e '/CONFIG_AMD_NUMA=y/d' \
+    -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+    -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+    -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+    -i -e '/CONFIG_NODES_SHIFT=6/d' \
+    -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+    -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+    -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+    -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
 
   ### Optionally use running kernel's config
   # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
