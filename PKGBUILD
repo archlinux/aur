@@ -3,7 +3,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=6.2.2
+pkgver=6.2.3
 pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -15,7 +15,8 @@ depends=("seafile" "wget" "sqlite" "fuse" "ccnet-server" "libarchive"
          "python2-requests" "python2-flup")
 optdepends=("python2-setuptools: MySQL deploying"
             "python2-pillow: MySQL deploying"
-            "mysql-python: MySQL deploying")
+            "mysql-python: MySQL deploying"
+            "python2-wsgidav-seafile: webdav-support")
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "seafile-admin_virtualenv.patch"
         "seafile-server@.service"
@@ -24,7 +25,7 @@ source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.ta
         "libseafile.in.patch"
         "openssl-1.1.diff"
         "mysql-setup.patch")
-sha256sums=('9f3b5803c59af6fb1431e40951c800bf08d17b6a7cc3c1307359891b7199a388'
+sha256sums=('77bfc8a0037d37588edf96e46b3975453ff6e48a06b4343ce97d9381618cc111'
             '52fb29858f6424052cf01630ad72b5687a4fb259f23f9efc97f08be04a883218'
             'da31d1b61031cbacc42e1ab708c67c83dba933ff391b07677dabab7ab79729f4'
             '6bd632f8741b039bad961af3d6850b651e25b7e7a3018d6e2789f350ff93bb78'
