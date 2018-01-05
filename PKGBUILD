@@ -1,17 +1,16 @@
 # Maintainer: David Birks <david@tellus.space>
+# Maintainer: Jake <aur@ja-ke.tech>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Alda <alda@leetchee.fr>
 # Contributor: mrxx <mrxx at cyberhome dot at>
 # Contributor: Jonhoo <jon at thesquareplanet.com>
-# Contributor: Jake <ja.ke@posteo.de>
-
 pkgname=signal
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
-depends=('electron' 'gconf' 'gtk2' 'libxss')
-makedepends=('npm' 'ruby-sass' 'python2' 'phantomjs' 'yarn' 'grunt-cli')
+depends=('electron' 'gconf' 'gtk2')
+makedepends=('npm' 'ruby-sass' 'python2' 'phantomjs' 'yarn' 'grunt-cli' 'git')
 provides=('signal')
 conflicts=('signal-desktop' 'signal-desktop-beta' 'signal-desktop-bin')
 arch=("i686" "x86_64")
