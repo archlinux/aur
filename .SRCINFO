@@ -1,0 +1,23 @@
+pkgbase = gambatte
+	pkgver = r572
+	pkgrel = 2
+	url = https://github.com/sinamas/gambatte
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = qt4
+	makedepends = scons
+	makedepends = sdl
+	source = git://github.com/sinamas/gambatte.git#commit=46e06da8
+	md5sums = SKIP
+
+pkgname = gambatte-qt
+	pkgdesc = Accurate Game Boy Color emulator. Qt4 UI.
+	depends = qt4
+
+pkgname = gambatte-sdl
+	pkgdesc = Accurate Game Boy Color emulator
+	depends = gcc-libs
+	depends = sdl
+	depends = zlib
+
