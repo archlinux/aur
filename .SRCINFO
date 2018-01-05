@@ -1,0 +1,13 @@
+pkgbase = gtkperf
+	pkgdesc = An application designed to test GTK+ performance
+	pkgver = 0.40
+	pkgrel = 5
+	url = http://gtkperf.sourceforge.net
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://downloads.sourceforge.net/sourceforge/gtkperf/gtkperf_0.40.tar.gz
+	md5sums = 4331dde4bb83865e15482885fcb0cc53
+
+pkgname = gtkperf
+
