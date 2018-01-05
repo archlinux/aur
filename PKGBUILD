@@ -2,7 +2,7 @@
 # Contributor: Luca Weiss <WEI16416 (at) spengergasse (dot) at>
 
 pkgname=kde1-kdebase-git
-pkgver=1.1.2r6074.444ba45
+pkgver=1.1.2r6075.a40a9a0de
 pkgrel=1
 pkgdesc="Historical copy of the base applications module of KDE 1, adapted to compile on modern systems (circa. 2016)"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd build
-  cmake "$srcdir"/kde1-kdebase -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_LIBRARY_PATH='/opt/kde1/lib64'
+  cmake "$srcdir"/kde1-kdebase -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_LIBRARY_PATH='/opt/kde1/lib'
   make
 }
 
