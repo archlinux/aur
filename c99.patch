@@ -1,0 +1,23 @@
+diff -wbBur clearsilver-0.10.5/util/neo_err.h clearsilver-0.10.5.my/util/neo_err.h
+--- clearsilver-0.10.5/util/neo_err.h	2007-07-12 07:09:09.000000000 +0400
++++ clearsilver-0.10.5.my/util/neo_err.h	2015-06-05 19:06:34.961297962 +0300
+@@ -84,9 +84,6 @@
+  *          NEOERR fails
+  */
+ #if defined(USE_C99_VARARG_MACROS)
+-#define nerr_raise(e,f,...) \
+-   nerr_raisef(__PRETTY_FUNCTION__,__FILE__,__LINE__,e,f,__VA_ARGS__)
+-#elif defined(USE_GNUC_VARARG_MACROS)
+ #define nerr_raise(e,f,a...) \
+    nerr_raisef(__PRETTY_FUNCTION__,__FILE__,__LINE__,e,f,##a)
+ #endif
+@@ -98,9 +95,6 @@
+ 
+ 
+ #if defined(USE_C99_VARARG_MACROS)
+-#define nerr_raise_errno(e,f,...) \
+-   nerr_raise_errnof(__PRETTY_FUNCTION__,__FILE__,__LINE__,e,f,__VA_ARGS__)
+-#elif defined(USE_GNUC_VARARG_MACROS)
+ #define nerr_raise_errno(e,f,a...) \
+    nerr_raise_errnof(__PRETTY_FUNCTION__,__FILE__,__LINE__,e,f,##a)
+ #endif

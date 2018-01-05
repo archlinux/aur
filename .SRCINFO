@@ -1,0 +1,29 @@
+pkgbase = clearsilver
+	pkgdesc = clearsilver is a fast, powerful, and language-neutral HTML template system
+	pkgver = 0.10.5
+	pkgrel = 26
+	url = http://www.clearsilver.net
+	arch = x86_64
+	license = custom
+	makedepends = java-environment
+	depends = python2
+	depends = perl
+	depends = ruby
+	depends = java-runtime
+	options = !emptydirs
+	options = staticlibs
+	source = http://www.clearsilver.net/downloads/clearsilver-0.10.5.tar.gz
+	source = clearsilver-ruby-1.9.patch
+	source = c99.patch
+	md5sums = b8c0c7fbe0ef5e06e0c935f134304d44
+	md5sums = d9db4e5985254e1b0d63e9ff042773f4
+	md5sums = 18b9bf6755786f202b25477b5e882792
+
+pkgname = clearsilver
+	depends = python2
+	depends = perl
+	depends = ruby
+	depends = java-runtime
+	depends = perl>=
+	depends = perl<
+

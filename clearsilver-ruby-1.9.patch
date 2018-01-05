@@ -1,0 +1,244 @@
+diff -u -Nr clearsilver-0.10.5/ruby/ext/hdf/neo_cs.c clearsilver-0.10.5.my/ruby/ext/hdf/neo_cs.c
+--- clearsilver-0.10.5/ruby/ext/hdf/neo_cs.c	2007-02-16 01:31:39.000000000 +0100
++++ clearsilver-0.10.5.my/ruby/ext/hdf/neo_cs.c	2010-09-18 18:20:40.088619662 +0200
+@@ -19,7 +19,7 @@
+ 
+ VALUE r_neo_error(NEOERR *err);
+ 
+-#define Srb_raise(val) rb_raise(eHdfError, "%s/%d %s",__FILE__,__LINE__,RSTRING(val)->ptr)
++#define Srb_raise(val) rb_raise(eHdfError, "%s/%d %s",__FILE__,__LINE__,RARRAY_PTR(RSTRING(val)))
+ 
+ static void c_free (CSPARSE *csd) {
+   if (csd) {
+@@ -57,7 +57,7 @@
+   char *path;
+ 
+   Data_Get_Struct(self, CSPARSE, cs);
+-  path = STR2CSTR(oPath);
++  path = StringValuePtr(oPath);
+ 
+   err = cs_parse_file (cs, path);
+   if (err) Srb_raise(r_neo_error(err));
+@@ -73,7 +73,8 @@
+   long l;
+ 
+   Data_Get_Struct(self, CSPARSE, cs);
+-  s = rb_str2cstr(oString, &l);
++  s = StringValuePtr(oString);
++  l = RSTRING_LEN(oString);
+ 
+   /* This should be changed to use memory from the gc */
+   ms = strdup(s);
+diff -u -Nr clearsilver-0.10.5/ruby/ext/hdf/neo_util.c clearsilver-0.10.5.my/ruby/ext/hdf/neo_util.c
+--- clearsilver-0.10.5/ruby/ext/hdf/neo_util.c	2007-02-16 01:32:03.000000000 +0100
++++ clearsilver-0.10.5.my/ruby/ext/hdf/neo_util.c	2010-09-18 18:24:05.928058973 +0200
+@@ -10,7 +10,7 @@
+  */
+ 
+ #include <ruby.h>
+-#include <version.h>
++//#include <version.h>
+ #include "ClearSilver.h"
+ #include "neo_ruby.h"
+ 
+@@ -19,7 +19,7 @@
+ VALUE eHdfError;
+ static ID id_to_s;
+ 
+-#define Srb_raise(val) rb_raise(eHdfError, "%s/%d %s",__FILE__,__LINE__,RSTRING(val)->ptr)
++#define Srb_raise(val) rb_raise(eHdfError, "%s/%d %s",__FILE__,__LINE__,RARRAY_PTR(RSTRING(val)))
+ 
+ VALUE r_neo_error (NEOERR *err)
+ {
+@@ -96,7 +96,7 @@
+   VALUE rv;
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+-  name = STR2CSTR(oName);
++  name = StringValuePtr(oName);
+ 
+   rv = rb_hash_new();
+ 
+@@ -118,12 +118,12 @@
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+ 
+-  name = STR2CSTR(oName);
+-  key = STR2CSTR(oKey);
++  name = StringValuePtr(oName);
++  key = StringValuePtr(oKey);
+   if ( NIL_P(oValue) )
+     value = NULL;
+   else
+-    value = STR2CSTR(oValue);
++    value = StringValuePtr(oValue);
+ 
+   err = hdf_set_attr(hdfh->hdf, name, key, value);
+   if (err) Srb_raise(r_neo_error(err));
+@@ -134,22 +134,22 @@
+ static VALUE h_set_value (VALUE self, VALUE oName, VALUE oValue)
+ {
+   t_hdfh *hdfh;
+-  char *name, *value;
++  VALUE name, value;
+   NEOERR *err;
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+ 
+   if ( TYPE(oName) == T_STRING )
+-    name=STR2CSTR(oName);
++    name=oName;
+   else
+-    name=STR2CSTR(rb_funcall(oName,id_to_s,0));
++    name=rb_funcall(oName,id_to_s,0);
+ 
+   if ( TYPE(oValue) == T_STRING )
+-    value=STR2CSTR(oValue);
++    value=oValue;
+   else
+-    value=STR2CSTR(rb_funcall(oValue,id_to_s,0));
++    value=rb_funcall(oValue,id_to_s,0);
+ 
+-  err = hdf_set_value (hdfh->hdf, name, value);
++  err = hdf_set_value (hdfh->hdf, StringValuePtr(name), StringValuePtr(value));
+ 
+   if (err) Srb_raise(r_neo_error(err));
+ 
+@@ -165,7 +165,7 @@
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+ 
+-  name=STR2CSTR(oName);
++  name=StringValuePtr(oName);
+   d=NUM2INT(oDefault);
+ 
+   r = hdf_get_int_value (hdfh->hdf, name, d);
+@@ -181,8 +181,8 @@
+   VALUE rv;
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+-  name=STR2CSTR(oName);
+-  d=STR2CSTR(oDefault);
++  name=StringValuePtr(oName);
++  d=StringValuePtr(oDefault);
+ 
+   r = hdf_get_value (hdfh->hdf, name, d);
+   rv = rb_str_new2(r);
+@@ -197,7 +197,7 @@
+   char *name;
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+-  name=STR2CSTR(oName);
++  name=StringValuePtr(oName);
+ 
+   r = hdf_get_child (hdfh->hdf, name);
+   if (r == NULL) {
+@@ -219,7 +219,7 @@
+   char *name;
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+-  name=STR2CSTR(oName);
++  name=StringValuePtr(oName);
+ 
+   r = hdf_get_obj (hdfh->hdf, name);
+   if (r == NULL) {
+@@ -243,7 +243,7 @@
+   NEOERR *err;
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+-  name=STR2CSTR(oName);
++  name=StringValuePtr(oName);
+ 
+   err = hdf_get_node (hdfh->hdf, name, &r);
+   if (err)
+@@ -384,7 +384,7 @@
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+ 
+-  path=STR2CSTR(oPath);
++  path=StringValuePtr(oPath);
+ 
+   err = hdf_read_file (hdfh->hdf, path);
+   if (err) Srb_raise(r_neo_error(err));
+@@ -400,7 +400,7 @@
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+ 
+-  path=STR2CSTR(oPath);
++  path=StringValuePtr(oPath);
+ 
+   err = hdf_write_file (hdfh->hdf, path);
+ 
+@@ -417,7 +417,7 @@
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+ 
+-  path=STR2CSTR(oPath);
++  path=StringValuePtr(oPath);
+ 
+   err = hdf_write_file_atomic (hdfh->hdf, path);
+   if (err) Srb_raise(r_neo_error(err));
+@@ -432,7 +432,7 @@
+   NEOERR *err;
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+-  name = STR2CSTR(oName);
++  name = StringValuePtr(oName);
+ 
+   err = hdf_remove_tree (hdfh->hdf, name);
+   if (err) Srb_raise(r_neo_error(err));
+@@ -489,7 +489,7 @@
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+ 
+-  s = STR2CSTR(oString);
++  s = StringValuePtr(oString);
+   ignore = NUM2INT(oIgnore);
+ 
+   err = hdf_read_string_ignore (hdfh->hdf, s, ignore);
+@@ -508,7 +508,7 @@
+   Data_Get_Struct(self, t_hdfh, hdfh);
+   Data_Get_Struct(oHdfSrc, t_hdfh, hdfh_src);
+ 
+-  name = STR2CSTR(oName);
++  name = StringValuePtr(oName);
+ 
+   if (hdfh_src == NULL) rb_raise(eHdfError, "second argument must be an Hdf object");
+ 
+@@ -526,8 +526,8 @@
+   NEOERR *err;
+ 
+   Data_Get_Struct(self, t_hdfh, hdfh);
+-  src = STR2CSTR(oSrc);
+-  dest = STR2CSTR(oDest);
++  src = StringValuePtr(oSrc);
++  dest = StringValuePtr(oDest);
+ 
+   err = hdf_set_symlink (hdfh->hdf, src, dest);
+   if (err) Srb_raise(r_neo_error(err));
+@@ -545,9 +545,10 @@
+   char *ret = NULL;
+   NEOERR *err;
+ 
+-  s = rb_str2cstr(oString,&buflen);
+-  esc_char = STR2CSTR(oEsc_char);
+-  escape = STR2CSTR(oEsc);
++  s = StringValuePtr(oString);
++  buflen = RSTRING_LEN(oString);
++  esc_char = StringValuePtr(oEsc_char);
++  escape = StringValuePtr(oEsc);
+ 
+   err = neos_escape((UINT8*)s, buflen, esc_char[0], escape, &ret);
+ 
+@@ -566,8 +567,9 @@
+   char *esc_char;
+   long buflen;
+ 
+-  s = rb_str2cstr(oString,&buflen);
+-  esc_char = STR2CSTR(oEsc_char);
++  s = StringValuePtr(oString);
++  buflen = RSTRING_LEN(oString);
++  esc_char = StringValuePtr(oEsc_char);
+ 
+   /* This should be changed to use memory from the gc */
+   copy = strdup(s);
