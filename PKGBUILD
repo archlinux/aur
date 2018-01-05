@@ -1,9 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.17.2
-pkgrel=2
-_cqzbuildid=20171208103543
+pkgver=1.17.4
+pkgrel=1
+_cqzbuildid=20180104111552
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
@@ -19,7 +19,7 @@ source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         no-plt.diff
         0001-Bug-1360278-Add-preference-to-trigger-context-menu-o.patch
         0002-Bug-1419426-Implement-browserSettings.contextMenuSho.patch)
-sha256sums=('de64afc830a55d81f3607a73e122e6dfe15869e0484211d99ed574daa215b237'
+sha256sums=('9f0b56b6265676ebb7cb5368936a0d1d121b1c43cf96adf71c2d022dbda47f84'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
@@ -141,7 +141,7 @@ package() {
   cd "${_pkgname}-$pkgver"
   for size in 16 22 24 32 48 256; do
     install -D -m644 "mozilla-release/browser/branding/cliqz/default$size.png" \
-            "$pkgdir/usr/share/icons/hicolor/$sizex$size/apps/$pkgname.png"
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
   done
 
   install -d -m755 "$pkgdir/usr/lib/$pkgname/browser/defaults/preferences"
