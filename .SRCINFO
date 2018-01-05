@@ -1,0 +1,23 @@
+pkgbase = kmscon
+	pkgdesc = Terminal emulator based on Kernel Mode Setting (KMS)
+	pkgver = 8
+	pkgrel = 3
+	url = http://www.freedesktop.org/wiki/Software/kmscon/
+	arch = x86_64
+	license = MIT
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	makedepends = linux-api-headers
+	depends = systemd
+	depends = libdrm
+	depends = mesa
+	depends = libgl
+	depends = pango
+	depends = libxkbcommon
+	depends = xkeyboard-config
+	depends = libtsm
+	source = http://www.freedesktop.org/software/kmscon/releases/kmscon-8.tar.xz
+	md5sums = 90d39c4ef53a11c53f27be4a7e9acee4
+
+pkgname = kmscon
+
