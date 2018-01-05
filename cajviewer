@@ -22,4 +22,4 @@ if [ ! -e "$prog" ]; then
     install
 fi
 
-exec "$prog" $@
+exec wine "$prog" $@
