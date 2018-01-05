@@ -1,5 +1,5 @@
 pkgname=raiblocks-git
-pkgver=9.0.r78.gc7bf58d1
+pkgver=9.0.r87.g52e0ef67
 pkgrel=1
 pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
@@ -37,7 +37,10 @@ prepare() {
   cd "$srcdir/raiblocks"
 
   #revert boost 1.66 commit until it makes it out of [testing] so we can use Arch's 1.65
-  git revert 1530785edf358de5ef50cb430656981e67686bac --no-edit --no-commit
+  git revert -v fda5cae96163571b0926d21f967fc2c59ecee68e --no-edit --no-commit
+  git revert -v 1530785edf358de5ef50cb430656981e67686bac --no-edit --no-commit
+  #it's ok if it fails on some file we don't need for building
+
   
   git submodule init
 
