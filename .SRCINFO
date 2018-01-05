@@ -1,0 +1,17 @@
+pkgbase = tcltls
+	pkgdesc = OpenSSL extension to Tcl
+	pkgver = 1.7.12
+	pkgrel = 1
+	url = https://core.tcl.tk/tcltls/index
+	arch = x86_64
+	license = GPL
+	depends = tcl
+	depends = openssl
+	depends = awk
+	provides = tls
+	replaces = tls
+	source = https://core.tcl.tk/tcltls/uv/tcltls-1.7.12.tar.gz
+	sha256sums = 0e09e8e1cb3dcb3d419079fe40c521b7283d5e822dc914ffd1e4ff600b895caa
+
+pkgname = tcltls
+

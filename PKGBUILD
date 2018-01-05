@@ -1,0 +1,33 @@
+# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
+# Maintainer: Sergej Pupykin <pupykin.s@gmail.com>
+# Contributor: Mario Vazquez <mariovazq@gmail.com>
+
+pkgname=tcltls
+pkgver=1.7.12
+pkgrel=1
+pkgdesc="OpenSSL extension to Tcl"
+arch=('x86_64')
+url="https://core.tcl.tk/tcltls/index"
+license=('GPL')
+provides=('tls')
+replaces=('tls')
+depends=('tcl' 'openssl' 'awk')
+source=("https://core.tcl.tk/tcltls/uv/tcltls-$pkgver.tar.gz")
+sha256sums=('0e09e8e1cb3dcb3d419079fe40c521b7283d5e822dc914ffd1e4ff600b895caa')
+
+build() {
+  cd "$srcdir"/tcltls-$pkgver
+  ./configure --prefix=/usr --with-ssl-dir=/usr
+  make
+}
+
+check() {
+  cd "$srcdir"/tcltls-$pkgver
+#  make test | awk '{print}/FAILED/{F=1}END{if(F)exit 1}'
+}
+
+package() {
+  cd "$srcdir"/tcltls-$pkgver
+  make DESTDIR="$pkgdir" install
+#  ln -s tls$pkgver/libtls$pkgver.so "$pkgdir"/usr/lib/libtls$pkgver.so
+}
