@@ -1,0 +1,15 @@
+pkgbase = tksystray
+	pkgdesc = tksystray is compatible with freedesktop.org standards systray for Tk
+	pkgver = 0.1
+	pkgrel = 7
+	url = http://tkabber.jabber.ru/tksystray
+	arch = x86_64
+	license = GPL
+	depends = tcl
+	depends = tk
+	depends = imlib
+	source = https://sources.archlinux.org/other/community/tksystray/tksystray_0.1.orig.tar.gz
+	md5sums = d1784d2f786304bd6eaa82512fd5cf1c
+
+pkgname = tksystray
+
