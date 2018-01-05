@@ -4,7 +4,7 @@
 
 pkgname=gimp-git
 epoch=1
-pkgver=2.9.4.1760.g2a7a53b384
+pkgver=2.9.8.220.ge875ec3fc6
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL' 'LGPL')
 depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8' \
 	'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils' \
 	'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'dbus-glib' 'gtk-doc' \
-	'babl>=0.1.27' 'gegl-git>=0.3.15' 'openexr>=1.6.1' 'libmypaint>=1.3.0')
+	'babl>=0.1.27' 'gegl-git>=0.3.15' 'openexr>=1.6.1' 'mypaint-brushes>=1.3.0')
 makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' \
                    'gnome-python>=2.16.2' 'poppler>=0.12.4' \
                    'alsa-lib>=1.0.0' 'libxslt' 'glib-networking')
@@ -43,6 +43,10 @@ build() {
   if [ -f /usr/lib/pkgconfig/libmypaint-1.3.pc ]; then
 	  sed -i 's/libmypaint /libmypaint-1.3 /g' configure.ac
   fi
+
+  # glib-2.0.pc says the glib2 version is 2.54.0, so replace it
+  sed -i 's/glib_required_version\], \[2\.54\.[0-9]*/glib_required_version], [2.54.0/' configure.ac
+  sed -i 's/GLIB_REQUIRED_MICRO 2/GLIB_REQUIRED_MICRO 0/' app/sanity.c
 
   PYTHON=/usr/bin/python2 ./autogen.sh --prefix=/usr --sysconfdir=/etc \
     --enable-mp --enable-gimp-console --enable-gimp-remote \
