@@ -1,0 +1,30 @@
+diff -wbBur floyd-2.0.1/floyd.c floyd-2.0.1.my/floyd.c
+--- floyd-2.0.1/floyd.c	2005-12-01 12:49:43.000000000 +0300
++++ floyd-2.0.1.my/floyd.c	2011-11-17 19:31:13.000000000 +0400
+@@ -167,11 +167,6 @@
+   }
+   if (gfprm.verbose || doargforked)	/* doargforked: set by -D */
+     fprintf(stderr, "%s: signal %d received [%d]\n", progname, sig, getpid());
+-#ifdef linux
+-  pthread_kill_other_threads_np();
+-#else
+-  Maybe you loose. Check out if you have pthread_kill_other_threads_np().
+-#endif
+   close(fdes);			/* but here ? */
+   exit(0);
+ }
+diff -wbBur floyd-2.0.1/voodoo.c floyd-2.0.1.my/voodoo.c
+--- floyd-2.0.1/voodoo.c	1999-07-29 18:01:10.000000000 +0400
++++ floyd-2.0.1.my/voodoo.c	2011-11-17 19:31:18.000000000 +0400
+@@ -101,11 +101,6 @@
+     perror("KDSETLED");
+   }
+   fprintf(stderr, "%s: signal %d received [%d]\n", progname, sig, getpid());
+-#ifdef linux
+-  pthread_kill_other_threads_np();
+-#else
+-  Maybe you loose. Check out if you have pthread_kill_other_threads_np().
+-#endif
+   exit(0);
+ }
+ 

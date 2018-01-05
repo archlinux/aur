@@ -1,0 +1,14 @@
+pkgbase = floyd
+	pkgdesc = displays system load with pulse of keyboard LED
+	pkgver = 2.0.1
+	pkgrel = 5
+	url = http://www.asahi-net.or.jp/~pi9s-nnb/floyd/
+	arch = x86_64
+	license = GPL
+	source = http://www.asahi-net.or.jp/~pi9s-nnb/floyd/floyd-2.0.1.tar.gz
+	source = build-fix.patch
+	md5sums = c1b80bc76ac4e25e821a193428fa42a4
+	md5sums = 0cde2017ead790f9d556ef34c6a4008f
+
+pkgname = floyd
+
