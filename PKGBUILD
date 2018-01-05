@@ -1,7 +1,7 @@
 # Maintainer: Arda Aytekin <aytekin@protonmail.com>
 
 pkgname=vpn-unlimited
-pkgver=4.1
+pkgver=4.16
 pkgrel=1
 pkgdesc='VPN Unlimited client application'
 arch=('x86_64' 'i686')
@@ -11,14 +11,14 @@ license=('custom:"Copyright (c) 2017 KeepSolid Inc."')
 source_x86_64=("vpn-unlimited" "vpn-unlimited-daemon.service"
   "http://apt.keepsolid.com/debian/pool/main/v/vpn-unlimited/vpn-unlimited_${pkgver}_amd64.deb")
 md5sums_x86_64=('8623605b1bef9eda0f451a9b4447629f'
-                '53d6de7ea5facf7ee1a31d2dace29dcc'
-                '4fa9c4e38467c29d972b300f29f03f75')
+                'eec970693be55274ff2e85e596407f20'
+                '713c98161060b81c5c963e9aa51d1d82')
+md5sums_i686=('8623605b1bef9eda0f451a9b4447629f'
+              'eec970693be55274ff2e85e596407f20'
+              '998dbdc5c67644c0adbb40584d5f62ca')
 
 source_i686=("vpn-unlimited" "vpn-unlimited-daemon.service"
   "http://apt.keepsolid.com/debian/pool/main/v/vpn-unlimited/vpn-unlimited_${pkgver}_i386.deb")
-md5sums_i686=('8623605b1bef9eda0f451a9b4447629f'
-              '53d6de7ea5facf7ee1a31d2dace29dcc'
-              '5bc6a3c909feefc6451b42311c2aa7fc')
 
 depends=("glibc>=2.9" "qt5-base>=5.2.1" "qt5-script>=5.2.1" "qt5-webkit>=5.1.1"
          "gcc-libs>=4.4.15" "zlib>=1.2.0" "openvpn" "openresolv" "lzo>=2.0"
