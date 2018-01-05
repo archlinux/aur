@@ -1,0 +1,22 @@
+pkgbase = simgear
+	pkgdesc = A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications.
+	pkgver = 2017.3.1
+	pkgrel = 1
+	url = http://www.flightgear.org/
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = cmake
+	makedepends = mesa
+	depends = glu
+	depends = glut
+	depends = freealut
+	depends = plib
+	depends = openscenegraph
+	options = !makeflags
+	options = staticlibs
+	source = http://downloads.sourceforge.net/project/flightgear/release-2017.3/simgear-2017.3.1.tar.bz2
+	sha256sums = 0ee08550b737b249dcc91590ec0cb9c5dc9080998f6ba66a7d7209cdfce6e1f4
+
+pkgname = simgear
+
