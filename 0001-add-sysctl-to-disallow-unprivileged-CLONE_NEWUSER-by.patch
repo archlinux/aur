@@ -1,8 +1,8 @@
-From fb89d912d5f7289d3a922c77b671e36e1c740f5e Mon Sep 17 00:00:00 2001
-Message-Id: <fb89d912d5f7289d3a922c77b671e36e1c740f5e.1514959852.git.jan.steffens@gmail.com>
+From 0b716bdb952b678d9bb5eb32198dbc82ec492df2 Mon Sep 17 00:00:00 2001
+Message-Id: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
 From: Serge Hallyn <serge.hallyn@canonical.com>
 Date: Fri, 31 May 2013 19:12:12 +0100
-Subject: [PATCH 1/7] add sysctl to disallow unprivileged CLONE_NEWUSER by
+Subject: [PATCH 1/6] add sysctl to disallow unprivileged CLONE_NEWUSER by
  default
 
 Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
