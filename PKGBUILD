@@ -3,7 +3,7 @@
 
 pkgname=mkv-extractor-qt
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='http://forum.ubuntu-fr.org/viewtopic.php?id=1508741'
@@ -66,4 +66,6 @@ package() {
 
   install -Dm644 man/mkv-extractor-qt5.1 "${pkgdir}/usr/share/man/man1/mkv-extractor-qt.1"
   install -Dm644 man/mkv-extractor-qt5.fr.1 "${pkgdir}/usr/share/man/fr/man1/mkv-extractor-qt.1"
+  
+  for i in img/*; do install -Dm644 ${i} "${pkgdir}/usr/share/${pkgname}/${i}"; done
 }
