@@ -1,0 +1,22 @@
+pkgbase = beye
+	pkgdesc = A portable viewer of binary files, hexadecimal and disassembler modes
+	pkgver = 6.1.0
+	pkgrel = 5
+	url = http://beye.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = libx11
+	depends = slang
+	depends = gpm
+	replaces = biew
+	source = http://downloads.sourceforge.net/project/beye/biew/6.1.0/biew-610-src.tar.bz2
+	source = biew-610-fix_localedep-1.patch
+	source = biew-610-portable_configure-1.patch
+	source = biew-610-setup_window-1.patch
+	md5sums = 1b6477defaa61b8ca0f2ae1254978e94
+	md5sums = f2d510cbeffadc4cc20e4bc4e7a08014
+	md5sums = 32e8bc2673db6566720c1ec6f9512fd6
+	md5sums = 93d7e300bd5fb85952891f220b12250a
+
+pkgname = beye
+
