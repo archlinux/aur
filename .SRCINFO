@@ -1,0 +1,15 @@
+pkgbase = datemath
+	pkgdesc = Command line date and time math utility.
+	pkgver = 2.0.10
+	pkgrel = 5
+	url = http://www.unixwiz.net/tools/datemath.html
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.unixwiz.net/tools/datemath.tar.gz
+	source = y2k.patch
+	md5sums = 2c369d70a43313b71dbe3c7cc50207de
+	md5sums = 87758503414a967f06566b94523fc010
+
+pkgname = datemath
+
