@@ -1,0 +1,13 @@
+pkgbase = cmake-modules-libr
+	pkgdesc = CMake module for libR
+	pkgver = 1.1.411
+	pkgrel = 1
+	url = https://github.com/rstudio/rstudio/blob/master/cmake/modules/FindLibR.cmake
+	arch = any
+	license = AGPL
+	depends = cmake
+	source = FindLibR-1.1.411.cmake::https://github.com/rstudio/rstudio/raw/v1.1.411/cmake/modules/FindLibR.cmake
+	md5sums = 7c8b013c5bd5574c1e56a2582c1d984b
+
+pkgname = cmake-modules-libr
+
