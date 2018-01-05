@@ -1,0 +1,15 @@
+pkgbase = ussp-push
+	pkgdesc = OBEX object pusher for Linux
+	pkgver = 0.11
+	pkgrel = 6
+	url = http://xmailserver.org/ussp-push.html
+	arch = x86_64
+	license = GPL2
+	depends = openobex
+	source = http://xmailserver.org/ussp-push-0.11.tar.gz
+	source = build-fix.patch
+	md5sums = 5c44983ee27809867041feff6bb4423a
+	md5sums = b9020ea9bb34b811206366b407f5e3cd
+
+pkgname = ussp-push
+

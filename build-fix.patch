@@ -1,0 +1,66 @@
+diff -dupr ussp-push-0.11.old/src/obex_socket.c ussp-push-0.11/src/obex_socket.c
+--- ussp-push-0.11.old/src/obex_socket.c	2009-05-15 11:03:34.904797689 +0200
++++ ussp-push-0.11/src/obex_socket.c	2009-05-15 11:03:45.599797286 +0200
+@@ -197,7 +197,7 @@ static int bt_sock_name2bth(int devid, c
+ 	for (i = 0; i < niinf; i++) {
+ 		char devname[128];
+ 
+-		if (hci_remote_name(dd, &piinf[i].bdaddr, sizeof(devname) - 1,
++		if (hci_read_remote_name(dd, &piinf[i].bdaddr, sizeof(devname) - 1,
+ 				    devname, 100000) >= 0) {
+ 			if (strcasecmp(devname, btname) == 0) {
+ 				*btaddr = piinf[i].bdaddr;
+diff -wbBur ussp-push-0.11/src/obex_main.c ussp-push-0.11.q/src/obex_main.c
+--- ussp-push-0.11/src/obex_main.c	2008-08-25 00:48:53.000000000 +0400
++++ ussp-push-0.11.q/src/obex_main.c	2013-05-27 14:13:06.533474671 +0400
+@@ -85,41 +85,6 @@
+ int bt_debug;
+ 
+ 
+-
+-/*
+- * These two functions are from affix/profiles/obex/obex_io.c
+- */
+-int get_filesize(const char *filename)
+-{
+-	struct stat stats;
+-
+-	stat(filename, &stats);
+-	return (int) stats.st_size;
+-}
+-
+-uint8_t *easy_readfile(const char *filename, int *file_size)
+-{
+-	int actual;
+-	int fd;
+-	uint8_t *buf;
+-
+-	fd = open(filename, O_RDONLY, 0);
+-	if (fd == -1) {
+-		return NULL;
+-	}
+-	*file_size = get_filesize(filename);
+-	printf("name=%s, size=%d\n", filename, *file_size);
+-	if (!(buf = malloc(*file_size))) {
+-		return NULL;
+-	}
+-
+-	actual = read(fd, buf, *file_size);
+-	close(fd);
+-
+-	*file_size = actual;
+-	return buf;
+-}
+-
+ /*
+  * This function comes from affix/profiles/obex/obex_client.c .. All I changed
+  * was a BTERROR() macro.  The OBEX_HandleInput() calls inside the loop should
+@@ -197,7 +197,7 @@
+ 		*err = -1;
+ 		return NULL;
+ 	}
+-	if (!(handle = OBEX_Init(OBEX_TRANS_CUST, obex_event, 0))) {
++	if (!(handle = OBEX_Init(OBEX_TRANS_CUSTOM, obex_event, 0))) {
+ 		BTERROR("OBEX_Init failed: %s\n", strerror(errno));
+ 		obex_free(gt);
+ 		*err = -1;
