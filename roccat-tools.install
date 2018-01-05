@@ -9,6 +9,10 @@ post_install() {
   chmod 2770 /var/lib/roccat
 
   udevadm control --reload-rules
+
+echo
+echo "Add yourself to the roccat group: gpasswd -a [your user] roccat"
+echo
 }
 
 post_upgrade() {
