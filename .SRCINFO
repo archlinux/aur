@@ -1,0 +1,14 @@
+pkgbase = gtkballs
+	pkgdesc = clone of Lines - logic game about balls
+	pkgver = 3.1.5
+	pkgrel = 6
+	url = http://gtkballs.antex.ru/
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	backup = var/games/gtkballs/gtkballs-scores
+	source = http://gtkballs.antex.ru/dist/gtkballs-3.1.5.tar.gz
+	md5sums = 1654799db1e9a46607b06f7ad3c0bf05
+
+pkgname = gtkballs
+
