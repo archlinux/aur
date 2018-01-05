@@ -1,0 +1,12 @@
+pkgbase = atk-docs
+	pkgdesc = Documentation for atk to be used in devhelp
+	pkgver = 2.6.0
+	pkgrel = 2
+	url = http://library.gnome.org/devel/atk/stable/
+	arch = any
+	license = GPL
+	source = ftp://ftp.gnome.org/pub/gnome/sources/atk/2.6/atk-2.6.0.tar.xz
+	md5sums = 6b34e2a63dda4429b5692be7ca3aa5bf
+
+pkgname = atk-docs
+
