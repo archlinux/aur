@@ -1,0 +1,22 @@
+pkgbase = aumix
+	pkgdesc = A color text mode sound mixer with GPM support
+	pkgver = 2.9.1
+	pkgrel = 8
+	url = http://www.jpj.net/~trevor/aumix.html
+	arch = x86_64
+	license = GPL
+	makedepends = gtk2
+	makedepends = gpm
+	makedepends = ncurses
+	optdepends = gtk2: aumix
+	optdepends = ncurses: aumix-nox
+	optdepends = gpm: aumix-nox
+	provides = aumix-gtk
+	replaces = aumix-gtk
+	source = http://www.jpj.net/~trevor/aumix/releases/aumix-2.9.1.tar.bz2
+	source = aumix.desktop
+	md5sums = 34f28ae1c94fc5298e8bb2688c4b3a20
+	md5sums = afba8b39b8dd95d8a9d74356023de14a
+
+pkgname = aumix
+
