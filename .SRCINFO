@@ -1,0 +1,20 @@
+pkgbase = synce-sync-engine
+	pkgdesc = SynCE sync-engine
+	pkgver = 0.16
+	pkgrel = 3
+	url = http://www.synce.org/
+	install = synce-sync-engine.install
+	arch = any
+	license = GPL
+	makedepends = python2-setuptools
+	depends = synce-core
+	depends = synce-rra
+	depends = librtfcomp
+	depends = python2-dbus
+	depends = python2-gobject2
+	depends = python2-lxml
+	source = http://downloads.sourceforge.net/synce/synce-sync-engine-0.16.tar.gz
+	md5sums = 92a9b81cba6c820f2639c50d79b6fd0d
+
+pkgname = synce-sync-engine
+

@@ -1,0 +1,18 @@
+post_install() {
+echo
+echo "Before you start sync-engine, it is necessary to copy the basic configuration file to your home directory. "
+echo "If you would like to sync files, you need to edit the file as well."
+echo
+echo "mkdir -p ~/.synce"
+echo "cp /usr/share/doc/sync-engine/syncengine.conf.xml ~/.synce"
+echo
+echo "More info can be found at"
+echo "http://www.synce.org/oldwiki/index.php/SyncEngine#sync-engine"
+echo "http://wiki.archlinux.org/index.php/Sync_and_connect_with_windows_mobile"
+echo
+}
+
+post_upgrade() {
+	post_install
+}
+
