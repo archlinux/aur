@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=adwm-git
-pkgver=0.7.1.r0.g1f257c7
+pkgver=0.7.1.r31.g4928a73
 pkgrel=1
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd $pkgname
   ./configure
-  make V=1
+  make
 }
 
 package() {
