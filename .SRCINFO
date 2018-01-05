@@ -1,0 +1,33 @@
+pkgbase = elasticsearch5
+	pkgdesc = Distributed RESTful search engine built on top of Lucene
+	pkgver = 5.6.5
+	pkgrel = 1
+	url = https://www.elastic.co/products/elasticsearch
+	install = elasticsearch.install
+	arch = any
+	license = APACHE
+	depends = java-runtime-headless=8
+	depends = systemd
+	provides = elasticsearch=5.6.5
+	conflicts = elasticsearch
+	backup = etc/elasticsearch/elasticsearch.yml
+	backup = etc/elasticsearch/log4j2.properties
+	backup = etc/elasticsearch/jvm.options
+	backup = etc/default/elasticsearch
+	source = https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.5.tar.gz
+	source = elasticsearch.service
+	source = elasticsearch@.service
+	source = elasticsearch-sysctl.conf
+	source = elasticsearch-user.conf
+	source = elasticsearch-tmpfile.conf
+	source = elasticsearch.default
+	sha256sums = baffbc799e8457575f250176b58923cccc4de561d3439045ccbed72344397ab2
+	sha256sums = f228b588345780cfc84c229dd92722e024c0da155976afc96fc5e5970428a9e4
+	sha256sums = 4dc14262b67399f741c303cce7d18f9d3d220285778a2deb50fb0640161179c7
+	sha256sums = b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c
+	sha256sums = 815f6a39db6f54bb40750c382ffbdc298d2c4c187ee8ea7e2f855923e2ff354b
+	sha256sums = 3173e3efa429507e6329f518699a072dfd442d9b5da7c62452a55f82334dd2b5
+	sha256sums = bb74e5fb8bc28f2125e015395ab05bea117b72bfc6dadbca827694b362ee0bf8
+
+pkgname = elasticsearch5
+

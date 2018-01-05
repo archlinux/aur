@@ -1,0 +1,34 @@
+[Unit]
+Description=Elasticsearch
+Documentation=http://www.elastic.co
+Wants=network.target
+After=network.target
+
+[Service]
+Type=forking
+RuntimeDirectory=elasticsearch
+PIDFile=/run/elasticsearch/%I.pid
+
+Environment=JAVA_HOME=/usr/lib/jvm/default-runtime
+Environment=CONF_DIR=/etc/elasticsearch/%I
+EnvironmentFile=-/etc/default/elasticsearch
+
+WorkingDirectory=/usr/share/elasticsearch
+
+User=elasticsearch
+Group=elasticsearch
+
+ExecStart=/usr/bin/elasticsearch -d \
+            -p /run/elasticsearch/%I.pid \
+            -E path.conf=${CONF_DIR}
+
+LimitNOFILE=65536
+LimitMEMLOCK=infinity
+
+Restart=on-failure
+SendSIGKILL=no
+TimeoutStopSec=0
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
