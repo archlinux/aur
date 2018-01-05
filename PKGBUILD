@@ -63,7 +63,7 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.14
 pkgver=4.14.12
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -93,7 +93,9 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
   0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0004-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -114,10 +116,12 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'd2f59cf1c5187204eced6e53806b187e90698fcb2309955aed4020a15c659ae1'
             '3d4d2506795c4bd914959758f5b69ccf5a4f5a21f5d4bfc87bf0aa3b4b58f4c6'
             '0dbf2d23df0b5d023794332872b8b346d0c4994576b778396364e803acac4498'
-            '06bc1d8b1cd153c3146a4376d833f5769b980e5ef5eae99ddaaeb48bf514dae2'
-            'b90bef87574f30ec66c0f10d089bea56a9e974b6d052fee3071b1ff21360724b'
-            'f38531dee9fd8a59202ce96ac5b40446f1f035b89788ea9ecb2fb3909f703a25'
-            '8e1b303957ddd829c0c9ad7c012cd32f2354ff3c8c1b85da3d7f8a54524f3711')
+            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
+            '9251c03da9d4b64591d77f490ff144d4ba514e66e74294ada541bf827306c9c4'
+            '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
+            '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
+            'c3d743a0e193294bc5fbae65e7ba69fd997cd8b2ded9c9a45c5151d71d9cfb95'
+            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
 
 _kernelname=${pkgbase#linux}
 
@@ -137,8 +141,14 @@ prepare() {
   # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
   patch -Np1 -i ../0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 
+  # https://bugs.archlinux.org/task/56605
+  patch -Np1 -i ../0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+
   # https://bugs.archlinux.org/task/56846
-  patch -Np1 -i ../0004-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  patch -Np1 -i ../0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+
+  # https://bugs.archlinux.org/task/56711
+  patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
