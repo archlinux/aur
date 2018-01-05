@@ -1,7 +1,7 @@
 pkgbase = snap4arduino
 	pkgdesc = A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board.
 	pkgver = 1.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://snap4arduino.rocks/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = snap4arduino
 	depends = gconf
 	depends = freetype2
 	provides = snap4arduino
+	options = !strip
 	source_i686 = https://github.com/bromagosa/snap4arduino/releases/download/1.2.4/Snap4Arduino_desktop-gnu-32_1.2.4.tar.gz
 	sha256sums_i686 = e25d5c06be8fec042d5853e73386738bfb39e6ab772cf4b95c86122468dca6ad
 	source_x86_64 = https://github.com/bromagosa/snap4arduino/releases/download/1.2.4/Snap4Arduino_desktop-gnu-64_1.2.4.tar.gz
