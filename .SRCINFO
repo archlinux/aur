@@ -1,0 +1,19 @@
+pkgbase = tkabber
+	pkgdesc = Tkabber is an open source Jabber client, written in Tcl/Tk.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://tkabber.jabber.ru/
+	arch = any
+	license = GPL
+	depends = tcl
+	depends = tk
+	depends = bwidget
+	depends = tcllib
+	depends = tls
+	source = http://files.jabber.ru/tkabber/tkabber-1.1.2.tar.xz
+	source = http://files.jabber.ru/tkabber/tkabber-plugins-1.1.2.tar.xz
+	md5sums = 6d15da2d72bbc76a525f4b72b127fd8e
+	md5sums = cc876866fd00ae1068679bff1456e9cf
+
+pkgname = tkabber
+
