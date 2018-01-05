@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Sabart Otto - Seberm <seberm[at]gmail[dot].com
 
 pkgname=ttyqr-git
