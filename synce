@@ -1,0 +1,109 @@
+#!/usr/bin/perl
+#
+# External filesystem for Windows CE, using SynCE, version 0.1.1,
+# patched for new 'pls' output and mc by Aleksey Korenkov <akorenkov@yahoo.com> March 2010
+# by Michael Lashkevich <lashkevi@landau.ac.ru> on 10.06.2003
+#
+# In contrast to #synce it opens the root ("\") directory and, therefore,
+# 'cd #synceroot' works slower than 'cd #synce'.
+# You have to establish SynCE connection before changin directory
+# to #synceroot.
+# 
+$ENV{LANG}="C";
+$ENV{LC_ALL}="C";
+
+# These mtools components must be in PATH for this to work
+$pls = "pls";
+$pcp = "pcp";
+$prm = "prm";
+$pmkdir = "pmkdir";
+$prmdir = "prmdir";
+
+SWITCH: for ( $ARGV[0] ) {
+  /list/ && do {
+    @dirs = get_dirs("");
+    while ($dir = shift(@dirs)) {
+      push @dirs, get_dirs("$dir");
+    } exit 0; };
+  /mkdir/ && do {
+    shift; shift;
+    exit 1 if scalar(@ARGV) != 1;
+    `echo \"$ARGV[0]\" >>/tmp/log.mc`;
+    system("$pmkdir \"/$ARGV[0]\" >/dev/null");
+    exit 0; };
+  /rmdir/ && do {
+    shift; shift;
+    exit 1 if scalar(@ARGV) != 1;
+    system("$prmdir \"/$ARGV[0]\" >/dev/null");
+    exit 0; };
+  /rm/ && do {
+    shift; shift;
+    exit 1 if scalar(@ARGV) != 1;
+    system("$prm \"/$ARGV[0]\" >/dev/null");
+    exit 0; };
+  /copyout/ && do {
+    shift; shift;
+    exit 1 if scalar(@ARGV) != 2;
+    ( $src, $dest ) = @ARGV;
+	system("rm -f $dest");
+    system("$pcp \":/$src\" $dest >/dev/null");
+    exit 0; };
+  /copyin/ && do {
+    shift; shift;
+    exit 1 if scalar(@ARGV) != 2;
+    ( $dest, $src ) = @ARGV;
+    system("$pcp $src \":/$dest\" >/dev/null");
+    exit 0; };
+  /.*/ && do {                               # an unfamiliar command
+    exit 1; };
+}
+
+sub get_dirs {
+  my ($path, $name, $pathname, $type0, $type2, $size, $datetime, @lst, @rv);
+
+  $path = shift(@_);
+  @rv = ();
+
+  open(FILE,"$pls -a \"/$path\" 2>/dev/null |");
+  while ( <FILE> ) {
+    chomp();
+    /^ / && next;                            # ignore `non-file' lines
+    /^$/ && next;                            # ignore empty lines
+    /^\.\.?/ && next;                        # ignore `.' and `..'
+
+    if  ( ! /^([^\s]+)[ ]+(\d*)-(\d*)-(\d*)[ ]*(\d*:\d*:\d*)*[ ]*(.*)$/ ){
+
+		if ( ! /^([^\s]+)[ ]+([\d]*)[ ]*(\d*)-(\d*)-(\d*)[ ]*(\d*:\d*:\d*)[ ]*(.*)/ ){
+			print "ERR: $_\n";
+			next;
+		}
+		$size=$2;
+		$year=$3;
+		$month=$4;
+		$day=$5;
+		$time=$6;
+		$fname=$7;
+
+		my $pathname = $path.$fname;
+    	print "-rw-r--r-- 1 root root $size\t $day/$month/$year $time $pathname\n";
+		next;
+    }
+
+	my $perm = $1;
+	$year=$2;
+	$month=$3;
+	$day=$4;
+	$time=$5;
+	$fname=$6;
+
+	my $pathname = $path.$fname;
+	if ($pathname =~ /\/\//){
+	    next;
+	}
+	
+    print "drwxr-xr-x 1 root root 0\t $day/$month/$year $time $pathname\n";
+    push @rv, $pathname;
+  }
+  close(FILE);
+  return @rv;
+};

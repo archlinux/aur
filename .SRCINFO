@@ -1,0 +1,14 @@
+pkgbase = synce-mcfs
+	pkgdesc = Midnight Commander VFS for SynCE
+	pkgver = 0.1.1
+	pkgrel = 9
+	url = http://synce.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = synce-core
+	depends = perl
+	source = synce
+	md5sums = 4837a8a0093713509bc6769089c1c402
+
+pkgname = synce-mcfs
+
