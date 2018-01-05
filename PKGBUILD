@@ -10,7 +10,7 @@ license=('LGPL3')
 source_i686=("http://cdn.obdautodoctor.com/${pkgname}_${pkgver}_i386.tar.gz")
 source_x86_64=("http://cdn.obdautodoctor.com/${pkgname}_${pkgver}_amd64.tar.gz")
 
-depends=("qt5-base>5.2")
+depends=("qt5-base>=5.5.1")
 optdepends=("bluez: for bluetooth support")
 
 [[ "$CARCH" = "i686" ]] && _parch='i386'
