@@ -1,0 +1,18 @@
+pkgbase = fbnews
+	pkgdesc = fbnews is an RSS/RDF newsfetcher for Fluxbox
+	pkgver = 0.5
+	pkgrel = 7
+	url = http://www.fms-engel.de/fbnews/index.php?page=home
+	install = fbnews.install
+	arch = any
+	license = GPL
+	makedepends = automake
+	makedepends = pkgconfig
+	makedepends = texinfo
+	depends = fluxbox
+	depends = python2
+	source = http://www.fms-engel.de/fbnews/uploads/releases/fbnews-0.5.tar.gz
+	md5sums = 6694bbdaa50f8a76bf6b5bb5157b0427
+
+pkgname = fbnews
+
