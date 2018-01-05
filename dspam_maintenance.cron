@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# DSPAM maintenance tasks
+# check "man 1 dspam_maintenance" for more options
+
+/usr/bin/dspam_maintenance --verbose --purgescriptdir=/usr/share/dspam 1> /dev/null

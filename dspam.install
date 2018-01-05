@@ -1,0 +1,38 @@
+post_install() {
+  echo -n "adding dspam system group... "
+  groupadd -r dspam && echo "done."
+  echo -n "adding dspam system user... "
+  useradd -r -c "DSPAM Daemon" -d /var/lib/dspam -g dspam -s /bin/false dspam \
+    && echo "done."
+  passwd -l dspam &>/dev/null
+  chown root:dspam usr/bin/dspam{,c}
+  chown -R root:dspam etc/dspam
+  chmod g+rs usr/bin/dspam{,c}
+
+cat << EOF
+>>> To populate the DSPAM database, you need to follow several steps.
+>>> First create a database. Login to the mysql command prompt.
+    $ mysql -u root -p
+    mysql> CREATE database dspam;
+>>> Next, you need to create a dspam user. At the same MySQL prompt:
+    mysql> GRANT ALL PRIVILEGES ON dspam.* TO dspam@'localhost' IDENTIFIED BY 'passwd';
+>>> Replacing passwd with your chosen password.
+>>> Create dspam database:
+    $ mysql -u dspam dspam -p < /usr/share/dspam/mysql/mysql_objects-4.1.sql
+>>> Create virtual user table:
+    $ mysql -u dspam dspam -p < /usr/share/dspam/mysql/virtual_users.sql
+>>> Enter the password you set in the previous step, and the database should be populated.
+
+>>> Remember to edit /etc/dspam/dspam.conf accordingly
+>>> If you want to use the postgresql, sqlite3 or Berekely DB4 backends,
+>>> read the documentation
+>>>
+EOF
+}
+
+post_upgrade() {
+  chown root:dspam usr/bin/dspam{,c}
+  chown -R root:dspam etc/dspam
+  chown dspam:dspam var/l{og,ib}/dspam
+  chmod g+s usr/bin/dspamc
+}

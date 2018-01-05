@@ -1,0 +1,10 @@
+/var/log/dspam/sql.errors
+/var/lib/dspam/system.log
+/var/log/dspam/dspam.debug
+/var/log/dspam/dspam.messages
+/var/log/dspam/dspam.log {
+        weekly
+        compress
+        missingok
+	copytruncate
+}

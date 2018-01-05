@@ -1,0 +1,11 @@
+[Unit]
+Description=A highly accurate statistical spam filter that uses minimal resources
+
+[Service]
+Type=forking
+User=dspam
+ExecStart=/usr/bin/dspam --daemon 2>/dev/null
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
