@@ -1,0 +1,7 @@
+post_install() {
+  cat << 'EOM'
+  --> If you want to integrate the RSS screen savers with xscreensaver
+  --> for your user, then install the xscreensaver package and launch
+  --> the command "rss-glx_install.pl"
+EOM
+}
