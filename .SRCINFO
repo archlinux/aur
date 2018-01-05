@@ -6,7 +6,7 @@ pkgbase = obd-auto-doctor
 	arch = i686
 	arch = x86_64
 	license = LGPL3
-	depends = qt5-base>5.2
+	depends = qt5-base>=5.5.1
 	optdepends = bluez: for bluetooth support
 	source_i686 = http://cdn.obdautodoctor.com/obd-auto-doctor_3.4.6_i386.tar.gz
 	md5sums_i686 = 6d487df0ecce486cfe28bc58bcfe12f3
