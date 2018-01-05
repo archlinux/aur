@@ -1,0 +1,13 @@
+diff --git Makefile-bk Makefile
+index fe98842..3ee6250 100644
+--- Makefile-bk
++++ Makefile
+@@ -465,7 +465,7 @@ clean:
+ 
+ 	cd $(BUILD_WEBAPP_DIR) && $(MAKE) clean
+ 
+-	find . -type d -name data | xargs rm -r
++	find . -type d -name data | xargs rm -rf
+ 	rm -rf logs
+ 
+ 	rm -f mattermost.log

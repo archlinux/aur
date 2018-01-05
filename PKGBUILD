@@ -31,13 +31,15 @@ source=(
     "${pkgname}.sh"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
+    "${pkgname}-server-makefile.patch"
 )
 sha512sums=('91ed9b01cdc2705f73a350606886c9147d50f9af57b8564e679ad3e0a71acdf67926d514579113060732c9b717f9f9a30f80711242a0d779d9c77c519a28f207'
             '2e8b0e6cb96604eef6cfb1c86a29a16ef208a37fe23c3007c43140ff54b178997718782a2e41f43d4813b5c8ba1919a4fc90501aa7f68430e0a9969c459d86d5'
             '3e3d46dc7778be256da9a366ec96cde684fcb07732d0adfd40ea00d6ec61a161a9d7e784f7773d34e4f058e6919b13053ac228255a05f175e7ce20538f07ec93'
             '5fe6c343e9739b12f8ea9390dafd729fa9f980978bbc0fa7eb6a2eb2d437929078d3efede23c28a6b399c407b8b5e92755169a468462088de0eb148b360acc4b'
             'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
-            'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
+            'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
+            '08947ca9c137884bde48dd92e4ada392e29fc81daa71b1c054dac64e32367d68be08fb4d753c1e1ab3787db72371543563c697c687a105f5b5b852fa3afba6b0')
 
 prepare() {
     # cp cannot copy from a symbolic link to the destination link itself
@@ -63,6 +65,9 @@ prepare() {
     ln -s "${srcdir}"/${pkgname}-server ${pkgname}-server
     ln -s "${srcdir}"/${pkgname}-webapp ${pkgname}-webapp
     cd ${pkgname}-server
+
+    # Apply patch to fix upstream blunder
+    patch -p0 -i ${srcdir}/${pkgname}-server-makefile.patch
 
     # We are not using docker, no need to stop it.
     sed -r -i Makefile \
