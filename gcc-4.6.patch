@@ -1,0 +1,70 @@
+diff -wbBur btanks-0.9.8083/engine/sl08/sl08.py btanks-0.9.8083.my/engine/sl08/sl08.py
+--- btanks-0.9.8083/engine/sl08/sl08.py	2008-08-13 13:10:45.000000000 +0400
++++ btanks-0.9.8083.my/engine/sl08/sl08.py	2012-11-15 18:04:44.002524495 +0400
+@@ -152,11 +152,11 @@
+ 			typedef base_signalXXX %s signal_type; 
+ 			typedef return_type (object_type::*func_t) %s; 
+ 
+-			inline slotXXX () : object(NULL), func(NULL) {}
+-			inline slotXXX(object_type *object, func_t func, signal_type * signal = NULL) : object(object), func(func) {}
++			inline slotXXX () : object(0), func(0) {}
++			inline slotXXX(object_type *object, func_t func, signal_type * signal = 0) : object(object), func(func) {}
+ 
+ 			inline void assign(object_type *o, func_t f) { object = o; func = f; }
+-			inline void assign(object_type *o, func_t f, signal_type &signal_ref = NULL) { object = o; func = f; connect(signal_ref); }
++			inline void assign(object_type *o, func_t f, signal_type &signal_ref = NULL) { object = o; func = f; base_slotXXX%s::connect(signal_ref); }
+ 	
+ 			inline return_type operator() %s const { 
+ 				return (object->*func) %s ;
+@@ -175,7 +175,9 @@
+ 			self.template_declaration('slot'), 
+ 			self.template_parameters('base-slot'), 
+ 			self.template_parameters('base-slot'), 
+-			self.prototype(True), self.prototype(True), self.prototype(False),
++			self.prototype(True),
++			self.template_parameters('base-signal'), 
++			self.prototype(True), self.prototype(False),
+ 			)
+ 			
+ 		#specialized version of the slot
+@@ -187,10 +189,10 @@
+ 			typedef base_signalXXX %s signal_type; 
+ 			typedef void (object_type::*func_t) %s ;
+ 
+-			inline slotXXX () : object(NULL), func(NULL) {}
++			inline slotXXX () : object(0), func(0) {}
+ 			inline slotXXX (object_type *object, func_t func) : object(object), func(func) {}
+ 			inline void assign(object_type *o, func_t f) { object = o; func = f; }
+-			inline void assign(object_type *o, func_t f, signal_type &signal_ref) { object = o; func = f; connect(signal_ref); }
++			inline void assign(object_type *o, func_t f, signal_type &signal_ref) { object = o; func = f; base_slotXXX%s::connect(signal_ref); }
+ 	
+ 			inline void operator() %s const { 
+ 				(object->*func) %s; 
+@@ -206,6 +208,7 @@
+ 			self.template_parameters('base-slot', True), 
+ 			self.template_parameters('base-slot', True), 
+ 			self.prototype(True), 
++			self.template_parameters('base-slot', True), 
+ 			self.prototype(True), 
+ 			self.prototype(False), 
+ 		)
+diff -wbBur btanks-0.9.8083/math/range_list.h btanks-0.9.8083.my/math/range_list.h
+--- btanks-0.9.8083/math/range_list.h	2008-10-24 18:15:55.000000000 +0400
++++ btanks-0.9.8083.my/math/range_list.h	2012-11-15 18:11:52.049236706 +0400
+@@ -53,14 +53,14 @@
+ 			return;
+ 		}
+ 	
+-		typename parent_type::iterator i = lower_bound(value);
++		typename parent_type::iterator i = std::map<const T, T>::lower_bound(value);
+ 		if (i != parent_type::end()) {
+ 			if (i->first == value)
+ 				return;
+ 
+ 			if (value + 1 == i->first) {
+ 				T e = i->second;
+-				erase(i);
++				std::map<const T, T>::erase(i);
+ 				i = parent_type::insert(typename parent_type::value_type(value, e)).first; //expand beginning
+ 				i = pack_left(i);
+ 			}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Battle Tanks!
+Comment= A 2D arcade tank battle!
+Icon=btanks
+Exec=btanks
+Terminal=false
+StartupNotify=false
+Categories=Game;ArcadeGame;

@@ -1,0 +1,21 @@
+diff -wbBur btanks-0.9.8083/engine/luaxx/state.cpp btanks-0.9.8083.my/engine/luaxx/state.cpp
+--- btanks-0.9.8083/engine/luaxx/state.cpp	2008-06-08 13:02:39.000000000 +0400
++++ btanks-0.9.8083.my/engine/luaxx/state.cpp	2012-11-15 18:59:07.000000000 +0400
+@@ -59,7 +59,7 @@
+ void State::load(const std::string &fname, const mrt::Chunk &data) {
+ 	//throw_ex(("implement me[%s]", fname.c_str()));
+ 	reader_state x(data);
+-	int err = lua_load(state, chunk_reader, &x, fname.c_str());
++	int err = lua_load(state, chunk_reader, &x, fname.c_str(), NULL);
+ 	check_error(state, err);
+ }
+ 
+@@ -81,7 +81,7 @@
+ 	assert(state == NULL);
+ 
+ 	//state = lua_newstate(l_alloc, this);
+-	state = lua_open();
++	state = luaL_newstate();
+ 	if (state == NULL)
+ 		throw_ex(("cannot create lua interpreter"));
+ 
