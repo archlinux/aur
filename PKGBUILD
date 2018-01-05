@@ -6,12 +6,12 @@
 _pkgname="Snap4Arduino_desktop-gnu"
 pkgname="snap4arduino"
 pkgver="1.2.4"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board."
 arch=('i686' 'x86_64')
 url="http://snap4arduino.rocks/"
-license=('GPL3')
-depends=('nss' 'libxtst' 'alsa-lib' 'libxss' 'gtk2' 'gconf' 'freetype2')
+license=('AGPL3' 'MIT')
+depends=('nss' 'libxtst' 'alsa-lib' 'libxss' 'gtk3' 'gconf' 'freetype2')
 provides=("${pkgname}")
 
 source_i686=("https://github.com/bromagosa/${pkgname}/releases/download/${pkgver}/${_pkgname}-32_${pkgver}.tar.gz")
@@ -28,8 +28,8 @@ fi
 
 build() {
     cd "${_pkgname}-${_dir}_${pkgver}"
-    sed -i "s|Icon=|Icon=/opt/Snap4Arduino/icons/128x128x32.png|g" Snap4Arduino.desktop
-    sed -i "s|cd \$(dirname %k)|cd /opt/Snap4Arduino/|g" Snap4Arduino.desktop
+    sed -i "s|Icon=|Icon=/opt/snap4arduino/icons/128x128x32.png|g" Snap4Arduino.desktop
+    sed -i "s|cd \$(dirname %k)|cd /opt/snap4arduino/|g" Snap4Arduino.desktop
 }
 
 package() {
