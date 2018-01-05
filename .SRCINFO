@@ -1,0 +1,22 @@
+pkgbase = leafnode
+	pkgdesc = implements a store & forward NNTP proxy (client and server) with IPv4 and IPv6
+	pkgver = 1.11.11
+	pkgrel = 1
+	url = http://leafnode.sourceforge.net/
+	install = leafnode.install
+	arch = x86_64
+	license = GPL
+	depends = pcre
+	depends = xinetd
+	options = !emptydirs
+	backup = etc/xinetd.d/leafnode
+	source = https://downloads.sf.net/sourceforge/leafnode/leafnode-1.11.11.tar.bz2
+	source = https://downloads.sf.net/sourceforge/leafnode/leafnode-1.11.11.tar.bz2.asc
+	source = leafnode.xinetd
+	validpgpkeys = FDD00C436E3307E10758C6A8BE618339052E7D95
+	sha256sums = 3ec325216fb5ddcbca13746e3f4aab4b49be11616a321b25978ffd971747adc0
+	sha256sums = SKIP
+	sha256sums = 14c0a1315ee1de79fb2320dd0a40773e59571c67cedd8d222ba7bbc0a8d8c28c
+
+pkgname = leafnode
+

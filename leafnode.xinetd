@@ -1,0 +1,18 @@
+#
+# /etc/xinetd.d/leafnode
+#
+
+service nntp
+{
+	socket_type		= stream
+	wait			= no
+	user			= news
+	server			= /usr/bin/leafnode
+	log_type		= SYSLOG news
+	log_on_success		+= USERID
+	log_on_failure		+= USERID
+	port			= 119
+	disable			= yes
+	groups			= yes
+}
+

@@ -1,0 +1,14 @@
+post_install() {
+  echo "-- Adding user 'news' and group 'news', chowning /var/spool/news"
+  grep -e "^news:" etc/group 2>&- >&- || groupadd -g 13 -r news 2>&- >&-
+  grep -e "^news:" etc/passwd 2>&- >&- || useradd -u 9 -r -m -g news news 2>&- >&-
+  chown -R root:news etc/leafnode
+  # create dir if necessary
+  if [ ! -d var/spool/news ]; then
+    install -d -m 770 -o news -g news var/spool/news
+  fi
+}
+
+post_remove() {
+  echo "-- Don't forget to remove /var/spool/news directory"
+}
