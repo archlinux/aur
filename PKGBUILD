@@ -4,8 +4,8 @@
 _gitname=themer
 _gitbranch=master
 pkgname="python-${_gitname}-git"
-pkgdesc='Themer is a colorscheme generator and manager for your desktop.'
-pkgver=v1.8.2.r0.ge82492e
+pkgdesc='colorscheme generator and manager for your desktop'
+pkgver=v1.8.3.r0.gba3d841
 pkgrel=1
 url="https://github.com/s-ol/${_gitname}"
 license=('MIT')
@@ -17,7 +17,7 @@ install="${_gitname}.install"
 source=("${_gitname}::git://github.com/s-ol/${_gitname}.git#branch=${_gitbranch}"
         "${install}")
 sha256sums=('SKIP'
-            '9cff641369463761b2b15d65ebc42949c405941b672cbf202233ef1dc4160fcf')
+            '5783163020b902b4c155155948e0df3d859877961a85f965318a5ff161a3e06a')
 
 pkgver() {
   cd "${_gitname}"

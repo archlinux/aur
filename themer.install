@@ -14,6 +14,6 @@ post_install() {
       $ themer generate newtheme wallpaper.jpg
       Activate now? yN y
 
-  Additional information is available at https://github.com/S0lll0s/themer
+  Additional information is available at https://github.com/s-ol/themer
 '
 }
