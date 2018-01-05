@@ -5,7 +5,7 @@
 
 pkgname=adom
 epoch=1
-pkgver=2.3.8
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
 arch=("i686" "x86_64" "armv6h")
@@ -20,9 +20,9 @@ source_x86_64=(${_source_url}/adom_linux_debian_64_${pkgver}.tar.gz)
 source_armv6h=(${_source_url}/adom_linux_arm_${pkgver}.tar.gz)
 
 sha1sums=('51d28fe3f0420cd354113fd7ceb2a1a7abf1b069')
-sha1sums_i686=('3ae506daed02d7b6c9ece1445a54bc08616f29d0')
-sha1sums_x86_64=('3d08916e94b7fe039eeeb741b5f8c1e9d98cc22a')
-sha1sums_armv6h=('0a161cb19375f8918484d04f99ab66d0936b0480')
+sha1sums_i686=('6712aeb741ba669ae60e98f14296a43252fc8e2c')
+sha1sums_x86_64=('f2f78352b160d5cedc0267895f754e39caf092d6')
+sha1sums_armv6h=('3f1d481a91067de8b8212e8e0c99733f52dd850f')
 
 package() {
   cd ${srcdir}/adom
