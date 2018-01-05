@@ -1,0 +1,24 @@
+pkgbase = unetbootin
+	pkgdesc = Create bootable Live USB drives
+	pkgver = 657
+	pkgrel = 1
+	url = https://unetbootin.github.io
+	arch = x86_64
+	license = GPL
+	makedepends = setconf
+	depends = syslinux
+	depends = p7zip
+	depends = qt4
+	depends = mtools
+	depends = zenity
+	optdepends = polkit: run unetbootin directly from menu
+	optdepends = zenity: display an error if no authentication agent is found
+	source = unetbootin-657.tar.gz::https://github.com/unetbootin/unetbootin/archive/657.tar.gz
+	source = org.archlinux.pkexec.unetbootin.policy
+	source = unetbootin.sh
+	sha256sums = e091904e455aebc7b3d22d6cb3363c51796b6b9bec59389c9d4ecad54c7febee
+	sha256sums = fa9bb53d90cb10a0ab8dd317ed6a3506b228b0e26ed2ed8b108b5990f641641a
+	sha256sums = 6399c6a44b270a4ec67a36e3914c7c2f47a9008efb0133a33f92d9ad4284cc57
+
+pkgname = unetbootin
+
