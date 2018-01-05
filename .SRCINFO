@@ -1,0 +1,17 @@
+pkgbase = matchbox-panel
+	pkgdesc = A flexible always present 'window bar' for holding application launchers and small 'applet' style applications
+	pkgver = 2.11
+	pkgrel = 1
+	url = http://matchbox-project.org/
+	arch = x86_64
+	license = GPL
+	depends = libmatchbox
+	depends = startup-notification
+	depends = libpng
+	depends = gtk3
+	depends = dbus-glib
+	source = http://git.yoctoproject.org/cgit/cgit.cgi/matchbox-panel-2/snapshot/matchbox-panel-2-2.11.tar.bz2
+	sha256sums = f357ea9bb95b4219a09fe77fcb344f4618e588bc082dadfe3f72e051a7411917
+
+pkgname = matchbox-panel
+
