@@ -1,0 +1,12 @@
+[Unit]
+Description=Bip IRC Proxy Server
+After=network.target
+
+[Service]
+User=bip
+Type=forking
+PIDFile=/var/run/bip/bip.pid
+ExecStart=/usr/bin/bip -f /etc/bip.conf -s /var/lib/bip
+
+[Install]
+WantedBy=multi-user.target

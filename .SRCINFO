@@ -1,0 +1,16 @@
+pkgbase = bip
+	pkgdesc = Multiuser IRC proxy that supports replaying of logged conversations.
+	pkgver = 0.9.0rc1
+	pkgrel = 1
+	url = http://bip.milkypond.org/
+	install = bip.install
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	source = https://projects.duckcorp.org/attachments/download/79/bip-0.9.0-rc.1.tar.gz
+	source = bip.service
+	md5sums = 8c7079d51f13ce4799c750f89ebc1b41
+	md5sums = a716f77fc40573cd359d9984a9cc8a66
+
+pkgname = bip
+

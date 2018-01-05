@@ -1,0 +1,21 @@
+post_install() {
+    if ! getent passwd bip > /dev/null; then
+        echo "==> Creating bip user"
+        /usr/bin/useradd --comment "Bip IRC Proxy" --shell /bin/sh --home /var/lib/bip --system --user-group bip
+    fi
+    mkdir -p /var/run/bip 2>/dev/null
+    chown -R bip:bip /var/run/bip
+    mkdir -p /var/lib/bip 2>/dev/null
+    chown -R bip:bip /var/lib/bip
+    mkdir -p /var/log/bip 2>/dev/null
+    chown -R bip:bip /var/log/bip
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl stop bip
+    rm -rf /var/run/bip
+}
