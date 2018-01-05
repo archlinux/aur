@@ -85,9 +85,6 @@ prepare() {
   # Add Liquorix patches
   patch -Np1 -i ../$_lqxpatchname
   
-  # https://www.spinics.net/lists/stable/msg207374.html
-  chmod +x tools/objtool/sync-check.sh
-  
     # Trying oldcfg if possible and if selected
   if [ "$_config" = "old" ]; then
     if [ -e /proc/config.gz ]; then
