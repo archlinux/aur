@@ -1,0 +1,16 @@
+pkgbase = gnonlin
+	pkgdesc = Library for creating non-linear video editors
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://gnonlin.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	makedepends = python
+	makedepends = gst-plugins-base
+	makedepends = pkgconfig
+	depends = gstreamer
+	source = https://gstreamer.freedesktop.org/src/gnonlin/gnonlin-1.4.0.tar.xz
+	sha256sums = 2d667e1632816ea8a6ff7c8b75b29241b6542e1f6ab41d9d51661c287006667f
+
+pkgname = gnonlin
+
