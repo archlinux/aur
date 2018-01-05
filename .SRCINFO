@@ -1,0 +1,13 @@
+pkgbase = wput
+	pkgdesc = A command line tool to upload files to FTP site, the opposite to wget
+	pkgver = 0.6.2
+	pkgrel = 3
+	url = http://wput.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = gnutls>=2.4.1
+	source = https://downloads.sourceforge.net/sourceforge/wput/wput-0.6.2.tgz
+	md5sums = a14c4c13d91d04d6119bdc977e8a8bdf
+
+pkgname = wput
+
