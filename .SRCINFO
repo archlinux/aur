@@ -1,0 +1,12 @@
+pkgbase = dynamite
+	pkgdesc = Dynamite is a tool and library for decompressing data compressed with PKWARE Data Compression Library
+	pkgver = 0.1.1
+	pkgrel = 4
+	url = http://synce.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/sourceforge/synce/libdynamite-0.1.1.tar.gz
+	md5sums = 238bf243dba2166a2e0e141b18065235
+
+pkgname = dynamite
+
