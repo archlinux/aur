@@ -1,19 +1,27 @@
 pkgbase = fcitx5-qt-git
 	pkgdesc = Fcitx Qt Library
-	pkgver = r111.63e9b36
-	pkgrel = 1
+	pkgver = r123.5fd61db
+	pkgrel = 3
 	url = https://github.com/fcitx/fcitx5
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = qt4
+	makedepends = qt5-x11extras
+	makedepends = qt5-quickcontrols
 	depends = fcitx5-git
-	depends = qt4
-	depends = qt5-x11extras
-	depends = qt5-quickcontrols
 	source = git+https://github.com/fcitx/fcitx5-qt.git
 	sha512sums = SKIP
 
-pkgname = fcitx5-qt-git
+pkgname = fcitx5-qt5-git
+	pkgdesc = Fcitx Qt Library, for Qt5
+	depends = fcitx5-git
+	depends = qt5-x11extras
+	depends = qt5-quickcontrols
+
+pkgname = fcitx5-qt4-git
+	pkgdesc = Fcitx Qt Library, for Qt4
+	depends = fcitx5-git
+	depends = qt4
 
