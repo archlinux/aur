@@ -1,0 +1,14 @@
+pkgbase = g2sc
+	pkgdesc = Samba gtk2 client
+	pkgver = 0.2
+	pkgrel = 5
+	url = http://sourceforge.net/projects/g2sc
+	arch = x86_64
+	license = GPL
+	depends = smbclient
+	depends = gtk2
+	source = http://downloads.sourceforge.net/g2sc/0.2/g2cs0.2alpha-source.tar.bz2
+	md5sums = c0994584f2c950241bf7e2782cb4d2fd
+
+pkgname = g2sc
+
