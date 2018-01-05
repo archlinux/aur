@@ -1,0 +1,14 @@
+pkgbase = man-pages-it
+	pkgdesc = Italian man pages
+	pkgver = 4.08
+	pkgrel = 1
+	url = http://www.pluto.it/ildp/man/index.html
+	arch = any
+	license = GPL
+	depends = man-pages
+	options = !emptydirs
+	source = ftp://ftp.pluto.it/pub/pluto/ildp/man/man-pages-it-4.08.tar.xz
+	md5sums = 869cf8ff2aa5c11b8d15d1ba7a47f4fa
+
+pkgname = man-pages-it
+
