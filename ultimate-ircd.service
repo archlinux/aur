@@ -1,0 +1,12 @@
+[Unit]
+Description=IRC daemon
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+User=ircd
+PIDFile=/var/run/ircd/ircd.pid
+ExecStart=/usr/bin/ircd -f /etc/ircd/ircd.conf
+
+[Install]
+WantedBy=multi-user.target

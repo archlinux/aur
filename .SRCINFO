@@ -1,0 +1,23 @@
+pkgbase = ultimate-ircd
+	pkgdesc = ultimate irc server
+	pkgver = 3.0.2
+	pkgrel = 12
+	url = https://github.com/J-Soft/UltimateIRCd
+	install = ircd.install
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	makedepends = git
+	provides = ircd
+	conflicts = ircd
+	source = git://github.com/J-Soft/UltimateIRCd.git#commit=8d4bf332b4aeaba6c561437012c1ab0a3d1db512
+	source = ultimate-ircd.service
+	source = ultimate-ircd.tmpfiles
+	source = conf-fix.patch
+	md5sums = SKIP
+	md5sums = 526fd78018b9b011787e4e9012437116
+	md5sums = e51723ab29e7a3ddc3589846815de0c9
+	md5sums = 5e0f2a02e12675ac070a148c3234e111
+
+pkgname = ultimate-ircd
+
