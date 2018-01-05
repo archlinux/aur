@@ -1,0 +1,15 @@
+pkgbase = sk1libs
+	pkgdesc = A set of python non-GUI extensions for sK1 Project.
+	pkgver = 0.9.2
+	pkgrel = 2
+	url = http://sk1project.org/
+	arch = x86_64
+	license = custom:LGPL2
+	depends = python2
+	depends = freetype2
+	depends = lcms
+	source = sk1libs-0.9.2.tar.gz::https://sk1.googlecode.com/files/sk1libs-0.9.2pre_rev1383.tar.gz
+	md5sums = fdbb198779ff9941a8912438802fc05a
+
+pkgname = sk1libs
+
