@@ -1,0 +1,19 @@
+pkgbase = brother-mfc-l8610cdw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-8950DW
+	pkgver = 1.2.0
+	pkgrel = 0
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = rpmextract
+	depends = a2ps
+	depends = cups
+	source = http://download.brother.com/welcome/dlf103214/mfcl8610cdwlpr-1.2.0-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf103223/mfcl8610cdwcupswrapper-1.2.0-0.i386.rpm
+	sha256sums = 27211c779effea39d5622f0683629faf44d7f62a4fee48b7ef3cc1935a00cde9
+	sha256sums = 124d1c07e0f7548ee01ad85fd650479b4f7040ac211df88a45bbc70c06c83736
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l8610cdw
+
