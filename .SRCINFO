@@ -1,0 +1,18 @@
+pkgbase = yagf
+	pkgdesc = Qt4-based GUI for Cuneiform and Tesseract OCRs
+	pkgver = 0.9.5
+	pkgrel = 3
+	url = https://sourceforge.net/projects/yagf-ocr/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt4
+	depends = aspell
+	optdepends = cuneiform: recognition tool
+	optdepends = tesseract: recognition tool
+	optdepends = xsane: acquire images from a scanner into YAGF directly
+	source = https://downloads.sourceforge.net/project/yagf-ocr/yagf-0.9.5.tar.gz
+	md5sums = cc01d671fafbfa71fad3d95591ccca37
+
+pkgname = yagf
+
