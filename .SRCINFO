@@ -15,11 +15,11 @@ pkgbase = signal
 	conflicts = signal-desktop
 	conflicts = signal-desktop-beta
 	conflicts = signal-desktop-bin
-	source = signal-1.1.0.tar.gz::https://github.com/WhisperSystems/Signal-Desktop/archive/v1.1.0.tar.gz
+	source = signal-1.1.0::git+https://github.com/WhisperSystems/Signal-Desktop.git#tag=v1.1.0
 	source = signal.sh
 	source = signal.desktop
 	source = signal-tray.desktop
-	sha512sums = f8409ace472f2bf7614741ddb0f612faaf9f130141bd22539dc0ee4987dd8260136dc53965876c101cce8e15bf2769ab8cb30a07ae304491d97704370bc57058
+	sha512sums = SKIP
 	sha512sums = 2c7f7ab67b94f5c5ed799eba2c47c466d35bf16a60b6311bac606956e25689b21e3ffa2373cf47289d83d46e20da1213866ade06009eccd8012e840a7428f056
 	sha512sums = a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327
 	sha512sums = ced228d19303abe951c55f7874004cb9e4cd062dbda48c7ea80b0a6fb9adf5716a37164c01c9921a91f00653b0737fed80e3c5e684b0f3bcec375c265d6d8e5c
