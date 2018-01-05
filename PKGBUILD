@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Kyle Terrien <kyleterrien at gmail dot com>
 
 pkgname=wmload
