@@ -1,0 +1,50 @@
+pkgbase = linux49-lqx
+	pkgdesc = A desktop oriented kernel and modules with Liquorix patches
+	pkgver = 4.9.49
+	pkgrel = 1
+	url = http://liquorix.net/
+	install = linux.install
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.sign
+	source = https://liquorix.net/sources/4.9.49-1.patch.gz
+	source = https://liquorix.net/sources/4.9/config.amd64
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = 99-linux.hook
+	source = linux.preset
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	sha512sums = bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3a571225f92a33ef0b6d65f35595bc32d773356646df2627da55e9bc7f1f1a
+	sha512sums = SKIP
+	sha512sums = f3f89c26cde6b671cd1270660ceee248db9b3fd86f783a93fe593027329bdd5a4d27c6b98232c6a12003e652283d53ef3848e06754694e5bce07851ddc324247
+	sha512sums = a3fc4d7428668cade749acb4a2854ebbbc81b42c7236dbcb486fab080890dacad7f9e6bd769019caaf6cf312fefc682bc08a79f0c20425104ca952696f30fdcb
+	sha512sums = 7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a
+	sha512sums = 4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44
+	sha512sums = 6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74
+	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
+
+pkgname = linux49-lqx
+	pkgdesc = A desktop oriented kernel and modules with Liquorix patches
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = mkinitcpio>=0.8
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = nvidia-lqx: nVidia drivers for linux-lqx
+	optdepends = linux-firmware: Firmware files for Linux
+	backup = etc/mkinitcpio.d/linux49-lqx.preset
+
+pkgname = linux49-lqx-headers
+	pkgdesc = Header files and scripts to build modules for linux-lqx.
+	depends = linux49-lqx
+
+pkgname = linux49-lqx-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the linux-lqx kernel
+	depends = linux49-lqx
+
