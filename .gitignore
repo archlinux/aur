@@ -2,4 +2,4 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!libappindicator2.patch
+!is_error.patch

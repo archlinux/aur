@@ -4,7 +4,7 @@
 
 pkgname=psensor
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical hardware temperature monitor for Linux"
 arch=('i686' 'x86_64')
 url="http://wpitchoune.net/psensor"
@@ -18,9 +18,16 @@ optdepends=('asciidoc: required to produce the HTML version of the FAQ'
 	'json-c: required for remote monitoring'
 	'curl: required for remote monitoring'
 	'libgtop: required for CPU usage')
-source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz")
-md5sums=('0d8ac0a1312e96f2101ecc7c684e2863')
+source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz"
+	"is_error.patch")
+md5sums=('0d8ac0a1312e96f2101ecc7c684e2863'
+         '04c45b3527e6cc4012fe60491751a0ac')
 options=('!makeflags') # Parallel build seems broken in some case
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+	patch -Np1 -i "$srcdir/is_error.patch"
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
