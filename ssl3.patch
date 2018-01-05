@@ -1,0 +1,14 @@
+diff -wbBur delegate9.9.13.org/filters/sslway.c delegate9.9.13/filters/sslway.c
+--- delegate9.9.13.org/filters/sslway.c	2014-06-02 07:06:16.000000000 +0400
++++ delegate9.9.13/filters/sslway.c	2016-06-02 13:53:03.507177191 +0300
+@@ -310,8 +310,8 @@
+ 
+ SSL_METHOD *SSLv2_server_method(); /*OPT(0)*/
+ SSL_METHOD *SSLv2_client_method(); /*OPT(0)*/
+-SSL_METHOD *SSLv3_server_method();
+-SSL_METHOD *SSLv3_client_method();
++SSL_METHOD *SSLv3_server_method(); /*OPT(0)*/
++SSL_METHOD *SSLv3_client_method(); /*OPT(0)*/
+ SSL_METHOD *SSLv23_server_method();
+ SSL_METHOD *SSLv23_client_method();
+ SSL_METHOD *TLSv1_server_method();

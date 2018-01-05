@@ -1,0 +1,17 @@
+pkgbase = delegate
+	pkgdesc = Caching and converting multyprotocol proxy. For example, you may use it as NNTP web interface
+	pkgver = 9.9.13
+	pkgrel = 3
+	url = http://www.delegate.org/
+	install = delegate.install
+	arch = x86_64
+	license = GPL
+	depends = pam
+	options = !strip
+	source = ftp://ftp:ps790809%40inbox%2Eru@ftp.delegate.org/pub/DeleGate/delegate9.9.13.tar.gz
+	source = ssl3.patch
+	md5sums = b617959aa785b751a6292dad7487c722
+	md5sums = de7ebae5f5ba97509dc26a19e8e0aaf1
+
+pkgname = delegate
+
