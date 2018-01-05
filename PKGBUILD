@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Suzy Williams <suzanne.williams3@verizon.net>
