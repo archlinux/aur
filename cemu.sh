@@ -15,4 +15,6 @@ if [ ! -d "$HOME"/.cemu ] ; then
 fi
 
 cd ~/.cemu
+winetricks vcrun2015
+winetricks settings win7
 wine "$HOME"/.cemu/Cemu.exe "$@"
