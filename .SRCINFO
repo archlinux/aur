@@ -1,6 +1,6 @@
 pkgbase = pacman-boot-backup-hook
 	pkgdesc = Pacman hook that uses rsync to backup the /boot directory prior to upgrades of the linux or systemd package.
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	changelog = CHANGELOG
 	arch = any
@@ -8,8 +8,12 @@ pkgbase = pacman-boot-backup-hook
 	depends = rsync
 	source = LICENSE
 	source = 50_bootbackup.hook
+	source = pacman-boot-backup.conf
+	source = pre-kernel-upgrade-rsync
 	md5sums = ac9ac34b11dd5a53d096a734ab677479
-	md5sums = e2a3034dbae1e27ed782c8b44cbd7f72
+	md5sums = f731f5aee99eecc75d6c0686742d3a23
+	md5sums = 27819f1384ade1a543a1c110bf9fc846
+	md5sums = 0fdff0b79eb987701a2c54c40910fed0
 
 pkgname = pacman-boot-backup-hook
 

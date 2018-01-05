@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[[ -f /etc/pacman-boot-backup.conf ]] && . /etc/pacman-boot-backup.conf
+
+/usr/bin/rsync -azq --delete "${BACKUP_PATH_SRC:-/boot/}" "${BACKUP_PATH_DEST:-/.bootbackup}"

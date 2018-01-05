@@ -1,1 +1,5 @@
-v1.0: Initial release
+v1.1 (2018/01/05):
+- The location of the data to be backedup (and where to) can now be configured
+
+v1.0 (2017/12/31):
+- Initial release

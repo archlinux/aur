@@ -10,5 +10,5 @@ Target = systemd
 Description = Backing up /boot...
 When = PreTransaction
 Depends = rsync
-Exec = /usr/bin/rsync -azq --delete /boot/ /.bootbackup
+Exec = /usr/share/libalpm/scripts/pre-kernel-upgrade-rsync
 AbortOnFail
