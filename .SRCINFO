@@ -1,0 +1,16 @@
+pkgbase = synce-rra
+	pkgdesc = provide a means of communication with a Windows CE device - rra libraries for synce
+	pkgver = 0.17
+	pkgrel = 3
+	url = http://synce.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	makedepends = pyrex
+	makedepends = synce-libmimedir
+	depends = synce-core
+	source = http://downloads.sourceforge.net/synce/librra-0.17.tar.gz
+	md5sums = d0c869afbce4d203c85098a2886b6956
+
+pkgname = synce-rra
+
