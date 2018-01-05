@@ -1,9 +1,9 @@
 # Maintainer: NexAdn <nexadn@yandex.com>
 pkgname=cef-standard
 pkgver=3.3239
-_subver_i686=1716.g735b746
+_subver_i686=1721.g86eb141
 _subver_x86_64=${_subver_i686}
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromium Embedded Framework standard release"
 arch=("i686" "x86_64")
 url="https://bitbucket.org/chromiumembedded/cef"
