@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=xboard-git
