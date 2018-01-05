@@ -7,3 +7,4 @@ pkg/
 *.log
 build/
 chromium-freetype2/
+chromium-*.txt
