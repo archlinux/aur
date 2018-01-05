@@ -2,7 +2,7 @@
 # Contributor: Luca Weiss <WEI16416 (at) spengergasse (dot) at>
 
 pkgname=kde1-kdelibs-git
-pkgver=1.1.2r3033.ca9e8f0
+pkgver=1.1.2r3033.ca9e8f0f
 pkgrel=1
 pkgdesc="Historical copy of the libraries module of KDE 1, adapted to compile on modern systems (circa. 2016)"
 arch=('i686' 'x86_64')
@@ -27,6 +27,9 @@ prepare() {
   else
     mkdir build
   fi
+  cd kde1-kdelibs
+  sed -i 's/lib64/lib/' cmake/FindQt1.cmake
+  sed -i 's/lib64/lib/' cmake/KDE1InstallDirs.cmake
 }
 
 build() {
