@@ -1,0 +1,33 @@
+pkgbase = gmerlin
+	pkgdesc = Multimedia architecture for Linux
+	pkgver = 1.2.0
+	pkgrel = 8
+	url = http://openmovieeditor.sourceforge.net/HomePage
+	arch = x86_64
+	license = GPL
+	makedepends = alsa-lib
+	makedepends = pulseaudio
+	makedepends = v4l-utils
+	makedepends = mesa-libgl
+	depends = gavl
+	depends = gtk2
+	depends = libxv
+	depends = libvisual
+	depends = libcdio-paranoia
+	depends = mjpegtools
+	depends = libquicktime
+	depends = jack
+	optdepends = alsa-lib: for ALSA support
+	optdepends = jack: for JACK support
+	optdepends = libquicktime: for movie encoding
+	optdepends = pulseaudio: for PulseAudio support
+	optdepends = v4l-utils: for video conversion
+	source = http://downloads.sourceforge.net/sourceforge/gmerlin/gmerlin-1.2.0.tar.gz
+	source = cdio-api-fixes.patch
+	source = gmerlin-texi.patch
+	md5sums = 2f2a0880e738e71486f04c929ba067f4
+	md5sums = d0e407f01435394a0cfe04acb3c1a4cc
+	md5sums = 33a4dce06b7560fc839055c5a872435f
+
+pkgname = gmerlin
+

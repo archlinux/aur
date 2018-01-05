@@ -1,0 +1,1846 @@
+diff -Naur gmerlin-1.2.0.orig/doc/gmerlin.orig.texi gmerlin-1.2.0/doc/gmerlin.orig.texi
+--- gmerlin-1.2.0.orig/doc/gmerlin.orig.texi	1969-12-31 16:00:00.000000000 -0800
++++ gmerlin-1.2.0/doc/gmerlin.orig.texi	2013-02-27 16:04:03.847930671 -0800
+@@ -0,0 +1,1830 @@
++\input texinfo   @c -*-texinfo-*-
++@comment %**start of header
++@setfilename gmerlin.info
++@include version.texi
++@settitle Gmerlin @value{VERSION}
++@dircategory Gmerlin
++@direntry
++* Gmerlin: (gmerlin).           Gmerlin multimedia applications
++@end direntry
++
++
++@syncodeindex pg cp
++@comment %**end of header
++@copying
++This manual is for Gmerlin
++(version @value{VERSION}, @value{UPDATED}).
++
++Copyright @copyright{} 2001-2008 Members of the Gmerlin project.
++
++@quotation
++Permission is granted to copy, distribute and/or modify this document
++under the terms of the GNU Free Documentation License, Version 1.1 or
++any later version published by the Free Software Foundation; with no
++Invariant Sections, with the Front-Cover Texts being ``A GNU Manual,''
++and with the Back-Cover Texts as in (a) below.  A copy of the
++license is included in the section entitled ``GNU Free Documentation
++License.''
++
++(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
++this GNU Manual, like GNU software.  Copies published by the Free
++Software Foundation raise funds for GNU development.''
++@end quotation
++@end copying
++@titlepage
++@title Gmerlin
++@subtitle for version @value{VERSION}, @value{UPDATED}
++@author Burkhard Plaum (@email{gmerlin@@users.sourceforge.net})
++@page
++@vskip 0pt plus 1filll
++@insertcopying
++@end titlepage
++
++@contents
++
++@ifnottex
++@node Top, Basics, (dir), (dir)
++@top Gmerlin userguide
++Gmerlin user guide.
++
++@insertcopying
++@end ifnottex
++
++@menu
++* Basics::
++* Installation::
++* General usage information::
++* Applications::
++* Plugins::
++* FAQ::
++* Get involved::
++@end menu
++
++@node Basics, Installation, Top, Top
++@chapter Basics
++This manual should help you to get familiar with gmerlin software. The
++gmerlin software is quite modular, because it consists of multiple
++packages, most of which can be used independently. In this document,
++it is assumed, that you have all packages installed (See Installation below).
++
++@node Installation, General usage information, Basics, Top
++@chapter Installation
++
++@menu
++* Requirements::
++* Compilation and installation::
++* Binary codecs::
++@end menu
++
++@node Requirements
++@section Requirements
++
++For compiling x264, you need @uref{http://nasm.sourceforge.net/, nasm}
++(@uref{http://www.tortall.net/projects/yasm/, yasm} on x86_64).
++They are included in
++most distributions. Required libraries can be installed from source or from
++binary packages. In the latter case, you must install the development
++packages (e.g. libfoo-devel-1.2.3-4.i386.rpm) also. This is what you need:
++
++@table @emph
++
++@item @uref{http://www.alsa-project.org/, Alsa}
++It's the recommended audio architecture
++
++@item @uref{http://www.tux.org/~ricdude/EsounD.html, esound}
++Only needed if neither Alsa nor OSS work for you.
++
++@item @uref{http://flac.sourceforge.net/, flac}
++For en-/decoding flac files (optional).
++
++@item @uref{http://www.gtk.org/, gtk-2.4.x}
++This is needed for compiling the GUI applications. Without it you'll
++get just the core library, which won't be of much use.
++
++@item @uref{http://www.ijg.org/, libjpeg}
++For reading and writing single JPEG images (strongly recommended)
++
++@item @uref{http://www.libpng.org/pub/png/libpng.html, libpng}
++For reading and writing single PNG images (strongly recommended).
++Also for decoding png encoded Quicktime and AVI files
++
++@item @uref{http://www.remotesensing.org/libtiff/, libtiff}
++For reading and writing single TIFF images (Optional)
++
++@item @uref{http://www.xmlsoft.org/, libxml}
++Required. All kinds of configuration files as well as the media
++tree are xml based.
++
++@item @uref{http://www.vorbis.com/, vorbis}
++Needed for en-/decoding Vorbis files. Also required for the
++theora encoding.
++
++@item @uref{http://musicbrainz.org/products/client/index.html, libmusicbrainz}
++Needed for getting Audio CD metadata using
++@uref{http://musicbrainz.org/, musicbrainz}
++
++@item @uref{http://libcddb.sourceforge.net/, libcddb}
++Needed for getting Audio CD metadata from CDDB servers
++
++@item Headers for libXv and libXinerama
++These are usually shipped with X11 but some distributions pack the header
++files separately (e.g. libxv-dev, libxinerama-dev). libXv is needed for
++hardware accelerated video playback, libXinerama adds support for
++multi-screen configurations.
++
++@item @uref{http://www.samba.org/, libsmbclient}
++For loading smb:// URLs (optional).
++
++@item @uref{http://sourceforge.net/projects/libvisual, libvisual}
++For using libvisual plugins (optional).
++
++@item @uref{http://www.ladspa.org, Ladspa plugins}
++Optional for audio filters/effects. Good experiences were made with
++the plugin packages @uref{http://www.ladspa.org/cmt/,cmt},
++@uref{http://plugin.org.uk, swh-plugins} and
++@uref{http://tap-plugins.sourceforge.net, tap-plugins}. Gmerlin looks for them
++at runtime, so you can install them at any time.
++
++@end table
++
++From now on, there are 2 ways to proceed:
++@itemize @bullet
++@item You can download the
++@uref{http://sourceforge.net/project/showfiles.php?group_id=19684&package_id=151779, gmerlin-dependencies}
++package, unpack it and install it using the instructions in the README file.
++A full dependencies install will provide you with the complete codec support,
++but some packages you already have might be installed a second time.
++Everything, however, gets into /opt/gmerlin, so there will be no conflicts.
++
++@item To have more control over the process, download and install the
++libraries listed below manually. 
++@end itemize
++
++@table @emph
++@item @uref{http://www.gnu.org/software/libcdio/, libcdio}
++Neccessary for the VCD, Audio CD and DVD plugins.
++
++@item @uref{http://www.audiocoding.com/, faad2}
++Needed for MPEG-4 audio support (mp4, aac files).
++
++@item @uref{http://www.audiocoding.com/, faac}
++Needed for MPEG-4 audio encoding (.aac files) and for AAC encoding via
++libquicktime.
++
++@item @uref{http://www.ffmpeg.org/, FFmpeg}
++Many codecs, strongly recommended. You should get a sufficiently new
++version from @uref{http://ffmpeg.mplayerhq.hu/download.html, ffmpeg SVN}
++and use --enable-shared when calling configure. Another option is the
++version in the
++@uref{http://sourceforge.net/project/showfiles.php?group_id=19684&package_id=151779, gmerlin-dependencies} package.
++
++@item @uref{http://www.mp3dev.org/, lame}
++For encoding mp3 files and AVIs with mp3 audio streams with libquicktime.
++
++@item @uref{http://mad.sourceforge.net/, mad}
++For playing MPEG-1/2 audio (e.g. mp3)
++
++@item @uref{http://freshmeat.net/redir/libdvdread/17926/url_homepage/downloads.shtml, libdvdread}
++For playing DVDs. Gmerlins method of accessing DVD drives doesn't
++differ much from others. Thus, DVD playback howtos found in the web
++apply for gmerlin as well.
++
++@item @uref{http://developers.videolan.org/x264.html, x264}
++For H.264 encoding with libquicktime.
++
++@item @uref{http://www.videolan.org/developers/libdca.html, libdca}
++For decoding DTS streams.
++
++@item @uref{http://libmpeg2.sourceforge.net/, libmpeg2}
++For decoding MPEG-1/2 Video (like .mpg files and DVD video)
++
++@item @uref{http://liba52.sourceforge.net/, liba52}
++For playing AC3 (aka DVD audio) streams.
++
++@item @uref{http://www.musepack.net/, libmpcdec}
++For playing musepack files (optional).
++
++@item @uref{http://www.theora.org/, theora}
++For en-/decoding theora video (optional).
++ 
++@item @uref{http://www.speex.org/, speex}
++For en-/decoding Speex streams (optional).
++
++@item @uref{http://libquicktime.sourceforge.net/, libquicktime}
++Optional, for the libquicktime based encoding and decoding plugins.
++Mostly necessary if you want to encode video. For decoding Quicktime,
++gmerlin_avdecoder is a lot better.
++
++@item @uref{http://mjpeg.sourceforge.net/, mjpegtools}
++Optional for en-/decoding yuv4mpeg streams and for encoding high
++quality MPEG video using mpeg2enc and friends.
++
++@end table
++
++@node Compilation and installation
++@section Compilation and installation
++
++If you downloaded a release, make sure, that you have the latest
++version of all packages. Alternatively, you can download the latest
++@uref{http://sourceforge.net/project/showfiles.php?group_id=19684&package_id=151778, gmerlin-all-in-one}
++package. It contains all source packages together
++with optional scripts to build and install them. Check the included
++README file.
++
++We always try to be compatible ther GNU build system. This means, that
++all gmerlin packages are compiled using the usual
++@code{./configure; make; su; make install} prodecure. Type
++@code{./configure --help} to see the supported options.
++
++The order is the following:
++
++@itemize
++@item @uref{http://sourceforge.net/project/showfiles.php?group_id=19684&package_id=50349, gavl}
++@item @uref{http://sourceforge.net/project/showfiles.php?group_id=19684&package_id=14511, gmerlin}
++@item @uref{http://sourceforge.net/project/showfiles.php?group_id=19684&package_id=124659, gmerlin_avdecoder}
++@item @uref{http://sourceforge.net/project/showfiles.php?group_id=19684&package_id=152799, gmerlin-encoders}
++@item @uref{http://sourceforge.net/project/showfiles.php?group_id=19684&package_id=124661, gmerlin-visualizer}
++@end itemize
++
++@node Binary codecs
++@section Binary codecs
++
++These must be downloaded from the @uref{http://www1.mplayerhq.hu/MPlayer/releases/codecs/, MPlayer codec page}. Download the file
++essential-YYYYMMDD.tar.bz2, where YYYYMMDD is some date. Unpack the
++.tar.bz2 and move the included files to /usr/lib/codecs. At this
++location, the DLLs will also be found by other players.
++
++@node General usage information, Applications, Installation, Top
++@chapter General usage information
++
++@menu
++* Configuration data::
++* GUI::
++* GML Syntax: gml.
++* Setting parameters from the commandline::
++@end menu
++
++@node Configuration data
++@section Configuration data
++
++They are saved in the directory @code{~/.gmerlin}, which has subdirectories
++for all applications. The directory "generic" stores common configuration
++data for applications, which have no config dialog. Plugins used by these
++programs can be configured with the gmerlin_plugincfg application. If a
++program misbehaves, especially after a version upgrade, delete the file
++@code{~/.gmerlin/application_dir/config.xml}, where @code{application_dir}
++corresponds to the application. Normally, this shouldn't be necessary.
++
++@node GUI
++@section GUI
++
++@menu
++* Introduction: gui_intro.
++* Static and dynamic parameters: gui_statdyn.
++* Configuring input plugins: gui_i.
++* Configuring filters: gui_f.
++* Log messages: gui_log.
++* Tips: gui_tips.
++@end menu
++
++@node gui_intro
++@subsection Introduction
++
++We try to make this as consistent as possible across the applications.
++In many windows, you'll see context sensitive menus when you right
++click somewhere. Furthermore, tooltips are enabled in all programs by
++default. You can, however, switch them off if they bother you. 
++
++@node gui_statdyn
++@subsection Static and dynamic parameters
++
++All GUI applications have their own configuration data.
++This means, that plugin configurations are not shared between
++these applications.
++
++There is a strict separation between static and plugin dependent
++configurations. 
++
++Most applications have one or more config dialogs
++@ifhtml
++(
++@image{../img/config_16}
++)
++@end ifhtml
++which let you change settings either for several subsystems of the
++application or for plugins, depending on the context.
++To change the plugins themselves, there are separate plugin dialogs
++@ifhtml
++(
++@image{../img/plugin_16}
++)
++@end ifhtml
++which let you select and configure plugins.
++
++It might be a bit tricky to find out if a special option can be set
++via the the plugin dialog or via
++the global config dialog. The general rule is: All features, which are
++supported by the core architecture, are configured in some global
++dialog. You can expect them to be present on every gmerlin installation
++of the same version. The plugin options vary depending on what plugins
++are installed (that's the reason, why they are separated).
++
++@node gui_i
++@subsection Configuring input plugins 
++
++@ifhtml
++@image{../img/gui_i}
++@end ifhtml
++
++This dialog lets you control, how input plugins (or image reader plugins)
++are loaded. The widgets on the right are valid for the plugin, which is selected
++on the left. You have the following options:
++
++@table @b
++@item Parameters
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++Lets you set parameters of the plugin. These will be valid when an instance of
++the plugin is opened the next time. If you configure hardware plugins in the player,
++you must close and reopen all device albums for the changes to become effective.
++For plugins, which have no options, this button is disabled.
++@item Info
++@ifhtml
++@image{../img/info_16}
++@end ifhtml
++Pops up a window showing much of the information, which is known to the plugin
++registry.
++@item Priority
++This lets you change the priority of the plugin, if multiple plugins are
++available for a gml. The value can be between 1 and 10. Usually, the default
++priorities are ok. But for image files, the priorities of the ``Image stills input plugin'' and the ``Image video input plugin'' decide, whether images are displayed
++as a slideshow or a video.
++@item Protocols
++Lets you configure the supported network protocols. The protocols should rarely
++be changed and changes are overwritten by a new install of the plugin. For plugins,
++which don't support network streams, the protocols cannot be changed.
++@item Extensions
++Lets you configure the file extensions, which are associated with the plugin.
++If you change the extensions, they are overwritten by a new install of the plugin.
++That's a good reason to report missing file extensions to the developers.
++@end table
++
++@node gui_f
++@subsection Configuring filters
++
++@ifhtml
++@image{../img/gui_f}
++@end ifhtml
++
++This dialog lets you build a filter chain to apply additional changes to the
++A/V data. The GUI player will apply most changes during playback (reinitializing the
++playback pipelines if necessary), the transcoder can change filter chains only per
++track. The filters are processed in top-to-bottom order.
++
++You have the following buttons:
++
++@table @b
++@item Add filter
++@ifhtml
++@image{../img/add_16}
++@end ifhtml
++Pops up a dialog, which will let you add new filters to the chain.
++Filter are always added to the end of the chain.
++@item Remove filter
++@ifhtml
++@image{../img/trash_16}
++@end ifhtml
++Deletes the currently selected filter
++@item Configure filter
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++Set parameters of the currently selected filter 
++@item Move to top
++@ifhtml
++@image{../img/top_16}
++@end ifhtml
++Move filter to the top (= the beginning) of the chain
++@item Move up
++@ifhtml
++@image{../img/up_16}
++@end ifhtml
++Move filter up by one
++@item Move down
++@ifhtml
++@image{../img/down_16}
++@end ifhtml
++Move filter down by one
++@item Move to top
++@ifhtml
++@image{../img/bottom_16}
++@end ifhtml
++Move filter to the bottom (= the end) of the chain
++@end table
++
++@b{Note for the player}
++
++Even though filter parameters are changed on the fly,
++pressing ``cancel'', without pressing ``apply'' before will
++revert all changes you made.
++
++@node gui_log
++@subsection Log messages
++
++@ifhtml
++@image{../img/gui_log}
++
++@end ifhtml
++Messages from pretty much everywhere in the applications are sent through the
++logging mechanism, and finally show up in the log window. It's the first place to
++look, if something does not work as expected (e.g. an URL does not load).
++There are 4 different types of messages, @b{error}, @b{warning}, @b{info} and
++@b{debug}. In the configuration for the log window, you can select, which message
++you want to see, the colors of the messages and the history size.
++@node gui_tips
++@subsection Tips
++
++@itemize
++@item Many buttons, which are associated with a list, are disabled unless you select an item in the list
++@item Doubleclicking onto the background of a slider (@strong{not} the slider itself) resets it to the
++      factory default
++@end itemize
++
++@node gml
++@section GML Syntax
++
++GMLs (Gmerlin media locations) are pretty much similar to URLs or
++MRLs with the difference, that device plugins support passing the device.
++This makes it possible to use gmls with hardware setups, which have
++multiple devices for each plugin.
++
++A gml can be:
++
++@table @bullet
++@item A regular filename
++Optionally preceeded with ``file://''. This means, that @b{/files/music.mp3} is the same as
++@b{file:///files/music.mp3}.
++@item A dash ``-'' or the string ``stdin://'' for reading from stdin
++@item Any valid network URL
++Examples: @b{http://webstream.example.com:8080}, @b{ftp://user:pass@@ftp.example.com/music.mp3}
++@item A "hardare protocol" followed by the device like @b{cda:///dev/hdc}.
++Known hardware protocols are @b{cda} (Audio CD), @b{vcd}, @b{dvd} and
++@b{dvb}. The supported protocols may vary according to your installation.
++@end table
++
++
++@node Setting parameters from the commandline
++@section Setting parameters from the commandline
++
++Gmerlin configuration handling provides the same features for both GUI
++applications and commandline programs. The natural result is, that the
++commandline syntax is a bit more complicated, since parameters can be
++nested.
++
++In General options have the form
++
++@code{'parameter1=value1:parameter2=value2...'}
++
++The quotes are necessary, if the string contains characters, which
++have a special meaning for the shell.
++
++The syntax of values depends on the type:
++@table @strong
++@item Boolean
++Value can be either 0 or 1.
++@item Integer values
++An integer number.
++@item Float values
++A floating point (i.e. fractional) number.
++@item Strings
++A string. Colons ':' should be escaped with '\'.
++@item Time
++Time is in the format @code{@{[[HH:]MM:]SS@}} while the seconds can be
++fractional. Hours and Minutes are optional, thus any format of
++@code{@{5.5@}}, @code{@{0:05.5@}} or @code{@{0:00:05.5}@} is valid for a time
++of 5.5 seconds. Writing @code{0} instead of @code{00} is also ok.
++@item Enumeration with suboptions
++Value is in the form
++@code{string[@{subparameter1=subvalue1:subparameter2=subvalue2...@}]}.
++The subparameters are optional. E.g. if the option is for selecting a
++plugin, setting string to @code{foo} will select the plugin @code{foo} and
++pass the subparameters (if avaliable) to the @code{foo} plugin.
++@item List or chain with suboptions
++This is like enumeration with suboptions with the difference, that
++you can concatenate multiple options together with colons (:) and
++must enclose everything with braces. For example:
++
++@code{@{opt1@{param1=value1@}:opt2@{param2=value2@}@}}
++
++If you use @code{-help}, you'll also see supported ranges for
++numeric types, or supported options for strings (if available).
++
++@end table
++
++@node Applications, Plugins, General usage information, Top
++@chapter Applications
++
++@menu
++* GUI Player::
++* Player remote control::
++* GUI Transcoder::
++* Transcoder remote control::
++* Commandline player::
++* Commandline recorder::
++* Alsamixer::
++* Visualizer::
++* Keyboard daemon::
++@end menu
++
++@node GUI Player
++@section GUI Player
++Type @code{gmerlin} with optionally any number of files or URLs to start this.
++
++@menu
++* Invoking gmerlin: gmerlin_player_usage.
++* Main window::
++* Media tree::
++* Video window::
++* Track information: gmerlin_player_trackinfo.
++* Configuring playback pipelines: gmerlin_player_avconfig.
++* Shortcuts: gmerlin_player_shortcuts.
++@end menu
++
++@node gmerlin_player_usage
++@subsection Invoking gmerlin
++
++@include gmerlin_player.texi
++
++@node Main window
++@subsection Main window
++@ifhtml
++@image{../img/player_mainwin}
++
++@end ifhtml
++
++It's a usual player window, with self explanatory buttons.
++
++@menu
++* Main menu: player_mainmenu.
++* Display: player_display.
++@end menu
++
++@node player_mainmenu
++@subsubsection Main menu
++
++The menu button will show the main menu of the player. Here, you can
++control practically the whole application:
++
++@table @b
++@item Audio, video and subtitles
++  See @ref{gmerlin_player_avconfig, Configuring playback pipelines}.
++@item Chapters
++@ifhtml
++@image{../img/player_chapters}
++
++@end ifhtml
++Chapters in gmerlin are just seekpoints with optional labels.
++If an input plugin supports chapters (e.g. of DVDs), gmerlin will
++make them available through the chapter menu.
++@item Visualizations
++@ifhtml
++@image{../img/player_vis}
++
++@end ifhtml
++If the upper menu item is enabled and the video window isn't used otherwise,
++Visualizations will be turned on.
++The audio stream of an Audio/video track can be visualized by disabling the video stream
++of that file (See @ref{gmerlin_player_avconfig, Configuring playback pipelines}).
++
++Then you can set some plugin-independent options
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++and finally the plugin itself 
++@ifhtml
++@image{../img/plugin_16}
++@end ifhtml
++. The menu for visualization plugin works exactly the same as for output plugins
++(See @ref{gmerlin_player_avconfig, Configuring playback pipelines}).
++
++@item Windows
++@ifhtml
++@image{../img/player_windows}
++
++@end ifhtml
++Here, you can show or hide the @ref{gui_log, Log window}, the
++@ref{gmerlin_player_trackinfo, Track info window} and the @ref{Media tree}.
++
++@item Options
++@ifhtml
++@image{../img/player_options}
++
++@end ifhtml
++Here, you can set @b{Preferences}
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++, configure @ref{gui_i, Input plugins}
++@ifhtml
++@image{../img/plugin_16}
++@end ifhtml
++, select
++@b{skins} or configure the @ref{Keyboard daemon}.
++
++@item Commands
++@ifhtml
++@image{../img/player_commands}
++
++@end ifhtml
++Here you have some commonly used commands. The good news about the
++shortcuts is, that they work in the
++media tree and in the video window as well.
++
++Only exception are the shortcuts, which map to ASCII-characters
++(Pause and Seek to start), they don't work in the media tree and in albums.
++
++Use this menu as a quick-help for all global
++shortcuts.
++
++@item Accessories
++@ifhtml
++@image{../img/player_accessories}
++
++@end ifhtml
++Here, you can conventiently fire up some other gmerlin applications
++like the @ref{GUI Transcoder}, the @ref{Visualizer} and the
++@ref{Alsamixer}.
++
++@end table
++
++@node player_display
++@subsubsection Display
++
++@ifhtml
++@image{../img/player_display}
++
++@end ifhtml
++The display is divided into several areas. Left of the
++time display, gmerlin shows an icon denoting the current
++operation mode (playing, paused etc.). Right of the time display,
++you have 2 fields. By left-clicking into the upper field, you can
++change the displayed time value. Options are
++@table @b
++@item Default
++Time is counted since track start
++@item ALL
++Time is counted since album start
++@item REM
++Remaining time until track end
++@item ALL REM
++Remaining time until album end
++@end table
++
++In the lower field, you can left-click to change the repeat mode.
++Options are @b{no repeat}, @b{repeat current track} and
++@b{repeat current album}.
++
++At the bottom, there is the scrolltext. It displayes the name of the currently played
++track (which can change e.g. for live radio stations), or a brief error messages if
++something goes wrong. Note, that in the latter case, you get more information from the
++@ref{gui_log, Log Window}.
++
++@node Media tree
++@subsection Media tree
++
++@ifhtml
++@image{../img/player_tree_tabbed}
++@end ifhtml
++
++The media tree can be used to store and organize your media collection.
++It consists of virtual folders called @emph{albums}. You can create albums,
++subalbums and move stuff between them like you want. The media files
++always stay at the same place in the filesystem. The albums can be either
++in own windows (Windowed mode) or as tabs in the tree window (tabbed mode). You
++cah switch this with the right-click menu of the tree widget.
++The tree- and album windows remember their screen positions.
++
++@menu
++* Tree widget: player_treewidget.
++* Album widget: player_albumwidget.
++@end menu
++
++@node player_treewidget
++@subsubsection Tree widget
++
++@b{Doubleclicking} an album opens it if it was closed or vice versa.
++
++@b{Creating albums} is done by right selecting the parent album in
++the tree and click the ``New album'' button
++@ifhtml
++@image{../img/folder_new_16}
++@end ifhtml
++or ``Album->New'' in the right-click menu. In the new empty album, you can then
++load files or URLs. Another option to import whole directory trees, is to
++click ``Album->New from directory''. It will pop up a directory selection dialog.
++The directory can optionally be scanned recursively. The tracks are either in one
++(flat) album, or in subalbums according to the directory structure.
++Note that importing large directories takes some time.
++
++@b{Deleting albums} is done by selecting them in the tree and
++clicking the ``remove'' button
++@ifhtml
++@image{../img/trash_16}
++@end ifhtml
++(or by choosing Album->Remove in the right click menu. Please note
++the following:
++
++@itemize @bullet
++@item Removing albums is done without confirmation
++@item All subalbums are removed as well
++@item This (as well as removing tracks) cannot be undone
++@item Good news: gmerlin @b{never} removes media files from disk
++@end itemize
++
++@b{Moving albums} is done with Drag & Drop
++
++@b{Loading files or URLs} into an open or closed album can be done by
++dragging it from a filemanager or webbrowser into the target album in the tree widget.
++
++Some @b{special albums} are automatically created in addition to the
++regular albums (which are created by you):
++
++@itemize @bullet
++@item @emph{Incoming:}
++@ifhtml
++@image{../img/incoming_closed_16}
++@end ifhtml
++
++It's the destination for tracks, which come from
++the comandline or from the remote.
++
++@item @emph{Favourites:}
++@ifhtml
++@image{../img/favourites_closed_16}
++@end ifhtml
++
++Each regular album has a Favourites button
++@ifhtml
++@image{../img/favourites_16}
++@end ifhtml
++, which
++lets you copy the selected tracks to the favourites. It's useful for
++quickly making a selection of tracks from multiple different albums.
++
++@item @emph{Plugin and device albums:}
++@ifhtml
++@image{../img/hardware_16}
++@end ifhtml
++
++Each plugin, which handles devices like removable disc drives
++@ifhtml
++@image{../img/drive_running_16}
++@end ifhtml
++or tuners
++@ifhtml
++@image{../img/tuner_16}
++@end ifhtml
++will create a plugin album. The available devices are
++then autoscanned and added as subalbums. Device albums are a bit limited:
++You can delete or reorder tracks, but you cannot move tracks from/to other
++albums.
++
++@end itemize
++
++@node player_albumwidget
++@subsubsection Album widget
++
++The album widget can either be in an own window (when the tree is in tabbed mode)
++or in a notebook right of the tree widget. It lists all tracks of that album.
++At the bottom there is a toolbar and a display of the total playback time of the album.
++
++A @b{track} in gmerlin is a piece of media, which can have an arbitrary number of audio-,
++video- and subtitle @b{streams}. A track can be divided into @b{chapters} (which are just
++seekpoints). Some files (like ALBW wrapped mp3s or concatenated Ogg streams), will show
++up as multiple tracks. You can move them around in the whole tree as if they were separate
++files.
++
++@b{Doubleclicking} an album opens it if it was closed or vice versa.
++
++The @b{right click menu} offers lots of options and shortcuts, not all of them are
++documented here.
++
++@b{Adding tracks} can happen in multiple ways:
++
++@itemize @bullet
++@item Drag Files or URLs from filenanagers or webbrowsers into an album
++@item Use the buttons
++@ifhtml
++@image{../img/folder_open_16}
++@end ifhtml
++@ifhtml
++@image{../img/earth_16}
++@end ifhtml
++in the album toolbar, or the right click menu
++@end itemize
++
++@b{Drag and Drop} is supported:
++@itemize @bullet
++@item From most webbrowsers and filenmanagers into the album (see above)
++@item From one regular album to another. By default, tracks are moved.
++  Press the @key{CTRL}-key before dragging, and the tracks will be copied.
++@item Inside all albums to sort the tracks
++@item From an album window into the tree window to transfer tracks to
++  another album
++@item From the album to text editors or graphics programs, which support
++dropping text. You'll get a string representation of the tracks, which
++will make designing disk covers easier.
++@end itemize
++
++@b{Error tracks} are tracks, which failed to load last time you tried.
++They are marked red but remain in the album. If they are on removable
++disks or in the network, you might retry playing them when they become
++available. To delete all error tracks, go to ``Select error tracks'' in the
++right click menu to select them. Then, press @kbd{@key{CTRL}+DELETE}
++to get rid of them.
++
++For keyboard commands, see @ref{gmerlin_player_shortcuts, Shortcuts}.
++
++@node Video window
++@subsection Video window
++
++This comes only when gmerlin has to show some video or still images. It
++is created and owned by the video output plugin (i.e. it has nothing to
++do with the core GUI). Currently, only an X11 plugin is available. It
++has some special features: You can zoom or squeeze the image to make
++your favourite tradeoff between aspect ratio distortion, black borders
++or cropped images. All global gmerlin @ref{gmerlin_player_shortcuts, Shortcuts} work
++also in the video window, as well as some special ones.
++
++@node gmerlin_player_trackinfo
++@subsection Track information
++@ifhtml
++@image{../img/player_trackinfo}
++
++@end ifhtml
++
++Here, you see detailed information of the currently (or last) played track
++in a tree structure. The right-click menu lets you copy either the whole contents or
++the currently selected row to the clipboard as plain text.
++
++@node gmerlin_player_avconfig
++@subsection Configuring playback pipelines
++
++The configuration for audio, video and subtitle handling is almost the same.
++
++@b{Stream menu}
++
++For each category, you have a stream menu.
++
++@ifhtml
++@image{../img/player_avconfig_menu}
++@end ifhtml
++
++In the upper part, you can select the available streams.
++You can also switch the stream off.
++
++In the lower part, you can set global (= plugin independent) options
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++, Filters
++@ifhtml
++@image{../img/filter_16}
++@end ifhtml
++ (See @ref{gui_f, Configuring filters})
++and the output plugin
++@ifhtml
++@image{../img/plugin_16}
++@end ifhtml
++.
++
++@b{Output plugin menu}
++
++@ifhtml
++@image{../img/player_avconfig_plugin}
++@end ifhtml
++
++In the upper part, you can change the output plugin (even during playback).
++In the lower part, you can configure
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++the plugin or show information  
++@ifhtml
++@image{../img/info_16}
++@end ifhtml
++about the plugin.
++
++@node gmerlin_player_shortcuts
++@subsection Shortcuts
++
++The following global shortcuts are available in the main window, the media
++tree including albums and the video window:
++
++@table @kbd
++@item @key{CTRL}+G
++Pop up current album and goto current track
++
++@item @key{CTRL}+O
++Pop up preferences dialog
++
++@item @key{CTRL}+P
++Pop up input plugin dialog
++
++@item @key{CTRL}+Q
++Quit program
++
++@item @key{CTRL}+PAGEDOWN
++Goto next track
++
++@item @key{CTRL}+PAGEUP
++Goto previous track
++
++@item @key{CTRL}+@key{SHIFT}+PAGEDOWN
++Goto next chapter
++
++@item @key{CTRL}+@key{SHIFT}+PAGEUP
++Goto previous chapter
++
++@item @key{CTRL}+RIGHT
++Seek forward
++
++@item @key{CTRL}+LEFT
++Seek backward
++
++@item @key{SHIFT}+RIGHT
++Decrease volume
++
++@item @key{SHIFT}+LEFT
++Increase volume
++
++@item @key{CTRL}+M
++Toggle mute
++
++@item 0
++(Zero) Seek to start. This is not available in the media tree and the albums.
++
++@item Space
++Toggle pause. This is not available in the media tree and the albums.
++
++@item @key{CTRL}+G
++Goto current track. This raises the current album and moves to the
++current track within that album.
++
++@item F9
++Copy current track to favourites
++
++@item @key{CTRL}+Q
++Quit gmerlin
++@end table
++
++The following additional chortcuts are available in the @ref{Video window}:
++
++@table @kbd
++
++@item CTRL+PLUS/MINUS
++Increase/decrease aspect ratio (squeeze). Zoom and squeeze are a simple way to choose your
++personal tradeoff between aspect ratio distortion, missing image parts and black borders.
++
++@item CTRL+MOUSEWHEEL
++Increase/decrease aspect ratio (squeeze).
++
++@item ALT+PLUS/MINUS
++Increase/decrease zoom factor
++
++@item ALT+MOUSEWHEEL
++Increase/decrease zoom factor
++
++@item @key{CTRL}+HOME
++Reset zoom and squeeze
++
++@item HOME
++Resize the window to the size of the video. If the video has nonsquare
++pixels, the window width is adjustetd accordingly.
++
++@item @key{SHIFT}+HOME
++Shrink the window such that no black borders are visible abound the video
++
++@item B/b
++Increase/decrease brightness. 
++
++@item S/s
++Increase/decrease saturation.
++
++@item C/c
++Increase/decrease contrast.
++
++Brightness, saturation and contrast work only, if the hardware and the currently used display driver
++support this.
++
++@item TAB
++Toggle fullscreen/windowed mode
++@item f
++Toggle fullscreen/windowed mode
++@item Esc
++Exit fullscreen mode
++@end table
++
++The following additional shortcuts are available inside @ref{player_albumwidget, albums}:
++
++@table @kbd
++@item UP/DOWN
++Move the cursor one track up/down
++
++@item PAGEUP/PAGEDOWN
++Move the cursor one page up/down
++
++@item Mousewheel
++Scroll
++
++@item SHIFT+UP/DOWN
++Move the cursor one track up/down and select track
++
++@item SHIFT+PAGEUP/PAGEDOWN
++Move the cursor one page up/down and select tracks
++
++@item @key{CTRL}+UP/DOWN
++Move the cursor one track up/down and unselect track
++
++@item ALT+HOME
++Move selected tracks to the top
++
++@item ALT+END
++Move selected tracks to the bottom
++
++@item ALT+MOUSEWHEEL
++Increase/decrease zoom factor
++
++
++@item @key{CTRL}+C
++Copy selected tracks to clipboard
++
++@item @key{CTRL}+X
++Cut selected tracks to clipboard
++
++@item @key{CTRL}+V
++Paste tracks from clipboard at the current cursor position
++
++@item @key{CTRL}+DELETE
++Delete selected tracks
++
++@item @key{CTRL}+F
++Search for tracks
++
++@item @key{CTRL}+I
++Display info about the currently selected track
++
++@item F10
++Copy selected tracks to favourites
++@end table
++
++@node Player remote control
++@section Player remote control
++
++@code{gmerlin_remote} is the command for remotely controlling the
++GUI player. It can be used as a helper application if webbrowsers
++or filenmanagers or for all kinds of remote control methods (including
++keyboard- or infrared-daemons), which can execute arbitrary shell
++commands. One example for a generic keyboard daemon, which can call
++@code{gmerlin_remote} is the @ref{Keyboard daemon, Gmerlin Keyboard daemon}.
++
++@menu
++* Invoking gmerlin_remote: gmerlin_remote.
++* Examples: gmerlin_remote_examples.
++@end menu
++
++@node gmerlin_remote
++@subsection Invoking gmerlin_remote
++
++@include gmerlin_remote.texi
++
++@node gmerlin_remote_examples
++@subsection Examples
++
++@table @code
++@item gmerlin_remote -play
++Play the current track (same as pressing the ``play'' button)
++
++@item gmerlin_remote -host remote.example.com -play
++Connect to @code{remote.example.com} and play the current track there
++
++@item gmerlin_remote -seek-rel -10.0
++Seek 10 seconds backwards
++
++@item gmerlin_remote -next
++Go to next track
++
++@item gmerlin_remote -chapter +
++Go to next chapter
++
++@item gmerlin_remote -openplay cda:///dev/scd0
++Open and play an audio CD in the first SCSI drive and start playing.
++Use commands like this in your desktop configuration for handling removable
++media.
++
++@item gmerlin_remote -launch -addplay http://webradio.example.com/stream.ogg
++Add the given gml to the Incoming
++@ifhtml
++@image{../img/incoming_closed_16}
++@end ifhtml
++album (launching a new player if necessary) and play it. Use commands like this as
++MIME-Handler in webbrowsers and filemanagers. A shortcut for this command is the
++script
++@code{gmerlin_launcher}.
++@end table
++
++
++@node GUI Transcoder
++@section GUI Transcoder
++
++@menu
++* Invoking gmerlin_transcoder: gmerlin_transcoder.
++* Quick intro: gmerlin_transcoder_intro.
++* Main window: gmerlin_transcoder_window.
++* Configuring encoder plugins: gmerlin_transcoder_enc.
++* Configuring tracks: gmerlin_transcoder_tracks.
++@end menu
++
++@node gmerlin_transcoder
++@subsection Invoking gmerlin_transcoder
++
++@include gmerlin_transcoder.texi
++
++@node gmerlin_transcoder_intro
++@subsection Quick intro
++
++Gmerlin transoder can transcode every supported input file
++to any of the supported output files. It has some unique features,
++which seperate it from other transcoding applications. Most notably:
++
++@table @b
++@item Per stream settings
++All settings are configured for each stream separately. This means,
++different streams can have different formats, different filters and
++even different codecs (of course only if the container supports it)
++
++@item Subtitle support
++There are plugins for exporting subitles to separate files or to the
++same file, where the A/V data gets written. Alternatively, you can
++blend subtitles onto the video frames (for containers, which don't
++support subtitles).
++
++@item Profile support
++Finding out the right encoder parameters can be a time-consuming task.
++@code{gmerlin_transcoder} allows you to save all settings and load them later.
++Once you have found out your favourite encoder settings for a specific task,
++transcoding is a matter of
++@itemize @bullet
++@item Loading the profile
++@item Adding tracks to the tasklist
++@item Clicking the transcode button
++@end itemize
++
++@item Postprocessing support
++There are postprocessors, which take the encoded files and
++make e.g. Audio CDs (with cdtext) from it. It also contains a frontend for cdrdao,
++so you can burn them as well.
++
++@item Chapter support
++@code{gmerlin_transcoder} imports all chapter seekpoints from the source, and writes
++them  into the file (currently only supported for Quicktime and mp4).
++You can also edit chapter lists or create new ones
++@item Language codes
++@code{gmerlin_transcoder} lets you import, edit and export language codes for
++the Audio- and subtitle streams
++@item 2 Pass encoding
++For plugins, which support it, we can do 2-transcoding. There is also a
++generic volume normalizer built in.
++@end table
++
++There is a @ref{transcoder_tasklist, tasklist},
++in which the tracks are queued. All newly loaded tracks
++get the globally configured settings (plugins, formats, filters). You can then
++fine-tune the tracks by configuring them individually. Changing track
++parameters for multiple tracks at once isn't possible. Instead, make the
++settings, save them to a profile and load the profile before loading the
++tracks.
++
++@node gmerlin_transcoder_window
++@subsection Main window
++
++@ifhtml
++@image{../img/transcoder_mainwin}
++@end ifhtml
++
++The window contains of the following elements:
++
++@menu
++* Menu bar: transcoder_menubar.
++* Display: transcoder_display.
++* Progress bar: transcoder_progressbar.
++* Tasklist: transcoder_tasklist.
++@end menu
++
++@node transcoder_menubar
++@subsubsection Menu bar
++
++Here you have all @b{global} commands and settings.
++The item @b{Tasklist} has @b{per track} commands and settings.
++
++@b{File menu}
++
++@table @b
++@item Load tasklist...
++@ifhtml
++@image{../img/folder_open_16}
++@end ifhtml
++Pops up a file selection dialog and loads the chosen tasklist.
++The tracks are appended to already existing tracks in the list.
++Has a shortcut in the @b{upper} toolbar.
++@item Save tasklist...
++@ifhtml
++@image{../img/save_16}
++@end ifhtml
++Pops up a file selection dialog for saving the current tasklist.
++Has a shortcut in the @b{upper} toolbar.
++@item Quit
++@ifhtml
++@image{../img/quit_16}
++@end ifhtml
++Stop the current transcoding action (if any) and quit
++Has a shortcut in the @b{upper} toolbar.
++@end table
++
++@b{Options menu}
++@table @b
++@item Preferences
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++Here, you configure the GUI and the default settings for newly added tracks.
++The preferences are saved in the profile.
++
++@item Configure plugins
++@ifhtml
++@image{../img/plugin_16}
++@end ifhtml
++Here, you set the default plugins for newly added tracks. You can
++configure input plugins (See @ref{gui_i, Configuring input plugins})
++and encoders (See @ref{gmerlin_transcoder_enc, Configuring encoders}).
++The plugin settings are saved in the profile.
++
++@item Load profile...
++@ifhtml
++@image{../img/folder_open_16}
++@end ifhtml
++Pops up a file selection dialog and loads the chosen profile.
++All configuration and plugin settings for new tracks will be
++changed immediately.
++@item Save profile...
++@ifhtml
++@image{../img/save_16}
++@end ifhtml
++Pops up a file selection dialog for saving the current configuration
++to a profile.
++
++@end table
++
++@b{Actions}
++
++@table @b
++@item Start transcoding
++@ifhtml
++@image{../img/run_16}
++@end ifhtml
++This will start transcoding of the tracks in the trasklist in top-to-bottom
++order. While transcoding you can still add/delete/edit tracks in the list.
++Has a shortcut in the @b{upper} toolbar.
++@item Stop transcoding
++@ifhtml
++@image{../img/stop_16}
++@end ifhtml
++Stops transcoding. If the currently transcoded track is not a
++live stream, the produced files are deleted from disk (unless you disable
++this in the preferences). The currently decoded track is moved back to the
++top of the tasklist.
++Has a shortcut in the @b{upper} toolbar.
++@end table
++
++@b{Tasklist}
++
++This menu acts on the tasklist as a whole or the selected track(s).
++
++@table @b
++@item Add... -> Files...
++@ifhtml
++@image{../img/folder_open_16}
++@end ifhtml
++Pops up a file selection dialog, which lets you add files (optionally
++with a specific input plugin) to the end of the tasklist. 
++Has a shortcut in the @b{lower} toolbar.
++@item Add... -> URLs...
++@ifhtml
++@image{../img/earth_16}
++@end ifhtml
++Pops up a window, which lets you enter an URL (optionally
++with a specific input plugin) to the end of the tasklist. 
++Has a shortcut in the @b{lower} toolbar.
++@item Add... -> Drives...
++@ifhtml
++@image{../img/drive_running_16}
++@end ifhtml
++Pops up a window, which lets open a removeable disk (e.g.
++and Audio CD) and append it's tracks to the end of the
++tasklist. You must specify the device @b{and} the plugin.
++Has a shortcut in the @b{lower} toolbar.
++@item Selected... -> Move up...
++@ifhtml
++@image{../img/top_16}
++@end ifhtml
++Move the selected tracks to the top of the list, so they will be
++transcoded first.
++@item Selected... -> Move down...
++@ifhtml
++@image{../img/down_16}
++@end ifhtml
++Move the selected tracks to the bottom of the list, so they will be
++transcoded last
++@item Selected... -> Remove...
++@ifhtml
++@image{../img/trash_16}
++@end ifhtml
++Remove the selected tracks (without confirmation or undo).
++Has a shortcut in the @b{lower} toolbar.
++@item Selected... -> Configure...
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++Configure the selected track. 
++Has a shortcut in the @b{lower} toolbar.
++@item Selected... -> Edit chapters...
++@ifhtml
++@image{../img/chapter_16}
++@end ifhtml
++Pop up the chapter editor. If the source has chapters, you'll
++find them here. You can also add/delete/move chapters. Chapters
++can also have names (currently only supported by the libquicktime encoder).
++Has a shortcut in the @b{lower} toolbar.
++
++@item Selected... -> Change encoders...
++@ifhtml
++@image{../img/plugin_16}
++@end ifhtml
++Here, you set the encoding plugins of the selected tracks.
++(See @ref{gmerlin_transcoder_enc, Configuring encoders}).
++Has a shortcut in the @b{lower} toolbar.
++
++@item Edit... -> Cut
++@ifhtml
++@image{../img/cut_16}
++@end ifhtml
++Cut selected tracks to the clipboard.
++Has a shortcut in the @b{lower} toolbar.
++
++@item Edit... -> Copy
++@ifhtml
++@image{../img/copy_16}
++@end ifhtml
++Copy selected tracks to the clipboard.
++Has a shortcut in the @b{lower} toolbar.
++
++@item Edit... -> Paste
++@ifhtml
++@image{../img/paste_16}
++@end ifhtml
++Paste tracks or album entries from the @ref{GUI Player}
++from the clipboard. Has a shortcut in the @b{lower} toolbar.
++@item Postprocess...
++Pops up a dialog to configure postprocessing.
++Postprocessing plugins are invoked whenever
++the tasklist gets empty. It adds all tracks, which have
++been encoded since batch transcoding was started.
++Postprocessors make some sanity checks of the files they get,
++and won't try to burn e.g. audio CDs with MPEG data.
++@end table
++
++@b{Windows}
++
++Here, you can show and hide the @ref{gui_log, log window}.
++
++@node transcoder_display
++@subsubsection Display
++Displays the currently performed action and the estimated
++remaining time for the current action. The time display in the lower right
++corner shows the total playback time of the tasklist.
++
++@node transcoder_progressbar
++@subsubsection Progress bar
++Displays the progress of the current action.
++
++@node transcoder_tasklist
++@subsubsection Tasklist
++
++A queue for tracks to be transcoded. Right clicking into the
++list pops up a menu, which is the same as in the menubar.
++
++New tracks can be added in various ways:
++
++@itemize @bullet
++@item By dragging files or URLs from filenanagers or webbrowsers into the tasklist
++@item By using the buttons in lower toolbar or the right click menu
++@item From the @ref{GUI Player} by right clicking into an album end select Selected->Transcode. If multiple transcoders are open, the
++instance, which listens on the remote port (can be only one at a time),
++gets the track.
++@item By dragging tracks from a gmerlin album into the tasklist
++@end itemize
++
++@node gmerlin_transcoder_enc
++@subsection Configuring encoders
++@ifhtml
++@image{../img/transcoder_enc}
++@end ifhtml
++
++This dialog exists in the global settings as well as in the per track
++settings. It describes a complete encoder setup.
++
++There are 2 different modes for encoding: Either all A/V streams go into
++one file, or into separate files (i.e. it's not possible to group some
++A/V streams and write others separately). You control this by clicking
++``Encode audio into video file'' checkbox. Subtitles can be written into
++the video file, or into a separate file. You can select this independently for
++text- and overlay subtitles with the corresponding checkbuttons.
++
++Note, that some streams are always written to a separate file (regardless
++of the check-box settings) if the video encoder plugin doesn't support streams
++of that type.
++
++Then, you can set encoder plugins for each stream type. The menu selects
++the plugin. Right of the menu, there are buttons for displaying plugin info
++@ifhtml
++@image{../img/info_16}
++@end ifhtml
++and setting global options 
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++(like ID3 generation or fileformat flavours). These settings can be changed
++on a per track basis in the @ref{gmerlin_transcoder_tracks,
++ track configuration dialog}.
++
++Finally, there are the default audio-
++@ifhtml
++@image{../img/audio_16}
++@end ifhtml
++and video
++@ifhtml
++@image{../img/video_16}
++@end ifhtml
++settings. Here, you mostly configure codec parameters like bitrates, etc.
++To further tweak these settings of a per stream base, you'll find the
++same options for each stream in the @ref{gmerlin_transcoder_tracks,
++ track configuration dialog}.
++
++@node gmerlin_transcoder_tracks
++@subsection Configuring tracks
++@ifhtml
++@image{../img/transcoder_track}
++@end ifhtml
++
++It's a standard gmerlin configuration dialog, which is built dynamically
++depending on the stream layout of the source and the encoder setup. On
++the left you see a tree structure of all settings:
++@table @b
++@item General
++Sets global settings like basename of the file and an optional subdirectory
++of the encoding directory, where the file(s) will be written. Note, that
++the toplevel destination directory is configured globally, not per track.
++
++If you select ``postprocess only'', the input file will be sent directly
++to the postprocessing plugin. Enable this for files, which already have a
++format supported by the postprocessor.
++
++Finally you can choose to transcode only a certain selection given by
++the start- and/or end time.
++
++@item Metadata
++Here, any available metadata are imported from the input, and you can
++edit them. Note that not all medatada fields are supported by all output
++formats. Some formats don't support metadata at all.
++
++@item Global encoder options
++For each enabled encoding plugin, you can configure global settings here.
++
++@item Stream options
++For each stream, you have @b{Generic options}. Here you can en- or disable
++the stream, set the language and the format. In addition for subtitles,
++you can choose whether to convert text- to overlay subtitles, blend
++subtitles onto video frames or encode them separately.
++
++For Audio and video streams, you can also set up @ref{gui_f, filters}.
++
++For text subtitles, the @b{render options} let you configure the
++font and colors of the subtitles, if they are converted to overlay
++subtitles.
++
++The @b{default format} of subtitles is for the rare case, that you want
++to convert subtitles to a video stream. It's only used if you encode subtitles
++but no corresponding video stream.
++
++The last tree- node for each stream has always the codec option of the
++output plugin for the respective streams. Here, you can change encoder
++settings for each stream separately. 
++@end table
++
++@node Transcoder remote control
++@section Transcoder remote control
++
++@menu
++* Invoking gmerlin_transcoder_remote: gmerlin_transcoder_remote.
++@end menu
++
++@node gmerlin_transcoder_remote
++@subsection Invoking gmerlin_transcoder_remote
++
++@include gmerlin_transcoder_remote.texi
++
++
++@node Commandline player
++@section Commandline player
++
++@menu
++* Invoking gmerlin_play: gmerlin_play.
++@end menu
++
++@node gmerlin_play
++@subsection Invoking gmerlin_play
++
++@include gmerlin_play.texi
++
++@node Commandline recorder
++@section Commandline recorder
++
++@menu
++* Invoking gmerlin-record: gmerlin-record.
++@end menu
++
++@node gmerlin-record
++@subsection Invoking gmerlin-record
++
++@include gmerlin_record.texi
++
++@node Alsamixer
++@section Alsamixer
++
++@ifhtml
++@image{../img/alsamixer}
++@end ifhtml
++
++Type @code{gmerlin_alsamixer} to start this.
++This is a mixer program, which is still convenient, if you have
++multiple soundcards with 100s of options each. It provides widgets
++for almost all soundcard parameters, which are supported by alsa.
++
++By right clicking on a control, you get a menu where you can:
++
++@itemize @bullet
++@item Move controls inside the window
++@ifhtml
++@image{../img/first_16}
++@image{../img/left_16}
++@image{../img/right_16}
++@image{../img/last_16}
++@end ifhtml
++
++@item Move controls to own windows
++@ifhtml
++@image{../img/windowed_16}
++@end ifhtml
++. To move them back to main window,
++  simply close the control-windows. 
++@item Pop up an options dialog
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++, where you can select which controls should be shown at all.
++@end itemize
++
++All window configurations and coordinates are remembered. The actual mixer
++settings are @emph{not} remembered, since this is done globally by the
++Alsa startup scripts.
++
++@node Visualizer
++@section Visualizer
++
++@ifhtml
++@image{../img/visualizer}
++
++@end ifhtml
++
++Type @code{gmerlin_visualizer} to start this.
++Gmerlin visualizer opens your soundard for recording and displays a
++visualization in a window. It supports fullscreen and mouse- and
++keyboard interaction with visuals for visualization plugins, which
++support this.
++If you move the mouse or press the ``Menu key'', the toolbar will show
++up (either method can be disabled). It will be hidden again after
++the mouse is idle for some seconds.
++
++In the @b{upper left row}, you can change the input plugin, show info
++about the plugin
++@ifhtml
++@image{../img/info_16}
++@end ifhtml
++or configure the visualization
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++.
++
++In the @b{lower left row}, you can change the recording- and
++display plugins
++@ifhtml
++@image{../img/plugin_16}
++@end ifhtml
++, set global (plugin independent) options 
++@ifhtml
++@image{../img/config_16}
++@end ifhtml
++, restart the visualization
++@ifhtml
++@image{../img/refresh_16}
++@end ifhtml
++, switch to fullscreen
++@ifhtml
++@image{../img/fullscreen_16}
++@end ifhtml
++or back
++@ifhtml
++@image{../img/windowed_16}
++@end ifhtml
++. Moreover you can show or hide the @ref{gui_log, Log window}
++@ifhtml
++@image{../img/log_16}
++@end ifhtml
++or exit
++@ifhtml
++@image{../img/quit_16}
++@end ifhtml
++the application.
++
++The @b{VU-meter} at the right displays the recording level as it comes
++from the device (i.e. @b{before} the visualizer gain is applied).
++
++You have the following @b{Shortcuts}:
++
++@table @kbd
++@item f
++Toggle fullscreen mode
++@item Tab
++Toggle fullscreen mode
++@item Escape
++Exit fullscreen mode
++@item Menu
++Show toolbar
++@end table
++
++All other keyboard- and mouse events are propagated to the display
++plugin and then to the visualization plugin.
++
++@node Keyboard daemon
++@section Keyboard daemon
++@ifhtml
++@image{../img/kbd_mainwin}
++
++@end ifhtml
++The gmerlin keyboard daemon is an X11 application, which grabs key combinations
++and executes commands. You will communicate mostly via
++the configuration utility @code{gmerlin_kbd_config}. It's independent of
++keyboard model definitions, because it allows to enter the keyboard combination
++in the config dialog directly. It's independent of gmerlin or any other
++multimedia architecture, since the actions can be arbitrary shell commands.
++
++You can manually start and stop the keyboard daemon, add, edit and delete
++key combinations and tell the daemon to apply the changes.
++
++To automatically start the keyboard daemon at each X11 start, find out
++where to enter start commands in your desktop configuration add the
++command @code{/usr/local/bin/gmerlin_kbd}. Change @code{/usr/local} to
++your install prefix if necessary.
++
++Messages from the keyboard daemon show up in @file{/var/log/messages} or
++in another syslog file depending on your system setup.
++
++@node Plugins, FAQ, Applications, Top
++@chapter Plugins
++
++@include plugins.texi
++
++@node FAQ, Get involved, Plugins, Top
++@chapter FAQ
++
++@menu
++* General questions::
++* Installation questions::
++* Usage questions::
++@end menu
++
++@node General questions
++@section General questions
++
++@node Installation questions
++@section Installation questions
++
++@strong{Q:} @emph{Why do I have to install so many packages to get all features?}
++
++@strong{A:} Because having one huge package is not good for people, who want to use
++only one small subset of the included libraries or applications. To make installation
++a bit easier, there are the gmerlin-dependencies and gmerlin-all-in-one packages.
++
++@strong{Q:} @emph{How do I enable Ladspa plugins?}
++
++@strong{A:} Gmerlin looks for Ladspa plugins in @code{/usr/lib/ladspa} and
++@code{/usr/local/lib/ladspa} by default. Additional paths can be set with the
++@code{LADSPA_PATH} enviromnent variable.
++
++@strong{Q:} @emph{Which Ladspa plugins work with gmerlin?}
++
++@strong{A:} All plugins, which have either 1 or 2 input and output ports. The numbers
++of input- and output ports must be equal.
++
++@strong{Q:} How do I enable DVB?
++
++@strong{A:} Gmerlin looks for DVB devices in /dev/dvb. Then, you must pass gmerlin
++  a channel configuration file created with the @uref{http://www.linuxtv.org/wiki/index.php/LinuxTV_dvb-apps,dvb-apps}
++  tools. Check the documentation coming with dvb-apps for how to create channel files. Gmerlin looks for channel maps
++  in the directories @code{$HOME/.szap}, @code{$HOME/.tzap}, @code{$HOME/.czap},
++  @code{$HOME/.azap}, @code{$HOME/.mplayer} and @code{$HOME/.xine}. The first time, you load the DVB plugin,
++  and each time you changed your channel map, the plugin will tune to each transponder and get the full
++  information about the programs (the information provided by dvp-apps is not sufficient). This can take some time.
++  
++@node Usage questions
++@section Usage questions
++
++@strong{Q:} @emph{Ok, I compiled gmerlin and started the player, now how do I  play a file?}
++
++@strong{A:} The easiest way is to open the Incoming or Favourites album
++and use one of the buttons at the bottom to open a file or URL. Or drag the
++file from a filemanager into an album. Later you might want to create
++your own albums.
++
++@strong{Q:} @emph{Can I play a VCD image from harddisk before burning?}
++
++@strong{A:} Yes. If you use vcdimager, you have 2 files: a .bin file and a .cue
++   file. If you load the .cue file with the avdecoder plugin, you'll be
++   able to play the VCD image.
++
++@strong{Q:} @emph{Can I play a DVD image from harddisk or from a mounted DVD drive?}
++
++@strong{A:} Yes, in the dvd directory, go to the subdirectory @code{video_ts} and load the
++   file @code{video_ts.ifo}.
++   
++@strong{Q:} @emph{Can I play an audio CD image from harddisk before burning?}
++
++@strong{A:} Not yet.
++
++@strong{Q:} @emph{How can I make gmerlin the default audio CD player on my Desktop environment?}
++
++@strong{A:} First, find out how to configure the default audio CD player on your system.
++   Usually, you can set a command, which is executed, when a new audio cd is inserted.
++   Assuming your cdrom device is @code{/dev/hdd}, the command for opening and playing
++   an audio cd is:
++
++   @code{gmerlin_remote -launch -openplay cda:///dev/hdd}
++
++   If you just want ot open the CD (without starting playback), use:
++
++   @code{gmerlin_remote -launch -open cda:///dev/hdd}
++   
++@strong{Q:} @emph{How can I make gmerlin the default DVD player on my Desktop environment?}
++
++@strong{A:} Same as for audio CDs, but replace @code{cda://} with @code{dvd://}.
++
++@strong{Q:} @emph{How can I configure gmerlin as a Mime handler for media files on my Desktop environment?}
++
++@strong{A:} Find out how to set up mime handlers (e.g. right click onto a file and select ``Open with...'').
++   Then, enter the command @code{gmerlin_launcher}.
++   
++@strong{Q:} @emph{How can I map multimedia keys on my keyboard to gmerlin functions?}
++
++@strong{A:} You need some way to configure custom shell commands for multimedia keys. Check the
++documentation of your Desktop system. To remote control gmerlin, use the commandline program
++@code{gmerlin_remote}. Type @code{gmerlin_remote -help} for supported options and commands.
++   
++@node Get involved, , FAQ, Top
++@chapter Get involved
++
++Contribution to gmerlin can happen at several skill levels:
++
++@itemize @bullet
++@item Report bugs and installation problems, tell about features you'd like to see.
++@item Tell us about files, which cannot be played. An URL and some infos (other applications
++      which play the file fine) can help a lot.
++@item Make skins. In /usr/local/gmerlin/skins/Default/skin.xml, you'll find an example skin description file.
++@item Assembler gurus can write more speed optimized routines for gavl
++@item Mathematics gurus can write more accurate routines for the higher quality
++levels of gavl. 
++@end itemize
++
++@bye
++
+diff -Naur gmerlin-1.2.0.orig/doc/gmerlin.texi gmerlin-1.2.0/doc/gmerlin.texi
+--- gmerlin-1.2.0.orig/doc/gmerlin.texi	2013-02-27 16:56:41.202827892 -0800
++++ gmerlin-1.2.0/doc/gmerlin.texi	2013-02-27 16:58:29.743890528 -0800
+@@ -461,7 +461,7 @@
+ 
+ A gml can be:
+ 
+-@table @bullet
++@table @b
+ @item A regular filename
+ Optionally preceeded with ``file://''. This means, that @b{/files/music.mp3} is the same as
+ @b{file:///files/music.mp3}.
