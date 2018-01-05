@@ -1,0 +1,33 @@
+pkgbase = denemo
+	pkgdesc = A music score editor
+	pkgver = 2.2.0
+	pkgrel = 1
+	epoch = 1
+	url = http://www.denemo.org
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = git
+	depends = aubio
+	depends = portaudio
+	depends = lilypond
+	depends = gtk3
+	depends = libxml2
+	depends = guile
+	depends = fftw
+	depends = librsvg
+	depends = fluidsynth
+	depends = libsmf
+	depends = evince
+	depends = gtksourceview3
+	depends = portmidi
+	depends = rubberband
+	noextract = denemo-2.2.0.tar.gz
+	source = https://ftp.gnu.org/gnu/denemo/denemo-2.2.0.tar.gz
+	source = https://ftp.gnu.org/gnu/denemo/denemo-2.2.0.tar.gz.sig
+	validpgpkeys = C66734FA5D60E4DDD882EF81AE6F83BB6C574235
+	sha256sums = d07d7c5bce5569e25fceb02727f5c8f4ff2f579947b612e2bf9b48573bd1eca3
+	sha256sums = SKIP
+
+pkgname = denemo
+
