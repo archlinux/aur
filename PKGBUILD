@@ -1,7 +1,7 @@
 # Maintainer: Maurizio Porrato <maurizio.porrato@gmail.com>
 
 pkgname=janus-gateway
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="WebRTC gateway."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ backup=('etc/janus/janus.cfg')
 install=janus-gateway.install
 
 source=("https://github.com/meetecho/janus-gateway/archive/v${pkgver}.tar.gz")
-sha256sums=('09610dc02ff0a1f23af0397baaa26a3cd88b3742d35b2e49849f099885cdcf08')
+sha256sums=('35cbbd5e7b7067e3a0b5ba221ea845814e5b59c733302f88fea80bcf98ce416f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
