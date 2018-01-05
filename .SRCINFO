@@ -1,0 +1,15 @@
+pkgbase = dxpc
+	pkgdesc = Differential X Protocol Compressor
+	pkgver = 3.9.2
+	pkgrel = 6
+	url = http://www.vigor.nu/dxpc/
+	arch = x86_64
+	license = GPL
+	makedepends = xproto
+	depends = lzo
+	depends = gcc-libs
+	source = http://www.vigor.nu/dxpc/dxpc-3.9.2.tgz
+	md5sums = e69f58c4acc34c6746a0e5ab17bf8d0f
+
+pkgname = dxpc
+
