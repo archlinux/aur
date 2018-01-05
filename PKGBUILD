@@ -1,0 +1,37 @@
+# Maintainer: Kieran Colford <kieran@kcolford.com>
+pkgname=certbot-systemd-timer
+pkgver=1
+pkgrel=1
+epoch=
+pkgdesc="Systemd timers from the wiki to automate renewal of certificates."
+arch=('any')
+url="https://wiki.archlinux.org/index.php/Let%E2%80%99s_Encrypt#Automatic_renewal"
+license=('GPL')
+groups=('wiki' 'config')
+depends=('certbot')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=(certbot.service certbot.timer)
+md5sums=('9b7ed2d022b0e6bc520b998363645832'
+         '881586745561fd9d273f9421b917d41c')
+sha256sums=('0b9ce7085093c38d3bc59faf7787fcd3820a08870e4ca18ac07fc8ebadf5785b'
+            'ccdc77c37d7acfd2443978d058af714f7047ed884f3194932058c42e03abdac9')
+sha512sums=('0d977bf2cb0bcbe96f996374216e474a3c39cc431de22b23475b337ddf942cfa32caa6f759f78d82d8d360cdb17ddaf499c2bfcbf31a60d7bdd0b0ddd37caa3e'
+            'af53d13f6fb62951ef5e3855f8a1b53a15e32df2b4c7d93140f2c48c003f1fafe8877d6c05f3baa9819ce9bb1fcfaa5e88cd35560afb5c488f8932ec87384f86')
+noextract=()
+
+package() {
+  cd "$srcdir"
+  install -Dm644 certbot.service "$pkgdir"/usr/lib/systemd/service/certbot.service
+  install -Dm644 certbot.timer "$pkgdir"/usr/lib/systemd/service/certbot.timer
+}
+
+# vim:set ts=2 sw=2 et:

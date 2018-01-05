@@ -1,0 +1,10 @@
+[Unit]
+Description=Twice daily renewal of Let's Encrypt's certificates
+
+[Timer]
+OnCalendar=0/12:00:00
+RandomizedDelaySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
