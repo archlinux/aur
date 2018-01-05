@@ -18,10 +18,12 @@ arch=("i686" "x86_64")
 url='https://github.com/WhisperSystems/Signal-Desktop'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WhisperSystems/Signal-Desktop/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh"
-        "${pkgname}.desktop")
+        "${pkgname}.desktop"
+        "${pkgname}-tray.desktop")
 sha512sums=('f8409ace472f2bf7614741ddb0f612faaf9f130141bd22539dc0ee4987dd8260136dc53965876c101cce8e15bf2769ab8cb30a07ae304491d97704370bc57058'
             '2c7f7ab67b94f5c5ed799eba2c47c466d35bf16a60b6311bac606956e25689b21e3ffa2373cf47289d83d46e20da1213866ade06009eccd8012e840a7428f056'
-            'a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327')
+            'a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327'
+            '8fc666f8fdd8fb9d05e652a0d36d61866e8144efa0a6f04bd96e73c34cfe78c5d7aff02abd1e295028613ea7078008362b7999dff203214947ca2c83ca030b71')
 
 prepare() {
   cd "Signal-Desktop-${pkgver}"
