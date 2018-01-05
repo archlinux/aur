@@ -4,9 +4,9 @@
 pkgname=brackets-bin
 _pkgname=brackets
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A code editor for HTML, CSS and JavaScript. "
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://brackets.io"
 license=("MIT")
 depends=("gconf" "libgcrypt15" "nodejs" "nspr" "nss" "systemd")
@@ -20,10 +20,8 @@ provides=("brackets=$pkgver")
 conflicts=('brackets' 'brackets-git')
 install=$pkgname.install
 
-source_i686=("https://github.com/adobe/$_pkgname/releases/download/release-$pkgver/Brackets.Release.$pkgver.32-bit.deb")
-source_x86_64=("https://github.com/adobe/brackets/releases/download/release-1.12-prerelease/Brackets.Pre-Release-1.12.64-bit.deb")
-sha512sums_i686=('937bd438a6ce89f5ac3546369ed7889717a771d2d6619f63d37bfdbd1b11596b888044cf5089610b18a260e51b99e98b47b4b72aa0d58e90b77bed918abbd23d')
-sha512sums_x86_64=('SKIP')
+source=("https://github.com/adobe/brackets/releases/download/release-1.12-prerelease/Brackets.Pre-Release-1.12.64-bit.deb")
+sha512sums=('SKIP')
 
  
 prepare() {
@@ -57,4 +55,9 @@ package() {
 
   msg2 "  -> Installing license..."
   install -Dm755 usr/share/doc/$_pkgname/copyright $pkgdir/usr/share/licenses/$_pkgname/copyright
+
+  install -Dm4755 $srcdir/opt/brackets/chrome_sandbox \
+    "$pkgdir/opt/brackets/chrome_sandbox"
+
+
 }

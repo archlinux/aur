@@ -1,10 +1,9 @@
 pkgbase = brackets-bin
 	pkgdesc = A code editor for HTML, CSS and JavaScript.
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://brackets.io
 	install = brackets-bin.install
-	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = gconf
@@ -22,10 +21,8 @@ pkgbase = brackets-bin
 	provides = brackets=1.12
 	conflicts = brackets
 	conflicts = brackets-git
-	source_i686 = https://github.com/adobe/brackets/releases/download/release-1.12/Brackets.Release.1.12.32-bit.deb
-	sha512sums_i686 = 937bd438a6ce89f5ac3546369ed7889717a771d2d6619f63d37bfdbd1b11596b888044cf5089610b18a260e51b99e98b47b4b72aa0d58e90b77bed918abbd23d
-	source_x86_64 = https://github.com/adobe/brackets/releases/download/release-1.12-prerelease/Brackets.Pre-Release-1.12.64-bit.deb
-	sha512sums_x86_64 = SKIP
+	source = https://github.com/adobe/brackets/releases/download/release-1.12-prerelease/Brackets.Pre-Release-1.12.64-bit.deb
+	sha512sums = SKIP
 
 pkgname = brackets-bin
 
