@@ -1,0 +1,20 @@
+diff -crB k3d-k3d-0.8.0.6-pristine/k3dsdk/measurement.h k3d-k3d-0.8.0.6/k3dsdk/measurement.h
+*** k3d-k3d-0.8.0.6-pristine/k3dsdk/measurement.h	2016-09-18 23:40:35.000000000 +0200
+--- k3d-k3d-0.8.0.6/k3dsdk/measurement.h	2018-01-05 02:33:12.009950182 +0100
+***************
+*** 26,32 ****
+  */
+  
+  #include <cassert>
+! #include <iosfwd>
+  #include <map>
+  #include <string>
+  #include <typeinfo>
+--- 26,32 ----
+  */
+  
+  #include <cassert>
+! #include <iostream>
+  #include <map>
+  #include <string>
+  #include <typeinfo>

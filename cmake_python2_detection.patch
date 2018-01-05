@@ -1,0 +1,20 @@
+diff -crB k3d-k3d-0.8.0.6-pristine/CMakeLists.txt k3d-k3d-0.8.0.6/CMakeLists.txt
+*** k3d-k3d-0.8.0.6-pristine/CMakeLists.txt	2016-09-18 23:40:35.000000000 +0200
+--- k3d-k3d-0.8.0.6/CMakeLists.txt	2018-01-04 17:17:50.616954533 +0100
+***************
+*** 8,14 ****
+  ENDIF()
+  
+  set(CMAKE_CXX_STANDARD 11)
+! 
+  
+  SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+  SET(CMAKE_INSTALL_NAME_DIR "@exectuable_path/../lib/")
+--- 8,14 ----
+  ENDIF()
+  
+  set(CMAKE_CXX_STANDARD 11)
+! find_package(PythonLibs 2 EXACT REQUIRED)
+  
+  SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+  SET(CMAKE_INSTALL_NAME_DIR "@exectuable_path/../lib/")
