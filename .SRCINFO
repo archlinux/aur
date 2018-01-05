@@ -1,0 +1,15 @@
+pkgbase = sdd
+	pkgdesc = Faster replacement for a program called dd
+	pkgver = 1.52
+	pkgrel = 8
+	url = http://freshmeat.net/projects/sdd/
+	arch = x86_64
+	license = GPL
+	options = !emptydirs
+	source = https://arch.p5n.pp.ru/~sergej/dl/2014/sdd-1.52.tar.gz
+	source = build-fix.patch
+	sha256sums = 142b3ec789248ec573eb1f047709c484cc5ae7ac9b49107384cfe4f1ad625d87
+	sha256sums = f14d16807795ec7150f6ffafd75b331889f17aeb4b254b2d2b3acefbad116b19
+
+pkgname = sdd
+
