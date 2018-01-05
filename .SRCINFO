@@ -1,0 +1,16 @@
+pkgbase = orange
+	pkgdesc = a helper tool for synce
+	pkgver = 0.4
+	pkgrel = 7
+	url = http://synce.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = dynamite
+	depends = synce-core
+	depends = file
+	depends = unshield
+	source = http://downloads.sourceforge.net/sourceforge/synce/liborange-0.4.tar.gz
+	md5sums = 40e9ac3de389c74a60007f7493e072a5
+
+pkgname = orange
+
