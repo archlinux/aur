@@ -1,0 +1,16 @@
+pkgbase = sisctrl
+	pkgdesc = Display Control Panel for XFree86/X.org SiS driver
+	pkgver = 0.0.20051202
+	pkgrel = 7
+	url = http://www.winischhofer.eu/linuxsisvga.shtml
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gtk2
+	depends = libxxf86vm
+	depends = libxv
+	source = https://arch.p5n.pp.ru/~sergej/dl/2016/sisctrl-0.0.20051202.tar.gz
+	sha256sums = 76855a8ff4631418374261613a273b082e0f56f29aa083a2197c5350688611f1
+
+pkgname = sisctrl
+
