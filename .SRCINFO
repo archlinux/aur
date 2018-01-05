@@ -1,0 +1,14 @@
+pkgbase = festvox-ru
+	pkgdesc = Russian support for Festival.
+	pkgver = 0.5
+	pkgrel = 4
+	url = https://launchpad.net/ubuntu/+source/festvox-ru
+	install = festvox-ru.install
+	arch = any
+	license = BSD
+	depends = festival
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/festvox-ru_0.5%2Bdfsg.orig.tar.bz2
+	md5sums = ded572f715cfd58e62d4bc380eb64c48
+
+pkgname = festvox-ru
+

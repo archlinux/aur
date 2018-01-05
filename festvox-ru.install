@@ -1,0 +1,3 @@
+post_install() {
+  echo "Use (voice_msu_ru_nsh_clunits) to select Russian voice"
+}
