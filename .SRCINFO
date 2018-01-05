@@ -1,0 +1,16 @@
+pkgbase = matchbox-common
+	pkgdesc = A package containing shared icons and configuration data
+	pkgver = 0.9.1
+	pkgrel = 7
+	url = http://matchbox-project.org/
+	arch = any
+	license = GPL
+	depends = libmatchbox
+	depends = matchbox-window-manager
+	depends = matchbox-desktop
+	depends = matchbox-panel
+	source = https://downloads.yoctoproject.org/releases/matchbox/matchbox-common/0.9/matchbox-common-0.9.1.tar.bz2
+	sha256sums = 524995b9899cc10d04c7964fb88ff8a2199865ca97e8d4988abd8d6c2a286199
+
+pkgname = matchbox-common
+
