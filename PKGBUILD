@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Rikard Falkeborn <rikard.falkeborn@gmail.com>
 # Contributor: Hubert Maraszek <marach5 at gmail dot com>
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
