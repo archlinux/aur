@@ -1,37 +1,8 @@
-diff -ru FreeDoko_0.7.16-orig/Makefile FreeDoko_0.7.16/Makefile
---- FreeDoko_0.7.16-orig/Makefile	2017-08-24 17:28:46.103502383 +0200
-+++ FreeDoko_0.7.16/Makefile	2017-08-24 17:28:23.150516129 +0200
-@@ -78,8 +78,12 @@
- .PHONY: compile
- compile:
- # compile FreeDoko
--	$(MAKE) Version
--	$(MAKE) -C src/ FreeDoko
-+	$(MAKE) \
-+	  "USE_UI_TEXT=false" \
-+	  "USE_UI_GTKMM=true" \
-+	  "USE_NETWORK=true" \
-+	  "CPPFLAGS+= -DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"'" \
-+	  -C src/ FreeDoko
- 	@echo "---"
- 	@echo "* Program 'FreeDoko' created"
- 
-@@ -289,22 +293,11 @@
- ifeq ($(OPERATING_SYSTEM), Linux)
- .PHONY: install
- install :
--	$(MAKE) \
--	  --always-make \
--	  "USE_UI_TEXT=false" \
--	  "USE_UI_GTKMM=true" \
--	  "USE_NETWORK=true" \
--	  "CXXFLAGS=-Wall -Werror -Wno-parentheses -pipe -Os -std=c++14" \
--	  "CPPFLAGS=-DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"'" \
--	  -C src \
--	  $(PROGRAM)
--	$(MAKE) -C src strip
- #	Copying the program
- 	echo "Copying the program"
+diff -ru FreeDoko_0.7.17-orig/Makefile FreeDoko_0.7.17/Makefile
+--- FreeDoko_0.7.17-orig/Makefile	2018-01-04 07:11:48.000000000 +0100
++++ FreeDoko_0.7.17/Makefile	2018-01-05 08:19:03.098875884 +0100
+@@ -316,8 +316,7 @@
+ 	echo "Kopiere das Programm"
  	mkdir -p $(DESTDIR)$(BIN_DIRECTORY)
  	cp src/FreeDoko $(DESTDIR)$(BIN_DIRECTORY)
 -	-chgrp games $(DESTDIR)$(BIN_DIRECTORY)/FreeDoko
@@ -39,9 +10,9 @@ diff -ru FreeDoko_0.7.16-orig/Makefile FreeDoko_0.7.16/Makefile
 +	chmod 755 $(DESTDIR)$(BIN_DIRECTORY)/FreeDoko
  	cd $(DESTDIR)$(BIN_DIRECTORY) && ln -sf FreeDoko freedoko
  #	Copying the data files
- 	echo "Copying the data files"
-@@ -321,15 +314,13 @@
- 	a2x -f manpage doc/freedoko.asciidoc
+ 	echo "Kopiere die Daten"
+@@ -337,15 +336,13 @@
+ 	a2x -f manpage doc/freedoko.adoc
  	mkdir -p $(DESTDIR)$(MAN_DIRECTORY)
  	cp doc/freedoko.6 $(DESTDIR)$(MAN_DIRECTORY)/
 -	-chgrp games $(DESTDIR)$(MAN_DIRECTORY)/freedoko.6
@@ -49,19 +20,19 @@ diff -ru FreeDoko_0.7.16-orig/Makefile FreeDoko_0.7.16/Makefile
 +	chmod 644 $(DESTDIR)$(MAN_DIRECTORY)/freedoko.6
  	cd $(DESTDIR)$(MAN_DIRECTORY)/ && ln -sf freedoko.6 FreeDoko.6
  #	copy the icon
- 	echo "copy the icon"
+ 	echo "Kopiere das Icon"
  	mkdir -p $(DESTDIR)$(ICON_DIRECTORY)
  	cp src/FreeDoko.png $(DESTDIR)$(ICON_DIRECTORY)/
 -	-chgrp games $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
 -	chmod 640 $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
 +	chmod 644 $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
- 
- .PHONY: uninstall
- uninstall :
-diff -ru FreeDoko_0.7.16-orig/Makefile.install.directories FreeDoko_0.7.16/Makefile.install.directories
---- FreeDoko_0.7.16-orig/Makefile.install.directories	2017-08-24 17:28:46.103502383 +0200
-+++ FreeDoko_0.7.16/Makefile.install.directories	2017-08-24 17:28:23.150516129 +0200
-@@ -4,13 +4,13 @@
+ #	copy the desktop file
+ 	echo "Kopiere den Desktop-Starter"
+ 	mkdir -p "$(DESTDIR)$(DESKTOP_FILE_DIRECTORY)"
+diff -ru FreeDoko_0.7.17-orig/Makefile.install.directories FreeDoko_0.7.17/Makefile.install.directories
+--- FreeDoko_0.7.17-orig/Makefile.install.directories	2018-01-04 07:11:48.000000000 +0100
++++ FreeDoko_0.7.17/Makefile.install.directories	2018-01-05 08:17:09.214044462 +0100
+@@ -4,14 +4,14 @@
  # the different directories for the files
  
  # installing in /usr/local
@@ -71,6 +42,7 @@ diff -ru FreeDoko_0.7.16-orig/Makefile.install.directories FreeDoko_0.7.16/Makef
 -HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/FreeDoko
 -MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
 -ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
+-LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
 -DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
 +#MAIN_DIRECTORY         = /usr/local
 +#BIN_DIRECTORY          = $(MAIN_DIRECTORY)/games
@@ -78,11 +50,12 @@ diff -ru FreeDoko_0.7.16-orig/Makefile.install.directories FreeDoko_0.7.16/Makef
 +#HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/FreeDoko
 +#MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
 +#ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
++#LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
 +#DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
  
  # debian
  #MAIN_DIRECTORY         = /usr
-@@ -49,13 +49,13 @@
+@@ -54,14 +54,14 @@
  #DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
  
  # Arch Linux
@@ -92,6 +65,7 @@ diff -ru FreeDoko_0.7.16-orig/Makefile.install.directories FreeDoko_0.7.16/Makef
 -#HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/freedoko
 -#MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
 -#ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
+-#LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
 -#DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
 +MAIN_DIRECTORY         = /usr
 +BIN_DIRECTORY          = $(MAIN_DIRECTORY)/bin
@@ -99,26 +73,15 @@ diff -ru FreeDoko_0.7.16-orig/Makefile.install.directories FreeDoko_0.7.16/Makef
 +HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/freedoko
 +MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
 +ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
++LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
 +DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
  
  
  # release
-diff -ru FreeDoko_0.7.16-orig/bin/FreeDoko.desktop FreeDoko_0.7.16/bin/FreeDoko.desktop
---- FreeDoko_0.7.16-orig/bin/FreeDoko.desktop	2017-08-24 17:28:46.106835666 +0200
-+++ FreeDoko_0.7.16/bin/FreeDoko.desktop	2017-08-24 17:28:23.153849412 +0200
-@@ -6,7 +6,7 @@
- Comment=game of Doppelkopf
- Comment[de]=Doppelkopf-Spiel
- Comment[fr]=un jeu de Doppelkopf
--Exec=/usr/games/freedoko
-+Exec=/usr/bin/freedoko
- Path=
- Icon=FreeDoko
- Categories=Application;Game;CardGame;
-diff -ru FreeDoko_0.7.16-orig/data/Makefile FreeDoko_0.7.16/data/Makefile
---- FreeDoko_0.7.16-orig/data/Makefile	2017-08-24 17:28:46.106835666 +0200
-+++ FreeDoko_0.7.16/data/Makefile	2017-08-24 17:28:23.153849412 +0200
-@@ -40,8 +40,7 @@
+diff -ru FreeDoko_0.7.17-orig/data/Makefile FreeDoko_0.7.17/data/Makefile
+--- FreeDoko_0.7.17-orig/data/Makefile	2018-01-04 07:11:48.000000000 +0100
++++ FreeDoko_0.7.17/data/Makefile	2018-01-05 08:17:33.197078135 +0100
+@@ -32,8 +32,7 @@
  	for d in cardsets iconsets backgrounds sounds; do \
  	  $(MAKE) -C $$d install; \
  	done
@@ -128,10 +91,10 @@ diff -ru FreeDoko_0.7.16-orig/data/Makefile FreeDoko_0.7.16/data/Makefile
  endif
  
  ifeq ($(SHELLTYPE), sh)
-diff -ru FreeDoko_0.7.16-orig/doc/Makefile FreeDoko_0.7.16/doc/Makefile
---- FreeDoko_0.7.16-orig/doc/Makefile	2017-08-24 17:28:46.406831142 +0200
-+++ FreeDoko_0.7.16/doc/Makefile	2017-08-24 17:28:23.153849412 +0200
-@@ -36,8 +36,7 @@
+diff -ru FreeDoko_0.7.17-orig/doc/Makefile FreeDoko_0.7.17/doc/Makefile
+--- FreeDoko_0.7.17-orig/doc/Makefile	2018-01-04 07:11:48.000000000 +0100
++++ FreeDoko_0.7.17/doc/Makefile	2018-01-05 08:17:51.063521630 +0100
+@@ -34,8 +34,7 @@
  	fi
  	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
  	for d in de en; do $(MAKE) -C $$d install; done
@@ -141,14 +104,14 @@ diff -ru FreeDoko_0.7.16-orig/doc/Makefile FreeDoko_0.7.16/doc/Makefile
  	cd $(DESTDIR)$(DATA_DIRECTORY) && ln -sf $(HELP_DIRECTORY)/ doc
  endif
  
-diff -ru FreeDoko_0.7.16-orig/src/Makefile FreeDoko_0.7.16/src/Makefile
---- FreeDoko_0.7.16-orig/src/Makefile	2017-08-24 17:28:46.523496049 +0200
-+++ FreeDoko_0.7.16/src/Makefile	2017-08-24 17:29:56.515781593 +0200
-@@ -252,6 +252,7 @@
- 	  $(INCLUDE_ALL) \
- 	  $(LIBS_ALL) \
- 	  $(CXXFLAGS) \
-+	  $(LDFLAGS) \
- 	  -o $@
- 	@echo "$(PROGRAM) compiled successfully"
+diff -ru FreeDoko_0.7.17-orig/src/Makefile FreeDoko_0.7.17/src/Makefile
+--- FreeDoko_0.7.17-orig/src/Makefile	2018-01-04 07:11:48.000000000 +0100
++++ FreeDoko_0.7.17/src/Makefile	2018-01-05 08:18:17.253194584 +0100
+@@ -282,7 +282,6 @@
+ 		-DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' \
+ 		-DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
+ 	  $(PROGRAM)
+-	$(MAKE) strip
  
+ # strip the program from all symbols
+ .PHONY: strip
