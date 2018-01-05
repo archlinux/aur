@@ -1,0 +1,14 @@
+pkgbase = cargo-release
+	pkgdesc = Cargo subcommand release
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/sunng87/cargo-release
+	arch = x86_64
+	license = MIT,
+	license = APACHE
+	makedepends = rust
+	source = https://github.com/sunng87/cargo-release/archive/0.8.0.tar.gz
+	sha256sums = d9bdf15d39b64ba37a7af973fd7253efa39a933516bd4f5dcb701db6578124fc
+
+pkgname = cargo-release
+
