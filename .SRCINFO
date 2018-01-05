@@ -1,0 +1,14 @@
+pkgbase = bbrun
+	pkgdesc = A run - component for blackbox window manager
+	pkgver = 1.6
+	pkgrel = 5
+	url = https://packages.debian.org/unstable/x11/bbrun
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = libxpm
+	source = http://ftp.de.debian.org/debian/pool/main/b/bbrun/bbrun_1.6.orig.tar.gz
+	md5sums = 820960e3d52ddf2d5cf7e4ba51821bfd
+
+pkgname = bbrun
+
