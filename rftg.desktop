@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Race for the Galaxy
+
+Comment=Singleplayer and online implementation of the card game Race for the Galaxy by Tom Lehman.
+
+Exec=rftg
+FilePattern=rftg;
+TryExec=rftg
+Terminal=false
+Icon=/usr/share/rftg/rftg.svg
+
+StartupNotify=false
+
+Type=Application
+Categories=Game;StrategyGame

@@ -1,0 +1,17 @@
+pkgbase = rftg
+	pkgdesc = Singleplayer and online implementation of the card game Race for the Galaxy by Tom Lehman.
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = http://keldon.net/rftg/
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = https://github.com/bnordli/rftg/archive/0.9.5.tar.gz
+	source = rftg.desktop
+	source = rftg.svg
+	md5sums = 9cd1154ba43651890bea4dc35b1678fc
+	md5sums = f2c1a72b0fbf191e564069dfe61d50c4
+	md5sums = e0ad78078729229ad1414276348b7d98
+
+pkgname = rftg
+
