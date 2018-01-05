@@ -1,0 +1,13 @@
+pkgbase = srm
+	pkgdesc = A secure replacement for rm(1) that overwrites data before unlinking
+	pkgver = 1.2.15
+	pkgrel = 1
+	url = http://srm.sourceforge.net/
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://sourceforge.net/projects/srm/files/1.2.15/srm-1.2.15.tar.gz
+	md5sums = 681cbb0950b25e300a3f6d680f57f56c
+
+pkgname = srm
+
