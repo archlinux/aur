@@ -6,10 +6,10 @@
 # Contributor: Jonhoo <jon at thesquareplanet.com>
 pkgname=signal
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
-depends=('electron' 'gconf' 'gtk2')
+depends=('electron')
 makedepends=('npm' 'ruby-sass' 'python2' 'phantomjs' 'yarn' 'grunt-cli' 'git')
 provides=('signal')
 conflicts=('signal-desktop' 'signal-desktop-beta' 'signal-desktop-bin')
