@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=CAJViewer 7.2
+Exec=/usr/bin/cajviewer
+Type=Application
+StartupNotify=true
+Icon=cajviewer
+StartupWMClass=cajvieweru.exe
+
