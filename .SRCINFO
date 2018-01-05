@@ -1,0 +1,13 @@
+pkgbase = ustr
+	pkgdesc = micro string API for C
+	pkgver = 1.0.4
+	pkgrel = 4
+	url = http://www.and.org/ustr/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.and.org/ustr/1.0.4/ustr-1.0.4.tar.bz2
+	md5sums = 93147d9f0c9765d4cd0f04f7e44bdfce
+
+pkgname = ustr
+
