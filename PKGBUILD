@@ -5,48 +5,45 @@
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 
 source=(https://dl.winehq.org/wine/source/2.0/wine-$pkgver.tar.xz{,.sign}
-        30-win32-aliases.conf)
-sha512sums=('e20dbcb3a48ecb3526eba075d4baebab2529dfc50b7a6d5e18294704470f61db386013f457118c270274b911f9643d203110f46558d23e84e6a6c2d78e237dbb'
+        30-win32-aliases.conf
+	wine-binfmt.conf)
+sha512sums=('8fccb93e5ebe482ed81e948e3b7f87d4fe5b1f838a10f9cdcafa9561de4ef54b7d5acdc292bf28ad3aaf44be34c5ad8452ebbfc39f49f95fcbe9f9d0fcfc862c'
             'SKIP'
-            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
+            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
+            'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
 pkgdesc="A compatibility layer for running Windows programs"
 url="http://www.winehq.com"
-arch=(i686 x86_64)
+arch=(x86_64)
 options=(staticlibs)
 license=(LGPL)
+install=wine.install
 
 depends=(desktop-file-utils fontconfig freetype2 gettext glu lcms2
-  libpcap libsm libxcursor libxdamage libxi libxml2 libxrandr)
-
-depends_x86_64=(lib32-fontconfig lib32-freetype2 lib32-gcc-libs
-  lib32-gettext lib32-glu lib32-lcms2 lib32-libpcap lib32-libsm
-  lib32-libxcursor lib32-libxdamage lib32-libxi lib32-libxml2
-  lib32-libxrandr)
+  libpcap libsm libxcursor libxdamage libxi libxml2 libxrandr
+  lib32-fontconfig lib32-freetype2 lib32-gcc-libs lib32-gettext
+  lib32-glu lib32-lcms2 lib32-libpcap lib32-libsm lib32-libxcursor
+  lib32-libxdamage lib32-libxi lib32-libxml2 lib32-libxrandr)
 
 makedepends=(alsa-lib fontforge giflib gnutls gst-plugins-base-libs
   libgl libldap libpng libpulse libxcomposite libxinerama libxmu
   libxslt libxxf86vm mesa mpg123 ncurses ocl-icd openal opencl-headers
-  samba v4l-utils)
-
-makedepends_x86_64=(gcc-multilib lib32-alsa-lib lib32-giflib
-  lib32-gnutls lib32-gst-plugins-base-libs lib32-libgl lib32-libldap
-  lib32-libpng lib32-libpulse lib32-libxcomposite lib32-libxinerama
-  lib32-libxmu lib32-libxslt lib32-libxxf86vm lib32-mesa lib32-mpg123
-  lib32-ocl-icd lib32-openal lib32-v4l-utils)
+  samba v4l-utils gcc lib32-alsa-lib lib32-giflib lib32-gnutls
+  lib32-gst-plugins-base-libs lib32-libgl lib32-libldap lib32-libpng
+  lib32-libpulse lib32-libxcomposite lib32-libxinerama lib32-libxmu
+  lib32-libxslt lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ocl-icd
+  lib32-openal lib32-v4l-utils)
 
 optdepends=(alsa-lib alsa-plugins cups dosbox giflib gnutls
   gst-plugins-base-libs libjpeg-turbo libldap libpng libpulse
   libxcomposite libxinerama libxslt mpg123 ncurses ocl-icd openal
-  samba v4l-utils)
-
-optdepends_x86_64=(lib32-alsa-lib lib32-alsa-plugins lib32-giflib
+  samba v4l-utils lib32-alsa-lib lib32-alsa-plugins lib32-giflib
   lib32-gnutls lib32-gst-plugins-base-libs lib32-libjpeg-turbo
   lib32-libldap lib32-libpng lib32-libpulse lib32-libxcomposite
   lib32-libxinerama lib32-libxslt lib32-mpg123 lib32-ncurses
@@ -75,61 +72,52 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"
-
-  if [[ $CARCH == x86_64 ]]; then
-    msg2 "Building Wine-64..."
-
-    cd "$srcdir/wine-64-build"
-    ../wine/configure \
+  cd "$srcdir/wine-64-build"
+  ../wine/configure \
       --prefix=/usr \
       --libdir=/usr/lib \
       --with-x \
       --with-gstreamer \
       --enable-win64
 
-    make
+  make
 
-    _wine32opts=(
-      --libdir=/usr/lib32
-      --with-wine64="$srcdir/wine-64-build"
-    )
+  _wine32opts=(
+    --libdir=/usr/lib32
+    --with-wine64="$srcdir/wine-64-build"
+  )
 
-    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  fi
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  msg2 "Building Wine-32..."
   cd "$srcdir/wine-32-build"
   ../wine/configure \
-    --prefix=/usr \
-    --with-x \
-    --with-gstreamer \
-    "${_wine32opts[@]}"
+      --prefix=/usr \
+      --with-x \
+      --with-gstreamer \
+      "${_wine32opts[@]}"
 
-  # These additional flags solve FS#23277
-  make CFLAGS+="-mstackrealign -mincoming-stack-boundary=2" CXXFLAGS+="-mstackrealign -mincoming-stack-boundary=2"
+  make
 }
 
 package() {
   msg2 "Packaging Wine-32..."
   cd "$srcdir/wine-32-build"
 
-  if [[ $CARCH == i686 ]]; then
-    make STRIP=true prefix="$pkgdir/usr" install
-  else
-    make STRIP=true prefix="$pkgdir/usr" \
-      libdir="$pkgdir/usr/lib32" \
-      dlldir="$pkgdir/usr/lib32/wine" install
+  make STRIP=true prefix="$pkgdir/usr" \
+       libdir="$pkgdir/usr/lib32" \
+       dlldir="$pkgdir/usr/lib32/wine" install
 
-    msg2 "Packaging Wine-64..."
-    cd "$srcdir/wine-64-build"
-    make STRIP=true prefix="$pkgdir/usr" \
-      libdir="$pkgdir/usr/lib" \
-      dlldir="$pkgdir/usr/lib/wine" install
-  fi
+  msg2 "Packaging Wine-64..."
+  cd "$srcdir/wine-64-build"
+  make STRIP=true prefix="$pkgdir/usr" \
+       libdir="$pkgdir/usr/lib" \
+       dlldir="$pkgdir/usr/lib/wine" install
 
   # Font aliasing settings for Win32 applications
   install -d "$pkgdir"/etc/fonts/conf.{avail,d}
   install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/etc/fonts/conf.avail"
-  ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/etc/fonts/conf.d/30-win32-aliases.conf"
+  ln -s ../conf.avail/30-win32-aliases.conf \
+     "$pkgdir/etc/fonts/conf.d/30-win32-aliases.conf"
+  install -Dm644 "$srcdir/wine-binfmt.conf" \
+	  "$pkgdir/usr/lib/binfmt.d/wine.conf"
 }
