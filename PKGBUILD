@@ -66,7 +66,7 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.14.11
+pkgver=4.14.12
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
 pkgrel=1
@@ -132,14 +132,12 @@ source=(# mainline kernel patches
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch'
         '0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
-        '0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
         '0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
-        '0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch')
+        '0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch')
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'f588b62d7ee1d2ebdc24afa0e256ff2f8812d5cab3bf572bf02e7c4525922bf9'
+            'da5d8db44b0988e4c45346899d3f5a51f8bd6c25f14e729615ca9ff9f17bdefd'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             'e04958faa40e3a20f7e7e2bd9580b4c4c45d4d576ea3c6537d2e19de25ae5160'
@@ -159,10 +157,8 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '06bc1d8b1cd153c3146a4376d833f5769b980e5ef5eae99ddaaeb48bf514dae2'
             'b90bef87574f30ec66c0f10d089bea56a9e974b6d052fee3071b1ff21360724b'
             'f38531dee9fd8a59202ce96ac5b40446f1f035b89788ea9ecb2fb3909f703a25'
-            '705d5fbfce00ccc20490bdfb5853d67d86ac00c845de6ecb13e414214b48daeb'
             '0a249248534a17f14fab7e14994811ae81fe324668a82ff41f3bcabeeae1460f'
-            '8e1b303957ddd829c0c9ad7c012cd32f2354ff3c8c1b85da3d7f8a54524f3711'
-            '914a0a019545ad7d14ed8d5c58d417eb0a8ec12a756beec79a545aabda343b31')
+            '8e1b303957ddd829c0c9ad7c012cd32f2354ff3c8c1b85da3d7f8a54524f3711')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -191,16 +187,11 @@ prepare() {
   
   ### Fix https://bugs.archlinux.org/task/56605
       msg "Fix #56605"
-      patch -Np1 -i ../0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
       patch -Np1 -i ../0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
   
   ### Fix https://bugs.archlinux.org/task/56846
       msg "Fix #56846"
       patch -Np1 -i ../0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-  
-  ### For AMD processors, keep PTI off by default
-      msg "For AMD processors, keep PTI off by default"
-      patch -Np1 -i ../0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch
   
   ### Patch source with BFQ-SQ-MQ
         msg "Fix naming schema in BFQ-SQ-MQ patch"
