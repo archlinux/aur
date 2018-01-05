@@ -2,14 +2,14 @@
 # Original Maintainer: Muratcan Sisek <mail@muratcansimsek.com.tr>
 pkgname=hiri
 pkgver=1.3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, Exchange-ready email client aiming to replace Outlook"
 arch=('x86_64')
 url="https://www.hiri.com/"
 license=('custom')
 provides=('hiri')
 conflicts=('hiri')
-makedepends=('xdg-icon-resource')
+makedepends=('xdg-utils')
 install=$pkgname.install
 source=('https://feedback.hiri.com/dist/downloads/Hiri-'$arch'-'$pkgver'.tar.gz'
         'https://feedback.hiri.com/dist/downloads/license.txt'
