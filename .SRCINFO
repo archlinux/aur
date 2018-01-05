@@ -1,0 +1,14 @@
+pkgbase = adns-python
+	pkgdesc = Python bindings for adns
+	pkgver = 1.2.1
+	pkgrel = 6
+	url = https://pypi.python.org/pypi/adns-python
+	arch = x86_64
+	license = GPL2
+	depends = adns
+	depends = python2
+	source = adns-python-1.2.1::https://github.com/daniilr/adns-python/archive/1.2.1.tar.gz
+	md5sums = b01a97f1bf8d54012e71f2b34be802bf
+
+pkgname = adns-python
+
