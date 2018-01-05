@@ -1,5 +1,5 @@
 pkgname=chromium-vaapi-bin
-pkgver=63.0.3239.108
+pkgver=63.0.3239.132
 pkgrel=1
 pkgdesc='Chromium compiled with VA-API support for Intel Graphics'
 url='https://www.chromium.org/Home'
@@ -18,22 +18,22 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 
 source_x86_64=("https://github.com/maximbaz/$pkgname/raw/master/$arch/chromium-vaapi-$pkgver-$pkgrel-$arch.pkg.tar.xz")
-sha256sums_x86_64=('13faa9d0f7272dab652ad6751336140a6308e19bc548721531ae1f7f72fe77f2')
+sha256sums_x86_64=('454e2c80831799790737c7b62a889d7f104b9685164742f43bc4b60b49ab5d99')
 
 # Keep in sync with AUR/chromium-vaapi:
 #
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
-declare -rgA _system_libs=(
-  #[ffmpeg]=ffmpeg              # https://crbug.com/731766
+readonly -A _system_libs=(
+  #[ffmpeg]=ffmpeg            # https://crbug.com/731766
   [flac]=flac
-  #[freetype]=freetype2         # https://crbug.com/pdfium/733
-  #[harfbuzz-ng]=harfbuzz-icu   # https://crbug.com/768938
-  #[icu]=icu                    # https://crbug.com/772655
+  #[freetype]=freetype2       # Using 'use_system_freetype=true' until M65
+  #[harfbuzz-ng]=harfbuzz     # Using 'use_system_harfbuzz=true' until M65
+  #[icu]=icu                  # https://crbug.com/772655 + need M64 for ICU 60
   [libdrm]=
   [libjpeg]=libjpeg
-  #[libpng]=libpng              # https://crbug.com/752403#c10
-  #[libvpx]=libvpx              # https://bugs.gentoo.org/611394
+  #[libpng]=libpng            # https://crbug.com/752403#c10
+  #[libvpx]=libvpx            # https://bugs.gentoo.org/611394
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -43,7 +43,7 @@ declare -rgA _system_libs=(
   [yasm]=
   [zlib]=minizip
 )
-depends+=(${_system_libs[@]})
+depends+=(${_system_libs[@]} freetype2 harfbuzz)
 
 package() {
   cp -ar "$srcdir/usr" "$pkgdir/usr"
