@@ -1,0 +1,20 @@
+pkgbase = tvision
+	pkgdesc = turbo vision library port (console interface)
+	pkgver = 2.2.1_r1
+	pkgrel = 6
+	url = http://tvision.sourceforge.net
+	arch = x86_64
+	license = GPL
+	depends = gpm
+	depends = gcc-libs
+	depends = libxmu
+	options = !makeflags
+	source = http://downloads.sourceforge.net/project/tvision/UNIX/2.2.1%20CVS20100714%20Source%20and%20Debian%205.0/rhtvision_2.2.1-1.tar.gz
+	source = tvision-build-fix.patch
+	source = tvision-gcc7.patch
+	md5sums = 46b815d86bbbb2f9b112b11f63e2f5a6
+	md5sums = e24e3520bd7c6beb441716b8998b4c64
+	md5sums = 2bd22d0e30db76a098e2287596a0f430
+
+pkgname = tvision
+

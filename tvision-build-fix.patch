@@ -1,0 +1,13 @@
+diff -wbBur tvision/classes/x11/x11src.cc tvision.q/classes/x11/x11src.cc
+--- tvision/classes/x11/x11src.cc	2009-12-29 15:52:24.000000000 +0000
++++ tvision.q/classes/x11/x11src.cc	2010-08-14 22:52:01.000000000 +0000
+@@ -40,6 +40,9 @@
+ // That's a nasty side effect: X defines Boolean!
+ #if (defined(TVOS_UNIX) || defined(TVCompf_Cygwin)) && defined(HAVE_X11)
+  #include <X11/Xmu/Atoms.h>
++ #include <sys/types.h>
++ #include <sys/stat.h>
++ #include <fcntl.h>
+ #endif
+ 
+ #define Uses_stdio

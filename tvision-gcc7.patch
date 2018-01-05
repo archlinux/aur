@@ -1,0 +1,54 @@
+--- tvision/classes/tdesktop.cc.orig	2017-07-15 07:58:51.301675267 +0000
++++ tvision/classes/tdesktop.cc	2017-07-15 07:59:32.794966900 +0000
+@@ -144,7 +144,7 @@
+ {
+     unsigned res1 = 2;
+     unsigned res2 = i/res1;
+-    while( abs( res1 - res2 ) > 1 )
++    while( abs( (int)(res1 - res2) ) > 1 )
+         {
+         res1 = (res1 + res2)/2;
+         res2 = i/res1;
+--- tvision/classes/tdisplay.cc.orig	2017-07-15 08:03:33.071392952 +0000
++++ tvision/classes/tdisplay.cc	2017-07-15 08:04:28.314670997 +0000
+@@ -381,10 +381,10 @@
+  if (firstXMatch!=-1)
+    {// Return the closest y that match x
+     i=indexMin=firstXMatch;
+-    minDif=abs(res[i].y-y);
++    minDif=abs((int)(res[i].y-y));
+     while (++i<cant && res[i].x==x)
+       {
+-       dif=abs(res[i].y-y);
++       dif=abs((int)(res[i].y-y));
+        if (dif<minDif)
+          {
+           minDif=dif;
+@@ -396,11 +396,11 @@
+    }
+  // No x match, looks the one with minimum differences
+  indexMin=0;
+- minDif=abs(res[0].y-y)+abs(res[0].x-x);
++ minDif=abs((int)(res[0].y-y))+abs((int)(res[0].x-x));
+  i=1;
+  while (i<cant)
+    {
+-    dif=abs(res[i].y-y)+abs(res[i].x-x);
++    dif=abs((int)(res[i].y-y))+abs((int)(res[i].x-x));
+     if (dif<minDif)
+       {
+        minDif=dif;
+
+--- tvision/classes/x11/x11src.cc.orig	2017-07-15 08:34:59.072771441 +0000
++++ tvision/classes/x11/x11src.cc	2017-07-15 08:35:27.949409851 +0000
+@@ -2541,8 +2541,8 @@
+  else
+    {
+     unsigned target=fW*fH;
+-    int dif1=abs(8*16-target);
+-    int dif2=abs(10*20-target);
++    int dif1=abs(8*16-(int)(target));
++    int dif2=abs(10*20-(int)(target));
+     if (dif1<dif2)
+        nFont=&font8x16;
+     else
