@@ -1,0 +1,19 @@
+pkgbase = slrn
+	pkgdesc = An open source text-based news client
+	pkgver = 1.0.3
+	pkgrel = 3
+	url = http://www.slrn.org/
+	arch = x86_64
+	license = GPL
+	makedepends = uudeview
+	depends = openssl
+	depends = slang
+	options = !makeflags
+	options = docs
+	options = zipman
+	backup = etc/slrnrc
+	source = https://jedsoft.org/releases/slrn/slrn-1.0.3a.tar.bz2
+	sha256sums = 3ba8a4d549201640f2b82d53fb1bec1250f908052a7983f0061c983c634c2dac
+
+pkgname = slrn
+
