@@ -1,7 +1,7 @@
 # Maintainer: Nick Burrett <nick@sqrt.co.uk>
 # lizardfs is a fork of moosefs and as such is a replacement for it.
 pkgname=lizardfs
-pkgver=3.11.3
+pkgver=3.12.0
 pkgrel=1
 pkgdesc='LizardFS is a highly reliable, scalable and efficient distributed file system. It spreads data over a number of physical servers, making it visible to an end user as a single file system.'
 url='http://lizardfs.com'
@@ -12,7 +12,7 @@ depends=('asciidoc' 'boost' 'zlib' 'fuse' 'python2' 'bash' 'cmake')
 install="$pkgname.install"
 source=("http://github.com/lizardfs/lizardfs/archive/v${pkgver}.tar.gz"
         "cmath.patch")
-sha256sums=('50991b76989aa1c139355769be6ba6ff9ec51b8403c99a3bc5f34710c1fd61ed'
+sha256sums=('d21220dc7542539b48d5bff7abe047a8c6bdbab19cb03579f88f146dee3ec5f6'
             'fd9e8e3e0bfbb3d1befb3a6136d9257dcebb60cd49012051773e35b355ce0d5c')
 
 prepare() {
@@ -25,6 +25,7 @@ build() {
   cd "lizardfs-${pkgver%_*}/build"
   cmake .. -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_DEBIAN_PATHS=ON \
+    -DENABLE_CLIENT_LIB=YES \
     -DCMAKE_INSTALL_PREFIX=/
   make
 }
@@ -39,6 +40,8 @@ package() {
   done
   mv "$pkgdir"/usr/sbin/* "$pkgdir/usr/bin/"
   rmdir "$pkgdir/usr/sbin"
+  mv "$pkgdir"/usr/lib64/* "$pkgdir/usr/lib/"
+  rmdir "$pkgdir/usr/lib64"
 }
 
 # vim:set ts=2 sw=2 et:

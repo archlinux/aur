@@ -21,12 +21,3 @@ post_remove() {
   echo "  ==> User '$LFS_USER' removed"
 }
 
-post_upgrade() {
-  echo
-  echo 'The latest release of MooseFS had several changes to how'
-  echo 'files are packaged and installed. There were also changes to'
-  echo 'the systemd service files. Please double-check that every'
-  echo 'service you wish to run is running as you intended.'
-  echo
-}
-
