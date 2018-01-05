@@ -1,0 +1,17 @@
+pkgbase = emacs-w3m-cvs
+	pkgdesc = w3m browser for Emacs (cvs)
+	pkgver = 20140530
+	pkgrel = 2
+	url = http://emacs-w3m.namazu.org/
+	install = emacs-w3m-cvs.install
+	arch = any
+	license = GPL
+	makedepends = cvs
+	makedepends = autoconf
+	depends = emacs
+	depends = w3m
+	provides = emacs-w3m
+	conflicts = emacs-w3m
+
+pkgname = emacs-w3m-cvs
+

@@ -1,0 +1,8 @@
+post_install() {
+  echo ">>" Add the following to your .emacs:
+  echo ">> (require 'w3m-load)"
+}
+
+post_upgrade() {
+  post_install $1
+}
