@@ -14,7 +14,7 @@ makedepends=('python2-pip')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "seahub-preupgrade")
-sha256sums=('04398c57bd4fa17050530ab47d4f1410196f3cd925d7c1067af00e0c848a3799'
+sha256sums=('5111945fb226a6cc315468df1d60958e78d75a43c817b7f0d1569070f3ebce34'
             'd3b0d33848ab9e0dbb9ea6e6e385fc4ffa82a77193af447edef7646d68e396b1')
 # Strip is not happy on precompiled libs in virtualenv, temporary disable
 options=("!strip")
