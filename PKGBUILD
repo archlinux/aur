@@ -169,7 +169,7 @@ prepare() {
 build() {
   cd ${srcdir}/linux-${__basekernel}
 
-  #make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 _package() {
