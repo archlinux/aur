@@ -1,0 +1,17 @@
+pkgbase = ude
+	pkgdesc = The ultimate window manager for UDE
+	pkgver = 0.2.11_a
+	pkgrel = 1
+	url = http://udeproject.sourceforge.net/index.shtml
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	depends = libjpeg
+	depends = libxmu
+	depends = libxpm
+	depends = bash
+	source = http://downloads.sourceforge.net/udeproject/uwm-0.2.11a.tar.gz
+	sha256sums = dd056857c98b75c9203861917db33bcaf87ba074bdd204cf732ce4cb777cb408
+
+pkgname = ude
+
