@@ -10,7 +10,7 @@ _minor=14
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=7
+_pfrel=8
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -83,10 +83,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
 	"${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
         "90-linux.hook"
         "60-linux.hook"
-        '0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
-        '0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
-        '0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch'
+        '0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
+        '0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
+        '0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
@@ -104,16 +103,13 @@ prepare() {
 
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  
   # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-  patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  patch -Np1 -i ../0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
+  patch -Np1 -i ../0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
 
   # https://bugs.archlinux.org/task/56846
-  patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  patch -Np1 -i ../0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
 
-  # https://bugs.archlinux.org/task/56830
-  patch -Np1 -i ../0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
   # end linux-ARCH patches
 
   # fix ci  invalid PC card inserted issue hopefully
@@ -689,12 +685,11 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
             '943e1e6e1518edc8ab86023805f8f88f3672871a4039ccf8a9e97c33e95ae395'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '71855b1aa2e4aec2695f4ee12ad7a65fcb33b1fe17315cfcca6ce9162bc9e391'
+            'e8765a6a553b914b21e59dfe4d2311aba1d518bfcc71d32802d3bc0fa4874369'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'ed3266ab03f836f57de0faf8a10ffd7566c909515c2649de99adaab2fac4aa32'
-            '64a014f7e1b4588728b3ea9538beee67ec63fb792d890c7be9cc13ddc2121b00'
-            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb'
-            '95f0d0a94983b0dafd295f660a663f9be5ef2fcb9646098426a5d12b59f50638'
-            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85')
+            '705d5fbfce00ccc20490bdfb5853d67d86ac00c845de6ecb13e414214b48daeb'
+            '0a249248534a17f14fab7e14994811ae81fe324668a82ff41f3bcabeeae1460f'
+            '8e1b303957ddd829c0c9ad7c012cd32f2354ff3c8c1b85da3d7f8a54524f3711'
+            '06bc1d8b1cd153c3146a4376d833f5769b980e5ef5eae99ddaaeb48bf514dae2')
 
