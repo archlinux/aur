@@ -1,0 +1,19 @@
+pkgbase = libime-jyutping-git
+	pkgdesc = A library to support generic input method implementation
+	pkgver = r3.0278e17
+	pkgrel = 1
+	url = https://github.com/fcitx/libime-jyutping
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	depends = boost-libs
+	depends = fcitx5-git
+	source = git+https://github.com/fcitx/libime-jyutping.git
+	sha512sums = SKIP
+
+pkgname = libime-jyutping-git
+
