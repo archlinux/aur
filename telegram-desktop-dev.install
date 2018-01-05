@@ -1,12 +1,10 @@
-post_install() {
-	update-desktop-database -q
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+post_install () {
+    cat <<EOF
+Telegram will crash if you only have libappindicator-gtk2 installed.
+Either remove libappindicator-gtk2, or install libappindicator-gtk3 to avoid the crash.
+EOF
 }
 
-post_upgrade() {
-	post_install
-}
-
-post_remove() {
-	post_install
+post_upgrade () {
+    post_install
 }

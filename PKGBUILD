@@ -1,230 +1,92 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Official package maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: hexchain <i@hexchain.org>
+
+# Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
+# https://github.com/mymedia2/tdesktop
+
 pkgname=telegram-desktop-dev
-pkgver=1.1.26
+pkgver=1.2.7
 pkgrel=1
-pkgdesc='Official desktop version of Telegram messaging app. Development release.'
+pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=(
-	'ffmpeg'
-	'icu'
-	'libxkbcommon-x11'
-	'libproxy'
-	'openal'
-	'openssl-1.0'
-	'xcb-util-wm'
-	'xcb-util-keysyms'
-	'xcb-util-image'
-	'xcb-util-renderutil'
-	'hicolor-icon-theme'
-	'range-v3'
-)
-makedepends=(
-	'chrpath'
-	'cmake'
-	'git'
-	'google-breakpad-git'
-	'libappindicator-gtk2'
-	'libexif'
-	'libunity'
-	'libva'
-	'libwebp'
-	'mtdev'
-	'python'
-	'python2'
-	# QT5 build dependencies
-	'xcb-util-keysyms'
-	'libgl'
-	'fontconfig'
-	'xcb-util-wm'
-	'libxrender'
-	'libxi'
-	'sqlite'
-	'xcb-util-image'
-	'harfbuzz-icu'
-	'tslib'
-	'libinput'
-	'libsm'
-	'libxkbcommon-x11'
-	# For qtimageformats
-	'jasper'
-	'libjpeg-turbo'
-	'libpng'
-	'libmng'
-	'libtiff'
-	'libwebp'
-	# For qtwayland
-	'wayland'
-	# Removed input packages
-	'fcitx-qt5'
-	'hime'
-)
-optdepends=(
-	'libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
-	'libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)'
-	'libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)'
-	'pulseaudio-jack: JACK support behind PulseAudio'
-)
-_qt_version=5.6.2
-# Hacky way to handle versioning as we wish
-_real_version="tag=v$pkgver"
+depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats' 'openssl-1.0' 'libappindicator-gtk3')
+makedepends=('cmake' 'git' 'gyp' 'libexif' 'libva' 'libwebp' 'mtdev' 'range-v3' 'python' 'python2' 'gtk3' 'dee')
+install=telegram-desktop-dev.install
+provides=('telegram-desktop')
+conflicts=('telegram-desktop')
 source=(
-	"tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#${_real_version}"
-	"GSL::git+https://github.com/Microsoft/GSL.git"
-	"variant::git+https://github.com/mapbox/variant.git"
-	"libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
-	"Catch::git+https://github.com/philsquared/Catch.git"
-	"https://download.qt.io/official_releases/qt/${_qt_version%.*}/$_qt_version/submodules/qtbase-opensource-src-$_qt_version.tar.xz"
-	"https://download.qt.io/official_releases/qt/${_qt_version%.*}/$_qt_version/submodules/qtimageformats-opensource-src-$_qt_version.tar.xz"
-	"https://download.qt.io/official_releases/qt/${_qt_version%.*}/$_qt_version/submodules/qtwayland-opensource-src-$_qt_version.tar.xz"
-	"git+https://chromium.googlesource.com/external/gyp"
-	"telegramdesktop.desktop"
-	"tg.protocol"
-	# Thanks eduardosm, got from his 'telegram-desktop' AUR package
-	#"aur-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/aur-fixes.diff?h=telegram-desktop"
-	"aur-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/aur-fixes.diff?h=telegram-desktop&id=8d880ce2f02cd96354a48ca3c611a89b0b81e672"
-	"libtgvoip-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/libtgvoip-fixes.diff?h=telegram-desktop&id=8d880ce2f02cd96354a48ca3c611a89b0b81e672"
+    "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
+    "GSL::git+https://github.com/Microsoft/GSL.git"
+    "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
+    "variant::git+https://github.com/mapbox/variant.git"
+    "Catch::git+https://github.com/philsquared/Catch"
+    "telegram-desktop-dev.desktop"
+    "tg.protocol"
+    "CMakeLists.inj"
+    "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
+    "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2f6eae93c5d982fe0a387a01aeb3435571433e23e9d9d9246741faf51f1ee787'
-            '4fb153be62dac393cbcebab65040b3b9d6edecd1ebbe5e543401b0e45bd147e4'
-            '035c3199f4719627b64b7020f0f4574da2b4cb78c6981aba75f27b872d8e6c86'
-            'SKIP'
-            '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
+            '85232aeebebcb4105f4af23a3de1c61401f7592a025f9b5bbe0ce980f014da1a'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
-            '5bd1272ba8221eeb1d26b1673093f726e8bf028b1c867b814cd3c552a8a59a36'
-            'df86ab21e5eddc3dac46781a2165452ce076e928c2b9d59f340883c13f5d5a02')
+            '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
+            '9011d01340549d8a7b6627c44de5355356342a7e83789672e9e0aa92657ee04f'
+            '0e55b150b91aeeddcb813fb242a62fe4d1977bcac457eb9d65997faef643f075')
 
 prepare() {
-	cd "$srcdir/tdesktop"
+    cd "$srcdir/tdesktop"
+    git submodule init
+    git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
+    git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
+    git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
+    git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
+    git submodule update
+    patch -Np1 -i "$srcdir/tdesktop.patch"
 
-	mkdir -p "$srcdir/Libraries"
-
-	msg2 "Set up properly QT"
-	local qt_patch_file="$srcdir/tdesktop/Telegram/Patches/qtbase_${_qt_version//./_}.diff"
-	local qt_src_dir="$srcdir/Libraries/qt${_qt_version//./_}"
-	if [ "$qt_patch_file" -nt "$qt_src_dir" ]; then
-		rm -rf "$qt_src_dir"
-		mkdir "$qt_src_dir"
-
-		mv "$srcdir/qtbase-opensource-src-$_qt_version" "$qt_src_dir/qtbase"
-		mv "$srcdir/qtimageformats-opensource-src-$_qt_version" "$qt_src_dir/qtimageformats"
-		mv "$srcdir/qtwayland-opensource-src-$_qt_version" "$qt_src_dir/qtwayland"
-
-		cd "$qt_src_dir/qtbase"
-		patch -p1 -i "$qt_patch_file"
-
-		# Use the version 1.0 of OpenSSL
-		echo "INCLUDEPATH += /usr/include/openssl-1.0" >> "$qt_src_dir/qtbase/src/network/network.pro"
-	fi
-
-	msg2 "Set up properly gyp"
-	cd "$srcdir/gyp"
-	git apply "$srcdir/tdesktop/Telegram/Patches/gyp.diff"
-	sed -i 's/exec python /exec python2 /g' "$srcdir/gyp/gyp"
-
-	if [ ! -h "$srcdir/Libraries/gyp" ]; then
-		ln -s "$srcdir/gyp" "$srcdir/Libraries/gyp"
-	fi
-
-	msg2 "Fix submodules locations"
-	cd "$srcdir/tdesktop"
-	git submodule init
-	git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
-	git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
-	git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
-	git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
-	git submodule update
-
-	msg2 "Apply Arch-like fixes"
-	cd "$srcdir/tdesktop"
-	git apply "$srcdir/aur-fixes.diff"
-	cd "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip"
-	git apply "$srcdir/libtgvoip-fixes.diff"
-	msg2 "Small fixes for proper build"
-	sed -i "$srcdir/Libraries/qt5_6_2/qtbase/src/plugins/platforminputcontexts/platforminputcontexts.pro" \
-		-e 's/fcitx[ \/]*//' -e 's/hime[ \/]*//'
+    cd "Telegram/ThirdParty/libtgvoip"
+    patch -Np1 -i "$srcdir/libtgvoip.patch"
 }
 
 build() {
-	# Build patched Qt
-	local qt_src_dir="$srcdir/Libraries/qt${_qt_version//./_}"
-
-	msg2 "Set up properly OpenSSL 1.0"
-	export OPENSSL_LIBS='-L/usr/lib/openssl-1.0 -lssl -lcrypto'
-
-	cd "$qt_src_dir/qtbase"
-	./configure \
-		-prefix "$srcdir/qt" \
-		-release \
-		-verbose \
-		-force-debug-info \
-		-opensource \
-		-confirm-license \
-		-system-zlib \
-		-system-libpng \
-		-system-libjpeg \
-		-system-freetype \
-		-system-harfbuzz \
-		-system-pcre \
-		-system-xcb \
-		-system-xkbcommon-x11 \
-		-no-gtkstyle \
-		-static \
-		-nomake examples \
-		-nomake tests
-		#-no-opengl
-	make
-	make install
-	export PATH="$srcdir/qt/bin:$PATH"
-
-	cd "$qt_src_dir/qtimageformats"
-	qmake .
-	make
-	make install
-
-	cd "$qt_src_dir/qtwayland"
-	qmake .
-	make
-	make install
-
-	# Build Telegram Desktop
-	rm -rf "$srcdir/tdesktop/out"
-	cd "$srcdir/tdesktop/Telegram/gyp"
-
-	"$srcdir/Libraries/gyp/gyp" \
-		-Dlinux_path_qt="$srcdir/qt" \
-		-Dlinux_lib_ssl='-L/usr/lib/openssl-1.0 -lssl' \
-		-Dlinux_lib_crypto='-L/usr/lib/openssl-1.0 -lcrypto' \
-		-Dlinux_lib_icu="-licuuc -licutu -licui18n" \
-		-Dlinux_path_opus_include="/usr/include/opus" \
-		--depth=. --generator-output=../.. -Goutput_dir=out Telegram.gyp --format=cmake
-	cd "$srcdir/tdesktop/out/Release"
-	cmake .
-	make
-	chrpath --delete Telegram
+    cd "$srcdir/tdesktop"
+    export LANG=en_US.UTF-8
+    export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME,TDESKTOP_DISABLE_UNITY_INTEGRATION"
+    export EXTRA_FLAGS="-Winvalid-pch"
+    export CPPFLAGS="$CPPFLAGS $EXTRA_FLAGS"
+    export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"
+    gyp \
+        -Dbuild_defines=${GYP_DEFINES} \
+        -Gconfig=Release \
+        --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
+    NUM=$((`wc -l < out/Release/CMakeLists.txt` - 2))
+    sed -i "$NUM r ../CMakeLists.inj" out/Release/CMakeLists.txt
+    cd "$srcdir/tdesktop/out/Release"
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+    make
 }
 
 package() {
-	install -dm755 "$pkgdir/usr/bin"
-	install -m755 "$srcdir/tdesktop/out/Release/Telegram" "$pkgdir/usr/bin/telegram-desktop"
+    install -dm755 "$pkgdir/usr/bin"
+    install -m755 "$srcdir/tdesktop/out/Release/Telegram" "$pkgdir/usr/bin/telegram-desktop"
 
-	install -d "$pkgdir/usr/share/applications"
-	install -m644 "$srcdir/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
+    install -d "$pkgdir/usr/share/applications"
+    install -m644 "$srcdir/telegram-desktop-dev.desktop" "$pkgdir/usr/share/applications/telegram-desktop.desktop"
 
-	install -d "$pkgdir/usr/share/kde4/services"
-	install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kde4/services/tg.protocol"
+    install -d "$pkgdir/usr/share/kservices5"
+    install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
 
-	local icon_size icon_dir
-	for icon_size in 16 32 48 64 128 256 512; do
-		icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
+    local icon_size icon_dir
+    for icon_size in 16 32 48 64 128 256 512; do
+        icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
 
-		install -d "$icon_dir"
-		install -m644 "$srcdir/tdesktop/Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/telegram-desktop.png"
-	done
+        install -d "$icon_dir"
+        install -m644 "$srcdir/tdesktop/Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/telegram-desktop.png"
+    done
 }
