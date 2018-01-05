@@ -2,7 +2,7 @@
 # Contributor: sauliusl
 pkgname=bowtie
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bowtie is an alignment tool for short nucleotide sequences against long templates"
 url="http://bowtie-bio.sf.net"
 arch=('x86_64' 'i686')
@@ -23,6 +23,8 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}_p1"
   make prefix=/usr DESTDIR="${pkgdir}" install
   install -d ${pkgdir}/usr/share/doc/${pkgname}
+  install -Dm755 scripts/*.pl "${pkgdir}/usr/bin"
+  install -Dm755 scripts/*.sh "${pkgdir}/usr/bin"
   find doc -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}" \;
   install -Dm644 TUTORIAL "${pkgdir}/usr/share/doc/$pkgname/TUTORIAL"
   install -Dm644 MANUAL "$pkgdir/usr/share/doc/$pkgname/MANUAL"
