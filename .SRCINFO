@@ -1,0 +1,20 @@
+pkgbase = emms
+	pkgdesc = The Emacs Multimedia System
+	pkgver = 4.4
+	pkgrel = 1
+	epoch = 1
+	url = http://www.gnu.org/software/emms/
+	install = emms.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = taglib
+	source = https://ftp.gnu.org/gnu/emms/emms-4.4.tar.gz
+	source = https://ftp.gnu.org/gnu/emms/emms-4.4.tar.gz.sig
+	validpgpkeys = 691BF9D0EEC472730726EB7869725A21D60EEC42
+	sha256sums = 10ecc2e9c957ca1f80bbf8d9a0473b9eae552218aaea278dc8b10564215513ac
+	sha256sums = SKIP
+
+pkgname = emms
+
