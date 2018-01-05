@@ -1,0 +1,13 @@
+pkgbase = rote
+	pkgdesc = terminal emulation library
+	pkgver = 0.2.8
+	pkgrel = 5
+	url = http://rote.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://downloads.sourceforge.net/sourceforge/rote/rote-0.2.8.tar.gz
+	md5sums = 9e5901267d9ed239343f55a54d76e48e
+
+pkgname = rote
+
