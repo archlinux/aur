@@ -1,8 +1,9 @@
 # Maintainer: William Gathoye <william + aur at gathoye dot be>
 # Maintainer: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=mattermost
-pkgver=4.4.5
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -31,14 +32,12 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
 )
-sha512sums=(
-    '23f65cac1f9cf393f5f04725d7eb703b2edfe30eef2180ee48bcdbe9c7d1064fed598dc56fbd4344216db35e3883671df93611ce27454759eee7e1507e1a0bd2'
-    'ac07848e675cddced2062e4da8c52454c9df3ca4c80af50c622980daf48f5665155b1ebd12d19ad2f10612c68efd7668f06d083ff4bc597e9922395b0b33b40b'
-    '3e3d46dc7778be256da9a366ec96cde684fcb07732d0adfd40ea00d6ec61a161a9d7e784f7773d34e4f058e6919b13053ac228255a05f175e7ce20538f07ec93'
-    '5fe6c343e9739b12f8ea9390dafd729fa9f980978bbc0fa7eb6a2eb2d437929078d3efede23c28a6b399c407b8b5e92755169a468462088de0eb148b360acc4b'
-    'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
-    'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
-)
+sha512sums=('91ed9b01cdc2705f73a350606886c9147d50f9af57b8564e679ad3e0a71acdf67926d514579113060732c9b717f9f9a30f80711242a0d779d9c77c519a28f207'
+            '2e8b0e6cb96604eef6cfb1c86a29a16ef208a37fe23c3007c43140ff54b178997718782a2e41f43d4813b5c8ba1919a4fc90501aa7f68430e0a9969c459d86d5'
+            '3e3d46dc7778be256da9a366ec96cde684fcb07732d0adfd40ea00d6ec61a161a9d7e784f7773d34e4f058e6919b13053ac228255a05f175e7ce20538f07ec93'
+            '5fe6c343e9739b12f8ea9390dafd729fa9f980978bbc0fa7eb6a2eb2d437929078d3efede23c28a6b399c407b8b5e92755169a468462088de0eb148b360acc4b'
+            'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
+            'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
 
 prepare() {
     # cp cannot copy from a symbolic link to the destination link itself
