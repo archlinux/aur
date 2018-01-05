@@ -55,7 +55,7 @@ build() {
     #https://bugzilla.gnome.org/show_bug.cgi?id=655517
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-    make -j4
+    make
 }
 
 package() {
