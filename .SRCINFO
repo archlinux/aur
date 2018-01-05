@@ -1,0 +1,16 @@
+pkgbase = adb-screen-tools
+	pkgdesc = Tool recording gifs on android-devices
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/bakkenbaeck/adb-screen-tools
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	provides = adb-screen-tools
+	conflicts = adb-screen-tools
+	source = adb-screen-tools::git+https://github.com/bakkenbaeck/adb-screen-tools.git
+	md5sums = SKIP
+
+pkgname = adb-screen-tools
+
