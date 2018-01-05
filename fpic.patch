@@ -1,0 +1,14 @@
+diff --git a/config/x86_64/make_defs.mk b/config/x86_64/make_defs.mk
+index 2db7a8b8..30f41a62 100644
+--- a/config/x86_64/make_defs.mk
++++ b/config/x86_64/make_defs.mk
+@@ -52,7 +52,7 @@ endif
+ # may specify additional flags here as needed.
+ CPPROCFLAGS    :=
+ CMISCFLAGS     :=
+-CPICFLAGS      :=
++CPICFLAGS      := -fPIC
+ CWARNFLAGS     :=
+ 
+ ifneq ($(DEBUG_TYPE),off)
+
