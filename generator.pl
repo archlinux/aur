@@ -52,7 +52,8 @@ my $ua = LWP::UserAgent->new;
 my $version = _get_latest_version($ua);
 my @lines = _get_checksum_lines($ua, $version);
 
-my @versions = grep { $_ ~~ /Visual_Paradigm_CE[^\s]+Linux[2-6]{2}_InstallFree.tar.gz/ } @lines;
+# Visual_Paradigm_CE_14_2_20180101_Linux64_InstallFree.tar.gz
+my @versions = grep { $_ ~~ /Visual_Paradigm_CE_$version->{base}_$version->{date}_Linux[2-6]{2}_InstallFree.tar.gz/ } @lines;
 
 die "Cannot get versions" unless @versions;
 
@@ -61,13 +62,17 @@ my %data = ();
 for my $line ( @versions ) {
     $line =~ /_CE_([0-9_]+)_Linux([2-6]{2}).*sha256:\s+([0-9a-f]+).*md5:\s+([0-9a-f]+)/;
     my $info = {
-        version => $1,
-        arch    => $2,
-        sha256  => $3,
-        md5     => $4,
+        full_version => $1,
+        arch         => $2,
+        sha256       => $3,
+        md5          => $4,
 
     };
-    $info->{version} =~ s/_/./g;
+    if ($info->{full_version} ~~ /(?<version>\d+_\d+)_(?<date>\d+)/) {
+        $info->{$_} = $+{$_} for keys %+;
+        $info->{version_} = $info->{version};
+        $info->{version}  =~ s/_/./g;
+    }
     my $arch = $info->{arch} eq 32 ? 'i686' : 'x86_64';
     $data{$arch} = $info;
 }
