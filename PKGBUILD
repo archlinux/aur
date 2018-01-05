@@ -1,13 +1,15 @@
 # Maintainer: Marcel Robitaille mail@marcelrobitaille.me
 pkgname=lemonbar-dark-yux-git
 pkgver=r254.08de101
-pkgrel=1
+pkgrel=2
 pkgdesc="bar aint recursive - A lightweight xcb based bar. This is a fork that supports fontconfig and borders \\w color."
 arch=('any')
 url="https://github.com/dark-yux/bar"
 license=('MIT')
 depends=()
 makedepends=('git')
+provides=('lemonbar')
+conflicts=('lemonbar' 'lemonbar-xft-git')
 source=('lemonbar-dark-yux-git::git+https://github.com/dark-yux/bar')
 md5sums=('SKIP')
 
