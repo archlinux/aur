@@ -1,0 +1,18 @@
+pkgbase = efax-gtk
+	pkgdesc = A GUI front end for the 'efax' fax program
+	pkgver = 3.2.13
+	pkgrel = 4
+	url = http://efax-gtk.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	depends = dbus-glib
+	depends = ghostscript
+	depends = c++-gtk-utils
+	optdepends = heirloom-mailx: to use the mail_fax script
+	backup = etc/efax-gtkrc
+	source = http://downloads.sourceforge.net/efax-gtk/efax-gtk-3.2.13.src.tgz
+	md5sums = 87cfd9c0894080690474d2696782f79d
+
+pkgname = efax-gtk
+
