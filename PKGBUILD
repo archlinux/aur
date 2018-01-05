@@ -3,7 +3,7 @@
 
 pkgname=brackets-bin
 _pkgname=brackets
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc="A code editor for HTML, CSS and JavaScript. "
 arch=("i686" "x86_64")
@@ -21,9 +21,9 @@ conflicts=('brackets' 'brackets-git')
 install=$pkgname.install
 
 source_i686=("https://github.com/adobe/$_pkgname/releases/download/release-$pkgver/Brackets.Release.$pkgver.32-bit.deb")
-source_x86_64=("https://github.com/adobe/$_pkgname/releases/download/release-$pkgver/Brackets.Release.$pkgver.64-bit.deb")
+source_x86_64=("https://github.com/adobe/brackets/releases/download/release-1.12-prerelease/Brackets.Pre-Release-1.12.64-bit.deb")
 sha512sums_i686=('937bd438a6ce89f5ac3546369ed7889717a771d2d6619f63d37bfdbd1b11596b888044cf5089610b18a260e51b99e98b47b4b72aa0d58e90b77bed918abbd23d')
-sha512sums_x86_64=('5a09977c1cf8f7496f6d8f4e3b01ce9eb02819e0c42071706ef8ef0185009b825f04f60f5354801dc74df2ab525791d701eb193e8c8ccc70de7504068028285d')
+sha512sums_x86_64=('SKIP')
 
  
 prepare() {
