@@ -1,0 +1,20 @@
+pkgbase = tea
+	pkgdesc = A Qt-based text editor for Linux and *BSD. With an ultimate small size TEA provides you hundreds of functions.
+	pkgver = 44.1.0
+	pkgrel = 1
+	url = http://semiletov.org/tea/
+	install = tea.install
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = gcc-libs
+	depends = aspell
+	depends = hunspell
+	source = http://semiletov.org/tea/dloads/tea-44.1.0.tar.bz2
+	source = tea.desktop
+	sha256sums = 28b665a4ab30defa6699f8625a771612c6e0ae3160abf19e0e3d0a3778599890
+	sha256sums = 6bf04a66bce5a2396eadaee9c7ac7972f24670bbadf855c52146dce0e13f1324
+
+pkgname = tea
+
