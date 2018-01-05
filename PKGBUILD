@@ -2,7 +2,7 @@
 # Contributor : speps <speps at aur dot archlinux dot org>
 
 pkgname=distrho-vst-git
-pkgver=r398.e11e2b2
+pkgver=r401.b200e740
 pkgrel=1
 pkgdesc="DISTRHO VST audio plugins ports."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL' 'LGPL')
 depends=('freetype2' 'alsa-lib' 'libxext')
 makedepends=('premake3' 'git' 'libxinerama' 'libxrender' 'libxcursor' 'steinberg-vst36' 'ladspa')
 provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}" "distrho-vst-git" "distrho-plugins-vst-git")
+conflicts=("${pkgname%-*}" "distrho-vst-git" "distrho-plugins-vst-git" "dexed-vst-git" "luftikus" "tal-plugins")
 source=("${pkgname%-*}::git://github.com/DISTRHO/DISTRHO-Ports")
 md5sums=('SKIP')
 
