@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.sh/"
@@ -34,7 +34,8 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
-_commit_hash="commit=9e25e9f004bcab070cdecb201ba89da539b2f780"
+#_commit_hash="commit=9e25e9f004bcab070cdecb201ba89da539b2f780"
+_commit_hash="branch=master"
 
 _pkgname="popcorn-desktop"
 source=(
