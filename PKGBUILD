@@ -7,7 +7,7 @@ pkgname='ros-kinetic-rosbag-storage'
 pkgver='1.12.12'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-roslz4
@@ -42,6 +42,13 @@ depends=(${ros_depends[@]}
 _dir="ros_comm-release-release-kinetic-rosbag_storage-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('0f1e0e3fb6286c5973bcd46ad64533910dc8fd2d97e07db9791c628fb0980d5f')
+
+prepare() {
+  cd ${srcdir}
+  find . -iname *.cpp \
+	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
+	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \;
+}
 
 build() {
   # Use ROS environment variables
