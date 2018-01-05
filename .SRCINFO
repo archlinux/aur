@@ -1,0 +1,17 @@
+pkgbase = bashdb
+	pkgdesc = A debugger for Bash scripts loosely modeled on the gdb command syntax
+	pkgver = 4.3_0.9
+	pkgrel = 4
+	url = http://bashdb.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = bash
+	depends = python2-pygments
+	depends = pygmentize
+	source = http://downloads.sourceforge.net/bashdb/bashdb-4.3-0.9.tar.bz2
+	source = python2.patch
+	md5sums = 2f2479933a4e19663349b66f87d0290a
+	md5sums = 7e2fdd6ecb69cfd2cc2dba33c700c800
+
+pkgname = bashdb
+

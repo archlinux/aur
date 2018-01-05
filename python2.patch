@@ -1,0 +1,9 @@
+diff -aur bashdb-4.2-0.7/lib/term-highlight.py bashdb-4.2-0.7.new//lib/term-highlight.py
+--- bashdb-4.2-0.7/lib/term-highlight.py	2011-03-07 17:05:56.000000000 -0800
++++ bashdb-4.2-0.7.new//lib/term-highlight.py	2011-03-17 14:19:01.676694024 -0700
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # from pydbgr.api import debug
+ # debug()
+ from pygments import highlight
