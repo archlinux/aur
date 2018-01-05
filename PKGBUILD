@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=5.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -22,7 +22,8 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-Documen
 	"server_makefile.patch"
 	"onlyoffice-fileconverter.service"
 	"onlyoffice-spellchecker.service"
-	"onlyoffice-docservice.service")
+	"onlyoffice-docservice.service"
+	"https://github.com/ONLYOFFICE/DocumentServer/releases/download/ONLYOFFICE-DocumentServer-5.0.6/onlyoffice-documentserver_amd64.deb")
 sha512sums=('f077b0f749a54a2ee8b23876328cbc2114dd6de374fc8b92da5866f98bf3d6dcdd2ffa321b24e7e5a2e8a27b46c132f7cf2fd20295a0cf21b9839295f579e7f2'
             '1e97ce4db85f73925773e598230e40e71ca32519f22677e2cd70c81366a6ccf317ecf0a1126443316ddac1125a13891f03b718f03d23cf917b46de1fc0999a80'
             '4dde4ca95516f78443d54803ac9f303daec1b3b799358ff68acdef253eee25a9918b07b66da762e4ba05720522dc9f63adb5029972c24e00543f71c29cc02134'
@@ -34,7 +35,8 @@ sha512sums=('f077b0f749a54a2ee8b23876328cbc2114dd6de374fc8b92da5866f98bf3d6dcdd2
             'b3e399258eeabb870c8735d28ab92095d7b5f3b58b45ee001efcce013027d29ba4cf18b06256453dd9f2c73ea0c156efb011a381865647c2573e825cefc039ea'
             '5c691e07eccd51f543de92cc7f7fd5a5aac77fa2a6cf786f439a4ea43abc7606180aa5a9dd3762200091a4b3a479860881f94aefd0297d8e7ed955bf25c37417'
             '428e5c3326da53ee993871ab56c3b35c40fea5d5513950bee2a87b158f25cc0ebe76d690e4fa17bceb8583dde2f164fcf0a71a60652da1c67171d215f2528e6a'
-            '6f53f9eec783dc00497e2ce495ce92dc1d78824e108ecdd914806fca4948e1748383125e0322a444bf9f8e158eacee06247b4966beb172522e3d176a8bc093a9')
+            '6f53f9eec783dc00497e2ce495ce92dc1d78824e108ecdd914806fca4948e1748383125e0322a444bf9f8e158eacee06247b4966beb172522e3d176a8bc093a9'
+	    '0708172c588340d8ba25faaacb76b4f6a9661dbb4519c708dcec4548241280d522a6f789a94124e603ff4aa77ab18a3c92563c7d1a85312017cfc07efbe6e792')
 install="onlyoffice-documentserver.install"
 backup=('etc/webapps/onlyoffice/documentserver/production-linux.json'
 	'etc/webapps/onlyoffice/documentserver/default.json')
@@ -64,8 +66,11 @@ prepare() {
 
   # patching v8 compile error
   sed -i 's/-fPIC/-Wno-unused-function -Wno-unused-variable -fPIC/g' core/Common/3dParty/v8/build.sh
+  # -Wno-attributes
   # force system binutils, see: https://bbs.archlinux.org/viewtopic.php?id=209871
   sed -i 's/-Dclang=0/"-Dclang=0 -Dlinux_use_bundled_gold=0"/g' core/Common/3dParty/v8/build.sh
+
+  #sed -i 's/4.10.253/6.5.109/g' core/Common/3dParty/v8/fetch.sh
 
   # python2 dependency for gclient
   sed -i '13iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/fetch.sh
@@ -81,6 +86,10 @@ prepare() {
   # Patching configuration file
   sed -i 's/\/var\/www\/onlyoffice/\/usr\/share\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
   sed -i 's/\/etc\/onlyoffice/\/etc\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
+
+  # Unpacking upstream binary release, we'll need some files later because of a bug
+  cd "${srcdir}"
+  tar xf data.tar.xz
 }
 
 build() {
@@ -113,4 +122,8 @@ package() {
   install -Dm644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
   install -Dm644 "${srcdir}/onlyoffice-spellchecker.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-spellchecker.service"
+
+  # Overwrite two files with upstream bianry versions because of bug https://github.com/ONLYOFFICE/onlyoffice-owncloud/issues/114
+  cp "${srcdir}/var/www/onlyoffice/documentserver/server/FileConverter/bin/x2t" "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/"
+  cp "${srcdir}/var/www/onlyoffice/documentserver/server/FileConverter/bin/libdoctrenderer.so" "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/"
 }
