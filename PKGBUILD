@@ -26,29 +26,29 @@ sha512sums=('f8409ace472f2bf7614741ddb0f612faaf9f130141bd22539dc0ee4987dd8260136
 prepare() {
   cd "Signal-Desktop-${pkgver}"
   # Fix issues/1829
-  sed -i 's/"electron-builder": "^19.29.2"/"electron-builder": "^19.47.0"/' package.json
+  sed -i 's/"electron-builder": "^19.29.2"/"electron-builder": "19.47.0"/' package.json
 }
 
 build() {
   cd "Signal-Desktop-${pkgver}"
-  yarn install | grep -Ev 'bin-mac|bin-win'
+  yarn install
   yarn pack-prod
 }
 
 package() {
   cd "Signal-Desktop-${pkgver}/dist/linux-unpacked"
 
-  install -Ddm755 "${pkgdir}/usr/lib/${pkgname}"
-  install -Ddm755 "${pkgdir}/usr/bin"
-
+  install -dm755 "${pkgdir}/usr/lib/${pkgname}"
   cp -r resources "${pkgdir}/usr/lib/${pkgname}/"
+      
+  install -dm755 "${pkgdir}/usr/share/icons/hicolor"
+  for i in 16 24 32 48 64 128 256 512; do
+    install -Dm644 "../../build/icons/png/${i}x${i}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+  done
 
-  install -dm755 "${pkgdir}"/usr/share/icons/hicolor/256x256/apps
-  cp ../../build/icons/png/256x256.png \
-      "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
-
+  install -dm755 "${pkgdir}/usr/bin"
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}-desktop"
   
-  install -Dm644 "${srcdir}"/${pkgname}.desktop \
-      "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+  install -Dm644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 }
