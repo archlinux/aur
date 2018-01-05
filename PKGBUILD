@@ -1,7 +1,7 @@
 # Maintainer: Aaron Rogers <aaron.kyle.rogers at gmail dot com>
 pkgname="obd-auto-doctor"
 pkgver="3.4.6"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="obd scan and diagnostics"
 arch=('i686' 'x86_64')
 url="http://www.obdautodoctor.com/"
