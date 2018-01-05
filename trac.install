@@ -1,0 +1,11 @@
+post_install() {
+  echo "-- tracd.service is an example. Copy it into /etc/systemd/... and edit"
+  echo "-- Please read http://trac.edgewall.org/wiki/TracInstall to install"
+  echo "-- additional requirements"
+  echo "--"
+  echo "-- DB engines are mandatory!!!"
+}
+
+post_upgrade() {
+  echo "-- tracd.service is an example. Copy it into /etc/systemd/... and edit"
+}
