@@ -5,7 +5,7 @@
 
 pkgname=gauche
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 url='https://practical-scheme.net/gauche/'
 pkgdesc='R5RS Scheme implementation (provides gosh)'
 depends=('slib' 'libatomic_ops')
@@ -13,7 +13,7 @@ license=('BSD')
 arch=('x86_64')
 install=$pkgname.install
 source=("https://downloads.sourceforge.net/$pkgname/Gauche-$pkgver.tgz")
-sha256sums=('4c8a53213de112708bbda5fa9648c21497d43ebf809ed5b32b15f21266b4e73c')
+sha512sums=('6d853d734c7a56a86f0015b1bfef378803d6acc1e0405ed841eab5afc08d1edef736d85df10c86d75fd5fb6b2def684bb1f2095a019133b9f497192f5511197a')
 
 prepare() {
   ln -sf "Gauche-$pkgver" "$pkgname-$pkgver"
