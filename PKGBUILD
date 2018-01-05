@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 
 pkgname=jigsaw.app
