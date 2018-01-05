@@ -1,0 +1,21 @@
+pkgbase = tdfsb
+	pkgdesc = SDL based graphical file browser
+	pkgver = 0.0.10
+	pkgrel = 7
+	url = http://www.determinate.net/webdata/seg/tdfsb.html
+	arch = x86_64
+	license = GPL
+	depends = smpeg
+	depends = freeglut
+	depends = sdl_image
+	depends = libxmu
+	depends = glu
+	source = http://www.determinate.net/webdata/data/tdfsb-0.0.10.tar.gz
+	source = tdfsb.desktop
+	source = tdfsb.png
+	md5sums = 8162994a7e882dc7074a5f628d2ac076
+	md5sums = 4070a7de1153c00df875384a1817e43b
+	md5sums = ecabb39597a3c17f9541300869873e50
+
+pkgname = tdfsb
+

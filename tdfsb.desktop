@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tdfsb
+Comment=SDL based graphical file browser
+Icon=/usr/share/pixmaps/tdfsb.png
+Exec=tdfsb
+Terminal=false
+Type=Application
+Categories=System;Application;
+StartupNotify=true
