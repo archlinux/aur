@@ -8,7 +8,7 @@ _name=tomb
 pkgbase="${_name}-git"
 pkgname=("${_name}-git" "${_name}-kdf-git")
 pkgver=2.5.r0.g74689ea
-pkgrel=1
+pkgrel=2
 pkgdesc="simple tool to manage encrypted storage"
 arch=('any')
 url="http://tomb.dyne.org/"
@@ -19,7 +19,7 @@ provides=("${_name}")
 source=("${_name}::git://github.com/dyne/${_name//t/T}.git"
         "_${_name}")
 sha256sums=('SKIP'
-            '3d71fb492d489ab2bc0ffe21e18b297796b7ceb628158f5a068777aabed8633e')
+            '8007bc208fdac3fbd7a61320b48c4c8073639b478fcc410145a3792986aca9e8')
 
 
 pkgver() {

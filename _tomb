@@ -16,6 +16,7 @@ _tomb_commands(){
       'lock:installs a lock on a TOMB to use it with KEY'
       'open:open an existing tomb'
       'passwd:change password of a key'
+      'ps:list all processes running in open tombs'
       'resize:resize specified tomb (only increase)'
       'search:looks for filenames matching text patterns'
       'setkey:change the KEY locking a TOMB (needs old one)'
