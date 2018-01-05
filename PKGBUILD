@@ -10,6 +10,7 @@ arch=(any)
 license=(apache)
 depends=(python)
 makedepends=(python-setuptools python2-setuptools)
+conflicts=(python-iexfinance)
 source=("${pkgname[0]}::git+https://github.com/addisonlynch/iexfinance.git")
 sha256sums=(SKIP)
 
@@ -29,6 +30,7 @@ package_python-iexfinance-git() {
 
 package_python2-iexfinance-git() {
   depends=(python2)
+  conflicts=(python2-iexfinance)
 
   cd ${pkgname[1]}
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
