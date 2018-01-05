@@ -51,6 +51,8 @@ prepare() {
     # cp -RL ../mattermost-webapp/dist/* dist/mattermost/client/
     # this command will fail with
     # cp: cannot stat '../mattermost-webapp/dist/*': No such file or directory
+    cd ${srcdir}
+    rm -rf ${pkgname}-server ${pkgname}-webapp
     mv ${pkgname}-server-${pkgver} ${pkgname}-server
     mv ${pkgname}-webapp-${pkgver} ${pkgname}-webapp
 
