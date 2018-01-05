@@ -1,0 +1,16 @@
+pkgbase = matchbox-desktop
+	pkgdesc = A PDA style application launcher or 'item browser'.
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://matchbox-project.org/
+	arch = x86_64
+	license = GPL
+	depends = libmatchbox
+	depends = startup-notification
+	depends = libpng
+	depends = gtk3
+	source = http://git.yoctoproject.org/cgit/cgit.cgi/matchbox-desktop-2/snapshot/matchbox-desktop-2-2.2.tar.bz2
+	sha256sums = 7975f0b1c46e59ffd18a5cd68f22b8da79e9af1ccd263fdbc2bc08e2a2e1b49e
+
+pkgname = matchbox-desktop
+
