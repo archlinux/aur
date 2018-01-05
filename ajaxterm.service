@@ -1,0 +1,11 @@
+[Unit]
+Description=AJAX terminal
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/ajaxterm.pid
+ExecStart=/usr/bin/ajaxterm -p 8022 -d
+
+[Install]
+WantedBy=multi-user.target

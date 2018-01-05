@@ -1,0 +1,17 @@
+pkgbase = ajaxterm
+	pkgdesc = A web based terminal
+	pkgver = 0.11
+	pkgrel = 9
+	url = https://github.com/antonylesuisse/qweb/tree/master/ajaxterm
+	arch = any
+	license = GPL
+	depends = python2
+	replaces = ajaxterm-utf8-svn
+	backup = etc/ajaxterm.conf
+	source = https://sources.archlinux.org/other/community/ajaxterm/ajaxterm-0.11-2eaa3e989782d8259a12c8cb7d6204433ae19264.tar.gz
+	source = ajaxterm.service
+	md5sums = 0d5c9896f4af8f82610c00cc303e0d62
+	md5sums = 5e5aa6598aad99193738441556e06864
+
+pkgname = ajaxterm
+
