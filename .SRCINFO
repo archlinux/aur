@@ -1,0 +1,13 @@
+pkgbase = bwbar
+	pkgdesc = Generates text and graphical readout of the current bandwidth usage.
+	pkgver = 1.2.3
+	pkgrel = 4
+	url = http://www.kernel.org/pub/software/web/bwbar/
+	arch = x86_64
+	license = GPL
+	depends = libpng
+	source = https://arch.p5n.pp.ru/~sergej/dl/2011/bwbar-1.2.3.tar.gz
+	sha256sums = bd8f5079f17b1dec6eae81ddc43c58c49b777b336fd902ffbb8e631885fbb45c
+
+pkgname = bwbar
+
