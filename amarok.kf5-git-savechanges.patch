@@ -1,0 +1,28 @@
+diff --git a/src/configdialog/ConfigDialog.cpp b/src/configdialog/ConfigDialog.cpp
+index aecf225293..fdec39d0fd 100644
+--- a/src/configdialog/ConfigDialog.cpp
++++ b/src/configdialog/ConfigDialog.cpp
+@@ -70,15 +70,20 @@ Amarok2ConfigDialog::Amarok2ConfigDialog( QWidget *parent, const char* name, KCo
+     addPage( scripts, i18n( "Scripts" ), "preferences-plugin-script", i18n( "Configure Scripts" ) );
+     //addPage( mediadevice, i18n( "Media Devices" ), "preferences-multimedia-player-amarok", i18n( "Configure Portable Player Support" ) );
+ 
+-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Help|QDialogButtonBox::Apply);
+     QVBoxLayout *mainLayout = new QVBoxLayout;
+     setLayout(mainLayout);
++
++    // Don't change the used button box, this breaks the button handling inside the KConfigDialog
++    QDialogButtonBox *buttonBox = this->buttonBox();
++
++    // Make the ok button the default button and attach shortcut to it
+     QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+     okButton->setDefault(true);
+     okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+-    connect(buttonBox, &QDialogButtonBox::accepted, this, &Amarok2ConfigDialog::accept);
+-    connect(buttonBox, &QDialogButtonBox::rejected, this, &Amarok2ConfigDialog::reject);
+-    setButtonBox(buttonBox);
++
++    // Hide the restore defaults button, we don't support it
++    buttonBox->button(QDialogButtonBox::RestoreDefaults)->setVisible(false);
++
+     KWindowConfig::restoreWindowSize(windowHandle(), Amarok::config( "ConfigDialog" ));
+ }

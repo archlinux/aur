@@ -27,11 +27,11 @@ pkgver() {
     git describe --always | sed 's|-|.|g'
 }
 
-#prepare(){
-#cd amarok
-#pwd;
-#patch -Np1 <../amarok-git.patch
-#}
+prepare(){
+cd amarok
+pwd;
+patch -Np1 <../../amarok.kf5-git-savechanges.patch
+}
 
 build() {
     rm -rf build
