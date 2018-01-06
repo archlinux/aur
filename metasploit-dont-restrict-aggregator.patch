@@ -1,0 +1,25 @@
+From 5458b58a74a035e141a939dff0a85eff1330bdae Mon Sep 17 00:00:00 2001
+From: Jeffrey Martin <Jeffrey_Martin@rapid7.com>
+Date: Wed, 18 Oct 2017 13:21:02 -0500
+Subject: [PATCH] restrict aggregator on arm for now
+
+---
+ Gemfile      | 5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/Gemfile b/Gemfile
+index 12b6341b41c..012578df9fc 100755
+--- a/Gemfile
++++ b/Gemfile
+@@ -19,7 +19,10 @@ group :development do
+   # module documentation
+   gem 'octokit'
+   # Metasploit::Aggregator external session proxy
+-  gem 'metasploit-aggregator'
++  gem 'metasploit-aggregator' if [
++    'x86-mingw32', 'x64-mingw32',
++    'x86_64-linux', 'x86-linux',
++    'darwin'].include?(RUBY_PLATFORM.gsub(/.*darwin.*/, 'darwin'))
+ end
+ 
+ group :development, :test do
