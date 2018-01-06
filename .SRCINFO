@@ -1,0 +1,14 @@
+pkgbase = linuxtv-dvb-apps
+	pkgdesc = Linux DVB API applications and utilities
+	pkgver = 1504
+	pkgrel = 1
+	url = http://www.linuxtv.org/
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	depends = glibc
+	source = hg+http://linuxtv.org/hg/dvb-apps/#revision=d40083fff895
+	sha256sums = SKIP
+
+pkgname = linuxtv-dvb-apps
+
