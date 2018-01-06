@@ -2,7 +2,7 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra2"
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
@@ -25,8 +25,8 @@ package() {
     install -d -m 755 "${pkgdir}/usr/lib/nzbhydra2"
 
     cd "${srcdir}"
+    chmod +x nzbhydra2
     cp -dpr --no-preserve=ownership downloaderScripts lib nzbhydra2 readme.md "${pkgdir}/usr/lib/nzbhydra2"
-
     install -d -m 755 "${pkgdir}/var/lib/nzbhydra2"
 
     install -D -m 644 "${srcdir}/nzbhydra2.service" "${pkgdir}/usr/lib/systemd/system/nzbhydra2.service"
