@@ -1,0 +1,22 @@
+pkgbase = miredo
+	pkgdesc = Teredo client and server.
+	pkgver = 1.2.6
+	pkgrel = 4
+	url = http://www.remlab.net/miredo/
+	arch = x86_64
+	license = GPL
+	depends = judy
+	depends = iproute2
+	depends = libcap
+	backup = etc/miredo/miredo.conf
+	backup = etc/miredo/client-hook
+	source = http://www.remlab.net/files/miredo/miredo-1.2.6.tar.xz
+	source = http://www.remlab.net/files/miredo/miredo-1.2.6.tar.xz.asc
+	source = miredo.service
+	validpgpkeys = 9480583353E334D2F03FE80CC3EC6DBEDD6D12BD
+	sha256sums = fa26d2f4a405415833669e2e2e22677b225d8f83600844645d5683535ea43149
+	sha256sums = SKIP
+	sha256sums = 6985563b19de2d8cea7d080a72acb8874cf358315042231c9ea64721c66c3279
+
+pkgname = miredo
+
