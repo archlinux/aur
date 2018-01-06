@@ -2,13 +2,13 @@
 
 pkgname=dse
 pkgver=1.30
-pkgrel=1
+pkgrel=2
 pkgdesc="AES file encryption using a keyfile."
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://github.com/kewlfft/dse"
-makedepends=('gcc')
+makedepends=('glibc')
 license=('MIT')
-source=("https://github.com/kewlfft/dse/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kewlfft/dse/archive/v$pkgver.tar.gz")
 sha256sums=('dd2c2f98be019026229d62a9da32f67a9be6ddcedbf82bfc7563cca3662c92bf')
 
 build() {
