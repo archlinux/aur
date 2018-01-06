@@ -1,0 +1,13 @@
+pkgbase = hashcash
+	pkgdesc = a denial-of-service counter measure tool for email/spam.
+	pkgver = 1.22
+	pkgrel = 5
+	url = http://www.hashcash.org
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.hashcash.org/source/hashcash-1.22.tgz
+	md5sums = 31fae207061841dffc7b90ee18e3d0fa
+
+pkgname = hashcash
+
