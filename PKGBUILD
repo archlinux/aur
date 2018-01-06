@@ -16,21 +16,24 @@
 # Contributor: Victor Aurélio Santos <victoraur.santos@gmail.com>
 
 pkgbase=grpc
-pkgname=('grpc' 'php-grpc')
+pkgname=('grpc' 'php-grpc' 'grpc-cli')
 pkgver=1.8.2
-pkgrel=2
+_gtestver=1.8.0
+pkgrel=3
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
 license=('BSD')
 makedepends=('re2c' 'protobuf>=3' 'php' 'c-ares'
-             'chrpath'
+             'chrpath' 'gflags'
 )
 source=(
     https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz
+    https://github.com/google/googletest/archive/release-$_gtestver.tar.gz
 )
 noextract=()
-md5sums=('3a7edd90ed623434203b45bcef10e1a0')
+md5sums=('3a7edd90ed623434203b45bcef10e1a0'
+         '16877098823401d1bf2ed7891d7dce36')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -38,6 +41,10 @@ prepare() {
   # We are not interested in being strict here
   # regardless of warning type.
   sed -r 's|-Werror||g' -i Makefile
+
+  # Put googletest
+  ln -sf "$srcdir/googletest-release-$_gtestver/"{googlemock,googletest} \
+      third_party/googletest
 }
 
 build() {
@@ -46,6 +53,11 @@ build() {
   # Core
   # Avoid collision with yaourt's environment variable
   env --unset=BUILDDIR make $MAKEFLAGS prefix=/usr
+
+  # grpc_cli
+  env --unset=BUILDDIR make $MAKEFLAGS prefix=/usr grpc_cli
+  # Don't install it as part of main package
+  mv bins/opt/grpc_cli .
 
   # PHP
   cd "$srcdir/$pkgbase-$pkgver/src/php/ext/$pkgbase"
@@ -91,4 +103,11 @@ package_php-grpc() {
   chrpath -r '/usr/lib' "$pkgdir/usr/lib/php/modules/grpc.so"
   # Do we need to install something else? Contributions are welcome.
   cd "$srcdir/$pkgbase-$pkgver/src/php"
+}
+
+package_grpc-cli() {
+  depends=('gflags')
+
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm755 grpc_cli "$pkgdir"/usr/bin/grpc_cli
 }
