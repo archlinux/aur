@@ -1,0 +1,17 @@
+pkgbase = umleditor
+	pkgdesc = UML/INTERLIS-Editor
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = http://www.umleditor.org/
+	arch = any
+	license = LGPL
+	makedepends = unzip
+	depends = java-runtime
+	depends = interlis-compiler
+	source = http://www.umleditor.org/download/umleditor-3.6.0.zip
+	source = umleditor
+	md5sums = 8c14ec06dccdc2ffae64cf9904fccae6
+	md5sums = c3a61e0c0b11efefc2d1b70c2e3f1aa9
+
+pkgname = umleditor
+
