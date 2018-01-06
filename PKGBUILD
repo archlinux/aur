@@ -1,64 +1,33 @@
-# $Id$
 # Contributor: Andrew M Taylor <a.m.taylor303 at gmail dot com>
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=shuriken
-pkgver=0.5.1
-pkgrel=4
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="An open source beat slicer"
 url="https://rock-hopper.github.io/shuriken"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('qt4' 'aubio' 'rubberband' 'liblo')
-makedepends=('jack')
+depends=('qt5-base' 'liblo' 'aubio' 'rubberband')
+makedepends=('automake' 'libtool' 'pkg-config' 'jack')
 optdepends=('jack: A low-latency audio server')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-install="$pkgname.install"
+provides=("$pkgname")
+conflicts=("$pkgname")
 source=("https://github.com/rock-hopper/$pkgname/archive/v$pkgver.tar.gz"
-        "$pkgname.desktop"
-        "$pkgname.png"
-		"$pkgname.patch")
-sha256sums=('93175d0e992afebd05b476a78a6809894376a3e8ba4ea95ee3f5d9a67947db7d'
-            'f2144b34c35ecb855009a5d888d13bac2cf5b379274d7b60e4d9181d742fda99'
-            'b637b82c35bb4f27eebe779c7790a85758e1b9c64fff8553ede207dda0d9cb37'
-            '0c2a3a64465deb3f49bb4aa8fc4f0d210d2fcaa11e439c0893151e9ee727b6dc')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -p1 -i "$srcdir/$pkgname.patch"
-}
+        "https://github.com/rock-hopper/$pkgname/raw/master/packaging/$pkgname.desktop"
+        "https://github.com/rock-hopper/$pkgname/raw/master/packaging/$pkgname.png")
+sha256sums=('4b9ce6cf73748aba4110d92593034054b324b6933456667eb641d956a630e1c6'
+            '7345f4d5387df2fb1e2147cbe124a31247227d7a7bc07b3a6c1221f9a93dbfa2'
+            'b637b82c35bb4f27eebe779c7790a85758e1b9c64fff8553ede207dda0d9cb37')
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  # make sndlib
-
-  mkdir -p lib
-  cd src/SndLibShuriken
-  ./configure --without-audio --without-s7
-  make
-  mv -v libsndlib_shuriken.a ../../lib/
-  cd ../..
-
-  # make shuriken
-
-  declare _arch=""
-
-  if [[ $( lscpu | grep 'Architecture' ) =~ (x86_64) ]]; then
-    _arch="-64"
-  fi
-
-  qmake-qt4 PREFIX=/usr ./Shuriken.pro -r -spec linux-g++$_arch
-  make CXXFLAGS=-fpermissive
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  make INSTALL_ROOT="$pkgdir" install
-
-  install -Dm644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-  install -Dm644 ../$pkgname.png "$pkgdir/usr/share/icons/$pkgname.png"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make INSTALL_ROOT="$pkgdir/usr" install
+  install -Dm644 ../${pkgname}.desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 ../${pkgname}.png "$pkgdir/usr/share/icons/${pkgname}.png"
 }
