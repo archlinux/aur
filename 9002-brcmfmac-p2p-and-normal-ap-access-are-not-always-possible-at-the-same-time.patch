@@ -1,0 +1,43 @@
+#https://patchwork.kernel.org/patch/9592913/
+diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c
+index 7ffc4ab..c54e8b4 100644
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c
+@@ -688,11 +688,17 @@  static struct wireless_dev *brcmf_cfg80211_add_iface(struct wiphy *wiphy,
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ 
+-	if (IS_ERR(wdev))
+-		brcmf_err("add iface %s type %d failed: err=%d\n",
+-			  name, type, (int)PTR_ERR(wdev));
+-	else
++	if (IS_ERR(wdev)) {
++		err = PTR_ERR(wdev);
++		if (err != -EBUSY)
++			brcmf_err("add iface %s type %d failed: err=%d\n",
++				  name, type, err);
++		else
++			brcmf_dbg(INFO, "add iface %s type %d failed: err=%d\n",
++				  name, type, err);
++	} else {
+ 		brcmf_cfg80211_update_proto_addr_mode(wdev);
++	}
+ 
+ 	return wdev;
+ }
+diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/p2p.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/p2p.c
+index de19c7c..b5df0a0 100644
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/p2p.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/p2p.c
+@@ -2090,7 +2090,10 @@  static struct wireless_dev *brcmf_p2p_create_p2pdev(struct brcmf_p2p_info *p2p,
+ 	/* Initialize P2P Discovery in the firmware */
+ 	err = brcmf_fil_iovar_int_set(pri_ifp, "p2p_disc", 1);
+ 	if (err < 0) {
+-		brcmf_err("set p2p_disc error\n");
++		if (err != -EBUSY)
++			brcmf_err("set p2p_disc error\n");
++		else
++			brcmf_dbg(INFO, "set p2p_disc error\n");
+ 		brcmf_fweh_p2pdev_setup(pri_ifp, false);
+ 		brcmf_cfg80211_arm_vif_event(p2p->cfg, NULL);
+ 		goto fail;

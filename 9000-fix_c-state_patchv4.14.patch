@@ -1,0 +1,185 @@
+diff -rupN '--exclude=*.orig' a/drivers/gpu/drm/i915/i915_drv.h b/drivers/gpu/drm/i915/i915_drv.h
+--- a/drivers/gpu/drm/i915/i915_drv.h	2017-04-30 19:47:48.000000000 -0700
++++ b/drivers/gpu/drm/i915/i915_drv.h	2017-05-06 23:37:57.789511827 -0700
+@@ -1326,7 +1326,7 @@ struct intel_gen6_power_mgmt {
+ 	unsigned boosts;
+ 
+ 	/* manual wa residency calculations */
+-	struct intel_rps_ei ei;
++	struct intel_rps_ei up_ei, down_ei, ei;
+ 
+ 	/*
+ 	 * Protects RPS/RC6 register access and PCU communication.
+diff -rupN '--exclude=*.orig' a/drivers/gpu/drm/i915/i915_drv.h linux-4.11/diff -rupN '--exclude=*.orig' b/drivers/gpu/drm/i915/i915_irq.c linux-4.11/drivers/gpu/drm/i915/i915_irq.c
+--- a/drivers/gpu/drm/i915/i915_irq.c	2017-04-30 19:47:48.000000000 -0700
++++ b/drivers/gpu/drm/i915/i915_irq.c	2017-05-06 23:38:07.349511695 -0700
+@@ -1046,47 +1046,69 @@ static void vlv_c0_read(struct drm_i915_
+ 	ei->media_c0 = I915_READ(VLV_MEDIA_C0_COUNT);
+ }
+ 
++static bool vlv_c0_above(struct drm_i915_private *dev_priv,
++			 const struct intel_rps_ei *old,
++			 const struct intel_rps_ei *now,
++			 int threshold)
++{
++	u64 time, c0;
++	unsigned int mul = 100;
++
++	if (old->ktime == 0)
++		return false;
++
++	if (I915_READ(VLV_COUNTER_CONTROL) & VLV_COUNT_RANGE_HIGH)
++		mul <<= 8;
++
++	time = now->ktime - old->ktime;
++	time *= threshold * dev_priv->czclk_freq;
++
++	/* Workload can be split between render + media, e.g. SwapBuffers
++	 * being blitted in X after being rendered in mesa. To account for
++	 * this we need to combine both engines into our activity counter.
++	 */
++	c0 = now->render_c0 - old->render_c0;
++	c0 += now->media_c0 - old->media_c0;
++	c0 *= mul * VLV_CZ_CLOCK_TO_MILLI_SEC;
++
++	return c0 >= time;
++}
++
+ void gen6_rps_reset_ei(struct drm_i915_private *dev_priv)
+ {
+ 	memset(&dev_priv->rps.ei, 0, sizeof(dev_priv->rps.ei));
++	vlv_c0_read(dev_priv, &dev_priv->rps.down_ei);
++	dev_priv->rps.up_ei = dev_priv->rps.down_ei;
+ }
+ 
+ static u32 vlv_wa_c0_ei(struct drm_i915_private *dev_priv, u32 pm_iir)
+ {
+-	const struct intel_rps_ei *prev = &dev_priv->rps.ei;
+ 	struct intel_rps_ei now;
+ 	u32 events = 0;
+ 
+-	if ((pm_iir & GEN6_PM_RP_UP_EI_EXPIRED) == 0)
++	if ((pm_iir & (GEN6_PM_RP_DOWN_EI_EXPIRED | GEN6_PM_RP_UP_EI_EXPIRED)) == 0)
+ 		return 0;
+ 
+ 	vlv_c0_read(dev_priv, &now);
++	if (now.ktime == 0)
++		return 0;
+ 
+-	if (prev->ktime) {
+-		u64 time, c0;
+-		u32 render, media;
+-
+-		time = ktime_us_delta(now.ktime, prev->ktime);
+-
+-		time *= dev_priv->czclk_freq;
+-
+-		/* Workload can be split between render + media,
+-		 * e.g. SwapBuffers being blitted in X after being rendered in
+-		 * mesa. To account for this we need to combine both engines
+-		 * into our activity counter.
+-		 */
+-		render = now.render_c0 - prev->render_c0;
+-		media = now.media_c0 - prev->media_c0;
+-		c0 = max(render, media);
+-		c0 *= 1000 * 100 << 8; /* to usecs and scale to threshold% */
++	if (pm_iir & GEN6_PM_RP_DOWN_EI_EXPIRED) {
++		if (!vlv_c0_above(dev_priv,
++				  &dev_priv->rps.down_ei, &now,
++				  VLV_RP_DOWN_EI_THRESHOLD))
++			events |= GEN6_PM_RP_DOWN_THRESHOLD;
++		dev_priv->rps.down_ei = now;
++	}
+ 
+-		if (c0 > time * dev_priv->rps.up_threshold)
+-			events = GEN6_PM_RP_UP_THRESHOLD;
+-		else if (c0 < time * dev_priv->rps.down_threshold)
+-			events = GEN6_PM_RP_DOWN_THRESHOLD;
++	if (pm_iir & GEN6_PM_RP_UP_EI_EXPIRED) {
++		if (vlv_c0_above(dev_priv,
++				 &dev_priv->rps.up_ei, &now,
++				 VLV_RP_UP_EI_THRESHOLD))
++			events |= GEN6_PM_RP_UP_THRESHOLD;
++		dev_priv->rps.up_ei = now;
+ 	}
+ 
+-	dev_priv->rps.ei = now;
+ 	return events;
+ }
+ 
+@@ -4211,7 +4226,7 @@ void intel_irq_init(struct drm_i915_priv
+ 	/* Let's track the enabled rps events */
+ 	if (IS_VALLEYVIEW(dev_priv))
+ 		/* WaGsvRC0ResidencyMethod:vlv */
+-		dev_priv->pm_rps_events = GEN6_PM_RP_UP_EI_EXPIRED;
++		dev_priv->pm_rps_events = GEN6_PM_RP_DOWN_EI_EXPIRED | GEN6_PM_RP_UP_EI_EXPIRED;
+ 	else
+ 		dev_priv->pm_rps_events = GEN6_PM_RPS_EVENTS;
+ 
+diff -rupN '--exclude=*.orig' a/drivers/gpu/drm/i915/i915_reg.h b/drivers/gpu/drm/i915/i915_reg.h
+--- a/drivers/gpu/drm/i915/i915_reg.h	2017-04-30 19:47:48.000000000 -0700
++++ b/drivers/gpu/drm/i915/i915_reg.h	2017-05-06 23:38:07.349511695 -0700
+@@ -1136,6 +1136,9 @@ enum skl_disp_power_wells {
+ #define 	VLV_BIAS_CPU_125_SOC_875 (6 << 2)
+ #define 	CHV_BIAS_CPU_50_SOC_50 (3 << 2)
+ 
++#define VLV_CZ_CLOCK_TO_MILLI_SEC		100000
++#define VLV_RP_UP_EI_THRESHOLD			90
++#define VLV_RP_DOWN_EI_THRESHOLD		70
+ 
+ /* vlv2 north clock has */
+ #define CCK_FUSE_REG				0x8
+diff -rupN '--exclude=*.orig' a/drivers/gpu/drm/i915/intel_pm.c b/drivers/gpu/drm/i915/intel_pm.c
+--- a/drivers/gpu/drm/i915/intel_pm.c	2017-04-30 19:47:48.000000000 -0700
++++ a/drivers/gpu/drm/i915/intel_pm.c	2017-05-06 23:38:07.349511695 -0700
+@@ -4891,12 +4891,6 @@ static void gen6_set_rps_thresholds(stru
+ 		break;
+ 	}
+ 
+-	/* When byt can survive without system hang with dynamic
+-	 * sw freq adjustments, this restriction can be lifted.
+-	 */
+-	if (IS_VALLEYVIEW(dev_priv))
+-		goto skip_hw_write;
+-
+ 	I915_WRITE(GEN6_RP_UP_EI,
+ 		   GT_INTERVAL_FROM_US(dev_priv, ei_up));
+ 	I915_WRITE(GEN6_RP_UP_THRESHOLD,
+@@ -4917,7 +4911,6 @@ static void gen6_set_rps_thresholds(stru
+ 		   GEN6_RP_UP_BUSY_AVG |
+ 		   GEN6_RP_DOWN_IDLE_AVG);
+ 
+-skip_hw_write:
+ 	dev_priv->rps.power = new_power;
+ 	dev_priv->rps.up_threshold = threshold_up;
+ 	dev_priv->rps.down_threshold = threshold_down;
+@@ -4928,9 +4921,8 @@ static u32 gen6_rps_pm_mask(struct drm_i
+ {
+ 	u32 mask = 0;
+ 
+-	/* We use UP_EI_EXPIRED interupts for both up/down in manual mode */
+ 	if (val > dev_priv->rps.min_freq_softlimit)
+-		mask |= GEN6_PM_RP_UP_EI_EXPIRED | GEN6_PM_RP_DOWN_THRESHOLD | GEN6_PM_RP_DOWN_TIMEOUT;
++		mask |= GEN6_PM_RP_DOWN_EI_EXPIRED | GEN6_PM_RP_DOWN_THRESHOLD | GEN6_PM_RP_DOWN_TIMEOUT;
+ 	if (val < dev_priv->rps.max_freq_softlimit)
+ 		mask |= GEN6_PM_RP_UP_EI_EXPIRED | GEN6_PM_RP_UP_THRESHOLD;
+ 
+@@ -4997,7 +4989,8 @@ static void valleyview_set_rps(struct dr
+ 		if (err)
+ 			return err;
+ 
+-		gen6_set_rps_thresholds(dev_priv, val);
++		if (!(IS_CHERRYVIEW(dev_priv) || IS_VALLEYVIEW(dev_priv)))
++ 			gen6_set_rps_thresholds(dev_priv, val);
+ 	}
+ 
+ 	dev_priv->rps.cur_freq = val;
+@@ -5040,7 +5032,7 @@ void gen6_rps_busy(struct drm_i915_priva
+ 	if (dev_priv->rps.enabled) {
+ 		u8 freq;
+ 
+-		if (dev_priv->pm_rps_events & GEN6_PM_RP_UP_EI_EXPIRED)
++		if (dev_priv->pm_rps_events & (GEN6_PM_RP_DOWN_EI_EXPIRED | GEN6_PM_RP_UP_EI_EXPIRED))
+ 			gen6_rps_reset_ei(dev_priv);
+ 		I915_WRITE(GEN6_PMINTRMSK,
+ 			   gen6_rps_pm_mask(dev_priv, dev_priv->rps.cur_freq));
