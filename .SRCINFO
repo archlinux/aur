@@ -1,7 +1,7 @@
 pkgbase = python-miio
 	pkgdesc = Python library & console tool for controlling Xiaomi smart appliances
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://github.com/rytilahti/python-miio
 	arch = any
 	license = GPL3
@@ -15,8 +15,8 @@ pkgbase = python-miio
 	depends = python-pretty-cron
 	depends = python-pytz
 	depends = python-zeroconf
-	source = https://github.com/rytilahti/python-miio/archive/0.3.2.tar.gz
-	sha512sums = 9c84b6b431c3e0a6a8873fd1fe00d04604dfbb870fc25044a07dff5cfa1e2c32dcfc66ce18e8a1537173271d4985ea5f01037f3ccc7c9d7259bceda037472a95
+	source = https://github.com/rytilahti/python-miio/archive/0.3.3.tar.gz
+	sha512sums = e1282294b106cbf773fd5aa9565e78029fd4908242df2a4de6bdd2069a49a591b32469daae894188303a37bdc7bead223abc0b4d92891eb0441e120fab9f37e4
 
 pkgname = python-miio
 
