@@ -1,13 +1,14 @@
 pkgbase = funtools-git
 	pkgdesc = FITS library and utility package.
-	pkgver = r50.9c8bb6f
+	pkgver = v1.4.7.r13.9c8bb6f
 	pkgrel = 1
 	url = https://github.com/ericmandel/funtools
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	makedepends = git
 	depends = sh
-	source = funtools-git-r50.9c8bb6f::git+https://github.com/ericmandel/funtools
+	source = funtools::git+https://github.com/ericmandel/funtools
 	md5sums = SKIP
 
 pkgname = funtools-git
