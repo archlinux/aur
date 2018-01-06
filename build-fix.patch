@@ -1,0 +1,22 @@
+22d21
+< ifneq ($(OSTYPE),beos)
+24,26d22
+< else
+< INSTALL_PATH= $(HOME)/config/bin
+< endif
+28,29d23
+< # BeOS doesn't have libm (it's all in libroot)
+< ifneq ($(OSTYPE),beos)
+31,34d24
+< else
+< # BeOS: without this it wants to use bcopy() :^)
+< CFLAGS+= -DHAVE_MEMCPY
+< endif
+56,58d45
+< ifeq ($(OSTYPE),beos)
+< 	mimeset -f mp3gain$(EXE_EXT)
+< endif
+63,65d49
+< 	ifeq ($(OSTYPE),beos)
+< 		mimeset -f "$(INSTALL_PATH)/mp3gain$(EXE_EXT)"
+< 	endif
