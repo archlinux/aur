@@ -2,9 +2,9 @@
 
 pkgname=dse
 pkgver=1.30
-pkgrel=2
+pkgrel=3
 pkgdesc="AES file encryption using a keyfile."
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/kewlfft/dse"
 makedepends=('glibc')
 license=('MIT')
