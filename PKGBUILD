@@ -2,7 +2,7 @@
 
 pkgname=signal-desktop
 pkgver=1.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
 license=('GPL3')
@@ -17,7 +17,7 @@ source=("git+${url}.git#tag=v${pkgver}" 'signal-desktop.desktop' 'signal-desktop
 sha256sums=('SKIP'
             '2287a32ed2ad8772fab02b7ec3bda185c6e85263f7b6b62595b66535ba8687b0'
             '0ee7733814827a92fae89df751d4d4e5e0ee28e2a59457b224ec50b7aec31a3a'
-            '91e6ab7a997a94326348183cd8de1c8eb07161ef533d357690d297b1a5f15c79')
+            '50309c02f34bce3f612b014aed7d25445c960858136e992f70a175b0c8b07b37')
 
 build() {
   cd ${_basename}

@@ -5,11 +5,8 @@ post_install()
     echo
     echo "libappindicator-gtk2 is obsolete and may even break"
     echo "the tray icon of Signal-Desktop and other Electron apps."
-    echo "As no package depends on it any more it can be safely removed."
+    echo "As no package depends on it any more it may be safely removed."
     echo
-    rm -f /var/lib/pacman/db.lck
-    pacman -Rs --noconfirm libappindicator-gtk2
-    touch /var/lib/pacman/db.lck
   fi
 
   ps -e | grep '^.*gnome-session.*$' &>/dev/null
