@@ -1,0 +1,15 @@
+pkgbase = python-accept
+	pkgdesc = Parse and order a HTTP Accept header.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://github.com/rhyselsmore/accept
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/accept/accept-0.1.0.tar.gz
+	md5sums = 924283e7d43b81006eeccfd69d2873f6
+
+pkgname = python-accept
+	depends = python
+
