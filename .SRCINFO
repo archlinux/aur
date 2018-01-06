@@ -1,0 +1,19 @@
+pkgbase = net6
+	pkgdesc = A library that provides a TCP protocol abstraction for C++
+	pkgver = 1.3.14
+	pkgrel = 5
+	url = http://gobby.0x539.de/
+	arch = x86_64
+	license = LGPL
+	depends = gnutls
+	depends = libsigc++2.0
+	source = http://releases.0x539.de/net6/net6-1.3.14.tar.gz
+	source = http://releases.0x539.de/net6/net6-1.3.14.tar.gz.sig
+	source = gnutls.patch
+	validpgpkeys = 17107DB19A2842FFB6997654ED1A3933B2CFCDD8
+	sha256sums = 155dd82cbe1f8354205c79ab2bb54af4957047422250482596a34b0e0cc61e21
+	sha256sums = SKIP
+	sha256sums = 800330f06223d29557a92c9d1d4c7184e3881e595e6db506c4b28b162473cd68
+
+pkgname = net6
+
