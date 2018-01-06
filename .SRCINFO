@@ -1,0 +1,15 @@
+pkgbase = ivtv-utils
+	pkgdesc = Userspace utilities for Hauppauge PVR cards
+	pkgver = 1.4.1
+	pkgrel = 7
+	url = http://ivtvdriver.org
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://http.debian.net/debian/pool/contrib/i/ivtv-utils/ivtv-utils_1.4.1.orig.tar.gz
+	source = http://pkgs.fedoraproject.org/repo/pkgs/ivtv-firmware/ivtv-firmware-20080701.tar.gz/b9a871f1c569025be9c48a77b3515faf/ivtv-firmware-20080701.tar.gz
+	md5sums = 3a4219d698262ca2b28e41f0f547b0a2
+	md5sums = b9a871f1c569025be9c48a77b3515faf
+
+pkgname = ivtv-utils
+
