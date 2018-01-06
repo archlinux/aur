@@ -1,0 +1,14 @@
+pkgbase = fbgetty
+	pkgdesc = fbgetty is a console getty like mingetty, which supports framebuffers
+	pkgver = 0.1.698
+	pkgrel = 5
+	url = http://projects.meuh.org/fbgetty
+	arch = x86_64
+	license = GPL
+	source = http://projects.meuh.org/fbgetty/downloads/fbgetty-0.1.698.tar.gz
+	source = http://projects.meuh.org/fbgetty/downloads/fbgetty-0.1.698.tar.gz.sig
+	sha256sums = 332cbffa7c489b39a7d13d12d581c27dfc57ba098041431a6845b44785cf2d35
+	sha256sums = SKIP
+
+pkgname = fbgetty
+
