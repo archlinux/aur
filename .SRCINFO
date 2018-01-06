@@ -1,0 +1,15 @@
+pkgbase = python-hoedown
+	pkgdesc = The Python binding for Hoedown, a markdown parsing library.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/hhatto/python-hoedown
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/h/hoedown/hoedown-0.2.3.tar.gz
+	md5sums = cb1c5e620eb277deabb3345012bc387f
+
+pkgname = python-hoedown
+	depends = python
+
