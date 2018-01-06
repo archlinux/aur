@@ -1,0 +1,19 @@
+pkgbase = nemesis
+	pkgdesc = command-line network packet crafting and injection utility
+	pkgver = 1.4
+	pkgrel = 6
+	url = http://nemesis.sourceforge.net/
+	arch = x86_64
+	license = BSD
+	source = https://downloads.sourceforge.net/sourceforge/nemesis/nemesis-1.4.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/nemesis/nemesis-1.4.tar.gz.asc
+	source = https://arch.p5n.pp.ru/~sergej/dl/2016/libnet-1.0.2a.tar.gz
+	source = nemesis-proto_tcp.c.diff
+	validpgpkeys = 3CA3CBFF30506B07F036E57712AAFCF86923D3FD
+	sha256sums = 803f5cf5c7c4af15128b8cd7f7610730cbed1427f062a31c2f5255790fb1bab4
+	sha256sums = SKIP
+	sha256sums = 7c7f2e8ccb47bb47072c5cd583fea5e90ab892c75889b625346b60d10464459a
+	sha256sums = 47adbf39b5a5e351bc6b0eebaf89d98bb7ad3ab359c04391b782998053ae067d
+
+pkgname = nemesis
+
