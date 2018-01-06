@@ -1,0 +1,4 @@
+#!/bin/sh
+export JAVA_HOME=/usr/lib/jvm/java-9-jdk
+$JAVA_HOME/bin/java -jar /usr/share/java/pretixdesk/pretixdesk.jar $*
+
