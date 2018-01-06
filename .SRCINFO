@@ -1,0 +1,18 @@
+pkgbase = quvi
+	pkgdesc = Command-line tool for parsing video download links.
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = http://quvi.sourceforge.net/
+	arch = x86_64
+	license = AGPL3
+	depends = libquvi
+	depends = libxml2
+	depends = json-glib
+	source = http://downloads.sourceforge.net/sourceforge/quvi/quvi-0.9.5.tar.xz
+	source = http://downloads.sourceforge.net/sourceforge/quvi/quvi-0.9.5.tar.xz.sig
+	validpgpkeys = E220FCFF9EADBA326FD6B23BBF1D59CCAD00BE50
+	md5sums = baa1d7b25e9fd173e952e27d4aa4b933
+	md5sums = SKIP
+
+pkgname = quvi
+
