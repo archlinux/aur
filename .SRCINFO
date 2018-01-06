@@ -1,0 +1,15 @@
+pkgbase = lwp
+	pkgdesc = Light weight process library
+	pkgver = 2.6
+	pkgrel = 3
+	url = http://www.coda.cs.cmu.edu
+	arch = x86_64
+	license = LGPL
+	source = http://www.coda.cs.cmu.edu/pub/lwp/src/lwp-2.6.tar.gz
+	source = http://www.coda.cs.cmu.edu/pub/lwp/src/lwp-2.6.tar.gz.asc
+	validpgpkeys = 477F78AA863A90A623664AA1CE0D7E10997007A2
+	sha256sums = 4887fd7f74564552f53dfe42440f4777808a82b1249b2733ecfd062849a4d32d
+	sha256sums = SKIP
+
+pkgname = lwp
+
