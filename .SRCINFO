@@ -6,9 +6,10 @@ pkgbase = grub-themes-stylishdark
 	install = grub-themes-stylishdark.install
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = grub
 	optdepends = grub-customizer
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1513659780/s/dba9843ba21bfd0f5b3bee0fa0a5f86c/t/1514732419/grub-themes-stylishdark.tar.xz
+	source = git://github.com/vinceliuice/grub2-themes
 	md5sums = SKIP
 
 pkgname = grub-themes-stylishdark
