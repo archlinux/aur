@@ -25,8 +25,9 @@ package() {
     install -d -m 755 "${pkgdir}/usr/lib/nzbhydra2"
 
     cd "${srcdir}"
-    chmod +x nzbhydra2
+    chmod +x nzbhydra2 downloaderScripts/*.py
     cp -dpr --no-preserve=ownership downloaderScripts lib nzbhydra2 readme.md "${pkgdir}/usr/lib/nzbhydra2"
+
     install -d -m 755 "${pkgdir}/var/lib/nzbhydra2"
 
     install -D -m 644 "${srcdir}/nzbhydra2.service" "${pkgdir}/usr/lib/systemd/system/nzbhydra2.service"
