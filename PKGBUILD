@@ -4,15 +4,15 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.2.105.1.g6e2bdef
+pkgver=1.2.151.0.g88ba25a7
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x)"
 url="http://psi-plus.com"
 license=('GPL2')
-arch=('x86_64')
+arch=('i686' 'x86_64')
 depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5'
-	 'libidn' 'aspell' 'libxss' 'qt5-svg')
-makedepends=('git' 'patch' 'qconf-git')
+	 'libidn' 'aspell' 'libxss' 'qt5-svg' 'hunspell')
+makedepends=('git' 'patch' 'qconf-git' 'cmake' 'qca-qt4')
 provides=("psi-plus=$pkgver" "psi-plus-qt5-git=$pkgver")
 conflicts=('psi-plus' 'psi-plus-qt5-git' 'psi-plus-webkit-qt5-git' 'psi-plus-webkit-git')
 source=("git://github.com/psi-plus/psi-plus-snapshots"
@@ -22,7 +22,7 @@ source=("git://github.com/psi-plus/psi-plus-snapshots"
 sha256sums=('SKIP'
             'SKIP'
             '690770c7c8976d536d8c4078d01c28f187f510574ddffe91251f5045fa672e53'
-            '8b2ab645005fab4ca9c7fc84f57e94e1796309e780b535010b84eb0c191ad42c')
+            'ea25a58c7efe25979b8d257598608187380e8f35ace25e96cab9c357dcdbc974')
 
 
 pkgver() {
@@ -33,30 +33,26 @@ pkgver() {
 prepare() {
   cd psi-plus-snapshots
   # make build date in --version output a bit more readable
-  #sed "s/yyyyMMdd/yyyy-MM-dd/" -i qcm/conf.qcm
-  mkdir -p iconsets
-  cp -r "$srcdir"/main/iconsets/* ./iconsets
-  echo "$pkgver ($(date +"%Y-%m-%d"))" >version
+  # sed "s/yyyyMMdd/yyyy-MM-dd/" -i qcm/conf.qcm
+  # mkdir -p iconsets
+  # cp -r "$srcdir"/main/iconsets/* ./iconsets
+  # echo "$pkgver ($(date +"%Y-%m-%d"))" >version
   patch -p1 <"$srcdir"/join.patch
 }
 
 build() {
   cd psi-plus-snapshots
-  qconf
-  patch -p0 < "$srcdir"/conf.diff
-  ./configure --prefix=/usr \
-              --libdir=/usr/lib \
-              --disable-enchant \
-              --enable-whiteboarding
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   make
-  patch -Rp0 < "$srcdir"/conf.diff
 }
 
 package() {
-  cd psi-plus-snapshots
+  cd psi-plus-snapshots/build
 
-  make INSTALL_ROOT="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 
-  install -dm755 "$pkgdir/usr/include/psi-plus/plugins"
-  install -m644 src/plugins/include/*.h "$pkgdir/usr/include/psi-plus/plugins"
+  # install -dm755 "$pkgdir/usr/include/psi-plus/plugins"
+  # install -m644 src/plugins/include/*.h "$pkgdir/usr/include/psi-plus/plugins"
 }

@@ -1,26 +1,24 @@
-diff --git a/src/groupchatdlg.cpp b/src/groupchatdlg.cpp
-index 294bee2..6473998 100644
---- a/src/groupchatdlg.cpp
-+++ b/src/groupchatdlg.cpp
-@@ -1508,7 +1508,7 @@ void GCMainDlg::goConn()
- 		QString nick = d->self;
+diff -wbBur psi-plus-snapshots.org/src/groupchatdlg.cpp psi-plus-snapshots/src/groupchatdlg.cpp
+--- psi-plus-snapshots.org/src/groupchatdlg.cpp	2018-01-05 19:34:53.698040879 +0300
++++ psi-plus-snapshots/src/groupchatdlg.cpp	2018-01-05 19:35:35.934708491 +0300
+@@ -1518,7 +1518,7 @@
+         QString nick = d->self;
  
- 		if(!account()->groupChatJoin(host, room, nick, d->password)) {
--			appendSysMsg(tr("Error: You are in or joining this room already!"), true);
-+//			appendSysMsg(tr("Error: You are in or joining this room already!"), true);
- 			d->state = Private::Idle;
- 		}
- 	}
-diff --git a/src/mucjoindlg.cpp b/src/mucjoindlg.cpp
-index 244c3e8..1a1d4e8 100644
---- a/src/mucjoindlg.cpp
-+++ b/src/mucjoindlg.cpp
-@@ -221,7 +221,7 @@ void MUCJoinDlg::doJoin(MucJoinReason r)
+         if(!account()->groupChatJoin(host, room, nick, d->password)) {
+-            appendSysMsg(tr("Error: You are in or joining this room already!"), true);
++//            appendSysMsg(tr("Error: You are in or joining this room already!"), true);
+             d->state = Private::Idle;
+         }
+     }
+diff -wbBur psi-plus-snapshots.org/src/mucjoindlg.cpp psi-plus-snapshots/src/mucjoindlg.cpp
+--- psi-plus-snapshots.org/src/mucjoindlg.cpp	2018-01-05 19:34:53.711374212 +0300
++++ psi-plus-snapshots/src/mucjoindlg.cpp	2018-01-05 19:35:41.211375275 +0300
+@@ -262,7 +262,7 @@
  
  
- 	if (!account_->groupChatJoin(host, room, nick, pass, !ui_.ck_history->isChecked())) {
--		QMessageBox::information(this, tr("Error"), tr("You are in or joining this room already!"));
-+//		QMessageBox::information(this, tr("Error"), tr("You are in or joining this room already!"));
- 		return;
- 	}
+     if (!account_->groupChatJoin(host, room, nick, pass, !ui_.ck_history->isChecked())) {
+-        QMessageBox::information(this, tr("Error"), tr("You are in or joining this room already!"));
++//        QMessageBox::information(this, tr("Error"), tr("You are in or joining this room already!"));
+         return;
+     }
  
