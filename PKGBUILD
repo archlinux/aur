@@ -8,7 +8,6 @@ arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
 license=('Apache')
 depends=('java-runtime-headless>=8')
-optdepends=('python2-lxml: faster result processing')
 conflicts=('nzbhydra2-git')
 install='nzbhydra2.install'
 #https://github.com/theotherp/nzbhydra2/releases/download/v1.0.3/nzbhydra2-1.0.3-linux.zip
