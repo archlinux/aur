@@ -1,0 +1,20 @@
+pkgbase = commoncpp2
+	pkgdesc = GNU Common C++ 2
+	pkgver = 1.8.1
+	pkgrel = 7
+	url = http://www.gnu.org/software/commoncpp/
+	arch = x86_64
+	license = GPL
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	depends = sh
+	options = !makeflags
+	source = https://ftp.gnu.org/pub/gnu/commoncpp/commoncpp2-1.8.1.tar.gz
+	source = https://ftp.gnu.org/pub/gnu/commoncpp/commoncpp2-1.8.1.tar.gz.sig
+	validpgpkeys = 84344FAA5350F5C61D2CE4A4046AC7983903A6DD
+	sha256sums = 53ced4aff74e28a1d8018eb2b4974519028db3c12471ab6dff1c873578c9af4e
+	sha256sums = SKIP
+
+pkgname = commoncpp2
+
