@@ -2,7 +2,7 @@
 
 _pkgname=recipes
 pkgname=$_pkgname-git
-pkgver=1.2.0+48+g385d8c1
+pkgver=2.0.2+24+gaa4a7e7
 pkgrel=1
 pkgdesc="A GNOME recipes cooking book"
 arch=(i686 x86_64)
@@ -14,8 +14,7 @@ url="https://git.gnome.org/browse/recipes/"
 replaces=(recipes)
 provides=(recipes)
 conflicts=(recipes)
-source=("git://git.gnome.org/${_pkgname}"
-)
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
