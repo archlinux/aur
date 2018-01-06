@@ -1,0 +1,33 @@
+pkgbase = freewrl
+	pkgdesc = VRML viewer
+	pkgver = 2.3.3.1
+	pkgrel = 1
+	epoch = 1
+	url = http://freewrl.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = java-environment
+	makedepends = xulrunner
+	makedepends = wget
+	makedepends = mesa
+	depends = java-runtime
+	depends = libxaw
+	depends = glew
+	depends = freeglut
+	depends = curl
+	depends = freetype2
+	depends = imlib2
+	depends = sox
+	depends = unzip
+	depends = imagemagick
+	depends = libxml2
+	depends = ttf-bitstream-vera
+	depends = js185
+	depends = glu
+	depends = openal
+	depends = freealut
+	source = https://sourceforge.net/projects/freewrl/files/freewrl-linux/2.0/freewrl-2.3.3.1.tar.gz
+	sha256sums = 71ed11f5f3b4b6a1d2fc740e8e3ed62a83b484c9695968fac5e30db14dbb6fef
+
+pkgname = freewrl
+
