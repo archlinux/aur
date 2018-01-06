@@ -1,0 +1,47 @@
+commit 58ce4cd00705dd15ba2f509a00c0c58490489f32
+Author: Terje Røsten <terje.rosten@ntnu.no>
+Date:   Mon Nov 18 20:41:36 2013 +0100
+
+    fix too creative hackery
+
+diff --git a/src/errorchain.c b/src/errorchain.c
+index fc3092d..84dae81 100644
+--- a/src/errorchain.c
++++ b/src/errorchain.c
+@@ -110,34 +110,13 @@ error_push_production_v(int         context,
+ {
+      struct errchain *chain;
+      GString *str;
+-     int n, a, retry = 0;
+ 
+ 	if(!context) {
+ 		return;
+ 	}
+ 
+-     a = strlen(fmt) + 50;
+-	str = g_string_sized_new(a);
+-#warning "FIXME: this is so sick"
+-
+-     /* I hope it is ok to repeatedly use ap like this */
+-     do {
+-	  n = g_vsnprintf(str->str, a - 1, fmt, ap);
+-
+-	  retry = 0;
+-	  /* await both n==-1 and n > a -1 for not enough free space */
+-	  if (n > a - 1) {
+-	       g_string_free(str, TRUE);
+-	       a = n + 2;
+-	       str = g_string_sized_new(a);
+-	       retry = 1;
+-	  } else if (n == -1) {
+-	       g_string_free(str, TRUE);
+-	       a *= 2;
+-	       str = g_string_sized_new(a);
+-	       retry = 1;
+-	  }
+-     } while (retry);
++     str = g_string_sized_new(100);
++     g_string_vprintf(str, fmt, ap);
+ 
+      /* plug into messagechain */
+      chain = error_chain_by_context(context);

@@ -1,0 +1,11 @@
+--- gq-1.3.4/src/gq-server.c~	2008-01-09 17:35:12.000000000 +0100
++++ gq-1.3.4/src/gq-server.c	2009-11-05 18:41:28.000000000 +0100
+@@ -281,7 +281,7 @@
+ 			switch(gq_server_get_bind_type(server)) {
+ 				case GQ_BIND_KERBEROS:
+ #ifdef HAVE_KERBEROS
+-					rc = ldap_bind_s(ld, bind_dn, bindpw, LDAP_AUTH_KRBV4);
++					rc = ldap_bind_s(ld, bind_dn, bind_pw, LDAP_AUTH_KRBV4);
+ #else
+ 					error_push(open_context,
+ 						_("Cannot use Kerberos bind with '%s'.\n"

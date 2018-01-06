@@ -1,0 +1,13 @@
+diff --git a/src/gq-input-form.c b/src/gq-input-form.c
+index a73dc9b..0e15a0c 100644
+--- a/src/gq-input-form.c
++++ b/src/gq-input-form.c
+@@ -952,7 +952,7 @@ dn_changed(GtkEditable *editable,
+ 	if(P(iform)->button_add_new) {
+ 		gchar      * val = gtk_editable_get_chars(editable, 0, -1);
+ 		gchar const* dn  = gq_input_form_get_dn(iform);
+-		gtk_widget_set_sensitive(P(iform)->button_add_new, strcmp(dn, val) != 0);
++		gtk_widget_set_sensitive(P(iform)->button_add_new, g_strcmp0(dn, val) != 0);
+ 		g_free(val);
+ 	}
+ }

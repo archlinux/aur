@@ -1,0 +1,112 @@
+diff -up gq-1.3.4/src/glib-helpers.c.glibfix gq-1.3.4/src/glib-helpers.c
+--- gq-1.3.4/src/glib-helpers.c.glibfix	2012-03-21 11:55:37.537889970 -0400
++++ gq-1.3.4/src/glib-helpers.c	2012-03-21 11:55:44.886831913 -0400
+@@ -23,8 +23,7 @@
+ 
+ #include "glib-helpers.h"
+ 
+-#include <glib/gmessages.h>
+-#include <glib/gunicode.h>
++#include <glib.h>
+ 
+ GList*
+ g_list_copy_reversed(GList* list) {
+diff -up gq-1.3.4/src/glib-helpers.h.glibfix gq-1.3.4/src/glib-helpers.h
+--- gq-1.3.4/src/glib-helpers.h.glibfix	2012-03-21 11:55:23.107003954 -0400
++++ gq-1.3.4/src/glib-helpers.h	2012-03-21 11:55:30.301947128 -0400
+@@ -24,7 +24,7 @@
+ #ifndef GLIB_HELPERS_H
+ #define GLIB_HELPERS_H
+ 
+-#include <glib/glist.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
+diff -up gq-1.3.4/src/gq-hash.h.glibfix gq-1.3.4/src/gq-hash.h
+--- gq-1.3.4/src/gq-hash.h.glibfix	2012-03-21 11:53:31.510895451 -0400
++++ gq-1.3.4/src/gq-hash.h	2012-03-21 11:53:36.386856283 -0400
+@@ -24,7 +24,7 @@
+ #ifndef GQ_ENCRYPTION_H
+ #define GQ_ENCRYPTION_H
+ 
+-#include <glib/garray.h>
++#include <glib.h>
+ #include "gq-utilities.h"
+ 
+ G_BEGIN_DECLS
+diff -up gq-1.3.4/src/gq-main-loop.h.glibfix gq-1.3.4/src/gq-main-loop.h
+--- gq-1.3.4/src/gq-main-loop.h.glibfix	2012-03-21 11:53:47.392767870 -0400
++++ gq-1.3.4/src/gq-main-loop.h	2012-03-21 11:53:55.688701227 -0400
+@@ -24,7 +24,7 @@
+ #ifndef GQ_MAIN_LOOP_H
+ #define GQ_MAIN_LOOP_H
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
+diff -up gq-1.3.4/src/gq-stack.c.glibfix gq-1.3.4/src/gq-stack.c
+--- gq-1.3.4/src/gq-stack.c.glibfix	2012-03-21 11:54:25.894458573 -0400
++++ gq-1.3.4/src/gq-stack.c	2012-03-21 11:54:34.673388048 -0400
+@@ -23,9 +23,7 @@
+ 
+ #include "gq-stack.h"
+ 
+-#include <glib/gmem.h>
+-#include <glib/gmessages.h>
+-#include <glib/glist.h>
++#include <glib.h>
+ 
+ #undef DEBUG_STACK
+ 
+diff -up gq-1.3.4/src/gq-stack.h.glibfix gq-1.3.4/src/gq-stack.h
+--- gq-1.3.4/src/gq-stack.h.glibfix	2012-03-21 11:54:43.597316357 -0400
++++ gq-1.3.4/src/gq-stack.h	2012-03-21 11:54:48.001281125 -0400
+@@ -24,7 +24,7 @@
+ #ifndef GQ_STACK_H
+ #define GQ_STACK_H
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
+diff -up gq-1.3.4/src/gq-tab.h.glibfix gq-1.3.4/src/gq-tab.h
+--- gq-1.3.4/src/gq-tab.h.glibfix	2012-03-21 11:51:51.367699882 -0400
++++ gq-1.3.4/src/gq-tab.h	2012-03-21 11:52:23.572441194 -0400
+@@ -24,7 +24,7 @@
+ #ifndef GQ_TAB_H
+ #define GQ_TAB_H
+ 
+-#include <glib/gmacros.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
+diff -up gq-1.3.4/src/state.c.glibfix gq-1.3.4/src/state.c
+--- gq-1.3.4/src/state.c.glibfix	2012-03-21 11:56:07.083656517 -0400
++++ gq-1.3.4/src/state.c	2012-03-21 11:57:22.728058334 -0400
+@@ -35,8 +35,8 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ 
++#include <glib.h>
+ #include <glib/gi18n.h>
+-#include <glib/gmessages.h>
+ #include <gtk/gtk.h>
+ 
+ #include "configfile.h"
+diff -up gq-1.3.4/src/syntax.h.glibfix gq-1.3.4/src/syntax.h
+--- gq-1.3.4/src/syntax.h.glibfix	2012-03-21 11:54:05.200624814 -0400
++++ gq-1.3.4/src/syntax.h	2012-03-21 11:54:12.706564518 -0400
+@@ -27,7 +27,7 @@
+ #ifndef GQ_SYNTAX_H_INCLUDED
+ #define GQ_SYNTAX_H_INCLUDED
+ 
+-#include <glib/gmacros.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 

@@ -1,0 +1,19 @@
+commit 06582f488aab4b01670aba709485e021766659a1
+Author: Terje Røsten <terje.rosten@ntnu.no>
+Date:   Thu Nov 21 20:17:04 2013 +0100
+
+    Sanity check
+
+diff --git a/src/gq-browser-model.c b/src/gq-browser-model.c
+index ee66a45..ee5fa09 100644
+--- a/src/gq-browser-model.c
++++ b/src/gq-browser-model.c
+@@ -183,7 +183,7 @@ gq_browser_model_validate(gconstpointer     * model,
+ 	g_print("browser_model_validate_iter(%p, %p): ", model, iter);
+ #endif
+ #warning "FIXME: check stamp"
+-	if(!iter->user_data) {
++	if(!iter || !iter->user_data) {
+ #ifdef DEBUG_MODEL
+ 		g_print("false (iter->user_data == NULL)\n");
+ #endif

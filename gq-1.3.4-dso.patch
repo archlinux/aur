@@ -1,0 +1,12 @@
+diff -up gq-1.3.4/configure~ gq-1.3.4/configure
+--- gq-1.3.4/configure~	2010-02-11 22:47:33.000000000 +0100
++++ gq-1.3.4/configure	2010-02-11 22:49:41.189235801 +0100
+@@ -6494,7 +6494,7 @@ fi
+ { echo "$as_me:$LINENO: result: $ac_cv_lib_ssl_SSL_new" >&5
+ echo "${ECHO_T}$ac_cv_lib_ssl_SSL_new" >&6; }
+ if test $ac_cv_lib_ssl_SSL_new = yes; then
+-  LIBS="-lssl $LIBS"
++  LIBS="`pkg-config --libs openssl` $LIBS"
+ 
+ fi
+ 

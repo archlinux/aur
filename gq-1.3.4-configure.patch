@@ -1,0 +1,13 @@
+--- configure~	2008-02-13 22:14:37.000000000 +0100
++++ configure	2009-11-06 10:28:57.000000000 +0100
+@@ -6608,8 +6608,9 @@
+ 
+ # Check whether --with-kerberos-prefix was given.
+ if test "${with_kerberos_prefix+set}" = set; then
++  KRB5_LIBS="`$with_kerberos_prefix/bin/krb5-config --libs`"
+   withval=$with_kerberos_prefix;
+-	     LIBS="-L$with_kerberos_prefix/lib -lkrb5 -ldes425 $LIBS"
++	     LIBS="-L$with_kerberos_prefix/lib $KRB5_LIBS $LIBS"
+ 
+ cat >>confdefs.h <<\_ACEOF
+ #define HAVE_KERBEROS 1
