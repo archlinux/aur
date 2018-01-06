@@ -1,0 +1,38 @@
+.TH GETCRYPT "1" "January 2018" "Getcrypt 1.003" "User Commands"
+
+.SH NAME
+Getcrypt - Command line cryptocurrency price tracker.
+
+.SH SYNOPSIS
+getcrypt [OPTION]...
+
+.SH DESCRIPTION
+Can either get information on intraday cryptocurrency prices, or update a personal portfolio.
+
+.SS "Intraday Information:"
+
+.TP
+[currency name]
+Prints current information of specific cryptocurrency.
+
+.SS
+Portfolio:
+
+.TP
+[add/rm/set] [currency name] [amount of currency] [amount of money spent]
+Either adds, removes, or sets the amount of the given cryptocurrency with respect to the given values. The parameter add will add your input to the current portfolio, rm will subtract from your current portfolio, and set will set your portfolio to the input, discarding any existing data about that currency.
+
+.TP
+[check] [currency name/all]
+Prints information about your current portfolio holdings. Either a cryptocurrency name or the keyword all can be used. The keyword all will print information about all your current holdings, as well as a grand total.
+
+.SH FILES
+.I ~/.getcrypt_portfolio
+.RS
+Portfolio file.
+
+.SH GITHUB
+Please report any bugs using the GitHub issue tracker: https://github.com/aokellermann/getcrypt/issues
+
+.SH AUTHORS
+Antony Kellermann -- https://github.com/aokellermann
