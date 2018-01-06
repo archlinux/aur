@@ -1,0 +1,17 @@
+pkgbase = sqlitemanager
+	pkgdesc = Multilingual web based tool to manage SQLite database
+	pkgver = 1.2.4
+	pkgrel = 4
+	url = http://sourceforge.net/projects/sqlitemanager
+	arch = any
+	license = GPL
+	depends = php
+	options = !strip
+	backup = etc/webapps/sqlitemanager/config.db
+	backup = etc/webapps/sqlitemanager/config3.db
+	backup = etc/webapps/sqlitemanager/config.inc.php
+	source = http://downloads.sourceforge.net/project/sqlitemanager/sqlitemanager/1.2.4/SQliteManager-1.2.4.tar.gz
+	md5sums = 4d308b1bf4dcdf2e8d951c80a68ac705
+
+pkgname = sqlitemanager
+
