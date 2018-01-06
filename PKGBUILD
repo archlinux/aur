@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('gimp>=2.8.x' 'python')
 makedepends=('pkg-config' 'intltool')
 source=("$pkgname-src-$pkgver.tgz::https://github.com/bootchk/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('ef8d8137c43cba0a712cf1f9c6891e8606d4b8af9b218cea0efcaa7797aa0a87')
+sha256sums=('6858eb434df4be3b9b24fc0eb046b17fbd90bd63989c44ef01f65055fcf99419')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
