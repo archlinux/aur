@@ -9,7 +9,8 @@ depends=('mingw-w64-crt' 'mingw-w64-qt4')
 makedepends=('mingw-w64-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://dl.opendesktop.org/api/files/downloadfile/id/1466644899/s/79a0cefa07283ed7c96345a7052f820e/t/1515193661/79286-iistaskpanel-0.2.2-src.zip")
-sha256sums=('daaea72d5e06c5c694f0b657af49287ad611b4bfd96a7db7f7c6b2f888e8c353')
+sha256sums=('2777b368baabe3166c8fb0884f2baf0279036a3217f0a9892cf0503506bbb66a')
+
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"      
 
