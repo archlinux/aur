@@ -1,0 +1,19 @@
+pkgbase = dguitar
+	pkgdesc = A guitar pro tab reader
+	pkgver = 0.5.8
+	pkgrel = 6
+	url = http://dguitar.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = java-runtime
+	depends = sh
+	source = http://download.sf.net/dguitar/DGuitar-0.5.8.zip
+	source = dguitar.sh
+	source = dguitar.desktop
+	md5sums = 3d10723d96203705b4044b48a755990f
+	md5sums = fd6800cb0baddac00c9c058c42e6cd6a
+	md5sums = 4f5a55d4dd27871b5d9e78865c26d81a
+
+pkgname = dguitar
+
