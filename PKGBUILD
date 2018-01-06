@@ -1,18 +1,18 @@
 # Maintainer: JoshuaRLi <joshua.r.li.98 at gmail com>
 pkgname=yn-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
-pkgdesc="an interactive Y/n prompt"
+pkgdesc="an interactive y/n prompt"
 arch=('x86_64')
 url="https://github.com/JoshuaRLi/yn"
 license=('MIT')
 provides=('yn')
 
-source_x86_64=("https://github.com/JoshuaRLi/yn/releases/download/${pkgver}/yn-${pkgver}.tgz")
-sha256sums_x86_64=('b8005810cb23d0fdd402e4220ea762c422e9e708b3e2f786faa0fa60429832ff')
+source_x86_64=("https://github.com/JoshuaRLi/yn/releases/download/${pkgver}/yn-${pkgver}-bin.tar.gz")
+sha256sums_x86_64=('428b26e3e2095ced9c9a795b706819575f0d9dbe0de79039c9acbd14a0036a99')
 
 package () {
-  cd "${srcdir}/yn-${pkgver}"
+  cd "${srcdir}/yn-${pkgver}-bin"
   install -Dm 755 yn "${pkgdir}/usr/bin/yn"
   install -Dm 644 yn.1.gz "${pkgdir}/usr/share/man/man1/yn.1.gz"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
