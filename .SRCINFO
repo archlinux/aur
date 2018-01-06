@@ -1,0 +1,22 @@
+pkgbase = python-ngmix-git
+	pkgdesc = Gaussian mixture models and other code for working with for 2d images, implemented in python
+	pkgver = v0.9.4.r1.3a0e7ce
+	pkgrel = 1
+	url = https://github.com/esheldon/ngmix
+	arch = x86_64
+	license = GPL
+	checkdepends = make
+	makedepends = git
+	makedepends = python
+	makedepends = python-numpy
+	makedepends = python2
+	makedepends = python2-numpy
+	source = python-ngmix::git+https://github.com/esheldon/ngmix
+	md5sums = SKIP
+
+pkgname = python-ngmix-git
+	depends = python
+
+pkgname = python2-ngmix-git
+	depends = python2
+
