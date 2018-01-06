@@ -1,0 +1,14 @@
+pkgbase = clewn
+	pkgdesc = gdb support for vim
+	pkgver = 1.15
+	pkgrel = 8
+	url = http://clewn.sourceforge.net
+	arch = x86_64
+	license = GPL
+	depends = gvim
+	depends = gdb
+	source = http://downloads.sourceforge.net/sourceforge/clewn/clewn-1.15.tar.gz
+	md5sums = dcfa989e6250109a7f0f99dc2d6db3e6
+
+pkgname = clewn
+
