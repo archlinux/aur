@@ -2,7 +2,7 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra2"
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
@@ -17,7 +17,7 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
         'nzbhydra2.sysusers')
 
 sha256sums=('86ef03135da4e7017c5d7d3da415468077542f7534db7ab3eaa5e0c6c552af65'
-            'ef4dc48daf7c061f0344faaba9450e72b95dfad4b0df669a04194a462149cdc1'
+            '53cf695a8f03ab9c12754be6460dead8225b3a012f0f26675cead846521aeee1'
             '355dafa76d39c42f0a449080b2fe3673536e409da3f3b6c89f03c09dd303438c'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a')
 
@@ -26,10 +26,9 @@ package() {
 
     cd "${srcdir}"
     chmod +x nzbhydra2 downloaderScripts/*.py 
-    cp -dpr --no-preserve=ownership downloaderScripts nzbhydra2 readme.md "${pkgdir}/usr/lib/nzbhydra2"
+    cp -dpr --no-preserve=ownership downloaderScripts lib nzbhydra2 readme.md "${pkgdir}/usr/lib/nzbhydra2"
 
     install -d -m 755 "${pkgdir}/var/lib/nzbhydra2"
-    cp -dpr --no-preserve=ownership lib "${pkgdir}/usr/lib/nzbhydra2"
 
     install -D -m 644 "${srcdir}/nzbhydra2.service" "${pkgdir}/usr/lib/systemd/system/nzbhydra2.service"
     install -D -m 644 "${srcdir}/nzbhydra2.sysusers" "${pkgdir}/usr/lib/sysusers.d/nzbhydra2.conf"
