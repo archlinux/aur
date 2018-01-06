@@ -5,7 +5,7 @@ pkgbase = bash-link
 	url = http://torben.website/bashLink
 	arch = any
 	license = CC-BY-3.0
-	source = bashLink.sh
+	source = core.sh
 	md5sums = SKIP
 
 pkgname = bash-link
