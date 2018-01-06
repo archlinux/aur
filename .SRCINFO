@@ -1,0 +1,16 @@
+pkgbase = phoronix-test-suite
+	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux
+	pkgver = 7.6.0
+	pkgrel = 1
+	url = http://www.phoronix-test-suite.com/
+	install = phoronix-test-suite.install
+	arch = any
+	license = GPL3
+	depends = php
+	optdepends = php-gtk
+	optdepends = php-gd
+	source = http://www.phoronix.net/downloads/phoronix-test-suite/releases/phoronix-test-suite-7.6.0.tar.gz
+	sha256sums = c018c27789a696549643335d57fdd3ef9906c17c814f203ca1bef9494fd6e274
+
+pkgname = phoronix-test-suite
+
