@@ -1,0 +1,21 @@
+pkgbase = grace
+	pkgdesc = 2D plotting tool
+	pkgver = 5.1.25
+	pkgrel = 6
+	url = http://plasma-gate.weizmann.ac.il/Grace/
+	arch = x86_64
+	license = GPL
+	depends = libjpeg
+	depends = libpng
+	depends = openmotif
+	depends = t1lib
+	depends = netcdf
+	depends = fftw
+	options = staticlibs
+	source = ftp://plasma-gate.weizmann.ac.il/pub/grace/src/grace5/grace-5.1.25.tar.gz
+	source = grace-fftw3.patch
+	md5sums = c0482b1f18b113192946a96f5ff35a4d
+	md5sums = 0c61460189e4d19713e59a84c28f23c2
+
+pkgname = grace
+
