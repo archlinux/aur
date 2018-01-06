@@ -1,0 +1,17 @@
+pkgbase = gshutdown
+	pkgdesc = An advanced shutdown utility
+	pkgver = 0.2
+	pkgrel = 5
+	url = http://gshutdown.tuxfamily.org
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	depends = libglade
+	depends = libnotify
+	source = https://gshutdown.tuxfamily.org/release/gshutdown-0.2.tar.gz
+	source = build-fix.patch
+	sha256sums = bb316be18e3573f983aff5a038603ed10a9df9dd9c7efde65b759aaf1221169f
+	sha256sums = 48b7123b71172d0e9e1d5b0e5ce7b09f297f828ccb1b39838a11716b4df6c655
+
+pkgname = gshutdown
+

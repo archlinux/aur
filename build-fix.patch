@@ -1,0 +1,116 @@
+diff -wbBur gshutdown-0.2/src/detectwm.h gshutdown-0.2.my/src/detectwm.h
+--- gshutdown-0.2/src/detectwm.h	2007-04-15 02:33:39.000000000 +0400
++++ gshutdown-0.2.my/src/detectwm.h	2014-05-08 17:04:32.141208770 +0400
+@@ -21,7 +21,7 @@
+ #ifndef __GSHUTDOWN_WMDETECT__
+ #define __GSHUTDOWN_WMDETECT__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ gchar *detect_window_manager();
+ 
+diff -wbBur gshutdown-0.2/src/gui.c gshutdown-0.2.my/src/gui.c
+--- gshutdown-0.2/src/gui.c	2007-05-19 15:35:19.000000000 +0400
++++ gshutdown-0.2.my/src/gui.c	2014-05-08 17:02:34.811214098 +0400
+@@ -162,7 +162,7 @@
+     if(gui_systray_icon_is_showed())
+         widget = GTK_WIDGET(tray_icon);
+ 
+-    notify = notify_notification_new("GShutdown", message, NULL, GTK_WIDGET(widget));
++    notify = notify_notification_new("GShutdown", message, GTK_WIDGET(widget));
+ 
+     if(show_icon == NOTIFICATION_ICON_TIME) {
+         path = data_path("clock.png");
+diff -wbBur gshutdown-0.2/src/main.c gshutdown-0.2.my/src/main.c
+--- gshutdown-0.2/src/main.c	2007-06-24 17:03:38.000000000 +0400
++++ gshutdown-0.2.my/src/main.c	2014-05-08 17:05:55.514538380 +0400
+@@ -21,7 +21,7 @@
+ #include <stdlib.h>
+ #include <signal.h>
+ #include <sys/wait.h>
+-#include <glib/gutils.h> /* g_atexit() */
++#include <glib.h> /* g_atexit() */
+ #include "main.h"
+ #include "gui.h"
+ #include "misc.h"
+diff -wbBur gshutdown-0.2/src/misc.c gshutdown-0.2.my/src/misc.c
+--- gshutdown-0.2/src/misc.c	2007-04-15 02:33:39.000000000 +0400
++++ gshutdown-0.2.my/src/misc.c	2014-05-08 17:05:48.707871987 +0400
+@@ -20,12 +20,7 @@
+ 
+ #include <unistd.h> /* X_OK */
+ #include <stdlib.h>
+-#include <glib/gstdio.h> 
+-#include <glib/gstrfuncs.h>   /* g_strdup_printf */
+-#include <glib/gmem.h>        /* g_free */
+-#include <glib/gutils.h>      /* g_getenv */
+-#include <glib/gfileutils.h>  /* g_file_test() */
+-#include <glib/gshell.h>      /* g_shell_parse_argv */
++#include <glib.h> 
+ #include "config.h"
+ #include "misc.h"
+ #include "main.h"
+diff -wbBur gshutdown-0.2/src/misc.h gshutdown-0.2.my/src/misc.h
+--- gshutdown-0.2/src/misc.h	2007-04-15 02:33:39.000000000 +0400
++++ gshutdown-0.2.my/src/misc.h	2014-05-08 17:04:21.267875936 +0400
+@@ -20,7 +20,7 @@
+ #ifndef __GSHUTDOWN_MISC__
+ #define __GSHUTDOWN_MISC__
+ 
+-#include <glib/gtypes.h>      /* gchar */
++#include <glib.h>      /* gchar */
+ 
+ /* Return a data file path. e.g: gshutdown.glade */
+ gchar *data_path(gchar *filename);
+Only in gshutdown-0.2.my/src: misc.o
+Only in gshutdown-0.2.my/src: pconfirm.o
+diff -wbBur gshutdown-0.2/src/timer.c gshutdown-0.2.my/src/timer.c
+--- gshutdown-0.2/src/timer.c	2007-05-19 15:30:38.000000000 +0400
++++ gshutdown-0.2.my/src/timer.c	2014-05-08 17:04:38.451208487 +0400
+@@ -18,7 +18,7 @@
+  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include "timer.h"
+ #include "values.h"
+ #include "gui.h"
+diff -wbBur gshutdown-0.2/src/timer.h gshutdown-0.2.my/src/timer.h
+--- gshutdown-0.2/src/timer.h	2007-04-15 02:33:39.000000000 +0400
++++ gshutdown-0.2.my/src/timer.h	2014-05-08 17:04:41.091208380 +0400
+@@ -21,7 +21,7 @@
+ #ifndef __GSHUTDOWN_TIMER__
+ #define __GSHUTDOWN_TIMER__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ guint time_left();
+ gboolean timer_notify();
+diff -wbBur gshutdown-0.2/src/values.c gshutdown-0.2.my/src/values.c
+--- gshutdown-0.2/src/values.c	2007-04-15 02:33:40.000000000 +0400
++++ gshutdown-0.2.my/src/values.c	2014-05-08 17:06:02.011204701 +0400
+@@ -20,8 +20,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
+-#include <glib/gkeyfile.h>
+-#include <glib/gfileutils.h> /* g_build_path */
++#include <glib.h>
+ #include "values.h"
+ #include "gui.h"
+ #include "detectwm.h"
+diff -wbBur gshutdown-0.2/src/values.h gshutdown-0.2.my/src/values.h
+--- gshutdown-0.2/src/values.h	2007-05-19 15:42:54.000000000 +0400
++++ gshutdown-0.2.my/src/values.h	2014-05-08 17:04:35.924542168 +0400
+@@ -21,7 +21,7 @@
+ #ifndef __GSHUTDOWN_VALUES__
+ #define __GSHUTDOWN_VALUES__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include "action.h"
+ 
+ typedef enum {
