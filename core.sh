@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# Ensure to load module "core" once.
 # region import
 # shellcheck source=./module.sh
 source $(dirname ${BASH_SOURCE[0]})/module.sh
@@ -85,19 +86,6 @@ core_is_empty() {
     [ -z "${!variable_name}" ] || return 1
 }
 alias core.is_empty="core_is_empty"
-core_log() {
-    local __doc__='
-    Logs arbitrary strings with given level.
-    '
-    if type -t logging_log > /dev/null; then
-        logging_log "$@"
-    else
-        local level=$1
-        shift
-        echo "$level": "$@"
-    fi
-}
-alias core.log="core_log"
 core_is_main() {
     local __doc__='
     Returns true if current script is being executed.
