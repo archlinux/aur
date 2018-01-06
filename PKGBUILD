@@ -25,4 +25,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR=$pkgdir prefix=/usr systemd_prefix=/usr/lib install
+	install -D -m 644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
