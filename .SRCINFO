@@ -1,0 +1,29 @@
+pkgbase = gcstar
+	pkgdesc = A collection management application
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = http://www.gcstar.org
+	arch = any
+	license = GPL
+	depends = gtk2-perl
+	depends = perl-libwww
+	depends = perl-xml-simple
+	depends = perl-net-snmp
+	depends = perl-xml-parser
+	depends = perl-switch
+	depends = perl-xml-libxml
+	depends = perl-sort-naturally
+	depends = perl-http-message
+	depends = perl-http-date
+	depends = perl-http-cookies
+	depends = perl-gd
+	depends = perl-date-calc
+	depends = perl-archive-zip
+	depends = perl-datetime-format-strptime
+	depends = perl-gdgraph
+	depends = perl-mp3-info
+	source = https://launchpad.net/gcstar/1.7/1.7.1/+download/gcstar-1.7.1.tar.gz
+	sha256sums = da2c90071a61bf42f4c6e9f6ddee6eb9b60b8f9af711c435cd24d44735429f3d
+
+pkgname = gcstar
+
