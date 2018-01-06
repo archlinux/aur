@@ -1,0 +1,19 @@
+pkgbase = bbdb
+	pkgdesc = A rolodex-like database for Emacs
+	pkgver = 3.1.2
+	pkgrel = 4
+	url = https://savannah.nongnu.org/projects/bbdb
+	install = bbdb.install
+	arch = any
+	license = GPL
+	makedepends = texlive-bin
+	makedepends = texlive-latexextra
+	depends = emacs
+	source = https://download.savannah.gnu.org/releases/bbdb/bbdb-3.1.2.tar.gz
+	source = https://download.savannah.gnu.org/releases/bbdb/bbdb-3.1.2.tar.gz.sig
+	validpgpkeys = 8085E99D2879C87C1CDE452998D4FA2244A3B825
+	md5sums = b57cbb57ab8d4235517e79011fb52b2f
+	md5sums = SKIP
+
+pkgname = bbdb
+

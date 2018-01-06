@@ -1,0 +1,15 @@
+post_install() {
+  echo ">> To enable BBDB add this to your .emacs:"
+  echo ">>    (require 'bbdb)"
+  echo ">>    (bbdb-initialize)"
+}
+
+post_upgrade() {
+  post_install $1
+  echo ">> Update breaks wanderlust compatibility. You need to keep bbdb-2 or intergrate them manually"
+  echo ">> gnus compatibility was also broken. Now initialization should be:"
+  echo ">> (require 'bbdb-loaddefs)"
+  echo ">> (require 'bbdb)"
+  echo ">> (bbdb-initialize 'gnus 'message)"
+  echo ">> (bbdb-mua-auto-update-init 'gnus 'message)"
+}
