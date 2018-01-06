@@ -1,0 +1,17 @@
+pkgbase = yahoo-t
+	pkgdesc = jabber yahoo transport
+	pkgver = 0.4
+	pkgrel = 7
+	url = http://xmpppy.sourceforge.net/yahoo/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = xmpppy
+	backup = etc/ejabberd/yahoo.xml
+	source = https://downloads.sourceforge.net/xmpppy/yahoo-transport-0.4.tar.gz
+	source = yahoo-t.service
+	sha256sums = 99f6866dab0b53dfa2ebb56839e86669d7b8f5c307fb5edcf7e84fc048993249
+	sha256sums = e6c1f5ab98ab989dc935ba447fc962260fe6fe16b49d2639e2eaeba28e868e0a
+
+pkgname = yahoo-t
+
