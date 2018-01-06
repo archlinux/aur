@@ -1,0 +1,11 @@
+[Unit]
+Description=A streaming server
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/ajaxterm.pid
+ExecStart=/usr/bin/gnump3d --quiet
+
+[Install]
+WantedBy=multi-user.target

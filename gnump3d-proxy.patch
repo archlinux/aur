@@ -1,0 +1,175 @@
+diff -wbBur gnump3d-3.0/bin/gnump3d2 gnump3d-3.0.my/bin/gnump3d2
+--- gnump3d-3.0/bin/gnump3d2	2007-10-18 17:34:02.000000000 +0000
++++ gnump3d-3.0.my/bin/gnump3d2	2010-07-21 16:30:13.000000000 +0000
+@@ -357,11 +357,9 @@
+ #
+ # Make sure our host is defined.
+ #
+-if ( ! $host_rewrite ) { $host .= ":$PORT"; }
++if ( ! $host_rewrite ) { $host = "http://".$host.":$PORT"; }
+ else { $host = $host_rewrite; }
+ 
+-
+-
+ #
+ #  Print a little banner unless the user specified a quiet startup.
+ #
+@@ -738,12 +736,12 @@
+ 		    if ( $chost =~ /(.*):([0-9]+)/ )
+ 		    {
+ 			# Host already contains a port.
+-			$host = $chost;
++			$host = "http://" . $chost;
+ 		    }
+ 		    else
+ 		    {
+ 			# Host was missing a port number.
+-			$host = $chost . ":" . $PORT;
++			$host = "http://" . $chost . ":" . $PORT;
+ 		    }
+ 		}
+ 	    }
+@@ -966,7 +964,7 @@
+ 		    my $header   = getHTTPHeader( 200, "audio/x-mpegurl" );
+ 		    &sendData( $data, $header );
+ 
+-		    my $link = "http://" . $host . &urlEncode( $plainFile );
++		    my $link = $host . &urlEncode( $plainFile );
+ 
+ 		    #
+ 		    # Get ready to add on any bitrate settings to the file
+@@ -1545,7 +1543,7 @@
+     #
+     # Escape the filename.
+     #
+-    $file = "http://" . $host . urlEncode( $file ) . $quality;
++    $file = $host . urlEncode( $file ) . $quality;
+ 
+     #
+     # Add to the playlist
+@@ -1658,7 +1656,7 @@
+ 	    #
+ 	    # Line is fully qualified path.
+ 	    #
+-	    $line = "http://" . $host . "/" . &urlEncode($1);
++	    $line = $host . "/" . &urlEncode($1);
+ 	}
+ 	elsif ( $line =~ /^\// )
+ 	{
+@@ -1666,14 +1664,14 @@
+ 	    # Line is fully qualified.  Just prepend the
+ 	    # server name to it.
+ 	    #
+-	    $line = "http://" . $host . &urlEncode($line);
++	    $line = $host . &urlEncode($line);
+ 	}
+ 	else
+ 	{
+ 	    #
+ 	    # Line is just a straight filename, it needs
+ 	    # server:port + directory prepended to it.
+-	    $line = "http://" . $host . &urlEncode( $dir . "/" . $line );
++	    $line = $host . &urlEncode( $dir . "/" . $line );
+ 	}
+ 
+ 	#
+@@ -2216,7 +2214,7 @@
+ 		$link    = &urlEncode( $link );
+ 
+ 		my $name = $file;
+-		my $rec  = "<a href=\"${link}recurse.m3u\">$play_rec</a>";
++		my $rec  = "<a href=\"${host}${link}recurse.m3u\">$play_rec</a>";
+ 		my $row;
+ 
+ 		if ( $totalSubdirs % 2 == 0 )
+@@ -2314,10 +2312,10 @@
+ 		#
+ 		#  Do the interpolation.
+ 		#
+-		$row =~ s/\$LINK/$link/g;
++		$row =~ s/\$LINK/$host$link/g;
+ 		$row =~ s/\$DIR_NAME/$name/g;
+ 		$row =~ s/\$RECURSE/$rec/g;
+-		$row =~ s/\$LINK/$link/g;
++		$row =~ s/\$LINK/$host$link/g;
+ 
+ 		#
+ 		# Add to the text we're building up.
+@@ -2455,8 +2453,10 @@
+ 		{
+ 		  $output = $file_format2;
+ 		}
+-		$output    =~ s/\$LINK/$link/g;
+-		$output    =~ s/\$PLAINLINK/$link/g;
++		$output    =~ s/\$LINK/$host$link/g;
++		$output    =~ s/\$PLAINLINK/$host$link/g;
++		$output    =~ s/\$RELPATH/$link/g;
++		$output    =~ s/\$HOST/$host/g;
+ 		$output    =~ s/\$SONG_FORMAT/$display/g;
+ 
+ 		#
+@@ -2555,8 +2555,10 @@
+ 		  $output = $file_format2;
+ 		}
+ 
+-		$output    =~ s/\$LINK/$link/g;
+-		$output    =~ s/\$PLAINLINK/$plink/g;
++		$output    =~ s/\$LINK/$host$link/g;
++		$output    =~ s/\$PLAINLINK/$host$plink/g;
++		$output    =~ s/\$RELPATH/$plink/g;
++		$output    =~ s/\$HOST/$host/g;
+ 		$output    =~ s/\$SONG_FORMAT/$display/g;
+ 
+ 		#
+@@ -2677,8 +2679,10 @@
+ 	$output = $file_format2;
+       }
+ 
+-      $output    =~ s/\$LINK/$link/g;
+-      $output    =~ s/\$PLAINLINK/$plink/g;
++      $output    =~ s/\$LINK/$host$link/g;
++      $output    =~ s/\$PLAINLINK/$host$plink/g;
++      $output    =~ s/\$RELPATH/$plink/g;
++      $output    =~ s/\$HOST/$host/g;
+       $output    =~ s/\$SONG_FORMAT/$display/g;
+ 
+       #
+@@ -2783,7 +2787,7 @@
+     my ( $dir ) = (@_);
+     my $prev = "";
+ 
+-    my $banner = "[ <a href=\"/\">Home</a>";
++    my $banner = "[ <a href=\"${host}/\">Home</a>";
+ 
+     my @list = splitPath( $host, $dir );
+ 
+@@ -2800,7 +2804,7 @@
+ 	    {
+ 			$component =~ s/$host//g;
+ 			$component = &urlEncode( $component );
+-			$banner .= " &middot; <a href=\"http://$host$component\">$path</a>";
++			$banner .= " &middot; <a href=\"$host$component\">$path</a>";
+ 	    }
+ 	}
+     }
+@@ -2811,7 +2815,7 @@
+         #
+         $dir =~ s/(.*)\/?/$1/;
+         $dir = &urlEncode( $dir );
+-        $banner .= " | <a href=\"$dir/recurse.m3u\">$play_rec</a>";
++        $banner .= " | <a href=\"${host}${dir}/recurse.m3u\">$play_rec</a>";
+     }
+     $banner .= " ]";
+ 
+diff -wbBur gnump3d-3.0/etc/gnump3d.conf gnump3d-3.0.my/etc/gnump3d.conf
+--- gnump3d-3.0/etc/gnump3d.conf	2007-10-18 17:34:02.000000000 +0000
++++ gnump3d-3.0.my/etc/gnump3d.conf	2010-07-21 16:31:31.000000000 +0000
+@@ -490,7 +490,7 @@
+ #  This is useful if you want to have alternating background colors for
+ #  each entry in a table, for example.
+ #
+-file_format = <tr><td width="10%">&nbsp;</td><td><a href="$LINK">$SONG_FORMAT</a></td><td align="right">[<a href="/info$PLAINLINK">Info</a>] [<a href="$PLAINLINK">Download</a>]</td></tr>
++file_format = <tr><td width="10%">&nbsp;</td><td><a href="$LINK">$SONG_FORMAT</a></td><td align="right">[<a href="$HOST/info$RELPATH">Info</a>] [<a href="$PLAINLINK">Download</a>]</td></tr>
+ 
+ 
+ 

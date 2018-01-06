@@ -1,0 +1,23 @@
+pkgbase = gnump3d
+	pkgdesc = A streaming server for MP3s, OGG vorbis files, movies and other media formats.
+	pkgver = 3.0
+	pkgrel = 9
+	url = http://www.gnu.org/software/gnump3d/
+	install = gnump3d.install
+	arch = any
+	license = GPL
+	depends = sh
+	depends = perl
+	backup = etc/gnump3d/gnump3d.conf
+	source = https://savannah.gnu.org/download/gnump3d/gnump3d-3.0.tar.bz2
+	source = https://savannah.gnu.org/download/gnump3d/gnump3d-3.0.tar.bz2.sig
+	source = gnump3d.service
+	source = gnump3d-proxy.patch
+	validpgpkeys = DB1FF3FB1D08FC01ED222243C0CFC6B3CD4C0D9D
+	sha256sums = 1ac5bd0e850b0e18ccd9d19219f5108fa84b50d8ae3825a361e8b907eab7f19c
+	sha256sums = SKIP
+	sha256sums = a8fb63b0bb49e7fb4149a7f8c15e1a337bfa4787f630fa9fcd696a6bdf6418e8
+	sha256sums = 1a1829bf55f46fbfa249053732033b59f7ab1dc27a2f3c4e7ed71f03ac10a1ae
+
+pkgname = gnump3d
+
