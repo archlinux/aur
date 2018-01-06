@@ -1,0 +1,12 @@
+pkgbase = fbdump
+	pkgdesc = captures the contents of the visible portion of the Linux framebuffer to stdout
+	pkgver = 0.4.2
+	pkgrel = 4
+	url = http://www.rcdrummond.net/fbdump/
+	arch = x86_64
+	license = GPL
+	source = http://www.rcdrummond.net/fbdump/fbdump-0.4.2.tar.gz
+	md5sums = 85ae97c0800a2caf2b04ad7764e3915b
+
+pkgname = fbdump
+
