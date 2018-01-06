@@ -7,8 +7,8 @@ else
 _arch="x86"
 fi
 
-_major="11.0.1"
-_minor=18119
+_major="11.0.2"
+_minor=18122
 
 pkgname="komodo-edit"
 _bigname="Komodo-Edit"
@@ -20,7 +20,7 @@ url="http://www.activestate.com/komodo-edit"
 license=('MPL')
 depends=('dbus-glib' 'glibc>=2.4' 'libjpeg-turbo' 'gcc-libs' 'gtk2')
 optdepends=('xterm: can be used by komodo-toolbox')
-conflicts=('komodoedit')
+conflicts=('komodoedit' 'komodo-ide' 'komodo-ide-nightly')
 options=('!strip')
 
 source=('_install.py.patch' 'activestate.py.patch')
@@ -30,8 +30,8 @@ source_x86_64=("${_srcbase}/${_major}/${_bigname}-${_major}-${_minor}-linux-x86_
 
 sha256sums=('98177ee92e13036baa0a4f61ef398c0e23ab5d250cf7aa1b1c5a557efaaec3a8'
             'c68d7e94955e0f7b32cf3863136891d6441d9dd3a6346481b911d2c250cf32e9')
-sha256sums_i686=('237a52dcdb6b5b922e6baf430758a25b780dc5a12695fd870236c2a29e8a9a6c')
-sha256sums_x86_64=('18fbb2c38fc09485122854badf7f65852ce56cbb0e5fdffda37c8f53d47a36d7')
+sha256sums_i686=('dee9ab3309b4c39666d1168618a14531d184c3bbdaecfb859102036119bc4d62')
+sha256sums_x86_64=('5d00474639d1ba01cfeacc1da6ba0d90dfe68319f128acaa1140798d830bda00')
 
 prepare() {
   cd ${srcdir}/${_bigname}-${_major}-${_minor}-linux-${_arch}
