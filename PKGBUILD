@@ -7,6 +7,7 @@ pkgdesc='A command line, stack-based calculator with postfix notation'
 url='https://github.com/soveran/clac'
 arch=('i686' 'x86_64')
 license=('BSD')
+makedepends=('git')
 
 source=("clac::git+https://github.com/soveran/clac")
 sha1sums=('SKIP')
