@@ -3,7 +3,7 @@
 
 _pkgname=polari
 pkgname=$_pkgname-git
-pkgver=3.20.0.6.g8d2e0e4
+pkgver=3.27.2+28+g11a9192
 pkgrel=1
 pkgdesc="An IRC Client for GNOME"
 arch=(i686 x86_64)
@@ -15,22 +15,22 @@ replaces=($_pkgname)
 provides=($_pkgname-$pkgver)
 conflicts=($_pkgname)
 groups=(gnome-extra)
-install=polari.install
-source=('git+https://git.gnome.org/browse/polari')
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --always | sed 's|-|.|g'
+  cd $_pkgname
+  git describe --always | sed 's/-/+/g'
 }
 
 build() {
-  cd $srcdir/$_pkgname
-  ./autogen.sh --prefix=/usr --disable-Werror
-  make
+  cd $_pkgname
+  [ -d _build ] && rm -rf _build
+  meson build --prefix=/usr --buildtype=release
+  ninja -C build
 }
 
 package() {
-  cd $srcdir/$_pkgname
-  make DESTDIR="$pkgdir" install
+  cd $_pkgname
+  DESTDIR=${pkgdir} ninja -C build install
 }
