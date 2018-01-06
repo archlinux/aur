@@ -1,9 +1,8 @@
 pkgbase = epfl-scripts-git
 	pkgdesc = Collection of scripts for simplifying one's life at EPFL
-	pkgver = r57.82081aa
+	pkgver = r59.69f6024
 	pkgrel = 1
 	url = https://gitlab.gnugen.ch/gnugen/epfl-scripts
-	changelog = changelog
 	arch = any
 	license = Apache
 	depends = coreutils
