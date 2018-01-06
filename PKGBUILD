@@ -5,7 +5,7 @@ pkgver=1.1
 pkgrel=1
 pkgdesc='stylishdark grub2 theme'
 arch=(any)
-url='https://www.gnome-look.org/p/1009237/'
+url='https://github.com/vinceliuice/grub2-themes'
 license=('GPL')
 depends=('grub')
 optdepends=('grub-customizer')
@@ -17,8 +17,9 @@ source=('git://github.com/vinceliuice/grub2-themes')
 md5sums=('SKIP')
 
 package() {
+    install -dm755 $pkgdir/boot/grub/themes/
     cd grub2-themes/grub-themes-stylishdark
-    cp -r  StylishDark $pkgdir/
+    cp StylishDark $pkgdir/boot/grub/themes/ -r
     
     echo '======='
     echo -e 'You should:\n1. edit\e[36m /etc/default/grub \e[0m,add (or modify) the line \n \e[1m GRUB_THEME="/boot/grub/themes/StylishDark/theme.txt"\e[0m'
