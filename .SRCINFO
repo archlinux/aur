@@ -1,0 +1,13 @@
+pkgbase = gnuhtml2latex
+	pkgdesc = A Perl script that converts html files to latex
+	pkgver = 0.4
+	pkgrel = 3
+	url = http://packages.debian.org/unstable/text/gnuhtml2latex
+	arch = any
+	license = GPL
+	depends = perl-html-parser
+	source = http://ftp.debian.org/debian/pool/main/g/gnuhtml2latex/gnuhtml2latex_0.4.orig.tar.gz
+	md5sums = 6708dc9ab5b0d31572f27420d2992258
+
+pkgname = gnuhtml2latex
+
