@@ -23,6 +23,7 @@ pkgbase = sudo-selinux
 	source = https://www.sudo.ws/sudo/dist/sudo-1.8.21p2.tar.gz.sig
 	source = sudo.pam
 	validpgpkeys = CCB24BE9E9481B15D34159535A89DFA27EE470C4
+	validpgpkeys = 59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB
 	sha256sums = 74c5746cd33a814e2431c39faf0d76f7f8a697379bd073862e3b156cf0d76368
 	sha256sums = SKIP
 	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2

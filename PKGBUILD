@@ -26,7 +26,8 @@ source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig
 sha256sums=('74c5746cd33a814e2431c39faf0d76f7f8a697379bd073862e3b156cf0d76368'
             'SKIP'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
-validpgpkeys=('CCB24BE9E9481B15D34159535A89DFA27EE470C4')
+validpgpkeys=('CCB24BE9E9481B15D34159535A89DFA27EE470C4' # old pgp signing key
+              '59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB') # new pgp signing key
 
 prepare() {
   cd "$srcdir/${pkgname/-selinux}-$_sudover"
