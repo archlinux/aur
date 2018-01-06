@@ -1,0 +1,20 @@
+pkgbase = anyfs-tools
+	pkgdesc = unix-way toolset for recovering and converting filesystems
+	pkgver = 0.85.1c
+	pkgrel = 5
+	url = http://anyfs-tools.sourceforge.net/
+	install = anyfs-tools.install
+	arch = x86_64
+	license = GPL
+	depends = bzip2
+	depends = e2fsprogs
+	depends = libmpeg2
+	depends = xfsprogs
+	depends = fuse
+	source = http://downloads.sourceforge.net/sourceforge/anyfs-tools/anyfs-tools-0.85.1c.tar.bz2
+	source = disable-build-ext2fs.patch
+	md5sums = d3da0004cd0f037ec3e926acd3f520c2
+	md5sums = 5ea91297b605d51b03243adda1efed27
+
+pkgname = anyfs-tools
+

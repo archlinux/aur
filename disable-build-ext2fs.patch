@@ -1,0 +1,20 @@
+diff -wbBur anyfs-tools-0.85.1c/src/Makefile.in anyfs-tools-0.85.1c.my/src/Makefile.in
+--- anyfs-tools-0.85.1c/src/Makefile.in	2006-11-20 03:40:54.000000000 +0300
++++ anyfs-tools-0.85.1c.my/src/Makefile.in	2012-02-23 10:43:33.000000000 +0400
+@@ -17,7 +17,7 @@
+ REBLOCKLDFLAGS= -lany
+ BDITLDFLAGS= -lany
+ 
+-all: reblock build_it anysurrect_util build_e2fs_util $(XFS_UTILS) $(ANYFUSE_MODULE)
++all: reblock build_it anysurrect_util $(XFS_UTILS) $(ANYFUSE_MODULE)
+ 
+ reblock: $(OBJREBLOCK)
+ 	$(CC) $(CCFLAGS) -o $@ $(OBJREBLOCK) $(LDFLAGS) $(REBLOCKLDFLAGS)
+@@ -39,7 +39,6 @@
+ 	$(INSTALL) -d $(INSTALLPATH)/sbin
+ 	$(INSTALL) reblock build_it $(INSTALLPATH)/sbin
+ 	$(MAKE) $(AM_MAKEFLAGS) -C anysurrect install
+-	$(MAKE) $(AM_MAKEFLAGS) -C build_e2fs install
+ 	$(MAKE) $(AM_MAKEFLAGS) -C build_xfs install
+ 	$(MAKE) $(AM_MAKEFLAGS) -C anyfuse install
+ 
