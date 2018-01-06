@@ -1,7 +1,7 @@
 # Maintainer: Nbiba Bedis <bedisnbiba@gmail.com>
 
 pkgname=sane-qt-git
-pkgver=r20.
+pkgver=r20.c036f95
 pkgrel=1
 pkgdesc="Simple scanner GUI (sane) made with PyQt5"
 arch=('any')
