@@ -1,0 +1,23 @@
+pkgbase = lomoco
+	pkgdesc = Logitech USB mouse configuration program
+	pkgver = 1.0
+	pkgrel = 11
+	url = https://launchpad.net/ubuntu/+source/lomoco
+	arch = x86_64
+	license = GPL
+	depends = libusb-compat
+	replaces = lmctl
+	backup = etc/udev/lomoco_mouse.conf
+	source = http://http.debian.net/debian/pool/main/l/lomoco/lomoco_1.0.0.orig.tar.gz
+	source = http://http.debian.net/debian/pool/main/l/lomoco/lomoco_1.0.0-1.debian.tar.gz
+	source = lomoco_mxair.patch::https://bugs.archlinux.org/task/36657?getfile=10920
+	source = lomoco_mouse.conf
+	source = lomoco.sh
+	md5sums = f5197d0a3ee81229c3eecc1e03f7b08d
+	md5sums = b616b29dfe183b74f43072c22a470b8b
+	md5sums = d0390dfcadae6e54a4af3e6227d24201
+	md5sums = 182b10a7e4a1828a93c1d55ef7f81b97
+	md5sums = bc92f661641265b33b27895ef24028fd
+
+pkgname = lomoco
+
