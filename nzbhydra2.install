@@ -4,8 +4,6 @@ post_install() {
     mkdir -p /var/lib/nzbhydra2
     chown -R nzbhydra2: /var/lib/nzbhydra2
 
-    mkdir -p /etc/nzbhydra2
-    chown -R nzbhydra2 /etc/nzbhydra2
 }
 
 post_upgrade() {
