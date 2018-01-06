@@ -1,6 +1,6 @@
 pkgbase = dlangide
 	pkgdesc = D language IDE based on DlangUI
-	pkgver = 0.8.10
+	pkgver = 0.8.5
 	pkgrel = 2
 	url = https://github.com/buggins/dlangide
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = dlangide
 	makedepends = dmd
 	makedepends = dub
 	depends = dtools
-	source = https://github.com/buggins/dlangide/archive/v0.8.10.tar.gz
+	source = https://github.com/buggins/dlangide/archive/v0.8.5.tar.gz
 	source = dlangide.desktop
 	source = dlangide.install
-	sha256sums = e4b0af216678bdbd6dc68b350a48b036288f626475fa658ea96b2f9c2b1b50c6
+	sha256sums = dd456af7e55c2f08971816f4cd17aa28c1f7686b7c01059c00edafc9a088f7de
 	sha256sums = dc3b72ef22bec75722266497f398b87a057b44b9add7dbf1ca1140521d553efa
 	sha256sums = 9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e
 
