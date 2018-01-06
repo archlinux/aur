@@ -3,14 +3,14 @@
 
 pkgname=unifi
 pkgver=5.6.29
-pkgrel=1
+pkgrel=2
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('any')
 url='https://community.ubnt.com/unifi'
 # We are allowed to ship the software in our repository
 # https://mailman.archlinux.org/mailman/private/arch-dev/2014-August/015690.html
 license=('custom')
-depends=('mongodb' 'java-runtime-headless' 'fontconfig')
+depends=('mongodb<3.6.0' 'wiredtiger<=2.9.3' 'java-runtime-headless' 'fontconfig')
 conflicts=('tomcat-native')
 source=("UniFi-$pkgver.zip::https://dl.ubnt.com/unifi/$pkgver/UniFi.unix.zip"
         'unifi.service'
