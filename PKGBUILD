@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('GPL')
 url="https://pretix.eu"
 depends=('jdk>=9' 'bash' 'sqlite')
-makedepends=('jdk>=9' 'gradle')
+makedepends=()
 source=("https://download.pretix.eu/public/pretixdesk/jar/pretixdesk-${pkgver}.jar" 'launcher' 'pretixdesk.desktop')
 conflicts=('pretixdesk-git')
 provides=('pretixdesk')
