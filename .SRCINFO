@@ -1,0 +1,16 @@
+pkgbase = cdcd
+	pkgdesc = A commandline cd-player
+	pkgver = 0.6.6
+	pkgrel = 9
+	url = http://libcdaudio.sourceforge.net/
+	arch = x86_64
+	license = GPL2
+	depends = libcdaudio
+	depends = readline
+	source = http://downloads.sourceforge.net/libcdaudio/cdcd-0.6.6.tar.gz
+	source = cdcd-0.6.6-x86_64.patch
+	md5sums = dc17f2e275c7214cb693f6abb50f29fb
+	md5sums = 7c39f01408fc084e2c62da4da324370e
+
+pkgname = cdcd
+
