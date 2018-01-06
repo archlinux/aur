@@ -19,8 +19,8 @@ pkgbase = linux-xanmod-lts
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = 1e8264f69abb56b25009636693c3e6cf564a90379704a62cae2b3681cd6f66f1
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=26bafcc07e28d3f186bd3be0123c1bcdcfb85810
-	sha256sums_x86_64 = 6c4d909ae6594a2956c257539c8b2f67a8de52d7335be172787d6dc8aca12c99
+	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=2f8df9c7b351459eb5ffd59e548fa6f00035567c
+	sha256sums_x86_64 = 3190c72835aa75ee984b83bc463ebf317c9f50d09200808bfe08464e5a08bc56
 
 pkgname = linux-xanmod-lts
 	pkgdesc = The Linux kernel and modules with Xanmod patches - LTS branch

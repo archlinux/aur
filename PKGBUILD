@@ -16,7 +16,7 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=26bafcc07e28d3f186bd3be0123c1bcdcfb85810
+arch_config_trunk=2f8df9c7b351459eb5ffd59e548fa6f00035567c
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         # pacman hook for initramfs regeneration
@@ -30,7 +30,7 @@ sha256sums=('993126d1c03fbcc38557412fa71efb4df5ee99b4634ddb6168ba7a125b0af3d6'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1e8264f69abb56b25009636693c3e6cf564a90379704a62cae2b3681cd6f66f1'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
-sha256sums_x86_64=('6c4d909ae6594a2956c257539c8b2f67a8de52d7335be172787d6dc8aca12c99')
+sha256sums_x86_64=('3190c72835aa75ee984b83bc463ebf317c9f50d09200808bfe08464e5a08bc56')
 
 _kernelname=${pkgbase#linux}
 
