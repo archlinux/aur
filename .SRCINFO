@@ -1,14 +1,14 @@
 pkgbase = ghostwriter-l10n-git
 	pkgdesc = A cross-platform, aesthetic, distraction-free Markdown editor
-	pkgver = v1.5.0.r0.g4fae783
-	pkgrel = 2
+	pkgver = v1.5.0.r36.gc08482c
+	pkgrel = 1
 	url = https://wereturtle.github.io/ghostwriter/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
-	makedepends = hunspell
 	depends = qt5-webkit
+	depends = hunspell
 	depends = hicolor-icon-theme
 	optdepends = multimarkdown: A superset of Markdown with various output formats
 	optdepends = pandoc: Conversion between markup formats
@@ -16,7 +16,7 @@ pkgbase = ghostwriter-l10n-git
 	provides = ghostwriter
 	conflicts = ghostwriter
 	conflicts = ghostwriter-git
-	source = ghostwriter::git+https://github.com/wereturtle/ghostwriter.git#commit=4fae783
+	source = ghostwriter::git+https://github.com/wereturtle/ghostwriter.git#commit=c08482c
 	sha256sums = SKIP
 
 pkgname = ghostwriter-l10n-git

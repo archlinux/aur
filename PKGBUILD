@@ -1,16 +1,16 @@
-# Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Maintainer: Iván Ruvalcaba <mario.i.ruvalcaba[at]gmail[dot]com>
 
 _pkgname=ghostwriter
 pkgname="${_pkgname}-l10n-git"
-_commit=4fae783 # 7 digits
-pkgver=v1.5.0.r0.g4fae783
-pkgrel=2
+_commit=c08482c # 7 digits
+pkgver=v1.5.0.r36.gc08482c
+pkgrel=1
 pkgdesc="A cross-platform, aesthetic, distraction-free Markdown editor"
 arch=('i686' 'x86_64')
 url="https://wereturtle.github.io/ghostwriter/"
 license=('GPL3')
-depends=('qt5-webkit' 'hicolor-icon-theme')
-makedepends=('qt5-tools' 'hunspell')
+depends=('qt5-webkit' 'hunspell' 'hicolor-icon-theme')
+makedepends=('qt5-tools')
 optdepends=('multimarkdown: A superset of Markdown with various output formats'
             'pandoc: Conversion between markup formats'
             'cmark: CommonMark parsing and rendering library and program in C')
