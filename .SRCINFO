@@ -1,0 +1,16 @@
+pkgbase = instead-launcher
+	pkgdesc = launcher and games downloader for INSTEAD quest interpreter
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://instead.syscall.ru/
+	arch = x86_64
+	license = GPL
+	makedepends = sed
+	makedepends = qt4
+	source = http://downloads.sourceforge.net/project/instead/instead-launcher/instead-launcher_0.7.0.tar.gz
+	sha256sums = 82e9575f23a3dd7527f658ff09603392dc54cdb58544cb3ed9675b446ef53d5c
+
+pkgname = instead-launcher
+	depends = qt4
+	depends = instead
+
