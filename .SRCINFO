@@ -1,0 +1,14 @@
+pkgbase = cdbxx
+	pkgdesc = cdbxx is a small STL style C++ library for TinyCDB implementation of Constant Database
+	pkgver = 0.0.1rc2
+	pkgrel = 5
+	url = http://cdbxx.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = tinycdb
+	depends = gcc
+	source = http://downloads.sourceforge.net/sourceforge/cdbxx/cdbxx-0.0.1rc2.tar.bz2
+	md5sums = 8c7f3eebe5c090ddea4aebf5445a1621
+
+pkgname = cdbxx
+
