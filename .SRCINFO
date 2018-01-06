@@ -1,0 +1,34 @@
+pkgbase = cloud-init
+	pkgdesc = The standard for customising cloud instances
+	pkgver = 0.7.9
+	pkgrel = 1
+	url = http://cloud-init.io
+	arch = any
+	license = GPL3
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = systemd
+	depends = python2-yaml
+	depends = python2-cheetah
+	depends = python2-prettytable
+	depends = python2-oauth
+	depends = python2-boto
+	depends = python2-configobj
+	depends = python2-jsonpatch
+	depends = python2-jsonpointer
+	depends = net-tools
+	depends = python2-requests
+	depends = python2-argparse
+	depends = python2-oauthlib
+	depends = python2-jinja
+	backup = etc/cloud/cloud.cfg
+	backup = etc/cloud/cloud.cfg.d/05_logging.cfg
+	source = https://launchpad.net/cloud-init/trunk/0.7.9/+download/cloud-init-0.7.9.tar.gz
+	source = fix-logging.patch
+	source = archlinux.cloud.cfg
+	md5sums = 0a83072b25a0f96c539fa6cd45c05347
+	md5sums = 269cf6bd2337ca2fea3197aefeee5277
+	md5sums = 4c03c6d2d35c42086ed07f487f01c08a
+
+pkgname = cloud-init
+

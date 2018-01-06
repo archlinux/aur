@@ -1,0 +1,35 @@
+--- a/config/cloud.cfg.d/05_logging.cfg
++++ b/config/cloud.cfg.d/05_logging.cfg
+@@ -38,19 +38,14 @@
+    format=%(asctime)s - %(filename)s[%(levelname)s]: %(message)s
+    
+    [formatter_simpleFormatter]
+-   format=[CLOUDINIT] %(filename)s[%(levelname)s]: %(message)s
+- - &log_file |
+-   [handler_cloudLogHandler]
+-   class=FileHandler
+-   level=DEBUG
+-   formatter=arg0Formatter
+-   args=('/var/log/cloud-init.log',)
++   format=%(levelname)s %(filename)s: %(message)s
++
+  - &log_syslog |
+    [handler_cloudLogHandler]
+    class=handlers.SysLogHandler
+-   level=DEBUG
++   level=INFO
+    formatter=simpleFormatter
+-   args=("/dev/log", handlers.SysLogHandler.LOG_USER)
++   args=("/dev/log", handlers.SysLogHandler.LOG_DAEMON)
+ 
+ log_cfgs:
+ # Array entries in this list will be joined into a string
+@@ -61,7 +56,7 @@
+ #
+ # The default behavior is to just log to a file.
+ # This mechanism that does not depend on a system service to operate.
+- - [ *log_base, *log_file ]
++# - [ *log_base, *log_file ]
+ # A file path can also be used.
+ # - /etc/log.conf
+ 
