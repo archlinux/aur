@@ -1,0 +1,17 @@
+pkgbase = fldiff
+	pkgdesc = graphical diff program
+	pkgver = 1.1
+	pkgrel = 10
+	url = http://directory.fsf.org/wiki/Fldiff
+	arch = x86_64
+	license = GPL
+	depends = diffutils
+	depends = fltk
+	depends = xdg-utils
+	source = http://ftp.de.debian.org/debian/pool/main/f/fldiff/fldiff_1.1+0.orig.tar.gz
+	source = build-fix.patch
+	md5sums = 12897c92106fb5d665210a2e82f5cf25
+	md5sums = 4f6418cb0cbc33aca28a760738ea6f18
+
+pkgname = fldiff
+
