@@ -1,0 +1,18 @@
+pkgbase = rakarrack
+	pkgdesc = Versatile guitar multi-effects processor
+	pkgver = 0.6.1
+	pkgrel = 3
+	url = http://rakarrack.sourceforge.net
+	arch = x86_64
+	license = GPL
+	depends = alsa-utils
+	depends = jack
+	depends = fltk
+	depends = libxpm
+	source = http://downloads.sourceforge.net/rakarrack/rakarrack-0.6.1.tar.bz2
+	source = fltk_include.patch
+	md5sums = 56b1e04779ae3d56cc8a3ad3c4e25152
+	md5sums = d43512466f514434daaf16bd72951ea0
+
+pkgname = rakarrack
+
