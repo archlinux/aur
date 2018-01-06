@@ -1,0 +1,13 @@
+pkgbase = diff2html
+	pkgdesc = diff to html
+	pkgver = 1.0.1
+	pkgrel = 5
+	url = http://kafka.fr.free.fr/spip.php?article4
+	arch = any
+	license = GPL
+	depends = python2
+	source = http://kafka.fr.free.fr/files/diff2html/diff2html.bz2
+	md5sums = e3aa3bd4fec0a93f5f97efcd210e232b
+
+pkgname = diff2html
+
