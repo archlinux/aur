@@ -1,0 +1,16 @@
+pkgbase = nanoblogger
+	pkgdesc = NanoBlogger is a small weblog engine written in Bash for the command line
+	pkgver = 3.4.2
+	pkgrel = 3
+	url = http://nanoblogger.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = bash
+	backup = etc/nb.conf
+	source = http://nanoblogger.sourceforge.net/downloads/nanoblogger-3.4.2.tar.gz
+	source = nb
+	md5sums = 9de66534776d557c4611cabbdedcaaff
+	md5sums = 41882e512508ab0e043dcf0187424add
+
+pkgname = nanoblogger
+
