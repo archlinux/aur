@@ -3,7 +3,6 @@ pkgbase = pretixdesk-git
 	pkgver = r71.a61e9c1
 	pkgrel = 1
 	url = https://pretix.eu
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = jdk>=9

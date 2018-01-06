@@ -4,7 +4,7 @@ pkgname=$_pkgname-git
 pkgver=r71.a61e9c1
 pkgrel=1
 pkgdesc="Desktop application for attendee check-in with the pretix ticketing system"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
 url="https://pretix.eu"
 depends=('jdk>=9' 'bash' 'sqlite')
