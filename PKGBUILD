@@ -1,8 +1,8 @@
 # Contributor: Xappe & the_isz from archlinux.org forums
 
 pkgname=xdm-arch-theme
-pkgver=2.3.1
-pkgrel=4
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="An Arch Linux theme for xdm."
 arch=("any")
 url="https://github.com/the-isz/xdm-arch-theme"
@@ -16,10 +16,10 @@ optdepends=(
     "xv: another option for setting the background image" )
 source=(
     "https://github.com/the-isz/$pkgname/tarball/$pkgver"
-    "http://upload.wikimedia.org/wikipedia/en/a/ac/Archlinux-official-fullcolour.svg" 
+    "https://upload.wikimedia.org/wikipedia/commons/a/ac/Archlinux-official-fullcolour.svg"
     )
 md5sums=(
-    "10d6a48c0cc80685273306aae7b9e03c"
+    "85aaf02c3511f0b65965ad55ad777cf1"
     "abc1cc75e716e05a7405071d79dfdf8c"
     )
 install=${pkgname}.install
