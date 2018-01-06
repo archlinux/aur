@@ -1,0 +1,16 @@
+pkgbase = ht
+	pkgdesc = A file editor/viewer/analyzer for executables
+	pkgver = 2.1.0
+	pkgrel = 5
+	url = http://hte.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = texinfo
+	depends = gcc-libs
+	depends = ncurses
+	depends = lzo
+	source = http://downloads.sourceforge.net/sourceforge/hte/ht-2.1.0.tar.bz2
+	md5sums = 09b2a4461d75e9cd03af1cd67fadc1ec
+
+pkgname = ht
+
