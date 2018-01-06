@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mandelbrot-gtk-git
-pkgver=0.4.9.g3771afb
+pkgver=r54.ae65e3b
 pkgrel=1
 pkgdesc="A multithreaded GTK3 application for rendering the mandelbrot and julia set."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ _gitname=mandelbrot
 
 pkgver() {
   cd "$srcdir"/$_gitname
-  git describe --tags | sed s+-+.+g | cut -c2-
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
