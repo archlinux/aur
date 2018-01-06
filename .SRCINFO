@@ -1,0 +1,14 @@
+pkgbase = vncviewer-jar
+	pkgdesc = VNC viewer java applet
+	pkgver = 1.3.10
+	pkgrel = 4
+	url = http://www.tightvnc.com
+	arch = any
+	license = GPL
+	conflicts = tightvnc
+	options = !makeflags
+	source = http://downloads.sf.net/sourceforge/vnc-tight/tightvnc-1.3.10_unixsrc.tar.bz2
+	md5sums = 397b35faad32d5246b6d44b142f8304f
+
+pkgname = vncviewer-jar
+
