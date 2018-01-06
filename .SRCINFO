@@ -1,0 +1,17 @@
+pkgbase = gimmage
+	pkgdesc = A gtkmm image viewer
+	pkgver = 0.2.3
+	pkgrel = 7
+	url = http://sourceforge.net/projects/gimmage.berlios/
+	changelog = ChangeLog
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gtkmm
+	depends = curl
+	depends = file
+	source = http://sourceforge.net/projects/gimmage.berlios/files/gimmage-0.2.3.tar.gz
+	md5sums = f51cca53b3d33415e75a91cf81b6ac39
+
+pkgname = gimmage
+
