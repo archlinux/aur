@@ -1,0 +1,14 @@
+pkgbase = isapnptools
+	pkgdesc = Allow ISA Plug-And-Play devices to be configured on a Linux machine
+	pkgver = 1.27
+	pkgrel = 5
+	url = http://www.roestock.demon.co.uk/isapnptools/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	options = staticlibs
+	source = http://ibiblio.org/pub/Linux/system/hardware/isapnptools-1.27.tgz
+	md5sums = b997ba56583dc850fce9b93d658dfa0c
+
+pkgname = isapnptools
+
