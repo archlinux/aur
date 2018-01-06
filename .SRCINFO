@@ -1,0 +1,21 @@
+pkgbase = osec
+	pkgdesc = lightweight integrity checking system
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = http://o-security.sourceforge.net/
+	install = osec.install
+	arch = x86_64
+	license = GPL
+	makedepends = help2man
+	makedepends = tinycdb
+	depends = cdbxx
+	depends = libcap
+	depends = openssl
+	depends = perl
+	backup = etc/osec/dirs.conf
+	backup = etc/osec/pipe.conf
+	source = http://downloads.sourceforge.net/project/o-security/o-security/1.2.5/osec-1.2.5.tar.gz
+	md5sums = 34eb5b327affee6717e9cc589e83019f
+
+pkgname = osec
+
