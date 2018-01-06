@@ -7,7 +7,7 @@ After=network.target
 User=nzbhydra2
 Group=nzbhydra2
 Type=simple
-WorkingDirectory=/usr/lib/nzbhydra2
+WorkingDirectory=/var/lib/nzbhydra2
 ExecStart=/usr/lib/nzbhydra2/nzbhydra2 --nobrowser --datafolder /var/lib/nzbhydra2
 Restart=always
 
