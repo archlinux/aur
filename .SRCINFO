@@ -1,0 +1,13 @@
+pkgbase = sub2srt
+	pkgdesc = A simple tool to convert 2 common subtitle formats to .srt format
+	pkgver = 0.5.5
+	pkgrel = 2
+	url = http://www.robelix.com/sub2srt/
+	arch = any
+	license = GPL
+	depends = perl
+	source = sub2srt-0.5.5.tar.gz::https://github.com/robelix/sub2srt/archive/0.5.5.tar.gz
+	md5sums = e68b22eca94ae7b9207a4f9c46c17ad5
+
+pkgname = sub2srt
+
