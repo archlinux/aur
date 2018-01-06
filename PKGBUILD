@@ -2,10 +2,10 @@
 
 pkgname=libfm-directory_thumbnails
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for file management. Patched to allow directory thumbnails.'
 depends=('gtk2' 'libexif' "libfm-extra=$pkgver" 'menu-cache')
-makedepends=('gtk-doc' 'intltool' 'vala')
+makedepends=('intltool' 'vala')
 provides=("libfm=$pkgver")
 conflicts=("libfm=$pkgver")
 url='https://sourceforge.net/projects/pcmanfm/'
@@ -13,15 +13,15 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 source=("https://downloads.sourceforge.net/pcmanfm/libfm-$pkgver.tar.xz"
         'https://sourceforge.net/p/pcmanfm/bugs/1020/attachment/directory_thumbnails.patch'
-        "https://github.com/tsujan/libfm/commit/49150d1f66e1be15ac9fdcb4416e4f0cd06a9dd3.patch")
+        'https://gist.githubusercontent.com/gcavallo/8367304d725c6da03277500d4edb57ff/raw/8487492b4f6a30c924e5d77627bd49998e7da22d/fm-file-info.patch')
 sha256sums=('c706bb1020cf5f2d6f5a9226f692ce1985947134dcf2bde64278bd0420779b5a'
             '7065c345ae29762a6e3d75c6757b999c5d609a967f61522c15f6e85d8b4bc9ef'
-            '531a17d3673149b48622221fff997e1dd1d9eeea604902207ce95e8bcfee679d')
+            'f1fc131318b1b87bc5614738ad864f44b389da004ea7afd57be88f72f1a7d698')
 
 prepare() {
 	cd "$srcdir/libfm-$pkgver"
 	patch -Np1 < '../directory_thumbnails.patch'
-	patch -Np1 < "../49150d1f66e1be15ac9fdcb4416e4f0cd06a9dd3.patch"
+	patch -Np1 < '../fm-file-info.patch'
 }
 
 build() {
@@ -29,13 +29,12 @@ build() {
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \
 		--enable-actions \
-		--enable-gtk-doc \
 		--with-gnu-ld
 
 	# https://bugzilla.gnome.org/show_bug.cgi?id=656231
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-	make 
+	make
 }
 
 package() {
