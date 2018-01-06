@@ -69,7 +69,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.14.12
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -132,8 +132,9 @@ source=(# mainline kernel patches
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch'
         '0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
-        '0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch')
+        '0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
+        '0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
+        '0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
@@ -154,11 +155,12 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '06bc1d8b1cd153c3146a4376d833f5769b980e5ef5eae99ddaaeb48bf514dae2'
-            'b90bef87574f30ec66c0f10d089bea56a9e974b6d052fee3071b1ff21360724b'
-            'f38531dee9fd8a59202ce96ac5b40446f1f035b89788ea9ecb2fb3909f703a25'
-            '0a249248534a17f14fab7e14994811ae81fe324668a82ff41f3bcabeeae1460f'
-            '8e1b303957ddd829c0c9ad7c012cd32f2354ff3c8c1b85da3d7f8a54524f3711')
+            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
+            '9251c03da9d4b64591d77f490ff144d4ba514e66e74294ada541bf827306c9c4'
+            '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
+            '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
+            'c3d743a0e193294bc5fbae65e7ba69fd997cd8b2ded9c9a45c5151d71d9cfb95'
+            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -187,11 +189,15 @@ prepare() {
   
   ### Fix https://bugs.archlinux.org/task/56605
       msg "Fix #56605"
-      patch -Np1 -i ../0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+      patch -Np1 -i ../0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
   
   ### Fix https://bugs.archlinux.org/task/56846
       msg "Fix #56846"
-      patch -Np1 -i ../0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+      patch -Np1 -i ../0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  
+  ### Fix https://bugs.archlinux.org/task/56711
+      msg "Fix #56711"
+      patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   
   ### Patch source with BFQ-SQ-MQ
         msg "Fix naming schema in BFQ-SQ-MQ patch"
