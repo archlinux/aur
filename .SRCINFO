@@ -1,0 +1,24 @@
+pkgbase = normalize
+	pkgdesc = A tool for adjusting the volume of WAV files to a standard level
+	pkgver = 0.7.7
+	pkgrel = 7
+	url = http://normalize.nongnu.org
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = intltool
+	depends = audiofile
+	depends = libmad
+	depends = vorbis-tools
+	depends = lame
+	depends = flac
+	depends = mpg123
+	source = http://download.savannah.gnu.org/releases/normalize/normalize-0.7.7.tar.bz2
+	source = normalize-0.7.7-audiofile-pkgconfig.patch
+	source = normalize-0.7.7-m4.patch
+	md5sums = 1749b16fc7a08aa5d0cf9f76eeaa8436
+	md5sums = 77d565e29bef11837e80347adfd42b58
+	md5sums = 0b4bca7bf183275b9f939576ebad4233
+
+pkgname = normalize
+
