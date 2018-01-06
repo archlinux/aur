@@ -1,0 +1,15 @@
+pkgbase = ssh-faker
+	pkgdesc = A whitelisting perl script for sshd.
+	pkgver = 1.1
+	pkgrel = 5
+	url = http://www.pkts.ca/ssh-faker.shtml
+	install = ssh-faker.install
+	arch = any
+	license = GPL
+	depends = perl
+	depends = openssh
+	source = https://www.pkts.ca/ssh-faker-1.1.tar.gz
+	sha256sums = 12dd42e0b8ef98031876cc2e054943c9efd68d47ebfbe6abd15e407b76f90486
+
+pkgname = ssh-faker
+
