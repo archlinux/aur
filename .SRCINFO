@@ -1,0 +1,15 @@
+pkgbase = vapoursynth-plugin-f3kdb
+	pkgdesc = flash3kyuu deband plugin for VapourSynth
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/SAPikachu/flash3kyuu_deband
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	depends = glibc
+	depends = vapoursynth
+	source = vapoursynth-plugin-f3kdb-2.0.0.tar.gz::https://github.com/SAPikachu/flash3kyuu_deband/archive/2.0.0-1.tar.gz
+	md5sums = a18d2c87439fdf0aa21dd01ab5dfbb59
+
+pkgname = vapoursynth-plugin-f3kdb
+
