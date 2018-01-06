@@ -1,0 +1,13 @@
+pkgbase = gtk2_prefs
+	pkgdesc = A GTK2 theme selector and font switcher
+	pkgver = 0.4.1
+	pkgrel = 5
+	url = http://gtk-win.sourceforge.net/home/index.php/en/Gtk2Prefs
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://downloads.sourceforge.net/gtk-win/gtk2_prefs-0.4.1.tar.bz2
+	md5sums = 873d2a7707e1dcadc861399434d98d86
+
+pkgname = gtk2_prefs
+
