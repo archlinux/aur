@@ -1,0 +1,14 @@
+pkgbase = closure-linter
+	pkgdesc = A JavaScript style checker and style fixer
+	pkgver = 2.3.19
+	pkgrel = 1
+	url = https://developers.google.com/closure/utilities/
+	arch = any
+	license = APACHE
+	depends = python2-gflags
+	depends = python2-setuptools
+	source = closure-linter-2.3.19.tar.gz::https://github.com/google/closure-linter/archive/v2.3.19.tar.gz
+	sha256sums = cd472f560be5af80afccbe94c9d9b534f7c30085510961ad408f8a314ea5c4c2
+
+pkgname = closure-linter
+
