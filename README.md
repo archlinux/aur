@@ -7,6 +7,10 @@ $ cd getcrypt
 $ make
 $ sudo make install
 ```
+If you are an Arch user, you can install from the AUR.
+```bash
+$ yaourt -S getcrypt
+```
 To get info about a currency, run
 ```bash
 $ getcrypt [currency]
@@ -32,6 +36,6 @@ $ getcrypt check [currency/all]
 
 ##### Future ideas/things to add
 * Man page
-* Arch/Debian/RPM package
+* Debian/RPM package
 * Print info of daily/weekly gains
 * Stock market integration

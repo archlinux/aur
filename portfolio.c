@@ -11,8 +11,10 @@ void portfolio_file_init() {
 void portfolio_modify(char* id, double amount, double amount_spent, FILE* fp, int option) {
     if (portfolio_contains(id, fp)) {
         long position = ftell(fp);
-        char* beginning = (char*) calloc(65536, sizeof(char));
-        char* end = (char*) calloc(65536, sizeof(char));
+        fseek(fp, 0, SEEK_END);
+        size_t length = (size_t)ftell(fp);
+        char* beginning = (char*) calloc(length, sizeof(char));
+        char* end = (char*) calloc(length, sizeof(char));
         fseek(fp, 0, SEEK_SET);
         for (int i = 0; i < (int) position; i++)
             beginning[i] = (char) fgetc(fp);
@@ -42,9 +44,21 @@ void portfolio_modify(char* id, double amount, double amount_spent, FILE* fp, in
             end[strlen(end) - 1] = '\0';
         remove(portfolio_file);
         fp = fopen(portfolio_file, "w");
-        fprintf(fp, "%s%lf %lf", beginning, new_amount, new_amount_spent);
-        if (strlen(end) != 0)
-            fprintf(fp, "\n%s", end);
+        if (new_amount >= 0 && new_amount_spent >= 0) {
+            fprintf(fp, "%s%lf %lf", beginning, new_amount, new_amount_spent);
+            if (strlen(end) != 0)
+                fprintf(fp, "\n%s", end);
+            if (option == ADD)
+                printf("Added ");
+            else if (option == REMOVE)
+                printf("Removed ");
+            else {
+                printf("Set %s to %lf\n", id, amount);
+                return;
+            }
+            printf("%lf %s.\n", amount, id);
+        }
+        else printf("You cannot remove more %s than you have!\n", id);
         free(beginning);
         free(end);
         fclose(fp);
@@ -57,6 +71,13 @@ void portfolio_modify(char* id, double amount, double amount_spent, FILE* fp, in
         if (ftell(fp) != 0)
             fprintf(fp, "\n");
         fprintf(fp, "%s %lf %lf", id, amount, amount_spent);
+        if (option == ADD)
+            printf("Added ");
+        else {
+            printf("Set %s to %lf\n", id, amount);
+            return;
+        }
+        printf("%lf %s.\n", amount, id);
     }
 }
 
@@ -102,7 +123,7 @@ void portfolio_print_all(STRING api_data, JSON crypto_data, FILE* fp) {
         crypto_data = NULL;
         free(data);
     }
-    printf("\nTotal amount owned: $%lf. Total amount spent: $%lf.\n", total_owned, total_spent);
+    printf("\nTotal amount spent: $%lf. Total amount owned: $%lf.\n", total_spent, total_owned);
     string_destroy(&api_data);
     free(str);
     free(id);

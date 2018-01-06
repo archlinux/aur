@@ -13,4 +13,6 @@ uninstall: $(BINS)
 	-rm $(DESTDIR)/bin/$(BINS)
 clean:
 	-rm $(BINS) $(OBJECTS)
+pkgclean:
+	-rm -r $(BINS) pkg/ src/ *.xz
 .PHONY: install uninstall
