@@ -1,8 +1,10 @@
 # Maintainer: magiruuvelvet <contact (at) magiruuvelvet (dot) gdn>
 
+# Note: use GCC to compile, clang doesn't work
+
 pkgname=gimp-plugin-resynthesizer
 _pkgname=resynthesizer
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=2
 pkgdesc="Suite of gimp plugins for texture synthesis"
 arch=('x86_64')
@@ -15,6 +17,10 @@ sha256sums=('ef8d8137c43cba0a712cf1f9c6891e8606d4b8af9b218cea0efcaa7797aa0a87')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
+
+    # make sure GCC is selected during config
+    export CC=gcc
+    export CXX=g++
 
     ./autogen.sh
     ./configure --prefix=/usr \
