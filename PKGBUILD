@@ -2,13 +2,12 @@
 
 pkgname=th07
 pkgver=0.11
-pkgrel=4
+pkgrel=5
 pkgdesc="Perfect cherry blossom trial version. Seventh game of the Touhou Project series. (via wine)"
 arch=(i686 x86_64)
 url="http://www16.big.or.jp/~zun/html/th07.html"
 license=('custom')
 depends=('wine')
-makedepends=(lha)
 optdepends=('timidity++: to get MIDI background music')
 source=(
   th07.sh
@@ -17,25 +16,21 @@ source=(
   th07.xpm
   http://www16.big.or.jp/~zun/data/soft/youmu_tr011.lzh
 )
-noextract=("youmu_tr011.lzh")
 #http://homepage.ntlworld.com/steven.mitchell83/th07_english_patch_1%5b1%5d.0.exe)
 install=${pkgname}.install
 
-md5sums=('68444481ddd6d84e18e801ef3b22db84'
+md5sums=('49ffef262520a2858e9c6cabc26e59a5'
          '35d37eb00a1f7e6fc265f47e639ddfbc'
          '5de1cb787942308b7620f93a176367d9'
          'ecdec576d60c662738e2495947543b95'
          '05360e859c1a3ca173b9d57d96a45b9b')
 
 
-
 options=(!strip)
 
 build() {
-  cd $srcdir/
-  lha e youmu_tr011.lzh
-  cd youmu
-  find -type d|grep -va '\(html\|^.$\)'|xargs -I dir mv "dir" th07man
+  cd $srcdir/youmu
+  mv $'\203'\}$'\203'j$'\203'$'\205'$'\203'A$'\203'$'\213' th07man
   ls *.txt|grep -va '^[rc]'|xargs -I file mv file info.txt
 }
 package() {

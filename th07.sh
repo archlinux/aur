@@ -13,10 +13,10 @@ if [ ! -f "$HOME"/.th07/th07.cfg ] ; then
   echo "AAABAAIABAD//////////wMAAAACAAcAWAJYAgIDAAIBAQAAAgABAAAAAAAAAAAAAAAAAAEIAAA=" |base64 -d > "$HOME"/.th07/th07.cfg || exit 1
 fi
 
-if [ "" != "`whereis timidity|grep '/usr/bin'`" ] ; then
-  if [ "" == "`ps -A|grep timidity`" ] ; then
+if [ -n "`whereis timidity|grep '/usr/bin'`" ] ; then
+  if [ -z "`ps -A|grep timidity`" ] ; then
     timidity -iA &
-    myins="true"
+    timiditypid=$!
   fi
 fi
 
@@ -29,7 +29,7 @@ fi
 if [ ! -e "$HOME"/.th07/th07e.exe ]; then
   wine "$HOME"/.th07/th07.exe "$@"
 fi
-if [ "true" == "$myins" ] ; then
-  killall timidity
+if [ -n "$timiditypid" ]; then
+  kill $timiditypid
 fi
 
