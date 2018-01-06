@@ -5,7 +5,7 @@
 
 pkgname=factorio-dl
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 _commit="4e3e57221bf0edf7796d5cdcef0fa81b9a6c695a"
 pkgdesc="Factorio downloader script for UNIX(-like) systems"
 arch=('any')
@@ -16,7 +16,7 @@ url="https://gitlab.com/moviuro/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/moviuro/${pkgname}/repository/${pkgver}/archive.tar.gz"
         "${pkgname}.install")
 sha256sums=('68520d754514879a265e205f2a88c54f48ce76c632c09a719d6260df2a450ec9'
-            'a88bdcb2abd1b85ea1d97d10814c4233fb1186ccf6136040544965e9d7c96ce3')
+            'ae4ea5d2a613364ee7884a39c5a9e032ff7fa175b5cfb4182abf83261086ce89')
 
 package() {
   install -Dm 555 "${srcdir}/${pkgname}-${pkgver}-${_commit}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"

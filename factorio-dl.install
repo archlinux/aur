@@ -16,3 +16,7 @@ yellow="${bold}$(tput setaf 3)"
 post_install() {
   note "Make sure to read the README.md file to add the factorio DL agent to makepkg.conf(5)"
 }
+
+post_remove() {
+  note "Remember to clean your makepkg.conf(5) of remnants of the factorio DL agent"
+}
