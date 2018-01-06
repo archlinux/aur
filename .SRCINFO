@@ -1,0 +1,21 @@
+pkgbase = openobex
+	pkgdesc = Implementation of the OBject EXchange (OBEX) protocol
+	pkgver = 1.7.2
+	pkgrel = 3
+	url = http://dev.zuckschwerdt.org/openobex/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = cmake
+	makedepends = libxslt
+	makedepends = doxygen
+	makedepends = java-environment
+	depends = libusbx
+	depends = bluez-libs
+	options = staticlibs
+	options = !makeflags
+	source = http://downloads.sourceforge.net/openobex/openobex-1.7.2-Source.tar.gz
+	md5sums = f6e0b6cb7dcfd731460a7e9a91429a3a
+
+pkgname = openobex
+
