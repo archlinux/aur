@@ -1,0 +1,15 @@
+pkgbase = closure-compiler
+	pkgdesc = Performs checking, instrumentation and optimizations on Javascript code.
+	pkgver = 20170806
+	pkgrel = 1
+	url = https://developers.google.com/closure/compiler/
+	arch = any
+	license = APACHE
+	makedepends = maven
+	makedepends = git
+	depends = java-runtime
+	source = closure-compiler-20170806.tar.gz::https://github.com/google/closure-compiler/archive/v20170806.tar.gz
+	sha256sums = 6562d58b3bb2adfa70cfcc40247339ec9b003bbcfd63eceb067fdee04bbd6f07
+
+pkgname = closure-compiler
+
