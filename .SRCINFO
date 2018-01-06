@@ -8,6 +8,7 @@ pkgbase = vysor
 	makedepends = git
 	makedepends = npm
 	depends = nodejs
+	depends = gconf
 	source = vysor::git+https://github.com/koush/electron-chrome#branch=master
 	source = vysor.desktop
 	source = vysor.png
