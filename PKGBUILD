@@ -3,16 +3,18 @@
 _pkgname=pacui
 pkgname=$_pkgname-git
 pkgver=r628.gf15de67
-pkgrel=3
-pkgdesc="Bash script providing advanced Pacman and Pacaur/Yaourt functionality in a simple UI"
+pkgrel=1
+pkgdesc="Bash script providing advanced Pacman and Trizen/Yay/Yaourt/Pacaur functionality in a simple UI"
 arch=(any)
 url="https://github.com/excalibur1234/$_pkgname"
 license=('GPL3')
 depends=('expac' 'wget' 'sudo' 'fzf')
 makedepends=('git')
 conflicts=("$_pkgname" 'pacli-simple-git')
-optdepends=('pacaur: Needed for AUR support. If installed, it gets used by default over Yaourt.'
+optdepends=('pacaur: Needed for AUR support.'
         'yaourt: Needed for AUR support.'
+        'yay: Needed for AUR support.'
+        'trizen: Needed for AUR support.'
         'pacman-mirrors: Needed for Manjaro mirror support'
         'reflector: Needed for Arch Linux mirror support'
         'downgrade: Needed for hidden "downgrade" option.')
@@ -20,11 +22,10 @@ source=("$_pkgname::git+https://github.com/excalibur1234/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+        cd "$srcdir/$_pkgname"
+        echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package () {
-	cd "$srcdir"
         install -Dm755 "$srcdir/$_pkgname/pacui" "$pkgdir/usr/bin/pacui"
 }
