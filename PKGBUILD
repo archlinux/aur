@@ -1,7 +1,7 @@
 # Maintainer: Fabio Rämi <fabio[at]dynamix-tontechnik[dot]ch>
 
 pkgname=raiseorlaunch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=0
 pkgdesc="A run-or-raise-application-launcher for i3 window manager."
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-i3-py')
 makedepends=('python-setuptools' 'python-pip' 'python-wheel')
 source=("https://github.com/open-dynaMIX/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6641aa54fe45a2c40354bbc8df3cbe1322c51ca203f1119fb19634c2f254eb45')
+sha256sums=('e160fb5435b6b183db42618b93952841c56112d11b8fd853fb94c91878575172')
 
 build() {
         cd "${srcdir}/${pkgname}-${pkgver}"
