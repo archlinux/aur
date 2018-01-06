@@ -4,18 +4,22 @@ pkgname=epfl-menu-git
 _pkgname=epfl-menu
 pkgver=r16.2406823
 pkgrel=4
+
 pkgdesc='Pretty-print the lunch and supper menus at the EPFL'
-arch=('any')
+arch=(any)
 url='https://github.com/gcmalloc/epfl-menu'
-license=('custom:Beerware')
-makedepends=('python-setuptools')
-conflicts=('epfl-menu')
-provides=('epfl-menu')
+license=(custom:Beerware)
+
+makedepends=(python-setuptools)
+
+conflicts=(epfl-menu)
+provides=(epfl-menu)
+
 source=('git+https://github.com/gcmalloc/epfl-menu')
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -25,7 +29,7 @@ build() {
 }
 
 package() {
-  depends=('python-beautifulsoup4' 'python-urllib3')
+  depends=(python-beautifulsoup4 python-urllib3)
 
   cd "$srcdir/$_pkgname"
   python3 setup.py install --root="$pkgdir" --optimize=1
