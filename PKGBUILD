@@ -12,7 +12,7 @@ depends=('grub')
 optdepends=('grub-customizer')
 install=${pkgname}.install
 
-source=('https://dl.opendesktop.org/api/files/downloadfile/id/1497095343/s/18bc1750fc966e0316672eb1d2bfbf31/t/1514732574/Solarized-Dark-Materialized.zip')
+source=('Solarized-Dark-Materialized.zip')
 
 md5sums=('SKIP')
 
