@@ -25,6 +25,6 @@ package() {
     install -D -m 644 "$startdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     sed "s/@executable@/$executable/g" "$startdir/tracktion-waveform" > "$pkgdir/usr/bin/$pkgname"
     chmod 755 "$pkgdir/usr/bin/$pkgname"
-    sed -i "s/Exec=.*/Exec=tracktion-waveform/" "$pkgdir/usr/share/applications/waveform9.desktop"
+    sed -i "s/Exec=.*/Exec=$pkgname/" "$pkgdir/usr/share/applications/waveform9.desktop"
     mv "$pkgdir/usr/share/doc/waveform9" "$pkgdir/usr/share/doc/$pkgname"
 }
