@@ -3,13 +3,13 @@
 
 pkgname=shuriken
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source beat slicer"
 url="https://rock-hopper.github.io/shuriken"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('qt5-base' 'liblo' 'aubio' 'rubberband')
-makedepends=('automake' 'libtool' 'pkg-config' 'jack')
+makedepends=('jack')
 optdepends=('jack: A low-latency audio server')
 provides=("$pkgname")
 conflicts=("$pkgname")
