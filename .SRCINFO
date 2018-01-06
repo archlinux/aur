@@ -42,6 +42,7 @@ pkgbase = firefox56
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	provides = firefox
+	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
@@ -52,9 +53,10 @@ pkgbase = firefox56
 	source = no-plt.diff
 	source = plugin-crash.diff
 	source = glibc-2.26-fix.diff
-	source = firefox56.desktop
+	source = firefox.desktop
 	source = firefox-symbolic.svg
 	source = firefox-install-dir.patch
+	source = remove-shield.patch
 	sha256sums = SKIP
 	sha256sums = f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed
 	sha256sums = e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1
@@ -65,6 +67,7 @@ pkgbase = firefox56
 	sha256sums = ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef
 	sha256sums = a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
+	sha256sums = 1d833f76286f38360ebe142ac1a81e71ac45586ed6991701227f207cf1c80ac1
 
 pkgname = firefox56
 

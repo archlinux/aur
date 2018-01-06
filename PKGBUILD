@@ -4,8 +4,10 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
+basepkg=firefox
 pkgname=firefox56
 provides=('firefox')
+conflicts=('firefox')
 pkgver=56.0.2
 pkgrel=1
 pkgdesc="Old version of the standalone web browser from mozilla.org"
@@ -26,7 +28,7 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         wifi-disentangle.patch wifi-fix-interface.patch
         0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
         no-plt.diff plugin-crash.diff glibc-2.26-fix.diff
-        $pkgname.desktop firefox-symbolic.svg firefox-install-dir.patch)
+        $basepkg.desktop firefox-symbolic.svg firefox-install-dir.patch remove-shield.patch)
 sha256sums=('SKIP'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
@@ -36,7 +38,8 @@ sha256sums=('SKIP'
             'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8'
             'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd')
+            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
+            '1d833f76286f38360ebe142ac1a81e71ac45586ed6991701227f207cf1c80ac1')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -73,6 +76,9 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
   patch -Np1 -i ../glibc-2.26-fix.diff
+
+  # Disable mozilla shield (annoying telemetry that displays your browser is out of date)
+  patch -Np1 -i ../remove-shield.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -137,7 +143,7 @@ package() {
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
-  _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/usr/lib/$basepkg/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.matchOS", true);
@@ -153,7 +159,7 @@ pref("extensions.shownSelectionUI", true);
 pref("browser.tabs.remote.autostart", true);
 END
 
-  _distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
+  _distini="$pkgdir/usr/lib/$basepkg/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
 [Global]
 id=archlinux
@@ -162,45 +168,45 @@ about=Mozilla Firefox for Arch Linux
 
 [Preferences]
 app.distributor=archlinux
-app.distributor.channel=$pkgname
+app.distributor.channel=$basepkg
 app.partner.archlinux=archlinux
 END
 
   for i in 16 22 24 32 48 256; do
     install -Dm644 browser/branding/official/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$basepkg.png"
   done
   install -Dm644 browser/branding/official/content/icon64.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$basepkg.png"
   install -Dm644 browser/branding/official/mozicon128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$basepkg.png"
   install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$basepkg.png"
   install -Dm644 browser/branding/official/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$basepkg.png"
   install -Dm644 ../firefox-symbolic.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$basepkg-symbolic.svg"
 
-  install -Dm644 ../$pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 ../$basepkg.desktop \
+    "$pkgdir/usr/share/applications/$basepkg.desktop"
 
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/usr/lib/$pkgname/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$pkgname/dictionaries"
-  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$pkgname/hyphenation"
+  rm -r "$pkgdir"/usr/lib/$basepkg/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$basepkg/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$basepkg/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$basepkg" <<END
 #!/bin/sh
-exec /usr/lib/$pkgname/firefox "\$@"
+exec /usr/lib/$basepkg/firefox "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$pkgname" \
-    "$pkgdir/usr/lib/$pkgname/firefox-bin"
+  ln -srf "$pkgdir/usr/bin/$basepkg" \
+    "$pkgdir/usr/lib/$basepkg/firefox-bin"
 
   # Use system certificates
   ln -srf "$pkgdir/usr/lib/libnssckbi.so" \
-    "$pkgdir/usr/lib/$pkgname/libnssckbi.so"
+    "$pkgdir/usr/lib/$basepkg/libnssckbi.so"
 }

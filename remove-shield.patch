@@ -1,0 +1,137 @@
+diff -crB mozilla-unified_A/browser/base/content/test/static/browser_all_files_referenced.js mozilla-unified_B/browser/base/content/test/static/browser_all_files_referenced.js
+*** mozilla-unified_A/browser/base/content/test/static/browser_all_files_referenced.js	Sat Jan  6 20:54:57 2018
+--- mozilla-unified_B/browser/base/content/test/static/browser_all_files_referenced.js	Sat Jan  6 21:31:54 2018
+***************
+*** 18,27 ****
+    "resource://app/defaults/preferences/",
+    "resource://gre/modules/commonjs/",
+    "resource://gre/defaults/pref/",
+-   "resource://shield-recipe-client/node_modules/jexl/lib/",
+  
+-   // https://github.com/mozilla/normandy/issues/577
+-   "resource://shield-recipe-client/test/",
+  
+    // https://github.com/mozilla/activity-stream/issues/3053
+    "resource://activity-stream/data/content/tippytop/images/",
+--- 18,24 ----
+***************
+*** 118,126 ****
+    // browser/extensions/pdfjs/content/web/viewer.js#7450
+    {file: "resource://pdf.js/web/debugger.js"},
+  
+-   // These are used in content processes. They are actually referenced.
+-   {file: "resource://shield-recipe-client-content/shield-content-frame.js"},
+-   {file: "resource://shield-recipe-client-content/shield-content-process.js"},
+  
+    // Starting from here, files in the whitelist are bugs that need fixing.
+    // Bug 1339420
+--- 115,120 ----
+diff -crB mozilla-unified_A/browser/extensions/moz.build mozilla-unified_B/browser/extensions/moz.build
+*** mozilla-unified_A/browser/extensions/moz.build	Sat Jan  6 20:54:57 2018
+--- mozilla-unified_B/browser/extensions/moz.build	Sat Jan  6 21:31:39 2018
+***************
+*** 15,21 ****
+      'pdfjs',
+      'pocket',
+      'screenshots',
+-     'shield-recipe-client',
+      'webcompat',
+  ]
+  
+--- 15,20 ----
+Only in mozilla-unified_A/browser/extensions: shield-recipe-client
+diff -crB mozilla-unified_A/layout/tools/reftest/reftest-preferences.js mozilla-unified_B/layout/tools/reftest/reftest-preferences.js
+*** mozilla-unified_A/layout/tools/reftest/reftest-preferences.js	Sat Jan  6 20:55:05 2018
+--- mozilla-unified_B/layout/tools/reftest/reftest-preferences.js	Sat Jan  6 21:31:34 2018
+***************
+*** 63,70 ****
+  user_pref("browser.search.countryCode", "US");
+  user_pref("browser.search.geoSpecificDefaults", false);
+  
+- // Make sure Shield doesn't hit the network.
+- user_pref("extensions.shield-recipe-client.api_url", "https://localhost/selfsupport-dummy/");
+  
+  // use about:blank, not browser.startup.homepage
+  user_pref("browser.startup.page", 0);
+--- 63,68 ----
+diff -crB mozilla-unified_A/testing/profiles/prefs_general.js mozilla-unified_B/testing/profiles/prefs_general.js
+*** mozilla-unified_A/testing/profiles/prefs_general.js	Sat Jan  6 20:55:08 2018
+--- mozilla-unified_B/testing/profiles/prefs_general.js	Sat Jan  6 21:31:30 2018
+***************
+*** 321,328 ****
+  // This will prevent HTTP requests for region defaults.
+  user_pref("browser.search.geoSpecificDefaults", false);
+  
+- // Make sure Shield doesn't hit the network.
+- user_pref("extensions.shield-recipe-client.api_url", "");
+  
+  user_pref("media.eme.enabled", true);
+  
+--- 321,326 ----
+diff -crB mozilla-unified_A/testing/runtimes/mochitest-browser-chrome-e10s.runtimes.json mozilla-unified_B/testing/runtimes/mochitest-browser-chrome-e10s.runtimes.json
+*** mozilla-unified_A/testing/runtimes/mochitest-browser-chrome-e10s.runtimes.json	Sat Jan  6 20:55:08 2018
+--- mozilla-unified_B/testing/runtimes/mochitest-browser-chrome-e10s.runtimes.json	Sat Jan  6 21:31:18 2018
+***************
+*** 603,609 ****
+      "browser/extensions/pdfjs/test/browser_pdfjs_navigation.js": 9323, 
+      "browser/extensions/pdfjs/test/browser_pdfjs_views.js": 5701, 
+      "browser/extensions/pdfjs/test/browser_pdfjs_zoom.js": 10608, 
+-     "browser/extensions/shield-recipe-client/test/browser_Heartbeat.js": 8542, 
+      "browser/modules/test/browser_BrowserUITelemetry_buckets.js": 4394, 
+      "browser/modules/test/browser_CaptivePortalWatcher.js": 17780, 
+      "browser/modules/test/browser_ContentSearch.js": 6354, 
+--- 603,608 ----
+diff -crB mozilla-unified_A/testing/runtimes/mochitest-browser-chrome.runtimes.json mozilla-unified_B/testing/runtimes/mochitest-browser-chrome.runtimes.json
+*** mozilla-unified_A/testing/runtimes/mochitest-browser-chrome.runtimes.json	Sat Jan  6 20:55:08 2018
+--- mozilla-unified_B/testing/runtimes/mochitest-browser-chrome.runtimes.json	Sat Jan  6 21:31:10 2018
+***************
+*** 577,583 ****
+      "browser/extensions/pdfjs/test/browser_pdfjs_views.js": 5372, 
+      "browser/extensions/pdfjs/test/browser_pdfjs_zoom.js": 9760, 
+      "browser/extensions/pocket/test/browser_pocket_ui_check.js": 2012, 
+-     "browser/extensions/shield-recipe-client/test/browser_Heartbeat.js": 7131, 
+      "browser/modules/test/browser_BrowserUITelemetry_buckets.js": 4374, 
+      "browser/modules/test/browser_CaptivePortalWatcher.js": 13616, 
+      "browser/modules/test/browser_ContentSearch.js": 5221, 
+--- 577,582 ----
+diff -crB mozilla-unified_A/testing/talos/talos/config.py mozilla-unified_B/testing/talos/talos/config.py
+*** mozilla-unified_A/testing/talos/talos/config.py	Sat Jan  6 20:55:08 2018
+--- mozilla-unified_B/testing/talos/talos/config.py	Sat Jan  6 21:30:52 2018
+***************
+*** 155,162 ****
+          'media.gmp-manager.updateEnabled': False,
+          'extensions.systemAddon.update.url':
+              'http://127.0.0.1/dummy-system-addons.xml',
+-         'extensions.shield-recipe-client.api_url':
+-             'https://127.0.0.1/selfsupport-dummy/',
+          'media.navigator.enabled': True,
+          'media.peerconnection.enabled': True,
+          'media.navigator.permission.disabled': True,
+--- 155,160 ----
+diff -crB mozilla-unified_A/testing/talos/talos/xtalos/xperf_whitelist.json mozilla-unified_B/testing/talos/talos/xtalos/xperf_whitelist.json
+*** mozilla-unified_A/testing/talos/talos/xtalos/xperf_whitelist.json	Sat Jan  6 20:55:08 2018
+--- mozilla-unified_B/testing/talos/talos/xtalos/xperf_whitelist.json	Sat Jan  6 21:30:58 2018
+***************
+*** 16,22 ****
+   "{firefox}\\browser\\features\\presentation@mozilla.org.xpi": {"mincount": 0, "maxcount": 100, "minbytes": 0, "maxbytes": 10000000},
+   "{firefox}\\browser\\features\\webcompat@mozilla.org.xpi": {"mincount": 0, "maxcount": 100, "minbytes": 0, "maxbytes": 10000000},
+   "{firefox}\\browser\\features\\webcompat-reporter@mozilla.org.xpi": {"mincount": 0, "maxcount": 100, "minbytes": 0, "maxbytes": 10000000},
+-  "{firefox}\\browser\\features\\shield-recipe-client@mozilla.org.xpi": {"mincount": 0, "maxcount": 100, "minbytes": 0, "maxbytes": 10000000},
+   "{firefox}\\browser\\features\\activity-stream@mozilla.org.xpi": {"mincount": 0, "maxcount": 100, "minbytes": 0, "maxbytes": 10000000},
+   "{firefox}\\browser\\features\\screenshots@mozilla.org.xpi": {"mincount": 0, "maxcount": 100, "minbytes": 0, "maxbytes": 10000000},
+   "{firefox}\\browser\\features\\onboarding@mozilla.org.xpi": {"mincount": 0, "maxcount": 100, "minbytes": 0, "maxbytes": 10000000},
+--- 16,21 ----
+diff -crB mozilla-unified_A/testing/xpcshell/head.js mozilla-unified_B/testing/xpcshell/head.js
+*** mozilla-unified_A/testing/xpcshell/head.js	Sat Jan  6 20:55:13 2018
+--- mozilla-unified_B/testing/xpcshell/head.js	Sat Jan  6 21:30:46 2018
+***************
+*** 1539,1546 ****
+      prefs.setCharPref("media.gmp-manager.url.override", "http://%(server)s/dummy-gmp-manager.xml");
+      prefs.setCharPref("media.gmp-manager.updateEnabled", false);
+      prefs.setCharPref("extensions.systemAddon.update.url", "http://%(server)s/dummy-system-addons.xml");
+-     prefs.setCharPref("extensions.shield-recipe-client.api_url",
+-                       "https://%(server)s/selfsupport-dummy/");
+      prefs.setCharPref("toolkit.telemetry.server", "https://%(server)s/telemetry-dummy");
+      prefs.setCharPref("browser.search.geoip.url", "https://%(server)s/geoip-dummy");
+      prefs.setCharPref("browser.safebrowsing.downloads.remote.url", "https://%(server)s/safebrowsing-dummy");
+--- 1539,1544 ----
