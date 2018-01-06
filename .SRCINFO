@@ -1,10 +1,11 @@
 pkgbase = tiddlydesktop
 	pkgdesc = TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis.
 	pkgver = 0.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Jermolene/TiddlyDesktop
 	arch = x86_64
 	license = BSD
+	depends = gconf
 	optdepends = tiddlywiki: empty tiddlywiki file and utility script
 	provides = tiddlydesktop
 	options = !strip

@@ -1,11 +1,12 @@
 # Maintainer: JC Francois <jc[at]noirextreme[dotcom]>
 pkgname=tiddlydesktop
 pkgver=0.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis."
 url="https://github.com/Jermolene/TiddlyDesktop"
 license=('BSD')
 provides=('tiddlydesktop')
+depends=('gconf')
 optdepends=('tiddlywiki: empty tiddlywiki file and utility script')
 
 arch=('x86_64')
