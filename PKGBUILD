@@ -6,9 +6,9 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.14.11
-xanmod=15_rev2
-pkgrel=2
+pkgver=4.14.12
+xanmod=16
+pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -16,16 +16,17 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=0b8ad988d054cd9952434002d03ba403ff798529
+arch_config_trunk=dc615c7e4fc98551f6b2df9d0e97743350ba94bd
 
 # Arch additional patches
-arch_patches=(0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+arch_patches=(
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
   0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-  0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-  0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch)
+  0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+)
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        '60-linux.hook'  # pacman hook for depmod
@@ -36,18 +37,17 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('fad2c3db7668202d01c3b7516805516654f7c9752bec5b718aacef2fded63d00'
+sha256sums=('4385d51dfed34c90ba185d8b35ebff059f01c5f0d387f165387835525aa110b1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '9fd3abfb3e5e6afd5b8476e30af4d7ded762f3da2a724133cb3f26ad21c31e54'
-            '06bc1d8b1cd153c3146a4376d833f5769b980e5ef5eae99ddaaeb48bf514dae2'
-            'b90bef87574f30ec66c0f10d089bea56a9e974b6d052fee3071b1ff21360724b'
-            'f38531dee9fd8a59202ce96ac5b40446f1f035b89788ea9ecb2fb3909f703a25'
-            '705d5fbfce00ccc20490bdfb5853d67d86ac00c845de6ecb13e414214b48daeb'
-            '0a249248534a17f14fab7e14994811ae81fe324668a82ff41f3bcabeeae1460f'
-            '8e1b303957ddd829c0c9ad7c012cd32f2354ff3c8c1b85da3d7f8a54524f3711'
-            '914a0a019545ad7d14ed8d5c58d417eb0a8ec12a756beec79a545aabda343b31')
+            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
+            '9251c03da9d4b64591d77f490ff144d4ba514e66e74294ada541bf827306c9c4'
+            '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
+            '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
+            'c3d743a0e193294bc5fbae65e7ba69fd997cd8b2ded9c9a45c5151d71d9cfb95'
+            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
 sha256sums_x86_64=('24b8cf6829dafcb2b5c76cffaae6438ad2d432f13d6551fa1c8f25e66b751ed4')
 
 _kernelname=${pkgbase#linux}
