@@ -1,0 +1,18 @@
+pkgbase = cchost
+	pkgdesc = Web-based System Supporting Remixing and Collaboration on Media
+	pkgver = 5.1
+	pkgrel = 2
+	url = http://wiki.creativecommons.org/CcHost
+	install = cchost.install
+	arch = any
+	license = GPL
+	depends = php
+	options = !strip
+	backup = etc/webapps/cchost/.htaccess
+	source = http://downloads.sourceforge.net/cctools/cchost-5.1.zip
+	source = http://downloads.sourceforge.net/sourceforge/getid3/getid3-1.9.3-20111213.zip
+	md5sums = 723ed665a52b2b666811499b13f7dfe2
+	md5sums = 00990e23f4035c29974d025cc5f3eeb7
+
+pkgname = cchost
+

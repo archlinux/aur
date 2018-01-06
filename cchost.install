@@ -1,0 +1,9 @@
+post_install() {
+  echo "-- Don't forget to set proper file access according to your web server setting!"
+  mkdir -p var/log/cchost
+  chown http:http var/log/cchost
+}
+
+post_upgrade() {
+  echo "-- Don't forget to set proper file access according to your web server setting!"
+}
