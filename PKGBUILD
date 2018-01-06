@@ -2,7 +2,7 @@
 
 pkgname='python-pydna'
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python3 classes for dsDNA simulation of homologous recombination, Gibson assembly and interactive cloning"
 arch=('any')
 url="https://github.com/BjornFJohansson/pydna"
@@ -12,7 +12,7 @@ depends=(
   'python-appdirs>=1.3.0'
   'python-biopython>=1.65'
   'python-networkx>=1.8.1'
-  'python-orderedset>=2.0'
+  'python-ordered-set>=2.0.2'
   'python-prettytable>=0.7.2'
   'python-pyparsing>=2.1.10'
   'python-requests'
