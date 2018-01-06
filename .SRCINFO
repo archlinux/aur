@@ -1,7 +1,7 @@
 pkgbase = python-pyensembl
 	pkgdesc = Python interface to ensembl reference genome metadata
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hammerlab/pyensembl
 	arch = any
 	license = Apache-2.0
@@ -9,6 +9,7 @@ pkgbase = python-pyensembl
 	makedepends = python-setuptools
 	depends = python
 	depends = python-datacache>=0.4.19
+	depends = python-gtfparse>=0.0.3
 	depends = python-memoized-property>=1.0.2
 	depends = python-numpy>=1.7
 	depends = python-pandas>=0.15
