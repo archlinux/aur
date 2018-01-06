@@ -1,0 +1,16 @@
+pkgbase = xmpppy
+	pkgdesc = A Python library to provide easy scripting with Jabber
+	pkgver = 0.5.0_rc1
+	pkgrel = 4
+	url = http://xmpppy.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2
+	source = https://downloads.sourceforge.net/project/xmpppy/xmpppy/0.5.0-rc1/xmpppy-0.5.0rc1.tar.gz
+	source = ssl.patch
+	md5sums = e0d2b3f9e4a278c163431e64adb0c861
+	md5sums = 516cb530837016c719a1116a1d6ad199
+
+pkgname = xmpppy
+
