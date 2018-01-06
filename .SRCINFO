@@ -1,0 +1,21 @@
+pkgbase = python-sample-sheet
+	pkgdesc = A bioinformatics Illumina Sample Sheet parsing utility
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/sample_sheet
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-smart-open
+	depends = python-tabulate
+	depends = python-terminaltables
+	provides = python-sample-sheet
+	conflicts = python-sample-sheet
+	options = !emptydirs
+	source = https://pypi.python.org/packages/fd/98/fc423199c66c513773a1394828a5e3b599bc4492f79fae087e92f01eb1d5/sample_sheet-0.1.1.tar.gz
+	md5sums = daf3355933d0763223b4e99c2a7bc24d
+
+pkgname = python-sample-sheet
+
