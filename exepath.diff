@@ -1,0 +1,15 @@
+diff --git a/src/luxmarkapp.cpp b/src/luxmarkapp.cpp
+--- a/src/luxmarkapp.cpp
++++ b/src/luxmarkapp.cpp
+@@ -90,10 +90,7 @@
+     }
+ 	exePath = boost::filesystem::path(boost::filesystem::initial_path<boost::filesystem::path>());
+ #else
+-
+-    // Look for the directory where Lux executables are
+-	const boost::filesystem::path luxMarkExe(argv[0]);
+-	exePath = boost::filesystem::absolute(luxMarkExe).parent_path();
++	exePath = "/usr/bin";
+ #endif
+ }
+ 
