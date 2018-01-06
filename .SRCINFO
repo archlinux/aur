@@ -1,0 +1,19 @@
+pkgbase = wut-git
+	pkgdesc = A Wii U toolchain/SDK for creating RPX/RPL
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/decaf-emu/wut
+	arch = x86_64
+	license = GPLv2
+	makedepends = cmake
+	makedepends = zlib
+	makedepends = git
+	depends = devkitppc
+	provides = wut
+	options = !strip
+	options = !buildflags
+	source = git+https://github.com/decaf-emu/wut
+	md5sums = SKIP
+
+pkgname = wut-git
+
