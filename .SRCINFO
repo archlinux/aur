@@ -1,0 +1,14 @@
+pkgbase = fbpanel
+	pkgdesc = NetWM compliant desktop panel
+	pkgver = 7.0
+	pkgrel = 2
+	url = https://github.com/aanatoly/fbpanel
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	depends = gtk2
+	source = fbpanel-7.0.tar.gz::https://github.com/aanatoly/fbpanel/archive/7.0.tar.gz
+	md5sums = 8a15ac4e0f23a72b9d6be5151df712e5
+
+pkgname = fbpanel
+
