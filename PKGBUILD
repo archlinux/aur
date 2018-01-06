@@ -37,6 +37,13 @@ _makenconfig=
 #  23. Generic-x86-64 (GENERIC_CPU)
 _subarch=
 
+# NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
+# actually run slower with NUMA enabled. Most users will want to set this option
+# to enabled ... in other words, do not use NUMA on a single CPU system.
+#
+# See, https://bugs.archlinux.org/task/31187
+_NUMAdisable=y
+
 # Compile ONLY probed modules
 # As of mainline 2.6.32, running with this option will only build the modules
 # that you currently have probed in your system VASTLY reducing the number of
@@ -63,7 +70,7 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.14
 pkgver=4.14.12
-pkgrel=2
+pkgrel=3
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -105,7 +112,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
             'da5d8db44b0988e4c45346899d3f5a51f8bd6c25f14e729615ca9ff9f17bdefd'
             'SKIP'
-            '67030bc59cfe1c2d57a1284905e61a03b9aaa1516e1831dd3b74528ff7999ca3'
+            'cd4b30f74fef1fb5458e5bdd756a7fc4918a6b4cdf2ac6853316bfc1eb8d0d8b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -170,19 +177,21 @@ prepare() {
 
   cp -Tf ../config .config
 
-  # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
-  # actually run slower with NUMA enabled.
-  # See, https://bugs.archlinux.org/task/31187
-  sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-    -i -e '/CONFIG_AMD_NUMA=y/d' \
-    -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-    -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-    -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-    -i -e '/CONFIG_NODES_SHIFT=6/d' \
-    -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-    -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-    -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-    -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+  ### Optionally disable NUMA for 64-bit kernels only
+  # (x86 kernels do not support NUMA)
+  if [ -n "$_NUMAdisable" ]; then
+    msg "Disabling NUMA from kernel config..."
+    sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+      -i -e '/CONFIG_AMD_NUMA=y/d' \
+      -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+      -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+      -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+      -i -e '/CONFIG_NODES_SHIFT=6/d' \
+      -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+      -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+      -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+      -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+  fi
 
   ### Optionally use running kernel's config
   # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
