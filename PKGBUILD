@@ -52,12 +52,12 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
 pkgver=4.14.12
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+#makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 _uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master"
 _uksm_patch="uksm-4.14.patch"
 _gcc_path="https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master"
@@ -82,8 +82,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch'
         '0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
-        '0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch')
+        '0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
+        '0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
+        '0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
         
 _kernelname=${pkgbase#linux} 
 
@@ -108,11 +109,15 @@ prepare() {
   
     ### Fix https://bugs.archlinux.org/task/56605
         msg "Fix #56605"
-        patch -Np1 -i ../0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+        patch -Np1 -i ../0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
   
     ### Fix https://bugs.archlinux.org/task/56846
         msg "Fix #56846"
-        patch -Np1 -i ../0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+        patch -Np1 -i ../0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+    
+    ### Fix https://bugs.archlinux.org/task/56711
+        msg "Fix #56711"
+        patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -389,11 +394,12 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '05f2c577450cfeae4b66a7d022a9dd0dab0dbf36e9738423efa8f45aaf0755b48a89f1f88b042946205e681458f76c5c5177c16869094839b7b234e0e2b27511'
-            'fd9bdc818326fa36c9f1813d0d1821de5e325b646e1c307c197ad38bada7f298d35b4bc1bbf1c2854689f3ba71144879e799a1123037caccd6e3f64edfc22d54'
-            '814517d08c35cc886fe3382619d41107d6139a703c27186d0ce58e187eaf4e84891572e58246750ac8602555794ed6f74d946565b98860787a0aa617fb946dda'
-            'e6605e923c967b5f8db619868b15ea5b0d4254c62cf12bb920f38659933d6ca25a643d3e044c4915a8309071461f5f14c55d0aa0329c113bce4780d4fa3afbb7'
-            '0dec1482efe6e5d762a3061f365e43191484f055b738112452b8ca39e162b935d99cf16b25c0b253d6b532fabc54bde2f5c09be91887156ed6ae06d1558f94b9')
+            '46447e0257b7ad5db932eb50a241d046716f21b9c12698c9d83d5f3ef52aff4ba603b79a26616347e6993dcc4ec7452aef3c0c9cf430c73955ee8e61c62194a7'
+            '6f3b1efe81ac806217dd199a629f2d1ed55c6393ba1d90600cd2d2f41a865dca680e131b668265cc3e665be748295aea1b65877d737064661450d5cd089f0d96'
+            'baa77972acdc1820af6ea82ae72e1dbc793bde242d77a5176ab29444c8a3e3c3670907a5e289045d1246e2dd706cdab64659f82605e2f84b30d5b3c8f3272de5'
+            '096eb9bbdeacae276145fc7b28946e8f6a432f9b5159b8a33d1df00c820d8b96780cc84541c30bb75bf8d9324ecb3222c2bcd9630d5310ef1d17d6fad0f68a15'
+            'cfc7ee58c22639ed6a891ad6f42b2fbe15f684d706c8026b8b0cb463a06d8446ac06cacdac47a1e1c91028bea1611ae2e5d017a7e07a5471589039f33501966b'
+            'fcc40dc86dd432be76854e3c51889db488de0f1029ecc227b92c4f58c62ba928f7dc3b9515ac3ca0a08d6a0a72ca4a1a754d47c4fb274fe89f09a2a336088e7a')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds

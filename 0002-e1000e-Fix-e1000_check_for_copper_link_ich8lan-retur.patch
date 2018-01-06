@@ -1,10 +1,10 @@
-From 8c6956686606b9c3661e74a410c8cb2fc276c5ee Mon Sep 17 00:00:00 2001
-Message-Id: <8c6956686606b9c3661e74a410c8cb2fc276c5ee.1514959852.git.jan.steffens@gmail.com>
-In-Reply-To: <fb89d912d5f7289d3a922c77b671e36e1c740f5e.1514959852.git.jan.steffens@gmail.com>
-References: <fb89d912d5f7289d3a922c77b671e36e1c740f5e.1514959852.git.jan.steffens@gmail.com>
+From e6a5e05524563626d14c1745619e37e79cb5a3a7 Mon Sep 17 00:00:00 2001
+Message-Id: <e6a5e05524563626d14c1745619e37e79cb5a3a7.1515173964.git.jan.steffens@gmail.com>
+In-Reply-To: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
+References: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
 From: Benjamin Poirier <bpoirier@suse.com>
 Date: Mon, 11 Dec 2017 16:26:40 +0900
-Subject: [PATCH 2/7] e1000e: Fix e1000_check_for_copper_link_ich8lan return
+Subject: [PATCH 2/6] e1000e: Fix e1000_check_for_copper_link_ich8lan return
  value.
 
 e1000e_check_for_copper_link() and e1000_check_for_copper_link_ich8lan()
