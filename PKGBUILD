@@ -9,10 +9,10 @@ license=('GPL')
 url="https://pretix.eu"
 depends=('jdk>=9' 'bash' 'sqlite')
 makedepends=('jdk>=9' 'gradle')
-source=('git+https://github.com/pretix/pretixdesk.git' 'git+https://github.com/pretix/libpretixsync.git' 'launcher')
+source=('git+https://github.com/pretix/pretixdesk.git' 'git+https://github.com/pretix/libpretixsync.git' 'launcher' 'pretixdesk.desktop')
 conflicts=('pretixdesk')
 provides=('pretixdesk')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -36,6 +36,7 @@ prepare() {
 package() {
 	install -d "${pkgdir}/usr/bin"
 	install -Dm 755 launcher "${pkgdir}/usr/bin/pretixdesk"
+	install -Dm 644 pretixdesk.desktop "${pkgdir}/usr/share/applications/pretixdesk.desktop"
 
 	cd "${srcdir}/${_pkgname}/pretixdesk"
 	install -Dm 644 "build/libs/pretixdesk.jar" "${pkgdir}/usr/share/java/${_pkgname}/pretixdesk.jar"

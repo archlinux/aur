@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=pretixdesk
+Exec=pretixdesk %u
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/pretixdesk;
