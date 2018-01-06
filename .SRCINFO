@@ -1,0 +1,14 @@
+pkgbase = obexfs
+	pkgdesc = FUSE based filesystem using ObexFTP (currently beta).
+	pkgver = 0.12
+	pkgrel = 4
+	url = http://openobex.triq.net/obexfs
+	arch = x86_64
+	license = GPL
+	depends = fuse2
+	depends = obexftp>=0.22
+	source = http://triq.net/obexftp/obexfs-0.12.tar.gz
+	md5sums = 0f505672b025cdb505e215ee707a2e2f
+
+pkgname = obexfs
+
