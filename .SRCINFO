@@ -1,0 +1,28 @@
+pkgbase = gnormalize
+	pkgdesc = Audio normalizer, converter, encoder/decoder, ripper, tagger and player
+	pkgver = 0.63
+	pkgrel = 7
+	url = https://gnormalize.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = gendesk
+	depends = cddb_get
+	depends = gtk2-perl
+	optdepends = faac: full MP4 format
+	optdepends = flac: FLAC encoding, FLAC playing in conjunction with mplayer
+	optdepends = lame: MP3 encoding
+	optdepends = mac: full Monkeys Audio Codec support (available in the AUR)
+	optdepends = mpg123: MP3 playing
+	optdepends = mplayer: FLAC/WAV playing
+	optdepends = musepack-tools: full Musepack support
+	optdepends = perl-mp3-info: MP3 ID3 tags
+	optdepends = vorbis-tools: full OGG Vorbis support
+	optdepends = cdcd: CD playing
+	optdepends = cdparanoia: CD ripping
+	optdepends = cdrkit: CD ripping - alternative to cdparanoia
+	optdepends = wavegain: sound normalization
+	source = https://downloads.sourceforge.net/sourceforge/gnormalize/gnormalize-0.63.tar.gz
+	sha256sums = 80fd9aa2da8d7fcc88bd180be2adce1aed863bedba7d715144029bd95b61ccb6
+
+pkgname = gnormalize
+
