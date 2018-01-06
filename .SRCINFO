@@ -1,0 +1,16 @@
+pkgbase = freetalk
+	pkgdesc = A console based Jabber client
+	pkgver = 4.1
+	pkgrel = 4
+	url = http://www.gnu.org/software/freetalk
+	arch = x86_64
+	license = GPL
+	depends = loudmouth
+	depends = guile2.0
+	depends = jansson
+	depends = curl
+	source = freetalk-4.1.tar.gz::https://github.com/GNUFreetalk/freetalk/archive/v4.1.tar.gz
+	md5sums = 3141e633e83b12083e5c0e49bbc9d150
+
+pkgname = freetalk
+
