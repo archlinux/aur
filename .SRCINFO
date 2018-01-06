@@ -1,0 +1,18 @@
+pkgbase = gpointing-device-settings
+	pkgdesc = GUI tool for setting pointing device such as TrackPoint or Touchpad
+	pkgver = 1.5.1
+	pkgrel = 5
+	url = https://wiki.gnome.org/Attic/GPointingDeviceSettings
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-settings-daemon
+	makedepends = intltool
+	depends = gtk2
+	depends = gconf
+	source = http://sourceforge.jp/frs/redir.php?m=iij&f=/gsynaptics/45812/gpointing-device-settings-1.5.1.tar.gz
+	source = fix-build.patch
+	md5sums = 1d1491473df8eabca3c15c997a975d7f
+	md5sums = cc42b7bcd69fb43ae5bfbe6e1d540713
+
+pkgname = gpointing-device-settings
+
