@@ -1,0 +1,17 @@
+pkgbase = fbv
+	pkgdesc = FrameBuffer image viewer
+	pkgver = 1.0b
+	pkgrel = 9
+	url = http://s-tech.elsat.net.pl/fbv/
+	arch = x86_64
+	license = GPL
+	depends = libpng
+	depends = giflib
+	depends = libjpeg
+	source = http://s-tech.elsat.net.pl/fbv/fbv-1.0b.tar.gz
+	source = giflib-5.1.patch
+	md5sums = 3e466375b930ec22be44f1041e77b55d
+	md5sums = f91404fb82f0b6b9fc0e0716f0c182c0
+
+pkgname = fbv
+
