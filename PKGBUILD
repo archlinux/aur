@@ -1,7 +1,7 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
 pkgname='gnulium-git'
-pkgver=0
+pkgver=0.1.1.r7.g95c746d
 pkgrel=1
 pkgdesc="A Graphical Ui for managing scripts and ideas! (Github version)" # "Make Your Gnu/linux More Readble and Easy to Understand."
 arch=('any')
