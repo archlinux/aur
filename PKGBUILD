@@ -1,7 +1,7 @@
 # Maintainer: Nbiba Bedis <bedisnbiba@gmail.com>
 
 pkgname=sane-qt-git
-pkgver=r14.b2
+pkgver=r20.
 pkgrel=1
 pkgdesc="Simple scanner GUI (sane) made with PyQt5"
 arch=('any')
@@ -14,7 +14,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short 
+HEAD)"
 }
 
 package() {
@@ -26,3 +27,4 @@ package() {
   install -Dm 755 desktop_entry "$pkgdir/usr/share/applications/sane-qt.desktop"
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
+

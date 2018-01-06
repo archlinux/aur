@@ -1,6 +1,6 @@
 pkgbase = sane-qt-git
 	pkgdesc = Simple scanner GUI (sane) made with PyQt5
-	pkgver = r14.b2
+	pkgver = r20.
 	pkgrel = 1
 	url = https://github.com/sigmaSd/Sane-qt
 	arch = any
