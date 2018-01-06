@@ -1,14 +1,13 @@
 # Maintainer: Patrice Lacouture <archlinux@lacouture.org>
 pkgname=gplanarity-svn
-pkgver=r19609
+pkgver=r19643
 pkgrel=1
 pkgdesc="A simple puzzle game involving untangling planar graphs for fun and prizes"
 arch=('i686' 'x86_64')
 url="http://web.mit.edu/xiphmont/Public/gPlanarity.html"
 license=('GPL2')
-depends=('libxrender' 'x-server' 'freetype2' 'fontconfig')
+depends=('gtk2')
 makedepends=('subversion')
-install="gplanarity.install"
 conflicts=('gplanarity')
 provides=('gplanarity')
 source=('gplanarity.desktop'
@@ -28,14 +27,14 @@ prepare() {
 
 build() {
 	cd "$srcdir/planarity"
-	make
+	make PREFIX="$pkgdir/usr"
 }
 
 package() {
 	desktop-file-install gplanarity.desktop --dir "$pkgdir"/usr/share/applications/
 
 	cd "$srcdir/planarity"
-	make PREFIX="$pkgdir/usr/local" install
+	make PREFIX="$pkgdir/usr" install
 
 	install -Dm644 gPicon.png "$pkgdir"/usr/share/pixmaps/gplanarity.png
 }
