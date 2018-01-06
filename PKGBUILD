@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 
 pkgname=cubetwister
 pkgver=2.0.155
