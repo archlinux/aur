@@ -1,0 +1,23 @@
+pkgbase = neatx
+	pkgdesc = A free NX server by google
+	pkgver = 0.3.1
+	pkgrel = 15
+	url = https://code.google.com/archive/p/neatx/
+	install = neatx.install
+	arch = x86_64
+	license = GPL
+	makedepends = docutils
+	depends = python2-pexpect
+	depends = python2-simplejson
+	depends = netcat
+	depends = pygtk
+	optdepends = xorg-xdm: if you want to use KDE or GNOME session
+	optdepends = xorg-fonts-misc: to use default font
+	optdepends = xterm: if you want console session
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/neatx/neatx-0.3.1.tar.gz
+	source = constants.archlinux.patch
+	md5sums = 5748656738d5f04fef1af01b9fe5ef20
+	md5sums = a5ca4aa399cc25fa8435280e8b03c5a3
+
+pkgname = neatx
+

@@ -1,0 +1,42 @@
+--- a/neatx-0.3.1/lib/constants.py	2009-06-24 21:19:55.000000000 +0200
++++ b/neatx-0.3.1/lib/constants.py	2009-07-08 10:50:30.000000000 +0200
+@@ -25,19 +25,19 @@
+ from neatx import _autoconf
+ 
+ 
+-NXDIR = "/usr/lib/nx"
++NXDIR = "/opt/NX/bin"
+ 
+ SYSLOG_ADDRESS = "/dev/log"
+ BASH = "/bin/bash"
+-NETCAT = "/bin/netcat"
++NETCAT = "/usr/bin/netcat"
+ XRDB = "/usr/bin/xrdb"
+ SU = "/bin/su"
+ SSH = "/usr/bin/ssh"
+ XAUTH = "/usr/bin/xauth"
+-XSESSION = "/etc/X11/Xsession"
++XSESSION = "/etc/X11/xdm/Xsession"
+ 
+ START_CONSOLE_COMMAND = "/usr/bin/xterm"
+-START_KDE_COMMAND = XSESSION + " startkde"
++START_KDE_COMMAND = " startkde"
+ START_GNOME_COMMAND = XSESSION + " gnome-session"
+ 
+ NXUSER = "nx"
+@@ -47,12 +47,13 @@
+ NXNC = _autoconf.PKGLIBDIR + "/nxnc"
+ NXDIALOG = _autoconf.PKGLIBDIR + "/nxdialog"
+ NXAGENT = NXDIR + "/nxagent"
+-NXAGENT_PKGNAME = "nxagent"
++#NXAGENT_PKGNAME = "nxagent"
++NXAGENT_PKGNAME = "nxserver"
+ FDCOPY = _autoconf.PKGLIBDIR + "/fdcopy"
+ TTYSETUP = _autoconf.PKGLIBDIR + "/ttysetup"
+ 
+ # Extract nxagent version using the following command.
+-NXAGENT_VERSION_COMMAND = ("dpkg-query -W --showformat='${Version}' %s" %
++NXAGENT_VERSION_COMMAND = ("pacman -Qi %s | grep Version | awk '{print $3}'" %
+                            NXAGENT_PKGNAME)
+ NXAGENT_VERSION_SEP = ".-~"
+ 
