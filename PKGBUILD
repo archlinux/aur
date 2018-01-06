@@ -3,7 +3,7 @@
 pkgname='gnulium-git'
 pkgver=0.1.1.r7.g95c746d
 pkgrel=1
-pkgdesc="A Graphical Ui for managing scripts and ideas! (Github version)" # "Make Your Gnu/linux More Readble and Easy to Understand."
+pkgdesc="A Graphical Ui for managing scripts and ideas! (Github version)"
 arch=('any')
 url="https://github.com/LinArcX/Gnulium"
 license=('GPL-3.0')
@@ -30,15 +30,9 @@ build() {
 }
 
 package() {
-  # cd $pkgname
   cd "${srcdir}/${pkgname}"
   install -Dm755 ./gnulium ${pkgdir}/usr/bin/gnulium
   install -Dm644 ./appconf/gnulium.desktop ${pkgdir}/usr/share/applications/gnulium.desktop
 	install -Dm644 ./appconf/gnulium.svg ${pkgdir}/usr/share/pixmaps/gnulium.svg
 	install -Dm644 ./LICENSE ${pkgdir}/usr/share/licenses/gnulium/LICENSE
-  
-  # install -Dm644 ./man/persepolis.1.gz ${pkgdir}/usr/share/man/man1/neompv.1.gz
-  # install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  # install -d ${pkgdir}/usr/share/persepolis	
-  # make INSTALL_ROOT="$pkgdir" install
 }
