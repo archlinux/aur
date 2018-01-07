@@ -6,8 +6,8 @@
 # Contributor: Massimiliano Brocchini <brocchini@netseven.it>
 
 pkgname=camlp5-transitional
-_relversion=701
-pkgver=7.01
+_relversion=703
+pkgver=7.03
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A preprocessor-pretty-printer of OCaml. (transitional)'
@@ -15,9 +15,9 @@ conflicts=('camlp5')
 url='https://camlp5.github.io/'
 license=('BSD')
 depends=('ocaml')
-sha1sums=('eff833fe21fc0e4d5c70b22635437b3785799d4b')
-sha256sums=('c83640ffabc5506d7b9c9fdcc342062dee1eabd90de547c0471faf5ef5560540')
-sha512sums=('9930957f707d9d2c8903f87f5f3444f71bad3d84c944436c7abc6de19209595c974098cd60a6a391f8ae87c4fb53b5122cba8e42e34fcf46d798dbdc28840008')
+sha1sums=('241275eb295891a2e9ac85fdcbd0eed53c4cbef6')
+sha256sums=('c13d0a957a8e70627e1900ca25243b5e8da042bbda9eaa9e7d06955c0e3df21a')
+sha512sums=('0c76d469c5f8c727088f3136107b6690349b50791ef8baefffdaa90141230907f977a7a886a9e8d88d39d8fa315637d882d0205c57d752e16575c888a8a1f54d')
 source=("https://github.com/camlp5/camlp5/archive/rel${_relversion}.tar.gz")
 options=('staticlibs')
 
