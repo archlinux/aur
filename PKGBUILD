@@ -1,7 +1,7 @@
 # Maintainer: Artem Savkov <artem.savkov@gmail.com>
 
 pkgname=bitlbee-discord-git
-pkgver=173.fcb733f
+pkgver=204.549b05a
 pkgrel=1
 pkgdesc="Bitlbee plugin for Discord"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
