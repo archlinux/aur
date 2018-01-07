@@ -1,0 +1,3 @@
+post_install() {
+  echo "Check https://wiki.archlinux.org/index.php/Moinmoin page for instructions"
+}
