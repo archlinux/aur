@@ -1,0 +1,16 @@
+pkgbase = libsynaptics
+	pkgdesc = Library for accessing synaptics touchpads
+	pkgver = 0.14.6c
+	pkgrel = 7
+	url = http://qsynaptics.sourceforge.net
+	arch = x86_64
+	license = GPL
+	makedepends = xproto
+	depends = gcc-libs
+	source = http://qsynaptics.sourceforge.net/libsynaptics-0.14.6c.tar.bz2
+	source = libsynaptics-gcc433.patch
+	md5sums = fedf8b31171d288954ff2e83b251de44
+	md5sums = 5e1df34fe8c2480b803a8ea6520bdda8
+
+pkgname = libsynaptics
+
