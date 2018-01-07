@@ -1,0 +1,15 @@
+pkgbase = pppd-ldap
+	pkgdesc = A plugin for PPPD which performs an LDAP-enabled version of pppd
+	pkgver = 0.12b
+	pkgrel = 5
+	url = http://sourceforge.net/projects/pppd-ldap/
+	arch = x86_64
+	license = GPL
+	depends = ppp=2.4.7
+	depends = libldap
+	options = docs
+	source = https://downloads.sourceforge.net/pppd-ldap/pppd_ldap-0.12b.tgz
+	sha256sums = bb06a71e7826fc615de3344d2b7779406b20dbfcf61e3a3b1a1af706d1eef13a
+
+pkgname = pppd-ldap
+
