@@ -1,0 +1,37 @@
+pkgbase = linphone
+	pkgdesc = A Voice-over-IP phone
+	pkgver = 3.12.0
+	pkgrel = 1
+	url = http://www.linphone.org
+	install = linphone.install
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = perl-xml-parser
+	makedepends = intltool
+	makedepends = sgml-common
+	makedepends = bcunit
+	depends = alsa-lib
+	depends = ffmpeg
+	depends = gtk2
+	depends = speex
+	depends = libv4l
+	depends = libglade
+	depends = v4l-utils
+	depends = libpulse
+	depends = libxv
+	depends = mediastreamer
+	depends = ortp
+	depends = bzrtp
+	depends = bcg729
+	depends = libsoup
+	depends = belle-sip
+	depends = libnotify
+	depends = libldap
+	optdepends = pulseaudio
+	options = !emptydirs
+	source = linphone-3.12.0.tar.gz::https://github.com/BelledonneCommunications/linphone/archive/3.12.0.tar.gz
+	sha256sums = 60fb1e5d25823fecc7ce1955ce7e886e013118a184df1965d1877ffe6cc171b7
+
+pkgname = linphone
+
