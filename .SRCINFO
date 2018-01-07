@@ -1,0 +1,29 @@
+pkgbase = roxterm
+	pkgdesc = Tabbed, VTE-based terminal emulator
+	pkgver = 3.3.2
+	pkgrel = 2
+	url = http://roxterm.sourceforge.net/
+	arch = x86_64
+	license = GPL3
+	makedepends = docbook-xsl
+	makedepends = xmlto
+	makedepends = po4a
+	makedepends = python2
+	makedepends = python2-lockfile
+	makedepends = imagemagick
+	makedepends = librsvg
+	makedepends = itstool
+	depends = dbus-glib
+	depends = vte3
+	depends = hicolor-icon-theme
+	depends = libsm
+	source = http://downloads.sourceforge.net/roxterm/roxterm-3.3.2.tar.xz
+	source = http://downloads.sourceforge.net/roxterm/roxterm-3.3.2.tar.xz.sign
+	validpgpkeys = 2FF283656D0745E54850B1C0BF0EBCD13D97CD09
+	md5sums = efbe5b99151ae7f6ea506f2f219374a6
+	md5sums = SKIP
+	sha1sums = a0cfc57576b5117846181d71d33207e1a3a0a618
+	sha1sums = SKIP
+
+pkgname = roxterm
+
