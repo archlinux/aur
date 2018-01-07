@@ -1,0 +1,15 @@
+pkgbase = perl-net-upnp
+	pkgdesc = Perl Module UPnP
+	pkgver = 1.4.3
+	pkgrel = 3
+	url = http://search.cpan.org/~skonno/Net-UPnP-1.4.3/
+	arch = x86_64
+	license = BSD
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SK/SKONNO/Net-UPnP-1.4.3.tar.gz
+	md5sums = a30d7cc54290946aeb028650cfdc9279
+
+pkgname = perl-net-upnp
+
