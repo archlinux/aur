@@ -24,9 +24,21 @@ index 2d8e6f6..a14166b 100644
  
 -EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE)
 +EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE) $(LINUXINCLUDE)
- EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/netif_trans_update.c,-DVMW_NETIF_TRANS_UPDATE, )
+ EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/netdev_has_net.c,-DVMW_NETDEV_HAS_NET, )
+ EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/netdev_has_dev_net.c,-DVMW_NETDEV_HAS_DEV_NET, )
+ EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/nfhook_uses_skb.c,-DVMW_NFHOOK_USES_SKB, )
+diff --git a/vmnet/bridge.c b/vmnet/bridge.c
+--- a/vmnet/bridge.c
++++ b/vmnet/bridge.c
+@@ -636,7 +636,7 @@
+ 	 unsigned long flags;
+ 	 int i;
  
- obj-m += $(DRIVER).o
+-	 atomic_inc(&clone->users);
++	 clone = skb_get(clone);
+ 
+ 	 clone->dev = dev;
+ 	 clone->protocol = eth_type_trans(clone, dev);
 diff --git a/vmnet/driver.c b/vmnet/driver.c
 index 7e7ad99..5f508f6 100644
 --- a/vmnet/driver.c
@@ -72,21 +84,34 @@ index 7e7ad99..5f508f6 100644
     retval = register_chrdev(VNET_MAJOR_NUMBER, "vmnet", &vnetFileOps);
     if (retval) {
        LOG(0, (KERN_NOTICE "/dev/vmnet: could not register major device %d\n",
-@@ -1145,12 +1138,12 @@ VNetMulticastFilter(const uint8 *destAddr,        // IN: multicast MAC
-       }
-       /*
-        * Do not need to further compute and check ladrf if no match
--       * in exact multicast filter, since only one of them is 
-+       * in exact multicast filter, since only one of them is
-        * used at a time.
-        */
-       return FALSE;
-    }
--   
-+
+diff --git a/vmnet/userif.c b/vmnet/userif.c
+index 94146f6..5298406 100644
+--- a/vmnet/userif.c
++++ b/vmnet/userif.c
+@@ -116,14 +116,18 @@
+    int retval;
  
-    crc = 0xffffffff;                  /* init CRC for each address */
-    for (byte = 0; byte < ETH_ALEN; byte++) { /* for each address byte */
+    down_read(&current->mm->mmap_sem);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
+-   retval = get_user_pages(addr, 1, FOLL_WRITE, &page, NULL);
+-#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+-   retval = get_user_pages(addr, 1, 1, 0, &page, NULL);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
++   retval = get_user_pages(addr,
+ #else
+    retval = get_user_pages(current, current->mm, addr,
+-                           1, 1, 0, &page, NULL);
+ #endif
++                           1,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
++                           1, 0,
++#else
++                           FOLL_WRITE,
++#endif
++                           &page, NULL);
+    up_read(&current->mm->mmap_sem);
+ 
+    if (retval != 1) {
 diff --git a/vmnet/vm_device_version.h b/vmnet/vm_device_version.h
 index e2cb477..3dd7097 100644
 --- a/vmnet/vm_device_version.h
@@ -105,12 +130,12 @@ diff --git a/vmnet/vmnetInt.h b/vmnet/vmnetInt.h
 index 0ee52ec..4e3b923 100644
 --- a/vmnet/vmnetInt.h
 +++ b/vmnet/vmnetInt.h
-@@ -48,7 +48,7 @@
+@@ -79,7 +79,7 @@
  extern struct proto vmnet_proto;
  #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0) || defined(sk_net_refcnt)
  #   define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
 -                                                PF_NETLINK, _pri, &vmnet_proto, 1)
 +                                                PF_NETLINK, _pri, &vmnet_proto, 0)
- #else
+ #elif defined(VMW_NETDEV_HAS_NET)
  #   define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
                                                  PF_NETLINK, _pri, &vmnet_proto)

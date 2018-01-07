@@ -14,10 +14,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=14.1.0
-_buildver=7370693
+pkgver=12.5.8
+_buildver=7098237
 _pkgver=${pkgver}_${_buildver}
-pkgrel=5
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -37,12 +37,13 @@ depends=(
   ncurses5-compat-libs
   fuse2
   gksu
-  gtkmm3
+  gtkmm
   libcanberra
-  pcsclite
   hicolor-icon-theme
   # needed to replace internal libs:
-  #zlib
+  fontconfig
+  freetype2
+  zlib
 )
 optdepends=(
   'linux-headers: build modules against Arch kernel'
@@ -90,18 +91,18 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '522f368c3ce009b4cd442c25215b022fc09a520a668b4e3189af5194f50ca14a'
+  '04b93507724a5d38ea154436fb5c96e85b1009955eea5bb7995c5289a5acac32'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
-  'd9a5f8b919d52aa2f279d8eaf0bb495780eb9fd8bbc2c58bba223cdca78cc991'
+  '55af509a4328fa88518e7008c65ff5598e6007e99ca2b4421a8f9b26126f6ff3'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
-  '89b3430bdcc1efc33db2eb556447569204dbb736dca8045c3841e1a55ee5bfbb'
+  'b94959a11b28e51b541321be0588190eb10825e9ff55cbd16eb01483a839a69f'
 
-  '9f508d5f7ce4b69d9f40f6fb0ff0fb3d5b26a3c48658da994bf63975d1b589ab'
+  'd0806b6cb99af04232585def7b8043df3104b9b17470ea70abbd5bedc1e7ca16'
   '434cd4aa440d36b75ee20e0b588aaad874bb0d796173990bc4046667c66f5099'
-  '57c7568a89e8af1914cf7aea84d8fefd6e7af4155557081292344326d652ae70'
+  '25c5aa39489d14a60f9cb30bdd7b21d36399c3355daee8bf5fbebcb62fe9f45f'
   '3c802523606184a5e8ebbe931d9c6c70d83ff8c6833b9f48aa264f0bd5a18a88'
 
   'f9440479f3ae5ad0a39bba3150276627878bf83d6879444fb327c53a1dbb5a4d'
@@ -112,8 +113,8 @@ sha256sums=(
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
   '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  '773442cea744a6bd6420c4a0108749d33dae5ac7e7813c99a6fbfdf47963e9da'
-  '5d69ef50ed407c4948db424549ffb38321c7d1203ba6cd153f6fb3351364aa34'
+  'e7fd1d69ce4e0bce1759243204f9cd514c60a63556cee44f401c0a3cc245221a'
+  '397cda34be6c023a9486565f9c648e1f39a93da32941ca82052ada80d2e8a603'
 )
 options=(!strip emptydirs)
 
@@ -122,7 +123,7 @@ _isoimages=(freebsd linux linuxPreGlibc25 netware solaris windows winPre2k winPr
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=10.1.0_7370838
+_vmware_fusion_ver=8.5.9_7098239
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
@@ -137,8 +138,8 @@ source+=(
   'unlocker.py'
 )
 sha256sums+=(
-  '70ee05c2e6098644a619fd0e1f742facd5f234e62d7095ef99186e8af8d6b882'
-  'a18688c5ccbebe3822f71a357e879bec6dd9a5698833d13fd0f27ee72adab1fc'
+  '48d533fcdb4d8adac11379a649a892cf9bb357bd467846bfd1aff54bedcc4d74'
+  '1c0775534cba0927a3d90d2e57b3371f30c36d61b6822be5a6d8f0703ef8d354'
   'b739b0c99fb20dc44838ce137e254773b7be051f327eb67fd8cb1342a3ecf344'
 )
 
@@ -197,7 +198,7 @@ package() {
     "$pkgdir/etc"/{cups,pam.d,modprobe.d,profile.d,thnuclnt,vmware} \
     "$pkgdir/usr"/{share,bin} \
     "$pkgdir/usr/include/vmware-vix" \
-    "$pkgdir/usr/lib"/{vmware/{setup,lib/libvmware-vim-cmd.so},vmware-vix,vmware-ovftool,vmware-installer/"$vmware_installer_version",cups/filter,modules-load.d} \
+    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/"$vmware_installer_version",cups/filter,modules-load.d} \
     "$pkgdir/usr/share"/{doc/vmware-vix,licenses/"$pkgname"} \
     "$pkgdir/var/lib/vmware/Shared VMs"
 
@@ -223,7 +224,7 @@ package() {
   cp -r \
     vmware-workstation/lib/* \
     vmware-player-app/lib/* \
-    vmware-vmx/{lib/*,roms} \
+    vmware-vmx/lib/* \
     vmware-vprobe/lib/* \
     vmware-workstation-server/{bin,lib,hostd} \
     vmware-usbarbitrator/bin \
@@ -241,7 +242,7 @@ package() {
     "$pkgdir/etc/vmware"
 
   cp -r \
-    vmware-vix-lib-Workstation1400/lib/Workstation-14.0.0 \
+    vmware-vix-lib-Workstation1200/lib/Workstation-12.0.0 \
     vmware-vix-core/{lib/*,vixwrapper-config.txt} \
     "$pkgdir/usr/lib/vmware-vix"
   cp vmware-vix-core/vix-perl.tar.nogz "$pkgdir/usr/lib/vmware-vix/vix-perl.tar.gz"
@@ -261,9 +262,7 @@ package() {
   cp -r \
     vmware-player-app/etc/cups/* \
     "$pkgdir/etc/cups"
-  cp -r \
-    vmware-player-app/extras/.thnumod \
-    "$pkgdir/etc/thnuclnt"
+
   cp -r \
     vmware-player-app/extras/thnucups \
     "$pkgdir/usr/lib/cups/filter"
@@ -278,6 +277,7 @@ package() {
     install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
   done
 
+  install -Dm 644 "vmware-player-app/doc/LearnMore.txt" "$pkgdir/usr/share/licenses/$pkgname/Privacy.txt"
   install -Dm 644 "vmware-workstation/doc/EULA" "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation - EULA.txt"
   install -Dm 644 "vmware-workstation/doc"/*open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname"
   mv "$pkgdir/usr/lib/vmware-ovftool/vmware.eula" "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool component for Linux - EULA.txt"
@@ -320,16 +320,15 @@ package() {
     "$pkgdir/usr/bin"/* \
     "$pkgdir/usr/lib/vmware/bin"/* \
     "$pkgdir/usr/lib/vmware/setup"/* \
-    "$pkgdir/usr/lib/vmware/lib"/libvmware-gksu.so/gksu-run-helper \
+    "$pkgdir/usr/lib/vmware/lib"/{wrapper-gtk24.sh,libgksu2.so.0/gksu-run-helper} \
     "$pkgdir/usr/lib/vmware-ovftool"/{ovftool,ovftool.bin} \
     "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version"/{vmware-installer,vmis-launcher} \
     "$pkgdir/usr/lib/cups/filter"/* \
-    "$pkgdir/usr/lib/vmware-vix/setup"/* \
-    "$pkgdir/etc/thnuclnt/.thnumod"
+    "$pkgdir/usr/lib/vmware-vix/setup"/*
 
   chmod -R 600 "$pkgdir/etc/vmware/ssl"
   chmod +s \
-    "$pkgdir/usr/bin"/vmware-authd \
+    "$pkgdir/usr/bin"/{vmware-authd,vmware-mount} \
     "$pkgdir/usr/lib/vmware/bin"/{vmware-vmx,vmware-vmx-debug,vmware-vmx-stats}
 
 
@@ -337,46 +336,37 @@ package() {
 
   for link in \
     licenseTool \
+    thnuclnt \
     vmplayer \
     vmware \
     vmware-app-control \
     vmware-enter-serial \
     vmware-fuseUI \
     vmware-gksu \
-    vmware-hostd \
     vmware-modconfig \
     vmware-modconfig-console \
-    vmware-mount \
     vmware-netcfg \
     vmware-tray \
-    vmware-vim-cmd \
+    vmware-unity-helper \
     vmware-vmblock-fuse \
-    vmware-vprobe \
-    vmware-wssc-adminTool \
-    vmware-zenity \
-    #vmware-unity-helper
+    vmware-zenity
   do
     ln -s /usr/lib/vmware/bin/appLoader "$pkgdir/usr/lib/vmware/bin/$link"
   done
 
-  for link in \
-    vmware-mount \
-    vmware-usbarbitrator
-  do
-    ln -s /usr/lib/vmware/bin/$link "$pkgdir/usr/bin/$link"
-  done
-
   ln -s /usr/lib/vmware/icu "$pkgdir/etc/vmware/icu"
-  ln -s /usr/lib/vmware/lib/diskLibWrapper.so/diskLibWrapper.so "$pkgdir/usr/lib/diskLibWrapper.so"
-  ln -s /usr/lib/vmware/lib/libvmware-hostd.so/libvmware-hostd.so "$pkgdir/usr/lib/vmware/lib/libvmware-vim-cmd.so/libvmware-vim-cmd.so"
   ln -s /usr/lib/vmware-ovftool/ovftool "$pkgdir/usr/bin/ovftool"
-  ln -s /usr/lib/vmware-vix/libvixAllProducts.so "$pkgdir/usr/lib/libvixAllProducts.so"
+  ln -s /usr/lib/vmware/bin/appLoader "$pkgdir/etc/thnuclnt/.thnumod"
 
 
   # Replace placeholder "variables" with real paths.
 
   for file in \
-    gtk-3.0/gdk-pixbuf.loaders
+    pango/pangorc \
+    pango/pango.modules \
+    pango/pangox.aliases \
+    gtk-2.0/gdk-pixbuf.loaders \
+    gtk-2.0/gtk.immodules
   do
     sed -i 's,@@LIBCONF_DIR@@,/usr/lib/vmware/libconf,g' "$pkgdir/usr/lib/vmware/libconf/etc/$file"
   done
@@ -434,6 +424,10 @@ fi
         -i "$pkgdir/usr/bin/$program"
   done
 
+  # use system font rendering
+  ln -sf /usr/lib/libfreetype.so.6 "$pkgdir/usr/lib/vmware/lib/libfreetype.so.6/"
+  ln -sf /usr/lib/libfontconfig.so.1 "$pkgdir/usr/lib/vmware/lib/libfontconfig.so.1/" # avoid a conflict with fontconfig when VMWARE_USE_SHIPPED_LIBS is defined
+
   # to solve bugs with incompatibles library versions:
-  #ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
+  ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
 }
