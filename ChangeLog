@@ -1,0 +1,42 @@
+2010-02-18  Dwayne Bent  <dbb.0@liqd.org>
+
+	* PKGBUILD:
+	Actually build the library
+	[b994a1eae8e4] [tip]
+
+2010-02-15  Dwayne Bent  <dbb.1@liqd.org>
+
+	* .hgtags:
+	Added tag v20100215-1 for changeset 82cf8c12f58d
+	[5e6e628919ec]
+
+	* ChangeLog, PKGBUILD:
+	Added ChangeLog
+	[82cf8c12f58d] [v20100215-1]
+
+	* PKGBUILD:
+	Install license file
+	[470c65e1d08b]
+
+	* PKGBUILD:
+	Updated email address
+	[cf9fdc7b9cc5]
+
+	* PKGBUILD:
+	Change package name to reflect the type of package this actually is
+	[39b61ef661d7]
+
+	* PKGBUILD:
+	Clean up PKGBUILD
+	[183b11d1286e]
+
+2009-11-26  Dwayne Bent  <dbb.0@liqd.org>
+
+	* .hgtags:
+	Added tag v20091125-1 for changeset 8e6cc75fb38b
+	[72c8c117a64c]
+
+	* Makefile, PKGBUILD:
+	Initial commit
+	[8e6cc75fb38b] [v20091125-1]
+

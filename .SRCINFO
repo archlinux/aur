@@ -1,0 +1,30 @@
+pkgbase = lua-zlib
+	pkgdesc = Simple streaming interface to zlib for Lua.
+	pkgver = 1.1
+	pkgrel = 1
+	epoch = 1
+	url = http://github.com/brimworks/lua-zlib
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = zlib
+	makedepends = git
+	conflicts = lua-lzlib
+	source = lua-zlib-1.1.tar.gz::https://github.com/brimworks/lua-zlib/archive/v1.1.tar.gz
+	sha256sums = 9f0820cc14873248a0c5ae22623cb2fc767fb830e47f6b34b01d71a6e1db2356
+
+pkgname = lua-zlib
+	depends = zlib
+	depends = lua
+
+pkgname = lua51-zlib
+	depends = zlib
+	depends = lua51
+
+pkgname = lua52-zlib
+	depends = zlib
+	depends = lua52
+
