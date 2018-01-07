@@ -1,0 +1,26 @@
+pkgbase = openstreetmap-map-icons-svn
+	pkgdesc = A set of public domain licensed map icons for general OSM use
+	pkgver = 31588
+	pkgrel = 1
+	url = http://wiki.openstreetmap.org/wiki/Map_Icons
+	arch = any
+	license = custom:CCPL:by-sa
+	license = LGPL
+	makedepends = subversion
+	makedepends = perl
+	makedepends = perl-file-slurp
+	makedepends = perl-image-info
+	makedepends = perl-xml-simple
+	makedepends = perl-dbi
+	makedepends = perl-xml-twig
+	makedepends = imagemagick
+	makedepends = perl-dbd-sqlite
+	makedepends = libxslt
+	makedepends = librsvg
+	makedepends = cmake
+	makedepends = optipng
+	source = openstreetmap-map-icons-svn::svn+http://svn.openstreetmap.org/applications/share/map-icons/#revision=31588
+	md5sums = SKIP
+
+pkgname = openstreetmap-map-icons-svn
+
