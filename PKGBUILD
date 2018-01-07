@@ -2,13 +2,19 @@
 
 pkgname=backlight_control
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple backlight brightness control'
 arch=('x86_64')
 url='https://github.com/Hendrikto/backlight_control'
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Hendrikto/backlight_control/archive/$pkgver.tar.gz")
-md5sums=('e233b7a0785fe3074f598e5b99b867d6')
+makedepends=('git')
+source=("$pkgname-$pkgver::git+https://github.com/Hendrikto/backlight_control.git")
+sha256sums=('SKIP')
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+	git checkout $pkgver
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
