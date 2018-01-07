@@ -7,7 +7,7 @@ pkgname=('buildbot' 'python-buildbot-www' 'buildbot-worker' 'python-buildbot-wat
          'python-buildbot-console-view' 'python-buildbot-grid-view' 'python-buildbot-wsgi-dashboards'
          )
 _names=('buildbot' 'buildbot_www' 'buildbot_worker' 'buildbot_waterfall_view' 'buildbot_console_view' 'buildbot_grid_view' 'buildbot_wsgi_dashboards')
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 arch=('any')
 url="http://buildbot.net"
@@ -27,13 +27,13 @@ source=(
   "https://files.pythonhosted.org/packages/py2.py3/${_names[6]::1}/${_names[6]}/${_names[6]}-$pkgver-py2.py3-none-any.whl"
 )
 md5sums=(
-  '25e1ccaccaf959a040a158fa3845f88d'
-  '683e18aa9a4877b2105cf60f2652ea98'
-  '1af0cbb782d2d8594bba2307695a9512'
-  'f39b28afcdaadb105b1805bb61ccac80'
-  '5f17d5aee9e81954a05dfe0b93cbe4d8'
-  '72907c5f6dd8691db4028d9263b30103'
-  '9eaf445810af6ed50a71ca5bb11224ac'
+  '98fb2268ee1533c4f9304a256ae2593f'
+  'dba3101ce252f808f0fe44f60b491e5c'
+  '6c83ef96923f72954d37594293604169'
+  'd7db1a4c3db8798c9c67904f650fb4fa'
+  'e28f2d324dcfb9e22496590030592bbd'
+  'f1e2a5555e83b0e7c71a32c7e9c7902d'
+  '88e708731ecdbb00b5dc8f61fc231205'
 )
 
 package_buildbot() {
