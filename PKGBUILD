@@ -1,37 +1,41 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
+
+# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
+# Contributor: Det <nimetonmaili g-mail>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=npapi-vlc
-pkgver=2.2.1
-pkgrel=1
+pkgver=2.2.5
+pkgrel=2
 pkgdesc="The modern VLC Mozilla (NPAPI) plugin"
-arch=('i686' 'x86_64')
-url="http://git.videolan.org/?p=$pkgname.git;a=summary"
-depends=('vlc')
-makedepends=('gtk2' 'npapi-sdk')
-options=('!libtool')
+arch=('x86_64')
+url="https://code.videolan.org/videolan/npapi-vlc"
+license=('GPL')
+depends=('gtk2' 'vlc')
+makedepends=('git' 'npapi-sdk')
 # This package uses version tags from Git, because there are no official releases
-source=(git://git.videolan.org/$pkgname.git#tag=$pkgver)
-md5sums=('SKIP')
+source=("git+https://code.videolan.org/videolan/$pkgname.git#tag=$pkgver"
+        "git+https://code.videolan.org/videolan/libvlcpp.git")
+md5sums=('SKIP'
+         'SKIP')
+
+prepare() {
+  cd "$pkgname"
+  git submodule init
+  git config submodule.vlcpp.url "$srcdir/libvlcpp"
+  git submodule update
+}
 
 build() {
-  cd $pkgname
+  cd "$pkgname"
 
-  msg2 "Starting autogen.sh..."
-  sh ./autogen.sh
-
-  msg2 "Starting configure..."
+  ./autogen.sh
   ./configure --prefix=/usr
-
-  msg2 "Starting make..."
   make
 }
 
 package() {
-  cd $pkgname
+  cd "$pkgname"
 
-  msg2 "Starting make install..."
   make DESTDIR="$pkgdir" install
-
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
