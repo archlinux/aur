@@ -10,15 +10,15 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=bash-link
-pkgver=1.0.11
-pkgrel=9
+pkgver=1.0.12
+pkgrel=10
 pkgdesc='a high reliable bash library'
 arch=('any')
 url='http://torben.website/bashLink'
 license=('CC-BY-3.0')
 depends=()
-source=('core.sh')
-md5sums=('SKIP')
+source=(arguments.sh array.sh changeroot.sh cli.sh core.sh cracking.sh dictionary.sh display.sh doctest.sh documentation.sh exception.sh filesystem.sh logging.sh module.sh network.sh path.sh string.sh system.sh time.sh tools.sh)
+md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 copyToAUR=true
 
 package() {
