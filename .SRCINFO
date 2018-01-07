@@ -1,0 +1,22 @@
+pkgbase = pymsnt
+	pkgdesc = jabber msn transport
+	pkgver = 0.11.3
+	pkgrel = 10
+	url = http://delx.net.au/projects/pymsnt/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-twisted
+	depends = python2-pyopenssl
+	backup = etc/ejabberd/pymsn.xml
+	source = https://delx.net.au/projects/pymsnt/tarballs/pymsnt-0.11.3.tar.gz
+	source = pymsnt.service
+	source = config.xml
+	source = pymsnt-version.patch
+	sha256sums = 777195feb6a70b683d691c54269099d319747fad7195cca36d86df366360ce2c
+	sha256sums = 6d82284eef36446895361f72e0f29987e8d45125261b6dc101b8f6474156cc64
+	sha256sums = eafc890575973f58b7f9c1284dac35de76578606c14a4407f22b6201d04d5a90
+	sha256sums = 7636b3d126b3e4022029c74eac885b7d35b40e7fdf609a33733677e4db698d7a
+
+pkgname = pymsnt
+
