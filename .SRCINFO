@@ -1,0 +1,22 @@
+pkgbase = gresolver
+	pkgdesc = A graphical frontend for dig
+	pkgver = 0.0.5
+	pkgrel = 10
+	url = http://jodrell.net/projects/gresolver
+	arch = any
+	license = GPL
+	depends = gtk2-perl
+	depends = perl-locale-gettext
+	depends = perl-net-ipv6addr
+	depends = ldns
+	depends = glade-perl
+	depends = perl-net-ipv4addr
+	source = https://arch.p5n.pp.ru/~sergej/dl/2012/gresolver-0.0.5.tar.gz
+	source = desktop.patch
+	source = ldns.patch
+	sha256sums = e81708843e53df51329b0f73255511d5a581a09ee9f791bd0b55b1ea67d93117
+	sha256sums = 70cf72d89d899ba510c486aa67bd9084f526f0037d02eac1fe624394bbebcdc4
+	sha256sums = ecd52fd4a445f69313c6249943a7e903f510d7aba5040ae9f548fd5cc1dbdac6
+
+pkgname = gresolver
+

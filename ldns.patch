@@ -1,0 +1,44 @@
+diff -wbBur gresolver-0.0.5/gresolver.pl gresolver-0.0.5.my/gresolver.pl
+--- gresolver-0.0.5/gresolver.pl	2006-01-30 23:54:10.000000000 +0300
++++ gresolver-0.0.5.my/gresolver.pl	2013-03-11 14:35:30.336586368 +0400
+@@ -63,7 +63,7 @@
+ 	$DIG = $OPTIONS->{dig};
+ 
+ } else {
+-	chomp($DIG = `which dig 2>/dev/null`);
++	chomp($DIG = `which drill 2>/dev/null`);
+ 
+ }
+ 
+@@ -410,25 +410,22 @@
+ sub get_dig_version {
+ 	my $version;
+ 	# an un-argumented call to dig returns the root hints from the default server;
+-	if (!open(DIG, "\"$DIG\"|")) {
++	if (!open(DIG, "\"$DIG\" -v|")) {
+ 		print STDERR "Cannot pipe from '$DIG': $!\n";
+ 		exit 1;
+ 
+ 	} else {
+-		# ignore the first line:
+-		<DIG>;
+-		# capture the next line:
+ 		my $line = <DIG>;
+ 		close(DIG);
+ 
+-		if ($line =~ /DiG ([\d\.]+)/) {
++		if ($line =~ /drill version ([\d\.]+) /) {
+ 			$version = $1;
+-
+-		} else {
+-			print STDERR "Error parsing version output from dig, got:\n\t$line\n";
+-			exit 1;
++		}
+ 		}
+ 
++	if(!defined $version) {
++			print STDERR "Error parsing version output from dig\n";
++			exit 1;
+ 	}
+ 
+ 	return split(/\./, $version, 3);
