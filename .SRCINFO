@@ -1,0 +1,19 @@
+pkgbase = python2-tlslite
+	pkgdesc = SSL/TLS library in pure Python supporting RSA and SRP ciphersuites
+	pkgver = 0.4.9
+	pkgrel = 2
+	url = http://trevp.net/tlslite
+	arch = any
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	optdepends = python2-crypto: fast RSA operations and fast ciphers
+	optdepends = python2-gmpy: fast RSA and SRP operations
+	optdepends = python2-m2crypto: fast RSA operations and fast ciphers
+	optdepends = python2-tackpy: run an X.509 server using TACK
+	options = !emptydirs
+	source = https://pypi.org/packages/source/t/tlslite/tlslite-0.4.9.tar.gz
+	sha256sums = 9b9a487694c239efea8cec4454a99a56ee1ae1a5f3af0858ccf8029e2ac2d42d
+
+pkgname = python2-tlslite
+
