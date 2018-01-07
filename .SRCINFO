@@ -1,7 +1,7 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
 	pkgver = 52.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = i686
 	arch = x86_64
@@ -51,6 +51,7 @@ pkgbase = icecat
 	source = clip-ft-glyph-52esr.diff
 	source = harmony-fix.diff
 	source = glibc-2.26-fix.diff
+	source = icecat-bug-1427870-spectre-mitigation.patch
 	validpgpkeys = A57369A8BABC2542B5A0368C3C76EED7D7E04784
 	sha256sums = 699ab2b41d4428ef5e360f3f33d98bc52723315cedac20bb03619846ca895302
 	sha256sums = SKIP
@@ -63,6 +64,7 @@ pkgbase = icecat
 	sha256sums = dc4feddbf22ea11ae2513c68b7f3fc9047850d055a7f30d31a7ee94d7d5de12a
 	sha256sums = 16bb776e9f3039321db747b2eaece0cda1320f3711fb853a68d67247b0aa065d
 	sha256sums = cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8
+	sha256sums = 8088e9d3116f12e32e17a019918ab45f93e2a2f819ff9372949e33ca428d3129
 
 pkgname = icecat
 
