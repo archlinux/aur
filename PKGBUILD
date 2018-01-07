@@ -1,0 +1,25 @@
+# $Id: PKGBUILD 194152 2016-10-31 13:48:24Z spupykin $
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Shahar Weiss <sweiss4@gmx.net>
+
+pkgname=torcs-data
+pkgver=1.3.7
+pkgrel=1
+pkgdesc="A 3D racing cars simulator using OpenGL"
+url="http://torcs.sourceforge.net"
+license=("GPL")
+arch=('any')
+makedepends=('plib' 'freeglut' 'freealut' 'libxi' 'libxmu' 'libxrandr' 'libpng' 'libvorbis' 'mesa' 'glu')
+source=(http://downloads.sourceforge.net/sourceforge/torcs/torcs-${pkgver/_/-}.tar.bz2)
+md5sums=('de314c3e421e8d7d4323d819c5010d23')
+
+build() {
+  cd "$srcdir"/torcs-${pkgver/_/-}
+  ./configure --prefix=/usr --x-includes=/usr/include --x-libraries=/usr/lib
+}
+
+package() {
+  cd "$srcdir"/torcs-${pkgver/_/-}
+  make DESTDIR="$pkgdir" datainstall
+  find "$pkgdir" -type d -exec chmod 755 {} \;
+}
