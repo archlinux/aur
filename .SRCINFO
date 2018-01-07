@@ -1,0 +1,13 @@
+pkgbase = recoverdm
+	pkgdesc = helps to recover disks with bad sectors
+	pkgver = 0.20
+	pkgrel = 4
+	url = http://www.vanheusden.com/recoverdm/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://www.vanheusden.com/recoverdm/recoverdm-0.20.tgz
+	sha256sums = 0fd4bc3ce4360a12f69c1440bc31ffd29f0e88f38b9279fb4a783a173d4f6f4c
+
+pkgname = recoverdm
+
