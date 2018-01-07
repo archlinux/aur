@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Jeremy MountainJohnson <jskier@gmail.com>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=srm
@@ -11,7 +11,7 @@ url="http://srm.sourceforge.net/"
 license=('custom')
 depends=('glibc')
 source=("http://sourceforge.net/projects/${pkgname}/files/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('681cbb0950b25e300a3f6d680f57f56c')
+sha512sums=('a8ec78473c55b70557fca88f525998ed51df3be58618b9da220e1bb73df013163f4e1563cbe2062b9cf1512152afeb9004b5be0be69cc1278c0d28597310dfd2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
