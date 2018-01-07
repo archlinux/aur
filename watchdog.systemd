@@ -1,0 +1,10 @@
+[Unit]
+Description=Watchdog Daemon
+
+[Service]
+Type=forking
+PIDFile=/run/watchdog.pid
+ExecStart=/usr/bin/watchdog
+
+[Install]
+WantedBy=multi-user.target
