@@ -1,0 +1,18 @@
+pkgbase = python-flup
+	pkgdesc = A collection of Python WSGI modules
+	pkgver = 1.0.2
+	pkgrel = 5
+	url = http://trac.saddi.com/flup
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	conflicts = python-flup<=1.0.2-3
+	replaces = python-flup<=1.0.2-3
+	source = http://www.saddi.com/software/flup/dist/flup-1.0.2.tar.gz
+	source = LICENSE
+	md5sums = 24dad7edc5ada31dddd49456ee8d5254
+	md5sums = 2b61db5f66aad3b1748085e146603bd1
+
+pkgname = python2-flup
+
