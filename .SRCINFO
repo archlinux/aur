@@ -1,6 +1,6 @@
 pkgbase = jalview
 	pkgdesc = Bioinformatics Multiple Alignment Editor
-	pkgver = 2.10.1
+	pkgver = 2.10.3
 	pkgrel = 1
 	url = http://www.jalview.org/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = jalview
 	source = logo.gif
 	source = jalview
 	source = jalview.desktop
-	md5sums = 0ce946664997d3cfceab7cf7a639f8ba
+	md5sums = f198181af6941c1a4f20ddae50ba6eb1
 	md5sums = e124f66d646560813b1a06b0cff02d3a
 	md5sums = 0ea5c6990bfa050c9c69f24926da3d57
 	md5sums = b3a842500e7ff3cd1324dede69822d21

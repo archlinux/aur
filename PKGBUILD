@@ -1,6 +1,6 @@
 # Maintainer: Stefan Seemayer <mail@semicolonsoftware.de>
 pkgname=jalview
-pkgver=2.10.1
+pkgver=2.10.3
 pkgrel=1
 pkgdesc="Bioinformatics Multiple Alignment Editor"
 arch=(any)
@@ -14,7 +14,7 @@ source=( "http://www.jalview.org/webstart/jalview.jnlp"
          "jalview"
          "jalview.desktop")
 
-md5sums=('0ce946664997d3cfceab7cf7a639f8ba'
+md5sums=('f198181af6941c1a4f20ddae50ba6eb1'
          'e124f66d646560813b1a06b0cff02d3a'
          '0ea5c6990bfa050c9c69f24926da3d57'
          'b3a842500e7ff3cd1324dede69822d21')
