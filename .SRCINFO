@@ -1,0 +1,21 @@
+pkgbase = pyrss
+	pkgdesc = jabber rss transport
+	pkgver = 0.9.9.1
+	pkgrel = 13
+	url = https://code.google.com/archive/p/pyrss/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-pyxmpp
+	depends = python2-feedparser
+	depends = mysql-python
+	backup = etc/ejabberd/pyrss.xml
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pyrss/pyrss-0.9.9.1.tar.bz2
+	source = pyrss.service
+	source = dont-import-psyco.patch
+	md5sums = 3f48f3b7f36c2c588b8d55a5841482ab
+	md5sums = 1fbbcc50f4b8ca5d8db1d3adffb5e42e
+	md5sums = a9b8e3e3f1524d852b270acef5cd27f6
+
+pkgname = pyrss
+

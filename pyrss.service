@@ -1,0 +1,12 @@
+[Unit]
+Description=RSS jabber service
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/pyrss.pid
+ExecStart=/usr/bin/python2 start.py
+WorkingDirectory=/usr/lib/pyrss
+
+[Install]
+WantedBy=multi-user.target
