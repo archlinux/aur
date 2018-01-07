@@ -1,7 +1,7 @@
 pkgbase = libretro-higan
-	pkgdesc = Nintendo multi-system emulator
+	pkgdesc = libretro core for Higan SNES
 	pkgver = 106
-	pkgrel = 1
+	pkgrel = 2
 	url = http://byuu.org/
 	arch = x86_64
 	license = GPL3
