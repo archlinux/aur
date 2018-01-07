@@ -1,0 +1,14 @@
+pkgbase = python2-sensors
+	pkgdesc = Python bindings to libsensors
+	pkgver = 0.0.3
+	pkgrel = 2
+	url = http://pypi.python.org/pypi/PySensors/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = lm_sensors
+	source = https://pypi.python.org/packages/source/P/PySensors/PySensors-0.0.3.tar.gz
+	sha256sums = b735dada5318ce50f2d141d29b102e7a116a5934509583f86302d4b59399e961
+
+pkgname = python2-sensors
+
