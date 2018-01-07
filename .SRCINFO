@@ -1,0 +1,17 @@
+pkgbase = dvb-firmware-pack
+	pkgdesc = Linux TV's firmware package
+	pkgver = 1
+	pkgrel = 1
+	url = https://linuxtv.org
+	arch = x86_64
+	license = GPL
+	license = Custom:https://raw.githubusercontent.com/OpenELEC/dvb-firmware/master/firmware/README.as102
+	makedepends = tar
+	makedepends = git
+	source = https://linuxtv.org/downloads/firmware/dvb-firmwares.tar.bz2
+	source = git+https://github.com/OpenELEC/dvb-firmware.git
+	sha256sums = 788a3c5aa77a9a3069e2b60e2502acd417c6e97cdb8f8bf9502aa0c2a4244b5f
+	sha256sums = SKIP
+
+pkgname = dvb-firmware-pack
+
