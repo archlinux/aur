@@ -1,7 +1,7 @@
 # Maintainer: zargbell <zargbell@yandex.ru>
 
 pkgname=pixiecore
-pkgver=17.08.16.1755
+pkgver=2017.365
 pkgrel=1
 epoch=
 pkgdesc="An all-in-one tool for easy netbooting"
@@ -38,7 +38,7 @@ prepare() {
 
 pkgver(){
 	# date last comment
-	curl -s 'https://api.github.com/repos/google/netboot/commits?per_page=1' | jq -c -r '.[].commit.committer.date | fromdate | strftime("%y.%m.%d.%H%M")'
+	curl -s 'https://api.github.com/repos/google/netboot/commits?per_page=1' | jq -c -r '.[].commit.committer.date | fromdate | strftime("%Y.%j")'
 }
 
 build() {
