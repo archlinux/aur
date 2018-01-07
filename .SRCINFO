@@ -1,0 +1,17 @@
+pkgbase = quesoglc
+	pkgdesc = A free implementation of the OpenGL Character Renderer (GLC)
+	pkgver = 0.7.2
+	pkgrel = 3
+	url = http://quesoglc.sourceforge.net/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = pkg-config
+	depends = fontconfig
+	depends = freeglut
+	depends = fribidi
+	depends = glew
+	source = http://downloads.sourceforge.net/sourceforge/quesoglc/quesoglc-0.7.2.tar.gz
+	md5sums = c2697a92e2cc00c537626020e4108a4e
+
+pkgname = quesoglc
+
