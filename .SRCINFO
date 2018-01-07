@@ -1,0 +1,15 @@
+pkgbase = gtk-engine-aurora
+	pkgdesc = gtk-engine: latest member of the clearlooks family
+	pkgver = 1.5.1
+	pkgrel = 5
+	url = http://www.gnome-look.org/content/show.php/Aurora+Gtk+Engine?content=56438
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gtk2
+	replaces = gtk-aurora-engine
+	source = https://dl.opendesktop.org/api/files/download/id/1460970469/56438-aurora-1.5.1.tar.bz2
+	md5sums = 5eeea57c5938306ad7ccfc7cd71d009d
+
+pkgname = gtk-engine-aurora
+
