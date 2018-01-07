@@ -5,7 +5,7 @@
 # Report all package issues to `https://github.com/SShrike/pkgbuilds`
 
 pkgname=gtkd-git
-pkgver=3.7.1.r0.799a5612
+pkgver=3.7.3.r7.143fe425
 pkgrel=1
 pkgdesc='D bindings for GTK+ and related libraries.'
 url='http://gtkd.org/'
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd 'GtkD'
 
-  LDFLAGS='' DC='ldc' make libdir='lib/' shared-libs shared-gstreamer shared-vte shared-peas
+  LDFLAGS='-defaultlib=druntime-ldc-shared,phobos2-ldc-shared' DC='ldc' make libdir='lib/' shared-libs shared-gstreamer shared-vte shared-peas
 }
 
 package() {
