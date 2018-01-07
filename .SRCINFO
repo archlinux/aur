@@ -1,0 +1,13 @@
+pkgbase = windowmaker-extra
+	pkgdesc = Extra WindowMaker icons and themes
+	pkgver = 0.1
+	pkgrel = 6
+	url = http://www.windowmaker.info
+	arch = any
+	license = GPL2
+	depends = windowmaker
+	source = https://sources.archlinux.org/other/packages/windowmaker-extra/windowmaker-extra-0.1.tar.gz
+	md5sums = 3ef850cfe0fb6660a55ccc8a2e408f74
+
+pkgname = windowmaker-extra
+
