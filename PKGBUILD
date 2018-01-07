@@ -1,13 +1,14 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.2.beta2
+pkgver=0.7.2.beta3
 pkgrel=1
 pkgdesc='Screenwriting software, which developed in Russia.'
 url='https://kitscenarist.ru'
 arch=('x86_64')
 license=('GPL3')
 depends=('qt5-webengine')
+makedepends=('git')
 source=(
   "${pkgname}::git+https://github.com/dimkanovikov/KITScenarist.git#tag=${pkgver}"
   "${pkgname}.desktop"
