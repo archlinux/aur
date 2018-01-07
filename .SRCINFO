@@ -1,0 +1,16 @@
+pkgbase = ruby-remotesync-1.0.0
+	pkgdesc = Sync remote folders using ssh
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/intersimone999/remotesync
+	arch = any
+	license = GPL-3.0
+	depends = ruby
+	depends = ruby-colorize
+	noextract = remotesync-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/remotesync-1.0.0.gem
+	sha1sums = 2d33a20bec6fe8d37aee19f6dcee2a8d578c91d6
+
+pkgname = ruby-remotesync-1.0.0
+
