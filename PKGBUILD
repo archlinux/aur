@@ -1,16 +1,15 @@
-# $Id: PKGBUILD 238493 2015-05-04 21:00:06Z anatolik $
-# Maintainer:
+# Maintainer: Luca P <meti at lplab.net>
 
 pkgbase=luajson
 pkgname=(lua-luajson lua51-luajson lua52-luajson)
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 arch=('any')
 url='http://luaforge.net/projects/luajson/'
 license=('MIT')
 makedepends=('lua-lpeg' 'lua51-lpeg' 'lua52-lpeg')
 source=(https://github.com/harningt/$pkgbase/archive/$pkgver.tar.gz)
-md5sums=('e9f5454bef1e26c7cc0c3442c223cf9b')
+md5sums=('66ef8d00bcaeec91b25433a697090bc8')
 
 package_lua-luajson() {
   pkgdesc='JSON parser/encoder for Lua'
