@@ -1,0 +1,16 @@
+pkgbase = perl-anyevent-i3
+	pkgdesc = Communicate with the i3 window manager
+	pkgver = 0.17
+	pkgrel = 2
+	url = http://search.cpan.org/~mstplbg/AnyEvent-I3/
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-anyevent
+	depends = perl-json-xs
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSTPLBG/AnyEvent-I3-0.17.tar.gz
+	md5sums = 907b6ed7fe6bea5914b878cdd73aba3f
+
+pkgname = perl-anyevent-i3
+
