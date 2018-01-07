@@ -2,7 +2,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 
 _gemname=remotesync
-pkgname=ruby-$_gemname-1.0.0
+pkgname=ruby-$_gemname
 pkgver=1.0.0
 pkgrel=1
 pkgdesc='Sync remote folders using ssh'
