@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.2.153.0.gb166f4ab
+pkgver=1.2.154.0.ga16ec240
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x)"
 url="http://psi-plus.com"
@@ -40,7 +40,7 @@ prepare() {
   # cp -r "$srcdir"/main/iconsets/* ./iconsets
   # echo "$pkgver ($(date +"%Y-%m-%d"))" >version
   patch -p1 <"$srcdir"/join.patch
-  patch -Np1 -i "${srcdir}/no-qca-qt4.patch"
+  # patch -Np1 -i "${srcdir}/no-qca-qt4.patch"
 }
 
 build() {
