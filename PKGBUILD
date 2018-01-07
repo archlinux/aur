@@ -1,5 +1,5 @@
 pkgname=cross-mingw-w64-gdb
-pkgver=7.12
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="The GNU Debugger (compiled to debug target mingw-w64)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('ncurses' 'expat' 'xz' 'readline')
 makedepends=('gcc' 'texinfo')
 options=('staticlibs' '!buildflags')
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
-md5sums=('a0a3a00f7499b0c5278ba8676745d180')
+md5sums=('48cac527e6f3018b865ece021e9723ac')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
