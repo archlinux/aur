@@ -1,0 +1,17 @@
+pkgbase = dvdrtools
+	pkgdesc = A fork of cdrtools, with the primary goal of supporting writable DVD drives
+	pkgver = 0.3.1
+	pkgrel = 4
+	url = http://savannah.nongnu.org/projects/dvdrtools/
+	arch = x86_64
+	license = GPL
+	makedepends = transcode
+	depends = file
+	depends = bash
+	optdepends = transcode: video/DVD ripper and encoder for the terminal/console
+	conflicts = cdrkit
+	source = https://sources.archlinux.org/other/dvdrtools/dvdrtools-0.3.1.tar.gz
+	md5sums = 5707b7e877b853e258cd738938833006
+
+pkgname = dvdrtools
+
