@@ -1,0 +1,16 @@
+pkgbase = netcount
+	pkgdesc = network statistic and monitor tools
+	pkgver = 0.8i
+	pkgrel = 7
+	url = http://www.hczim.de/software/
+	arch = any
+	license = GPL
+	makedepends = ppp
+	depends = python2
+	source = http://www.hczim.de/software/netcount-0.8i.tar.gz
+	source = build.patch
+	md5sums = 537d941b6725f17d46b228967b8f6d23
+	md5sums = 90dc22e9fce2b1a2fbc6899d23debbde
+
+pkgname = netcount
+

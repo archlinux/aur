@@ -1,0 +1,52 @@
+diff -ur netcount-0.8i/Makefile netcount-0.8i.my/Makefile
+--- netcount-0.8i/Makefile	2004-12-29 13:26:11.000000000 +0000
++++ netcount-0.8i.my/Makefile	2011-02-22 17:51:57.000000000 +0000
+@@ -280,23 +280,23 @@
+ ####### GENTOO
+    else
+     ifeq ($(DIST), gentoo)
+-$(IP_UP_GENTOO): netcount-ip-up-local
+-      ./add-script.sh $< $@ netcount
+-      chmod +x $@
++#$(IP_UP_GENTOO): netcount-ip-up-local
++#	./add-script.sh $< $@ netcount
++#	chmod +x $@
+ 
+-$(IP_DOWN_GENTOO): netcount-ip-down-local
+-      ./add-script.sh $< $@ netcount
+-      chmod +x $@
++#$(IP_DOWN_GENTOO): netcount-ip-down-local
++#	./add-script.sh $< $@ netcount
++#	chmod +x $@
+ 
+-$(INIT_GENTOO): netcount-init
+-      ./add-script.sh $< $@ netcount
+-      chmod +x $@
++#$(INIT_GENTOO): netcount-init
++#	./add-script.sh $< $@ netcount
++#	chmod +x $@
+ 
+ dist-objects = $(RCRONDIR)/netcount $(IP_UP_GENTOO) $(IP_DOWN_GENTOO) \
+       $(INIT_GENTOO)
+ 
+ uninstall:
+-      rm -f $(RCRONDIR)/netcount $(common-objects)
++	rm -f $(RCRONDIR)/netcount $(common-objects)
+ 	for i in $(IP_UP_GENTOO) $(IP_DOWN_GENTOO) $(INIT_GENTOO); do\
+ 	  echo cleaning up $i;\
+ 	  ./add-script.sh /dev/null $i netcount
+diff -ur netcount-0.8i/pytkcheck.sh netcount-0.8i.my/pytkcheck.sh
+--- netcount-0.8i/pytkcheck.sh	2004-12-29 13:26:12.000000000 +0000
++++ netcount-0.8i.my/pytkcheck.sh	2011-02-22 17:50:57.000000000 +0000
+@@ -29,10 +29,7 @@
+ 
+ ## Things you may want to configure:
+ # These names are tried, in that order:
+-PYTHONS="python \
+-         python2.4 python-2.4 python24 \
+-         python2.3 python-2.3 python23 \
+-	 python2.2 python-2.2 python22 python2"
++PYTHONS="python2"
+ 
+ usage() {
+ if [ $# -ne 1 ]; then
