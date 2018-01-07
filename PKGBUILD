@@ -20,5 +20,5 @@ package() {
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   # non-HEAD version should not install any files in /usr/bin
-  rm -r "$pkgdir/usr/bin/"
+#   rm -r "$pkgdir/usr/bin/"
 }
