@@ -1,0 +1,22 @@
+pkgbase = nuvexport
+	pkgdesc = Export MythTV .nuv and .mpeg files to other formats
+	pkgver = 0.5
+	pkgrel = 3
+	epoch = 2
+	url = http://www.mythtv.org/wiki/Nuvexport
+	install = nuvexport.install
+	arch = any
+	license = GPL
+	depends = ffmpeg
+	depends = id3lib
+	depends = mplayer
+	depends = mythtv
+	depends = perl-date-manip
+	depends = perl-dbd-mysql
+	depends = transcode
+	backup = etc/nuvexportrc
+	source = http://forevermore.net/files/nuvexport/nuvexport-0.5-0.20100817.svn.tar.bz2
+	sha256sums = b8138e31786031293dd3cee2dd6554b187b74723836732b8fc727b67a5262995
+
+pkgname = nuvexport
+
