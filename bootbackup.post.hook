@@ -7,8 +7,7 @@ Target = linux
 Target = systemd
 
 [Action]
-Description = Backing up /boot...
-When = PreTransaction
+Description = Backup boot partition...
+When = PostTransaction
 Depends = rsync
-Exec = /usr/share/libalpm/scripts/pre-kernel-upgrade-rsync
-AbortOnFail
+Exec = /usr/share/libalpm/scripts/backup-boot-partition post

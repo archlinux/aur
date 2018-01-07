@@ -1,5 +1,10 @@
+v1.2 (2018/01/07):
+- The hook now also creates a backup after the package upgrade
+  The post hook is performed after the 90-linux.hook
+
 v1.1 (2018/01/05):
 - The location of the data to be backedup (and where to) can now be configured
 
 v1.0 (2017/12/31):
 - Initial release
+
