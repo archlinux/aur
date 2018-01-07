@@ -8,7 +8,7 @@ post_install() {
 	
 	if [ -d /run/systemd/system ]; then
 		systemctl --system daemon-reload >/dev/null || true
-		systemctl start synergy.service >/dev/null || true
+		#systemctl start synergy.service >/dev/null || true
 	fi
 	if which update-icon-caches >/dev/null 2>&1 ; then
 		update-icon-caches /usr/share/icons/synergy.svg
