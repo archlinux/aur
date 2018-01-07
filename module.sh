@@ -61,7 +61,7 @@ module_log() {
     local __doc__='
     Logs arbitrary strings with given level.
     '
-    if type -t logging.log > /dev/null; then
+    if hash logging.log &>/dev/null; then
         logging.log "$@"
     elif [[ "$2" != '' ]]; then
         local level=$1

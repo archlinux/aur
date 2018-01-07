@@ -88,6 +88,53 @@ btrfs() {
 '
 # endregion
 # region functions
+filesystem_btrfs_subvolume_backup() {
+    # Create, delete or list system backups.
+    #
+    # Examples:
+    #
+    # >>> filesystem.btrfs_subvolume_backup list
+    # >>> filesystem.btrfs_subvolume_backup create
+    # >>> filesystem.btrfs_subvolume_backup delete rootBackup
+    sudo umount /mnt &>/dev/null
+    if [[ "$1" == create ]]; then
+        sudo mount PARTLABEL=system /mnt
+        local timestamp="$(date +"%d:%m:%y:%T")"
+        sudo btrfs subvolume snapshot /mnt/root \
+            "/mnt/rootBackup${timestamp}"
+        # NOTE: Autocompletion should be done by sudo. Not bash as user.
+        sudo bash -c "cp --recursive /boot/* \"/mnt/rootBackup${timestamp}/boot/\""
+        sudo umount /mnt
+    elif [[ "$1" == delete ]] && [[ "$2" ]]; then
+        sudo mount PARTLABEL=system /mnt
+        sudo btrfs subvolume delete "/mnt/$(basename "$2")"
+        sudo umount /mnt
+    elif [[ "$1" == list ]]; then
+        sudo btrfs subvolume list /
+    else
+        cat << EOF
+filesystem.btrfs_subvolume_backup create|delete|list [backupName]
+EOF
+    fi
+    return $?
+}
+alias filesystem.btrfs_subvolume_backup=filesystem_btrfs_subvolume_backup
+filesystem_btrfs_subvolume_backup_autocomplete() {
+    # Autocompletion function.
+    local lastCompleteArgument="${COMP_WORDS[${COMP_CWORD}-1]}"
+    local currentArgument="${COMP_WORDS[-1]}"
+
+    if [[ $COMP_CWORD == 1 ]]; then
+        COMPREPLY=($(compgen -W 'create delete list' -- "$currentArgument"))
+    elif [[ $UID == 0 ]] && [[ $COMP_CWORD == 2 ]]
+         [[ "$lastCompleteArgument" == 'delete' ]]; then
+        COMPREPLY=($(compgen -W "$(backupBTRFSSystem list | cut --delimiter ' ' \
+            --field 9 | tr '\n' ' ')" -- "$currentArgument"))
+    fi
+    return 0
+}
+alias filesystem.btrfs_subvolume_backup_autocomplete=filesystem_btrfs_subvolume_backup_autocomplete
+complete -F filesystem_btrfs_subvolume_backup_autocomplete filesystem_btrfs_subvolume_backup
 filesystem_btrfs_is_subvolume() {
     local __doc__='
     Checks if path is a subvolume. Note: The btrfs root is also a subvolume.
