@@ -1,0 +1,14 @@
+pkgbase = libsmf
+	pkgdesc = A BSD-licensed C library for handling SMF ("*.mid") files.
+	pkgver = 1.3
+	pkgrel = 5
+	url = http://sourceforge.net/projects/libsmf/
+	arch = x86_64
+	license = BSD
+	depends = glib2
+	depends = readline
+	source = http://downloads.sourceforge.net/project/libsmf/libsmf/1.3/libsmf-1.3.tar.gz
+	md5sums = eb698f1bc0bad9d5bce4c10386347486
+
+pkgname = libsmf
+
