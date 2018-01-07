@@ -29,7 +29,7 @@ package() {
 	# Program
 	mv "$srcdir/EmeraldWallet-linux-v${pkgver}/"* "$pkgdir/usr/share/emerald-wallet-bin/"
 	chmod -R 755 "$pkgdir/usr/share/emerald-wallet-bin/"
-	ln -s "/usr/share/emerald-wallet-bin/emeraldwallet" "/usr/bin/emeraldwallet"
+	ln -s "$pkgdir/usr/share/emerald-wallet-bin/emeraldwallet" "$pkgdir/usr/bin/emeraldwallet"
 	
 
 	# Desktop Launcher
