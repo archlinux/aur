@@ -2,7 +2,7 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.27.3+5+g07ecaf9e9
+pkgver=3.27.4
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
 url="http://www.gnome.org/projects/epiphany/"
