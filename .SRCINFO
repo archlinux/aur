@@ -1,0 +1,24 @@
+pkgbase = synfigstudio
+	pkgdesc = Professional vector animation program (GUI)
+	pkgver = 1.2.1
+	pkgrel = 3
+	url = http://synfig.org
+	arch = x86_64
+	license = GPL2
+	makedepends = openexr
+	makedepends = libmagick6
+	makedepends = xorg-fonts-100dpi
+	makedepends = xorg-fonts-75dpi
+	makedepends = xorg-fonts-misc
+	makedepends = xorg-fonts-type1
+	makedepends = intltool
+	makedepends = etl
+	makedepends = imagemagick
+	depends = gtkmm3
+	depends = synfig
+	depends = sdl_image
+	source = http://downloads.sourceforge.net/project/synfig/releases/1.2.1/source/synfigstudio-1.2.1.tar.gz
+	sha256sums = 1a97875e0039895604085649bcd30cf0d6165f4c865299ca13d45d2dfbfab05d
+
+pkgname = synfigstudio
+
