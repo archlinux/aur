@@ -1,0 +1,15 @@
+pkgbase = emovix
+	pkgdesc = Create Movix-CD's (also emovix plugin for k3b)
+	pkgver = 0.9.0
+	pkgrel = 6
+	url = http://movix.sourceforge.net/
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = cdrkit
+	options = !makeflags
+	source = http://downloads.sourceforge.net/sourceforge/movix/emovix-0.9.0.tar.gz
+	md5sums = a96492f338824b24c5a9e714c57eddcf
+
+pkgname = emovix
+
