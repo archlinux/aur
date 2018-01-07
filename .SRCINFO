@@ -1,0 +1,17 @@
+pkgbase = mime-editor
+	pkgdesc = Shared-mime info database editor, useful for changing MIME-type info in rox applications
+	pkgver = 0.6
+	pkgrel = 5
+	url = http://rox.sourceforge.net/mime_editor.html
+	arch = any
+	license = GPL2
+	depends = pygtk
+	depends = rox-lib
+	depends = shared-mime-info
+	source = http://downloads.sourceforge.net/rox/mime-editor-0.6.tar.bz2
+	source = mime-editor
+	md5sums = bfa250d074b6a712c1fce936a5fcaae4
+	md5sums = 9438b0a8d591abd03099ac5961540d4a
+
+pkgname = mime-editor
+
