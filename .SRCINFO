@@ -1,0 +1,19 @@
+pkgbase = openocd
+	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices
+	pkgver = 0.10.0
+	pkgrel = 1
+	epoch = 1
+	url = http://openocd.org/
+	arch = x86_64
+	license = GPL
+	depends = libftdi
+	depends = libftdi-compat
+	depends = libusb
+	depends = libusb-compat
+	depends = hidapi
+	options = !strip
+	source = https://downloads.sourceforge.net/sourceforge/openocd/openocd-0.10.0.tar.bz2
+	sha256sums = 7312e7d680752ac088b8b8f2b5ba3ff0d30e0a78139531847be4b75c101316ae
+
+pkgname = openocd
+
