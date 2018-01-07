@@ -25,7 +25,6 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin/"
 	cd "${pkgname/-git}"
-	cp ./adlmidi "$pkgdir/usr/bin/"
+	install -D ./adlmidi "${pkgdir}"/usr/bin/adlmidi
 }
