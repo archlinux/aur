@@ -1,0 +1,16 @@
+pkgbase = pympc
+	pkgdesc = Pympc is a client for the Music Player Daemon [www.musicpd.org] written in Python
+	pkgver = 20050330
+	pkgrel = 8
+	url = http://pympc.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = pygtk
+	source = https://downloads.sourceforge.net/sourceforge/pympc/pympc-20050330.tar.gz
+	source = pympc.desktop
+	sha256sums = 9fdaa02025c543990d30a7bf15014780075f9fabf43b42c9fefc1893cb6dc125
+	sha256sums = b69fe81cfcc83e125065f351642cefe749fca9525bc30a2c82ed1068d344625d
+
+pkgname = pympc
+
