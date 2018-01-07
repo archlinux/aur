@@ -1,0 +1,15 @@
+pkgbase = interlis-compiler
+	pkgdesc = Compiler for INTERLIS 2
+	pkgver = 4.2.0
+	pkgrel = 5
+	url = https://www.interlis.ch/content/index.php?language=e
+	arch = any
+	license = LGPL
+	depends = java-runtime
+	source = https://downloads.sourceforge.net/project/umleditor/ili2c/4.2.0/ili2c-4.2.0.zip
+	source = ili2c.sh
+	sha256sums = 538cbcf9f01deaad468a27945390b113c922b78e4b78317a872aeae1a739c5d7
+	sha256sums = 94b5d6e74d0cbfee09d73d84bad0978bc1d8de1ce8caf18f37c49d44b3da6657
+
+pkgname = interlis-compiler
+
