@@ -1,0 +1,7 @@
+post_install() {
+  echo
+  echo " : You should change the path to your gps serial device in"
+  echo " :   /usr/bin/gpsman"
+  echo
+  echo " : Config options are stored in /usr/share/gpsman/config.tcl"
+}

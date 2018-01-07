@@ -1,0 +1,17 @@
+pkgbase = gpsman
+	pkgdesc = Graphical GPS data manager for preparing, inspecting and editing GPS data
+	pkgver = 6.4.4.2
+	pkgrel = 1
+	url = http://gpsman.sourceforge.net/
+	install = gpsman.install
+	arch = any
+	license = GPL
+	makedepends = gendesk
+	depends = tcl
+	depends = tk
+	optdepends = gpsmanshp: shapefile support
+	source = http://sourceforge.net/projects/gpsman/files/distrib/gpsman-6.4.4.2.tgz
+	md5sums = 0f3819caf6479d5cd529bf6dc8e04de3
+
+pkgname = gpsman
+
