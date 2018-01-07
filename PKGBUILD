@@ -1,66 +1,40 @@
-# Contributor: Todd Musall 
+# Maintainer: Daniel Micay <danielmicay@gmail.com>
+# Contributor: Todd Musall
 # Contributor: dront78 (Ivan)
 # Contributor: Victor Noel
-# Maintainer: ngoonee
-pkgname=('heimdall')
-pkgver=1.4.1
+# Contributor: ngoonee
+pkgname=heimdall
+pkgver=1.4.2
 pkgrel=1
-pkgdesc="Heimdall is a cross-platform open-source utility to flash firmware (aka ROMs) onto Samsung Galaxy S devices."
-arch=('i686' 'x86_64')
-url="http://www.glassechidna.com.au/products/heimdall/"
+pkgdesc='Tool suite used to flash firmware (aka ROMs) onto Samsung mobile devices'
+arch=('x86_64')
+url='http://www.glassechidna.com.au/products/heimdall/'
 license=('MIT')
-depends=('libusb' 'qt4')
+depends=('qt5-base')
+makedepends=('cmake')
 optdepends=('android-udev: Udev rules to connect Android devices to your linux box')
-makedepends=('gcc')
 source=("heimdall-${pkgver}.tar.gz::https://github.com/Benjamin-Dobell/Heimdall/archive/v${pkgver}.tar.gz"
         'heimdall.desktop')
+sha256sums=('589bef88f2597c8a84fe6fafbe928ddc9687438b5b54edd917d7df48c7e3eff8'
+            '439cea1a8976b9b589ffe4030a084243bcc5e937dcb9c571cdb94d3ff08b4fb4')
 
 build() {
-  cd ${srcdir}/Heimdall-${pkgver}
+  cd Heimdall-$pkgver
 
-  # Build libpit which is needed for compiling heimdall
-  cd libpit/
-  ./configure --prefix=/usr
-  # Default makefile removes libpit.1.4.a which is needed by frontend
-  #sed -i '/rm -f libpit-1.4.a/d' Makefile
-  make
-
-  # Build heimdall command line tool
-  cd ../heimdall/
-  
-  ./configure --prefix=/usr
-  make
-
-  # Build heimdall GUI front end
-  cd ../heimdall-frontend/
-
-  env OUTPUTDIR="/usr/bin" qmake-qt4 heimdall-frontend.pro
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd ${srcdir}/Heimdall-${pkgver}
+  install -m644 -D heimdall.desktop "$pkgdir/usr/share/applications/heimdall.desktop"
+
+  cd Heimdall-$pkgver
 
   # Install license file
-  #install -m644 -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install heimdall command line tool
-  cd heimdall/
-
-  # Prevent make install from trying to reload udev
-  # We'll do this the Arch way at package install time
-  mv Makefile Makefile.orig
-  sed -e 's/sudo service udev restart/echo sudo service udev restart/' <Makefile.orig >Makefile
-
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/lib/"
-
-  # Install heimdall GUI front end
-  cd ../heimdall-frontend
-  # hack to place heimdall-frontend in /usr/bin
-  sed -i 's|local\/||g' Makefile
-  make INSTALL_ROOT="${pkgdir}/" install
-  install -m644 -D "${srcdir}/heimdall.desktop" "${pkgdir}/usr/share/applications/heimdall.desktop"
+  install -d "$pkgdir"/usr/bin
+  install -Dm755 bin/* "$pkgdir"/usr/bin/
+  install -Dm644 heimdall/60-heimdall.rules "$pkgdir"/usr/lib/udev/rules.d/60-heimdall.rules
 }
-md5sums=('22c911e9042f5ed8fd90cbeeb9589015'
-         '6c4de9e74c0d9e7ab4d50af21303b78a')

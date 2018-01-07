@@ -1,19 +1,17 @@
 pkgbase = heimdall
-	pkgdesc = Heimdall is a cross-platform open-source utility to flash firmware (aka ROMs) onto Samsung Galaxy S devices.
-	pkgver = 1.4.1
+	pkgdesc = Tool suite used to flash firmware (aka ROMs) onto Samsung mobile devices
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = http://www.glassechidna.com.au/products/heimdall/
-	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
-	depends = libusb
-	depends = qt4
+	makedepends = cmake
+	depends = qt5-base
 	optdepends = android-udev: Udev rules to connect Android devices to your linux box
-	source = heimdall-1.4.1.tar.gz::https://github.com/Benjamin-Dobell/Heimdall/archive/v1.4.1.tar.gz
+	source = heimdall-1.4.2.tar.gz::https://github.com/Benjamin-Dobell/Heimdall/archive/v1.4.2.tar.gz
 	source = heimdall.desktop
-	md5sums = 22c911e9042f5ed8fd90cbeeb9589015
-	md5sums = 6c4de9e74c0d9e7ab4d50af21303b78a
+	sha256sums = 589bef88f2597c8a84fe6fafbe928ddc9687438b5b54edd917d7df48c7e3eff8
+	sha256sums = 439cea1a8976b9b589ffe4030a084243bcc5e937dcb9c571cdb94d3ff08b4fb4
 
 pkgname = heimdall
 
