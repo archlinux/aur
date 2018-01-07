@@ -1,0 +1,15 @@
+pkgbase = python-wpactrl
+	pkgdesc = A Python extension for wpa_supplicant/hostapd control interface access
+	pkgver = 20090609
+	pkgrel = 6
+	url = http://projects.otaku42.de/wiki/PythonWpaCtrl
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	conflicts = python-wpactrl<=20090609-3
+	replaces = python-wpactrl<=20090609-3
+	source = https://sources.archlinux.org/other/python-wpactrl/python-wpactrl-20090609.tar.gz
+	md5sums = 8d45739aa9bfa1110a4570bb5ceda768
+
+pkgname = python2-wpactrl
+
