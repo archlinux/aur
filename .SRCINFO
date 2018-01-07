@@ -1,0 +1,14 @@
+pkgbase = naim
+	pkgdesc = An ncurses AOL Instant Messenger and IRC client.
+	pkgver = 0.11.8.3.2
+	pkgrel = 4
+	url = http://naim.n.ml.org
+	arch = x86_64
+	license = GPL2
+	depends = ncurses
+	options = !makeflags
+	source = http://naim.googlecode.com/files/naim-0.11.8.3.2.tar.bz2
+	md5sums = c9622e3f75d56310829f98fa4dae1f78
+
+pkgname = naim
+
