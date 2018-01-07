@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=EmeraldWallet
+Comment=Ethereum Classic Wallet
+Icon=/usr/share/pixmaps/emeraldwallet.png
+Exec=emeraldwallet
+Categories=Utility;
+StartupNotify=false
+
