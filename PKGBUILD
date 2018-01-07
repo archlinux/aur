@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mandelbrot-gtk-git
-pkgver=r54.ae65e3b
+pkgver=r56.fb1a4c6
 pkgrel=1
 pkgdesc="A multithreaded GTK3 application for rendering the mandelbrot and julia set."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk3')
 makedepends=('git')
 provides=('mandelbrot-gtk')
-conflicts=('mandelbrot-gtk')
+conflicts=('mandelbrot-gtk' 'mesa-demos')
 source=("mandelbrot::git://git.code.sf.net/p/mandelbrot-gtk/code")
 md5sums=('SKIP')
 _gitname=mandelbrot
@@ -23,10 +23,10 @@ pkgver() {
 
 build() {
   cd "$srcdir"/$_gitname
-  make DEBUG=NO START=NO
+  make START=NO
 }
 
 package() {
   cd "$srcdir"/$_gitname
-  make DEBUG=NO DESTDIR="$pkgdir" PREFIX=/usr  install
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 } 
