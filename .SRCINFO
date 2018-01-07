@@ -1,6 +1,6 @@
 pkgbase = neovim-qt
-	pkgdesc = Neovim client library and GUI, in Qt5.
-	pkgver = 0.2.7
+	pkgdesc = A Qt5 GUI for Neovim
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/equalsraf/neovim-qt
 	install = neovim-qt.install
@@ -14,8 +14,8 @@ pkgbase = neovim-qt
 	depends = libxkbcommon-x11
 	provides = neovim-qt
 	conflicts = neovim-qt-git
-	source = https://github.com/equalsraf/neovim-qt/archive/v0.2.7.tar.gz
-	sha256sums = 28f2b890eb74c6ab3c772523fe053b9db5c0823eaf259d6eb4ca5f568901540b
+	source = https://github.com/equalsraf/neovim-qt/archive/v0.2.8.tar.gz
+	sha256sums = 53653c21de1dd41fb78a65f27e989b3478c74ad91cbde92f831fb3d81b25802b
 
 pkgname = neovim-qt
 
