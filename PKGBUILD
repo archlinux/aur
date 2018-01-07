@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r131513
+pkgver=27.0.50.r131681
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 options=('docs' '!emptydirs' '!makeflags')
 provides=('emacs')
-source=("git://git.savannah.gnu.org/emacs.git")
-md5sums=('SKIP')
+source=("git://git.savannah.gnu.org/emacs.git" check_IM6.patch)
+md5sums=('SKIP' '49274bae5626d3a1688a49c54f559e79')
 
 pkgver() {
   cd "$srcdir/emacs"
@@ -24,13 +24,14 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's+SYSTEM_PURESIZE_EXTRA 0+SYSTEM_PURESIZE_EXTRA 512000+' "$srcdir"/emacs/src/puresize.h
+  cd emacs
+  patch -Np1 < $srcdir/check_IM6.patch
 }
 
 build() {
   cd emacs
-  [[ -x configure ]] || ./autogen.sh
-  ac_cv_lib_gif_EGifPutExtensionLast=yes \
+  [[ -x configure ]] || ./autogen.sh && ./autogen.sh autoconf
+  ac_cv_lib_gif_EGifPutExtensionLast=yes PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"\
     ./configure --program-transform-name='s/^ctags$/ctags.emacs/' \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -40,8 +41,9 @@ build() {
     --mandir=/usr/share/man \
     --pdfdir=/usr/share/doc/emacs \
     --with-modules \
-    --without-gconf \
     --with-xft \
+    --without-gconf \
+    --with-imagemagick \
     --without-xwidgets \
     --without-pop \
     --with-gameuser=:games
