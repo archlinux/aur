@@ -7,6 +7,7 @@ pkgbase = terminalimageviewer
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = imagemagick
 	provides = TerminalImageViewer
 	provides = tiv
 	conflicts = TerminalImageViewer
