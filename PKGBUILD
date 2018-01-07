@@ -1,8 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=solium
-pkgver=1.1.0
-_commit=2c8dcd9
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Linter to identify & fix Style & Security issues in Solidity'
 arch=('any')
@@ -10,7 +9,7 @@ url='https://github.com/duaraghav8/Solium'
 license=('MIT')
 depends=(nodejs)
 makedepends=(npm git)
-source=("${pkgname}-${pkgver}::git+https://github.com/duaraghav8/Solium#commit=$_commit")
+source=("${pkgname}-${pkgver}::git+https://github.com/duaraghav8/Solium#tag=v$pkgver")
 sha512sums=('SKIP')
 
 build() {
