@@ -1,0 +1,16 @@
+pkgbase = pppd-ldap-simple
+	pkgdesc = pppd ldap simple plugin (based on pppd ldap, without radius, etc. Just search by uid and userPassword)
+	pkgver = 0.12b
+	pkgrel = 8
+	url = http://sourceforge.net/projects/pppd-ldap/
+	arch = x86_64
+	license = GPL
+	makedepends = ppp
+	makedepends = libldap
+	source = http://archlinux-stuff.googlecode.com/files/pppd_ldap-simple-0.12b.tar.gz
+	md5sums = e47b7fb5119a1024e188ec22351672cd
+
+pkgname = pppd-ldap-simple
+	depends = ppp=
+	depends = libldap>=2.4.18
+
