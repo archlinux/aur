@@ -9,6 +9,7 @@ url='https://github.com/jgraph/drawio'
 license=('Apache')
 depends=(electron gconf libnotify)
 conflicts=(drawio-desktop-bin)
+makedepends=(npm)
 source=("drawio-desktop-$pkgver.zip::https://github.com/jgraph/drawio/releases/download/v$pkgver/draw.war")
 noextract=("drawio-desktop-$pkgver.zip")
 sha256sums=('2216a90a7ad8fadd684641a756caaea0297bf2dd91ea0182e04247276dff0661')
@@ -21,9 +22,15 @@ prepare() {
   bsdtar -xf "../drawio-desktop-$pkgver.zip" -C .
   rm -rf "META-INF" "WEB-INF"
 
-  # disable logger
-  sed -e "/require('electron-log')/d" \
-  -i 'electron.js'
+  # remove electron from dependencies
+  sed '/"electron": ".*"/d' -i 'package.json'
+}
+
+build() {
+  cd "$srcdir/drawio-$pkgver"
+
+  npm install --cache ../npm-cache
+  rm -f 'package-lock.json'
 }
 
 package() {
