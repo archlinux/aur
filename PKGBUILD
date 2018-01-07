@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=bash-link
-pkgver=1.0.10
-pkgrel=8
+pkgver=1.0.11
+pkgrel=9
 pkgdesc='a high reliable bash library'
 arch=('any')
 url='http://torben.website/bashLink'
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 copyToAUR=true
 
 package() {
-    install -D --mode 755 "${srcdir}/bashLink.sh" "${pkgdir}/usr/bin/bashLink"
+    install -D --mode 755 "${srcdir}/"* "${pkgdir}/usr/bin/bashLink/"
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
