@@ -1,0 +1,25 @@
+pkgbase = dvdrip
+	pkgdesc = A Gtk frontend for transcode writen in Perl
+	pkgver = 0.98.11
+	pkgrel = 13
+	url = http://www.exit1.org/dvdrip/
+	arch = x86_64
+	license = custom
+	depends = perl-gtk2-ex-formfactory
+	depends = transcode
+	depends = imagemagick
+	depends = perl-libintl-perl
+	depends = desktop-file-utils
+	depends = perl-event-execflow
+	optdepends = ogmtools: for ogm/odd video creation
+	optdepends = lsdvd: fast reading of DVD table
+	optdepends = fping: for cluster support
+	options = !emptydirs
+	options = !makeflags
+	source = http://www.exit1.org/dvdrip/dist/dvdrip-0.98.11.tar.gz
+	source = dvdrip.desktop
+	md5sums = 6dfa4199d451757a37eea233a07da4c0
+	md5sums = e91cf411928fd0500d07a0022b4ef546
+
+pkgname = dvdrip
+
