@@ -1,0 +1,17 @@
+pkgbase = pyid3lib
+	pkgdesc = A Python module for editing ID3v2 tags of MP3 audio files
+	pkgver = 0.5.1
+	pkgrel = 9
+	url = http://pyid3lib.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	depends = python2
+	depends = glibc
+	depends = id3lib
+	source = https://downloads.sourceforge.net/sourceforge/pyid3lib/pyid3lib-0.5.1.tar.gz
+	source = pyid3lib-0.5.1-py25.patch
+	sha256sums = a0534b657cf91726bf93a57112ec9514336d39a93c859cd7afe4d3bf6ae0abcb
+	sha256sums = 07716da15662c5d266a3a184181d4825e391959306819f0eab89cd9993551342
+
+pkgname = pyid3lib
+
