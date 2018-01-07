@@ -1,0 +1,15 @@
+pkgbase = nvdock
+	pkgdesc = A tray icon for easy launching of the NVIDIA control panel
+	pkgver = 1.02
+	pkgrel = 5
+	url = http://www.opsat.net/user/bob/projects/nvdock
+	arch = x86_64
+	license = BSD
+	depends = gtk2
+	source = http://bobmajdakjr.googlecode.com/files/nvdock-1.02.tar.bz2
+	source = fix-build.patch
+	md5sums = e18c4eeff936dc3b671fd8b5a9bb5145
+	md5sums = e16d729d78e761e1015bd3b06876cb2f
+
+pkgname = nvdock
+
