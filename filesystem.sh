@@ -128,7 +128,7 @@ filesystem_btrfs_subvolume_backup_autocomplete() {
         COMPREPLY=($(compgen -W 'create delete list' -- "$currentArgument"))
     elif [[ $UID == 0 ]] && [[ $COMP_CWORD == 2 ]]
          [[ "$lastCompleteArgument" == 'delete' ]]; then
-        COMPREPLY=($(compgen -W "$(backupBTRFSSystem list | cut --delimiter ' ' \
+        COMPREPLY=($(compgen -W "$(filesystem.btrfs_subvolume_backup list | cut --delimiter ' ' \
             --field 9 | tr '\n' ' ')" -- "$currentArgument"))
     fi
     return 0
