@@ -6,7 +6,7 @@ pkgver=2.2.5
 pkgrel=1
 pkgdesc='LightDM greeter that uses WebKit2 for theming via HTML/JavaScript.'
 arch=('i686' 'x86_64')
-url='https://github.com/antergos/lightdm-webkit2-greeter'
+url='https://github.com/antergos/web-greeter'
 license=('GPL3')
 groups=('system')
 makedepends=('gobject-introspection' 'meson' 'gettext' 'dbus-glib')
@@ -16,7 +16,7 @@ conflicts=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 replaces=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 backup=("etc/lightdm/${pkgname}.conf")
 _artwork_url='https://sources.archlinux.org/other/artwork'
-source=("https://github.com/Antergos/${pkgname}/archive/${pkgver}.zip"
+source=("https://github.com/Antergos/${_pkgname}/archive/${pkgver}.zip"
 		"archlinux-logo.svg::${_artwork_url}/archlinux-logo-light-scalable.svg"
 		'archlinux-user.svg')
 md5sums=('634c6080144169c7529291bf1c8a1429'
