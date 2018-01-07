@@ -1,5 +1,5 @@
 pkgname='todd'
-pkgver=2.9619a28
+pkgver=3.e217d23
 pkgrel=1
 pkgdesc='An HTTP server that streams the stdout of a single command. More generic and elegant than woof.'
 arch=('any')
