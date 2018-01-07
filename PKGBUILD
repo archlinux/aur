@@ -1,0 +1,75 @@
+# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
+
+_targets="i686-w64-mingw32 x86_64-w64-mingw32"
+
+pkgname=mingw-w64-gcc
+pkgver=7.2.0
+_commit=1bd23ca8c30f4827c4bea23deedf7ca33a86ffb5
+_islver=0.18
+pkgrel=1
+pkgdesc="Cross GCC for the MinGW-w64 cross-compiler"
+arch=('x86_64')
+url="http://gcc.gnu.org"
+license=('GPL' 'LGPL' 'FDL' 'custom')
+groups=('mingw-w64-toolchain' 'mingw-w64')
+depends=('zlib' 'libmpc'
+	 'mingw-w64-crt' 'mingw-w64-binutils' 'mingw-w64-winpthreads'
+	 'mingw-w64-headers')
+makedepends=("gcc-ada=${pkgver}" 'git')
+#checkdepends=('dejagnu') # Windows executables could run on Arch through bin_mft and Wine
+optdepends=()
+provides=('mingw-w64-gcc-base')
+replaces=()
+backup=()
+options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
+source=("git://gcc.gnu.org/git/gcc.git#commit=${_commit}"
+	"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+	"Revert-eeb6872bf.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/Revert-eeb6872bf.patch?h=packages/gcc")
+sha256sums=('SKIP'
+            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
+            'c537bce5e9aa2b6fcdec3c1e7f94017633cb5ff5af59beda699262be3c06cca5')
+
+prepare() {
+  cd "$srcdir"/gcc
+  # link isl for in-tree builds
+  ln -s ../isl-${_islver} isl
+
+  git apply ../Revert-eeb6872bf.patch
+}
+
+build() {
+  for _target in ${_targets}; do
+    mkdir -p "$srcdir"/gcc-build-${_target} && cd "$srcdir"/gcc-build-${_target}
+
+    "$srcdir"/gcc/configure --prefix=/usr --libexecdir=/usr/lib \
+        --target=${_target} \
+        --enable-languages=c,lto,c++,objc,obj-c++,fortran,ada \
+        --enable-shared --enable-static \
+        --enable-threads=posix --enable-fully-dynamic-string --enable-libstdcxx-time=yes \
+        --with-system-zlib --enable-cloog-backend=isl \
+        --enable-lto --disable-dw2-exceptions --enable-libgomp \
+        --disable-multilib --enable-checking=release
+    make all
+  done
+}
+
+package() {
+  for _target in ${_targets}; do
+    cd "$srcdir"/gcc-build-${_target}
+    make DESTDIR="$pkgdir" install
+    ${_target}-strip "$pkgdir"/usr/${_target}/lib/*.dll
+    strip "$pkgdir"/usr/bin/${_target}-*
+    strip "$pkgdir"/usr/lib/gcc/${_target}/${pkgver}/{cc1*,collect2,gnat1,f951,lto*}
+    ln -s ${_target}-gcc "$pkgdir"/usr/bin/${_target}-cc
+    # mv dlls
+    mkdir -p "$pkgdir"/usr/${_target}/bin/
+    mv "$pkgdir"/usr/${_target}/lib/*.dll "$pkgdir"/usr/${_target}/bin/
+  done
+  strip "$pkgdir"/usr/bin/*
+  # remove unnecessary files
+  rm -r "$pkgdir"/usr/share
+  rm -f "$pkgdir"/usr/lib/libcc1.so*
+  rm -f "$pkgdir"/usr/lib/libcc1.a
+}

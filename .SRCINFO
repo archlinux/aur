@@ -1,0 +1,34 @@
+pkgbase = mingw-w64-gcc
+	pkgdesc = Cross GCC for the MinGW-w64 cross-compiler
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = http://gcc.gnu.org
+	arch = x86_64
+	groups = mingw-w64-toolchain
+	groups = mingw-w64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = gcc-ada=7.2.0
+	makedepends = git
+	depends = zlib
+	depends = libmpc
+	depends = mingw-w64-crt
+	depends = mingw-w64-binutils
+	depends = mingw-w64-winpthreads
+	depends = mingw-w64-headers
+	provides = mingw-w64-gcc-base
+	options = !strip
+	options = staticlibs
+	options = !emptydirs
+	options = !buildflags
+	source = git://gcc.gnu.org/git/gcc.git#commit=1bd23ca8c30f4827c4bea23deedf7ca33a86ffb5
+	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
+	source = Revert-eeb6872bf.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/Revert-eeb6872bf.patch?h=packages/gcc
+	sha256sums = SKIP
+	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
+	sha256sums = c537bce5e9aa2b6fcdec3c1e7f94017633cb5ff5af59beda699262be3c06cca5
+
+pkgname = mingw-w64-gcc
+
