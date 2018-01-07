@@ -1,0 +1,14 @@
+pkgbase = bcg729
+	pkgdesc = g729 codec
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://www.linphone.org/eng/documentation/dev/bcg729.html
+	arch = x86_64
+	license = GPL
+	depends = mediastreamer
+	source = bcg729-1.0.4.tar.gz::https://github.com/BelledonneCommunications/bcg729/archive/1.0.4.tar.gz
+	validpgpkeys = 9774BC1725758EB16D639F8B3ECD52DEE2F56985
+	sha256sums = 94b3542a06cbd96306efc19f959f9febae62806a22599063f82a8c33e989d48b
+
+pkgname = bcg729
+
