@@ -1,0 +1,18 @@
+pkgbase = perl-xml-fast
+	pkgdesc = Simple and very fast XML to hash conversion.
+	pkgver = 0.11
+	pkgrel = 10
+	url = http://search.cpan.org/dist/XML-Fast/
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MO/MONS/XML-Fast-0.11.tar.gz
+	md5sums = a2985cc2f328cf9eda6ad75c3f40f6b3
+
+pkgname = perl-xml-fast
+	depends = perl
+	depends = perl>=
+	depends = perl<
+
