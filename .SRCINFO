@@ -1,0 +1,19 @@
+pkgbase = kawanime-git
+	pkgdesc = Desktop app for anime fans
+	pkgver = 0.2.3.r15.ge662f7e
+	pkgrel = 1
+	url = https://kawanime.com
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = libicns
+	depends = nodejs
+	provides = kawanime
+	conflicts = kawanime
+	replaces = kawanime
+	source = kawanime::git+https://github.com/kylart/kawanime.git
+	md5sums = SKIP
+
+pkgname = kawanime-git
+
