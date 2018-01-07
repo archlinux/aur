@@ -1,15 +1,16 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=cargo-web
-pkgver=0.4.4
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A Cargo subcommand for the client-side Web"
 url="https://github.com/koute/cargo-web"
-depends=('cargo' 'gcc-libs')
+depends=('cargo' 'openssl')
+optdepends=('chromium: needed for tests')
 arch=('i686' 'x86_64')
 license=('MIT' 'APACHE')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/koute/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('b8b573d4199ca0a1e889cc7be70dfe95d9dec2488cf7dc3c65379c4882a6f1b1df3e6c77dfc2aed02a4bf88b5f7e5eaf59c2a6d54cae9fdee63ff0da052148a6')
+sha256sums=('6a568b290abf29b3ce5be888e2dd8af2e57f34f9e58c45c5c612c575a14be528')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -21,3 +22,5 @@ package() {
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE-MIT LICENSE-APACHE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim:set ts=2 sw=2 et:
