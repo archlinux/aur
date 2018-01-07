@@ -18,7 +18,7 @@ pkgbase = waterfox-bin
 	provides = waterfox
 	conflicts = waterfox
 	source = waterfox.desktop
-	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.0.1.en-US.linux-x86_64.tar.bz2
+	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.0.2.en-US.linux-x86_64.tar.bz2
 	md5sums = 0e8dbbeaf61ad27b0f0d6c31038b529e
 	md5sums = af4068062376c2bd5f2fa56fe67a5299
 
