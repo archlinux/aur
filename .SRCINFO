@@ -1,0 +1,14 @@
+pkgbase = png2ico
+	pkgdesc = Converts PNG files to Windows icon resource files
+	pkgver = 20021208
+	pkgrel = 7
+	url = http://www.winterdrache.de/freeware/png2ico/
+	arch = x86_64
+	license = GPL2
+	depends = libpng
+	depends = gcc
+	source = http://www.winterdrache.de/freeware/png2ico/data/png2ico-src-2002-12-08.tar.gz
+	sha256sums = d6bc2b8f9dacfb8010e5f5654aaba56476df18d88e344ea1a32523bb5843b68e
+
+pkgname = png2ico
+
