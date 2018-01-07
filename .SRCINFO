@@ -6,6 +6,7 @@ pkgbase = adlmidi-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	license = GPL2+
 	makedepends = git
 	optdepends = ffmpeg: recording output to video file
 	provides = adlmidi
