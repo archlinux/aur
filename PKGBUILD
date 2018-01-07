@@ -27,7 +27,7 @@ pkgver() {
 build() {
     cd "$srcdir/$_srcname"
     ./autogen.sh
-    ./configure --prefix=/usr --with-pcre2
+    ./configure --prefix=/usr --with-pcre2 --enable-zlib --enable-lzma
     make
 }
 
