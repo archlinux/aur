@@ -1,0 +1,15 @@
+pkgbase = libtsm
+	pkgdesc = Terminal-emulator State Machine
+	pkgver = 3
+	pkgrel = 3
+	url = http://www.freedesktop.org/wiki/Software/kmscon/libtsm
+	arch = x86_64
+	license = MIT
+	makedepends = libxkbcommon
+	depends = glibc
+	options = !libtool
+	source = http://www.freedesktop.org/software/kmscon/releases/libtsm-3.tar.xz
+	md5sums = c1b297a69d11a72f207ec35ae5ce7d69
+
+pkgname = libtsm
+
