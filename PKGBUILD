@@ -4,14 +4,12 @@
 
 pkgname=seahub
 pkgver=6.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The web end of seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
 license=('Apache')
-depends=("seafile-server" "python2-virtualenv" "python2-django-pylibmc"
-         'python2-dateutil' 'python2-qrcode')
-makedepends=('python2-pip')
+depends=("seafile-server" "python2-virtualenv" 'libmemcached')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "seahub-preupgrade")
@@ -39,12 +37,12 @@ package() {
     "${pkgdir}/usr/bin/seahub-preupgrade"
 
   # Create private virtualenv
-  virtualenv2 --system-site-packages "${pkgdir}/usr/lib/seafile/seafileenv"
+  virtualenv2 --no-wheel --system-site-packages "${pkgdir}/usr/lib/seafile/seafileenv"
   source "${pkgdir}/usr/lib/seafile/seafileenv/bin/activate"
   pip2 --isolated install --no-compile \
     -r "${srcdir}/${pkgname}-${pkgver}-server/requirements.txt"
   pip2 --isolated install --no-compile \
-    gunicorn
+    gunicorn pylibmc django-pylibmc
   deactivate
   virtualenv2 --relocatable "${pkgdir}/usr/lib/seafile/seafileenv"
 
