@@ -1,10 +1,10 @@
-From 3721d64246982f91a5bf863fc17ac60ff722e0c4 Mon Sep 17 00:00:00 2001
-Message-Id: <3721d64246982f91a5bf863fc17ac60ff722e0c4.1514959852.git.jan.steffens@gmail.com>
-In-Reply-To: <fb89d912d5f7289d3a922c77b671e36e1c740f5e.1514959852.git.jan.steffens@gmail.com>
-References: <fb89d912d5f7289d3a922c77b671e36e1c740f5e.1514959852.git.jan.steffens@gmail.com>
+From 5a11be3bab2dcd6fe061206662969c4cea46988f Mon Sep 17 00:00:00 2001
+Message-Id: <5a11be3bab2dcd6fe061206662969c4cea46988f.1515173964.git.jan.steffens@gmail.com>
+In-Reply-To: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
+References: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
 From: Steffen Klassert <steffen.klassert@secunet.com>
 Date: Fri, 22 Dec 2017 10:44:57 +0100
-Subject: [PATCH 5/7] xfrm: Fix stack-out-of-bounds read on socket policy
+Subject: [PATCH 4/6] xfrm: Fix stack-out-of-bounds read on socket policy
  lookup.
 
 When we do tunnel or beet mode, we pass saddr and daddr from the
