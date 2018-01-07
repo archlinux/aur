@@ -10,7 +10,7 @@ makedepends=('git' 'gcc' 'make')
 source=("http://www.landoleet.org/${pkgname}${pkgver//.}_linux_x86_64.tar.xz"
 	"git+http://www-dev.cockos.com/wdl/WDL.git"
 	'https://stash.reaper.fm/30638/reaper-desktop-support.zip')
-sha256sums=('f4c3c3511efcfa9dc3c4488066366fcdabf5d5f01886b32d16d06c69b7a38ee2'
+sha256sums=('f5158f51f746c4cc3ed63c604cd4acb0c388246d903690a7eb4321c31d7c33c9'
             'SKIP'
             'c16c8d8d66502852f4948d0c2d3f48f7fd17e598d1f14b05cec54e6cfd8c01b7')
 
