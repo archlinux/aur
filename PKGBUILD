@@ -10,7 +10,7 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
@@ -57,7 +57,7 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=(
-  'ce18306a9dc974006252ee10d2b9661637a5eb6b03f72a1f9c0095d9e5f5071a'
+  'a9b47f486d162360e1b0372f356b1c316a2432e4a4666bd99db284414dee00e1'
   'd682766321f9981ee38aee26dc050209882d8c1c6006e3e509649b47fa1bb073'
 )
 
