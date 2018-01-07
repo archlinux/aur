@@ -1,0 +1,15 @@
+pkgbase = python2-pylorcon
+	pkgdesc = Wrapper for the LORCON (Loss Of Radio CONnectivity) library
+	pkgver = 2
+	pkgrel = 4
+	url = https://github.com/tom5760/pylorcon2
+	arch = any
+	license = GPL2
+	depends = python2>=2.7
+	depends = lorcon
+	replaces = pylorcon
+	source = pylorcon2.zip::https://github.com/tom5760/pylorcon2/zipball/master
+	sha256sums = b67bf17028188bccc94c127d161ed35bbf7a4209b88af97c2694e39ee2da6b0d
+
+pkgname = python2-pylorcon
+
