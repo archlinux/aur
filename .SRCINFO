@@ -1,0 +1,17 @@
+pkgbase = qps
+	pkgdesc = a visual process manager, an X11 version of 'top' or 'ps'.
+	pkgver = 1.10.16
+	pkgrel = 5
+	url = https://github.com/QtDesktop/qps
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-x11extras
+	source = qps-1.10.16.tar.gz::https://github.com/QtDesktop/qps/archive/v1.10.16.tar.gz
+	source = qps.desktop
+	sha256sums = 09015e066c555821c8d7bdcec26bf8d9e0130431664625533b44a73a8de4101f
+	sha256sums = 5216455ce5ce096b36f1b301325fd44c972ff796aa3b40b60807a06dae0ab3f9
+
+pkgname = qps
+
