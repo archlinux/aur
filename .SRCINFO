@@ -1,0 +1,19 @@
+pkgbase = telepathy-rakia
+	pkgdesc = SIP connection manager for Telepathy
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://telepathy.freedesktop.org
+	install = telepathy-rakia.install
+	arch = x86_64
+	groups = telepathy
+	license = LGPL
+	makedepends = libxslt
+	makedepends = python2
+	depends = telepathy-glib
+	depends = sofia-sip
+	replaces = telepathy-sofiasip
+	source = http://telepathy.freedesktop.org/releases/telepathy-rakia/telepathy-rakia-0.8.0.tar.gz
+	md5sums = 09038d4625fcf81e9d3228ebf18bc378
+
+pkgname = telepathy-rakia
+
