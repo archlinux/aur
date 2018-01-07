@@ -5,13 +5,13 @@
 
 pkgname=png2ico
 pkgver=20021208
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
-pkgdesc="Converts PNG files to Windows icon resource files"
-url="http://www.winterdrache.de/freeware/png2ico/"
-license=("GPL2")
-depends=('libpng' 'gcc')
-source=(http://www.winterdrache.de/freeware/png2ico/data/$pkgname-src-2002-12-08.tar.gz)
+pkgdesc='Converts PNG files to Windows icon resource files'
+url='http://www.winterdrache.de/freeware/png2ico/'
+license=('GPL2')
+depends=('libpng')
+source=("http://www.winterdrache.de/freeware/png2ico/data/${pkgname}-src-2002-12-08.tar.gz")
 sha256sums=('d6bc2b8f9dacfb8010e5f5654aaba56476df18d88e344ea1a32523bb5843b68e')
 
 build() {
