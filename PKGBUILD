@@ -9,7 +9,7 @@ license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib')
 makedepends=('mingw-w64-cmake' 'wine')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("ftp://ftp.hdfgroup.org/HDF5/releases/hdf5-1.10/hdf5-${_pkgver}/src/hdf5-${_pkgver}.tar.bz2")
+source=("https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${pkgver:0:4}/hdf5-${pkgver/_/-}/src/hdf5-${pkgver/_/-}.tar.bz2")
 sha1sums=('22edee1f4ed603ea9544daec3492874fa3028bbb')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
