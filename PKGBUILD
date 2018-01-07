@@ -3,20 +3,22 @@
 
 pkgname=unifi
 pkgver=5.6.29
-pkgrel=2
+pkgrel=3
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('any')
 url='https://community.ubnt.com/unifi'
 # We are allowed to ship the software in our repository
 # https://mailman.archlinux.org/mailman/private/arch-dev/2014-August/015690.html
 license=('custom')
-depends=('mongodb<3.6.0' 'wiredtiger<=2.9.3' 'java-runtime-headless' 'fontconfig')
+depends=('mongodb' 'java-runtime-headless' 'fontconfig')
 conflicts=('tomcat-native')
 source=("UniFi-$pkgver.zip::https://dl.ubnt.com/unifi/$pkgver/UniFi.unix.zip"
+        'mongod'
         'unifi.service'
         'unifi.sysusers'
         'LICENSE')
 sha512sums=('84a1aa0638c44d76b204b460480f2702219bafc8ba931d3062de55380375751f7a12d9408eb0599956aa21bcdca6fb6e1d4a8a70a068e6ecc78f14c1f1b0421a'
+            'ea729c0053bf82e5561ce5f4fb7dba90cbe1b84631f5c257371883090ae5ccc58bd212cb93c9df51e687cdb2b5cdfa8c9e5bfc22bc7d58dc23c9c4dce3a686b8'
             '4b77e480dac9acef58e2d8f088491aa056a55edc9ca613c1b707d53ca802579513082e7c16f5a59689813609b97c2391253c99d77709be4a536abb683e5106ed'
             '0fdd04112236bb3f4d96e4e1c43e0a9d97412831b44837466d70e15521336275a0496dbd47dd28873dc85ba4982ef2234e31c78146eb45c20b158dadf2cec7b8'
             '22e0a4d5be7645e7f1dd760a1b93fa5a49a7e92ce6f23f2a7d0f72043cd0be057bd3faecabd1d3048ecf93480b47d278926b99b5abc17ecbe91a5b15763f0a9c')
@@ -26,6 +28,10 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/unifi"
     cp -r UniFi/{bin,dl,lib,webapps} "${pkgdir}/usr/lib/unifi"
     rm -r "${pkgdir}/usr/lib/unifi/lib/native"
+
+    # fix incompatibility with mongodb >= 3.6
+    rm "${pkgdir}/usr/lib/unifi/bin/mongod"
+    install -Dm755 ${srcdir}/mongod "${pkgdir}/usr/lib/unifi/bin/mongod"
 
     # data
     install -dm750 "${pkgdir}/var/lib/unifi"
