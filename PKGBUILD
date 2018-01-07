@@ -20,7 +20,6 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-cmake \
-        -DCMAKE_BUILD_TYPE=Release \
         -DLIB_INSTALL_DIR=lib \
         -DBUILD_SHARED_LIBS=OFF \
         ../contrib/cmake_unofficial
@@ -29,7 +28,6 @@ build() {
 
     mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
     ${_arch}-cmake \
-        -DCMAKE_BUILD_TYPE=Release \
         -DLIB_INSTALL_DIR=lib \
         -DBUILD_SHARED_LIBS=ON \
         ../contrib/cmake_unofficial
