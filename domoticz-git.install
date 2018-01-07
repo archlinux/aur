@@ -1,5 +1,7 @@
 post_install() {
-  printf "post_instal...\n"
-  gpasswd -a http uucp
-  chown -R http:http "${pkgdir}/opt/domoticz"
+	gpasswd -a http uucp
+}
+
+post_remove() {
+	echo "run 'gpasswd -d http uucp' if group entry isn't needed anymore"
 }
