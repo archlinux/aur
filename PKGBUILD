@@ -1,7 +1,7 @@
 # Maintainer: Stefan Seemayer <mail@semicolonsoftware.de>
 pkgname=jalview
 pkgver=2.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Bioinformatics Multiple Alignment Editor"
 arch=(any)
 url="http://www.jalview.org/"
@@ -9,31 +9,181 @@ license=('GPL3')
 depends=(java-runtime)
 makedepends=(wget xmlstarlet)
 
-source=( "http://www.jalview.org/webstart/jalview.jnlp"
-         "logo.gif"
-         "jalview"
-         "jalview.desktop")
+####### Auto-generated using update_sources.sh
+### <INJECT_HERE> ###
 
-md5sums=('f198181af6941c1a4f20ddae50ba6eb1'
-         'e124f66d646560813b1a06b0cff02d3a'
-         '0ea5c6990bfa050c9c69f24926da3d57'
-         'b3a842500e7ff3cd1324dede69822d21')
+source=(
+  'http://www.jalview.org/webstart/jalview.jar'
+  'http://www.jalview.org/webstart/JGoogleAnalytics_0.3.jar'
+  'http://www.jalview.org/webstart/Jmol-14.6.4_2016.10.26.jar'
+  'http://www.jalview.org/webstart/VARNAv3-93.jar'
+  'http://www.jalview.org/webstart/activation.jar'
+  'http://www.jalview.org/webstart/apache-mime4j-0.6.jar'
+  'http://www.jalview.org/webstart/axis.jar'
+  'http://www.jalview.org/webstart/biojava-core-4.1.0.jar'
+  'http://www.jalview.org/webstart/biojava-ontology-4.1.0.jar'
+  'http://www.jalview.org/webstart/castor-1.1-cycle-xml.jar'
+  'http://www.jalview.org/webstart/commons-codec-1.3.jar'
+  'http://www.jalview.org/webstart/commons-discovery.jar'
+  'http://www.jalview.org/webstart/commons-logging-1.1.1.jar'
+  'http://www.jalview.org/webstart/groovy-all-2.4.12-indy.jar'
+  'http://www.jalview.org/webstart/htsjdk-1.133.jar'
+  'http://www.jalview.org/webstart/httpclient-4.0.3.jar'
+  'http://www.jalview.org/webstart/httpcore-4.0.1.jar'
+  'http://www.jalview.org/webstart/httpmime-4.0.3.jar'
+  'http://www.jalview.org/webstart/jabaws-min-client-2.2.0.jar'
+  'http://www.jalview.org/webstart/jalview_jnlp_vm.jar'
+  'http://www.jalview.org/webstart/java-json.jar'
+  'http://www.jalview.org/webstart/jaxrpc.jar'
+  'http://www.jalview.org/webstart/jdas-1.0.4.jar'
+  'http://www.jalview.org/webstart/jersey-client-1.19.jar'
+  'http://www.jalview.org/webstart/jersey-core-1.19.jar'
+  'http://www.jalview.org/webstart/jersey-json-1.19.jar'
+  'http://www.jalview.org/webstart/jetty-http-9.2.10.v20150310.jar'
+  'http://www.jalview.org/webstart/jetty-io-9.2.10.v20150310.jar'
+  'http://www.jalview.org/webstart/jetty-server-9.2.10.v20150310.jar'
+  'http://www.jalview.org/webstart/jetty-util-9.2.10.v20150310.jar'
+  'http://www.jalview.org/webstart/jfreesvg-2.1.jar'
+  'http://www.jalview.org/webstart/jhall.jar'
+  'http://www.jalview.org/webstart/json_simple-1.1.jar'
+  'http://www.jalview.org/webstart/jsoup-1.8.1.jar'
+  'http://www.jalview.org/webstart/jsr311-api-1.1.1.jar'
+  'http://www.jalview.org/webstart/jswingreader-0.3.jar'
+  'http://www.jalview.org/webstart/log4j-to-slf4j-2.0-rc2.jar'
+  'http://www.jalview.org/webstart/mail.jar'
+  'http://www.jalview.org/webstart/miglayout-4.0-swing.jar'
+  'http://www.jalview.org/webstart/quaqua-filechooser-only-8.0.jar'
+  'http://www.jalview.org/webstart/regex.jar'
+  'http://www.jalview.org/webstart/saaj.jar'
+  'http://www.jalview.org/webstart/servlet-api-3.1.jar'
+  'http://www.jalview.org/webstart/slf4j-api-1.7.7.jar'
+  'http://www.jalview.org/webstart/slf4j-log4j12-1.7.7.jar'
+  'http://www.jalview.org/webstart/spring-core-3.0.5.RELEASE.jar'
+  'http://www.jalview.org/webstart/spring-web-3.0.5.RELEASE.jar'
+  'http://www.jalview.org/webstart/vamsas-client.jar'
+  'http://www.jalview.org/webstart/wsdl4j.jar'
+  'http://www.jalview.org/webstart/xercesImpl.jar'
+  'http://www.jalview.org/webstart/xml-apis.jar'
+  'logo.gif'
+  'jalview'
+  'jalview.desktop'
+)
 
-build() {
+noextract=(
+  'jalview.jar'
+  'JGoogleAnalytics_0.3.jar'
+  'Jmol-14.6.4_2016.10.26.jar'
+  'VARNAv3-93.jar'
+  'activation.jar'
+  'apache-mime4j-0.6.jar'
+  'axis.jar'
+  'biojava-core-4.1.0.jar'
+  'biojava-ontology-4.1.0.jar'
+  'castor-1.1-cycle-xml.jar'
+  'commons-codec-1.3.jar'
+  'commons-discovery.jar'
+  'commons-logging-1.1.1.jar'
+  'groovy-all-2.4.12-indy.jar'
+  'htsjdk-1.133.jar'
+  'httpclient-4.0.3.jar'
+  'httpcore-4.0.1.jar'
+  'httpmime-4.0.3.jar'
+  'jabaws-min-client-2.2.0.jar'
+  'jalview_jnlp_vm.jar'
+  'java-json.jar'
+  'jaxrpc.jar'
+  'jdas-1.0.4.jar'
+  'jersey-client-1.19.jar'
+  'jersey-core-1.19.jar'
+  'jersey-json-1.19.jar'
+  'jetty-http-9.2.10.v20150310.jar'
+  'jetty-io-9.2.10.v20150310.jar'
+  'jetty-server-9.2.10.v20150310.jar'
+  'jetty-util-9.2.10.v20150310.jar'
+  'jfreesvg-2.1.jar'
+  'jhall.jar'
+  'json_simple-1.1.jar'
+  'jsoup-1.8.1.jar'
+  'jsr311-api-1.1.1.jar'
+  'jswingreader-0.3.jar'
+  'log4j-to-slf4j-2.0-rc2.jar'
+  'mail.jar'
+  'miglayout-4.0-swing.jar'
+  'quaqua-filechooser-only-8.0.jar'
+  'regex.jar'
+  'saaj.jar'
+  'servlet-api-3.1.jar'
+  'slf4j-api-1.7.7.jar'
+  'slf4j-log4j12-1.7.7.jar'
+  'spring-core-3.0.5.RELEASE.jar'
+  'spring-web-3.0.5.RELEASE.jar'
+  'vamsas-client.jar'
+  'wsdl4j.jar'
+  'xercesImpl.jar'
+  'xml-apis.jar'
+)
 
-  mkdir -p "$srcdir/$pkgname-$pkgver" || exit 1
-  cd "$srcdir/$pkgname-$pkgver" || exit 1
+sha256sums=(
+  '7b3538c27851a6f59bb5189384fc8bc39388b06f51a0b573c867928dc5759a13'
+  'ac874ca6d7317de8961df795e94b76d2d5861b78116460bba0a10ec2252dcdca'
+  '1fa9455d75e844b1359f65cfd3745ee5e8bc920081dd2a13dcfb676b2d04fff3'
+  'ce5a7b396105e91b24712432de1366ccee0f85ae1d814f0cd50cfab2bc2c172f'
+  'ed9f4aa2c7fda6332679c9226c35294cd3dcf5b7ae98895f473cd53217711c4a'
+  'd91534cec6afec715712067cc8f4a7c1a1e54efed70e8de4a4d40c60ee659e0c'
+  'af898eb3feca7a15d6d7b3a016fa74178ede279ffd66130eb3cfde590ee58bc0'
+  '85c88e2211dd04a7cd9e5e4a7bec0e78e885ab3a5f3ddeacce8313d7f0192fb5'
+  'a109340d3c6e9a16b3140008cda506043b3c80f54c163a622a6ca8d56eb4a879'
+  '8d2f4a881192eaea193f079f3d2788771bc678f0fae3cebbf1c36cc97758930e'
+  'b198f1490aebad1de35b2b575a85e0e1313b554825c619187bc8b3653b0c0a6b'
+  'd56f9e4b470423e2039821bff5b9c6ca2ebdcf8b372b6539863ecd3f401d42c3'
+  '67fe92d2777b010d452e3a711e9948603f16b52540391efec5c901b07cf2a979'
+  'd717bc6bed00bdf14fc98e472196fe55e6d367e6eb4146a787c24e9d6c16ee8f'
+  'c31a83f35bc9c187f0096af02cd15109a32dbdf3fa0189664276b59cda1bc8d7'
+  'ea07a2d3368b9dc94343acddfba77604c63a1c50b78243b8d8e422996802f567'
+  '237f6f8ec5bd0e54a1946ef07c504a71fb9f5f1220adf50e12261b83899b7408'
+  'ac4d839cfd289ef55c63c1de34d44a44228d07ff708853913cc3f248098122c8'
+  'be524826c8beb419dcea833b66a3788dc640eada6c6f1b44302ceb72e345b4e6'
+  '7bc27ffea7fea30273a54104af140583542f7eb9d820e913e98e53a9384c096b'
+  '89595c7978bf84183062db1fb737b458da2d41985f2b23c84b619af0da8626a7'
+  '593b7741615efc4bee260006bf0931ec12ef6f79caeea78d889380f36ce44cbe'
+  '2e05d152c450e93356d2f980f06c18c8ee5987395cb27080d19688f47dd0aecc'
+  '9f861c7eaafb8ca31b267a5f78d3c1d75a3c4a154e4340333ce202ed07aa23ea'
+  '41f26f3e55852cb74ba132b02eae7bcde82c39cc55e088d5b6bf27ebc05b13ae'
+  'bb6b58d0d0fc0c0e7b6f418084cd43555db8a40c00fa1b9ea05218c42a0a8a01'
+  '28ffbe56ffcd87f5536b91929ae4f02e1b40c6c118379859669ff6541ffeb0ee'
+  '4dfe1aada8d98862cc1f99c1d935fe7eba35cf7660bfcfa07a1a9166ff58fd73'
+  '9605eabf7e26f23fc84280eec109f630b508ba2436fee887be03318acc571c86'
+  '35d3de16b681cdc19b3c4b08808fc93880965fc1329cbed9da57880d9efcbede'
+  '8e29711542aab6fbb70c2c42984c1265566b395429b7bd65daded4a6c9439eca'
+  '1392637717469b92ccd6e1344a1284358e52d92eb97fa5e598af34543e5160e9'
+  '65c265d116faec9b35796dcc564ad25d074ad1e940f7c0b7e799e97914c5747f'
+  'c268bbef39857b2d6b79d90b4f5e00917154ea67a4263e58b900a55bc5fa425e'
+  '70f7b201ca66d018508fe00e12cfcd1f26b2c1f91275f95f770cb3e6ad8f85c1'
+  '695d8d45a4918d002504899869b14a71025142b0b0cbe36d5a8b983763507954'
+  '0e7c86adefe517153932f25af6ab0ded2bda6da292c1be2a5b59614754ca8e28'
+  '392a0c49aee8ce18b55b5ba22a5fffa606441f75138bf910d9386b5408302c67'
+  '55e4574ddccf3626561a0235aa5e30ff13e1f95c8242f2dd2d0863a398659dcb'
+  '0d14080333149a540ba1858ecfbe79984ed4ea62a3e9a5237fe9fb529a5c03d7'
+  'dd5d8fbedf96919a97683c2e98eb73e2e0a45bb02e47dcb58767385c97773854'
+  'd35b675734d15215de21eb28c2d626d1965603a0a81ae51f3df0f0c2be8593ef'
+  '724df2f1007396099fe74ffd948456688f622f020b0c151370b16f4f2aa66102'
+  'ed078ade71013f1a6d58c1bbb81194e37719625f13facadd92eef013b3681a0f'
+  'fb769dbb2bbb378f01e89996d0010676354d1ddfbd619be429d8821210b85ecf'
+  'da308c8f14601773984e2349b4b093b25b26087af9308643b48a68416fb8c21b'
+  '8707f6bfdf0929da2f365aeedefa747abc21e5b9835586d6a9c7ec507bfacbd4'
+  '60107fce097a85a30d88b14620ebeb8f7e44b4e370f99c0da5529e497173243c'
+  'd44d650ed95b4b559d8a4cd14123ac49a0a3dfb2c2c202911aad403607f81a81'
+  'a2d82b520d82ce1c2d1f386990737b9d9feeacf747451fabfd8b327005efaeb8'
+  'b39f475b49b780ddb591c513840df46cd3916be9995ea4cd82c6e867bf63b338'
+  '362790ef6d3e3c537a6d31663a0e7f3ec9664c90cb9dc6df4a80b016f474eaa4'
+  'd5d4f97f520d58ddb8f2552800f946c2ab6c89c3dd105b7a9cd777b9925bc17e'
+  '4c87a84ec39e677fe2922a5e78cf68cf508ec8dff5211193b11aac7cb1cf4211'
+)
 
-  # parse list of jar files from JNLP file, excluding MacOS jars
-  jars=$(xmlstarlet sel -t -m '/jnlp/resources[not(@os)]/jar' -v '@href' -n "$srcdir/jalview.jnlp")
-
-  for jar in $jars; do
-    wget "http://www.jalview.org/webstart/$jar" -O "$jar" || exit 1
-  done
-}
+### </INJECT_HERE> ###
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/"
 
   # set up directory structure
   mkdir -p $pkgdir/usr/{share/{applications,pixmaps,java/$pkgname},bin}
