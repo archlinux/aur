@@ -1,0 +1,13 @@
+pkgbase = p2c
+	pkgdesc = pascal to c/c++ converter
+	pkgver = 1.21alpha2
+	pkgrel = 11
+	url = http://packages.debian.org/sid/p2c
+	arch = x86_64
+	license = GPL
+	depends = perl
+	source = http://www.ccrnp.ncifcrf.gov/~toms/p2c/p2c-1.21alpha2.tar.gz
+	md5sums = 8340429ae80be2e0e82c01f70c0355bb
+
+pkgname = p2c
+
