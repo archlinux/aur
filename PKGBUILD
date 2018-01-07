@@ -2,7 +2,7 @@
 Maintainer='Gilles Hamel <hamelg@laposte.net>'
 pkgname=python2-carbon
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Backend data caching and persistence daemon for Graphite'
 arch=('any')
 url='https://github.com/graphite-project/carbon'
@@ -32,8 +32,8 @@ md5sums=(
 	d4d37f4e603f1ab798e77caae335358f
 	5440bb9e2bb2aa8a48ee8de985f50cb8
 	35eeae37bf98235ec77ae0b2ecd3270c
-	89269343d20915b28b75d8d845c8e71f
-	035251ab4036df23c75c521b702fbea1)
+	bfeed48d338a306869381fe80a21b0ad
+	d1f67d2baeac57365b3622aa9c6f2d37)
 	
 backup=(
 	etc/carbon/aggregation-rules.conf
