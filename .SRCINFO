@@ -1,0 +1,42 @@
+pkgbase = desire
+	pkgdesc = Desire peer-to-peer network based digital currency
+	pkgver = 0.12.2.1
+	pkgrel = 0
+	url = http://www.desire-crypto.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	makedepends = protobuf
+	makedepends = zeromq
+	depends = boost-libs
+	depends = libevent
+	optdepends = zeromq: Optional, allows generating ZMQ notifications
+	optdepends = miniupnpc: Firewall-jumping support
+	optdepends = db4.8: Wallet storage
+	source = desire-daemon-0.12.2.1.tar.gz::https://github.com/lazyboozer/Desire/archive/Desire-v.0.12.2.1.tar.gz
+	source = txmempool.patch
+	source = desired@.service
+	sha256sums = 8461553d17922a11f9575547227aa6d9a90dac5cc3b489b6bb5bd056439ba9df
+	sha256sums = 2d033c1ee77e1fae89da61f3b0e494feaf91f1b860fe4b3c0ec848c013776a25
+	sha256sums = f75b464c6ca050848c758c71848e830f4264e7ee70627592fa5442a293b3b5ca
+
+pkgname = desire-daemon
+	pkgdesc = Desire peer-to-peer network based digital currency (daemon)
+
+pkgname = desire-cli
+	pkgdesc = Desire peer-to-peer network based digital currency (CLI)
+
+pkgname = desire-qt
+	pkgdesc = Desire peer-to-peer network based digital currency (Qt)
+	depends = boost-libs
+	depends = libevent
+	depends = qt5-base
+	depends = qt5-tools
+	depends = miniupnpc
+	optdepends = protobuf: Data interchange format used for payment protocol
+	optdepends = qrencode: Optional for generating QR codes
+
