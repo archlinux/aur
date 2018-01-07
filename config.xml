@@ -45,15 +45,6 @@
       <supportedVMs> 128 </supportedVMs>
    </mockup>
 
-   <!-- Procoproxy update forwarding configuration settings
-   <updateForwarding>
-     <enabled>false</enabled>
-     <hostName>localhost</hostName>
-     <port>5002</port>
-     <useSsl>false</useSsl>
-   </updateForwarding>
-   -->
-
    <!-- Frequency of memory checker -->
    <!-- <memoryCheckerTimeInSecs> 30 </memoryCheckerTimeInSecs> -->
 
@@ -266,7 +257,8 @@
       <ssl>
           <doVersionCheck> false </doVersionCheck>
           <libraryPath>/usr/lib/vmware</libraryPath>
-          <useCompression> true </useCompression>
+          <!-- allowed SSL/TLS protocol versions -->
+          <!-- <protocols>tls1.0,tls1.1,tls1.2</protocols> -->
 
          <!-- timeouts for the SSL handshake. the default is 20 sec. -->
          <!-- <handshakeTimeoutMs>60000</handshakeTimeoutMs> -->
@@ -601,22 +593,6 @@
     <!-- The file containing the hardware info mockup -->
     <hwInfo>/etc/vmware/hostd/hwInfo.xml</hwInfo>
 
-    <!-- Whether to use the real network list or just use mockups -->
-    <!-- <loadRealNetworks> true </loadRealNetworks> -->
-
-    <!-- Whether to use the real pciPassthru list or just use mockups -->
-    <!-- <loadRealPciPassthru> true </loadRealPciPassthru> -->
-
-    <!-- Whether to use the real datastore list or just use mockups -->
-    <!-- <loadRealDatastores> true </loadRealDatastores> -->
-
-    <!-- Whether to use the real rdm list or the mockup list. -->
-    <!-- <loadRealRdmInfo> true </loadRealRdmInfo> -->
-
-    <!-- Whether to use the real device (cd,flp,serial,||,sound) -->
-    <!-- list or the mockup.  -->
-    <!-- <loadRealHwInfo> true </loadRealHwInfo> -->
-
          <!-- Controls to enable/disable expressions in the RDM filter -->
          <!-- <rdmfilter> -->
             <!-- Only show disks that are attached to shared storage. -->
@@ -628,12 +604,6 @@
             <!-- Only show disks that are not already used as an RDM target. -->
             <!-- <UsedAsVmRdm>true</UsedAsVmRdm> -->
          <!-- </rdmfilter> -->
-
-    <!-- Whether to use the real rdm list or the mockup list. -->
-    <!-- <loadRealPassthroughInfo> true </loadRealPassthroughInfo> -->
-
-    <!-- Whether to populate usb info from the mockup list. -->
-    <!-- <loadRealUsbInfo> true </loadRealUsbInfo> -->
 
          <!-- Disable Resource Pool Initialization -->
          <!-- <disableResourcePoolInit> false </disableResourcePoolInit> -->
@@ -821,6 +791,8 @@
       <cimsvc>
          <path>libcimsvc.so</path>
          <enabled>false</enabled>
+         <maxSelEntries>40</maxSelEntries>
+         <pollTime>90</pollTime>
       </cimsvc>
 
       <directorysvc>
@@ -886,6 +858,11 @@
          <path>libcbrcsvc.so</path>
          <enabled>false</enabled>
       </cbrcsvc>
+
+      <hostspecsvc>
+         <path>libhostspecsvc.so</path>
+         <enabled>false</enabled>
+     </hostspecsvc>
 
 
    </plugins>
