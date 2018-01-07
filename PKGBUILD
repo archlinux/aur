@@ -7,8 +7,8 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=65.0.3298.3
-pkgrel=7
+pkgver=65.0.3311.3
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'ncurses5-compat-libs')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'atk' 'at-spi2-atk')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -110,8 +110,6 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/p1.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/p2.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/e3.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
-https://raw.githubusercontent.com/bn0785ac/in-dev/master/narnia3.patch
-https://raw.githubusercontent.com/bn0785ac/in-dev/master/narnia4.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/edgy.patch
 )
 
@@ -129,7 +127,7 @@ sha256sums=('fda622b7d7e2ab517e1c6993ed43c3d0a5550be1e97f7b0800732372ec30a997'
             '5c8c3ad7d5b4ebda7508e3aee13349fc8ad627d7a7e3147168e214f03e433168'
             '885bd27063ebc43b7030e9d9d364a46a248c4744f66c466017b42a83a279e6ab'
             '8696919f69ef927f095944ae7ef869b283450a4b2cdd4efdebc51fc2b1e747e0'
-            'a4001820866b9b29ef7f670728e99e7d79c7d3301898b26062bb1c91acdb13e5'
+            'b9899b26e65a6fc376bffd8cb685667b0ec1b04e90c8250f40c969bf4602c5a0'
             'fd5fdc83665113677951e2e713a4696d999a070d6b59bb57319df357b35d4fad'
             '3850ad42d0cb4ca011d46b9d569a0a2bf83476f0c3da70c74d4f011cec59f885'
             '7beb0f3bbc55960092347767d423415860a3867525f6d1bbb057b3d72fae0618'
@@ -211,9 +209,7 @@ sha256sums=('fda622b7d7e2ab517e1c6993ed43c3d0a5550be1e97f7b0800732372ec30a997'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
             'be55fef656ccb767edd29b53d2e1416db0976a95cd0f4ba24ea2b3e0ce2e68b6'
-            'd38cdb1f3dec117c25d618a228accfa2b5e51cabe28d3bd3a0a5e8d2a0634c9b'
-            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
-
+            'd38cdb1f3dec117c25d618a228accfa2b5e51cabe28d3bd3a0a5e8d2a0634c9b')
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -342,8 +338,7 @@ patch -Np1 -i ../p1.patch
 patch -Np1 -i ../p2.patch
 patch -Np1 -i ../e3.patch
 patch -Np1 -i ../narnia1.patch
-patch -Np1 -i ../narnia3.patch
-patch -Np1 -i ../narnia4.patch
+
 
 
 #patch -Np1 -i ../9k.patch
@@ -353,13 +348,10 @@ patch -Np1 -i ../12.patch
 patch -Np1 -i ../16.patch
 
 
-#patch -Np1 -i ../16.patch
-
-
-msg2 'mitigate webrtc'
-patch -Np1 -i ../edgy.patch
 
 patch -Np1 -i ../k1.patch
+
+patch -Np1 -i ../edgy.patch
 #patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
@@ -432,6 +424,7 @@ build() {
     'enable_google_now=false'
     'enable_print_preview=true'
     'enable_remoting=false'
+    'use_lld=false'
   )
 
       _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
@@ -450,14 +443,19 @@ build() {
   export CC="${_c_compiler}"
   export CXX="${_cpp_compiler}"
 
-  python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
+  sed 's|is_win \|\| (is_linux && use_x11 && !is_chromeos)|false|g' -i third_party/angle/gni/angle.gni
+
+ python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
   out/Release/gn gen out/Release --args="${_flags[*]}" \
     --script-executable=/usr/bin/python2
 
-python2 build/util/lastchange.py -m GPU_LISTS_VERSION --revision-id-only --header gpu/config/gpu_lists_version.h
+python2 build/util/lastchange.py -m GPU_LISTS_VERSION \
+--revision-id-only --header gpu/config/gpu_lists_version.h
 
 
-  ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
+
+
+  ninja -C out/Release -v pdf chrome chrome_sandbox chromedriver widevinecdmadapter clear_key_cdm
 }
 
 package() {
