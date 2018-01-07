@@ -1,0 +1,16 @@
+pkgbase = envoy
+	pkgdesc = A ssh-agent/gpg-agent keychain and process monitor
+	pkgver = 14
+	pkgrel = 2
+	url = https://github.com/vodik/envoy
+	arch = x86_64
+	license = GPL
+	makedepends = ragel
+	depends = openssh
+	depends = systemd
+	optdepends = gnupg: gpg-agent support
+	source = envoy-14.tar.gz::https://github.com/vodik/envoy/archive/v14.tar.gz
+	md5sums = 4130f2080ac1a083607e6764a59fd02c
+
+pkgname = envoy
+
