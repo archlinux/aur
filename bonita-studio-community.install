@@ -1,0 +1,22 @@
+conf_note() {
+  cat <<\END
+The previous Bonita Studio Community versioned configuration and
+diagram history in
+    $XDG_CONFIG_HOME/bonitasoft/
+and
+    $XDG_DATA_HOME/bonitasoft/
+will be left intact by this newly installed Bonita Studio Community version,
+which uses its own versioned directories instead (next to the previous ones).
+END
+}
+
+post_install() {
+  conf_note
+}
+
+post_upgrade() {
+  conf_note
+}
+
+#post_remove() {
+#}

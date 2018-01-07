@@ -1,30 +1,31 @@
 # Maintainer: dumblob <dumblob@gmail.com>
-# Contributor: dumblob <dumblob@gmail.com>
 
-pkgver=7.3.3
+pkgver=7.6.0
 pkgrel=1
 
-_basename=bonita-bpm-community
+# FIXME a completely new package, because the product was relabeled
+_basename=bonita-studio-community
 _basenamever="${_basename}-$pkgver"
 _prefix=bonitasoft
 
 pkgname="${_basename}-bin"
-pkgdesc='Bonita BPM Studio with embedded Engine + Portal'
-url='http://www.bonitasoft.com/how-we-do-it#how-we-do-it_bonita-bpm'
+pkgdesc='Bonita Studio with embedded Engine + Portal'
+url='https://www.bonitasoft.com/bonita-platform'
 license=('GPL2')
 arch=('i686' 'x86_64')
 # http://www.bonitasoft.com/products/download/bonita-bpm-linux-6-4-2-64bit?skip=true
-source_x86_64=("http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${pkgver}-x86_64.run")
+source_x86_64=("http://download.forge.objectweb.org/bonita/BonitaStudioCommunity-${pkgver}-x86_64.run")
 # http://www.bonitasoft.com/products/download/bonita-bpm-linux-6-4-2-32bit?skip=true
-source_i686=(  "http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${pkgver}-x86.run")
-sha256sums_x86_64=("8ef5769410df746167828bea7fd3b95974bd5ee85df1bf3477bbc07a6d0350d7")  # 7.3.3
-sha256sums_i686=(  "d6d1c8e611471f779996eb4434cc185ed94147f63442c5c3299346a120f11cdc")  # 7.3.3
-install=bonita-bpm-community.install
+source_i686=(  "http://download.forge.objectweb.org/bonita/BonitaStudioCommunity-${pkgver}-x86.run")
+sha256sums_x86_64=("814a8bb9b8b31035be516b510768235ce0781c4d21161c0a8a01939a6ee43cef")  # BonitaStudioCommunity-7.6.0-x86_64.run
+sha256sums_i686=(  "9d1e60fd3df378e77c639bfc65b47503c5a05c046b4b533f75d86fb9972088ee")  # BonitaStudioCommunity-7.6.0-x86.run
+install="${_basename}.install"
+replaces=('bonita-bpm-community-bin')  # yeah, they renamed it
 
+# FIXME 2018-01-04 22:47:31 UTC+1 revise deps
 depends=('ffmpeg-compat' 'java-environment' 'libxslt' 'python' 'gtk2')
 makedepends=()
-# FIXME may be needed: 'postgresql' 'tomcat'
-# FIXME may be needed: libavformat.so.52 libgstreamer-lite.so libavcodec.so.52
+# FIXME might be needed: 'postgresql' 'tomcat'
 optdepends=(
   'jre7-openjdk-headless: PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so'
   'cuda-toolkit:          PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so libJdbcOdbc.so'
@@ -32,7 +33,7 @@ optdepends=(
   'jre7-openjdk:          PROVIDES libmawt.so'
 )
 
-provides=('bonita-bpm-community')
+provides=("${_basename}")
 conflicts=()
 
 build() {
@@ -48,24 +49,42 @@ build() {
 #  }
 
   [ "$(ls -1 *.run | wc -l)" -eq 1 ] || {
-    printf '%sERR Multiple *.run files found.\n'
+    printf 'ERR Multiple *.run files found.\n' >&2
     false
   }
   chmod +x *.run
-  ./*.run --mode unattended --prefix "$_prefix/$_basenamever"
+  # FIXME a hack to kill the process, because it waits for user input indefinitely
+  #  https://github.com/bonitasoft/bonita-studio/issues/397
+  [ -e '/tmp/bitrock_installer.log' ] && pid=xxx
+  ./*.run --mode unattended --prefix "$_prefix/$_basenamever" &
+  [ -n "$pid" ] && pid=$!
+  while sleep 1; do
+    grep 'Installation completed' \
+        "/tmp/bitrock_installer${pid:+_$pid}.log" >/dev/null && {
+      kill "$pid"
+      break
+    }
+
+    [ $((x)) -gt $((60*3)) ] && {
+      printf 'ERR Waited too long for the installation to finish.\n' >&2
+      false
+      break
+    }
+    x=$((x +1))
+  done
 
   # fix permissions
   find "$_prefix/$_basenamever/jre/" -name '*.so' -execdir chmod a+x '{}' \;
   chmod a+x \
-    "$_prefix/$_basenamever/jre/lib/jexec" \
-    "$_prefix/$_basenamever/jre/bin/"*
+      "$_prefix/$_basenamever/jre/lib/jexec" \
+      "$_prefix/$_basenamever/jre/bin/"*
 
   # fix "...does not have the world readable bit set"
   rm "$_prefix/$_basenamever/uninstall"*
 
   # "disable" immediate auto-close of the whole program after launch
   printf '%s\n' '-Dorg.eclipse.swt.browser.DefaultType=mozilla' >> \
-    "$_prefix/$_basenamever/"*.ini
+      "$_prefix/$_basenamever/"*.ini
 }
 
 package() {
