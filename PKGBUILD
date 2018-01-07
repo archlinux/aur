@@ -54,5 +54,7 @@ package_python2-treecorr-git() {
 			       depends=('python2')
 			       cd "${_pkgname}"
 	  		       python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+			       mv ${pkgdir}/usr/bin/corr2 ${pkgdir}/usr/bin/corr2_py2
+			       mv ${pkgdir}/usr/bin/corr3 ${pkgdir}/usr/bin/corr3_py2
 	  		       install -Dm644 TreeCorr_LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
