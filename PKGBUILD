@@ -1,16 +1,16 @@
 pkgbase=('python-gdbgui')
 pkgname=('python-gdbgui')
 _module='gdbgui'
-pkgver='0.9.3.0'
-pkgrel=4
-pkgdesc="Browser-based frontend to gdb (gnu debugger). Add breakpoints, view the stack, visualize data structures, and more in C, C++, Go, Rust, and Fortran. Run gdbgui from the terminal and a new tab will open in your browser."
+pkgver='0.9.4.1'
+pkgrel=1
+pkgdesc="browser-based gdb frontend using Flask and JavaScript to visually debug C, C++, Go, or Rust"
 url="https://github.com/cs01/gdbgui"
 depends=('python' 'python' 'python-flask' 'python-pygdbmi' 'python-enum-compat' 'python-pypugjs' 'python-flask-socketio' 'python-gevent' 'python-eventlet' 'python-pygments' 'python-flask-compress')
 makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
-source=("${pkgname}-${pkgver}.zip::https://github.com/cs01/gdbgui/archive/${pkgver}.zip")
-md5sums=('2fbfb014495ca9f6979be2862ff1dd07')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-${pkgver}.tar.gz")
+md5sums=('4bea0b33112d54df8891fc176e35f416')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
