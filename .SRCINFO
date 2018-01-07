@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-headers
+	pkgdesc = MinGW-w64 headers for Windows
+	pkgver = 5.0.3
+	pkgrel = 1
+	url = http://mingw-w64.sourceforge.net
+	arch = any
+	groups = mingw-w64-toolchain
+	groups = mingw-w64
+	license = custom
+	options = !strip
+	options = !libtool
+	options = !emptydirs
+	source = https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v5.0.3.tar.bz2
+	source = https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v5.0.3.tar.bz2.sig
+	validpgpkeys = CAF5641F74F7DFBA88AE205693BDB53CD4EBC740
+	sha256sums = 2a601db99ef579b9be69c775218ad956a24a09d7dabc9ff6c5bd60da9ccc9cb4
+	sha256sums = SKIP
+
+pkgname = mingw-w64-headers
+
