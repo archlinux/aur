@@ -1,8 +1,8 @@
 pkgbase = snapd
-	pkgver = 2.26.1
-	pkgrel = 3
+	pkgdesc = Service and tools for management of snap packages.
+	pkgver = 2.30
+	pkgrel = 1
 	url = https://github.com/snapcore/snapd
-	install = snapd.install
 	arch = x86_64
 	license = GPL3
 	checkdepends = python
@@ -17,20 +17,13 @@ pkgbase = snapd
 	makedepends = python-docutils
 	makedepends = systemd
 	makedepends = xfsprogs
-	options = !strip
-	options = emptydirs
-	source = git+https://github.com/snapcore/snapd.git#commit=3853be982c99267133d132901df7da0bf850d949
-	source = snapd.sh
-	md5sums = SKIP
-	md5sums = 8e9b8108165d5b2ae911de9caefb37ce
-
-pkgname = snapd
-	pkgdesc = Service and tools for management of snap packages.
-	depends = snap-confine
 	depends = squashfs-tools
-
-pkgname = snap-confine
-	pkgdesc = Confinement system for snap applications
 	depends = libseccomp
 	depends = libsystemd
+	options = !strip
+	options = emptydirs
+	source = git+https://github.com/snapcore/snapd.git#tag=2.30
+	md5sums = SKIP
+
+pkgname = snapd
 
