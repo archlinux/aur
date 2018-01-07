@@ -1,0 +1,16 @@
+pkgbase = python-iwscan
+	pkgdesc = A Python interface to iwlist, using the iwlib library
+	pkgver = 20090609
+	pkgrel = 5
+	url = http://projects.otaku42.de/browser/python-iwscan
+	arch = x86_64
+	license = LGPL
+	depends = python2
+	depends = wireless_tools
+	conflicts = python-iwscan<=20090609-3
+	replaces = python-iwscan<=20090609-3
+	source = https://sources.archlinux.org/other/python-iwscan/python-iwscan-20090609.tar.gz
+	md5sums = 30fbe8ad3b07e67c1c35db2de16077d8
+
+pkgname = python2-iwscan
+
