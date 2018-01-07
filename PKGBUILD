@@ -1,6 +1,6 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=staruml
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="A sophisticated software modeler"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ source=('staruml.sh')
 source_i686=("http://staruml.io/download/release/v$pkgver/StarUML-v$pkgver-32-bit.deb")
 source_x86_64=("http://staruml.io/download/release/v$pkgver/StarUML-v$pkgver-64-bit.deb")
 md5sums=('9e14e38e0b2054353eab13e9f028bd74')
-md5sums_i686=('a07dddbd9afb9a68461aef587c2ad928')
-md5sums_x86_64=('8a541f9194ade2b3e5a619a0330675e4')
+md5sums_i686=('30c336ae9ba144e1e7f74e413bd534f0')
+md5sums_x86_64=('fa8908a0c68200fd57511ea78d4bbd9f')
 install=${pkgname}.install
 
 prepare() {
