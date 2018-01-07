@@ -7,6 +7,7 @@ license=('MIT')
 depends=('tcl>=8.6.0' 'tk>=8.6.0' 'tcltls')
 source=("http://www.potatomushclient.com/download/${pkgver}/potato-${pkgver}-src.tar.gz")
 md5sums=("42b42fcefebd35e6ab48c13c4bdb1f95")
+url="http://www.potatomushclient.com"
 conflicts=("potato")
 
 package() {

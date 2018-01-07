@@ -2,6 +2,7 @@ pkgbase = potatomu
 	pkgdesc = A cross-platform graphical MUSH client written in Tcl/Tk.
 	pkgver = 2.0.0b18
 	pkgrel = 1
+	url = http://www.potatomushclient.com
 	arch = x86_64
 	license = MIT
 	depends = tcl>=8.6.0
