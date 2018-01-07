@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-binutils
+	pkgdesc = Cross binutils for the MinGW-w64 cross-compiler
+	pkgver = 2.29
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils
+	arch = x86_64
+	groups = mingw-w64-toolchain
+	groups = mingw-w64
+	license = GPL
+	depends = zlib
+	options = !libtool
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.gz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.gz.sig
+	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
+	sha256sums = 172e8c89472cf52712fd23a9f14e9bca6182727fb45b0f8f482652a83d5a11b4
+	sha256sums = SKIP
+
+pkgname = mingw-w64-binutils
+
