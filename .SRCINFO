@@ -1,0 +1,15 @@
+pkgbase = openthreads
+	pkgdesc = A minimal & complete Object-Oriented thread interface for C++ programmers
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = http://openthreads.sourceforge.net
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = subversion
+	depends = gcc-libs
+	source = svn+http://svn.openscenegraph.org/osg/OpenThreads/tags/OpenThreads-2.6.0/
+	md5sums = SKIP
+
+pkgname = openthreads
+
