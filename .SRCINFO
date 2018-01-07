@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-j6930dw
+	pkgdesc = Brother MFC-J6930DW CUPS driver.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfcj6930dw_us_eu_as
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lib32-glibc
+	depends = cups>=2.1.2
+	depends = ghostscript
+	source = http://download.brother.com/welcome/dlf103009/mfcj6930dwlpr-1.0.1-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf103033/mfcj6930dwcupswrapper-1.0.1-0.i386.rpm
+	md5sums = 0a9a2979f43f6caba588a28f7d07acf5
+	md5sums = 35dd11ffaace807a01ef66f70499f7d3
+
+pkgname = brother-mfc-j6930dw
+
