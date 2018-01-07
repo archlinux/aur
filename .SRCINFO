@@ -1,0 +1,14 @@
+pkgbase = pnews
+	pkgdesc = A PHP web-based NNTP client
+	pkgver = 2.6.5
+	pkgrel = 5
+	url = http://sourceforge.net/projects/pnews
+	arch = any
+	license = GPL
+	depends = php
+	backup = etc/webapps/pnews/.htaccess
+	source = https://downloads.sourceforge.net/sourceforge/pnews/pnews265.tgz
+	sha256sums = 373fe4263973da78a8863b14140f73d3c7bad335a32523d02b01936e3772e357
+
+pkgname = pnews
+
