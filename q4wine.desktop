@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Q4Wine
+GenericName=A Qt4 GUI for Wine
+Comment=A Qt4 GUI for Wine
+#Version=0.1
+Type=Application
+Categories=KDE;Qt;Settings
+Terminal=false
+Encoding=UTF-8
+Icon=wine
+Exec=q4wine
+#ServiceTypes=inode/directory
+#Actions=Create;
+#X-KDE-Submenu=
+#X-KDE-Priority=TopLevel
+#X-KDE-Icon=tgz
+X-KDE-StartupNotify=true
+#X-DCOP-ServiceType=Unique
