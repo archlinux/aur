@@ -1,0 +1,19 @@
+pkgbase = librcc
+	pkgdesc = Charset Conversion Library
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = http://rusxmms.sourceforge.net/
+	install = librcc.install
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	makedepends = gtk2
+	depends = aspell
+	depends = enca
+	depends = libxml2
+	depends = librcd
+	source = http://darksoft.org/files/rusxmms/librcc-0.2.12.tar.bz2
+	md5sums = 930de6cd64e5daa33cabed58261634bb
+
+pkgname = librcc
+
