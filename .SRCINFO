@@ -1,0 +1,13 @@
+pkgbase = icewm-themes
+	pkgdesc = icewm themes
+	pkgver = 1.2.26
+	pkgrel = 4
+	url = http://www.debian.org
+	arch = any
+	license = GPL2
+	depends = icewm
+	source = http://ftp.debian.org/debian/pool/main/i/icewm-themes/icewm-themes_1.2.26.orig.tar.gz
+	md5sums = c0fd0de59e6f74c9c86c0bc334eb6b9e
+
+pkgname = icewm-themes
+
