@@ -1,6 +1,6 @@
 # Expand the $PATH to include /snaps/bin which is what snappy applications
 # use
-PATH=$PATH:/snap/bin
+PATH=$PATH:/var/lib/snapd/snap/bin
 
 if [ -z "$XDG_DATA_DIRS" ]; then
     XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
