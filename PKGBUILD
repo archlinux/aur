@@ -1,10 +1,9 @@
 # Maintainer: Stephen Gregoratto <s.gregoratto@gmail.com>
 
 pkgname="adlmidi-git"
-pkgdesc="OPL3 MIDI player for Linux and Windows"
+pkgdesc="Commandline program that plays MIDI via software OPL3 emulation"
 pkgrel=1
 pkgver=1.2.6
-pkgdesc="A commandline program that plays MIDI via software OPL3 emulation"
 arch=('i686' 'x86_64')
 url="http://bisqwit.iki.fi/source/adlmidi.html"
 license=('GPL3' 'GPL2+')
