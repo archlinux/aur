@@ -1,0 +1,36 @@
+From f3372d84595d10b757de4568399707bc721f6850 Mon Sep 17 00:00:00 2001
+From: sirlucjan <lucjan.lucjanov@gmail.com>
+Date: Sun, 7 Jan 2018 21:04:37 +0100
+Subject: [PATCH] Update cmakelist.txt
+
+---
+ iris/CMakeLists.txt | 2 +-
+ src/CMakeLists.txt  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/iris/CMakeLists.txt b/iris/CMakeLists.txt
+index 50228489..85dcec60 100644
+--- a/iris/CMakeLists.txt
++++ b/iris/CMakeLists.txt
+@@ -39,7 +39,7 @@ if(USE_QJDNS)
+     add_definitions(-DNEED_JDNS)
+ endif()
+ 
+-find_package(Qca REQUIRED)
++find_package(Qca-qt5 REQUIRED)
+ set(QCA_INCLUDES ${Qca_INCLUDE_DIR})
+ set(qca_LIB ${Qca_LIBRARY})
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1f78cd05..57c73c4c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -73,7 +73,7 @@ if(APPLE)
+     list(APPEND EXTRA_LDFLAGS ${SPARKLE_LIBRARY} "-framework Carbon" "-framework AppKit" "-framework IOKit" "-framework CoreAudio" "-framework AudioToolbox")
+ endif()
+ 
+-find_package( Qca REQUIRED )
++find_package( Qca-qt5 REQUIRED )
+ 
+ if(LINUX)
+     find_package(X11 REQUIRED) 
