@@ -1,0 +1,18 @@
+pkgbase = python-pygments-style-solarized
+	pkgdesc = Pygments version of the Solarized theme
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/shkumagai/pygments-style-solarized
+	arch = any
+	license = custom:MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/shkumagai/pygments-style-solarized/archive/0.1.1.tar.gz
+	sha512sums = 076f4651cd9d4e1a4c74eea5ed2e0eadf7ec924f0b85386e71f2ec042f14c506405a6789528e2bd47fd914a23b27b52264c00e51d019bed3561f2dff958a7551
+
+pkgname = python-pygments-style-solarized
+	depends = python-pygments
+
+pkgname = python2-pygments-style-solarized
+	depends = python2-pygments
+
