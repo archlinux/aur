@@ -2,9 +2,9 @@
 # Previous Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Previous Maintainer: Lauri Niskanen <ape@ape3000.com>
 
-pkgname=coffeelint
+pkgname=nodejs-coffeelint
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Style checker for CoffeeScript"
 arch=(any)
 url="http://www.coffeelint.org/"
