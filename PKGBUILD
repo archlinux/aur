@@ -84,5 +84,5 @@ package_anbox-modules-dkms-git() {
     cp -a kernel/$mod $pkgdir/usr/src/anbox-modules-$mod-$pkgver
   done;
 
-  install -Dm 644 -t $pkgdir/etc/modules-load.d $srcdir/anbox.conf
+  install -Dm 644 -t $pkgdir/usr/lib/modules-load.d $srcdir/anbox.conf
 }
