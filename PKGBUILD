@@ -1,18 +1,19 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=networkd-dispatcher
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="A dispatcher daemon for systemd-networkd events"
 arch=('any')
 url="https://github.com/craftyguy/networkd-dispatcher"
 license=('GPL3')
 depends=('python' 'python-dbus' 'python-gobject' 'dbus-glib')
-optdepends=('wireless_tools: for interacting with wlan interfaces')
+optdepends=('wireless_tools: for interacting with wlan interfaces', 'iw: for interacting with wlan interfaces')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 backup=('etc/conf.d/networkd-dispatcher.conf')
 source=("https://github.com/craftyguy/networkd-dispatcher/archive/${pkgver}.tar.gz")
-sha256sums=('ed56b67f0cd5f0bac787190fdc375afaf110b18729445c3eb819c3530e3333ea')
+sha512sums=('e4c544bfe216f7b557ed3a98e142e4f1fcf42d90ec79414797fd9f6ed270a188cca23f1f3a4c49a26d79a7593825a76c3564b1a643c1c6c14f298efa5cf5a61c')
+
 prepare() {
         cd "$pkgname-$pkgver"
 }

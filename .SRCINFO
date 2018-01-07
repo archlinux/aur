@@ -1,6 +1,6 @@
 pkgbase = networkd-dispatcher
 	pkgdesc = A dispatcher daemon for systemd-networkd events
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/craftyguy/networkd-dispatcher
 	arch = any
@@ -9,12 +9,13 @@ pkgbase = networkd-dispatcher
 	depends = python-dbus
 	depends = python-gobject
 	depends = dbus-glib
-	optdepends = wireless_tools: for interacting with wlan interfaces
+	optdepends = wireless_tools: for interacting with wlan interfaces,
+	optdepends = iw: for interacting with wlan interfaces
 	provides = networkd-dispatcher
 	conflicts = networkd-dispatcher
 	backup = etc/conf.d/networkd-dispatcher.conf
-	source = https://github.com/craftyguy/networkd-dispatcher/archive/1.5.tar.gz
-	sha256sums = ed56b67f0cd5f0bac787190fdc375afaf110b18729445c3eb819c3530e3333ea
+	source = https://github.com/craftyguy/networkd-dispatcher/archive/1.6.tar.gz
+	sha512sums = e4c544bfe216f7b557ed3a98e142e4f1fcf42d90ec79414797fd9f6ed270a188cca23f1f3a4c49a26d79a7593825a76c3564b1a643c1c6c14f298efa5cf5a61c
 
 pkgname = networkd-dispatcher
 
