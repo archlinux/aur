@@ -1,0 +1,13 @@
+pkgbase = pycddb
+	pkgdesc = CDDB-Server access from Python
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = http://pycddb.sourceforge.net
+	arch = any
+	license = GPL
+	depends = python2
+	source = https://downloads.sourceforge.net/pycddb/pycddb-0.1.4.src.tar.gz
+	sha256sums = c6afdb63b21dcd5af69369d36a4c6d7ddd7ef7b8f61cc98c95b6b79ea015afbf
+
+pkgname = pycddb
+
