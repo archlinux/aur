@@ -13,7 +13,7 @@ depends=(ruby ruby-colorize)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('2d33a20bec6fe8d37aee19f6dcee2a8d578c91d6')
+sha1sums=('6635edb096235ecf40a5c9e407eaba4ee6d0c45d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
