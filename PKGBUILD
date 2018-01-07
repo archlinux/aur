@@ -69,7 +69,7 @@ _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.6.0.r3.g339632a
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
@@ -194,7 +194,7 @@ package_appmenu-gtk-module-git()
   depends=('gtk3' 'gtk2')
   provides=(unity-gtk-module)
   cd "${srcdir}/${_pkgbase}"
-  make -C "unity-gtk-module" DESTDIR="${pkgdir}" install
+  make -C "appmenu-gtk-module" DESTDIR="${pkgdir}" install
   install -dm755 "${pkgdir}/etc/X11/xinit/xinitrc.d/"
   install -m755  "${srcdir}/80appmenu-gtk-module" "${pkgdir}/etc/X11/xinit/xinitrc.d/"
 }
