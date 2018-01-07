@@ -8,8 +8,8 @@ license=("LGPL3")
 depends=(mingw-w64-crt)
 makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
-source=("ftp://ftp.gmplib.org/pub/gmp-${pkgver}/gmp-${pkgver}.tar.xz")
-md5sums=('f58fa8001d60c4c77595fbbb62b63c1d')
+source=("https://gmplib.org/download/gmp/gmp-${pkgver}.tar.xz")
+sha256sums=('87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
