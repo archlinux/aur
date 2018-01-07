@@ -1,0 +1,13 @@
+Index: sdas/linksrc/Makefile.in
+===================================================================
+--- sdas/linksrc/Makefile.in	(revision 9105)
++++ sdas/linksrc/Makefile.in	(revision 9106)
+@@ -35,7 +35,7 @@
+ VPATH           = @srcdir@
+ 
+ CPPFLAGS        = @CPPFLAGS@ -I.. -I$(srcdir)/..
+-CFLAGS          = @CFLAGS@ @WALL_FLAG@ -DINDEXLIB -DUNIX -I. -I$(srcdir)
++CFLAGS          = @CFLAGS@ @WALL_FLAG@ -DINDEXLIB -DUNIX -I. -I$(srcdir) --std=c99
+ LDFLAGS         = @LDFLAGS@
+ 
+ OBJDIR = obj

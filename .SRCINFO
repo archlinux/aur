@@ -1,0 +1,25 @@
+pkgbase = sdcc
+	pkgdesc = Retargettable ANSI C compiler (Intel 8051, Maxim 80DS390, Zilog Z80 and the Motorola 68HC08)
+	pkgver = 3.6.0
+	pkgrel = 4
+	url = http://sdcc.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = gputils
+	makedepends = flex
+	makedepends = bison
+	makedepends = patch
+	makedepends = boost
+	depends = bash
+	depends = gcc-libs
+	depends = boost-libs
+	optdepends = python
+	options = !strip
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/sdcc/sdcc-src-3.6.0.tar.bz2
+	source = glibc220-build-fix.patch
+	md5sums = 4c4cf17d8d2b2d37af66c5b7511f62d8
+	md5sums = de3be2a60baaafbdbfe5efaaacbb3028
+
+pkgname = sdcc
+
