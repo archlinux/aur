@@ -1,0 +1,16 @@
+pkgbase = punbb
+	pkgdesc = forum engine
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = http://punbb.informer.com
+	arch = any
+	license = GPL
+	depends = php
+	backup = etc/webapps/punbb/.htaccess
+	source = http://punbb.informer.com/download/punbb-1.4.4.zip
+	source = pun_antispam-1.4.4.tgz::http://punbb.informer.com/extensions/pun_antispam/pun_antispam.tgz
+	md5sums = 86cd3ae531e2589e25eac3ccf78f460e
+	md5sums = a0c33628608e429345a0eef789db68ac
+
+pkgname = punbb
+
