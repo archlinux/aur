@@ -1,6 +1,6 @@
 Maintainer='Gilles Hamel <hamelg@laposte.net>'
 pkgname=python2-txamqp
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Python library for communicating with AMQP peers and brokers using Twisted'
 arch=('any')
@@ -9,8 +9,8 @@ license=('Apache')
 depends=('python2' 'python2-twisted')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
-source=("https://github.com/txamqp/txamqp/archive/${pkgver}.tar.gz")
-md5sums=('4f7f1fd8c437b2df30ca2f629927c998')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/txamqp/txamqp/archive/${pkgver}.tar.gz")
+md5sums=('be2cd00a69d158d5721b14e3ce3af3e0')
 
 package() {
   cd "$srcdir/txamqp-$pkgver"
