@@ -1,4 +1,4 @@
-# Maintainer: Preisschild <florian.stroeger at gmail dot com>
+# Maintainer: Preisschild <florian dot stroeger at gmail dot com>
 pkgname=emerald-wallet-bin
 pkgver=0.7.0
 pkgrel=1
@@ -21,7 +21,7 @@ md5sums=('7e50d9c5a79cc9a39393bce5295d820e'             #emeraldwallet
 package() {
 	cd "$srcdir/"
 	# Creating directories
-	install -d "$pkgdir/usr/bin/"
+	install -dm755 "$pkgdir/usr/bin/"
    	install -dm755 "$pkgdir/usr/share/emerald-wallet-bin/"
 	install -dm755 "$pkgdir/usr/share/pixmaps/"
 	install -d "$pkgdir/usr/share/applications/"
@@ -29,7 +29,7 @@ package() {
 	# Program
 	mv "$srcdir/EmeraldWallet-linux-v${pkgver}/"* "$pkgdir/usr/share/emerald-wallet-bin/"
 	chmod -R 755 "$pkgdir/usr/share/emerald-wallet-bin/"
-	ln -s "$pkgdir/usr/share/emerald-wallet-bin/emeraldwallet" "$pkgdir/usr/bin/emeraldwallet"
+	ln -s "/usr/share/emerald-wallet-bin/emeraldwallet" "/usr/bin/emeraldwallet"
 	
 
 	# Desktop Launcher
