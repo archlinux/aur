@@ -1,0 +1,14 @@
+pkgbase = python2-slowaes
+	pkgdesc = Implementation of AES in Python
+	pkgver = 0.1a1
+	pkgrel = 3
+	url = https://code.google.com/archive/p/slowaes/
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/s/slowaes/slowaes-0.1a1.tar.gz
+	md5sums = eafee95a788a795403e972a35e80ce4f
+
+pkgname = python2-slowaes
+
