@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.14
-pkgver=4.14.11
+pkgver=4.14.12
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -25,10 +25,9 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
   0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-  0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-  0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch
+  0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -36,19 +35,18 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'f588b62d7ee1d2ebdc24afa0e256ff2f8812d5cab3bf572bf02e7c4525922bf9'
+            'da5d8db44b0988e4c45346899d3f5a51f8bd6c25f14e729615ca9ff9f17bdefd'
             'SKIP'
             '5bc9eb004b0ff43d6947b95417afe7cdcafb2f685fd65c233c8d16c2926848d4'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '06bc1d8b1cd153c3146a4376d833f5769b980e5ef5eae99ddaaeb48bf514dae2'
-            'b90bef87574f30ec66c0f10d089bea56a9e974b6d052fee3071b1ff21360724b'
-            'f38531dee9fd8a59202ce96ac5b40446f1f035b89788ea9ecb2fb3909f703a25'
-            '705d5fbfce00ccc20490bdfb5853d67d86ac00c845de6ecb13e414214b48daeb'
-            '0a249248534a17f14fab7e14994811ae81fe324668a82ff41f3bcabeeae1460f'
-            '8e1b303957ddd829c0c9ad7c012cd32f2354ff3c8c1b85da3d7f8a54524f3711'
-            '914a0a019545ad7d14ed8d5c58d417eb0a8ec12a756beec79a545aabda343b31')
+            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
+            '9251c03da9d4b64591d77f490ff144d4ba514e66e74294ada541bf827306c9c4'
+            '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
+            '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
+            'c3d743a0e193294bc5fbae65e7ba69fd997cd8b2ded9c9a45c5151d71d9cfb95'
+            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
 
 _kernelname=${pkgbase#linux}
 
@@ -74,14 +72,13 @@ prepare() {
   patch -Np1 -i ../0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 
   # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0004-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-  patch -Np1 -i ../0005-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  patch -Np1 -i ../0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
 
   # https://bugs.archlinux.org/task/56846
-  patch -Np1 -i ../0006-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  patch -Np1 -i ../0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
 
-  # For AMD processors, keep PTI off by default
-  patch -Np1 -i ../0007-x86-cpu-x86-pti-Do-not-enable-PTI-on-AMD-processors.patch
+  # https://bugs.archlinux.org/task/56711
+  patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
   cp -Tf ../config .config
 

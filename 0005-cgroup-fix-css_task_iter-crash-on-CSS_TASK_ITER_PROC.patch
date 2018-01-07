@@ -1,10 +1,10 @@
-From a79cb4d4e540c72a601ca0494e914565c16e2893 Mon Sep 17 00:00:00 2001
-Message-Id: <a79cb4d4e540c72a601ca0494e914565c16e2893.1514959852.git.jan.steffens@gmail.com>
-In-Reply-To: <fb89d912d5f7289d3a922c77b671e36e1c740f5e.1514959852.git.jan.steffens@gmail.com>
-References: <fb89d912d5f7289d3a922c77b671e36e1c740f5e.1514959852.git.jan.steffens@gmail.com>
+From eadda028a73a567edd8462ccd0e8c28e023cde28 Mon Sep 17 00:00:00 2001
+Message-Id: <eadda028a73a567edd8462ccd0e8c28e023cde28.1515173964.git.jan.steffens@gmail.com>
+In-Reply-To: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
+References: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
 From: Tejun Heo <tj@kernel.org>
 Date: Wed, 20 Dec 2017 07:09:19 -0800
-Subject: [PATCH 6/7] cgroup: fix css_task_iter crash on CSS_TASK_ITER_PROC
+Subject: [PATCH 5/6] cgroup: fix css_task_iter crash on CSS_TASK_ITER_PROC
 
 While teaching css_task_iter to handle skipping over tasks which
 aren't group leaders, bc2fb7ed089f ("cgroup: add @flags to
