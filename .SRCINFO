@@ -1,0 +1,16 @@
+pkgbase = pawm
+	pkgdesc = Puto Amo Window Manager is a full featured window manager, but without useless bells and whistles
+	pkgver = 2.3.0
+	pkgrel = 3
+	url = https://sites.google.com/site/pleyadestest/david/projects/pawm
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = libxft
+	depends = libxpm
+	depends = libxrandr
+	source = http://www.pleyades.net/pawm/files/pawm-2.3.0.tar.gz
+	md5sums = cc004865f5b5d8118e68154857b913a2
+
+pkgname = pawm
+
