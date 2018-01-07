@@ -40,9 +40,8 @@ prepare() {
   # cp -r "$srcdir"/main/iconsets/* ./iconsets
   # echo "$pkgver ($(date +"%Y-%m-%d"))" >version
   patch -p1 <"$srcdir"/join.patch
-  patch -Np1 -i "${srcdir}//no-qca-qt4.patch"
+  patch -Np1 -i "${srcdir}/no-qca-qt4.patch"
   }
-
 
 build() {
   cd psi-plus-snapshots
