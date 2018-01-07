@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# -*- coding: utf-8 -*-
+
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 filename="/sdcard/recordings/$timestamp.mp4"
 
