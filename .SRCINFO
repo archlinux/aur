@@ -1,0 +1,21 @@
+pkgbase = pyaimt
+	pkgdesc = jabber aim transport
+	pkgver = 0.8.0.1
+	pkgrel = 8
+	url = https://code.google.com/archive/p/pyaimt/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-twisted
+	provides = pyaim
+	replaces = pyaim
+	backup = etc/ejabberd/pyaimt.xml
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pyaimt/pyaimt-0.8.0.1.tar.gz
+	source = pyaimt.service
+	source = config.xml
+	md5sums = 121b59a5a3dd3b7c1e30475b0cb7730c
+	md5sums = fc0f33f7f32fb9500fbee3b22fbd9a10
+	md5sums = bf89b68fe527764cc9e6a059dc36ef2b
+
+pkgname = pyaimt
+
