@@ -1,0 +1,19 @@
+pkgbase = libdlna
+	pkgdesc = Open-source implementation of DLNA (Digital Living Network Alliance) standards
+	pkgver = 0.2.4
+	pkgrel = 16
+	url = http://libdlna.geexbox.org
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	depends = ffmpeg
+	options = !makeflags
+	source = http://libdlna.geexbox.org/releases/libdlna-0.2.4.tar.bz2
+	source = libdlna-ffmpeg3.patch
+	source = libdlna-avformat.patch
+	md5sums = 64d7de57aff5a729f2434fc5e69b4ffc
+	md5sums = 214e6957bbb1894082acb62974753f30
+	md5sums = f7a6f36930fa212b0422daf88befa856
+
+pkgname = libdlna
+
