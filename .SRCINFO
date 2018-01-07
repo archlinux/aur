@@ -1,12 +1,10 @@
 pkgbase = jalview
 	pkgdesc = Bioinformatics Multiple Alignment Editor
 	pkgver = 2.10.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.jalview.org/
 	arch = any
 	license = GPL3
-	makedepends = wget
-	makedepends = xmlstarlet
 	depends = java-runtime
 	noextract = jalview.jar
 	noextract = JGoogleAnalytics_0.3.jar

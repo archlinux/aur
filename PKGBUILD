@@ -1,13 +1,12 @@
 # Maintainer: Stefan Seemayer <mail@semicolonsoftware.de>
 pkgname=jalview
 pkgver=2.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Bioinformatics Multiple Alignment Editor"
 arch=(any)
 url="http://www.jalview.org/"
 license=('GPL3')
 depends=(java-runtime)
-makedepends=(wget xmlstarlet)
 
 ####### Auto-generated using update_sources.sh
 ### <INJECT_HERE> ###
