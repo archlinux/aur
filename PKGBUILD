@@ -1,7 +1,7 @@
 Maintainer='Gilles Hamel <hamelg@laposte.net>'
 pkgname=weboob
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Web Out Of Browsers provides several applications to interact with a lot of websites."
 arch=('any')
 url="http://weboob.org/"
@@ -12,7 +12,7 @@ depends=('python2-pyqt5' 'phonon-qt5' 'python2-dateutil' 'python2-prettytable'
          'python2-feedparser' 'python2-cssselect' 'python2-html2text'
          'python2-imaging' 'python2-mechanize' 'python2-simplejson'
          'python2-lxml' 'python2-yaml' 'python2-futures' 'python2-six'
-	 'which')
+	 'python2-unidecode' 'which')
 makedepends=('python2-setuptools')
 optdepends=('gnupg: check for repository authenticity'
             'python2-routes: contrib backends'
