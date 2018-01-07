@@ -1,0 +1,5 @@
+*.pkg.tar.xz
+src/
+pkg/
+ries.1.txt
+*.c.txt
