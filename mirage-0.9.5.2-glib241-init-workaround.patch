@@ -1,0 +1,13 @@
+--- mirage-0.9.5.2/mirage.py.glib241	2014-08-12 17:55:57.000000000 +0900
++++ mirage-0.9.5.2/mirage.py	2014-08-12 17:52:18.000000000 +0900
+@@ -71,7 +71,9 @@
+ 
+ 	def __init__(self):
+ 		
+-		gtk.gdk.threads_init()
++		import glib
++		if glib.glib_version < (2, 41, 0):
++			gtk.gdk.threads_init()
+ 		
+ 		# FIX THIS! Does not work on windows and what happens if mo-files exists
+ 		# in both dirs?
