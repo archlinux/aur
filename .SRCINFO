@@ -1,0 +1,16 @@
+pkgbase = mp32ogg
+	pkgdesc = A perl script to convert MP3 files to Ogg Vorbis files
+	pkgver = 0.11
+	pkgrel = 10
+	url = http://faceprint.com/code/
+	arch = any
+	license = PerlArtistic
+	depends = perl-mp3-info
+	depends = perl-string-shellquote
+	depends = mpg123
+	depends = vorbis-tools
+	source = https://sources.archlinux.org/other/mp32ogg/mp32ogg
+	md5sums = a1cd916c3ad43073519321dcd075f188
+
+pkgname = mp32ogg
+
