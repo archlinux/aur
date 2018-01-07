@@ -1,0 +1,52 @@
+diff -Nru a/configure b/configure
+--- a/configure	2012-10-02 23:30:24.000000000 +1300
++++ b/configure	2013-01-09 14:54:40.448916370 +1300
+@@ -649,7 +649,7 @@
+         echo "MythMusic requires FLAC."
+     fi
+ 
+-    if ! check_lib cdio/cdio.h cdio_open -lcdio || ! check_lib cdio/cdda.h cdio_cddap_open -lcdio_cdda || ! check_lib cdio/paranoia.h cdio_paranoia_init -lcdio_paranoia ; then
++    if ! check_lib cdio/cdio.h cdio_open -lcdio || ! check_lib cdio/paranoia/cdda.h cdio_cddap_open -lcdio_cdda || ! check_lib cdio/paranoia/paranoia.h cdio_paranoia_init -lcdio_paranoia ; then
+         disable cdio
+     fi
+ 
+diff -Nru a/mythmusic/mythmusic/cddecoder.cpp b/mythmusic/mythmusic/cddecoder.cpp
+--- a/mythmusic/mythmusic/cddecoder.cpp	2012-10-02 23:30:24.000000000 +1300
++++ b/mythmusic/mythmusic/cddecoder.cpp	2013-01-09 14:53:37.031690618 +1300
+@@ -14,7 +14,7 @@
+ #include <QString>
+ 
+ // libcdio
+-#include <cdio/cdda.h>
++#include <cdio/paranoia/cdda.h>
+ #include <cdio/logging.h>
+ 
+ // MythTV
+diff -Nru a/mythmusic/mythmusic/cddecoder.h b/mythmusic/mythmusic/cddecoder.h
+--- a/mythmusic/mythmusic/cddecoder.h	2012-10-02 23:30:24.000000000 +1300
++++ b/mythmusic/mythmusic/cddecoder.h	2013-01-09 14:53:12.328140979 +1300
+@@ -11,8 +11,8 @@
+ #endif
+ 
+ #ifdef HAVE_CDIO
+-# include <cdio/cdda.h>
+-# include <cdio/paranoia.h>
++# include <cdio/paranoia/cdda.h>
++# include <cdio/paranoia/paranoia.h>
+ #endif
+ 
+ class Metadata;
+diff -Nru a/mythmusic/mythmusic/cdrip.cpp b/mythmusic/mythmusic/cdrip.cpp
+--- a/mythmusic/mythmusic/cdrip.cpp	2012-10-02 23:30:24.000000000 +1300
++++ b/mythmusic/mythmusic/cdrip.cpp	2013-01-09 14:54:11.815330268 +1300
+@@ -8,8 +8,8 @@
+ 
+ #include "config.h"
+ #ifdef HAVE_CDIO
+-# include <cdio/cdda.h>
+-# include <cdio/paranoia.h>
++# include <cdio/paranoia/cdda.h>
++# include <cdio/paranoia/paranoia.h>
+ #endif //def HAVE_CDIO
+ 
+ // C++ includes

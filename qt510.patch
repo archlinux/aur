@@ -1,0 +1,154 @@
+diff --git a/mythplugins/configure b/mythplugins/configure
+index 9ba22c8956..3b6cc3f914 100755
+--- a/mythplugins/configure
++++ b/mythplugins/configure
+@@ -527,14 +527,6 @@ EOF
+     die "Sanity test failed."
+ fi
+ 
+-is_qmake5(){
+-    $1 --version 2>&1 | egrep -q -e "Qt version 5\.[0-9]\.[0-9]"
+-}
+-
+-is_qmake4(){
+-    $1 --version 2>&1 | egrep -q -e "Qt version 4\.[8-9]\.[0-9]"
+-}
+-
+ # bring in mythtv config
+ if [ -e $prefix/include/mythtv/mythconfig.mak ] ; then
+     rm mythconfig.mak 2> /dev/null
+@@ -570,30 +562,40 @@ OPENGLES=$(cat mythconfig.mak | grep -e "^HAVE_GLES2_GL2_H=yes")
+ EXTRALIBS=$(cat mythconfig.mak | grep -e "^EXTRALIBS=")
+ EXTRALIBS=${EXTRALIBS#EXTRALIBS=}
+ 
++version2string(){
++    # accepts version as in 1.10.4 and turns it into 0001.0010.0004.0000.0000 which can be compared as a string
++    echo $1 | awk -F. '{ printf("%04d.%04d.%04d.%04d.%04d", $1, $2, $3, $4, $5); };'
++}
++
++# Minimum supported Qt version
++qt_minimum_version="5.2"
++
+ # qmake-qt5 /usr/lib64/qt5/bin/qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+ if [ x"$qmake" = "xqmake" ]; then
+-    CHECK_QMAKE="qmake-qt5 /usr/lib64/qt5/bin/qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /usr/lib/i386-linux-gnu/qt5/bin/qmake /usr/lib/arm-linux-gnueabihf/qt5/bin/qmake /usr/local/lib/qt5/bin/qmake $qmake qmake-qt4"
++    CHECK_QMAKE=`which -a qmake-qt5 2>/dev/null`" /usr/lib64/qt5/bin/qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /usr/lib/i386-linux-gnu/qt5/bin/qmake /usr/lib/arm-linux-gnueabihf/qt5/bin/qmake /usr/local/lib/qt5/bin/qmake `which -a $qmake 2>/dev/null`"
+ else
+-    CHECK_QMAKE="$qmake qmake-qt5 /usr/lib64/qt5/bin/qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /usr/lib/i386-linux-gnu/qt5/bin/qmake /usr/lib/arm-linux-gnueabihf/qt5/bin/qmake /usr/local/lib/qt5/bin/qmake qmake-qt4"
++    CHECK_QMAKE=`which -a $qmake 2>/dev/null`" "`which -a qmake-qt5 2>/dev/null`" /usr/lib64/qt5/bin/qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /usr/lib/i386-linux-gnu/qt5/bin/qmake /usr/lib/arm-linux-gnueabihf/qt5/bin/qmake /usr/local/lib/qt5/bin/qmake"
+ fi
+ # try to find a qt5 qmake to use
+ found_qmake=''
+ for i in $CHECK_QMAKE; do
+-    if is_qmake5 $i; then
+-        found_qmake=$i
+-        break;
+-    elif is_qmake4 $i; then
+-        found_qmake=$i
+-        break;
++    if test -e $i ; then
++        qmake_version=`$i --version | sed -n  "s/.*Qt version \([0-9]*\.[0-9]*\.[0-9]*\) .*/\1/p"`
++        if ! [ $(version2string $qmake_version) \< $(version2string $qt_minimum_version) ]; then
++            found_qmake=$i
++            break;
++        else
++            echo "found qmake at $i but version failed"
++            echo "got version: " `$i --version`
++        fi
+     fi
+ done
+ if [ x"$found_qmake" = "x" ]; then
+-    die "qmake for Qt4.8 or newer not found.\nPlease specify the correct qmake with --qmake="
++    die "qmake for Qt version $qt_minimum_version or newer not found.  Please specify the correct qmake with --qmake="
+ else
+     qmake=$found_qmake
+ fi
+ 
+-
+ # rely on what was discover during MythTV configure
+ if enabled opengl && test "$OPENGLV" != "CONFIG_OPENGL_VIDEO=yes"; then
+     disable opengl
+diff --git a/mythplugins/mythbrowser/mythbrowser/mythbrowser.pro b/mythplugins/mythbrowser/mythbrowser/mythbrowser.pro
+index 693e621b08..c7a39b5545 100644
+--- a/mythplugins/mythbrowser/mythbrowser/mythbrowser.pro
++++ b/mythplugins/mythbrowser/mythbrowser/mythbrowser.pro
+@@ -5,8 +5,7 @@ include (../../programs-libs.pro )
+ LIBS += -lmythtv-$$LIBVERSION
+ 
+ QT += network xml sql opengl
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) : QT += webkit
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) : QT += widgets webkitwidgets
++QT += widgets webkitwidgets
+ 
+ TEMPLATE = lib
+ CONFIG += thread opengl plugin warn_on
+diff --git a/mythplugins/mythmusic/mythmusic/mythmusic.pro b/mythplugins/mythmusic/mythmusic/mythmusic.pro
+index 0703da590f..88b35c3782 100644
+--- a/mythplugins/mythmusic/mythmusic/mythmusic.pro
++++ b/mythplugins/mythmusic/mythmusic/mythmusic.pro
+@@ -4,8 +4,7 @@ include ( ../../programs-libs.pro )
+ include (config.pro)
+ 
+ QT += xml sql opengl network
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) : QT += webkit
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) : QT += widgets webkitwidgets
++QT += widgets webkitwidgets
+ 
+ !exists( config.pro ) {
+    error(Missing config.pro: please run the configure script)
+diff --git a/mythplugins/mythnetvision/mythnetvision/mythnetvision.pro b/mythplugins/mythnetvision/mythnetvision/mythnetvision.pro
+index 2bf47ec5ee..a2f343ecef 100644
+--- a/mythplugins/mythnetvision/mythnetvision/mythnetvision.pro
++++ b/mythplugins/mythnetvision/mythnetvision/mythnetvision.pro
+@@ -3,9 +3,7 @@ include ( ../../settings.pro )
+ include ( ../../programs-libs.pro )
+ 
+ QT += network sql xml 
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = lib
+ CONFIG += plugin thread warn_on debug
+diff --git a/mythplugins/mythnews/mythnews/mythnews.pro b/mythplugins/mythnews/mythnews/mythnews.pro
+index d2bff02684..b757dffe07 100644
+--- a/mythplugins/mythnews/mythnews/mythnews.pro
++++ b/mythplugins/mythnews/mythnews/mythnews.pro
+@@ -3,9 +3,7 @@ include ( ../../settings.pro )
+ include ( ../../programs-libs.pro )
+ 
+ QT += network sql xml
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = lib
+ CONFIG += plugin thread warn_on debug
+diff --git a/mythplugins/mythweather/mythweather/mythweather.pro b/mythplugins/mythweather/mythweather/mythweather.pro
+index ab0654b92d..3fb32a5c7c 100644
+--- a/mythplugins/mythweather/mythweather/mythweather.pro
++++ b/mythplugins/mythweather/mythweather/mythweather.pro
+@@ -3,9 +3,7 @@ include ( ../../settings.pro )
+ include ( ../../programs-libs.pro )
+ 
+ QT += sql xml network
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = lib
+ CONFIG += plugin thread 
+diff --git a/mythplugins/mythzoneminder/mythzoneminder/mythzoneminder.pro b/mythplugins/mythzoneminder/mythzoneminder/mythzoneminder.pro
+index e9b418c3d7..803be487ea 100644
+--- a/mythplugins/mythzoneminder/mythzoneminder/mythzoneminder.pro
++++ b/mythplugins/mythzoneminder/mythzoneminder/mythzoneminder.pro
+@@ -3,9 +3,7 @@ include ( ../../settings.pro )
+ include ( ../../programs-libs.pro )
+ 
+ QT += network
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = lib
+ CONFIG += plugin thread

@@ -1,0 +1,4 @@
+post_upgrade() {
+  echo "MythWeb files are now in /var/lib/mythtv/mythweb"
+  echo "Please update your server configuration accordingly"
+}
