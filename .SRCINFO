@@ -1,0 +1,19 @@
+pkgbase = python-btchip
+	pkgdesc = Python library to communicate with BTChip dongle
+	pkgver = 0.1.24
+	pkgrel = 2
+	url = https://github.com/LedgerHQ/btchip-python
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	optdepends = btchip-udev: access BTChip as non-root user
+	source = python-btchip-0.1.24.tar.gz::https://github.com/LedgerHQ/btchip-python/archive/v0.1.24.tar.gz
+	sha256sums = 2afab0f326b96bd819e8bc9cb69edc7c55773741a50a5e5a36d224bcfd93a4a2
+
+pkgname = python-btchip
+	depends = python-hidapi
+
+pkgname = python2-btchip
+	depends = python2-hidapi
+
