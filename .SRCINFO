@@ -1,0 +1,13 @@
+pkgbase = synce-libmimedir
+	pkgdesc = provide a means of communication with a Windows CE device - library that parses MIME Directory Profile.
+	pkgver = 0.4
+	pkgrel = 8
+	url = http://synce.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	options = staticlibs
+	source = https://downloads.sourceforge.net/sourceforge/synce/libmimedir-0.4.tar.gz
+	sha256sums = 8d721bdc83739bcebea286c41e67495fe7258c00db32fba3928071f0ea30b096
+
+pkgname = synce-libmimedir
+
