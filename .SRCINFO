@@ -1,6 +1,6 @@
 pkgbase = haguichi-bzr
 	pkgdesc = Provides a user friendly GUI to control the Hamachi client on Linux. Development version.
-	pkgver = r237
+	pkgver = r259
 	pkgrel = 1
 	url = https://www.haguichi.net
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = haguichi-bzr
 	makedepends = meson
 	makedepends = vala
 	depends = gtk3
+	depends = libappindicator-gtk3
 	depends = libnotify
 	depends = logmein-hamachi
 	provides = haguichi

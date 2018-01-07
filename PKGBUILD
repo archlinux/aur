@@ -3,13 +3,13 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=haguichi-bzr
-pkgver=r237
+pkgver=r259
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux. Development version."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://www.haguichi.net"
 license=('GPL3')
-depends=('gtk3' 'libnotify' 'logmein-hamachi')
+depends=('gtk3' 'libappindicator-gtk3' 'libnotify' 'logmein-hamachi')
 makedepends=('bzr' 'meson' 'vala')
 conflicts=('haguichi')
 provides=('haguichi')
@@ -28,7 +28,7 @@ build() {
   rm -rf build
   mkdir build && cd build
 
-  meson ..
+  meson -Denable-appindicator=true ..
   ninja
 }
 
