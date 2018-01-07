@@ -2,7 +2,7 @@
 
 pkgname=wireshark-gtk2
 _pkgbase=wireshark
-pkgver=2.2.8
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - GTK2 frontend'
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ makedepends=('python')
 provides=('wireshark-cli' 'wireshark-gtk')
 conflicts=('wireshark-cli' 'wireshark-common' 'wireshark-qt')
 install=wireshark-gtk2.install
-source=(http://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.bz2)
-sha256sums=('ecf02c148c9ab6e809026ad5743fe9be1739a9840ef6fece6837a7ddfbdf7edc')
+source=(http://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.xz)
+sha256sums=('189495996b68940626cb53b31c8902fa1bb5a96b61217cea42734c13925ff12e')
 
 build() {
 	cd ${_pkgbase}-${pkgver}
