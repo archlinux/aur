@@ -1,0 +1,15 @@
+pkgbase = newt-syrup
+	pkgdesc = Python framework for creating text-based applications
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pagure.io/newt
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2
+	depends = libnewt
+	source = https://mcpierce.fedorapeople.org/sources/newt_syrup-0.2.0.tar.gz
+	sha256sums = 27f34eaa54540adee5cdda95bd97d2af75a7eddcc303b4c73f36917f79e157e9
+
+pkgname = newt-syrup
+
