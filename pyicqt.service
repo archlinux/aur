@@ -1,0 +1,11 @@
+[Unit]
+Description=PyICQt is an ICQ transport for Jabber/XMPP
+
+[Service]
+Type=simple
+PIDFile=/var/run/pyicqt/pyicqt.pid
+ExecStart=/usr/bin/python2 /usr/lib/pyicqt/PyICQt.py
+StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target
