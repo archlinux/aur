@@ -1,0 +1,5 @@
+.vscode/
+/pkg/
+/src/
+/*.tar.xz
+/*.tar.gz
