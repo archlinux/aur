@@ -1,25 +1,25 @@
-# Maintainer: Brian Bidlock <bidulock@openss7.org>
+# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
+# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Brian Bidlock <bidulock@openss7.org>
+
 pkgname=libpcl
-_libname=pcl
 pkgver=1.12
-pkgrel=2
-pkgdesc="The Portable Coroutine Library (PCL) implements the low level functionality for coroutines"
-license=("GPL2")
-url="http://xmailserver.org/libpcl.html"
-arch=('i686' 'x86_64')
-depends=('glibc')
-source=("http://xmailserver.org/$_libname-$pkgver.tar.gz")
-md5sums=('816d394743d8ab1b3e20af1efebb093d')
+pkgrel=3
+pkgdesc='The Portable Coroutine Library (PCL) implements the low level functionality for coroutines'
+license=(GPL2)
+url='http://xmailserver.org/libpcl.html'
+arch=(x86_64)
+depends=(glibc)
+source=(http://xmailserver.org/pcl-$pkgver.tar.gz)
+sha1sums=('a206c8fb5a96e65005f414ac46aeccd4b3603c8d')
 
 build() {
-  cd "$srcdir/$_libname-$pkgver"
+  cd pcl-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_libname-$pkgver"
+  cd pcl-$pkgver
   make DESTDIR="$pkgdir" install
 }
-        
-
