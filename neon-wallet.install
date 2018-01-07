@@ -1,6 +1,12 @@
 post_install() {
 	echo "Symlink has been installed for /usr/bin/neon-wallet"
 	ln -s /opt/Neon/neon /usr/bin/neon-wallet
+	echo \
+		"####################################
+If you're using the Neon App, please
+ensure you're using version 1.1.1 or
+above
+####################################"
 }
 
 post_upgrade() {
@@ -10,9 +16,12 @@ post_upgrade() {
 	else
 		echo "Symlink already present, not reinstalling"
 	fi
-	echo "#######################################################"
-	echo "Please upgrade your Ledger software too if you have one"
-	echo "#######################################################"
+        echo \
+                "####################################
+If you're using the Neon App, please
+ensure you're using version 1.1.1 or
+above
+####################################"
 }
 
 post_remove() {
