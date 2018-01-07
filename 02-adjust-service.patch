@@ -1,5 +1,5 @@
 --- gitea.service
-+++ gitea.service	2017-12-18 11:50:10.090000002 +0300
++++ gitea.service	2018-01-07 04:29:41.890000000 +0300
 @@ -18,10 +18,10 @@
  Type=simple
  User=git
