@@ -1,0 +1,24 @@
+pkgbase = luajson
+	pkgver = 1.3.3
+	pkgrel = 2
+	url = http://luaforge.net/projects/luajson/
+	arch = any
+	license = MIT
+	makedepends = lua-lpeg
+	makedepends = lua51-lpeg
+	makedepends = lua52-lpeg
+	source = https://github.com/harningt/luajson/archive/1.3.3.tar.gz
+	md5sums = e9f5454bef1e26c7cc0c3442c223cf9b
+
+pkgname = lua-luajson
+	pkgdesc = JSON parser/encoder for Lua
+	depends = lua-lpeg
+
+pkgname = lua51-luajson
+	pkgdesc = JSON parser/encoder for Lua 5.1
+	depends = lua51-lpeg
+
+pkgname = lua52-luajson
+	pkgdesc = JSON parser/encoder for Lua 5.2
+	depends = lua52-lpeg
+
