@@ -1,0 +1,19 @@
+pkgbase = libstrl
+	pkgdesc = Implementations of certain GNU-only or BSD-only string-related libc functions, such as strlcpy() and getdelim(), for compat purposes
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://ohnopub.net/~ohnobinki/libstrl
+	arch = x86_64
+	license = LGPL3
+	makedepends = doxygen
+	makedepends = libtool
+	makedepends = pkg-config
+	options = !libtool
+	source = ftp://mirror.ohnopub.net/mirror/libstrl-0.5.1.tar.bz2
+	source = ftp://mirror.ohnopub.net/mirror/libstrl-0.5.1.tar.bz2.asc
+	validpgpkeys = 184B7CEB69B57FD42BAF9AF9743A52E86BA81050
+	md5sums = d22fcd8107526d802428be6f0e8f0f60
+	md5sums = SKIP
+
+pkgname = libstrl
+
