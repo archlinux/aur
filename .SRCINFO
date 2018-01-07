@@ -1,0 +1,14 @@
+pkgbase = btchip-udev
+	pkgdesc = Udev rules to connect BTChip wallet to your linux box
+	pkgver = 2
+	pkgrel = 2
+	url = https://hardwarewallet.com/
+	install = btchip-udev.install
+	arch = any
+	license = GPL
+	depends = udev
+	source = 71-hw1.rules
+	sha256sums = 4acca406fb7f2f53817399b78b347695fdc5bd08c1bb1cb8406b6a7328d2f475
+
+pkgname = btchip-udev
+
