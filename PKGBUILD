@@ -4,7 +4,7 @@
 pkgname=('linux-gpib-dkms')
 _pkgname='linux-gpib'
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A support package for GPIB (IEEE 488) hardware (DKMS version).'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
@@ -65,6 +65,7 @@ package() {
 
     # modules are generated through DKMS, no need to install them here
     find ${pkgdir}/lib/modules -depth -type f -regex ".*.ko.gz$" -exec rm {} \;
+    find ${pkgdir}/lib/modules -depth -type f -regex ".*.ko.xz$" -exec rm {} \;
     find ${pkgdir} -depth -type d -empty -exec rmdir {} \;
     install -D -m644 "${srcdir}/${_pkgname}-${pkgver}/util/templates/gpib.conf" \
      "${pkgdir}/etc/gpib.conf"
