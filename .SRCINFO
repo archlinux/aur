@@ -1,0 +1,15 @@
+pkgbase = pdmenu
+	pkgdesc = simple full screen menu program
+	pkgver = 1.3.2
+	pkgrel = 2
+	url = http://packages.debian.org/unstable/source/pdmenu
+	arch = x86_64
+	license = GPL
+	depends = gpm
+	depends = slang
+	optdepends = perl
+	source = http://ftp.debian.org/debian/pool/main/p/pdmenu/pdmenu_1.3.2.tar.gz
+	md5sums = a7d5315119fd18a81cc3d1e578f8d3f8
+
+pkgname = pdmenu
+
