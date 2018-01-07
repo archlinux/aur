@@ -1,0 +1,14 @@
+pkgbase = libview
+	pkgdesc = A collection of widgets that were developed at VMware
+	pkgver = 0.6.6
+	pkgrel = 4
+	url = http://view.sourceforge.net
+	arch = x86_64
+	license = MIT
+	depends = gtkmm
+	depends = libsigc++
+	source = http://downloads.sf.net/sourceforge/view/libview-0.6.6.tar.gz
+	md5sums = f50f7cb04a4918e52a1707014dde47d2
+
+pkgname = libview
+
