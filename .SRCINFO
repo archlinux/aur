@@ -1,0 +1,24 @@
+pkgbase = zutils
+	pkgdesc = Utilities collection able to deal with any compressed and uncompressed files transparently. Utilities - zcat,zcmp,zdiff,zgrep,ztest,zupdate
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/zutils/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = xz
+	depends = lzip
+	depends = gzip
+	depends = bzip2
+	provides = zcat
+	provides = zcmp
+	provides = zdiff
+	provides = zgrep
+	provides = ztest
+	provides = zupdate
+	provides = zutils
+	source = http://download.savannah.gnu.org/releases/zutils/zutils-1.6.tar.lz
+	md5sums = e25c577a95088b0edb06cf2e245a5ae6
+
+pkgname = zutils
+
