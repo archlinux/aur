@@ -1,0 +1,601 @@
+diff --git a/mythtv/configure b/mythtv/configure
+index 8b7ba2ed6f..32fbe2bf60 100755
+--- a/mythtv/configure
++++ b/mythtv/configure
+@@ -6099,21 +6099,26 @@ enable_weak_pic() {
+ 
+ enabled pic && enable_weak_pic
+ 
+-is_qmake5(){
+-    $1 --version 2>&1 | egrep -q -e "Qt version 5\.[2-9]\.[0-9]"
++version2string(){
++    # accepts version as in 1.10.4 and turns it into 0001.0010.0004.0000.0000 which can be compared as a string
++    echo $1 | awk -F. '{ printf("%04d.%04d.%04d.%04d.%04d", $1, $2, $3, $4, $5); };'
+ }
+ 
++# Minimum supported Qt version
++qt_minimum_version="5.2"
++
+ # qmake-qt5 /usr/lib64/qt5/bin/qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+ if [ x"$qmake" = "xqmake" ]; then
+-    CHECK_QMAKE=`which qmake-qt5 2>&1`" /usr/lib64/qt5/bin/qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /usr/lib/i386-linux-gnu/qt5/bin/qmake /usr/lib/arm-linux-gnueabihf/qt5/bin/qmake /usr/local/lib/qt5/bin/qmake `which $qmake 2>&1`"
++    CHECK_QMAKE=`which -a qmake-qt5 2>/dev/null`" /usr/lib64/qt5/bin/qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /usr/lib/i386-linux-gnu/qt5/bin/qmake /usr/lib/arm-linux-gnueabihf/qt5/bin/qmake /usr/local/lib/qt5/bin/qmake `which -a $qmake 2>/dev/null`"
+ else
+-    CHECK_QMAKE=`which $qmake 2>&1`" "`which qmake-qt5 2>&1`" /usr/lib64/qt5/bin/qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /usr/lib/i386-linux-gnu/qt5/bin/qmake /usr/lib/arm-linux-gnueabihf/qt5/bin/qmake /usr/local/lib/qt5/bin/qmake"
++    CHECK_QMAKE=`which -a $qmake 2>/dev/null`" "`which -a qmake-qt5 2>/dev/null`" /usr/lib64/qt5/bin/qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /usr/lib/i386-linux-gnu/qt5/bin/qmake /usr/lib/arm-linux-gnueabihf/qt5/bin/qmake /usr/local/lib/qt5/bin/qmake"
+ fi
+ # try to find a qt5 qmake to use
+ found_qmake=''
+ for i in $CHECK_QMAKE; do
+     if test -e $i ; then
+-        if is_qmake5 $i; then
++        qmake_version=`$i --version | sed -n  "s/.*Qt version \([0-9]*\.[0-9]*\.[0-9]*\) .*/\1/p"`
++        if ! [ $(version2string $qmake_version) \< $(version2string $qt_minimum_version) ]; then
+             found_qmake=$i
+             check_cxxflags -DQT_DISABLE_DEPRECATED_BEFORE=0x050000
+             break;
+@@ -6124,7 +6129,7 @@ for i in $CHECK_QMAKE; do
+     fi
+ done
+ if [ x"$found_qmake" = "x" ]; then
+-    die "qmake for Qt5.2 or newer not found.\nPlease specify the correct qmake with --qmake="
++    die "qmake for Qt version $qt_minimum_version or newer not found.  Please specify the correct qmake with --qmake="
+ else
+     qmake=$found_qmake
+ fi
+diff --git a/mythtv/libs/libmyth/libmyth.pro b/mythtv/libs/libmyth/libmyth.pro
+index 24ec735b18..1fd5cc01c0 100644
+--- a/mythtv/libs/libmyth/libmyth.pro
++++ b/mythtv/libs/libmyth/libmyth.pro
+@@ -1,10 +1,8 @@
+ include ( ../../settings.pro )
+ 
+ QT += network xml sql script
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+ android: QT += androidextras
+-}
+ 
+ TEMPLATE = lib
+ TARGET = myth-$$LIBVERSION
+@@ -177,11 +175,7 @@ unix:!cygwin {
+     SOURCES += mediamonitor-unix.cpp
+     HEADERS += mediamonitor-unix.h
+     !android {
+-    contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+         using_qtdbus: QT += dbus
+-    } else {
+-        using_qtdbus: CONFIG += qdbus
+-    }
+     }
+ }
+ 
+diff --git a/mythtv/libs/libmyth/test/test_audioconvert/test_audioconvert.pro b/mythtv/libs/libmyth/test/test_audioconvert/test_audioconvert.pro
+index 9e73a8ca23..d0d77e8027 100644
+--- a/mythtv/libs/libmyth/test/test_audioconvert/test_audioconvert.pro
++++ b/mythtv/libs/libmyth/test/test_audioconvert/test_audioconvert.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_audioconvert
+diff --git a/mythtv/libs/libmyth/test/test_audioutils/test_audioutils.pro b/mythtv/libs/libmyth/test/test_audioutils/test_audioutils.pro
+index 3d62f741cb..df659aeb19 100644
+--- a/mythtv/libs/libmyth/test/test_audioutils/test_audioutils.pro
++++ b/mythtv/libs/libmyth/test/test_audioutils/test_audioutils.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_audioutils
+diff --git a/mythtv/libs/libmyth/test/test_programinfo/test_programinfo.pro b/mythtv/libs/libmyth/test/test_programinfo/test_programinfo.pro
+index bfd9d24287..e59584844d 100644
+--- a/mythtv/libs/libmyth/test/test_programinfo/test_programinfo.pro
++++ b/mythtv/libs/libmyth/test/test_programinfo/test_programinfo.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_programinfo
+diff --git a/mythtv/libs/libmythbase/libmythbase.pro b/mythtv/libs/libmythbase/libmythbase.pro
+index aa7ac151db..444abea063 100644
+--- a/mythtv/libs/libmythbase/libmythbase.pro
++++ b/mythtv/libs/libmythbase/libmythbase.pro
+@@ -153,10 +153,7 @@ win32-msvc* {
+ }
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ include ( ../libs-targetfix.pro )
+ 
+diff --git a/mythtv/libs/libmythbase/test/test_mythsystem/test_mythsystem.pro b/mythtv/libs/libmythbase/test/test_mythsystem/test_mythsystem.pro
+index fee4e38226..159dcb28f3 100644
+--- a/mythtv/libs/libmythbase/test/test_mythsystem/test_mythsystem.pro
++++ b/mythtv/libs/libmythbase/test/test_mythsystem/test_mythsystem.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_mythsystem
+diff --git a/mythtv/libs/libmythbase/test/test_mythsystemlegacy/test_mythsystemlegacy.pro b/mythtv/libs/libmythbase/test/test_mythsystemlegacy/test_mythsystemlegacy.pro
+index b116e7a5ae..d97c6c8112 100644
+--- a/mythtv/libs/libmythbase/test/test_mythsystemlegacy/test_mythsystemlegacy.pro
++++ b/mythtv/libs/libmythbase/test/test_mythsystemlegacy/test_mythsystemlegacy.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_mythsystemlegacy
+diff --git a/mythtv/libs/libmythbase/test/test_mythtimer/test_mythtimer.pro b/mythtv/libs/libmythbase/test/test_mythtimer/test_mythtimer.pro
+index d0e332b74d..91c6a3f773 100644
+--- a/mythtv/libs/libmythbase/test/test_mythtimer/test_mythtimer.pro
++++ b/mythtv/libs/libmythbase/test/test_mythtimer/test_mythtimer.pro
+@@ -1,11 +1,6 @@
+ include ( ../../../../settings.pro )
+ 
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_mythtimer
+diff --git a/mythtv/libs/libmythbase/test/test_template/test_template.pro b/mythtv/libs/libmythbase/test/test_template/test_template.pro
+index 2cf0a3e615..c8229039b7 100644
+--- a/mythtv/libs/libmythbase/test/test_template/test_template.pro
++++ b/mythtv/libs/libmythbase/test/test_template/test_template.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_template
+diff --git a/mythtv/libs/libmythmetadata/libmythmetadata.pro b/mythtv/libs/libmythmetadata/libmythmetadata.pro
+index d06405c930..695900c985 100644
+--- a/mythtv/libs/libmythmetadata/libmythmetadata.pro
++++ b/mythtv/libs/libmythmetadata/libmythmetadata.pro
+@@ -1,9 +1,7 @@
+ include ( ../../settings.pro )
+ 
+ QT += network xml sql
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = lib
+ TARGET = mythmetadata-$$LIBVERSION
+diff --git a/mythtv/libs/libmythmetadata/test/test_videometadata/test_videometadata.pro b/mythtv/libs/libmythmetadata/test/test_videometadata/test_videometadata.pro
+index 218378d363..cc283b73c0 100644
+--- a/mythtv/libs/libmythmetadata/test/test_videometadata/test_videometadata.pro
++++ b/mythtv/libs/libmythmetadata/test/test_videometadata/test_videometadata.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_videometadata
+diff --git a/mythtv/libs/libmythprotoserver/libmythprotoserver.pro b/mythtv/libs/libmythprotoserver/libmythprotoserver.pro
+index d9c5643ec8..a1d2446cc1 100644
+--- a/mythtv/libs/libmythprotoserver/libmythprotoserver.pro
++++ b/mythtv/libs/libmythprotoserver/libmythprotoserver.pro
+@@ -1,9 +1,7 @@
+ include ( ../../settings.pro )
+ 
+ QT += network sql
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = lib
+ TARGET = mythprotoserver-$$LIBVERSION
+diff --git a/mythtv/libs/libmythtv/libmythtv.pro b/mythtv/libs/libmythtv/libmythtv.pro
+index 77dd7917a0..b88964a3ea 100644
+--- a/mythtv/libs/libmythtv/libmythtv.pro
++++ b/mythtv/libs/libmythtv/libmythtv.pro
+@@ -1,9 +1,7 @@
+ include ( ../../settings.pro )
+ 
+ QT += network xml sql
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = lib
+ TARGET = mythtv-$$LIBVERSION
+diff --git a/mythtv/libs/libmythtv/test/test_copyframes/test_copyframes.pro b/mythtv/libs/libmythtv/test/test_copyframes/test_copyframes.pro
+index b365d57cd3..15a39d0986 100644
+--- a/mythtv/libs/libmythtv/test/test_copyframes/test_copyframes.pro
++++ b/mythtv/libs/libmythtv/test/test_copyframes/test_copyframes.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_copyframes
+diff --git a/mythtv/libs/libmythtv/test/test_eitfixups/test_eitfixups.pro b/mythtv/libs/libmythtv/test/test_eitfixups/test_eitfixups.pro
+index 6e8881b4eb..a6be44cc62 100644
+--- a/mythtv/libs/libmythtv/test/test_eitfixups/test_eitfixups.pro
++++ b/mythtv/libs/libmythtv/test/test_eitfixups/test_eitfixups.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_eitfixups
+diff --git a/mythtv/libs/libmythtv/test/test_iptvrecorder/test_iptvrecorder.pro b/mythtv/libs/libmythtv/test/test_iptvrecorder/test_iptvrecorder.pro
+index c051d80319..bbc9e89a46 100644
+--- a/mythtv/libs/libmythtv/test/test_iptvrecorder/test_iptvrecorder.pro
++++ b/mythtv/libs/libmythtv/test/test_iptvrecorder/test_iptvrecorder.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_iptvrecorder
+diff --git a/mythtv/libs/libmythtv/test/test_mpegtables/test_mpegtables.pro b/mythtv/libs/libmythtv/test/test_mpegtables/test_mpegtables.pro
+index 62f3124bb5..b280b0eaa7 100644
+--- a/mythtv/libs/libmythtv/test/test_mpegtables/test_mpegtables.pro
++++ b/mythtv/libs/libmythtv/test/test_mpegtables/test_mpegtables.pro
+@@ -1,13 +1,7 @@
+ include ( ../../../../settings.pro )
+ 
+ QT += xml sql network
+-
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-CONFIG += qtestlib
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += testlib
+-}
+ 
+ TEMPLATE = app
+ TARGET = test_mpegtables
+diff --git a/mythtv/libs/libmythui/libmythui.pro b/mythtv/libs/libmythui/libmythui.pro
+index 6b534ad2c2..092098dd4a 100644
+--- a/mythtv/libs/libmythui/libmythui.pro
++++ b/mythtv/libs/libmythui/libmythui.pro
+@@ -1,10 +1,7 @@
+ include ( ../../settings.pro )
+ 
+ QT += xml sql network opengl
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-QT += webkit
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*):using_qtwebkit {
++using_qtwebkit {
+ QT += widgets
+ QT += webkitwidgets
+ android: QT += androidextras
+diff --git a/mythtv/programs/mythavtest/mythavtest.pro b/mythtv/programs/mythavtest/mythavtest.pro
+index b993647179..35ed274fd9 100644
+--- a/mythtv/programs/mythavtest/mythavtest.pro
++++ b/mythtv/programs/mythavtest/mythavtest.pro
+@@ -3,9 +3,7 @@ include ( ../../version.pro )
+ include ( ../programs-libs.pro )
+ 
+ QT += network xml sql
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythbackend/mythbackend.pro b/mythtv/programs/mythbackend/mythbackend.pro
+index ab59bcbbe1..5e54d3bfeb 100644
+--- a/mythtv/programs/mythbackend/mythbackend.pro
++++ b/mythtv/programs/mythbackend/mythbackend.pro
+@@ -10,9 +10,7 @@ mingw | win32-msvc* {
+    # need the following for QUrl::addQueryItem
+    DEFINES += QT_DISABLE_DEPRECATED_BEFORE
+ }
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythccextractor/mythccextractor.pro b/mythtv/programs/mythccextractor/mythccextractor.pro
+index fbe8c2e50a..a0e70a9ef7 100644
+--- a/mythtv/programs/mythccextractor/mythccextractor.pro
++++ b/mythtv/programs/mythccextractor/mythccextractor.pro
+@@ -2,9 +2,7 @@ include (../../settings.pro)
+ include ( ../programs-libs.pro )
+ 
+ QT += sql network
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythcommflag/mythcommflag.pro b/mythtv/programs/mythcommflag/mythcommflag.pro
+index 997966e295..a3fde4f4bd 100644
+--- a/mythtv/programs/mythcommflag/mythcommflag.pro
++++ b/mythtv/programs/mythcommflag/mythcommflag.pro
+@@ -2,9 +2,7 @@ include (../../settings.pro)
+ include (../../version.pro)
+ include ( ../programs-libs.pro )
+ 
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythfilerecorder/mythfilerecorder.pro b/mythtv/programs/mythfilerecorder/mythfilerecorder.pro
+index 73300742f1..ba568e091a 100644
+--- a/mythtv/programs/mythfilerecorder/mythfilerecorder.pro
++++ b/mythtv/programs/mythfilerecorder/mythfilerecorder.pro
+@@ -3,9 +3,7 @@ include (../../version.pro)
+ include ( ../programs-libs.pro )
+ 
+ QT += network xml sql script
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythfilldatabase/mythfilldatabase.pro b/mythtv/programs/mythfilldatabase/mythfilldatabase.pro
+index 52e6e0a256..0f4f944cf7 100644
+--- a/mythtv/programs/mythfilldatabase/mythfilldatabase.pro
++++ b/mythtv/programs/mythfilldatabase/mythfilldatabase.pro
+@@ -3,9 +3,7 @@ include ( ../../version.pro )
+ include ( ../programs-libs.pro )
+ 
+ QT += network xml sql
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythfrontend/mythfrontend.pro b/mythtv/programs/mythfrontend/mythfrontend.pro
+index 744fe1f2bb..2e5f313243 100644
+--- a/mythtv/programs/mythfrontend/mythfrontend.pro
++++ b/mythtv/programs/mythfrontend/mythfrontend.pro
+@@ -7,11 +7,7 @@ mingw | win32-msvc* {
+    # script debugger currently only enabled for WIN32 builds
+    QT += scripttools
+ }
+-contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+-QT += webkit
+-using_qtdbus: CONFIG += qdbus
+-}
+-contains(QT_VERSION, ^5\\.[0-9]\\..*):using_qtwebkit {
++using_qtwebkit {
+ QT += widgets
+ QT += webkitwidgets
+ using_qtdbus: QT += dbus
+diff --git a/mythtv/programs/mythjobqueue/mythjobqueue.pro b/mythtv/programs/mythjobqueue/mythjobqueue.pro
+index 9405ab597f..389eec7843 100644
+--- a/mythtv/programs/mythjobqueue/mythjobqueue.pro
++++ b/mythtv/programs/mythjobqueue/mythjobqueue.pro
+@@ -3,9 +3,7 @@ include ( ../../version.pro)
+ include ( ../programs-libs.pro)
+ 
+ QT += sql network
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ CONFIG -= opengl
+ 
+diff --git a/mythtv/programs/mythlcdserver/mythlcdserver.pro b/mythtv/programs/mythlcdserver/mythlcdserver.pro
+index fd0a98bf91..766715ee61 100644
+--- a/mythtv/programs/mythlcdserver/mythlcdserver.pro
++++ b/mythtv/programs/mythlcdserver/mythlcdserver.pro
+@@ -3,9 +3,8 @@ include ( ../../version.pro )
+ include ( ../programs-libs.pro )
+ 
+ QT += network xml sql
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
++
+ using_opengl:QT += opengl
+ 
+ TEMPLATE = app
+diff --git a/mythtv/programs/mythlogserver/mythlogserver.pro b/mythtv/programs/mythlogserver/mythlogserver.pro
+index fbe8c2e50a..a0e70a9ef7 100644
+--- a/mythtv/programs/mythlogserver/mythlogserver.pro
++++ b/mythtv/programs/mythlogserver/mythlogserver.pro
+@@ -2,9 +2,7 @@ include (../../settings.pro)
+ include ( ../programs-libs.pro )
+ 
+ QT += sql network
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythmediaserver/mythmediaserver.pro b/mythtv/programs/mythmediaserver/mythmediaserver.pro
+index 2f9a804939..e042941fba 100644
+--- a/mythtv/programs/mythmediaserver/mythmediaserver.pro
++++ b/mythtv/programs/mythmediaserver/mythmediaserver.pro
+@@ -3,9 +3,7 @@ include ( ../../version.pro )
+ include ( ../programs-libs.pro )
+ 
+ QT += network sql
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythpreviewgen/mythpreviewgen.pro b/mythtv/programs/mythpreviewgen/mythpreviewgen.pro
+index d21797ede9..3d085385ba 100644
+--- a/mythtv/programs/mythpreviewgen/mythpreviewgen.pro
++++ b/mythtv/programs/mythpreviewgen/mythpreviewgen.pro
+@@ -3,9 +3,7 @@ include ( ../../version.pro )
+ include ( ../programs-libs.pro )
+ 
+ QT += network sql
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythscreenwizard/mythscreenwizard.pro b/mythtv/programs/mythscreenwizard/mythscreenwizard.pro
+index 42c4669620..5a4d08d417 100644
+--- a/mythtv/programs/mythscreenwizard/mythscreenwizard.pro
++++ b/mythtv/programs/mythscreenwizard/mythscreenwizard.pro
+@@ -3,9 +3,7 @@ include ( ../../version.pro)
+ include ( ../programs-libs.pro)
+ 
+ QT += sql network
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythtranscode/mythtranscode.pro b/mythtv/programs/mythtranscode/mythtranscode.pro
+index 4d4c3bcbcb..1f66fade2b 100644
+--- a/mythtv/programs/mythtranscode/mythtranscode.pro
++++ b/mythtv/programs/mythtranscode/mythtranscode.pro
+@@ -3,9 +3,7 @@ include ( ../../version.pro)
+ include ( ../programs-libs.pro)
+ 
+ QT += network xml sql
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythtv-setup/mythtv-setup.pro b/mythtv/programs/mythtv-setup/mythtv-setup.pro
+index 24a9255fb7..9ef3f1c61a 100644
+--- a/mythtv/programs/mythtv-setup/mythtv-setup.pro
++++ b/mythtv/programs/mythtv-setup/mythtv-setup.pro
+@@ -3,9 +3,7 @@ include ( ../../version.pro )
+ include ( ../programs-libs.pro )
+ 
+ QT += network xml sql
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ INCLUDEPATH += ../../libs/libmythtv/channelscan
+ DEPENDPATH += ../../libs/libmythtv/channelscan
+diff --git a/mythtv/programs/mythutil/mythutil.pro b/mythtv/programs/mythutil/mythutil.pro
+index ab8897f17c..0ad14ef856 100644
+--- a/mythtv/programs/mythutil/mythutil.pro
++++ b/mythtv/programs/mythutil/mythutil.pro
+@@ -3,9 +3,7 @@ include ( ../../version.pro )
+ include ( ../programs-libs.pro )
+ 
+ QT += network sql xml
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
+diff --git a/mythtv/programs/mythwelcome/mythwelcome.pro b/mythtv/programs/mythwelcome/mythwelcome.pro
+index edddbf18a6..fa83a39852 100644
+--- a/mythtv/programs/mythwelcome/mythwelcome.pro
++++ b/mythtv/programs/mythwelcome/mythwelcome.pro
+@@ -3,9 +3,7 @@ include (../../version.pro)
+ include (../programs-libs.pro)
+ 
+ QT += xml sql network
+-contains(QT_VERSION, ^5\\.[0-9]\\..*) {
+ QT += widgets
+-}
+ 
+ TEMPLATE = app
+ CONFIG += thread
