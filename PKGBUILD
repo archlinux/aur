@@ -3,7 +3,7 @@
 pkgname=domoticz-git
 _gitname="domoticz"
 pkgver=r8799
-pkgrel=1
+pkgrel=2
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.domoticz.com"
@@ -14,9 +14,11 @@ makedepends=('git' 'cmake' 'boost')
 conflicts=('domoticz-svn')
 install='domoticz-git.install'
 source=('git+https://github.com/domoticz/domoticz.git'
-	 'domoticz.service')
+	 'domoticz.service'
+	 'fix-boost1.66-api.diff')
 sha256sums=('SKIP'
-            'f45f382e5ae0d54f1b1f147b89f5ac5f62719c83a8eb280e20121f8dfc7b2697')
+            'f45f382e5ae0d54f1b1f147b89f5ac5f62719c83a8eb280e20121f8dfc7b2697'
+            'da747e0ade1d374509e42faaf5167da779830b9a98e31a1c903734dfa0028b39')
 
 pkgver() {
 	cd "$_gitname"
@@ -26,6 +28,8 @@ pkgver() {
 
 build() {
 	cd "$_gitname"
+
+	patch -p1 < "$srcdir/fix-boost1.66-api.diff"
 
 	cmake \
 		-DCMAKE_BUILD_TYPE=Release \
