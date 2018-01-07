@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-headers-bootstrap
+	pkgdesc = MinGW-w64 headers for Windows (bootstrap)
+	pkgver = 5.0.3
+	pkgrel = 1
+	url = http://mingw-w64.sourceforge.net
+	arch = any
+	groups = mingw-w64-bootstrap
+	license = custom
+	makedepends = mingw-w64-headers
+	conflicts = mingw-w64-winpthreads,
+	conflicts = mingw-w64-winpthreads-svn
+	options = !strip
+	options = !libtool
+	options = !emptydirs
+
+pkgname = mingw-w64-headers-bootstrap
+
