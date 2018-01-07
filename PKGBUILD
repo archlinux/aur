@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=rockchip-mpp
-pkgver=20170811
+pkgver=20171218
 pkgrel=1
 pkgdesc='Rockchip Media Process Platform (MPP)'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 conflicts=('rockchip-mpp-git')
 options=('!staticlibs')
 source=("${pkgname}-${pkgver}".tar.gz::"https://github.com/rockchip-linux/mpp/archive/release_${pkgver}.tar.gz")
-sha256sums=('e59f21aa08ff9d525afa105fe93bfa04cb6933ae01650ab1407dac9692643922')
+sha256sums=('03b4f093e23fa480c3c46a07059fb297d352e5b3d050f4da4869c1ade8adc125')
 
 build() {
     cd "mpp-release_${pkgver}"
@@ -25,7 +25,7 @@ build() {
         -DCMAKE_INSTALL_DATAROOTDIR:PATH='share' \
         -DCMAKE_INSTALL_INCLUDEDIR:PATH='include' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
-        -DCMAKE_INSTALL_LOCALSTATEDIR:PATH='/var' \
+        -DCMAKE_INSTALL_LOCALSTATEDIR:PATH='var' \
         -DCMAKE_INSTALL_MANDIR:PATH='share/man' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_SBINDIR:PATH='sbin' \
