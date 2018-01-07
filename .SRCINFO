@@ -1,0 +1,38 @@
+pkgbase = libretro-higan
+	pkgdesc = Nintendo multi-system emulator
+	pkgver = 106
+	pkgrel = 1
+	url = http://byuu.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = mesa
+	depends = alsa-lib
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = gtksourceview2
+	depends = libao
+	depends = libgl
+	depends = libpulse
+	depends = libx11
+	depends = libxext
+	depends = libxv
+	depends = openal
+	depends = pango
+	depends = sdl
+	depends = libudev.so
+	provides = libretro-higan
+	source = git+https://gitlab.com/higan/higan.git#commit=886f6dcf42fa11656e0df82bad8fd5cfe6ac1035
+	source = higan-flags.patch
+	source = higan-paths.patch
+	source = libretro.patch
+	sha256sums = SKIP
+	sha256sums = 6cff6f9570de186bdfa4620d3a2b6e315118b6f6be45b35f3346995865f1718e
+	sha256sums = 6d0bf69e00c9ea5c5155b52b5ee59c253f2bacbc64f044826f53d4d6ae175c68
+	sha256sums = 369fcf3e284b09e0ead3fa6c18c85240f656a42505f08c63da7cb636b9779160
+
+pkgname = libretro-higan
+

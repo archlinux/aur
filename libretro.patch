@@ -1,0 +1,11 @@
+--- higan/higan/GNUmakefile	2018-01-07 14:39:56.761733792 +1000
++++ higan/higan/GNUmakefile-patch	2018-01-07 14:42:16.026978876 +1000
+@@ -1,7 +1,7 @@
+ build := release
+ include ../nall/GNUmakefile
+ 
+-binary := application
++binary := library
+ target := tomoko
+ objects := libco emulator audio video resource
+ 
