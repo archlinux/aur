@@ -1,7 +1,7 @@
 pkgbase = srm
 	pkgdesc = A secure replacement for rm(1) that overwrites data before unlinking
 	pkgver = 1.2.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://srm.sourceforge.net/
 	arch = x86_64
 	license = custom

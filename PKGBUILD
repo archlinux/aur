@@ -4,7 +4,7 @@
 
 pkgname=srm
 pkgver=1.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure replacement for rm(1) that overwrites data before unlinking"
 arch=('x86_64')
 url="http://srm.sourceforge.net/"
