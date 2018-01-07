@@ -1,0 +1,17 @@
+pkgbase = liblogging
+	pkgdesc = easy to use, portable, open source library for system logging
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://www.liblogging.org/
+	arch = x86_64
+	license = GPL
+	makedepends = python-docutils
+	depends = systemd
+	options = strip
+	options = zipman
+	options = !libtool
+	source = http://download.rsyslog.com/liblogging/liblogging-1.0.6.tar.gz
+	sha256sums = 338c6174e5c8652eaa34f956be3451f7491a4416ab489aef63151f802b00bf93
+
+pkgname = liblogging
+
