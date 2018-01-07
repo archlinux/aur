@@ -1,0 +1,10 @@
+[Unit]
+Description=p3scan proxy
+
+[Service]
+Type=forking
+PIDFile=/run/p3scan/p3scan.pid
+ExecStart=/usr/bin/p3scan
+
+[Install]
+WantedBy=multi-user.target

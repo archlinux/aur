@@ -1,0 +1,22 @@
+pkgbase = p3scan
+	pkgdesc = Fully transparent POP3/SMTP proxy with Anti-Virus and SPAM protection
+	pkgver = 2.3.2
+	pkgrel = 12
+	url = http://p3scan.sourceforge.net/
+	install = p3scan.install
+	arch = x86_64
+	license = GPL
+	depends = pcre
+	depends = openssl
+	source = https://downloads.sourceforge.net/sourceforge/p3scan/p3scan-2.3.2.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/p3scan/p3scan-2.3.2.tar.gz.asc
+	source = p3scan.service
+	source = p3scan.tmpfiles
+	validpgpkeys = B312DD49453C18B45332D3D6F7F54A759AE7BF76
+	sha256sums = 570bdf87132b23120339e247809dc2cf37c2735d504f4e1072528c04d940bb5f
+	sha256sums = SKIP
+	sha256sums = 0a38655a2f944588529fdb5f47542f6e09c067a615f947cbedabced96d748190
+	sha256sums = aad248721cb3eb587795bf2e849e3076b6899ad8ecba27b19f69e12d2481a81a
+
+pkgname = p3scan
+
