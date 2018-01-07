@@ -2,7 +2,7 @@
 
 pkgname="ansible-vim-git"
 pkgver=20171223
-pkgrel=1
+pkgrel=2
 pkgdesc="A vim plugin for syntax highlighting Ansible's common filetypes "
 arch=('any')
 url='https://github.com/pearofducks/ansible-vim'
@@ -16,7 +16,7 @@ _git_hash="6aac3bd"
 pkgver() {
     cd "${srcdir}/${pkgname}"
     git checkout "${_git_hash}"
-    echo ${_git_hash}
+    echo ${pkgver}
 }
 
 package() {
