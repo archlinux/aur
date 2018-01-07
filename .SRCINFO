@@ -5,7 +5,6 @@ pkgbase = electrum-ltc
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
-	depends = python2-btchip
 	depends = python2-dnspython
 	depends = python2-ecdsa
 	depends = python2-jsonrpclib-pelix

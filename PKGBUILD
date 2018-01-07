@@ -5,8 +5,7 @@ pkgdesc="Lightweight Litecoin client"
 arch=(any)
 url=https://electrum-ltc.org/
 license=(MIT)
-depends=(python2-btchip
-         python2-dnspython
+depends=(python2-dnspython
          python2-ecdsa
          python2-jsonrpclib-pelix
          python2-ltc_scrypt
