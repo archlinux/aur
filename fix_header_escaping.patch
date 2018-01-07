@@ -1,0 +1,64 @@
+--- pidgin-encryption-3.0.orig/encrypt.c	2007-05-06 23:37:55.000000000 -0400
++++ pidgin-encryption-3.0.new/encrypt.c	2009-11-22 22:28:34.052010351 -0500
+@@ -1114,21 +1114,21 @@ static void PE_headers_init() {
+    notify_table = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+ 
+    g_hash_table_insert(header_table, g_strdup("prpl-toc"),
+-                       g_strdup("*** Encrypted with the Gaim-Encryption plugin <A HREF=\""));
++                       g_strdup("--- Encrypted with the Gaim-Encryption plugin <A HREF=\""));
+    g_hash_table_insert(footer_table, g_strdup("prpl-toc"),
+                        g_strdup("\"></A>"));
+    g_hash_table_insert(notify_table, g_strdup("prpl-toc"),
+                        g_strdup("<A HREF=\"Gaim-Encryption Capable\"></A>"));
+ 
+    g_hash_table_insert(header_table, g_strdup("prpl-oscar"),
+-                       g_strdup("*** Encrypted with the Gaim-Encryption plugin <A HREF=\""));
++                       g_strdup("--- Encrypted with the Gaim-Encryption plugin <A HREF=\""));
+    g_hash_table_insert(footer_table, g_strdup("prpl-oscar"),
+                        g_strdup("\"></A>"));
+    g_hash_table_insert(notify_table, g_strdup("prpl-oscar"),
+                        g_strdup("<A HREF=\"Gaim-Encryption Capable\"></A>"));
+ 
+    g_hash_table_insert(header_table, g_strdup("prpl-aim"),
+-                       g_strdup("*** Encrypted with the Gaim-Encryption plugin <A HREF=\""));
++                       g_strdup("--- Encrypted with the Gaim-Encryption plugin <A HREF=\""));
+    g_hash_table_insert(footer_table, g_strdup("prpl-aim"),
+                        g_strdup("\"></A>"));
+    g_hash_table_insert(notify_table, g_strdup("prpl-aim"),
+@@ -1136,7 +1136,7 @@ static void PE_headers_init() {
+ 
+ /* If jabber stops stripping HTML, we can go back to these headers */
+ /*    g_hash_table_insert(header_table, g_strdup("prpl-jabber"), */
+-/*                        g_strdup("*** Encrypted with the Gaim-Encryption plugin <A HREF='")); */
++/*                        g_strdup("--- Encrypted with the Gaim-Encryption plugin <A HREF='")); */
+ /*    g_hash_table_insert(footer_table, g_strdup("prpl-jabber"), */
+ /*                        g_strdup("'></A>")); */
+ /*    g_hash_table_insert(notify_table, g_strdup("prpl-jabber"), */
+@@ -1144,22 +1144,22 @@ static void PE_headers_init() {
+ 
+ 
+    g_hash_table_insert(header_table, g_strdup("prpl-jabber"),
+-                       g_strdup("*** Encrypted with the Gaim-Encryption plugin "));
++                       g_strdup("--- Encrypted with the Gaim-Encryption plugin "));
+    g_hash_table_insert(footer_table, g_strdup("prpl-jabber"),
+                        g_strdup(" "));
+    g_hash_table_insert(notify_table, g_strdup("prpl-jabber"),
+                        g_strdup("<A HREF='Gaim-Encryption Capable'> </A>"));
+ 
+-   header_default = g_strdup("*** Encrypted :");
++   header_default = g_strdup("--- Encrypted :");
+ }
+ 
+-/* #define CRYPT_HEADER "*** Encrypted with the Gaim-Encryption plugin <A HREF=\"" */
++/* #define CRYPT_HEADER "--- Encrypted with the Gaim-Encryption plugin <A HREF=\"" */
+ /* #define CRYPT_FOOTER "\"></A>" */
+ /* #define CRYPT_NOTIFY_HEADER "<A HREF=\"Gaim-Encryption Capable\"></A>" */
+ 
+ // Jabber seems to turn our double quotes into single quotes at times, so define
+ // the same headers, only with single quotes.  Lengths MUST be the same as above
+-/* #define CRYPT_HEADER_MANGLED "*** Encrypted with the Gaim-Encryption plugin <A HREF='" */
++/* #define CRYPT_HEADER_MANGLED "--- Encrypted with the Gaim-Encryption plugin <A HREF='" */
+ /* #define CRYPT_NOTIFY_HEADER_MANGLED "<A HREF='Gaim-Encryption Capable'></A>" */
+ 
+ 
+

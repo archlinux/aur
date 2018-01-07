@@ -1,0 +1,14 @@
+pkgbase = pidgin-encryption
+	pkgdesc = A Pidgin plugin providing transparent RSA encryption using NSS
+	pkgver = 3.1
+	pkgrel = 3
+	url = http://pidgin-encrypt.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = pidgin
+	depends = nss
+	source = http://downloads.sourceforge.net/pidgin-encrypt/pidgin-encryption-3.1.tar.gz
+	md5sums = d839eec602c21f913b32b742dc512f4b
+
+pkgname = pidgin-encryption
+

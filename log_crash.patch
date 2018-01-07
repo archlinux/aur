@@ -1,0 +1,11 @@
+--- pidgin-encryption-3.0.orig/state_ui.c	2007-05-07 02:15:27.000000000 +0200
++++ pidgin-encryption-3.0.new/state_ui.c	2009-04-26 17:08:02.000000000 +0200
+@@ -268,6 +268,8 @@
+ static GtkIMHtmlSmiley * create_smiley_if_absent(GtkIMHtml *imhtml) {
+    GtkIMHtmlSmiley * smiley;
+    const char* category = gtk_imhtml_get_protocol_name(imhtml);
++   
++   if (!category) return NULL;
+ 
+    /* make sure that the category we're about to use to add (based on the protocol name) */
+    /* already exists.  If it doesn't, just use the default category so it isn't created. */
