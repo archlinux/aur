@@ -2,7 +2,7 @@
 pkgname=vim-plugins-profiler
 pkgver=1.1
 pkgrel=1
-pkgdesc="Utility to output a sorted list of VIM plugins startup times in millisec."
+pkgdesc="Utility to output a sorted list of VIM plugin startup times in millisec."
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
