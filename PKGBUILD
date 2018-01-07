@@ -1,6 +1,6 @@
 # Maintainer: Tierry Hörmann <tierryhoermann96 at gmx dot ch>
 pkgname=lolang
-pkgver=0.1.1_alpha
+pkgver=0.1.2_alpha
 pkgrel=1
 pkgdesc="A dope programming language"
 arch=('x86_64')
@@ -10,7 +10,7 @@ groups=()
 depends=('swift>=4.0.0' 'llvm>=5.0.0' 'glibc' 'libc++')
 makedepends=('git')
 source=("https://github.com/tierriminator/Lolang/archive/${pkgver//_/-}.tar.gz")
-md5sums=('b40487c81ce15995f612f6deca35cbfe')
+md5sums=('7f5c10e8ba1490901d2124f54ef51e19')
 
 
 

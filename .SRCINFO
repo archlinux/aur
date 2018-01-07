@@ -1,6 +1,6 @@
 pkgbase = lolang
 	pkgdesc = A dope programming language
-	pkgver = 0.1.1_alpha
+	pkgver = 0.1.2_alpha
 	pkgrel = 1
 	url = https://github.com/tierriminator/Lolang
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lolang
 	depends = llvm>=5.0.0
 	depends = glibc
 	depends = libc++
-	source = https://github.com/tierriminator/Lolang/archive/0.1.1-alpha.tar.gz
+	source = https://github.com/tierriminator/Lolang/archive/0.1.2-alpha.tar.gz
 	md5sums = b40487c81ce15995f612f6deca35cbfe
 
 pkgname = lolang
