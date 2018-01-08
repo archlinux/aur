@@ -3,6 +3,7 @@ pkgbase = snapd
 	pkgver = 2.30
 	pkgrel = 1
 	url = https://github.com/snapcore/snapd
+	install = snapd.install
 	arch = x86_64
 	license = GPL3
 	checkdepends = python
