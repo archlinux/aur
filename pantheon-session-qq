@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export XDG_CURRENT_DESKTOP=Pantheon
+export {XDG_{CURRENT,SESSION}_DESKTOP,DESKTOP_SESSION}=Pantheon
 if [ -n "$1" ]; then
   case $1 in
     lite) # Reduced resource usage with openbox in place of gala

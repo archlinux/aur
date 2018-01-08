@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=numlockx
+Comment=Enable Numlock in X11
+Icon=xorg
+Exec=numlockx on
+Terminal=false
+Type=Application
+Categories=System
+NoDisplay=true
+OnlyShowIn=Pantheon;
+X-GNOME-Autostart-Phase=Initialization
