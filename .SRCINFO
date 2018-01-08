@@ -1,0 +1,15 @@
+pkgbase = python-aionotify
+	pkgdesc = aionotify is a simple, asyncio-based inotify library.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://blog.agayon.be/errol.html
+	arch = any
+	license = BSD
+	depends = python
+	provides = python-aionotify
+	options = !emptydirs
+	source = https://github.com/rbarrois/aionotify/archive/v0.2.0.tar.gz
+	sha512sums = 23c1a6f86076c069346721cdce89f2aea656ad6afa8c89cbb96ae31bdd478592c9ca475c764da91762dd615454005f82b8666644a3121eb8dfc4b875060d51df
+
+pkgname = python-aionotify
+
