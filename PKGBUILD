@@ -5,7 +5,7 @@ pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable 
 arch=('i686' 'x86_64')
 url="http://raiblocks.com/"
 license=('BSD 2-clause')
-depends=('qt5-base'  'boost' 'boost-libs')
+depends=('qt5-base'  'boost' 'boost-libs=>1.66')
 provides=(raiblocks)
 install=install
 pkgver() {
@@ -35,12 +35,6 @@ sha256sums=('74b9bc75c3d5596603e54e2553ff69d367f384789c7565437a72a64dc22f0fdd'
 
 prepare() {
   cd "$srcdir/raiblocks"
-
-  #revert boost 1.66 commit until it makes it out of [testing] so we can use Arch's 1.65
-  git revert -v fda5cae96163571b0926d21f967fc2c59ecee68e --no-edit --no-commit
-  git revert -v 1530785edf358de5ef50cb430656981e67686bac --no-edit --no-commit
-  #it's ok if it fails on some file we don't need for building
-
   
   git submodule init
 
