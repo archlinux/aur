@@ -1,7 +1,7 @@
 # Maintainer: Antoine Damhet <antoine.damhet@lse.epita.fr>
 pkgname=mkinitcpio-gnupg
 pkgdesc="mkinitcpio hook that adds GnuPG and smartcard support"
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 arch=(any)
 depends=(gnupg pinentry pcsclite)
@@ -21,4 +21,4 @@ package() {
 	install -D -m0644 "gnupg-install" "${pkgdir}/usr/lib/initcpio/install/gnupg"
 }
 
-sha256sums=('7e65320dfc84caf2e3ae30ad5fcee0b2cd50faaf62bb5d5818a269186919c9b0')
+sha256sums=('f4b744aaa890c51817e1fbeb63c3244117ae8b57714872b08a65b1c31a7274c4')
