@@ -13,7 +13,10 @@ depends=(
 	"obs-studio>=${_obsver}"
 	"gconf" "nss" "libxss" "pango" "atk" "libxrandr" "libxcomposite"
 )
-optdepends=("pepper-flash: Flash support")
+optdepends=(
+	"pepper-flash: Flash support"
+	"cef-minimal: keep libraries up to date"
+)
 source=(
     "https://github.com/bazukas/obs-linuxbrowser/releases/download/${pkgver}/linuxbrowser${pkgver}-obs${_obsver}-64bit.tgz"
 )
