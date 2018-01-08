@@ -1,7 +1,7 @@
 # Maintainer: Brandon Mulcahy <brandon@jangler.info>
 pkgname=schismtracker-git
 pkgver=r2438.55398fa
-pkgrel=1
+pkgrel=2
 pkgdesc='A reimplementation of the Impulse Tracker music editor.'
 arch=('i686' 'x86_64' 'armv7h')  # and probably other ARMs
 url='http://schismtracker.org/'
