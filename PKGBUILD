@@ -3,7 +3,7 @@
 
 pkgname=latte-dock-git
 gitname=latte-dock
-pkgver=0.7.1.r219.g4692b87
+pkgver=0.7.1.r247.gc4a8881
 pkgrel=1
 pkgdesc='Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids'
 arch=('i686' 'x86_64')
