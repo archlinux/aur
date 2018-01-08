@@ -1,0 +1,20 @@
+pkgbase = ao-git
+	pkgdesc = An Electron wrapper for Microsoft Todo
+	pkgver = v5.2.0.r2.g94eac0c
+	pkgrel = 1
+	url = https://klauscfhq.github.io/ao/
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = electron
+	makedepends = git
+	depends = nodejs
+	source = git+https://github.com/klauscfhq/ao.git
+	source = ao.desktop
+	source = ao.sh
+	sha256sums = SKIP
+	sha256sums = f0704b8b0a39cabacdc8a9294855f41923f9cd29d5607ceafb189dd7f6522c4b
+	sha256sums = e36cb7ed66e0c1f4f45be133d5b63ddad37687a8f5ae25889b88dc69ad4183be
+
+pkgname = ao-git
+
