@@ -29,14 +29,6 @@ build() {
 package() {
 	cd $pkgname
 	make DESTDIR="$pkgdir/" install
-	install -Dm644 icons/schism-icon-128.png \
-		"$pkgdir/usr/share/icons/schism-icon-128.png"
-	install -Dm644 icons/schism-itf-icon-128.png \
-		"$pkgdir/usr/share/icons/schism-itf-icon-128.png"
-	install -Dm644 sys/fd.org/schism.desktop \
-		"$pkgdir/usr/share/applications/schism.desktop"
-	install -Dm644 sys/fd.org/itf.desktop \
-		"$pkgdir/usr/share/applications/itf.desktop"
 	install -Dm644 README.md \
 		"$pkgdir/usr/share/doc/schismtracker/README.md"
 	install -Dm644 COPYING \
