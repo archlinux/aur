@@ -23,7 +23,7 @@ display_load_xinit_sources() {
         unset filePath
     fi
 }
-alias display.load_xinit_sources='display.load_xinit_sources'
+alias display.load_xinit_sources='display_load_xinit_sources'
 display_wacom_map() {
     local __doc__='
     This function maps wacom input device to given output display.

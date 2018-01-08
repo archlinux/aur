@@ -14,7 +14,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 filesystem__doc_test_setup__='
 # Runs once before tests are started:
 
-module.import doc_test
+bashlink.module.import bashlink.doctest
 doc_test_capture_stderr=false
 mv() {
     echo mv $@

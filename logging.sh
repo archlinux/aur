@@ -12,9 +12,9 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-module.import arguments
-module.import array
-module.import cli
+bashlink.module.import bashlink.arguments
+bashlink.module.import bashlink.array
+bashlink.module.import bashlink.cli
 # endregion
 # region documentation
 logging__doc__='

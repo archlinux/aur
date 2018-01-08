@@ -12,14 +12,14 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-module.import arguments
-module.import cli
-module.import documentation
-module.import exception
-module.import logging
-module.import path
-module.import time
-module.import tools
+bashlink.module.import bashlink.arguments
+bashlink.module.import bashlink.cli
+bashlink.module.import bashlink.documentation
+bashlink.module.import bashlink.exception
+bashlink.module.import bashlink.logging
+bashlink.module.import bashlink.path
+bashlink.module.import bashlink.time
+bashlink.module.import bashlink.tools
 # endregion
 # region doc
 # shellcheck disable=SC2034,SC2016
@@ -277,7 +277,7 @@ doctest_eval() {
             echo "source $core_path"
             # Suppress the warnings here because they have been already been
             # printed when analyzing the whole module
-            echo "module.import $doctest_module_under_test true"
+            echo "bashlink.module.import $doctest_module_under_test true"
             echo "$setup_string"
             # _ can be used as anonymous variable (without warning)
             echo '_=""'
@@ -581,7 +581,7 @@ doctest_exception_active=false
 doctest_test_module() {
     (
     module=$1
-    module.import "$module" "$doctest_supress_declaration"
+    bashlink.module.import "$module" "$doctest_supress_declaration"
     doctest_module_under_test="$(path.convert_to_absolute "$module")"
     declared_functions="$module_declared_function_names_after_source"
     module="$(basename "$module")"

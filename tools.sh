@@ -12,7 +12,7 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-module.import logging
+bashlink.module.import bashlink.logging
 # endregion
 tools_dependency_check_pkgconfig() {
     local __doc__='

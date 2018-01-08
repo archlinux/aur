@@ -12,7 +12,7 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-module.import core
+bashlink.module.import bashlink.core
 # endregion
 # region documentation
 # shellcheck disable=SC2034

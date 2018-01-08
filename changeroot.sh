@@ -9,9 +9,9 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
-# region imports
+# region importss
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-module.import logging
+bashlink.module.import bashlink.logging
 # endregion
 # region variables
 changeroot_kernel_api_locations=(/proc /sys /sys/firmware/efi/efivars /dev \

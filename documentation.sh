@@ -12,9 +12,9 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-module.import arguments
-module.import doctest
-module.import logging
+bashlink.module.import bashlink.arguments
+bashlink.module.import bashlink.doctest
+bashlink.module.import bashlink.logging
 # endregion
 documentation_format_buffers() {
     local buffer="$1"
