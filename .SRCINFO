@@ -1,14 +1,15 @@
 pkgbase = judy
 	pkgdesc = C library creating and accessing dynamic arrays
 	pkgver = 1.0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://judy.sourceforge.net/
 	arch = x86_64
 	license = LGPL
 	makedepends = gcc
+	depends = glibc
 	options = !strip
-	source = http://downloads.sourceforge.net/judy/Judy-1.0.5.tar.gz
-	md5sums = 115a0d26302676e962ae2f70ec484a54
+	source = https://downloads.sourceforge.net/judy/Judy-1.0.5.tar.gz
+	sha1sums = 3540f003509acac3b1260424380ddf97914f7745
 
 pkgname = judy
 
