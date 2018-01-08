@@ -1,0 +1,6 @@
+post_install() {
+   echo "Errol needs:"
+   echo "  * an XMPP (jabber) account supporting the following XEPs: Stream Management, Publish-Subscribe, Multi-User Chat."
+   echo "  * a PubSub service where the nodes can be set as open. The node name is defined in the configuration file."
+   echo "See https://blog.agayon.be/errol.html for more information."
+}
