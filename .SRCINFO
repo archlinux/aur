@@ -1,7 +1,7 @@
 pkgbase = fmt
 	pkgdesc = Open-source formatting library for C++.
 	pkgver = 4.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fmtlib.net
 	arch = i686
 	arch = x86_64

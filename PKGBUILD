@@ -1,7 +1,7 @@
 # Maintainer: Mihai Bişog <mihai.bisog at [gmail] d0t com>
 pkgname=fmt
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source formatting library for C++."
 arch=("i686" "x86_64")
 url="http://fmtlib.net"
@@ -15,9 +15,10 @@ build() {
     cd "$pkgname-$pkgver"
     mkdir -p build && cd build
 
-    cmake -DCMAKE_BUILD_TYPE=Release  \
-          -DCMAKE_INSTALL_PREFIX=/usr \
-          -DFMT_DOC=OFF               \
+    cmake -DCMAKE_BUILD_TYPE=Release      \
+          -DCMAKE_INSTALL_PREFIX=/usr     \
+          -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+          -DFMT_DOC=OFF                   \
           ..
     make
 }
