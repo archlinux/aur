@@ -19,8 +19,9 @@ depends=(python-dnspython
          python-requests
          python-scrypt
          zbar)
-source=(https://electrum-ltc.org/download/Electrum-LTC-3.0.5.1.tar.gz
-        https://electrum-ltc.org/download/Electrum-LTC-3.0.5.1.tar.gz.asc)
+source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz
+        https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz.asc)
+validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
 sha256sums=(79189a3f8a42bbde69b967141cd733d90d114eacc3705714349f0dd4ea7f9aa9
             SKIP)
 
