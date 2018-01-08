@@ -4,7 +4,7 @@
 
 pkgname=toybox
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Combines common Linux command line utilities into a single executable'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://landley.net/toybox'
