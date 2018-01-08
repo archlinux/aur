@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=deutex
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Composer and decomposer for Doom, Heretic, Hexen, Strife WAD files"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libpng')
 makedepends=('asciidoc')
 conflicts=('deutex-git')
 source=($url/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz{,.sig})
-sha512sums=('9fa143967fb8ccf01d004af6957ef8cc5381b7a6f2e316e54574d8974f815b83ce9e4562d820ec99003b0bb397321bfb74f44a54f839c87682743381d58274ff'
+sha512sums=('a6af2b16d9f3ad4da0bee2ede4cbc71902b935af7055aec9f198d5af6de371adb1a401a8f12309eac4fdd80fd9dc36873ef45e12db95c9b18908c8aed3a5adc6'
             'SKIP')
 validpgpkeys=('99459CE2770037FF5566EB4B8649B37607A08042')
 
@@ -23,5 +23,5 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
