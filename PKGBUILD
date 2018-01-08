@@ -17,7 +17,7 @@ _use_ppa=false
 _ubuntu_rel=0ubuntu2
 #_ubuntu_ver=3.22.1
 pkgver=3.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Settings Daemon (with ElementaryOS patches)"
 url="https://git.gnome.org/browse/gnome-settings-daemon"
 arch=(i686 x86_64)
@@ -90,4 +90,7 @@ build() {
 package() {
     cd "${pkgname%-*}"
     make DESTDIR="${pkgdir}" install
+    cp "${pkgdir}"/etc/xdg/autostart/gnome-settings-daemon{,-pantheon}.desktop
+    sed -i 's|OnlyShowIn=GNOME;|OnlyShowIn=Pantheon;|g' "${pkgdir}"/etc/xdg/autostart/gnome-settings-daemon-pantheon.desktop
+
 }
