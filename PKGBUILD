@@ -5,7 +5,7 @@
 
 pkgname=basilisk
 pkgver=55.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Basilisk Browser from the makers of Pale Moon"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -18,7 +18,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags)
-com=e9211c099f58e2b4a9f8e884574a95733551fb9f
+com=2f2a5041bea1a9ebd17f0cc465ba10ae64267bd5
 source=("basil::git+https://github.com/MoonchildProductions/moebius.git#commit=$com"
         https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk.desktop https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/basilisk-symbolic.svg
         https://raw.githubusercontent.com/bn0785ac/basilisk-arch/master/0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
@@ -114,6 +114,10 @@ ac_add_options --disable-updater
 ac_add_options --disable-stylo
 ac_add_options --disable-tests
 
+ac_add_options --disable-debug
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-parental-controls
+ac_add_options --disable-accessibility
 
 # If you want to have text-to-speech support, comment this line:
 ac_add_options --disable-webspeech
