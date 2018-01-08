@@ -1,4 +1,4 @@
 guake/
 src/
 pkg/
-*.tar.gz
+*.tar.xz

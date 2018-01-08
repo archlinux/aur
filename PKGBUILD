@@ -4,14 +4,14 @@
 # Contributor: Mario Aichinger <ichingm /at/ gmail.com>
 
 pkgname=guake-git
-pkgver=3.0.0.a5.20.gcef4bac
+pkgver=3.0.0.a5.22.gd4e9de6
 pkgrel=1
 pkgdesc="Top-down terminal for Gnome"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Guake/guake"
 license=('GPL')
 depends=('python2-notify' 'vte3' 'python2-gconf' 'python2-dbus' 'python2-keybinder2' 'python2-xdg' 'libutempter' 'libkeybinder3' 'python-cairo')
-makedepends=('git' 'python2-pipenv' 'gnome-common' 'make')
+makedepends=('git' 'python-pipenv' 'gnome-common' 'make')
 conflicts=('guake' 'guake-gtk2-git')
 provides=('guake')
 source=("git://github.com/Guake/guake.git")
