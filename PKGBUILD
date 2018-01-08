@@ -1,7 +1,9 @@
 # Maintainer: Michal Donát <michal at donat dot cz>
+# Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
+
 pkgname=gnome-shell-extension-no-topleft-hot-corner
 _pkgname=nohotcorner
-pkgver=14
+pkgver=16
 _pkgver=${pkgver}.0
 pkgrel=1
 pkgdesc="Gnome shell extension disabling hotcorners"
@@ -9,10 +11,8 @@ arch=('any')
 url="https://github.com/HROMANO/nohotcorner/"
 license=('GPL2')
 depends=('gnome-shell')
-makedepends=('git')
-install='gschemas.install'
 source=("https://github.com/HROMANO/${_pkgname}/archive/v${_pkgver}.tar.gz")
-md5sums=('2fc8061f21e121c7044ccc60f13eff3d')
+sha512sums=('e2e2f2045bd1690d825cda82dab1a75afbe1df4cfa97c53fcc8264f4bdb62f8f35876e966b02eea6e9a699982997c146065cd426122aa1df384fb4a478365b78')
 
 package() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
