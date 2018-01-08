@@ -1,0 +1,17 @@
+pkgbase = urn-lang-git
+	pkgdesc = Yet another Lisp dialect which compiles to Lua
+	pkgver = 0.6.1.r57.g64ad9f8
+	pkgrel = 1
+	url = http://urn-lang.com/
+	arch = any
+	license = BSD
+	depends = lua>=5.1
+	optdepends = luajit: readline support
+	optdepends = luarocks: readline or linenoise rock support
+	provides = urn-lang
+	conflicts = urn-git
+	source = urn::git+https://gitlab.com/urn/urn.git#branch=master
+	md5sums = SKIP
+
+pkgname = urn-lang-git
+
