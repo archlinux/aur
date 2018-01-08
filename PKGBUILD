@@ -17,5 +17,4 @@ package() {
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
-# vim:set ts=2 sw=2 et:
-md5sums=('a37d34b159608d1e450cffe33b293b11')
+sha256sums=('5706c971790bca2ee8245b97fe744e4841053588c786ca604d17f81744e8c105')
