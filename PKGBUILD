@@ -3,9 +3,9 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=uim-debian
-pkgver=1.8.6+gh20161003.0.d63dadd
-_debrel=9
-pkgrel=9
+pkgver=1.8.6+gh20180106.ec697da
+_debrel=1
+pkgrel=1
 pkgdesc='Multilingual input method library with Debian patches (supports gtk3 and qt5)'
 url='https://packages.debian.org/sid/uim'
 license=('custom:BSD')
@@ -22,8 +22,8 @@ install=${pkgname}.install
 source=("http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}.orig.tar.gz"
         "http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}-${_debrel}.debian.tar.xz"
        qt5-qt4-coexist.patch)
-sha256sums=('7a2d1667553afc0bca4cc33f9bc8fb01a6867177d2a3e13b1b85c7add16110e9'
-            'd02c86daf45d5fab8f0430d4c64cf920c5a1c613e0241129704c84f1b7ba4aa8'
+sha256sums=('0ee5f42879d39b22fe5f7fdb4033f88aacfd66c160a6e8f24de409ac30697cf3'
+            '12406f4e6756f17d7b690194fae8330996eec6113c806804e88bee47bf6b226a'
             'a3511837b8fc827e3ff79defff6480fc6b3a4ac031bde478bfd5d6c1b77acfdd')
 
 prepare() {
