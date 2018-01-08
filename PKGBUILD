@@ -7,7 +7,7 @@ pkgname=snapd
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 pkgver=2.30
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -106,7 +106,7 @@ package() {
   install -Dm755 "$GOPATH/bin/snap-seccomp" "$pkgdir/usr/lib/snapd/snap-seccomp"
   install -Dm755 "$GOPATH/bin/snap-update-ns" "$pkgdir/usr/lib/snapd/snap-update-ns"
   install -Dm755 "$GOPATH/bin/snap-exec" "$pkgdir/usr/lib/snapd/snap-exec"
-  install -Dm755 "$srcdir/$pkgname/packaging/fedora/snap-mgmt" "$pkgdir/usr/lib/snapd/snap-mgmt"
+  install -Dm755 "$srcdir/$pkgname/packaging/fedora/snap-mgmt.sh" "$pkgdir/usr/lib/snapd/snap-mgmt"
 
   # Symlink /var/lib/snapd/snap to /snap so that --classic snaps work
   ln -s var/lib/snapd/snap "$pkgdir/snap"
