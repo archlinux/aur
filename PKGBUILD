@@ -9,7 +9,7 @@ arch=('any')
 url="http://www.boost.org/"
 license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-bzip2')
-makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2' 'wget')
+makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "boost-mingw.patch")
