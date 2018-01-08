@@ -12,8 +12,8 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=go-git
-epoch=2
-pkgver=1.9
+epoch=1
+pkgver=1.9.2
 pkgrel=1
 pkgrepo=go
 pkgdesc='Core compiler tools for the Go programming language'
@@ -22,7 +22,7 @@ url='http://golang.org/'
 license=(BSD)
 makedepends=(git go)
 options=(!strip staticlibs)
-_commit=c8aec4095e089ff6ac50d18e97c3f46561f14f48
+_commit=2ea7d3461bb41d0ae12b56ee52d43314bcdb97f9
 source=(git+https://go.googlesource.com/go#commit=$_commit)
 md5sums=('SKIP')
 
@@ -73,7 +73,7 @@ package() {
   ln -sf /usr/share/doc/go "$pkgdir/usr/lib/go/doc"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/go/LICENSE"
- 
+
   rm -rf "$pkgdir/usr/lib/go/pkg/bootstrap"
   rm -rf "$pkgdir/usr/lib/go/pkg/tool/*/api"
 }
