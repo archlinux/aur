@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 105042 2014-01-30 17:11:55Z flexiondotorg $
-# Maintainer: Martin Wimpress <code@flexion.org>
+# Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
+# Contributor: Martin Wimpress <code@flexion.org>
 
 pkgname=mate-screensaver-hacks
-pkgver=5.26
-pkgrel=1
+pkgver=5.38
+pkgrel=2
 pkgdesc="Enable screensavers from xscreensaver for MATE."
 arch=('any')
 url="http://www.jwz.org/xscreensaver/"
