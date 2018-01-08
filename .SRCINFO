@@ -1,0 +1,16 @@
+pkgbase = cargo-bloat-git
+	pkgdesc = Find out what takes most of the space in your executable
+	pkgver = 0.1.0.4.ge8c751b
+	pkgrel = 1
+	url = https://github.com/RazrFalcon/cargo-bloat
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = cargo
+	provides = cargo-bloat
+	conflicts = cargo-bloat
+	source = cargo-bloat-git::git+https://github.com/RazrFalcon/cargo-bloat
+	sha256sums = SKIP
+
+pkgname = cargo-bloat-git
+
