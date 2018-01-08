@@ -4,7 +4,7 @@ pkgname=imagescan
 _pkgname=utsushi
 pkgver=3.33.0
 _pkgver=0.33.0
-pkgrel=2
+pkgrel=3
 _fedrel=27
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
 arch=("i686" "x86_64")
@@ -13,6 +13,7 @@ license=("GPL3")
 depends=("sane" "gtkmm" "imagemagick6" "libtiff")
 makedepends=("boost")
 optdepends=("tesseract: OCR support")
+conflicts=("libmagick")
 source=("http://support.epson.net/linux/src/scanner/imagescanv3/fedora/${pkgname}-${pkgver}-1epson4fedora${_fedrel}.src.rpm"
         "utsushi-scan-gtkmm.desktop"
         "utsushi.conf")
