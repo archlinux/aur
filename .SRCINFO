@@ -1,0 +1,12 @@
+pkgbase = comet-ms-bin
+	pkgdesc = Comet: an open source tandem mass spectrometry (MS/MS) sequence database search tool
+	pkgver = 2017.01.3
+	pkgrel = 1
+	url = http://comet-ms.sourceforge.net/
+	arch = x86_64
+	license = Apache
+	source = https://sourceforge.net/projects/comet-ms/files/comet_2017013.zip/download
+	sha1sums = 686eacfd4fba14674e557558cfba93e1027e9817
+
+pkgname = comet-ms-bin
+
