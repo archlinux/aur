@@ -1,7 +1,7 @@
 # Maintainer: Sean Haugh <seanphaugh@gmail.com>
 
 pkgname=python-pywal
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Generate and change colorschemes on the fly"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('feh: set wallpaper'
             'nitrogen: set wallpaper')
 provides=("python-pywal=$pkgver-$pkgrel")
 source=("https://github.com/dylanaraps/${pkgname#python-}/archive/${pkgver}.tar.gz")
-md5sums=('da3a658903b8c5f16931e0830d47d53e')
+md5sums=('95f0f2f12a3dfc3aaf9007a1aa0a0af8')
 
 package() {
   cd "${pkgname#python-}-${pkgver}"
