@@ -1,6 +1,6 @@
 pkgbase = zotero-beta
 	pkgdesc = Zotero Standalone. A free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
-	pkgver = 5.0.34_beta.5+c83de8a6e
+	pkgver = 5.0.34_beta.6+ea2feadbf
 	pkgrel = 1
 	url = http://www.zotero.org/download
 	install = zotero-beta.install
@@ -17,10 +17,10 @@ pkgbase = zotero-beta
 	conflicts = zotero
 	source = zotero-beta.desktop
 	sha256sums = 8ec2a82b5c9b37e30cbe5ef968f5baa29e324a0e024a8cc28c38738ca3db7c7a
-	source_i686 = https://download.zotero.org/client/beta/5.0.34-beta.5%2Bc83de8a6e/Zotero-5.0.34-beta.5%2Bc83de8a6e_linux-i686.tar.bz2
-	sha256sums_i686 = 17b90525a921518e6d62cb63f0b7c63b9b8fdaefcc6fa926e8f1f4ce794e29d8
-	source_x86_64 = https://download.zotero.org/client/beta/5.0.34-beta.5%2Bc83de8a6e/Zotero-5.0.34-beta.5%2Bc83de8a6e_linux-x86_64.tar.bz2
-	sha256sums_x86_64 = 6c13a37b7b4d481a1b7dd0b97d0483252dabf6c1f46d41481620bdb512aa708f
+	source_i686 = https://download.zotero.org/client/beta/5.0.34-beta.6%2Bea2feadbf/Zotero-5.0.34-beta.6%2Bea2feadbf_linux-i686.tar.bz2
+	sha256sums_i686 = 9e01d522dd87c7851668b3cfbff8288c801d8a944f916d232c67c8e6fafff756
+	source_x86_64 = https://download.zotero.org/client/beta/5.0.34-beta.6%2Bea2feadbf/Zotero-5.0.34-beta.6%2Bea2feadbf_linux-x86_64.tar.bz2
+	sha256sums_x86_64 = a5673885b2370fe253aef1da7c4fcb473b0d16b8230b76e83cce0757cc43dfd4
 
 pkgname = zotero-beta
 
