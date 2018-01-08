@@ -1,7 +1,7 @@
-# Maintainer: JC Francois <jc[at]noirextreme[dotcom]>
+# Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=tiddlydesktop
-pkgver=0.0.9
-pkgrel=3
+pkgver=0.0.10
+pkgrel=1
 pkgdesc="TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis."
 url="https://github.com/Jermolene/TiddlyDesktop"
 license=('BSD')
@@ -17,14 +17,13 @@ source=(tiddlydesktop.sh
 
 sha256sums=('ec5826348934f45ba28209f00a96073876910aec3bc1bc5e7c6cc68216099998'
             'd0d6f6d515940ce2a232e3db07a10fe4bea135287d0f224676fb9d447b7103de')
-sha256sums_x86_64=('6c3943ba24e5e56e447b3d73f2e93d22b19ee0412589c810a2022351fea7bc5b')
+sha256sums_x86_64=('c0cd00b57c4f0f38168813cf17310ea2a00bfa7d80786b10a73d22cd9cdd7477')
 
 options=(!strip)
 
 package() {
-
-	install -dm755 "${pkgdir}/usr/share/${pkgname}"
-	cp -r ${srcdir}/TiddlyDesktop-linux64-v${pkgver}/*  ${pkgdir}/usr/share/${pkgname}/
+    install -dm755 "${pkgdir}/usr/share/${pkgname}"
+    cp -r ${srcdir}/TiddlyDesktop-linux64-v${pkgver}/*  ${pkgdir}/usr/share/${pkgname}/
     # give mode 775 to subdirectories of /usr/share/tiddlydesktop
     find ${pkgdir}/usr/share/${pkgname}/ -type d -exec chmod 775 {} +
 
