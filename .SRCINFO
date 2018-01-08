@@ -8,7 +8,6 @@ pkgbase = psi-plus-git
 	license = GPL2
 	makedepends = git
 	makedepends = patch
-	makedepends = qconf-git
 	makedepends = cmake
 	depends = qt5-base
 	depends = qt5-webkit

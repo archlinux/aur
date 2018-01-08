@@ -12,7 +12,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5'
 	 'libidn' 'aspell' 'libxss' 'qt5-svg' 'hunspell')
-makedepends=('git' 'patch' 'qconf-git' 'cmake')
+makedepends=('git' 'patch' 'cmake')
 provides=("psi-plus=$pkgver" "psi-plus-qt5-git=$pkgver")
 conflicts=('psi-plus' 'psi-plus-qt5-git' 'psi-plus-webkit-qt5-git' 'psi-plus-webkit-git')
 source=("git://github.com/psi-plus/psi-plus-snapshots"
