@@ -1,5 +1,6 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
-# Maintainer: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
+# Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
+# Maintainer: Evert Vorster <evorster-at-gmail-dot-com>
 
 pkgname=amarok-kf5-git
 pkgver=v2.8.90.176.gc9b5bbb727
@@ -17,7 +18,7 @@ makedepends=('pkgconfig' 'extra-cmake-modules' 'kdoctools')
 optdepends=()
 conflicts=('amarok')
 provides=('amarok')
-install="${pkgname}.install"
+#install="${pkgname}.install"
 #source=(${pkgname}::git://anongit.kde.org/amarok.git)
 source=(git://anongit.kde.org/amarok.git#branch=kf5)
 sha1sums=('SKIP')

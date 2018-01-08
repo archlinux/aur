@@ -3,7 +3,6 @@ pkgbase = amarok-kf5-git
 	pkgver = v2.8.90.176.gc9b5bbb727
 	pkgrel = 1
 	url = http://amarok.kde.org
-	install = amarok-kf5-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
