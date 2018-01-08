@@ -27,5 +27,6 @@ package() {
 	cp -r google-keep-linux-x64 "${pkgdir}/opt/google-keep"
 
 	cd "${pkgdir}"
+	chmod 755 opt/google-keep/resources/app
 	ln -s ../../opt/google-keep/google-keep usr/bin/google-keep-desktop
 }
