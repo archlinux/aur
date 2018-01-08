@@ -1,0 +1,12 @@
+pkgbase = otf-adobe-notdef
+	pkgdesc = Font used to display any undefined unicode code points
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://github.com/adobe-fonts/adobe-notdef
+	arch = any
+	license = custom
+	source = adobe-notdef-1.000.tar.gz::https://github.com/adobe-fonts/adobe-notdef/archive/1.000.tar.gz
+	sha256sums = 53aee7ec6a3301e9c9dffc95194ac4dc16fe9660a085b9436e9f3392d8d7da4b
+
+pkgname = otf-adobe-notdef
+
