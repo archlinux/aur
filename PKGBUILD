@@ -1,9 +1,9 @@
 # Maintainer: Dominik Heidler <dheidler@gmail.com>
 pkgname=rtl_433-git
 pkgver=20150518
-pkgrel=1
+pkgrel=2
 pkgdesc="Turns your Realtek RTL2832 based DVB dongle into a 433.92MHz generic data receiver"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('rtl-sdr')
 makedepends=('git' 'gcc' 'cmake')
