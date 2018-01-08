@@ -2,7 +2,7 @@
 
 pkgname=dns-over-https-git
 _pkgname=dns-over-https
-pkgver=02f848e
+pkgver=d3b3228
 pkgrel=1
 pkgdesc="Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol"
 url="https://github.com/m13253/dns-over-https"
@@ -48,5 +48,5 @@ package(){
         install -Dm755 NetworkManager/dispatcher.d/doh-client $pkgdir/etc/NetworkManager/dispatcher.d/doh-client
         install -Dm755 NetworkManager/dispatcher.d/doh-server $pkgdir/etc/NetworkManager/dispatcher.d/doh-server
 
-        install -Dm644 LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
+        install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
