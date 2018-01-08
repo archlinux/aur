@@ -1,0 +1,26 @@
+pkgbase = python-rdkit-git
+	pkgdesc = RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python.
+	pkgver = 20180107
+	pkgrel = 1
+	url = http://rdkit.org/
+	arch = x86_64
+	license = New BSD License
+	makedepends = git
+	depends = bison
+	depends = boost
+	depends = boost-libs
+	depends = cmake
+	depends = flex
+	depends = python
+	depends = sqlite3
+	depends = python-numpy
+	depends = python-cairocffi
+	depends = python-pillow
+	provides = rdkit
+	source = http://www.inchi-trust.org/download/104/INCHI-1-API.zip
+	source = git+https://github.com/rdkit/rdkit.git
+	md5sums = 8447bf108af12fe66eecba41bbc89918
+	md5sums = SKIP
+
+pkgname = python-rdkit-git
+
