@@ -8,7 +8,7 @@
 # https://www.cendio.com/thinlinc/download
 
 pkgname=thinlinc-server
-pkgver=4.8.0
+pkgver=4.8.1
 pkgrel=1
 pkgdesc="Cendio ThinLinc Linux remote desktop server"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ source=("${_archive_name}.zip"
         'tlwebadm.service'
         'vsmagent.service'
         'vsmserver.service')
-sha256sums=('73437ea15b12f26fb29a6788c8232675ad161cf5e49af4cb8043b8b8c60947d7'
+sha256sums=('8a05ee7115988b0deef3cc9cf7243826844cf39f7b643e7ce83b6bc69f8e08e4'
             '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e'
             '8e70ef23f9716dcb100eba660932e7f5d05351d63074fb262cf925812dbdbb63'
             '5a92c5beac6c64487debd92a4d94b56074b9f9b0cd38d154a14a320105f3bccd'
