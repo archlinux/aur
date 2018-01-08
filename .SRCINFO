@@ -1,0 +1,22 @@
+pkgbase = papu-vst-git
+	pkgdesc = Emulates Nintendo Gameboy PAPU audio chip as a VST
+	pkgver = r24.00acb26
+	pkgrel = 1
+	url = http://socalabs.com/
+	arch = i686
+	arch = x86_64
+	groups = socalabs-vst-suite
+	license = LGPL
+	makedepends = git
+	depends = mesa
+	source = PAPU::git+https://github.com/FigBug/PAPU.git
+	source = dRowAudio::git+https://github.com/FigBug/drowaudio.git#commit=3a1e6eb75681b166c055c501a2ed4a8df8a44df0
+	source = slCommon::git+https://github.com/FigBug/slCommon.git#commit=b49d31c4f2f131506fe5ac53f2ac6e47b3ee109b
+	source = JUCE::git+https://github.com/WeAreROLI/JUCE.git#branch=develop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = papu-vst-git
+
