@@ -1,0 +1,13 @@
+[Unit]
+Description=Zabbix proxy
+After=network.target
+
+[Service]
+Type=forking
+User=root
+ExecStart=/usr/bin/zabbix_proxy -c /etc/zabbix/zabbix_proxy.conf
+PIDFile=/run/zabbix/zabbix_proxy.pid
+
+[Install]
+WantedBy=multi-user.target
+
