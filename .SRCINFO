@@ -1,6 +1,6 @@
 pkgbase = guake-git
 	pkgdesc = Top-down terminal for Gnome
-	pkgver = 3.0.0.a5.20.gcef4bac
+	pkgver = 3.0.0.a5.22.gd4e9de6
 	pkgrel = 1
 	url = https://github.com/Guake/guake
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = guake-git
 	arch = armv7h
 	license = GPL
 	makedepends = git
-	makedepends = python2-pipenv
+	makedepends = python-pipenv
 	makedepends = gnome-common
 	makedepends = make
 	depends = python2-notify
