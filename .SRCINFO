@@ -1,6 +1,6 @@
 pkgbase = iperf-git
 	pkgdesc = A tool to measure maximum TCP bandwidth
-	pkgver = abb57d0
+	pkgver = r368.g51239ca
 	pkgrel = 1
 	epoch = 1
 	url = https://sourceforge.net/projects/iperf2/

@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iperf-git
-pkgver=abb57d0
+pkgver=r368.g51239ca
 pkgrel=1
 epoch=1
 pkgdesc="A tool to measure maximum TCP bandwidth"
@@ -23,7 +23,9 @@ sha256sums=('SKIP'
 pkgver() {
   cd "code"
 
-  git describe --long --tags --always
+  _rev=$(git rev-list --count --all)
+  _hash=$(git rev-parse --short HEAD)
+  printf "r%s.g%s" "$_rev" "$_hash"
 }
 
 build() {
