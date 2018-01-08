@@ -1,0 +1,48 @@
+#!/bin/bash
+
+build() {
+    local fs bin hook
+
+    for fs in ext2 ext3 ext4 btrfs; do
+        [[ -f /usr/bin/mkfs.$fs ]] && add_binary mkfs.$fs
+    done
+
+    [[ -e /etc/mke2fs.conf ]] && add_file /etc/mke2fs.conf
+
+    for bin in /usr/bin/btrfs*; do
+        [[ -f $bin ]] && add_binary "$bin"
+    done
+
+    add_binary dhcpcd
+    add_file /usr/lib/dhcpcd/dhcpcd-run-hooks
+    add_file /etc/dhcpcd.conf
+    add_dir /var/lib/dhcpcd
+    for hook in /usr/lib/dhcpcd/dhcpcd-hooks/*; do
+        [[ -f "$hook" ]] && add_file "$hook"
+    done
+
+    add_file /etc/ssl/certs/ca-certificates.crt
+    add_file /etc/ssl/cert.pem
+
+    add_binary wget
+    add_file /etc/wgetrc
+    for bin in /usr/lib/libnss_dns* /usr/lib/libnss_files* /usr/lib/libnss_mymachines* /usr/lib/libnss_resolv* ; do
+	    add_binary "$bin"
+    done
+
+    add_binary curl
+
+    add_binary host
+    add_binary nslookup
+    add_binary fdisk
+    add_binary bash
+    which strace && add_binary strace
+}
+
+help() {
+    cat <<HELPEOF
+This hook provides the tools to partition the disk and install a system.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

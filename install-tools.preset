@@ -1,0 +1,10 @@
+# mkinitcpio preset file for the 'linux' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux"
+
+PRESETS=('fallback')
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/tmp/initramfs-linux-fallback.img"
+fallback_options="-S autodetect -A net,install-tools"
