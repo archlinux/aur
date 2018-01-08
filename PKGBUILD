@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libsamplerate-git
-pkgver=83a9482
-pkgrel=2
+pkgver=r437.g0668431
+pkgrel=1
 epoch=1
 pkgdesc="A Sample Rate Converter for audio"
 arch=('i686' 'x86_64')
@@ -21,7 +21,9 @@ sha256sums=('SKIP')
 pkgver() {
   cd "libsamplerate"
 
-  git describe --always
+  _rev=$(git rev-list --count --all)
+  _hash=$(git rev-parse --short HEAD)
+  printf "r%s.g%s" "$_rev" "$_hash"
 }
 
 build() {
