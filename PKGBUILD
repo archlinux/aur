@@ -3,13 +3,13 @@
 # Contributor: spookykidmm <https://github.com/spookykidmm>
 
 pkgname=bumblebee-status
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Modular, theme-able status line generator for the i3 window manager'
 arch=('any')
 url=https://github.com/tobi-wan-kenobi/bumblebee-status
 license=('MIT')
-depends=('python' 'python-netifaces' 'python-psutil' 'python-requests')
+depends=('python' 'python-netifaces' 'python-psutil' 'python-requests' 'python-yaml')
 optdepends=('xorg-xbacklight: to display a displays brightness'
             'xorg-xset: enable/disable automatic screen locking'
             'libnotify: enable/disable automatic screen locking'
@@ -23,7 +23,7 @@ optdepends=('xorg-xbacklight: to display a displays brightness'
             'i3ipc-python: display titlebar'
             'fakeroot: dependency of the pacman module')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c5b534f37801b88a78f31576f6d3b12f24f538b25bf6f7627d1cd509e3fbb1751213349718f344034344038b1f65de1003f33547cf3861dcf728b4a2e899c9d0')
+sha512sums=('9a87c2a5a7924d09ad46c42e268423c7d479e310ca9e58223e045eeaefffe60ff35f29cd15a716f4c63ff8630a855d655ddb8823219abffc9992337763e65324')
 
 package() {
   install -d "$pkgdir"/usr/bin \
