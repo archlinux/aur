@@ -1,7 +1,6 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=google-keep-desktop
-_pkgname=keep
 pkgver=1.7.9
 pkgrel=1
 pkgdesc='Google Keep packaged as a desktop application'
