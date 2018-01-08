@@ -2,7 +2,6 @@ pkgbase = libsamplerate-git
 	pkgdesc = A Sample Rate Converter for audio
 	pkgver = r437.g0668431
 	pkgrel = 1
-	epoch = 1
 	url = http://www.mega-nerd.com/SRC/index.html
 	arch = i686
 	arch = x86_64
