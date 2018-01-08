@@ -30,8 +30,8 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    ./configure --prefix=/usr PO4A_TRANS=/usr/bin/vendor_perl/po4a-translate
-    make DC='ldmd' DCFLAGS='-O -inline -release -version=StdLoggerDisableTrace'
+    ./configure --prefix=/usr PO4A_TRANS=/usr/bin/vendor_perl/po4a-translate DC='ldmd' DCFLAGS='-O -inline -release -version=StdLoggerDisableTrace -defaultlib=phobos2-ldc-shared,druntime-ldc-shared'
+    make
 }
 
 package() {
