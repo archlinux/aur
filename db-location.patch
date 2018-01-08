@@ -1,0 +1,5 @@
+--- MEA.py.ORIG	2018-01-08 11:31:40.365724999 -0800
++++ MEA.py	2018-01-08 11:31:56.418737327 -0800
+@@ -4071 +4071 @@
+-db_path = mea_dir + os_dir + 'MEA.dat'
++db_path = '/usr/lib/meanalyzer/MEA.dat'
