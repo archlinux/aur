@@ -1,0 +1,18 @@
+pkgbase = udp514-journal
+	pkgdesc = forward syslog from network (udp/514) to systemd-journald
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/eworm-de/udp514-journal
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = markdown
+	depends = systemd
+	source = https://www.eworm.de/download/udp514-journal/udp514-journal-0.0.1.tar.xz
+	source = https://www.eworm.de/download/udp514-journal/udp514-journal-0.0.1.tar.xz.asc
+	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
+	sha256sums = c2a8bc9b267eafebf0e66a987470f23cd4888aa31a7d6756fa874759bb3be51a
+	sha256sums = SKIP
+
+pkgname = udp514-journal
+
