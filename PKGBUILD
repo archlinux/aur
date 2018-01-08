@@ -1,7 +1,7 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 pkgname=naaman
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Not Another Aur MANager"
 arch=("any")
 url="https://github.com/enckse/$pkgname"
@@ -23,6 +23,6 @@ package() {
     install -Dm755 naaman.py $pkgdir/usr/bin/naaman
     install -Dm644 scripts/makepkg $pkgdir/usr/share/$pkgname/makepkg
     install -Dm644 bin/naaman.8.gz $pkgdir/usr/share/man/man8/naaman.8.gz
-    install -Dm644 bin/naaman.conf.5.gz $pkgdir/usr/share/man/man5/naaman.5.gz
+    install -Dm644 bin/naaman.conf.5.gz $pkgdir/usr/share/man/man5/naaman.conf.5.gz
 }
 
