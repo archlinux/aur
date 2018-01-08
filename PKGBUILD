@@ -9,16 +9,16 @@
 pkgbase=python-xapian
 pkgname=('python-xapian')
 _realname=xapian-bindings
-pkgver=1.4.4
+pkgver=1.4.5
 epoch=1
 pkgrel=1
 pkgdesc="Python 3 bindings for Xapian"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://xapian.org/docs/bindings/python/"
 license=('GPL')
 makedepends=('python-sphinx' "xapian-core=$epoch:$pkgver")
 source=("http://oligarchy.co.uk/xapian/${pkgver}/${_realname}-${pkgver}.tar.xz")
-sha512sums=('006e771b3ea654130b4f76f1a1caee576fd5a3fa6317ca44f1e5483671e8c83073ecbde4f3fc7f84c75590eec53acb59701af4cf9bcd72355ed9d53924492b53')
+sha512sums=('e39ece495e25077990db3d06554306567c52c6f45ad55a65005cb97e18086ee18947e41d0d612157b891b61e015881385bcb082a03aa0c6452565e90d09e8275')
 
 build() {
   cd "$srcdir/${_realname}-$pkgver"
