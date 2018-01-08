@@ -2,7 +2,7 @@
 # Maintainer: Michael Herrmann <michael+removethisifyouarehuman@herrmann.io>
 
 pkgname=fman
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A modern file manager for power users. Beautiful, fast and extensible"
 arch=('x86_64')
@@ -11,11 +11,11 @@ license=('custom')
 depends=('qt5-base' 'p7zip')
 optdepends=('qt5-svg')
 
-source=('https://fman.io/updates/arch/fman-0.8.3.pkg.tar.xz')
+source=('https://fman.io/updates/arch/fman-0.8.4.pkg.tar.xz')
 noextract=("${source[@]##*/}")
 
-sha256sums=('e6cab5518d971ac59825cfba48e1dc3e1c4d76819d7d55dc8c086fea53d1164c')
+sha256sums=('19268b30aa52c22ab3169aca7ee9193bb7244678b3e71a2b05337bd3c6bc9fef')
 
 package() {
-	tar xf "${srcdir}/fman-0.8.3.pkg.tar.xz" -C "${pkgdir}" --exclude='.INSTALL' --exclude='.PKGINFO' --exclude='.MTREE'
+	tar xf "${srcdir}/fman-0.8.4.pkg.tar.xz" -C "${pkgdir}" --exclude='.INSTALL' --exclude='.PKGINFO' --exclude='.MTREE'
 }
