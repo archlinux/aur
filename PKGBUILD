@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Jochem Kossen <j.kossen@home.nl>
 
 pkgname=id3
