@@ -19,7 +19,7 @@ pkgbase=grpc
 pkgname=('grpc' 'php-grpc' 'grpc-cli')
 pkgver=1.8.2
 _gtestver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
@@ -81,11 +81,12 @@ _install_dir() (
 )
 
 package_grpc() {
-  depends=('c-ares' 'openssl-1.0' 'protobuf>=3')
+  depends=('c-ares' 'openssl' 'protobuf>=3')
 
   cd "$srcdir/$pkgname-$pkgver"
   _install_dir 755 bins/opt usr/bin
   _install_dir 755 libs/opt usr/lib
+  chmod 644 "$pkgdir/usr/lib/"*.a
   _install_dir 644 include usr/include
   install -Dm644 etc/roots.pem "$pkgdir/usr/share/grpc/roots.pem"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
@@ -106,8 +107,9 @@ package_php-grpc() {
 }
 
 package_grpc-cli() {
-  depends=('gflags')
+  depends=('c-ares' 'gflags' 'protobuf>=3' 'openssl')
 
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm755 grpc_cli "$pkgdir"/usr/bin/grpc_cli
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
