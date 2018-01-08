@@ -3,6 +3,7 @@ pkgbase = comet-ms-bin
 	pkgver = 2017.01.3
 	pkgrel = 1
 	url = http://comet-ms.sourceforge.net/
+	install = comet-ms-bin.install
 	arch = x86_64
 	license = Apache
 	source = https://sourceforge.net/projects/comet-ms/files/comet_2017013.zip/download

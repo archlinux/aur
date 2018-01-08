@@ -9,8 +9,7 @@ license=('Apache')
 depends=()
 makedepends=()
 optdepends=()
-install=
-changelog=
+install="${pkgname}.install"
 source=("https://sourceforge.net/projects/${pkgname%-bin}/files/comet_${pkgver//./}.zip/download")
 sha1sums=('686eacfd4fba14674e557558cfba93e1027e9817')
 validpgpkeys=()
@@ -18,5 +17,6 @@ validpgpkeys=()
 
 package() {
     install -D "$srcdir/comet.${pkgver//./}.linux.exe" "$pkgdir/usr/bin/comet.exe"
+    install -D -m 644 -t "$pkgdir/usr/share/${pkgname%-bin}" "$srcdir/peff/PSI-MOD.obo"
 }
 
