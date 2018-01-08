@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libdca-git
-pkgver=76c67bc
-pkgrel=2
+pkgver=r100.g76c67bc
+pkgrel=1
 epoch=1
 pkgdesc="A library for decoding DTS Coherent Acoustics streams"
 arch=('i686' 'x86_64')
@@ -20,7 +20,9 @@ sha256sums=('SKIP')
 pkgver() {
   cd "libdca"
 
-  git describe --always
+  _rev=$(git rev-list --count --all)
+  _hash=$(git rev-parse --short HEAD)
+  printf "r%s.g%s" "$_rev" "$_hash"
 }
 
 build() {
