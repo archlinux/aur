@@ -3,7 +3,7 @@
 
 pkgname=mprime-bin
 _pkgname=mprime
-pkgver=294b5
+pkgver=294b7
 pkgrel=1
 pkgdesc="A GIMPS, distributed computing project client, dedicated to finding Mersenne primes. Precompiled binary version."
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('mprime')
 conflicts=('mprime')
 depends=('gcc-libs')
 source=("ftp://mersenne.org/gimps/p95v$pkgver.linux64.tar.gz")
-sha256sums=('6c389f981886b4c3df1544b6cc3945df807497460193c5bb220f2b523a24ff89')
+sha256sums=('432bb2504815a4957d6ec63e93b63590c71ffe51ed696cabcaf86b2ece4301e5')
 
 package() {
 	install -Dm755 mprime ${pkgdir}/usr/bin/mprime
