@@ -1,15 +1,15 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=python-overpass
-pkgver=0.4.0
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Python wrapper for the OpenStreetMap Overpass API"
 url="https://github.com/mvexel/overpass-api-python-wrapper"
 depends=('python' )
 license=('Apache')
 arch=('any')
-source=('https://pypi.python.org/packages/8a/09/950a3c969e7805170659d763378b516b9edb3db02c34e43466f5fbc6c20c/overpass-0.4.0.tar.gz')
-md5sums=('af9d96e1fc81e750ddfcb869f6f66b25')
+source=("https://pypi.python.org/packages/60/9d/c88bae624db986d03043fa42fc9a402837d17dbdd06f8ffcf1c17b2635ff/overpass-${pkgver}.tar.gz")
+md5sums=('b68a0d0211a85d673329679317108a89')
 
 build() {
   cd $srcdir/overpass-0.4.0
