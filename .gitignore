@@ -1,2 +1,4 @@
 guake/
 src/
+pkg/
+*.tar.gz

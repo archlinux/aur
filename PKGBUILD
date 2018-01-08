@@ -1,21 +1,21 @@
 # Maintainer: Miguel Useche <migueluseche@skatox.com>
 # Contributor: Anton Leontiev <unsector /at/ km.ru>
 # Contributor: Sandy Carter <bwrsandman /at/ gmail.com>
+# Contributor: Mario Aichinger <ichingm /at/ gmail.com>
 
 pkgname=guake-git
-pkgver=0.8.11.3.gf062373
+pkgver=3.0.0.a5.20.gcef4bac
 pkgrel=1
 pkgdesc="Top-down terminal for Gnome"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Guake/guake"
 license=('GPL')
-depends=('python2' 'pygtk' 'python2-dbus' 'python2-gconf' 'python2-keybinder2' 'python2-notify' 'vte' 'python2-xdg' 'libutempter' 'pkgconfig' 'gtk2' 'glib2')
-makedepends=('git' 'intltool' 'gnome-common' 'python2-gconf')
-conflicts=('guake')
+depends=('python2-notify' 'vte3' 'python2-gconf' 'python2-dbus' 'python2-keybinder2' 'python2-xdg' 'libutempter' 'libkeybinder3' 'python-cairo')
+makedepends=('git' 'python2-pipenv' 'gnome-common' 'make')
+conflicts=('guake' 'guake-gtk2-git')
 provides=('guake')
 source=("git://github.com/Guake/guake.git")
 sha512sums=('SKIP')
-install=guake.install
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -24,11 +24,11 @@ pkgver() {
 
 build(){
   cd "${srcdir}/${pkgname%-git}"
-  PYTHON=$(which python2) ./autogen.sh --prefix=/usr --sysconfdir=/usr/share --disable-static
-  make
+  make dev
+  make build
 }
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
-  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="$pkgdir" install
+  make install-system INSTALL_ROOT="$pkgdir/"
 }
