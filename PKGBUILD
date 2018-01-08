@@ -12,8 +12,8 @@ pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus lap
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
-depends=('linux-ck>=4.14' 'linux-ck<=4.14.10')
-makedepends=('linux-ck-headers>=4.14' 'linux-ck-headers<=4.14.10')
+depends=('linux-ck>=4.14' 'linux-ck<=4.14.12')
+makedepends=('linux-ck-headers>=4.14' 'linux-ck-headers<=4.14.12')
 provides=('bbswitch')
 install=${pkgname}.install
 source=("v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
