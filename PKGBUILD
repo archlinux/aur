@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=minimserver
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.5.2
+pkgrel=1
 pkgdesc="UPnP Audio Server"
 arch=('x86_64')
 url="http://www.minimserver.com"
