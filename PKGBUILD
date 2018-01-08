@@ -2,7 +2,7 @@
 # Maintainer: Ivan Burmin <zirrald@yandex.ru>
 
 pkgname='yandex-disk-indicator'
-pkgver=1.9.14
+pkgver=1.9.15
 pkgrel=1
 pkgdesc='Panel indicator (GUI) for YandexDisk CLI client for Linux.'
 arch=('i686' 'x86_64')
