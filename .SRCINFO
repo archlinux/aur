@@ -28,12 +28,10 @@ pkgbase = psi-plus-git
 	conflicts = psi-plus-webkit-git
 	source = git://github.com/psi-plus/psi-plus-snapshots
 	source = git://github.com/psi-plus/main.git
-	source = conf.diff
 	source = join.patch
 	source = no-qca-qt4.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 690770c7c8976d536d8c4078d01c28f187f510574ddffe91251f5045fa672e53
 	sha256sums = ea25a58c7efe25979b8d257598608187380e8f35ace25e96cab9c357dcdbc974
 	sha256sums = a6ea9a62100b6990b8a6c8590a6d0e9df095b99b6527bb5490a7fd3f6929ac23
 
