@@ -17,7 +17,6 @@ source=(raiblocks.desktop
   raiblocks128.png
   raiblocks.service
   git+https://github.com/clemahieu/raiblocks.git
-  git+https://github.com/boostorg/beast.git
   git+https://github.com/weidai11/cryptopp.git
   git+https://github.com/clemahieu/lmdb.git
   git+https://github.com/miniupnp/miniupnp.git
@@ -30,7 +29,6 @@ sha256sums=('74b9bc75c3d5596603e54e2553ff69d367f384789c7565437a72a64dc22f0fdd'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
@@ -38,7 +36,6 @@ prepare() {
   
   git submodule init
 
-  git config submodule.beast.url $srcdir/beast
   git config submodule.cryptopp.url $srcdir/cryptopp
   git config submodule.lmdb.url $srcdir/lmdb
   git config submodule.miniupnp.url $srcdir/miniupnp
