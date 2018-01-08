@@ -65,6 +65,7 @@ build() {
   cd "$srcdir/raiblocks"
   make rai_wallet
   make rai_node
+  make rai_lib
 }
 
 package() {
