@@ -2,7 +2,7 @@
 # Based on UMS PKGBUILD
 
 pkgname=ums-headless
-pkgver=6.7.4
+pkgver=6.8.0
 pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems. Build based on Java 8."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h' 'arm')
