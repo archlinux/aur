@@ -12,7 +12,6 @@ arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
 makedepends=('git' 'go-pie' 'go-tools' 'bzr' 'libcap' 'python-docutils' 'systemd' 'xfsprogs')
-checkdepends=('python' 'squashfs-tools' 'indent' 'shellcheck')
 options=('!strip' 'emptydirs')
 install=snapd.install
 source=("git+https://github.com/snapcore/${pkgname}.git#tag=${pkgver}")
