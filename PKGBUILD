@@ -1,9 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=httperf-git
-pkgver=0c7d127
+pkgver=r167.g0c7d127
 pkgrel=1
-epoch=2
 pkgdesc="The HTTP load generator"
 arch=('i686' 'x86_64')
 url="https://github.com/httperf/httperf"
@@ -18,29 +17,31 @@ sha256sums=('SKIP'
 
 
 prepare() {
-    cd "httperf"
+  cd "httperf"
 
-    patch -Np1 -i "$srcdir/openssl-1.0.patch"
+  patch -Np1 -i "$srcdir/openssl-1.0.patch"
 
-    autoreconf -i
-    mkdir -p "_build"
+  autoreconf -i
+  mkdir -p "_build"
 }
 
 pkgver() {
-    cd "httperf"
+  cd "httperf"
 
-    git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  _rev=$(git rev-list --count --all)
+  _hash=$(git rev-parse --short HEAD)
+  printf "r%s.g%s" "$_rev" "$_hash"
 }
 
 build() {
-    cd "httperf/_build"
+  cd "httperf/_build"
 
-    ../configure --prefix=/usr
-    make
+  ../configure --prefix=/usr
+  make
 }
 
 package() {
-    cd "httperf/_build"
+  cd "httperf/_build"
 
-    make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }

@@ -1,8 +1,7 @@
 pkgbase = httperf-git
 	pkgdesc = The HTTP load generator
-	pkgver = 0c7d127
+	pkgver = r167.g0c7d127
 	pkgrel = 1
-	epoch = 2
 	url = https://github.com/httperf/httperf
 	arch = i686
 	arch = x86_64
