@@ -3,7 +3,6 @@
 pkgname=libdvbcsa-git
 pkgver=r23.gbc6c0b1
 pkgrel=1
-epoch=1
 pkgdesc="An implementation of the DVB Common Scrambling Algorithm"
 arch=('i686' 'x86_64')
 url="https://www.videolan.org/developers/libdvbcsa.html"
