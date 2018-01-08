@@ -1,6 +1,6 @@
 pkgbase = tbg
 	pkgdesc = Use feh to randomize desktop backgrounds from a directory
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 0
 	url = https://github.com/RealOrangeOne/tbg
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = tbg
 	makedepends = rust
 	makedepends = cargo
 	depends = feh
-	source = 0.2.0.tar.gz::https://github.com/RealOrangeOne/tbg/archive/0.2.0.tar.gz
-	sha512sums = SKIP
+	source = 0.3.0.tar.gz::https://github.com/RealOrangeOne/tbg/archive/0.3.0.tar.gz
+	sha512sums = 5f0278acd257560c26631065319e5b390bf9b73f7ea26466846c1f3c1d7be0cdc7638299c5175c647043f8e113f186ecf99c5591ebd3e15212e3356f0f7cd59c
 
 pkgname = tbg
 
