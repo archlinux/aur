@@ -1,0 +1,19 @@
+pkgbase = python-atlasapi
+	pkgdesc = Expose MongoDB Atlas Cloud provider APIs
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = http://github.com/mickybart/python-atlasapi
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-dateutil
+	source = python-atlasapi::git+https://github.com/mickybart/python-atlasapi#tag=0.5.4
+	md5sums = SKIP
+
+pkgname = python-atlasapi
+	depends = python
+	depends = python-requests
+	depends = python-dateutil
+
