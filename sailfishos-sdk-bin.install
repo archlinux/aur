@@ -1,5 +1,5 @@
 post_install() {
-    _VERSION=1701-1
+    _VERSION=1710
     _EXECUTABLE=SailfishOSSDK-Beta-${_VERSION}-Qt5-linux-64-offline.run
     _PATH=/usr/share/sailfishos-sdk-bin
 
