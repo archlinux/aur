@@ -2,7 +2,7 @@
 
 pkgname=fcitx-qt5
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt5 IM Module for Fcitx"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-qt5"
@@ -10,8 +10,10 @@ license=('GPL')
 groups=('fcitx-im')
 depends=('fcitx' 'libxkbcommon' 'qt5-base')
 makedepends=('extra-cmake-modules')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/fcitx/fcitx-qt5/archive/$pkgver.tar.gz")
-sha512sums=('33e925cc423c4d9441834ddb5c813599307ce04afab1071c328e3de3b83a6bc965a493360b9f7a6a19cb3d4871f9c993d5b69cd5882a7bffe0b197b8f1827d09')
+source=("https://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
+sha512sums=('0fd726974492e173084e29d3308aa1d97141a1e4034b7192cf505391540533eff473849929e931e4a84589d233fefac70cbd9c122cf6d0d0de412150cad1b1d3'
+            'SKIP')
+validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9') # Weng Xuetian <wengxt@gmail.com>
 
 build() {
   cd $pkgname-$pkgver
