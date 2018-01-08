@@ -25,7 +25,7 @@ options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _commit=7b7aa8b4b5d17ce21072054285618fd6434e5482
-source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$_pkgver"
+source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
         no-crmf.diff
