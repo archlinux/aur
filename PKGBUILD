@@ -19,7 +19,7 @@ source=("http://wsr.imagej.net/distros/cross-platform/ij$_pkgver.zip"
         "imagej.desktop"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
-md5sums=('a2e52e97b1c683cb4f614b4d570fb972'
+md5sums=('3defd05424a3e0c99253aec3b6724e95'
          '8e6b51c27d4ba7c679532ca4b1b30082'
          '7dc3fd02120f699204b3d85a7e383082'
          '9d60878b6adad0e1895ce875bf299147'
