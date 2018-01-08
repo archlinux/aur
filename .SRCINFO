@@ -1,16 +1,18 @@
 pkgbase = naaman
 	pkgdesc = Not Another Aur MANager
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/enckse/naaman
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = help2man
 	depends = python
 	depends = python-xdg
 	depends = pyalpm
 	depends = sudo
 	optdepends = bash-completion: for bash completions
-	source = git+https://github.com/enckse/naaman#tag=v0.1.0
+	source = git+https://github.com/enckse/naaman#tag=v0.2.0
 	md5sums = SKIP
 
 pkgname = naaman
