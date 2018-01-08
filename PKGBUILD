@@ -2,11 +2,11 @@
 
 pkgname=pam_usb
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="PAM modules that enables either two-factor or password-less authentication using an USB storage device (such as an USB flash memory stick)"
 url="https://github.com/aluzzardi/pam_usb"
 license=("GPL")
-depends=(libxml2 pam pmount udisks dbus-python pygobject)
+depends=(libxml2 pam pmount udisks dbus-python python2-gobject2)
 arch=('i686' 'x86_64')
 backup=('etc/pamusb.conf')
 md5sums=('df8404aeb625eca1d3cad7a67d35f225')
