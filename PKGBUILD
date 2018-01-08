@@ -1,10 +1,10 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=i3status-rust-git
-pkgver=0.9.0.r341.g9d37215
+pkgver=0.9.0.r407.g04f7124
 pkgrel=1
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status, written in pure Rust'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/greshake/i3status-rust'
 license=('GPL3')
 depends=('dbus' 'i3-wm')
@@ -13,7 +13,7 @@ optdepends=('alsa-utils: For volume block'
             'lm_sensors: For temperature block'
             'powerline-fonts: For all themes using the powerline arrow char'
             'speedtest-cli: For the speedtest block'
-            'ttf-font-awesome: For the awesome icons')
+            'ttf-font-awesome-4: For the awesome icons')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
