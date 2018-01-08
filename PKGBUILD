@@ -3,7 +3,6 @@
 pkgname=libdca-git
 pkgver=r100.g76c67bc
 pkgrel=1
-epoch=1
 pkgdesc="A library for decoding DTS Coherent Acoustics streams"
 arch=('i686' 'x86_64')
 url="https://www.videolan.org/developers/libdca.html"
