@@ -2,16 +2,16 @@
 
 pkgname=pmsg
 pkgver=0.7
-pkgrel=1
-pkgdesc='Prompt notifications in certain intervals'
+pkgrel=2
+pkgdesc='Prompt notifications at certain intervals'
 arch=('any')
 url='https://github.com/xyproto/pmsg'
 license=('GPL2')
-optdepends=('zsh: for zsh support'
-            'bash: for bash support'
-            'fish: for fish support')
-depends=('python')
+optdepends=('zsh: zsh support'
+            'bash: bash support'
+            'fish: fish support')
 makedepends=('setconf')
+depends=('python')
 source=("git+https://github.com/xyproto/pmsg.git#tag=$pkgver")
 md5sums=('SKIP')
 
