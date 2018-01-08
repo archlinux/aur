@@ -1,7 +1,7 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 
 pkgname=mingw-w64-libxml2
-pkgver=2.9.6
+pkgver=2.9.7
 pkgrel=1
 arch=('any')
 pkgdesc="XML parsing library, version 2 (mingw-w64)"
@@ -10,18 +10,13 @@ makedepends=('mingw-w64-configure')
 options=('!buildflags' '!strip' 'staticlibs')
 license=('LGPL')
 url="http://www.xmlsoft.org/"
-source=("http://xmlsoft.org/sources/libxml2-${pkgver}.tar.gz"
-        "mingw32-libxml2-static-build-compile-fix.patch")
-sha256sums=('8b9038cca7240e881d462ea391882092dfdc6d4f483f72683e817be08df5ebbc'
-            '0f86ded5d487ae7f38e1f039085c078d978af8d7aad6e05d5a4028d645d2115a')
+source=("http://xmlsoft.org/sources/libxml2-${pkgver}.tar.gz")
+sha256sums=('f63c5e7d30362ed28b38bfa1ac6313f9a80230720b7fb6c80575eeab3ff5900c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}/libxml2-${pkgver}"
-
-  # fedora patch, purpose ?
-  patch -Np0 -i "${srcdir}"/mingw32-libxml2-static-build-compile-fix.patch
 
   # disable doc & examples
   sed -i "s| doc example | |g" Makefile.am
