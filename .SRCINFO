@@ -1,0 +1,14 @@
+pkgbase = libdop
+	pkgdesc = Utilities library
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/dopsi/libdop
+	arch = x86
+	arch = x86_64
+	license = custom:MIT
+	depends = glibc
+	source = libdop-1.2.0.tar.gz::https://github.com/dopsi/libdop/archive/v1.2.0.tar.gz
+	sha512sums = 8a03f3244a5cf05891c7d5d7cc1d443447760f229aced2239b4ce89abd3896d0307ac2826e9917f45173b17ea14eed0e457b7c32c99c1eeacb58b739496eec8c
+
+pkgname = libdop
+
