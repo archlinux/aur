@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=65.0.3311.3
-pkgrel=2
+pkgrel=3
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -455,7 +455,7 @@ python2 build/util/lastchange.py -m GPU_LISTS_VERSION \
 
 
 
-  ninja -C out/Release -v pdf chrome chrome_sandbox chromedriver widevinecdmadapter clear_key_cdm
+  ninja -C out/Release  pdf chrome chrome_sandbox chromedriver 
 }
 
 package() {
