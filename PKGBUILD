@@ -11,7 +11,11 @@ makedepends=('git')
 depends=('scons')
 optdepends=('clang: For clang-format and for clang++'
             'mingw-w64-gcc: For compiling 64-bit Windows executables'
-            'wine: For running 64-bit Windows exectuables')
+            'wine: For running 64-bit Windows exectuables'
+            'valgrind: For tracing calls and profiling'
+            'gprof2dot: For visualizing profiling information'
+            'graphviz: For visualizing profiling information'
+            'kcachegrind: For visualizing profiling information')
 source=("git+https://github.com/xyproto/sakemake#tag=$pkgver")
 md5sums=('SKIP')
 
