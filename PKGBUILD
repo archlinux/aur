@@ -3,7 +3,7 @@
 
 pkgname=docker-bin
 pkgver=17.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -21,7 +21,7 @@ source=(
   "docker.sysusers"
 )
 md5sums=('55bcb35391d28fff350076dce4b82d25'
-         '3d2abfc484a55481a81f5e9a10a5f480'
+         '545b780b4cf5bb1c83c5615d7153e9c7'
          '9a8b2744db23b14ca3cd350fdf73c179')
 
 build() {
