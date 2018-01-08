@@ -4,7 +4,7 @@
 # Contributor: FSSlc
 
 pkgname=texlive-dummy
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Something to trick Arch into thinking it has its texlive packages installed."
 url="http://www.tug.org/texlive/"
