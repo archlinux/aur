@@ -3,7 +3,7 @@
 _gemname=ruby_dep
 pkgname=ruby-$_gemname
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Automatically helps determine supported Rubies based on .travis.yml file'
 url='https://github.com/e2/ruby_dep'
 arch=('any')
