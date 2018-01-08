@@ -1,13 +1,13 @@
 pkgbase = tcllib
 	pkgdesc = Set of pure-Tcl extensions.
 	pkgver = 1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://core.tcl.tk/tcllib/
 	arch = any
 	license = bsd
 	depends = tcl
 	source = https://github.com/tcltk/tcllib/archive/tcllib_1_18.tar.gz
-	md5sums = 08dac86021c30c0a85c0a159f085143c
+	sha256sums = 1c831474ed84fec349234a96bd7d855a74245bb305bfc2c9270bfde95c357b4f
 
 pkgname = tcllib
 
