@@ -3,9 +3,9 @@
 
 pkgname=perl-html-lint
 _pkgname='HTML-Lint'
-pkgver=2.27
-pkgrel=2
-_extraversion='_03'
+pkgver=2.30
+pkgrel=1
+_extraversion=''
 pkgdesc="Perl module to check for HTML errors in a string or file"
 arch=("any")
 url="http://search.cpan.org/dist/HTML-Lint"
@@ -13,8 +13,8 @@ license=("PerlArtistic")
 depends=("perl>=5.6.2" "perl-html-parser>=3.47" "perl-html-tagset>=3.03")
 source=(http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/${_pkgname}-${pkgver}${_extraversion}.tar.gz)
 options=(!emptydirs)
-md5sums=("33a491a879a711c0172d92deccf5a25f")
-sha512sum=("28367a5318861be3842f26048b59b3623a31acc91539e7e2617a1cf9a750b35ad8d901bfc43ff688c1ac63cf1ebd4607f16b59b49e4b3a22853027863e7b8667")
+md5sums=("236b8035dd89bf7495ab5863b7328550")
+sha512sum=("33f670962d08ff852651339c3b570016e7a9a892e0f3b9657a33e2cdc71d7852ad98aa3c492562bfde0453d793545deaf1deca6baf2505dc83300dd3c61b0fb6")
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}${_extraversion}"
