@@ -1,7 +1,7 @@
 pkgbase = nodejs-coffeelint
 	pkgdesc = Style checker for CoffeeScript
 	pkgver = 2.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.coffeelint.org/
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = nodejs-coffeelint
 	depends = nodejs
 	noextract = coffeelint-2.0.6.tar.gz
 	source = coffeelint-2.0.6.tar.gz::https://github.com/clutchski/coffeelint/archive/v2.0.6.tar.gz
+	source = LICENSE
 	md5sums = f5ff8853b9a53e5facab76d8420c5548
 
 pkgname = nodejs-coffeelint
