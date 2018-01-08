@@ -1,7 +1,7 @@
 # Maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=libinput-git
-pkgver=1.8.0.r7.gca9d6a8
+pkgver=1.9.1.r66.g43de03a0
 pkgrel=1
 pkgdesc='Input device management and event handling library'
 arch=(i686 x86_64)
@@ -9,7 +9,6 @@ url='http://freedesktop.org/wiki/Software/libinput/'
 provides=("libinput=${pkgver}")
 license=('MIT')
 depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
-checkdepends=('valgrind')
 makedepends=('git' 'meson' 'doxygen' 'graphviz' 'gtk3')
 conflicts=('libinput')
 source=(git://anongit.freedesktop.org/wayland/libinput)
@@ -27,11 +26,6 @@ build() {
 	      --libexecdir=/usr/lib \
 	      -Dtests=false
 	ninja -C build
-}
-
-check() {
-	cd libinput/build
-	mesontest
 }
 
 package() {
