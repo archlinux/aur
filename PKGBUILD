@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc='Create multiple panes with ultimate terminal divider.'
 arch=('any')
 url='https://github.com/greymd/tmux-xpanes'
+depends=('tmux')
 license=('MIT')
 source=("https://github.com/greymd/tmux-xpanes/archive/v$pkgver.tar.gz")
 md5sums=('f31ff4e0810dcacb0d3dcbca71f64783')
