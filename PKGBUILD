@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=latex-pdfpages
 _pkgname=${pkgname#latex-}
-pkgver=0.5k
+pkgver=0.5l
 pkgrel=1
 pkgdesc="Inclusion of external multi-page PDF documents in LATEX documents"
 arch=('any')
