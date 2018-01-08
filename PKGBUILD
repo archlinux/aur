@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.1.371.r430.gc34c3b0742
+pkgver=v1.1.371.r458.g7755310ae8
 _gwtver=2.8.1
 _ginver=2.1.2
 _clangver=3.8.0
@@ -40,9 +40,9 @@ pkgver() {
 }
 
 prepare () {
-	msg "Apply socketproxy-openssl.patch"
-	cd ${srcdir}/$_gitname
-	patch -p1 < ${srcdir}/socketproxy-openssl.patch
+	#msg "Apply socketproxy-openssl.patch"
+	#cd ${srcdir}/$_gitname
+	#patch -p1 < ${srcdir}/socketproxy-openssl.patch
 
 	msg "Extracting dependencies..."
 	    cd "${srcdir}/${_gitname}/src/gwt"
