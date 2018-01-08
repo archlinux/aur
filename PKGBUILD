@@ -1,33 +1,28 @@
 pkgname=electrum-ltc
-pkgver=2.9.3.1
-pkgrel=2
+pkgver=3.0.5.1
+pkgrel=1
 pkgdesc="Lightweight Litecoin client"
 arch=(any)
 url=https://electrum-ltc.org/
 license=(MIT)
-depends=(python2-dnspython
-         python2-ecdsa
-         python2-jsonrpclib-pelix
-         python2-ltc_scrypt
-         python2-matplotlib
-         python2-pbkdf2
-         python2-protobuf
-         python2-pyaes
-         python2-pycryptodomex
-         python2-pyqt4
-         python2-pysocks
-         python2-qrcode
-         python2-requests
+depends=(python-dnspython
+         python-ecdsa
+         python-jsonrpclib-pelix
+         python-matplotlib
+         python-pbkdf2
+         python-protobuf
+         python-pyaes
+         python-pycryptodomex
+         python-pyqt5
+         python-pysocks
+         python-qrcode
+         python-requests
+         python-scrypt
          zbar)
-source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz
-        https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz.asc)
-validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
-sha256sums=(d931a5376b7f38fba7221b01b1010f172c4d662668adae5c38885a646d5ee530
+source=(https://electrum-ltc.org/download/Electrum-LTC-3.0.5.1.tar.gz
+        https://electrum-ltc.org/download/Electrum-LTC-3.0.5.1.tar.gz.asc)
+sha256sums=(79189a3f8a42bbde69b967141cd733d90d114eacc3705714349f0dd4ea7f9aa9
             SKIP)
-
-prepare() {
-  find Electrum-LTC-$pkgver/ -type f -exec sed -i '/#!/s/python$/&2/' {} +
-}
 
 build() {
   cd Electrum-LTC-$pkgver/
