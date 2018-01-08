@@ -1,8 +1,7 @@
 pkgbase = butteraugli-git
 	pkgdesc = A tool for measuring perceived differences between images
-	pkgver = 290e395
+	pkgver = r33.g856a4da
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/google/butteraugli
 	arch = i686
 	arch = x86_64
