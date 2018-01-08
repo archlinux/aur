@@ -1,0 +1,17 @@
+pkgbase = google-keep-desktop
+	pkgdesc = Google Keep packaged as a desktop application
+	pkgver = 1.7.9
+	pkgrel = 1
+	url = https://github.com/andrepolischuk/keep
+	arch = x86_64
+	license = unknown
+	makedepends = nodejs-nativefier
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libxss
+	depends = libxtst
+	depends = nss
+
+pkgname = google-keep-desktop
+
