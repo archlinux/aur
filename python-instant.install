@@ -1,0 +1,7 @@
+post_install() {
+	instant-clean
+}
+
+post_upgrade() {
+ instant-clean
+}
