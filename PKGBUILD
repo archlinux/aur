@@ -1,7 +1,7 @@
 # Maintainer: Antony Kellermann <aokellermann@gmail.com>
 
 pkgname=getcrypt
-pkgver=1.003
+pkgver=1.004
 pkgrel=1
 pkgdesc="Command line crypto tracker"
 arch=("x86_64")
@@ -14,7 +14,6 @@ source=("git://github.com/aokellermann/${pkgname}")
 md5sums=('SKIP')
 
 build() {
-    cd "$pkgname"
     cd "$srcdir/$pkgname"
     CPPFLAGS="$CPPFLAGS -O2"
 	make
@@ -22,4 +21,6 @@ build() {
 
 package() {
 	install -Dm755 "$srcdir/$pkgname/$pkgname" "$pkgdir/$pkgname/usr/bin/$pkgname"
+	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$pkgname/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/$pkgname/$pkgname.1.gz" "$pkgdir/$pkgname/usr/share/man/man1/$pkgname.1.gz"
 }

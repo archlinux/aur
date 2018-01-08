@@ -8,10 +8,10 @@ int main(int argc, char* argv[]) {
         printf("Usage:\n"
                        "To get info about a currency, run\n"
                        "$ getcrypt [currency]\n"
-                       "To update your portfolio, use the options add, rm, or set like this\n"
+                       "To update your portfolio, use the options add, rm, or set\n"
                        "$ getcrypt [add/rm/set] [currency] [amount of currency] [amount of money spent]\n"
                        "To get info about your current holdings, run\n"
-                       "$ getcrypt check [currency]\n");
+                       "$ getcrypt check [currency/all]\n");
         return 0;
     }
     portfolio_file_init();
