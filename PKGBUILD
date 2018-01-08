@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 225694 2017-04-26 16:24:43Z spupykin $
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=man-pages-ru
-pkgver=4.08_2329_2272_20170321
+pkgver=4.15_2383_2383_20171230
 pkgrel=2
 pkgdesc="Russian Linux man pages"
 arch=(any)
@@ -11,7 +11,7 @@ url="https://sourceforge.net/projects/man-pages-ru/"
 depends=(man)
 license=('FDL')
 source=(http://downloads.sourceforge.net/project/man-pages-ru/man-pages-ru_${pkgver//_/-}.tar.bz2)
-sha256sums=('a42030939e94b4b52d96259ec541188a9baac179f8859998cc3fbeb8314fb539')
+sha256sums=('adab9dc57e8d8df4f1b17153a65f0d7d1abe892cb4672124c6a30869dce84d18')
 
 package() {
   cd "$srcdir"/man-pages-ru_${pkgver//_/-}
