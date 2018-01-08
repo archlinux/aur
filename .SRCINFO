@@ -1,0 +1,33 @@
+pkgbase = guake-gtk2-git
+	pkgdesc = Top-down terminal for Gnome
+	pkgver = 0.8.12
+	pkgrel = 1
+	url = https://github.com/Guake/guake
+	install = guake.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = python2-gconf
+	depends = python2
+	depends = pygtk
+	depends = python2-dbus
+	depends = python2-gconf
+	depends = python2-keybinder2
+	depends = python2-notify
+	depends = vte
+	depends = python2-xdg
+	depends = libutempter
+	depends = pkgconfig
+	depends = gtk2
+	depends = glib2
+	provides = guake
+	conflicts = guake
+	source = git://github.com/Guake/guake.git#branch=0.8.x
+	sha512sums = SKIP
+
+pkgname = guake-gtk2-git
+
