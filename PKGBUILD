@@ -3,7 +3,6 @@
 pkgname=iperf-git
 pkgver=r368.g51239ca
 pkgrel=1
-epoch=1
 pkgdesc="A tool to measure maximum TCP bandwidth"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/iperf2/"
