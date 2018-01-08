@@ -1,11 +1,11 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dnsmasq-git
-pkgver=2.78test2.r6.g69a815a
+pkgver=2.79test1.r28.ge541245
 pkgrel=1
 pkgdesc="Lightweight, easy to configure DNS forwarder and DHCP server"
 arch=('i686' 'x86_64')
-url="https://www.gnu.org/software/libmicrohttpd/"
+url="http://www.thekelleys.org.uk/dnsmasq/doc.html"
 license=('GPL')
 depends=('glibc' 'gmp' 'libidn2' 'libdbus' 'libnetfilter_conntrack' 'nettle')
 makedepends=('git')

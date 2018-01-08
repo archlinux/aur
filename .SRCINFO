@@ -1,8 +1,8 @@
 pkgbase = dnsmasq-git
 	pkgdesc = Lightweight, easy to configure DNS forwarder and DHCP server
-	pkgver = 2.78test2.r6.g69a815a
+	pkgver = 2.79test1.r28.ge541245
 	pkgrel = 1
-	url = https://www.gnu.org/software/libmicrohttpd/
+	url = http://www.thekelleys.org.uk/dnsmasq/doc.html
 	arch = i686
 	arch = x86_64
 	license = GPL
