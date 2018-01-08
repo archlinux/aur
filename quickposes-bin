@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/opt/Quickposes/quickposes-desktop-gesture-drawing-app $@

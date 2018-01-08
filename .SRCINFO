@@ -1,0 +1,20 @@
+pkgbase = quickposes-bin
+	pkgdesc = The official Quickposes gesture drawing desktop app. See comments for installation instructions
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.quickposes.com/en/desktop-app
+	arch = x86_64
+	license = custom
+	depends = gconf
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	source = local://quickposes-desktop-gesture-drawing-app_1.0.1_amd64.deb
+	source = quickposes-bin
+	md5sums = a4edfbb0061f8a08587c71bd287ce6ce
+	md5sums = 3d9f145d335179230b20ffef69ca9cf7
+
+pkgname = quickposes-bin
+
