@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 13b4f87..89cf44f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -32,7 +32,7 @@ def parse_requirements(requirements, ignore=('setuptools',)):
+             pkg = line.strip()
+             if pkg not in ignore:
+                 packages.add(pkg)
+-        return packages
++        return tuple(packages)
+ 
+ 
+ setup(
