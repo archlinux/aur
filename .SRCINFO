@@ -1,0 +1,14 @@
+pkgbase = lest-git
+	pkgdesc = Modern, C++11, single header, tiny framework for unit-tests, TDD and BDD
+	pkgver = 1.31.0.r7.gf4874cc
+	pkgrel = 1
+	url = https://github.com/martinmoene/lest
+	arch = x86_64
+	license = Boost
+	makedepends = git
+	depends = gcc
+	source = git+https://github.com/martinmoene/lest
+	md5sums = SKIP
+
+pkgname = lest-git
+
