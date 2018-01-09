@@ -4,7 +4,7 @@
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Free and open traffic simulation suite which allows modelling of intermodal traffic systems including road vehicles, public transport and pedestrians."
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ source=("${pkgbase}-src-${pkgver}.tar.gz::http://prdownloads.sourceforge.net/${p
         "${pkgbase}.desktop"
         "${pkgbase}.sh")
 
-sha256sums=('39d3251a6ae860bc1002f6568d1f4c760823f48b1e38a60acadf286f0e7fbb05'
-            'dd5a9e662e7dcfe05e16d1755964b7ffd4bfbfc4ce13536221763f9c6f4f58eb'
+sha256sums=('00753ca57a9911f0c99202505a6b05b1777168134842d7924fd827766642608a'
+	    'a9d6f6c93cf71f441e6464be79561c0e114f8b5f907f50b6c748191f27d07aad'
             '0500ba9cdf827cceae9a9bce66094bdb077300c94b0040bdd710afb92d0d4849'
             '16db32dbba617f8a38f5d103ce3af7cc70ab4cbf5b50e30be5d7f13ee6ea2f4f')
 
@@ -152,7 +152,7 @@ package_sumo-doc() {
     install -m0644 ${srcdir}/${pkgbase}-${pkgver}/AUTHORS ${pkgdir}/usr/share/doc/${pkgbase}
     install -m0644 ${srcdir}/${pkgbase}-${pkgver}/ChangeLog ${pkgdir}/usr/share/doc/${pkgbase}
     install -m0644 ${srcdir}/${pkgbase}-${pkgver}/COPYING ${pkgdir}/usr/share/doc/${pkgbase}
-    install -m0644 ${srcdir}/${pkgbase}-${pkgver}/README ${pkgdir}/usr/share/doc/${pkgbase}
+    install -m0644 ${srcdir}/${pkgbase}-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgbase}
 
     rm -rf ${pkgdir}/usr/share/doc/${pkgbase}/man
 }
