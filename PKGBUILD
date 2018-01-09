@@ -1,4 +1,5 @@
-# Maintainer: Sebastian Lau <lauseb644@gmail.com>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: Sebastian Lau <lauseb644@gmail.com>
 
 pkgname=nemo-repairer
 pkgver=3.6.0
@@ -17,8 +18,7 @@ sha256sums=('593aaf206ef50a8185e1f71c9018ce6a8b4bcb82b4684494e069f9045ba11fd1')
 
 build() {
     cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
-    ./autogen.sh
-    ./configure --prefix="/usr" --sysconfdir="/etc"
+    ./autogen.sh --prefix=/usr --sysconfdir=/etc
     make
 }
 
