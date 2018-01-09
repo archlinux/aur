@@ -1,0 +1,19 @@
+pkgbase = yodl-git
+	pkgdesc = Implements a pre-document language and tools to process it - Git Checkout
+	pkgver = 4.02.00.r0.g2174c2f
+	pkgrel = 1
+	url = https://fbb-git.github.io/yodl/
+	install = yodl-git.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	makedepends = icmake>=8.00.00
+	makedepends = git
+	provides = yodl
+	conflicts = yodl
+	source = yodl-git::git+https://github.com/fbb-git/yodl/
+	md5sums = SKIP
+
+pkgname = yodl-git
+
