@@ -1,20 +1,21 @@
 pkgbase = muse
 	pkgdesc = A MIDI/Audio sequencer with recording and editing capabilities
-	pkgver = 3.0.pre1
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 3
 	url = http://muse-sequencer.org/
 	install = muse.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	makedepends = gcc
+	makedepends = gcc6
 	makedepends = ladspa
 	makedepends = lv2
 	makedepends = dssi
 	makedepends = dssi-vst
 	makedepends = ladish
 	makedepends = liblo
+	makedepends = qt5-tools
 	depends = qt5-base
 	depends = fluidsynth
 	depends = liblo
@@ -31,8 +32,8 @@ pkgbase = muse
 	optdepends = ladish: LASH session support
 	provides = muse
 	conflicts = muse
-	source = https://github.com/muse-sequencer/muse/archive/muse_3_0_pre1.tar.gz
-	sha256sums = ce04fb02a88129d0fc458086bcf2f6700ad0ad7989715d15bf89da693104c4c2
+	source = https://github.com/muse-sequencer/muse/archive/muse_3_0_0.tar.gz
+	sha256sums = 72952f094c8c843586679a0f893bf122bd099847490ddf16a829ca5e361e70d1
 
 pkgname = muse
 
