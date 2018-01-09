@@ -1,0 +1,9 @@
+diff -ruN lame-3.100/include/libmp3lame.sym patched/include/libmp3lame.sym
+--- lame-3.100/include/libmp3lame.sym	2017-09-06 21:33:35.000000000 +0200
++++ patched/include/libmp3lame.sym	2017-11-05 16:32:43.984255732 +0100
+@@ -1,5 +1,4 @@
+ lame_init
+-lame_init_old
+ lame_set_num_samples
+ lame_get_num_samples
+ lame_set_in_samplerate
