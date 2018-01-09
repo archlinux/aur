@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Lanyus reverse proxy"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=('php' 'php-phalcon>=3.2.0')
+depends=()
 url="https://github.com/ilanyu/ReverseProxy"
 makedepends=(go git)
 provides=('intellij-license-activation')
