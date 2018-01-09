@@ -64,18 +64,18 @@ _mq_enable=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _srcname=linux-4.14
-_pkgver=4.14.8
-_rtver=9
+_pkgver=4.14.12
+_rtver=10
 _rtpatchver=rt${_rtver}
 _srcpatch="${_pkgver##*\.*\.}"
 pkgver=${_pkgver}.${_rtver}
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
-_bfq_sq_mq_ver='20171228'
+_bfq_sq_mq_ver='20180109'
 _bfq_sq_mq_patch="4.14-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.14"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14"
@@ -89,6 +89,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/4.14/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/4.14/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_sq_mq_patch}"
+        "${_lucjanpath}/0009-bfq-sq-mq-fix-patching-error-with-20180109.patch"
         "${_lucjanpath}/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
         "${_lucjanpath}/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
         "${_lucjanpath}/blk-mq-v10/0053-blk-mq-block-kyber-check-if-there-is-request-in-ctx-in-kyber_has_work().patch"
@@ -111,12 +112,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch'
-        '0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
-        '0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch'
-        '0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
-        '0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch')
+        '0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch'
+        '0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
+        '0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
+        '0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
+        '0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
         
 _kernelname=${pkgbase#linux} 
 
@@ -134,27 +134,26 @@ prepare() {
     ### Disable USER_NS for non-root users by default
         msg "Disable USER_NS for non-root users by default"
         patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-    
+  
     ### Fix https://bugs.archlinux.org/task/56575
         msg "Fix #56575" 
-        patch -Np1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+        patch -Np1 -i ../0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
 
     ### Fix https://nvd.nist.gov/vuln/detail/CVE-2017-8824
         msg "Fix CVE-2017-8824"
-        patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-    
+        patch -Np1 -i ../0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  
     ### Fix https://bugs.archlinux.org/task/56605
         msg "Fix #56605"
-        patch -Np1 -i ../0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-        patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-
+        patch -Np1 -i ../0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  
     ### Fix https://bugs.archlinux.org/task/56846
         msg "Fix #56846"
-        patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-
-    ### Fix https://bugs.archlinux.org/task/56830
-        msg "Fix #56830"
-        patch -Np1 -i ../0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
+        patch -Np1 -i ../0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+    
+    ### Fix https://bugs.archlinux.org/task/56711
+        msg "Fix #56711"
+        patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
     
     ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
     # Stops X from hanging on certain NVIDIA cards
@@ -162,10 +161,14 @@ prepare() {
         patch -p1 -i ../fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
             
     ### Patch source with BFQ-SQ-MQ
+        msg "Fix patching with 20180109"
+        patch -Np1 -i ../0009-bfq-sq-mq-fix-patching-error-with-20180109.patch
         msg "Fix naming schema in BFQ-SQ-MQ patch"
-        sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
-            -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
-            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" \
+        sed -i -e "s|PATCHLEVEL = 15|PATCHLEVEL = 14|g" \
+            -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
+            -i -e "s|EXTRAVERSION = -rc7|EXTRAVERSION =|g" \
+            -i -e "s|EXTRAVERSION = -bfq-rc7|EXTRAVERSION =|g" \
+            -i -e "s|EXTRAVERSION = -bfq-mq-rc7|EXTRAVERSION =|g" \
             -i -e "s|NAME = Fearless Coyote|NAME = Petit Gorille|g" ../${_bfq_sq_mq_patch}
         msg "Patching source with BFQ-SQ-MQ patches"
         patch -Np1 -i ../${_bfq_sq_mq_patch}
@@ -198,6 +201,10 @@ prepare() {
         msg "Patching source with gcc patch to enable more cpus types"
 	patch -Np1 -i ../${_gcc_patch}
 	
+    ### Fix https://www.spinics.net/lists/stable/msg207374.html
+        msg "Fix execvp: ./sync-check.sh error"
+        chmod +x tools/objtool/sync-check.sh
+    
     ### Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
 	make mrproper
@@ -459,11 +466,12 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            '62aa92e671cfc9265cf1690e0d64058dfa779400074cd909161d4e49f5313f58c1303ad301cecdbb64ee85d653f0bcb42fa609f25827289aad3bc94561d94390'
+            'b11b91503c9eb879b79cb16683204f5dbb467aac62dcfc1b025f889dc38016d990c0fd1879210226430e9f9ac6e168439b13603781188d67d213b12a334b4e5b'
             'SKIP'
-            '2e722767a224327eb8cf9162997309f8147a4f10d6892e7febedc59068e3cc780e144e9cfd1ebf1796ddb45ac57156903a46f5e1d2584cf18cbe9aa68c51a4eb'
+            '4a89fbe2ebca6bbf3f10329e80bc6c51061d2092fe659c12cd918f11a867afb42391bc979282e7c1c252b6b257d810441fa50f1c58293eaae305816cbe416c3a'
             'SKIP'
-            '8dcabef7d6463eec6a2ac8e19f46a0a10bf90baecb346cd9ad20f1114ab41a95c2457b4fae3aa08cf55a21aad4655797a53392d5f8a94747f3aa88139b074c89'
+            '3b4ff4f4a4aa53374d010a8fe8c09a534ec075e8eb0c5a193ce240f38411d8594ec74ce782c98e8ae9bfbea19ab080453af4f46e053b6b9cd6cb22d0c1f4fdf4'
+            'e1819903787241db1fc7cf4fb7682936185c73ef7ba842f59b94f2d56ef2ceab3df42344df3cb226060c09257d98e9a861bc8f7a7debc0a9f0936022022fc3ba'
             'ca6a40800668c0fcf478bd1bc555e5a496f5259739594bf83cc4963756b7a9a0a5b406e91f760d35f1bce1268c01d779fe2a7e749eccf9412e826152a5f013ef'
             '1434cc3957ef77fb83c9385a348f36ca43a73459b8995d3061143d1d15b307f944c39abc0eb109d20869c1749348d608c58cf5b92fd81ad65cad2d362e346549'
             '49c8619a96d7145e8fe77fad4394db7b24a73d94c1e01866e4a3bc5b044dbbb59c8aa2db62d72ef8460ec777d88959b545ad6373073fe3fd21016e5fc08c9f3c'
@@ -475,18 +483,17 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             'a1ccc22354a420467fb912f822585ed4573e68f4694f02ab83d7c8e352da88be495acb3cb4c451c27ca0cf0befe5925b8734d37205bb3dfdaf86d2dedef0798f'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            '638eaff7299f8322e2c383f390fd8f3fe3ce8acb80c4ab4730fae007e9b7ae57f164b06ec2a264607ac2f3f0f5c353c7afa7e3cf1ca08cba395f67b9d7d3aa4a'
+            '8de599a8c9433e7e8045df4c7ec777c164fe67cc28567403da233e278a38d8c4e91a8fc347758c0f3473634dd0a422ad1737beaa9be5247bf5ff1dd2b3d59d7d'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '6fd42090bd39228ac625d0c2074ae55ac3e8368de63f550951c3ac6e6bfdbaf47ab67e018e21890b8ad75bb6706eff5dce05070ad6c281ecedf2a353d8871d96'
-            '4b461e3f194fd11ec4321cfbe63dbc5f59c2ed0ee71cae5753b64761c6cc816e28fe89f9c472f92a6cf22557ab88243c16f7f2d2e754ba0b47f82608dc9ddc25'
-            '93131d8ad8b118a1c1bcabce357ba7e61233c99188f2d0123977c436e2932555bde4e19de4ca63ac27c6e9b26d8373fb99b52db18b7518122433616d7060082d'
-            '973bf63857968e76d15286aea5add9589e3248b7b70da25629b91618cfdbbd5784cd0d97daccb3168fd369adb41ebd5768788ad25dc54b7a5c0b9f16e07a9d38'
-            '39bf2a3eeca5efce6c8214c49fba001a767fa3c94157255451a8c4739a3adeef74f2644a2ab6a7a423a65e76466c02d7c1f124cdddcfce37145fc3be92d8fa6c'
-            '5ad03cf5b0acfa1ca554a0462d83c0be8ddf9974d7248b9ff9a516e68dad0425a205b224ca4cf680428feedcc4e7a1153d5aa12a12abfa96a503e9a0d65c712a'
-            '6f01527ed7a25bf78d7c0515c8726a47bef0e99cf1c90f07d0f6a59e70f12e04260eed2c4ca831fb339d3a027085bcd73f8ab3b1968582f75b688823b18716cb')
+            '46447e0257b7ad5db932eb50a241d046716f21b9c12698c9d83d5f3ef52aff4ba603b79a26616347e6993dcc4ec7452aef3c0c9cf430c73955ee8e61c62194a7'
+            '6f3b1efe81ac806217dd199a629f2d1ed55c6393ba1d90600cd2d2f41a865dca680e131b668265cc3e665be748295aea1b65877d737064661450d5cd089f0d96'
+            'baa77972acdc1820af6ea82ae72e1dbc793bde242d77a5176ab29444c8a3e3c3670907a5e289045d1246e2dd706cdab64659f82605e2f84b30d5b3c8f3272de5'
+            '096eb9bbdeacae276145fc7b28946e8f6a432f9b5159b8a33d1df00c820d8b96780cc84541c30bb75bf8d9324ecb3222c2bcd9630d5310ef1d17d6fad0f68a15'
+            'cfc7ee58c22639ed6a891ad6f42b2fbe15f684d706c8026b8b0cb463a06d8446ac06cacdac47a1e1c91028bea1611ae2e5d017a7e07a5471589039f33501966b'
+            'fcc40dc86dd432be76854e3c51889db488de0f1029ecc227b92c4f58c62ba928f7dc3b9515ac3ca0a08d6a0a72ca4a1a754d47c4fb274fe89f09a2a336088e7a')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
