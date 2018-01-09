@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=fac
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Easy-to-use command line tool for fixing git conflicts."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=(
   'go'
 )
 source=("https://github.com/mkchoi212/fac/archive/v${pkgver}.tar.gz")
-sha256sums=('5afd7e937e638c199714f14bf7cf5ef662ad813fe82d0af7e33ba6a362f76c15')
+sha256sums=('3d17135b429449fad187b0c93877089c0f66a838595f4e6f1022312790be15c0')
 
 prepare() {
   export GOPATH="${srcdir}/.go"

@@ -1,6 +1,6 @@
 pkgbase = fac
 	pkgdesc = Easy-to-use command line tool for fixing git conflicts.
-	pkgver = 1.0.2
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/mkchoi212/fac
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = fac
 	makedepends = go
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/mkchoi212/fac/archive/v1.0.2.tar.gz
-	sha256sums = 5afd7e937e638c199714f14bf7cf5ef662ad813fe82d0af7e33ba6a362f76c15
+	source = https://github.com/mkchoi212/fac/archive/v1.0.4.tar.gz
+	sha256sums = 3d17135b429449fad187b0c93877089c0f66a838595f4e6f1022312790be15c0
 
 pkgname = fac
 
