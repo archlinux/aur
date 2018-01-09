@@ -1,6 +1,6 @@
 pkgbase = peazip-qt-opensuse-latest
 	pkgdesc = QT archiver utility (openSUSE RPM)
-	pkgver = 6.4.0
+	pkgver = 6.5.0
 	pkgrel = 1
 	url = http://peazip.sourceforge.net/peazip-linux.html
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = peazip-qt-opensuse-latest
 	conflicts = peazip
 	conflicts = peazip-gtk2
 	conflicts = peazip-qt
-	source = https://download.opensuse.org/repositories/home:/ecsos/openSUSE_Tumbleweed/x86_64/peazip-6.4.0-3.11.x86_64.rpm
-	sha256sums = e69ebefde67899a7301969c62c76945021ba996ba5520fb9fc7a6b984351dec5
+	source = https://download.opensuse.org/repositories/home:/ecsos/openSUSE_Tumbleweed/x86_64/peazip-6.5.0-1.12.x86_64.rpm
+	sha256sums = SKIP
 
 pkgname = peazip-qt-opensuse-latest
 
