@@ -115,6 +115,7 @@ bl_doctest__doc__='
     -bl.documentation.exclude_print
 '
 # endregion
+# region functions
 bl_doctest_compare_result() {
     # shellcheck disable=SC2034,SC2016
     local __doc__='
@@ -684,7 +685,7 @@ bl_doctest_parse_args() {
     (( success != total )) && return 1
     return 0
 }
-
+# endregion
 if bl.tools.is_main; then
     bl.doctest.parse_args "$@"
 fi

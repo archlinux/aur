@@ -23,7 +23,7 @@ bl_string_make_command_promt_prefix() {
         errorPromt="${ILU_GREEN}>${ILU_DEFAULT_COLOR}"
     fi
     local gitBranch=$(git branch 2>/dev/null | sed --regexp-extended \
-        "s/^\* (.*)$/ $(bl.string.validate_regular_expression_replacement "$ILU_RED")\1$(string.validate_regular_expression_replacement "$ILU_CYAN")/g" \
+        "s/^\* (.*)$/ $(bl.string.validate_regular_expression_replacement "$ILU_RED")\1$(bl.string.validate_regular_expression_replacement "$ILU_CYAN")/g" \
         | tr --delete "\n" | sed 's/  / /g' | sed 's/^ *//g' | \
         sed 's/ *$//g')
     if [ "$gitBranch" ]; then

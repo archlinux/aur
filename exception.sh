@@ -263,7 +263,7 @@ bl_exception_enter_try() {
     bl.exception.deactivate
     bl.exception.try_catch_level+=1
 }
-alias bl.exception.enter_try
+alias bl.exception.enter_try=bl_exception_enter_try
 bl_exception_exit_try() {
     local bl_exception_result=$1
     bl_exception_try_catch_level+=-1

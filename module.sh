@@ -31,7 +31,7 @@ bl_module_import_level=0
 bl_module_imported=("$(bl.path.convert_to_absolute "${BASH_SOURCE[0]}")" "$(bl.path.convert_to_absolute "${BASH_SOURCE[1]}")" "$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[0]}")/path.sh")")
 bl_module_known_extensions=(.sh '' .bash .shell .zsh .csh)
 bl_module_prevent_namespace_check=false
-bl_module_scope_rewrites=('^bashlink\([._][a-zA-Z_-]+\)$/bl\\1/')
+bl_module_scope_rewrites=('^bashlink([._][a-zA-Z_-]+)$/bl\1/')
 # endregion
 # region functions
 bl_module_determine_declared_names() {
@@ -88,7 +88,8 @@ bl_module_import_with_namespace_check() {
     Sources a script and checks variable definitions before and after sourcing.
     '
     local file_path="$1"
-    local scope_name="$2"
+    local resolved_scope_name="$2"
+    local scope_name="$3"
     if (( bl_module_import_level == 0 )); then
         bl_module_declared_function_names_before_source_file_path="$(mktemp \
             --suffix=bashlink-module-declared-function-names-before-source)"
@@ -106,13 +107,16 @@ bl_module_import_with_namespace_check() {
         bl_module_declared_names_before_source_file_path="$(mktemp \
             --suffix=bashlink-module-declared-names-before-source)"
     fi
+    local alternate_resolved_scope_name="$(echo "$resolved_scope_name" | \
+        sed --regexp-extended s/\\./_/g)"
     ## region check if scope is clean before sourcing
     bl.module.determine_declared_names \
         >"$bl_module_declared_names_before_source_file_path"
     while read -r name ; do
-        if [[ $name =~ ^${scope_name}[._]* ]]; then
+        if [[ $name =~ ^${resolved_scope_name}[_A-Z]$ ]] || [[ $name =~ ^${alternate_resolved_scope_name//\./\\\\./}[.A-Z]$ ]]; then
             bl.module.log warn \
-                "Namespace \"$scope_name\" is not clean: Name \"$name\" is" \
+                "Namespace \"$resolved_scope_name\" in \"$scope_name\" is" \
+                "not clean: Name \"$name\" is" \
                 "already defined." \
                 1>&2
         fi
@@ -129,7 +133,7 @@ bl_module_import_with_namespace_check() {
         grep -e "^>" | sed 's/^> //'
     )" | sed 's/[0-9]*:> //g')"
     for name in $new_declared_names; do
-        if ! [[ $name =~ ^${scope_name//\./\\\\./}[._A-Z]* ]]; then
+        if ! [[ $name =~ ^${resolved_scope_name}[_A-Z]* ]] || ! [[ $name =~ ^${alternate_resolved_scope_name//\./\\\\./}[.A-Z]* ]]; then
             local excluded=false
             local excluded_pattern
             for excluded_pattern in "${bl_module_allowed_scope_names[@]}"; do
@@ -150,8 +154,10 @@ bl_module_import_with_namespace_check() {
                 bl.module.log \
                     warn \
                     "Module \"$scope_name\" introduces a global" \
-                    "unprefixed name: \"$name\". Maybe it should be " \
-                    "named as \"${scope_name}.${name}\"." \
+                    "unprefixed name: \"$name\". Maybe it should be" \
+                    "prefixed with \"${resolved_scope_name}.\" or" \
+                    "\"$(echo "$resolved_scope_name" | \
+                        sed --regexp-extended s/\\./_/g)_\"." \
                     1>&2
             fi
         fi
@@ -318,11 +324,14 @@ bl_module_import() {
             bl.module.import_raw "$file_path"
         else
             local rewrite
+            scope_name="${scope_name%.sh}"
+            local resolved_scope_name="$scope_name"
             for rewrite in "${bl_module_scope_rewrites[@]}"; do
-                scope_name="$(echo "$scope_name" | sed --regexp-extended \
-                    "s/$rewrite")"
+                resolved_scope_name="$(echo "$resolved_scope_name" | \
+                    sed --regexp-extended "s/$rewrite")"
             done
-            bl.module.import_with_namespace_check "$file_path" "${scope_name%.sh}"
+            bl.module.import_with_namespace_check \
+                "$file_path" "$resolved_scope_name" "$scope_name"
         fi
     else
         echo "$result"

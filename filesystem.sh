@@ -11,7 +11,7 @@
 # endregion
 # region import
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-bl.import bashlink.path
+bl.module.import bashlink.path
 # endregion
 # region doctest setup
 bl_filesystem__doc_test_setup__='
@@ -300,7 +300,7 @@ bl_filesystem_btrfs_subvolume_set_ro() {
         btrfs property set -ts "$volume" ro $read_only
     fi
 }
-bl.filesystem.btrfs_subvolume_set_ro=bl_filesystem_btrfs_subvolume_set_ro
+alias bl.filesystem.btrfs_subvolume_set_ro=bl_filesystem_btrfs_subvolume_set_ro
 bl_filesystem_btrfs_snapshot() {
     local __doc__='
     # Make snapshot of subvolume.
