@@ -1,0 +1,18 @@
+pkgbase = python-leo
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/keachi/python-leo
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-lxml
+	source = https://github.com/keachi/python-leo/archive/v1.0.tar.gz
+	sha256sums = 1b6e716f1c66ef4a9f083f1e7190d48d41a4edc4f985babb2babfeffea32eb18
+
+pkgname = python-leo
+
