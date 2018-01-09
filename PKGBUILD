@@ -2,7 +2,7 @@
 # Contributor: se7enday(87635645#qq.com)
 
 pkgname=grub2-theme-vimix-git
-pkgver=20150513
+pkgver=20170904
 pkgrel=1
 pkgdesc="Grub2 theme Vimix"
 url="https://github.com/Se7endAY/grub2-theme-vimix"

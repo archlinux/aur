@@ -2,3 +2,4 @@ grub2-theme-vimix-git/*
 src/*
 pkg/*
 *.pkg.tar.xz
+*.pkg.tar
