@@ -69,7 +69,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.14.12
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -83,7 +83,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.14"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
-_bfq_mq_ver='20171228'
+_bfq_mq_ver='20180109'
 _bfq_mq_patch="4.14-bfq-sq-mq-git-${_bfq_mq_ver}.patch"
 source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -95,6 +95,7 @@ source=(# mainline kernel patches
         # bfq-mq patch
         #"${_bfqpath}/${_bfq_mq_patch}"
         "${_lucjanpath}/${_bfq_mq_patch}"
+        "${_lucjanpath}/0009-bfq-sq-mq-fix-patching-error-with-20180109.patch"
         # tentative patches
         "${_bfqpath}/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         # mailing-list (ML1) patches
@@ -141,7 +142,8 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'da5d8db44b0988e4c45346899d3f5a51f8bd6c25f14e729615ca9ff9f17bdefd'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
-            'e04958faa40e3a20f7e7e2bd9580b4c4c45d4d576ea3c6537d2e19de25ae5160'
+            '969a43fd2ce16f4aaf97cc4c81352ae50a192eca4e1b0a1a2cb82cbdaca6a9ae'
+            '3e4cdb014a55ed0aeb8512b784c518f6beda0196bac03419b3c87de44267cd79'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'ed4dec610bb99928c761dee5891b9f79770f0265678c232b0d4c1879beb73e94'
             '40c2bbd7abd390e0674a797d08f7624051750d38a09d4c42ddba1f8341bb362a'
@@ -200,10 +202,14 @@ prepare() {
       patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   
   ### Patch source with BFQ-SQ-MQ
+        msg "Fix patching with 20180109"
+        patch -Np1 -i ../0009-bfq-sq-mq-fix-patching-error-with-20180109.patch
         msg "Fix naming schema in BFQ-SQ-MQ patch"
-        sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
-            -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
-            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" \
+        sed -i -e "s|PATCHLEVEL = 15|PATCHLEVEL = 14|g" \
+            -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
+            -i -e "s|EXTRAVERSION = -rc7|EXTRAVERSION =|g" \
+            -i -e "s|EXTRAVERSION = -bfq-rc7|EXTRAVERSION =|g" \
+            -i -e "s|EXTRAVERSION = -bfq-mq-rc7|EXTRAVERSION =|g" \
             -i -e "s|NAME = Fearless Coyote|NAME = Petit Gorille|g" ../${_bfq_mq_patch}
         msg "Patching source with BFQ-SQ-MQ patches"
         patch -Np1 -i ../${_bfq_mq_patch}
