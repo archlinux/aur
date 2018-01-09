@@ -11,7 +11,7 @@ provides=('nuvolaplayer')
 conflicts=('nuvolaplayer' 'nuvolaruntime-mse')
 depends=('python' 'vala' 'diorite>=4.7.0' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'webkit2gtk' 'libnotify' 'gstreamer' 'libdri2-git' 'libdrm')
 makedepends=('scour' 'dri2proto')
-source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
+source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('0890df8a4e93cb0caf18469b2f9c52c5')
 
 optdepends=(
