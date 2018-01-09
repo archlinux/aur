@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dejagnu-git
-pkgver=1.4.3.r513.ge301ae8
+pkgver=1.6.1.r1.gfb6ef60
 pkgrel=1
 pkgdesc="A framework for testing other programs"
 arch=('i686' 'x86_64')
@@ -18,7 +18,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "dejagnu"
 
-  git describe --long --tags | sed 's/^dejagnu_//;s/\([^-]*-g\)/r\1/;s/[_-]/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -m1 dejagnu- | sed 's/dejagnu-//;s/-release//')
+  _rev=$(git rev-list --count dejagnu-$_tag-release..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
 }
 
 build() {
