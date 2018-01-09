@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-lame
 pkgver=3.100
-pkgrel=2
+pkgrel=3
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder (mingw-w64)"
 arch=('any')
 url="http://lame.sourceforge.net/"
