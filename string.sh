@@ -9,11 +9,11 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
-string_make_command_promt_prefix() {
+bl_string_make_command_promt_prefix() {
     local __doc__='
     Generates a new user prompt with useful runtime parameters.
 
-    >>> tools.make_command_promt_prefix
+    >>> bl.string.make_command_promt_prefix
     '
     local errorNumber=$?
     local systemLoadAverage=$(uptime | grep --extended-regexp --only-matching \
@@ -23,7 +23,7 @@ string_make_command_promt_prefix() {
         errorPromt="${ILU_GREEN}>${ILU_DEFAULT_COLOR}"
     fi
     local gitBranch=$(git branch 2>/dev/null | sed --regexp-extended \
-        "s/^\* (.*)$/ $(string.validate_regular_expression_replacement "$ILU_RED")\1$(string.validate_regular_expression_replacement "$ILU_CYAN")/g" \
+        "s/^\* (.*)$/ $(bl.string.validate_regular_expression_replacement "$ILU_RED")\1$(string.validate_regular_expression_replacement "$ILU_CYAN")/g" \
         | tr --delete "\n" | sed 's/  / /g' | sed 's/^ *//g' | \
         sed 's/ *$//g')
     if [ "$gitBranch" ]; then
@@ -39,21 +39,20 @@ string_make_command_promt_prefix() {
     export PS1="$titleBar$errorPromt ${ILU_CYAN}${userName}${ILU_GRAY}@${ILU_CYAN}\h${ILU_BLUE} (${systemLoadAverage}) ${ILU_GRAY}\w${ILU_DEFAULT_COLOR}\n${gitBranch}${ILU_DARK_GRAY}> ${ILU_DEFAULT_COLOR}"
     return $?
 }
-alias string.make_command_promt_prefix='string_make_command_promt_prefix'
-string_generate_random() {
-    local length="$1"
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c "$length"
+alias bl.string.make_command_promt_prefix='bl_string_make_command_promt_prefix'
+bl_string_generate_random() {
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c "$1"
 }
-alias string.generate_random='string_generate_random'
-string_validate_argument() {
+alias bl.string.generate_random='bl_string_generate_random'
+bl_string_validate_argument() {
     local __doc__="
     Validates a given bash argument.
 
-    >>> string.validate_argument hans
+    >>> bl.string.validate_argument hans
     'hans'
-    >>> string.validate_argument ha'n's
+    >>> bl.string.validate_argument ha'n's
     \"ha'n's\"
-    >>> string.validate_argument h\"a\"'n's
+    >>> bl.string.validate_argument h\"a\"'n's
     'h\"a\"\'n\'s'
     "
     if [[ ! "$(grep "'" <<< "$1")" ]]; then
@@ -65,30 +64,30 @@ string_validate_argument() {
     fi
     return $?
 }
-alias string.validate_argument='string_validate_argument'
-string_validate_regular_expression_replacement() {
+alias bl.string.validate_argument='bl_string_validate_argument'
+bl_string_validate_regular_expression_replacement() {
     local __doc__='
     This functions escapes every special meaning character for a sed
     replacement.
 
-    >>> sed "s/myInputString/$(string.validate_regular_expression_replacement "\hans/peter&klaus")/g"
+    >>> sed "s/myInputString/$(bl.string.validate_regular_expression_replacement "\hans/peter&klaus")/g"
     '
     echo "$1" | sed --expression 's/\\/\\\\/g' --expression 's/\//\\\//g' \
         --expression 's/&/\\\&/g'
     return $?
 }
-alias string.validate_regular_expression_replacement='string_validate_regular_expression_replacement'
-string_images_to_css_classes() {
+alias bl.string.validate_regular_expression_replacement=bl_string_validate_regular_expression_replacement
+bl_string_images_to_css_classes() {
     local __doc__='
     This function converts a folder of images to a single includeable less
     file.
 
-    >>> string.images_to_css_casses /path/to/image/directory/ .*\.\(png\|jpg\|jpeg\)
+    >>> bl.string.images_to_css_casses /path/to/image/directory/ .*\.\(png\|jpg\|jpeg\)
     ...
-    >>> string.images_to_css_classes /path/to/image/directory/ .*\.\(png\|jpg\|jpeg\) \
+    >>> bl.string.images_to_css_classes /path/to/image/directory/ .*\.\(png\|jpg\|jpeg\) \
     ...     /first/exclude/location /second/exclude/location ...
     ...
-    >>> string.images_to_css_classes
+    >>> bl.string.images_to_css_classes
     ...
     '
     local source='.'
@@ -120,13 +119,13 @@ string_images_to_css_classes() {
     done
     return $?
 }
-alias string.images_to_css_classes='string_images_to_css_classes'
-string_merge_text_files() {
+alias bl.string.images_to_css_classes='bl_string_images_to_css_classes'
+bl_string_merge_text_files() {
     local __doc__='
     Concatenate files and print on the standard output.
 
-    >>> string.merge_text_files a.txt b.txt
-    >>> string.merge_text_files a.txt b.txt c.txt --prepend "# region %s\n" --append \
+    >>> bl.string.merge_text_files a.txt b.txt
+    >>> bl.string.merge_text_files a.txt b.txt c.txt --prepend "# region %s\n" --append \
     >>>     "\n# endregion\n' --between '\n# endregion\n\n# region %s\n"
     '
     local append='\n// endregion'
@@ -175,20 +174,20 @@ string_merge_text_files() {
     printf "$append"
     return $?
 }
-alias string.merge_text_files='string_merge_text_files'
-string_translate() {
+alias bl.string.merge_text_files='bl_string_merge_text_files'
+bl_string_translate() {
     local __doc__='
     Translates a given string in a given (or automatic detected) language and
     gives a translation in given language (German by default) back. Accesses
     "http://translate.google.com" from terminal.
 
-    >>> string.translate hello
+    >>> bl.string.translate hello
     Hallo
-    >>> string.translate 'Hello my darling'
+    >>> bl.string.translate 'Hello my darling'
     Hallo mein Schatz
-    >>> string.translate hello fr
+    >>> bl.string.translate hello fr
     bonjour
-    >>> string.translate hello en fr
+    >>> bl.string.translate hello en fr
     bonjour
     '
     local defaultTargetLanguage=de
@@ -245,7 +244,7 @@ string_translate() {
         return $?
     fi
 }
-alias string.translate='string_translate'
+alias bl.string.translate='bl_string_translate'
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

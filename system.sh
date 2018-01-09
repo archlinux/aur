@@ -9,7 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
-system_compile_and_install_without_root() {
+bl_system_compile_and_install_without_root() {
     local __doc__='
     Compiles and installs a program by its given source code. Your have to
     be inside the source code folder to run this function.
@@ -28,24 +28,24 @@ system_compile_and_install_without_root() {
     make install
     return $?
 }
-alias system.compile_and_install_without_root='system_compile_and_install_without_root'
-system_mount_root_file_system_writable() {
+alias bl.system.compile_and_install_without_root='bl_system_compile_and_install_without_root'
+bl_system_mount_root_file_system_writable() {
     local __doc__='
     If root file system is mounted as read only this command makes it
     runnable.
 
-    >>> system.mount_root_file_system_writable
+    >>> bl.system.mount_root_file_system_writable
     '
     mount -rw --options remount /
     return $?
 }
-alias system.mount_root_file_system_writable='system_mount_root_file_system_writable'
-system_restore_grub() {
+alias bl.system.mount_root_file_system_writable='bl_system_mount_root_file_system_writable'
+bl_system_restore_grub() {
     local __doc__='
     Restores the linux boot-manager grub if it was overwritten (e.g. in
     windows).
 
-    >>> system.restore_grub
+    >>> bl.system.restore_grub
     '
     # TODO use arch chroot
     echo 'Mount systems root filesystem'
@@ -60,7 +60,7 @@ system_restore_grub() {
     chroot /mnt grub-install /dev/sda
     return $?
 }
-alias system.restore_grub='system_restore_grub'
+alias bl.system.restore_grub='bl_system_restore_grub'
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

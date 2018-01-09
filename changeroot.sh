@@ -14,14 +14,14 @@ source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.logging
 # endregion
 # region variables
-changeroot_kernel_api_locations=(/proc /sys /sys/firmware/efi/efivars /dev \
+bl_changeroot_kernel_api_locations=(/proc /sys /sys/firmware/efi/efivars /dev \
     /dev/pts /dev/shm /run)
 # TODO implement dependency check in import mechanism
-changeroot__dependencies__=(mountpoint mount umount mkdir)
-changeroot__optional_dependencies__=(fakeroot fakechroot)
+bl_changeroot__dependencies__=(mountpoint mount umount mkdir)
+bl_changeroot__optional_dependencies__=(fakeroot fakechroot)
 # endregion
 # region functions
-changeroot() {
+bl_changeroot() {
     local __doc__='
     This function performs a linux change root if needed and provides all
     kernel api filesystems in target root by using a change root interface
@@ -35,18 +35,19 @@ changeroot() {
         shift
         return $?
     else
-        changeroot_with_kernel_api "$@"
+        bl_changeroot_with_kernel_api "$@"
         return $?
     fi
     return $?
 }
-changeroot_with_fake_fallback() {
+alias bl.changeroot=bl_changeroot
+bl_changeroot_with_fake_fallback() {
     local __doc__='
     Perform the available change root program wich needs at least rights.
 
     #### Example:
 
-    `changeroot_with_fake_fallback /new_root /usr/bin/env bash some arguments`
+    `bl_changeroot_with_fake_fallback /new_root /usr/bin/env bash some arguments`
     '
     if [[ "$UID" == '0' ]]; then
         chroot "$@"
@@ -55,29 +56,29 @@ changeroot_with_fake_fallback() {
     fakeroot fakechroot chroot "$@"
     return $?
 }
-alias changeroot.with_fake_fallback=changeroot_with_fake_fallback
-changeroot_with_kernel_api() {
+alias bl.changeroot.with_fake_fallback=bl_changeroot_with_fake_fallback
+bl_changeroot_with_kernel_api() {
     local __doc__='
     Performs a change root by mounting needed host locations in change root
     environment.
 
     #### Example:
 
-    `changeroot_with_kernel_api /new_root /usr/bin/env bash some arguments`
+    `bl_changeroot_with_kernel_api /new_root /usr/bin/env bash some arguments`
     '
     local new_root_location="$1"
     if [[ ! "$new_root_location" =~ .*/$ ]]; then
         new_root_location+='/'
     fi
     local mountpoint_path
-    for mountpoint_path in ${changeroot_kernel_api_locations[*]}; do
+    for mountpoint_path in ${bl_changeroot_kernel_api_locations[*]}; do
         mountpoint_path="${mountpoint_path:1}"
         # TODO fix
         #./build-initramfs.sh -d -p ../../initramfs -s -t /mnt/old
         #mkdir: cannot create directory ‘/mnt/old/sys/firmware/efi’: No such file or directory
         #Traceback (most recent call first):
-        #[0] /srv/openslx-ng/systemd-init/builder/dnbd3-rootfs/scripts/rebash/changeroot.sh:67: changeroot_with_kernel_api
-        #[1] /srv/openslx-ng/systemd-init/builder/dnbd3-rootfs/scripts/rebash/changeroot.sh:28: changeroot
+        #[0] /srv/openslx-ng/systemd-init/builder/dnbd3-rootfs/scripts/rebash/changeroot.sh:67: bl_changeroot_with_kernel_api
+        #[1] /srv/openslx-ng/systemd-init/builder/dnbd3-rootfs/scripts/rebash/changeroot.sh:28: bl_changeroot
         #[2] ./build-initramfs.sh:532: main
         #[3] ./build-initramfs.sh:625: main
         if [ ! -e "${new_root_location}${mountpoint_path}" ]; then
@@ -118,7 +119,7 @@ changeroot_with_kernel_api() {
             fi
         fi
     done
-    changeroot_with_fake_fallback "$@"
+    bl_changeroot_with_fake_fallback "$@"
     local return_code=$?
     # Reverse mountpoint list to unmount them in reverse order.
     local reverse_kernel_api_locations
@@ -149,7 +150,7 @@ changeroot_with_kernel_api() {
     done
     return $return_code
 }
-alias changeroot.with_kernel_api=changeroot_with_kernel_api
+alias bl.changeroot.with_kernel_api=bl_changeroot_with_kernel_api
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

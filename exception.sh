@@ -15,57 +15,57 @@ source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.logging
 # endregion
 # shellcheck disable=SC2034,SC2016
-exception__doc__='
+bl_exception__doc__='
     NOTE: The try block is executed in a subshell, so no outer variables can be
     assigned.
 
-    >>> exception.activate
+    >>> bl.exception.activate
     >>> false
     +doctest_ellipsis
     Traceback (most recent call first):
     ...
 
-    >>> exception_activate
-    >>> exception.try {
+    >>> bl.exception.activate
+    >>> bl.exception.try {
     >>>     false
-    >>> }; exception.catch {
+    >>> }; bl.exception.catch {
     >>>     echo caught
     >>> }
     caught
 
     exception in a subshell:
-    >>> exception_activate
+    >>> bl.exception.activate
     >>> ( false )
     +doctest_ellipsis
     Traceback (most recent call first):
     ...
     Traceback (most recent call first):
     ...
-    >>> exception_activate
-    >>> exception.try {
+    >>> bl.exception.activate
+    >>> bl.exception.try {
     >>>     (false; echo "this should not be printed")
     >>>     echo "this should not be printed"
-    >>> }; exception.catch {
+    >>> }; bl.exception.catch {
     >>>     echo caught
     >>> }
     +doctest_ellipsis
     caught
 
     Nested exception:
-    >>> exception_foo() {
+    >>> bl_exception_foo() {
     >>>     true
-    >>>     exception.try {
+    >>>     bl.exception.try {
     >>>         false
-    >>>     }; exception.catch {
+    >>>     }; bl.exception.catch {
     >>>         echo caught inside foo
     >>>     }
     >>>     false # this is cought at top level
     >>>     echo this should never be printed
     >>> }
     >>>
-    >>> exception.try {
-    >>>     exception_foo
-    >>> }; exception.catch {
+    >>> bl.exception.try {
+    >>>     bl_exception_foo
+    >>> }; bl.exception.catch {
     >>>     echo caught
     >>> }
     >>>
@@ -76,9 +76,9 @@ exception__doc__='
     >>> foo() {
     >>>     echo $1
     >>>     true
-    >>>     exception.try {
+    >>>     bl.exception.try {
     >>>         false
-    >>>     }; exception.catch {
+    >>>     }; bl.exception.catch {
     >>>         echo caught inside foo
     >>>     }
     >>>     false # this is not caught
@@ -86,7 +86,7 @@ exception__doc__='
     >>> }
     >>>
     >>> foo "exception NOT ACTIVE:"
-    >>> exception_activate
+    >>> bl.exception.activate
     >>> foo "exception ACTIVE:"
     +doctest_ellipsis
     exception NOT ACTIVE:
@@ -98,23 +98,23 @@ exception__doc__='
     ...
 
     exception inside conditionals:
-    >>> exception_activate
+    >>> bl.exception.activate
     >>> false && echo "should not be printed"
     >>> (false) && echo "should not be printed"
-    >>> exception.try {
+    >>> bl.exception.try {
     >>>     (
     >>>     false
     >>>     echo "should not be printed"
     >>>     )
-    >>> }; exception.catch {
+    >>> }; bl.exception.catch {
     >>>     echo caught
     >>> }
     caught
 
     Print a caught exception traceback.
-    >>> exception.try {
+    >>> bl.exception.try {
     >>>     false
-    >>> }; exception.catch {
+    >>> }; bl.exception.catch {
     >>>     echo caught
     >>>     echo "$exception_last_traceback"
     >>> }
@@ -124,46 +124,46 @@ exception__doc__='
     ...
 
     Different syntax variations are possible.
-    >>> exception.try {
+    >>> bl.exception.try {
     >>>     ! true
-    >>> }; exception.catch {
+    >>> }; bl.exception.catch {
     >>>     echo caught
     >>> }
 
-    >>> exception.try
+    >>> bl.exception.try
     >>>     false
-    >>> exception.catch {
-    >>>     echo caught
-    >>> }
-    caught
-
-    >>> exception.try
-    >>>     false
-    >>> exception.catch
-    >>>     echo caught
-    caught
-
-    >>> exception.try {
-    >>>     false
-    >>> }
-    >>> exception.catch {
+    >>> bl.exception.catch {
     >>>     echo caught
     >>> }
     caught
 
-    >>> exception.try {
+    >>> bl.exception.try
+    >>>     false
+    >>> bl.exception.catch
+    >>>     echo caught
+    caught
+
+    >>> bl.exception.try {
     >>>     false
     >>> }
-    >>> exception.catch
+    >>> bl.exception.catch {
+    >>>     echo caught
+    >>> }
+    caught
+
+    >>> bl.exception.try {
+    >>>     false
+    >>> }
+    >>> bl.exception.catch
     >>> {
     >>>     echo caught
     >>> }
     caught
 '
-exception_active=false
-exception_active_before_try=false
-declare -ig exception_try_catch_level=0
-exception_error_handler() {
+bl_exception_active=false
+bl_exception_active_before_try=false
+declare -ig bl_exception_try_catch_level=0
+bl_exception_error_handler() {
     local error_code=$?
     local traceback="Traceback (most recent call first):"
     local -i i=0
@@ -176,42 +176,22 @@ exception_error_handler() {
         traceback="$traceback"'\n'"[$i] ${filename}:${line}: ${subroutine}"
         ((i++))
     done
-    if (( exception_try_catch_level == 0 )); then
+    if (( bl_exception_try_catch_level == 0 )); then
         bl.logging.plain "$traceback" 1>&2
     else
-        bl.logging.plain "$traceback" >"$exception_last_traceback_file"
+        bl.logging.plain "$traceback" >"$bl_exception_last_traceback_file"
     fi
     exit $error_code
 }
-exception_deactivate() {
-    # shellcheck disable=SC2016,2034
-    local __doc__='
-    >>> set -o errtrace
-    >>> trap '\''echo $foo'\'' ERR
-    >>> exception.activate
-    >>> trap -p ERR | cut --delimiter "'\''" --fields 2
-    >>> exception.deactivate
-    >>> trap -p ERR | cut --delimiter "'\''" --fields 2
-    exception_error_handler
-    echo $foo
-    '
-    $exception_active || return 0
-    [ "$exception_errtrace_saved" = "off" ] && set +o errtrace
-    [ "$exception_pipefail_saved" = "off" ] && set +o pipefail
-    [ "$exception_functrace_saved" = "off" ] && set +o functrace
-    export PS4="$exception_ps4_saved"
-    # shellcheck disable=SC2064
-    trap "$exception_err_traps" ERR
-    exception_active=false
-}
-exception_activate() {
-    $exception_active && return 0
+alias bl.exception.error_handler=bl_exception_error_handler
+bl_exception_activate() {
+    $bl_exception_active && return 0
 
-    exception_errtrace_saved=$(set -o | awk '/errtrace/ {print $2}')
-    exception_pipefail_saved=$(set -o | awk '/pipefail/ {print $2}')
-    exception_functrace_saved=$(set -o | awk '/functrace/ {print $2}')
-    exception_err_traps=$(trap -p ERR | cut --delimiter "'" --fields 2)
-    exception_ps4_saved="$PS4"
+    bl_exception_errtrace_saved=$(set -o | awk '/errtrace/ {print $2}')
+    bl_exception_pipefail_saved=$(set -o | awk '/pipefail/ {print $2}')
+    bl_exception_functrace_saved=$(set -o | awk '/functrace/ {print $2}')
+    bl_exception_err_traps=$(trap -p ERR | cut --delimiter "'" --fields 2)
+    bl_exception_ps4_saved="$PS4"
 
     # improve xtrace output (set -x)
     export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
@@ -247,37 +227,60 @@ exception_activate() {
     # >>> err || echo foo
     # >>> err && echo foo
 
-    trap exception_error_handler ERR
-    #trap exception_debug_handler DEBUG
-    #trap exception_exit_handler EXIT
-    exception_active=true
+    trap bl_exception_error_handler ERR
+    #trap bl_exception_debug_handler DEBUG
+    #trap bl_exception_exit_handler EXIT
+    bl_exception_active=true
 }
-exception_enter_try() {
-    if (( exception_try_catch_level == 0 )); then
-        exception_last_traceback_file="$(mktemp --suffix=rebash-exception)"
-        exception_active_before_try=$exception_active
+alias bl.exception.activate=bl_exception_activate
+bl_exception_deactivate() {
+    # shellcheck disable=SC2016,2034
+    local __doc__='
+    >>> set -o errtrace
+    >>> trap '\''echo $foo'\'' ERR
+    >>> bl.exception.activate
+    >>> trap -p ERR | cut --delimiter "'\''" --fields 2
+    >>> bl.exception.deactivate
+    >>> trap -p ERR | cut --delimiter "'\''" --fields 2
+    bl.exception.error_handler
+    echo $foo
+    '
+    $bl_exception_active || return 0
+    [ "$bl_exception_errtrace_saved" = "off" ] && set +o errtrace
+    [ "$bl_exception_pipefail_saved" = "off" ] && set +o pipefail
+    [ "$bl_exception_functrace_saved" = "off" ] && set +o functrace
+    export PS4="$bl_exception_ps4_saved"
+    # shellcheck disable=SC2064
+    trap "$bl_exception_err_traps" ERR
+    bl_exception_active=false
+}
+alias bl.exception.deactivate=bl_exception_deactivate
+bl_exception_enter_try() {
+    if (( bl_exception_try_catch_level == 0 )); then
+        bl_exception_last_traceback_file="$(mktemp --suffix=rebash-exception)"
+        bl_exception_active_before_try=$bl_exception_active
     fi
-    exception_deactivate
-    exception_try_catch_level+=1
+    bl.exception.deactivate
+    bl.exception.try_catch_level+=1
 }
-exception_exit_try() {
-    local exception_result=$1
-    exception_try_catch_level+=-1
-    if (( exception_try_catch_level == 0 )); then
-        $exception_active_before_try && exception_activate
-        exception_last_traceback="$(
-            bl.logging.cat "$exception_last_traceback_file"
+alias bl.exception.enter_try
+bl_exception_exit_try() {
+    local bl_exception_result=$1
+    bl_exception_try_catch_level+=-1
+    if (( bl_exception_try_catch_level == 0 )); then
+        $bl_exception_active_before_try && bl_exception_activate
+        bl_exception_last_traceback="$(
+            bl.logging.cat "$bl_exception_last_traceback_file"
         )"
-        rm "$exception_last_traceback_file"
+        rm "$bl_exception_last_traceback_file"
     else
-        exception_activate
+        bl.exception.activate
     fi
-    return $exception_result
+    return $bl_exception_result
 }
-alias exception.activate="exception_activate"
-alias exception.deactivate="exception_deactivate"
-alias exception.try='exception_enter_try; (exception_activate; '
-alias exception.catch='true); exception_exit_try $? || '
+alias bl.exception.exit_try=bl_exception_exit_try
+alias bl.exception.try='bl.exception.enter_try; (bl.exception.activate; '
+alias bl.exception.catch='true); bl.exception.exit_try $? || '
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

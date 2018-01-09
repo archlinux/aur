@@ -18,7 +18,8 @@ bl.module.import bashlink.logging
 bl.module.import bashlink.path
 bl.module.import bashlink.tools
 # endregion
-documentation_format_buffers() {
+# region functions
+bl_documentation_format_buffers() {
     local buffer="$1"
     local output_buffer="$2"
     local text_buffer="$3"
@@ -32,21 +33,23 @@ documentation_format_buffers() {
         echo '```'
     fi
 }
-documentation_format_docstring() {
+alias bl.documentation.format_buffers=bl_documentation_format_buffers
+bl_documentation_format_docstring() {
     local doc_string="$1"
     doc_string="$(echo "$doc_string" \
-        | sed '/+documentation_exclude_print/d' \
-        | sed '/-documentation_exclude_print/d' \
-        | sed '/+documentation_exclude/,/-documentation_exclude/d')"
-    bl.doctest.parse_doc_string "$doc_string" documentation_format_buffers \
+        | sed '/+bl.documentation.exclude_print/d' \
+        | sed '/-bl.documentation.exclude_print/d' \
+        | sed '/+bl.documentation.exclude/,/-bl.documentation.exclude/d')"
+    bl.doctest.parse_doc_string "$doc_string" bl_documentation_format_buffers \
         --preserve-prompt
 }
-documentation_generate() {
+alias bl.documentation.format_docstring=bl_documentation_format_docstring
+bl_documentation_generate() {
     # TODO add doc test setup function to documentation
     module=$1
     (
     bl.import "$module" || bl.logging.warn "Failed to import module $module"
-    declared_functions="$module_declared_function_names_after_import"
+    declared_functions="$bl_module_declared_function_names_after_import"
     module="$(basename "$module")"
     module="${module%.sh}"
     declared_module_functions="$(! declare -F | cut -d' ' -f3 | grep -e "^${module%.sh}" )"
@@ -60,7 +63,7 @@ documentation_generate() {
     if [[ -z "$doc_string" ]]; then
         bl.logging.warn "No top level documentation for module $module" 1>&2
     else
-        bl.logging.plain "$(documentation_format_docstring "$doc_string")"
+        bl.logging.plain "$(bl.documentation.format_docstring "$doc_string")"
     fi
 
     # function level documentation
@@ -74,12 +77,13 @@ documentation_generate() {
             bl.logging.warn "No documentation for function $function" 1>&2
         else
             bl.logging.plain "### Function $function"
-            bl.logging.plain "$(documentation_format_docstring "$doc_string")"
+            bl.logging.plain "$(bl.documentation.format_docstring "$doc_string")"
         fi
     done
     )
 }
-documentation_serve() {
+alias bl.documentation.generate=bl_documentation_generate
+bl_documentation_serve() {
     local __doc__='
     Serves a readme via webserver. Uses Flatdoc.
     '
@@ -94,12 +98,13 @@ documentation_serve() {
     popd
     rm -rf "$server_root"
 }
-documentation_parse_args() {
+alias bl.documentation.serve=bl_documentation_serve
+bl_documentation_parse_arguments() {
     local filename module main_documentation serve
     bl.arguments.set "$@"
     bl.arguments.get_flag --serve serve
     bl.arguments.apply_new_arguments
-    $serve && documentation_serve "$1" && return 0
+    $serve && bl.documentation.serve "$1" && return 0
     main_documentation="$(dirname "${BASH_SOURCE[0]}")/rebash.md"
     if [ $# -eq 0 ]; then
         [[ -e "$main_documentation" ]] && cat "$main_documentation"
@@ -107,29 +112,30 @@ documentation_parse_args() {
         bl.logging.plain "# Generated documentation"
         for filename in $(dirname "$0")/*.sh; do
             module=$(basename "${filename%.sh}")
-            documentation_generate "$module"
+            bl.documentation.generate "$module"
         done
     else
         bl.logging.plain "# Generated documentation"
         for module in "$@"; do
-            documentation_generate "$(bl.path.convert_to_absolute "$module")"
+            bl.documentation.generate "$(bl.path.convert_to_absolute "$module")"
         done
     fi
     return 0
 }
-documentation_print_doc_string() {
+alias bl.documentation.parse_arguments=bl_documentation_parse_arguments
+bl_documentation_print_doc_string() {
     local doc_string="$1"
     echo "$doc_string" \
-        | sed '/+documentation_exclude_print/,/-documentation_exclude_print/d' \
-        | sed '/+documentation_exclude/,/-documentation_exclude/d' \
+        | sed '/+bl.documentation.exclude_print/,/-bl.documentation.exclude_print/d' \
+        | sed '/+bl.documentation.exclude/,/-bl.documentation.exclude/d' \
         | sed '/```/d'
 }
-alias documentation.print_doc_string="documentation_print_doc_string"
-
-if [[ ${BASH_SOURCE[0]} == "$0" ]]; then
+alias bl.documentation.print_doc_string=bl_documentation_print_doc_string
+# endregion
+if bl.tools.is_main; then
     bl.logging.set_level debug
     bl.logging.set_commands_level info
-    documentation_parse_args "$@"
+    bl.documentation.parse_arguments "$@"
 fi
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

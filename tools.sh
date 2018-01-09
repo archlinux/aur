@@ -111,23 +111,23 @@ bl_tools_unique() {
         sed 's/\s*[0-9]\+\s\+//'
 }
 alias bl.tools.unique="bl_tools_unique"
-tools_dependency_check_pkgconfig() {
+bl_tools_dependency_check_pkgconfig() {
     local __doc__='
     This function check if all given libraries can be found.
 
     #### Example:
 
-    >>> tools_dependency_check_shared_library libc.so; echo $?
+    >>> bl.tools.dependency_check_shared_library libc.so; echo $?
     0
-    >>> tools_dependency_check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
+    >>> bl.tools.dependency_check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
     2
-    >>> tools_dependency_check_shared_library __not_existing__ 1>/dev/null; echo $?
+    >>> bl.tools.dependency_check_shared_library __not_existing__ 1>/dev/null; echo $?
     2
     '
     local return_code=0
     local library
 
-    if ! tools_dependency_check pkg-config &>/dev/null; then
+    if ! bl.tools.dependency_check pkg-config &>/dev/null; then
         bl.logging.critical 'Missing dependency "pkg-config" to check for packages.'
         return 1
     fi
@@ -139,23 +139,24 @@ tools_dependency_check_pkgconfig() {
     done
     return $return_code
 }
-tools_dependency_check_shared_library() {
+alias bl.tools.dependency_check_pkgconfig=bl_tools_dependency_check_pkgconfig
+bl_tools_dependency_check_shared_library() {
     local __doc__='
     This function check if all given shared libraries can be found.
 
     #### Example:
 
-    >>> tools_dependency_check_shared_library libc.so; echo $?
+    >>> bl.tools.dependency_check_shared_library libc.so; echo $?
     0
-    >>> tools_dependency_check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
+    >>> bl.tools.dependency_check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
     2
-    >>> tools_dependency_check_shared_library __not_existing__ 1>/dev/null; echo $?
+    >>> bl.tools.dependency_check_shared_library __not_existing__ 1>/dev/null; echo $?
     2
     '
     local return_code=0
     local pattern
 
-    if ! tools_dependency_check ldconfig &>/dev/null; then
+    if ! bl.tools.dependency_check ldconfig &>/dev/null; then
         bl.logging.critical 'Missing dependency "ldconfig" to check for shared libraries.'
         return 1
     fi
@@ -169,20 +170,21 @@ tools_dependency_check_shared_library() {
     done
     return $return_code
 }
-tools_dependency_check() {
+alias bl.tools.dependency_check_shared_library=bl_tools_dependency_check_shared_library
+bl_tools_dependency_check() {
     # shellcheck disable=SC2034
     local __doc__='
     This function check if all given dependencies are present.
 
     #### Example:
 
-    >>> tools_dependency_check mkdir ls; echo $?
+    >>> bl.tools.dependency_check mkdir ls; echo $?
     0
-    >>> tools_dependency_check mkdir __not_existing__ 1>/dev/null; echo $?
+    >>> bl.tools.dependency_check mkdir __not_existing__ 1>/dev/null; echo $?
     2
-    >>> tools_dependency_check __not_existing__ 1>/dev/null; echo $?
+    >>> bl.tools.dependency_check __not_existing__ 1>/dev/null; echo $?
     2
-    >>> tools_dependency_check "ls __not_existing__"; echo $?
+    >>> bl.tools.dependency_check "ls __not_existing__"; echo $?
     __not_existing__
     2
     '
@@ -201,7 +203,8 @@ tools_dependency_check() {
     done
     return $return_code
 }
-tools__doctest_setup__='
+alias bl.tools.dependency_check=bl_tools_dependency_check
+bl_tools__doctest_setup__='
 lsblk() {
     if [[ "${@: -1}" == "" ]];then
         echo "lsblk: : not a block device"
@@ -226,27 +229,27 @@ blkid() {
     echo "192d8b9e"
 }
 '
-tools_find_block_device() {
+bl_tools_find_block_device() {
     # shellcheck disable=SC2034,SC2016
     local __doc__='
-    >>> tools_find_block_device "boot_partition"
+    >>> bl.tools.find_block_device "boot_partition"
     /dev/sdb1
-    >>> tools_find_block_device "boot_partition" /dev/sda
+    >>> bl.tools.find_block_device "boot_partition" /dev/sda
     /dev/sda2
-    >>> tools_find_block_device "discoverable by blkid"
+    >>> bl.tools.find_block_device "discoverable by blkid"
     /dev/sda2
-    >>> tools_find_block_device "_partition"
+    >>> bl.tools.find_block_device "_partition"
     /dev/sdb1 /dev/sdb2
-    >>> tools_find_block_device "not matching anything" || echo not found
+    >>> bl.tools.find_block_device "not matching anything" || echo not found
     not found
-    >>> tools_find_block_device "" || echo not found
+    >>> bl.tools.find_block_device "" || echo not found
     not found
     '
     local partition_pattern="$1"
     local device="${2-}"
 
     [ "$partition_pattern" = "" ] && return 1
-    tools_find_block_device_simple() {
+    find_block_device_simple() {
         local device_info
         lsblk --noheadings --list --paths --output \
         NAME,TYPE,LABEL,PARTLABEL,UUID,PARTUUID ${device:+"$device"} \
@@ -258,7 +261,7 @@ tools_find_block_device() {
             fi
         done
     }
-    tools_find_block_device_deep() {
+    find_block_device_deep() {
         local device_info
         lsblk --noheadings --list --paths --output NAME ${device:+"$device"} \
         | sort --unique | cut -d' ' -f1 | while read -r current_device; do
@@ -271,15 +274,16 @@ tools_find_block_device() {
         done
     }
     local candidates
-    candidates=($(tools_find_block_device_simple))
-    [ ${#candidates[@]} -eq 0 ] && candidates=($(tools_find_block_device_deep))
-    unset -f tools_find_block_device_simple
-    unset -f tools_find_block_device_deep
+    candidates=($(find_block_device_simple))
+    [ ${#candidates[@]} -eq 0 ] && candidates=($(find_block_device_deep))
+    unset -f find_block_device_simple
+    unset -f find_block_device_deep
     [ ${#candidates[@]} -eq 0 ] && return 1
     [ ${#candidates[@]} -ne 1 ] && echo "${candidates[@]}" && return 1
     bl.logging.plain "${candidates[0]}"
 }
-tools_create_partition_via_offset() {
+alias bl.tools.find_block_device=bl_tools_find_block_device
+bl_tools_create_partition_via_offset() {
     local device="$1"
     local nameOrUUID="$2"
     local loop_device
@@ -303,22 +307,18 @@ tools_create_partition_via_offset() {
     losetup --offset "$offsetBytes" "$loop_device" "$device"
     bl.logging.plain "$loop_device"
 }
-alias tools.dependency_check_pkgconfig="tools_dependency_check_pkgconfig"
-alias tools.dependency_check_shared_library="tools_dependency_check_shared_library"
-alias tools.dependency_check="tools_dependency_check"
-alias tools.find_block_device="tools_find_block_device"
-alias tools.create_partition_via_offset="tools_create_partition_via_offset"
-makeUEFIBootEntry() {
-    # Creates an uefi boot entry.
-    #
-    # Examples:
-    #
-    # >>> makeUEFIBootEntry archLinux
-    # ...
-    # >>> makeUEFIBootEntry archLinuxFallback
-    # ...
-    # >>> makeUEFIBootEntry archLinuxLTSFallback vmlinuz-linux-lts
-    # ...
+alias bl.tools.create_partition_via_offset=bl_tools_create_partition_via_offset
+bl_tools_make_uefi_boot_entry() {
+    local __doc__='
+    Creates an uefi boot entry.
+
+    >>> bl.tools.make_uefi_boot_entry archLinux
+    ...
+    >>> bl.tools.make_uefi_boot_entry archLinuxFallback
+    ...
+    >>> bl.tools.make_uefi_boot_entry archLinuxLTSFallback vmlinuz-linux-lts
+    ...
+    '
     local kernelParameterFilePath="${ILU_CONFIG_PATH}linux/kernel/${1}CommandLine"
     local kernel='vmlinuz-linux'
     if [[ "$2" ]]; then
@@ -333,28 +333,28 @@ makeUEFIBootEntry() {
     fi
     return $?
 }
-sshScreen() {
-    # Wraps the ssh client for automatically starting a screen session on
-    # server.
-    #
-    # Examples:
-    #
-    # >>> sshScreen user@host [SSH_OPTIONS]
+alias bl.tools.make_uefi_boot_entry=bl_tools_make_uefi_boot_entry
+bl_tools_ssh_screen() {
+    local __doc__='
+    Wraps the ssh client for automatically starting a screen session on
+    server.
+    >>> sshScreen user@host [SSH_OPTIONS]
+    '
     ssh "$1" -t 'screen -r || screen -S main' "${@:2}"
     return $?
 }
-runWithAppendedShebang() {
-    # This function reads and returns the shebang from given file if exist.
-    #
-    # Examples:
-    #
-    # # /usr/bin/env python -O /path/to/script.py
-    # >>> appendShebang -O -- /path/to/script.py
-    # ...
-    #
-    # # /usr/bin/env python -O /path/to/script.py argument1 argument2
-    # >>> runWithAppendedShebang -O -- /path/to/script.py argument1 argument2
-    # ...
+alias bl.tools.ssh_screen=bl_tools_ssh_screen
+bl_tools_run_with_appended_shebang() {
+    local __doc__='
+    This function reads and returns the shebang from given file if exist.
+
+    # /usr/bin/env python -O /path/to/script.py
+    >>> appendShebang -O -- /path/to/script.py
+    ...
+    # /usr/bin/env python -O /path/to/script.py argument1 argument2
+    >>> runWithAppendedShebang -O -- /path/to/script.py argument1 argument2
+    ...
+    '
     local shebangArguments=''
     local arguments=''
     local applicationPath=''
@@ -389,6 +389,7 @@ runWithAppendedShebang() {
     eval "$applicationRunCommand"
     return $?
 }
+alias bl.tools.run_with_appended_shebang=bl_tools_run_with_appended_shebang
 overlayLocation() {
     # Mounts an overlay over given location. This could be useful if we have a
     # read only system caused by physical reasons.

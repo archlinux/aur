@@ -9,11 +9,11 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
-display_load_xinit_sources() {
+bl_display_load_xinit_sources() {
     local __doc__='
     This functions loads all xinit source scripts.
 
-    >>> display.load_xinit_sources
+    >>> bl.display.load_xinit_sources
     '
     local xinitRCPath='/etc/X11/xinit/xinitrc.d'
     if [ -d "$XINIT_RC_PATH" ]; then
@@ -23,12 +23,12 @@ display_load_xinit_sources() {
         unset filePath
     fi
 }
-alias display.load_xinit_sources='display_load_xinit_sources'
-display_wacom_map() {
+alias bl.display.load_xinit_sources='bl_display_load_xinit_sources'
+bl_display_wacom_map() {
     local __doc__='
     This function maps wacom input device to given output display.
 
-    >>> display.wacom_map half
+    >>> bl.display.wacom_map half
     '
     local rotation
     case $1 in none|half|cw|ccw)
@@ -36,7 +36,7 @@ display_wacom_map() {
         ;;
     '');; *)
         echo -en\
-            "Usage: display.wacom_map [rotate]\nwhere [rotate] is one of\n"\
+            "Usage: bl.display.wacom_map [rotate]\nwhere [rotate] is one of\n"\
             "\thalf\tinvert mapping\n"\
             "\tccw\tturn mapping by 90° to the left\n"\
             "\tcw\tturn mapping by 90° to the right\n"\
@@ -56,12 +56,12 @@ display_wacom_map() {
     done
     unset IFS
 }
-alias display.wacom_map='display_wacom_map'
-display_wacom_rotate() {
+alias bl.display.wacom_map='bl_display_wacom_map'
+bl_display_wacom_rotate() {
     local __doc__='
     Rotates a wacom display orientation 180°
 
-    >>> display.wacom_rotate
+    >>> bl.display.wacom_rotate
     '
     local _USE="Script to rotate mapping and view of an wacom-display (named output)."
 
@@ -135,11 +135,11 @@ EOF
         esac
     done
     xrandr --output $_OUTPUT --rotate $_XRANDR_ARG
-    display.wacom_map $_WACOM_ARG
+    bl.display.wacom_map $_WACOM_ARG
     return $?
 }
-alias display.wacom_rotate=display_wacom_rotate
-display_wacom_toggle_finger_touch_state() {
+alias bl.display.wacom_rotate=bl_display_wacom_rotate
+bl_display_wacom_toggle_finger_touch_state() {
     local __doc__='
     Toggles between enabled and disabled finger touch on wacom displays.
 
@@ -158,7 +158,7 @@ display_wacom_toggle_finger_touch_state() {
         return $?
     fi
 }
-alias display.wacom_toggle_finger_touch_state=display_wacom_toggle_finger_touch_state
+alias bl.display.wacom_toggle_finger_touch_state=bl_display_wacom_toggle_finger_touch_state
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:
