@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=bash-link
-pkgver=1.0.12
-pkgrel=10
+pkgver=1.0.13
+pkgrel=11
 pkgdesc='a high reliable bash library'
 arch=('any')
 url='http://torben.website/bashlink'
