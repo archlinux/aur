@@ -61,6 +61,7 @@ pkgbase = xorg-server-dev
 	source = xvfb-run
 	source = xvfb-run.1
 	source = udev-changes.diff
+	source = xwrap-suid-race.patch
 	sha256sums = 3c0e4a354a6b1d5d357b121357946ee8ffdb2f52158b2e63e105be9cef013168
 	sha256sums = SKIP
 	sha256sums = 914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8
@@ -68,6 +69,7 @@ pkgbase = xorg-server-dev
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
 	sha256sums = ce9b235c053ac85a9da86fba3b60fcfc48d36a8bd789b94ed79d5d571bc7b0aa
+	sha256sums = bce0e105386d75239f473b867d8ea6bc60e5302d87e03fdc720f48f43f5454f1
 
 pkgname = xorg-server-dev
 	pkgdesc = Xorg X server - Bleeding edge version
