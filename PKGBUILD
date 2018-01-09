@@ -3,8 +3,8 @@
 
 pkgname=libdrm-git
 _pkgname=libdrm
-pkgver=2.4.81.r2.gce9e3ba6
-pkgrel=2
+pkgver=2.4.89.r5.gde807d1a
+pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, master git version"
 arch=(i686 x86_64)
 license=('custom')
@@ -20,26 +20,32 @@ source=('libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master'
 sha512sums=('SKIP'
             'b0ca349b882a4326b19f81f22804fabdb6fb7aef31cdc7b16b0a7ae191bfbb50c7daddb2fc4e6c33f1136af06d060a273de36f6f3412ea326f16fa4309fda660')
 
+
+prepare() {
+    cd $_pkgname
+    autoreconf -fi
+}
+
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
+    cd $_pkgname
 #    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     git describe --long | sed 's/^libdrm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${_pkgname}
-  ./autogen.sh --prefix=/usr --enable-udev
+  cd $_pkgname
+  ./configure --prefix=/usr --enable-udev
   make
 }
 
 check() {
-  cd ${_pkgname}
+  cd $_pkgname
   make -k check
 }
 
 package() {
-  cd ${_pkgname}
+  cd $_pkgname
   make DESTDIR="$pkgdir" install
-  install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 ${srcdir}/COPYING "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m755 -d "$pkgdir"/usr/share/licenses/$pkgname
+  install -m644 "$srcdir"/COPYING "$pkgdir"/usr/share/licenses/$pkgname/
 }
