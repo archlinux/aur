@@ -2,32 +2,35 @@
 # Contributor: speps <speps dot archlinux dot org>
 
 pkgname=qxmledit
-pkgver=0.9.8
-pkgrel=1
+pkgver=0.9.9.2
+pkgrel=1.1
 pkgdesc="Simple XML editor and XSD viewer"
 arch=('x86_64')
 url="http://qxmledit.org/"
 license=('GPL3' 'LGPL3')
 depends=('qt5-svg' 'glu' 'qt5-scxml')
 makedepends=('freeglut' 'gzip')
-source=("http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-$pkgver/qxmledit-$pkgver-src.tgz")
-sha256sums=('a24cf4439ab4676cd375669b3b2c9e47ac7e859835a803013ea35b15942ef210')
+source=("https://github.com/lbellonda/qxmledit/archive/r-0.9.9.2.zip")
+# source=("http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-0.9.9/qxmledit-$pkgver-src.tgz")
+sha256sums=('ea1869916c02ec8ee27006ed8f604befa4e405387736d56ddf320f460957846e')
 
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-r-$pkgver"
   export \
                 QXMLEDIT_INST_DIR="/usr/bin" \
                 QXMLEDIT_INST_LIB_DIR="/usr/lib" \
                 QXMLEDIT_INST_INCLUDE_DIR="/usr/include/${pkgname}" \
                 QXMLEDIT_INST_DATA_DIR="/usr/share/${pkgname}" \
                 QXMLEDIT_INST_DOC_DIR="/usr/share/doc/${pkgname}"
-  qmake-qt5
+  qmake-qt5 \
+    QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+    QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-r-$pkgver"
   make INSTALL_ROOT="$pkgdir/" install
 
   # man files
