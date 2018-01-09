@@ -1,36 +1,36 @@
-# Maintainer: Samadi van Koten
+# Maintainer: Andy Kluger <https://t.me/andykluger>
+# Contributor: Samadi van Koten
 
 pkgname=umoci
-_pkgver='0.0.0-rc3' # Actual version
-pkgver="${_pkgver//-/_}"
+pkgver=0.3.1
 pkgrel=1
-pkgdesc='umoci modifies Open Container images'
+pkgdesc="Umoci Modifies Open Container Images"
 arch=('i686' 'x86_64')
-url='https://www.cyphar.com/blog/post/umoci-new-oci-image-tool'
+url="https://umo.ci/"
 license=('Apache 2.0')
 depends=()
 makedepends=("go")
 conflicts=()
 provides=()
 options=()
-source=("$pkgname.tar.gz::https://github.com/cyphar/umoci/archive/v0.0.0-rc3.tar.gz")
-md5sums=('SKIP')
+source=("https://github.com/openSUSE/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('3006fbf29c5575df30e4ea0106c41362')
 
-_repo_name='github.com/cyphar/umoci'
+_repo_name="github.com/openSUSE/$pkgname"
 
 prepare() {
-  mkdir -p "$srcdir/src/${_repo_name%/*}"
-  ln -Tfs "$srcdir/$pkgname-$_pkgver" "$srcdir/src/$_repo_name"
+  rm -rf "$srcdir/src/$_repo_name"
+  mkdir -p "$srcdir/src/$_repo_name"
+  mv -Tf "$srcdir/$pkgname-$pkgver" "$srcdir/src/$_repo_name"
 }
 
 build() {
   cd "$srcdir/src/$_repo_name"
-  GOPATH=$srcdir make
+  GOPATH="$srcdir" make
+  # GOPATH="$srcdir" make doc
 }
 
 package() {
-  ## For `makepkg --repackage`
   cd "$srcdir/src/$_repo_name"
   install -Dm 755 -t "$pkgdir/usr/bin" umoci
 }
-
