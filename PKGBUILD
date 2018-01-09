@@ -3,13 +3,13 @@
 pkgname=kubelet-bin
 pkgdesc="Kubernetes.io kubelet binary"
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://kubernetes.io"
 license=('apache')
 conflicts=('kubernetes')
-source_x86_64=(https://packages.cloud.google.com/apt/pool/kubelet_1.9.0-00_amd64_31ec5709ec1eb37b194563cb28eaafafd1f0c9d009239cdfb694686066b35c2e.deb)
-sha256sums_x86_64=('31ec5709ec1eb37b194563cb28eaafafd1f0c9d009239cdfb694686066b35c2e')
+source_x86_64=(https://packages.cloud.google.com/apt/pool/kubelet_1.9.1-00_amd64_e1111bdd0cb45976216b7498a0b1d68d15ddaacc462a067d831b0f20ae8c276b.deb)
+sha256sums_x86_64=('e1111bdd0cb45976216b7498a0b1d68d15ddaacc462a067d831b0f20ae8c276b')
 
 package() {
   tar -vxf data.tar.xz
