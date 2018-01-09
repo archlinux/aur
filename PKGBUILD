@@ -31,7 +31,7 @@ md5sums=('ae421158a6e7268c313150b8fff6c2a0'
          '11b55a3fec7279db32b63e3a0b97dc01')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
-#source[0]="https://dl.google.com/linux/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_63.0.3218.0-1_amd64.deb"
+#source[0]="https://dl.google.com/linux/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_65.0.3311.3-1_amd64.deb"
 #md5sums[0]='42ce8e71f21226dd8550f44b09236b98'
 
 package() {
