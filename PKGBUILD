@@ -1,11 +1,11 @@
 pkgname=cargo-bloat-git
-pkgver=0.1.0.4.ge8c751b
+pkgver=0.1.0.10.g0484c2d
 pkgrel=1
 pkgdesc="Find out what takes most of the space in your executable"
 arch=('x86_64')
 url="https://github.com/RazrFalcon/cargo-bloat"
 license=('MIT')
-depends=('cargo')
+depends=('cargo' 'http-parser' 'curl')
 makedepends=('cargo')
 optdepends=()
 provides=('cargo-bloat')
@@ -25,5 +25,6 @@ build() {
 
 package() {
 	cd $pkgname
-	install -D -m755 "$srcdir/$pkgname/target/release/cargo-bloat" "$pkgdir/usr/bin/cargo-bloat"
+	install -Dm755 "$srcdir/$pkgname/target/release/cargo-bloat" "$pkgdir/usr/bin/cargo-bloat"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
