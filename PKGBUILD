@@ -4,48 +4,45 @@
 
 pkgname=libinput-no-hysteresis
 _pkgname=libinput
-pkgver=1.8.3
-pkgrel=2
+pkgver=1.9.4
+pkgrel=1
 pkgdesc="Input device management and event handling library sans hysteresis"
-arch=(i686 x86_64)
 url="https://www.freedesktop.org/wiki/Software/libinput/"
+arch=(x86_64)
 license=(custom:X11)
 provides=("libinput=${pkgver}")
 depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
 makedepends=('doxygen' 'graphviz' 'gtk3' 'meson')
-optdepends=('gtk3: libinput debug-gui')
+optdepends=('gtk3: libinput debug-gui'
+            'python-pyudev: libinput measure'
+            'python-evdev: libinput measure')
 source=(https://freedesktop.org/software/$_pkgname/$_pkgname-$pkgver.tar.xz{,.sig}
-        disable-hysteresis.patch
-        0001-fix-Invalid-kwargs-for-option-udev-dir-FS-55925.patch)
-sha512sums=('88006d217e3507858fa6b9ac1f25c267255fb51d1bcf1208d2afd423bf2a9292944bc5526ea91f27fad3ff04c2f9f43ab3aa25fd9fb7ace1231ecd33ddf18de6'
+        disable-hysteresis.patch)
+sha512sums=('302f9497ea9ffb2163c643e9ca2f0a773ea141f6fe0a3aa3d8e86eb11a5d11e75d858b1e679ebfd3f913c645beac059cfd356b37c4ea17a8853068f79a740a4b'
             'SKIP'
-            '22c97898b8bd2ed6757ce2a0f2c19d8ff908b3134a9bd435285bc5c59d9d4a17cc5bb4ef0bfb01001ef9aeb2c917bdcc79324cc68bc442c2038d9c448773ac5e'
-            'dd07a48986a2d335b4b4bd68a280e73ded422974489d8b4c2ed3337f6de103b3374400ebd732a54445ab451c3a15ed4b3a73c9cab5053cd7658d27cc0e2cd427')
+            '22c97898b8bd2ed6757ce2a0f2c19d8ff908b3134a9bd435285bc5c59d9d4a17cc5bb4ef0bfb01001ef9aeb2c917bdcc79324cc68bc442c2038d9c448773ac5e')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
 prepare() {
-  mkdir build
   cd $_pkgname-$pkgver
+  # Reduce docs size
+  printf '%s\n' >>doc/libinput.doxygen.in \
+    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
   patch -p1 -i "${srcdir}/disable-hysteresis.patch"
-  patch -p1 -i "${srcdir}/0001-fix-Invalid-kwargs-for-option-udev-dir-FS-55925.patch"
 }
 
 build() {
-  cd build
-  meson --prefix=/usr --buildtype=release ../$_pkgname-$pkgver --libexecdir=/usr/lib \
-    -Dtests=false
-  ninja
+  arch-meson $_pkgname-$pkgver build -Dtests=false
+  ninja -C build
 }
 
 package() {
-  pwd
-  cd build
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" ninja -C build install
 
-  cd ../$_pkgname-$pkgver
-  install -Dvm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dvm644 $_pkgname-$pkgver/COPYING \
+    "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
   # install doc - no Makefile target
-  install -dv "$pkgdir/usr/share/doc/libinput"
-  cp -av doc/html/* "$pkgdir/usr/share/doc/libinput"
+  install -d "$pkgdir/usr/share/doc"
+  cp -av build/html "$pkgdir/usr/share/doc/libinput"
 }
