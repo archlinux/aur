@@ -12,7 +12,7 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-bashlink.module.import bashlink.logging
+bl.module.import bashlink.logging
 # endregion
 # shellcheck disable=SC2034,SC2016
 exception__doc__='
@@ -177,9 +177,9 @@ exception_error_handler() {
         ((i++))
     done
     if (( exception_try_catch_level == 0 )); then
-        logging.plain "$traceback" 1>&2
+        bl.logging.plain "$traceback" 1>&2
     else
-        logging.plain "$traceback" >"$exception_last_traceback_file"
+        bl.logging.plain "$traceback" >"$exception_last_traceback_file"
     fi
     exit $error_code
 }
@@ -266,7 +266,7 @@ exception_exit_try() {
     if (( exception_try_catch_level == 0 )); then
         $exception_active_before_try && exception_activate
         exception_last_traceback="$(
-            logging.cat "$exception_last_traceback_file"
+            bl.logging.cat "$exception_last_traceback_file"
         )"
         rm "$exception_last_traceback_file"
     else

@@ -12,9 +12,11 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-bashlink.module.import bashlink.arguments
-bashlink.module.import bashlink.doctest
-bashlink.module.import bashlink.logging
+bl.module.import bashlink.arguments
+bl.module.import bashlink.doctest
+bl.module.import bashlink.logging
+bl.module.import bashlink.path
+bl.module.import bashlink.tools
 # endregion
 documentation_format_buffers() {
     local buffer="$1"
@@ -36,29 +38,29 @@ documentation_format_docstring() {
         | sed '/+documentation_exclude_print/d' \
         | sed '/-documentation_exclude_print/d' \
         | sed '/+documentation_exclude/,/-documentation_exclude/d')"
-    doctest.parse_doc_string "$doc_string" documentation_format_buffers \
+    bl.doctest.parse_doc_string "$doc_string" documentation_format_buffers \
         --preserve-prompt
 }
 documentation_generate() {
     # TODO add doc test setup function to documentation
     module=$1
     (
-    core.import "$module" || logging.warn "Failed to import module $module"
-    declared_functions="$core_declared_functions_after_import"
+    bl.import "$module" || bl.logging.warn "Failed to import module $module"
+    declared_functions="$module_declared_function_names_after_import"
     module="$(basename "$module")"
     module="${module%.sh}"
     declared_module_functions="$(! declare -F | cut -d' ' -f3 | grep -e "^${module%.sh}" )"
     declared_functions="$declared_functions"$'\n'"$declared_module_functions"
-    declared_functions="$(core.unique <(echo "$declared_functions"))"
+    declared_functions="$(bl.tools.unique <(echo "$declared_functions"))"
 
     # module level doc
     test_identifier="$module"__doc__
     local doc_string="${!test_identifier}"
-    logging.plain "## Module $module"
+    bl.logging.plain "## Module $module"
     if [[ -z "$doc_string" ]]; then
-        logging.warn "No top level documentation for module $module" 1>&2
+        bl.logging.warn "No top level documentation for module $module" 1>&2
     else
-        logging.plain "$(documentation_format_docstring "$doc_string")"
+        bl.logging.plain "$(documentation_format_docstring "$doc_string")"
     fi
 
     # function level documentation
@@ -67,12 +69,12 @@ documentation_generate() {
     for function in $declared_functions;
     do
         # shellcheck disable=SC2089
-        doc_string="$(doctest.get_function_docstring "$function")"
+        doc_string="$(bl.doctest.get_function_docstring "$function")"
         if [[ -z "$doc_string" ]]; then
-            logging.warn "No documentation for function $function" 1>&2
+            bl.logging.warn "No documentation for function $function" 1>&2
         else
-            logging.plain "### Function $function"
-            logging.plain "$(documentation_format_docstring "$doc_string")"
+            bl.logging.plain "### Function $function"
+            bl.logging.plain "$(documentation_format_docstring "$doc_string")"
         fi
     done
     )
@@ -94,23 +96,23 @@ documentation_serve() {
 }
 documentation_parse_args() {
     local filename module main_documentation serve
-    arguments.set "$@"
-    arguments.get_flag --serve serve
-    arguments.apply_new_arguments
+    bl.arguments.set "$@"
+    bl.arguments.get_flag --serve serve
+    bl.arguments.apply_new_arguments
     $serve && documentation_serve "$1" && return 0
     main_documentation="$(dirname "${BASH_SOURCE[0]}")/rebash.md"
     if [ $# -eq 0 ]; then
         [[ -e "$main_documentation" ]] && cat "$main_documentation"
-        logging.plain ""
-        logging.plain "# Generated documentation"
+        bl.logging.plain ""
+        bl.logging.plain "# Generated documentation"
         for filename in $(dirname "$0")/*.sh; do
             module=$(basename "${filename%.sh}")
             documentation_generate "$module"
         done
     else
-        logging.plain "# Generated documentation"
+        bl.logging.plain "# Generated documentation"
         for module in "$@"; do
-            documentation_generate "$(core_abs_path "$module")"
+            documentation_generate "$(bl.path.convert_to_absolute "$module")"
         done
     fi
     return 0
@@ -125,8 +127,8 @@ documentation_print_doc_string() {
 alias documentation.print_doc_string="documentation_print_doc_string"
 
 if [[ ${BASH_SOURCE[0]} == "$0" ]]; then
-    logging.set_level debug
-    logging.set_commands_level info
+    bl.logging.set_level debug
+    bl.logging.set_commands_level info
     documentation_parse_args "$@"
 fi
 # region vim modline

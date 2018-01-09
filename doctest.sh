@@ -12,14 +12,14 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-bashlink.module.import bashlink.arguments
-bashlink.module.import bashlink.cli
-bashlink.module.import bashlink.documentation
-bashlink.module.import bashlink.exception
-bashlink.module.import bashlink.logging
-bashlink.module.import bashlink.path
-bashlink.module.import bashlink.time
-bashlink.module.import bashlink.tools
+bl.module.import bashlink.arguments
+bl.module.import bashlink.cli
+bl.module.import bashlink.documentation
+bl.module.import bashlink.exception
+bl.module.import bashlink.logging
+bl.module.import bashlink.path
+bl.module.import bashlink.time
+bl.module.import bashlink.tools
 # endregion
 # region doc
 # shellcheck disable=SC2034,SC2016
@@ -38,25 +38,25 @@ doctest__doc__='
     ```
     #### Example output `./doctest.sh -v arguments.sh`
     ```bash
-    [verbose:doctest.sh:330] arguments:[PASS]
-    [verbose:doctest.sh:330] arguments_get_flag:[PASS]
-    [verbose:doctest.sh:330] arguments_get_keyword:[PASS]
-    [verbose:doctest.sh:330] arguments_get_parameter:[PASS]
-    [verbose:doctest.sh:330] arguments_get_positional:[PASS]
-    [verbose:doctest.sh:330] arguments_set:[PASS]
-    [info:doctest.sh:590] arguments - passed 6/6 tests in 918 ms
+    [verbose:doctest.sh:330] bl.arguments:[PASS]
+    [verbose:doctest.sh:330] bl.arguments_get_flag:[PASS]
+    [verbose:doctest.sh:330] bl.arguments_get_keyword:[PASS]
+    [verbose:doctest.sh:330] bl.arguments_get_parameter:[PASS]
+    [verbose:doctest.sh:330] bl.arguments_get_positional:[PASS]
+    [verbose:doctest.sh:330] bl.arguments_set:[PASS]
+    [info:doctest.sh:590] bl.arguments - passed 6/6 tests in 918 ms
     [info:doctest.sh:643] Total: passed 1/1 modules in 941 ms
     ```
     A doc string can be defined for a function by defining a variable named
     `__doc__` at the function scope.
     On the module level, the variable name should be `<module_name>__doc__`
-    (e.g. `arguments__doc__` for the example above).
+    (e.g. `bl_arguments__doc__` for the example above).
     Note: The doc string needs to be defined with single quotes.
     Code contained in a module level variable named
     `<module_name>__doctest_setup__` will be run once before all the Tests of
     a module are run. This is usefull for defining mockup functions/data
     that can be used throughout all tests.
-    +documentation_exclude_print
+    +bl.documentation.exclude_print
     #### Tests
     Tests are delimited by blank lines:
     >>> echo bar
@@ -112,7 +112,7 @@ doctest__doc__='
     +doctest_ellipsis
     syntax error near unexpected token `{a}
     ...
-    -documentation_exclude_print
+    -bl.documentation.exclude_print
 '
 # endregion
 doctest_compare_result() {
@@ -253,7 +253,7 @@ doctest_eval() {
     >>> local output_buffer="foo
     >>> bar"
     >>> doctest_use_side_by_side_output=false
-    >>> doctest_module_under_test=core
+    >>> doctest_module_under_test=tools
     >>> doctest_nounset=false
     >>> doctest_eval "$test_buffer" "$output_buffer"
     '
@@ -269,15 +269,15 @@ doctest_eval() {
         local test_buffer="$1"
         local module="$2"
         local function="$3"
-        local core_path="$(path.convert_to_absolute "$(dirname "${BASH_SOURCE[0]}")")/core.sh"
+        local tools_path="$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[0]}")")/tools.sh"
         local setup_identifier="${module//[^[:alnum:]_]/_}"__doctest_setup__
         local setup_string="${!setup_identifier:-}"
         test_script="$(
             echo '[ -z "$BASH_REMATCH" ] && BASH_REMATCH=""'
-            echo "source $core_path"
+            echo "source $tools_path"
             # Suppress the warnings here because they have been already been
             # printed when analyzing the whole module
-            echo "bashlink.module.import $doctest_module_under_test true"
+            echo "bl.module.import $doctest_module_under_test true"
             echo "$setup_string"
             # _ can be used as anonymous variable (without warning)
             echo '_=""'
@@ -318,19 +318,19 @@ doctest_eval() {
     rm "$declarations_before"
     rm "$declarations_after"
     if ! doctest_compare_result "$output_buffer" "$got"; then
-        echo -e "${cli_color_lightred}test:${cli_color_default}"
+        echo -e "${blo_cli_color_lightred}test:${bl_cli_color_default}"
         echo "$test_buffer"
         if $doctest_use_side_by_side_output; then
             output_buffer="expected"$'\n'"${output_buffer}"
             got="got"$'\n'"${got}"
             # TODO exclude doctest_options
             local diff=diff
-            tools.dependency_check colordiff && diff=colordiff
+            bl.tools.dependency_check colordiff && diff=colordiff
             $diff --side-by-side <(echo "$output_buffer") <(echo "$got")
         else
-            echo -e "${cli_color_lightred}expected:${cli_color_default}"
+            echo -e "${bl_cli_color_lightred}expected:${bl_cli_color_default}"
             echo "$output_buffer"
-            echo -e "${cli_color_lightred}got:${cli_color_default}"
+            echo -e "${cli_color_lightred}got:${bl_cli_color_default}"
             echo "$got"
         fi
         return 1
@@ -345,9 +345,9 @@ doctest_run_test() {
     if doctest_parse_doc_string "$doc_string" doctest_eval ">>>" \
         "$module" "$function"
     then
-        logging.verbose "$test_name:[${cli_color_lightgreen}PASS${cli_color_default}]"
+        bl.logging.verbose "$test_name:[${bl_cli_color_lightgreen}PASS${bl_cli_color_default}]"
     else
-        logging.warn "$test_name:[${cli_color_lightred}FAIL${cli_color_default}]"
+        bl.logging.warn "$test_name:[${bl_cli_color_lightred}FAIL${bl_cli_color_default}]"
         return 1
     fi
 }
@@ -432,9 +432,9 @@ doctest_parse_doc_string() {
     output_buffer (block 4):
     '
     local preserve_prompt
-    arguments.set "$@"
-    arguments.get_flag --preserve-prompt preserve_prompt
-    arguments.apply_new_arguments
+    bl.arguments.set "$@"
+    bl.arguments.get_flag --preserve-prompt preserve_prompt
+    bl.arguments.apply_new_arguments
     local doc_string="$1"  # the docstring to test
     local parse_buffers_function="$2"
     local prompt="$3"
@@ -568,11 +568,11 @@ doctest_print_declaration_warning() {
     local test_name="$module"
     [[ -z "$function" ]] || test_name="$function"
     [[ "$doctest_declarations_diff" == "" ]] && return
-    core.unique <<< "$doctest_declarations_diff" \
+    bl.tools.unique <<< "$doctest_declarations_diff" \
         | while read -r variable_or_function
     do
         if ! [[ "$variable_or_function" =~ ^${module}[._]* ]]; then
-            logging.warn "Test '$test_name' defines unprefixed" \
+            bl.logging.warn "Test '$test_name' defines unprefixed" \
                 "name: '$variable_or_function'"
         fi
     done
@@ -581,18 +581,18 @@ doctest_exception_active=false
 doctest_test_module() {
     (
     module=$1
-    bashlink.module.import "$module" "$doctest_supress_declaration"
-    doctest_module_under_test="$(path.convert_to_absolute "$module")"
+    bl.module.import "$module" "$doctest_supress_declaration"
+    doctest_module_under_test="$(bl.path.convert_to_absolute "$module")"
     declared_functions="$module_declared_function_names_after_source"
     module="$(basename "$module")"
     module="${module%.sh}"
     declared_module_functions="$(! declare -F | cut -d' ' -f3 | grep -e "^${module%.sh}" )"
     declared_functions="$declared_functions"$'\n'"$declared_module_functions"
-    declared_functions="$(core.unique <(echo "$declared_functions"))"
+    declared_functions="$(bl.tools.unique <(echo "$declared_functions"))"
 
     local total=0
     local success=0
-    time.start
+    bl.time.start
     # module level tests
     test_identifier="${module//[^[:alnum:]_]/_}"__doc__
     doc_string="${!test_identifier}"
@@ -611,18 +611,18 @@ doctest_test_module() {
             doctest_run_test "$doc_string" "$module" "$fun" && let "success++"
         else
             ! $doctest_supress_undocumented && \
-                logging.warn "undocumented function $fun"
+                bl.logging.warn "undocumented function $fun"
         fi
     done
-    logging.info "$module - passed $success/$total tests in" \
-        "$(time.get_elapsed) ms"
+    bl.logging.info "$module - passed $success/$total tests in" \
+        "$(bl.time.get_elapsed) ms"
     (( success != total )) && exit 1
     exit 0
     )
 }
 doctest_parse_args() {
     local __doc__='
-        +documentation_exclude
+        +bl.documentation.exclude
         >>> doctest_parse_args non_existing_module
         >>> echo $?
         +doctest_contains
@@ -630,35 +630,35 @@ doctest_parse_args() {
         Failed to test file: non_existing_module
         ...
         1
-        -documentation_exclude
+        -bl.documentation.exclude
     '
     local filename module directory verbose help
-    arguments.set "$@"
-    arguments.get_flag --help -h help
-    $help && documentation.print_doc_string "$doctest__doc__" && return 0
-    arguments.get_flag --side-by-side doctest_use_side_by_side_output
+    bl.arguments.set "$@"
+    bl.arguments.get_flag --help -h help
+    $help && bl.documentation.print_doc_string "$doctest__doc__" && return 0
+    bl.arguments.get_flag --side-by-side doctest_use_side_by_side_output
     # do not warn about unprefixed names
-    arguments.get_flag --no-check-namespace doctest_supress_declaration
+    bl.arguments.get_flag --no-check-namespace doctest_supress_declaration
     # do not warn about undocumented functions
-    arguments.get_flag --no-check-undocumented doctest_supress_undocumented
+    bl.arguments.get_flag --no-check-undocumented doctest_supress_undocumented
     # use set -o nounset inside tests
-    arguments.get_flag --use-nounset doctest_nounset
-    arguments.get_flag --verbose -v verbose
-    arguments.apply_new_arguments
+    bl.arguments.get_flag --use-nounset doctest_nounset
+    bl.arguments.get_flag --verbose -v verbose
+    bl.arguments.apply_new_arguments
 
     if $verbose; then
-        logging.set_level verbose
+        bl.logging.set_level verbose
     else
-        logging.set_level info
+        bl.logging.set_level info
     fi
     doctest_test_directory() {
-        directory="$(path.convert_to_absolute "$1")"
+        directory="$(bl.path.convert_to_absolute "$1")"
         for filename in "$directory"/*.sh; do
             let "total++"
-            doctest_test_module "$(path.convert_to_absolute "$filename")" &
+            doctest_test_module "$(bl.path.convert_to_absolute "$filename")" &
         done
     }
-    time.start
+    bl.time.start
     local total=0
     local success=0
     if [ $# -eq 0 ] || [ "$@" == "" ];then
@@ -667,12 +667,12 @@ doctest_parse_args() {
         for filename in "$@"; do
             if [ -f "$filename" ]; then
                 let "total++"
-                doctest_test_module "$(path.convert_to_absolute "$filename")" &
+                doctest_test_module "$(bl.path.convert_to_absolute "$filename")" &
             elif [ -d "$filename" ]; then
                 doctest_test_directory "$filename"
             else
                 let "total++"
-                logging.warn "Failed to test file: $filename"
+                bl.logging.warn "Failed to test file: $filename"
             fi
         done
     fi
@@ -680,13 +680,13 @@ doctest_parse_args() {
     for job in $(jobs -p); do
         wait "$job" && let "success++"
     done
-    logging.info "Total: passed $success/$total modules in" \
-        "$(time.get_elapsed) ms"
+    bl.logging.info "Total: passed $success/$total modules in" \
+        "$(bl.time.get_elapsed) ms"
     (( success != total )) && return 1
     return 0
 }
 
-if core.is_main; then
+if bl.tools.is_main; then
     doctest_parse_args "$@"
 fi
 # region vim modline

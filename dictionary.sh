@@ -9,6 +9,11 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region import
+# shellcheck source=./module.sh
+source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
+bl.module.import bashlink.tools
+# endregion
 dictionary_set() {
     # shellcheck disable=SC2016
     local __doc__='
@@ -140,7 +145,7 @@ dictionary_get() {
     else
         local store="dictionary__store_${name}[${key}]"
     fi
-    core_is_defined "${store}" || return 1
+    bl.tools.is_defined "${store}" || return 1
     local value="${!store}"
     echo "$value"
 }

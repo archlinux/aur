@@ -12,8 +12,105 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-bashlink.module.import bashlink.logging
+bl.module.import bashlink.logging
 # endregion
+bl_tools_is_defined() {
+    # shellcheck disable=SC2034
+    local __doc__='
+    Tests if variable is defined (can also be empty)
+
+    >>> local foo="bar"
+    >>> bl.tools.is_defined foo; echo $?
+    >>> [[ -v foo ]]; echo $?
+    0
+    0
+    >>> local defined_but_empty=""
+    >>> bl.tools.is_defined defined_but_empty; echo $?
+    0
+    >>> bl.tools.is_defined undefined_variable; echo $?
+    1
+    >>> set -o nounset
+    >>> bl.tools.is_defined undefined_variable; echo $?
+    1
+    Same Tests for bash < 4.3
+    >>> bl_tools__bash_version_test=true
+    >>> local foo="bar"
+    >>> bl.tools.is_defined foo; echo $?
+    0
+    >>> bl_tools__bash_version_test=true
+    >>> local defined_but_empty=""
+    >>> bl.tools.is_defined defined_but_empty; echo $?
+    0
+    >>> bl_tools__bash_version_test=true
+    >>> bl.tools.is_defined undefined_variable; echo $?
+    1
+    >>> bl_tools__bash_version_test=true
+    >>> set -o nounset
+    >>> bl.tools.is_defined undefined_variable; echo $?
+    1
+    '
+    (
+    set +o nounset
+    if ((BASH_VERSINFO[0] >= 4)) && ((BASH_VERSINFO[1] >= 3)) \
+            && [ -z "${bl_tools__bash_version_test:-}" ]; then
+        [[ -v "${1:-}" ]] || exit 1
+    else # for bash < 4.3
+        # NOTE: ${varname:-foo} expands to foo if varname is unset or set to the
+        # empty string; ${varname-foo} only expands to foo if varname is unset.
+        # shellcheck disable=SC2016
+        eval '! [[ "${'"${1}"'-this_variable_is_undefined_!!!}"' \
+            ' == "this_variable_is_undefined_!!!" ]]'
+        exit $?
+    fi
+    )
+}
+alias bl.tools.is_defined="bl_tools_is_defined"
+bl_tools_is_empty() {
+    local __doc__='
+    Tests if variable is empty (undefined variables are not empty)
+
+    >>> local foo="bar"
+    >>> bl.tools.is_empty foo; echo $?
+    1
+    >>> local defined_and_empty=""
+    >>> bl.tools.is_empty defined_and_empty; echo $?
+    0
+    >>> bl.tools.is_empty undefined_variable; echo $?
+    1
+    >>> set -u
+    >>> bl.tools.is_empty undefined_variable; echo $?
+    1
+    '
+    local variable_name="$1"
+    bl.tools.is_defined "$variable_name" || return 1
+    [ -z "${!variable_name}" ] || return 1
+}
+alias bl.tools.is_empty="bl_tools_is_empty"
+bl_tools_is_main() {
+    local __doc__='
+    Returns true if current script is being executed.
+
+    >>> # NOTE: This test passes because "is_main" is called by "doctest.sh"
+    >>> # which is being executed.
+    >>> bl.tools.is_main && echo yes
+    yes
+    '
+    [[ "${BASH_SOURCE[1]}" = "$0" ]]
+}
+alias bl.tools.is_main="bl_tools_is_main"
+bl_tools_unique() {
+    # shellcheck disable=SC2034,SC2016
+    local __doc__='
+    >>> local foo="a\nb\na\nb\nc\nb\nc"
+    >>> echo -e "$foo" | bl.tools.unique
+    a
+    b
+    c
+    '
+    nl "$@" | sort --key 2 | uniq --skip-fields 1 | sort --numeric-sort | \
+        sed 's/\s*[0-9]\+\s\+//'
+}
+alias bl.tools.unique="bl_tools_unique"
 tools_dependency_check_pkgconfig() {
     local __doc__='
     This function check if all given libraries can be found.
@@ -31,7 +128,7 @@ tools_dependency_check_pkgconfig() {
     local library
 
     if ! tools_dependency_check pkg-config &>/dev/null; then
-        logging.critical 'Missing dependency "pkg-config" to check for packages.'
+        bl.logging.critical 'Missing dependency "pkg-config" to check for packages.'
         return 1
     fi
     for library in $@; do
@@ -59,7 +156,7 @@ tools_dependency_check_shared_library() {
     local pattern
 
     if ! tools_dependency_check ldconfig &>/dev/null; then
-        logging.critical 'Missing dependency "ldconfig" to check for shared libraries.'
+        bl.logging.critical 'Missing dependency "ldconfig" to check for shared libraries.'
         return 1
     fi
     for pattern in $@; do
@@ -93,7 +190,7 @@ tools_dependency_check() {
     local dependency
 
     if ! hash &>/dev/null; then
-        logging.critical 'Missing dependency "hash" to check for available executables.'
+        bl.logging.critical 'Missing dependency "hash" to check for available executables.'
         return 1
     fi
     for dependency in $@; do
@@ -180,7 +277,7 @@ tools_find_block_device() {
     unset -f tools_find_block_device_deep
     [ ${#candidates[@]} -eq 0 ] && return 1
     [ ${#candidates[@]} -ne 1 ] && echo "${candidates[@]}" && return 1
-    logging.plain "${candidates[0]}"
+    bl.logging.plain "${candidates[0]}"
 }
 tools_create_partition_via_offset() {
     local device="$1"
@@ -198,13 +295,13 @@ tools_create_partition_via_offset() {
     offsetSectors="$(echo "$partitionInfo"| cut --delimiter ' ' \
         --fields 1)"
     if [ -z "$offsetSectors" ]; then
-        logging.warn "Could not find partition with label/uuid \"$nameOrUUID\" on device \"$device\""
+        bl.logging.warn "Could not find partition with label/uuid \"$nameOrUUID\" on device \"$device\""
         return 1
     fi
     local offsetBytes
     offsetBytes="$(echo | awk -v x="$offsetSectors" -v y="$sector_size" '{print x * y}')"
     losetup --offset "$offsetBytes" "$loop_device" "$device"
-    logging.plain "$loop_device"
+    bl.logging.plain "$loop_device"
 }
 alias tools.dependency_check_pkgconfig="tools_dependency_check_pkgconfig"
 alias tools.dependency_check_shared_library="tools_dependency_check_shared_library"
@@ -608,13 +705,13 @@ closeCryptBlockdevice() {
     sudo cryptsetup luksClose "$1"
     return $?
 }
-core_open() {
+bl_tools_open() {
     # Opens a given path with a useful program.
     #
     # Examples:
     #
-    # >>> core.open http://www.google.de
-    # >>> core.open file.text
+    # >>> bl.tools.open http://www.google.de
+    # >>> bl.tools.open file.text
     local program
     for program in gnome-open kde-open gvfs-open exo-open xdg-open gedit \
         mousepad gvim vim emacs nano vi less cat
@@ -626,7 +723,7 @@ core_open() {
     done
     return $?
 }
-alias core.open='core_open'
+alias bl.tools.open='bl_tools_open'
 showSymlinks() {
     # Shows symbolic links in current directory if no argument is provided or
     # in given location and their subdirectories (recursive).

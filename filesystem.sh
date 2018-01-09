@@ -9,12 +9,15 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region import
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
+bl.import bashlink.path
+# endregion
 # region doctest setup
 filesystem__doc_test_setup__='
 # Runs once before tests are started:
 
-bashlink.module.import bashlink.doctest
+bl.module.import bashlink.doctest
 doc_test_capture_stderr=false
 mv() {
     echo mv $@
@@ -241,7 +244,7 @@ filesystem_btrfs_get_child_volumes() {
     local btrfs_root entry volume_id volume_relative
     filesystem_btrfs_is_subvolume "${volume}" || return 1
     btrfs_root="$(filesystem_btrfs_find_root "$volume")"
-    volume_relative="$(core.rel_path "$btrfs_root" "$volume")"
+    volume_relative="$(bl.path.converto_to_relative "$btrfs_root" "$volume")"
     entry="$(
         filesystem_btrfs_subvolume_filter "$btrfs_root" path "$volume_relative"
     )"
@@ -318,7 +321,7 @@ filesystem_btrfs_snapshot() {
     btrfs subvolume snapshot "${volume}" "${target}"
     local child child_relative
     filesystem_btrfs_get_child_volumes "$volume" | while read -r child; do
-        child_relative="$(core.rel_path "$volume" "$child")"
+        child_relative="$(bl.path.convert_to_relative "$volume" "$child")"
         if [ "$child_relative" != "$exclude" ]; then
             rmdir "${target}/${child_relative}"
             btrfs subvolume snapshot "${child}" "${target}/${child_relative}"
@@ -355,7 +358,7 @@ filesystem_btrfs_send_update() {
     filesystem_btrfs_subvolume_set_ro "${target}/${volume_name}" false
     local child child_relative
     filesystem_btrfs_get_child_volumes "$volume" | while read -r child; do
-        child_relative="$(core.rel_path "$volume" "$child")"
+        child_relative="$(bl.path.convert_to_relative "$volume" "$child")"
         rmdir "${target}/${volume_name}/${child_relative}"
         btrfs send -p "${backing_snapshot}/${child_relative}" "$child" | \
             pv --progress --timer --rate --average-rate --bytes | \

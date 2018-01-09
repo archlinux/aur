@@ -12,9 +12,9 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-bashlink.module.import bashlink.arguments
-bashlink.module.import bashlink.array
-bashlink.module.import bashlink.cli
+bl.module.import bashlink.arguments
+bl.module.import bashlink.array
+bl.module.import bashlink.cli
 # endregion
 # region documentation
 logging__doc__='
@@ -70,22 +70,31 @@ logging__doc__='
 # endregion
 # region variables
 # logging levels from low to high
-logging_levels=(error critical warn warning info verbose debug)
-# matches the order of logging levels
-logging_levels_color=(
-    $cli_color_red
-    $cli_color_magenta
-    $cli_color_yellow
-    $cli_color_cyan
-    $cli_color_green
-    $cli_color_blue
+logging_levels=(
+    error
+    critical
+    warn
+    warning
+    info
+    verbose
+    debug
 )
-logging_commands_level=$(array.get_index 'critical' "${logging_levels[@]}")
-logging_level=$(array.get_index 'critical' "${logging_levels[@]}")
+# matches the order of logging levels
+bl_logging_levels_color=(
+    $bl_cli_color_red
+    $bl_cli_color_magenta
+    $bl_cli_color_yellow
+    $bl_cli_color_yellow
+    $bl_cli_color_cyan
+    $bl_cli_color_green
+    $bl_cli_color_blue
+)
+bl_logging_commands_level=$(bl.array.get_index 'critical' "${logging_levels[@]}")
+bl_logging_level=$(bl.array.get_index 'critical' "${logging_levels[@]}")
 # endregion
 # region functions
 logging_set_commands_level() {
-    logging_commands_level=$(array.get_index "$1" "${logging_levels[@]}")
+    logging_commands_level=$(bl.array.get_index "$1" "${logging_levels[@]}")
     if [ "$logging_level" -ge "$logging_commands_level" ]; then
         logging_set_command_output_on
     else
@@ -111,7 +120,7 @@ logging_set_level() {
     3
     3
     '
-    logging_level=$(array.get_index "$1" "${logging_levels[@]}")
+    logging_level=$(bl.array.get_index "$1" "${logging_levels[@]}")
     if [ "$logging_level" -ge "$logging_commands_level" ]; then
         logging_set_command_output_on
     else
@@ -124,7 +133,7 @@ logging_get_prefix() {
     local level_index=$2
     local color=${logging_levels_color[$level_index]}
     # shellcheck disable=SC2154
-    local loglevel=${color}${level}${cli_color_default}
+    local loglevel=${color}${level}${bl_cli_color_default}
     local path="${BASH_SOURCE[2]##./}"
     path=$(basename "$path")
     local prefix=[${loglevel}:"$path":${BASH_LINENO[1]}]
@@ -137,7 +146,7 @@ logging_log() {
     fi
     shift
     local level_index
-    level_index=$(array.get_index "$level" "${logging_levels[@]}")
+    level_index=$(bl.array.get_index "$level" "${logging_levels[@]}")
     if [ "$level_index" -eq -1 ]; then
         logging_log critical "loglevel \"$level\" not available, use one of: "\
             "${logging_levels[@]}"
@@ -406,11 +415,11 @@ logging_set_file_descriptors() {
     >>> rm "$test_file"
     fifo deleted
     '
-    arguments.set "$@"
+    bl.arguments.set "$@"
     # one off "std off tee file"
     local options_log options_command
-    arguments.get_keyword --logging options_log
-    arguments.get_keyword --commands options_command
+    bl.arguments.get_keyword --logging options_log
+    bl.arguments.get_keyword --commands options_command
     [[ "${options_log-}" == "" ]] && options_log=std
     [[ "${options_command-}" == "" ]] && options_command=std
     logging_options_log="$options_log"

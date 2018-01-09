@@ -12,7 +12,7 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-bashlink.module.import bashlink.array
+bl.module.import bashlink.array
 # endregion
 # region functions
 # shellcheck disable=SC2034,SC2016
@@ -100,8 +100,8 @@ arguments_get_flag() {
 
     '
     local variable match argument flag
-    local flag_aliases=($(array.slice :-1 "$@"))
-    variable="$(array.slice -1 "$@")"
+    local flag_aliases=($(bl.array.slice :-1 "$@"))
+    variable="$(bl.array.slice -1 "$@")"
     local new_arguments=()
     eval "${variable}=false"
     for argument in "${arguments_new_arguments[@]:-}"; do
@@ -196,8 +196,8 @@ arguments_get_parameter() {
     other_param1 other_param2
     '
     local parameter_aliases parameter variable argument index match
-    parameter_aliases=($(array.slice :-1 "$@"))
-    variable="$(array.slice -1 "$@")"
+    parameter_aliases=($(bl.array.slice :-1 "$@"))
+    variable="$(bl.array.slice -1 "$@")"
     match=false
     local new_arguments=()
     for index in "${!arguments_new_arguments[@]}"; do

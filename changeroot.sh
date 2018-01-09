@@ -11,7 +11,7 @@
 # endregion
 # region importss
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-bashlink.module.import bashlink.logging
+bl.module.import bashlink.logging
 # endregion
 # region variables
 changeroot_kernel_api_locations=(/proc /sys /sys/firmware/efi/efivars /dev \
@@ -113,7 +113,7 @@ changeroot_with_kernel_api() {
                 mount "/${mountpoint_path}" \
                     "${new_root_location}${mountpoint_path}" --bind
             else
-                logging.warn \
+                bl.logging.warn \
                     "Mountpoint \"/${mountpoint_path}\" couldn't be handled."
             fi
         fi
@@ -133,9 +133,9 @@ changeroot_with_kernel_api() {
             # If unmounting doesn't work try to unmount in lazy mode (when
             # mountpoints are not needed anymore).
             if ! umount "${new_root_location}${mountpoint_path}"; then
-                logging.warn "Unmounting \"${new_root_location}${mountpoint_path}\" fails so unmount it in force mode."
+                bl.logging.warn "Unmounting \"${new_root_location}${mountpoint_path}\" fails so unmount it in force mode."
                 if ! umount -f "${new_root_location}${mountpoint_path}"; then
-                    logging.warn "Unmounting \"${new_root_location}${mountpoint_path}\" in force mode fails so unmount it if mountpoint isn't busy anymore."
+                    bl.logging.warn "Unmounting \"${new_root_location}${mountpoint_path}\" in force mode fails so unmount it if mountpoint isn't busy anymore."
                     umount -l "${new_root_location}${mountpoint_path}"
                 fi
             fi
@@ -143,7 +143,7 @@ changeroot_with_kernel_api() {
             # given one in all iterations.
             [[ $? != 0 ]] && return_code=$?
         else
-            logging.warn \
+            bl.logging.warn \
                 "Location \"${new_root_location}${mountpoint_path}\" should be a mountpoint but isn't."
         fi
     done
