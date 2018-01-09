@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libssh-git
-pkgver=0.3.0.r2774.gb9b89ef7
-pkgrel=2
+pkgver=0.7.5.r381.gcc13e852
+pkgrel=1
 pkgdesc="Multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side"
 arch=('i686' 'x86_64')
 url="https://www.libssh.org/"
@@ -25,7 +25,10 @@ prepare() {
 pkgver() {
   cd "libssh"
 
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep libssh -m1 | sed 's/libssh-//')
+  _rev=$(git rev-list --count libssh-$_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
 }
 
 build() {
