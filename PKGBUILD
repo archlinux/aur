@@ -3,7 +3,7 @@
 
 pkgname=ums-headless
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems. Build based on Java 8."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h' 'arm')
 url="http://www.universalmediaserver.com/"
@@ -21,7 +21,7 @@ source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Rele
         'ums.desktop'
         'ums.service'
         'ums.timer')
-sha256sums=('41e2665a2d65e868afe4c3f8d426f11dc3b960bf55d7b79ef2fe6fa03e4484d3'
+sha256sums=('fb6a016f6494329e67a8e24e6671ab4f38eec60a07321045c665fb08d0ebf596'
             '0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
             '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
