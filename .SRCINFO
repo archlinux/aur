@@ -1,5 +1,5 @@
 pkgbase = kr
-	pkgdesc = SSH using a key stored in Kryptonite
+	pkgdesc = SSH using a key stored in Krypton
 	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/kryptco/kr
