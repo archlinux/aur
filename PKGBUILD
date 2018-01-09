@@ -4,7 +4,7 @@
 
 pkgname=incron
 pkgver=0.5.12
-pkgrel=2
+pkgrel=3
 _commit=f45c2f5ac4baea99b48e99a713d1f4ec1854aa76
 pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
 arch=('x86_64')
@@ -12,12 +12,15 @@ url="https://github.com/ar-/incron"
 license=('GPL')
 depends=('gcc-libs' 'bash')
 makedepends=('git')
-install=incron.install
 options=('emptydirs')
 #source=("$pkgname-$pkgver.tar.gz::https://github.com/ar-/incron/archive/$pkgver.tar.gz"
-source=("git://github.com/ar-/incron.git#commit=${_commit}"
-	'incrond.service')
+source=("git+https://github.com/ar-/incron.git#commit=${_commit}"
+        "incron.sysusers"
+        "incron.tmpfiles"
+        "incrond.service")
 sha256sums=('SKIP'
+            'e5da0a3af368c286fa2b180015c9efc5aef5018c271a16620b8c30bfe6f9ccc2'
+            '422c4a715da4037550d2f97de28f47f91d0b58983c188c6cf1d1233370e048a4'
             '5ff72411c704dd38823892d7fd13992509c3d906bfe0b4a5cafbe382e4e01c24')
 
 prepare() {
@@ -43,5 +46,7 @@ package() {
     SYSDATADIR="${pkgdir}"/etc/incron.d install
 
   install -Dm0644 "${srcdir}/incrond.service" "${pkgdir}/usr/lib/systemd/system/incrond.service"
-  rmdir "$pkgdir"/usr/sbin
+  install -Dm0644 "${srcdir}/incron.sysusers" "${pkgdir}/usr/lib/sysusers.d/incrond.conf"
+  install -Dm0644 "${srcdir}/incron.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/incrond.conf"
+  rm -r "$pkgdir"/{usr/sbin,var}
 }
