@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/sparsebundlefs-git/
+/*.pkg.tar
+/*.pkg.tar.*

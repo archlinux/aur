@@ -1,0 +1,17 @@
+pkgbase = sparsebundlefs-git
+	pkgdesc = FUSE filesystem for reading Mac OS sparse-bundle disk images
+	pkgver = r64.f3ccd20
+	pkgrel = 1
+	url = https://github.com/torarnv/sparsebundlefs
+	arch = x86_64
+	license = custom:BSD-2-Clause
+	makedepends = pkg-config
+	depends = fuse2
+	depends = gcc-libs
+	provides = sparsebundlefs
+	conflicts = sparsebundlefs
+	source = sparsebundlefs-git::git+https://github.com/torarnv/sparsebundlefs
+	sha512sums = SKIP
+
+pkgname = sparsebundlefs-git
+
