@@ -1,0 +1,24 @@
+post_install() {
+_alert
+}
+
+post_upgrade() {
+_alert
+}
+
+_alert() {
+fold -s << EOF
+The Kies menu system requires a menu in a user's ~/.kies directory. This directory and menu can be built from scratch by running
+newmenu
+kiesmenu
+from the user account where Kies is to run.
+
+Example menus can be found in /usr/share/kies/menu_system/menus, which can be copied into a user's .kies directory with
+mkdir ~/.kies
+cp /usr/share/kies/menu_system/menus/* ~/.kies
+Keep in mind however that these sample menus aren't all guaranteed to work.
+
+To run Kies at login or at the launch of a terminal, add the following line to the bottom of ~/.bashrc:
+[ \$SHLVL -eq 1 ] && kiesmenu
+EOF
+}
