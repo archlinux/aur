@@ -10,7 +10,7 @@ license=('custom:BSD')
 makedepends=('scour')
 depends=('imagemagick')
 provides=('python-nuvolasdk')
-source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
+source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('e2c2d378e0506179011b004ef367e36c2a60b38fa20408bcacdb75f1caffb9d4')
 
 build() {
