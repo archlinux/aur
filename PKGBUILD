@@ -1,6 +1,6 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname=termplay
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=4
 pkgdesc="Play an image/video in your terminal!"
 arch=("x86_64")
@@ -13,8 +13,8 @@ optdepends=(
     "youtube-dl: YouTube support"
 )
 depends=("libsixel")
-source=("https://github.com/jD91mZM2/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("d30e4c3b3e20ac467fdd5ba9f725f1a71e388ff8b8fe81d74447fddb95e49609")
+source=("https://github.com/jD91mZM2/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('417e533f37354135491ea45d85f65ed1d5b08adc7c718390a0528792aa8455d6')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
