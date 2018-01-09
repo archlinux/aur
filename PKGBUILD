@@ -8,7 +8,6 @@ url="https://launchpad.net/brainparty"
 license=('GPL')
 depends=('sdl_mixer' 'sdl_image' 'sdl_ttf' 'sdl_gfx' 'glu')
 makedepends=('make' 'patch')
-#install="$pkgname.install"
 source=("https://launchpad.net/brainparty/trunk/0.61/+download/brainparty0.61.tar.gz"
         "brainparty_arch.patch"
         "$pkgname.xpm"
@@ -25,36 +24,19 @@ build() {
 }
 
 package() {
-	# binary path
 	mkdir -p "$pkgdir/usr/bin"
-
-	# base dir and content dir
 	mkdir -p "$pkgdir/usr/share/$pkgname/Content"
-
-	# icon for desktop file
 	mkdir -p "$pkgdir/usr/share/pixmaps"
-
-	# path for desktop file
 	mkdir -p "$pkgdir/usr/share/applications"
-
-	# path for COPYING file
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
 	cd $srcdir/${pkgname}
 
-	# install binary
 	install -m755 "$pkgname" "$pkgdir/usr/bin/"
-
-	# install icon
 	install -m644 "$srcdir/brainparty.xpm" "$pkgdir/usr/share/pixmaps/brainparty.xpm"
-
-	# install desktop file
 	install -m644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/"
-
-	# install license
 	install -m644 "$srcdir/$pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/"
 
-	# install game data to Content directory
 	install -m644 "$srcdir/$pkgname/Content/1.png" "$pkgdir/usr/share/$pkgname/Content"
 	install -m644 "$srcdir/$pkgname/Content/2.png" "$pkgdir/usr/share/$pkgname/Content"
 	install -m644 "$srcdir/$pkgname/Content/3.png" "$pkgdir/usr/share/$pkgname/Content"
