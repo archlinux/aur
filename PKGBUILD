@@ -2,8 +2,8 @@
 
 _gitname=conda
 pkgname=python-${_gitname}-git
-pkgver=4.3.17.r523.g0ecfda0a
-pkgrel=2
+pkgver=4.4.7.r43.g9d759d8ed
+pkgrel=1
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
 arch=('any')
 url="http://conda.pydata.org/docs/"
@@ -28,7 +28,7 @@ package() {
   cd "$srcdir/${_gitname}"
   echo $pkgver > conda/.version
   python utils/setup-testing.py install --root="$pkgdir/" --optimize=1
-  install -Dm 644 shell/etc/fish/conf.d/conda.fish $pkgdir/etc/fish/conf.d/conda.fish
+  install -Dm 644 conda/shell/etc/fish/conf.d/conda.fish $pkgdir/etc/fish/conf.d/conda.fish
   install -Dm 644 LICENSE.txt $pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt
 }
 
