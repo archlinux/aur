@@ -1,0 +1,13 @@
+pkgbase = lua-mosquitto
+	pkgdesc = libmosquitto lua binding
+	pkgver = 20171109
+	pkgrel = 1
+	url = http://mosquitto.org/
+	arch = any
+	license = MIT
+	depends = lua
+	source = git+https://github.com/flukso/lua-mosquitto.git
+	md5sums = SKIP
+
+pkgname = lua-mosquitto
+
