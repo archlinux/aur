@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=pkgoutofdate-git
-pkgver=r10.3dd8194
+pkgver=r11.8725288
 pkgrel=1
 pkgdesc='Checks whether Arch packages are out-of-date'
 arch=(any)
