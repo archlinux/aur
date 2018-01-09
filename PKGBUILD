@@ -5,7 +5,7 @@
 pkgname='python-leo'
 pkgver=1.0
 pkgrel=1
-pkgdesc=''
+pkgdesc='python library for leo dict'
 arch=('any')
 url='https://github.com/keachi/python-leo'
 license=('Apache')
