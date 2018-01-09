@@ -2,7 +2,7 @@
 
 pkgname=electronic-wechat-git
 _pkgname=electronic-wechat
-pkgver=1.4.0.43.gb18ff6d
+pkgver=V2.0.14.g6e555e8
 pkgrel=1
 pkgdesc="An Electron application for WeChat"
 arch=('any')
