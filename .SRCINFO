@@ -1,0 +1,19 @@
+pkgbase = python-openbrokerapi
+	pkgdesc = A python package for the V2 CF Service Broker API and Open Broker API (version 2.13+)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/eruvanos/openbrokerapi
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-flask
+	source = python-openbrokerapi::git+https://github.com/eruvanos/openbrokerapi#tag=v1.0.0
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 01fd3820ef015cfa1c6143d706106489
+
+pkgname = python-openbrokerapi
+	depends = python
+	depends = python-flask
+
