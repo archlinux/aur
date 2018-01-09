@@ -1,19 +1,21 @@
 pkgbase = ark-desktop
 	pkgdesc = Multi Platform Ark Lite Client
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/ArkEcosystem/ark-desktop
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = npm
 	depends = nodejs
 	depends = electron
-	source = https://github.com/ArkEcosystem/ark-desktop/releases/download/{1.4.3}/ArkClient-Linux-1.4.3.tar.xz
+	source = https://github.com/ArkEcosystem/ark-desktop/releases/download/1.5.0/ArkClient-Linux-1.5.0.tar.xz
+	source = https://raw.githubusercontent.com/ArkEcosystem/ark-desktop/1.5.0/LICENSE.md
 	source = arkclient.desktop
-	source = arkclient.png
-	sha1sums = 945c04d6124eb2eb11ba547f0ac9318d112ece12
-	sha1sums = 687295fc60638fdd828646e7fc44eaf38eca3cd0
-	sha1sums = 77c1f8707a779be883283150732d3477709af7da
+	source = arkclient.svg
+	sha1sums = 05cd7fd4f8ada3bcda2d8e24673dfb2b8ca33de3
+	sha1sums = 3886ec650e2912c8b0d153076ecda1d824993592
+	sha1sums = 6969963b6e3096c26d20855a7b7bbaabadc9eb1d
+	sha1sums = 9f1b28b118ee7d6071fc4d446aa018f1512406cf
 
 pkgname = ark-desktop
 

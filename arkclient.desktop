@@ -1,7 +1,15 @@
 [Desktop Entry]
-Name=ArkClient
-Comment=Ark Desktop
+Version=1.0
+Name=Ark Desktop
+Comment=Ark Wallet Lite Client
+TryExec=/usr/bin/arkclient
 Exec=/usr/bin/arkclient
 Terminal=false
 Type=Application
-Icon=/usr/share/pixmaps/arkclient.png
+Icon=arkclient
+Categories=Finance;
+Actions=Explorer;
+
+[Desktop Action Explorer]
+Exec=xdg-open https://explorer.ark.io
+Name=Ark Blockchain Explorer
