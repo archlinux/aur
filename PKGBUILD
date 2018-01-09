@@ -12,8 +12,8 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.4.0_devel.98776.ec1edd0fd2
-pkgrel=2
+pkgver=17.4.0_devel.98979.adfb9c5c7b
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'glproto'
              'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 
@@ -35,11 +35,12 @@ sha512sums=('SKIP'
             '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028')
 
 prepare() {
-  cd ${srcdir}/mesa
+  cd mesa
 
   # glvnd support patches - from Fedora
   # non-upstreamed ones
   patch -Np1 -i ../glvnd-fix-gl-dot-pc.patch
+  autoreconf -fi
 
 }
 
@@ -51,25 +52,24 @@ pkgver() {
 
 build () {
   cd mesa
-
-  
-  ./autogen.sh --prefix=/usr \
-               --sysconfdir=/etc \
-               --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
-               --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-               --with-platforms=x11,drm,wayland \
-               --with-vulkan-drivers=intel,radeon \
-               --enable-texture-float \
-               --enable-gallium-osmesa \
-               --enable-xa \
-               --enable-nine \
-               --disable-xvmc \
-               --enable-vdpau \
-               --enable-omx-bellagio \
-               --enable-opencl \
-               --enable-opencl-icd \
-               --enable-glx-tls \
-               --enable-libglvnd
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+    --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
+    --with-platforms=x11,drm,wayland \
+    --with-vulkan-drivers=intel,radeon \
+    --enable-texture-float \
+    --enable-gallium-osmesa \
+    --enable-xa \
+    --enable-nine \
+    --disable-xvmc \
+    --enable-vdpau \
+    --enable-omx-bellagio \
+    --enable-opencl \
+    --enable-opencl-icd \
+    --enable-glx-tls \
+    --enable-libglvnd
 
 
 # Used configure settings
@@ -119,12 +119,12 @@ package_mesa-git() {
   cd mesa
   make DESTDIR="$pkgdir" install
 
-  # remove files present in libglvnd
-  rm $pkgdir/usr/lib/libGLESv1_CM.so
-  rm $pkgdir/usr/lib/libGLESv1_CM.so.1
-  rm $pkgdir/usr/lib/libGLESv2.so
-  rm $pkgdir/usr/lib/libGLESv2.so.2
-  rm $pkgdir/usr/lib/libGLESv2.so.2.0.0
+  # remove files provided by libglvnd
+  rm "$pkgdir"/usr/lib/libGLESv1_CM.so
+  rm "$pkgdir"/usr/lib/libGLESv1_CM.so.1
+  rm "$pkgdir"/usr/lib/libGLESv2.so
+  rm "$pkgdir"/usr/lib/libGLESv2.so.2
+  rm "$pkgdir"/usr/lib/libGLESv2.so.2.0.0
 
   # indirect rendering
   ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
