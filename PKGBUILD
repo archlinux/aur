@@ -25,7 +25,7 @@ prepare() {
 pkgver() {
   cd "libssh"
 
-  _tag=$(git tag -l --sort -v:refname | grep libssh -m1 | sed 's/libssh-//')
+  _tag=$(git tag -l --sort -v:refname | grep -m1 libssh | sed 's/libssh-//')
   _rev=$(git rev-list --count libssh-$_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
