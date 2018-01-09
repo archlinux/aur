@@ -1,0 +1,25 @@
+pkgbase = python-atlasbroker
+	pkgdesc = Atlas Broker for Kubernetes Service Catalog
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/mickybart/python-atlasbroker
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-atlasapi
+	depends = python-pwgen
+	depends = python-pymongo
+	depends = python-openbrokerapi
+	depends = python-flask
+	source = python-atlasbroker::git+https://github.com/mickybart/python-atlasbroker#tag=1.0.0
+	md5sums = SKIP
+
+pkgname = python-atlasbroker
+	depends = python
+	depends = python-atlasapi
+	depends = python-pwgen
+	depends = python-pymongo
+	depends = python-openbrokerapi
+	depends = python-flask
+
