@@ -1,6 +1,6 @@
 diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
---- FreeDoko-orig/Makefile	2018-01-05 08:25:24.007864681 +0100
-+++ FreeDoko/Makefile	2018-01-05 08:27:32.225592490 +0100
+--- FreeDoko-orig/Makefile	2018-01-09 11:35:40.845184810 +0100
++++ FreeDoko/Makefile	2018-01-09 11:37:02.943311456 +0100
 @@ -316,8 +316,7 @@
  	echo "Kopiere das Programm"
  	mkdir -p $(DESTDIR)$(BIN_DIRECTORY)
@@ -30,8 +30,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
  	echo "Kopiere den Desktop-Starter"
  	mkdir -p "$(DESTDIR)$(DESKTOP_FILE_DIRECTORY)"
 diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.directories
---- FreeDoko-orig/Makefile.install.directories	2018-01-05 08:25:24.007864681 +0100
-+++ FreeDoko/Makefile.install.directories	2018-01-05 08:27:49.375296862 +0100
+--- FreeDoko-orig/Makefile.install.directories	2018-01-09 11:35:40.845184810 +0100
++++ FreeDoko/Makefile.install.directories	2018-01-09 11:37:27.016100663 +0100
 @@ -4,14 +4,14 @@
  # the different directories for the files
  
@@ -76,11 +76,11 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories Fre
 +LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
 +DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
  
- 
- # release
+ # Void Linux
+ #MAIN_DIRECTORY         = /usr
 diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
---- FreeDoko-orig/data/Makefile	2018-01-05 08:25:25.571169588 +0100
-+++ FreeDoko/data/Makefile	2018-01-05 08:26:27.813386230 +0100
+--- FreeDoko-orig/data/Makefile	2018-01-09 11:35:41.508502890 +0100
++++ FreeDoko/data/Makefile	2018-01-09 11:35:59.458090895 +0100
 @@ -32,8 +32,7 @@
  	for d in cardsets iconsets backgrounds sounds; do \
  	  $(MAKE) -C $$d install; \
@@ -92,8 +92,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Make
  
  ifeq ($(SHELLTYPE), sh)
 diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
---- FreeDoko-orig/doc/Makefile	2018-01-05 08:25:27.807795619 +0100
-+++ FreeDoko/doc/Makefile	2018-01-05 08:26:46.556388763 +0100
+--- FreeDoko-orig/doc/Makefile	2018-01-09 11:35:42.411815455 +0100
++++ FreeDoko/doc/Makefile	2018-01-09 11:36:17.161019281 +0100
 @@ -34,8 +34,7 @@
  	fi
  	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
@@ -105,8 +105,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefi
  endif
  
 diff -ru --no-dereference -x .git FreeDoko-orig/src/Makefile FreeDoko/src/Makefile
---- FreeDoko-orig/src/Makefile	2018-01-05 08:25:29.337767844 +0100
-+++ FreeDoko/src/Makefile	2018-01-05 08:27:01.082800684 +0100
+--- FreeDoko-orig/src/Makefile	2018-01-09 11:35:43.068467026 +0100
++++ FreeDoko/src/Makefile	2018-01-09 11:36:31.247364688 +0100
 @@ -282,7 +282,6 @@
  		-DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' \
  		-DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
