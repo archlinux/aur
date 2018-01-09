@@ -4,8 +4,8 @@
 
 pkgname=plymouth-theme-gnome-logo
 _srcname=ubuntu-gnome-default-settings
-pkgver=17.10.1
-pkgrel=2
+pkgver=17.10.3
+pkgrel=1
 pkgdesc="GNOME plymouth theme based on Ubuntu-gnome plymouth theme."
 arch=('any')
 url="http://packages.ubuntu.com/artful/plymouth-theme-ubuntu-gnome-logo"
@@ -15,7 +15,7 @@ install='plymouth-theme-gnome-logo.install'
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/u/${_srcname}/${_srcname}_${pkgver}.tar.xz"
 	'gnome_logo.png'
 	'gnome.patch')
-sha256sums=('8f3096173318ce7b94fb5f204238c7c67da2abb0e8863ec290d0f6b3c26d725e'
+sha256sums=('59c253a60bbf0770b6f11f055eff9b358cb2004baab409da65f0dc4408cfdc1b'
             '408170cb37475e95ab47bcf7b0c69a89d7246308c19627e0f5f978888fa083aa'
             'a994b08bdaf968c4b03e8c980bc773cddd5768f0975b1c80efa07551ea65999e')
 
