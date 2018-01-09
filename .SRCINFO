@@ -1,0 +1,27 @@
+pkgbase = vcvrack-fundamental
+	pkgdesc = Fundamental VCV modules
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/VCVRack/Fundamental
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = vcvrack
+	source = vcvrack-Fundamental::git+https://github.com/VCVRack/Fundamental.git#tag=v0.5.1
+	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v0.5.1
+	source = git+https://github.com/AndrewBelt/osdialog.git
+	source = git+https://github.com/AndrewBelt/oui-blendish.git
+	source = git+https://github.com/mackron/dr_libs.git
+	source = git+https://github.com/memononen/nanosvg.git
+	source = git+https://github.com/memononen/nanovg.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vcvrack-fundamental
+
