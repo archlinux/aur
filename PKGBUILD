@@ -14,7 +14,7 @@ license=('GPL')
 depends=('gtk2')
 makedepends=('pkgconfig')
 replaces=('gtk-aurora-engine')
-source=(https://dl.opendesktop.org/api/files/downloadfile/id/1460970469/s/fa66340f16d6758188497d950a7cafce/t/1515524368/56438-aurora-1.5.1.tar.bz2)
+source=(https://dl.opendesktop.org/api/files/downloadfile/id/1460970469/s/fa66340f16d6758188497d950a7cafce/t/1515524368/56438-aurora-$pkgver.tar.bz2)
 md5sums=('5eeea57c5938306ad7ccfc7cd71d009d')
 
 build() {
