@@ -7,8 +7,8 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=65.0.3311.3
-pkgrel=3
+pkgver=65.0.3315.3
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'atk' 'at-spi2-atk' 'ncurses5-compat-libs')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'atk' 'at-spi2-atk')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -111,10 +111,11 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/p2.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/e3.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/edgy.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/synchronization_flags.h
 )
 
 
-sha256sums=('fda622b7d7e2ab517e1c6993ed43c3d0a5550be1e97f7b0800732372ec30a997'
+sha256sums=('850b0c8ca1646f7ba94816ce2a47d21f454ce9aff00bf994d9143d475249314c'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -127,7 +128,7 @@ sha256sums=('fda622b7d7e2ab517e1c6993ed43c3d0a5550be1e97f7b0800732372ec30a997'
             '5c8c3ad7d5b4ebda7508e3aee13349fc8ad627d7a7e3147168e214f03e433168'
             '885bd27063ebc43b7030e9d9d364a46a248c4744f66c466017b42a83a279e6ab'
             '8696919f69ef927f095944ae7ef869b283450a4b2cdd4efdebc51fc2b1e747e0'
-            'b9899b26e65a6fc376bffd8cb685667b0ec1b04e90c8250f40c969bf4602c5a0'
+            'a4001820866b9b29ef7f670728e99e7d79c7d3301898b26062bb1c91acdb13e5'
             'fd5fdc83665113677951e2e713a4696d999a070d6b59bb57319df357b35d4fad'
             '3850ad42d0cb4ca011d46b9d569a0a2bf83476f0c3da70c74d4f011cec59f885'
             '7beb0f3bbc55960092347767d423415860a3867525f6d1bbb057b3d72fae0618'
@@ -176,7 +177,7 @@ sha256sums=('fda622b7d7e2ab517e1c6993ed43c3d0a5550be1e97f7b0800732372ec30a997'
             '51ee1c87a7889f9fae1fd0ecad57d97394cc89b1cea83bafdbaa8992a87e6561'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
-            '33369c2c13df92b16759a4ec56650cc52353110454775016bde277c1bce96ee5'
+            '57e5a78e7fe0f117c09b40cac2e982d3da68c2ecf3e3ace4f0ce28c4180bb497'
             '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
             '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
@@ -208,8 +209,9 @@ sha256sums=('fda622b7d7e2ab517e1c6993ed43c3d0a5550be1e97f7b0800732372ec30a997'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
-            'be55fef656ccb767edd29b53d2e1416db0976a95cd0f4ba24ea2b3e0ce2e68b6'
-            'd38cdb1f3dec117c25d618a228accfa2b5e51cabe28d3bd3a0a5e8d2a0634c9b')
+            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d'
+            '30b7b4676cb279a3a05868162747e726672985a9fab40f4de1026d1218396e68')
+
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -257,6 +259,8 @@ prepare() {
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
+
+cp ../synchronization_flags.h base/synchronization/synchronization_flags.h
 
 patch -Np1 -i ../001.patch
 patch -Np1 -i ../002.patch
@@ -455,7 +459,7 @@ python2 build/util/lastchange.py -m GPU_LISTS_VERSION \
 
 
 
-  ninja -C out/Release  pdf chrome chrome_sandbox chromedriver 
+  ninja -C out/Release  pdf chrome chrome_sandbox chromedriver
 }
 
 package() {
