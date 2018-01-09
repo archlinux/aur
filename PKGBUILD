@@ -1,6 +1,6 @@
 # Maintainer: Roy Oursler <roy.j.oursler@intel.com>
 pkgname=isa-l_crypto
-pkgver=2.20.0
+pkgver=2.21.0
 pkgrel=1
 pkgdesc="A collection of optimized low-level functions targeting storage applications"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/01org/$pkgname"
 license=('BSD')
 makedepends=('nasm')
 source=("$url/archive/v$pkgver.tar.gz")
-sha1sums=('fe247d36d1d665f309e83e1aa0af9ca07041c998')
+sha1sums=('0970085adda6a95da20592b9b299e4dd920d4ef0')
 
 build() {
     cd "${srcdir}/$pkgname-$pkgver"
