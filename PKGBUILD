@@ -5,18 +5,19 @@
 
 pkgname=ssllabs-scan
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line client for the SSL Labs APIs'
 arch=('x86_64' 'i686')
 url='https://github.com/ssllabs/ssllabs-scan'
 license=('apache')
-depends=("gcc-go")
+depends=("gcc-libs")
+makedepends=("go")
 source=("https://github.com/ssllabs/ssllabs-scan/archive/v${pkgver}.tar.gz")
 sha256sums=('a7d5fad92649172ca4b190f481172b602aa1ae103d14dd1f1951ee250d382eec')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-	gccgo -o ssllabs-scan ssllabs-scan.go
+	go build ssllabs-scan.go
 }
 
 package() {
