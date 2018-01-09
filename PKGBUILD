@@ -4,8 +4,8 @@
 
 pkgname=lib32-libdrm-git
 _pkgname=libdrm
-pkgver=2.4.81.r2.gce9e3ba6
-pkgrel=2
+pkgver=2.4.89.r5.gde807d1a
+pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(i686 x86_64)
 license=('custom')
@@ -21,19 +21,23 @@ source=('libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master'
 sha256sums=('SKIP'
             '9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93')
 
+prepare() {
+    cd $_pkgname
+    autoreconf -fi
+}
+            
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-#    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd $_pkgname
     git describe --long | sed 's/^libdrm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${_pkgname}
+  cd $_pkgname
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  ./autogen.sh \
+  ./configure \
     --prefix=/usr \
     --libdir=/usr/lib32 \
     --enable-udev
@@ -41,14 +45,17 @@ build() {
 }
 
 check() {
-  cd ${_pkgname}
+  cd $_pkgname
   make -k check
 }
 
 package() {
-  cd ${_pkgname}
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/{include,share,bin}
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 ${srcdir}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+  cd $_pkgname
+  make DESTDIR="$pkgdir" install
+  
+  # remove files already provided by libdrm-git
+  rm -rf "$pkgdir"/usr/{include,share,bin}
+  
+  install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 "$srcdir"/COPYING "$pkgdir"/usr/share/licenses/$pkgname/
 }
