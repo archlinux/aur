@@ -1,0 +1,81 @@
+diff -ruN brainparty2/BPGame.cpp brainparty/BPGame.cpp
+--- brainparty2/BPGame.cpp	2018-01-09 23:22:19.542191103 +0100
++++ brainparty/BPGame.cpp	2018-01-10 00:20:44.546835911 +0100
+@@ -1298,7 +1298,11 @@
+ 	NumUnlockedGames = 0;
+ 
+ 	ifstream ifs;
+-	ifs.open(".brainparty");
++
++	string path(getenv("HOME"));
++	path += "/.brainparty";
++
++	ifs.open(path.c_str());
+ 	
+ 	FirstRun = false;
+ 	
+@@ -1429,7 +1433,11 @@
+ 
+ void BPGame::SaveSettings() {
+  	ofstream savefile;
+- 	savefile.open(".brainparty");
++
++	string path(getenv("HOME"));
++	path += "/.brainparty";
++
++ 	savefile.open(path.c_str());
+ 	savefile << EnableSound << endl;
+ 	savefile << EnableMusic << endl;
+ 	savefile << endl;
+@@ -2410,4 +2418,4 @@
+ Colour* BPGame::ColorLerp(Colour* from, Colour* to, float amount) {
+ 	Colour* col = new Colour(Lerp(from->R, to->R, amount), Lerp(from->G, to->G, amount), Lerp(from->B, to->B, amount), Lerp(from->A, to->A, amount));
+ 	return col;
+-}
+\ Kein Zeilenumbruch am Dateiende.
++}
+diff -ruN brainparty2/BPList.h brainparty/BPList.h
+--- brainparty2/BPList.h	2018-01-09 23:22:19.542191103 +0100
++++ brainparty/BPList.h	2018-01-09 23:23:05.528574785 +0100
+@@ -138,7 +138,7 @@
+ 	~BPPList();
+ 	void Add(T item);
+ 	bool Contains(T item);
+-	void Clear(bool safe_delete);
++	void Clear(bool safe_delete = true);
+ 	int IndexOf(T item);
+ 	void Insert(int pos, T item);
+ 	void Remove(T item);
+@@ -171,7 +171,7 @@
+ }
+ 
+ template <class T>
+-void BPPList<T>::Clear(bool safe_delete = true) {
++void BPPList<T>::Clear(bool safe_delete) {
+ 	if (safe_delete) {
+ 		for (int i = data.size() - 1; i >= 0; --i) {
+ 			T item = data[i];
+diff -ruN brainparty2/main.cpp brainparty/main.cpp
+--- brainparty2/main.cpp	2018-01-09 23:22:19.565524292 +0100
++++ brainparty/main.cpp	2018-01-09 23:28:34.876545566 +0100
+@@ -26,6 +26,8 @@
+ BPGame* Game;
+ 
+ int main(int argc, char *argv[]) {
++	chdir("/usr/share/brainparty");
++
+ 	if ( SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0 ) {
+ 		fprintf(stderr, "Unable to init SDL: %s\n", SDL_GetError());
+ 		exit(1);
+diff -ruN brainparty2/Makefile brainparty/Makefile
+--- brainparty2/Makefile	2018-01-09 23:22:19.565524292 +0100
++++ brainparty/Makefile	2018-01-09 23:27:41.916872159 +0100
+@@ -13,7 +13,7 @@
+ else
+ 	INCLUDES = `sdl-config --cflags` -I/usr/X11R6/include
+ 	LIBS = `sdl-config --libs` -lGL -lGLU -lSDL_mixer -lSDL_ttf -lSDL_gfx -lSDL_image 
+-	CXXFLAGS = -g -c -Wno-deprecated
++	CXXFLAGS = -std=c++03 -g -c -Wno-deprecated
+ 	OSXCOMPAT = 
+ endif
+ 

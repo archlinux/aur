@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Brain Party
+Comment=36 challenging mini games for testing your IQ
+Type=Application
+Icon=/usr/share/pixmaps/brainparty.xpm
+Exec=brainparty
+Terminal=false
+Categories=Game;LogicGame;
