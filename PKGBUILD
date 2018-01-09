@@ -3,7 +3,7 @@
 # Contributor: speps
 # Contributor: Bernardo Barros
 pkgname=muse
-pkgver=3.0.pre2
+pkgver=3.0.0
 pkgrel=3
 pkgdesc="A MIDI/Audio sequencer with recording and editing capabilities"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ install="${pkgname}.install"
 provides=('muse')
 conflicts=('muse')
 source=("https://github.com/muse-sequencer/muse/archive/muse_${pkgver//./_}.tar.gz")
-sha256sums=('7d3577e630fb9dfb88d62fa53bda7ed4c41e2b7a704f5a37822e10081cb6ff34')
+sha256sums=('72952f094c8c843586679a0f893bf122bd099847490ddf16a829ca5e361e70d1')
 
 build() {
   cd "${srcdir}/muse-muse_${pkgver//./_}/muse3"
