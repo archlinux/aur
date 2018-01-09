@@ -1,24 +1,24 @@
-# Maintainer: Pavel Antonov <pvantonov@gmail.com>
+# Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-google-play-music
-pkgver=5.17
-pkgrel=2
+pkgver=6.0
+pkgrel=1
 pkgdesc="Google Play integration for Nuvola Player."
 arch=("any")
 url="https://github.com/tiliado/nuvola-app-google-play-music"
 license=('custom:BSD')
-depends=('nuvolaplayer')
-makedepends=('git' 'scour')
+depends=('nuvolaruntime' 'imagemagick')
+makedepends=('nuvolasdk' 'scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('56f75c2c044980d46c92d6057ed2a846c8554a3a6474c84c957b3203740ee627')
+sha256sums=('dfa272e268e682bc6d7816d9dfd89f5672a3d59df66e2ab52023487628e04e5e')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    make build
+    ./configure --prefix=/usr 
+    make all
 }
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    install -vCDm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
+    make DESTDIR="${pkgdir}" install
 }
