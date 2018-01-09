@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.2.1.r683.g96bdd0e52
+pkgver=3.2.6.r1140.gd0f826592
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -52,6 +52,7 @@ package_spyder-git() {
            'python2-qtawesome'
            'python2-pickleshare'
            'python2-pyzmq'
+           'python2-cloudpickle'
            'desktop-file-utils'
            'gtk-update-icon-cache')
   optdepends=('python2-pyqt4: Qt-Python bindings'
@@ -91,6 +92,7 @@ package_spyder3-git() {
            'python-qtawesome'
            'python-pickleshare'
            'python-pyzmq'
+           'python-cloudpickle'
            'desktop-file-utils'
            'gtk-update-icon-cache')
   optdepends=('python-pyqt4: Qt-Python bindings'
