@@ -1,0 +1,20 @@
+pkgbase = mal-gtk
+	pkgdesc = GTK+3 interface for MyAnimeList.net
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/filalex77/mal-gtk
+	arch = any
+	license = GPLv3
+	makedepends = meson
+	makedepends = python>=3
+	depends = gtkmm3
+	depends = libsecret
+	depends = libxml2
+	depends = libcurl.so
+	source = git+https://github.com/filalex77/mal-gtk.git
+	source = mal-gtk.desktop
+	md5sums = SKIP
+	md5sums = e2fd1a6db4a0bd70cca3195023ca7e72
+
+pkgname = mal-gtk
+

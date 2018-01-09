@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=mal-gtk
+Exec=/usr/bin/mal-gtk
+Categories=Anime;Network;
