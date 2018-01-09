@@ -1,9 +1,9 @@
 #Maintainer: jnanar <info@agayon.be>
 
 pkgname=python-errol
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
-_pkgbase='errol-v1.0.5-83e8c2c40b270b6922bc1ddcb6ca0488ff281457'
+_pkgbase='errol-v1.0.6-695058bb38843079298d22105b10baa2f7bd30ae'
 _realname='errol'
 pkgdesc="Errol is a file sender that rely on inotify. It can be used to watch a directory and automatically transfer the new files (or modified ones) with XMPP."
 arch=(any)
@@ -14,8 +14,8 @@ options=(!emptydirs)
 provides=('python-errol')
 #optdepends=('')
 
-source=('https://gitlab.com/jnanar/errol/repository/v1.0.5/archive.tar.bz2')
-sha512sums=('f012f73a8257d5ccaa196b6e3e0518286128e6710d71bbf3014fe6c377cf37dac5d70692be4dc60851aeae6a8c670f5a3f6fcf9287c777565962d514051b7638')
+source=('https://gitlab.com/jnanar/errol/repository/v1.0.6/archive.tar.bz2')
+sha512sums=('06a15238f9f85daf1e723eeaa2ac43887a0228adf1d972e83175393d581ec4365fcfddf67349c280e0e4aa942037b17666694165ca55931f5998d14550a7687e')
 
 
 package() {
