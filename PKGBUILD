@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw@gmail.com>
 
 pkgname=system76-driver
-pkgver=17.10.9
+pkgver=17.10.12
 pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 	'xorg-xbacklight: To use the backlight service')
 source=("https://launchpad.net/~system76-dev/+archive/stable/+files/${pkgname}_${pkgver}.tar.xz"
 	'galu1.patch' 'gtk.patch' 'cli.patch' 'hidpi.patch')
-sha1sums=('15d0c347bfdb83d6b8b7ad7160eaafede273e49b'
+sha1sums=('258e4ca35a156d8cc9b3a8cf1577240db4aa6fb4'
           'ea8d53a80a26eb05b367f27996c8ce715aafba1e'
           'bf0c37a6226858c768e8ce2c9c3c3801aef14c0e'
           '92f0de2acea6ac69c36378c7139fb84a7eaf7842'
@@ -28,7 +28,7 @@ sha1sums=('15d0c347bfdb83d6b8b7ad7160eaafede273e49b'
 
 
 package() {
-	cd ${srcdir}/master_artful
+	cd ${srcdir}/${pkgname}
 
 	###########
 	# Install #
