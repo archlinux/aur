@@ -1,8 +1,8 @@
-# $Id: PKGBUILD 272173 2017-12-04 22:15:16Z arojas $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Luca P <meti at lplab.net>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=rsyslog
-pkgver=8.31.0
+pkgver=8.32.0
 pkgrel=1
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
@@ -21,7 +21,7 @@ options=('strip' 'zipman')
 source=("http://www.rsyslog.com/files/download/rsyslog/rsyslog-$pkgver.tar.gz"
 	'rsyslog.logrotate'
 	'rsyslog.conf')
-sha256sums=('eee6318f8127f56500c1e1f672fac6207eeb87bbf0985f5af964f881a96601b2'
+sha256sums=('9646fdc33a6314464cba68323716010a8a55c3deb523cd798ba8b41a0efa40b8'
             '0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a'
             '5fd51665ab9a81fbb24773068cb261b8dec073d74082c121633f49b9381d9a3f')
 
