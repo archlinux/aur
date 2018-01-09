@@ -2,7 +2,7 @@
 
 pkgname=('mingw-w64-protobuf')
 _pkgname=protobuf
-pkgver=3.4.0
+pkgver=3.5.1.1
 pkgrel=1
 pkgdesc="Protocol Buffers - Google's data interchange format (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('mingw-w64-crt' 'mingw-w64-zlib')
 makedepends=('mingw-w64-configure' 'protobuf')
 options=(!strip !buildflags staticlibs)
 source=("https://github.com/google/protobuf/archive/v${pkgver}.tar.gz")
-sha1sums=('a9e3fbcf22f9a02859112a1963619321035386f1')
+sha256sums=('56b5d9e1ab2bf4f5736c4cfba9f4981fbc6976246721e7ded5602fbaee6d6869')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
