@@ -1,9 +1,9 @@
 # Maintainer: Willem Mulder <14mRh4X0r@gmail.com>
 _pkgname=passff
-_file_id=721365
+_file_id=829999
 pkgname=firefox-passff
-pkgver=1.0.3linux
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc="zx2c4 pass manager addon for firefox"
 arch=(any)
 url="https://github.com/passff/passff"
@@ -14,8 +14,8 @@ makedepends=(jq)
 source=("https://github.com/passff/passff/archive/${pkgver}.tar.gz"
         "https://addons.mozilla.org/firefox/downloads/file/${_file_id}/${_pkgname}-${pkgver}-an+fx-linux.xpi")
 noextract=("${_pkgname}-${pkgver}-an+fx-linux.xpi")
-sha384sums=('ee1290bc1aabbbc2e538494f39604d1f1a3df9c865d41ae4bb1b8d9bf43015c43f88bd01479dfe02e51666983c247fe2'
-            'dece476349a13587da49a8c51b7ec59944572dd584c251d30db6260d7d36dfe1326d9c5fa791d240ddad314230e635dd')
+sha384sums=('8e75bb14227cd86a447cfe9c680681072390b9c5eba4fe8184085b45a2606affbe253861ec309b62318dc1cdfb6d1094'
+            '191d3a88ffa7dcec7448950592a8d2e82c72630f218da56447a281b8b7fe384a96c57c5e0db3618f76c59c852c5cabaa')
 
 package() {
     cd "${_pkgname}-${pkgver}/src"
