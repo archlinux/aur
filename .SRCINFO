@@ -1,0 +1,15 @@
+pkgbase = urn-love-git
+	pkgdesc = LÖVE2D bindings for Urn (Lisp->Lua) language
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/Lignum/urn-love2d-bindings
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = urn-lang-git
+	provides = urn-love
+	source = urn-love-git::git+https://gitlab.com/Lignum/urn-love2d-bindings.git#branch=master
+	md5sums = SKIP
+
+pkgname = urn-love-git
+
