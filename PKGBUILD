@@ -7,9 +7,9 @@
 
 pkgname=amule-remote-tools
 pkgver=10990
-pkgrel=1
+pkgrel=3
 pkgdesc="aMule Remote Tools CLI and GUI"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.amule.org"
 license=('GPL')
 conflicts=('amule')
