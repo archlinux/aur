@@ -3,13 +3,12 @@ _npmname=ArkClient
 _appname=arkclient
 pkgname=ark-desktop
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi Platform Ark Lite Client"
 arch=(x86_64)
 url="https://github.com/ArkEcosystem/ark-desktop"
 license=(MIT)
-depends=('nodejs' 'electron')
-makedepends=('npm')
+depends=('gtk2' 'alsa-lib' 'nss' 'libxtst' 'gconf' 'libxss')
 
 source=(
   "https://github.com/ArkEcosystem/${pkgname}/releases/download/${pkgver}/${_npmname}-Linux-${pkgver}.tar.xz"
