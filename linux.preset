@@ -6,7 +6,7 @@ ALL_kver="/boot/%KERNEL%"
 PRESETS=('default' 'fallback')
 
 #default_config="/etc/mkinitcpio.conf"
-default_image="/boot/%INITRD%"
+default_image="/boot/%INITRD%.img"
 #default_options=""
 
 #fallback_config="/etc/mkinitcpio.conf"
