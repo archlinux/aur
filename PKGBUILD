@@ -2,17 +2,16 @@
 
 _target=arm-linux-gnueabihf
 pkgname=$_target-gdb
-pkgver=7.11
+pkgver=8.0.1
 pkgrel=1
 pkgdesc='The GNU Debugger for the ARM hard float target'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
-depends=(xz ncurses expat python2 guile)
-makedepends=(texinfo)
+depends=(gdb-common)
 options=(!emptydirs)
 source=(http://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz)
-sha256sums=('7a434116cb630d77bb40776e8f5d3937bed11dea56bafebb4d2bc5dd389fe5c1')
+sha256sums=('3dbd5f93e36ba2815ad0efab030dcd0c7b211d7b353a40a53f4c02d7d56295e3')
 
 build() {
   cd gdb-$pkgver
@@ -25,7 +24,8 @@ build() {
               --enable-interwork \
               --with-system-readline \
               --disable-nls \
-              --with-python=/usr/bin/python2 \
+              --with-python=/usr/bin/python3 \
+              --with-guile=guile-2.0 \
               --with-system-gdbinit=/etc/gdb/gdbinit
   make
 }
