@@ -114,7 +114,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
 +	}
 +
 +	if (!(priv->info.ext_cap_0c & 0x2000) &&
-+	    (priv->info.capabilities & 0xd000ff) != 0xd00073) {
++	    (priv->info.capabilities & 0xd000fd) != 0xd00071) {
 +		printk(KERN_NOTICE "synaptics: led: failed capabilities check\n");
 +		return false;
 +	}
