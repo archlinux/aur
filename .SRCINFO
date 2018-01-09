@@ -1,8 +1,7 @@
 pkgbase = pik-git
 	pkgdesc = A new lossy image format for the internet
-	pkgver = 1c65996
+	pkgver = r52.gce070d1
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/google/pik
 	arch = i686
 	arch = x86_64
