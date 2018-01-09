@@ -1,0 +1,15 @@
+pkgbase = python-pwgen
+	pkgdesc = Pure python version of pwgen
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/vinces1979/pwgen
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-pwgen::git+https://github.com/vinces1979/pwgen#commit=b86d7d5bebfa892e7bc13f120875cf5a0bd54f5f
+	md5sums = SKIP
+
+pkgname = python-pwgen
+	depends = python
+
