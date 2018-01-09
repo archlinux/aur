@@ -2,7 +2,7 @@
 
 pkgname=pscripts-git
 pkgver=0.1a
-pkgrel=1
+pkgrel=2
 pkgdesc="Noeljunior's pscripts: some handy scripts for users and sysadmins"
 arch=('any')
 url="https://github.com/Noeljunior/pscripts"
