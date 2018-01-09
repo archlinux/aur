@@ -1,0 +1,18 @@
+# Maintainer: Conrad Sachweh aur@spamthis.space
+pkgname=python-feedgen
+_pkgname=feedgen
+pkgver=0.6.1
+pkgrel=1
+pkgdesc="This module can be used to generate web feeds in both ATOM and RSS format. It has support for extensions. Included is for example an extension to produce Podcasts."
+url="http://lkiesow.github.io/python-feedgen"
+arch=('any')
+license=('BSD' 'GPL')
+depends=('python' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('0356a7500222b7cb283fa02a5960a19b')
+
+package() {
+  cd $srcdir/${_pkgname}-${pkgver}
+
+  python setup.py install --root="${pkgdir}" || return 1
+}
