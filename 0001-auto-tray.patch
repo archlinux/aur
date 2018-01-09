@@ -1,0 +1,56 @@
+diff --git a/xrx7830.ppd b/xrx7830.ppd
+index 90f474b..37dba49 100644
+--- a/xrx7830.ppd
++++ b/xrx7830.ppd
+@@ -1309,7 +1309,8 @@
+ *% Input Slot
+ *OpenUI *InputSlot/Paper Tray: PickOne
+ *OrderDependency: 46.5 AnySetup *InputSlot
+-*DefaultInputSlot: Tray1
++*DefaultInputSlot: Auto
++*InputSlot Auto/Automatically Select: ""
+ *InputSlot Tray1/Tray 1: "<< (tray-1) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray2/Tray 2: "<< (tray-2) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray3/Tray 3: "<< (tray-3) xerox$MediaInputTray >> setpagedevice"
+diff --git a/xrx7835.ppd b/xrx7835.ppd
+index c77394e..958529a 100644
+--- a/xrx7835.ppd
++++ b/xrx7835.ppd
+@@ -1308,7 +1308,8 @@
+ *% Input Slot
+ *OpenUI *InputSlot/Paper Tray: PickOne
+ *OrderDependency: 46.5 AnySetup *InputSlot
+-*DefaultInputSlot: Tray1
++*DefaultInputSlot: Auto
++*InputSlot Auto/Automatically Select: ""
+ *InputSlot Tray1/Tray 1: "<< (tray-1) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray2/Tray 2: "<< (tray-2) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray3/Tray 3: "<< (tray-3) xerox$MediaInputTray >> setpagedevice"
+diff --git a/xrx7845.ppd b/xrx7845.ppd
+index 801b865..14c4655 100644
+--- a/xrx7845.ppd
++++ b/xrx7845.ppd
+@@ -1308,7 +1308,8 @@
+ *% Input Slot
+ *OpenUI *InputSlot/Paper Tray: PickOne
+ *OrderDependency: 46.5 AnySetup *InputSlot
+-*DefaultInputSlot: Tray1
++*DefaultInputSlot: Auto
++*InputSlot Auto/Automatically Select: ""
+ *InputSlot Tray1/Tray 1: "<< (tray-1) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray2/Tray 2: "<< (tray-2) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray3/Tray 3: "<< (tray-3) xerox$MediaInputTray >> setpagedevice"
+diff --git a/xrx7855.ppd b/xrx7855.ppd
+index 3afb19a..72d10f0 100644
+--- a/xrx7855.ppd
++++ b/xrx7855.ppd
+@@ -1309,7 +1309,8 @@
+ *% Input Slot
+ *OpenUI *InputSlot/Paper Tray: PickOne
+ *OrderDependency: 46.5 AnySetup *InputSlot
+-*DefaultInputSlot: Tray1
++*DefaultInputSlot: Auto
++*InputSlot Auto/Automatically Select: ""
+ *InputSlot Tray1/Tray 1: "<< (tray-1) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray2/Tray 2: "<< (tray-2) xerox$MediaInputTray >> setpagedevice"
+ *InputSlot Tray3/Tray 3: "<< (tray-3) xerox$MediaInputTray >> setpagedevice"

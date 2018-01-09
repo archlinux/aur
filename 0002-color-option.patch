@@ -1,0 +1,296 @@
+diff --git a/xrx7830.ppd b/xrx7830.ppd
+index 37dba49..a7b784f 100644
+--- a/xrx7830.ppd
++++ b/xrx7830.ppd
+@@ -1319,6 +1319,69 @@
+ *InputSlot Tray6/Tray 6: "<< (tray-6) xerox$MediaInputTray >> setpagedevice"
+ *CloseUI: *InputSlot
+ 
++*OpenUI *ColorModel/Output Color: PickOne
++*OrderDependency: 20.0 AnySetup *ColorModel
++*DefaultColorModel: Color
++*ColorModel Grayscale/Grayscale: "
++    1 dict dup 2 dict dup /Type 26 put dup /RGBCorrection 3 put /DeviceRenderingInfo exch put setpagedevice
++    currentpagedevice /DeviceRenderingInfo get /Brightness known {
++        1 dict dup
++        1 dict dup
++        /Custom /ProcSet findresource dup
++        /currentregioncode known {
++            begin
++            currentregioncode
++            dup -1 eq { pop 0  } if
++            setcmykcorrection
++            end
++            pop
++        }{
++            pop
++            /CMYKCorrection 4 put
++        }ifelse
++        /DeviceRenderingInfo exch put
++        setpagedevice
++    }if
++    1 dict dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /EngineScreen 2 put put dup /PostRenderingEnhance true put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 4 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBToK 1 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBSpace 0 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 1 put/DeviceRenderingInfo exch put setpagedevice
++    2 dict dup /PostRenderingEnhance true put dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /REValue 1 put put setpagedevice
++    1 dict dup/ProcessColorModel/DeviceGray put setpagedevice
++"
++*End
++*ColorModel Color/Color: "
++    1 dict dup 2 dict dup /Type 26 put dup /RGBCorrection 3 put /DeviceRenderingInfo exch put setpagedevice
++    currentpagedevice /DeviceRenderingInfo get /Brightness known {
++        1 dict dup
++        1 dict dup
++        /Custom /ProcSet findresource dup
++        /currentregioncode known {
++            begin
++            currentregioncode
++            dup -1 eq { pop 0  } if
++            setcmykcorrection
++            end
++            pop
++        }{
++            pop
++            /CMYKCorrection 4 put
++        }ifelse
++        /DeviceRenderingInfo exch put
++        setpagedevice
++    }if
++    1 dict dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /EngineScreen 2 put put dup /PostRenderingEnhance true put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 4 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBToK 1 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBSpace 0 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 1 put/DeviceRenderingInfo exch put setpagedevice
++    2 dict dup /PostRenderingEnhance true put dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /REValue 1 put put setpagedevice
++    1 dict dup/ProcessColorModel/DeviceCMYK put setpagedevice
++"
++*End
++*CloseUI: *ColorModel
++
+ *OpenGroup: PrintQuality/Print Quality/Color	
+ 
+ *OpenUI *OutputMode/Print Quality: PickOne
+diff --git a/xrx7835.ppd b/xrx7835.ppd
+index 958529a..211f254 100644
+--- a/xrx7835.ppd
++++ b/xrx7835.ppd
+@@ -1318,6 +1318,69 @@
+ *InputSlot Tray6/Tray 6: "<< (tray-6) xerox$MediaInputTray >> setpagedevice"
+ *CloseUI: *InputSlot
+ 
++*OpenUI *ColorModel/Output Color: PickOne
++*OrderDependency: 20.0 AnySetup *ColorModel
++*DefaultColorModel: Color
++*ColorModel Grayscale/Grayscale: "
++    1 dict dup 2 dict dup /Type 26 put dup /RGBCorrection 3 put /DeviceRenderingInfo exch put setpagedevice
++    currentpagedevice /DeviceRenderingInfo get /Brightness known {
++        1 dict dup
++        1 dict dup
++        /Custom /ProcSet findresource dup
++        /currentregioncode known {
++            begin
++            currentregioncode
++            dup -1 eq { pop 0  } if
++            setcmykcorrection
++            end
++            pop
++        }{
++            pop
++            /CMYKCorrection 4 put
++        }ifelse
++        /DeviceRenderingInfo exch put
++        setpagedevice
++    }if
++    1 dict dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /EngineScreen 2 put put dup /PostRenderingEnhance true put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 4 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBToK 1 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBSpace 0 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 1 put/DeviceRenderingInfo exch put setpagedevice
++    2 dict dup /PostRenderingEnhance true put dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /REValue 1 put put setpagedevice
++    1 dict dup/ProcessColorModel/DeviceGray put setpagedevice
++"
++*End
++*ColorModel Color/Color: "
++    1 dict dup 2 dict dup /Type 26 put dup /RGBCorrection 3 put /DeviceRenderingInfo exch put setpagedevice
++    currentpagedevice /DeviceRenderingInfo get /Brightness known {
++        1 dict dup
++        1 dict dup
++        /Custom /ProcSet findresource dup
++        /currentregioncode known {
++            begin
++            currentregioncode
++            dup -1 eq { pop 0  } if
++            setcmykcorrection
++            end
++            pop
++        }{
++            pop
++            /CMYKCorrection 4 put
++        }ifelse
++        /DeviceRenderingInfo exch put
++        setpagedevice
++    }if
++    1 dict dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /EngineScreen 2 put put dup /PostRenderingEnhance true put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 4 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBToK 1 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBSpace 0 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 1 put/DeviceRenderingInfo exch put setpagedevice
++    2 dict dup /PostRenderingEnhance true put dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /REValue 1 put put setpagedevice
++    1 dict dup/ProcessColorModel/DeviceCMYK put setpagedevice
++"
++*End
++*CloseUI: *ColorModel
++
+ *OpenGroup: PrintQuality/Print Quality/Color	
+ 
+ *OpenUI *OutputMode/Print Quality: PickOne
+diff --git a/xrx7845.ppd b/xrx7845.ppd
+index 14c4655..9592098 100644
+--- a/xrx7845.ppd
++++ b/xrx7845.ppd
+@@ -1318,6 +1318,69 @@
+ *InputSlot Tray6/Tray 6: "<< (tray-6) xerox$MediaInputTray >> setpagedevice"
+ *CloseUI: *InputSlot
+ 
++*OpenUI *ColorModel/Output Color: PickOne
++*OrderDependency: 20.0 AnySetup *ColorModel
++*DefaultColorModel: Color
++*ColorModel Grayscale/Grayscale: "
++    1 dict dup 2 dict dup /Type 26 put dup /RGBCorrection 3 put /DeviceRenderingInfo exch put setpagedevice
++    currentpagedevice /DeviceRenderingInfo get /Brightness known {
++        1 dict dup
++        1 dict dup
++        /Custom /ProcSet findresource dup
++        /currentregioncode known {
++            begin
++            currentregioncode
++            dup -1 eq { pop 0  } if
++            setcmykcorrection
++            end
++            pop
++        }{
++            pop
++            /CMYKCorrection 4 put
++        }ifelse
++        /DeviceRenderingInfo exch put
++        setpagedevice
++    }if
++    1 dict dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /EngineScreen 2 put put dup /PostRenderingEnhance true put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 4 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBToK 1 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBSpace 0 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 1 put/DeviceRenderingInfo exch put setpagedevice
++    2 dict dup /PostRenderingEnhance true put dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /REValue 1 put put setpagedevice
++    1 dict dup/ProcessColorModel/DeviceGray put setpagedevice
++"
++*End
++*ColorModel Color/Color: "
++    1 dict dup 2 dict dup /Type 26 put dup /RGBCorrection 3 put /DeviceRenderingInfo exch put setpagedevice
++    currentpagedevice /DeviceRenderingInfo get /Brightness known {
++        1 dict dup
++        1 dict dup
++        /Custom /ProcSet findresource dup
++        /currentregioncode known {
++            begin
++            currentregioncode
++            dup -1 eq { pop 0  } if
++            setcmykcorrection
++            end
++            pop
++        }{
++            pop
++            /CMYKCorrection 4 put
++        }ifelse
++        /DeviceRenderingInfo exch put
++        setpagedevice
++    }if
++    1 dict dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /EngineScreen 2 put put dup /PostRenderingEnhance true put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 4 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBToK 1 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBSpace 0 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 1 put/DeviceRenderingInfo exch put setpagedevice
++    2 dict dup /PostRenderingEnhance true put dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /REValue 1 put put setpagedevice
++    1 dict dup/ProcessColorModel/DeviceCMYK put setpagedevice
++"
++*End
++*CloseUI: *ColorModel
++
+ *OpenGroup: PrintQuality/Print Quality/Color	
+ 
+ *OpenUI *OutputMode/Print Quality: PickOne
+diff --git a/xrx7855.ppd b/xrx7855.ppd
+index 72d10f0..cf30625 100644
+--- a/xrx7855.ppd
++++ b/xrx7855.ppd
+@@ -1319,6 +1319,69 @@
+ *InputSlot Tray6/Tray 6: "<< (tray-6) xerox$MediaInputTray >> setpagedevice"
+ *CloseUI: *InputSlot
+ 
++*OpenUI *ColorModel/Output Color: PickOne
++*OrderDependency: 20.0 AnySetup *ColorModel
++*DefaultColorModel: Color
++*ColorModel Grayscale/Grayscale: "
++    1 dict dup 2 dict dup /Type 26 put dup /RGBCorrection 3 put /DeviceRenderingInfo exch put setpagedevice
++    currentpagedevice /DeviceRenderingInfo get /Brightness known {
++        1 dict dup
++        1 dict dup
++        /Custom /ProcSet findresource dup
++        /currentregioncode known {
++            begin
++            currentregioncode
++            dup -1 eq { pop 0  } if
++            setcmykcorrection
++            end
++            pop
++        }{
++            pop
++            /CMYKCorrection 4 put
++        }ifelse
++        /DeviceRenderingInfo exch put
++        setpagedevice
++    }if
++    1 dict dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /EngineScreen 2 put put dup /PostRenderingEnhance true put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 4 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBToK 1 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBSpace 0 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 1 put/DeviceRenderingInfo exch put setpagedevice
++    2 dict dup /PostRenderingEnhance true put dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /REValue 1 put put setpagedevice
++    1 dict dup/ProcessColorModel/DeviceGray put setpagedevice
++"
++*End
++*ColorModel Color/Color: "
++    1 dict dup 2 dict dup /Type 26 put dup /RGBCorrection 3 put /DeviceRenderingInfo exch put setpagedevice
++    currentpagedevice /DeviceRenderingInfo get /Brightness known {
++        1 dict dup
++        1 dict dup
++        /Custom /ProcSet findresource dup
++        /currentregioncode known {
++            begin
++            currentregioncode
++            dup -1 eq { pop 0  } if
++            setcmykcorrection
++            end
++            pop
++        }{
++            pop
++            /CMYKCorrection 4 put
++        }ifelse
++        /DeviceRenderingInfo exch put
++        setpagedevice
++    }if
++    1 dict dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /EngineScreen 2 put put dup /PostRenderingEnhance true put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 4 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBToK 1 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/RGBSpace 0 put/DeviceRenderingInfo exch put setpagedevice
++    1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 1 put/DeviceRenderingInfo exch put setpagedevice
++    2 dict dup /PostRenderingEnhance true put dup /PostRenderingEnhanceDetails 2 dict dup /Type 32 put dup /REValue 1 put put setpagedevice
++    1 dict dup/ProcessColorModel/DeviceCMYK put setpagedevice
++"
++*End
++*CloseUI: *ColorModel
++
+ *OpenGroup: PrintQuality/Print Quality/Color	
+ 
+ *OpenUI *OutputMode/Print Quality: PickOne
