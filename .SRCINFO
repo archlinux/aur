@@ -8,8 +8,6 @@ pkgbase = lanyus-reverse-proxy
 	license = BSD
 	makedepends = go
 	makedepends = git
-	depends = php
-	depends = php-phalcon>=3.2.0
 	provides = intellij-license-activation
 	source = https://raw.githubusercontent.com/ilanyu/ReverseProxy/master/main.go
 	source = lanyus-reverse-proxy.service
