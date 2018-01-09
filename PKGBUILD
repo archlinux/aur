@@ -6,13 +6,13 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.3.r734.g4433c27d8
+pkgver=4.3.r912.g5fe3ebd48
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
 license=('GPL3')
-depends=('avahi' 'openssl' 'uriparser' 'ffmpeg' 'linuxtv-dvb-apps' 'pcre2' 'libfdk-aac')
+depends=('avahi' 'openssl' 'uriparser' 'ffmpeg' 'pcre2' 'libfdk-aac')
 makedepends=('git' 'python')
 optdepends=('xmltv: For an alternative source of programme listings')
 provides=('tvheadend')
