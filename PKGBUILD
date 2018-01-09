@@ -8,7 +8,6 @@ pkgdesc='Modern, C++11, single header, tiny framework for unit-tests, TDD and BD
 arch=('x86_64')
 url='https://github.com/martinmoene/lest'
 license=('Boost')
-depends=('gcc')
 makedepends=('git')
 source=("git+https://github.com/martinmoene/$_pkgname")
 md5sums=('SKIP')
