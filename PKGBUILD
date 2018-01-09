@@ -1,11 +1,12 @@
 # Maintainer:   Maximilian Weiss         <$(echo "bWF4QG1heHdlaXNzLmlv" | base64 -d)>
+# Contributor:  James Lovejoy            <$(echo "amFtZXNsb3Zlam95MUBnbWFpbC5jb20=" | base64 -d)>
+# Contributor:  The Vertcoin Developers  <$(echo "Y29udGFjdEB2ZXJ0Y29pbi5vcmcK" | base64 -d)>
 # Contributor:  Thomas Voegtlin          <$(echo "dGhvbWFzdkBlbGVjdHJ1bS5vcmcK" | base64 -d)>
 # Contributor:  Pooler                   <https://bitcointalk.org/index.php?action=profile;u=43931>
-# Contributor:  The Vertcoin Developers  <$(echo "Y29udGFjdEB2ZXJ0Y29pbi5vcmcK" | base64 -d)>
 
 pkgname=electrum-vtc
-pkgver=2.9.3.4
-pkgrel=2
+pkgver=2.9.3.5
+pkgrel=1
 pkgdesc='A simple, powerful, and secure Vertcoin wallet which has no sync time or long waits for the blockchain to download.'
 
 arch=('any')
@@ -35,7 +36,7 @@ source=("Electrum-VTC-$pkgver.tar.gz::https://github.com/vertcoin/$pkgname/relea
 
 validpgpkeys=('E44EAD1F0BB016963229A6A304E9BCFB4E777CA3')
 
-sha256sums=('a589db9a7cd9dca033db5ef2366f5570ebb94f9a648b28b5b11f8bdadbbdc3d9'
+sha256sums=('af4434e357926569fc6c23c8406188c2c5fa7f92f00c37ccb1c12999ab367bd3'
             'SKIP')
 
 prepare() {
