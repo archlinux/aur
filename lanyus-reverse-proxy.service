@@ -1,0 +1,16 @@
+[Unit]
+Description=Lanyus reverse proxy
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=10
+ExecStart=/opt/lanyus-reverse-proxy/reverse-proxy
+
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target 

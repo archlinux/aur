@@ -1,0 +1,20 @@
+pkgbase = lanyus-reverse-proxy
+	pkgdesc = Lanyus reverse proxy
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ilanyu/ReverseProxy
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = go
+	makedepends = git
+	depends = php
+	depends = php-phalcon>=3.2.0
+	provides = intellij-license-activation
+	source = https://raw.githubusercontent.com/ilanyu/ReverseProxy/master/main.go
+	source = lanyus-reverse-proxy.service
+	sha256sums = 33a2df5ef7d4926a041087bd6fac77c39143449f3373d8959deae094d618244a
+	sha256sums = ff1480583ff8cc42c7f34f625aca28a724ade42f91a5ca842b95dfa29296bb2b
+
+pkgname = lanyus-reverse-proxy
+
