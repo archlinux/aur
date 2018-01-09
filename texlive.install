@@ -1,5 +1,5 @@
 post_install() {
-  echo ">>> texlive: updating the filename database..."
+  echo "texlive: Updating the filename database..."
   /usr/bin/mktexlsr
 }
 
@@ -10,5 +10,3 @@ post_upgrade() {
 post_remove() {
   post_install
 }
-
-# vim:set ts=2 sw=2 et:

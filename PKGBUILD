@@ -3,9 +3,9 @@
 # Contributor: Thomas Glamsch <thomas.glamsch@gmail.com>
 # Contributor: Alexander Kratzsch <alexander-kratzsch at web dot de>
 
-_revision=2480
+_revision=2673
 pkgname=koma-script
-pkgver=3.21.${_revision}
+pkgver=3.24.${_revision}
 pkgrel=1
 pkgdesc="A versatile bundle of LaTeX2e document classes and packages"
 arch=("any")
@@ -13,7 +13,7 @@ url="http://www.komascript.de/"
 license=('LPPL')
 depends=('texlive-core' 'texlive-latexextra')
 source=("http://sourceforge.net/projects/koma-script/files/KOMA-Script/koma-script-${_revision}.zip")
-sha1sums=('370f30ec20ae339a68c172cb57bfc53ab4e084aa')
+sha256sums=('0d435c57f69ab094e3dc74676c847dcc27b5ff3215474f9cd49668cdeb263b0d')
 install=texlive.install
 
 package() {
