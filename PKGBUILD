@@ -1,6 +1,6 @@
 pkgname=binfmt-support
 pkgver=2.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="register interpreters for various binary formats"
 arch=(i686 x86_64)
 url="http://packages.debian.org/en/sid/binfmt-support"
@@ -22,5 +22,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
   install -dm0755 $pkgdir/var/lib/binfmts
-  install -Dm755 $srcdir/binfmt-support.service $pkgdir/usr/lib/systemd/system/binfmt-support.service
+  install -Dm644 $srcdir/binfmt-support.service $pkgdir/usr/lib/systemd/system/binfmt-support.service
 }
