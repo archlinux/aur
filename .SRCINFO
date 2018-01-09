@@ -1,0 +1,17 @@
+pkgbase = fluffy-git
+	pkgdesc = Tools for Network Archaeology (internet protocol analysis)
+	pkgver = r60.69ee969
+	pkgrel = 1
+	url = https://github.com/dirtbags/fluffy
+	arch = any
+	license = custom
+	makedepends = git
+	provides = fluffy
+	conflicts = fluffy
+	source = git+https://github.com/dirtbags/fluffy#branch=master
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 19eef14ffb7f4fc3c0eb4febc4989311
+
+pkgname = fluffy-git
+
