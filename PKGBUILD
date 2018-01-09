@@ -1,13 +1,13 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname=psi-git
-pkgver=1.3_dev_20171004
+pkgver=1.3_dev_20180109
 pkgrel=1
 pkgdesc="A jabber client. GIT version"
 arch=('i686' 'x86_64')
 url="http://psi-im.org/"
 license=('GPL2')
 depends=('qca-qt5' 'qt5-x11extras' 'qt5-multimedia' 'aspell' 'libxss' 'minizip' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('git' 'qconf-git')
+makedepends=('git')
 replaces=('psi' 'psi-qt5-git')
 conflicts=('psi' 'psi-qt5-git')
 source=('git+https://github.com/psi-im/psi.git')
@@ -29,19 +29,16 @@ prepare() {
 build() {
 
   cd $srcdir/psi
-
-  qconf
-
- ./configure --prefix=/usr \
-             --libdir=/usr/lib \
-             --disable-enchant \
-             --qtselect=5
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   make
+
 }
 
 package() {
-  cd $srcdir/psi
+  cd $srcdir/psi/build
 
-  make INSTALL_ROOT="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
 
