@@ -14,7 +14,7 @@ md5sums=('SKIP')
 package() {
 	cd $srcdir/$pkgname
 
-    ./sysadmin/pscripts --install "/opt/pscripts" --profile "/etc/profile.d/pscripts.sh"
+    ./sysadmin/pscripts --install "${pkgdir}/opt/pscripts" --profile "${pkgdir}/etc/profile.d/pscripts.sh"
 }
 
 pkgver() {
