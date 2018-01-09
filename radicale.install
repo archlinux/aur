@@ -6,6 +6,11 @@ post_install() {
 	install -d -m 755 -o radicale -g radicale /var/lib/radicale/
 
 	chown -R root:radicale /etc/radicale/
+
+    echo "If you choose to use a non-standard path for your collections"
+    echo "make sure to copy the systemd unit to /etc/systemd/system and"
+    echo "adjust the respective line 'ReadWritePaths' to your folder."
+    echo "Make sure to reload and re-enable your units afterwards!"
 }
 
 pre_upgrade() {
