@@ -9,27 +9,27 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgbase=mesa-git
-pkgname=('mesa-git')
+pkgbase=lib32-mesa-git
+pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=17.4.0_devel.98979.adfb9c5c7b
 pkgrel=1
 arch=('x86_64')
-makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'glproto'
-             'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 
-             'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
-             'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'wayland-protocols')
-depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd')
+makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'dri2proto' 'dri3proto' 'presentproto' 
+             'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
+             'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libglvnd' 'wayland-protocols')
+depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
+           'lib32-llvm-libs-svn' 'lib32-libunwind')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-libgl' 'vulkan-driver' 'opencl-driver' 'opengl-driver' 'libtxc_dxtn')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-libgl' 'libtxc_dxtn')
+provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opengl-driver' 'lib32-libtxc_dxtn')
+conflicts=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-libtxc_dxtn')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
         'glvnd-fix-gl-dot-pc.patch'
 )
+
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
             '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028')
@@ -37,11 +37,8 @@ sha512sums=('SKIP'
 prepare() {
   cd mesa
 
-  # glvnd support patches - from Fedora
-  # non-upstreamed ones
   patch -Np1 -i ../glvnd-fix-gl-dot-pc.patch
   autoreconf -fi
-
 }
 
 pkgver() {
@@ -51,25 +48,29 @@ pkgver() {
 }
 
 build () {
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export LLVM_CONFIG=/usr/bin/llvm-config32
+
   cd mesa
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
-    --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-    --with-platforms=x11,drm,wayland \
-    --with-vulkan-drivers=intel,radeon \
-    --enable-texture-float \
-    --enable-gallium-osmesa \
-    --enable-xa \
-    --enable-nine \
-    --disable-xvmc \
-    --enable-vdpau \
-    --enable-omx-bellagio \
-    --enable-opencl \
-    --enable-opencl-icd \
-    --enable-glx-tls \
-    --enable-libglvnd
+  ./configure --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu \
+               --libdir=/usr/lib32 \
+               --prefix=/usr \
+               --sysconfdir=/etc \
+               --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+               --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
+               --with-platforms=x11,drm,wayland \
+               --with-vulkan-drivers=intel,radeon \
+               --enable-texture-float \
+               --enable-gallium-osmesa \
+               --enable-xa \
+               --enable-nine \
+               --disable-xvmc \
+               --enable-vdpau \
+               --enable-glx-tls \
+               --with-va-libdir=/usr/lib32/dri \
+               --enable-libglvnd
 
 
 # Used configure settings
@@ -77,28 +78,27 @@ build () {
 # --prefix=PREFIX                   install architecture-independent files in PREFIX
 # --sysconfdir=DIR                  read-only single-machine data 
 #                                   [PREFIX/etc]
-# --with-gallium-drivers[=DIRS...]  comma delimited Gallium drivers list, e.g. "i915,ilo,nouveau,r300,r600,radeonsi,freedreno,svga,swrast,vc4,virgl"
+# --with-gallium-drivers[=DIRS...]  comma delimited Gallium drivers list, e.g. "i915,nouveau,r300,r600,radeonsi,freedreno,svga,swrast,vc4,virgl"
 #                                   [default=r300,r600,svga,swrast]
 # --with-dri-drivers[=DIRS...]      comma delimited classic DRI drivers list, e.g. "swrast,i965,radeon"
 #                                   [default=auto]
-# --with-platforms[=DIRS...]        comma delimited native platforms libEGL/Vulkan/other
-#                                   supports, e.g. "x11,drm,wayland,surfaceless..."
+# --with-egl-platforms[=DIRS...]    comma delimited native platforms libEGL supports, e.g. "x11,drm"
 #                                   [default=auto]
 # --with-vulkan-drivers[=DIRS...]   comma delimited Vulkan drivers list, e.g. "intel"
 #                                   [default=no]
 # --enable-texture-float            enable floating-point textures and renderbuffers 
 #                                   [default=disabled]
-# --enable-gallium-osmesa           enable Gallium implementation of the OSMesa library
+# --enable-osmesa                   enable OSMesa library
 #                                   [default=disabled]
 # --enable-xa                       enable build of the XA X Acceleration API
 #                                   [default=disabled]
 # --enable-nine                     enable build of the nine Direct3D9 API
 #                                   [default=no]
-# --disable-xvmc                    enable xvmc library
+# --disable-xvmc                     enable xvmc library
 #                                   [default=auto]
 # --enable-vdpau                    enable vdpau library
 #                                    [default=auto]
-# --enable-omx-bellagio             enable OpenMAX Bellagio library
+# --enable-omx                      enable OpenMAX library
 #                                   [default=disabled]
 # --enable-opencl                   enable OpenCL library
 #                                   [default=disabled]
@@ -114,20 +114,22 @@ build () {
 }
 
 
-package_mesa-git() {
+package_lib32-mesa-git () {
 
   cd mesa
   make DESTDIR="$pkgdir" install
 
-  # remove files provided by libglvnd
-  rm "$pkgdir"/usr/lib/libGLESv1_CM.so
-  rm "$pkgdir"/usr/lib/libGLESv1_CM.so.1
-  rm "$pkgdir"/usr/lib/libGLESv2.so
-  rm "$pkgdir"/usr/lib/libGLESv2.so.2
-  rm "$pkgdir"/usr/lib/libGLESv2.so.2.0.0
+  # remove files provided by mesa-git
+  rm -rf "$pkgdir"/etc
+  rm -rf "$pkgdir"/usr/include
+  rm "$pkgdir"/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
-  # indirect rendering
-  ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
+  # remove files present in lib32-libglvnd
+  rm "$pkgdir"/usr/lib32/libGLESv1_CM.so
+  rm "$pkgdir"/usr/lib32/libGLESv1_CM.so.1
+  rm "$pkgdir"/usr/lib32/libGLESv2.so
+  rm "$pkgdir"/usr/lib32/libGLESv2.so.2
+  rm "$pkgdir"/usr/lib32/libGLESv2.so.2.0.0
 
   install -m755 -d "$pkgdir"/usr/share/licenses/$pkgbase
   install -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgbase/
