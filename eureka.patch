@@ -1,5 +1,15 @@
---- eureka-1.21-source-orig/Makefile	2017-01-12 04:40:19.000000000 +0100
-+++ eureka-1.21-source/Makefile	2017-01-12 22:39:23.218923650 +0100
+diff -ru eureka-1.21-source-orig/Makefile eureka-1.21-source/Makefile
+--- eureka-1.21-source-orig/Makefile	2018-01-09 14:05:02.549661357 +0100
++++ eureka-1.21-source/Makefile	2018-01-09 14:06:03.161776098 +0100
+@@ -26,7 +26,7 @@
+ CXXFLAGS=$(OPTIMISE) -Wall -D$(OS)  \
+          -D_THREAD_SAFE -D_REENTRANT
+ 
+-LDFLAGS=-L/usr/X11R6/lib
++LDFLAGS+=-L/usr/X11R6/lib
+ 
+ LIBS= \
+      -lfltk_images -lfltk_gl -lfltk  \
 @@ -134,7 +134,8 @@
  stripped: $(PROGRAM)
  	strip $(STRIP_FLAGS) $(PROGRAM)

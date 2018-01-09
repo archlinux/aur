@@ -4,7 +4,7 @@
 
 pkgname=eureka
 pkgver=1.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A map editor for the classic DOOM games"
 arch=('i686' 'x86_64')
 url="http://eureka-editor.sourceforge.net"
@@ -13,7 +13,7 @@ depends=('fltk')
 source=("https://download.sourceforge.net/eureka-editor/eureka-121-source.tar.gz"
         "eureka.patch")
 sha256sums=('39ce6ce40137be3f8391a513adc533a616fc0a8c5e51c4e4f9cc9912fb71f7a8'
-            '4a4bc8ec5f164b647ac395d3242f44eb2440cb3b79ad55063cbefeda9781149a')
+            'f2f3f1f7927997a2ddebf1abb477c77d46b7b2c7d7b69fd10f782771eefb176a')
 
 prepare() {
   cd $pkgname-$pkgver-source
