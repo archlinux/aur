@@ -9,7 +9,7 @@ license=('BSD')
 depends=('php' 'php-phalcon>=3.2.0')
 url="https://github.com/phalcon/phalcon-devtools"
 makedepends=()
-provides=('php-phalcon')
+provides=('phalcon-devtools')
 install=.INSTALL
 source=("https://github.com/phalcon/phalcon-devtools/archive/v${pkgver}.tar.gz")
 sha256sums=('53775feae5957621bf0ccc8927d4283ce4e58c25faae6483b442a2e23cd2ff7d')
