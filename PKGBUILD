@@ -3,7 +3,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=10.0.r105.gefd4b06d0
+pkgver=11.0.r382.g133c5eaf3
 pkgrel=1
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ depends=(
 )
 optdepends=(
   'graphviz: callgraph visualization'
+  'cscope: CScope Integration for CodeLite'
   'clang: compiler'
   'gcc: compiler'
   'gdb: debugger'
@@ -40,7 +41,7 @@ source=(
 )
 md5sums=(
   'SKIP'
-  '093485fcae62073ca8d0ba6ff3a5cb69'
+  'SKIP'
 )
 noextract=('wxgui.zip')
 
