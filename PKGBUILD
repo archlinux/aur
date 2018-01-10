@@ -1,22 +1,25 @@
-# Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
+# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Guillaume ALAUX <guillaume@archlinux.org>
+
 pkgname=('libkeybinder2' 'python2-keybinder2')
 pkgbase=keybinder2
-_offname=keybinder
+_realname=keybinder
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for registering global keyboard shortcuts'
 arch=('x86_64')
 url='https://github.com/engla/keybinder'
 license=('GPL')
-makedepends=('pygtk' 'gnome-common' 'gtk-doc')
-source=(https://github.com/engla/${_offname}/archive/master.zip)
-sha256sums=('c242e57c045568f8132ba5edc57ab3e5b328288da8c7bf6f048c510b57af1a8e')
+depends=('pygtk')
+makedepends=('gobject-introspection')
+options=('!emptydirs')
+source=(https://github.com/kupferlauncher/$_realname/releases/download/v$pkgver/$_realname-$pkgver.tar.gz)
+sha256sums=('879f07130ac64792ddb9fd758e6673119283bda37d75573787ae22af8684a240')
 
 build() {
-  cd "${srcdir}/${_offname}-master"
-  export PYTHON=/usr/bin/python2
-  ./autogen.sh \
-    --prefix=/usr
+  cd $_realname-$pkgver
+  ./configure --prefix=/usr PYTHON=python2
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
@@ -24,18 +27,17 @@ package_libkeybinder2() {
   pkgdesc='Library for registering global keyboard shortcuts'
   depends=('gtk2')
 
-  cd "${srcdir}/${_offname}-master"
-  make DESTDIR="${pkgdir}/" install
-  rm -rf "${pkgdir}/usr/lib/python2.7"
+  cd $_realname-$pkgver
+  make DESTDIR="$pkgdir" install
+  make -C python-keybinder DESTDIR="$pkgdir" uninstall
 }
 
 package_python2-keybinder2() {
-  pkgdesc='Library for registering global keyboard shortcuts - Python 2 bindings'
+  pkgdesc='Library for registering global keyboard shortcuts (Python 2 bindings)'
   depends=('libkeybinder2' 'pygtk')
-  provides=('python-keybinder')
 
-  cd "${srcdir}/${_offname}-master"
-  make DESTDIR="${pkgdir}/" install
-  rm -rf "${pkgdir}"/usr/lib/{girepository-1.0,libkeybinder*,pkgconfig}
-  rm -rf "${pkgdir}"/usr/{include,share}
+  cd $_realname-$pkgver
+  make DESTDIR="$pkgdir" install
+  make -C docs DESTDIR="$pkgdir" uninstall
+  make -C libkeybinder DESTDIR="$pkgdir" uninstall
 }
