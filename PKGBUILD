@@ -1,6 +1,6 @@
 #Maintainer: metamer <metamer at openmailbox dot org>
 pkgname=infra-arcana
-pkgver=19.1
+pkgver=19.2
 pkgrel=1
 epoch=
 pkgdesc="Roguelike game inspired by H.P. Lovecraft"
@@ -61,9 +61,10 @@ package() {
 	cp -R build/res "${pkgdir}/opt/${pkgname}/"
 	# copy main binary
 	cp build/ia "${pkgdir}/opt/${pkgname}/"
-        #link savegame folder
-	rm -rf  "${pkgdir}/opt/${pkgname}/data"
-        ln -s "/var/lib/${pkgname}/data" "${pkgdir}/opt/${pkgname}"
+        # move data files to user-accessible folder link savegame folder
+	cp -R build/res/data/map "${pkgdir}/var/lib/${pkgname}/data"
+	rm -rf  "${pkgdir}/opt/${pkgname}/res/data"
+        ln -s "/var/lib/${pkgname}/data" "${pkgdir}/opt/${pkgname}/res"
         # this shell script is required as the compiled binary relies on
         # relative references
         install -Dm755 "../${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
