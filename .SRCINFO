@@ -1,9 +1,8 @@
 pkgbase = openssh-selinux
 	pkgdesc = Free version of the SSH connectivity tools with SELinux support
 	pkgver = 7.6p1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openssh.com/portable.html
-	arch = i686
 	arch = x86_64
 	groups = selinux
 	license = custom:BSD
@@ -15,8 +14,8 @@ pkgbase = openssh-selinux
 	depends = libselinux
 	optdepends = xorg-xauth: X11 forwarding
 	optdepends = x11-ssh-askpass: input passphrase in X
-	provides = openssh=7.6p1-1
-	provides = selinux-openssh=7.6p1-1
+	provides = openssh=7.6p1-2
+	provides = selinux-openssh=7.6p1-2
 	conflicts = openssh
 	conflicts = selinux-openssh
 	backup = etc/ssh/ssh_config
