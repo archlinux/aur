@@ -1,18 +1,17 @@
 # Maintainer: Christophe Robin <crobin at nekoo a-dot com>
 
 pkgname=couchbase-server-community
-pkgver=4.5.1
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 pkgdesc="A document database featuring a powerful query language and unrivaled performance at scale."
 arch=('x86_64')
 url="http://www.couchbase.com/"
 source=(
-  "${pkgname}-v${pkgver}.deb::http://packages.couchbase.com/releases/${pkgver}/${pkgname}_${pkgver}-ubuntu14.04_amd64.deb"
-  "couchbase-server.service"
+  "${pkgname}-v${pkgver}.deb::http://packages.couchbase.com/releases/${pkgver}/${pkgname}_${pkgver}-ubuntu16.04_amd64.deb"
 )
 install=couchbase-server.install
-depends=(glibc gcc-libs sqlite openssl zlib python2 openssl-1.0 ncurses5-compat-libs)
-conflicts=(couchbase3-server-community)
+depends=(glibc gcc-libs sqlite openssl zlib python2)
+conflicts=(couchbase3-server-community couchbase4-server-community)
 
 package() {
   msg2 "Extracting the data.tar.gz file"
@@ -25,8 +24,7 @@ package() {
   # remove init.d and replace by systemd definition
   msg2 "Installing systemd service file"
   rm -Rf "${pkgdir}/etc"
-  install -D couchbase-server.service "${pkgdir}/usr/lib/systemd/system/couchbase-server.service"
+  mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
 }
 
-md5sums=('b15ba0ebdc14f7ed62b8127cebd582ea'
-         '5126e004422c1a5b9391602ac9208319')
+md5sums=('efd890ccaea2a83020c11746315a404f')
