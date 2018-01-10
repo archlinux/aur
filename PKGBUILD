@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=65.0.3315.3
-pkgrel=2
+pkgrel=3
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -111,7 +111,6 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/p2.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/e3.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/edgy.patch
-https://raw.githubusercontent.com/bn0785ac/in-dev/master/synchronization_flags.h
 )
 
 
@@ -162,7 +161,7 @@ sha256sums=('850b0c8ca1646f7ba94816ce2a47d21f454ce9aff00bf994d9143d475249314c'
             'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
             '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
-            '8f7d2baca6d96b1e668c8c2bcb1efe5daa0e1cb33de89e12165ea22c73ce8741'
+            '41fa66c8a12d3341010a58e1c78d005a10d3ac7527a88b7a8c005b35de58c0bb'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'b80b351152d3415b5b7dbfaf07edd94bb8f7dd56eab4380c577b102c6b758c10'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
@@ -209,9 +208,7 @@ sha256sums=('850b0c8ca1646f7ba94816ce2a47d21f454ce9aff00bf994d9143d475249314c'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
-            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d'
-            '30b7b4676cb279a3a05868162747e726672985a9fab40f4de1026d1218396e68')
-
+            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
