@@ -8,9 +8,10 @@ pkgdesc="Music management and playback for GNOME (fork by arfbtwn)"
 arch=('i686' 'x86_64')
 url="https://github.com/arfbtwn/banshee"
 license=('MIT')
-depends=(libxxf86vm gst-plugins-base-libs mono-addins dbus-sharp-glib libsoup \
-taglib-sharp-git gconf-sharp libmtp hicolor-icon-theme \
-media-player-info gst-plugins-bad mono-upnp-git gst-plugins-good gvfs libgpod)
+depends=(libxxf86vm gst-plugins-base-libs mono-addins dbus-sharp-glib libsoup
+taglib-sharp-git gconf-sharp libmtp hicolor-icon-theme
+media-player-info gst-plugins-bad mono-upnp-git gst-plugins-good gvfs libgpod
+mono-zeroconf-git gtk-sharp-3-mono-git)
 makedepends=('intltool' 'gnome-doc-utils' 'gnome-common')
 optdepends=('gst-plugins-ugly: Extra media codecs'
             'gst-libav: Extra media codecs'
