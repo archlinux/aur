@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=nginx-mod-nchan
-pkgver=1.1.13
+pkgver=1.1.14
 pkgrel=1
 
 _nginxver=1.12.2
