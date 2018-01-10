@@ -1,0 +1,73 @@
+diff -ura original/flann-1.9.1/src/cpp/CMakeLists.txt patched/flann-1.9.1/src/cpp/CMakeLists.txt
+--- original/flann-1.9.1/src/cpp/CMakeLists.txt	2016-08-05 01:20:50.000000000 +0200
++++ patched/flann-1.9.1/src/cpp/CMakeLists.txt	2018-01-10 21:04:55.071840885 +0100
+@@ -4,8 +4,8 @@
+ 
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/flann/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/flann/config.h)
+ 
+-file(GLOB_RECURSE C_SOURCES flann.cpp lz4.c lz4hc.c)
+-file(GLOB_RECURSE CPP_SOURCES flann_cpp.cpp lz4.c lz4hc.c)
++file(GLOB_RECURSE C_SOURCES flann.cpp)
++file(GLOB_RECURSE CPP_SOURCES flann_cpp.cpp)
+ file(GLOB_RECURSE CU_SOURCES *.cu)
+ 
+ add_library(flann_cpp_s STATIC ${CPP_SOURCES})
+@@ -31,7 +31,12 @@
+ if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND CMAKE_COMPILER_IS_GNUCC)
+     add_library(flann_cpp SHARED "")
+     set_target_properties(flann_cpp PROPERTIES LINKER_LANGUAGE CXX)
+-    target_link_libraries(flann_cpp -Wl,-whole-archive flann_cpp_s -Wl,-no-whole-archive)
++    target_link_libraries(flann_cpp
++        lz4
++        -Wl,-whole-archive
++        flann_cpp_s
++        -Wl,-no-whole-archive
++    )
+ 
+     if (BUILD_CUDA_LIB)
+ 	    cuda_add_library(flann_cuda SHARED "")
+@@ -85,7 +90,11 @@
+     if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND CMAKE_COMPILER_IS_GNUCC)
+         add_library(flann SHARED "")
+         set_target_properties(flann PROPERTIES LINKER_LANGUAGE CXX)
+-        target_link_libraries(flann -Wl,-whole-archive flann_s -Wl,-no-whole-archive)
++        target_link_libraries(flann
++            lz4
++            -Wl,-whole-archive
++            flann_s
++            -Wl,-no-whole-archive)
+     else()
+         add_library(flann SHARED ${C_SOURCES})
+ 
+@@ -112,7 +121,7 @@
+ 
+ 
+ install (
+-    TARGETS flann_cpp flann_cpp_s
++    TARGETS flann_cpp
+     RUNTIME DESTINATION bin
+     LIBRARY DESTINATION ${FLANN_LIB_INSTALL_DIR}
+     ARCHIVE DESTINATION ${FLANN_LIB_INSTALL_DIR}
+@@ -129,7 +138,7 @@
+ 
+ if (BUILD_C_BINDINGS)
+     install (
+-        TARGETS flann flann_s
++        TARGETS flann
+         RUNTIME DESTINATION bin
+         LIBRARY DESTINATION ${FLANN_LIB_INSTALL_DIR}
+         ARCHIVE DESTINATION ${FLANN_LIB_INSTALL_DIR}
+diff -ura original/flann-1.9.1/src/cpp/flann/util/serialization.h patched/flann-1.9.1/src/cpp/flann/util/serialization.h
+--- original/flann-1.9.1/src/cpp/flann/util/serialization.h	2016-08-05 01:20:50.000000000 +0200
++++ patched/flann-1.9.1/src/cpp/flann/util/serialization.h	2018-01-10 20:33:19.220139992 +0100
+@@ -6,8 +6,8 @@
+ #include <cstdlib>
+ #include <cstring>
+ #include <stdio.h>
+-#include "flann/ext/lz4.h"
+-#include "flann/ext/lz4hc.h"
++#include <lz4.h>
++#include <lz4hc.h>
+ 
+ 
+ namespace flann
