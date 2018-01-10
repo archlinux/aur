@@ -1,7 +1,6 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgbase=python-pypandoc-git
-pkgname=(python-pypandoc-git)
-#pkgname=(python-pypandoc-git python2-pypandoc-git)
+pkgname=(python-pypandoc-git python2-pypandoc-git)
 _pkgname=pypandoc
 pkgver=1.4.r11.gffe8264
 pkgrel=1
