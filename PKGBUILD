@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.14
-_zenpatch=zen-4.14.12-21556479f0d6488e6860c0c704b57e5d98f519ec.diff
-pkgver=4.14.12
+_zenpatch=zen-4.14.13-6f9090f5dcc8058d589f1e2e51667a1e8a8cff36.diff
+pkgver=4.14.13
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -32,9 +32,9 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'da5d8db44b0988e4c45346899d3f5a51f8bd6c25f14e729615ca9ff9f17bdefd'
+            'ce897f467e80452f29d7a7a8809e8585ea12192a2c32e4d18578f64b043e802e'
             'SKIP'
-            '2a52619213eb7413d75ef869fe93f049f88d477a14d23a072781fc186c48b971'
+            'd06732a400651441d322963416bc5491b568f98dd5bfd296f4a662809b904f9c'
             'SKIP'
             'f9cf56592b6549b87b19bd4e2bd3ca4c693034f7fa2d7fbf8fa8842308a2df94'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -200,6 +200,9 @@ _package-headers() {
 
   # remove files already in linux-docs package
   rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"
