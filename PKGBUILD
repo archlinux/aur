@@ -73,8 +73,8 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq-git
 _srcname=bfq-mq
-pkgver=4.14.0.g344b0aa219f8
-pkgrel=3
+pkgver=4.15.0.g0fde9c192625
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -440,6 +440,9 @@ _package-headers() {
 
     # remove files already in linux-bfq-mq-git-docs package
     rm -r "${_builddir}/Documentation"
+    
+    # remove now broken symlinks
+    find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
     # Fix permissions
     chmod -R u=rwX,go=rX "${_builddir}"
