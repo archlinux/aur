@@ -1,0 +1,209 @@
+#!/bin/bash
+
+die() {
+  printf '%s\n' "$1" >&2
+  exit 1
+}
+
+discord_dir=
+discord_modules=
+discord_core=
+betterdiscord=/usr/lib/betterdiscord-rauenzi-git
+verbose=0
+cmd=status
+
+verbosity() {
+  if (( verbose >= $1 )); then
+    shift
+    printf '%s\n' "$1"
+  fi
+}
+
+show_help() {
+  echo "Usage: ${0##*/} [OPTION...] [COMMAND]"
+  cat << EOF
+
+Options:
+  -h, --help: Show this help
+  -v, --verbose: Increase verbosity
+  --betterdiscord=DIRECTORY: Use specified BetterDiscord directory
+  --discord=DIRECTORY: Use specified Discord directory (requires --modules)
+  --modules=DIRECTORY: Use specified Discord modules directory
+
+Commands:
+  status (default): Show information about the current Discord patch state.
+  install: Install BetterDiscord.
+  uninstall: Uninstall BetterDiscord.
+EOF
+}
+
+while :; do
+  case $1 in
+    -h|-\?|--help)
+      show_help
+      exit
+      ;;
+    install|uninstall|status)
+      cmd=$1
+      ;;
+    --betterdiscord)
+      if [ "$2" ]; then
+        betterdiscord=$2
+        shift
+      else
+        die 'ERROR: "--betterdiscord" requires a non-empty option argument.'
+      fi
+      ;;
+    --betterdiscord=?*)
+      betterdiscord=${1#*=}
+      ;;
+    --betterdiscord=)
+      die 'ERROR: "--betterdiscord" requires a non-empty option argument.'
+      ;;
+    --discord)
+      if [ "$2" ]; then
+        discord_dir=$2
+        shift
+      else
+        die 'ERROR: "--discord" requires a non-empty option argument.'
+      fi
+      ;;
+    --discord=?*)
+      discord_dir=${1#*=}
+      ;;
+    --discord=)
+      die 'ERROR: "--discord" requires a non-empty option argument.'
+      ;;
+    --modules)
+      if [ "$2" ]; then
+        discord_modules=$2
+        shift
+      else
+        die 'ERROR: "--modules" requires a non-empty option argument.'
+      fi
+      ;;
+    --modules=?*)
+      discord_modules=${1#*=}
+      ;;
+    --modules=)
+      die 'ERROR: "--modules" requires a non-empty option argument.'
+      ;;
+    -v|--verbose)
+      verbose=$((verbose + 1))
+      ;;
+    --)
+      shift
+      break
+      ;;
+    -?*)
+      printf 'WARN: Unknown option (ignored): %s\n' "$1" >&2
+      ;;
+    *)
+      break
+  esac
+
+  shift
+done
+
+if [ "$discord_dir" ] && [ ! "$discord_modules" ]; then
+    die 'ERROR: "--discord" requires "--modules" to also be set.'
+fi
+      
+if [[ -z "${discord_dir}" ]]; then
+  for dir in '' -canary -ptb; do
+    verbosity 2 "VV: Checking discord${dir}"
+    if [[ -d "/opt/discord${dir}" ]] ; then
+      verbosity 2 "VV: Detected discord${dir}"
+      discord_config="${XDG_CONFIG_DIR:-$HOME/.config}/discord${dir#-}"
+      if [[ ! -d "${discord_config}" ]]; then
+        verbosity 1 'V: Config directory not found for discord${dir}.'
+        continue
+      fi
+      verbosity 1 "V: Using discord${dir}"
+      discord_dir="/opt/discord$dir"
+      if [[ -z "${discord_modules}" ]]; then
+        discord_modules=("${discord_config}/"*"/modules")
+        discord_modules="${discord_modules[0]}"
+      fi
+      break
+    fi
+  done
+fi
+discord_core="${discord_modules}/discord_desktop_core"
+
+if [[ -z "${discord_dir}" ]]; then
+  die 'ERROR: Discord installation not found.'
+fi
+if [[ -z "${discord_modules}" ]]; then
+  die 'ERROR: Discord modules directory not found.'
+fi
+
+stats() {
+  app_patched=no
+  core_patched=no
+  if [[ -d "${discord_dir}/resources/app" ]]; then
+    app_patched=yes
+  fi
+  if [[ -d "${discord_core}/core" ]]; then
+    core_patched=yes
+  fi
+
+  printf 'Discord: %s\nModules: %s\nApp patched: %s\nCore patched: %s\n' \
+    "$discord_dir" "$discord_modules" "$app_patched" "$core_patched"
+}
+
+install() {
+  if [[ -d "${discord_core}/core" ]]; then
+    echo 'Already installed.'
+    exit 1
+  fi
+
+  verbosity 1 'V: Unpacking core asar...'
+  asar e "${discord_core}/core.asar" "${discord_core}/core"
+  sed "s/core\.asar'/core'/g" -i "${discord_core}/index.js"
+
+  verbosity 1 'V: Patching core entry...'
+  sed \
+    -e "/var *_url *=/ a var _betterDiscord = require('betterdiscord'); var _betterDiscord2;" \
+    -e "/mainWindow *= *new/ a _betterDiscord2 = new _betterDiscord.BetterDiscord(mainWindow);" \
+    -i "${discord_core}/core/app/mainScreen.js"
+
+  verbosity 1 'V: Linking core loader...'
+  ln -s "${betterdiscord}" "${discord_core}/core/node_modules/betterdiscord"
+
+  echo 'Installed.'
+}
+
+uninstall() {
+  if [[ ! -d "${discord_core}/core" ]]; then
+    echo 'Already uninstalled.'
+    exit 1
+  fi
+
+  echo "Killing Discord..."
+  killall -SIGKILL Discord
+
+  verbosity 1 "V: Removing core folder from modules..."
+  sed "s/core'/core.asar'/g" -i "${discord_core}/index.js"
+  rm -rf "${discord_core}/core"
+
+  echo 'Uninstalled.'
+}
+
+case "$cmd" in
+  status)
+    stats
+    exit
+    ;;
+  install)
+    install
+    exit
+    ;;
+  uninstall)
+    uninstall
+    exit
+    ;;
+  *)
+    die "ERROR: Unknown command: $cmd"
+    ;;
+esac
