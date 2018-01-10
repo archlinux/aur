@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Michał Szymański <smiszym at gmail dot com>
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 
