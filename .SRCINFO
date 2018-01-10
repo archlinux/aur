@@ -1,6 +1,6 @@
 pkgbase = xbase
 	pkgdesc = A C++ library
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/graywolf/xbase
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = xbase
 	makedepends = cmake
 	depends = gcc-libs
 	options = staticlibs
-	source = git+https://github.com/graywolf/xbase#tag=3.3.1
+	source = git+https://github.com/graywolf/xbase#tag=3.3.2
 	source = git+https://github.com/google/googletest
 	sha512sums = SKIP
 	sha512sums = SKIP

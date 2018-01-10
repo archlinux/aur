@@ -3,7 +3,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=xbase
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="A C++ library"
 arch=('i686' 'x86_64')
