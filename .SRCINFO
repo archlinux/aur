@@ -1,18 +1,18 @@
 pkgbase = fava
 	pkgdesc = Web interface for beancount
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/beancount/fava
 	arch = any
 	license = GPL
-	makedepends = npm
 	depends = beancount
 	depends = python-click
 	depends = python-markdown2
 	depends = python-flask
 	depends = python-flask-babel
-	source = https://github.com/beancount/fava/archive/v1.6.tar.gz
-	sha256sums = cef1d26a474a2d6ceeb794ff0a301d22cee409f5ecf8253a4807ff56903f1ebc
+	noextract = fava-1.6-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/f/fava/fava-1.6-py3-none-any.whl
+	sha256sums = 4f9d36f41b3240dded7c3bce930d823733c707aff2e0bc9b64c2ea50445e2f0c
 
 pkgname = fava
 

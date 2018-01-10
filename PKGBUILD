@@ -3,17 +3,16 @@
 pkgname='fava'
 pkgdesc='Web interface for beancount'
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/beancount/fava'
 license=('GPL')
-source=("https://github.com/beancount/fava/archive/v${pkgver}.tar.gz")
-sha256sums=('cef1d26a474a2d6ceeb794ff0a301d22cee409f5ecf8253a4807ff56903f1ebc')
+source=("https://files.pythonhosted.org/packages/py3/f/fava/fava-${pkgver}-py3-none-any.whl")
+noextract=("fava-${pkgver}-py3-none-any.whl")
+sha256sums=('4f9d36f41b3240dded7c3bce930d823733c707aff2e0bc9b64c2ea50445e2f0c')
 depends=('beancount' 'python-click' 'python-markdown2' 'python-flask' 'python-flask-babel')
-makedepends=('npm')
 
 package () {
-  cd "${pkgname}-${pkgver}"
-  make
-  python setup.py install --prefix=/usr --root="${pkgdir}"
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps *.whl
+  python -O -m compileall "${pkgdir}/usr/lib/python3.6/site-packages/${pkgname}/"
 }
