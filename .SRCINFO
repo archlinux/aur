@@ -1,14 +1,14 @@
 pkgbase = numix-white-icons
-	pkgdesc = Numix White Icons Theme
+	pkgdesc = Numix White Icons Theme based of the numix circle
 	pkgver = 1
 	pkgrel = 0
-	url = https://github.com/killown/numix-white-icons
+	url = https://github.com/killown/numix-white.git
 	install = numix-white-icons-git.install
 	arch = x86_64
 	arch = i686
 	license = GPL
 	makedepends = git
-	source = git+https://github.com/killown/numix-white-icons
+	source = git+https://github.com/killown/numix-white.git
 	sha256sums = SKIP
 
 pkgname = numix-white-icons
