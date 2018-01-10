@@ -5,38 +5,20 @@
 
 pkgbase=digikam
 pkgname=(digikam kipi-plugins)
-_pkgver=5.7.0
+_pkgver=5.8.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=5
+pkgrel=1
 pkgdesc="An advanced digital photo management application"
 arch=('x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 makedepends=(extra-cmake-modules libkipi libksane liblqr opencv doxygen lensfun eigen boost kdoctools marble-common
              kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte)
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
-        digikam-kcalcore-17.12.patch
-        digikam-qt-5.9.3.patch::"https://cgit.kde.org/digikam.git/patch/?id=855ba5b7"
-        digikam-opencv-3.4.patch)
-sha256sums=('3605ffb5b6e8fbd6b725e5075f74f505d7edee7531789c2882d11df2d20150f5'
-            '61648bdeb88dcb94d2896b9d9211c6a6b50a39a143701e04465aa040a60053c0'
-            '03822e596321028d0971ec82351337dad76abeda93c9cef3b1d2a31807e02661'
-            'b822cf879216a479134e48e3cfb597ef5b741698454e0993846ab660896caba7')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
+sha256sums=('194a44cc3ca229d501acfba67a38d483d1d64069a85e0491dd28dc2b57091c6e')
 
 prepare() {
   mkdir -p build
-
-# sv docs fail to build
-  sed -e '/sv/d' -i $pkgname-$pkgver/doc-translated/CMakeLists.txt
-# fix conflicts with libkvkontakte
-  rm $pkgbase-$pkgver/po/*/libkvkontakte.po
-# fix build with kcalcore 17.12
-  cd $pkgname-$_pkgver/core
-  patch -p1 -i "$srcdir"/digikam-kcalcore-17.12.patch
-# fix thumbnails with Qt 5.9.3
-  patch -p1 -i "$srcdir"/digikam-qt-5.9.3.patch
-# fix build with opencv 3.4
-  patch -p1 -i "$srcdir"/digikam-opencv-3.4.patch
 }
 
 build() {
