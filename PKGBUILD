@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=65.0.3315.3
-pkgrel=3
+pkgrel=4
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -356,6 +356,7 @@ patch -Np1 -i ../edgy.patch
 #patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
+  patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
 
 
