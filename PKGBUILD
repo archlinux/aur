@@ -1,10 +1,10 @@
-# Maintainer: not_anonymous <nmlibertarian@gmail.com>
+# Maintai$ner: not_anonymous <nmlibertarian@gmail.com>
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=yfktest
-pkgver=0.0.10
-pkgrel=5
+pkgver=r671
+pkgrel=1
 pkgdesc="Ham Radio Contesting Logger"
 arch=('any')
 url="http://fkurz.net/ham/yfktest.html"
@@ -16,33 +16,19 @@ optdepends=('hamlib: rig interfacing'
 	    'winkeydaemon: usb cw xmit'
 	    'bigcty: contest version country files'
 	    'mplayer: voice keyer')
-source=(
-#http://fkurz.net/ham/$pkgname/$pkgname-$pkgver.tar.gz
+source=("$pkgname::svn://svn.fkurz.net/yfktest/trunk"
 		$pkgname.desktop
 		$pkgname.png
 		$pkgname.1)
 
-__svntrunk="svn://svn.fkurz.net/yfktest/"
-__svnmod=('trunk')
-__svnrev=670
 
-prepare() {
-	cd "$srcdir"
-	msg "Connecting to SVN server...."
-
-	for i in "${__svnmod[@]}"; do
-	  if [[ -d "$i/.svn" ]]; then
-	  (cd "$i" && svn up -r "$__svnrev")
-	    else
-	    svn co "$__svntrunk/$i" -r "$__svnrev"
-	  fi
-	done
-
-	msg "SVN checkout done or server timeout"
+pkgver() {
+	cd "$srcdir/$pkgname"
+	printf "r%s" "$(svnversion | tr -d 'A-z')"
 }
 
 package() {
-	cd "$srcdir/$__svnmod"
+	cd "$srcdir/$pkgname"
 	install -d $pkgdir/usr/share/$pkgname
 
 	cp -a * $pkgdir/usr/share/$pkgname
@@ -60,9 +46,11 @@ package() {
 	sed -i s:'.\/yfktest ':'yfktest ': yfktest
 	sed -i s:'.\/yfktest ':'yfktest ': MANUAL
 }
-md5sums=('b8fc8f2685c87b2bf5c509ffa82d1387'
+md5sums=('SKIP'
+         'b8fc8f2685c87b2bf5c509ffa82d1387'
          '0c5fc02db4577b3b1ffcc23e5c7a2b8e'
          'a5b6724edc0adb82e53870c81dac4281')
-sha256sums=('59d1cc347697a5f34ab465bf5d3c2437b18981d473d39e9e4a267604ac87bec8'
+sha256sums=('SKIP'
+            '59d1cc347697a5f34ab465bf5d3c2437b18981d473d39e9e4a267604ac87bec8'
             'ae4886c24e08425d7a9d6c31290924f8b328d0b2fe59b3d0c0e94ecf4d62b039'
             'c5018a263f314eca09561d8daa8f15b5de1b31f97811ca6d52a65b0b20e63409')
