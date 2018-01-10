@@ -24,7 +24,6 @@ build() {
 }
 
 package_libkeybinder2() {
-  pkgdesc='Library for registering global keyboard shortcuts'
   depends=('gtk2')
 
   cd $_realname-$pkgver
@@ -33,7 +32,7 @@ package_libkeybinder2() {
 }
 
 package_python2-keybinder2() {
-  pkgdesc='Library for registering global keyboard shortcuts (Python 2 bindings)'
+  pkgdesc+=' (Python 2 bindings)'
   depends=('libkeybinder2' 'pygtk')
 
   cd $_realname-$pkgver
