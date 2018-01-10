@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Plsek <jeremy plsek at googlemail dot com>
 pkgname=puush-qt
 pkgdesc="GUI frontend for puush which will create a system tray icon."
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/jplsek/puush-qt"
