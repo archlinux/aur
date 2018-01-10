@@ -27,6 +27,8 @@ bl_module_declared_function_names_after_source_file_name=''
 bl_module_declared_function_names_before_source_file_path=''
 bl_module_declared_names_after_source=''
 bl_module_declared_names_before_source_file_path=''
+bl_module_directory_names_to_ignore=(node_modules)
+bl_module_file_names_to_ignore=(package.json package-lock.json PKGBUILD readme.md)
 bl_module_import_level=0
 bl_module_imported=("$(bl.path.convert_to_absolute "${BASH_SOURCE[0]}")" "$(bl.path.convert_to_absolute "${BASH_SOURCE[1]}")" "$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[0]}")/path.sh")")
 bl_module_known_extensions=(.sh '' .bash .shell .zsh .csh)
@@ -108,7 +110,7 @@ bl_module_import_with_namespace_check() {
             --suffix=bashlink-module-declared-names-before-source)"
     fi
     local alternate_resolved_scope_name="$(echo "$resolved_scope_name" | \
-        sed --regexp-extended s/\\./_/g)"
+        sed --regexp-extended 's/\./_/g')"
     ## region check if scope is clean before sourcing
     bl.module.determine_declared_names \
         >"$bl_module_declared_names_before_source_file_path"
@@ -157,7 +159,7 @@ bl_module_import_with_namespace_check() {
                     "unprefixed name: \"$name\". Maybe it should be" \
                     "prefixed with \"${resolved_scope_name}.\" or" \
                     "\"$(echo "$resolved_scope_name" | \
-                        sed --regexp-extended s/\\./_/g)_\"." \
+                        sed --regexp-extended 's/\./_/g')_\"." \
                     1>&2
             fi
         fi
@@ -281,7 +283,7 @@ bl_module_resolve() {
             fi
         done
         if [ "$file_path" == '' ] && echo "$name" | grep '\.' &>/dev/null; then
-            name="$(echo "$name" | sed --regexp-extended s:.\([^.]+\)$:/\\1:)"
+            name="$(echo "$name" | sed --regexp-extended 's:.([^.]+?)(\.(sh|bash|zsh|csh))?$:/\1\2:')"
         else
             break
         fi
@@ -335,10 +337,34 @@ bl_module_import() {
     result="$(bl.module.resolve "$1" true "${BASH_SOURCE[1]}")"
     local return_code=$?
     if (( return_code == 0 )); then
-        local file_path="$(echo "$result" | sed --regexp-extended s:^\(.+\)/[^/]+$:\\1:)"
-        local scope_name="$(echo "$result" | sed --regexp-extended s:^.*/\([^/]+\)$:\\1:)"
+        local file_path="$(echo "$result" | sed --regexp-extended 's:^(.+)/[^/]+$:\1:')"
+        local scope_name="$(echo "$result" | sed --regexp-extended 's:^.*/([^/]+)$:\1:')"
         if [[ -d "$file_path" ]]; then
-            echo TODO
+            local sub_file_path
+            for sub_file_path in "${file_path}"/*; do
+                local excluded=false
+                local excluded_name
+                for excluded_name in "${bl_module_directory_names_to_ignore[@]}"; do
+                    if [[ -d "$sub_file_path" ]] && [ "$excluded_name" = "$(basename "$sub_file_path")" ]; then
+                        excluded=true
+                        break
+                    fi
+                done
+                if ! $excluded; then
+                    for excluded_name in "${bl_module_file_names_to_ignore[@]}"; do
+                        if [[ -f "$sub_file_path" ]] && [ "$excluded_name" = "$(basename "$sub_file_path")" ]; then
+                            excluded=true
+                            break
+                        fi
+                    done
+                fi
+                if ! $excluded; then
+                    local name="$(echo "$sub_file_path" | \
+                        sed --regexp-extended \
+                            "s:${scope_name}/([^/]+):${scope_name}.\1:")"
+                    bl_module_import "$name"
+                fi
+            done
         else
             bl_module_imported+=("$file_path")
             if $bl_module_prevent_namespace_check; then
@@ -357,6 +383,7 @@ bl_module_import() {
         fi
     else
         echo "$result"
+        return 1
     fi
 }
 alias bl.module.import=bl_module_import
