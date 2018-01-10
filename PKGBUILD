@@ -1,25 +1,22 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# AUR dependencies: esound gnome-vfs-nosmb sndio
-
-# NOTE:
-# '--with-imagemagick' works only with ImageMagick 6 and will not work with IM7
-# (and IM git version). If you have IM7 installed, please change it to
-# '--without-magick'.
-
 pkgname=xine-lib-hg
-pkgver=1.2.7.r12910.d24c69278026
-pkgrel=2
+pkgver=1.2.8.r13412.8771dec9e368
+pkgrel=1
 pkgdesc='A multimedia playback engine (Mercurial version with all possible libs)'
 arch=('i686' 'x86_64')
 url='https://www.xine-project.org/'
 license=('GPL2' 'LGPL2.1')
 depends=('fontconfig')
-makedepends=('mercurial' 'a52dec' 'aalib' 'directfb' 'esound' 'faad2' 'ffmpeg'
-             'gdk-pixbuf2' 'glu' 'gnome-vfs-nosmb' 'imagemagick<7.0.0.0' 'jack'
-             'libcaca' 'libcdio' 'libbluray' 'libdca' 'libdvdnav' 'libmad'
-             'libmng' 'libmpcdec' 'libpulse' 'libvdpau' 'libxinerama' 'libxvmc'
-             'smbclient' 'v4l-utils' 'vcdimager' 'wavpack'
+makedepends=(
+    # official repositories:
+        'mercurial' 'a52dec' 'aalib' 'faad2' 'ffmpeg' 'gdk-pixbuf2' 'glu'
+        'libmagick6' 'jack' 'libcaca' 'libcdio' 'libbluray' 'libdca'
+        'libdvdnav' 'libmad' 'libmng' 'libmpcdec' 'libpulse' 'libvdpau'
+        'libxinerama' 'libxvmc' 'sdl' 'smbclient' 'v4l-utils' 'vcdimager'
+        'wavpack'
+    # AUR:
+        'esound' 'gnome-vfs-nosmb' 'sndio'
 )
 optdepends=('a52dec: for using the a52 plugin'
             'aalib: for using the aalib plugin'
@@ -76,6 +73,8 @@ pkgver() {
 build() {
     cd "$pkgname"
     
+    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/usr/lib/imagemagick6/pkgconfig"
+    
     ./autogen.sh
     
     ./configure \
@@ -97,7 +96,7 @@ build() {
         --enable-sndio \
         --enable-aalib \
         --disable-dha-kmod \
-        --enable-directfb \
+        --disable-directfb \
         --enable-dxr3 \
         --enable-fb \
         --disable-macosx-video \
