@@ -4,10 +4,25 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
+##
+## The following variables take integer value, change at your wish
+##
+## Config you want to build kernel:
+## 1 xanmod's provided (default)
+## 2 Archlinux stock
+_configuration=1
+##
+## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
+## Only valid numbers are: 0 to 22
+## Default is: 0 => generic
+## Good option if your package is for one machine: 22 => native
+_microarchitecture=0
+##
+
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.14.12
-xanmod=16
+pkgver=4.14.13
+xanmod=17
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -37,11 +52,11 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('4385d51dfed34c90ba185d8b35ebff059f01c5f0d387f165387835525aa110b1'
+sha256sums=('b107a37375b06674c0c8670a791b7b5d861580b761e884f9f8707cfcca26f6d6'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '9fd3abfb3e5e6afd5b8476e30af4d7ded762f3da2a724133cb3f26ad21c31e54'
+            'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
             'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
             '9251c03da9d4b64591d77f490ff144d4ba514e66e74294ada541bf827306c9c4'
             '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
@@ -55,14 +70,15 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
 
-  msg2 "What config you want?"
-  echo -en "     1. upstream Xanmod\n     2. Archlinux stock\n   Selection: "
-  read -n 1 answer && echo
-  case $answer in
-    1) true ;;
-    2) cat "${srcdir}/config" > ./.config ;;
-    *) echo "Please choose 1 or 2"; exit 1 ;;
+  case $_configuration in
+    1) true ; answer="Xanmod" ;;
+    2) cat "${srcdir}/config" > ./.config ; answer="Archlinux" ;;
+    *) echo "Variable _configuration should be 1 or 2"; exit 1 ;;
   esac
+  warning "This package is now totally non-interactive!!!!!"
+  msg "Building this kernel with configuration provided by: $answer"
+  sleep 5
+  warning "To change this modify _configuration variable in PKGBUILD"
 
   if [ "${_kernelname}" != "" ]; then
     #sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -79,7 +95,7 @@ prepare() {
   for n in ${arch_patches[@]} ; do patch -Np1 -i ../$n ; done
 
   # EXPERIMENTAL: let's user choose microarchitecture optimization in GCC
-  ${srcdir}/choose-gcc-optimization.sh
+  ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # set extraversion to pkgrel
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
