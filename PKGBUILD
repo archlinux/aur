@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=gsignond-extension-pantheon-git
-pkgver=r151.b90b0c9
+pkgver=r154.9218878
 pkgrel=1
 pkgdesc='Pantheon extension for the GSignond daemon'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'libsecret'
          'libgsignond-common.so')
-makedepends=('cmake' 'git' 'gsignond' 'libaccounts-glib' 'libgsignon-glib'
+makedepends=('cmake' 'git' 'gsignond-git' 'libaccounts-glib' 'libgsignon-glib'
              'vala')
 provides=('gsignond-extension-pantheon')
 conflicts=('gsignond-extension-pantheon')
