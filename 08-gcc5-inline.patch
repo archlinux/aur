@@ -1,0 +1,20 @@
+Description: fix gcc5 build failure:
+ The visibility of one of the functions in the yacc grammar is increased so
+ the program links without error now.
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/778164
+Author: "Potter, Tim (Cloud Services)" <timothy.potter@hp.com>
+Reviewed-by: gregor herrmann <gregoa@debian.org>
+Last-Update: 2015-07-23
+
+--- a/cfg_file.y
++++ b/cfg_file.y
+@@ -624,7 +624,7 @@
+ }
+ 
+ /* Clear the VTUN_NAT_HACK flag which are not relevant to the current operation mode */
+-inline void clear_nat_hack_flags(int svr)
++extern inline void clear_nat_hack_flags(int svr)
+ {
+ 	if (svr)
+ 		llist_trav(&host_list,clear_nat_hack_server,NULL);

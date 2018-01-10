@@ -1,0 +1,26 @@
+Description: vtun client uses lot of CPU after a SIGHUP
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/818489
+Forwarded: no
+Author: Jérôme Arzel <jerome.arzel@netcat.io>
+Reviewed-by: Salvatore Bonaccorso <carnil@debian.org>
+Last-Update: 2016-04-30
+
+--- a/client.c
++++ b/client.c
+@@ -133,6 +133,7 @@ void client(struct vtun_host *host)
+ 	   if (!vtun.quiet || errno != ETIMEDOUT)
+ 	      vtun_syslog(LOG_INFO,"Connect to %s failed. %s(%d)", vtun.svr_name,
+ 					strerror(errno), errno);
++	      client_term = 0;
+         } else {
+ 	   if( auth_client(s, host) ){   
+ 	      vtun_syslog(LOG_INFO,"Session %s[%s] opened",host->host,vtun.svr_name);
+@@ -143,6 +144,7 @@ void client(struct vtun_host *host)
+ 	      vtun_syslog(LOG_INFO,"Session %s[%s] closed",host->host,vtun.svr_name);
+ 	   } else {
+ 	      vtun_syslog(LOG_INFO,"Connection denied by %s",vtun.svr_name);
++	      client_term = 0;
+ 	   }
+ 	}
+ 	close(s);
