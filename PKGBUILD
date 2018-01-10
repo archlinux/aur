@@ -1,16 +1,17 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-desktop-git
-pkgver=r741.c6dfa43
+pkgver=r803.6d5d8ee
 pkgrel=1
 pkgdesc='Switchboard Desktop Plug'
 arch=('x86_64')
 url='https://github.com/elementary/switchboard-plug-pantheon-shell'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee' 'plank'
+depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee'
+         'libgexiv2' 'plank'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
+makedepends=('cmake' 'git' 'granite-git' 'libgexiv2' 'switchboard-git' 'vala')
 provides=('switchboard-plug-desktop')
 conflicts=('switchboard-plug-desktop')
 replaces=('switchboard-plug-desktop-bzr')
