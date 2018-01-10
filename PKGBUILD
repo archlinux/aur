@@ -1,14 +1,14 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=gsignond-plugin-oauth-git
-pkgver=r81.794ed1d
+pkgver=r106.b36060b
 pkgrel=1
 pkgdesc='OAuth plugin for gSSO'
 arch=('x86_64')
 url='https://01.org/gsso'
 license=('LGPL2.1')
 depends=('glib2' 'glibc' 'gnutls' 'gsignond' 'json-glib' 'libsoup' 'sqlite')
-makedepends=('git' 'gobject-introspection' 'gtk-doc')
+makedepends=('check' 'git' 'gobject-introspection' 'gtk-doc' 'meson')
 provides=('gsignond-plugin-oauth')
 conflicts=('gsignond-plugin-oauth')
 source=('gsignond-plugin-oauth::git+https://gitlab.com/accounts-sso/gsignond-plugin-oa.git')
@@ -21,32 +21,25 @@ pkgver() {
 }
 
 prepare() {
-  cd gsignond-plugin-oauth
-
-  mkdir -p m4
-  gtkdocize
-  aclocal
-  autoheader
-  libtoolize --copy --force
-  autoconf
-  automake --add-missing --copy
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build
 }
 
 build() {
-  cd gsignond-plugin-oauth
+  cd build
 
-  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+  #export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
 
-  ./configure \
-    --prefix='/usr' \
-    --enable-gtk-doc
-  make
+  arch-meson ../gsignond-plugin-oauth
+  ninja
 }
 
 package() {
-  cd gsignond-plugin-oauth
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
