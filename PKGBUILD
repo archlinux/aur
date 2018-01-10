@@ -3,7 +3,7 @@
 
 _pkgname=exaile
 pkgname=${_pkgname}-git
-pkgver=4.0.0.beta2.r27.g643975c2
+pkgver=4.0.0.beta2.r304.g0190bb80
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ makedepends=('git' 'help2man')
 optdepends=('python2-feedparser: podcasts plugin'
             'webkit2gtk: wikipedia plugin'
             'python2-lxml: LyricsMania plugin'
-            'pycddb: look up CD tags'
+            'cddb-py: look up CD tags'
             'libkeybinder3: Multimedia keys plugin'
             'python2-beautifulsoup4: Lyrics Wiki plugin'
             'libnotify: Notify plugin'
@@ -31,7 +31,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/+/g'
 }
 
 build() {
