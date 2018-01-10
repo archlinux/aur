@@ -1,9 +1,9 @@
-# Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
+# Maintainer: Nils Czernia <nils at czserver.de>
 # Contributor: Severen Redwood <severen@shrike.me>
 
 _gemname='i18n'
 pkgname="ruby-${_gemname}"
-pkgver='0.7.0'
+pkgver='0.9.1'
 pkgrel=1
 pkgdesc='New wave internationalisation support for Ruby'
 arch=('any')
@@ -12,12 +12,12 @@ depends=('rubygems')
 options=(!emptydirs)
 url="http://rubygems.org/gems/${_gemname}"
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-md5sums=('e9f92faf73a805a95c92d42031f4dca3')
+sha256sums=("1af5e4f1ed73f2258066503bec3612092c2580d5a58f84d8318a5fd7a35b5c0c")
 noextract=("${_gemname}-${pkgver}.gem")
 
 package() {
   cd "${srcdir}"
-  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  local _gemdir=$(ruby -e "puts Gem.default_dir")
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" \
     -n "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
