@@ -1,7 +1,7 @@
 pkgbase = linux-lqx
 	pkgdesc = A desktop oriented kernel and modules with Liquorix patches
 	pkgver = 4.14.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://liquorix.net/
 	install = linux.install
 	arch = x86_64

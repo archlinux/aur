@@ -32,7 +32,7 @@ pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.14
 _minor=12
 pkgver=${__basekernel}.${_minor}
-pkgrel=1
+pkgrel=2
 lqxrel=1
 pkgbase=linux-lqx
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
@@ -285,6 +285,9 @@ local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
     # remove files already in linux-bfq-mq-docs package
     rm -r "${_builddir}/Documentation"
+    
+    # remove now broken symlinks
+    find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
     # Fix permissions
     chmod -R u=rwX,go=rX "${_builddir}"
