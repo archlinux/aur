@@ -14,8 +14,8 @@ makedepends=('git' 'cmake')
 options=(staticlibs)
 
 source=(
-	"git+https://github.com/graywolf/xbase#tag=${pkgver}"
-	"git+https://github.com/3rd_party/googletest"
+	"https://github.com/graywolf/xbase#tag=${pkgver}"
+	"https://github.com/3rd_party/googletest"
 )
 sha512sums=(
 	'SKIP'

@@ -10,8 +10,8 @@ pkgbase = xbase
 	makedepends = cmake
 	depends = gcc-libs
 	options = staticlibs
-	source = git+https://github.com/graywolf/xbase#tag=3.3.0
-	source = git+https://github.com/3rd_party/googletest
+	source = https://github.com/graywolf/xbase#tag=3.3.0
+	source = https://github.com/3rd_party/googletest
 	sha512sums = SKIP
 	sha512sums = SKIP
 
