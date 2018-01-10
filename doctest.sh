@@ -21,7 +21,7 @@ bl.module.import bashlink.path
 bl.module.import bashlink.time
 bl.module.import bashlink.tools
 # endregion
-# region doc
+# region variables
 # shellcheck disable=SC2034,SC2016
 bl_doctest__doc__='
     The doctest module implements function and module level testing via "doc

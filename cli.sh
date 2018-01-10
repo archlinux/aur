@@ -14,7 +14,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.tools
 # endregion
-# region documentation
+# region variables
 # shellcheck disable=SC2034
 bl_cli__doc__='
     This module provides variables for printing colorful and unicode glyphs.
@@ -23,8 +23,6 @@ bl_cli__doc__='
     [bl.cli.enable_color](#function-bl_cli_enable_color) and
     [bl.cli.enable_unicode_glyphs](#function-bl_cli_enable_unicode_glyphs)).
 '
-# endregion
-# region variables
 bl_cli_color_enabled=false
 # endregion
 # region functions

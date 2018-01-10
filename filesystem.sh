@@ -13,7 +13,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.path
 # endregion
-# region doctest setup
+# region variables
 bl_filesystem__doc_test_setup__='
 # Runs once before tests are started:
 

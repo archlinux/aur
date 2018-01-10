@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region functions
 bl_string_make_command_promt_prefix() {
     local __doc__='
     Generates a new user prompt with useful runtime parameters.
@@ -245,6 +246,7 @@ bl_string_translate() {
     fi
 }
 alias bl.string.translate='bl_string_translate'
+# endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

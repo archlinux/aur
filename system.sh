@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region functions
 bl_system_compile_and_install_without_root() {
     local __doc__='
     Compiles and installs a program by its given source code. Your have to
@@ -61,6 +62,7 @@ bl_system_restore_grub() {
     return $?
 }
 alias bl.system.restore_grub='bl_system_restore_grub'
+# endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

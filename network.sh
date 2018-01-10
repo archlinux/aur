@@ -9,7 +9,9 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region functions
 alias network.restart_network='sudo ifdown -a &>/dev/null && sudo ifup -a &>/dev/null'
+alias bl.network.wlan_start=bl.network_wlan_start
 bl_network_wlan_start() {
     local __doc__='
     Starts wlan functionality.
@@ -20,7 +22,7 @@ bl_network_wlan_start() {
     dhclient wlan0
     return $?
 }
-alias bl.network.wlan_start=bl.network_wlan_start
+alias bl.network.wlan_stop='bl_network_wlan_stop'
 bl_network_wlan_stop() {
     local __doc__='
     Stops wlan functionality.
@@ -32,18 +34,18 @@ bl_network_wlan_stop() {
     killall dhclient3
     return $?
 }
-alias bl.network.wlan_stop='bl_network_wlan_stop'
+alias bl.network.wlan_restart='bl_network_wlan_restart'
 bl_network_wlan_restart() {
     local __doc__='
     Restart wlan functionality.
 
     >>> bl.network.wlan_restart
     '
-    network.wlan_stop
-    network.wlan_start
+    bl.network.wlan_stop
+    bl.network.wlan_start
     return $?
 }
-alias bl.network.wlan_restart='bl_network_wlan_restart'
+# endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

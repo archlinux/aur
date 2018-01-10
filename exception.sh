@@ -14,6 +14,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.logging
 # endregion
+# region functions
 # shellcheck disable=SC2034,SC2016
 bl_exception__doc__='
     NOTE: The try block is executed in a subshell, so no outer variables can be
@@ -281,6 +282,7 @@ bl_exception_exit_try() {
 alias bl.exception.exit_try=bl_exception_exit_try
 alias bl.exception.try='bl.exception.enter_try; (bl.exception.activate; '
 alias bl.exception.catch='true); bl.exception.exit_try $? || '
+# endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

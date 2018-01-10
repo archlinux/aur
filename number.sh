@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region functions
 bl_number_calculate_percent() {
     __doc__='
     Calculates percent of second argument from the first argument.
@@ -20,6 +21,7 @@ bl_number_calculate_percent() {
         's/^(.)$/0\1/g' <<<$(((($2 * 10000) / $1) % 100)))"
     return $?
 }
+# endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

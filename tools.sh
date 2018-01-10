@@ -14,6 +14,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.logging
 # endregion
+# region functions
 alias bl.tools.is_defined="bl_tools_is_defined"
 bl_tools_is_defined() {
     # shellcheck disable=SC2034
@@ -470,6 +471,7 @@ bl_tools_make_openssl_pem_file() {
     cat "${host}.key" "${host}.crt" 1>"${host}.pem"
     return $?
 }
+# endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

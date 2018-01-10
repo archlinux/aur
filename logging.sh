@@ -16,7 +16,7 @@ bl.module.import bashlink.arguments
 bl.module.import bashlink.array
 bl.module.import bashlink.cli
 # endregion
-# region documentation
+# region variables
 bl_logging__doc__='
     The available log levels are:
     error critical warn info debug
@@ -67,8 +67,6 @@ bl_logging__doc__='
     >>> echo foo | bl.logging.cat
     foo
 '
-# endregion
-# region variables
 # logging levels from low to high
 bl_logging_levels=(
     error
@@ -427,7 +425,7 @@ bl_logging_set_file_descriptors() {
     [[ "${options_command-}" == "" ]] && options_command=std
     bl_logging_options_log="$options_log"
     bl_logging_options_command="$options_command"
-    set -- "${bl_arguments_new_arguments[@]:-}"
+    set -- "${bl_arguments_new[@]:-}"
     local log_file="$1"
 
     bl_logging_off=false

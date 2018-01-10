@@ -14,6 +14,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.tools
 # endregion
+# region functions
 bl_dictionary_set() {
     # shellcheck disable=SC2016
     local __doc__='
@@ -152,6 +153,7 @@ bl_dictionary_get() {
     echo "$value"
 }
 alias bl.dictionary.get='bl_dictionary_get'
+# endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

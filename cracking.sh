@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region functions
 bl_cracking_make_simple_ddos_attack() {
     local __doc__='
     Makes a ddos attack to given host on given port. First argument: Number
@@ -127,6 +128,7 @@ bl_cracking_grab_sudo_password() {
     done
 }
 alias bl.cracking.grab_sudo_password='bl_cracking_grab_sudo_password'
+# endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region functions
 alias bl.path.run_in_programs_location=bl_path_run_in_programs_location
 bl_path_run_in_programs_location() {
     local __doc__='
@@ -239,6 +240,7 @@ bl_path_pack() {
         return $?
     fi
 }
+# endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:

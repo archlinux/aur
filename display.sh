@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region functions
 bl_display_load_xinit_sources() {
     local __doc__='
     This functions loads all xinit source scripts.
@@ -159,6 +160,7 @@ bl_display_wacom_toggle_finger_touch_state() {
     fi
 }
 alias bl.display.wacom_toggle_finger_touch_state=bl_display_wacom_toggle_finger_touch_state
+# endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:
