@@ -58,19 +58,12 @@ _NUMAdisable=y
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-# Use the current kernel's .config file
-# Enabling this option will use the .config of the RUNNING kernel rather than
-# the ARCH defaults. Useful when the package gets updated and you already went
-# through the trouble of customizing your config options.  NOT recommended when
-# a new kernel is released, but again, convenient for package bumps.
-_use_current=
-
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14.12
-pkgrel=3
+pkgver=4.14.13
+pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -110,7 +103,7 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'da5d8db44b0988e4c45346899d3f5a51f8bd6c25f14e729615ca9ff9f17bdefd'
+            'ce897f467e80452f29d7a7a8809e8585ea12192a2c32e4d18578f64b043e802e'
             'SKIP'
             'cd4b30f74fef1fb5458e5bdd756a7fc4918a6b4cdf2ac6853316bfc1eb8d0d8b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -191,21 +184,6 @@ prepare() {
       -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
       -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
       -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-  fi
-
-  ### Optionally use running kernel's config
-  # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
-  if [ -n "$_use_current" ]; then
-    if [[ -s /proc/config.gz ]]; then
-      msg "Extracting config from /proc/config.gz..."
-      # modprobe configs
-      zcat /proc/config.gz > ./.config
-    else
-      warning "Your kernel was not compiled with IKCONFIG_PROC!"
-      warning "You cannot read the current config!"
-      warning "Aborting!"
-      exit
-    fi
   fi
 
   if [ "${_kernelname}" != "" ]; then
@@ -371,6 +349,9 @@ _package-headers() {
 
   # remove files already in linux-docs package
   rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"
