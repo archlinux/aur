@@ -1,8 +1,6 @@
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: Alexander Kuznecov <alexander@kuznetcov.me>
 
-shopt -s extglob # for excluding one of the tests, see testresults.txt
-
 _pkgname=nginx
 _user='http'
 _group='http'
@@ -46,7 +44,7 @@ _accesskey_dirname="ngx_accesskey"
 
 pkgname=nginx-custom
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server (with standard, additional and 3rd party modules)'
 arch=('x86_64')
 
@@ -85,7 +83,7 @@ source=("nginx.sh"
         "${_echo_dirname}.source::https://github.com/agentzh/echo-nginx-module/tarball/${_echo_ver}"
         "${_upstreamfair_dirname}.source::https://github.com/unixfox/nginx-upstream-fair/tarball/${_upstreamfair_hash}"
         "${_authpam_dirname}.tar.gz::https://github.com/stogh/ngx_http_auth_pam_module/archive/v${_authpam_ver}.tar.gz"
-        "${_pagespeed_dirname}.zip::https://github.com/pagespeed/ngx_pagespeed/archive/v${_pagespeed_ver}-beta.zip"
+        "${_pagespeed_dirname}.zip::https://github.com/apache/incubator-pagespeed-ngx/archive/v${_pagespeed_ver}-beta.zip"
         "psol.tar.gz::https://dl.google.com/dl/page-speed/psol/${_pagespeed_ver}.tar.gz"
         "${_rtmp_dirname}.zip::https://github.com/arut/nginx-rtmp-module/archive/${_rtmp_ver}.zip"
         "${_davext_dirname}.tar.gz::https://github.com/arut/nginx-dav-ext-module/archive/${_davext_ver}.tar.gz"
@@ -108,7 +106,7 @@ md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
          '1c2b08220f5118e3f16026fc530797cb'
          '403e3c72c33ed275b203226ee1927e46'
          '1e0bbd4535386970d63f51064626bc9a'
-         '6bdd65c5929b35d06d6df9c7f2fa6360'
+         '8e280b6c8845bbe71bf99748da63d73f'
          'd5ccb4cab81edc32ff99a2a46e8a9ffc'
          'b471efc97b9602c5b4087756c9295496'
          '2cb502dbda335be4ebd5fed0b3182bae'
@@ -124,7 +122,7 @@ prepare() {
   mv masterzen-nginx-upload-progress-module-* ${_uploadprogress_dirname}
   mv unixfox-nginx-upstream-fair-* ${_upstreamfair_dirname}
   mv ngx_http_auth_pam_module-${_authpam_ver} ${_authpam_dirname}
-  mv ngx_pagespeed-* ${_pagespeed_dirname}
+  mv incubator-pagespeed-ngx-* ${_pagespeed_dirname}
   mv psol ${_pagespeed_dirname}/
   mv nginx-accesskey* ${_accesskey_dirname}
   mv nginx-rtmp-module* ${_rtmp_dirname}
@@ -135,7 +133,7 @@ prepare() {
 check() {
   cd nginx-tests
   warning "Ignore failing auth_request_satisfy.t for now, see testresults.txt"
-  TEST_NGINX_BINARY="$srcdir/${_pkgname}-${pkgver}/objs/nginx" prove !(auth_request_satisfy).t
+  TEST_NGINX_BINARY="$srcdir/${_pkgname}-${pkgver}/objs/nginx" find -maxdepth 1 -not -iname 'auth_request_satisfy.t' -iname '*.t' -exec prove {} \+
 }
 
 build() {
