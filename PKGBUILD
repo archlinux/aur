@@ -3,7 +3,7 @@
 
 pkgbase=libretro-beetle-psx-git
 pkgname=('libretro-beetle-psx-git' 'libretro-beetle-psx-hw-git')
-pkgver=1845.a28b1bb
+pkgver=1859.8a0e087
 pkgrel=1
 pkgdesc='Sony PlayStation core'
 arch=('x86_64' 'i686')
@@ -25,7 +25,10 @@ pkgver() {
 build() {
 	cd libretro-beetle-psx
 	make
+	cp mednafen_psx_libretro.so "${srcdir}"/
+	make clean
 	make HAVE_HW=1
+	cp mednafen_psx_hw_libretro.so "${srcdir}"/
 }
 
 package_libretro-beetle-psx-git()
@@ -33,8 +36,7 @@ package_libretro-beetle-psx-git()
 	conflicts=('libretro-beetle-psx')
 	provides=('libretro-beetle-psx')
 	
-	cd libretro-beetle-psx
-	install -Dm 644 mednafen_psx_libretro.so -t "${pkgdir}"/usr/lib/libretro/
+	install -Dm 644 "${srcdir}"/mednafen_psx_libretro.so -t "${pkgdir}"/usr/lib/libretro/
 }
 
 package_libretro-beetle-psx-hw-git()
@@ -43,6 +45,5 @@ package_libretro-beetle-psx-hw-git()
 	provides=('libretro-beetle-psx-hw')
 	depends+=('libgl')
 	
-	cd libretro-beetle-psx
-	install -Dm 644 mednafen_psx_hw_libretro.so -t "${pkgdir}"/usr/lib/libretro/
+	install -Dm 644 "${srcdir}"/mednafen_psx_hw_libretro.so -t "${pkgdir}"/usr/lib/libretro/
 }
