@@ -1,21 +1,25 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 pkgname=toa
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='"toa" is simple music player made by Electron.'
 arch=('any')
 url='https://github.com/yuki540net/toa'
 license=('MIT')
 depends=('gtk2' 'gconf' 'xdg-utils' 'libxtst' 'libxss' 'nss' 'alsa-lib' 'xdg-utils')
-makedepends=('gendesk')
+makedepends=('unzip' 'gendesk')
 source=(
     "${url}/releases/download/v${pkgver}/-linux-x64.zip"
 )
+noextract=("-linux-x64.zip")
 md5sums=(
     '99cd3e38d68ab0949ebd4cc08d63f304'
 )
 
 prepare() {
+    mv -- -linux-x64.zip linux-x64.zip
+    unzip -o -q linux-x64.zip
+
     gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
 }
 
