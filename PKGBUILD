@@ -1,14 +1,14 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-privacy-git
-pkgver=r19.9492ca4
+pkgver=r68.4a3abae
 pkgrel=1
 pkgdesc='Privacy indicator for Wingpanel'
 arch=('x86_64')
 url='https://github.com/elementary/wingpanel-indicator-privacy'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('bamf' 'glib2' 'glibc' 'gtk3' 'libgee' 'libgtop'
+depends=('bamf' 'glib2' 'glibc' 'gtk3' 'libgee' 'libgtop' 'lsof'
          'libwingpanel-2.0.so')
 makedepends=('cmake' 'git' 'granite-git' 'vala' 'wingpanel-git')
 provides=('wingpanel-indicator-privacy')
@@ -23,8 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  cd wingpanel-indicator-privacy
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -32,18 +30,17 @@ prepare() {
 }
 
 build() {
-  cd wingpanel-indicator-privacy/build
+  cd build
 
-  cmake .. \
+  cmake ../wingpanel-indicator-privacy \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DGSETTINGS_COMPILE='FALSE'
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
   make
 }
 
 package() {
-  cd wingpanel-indicator-privacy/build
+  cd build
 
   make DESTDIR="${pkgdir}" install
 }
