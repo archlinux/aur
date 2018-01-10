@@ -255,36 +255,41 @@ bl_module_resolve() {
                 fi
             else
                 # Try relative to caller file path reference.
-                if [ "$file_path" = '' ] && [[ -e "${caller_path}/${name}${extension}" ]]; then
+                if [[ -e "${caller_path}/${name}${extension}" ]]; then
                     file_path="${caller_path}/${name}${extension}"
                     break
                 fi
                 # Try relative to executer file path reference.
-                if [ "$file_path" = '' ] && [[ -e "${execution_path}/${name}${extension}" ]]; then
+                if [[ -e "${execution_path}/${name}${extension}" ]]; then
                     file_path="${execution_path}/${name}${extension}"
                     break
                 fi
-                if [ "$file_path" = '' ]; then
-                    local path
-                    # Try locations in "$PATH" listed references.
-                    for path in ${PATH//:/ }; do
-                        if [[ -e "${path}/${name}${extension}" ]]; then
-                            file_path="${path}/${name}${extension}"
-                            break
-                        fi
-                    done
-                    if [ "$file_path" != '' ]; then
+                local path
+                # Try locations in "$PATH" listed references.
+                for path in ${PATH//:/ }; do
+                    if [[ -e "${path}/${name}${extension}" ]]; then
+                        file_path="${path}/${name}${extension}"
                         break
                     fi
+                done
+                if [ "$file_path" != '' ]; then
+                    break
                 fi
             fi
-            # Try to find module in this library or this library itself.
-            if [ "$file_path" == '' ] && [[ -e "${current_path}/${name}${extension}" ]]; then
+            # Try to find module in this library or this whole library itself.
+            if [[ -e "${current_path}/${name}${extension}" ]]; then
                 file_path="${current_path}/${name}${extension}"
+                break
             fi
         done
-        if [ "$file_path" == '' ] && echo "$name" | grep '\.' &>/dev/null; then
-            name="$(echo "$name" | sed --regexp-extended 's:.([^.]+?)(\.(sh|bash|zsh|csh))?$:/\1\2:')"
+        if [ "$file_path" = '' ]; then
+            local new_name="$(echo "$name" | sed --regexp-extended \
+                's:.([^.]+?)(\.(sh|bash|zsh|csh))?$:/\1\2:')"
+            if [ "$name_name" = "$name" ]; then
+                break
+            else
+                name="$new_name"
+            fi
         else
             break
         fi
