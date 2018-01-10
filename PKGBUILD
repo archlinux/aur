@@ -36,12 +36,20 @@ BRANCH=master
 # =================================================
 #
 #######################################################################
-CHECK=            # Run tests.
+CHECK=            # Run tests. May fail, this is developement after all.
 CLANG=            # Use clang.
 LTO=              # Enable link-time optimization. Experimental.
-ATHENA=           # Use Athena widgets. (83 1337, 83 001d sk00l).
-GTK2=             # Leave empty to compile with GTK+ 3 support.
-                  # No, GTK+ 2 ain't kool, dawg!
+CLI=              # CLI only binary.
+NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
+                  #
+                  # Read https://wiki.archlinux.org/index.php/X_resources
+                  # https://en.wikipedia.org/wiki/X_resources
+                  # and https://www.emacswiki.org/emacs/XftGnuEmacs
+                  # for some tips on using outline fonts with 
+                  # Xft, if you choose no toolkit or Lucid.
+                  #
+LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
+GTK2=             # GTK2.
 GPM=              # Enable gpm support.
 M17N=             # Enable m17n international table input support.
                   # You are far better off using UTF-8 and an input
@@ -53,8 +61,8 @@ CAIRO=            # Highly experimental. Maintaner dissapeared.
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
-MAGICK=           # Imagemagick, like flash, is bug ridden and won't die. 
-                  # Yet useful... Broken with the transition to IM7.
+MAGICK=           # Imagemagick 6 libraries support. Imagemagick, 
+                  # like flash, is bug ridden and won't die; yet useful.
 NOGZ=             # Don't compress el files.
 #######################################################################
 
@@ -64,13 +72,13 @@ if [[ BRANCH = "emacs-26" ]]; then
 else
   pkgname=emacs-git
 fi
-pkgver=27.0.50.131638
+pkgver=27.0.50.131736
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
-depends=( 'alsa-lib' )
+depends=( 'alsa-lib' 'gnutls' 'libxml2' 'jansson' )
 makedepends=( 'git' )
 #######################################################################
 
@@ -88,11 +96,13 @@ if [[ $LTO = "yes" ]]; then
   export tXXFLAGS+=" -flto"
 fi
 
-if [[ $ATHENA = "YES" ]]; then  
-  depends+=( 'libxaw' );
+if [[ $NOTKIT = "YES" ]]; then  
+  depends+=( 'dbus high-color-icon-theme' 'libxinearama' 'libxrandr' 'lcms2' 'librsvg' );
+elif [[ $LUCID = "YES" ]]; then  
+  depends+=( 'dbus high-color-icon-theme' 'libxinearama' 'libfixes' 'lcms2' 'librsvg' 'xaw3d' );
 elif [[ $GTK2 = "YES" ]]; then
   depends+=( 'gtk2' );
-else
+else 
   depends+=( 'gtk3' ); 
 fi
 
@@ -109,8 +119,7 @@ if [[ $OTF = "YES" ]] && [[ ! $M17N = "YES" ]]; then
 fi
 
 if [[ $MAGICK = "YES" ]]; then 
-  depends+=( 'imagemagick' ); 
-  depends+=( 'libjpeg-turbo' 'giflib' );
+  depends+=( 'libmagick6'  'libjpeg-turbo' 'giflib' );
 elif [[ ! $NOX = "YES" ]]; then
   depends+=( 'libjpeg-turbo' 'giflib' );
 else
@@ -122,15 +131,15 @@ if [[ $CAIRO = "YES" ]]; then
 fi
 
 if [[ $XWIDGETS = "YES" ]]; then
-  if [[ $GTK2 = "YES" ]] || [[ $ATHENA = "YES" ]]; then 
+  if [[ $GTK2 = "YES" ]] || [[ $LUCID = "YES" ]] || [[ $NOTKIT = "YES" ]] || [[ $CLI = "YES" ]]; then 
     echo "";
     echo "";
     echo "Xwidgets support *requires* gtk+3!!!";
     echo "";
     echo "";
     exit 1;
-    else 
-      depends+=( 'webkit2gtk' ); 
+  else 
+    depends+=( 'webkit2gtk' );
   fi
 fi
 
@@ -177,34 +186,41 @@ build() {
     --mandir=/usr/share/man 
     --with-gameuser=:games 
     --with-sound=alsa 
-    --with-xft
     --with-modules
+# Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
+# dconf and gconf break font settings you set in ~/.emacs.
+# If you insist you'll need to play gymnastics with
+# set-frame-font and set-menu-font. Good luck!
+   --without-gconf
+   --without-gsettings
   )
 
 #######################################################################
 
 #######################################################################
+
 if [[ $CLANG = "YES" ]]; then
   _conf+=(
     '--enable-autodepend'
  );
 fi
+
 if [[ $LTO = "YES" ]]; then 
   _conf+=( 
     '--enable-link-time-optimization' 
   ); 
 fi
 
-# Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
-# dconf and gconf break font settings you set in ~/.emacs.
-# If you insist you'll need to play gymnastics with
-# set-frame-font and set-menu-font. Good luck!
-if [[ $ATHENA = "YES" ]]; then
-  _conf+=( '--with-x-toolkit=athena' '--without-gconf' '--without-gsettings' ); 
+if [[ $CLI = "YES" ]]; then
+  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' --without-lcms2' '--without-rsvg' ); 
+elif [[ $NOTKIT = "YES" ]]; then
+  _conf+=( '--with-x-toolkit=no' 'without-toolkit-scrollbars' '--with-xft' '--without-xaw3d' ); 
+elif [[ $LUCID = "YES" ]]; then
+  _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' ); 
 elif [[ $GTK2 = "YES" ]]; then 
-  _conf+=( '--with-x-toolkit=gtk2' '--without-gconf' '--without-gsettings' );
-else
-  _conf+=( '--with-x-toolkit=gtk3' '--without-gconf' '--without-gsettings' ); 
+  _conf+=( '--with-x-toolkit=gtk2' '--without-gsettings' '--without-xaw3d' );
+else [[ GTK3 = "YES" ]]; then
+  _conf+=( '--with-x-toolkit=gtk3' --without-xaw3d' ); 
 fi
 
 if [[ ! $GPM = "YES" ]]; then 
@@ -219,8 +235,19 @@ if [[ $MAGICK = "YES" ]]; then
   _conf+=( 
     '--with-imagemagick'
  ); 
+  export PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig
 else
   _conf+=( '--without-imagemagick' );
+fi
+
+if [[ $XML2 = "YES" ]]; then
+  _conf+=(
+    '--with-xml2'
+  );
+else
+  _conf+=(
+    '--without-xml2'
+  );
 fi
 
 if [[ $CAIRO = "YES" ]]; then 
