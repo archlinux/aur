@@ -1,13 +1,12 @@
 # Maintainer: Florian "Bluewind" Pritz <flo@xssn.at>
 pkgname=spampd
 pkgver=2.30
-pkgrel=13
+pkgrel=14
 pkgdesc="Spamassassin Proxy Daemon"
 arch=('any')
-url="http://www.worlddesign.com/index.cfm/rd/mta/spampd.htm"
+url="https://www.worlddesign.com/index.cfm/page/software/open-source/spampd.htm"
 license=('GPL')
 depends=('perl' 'perl-net-server' 'spamassassin')
-install=spampd.install
 source=("https://www.worlddesign.com/Content/rd/mta/$pkgname/$pkgname-$pkgver.tar.gz"
         spampd.service perl-5.18-fixes.patch)
 md5sums=('742c6f2cb75db54e59d044a8ee40445f'
@@ -33,8 +32,8 @@ package() {
   install -Dm644 spampd.8.gz "$pkgdir/usr/share/man/man8/spampd.8.gz"
   install -Dm644 "$srcdir/spampd.service" "$pkgdir/usr/lib/systemd/system/spampd.service"
 
-  mkdir -p "$pkgdir/usr/lib/tmpfiles.d"
-  printf "d /run/spampd 0700 spampd spampd -\n" > "$pkgdir/usr/lib/tmpfiles.d/spampd.conf"
+  printf "u spampd - - /var/lib/spampd\n" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/spampd.conf"
+  printf "d /run/spampd 0700 spampd spampd -\n" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/spampd.conf"
 }
 
 # vim:set ts=2 sw=2 et:
