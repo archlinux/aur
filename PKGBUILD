@@ -20,6 +20,8 @@ pkgver() {
 
 package() {
   install -Dm644 "$srcdir/$_pkgname/accelerated-domains.china.conf" "$pkgdir/etc/dnsmasq.d/accelerated-domains.china.conf"
+  install -Dm644 "$srcdir/$_pkgname/apple.china.conf" "$pkgdir/etc/dnsmasq.d/apple.china.conf"
+  install -Dm644 "$srcdir/$_pkgname/google.china.conf" "$pkgdir/etc/dnsmasq.d/google.china.conf"
   install -Dm644 "$srcdir/$_pkgname/bogus-nxdomain.china.conf" "$pkgdir/etc/dnsmasq.d/bogus-nxdomain.china.conf"
   install -Dm755 "$srcdir/$_pkgname/dnsmasq-update-china-list" "$pkgdir/usr/bin/dnsmasq-update-china-list"
 }
