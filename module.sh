@@ -101,6 +101,8 @@ bl_module_import_with_namespace_check() {
         --suffix=bashlink-module-declared-names-after-source)"
     # NOTE: All variables which are declared after "determine_declared_names"
     # will be interpreted as newly introduced variables from given module.
+    local alternate_resolved_scope_name="$(echo "$resolved_scope_name" | \
+        sed --regexp-extended 's/\./_/g')"
     local name
     bl.module.determine_declared_names \
         true \
@@ -110,8 +112,6 @@ bl_module_import_with_namespace_check() {
         bl_module_declared_names_before_source_file_path="$(mktemp \
             --suffix=bashlink-module-declared-names-before-source)"
     fi
-    local alternate_resolved_scope_name="$(echo "$resolved_scope_name" | \
-        sed --regexp-extended 's/\./_/g')"
     ## region check if scope is clean before sourcing
     bl.module.determine_declared_names \
         >"$bl_module_declared_names_before_source_file_path"
@@ -324,9 +324,6 @@ bl_module_import_without_namespace_check() {
     local file_path="$(bl.module.resolve "$1" "${BASH_SOURCE[1]}")"
     bl_module_imported+=("$file_path")
     bl.module.import_raw "$file_path"
-    # Mark introduced names as "checked".
-    bl.module.determine_declared_names \
-        >"$bl_module_declared_names_before_source_file_path"
 }
 alias bl.module.import=bl_module_import
 bl_module_import() {
