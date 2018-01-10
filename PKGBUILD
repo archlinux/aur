@@ -52,7 +52,7 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
 pkgver=4.14.13
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -344,6 +344,9 @@ _package-headers() {
 
     # remove files already in linux-uksml-docs package
     rm -r "${_builddir}/Documentation"
+    
+    # remove now broken symlinks
+    find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
     # Fix permissions
     chmod -R u=rwX,go=rX "${_builddir}"
