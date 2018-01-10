@@ -31,8 +31,6 @@ prepare() {
 build() {
   cd build
 
-  #export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
-
   arch-meson ../gsignond-plugin-oauth
   ninja
 }
