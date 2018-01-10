@@ -1,7 +1,7 @@
 pkgbase = sbt-latest
 	pkgdesc = A build tool for Scala, Java, and more
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = http://www.scala-sbt.org/
 	arch = any
 	license = BSD
@@ -9,10 +9,10 @@ pkgbase = sbt-latest
 	depends = rsync
 	depends = sh
 	conflicts = sbt
-	source = https://github.com/sbt/sbt/releases/download/v1.0.0/sbt-1.0.0.tgz
-	source = https://raw.githubusercontent.com/sbt/sbt/v1.0.0/LICENSE
-	sha256sums = 9ae04f4972145f2ac56c4deb868c9a5bb8b8b85c5151885dff3b997712645c5a
-	sha256sums = 70b7b72694a56a3e922deaf5482273e7c33bab2c00c0c67fc0ccc5d33927ffed
+	source = https://github.com/sbt/sbt/releases/download/v1.1.0/sbt-1.1.0.tgz
+	source = https://raw.githubusercontent.com/sbt/sbt/v1.1.0/LICENSE
+	sha256sums = 9d8cb24b297507ed4c49b476d3050da0abe2c39f7e7d97ba6d48c1b17854e2d7
+	sha256sums = 4a63870e342ef614e3ba2d5e1de3fcc5543504df6e96ecafac00f674a7972ab2
 
 pkgname = sbt-latest
 
