@@ -4,7 +4,7 @@
 
 pkgname=xbase
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library"
 arch=('i686' 'x86_64')
 url='https://github.com/graywolf/xbase'
@@ -13,11 +13,22 @@ depends=('gcc-libs')
 makedepends=('git' 'cmake')
 options=(staticlibs)
 
-source=("git+https://github.com/graywolf/xbase#tag=${pkgver}")
-sha512sums=('SKIP')
+source=(
+	"git+https://github.com/graywolf/xbase#tag=${pkgver}"
+	"git+https://github.com/3rd_party/googletest"
+)
+sha512sums=(
+	'SKIP'
+	'SKIP'
+)
 
 prepare() {
 	cd "${pkgname}"
+
+	git submodule init
+	git config submodule.3rd_party/googletest.url "${srcdir}/googletest"
+	git submodule update
+
 	mkdir -p build
 }
 
