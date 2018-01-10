@@ -9,10 +9,10 @@
 
 pkgname=xine-lib-hg
 pkgver=1.2.7.r12910.d24c69278026
-pkgrel=1
-pkgdesc="A multimedia playback engine (Mercurial version with all possible libs)"
+pkgrel=2
+pkgdesc='A multimedia playback engine (Mercurial version with all possible libs)'
 arch=('i686' 'x86_64')
-url="https://www.xine-project.org/"
+url='https://www.xine-project.org/'
 license=('GPL2' 'LGPL2.1')
 depends=('fontconfig')
 makedepends=('mercurial' 'a52dec' 'aalib' 'directfb' 'esound' 'faad2' 'ffmpeg'
@@ -65,114 +65,114 @@ source=("$pkgname"::'hg+http://hg.debian.org/hg/xine-lib/xine-lib-1.2-vdpau')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-	
-	# Mercurial        
-	printf "%s.r%s.%s" "$(hg log -r "." --template "{latesttag}")" \
-	                   "$(hg identify -n)" \
-	                   "$(hg identify -i)"
+    cd "$pkgname"
+    
+    # Mercurial        
+    printf '%s.r%s.%s' "$(hg log -r '.' --template '{latesttag}')" \
+                       "$(hg identify -n)" \
+                       "$(hg identify -i)"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	
-	./autogen.sh
-	
-	./configure \
-	        --prefix=/usr \
-	        \
-	        --enable-ipv6 \
-	        --enable-antialiasing \
-	        --enable-static=no \
-	        --enable-shared=yes \
-	        --enable-fast-install=yes \
-	        --enable-optimizations \
-	        --enable-largefile \
-	        --enable-libxine-builtins \
-	        \
-	        --disable-coreaudio \
-	        --disable-irixal \
-	        --enable-oss \
-	        --disable-sunaudio \
-	        --enable-sndio \
-	        --enable-aalib \
-	        --disable-dha-kmod \
-	        --enable-directfb \
-	        --enable-dxr3 \
-	        --enable-fb \
-	        --disable-macosx-video \
-	        --enable-opengl \
-	        --enable-glu \
-	        --disable-vidix \
-	        --enable-xinerama \
-	        --disable-static-xv \
-	        --enable-xvmc \
-	        --enable-vdpau \
-	        --enable-vaapi \
-	        --enable-dvb \
-	        --enable-gnomevfs \
-	        --enable-samba \
-	        --enable-v4l2 \
-	        --enable-libv4l \
-	        --enable-vcd \
-	        --enable-vdr \
-	        --enable-bluray \
-	        --enable-avformat \
-	        --enable-a52dec \
-	        --enable-asf \
-	        --enable-nosefart \
-	        --enable-faad \
-	        --enable-ffmpeg \
-	        --enable-postproc \
-	        --enable-gdkpixbuf \
-	        --enable-libjpeg \
-	        --enable-dts \
-	        --enable-mad \
-	        --enable-modplug \
-	        --disable-libmpeg2new \
-	        --enable-musepack \
-	        --disable-mlib \
-	        --disable-mlib-lazyload \
-	        --enable-mng \
-	        --enable-real-codecs \
-	        --disable-w32dll \
-	        --enable-vpx \
-	        --disable-mmal \
-	        \
-	        --with-freetype \
-	        --with-fontconfig \
-	        --with-x \
-	        --with-alsa \
-	        --with-esound \
-	        --without-fusionsound \
-	        --with-jack \
-	        --with-pulseaudio \
-	        --with-caca \
-	        --without-linux-path \
-	        --without-libstk \
-	        --with-sdl \
-	        --with-xcb \
-	        --with-external-dvdnav \
-	        --with-imagemagick \
-	        --with-libflac \
-	        --with-speex \
-	        --with-theora \
-	        --with-vorbis \
-	        --with-wavpack 
-	        
-	        # TODO:
-	        # --enable-dha-kmod
-	        # --enable-vidix
-	        # --with-fusionsound
-	        # --with-linux-path=/usr/lib/modules/$(uname -r)/build
-	        # --with-libstk
-	        # --with-openhevc
-	
-	make
+    cd "$pkgname"
+    
+    ./autogen.sh
+    
+    ./configure \
+        --prefix='/usr' \
+        \
+        --enable-ipv6 \
+        --enable-antialiasing \
+        --enable-static='no' \
+        --enable-shared='yes' \
+        --enable-fast-install='yes' \
+        --enable-optimizations \
+        --enable-largefile \
+        --enable-libxine-builtins \
+        \
+        --disable-coreaudio \
+        --disable-irixal \
+        --enable-oss \
+        --disable-sunaudio \
+        --enable-sndio \
+        --enable-aalib \
+        --disable-dha-kmod \
+        --enable-directfb \
+        --enable-dxr3 \
+        --enable-fb \
+        --disable-macosx-video \
+        --enable-opengl \
+        --enable-glu \
+        --disable-vidix \
+        --enable-xinerama \
+        --disable-static-xv \
+        --enable-xvmc \
+        --enable-vdpau \
+        --enable-vaapi \
+        --enable-dvb \
+        --enable-gnomevfs \
+        --enable-samba \
+        --enable-v4l2 \
+        --enable-libv4l \
+        --enable-vcd \
+        --enable-vdr \
+        --enable-bluray \
+        --enable-avformat \
+        --enable-a52dec \
+        --enable-asf \
+        --enable-nosefart \
+        --enable-faad \
+        --enable-ffmpeg \
+        --enable-postproc \
+        --enable-gdkpixbuf \
+        --enable-libjpeg \
+        --enable-dts \
+        --enable-mad \
+        --enable-modplug \
+        --disable-libmpeg2new \
+        --enable-musepack \
+        --disable-mlib \
+        --disable-mlib-lazyload \
+        --enable-mng \
+        --enable-real-codecs \
+        --disable-w32dll \
+        --enable-vpx \
+        --disable-mmal \
+        \
+        --with-freetype \
+        --with-fontconfig \
+        --with-x \
+        --with-alsa \
+        --with-esound \
+        --without-fusionsound \
+        --with-jack \
+        --with-pulseaudio \
+        --with-caca \
+        --without-linux-path \
+        --without-libstk \
+        --with-sdl \
+        --with-xcb \
+        --with-external-dvdnav \
+        --with-imagemagick \
+        --with-libflac \
+        --with-speex \
+        --with-theora \
+        --with-vorbis \
+        --with-wavpack
+        
+        # TODO:
+        # --enable-dha-kmod
+        # --enable-vidix
+        # --with-fusionsound
+        # --with-linux-path=/usr/lib/modules/$(uname -r)/build
+        # --with-libstk
+        # --with-openhevc
+        
+    make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
-	
-	make DESTDIR="$pkgdir/" install
+    cd "$pkgname"
+    
+    make DESTDIR="$pkgdir" install
 }
