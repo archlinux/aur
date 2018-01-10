@@ -1,0 +1,13 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  if [ $(vercmp $2 20140913) -lt 0 ]; then
+    echo "Intel CPU ucode upgrades are no longer performed by the firmware loader."
+    echo "If you want to update the Intel CPU ucode on boot, add the file"
+    echo " /boot/intel-ucode.img"
+    echo "as the first initrd to your bootloader."
+    echo
+    echo "For more information, see:"
+    echo "https://wiki.archlinux.org/index.php/Microcode#Enabling_Intel_Microcode_Updates"
+  fi
+}
