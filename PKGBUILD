@@ -5,7 +5,6 @@ pkgrel=1
 pkgdesc="Low-level library to interact with keepass databases"
 arch=("any")
 url="https://github.com/pschmitt/pykeepass"
-#url="https://github.com/pschmitt/pykeepass/archive/2.8.0.tar.gz"
 license=("GPL")
 depends=("python" "python-crypto" "python-lxml" "python-libkeepass" "python-nose" "python-dateutil")
 makedepends=("python-setuptools")
