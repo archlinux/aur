@@ -12,7 +12,7 @@ pkgbase = betterdiscord-rauenzi-git
 	source = betterdiscordctl
 	source = LICENSE
 	md5sums = SKIP
-	md5sums = 09ff09dd39f4115da17f1da89c52e4df
+	md5sums = 8653e6d13bd4fd10133701518b9e1ea1
 	md5sums = 8414480728c5dc0d4ca9a93cfaf67acb
 
 pkgname = betterdiscord-rauenzi-git

@@ -9,6 +9,7 @@ discord_dir=
 discord_modules=
 discord_core=
 betterdiscord=/usr/lib/betterdiscord-rauenzi-git
+copy_bd=
 verbose=0
 cmd=status
 
@@ -26,9 +27,10 @@ show_help() {
 Options:
   -h, --help: Show this help
   -v, --verbose: Increase verbosity
-  --betterdiscord=DIRECTORY: Use specified BetterDiscord directory
-  --discord=DIRECTORY: Use specified Discord directory (requires --modules)
-  --modules=DIRECTORY: Use specified Discord modules directory
+  -b, --betterdiscord=DIRECTORY: Use specified BetterDiscord directory
+  -d, --discord=DIRECTORY: Use specified Discord directory (requires --modules)
+  -m, --modules=DIRECTORY: Use specified Discord modules directory
+  -c, --copy-bd: Copy BetterDiscord directory instead of symlinking
 
 Commands:
   status (default): Show information about the current Discord patch state.
@@ -46,7 +48,7 @@ while :; do
     install|uninstall|status)
       cmd=$1
       ;;
-    --betterdiscord)
+    -b|--betterdiscord)
       if [ "$2" ]; then
         betterdiscord=$2
         shift
@@ -60,7 +62,7 @@ while :; do
     --betterdiscord=)
       die 'ERROR: "--betterdiscord" requires a non-empty option argument.'
       ;;
-    --discord)
+    -d|--discord)
       if [ "$2" ]; then
         discord_dir=$2
         shift
@@ -74,7 +76,7 @@ while :; do
     --discord=)
       die 'ERROR: "--discord" requires a non-empty option argument.'
       ;;
-    --modules)
+    -m|--modules)
       if [ "$2" ]; then
         discord_modules=$2
         shift
@@ -87,6 +89,9 @@ while :; do
       ;;
     --modules=)
       die 'ERROR: "--modules" requires a non-empty option argument.'
+      ;;
+    -c|--copy-bd)
+      copy_bd=yes
       ;;
     -v|--verbose)
       verbose=$((verbose + 1))
@@ -145,7 +150,11 @@ stats() {
     app_patched=yes
   fi
   if [[ -d "${discord_core}/core" ]]; then
-    core_patched=yes
+    if [[ -h "${discord_core}/core/node_modules/betterdiscord" ]]; then
+      core_patched=linked
+    else
+      core_patched=copied
+    fi
   fi
 
   printf 'Discord: %s\nModules: %s\nApp patched: %s\nCore patched: %s\n' \
@@ -168,8 +177,13 @@ install() {
     -e "/mainWindow *= *new/ a _betterDiscord2 = new _betterDiscord.BetterDiscord(mainWindow);" \
     -i "${discord_core}/core/app/mainScreen.js"
 
-  verbosity 1 'V: Linking core loader...'
-  ln -s "${betterdiscord}" "${discord_core}/core/node_modules/betterdiscord"
+  if [ "${copy_bd}" ]; then
+    verbosity 1 'V: Copying core loader...'
+    cp -r "${betterdiscord}" "${discord_core}/core/node_modules/betterdiscord"
+  else
+    verbosity 1 'V: Linking core loader...'
+    ln -s "${betterdiscord}" "${discord_core}/core/node_modules/betterdiscord"
+  fi
 
   echo 'Installed.'
 }
