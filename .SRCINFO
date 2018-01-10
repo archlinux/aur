@@ -6,7 +6,7 @@ pkgbase = apg
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = http://www.adel.nursat.kz/apg/download/apg-2.2.3.tar.gz
+	source = https://web.archive.org/web/20070609184004if_/http://www.adel.nursat.kz/apg/download/apg-2.2.3.tar.gz
 	md5sums = 3b3fc4f11e90635519fe627c1137c9ac
 
 pkgname = apg
