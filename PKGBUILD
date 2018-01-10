@@ -3,8 +3,8 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=xbase
-pkgver=3.3.0
-pkgrel=3
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="A C++ library"
 arch=('i686' 'x86_64')
 url='https://github.com/graywolf/xbase'
@@ -14,8 +14,8 @@ makedepends=('git' 'cmake')
 options=(staticlibs)
 
 source=(
-	"https://github.com/graywolf/xbase#tag=${pkgver}"
-	"https://github.com/google/googletest"
+	"git+https://github.com/graywolf/xbase#tag=${pkgver}"
+	"git+https://github.com/google/googletest"
 )
 sha512sums=(
 	'SKIP'
@@ -43,7 +43,7 @@ build() {
 }
 
 check() {
-	make check
+	./xbase/build/test/tests
 }
 
 package() {
