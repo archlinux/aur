@@ -4,7 +4,7 @@
 pkgbase=sentry
 pkgname=('sentry')
 pkgver=8.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
@@ -61,7 +61,7 @@ package() {
     # line and comment-out or remove the one immediately after it. If you wish
     # to be more specific, replace -Wno-error with -Wno-misleading-indentation.
     #CFLAGS="-Wno-error" "${pkgdir}/opt/sentry/bin/pip" install "sentry==${pkgver}"
-    "${pkgdir}/opt/sentry/bin/pip" install "sentry==${pkgver}"
+    "${pkgdir}/opt/sentry/bin/pip" install "psycopg2==2.7.3" "sentry==${pkgver}" --no-binary "psycopg2"
 
     # Make certain the virtualenv is relocatable.
     virtualenv2 --relocatable "${pkgdir}/opt/sentry"
