@@ -12,7 +12,7 @@ void portfolio_modify(char* id, double amount, double amount_spent, FILE* fp, in
     if (portfolio_contains(id, fp)) {
         long position = ftell(fp);
         fseek(fp, 0, SEEK_END);
-        size_t length = (size_t)ftell(fp);
+        size_t length = (size_t) ftell(fp);
         char* beginning = (char*) calloc(length, sizeof(char));
         char* end = (char*) calloc(length, sizeof(char));
         fseek(fp, 0, SEEK_SET);
@@ -40,7 +40,7 @@ void portfolio_modify(char* id, double amount, double amount_spent, FILE* fp, in
                 break;
             end[i] = c;
         }
-        if (end[strlen(end) - 1] == '\n')
+        if (strlen(end) > 0 && end[strlen(end) - 1] == '\n')
             end[strlen(end) - 1] = '\0';
         remove(portfolio_file);
         fp = fopen(portfolio_file, "w");
@@ -57,8 +57,7 @@ void portfolio_modify(char* id, double amount, double amount_spent, FILE* fp, in
                 return;
             }
             printf("%lf %s.\n", amount, id);
-        }
-        else printf("You cannot remove more %s than you have!\n", id);
+        } else printf("You cannot remove more %s than you have!\n", id);
         free(beginning);
         free(end);
         fclose(fp);
@@ -99,7 +98,7 @@ void portfolio_print_all(STRING api_data, JSON crypto_data, FILE* fp) {
     char* str = (char*) calloc(64, sizeof(char));
     char* id = (char*) calloc(32, sizeof(char));
     double* data;
-    double total_owned = 0, total_spent = 0;
+    double total_owned = 0, total_spent = 0, usd_change_1h = 0, usd_change_24h = 0, usd_change_7d = 0;
     int i;
     char c;
     while (fgets(str, 63, fp) != NULL) {
@@ -108,12 +107,15 @@ void portfolio_print_all(STRING api_data, JSON crypto_data, FILE* fp) {
             id[i] = c;
             i++;
         }
-        string_write_data(api_data, id);
+        string_write_data_cmc(api_data, id);
         crypto_data = json_init(api_data, 0);
         data = portfolio_print_currency(id, json_get_data(crypto_data), fp);
         if (data != NULL) {
             total_owned += data[0];
             total_spent += data[1];
+            usd_change_1h += data[2];
+            usd_change_24h += data[3];
+            usd_change_7d += data[4];
         }
         memset(str, '\0', 64);
         memset(id, '\0', 32);
@@ -123,21 +125,41 @@ void portfolio_print_all(STRING api_data, JSON crypto_data, FILE* fp) {
         crypto_data = NULL;
         free(data);
     }
-    printf("\nTotal amount spent: $%lf. Total amount owned: $%lf.\n", total_spent, total_owned);
+    printf("\nTotals: Value: $%lf. Expenditures: $%lf. Profit: %lf (%lf%%) 1h: %lf (%lf%%) 24h: %lf (%lf%%) 7d: %lf (%lf%%)\n",
+           total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
+           usd_change_1h, 100 * usd_change_1h / total_spent, usd_change_24h, 100 * usd_change_24h / total_spent,
+           usd_change_7d, 100 * usd_change_7d / total_spent);
     string_destroy(&api_data);
     free(str);
     free(id);
 }
 
 double* portfolio_print_currency(char* id, const double* data, FILE* fp) {
-    double* a = malloc(sizeof(double) * 2);
+    /*
+     * Values in USD
+     * a[0] -- value of portfolio
+     * a[1] -- spent on portfolio
+     * a[2] -- 1H gain
+     * a[3] -- 24H gain
+     * a[4] -- 7D gain
+    */
+    double* a = malloc(sizeof(double) * 5);
     if (portfolio_get_amount_spent(id, fp)) {
         a[0] = portfolio_get_amount(id, fp) * data[PRICE_USD];
         a[1] = portfolio_get_amount_spent(id, fp);
+        a[2] = a[0] * data[PERCENT_CHANGE_1H] / 100;
+        a[3] = a[0] * data[PERCENT_CHANGE_24H] / 100;
+        a[4] = a[0] * data[PERCENT_CHANGE_7D] / 100;
         if (a[0] == 0 && a[1] == 0)
             printf("Your portfolio does not contain %s\n", id);
-        else printf("%lf %s. Purchased for: $%lf. Current value: $%lf.\n", a[0] / data[PRICE_USD], id, a[1], a[0]);
-    } else return NULL;
+        else
+            printf("%lf %s. Value: $%lf. Expenditure: $%lf. Profit: %lf (%lf%%) 1h: %lf (%lf%%) 24h: %lf (%lf%%) 7d: %lf (%lf%%)\n",
+                   a[0] / data[PRICE_USD], id, a[0], a[1], a[0] - a[1], (100 * (a[0] - a[1])) / a[1],
+                   a[2], data[PERCENT_CHANGE_1H], a[3], data[PERCENT_CHANGE_24H], a[4], data[PERCENT_CHANGE_7D]);
+    } else{
+        free(a);
+        return NULL;
+    }
     return a;
 }
 

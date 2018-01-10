@@ -1,7 +1,7 @@
 # Maintainer: Antony Kellermann <aokellermann@gmail.com>
 
 pkgname=getcrypt
-pkgver=1.005
+pkgver=1.010
 pkgrel=1
 pkgdesc="Command line crypto tracker"
 arch=("x86_64")
