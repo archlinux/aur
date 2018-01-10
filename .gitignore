@@ -2,4 +2,4 @@
 /src
 *.tar.xz
 *src.tar.gz
-/couchbase-server-community-*.deb
+/couchbase*-server-community-*.deb

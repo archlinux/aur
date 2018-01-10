@@ -1,18 +1,19 @@
 # Maintainer: Christophe Robin <crobin at nekoo a-dot com>
 
-pkgname=couchbase-server-community
+pkgname=couchbase4-server-community
+_pkgname=couchbase-server-community
 pkgver=4.5.1
 pkgrel=2
 pkgdesc="A document database featuring a powerful query language and unrivaled performance at scale."
 arch=('x86_64')
 url="http://www.couchbase.com/"
 source=(
-  "${pkgname}-v${pkgver}.deb::http://packages.couchbase.com/releases/${pkgver}/${pkgname}_${pkgver}-ubuntu14.04_amd64.deb"
+  "${pkgname}-v${pkgver}.deb::http://packages.couchbase.com/releases/${pkgver}/${_pkgname}_${pkgver}-ubuntu14.04_amd64.deb"
   "couchbase-server.service"
 )
 install=couchbase-server.install
 depends=(glibc gcc-libs sqlite openssl zlib python2 openssl-1.0 ncurses5-compat-libs)
-conflicts=(couchbase3-server-community)
+conflicts=(couchbase3-server-community couchbase-server-community)
 
 package() {
   msg2 "Extracting the data.tar.gz file"
