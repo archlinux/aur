@@ -1,7 +1,7 @@
 pkgbase = vtrunkd-git
 	pkgdesc = Universal network link bonding and multichannel VPN.
 	pkgver = 0.1601_10_g82e93_dirty
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/VrayoSystems/vtrunkd
 	arch = arm
 	arch = arm64
