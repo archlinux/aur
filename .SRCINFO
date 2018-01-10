@@ -1,7 +1,7 @@
 pkgbase = jqassistant
 	pkgdesc = Scan, explore and validate your Java application in a few minutes
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jqassistant.org/
 	arch = i686
 	arch = x86_64
