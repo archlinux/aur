@@ -2,7 +2,7 @@
 # Previous Maintainer: 2ion <dev@2ion.de>
 
 pkgname=cpdf-bin
-pkgver=2.2
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Coherent PDF commandline tool binary to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers, compress, etc."
 arch=('x86_64' 'i686')
@@ -29,14 +29,14 @@ source_x86_64=( \
   "$_base_url/Linux-Intel-64bit/cpdf" \
   )
 md5sums_x86_64=( \
-  '9620fb4348dfa9a7ff49d53fa948fc45' \
+  'dee9d0c5152ac469fa12ec0d078441b5' \
   )
 
 source_i686=( \
   "$_base_url/Linux-Intel-32bit/cpdf" \
   )
 md5sums_i686=( \
-  '87b13867c3e26a2d91cc7fa339b01b1f' \
+  'ecaec41df0ab1ca786e0580f03e680da' \
   )
 
 prepare() {
