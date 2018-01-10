@@ -22,8 +22,9 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-  cd ${srcdir}/src/github.com/kryptco/kr
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  #cd ${srcdir}/src/github.com/kryptco/kr
+  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  echo "2.3.1"
 }
 
 prepare() {
