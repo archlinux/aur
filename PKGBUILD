@@ -11,7 +11,7 @@ source=("https://ci.wieku.me/job/LogicDraw/$(echo $pkgver|cut -d"." -f3)/artifac
   "logicdraw"
   "logicdraw.desktop" )
 noextract=()
-md5sums=('bf40612d9b1bbc69973ae0bd51cfa3b1'
+md5sums=('dbaac2868e967a6c960302424bc066b9'
          'dbc0616e552aca3bcc4781fefdceea04'
          'a4c84914036108b15892e2c60a36066f')
 validpgpkeys=()
