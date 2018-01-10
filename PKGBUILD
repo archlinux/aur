@@ -17,16 +17,17 @@ source=('git+https://git.code.sf.net/p/gnuplot/gnuplot-main' lua53_compat.patch)
 md5sums=('SKIP'
          'c84be2980e0d90037f20a5cf18f9868a')
 options=('!makeflags')
-_gitname="gnuplot"
+_gitname="gnuplot-main"
 
 pkgver() {
   cd $_gitname
-  printf "5.3r%s.%s" $(git log -1 --format="%cd" --date=short | tr -d '-') "$(git rev-parse --short HEAD)"
+  printf "5.3r%s.%s" $(git log -1 --format="%cd" --date=short | tr -d '-') \
+	 "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd $_gitname
-  patch -p1 < $srcdir/lua53_compat.patch
+  patch -p1 < "$srcdir"/lua53_compat.patch
   sed -i 's+-fPIE+-fPIC+' configure.ac
   # fix default source location; use the GDFONTPATH variable 
   # to modify at runtime 
