@@ -1,0 +1,22 @@
+diff -ur stgit-0.16.orig/stgit/commands/common.py stgit-0.16/stgit/commands/common.py
+--- stgit-0.16.orig/stgit/commands/common.py	2012-01-09 22:12:42.000000000 +0100
++++ stgit-0.16/stgit/commands/common.py	2012-12-04 19:04:52.193722114 +0100
+@@ -23,7 +23,7 @@
+ from stgit.utils import *
+ from stgit.out import *
+ from stgit.run import *
+-from stgit import stack, git, basedir
++from stgit import stack, git, basedir, templates
+ from stgit.config import config, file_extensions
+ from stgit.lib import stack as libstack
+ from stgit.lib import git as libgit
+@@ -499,6 +499,9 @@
+     # Let user edit the commit message manually, unless
+     # --save-template or --message was specified.
+     if not getattr(options, 'save_template', None) and options.message is None:
++        tmpl = templates.get_template('patchdescr.tmpl')
++        if tmpl:
++            cd = cd.set_message(cd.message + tmpl)
+         cd = cd.set_message(edit_string(cd.message, '.stgit-new.txt'))
+ 
+     return cd
