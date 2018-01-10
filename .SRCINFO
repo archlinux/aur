@@ -12,7 +12,7 @@ pkgbase = logicdraw
 	source = https://ci.wieku.me/job/LogicDraw/13/artifact/desktop/build/libs/LogicDraw-0.1.13.jar
 	source = logicdraw
 	source = logicdraw.desktop
-	md5sums = bf40612d9b1bbc69973ae0bd51cfa3b1
+	md5sums = dbaac2868e967a6c960302424bc066b9
 	md5sums = dbc0616e552aca3bcc4781fefdceea04
 	md5sums = a4c84914036108b15892e2c60a36066f
 
