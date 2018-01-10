@@ -3,6 +3,9 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 # SELinux Contributor: Timothée Ravier
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=findutils-selinux
 pkgver=4.6.0
@@ -16,7 +19,7 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 url="http://www.gnu.org/software/findutils"
-source=(ftp://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz)
+source=(https://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz)
 sha1sums=('f18e8aaee3f3d4173a1f598001003be8706d28b0')
 #validpgpkeys=('A15B725964A95EE5') # James Youngman <james@youngman.org>
 build() {
