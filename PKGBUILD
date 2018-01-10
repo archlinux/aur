@@ -24,7 +24,7 @@ pkgver() {
 
 package() {
   cd $_gitname
-  ./install.sh --prefix=/opt/kies --destdir="$pkgdir/"
+  ./install.sh --prefix=/usr --destdir="$pkgdir/"
 }
 
 # vim:set ts=2 sw=2 et:
