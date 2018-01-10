@@ -4,7 +4,7 @@
 _name=gzdoom
 pkgname=${_name}
 pkgver=3.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -42,6 +42,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'timidity++: Timidity MIDI device'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
+replaces=("${_name}1")
 source=("${_name}::git://github.com/coelckers/${_name}.git#tag=g${pkgver}"
         "${_name}.desktop"
         '0001-Fix-path-to-FluidR3-soundfont.patch')
@@ -78,7 +79,7 @@ package() {
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
     install -D -m644 src/posix/zdoom.xpm \
-            "$pkgdir"/usr/share/icons/hicolor/48x48/apps/${_name}.xpm
+            "$pkgdir"/usr/share/icons/hicolor/256x256/apps/${_name}.xpm
 
     install -d "$pkgdir"/usr/share/licenses
     ln -s /usr/share/doc/$_name/licenses "$pkgdir"/usr/share/licenses/$pkgname
