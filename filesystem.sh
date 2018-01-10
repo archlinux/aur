@@ -91,6 +91,8 @@ btrfs() {
 '
 # endregion
 # region functions
+## region btrfs
+alias bl.filesystem.btrfs_subvolume_backup=bl_filesystem_btrfs_subvolume_backup
 bl_filesystem_btrfs_subvolume_backup() {
     # Create, delete or list system backups.
     #
@@ -121,7 +123,7 @@ EOF
     fi
     return $?
 }
-alias bl.filesystem.btrfs_subvolume_backup=bl_filesystem_btrfs_subvolume_backup
+alias bl.filesystem.btrfs_subvolume_backup_autocomplete=bl_filesystem_btrfs_subvolume_backup_autocomplete
 bl_filesystem_btrfs_subvolume_backup_autocomplete() {
     # Autocompletion function.
     local lastCompleteArgument="${COMP_WORDS[${COMP_CWORD}-1]}"
@@ -136,8 +138,8 @@ bl_filesystem_btrfs_subvolume_backup_autocomplete() {
     fi
     return 0
 }
-alias bl.filesystem.btrfs_subvolume_backup_autocomplete=bl_filesystem_btrfs_subvolume_backup_autocomplete
 complete -F bl_filesystem_btrfs_subvolume_backup_autocomplete bl_filesystem_btrfs_subvolume_backup
+alias bl.filesystem.btrfs_is_subvolume=bl_filesystem_btrfs_is_subvolume
 bl_filesystem_btrfs_is_subvolume() {
     local __doc__='
     Checks if path is a subvolume. Note: The btrfs root is also a subvolume.
@@ -152,7 +154,7 @@ bl_filesystem_btrfs_is_subvolume() {
     '
     btrfs subvolume show "$1" &>/dev/null
 }
-alias bl.filesystem.btrfs_is_subvolume=bl_filesystem_btrfs_is_subvolume
+alias bl.filesystem.is_btrfs_root=bl_filesystem_is_btrfs_root
 bl_filesystem_is_btrfs_root() {
     local __doc__='
     >>> bl.filesystem.is_btrfs_root /broot; echo $?
@@ -165,7 +167,7 @@ bl_filesystem_is_btrfs_root() {
         (btrfs subvolume show "$1" | grep "Name:.*<FS_TREE>") &>/dev/null || \
         return 1
 }
-alias bl.filesystem.is_btrfs_root=bl_filesystem_is_btrfs_root
+alias bl.filesystem.btrfs_find_root=bl_filesystem_btrfs_find_root
 bl_filesystem_btrfs_find_root() {
     local __doc__='
     Returns absolute path to btrfs root.
@@ -184,7 +186,7 @@ bl_filesystem_btrfs_find_root() {
         path="$(dirname "$path")"
     done
 }
-alias bl.filesystem.btrfs_find_root=bl_filesystem_btrfs_find_root
+alias bl.filesystem.btrfs_get_subvolume_list_field=bl_filesystem_btrfs_get_subvolume_list_field
 bl_filesystem_btrfs_get_subvolume_list_field() {
     local __doc__='
     >>> local entry="$(btrfs subvolume list /broot | head -n1)"
@@ -205,7 +207,7 @@ bl_filesystem_btrfs_get_subvolume_list_field() {
         [[ "${field,,}" == "${target,,}" ]] && found=true
     done
 }
-alias bl.filesystem.btrfs_get_subvolume_list_field=bl_filesystem_btrfs_get_subvolume_list_field
+alias bl.filesystem.btrfs_subvolume_filter=bl_filesystem_btrfs_subvolume_filter
 bl_filesystem_btrfs_subvolume_filter() {
     local __doc__='
     Example:
@@ -229,7 +231,7 @@ bl_filesystem_btrfs_subvolume_filter() {
         fi
     done
 }
-alias bl.filesystem.btrfs_subvolume_filter=bl_filesystem_btrfs_subvolume_filter
+alias bl.filesystem.btrfs_get_child_volumes=bl_filesystem_btrfs_get_child_volumes
 bl_filesystem_btrfs_get_child_volumes() {
     # shellcheck disable=SC2016
     local __doc__='
@@ -260,7 +262,7 @@ bl_filesystem_btrfs_get_child_volumes() {
         echo "${btrfs_root}/${child_path}"
     done
 }
-alias bl.filesystem.btrfs_get_child_volumes=bl_filesystem_btrfs_get_child_volumes
+alias bl.filesystem.btrfs_subvolume_delete=bl_filesystem_btrfs_subvolume_delete
 bl_filesystem_btrfs_subvolume_delete() {
     local __doc__='
     # Delete a subvolume. Also deletes child subvolumes.
@@ -281,7 +283,7 @@ bl_filesystem_btrfs_subvolume_delete() {
     done
     btrfs subvolume delete "$volume"
 }
-alias bl.filesystem.btrfs_subvolume_delete=bl_filesystem_btrfs_subvolume_delete
+alias bl.filesystem.btrfs_subvolume_set_ro=bl_filesystem_btrfs_subvolume_set_ro
 bl_filesystem_btrfs_subvolume_set_ro() {
     local __doc__='
     # Make subvolume writable or readonly. Also applies to child subvolumes.
@@ -300,7 +302,7 @@ bl_filesystem_btrfs_subvolume_set_ro() {
         btrfs property set -ts "$volume" ro $read_only
     fi
 }
-alias bl.filesystem.btrfs_subvolume_set_ro=bl_filesystem_btrfs_subvolume_set_ro
+alias bl.filesystem.btrfs_snapshot=bl_filesystem_btrfs_snapshot
 bl_filesystem_btrfs_snapshot() {
     local __doc__='
     # Make snapshot of subvolume.
@@ -335,7 +337,7 @@ bl_filesystem_btrfs_snapshot() {
         fi
     done
 }
-alias bl.filesystem.btrfs_snapshot=bl_filesystem_btrfs_snapshot
+alias bl.filesystem.btrfs_send_update=bl_filesystem_btrfs_send_update
 bl_filesystem_btrfs_send_update() {
     # shellcheck disable=SC2034,SC1004
     local __doc__='
@@ -374,7 +376,7 @@ bl_filesystem_btrfs_send_update() {
     done
     bl.filesystem.btrfs_subvolume_set_ro "$volume" false
 }
-alias bl.filesystem.btrfs_send_update=bl_filesystem_btrfs_send_update
+alias bl.filesystem.btrfs_send=bl_filesystem_btrfs_send
 bl_filesystem_btrfs_send() {
     local __doc__='
     # Send snapshot
@@ -408,7 +410,147 @@ bl_filesystem_btrfs_send() {
     mv "${target_dir}/$volume_name" "$target"
     bl.filesystem.btrfs_subvolume_set_ro "$volume" false
 }
-alias bl.filesystem.btrfs_send=bl_filesystem_btrfs_send
+## endregion
+## region file links
+alias bl.filesystem.find_hardlinks=bl_filesystem_find_hardlinks
+bl_filesystem_find_hardlinks() {
+    local __doc__='
+    Finds same files as given file (hardlinks).
+
+    >>> bl.filesystem.find_hardlinks /home/user/test.txt
+    ...
+    '
+    sudo find / -samefile $1 2>/dev/null
+    return $?
+}
+alias bl.filesystem.show_symbolic_links=bl_filesystem_show_symbolic_links
+bl_filesystem_show_symbolic_links() {
+    local __doc__='
+    Shows symbolic links in current directory if no argument is provided or
+    in given location and their subdirectories (recursive).
+
+    >>> bl.filesystem.show_symbolic_links
+    ./.vim -> ./configs/vimConfig
+    ...
+
+    >>> bl.filesystem.show_symbolic_links /home
+    /home/user/.vim -> /home/user/configs/vimConfig
+    ...
+    '
+    local fileSystemElement
+    for fileSystemElement in $(find "$1" -type l); do
+        echo "$fileSystemElement"' -> '
+        readlink "$fileSystemElement"
+    done
+    return $?
+}
+## endregion
+alias bl.filesystem.make_crypt_blockdevice=bl_filesystem_make_crypt_blockdevice
+bl_filesystem_make_crypt_blockdevice() {
+    local __doc__='
+    Creates encrypted blockdevices.
+
+    >>> bl.filesystem.make_crypt_blockdevice /dev/sda
+    '
+    sudo cryptsetup -v --cipher aes-xts-plain64 --key-size 512 --hash sha512 \
+        --iter-time 5000 --use-random luksFormat "$1"
+}
+alias bl.filesystem.open_crypt_blockdevice=bl_filesystem_open_crypt_blockdevice
+bl_filesystem_open_crypt_blockdevice() {
+    local __doc__='
+    Mounts encrypted blockdevices as analyseable blockdevice.
+
+    >>> bl.filesystem.open_crypt_blockdevice /dev/sdb test
+    '
+    sudo cryptsetup luksOpen "$1" "$2"
+    return $?
+}
+alias bl.filesystem.close_crypt_blockdevice=bl_filesystem_close_crypt_blockdevice
+bl_filesystem_close_crypt_blockdevice() {
+    local __doc__='
+    Mounts encrypted blockdevices as analyseable blockdevice.
+
+    >>> bl.filesystem.close_crypt_blockdevice test
+    '
+    sudo cryptsetup luksClose "$1"
+    return $?
+}
+alias bl.filesystem.repair=bl_filesystem_repair
+bl_filesystem_repair() {
+    local __doc__='
+    Finds filesystem errors on linux based filesystem and repairs them.
+
+    >>> bl.filesystem.repair /dev/mmcblk0p2
+    ...
+    '
+    local target=/dev/mmcblk0
+    if [[ "$1" ]]; then
+        target="$1"
+    fi
+    sudo badblocks "$target"
+    sudo fsck -a "$target"
+    return $?
+}
+alias bl.filesysten.set_maximum_user_watchs=bl_filesystem_set_maximum_user_watches
+bl_filesystem_set_maximum_user_watches() {
+    local __doc__='
+    Sets the maximum number of concurrent allowed file observations via
+    inotify.
+
+    >>> bl.filesystem.set_maximum_user_watches 500000
+    '
+    echo "$1" | sudo tee /proc/sys/fs/inotify/max_user_watches
+    return $?
+}
+alias bl.filesysten.overlay_location=bl_filesystem_overlay_location
+bl_filesystem_overlay_location() {
+    local __doc__='
+    Mounts an overlay over given location. This could be useful if we have a
+    read only system caused by physical reasons.
+
+    >>> bl.filesystem.overlay_location /usr/bin/
+    '
+    mkdir --parents /tmp/overlayfsDifferences
+    mount --types overlayfs --options \
+        lowerdir="$1",upperdir='/tmp/overlayDifferences' overlayfs "$1"
+    return $?
+}
+alias bl.filesystem.write_image_to_blockdevice=bl_filesystem_write_image_to_blockdevice
+bl_filesystem_write_image_to_blockdevice() {
+    local __doc__='
+    Writes a given image to given blockdevice.
+
+    >>> bl.filesystem.write_image_to_blockdevice /data/private/backup/image.img /dev/mmcblk0
+    '
+    local source="${ILU_DATA_PATH}temp/image/"*.img
+    if [[ "$1" ]]; then
+        source="$1"
+    fi
+    local target=/dev/mmcblk0
+    if [[ "$2" ]]; then
+        target="$2"
+    fi
+    sudo dd bs=4M if="$source" of="$target"
+    return $?
+}
+alias bl.filesystem.write_blockdevice_to_image=bl_filesystem_write_blockdevice_to_image
+bl_filesystem_write_blockdevice_to_image() {
+    local __doc__='
+    Writes a given backup from given blockdevice.
+
+    >>> bl.filesystem.write_blockdevice_to_image /dev/mmcblk0 /data/private/backup/image.img
+    '
+    local source=/dev/mmcblk0
+    if [[ "$1" ]]; then
+        source="$1"
+    fi
+    local target="${ILU_DATA_PATH}private/backup/backup-sd-card.img"
+    if [[ "$2" ]]; then
+        target="$2"
+    fi
+    sudo dd bs=4M if="$source" of="$target"
+    return $?
+}
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

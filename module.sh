@@ -36,6 +36,7 @@ bl_module_prevent_namespace_check=false
 bl_module_scope_rewrites=('^bashlink([._][a-zA-Z_-]+)$/bl\1/')
 # endregion
 # region functions
+alias bl.module.determine_declared_names=bl_module_determine_declared_names
 bl_module_determine_declared_names() {
     # shellcheck disable=SC2016
     local __doc__='
@@ -52,7 +53,7 @@ bl_module_determine_declared_names() {
             cut --delimiter '=' --fields 1
     } | sort --unique
 }
-alias bl.module.determine_declared_names=bl_module_determine_declared_names
+alias bl.module.determine_aliases=bl_module_determine_aliases
 bl_module_determine_aliases() {
     local __doc__='
     Returns all defined aliases in the current scope.
@@ -60,7 +61,7 @@ bl_module_determine_aliases() {
     alias | grep '^alias' \
         | cut --delimiter ' ' --fields 2 - | cut --delimiter '=' --fields 1
 }
-alias bl.module.determine_aliases=bl_module_determine_aliases
+alias bl.module.log=bl_module_log
 bl_module_log() {
     local __doc__='
     Logs arbitrary strings with given level.
@@ -75,7 +76,7 @@ bl_module_log() {
         echo "info": "$@"
     fi
 }
-alias bl.module.log=bl_module_log
+alias bl.module.import_raw=bl_module_import_raw
 bl_module_import_raw() {
     bl_module_import_level=$((bl_module_import_level+1))
     source "$1"
@@ -84,7 +85,7 @@ bl_module_import_raw() {
         return 1
     bl_module_import_level=$((bl_module_import_level-1))
 }
-alias bl.module.import_raw=bl_module_import_raw
+alias bl.module.import_with_namespace_check=bl_module_import_with_namespace_check
 bl_module_import_with_namespace_check() {
     local __doc__='
     Sources a script and checks variable definitions before and after sourcing.
@@ -189,7 +190,7 @@ bl_module_import_with_namespace_check() {
             >"$bl_module_declared_function_names_before_source_file_path"
     fi
 }
-alias bl.module.import_with_namespace_check=bl_module_import_with_namespace_check
+alias bl.module.resolve=bl_module_resolve
 bl_module_resolve() {
     # shellcheck disable=SC2016,SC1004
     local __doc__='
@@ -303,7 +304,7 @@ bl_module_resolve() {
         echo "$(bl.path.convert_to_absolute "$file_path")"
     fi
 }
-alias bl.module.resolve=bl_module_resolve
+alias bl.module.is_loaded=bl_module_is_loaded
 bl_module_is_loaded() {
     local file_path="$(bl.module.resolve "$1" "${BASH_SOURCE[1]}")"
     # Check if module already loaded.
@@ -315,7 +316,7 @@ bl_module_is_loaded() {
     done
     return 1
 }
-alias bl.module.is_loaded=bl_module_is_loaded
+alias bl.module.import_without_namespace_check=bl_module_import_without_namespace_check
 bl_module_import_without_namespace_check() {
     if bl.module.is_loaded "$1"; then
         return 0
@@ -327,7 +328,7 @@ bl_module_import_without_namespace_check() {
     bl.module.determine_declared_names \
         >"$bl_module_declared_names_before_source_file_path"
 }
-alias bl.module.import_without_namespace_check=bl_module_import_without_namespace_check
+alias bl.module.import=bl_module_import
 bl_module_import() {
     if bl.module.is_loaded "$1"; then
         return 0
@@ -362,7 +363,7 @@ bl_module_import() {
                     local name="$(echo "$sub_file_path" | \
                         sed --regexp-extended \
                             "s:${scope_name}/([^/]+):${scope_name}.\1:")"
-                    bl_module_import "$name"
+                    bl.module.import "$name"
                 fi
             done
         else
@@ -386,7 +387,6 @@ bl_module_import() {
         return 1
     fi
 }
-alias bl.module.import=bl_module_import
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

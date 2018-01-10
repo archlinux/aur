@@ -9,6 +9,25 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+alias bl.path.run_in_programs_location=bl_path_run_in_programs_location
+bl_path_run_in_programs_location() {
+    local __doc__='
+    Changes current working directory to given program path and runs the
+    program.
+
+    >>> bl.path.run_in_programs_location /usr/bin/python3.2
+    ...
+    '
+    if [ "$1" ] && [ -f "$1" ]; then
+        cd "$(dirname "$1")"
+        "./$(basename "$1")" $*
+        return $?
+    else
+        echo 'Please insert a path to an executable file.'
+        return $?
+    fi
+}
+alias bl.path.convert_to_absolute='bl_path_convert_to_absolute'
 bl_path_convert_to_absolute() {
     local __doc__='
     Converts given path into an absolute one.
@@ -25,7 +44,7 @@ bl_path_convert_to_absolute() {
         echo "${absolute_path}/${file_name}"
     fi
 }
-alias bl.path.convert_to_absolute='bl_path_convert_to_absolute'
+alias bl.path.convert_to_relative='bl_path_convert_to_relative'
 bl_path_convert_to_relative() {
     # shellcheck disable=SC2016
     local __doc__='
@@ -93,7 +112,133 @@ bl_path_convert_to_relative() {
     fi
     echo "$result"
 }
-alias bl.path.convert_to_relative='bl_path_convert_to_relative'
+alias bl.path.open=bl_path_open
+bl_path_open() {
+    local __doc__='
+    Opens a given path with a useful program.
+
+    >>> bl.path.open http://www.google.de
+    >>> bl.path.open file.text
+    '
+    local program
+    for program in gnome-open kde-open gvfs-open exo-open xdg-open gedit \
+        mousepad gvim vim emacs nano vi less cat
+    do
+        if hash "$program" 2>/dev/null; then
+            "$program" "$1"
+            break
+        fi
+    done
+    return $?
+}
+alias bl.path.unpack=bl_path_unpack
+bl_path_unpack() {
+    local __doc__='
+    Unpack archives in various formats.
+
+    >>> unpack path/to/archiv.zip
+    '
+    if [ -f "$1" ]; then
+        local command
+        case "$1" in # switch
+            *.tar.bz2|*.tbz2)
+                command="tar --extract --verbose --bzip2 --file \"$1\""
+                ;;
+            *.tar.gz|*.tgz)
+                command="tar --extract --verbose --gzip --file \"$1\""
+                ;;
+            *.bz2)
+                command="bzip2 --decompress \"$1\""
+                ;;
+            *.rar)
+                command="unrar x \"$1\""
+                ;;
+            *.gz)
+                command="gzip --decompress \"$1\""
+                ;;
+            *.tar)
+                command="tar --extract --verbose --file \"$1\""
+                ;;
+            *.zip)
+                command="unzip -o \"$1\""
+                ;;
+            *.Z)
+                command="compress -d \"$1\""
+                ;;
+            *.7z)
+                7z x "$1"
+                ;;
+            *)
+                echo  "Cannot extract \"$1\"."
+                ;;
+        esac
+        if [ "$command" ]; then
+            echo "Running: [$command]."
+            eval "$command"
+            return $?
+        fi
+    else
+        echo "\"$1\" is not a valid file."
+        return $?
+    fi
+}
+alias bl.path.pack=bl_path_pack
+bl_path_pack() {
+    local __doc__='
+    Packs archives.
+
+    >>> bl.path.pack archiv.zip /path/to/file.ext
+    >>> bl.path.pack archiv.zip /path/to/directory
+    '
+    if [ -d "$2" ] || [ -f "$2" ]; then
+        local command
+        case "$1" in
+            *.tar.bz2|*.tbz2)
+                command="tar --dereference --create --verbose --bzip2 --file \"$1\" \"$2\""
+                ;;
+            *.tar.gz|.*tgz)
+                command="tar --dereference --create --verbose --gzip --file \"$1\" \"$2\""
+                ;;
+            *.bz2)
+                command="bzip2 --stdout \"$2\" 1>\"$1\""
+                ;;
+            *.gz)
+                if [ -d "$2" ]; then
+                    command="gzip --recursive --stdout \"$2\" 1>\"$1\""
+                else
+                    command="gzip --stdout \"$2\" 1>\"$1\""
+                fi
+                ;;
+            *.tar)
+                command="tar --dereference --create --verbose --file \"$1\" \"$2\""
+                ;;
+            *.zip)
+                if [ -d "$2" ]; then
+                    command="zip --recurse-paths \"$1\" \"$2\""
+                else
+                    command="zip \"$1\" \"$2\""
+                fi
+                ;;
+            *.Z)
+                command="compress --stdout \"$2\" 1>\"$1\""
+                ;;
+            *.7z)
+                command="7z a \"$1\" \"$2\""
+                ;;
+            *)
+                echo "Cannot pack \"$1\"."
+                return $?
+        esac
+        if [ "$command" ]; then
+            echo "Running: [$command]."
+            eval "$command"
+            return $?
+        fi
+    else
+        echo "\"$2\" is not a valid file or directory."
+        return $?
+    fi
+}
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
 # vim: foldmethod=marker foldmarker=region,endregion:
