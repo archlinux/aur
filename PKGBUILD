@@ -1,26 +1,26 @@
 # Maintainer:Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname='openastro'
-pkgver='1.1.50'
+pkgver='1.1.56'
 pkgrel=1
 pkgdesc='Open source fully-featured astrology software'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.openastro.org/'
-depends=('imagemagick' 'python2-dateutil' 'python2-rsvg' 'python2-pytz' 'pyswisseph')
-makedepends=('python2-setuptools')
+depends=('imagemagick' 'python-dateutil' 'python-cairo' 'python-pytz' 'pyswisseph' 'python-gobject')
+makedepends=('python-setuptools')
 optdepends=()
 conflicts=('openastro-dev' 'swisseph_12' 'swisseph_18' 'swisseph-fixstars')
 source=(
 	"openastro.org_"$pkgver".orig.tar.gz::http://www.openastro.org/download.php?file=source&type=openastro"
-	"openastro.org-data_1.7.orig.tar.gz::http://openastro.org/download.php?file=source&type=data"
+	"openastro.org-data_1.8.orig.tar.gz::http://openastro.org/download.php?file=source&type=data"
 	)
-md5sums=('e992f70476e4853adef116ab347f902f'
-         '418c3f7d1a24f58881e4dabf8c962c9f')
+md5sums=('3d9c160e18c3b3bc1635f63d197ae1cc'
+         'b799f2ceca718d5ea15e18770dea07d8')
 
 package() {
     cd $srcdir"/openastro.org-"$pkgver
-    python2 setup.py install --root=$pkgdir || return 1
-    cd $srcdir"/openastro.org-data-1.7"
-    python2 setup.py install --root=$pkgdir || return 1
+    python setup.py install --root=$pkgdir || return 1
+    cd $srcdir"/openastro.org-data-1.8"
+    python setup.py install --root=$pkgdir || return 1
 }
