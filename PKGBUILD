@@ -11,7 +11,7 @@ arch=(x86_64)
 url="http://www.adel.nursat.kz/apg/index.shtml"
 license=('custom')
 depends=('glibc')
-source=(http://www.adel.nursat.kz/apg/download/$pkgname-$pkgver.tar.gz)
+source=(https://web.archive.org/web/20070609184004if_/http://www.adel.nursat.kz/apg/download/$pkgname-$pkgver.tar.gz)
 md5sums=('3b3fc4f11e90635519fe627c1137c9ac')
 
 build() {
