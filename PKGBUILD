@@ -1,7 +1,7 @@
 # Maintainer: Stephen Brown II <Stephen [dot] Brown2 [at] gmail.com>
 pkgname=stoken-git
-pkgver=v0.90.r0.4592a11
-pkgrel=2
+pkgver=v0.92.r0.ddb5c7d
+pkgrel=1
 pkgdesc="RSA SecurID-compatible software token for Linux/UNIX systems"
 arch=('i686' 'x86_64')
 url="https://github.com/cernekee/${pkgname%-git}"
