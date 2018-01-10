@@ -3,8 +3,8 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=xbase
-pkgver=3.2.0
-pkgrel=4
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="A C++ library"
 arch=('i686' 'x86_64')
 url='https://github.com/graywolf/xbase'
@@ -31,8 +31,9 @@ build() {
 	make
 }
 
-#check() {
-#}
+check() {
+	make check
+}
 
 package() {
 	cd "${pkgname}/build"
