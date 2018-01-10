@@ -1,0 +1,17 @@
+pkgbase = gtk-sharp-3-mono-git
+	pkgdesc = C# bindings for GTK+ 3 (from the mono upstream)
+	pkgver = 2.99.4
+	pkgrel = 1
+	url = http://mono-project.com/GtkSharp
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = mono
+	depends = gtk3
+	provides = gtk-sharp-3
+	provides = gtk-sharp-3-git
+	source = git+https://github.com/mono/gtk-sharp.git
+	sha256sums = SKIP
+
+pkgname = gtk-sharp-3-mono-git
+
