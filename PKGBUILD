@@ -21,7 +21,7 @@ optdepends=('dnf: build Fedora images'
             'squashfs-tools: raw_squashfs output format'
             'tar: tar output format'
             'cryptsetup: add dm-verity partitions'
-            'edk2-ovmf: run bootable images in QEMU'
+            'ovmf: run bootable images in QEMU'
             'sbsigntools: sign EFI binaries for UEFI SecureBoot')
 provides=('mkosi')
 conflicts=('mkosi')
