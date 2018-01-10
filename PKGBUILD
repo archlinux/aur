@@ -1,7 +1,7 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=jqassistant
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Scan, explore and validate your Java application in a few minutes"
 arch=('i686' 'x86_64')
 url="https://jqassistant.org/"
@@ -23,7 +23,11 @@ md5sums=('6e847165bc095799a4c5613c8d7d1477')
 
 package() {
     install -d ${pkgdir}/opt/${pkgname}
-    cp -a * ${pkgdir}/opt/${pkgname}
+    cp -a ./* ${pkgdir}/opt/${pkgname}
+    rm ${pkgdir}/opt/${pkgname}/${pkgname}-commandline-${pkgver}.zip
+    
     install -d ${pkgdir}/usr/bin/
-    ln -s /opt/${pkgname}/bin/jqassistant.sh ${pkgdir}/usr/bin/jqassistant
+    cp ../launcher.sh ${pkgdir}/usr/bin/jqassistant
+    
+    install -d -Dm775 -g users ${pkgdir}/opt/${pkgname}/${pkgname}
 }
