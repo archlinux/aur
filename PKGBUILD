@@ -6,16 +6,16 @@
 
 pkgname=hdf5_18
 _pkgname=hdf5
-pkgver=1.8.19
+pkgver=1.8.20
 pkgrel=1
-arch=('i686' 'x86_64')
-pkgdesc="General purpose library and file format for storing scientific data"
-url="http://www.hdfgroup.org/HDF5/"
-license=('custom')
-depends=('zlib' 'sh')
-makedepends=('time')
+arch=(i686 x86_64)
+pkgdesc='General purpose library and file format for storing scientific data'
+url='http://www.hdfgroup.org/HDF5/'
+license=(custom)
+depends=(zlib sh)
+makedepends=(time)
 source=(https://support.hdfgroup.org/ftp/HDF5/current18/src/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('59c03816105d57990329537ad1049ba22c2b8afe1890085f0c022b75f1727238')
+sha512sums=(SKIP)
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
