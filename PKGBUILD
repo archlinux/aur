@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="https://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin"
 depends=('thunar>=1.7.0' 'git' 'subversion' 'apr')
-makedepends=('intltool')
+makedepends=('intltool' 'xfce4-dev-tools')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/andreldm/thunar-vcs-plugin#branch=gtk3")
