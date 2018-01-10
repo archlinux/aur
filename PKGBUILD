@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gtk2
-pkgver=2.24.31
-pkgrel=3
+pkgver=2.24.32
+pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
@@ -20,7 +20,7 @@ depends=(
   'mingw-w64-gdk-pixbuf2>=2.21.0')
 options=(!strip !buildflags staticlibs)
 source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
-sha256sums=("68c1922732c7efc08df4656a5366dcc3afdc8791513400dac276009b40954658")
+sha256sums=("b6c8a93ddda5eabe3bfee1eb39636c9a03d2a56c7b62828b359bf197943c582e")
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
