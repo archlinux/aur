@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=GpsMaster
+Comment=GpsMaster to create, view, edit and analyse GPX files
+Exec=/usr/bin/gpsmaster
+Icon=
+Terminal=false
+Categories=Application;System;
+StartupNotify=true
