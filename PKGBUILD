@@ -3,7 +3,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=11.0.r382.g133c5eaf3
+pkgver=11.0.r383.g20087060c
 pkgrel=1
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
