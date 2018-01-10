@@ -1,12 +1,12 @@
 # Maintainer: Leo von Klenze <devel@leo-von-klenze.de>
 pkgname="brother-mfc-j6930dw"
 pkgver="1.0.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Brother MFC-J6930DW CUPS driver."
 url="http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfcj6930dw_us_eu_as"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('lib32-glibc' 'cups>=2.1.2' 'ghostscript' ) 
+depends=('lib32-glibc' 'lib32-libstdc++5' 'cups>=2.1.2' 'ghostscript' ) 
 source=(
    "http://download.brother.com/welcome/dlf103009/mfcj6930dwlpr-1.0.1-0.i386.rpm"
    "http://download.brother.com/welcome/dlf103033/mfcj6930dwcupswrapper-1.0.1-0.i386.rpm"
