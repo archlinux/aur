@@ -4,24 +4,25 @@
 # Contributor: ryooichi <ryooichi+aur@gmail.com>
 
 pkgname=ssdeep
-pkgver=2.13
+pkgver=2.14.1
 pkgrel=1
 pkgdesc="A program for computing context triggered piecewise hashes"
 arch=('i686' 'x86_64')
-url="http://ssdeep.sourceforge.net/"
+url="https://ssdeep-project.github.io/ssdeep/"
 license=('GPL')
 depends=('gcc-libs')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://github.com/ssdeep-project/ssdeep/archive/release-$pkgver.tar.gz)
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-release-$pkgver
+  ./bootstrap
   ./configure --prefix=/usr || return 1
   make || return 1
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-release-$pkgver
   make DESTDIR="$pkgdir" install || return 1
 }
-md5sums=('7608b794ce6b25fae8bb1c2f4d35b2ad')
+sha256sums=('d96f667a8427ad96da197884574c7ca8c7518a37d9ac8593b6ea77e7945720a4')
