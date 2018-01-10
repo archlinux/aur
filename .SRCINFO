@@ -1,7 +1,7 @@
 pkgbase = python-ssdeep
 	pkgdesc = Python wrapper for ssdeep fuzzy hashing library
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/ssdeep
 	arch = i686
 	arch = x86_64

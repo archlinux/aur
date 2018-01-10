@@ -2,7 +2,7 @@
 
 pkgname=python-ssdeep
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python wrapper for ssdeep fuzzy hashing library'
 arch=('i686' 'x86_64')
 license=('LGPLv3+')
@@ -20,8 +20,7 @@ build() {
 
 check() {
    cd "${srcdir}"/python-ssdeep-${pkgver}
-   # This will be fixed in version 3.2.1 (See: #20)
-   # python3 setup.py test
+   python3 setup.py test
 }
  
 package() {
