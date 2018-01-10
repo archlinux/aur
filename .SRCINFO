@@ -1,13 +1,13 @@
 pkgbase = sbt-latest
 	pkgdesc = A build tool for Scala, Java, and more
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.scala-sbt.org/
 	arch = any
 	license = BSD
 	depends = java-runtime-headless=8
 	depends = rsync
-	depends = bash
+	depends = sh
 	conflicts = sbt
 	source = https://github.com/sbt/sbt/releases/download/v1.1.0/sbt-1.1.0.tgz
 	source = https://raw.githubusercontent.com/sbt/sbt/v1.1.0/LICENSE
