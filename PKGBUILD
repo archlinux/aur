@@ -1,6 +1,6 @@
 pkgname=fool
 appname='fool'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -13,10 +13,15 @@ sha256sums=('SKIP')
 
 
 package() {
-    local INSTALL_DIR=/usr/local
-    local MAN_DIR=/usr/local/man
+  local INSTALL_DIR=/usr/local
+  local MAN_DIR=/usr/local/man
 
-    # Rust, Cargo and Documentation.
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    cargo build
+  # Rust, Cargo and Documentation.
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cargo build --release
+}
+
+
+install() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
 }
