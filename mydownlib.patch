@@ -1,0 +1,23 @@
+--- a/libs/mydownlib/mydownlib.c	2018-01-03 19:37:56.000000000 +0100
++++ b/libs/mydownlib/mydownlib.c	2018-01-10 10:09:32.118571101 +0100
+@@ -807,7 +807,9 @@
+                 TLSv1_2_method(),
+                 TLSv1_1_method(),
+                 TLSv1_method(),
++                #ifndef OPENSSL_NO_SSL3
+                 SSLv3_method(),
++                #endif
+                 SSLv23_method(),
+                 #ifndef OPENSSL_NO_SSL2
+                 SSLv2_method(),
+--- a/Makefile	2018-01-10 10:10:16.358846782 +0100
++++ b/Makefile	2018-01-10 10:10:41.249001759 +0100
+@@ -3,7 +3,7 @@
+ CFLAGS	+= -m32 -s -O0 -fstack-protector-all -fno-unit-at-a-time -fno-omit-frame-pointer -w
+ # Add -DQUICKBMS64 to CDEFS for compiling quickbms_4gb_files
+ # For static builds on Linux (no MacOSX [-lcrt0 error]) add: -static -ldl
+-CDEFS	+= -DDISABLE_UCL -DDISABLE_MCRYPT -DDISABLE_TOMCRYPT
++CDEFS	+= -DDISABLE_UCL -DDISABLE_MCRYPT -DDISABLE_TOMCRYPT -DOPENSSL_NO_SSL2 -DOPENSSL_NO_SSL3
+ CLIBS	+= -static-libgcc -static-libstdc++ -lstdc++ -ldl -lz -lbz2 -lm -lpthread
+ PREFIX	= /usr/local
+ BINDIR	= $(PREFIX)/bin
