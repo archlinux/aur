@@ -3,7 +3,7 @@
 pkgbase=('python-rosdistro')
 pkgname=('python-rosdistro')
 _module='rosdistro'
-pkgver='0.6.3'
+pkgver='0.6.4'
 pkgrel=1
 pkgdesc="A tool to work with rosdistro files"
 url="http://wiki.ros.org/rosdistro"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/r/rosdistro/rosdistro-${pkgver}.tar.gz")
-md5sums=('b101ebb1c2fd28a627e8fd78926cab20')
+md5sums=('56affbbbf3fb979aa674c853b8803ed7')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
