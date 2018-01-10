@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-git
-pkgver=3.2pre+562+g9f742f8aa
+pkgver=3.3pre+287+gee9736fbb
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support  (git version)'
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
 depends=('hicolor-icon-theme'
          'libgl'
-         'libjpeg'
          'libgme'
+         'libjpeg'
          'sdl2')
 makedepends=('cmake'
              'desktop-file-utils'
@@ -43,6 +43,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'xorg-xmessage: crash dialog (other)')
 provides=("${_name}")
 conflicts=("${_name}")
+replaces=("${_name}1-git")
 source=("${_name}::git://github.com/coelckers/${_name}.git"
         "${_name}.desktop"
         '0001-Fix-path-to-FluidR3-soundfont.patch')
@@ -85,7 +86,7 @@ package() {
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
     install -D -m644 src/posix/zdoom.xpm \
-            "$pkgdir"/usr/share/icons/hicolor/48x48/apps/${_name}.xpm
+            "$pkgdir"/usr/share/icons/hicolor/256x256/apps/${_name}.xpm
 
     install -d "$pkgdir"/usr/share/licenses
     ln -s /usr/share/doc/$_name/licenses "$pkgdir"/usr/share/licenses/$pkgname
