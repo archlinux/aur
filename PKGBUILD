@@ -4,7 +4,7 @@
 
 pkgname=xbase
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ library"
 arch=('i686' 'x86_64')
 url='https://github.com/graywolf/xbase'
@@ -15,7 +15,7 @@ options=(staticlibs)
 
 source=(
 	"https://github.com/graywolf/xbase#tag=${pkgver}"
-	"https://github.com/3rd_party/googletest"
+	"https://github.com/google/googletest"
 )
 sha512sums=(
 	'SKIP'
