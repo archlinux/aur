@@ -11,7 +11,8 @@ arch=('i686' 'x86_64')
 url="http://mono-project.com/GtkSharp"
 license=('LGPL')
 depends=('mono' 'gtk3')
-provides=('gtk-sharp-3' 'gtk-sharp-3-git')
+provides=(gtk-sharp-3 gtk-sharp-3-git)
+conflicts=(gtk-sharp-3 gtk-sharp-3-git)
 source=(git+https://github.com/mono/gtk-sharp.git)
 sha256sums=('SKIP')
 
