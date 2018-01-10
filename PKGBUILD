@@ -1,14 +1,14 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-online-accounts-git
-pkgver=r446.5a0270a
+pkgver=r488.369e470
 pkgrel=1
 pkgdesc='Switchboard Online Accounts Plug'
 arch=('x86_64')
 url='https://github.com/elementary/switchboard-plug-onlineaccounts'
 license=('GPL2')
 groups=('pantheon-unstable')
-depends=('glib2' 'glibc' 'gsignond-extension-pantheon-bzr'
+depends=('glib2' 'glibc' 'gsignond-extension-pantheon-git'
          'gsignond-plugin-oauth-git' 'gsignond-plugin-sasl-git' 'gtk3'
          'json-glib' 'libaccounts-glib' 'libgee' 'libgsignon-glib' 'rest'
          'webkit2gtk'
