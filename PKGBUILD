@@ -3,27 +3,16 @@
 
 pkgname=lix
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
+changelog=.CHANGELOG
 conflicts=("${pkgname}-git")
-source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
+source=( #"${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
+		"${pkgname}::git+https://github.com/SimonN/LixD.git#commit=84d0e22a894ffb20c91acad8d5d33349e35e54c0"
 		"${pkgname}-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
-		"build_fix.patch")
+		"${pkgname}.desktop")
 sha512sums=('SKIP'
             '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425'
-            '44fb9d70bd517ad6e3246840de1654c8c8ad6545536528ac1bcc34c64c11b30f0984c18e6a3d5a9f96b963f644ead586b85a5c0e8ebae80cf3e2a8408471e0a0')
-
-prepare()
-{
-	cd "${srcdir}"
-	
-	# generate .desktop-file
-	gendesk -n -f --categories "Game"
-	
-	cd "${srcdir}/${pkgname}"
-	
-	# this is needed until the next release
-	patch -p1 -i "${srcdir}/build_fix.patch"
-}
+            '52d49562cd9be4eec76b464153af1cce2211fdbd6113a6a60df042f7e8f7e6a8f1942df883dfaaa6c1bbfea004c4154d884dfa767e25fa3fadf9c58be1103fe6')
 
 _pkgname=${pkgname}
 # template start; name=lix; version=0.4;
@@ -31,9 +20,8 @@ pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
 license=('custom:CC0')
-changelog=.CHANGELOG
 depends=('allegro' 'enet')
-makedepends=('git' 'gendesk' 'dmd' 'dub')
+makedepends=('git' 'dmd' 'dub')
 
 build()
 {
