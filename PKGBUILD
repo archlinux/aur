@@ -1,3 +1,7 @@
+# Maintainer: ahrs <Forward dot to at hotmail dot co dot uk>
+
+# Based on the work of the official adapta-gtk-theme package
+# brought to you by these fine folks:
 # $Id$
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Phillip Schichtel <phillip@schich.tel>
