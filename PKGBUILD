@@ -17,7 +17,7 @@ source=(
     https://github.com/slact/nchan/archive/v${pkgver}.tar.gz
 )
 sha256sums=('305f379da1d5fb5aefa79e45c829852ca6983c7cd2a79328f8e084a324cf0416'
-            '8e869ea92fd885f5d9755f926e809ee81ca21967044b98e9932a8eb661d91709')
+            '70b38d9e54826b2a69a9a5f3de5fb0e25fb03177ec3ac0bc69b9fd2c087143b8')
 
 build() {
     cd "$srcdir"/nginx-$_nginxver
