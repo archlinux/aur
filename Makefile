@@ -7,7 +7,7 @@ DESTDIR = /usr
 
 $(BINS): $(OBJECTS)
 	$(CC) $(CFLAGS) $(LIBS) -o $(BINS) $(OBJECTS)
-	gzip $(BINS).1
+	-gzip $(BINS).1
 install: $(BINS)
 	install -Dm755 $(BINS) $(DESTDIR)/bin/$(BINS)
 	install -Dm644 LICENSE $(DESTDIR)/share/licenses/$(BINS)/LICENSE

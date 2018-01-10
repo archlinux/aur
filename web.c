@@ -31,7 +31,7 @@ size_t writefunc(void* ptr, size_t size, size_t nmemb, STRING hString) {
     return size * nmemb;
 }
 
-void string_write_data(STRING hString, char* id) {
+void string_write_data_cmc(STRING hString, char* id) {
     String* pString = (String*) hString;
     CURL* curl = curl_easy_init();
     CURLcode res;

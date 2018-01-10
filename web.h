@@ -34,7 +34,7 @@ size_t writefunc(void* ptr, size_t size, size_t nmemb, STRING hString);
  * @param hString STRING object to store data in
  * @param id the name of the currency to store
  */
-void string_write_data(STRING hString, char* id);
+void string_write_data_cmc(STRING hString, char* id);
 
 /**
  *  Frees all memory associated with a STRING

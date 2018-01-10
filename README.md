@@ -35,7 +35,7 @@ $ getcrypt check [currency/all]
 ```
 
 ##### Future ideas/things to add
-* Man page
+* Get current balance of wallets from APIs
 * Debian/RPM package
 * Print info of daily/weekly gains
 * Stock market integration

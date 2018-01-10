@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
         if (argc == 3 && strcmp(argv[1], "check") == 0 && strcmp(argv[2], "all") == 0)
             portfolio_print_all(api_data, crypto_data, fp);
         else {
-            string_write_data(api_data, argv[argc - 1]);
+            string_write_data_cmc(api_data, argv[argc - 1]);
             crypto_data = json_init(api_data, 0);
             if (argc == 3 && strcmp(argv[1], "check") == 0) {
                 portfolio_print_currency(argv[2], json_get_data(crypto_data), fp);
