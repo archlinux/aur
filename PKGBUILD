@@ -14,7 +14,7 @@ optdepends=(
   "opencl-mesa: For AMD/ATI Radeon mesa"
 )
 source=(
-    "$url/archive/v$pkgver.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz"
     "scallion.sh"
     "set_openssl_1.0_paths.patch"
 )
