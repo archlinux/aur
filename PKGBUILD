@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=63.0.3239.84
+pkgver=63.0.3239.132
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -27,11 +27,12 @@ optdepends=('pepper-flash: support for Flash content'
 install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/inox.desktop
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png
         # Patches from Arch Linux
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-exclude_unwind_tables.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-omnibox-unescape-fragment.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-skia-harmony.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-widevine.patch
         # Patches from Gentoo
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-clang-r1.patch
@@ -63,10 +64,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/9000-disable-metrics.patch)
 
 
-sha256sums=('6de2754dfc333675ae6a67ae13c95666009b35c84f847b058edbf312e42fa3af'
+sha256sums=('84c46c2c42faaa102abe0647ee1213615a2522627124924c2741ddc2161b3d8d'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
-            '782a512b8bcf4aa6e58036cc3454d037d0eea69f27d5b673902d494c3fb5b20d'
+            'ab330f30c14ea3b5e77976d674304b91cfb02251fe8771cecb0bb4092c7f6b74'
             '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
             '4a533acefbbc1567b0d74a1c0903e9179b8c59c1beabe748850795815366e509'
             '7b88830c5e0e9819f514ad68aae885d427541a907e25607e47dee1b0f38975fd'
@@ -76,12 +76,14 @@ sha256sums=('6de2754dfc333675ae6a67ae13c95666009b35c84f847b058edbf312e42fa3af'
             '896993987d4ef9f0ac7db454f288117316c2c80ed0b6764019afd760db222dad'
             '3df9b3bbdc07fde63d9e400954dcc6ab6e0e5454f0ef6447570eef0549337354'
             'e53dc6f259acd39df13874f8a0f440528fae764b859dd71447991a5b1fac7c9c'
+            '814eb2cecb10cb697e24036b08aac41e88d0e38971741f9e946200764e2401ae'
+            'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
             'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
             '73275413f078b1217a11e5a099777c1ace11a667144d5106975d1ff650540321'
             'a15b2ca40b5ca17d4763e41e226fb5faca22277027e8321675c87038dd9879d5'
-            '30d77bcb9088118d72b3b2b85156a2747772c6d04de3c51944ec482ad12983b9'
+            '22726f4f16c7ac9d0c1afc47d6aa40bc02f6de42cfa86a9153781e1d50b58181'
             '605cca8be9828a29cc96d473847eef9452d572fe6a56dacd96426a202310ba58'
             'fb91a7e30e2615e4eb0626b0fdcf97b92d4a727a52023730f408b02fee436c8d'
             '94d20bc91ce6f4c9405293b4480670af9e7c3a79f2b87268e663dc2f063cb6e4'
@@ -105,16 +107,16 @@ sha256sums=('6de2754dfc333675ae6a67ae13c95666009b35c84f847b058edbf312e42fa3af'
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
-declare -rgA _system_libs=(
-  #[ffmpeg]=ffmpeg              # https://crbug.com/731766
+readonly -A _system_libs=(
+  #[ffmpeg]=ffmpeg         # https://crbug.com/731766
   [flac]=flac
-  #[freetype]=freetype2         # https://crbug.com/pdfium/733
-  #[harfbuzz-ng]=harfbuzz-icu   # https://crbug.com/768938
-  #[icu]=icu                    # https://crbug.com/772655
+  #[freetype]=freetype2    # Using 'use_system_freetype=true' until M65
+  #[harfbuzz-ng]=harfbuzz  # Using 'use_system_harfbuzz=true' until M65
+  #[icu]=icu               # https://crbug.com/772655 + need M64 for ICU 60
   [libdrm]=
   [libjpeg]=libjpeg
-  #[libpng]=libpng              # https://crbug.com/752403#c10
-  #[libvpx]=libvpx              # https://bugs.gentoo.org/611394
+  #[libpng]=libpng         # https://crbug.com/752403#c10
+  #[libvpx]=libvpx         # https://bugs.gentoo.org/611394
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -124,7 +126,13 @@ declare -rgA _system_libs=(
   [yasm]=
   [zlib]=minizip
 )
-depends+=(${_system_libs[@]})
+readonly _unwanted_bundled_libs=(
+  ${!_system_libs[@]}
+  ${_system_libs[libjpeg]+libjpeg_turbo}
+  freetype
+  harfbuzz-ng
+)
+depends+=(${_system_libs[@]} freetype2 harfbuzz)
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -134,7 +142,7 @@ prepare() {
   local _chrome_build_hash=$(base64 -d ../chromium-$pkgver.txt |
     grep -Po '^parent \K[0-9a-f]{40}$')
   if [[ -z $_chrome_build_hash ]]; then
-    error "Unable to fetch Chrome build hash."
+    error "Unable to find Chrome build hash."
     return 1
   fi
   echo "LASTCHANGE=$_chrome_build_hash-" >build/util/LASTCHANGE
@@ -147,6 +155,12 @@ prepare() {
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/712575
   patch -Np1 -i ../chromium-exclude_unwind_tables.patch
+
+  # https://crbug.com/789163
+  patch -Np1 -i ../chromium-omnibox-unescape-fragment.patch
+
+  # https://crbug.com/skia/6663#c10
+  patch -Np4 -i ../chromium-skia-harmony.patch
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-clang-r1.patch
@@ -204,12 +218,14 @@ prepare() {
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
   local _lib
-  for _lib in ${!_system_libs[@]} ${_system_libs[libjpeg]+libjpeg_turbo}; do
+  for _lib in ${_unwanted_bundled_libs[@]}; do
     find -type f -path "*third_party/$_lib/*" \
       \! -path "*third_party/$_lib/chromium/*" \
       \! -path "*third_party/$_lib/google/*" \
-      \! -path "*base/third_party/icu/*" \
-      \! -regex '.*\.\(gn\|gni\|isolate\|py\)' \
+      \! -path './base/third_party/icu/*' \
+      \! -path './third_party/freetype/src/src/psnames/pstables.h' \
+      \! -path './third_party/yasm/run_yasm.py' \
+      \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
 
@@ -256,6 +272,8 @@ build() {
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
     'link_pulseaudio=true'
+    'use_system_freetype=true'
+    'use_system_harfbuzz=true'
     'use_gconf=false'
     'use_gnome_keyring=false'
     'use_gold=false'
@@ -273,7 +291,6 @@ build() {
     'enable_google_now=false'
     'safe_browsing_mode=0'
     'enable_hotwording=false'
-    'use_system_harfbuzz=true'
   )
 
   if check_option strip y; then
@@ -314,7 +331,7 @@ package() {
     "$pkgdir/usr/share/applications/$pkgname.desktop" \
     "$pkgdir/usr/share/man/man1/$pkgname.1"
 
-  cp -a \
+  cp \
     out/Release/{chrome_{100,200}_percent,resources}.pak \
     out/Release/{*.bin,libwidevinecdmadapter.so} \
     "$pkgdir/usr/lib/$pkgname/"
