@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Firefox-sync
+GenericName=Firefox-sync
+Comment=Sync Firefox profile to shared memory.
+Exec=firefox-sync
+Icon=firefox
+Terminal=false
+Type=Application
+Categories=Network;
