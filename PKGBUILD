@@ -9,7 +9,7 @@ url='https://github.com/elementary/switchboard-plug-display'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee'
-         'libswitchboard-2.0.so')
+         'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
 provides=('switchboard-plug-display')
 conflicts=('switchboard-plug-display')
