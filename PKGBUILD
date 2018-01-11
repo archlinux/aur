@@ -2,7 +2,7 @@
 
 pkgname=battery_warning
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Warn if the battery capacity drops too low'
 arch=('x86_64')
 url='https://github.com/Hendrikto/battery_warning'
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	make
+	make prefix=/usr
 }
 
 package() {

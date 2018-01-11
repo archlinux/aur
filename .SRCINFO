@@ -1,7 +1,7 @@
 pkgbase = battery_warning
 	pkgdesc = Warn if the battery capacity drops too low
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hendrikto/battery_warning
 	arch = x86_64
 	license = MIT
