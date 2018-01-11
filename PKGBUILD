@@ -15,7 +15,7 @@ install=ttf.install
 source=(http://thelinuxbox.org/downloads/fonts/${pkgname#*-}.tar.gz
         LICENSE)
 md5sums=('3dd9c79d77e58cdb532cc6c21e7914d5'
-         'd30e0838c9a9f2a6148bda33b28ad6a6')
+         'b5809d58d9c9c265b8c99476a5b98e37')
 
 package() {
   cd "$srcdir/${pkgname#*-}"
