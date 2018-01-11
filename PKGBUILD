@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=libretro-reicast-git
-pkgver=2331.ccc206c
+pkgver=2352.e44e5e6
 pkgrel=2
 pkgdesc="libretro implementation of Reicast Sega Dreamcast Emulator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/reicast_libretro.info" "${pkgdir}/usr/lib/libretro/reicast_libretro.info"
+  install -Dm644 "${srcdir}/reicast_libretro.info" "${pkgdir}/usr/share/libretro/reicast_libretro.info"
   install -Dm644 "${srcdir}/reicast-emulator/reicast_libretro.so" "${pkgdir}/usr/lib/libretro/reicast_libretro.so"
 }
