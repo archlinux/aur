@@ -1,8 +1,9 @@
-# Maintainer: Matt Pallissard <matthew.paul@pallissard.net>
+# Maintainer: Philipp Tusch <zokker13@posteo.de>
 # Contributor: Tom Wizetek <tom@wizetek.com>
 # Contributor: koentje
 # Contributor: Ian Taylor <ian at lorf dot orgs>
 # Contributor: Philipp Tusch <zokker13@posteo.de>
+# Contributor: Matt Pallissard <matthew.paul@pallissard.net>
 
 pkgname=apachedirectorystudio
 _pkgname=ApacheDirectoryStudio
@@ -13,7 +14,7 @@ pkgdesc="Eclipse based LDAP browser and directory client"
 arch=('i686' 'x86_64')
 url="http://directory.apache.org/studio/"
 license=('Apache')
-depends=('java-runtime>=8' 'gtk2')
+depends=('java-runtime=8' 'gtk2')
 source=('apachedirectorystudio.desktop' 'apachedirectorystudio.png')
 source_i686=("http://www.us.apache.org/dist/directory/studio/$_pkgver/$_pkgname-$_pkgver-linux.gtk.x86.tar.gz")
 source_x86_64=("http://www.us.apache.org/dist/directory/studio/$_pkgver/$_pkgname-$_pkgver-linux.gtk.x86_64.tar.gz")
