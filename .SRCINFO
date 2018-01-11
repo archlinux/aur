@@ -1,0 +1,19 @@
+pkgbase = vsmodelcreator-git
+	pkgdesc = Vintage Story Model Creator
+	pkgver = r223.3327409
+	pkgrel = 1
+	url = https://github.com/anegostudios/vsmodelcreator
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
+	source = vsmodelcreator::git://github.com/anegostudios/vsmodelcreator.git
+	source = vsmodelcreator.desktop
+	source = vsmodelcreator.sh
+	md5sums = SKIP
+	md5sums = 93ebcec3e1e896caf3685171c1d74df4
+	md5sums = c73547c2875d92655e67ed75fd98dd85
+
+pkgname = vsmodelcreator-git
+

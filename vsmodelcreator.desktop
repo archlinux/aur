@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Vintage Story Model Creator
+Comment=Create and animate blocks, items and entities for Vintage Story
+Exec=/usr/bin/vsmodelcreator
+Icon=/usr/share/pixmaps/vsmodelcreator.ico
+Categories=Development;
+Terminal=false
