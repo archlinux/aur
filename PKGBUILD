@@ -3,7 +3,7 @@
 # Contributors: Arkham, Christoph Zeiler, JD Steffen
 
 pkgname=eduke32-svn
-pkgver=r6307
+pkgver=r6576
 pkgrel=1
 pkgdesc="Advanced Duke Nukem 3D source port - svn version"
 arch=('i686' 'x86_64')
