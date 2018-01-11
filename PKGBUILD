@@ -3,9 +3,9 @@
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 
 pkgname=gnome-shell-pomodoro-git
-pkgver=r984.fe52244
-pkgrel=1
-_gitbranch='master'
+pkgver=r945.f002440
+pkgrel=3
+_gitbranch='gnome-3.26'
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/codito/gnome-shell-pomodoro/'
