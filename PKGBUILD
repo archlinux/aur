@@ -1,8 +1,8 @@
-# Maintainer: KingofToasters <s.gregoratto+arch@gmail.com>
+# Maintainer: KingofToasters <s.gregoratto@gmail.com>
 
 pkgname=otpclient-git
 dirname="OTPClient"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Simple GTK+ v3 TOTP/HOTP client that uses libcotp"
 arch=('x86_64')
