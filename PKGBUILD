@@ -3,21 +3,21 @@
 
 pkgname=tenshi
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="real-time log monitor from the Gentoo Linux project"
-url="http://dev.inversepath.com/trac/tenshi"
+url="https://inversepath.com/tenshi.html"
 arch=(any)
 license=("custom")
 depends=('perl' 'perl-io-bufferedselect')
-install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/inversepath/tenshi/archive/$pkgver.tar.gz"
-        'tenshi.install'
         'tenshi.service'
+        'tenshi.sysusers'
+        'tenshi.tmpfiles'
         'conf.diff')
-backup=(etc/tenshi/tenshi.conf)
 md5sums=('b9646895fc1d16dfe7012677a34b0633'
-         '29bd3646a619768666b704b2ed2e6e72'
          '8c8a582c6a8c61d4ff596ed3af8ab593'
+         '19314a464da97b3046a2c7b7c81cd2e6'
+         '68aafee3a3c8ea472296408854adac76'
          '451250b1955b14691ca1c7124d1991f2')
 
 build() {
@@ -32,7 +32,12 @@ package() {
 
 	make DESTDIR="$pkgdir" docdir=/usr/share/doc/tenshi bindir=/usr/bin install
 	install -Dm644 "$srcdir/tenshi.service" "$pkgdir/usr/lib/systemd/system/tenshi.service"
+	install -Dm644 "$srcdir/tenshi.sysusers" "$pkgdir/usr/lib/sysusers.d/tenshi.conf"
+	install -Dm644 "$srcdir/tenshi.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/tenshi.conf"
 	install -dm755 "$pkgdir/usr/share/licenses/tenshi"
 	mv "$pkgdir/usr/share/doc/tenshi/LICENSE" "$pkgdir/usr/share/licenses/tenshi/LICENSE"
-	chmod 750 "$pkgdir/etc/tenshi" "$pkgdir/var/lib/tenshi"
+
+	# Set more secure permissions for configuration via tmpfiles.d
+	install -Dm644 "$pkgdir"/{,usr/share/factory/}etc/tenshi/tenshi.conf
+	rm -rf "$pkgdir"/{etc,var}
 }

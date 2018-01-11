@@ -1,0 +1,3 @@
+d /etc/tenshi              0750 tenshi tenshi - -
+d /var/lib/tenshi          0750 tenshi tenshi - -
+C /etc/tenshi/tenshi.conf  0750 tenshi tenshi - -
