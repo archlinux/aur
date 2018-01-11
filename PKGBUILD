@@ -3,7 +3,7 @@
 
 _pkgname=symfony-installer
 pkgname=symfony-installer-bin
-pkgver=1.5.9
+pkgver=1.5.10
 pkgrel=1
 pkgdesc="The Symfony Installer"
 url="https://github.com/symfony/symfony-installer"
@@ -12,8 +12,8 @@ arch=('any')
 depends=('php>=5.4.0')
 provides=('symfony-installer')
 conflicts=('symfony-installer')
-source=("${_pkgname}_${pkgver}"::https://symfony.com/installer)
-sha512sums=('f9c380c58157c6a1c7bf8f4e67947697f842f2a123a87098d6b2a796fcf2407e68a67ddf0a3acb30c8bcb434906445b47d2d962f396c235d8cb44e986d99323e')
+source=("${_pkgname}_${pkgver}"::https://get.symfony.com/symfony.phar)
+sha512sums=('5d396d8c7bc3fbf158a45c1455861d3259b9f5cc3159e61fb3d6bf19e4208e89fb8555395906e151a2851cbf9b6d1ff9b87c834e2ed5fded0e4a965f7ab153aa')
 install="$_pkgname.install"
 
 
