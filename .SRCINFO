@@ -1,7 +1,7 @@
 pkgbase = chromium-vaapi
 	pkgdesc = Chromium compiled with VA-API support for Intel Graphics
 	pkgver = 63.0.3239.132
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = i686
@@ -54,6 +54,7 @@ pkgbase = chromium-vaapi
 	source = chromium-launcher-5.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v5.tar.gz
 	source = chromium-63.0.3239.132.txt::https://chromium.googlesource.com/chromium/src.git/+/63.0.3239.132?format=TEXT
 	source = chromium-omnibox-unescape-fragment.patch
+	source = chromium-disable-SharedArrayBuffer-by-default.patch
 	source = chromium-skia-harmony.patch
 	source = chromium-clang-r1.patch
 	source = chromium-webrtc-r0.patch
@@ -65,6 +66,7 @@ pkgbase = chromium-vaapi
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
 	sha256sums = ab330f30c14ea3b5e77976d674304b91cfb02251fe8771cecb0bb4092c7f6b74
 	sha256sums = 814eb2cecb10cb697e24036b08aac41e88d0e38971741f9e946200764e2401ae
+	sha256sums = 1e040caa43ba34c627fe3750fb44c781a74298d010ef40657ab8deb4780db70b
 	sha256sums = feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3
 	sha256sums = ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6
 	sha256sums = bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562
