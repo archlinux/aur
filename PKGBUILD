@@ -1,15 +1,15 @@
 # Maintainer: Paul Knopf <pauldotknopf@gmail.com>
 pkgname=darch-alpha-git
 pkgrel=1
-pkgver=0.12.0.eb5d366706bea59c687bf892fc88293da823dd90
+pkgver=1.0.0.eb5d366706bea59c687bf892fc88293da823dd90
 epoch=
 pkgdesc="A utility to that uses Docker to build stateless Arch images that can be booted bare-metal."
 arch=('x86_64')
 url="https://github.com/pauldotknopf/darch"
 license=('MIT')
 groups=()
-depends=("docker")
-makedepends=('docker jq')
+depends=('docker')
+makedepends=('jq go')
 checkdepends=()
 optdepends=()
 provides=()
@@ -25,10 +25,10 @@ noextract=()
 validpgpkeys=()
 
 pkgver() {
-    local gitversion_output=`$srcdir/darch/gitversion`
-    #echo "$gitversion_output"
-    #echo "0.12.0-sdf"
-    echo $(echo "$gitversion_output" | jq '.MajorMinorPatch' --raw-output).$(echo "$gitversion_output" | jq '.Sha' --raw-output)
+    rm "$srcdir/darch/gitversion"
+    cp "$startdir/gitversion" "$srcdir/darch/gitversion"
+    local git_sha=`git --git-dir $srcdir/darch/.git rev-parse HEAD`
+    echo "1.0.0.$git_sha"
 }
 
 build() {
