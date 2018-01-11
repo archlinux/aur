@@ -3,7 +3,7 @@
 
 _pkgbase=security-checker
 pkgname="php-${_pkgbase}"
-pkgver=4.1.6
+pkgver=4.1.7
 pkgrel=1
 pkgdesc="PHP frontend for security.sensiolabs.org"
 url="https://github.com/sensiolabs/security-checker"
@@ -15,7 +15,7 @@ source=(
   "https://github.com/sensiolabs/${_pkgbase}/archive/v${pkgver}.zip"
 )
 sha256sums=(
-  "2d30adca71ac11e77f01804584816ddfb8a1e7a9ef50f81213230971a59e2cff"
+  "4936a06f6478a128e519251580cbccbd995e713c4c6fc4be8773e0bd106c0700"
 )
 
 build() {
