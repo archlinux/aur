@@ -1,7 +1,7 @@
 pkgbase = helm
 	pkgdesc = a cross-platform, polyphonic synthesizer, available standalone and as an LV2 plugin
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tytel.org/helm/
 	arch = x86_64
 	groups = lv2-plugins
@@ -10,6 +10,7 @@ pkgbase = helm
 	depends = freetype2
 	depends = mesa
 	depends = lv2
+	conflicts = helm-git
 	source = https://github.com/mtytel/helm/archive/v0.9.0.tar.gz
 	sha256sums = 4004c11fd1d773cc2a12adb5336873bc86c5ecbd370b8da2820fed6ef5ec58ad
 
