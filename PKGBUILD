@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=65.0.3315.3
-pkgrel=4
+pkgrel=5
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -457,7 +457,9 @@ python2 build/util/lastchange.py -m GPU_LISTS_VERSION \
 
 
 
-  ninja -C out/Release  pdf chrome chrome_sandbox chromedriver
+#its optimized for 16 ram, if you get segfaults or crashes read linuxfromscratch.org/blfs/view/svn/xsoft/chromium.html
+
+  ninja -j8 -C out/Release  pdf chrome chrome_sandbox chromedriver
 }
 
 package() {
