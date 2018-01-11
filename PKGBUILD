@@ -9,13 +9,13 @@
 
 pkgname=acestream-engine
 pkgver=3.1.16
-pkgrel=2
+pkgrel=3
 _ubuntuver=16.04
 pkgdesc="ACE Stream engine"
 arch=('x86_64')
 url="http://acestream.org/"
 license=('unknown')
-depends=('python2-setuptools' 'python2-xlib' 'python2-apsw' 'python2-lxml')
+depends=('net-tools' 'python2-setuptools' 'python2-xlib' 'python2-apsw' 'python2-lxml')
 optdepends=('libappindicator-gtk2: GTK+ gui support')
 install='acestream-engine.install'
 source=(
