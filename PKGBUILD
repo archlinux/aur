@@ -3,9 +3,9 @@
 
 pkgname=powershell
 binaryname=pwsh
-_pkgver=6.0.0-rc.2
+_pkgver=6.0.0
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
@@ -57,4 +57,10 @@ package() {
 
   mkdir -p $pkgdir/usr/bin
   ln -s /usr/lib/$pkgname/linux-x64/$binaryname $pkgdir/usr/bin/$binaryname
+
+  chmod 644 \
+    $pkgdir/usr/lib/powershell/linux-x64/libhostfxr.so \
+    $pkgdir/usr/lib/powershell/linux-x64/libhostpolicy.so \
+    $pkgdir/usr/lib/powershell/linux-x64/en-US/default.help.txt \
+    $pkgdir/usr/lib/powershell/linux-x64/Modules/PSDesiredStateConfiguration/PSDesiredStateConfiguration.psm1
 }
