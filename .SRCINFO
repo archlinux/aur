@@ -1,0 +1,14 @@
+pkgbase = systemsim-p9
+	pkgdesc = IBM Full-System Simulator for the Power9 Processor
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.ibm.com/
+	arch = x86_64
+	groups = Power9 Simulator
+	license = custom:IBM Licensed Materials
+	depends = tcl
+	source = file://systemsim-p9-1.1-0.f22.x86_64.rpm
+	md5sums = cfb8645f4c4794f7d8fa404d559748b7
+
+pkgname = systemsim-p9
+

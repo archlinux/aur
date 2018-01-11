@@ -1,0 +1,4 @@
+pkg/
+src/
+systemsim-p9-*.pkg.tar*
+systemsim-p9-*.rpm
