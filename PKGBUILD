@@ -8,7 +8,7 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=v4.4.0.beta1.r74.g42844215ca
+pkgver=v4.5.0.r629.ge1ad7a1784
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ optdepends=('bzr: bazaar support'
 provides=('qtcreator' 'qbs')
 conflicts=('qtcreator' 'qbs')
 source=('git+https://code.qt.io/qt-creator/qt-creator.git'
-        'git+https://code.qt.io/qt-labs/qbs.git')
+        'git+https://code.qt.io/qbs/qbs.git')
 md5sums=('SKIP'
          'SKIP')
 

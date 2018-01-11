@@ -1,6 +1,6 @@
 pkgbase = qtcreator-git
 	pkgdesc = Lightweight, cross-platform integrated development environment
-	pkgver = v4.4.0.beta1.r74.g42844215ca
+	pkgver = v4.5.0.r629.ge1ad7a1784
 	pkgrel = 1
 	url = https://www.qt.io/ide/
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = qtcreator-git
 	makedepends = llvm
 	makedepends = mesa
 	depends = clang
+	depends = qt5-declarative
+	depends = qt5-script
 	depends = qt5-svg
 	depends = qt5-tools
 	optdepends = bzr: bazaar support
@@ -30,7 +32,7 @@ pkgbase = qtcreator-git
 	conflicts = qbs
 	options = docs
 	source = git+https://code.qt.io/qt-creator/qt-creator.git
-	source = git+https://code.qt.io/qt-labs/qbs.git
+	source = git+https://code.qt.io/qbs/qbs.git
 	md5sums = SKIP
 	md5sums = SKIP
 
