@@ -4,9 +4,9 @@
 
 pkgname=solaar
 pkgver=0.9.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
-url="http://pwr.github.com/Solaar/"
+url="https://pwr.github.com/Solaar/"
 license=('GPL2')
 groups=()
 arch=('any')
@@ -19,7 +19,7 @@ provides=('solaar')
 conflicts=('solaar')
 options=(!emptydirs)
 install=solaar.install
-source=("https://github.com/pwr/Solaar/archive/${pkgver}.tar.gz" 
+source=("https://github.com/pwr/Solaar/archive/${pkgver}.tar.gz"
         'solaar.install'
         'solaar.patch')
 sha512sums=('13f469df753cc8fab55f5259ccc3e62b6e44471d277d240cd56ce0580144d2b1f95d731268176648663dd15e5607bfb512f477362f4f100aa0a653b001dfe04b'
@@ -37,5 +37,5 @@ package() {
 post_install() {
   xdg-icon-resource forceupdate --theme hicolor
   update-desktop-database -q
-} 
+}
 # vim:set ts=2 sw=2 et:
