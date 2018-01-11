@@ -1,0 +1,17 @@
+pkgbase = mosquitto-php
+	pkgdesc = MQTT (Mosquitto) PHP extension
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/mgdm/Mosquitto-PHP
+	arch = any
+	license = BSD
+	makedepends = php
+	makedepends = mosquitto
+	depends = php
+	depends = mosquitto
+	backup = etc/php/conf.d/mosquitto.ini
+	source = git+https://github.com/mgdm/mosquitto-php.git
+	sha256sums = SKIP
+
+pkgname = mosquitto-php
+
