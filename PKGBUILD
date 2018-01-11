@@ -14,7 +14,8 @@ source=("git://bisqwit.iki.fi/adlmidi.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	curl -s $url | grep -Po -m1 'adlmidi-\K[^/"]+' | head -1 | sed 's/.tar.bz2//g'
+	cd "${pkgname/-git}"
+	printf "%s" "$(git describe origin/release)"	
 }
 
 build() {
