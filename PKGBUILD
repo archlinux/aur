@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_org>
 
 pkgname=lily
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='An interpreted language with a focus on expressiveness and type safety'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('cmake>=3.0.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fascinatedbox/lily/archive/v${pkgver}.tar.gz")
-sha256sums=('0d06bb1e6befc58459c3f15094693127eefefdc14be50c08e5205622c9207aae')
+sha256sums=('4764c5c6b9c4974135bf4e6d5f4a7ee175f214a5f1572ad5ae86b4bdb79d1db1')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
