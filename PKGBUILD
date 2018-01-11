@@ -3,7 +3,7 @@
 pkgname='powershell-git'
 _pkgname='powershell'
 binaryname='pwsh'
-pkgver=6.0.0.rc.2.108.gb6f18e710
+pkgver=6.0.0.115.g2ae61c8ce
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
@@ -58,9 +58,15 @@ package() {
   cp -a bin/Linux/netcoreapp*/linux-x64 $pkgdir/usr/lib/$_pkgname
   chmod 755 $pkgdir/usr/lib/$_pkgname/linux-x64/$binaryname
 
-  mkdir -p $pkgdir/usr/share/licenses/$_pkgname
-  cp ../../LICENSE.txt $pkgdir/usr/share/licenses/$_pkgname/LICENSE
+  mkdir -p $pkgdir/usr/share/licenses/$pkgname
+  cp ../../LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
   mkdir -p $pkgdir/usr/bin
   ln -s /usr/lib/$_pkgname/linux-x64/$binaryname $pkgdir/usr/bin/$binaryname
+
+  chmod 644 \
+    $pkgdir/usr/lib/powershell/linux-x64/libhostfxr.so \
+    $pkgdir/usr/lib/powershell/linux-x64/libhostpolicy.so \
+    $pkgdir/usr/lib/powershell/linux-x64/en-US/default.help.txt \
+    $pkgdir/usr/lib/powershell/linux-x64/Modules/PSDesiredStateConfiguration/PSDesiredStateConfiguration.psm1
 }
