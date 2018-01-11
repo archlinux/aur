@@ -1,11 +1,11 @@
 # $Id$
-# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
+# Maintainer: Maciej Borzecki <maciek.borzecki@gmail.com>
 # Contributor: Zygmunt Krynicki <me at zygoon dot pl>
-# Contributor: Maciej Borzecki <maciek.borzecki@gmail.com>
+# Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 
 _pkgbase=snapd
 pkgname=snapd-git
-pkgver=2.29.4.1.r1042.gfbee22676
+pkgver=2.30.r543.g0c74b1f63
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/snapcore/snapd"
@@ -164,6 +164,10 @@ package_snapd-git() {
        BINDIR=/bin \
        SYSTEMDSYSTEMUNITDIR=/usr/lib/systemd/system \
        DESTDIR="$pkgdir"
+
+  # Install polkit policy
+  install -Dm644 "$srcdir/$_pkgbase/data/polkit/io.snapcraft.snapd.policy" \
+    "$pkgdir/usr/share/polkit-1/actions/io.snapcraft.snapd.policy"
 
   # Remove snappy core specific units
   rm -fv "$pkgdir/usr/lib/systemd/system/snapd.system-shutdown.service"
