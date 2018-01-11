@@ -39,7 +39,7 @@ build()
 
   revision=`git rev-parse HEAD`
   version=`git describe --tags`
-  echo "Building influxdb version=$version commit=$revision branch=master"
+  echo "Building $pkgname version=$version commit=$revision branch=master"
   _LDFLAGS="-X main.version=$version -X main.commit=$revision -X main.branch=master"
   go install -ldflags="$_LDFLAGS" ./...
 
