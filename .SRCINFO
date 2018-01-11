@@ -1,14 +1,14 @@
 pkgbase = antibody
 	pkgdesc = A shell plugin manager.
-	pkgver = 3.3.1
+	pkgver = 3.4.3
 	pkgrel = 3
 	url = https://getantibody.github.io/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/getantibody/antibody/archive/v3.3.1.tar.gz
-	sha256sums = e9fbca761c93cf2c590f2c2fc68db4559a6825bd3a093a875a767d56f87ce7c7
+	source = https://github.com/getantibody/antibody/archive/v3.4.3.tar.gz
+	sha256sums = 6acc44b1be8efe29260a67fa01f56a9685a2d89b52ef11ec0dc95b171abed7dc
 
 pkgname = antibody
 
