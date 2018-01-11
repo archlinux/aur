@@ -1,0 +1,20 @@
+pkgbase = ugene-bin
+	pkgdesc = A free cross-platform genome analysis suite (binary release)
+	pkgver = 1.29.0
+	pkgrel = 1
+	url = http://ugene.net
+	arch = x86_64
+	license = GPL
+	depends = qt5-script
+	depends = qt5-svg
+	depends = qt5-webkit
+	depends = glu
+	depends = procps-ng
+	depends = python
+	provides = ugene
+	conflicts = ugene
+	source = http://ugene.unipro.ru/downloads/ugene-1.29.0-x86-64.tar.gz
+	sha256sums = 524b79d7ae4037eefea19a7db7654f14cf2bb43ba1787fcd854f200e86e633b6
+
+pkgname = ugene-bin
+
