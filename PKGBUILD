@@ -3,7 +3,7 @@
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 
 pkgname=gnome-shell-pomodoro-git
-pkgver=r912.bbb932f
+pkgver=r984.fe52244
 pkgrel=1
 _gitbranch='master'
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
@@ -29,6 +29,9 @@ prepare() {
   # Fixes some build issues when 'docbook2x' package is installed
   # Big thanks to user maus25 for the fix
   #sed -i "s/docbook2man \$?/docbook2man --sgml \$?/g" man/Makefile.am
+
+  # https://github.com/codito/gnome-pomodoro/issues/332
+  sed -i "s/\[ \$datadir\/ = \/usr\/share\/\*/[ \"\$datadir\/\" = \"\/usr\/share\/\"/" configure.ac
 
   ./autogen.sh --prefix=/usr --datadir=/usr/share
 }
