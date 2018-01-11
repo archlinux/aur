@@ -9,8 +9,8 @@ license=("GPL3")
 arch=("i686" "x86_64")
 Documentation=("man:csprngd(8)" "https://code.google.com/p/csrng")
 depends=('openssl')
-url="https://code.google.com/p/csrng"
-source=("https://csrng.googlecode.com/files/$pkgname-$pkgver.tar.bz2"
+url="https://code.google.com/archive/p/csrng/"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/csrng/$pkgname-$pkgver.tar.bz2"
 	"csprngd.service")
 
 sha256sums=('522882e255a013d24a3c2dd639b69380ecd6b48b549e1ea345dd385e889e051b'
