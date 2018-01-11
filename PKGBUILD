@@ -1,13 +1,12 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=keeweb-desktop-bin
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free cross-platform password manager compatible with KeePass"
 arch=("i686" "x86_64")
 url="https://keeweb.info"
 license=("GPL")
 depends=("gconf" "libxss")
-optdepends=("gnome-shell-extension-dash-to-dock")
 provides=("keeweb-desktop")
 conflicts=("keeweb-desktop" "keeweb" "keeweb-bin" "keeweb-git")
 source_i686+=("$pkgname::https://github.com/keeweb/keeweb/releases/download/v$pkgver/KeeWeb-$pkgver.linux.ia32.deb")
@@ -23,4 +22,3 @@ package() {
   mv opt "${pkgdir}"
   mv usr "${pkgdir}"
 }
-
