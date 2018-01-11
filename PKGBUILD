@@ -8,7 +8,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to perform simulations of logic gates, in which you can paint your circuit like in raster graphics editor."
 arch=('any')
 url="https://github.com/Wieku/LogicDraw"
