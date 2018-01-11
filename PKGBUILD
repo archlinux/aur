@@ -92,6 +92,8 @@ package() {
 
   # Install systemd units, dbus services and a script for environment variables
   make -C "$srcdir/$pkgname/data/" install \
+     DBUSSERVICESDIR=/usr/share/dbus-1/services \
+     BINDIR=/usr/bin \
      SYSTEMDSYSTEMUNITDIR=/usr/lib/systemd/system \
      DESTDIR="$pkgdir"
 
