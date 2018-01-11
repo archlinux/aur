@@ -3,15 +3,15 @@
 
 pkgname=edi
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EFL based IDE."
 arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/"
 license=('BSD')
 depends=('efl' 'bear')
 provides=('edi')
-source=("http://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("http://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('88df33656917bb7cf312c5fbf42a89c8ec44c58c0c9202e6a945d72306541347')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
