@@ -11,6 +11,9 @@ post_install() {
     echo "Pulseaudio not detected - you may need to manually enable ALSA:"
     echo " export VIDYO_AUDIO_FRAMEWORK=ALSA"
   fi
+  echo "Due to an issue with newer versions of Qt, VidyoDesktop crashes with a segfault error"
+  echo "A workaround is to launch trayer before launching VidyoDesktop"
+  echo "Thanks to zbraniecki for the workaround"
 }
 
 pre_upgrade() {

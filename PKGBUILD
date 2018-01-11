@@ -3,7 +3,7 @@
 
 pkgname=vidyodesktop
 pkgver=3.6.3.017
-pkgrel=4
+pkgrel=5
 pkgdesc="VidyoDesktop(TM) video conferencing client"
 arch=('i686' 'x86_64')
 url="http://www.vidyo.com"
@@ -14,7 +14,7 @@ conflicts=('vidyo')
 depends=('alsa-lib' 'libidn' 'libutil-linux' 'libxv' 'libgl' 'glu'
          'glibc' 'libxfixes' 'libxrandr' 'libxss' 'glib2' 'libsm' 'libice'
          'libxrender' 'fontconfig' 'freetype2' 'libxext' 'libx11' 'libffi'
-         'gcc-libs' 'zlib' 'libpng' 'qtwebkit' 'zenity')
+         'gcc-libs' 'zlib' 'libpng' 'qtwebkit' 'zenity' 'trayer')
 optdepends=('flashplugin: Join meetings via web browser')
 
 source_i686=("https://client-downloads.vidyocloud.com/VidyoDesktopInstaller-ubuntu-TAG_VD_3_6_3_017.deb")
