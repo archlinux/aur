@@ -1,7 +1,7 @@
 # Maintainer: Det <nimetonmaili gmail a-dot com>
 
 pkgname=biglybt
-pkgver=1.2.0.0
+pkgver=1.4.0.0
 pkgrel=1
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('java-runtime=8')
 options=('!strip')
 install=$pkgname.install
 source=("https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
-md5sums=('a6f5f9297a9dfdcfdc80d22fe8e2c776')
+md5sums=('1e059362ac473e4a8c386bb5115bffa4')
 
 prepare() {
   rm -rf $pkgname
@@ -26,7 +26,7 @@ package() {
   cd "$srcdir"/$pkgname
 
   msg2 "Creating directory structure..."
-  install -d "$pkgdir"/opt/$pkgname
+  install -d "$pkgdir"/opt/$pkgname/
   install -d "$pkgdir"/usr/bin/
   install -d "$pkgdir"/usr/share/applications/
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
@@ -50,7 +50,7 @@ package() {
   rm {,un}registerBiglyBT uninstall updateBiglyBT
 
   msg2 "Installing to /opt..."
-  mv * "$pkgdir"/opt/$pkgname
+  mv * "$pkgdir"/opt/$pkgname/
   
   msg2 "Fixing paths..."
   sed -i "s|#PROGRAM_DIR=.*|PROGRAM_DIR=\"/opt/$pkgname\"|" "$pkgdir"/usr/bin/$pkgname
