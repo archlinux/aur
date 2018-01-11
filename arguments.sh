@@ -10,7 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region import
-# shellcheck source=./module.sh
+# shellcheck disable=SC2016
+# shellcheck source=module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.array
 # endregion
@@ -99,35 +100,6 @@ bl_arguments_get_flag() {
     >>> echo $foo
     true
 
-    '
-    local variable match argument flag
-    local flag_aliases=($(bl.array.slice :-1 "$@"))
-    variable="$(bl.array.slice -1 "$@")"
-    local new_arguments=()
-    eval "${variable}=false"
-    for argument in "${bl_arguments_new[@]:-}"; do
-        match=false
-        for flag in "${flag_aliases[@]}"; do
-            if [[ "$argument" == "$flag" ]]; then
-                match=true
-                eval "${variable}=true"
-            fi
-        done
-        $match || new_arguments+=( "$argument" )
-    done
-    bl_arguments_new=( "${new_arguments[@]:+${new_arguments[@]}}" )
-}
-alias bl.arguments.get_flag="bl_arguments_get_flag"
-bl_arguments_get_keyword() {
-    # shellcheck disable=SC2034,SC2016
-    local __doc__='
-    ```
-    bl.arguments.get_keyword keyword variable_name
-    ```
-
-    Sets `variable_name` to the "value" of `keyword` the argument array (see
-    `bl.arguments.set`) contains "keyword=value".
-
     #### Example
     ```
     bl.arguments.get_keyword log loglevel
@@ -197,6 +169,7 @@ bl_arguments_get_parameter() {
     other_param1 other_param2
     '
     local parameter_aliases parameter variable argument index match
+    # shellcheck disable=SC2207
     parameter_aliases=($(bl.array.slice :-1 "$@"))
     variable="$(bl.array.slice -1 "$@")"
     match=false
@@ -255,6 +228,7 @@ bl_arguments_apply_new_arguments() {
 alias bl.arguments.apply_new_arguments='set -- "${bl_arguments_new[@]}"'
 # TODO
 bl_arguments_wrapper_with_minimum_number_of_arguments() {
+    # shellcheck disable=SC1004
     local __doc__='
     Supports default arguments with a minimum number of arguments for functions
     by wrapping them.
@@ -276,26 +250,23 @@ bl_arguments_wrapper_with_minimum_number_of_arguments() {
     '
     if [ $# -le $(($1+$2+1)) ]; then
         # Return default arguments.
+        # shellcheck disable=SC2068
         echo ${@:3:$1}
         return $?
     else
         # Return given arguments.
+        # shellcheck disable=SC2068
         echo ${@:3+$1}
         return $?
     fi
 }
 alias bl.arguments.wrapper_with_minimum_number_of_arguments='bl_arguments_wrapper_with_minimum_number_of_arguments'
 bl_arguments_default_wrapper() {
+    # shellcheck disable=SC2034
     local __doc__='
     Wrapper function for
     "bl.arguments.wrapper_with_minimum_number_of_arguments" with second parameter
     is setted to "1".
-
-        PROGRAM_NAME $(bl.arguments.default_wrapper \
-            NUMBER_OF_DEFAULT_ARGUMENTS \
-            DEFAULT_ARGUMENTS* \
-            $@
-        )
 
     >>> # Runs "subProgram" with arguments "all", "--log-level" and "warning"
     >>> # if not at least one arguments are given to "program".
