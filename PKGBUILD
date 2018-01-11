@@ -5,12 +5,12 @@
 pkgname=kile21
 _pkgname=kile
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A user friendly TeX/LaTeX frontend for KDE"
 arch=("i686" "x86_64")
 license=('GPL2')
 url="https://kile.sourceforge.net/"
-depends=('ktexteditor' 'kinit' 'okular' 'khtml' 'kdelibs')
+depends=('automoc4' 'ktexteditor' 'kinit' 'okular' 'khtml' 'kdelibs')
 makedepends=('extra-cmake-modules' 'kdoctools')
 optdepends=('konsole: embedded terminal')
 source=("https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.bz2")
