@@ -2,7 +2,7 @@
 
 pkgname=php-http
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Aims to provide a convenient and powerful set of functionality for one of PHPs major applications"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -16,7 +16,7 @@ build() {
   cd "${srcdir}/pecl_http-${pkgver}"
 
   phpize
-  ./configure
+  ./configure --with-http-libidn-dir=no
   make
 }
 
