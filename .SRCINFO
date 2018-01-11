@@ -3,6 +3,7 @@ pkgbase = b25-stz-git
 	pkgver = 0.2.5.71f931e
 	pkgrel = 2
 	url = http://hg.honeyplanet.jp/pt1/
+	install = b25-stz-git.install
 	arch = i686
 	arch = x86_64
 	groups = earthsoft
