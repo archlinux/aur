@@ -1,15 +1,17 @@
 pkgbase = gtk-engine-aurora
 	pkgdesc = gtk-engine: latest member of the clearlooks family
 	pkgver = 1.5.1
-	pkgrel = 7
-	url = http://www.gnome-look.org/content/show.php/Aurora+Gtk+Engine?content=56438
+	pkgrel = 8
+	url = https://launchpad.net/ubuntu/+source/gtk2-engines-aurora/1.5.1-4
 	arch = x86_64
 	license = GPL
 	makedepends = pkgconfig
 	depends = gtk2
 	replaces = gtk-aurora-engine
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1460970469/s/398786048b91ec17599ae7c79cc780a1/t/1515614861/56438-aurora-1.5.1.tar.bz2
-	md5sums = 5eeea57c5938306ad7ccfc7cd71d009d
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gtk2-engines-aurora_1.5.1.orig.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gtk2-engines-aurora_1.5.1.orig-Aurora.tar.bz2
+	sha256sums = d001b521449ecb16913afb894561a04473c75cfd942b029bb405e31ed00b6aaf
+	sha256sums = a65162c0aee60206be3785ce8532d71e0a6c0caff4e5de2971111015b3045597
 
 pkgname = gtk-engine-aurora
 
