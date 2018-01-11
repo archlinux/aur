@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-indexed-gzip
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc=""
 _name=indexed_gzip
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d65bf88fe9dc0293b8075eb0a1b1ba0d2dac0eefa9d421c412a97a3ef0ea7c43')
+sha256sums=('22ca48ee2e506fc849264b9540143c90228e7fdb3875fa122aefe70458b9b13f')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
