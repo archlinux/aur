@@ -11,6 +11,7 @@
 # endregion
 # region import
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
+bl.module.import bashlink.logging
 bl.module.import bashlink.path
 # endregion
 # region variables
@@ -445,6 +446,136 @@ bl_filesystem_show_symbolic_links() {
     return $?
 }
 ## endregion
+bl_filesystem__doctest_setup__='
+lsblk() {
+    if [[ "${@: -1}" == "" ]];then
+        echo "lsblk: : not a block device"
+        return 1
+    fi
+    if [[ "${@: -1}" != "/dev/sdb" ]];then
+        echo "/dev/sda disk"
+        echo "/dev/sda1 part SYSTEM_LABEL 0x7"
+        echo "/dev/sda2 part"
+    fi
+    if [[ "${@: -1}" != "/dev/sda" ]];then
+        echo "/dev/sdb disk"
+        echo "/dev/sdb1 part boot_partition "
+        echo "/dev/sdb2 part system_partition"
+    fi
+}
+blkid() {
+    [[ "${@: -1}" != "/dev/sda2" ]] && return 0
+    echo "gpt"
+    echo "only discoverable by blkid"
+    echo "boot_partition"
+    echo "192d8b9e"
+}
+'
+alias bl.filesystem.find_block_device=bl_filesystem_find_block_device
+bl_filesystem_find_block_device() {
+    # shellcheck disable=SC2034,SC2016
+    local __doc__='
+    >>> bl.filesystem.find_block_device "boot_partition"
+    /dev/sdb1
+    >>> bl.filesystem.find_block_device "boot_partition" /dev/sda
+    /dev/sda2
+    >>> bl.filesystem.find_block_device "discoverable by blkid"
+    /dev/sda2
+    >>> bl.filesystem.find_block_device "_partition"
+    /dev/sdb1 /dev/sdb2
+    >>> bl.filesystem.find_block_device "not matching anything" || echo not found
+    not found
+    >>> bl.filesystem.find_block_device "" || echo not found
+    not found
+    '
+    local partition_pattern="$1"
+    local device="${2-}"
+
+    [ "$partition_pattern" = "" ] && return 1
+    find_block_device_simple() {
+        local device_info
+        lsblk --noheadings --list --paths --output \
+        NAME,TYPE,LABEL,PARTLABEL,UUID,PARTUUID ${device:+"$device"} \
+        | sort --unique | while read -r device_info; do
+            local current_device
+            current_device=$(echo "$device_info" | cut -d' ' -f1)
+            if [[ "$device_info" = *"${partition_pattern}"* ]]; then
+                echo "$current_device"
+            fi
+        done
+    }
+    find_block_device_deep() {
+        local device_info
+        lsblk --noheadings --list --paths --output NAME ${device:+"$device"} \
+        | sort --unique | cut -d' ' -f1 | while read -r current_device; do
+            blkid -p -o value "$current_device" \
+            | while read -r device_info; do
+                if [[ "$device_info" = *"${partition_pattern}"* ]]; then
+                    echo "$current_device"
+                fi
+            done
+        done
+    }
+    local candidates
+    candidates=($(find_block_device_simple))
+    [ ${#candidates[@]} -eq 0 ] && candidates=($(find_block_device_deep))
+    unset -f find_block_device_simple
+    unset -f find_block_device_deep
+    [ ${#candidates[@]} -eq 0 ] && return 1
+    [ ${#candidates[@]} -ne 1 ] && echo "${candidates[@]}" && return 1
+    bl.logging.plain "${candidates[0]}"
+}
+alias bl.filesystem.create_partition_via_offset=bl_filesystem_create_partition_via_offset
+bl_filesystem_create_partition_via_offset() {
+    local device="$1"
+    local nameOrUUID="$2"
+    local loop_device
+    loop_device="$(losetup --find)"
+    local sector_size
+    sector_size="$(blockdev --getbsz "$device")"
+
+    # NOTE: partx's NAME field corresponds to partition labels
+    local partitionInfo
+    partitionInfo=$(partx --raw --noheadings --output \
+        START,NAME,UUID,TYPE "$device" 2>/dev/null| grep "$nameOrUUID")
+    local offsetSectors
+    offsetSectors="$(echo "$partitionInfo"| cut --delimiter ' ' \
+        --fields 1)"
+    if [ -z "$offsetSectors" ]; then
+        bl.logging.warn "Could not find partition with label/uuid \"$nameOrUUID\" on device \"$device\""
+        return 1
+    fi
+    local offsetBytes
+    offsetBytes="$(echo | awk -v x="$offsetSectors" -v y="$sector_size" '{print x * y}')"
+    losetup --offset "$offsetBytes" "$loop_device" "$device"
+    bl.logging.plain "$loop_device"
+}
+alias bl.filesystem.make_uefi_boot_entry=bl_filesystem_make_uefi_boot_entry
+bl_filesystem_make_uefi_boot_entry() {
+    local __doc__='
+    Creates an uefi boot entry.
+
+    >>> bl.filesystem.make_uefi_boot_entry archLinux
+    ...
+    >>> bl.filesystem.make_uefi_boot_entry archLinuxFallback
+    ...
+    >>> bl.filesystem.make_uefi_boot_entry archLinuxLTSFallback vmlinuz-linux-lts
+    ...
+    '
+    local kernelParameterFilePath="${ILU_CONFIG_PATH}linux/kernel/${1}CommandLine"
+    local kernel='vmlinuz-linux'
+    if [[ "$2" ]]; then
+        kernel="$2"
+    fi
+    if [[ -f "$kernelParameterFilePath" ]]; then
+        local command="sudo efibootmgr --verbose --create --disk /dev/sda --part 1 -l \"\\${kernel}\" --label \"$1\" --unicode \"$(cat "$kernelParameterFilePath")\""
+        echo "Create boot entry \"$1\" with command \"${command}\"."
+        eval $command
+    else
+        echo "Error: file \"${kernelParameterFilePath}\" doesn't exists."
+    fi
+    return $?
+}
 alias bl.filesystem.make_crypt_blockdevice=bl_filesystem_make_crypt_blockdevice
 bl_filesystem_make_crypt_blockdevice() {
     local __doc__='

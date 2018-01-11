@@ -17,8 +17,8 @@ arch=('any')
 url='http://torben.website/bashlink'
 license=('CC-BY-3.0')
 depends=()
-source=(arguments.sh array.sh changeroot.sh cli.sh cracking.sh dictionary.sh display.sh doctest.sh documentation.sh exception.sh filesystem.sh logging.sh module.sh network.sh number.sh pacman.sh path.sh ssh.sh string.sh system.sh time.sh tools.sh)
-md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+source=(arguments.sh array.sh changeroot.sh cli.sh cracking.sh dependency.sh dictionary.sh display.sh doctest.sh documentation.sh exception.sh filesystem.sh logging.sh module.sh network.sh number.sh pacman.sh path.sh ssh.sh string.sh system.sh time.sh tools.sh)
+md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 copyToAUR=true
 
 package() {
