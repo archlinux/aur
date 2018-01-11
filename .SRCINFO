@@ -1,0 +1,15 @@
+pkgbase = ttf-thelinuxbox-fonts
+	pkgdesc = A good selection of 6760 TTF fonts for artists, intended for creating eye-catching documents and graphics.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://thelinuxbox.org
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://thelinuxbox.org/downloads/fonts/fonts.tar.gz
+	md5sums = ae567dc0c0e4e7eb579cc09d5f9e0955
+
+pkgname = ttf-thelinuxbox-fonts
+
