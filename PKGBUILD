@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=63.0.3239.132
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -443,7 +443,9 @@ build() {
 
 #python2 build/util/lastchange.py -m GPU_LISTS_VERSION --revision-id-only --header gpu/config/gpu_lists_version.h
 
-  ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
+#its optimized for 16 ram, if you get segfaults or crashes read linuxfromscratch.org/blfs/view/svn/xsoft/chromium.html
+
+  ninja -j8 -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
 }
 
 package() {
