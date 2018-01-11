@@ -2,12 +2,12 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.188
+pkgver=0.193
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
 license=('custom:MAME License')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 conflicts=('sdlmame' 'sdlmamefamily-tools')
 depends=('sdl2_ttf'
          'alsa-lib'
@@ -29,20 +29,16 @@ makedepends=('nasm'
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'sdlmame.sh'
         )
-sha256sums=('d3e55ec783fde39124bdb867ded9eadfcf769697d6c3d933444a29a785d6c99b'
+sha256sums=('6b5e90b602befbcad2b6989b1e930d0ff6e537dc901f7b1615a3e6deec2207a2'
             '201e9cc3d0d7397e15a4aaf7477f8b32a379a9ba2134b94180cdaf2067d1f859'
             )
 install=sdlmame-wout-toolkits.install
-noextract=('extras.tar.gz')
 
 build() {
   cd "mame-mame${pkgver/./}"
 
-  [ "${CARCH}" = "i686" ] && _use_64bits=0
-  [ "${CARCH}" = "x86_64" ] && _use_64bits=1
-
-  make PTR64="${_use_64bits}" \
-       SSE2="${_use_64bits}" \
+  make PTR64=1 \
+       SSE2=1 \
        OPTIMIZE=2 \
        NOWERROR=1 \
        ARCHOPTS=-flifetime-dse=1 \
@@ -69,8 +65,7 @@ package() {
   install -Dm755 ../sdlmame.sh "${pkgdir}/usr/bin/sdlmame"
 
   # Install the applications and the UI font in /usr/share
-  [ "${CARCH}" = "x86_64" ] && _suffix="64"
-  install -Dm755 "mame${_suffix}" "${pkgdir}/usr/share/sdlmame/sdlmame"
+  install -Dm755 "mame64" "${pkgdir}/usr/share/sdlmame/sdlmame"
 
   # Install the applications
   install -Dm755 castool    "${pkgdir}/usr/bin/castool"
@@ -81,7 +76,7 @@ package() {
   install -Dm755 ldresample "${pkgdir}/usr/bin/ldresample"
   install -Dm755 ldverify   "${pkgdir}/usr/bin/ldverify"
   install -Dm755 nltool     "${pkgdir}/usr/bin/nltool"
-  install -Sm755 nlwav      "${pkgdir}/usr/bin/nlwav"
+  install -Dm755 nlwav      "${pkgdir}/usr/bin/nlwav"
   install -Dm755 pngcmp     "${pkgdir}/usr/bin/pngrep"
   install -Dm755 regrep     "${pkgdir}/usr/bin/regrep"
   install -Dm755 romcmp     "${pkgdir}/usr/bin/romcmp"
