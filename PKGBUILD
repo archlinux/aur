@@ -3,8 +3,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gtk2-patched-filechooser-icon-view
-pkgver=2.24.31
-_patchver=0c714824e9baedbb0fce9bb0940b19d073771a77
+pkgver=2.24.32
+patchver=158a552ca32254628b1cdbee7a9f1fbfa81a8d4e
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch."
@@ -19,7 +19,7 @@ optdepends=('gnome-themes-standard: Default widget theme'
             'gnome-icon-theme: Default icon theme')
 license=('LGPL')
 install=gtk2.install
-_commit=09c0b9c8a0f3dad599c179829ffb3a2e81f6efde
+_commit=ed7d3e25f8b6debae6ccc8b50d1329155338cab8 # tags/2.24.32^0
 source=("git://git.gnome.org/gtk+#commit=$_commit"
         gtkrc
         gtk-query-immodules-2.0.hook
