@@ -6,7 +6,7 @@
 # Maintainer: easymodo <easymodofrf@gmail.com>
 pkgname=qimgv-git
 _pkgname=qimgv
-pkgver=0.51.1.r0.g48d80fb
+pkgver=0.6.r0.g96626a1
 pkgrel=1
 #epoch=
 pkgdesc="Simple image viewer written in qt. Supports webm playback."
