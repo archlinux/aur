@@ -1,7 +1,7 @@
 # Maintainer: Det <nimetonmaili gmail a-dot com>
 
 pkgname=biglybt-extreme-mod
-pkgver=1.2.0.0b2
+pkgver=1.4.0.0b
 _ver=${pkgver/b*}
 pkgrel=1
 pkgdesc="A modded version of the BiglyBT client with multiple spoofing capabilities"
@@ -13,10 +13,10 @@ makedepends=('java-runtime=8')
 options=('!strip')
 install=$pkgname.install
 source=("https://github.com/BiglySoftware/BiglyBT/releases/download/v$_ver/GitHub_BiglyBT_Installer.sh"
-        'http://www.sb-innovation.de/attachments/f41/18442d1511749775-biglybt-extreme-mod-sb-innovation-1-2-0-0-rev2-beta-biglybt_1.2.0.0_20171127.zip')
+        'http://www.sb-innovation.de/attachments/f41/18547d1515526555-biglybt-extreme-mod-sb-innovation-1-4-0-0-beta-biglybt_1.4.0.0_20180110.zip')
 noextract=($(basename ${source[1]}))
-md5sums=('a6f5f9297a9dfdcfdc80d22fe8e2c776'
-         '4bce24f7eaf62d337f583743292fb0e6')
+md5sums=('1e059362ac473e4a8c386bb5115bffa4'
+         '6f65f35a8eb15890e08f53085645fb8d')
 
 prepare() {
   rm -rf $pkgname
@@ -30,7 +30,7 @@ package() {
   cd "$srcdir"/$pkgname
 
   msg2 "Creating directory structure..."
-  install -d "$pkgdir"/opt/$pkgname
+  install -d "$pkgdir"/opt/$pkgname/
   install -d "$pkgdir"/usr/bin/
   install -d "$pkgdir"/usr/share/applications/
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
@@ -54,7 +54,7 @@ package() {
   rm {,un}registerBiglyBT uninstall updateBiglyBT
 
   msg2 "Installing to /opt..."
-  mv * "$pkgdir"/opt/$pkgname
+  mv * "$pkgdir"/opt/$pkgname/
   
   msg2 "Fixing paths..."
   sed -i "s|#PROGRAM_DIR=.*|PROGRAM_DIR=\"/opt/$pkgname\"|" "$pkgdir"/usr/bin/$pkgname
@@ -62,5 +62,5 @@ package() {
       -i "$pkgdir"/usr/share/applications/$pkgname.desktop
 
   msg2 "Installing Extreme Mod..."
-  bsdtar -xf "$srcdir"/$(basename ${source[1]}) -C "$pkgdir"/opt/$pkgname
+  bsdtar -xf "$srcdir"/$(basename ${source[1]}) -C "$pkgdir"/opt/$pkgname/
 }
