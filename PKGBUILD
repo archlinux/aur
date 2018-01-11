@@ -3,7 +3,7 @@
 
 pkgname=b25-stz-git
 pkgver=0.2.5.71f931e
-pkgrel=2
+pkgrel=3
 pkgdesc="ARIB25 test program and library (modified by stz2012)"
 groups=('earthsoft')
 arch=('i686' 'x86_64')
