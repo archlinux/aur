@@ -11,10 +11,10 @@ license=('MIT')
 depends=('python2' 'python2-pillow' 'python2-networkx' 'python2-decorator'
 	 'python2-androguard' 'android-tools' 'android-udev')
 makedepends=('python2-setuptools' 'git') 
-optdepends=('opencv: to run droidbot in cv mode
-	     android-sdk: for developers
-	     android-platform-tools: for developers
-	     jdk9-openjdk: for developers')
+optdepends=('opencv: to run droidbot in cv mode'
+	     'android-sdk: for developers'
+	     'android-platform-tools: for developers'
+	     'jdk9-openjdk: for developers')
 source=("git+${url}")
 sha256sums=('SKIP')
 
