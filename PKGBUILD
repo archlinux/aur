@@ -8,11 +8,11 @@ arch=('x86_64')
 url='https://github.com/RPCS3/rpcs3'
 license=('GPL2')
 depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libevdev' 'libgl' 'libpng'
-         'libpulse' 'libx11' 'llvm40-libs' 'openal' 'qt5-base'
+         'libpulse' 'libx11' 'llvm-libs' 'openal' 'qt5-base'
          'vulkan-icd-loader' 'yaml-cpp' 'zlib'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswresample.so'
          'libswscale.so' 'libudev.so')
-makedepends=('boost' 'cereal' 'cmake' 'git' 'llvm40')
+makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git' 'llvm')
 provides=('rpcs3')
 conflicts=('rpcs3')
 source=('git+https://github.com/RPCS3/rpcs3.git'
