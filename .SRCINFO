@@ -17,6 +17,7 @@ pkgbase = snapd
 	depends = squashfs-tools
 	depends = libseccomp
 	depends = libsystemd
+	conflicts = snap-confine
 	options = !strip
 	options = emptydirs
 	source = git+https://github.com/snapcore/snapd.git#tag=2.30
