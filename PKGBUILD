@@ -12,7 +12,7 @@ license=('GPL2' 'GPL3' 'LGPL2.1' 'LGPL3')
 depends=('lib32-glew' 'lib32-libaio' 'lib32-libcanberra' 'lib32-libjpeg-turbo'
          'lib32-libpulse' 'lib32-nvidia-cg-toolkit' 'lib32-portaudio'
          'lib32-sdl2' 'lib32-soundtouch' 'lib32-wxgtk2')
-makedepends=('cmake' 'gcc-multilib' 'png++')
+makedepends=('cmake' 'gcc-multilib' 'git' 'png++')
 provides=('pcsx2')
 conflicts=('pcsx2')
 source=('git+https://github.com/PCSX2/pcsx2.git')
