@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <iamjacksemail@hackermail.com>
-_pkgname=AVALON
+_pkgname=avalon_framework
 pkgname=python-avalon_framework
-pkgver=1.4
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Avalon Framework is a library that can make python printing in Linux much easier."
 arch=('any')
@@ -10,7 +10,7 @@ license=('LGPLv3')
 depends=('python')
 makedepends=('python')
 source=("https://github.com/K4YT3X/AVALON/archive/${pkgver}.tar.gz")
-sha256sums=('c08621b4754736218a665b83c142d65aa53481995ff0199556d594f3800fd983')
+sha256sums=('dcb6c04e6c9aae642270886cd75b6166d037d67477eed8fb1478075dc9663b69')
 
 _pyver=$(pacman -Q python | cut -f 2 -d " " |cut -d "." -f 1,2)
 
