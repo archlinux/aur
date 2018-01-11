@@ -7,7 +7,7 @@
 pkgname=inox-beta
 pk=bnox
 name=chromium
-pkgver=64.0.3282.71
+pkgver=64.0.3282.85
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -114,7 +114,7 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/edgy.patch
 )
 
 
-sha256sums=('4b93fe0047134203477c00dd360684db08a37f50b04f9cc01976d82631647ad6'
+sha256sums=('71ed54fb88e63bc20b5e61fe4de87bceeeca46c29b082c167a2bc537e133c8bc'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -209,7 +209,6 @@ sha256sums=('4b93fe0047134203477c00dd360684db08a37f50b04f9cc01976d82631647ad6'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d'
             '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
-
 
 
 
@@ -448,7 +447,9 @@ build() {
 
 python2 build/util/lastchange.py -m GPU_LISTS_VERSION --revision-id-only --header gpu/config/gpu_lists_version.h
 
-  ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
+ #its optimized for 16 ram, if you get segfaults or crashes read linuxfromscratch.org/blfs/view/svn/xsoft/chromium.html
+
+  ninja -j8 -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
 }
 
 package() {
