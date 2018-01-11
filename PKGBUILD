@@ -1,6 +1,6 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=alpscore
-pkgver=1.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="ALPS Core libraries for numerical simulations of condensed matter systems."
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ depends=('cmake' 'boost' 'hdf5')
 provides=($pkgname=$pkgver)
 conflicts=(alpscore-git alpscore-openmpi alpscore-openmpi-git alps)
 source=("https://github.com/ALPSCore/ALPSCore/archive/v$pkgver.tar.gz")
-md5sums=('6cbe0872cfecf2abd9ec83173e1ac831')
+md5sums=('a2a8d8c4c31f0528fafe9d24426a1064')
 
 build() {
     cd "ALPSCore-$pkgver"
