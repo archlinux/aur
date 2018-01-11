@@ -2,7 +2,7 @@
 # Contributor: Chris Clonch <chris at theclonchs dot com>
 # Contributor: Justin Dray <justin@dray.be>
 pkgname='chronograf'
-pkgver='1.4.0.0'
+pkgver='1.4.0.1'
 pkgrel='1'
 pkgdesc='Time-series data visualization tool for InfluxDB'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ build() {
         export GOBIN="$GOPATH/bin"
         export PATH="$GOBIN:$PATH"
         mkdir -p "$GOPATH/src/github.com/influxdata"
-        mv -f "$srcdir/chronograf" "$GOPATH/src/github.com/influxdata/"
+        cp -af "$srcdir/chronograf" "$GOPATH/src/github.com/influxdata/"
 
         cd "$GOPATH/src/github.com/influxdata/chronograf"
 
