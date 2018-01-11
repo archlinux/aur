@@ -1,0 +1,18 @@
+pkgbase = neph-git
+	pkgdesc = A modern command line job processor
+	pkgver = v0.1.16.r0.55e9760
+	pkgrel = 1
+	url = https://tbrand.github.io/neph/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = crystal
+	depends = glibc
+	provides = neph
+	conflicts = neph
+	source = neph::git+https://github.com/tbrand/neph.git
+	md5sums = SKIP
+
+pkgname = neph-git
+
