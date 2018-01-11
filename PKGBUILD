@@ -1,7 +1,7 @@
 # Maintainer: Eric Bailey <nerflad@gmail.com>
 
 pkgname=nyan-lang-git
-pkgver=r120.debef45
+pkgver=r124.92657c7
 pkgrel=1
 pkgdesc="A data description language designed for openage"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ license=('LGPL3')
 depends=('gcc-libs>=7.0.0')
 makedepends=('cmake' 'git')
 provides=('nyan-lang')
+conflicts=('nyan-lang')
 source=("$pkgname::git+https://github.com/SFTtech/nyan")
 md5sums=('SKIP')
 
