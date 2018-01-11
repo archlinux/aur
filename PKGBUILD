@@ -6,7 +6,7 @@
 
 pkgname=inox
 pkgver=63.0.3239.132
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
 arch=('x86_64')
@@ -28,40 +28,41 @@ install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/product_logo_{16,22,24,32,48,64,128,256}.png
         # Patches from Arch Linux
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-exclude_unwind_tables.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-omnibox-unescape-fragment.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-skia-harmony.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-widevine.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/chromium-disable-SharedArrayBuffer-by-default.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/chromium-exclude_unwind_tables.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/chromium-omnibox-unescape-fragment.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/chromium-skia-harmony.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/chromium-widevine.patch
         # Patches from Gentoo
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-clang-r1.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-webrtc-r0.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/chromium-clang-r1.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/chromium-webrtc-r0.patch
         # Misc
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-libva-r2.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-vaapi-r15.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/chromium-libva-r2.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/chromium-vaapi-r15.patch
         # Inox patchset
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0001-fix-building-without-safebrowsing.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0003-disable-autofill-download-manager.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0004-disable-google-url-tracker.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0005-disable-default-extensions.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0006-modify-default-prefs.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0007-disable-web-resource-service.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0008-restore-classic-ntp.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0009-disable-google-ipv6-probes.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0010-disable-gcm-status-check.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0011-add-duckduckgo-search-engine.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0012-branding.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0013-disable-missing-key-warning.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0014-disable-translation-lang-fetch.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0015-disable-update-pings.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0016-chromium-sandbox-pie.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0017-disable-new-avatar-menu.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0018-disable-first-run-behaviour.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0019-disable-battery-status-service.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0020-launcher-branding.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0021-disable-rlz.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/9000-disable-metrics.patch)
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0001-fix-building-without-safebrowsing.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0003-disable-autofill-download-manager.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0004-disable-google-url-tracker.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0005-disable-default-extensions.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0006-modify-default-prefs.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0007-disable-web-resource-service.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0008-restore-classic-ntp.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0009-disable-google-ipv6-probes.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0010-disable-gcm-status-check.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0011-add-duckduckgo-search-engine.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0012-branding.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0013-disable-missing-key-warning.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0014-disable-translation-lang-fetch.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0015-disable-update-pings.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0016-chromium-sandbox-pie.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0017-disable-new-avatar-menu.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0018-disable-first-run-behaviour.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0019-disable-battery-status-service.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0020-launcher-branding.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/0021-disable-rlz.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver-$pkgrel/9000-disable-metrics.patch)
 
 
 sha256sums=('84c46c2c42faaa102abe0647ee1213615a2522627124924c2741ddc2161b3d8d'
@@ -75,6 +76,7 @@ sha256sums=('84c46c2c42faaa102abe0647ee1213615a2522627124924c2741ddc2161b3d8d'
             '53a1e8da18069eb4d6ab3af9c923c22a0f020241a4839c3140e3601052ddf6ff'
             '896993987d4ef9f0ac7db454f288117316c2c80ed0b6764019afd760db222dad'
             '3df9b3bbdc07fde63d9e400954dcc6ab6e0e5454f0ef6447570eef0549337354'
+            '1e040caa43ba34c627fe3750fb44c781a74298d010ef40657ab8deb4780db70b'
             'e53dc6f259acd39df13874f8a0f440528fae764b859dd71447991a5b1fac7c9c'
             '814eb2cecb10cb697e24036b08aac41e88d0e38971741f9e946200764e2401ae'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
@@ -158,6 +160,9 @@ prepare() {
 
   # https://crbug.com/789163
   patch -Np1 -i ../chromium-omnibox-unescape-fragment.patch
+
+  # https://crbug.com/798864
+  patch -Np1 -i ../chromium-disable-SharedArrayBuffer-by-default.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
