@@ -10,6 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region import
+# shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.logging
 bl.module.import bashlink.path
@@ -622,7 +623,7 @@ bl_filesystem_repair() {
     sudo fsck -a "$target"
     return $?
 }
-alias bl.filesysten.set_maximum_user_watchs=bl_filesystem_set_maximum_user_watches
+alias bl.filesysten.set_maximum_user_watches=bl_filesystem_set_maximum_user_watches
 bl_filesystem_set_maximum_user_watches() {
     local __doc__='
     Sets the maximum number of concurrent allowed file observations via

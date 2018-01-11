@@ -10,6 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region functions
+alias bl.cracking.make_simple_ddos_attach=bl_cracking_make_simple_ddos_attack
 bl_cracking_make_simple_ddos_attack() {
     local __doc__='
     Makes a ddos attack to given host on given port. First argument: Number
@@ -23,7 +24,7 @@ bl_cracking_make_simple_ddos_attack() {
     done
     return $?
 }
-alias bl.cracking.make_simple_ddos_attach='bl_cracking_make_simple_ddos_attack'
+alias bl.cracking.stress_system=bl_cracking_stress_system
 bl_cracking_stress_system() {
     local __doc__='
     Stress system with given number of endless loops.
@@ -36,7 +37,7 @@ bl_cracking_stress_system() {
     done
     return $?
 }
-alias bl.cracking.stress_system='bl_cracking_stress_system'
+alias bl.cracking.endless_loop=bl_cracking_endless_loop
 bl_cracking_endless_loop() {
     local __doc__='
     Starts an endless loop.
@@ -48,7 +49,7 @@ bl_cracking_endless_loop() {
     done
     return $?
 }
-alias bl.cracking.endless_loop='bl_cracking_endless_loop'
+alias bl.cracking.fork_bomb=bl_cracking_fork_bomb
 bl_cracking_fork_bomb() {
     local __doc__='
     Implementation for fork bomb. Note short version: :() { : | : & }; :
@@ -58,7 +59,7 @@ bl_cracking_fork_bomb() {
     bl.cracking.fork_bomb | bl.cracking.fork_bomb &
     return $?
 }
-alias bl.cracking.fork_bomb='bl_cracking_fork_bomb'
+alias bl.cracking.stress_system_with_fork_bomb=bl_cracking_stress_system_with_fork_bomb
 bl_cracking_stress_system_with_fork_bomb() {
     local __doc__='
     Runs a forkbomb in an endless loop. This is useful if operating system
@@ -71,7 +72,7 @@ bl_cracking_stress_system_with_fork_bomb() {
     done
     return $?
 }
-alias bl.cracking.stress_system_with_fork_bomb='bl_cracking_stress_system_with_fork_bomb'
+alias bl.cracking.make_system_unattainable=bl_cracking_make_system_unattainable
 bl_cracking_make_system_unattainable() {
     local __doc__='
     Uses a stress system algorithm in its own process to avoid solving the
@@ -82,7 +83,7 @@ bl_cracking_make_system_unattainable() {
     nohup bash --login -c bl.cracking.stress_system &>/dev/null &
     return $?
 }
-alias bl.cracking.make_system_unattainable='bl_cracking_make_system_unattainable'
+alias bl.cracking.fake_sudo_password_attempt=bl_cracking_fake_sudo_password_attempt
 bl_cracking_fake_sudo_password_attempt() {
     local __doc__='
     Shows a fake sudo password attempt.
@@ -98,7 +99,7 @@ bl_cracking_fake_sudo_password_attempt() {
     echo "sudo: $number incorrect password attempts"
     return $?
 }
-alias bl.cracking.fake_sudo_password_attempt='bl_cracking_fake_sudo_password_attempt'
+alias bl.cracking.grab_sudo_password=bl_cracking_grab_sudo_password
 bl_cracking_grab_sudo_password() {
     local __doc__='
     Shows a fake sudo password attempt and send to password to server.
@@ -127,7 +128,6 @@ bl_cracking_grab_sudo_password() {
         fi
     done
 }
-alias bl.cracking.grab_sudo_password='bl_cracking_grab_sudo_password'
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

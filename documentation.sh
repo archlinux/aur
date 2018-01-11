@@ -19,6 +19,7 @@ bl.module.import bashlink.path
 bl.module.import bashlink.tools
 # endregion
 # region functions
+alias bl.documentation.format_buffers=bl_documentation_format_buffers
 bl_documentation_format_buffers() {
     local buffer="$1"
     local output_buffer="$2"
@@ -33,17 +34,17 @@ bl_documentation_format_buffers() {
         echo '```'
     fi
 }
-alias bl.documentation.format_buffers=bl_documentation_format_buffers
+alias bl.documentation.format_docstring=bl_documentation_format_docstring
 bl_documentation_format_docstring() {
-    local doc_string="$1"
-    doc_string="$(echo "$doc_string" \
+    local docstring="$1"
+    docstring="$(echo "$docstring" \
         | sed '/+bl.documentation.exclude_print/d' \
         | sed '/-bl.documentation.exclude_print/d' \
         | sed '/+bl.documentation.exclude/,/-bl.documentation.exclude/d')"
-    bl.doctest.parse_doc_string "$doc_string" bl_documentation_format_buffers \
+    bl.doctest.parse_docstring "$docstring" bl_documentation_format_buffers \
         --preserve-prompt
 }
-alias bl.documentation.format_docstring=bl_documentation_format_docstring
+alias bl.documentation.generate=bl_documentation_generate
 bl_documentation_generate() {
     # TODO add doc test setup function to documentation
     module=$1
@@ -58,12 +59,12 @@ bl_documentation_generate() {
 
     # module level doc
     test_identifier="$module"__doc__
-    local doc_string="${!test_identifier}"
+    local docstring="${!test_identifier}"
     bl.logging.plain "## Module $module"
-    if [[ -z "$doc_string" ]]; then
+    if [[ -z "$docstring" ]]; then
         bl.logging.warn "No top level documentation for module $module" 1>&2
     else
-        bl.logging.plain "$(bl.documentation.format_docstring "$doc_string")"
+        bl.logging.plain "$(bl.documentation.format_docstring "$docstring")"
     fi
 
     # function level documentation
@@ -72,17 +73,17 @@ bl_documentation_generate() {
     for function in $declared_functions;
     do
         # shellcheck disable=SC2089
-        doc_string="$(bl.doctest.get_function_docstring "$function")"
-        if [[ -z "$doc_string" ]]; then
+        docstring="$(bl.doctest.get_function_docstring "$function")"
+        if [[ -z "$docstring" ]]; then
             bl.logging.warn "No documentation for function $function" 1>&2
         else
             bl.logging.plain "### Function $function"
-            bl.logging.plain "$(bl.documentation.format_docstring "$doc_string")"
+            bl.logging.plain "$(bl.documentation.format_docstring "$docstring")"
         fi
     done
     )
 }
-alias bl.documentation.generate=bl_documentation_generate
+alias bl.documentation.serve=bl_documentation_serve
 bl_documentation_serve() {
     local __doc__='
     Serves a readme via webserver. Uses Flatdoc.
@@ -98,12 +99,12 @@ bl_documentation_serve() {
     popd
     rm -rf "$server_root"
 }
-alias bl.documentation.serve=bl_documentation_serve
+alias bl.documentation.parse_arguments=bl_documentation_parse_arguments
 bl_documentation_parse_arguments() {
     local filename module main_documentation serve
     bl.arguments.set "$@"
     bl.arguments.get_flag --serve serve
-    bl.arguments.apply_new_arguments
+    bl.arguments.apply_new
     $serve && bl.documentation.serve "$1" && return 0
     main_documentation="$(dirname "${BASH_SOURCE[0]}")/rebash.md"
     if [ $# -eq 0 ]; then
@@ -122,15 +123,14 @@ bl_documentation_parse_arguments() {
     fi
     return 0
 }
-alias bl.documentation.parse_arguments=bl_documentation_parse_arguments
-bl_documentation_print_doc_string() {
-    local doc_string="$1"
-    echo "$doc_string" \
+alias bl.documentation.print_docstring=bl_documentation_print_docstring
+bl_documentation_print_docstring() {
+    local docstring="$1"
+    echo "$docstring" \
         | sed '/+bl.documentation.exclude_print/,/-bl.documentation.exclude_print/d' \
         | sed '/+bl.documentation.exclude/,/-bl.documentation.exclude/d' \
         | sed '/```/d'
 }
-alias bl.documentation.print_doc_string=bl_documentation_print_doc_string
 # endregion
 if bl.tools.is_main; then
     bl.logging.set_level debug

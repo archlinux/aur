@@ -10,6 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region functions
+alias bl.string.make_command_promt_prefix=bl_string_make_command_promt_prefix
 bl_string_make_command_promt_prefix() {
     local __doc__='
     Generates a new user prompt with useful runtime parameters.
@@ -40,11 +41,11 @@ bl_string_make_command_promt_prefix() {
     export PS1="$titleBar$errorPromt ${ILU_CYAN}${userName}${ILU_GRAY}@${ILU_CYAN}\h${ILU_BLUE} (${systemLoadAverage}) ${ILU_GRAY}\w${ILU_DEFAULT_COLOR}\n${gitBranch}${ILU_DARK_GRAY}> ${ILU_DEFAULT_COLOR}"
     return $?
 }
-alias bl.string.make_command_promt_prefix='bl_string_make_command_promt_prefix'
+alias bl.string.generate_random=bl_string_generate_random
 bl_string_generate_random() {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c "$1"
 }
-alias bl.string.generate_random='bl_string_generate_random'
+alias bl.string.validate_argument=bl_string_validate_argument
 bl_string_validate_argument() {
     local __doc__="
     Validates a given bash argument.
@@ -65,7 +66,7 @@ bl_string_validate_argument() {
     fi
     return $?
 }
-alias bl.string.validate_argument='bl_string_validate_argument'
+alias bl.string.validate_regular_expression_replacement=bl_string_validate_regular_expression_replacement
 bl_string_validate_regular_expression_replacement() {
     local __doc__='
     This functions escapes every special meaning character for a sed
@@ -77,7 +78,7 @@ bl_string_validate_regular_expression_replacement() {
         --expression 's/&/\\\&/g'
     return $?
 }
-alias bl.string.validate_regular_expression_replacement=bl_string_validate_regular_expression_replacement
+alias bl.string.images_to_css_classes=bl_string_images_to_css_classes
 bl_string_images_to_css_classes() {
     local __doc__='
     This function converts a folder of images to a single includeable less
@@ -120,7 +121,7 @@ bl_string_images_to_css_classes() {
     done
     return $?
 }
-alias bl.string.images_to_css_classes='bl_string_images_to_css_classes'
+alias bl.string.merge_text_files=bl_string_merge_text_files
 bl_string_merge_text_files() {
     local __doc__='
     Concatenate files and print on the standard output.
@@ -130,7 +131,7 @@ bl_string_merge_text_files() {
     >>>     "\n# endregion\n' --between '\n# endregion\n\n# region %s\n"
     '
     local append='\n// endregion'
-    local prepend='// region %s\n\n'
+    local prep end='// region %s\n\n'
     local between='\n// endregion\n\n// region %s\n\n'
     while true; do
         case $1 in
@@ -175,7 +176,7 @@ bl_string_merge_text_files() {
     printf "$append"
     return $?
 }
-alias bl.string.merge_text_files='bl_string_merge_text_files'
+alias bl.string.translate=bl_string_translate
 bl_string_translate() {
     local __doc__='
     Translates a given string in a given (or automatic detected) language and
@@ -245,7 +246,6 @@ bl_string_translate() {
         return $?
     fi
 }
-alias bl.string.translate='bl_string_translate'
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

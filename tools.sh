@@ -61,7 +61,7 @@ bl_tools_is_defined() {
     fi
     )
 }
-alias bl.tools.is_empty="bl_tools_is_empty"
+alias bl.tools.is_empty=bl_tools_is_empty
 bl_tools_is_empty() {
     local __doc__='
     Tests if variable is empty (undefined variables are not empty)
@@ -82,7 +82,7 @@ bl_tools_is_empty() {
     bl.tools.is_defined "$variable_name" || return 1
     [ -z "${!variable_name}" ] || return 1
 }
-alias bl.tools.is_main="bl_tools_is_main"
+alias bl.tools.is_main=bl_tools_is_main
 bl_tools_is_main() {
     local __doc__='
     Returns true if current script is being executed.
@@ -94,7 +94,7 @@ bl_tools_is_main() {
     '
     [[ "${BASH_SOURCE[1]}" = "$0" ]]
 }
-alias bl.tools.unique="bl_tools_unique"
+alias bl.tools.unique=bl_tools_unique
 bl_tools_unique() {
     # shellcheck disable=SC2034,SC2016
     local __doc__='

@@ -116,6 +116,7 @@ bl_doctest__doc__='
 '
 # endregion
 # region functions
+alias bl.doctest.compare_result=bl_doctest_compare_result
 bl_doctest_compare_result() {
     # shellcheck disable=SC2034,SC2016
     local __doc__='
@@ -244,7 +245,7 @@ bl_doctest_compare_result() {
     done 3<<< "$buffer" 4<<< "$got"
     return $result
 }
-# shellcheck disable=SC2154
+alias bl.doctest.eval=bl_doctest_eval
 bl_doctest_eval() {
     local __doc__='
     >>> local test_buffer="
@@ -256,7 +257,7 @@ bl_doctest_eval() {
     >>> bl_doctest_use_side_by_side_output=false
     >>> bl_doctest_module_under_test=module
     >>> bl_doctest_nounset=false
-    >>> bl_doctest_eval "$test_buffer" "$output_buffer"
+    >>> bl.doctest.eval "$test_buffer" "$output_buffer"
     '
     local test_buffer="$1"
     [[ -z "$test_buffer" ]] && return 0
@@ -336,13 +337,14 @@ bl_doctest_eval() {
         return 1
     fi
 }
+alias bl.doctest.run_test=bl_doctest_run_test
 bl_doctest_run_test() {
-    local doc_string="$1"
+    local docstring="$1"
     local module="$2"
     local function="$3"
     local test_name="$module"
     [[ -z "$function" ]] || test_name="$function"
-    if bl.doctest.parse_doc_string "$doc_string" bl_doctest_eval ">>>" \
+    if bl.doctest.parse_docstring "$docstring" bl_doctest_eval ">>>" \
         "$module" "$function"
     then
         bl.logging.verbose "$test_name:[${bl_cli_color_lightgreen}PASS${bl_cli_color_default}]"
@@ -351,9 +353,10 @@ bl_doctest_run_test() {
         return 1
     fi
 }
-bl_doctest_parse_doc_string() {
+alias bl.doctest.parse_docstring=bl_doctest_parse_docstring
+bl_doctest_parse_docstring() {
     local __doc__='
-    >>> local doc_string="
+    >>> local docstring="
     >>>     (test)block
     >>>     output block
     >>> "
@@ -368,10 +371,10 @@ bl_doctest_parse_doc_string() {
     >>>         fi
     >>>     done <<< "$output_buffer"
     >>> }
-    >>> bl.doctest.parse_doc_string "$doc_string" _ "(test)"
+    >>> bl.doctest.parse_docstring "$docstring" _ "(test)"
     block:
     output block
-    >>> local doc_string="
+    >>> local docstring="
     >>>     Some text (block 1).
     >>>
     >>>
@@ -407,7 +410,7 @@ bl_doctest_parse_doc_string() {
     >>>     [ ! -z "$output_buffer" ] && echo "$output_buffer"
     >>>     return 0
     >>> }
-    >>> bl.doctest.parse_doc_string "$doc_string" _ "(test)"
+    >>> bl.doctest.parse_docstring "$docstring" _ "(test)"
     text_buffer (block 1):
     Some text (block 1).
     empty_line
@@ -434,8 +437,8 @@ bl_doctest_parse_doc_string() {
     local preserve_prompt
     bl.arguments.set "$@"
     bl.arguments.get_flag --preserve-prompt preserve_prompt
-    bl.arguments.apply_new_arguments
-    local doc_string="$1"  # the docstring to test
+    bl.arguments.apply_new
+    local docstring="$1"
     local parse_buffers_function="$2"
     local prompt="$3"
     local module="${4:-}"
@@ -446,11 +449,11 @@ bl_doctest_parse_doc_string() {
     local output_buffer=""
 
     # remove leading blank line
-    [[ "$(head --lines=1 <<< "$doc_string")" != *[![:space:]]* ]] &&
-        doc_string="$(tail --lines=+2 <<< "$doc_string" )"
+    [[ "$(head --lines=1 <<< "$docstring")" != *[![:space:]]* ]] &&
+        docstring="$(tail --lines=+2 <<< "$docstring" )"
     # remove trailing blank line
-    [[ "$(tail --lines=1 <<< "$doc_string")" != *[![:space:]]* ]] &&
-        doc_string="$(head --lines=-1 <<< "$doc_string" )"
+    [[ "$(tail --lines=1 <<< "$docstring")" != *[![:space:]]* ]] &&
+        docstring="$(head --lines=-1 <<< "$docstring" )"
 
     eval_buffers() {
         $parse_buffers_function "$test_buffer" "$output_buffer" \
@@ -540,7 +543,7 @@ bl_doctest_parse_doc_string() {
                 ;;
         esac
         state=$next_state
-    done <<< "$doc_string"
+    done <<< "$docstring"
     # shellcheck disable=SC2154
     [[ "$(tail --lines=1 <<< "$text_buffer")" = "" ]] &&
         text_buffer="$(head --lines=-1 <<< "$text_buffer" )"
@@ -549,19 +552,21 @@ bl_doctest_parse_doc_string() {
 bl_doctest_doc_identifier=__doc__
 bl_doctest_doc_regex="/__doc__='/,/';$/p"
 bl_doctest_doc_regex_one_line="__doc__='.*';$"
+alias bl.doctest_get_function_docstring=bl_doctest_get_function_docstring
 bl_doctest_get_function_docstring() {
     function="$1"
     (
         unset $bl_doctest_doc_identifier
-        if ! doc_string="$(type "$function" | \
+        if ! docstring="$(type "$function" | \
             grep "$bl_doctest_doc_regex_one_line")"
         then
-            doc_string="$(type "$function" | sed --quiet "$bl_doctest_doc_regex")"
+            docstring="$(type "$function" | sed --quiet "$bl_doctest_doc_regex")"
         fi
-        eval "$doc_string"
+        eval "$docstring"
         echo "${!bl_doctest_doc_identifier}"
     )
 }
+alias bl.doctest.print_declaration_warning=bl_doctest_print_declaration_warning
 bl_doctest_print_declaration_warning() {
     local module="$1"
     local function="$2"
@@ -578,6 +583,7 @@ bl_doctest_print_declaration_warning() {
     done
 }
 bl_doctest_exception_active=false
+alias bl_doctest_test_module=bl.doctest.test_module
 bl_doctest_test_module() {
     (
     module=$1
@@ -595,20 +601,20 @@ bl_doctest_test_module() {
     bl.time.start
     # module level tests
     test_identifier="${module//[^[:alnum:]_]/_}"__doc__
-    doc_string="${!test_identifier}"
-    if ! [ -z "$doc_string" ]; then
+    docstring="${!test_identifier}"
+    if ! [ -z "$docstring" ]; then
         let "total++"
-        bl.doctest.run_test "$doc_string" "$module" && let "success++"
+        bl.doctest.run_test "$docstring" "$module" && let "success++"
     fi
     # function level tests
-    # TODO detect and warn doc_strings with double quotes
+    # TODO detect and warn docstrings with double quotes
     test_identifier=__doc__
     for fun in $declared_functions; do
         # shellcheck disable=SC2089
-        doc_string="$(bl.doctest.get_function_docstring "$fun")"
-        if [[ "$doc_string" != "" ]]; then
+        docstring="$(bl.doctest.get_function_docstring "$fun")"
+        if [[ "$docstring" != "" ]]; then
             let "total++"
-            bl.doctest.run_test "$doc_string" "$module" "$fun" && let "success++"
+            bl.doctest.run_test "$docstring" "$module" "$fun" && let "success++"
         else
             ! $bl_doctest_supress_undocumented && \
                 bl.logging.warn "undocumented function $fun"
@@ -620,10 +626,11 @@ bl_doctest_test_module() {
     exit 0
     )
 }
-bl_doctest_parse_args() {
+alias bl.doctest.parse_arguments=bl_doctest_parse_arguments
+bl_doctest_parse_arguments() {
     local __doc__='
         +bl.documentation.exclude
-        >>> bl.doctest.parse_args non_existing_module
+        >>> bl.doctest.parse_arguments non_existing_module
         >>> echo $?
         +bl.doctest.contains
         +bl.doctest.ellipsis
@@ -635,7 +642,7 @@ bl_doctest_parse_args() {
     local filename module directory verbose help
     bl.arguments.set "$@"
     bl.arguments.get_flag --help -h help
-    $help && bl.documentation.print_doc_string "$bl_doctest__doc__" && return 0
+    $help && bl.documentation.print_docstring "$bl_doctest__doc__" && return 0
     bl.arguments.get_flag --side-by-side bl_doctest_use_side_by_side_output
     # do not warn about unprefixed names
     bl.arguments.get_flag --no-check-namespace bl_doctest_supress_declaration
@@ -644,7 +651,7 @@ bl_doctest_parse_args() {
     # use set -o nounset inside tests
     bl.arguments.get_flag --use-nounset bl_doctest_nounset
     bl.arguments.get_flag --verbose -v verbose
-    bl.arguments.apply_new_arguments
+    bl.arguments.apply_new
 
     if $verbose; then
         bl.logging.set_level verbose
@@ -687,7 +694,7 @@ bl_doctest_parse_args() {
 }
 # endregion
 if bl.tools.is_main; then
-    bl.doctest.parse_args "$@"
+    bl.doctest.parse_arguments "$@"
 fi
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

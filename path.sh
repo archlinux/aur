@@ -28,7 +28,7 @@ bl_path_run_in_programs_location() {
         return $?
     fi
 }
-alias bl.path.convert_to_absolute='bl_path_convert_to_absolute'
+alias bl.path.convert_to_absolute=bl_path_convert_to_absolute
 bl_path_convert_to_absolute() {
     local __doc__='
     Converts given path into an absolute one.
@@ -45,7 +45,7 @@ bl_path_convert_to_absolute() {
         echo "${absolute_path}/${file_name}"
     fi
 }
-alias bl.path.convert_to_relative='bl_path_convert_to_relative'
+alias bl.path.convert_to_relative=bl_path_convert_to_relative
 bl_path_convert_to_relative() {
     # shellcheck disable=SC2016
     local __doc__='

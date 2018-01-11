@@ -22,7 +22,7 @@ bl_network_wlan_start() {
     dhclient wlan0
     return $?
 }
-alias bl.network.wlan_stop='bl_network_wlan_stop'
+alias bl.network.wlan_stop=bl_network_wlan_stop
 bl_network_wlan_stop() {
     local __doc__='
     Stops wlan functionality.
@@ -34,7 +34,7 @@ bl_network_wlan_stop() {
     killall dhclient3
     return $?
 }
-alias bl.network.wlan_restart='bl_network_wlan_restart'
+alias bl.network.wlan_restart=bl_network_wlan_restart
 bl_network_wlan_restart() {
     local __doc__='
     Restart wlan functionality.

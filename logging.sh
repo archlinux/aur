@@ -91,6 +91,7 @@ bl_logging_commands_level=$(bl.array.get_index 'critical' "${bl_logging_levels[@
 bl_logging_level=$(bl.array.get_index 'critical' "${bl_logging_levels[@]}")
 # endregion
 # region functions
+alias bl.logging.set_commands_level=bl_logging_set_commands_level
 bl_logging_set_commands_level() {
     bl_logging_commands_level=$(bl.array.get_index "$1" "${bl_logging_levels[@]}")
     if [ "$bl_logging_level" -ge "$bl_logging_commands_level" ]; then
@@ -99,15 +100,15 @@ bl_logging_set_commands_level() {
         bl.logging.set_command_output_off
     fi
 }
-alias bl.logging.set_commands_level='bl_logging_set_commands_level'
+alias bl.logging.get_level=bl_logging_get_level
 bl_logging_get_level() {
     echo "${bl_logging_levels[$bl_logging_level]}"
 }
-alias bl.logging.get_level='bl_logging_get_level'
+alias bl.logging.get_commands_level=bl_logging_get_commands_level
 bl_logging_get_commands_level() {
     echo "${bl_logging_levels[$bl_logging_commands_level]}"
 }
-alias bl.logging.get_commands_level='bl_logging_get_commands_level'
+alias bl.logging.set_level=bl_logging_set_level
 bl_logging_set_level() {
     # shellcheck disable=SC2034,SC2016
     local __doc__='
@@ -125,7 +126,7 @@ bl_logging_set_level() {
         bl.logging.set_command_output_off
     fi
 }
-alias bl.logging.set_level='bl_logging_set_level'
+alias bl.logging.get_prefix=bl_logging_get_prefix
 bl_logging_get_prefix() {
     local level=$1
     local level_index=$2
@@ -137,7 +138,7 @@ bl_logging_get_prefix() {
     local prefix=[${loglevel}:"$path":${BASH_LINENO[1]}]
     echo "$prefix"
 }
-alias bl.logging.get_prefix=bl_logging_get_prefix
+alias bl.logging.log=bl_logging_log
 bl_logging_log() {
     local level="$1"
     if [ "$level" = 'warn' ]; then
@@ -147,24 +148,24 @@ bl_logging_log() {
     local level_index
     level_index=$(bl.array.get_index "$level" "${bl_logging_levels[@]}")
     if [ "$level_index" -eq -1 ]; then
-        bl_logging_log critical "loglevel \"$level\" not available, use one of: "\
+        bl.logging.log critical "loglevel \"$level\" not available, use one of: "\
             "${bl_logging_levels[@]}"
         return 1
     fi
     if [ "$bl_logging_level" -ge "$level_index" ]; then
-        bl_logging_plain "$(bl_logging_get_prefix "$level" "$level_index")" "$@"
+        bl.logging.plain "$(bl_logging_get_prefix "$level" "$level_index")" "$@"
     fi
 }
-alias bl.logging.log='bl_logging_log'
 alias bl.logging.critical='bl_logging_log critical'
 alias bl.logging.debug='bl_logging_log debug'
 alias bl.logging.error='bl_logging_log error'
 alias bl.logging.info='bl_logging_log info'
 alias bl.logging.verbose='bl_logging_log verbose'
 alias bl.logging.warn='bl_logging_log warn'
-alias bl.logging.warning='bl_logging_log warn'
+alias bl.logging.warning='bl.logging.warn'
 bl_logging_output_to_saved_file_descriptors=false
 bl_logging_off=false
+alias bl.logging.cat=bl_logging_cat
 bl_logging_cat() {
     $bl_logging_off && return 0
     if [[ "$bl_logging_log_file" != "" ]]; then
@@ -180,7 +181,7 @@ bl_logging_cat() {
         fi
     fi
 }
-alias bl.logging.cat='bl_logging_cat'
+alias bl.logging.plain=bl_logging_plain
 bl_logging_plain() {
     local __doc__='
     >>> bl.logging.set_level info
@@ -205,29 +206,29 @@ bl_logging_plain() {
         fi
     fi
 }
-alias bl.logging.plain='bl_logging_plain'
-bl_logging_commands_output_saved="std"
+bl_logging_commands_output_saved=std
+alias bl.logging.set_command_output_off=bl_logging_set_command_output_off
 bl_logging_set_command_output_off() {
     bl_logging_commands_output_saved="$bl_logging_options_command"
     bl_logging_set_file_descriptors "$bl_logging_log_file" \
         --logging="$bl_logging_options_log" --commands="off"
 }
-alias bl.logging.set_command_output_off=bl_logging_set_command_output_off
+alias bl.logging.set_command_output_on=bl_logging_set_command_output_on
 bl_logging_set_command_output_on() {
     bl.logging.set_file_descriptors "$bl_logging_log_file" \
         --logging="$bl_logging_options_log" \
         --commands="std"
 }
-alias bl.logging.set_command_output_on=bl_logging_set_command_output_on
 bl_logging_log_file=''
 # shellcheck disable=SC2034
-bl_logging_tee_fifo=""
-bl_logging_tee_fifo_dir=""
+bl_logging_tee_fifo=''
+bl_logging_tee_fifo_dir=''
 bl_logging_tee_fifo_active=false
 bl_logging_file_descriptors_saved=false
 bl_logging_commands_tee_fifo_active=false
-bl_logging_options_log="std"
-bl_logging_options_command="std"
+bl_logging_options_log=std
+bl_logging_options_command=std
+alias bl.logging.set_log_file=bl_logging_set_log_file
 bl_logging_set_log_file() {
     local __doc__='
     >>> local test_file="$(mktemp)"
@@ -268,7 +269,7 @@ bl_logging_set_log_file() {
     [[ "$1" == "" ]] &&  return 0
     bl.logging.set_file_descriptors "$1" --commands=tee --logging=tee
 }
-alias bl.logging.set_log_file='bl_logging_set_log_file'
+alias bl.logging.set_file_descriptors=bl_logging_set_file_descriptors
 bl_logging_set_file_descriptors() {
     local __doc__='
 
@@ -455,7 +456,6 @@ bl_logging_set_file_descriptors() {
         return 0
     fi
     # It's guaranteed that we have a log file from here on.
-
     if ! $bl_logging_file_descriptors_saved; then
         # save /dev/stdout and /dev/stderr to &3, &4
         exec 3>&1 4>&2
@@ -494,7 +494,6 @@ bl_logging_set_file_descriptors() {
         exec 1>>/dev/null 2>>/dev/null
     fi
 }
-alias bl.logging.set_file_descriptors='bl_logging_set_file_descriptors'
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

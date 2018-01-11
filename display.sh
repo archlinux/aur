@@ -10,6 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region functions
+alias bl.display.load_xinit_sources=bl_display_load_xinit_sources
 bl_display_load_xinit_sources() {
     local __doc__='
     This functions loads all xinit source scripts.
@@ -24,7 +25,7 @@ bl_display_load_xinit_sources() {
         unset filePath
     fi
 }
-alias bl.display.load_xinit_sources='bl_display_load_xinit_sources'
+alias bl.display.wacom_map=bl_display_wacom_map
 bl_display_wacom_map() {
     local __doc__='
     This function maps wacom input device to given output display.
@@ -57,7 +58,7 @@ bl_display_wacom_map() {
     done
     unset IFS
 }
-alias bl.display.wacom_map='bl_display_wacom_map'
+alias bl.display.wacom_rotate=bl_display_wacom_rotate
 bl_display_wacom_rotate() {
     local __doc__='
     Rotates a wacom display orientation 180°
@@ -139,7 +140,7 @@ EOF
     bl.display.wacom_map $_WACOM_ARG
     return $?
 }
-alias bl.display.wacom_rotate=bl_display_wacom_rotate
+alias bl.display.wacom_toggle_finger_touch_state=bl_display_wacom_toggle_finger_touch_state
 bl_display_wacom_toggle_finger_touch_state() {
     local __doc__='
     Toggles between enabled and disabled finger touch on wacom displays.
@@ -159,7 +160,6 @@ bl_display_wacom_toggle_finger_touch_state() {
         return $?
     fi
 }
-alias bl.display.wacom_toggle_finger_touch_state=bl_display_wacom_toggle_finger_touch_state
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

@@ -21,6 +21,7 @@ bl_changeroot__dependencies__=(mountpoint mount umount mkdir)
 bl_changeroot__optional_dependencies__=(fakeroot fakechroot)
 # endregion
 # region functions
+alias bl.changeroot=bl_changeroot
 bl_changeroot() {
     local __doc__='
     This function performs a linux change root if needed and provides all
@@ -40,7 +41,7 @@ bl_changeroot() {
     fi
     return $?
 }
-alias bl.changeroot=bl_changeroot
+alias bl.changeroot.with_fake_fallback=bl_changeroot_with_fake_fallback
 bl_changeroot_with_fake_fallback() {
     local __doc__='
     Perform the available change root program wich needs at least rights.
@@ -56,7 +57,7 @@ bl_changeroot_with_fake_fallback() {
     fakeroot fakechroot chroot "$@"
     return $?
 }
-alias bl.changeroot.with_fake_fallback=bl_changeroot_with_fake_fallback
+alias bl.changeroot.with_kernel_api=bl_changeroot_with_kernel_api
 bl_changeroot_with_kernel_api() {
     local __doc__='
     Performs a change root by mounting needed host locations in change root
@@ -150,7 +151,6 @@ bl_changeroot_with_kernel_api() {
     done
     return $return_code
 }
-alias bl.changeroot.with_kernel_api=bl_changeroot_with_kernel_api
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

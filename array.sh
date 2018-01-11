@@ -10,7 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region functions
-# shellcheck disable=SC2034
+alias bl.array.filter=bl_array_filter
 bl_array_filter() {
     # shellcheck disable=SC2016,SC2034
     local __doc__='
@@ -29,7 +29,7 @@ bl_array_filter() {
         echo "$element"
     done | grep --extended-regexp "$pattern"
 }
-alias bl.array.filter='bl_array_filter'
+alias bl.array.get_index=bl_array_get_index
 bl_array_get_index() {
     # shellcheck disable=SC2016
     local __doc__='
@@ -59,7 +59,7 @@ bl_array_get_index() {
         return 1
     fi
 }
-alias bl.array.get_index='bl_array_get_index'
+alias bl.array.slice=bl_array_slice
 bl_array_slice() {
     # shellcheck disable=SC2016,SC2034
     local __doc__='
@@ -172,7 +172,6 @@ bl_array_slice() {
     let "start=(( start + 1 ))"
     echo "${@: $start:$length}"
 }
-alias bl.array.slice='bl_array_slice'
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

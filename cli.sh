@@ -15,7 +15,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.tools
 # endregion
 # region variables
-# shellcheck disable=SC2034
 bl_cli__doc__='
     This module provides variables for printing colorful and unicode glyphs.
     The Terminal features are detected automatically but can also be
@@ -26,6 +25,7 @@ bl_cli__doc__='
 bl_cli_color_enabled=false
 # endregion
 # region functions
+alias bl.cli.enable_color=bl_cli_enable_color
 bl_cli_enable_color() {
     local __doc__='
         Enables color output explicitly.
@@ -71,8 +71,7 @@ bl_cli_enable_color() {
     bl_cli_color_noinvert='\033[27m'
     bl_cli_color_noinvisible='\033[28m'
 }
-alias bl.cli.enable_color='bl_cli_enable_color'
-# shellcheck disable=SC2034
+alias bl.cli.disable_color=bl_cli_disable_color
 bl_cli_disable_color() {
     local __doc__='
         Disables color output explicitly.
@@ -118,10 +117,10 @@ bl_cli_disable_color() {
     bl_cli_color_noinvert=''
     bl_cli_color_noinvisible=''
 }
-alias bl.cli.disable_color='bl_cli_disable_color'
 ## region glyphs
 # NOTE: use 'xfd -fa <font-name>' to watch glyphs
 bl_cli_unicode_enabled=false
+alias bl.cli.enable_unicode_glyphs=bl_cli_enable_unicode_glyphs
 bl_cli_enable_unicode_glyphs() {
     local __doc__='
         Enables unicode glyphs explicitly.
@@ -151,8 +150,7 @@ bl_cli_enable_unicode_glyphs() {
     bl_cli_powerline_saxophone='\u1f3b7'
     bl_cli_powerline_thumbsup='\u1f44d'
 }
-alias bl.cli.enable_unicode_glyphs='bl_cli_enable_unicode_glyphs'
-# shellcheck disable=SC2034
+alias bl.cli.disable_unicode_glyphs=bl_cli_disable_unicode_glyphs
 bl_cli_disable_unicode_glyphs() {
     local __doc__='
         Disables unicode glyphs explicitly.
@@ -182,8 +180,8 @@ bl_cli_disable_unicode_glyphs() {
     bl_cli_powerline_saxophone='(yeah)'
     bl_cli_powerline_thumbsup='(ok)'
 }
-alias bl.cli.disable_unicode_glyphs='bl_cli_disable_unicode_glyphs'
 # TODO improve unicode detection
+alias bl.cli.glyph_available_in_font=bl_cli_glyph_available_in_font
 bl_cli_glyph_available_in_font() {
 
     #local font=$1

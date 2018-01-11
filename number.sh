@@ -10,6 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region functions
+alias bl.number.calculate_percent=bl_number_calculate_percent
 bl_number_calculate_percent() {
     __doc__='
     Calculates percent of second argument from the first argument.

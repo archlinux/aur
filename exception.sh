@@ -164,6 +164,7 @@ bl_exception__doc__='
 bl_exception_active=false
 bl_exception_active_before_try=false
 declare -ig bl_exception_try_catch_level=0
+alias bl.exception.error_handler=bl_exception_error_handler
 bl_exception_error_handler() {
     local error_code=$?
     local traceback="Traceback (most recent call first):"
@@ -184,7 +185,7 @@ bl_exception_error_handler() {
     fi
     exit $error_code
 }
-alias bl.exception.error_handler=bl_exception_error_handler
+alias bl.exception.activate=bl_exception_activate
 bl_exception_activate() {
     $bl_exception_active && return 0
 
@@ -233,7 +234,7 @@ bl_exception_activate() {
     #trap bl_exception_exit_handler EXIT
     bl_exception_active=true
 }
-alias bl.exception.activate=bl_exception_activate
+alias bl.exception.deactivate=bl_exception_deactivate
 bl_exception_deactivate() {
     # shellcheck disable=SC2016,2034
     local __doc__='
@@ -255,7 +256,7 @@ bl_exception_deactivate() {
     trap "$bl_exception_err_traps" ERR
     bl_exception_active=false
 }
-alias bl.exception.deactivate=bl_exception_deactivate
+alias bl.exception.enter_try=bl_exception_enter_try
 bl_exception_enter_try() {
     if (( bl_exception_try_catch_level == 0 )); then
         bl_exception_last_traceback_file="$(mktemp --suffix=rebash-exception)"
@@ -264,7 +265,7 @@ bl_exception_enter_try() {
     bl.exception.deactivate
     bl.exception.try_catch_level+=1
 }
-alias bl.exception.enter_try=bl_exception_enter_try
+alias bl.exception.exit_try=bl_exception_exit_try
 bl_exception_exit_try() {
     local bl_exception_result=$1
     bl_exception_try_catch_level+=-1
@@ -279,7 +280,6 @@ bl_exception_exit_try() {
     fi
     return $bl_exception_result
 }
-alias bl.exception.exit_try=bl_exception_exit_try
 alias bl.exception.try='bl.exception.enter_try; (bl.exception.activate; '
 alias bl.exception.catch='true); bl.exception.exit_try $? || '
 # endregion
