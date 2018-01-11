@@ -2,7 +2,7 @@
 # Maintainer: Adam S Levy <adam at aslevy.com>
 
 pkgname='telegraf'
-pkgver='1.5.0'
+pkgver='1.5.1'
 pkgrel='1'
 pkgdesc='Server-level metric gathering agent for InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -27,7 +27,7 @@ build()
   export GOBIN="$GOPATH/bin"
   export PATH="$GOBIN:$PATH"
   mkdir -p "$GOPATH/src/github.com/influxdata"
-  mv -f "$srcdir/telegraf" "$GOPATH/src/github.com/influxdata/"
+  cp -af "$srcdir/telegraf" "$GOPATH/src/github.com/influxdata/"
 
   cd "$GOPATH/src/github.com/influxdata/telegraf"
 
@@ -37,7 +37,7 @@ build()
 
   revision=`git rev-parse HEAD`
   version=`git describe --tags`
-  echo "Building influxdb version=$version commit=$revision branch=master"
+  echo "Building ${pkgname} version=$version commit=$revision branch=master"
   _LDFLAGS="-X main.version=$version -X main.commit=$revision -X main.branch=master"
   go install -ldflags="$_LDFLAGS" ./...
 }
