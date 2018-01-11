@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar /usr/lib/access-export.jar $@
+java -jar /usr/lib/access-export/access-export.jar $@
