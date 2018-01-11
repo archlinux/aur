@@ -8,10 +8,10 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.14
-_pkgver=4.14.8
-_rtpatchver=rt9
+_pkgver=4.14.12
+_rtpatchver=rt10
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -29,13 +29,11 @@ source=(
   '90-linux-rt.hook'  # pacman hook for initramfs regeneration
   'linux-rt.preset'   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
-  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-  0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-  0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
-  0001-drm-i915-Avoid-PPS-HW-SW-state-mismatch-due-to-rounding.patch
+  0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+  0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
 )
 validpgpkeys=(
@@ -47,22 +45,20 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '42eaed731b716244514b765c199e8f675d79287d7630e5c2911053ad52a1fa0a'
+            'da5d8db44b0988e4c45346899d3f5a51f8bd6c25f14e729615ca9ff9f17bdefd'
             'SKIP'
-            'd33042049f8c402efd23ae3c730b19259012d8b2490dfcb658e99921daf05d2b'
+            '254a13ec6e835796d86b627346dbc13dd7b9e7cca76300ebe3617a5207d4ea10'
             'SKIP'
-            'b2575e179c4648a771f94bd47f06002615dc8049f24a9dc0ad21149877e9a0f6'
+            '0609e14c5010e59ad6ae58399f12b8872c9d8e2cd3a87e3b9f14007b2adaa13c'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85'
-            'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
-            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2'
-            'ed3266ab03f836f57de0faf8a10ffd7566c909515c2649de99adaab2fac4aa32'
-            '64a014f7e1b4588728b3ea9538beee67ec63fb792d890c7be9cc13ddc2121b00'
-            '3d4c41086c077fbd515d04f5e59c0c258f700433c5da3365d960b696c2e56efb'
-            '95f0d0a94983b0dafd295f660a663f9be5ef2fcb9646098426a5d12b59f50638'
-            'b0396825ecd293499907ad86a0eb642cd5e82e534619f95658438ee6ecff10eb'
+            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
+            '9251c03da9d4b64591d77f490ff144d4ba514e66e74294ada541bf827306c9c4'
+            '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
+            '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
+            'c3d743a0e193294bc5fbae65e7ba69fd997cd8b2ded9c9a45c5151d71d9cfb95'
+            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 _kernelname=${pkgbase#linux}
@@ -72,6 +68,7 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i ../patch-${_pkgver}
+  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
 
   # security patches
 
@@ -82,22 +79,19 @@ prepare() {
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
   # https://bugs.archlinux.org/task/56575
-  patch -Np1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+  patch -Np1 -i ../0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
 
   # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  patch -Np1 -i ../0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 
   # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0001-Revert-xfrm-Fix-stack-out-of-bounds-read-in-xfrm_sta.patch
-  patch -Np1 -i ../0002-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  patch -Np1 -i ../0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
 
   # https://bugs.archlinux.org/task/56846
-  patch -Np1 -i ../0003-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  patch -Np1 -i ../0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
 
-  # https://bugs.archlinux.org/task/56830
-  patch -Np1 -i ../0001-ALSA-usb-audio-Fix-the-missing-ctl-name-suffix-at-pa.patch
-
-  patch -Np1 -i ../0001-drm-i915-Avoid-PPS-HW-SW-state-mismatch-due-to-rounding.patch
+  # https://bugs.archlinux.org/task/56711
+  patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
   # add realtime patch
   msg "applying patch-${_pkgver}-${_rtpatchver}.patch"
