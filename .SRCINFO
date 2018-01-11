@@ -1,0 +1,22 @@
+pkgbase = dkms-hid-sony-shanwan
+	pkgdesc = The hid-sony driver patched to fix the non-stop rumbling bug with the Shanwan gamepads (clones of Dualshock 3)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/raspberrypi/linux/commit/492ca83c3d19fba1622164f07cd7b775596a7db2
+	install = hid-sony.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	depends = dkms
+	source = Makefile
+	source = dkms.conf
+	source = hid-sony.c
+	source = hid-ids.h
+	md5sums = 5cbe7c99718d8b1486b22bf727018fab
+	md5sums = 56200443eb4c01b755de1ec7c423eadc
+	md5sums = b79d3c0ce5f2734df35ecf11ea07f572
+	md5sums = 2422777cff8d52214762dccb0bd062ea
+
+pkgname = dkms-hid-sony-shanwan
+
