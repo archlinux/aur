@@ -10,7 +10,7 @@ pkgdesc="LPR and CUPS driver for HLL2340D model."
 arch=('i686' 'x86_64')
 url='http://support.brother.com/g/s/id/linux/en'
 license=('GPL')
-depends=('cups')
+depends=('cups' 'ghostscript')
 
 source=("http://download.brother.com/welcome/dlf101910/hll2340dlpr-${_brotherpkgver}-${_brotherrelease}.i386.rpm"
         "http://download.brother.com/welcome/dlf101911/hll2340dcupswrapper-${_brotherpkgver}-${_brotherrelease}.i386.rpm"
