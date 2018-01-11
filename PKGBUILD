@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://gitlab.gnome.org/danigm/fractal"
 depends=('gtk3')
-makedepends=('gtk3' 'rust' 'pkg-config' 'git')
+makedepends=('gtk3' 'rust' 'pkg-config' 'git' 'meson')
 source=("git://github.com/danigm/fractal")
 md5sums=('SKIP')
  
