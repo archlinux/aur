@@ -1,30 +1,27 @@
-pkgname=raiblocks-git
-pkgver=9.0.r87.g52e0ef67
+pkgname=raiblocks-cli-git
+pkgver=9.0.r127.g8145ae1e
 pkgrel=1
-pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
+pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees. Command-line version without wallet GUI or Qt dependencies."
 arch=('i686' 'x86_64')
-url="http://raiblocks.com/"
+url="http://raiblocks.net/"
 license=('BSD 2-clause')
-depends=('qt5-base'  'boost>=1.66.0' 'boost-libs>=1.66.0')
+depends=('boost>=1.66.0' 'boost-libs>=1.66.0')
 provides=(raiblocks)
+conflicts=(raiblocks-git)
 install=install
 pkgver() {
   cd "raiblocks"
   git describe --long --tags | sed 's/^[vV]//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-source=(raiblocks.desktop
-  raiblocks128.png
-  raiblocks.service
+source=(raiblocks.service
   git+https://github.com/clemahieu/raiblocks.git
   git+https://github.com/weidai11/cryptopp.git
   git+https://github.com/clemahieu/lmdb.git
   git+https://github.com/miniupnp/miniupnp.git
   git+https://github.com/clemahieu/phc-winner-argon2.git)
 
-sha256sums=('74b9bc75c3d5596603e54e2553ff69d367f384789c7565437a72a64dc22f0fdd'
-            '7e08e2b6d50638fb1438c746da78defc49ef317ee8ffa6feeb52635a976a0ea9'
-            '53ed2e7cf24c02172e3e804dd8689674867d82ca21b7d03be590d7a9b3a9c8bb'
+sha256sums=('53ed2e7cf24c02172e3e804dd8689674867d82ca21b7d03be590d7a9b3a9c8bb'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -43,7 +40,7 @@ prepare() {
 
   git submodule update --init --recursive
 
-  _flags=( "-D RAIBLOCKS_GUI=ON" )
+  _flags=( "-D RAIBLOCKS_GUI=OFF" )
   
   if grep -q avx2 /proc/cpuinfo; then
     echo "using AVX2 optimizations"
@@ -63,7 +60,6 @@ prepare() {
 
 build() {
   cd "$srcdir/raiblocks"
-  make rai_wallet
   make rai_node
   make rai_lib
 }
@@ -71,12 +67,9 @@ build() {
 package() {
   cd "$srcdir/raiblocks"
 
-  install -Dm755 rai_wallet "$pkgdir"/usr/bin/rai_wallet
+
   install -Dm755 rai_node "$pkgdir"/usr/bin/rai_node
   install -Dm644 librai_lib.so "$pkgdir"/usr/lib/librai_lib.so
-
-  install -Dm644 "$srcdir"/raiblocks128.png "$pkgdir"/usr/share/pixmaps/raiblocks128.png
-  install -Dm644 "$srcdir"/raiblocks.desktop "$pkgdir"/usr/share/applications/raiblocks.desktop
 
   install -Dm644 "$srcdir"/raiblocks.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
 }
