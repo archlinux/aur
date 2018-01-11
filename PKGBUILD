@@ -5,7 +5,7 @@
 
 pkgname=solfege
 pkgver=3.22.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Music education and ear training software"
 arch=('x86_64')
 url="https://www.gnu.org/software/solfege/"
@@ -22,16 +22,22 @@ optdepends=('timidity++: or any MIDI player & MIDI-WAV converter'
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig})
 sha512sums=('475d2eea54d0c6b2cb11a5271a02ca64e79c45fb6155d87a01b16e826669a07cca0b4c2543cbbb1ce8d36412ccfd64e8052de1efad3db19f34d7e0a984d7459a'
             'SKIP')
-validgpgkeys=('D1820E3CCB05255CCD9855988143F7EEA5E43EA3')
+validpgpkeys=('D1820E3CCB05255CCD9855988143F7EEA5E43EA3')
 
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
+prepare() {
+  cd "${pkgname}-${pkgver}"
   # python2 fix for entire build
   export PYTHON=/usr/bin/python2
 
   # python2 fix for rogue Makefile
   sed -i 's/shell python/shell python2/g' help/Makefile
+
+  # fix static python shebang
+  sed -i 's/python/python2/g' "${pkgname}/_version.py"
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc
@@ -39,7 +45,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
   # python2 fix for runtime
   for i in $(find "$pkgdir" -name '*.py'); do
