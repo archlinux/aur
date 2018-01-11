@@ -1,6 +1,6 @@
 pkgbase=hyperledger-composer
 pkgname=('hyperledger-composer-cli' 'hyperledger-composer-playground')
-pkgver=0.16.1
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="A framework for building Blockchain business networks"
 arch=(i686 x86_64)
