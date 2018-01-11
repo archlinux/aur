@@ -42,6 +42,12 @@ package() {
 
   msg2 "Removing crud"
   rm -vf "$pkgdir/usr/lib/udev/rules.d/95-dataeng-udev.rules"
+
+  # the .sh one is rather ugly, let's do both for consistency
+  echo 'export PATH=$PATH:/opt/dell/srvadmin/sbin:/opt/dell/srvadmin/bin' \
+    > "$pkgdir/etc/profile.d/srvadmin-path.sh"
+  echo 'set path = ( $path /opt/dell/srvadmin/sbin /opt/dell/srvadmin/bin )' \
+    > "$pkgdir/etc/profile.d/srvadmin-path.csh"
 }
 
 _reloc() {
