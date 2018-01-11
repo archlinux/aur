@@ -2,7 +2,7 @@
 
 pkgname=antibody
 pkgver=3.4.3
-pkgrel=3
+pkgrel=1
 pkgdesc="A shell plugin manager."
 arch=('i686' 'x86_64')
 url="https://getantibody.github.io/"
