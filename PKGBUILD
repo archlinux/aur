@@ -2,16 +2,16 @@
 
 pkgbase='swift'
 pkgname=('swift-im' 'swiften')
-pkgver=3.0
-pkgrel=4
+pkgver=4.0rc5
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='XMPP client written in C++ with Qt and Swiften'
 url="http://swift.im/"
 license=('GPL3')
-makedepends=('python2' 'openssl' 'boost' 'qt5-multimedia'
-             'qt5-webkit' 'qt5-x11extras' 'qt5-tools')
+makedepends=('python2' 'openssl' 'boost' 'qt5-base' 'qt5-multimedia'
+             'qt5-webkit' 'qt5-x11extras' 'qt5-tools' 'qt5-svg')
 source=("http://swift.im/downloads/releases/$pkgbase-$pkgver/$pkgbase-$pkgver.tar.gz")
-sha256sums=('8aa490431190294e62a9fc18b69ccc63dd0f561858d7d0b05c9c65f4d6ba5397')
+sha256sums=('7dc50e88e1522f201f132232d9aa0a0018de4902ea192e4eac5cdb8425fdf990')
 
 # Those options need to be consistent between each scons invocation.
 _scons_options='max_jobs=1 optimize=1 debug=0 swiften_dll=1'
@@ -23,8 +23,8 @@ build() {
 
 package_swift-im() {
   pkgdesc='XMPP client written in C++ with Qt and Swiften'
-  depends=("swiften=$pkgver" 'qt5-multimedia' 'qt5-webkit' 'qt5-x11extras' 'libxss' 'hicolor-icon-theme')
-  optdepends=('qt5-svg: for SVG avatars')
+  depends=("swiften=$pkgver" 'qt5-base' 'qt5-multimedia' 'qt5-webkit'
+           'qt5-x11extras' 'qt5-svg' 'libxss' 'hicolor-icon-theme')
 
   cd $pkgbase-$pkgver
   ./scons $_scons_options SWIFT_INSTALLDIR="$pkgdir"/usr/ "$pkgdir"/usr/
