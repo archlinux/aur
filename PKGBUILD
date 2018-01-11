@@ -1,14 +1,14 @@
+# Maintainer: David Runge <dave@sleepmap.de>
 # Maintainer: Ray Rashif <schiv@archlinux.org>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: sickhate <sickhate@tux-linux.net>
 
-# TODO: bring in pyalsa, csound, mma
 pkgname=solfege
 pkgver=3.22.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Music education and ear training software"
 arch=('x86_64')
-url="http://www.solfege.org/"
+url="https://www.gnu.org/software/solfege/"
 license=('GPL3')
 depends=('pygtk' 'librsvg')
 makedepends=('ghostscript' 'gnome-doc-utils' 'libxslt'
@@ -19,8 +19,10 @@ optdepends=('timidity++: or any MIDI player & MIDI-WAV converter'
             'vorbis-tools: or any OGG player & WAV-OGG converter'
             'lilypond: for generating print-outs & score sheets'
             'texlive-bin: use LaTeX to replace HTML reports with DVI')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('ee9778d2b960b7afb375c5b3c3878222')
+source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig})
+sha512sums=('475d2eea54d0c6b2cb11a5271a02ca64e79c45fb6155d87a01b16e826669a07cca0b4c2543cbbb1ce8d36412ccfd64e8052de1efad3db19f34d7e0a984d7459a'
+            'SKIP')
+validgpgkeys=('D1820E3CCB05255CCD9855988143F7EEA5E43EA3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
