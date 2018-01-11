@@ -18,11 +18,11 @@ build() {
   python setup.py build
 }
 
-# # Doesn't work
-# check() {
-#   cd "${srcdir}/line_profiler-${pkgver}"
-#   python -m unittest discover -v tests
-# }
+check() {
+  cd "${srcdir}/line_profiler-${pkgver}"
+  py_ver=$(python -c 'import sys; print("{0.major}.{0.minor}".format(sys.version_info))')
+  PYTHONPATH="./build/lib.linux-${CARCH}-${py_ver}" python -m unittest discover -v tests
+}
 
 package() {
   cd "${srcdir}/line_profiler-${pkgver}"
