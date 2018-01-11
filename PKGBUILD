@@ -19,7 +19,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.4.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -47,14 +47,24 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg' 'qt-faststart')
 source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
+        'ffmpeg-full-rkmpp-build-fix.patch'
+        'ffmpeg-full-rkmpp-remove-stream-start.patch'
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=('5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0'
             'SKIP'
+            '142923fd02851343bfbfd31b201ba014dced8a8c8898373c72d71d30d59f5851'
+            'cac8577126c3e49f8c915fa289f3f5aa624dc55f897b8b7a5613191bcfa9c097'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
+prepare() {
+    cd "$_pkgbasename-$pkgver"
+    patch -Np1 -i "${srcdir}/ffmpeg-full-rkmpp-build-fix.patch"
+    patch -Np1 -i "${srcdir}/ffmpeg-full-rkmpp-remove-stream-start.patch"
+}
+
 build() {
-  cd $_pkgbasename-$pkgver
+  cd "$_pkgbasename-$pkgver"
 
   # Add x86_64 (opt)depends to the build
   if [ "$CARCH" = "x86_64" ]
@@ -204,7 +214,7 @@ build() {
 }
 
 package() {
-  cd $_pkgbasename-$pkgver
+  cd "$_pkgbasename-$pkgver"
   make DESTDIR="$pkgdir" install install-man
   install -Dm 755 tools/qt-faststart "${pkgdir}"/usr/bin/
   install -Dm 644 "$srcdir"/UNREDISTRIBUTABLE.txt "$pkgdir/usr/share/licenses/$pkgname/UNREDISTRIBUTABLE.txt"

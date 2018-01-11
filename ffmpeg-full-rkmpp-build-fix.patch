@@ -1,0 +1,78 @@
+From: LongChair <longchair@hotmail.com>
+Date: Sat, 6 Jan 2018 08:36:58 +0000 (+0100)
+Subject: avcodec/rkmpp : Fix broken build due to missing control operation
+X-Git-Url: http://git.videolan.org/?p=ffmpeg.git;a=commitdiff_plain;h=c6f84106366c6f243a8b07dbffcc7880009aa904
+
+avcodec/rkmpp : Fix broken build due to missing control operation
+
+This patch is taking care of https://trac.ffmpeg.org/ticket/6834.
+It seems that one of the control operations that was available to get
+the free decoders input slots was removed.
+
+There is another control operation to retrieve the used slots. Given
+that the input slot count is hardcoded to 4 in mpp at this point,
+replacing the old control operation by the other one.
+
+This was tested on Rockchip ROCK64.
+
+Signed-off-by: wm4 <nfxjfg@googlemail.com>
+---
+
+diff -Naurp a/configure b/configure
+--- a/configure	2017-12-10 19:35:18.000000000 -0200
++++ b/configure	2018-01-06 23:27:24.057673297 -0200
+@@ -6077,10 +6077,8 @@ enabled openssl           && { use_pkg_c
+                                check_lib openssl openssl/ssl.h SSL_library_init -lssl32 -leay32 ||
+                                check_lib openssl openssl/ssl.h SSL_library_init -lssl -lcrypto -lws2_32 -lgdi32 ||
+                                die "ERROR: openssl not found"; }
+-enabled rkmpp             && { { require_pkg_config rockchip_mpp rockchip_mpp rockchip/rk_mpi.h mpp_create ||
+-                                 die "ERROR : Rockchip MPP was not found."; } &&
+-                               { check_func_headers rockchip/rk_mpi_cmd.h "MPP_DEC_GET_FREE_PACKET_SLOT_COUNT" ||
+-                                 die "ERROR: Rockchip MPP is outdated, please get a more recent one."; } &&
++enabled rkmpp             && { require_pkg_config rkmpp rockchip_mpp  rockchip/rk_mpi.h mpp_create &&
++                               require_pkg_config rockchip_mpp "rockchip_mpp >= 1.3.7" rockchip/rk_mpi.h mpp_create &&
+                                { enabled libdrm ||
+                                  die "ERROR: rkmpp requires --enable-libdrm"; }
+                              }
+diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
+index c57a6ded38..946b827918 100644
+--- a/libavcodec/rkmppdec.c
++++ b/libavcodec/rkmppdec.c
+@@ -40,6 +40,7 @@
+ 
+ #define RECEIVE_FRAME_TIMEOUT   100
+ #define FRAMEGROUP_MAX_FRAMES   16
++#define INPUT_MAX_PACKETS       4
+ 
+ typedef struct {
+     MppCtx ctx;
+@@ -515,16 +516,17 @@ static int rkmpp_receive_frame(AVCodecContext *avctx, AVFrame *frame)
+     RKMPPDecoder *decoder = (RKMPPDecoder *)rk_context->decoder_ref->data;
+     int ret = MPP_NOK;
+     AVPacket pkt = {0};
+-    RK_S32 freeslots;
++    RK_S32 usedslots, freeslots;
+ 
+     if (!decoder->eos_reached) {
+         // we get the available slots in decoder
+-        ret = decoder->mpi->control(decoder->ctx, MPP_DEC_GET_FREE_PACKET_SLOT_COUNT, &freeslots);
++        ret = decoder->mpi->control(decoder->ctx, MPP_DEC_GET_STREAM_COUNT, &usedslots);
+         if (ret != MPP_OK) {
+-            av_log(avctx, AV_LOG_ERROR, "Failed to get decoder free slots (code = %d).\n", ret);
++            av_log(avctx, AV_LOG_ERROR, "Failed to get decoder used slots (code = %d).\n", ret);
+             return ret;
+         }
+ 
++        freeslots = INPUT_MAX_PACKETS - usedslots;
+         if (freeslots > 0) {
+             ret = ff_decode_get_packet(avctx, &pkt);
+             if (ret < 0 && ret != AVERROR_EOF) {
+@@ -541,7 +543,7 @@ static int rkmpp_receive_frame(AVCodecContext *avctx, AVFrame *frame)
+         }
+ 
+         // make sure we keep decoder full
+-        if (freeslots > 1 && decoder->first_frame)
++        if (freeslots > 1)
+             return AVERROR(EAGAIN);
+     }
+ 
