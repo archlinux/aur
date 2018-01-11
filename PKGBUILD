@@ -1,18 +1,19 @@
-model="l8850cdw"
+# Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
+model="l8900cdw"
 pkgname="brother-mfc-${model}"
-pkgver="1.1.2"
-pkgrel=1
-_revision=1
-pkgdesc="LPR and CUPS driver for the Brother MFC-L8850CDW"
+pkgver="1.2.0"
+pkgrel=0
+_revision=0
+pkgdesc="LPR and CUPS driver for the Brother MFC-L8900CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
 license=('unknown')
 install="brother-mfc-${model}.install"
 depends=('tcsh' 'deb2targz' 'perl' 'a2ps' 'lib32-libcups')
-source=("http://download.brother.com/welcome/dlf101092/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
-        "http://download.brother.com/welcome/dlf101093/mfc${model}cupswrapper-${pkgver}-${_revision}.i386.deb")
-sha256sums=('7e681eb44a81e018706319f2f99ef1372ff75488c83573b94cfd1bcc1522ae0c'
-            '9c8969ca59410804dbaf80e7bc437fbed5576a9c8fa68c061c2d48cc130afb04')
+source=("http://download.brother.com/welcome/dlf103242/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
+        "http://download.brother.com/welcome/dlf103251/mfc${model}cupswrapper-${pkgver}-${_revision}.i386.deb")
+sha256sums=('27acea938b3224b67bc049c8c3fbfcdff6e1c1eb60e3ff22479c36346844310c'
+            'f97be40c1c435d4be3b4db5efa082084ffe270771fbfcc7e78f280090e8403e2')
 
 
 package() {
