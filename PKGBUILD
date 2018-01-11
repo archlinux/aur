@@ -135,4 +135,15 @@ package() {
   # Install the "info" data file with snapd version
   install -m 644 -D "$GOPATH/src/${_gourl}/data/info" \
           "$pkgdir/usr/lib/snapd/info"
+
+
+  # Remove snappy core specific units
+  rm -fv "$pkgdir/usr/lib/systemd/system/snapd.system-shutdown.service"
+  rm -fv "$pkgdir/usr/lib/systemd/system/snapd.autoimport.service"
+  rm -fv "$pkgdir"/usr/lib/systemd/system/snapd.snap-repair.*
+  rm -fv "$pkgdir"/usr/lib/systemd/system/snapd.core-fixup.*
+  # and scripts
+  rm -fv "$pkgdir/usr/lib/snapd/snapd.core-fixup.sh"
+  rm -fv "$pkgdir/usr/bin/ubuntu-core-launcher"
+  rm -fv "$pkgdir/usr/lib/snapd/system-shutdown"
 }
