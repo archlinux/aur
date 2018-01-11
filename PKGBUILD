@@ -3,7 +3,7 @@
 
 _gemname=pry
 pkgname=ruby-$_gemname
-pkgver=0.10.3
+pkgver=0.11.3
 pkgrel=1
 pkgdesc='An IRB alternative and runtime developer console.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-coderay ruby-slop-3 ruby-method_source)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('ef6b1cfd58c317446e39d68587e036c3e27432440a8517f93c43f364eecee8f4')
+sha256sums=('0f8c7d6073d6f3bd4c2ca0d4fdeb240ee90b54bc1c98102f909a243fa60803d6')
 
 package() {
   cd "$srcdir"
