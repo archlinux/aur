@@ -1,0 +1,24 @@
+pkgbase = parabot-git
+	pkgdesc = Rust irc bot
+	pkgver = r70.d2b8d7ai
+	pkgrel = 1
+	url = https://github.com/ParadoxSpiral/parabot
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	depends = sqlite
+	provides = parabot
+	source = git+https://github.com/ParadoxSpiral/parabot
+	source = parabot.service
+	source = config.toml
+	source = parabot.db
+	sha256sums = SKIP
+	sha256sums = 4ebb72cf950f8b67864bdf80bf911ca069fdc393f35dccb2ff7b9406a5934686
+	sha256sums = c750a42610be544ac78ebd721c1d30a26e24823306b3800370be575ba58518a5
+	sha256sums = c9d8c48d2ed33fd624498d7e8c002350ecc95a01a2d53c8fab8a62d40344033f
+
+pkgname = parabot-git
+

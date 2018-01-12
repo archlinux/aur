@@ -1,0 +1,12 @@
+[Unit]
+Description=parabot irc bot
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env RUST_BACKTRACE=1 /usr/bin/parabot ~/.config/parabot/config.toml
+WorkingDirectory=%h
+Restart=always
+
+[Install]
+WantedBy=default.target
