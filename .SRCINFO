@@ -1,0 +1,17 @@
+pkgbase = python-ansible-toolbox
+	pkgdesc = Ansible helpers
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/larsks/ansible-toolbox
+	arch = any
+	license = None
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jinja
+	optdepends = ansible
+	options = !emptydirs
+	source = https://pypi.python.org/packages/9f/7f/89b9f2a9eda7295254a048f01d3640af8c20e80a2f8c18e4ccfd1ffaf3e2/ansible-toolbox-0.2.tar.gz
+	md5sums = 797ae59193746349d4717e252263952d
+
+pkgname = python-ansible-toolbox
+
