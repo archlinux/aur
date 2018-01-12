@@ -5,9 +5,9 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.14
-_zenpatch=zen-4.14.13-6f9090f5dcc8058d589f1e2e51667a1e8a8cff36.diff
+_zenpatch=zen-4.14.13-594de9e2bba32786baf37c6dc5df1469e55c9175.diff
 pkgver=4.14.13
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -34,7 +34,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
             'ce897f467e80452f29d7a7a8809e8585ea12192a2c32e4d18578f64b043e802e'
             'SKIP'
-            'd06732a400651441d322963416bc5491b568f98dd5bfd296f4a662809b904f9c'
+            '044be9e0fd3deca8961719fffbaa303038a6aa576993593829d5ebb5fe8faf34'
             'SKIP'
             'f9cf56592b6549b87b19bd4e2bd3ca4c693034f7fa2d7fbf8fa8842308a2df94'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
