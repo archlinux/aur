@@ -3,8 +3,8 @@
 
 pkgbase=reprotest
 pkgname=('reprotest')
-pkgver=0.7.4
-pkgrel=2
+pkgver=0.7.7
+pkgrel=1
 pkgdesc="Run a process twice and check the output for reproducibility"
 arch=('any')
 license=('GPL2' 'GPL3')
@@ -13,15 +13,11 @@ provides=("reprotest=$pkgver")
 depends=('python' 'python-rstr' 'diffoscope' 'fakeroot' 'python-distro')
 optdepends=('disorderfs>=0.5.2' 'python-progressbar>=3.34.3-1')
 makedepends=('python' 'python-setuptools')
-source=("http://reproducible.alioth.debian.org/releases/reprotest/${pkgname}_${pkgver}.tar.xz"
-        "uname-m.patch")
-sha512sums=('bf7921a99f05539e310b8d41efc0b23f9388947392710f1c55497e467ed75f07ffc611f79eabdb2e7091a7f917aacd09eaca229bfb5d68eaae726fde15444cc4'
-            'a656f5dbcbd19296823cd15f27247e999ce0e4a24d0b4e41ed8b6263abb3261a6e82a194bfb6b2b92e4457affb4198fbee1caa899f8d8359cef069fa021767fd')
+source=(http://reproducible.alioth.debian.org/releases/reprotest/${pkgname}_${pkgver}.tar.xz{,.asc})
+sha512sums=('b802d3614adacfd07f0c6cddab126af5fb621b9e2563e68d31634cb04ff402b4a5e688df27db95a8f1a70ea1e9f2c0f2fe22e5747cae3ece97846bc4c5c3a0a4'
+            'SKIP')
+validpgpkeys=("A405E58AB3725B396ED1B85C1318EFAC5FBBDBCE")
 
-prepare() {
-  cd "$srcdir/reprotest"
-  patch -Np1 -i "${srcdir}/uname-m.patch"
-}
 
 build() {
   cd "$srcdir/reprotest"
