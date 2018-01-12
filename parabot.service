@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/env RUST_BACKTRACE=1 /usr/bin/parabot "$HOME/.config/parabot/conf.toml"
+ExecStart=/usr/bin/env RUST_BACKTRACE=1 /usr/bin/parabot %h/.config/parabot/conf.toml
 WorkingDirectory=%h
 Restart=always
 

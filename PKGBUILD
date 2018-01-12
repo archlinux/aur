@@ -12,7 +12,7 @@ makedepends=(cargo git)
 source=(git+https://github.com/ParadoxSpiral/parabot
 		parabot.service)
 sha256sums=(SKIP
-            41d5e41613d0e09fc7a3cbbb32901ab8985af79a58b861fe97a78c8dc34c20f9)
+            9e8fcf53a0968ba658f2907fe891ea2a5e29180b8f1ab4d2954b92b76971975d)
 
 pkgver() {
 	cd parabot
