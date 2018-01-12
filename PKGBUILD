@@ -28,8 +28,8 @@ build() {
 
 package() {
 	cd synapse
-    mkdir -p "$pkgdir"/usr/lib/systemd/user/ "$pkgdir"/usr/bin
-    install -Dm755 target/release/synapse "$pkgdir"/usr/bin
-    install -Dm755 target/release/sycli "$pkgdir"/usr/bin
+	mkdir -p "$pkgdir"/usr/lib/systemd/user/ "$pkgdir"/usr/bin
+	install -Dm755 target/release/synapse "$pkgdir"/usr/bin
+	install -Dm755 target/release/sycli "$pkgdir"/usr/bin
 	install -Dm644 "$srcdir"/synapse.service "$pkgdir"/usr/lib/systemd/user/
 }
