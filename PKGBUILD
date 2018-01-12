@@ -3,20 +3,19 @@
 
 pkgname=qxmledit
 pkgver=0.9.9.2
-pkgrel=1.1
+pkgrel=2
 pkgdesc="Simple XML editor and XSD viewer"
 arch=('x86_64')
 url="http://qxmledit.org/"
 license=('GPL3' 'LGPL3')
 depends=('qt5-svg' 'glu' 'qt5-scxml')
-makedepends=('freeglut' 'gzip')
-source=("https://github.com/lbellonda/qxmledit/archive/r-0.9.9.2.zip")
-# source=("http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-0.9.9/qxmledit-$pkgver-src.tgz")
-sha256sums=('ea1869916c02ec8ee27006ed8f604befa4e405387736d56ddf320f460957846e')
+makedepends=('freeglut')
+source=("http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-0.9.9/qxmledit-$pkgver-src.tgz")
+sha256sums=('eb2c20ebf8b093652eea4751c990820b4b2614cdf790d29d5fdfd68cec9e2b08')
 
 
 build() {
-  cd "$pkgname-r-$pkgver"
+  cd "$pkgname-$pkgver"
   export \
                 QXMLEDIT_INST_DIR="/usr/bin" \
                 QXMLEDIT_INST_LIB_DIR="/usr/lib" \
@@ -30,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-r-$pkgver"
+  cd "$pkgname-$pkgver"
   make INSTALL_ROOT="$pkgdir/" install
 
   # man files
