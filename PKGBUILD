@@ -1,22 +1,24 @@
-# Maintainer: Joey Dumont     <joey.dumont@gmail.com>
-# Maintainer: Bjorn Neergaard <bjorn@neersighted.com>
-# Contributor: Danny Su       <contact@dannysu.com>
+# Maintainer:  Lars Hupel      <lars@hupel.info>
+# Contributor: Joey Dumont     <joey.dumont@gmail.com>
+# Contributor: Bjorn Neergaard <bjorn@neersighted.com>
+# Contributor: Danny Su        <contact@dannysu.com>
 
-pkgname=duplicati-latest
-pkgver=2.0.2.14
+pkgname=duplicati2-beta
+pkgver=2.0.2.1
 pkgrel=1
-_date=2017-12-22
-_branch=canary
+_date=2017-08-01
+_branch=beta
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
 url='http://duplicati.com'
 license=('LGPL')
 install=duplicati.install
+conflicts=('duplicati-latest')
 source=(https://github.com/duplicati/duplicati/releases/download/v${pkgver}-${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}.zip
 	duplicati-user.service
 	duplicati.service
 	duplicati.sysusers
 	duplicati-cli)
-sha256sums=('19b799ab758f5967baea0a3bd7a4427ff6b97d05647e48f21fd5cf7b37faea3c'
+sha256sums=('e37d126296024a5fae48fdc9896c97a334eeeb6b008a970aa0e1632bc13c77b0'
             'ec25b25d0e331ddfb90940555068aa941c3d5dfaf858cffb6c75e810175c9d27'
             '087db7ce97c4180006c2708d49024c0393f48f83ea2ce8b0b6354fffa554ece9'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
