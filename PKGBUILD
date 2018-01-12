@@ -1,7 +1,7 @@
 # Contributor: henning mueller <henning@orgizm.net>
 
 pkgname=transmission-rss
-pkgver=0.1.25
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Adds torrents from rss feeds to transmission web frontend.'
 arch=(any)
@@ -20,7 +20,7 @@ package() {
 
   export RBENV_VERSION=system
 
-  local _gemdir="$(ruby -rubygems -e 'puts Gem.default_dir')"
+  local _gemdir="$(ruby -e 'puts Gem.default_dir')"
   local _gemdata="$pkgdir/$_gemdir/gems/$pkgname-$pkgver"
 
   gem install \
@@ -47,6 +47,6 @@ package() {
   find $pkgdir -type d -empty | xargs rmdir
 }
 
-sha256sums=('0e95b260b666fd0173ecabc5f76483961dd5391ac9a518e3393d371b12503ee8'
+sha256sums=('fa36f2addf0b2feb99188cdbbf5de7229af6d265e3a33138818de34fb985c7ff'
             'afc4ef4b6b80627f9bd02990cdff1f5ff1442830ee9f4ed39742dd927d69f338'
             '8d88a4858d6ce3f84fe851534d4bbf2e0ca8ecb81e25c095e128046d08fb764e')
