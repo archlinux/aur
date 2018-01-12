@@ -3,7 +3,7 @@
 
 pkgname=aa3d
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="ASCII art stereogram generator"
 arch=('i686' 'x86_64')
 url="http://aa-project.sourceforge.net/aa3d"
@@ -23,8 +23,8 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	install -d $pkgdir/usr/bin
-	install -d $pkgdir/usr/share/doc/$pkgname/
-	install -m 644 pyramid logo README COPYING $pkgdir/usr/share/doc/$pkgname/
-	install -m 755 -t $pkgdir/usr/bin/ aa3d
+	install -d "${pkgdir}/usr/bin"
+	install -d "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -m 644 pyramid logo README COPYING "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -m 755 -t "${pkgdir}/usr/bin/" aa3d
 }
