@@ -11,7 +11,7 @@ pkgdesc="A stock market software that helps you make smart investment decision"
 arch=('any')
 url="http://jstock.sourceforge.net/"
 license=('GPL')
-depends=('java-runtime')
+depends=('java-runtime' 'java-openjfx')
 source=("https://github.com/yccheok/${pkgname}/releases/download/release_${pkgver//./-}/${pkgname}-${pkgver}-bin.zip"
         "${pkgname}.desktop"
         "${pkgname}.png"
