@@ -1,6 +1,6 @@
 pkgbase = python2-libsass
 	pkgdesc = Python binding for libsass CSS compiler
-	pkgver = 0.13.4
+	pkgver = 0.13.5
 	pkgrel = 1
 	url = http://dahlia.kr/libsass-python/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = python2-libsass
 	makedepends = libsass
 	depends = python2
 	depends = python2-six
-	source = https://pypi.io/packages/source/l/libsass/libsass-0.13.4.tar.gz
-	md5sums = a6bc47e45ef3f532867edc8d2cf166b2
+	source = https://pypi.io/packages/source/l/libsass/libsass-0.13.5.tar.gz
+	md5sums = a400dc2db9c252483b22a6c13dbb7955
 
 pkgname = python2-libsass
 
