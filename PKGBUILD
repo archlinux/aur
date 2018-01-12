@@ -1,8 +1,8 @@
 
 pkgname=python-django-auth-ldap
 _pkgname=django-auth-ldap
-pkgver=1.2.13
-_pkgver=1.2.13
+pkgver=1.3.0
+_pkgver=1.3.0
 pkgrel=1
 pkgdesc="This is a Django authentication backend that authenticates against an LDAP service."
 arch=(any)
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('python' 'python-django')
 makedepends=('python-setuptools')
 source=(https://bitbucket.org/psagers/django-auth-ldap/get/$_pkgver.tar.bz2)
-md5sums=('15403051da946e509d3bea081e988693')
+md5sums=('e9790d0d7baeb26273364fcd37d6ee44')
 
 package() {
   cd psagers-django-auth-ldap*
