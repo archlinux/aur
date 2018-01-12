@@ -47,11 +47,11 @@ bl_doctest__doc__='
     [info:doctest.sh:590] bl.arguments - passed 6/6 tests in 918 ms
     [info:doctest.sh:643] Total: passed 1/1 modules in 941 ms
     ```
-    A doc string can be defined for a function by defining a variable named
+    A docstring can be defined for a function by defining a variable named
     `__doc__` at the function scope.
     On the module level, the variable name should be `<module_name>__doc__`
     (e.g. `bl_arguments__doc__` for the example above).
-    Note: The doc string needs to be defined with single quotes.
+    Note: The docstring needs to be defined with single quotes.
     Code contained in a module level variable named
     `<module_name>__bl_doctest_setup__` will be run once before all the Tests of
     a module are run. This is usefull for defining mockup functions/data

@@ -67,7 +67,7 @@ bl_arguments_set() {
     bl_arguments_new=("$@")
 
 }
-alias bl.arguments.get_keyword=bl_arguments_get_keyword
+alias bl.arguments.get_flag=bl_arguments_get_flag
 bl_arguments_get_flag() {
     # shellcheck disable=SC2034,SC2016
     local __doc__='

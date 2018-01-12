@@ -231,13 +231,13 @@ bl_module_resolve() {
     local caller_path
     # shellcheck disable=SC2034
     bl_module_declared_function_names_after_source=''
-    local current_path="$(bl.path.convert_to_absolute "$(dirname "$(dirname "${BASH_SOURCE[0]}")")")"
+    local current_path="$(dirname "$(dirname "$(bl.path.convert_to_absolute "${BASH_SOURCE[0]}")")")"
     if (( $# == 1 )) || [ "${!#}" = true ] || [ "${!#}" = false ]; then
-        caller_path="$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[1]}")")"
+        caller_path="$(dirname "$(bl.path.convert_to_absolute "${BASH_SOURCE[1]}")")"
     else
-        caller_path="$(bl.path.convert_to_absolute "$(dirname "${!#}")")"
+        caller_path="$(dirname "$(bl.path.convert_to_absolute "${!#}")")"
     fi
-    local execution_path="$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[-1]}")")"
+    local execution_path="$(dirname "$(bl.path.convert_to_absolute "${BASH_SOURCE[-1]}")")"
     local file_path=''
     while true; do
         local extension
@@ -285,7 +285,7 @@ bl_module_resolve() {
         if [ "$file_path" = '' ]; then
             local new_name="$(echo "$name" | sed --regexp-extended \
                 's:.([^.]+?)(\.(sh|bash|zsh|csh))?$:/\1\2:')"
-            if [ "$name_name" = "$name" ]; then
+            if [ "$new_name" = "$name" ]; then
                 break
             else
                 name="$new_name"
@@ -311,7 +311,11 @@ bl_module_resolve() {
 }
 alias bl.module.is_loaded=bl_module_is_loaded
 bl_module_is_loaded() {
-    local file_path="$(bl.module.resolve "$1" "${BASH_SOURCE[1]}")"
+    local caller_file_path="${BASH_SOURCE[1]}"
+    if (( $# == 2 )); then
+        caller_file_path="$2"
+    fi
+    local file_path="$(bl.module.resolve "$1" "$caller_file_path")"
     # Check if module already loaded.
     local loaded_module
     for loaded_module in "${bl_module_imported[@]}"; do
@@ -323,7 +327,11 @@ bl_module_is_loaded() {
 }
 alias bl.module.import_without_namespace_check=bl_module_import_without_namespace_check
 bl_module_import_without_namespace_check() {
-    if bl.module.is_loaded "$1"; then
+    local caller_file_path="${BASH_SOURCE[1]}"
+    if (( $# == 2 )); then
+        caller_file_path="$2"
+    fi
+    if bl.module.is_loaded "$1" "$caller_file_path"; then
         return 0
     fi
     local file_path="$(bl.module.resolve "$1" "${BASH_SOURCE[1]}")"
@@ -332,12 +340,16 @@ bl_module_import_without_namespace_check() {
 }
 alias bl.module.import=bl_module_import
 bl_module_import() {
-    if bl.module.is_loaded "$1"; then
+    local caller_file_path="${BASH_SOURCE[1]}"
+    if (( $# == 2 )); then
+        caller_file_path="$2"
+    fi
+    if bl.module.is_loaded "$1" "$caller_file_path"; then
         return 0
     fi
     # NOTE: We have to use "local" before to avoid shadowing the "$?" value.
     local result
-    result="$(bl.module.resolve "$1" true "${BASH_SOURCE[1]}")"
+    result="$(bl.module.resolve "$1" true "$caller_file_path")"
     local return_code=$?
     if (( return_code == 0 )); then
         local file_path="$(echo "$result" | sed --regexp-extended 's:^(.+)/[^/]+$:\1:')"
@@ -365,7 +377,7 @@ bl_module_import() {
                     local name="$(echo "$sub_file_path" | \
                         sed --regexp-extended \
                             "s:${scope_name}/([^/]+):${scope_name}.\1:")"
-                    bl.module.import "$name"
+                    bl.module.import "$name" "$caller_file_path"
                 fi
             done
         else
