@@ -1,0 +1,15 @@
+pkgbase = python-loompy
+	pkgdesc = Python implementation of the Loom file format for single-cell RNA-seq data
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://loompy.org/
+	arch = any
+	license = BSD
+	depends = python-h5py
+	depends = python-scipy
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/l/loompy/loompy-1.1.0.tar.gz
+	md5sums = 85ec1d9424fdfe55a4e11b7dca0785eb
+
+pkgname = python-loompy
+
