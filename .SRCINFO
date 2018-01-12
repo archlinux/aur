@@ -1,0 +1,22 @@
+pkgbase = ttf-quicksand
+	pkgdesc = Google Fonts Quicksand font by Andrew Paglinawan
+	pkgver = 20180111
+	pkgrel = 1
+	url = http://www.google.com/fonts/specimen/Quicksand
+	install = ttf-quicksand.install
+	arch = any
+	license = Open Font License
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = https://github.com/google/fonts/raw/master/ofl/quicksand/Quicksand-Bold.ttf
+	source = https://github.com/google/fonts/raw/master/ofl/quicksand/Quicksand-Light.ttf
+	source = https://github.com/google/fonts/raw/master/ofl/quicksand/Quicksand-Medium.ttf
+	source = https://github.com/google/fonts/raw/master/ofl/quicksand/Quicksand-Regular.ttf
+	md5sums = 0c04462696ac0fd3e85e75415b483fdb
+	md5sums = c5f954788f341b22e1974433bb972ac1
+	md5sums = 0c64233241ead44bffbec54eb9d1d164
+	md5sums = f87b9b4f34bdbf75b5c0cf3a5a137508
+
+pkgname = ttf-quicksand
+
