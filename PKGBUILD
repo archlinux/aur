@@ -3,22 +3,22 @@
 
 pkgname=dnscrypt-proxy-git
 _pkgname=dnscrypt-proxy
-pkgver=1.9.5.2492.e916ef6
+pkgver=2018.01.07.2504.f71ca69
 pkgrel=1
 pkgdesc="Is a protocol for securing communications between a client and a DNS resolver"
 arch=('i686' 'x86_64')
-url="http://dnscrypt.org/"
+url="https://github.com/DNSCrypt/dnscrypt-proxy"
 license=('custom:ISC')
 depends=('libsodium' 'systemd' 'libtool' 'ldns' 'git')
 options=(libtool)
 conflicts=('dnscrypt-proxy')
-backup=('etc/dnscrypt-proxy.conf')
+backup=('etc/dnscrypt-proxy.conf' 'dnscrypt-proxy.service')
 install=dnscrypt-proxy-git.install
-source=("${_pkgname}::git+https://github.com/jedisct1/dnscrypt-proxy.git")
+source=("${_pkgname}::git+https://github.com/dyne/dnscrypt-proxy.git")
 
 pkgver() {
  cd ${_pkgname}
-  echo "$(git describe --tags --abbrev=0).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "2018.01.07$(git describe --tags --abbrev=0).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -32,8 +32,8 @@ prepare() {
 
 build() {
  cd ${srcdir}/${_pkgname}
-  ./autogen.sh --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-included-ltdl--with-systemd
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-included-ltdl --with-systemd
+  ./autogen.sh --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-systemd
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-systemd
   make -j2
 }
 
@@ -68,4 +68,4 @@ EOF
   chmod 755 "${pkgdir}/usr/bin/dnscrypt-update-resolvers"
   chmod 755 "${pkgdir}/usr/bin/dnscrypt-domains-blacklist"
 }
-md5sums=('SKIP')
+sha512sums=('SKIP')
