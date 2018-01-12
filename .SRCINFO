@@ -1,7 +1,7 @@
 pkgbase = calicoctl
 	pkgdesc = Calico CLI tool
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projectcalico/calicoctl
 	arch = x86_64
 	license = Apache

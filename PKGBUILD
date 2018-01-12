@@ -2,7 +2,7 @@
 
 pkgname=calicoctl
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Calico CLI tool"
 arch=('x86_64')
 url="https://github.com/projectcalico/calicoctl"
@@ -30,7 +30,7 @@ build() {
   cd ${srcdir}/gopath/src/github.com/projectcalico/calicoctl
   export GOPATH=${srcdir}/gopath
   glide install -strip-vendor
-  make binary
+  make binary CALICOCTL_VERSION=v${pkgver}
 }
 
 package() {
