@@ -1,13 +1,14 @@
 pkgbase = rslevel
 	pkgdesc = Check your or others' Runescape levels, or compare the levels of multiple players
-	pkgver = 1.0
-	pkgrel = 6
-	url = https://github.com/shinnova/rslevel
+	pkgver = 2.0
+	pkgrel = 7
+	url = https://gitlab.com/shinnova/rslevel
 	arch = any
-	license = GPL
-	depends = python2
-	depends = python2-colorama
-	source = https://raw.githubusercontent.com/shinnova/rslevel/0cb9f7cec538d9381ddca7600f7f70a8aad41114/rslevel
+	license = custom: commercial
+	depends = python
+	depends = python-colorama
+	depends = python-urllib3
+	source = https://gitlab.com/shinnova/rslevel/raw/master/rslevel
 	md5sums = SKIP
 
 pkgname = rslevel
