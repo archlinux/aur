@@ -2,7 +2,7 @@
 
 _plug=waifu2x-caffe
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r8.1.0.gcbc577f
+pkgver=r9.0.gdb47a3d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (NVIDIA users only)(GIT version)"
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'boost'
+             'gcc6'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}"
@@ -44,31 +45,26 @@ prepare() {
   cd caffe
 
   if [ "$(nvcc --version | tail -1 | cut -d ' ' -f5 | tr -d ,)" != "9.0" ]; then
-    # use gcc5 (CUDA 8.0 requires gcc5)
+    # use gcc5 (CUDA 9.x requires gcc6)
     sed -e '/CUSTOM_CXX/s/^# //' \
-        -e '/CUSTOM_CXX/s/$/-5/' \
+        -e '/CUSTOM_CXX/s/$/-6/' \
         -i Makefile.config
   fi
 
   # set CUDA directory
   sed '/CUDA_DIR/s/\/usr\/local\/cuda/\/opt\/cuda/' -i Makefile.config
 
-  # set OpenBLAS as the BLAS provider and adjust its directories
-  sed -e '/BLAS_INCLUDE := \/path/s/^# //' \
-      -e '/^BLAS_INCLUDE/s/\/path\/to\/your\/blas/\/usr\/include\/openblas/' \
-      -e '/BLAS_LIB := \/path/s/^# //' \
-      -e '/^BLAS_LIB/s/\/path\/to\/your\/blas/\/usr\/lib/' \
-      -i Makefile.config
-
   # disable python
   sed -e '/PYTHON_INCLUDE/s/^P/# P/g' \
       -e '/PYTHON_LIB/s/^P/# P/g' \
       -i Makefile.config
 
-  # avoid conflicts with /usr/local/foo
-  sed -e 's|/usr/local/include||g' \
-      -e 's|/usr/local/lib||g' \
+  # avoid conflicts with /usr/local/foo or /opt/foo
+  sed -e 's|/usr/local/include ||g' \
+      -e 's|/usr/local/lib ||g' \
       -i Makefile.config
+  sed 's|/opt/OpenBLAS/include /usr/local/include/openblas ||g' \
+      -i Makefile
 
   cd ../waifu2x-caffe
   ./autogen.sh
@@ -85,7 +81,7 @@ build() {
   cp -R include "${srcdir}/fakeroot"
   install -Dm644 build/src/caffe/proto/caffe.pb.h "${srcdir}/fakeroot/include/caffe/proto/caffe.pb.h"
 
-  cd "../${_plug}"
+  cd "${srcdir}/${_plug}"
   CXXFLAGS+=" -I${srcdir}/fakeroot/include" \
   LDFLAGS+=" -L${srcdir}/fakeroot/lib" \
   ./configure \
