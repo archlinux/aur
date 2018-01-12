@@ -2,7 +2,7 @@
 # Contributor: Ner0 (based on chromium-pepperflash-dev PKGBUILD)
 
 pkgname=chromium-widevine-dev
-pkgver=1.4.8.1000
+pkgver=1.4.9.1070
 pkgrel=1
 pkgdesc="The Widevine Media Optimizer is a browser plugin designed for the viewing of premium video content (Only for chromium-dev)"
 arch=('x86_64')
@@ -23,8 +23,11 @@ sha1sums+=("${_rpm_sha1sum}")
 noextract=("google-chrome-unstable-${_rpm_ver}-${_rpm_rel}.x86_64.rpm")
 
 pkgver() {
+  echo "$( awk 'match($0,/\(version: \0?([0-9.]+)/,a) {print a[1];}' opt/google/chrome-unstable/chrome)"
+}
+
+prepare() {
   bsdtar -xf "google-chrome-unstable-${_rpm_ver}-${_rpm_rel}.x86_64.rpm" opt/google/chrome-unstable/{chrome,libwidevinecdm.so}
-  echo "$(strings opt/google/chrome-unstable/chrome | awk 'match($0, /\(version: ([^ ]*)/, a) {print a[1];}' |tr -d \))"
 }
 
 package() {
