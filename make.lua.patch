@@ -1,0 +1,25 @@
+diff -aur src.pristine/gz-0.3.2/patch/lua/make.lua src.new/gz-0.3.2/patch/lua/make.lua
+--- src.pristine/gz-0.3.2/patch/lua/make.lua	2018-01-11 22:16:41.475733230 -0500
++++ src.new/gz-0.3.2/patch/lua/make.lua	2018-01-12 09:41:41.702287712 -0500
+@@ -19,16 +19,14 @@
+ if make == nil or make == "" then
+   make = "make"
+ end
+-local _,_,make_result = os.execute(make .. " gz-" .. rom_id)
+-if make_result ~= 0 then
+-  error("failed to build gz", 0)
+-end
+ local gz = gru.blob_load("bin/gz/" .. rom_id .. "/gz.bin")
+ local payload_rom = fs:prom_tail()
+ local payload_ram = 0x80400060 - 0x60
+ local payload_size = gz:size() + 0x60
+-local _,_,make_result = os.execute(string.format(make .. " cleanldr && " .. make ..  " ldr " .. 
+-                                                 "CPPFLAGS='-DDMA_ROM=0x%08X -DDMA_RAM=0x%08X -DDMA_SIZE=0x%08X'",
++local _,_,make_result = os.execute(string.format(make .. " cleanldr && " .. make ..  " ldr " ..
++                                                 "CPPFLAGS='-DDMA_ROM=0x%08X -DDMA_RAM=0x%08X -DDMA_SIZE=0x%08X' " ..
++                                                 "CFLAGS+='-I/opt/n64-dev/n64-sysroot/include' " ..
++                                                 "LDSCRIPT=/opt/n64-dev/n64-sysroot/lib/gl-n64.ld",
+                                                  payload_rom, payload_ram, payload_size))
+ if make_result ~= 0 then
+   error("failed to build ldr", 0)
+Only in src.new/gz-0.3.2/patch/lua: make.lua~

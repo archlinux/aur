@@ -1,0 +1,3 @@
+#!/bin/bash
+export PATH=/opt/n64-dev/usr/bin/:$PATH
+/opt/n64-dev/gz/patch/make-rom "$@"
