@@ -1,0 +1,10 @@
+[Desktop Entry]
+Hidden=false
+Exec=hex-tcg
+Icon=/usr/share/icons/logo-hex.png
+Type=Application
+Categories=Game;
+NoDisplay=false
+StartupNotify=false
+Terminal=false
+Name=Hex Shards of Fate

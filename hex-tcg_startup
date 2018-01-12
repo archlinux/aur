@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /opt/hex-tcg/
+./Hex.x86
+cd -
