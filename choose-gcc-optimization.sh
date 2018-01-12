@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+. /usr/share/makepkg/util/message.sh
+colorize
+
 Detect_CPU=$(gcc -c -Q -march=native --help=target | grep march | awk '{print $2}')
 
-echo -e "   ** Detected CPU architecture: $Detect_CPU **\n"
+msg "Detected CPU architecture: $Detect_CPU"
 
 cat << EOF
 
@@ -37,7 +40,9 @@ cat << EOF
     
 EOF
 
-read -p "    Which config you want? " answer
+sleep 1
+answer=$1
+
 case $answer in
     1) Microarchitecture=CONFIG_MK8 ;;
     2) Microarchitecture=CONFIG_MK8SSE3 ;;
@@ -59,8 +64,12 @@ case $answer in
     20) Microarchitecture=CONFIG_MBROADWELL ;;
     21) Microarchitecture=CONFIG_MNATIVE ;;    # Xanmod doesn't include this architecture!! Switch to native instead
     22) Microarchitecture=CONFIG_MNATIVE ;;
-    *) true ;;
+    *) default=CONFIG_GENERIC_CPU ;;
 esac
+
+warning "According to PKGBUILD variable _microarchitecture, your choice is $answer"
+msg "Building this package for microarchitecture: $Microarchitecture$default"
+sleep 5
 
 sed -e 's|^CONFIG_GENERIC_CPU=y|# CONFIG_GENERIC_CPU is not set|g' -i .config
 sed -e "s|^# $Microarchitecture is not set|$Microarchitecture=y|g" -i .config
