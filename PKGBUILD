@@ -4,7 +4,7 @@
 
 pkgname=belr-git
 _pkgname=belr
-pkgver=0.1.3.r14.g4f32b9c
+pkgver=0.1.3.r30.g6dc5d2f
 pkgrel=1
 pkgdesc="A library for working with vCards"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://www.linphone.org/"
 license=('GPL')
 conflicts=('belr')
 provides=('belr')
-depends=('bctoolbox')
+depends=('bctoolbox-git')
 makedepends=('cmake')
 source=("git://github.com/BelledonneCommunications/$_pkgname.git")
 sha256sums=('SKIP')
