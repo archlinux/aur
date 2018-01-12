@@ -1,0 +1,23 @@
+pkgbase = python-pyelftools-git
+	pkgdesc = Python library for analyzing ELF files and DWARF debugging information
+	pkgver = v0.24.r45.gc1f9021
+	pkgrel = 1
+	url = https://github.com/eliben/pyelftools
+	arch = any
+	license = custom:Public Domain
+	makedepends = python
+	makedepends = python2
+	options = !strip
+	source = git+https://github.com/eliben/pyelftools.git
+	sha512sums = SKIP
+
+pkgname = python2-pyelftools-git
+	depends = python2
+	provides = python2-pyelftools
+	conflicts = python2-pyelftools
+
+pkgname = python-pyelftools-git
+	depends = python
+	provides = python-pyelftools
+	conflicts = python-pyelftools
+
