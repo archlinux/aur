@@ -1,6 +1,6 @@
 pkgbase = linphone-desktop-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 4.1.1.r183.gf7e3753c
+	pkgver = 4.1.1.r187.g2f6ac804
 	pkgrel = 1
 	url = http://www.linphone.org
 	arch = i686
@@ -25,6 +25,7 @@ pkgbase = linphone-desktop-git
 	depends = libsoup
 	depends = libnotify
 	depends = qt5-quickcontrols
+	depends = qt5-svg
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
 	depends = qt5-tools
