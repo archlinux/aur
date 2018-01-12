@@ -19,6 +19,14 @@ For example, to get info about Ripple (XRP), run
 ```bash
 $ getcrypt ripple
 ```
+To get info about the top *n* currencies, run
+```bash
+$ getcrypt [n]
+```
+For example, to get info about the top 12 currencies, run
+```bash
+$ getcrypt 12
+```
 To update your portfolio, use the options add, rm, or set like this
 ```bash
 $ getcrypt [add/rm/set] [currency] [amount of currency] [amount of money spent]
@@ -35,7 +43,7 @@ $ getcrypt check [currency/all]
 ```
 
 ##### Future ideas/things to add
-* Get current balance of wallets from APIs
+* Get current balance of wallets from APIs (Would need a different api per crypto, which would be a lot of work.)
 * Debian/RPM package
-* Print info of daily/weekly gains
-* Stock market integration
+* Stock market integration (Google API is deprecated, but still works. Other APIs are slow and unwieldy.)
+* Tray pop-up to show portfolio info (GTK StatusIcon deprecated, maybe use libappindicator?)

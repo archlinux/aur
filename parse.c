@@ -26,7 +26,7 @@ JSON json_init(STRING hString, int offset) {
     char* str = pString->data;
     int i = 0;
     while (offset > 0) {
-        if (str[i] == ',')
+        if (str[i] == '}')
             offset--;
         i++;
     }
