@@ -3,8 +3,8 @@
 # Contributor: Christian Wygoda <accounts@wygoda.net>
 
 pkgname=ossim
-_pkgname=EgmontKey
-pkgver=2.1.0
+_pkgname=FortMyers
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data."
 url="http://www.ossim.org"
@@ -17,7 +17,7 @@ optdepends=( 'java-environment-common' 'openmpi' 'gpstk-bin' )
 source=(https://github.com/ossimlabs/ossim/archive/${_pkgname}-${pkgver}.tar.gz
         ossim.sh )
 install=ossim.install
-md5sums=('3aadd69fefbe97a575010ffc7ba03f91'
+md5sums=('d52aca3cdd3df68d389311ce928006fa'
          'cb85c216a099b10f057cddeeae4a57fb')
 
 build() {
@@ -60,7 +60,7 @@ build() {
   -DBUILD_PDAL_PLUGIN=ON \
   $srcdir/${pkgname}-${_pkgname}-${pkgver} \
 
-  make
+  make -j3
 }
 
 
