@@ -1,7 +1,9 @@
+# Maintainer: marcs <aur@mg.odd.red>
+
 _npmname=vue-cli
-_npmver=2.9.1
+_npmver=2.9.2
 pkgname=nodejs-vue-cli # All lowercase
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="A simple CLI for scaffolding Vue.js projects."
 arch=(any)
@@ -11,7 +13,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('e171348e7ecf74a34895be5e15ae1b56eabf5ffe')
+sha1sums=('fb247c0f41c50c865e8d77caba18eb2b3936372c')
 
 package() {
   cd $srcdir
@@ -19,6 +21,9 @@ package() {
   mkdir -p $_npmdir
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+
+  # permission fix
+  chmod 755 ${pkgdir}/usr/bin
 }
 
 # vim:set ts=2 sw=2 et:
