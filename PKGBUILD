@@ -1,8 +1,8 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 _pkgname=neovim-gtk
 pkgname=neovim-gtk-git
-pkgver=331
-pkgrel=1
+pkgver=427
+pkgrel=2
 pkgdesc='GTK UI for Neovim written in Rust'
 arch=('i686' 'x86_64')
 url="https://github.com/daa84/neovim-gtk"
@@ -25,8 +25,19 @@ build() {
 }
 
 package() {
+  # binary
   install -Dm755 "$srcdir/$_pkgname/target/release/nvim-gtk" "$pkgdir/usr/bin/nvim-gtk"
-  install -D -m644 "$srcdir/$_pkgname/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # runtime
+  install -Dm644 "$srcdir/$_pkgname/runtime/plugin/nvim_gui_shim.vim" "$pkgdir/usr/share/nvim-gtk/runtime/nvim_gui_shim.vim"
+
+  # desktop file
   install -D -m644 "$srcdir/$_pkgname/desktop/org.daa.NeovimGtk.desktop" "${pkgdir}"/usr/share/applications/org.daa.NeovimGtk.desktop
-  install -D -m644 "$srcdir/$_pkgname/desktop/org.daa.NeovimGtk.png"  "${pkgdir}"/usr/share/pixmaps/org.daa.NeovimGtk.png
+
+  # Icons
+  install -D -m644 "$srcdir/$_pkgname/desktop/org.daa.NeovimGtk.png"  "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/org.daa.NeovimGtk.png
+  install -D -m644 "$srcdir/$_pkgname/desktop/org.daa.NeovimGtk.svg"  "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/org.daa.NeovimGtk.svg
+
+  # LICENSE
+  install -D -m644 "$srcdir/$_pkgname/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
