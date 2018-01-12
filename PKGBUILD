@@ -2,22 +2,22 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs
-pkgver=2016.4
-pkgrel=2
+pkgver=2018
+pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('lapack' 'zlib' 'libx11')
+depends=('lapack' 'zlib' 'hwloc')
 optdepends=('cuda: Nvidia GPU support'
-            'openmotif:  needed for gmx view'
+            'vmd: Accesibility to other trajectory formats (ONLY WHEN COMPILING)'
             'perl: needed for demux.pl and xplor2gmx.pl'
 	    'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
 makedepends=('cmake' 'libxml2' 'hwloc' 'gcc6')
 options=('!libtool')
-source=(ftp://ftp.gromacs.org/pub/gromacs/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('b142c9c77e793fa8def24aeacebaf8b8f1dd55fc')
+source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
+sha1sums=('f57fc47835ed99d91831c6be5ae3db1d8a344b3d')
 
 #With gcc6 currently there are less errors in the tests
 # also the compilation is possible in cuda capable machines
@@ -26,42 +26,37 @@ export CXX=g++-6
 export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
 export CXXFLAGS="${CFLAGS}"
 
+export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
+                            #Gromacs will have the ability to read any
+                            #trajectory file format that can be read by
+                            #VMD installation (e.g. AMBER's DCD format).
 
 build() {
   mkdir -p ${srcdir}/{single,double}
 
-  ###### CMAKE OPTIONS DISABLE BY DEFAULT ###########
-  # If you are using an AVX2 capable CPU, you will #
-  # not have AVX2 binaries unless you set -march to #
-  # 'native', your respective architecture flag: #
-  # https://gcc.gnu.org/onlinedocs/gcc-5.3.0/gcc/x86-Options.html#x86-Options #
-  # or just include '-mavx2' to the default compiler#
-  # flags in the /etc/makepkg.conf: #
-  # https://wiki.archlinux.org/index.php/Makepkg#Architecture.2C_compile_flagsAdd #
-  ###################################################
  
   msg2 "Building the double precision files"
   cd ${srcdir}/double	
-  cmake ../${pkgname}-${pkgver}/ \
+  cmake ../gromacs-${pkgver}/ \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_SHARED_LIBS=ON \
-        -DGMX_X11=ON \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DGMX_DOUBLE=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
-        -DREGRESSIONTEST_DOWNLOAD=ON \
-        -DGMX_LIBS_SUFFIX=_d
+        -DREGRESSIONTEST_DOWNLOAD=ON
+#        -DGMX_LIBS_SUFFIX=_d
+#        -DBUILD_SHARED_LIBS=ON \
+#        -DGMX_X11=ON \
   make
 
   msg2 "Building the single precision files"
   cd ${srcdir}/single
-  cmake ../${pkgname}-${pkgver}/ \
+  cmake ../gromacs-${pkgver}/ \
         -DCMAKE_INSTALL_PREFIX=/usr/ \
-        -DBUILD_SHARED_LIBS=ON \
-        -DGMX_X11=ON \
+        -DCMAKE_INSTALL_LIBDIR=lib\
         -DGMX_BUILD_OWN_FFTW=ON \
-        -DREGRESSIONTEST_DOWNLOAD=ON \
-        -DCMAKE_INSTALL_LIBDIR=lib
+        -DREGRESSIONTEST_DOWNLOAD=ON
+#        -DBUILD_SHARED_LIBS=ON \
+#        -DGMX_X11=ON \
   make
 }
 
@@ -89,7 +84,7 @@ package() {
   msg2 "Installing completion and environment setup script"
   mkdir -p ${pkgdir}/etc/profile.d/
   mkdir -p ${pkgdir}/usr/share/bash-completion/completions
-  install -D -m755 ${srcdir}/${pkgname}-${pkgver}/src/programs/completion/gmx-completion.bash "${pkgdir}/usr/share/bash-completion/completions/gromacs"
+  install -D -m755 ${srcdir}/gromacs-${pkgver}/src/programs/completion/gmx-completion.bash "${pkgdir}/usr/share/bash-completion/completions/gromacs"
   mv ${pkgdir}/usr/bin/GMXRC.* ${pkgdir}/etc/profile.d/
   sed "s:/usr/bin:/etc/profile.d:" ${pkgdir}/usr/bin/GMXRC > ${pkgdir}/etc/profile.d/GMXRC
   chmod 755 ${pkgdir}/etc/profile.d/GMXRC
