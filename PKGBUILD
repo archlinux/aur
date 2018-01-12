@@ -4,8 +4,8 @@
 pkgname=gromacs-plumed
 pkgver=2016.4
 _gromacsver=2016.4
-_plumedver=2.4b
-pkgrel=1
+_plumedver=2.4.0
+pkgrel=2
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
