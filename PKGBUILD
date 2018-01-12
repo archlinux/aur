@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=pari-jupyter
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Jupyter kernel for PARI"
 arch=(any)
@@ -10,8 +10,8 @@ url="https://github.com/jdemeyer/pari_jupyter"
 license=(GPL)
 depends=(pari jupyter)
 makedepends=(cython2)
-source=(https://pypi.io/packages/source/p/pari_jupyter/pari_jupyter-$pkgver.tar.bz2)
-md5sums=('ab0dc1d09303d33e861088155b82c965')
+source=(https://pypi.io/packages/source/p/pari_jupyter/pari_jupyter-$pkgver.tar.gz)
+sha256sums=('c33b0480981703aacb19991712a35b782357c2e1ea9e108e4c3b2407de6e7296')
 
 prepare() {
   cd pari_jupyter-$pkgver
