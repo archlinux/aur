@@ -6,16 +6,15 @@ pkgdesc="Discord extension with plugin support, emotes, and more (rauenzi's upda
 arch=('any')
 url='https://github.com/rauenzi/BetterDiscordApp'
 license=('MIT')
-depends=('asar' 'discord')
+depends=('asar' 'betterdiscordctl-git')
 makedepends=('git')
+install="${pkgname%-git}.install"
 source=(
   "${pkgname%-git}::git+https://github.com/rauenzi/BetterDiscordApp.git#branch=stable16"
-  'betterdiscordctl'
   'LICENSE'
 )
 md5sums=(
   'SKIP'
-  '8653e6d13bd4fd10133701518b9e1ea1'
   '8414480728c5dc0d4ca9a93cfaf67acb'
 )
 
@@ -26,7 +25,6 @@ pkgver() {
 
 package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m755 betterdiscordctl "${pkgdir}/usr/bin/betterdiscordctl"
 
   mkdir -p "${pkgdir}/usr/lib/"
   cp -r "${srcdir}/${pkgname%-git}" "${pkgdir}/usr/lib/${pkgname}"

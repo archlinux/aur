@@ -3,16 +3,15 @@ pkgbase = betterdiscord-rauenzi-git
 	pkgver = 0.2.82.r472.g247a6a9
 	pkgrel = 1
 	url = https://github.com/rauenzi/BetterDiscordApp
+	install = betterdiscord-rauenzi.install
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = asar
-	depends = discord
+	depends = betterdiscordctl-git
 	source = betterdiscord-rauenzi::git+https://github.com/rauenzi/BetterDiscordApp.git#branch=stable16
-	source = betterdiscordctl
 	source = LICENSE
 	md5sums = SKIP
-	md5sums = 8653e6d13bd4fd10133701518b9e1ea1
 	md5sums = 8414480728c5dc0d4ca9a93cfaf67acb
 
 pkgname = betterdiscord-rauenzi-git

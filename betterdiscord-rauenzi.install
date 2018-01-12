@@ -1,0 +1,14 @@
+post_install() {
+  cat << EOF
+
+betterdiscord-rauenzi-git requires you to install per-user. To install:
+  $ betterdiscordctl install --global-asar -b /usr/lib/betterdiscord-rauenzi-git
+To remove:
+  $ betterdiscordctl uninstall
+
+If BetterDiscord stops working, try uninstalling and reinstalling. If it
+continues to fail, leave an issue at:
+  https://github.com/bb010g/betterdiscordctl/issues
+
+EOF
+}
