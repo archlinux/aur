@@ -45,63 +45,16 @@ index 2af7372..729aedc 100644
 +#endif
 +
  #endif /* __COMPAT_MODULE_H__ */
-diff --git a/vmmon/include/compat_timer.h b/vmmon/include/compat_timer.h
-new file mode 100644
-index 0000000..b68d9b2
---- /dev/null
-+++ b/vmmon/include/compat_timer.h
-@@ -0,0 +1,33 @@
-+#ifndef __COMPAT_TIMER_H__
-+#   define __COMPAT_TIMER_H__
-+
-+#include <linux/timer.h>
-+
-+#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0)) && !defined(timer_setup)
-+
-+typedef unsigned long compat_timer_arg_t;
-+
-+static inline void compat_timer_setup(struct timer_list *timer,
-+				      void (*func)(compat_timer_arg_t),
-+				      unsigned int flags)
-+{
-+	init_timer(timer);
-+	timer->function = func;
-+	timer->data = 0;
-+	timer->flags = flags;
-+}
-+
-+#else /* new timer interface since 4.15 */
-+
-+typedef struct timer_list *compat_timer_arg_t;
-+
-+static inline void compat_timer_setup(struct timer_list *timer,
-+				      void (*func)(compat_timer_arg_t),
-+				      unsigned int flags)
-+{
-+	timer_setup(timer, func, flags);
-+}
-+
-+#endif /* new timer interface since 4.15 */
-+
-+#endif /* __COMPAT_TIMER_H__ */
 diff --git a/vmmon/linux/driver.c b/vmmon/linux/driver.c
 index 87cf45b..5390a93 100644
 --- a/vmmon/linux/driver.c
 +++ b/vmmon/linux/driver.c
-@@ -21,6 +21,7 @@
- 
- #define EXPORT_SYMTAB
- 
-+#include "compat_timer.h"
- #include <linux/file.h>
- #include <linux/highmem.h>
- #include <linux/poll.h>
-@@ -115,7 +116,7 @@ static struct page *LinuxDriverNoPage(struct vm_area_struct *vma,
+@@ -115,7 +115,7 @@
  #endif
  static int LinuxDriverMmap(struct file *filp, struct vm_area_struct *vma);
  
 -static void LinuxDriverPollTimeout(unsigned long clientData);
-+static void LinuxDriverPollTimeout(compat_timer_arg_t unused);
++static void LinuxDriverPollTimeout(struct timer_list *clientData);
  static unsigned int LinuxDriverEstimateTSCkHz(void);
  
  static struct vm_operations_struct vmuser_mops = {
@@ -128,7 +81,7 @@ index 87cf45b..5390a93 100644
   */
  static void
 -LinuxDriverEstimateTSCkHzDeferred(unsigned long data)
-+LinuxDriverEstimateTSCkHzDeferred(compat_timer_arg_t unused)
++LinuxDriverEstimateTSCkHzDeferred(struct timer_list *data)
  {
     LinuxDriverEstimateTSCkHz();
  }
@@ -142,14 +95,18 @@ index 87cf45b..5390a93 100644
     add_timer(&tscTimer);
  }
  
-@@ -309,9 +308,7 @@ init_module(void)
+@@ -309,9 +308,13 @@ init_module(void)
      */
  
     init_waitqueue_head(&linuxState.pollQueue);
--   init_timer(&linuxState.pollTimer);
--   linuxState.pollTimer.data = 0;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0) && !defined(timer_setup)
+    init_timer(&linuxState.pollTimer);
+    linuxState.pollTimer.data = 0;
 -   linuxState.pollTimer.function = LinuxDriverPollTimeout;
-+   compat_timer_setup(&linuxState.pollTimer, LinuxDriverPollTimeout, 0);
++   linuxState.pollTimer.function = (void *)LinuxDriverPollTimeout;
++#else
++   timer_setup(&linuxState.pollTimer, LinuxDriverPollTimeout, 0);
++#endif
  
     linuxState.fastClockThread = NULL;
     linuxState.fastClockFile = NULL;
@@ -175,12 +132,17 @@ index 87cf45b..5390a93 100644
  #ifdef VMX86_DEVEL
     devel_init_module();
     linuxState.minor = 0;
-@@ -360,7 +357,7 @@ init_module(void)
+@@ -360,7 +357,13 @@ init_module(void)
         linuxState.deviceName, linuxState.major, linuxState.minor);
  
     HostIF_InitUptime();
--   init_timer(&tscTimer);
-+   compat_timer_setup(&tscTimer, LinuxDriverEstimateTSCkHzDeferred, 0);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0) && !defined(timer_setup)
+    init_timer(&tscTimer);
++   tscTimer.function = (void *)LinuxDriverEstimateTSCkHzDeferred;
++   tscTimer.data = (unsigned long)&tscTimer;
++#else
++   timer_setup(&tscTimer, LinuxDriverEstimateTSCkHzDeferred, 0);
++#endif
     LinuxDriverInitTSCkHz();
     Vmx86_InitIDList();
  
@@ -195,12 +157,12 @@ index 87cf45b..5390a93 100644
  #endif
  
     Log("Module %s: unloaded\n", linuxState.deviceName);
-@@ -858,7 +855,7 @@ LinuxDriverPoll(struct file *filp,  // IN:
+@@ -858,7 +858,7 @@
   */
  
  static void
 -LinuxDriverPollTimeout(unsigned long clientData)  // IN:
-+LinuxDriverPollTimeout(compat_timer_arg_t unused)  // IN:
++LinuxDriverPollTimeout(struct timer_list *clientData)  // IN:
  {
     LinuxDriverWakeUp(FALSE);
  }
@@ -217,14 +179,6 @@ diff --git a/vmmon/linux/hostif.c b/vmmon/linux/hostif.c
 index fd32013..583d6da 100644
 --- a/vmmon/linux/hostif.c
 +++ b/vmmon/linux/hostif.c
-@@ -30,6 +30,7 @@
- 
- /* Must come before vmware.h --hpreg */
- #include "compat_page.h"
-+#include "compat_timer.h"
- #include <linux/binfmts.h>
- #include <linux/delay.h>
- #include <linux/file.h>
 @@ -37,6 +37,9 @@
  
  #include <linux/vmalloc.h>
@@ -243,44 +197,6 @@ index fd32013..583d6da 100644
  #include <linux/signal.h>
  #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
  #include <linux/taskstats_kern.h> // For linux/sched/signal.h without version check
-@@ -99,6 +99,37 @@
- #include "vmmonInt.h"
- #include "versioned_atomic.h"
- 
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0)
-+#   define global_zone_page_state global_page_state
-+#endif
-+
-+static unsigned long get_nr_slab_unreclaimable(void)
-+{
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
-+   return global_node_page_state(NR_SLAB_UNRECLAIMABLE);
-+#else
-+   return global_page_state(NR_SLAB_UNRECLAIMABLE);
-+#endif
-+}
-+
-+static unsigned long get_nr_unevictable(void)
-+{
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
-+   return global_node_page_state(NR_UNEVICTABLE);
-+#else
-+   return global_page_state(NR_UNEVICTABLE);
-+#endif
-+}
-+
-+static unsigned long get_nr_anon_mapped(void)
-+{
-+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
-+   return global_node_page_state(NR_ANON_MAPPED);
-+ #else
-+   return global_page_state(NR_ANON_PAGES);
-+ #endif
-+}
-+
- /*
-  * Determine if we can use high resolution timers.
-  */
 @@ -142,6 +146,10 @@
   */
  #define LOCKED_PAGE_SLACK 10000
@@ -292,65 +208,98 @@ index fd32013..583d6da 100644
  static struct {
     Atomic_uint64     uptimeBase;
     VersionedAtomic   version;
-@@ -1165,14 +1173,16 @@
+@@ -1164,16 +1172,7 @@
+ {
     int retval;
  
-    down_read(&current->mm->mmap_sem);
+-   down_read(&current->mm->mmap_sem);
 -#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
 -   retval = get_user_pages((unsigned long)uvAddr, numPages, 0, ppages, NULL);
 -#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
 -   retval = get_user_pages((unsigned long)uvAddr, numPages, 0, 0, ppages, NULL);
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
-+   retval = get_user_pages((unsigned long)uvAddr,
- #else
-    retval = get_user_pages(current, current->mm, (unsigned long)uvAddr,
+-#else
+-   retval = get_user_pages(current, current->mm, (unsigned long)uvAddr,
 -                           numPages, 0, 0, ppages, NULL);
- #endif
-+                           numPages, 0,
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
-+                           0,
-+#endif
-+                           ppages, NULL);
-    up_read(&current->mm->mmap_sem);
+-#endif
+-   up_read(&current->mm->mmap_sem);
++   retval = get_user_pages_fast((unsigned long)uvAddr, numPages, 0, ppages);
  
     return retval != numPages;
-@@ -1594,16 +1625,11 @@ HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
+ }
+@@ -1594,17 +1593,34 @@ HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
     unsigned int reservedPages = MEMDEFAULTS_MIN_HOST_PAGES;
     unsigned int hugePages = (vm == NULL) ? 0 :
        BYTES_2_PAGES(vm->memInfo.hugePageBytes);
 -   unsigned int lockedPages = global_page_state(NR_PAGETABLE) +
 -                              global_page_state(NR_SLAB_UNRECLAIMABLE) +
 -                              global_page_state(NR_UNEVICTABLE) +
-+   unsigned int lockedPages = global_zone_page_state(NR_PAGETABLE) +
-+                              get_nr_slab_unreclaimable() +
-+                              get_nr_unevictable() +
-                               hugePages + reservedPages;
+-                              hugePages + reservedPages;
 -   unsigned int anonPages =
--#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
++   unsigned int lockedPages = hugePages + reservedPages;
++   unsigned int anonPages;
++   unsigned int swapPages = BYTES_2_PAGES(linuxState.swapSize);
++
++   /* global_page_state is global_zone_page_state in 4.14. */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0)
++   lockedPages += global_zone_page_state(NR_PAGETABLE);
++#else
++   lockedPages += global_page_state(NR_PAGETABLE);
++#endif
++   /* NR_SLAB_* moved from zone to node in 4.13. */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
++   lockedPages += global_node_page_state(NR_SLAB_UNRECLAIMABLE);
++#else
++   lockedPages += global_page_state(NR_SLAB_UNRECLAIMABLE);
++#endif
++   /* NR_UNEVICTABLE moved from global to node in 4.8. */
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
 -      global_page_state(NR_ANON_MAPPED);
--#else
++   lockedPages += global_node_page_state(NR_UNEVICTABLE);
+ #else
 -      global_page_state(NR_ANON_PAGES);
--#endif
-+   unsigned int anonPages = get_nr_anon_mapped();
-    unsigned int swapPages = BYTES_2_PAGES(linuxState.swapSize);
++   lockedPages += global_page_state(NR_UNEVICTABLE);
++#endif
++   /* NR_ANON_MAPPED moved & changed name in 4.8. */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
++   anonPages = global_node_page_state(NR_ANON_MAPPED);
++#else
++   anonPages = global_page_state(NR_ANON_PAGES);
+ #endif
+-   unsigned int swapPages = BYTES_2_PAGES(linuxState.swapSize);
  
     if (anonPages > swapPages) {
+       lockedPages += anonPages - swapPages; 
+@@ -1699,9 +1715,6 @@
+    unsigned long jifs, jifBase;
+    unsigned int attempts = 0;
+ 
+-   /* Assert that HostIF_InitUptime has been called. */
+-   ASSERT(uptimeState.timer.function);
+-
+  retry:
+    do {
+       version  = VersionedAtomic_BeginTryRead(&uptimeState.version);
 @@ -1767,7 +1804,7 @@ HostIFReadUptimeWork(unsigned long *j)  // OUT: current jiffies
   */
  
  static void
 -HostIFUptimeResyncMono(unsigned long data)  // IN: ignored
-+HostIFUptimeResyncMono(compat_timer_arg_t unused)  // IN: ignored
++HostIFUptimeResyncMono(struct timer_list *timer)  // IN: ignored
  {
     unsigned long jifs;
     uintptr_t flags;
-@@ -1829,8 +1866,7 @@ HostIF_InitUptime(void)
+@@ -1829,8 +1866,13 @@ HostIF_InitUptime(void)
                    -(tv.tv_usec * (UPTIME_FREQ / 1000000) + 
                      tv.tv_sec * UPTIME_FREQ));
  
--   init_timer(&uptimeState.timer);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0) && !defined(timer_setup)
+    init_timer(&uptimeState.timer);
 -   uptimeState.timer.function = HostIFUptimeResyncMono;
-+   compat_timer_setup(&uptimeState.timer, HostIFUptimeResyncMono, 0);
++   uptimeState.timer.function = (void *)HostIFUptimeResyncMono;
++   uptimeState.timer.data = (unsigned long)&uptimeState.timer;
++#else
++   timer_setup(&uptimeState.timer, HostIFUptimeResyncMono, 0);
++#endif
     mod_timer(&uptimeState.timer, jiffies + HZ);
  }
  

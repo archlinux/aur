@@ -88,30 +88,24 @@ diff --git a/vmnet/userif.c b/vmnet/userif.c
 index 94146f6..5298406 100644
 --- a/vmnet/userif.c
 +++ b/vmnet/userif.c
-@@ -116,14 +116,18 @@
+@@ -115,16 +115,7 @@
+    struct page *page = NULL;
     int retval;
  
-    down_read(&current->mm->mmap_sem);
+-   down_read(&current->mm->mmap_sem);
 -#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
 -   retval = get_user_pages(addr, 1, FOLL_WRITE, &page, NULL);
 -#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
 -   retval = get_user_pages(addr, 1, 1, 0, &page, NULL);
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
-+   retval = get_user_pages(addr,
- #else
-    retval = get_user_pages(current, current->mm, addr,
+-#else
+-   retval = get_user_pages(current, current->mm, addr,
 -                           1, 1, 0, &page, NULL);
- #endif
-+                           1,
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
-+                           1, 0,
-+#else
-+                           FOLL_WRITE,
-+#endif
-+                           &page, NULL);
-    up_read(&current->mm->mmap_sem);
+-#endif
+-   up_read(&current->mm->mmap_sem);
++   retval = get_user_pages_fast(addr, 1, FOLL_WRITE, &page);
  
     if (retval != 1) {
+       return NULL;
 diff --git a/vmnet/vm_device_version.h b/vmnet/vm_device_version.h
 index e2cb477..3dd7097 100644
 --- a/vmnet/vm_device_version.h
