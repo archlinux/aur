@@ -13,7 +13,7 @@ depends=('python2' 'python2-pillow' 'python2-networkx' 'python2-decorator'
 makedepends=('python2-setuptools' 'git') 
 optdepends=('opencv: to run droidbot in cv mode'
             'android-sdk: for developers'
-            'android-platform-tools: for developers'
+            'android-sdk-platform-tools: for developers'
             'jdk9-openjdk: for developers')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
