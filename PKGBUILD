@@ -6,21 +6,24 @@
 
 pkgname='mingw-w64-qca-qt5'
 pkgver=2.1.3
-pkgrel=2
-pkgdesc='Qt Cryptographic Architecture'
+pkgrel=3
+pkgdesc='Qt Cryptographic Architecture (mingw-w64)'
 arch=('any')
 url='https://userbase.kde.org/QCA'
 license=(LGPL)
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("http://download.kde.org/stable/qca/$pkgver/src/qca-$pkgver.tar.xz")
-md5sums=('5019cc29efcf828681cd93164238ce26')
+source=("http://download.kde.org/stable/qca/$pkgver/src/qca-$pkgver.tar.xz"
+        qca-openssl-1.1.patch)
+sha256sums=('003fd86a32421057a03b18a8168db52e2940978f9db5ebbb6a08882f8ab1e353'
+            'b1505bc313fd2f4e350cd4c94af69256c901afa419ae6700b208cb6e40e6926d')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 prepare() {
-  true
+  cd qca-$pkgver
+  patch -p1 -i ../qca-openssl-1.1.patch # Fix build with OpenSSL 1.1 https://bugs.kde.org/show_bug.cgi?id=379810
 }
 
 build() {
@@ -32,9 +35,6 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_TESTS=OFF \
       -DQCA_INSTALL_IN_QT_PREFIX=ON \
-      -DOPENSSL_INCLUDE_DIR=/usr/${_arch}/include/openssl-1.0 \
-      -DOPENSSL_SSL_LIBRARY=/usr/${_arch}/lib/openssl-1.0/libssl.dll.a \
-      -DOPENSSL_CRYPTO_LIBRARY=/usr/${_arch}/lib/openssl-1.0/libcrypto.dll.a \
       ../qca-$pkgver
     make
     popd
