@@ -2,7 +2,7 @@
 # Maintainer: Francesco Persico <francesco.persico@gmail.com>
 
 pkgname=nodenv-node-build
-pkgver=2.6.21
+pkgver=2.6.23
 pkgrel=1
 pkgdesc="Install NodeJS versions"
 arch=("any")
@@ -10,7 +10,7 @@ url="https://github.com/nodenv/node-build"
 license=("MIT")
 conflicts=("${pkgname}-git" "node-build")
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=("f61c95ceebbb430a34ac3dad2de672f5")
+md5sums=("e04a3ce60add8887341187c87f44bfb2")
 
 package() {
 	cd "${srcdir}/node-build-${pkgver}"

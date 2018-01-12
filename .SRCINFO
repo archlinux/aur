@@ -1,14 +1,14 @@
 pkgbase = nodenv-node-build
 	pkgdesc = Install NodeJS versions
-	pkgver = 2.6.21
+	pkgver = 2.6.23
 	pkgrel = 1
 	url = https://github.com/nodenv/node-build
 	arch = any
 	license = MIT
 	conflicts = nodenv-node-build-git
 	conflicts = node-build
-	source = https://github.com/nodenv/node-build/archive/v2.6.21.tar.gz
-	md5sums = f61c95ceebbb430a34ac3dad2de672f5
+	source = https://github.com/nodenv/node-build/archive/v2.6.23.tar.gz
+	md5sums = e04a3ce60add8887341187c87f44bfb2
 
 pkgname = nodenv-node-build
 
