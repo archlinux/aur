@@ -4,7 +4,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-git
-pkgver=20.0.1.r11.g41a1b099
+pkgver=20.1.3.r195.g17560bf8
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "jack: JACK Support"
             "vlc: VLC Media Source")
-provides=("obs-studio")
+provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/jp9000/obs-studio.git#branch=master"
        "git+https://github.com/Mixer/ftl-sdk.git")
