@@ -10,7 +10,7 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.10.2
+pkgver=1.10.3dev+38+g78ef57197
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
@@ -36,20 +36,25 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=7ebc9258452623679b9f1c27aee94c528c14b273  # tags/1.10.2^0
+_commit=78ef571972aa3bf81b287d767ae02471e2924027  # nm-1-10
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
+        0001-nmp-netns-Mount-proc-in-the-new-namespace.patch
         NetworkManager.conf
         networkmanager.rc
         20-connectivity.conf
         )
 sha256sums=('SKIP'
+            '9be1576cce4eb36697a13a1edd15faed66393f97ab5df2c19650989cd0b644a0'
             '535f9c54ee29c35ca7b44c15f8de2e781c10d6f3324338c483bef360ad777efc'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc'
             '477d609aefd991c48aca93dc7ea5a77ebebf46e0481184530cceda4c0d8d72c6')
 
 prepare() {
   cd NetworkManager
+
+  # Fix test_netns_general in our containers
+  patch -Np1 -i ../0001-nmp-netns-Mount-proc-in-the-new-namespace.patch
 
   NOCONFIGURE=1 ./autogen.sh
 }
