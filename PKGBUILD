@@ -1,7 +1,7 @@
 # Maintainer: Márton Szabó < echo "bm90cmFtb0B2aXBtYWlsLmh1Cg=="|base64 -d >
 
 pkgname=neph-git
-pkgver=v0.1.16.r0.55e9760
+pkgver=v0.1.17.r0.f968d2a
 pkgrel=1
 pkgdesc="A modern command line job processor"
 arch=('i686' 'x86_64')
