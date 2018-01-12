@@ -1,12 +1,12 @@
 # Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
 pkgname=casync-git
-pkgver=2.r45.ge3dc1a3
+pkgver=2.r60.gf7d27f6
 pkgrel=1
 pkgdesc="Content-Addressable Data Synchronization Tool"
 arch=(x86 x86_64)
 url="https://github.com/systemd/casync"
 license=('LGPL')
-depends=('acl' 'libcurl.so' 'openssl' 'xz' 'fuse2' 'libselinux' 'zlib' 'zstd')
+depends=('acl' 'libcurl.so' 'openssl' 'xz' 'fuse2' 'libselinux' 'zlib' 'zstd' 'libudev.so')
 makedepends=('git' 'meson' 'python-sphinx')
 optdepends=()
 checkdepends=('rsync')
