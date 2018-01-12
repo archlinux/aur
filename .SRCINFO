@@ -14,7 +14,7 @@ pkgbase = parabot-git
 	source = git+https://github.com/ParadoxSpiral/parabot
 	source = parabot.service
 	sha256sums = SKIP
-	sha256sums = 4ebb72cf950f8b67864bdf80bf911ca069fdc393f35dccb2ff7b9406a5934686
+	sha256sums = 14e5da0918ae963547578607bb30f3ef5047cc91da23b7cfaae06050434f2edf
 
 pkgname = parabot-git
 
