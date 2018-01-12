@@ -7,6 +7,7 @@ pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. lin
 arch=('any')
 url='http://eigen.tuxfamily.org'
 license=('MPL2')
+depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://bitbucket.org/eigen/eigen/get/${pkgver}.tar.bz2"
