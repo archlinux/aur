@@ -1,7 +1,8 @@
-# $Id: PKGBUILD 103944 2014-01-13 20:31:53Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
-pkgname=nextcloud-app-calendar
+pkgname=nextcloud-app-calendar-git
 pkgver=1.5.7.r59.g10c30e55
 pkgrel=1
 pkgdesc="Calendar app for nextcloud"
