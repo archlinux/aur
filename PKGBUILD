@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=alt
-pkgver=2.4.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Command line utility that attempts to find the "alternate path" for the provided path'
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ depends=()
 conflicts=('alt-git')
 makedepends=('rust' 'cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a83facb0468d2986a0330ac39e6db443db9b9f09c00820156309ea1c768b3da5ceb38ff8280ec904c7a8587748b43cbbfd206dca50408dc3c25a69d6bb4592d5')
+sha512sums=('b50f35aeff7a812b4e2078edce09692230c9f1ced8bb68342283ce45175d9f9a9b27c1c8eeaef43fd759f48679f04bf5d56ae6203891cb88db36f25ce6ba51c8')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release
+  /usr/bin/cargo build --release
 }
 
 package() {
