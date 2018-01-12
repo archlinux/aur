@@ -22,8 +22,8 @@ _microarchitecture=0
 pkgbase=linux-xanmod
 _srcname=linux
 pkgver=4.14.13
-xanmod=17
-pkgrel=1
+xanmod=18
+pkgrel=2
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -52,7 +52,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('b107a37375b06674c0c8670a791b7b5d861580b761e884f9f8707cfcca26f6d6'
+sha256sums=('e886bf4a794bec0764fa1983e4db363515375f9a0c9ef59d26648401cf65838b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -237,6 +237,9 @@ _package-headers() {
 
   # remove files already in linux-docs package
   rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"
