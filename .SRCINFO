@@ -3,11 +3,12 @@ pkgbase = pari-jupyter
 	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/jdemeyer/pari_jupyter
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = cython2
 	depends = pari
 	depends = jupyter
+	depends = python2
 	source = https://pypi.io/packages/source/p/pari_jupyter/pari_jupyter-1.3.0.tar.gz
 	sha256sums = c33b0480981703aacb19991712a35b782357c2e1ea9e108e4c3b2407de6e7296
 
