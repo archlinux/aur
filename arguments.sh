@@ -51,22 +51,6 @@ bl_arguments__doc__='
 bl_arguments_new=()
 # endregion
 # region functions
-alias bl.arguments.set=bl_arguments_set
-bl_arguments_set() {
-    # shellcheck disable=SC2034,SC2016
-    local __doc__='
-    ```
-    bl.arguments.set argument1 argument2 ...
-    ```
-
-    Set the array the arguments-module is working on. After getting the desired
-    arguments, the new argument array can be accessed via
-    `bl_arguments_new`. This new array contains all remaining arguments.
-
-    '
-    bl_arguments_new=("$@")
-
-}
 alias bl.arguments.get_flag=bl_arguments_get_flag
 bl_arguments_get_flag() {
     # shellcheck disable=SC2034,SC2016
@@ -74,15 +58,12 @@ bl_arguments_get_flag() {
     ```
     bl.arguments.get_flag flag [flag_aliases...] variable_name
     ```
-
     Sets `variable_name` to true if flag (or on of its aliases) is contained in
     the argument array (see `bl.arguments.set`)
-
     #### Example
     ```
     bl.arguments.get_flag verbose --verbose -v verbose_is_set
     ```
-
     #### Tests
     >>> bl.arguments.set other_param1 --foo other_param2
     >>> local foo bar
@@ -94,13 +75,38 @@ bl_arguments_get_flag() {
     true
     false
     other_param1 other_param2
-
     >>> bl.arguments.set -f
     >>> local foo
     >>> bl.arguments.get_flag --foo -f foo
     >>> echo $foo
     true
-
+    '
+    local variable match argument flag
+    local flag_aliases=($(bl.array.slice :-1 "$@"))
+    variable="$(bl.array.slice -1 "$@")"
+    local new_arguments=()
+    eval "${variable}=false"
+    for argument in "${bl_arguments_new[@]:-}"; do
+        match=false
+        for flag in "${flag_aliases[@]}"; do
+            if [[ "$argument" == "$flag" ]]; then
+                match=true
+                eval "${variable}=true"
+            fi
+        done
+        $match || new_arguments+=("$argument")
+    done
+    bl_arguments_new=("${new_arguments[@]:+${new_arguments[@]}}")
+}
+alias bl.arguments.get_keyword=bl_arguments_get_keyword
+bl_arguments_get_keyword() {
+    # shellcheck disable=SC2034,SC2016
+    local __doc__='
+    ```
+    bl.arguments.get_keyword keyword variable_name
+    ```
+    Sets `variable_name` to the "value" of `keyword` the argument array (see
+    `bl.arguments.set`) contains "keyword=value".
     #### Example
     ```
     bl.arguments.get_keyword log loglevel
@@ -113,7 +119,6 @@ bl_arguments_get_flag() {
     >>> echo "${bl_arguments_new[@]}"
     bar
     other_param1 baz=baz other_param2
-
     >>> local foo
     >>> bl.arguments.set other_param1 foo=bar baz=baz other_param2
     >>> bl.arguments.get_keyword foo
@@ -136,13 +141,28 @@ bl_arguments_get_flag() {
             if [[ "$key" == "$keyword" ]]; then
                 eval "${variable}=$value_csh94wwn25"
             else
-                new_arguments+=( "$argument" )
+                new_arguments+=("$argument")
             fi
         else
-            new_arguments+=( "$argument" )
+            new_arguments+=("$argument")
         fi
     done
-    bl_arguments_new=( "${new_arguments[@]:+${new_arguments[@]}}" )
+    bl_arguments_new=("${new_arguments[@]:+${new_arguments[@]}}")
+}
+alias bl.arguments.set=bl_arguments_set
+bl_arguments_set() {
+    # shellcheck disable=SC2034,SC2016
+    local __doc__='
+    ```
+    bl.arguments.set argument1 argument2 ...
+    ```
+
+    Set the array the arguments-module is working on. After getting the desired
+    arguments, the new argument array can be accessed via
+    `bl_arguments_new`. This new array contains all remaining arguments.
+
+    '
+    bl_arguments_new=("$@")
 }
 alias bl.arguments.get_parameter=bl_arguments_get_parameter
 bl_arguments_get_parameter() {
@@ -186,9 +206,9 @@ bl_arguments_get_parameter() {
                 break
             fi
         done
-        $match || new_arguments+=( "$argument" )
+        $match || new_arguments+=("$argument")
     done
-    bl_arguments_new=( "${new_arguments[@]:+${new_arguments[@]}}" )
+    bl_arguments_new=("${new_arguments[@]:+${new_arguments[@]}}")
 }
 alias bl.arguments.get_positional=bl_arguments_get_positional
 bl_arguments_get_positional() {
