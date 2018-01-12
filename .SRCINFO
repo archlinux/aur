@@ -1,7 +1,7 @@
 pkgbase = brscan4
 	pkgdesc = SANE drivers from Brother for brscan4 compatible models
 	pkgver = 0.4.4_4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_scn.html
 	install = brscan4.install
 	arch = i686

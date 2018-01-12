@@ -3,7 +3,7 @@ license=('GPL' 'custom:Brother')
 arch=('i686' 'x86_64')
 pkgname=brscan4
 pkgver=0.4.4_4
-pkgrel=1
+pkgrel=2
 pkgdesc="SANE drivers from Brother for brscan4 compatible models"
 depends=('sane' 'libusb-compat')
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_scn.html"
@@ -23,7 +23,7 @@ build() {
   cd "$srcdir"
   umask 022
   mkdir -p etc/udev/rules.d
-  ./mk-udev-rules opt/brother/scanner/brscan4/{Brsane4.ini,models4/*.ini} > etc/udev/rules.d/$pkgname.rules
+  ./mk-udev-rules opt/brother/scanner/brscan4/{Brsane4.ini,models4/*.ini} > etc/udev/rules.d/40-$pkgname.rules
 }
 
 package() {
