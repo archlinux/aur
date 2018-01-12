@@ -48,7 +48,7 @@ else
     echo "Package creation failure"
     exit 2
   fi
-  mksrcinfo
+  makepkg --printsrcinfo > .SRCINFO
   echo "$SCRIPT_HOME/PKGBUILD updated for TWS ${VER}"
   exit 1
 fi
