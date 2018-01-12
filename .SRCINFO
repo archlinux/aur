@@ -1,7 +1,7 @@
 pkgbase = droidbot-git
 	pkgdesc = A lightweight test input generator for Android
-	pkgver = 1.0.2b1.r142.gcc0ec52
-	pkgrel = 1
+	pkgver = 1.0.2b1.r146.gea838a9
+	pkgrel = 2
 	url = https://github.com/honeynet/droidbot
 	arch = any
 	license = MIT
@@ -18,6 +18,9 @@ pkgbase = droidbot-git
 	optdepends = android-sdk: for developers
 	optdepends = android-platform-tools: for developers
 	optdepends = jdk9-openjdk: for developers
+	provides = droidbot
+	conflicts = droidbot
+	options = !strip
 	source = git+https://github.com/honeynet/droidbot
 	sha256sums = SKIP
 
