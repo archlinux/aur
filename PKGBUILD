@@ -7,7 +7,7 @@ pkgname=dwarffortress-lnp-git
 pkgver=44.03
 _pkgver=44_03
 _dfhack_pkgrel=beta1
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics"
 arch=('x86_64')
@@ -53,6 +53,8 @@ source=(git+"https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux"
         "http://bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2"
         'DFAnnouncementFilter.zip'::'http://dffd.bay12games.com/download.php?id=7905&f=DFAnnouncementFilter.zip'
         "dfhack-twbt.patch"
+        "dfhack-visualizers.patch"
+        "lnp-utils.patch"
         "lnp"
         "${pkgname}.desktop"
         "${pkgname}.install"
@@ -80,6 +82,8 @@ md5sums=('SKIP'
          '60a68261747673a91d583fa7129eb6c1'
          'affd6273731c321d364c55a8da314fea'
          '856c54681faed3608cd951bf286d12d5'
+         '5bc2a56fb0b5760c5632d451003dc9e4'
+         'b1cd403cdc9f72d77b7ee486df29d43b'
          '389e34b6937f843c8f635d5e7326c9fc'
          'bba8ab4d3f70cea8b812e78445fef1f0'
          '1c3b794a7becda3b6ce9ac453de300e6')
@@ -105,6 +109,12 @@ prepare() {
 
   cd $srcdir/dfhack/plugins
   patch -uN CMakeLists.custom.txt $srcdir/dfhack-twbt.patch
+
+  cd $srcdir/dfhack/plugins
+  patch -uN CMakeLists.txt $srcdir/dfhack-visualizers.patch
+  
+  cd $srcdir/dfhack/plugins/stonesense
+  git checkout 4c55e14
 
   mkdir -p $srcdir/dfhack/plugins/df-twbt
   cd $srcdir/df-twbt
@@ -228,6 +238,7 @@ package() {
   # create bin
   install -Dm755 "$srcdir/lnp" "$pkgdir/usr/bin/lnp"
 
+  patch -uN -d "$pkgdir/opt/$pkgname/LNP/utilities/" < $srcdir/lnp-utils.patch
 
   test ! -z "$(which dwarftherapist)" \
     && mkdir -p "$pkgdir/opt/$pkgname/LNP/utilities/dwarf_therapist" \
@@ -243,7 +254,6 @@ package() {
   install -Dm755 "$srcdir/DFAnnouncementFilter.jar" \
     "$pkgdir/opt/$pkgname/LNP/utilities/df_announcement_filter"
 
-
   install -Dm644 "${srcdir}/${pkgname}.desktop" \
     "$pkgdir/usr/share/applications/lnp.desktop"
 
@@ -251,7 +261,7 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/lnp.png"
 
   for license in python-lnp/COPYING.txt dfhack/depends/protobuf/COPYING.txt \
-    dfhack/LICENSE.rst \
+    dfhack/plugins/stonesense/LICENSE dfhack/LICENSE.rst \
     ; do
     install -DTm644 "$srcdir/$license" \
     "${pkgdir}/usr/share/licenses/${pkgname}/$license"

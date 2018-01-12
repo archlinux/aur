@@ -1,0 +1,10 @@
+--- CMakeLists.txt.orig	2016-04-21 09:36:00.759310999 -0700
++++ CMakeLists.txt	2016-04-21 09:40:59.192644332 -0700
+@@ -1,6 +1,6 @@
+ INCLUDE(Plugins.cmake)
+ 
+-OPTION(BUILD_STONESENSE "Build stonesense (needs a checkout first)." OFF)
++OPTION(BUILD_STONESENSE "Build stonesense (needs a checkout first)." ON)
+ if(BUILD_STONESENSE)
+     add_subdirectory (stonesense)
+ endif()

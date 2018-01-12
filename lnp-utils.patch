@@ -1,0 +1,16 @@
+diff -Naur ./exclude.txt ./exclude.txt.old
+--- ./exclude.txt.old	2018-01-11 18:09:58.242468382 -0800
++++ ./exclude.txt	2018-01-11 18:19:52.485585918 -0800
+@@ -1,4 +1,3 @@
+ File Exlcusion List
+ Any file name inside square brackets will not show up in LNP's utilities list.
+ 
+-[*.jar]
+diff -Naur ./include.txt ./include.txt.old
+--- /include.txt.old	2018-01-11 18:09:58.242468382 -0800
++++ ./include.txt	2018-01-11 18:34:24.766491134 -0800
+@@ -1,3 +1,3 @@
+ File Include List
+ Any file name inside square brackets will show up in LNP's utilities list.
+-
++[DwarfTherapist]
