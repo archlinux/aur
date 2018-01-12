@@ -1,7 +1,7 @@
 # Maintainer: Samuel Fernando Mesa <samuelmesa@linuxmail.org> 
 # Based on script of KaOS: https://github.com/KaOS-Community-Packages/gvsig-desktop
 
-pkgname=gvsig-desktop
+pkgname=gvsig-desktop-bin
 _pkgname=gvSIG-desktop
 pkgver=2.3.1
 _pkgrel=2501
@@ -12,7 +12,7 @@ url="http://www.gvsig.com/en/products/gvsig-desktop"
 license=('GPL')
 depends=('java-environment>=6' 'hicolor-icon-theme' 'libidn' 'libldap' 'libjpeg-turbo' 'proj' 'geos' 'openssl')
 source=("http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/${pkgver}/builds/${_pkgrel}/gvSIG-desktop-${pkgver}-${_pkgrel}-final-lin_ubuntu_16.04-x86_64.zip"
-        "$pkgname.desktop" "gvSIG.config" "001-patch_x64bits.patch")
+        "$_pkgname.desktop" "gvSIG.config" "001-patch_x64bits.patch")
 sha256sums=('987ec4e47e9d9dec43d588c07693b04f438049b8ce5b73372290e1108b45431e'
             'f3bfca96b53572799aad64092b30ece4cec3b67db0062efada79a48d60d00ea0'
             'd5dd810d2492486af38b2d8079dbd24554b4f7dd6fd43d1af860ae6667239bb2'
@@ -38,8 +38,8 @@ package() {
 
   install -Dm644 "gvSIG.config"  ${pkgdir}/opt/${pkgname}/gvSIG.config
 
-  install -Dm644 "${pkgname}.desktop" \
-        ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  install -Dm644 "${_pkgname}.desktop" \
+        ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 
   install -dm755 ${pkgdir}/usr/bin
 
