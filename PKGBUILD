@@ -6,7 +6,6 @@ pkgdesc="A modern client implementation in Go of the DNSCrypt v2 protocol."
 arch=('x86_64')
 url="https://github.com/jedisct1/dnscrypt-proxy"
 license=('GPL3')
-depends=('')
 makedepends=('git' 'go')
 conflicts=('dnscrypt-proxy')
 source=('git+https://github.com/jedisct1/dnscrypt-proxy.git' 'dnscrypt-proxy.service')
