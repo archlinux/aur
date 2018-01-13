@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-playbar2
 	pkgdesc = Applet that shows now playing music
 	pkgver = 2.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/audoban/PlayBar2/
 	arch = i686
 	arch = x86_64
