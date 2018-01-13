@@ -6,7 +6,7 @@
 pkgname=firefox-beta
 name=firefox-beta
 pkgver=58.0.16
-pkgrel=2
+pkgrel=3
 ver=58.0b16
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
@@ -93,7 +93,7 @@ prepare() {
   ln -s /usr/bin/python2 path/python
 
   cd firefox-$ver
-  patch -Np1 -i ../id.patch
+  patch -Np1 -i ../firefox-install-dir.patch
 
 
 
