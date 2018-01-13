@@ -1,0 +1,18 @@
+pkgbase = tr1pd
+	pkgdesc = tamper resistant audit log
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kpcyrd/tr1pd
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = aarch64
+	license = AGPL3
+	makedepends = cargo
+	depends = gcc-libs
+	depends = libsodium
+	source = https://github.com/kpcyrd/tr1pd/archive/v0.2.0/tr1pd-0.2.0.tar.gz
+	sha512sums = 99bb90514ff0ca20bf2b69d14453c525bcfe0ac460217569339a41fc605fb125849d67c7aee90eaaa4c334f6470edfdaf6b4e005bacb1ecdd9e1bcdfd5d25a1b
+
+pkgname = tr1pd
+
