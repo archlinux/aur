@@ -1,16 +1,16 @@
 pkgbase = xgalaga++
 	pkgdesc = A classic shoot 'em up arcade game inspired by XGalaga
-	pkgver = 0.8.4
+	pkgver = 0.9
 	pkgrel = 1
 	url = http://marc.mongenet.ch/OSS/XGalaga/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libxpm
-	source = http://marc.mongenet.ch/OSS/XGalaga/xgalaga++_0.8.4.tar.gz
-	source = xgalaga++-0.8.4.diff
-	md5sums = 0d1b8caa29148bc5da5683158681b155
-	md5sums = 7a1bd14651fd4aa80ee465f3430ad94f
+	source = http://marc.mongenet.ch/OSS/XGalaga/xgalaga++_0.9.tar.gz
+	source = xgalaga++-0.9.diff
+	md5sums = 376e7c43dc19e0f3f9a4cf1a7cb32695
+	md5sums = f97899df70b479053bcc0b9714458fdd
 
 pkgname = xgalaga++
 

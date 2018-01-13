@@ -1,6 +1,6 @@
-diff -Naur xgalaga++-0.8~/Makefile xgalaga++-0.8/Makefile
---- xgalaga++-0.8.4/Makefile
-+++ xgalaga++-0.8.4/Makefile.orig
+diff -Naur xgalaga++-0.9~/Makefile xgalaga++-0.9/Makefile
+--- xgalaga++-0.9/Makefile
++++ xgalaga++-0.9/Makefile.orig
 @@ -26,14 +26,14 @@
  
  # installation directories
@@ -58,9 +58,9 @@ diff -Naur xgalaga++-0.8~/Makefile xgalaga++-0.8/Makefile
  
  .PHONY:	uninstall
  uninstall:
-diff -Naur xgalaga++-0.8~/xgalaga++.desktop xgalaga++-0.8/xgalaga++.desktop
---- xgalaga++-0.8~/xgalaga++.desktop	1969-12-31 18:00:00.000000000 -0600
-+++ xgalaga++-0.8/xgalaga++.desktop	2009-01-20 16:15:35.000000000 -0600
+diff -Naur xgalaga++-0.9~/xgalaga++.desktop xgalaga++-0.9/xgalaga++.desktop
+--- xgalaga++-0.9~/xgalaga++.desktop	1969-12-31 18:00:00.000000000 -0600
++++ xgalaga++-0.9/xgalaga++.desktop	2009-01-20 16:15:35.000000000 -0600
 @@ -0,0 +1,9 @@
 +[Desktop Entry]
 +Version=1.0
@@ -71,9 +71,9 @@ diff -Naur xgalaga++-0.8~/xgalaga++.desktop xgalaga++-0.8/xgalaga++.desktop
 +Exec=xgalaga++
 +Icon=/usr/share/pixmaps/xgalaga++.xpm
 +Categories=Game;ArcadeGame;
-diff -Naur xgalaga++-0.8~/xgalaga++.xpm xgalaga++-0.8/xgalaga++.xpm
---- xgalaga++-0.8~/xgalaga++.xpm	1969-12-31 18:00:00.000000000 -0600
-+++ xgalaga++-0.8/xgalaga++.xpm	2009-01-20 16:15:35.000000000 -0600
+diff -Naur xgalaga++-0.9~/xgalaga++.xpm xgalaga++-0.9/xgalaga++.xpm
+--- xgalaga++-0.9~/xgalaga++.xpm	1969-12-31 18:00:00.000000000 -0600
++++ xgalaga++-0.9/xgalaga++.xpm	2009-01-20 16:15:35.000000000 -0600
 @@ -0,0 +1,814 @@
 +/* XPM */
 +static char * xgalaga++_xpm[] = {
