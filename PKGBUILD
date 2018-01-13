@@ -6,7 +6,7 @@
 pkgname=firefox-beta
 name=firefox-beta
 pkgver=58.0.16
-pkgrel=1
+pkgrel=2
 ver=58.0b16
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
@@ -45,7 +45,7 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/6007_musl_fix_too
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-location.services.mozilla.com.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-install-dir.patch
+https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/id.patch
 )
 
 sha256sums=('ebb8b570f5760078508101b281f1c6f0cda2e218d32bfea03b49bd0549cbb785'
@@ -72,7 +72,8 @@ sha256sums=('ebb8b570f5760078508101b281f1c6f0cda2e218d32bfea03b49bd0549cbb785'
             'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
             '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
             '24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd')
+            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
+            'ef2647ee1b82d46f3bd4b503e3e0ea7350360e898ab1272b82d6892b75eba5f6')
 
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -92,7 +93,7 @@ prepare() {
   ln -s /usr/bin/python2 path/python
 
   cd firefox-$ver
-  patch -Np1 -i ../firefox-install-dir.patch
+  patch -Np1 -i ../id.patch
 
 
 
