@@ -2,8 +2,8 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=17.12.0
-pkgrel=2
+pkgver=18.01.0
+pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -20,8 +20,8 @@ source=(
   "https://github.com/docker/docker-ce/archive/v${pkgver}-ce.tar.gz"
   "docker.sysusers"
 )
-md5sums=('55bcb35391d28fff350076dce4b82d25'
-         '545b780b4cf5bb1c83c5615d7153e9c7'
+md5sums=('f6e74bf3d11af7d96953855e14833624'
+         'd5ceb5f945405ac6798f26df789d58a2'
          '9a8b2744db23b14ca3cd350fdf73c179')
 
 build() {
