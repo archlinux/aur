@@ -1,6 +1,6 @@
 # Maintainer: Faustino Aguilar <faustinoaq.github.io>
 pkgname=amber
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="An open source efficient, cohesive and fun web framework for the Crystal language"
 arch=(i686 x86_64)
@@ -8,7 +8,7 @@ url='https://github.com/amberframework/amber'
 license=(MIT)
 depends=('crystal' 'shards' 'sqlite')
 source=("https://github.com/amberframework/amber/archive/v$pkgver.tar.gz")
-sha256sums=('188790b260accb35e4f077abd1c37eafef9aedd9b580194a56e6d95edb4f5e51')
+sha256sums=('f65711e2fdc473bd77142acce8c383e591d87ab666f81f1008973b4b2aebf353')
 
 build() {
   cd "amber-$pkgver"
