@@ -36,13 +36,11 @@ build() {
   -DCMAKE_INSTALL_PREFIX:PATH=/usr \
   -DCMAKE_INSTALL_LIBDIR:PATH=lib
   make
-#  ./acprep \
-#	  --prefix=/usr \
-#  make all doc
 }
 
 package () {
   cd "${srcdir}"/ledger
   make DESTDIR="${pkgdir}" install
+  rm -fr "${pkgdir}"/usr/include/ledger
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/ledger/LICENSE"
 }
