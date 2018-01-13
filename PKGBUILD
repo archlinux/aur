@@ -10,7 +10,6 @@ url='http://www.sfml-dev.org/'
 license=('zlib')
 depends=('libsndfile' 'libxrandr' 'libjpeg' 'openal' 'glew' 'freetype2' 'libx11')
 makedepends=('mesa' 'cmake' 'doxygen' 'git' 'systemd')
-install=sfml.install
 source=("git+git://github.com/LaurentGomila/SFML.git#tag=${pkgver}")
 sha512sums=('SKIP')
 

@@ -1,3 +1,0 @@
-post_install() {
-    echo "To view the SFML samples, go to /usr/share/SFML/examples/ and run them individually"
-}
