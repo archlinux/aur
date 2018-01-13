@@ -1,7 +1,7 @@
 # Maintainer: Alex Zappa <reatlat@gmail.com>
 
 pkgname=wavebox-bin-beta
-pkgver=3.7.2
+pkgver=3.7.3
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication"
 arch=('x86_64' 'i686')
@@ -12,15 +12,15 @@ conflicts=('wavebox-bin')
 options=(!strip)
 provides=('wavebox')
 depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libxss' 'libappindicator-gtk2')
-optdepends=('gvfs' 'libnotify')
+optdepends=('gvfs' 'libnotify' 'ttf-ms-fonts')
 
 source=('wavebox.desktop')
 source_x86_64=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_linux_${CARCH}.tar.gz")
 source_i686=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_linux_ia32.tar.gz")
 
 sha512sums=('c0859fb30dc9dab6f2584568f7f1012fb5f0b35488b4b7d0fb8034469796a290a6b6c6de9c0bc5d22d3566f444e14fbae593fdef7f725e51b89217a9f62cd407')
-sha512sums_x86_64=('28651a0dc12857d8d037b857d552f8a8160ae128120cefd022f491231df48a1d0bd1712a962d84d2ef41d8380a980508d95b024428c8e077e450184aadce4c35')
-sha512sums_i686=('62933ef9e72633e147e57c0231e46fd729975ea272d9bf122dc768e25b95ce0a21e14a26c03b7879fb6411174174e1323039ddd83ad7d2d1f7ae21fc11309b95')
+sha512sums_x86_64=('eea079873d44c15302187575e61d5a19de3f37856a3ba77f6074d8ea518ebed1085e4ba57c2557426d08410fab449fed0939db8cdb52adf6e895f9d8c14e43a0')
+sha512sums_i686=('5f15ac113e83646082b4d2bb783f3507ddf6935c458ba22e4144801856b839d3bd2f3c50e343e432b40c293cc128323bcbb0389cb3b7c38cab5db3fe5adb7ff1')
 
 package() {
   if [ ${CARCH} == "x86_64" ]; then
