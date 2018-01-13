@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-bcachefs-git' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-bcachefs-git"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-bcachefs-git.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-git-bcachefs-fallback.img"
+fallback_options="-S autodetect"

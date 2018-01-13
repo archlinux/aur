@@ -1,0 +1,48 @@
+pkgbase = linux-bcachefs-git
+	pkgver = 4.11rc2.r31874.gb29e770cff3f
+	pkgrel = 1
+	url = https://evilpiepirate.org/git/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	makedepends = libsodium
+	makedepends = liburcu
+	makedepends = libscrypt
+	options = !strip
+	source = git+https://evilpiepirate.org/git/bcachefs.git
+	source = git+https://evilpiepirate.org/git/bcachefs-tools.git
+	source = config.x86_64
+	source = linux-bcachefs-git.preset
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = b17122b4dcf0f1058bc7a00114bafecceadab3fcbfdc80275ecf1a27e8492dfa
+	sha256sums = f423dea411446873d34136e0dc3a8ab598918bd783888bbe080ad3b603f89bb0
+
+pkgname = linux-bcachefs-git
+	pkgdesc = The Linux kernel and modules (bcachefs git version)
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-bcachefs-git.preset
+
+pkgname = linux-bcachefs-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (bcachefs git version)
+	provides = linux-bcachefs-headers
+
+pkgname = linux-bcachefs-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (bcachefs git version)
+	provides = linux-bcachefs-docs
+
+pkgname = linux-bcachefs-git-tools
+	provides = bcachefs-tools
+
