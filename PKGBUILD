@@ -2,7 +2,7 @@
 
 _pkgname=x2goclient
 pkgname=${_pkgname}-qt5
-pkgver=4.1.0.0
+pkgver=4.1.1.0
 pkgrel=1
 pkgdesc="A graphical client (Qt5) for the X2Go system"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('xorg-xauth: may be required by X2goservers running a different linu
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(http://code.x2go.org/releases/source/${_pkgname}/${_pkgname}-${pkgver}.tar.gz{,.asc})
-sha256sums=('4b5915bc3666228910342810a34f7a03fb6967c6b9c796633d9cdf8b89cc2b6a'
+sha256sums=('be153529f67e34849b1d807170bf1de1c2d3e1bbe6c5a25ad457c88a981b63ca'
             'SKIP')
 validpgpkeys=('9BFBAEE86C0AA5FFBF2207829AF46B3025771B31'  # Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
               '1AD23D1B8F087A35AB74BDE9F4A7678C9C6B0B2B') #  "X2go Git Administrator <git-admin@x2go.org>"
