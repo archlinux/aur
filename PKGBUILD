@@ -2,7 +2,7 @@
 
 _pkgname=libprotobuf
 pkgname=lib32-$_pkgname
-pkgver=v3.5.0.1
+pkgver=v3.5.1.1
 pkgrel=2
 pkgdesc="A language-neutral, platform-neutral extensible mechanism for 
 serializing structured data."
@@ -11,11 +11,11 @@ license=('custom')
 arch=('x86_64')
 depends=('lib32-zlib' 'lib32-gcc-libs')
 makedepends=('gcc-multilib' 'curl' 'unzip')
-source=("https://github.com/google/protobuf/archive/v3.5.0.1.zip")
+source=("https://github.com/google/protobuf/archive/v3.5.1.1.zip")
 md5sums=('SKIP')
 
 build() {
-    cd "${srcdir}/protobuf-3.5.0.1"
+    cd "${srcdir}/protobuf-3.5.1.1"
 
     ./autogen.sh
     #autoreconf -i
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/protobuf-3.5.0.1"
+    cd "${srcdir}/protobuf-3.5.1.1"
 
     make DESTDIR="$pkgdir" install
     rm -r "$pkgdir/usr/bin/"
