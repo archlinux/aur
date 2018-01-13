@@ -1,7 +1,7 @@
 pkgbase = mime-editor
 	pkgdesc = Shared-mime info database editor, useful for changing MIME-type info in rox applications
 	pkgver = 0.6
-	pkgrel = 5
+	pkgrel = 6
 	url = http://rox.sourceforge.net/mime_editor.html
 	arch = any
 	license = GPL2
