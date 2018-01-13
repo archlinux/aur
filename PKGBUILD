@@ -1,52 +1,45 @@
+# Maintainer: Ivan Zenin <i.zenin@gmx.com>
 # Maintainer: Johann Klahn <kljohann@gmail.com>
 # Contributor: Nathan Jones <nathanj@insightbb.com>
 
 pkgname=ledger-git
-pkgdesc="A double-entry accounting system with a command-line reporting interface"
-pkgver=20150808
-pkgrel=1
-
-_branch=next
-
-## Uncomment this line if you want a debug build:
-# _build=debug
-
-_defines=(BUILD_DOCS=ON CMAKE_INSTALL_LIBDIR=lib/)
-
-## Uncomment this line if you want to include the ledger-mode:
-# _defines+=(BUILD_EMACSLISP=ON)
-
-depends=('mpfr' 'boost-libs' 'libedit')
-makedepends=('boost' 'git' 'sed' 'python2' 'cmake' 'texinfo' 'texlive-plainextra')
+pkgver=latest
+pkgrel=2
+pkgdesc="A double-entry accounting system with a command-line reporting interface (development version)"
+arch=('i686' 'x86_64')
 url="http://ledger-cli.org"
 license=('BSD')
-arch=('i686' 'x86_64')
+depends=('mpfr' 'boost-libs' 'libedit')
 provides=('ledger')
 conflicts=('ledger')
-[[ "${_build}" == "debug" ]] && options=('!strip')
-install="ledger.install"
-source=("ledger::git://github.com/ledger/ledger.git#branch=${_branch}")
+makedepends=('boost' 'git' 'sed' 'python2' 'cmake' 'texinfo' 'texlive-plainextra')
+source=("git+git://github.com/ledger/ledger.git")
 sha256sums=('SKIP')
+install="ledger.install"
 
 pkgver() {
-  cd ledger
-  # git describe --always | sed 's|-|.|g'
-  git log --format="%cd" --date=short -1 | sed 's/-//g'
+  cd "${srcdir}"/ledger
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
-  cd ledger
+  cd "${srcdir}"/ledger
   find -iname '*.py' -execdir sed -i 's|^#!.*python$|#!/usr/bin/python2|' '{}' \;
   sed -i 's|^#!.*python$|#!/usr/bin/python2|' ./acprep
 }
 
 build() {
-  cd ledger; rm -rf build
-  ./acprep "${_build:-opt}" --output=./build --prefix=/usr make all doc -- "${_defines[@]/#/-D}"
+  cd "${srcdir}"/ledger
+  ./acprep \
+	  --prefix=/usr \
+  make all doc
 }
 
 package () {
-  cd ledger/build
+  cd "${srcdir}"/ledger
   make DESTDIR="${pkgdir}" install
-  install -Dm644 ../LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ../LICENSE.md "${pkgdir}/usr/share/licenses/ledger/LICENSE"
 }
