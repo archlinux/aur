@@ -13,7 +13,7 @@ depends=('java-runtime-common' 'java-runtime>=8')
 source=(https://github.com/PoC-Consortium/burstcoin/releases/download/${pkgver}/burstcoin-${pkgver}.zip
 burstcoin-wallet.service
 )
-md5sums=('1141371b2e3d08a4ca33f2483202351a'
+md5sums=('b55ee43aa101abf7d13e4251e6ebb2ae'
          'ffc739247043a0b48b51278666fb095a')
 
 package() {
