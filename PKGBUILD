@@ -6,7 +6,7 @@
 pkgname=firefox-beta
 name=firefox-beta
 pkgver=58.0.16
-pkgrel=3
+pkgrel=4
 ver=58.0b16
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
@@ -93,7 +93,7 @@ prepare() {
   ln -s /usr/bin/python2 path/python
 
   cd firefox-$ver
-  patch -Np1 -i ../firefox-install-dir.patch
+  patch -Np1 -i ../id.patch
 
 
 
@@ -227,9 +227,7 @@ END
     "$pkgdir/usr/share/applications/$name.desktop"
 
   # Use system-provided dictionaries
-  #rm -r "$pkgdir"/usr/lib/$name/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$name/dictionaries"
-  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$name/hyphenation"
+
 
   # Install a wrapper to avoid confusion about binary path
 
@@ -248,9 +246,5 @@ msg2 'renaming'
   ln -s "/usr/lib/firefox-beta/firefox/firefox-bin"  "$pkgdir/usr/bin/firefox-beta"
 
 
-
-
-mv $pkgdir/usr/lib/firefox/ $pkgdir/usr/lib/firefox-beta/
-rm "$pkgdir/usr/lib/firefox-beta/firefox/firefox"
 rm "$pkgdir/usr/bin/firefox"
 }
