@@ -1,9 +1,10 @@
 # $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Jonas Seibert <jonas+aur at seibert dot ninja>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=payara
 pkgver=4.1.2.174
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java EE application server, drived from GlassFish Open Source Edition."
 url="http://www.payara.fish/"
 license=("CDDL" "GPL2")
@@ -15,7 +16,7 @@ options=(!strip)
 source=("$pkgname-$pkgver.zip::https://search.maven.org/remotecontent?filepath=fish/$pkgname/distributions/$pkgname/$pkgver/$pkgname-$pkgver.zip"
         "payara.service")
 
-sha256sums=('efa1849b00b068adb743c4ee24a6af419258bf3e2a356df68784b6a9bfee4665'
+sha256sums=('50460b818a63a25777e5c1514d1c39ecccd7f8170ed9d6a2f1c7c6192173e017'
             'ab5c47bdba5daf459b6422e4eeaa9a609a8d0e25a942f7c6a9e891098e9b6232')
 
 package() {
