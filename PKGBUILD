@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=just-git
-pkgver=0.3.5.367
+pkgver=0.3.5.3.g573cebd
 pkgrel=1
 pkgdesc="Just a command runner, like make."
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  echo $(git describe --tags|tr - .|tr -d v).$(git rev-list --count HEAD)
+  echo $(git describe --tags|tr - .|tr -d v)
 }
 
 build() {
