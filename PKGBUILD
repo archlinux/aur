@@ -1,7 +1,7 @@
 # Maintainer: Paul Knopf <pauldotknopf@gmail.com>
 pkgname=darch-alpha-git
 pkgrel=1
-pkgver=1.0.0.eb5d366706bea59c687bf892fc88293da823dd90
+pkgver=1.0.0.10a50c38ee2064bdc96f101cb6cb02169ecb2bf1
 epoch=
 pkgdesc="A utility to that uses Docker to build stateless Arch images that can be booted bare-metal."
 arch=('x86_64')
@@ -37,9 +37,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/darch"
-    cd bin
-    rm darch
-    rm *.tar.gz
-    cp . -r "$pkgdir"
+    local arch=`go env GOARCH`
+    tar -xzpf "$srcdir/darch/bin/darch-$arch.tar.gz" -C "$pkgdir"
 }
