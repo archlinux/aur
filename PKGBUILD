@@ -1,5 +1,5 @@
 # Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
-_github_pkgname=PlayBar2
+_github_pkgname=playbar2
 pkgname=plasma5-applets-playbar2
 pkgver=2.5
 pkgrel=4
@@ -25,7 +25,7 @@ conflicts=(
 )
 
 source=("https://github.com/audoban/$_github_pkgname/archive/v${pkgver}.tar.gz")
-sha512sums=('367984610621daecc2e1389d4d30284bdd6cc2842ee81f4638cc14863f449e811d6351ffb8832f5c95e2bb007c6d7c88e7d80f7744d01723527ddc5c6c785c96')
+sha512sums=('964a29a07d7fab8f02d71224684e572e4fbadbd57fdc74ee6b59477b415306c39b60ec7be392711cfac8ab0325a72e7cee485e9c3af2949f439dbeb3a247605b')
 
 prepare() {
   cd "$srcdir/$_github_pkgname-$pkgver"
