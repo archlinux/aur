@@ -7,7 +7,7 @@
 
 pkgname=chromium-gtk2
 _pkgname=chromium
-pkgver=63.0.3239.108
+pkgver=63.0.3239.132
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security (GTK2 version)"
@@ -29,34 +29,38 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
-        chromium.desktop
-        chromium-exclude_unwind_tables.patch
+        chromium-omnibox-unescape-fragment.patch
+        chromium-disable-SharedArrayBuffer-by-default.patch
+        chromium-skia-harmony.patch
         chromium-clang-r1.patch
         chromium-webrtc-r0.patch
+        chromium-exclude_unwind_tables.patch
         chromium-widevine.patch
         fix-nav-button-layout.patch)
-sha256sums=('47d80798194da78bdd519b7ce012425b13cf89d6eb287e22a34342a245c31a2b'
+sha256sums=('84c46c2c42faaa102abe0647ee1213615a2522627124924c2741ddc2161b3d8d'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            '6da2cc8e4ae13547763f946c331b2f819fbb8af01681b8b90564a95f8a423e58'
-            '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            'e53dc6f259acd39df13874f8a0f440528fae764b859dd71447991a5b1fac7c9c'
+            'ab330f30c14ea3b5e77976d674304b91cfb02251fe8771cecb0bb4092c7f6b74'
+            '814eb2cecb10cb697e24036b08aac41e88d0e38971741f9e946200764e2401ae'
+            '1e040caa43ba34c627fe3750fb44c781a74298d010ef40657ab8deb4780db70b'
+            'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
             'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
+            'e53dc6f259acd39df13874f8a0f440528fae764b859dd71447991a5b1fac7c9c'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             '377cb60201a9bf6a095499273a1d96f43543a4f1dae62e591748eec5c652cf52')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
-declare -rgA _system_libs=(
-  #[ffmpeg]=ffmpeg              # https://crbug.com/731766
+readonly -A _system_libs=(
+  #[ffmpeg]=ffmpeg            # https://crbug.com/731766
   [flac]=flac
-  #[freetype]=freetype2         # https://crbug.com/pdfium/733
-  #[harfbuzz-ng]=harfbuzz-icu   # https://crbug.com/768938
-  #[icu]=icu                    # https://crbug.com/772655
+  #[freetype]=freetype2       # Using 'use_system_freetype=true' until M65
+  #[harfbuzz-ng]=harfbuzz     # Using 'use_system_harfbuzz=true' until M65
+  #[icu]=icu                  # https://crbug.com/772655 + need M64 for ICU 60
   [libdrm]=
   [libjpeg]=libjpeg
-  #[libpng]=libpng              # https://crbug.com/752403#c10
-  #[libvpx]=libvpx              # https://bugs.gentoo.org/611394
+  #[libpng]=libpng            # https://crbug.com/752403#c10
+  #[libvpx]=libvpx            # https://bugs.gentoo.org/611394
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -66,7 +70,13 @@ declare -rgA _system_libs=(
   [yasm]=
   [zlib]=minizip
 )
-depends+=(${_system_libs[@]})
+readonly _unwanted_bundled_libs=(
+  ${!_system_libs[@]}
+  ${_system_libs[libjpeg]+libjpeg_turbo}
+  freetype
+  harfbuzz-ng
+)
+depends+=(${_system_libs[@]} freetype2 harfbuzz)
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -82,7 +92,7 @@ prepare() {
   local _chrome_build_hash=$(base64 -d ../chromium-$pkgver.txt |
     grep -Po '^parent \K[0-9a-f]{40}$')
   if [[ -z $_chrome_build_hash ]]; then
-    error "Unable to fetch Chrome build hash."
+    error "Unable to find Chrome build hash."
     return 1
   fi
   echo "LASTCHANGE=$_chrome_build_hash-" >build/util/LASTCHANGE
@@ -95,6 +105,15 @@ prepare() {
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/712575
   patch -Np1 -i ../chromium-exclude_unwind_tables.patch
+
+  # https://crbug.com/789163
+  patch -Np1 -i ../chromium-omnibox-unescape-fragment.patch
+
+  # https://crbug.com/798864
+  patch -Np1 -i ../chromium-disable-SharedArrayBuffer-by-default.patch
+
+  # https://crbug.com/skia/6663#c10
+  patch -Np4 -i ../chromium-skia-harmony.patch
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-clang-r1.patch
@@ -125,12 +144,14 @@ prepare() {
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
   local _lib
-  for _lib in ${!_system_libs[@]} ${_system_libs[libjpeg]+libjpeg_turbo}; do
+  for _lib in ${_unwanted_bundled_libs[@]}; do
     find -type f -path "*third_party/$_lib/*" \
       \! -path "*third_party/$_lib/chromium/*" \
       \! -path "*third_party/$_lib/google/*" \
-      \! -path "*base/third_party/icu/*" \
-      \! -regex '.*\.\(gn\|gni\|isolate\|py\)' \
+      \! -path './base/third_party/icu/*' \
+      \! -path './third_party/freetype/src/src/psnames/pstables.h' \
+      \! -path './third_party/yasm/run_yasm.py' \
+      \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
 
@@ -170,6 +191,8 @@ build() {
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
     'link_pulseaudio=true'
+    'use_system_freetype=true'
+    'use_system_harfbuzz=true'
     'use_gtk3=false'
     'use_gconf=false'
     'use_gnome_keyring=false'
