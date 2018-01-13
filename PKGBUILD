@@ -1,10 +1,10 @@
 # Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
 pkgname=plasma5-applets-playbar2-git
 pkgver=2.5.r44.g8b66075
-pkgrel=1
+pkgrel=2
 pkgdesc="Applet that shows now playing music"
 arch=('i686' 'x86_64')
-url="https://github.com/audoban/PlayBar2/"
+url="https://github.com/audoban/playbar2/"
 license=('GPL3')
 depends=(
   plasma-framework
@@ -25,7 +25,7 @@ conflicts=(
   ${pkgname%-git}
   kdeplasma-applets-playbar2
 )
-source=("${pkgname%-git}::git+https://github.com/audoban/PlayBar2.git")
+source=("${pkgname%-git}::git+https://github.com/audoban/playbar2.git")
 md5sums=('SKIP')
 
 pkgver() {
