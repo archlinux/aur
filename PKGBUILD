@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r131692
+pkgver=27.0.50.r131745
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -15,10 +15,11 @@ conflicts=('emacs')
 options=('docs' '!emptydirs' '!makeflags')
 provides=('emacs')
 source=("git://git.savannah.gnu.org/emacs.git" check_IM6.patch)
-md5sums=('SKIP' '49274bae5626d3a1688a49c54f559e79')
+sha256sums=('SKIP'
+            '19f6e3e50ab63296d5b021184fe5ddea35ed4332d2f48c2b616a393d9744d56e')
 
 pkgver() {
-  cd "$srcdir/emacs"
+  cd emacs
   _mainver=$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')
   printf "%s.r%s" "$(echo $_mainver)" "$(git rev-list --count HEAD)"
 }
@@ -31,7 +32,7 @@ prepare() {
 build() {
   cd emacs
   [[ -x configure ]] || ( ./autogen.sh && ./autogen.sh autoconf )
-  ac_cv_lib_gif_EGifPutExtensionLast=yes PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"\
+  ac_cv_lib_gif_EGifPutExtensionLast=yes PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig" \
     ./configure --program-transform-name='s/^ctags$/ctags.emacs/' \
     --prefix=/usr \
     --sysconfdir=/etc \
