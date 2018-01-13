@@ -1,22 +1,21 @@
 # $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Alexandre Moine <alexandre@moine.me>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
 
 pkgname=tuxguitar
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('x86_64')
 url="http://sourceforge.net/projects/tuxguitar"
 license=('LGPL')
 depends=('java-runtime>=8' 'alsa-lib' 'gtk2' 'libxtst')
-makedepends=('unzip' 'zip' 'apache-ant' 'jack' 'fluidsynth' 'jdk8-openjdk' 'maven')
+makedepends=('unzip' 'zip' 'apache-ant' 'jack' 'fluidsynth' 'java-environment>=8' 'maven')
 optdepends=('fluidsynth')
 source=(tuxguitar-src-$pkgver.tar.gz::http://downloads.sourceforge.net/project/tuxguitar/TuxGuitar/TuxGuitar-$pkgver/tuxguitar-$pkgver-src.tar.gz
-        tuxguitar.desktop tuxguitar.xml nogcj.patch)
+        nogcj.patch)
 sha256sums=('ac72690bc1c20919dd66df46f757c6890be4c54b38f2a3b59a0265c777392210'
-            '6a6c2c64f75f7402b6913e493b847f6b6d9d789bad7ab3ec023f61784d38bbfa'
-            'd5b79049776c39e8c58bfa5b9748678ed2ed376e7c4cc1e837de5666f18a8e56'
             'bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc')
 
 case $CARCH in
@@ -27,11 +26,18 @@ esac
 prepare() {
   cd tuxguitar-$pkgver-src
   patch -Np1 -i ../nogcj.patch
+
+  # For jdk9
+  for _i in `find . -name pom.xml -print`; do
+    sed -i 's|<source>1.5</source>|<source>1.6</source>|g' $_i
+    sed -i 's|<target>1.5</target>|<target>1.6</target>|g' $_i
+  done
+  
 }
 
 build() {
   export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
-  export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+  export JAVA_HOME="/usr/lib/jvm/"`archlinux-java get`
 
   cd tuxguitar-$pkgver-src
   for _i in . TuxGuitar-{lib,gm-utils} \
@@ -61,14 +67,15 @@ package() {
     done
   done
 
-  # desktop files
-  cd ..
+  # Misc
+  install -Dm644 misc/tuxguitar.xml "$pkgdir"/usr/share/mime/packages/tuxguitar.xml
+  install -Dm644 misc/tuxguitar.desktop "$pkgdir"/usr/share/applications/tuxguitar.desktop
+
+  # Launcher
   install -D /dev/stdin "$pkgdir"/usr/bin/tuxguitar <<EOF
 #!/bin/sh -e
 export SWT_GTK3=0
 cd /usr/share/tuxguitar
 exec ./tuxguitar.sh -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false "\$@"
 EOF
-  install -Dm644 tuxguitar.xml "$pkgdir"/usr/share/mime/packages/tuxguitar.xml
-  install -Dm644 tuxguitar.desktop "$pkgdir"/usr/share/applications/tuxguitar.desktop
 }
