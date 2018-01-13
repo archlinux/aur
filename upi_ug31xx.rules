@@ -1,0 +1,2 @@
+# Set correct permissions for ug31xx misc device
+KERNEL=="ug31xx", GROUP="upi_ug31xx"

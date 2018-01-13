@@ -1,0 +1,8 @@
+[Unit]
+Description=Mount OEM Config Partition
+
+[Mount]
+What=/dev/disk/by-partlabel/config
+Where=/oemcfg
+Type=ext4
+Options=nosuid,nodev,noatime,data=ordered
