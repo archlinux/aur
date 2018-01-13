@@ -1,14 +1,14 @@
 pkgbase = gbt
 	pkgdesc = Highly configurable prompt builder for Bash and ZSH written in Go
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/jtyr/gbt
 	arch = x86_64
 	license = MIT
 	optdepends = nerd-fonts-complete
 	conflicts = gbt-git
-	source = https://github.com/jtyr/gbt/releases/download/v1.1.5/gbt-1.1.5-linux-amd64.tar.gz
-	sha256sums = 811ef1854f2a2f44c99376b96ec2bfd62d58c37647127d6bbb86b8b9f22d2463
+	source = https://github.com/jtyr/gbt/releases/download/v1.1.6/gbt-1.1.6-linux-amd64.tar.gz
+	sha256sums = d30b9c509b60f2f7e3eb202bb5be47b9f6e7a0036f847422733a5012981e5fae
 
 pkgname = gbt
 
