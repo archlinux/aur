@@ -1,16 +1,33 @@
 # Maintainer: lambdadroid <lambdadroid@gmail.com>
 pkgname=me176c-firmware
 pkgver=12.10.1.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional firmware files for the ASUS MeMO Pad 7 (ME176C/CX)"
 arch=(x86_64)
 url="https://github.com/me176c-dev/me176c-archlinux"
 license=('unknown')
+makedepends=('python' 'mkinitcpio')
 options=('!strip')
-source=("http://dlcdnet.asus.com/pub/ASUS/EeePAD/ME176C/UL-K013-WW-$pkgver-user.zip")
-sha256sums=('b19a2901bd5920b58bd3693243a9edf433656bcee8f454637ee401e28c096469')
+source=(
+    "http://dlcdnet.asus.com/pub/ASUS/EeePAD/ME176C/UL-K013-WW-$pkgver-user.zip"
+    'unpackbootimg.py'
+)
+sha256sums=('b19a2901bd5920b58bd3693243a9edf433656bcee8f454637ee401e28c096469'
+            '3eab49bb9c4e1bb890b77a1b2a6762ecb7b628278789caa2efb82f287635503d')
+
+build() {
+    # Extract boot image ramdisk
+    ./unpackbootimg.py boot.img
+    lsinitcpio -x ramdisk
+
+    # Replace /config with /oemcfg, /config is sometimes used for ConfigFS
+    sed -i 's@/config/@/oemcfg/@g' sbin/upi_ug31xx
+}
 
 package() {
+    # Battery daemon
+    install -Dm755 sbin/upi_ug31xx "$pkgdir/opt/asus/me176c/upi_ug31xx"
+
     # WiFi NVRAM file
     install -Dm644 system/etc/nvram.txt "$pkgdir/usr/lib/firmware/brcm/brcmfmac43362-sdio.txt"
 
