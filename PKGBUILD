@@ -15,7 +15,6 @@ conflicts=('ledger')
 makedepends=('boost' 'git' 'sed' 'python2' 'cmake' 'texinfo' 'texlive-plainextra')
 source=("git+git://github.com/ledger/ledger.git")
 sha256sums=('SKIP')
-install="ledger.install"
 
 pkgver() {
   cd "${srcdir}"/ledger
@@ -33,13 +32,17 @@ prepare() {
 
 build() {
   cd "${srcdir}"/ledger
-  ./acprep \
-	  --prefix=/usr \
-  make all doc
+  cmake . \
+  -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+  -DCMAKE_INSTALL_LIBDIR:PATH=lib
+  make
+#  ./acprep \
+#	  --prefix=/usr \
+#  make all doc
 }
 
 package () {
   cd "${srcdir}"/ledger
   make DESTDIR="${pkgdir}" install
-  install -Dm644 ../LICENSE.md "${pkgdir}/usr/share/licenses/ledger/LICENSE"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/ledger/LICENSE"
 }
