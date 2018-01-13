@@ -1,4 +1,4 @@
-#srcdio Maintainer: DenBrahe <denbrahe at hotmail dot com>
+# Maintainer: DenBrahe <denbrahe at hotmail dot com>
 # Contributor(s): Michael Leuschel and others
 # Contributor(s): Formal Mind
 # Contributor(s): Heinrich-Heine-University
@@ -8,10 +8,10 @@ _minor_version='1'
 
 pkgname='prob'
 pkgver=${_major_version}.${_minor_version}
-pkgrel=2
+pkgrel=3
 pkgdesc="ProB Animator and Model Checker"
 arch=('x86_64')
-url="http://eclipseclp.org/"
+url="https://www3.hhu.de/stups/prob/"
 license=('EPL 1.0')
 depends=('tk85'
          'tcl85'
