@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 _pkgbase=notmuch
 pkgname=('notmuch-emacs-git' 'notmuch-runtime-git' 'notmuch-python-git' 'notmuch-python2-git' 'notmuch-ruby-git' 'notmuch-vim-git' 'notmuch-mutt-git')
 epoch=1
-pkgver=0.26_rc0.1.1.g0fab493f
-pkgrel=1
+pkgver=0.26.12.g12541fea
+pkgrel=2
 url="https://notmuchmail.org/"
 license=('GPL3')
 makedepends=('python2' 'python' 'python-sphinx' 'emacs' 'gnupg' 'ruby' 'pkgconfig' 'xapian-core' 'gmime' 'talloc')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgbase"
-  git describe --long --tags|tr - .|cut -c8-
+  git describe --long --tags|tr - .
 }
 
 prepare(){
