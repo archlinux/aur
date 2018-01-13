@@ -96,13 +96,16 @@ btrfs() {
 ## region btrfs
 alias bl.filesystem.btrfs_subvolume_backup=bl_filesystem_btrfs_subvolume_backup
 bl_filesystem_btrfs_subvolume_backup() {
-    # Create, delete or list system backups.
-    #
-    # Examples:
-    #
-    # >>> bl.filesystem.btrfs_subvolume_backup list
-    # >>> bl.filesystem.btrfs_subvolume_backup create
-    # >>> bl.filesystem.btrfs_subvolume_backup delete rootBackup
+    # shellcheck disable=SC2016,2034
+    local __doc__='
+    Create, delete or list system backups.
+
+    ```
+        bl.filesystem.btrfs_subvolume_backup list
+        bl.filesystem.btrfs_subvolume_backup create
+        bl.filesystem.btrfs_subvolume_backup delete rootBackup
+    ```
+    '
     sudo umount /mnt &>/dev/null
     if [[ "$1" == create ]]; then
         sudo mount PARTLABEL=system /mnt
@@ -143,6 +146,7 @@ bl_filesystem_btrfs_subvolume_backup_autocomplete() {
 complete -F bl_filesystem_btrfs_subvolume_backup_autocomplete bl_filesystem_btrfs_subvolume_backup
 alias bl.filesystem.btrfs_is_subvolume=bl_filesystem_btrfs_is_subvolume
 bl_filesystem_btrfs_is_subvolume() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Checks if path is a subvolume. Note: The btrfs root is also a subvolume.
     >>> bl.filesystem.btrfs_is_subvolume /broot; echo $?
@@ -158,6 +162,7 @@ bl_filesystem_btrfs_is_subvolume() {
 }
 alias bl.filesystem.is_btrfs_root=bl_filesystem_is_btrfs_root
 bl_filesystem_is_btrfs_root() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     >>> bl.filesystem.is_btrfs_root /broot; echo $?
     0
@@ -171,6 +176,7 @@ bl_filesystem_is_btrfs_root() {
 }
 alias bl.filesystem.btrfs_find_root=bl_filesystem_btrfs_find_root
 bl_filesystem_btrfs_find_root() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Returns absolute path to btrfs root.
     Example:
@@ -190,6 +196,7 @@ bl_filesystem_btrfs_find_root() {
 }
 alias bl.filesystem.btrfs_get_subvolume_list_field=bl_filesystem_btrfs_get_subvolume_list_field
 bl_filesystem_btrfs_get_subvolume_list_field() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     >>> local entry="$(btrfs subvolume list /broot | head -n1)"
     >>> bl.filesystem.btrfs_get_subvolume_list_field path "$entry"
@@ -211,6 +218,7 @@ bl_filesystem_btrfs_get_subvolume_list_field() {
 }
 alias bl.filesystem.btrfs_subvolume_filter=bl_filesystem_btrfs_subvolume_filter
 bl_filesystem_btrfs_subvolume_filter() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Example:
     >>> bl.filesystem.btrfs_subvolume_filter /broot parent 256
@@ -235,7 +243,7 @@ bl_filesystem_btrfs_subvolume_filter() {
 }
 alias bl.filesystem.btrfs_get_child_volumes=bl_filesystem_btrfs_get_child_volumes
 bl_filesystem_btrfs_get_child_volumes() {
-    # shellcheck disable=SC2016
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Returns absolute paths to subvolumes
     Example:
@@ -266,8 +274,9 @@ bl_filesystem_btrfs_get_child_volumes() {
 }
 alias bl.filesystem.btrfs_subvolume_delete=bl_filesystem_btrfs_subvolume_delete
 bl_filesystem_btrfs_subvolume_delete() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
-    # Delete a subvolume. Also deletes child subvolumes.
+    Delete a subvolume. Also deletes child subvolumes.
     >>> bl.filesystem.btrfs_subvolume_delete /broot/__snapshot/backup_last
     >>> echo $?
     0
@@ -287,8 +296,9 @@ bl_filesystem_btrfs_subvolume_delete() {
 }
 alias bl.filesystem.btrfs_subvolume_set_ro=bl_filesystem_btrfs_subvolume_set_ro
 bl_filesystem_btrfs_subvolume_set_ro() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
-    # Make subvolume writable or readonly. Also applies to child subvolumes.
+    Make subvolume writable or readonly. Also applies to child subvolumes.
     '
     local volume="$1"
     local read_only="$2"
@@ -306,8 +316,9 @@ bl_filesystem_btrfs_subvolume_set_ro() {
 }
 alias bl.filesystem.btrfs_snapshot=bl_filesystem_btrfs_snapshot
 bl_filesystem_btrfs_snapshot() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
-    # Make snapshot of subvolume.
+    Make snapshot of subvolume.
 
     >>> bl.filesystem.btrfs_snapshot /broot/__active /backup/__active_backup
     btrfs subvolume snapshot /broot/__active /backup/__active_backup
@@ -341,9 +352,9 @@ bl_filesystem_btrfs_snapshot() {
 }
 alias bl.filesystem.btrfs_send_update=bl_filesystem_btrfs_send_update
 bl_filesystem_btrfs_send_update() {
-    # shellcheck disable=SC2034,SC1004
+    # shellcheck disable=SC2016,2034
     local __doc__='
-    # Update snapshot (needs backing snapshot).
+    Update snapshot (needs backing snapshot).
     e.g
     >>> bl.filesystem.btrfs_send_update /broot/__active \
     >>>     /broot/backing \
@@ -380,8 +391,9 @@ bl_filesystem_btrfs_send_update() {
 }
 alias bl.filesystem.btrfs_send=bl_filesystem_btrfs_send
 bl_filesystem_btrfs_send() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
-    # Send snapshot
+    Send snapshot
     >>> bl.filesystem.btrfs_send /broot/__active /backup/__active_backup
     btrfs send /broot/__active | pv | btrfs receive /backup
     btrfs send /broot/__active/var | pv | btrfs receive /backup/__active
@@ -416,28 +428,26 @@ bl_filesystem_btrfs_send() {
 ## region file links
 alias bl.filesystem.find_hardlinks=bl_filesystem_find_hardlinks
 bl_filesystem_find_hardlinks() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Finds same files as given file (hardlinks).
 
-    >>> bl.filesystem.find_hardlinks /home/user/test.txt
-    ...
+    `bl.filesystem.find_hardlinks /home/user/test.txt`
     '
     sudo find / -samefile $1 2>/dev/null
     return $?
 }
 alias bl.filesystem.show_symbolic_links=bl_filesystem_show_symbolic_links
 bl_filesystem_show_symbolic_links() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Shows symbolic links in current directory if no argument is provided or
     in given location and their subdirectories (recursive).
 
-    >>> bl.filesystem.show_symbolic_links
-    ./.vim -> ./configs/vimConfig
-    ...
-
-    >>> bl.filesystem.show_symbolic_links /home
-    /home/user/.vim -> /home/user/configs/vimConfig
-    ...
+    ```
+        bl.filesystem.show_symbolic_links
+        bl.filesystem.show_symbolic_links /home
+    ```
     '
     local fileSystemElement
     for fileSystemElement in $(find "$1" -type l); do
@@ -474,7 +484,7 @@ blkid() {
 '
 alias bl.filesystem.find_block_device=bl_filesystem_find_block_device
 bl_filesystem_find_block_device() {
-    # shellcheck disable=SC2034,SC2016
+    # shellcheck disable=SC2016,2034
     local __doc__='
     >>> bl.filesystem.find_block_device "boot_partition"
     /dev/sdb1
@@ -553,15 +563,15 @@ bl_filesystem_create_partition_via_offset() {
 }
 alias bl.filesystem.make_uefi_boot_entry=bl_filesystem_make_uefi_boot_entry
 bl_filesystem_make_uefi_boot_entry() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Creates an uefi boot entry.
 
-    >>> bl.filesystem.make_uefi_boot_entry archLinux
-    ...
-    >>> bl.filesystem.make_uefi_boot_entry archLinuxFallback
-    ...
-    >>> bl.filesystem.make_uefi_boot_entry archLinuxLTSFallback vmlinuz-linux-lts
-    ...
+    ```
+        bl.filesystem.make_uefi_boot_entry archLinux
+        bl.filesystem.make_uefi_boot_entry archLinuxFallback
+        bl.filesystem.make_uefi_boot_entry archLinuxLTSFallback vmlinuz-linux-lts
+    ```
     '
     local kernelParameterFilePath="${ILU_CONFIG_PATH}linux/kernel/${1}CommandLine"
     local kernel='vmlinuz-linux'
@@ -579,41 +589,44 @@ bl_filesystem_make_uefi_boot_entry() {
 }
 alias bl.filesystem.make_crypt_blockdevice=bl_filesystem_make_crypt_blockdevice
 bl_filesystem_make_crypt_blockdevice() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Creates encrypted blockdevices.
 
-    >>> bl.filesystem.make_crypt_blockdevice /dev/sda
+    `bl.filesystem.make_crypt_blockdevice /dev/sda`
     '
     sudo cryptsetup -v --cipher aes-xts-plain64 --key-size 512 --hash sha512 \
         --iter-time 5000 --use-random luksFormat "$1"
 }
 alias bl.filesystem.open_crypt_blockdevice=bl_filesystem_open_crypt_blockdevice
 bl_filesystem_open_crypt_blockdevice() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Mounts encrypted blockdevices as analyseable blockdevice.
 
-    >>> bl.filesystem.open_crypt_blockdevice /dev/sdb test
+    `bl.filesystem.open_crypt_blockdevice /dev/sdb test`
     '
     sudo cryptsetup luksOpen "$1" "$2"
     return $?
 }
 alias bl.filesystem.close_crypt_blockdevice=bl_filesystem_close_crypt_blockdevice
 bl_filesystem_close_crypt_blockdevice() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Mounts encrypted blockdevices as analyseable blockdevice.
 
-    >>> bl.filesystem.close_crypt_blockdevice test
+    `bl.filesystem.close_crypt_blockdevice test`
     '
     sudo cryptsetup luksClose "$1"
     return $?
 }
 alias bl.filesystem.repair=bl_filesystem_repair
 bl_filesystem_repair() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Finds filesystem errors on linux based filesystem and repairs them.
 
-    >>> bl.filesystem.repair /dev/mmcblk0p2
-    ...
+    `bl.filesystem.repair /dev/mmcblk0p2`
     '
     local target=/dev/mmcblk0
     if [[ "$1" ]]; then
@@ -625,22 +638,24 @@ bl_filesystem_repair() {
 }
 alias bl.filesysten.set_maximum_user_watches=bl_filesystem_set_maximum_user_watches
 bl_filesystem_set_maximum_user_watches() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Sets the maximum number of concurrent allowed file observations via
     inotify.
 
-    >>> bl.filesystem.set_maximum_user_watches 500000
+    `bl.filesystem.set_maximum_user_watches 500000`
     '
     echo "$1" | sudo tee /proc/sys/fs/inotify/max_user_watches
     return $?
 }
 alias bl.filesysten.overlay_location=bl_filesystem_overlay_location
 bl_filesystem_overlay_location() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Mounts an overlay over given location. This could be useful if we have a
     read only system caused by physical reasons.
 
-    >>> bl.filesystem.overlay_location /usr/bin/
+    `bl.filesystem.overlay_location /usr/bin/`
     '
     mkdir --parents /tmp/overlayfsDifferences
     mount --types overlayfs --options \
@@ -649,10 +664,15 @@ bl_filesystem_overlay_location() {
 }
 alias bl.filesystem.write_image_to_blockdevice=bl_filesystem_write_image_to_blockdevice
 bl_filesystem_write_image_to_blockdevice() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Writes a given image to given blockdevice.
 
-    >>> bl.filesystem.write_image_to_blockdevice /data/private/backup/image.img /dev/mmcblk0
+    ```
+        bl.filesystem.write_image_to_blockdevice \
+            /data/private/backup/image.img \
+            /dev/mmcblk0
+    ```
     '
     local source="${ILU_DATA_PATH}temp/image/"*.img
     if [[ "$1" ]]; then
@@ -667,10 +687,15 @@ bl_filesystem_write_image_to_blockdevice() {
 }
 alias bl.filesystem.write_blockdevice_to_image=bl_filesystem_write_blockdevice_to_image
 bl_filesystem_write_blockdevice_to_image() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Writes a given backup from given blockdevice.
 
-    >>> bl.filesystem.write_blockdevice_to_image /dev/mmcblk0 /data/private/backup/image.img
+    ```
+        bl.filesystem.write_blockdevice_to_image \
+            /dev/mmcblk0 \
+            /data/private/backup/image.img
+    ```
     '
     local source=/dev/mmcblk0
     if [[ "$1" ]]; then

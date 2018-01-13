@@ -17,10 +17,9 @@ bl.module.import bashlink.logging
 # region functions
 alias bl.tools.dependency_check_pkgconfig=bl_tools_dependency_check_pkgconfig
 bl_tools_dependency_check_pkgconfig() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     This function check if all given libraries can be found.
-
-    #### Example:
 
     >>> bl.tools.dependency_check_shared_library libc.so; echo $?
     0
@@ -46,10 +45,9 @@ bl_tools_dependency_check_pkgconfig() {
 }
 alias bl.tools.dependency_check_shared_library=bl_tools_dependency_check_shared_library
 bl_tools_dependency_check_shared_library() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     This function check if all given shared libraries can be found.
-
-    #### Example:
 
     >>> bl.tools.dependency_check_shared_library libc.so; echo $?
     0
@@ -77,11 +75,9 @@ bl_tools_dependency_check_shared_library() {
 }
 alias bl.tools.dependency_check=bl_tools_dependency_check
 bl_tools_dependency_check() {
-    # shellcheck disable=SC2034
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     This function check if all given dependencies are present.
-
-    #### Example:
 
     >>> bl.tools.dependency_check mkdir ls; echo $?
     0

@@ -12,12 +12,12 @@
 # region functions
 alias bl.pacman.show_not_maintained_by_pacman_system_files=bl_tools_show_not_maintained_by_pacman_system_files
 bl_pacman_show_not_maintained_by_pacman_system_files() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Shows all files which are not maintained by pacman on currently running
     system.
 
-    >>> bl.pacman.show_not_maintained_by_pacman_system_file
-    ...
+    `bl.pacman.show_not_maintained_by_pacman_system_file`
     '
     local allFiles=$(mktemp)
     local allMaintainedFiles=$(mktemp)
@@ -50,12 +50,12 @@ EOF
 }
 alias bl.pacman.show_config_backups=bl_pacman_show_config_backups
 bl_pacman_show_config_backups() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Shows all config backups created by pacman.
 
-    >>> bl.pacman.show_config_backups
+    `bl.pacman.show_config_backups`
     '
-    # ...
     cd / 1>/dev/null
     for pattern in '*.pacnew' '*.orig' '*_backup*' '*.pacorig'; do
         sudo find -name "$pattern" -and \( -type f -or -type l -or -type d \)

@@ -10,25 +10,34 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region imports
+# shellcheck source=module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.logging
 # endregion
 # region variables
-bl_changeroot_kernel_api_locations=(/proc /sys /sys/firmware/efi/efivars /dev \
-    /dev/pts /dev/shm /run)
 # TODO implement dependency check in import mechanism
+# shellcheck disable=SC2034
 bl_changeroot__dependencies__=(mountpoint mount umount mkdir)
+# shellcheck disable=SC2034
 bl_changeroot__optional_dependencies__=(fakeroot fakechroot)
+bl_changeroot_kernel_api_locations=(
+    /proc \
+    /sys \
+    /sys/firmware/efi/efivars \
+    /dev \
+    /dev/pts \
+    /dev/shm \
+    /run
+)
 # endregion
 # region functions
 alias bl.changeroot=bl_changeroot
 bl_changeroot() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     This function performs a linux change root if needed and provides all
     kernel api filesystems in target root by using a change root interface
     with minimal needed rights.
-
-    #### Example:
 
     `changeroot /new_root /usr/bin/env bash some arguments`
     '
@@ -43,10 +52,9 @@ bl_changeroot() {
 }
 alias bl.changeroot.with_fake_fallback=bl_changeroot_with_fake_fallback
 bl_changeroot_with_fake_fallback() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Perform the available change root program wich needs at least rights.
-
-    #### Example:
 
     `bl_changeroot_with_fake_fallback /new_root /usr/bin/env bash some arguments`
     '
@@ -59,6 +67,7 @@ bl_changeroot_with_fake_fallback() {
 }
 alias bl.changeroot.with_kernel_api=bl_changeroot_with_kernel_api
 bl_changeroot_with_kernel_api() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Performs a change root by mounting needed host locations in change root
     environment.
@@ -143,7 +152,8 @@ bl_changeroot_with_kernel_api() {
             fi
             # NOTE: "return_code" remains with an error code if there was
             # given one in all iterations.
-            [[ $? != 0 ]] && return_code=$?
+            # shellcheck disable=SC2181
+            (( $? != 0 )) && return_code=$?
         else
             bl.logging.warn \
                 "Location \"${new_root_location}${mountpoint_path}\" should be a mountpoint but isn't."

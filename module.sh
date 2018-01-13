@@ -38,10 +38,10 @@ bl_module_scope_rewrites=('^bashlink([._][a-zA-Z_-]+)$/bl\1/')
 # region functions
 alias bl.module.determine_declared_names=bl_module_determine_declared_names
 bl_module_determine_declared_names() {
-    # shellcheck disable=SC2016
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Return all declared variables and function in the current scope.
-    E.g.
+
     `declarations="$(bl.module.determine_declared_names)"`
     '
     local only_functions="${1:-}"
@@ -55,6 +55,7 @@ bl_module_determine_declared_names() {
 }
 alias bl.module.determine_aliases=bl_module_determine_aliases
 bl_module_determine_aliases() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Returns all defined aliases in the current scope.
     '
@@ -63,6 +64,7 @@ bl_module_determine_aliases() {
 }
 alias bl.module.log=bl_module_log
 bl_module_log() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Logs arbitrary strings with given level.
     '
@@ -87,6 +89,7 @@ bl_module_import_raw() {
 }
 alias bl.module.import_with_namespace_check=bl_module_import_with_namespace_check
 bl_module_import_with_namespace_check() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     Sources a script and checks variable definitions before and after sourcing.
     '
@@ -192,7 +195,7 @@ bl_module_import_with_namespace_check() {
 }
 alias bl.module.resolve=bl_module_resolve
 bl_module_resolve() {
-    # shellcheck disable=SC2016,SC1004
+    # shellcheck disable=SC2016,2034
     local __doc__='
     IMPORTANT: Do not use "bl.module.import" inside functions -> aliases do not work
     TODO: explain this in more detail
@@ -229,7 +232,6 @@ bl_module_resolve() {
     '
     local name="$1"
     local caller_path
-    # shellcheck disable=SC2034
     bl_module_declared_function_names_after_source=''
     local current_path="$(dirname "$(dirname "$(bl.path.convert_to_absolute "${BASH_SOURCE[0]}")")")"
     if (( $# == 1 )) || [ "${!#}" = true ] || [ "${!#}" = false ]; then

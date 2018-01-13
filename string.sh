@@ -12,10 +12,11 @@
 # region functions
 alias bl.string.make_command_promt_prefix=bl_string_make_command_promt_prefix
 bl_string_make_command_promt_prefix() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Generates a new user prompt with useful runtime parameters.
 
-    >>> bl.string.make_command_promt_prefix
+    `bl.string.make_command_promt_prefix`
     '
     local errorNumber=$?
     local systemLoadAverage=$(uptime | grep --extended-regexp --only-matching \
@@ -47,6 +48,7 @@ bl_string_generate_random() {
 }
 alias bl.string.validate_argument=bl_string_validate_argument
 bl_string_validate_argument() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__="
     Validates a given bash argument.
 
@@ -68,6 +70,7 @@ bl_string_validate_argument() {
 }
 alias bl.string.validate_regular_expression_replacement=bl_string_validate_regular_expression_replacement
 bl_string_validate_regular_expression_replacement() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     This functions escapes every special meaning character for a sed
     replacement.
@@ -80,17 +83,22 @@ bl_string_validate_regular_expression_replacement() {
 }
 alias bl.string.images_to_css_classes=bl_string_images_to_css_classes
 bl_string_images_to_css_classes() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
-    This function converts a folder of images to a single includeable less
+    This function converts a folder of images to a single includeable css
     file.
 
-    >>> bl.string.images_to_css_casses /path/to/image/directory/ .*\.\(png\|jpg\|jpeg\)
-    ...
-    >>> bl.string.images_to_css_classes /path/to/image/directory/ .*\.\(png\|jpg\|jpeg\) \
-    ...     /first/exclude/location /second/exclude/location ...
-    ...
-    >>> bl.string.images_to_css_classes
-    ...
+    ```
+        bl.string.images_to_css_casses \
+            /path/to/image/directory/ \
+            .*\.\(png\|jpg\|jpeg\)
+        bl.string.images_to_css_classes \
+            /path/to/image/directory/ \
+            .*\.\(png\|jpg\|jpeg\) \
+            /first/exclude/location \
+            /second/exclude/location ...
+        bl.string.images_to_css_classes
+    ```
     '
     local source='.'
     if [ -d "$1" ]; then
@@ -123,12 +131,20 @@ bl_string_images_to_css_classes() {
 }
 alias bl.string.merge_text_files=bl_string_merge_text_files
 bl_string_merge_text_files() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Concatenate files and print on the standard output.
 
-    >>> bl.string.merge_text_files a.txt b.txt
-    >>> bl.string.merge_text_files a.txt b.txt c.txt --prepend "# region %s\n" --append \
-    >>>     "\n# endregion\n' --between '\n# endregion\n\n# region %s\n"
+    ```
+        bl.string.merge_text_files a.txt b.txt
+        bl.string.merge_text_files \
+            a.txt \
+            b.txt \
+            c.txt \
+            --append "\n# endregion\n" \
+            --between "\n# endregion\n\n# region %s\n"
+            --prepend "# region %s\n"
+    ```
     '
     local append='\n// endregion'
     local prep end='// region %s\n\n'
@@ -178,6 +194,7 @@ bl_string_merge_text_files() {
 }
 alias bl.string.translate=bl_string_translate
 bl_string_translate() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Translates a given string in a given (or automatic detected) language and
     gives a translation in given language (German by default) back. Accesses

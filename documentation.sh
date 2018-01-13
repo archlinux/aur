@@ -85,6 +85,7 @@ bl_documentation_generate() {
 }
 alias bl.documentation.serve=bl_documentation_serve
 bl_documentation_serve() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Serves a readme via webserver. Uses Flatdoc.
     '

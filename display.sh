@@ -12,10 +12,11 @@
 # region functions
 alias bl.display.load_xinit_sources=bl_display_load_xinit_sources
 bl_display_load_xinit_sources() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     This functions loads all xinit source scripts.
 
-    >>> bl.display.load_xinit_sources
+    `bl.display.load_xinit_sources`
     '
     local xinitRCPath='/etc/X11/xinit/xinitrc.d'
     if [ -d "$XINIT_RC_PATH" ]; then
@@ -27,10 +28,11 @@ bl_display_load_xinit_sources() {
 }
 alias bl.display.wacom_map=bl_display_wacom_map
 bl_display_wacom_map() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     This function maps wacom input device to given output display.
 
-    >>> bl.display.wacom_map half
+    `bl.display.wacom_map half`
     '
     local rotation
     case $1 in none|half|cw|ccw)
@@ -60,10 +62,11 @@ bl_display_wacom_map() {
 }
 alias bl.display.wacom_rotate=bl_display_wacom_rotate
 bl_display_wacom_rotate() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Rotates a wacom display orientation 180°
 
-    >>> bl.display.wacom_rotate
+    `bl.display.wacom_rotate`
     '
     local _USE="Script to rotate mapping and view of an wacom-display (named output)."
 
@@ -142,12 +145,15 @@ EOF
 }
 alias bl.display.wacom_toggle_finger_touch_state=bl_display_wacom_toggle_finger_touch_state
 bl_display_wacom_toggle_finger_touch_state() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Toggles between enabled and disabled finger touch on wacom displays.
 
-    >>> switchFingerTouchWacomEnabled
-    >>> switchFingerTouchWacomEnabled enable
-    >>> switchFingerTouchWacomEnabled disable
+    ```
+        switchFingerTouchWacomEnabled
+        switchFingerTouchWacomEnabled enable
+        switchFingerTouchWacomEnabled disable
+    ```
     '
     if (xinput --list-props 'Wacom ISDv4 E6 Finger touch' | grep \
         'Device Enabled' | cut --fields 3 | grep 1 --quiet

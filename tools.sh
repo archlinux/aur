@@ -12,7 +12,7 @@
 # region functions
 alias bl.tools.is_defined=bl_tools_is_defined
 bl_tools_is_defined() {
-    # shellcheck disable=SC2034
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Tests if variable is defined (can also be empty)
 
@@ -63,6 +63,7 @@ bl_tools_is_defined() {
 }
 alias bl.tools.is_empty=bl_tools_is_empty
 bl_tools_is_empty() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Tests if variable is empty (undefined variables are not empty)
 
@@ -84,9 +85,11 @@ bl_tools_is_empty() {
 }
 alias bl.tools.is_main=bl_tools_is_main
 bl_tools_is_main() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Returns true if current script is being executed.
 
+    TODO Stand
     >>> # NOTE: This test passes because "is_main" is called by "doctest.sh"
     >>> # which is being executed.
     >>> bl.tools.is_main && echo yes
@@ -96,7 +99,7 @@ bl_tools_is_main() {
 }
 alias bl.tools.unique=bl_tools_unique
 bl_tools_unique() {
-    # shellcheck disable=SC2034,SC2016
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     >>> local foo="a\nb\na\nb\nc\nb\nc"
     >>> echo -e "$foo" | bl.tools.unique
@@ -109,6 +112,7 @@ bl_tools_unique() {
 }
 alias bl.tools.run_with_appended_shebang=bl_tools_run_with_appended_shebang
 bl_tools_run_with_appended_shebang() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     This function reads and returns the shebang from given file if exist.
 

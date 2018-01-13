@@ -12,6 +12,7 @@
 # region functions
 alias bl.number.calculate_percent=bl_number_calculate_percent
 bl_number_calculate_percent() {
+    # shellcheck disable=SC2016,SC2034
     __doc__='
     Calculates percent of second argument from the first argument.
 

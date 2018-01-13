@@ -118,7 +118,7 @@ bl_doctest__doc__='
 # region functions
 alias bl.doctest.compare_result=bl_doctest_compare_result
 bl_doctest_compare_result() {
-    # shellcheck disable=SC2034,SC2016
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     >>> local buffer="line 1
     >>> line 2"
@@ -247,6 +247,7 @@ bl_doctest_compare_result() {
 }
 alias bl.doctest.eval=bl_doctest_eval
 bl_doctest_eval() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     >>> local test_buffer="
     >>> echo foo
@@ -355,6 +356,7 @@ bl_doctest_run_test() {
 }
 alias bl.doctest.parse_docstring=bl_doctest_parse_docstring
 bl_doctest_parse_docstring() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     >>> local docstring="
     >>>     (test)block
@@ -628,6 +630,7 @@ bl_doctest_test_module() {
 }
 alias bl.doctest.parse_arguments=bl_doctest_parse_arguments
 bl_doctest_parse_arguments() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
         +bl.documentation.exclude
         >>> bl.doctest.parse_arguments non_existing_module

@@ -110,7 +110,7 @@ bl_logging_get_commands_level() {
 }
 alias bl.logging.set_level=bl_logging_set_level
 bl_logging_set_level() {
-    # shellcheck disable=SC2034,SC2016
+    # shellcheck disable=SC2016,2034
     local __doc__='
     >>> bl.logging.set_commands_level info
     >>> bl.logging.set_level info
@@ -183,6 +183,7 @@ bl_logging_cat() {
 }
 alias bl.logging.plain=bl_logging_plain
 bl_logging_plain() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     >>> bl.logging.set_level info
     >>> bl.logging.set_commands_level debug
@@ -190,7 +191,6 @@ bl_logging_plain() {
     >>> echo "not shown"
     >>> bl.logging.plain "shown"
     shown
-
     '
     $bl_logging_off && return 0
     if [[ "$bl_logging_log_file" != "" ]]; then
@@ -230,6 +230,7 @@ bl_logging_options_log=std
 bl_logging_options_command=std
 alias bl.logging.set_log_file=bl_logging_set_log_file
 bl_logging_set_log_file() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
     >>> local test_file="$(mktemp)"
     >>> bl.logging.plain "test_file:" >"$test_file"
@@ -271,8 +272,8 @@ bl_logging_set_log_file() {
 }
 alias bl.logging.set_file_descriptors=bl_logging_set_file_descriptors
 bl_logging_set_file_descriptors() {
+    # shellcheck disable=SC2016,2034
     local __doc__='
-
     >>> local test_file="$(mktemp)"
     >>> bl.logging.plain "test_file:" >"$test_file"
     >>> bl.logging.set_file_descriptors ""

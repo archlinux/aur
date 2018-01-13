@@ -10,13 +10,14 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region functions
-alias network.restart_network='sudo ifdown -a &>/dev/null && sudo ifup -a &>/dev/null'
+alias bl.network.restart_network='sudo ifdown -a &>/dev/null && sudo ifup -a &>/dev/null'
 alias bl.network.wlan_start=bl.network_wlan_start
 bl_network_wlan_start() {
+    # shellcheck disable=SC2034
     local __doc__='
     Starts wlan functionality.
 
-    >>> bl.network.wlan_start
+    `bl.network.wlan_start`
     '
     wpa_supplicant -c /etc/wpa_supplicant.conf -i wlan0 -D wext -B
     dhclient wlan0
@@ -24,10 +25,11 @@ bl_network_wlan_start() {
 }
 alias bl.network.wlan_stop=bl_network_wlan_stop
 bl_network_wlan_stop() {
+    # shellcheck disable=SC2034
     local __doc__='
     Stops wlan functionality.
 
-    >>> bl.network.wlan_stop
+    `bl.network.wlan_stop`
     '
     killall wpa_supplicant
     killall dhclient
@@ -36,10 +38,11 @@ bl_network_wlan_stop() {
 }
 alias bl.network.wlan_restart=bl_network_wlan_restart
 bl_network_wlan_restart() {
+    # shellcheck disable=SC2034
     local __doc__='
     Restart wlan functionality.
 
-    >>> bl.network.wlan_restart
+    `bl.network.wlan_restart`
     '
     bl.network.wlan_stop
     bl.network.wlan_start
