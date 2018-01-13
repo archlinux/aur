@@ -257,7 +257,7 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-cp ../synchronization_flags.h base/synchronization/synchronization_flags.h
+
 
 patch -Np1 -i ../001.patch
 patch -Np1 -i ../002.patch
