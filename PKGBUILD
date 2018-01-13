@@ -1,7 +1,7 @@
-# Maintainer: Ľubomir 'The_K' Kučera <lubomir-kucera-jr-at-gmail-dot-com>
+# Maintainer: Ľubomír 'The_K' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=ct
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Container Linux Config Transpiler"
 arch=('any')
