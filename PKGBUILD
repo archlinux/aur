@@ -264,7 +264,7 @@ _package-docs() {
 
 # It is necessary to bundle the tools with the kernel since they are still heavily intertwined.
 _package-tools() {
-  pkgdesk="Bcachefs filesystem utilities"
+  pkgdesc="Bcachefs filesystem utilities"
   provides=('bcachefs-tools')
   install=linux.install.pkg
 
