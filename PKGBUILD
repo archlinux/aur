@@ -1,9 +1,9 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
-fragment="#branch=dev"
+fragment="#branch=master"
 pkgname=${name}-git
-pkgver=3.1.r98.gefe21ec
+pkgver=3.3.r4.g1305bfb
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
