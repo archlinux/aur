@@ -1,5 +1,5 @@
 pkgbase = fpc-svn
-	pkgver = 3.1.1.r35945
+	pkgver = 3.1.1.r37950
 	pkgrel = 1
 	url = http://www.freepascal.org/
 	arch = i686
@@ -9,10 +9,6 @@ pkgbase = fpc-svn
 	license = custom
 	makedepends = fpc<9999
 	makedepends = subversion
-	makedepends = texlive-core
-	makedepends = texlive-htmlxml
-	makedepends = texlive-latexextra
-	makedepends = ghostscript
 	depends = ncurses
 	depends = zlib
 	depends = expat
@@ -30,9 +26,5 @@ pkgname = fpc-src-svn
 	pkgdesc = Sources for the Free Pascal Compiler (required by the Lazarus IDE)
 	provides = fpc-src
 	conflicts = fpc-src
-	options = !strip
-
-pkgname = fpc-docs-svn
-	pkgdesc = Documentation for the Free Pascal Compiler
 	options = !strip
 
