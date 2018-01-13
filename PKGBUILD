@@ -5,9 +5,9 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=58.0.14
+pkgver=58.0.16
 pkgrel=1
-ver=58.0b14
+ver=58.0b16
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -48,7 +48,7 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disabl
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-install-dir.patch
 )
 
-sha256sums=('fb95c47d158d4fda5e6d797c75889a9277ea2342134e21666248ca7a579fd7e1'
+sha256sums=('ebb8b570f5760078508101b281f1c6f0cda2e218d32bfea03b49bd0549cbb785'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
