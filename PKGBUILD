@@ -19,6 +19,7 @@ sha256sums=('a62ed07850a122e2bb7f2b88b32cf2fa675b60b912c0aeefb23f554ebfb1e56d'
 prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 -i ../use_dbussharp_2.pc
+  sed -i 's/gmcs/mcs/' configure{,.ac}
   autoreconf -fi
 }
 
