@@ -2,7 +2,7 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.7.93.r4292.55145fc4
+pkgver=0.7.93pre.r4311.0c8cf890
 pkgrel=1
 pkgdesc="Map drawing program from OpenOrienteering"
 arch=('i686' 'x86_64')
@@ -14,15 +14,28 @@ optdepends=('qt5-imageformats: Support for TIFF etc.')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
 install=${pkgname//-git}.install
-source=("${_pkgname}-master::git://github.com/${_orgname}/${_pkgname}.git")
+#source=("${_pkgname}-master::git://github.com/${_orgname}/${_pkgname}.git")
+source=("https://github.com/${_orgname}/${_pkgname}/archive/master.tar.gz")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd ${_pkgname}-master
+#pkgver() {
+#  cd ${_pkgname}-master
+#
+#  RELEASE="$(git describe --tags $(git rev-list --tags --max-count=1) | tr '-' '.')"
+#  REVISION="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+#  printf "%s.r%s" "${RELEASE#?}" "${REVISION}"
+#}
 
-  RELEASE="$(git describe --tags $(git rev-list --tags --max-count=1) | tr '-' '.')"
-  REVISION="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-  printf "%s.r%s" "${RELEASE#?}" "${REVISION}"
+pkgver() {
+  api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
+  base="8a8986ec"
+  head=$(curl -s "$api_url/git/refs/heads/master" | \
+    python -c "import sys, json; print(json.load(sys.stdin)['object']['sha'][:8])")
+  count=$(curl -s "$api_url/compare/${base}...${head}" | \
+    python -c "import sys, json; print(json.load(sys.stdin)['total_commits'] + 1)")
+  release=$(curl -s "$api_url/releases" | \
+    python -c "import sys, json; r = json.load(sys.stdin)[0]; print(r['tag_name'] + 'pre' if r['prerelease'] else '')")
+  printf "%s.r%s.%s" "${release#?}" "${count}" "${head}"
 }
 
 prepare() {
