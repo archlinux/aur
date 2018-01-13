@@ -1,6 +1,6 @@
 diff -ura a/browser/finder/index.js b/browser/finder/index.js
---- a/browser/finder/index.js	2017-12-23 04:51:13.000000000 +0100
-+++ b/browser/finder/index.js	2017-12-23 09:10:13.812641369 +0100
+--- a/browser/finder/index.js	2018-01-13 11:01:53.000000000 +0100
++++ b/browser/finder/index.js	2018-01-13 14:08:29.828697553 +0100
 @@ -10,7 +10,6 @@
  import NoteList from './NoteList'
  import NoteDetail from './NoteDetail'
@@ -18,8 +18,8 @@ diff -ura a/browser/finder/index.js b/browser/finder/index.js
        e.preventDefault()
      }
 diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/MarkdownNoteDetail.js
---- a/browser/main/Detail/MarkdownNoteDetail.js	2017-12-23 04:51:13.000000000 +0100
-+++ b/browser/main/Detail/MarkdownNoteDetail.js	2017-12-23 09:10:34.183140928 +0100
+--- a/browser/main/Detail/MarkdownNoteDetail.js	2018-01-13 11:01:53.000000000 +0100
++++ b/browser/main/Detail/MarkdownNoteDetail.js	2018-01-13 14:08:52.058188835 +0100
 @@ -15,7 +15,6 @@
  import StatusBar from '../StatusBar'
  import _ from 'lodash'
@@ -27,8 +27,8 @@ diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/Mark
 -import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
  import ConfigManager from 'browser/main/lib/ConfigManager'
  import TrashButton from './TrashButton'
- import PermanentDeleteButton from './PermanentDeleteButton'
-@@ -111,7 +110,6 @@
+ import FullscreenButton from './FullscreenButton'
+@@ -114,7 +113,6 @@
            type: 'UPDATE_NOTE',
            note: note
          })
@@ -36,7 +36,7 @@ diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/Mark
        })
    }
  
-@@ -150,7 +148,6 @@
+@@ -153,7 +151,6 @@
  
    handleStarButtonClick (e) {
      const { note } = this.state
@@ -45,9 +45,9 @@ diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/Mark
      note.isStarred = !note.isStarred
  
 diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/SnippetNoteDetail.js
---- a/browser/main/Detail/SnippetNoteDetail.js	2017-12-23 04:51:13.000000000 +0100
-+++ b/browser/main/Detail/SnippetNoteDetail.js	2017-12-23 09:11:17.284197922 +0100
-@@ -17,7 +17,6 @@
+--- a/browser/main/Detail/SnippetNoteDetail.js	2018-01-13 11:01:53.000000000 +0100
++++ b/browser/main/Detail/SnippetNoteDetail.js	2018-01-13 14:09:33.567238910 +0100
+@@ -18,7 +18,6 @@
  import ConfigManager from 'browser/main/lib/ConfigManager'
  import _ from 'lodash'
  import { findNoteTitle } from 'browser/lib/findNoteTitle'
@@ -55,7 +55,7 @@ diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/Snipp
  import TrashButton from './TrashButton'
  import PermanentDeleteButton from './PermanentDeleteButton'
  import InfoButton from './InfoButton'
-@@ -118,7 +117,6 @@
+@@ -119,7 +118,6 @@
            type: 'UPDATE_NOTE',
            note: note
          })
@@ -63,7 +63,7 @@ diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/Snipp
        })
    }
  
-@@ -157,7 +155,6 @@
+@@ -158,7 +156,6 @@
  
    handleStarButtonClick (e) {
      const { note } = this.state
@@ -93,8 +93,8 @@ diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/Snipp
    }
  
 diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
---- a/browser/main/Detail/TagSelect.js	2017-12-23 04:51:13.000000000 +0100
-+++ b/browser/main/Detail/TagSelect.js	2017-12-23 09:11:30.794529242 +0100
+--- a/browser/main/Detail/TagSelect.js	2018-01-13 11:01:53.000000000 +0100
++++ b/browser/main/Detail/TagSelect.js	2018-01-13 14:09:56.536713258 +0100
 @@ -3,7 +3,6 @@
  import CSSModules from 'browser/lib/CSSModules'
  import styles from './TagSelect.styl'
@@ -112,17 +112,17 @@ diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
      const newTag = this.refs.newTag.value.trim().replace(/ +/g, '_')
  
 diff -ura a/browser/main/Main.js b/browser/main/Main.js
---- a/browser/main/Main.js	2017-12-23 04:51:13.000000000 +0100
-+++ b/browser/main/Main.js	2017-12-23 09:11:46.414912313 +0100
-@@ -12,7 +12,6 @@
+--- a/browser/main/Main.js	2018-01-13 11:01:53.000000000 +0100
++++ b/browser/main/Main.js	2018-01-13 14:10:12.586345968 +0100
+@@ -10,7 +10,6 @@
+ import dataApi from 'browser/main/lib/dataApi'
+ import _ from 'lodash'
  import ConfigManager from 'browser/main/lib/ConfigManager'
- import modal from 'browser/main/lib/modal'
- import InitModal from 'browser/main/modals/InitModal'
 -import mobileAnalytics from 'browser/main/lib/AwsMobileAnalyticsConfig'
  import eventEmitter from 'browser/main/lib/eventEmitter'
- 
- class Main extends React.Component {
-@@ -20,10 +19,6 @@
+ import { hashHistory } from 'react-router'
+ import store from 'browser/main/store'
+@@ -23,10 +22,6 @@
    constructor (props) {
      super(props)
  
@@ -134,8 +134,8 @@ diff -ura a/browser/main/Main.js b/browser/main/Main.js
  
      this.state = {
 diff -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/CreateFolderModal.js
---- a/browser/main/modals/CreateFolderModal.js	2017-12-23 04:51:13.000000000 +0100
-+++ b/browser/main/modals/CreateFolderModal.js	2017-12-23 09:12:09.525479066 +0100
+--- a/browser/main/modals/CreateFolderModal.js	2018-01-13 11:01:53.000000000 +0100
++++ b/browser/main/modals/CreateFolderModal.js	2018-01-13 14:10:27.795997897 +0100
 @@ -6,7 +6,6 @@
  import store from 'browser/main/store'
  import consts from 'browser/lib/consts'
@@ -153,8 +153,8 @@ diff -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/Creat
        const { storage } = this.props
        const input = {
 diff -ura a/browser/main/modals/NewNoteModal.js b/browser/main/modals/NewNoteModal.js
---- a/browser/main/modals/NewNoteModal.js	2017-12-23 04:51:13.000000000 +0100
-+++ b/browser/main/modals/NewNoteModal.js	2017-12-23 09:12:29.765975435 +0100
+--- a/browser/main/modals/NewNoteModal.js	2018-01-13 11:01:53.000000000 +0100
++++ b/browser/main/modals/NewNoteModal.js	2018-01-13 14:10:46.655566300 +0100
 @@ -5,7 +5,6 @@
  import { hashHistory } from 'react-router'
  import ee from 'browser/main/lib/eventEmitter'
@@ -182,8 +182,8 @@ diff -ura a/browser/main/modals/NewNoteModal.js b/browser/main/modals/NewNoteMod
  
      dataApi
 diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modals/PreferencesModal/InfoTab.js
---- a/browser/main/modals/PreferencesModal/InfoTab.js	2017-12-23 04:51:13.000000000 +0100
-+++ b/browser/main/modals/PreferencesModal/InfoTab.js	2017-12-23 09:13:13.267042240 +0100
+--- a/browser/main/modals/PreferencesModal/InfoTab.js	2018-01-13 11:01:53.000000000 +0100
++++ b/browser/main/modals/PreferencesModal/InfoTab.js	2018-01-13 14:11:58.000000000 +0100
 @@ -3,7 +3,6 @@
  import styles from './InfoTab.styl'
  import ConfigManager from 'browser/main/lib/ConfigManager'
@@ -261,8 +261,8 @@ diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modal
      )
    }
 diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
---- a/browser/main/NoteList/index.js	2017-12-23 04:51:13.000000000 +0100
-+++ b/browser/main/NoteList/index.js	2017-12-23 09:13:27.667395388 +0100
+--- a/browser/main/NoteList/index.js	2018-01-13 11:01:53.000000000 +0100
++++ b/browser/main/NoteList/index.js	2018-01-13 14:12:12.713596882 +0100
 @@ -15,7 +15,6 @@
  import markdown from 'browser/lib/markdownTextHelper'
  import { findNoteTitle } from 'browser/lib/findNoteTitle'
@@ -271,7 +271,7 @@ diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
  
  const { remote } = require('electron')
  const { Menu, MenuItem, dialog } = remote
-@@ -545,7 +544,6 @@
+@@ -535,7 +534,6 @@
              note: newNote
            })
          })
@@ -280,8 +280,8 @@ diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
        })
        .catch((err) => {
 diff -ura a/package.json b/package.json
---- a/package.json	2017-12-03 17:30:46.687839000 +0100
-+++ b/package.json	2017-12-23 09:13:37.387633765 +0100
+--- a/package.json	2018-01-13 14:04:26.504265000 +0100
++++ b/package.json	2018-01-13 14:12:26.173288861 +0100
 @@ -50,8 +50,6 @@
    "dependencies": {
      "@rokt33r/markdown-it-math": "4.0.2",
@@ -289,5 +289,5 @@ diff -ura a/package.json b/package.json
 -    "aws-sdk": "2.48.0",
 -    "aws-sdk-mobile-analytics": "0.9.2",
      "codemirror": "5.26.0",
+     "codemirror-mode-elixir": "1.1.1",
      "electron-config": "0.2.1",
-     "electron-gh-releases": "2.0.4",
