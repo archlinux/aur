@@ -53,7 +53,7 @@ package() {
   '[Desktop Entry]' \
   'Name=draw.io' \
   'Comment=draw.io desktop' \
-  'Exec=/bin/bash -c '"'"'exec /usr/bin/draw.io "$@" > /dev/null 2> /dev/null'"'"' -- bash %U' \
+  'Exec=/bin/bash -c '"'"'exec /usr/bin/draw.io "$@" > /dev/null 2> /dev/null'"'"' bash %U' \
   'Terminal=false' \
   'Type=Application' \
   'Icon=draw.io' \
