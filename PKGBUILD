@@ -4,7 +4,7 @@
 _pkgname=mumble
 pkgname=${_pkgname}-jack
 pkgver=1.2.19
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Mumble with support for JACK"
 license=('BSD')
@@ -14,14 +14,17 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 url="http://mumble.info/"
 source=("https://github.com/mumble-voip/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-        "http://sourceforge.net/p/mumble/patches/_discuss/thread/1bfdbda2/a90e/attachment/mumble-jack-support.patch")
+        "http://sourceforge.net/p/mumble/patches/_discuss/thread/1bfdbda2/a90e/attachment/mumble-jack-support.patch"
+        "https://github.com/mumble-voip/mumble/commit/ea861fe86743c8402bbad77d8d1dd9de8dce447e.patch")
 md5sums=('d101068ed27ce119effdb3765a8cf8e4'
-         '03d89f5f4265de696505211984b969a0')
+         '03d89f5f4265de696505211984b969a0'
+         '82e187597fde5db46c3d77befef06143')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   patch -Np1 < "${srcdir}/mumble-jack-support.patch"
+  patch -Np1 < "${srcdir}/ea861fe86743c8402bbad77d8d1dd9de8dce447e.patch"
 }
 
 build() {
