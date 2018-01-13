@@ -1,6 +1,8 @@
-# Maintainer: SaultDon <sault.don gmail>
+# Maintainer: Samuel Fernando Mesa <samuelmesa dot linuxmail.org>
+# Contributor: SaultDon <sault.don gmail>
+
 pkgname=whitebox
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 _pkgname="WhiteboxGAT"
 pkgdesc="A Geographic information system (GIS) and remote sensing package intended for advanced geospatial analysis and data visualization."
