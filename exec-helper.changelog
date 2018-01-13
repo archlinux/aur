@@ -2,11 +2,20 @@ Changelog
 =========
 
 
-0.1.1_183_g541b825
+0.1.1_189_g589c8c9
 ------------
 
 New
 ~~~
+- Added EH_WORKING_DIR predefined pattern. This pattern can now be used
+  when the current working directory should be used rather than the
+  directory of the used configuration file. [Bart Verhagen]
+- Added working-dir support to the make plugin. [Bart Verhagen]
+- Exec-helper now searches for a given configuration file, in addition
+  to the current working directory and the HOME folder of the caller, in
+  the parent directories of the current working directory. The parent
+  directories of the current working directories are searched before the
+  HOME folder of the caller. [Bart Verhagen]
 - Test: Implemented the execute-multiple-statements-predefined-order-
   duplicates scenario. [Bart Verhagen]
 - Test: Implemented execute-multiple-statements-predefined-order-
