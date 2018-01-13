@@ -1,0 +1,32 @@
+pkgbase = sonospy-git
+	pkgdesc = A music server for Sonos
+	pkgver = 16
+	pkgrel = 1
+	url = https://github.com/henkelis/sonospy/wiki/Welcome-to-Sonospy
+	install = sonospy-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	optdepends = lame: for converting mp2 to mp3
+	optdepends = sox: for downsampling FLAC
+	provides = sonospy
+	conflicts = sonospy
+	backup = etc/sonospy/sonospy.conf
+	source = sonospy-git::git://github.com/henkelis/sonospy.git
+	source = sonospy.service
+	source = sonospy-scan.service
+	source = sonospy.conf
+	source = sonospy-scan.timer
+	source = sonospy.sysusers
+	source = sonospy.tmpfile
+	md5sums = SKIP
+	md5sums = cb1aa86902f5a04b5bc86e30eb50fe9c
+	md5sums = 407a5cc2b1d16f35aef94b0448a08083
+	md5sums = d2503c694ce7a653943e1406fc14dd2e
+	md5sums = 88de0ae42d0579e32f8df3a3fdc16694
+	md5sums = 6f7306d7872d3c2e0bb6dd7b52b73171
+	md5sums = ef3a9e190911c931311e8fd9f0c6e4ef
+
+pkgname = sonospy-git
+

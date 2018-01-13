@@ -1,0 +1,10 @@
+[Unit]
+Description=Scan music
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=1day
+Persistent=true
+
+[Install]
+WantedBy=timers.target

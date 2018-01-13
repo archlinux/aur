@@ -1,0 +1,42 @@
+post_install() {
+  sed -i "s_'python pycpoint.py'_'python2 pycpoint.py'_" /opt/sonospy/app/sonospy_proxy
+  touch /opt/sonospy/data/sonospy.db
+  ln -s /opt/sonospy/data/sonospy.db /opt/sonospy/app/sonospy/sonospy.db
+  ln -s /opt/sonospy/data/sonospy.db /opt/sonospy/app/sonospy.db
+  mv -n /opt/sonospy/app/sonospy/pycpoint.ini /opt/sonospy/data/pycpoint.ini
+  ln -s /opt/sonospy/data/pycpoint.ini /opt/sonospy/app/sonospy/pycpoint.ini
+  mv -n /opt/sonospy/app/sonospy/userindex2.ini /opt/sonospy/data/userindex3.ini
+  ln -s /opt/sonospy/data/userindex3.ini /opt/sonospy/app/sonospy/userindex3.ini
+  ln -s /opt/sonospy/data/userindex3.ini /opt/sonospy/app/userindex3.ini
+  systemd-sysusers sonospy.conf
+  systemd-tmpfiles --create sonospy.conf
+  chown -R sonospy:sonospy /opt/sonospy
+  systemctl daemon-reload
+
+ echo "Add sonospy path /opt/sonospy/app/* to /usr/local/bin/python script: "
+ echo "see https://wiki.archlinux.org/index.php/Python#Dealing_with_version_problem_in_build_scripts"
+}
+
+post_upgrade() {
+  if [ ! -d /opt/sonospy/app ]; then
+    post_install $1
+  else
+    chown -R sonospy:sonospy /opt/sonospy
+    systemctl daemon-reload    
+  fi
+}
+
+pre_remove() {
+  systemctl stop sonospy.service
+  systemctl stop sonospy-scan.service
+}
+
+post_remove() {
+  rm -rf /opt/sonospy/app 
+
+  echo "==> To remove config files, run as root: rm -rf /opt/sonospy"
+  echo "====> rm -rf /etc/sonospy"
+  echo "# Do not delete the 'sonospy' user automatically. It may still own files."
+  echo "# If 'sonospy' is the only user in group 'sonospy', then userdel will also delete the group."
+  echo "==> To delete the \"sonospy\" user, run as root: userdel --force sonospy"
+}

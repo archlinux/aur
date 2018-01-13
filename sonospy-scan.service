@@ -1,0 +1,16 @@
+[Unit]
+Description=Sonospy Daemon
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/sonospy/app/sonospy
+User=sonospy
+Group=sonospy
+Environment="SONOSPY_DB=/opt/sonospy/app/sonospy/sonospy.db"
+Environment="MUSIC_PATH=/var/music"
+EnvironmentFile=-/etc/sonospy/sonospy.conf
+ExecStart=/usr/bin/env python2 /opt/sonospy/app/sonospy/scan.py -d ${SONOSPY_DB} ${MUSIC_PATH}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=Sonospy Daemon
+After=network.target
+
+[Service]
+User=sonospy
+Group=sonospy
+WorkingDirectory=/opt/sonospy/app/
+Environment="SERVICE=Sonospy"
+Environment="SONOSPY_DB=sonospy.db"
+Environment="SONOSPY_INI=userindex3.ini"
+EnvironmentFile=-/etc/sonospy/sonospy.conf
+Type=forking
+ExecStart=/opt/sonospy/app/sonospy_proxy -sSonospy=${SERVICE},${SONOSPY_DB},${SONOSPY_INI} -r
+#ExecStop=/opt/sonospy/app/sonospy_stop
+
+[Install]
+WantedBy=multi-user.target
