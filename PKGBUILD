@@ -1,14 +1,14 @@
 # Maintainer: graysky <graysky AT archlinux DOT org>
 
 pkgname=ovpngen
-pkgver=1.27
+pkgver=1.28
 pkgrel=1
 pkgdesc="Generate an OpenVPN client profile in the unified format."
 arch=('any')
 url="http://github.com/graysky2/ovpngen"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://github.com/graysky2/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('d24ce6960e31fe67f1db1a1c3af004e0b734a256d3477341ecccd3395ace9f02')
+sha256sums=('c81bff272e4187c943808711bc9cea716bf6de7bd4c0254ae6affb5ca7433db4')
 
 package() {
 	cd ${pkgname}-${pkgver}
