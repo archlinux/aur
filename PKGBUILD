@@ -4,13 +4,13 @@
 
 pkgname=spatialite-gui-devel
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="spatialite-gui is an open source Graphical User Interface (GUI) 
 tool supporting SpatiaLite. Development version"
 url="https://www.gaia-gis.it/fossil/spatialite_gui/index"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('libspatialite>=4.1.1-3' 'librasterlite2-devel' 'wxgtk')
+depends=('libspatialite>=4.1.1-3' 'librasterlite2-devel' 'wxgtk' 'openjpeg2=2.1.2')
 conflicts=(spatialite-gui)
 replaces=(spatialite-gui)
 source=("http://www.gaia-gis.it/gaia-sins/spatialite-gui-sources/spatialite_gui-${pkgver}-devel.tar.gz"
@@ -28,8 +28,8 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}-devel"
 
-  ./configure --prefix="/usr" --disable-openjpeg
-  make
+  ./configure --prefix="/usr"
+  make -j3
 }
 
 package() {
