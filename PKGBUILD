@@ -6,7 +6,7 @@ pkgrel=1
 arch=(any)
 license=('BSD')
 pkgdesc="Tool to extract the attached files out of a MIME package"
-url=(http://www.pldaniels.com/ripmime/)
+url="http://www.pldaniels.com/ripmime/"
 source=(http://www.pldaniels.com/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('bb0844b0e73625ef79206d3fe620716e')
 
