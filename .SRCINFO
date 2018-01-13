@@ -1,7 +1,7 @@
 pkgbase = jottalib-git
-	pkgdesc = A library to access files stored at jottacloud.com
+	pkgdesc = A library to access files stored at jottacloud.com - Install humanize using pip2
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Fjodor42/jottalib
 	arch = any
 	license = GPL3
@@ -17,7 +17,6 @@ pkgbase = jottalib-git
 	depends = python2-clint
 	depends = python2-fusepy
 	depends = python2-watchdog
-	depends = python2-humanize
 	provides = jottalib
 	conflicts = jottalib
 	source = git+https://github.com/Fjodor42/jottalib.git
