@@ -4,7 +4,7 @@
 
 pkgname=synfigstudio-git
 pkgver=r8165.bd7d8b2cc
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional vector animation program (GUI)"
 arch=(i686 x86_64)
 url="http://synfig.org"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"/synfig/synfig-studio
-  export PKG_CONFIG_PATH=/usr/lib/ffmpeg0.10/pkgconfig:$PKG_CONFIG_PATH
+  export PKG_CONFIG_PATH=/usr/lib/ffmpeg0.10/pkgconfig:/usr/lib/imagemagick6/pkgconfig:$PKG_CONFIG_PATH
   LDFLAGS="$LDFLAGS -Wl,-rpath -Wl,/usr/lib/ffmpeg0.10"
   CFLAGS="$CFLAGS -D__STDC_CONSTANT_MACROS"
   CXXFLAGS="$CXXFLAGS -D__STDC_CONSTANT_MACROS -std=gnu++11"
