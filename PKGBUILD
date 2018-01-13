@@ -1,8 +1,8 @@
 # Maintainer: Pieter Lenaerts <pieter dot aj dot lenaerts gmail>
 pkgname=linux-x205ta-sound
-pkgver=26
+pkgver=27
 pkgrel=1
-_kernver=4.15.0-rc6
+_kernver=4.15.0-rc7
 _kernel="vmlinuz-${_kernver}-sound-${pkgver}"
 _moddir="${_kernver}-sound-${pkgver}"
 _kernbase="${_kernver%.*}"
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("http://x205ta.myftp.org:1337/kernel/kernel-64bit-${_kernver}-sound-${pkgver}.tar")
 noextract=()
-sha256sums=('be50a4ab4c8a8af50e58371f7d0d14f685d500a37dce418d02a2385fc93a0d53')
+sha256sums=('33442ebcb33f9f78fd21c4beb0d078f5d1e5f72e2c0d2260f3841512b3690c2d')
 validpgpkeys=()
 
 prepare() {
