@@ -8,7 +8,7 @@ arch=(any)
 url="https://tunnelbear.com"
 depends=('openvpn')
 source=("https://s3.amazonaws.com/tunnelbear/linux/openvpn.zip")
-md5sums=('ad9496eda6ae9f0e22f16bb722db6ba4')
+md5sums=('44c9ced94111d6878b156975542b7b6e')
 
 function package() {
 	local DESTDIR="$pkgdir/etc/openvpn"
