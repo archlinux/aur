@@ -1,12 +1,12 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Tillmann Karras <tilkax@gmail.com>
 
 pkgname=dynablaster-revenge
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='3D remake of the original Bomberman/Dynablaster game'
 arch=('i686' 'x86_64')
-url='https://dynablaster.titandemo.de/'
+url='https://mueslee.itch.io/dynablaster-revenge'
 # authors contacted: no explicit license
 license=('unknown')
 depends=('qt4' 'sdl2')

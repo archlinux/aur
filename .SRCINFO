@@ -1,8 +1,8 @@
 pkgbase = dynablaster-revenge
 	pkgdesc = 3D remake of the original Bomberman/Dynablaster game
 	pkgver = 1.0.2
-	pkgrel = 2
-	url = https://dynablaster.titandemo.de/
+	pkgrel = 3
+	url = https://mueslee.itch.io/dynablaster-revenge
 	install = dynablaster-revenge.install
 	arch = i686
 	arch = x86_64
