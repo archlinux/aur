@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-docker
 	pkgdesc = Start and stop docker images
-	pkgver = 1.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/naraesk/plasma-docker
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = plasma5-applets-docker
 	makedepends = qt5-base
 	makedepends = qt5-declarative
 	depends = docker
-	source = https://github.com/naraesk/plasma-docker/archive/v1.0.tar.gz
-	md5sums = e5b705bdcf069828623a4d209dd445a5
+	source = https://github.com/naraesk/plasma-docker/archive/v1.1.0.tar.gz
+	md5sums = a233a486e5404c9fb6392c74572de65c
 
 pkgname = plasma5-applets-docker
 
