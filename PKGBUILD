@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: feuri <padfoot at exemail dot com dot au>
 # Contributor: feuri <mail at feuri dot de>
 
