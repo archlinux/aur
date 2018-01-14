@@ -3,6 +3,8 @@
 run_hook() {
     rootkey=$(mktemp)
     chmod 0000 "$rootkey"
+   
+    export GPG_TTY=/dev/console
     gpg --decrypt -o "$rootkey" --yes /rootkey.gpg
 
     # send the now decrypted key location to cryptsetup's encrypt hook
