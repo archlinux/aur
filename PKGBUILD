@@ -19,7 +19,7 @@ optdepends=('arc-icon-theme: recommended icon theme'
             'gtk-engine-murrine: for gtk2 themes'
             'gnome-themes-standard: for gtk2 themes')
 makedepends=('gtk3' 'sassc')
-https://github.com/NicoHood/arc-theme/releases/download/20171105/arc-theme-20171105.tar.xz
+
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
         "${pkgname}-${pkgver}.tar.xz.sig::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
 sha512sums=('d8cdf35d557430ecd4568c59cff26779f4996650acd8105da5d09cb5ea731d3ff120f20fc06363e860ba97f06a2fcee22fa9aa8810741a47f0e71cb93ef4948e'
