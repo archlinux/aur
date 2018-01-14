@@ -3,8 +3,8 @@
 pkgbase=('python2-wstool')
 pkgname=('python2-wstool')
 _module='wstool'
-pkgver='0.1.13'
-pkgrel=3
+pkgver='0.1.17'
+pkgrel=1
 pkgdesc="workspace multi-SCM commands"
 url="http://wiki.ros.org/wstool"
 depends=('python2' 'python2-vcstools' 'python2-yaml')
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/w/wstool/wstool-${pkgver}.tar.gz")
-md5sums=('7e41a0e4f92389a6b4e115c80dd5cf10')
+md5sums=('656e6456e31dc5a43f0a9aae9efed7ea')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
