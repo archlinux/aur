@@ -2,15 +2,16 @@
 
 _pkgname=pacui
 pkgname=$_pkgname-git
-pkgver=r628.gf15de67
+pkgver=r743.c9edccf
 pkgrel=1
 pkgdesc="Bash script providing advanced Pacman and Trizen/Yay/Yaourt/Pacaur functionality in a simple UI"
 arch=(any)
 url="https://github.com/excalibur1234/$_pkgname"
 license=('GPL3')
 depends=('expac' 'wget' 'sudo' 'fzf')
-makedepends=('git')
-conflicts=("$_pkgname" 'pacli-simple-git')
+makedepends=('git' 'base-devel')
+provides=('pacui')
+conflicts=("$_pkgname")
 optdepends=('pacaur: Needed for AUR support.'
         'yaourt: Needed for AUR support.'
         'yay: Needed for AUR support.'
