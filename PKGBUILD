@@ -19,7 +19,7 @@ pkgver() {
 build() {
 	[[ -d "$srcdir/$pkgname/build/" ]] || mkdir "$srcdir/$pkgname/build/"
 	cd "$pkgname/build/"
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/$pkgname"
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc "$srcdir/$pkgname"
 	make
 }
 package() {
