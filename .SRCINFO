@@ -1,0 +1,18 @@
+pkgbase = php-crypto
+	pkgdesc = Crypto PHP extension
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/bukka/php-crypto
+	arch = any
+	license = PHP
+	makedepends = php
+	makedepends = openssl
+	makedepends = git
+	depends = php
+	depends = openssl
+	backup = etc/php/conf.d/crypto.ini
+	source = git+https://github.com/bukka/php-crypto.git
+	sha256sums = SKIP
+
+pkgname = php-crypto
+
