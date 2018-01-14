@@ -3,13 +3,13 @@ _owner=Torxed
 _name=slimdns
 _dbuser_passwd=$(</dev/urandom tr -dc 'A-Za-z0-9!"#$%&()*+,-./:;<=>?@[\]^_`{|}~' | head -c 25  ; echo)
 pkgname=$_name-git
-pkgver=v0.r18.g67809b0
+pkgver=0.r17.67809b0
 pkgrel=1
 pkgdesc="A simple, light weight DNS server"
 arch=('x86_64')
 url="https://hvornum.se"
 license=('custom:BSD' 'cc-by-nc-sa-3.0')
-depends=('python-dnslib postgresql')
+depends=('python-dnslib' 'postgresql')
 makedepends=('python')
 #optdepends=('')
 provides=('slimdns-git' 'slimdns')
