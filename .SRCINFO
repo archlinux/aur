@@ -1,0 +1,28 @@
+pkgbase = python-ecpy-git
+	pkgver = 0.8.0.r24.1d3bdd4
+	pkgrel = 1
+	url = https://github.com/ubinity/ECPy
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git+https://github.com/ubinity/ECPy.git
+	sha256sums = SKIP
+
+pkgname = python-ecpy-git
+	pkgdesc = Pure Python Elliptic Curve Library for Python 3
+	depends = python
+	depends = python-future
+	provides = python-ecpy
+	conflicts = python-ecpy
+
+pkgname = python2-ecpy-git
+	pkgdesc = Pure Python Elliptic Curve Library for Python 2
+	depends = python2
+	depends = python2-future
+	provides = python2-ecpy
+	conflicts = python2-ecpy
+
