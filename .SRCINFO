@@ -6,10 +6,8 @@ pkgbase = sdtool
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = http://www.bertold.org/sdtool/sdtool-HEAD.tar.gz
-	source = Makefile.patch
-	md5sums = 2ae6307d8584ee56a96615da3ad4edbd
-	md5sums = 6a3ffb20d32f9b1f9b451a344f48c740
+	source = https://github.com/BertoldVdb/sdtool
+	md5sums = 347e223869f61d3314b1ecf979bf8d36
 
 pkgname = sdtool
 
