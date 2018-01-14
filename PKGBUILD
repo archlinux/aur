@@ -7,27 +7,27 @@
 pkgbase=arc-gtk-theme
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
-pkgver=20170302
-pkgrel=4
+pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell"
+pkgver=20180114
+pkgrel=1
 arch=('any')
-url="https://github.com/horst3180/${_pkgname}"
+# Upstream url: https://github.com/horst3180/arc-theme
+# Now using soft fork: https://github.com/horst3180/arc-theme/issues/840
+url="https://github.com/nicohood/arc-theme"
 license=('GPL3')
 optdepends=('arc-icon-theme: recommended icon theme'
             'gtk-engine-murrine: for gtk2 themes'
             'gnome-themes-standard: for gtk2 themes')
-makedepends=('gtk3')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.sig::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc"
-        'change-solid-theme-path.patch')
-sha512sums=('99408a7c4db2bd2d81453e308ae5d9bc9bfda4f11e57191936f985de2937debff76c4d1f37a97ac8f5ad3751401ee8ad02457e4558b9c4aedc2bfeba1736ef03'
-            'SKIP'
-            '5b1ca739206e386cb4bf1f2f0a9524a08f2590972126cc96ef7c2e56ca59e94136cf7f8dc8184cd1c688a488e5e96384d654e279778f93e8f34860f7281afff9')
-validpgpkeys=('A46FD8E741A2A075898462CDC57DFF0D28DAAE97')
+makedepends=('gtk3' 'sassc')
+https://github.com/NicoHood/arc-theme/releases/download/20171105/arc-theme-20171105.tar.xz
+source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
+        "${pkgname}-${pkgver}.tar.xz.sig::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
+sha512sums=('d8cdf35d557430ecd4568c59cff26779f4996650acd8105da5d09cb5ea731d3ff120f20fc06363e860ba97f06a2fcee22fa9aa8810741a47f0e71cb93ef4948e'
+            'SKIP')
+validpgpkeys=('97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161') # NicoHood
 
 prepare() {
     cp -a ${_pkgname}-${pkgver}{,-solid}
-    cd ${_pkgname}-${pkgver}-solid
-    patch -p1 -i ../change-solid-theme-path.patch
 }
 
 build() {
@@ -39,7 +39,6 @@ build() {
 }
 
 package_arc-gtk-theme() {
-    pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell"
     replaces=('gtk-theme-arc')
 
     cd ${_pkgname}-${pkgver}
