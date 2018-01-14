@@ -1,0 +1,8 @@
+[Unit]
+Description=Automatically download all updated packages
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/pacman -Syuw --noconfirm

@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatically download all updated packages daily
+Documentation=man:pacman
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
