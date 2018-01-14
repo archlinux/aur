@@ -12,7 +12,7 @@ sha256sums=('f65711e2fdc473bd77142acce8c383e591d87ab666f81f1008973b4b2aebf353')
 
 build() {
   cd "amber-$pkgver"
-  shards
+  shards --production
   make build
 }
 
