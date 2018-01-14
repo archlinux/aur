@@ -7,7 +7,8 @@ arch=('x86_64')
 url="https://github.com/slacka/WoeUSB"
 license=('GPL3')
 groups=()
-depends=('wxgtk2' 'grub' 'wxgtk-common' 'dosfstools' 'parted' 'wget')
+depends=('wxgtk2' 'grub' 'wxgtk-common' 'dosfstools'
+		'parted' 'wget' 'ntfs-3g' 'gksu')
 makedepends=('git')
 provides=("woeusb")
 conflicts=("")
