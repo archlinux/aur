@@ -1,0 +1,6 @@
+post_install() {
+  cat << EOF
+To activate caniuse, add it to your oh-my-zsh plugins array in your ~/.zshrc:
+    plugins=(... caniuse ...)
+EOF
+}
