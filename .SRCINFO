@@ -1,0 +1,16 @@
+pkgbase = cakebox
+	pkgdesc = A small web interface to allows you to browse, watch, manage and share the files you want
+	pkgver = 1.8.6
+	pkgrel = 1
+	url = https://github.com/cakebox/cakebox
+	arch = any
+	license = GPL2
+	makedepends = composer
+	makedepends = bower
+	depends = php
+	backup = etc/webapps/cakebox/config/default.php
+	source = https://github.com/cakebox/cakebox/archive/v1.8.6.tar.gz
+	sha256sums = 105322a299bf702cb368648ddf9bedce3d9df5c328a7139e304c8ce4867a5def
+
+pkgname = cakebox
+
