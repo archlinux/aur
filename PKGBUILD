@@ -92,7 +92,8 @@ check() {
 	EXCLUDED_UNIT_TESTS+='DNSResolver.IPv4Failure'
 	EXCLUDED_UNIT_TESTS+=':DNSResolver.DNSSECSuccess'
 	EXCLUDED_UNIT_TESTS+=':AddressFromURL.Failure'
-	tests/unit_tests/unit_tests --gtest_filter="-$EXCLUDED_UNIT_TESTS"
+	tests/unit_tests/unit_tests --gtest_filter="-$EXCLUDED_UNIT_TESTS" \
+            --data-dir ../tests/data
 
 	# Temporarily disable some a tests:
 	#  * coretests takes too long (~25000s)
