@@ -1,10 +1,10 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=corrade-git
-pkgver=snapshot.2015.05.r574.g462b6184
+pkgver=snapshot.2015.05.r752.gbfd0d98e
 pkgrel=1
 pkgdesc="C++11/C++14 multiplatform utility library (Git version)"
 arch=('i686' 'x86_64')
-url="http://mosra.cz/blog/corrade.php"
+url="http://magnum.graphics/corrade/"
 license=('MIT')
 makedepends=('cmake' 'git')
 provides=('corrade')
