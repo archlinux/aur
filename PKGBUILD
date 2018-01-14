@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: oke3 <Sekereg at gmx dot com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
