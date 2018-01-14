@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: juergen <juergen@archlinux.org>
 # Contributor: John Proctor <jproctor@prium.net>
