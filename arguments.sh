@@ -23,7 +23,6 @@ bl_arguments__documentation__='
 
     Different functions are provided in order to parse an arguments array.
 
-    #### Example
     >>> _() {
     >>>     local value
     >>>     bl.arguments.set "$@"

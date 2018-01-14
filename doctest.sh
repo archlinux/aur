@@ -114,6 +114,8 @@ bl_doctest__documentation__='
     ...
     -bl.documentation.exclude_print
 '
+bl_doctest_module_reference_under_test=''
+bl_doctest_name_indicator=__documentation__
 # endregion
 # region functions
 alias bl.doctest.compare_result=bl_doctest_compare_result
@@ -256,7 +258,7 @@ bl_doctest_eval() {
     >>> local output_buffer="foo
     >>> bar"
     >>> bl_doctest_use_side_by_side_output=false
-    >>> bl_doctest_module_under_test=module
+    >>> bl_doctest_module_reference_under_test=module
     >>> bl_doctest_nounset=false
     >>> bl.doctest.eval "$test_buffer" "$output_buffer"
     '
@@ -281,7 +283,7 @@ bl_doctest_eval() {
             # Suppress the warnings here because they have already been printed
             # when analyzing the module initially.
             echo "bl_module_prevent_namespace_check=true"
-            echo "bl.module.import $doctest_module_under_test"
+            echo "bl.module.import $doctest_module_reference_under_test"
             echo "bl_module_prevent_namespace_check=false"
             echo "$setup_string"
             # _ can be used as anonymous variable (without warning)
@@ -551,21 +553,19 @@ bl_doctest_parse_docstring() {
         text_buffer="$(head --lines=-1 <<< "$text_buffer" )"
     eval_buffers
 }
-bl_doctest_doc_identifier=__documentation__
 bl_doctest_doc_regex="/__documentation__='/,/';$/p"
 bl_doctest_doc_regex_one_line="__documentation__='.*';$"
 alias bl.doctest.get_function_docstring=bl_doctest_get_function_docstring
 bl_doctest_get_function_docstring() {
     function="$1"
     (
-        unset $bl_doctest_doc_identifier
         if ! docstring="$(type "$function" | \
             grep "$bl_doctest_doc_regex_one_line")"
         then
             docstring="$(type "$function" | sed --quiet "$bl_doctest_doc_regex")"
         fi
         eval "$docstring"
-        echo "${!bl_doctest_doc_identifier}"
+        echo "${!bl_doctest_name_indicator}"
     )
 }
 alias bl.doctest.print_declaration_warning=bl_doctest_print_declaration_warning
@@ -587,9 +587,8 @@ bl_doctest_print_declaration_warning() {
 bl_doctest_exception_active=false
 alias bl_doctest_test=bl.doctest.test
 bl_doctest_test() {
-    # TODO refactor!!
-    module_reference="$1"
-    local result="$(bl.module.resolve "$module_reference" true)"
+    bl_doctest_module_reference_under_test="$1"
+    local result="$(bl.module.resolve "$bl_doctest_module_reference_under_test" true)"
     local file_path="$(echo "$result" | sed --regexp-extended 's:^(.+)/[^/]+$:\1:')"
     local module_name="$(echo "$result" | sed --regexp-extended 's:^.*/([^/]+)$:\1:')"
     local scope_name="$(bl.module.rewrite_scope_name "$module_name" | sed --regexp-extended 's:\.:_:g')"
@@ -622,43 +621,41 @@ bl_doctest_test() {
         return 0
     fi
     (
-    bl.module.import "$module" "$bl_doctest_supress_declaration"
-    bl_doctest_module_under_test="$(bl.path.convert_to_absolute "$module")"
-    declared_functions="$module_declared_function_names_after_source"
-    module="$(basename "$module")"
-    module="${module%.sh}"
-    declared_module_functions="$(! declare -F | cut -d' ' -f3 | grep -e "^${module%.sh}" )"
-    declared_functions="$declared_functions"$'\n'"$declared_module_functions"
-    declared_functions="$(bl.tools.unique <(echo "$declared_functions"))"
-
-    local total=0
-    local success=0
-    bl.time.start
-    # module level tests
-    test_identifier="${module//[^[:alnum:]_]/_}"__documentation__
-    docstring="${!test_identifier}"
-    if ! [ -z "$docstring" ]; then
-        let "total++"
-        bl.doctest.run_test "$docstring" "$module" && let "success++"
-    fi
-    # function level tests
-    # TODO detect and warn docstrings with double quotes
-    test_identifier=__documentation__
-    for fun in $declared_functions; do
-        # shellcheck disable=SC2089
-        docstring="$(bl.doctest.get_function_docstring "$fun")"
-        if [[ "$docstring" != "" ]]; then
+        bl.module.import_without_namespace_check "$module_reference"
+        # NOTE: Get all external module prefix and unprefixed function names.
+        local declared_function_names="$module_declared_function_names_after_source"
+        # NOTE: Adds internal already loaded but correctly prefixed functions.
+        declared_function_names+=" $(! declare -F | cut -d' ' -f3 | grep -e "^$scope_name" )"
+        # NOTE: Removes duplicates.
+        declared_function_names="$(bl.tools.unique <(echo "$declared_function_names"))"
+        local total=0
+        local success=0
+        bl.time.start
+        # Module level tests
+        local module_documentation_variable_name="${scope_name}${bl_doctest_name_indicator}"
+        local docstring="${!module_documentation_variable_name}"
+        if ! [ -z "$docstring" ]; then
             let "total++"
-            bl.doctest.run_test "$docstring" "$module" "$fun" && let "success++"
-        else
-            ! $bl_doctest_supress_undocumented && \
-                bl.logging.warn "undocumented function $fun"
+            bl.doctest.run_test "$docstring" "$module_reference" && (( success++ ))
         fi
-    done
-    bl.logging.info "$module - passed $success/$total tests in" \
-        "$(bl.time.get_elapsed) ms"
-    (( success != total )) && exit 1
-    exit 0
+        # Function level tests
+        local name
+        for name in $declared_function_names; do
+            # shellcheck disable=SC2089
+            local docstring="$(bl.doctest.get_function_docstring "$name")"
+            if [[ "$docstring" != '' ]]; then
+                (( total++ ))
+                bl.doctest.run_test "$docstring" "$module" "$name" && \
+                    (( success++ ))
+            else
+                ! $bl_doctest_supress_undocumented && \
+                    bl.logging.warn "Function \"$name\" is not documented."
+            fi
+        done
+        bl.logging.info "$module - passed $success/$total tests in" \
+            "$(bl.time.get_elapsed) ms"
+        (( success != total )) && exit 1
+        exit 0
     )
 }
 alias bl.doctest.parse_arguments=bl_doctest_parse_arguments
@@ -675,7 +672,6 @@ bl_doctest_parse_arguments() {
         1
         -bl.documentation.exclude
     '
-    local filename module directory verbose help
     bl.arguments.set "$@"
     bl.arguments.get_flag --help -h help
     $help && bl.documentation.print_docstring "$bl_doctest__documentation__" && return 0
@@ -688,7 +684,6 @@ bl_doctest_parse_arguments() {
     bl.arguments.get_flag --use-nounset bl_doctest_nounset
     bl.arguments.get_flag --verbose -v verbose
     bl.arguments.apply_new
-
     if $verbose; then
         bl.logging.set_level verbose
     else
@@ -697,24 +692,17 @@ bl_doctest_parse_arguments() {
     bl.time.start
     local total=0
     local success=0
-    if [ $# -eq 0 ] || [ "$@" == "" ];then
-        bl.doctest.test_directory "$(dirname "$0")"
+    if [ $# -eq 0 ] || [ "$@" == '' ]; then
+        bl.doctest.test bashlink
     else
-        for filename in "$@"; do
-            if [ -f "$filename" ]; then
-                let "total++"
-                bl.doctest.test "$(bl.path.convert_to_absolute "$filename")" &
-            elif [ -d "$filename" ]; then
-                bl.doctest.test_directory "$filename"
-            else
-                let "total++"
-                bl.logging.warn "Failed to test file: $filename"
-            fi
+        local name
+        for name in "$@"; do
+            bl.doctest.test "$name" &
         done
     fi
     local job
     for job in $(jobs -p); do
-        wait "$job" && let "success++"
+        wait "$job" && (( success++ ))
     done
     bl.logging.info "Total: passed $success/$total modules in" \
         "$(bl.time.get_elapsed) ms"

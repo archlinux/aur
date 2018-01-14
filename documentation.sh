@@ -80,18 +80,15 @@ bl_documentation_generate() {
         return 0
     fi
     (
-        bl.module.import "$module_reference" || \
-            bl.logging.warn \
-            "Failed to generate documentation for \"$module_name\" due to an import error during resolving \"$module_reference\"." \
-            1>&2
+        bl.module.import "$module_reference" 1>&2
         # NOTE: Get all external module prefix and unprefixed function names.
         local declared_function_names="$module_declared_function_names_after_source"
         # NOTE: Adds internal already loaded but correctly prefixed functions.
         declared_function_names+=" $(! declare -F | cut -d' ' -f3 | grep -e "^$scope_name" )"
         # NOTE: Removes duplicates.
-        declared_functions="$(bl.tools.unique <(echo "$declared_functions"))"
-        # module level doc
-        local module_documentation_variable_name="${scope_name}__documentation__"
+        declared_function_names="$(bl.tools.unique <(echo "$declared_function_names"))"
+        # Module level documentation
+        local module_documentation_variable_name="${scope_name}${bl_doctest_name_indicator}"
         local docstring="${!module_documentation_variable_name}"
         bl.logging.plain "## Module $module_name"
         if [[ -z "$docstring" ]]; then
@@ -101,8 +98,7 @@ bl_documentation_generate() {
         else
             bl.logging.plain "$(bl.documentation.format_docstring "$docstring")"
         fi
-        # function level documentation
-        test_identifier=__documentation__
+        # Function level documentation
         local name
         for name in $declared_function_names; do
             # shellcheck disable=SC2089
@@ -118,24 +114,18 @@ bl_documentation_generate() {
 }
 alias bl.documentation.parse_arguments=bl_documentation_parse_arguments
 bl_documentation_parse_arguments() {
-    local filename module main_documentation serve
     bl.arguments.set "$@"
     bl.arguments.get_flag --serve serve
     bl.arguments.apply_new
-    $serve && bl.documentation.serve "$1" && return 0
-    main_documentation="$(dirname "${BASH_SOURCE[0]}")/rebash.md"
-    if [ $# -eq 0 ]; then
-        [[ -e "$main_documentation" ]] && cat "$main_documentation"
-        bl.logging.plain ""
-        bl.logging.plain "# Generated documentation"
-        for filename in $(dirname "$0")/*.sh; do
-            module=$(basename "${filename%.sh}")
-            bl.documentation.generate "$module"
-        done
+    if [ $# -eq 0 ] || [ "$@" == '' ]; then
+        bl.logging.plain
+        bl.logging.plain '# Generated documentation'
+        bl.documentation.generate bashlink
     else
-        bl.logging.plain "# Generated documentation"
-        for module in "$@"; do
-            bl.documentation.generate "$module"
+        bl.logging.plain '# Generated documentation'
+        local name
+        for name in "$@"; do
+            bl.documentation.generate "$name"
         done
     fi
     return 0
