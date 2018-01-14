@@ -1,9 +1,9 @@
 #
-# Maintainer: Drew Chapin <druciferre@gmail.com>
+# Maintainer: Drew Chapin <drew@drewchapin.com>
 #
 pkgname=nautilus-emblems-menu-extension-git
 pkgver=r13.62041a2
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a simple Nautilus extension which adds a context menu to files and directories which lets you set/modify emblems its emblems."
 arch=('any')
 url="https://github.com/allefant/Nautilus-Emblems-Menu-Extension"
