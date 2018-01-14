@@ -2,12 +2,12 @@
 
 _name=ddnet
 pkgname=$_name-git
-pkgver=10.8.6.r342.g1d55bbda0
+pkgver=11.0.r10.gc8d4b605b
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
 url="https://ddnet.tw"
-license=('custom')
+license=('custom:BSD' 'cc-by-nc-sa-3.0')
 depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'opusfile' 'curl') #mariadb
 makedepends=('git' 'cmake' 'imagemagick' 'gendesk' 'python' 'gtest')
 optdepends=('ddnet-skins: more skins for your tee'
