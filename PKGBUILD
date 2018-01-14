@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
