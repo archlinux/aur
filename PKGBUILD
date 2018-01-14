@@ -1,7 +1,7 @@
 # Maintainer: Zion Nimchuk <zionnimchuk@gmail.com>
 
 pkgname=kurly
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Kurly is an alternative to the widely popular curl program written in go.'
 arch=('i686' 'x86_64' 'arm')
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/davidjpeacock/kurly/archive/v${pkgver}.tar.gz")
-sha512sums=('6b850a5e8c57d8b4d179e2e306653bb31b8d45c88b827bcef976aa510c0b094e111b0a6dfbd8cc4201e1e948c5938c27537a8d03123622e7914adb31425692d8')
+sha512sums=('7c39915bfb9c8c2c6d49c82e6a8095dfae3c4fea9b8b956a05ed09cdfe000ca60aa237a2a099f865ecd2ed28189bccc214c0598745ecedebc619ee981008ba9e')
 
 build() {
     cd ${pkgname}-${pkgver}
