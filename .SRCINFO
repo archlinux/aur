@@ -1,0 +1,36 @@
+pkgbase = python-blue-loader-git
+	pkgver = 0.1.16.0.1.16.r0.g9914b37
+	pkgrel = 1
+	url = https://github.com/LedgerHQ/blue-loader
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git+https://github.com/LedgerHQ/blue-loader-python.git
+	sha256sums = SKIP
+
+pkgname = python-blue-loader-git
+	pkgdesc = Python tools for Ledger Blue and Nano S for PYthon 3
+	depends = python
+	depends = python-hidapi
+	depends = python-protobuf
+	depends = python-crypto
+	depends = python-ecpy-git
+	depends = python-future
+	provides = python-blue-loader
+	conflicts = python-blue-loader
+
+pkgname = python2-blue-loader-git
+	pkgdesc = Python tools for Ledger Blue and Nano S for Python 2
+	depends = python2
+	depends = python2-hidapi
+	depends = python2-protobuf
+	depends = python2-crypto
+	depends = python2-ecpy-git
+	depends = python2-future
+	provides = python2-blue-loader
+	conflicts = python2-blue-loader
+
