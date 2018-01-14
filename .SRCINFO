@@ -1,0 +1,15 @@
+pkgbase = ttf-devicons
+	pkgdesc = An iconic font for developers
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/vorillaz/devicons
+	arch = any
+	license = MIT
+	depends = fontconfig
+	source = ttf-devicons-1.8.0.tar.gz::https://github.com/vorillaz/devicons/archive/1.8.0.tar.gz
+	source = MIT
+	sha256sums = d8d2dc243ca42897a082ffe32a22cab53cdd148cf87b24162cf450ccfc12fece
+	sha256sums = fd2b2a28ff7d4fbe6073edaf43ce6387430f10193a28fa09f893398463b8000b
+
+pkgname = ttf-devicons
+
