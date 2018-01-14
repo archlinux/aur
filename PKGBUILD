@@ -98,7 +98,7 @@ check() {
 	#  * coretests takes too long (~25000s)
 	#  * libwallet_api_tests fail (Issue #895)
 	#  * unit_tests were run separately above
-	CTEST_ARGS+="-E 'coretests|libwallet_api_tests|unit_tests'"
+	CTEST_ARGS+="-E 'core_tests|libwallet_api_tests|unit_tests'"
 	echo ">>> NOTE: some tests excluded: $CTEST_ARGS"
 
 	make ARGS="$CTEST_ARGS" test
