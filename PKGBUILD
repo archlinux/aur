@@ -1,17 +1,17 @@
 # Maintainer: Anton Hvornum <anton.feeds+AUR@gmail.com>
 _owner=Torxed
 _name=slimdns
-_dbuser_passwd=$(</dev/urandom tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' | head -c 25  ; echo)
+_dbuser_passwd=$(</dev/urandom tr -dc 'A-Za-z0-9!"#$%&()*+,-./:;<=>?@[\]^_`{|}~' | head -c 25  ; echo)
 pkgname=$_name-git
-pkgver=0.r17.67809b0
+pkgver=v0.r18.g67809b0
 pkgrel=1
 pkgdesc="A simple, light weight DNS server"
 arch=('x86_64')
 url="https://hvornum.se"
 license=('custom:BSD' 'cc-by-nc-sa-3.0')
-depends=('python-dnslib') #postgresql
+depends=('python-dnslib postgresql')
 makedepends=('python')
-optdepends=('postgresql')
+#optdepends=('')
 provides=('slimdns-git' 'slimdns')
 conflicts=('slimdns-git' 'slimdns')
 source=("git+https://github.com/$_owner/$_name.git")
@@ -31,6 +31,8 @@ prepare() {
     cat > slimDNS.service <<EOL
 [Unit]
 Description=$pkgdesc
+Requires=postgresql
+After=postgresql
 
 [Service]
 Type=simple
@@ -68,6 +70,7 @@ package() {
     #cp -r data/* "$pkgdir/usr/share/slimDNS/data/"
 
     # Install the .service file
+    install -d -m755 "$pkgdir/etc/systemd/system"
     install -m755 slimDNS.service     "$pkgdir/etc/systemd/system/"
 
     # Install license files
