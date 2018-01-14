@@ -1,14 +1,14 @@
-# Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
+# Maintainer: Michael Yang <ohmyarchlinux@protonmail.com>
 # Maintainer: Adam Nielsen <malvineous@shikadi.net>
 
 pkgname=xlnt-git
-pkgver=0.9.5.r1024.9f9dfe7
+pkgver=1.2.0.r2.g8bd85f9
 pkgrel=1
-pkgdesc="Cross-platform user-friendly xlsx library for C++14"
+pkgdesc="Cross-platform user-friendly xlsx library for C++11"
 url="https://github.com/tfussell/xlnt"
 arch=('i686' 'x86_64')
 license=('MIT')
-makedepends=('git' 'cmake>=3.2.0')
+makedepends=('git' 'cmake>=3.1.0')
 conflicts=('xlnt')
 provides=('xlnt')
 source=("git://github.com/tfussell/xlnt.git")
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd xlnt
-  echo "$(grep project source/CMakeLists.txt | cut -d '(' -f2 | cut -d ')' -f1 | cut -d ' ' -f3).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
@@ -26,13 +26,17 @@ prepare() {
 build() {
   cd build
   cmake ../xlnt \
-    -DTESTS=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
+check() {
+  cd build/tests
+  ./xlnt.test
+}
+
 package() {
   make -C build DESTDIR="${pkgdir}" install
-  install -Dm644 xlnt/LICENSE.md ${pkgdir}/usr/share/licenses/xlnt-git/LICENSE.md
+  install -Dm644 xlnt/LICENSE.md "${pkgdir}"/usr/share/licenses/xlnt-git/LICENSE.md
 }
