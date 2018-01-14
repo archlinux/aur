@@ -14,7 +14,7 @@ conflicts=('omp')
 source=("$pkgname::git+https://github.com/TheWiseNoob/OpenMusicPlayer.git"
         "omp.desktop")
 sha256sums=('SKIP'
-            '6475694b67f1d76b7b4eff2c02cc360d73407937d726764c28ef49c3f70ea0fe')
+            '65398127a90eec9cb79eb11a227305ec2b9f2f3ba1265e2dd1d31934205cd38c')
 
 pkgver() {
   cd "${pkgname}"
