@@ -6,7 +6,7 @@ pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
 pkgver=0.11.0.0
 pkgrel=1
-arch=('x86_64' 'i686' 'armv7h')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
 
