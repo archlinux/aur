@@ -2,7 +2,7 @@
 
 pkgname=csync-git
 pkgver=r1010.d153943
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight utility to synchronize files between two directories"
 arch=('x86_64')
 url="https://www.csync.org/"
@@ -19,7 +19,7 @@ pkgver() {
 build() {
 	[[ -d "$srcdir/$pkgname/build/" ]] || mkdir "$srcdir/$pkgname/build/"
 	cd "$pkgname/build/"
-	cmake -DCMAKE_BUILD_TYPE=Release "$srcdir/$pkgname"
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/$pkgname"
 	make
 }
 package() {
