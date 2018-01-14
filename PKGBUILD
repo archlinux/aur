@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 
 pkgname=roadfighter
 pkgver=1.0.1269
