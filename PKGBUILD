@@ -2,7 +2,7 @@
 
 pkgname=aom
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet"
 arch=('i686' 'x86_64')
 url="http://aomedia.org/"
@@ -22,7 +22,7 @@ prepare() {
 build() {
   cd "$srcdir/build"
 
-  ../configure --prefix="/usr" --enable-pic --disable-unit-tests
+  "$srcdir/$pkgname"/configure --prefix="/usr" --enable-pic --disable-unit-tests
   make
 }
 
@@ -31,7 +31,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  cd "$srcdir"
+  cd "$srcdir/$pkgname"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "PATENTS" "$pkgdir/usr/share/licenses/$pkgname/PATENTS"
 }
