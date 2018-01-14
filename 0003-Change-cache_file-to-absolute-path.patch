@@ -1,0 +1,31 @@
+From df259b90c59d017822155410fb13b4a43b18c3ec Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Adri=C3=A1n=20Lavi=C3=B3s=20Gomis?= <adrian@lavios.eu>
+Date: Sun, 14 Jan 2018 09:34:55 +0100
+Subject: [PATCH 2/2] Change cache_file to absolute path.
+
+---
+ dnscrypt-proxy/dnscrypt-proxy.toml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/dnscrypt-proxy/dnscrypt-proxy.toml b/dnscrypt-proxy/dnscrypt-proxy.toml
+index 029081d..80fd1d9 100644
+--- a/dnscrypt-proxy/dnscrypt-proxy.toml
++++ b/dnscrypt-proxy/dnscrypt-proxy.toml
+@@ -78,13 +78,12 @@ cache_neg_ttl = 60
+ ############## Servers ##############
+ 
+ ## Remote lists of available servers
+-## Recommended: change the cache_file location to an absolute path
+ 
+ [sources]
+   [sources."proxy v1 list from github"]
+   url = "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v1/dnscrypt-resolvers.csv"
+   minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3"
+-  cache_file = "dnscrypt-resolvers.csv"
++  cache_file = "/var/cache/dnscrypt-proxy/dnscrypt-resolvers.csv"
+   format = "v1"
+   refresh_delay = 24
+ 
+-- 
+2.15.1
+

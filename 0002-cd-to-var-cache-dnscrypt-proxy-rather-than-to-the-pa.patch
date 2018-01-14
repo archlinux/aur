@@ -1,0 +1,30 @@
+From 88ccc56a9cc227e5038cc0ca5c5011bad0ab8d79 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Adri=C3=A1n=20Lavi=C3=B3s=20Gomis?= <adrian@lavios.eu>
+Date: Sun, 14 Jan 2018 09:49:40 +0100
+Subject: [PATCH] cd to /var/cache/dnscrypt-proxy rather than to the path of
+ the executable.
+
+---
+ dnscrypt-proxy/main.go | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/dnscrypt-proxy/main.go b/dnscrypt-proxy/main.go
+index 4d61be6..17e38fb 100644
+--- a/dnscrypt-proxy/main.go
++++ b/dnscrypt-proxy/main.go
+@@ -44,11 +44,7 @@ func main() {
+ }
+ 
+ func cdLocal() {
+-	ex, err := os.Executable()
+-	if err != nil {
+-		dlog.Critical(err)
+-		return
+-	}
++	ex := "/var/cache/dnscrypt-proxy"
+ 	exPath := filepath.Dir(ex)
+ 	os.Chdir(exPath)
+ }
+-- 
+2.15.1
+
