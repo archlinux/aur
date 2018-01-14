@@ -1,7 +1,7 @@
 pkgbase = iscan-plugin-v330
 	pkgdesc = iscan plugin for Epson Perfection Photo V330 scanners.
 	pkgver = 0.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.epson.com
 	install = iscan-plugin-v330.install
 	arch = i686
@@ -9,8 +9,6 @@ pkgbase = iscan-plugin-v330
 	license = custom
 	makedepends = rpmextract
 	depends = iscan
-	source = https://download2.ebz.epson.net/iscan/plugin/perfection-v330/rpm/x64/iscan-perfection-v330-bundle-1.0.1.x64.rpm.tar.gz
-	md5sums = 888a55ae8406730f1fe60a779f398316
 
 pkgname = iscan-plugin-v330
 

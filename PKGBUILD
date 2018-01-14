@@ -2,7 +2,7 @@
 
 pkgname=iscan-plugin-v330
 pkgver=0.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="iscan plugin for Epson Perfection Photo V330 scanners."
 arch=('i686' 'x86_64')
 url="http://www.epson.com"
