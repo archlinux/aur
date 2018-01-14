@@ -1,12 +1,12 @@
 pkgbase = acestream-engine
 	pkgdesc = ACE Stream engine
 	pkgver = 3.1.16
-	pkgrel = 4
+	pkgrel = 5
 	url = http://acestream.org/
 	install = acestream-engine.install
 	arch = x86_64
 	license = unknown
-	depends = openssl
+	depends = openssl-1.0
 	depends = net-tools
 	depends = python2-setuptools
 	depends = python2-xlib
