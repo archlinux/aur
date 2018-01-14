@@ -1,6 +1,6 @@
 pkgbase = sniffjoke
 	pkgdesc = An internet client running SniffJoke injects in the transmission flow some packets able to seriously disturb passive analysis like sniffing, interception and low level information theft
-	pkgver = 20170815
+	pkgver = 20170814
 	pkgrel = 1
 	url = https://github.com/vecna/sniffjoke
 	arch = i686
