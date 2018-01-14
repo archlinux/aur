@@ -5,7 +5,7 @@
 # Contributor: Roozbeh Shafiee <Roozbeh@Roozbeh.us>
 
 pkgname=choqok-git
-pkgver=v1.6.0.r65.gc4f22aad
+pkgver=v1.6.0.r86.g85a3475a
 pkgrel=1
 pkgdesc='Microblogging client for KDE with support for Pump.io, GNU social and Twitter.com - git version'
 arch=(i686 x86_64)
