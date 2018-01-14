@@ -21,7 +21,7 @@ depends=('boost-libs>=1.45'  'miniupnpc>=1.6' 'libunwind'
 	 # use unbound vendored inside upstream source repo
 	 #'openssl-1.0'
 	 )
-makedepends=('git' 'cmake' 'boost' 'gtest')
+makedepends=('git' 'cmake' 'boost' 'gtest' 'qt5-tools')
 
 
 pkgdesc="Peer-to-peer anonymous digital currency (daemon, CLI wallet, and wallet API library)"
