@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: Vitaly Bogdanov <vsbogd at gmail dot com>
 # Contributor: Allan McRae <mcrae_allan@hotmail.com>
