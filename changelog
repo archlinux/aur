@@ -1,3 +1,15 @@
+2018-01-13 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.0.5.8-1:
+    Added !loot^ command (ref: #727).
+    Added ConfirmationsLimiterDelay global config property (ref: #728).
+    Previously undocumented loot switch is now documented under !loot& command.
+    !play command now accepts custom name to display (optionally also with idling other appIDs).
+    Fixed a bug that could lead to games not being able to be idled when IdleRefundableGames: false was set (ref: #709).
+    Fixed a possibility of trade offers not being initially parsed after disconnection.
+    Fixed various issues related to HTML parsing under tr-TR language.
+    Removed AutoDiscoveryQueue bot config property and added AutoSteamSaleEvent in its place, with enhanced functionality.
+    Usual amount of code improvements, optimizations and bugfixes.
+    package: replaced dotnet-sdk dependency with dotnet-runtime.
 2017-12-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.0.5.5-1:
     [!] As initially stated, IPC was rewritten with new API endpoints and updated documentation in preparation for building IPC GUI. You will probably need to slightly modify your existing tools or scripts (ref: #667).
