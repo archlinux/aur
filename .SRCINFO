@@ -6,7 +6,6 @@ pkgbase = pacui-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = base-devel
 	depends = expac
 	depends = wget
 	depends = sudo
