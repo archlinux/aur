@@ -1,0 +1,21 @@
+pkgbase = yoga370d-git
+	pkgdesc = A python daemon which automatically enables tablet mode on the Thinkpad Yoga 370. This means switching off the TouchPad and TrackPoint. The script can also disable the Finger Input if the Pen is in use. It will optionally rotate the screen.
+	pkgver = r18.37e99a7
+	pkgrel = 1
+	url = https://github.com/hensur/yoga370d
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = xorg-xrandr
+	depends = acpid
+	depends = python-dbus
+	depends = iio-sensor-proxy
+	depends = python-docopt
+	depends = xorg-xinput
+	depends = xf86-input-wacom
+	depends = python
+	source = yoga370d::git+https://github.com/hensur/yoga370d
+	md5sums = SKIP
+
+pkgname = yoga370d-git
+
