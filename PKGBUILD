@@ -3,7 +3,7 @@
 
 pkgname=winregfs-git
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Windows Registry FUSE filesystem "
 arch=('i686' 'x86_64')
 url="https://github.com/jbruchon/winregfs"
@@ -17,7 +17,7 @@ options=(!emptydirs)
 
 source=("https://github.com/jbruchon/winregfs/archive/master.zip")
 
-md5sums=("485e7426f828c7b383773d9d37e4dd1f")
+md5sums=("206e61cec1537e4226a3c1a6971acf4a")
 
 
 build() {
