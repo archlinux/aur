@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.5.0.r2242.e10ac8cbe
+pkgver=1.5.0.r2255.43d0bd99c
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL2' 'GPL3' 'LGPL2.1' 'LGPL3')
 depends=('lib32-glew' 'lib32-libaio' 'lib32-libcanberra' 'lib32-libjpeg-turbo'
          'lib32-libpulse' 'lib32-nvidia-cg-toolkit' 'lib32-portaudio'
          'lib32-sdl2' 'lib32-soundtouch' 'lib32-wxgtk2')
-makedepends=('cmake' 'gcc-multilib' 'git' 'png++')
+makedepends=('cmake' 'git' 'png++')
 provides=('pcsx2')
 conflicts=('pcsx2')
 source=('git+https://github.com/PCSX2/pcsx2.git')
