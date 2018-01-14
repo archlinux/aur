@@ -1,0 +1,25 @@
+show_message(){
+
+echo Usage:
+echo To use fakeroute, you must define a route file with your fake route.
+echo The file should be a newline separated list of dotted quad IP addresses
+echo For example, 10.0.0.34 could have a route.conf that looks like\:
+echo .
+echo 216.102.187.130
+echo 165.87.161.74
+echo .
+echo traceroute to localhost \(127.0.0.1\), 30 hops max, 40 byte packets
+echo  1  core4-g3-0.snfc21.pbi.net \(216.102.187.130\)  0.324 ms  0.247 ms  0.1$
+echo  2  sfra1sr3-so-1-1-1-0.ca.us.prserv.net \(165.87.161.74\)  0.164 ms  0.26$
+echo .
+echo To run, become root, and simply execute "fakeroute -f <route_file>".
+echo .
+sleep 1
+}
+post_upgrade() {
+	show_message
+}
+post_install(){
+	show_message
+}
+
