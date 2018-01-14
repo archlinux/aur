@@ -1,0 +1,15 @@
+[Unit]
+Description=Strichliste Systemd service
+After=network.target
+
+[Service]
+Restart=on-failure
+Type=simple
+User=strichliste
+Group=strichliste
+
+WorkingDirectory=/var/lib/strichliste
+ExecStart=/usr/bin/strichliste
+
+[Install]
+WantedBy=multi-user.target
