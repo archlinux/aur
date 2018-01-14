@@ -1,19 +1,19 @@
 # Maintainer: Facundo Tuesca <facutuesca at gmail dot com>
 pkgname=briss
 pkgver=0.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Java tool to crop pages of PDF documents to one or more regions selected with a GUI."
 arch=('any')
 url="http://sourceforge.net/projects/briss/"
 license=('GPL')
 depends=('java-runtime')
-makedepends=('fastjar' 'imagemagick')
+makedepends=('imagemagick')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('030380e0ca3ff05f2dff9590a2fa4ab7')
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p $pkgdir/usr/share/$pkgname
-  fastjar xf $pkgname-$pkgver.jar Briss_icon_032x032.gif
+  bsdtar -xf $pkgname-$pkgver.jar Briss_icon_032x032.gif
   convert Briss_icon_032x032.gif $pkgname-icon.png
   cp * $pkgdir/usr/share/$pkgname/
   mkdir -p $pkgdir/usr/bin
@@ -36,5 +36,3 @@ Categories=Graphics;Viewer;2DGraphics;RasterGraphics;
 EOF
    chmod a+r $pkgdir/usr/share/applications/$pkgname.desktop
 }
-
-# vim:set ts=2 sw=2 et:
