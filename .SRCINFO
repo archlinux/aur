@@ -1,11 +1,12 @@
 pkgbase = rpcs3
 	pkgdesc = Open-source Sony PlayStation 3 Emulator
 	pkgver = 0.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rpcs3.net/
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
+	makedepends = boost
 	depends = alsa-lib
 	depends = glew1.13
 	depends = hicolor-icon-theme
