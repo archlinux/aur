@@ -5,8 +5,8 @@
 
 pkgname=('handbrake-fdkaac' 'handbrake-cli-fdkaac')
 pkgver=1.0.7
-pkgrel=2
-arch=('i686' 'x86_64')
+pkgrel=3
+arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
 makedepends=('intltool' 'python2' 'yasm' 'wget' 'cmake' 'bzip2' 'gcc-libs'
