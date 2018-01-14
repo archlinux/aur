@@ -1,12 +1,13 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=open-plc-utils
-pkgver=r447.g6a07d621583c
+pkgver=r496.gadfaabb7
 pkgrel=1
 pkgdesc="Qualcomm Atheros Open Powerline Toolkit"
 arch=(i686 x86_64)
 url=https://github.com/qca/open-plc-utils
 license=(custom:Clear_BSD)
-source=("git+https://github.com/qca/open-plc-utils")
+_commit=adfaabb741217001c1d4b1d460b3a70a915472b6
+source=("git+https://github.com/qca/open-plc-utils#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
