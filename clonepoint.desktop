@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Clonpoint
+Comment=Free software clone of Gunpoint
+Exec=clonepoint
+Icon=clonepoint
+Terminal=false
+StartupNotify=false
+Categories=Game;ActionGame;
