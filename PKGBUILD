@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgbase=gods
