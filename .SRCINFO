@@ -1,7 +1,7 @@
 pkgbase = xbase
 	pkgdesc = A C++ library
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/graywolf/xbase
 	arch = i686
 	arch = x86_64

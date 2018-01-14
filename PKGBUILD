@@ -4,7 +4,7 @@
 
 pkgname=xbase
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library"
 arch=('i686' 'x86_64')
 url='https://github.com/graywolf/xbase'
@@ -49,4 +49,5 @@ check() {
 package() {
 	cd "${pkgname}/build"
 	make install
+	rm -rf lib64
 }
