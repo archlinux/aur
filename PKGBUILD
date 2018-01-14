@@ -2,7 +2,7 @@
 
 pkgname="pulse-sms"
 pkgver="1.0.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="A native desktop implementation of Pulse"
 arch=('x86_64')
 url="https://messenger.klinkerapps.com/"
@@ -12,7 +12,7 @@ _vername="$pkgver-rc${pkgrel}"
 source=(
     "https://github.com/klinker-apps/messenger-issues/releases/download/v${_vername}/pulse-sms-${_vername}-amd64.deb"
 )
-sha512sums=("8813abddc69dec231f8c79bce73b5ae155303e726291ef8e9bef5af70fe741379bc48d49ed1a6edbcd8f1f0ba02d0354d5d0a58e64b5a071d3719d3b9fa9c59a")
+sha512sums=("0450de2c77e8f187c92d10aa5edb978ca9523fe6a166e380e79f4e498b199561796bc58b486d30c1400cf375c5aa0852b12d8858ab5f3b9a8420c0b7932f7156")
 
 package() {
     tar -xf data.tar.xz -C "$pkgdir"

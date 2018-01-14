@@ -1,7 +1,7 @@
 pkgbase = pulse-sms
 	pkgdesc = A native desktop implementation of Pulse
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://messenger.klinkerapps.com/
 	arch = x86_64
 	depends = gconf
@@ -9,8 +9,8 @@ pkgbase = pulse-sms
 	depends = libxtst
 	depends = nss
 	depends = libxss
-	source = https://github.com/klinker-apps/messenger-issues/releases/download/v1.0.0-rc2/pulse-sms-1.0.0-rc2-amd64.deb
-	sha512sums = 8813abddc69dec231f8c79bce73b5ae155303e726291ef8e9bef5af70fe741379bc48d49ed1a6edbcd8f1f0ba02d0354d5d0a58e64b5a071d3719d3b9fa9c59a
+	source = https://github.com/klinker-apps/messenger-issues/releases/download/v1.0.0-rc3/pulse-sms-1.0.0-rc3-amd64.deb
+	sha512sums = 0450de2c77e8f187c92d10aa5edb978ca9523fe6a166e380e79f4e498b199561796bc58b486d30c1400cf375c5aa0852b12d8858ab5f3b9a8420c0b7932f7156
 
 pkgname = pulse-sms
 
