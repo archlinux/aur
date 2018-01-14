@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: bangoskank <its.hip@gmail.com>
