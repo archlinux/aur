@@ -1,0 +1,16 @@
+pkgbase = csync-git
+	pkgdesc = A lightweight utility to synchronize files between two directories
+	pkgver = r1010.d153943
+	pkgrel = 1
+	url = https://www.csync.org/
+	arch = x86_64
+	license = GPL2
+	depends = sqlite>=3.4
+	depends = iniparser>=2.10
+	optdepends = libssh>=0.5
+	optdepends = smbclient>=3.5
+	source = csync-git::git+https://git.cryptomilk.org/projects/csync.git/
+	md5sums = SKIP
+
+pkgname = csync-git
+
