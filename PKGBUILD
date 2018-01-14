@@ -3,7 +3,7 @@ _pkgname=trezord
 pkgname="${_pkgname}-git"
 gitname="${_pkgname}"
 pkgrel=1
-pkgver=1.2.1.r1.g3c1bf19
+pkgver=1.2.1.r12.g751dcb4
 pkgdesc='TREZOR Communication Daemon'
 url='http://bitcointrezor.com/'
 arch=('i686' 'x86_64')
@@ -12,7 +12,6 @@ provides=("${_pkgname}" 'trezor-bridge')
 conflicts=("${_pkgname}" 'trezor-bridge-bin')
 makedepends=('boost' 'cmake' 'git')
 depends=('boost-libs' 'jsoncpp' 'libmicrohttpd' 'libusb' 'protobuf')
-install="${_pkgname}.install"
 source=(
     "git://github.com/trezor/${gitname}.git"
     'git://github.com/trezor/trezor-crypto.git'
@@ -25,7 +24,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'a4106f04d8322836905c6d300c0fb54849063bbc258ef76e28acdbec7c1c4df4'
-    'f35e54780fb4be945b36212b7f0829f35a627924688b94e4814ca5f4d73a7a0b'
+    'f5930369c6cac75211092e065868781cc0eb5141b282c38c3973c7f73970de5c'
 )
 
 prepare() {

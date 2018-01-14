@@ -1,9 +1,9 @@
 #!/bin/sh
 
 post_install() {
-    systemd-sysusers trezord.conf
+    udevadm control --reload-rules
 }
 
 post_upgrade() {
-    systemd-sysusers trezord.conf
+    post_install
 }

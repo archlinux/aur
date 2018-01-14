@@ -17,3 +17,25 @@ index 7c0e2cf..fd3dceb 100644
  find_package(Boost 1.53.0 REQUIRED
    regex thread system unit_test_framework program_options chrono)
  find_package(Protobuf 2.5.0 REQUIRED)
+diff --git a/release/linux/trezor.rules b/release/linux/trezor.rules
+index bd8a838..7008bd5 100644
+--- a/release/linux/trezor.rules
++++ b/release/linux/trezor.rules
+@@ -3,11 +3,11 @@
+ # Put this file into /usr/lib/udev/rules.d
+ 
+ # TREZOR
+-SUBSYSTEM=="usb", ATTR{idVendor}=="534c", ATTR{idProduct}=="0001", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
+-KERNEL=="hidraw*", ATTRS{idVendor}=="534c", ATTRS{idProduct}=="0001",  MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
++SUBSYSTEM=="usb", ATTR{idVendor}=="534c", ATTR{idProduct}=="0001", MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
++KERNEL=="hidraw*", ATTRS{idVendor}=="534c", ATTRS{idProduct}=="0001",  MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl"
+ 
+ # TREZOR v2
+-SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c0", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
+-SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c1", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
+-KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c0",  MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
+-KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c1",  MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
++SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c0", MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
++SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c1", MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
++KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c0",  MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl"
++KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c1",  MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl"
