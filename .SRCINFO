@@ -7,6 +7,8 @@ pkgbase = hurl-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	depends = perl-cgi
+	depends = perl-uri
 	provides = hurl
 
 pkgname = hurl-git
