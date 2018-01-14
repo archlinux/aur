@@ -13,7 +13,7 @@
 alias bl.string.make_command_promt_prefix=bl_string_make_command_promt_prefix
 bl_string_make_command_promt_prefix() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Generates a new user prompt with useful runtime parameters.
 
     `bl.string.make_command_promt_prefix`
@@ -49,7 +49,7 @@ bl_string_generate_random() {
 alias bl.string.validate_argument=bl_string_validate_argument
 bl_string_validate_argument() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__="
+    local __documentation__="
     Validates a given bash argument.
 
     >>> bl.string.validate_argument hans
@@ -71,7 +71,7 @@ bl_string_validate_argument() {
 alias bl.string.validate_regular_expression_replacement=bl_string_validate_regular_expression_replacement
 bl_string_validate_regular_expression_replacement() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     This functions escapes every special meaning character for a sed
     replacement.
 
@@ -84,7 +84,7 @@ bl_string_validate_regular_expression_replacement() {
 alias bl.string.images_to_css_classes=bl_string_images_to_css_classes
 bl_string_images_to_css_classes() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     This function converts a folder of images to a single includeable css
     file.
 
@@ -132,7 +132,7 @@ bl_string_images_to_css_classes() {
 alias bl.string.merge_text_files=bl_string_merge_text_files
 bl_string_merge_text_files() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Concatenate files and print on the standard output.
 
     ```
@@ -195,7 +195,7 @@ bl_string_merge_text_files() {
 alias bl.string.translate=bl_string_translate
 bl_string_translate() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Translates a given string in a given (or automatic detected) language and
     gives a translation in given language (German by default) back. Accesses
     "http://translate.google.com" from terminal.

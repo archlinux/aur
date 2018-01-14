@@ -17,7 +17,7 @@ bl.module.import bashlink.array
 # endregion
 # region variables
 # shellcheck disable=SC2016,SC2034
-bl_arguments__doc__='
+bl_arguments__documentation__='
     The arguments module provides an argument parser that can be used in
     functions and scripts.
 
@@ -53,7 +53,7 @@ bl_arguments_new=()
 # region functions
 alias bl.arguments.apply_new='set -- "${bl_arguments_new[@]}"'
 bl_arguments_apply_new() {
-    local __doc__='
+    local __documentation__='
     Call this function after you are finished with argument parsing. The
     arguments array ($@) will then contain all unparsed arguments that are
     left.
@@ -64,7 +64,7 @@ bl_arguments_apply_new() {
 alias bl.arguments.get_flag=bl_arguments_get_flag
 bl_arguments_get_flag() {
     # shellcheck disable=SC2034,SC2016
-    local __doc__='
+    local __documentation__='
     ```
     bl.arguments.get_flag flag [flag_aliases...] variable_name
     ```
@@ -109,7 +109,7 @@ bl_arguments_get_flag() {
 alias bl.arguments.get_keyword=bl_arguments_get_keyword
 bl_arguments_get_keyword() {
     # shellcheck disable=SC2034,SC2016
-    local __doc__='
+    local __documentation__='
     ```
     bl.arguments.get_keyword keyword variable_name
     ```
@@ -156,7 +156,7 @@ bl_arguments_get_keyword() {
 alias bl.arguments.get_parameter=bl_arguments_get_parameter
 bl_arguments_get_parameter() {
     # shellcheck disable=SC2034,SC2016
-    local __doc__='
+    local __documentation__='
     ```
     bl.arguments.get_parameter parameter [parameter_aliases...] variable_name
     ```
@@ -200,7 +200,7 @@ bl_arguments_get_parameter() {
 alias bl.arguments.get_positional=bl_arguments_get_positional
 bl_arguments_get_positional() {
     # shellcheck disable=SC2034,SC2016
-    local __doc__='
+    local __documentation__='
     ```
     bl.arguments.get_positional index variable_name
     ```
@@ -226,7 +226,7 @@ bl_arguments_get_positional() {
 alias bl.arguments.set=bl_arguments_set
 bl_arguments_set() {
     # shellcheck disable=SC2034,SC2016
-    local __doc__='
+    local __documentation__='
     ```
     bl.arguments.set argument1 argument2 ...
     ```
@@ -239,7 +239,7 @@ bl_arguments_set() {
 alias bl.arguments.wrapper_with_minimum_number_of_arguments=bl_arguments_wrapper_with_minimum_number_of_arguments
 bl_arguments_wrapper_with_minimum_number_of_arguments() {
     # shellcheck disable=SC1004
-    local __doc__='
+    local __documentation__='
     ```
         PROGRAM_NAME $(bl.arguments.wrapper_with_minimum_number_of_arguments \
             NUMBER_OF_DEFAULT_ARGUMENTS \
@@ -275,7 +275,7 @@ bl_arguments_wrapper_with_minimum_number_of_arguments() {
 alias bl.arguments.default_wrapper=bl_arguments_default_wrapper
 bl_arguments_default_wrapper() {
     # shellcheck disable=SC1004,SC2034
-    local __doc__='
+    local __documentation__='
     Wrapper function for
     `bl.arguments.wrapper_with_minimum_number_of_arguments` with second
     parameter is setted to `1`.

@@ -16,7 +16,7 @@ bl.module.import bashlink.logging
 # endregion
 # region functions
 # shellcheck disable=SC2034,SC2016
-bl_exception__doc__='
+bl_exception__documentation__='
     NOTE: The try block is executed in a subshell, so no outer variables can be
     assigned.
 
@@ -237,7 +237,7 @@ bl_exception_activate() {
 alias bl.exception.deactivate=bl_exception_deactivate
 bl_exception_deactivate() {
     # shellcheck disable=SC2016,2034
-    local __doc__='
+    local __documentation__='
     >>> set -o errtrace
     >>> trap '\''echo $foo'\'' ERR
     >>> bl.exception.activate

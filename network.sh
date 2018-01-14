@@ -14,7 +14,7 @@ alias bl.network.restart_network='sudo ifdown -a &>/dev/null && sudo ifup -a &>/
 alias bl.network.wlan_start=bl.network_wlan_start
 bl_network_wlan_start() {
     # shellcheck disable=SC2034
-    local __doc__='
+    local __documentation__='
     Starts wlan functionality.
 
     `bl.network.wlan_start`
@@ -26,7 +26,7 @@ bl_network_wlan_start() {
 alias bl.network.wlan_stop=bl_network_wlan_stop
 bl_network_wlan_stop() {
     # shellcheck disable=SC2034
-    local __doc__='
+    local __documentation__='
     Stops wlan functionality.
 
     `bl.network.wlan_stop`
@@ -39,7 +39,7 @@ bl_network_wlan_stop() {
 alias bl.network.wlan_restart=bl_network_wlan_restart
 bl_network_wlan_restart() {
     # shellcheck disable=SC2034
-    local __doc__='
+    local __documentation__='
     Restart wlan functionality.
 
     `bl.network.wlan_restart`

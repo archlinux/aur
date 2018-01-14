@@ -13,7 +13,7 @@
 alias bl.ssh.screen=bl_ssh_screen
 bl_ssh_screen() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Wraps the ssh client for automatically starting a screen session on
     server.
 
@@ -25,7 +25,7 @@ bl_ssh_screen() {
 alias bl.ssh.make_key=bl_ssh_make_key
 bl_ssh_make_key() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Generates a new ssh key.
 
     ```
@@ -43,7 +43,7 @@ bl_ssh_make_key() {
 alias bl.ssh.print=bl_ssh_print
 bl_ssh_print() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Prints a file via ssh. A given printable file will be sent to a given
     location via scp. The file be stored in remotes home directory with given
     name. After this procedure a remote print order will be sent.

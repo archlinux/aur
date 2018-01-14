@@ -17,7 +17,7 @@ bl.module.import bashlink.array
 bl.module.import bashlink.cli
 # endregion
 # region variables
-bl_logging__doc__='
+bl_logging__documentation__='
     The available log levels are:
     error critical warn info debug
 
@@ -95,7 +95,7 @@ bl_logging_level=$(bl.array.get_index 'critical' "${bl_logging_levels[@]}")
 alias bl.logging.plain=bl_logging_plain
 bl_logging_plain() {
     # shellcheck disable=SC2016,2034
-    local __doc__='
+    local __documentation__='
     >>> bl.logging.set_level info
     >>> bl.logging.set_commands_level debug
     >>> bl.logging.debug "not shown"
@@ -120,7 +120,7 @@ bl_logging_plain() {
 alias bl.logging.set_file_descriptors=bl_logging_set_file_descriptors
 bl_logging_set_file_descriptors() {
     # shellcheck disable=SC2016,2034
-    local __doc__='
+    local __documentation__='
     >>> local test_file="$(mktemp)"
     >>> bl.logging.plain "test_file:" >"$test_file"
     >>> bl.logging.set_file_descriptors ""
@@ -374,7 +374,7 @@ bl_logging_get_commands_level() {
 alias bl.logging.set_level=bl_logging_set_level
 bl_logging_set_level() {
     # shellcheck disable=SC2016,2034
-    local __doc__='
+    local __documentation__='
     >>> bl.logging.set_commands_level info
     >>> bl.logging.set_level info
     >>> echo $bl_logging_level
@@ -456,7 +456,7 @@ bl_logging_options_command=std
 alias bl.logging.set_log_file=bl_logging_set_log_file
 bl_logging_set_log_file() {
     # shellcheck disable=SC2016,2034
-    local __doc__='
+    local __documentation__='
     >>> local test_file="$(mktemp)"
     >>> bl.logging.plain "test_file:" >"$test_file"
     >>> bl.logging.set_log_file "$test_file"

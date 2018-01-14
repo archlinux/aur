@@ -18,7 +18,7 @@ bl.module.import bashlink.tools
 alias bl.dictionary.get=bl_dictionary_get
 bl_dictionary_get() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Usage: `variable=$(bl.dictionary.get dictionary_name key)`
 
     >>> bl.dictionary.get unset_map unset_value; echo $?
@@ -63,7 +63,7 @@ bl_dictionary_get() {
 alias bl.dictionary.get_keys=bl_dictionary_get_keys
 bl_dictionary_get_keys() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Get keys of a dictionary as array.
 
     Usage: `bl.dictionary.get_keys dictionary_name`
@@ -108,7 +108,7 @@ bl_dictionary_get_keys() {
 alias bl.dictionary.set=bl_dictionary_set
 bl_dictionary_set() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Usage: `bl.dictionary.set dictionary_name key value`
 
     #### Tests

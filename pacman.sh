@@ -13,7 +13,7 @@
 alias bl.pacman.show_not_maintained_by_pacman_system_files=bl_tools_show_not_maintained_by_pacman_system_files
 bl_pacman_show_not_maintained_by_pacman_system_files() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Shows all files which are not maintained by pacman on currently running
     system.
 
@@ -51,7 +51,7 @@ EOF
 alias bl.pacman.show_config_backups=bl_pacman_show_config_backups
 bl_pacman_show_config_backups() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Shows all config backups created by pacman.
 
     `bl.pacman.show_config_backups`

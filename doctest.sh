@@ -23,7 +23,7 @@ bl.module.import bashlink.tools
 # endregion
 # region variables
 # shellcheck disable=SC2034,SC2016
-bl_doctest__doc__='
+bl_doctest__documentation__='
     The doctest module implements function and module level testing via "doc
     strings".
     Tests can be run by invoking `doctest.sh file1 folder1 file2 ...`.
@@ -48,9 +48,9 @@ bl_doctest__doc__='
     [info:doctest.sh:643] Total: passed 1/1 modules in 941 ms
     ```
     A docstring can be defined for a function by defining a variable named
-    `__doc__` at the function scope.
-    On the module level, the variable name should be `<module_name>__doc__`
-    (e.g. `bl_arguments__doc__` for the example above).
+    `__documentation__` at the function scope.
+    On the module level, the variable name should be `<module_name>__documentation__`
+    (e.g. `bl_arguments__documentation__` for the example above).
     Note: The docstring needs to be defined with single quotes.
     Code contained in a module level variable named
     `<module_name>__bl_doctest_setup__` will be run once before all the Tests of
@@ -119,7 +119,7 @@ bl_doctest__doc__='
 alias bl.doctest.compare_result=bl_doctest_compare_result
 bl_doctest_compare_result() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     >>> local buffer="line 1
     >>> line 2"
     >>> local got="line 1
@@ -248,7 +248,7 @@ bl_doctest_compare_result() {
 alias bl.doctest.eval=bl_doctest_eval
 bl_doctest_eval() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     >>> local test_buffer="
     >>> echo foo
     >>> echo bar
@@ -357,7 +357,7 @@ bl_doctest_run_test() {
 alias bl.doctest.parse_docstring=bl_doctest_parse_docstring
 bl_doctest_parse_docstring() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     >>> local docstring="
     >>>     (test)block
     >>>     output block
@@ -551,9 +551,9 @@ bl_doctest_parse_docstring() {
         text_buffer="$(head --lines=-1 <<< "$text_buffer" )"
     eval_buffers
 }
-bl_doctest_doc_identifier=__doc__
-bl_doctest_doc_regex="/__doc__='/,/';$/p"
-bl_doctest_doc_regex_one_line="__doc__='.*';$"
+bl_doctest_doc_identifier=__documentation__
+bl_doctest_doc_regex="/__documentation__='/,/';$/p"
+bl_doctest_doc_regex_one_line="__documentation__='.*';$"
 alias bl.doctest.get_function_docstring=bl_doctest_get_function_docstring
 bl_doctest_get_function_docstring() {
     function="$1"
@@ -585,10 +585,43 @@ bl_doctest_print_declaration_warning() {
     done
 }
 bl_doctest_exception_active=false
-alias bl_doctest_test_module=bl.doctest.test_module
-bl_doctest_test_module() {
+alias bl_doctest_test=bl.doctest.test
+bl_doctest_test() {
+    # TODO refactor!!
+    module_reference="$1"
+    local result="$(bl.module.resolve "$module_reference" true)"
+    local file_path="$(echo "$result" | sed --regexp-extended 's:^(.+)/[^/]+$:\1:')"
+    local module_name="$(echo "$result" | sed --regexp-extended 's:^.*/([^/]+)$:\1:')"
+    local scope_name="$(bl.module.rewrite_scope_name "$module_name" | sed --regexp-extended 's:\.:_:g')"
+    if [[ -d "$file_path" ]]; then
+        local sub_file_path
+        for sub_file_path in "${file_path}"/*; do
+            local excluded=false
+            local excluded_name
+            for excluded_name in "${bl_module_directory_names_to_ignore[@]}"; do
+                if [[ -d "$sub_file_path" ]] && [ "$excluded_name" = "$(basename "$sub_file_path")" ]; then
+                    excluded=true
+                    break
+                fi
+            done
+            if ! $excluded; then
+                for excluded_name in "${bl_module_file_names_to_ignore[@]}"; do
+                    if [[ -f "$sub_file_path" ]] && [ "$excluded_name" = "$(basename "$sub_file_path")" ]; then
+                        excluded=true
+                        break
+                    fi
+                done
+            fi
+            if ! $excluded; then
+                local name="$(bl.module.remove_known_file_extension \
+                    "$(echo "$sub_file_path" | sed --regexp-extended \
+                        "s:${scope_name}/([^/]+):${scope_name}.\1:")")"
+                bl.doctest.test "$name"
+            fi
+        done
+        return 0
+    fi
     (
-    module=$1
     bl.module.import "$module" "$bl_doctest_supress_declaration"
     bl_doctest_module_under_test="$(bl.path.convert_to_absolute "$module")"
     declared_functions="$module_declared_function_names_after_source"
@@ -602,7 +635,7 @@ bl_doctest_test_module() {
     local success=0
     bl.time.start
     # module level tests
-    test_identifier="${module//[^[:alnum:]_]/_}"__doc__
+    test_identifier="${module//[^[:alnum:]_]/_}"__documentation__
     docstring="${!test_identifier}"
     if ! [ -z "$docstring" ]; then
         let "total++"
@@ -610,7 +643,7 @@ bl_doctest_test_module() {
     fi
     # function level tests
     # TODO detect and warn docstrings with double quotes
-    test_identifier=__doc__
+    test_identifier=__documentation__
     for fun in $declared_functions; do
         # shellcheck disable=SC2089
         docstring="$(bl.doctest.get_function_docstring "$fun")"
@@ -631,7 +664,7 @@ bl_doctest_test_module() {
 alias bl.doctest.parse_arguments=bl_doctest_parse_arguments
 bl_doctest_parse_arguments() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
         +bl.documentation.exclude
         >>> bl.doctest.parse_arguments non_existing_module
         >>> echo $?
@@ -645,7 +678,7 @@ bl_doctest_parse_arguments() {
     local filename module directory verbose help
     bl.arguments.set "$@"
     bl.arguments.get_flag --help -h help
-    $help && bl.documentation.print_docstring "$bl_doctest__doc__" && return 0
+    $help && bl.documentation.print_docstring "$bl_doctest__documentation__" && return 0
     bl.arguments.get_flag --side-by-side bl_doctest_use_side_by_side_output
     # do not warn about unprefixed names
     bl.arguments.get_flag --no-check-namespace bl_doctest_supress_declaration
@@ -661,13 +694,6 @@ bl_doctest_parse_arguments() {
     else
         bl.logging.set_level info
     fi
-    test_directory() {
-        directory="$(bl.path.convert_to_absolute "$1")"
-        for filename in "$directory"/*.sh; do
-            let "total++"
-            bl.doctest.test_module "$(bl.path.convert_to_absolute "$filename")" &
-        done
-    }
     bl.time.start
     local total=0
     local success=0
@@ -677,7 +703,7 @@ bl_doctest_parse_arguments() {
         for filename in "$@"; do
             if [ -f "$filename" ]; then
                 let "total++"
-                bl.doctest.test_module "$(bl.path.convert_to_absolute "$filename")" &
+                bl.doctest.test "$(bl.path.convert_to_absolute "$filename")" &
             elif [ -d "$filename" ]; then
                 bl.doctest.test_directory "$filename"
             else

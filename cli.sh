@@ -16,7 +16,7 @@ bl.module.import bashlink.tools
 # endregion
 # region variables
 # shellcheck disable=SC2034
-bl_cli__doc__='
+bl_cli__documentation__='
     This module provides variables for printing colorful and unicode glyphs.
     The Terminal features are detected automatically but can also be
     enabled/disabled manually.
@@ -32,7 +32,7 @@ bl_cli_unicode_enabled=false
 alias bl.cli.disable_color=bl_cli_disable_color
 bl_cli_disable_color() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
         Disables color output explicitly.
 
         >>> bl.cli.enable_color
@@ -79,7 +79,7 @@ bl_cli_disable_color() {
 alias bl.cli.enable_color=bl_cli_enable_color
 bl_cli_enable_color() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
         Enables color output explicitly.
 
         >>> bl.cli.disable_color
@@ -127,7 +127,7 @@ bl_cli_enable_color() {
 alias bl.cli.disable_unicode_glyphs=bl_cli_disable_unicode_glyphs
 bl_cli_disable_unicode_glyphs() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
         Disables unicode glyphs explicitly.
 
         >>> bl.cli.enable_unicode_glyphs
@@ -158,7 +158,7 @@ bl_cli_disable_unicode_glyphs() {
 alias bl.cli.enable_unicode_glyphs=bl_cli_enable_unicode_glyphs
 bl_cli_enable_unicode_glyphs() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
         Enables unicode glyphs explicitly.
 
         >>> bl.cli.disable_unicode_glyphs

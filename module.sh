@@ -27,7 +27,7 @@ bl_module_declared_function_names_after_source_file_name=''
 bl_module_declared_function_names_before_source_file_path=''
 bl_module_declared_names_after_source=''
 bl_module_declared_names_before_source_file_path=''
-bl_module_directory_names_to_ignore=(node_modules)
+bl_module_directory_names_to_ignore=(apiDocumentation documentation node_modules)
 bl_module_file_names_to_ignore=(package.json package-lock.json PKGBUILD readme.md)
 bl_module_import_level=0
 bl_module_imported=("$(bl.path.convert_to_absolute "${BASH_SOURCE[0]}")" "$(bl.path.convert_to_absolute "${BASH_SOURCE[1]}")" "$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[0]}")/path.sh")")
@@ -36,10 +36,19 @@ bl_module_prevent_namespace_check=false
 bl_module_scope_rewrites=('^bashlink([._][a-zA-Z_-]+)$/bl\1/')
 # endregion
 # region functions
+alias bl.module.determine_aliases=bl_module_determine_aliases
+bl_module_determine_aliases() {
+    # shellcheck disable=SC2016,2034
+    local __documentation__='
+    Returns all defined aliases in the current scope.
+    '
+    alias | grep '^alias' \
+        | cut --delimiter ' ' --fields 2 - | cut --delimiter '=' --fields 1
+}
 alias bl.module.determine_declared_names=bl_module_determine_declared_names
 bl_module_determine_declared_names() {
     # shellcheck disable=SC2016,2034
-    local __doc__='
+    local __documentation__='
     Return all declared variables and function in the current scope.
 
     `declarations="$(bl.module.determine_declared_names)"`
@@ -53,19 +62,11 @@ bl_module_determine_declared_names() {
             cut --delimiter '=' --fields 1
     } | sort --unique
 }
-alias bl.module.determine_aliases=bl_module_determine_aliases
-bl_module_determine_aliases() {
-    # shellcheck disable=SC2016,2034
-    local __doc__='
-    Returns all defined aliases in the current scope.
-    '
-    alias | grep '^alias' \
-        | cut --delimiter ' ' --fields 2 - | cut --delimiter '=' --fields 1
-}
+
 alias bl.module.log=bl_module_log
 bl_module_log() {
     # shellcheck disable=SC2016,2034
-    local __doc__='
+    local __documentation__='
     Logs arbitrary strings with given level.
     '
     if hash bl.logging.log &>/dev/null; then
@@ -87,10 +88,26 @@ bl_module_import_raw() {
         return 1
     bl_module_import_level=$((bl_module_import_level-1))
 }
+alias bl.module.is_loaded=bl_module_is_loaded
+bl_module_is_loaded() {
+    local caller_file_path="${BASH_SOURCE[1]}"
+    if (( $# == 2 )); then
+        caller_file_path="$2"
+    fi
+    local file_path="$(bl.module.resolve "$1" "$caller_file_path")"
+    # Check if module already loaded.
+    local loaded_module
+    for loaded_module in "${bl_module_imported[@]}"; do
+        if [[ "$loaded_module" == "$file_path" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
 alias bl.module.import_with_namespace_check=bl_module_import_with_namespace_check
 bl_module_import_with_namespace_check() {
     # shellcheck disable=SC2016,2034
-    local __doc__='
+    local __documentation__='
     Sources a script and checks variable definitions before and after sourcing.
     '
     local file_path="$1"
@@ -100,6 +117,7 @@ bl_module_import_with_namespace_check() {
         bl_module_declared_function_names_before_source_file_path="$(mktemp \
             --suffix=bashlink-module-declared-function-names-before-source)"
     fi
+    bl_module_declared_function_names_after_source=''
     local declared_names_after_source_file_path="$(mktemp \
         --suffix=bashlink-module-declared-names-after-source)"
     # NOTE: All variables which are declared after "determine_declared_names"
@@ -195,7 +213,7 @@ bl_module_import_with_namespace_check() {
 alias bl.module.resolve=bl_module_resolve
 bl_module_resolve() {
     # shellcheck disable=SC2016,2034
-    local __doc__='
+    local __documentation__='
     IMPORTANT: Do not use "bl.module.import" inside functions -> aliases do not work
     TODO: explain this in more detail
     >>> (
@@ -310,22 +328,6 @@ bl_module_resolve() {
         echo "$(bl.path.convert_to_absolute "$file_path")"
     fi
 }
-alias bl.module.is_loaded=bl_module_is_loaded
-bl_module_is_loaded() {
-    local caller_file_path="${BASH_SOURCE[1]}"
-    if (( $# == 2 )); then
-        caller_file_path="$2"
-    fi
-    local file_path="$(bl.module.resolve "$1" "$caller_file_path")"
-    # Check if module already loaded.
-    local loaded_module
-    for loaded_module in "${bl_module_imported[@]}"; do
-        if [[ "$loaded_module" == "$file_path" ]]; then
-            return 0
-        fi
-    done
-    return 1
-}
 alias bl.module.rewrite_scope_name=bl_module_rewrite_scope_name
 bl_module_rewrite_scope_name() {
     local resolved_scope_name="$1"
@@ -334,6 +336,19 @@ bl_module_rewrite_scope_name() {
             sed --regexp-extended "s/$rewrite")"
     done
     echo "$resolved_scope_name"
+}
+alias bl.module.remove_known_file_extension=bl_module_remove_known_file_extension
+bl_module_remove_known_file_extension() {
+    local name="$1"
+    local extension
+    for extension in "${bl_module_known_extensions[@]}"; do
+        local result="${name%$extension}"
+        if [[ "$name" != "$result" ]]; then
+            echo "$result"
+            return 0
+        fi
+    done
+    echo "$1"
 }
 alias bl.module.import_without_namespace_check=bl_module_import_without_namespace_check
 bl_module_import_without_namespace_check() {
@@ -395,8 +410,7 @@ bl_module_import() {
             if $bl_module_prevent_namespace_check; then
                 bl.module.import_raw "$file_path"
             else
-                # TODO avoid assumption about ".sh".
-                scope_name="${scope_name%.sh}"
+                scope_name="$(bl.module.remove_known_file_extension "$scope_name")"
                 bl.module.import_with_namespace_check \
                     "$file_path" \
                     "$(bl.module.rewrite_scope_name "$scope_name")" \

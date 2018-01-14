@@ -34,7 +34,7 @@ bl_changeroot_kernel_api_locations=(
 alias bl.changeroot=bl_changeroot
 bl_changeroot() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     This function performs a linux change root if needed and provides all
     kernel api filesystems in target root by using a change root interface
     with minimal needed rights.
@@ -53,7 +53,7 @@ bl_changeroot() {
 alias bl.changeroot.with_fake_fallback=bl_changeroot_with_fake_fallback
 bl_changeroot_with_fake_fallback() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Perform the available change root program wich needs at least rights.
 
     `bl_changeroot_with_fake_fallback /new_root /usr/bin/env bash some arguments`
@@ -68,7 +68,7 @@ bl_changeroot_with_fake_fallback() {
 alias bl.changeroot.with_kernel_api=bl_changeroot_with_kernel_api
 bl_changeroot_with_kernel_api() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Performs a change root by mounting needed host locations in change root
     environment.
 

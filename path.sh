@@ -13,7 +13,7 @@
 alias bl.path.run_in_programs_location=bl_path_run_in_programs_location
 bl_path_run_in_programs_location() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Changes current working directory to given program path and runs the
     program.
 
@@ -31,7 +31,7 @@ bl_path_run_in_programs_location() {
 alias bl.path.convert_to_absolute=bl_path_convert_to_absolute
 bl_path_convert_to_absolute() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Converts given path into an absolute one.
 
     >>> bl.path.convert_to_absolute ./
@@ -49,7 +49,7 @@ bl_path_convert_to_absolute() {
 alias bl.path.convert_to_relative=bl_path_convert_to_relative
 bl_path_convert_to_relative() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Computes relative path from first given argument to second one.
 
     >>> bl.path.convert_to_relative /A/B/C /A
@@ -117,7 +117,7 @@ bl_path_convert_to_relative() {
 alias bl.path.open=bl_path_open
 bl_path_open() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Opens a given path with a useful program.
 
     ```
@@ -139,7 +139,7 @@ bl_path_open() {
 alias bl.path.unpack=bl_path_unpack
 bl_path_unpack() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Unpack archives in various formats.
 
     `unpack path/to/archiv.zip`
@@ -191,7 +191,7 @@ bl_path_unpack() {
 alias bl.path.pack=bl_path_pack
 bl_path_pack() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Packs archives.
 
     ```

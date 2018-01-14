@@ -13,7 +13,7 @@
 alias bl.array.filter=bl_array_filter
 bl_array_filter() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Filters values from given array by given regular expression.
 
     >>> local a=(one two three wolf)
@@ -31,7 +31,7 @@ bl_array_filter() {
 alias bl.array.get_index=bl_array_get_index
 bl_array_get_index() {
     # shellcheck disable=SC2016
-    local __doc__='
+    local __documentation__='
     Get index of value in an array
 
     >>> local a=(one two three)
@@ -61,7 +61,7 @@ bl_array_get_index() {
 alias bl.array.slice=bl_array_slice
 bl_array_slice() {
     # shellcheck disable=SC2016,SC2034
-    local __doc__='
+    local __documentation__='
     Returns a slice of an array (similar to Python).
 
     From the Python documentation:

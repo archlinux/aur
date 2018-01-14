@@ -1,7 +1,7 @@
 pkgbase = bash-link
 	pkgdesc = a high reliable bash library
-	pkgver = 1.0.19
-	pkgrel = 17
+	pkgver = 1.0.20
+	pkgrel = 18
 	url = http://torben.website/bashlink
 	arch = any
 	license = CC-BY-3.0
