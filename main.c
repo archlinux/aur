@@ -61,6 +61,7 @@ printColorAt(GdkDrawable *drawable, gint x, gint y)
 			(color >> 0x00) & 0xFF,
 			color);
 	}
+	fflush(stdout);
 	gdk_image_destroy(pixel);
 }
 
