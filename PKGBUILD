@@ -4,7 +4,7 @@
 
 pkgname=nrpe
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('x86_64')
 license=('GPL')
@@ -14,8 +14,10 @@ makedepends=('procps-ng')
 install=$pkgname.install
 backup=('etc/nrpe/nrpe.cfg' 'etc/xinetd.d/nrpe')
 url="https://github.com/NagiosEnterprises/nrpe"
-source=(https://github.com/NagiosEnterprises/nrpe/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('8997e195fea93cdceb8c7ed8ac1d43bc')
+source=(https://github.com/NagiosEnterprises/nrpe/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz
+        nrpe.sysusers)
+md5sums=('8997e195fea93cdceb8c7ed8ac1d43bc'
+         '079d1f8c06598303be95151a8985927b')
 
 build() {
   cd $pkgname-$pkgver
@@ -46,6 +48,7 @@ package() {
   install -Dm644 startup/default-socket "$pkgdir"/usr/lib/systemd/system/nrpe.socket
   install -Dm644 startup/default-xinetd "$pkgdir"/etc/xinetd.d/nrpe
   install -Dm644 startup/tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/nrpe.conf
+  install -Dm644 "$srcdir"/nrpe.sysusers "$pkgdir"/usr/lib/sysusers.d/nrpe.conf
 
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
   install -Dm644 README.SSL.md "$pkgdir"/usr/share/doc/$pkgname/README.SSL.md
@@ -53,7 +56,7 @@ package() {
   install -Dm644 LEGAL "$pkgdir"/usr/share/licenses/$pkgname/LEGAL
 
   # FS#52873
-  sed -i 's/=31$/=nrpe/g' "$pkgdir"/etc/nrpe/nrpe.cfg
+  sed -i 's/=31$/=nrpe/g' "$pkgdir"/etc/nrpe/nrpe.cfg "$pkgdir"/usr/lib/systemd/system/nrpe.service
 
   # Tidy up
   chmod 755 "$pkgdir"/usr/lib/monitoring-plugins
