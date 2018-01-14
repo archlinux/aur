@@ -89,9 +89,9 @@ bl_tools_is_main() {
     local __doc__='
     Returns true if current script is being executed.
 
-    TODO Stand
-    >>> # NOTE: This test passes because "is_main" is called by "doctest.sh"
-    >>> # which is being executed.
+    NOTE: This test passes because `bl.tools.is_main` is called by "doctest.sh"
+    which is being executed.
+
     >>> bl.tools.is_main && echo yes
     yes
     '
@@ -116,11 +116,18 @@ bl_tools_run_with_appended_shebang() {
     local __doc__='
     This function reads and returns the shebang from given file if exist.
 
-    # /usr/bin/env python -O /path/to/script.py
-    >>> bl.tools.run_with_appended_shebang -O -- /path/to/script.py
-    ...
-    # /usr/bin/env python -O /path/to/script.py argument1 argument2
-    >>> bl.tools.run_with_appended_shebang -O -- /path/to/script.py argument1 argument2
+    ```
+        /usr/bin/env python -O /path/to/script.py
+
+        bl.tools.run_with_appended_shebang -O -- /path/to/script.py
+    ```
+    ```
+        /usr/bin/env python -O /path/to/script.py argument1 argument2
+
+        bl.tools.run_with_appended_shebang -O -- \
+            /path/to/script.py \
+            argument1 \
+            argument2
     ...
     '
     local shebangArguments=''
@@ -159,12 +166,12 @@ bl_tools_run_with_appended_shebang() {
 }
 alias bl.tools.make_single_executbale=bl_tools_make_single_executable
 bl_tools_make_single_executable() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Creates a bsd and virtually posix shell compatible single executable file
     from an application directory.
 
-    >>> bl.tools.make_single_executable /applicationDirectory startFile
-    ...
+    `bl.tools.make_single_executable /applicationDirectory startFile`
     '
     if [[ ! "$1" ]]; then
         echo "Usage: $0 <DIRECTOTY_PATH> [EXECUTABLE_FILE_NAME] [RELATIVE_START_FILE_PATH]"
@@ -198,11 +205,18 @@ EOF
 }
 alias bl.tools.send_e_mail=bl_tools_send_e_mail
 bl_tools_send_e_mail() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Sends an email.
 
-    >>> bl.tools.send_e_mail subject content address
-    >>> bl.tools.send_e_mail subject content address "Sun, 2 Feb 1986 14:23:56 +0100"
+    ```
+        bl.tools.send_e_mail subject content address
+        bl.tools.send_e_mail \
+            subject \
+            content \
+            address \
+            "Sun, 2 Feb 1986 14:23:56 +0100"
+    ```
     '
     local eMailAddress="$ILU_ALTERNATE_USER_EMAIL_ADDRESS"
     if [ "$3" ]; then
@@ -226,11 +240,11 @@ EOF
 }
 alias bl.tools.make_openssl_pem_file=bl_tools_make_openssl_pem_file
 bl_tools_make_openssl_pem_file() {
+    # shellcheck disable=SC2016,SC2034
     local __doc__='
     Creates a concatenated pem file needed for server with https support.
 
-    >>> bl.tools.make_openssl_pem_file
-    ...
+    `bl.tools.make_openssl_pem_file`
     '
     local host='localhost'
     if [[ "$1" ]]; then

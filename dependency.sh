@@ -15,23 +15,23 @@ source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.logging
 # endregion
 # region functions
-alias bl.tools.dependency_check_pkgconfig=bl_tools_dependency_check_pkgconfig
-bl_tools_dependency_check_pkgconfig() {
+alias bl.dependency.check_pkgconfig=bl_dependency_check_pkgconfig
+bl_dependency_check_pkgconfig() {
     # shellcheck disable=SC2016,SC2034
     local __doc__='
     This function check if all given libraries can be found.
 
-    >>> bl.tools.dependency_check_shared_library libc.so; echo $?
+    >>> bl.dependency.check_shared_library libc.so; echo $?
     0
-    >>> bl.tools.dependency_check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
+    >>> bl.dependency.check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
     2
-    >>> bl.tools.dependency_check_shared_library __not_existing__ 1>/dev/null; echo $?
+    >>> bl.dependency.check_shared_library __not_existing__ 1>/dev/null; echo $?
     2
     '
     local return_code=0
     local library
 
-    if ! bl.tools.dependency_check pkg-config &>/dev/null; then
+    if ! bl.dependency.check pkg-config &>/dev/null; then
         bl.logging.critical 'Missing dependency "pkg-config" to check for packages.'
         return 1
     fi
@@ -43,23 +43,23 @@ bl_tools_dependency_check_pkgconfig() {
     done
     return $return_code
 }
-alias bl.tools.dependency_check_shared_library=bl_tools_dependency_check_shared_library
-bl_tools_dependency_check_shared_library() {
+alias bl.dependency.check_shared_library=bl_dependency_check_shared_library
+bl_dependency_check_shared_library() {
     # shellcheck disable=SC2016,SC2034
     local __doc__='
     This function check if all given shared libraries can be found.
 
-    >>> bl.tools.dependency_check_shared_library libc.so; echo $?
+    >>> bl.dependency.check_shared_library libc.so; echo $?
     0
-    >>> bl.tools.dependency_check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
+    >>> bl.dependency.check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
     2
-    >>> bl.tools.dependency_check_shared_library __not_existing__ 1>/dev/null; echo $?
+    >>> bl.dependency.check_shared_library __not_existing__ 1>/dev/null; echo $?
     2
     '
     local return_code=0
     local pattern
 
-    if ! bl.tools.dependency_check ldconfig &>/dev/null; then
+    if ! bl.dependency.check ldconfig &>/dev/null; then
         bl.logging.critical 'Missing dependency "ldconfig" to check for shared libraries.'
         return 1
     fi
@@ -73,25 +73,24 @@ bl_tools_dependency_check_shared_library() {
     done
     return $return_code
 }
-alias bl.tools.dependency_check=bl_tools_dependency_check
-bl_tools_dependency_check() {
+alias bl.dependency.check=bl_dependency_check
+bl_dependency_check() {
     # shellcheck disable=SC2016,SC2034
     local __doc__='
     This function check if all given dependencies are present.
 
-    >>> bl.tools.dependency_check mkdir ls; echo $?
+    >>> bl.dependency.check mkdir ls; echo $?
     0
-    >>> bl.tools.dependency_check mkdir __not_existing__ 1>/dev/null; echo $?
+    >>> bl.dependency.check mkdir __not_existing__ 1>/dev/null; echo $?
     2
-    >>> bl.tools.dependency_check __not_existing__ 1>/dev/null; echo $?
+    >>> bl.dependency.check __not_existing__ 1>/dev/null; echo $?
     2
-    >>> bl.tools.dependency_check "ls __not_existing__"; echo $?
+    >>> bl.dependency.check "ls __not_existing__"; echo $?
     __not_existing__
     2
     '
     local return_code=0
     local dependency
-
     if ! hash &>/dev/null; then
         bl.logging.critical 'Missing dependency "hash" to check for available executables.'
         return 1

@@ -16,7 +16,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.array
 # endregion
 # region variables
-# shellcheck disable=SC2034,SC2016
+# shellcheck disable=SC2016,SC2034
 bl_arguments__doc__='
     The arguments module provides an argument parser that can be used in
     functions and scripts.

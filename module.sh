@@ -139,7 +139,7 @@ bl_module_import_with_namespace_check() {
         grep -e "^>" | sed 's/^> //'
     )" | sed 's/[0-9]*:> //g')"
     for name in $new_declared_names; do
-        if ! [[ $name =~ ^${resolved_scope_name}[_A-Z]* ]] || ! [[ $name =~ ^${alternate_resolved_scope_name//\./\\\\./}[.A-Z]* ]]; then
+        if ! [[ $name =~ ^${resolved_scope_name}[_A-Z]* || $name =~ ^${alternate_resolved_scope_name//\./\\./}[_A-Z]* ]]; then
             local excluded=false
             local excluded_pattern
             for excluded_pattern in "${bl_module_allowed_scope_names[@]}"; do
@@ -161,9 +161,8 @@ bl_module_import_with_namespace_check() {
                     warn \
                     "Module \"$scope_name\" introduces a global" \
                     "unprefixed name: \"$name\". Maybe it should be" \
-                    "prefixed with \"${resolved_scope_name}.\" or" \
-                    "\"$(echo "$resolved_scope_name" | \
-                        sed --regexp-extended 's/\./_/g')_\"." \
+                    "prefixed with \"${resolved_scope_name}\" or" \
+                    "\"$alternate_resolved_scope_name\"." \
                     1>&2
             fi
         fi
@@ -327,6 +326,15 @@ bl_module_is_loaded() {
     done
     return 1
 }
+alias bl.module.rewrite_scope_name=bl_module_rewrite_scope_name
+bl_module_rewrite_scope_name() {
+    local resolved_scope_name="$1"
+    for rewrite in "${bl_module_scope_rewrites[@]}"; do
+        resolved_scope_name="$(echo "$resolved_scope_name" | \
+            sed --regexp-extended "s/$rewrite")"
+    done
+    echo "$resolved_scope_name"
+}
 alias bl.module.import_without_namespace_check=bl_module_import_without_namespace_check
 bl_module_import_without_namespace_check() {
     local caller_file_path="${BASH_SOURCE[1]}"
@@ -387,15 +395,12 @@ bl_module_import() {
             if $bl_module_prevent_namespace_check; then
                 bl.module.import_raw "$file_path"
             else
-                local rewrite
+                # TODO avoid assumption about ".sh".
                 scope_name="${scope_name%.sh}"
-                local resolved_scope_name="$scope_name"
-                for rewrite in "${bl_module_scope_rewrites[@]}"; do
-                    resolved_scope_name="$(echo "$resolved_scope_name" | \
-                        sed --regexp-extended "s/$rewrite")"
-                done
                 bl.module.import_with_namespace_check \
-                    "$file_path" "$resolved_scope_name" "$scope_name"
+                    "$file_path" \
+                    "$(bl.module.rewrite_scope_name "$scope_name")" \
+                    "$scope_name"
             fi
         fi
     else

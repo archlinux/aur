@@ -554,7 +554,7 @@ bl_doctest_parse_docstring() {
 bl_doctest_doc_identifier=__doc__
 bl_doctest_doc_regex="/__doc__='/,/';$/p"
 bl_doctest_doc_regex_one_line="__doc__='.*';$"
-alias bl.doctest_get_function_docstring=bl_doctest_get_function_docstring
+alias bl.doctest.get_function_docstring=bl_doctest_get_function_docstring
 bl_doctest_get_function_docstring() {
     function="$1"
     (

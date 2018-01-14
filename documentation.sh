@@ -30,7 +30,7 @@ bl_documentation_format_buffers() {
         echo '```bash'
         echo "$buffer"
         echo "$output_buffer"
-        # shellcheck disable=SC2016
+        # shellcheck disable 16
         echo '```'
     fi
 }
@@ -49,16 +49,17 @@ bl_documentation_generate() {
     # TODO add doc test setup function to documentation
     module=$1
     (
-    bl.import "$module" || bl.logging.warn "Failed to import module $module"
-    declared_functions="$bl_module_declared_function_names_after_import"
+    bl.module.import "$module" || bl.logging.warn "Failed to import module $module"
+    declared_function_names="$bl_module_declared_function_names_after_source"
     module="$(basename "$module")"
     module="${module%.sh}"
     declared_module_functions="$(! declare -F | cut -d' ' -f3 | grep -e "^${module%.sh}" )"
-    declared_functions="$declared_functions"$'\n'"$declared_module_functions"
-    declared_functions="$(bl.tools.unique <(echo "$declared_functions"))"
+    declared_function_names="$declared_function_names"$'\n'"$declared_module_functions"
+    declared_function_names="$(bl.tools.unique <(echo "$declared_function_names"))"
 
     # module level doc
-    test_identifier="$module"__doc__
+    local scope_name="$(bl.module.rewrite_scope_name "$(echo "$(bl.module.resolve "$module" true)" | sed --regexp-extended 's:^.*/([^/]+)$:\1:')" | sed --regexp-extended 's:\.:_:g')"
+    test_identifier="${scope_name}__doc__"
     local docstring="${!test_identifier}"
     bl.logging.plain "## Module $module"
     if [[ -z "$docstring" ]]; then
@@ -70,8 +71,7 @@ bl_documentation_generate() {
     # function level documentation
     test_identifier=__doc__
     local function
-    for function in $declared_functions;
-    do
+    for function in $declared_function_names; do
         # shellcheck disable=SC2089
         docstring="$(bl.doctest.get_function_docstring "$function")"
         if [[ -z "$docstring" ]]; then
@@ -96,7 +96,7 @@ bl_documentation_serve() {
     pushd "$server_root"
     wget --output-document index.html \
         https://cdn.rawgit.com/jandob/rebash/gh-pages/index-local.html
-    python2 -m SimpleHTTPServer 8080
+    python -m http.server
     popd
     rm -rf "$server_root"
 }
@@ -119,7 +119,7 @@ bl_documentation_parse_arguments() {
     else
         bl.logging.plain "# Generated documentation"
         for module in "$@"; do
-            bl.documentation.generate "$(bl.path.convert_to_absolute "$module")"
+            bl.documentation.generate "$module"
         done
     fi
     return 0
