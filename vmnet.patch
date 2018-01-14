@@ -1,0 +1,122 @@
+diff --git a/vmnet/Makefile b/vmnet/Makefile
+index 459846e..cd29652 100644
+--- a/vmnet/Makefile
++++ b/vmnet/Makefile
+@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+ endif
+ 
+ 
++ifdef KVERSION
++VM_UNAME = $(KVERSION)
++else
+ VM_UNAME = $(shell uname -r)
++endif
+ 
+ # Header directory for the running kernel
+ ifdef LINUXINCLUDE
+diff --git a/vmnet/bridge.c b/vmnet/bridge.c
+--- a/vmnet/bridge.c
++++ b/vmnet/bridge.c
+@@ -636,7 +636,7 @@
+ 	 unsigned long flags;
+ 	 int i;
+ 
+-	 atomic_inc(&clone->users);
++	 clone = skb_get(clone);
+ 
+ 	 clone->dev = dev;
+ 	 clone->protocol = eth_type_trans(clone, dev);
+@@ -1143,11 +1143,16 @@
+ static int
+ VNetBridgeNotify(struct notifier_block *this, // IN: callback data (bridge)
+                  u_long msg,                  // IN: type of event
+-                 void *data)                  // IN: device pertaining to event
++                 void *data)                  // IN: net_device or notifier info
+ {
+    VNetBridge *bridge = list_entry(this, VNetBridge, notifier);
+-   struct net_device *dev = (struct net_device *) data;
++   struct net_device *dev;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 11, 0)
++   dev = netdev_notifier_info_to_dev(data);
++#else
++   dev = (struct net_device *)data;
++#endif
+    switch (msg) {
+    case NETDEV_UNREGISTER:
+       LOG(2, (KERN_DEBUG "bridge-%s: interface %s is unregistering\n",
+diff --git a/vmnet/compat_netdevice.h b/vmnet/compat_netdevice.h
+--- a/vmnet/compat_netdevice.h
++++ b/vmnet/compat_netdevice.h
+@@ -337,4 +337,11 @@
+ typedef u32 compat_netdev_features_t;
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 7, 0) || \
++    (defined(RHEL_RELEASE_CODE) && RHEL_RELEASE_CODE >= 0x0704)
++#define compat_netif_trans_update(d) netif_trans_update(d)
++#else
++#define compat_netif_trans_update(d) do { (d)->trans_start = jiffies; } while (0)
++#endif
++
+ #endif /* __COMPAT_NETDEVICE_H__ */
+diff --git a/vmnet/netif.c b/vmnet/netif.c
+--- a/vmnet/netif.c
++++ b/vmnet/netif.c
+@@ -149,7 +149,7 @@
+    memcpy(deviceName, devName, sizeof deviceName);
+    NULL_TERMINATE_STRING(deviceName);
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(NET_NAME_USER)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0)
+    dev = alloc_netdev(sizeof *netIf, deviceName, NET_NAME_USER, VNetNetIfSetup);
+ #else
+    dev = alloc_netdev(sizeof *netIf, deviceName, VNetNetIfSetup);
+@@ -465,7 +465,7 @@
+    VNetSend(&netIf->port.jack, skb);
+ 
+    netIf->stats.tx_packets++;
+-   dev->trans_start = jiffies;
++   compat_netif_trans_update(dev);
+ 
+    return 0;
+ }
+diff --git a/vmnet/userif.c b/vmnet/userif.c
+index 94146f6..5298406 100644
+--- a/vmnet/userif.c
++++ b/vmnet/userif.c
+@@ -36,6 +36,9 @@
+ #include <linux/slab.h>
+ #include <linux/version.h>
+ #include <linux/wait.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
++#include <linux/taskstats_kern.h>  // For <linux/sched/signal.h> without version dependency
++#endif
+ 
+ #include <net/checksum.h>
+ #include <net/sock.h>
+@@ -112,10 +113,7 @@
+    struct page *page = NULL;
+    int retval;
+ 
+-   down_read(&current->mm->mmap_sem);
+-   retval = get_user_pages(current, current->mm, addr,
+-			   1, 1, 0, &page, NULL);
+-   up_read(&current->mm->mmap_sem);
++   retval = get_user_pages_fast(addr, 1, FOLL_WRITE, &page);
+ 
+    if (retval != 1) {
+       return NULL;
+diff --git a/vmnet/vmnetInt.h b/vmnet/vmnetInt.h
+index 0ee52ec..4e3b923 100644
+--- a/vmnet/vmnetInt.h
++++ b/vmnet/vmnetInt.h
+@@ -77,7 +77,7 @@
+ 
+ 
+ extern struct proto vmnet_proto;
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0) || defined(sk_net_refcnt)
+ #   define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
+                                                 PF_NETLINK, _pri, &vmnet_proto, 1)
+ #elif defined(VMW_NETDEV_HAS_NET)

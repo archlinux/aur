@@ -1,0 +1,15 @@
+<ConfigRoot>
+  <LocalDatastores>
+    <_length>1</_length>
+    <_type>hostd.host.LocalDatastoreEntry[]</_type>
+    <e id="0">
+      <_type>hostd.host.LocalDatastoreEntry</_type>
+      <dynamicProperty>
+        <_length>0</_length>
+        <_type>vmodl.DynamicProperty[]</_type>
+      </dynamicProperty>
+      <name>standard</name>
+      <path>/var/lib/vmware/Shared VMs</path>
+    </e>
+  </LocalDatastores>
+</ConfigRoot>
