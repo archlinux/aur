@@ -1,13 +1,13 @@
 pkgbase = gnome-usage-git
 	pkgdesc = A nice way to view information about use of system resources
-	pkgver = 0.4.5.144.g0901cb9
+	pkgver = 0.4.5.161.g6452220
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Usage
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = AGPL3
+	license = GPL3
 	makedepends = git
 	makedepends = vala
 	makedepends = gobject-introspection
