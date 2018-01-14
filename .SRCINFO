@@ -1,0 +1,13 @@
+pkgbase = emojify
+	pkgdesc = Emoji on the command line.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/mrowa44/emojify
+	arch = any
+	license = MIT
+	depends = bash
+	source = https://github.com/mrowa44/emojify/archive/2.0.0.tar.gz
+	sha512sums = 943ba0933b06fce961eeb7ce94911475ff513c4bc320753e77785433dbd68421492ed468d8fe5db4dd0b226ef2a1ef48f5588043bdda69852d4104478fdd990f
+
+pkgname = emojify
+
