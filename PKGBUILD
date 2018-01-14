@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
