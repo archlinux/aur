@@ -52,22 +52,25 @@ EOL
 package() {
     cd $_name
 
-      # Install main application
+    # Install main application
     install -d -m755 "$pkgdir/usr/bin"
     install -m755 slimDNS.py           "$pkgdir/usr/bin/slimDNS"
 
-      # Install extra tools
+    # Install extra tools
     install -m755 dnstool.py          "$pkgdir/usr/bin/dnstool"
 
-      # Install the sample configuration
+    # Install the sample configuration
     install -d -m755 "$pkgdir/etc/slimDNS/"
     install -m755 config.py           "$pkgdir/etc/slimDNS/"
 
-      # Install data files (for future reference)
+    # Install data files (for future reference)
     #install -d -m755 "$pkgdir/usr/share/slimDNS/data/"
     #cp -r data/* "$pkgdir/usr/share/slimDNS/data/"
 
-      # Install license files
+    # Install the .service file
+    install -m755 slimDNS.service     "$pkgdir/etc/systemd/system/"
+
+    # Install license files
     #install -Dm644 ../$_name/license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 
     echo
