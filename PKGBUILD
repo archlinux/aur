@@ -42,19 +42,6 @@ pkgver() {
 		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/$_gitname"
-
-	git remote add up $_upstream
-
-	if check_option "debug" "y"
-	then
-		git pull --no-edit up refs/pull/2645/head # cmake install path fix
-	fi
-
-	git pull --no-edit up refs/pull/2663/head # fix for openssl v1.1
-}
-
 build() {
 	cd "$srcdir/$_gitname"
 
