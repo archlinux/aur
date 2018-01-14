@@ -1,7 +1,7 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 
 pkgname=pogo-git
-pkgver=0.9.2.r0.g4826112
+pkgver=0.9.2.r39.g26f7fdc
 pkgrel=1
 pkgdesc='A fast and minimalist audio player - git version'
 arch=('any')

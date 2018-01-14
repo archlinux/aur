@@ -1,6 +1,6 @@
 pkgbase = pogo-git
 	pkgdesc = A fast and minimalist audio player - git version
-	pkgver = 0.9.2.r0.g4826112
+	pkgver = 0.9.2.r39.g26f7fdc
 	pkgrel = 1
 	url = https://github.com/jendrikseipp/pogo
 	arch = any
