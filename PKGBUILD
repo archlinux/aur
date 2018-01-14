@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: ThePilot <afuturepilotis at gmail dot com>
 
 pkgbase=vivacious-colors
