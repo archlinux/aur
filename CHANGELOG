@@ -1,3 +1,8 @@
+v1.3 (2018/01/14):
+- The hook trigger has been modified to match that of 90-linux.hook
+- The hook names were changed in order to execute not too early/late
+  - In particular, execution order now plays nicely together with systemd-boot-pacman-hook AUR package
+
 v1.2 (2018/01/07):
 - The hook now also creates a backup after the package upgrade
   The post hook is performed after the 90-linux.hook

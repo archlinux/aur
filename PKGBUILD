@@ -1,6 +1,6 @@
 # Maintainer: Markus Schanz <coksnuss@googlemail.com>
 pkgname=pacman-boot-backup-hook
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Pacman hook that uses rsync to backup the /boot directory prior and post to upgrades of the linux or systemd package."
 arch=('any')
@@ -10,13 +10,13 @@ depends=('rsync')
 
 source=('LICENSE'
         'backup-boot-partition'
-        'bootbackup.post.hook'
-        'bootbackup.pre.hook'
+        '50_bootbackup.hook'
+        'uu_bootbackup.hook'
 	'pacman-boot-backup.conf')
 md5sums=('ac9ac34b11dd5a53d096a734ab677479'
          '3cd8131ceb4563164ab12cc7b7d61ed6'
-         '688911051c14693e4a65e043ecb5bde4'
-         '05868b278d10a4d5b1493d8b33d34139'
+         'c5cca1a979e913f87e859436919c016c'
+         'f041fe352b3f48f08a1afad132312b94'
          'c5d37420cddc494cba64930ea54518b1')
 
 package() {
@@ -27,8 +27,8 @@ package() {
 	install -m 0644 $srcdir/pacman-boot-backup.conf $pkgdir/etc
 
 	install -m 0755 -d $pkgdir/usr/share/libalpm/hooks
-	install -m 0644 $srcdir/bootbackup.post.hook $pkgdir/usr/share/libalpm/hooks
-	install -m 0644 $srcdir/bootbackup.pre.hook $pkgdir/usr/share/libalpm/hooks
+	install -m 0644 $srcdir/50_bootbackup.hook $pkgdir/usr/share/libalpm/hooks
+	install -m 0644 $srcdir/uu_bootbackup.hook $pkgdir/usr/share/libalpm/hooks
 
 	install -m 0755 -d $pkgdir/usr/share/libalpm/scripts
 	install -m 0755 $srcdir/backup-boot-partition $pkgdir/usr/share/libalpm/scripts
