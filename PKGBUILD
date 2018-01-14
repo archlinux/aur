@@ -2,7 +2,7 @@
 
 pkgname=('conan')
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -15,7 +15,7 @@ depends=('python-pyjwt>=1.4.0'
          'python-patch=1.16'
          'python-fasteners>=0.14.1'
          'python-six>=1.10.0'
-         'python-node-semver=0.2.0'
+         'python-node-semver>=0.2.0'
          'python-bottle>=0.12.8'
          'python-distro>=1.0.2'
          'python-pluginbase>=0.5'
@@ -23,9 +23,12 @@ depends=('python-pyjwt>=1.4.0'
          'python-future=0.16.0'
          'python-pygments>=2.0'
          'python-astroid>=1.6')
-source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
+source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "arch-reqs.patch")
 
-
+ prepare() {
+  cd $pkgname-$pkgver
+  patch -Np1 -i "${srcdir}/arch-reqs.patch"
+ }
 
 build() {
   cd "$srcdir/conan-$pkgver"
@@ -40,4 +43,5 @@ package() {
   install -m755 -d "${pkgdir}/usr/share/doc/conan"
   install -m644 contributors.txt "${pkgdir}/usr/share/doc/conan/"
 }
-md5sums=('8f7fdadf70090a9edfb520b3870b50ab')
+md5sums=('8f7fdadf70090a9edfb520b3870b50ab'
+         'b364c94510b7bc7ec9f46d8adff31494')
