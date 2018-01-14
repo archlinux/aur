@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Andrew Belitsky <belitsky.a@gmail.com>
