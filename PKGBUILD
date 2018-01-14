@@ -1,16 +1,16 @@
 # Maintainer: Maciej Lechowski <mjlechowski@gmail.com>
 pkgname=xstarter
-pkgver=0.5.2
+pkgver=0.6.0
 _gitname=xstarter
 pkgrel=1
 epoch=
-pkgdesc="Terminal-based application launcher for Unix systems "
+pkgdesc="Application launcher for Linux"
 arch=('any')
 url="https://github.com/lchsk/xstarter"
 license=('GPL')
 groups=()
 depends=('ncurses' 'glib2')
-makedepends=('git' 'cmake')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=('xstarter')
@@ -20,18 +20,14 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/lchsk/xstarter/archive/v0.5.2.tar.gz)
+source=(https://github.com/lchsk/xstarter/releases/download/v0.6.0/xstarter-0.6.0-Linux.tar.gz)
 noextract=()
-md5sums=(f4f2970aff8b44c28711f65b90c7d2cf)
+md5sums=(7deacec3199c2cfaebc3dfd3d54fd96e)
 validpgpkeys=()
 
-build() {
-	cd "$srcdir/$pkgname-${pkgver}"
-	cmake .
-	make
-}
-
 package() {
-	cd "$srcdir/$pkgname-${pkgver}"
-	make DESTDIR="$pkgdir/" install
+    cd "$srcdir"
+
+    install -Dm755 "$srcdir"/xstarter-"$pkgver"-Linux/bin/xstarter "$pkgdir"/usr/bin/xstarter
+    install -Dm644 "$srcdir"/xstarter-"$pkgver"-Linux/share/man/man1/xstarter.1 "$pkgdir"/usr/share/man/man1/xstarter.1
 }
