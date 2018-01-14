@@ -8,15 +8,15 @@ url="http://www.bertold.org/sdtool/"
 license=('custom')
 depends=()
 makedepends=()
-source=("http://www.bertold.org/sdtool/$pkgname-HEAD.tar.gz" 'Makefile.patch')
-md5sums=('2ae6307d8584ee56a96615da3ad4edbd' '6a3ffb20d32f9b1f9b451a344f48c740') #autofill using updpkgsums
+source=("https://github.com/BertoldVdb/$pkgname/archive/master.zip")
+md5sums=('347e223869f61d3314b1ecf979bf8d36') #autofill using updpkgsums
 
 build() {
-  patch -p0 < $startdir/Makefile.patch
+cd $srcdir/$pkgname-master/
   make
 }
 
 package() {
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m755 $srcdir/$pkgname "${pkgdir}/usr/bin/${pkgname}"  
+  install -D -m644 $srcdir/$pkgname-master/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m755 $srcdir/$pkgname-master/$pkgname "${pkgdir}/usr/bin/${pkgname}"  
 }
