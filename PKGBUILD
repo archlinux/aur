@@ -2,7 +2,7 @@
 pkgname=sniffjoke
 pkgver=0.4.1
 pkgrel=3
-license=GPL
+license=("GPL")
 pkgdesc="An internet client running SniffJoke injects in the transmission flow some packets able to seriously disturb passive analysis like sniffing, \
 interception and low level information theft"
 arch=('i686' 'x86_64')
