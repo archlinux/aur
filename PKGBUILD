@@ -1,8 +1,8 @@
 # Maintainer: DJ Griffin <thewisenoob@gmail.com>
 
 pkgname=omp-git
-pkgver=0.0.1.r5
-pkgrel=2
+pkgver=0.0.2.r1
+pkgrel=1
 pkgdesc='GTK3-based Music Player'
 url='https://openmusicplayer.com/'
 arch=(x86_64)
@@ -28,8 +28,5 @@ build() {
 
 package() {
   cd "${pkgname}"
-  install -DCm0755 omp "${pkgdir}/usr/bin/omp"
-  install -Dm0644 Images/No_Cover.svg "${pkgdir}/usr/share/pixmaps/no_cover.png"
-  install -Dm0644 Images/Icon_Small.png "${pkgdir}/usr/share/pixmaps/omp.png"
-  install -Dm0644 ../omp.desktop "${pkgdir}/usr/share/applications/omp.desktop"
+  make install
 }
