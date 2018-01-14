@@ -1,15 +1,16 @@
 # Maintainer: Thibaud Hulin <thibaud.hulin.cl.atgmail.com>
 pkgname=visp
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A modular library for visual tracking and visual servoing"
 arch=('i686' 'x86_64')
-url="http://www.irisa.fr/lagadic/visp/"
-license=('GPL2' 'custom:ViSP Professional Edition License')
-depends=('gsl')
+url="https://visp.inria.fr"
+license=('GPL2+' 'custom:ViSP Professional Edition License')
+depends=('eigen')
 makedepends=('cmake')
 optdepends=(
 	'xorg-server: used for the image display'
+        'libx11: used for the image display'
 	'gtk2: used for the image display'
 	'libxml2: parse XML files for camera and model-based tracker parameters'
 	'ogre: for 3D Rendering'
@@ -17,22 +18,20 @@ optdepends=(
 	'soqt: interfacing coin with qt'
 	'yarp: used for robot commands'
 	'v4l-utils: tools to convert video'
-	'libfreenect: driver for Kinect'
 	'libdc1394: high level programming interface for IEEE1394 digital camera'
-	'libusb: access to usb devices'
-	'ffmpeg: to manipulate video files'
 	'libjpeg-turbo: to convert jpeg files'
 	'libpng: to convert png files'
 	'doxygen: for documentation'
-	'biclops: used for motion control device of Traclabs'
 	'zbar: used to read bar codes and QR codes'
 	'coin: used for simulation or augmented reality capabilities'
-#	'gsl: used for the SVD and LU decompositions'
+	'gsl: used for the SVD and LU decompositions'
 	'lapack: provides routines for solving systems of simultaneous linear equations'
-	'opencv>=2.2.0: provides image converters, a renderer, a feature point tracker and point matching classes'
+        'eigen: used for linear algebra (matrix inversion, SVD'
+	'opencv: provides image converters, a renderer, a feature point tracker and point matching classes'
+        'zbar: used to read QR codes'
 	'libdmtx: used to read Data Matrix bar codes')
 source=("http://gforge.inria.fr/frs/download.php/latestfile/475/${pkgname}-$pkgver.tar.gz")
-md5sums=('c5894c6304f45d2c8f9d3b513bee59b4')
+md5sums=('8964aa54c9c3b18773f10c54da042780')
 
 build() {
 	cd "${srcdir}/${pkgname}-$pkgver"
@@ -52,12 +51,13 @@ build() {
 	cat << 'EOF' > ./COPYING
 
 ViSP software is available under two different licenses:
-the ViSP GNU GPL version 2 for developing open source software under the terms of the GPL license,
+the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version
 and the ViSP Commercial Developer License for commercial use.
 
 The ViSP Professional Edition License is the appropriate version to use for the development of proprietary software.
 This version is for developers who do not want to share the source code with others,
-or otherwise do not comply with the terms of the GNU GPL version 2.0.
+or otherwise do not comply with the terms of the GNU GPL version 2.0 or later.
 In other terms, with the Professional Edition License you avoid the licensing restrictions of the GPL.
 If you are interested by this license, contact visp@inria.fr.
 EOF
@@ -68,4 +68,5 @@ package() {
 	make DESTDIR="$pkgdir/" install
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
 
