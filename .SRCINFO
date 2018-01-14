@@ -1,14 +1,13 @@
 pkgbase = slimdns-git
 	pkgdesc = A simple, light weight DNS server
-	pkgver = 0.r17.67809b0
+	pkgver = v0.r18.g67809b0
 	pkgrel = 1
 	url = https://hvornum.se
 	arch = x86_64
 	license = custom:BSD
 	license = cc-by-nc-sa-3.0
 	makedepends = python
-	depends = python-dnslib
-	optdepends = postgresql
+	depends = python-dnslib postgresql
 	provides = slimdns-git
 	provides = slimdns
 	conflicts = slimdns-git
