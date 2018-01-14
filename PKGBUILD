@@ -3,7 +3,7 @@
 
 pkgname=liferea-git
 _gitname=liferea
-pkgver=v1.12.1.r0.ga902b499
+pkgver=v1.12.1.r18.gd06f04cf
 pkgrel=1
 pkgdesc="A news aggregator for GTK, git version."
 arch=('i686' 'x86_64')
