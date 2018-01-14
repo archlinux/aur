@@ -1,14 +1,14 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
 license=('GPL2')
 depends=('alsa-lib' 'glew1.13' 'hicolor-icon-theme' 'libudev.so'
     'ncurses5-compat-libs' 'openal' 'qt5-base' 'vulkan-icd-loader' 'yaml-cpp')
-makedepends=('cmake')
+makedepends=('cmake' 'boost')
 options=('!strip')
 source=("https://github.com/RPCS3/$pkgname/archive/v$pkgver.tar.gz"
     'GSL.tar.gz::https://github.com/Microsoft/GSL/archive/fc5fce4f4f8d64fbda523d1b0d55115f5ca68774.tar.gz'
