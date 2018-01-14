@@ -1,8 +1,8 @@
 pkgbase = omp-git
 	pkgdesc = GTK3-based Music Player
-	pkgver = 0.0.2.r1
-	pkgrel = 1
-	url = https://openmusicplayer.com/
+	pkgver = 0.0.2.r2
+	pkgrel = 2
+	url = http://openmusicplayer.com/
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
@@ -17,7 +17,7 @@ pkgbase = omp-git
 	source = omp-git::git+https://github.com/TheWiseNoob/OpenMusicPlayer.git
 	source = omp.desktop
 	sha256sums = SKIP
-	sha256sums = 65398127a90eec9cb79eb11a227305ec2b9f2f3ba1265e2dd1d31934205cd38c
+	sha256sums = 6475694b67f1d76b7b4eff2c02cc360d73407937d726764c28ef49c3f70ea0fe
 
 pkgname = omp-git
 
