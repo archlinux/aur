@@ -2,7 +2,7 @@
 
 pkgname=tilix-themes-git
 pkgver=r50.9a60818
-pkgrel=3
+pkgrel=4
 pkgdesc="Tilix themes"
 arch=('any')
 url="https://github.com/storm119/Tilix-Themes"
@@ -20,9 +20,6 @@ source=('tilix-themes::git+https://github.com/storm119/Tilix-Themes.git')
 noextract=()
 md5sums=('SKIP')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
@@ -34,27 +31,10 @@ pkgver() {
 
 }
 
-#prepare() {
-#	cd "$srcdir/${pkgname%-git}"
-#	patch -p1 -i "$srcdir/${pkgname%-git}.patch"
-#}
-
-#build() {
-#	cd "$srcdir/${pkgname%-git}"
-#	./autogen.sh
-#	./configure --prefix=/usr
-#	make
-#}
-
-#check() {
-#	cd "$srcdir/${pkgname%-git}"
-#	make -k check
-#}
-
 package() {
         install -d "$pkgdir/usr/share/tilix/schemes"
         cd "$srcdir/${pkgname%-git}"
         rm Themes-2/monokai.json #avoid conflict existing one
-        install Themes/*.json "$pkgdir/usr/share/tilix/schemes/"
-        install Themes-2/*.json "$pkgdir/usr/share/tilix/schemes/"
+        install -m 644 Themes/*.json "$pkgdir/usr/share/tilix/schemes/"
+        install -m 644 Themes-2/*.json "$pkgdir/usr/share/tilix/schemes/"
 }
