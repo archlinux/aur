@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 # Contributor: Jason Melton <jason.melton@gmail.com>
 
