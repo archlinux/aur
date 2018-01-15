@@ -1,4 +1,5 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Tobias Grosch <grosch.tobias@googlemail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Arian <arian.sameni+bacula-client AT gmail DOT com>
 # Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 # Contributor: Matthew <pyther@pyther.net>
@@ -17,7 +18,7 @@ backup=('etc/bacula/bconsole.conf'
 	'etc/bacula/bacula-fd.conf')
 # verification fails for DSA signatures, so disabled for now...
 #validpgpkeys=('2CA9F510CA5CCAF61AB529F59E98BF3210A792AD') # Bacula Distribution Verification Key (www.bacula.org)
-source=("http://downloads.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz" #{,.sig}
+source=("https://kent.dl.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz" #{,.sig}
 	'bacula-fd.service')
 sha256sums=('a4bed458bf001889bd06bf31671b5d9908055a1d1e8113fd750ae4d326607ad8'
             '37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd')
