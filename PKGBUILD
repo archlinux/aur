@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=65.0.3321.0
+pkgver=65.0.3322.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
@@ -114,7 +114,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/edgy.patch
 )
 
 
-sha256sums=('c4938e04a8b89c7bde8dffcd7a3141dcb7e31ec2849f3159e8d61ba36d412bdb'
+sha256sums=('64b863344e76b1bdc63abc8b6e99bc7fa30f15bce51f7135a8ab9df4d2b39e82'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
