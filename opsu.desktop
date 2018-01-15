@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Opsu!
+Comment=An open source osu!-client written in Java.
+Exec=opsu
+Icon=opsu
+Terminal=false
+StartupNotify=false
+Categories=Game;ActionGame;
