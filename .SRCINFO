@@ -1,6 +1,6 @@
 pkgbase = man-pages-ja
 	pkgdesc = Man pages for Japanese
-	pkgver = 20171215
+	pkgver = 20180115
 	pkgrel = 1
 	url = https://linuxjm.osdn.jp
 	install = man-pages-ja.install
@@ -9,8 +9,8 @@ pkgbase = man-pages-ja
 	makedepends = perl
 	optdepends = mdocml: makewhatis support
 	conflicts = man-pages-ja-git
-	source = https://linuxjm.osdn.jp/man-pages-ja-20171215.tar.gz
-	md5sums = 679767d28b95a1004a43b0568629f37e
+	source = https://linuxjm.osdn.jp/man-pages-ja-20180115.tar.gz
+	md5sums = 8d36a219c75f3ca08935df8984ab7f0b
 
 pkgname = man-pages-ja
 
