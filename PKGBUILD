@@ -2,7 +2,7 @@
 
 pkgbase=linux-surfacepro3-git
 _srcname=linux
-pkgver=4.15rc6.r18.g00a5ae218d57741088
+pkgver=4.15rc7.r152.g1545dec46db3858bbc
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
