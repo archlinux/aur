@@ -3,7 +3,7 @@ Description=Duplicati
 
 [Service]
 ExecStart=/usr/bin/mono /opt/duplicati-latest/Duplicati.GUI.TrayIcon.exe --webservice-port=8200
-Restart=on-abort
+Restart=on-failure
 
 [Install]
 WantedBy=default.target

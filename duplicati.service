@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/mono /opt/duplicati-latest/Duplicati.Server.exe --webservice-port=8200
-Restart=on-abort
+Restart=on-failure
 User=duplicati
 Group=duplicati
 

@@ -5,7 +5,7 @@
 
 pkgname=duplicati2-beta
 pkgver=2.0.2.1
-pkgrel=1
+pkgrel=2
 _date=2017-08-01
 _branch=beta
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
