@@ -1,0 +1,14 @@
+pkgbase = hyperfine
+	pkgdesc = A command-line benchmarking tool
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/sharkdp/hyperfine
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = rust
+	source = https://github.com/sharkdp/hyperfine/archive/v0.2.0.tar.gz
+	sha256sums = f88ac19ff77d571225b364f5dc7b2072390a680a5d76d68c648d741ddb129042
+
+pkgname = hyperfine
+
