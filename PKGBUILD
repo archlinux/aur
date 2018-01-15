@@ -2,10 +2,10 @@
 
 pkgname=clever-tools-bin
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Clever Cloud CLI tool (binary)"
 arch=('x86_64')
-url="https://www.clever-cloud.com/doc/clever-tools/getting_started/"
+url="https://github.com/clevercloud/clever-tools"
 license=('MIT')
 
 depends=('libcurl-compat'
