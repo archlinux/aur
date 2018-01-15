@@ -1,0 +1,25 @@
+pkgbase = openslp
+	pkgdesc = Open-source implementation of Service Location Protocol
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = http://www.openslp.org
+	arch = x86_64
+	license = BSD
+	makedepends = doxygen
+	depends = bash
+	depends = openssl
+	options = !makeflags
+	backup = etc/slp.conf
+	backup = etc/slp.reg
+	backup = etc/slp.spi
+	source = https://downloads.sourceforge.net/sourceforge/openslp/openslp-2.0.0.tar.gz
+	source = openslp.service
+	source = openslp-2.0.0-null-pointer-deref.patch
+	source = openslp-2.0.0-openssl-1.1-fix.patch
+	sha256sums = 924337a2a8e5be043ebaea2a78365c7427ac6e9cee24610a0780808b2ba7579b
+	sha256sums = 8bba465806891a5df4702ab25866bd43258a6b0370b6e0941d188568ef82bdb9
+	sha256sums = da639ca50ea3e7eeb747505171bc7678a444b6755a7068b0cd294cc87f1ebdbe
+	sha256sums = bf38f7a251ff41582c17451af185a964d1ed235d0f2ff294e1d2761da17ab078
+
+pkgname = openslp
+
