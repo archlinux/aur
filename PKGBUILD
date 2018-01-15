@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-modsecurity-git
-pkgver=a2a5858
-pkgrel=4
+pkgver=c0ae166
+pkgrel=1
 
 _modname=ModSecurity-nginx
 _nginxver=1.13.7
@@ -11,6 +11,8 @@ pkgdesc='ModSecurity v3 Nginx Connector (module for mainline nginx)'
 arch=('i686' 'x86_64')
 depends=('nginx-mainline' 'libmodsecurity')
 makedepends=('git')
+conflicts=('nginx-mainline-mod-security')
+provides=('nginx-mainline-mod-security')
 url="https://github.com/SpiderLabs/ModSecurity-nginx"
 license=('GPL3')
 
