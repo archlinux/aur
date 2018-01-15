@@ -9,7 +9,7 @@ pkgdesc="Utility to play Movies on your Desktop Or ElectricSheep"
 [ "$CARCH" = "i686"   ] && ARCH=x86
 [ "$CARCH" = "x86_64" ] && ARCH=x86_64
 arch=(i686 x86_64)
-url="http://tech.shantanugoel.com/projects/linux/shantz-xwinwrap"
+url="https://shantanugoel.com/2008/09/03/shantz-xwinwrap/"
 license=(Other/Open Source)
 depends=(libxext libxrender)
 provides=('xwinwrap')
