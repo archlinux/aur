@@ -2,7 +2,7 @@
 
 pkgname='monero-wallet-qt-git'
 _monerover=0.11.1.0
-pkgver=0.11.1.0.r79.gda020fd
+pkgver=0.11.1.0
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://getmonero.org/"
