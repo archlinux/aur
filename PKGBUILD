@@ -4,10 +4,10 @@
 pkgname=dnscrypt-proxy-git
 _pkgname=dnscrypt-proxy
 pkgver=2018.01.07.2504.f71ca69
-pkgrel=1
+pkgrel=2
 pkgdesc="Is a protocol for securing communications between a client and a DNS resolver"
 arch=('i686' 'x86_64')
-url="https://github.com/DNSCrypt/dnscrypt-proxy"
+url="https://github.com/dyne/dnscrypt-proxy"
 license=('custom:ISC')
 depends=('libsodium' 'systemd' 'libtool' 'ldns' 'git')
 options=(libtool)
