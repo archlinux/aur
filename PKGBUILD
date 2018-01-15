@@ -5,8 +5,8 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=fd
-pkgver=3.01b
-pkgrel=5
+pkgver=3.01d
+pkgrel=1
 pkgdesc="Ncurses file and directory management tool"
 arch=('i686' 'x86_64')
 url="http://hp.vector.co.jp/authors/VA012337/soft/fd/"
@@ -16,8 +16,8 @@ makedepends=('sed')
 optdepends=(unzip lha p7zip tar)
 backup=("etc/$pkgname/fd2rc")
 options=(!emptydirs)
-source=(http://hp.vector.co.jp/authors/VA012337/soft/fd/FD-$pkgver.tar.gz)
-md5sums=('3c3668bef7924e689943a2cca5ff414d')
+source=(http://www.unixusers.net/src/fdclone/FD-$pkgver.tar.gz)
+sha256sums=('aa33c09d2e51c486fb428e3a17c31a1db0acc3b04083b84c4f9e6259c7ffb6da')
 
 prepare() {
   cd $srcdir/${pkgname^^}-$pkgver
