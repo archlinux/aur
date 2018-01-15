@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=barbie-seahorse-adventures
