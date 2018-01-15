@@ -1,14 +1,12 @@
 pkgbase = fool
 	pkgdesc = A powerful git terminal interface which focuses on usability.
-	pkgver = 0.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/spacekookie/fool
 	arch = i686
 	arch = x86_64
 	license = MIT
 	provides = fool
-	source = https://github.com/spacekookie/fool/archive/v0.1.tar.gz
-	sha256sums = SKIP
 
 pkgname = fool
 
