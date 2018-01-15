@@ -4,7 +4,7 @@
 # Contributor: Mario Aichinger <ichingm /at/ gmail.com>
 
 pkgname=guake-git
-pkgver=3.0.0.a5.22.gd4e9de6
+pkgver=3.0.0.7.g24839dc
 pkgrel=1
 pkgdesc="Top-down terminal for Gnome"
 arch=('i686' 'x86_64' 'armv7h')
@@ -30,5 +30,6 @@ build(){
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
+  sed -i -e 's/\/local\/lib\/python3.5\/dist-packages\/guake\/data\//\/lib\/python3.6\/site-packages\/guake\/data/g' Makefile
   make install-system INSTALL_ROOT="$pkgdir/"
 }
