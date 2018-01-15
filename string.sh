@@ -12,13 +12,14 @@
 # region functions
 alias bl.string.make_command_promt_prefix=bl_string_make_command_promt_prefix
 bl_string_make_command_promt_prefix() {
+    # NOTE: This have to be the first statement to retrieve last return code.
+    local errorNumber=$?
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
     Generates a new user prompt with useful runtime parameters.
 
     `bl.string.make_command_promt_prefix`
     '
-    local errorNumber=$?
     local systemLoadAverage=$(uptime | grep --extended-regexp --only-matching \
         '[0-9]{1,2}\.[0-9]{1,2}' | head --lines 1)
     local errorPromt="(${ILU_RED}${errorNumber}${ILU_DEFAULT_COLOR})"

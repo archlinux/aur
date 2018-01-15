@@ -636,7 +636,7 @@ bl_filesystem_repair() {
     sudo fsck -a "$target"
     return $?
 }
-alias bl.filesysten.set_maximum_user_watches=bl_filesystem_set_maximum_user_watches
+alias bl.filesystem.set_maximum_user_watches=bl_filesystem_set_maximum_user_watches
 bl_filesystem_set_maximum_user_watches() {
     # shellcheck disable=SC2016,2034
     local __documentation__='
@@ -648,7 +648,7 @@ bl_filesystem_set_maximum_user_watches() {
     echo "$1" | sudo tee /proc/sys/fs/inotify/max_user_watches
     return $?
 }
-alias bl.filesysten.overlay_location=bl_filesystem_overlay_location
+alias bl.filesystem.overlay_location=bl_filesystem_overlay_location
 bl_filesystem_overlay_location() {
     # shellcheck disable=SC2016,2034
     local __documentation__='
