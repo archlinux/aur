@@ -1,13 +1,13 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
 license=('Apache')
 groups=()
-depends=('python' 'desktop-file-utils' 'python-six' 'python-numpy' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-pillow' 'python-opengl' 'python-pyparsing' 'python-scipy' 'python-opengl-accelerate' 'wxpython-phoenix' 'fsl' 'fsleyes-widgets>=0.4.0' 'fsleyes-props>=1.4.0' 'python-wxnatpy>=0.3.0' 'python-indexed-gzip>=0.7.0')
+depends=('python' 'desktop-file-utils' 'python-six' 'python-numpy' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-pillow' 'python-opengl' 'python-pyparsing' 'python-scipy' 'python-sphinx_rtd_theme' 'python-opengl-accelerate' 'wxpython-phoenix' 'fsl' 'fsleyes-widgets>=0.4.0' 'fsleyes-props>=1.4.0' 'python-wxnatpy>=0.3.0' 'python-indexed-gzip>=0.7.0')
 makedepends=()
 provides=()
 conflicts=()
