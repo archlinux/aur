@@ -1,7 +1,7 @@
 pkgbase = rts5227-dkms
 	pkgdesc = Driver to support Realtek RTS5227/5229 SD Card Reader
 	pkgver = 1.07
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.realtek.com.tw/Downloads/downloadsView.aspx?Langid=1&PNid=15&PFid=25&Level=4&Conn=3&DownTypeID=3&GetDown=false
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = rts5227-dkms
 	source = blacklist-rts5227-dkms.conf
 	source = rts5227-dkms-suspend.sh
 	source = Makefile.patch
-	source = git+https://gist.github.com/216dac68d544d60f94df862b074781fa.git
 	md5sums = 0ecf8bea0ea3842391c68da72fe4c425
 	md5sums = SKIP
 	md5sums = 63ab60ad3295c0aed7219dbddfd50af3

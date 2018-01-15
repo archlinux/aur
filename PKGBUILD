@@ -8,7 +8,7 @@
 _pkgbase=rts5227
 pkgname=rts5227-dkms
 pkgver=1.07
-pkgrel=3
+pkgrel=4
 pkgdesc="Driver to support Realtek RTS5227/5229 SD Card Reader"
 arch=('i686' 'x86_64')
 url="http://www.realtek.com.tw/Downloads/downloadsView.aspx?Langid=1&PNid=15&PFid=25&Level=4&Conn=3&DownTypeID=3&GetDown=false"
@@ -19,8 +19,7 @@ source=("http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/pc/crc/0001-Re
 'dkms.conf'
 'blacklist-rts5227-dkms.conf'
 'rts5227-dkms-suspend.sh'
-'Makefile.patch'
-"git+https://gist.github.com/216dac68d544d60f94df862b074781fa.git")
+'Makefile.patch')
 md5sums=('0ecf8bea0ea3842391c68da72fe4c425'
          'SKIP'
          '63ab60ad3295c0aed7219dbddfd50af3'
@@ -33,9 +32,8 @@ build(){
   cd "Realtek_RTS5229_Linux_Driver_v${pkgver}"
   tar xjf "rts5229.tar.bz2"
   cd "rts5229"
-  patch -i "../../patched-RTS5227-5229/patch_linux_4.4.0.diff"
+  patch -i "../../patched-RTS5227-5229/patch_linux_4.14.0.diff"
   patch -i "../../Makefile.patch"
-  patch -i "../../216dac68d544d60f94df862b074781fa/rts5227 fix for Kernel > 4.14"
 }
 
 package(){
