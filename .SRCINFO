@@ -1,6 +1,6 @@
 pkgbase = tmux-bash-completion
 	pkgdesc = Bash completion for tmux
-	pkgver = r12.fcda450
+	pkgver = r13.847eda6
 	pkgrel = 1
 	url = https://github.com/imomaliev/tmux-bash-completion
 	arch = any

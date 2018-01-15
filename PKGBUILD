@@ -2,7 +2,7 @@
 
 pkgname=tmux-bash-completion
 pkgdesc="Bash completion for tmux"
-pkgver=r12.fcda450
+pkgver=r13.847eda6
 pkgrel=1
 arch=("any")
 url="https://github.com/imomaliev/tmux-bash-completion"
