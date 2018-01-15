@@ -1,16 +1,8 @@
-pacserve_dir=/etc/pacserve
-
-post_install(){
-  groupadd pacserve &>/dev/null
-  useradd -g pacserve -d "$pacserve_dir" -s /bin/false pacserve &>/dev/null
-}
-
 post_upgrade(){
-  getent group pacserve >/dev/null 2>&1 || groupadd pacserve &>/dev/null
-  getent passwd pacserve >/dev/null 2>&1 || useradd -g pacserve -d "$pacserve_dir" -s /bin/false pacserve &>/dev/null
-}
-
-post_remove(){
-  getent passwd pacserve >/dev/null 2>&1 || userdel pacserve
-  getent group pacserve >/dev/null 2>&1 || groupdel pacserve
+  oldver="$2"
+  if [[ $(vercmp "$oldver" 2018) -le 0 ]]
+  then
+    getent passwd pacserve >/dev/null 2>&1 || userdel pacserve
+    getent group pacserve >/dev/null 2>&1 || groupdel pacserve
+  fi
 }

@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pacserve
 pkgver=2017
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily share Pacman packages between computers. A replacement for PkgD.'
 arch=(any)
 license=(GPL)
@@ -42,6 +42,9 @@ package ()
   do
     install -Dm644 "$service_" "$pkgdir/usr/lib/systemd/system/${service_##*/}"
   done
+
+  echo 'u pacserve - "Pacserve daemon" /etc/pacserve' |
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
 
 # vim: set ts=2 sw=2 et:
