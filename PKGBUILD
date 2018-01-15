@@ -1,6 +1,6 @@
 # Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
 pkgname=jamovi-rbundle
-pkgver=2017.11.13
+pkgver=2018.01.14
 pkgrel=1
 epoch=
 pkgdesc="R Bundle for Jamovi"
