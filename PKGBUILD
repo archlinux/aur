@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc
 _srcname=linux-4.14
-_stable=4.14.12
-_patchver=4.14.13
+_stable=4.14.13
+_patchver=4.14.14
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -22,16 +22,14 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.sign"
   "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.sign"
-  'config'         # the main kernel config file
-  '60-linux.hook'  # pacman hook for depmod
-  '90-linux.hook'  # pacman hook for initramfs regeneration
-  'linux.preset'   # standard config files for mkinitcpio ramdisk
+  config         # the main kernel config file
+  60-linux.hook  # pacman hook for depmod
+  90-linux.hook  # pacman hook for initramfs regeneration
+  linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
-  0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-  0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -39,19 +37,17 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'da5d8db44b0988e4c45346899d3f5a51f8bd6c25f14e729615ca9ff9f17bdefd'
+            'ce897f467e80452f29d7a7a8809e8585ea12192a2c32e4d18578f64b043e802e'
             'SKIP'
-            '61943fd5af266b3a7881b027fc57b6b68757fbc5f028088f4560e02c0059aa55'
+            '9885e7aad2564b061daa832cd36234f997080b2dc1e059e8caea09e37429fedc'
             'SKIP'
-            '24b8cf6829dafcb2b5c76cffaae6438ad2d432f13d6551fa1c8f25e66b751ed4'
+            'edaf7bebcaf3032e3bf15353e0773e39872c73fc024ca4d23383195a13745b2e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
-            '9251c03da9d4b64591d77f490ff144d4ba514e66e74294ada541bf827306c9c4'
             '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
             '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
-            'c3d743a0e193294bc5fbae65e7ba69fd997cd8b2ded9c9a45c5151d71d9cfb95'
             'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
 
 _kernelname=${pkgbase#linux}
@@ -74,20 +70,14 @@ prepare() {
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
-  # https://bugs.archlinux.org/task/56575
-  patch -Np1 -i ../0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
-
   # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  patch -Np1 -i ../0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 
   # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-
-  # https://bugs.archlinux.org/task/56846
-  patch -Np1 -i ../0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
+  patch -Np1 -i ../0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
 
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
   cp -Tf ../config .config
 
@@ -231,6 +221,9 @@ _package-headers() {
 
   # remove files already in linux-docs package
   rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"
