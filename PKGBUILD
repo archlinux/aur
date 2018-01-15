@@ -1,6 +1,6 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 PN="pcloud"
 pkgname="pcloud-drive"
@@ -10,22 +10,28 @@ source_x86_64=("https://www.pcloud.com/pcloud") # Placeholder
 arch=('x86_64')
 url="https://www.pcloud.com"
 _api_url="https://api.pcloud.com/getpublinkdownload?code="
-_api_code="XZyIk57ZBiLffDnL0xJHp2wo5KOFmkAsKapk"
+_api_code="XZJUnp7ZhQqhvfy43uSSdzNQ7ddRB5w1gEcX"
 makedepends=('jq' 'sed')
 conflicts=('pcloud-git' 'pcloud')
 
-md5sums_x86_64=('c6f4b0d341632b8daa099e0a8d0308f1')
+md5sums_x86_64=('b5d71d94b72b4cd812ae98d223056668')
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
+
+prepare() {
+  chmod +x ${pkgname}-${pkgver}-${pkgrel}
+  ./${pkgname}-${pkgver}-${pkgrel} --appimage-extract
+  find ${srcdir}/squashfs-root/ -type d -exec chmod 755 {} \;
+}
 
 package() {
   install -d "$pkgdir"/{/usr/bin,opt}
-  cp -r "${srcdir}/usr" "${pkgdir}/opt/${PN}"
-  ln -s "/opt/${PN}/bin/${PN}" "${pkgdir}/usr/bin/${PN}"
-  install -Dm644 "${pkgdir}/opt/${PN}/share/icons/default/128x128/apps/pcloud.png" \
-                 "${pkgdir}/usr/share/pixmaps/${PN}.png"
-  install -Dm644 "${PN}.desktop" "${pkgdir}/usr/share/applications/${PN}.desktop"
+  cp -r "${srcdir}/squashfs-root/app" "${pkgdir}/opt/${PN}"
+  cp -r "${srcdir}/squashfs-root/usr" "${pkgdir}/usr"
+  ln -s "/opt/${PN}/${PN}" "${pkgdir}/usr/bin/${PN}"
+  install -Dm644 "${srcdir}/squashfs-root/${PN}.desktop" "${pkgdir}/usr/share/applications/${PN}.desktop"
   sed -i 's/AppRun/pcloud/' "${pkgdir}/usr/share/applications/${PN}.desktop"
   sed -i 's/Name=pcloud/Name=pCloud/' "${pkgdir}/usr/share/applications/${PN}.desktop"
+  chmod 755 "${pkgdir}/opt/${PN}"
 }
 
 _get_source() {
