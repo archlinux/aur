@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc='Single executable web server with Lua, Markdown, QUIC and Pongo2 support'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ optdepends=('redis: For using the Redis database backend'
             'postgresql: For using the PostgreSQL database backend')
 backup=('etc/algernon/serverconf.lua'
         'usr/lib/systemd/system/algernon.service')
-source=('git+https://github.com/xyproto/algernon#commit=20a12302518e36b151b93ce5d3203ee267b2b4bb')
+source=('git+https://github.com/xyproto/algernon#tag=1.8')
 md5sums=('SKIP')
 _gourl=github.com/xyproto/algernon
 
