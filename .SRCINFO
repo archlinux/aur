@@ -1,6 +1,6 @@
 pkgbase = caniuse-plugin-zsh-git
 	pkgdesc = A plugin for oh-my-zsh adding Can I Use... support to your terminal.
-	pkgver = r7.bb02483
+	pkgver = r8.10b823d
 	pkgrel = 1
 	url = https://github.com/r3b311i0n/caniuse.plugin.zsh
 	install = caniuse-plugin-zsh-git.install
@@ -9,6 +9,7 @@ pkgbase = caniuse-plugin-zsh-git
 	makedepends = git
 	depends = zsh
 	depends = oh-my-zsh-git
+	depends = python
 	conflicts = caniuse-plugin-zsh
 	options = !strip
 	source = git+https://github.com/r3b311i0n/caniuse.plugin.zsh.git

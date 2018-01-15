@@ -2,14 +2,15 @@
 
 _gitname=caniuse.plugin.zsh
 pkgname=caniuse-plugin-zsh-git
-pkgver=r7.bb02483
+pkgver=r8.10b823d
 pkgrel=1
 pkgdesc='A plugin for oh-my-zsh adding Can I Use... support to your terminal.'
 arch=('any')
 url="https://github.com/r3b311i0n/${_gitname}"
 license=('MIT')
 depends=('zsh' 
-         'oh-my-zsh-git')
+         'oh-my-zsh-git'
+	 'python')
 makedepends=('git')
 conflicts=('caniuse-plugin-zsh')
 options=('!strip')
