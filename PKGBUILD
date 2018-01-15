@@ -34,7 +34,7 @@ build() {
     cd ${srcdir}
     for _arch in ${_architectures}; do
         mkdir -p "${_pkgname}-build-${_arch}" && pushd "${_pkgname}-build-${_arch}"
-        ${_arch}-cmake "../${_pkgname}-${pkgver}/${_pkgname}"
+        ${_arch}-cmake "../${_pkgname}-${pkgver}"
         make
         popd
     done
