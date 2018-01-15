@@ -1,6 +1,6 @@
 # Maintainer: Wes Barnett <wes AT w barnett DOT us>
 pkgname=json-fortran
-pkgver=5.3.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="A Fortran 2008 JSON API"
 arch=(any)
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('gcc-fortran')
 makedepends=('cmake')
 source=(https://github.com/jacobwilliams/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('38840f7d8de08e5b0f402713d803470c')
+md5sums=('01f9007fb116ac32c6b8b6d79d1dddbe')
 
 prepare() {
   mkdir -p build
