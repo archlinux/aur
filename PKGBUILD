@@ -21,6 +21,6 @@ package() {
   mkdir -p "$_npmdir"
   cd "$_npmdir"
   npm install -g --user root --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" $_npmname@$_npmver
-  chmod 755 $_npmdir$_npmname
+  chmod -R 755 $_npmdir$_npmname
 }
 md5sums=('f074690c2ceacbd4e88ad2a37dfe0fa7')
