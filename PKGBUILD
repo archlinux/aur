@@ -2,18 +2,18 @@
 
 pkgname=plasma5-applets-active-window-control-git
 _pkgname=plasma5-applets-active-window-control
-_gitpkgname=plasma-applet-active-window-control
-pkgver=r125.58cceaa
+_gitpkgname=plasma-active-window-control
+pkgver=r11.6c94e5a
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Allowes advanced control of active window."
 arch=('i686' 'x86_64')
-url="https://github.com/kotelnik/$_gitpkgname"
+url="https://phabricator.kde.org/source/$_gitpkgname"
 license=('GPL')
 depends=('plasma-workspace' 'qt5-graphicaleffects')
 makedepends=('git' 'extra-cmake-modules')
 conflicts=("${_pkgname-*}" 'plasma-applet-active-window-control-git')
 provides=("${_pkgname-*}")
-source=("git+https://github.com/kotelnik/$_gitpkgname.git")
+source=("git+https://anongit.kde.org/$_gitpkgname")
 md5sums=('SKIP')
 
 pkgver() {
@@ -30,9 +30,7 @@ build() {
 
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DKDE_INSTALL_LIBDIR=lib \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+        -DCMAKE_BUILD_TYPE=Release
 }
 
 package() {
