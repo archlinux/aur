@@ -1,17 +1,17 @@
 # Maintainer: Gus deMayo <gus@thegusproject.xyz>
 
 pkgname=tunesviewer
-pkgver=1.5.4
+pkgver=2.1
 pkgrel=1
 pkgdesc="TunesViewer is a small, easy to use program to access iTunes-university media and podcasts in Linux."
-arch=('x86_64' 'i686')
+arch=('any')
 url="http://sourceforge.net/projects/tunesviewer/"
 options=('!strip')
 
-source=("http://tenet.dl.sourceforge.net/project/tunesviewer/${pkgname}_${pkgver}.deb")
-sha1sums=('258F1CF066C2BAC39292627D2BE2E8E97380FA66')
+source=("https://sourceforge.net/projects/$pkgname/files/${pkgname}_$pkgver.deb")
+sha256sums=('84dd7d5a859616bb8ef0f30050e06a7260f107706261d12f0d1cfbeca4f1c3b2')
 
-depends=("python2" "pygtk" "python2-lxml" "pywebkitgtk")
+depends=("python2" "pygtk" "python2-lxml" "python2-gobject" "python2-contextlib2")
 
 package() {
   tar xvfJ data.tar.xz
