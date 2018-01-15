@@ -1,6 +1,6 @@
 # Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
 pkgname=jasp-rbundle
-pkgver=2017.09.28
+pkgver=2018.01.14
 pkgrel=1
 pkgdesc="A bundle of R packages needed by JASP desktop"
 url="http://cran.r-project.org/"
@@ -29,4 +29,4 @@ package(){
 	#mv $pkgdir/usr/lib/JASP/R/library/RInside $pkgdir/usr/lib/R/library/
 	#mv $pkgdir/usr/lib/JASP/R/library/Rcpp $pkgdir/usr/lib/R/library/
 }	
-md5sums=('ff779a8742c48bfa73eb4c0423f79cbb')
+md5sums=('31ff4028ced10d1433d39b3b874f1928')
