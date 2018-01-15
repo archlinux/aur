@@ -2,17 +2,18 @@
 pkgname=edk2-ovmf
 pkgver=20170209
 _githash=296153c5
-_relnum=3
-pkgrel=2
-pkgdesc="EDK2 ovmf firmware from Fedora 26 rpm"
+_relnum=5
+_fedoraversion=27
+pkgrel=1
+pkgdesc="EDK2 ovmf firmware from Fedora $_fedoraversion rpm"
 arch=('any')
 url="https://fedoraproject.org/wiki/Using_UEFI_with_QEMU"
 license=('custom:BSD')
 optdepends=("qemu: To make use of edk2 ovmf firmware")
-source=("http://download.fedoraproject.org/pub/fedora/linux/releases/26/Everything/x86_64/os/Packages/e/edk2-ovmf-${pkgver}git${_githash}-${_relnum}.fc26.noarch.rpm"
-	"http://download.fedoraproject.org/pub/fedora/linux/releases/26/Everything/x86_64/os/Packages/e/edk2-ovmf-ia32-${pkgver}git${_githash}-${_relnum}.fc26.noarch.rpm")
-sha256sums=('4d270d7535111efb3183a62e918bbbe8eeea5f74dd3b23265bd2c7dd12dea5c5'
-            '82eab89a83ca5267370d3776e233fb867316c6e97292c6628be58a4c36999df8')
+source=("http://download.fedoraproject.org/pub/fedora/linux/releases/$_fedoraversion/Everything/x86_64/os/Packages/e/edk2-ovmf-${pkgver}git${_githash}-${_relnum}.fc$_fedoraversion.noarch.rpm"
+	"http://download.fedoraproject.org/pub/fedora/linux/releases/$_fedoraversion/Everything/x86_64/os/Packages/e/edk2-ovmf-ia32-${pkgver}git${_githash}-${_relnum}.fc$_fedoraversion.noarch.rpm")
+sha256sums=('914755cb33a847796a85083557b4ccde9ab4466888c505c56ecfefeb7c05602e'
+            '1c69fc078ece55438c6d1c26ae5a28485341a804260344143178a13ab401b058')
 
 package() {
 	cd "${srcdir}"
