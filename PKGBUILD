@@ -6,28 +6,27 @@ pkgbase=linux-odroid-u3-git
 pkgmain=linux-odroid
 pkgname=('linux-odroid-u3-git' 'linux-headers-odroid-u3-git')
 _kernelname=${pkgname#linux}
-_basekernel=4.13
+_basekernel=4.14.13
 pkgver=${_basekernel}
 pkgrel=1
 arch=('armv7h')
-url="http://github.com/tobiasjakobi/linux-odroid-public"
+url="http://kernel.org"
 license=('GPL2')
-groups=('customized')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'git' 'inetutils' 'bc' 'uboot-tools')
 options=('!strip')
-source=("git+https://github.com/tobiasjakobi/linux-odroid-public"
+source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${pkgver}.tar.xz"
 	'config_u3'
         'linux-odroid.preset'
         'arch-logo.ppm'
 	'uEnv-mainline.txt')
 
-md5sums=('SKIP'
-	 'c198b081c6c1756b9b299c71b5375b4b'
-	 '8b51e60c925e54b36747f36d9ae7dd37'
-	 'de302b1a6bc612f6eb95714341003ac0'
-	 '44f2b32fbb2d064a365af698e8f78739')
+md5sums=('4e8bb562f8fd33d5ef1feb0435ed2b02'
+         '9e293c7c511474aa74711afe289946f6'
+         '8b51e60c925e54b36747f36d9ae7dd37'
+         'de302b1a6bc612f6eb95714341003ac0'
+         '44f2b32fbb2d064a365af698e8f78739')
 
-_repodir=linux-odroid-public
+_repodir=linux-${pkgver}
 
 # Kernel and initrd images go here
 _bootdir=/boot
@@ -40,16 +39,18 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
+
+  cp "${srcdir}/config_u3" ${srcdir}/${_repodir}/.config
 }
 
 build_kernel_package() {
   local config=$1
 
   cd "${srcdir}/${_repodir}"
-  cat "${srcdir}/$config" > ./.config
 
   install -m644 ${startdir}/arch-logo.ppm drivers/video/logo/logo_linux_clut224.ppm
 
+  make ${MAKEFLAGS} menuconfig
   make ${MAKEFLAGS} zImage modules
   
   KARCH=arm
