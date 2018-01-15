@@ -1,17 +1,19 @@
 # Maintainer: mickael9 <mickael9 at gmail dot com>
+
 pkgname=wapiti
-pkgver=2.3.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="A vulnerability scanner for web applications. It currently search vulnerabilities like XSS, SQL and XPath injections, file inclusions, command execution, LDAP injections, CRLF injections..."
 url='http://wapiti.sourceforge.net/'
 license=(GPL)
-depends=(python2 python2-setuptools python2-requests python2-beautifulsoup3)
+depends=(python python-requests python-beautifulsoup4 python-lxml python-tld python-yaswfp python-mako python-pysocks)
 arch=(any)
 
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}/${pkgname}-${pkgver}/$pkgname-$pkgver.tar.gz)
-md5sums=('dd8b0ab120518215abf9c7b22251fd8b')
+source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('4708fa1d8159b0a5e606bdb26e1454e8df1d8bf6e11d9ad63c84e12e8edc8daa')
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    python2 setup.py install --root="$pkgdir/" --optimize=1
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py install --root="${pkgdir}/" --optimize=1
+    chmod 644 "${pkgdir}/usr/share/man/man1/wapiti.1"
 }
