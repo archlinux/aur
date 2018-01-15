@@ -1,7 +1,7 @@
 # Maintainer: Bjarno Oeyen <aur _AT_ bjarno _DOT_ be>
 
 pkgname=game-jolt-client
-pkgrel=5
+pkgrel=6
 pkgver=0.13.2
 pkgdesc="Play games. Make games. Stay indie."
 url="http://gamejolt.com/client"
@@ -13,11 +13,11 @@ makedepends=()
 backup=()
 install=''
 source=("https://n3b6p5n5.ssl.hwcdn.net/data/client/releases/v0.13.2/game-jolt-client.tar.gz" "game-jolt-client.desktop" "package.json.new" "game-jolt.png" "APPLICENSE")
-md5sums=('373310874384ade132cb449c300f9254'
-         'fe8091dddcc53d89a91857cdadc9c1ba'
-         '58402c3922fdce61dfd29c113e2496c5'
-         '7da2ee98d8647bf2843ee1033f2c5374'
-         'b0fd0e4afb5262c1c8792ad9fc671828')
+sha256sums=('c890762dd44383bb6716f698c4f624b49e4bebeabaa0c4ab6f6978e2e9ff0b88'
+            '599bec494e752969b7badf9fdd3bea3132354c28d4a5289ec4a03ea0e957f44b'
+            '7964898d5dda4a89507df2a20e762e70e31f83538bf9df1bfb1420fe6e552def'
+            '0439b7c3a514be13dc686823d86721cdd9bddefe2c447ca3081bfcd666d9557c'
+            '4a6d7bf96cc458dae22ac812180b2705de56465df3d8544cc40eae91cec04443')
 options=(!strip)
 
 prepare() {
