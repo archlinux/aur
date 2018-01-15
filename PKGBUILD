@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=tidb-git
-pkgver=1.0.0.17.gb45890ab6
+pkgver=1.1.0.alpha.429.g2550969ca
 pkgrel=1
 pkgdesc="Distributed NewSQL database compatible with MySQL protocol"
 arch=('i686' 'x86_64')
