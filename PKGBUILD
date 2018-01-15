@@ -1,7 +1,7 @@
 # Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
 pkgname=jamovi-git
 _pkgname=jamovi
-pkgver=r664.c538fa4
+pkgver=r709.202e3b2
 pkgrel=1
 pkgdesc="Open Source Software to bridge the gap between researcher and statistician"
 arch=('any')
