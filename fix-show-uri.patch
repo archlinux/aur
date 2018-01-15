@@ -1,0 +1,55 @@
+diff --git a/gg/app.py b/gg/app.py
+index 424796c..ef39601 100644
+--- a/gg/app.py
++++ b/gg/app.py
+@@ -68,8 +68,6 @@ def startup(self):
+     Binding(center, 'coords', CoordLabel, 'text')
+     center.timeout_seconds = 10 # Only update titlebar every 10 seconds
+ 
+-    screen = Gdk.Screen.get_default()
+-
+     # Toolbar bindings.
+     click_handlers = {
+         'open':
+@@ -84,16 +82,13 @@ def startup(self):
+         'about':
+             lambda *ignore: Widgets.about.run() and Widgets.about.hide(),
+         'help':
+-            lambda *ignore: Gtk.show_uri(screen,
+-                'help:gottengeography', Gdk.CURRENT_TIME),
++            self.open_help,
+         'jump':
+             self.jump_to_photo,
+         'apply':
+             self.apply_selected_photos,
+         'map_source_menu':
+-            lambda *ignore: Gtk.show_uri(
+-                screen, 'http://maps.google.com/maps?q={},{}'.format(
+-                center.latitude, center.longitude), Gdk.CURRENT_TIME),
++            self.map_source_menu,
+     }
+     for name, handler in click_handlers.items():
+         button = Widgets[name + '_button']
+@@ -210,6 +205,22 @@ class GottenGeography(Gtk.Application):
+             MapView.emit('realize')
+             MapView.center_on(photo.latitude, photo.longitude)
+ 
++    def open_help(self, *ignore):
++        screen = Gdk.Screen.get_default()
++        try:
++            Gtk.show_uri(screen, 'help:gottengeography', Gdk.CURRENT_TIME),
++        except GLib.GError:
++            pass
++
++    def map_source_menu(self, *ignore):
++        screen = Gdk.Screen.get_default()
++        lat, lon = MapView.get_center_latitude(), MapView.get_center_longitude()
++        try:
++            Gtk.show_uri(screen, 'http://maps.google.com/maps?q={},{}'.format(
++                lat, lon), Gdk.CURRENT_TIME),
++        except GLib.GError:
++            pass
++
+     def update_preview(self, chooser, image):
+         """Display photo thumbnail and geotag data in file chooser."""
+         image.set_from_stock(Gtk.STOCK_FILE, Gtk.IconSize.DIALOG)

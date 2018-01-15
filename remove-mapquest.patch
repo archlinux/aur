@@ -1,0 +1,16 @@
+diff --git a/gg/actor.py b/gg/actor.py
+index db6247e..ba0a585 100644
+--- a/gg/actor.py
++++ b/gg/actor.py
+@@ -45,11 +45,6 @@ for map_desc in [
+     'http://creativecommons.org/licenses/by-sa/2.0/',
+     'http://tile.xn--pnvkarte-m4a.de/tilegen/#Z#/#X#/#Y#.png'],
+ 
+-    ['mapquest-osm', 'MapQuest OSM', 0, 17, 256,
+-    'Map data provided by MapQuest, Open Street Map and contributors',
+-    'http://creativecommons.org/licenses/by-sa/2.0/',
+-    'http://otile1.mqcdn.com/tiles/1.0.0/osm/#Z#/#X#/#Y#.png'],
+-
+     ['mff-relief', 'Maps for Free Relief', 0, 11, 256,
+     'Map data available under GNU Free Documentation license, v1.2 or later',
+     'http://www.gnu.org/copyleft/fdl.html',
