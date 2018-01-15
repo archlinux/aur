@@ -8,7 +8,6 @@ _nginxver=1.13.7
 pkgdesc='ModSecurity v3 Nginx Connector (module for mainline nginx)'
 arch=('i686' 'x86_64')
 depends=('nginx-mainline' 'libmodsecurity')
-makedepends=('git')
 url="https://github.com/SpiderLabs/ModSecurity-nginx"
 license=('GPL3')
 
