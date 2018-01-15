@@ -3,7 +3,7 @@
 pkgname=kicad-packages3d-git
 _pkgname=kicad-packages3D
 pkgver=4e34135f
-pkgrel=1
+pkgrel=2
 pkgdesc="Official KiCad 3D model libraries for rendering and MCAD integration"
 arch=('any')
 url="https://github.com/KiCad/kicad-packages3D"
@@ -22,7 +22,7 @@ pkgver() {
 package() {
   cd "$srcdir"
 
-  mkdir -p "$pkgdir/usr/share/kicad/modules/"
+  mkdir -p "$pkgdir/usr/share/kicad/modules/packages3d"
 
-  cp -r "$srcdir/$_pkgname" "$pkgdir/usr/share/kicad/modules/packages3d"
+  cp -r "$srcdir/$_pkgname"/* "$pkgdir/usr/share/kicad/modules/packages3d/"
 }
