@@ -6,7 +6,7 @@ pkgname=logkeys-git
 _gitname="logkeys"
 pkgver=r74.5c36832
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple keylogger supporting also USB keyboards."
 license=('GPLv3')
 arch=('i686' 'x86_64')
@@ -40,7 +40,6 @@ package() {
 	cd "$_gitname/build"
 	make prefix="$pkgdir/usr" sysconfdir="$pkgdir/etc" install
 
-	rm -rf "$pkgdir/etc/logkeys-kill.sh" "$pkgdir/etc/logkeys-start.sh"
 	install -Dm0644 "$srcdir/logkeysd.conf" "$pkgdir/etc/conf.d/logkeysd"
 	install -Dm0644 "$srcdir/logkeys.service" "$pkgdir/usr/lib/systemd/system/logkeys.service"
 
