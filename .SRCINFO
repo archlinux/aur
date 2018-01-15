@@ -1,0 +1,15 @@
+pkgbase = mod_auth_cas-git
+	pkgdesc = Apache CAS Authentication Module for the JASIG/Apereo CAS Server.
+	pkgver = r350.ac7147b
+	pkgrel = 1
+	url = https://github.com/louipc/tremc
+	arch = x86_64
+	license = Apache License, Version 2.0
+	makedepends = git
+	makedepends = openssl
+	depends = apache
+	source = git+https://github.com/apereo/mod_auth_cas.git
+	md5sums = SKIP
+
+pkgname = mod_auth_cas-git
+

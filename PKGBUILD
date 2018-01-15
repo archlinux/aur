@@ -1,0 +1,35 @@
+pkgname=mod_auth_cas-git
+_gitname=${pkgname%-git}
+pkgver=r350.ac7147b
+pkgrel=1
+pkgdesc="Apache CAS Authentication Module for the JASIG/Apereo CAS Server."
+arch=('x86_64')
+url="https://github.com/louipc/tremc"
+license=('Apache License, Version 2.0')
+depends=('apache')
+makedepends=('git' 'openssl')
+source=("git+https://github.com/apereo/mod_auth_cas.git")
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$_gitname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$_gitname"
+    sed -i s/SSL_library_init/OPENSSL_init_ssl/ configure.ac configure
+}
+
+build() {
+    cd "$_gitname"
+    ./configure --prefix=/usr
+    make
+}
+
+package() {
+    cd "$_gitname"
+    make DESTDIR="$pkgdir" install
+}
+
+# vim: ts=4 sts=4 sw=4 et
