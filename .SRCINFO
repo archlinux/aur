@@ -1,0 +1,17 @@
+pkgbase = pkgbuild-introspection
+	pkgdesc = Tools for generating .SRCINFO files and PKGBUILD data extraction (mkaurball)
+	pkgver = 8
+	pkgrel = 1
+	url = https://github.com/falconindy/pkgbuild-introspection
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = pacman
+	provides = pkgbuild-introspection
+	conflicts = pkgbuild-introspection-git
+	source = https://github.com/falconindy/pkgbuild-introspection/archive/8.tar.gz
+	md5sums = 056df99fa7432387acb4295a6800cf46
+
+pkgname = pkgbuild-introspection
+
