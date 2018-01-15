@@ -1,8 +1,9 @@
-# Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
+# Maintainer: Kewl <echo kewl@blto.eu.org | tr b a>
+# Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
 
 pkgname=realvnc-vnc-server
-pkgver=6.2.0
+pkgver=6.2.1
 pkgrel=1
 pkgdesc='VNC remote desktop server software by RealVNC'
 arch=('x86_64' 'i686' 'armv7h' 'armv7' 'armv8')
@@ -15,9 +16,9 @@ conflicts=('tightvnc' 'tigervnc' 'turbovnc')
 source_x86_64=("https://www.realvnc.com/download/file/vnc.files/VNC-Server-${pkgver}-Linux-x64.deb")
 source_i686=("https://www.realvnc.com/download/file/vnc.files/VNC-Server-${pkgver}-Linux-x86.deb")
 source_armv7h=("https://www.realvnc.com/download/file/vnc.files/VNC-Server-${pkgver}-Linux-ARM.deb")
-sha1sums_x86_64=('4faca11cc0d9cf1e1fe52f94c7ec43ec7fab5e54')
-sha1sums_i686=('a61708a06c649d61b910c90e1c8dc5173a660825')
-sha1sums_armv7h=('077427852dd08a8f60109f23c2287150d2d29673')
+sha1sums_x86_64=('01fea367777ad24f91cfff58c0f4db18cc9c6907')
+sha1sums_i686=('1bdd75aff00319c9424c3eb2665513e759631126')
+sha1sums_armv7h=('e47ebc56928bfe9b12d836391c36854f93c3437d')
 options=(!strip)
 
 package() {
