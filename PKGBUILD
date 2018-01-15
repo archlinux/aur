@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nomad
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A Distributed, Highly Available, Datacenter-Aware Scheduler"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 backup=(etc/nomad/{server,client}.conf)
 source=(https://github.com/hashicorp/nomad/archive/v$pkgver/$pkgname-$pkgver.tar.gz
         nomad-{server,client}.{service,conf})
-sha256sums=('f143fa34a0bad8ede1c2880680db52aed6feb7f8fbd92294b73b6e9ccb1b0376'
+sha256sums=('312b7d89b0d03154b9c84672f013ff0d9c44dda0a73a8187d5509088fe0051c0'
             '52b0a22c3c0c72c642a8728cb48bd8797f4f6a12990e11bbb2342edcc2a9a206'
             'da475bc4aa3b1493eb62f09e7f99dcc171e8ce6d74df3da30514cfdfe72a5714'
             '4c8fb7c18c67ca20e3ee07f25cf2f0c82b66c4c173275ae8d643c91cce3c0ceb'
@@ -46,7 +46,7 @@ build() {
 	CGO_ENABLED=1 \
 		go build -ldflags '-X main.GitCommit=""' \
 		         -tags lxc \
-						 -o bin/nomad
+		         -o bin/nomad
 }
 
 package() {
