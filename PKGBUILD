@@ -37,4 +37,5 @@ build() {
 package() {
     cd "${srcdir}/build"
     make DESTDIR=${pkgdir} install
+    install -Dm644 "../${_pkgname}-${pkgver}/dlib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
