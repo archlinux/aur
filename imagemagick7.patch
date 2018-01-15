@@ -1,0 +1,13 @@
+diff --git a/img2xterm.c b/img2xterm.c
+index 329ec82..b23e3de 100644
+--- a/img2xterm.c
++++ b/img2xterm.c
+@@ -15,7 +15,7 @@
+ #include <string.h>
+ #include <limits.h>
+ #include <math.h>
+-#include <wand/MagickWand.h>
++#include <MagickWand/MagickWand.h>
+ 
+ #ifndef NO_CURSES
+ #include <term.h>
