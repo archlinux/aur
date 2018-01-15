@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python2-pymysql
-pkgver=0.7.11
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Pure Python MySQL Client"
 arch=(any)
@@ -10,6 +10,7 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/P/PyMySQL/PyMySQL-$pkgver.tar.gz")
+sha256sums=('32da4a66397077d42908e449688f2ec71c2b18892a6cd04f03ab2aa828a70f40')
 
 build() {
     cd "$srcdir/PyMySQL-$pkgver"
@@ -21,5 +22,3 @@ package() {
     python2 setup.py install -O1 --skip-build --root="$pkgdir"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-sha256sums=('56e3f5bcef6501012233620b54f6a7b8a34edc5751e85e4e3da9a0d808df5f68')
