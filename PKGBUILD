@@ -1,8 +1,8 @@
 # Maintainer: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=trenchbroom-git
-pkgver=r4813.55047553b
-pkgrel=1
+pkgver=r5063.942528c0c
+pkgrel=2
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
 arch=('i686' 'x86_64')
 url="http://kristianduske.com/trenchbroom"
