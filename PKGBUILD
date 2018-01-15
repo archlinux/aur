@@ -2,7 +2,7 @@
 
 pkgname=php-swoole
 _extname=swoole
-pkgver=1.9.23
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Event-driven asynchronous and concurrent networking engine with high performance for PHP."
 arch=("i686" "x86_64")
@@ -30,4 +30,4 @@ package() {
 	install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
 }
 
-sha256sums=('8ebee7b2fe24fb2c01fe0cabc1f45f7db14d58cf2760c32043d7613c9e6cbcb1')
+sha256sums=('a158899a128ab27545dabc50d4bc73327b56d7aea6cdcdf940c6508f24dfcea3')
