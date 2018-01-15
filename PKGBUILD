@@ -14,7 +14,8 @@ provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
 options=('!strip')
 source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.8.5" 
-	"include.patch")
+	"include.patch"
+	"sem.patch")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -28,6 +29,7 @@ prepare() {
   cd $srcdir/$_pkgname
   #Patch the R include path
   patch -p1 < $srcdir/include.patch
+  patch -p1 < $srcdir/sem.patch
   #Create separate build dir
   mkdir -p $srcdir/$_buildname
   cd $srcdir/$_buildname
@@ -60,4 +62,5 @@ package() {
   ln -s /usr/lib/JASP/jasp $pkgdir/usr/bin/JASP
 }
 md5sums=('SKIP'
-         '846d0f24ef877c895ae027aed7588bdc')
+         '846d0f24ef877c895ae027aed7588bdc'
+         'bdb0cabaf21cb7b59b75be1cd25b3ec5')

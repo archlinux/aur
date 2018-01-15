@@ -1,0 +1,14 @@
+diff --git a/JASP-Desktop/module.cpp b/JASP-Desktop/module.cpp
+index e58ab060..c96fd356 100644
+--- a/JASP-Desktop/module.cpp
++++ b/JASP-Desktop/module.cpp
+@@ -6,9 +6,7 @@ using namespace std;
+ 
+ map<QString, Module> Module::AllModules = {
+ 	{"Common", Module("Common")},
+-#ifndef __linux__
+ 	{"SEM", Module("SEM", 1)},
+-#endif
+ 	{ "ReinforcementLearning", Module("ReinforcementLearning", "Reinforcement Learning", 2, false)},
+ 	{"SummaryStats", Module("SummaryStats", "Summary Stats", 3)},
+ 	{"MetaAnalysis", Module("MetaAnalysis", "Meta Analysis", 4)},
