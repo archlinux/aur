@@ -1,15 +1,6 @@
 diff -ruN dlib-19.8/dlib/CMakeLists.txt dlib-19.8-patched/dlib/CMakeLists.txt
 --- dlib-19.8/dlib/CMakeLists.txt	2017-09-17 20:28:45.000000000 +0800
 +++ dlib-19.8-patched/dlib/CMakeLists.txt	2017-10-26 17:01:29.465982530 +0800
-@@ -146,7 +146,7 @@
-       option(DLIB_LINK_WITH_SQLITE3 ${DLIB_LINK_WITH_SQLITE3_STR} ON)
-       option(DLIB_USE_BLAS ${DLIB_USE_BLAS_STR} ON)
-       option(DLIB_USE_LAPACK ${DLIB_USE_LAPACK_STR} ON)
--      option(DLIB_USE_CUDA ${DLIB_USE_CUDA_STR} ON)
-+      option(DLIB_USE_CUDA ${DLIB_USE_CUDA_STR} OFF)
-       option(DLIB_PNG_SUPPORT ${DLIB_PNG_SUPPORT_STR} ON)
-       option(DLIB_GIF_SUPPORT ${DLIB_GIF_SUPPORT_STR} ON)
-       #option(DLIB_USE_FFTW ${DLIB_USE_FFTW_STR} ON)
 @@ -349,6 +349,7 @@
           if (PNG_FOUND AND LIBPNG_IS_GOOD)
              include_directories(${PNG_INCLUDE_DIR})
