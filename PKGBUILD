@@ -1,8 +1,8 @@
-# Maintainer: Nemanja Nedeljkovic <nemanjan00@gmail.com>
+# Maintainer: ArchStrike <team@archstrike.org>
 
 pkgname=teamsql
 pkgver=2.6.159
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Platform SQL Client"
 arch=('x86_64')
 license=()
