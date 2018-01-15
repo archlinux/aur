@@ -249,11 +249,11 @@ bl_arguments_wrapper_with_minimum_number_of_arguments() {
     ```
     Supports default arguments with a minimum number of arguments for functions
     by wrapping them.
-    Runs "subProgram" with arguments "all", "--log-level" and "warning" if not
+    Runs "sub_program" with arguments "all", "--log-level" and "warning" if not
     at least two arguments are given to "program":
 
-    >>> program() {
-    >>>     echo subProgram \
+    >>> _() {
+    >>>     echo sub_program \
     >>>         $(bl.arguments.wrapper_with_minimum_number_of_arguments 3 2 \
     >>>         all --log-level warning $@)
     >>> }
@@ -279,11 +279,11 @@ bl_arguments_default_wrapper() {
     `bl.arguments.wrapper_with_minimum_number_of_arguments` with second
     parameter is setted to `1`.
 
-    Runs "subProgram" with arguments "all", "--log-level" and "warning" if not
+    Runs "sub_program" with arguments "all", "--log-level" and "warning" if not
     at least one arguments are given to "program".
 
-    >>> program() {
-    >>>     echo subProgram $(bl.arguments.default_wrapper 3 all --log-level \
+    >>> _() {
+    >>>     echo sub_program $(bl.arguments.default_wrapper 3 all --log-level \
     >>>         warning $@)
     >>> }
     '
