@@ -1,8 +1,19 @@
 post_upgrade(){
+  echo post_upgrade "$@"
   oldver="$2"
-  if [[ $(vercmp "$oldver" 2018) -le 0 ]]
+  if [[ $(vercmp "$oldver" 2018-7) -lt 0 ]]
   then
-    getent passwd pacserve >/dev/null 2>&1 || userdel pacserve
-    getent group pacserve >/dev/null 2>&1 || groupdel pacserve
+    cat << 'MSG'
+Attempting to remove pacserve user and group created by previous version of
+Pacserve. If this fails, run the following commands as root then re-install
+the pacserve package:
+
+    systemctl stop pacserve.service
+    userdel pacserve
+    groupdel pacserve
+
+MSG
+    getent passwd pacserve >/dev/null 2>&1 && userdel pacserve
+    getent group pacserve >/dev/null 2>&1 && groupdel pacserve
   fi
 }
