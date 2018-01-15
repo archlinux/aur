@@ -2,18 +2,18 @@
 
 pkgname=wxgtk-trenchbroom
 pkgver=3.1.0
-pkgrel=2
-pkgdesc="GTK+ implementation of wxWidgets API for GUI with TrenchBroom patches."
+pkgrel=3
+pkgdesc="GTK+3 implementation of wxWidgets API for GUI with TrenchBroom patches."
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
 license=('custom:wxWindows')
 
-depends=('gtk2' 'gstreamer0.10-base' 'libsm')
-makedepends=('gstreamer0.10-base-plugins' 'gconf' 'webkitgtk2' 'glu')
-optdepends=('webkitgtk2: for webview support')
+depends=('gtk3' 'gst-plugins-base-libs' 'libsm' 'libxxf86vm' 'libnotify')
+makedepends=('gst-plugins-base' 'gconf' 'glu' 'webkit2gtk' 'libnotify' 'gtk2')
+optdepends=('webkit2gtk: for webview support')
 options=('!emptydirs')
 conflicts=('wxgtk')
-provides=('wxgtk=${pkgver}')
+provides=('wxgtk')
 
 source=(https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.0/wxWidgets-${pkgver}.tar.bz2
 		make-abicheck-non-fatal.patch
@@ -35,10 +35,11 @@ prepare() {
 
 build() {
 	cd wxWidgets-${pkgver}
-	./configure --prefix=/usr --libdir=/usr/lib --with-gtk=2 --with-opengl --enable-unicode \
-		--enable-graphics_ctx --enable-mediactrl --enable-webview --with-regex=builtin \
-		--with-libpng=sys --with-libxpm=sys --with-libjpeg=sys --with-libtiff=sys \
-		--disable-precomp-headers --disable-shared
+	./autogen.sh
+	./configure --prefix=/usr --libdir=/usr/lib --with-gtk=3 --with-opengl --enable-unicode \
+	--enable-graphics_ctx --enable-mediactrl --enable-webview --with-regex=builtin \
+	--with-libpng=sys --with-libxpm=sys --with-libjpeg=sys --with-libtiff=sys \
+	--disable-precomp-headers
 	make
 	make -C locale allmo
 }
