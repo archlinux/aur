@@ -1,0 +1,17 @@
+pkgbase = swatchbooker-git
+	pkgdesc = Colour swatch book viewer/convertor/editor
+	pkgver = latest
+	pkgrel = 1
+	url = http://www.selapa.net/swatchbooker/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-pyqt4
+	provides = swatchbooker
+	conflicts = swatchbooker
+	source = SwatchBooker::git+https://github.com/olivierberten/SwatchBooker.git
+	sha256sums = SKIP
+
+pkgname = swatchbooker-git
+
