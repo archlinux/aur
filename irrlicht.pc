@@ -1,0 +1,10 @@
+prefix=/usr
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: Irrlicht
+Description: The Irrlicht Engine
+Version: VERSION
+Requires: x11 gl xxf86vm
+Cflags: -I${includedir}
+Libs: -L${libdir} -lIrrlicht
