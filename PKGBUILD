@@ -1,5 +1,5 @@
 pkgname=openvpn-pia
-pkgver=2017.03.28.12.03.55
+pkgver=2018.01.09
 pkgrel=1
 pkgdesc="OpenVPN configuration files for Private Internet Access VPN"
 url="https://www.privateinternetaccess.com"
@@ -7,14 +7,10 @@ arch=('i686' 'x86_64')
 license=('none')
 depends=('openvpn')
 install='openvpn-pia.install'
-source=(http://www.privateinternetaccess.com/openvpn/openvpn-strong.zip
+source=(${url}/openvpn/openvpn-strong.zip
         README)
 sha512sums=('471e94d24d935129963f73294a237a74e53151ef806ad7dc94ad0c267cbfdbe96421e9a8a61183ea5e6307699824acdc78b86906436b196177c8f65b0dd14fd6'
             '5a2d03805decefbda5ed54d00ae94d0fc3c65831b4e6135fe99650d092a96aff7407aa8c4bff69fcfac6edb5bc6526112867d5d334f4511492c2d2ff8f29c1f0')
-
-pkgver() {
-    date +%Y.%m.%d.%H.%M.%S
-}
 
 prepare() {
     cd $srcdir
