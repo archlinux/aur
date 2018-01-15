@@ -1,7 +1,7 @@
 # Maintainer: Matt Harrison <matt@harrison.us.com>
 
 pkgname=screamingfrogseospider
-pkgver=8.2
+pkgver=8.3
 pkgrel=1
 pkgdesc="A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective."
 arch=('any')
@@ -13,7 +13,7 @@ source=(
   "https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb"
   "LICENSE"
 )
-sha256sums=('1ebfe3f73a81da10c5827ee6ca6e3dee4eb984921ba0922d2f6d1796d7bf8f82'
+sha256sums=('bcbf99d89a33cc9090272694851a993c12b1e855ac845c23479564c43e8c2e26'
             '5f32a7baef326d88754c6581883800a8d68a753bec846a1d0c190460ab7a2424')
 
 build() {
