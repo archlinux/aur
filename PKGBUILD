@@ -2,14 +2,14 @@ _pkgname='python-binance'
 pkgname="$_pkgname-git"
 _majmin='0.6.2'
 pkgver=0.6.2.745ca91
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple python interface to binance.com's web API."
 arch=('any')
 url='https://github.com/sammchardy/python-binance'
 license=('MIT')
-depends=('python' 'python-requests')
+depends=('python' 'python-requests' 'python-autobahn' 'python-service-identity')
 makedepends=('python-setuptools')
-source=('git+https://github.com/ewtoombs/python-calc.git')
+source=('git+https://github.com/sammchardy/python-binance.git')
 md5sums=('SKIP')
 
 pkgver () {
