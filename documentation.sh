@@ -117,7 +117,7 @@ bl_documentation_parse_arguments() {
     bl.arguments.set "$@"
     bl.arguments.get_flag --serve serve
     bl.arguments.apply_new
-    if [ $# -eq 0 ] || [ "$@" == '' ]; then
+    if [[ $# == 0 ]]; then
         bl.logging.plain
         bl.logging.plain '# Generated documentation'
         bl.documentation.generate bashlink

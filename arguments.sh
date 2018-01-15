@@ -50,41 +50,32 @@ bl_arguments__documentation__='
 bl_arguments_new=()
 # endregion
 # region functions
-alias bl.arguments.apply_new='set -- "${bl_arguments_new[@]}"'
-bl_arguments_apply_new() {
-    local __documentation__='
-    Call this function after you are finished with argument parsing. The
-    arguments array ($@) will then contain all unparsed arguments that are
-    left.
-    '
-    # NOTE: Implemented as alias.
-    true
-}
 alias bl.arguments.get_flag=bl_arguments_get_flag
 bl_arguments_get_flag() {
     # shellcheck disable=SC2034,SC2016
     local __documentation__='
-    ```
-    bl.arguments.get_flag flag [flag_aliases...] variable_name
-    ```
-    Sets `variable_name` to true if flag (or on of its aliases) is contained in
-    the argument array (see `bl.arguments.set`)
+        Sets `variable_name` to `true` if flag (or on of its aliases) is
+        contained in the argument array (see `bl.arguments.set`).
 
-    >>> bl.arguments.set other_param1 --foo other_param2
-    >>> local foo bar
-    >>> bl.arguments.get_flag --foo -f foo
-    >>> echo $foo
-    >>> bl.arguments.get_flag --bar bar
-    >>> echo $bar
-    >>> echo "${bl_arguments_new[@]}"
-    true
-    false
-    other_param1 other_param2
-    >>> bl.arguments.set -f
-    >>> local foo
-    >>> bl.arguments.get_flag --foo -f foo
-    >>> echo $foo
-    true
+        ```
+            bl.arguments.get_flag flag [flag_aliases...] variable_name
+        ```
+
+        >>> bl.arguments.set other_param1 --foo other_param2
+        >>> local foo bar
+        >>> bl.arguments.get_flag --foo -f foo
+        >>> echo $foo
+        >>> bl.arguments.get_flag --bar bar
+        >>> echo $bar
+        >>> echo "${bl_arguments_new[@]}"
+        true
+        false
+        other_param1 other_param2
+        >>> bl.arguments.set -f
+        >>> local foo
+        >>> bl.arguments.get_flag --foo -f foo
+        >>> echo $foo
+        true
     '
     local flag_aliases
     read -r -a flag_aliases <<< "$(bl.array.slice :-1 "$@")"
@@ -109,27 +100,28 @@ alias bl.arguments.get_keyword=bl_arguments_get_keyword
 bl_arguments_get_keyword() {
     # shellcheck disable=SC2034,SC2016
     local __documentation__='
-    ```
-    bl.arguments.get_keyword keyword variable_name
-    ```
-    Sets `variable_name` to the "value" of `keyword` the argument array (see
-    `bl.arguments.set`) contains "keyword=value".
+        Sets `variable_name` to the value of `keyword` the argument array (see
+        `bl.arguments.set`) contains `keyword=value`.
 
-    >>> local foo
-    >>> bl.arguments.set other_param1 foo=bar baz=baz other_param2
-    >>> bl.arguments.get_keyword foo foo
-    >>> echo $foo
-    >>> echo "${bl_arguments_new[@]}"
-    bar
-    other_param1 baz=baz other_param2
-    >>> local foo
-    >>> bl.arguments.set other_param1 foo=bar baz=baz other_param2
-    >>> bl.arguments.get_keyword foo
-    >>> echo $foo
-    >>> bl.arguments.get_keyword baz foo
-    >>> echo $foo
-    bar
-    baz
+        ```
+            bl.arguments.get_keyword keyword variable_name
+        ```
+
+        >>> local foo
+        >>> bl.arguments.set other_param1 foo=bar baz=baz other_param2
+        >>> bl.arguments.get_keyword foo foo
+        >>> echo $foo
+        >>> echo "${bl_arguments_new[@]}"
+        bar
+        other_param1 baz=baz other_param2
+        >>> local foo
+        >>> bl.arguments.set other_param1 foo=bar baz=baz other_param2
+        >>> bl.arguments.get_keyword foo
+        >>> echo $foo
+        >>> bl.arguments.get_keyword baz foo
+        >>> echo $foo
+        bar
+        baz
     '
     local keyword="$1"
     local variable="$1"
@@ -156,24 +148,24 @@ alias bl.arguments.get_parameter=bl_arguments_get_parameter
 bl_arguments_get_parameter() {
     # shellcheck disable=SC2034,SC2016
     local __documentation__='
-    ```
-    bl.arguments.get_parameter parameter [parameter_aliases...] variable_name
-    ```
+        Sets `variable_name` to the field following `parameter` (or one of the
+        `parameter_aliases`) from the argument array (see `bl.arguments.set`).
 
-    Sets `variable_name` to the field following `parameter` (or one of the
-    `parameter_aliases`) from the argument array (see `bl.arguments.set`).
+        ```
+            bl.arguments.get_parameter parameter [parameter_aliases...] variable_name
+        ```
 
-    ```
-    bl.arguments.get_parameter --log-level -l loglevel
-    ```
+        ```
+            bl.arguments.get_parameter --log-level -l loglevel
+        ```
 
-    >>> local foo
-    >>> bl.arguments.set other_param1 --foo bar other_param2
-    >>> bl.arguments.get_parameter --foo -f foo
-    >>> echo $foo
-    >>> echo "${bl_arguments_new[@]}"
-    bar
-    other_param1 other_param2
+        >>> local foo
+        >>> bl.arguments.set other_param1 --foo bar other_param2
+        >>> bl.arguments.get_parameter --foo -f foo
+        >>> echo $foo
+        >>> echo "${bl_arguments_new[@]}"
+        bar
+        other_param1 other_param2
     '
     local parameter_aliases parameter variable argument index match
     # shellcheck disable=SC2207
@@ -200,38 +192,49 @@ alias bl.arguments.get_positional=bl_arguments_get_positional
 bl_arguments_get_positional() {
     # shellcheck disable=SC2034,SC2016
     local __documentation__='
-    ```
-    bl.arguments.get_positional index variable_name
-    ```
+        Get the positional parameter at `index`. Use after extracting
+        parameters, keywords and flags.
 
-    Get the positional parameter at `index`. Use after extracting parameters,
-    keywords and flags.
+        ```
+            bl.arguments.get_positional index variable_name
+        ```
 
-    >>> bl.arguments.set parameter foo --flag pos1 pos2 --keyword=foo
-    >>> bl.arguments.get_flag --flag _
-    >>> bl.arguments.get_parameter parameter _
-    >>> bl.arguments.get_keyword --keyword _
-    >>> local positional1 positional2
-    >>> bl.arguments.get_positional 1 positional1
-    >>> bl.arguments.get_positional 2 positional2
-    >>> echo "$positional1 $positional2"
-    pos1 pos2
+        >>> bl.arguments.set parameter foo --flag pos1 pos2 --keyword=foo
+        >>> bl.arguments.get_flag --flag _
+        >>> bl.arguments.get_parameter parameter _
+        >>> bl.arguments.get_keyword --keyword _
+        >>> local positional1 positional2
+        >>> bl.arguments.get_positional 1 positional1
+        >>> bl.arguments.get_positional 2 positional2
+        >>> echo "$positional1 $positional2"
+        pos1 pos2
     '
     local index="$1"
     (( index-- )) # $0 is not available here
     local variable="$2"
     eval "${variable}=${bl_arguments_new[index]}"
 }
+alias bl.arguments.apply_new='set -- "${bl_arguments_new[@]}"'
+bl_arguments_apply_new() {
+    local __documentation__='
+        Call this function after you are finished with argument parsing. The
+        arguments array ($@) will then contain all unparsed arguments that are
+        left.
+    '
+    # NOTE: Implemented as alias.
+    true
+}
 alias bl.arguments.set=bl_arguments_set
 bl_arguments_set() {
     # shellcheck disable=SC2034,SC2016
     local __documentation__='
-    ```
-    bl.arguments.set argument1 argument2 ...
-    ```
-    Set the array the arguments-module is working on. After getting the desired
-    arguments, the new argument array can be accessed via `bl_arguments_new`.
-    This new array contains all remaining arguments.
+        Set the array the arguments-module is working on. After getting the
+        desired arguments, the new argument array can be accessed via
+        `bl_arguments_new`. This new array contains all remaining arguments.
+
+        ```
+            bl.arguments.set argument1 argument2 ...
+        ```
     '
     bl_arguments_new=("$@")
 }
@@ -239,24 +242,25 @@ alias bl.arguments.wrapper_with_minimum_number_of_arguments=bl_arguments_wrapper
 bl_arguments_wrapper_with_minimum_number_of_arguments() {
     # shellcheck disable=SC1004
     local __documentation__='
-    ```
-        PROGRAM_NAME $(bl.arguments.wrapper_with_minimum_number_of_arguments \
-            NUMBER_OF_DEFAULT_ARGUMENTS \
-            MINIMUM_NUMBER_OF_ARGUMENTS_TO_OVERWRITE_DEFAULT_ARGUMENTS \
-            DEFAULT_ARGUMENTS* \
-            $@
-        )
-    ```
-    Supports default arguments with a minimum number of arguments for functions
-    by wrapping them.
-    Runs "sub_program" with arguments "all", "--log-level" and "warning" if not
-    at least two arguments are given to "program":
+        Supports default arguments with a minimum number of arguments for
+        functions by wrapping them. Runs `sub_program` with arguments `all`,
+        `--log-level` and `warning` if not at least two arguments are given to
+        `program_name`:
 
-    >>> _() {
-    >>>     echo sub_program \
-    >>>         $(bl.arguments.wrapper_with_minimum_number_of_arguments 3 2 \
-    >>>         all --log-level warning $@)
-    >>> }
+        ```
+            program_name $(bl.arguments.wrapper_with_minimum_number_of_arguments \
+                NUMBER_OF_DEFAULT_ARGUMENTS \
+                MINIMUM_NUMBER_OF_ARGUMENTS_TO_OVERWRITE_DEFAULT_ARGUMENTS \
+                DEFAULT_ARGUMENTS* \
+                $@
+            )
+        ```
+
+        >>> _() {
+        >>>     echo sub_program \
+        >>>         $(bl.arguments.wrapper_with_minimum_number_of_arguments 3 2 \
+        >>>         all --log-level warning $@)
+        >>> }
     '
     if [ $# -le $(($1+$2+1)) ]; then
         # Return default arguments.
@@ -275,17 +279,17 @@ alias bl.arguments.default_wrapper=bl_arguments_default_wrapper
 bl_arguments_default_wrapper() {
     # shellcheck disable=SC1004,SC2034
     local __documentation__='
-    Wrapper function for
-    `bl.arguments.wrapper_with_minimum_number_of_arguments` with second
-    parameter is setted to `1`.
+        Wrapper function for
+        `bl.arguments.wrapper_with_minimum_number_of_arguments` with second
+        parameter is setted to `1`.
 
-    Runs "sub_program" with arguments "all", "--log-level" and "warning" if not
-    at least one arguments are given to "program".
+        Runs `sub_program` with arguments `all`, `--log-level` and `warning` if
+        not at least one arguments are given to `program`.
 
-    >>> _() {
-    >>>     echo sub_program $(bl.arguments.default_wrapper 3 all --log-level \
-    >>>         warning $@)
-    >>> }
+        >>> _() {
+        >>>     echo sub_program $(bl.arguments.default_wrapper 3 all \
+        >>>         --log-level warning $@)
+        >>> }
     '
     # shellcheck disable=SC2068,SC2086
     bl.arguments.wrapper_with_minimum_number_of_arguments $1 1 ${@:2}

@@ -72,8 +72,6 @@ bl_changeroot_with_kernel_api() {
     Performs a change root by mounting needed host locations in change root
     environment.
 
-    #### Example:
-
     `bl_changeroot_with_kernel_api /new_root /usr/bin/env bash some arguments`
     '
     local new_root_location="$1"
