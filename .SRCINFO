@@ -1,16 +1,15 @@
 pkgbase = teamsql
 	pkgdesc = Multi-Platform SQL Client
 	pkgver = 2.6.159
-	pkgrel = 1
-	install = teamsql.install
+	pkgrel = 4
+	url = https://teamsql.io/
 	arch = x86_64
+	license = custom:https://teamsql.io/end-user-licence-agreement
 	depends = libappindicator
 	depends = libnotify
 	depends = gconf
 	source = TeamSQL-2.6.159.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/2.6.159/TeamSQL-2.6.159.deb
-	source = teamsql.sh
-	md5sums = 62b1b04053e05bdb0a984efb859d842d
-	md5sums = 7262cf67a1e2634401d6012d8d34e7d8
+	sha512sums = 1e6210d7c6703a6b080302c9ca640d31bb38da66f10981b520df2d41e5351b6005eb819aaa29083a2d1f42c083275d50d8a975ba34aab26362b0ec0adb715f61
 
 pkgname = teamsql
 

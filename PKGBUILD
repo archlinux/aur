@@ -1,25 +1,28 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
+buildarch=128
+
 pkgname=teamsql
 pkgver=2.6.159
-pkgrel=2
+pkgrel=4
 pkgdesc="Multi-Platform SQL Client"
+url="https://teamsql.io/"
 arch=('x86_64')
-license=()
+license=('custom:https://teamsql.io/end-user-licence-agreement')
 depends=("libappindicator" "libnotify" "gconf")
-optdepends=()
-options=()
-install=$pkgname.install
-source=("TeamSQL-${pkgver}.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/${pkgver}/TeamSQL-${pkgver}.deb"
-        'teamsql.sh')
-md5sums=('62b1b04053e05bdb0a984efb859d842d'
-         '7262cf67a1e2634401d6012d8d34e7d8')
+
+source=("TeamSQL-${pkgver}.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/${pkgver}/TeamSQL-${pkgver}.deb")
+sha512sums=('1e6210d7c6703a6b080302c9ca640d31bb38da66f10981b520df2d41e5351b6005eb819aaa29083a2d1f42c083275d50d8a975ba34aab26362b0ec0adb715f61')
 
 package() {
-  msg2 "Extracting the data.tar.xz..."
   bsdtar -xf data.tar.xz -C "$pkgdir/"
 
-  msg2 "Moving stuff in place..."
-  # Launcher
-  install -Dm 755 teamsql.sh "$pkgdir"/usr/bin/teamsql
+  mkdir "$pkgdir/usr/bin"
+
+cat > "$pkgdir/usr/bin/$pkgname" <<EOF
+#!/bin/bash
+exec /opt/TeamSQL/TeamSQL "$@"
+EOF
+
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
 }
