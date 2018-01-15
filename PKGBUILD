@@ -2,11 +2,11 @@
 
 pkgname=wapiti
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A vulnerability scanner for web applications. It currently search vulnerabilities like XSS, SQL and XPath injections, file inclusions, command execution, LDAP injections, CRLF injections..."
 url='http://wapiti.sourceforge.net/'
 license=(GPL)
-depends=(python python-requests python-beautifulsoup4 python-lxml python-tld python-yaswfp python-mako python-pysocks)
+depends=(python python-setuptools python-requests python-beautifulsoup4 python-lxml python-tld python-yaswfp python-mako python-pysocks)
 arch=(any)
 
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
