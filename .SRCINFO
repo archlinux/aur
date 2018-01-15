@@ -1,7 +1,7 @@
 pkgbase = teamsql
 	pkgdesc = Multi-Platform SQL Client
 	pkgver = 2.6.159
-	pkgrel = 4
+	pkgrel = 5
 	url = https://teamsql.io/
 	arch = x86_64
 	license = custom:https://teamsql.io/end-user-licence-agreement

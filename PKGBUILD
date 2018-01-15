@@ -4,7 +4,7 @@ buildarch=128
 
 pkgname=teamsql
 pkgver=2.6.159
-pkgrel=4
+pkgrel=5
 pkgdesc="Multi-Platform SQL Client"
 url="https://teamsql.io/"
 arch=('x86_64')
@@ -24,5 +24,5 @@ cat > "$pkgdir/usr/bin/$pkgname" <<EOF
 exec /opt/TeamSQL/TeamSQL "$@"
 EOF
 
-  chmod 755 "$pkgdir/usr/bin/$_pkgname"
+  chmod 755 "$pkgdir/usr/bin/$pkgname"
 }
