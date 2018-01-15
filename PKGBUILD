@@ -2,7 +2,7 @@
 
 _pkgname=jalv-select
 pkgname="${_pkgname}-git"
-pkgver=0.9.r98.fff0855
+pkgver=1.0.r99.75a5229
 pkgrel=1
 pkgdesc="A little GUI to select installed lv2 plug-ins and run them with jalv."
 arch=('i686' 'x86_64')
