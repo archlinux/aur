@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd ${srcdir}/likwid
   #sed -i "12s:/usr/local:/usr:; 13s:/man:/share/man:; 31s:/sbin:/bin:; 32s:/sbin:/bin:" config.mk
-	sed -i "12s:/usr/local:/usr:; 25s:/man:/share/man:; 48s:/sbin:/bin:; 49s:/sbin:/bin:" config.mk
+	sed -i "12s:/usr/local:/usr:; 25s:/man:/share/man:; 58s:/sbin:/bin:; 59s:/sbin:/bin:" config.mk
   sed -i "s:/sbin:/bin:" Makefile
   make
 }
