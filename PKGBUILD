@@ -1,7 +1,8 @@
-# Maintainer: lyoko
+# Maintainer: Tom Nguyen <tom81094@gmail.com>
+# Contributor: lyoko
 
 pkgname=networkmanager-ssh-git
-pkgver=r231.f80495e
+pkgver=r233.fe3dc5d
 pkgrel=1
 pkgdesc="SSH VPN support for NetworkManager"
 arch=('any')
@@ -25,12 +26,24 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  autoreconf -fvi || return 1
-  ./configure --prefix=/usr --sysconfdir=/etc || return 1
-  make || return 1
+
+  if [ ! -f configure ]; then
+    autoreconf -fvi
+  fi
+
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libdir=/usr/lib \
+    --libexecdir=/usr/lib/NetworkManager \
+    --disable-static \
+    --disable-dependency-tracking \
+    --enable-more-warnings=no
+
+  make ${MAKEFLAGS}
 }
 
 package() {
   cd "$pkgname"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" INSTALL="install -p" CP="cp -p" install
 }
