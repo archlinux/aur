@@ -1,7 +1,7 @@
 # Maintainer: jdn06 <jdn06.jdn06@outlook.fr>
 pkgname=aqualung-git
 _pkgname=aqualung
-pkgver=1.07g72c1ab1
+pkgver=1.0.r8.gbeec3d9
 pkgrel=1
 pkgdesc="High quality music player w/ gapless support"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ install="${_pkgname}.install"
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --tags | sed 's/-//g'
+	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
