@@ -1,7 +1,7 @@
 pkgbase = edk2-ovmf
 	pkgdesc = EDK2 ovmf firmware from Fedora 27 rpm
 	pkgver = 20170209
-	pkgrel = 1
+	pkgrel = 3
 	url = https://fedoraproject.org/wiki/Using_UEFI_with_QEMU
 	arch = any
 	license = custom:BSD
