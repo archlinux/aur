@@ -2,3 +2,6 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
+
+!synac.desktop
+!synac.png

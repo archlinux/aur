@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=0.1.0
+Name=Synac
+Comment=Synac GTK+ messaging client
+Exec=synac-gtk
+Icon=synac

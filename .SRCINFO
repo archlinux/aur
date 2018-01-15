@@ -1,7 +1,7 @@
 pkgbase = synac-gtk-git
 	pkgdesc = The synac GTK+ client
-	pkgver = r102.5ec8d10
-	pkgrel = 1
+	pkgver = r103.7d8ef87
+	pkgrel = 2
 	url = https://github.com/synac-chat/client-gtk
 	arch = x86_64
 	license = MIT,
@@ -10,6 +10,10 @@ pkgbase = synac-gtk-git
 	makedepends = rust
 	source = synac-gtk-git::git+https://github.com/synac-chat/client-gtk
 	source = pulldown-cmark-patch::git+https://github.com/synac-chat/pulldown-cmark
+	source = synac.desktop
+	source = synac.png
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
