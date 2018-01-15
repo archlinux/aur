@@ -4,12 +4,11 @@
 pkgname=dlib
 _pkgname=dlib
 pkgver=19.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.dlib.net/"
 license=('Boost Software License')
-depends=('glibc')
 optdepends=('blas: for BLAS support'
             'cuda: for CUDA support'
             'cudnn: for CUDNN support'
@@ -20,11 +19,22 @@ optdepends=('blas: for BLAS support'
             'neon: for neon support'
             'sqlite: for sqlite support')
 source=(https://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('dbd31f7b97166e58f366c83fa5127e9fa44c492921558b61ce63a7d775be696b')
+sha512sums=('13d354e2e35c93c1b84bbc680e38cfe043199a18cb362426f21962a3d2eb116c86dd83af4eacd131e3749d3a4eadcf58a9db28133ec508de0c2a4cb3eb87dbf1')
+
+build() {
+    cd "${srcdir}"
+    mkdir -p build && cd build
+    cmake \
+        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
+        -DBUILD_SHARED_LIBS:BOOL=ON \
+        -DCUDA_HOST_COMPILER='/usr/bin/cc-6' \
+        -DCMAKE_BUILD_TYPE=Release \
+        "../${_pkgname}-${pkgver}"
+    make
+}
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-
-    install -Dm755 -d "${pkgdir}/usr/include"
-	cp -a ${_pkgname} "${pkgdir}/usr/include"
+    cd "${srcdir}/build"
+    make DESTDIR=${pkgdir} install
 }
