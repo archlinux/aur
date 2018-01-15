@@ -42,6 +42,14 @@ pkgver() {
 		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+       cd "$srcdir/$_gitname"
+
+       git remote add up $_upstream
+
+       git pull --no-edit up refs/pull/3121/head # fix cmake install path for libwallet api
+}
+
 build() {
 	cd "$srcdir/$_gitname"
 
