@@ -3,7 +3,7 @@
 # Contributor: Joan Rieu <toto_pirate@hotmail.fr>
 
 pkgname=roxterm-git
-pkgver=3.0.0.r22.g388ce3e
+pkgver=3.3.1.r14.g7ee9ade
 pkgrel=1
 pkgdesc="Tabbed, VTE-based terminal emulator"
 epoch=1
@@ -11,10 +11,9 @@ arch=('i686' 'x86_64')
 url="http://roxterm.sourceforge.net"
 license=('GPL3')
 depends=('dbus-glib' 'vte3' 'libsm')
-makedepends=('docbook-xsl' 'xmlto' 'po4a' 'python2' 'python2-lockfile' 'imagemagick' 'librsvg')
+makedepends=('git' 'docbook-xsl' 'xmlto' 'po4a' 'python2' 'python2-lockfile' 'imagemagick' 'librsvg' 'itstool')
 provides=('roxterm')
 conflicts=('roxterm')
-install=roxterm.install
 source=("$pkgname::git://git.code.sf.net/p/roxterm/code")
 md5sums=('SKIP')
 
