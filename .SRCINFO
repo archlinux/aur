@@ -1,7 +1,7 @@
 pkgbase = jalv-select
 	pkgdesc = A little GUI to select installed LV2 plug-ins and run them with jalv.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brummer10/jalv_select
 	arch = i686
 	arch = x86_64

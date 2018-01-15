@@ -3,7 +3,7 @@
 _gitname="jalv_select"
 pkgname="jalv-select"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A little GUI to select installed LV2 plug-ins and run them with jalv."
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10/jalv_select"
@@ -15,7 +15,7 @@ md5sums=('741e79d38d8f30abb6c4131ccdf8e779')
 build() {
   cd "${srcdir}/${_gitname}-${pkgver}"
 
-  make -j 1
+  make
 }
 
 package() {
