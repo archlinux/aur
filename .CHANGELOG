@@ -1,6 +1,37 @@
 Version history
 ===============
 
+0.9.8
+-----
+
+lemforum: Lix Cannon, cover confusing gaps that were solid. Pipe Dream, remove
+miners, improve lower route. Snow Jump, raise two pieces slightly.
+
+Fix #285: Solving singleplayer replays are auto-terminated with a nuke if you
+leave a game with ESC before the game is over.
+
+Fix #281: Explain airclick to cancel replays in a tooltip.
+
+When you scroll at the screen edge, a tooltip explains hold-to-scroll.
+
+Fix #279: With music enabled, but no music installed, the main menu explains
+how to download the music archive from the Lix website. Text will appear in
+the corner of the screen, not as a dialog box.
+
+Fix: Sound volume setting had no effect.
+
+Editor shows mouse coordinates in the panel, in addition to the piece
+coordinates that it has already shown before.
+
+TAB is default binding for the splat ruler/exit ping. If you keep your old
+user file, this change will not affect your bindings.
+
+Removed unused hotkey to cycle spectated teams. When I have a better ingame
+score board with player names, I'll think about how to implement this.
+
+Removed unused strings from translation files in data/transl/. Each file lost
+over 60 strings, mostly leftovers from C++ Lix.
+
 0.9.7
 -----
 
@@ -41,6 +72,9 @@ Fix: The level-to-image exporter crashed when called from the command line.
 
 Document where to download music in the main readme, in the detailed build
 notes, and in the notes for package maintainers.
+
+I ship the Windows binaries with newer Allegro libraries, their version is
+now 5.2.3. Any Allegro 5.2.x should work well with Lix.
 
 0.9.6
 -----

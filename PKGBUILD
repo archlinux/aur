@@ -1,13 +1,12 @@
-# Maintainer: Lucki <Lucki at holarse-linuxgaming dot de>
+# Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.7
-pkgrel=2
+pkgver=0.9.8
+pkgrel=1
 changelog=.CHANGELOG
 conflicts=("${pkgname}-git")
-source=( #"${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
-		"${pkgname}::git+https://github.com/SimonN/LixD.git#commit=84d0e22a894ffb20c91acad8d5d33349e35e54c0"
+source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
 		"${pkgname}-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
 		"${pkgname}.desktop")
 sha512sums=('SKIP'
