@@ -1,7 +1,7 @@
 pkgbase = psi-plus-plugins-git
 	pkgdesc = Additional plugins for Psi+ (built with Qt 5.x)
 	pkgver = 1.2.161.1.gf3b641d3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://psi-plus.com
 	arch = x86_64
 	license = GPL2

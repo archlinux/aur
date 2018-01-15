@@ -4,7 +4,7 @@
 
 pkgname=psi-plus-plugins-git
 pkgver=1.2.161.1.gf3b641d3
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('x86_64')
 url="http://psi-plus.com"
@@ -27,7 +27,7 @@ build() {
   cd psi-plus-snapshots
   mkdir -p build
   cd build
-  cmake -DONLY_PLUGINS=ON  ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib  -DONLY_PLUGINS=ON  ..
   make
 }
 
