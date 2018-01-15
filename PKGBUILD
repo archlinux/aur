@@ -1,7 +1,7 @@
 # Maintainer: Bjarno Oeyen <aur _AT_ bjarno _DOT_ be>
 
 pkgname=game-jolt-client
-pkgrel=3
+pkgrel=5
 pkgver=0.13.2
 pkgdesc="Play games. Make games. Stay indie."
 url="http://gamejolt.com/client"
@@ -20,18 +20,25 @@ md5sums=('373310874384ade132cb449c300f9254'
          'b0fd0e4afb5262c1c8792ad9fc671828')
 options=(!strip)
 
-package() {
-	install -d "$pkgdir"/opt
-	cp -R "$srcdir" "$pkgdir"/opt/game-jolt-client
+prepare() {
+  cd "$srcdir"
+  mkdir -p "$srcdir"/unpacked
+	tar -xzf game-jolt-client.tar --directory "$srcdir"/unpacked
+}
 
-	find "$pkgdir"/opt/game-jolt-client/ -type f -exec chmod 644 {} \;
+package() {
+
+	install -d "$pkgdir"/opt/game-jolt-client
+	cp -R "$srcdir"/unpacked/* "$pkgdir"/opt/game-jolt-client
+
+	find "$pkgdir"/opt/game-jolt-client -type f -exec chmod 644 {} \;
 	chmod 755 "$pkgdir"/opt/game-jolt-client/game-jolt-client
 
 	install -d "$pkgdir"/usr/bin
 	ln -s ../../opt/game-jolt-client/game-jolt-client "$pkgdir"/usr/bin/game-jolt-client
 
-	install -Dm644 "../APPLICENSE"               "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "../game-jolt-client.desktop" "${pkgdir}/usr/share/applications/game-jolt-client.desktop"
-	install -Dm644 "../game-jolt.png"            "${pkgdir}/usr/share/pixmaps/game-jolt.png"
-	install -Dm644 "../package.json.new"         "${pkgdir}/opt/game-jolt-client/package.json"
+	install -Dm644 "$srcdir"/APPLICENSE               "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir"/game-jolt-client.desktop "${pkgdir}/usr/share/applications/game-jolt-client.desktop"
+	install -Dm644 "$srcdir"/game-jolt.png            "${pkgdir}/usr/share/pixmaps/game-jolt.png"
+	install -Dm644 "$srcdir"/package.json.new         "${pkgdir}/opt/game-jolt-client/package.json"
 }

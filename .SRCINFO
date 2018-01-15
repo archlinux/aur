@@ -1,7 +1,7 @@
 pkgbase = game-jolt-client
 	pkgdesc = Play games. Make games. Stay indie.
 	pkgver = 0.13.2
-	pkgrel = 3
+	pkgrel = 5
 	url = http://gamejolt.com/client
 	arch = x86_64
 	license = mit
