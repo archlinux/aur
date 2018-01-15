@@ -1,18 +1,18 @@
 pkgbase = ponyc-rpm
 	pkgdesc = An actor model, capabilities, high performance programming language (bintray rpm binaries)
-	pkgver = 0.21.0_4301.acd811b
+	pkgver = 0.21.3_1
 	pkgrel = 1
 	url = https://www.ponylang.org/
 	arch = x86_64
 	license = BSD
 	depends = zlib
 	depends = ncurses5-compat-libs
-	provides = ponyc=0.21.0
+	provides = ponyc=0.21.3
 	conflicts = ponyc
-	source = https://raw.githubusercontent.com/ponylang/ponyc/0.21.0/LICENSE
+	source = https://raw.githubusercontent.com/ponylang/ponyc/0.21.3/LICENSE
 	sha256sums = c22151b202623f11638a8f6e3eb07c5767b941b75e7585f2e270d5b87f72758a
-	source_x86_64 = https://dl.bintray.com/pony-language/ponyc-rpm/ponyc-0.21.0-4301.acd811b.x86_64.rpm
-	sha256sums_x86_64 = f2a887cd914bb287a2330ee1aefd79abd13b223b8fe2d9a3ae510d5acf631005
+	source_x86_64 = https://dl.bintray.com/pony-language/ponyc-rpm/ponyc-0.21.3-1.x86_64.rpm
+	sha256sums_x86_64 = dc3edb7ced4d5a89faa784392b0ac6781f076a2941379cf953562cdce81ba630
 
 pkgname = ponyc-rpm
 
