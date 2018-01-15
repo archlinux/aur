@@ -2,7 +2,7 @@
 # arg 2:  the old package versio
 
 # Set by PKGBUILD
-KERNEL_VERSION=4.13.1-1-gc3f9ab6ba936-dirty
+KERNEL_VERSION=
 BOOT_DIR=/boot
 
 # Image file name must match with the name in the .preset file for mkinitcpio
@@ -13,7 +13,7 @@ PACKED_INITRAMFS_IMAGE=${INITRAMFS_IMAGE}.img
 
 make_initrd() {
   echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
-  mkinitcpio -p linux-odroid
+  mkinitcpio -p linux-odroid -k ${KERNEL_VERSION}
   mkimage -A arm -O linux -T ramdisk -C none \
           -n "image ${source_archive}" \
           -d ${BOOT_DIR}/${INITRAMFS_IMAGE} \
