@@ -2,7 +2,7 @@
 
 _pkgname=jalv-select
 pkgname="${_pkgname}-git"
-pkgver=0.7.r62.5a010a0
+pkgver=0.9.r98.fff0855
 pkgrel=1
 pkgdesc="A little GUI to select installed lv2 plug-ins and run them with jalv."
 arch=('i686' 'x86_64')
@@ -11,11 +11,8 @@ license=('custom:Public Domain')
 depends=('jalv' 'gtkmm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/brummer10/jalv_select.git"
-        'LICENSE.txt')
-install="${_pkgname}.install"
-md5sums=('SKIP'
-         '039bcb549d34b4273393c9ca25848fe6')
+source=("${_pkgname}::git+https://github.com/brummer10/jalv_select.git")
+md5sums=('SKIP')
 
 
 pkgver() {
@@ -41,6 +38,6 @@ package() {
     "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   # license
-  install -Dm644 "$srcdir/LICENSE.txt" \
+  install -Dm644 "LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
