@@ -1,0 +1,13 @@
+pkgbase = python-yaswfp
+	pkgdesc = Yet Another SWF Parser
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/facundobatista/yaswfp
+	arch = any
+	license = GPL3
+	depends = python
+	source = https://pypi.org/packages/source/y/yaswfp/yaswfp-0.9.3.tar.gz
+	sha256sums = 6171057367476bbb511ae1ff95f0963f86079dd2fcb0e9771c6d9763ed351c8d
+
+pkgname = python-yaswfp
+
