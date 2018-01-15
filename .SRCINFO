@@ -1,0 +1,19 @@
+pkgbase = kicad-footprints-git
+	pkgdesc = Official KiCad footprint libraries
+	pkgver = dae2bc57
+	pkgrel = 1
+	url = https://github.com/KiCad/kicad-footprints
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	conflicts = kicad-library-bzr
+	conflicts = kicad-library-git
+	conflicts = kicad-library-3d
+	conflicts = kicad-library
+	options = !strip
+	source = git://github.com/KiCad/kicad-footprints.git
+	md5sums = SKIP
+
+pkgname = kicad-footprints-git
+
