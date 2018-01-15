@@ -4,7 +4,7 @@ _pkgname=vtrunkd
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=0.1601_10_g82e93_dirty
-pkgrel=2
+pkgrel=3
 pkgdesc='Universal network link bonding and multichannel VPN.'
 url='http://github.com/VrayoSystems/vtrunkd'
 license=('GPL2')
@@ -24,6 +24,7 @@ checkdepends=(
 provides=("${_pkgname}=${pkgver}")
 # replaces=("${_pkgname}<=${pkgver}")
 conflicts=("${_pkgname}")
+backup=('etc/vtrunkd.conf')
 options=('!emptydirs')
 source=(
   "${_pkgname}::git+http://github.com/VrayoSystems/${_pkgname}"
