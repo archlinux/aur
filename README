@@ -12,7 +12,8 @@ To begin, you must put your username as the first line of
 as well.
 
 Optionally, put your password as the second line of /etc/openvpn-pia.conf
-to enable auto login.
+to enable auto login. Note that your password will be stored in plain
+text!
 
 NOTE: PIA does not support IPv6. Disable it:
 https://wiki.archlinux.org/index.php/IPv6#Disable_IPv6
@@ -20,4 +21,29 @@ https://wiki.archlinux.org/index.php/IPv6#Disable_IPv6
 
 ## RUNNING
 
-To run, see https://wiki.archlinux.org/index.php/OpenVPN#Starting_OpenVPN
+# systemctl start openvpn-client@config-name
+
+Where config-name is the name of the configuration file. For example,
+for US-New-York-City.conf do:
+
+# systemctl start openvpn-client@US-New-York-City
+
+See /etc/openvpn/client for a list of files.
+
+See also https://wiki.archlinux.org/index.php/OpenVPN#Starting_OpenVPN.
+
+
+## TESTING
+
+See https://helpdesk.privateinternetaccess.com/hc/en-us/articles/231734668-Security-Best-Practices-Part-5-Testing-Your-Security
+
+
+## UPDATING
+
+PIA does not version their files, but you can check to see if the zip
+file has been updated by doing:
+
+    curl --head --silent https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip | grep "Last-Modified"
+
+If you notice the date is newer than the package date, please leave a
+comment on the AUR page.
