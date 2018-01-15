@@ -2,11 +2,11 @@
 
 _gitname=tr1pd
 pkgname=tr1pd-git
-pkgver=0.2.0.r0.g002e1ed
+pkgver=0.2.0.r9.gfba7e6b
 pkgrel=1
 pkgdesc="tamper resistant audit log"
 url="https://github.com/kpcyrd/tr1pd"
-depends=('gcc-libs' 'libsodium')
+depends=('gcc-libs' 'libsodium' 'libseccomp')
 makedepends=('cargo' 'git')
 provides=('tr1pd')
 conflicts=('tr1pd')
