@@ -15,19 +15,21 @@ makedepends=('cmake' 'boost' 'utf8cpp' 'zip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/blockattack/blockattack-game/archive/v$pkgver.tar.gz")
 sha256sums=('602509de6679578f9ee6bdce8aea122de2c0e2531bdf438b3ec42c3662e8504a')
 
-build() {
+prepare() {
   cd $pkgname-game-$pkgver
-
   ./packdata.sh
+  mkdir -p ../build
+}
 
-  cmake . \
+build() {
+  cd build
+  cmake ../$pkgname-game-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd $pkgname-game-$pkgver
-
+  cd build
   make DESTDIR="$pkgdir" install
 }
