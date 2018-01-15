@@ -23,7 +23,8 @@
 # TODO split packages? nimbus/supervisor/ui ?
 
 pkgname=storm
-pkgver=1.0.2
+# pkgver=1.0.2
+pkgver=1.1.1
 pkgrel=2
 pkgdesc='Free and open source distributed realtime computation system'
 arch=('any')
@@ -51,7 +52,7 @@ source=(${_closest}/${_app_path}
         arch_python2.patch)
 validpgpkeys=('ACEFE18DD2322E1E84587A148DE03962E80B8FFD') # P. Taylor Goetz
 
-sha256sums=('b3fd2475e88e4b5e30f0e47eab70363419d67c15ddc7fe1f3c423ac0499eb76e'
+sha256sums=('284b43c2e667ccb600605769e76dfc981140d769a684253f37309f85fea2a951'
             'SKIP'
             'c94799f4b459f5218faf1da57936baeb4c32b9542a1ba0aacdd637bf2f3aaf05'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
