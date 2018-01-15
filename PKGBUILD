@@ -23,22 +23,21 @@ options=(!strip)
 prepare() {
   cd "$srcdir"
   mkdir -p "$srcdir"/unpacked
-	tar -xzf game-jolt-client.tar --directory "$srcdir"/unpacked
+  tar -xzf game-jolt-client.tar --directory "$srcdir"/unpacked
 }
 
 package() {
+  install -d "$pkgdir"/opt/game-jolt-client
+  cp -R "$srcdir"/unpacked/* "$pkgdir"/opt/game-jolt-client
 
-	install -d "$pkgdir"/opt/game-jolt-client
-	cp -R "$srcdir"/unpacked/* "$pkgdir"/opt/game-jolt-client
+  find "$pkgdir"/opt/game-jolt-client -type f -exec chmod 644 {} \;
+  chmod 755 "$pkgdir"/opt/game-jolt-client/game-jolt-client
 
-	find "$pkgdir"/opt/game-jolt-client -type f -exec chmod 644 {} \;
-	chmod 755 "$pkgdir"/opt/game-jolt-client/game-jolt-client
+  install -d "$pkgdir"/usr/bin
+  ln -s ../../opt/game-jolt-client/game-jolt-client "$pkgdir"/usr/bin/game-jolt-client
 
-	install -d "$pkgdir"/usr/bin
-	ln -s ../../opt/game-jolt-client/game-jolt-client "$pkgdir"/usr/bin/game-jolt-client
-
-	install -Dm644 "$srcdir"/APPLICENSE               "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "$srcdir"/game-jolt-client.desktop "${pkgdir}/usr/share/applications/game-jolt-client.desktop"
-	install -Dm644 "$srcdir"/game-jolt.png            "${pkgdir}/usr/share/pixmaps/game-jolt.png"
-	install -Dm644 "$srcdir"/package.json.new         "${pkgdir}/opt/game-jolt-client/package.json"
+  install -Dm644 "$srcdir"/APPLICENSE               "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir"/game-jolt-client.desktop "${pkgdir}/usr/share/applications/game-jolt-client.desktop"
+  install -Dm644 "$srcdir"/game-jolt.png            "${pkgdir}/usr/share/pixmaps/game-jolt.png"
+  install -Dm644 "$srcdir"/package.json.new         "${pkgdir}/opt/game-jolt-client/package.json"
 }
