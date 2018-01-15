@@ -3,8 +3,8 @@
 
 pkgname=freetype2-ttmetrics
 _srcname=freetype
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.9
+pkgrel=1
 pkgdesc="Font rasterization library with TrueType metrics enabled"
 arch=(i686 x86_64)
 license=('GPL')
@@ -19,15 +19,15 @@ install=freetype2.install
 backup=('etc/profile.d/freetype2.sh')
 source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2
         0001-Enable-table-validation-modules.patch
-        0003-Enable-infinality-subpixel-hinting.patch
-        0004-Enable-long-PCF-family-names.patch
+        0002-Enable-infinality-subpixel-hinting.patch
+        0003-Enable-long-PCF-family-names.patch
         freetype2.sh
         enable_truetype_like_size_metrics.patch
         revert_allow_linear_scaling.patch)
-sha1sums=('417bb3747c4ac95b6f2652024a53fad45581fa1c'
-          'c3e91e668936206d3c158bffde0f69788a086a5b'
-          '81586014ea44375ddc85dd9dbcabae6e91c34d62'
-          '334f229875039794adeb574e27d365bb445fb314'
+sha1sums=('94c4399b1a55c5892812e732843fcb4a7c2fe657'
+          'b69531770c343d403be294b7e4d25ac45738c833'
+          '3d26a569f0cb94c28a550577f5dcaadb4e193d91'
+          '770f1981734a837bcf065564c91644b4cc5e256a'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f'
           '833a8622bc61fc6f41c0e87c3614dec73490c9b1'
           'f2cc372aedce56b387ee0c5403745d642bd44fe8')
@@ -37,8 +37,8 @@ prepare() {
 
   # Official package patches
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-  patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
-  patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
+  patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
+  patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
 
   # ttmetrics patches
   # see https://bbs.archlinux.org/viewtopic.php?id=226380
