@@ -1,4 +1,5 @@
-# Maintainer: Guillaume ALAUX <guillaume at alaux dot net>
+# Maintainer: Bram Vereertbrugghen <bramvereertbrugghen at live dot be>
+# Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 
 # Important note about source signature validation:
 #
