@@ -1,4 +1,4 @@
-# Maintainer: Achilleas Pipinellis <axilleas@archlinux.gr>
+# Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 _npmname=gitlab-letsencrypt
 _npmver=3.0.0
