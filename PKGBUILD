@@ -1,6 +1,6 @@
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=mylar-git
-pkgver=r828.3fa3cfe
+pkgver=r1055.053626a
 pkgrel=1
 pkgdesc="automated Comic Book downloader for use with SABnzbd, NZBGet and torrents"
 arch=('i686' 'x86_64')

@@ -1,6 +1,6 @@
 pkgbase = mylar-git
 	pkgdesc = automated Comic Book downloader for use with SABnzbd, NZBGet and torrents
-	pkgver = r828.3fa3cfe
+	pkgver = r1055.053626a
 	pkgrel = 1
 	url = https://github.com/evilhero/mylar
 	install = mylar.install
