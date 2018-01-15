@@ -1,12 +1,12 @@
 # Maintainer: Mihai Bisog <mihai.bisog@gmail.com>
 pkgname=xfstk-dldr
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Update Intel SoC firmware over USB using the DNX protocol"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/xfstk/"
 license=('LGPL')
-depends=('qt4' 'libusb' 'boost')
+depends=('qt4' 'libusb-compat' 'boost')
 makedepends=('doxygen' 'graphviz' 'cmake')
 provides=('xfstk-dldr' 'xfstk-dldr-gui')
 conflicts=('xfstk-dldr' 'xfstk-dldr-gui')
