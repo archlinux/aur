@@ -1,12 +1,12 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-plugins-git
-pkgver=snapshot.2015.05.r374.gb0a6d6e
+pkgver=snapshot.2015.05.r487.g5beea61
 pkgrel=1
-pkgdesc="Plugins for Magnum graphics engine (Git version)"
+pkgdesc="Plugins for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
-url="http://mosra.cz/blog/magnum.php"
+url="http://magnum.graphics"
 license=('MIT')
-depends=('magnum-git' 'devil' 'libpng' 'libjpeg' 'freetype2')
+depends=('magnum-git' 'devil' 'libpng' 'libjpeg' 'freetype2' 'assimp')
 makedepends=('cmake' 'git')
 provides=('magnum-plugins')
 conflicts=('magnum-plugins')
@@ -29,6 +29,7 @@ build() {
         -DWITH_ANYIMAGECONVERTER=ON \
         -DWITH_ANYIMAGEIMPORTER=ON \
         -DWITH_ANYSCENEIMPORTER=ON \
+        -DWITH_ASSIMPIMPORTER=ON \
         -DWITH_DDSIMPORTER=ON \
         -DWITH_DEVILIMAGEIMPORTER=ON \
         -DWITH_DRFLACAUDIOIMPORTER=ON \
