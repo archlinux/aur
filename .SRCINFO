@@ -1,0 +1,14 @@
+pkgbase = swatchbooker
+	pkgdesc = Colour swatch book viewer/convertor/editor
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = http://www.selapa.net/swatchbooker/
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-pyqt4
+	source = swatchbooker-0.7.6.tar.gz::https://github.com/olivierberten/SwatchBooker/archive/0.7.6.tar.gz
+	sha256sums = 8597f3a32d2da16aa79e9b3ebb64383aaba870a26acb11bf7ccae50923639848
+
+pkgname = swatchbooker
+
