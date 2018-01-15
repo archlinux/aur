@@ -7,7 +7,7 @@
 
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=2.0.0.r5407.af44ffaa
+pkgver=2.0.0.r5414.8d0ce19c
 _upver=2.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -28,9 +28,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"/$pkgbase/sources/pyside2
-
-  # https://bugreports.qt.io/browse/PYSIDE-589
-  git revert --no-edit 5d5eed53e49f4aaea85ce1638dd6fa3774a960e0
 }
 
 build(){
