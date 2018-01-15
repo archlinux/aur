@@ -3,7 +3,7 @@
 pkgname=kicad-footprints-git
 _pkgname=${pkgname%-*}
 pkgver=dae2bc57
-pkgrel=1
+pkgrel=2
 pkgdesc="Official KiCad footprint libraries"
 arch=('any')
 url="https://github.com/KiCad/kicad-footprints"
@@ -22,7 +22,7 @@ pkgver() {
 package() {
   cd "$srcdir"
 
-  mkdir -p "$pkgdir/usr/share/kicad/"
+  mkdir -p "$pkgdir/usr/share/kicad/modules/"
 
-  cp -r "$srcdir/$_pkgname" "$pkgdir/usr/share/kicad/modules"
+  cp -r "$srcdir/$_pkgname"/* "$pkgdir/usr/share/kicad/modules/"
 }
