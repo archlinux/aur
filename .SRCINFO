@@ -1,0 +1,19 @@
+pkgbase = kicad-packages3d-git
+	pkgdesc = Official KiCad 3D model libraries for rendering and MCAD integration
+	pkgver = 4e34135f
+	pkgrel = 1
+	url = https://github.com/KiCad/kicad-packages3D
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	conflicts = kicad-library-bzr
+	conflicts = kicad-library-git
+	conflicts = kicad-library-3d
+	conflicts = kicad-library
+	options = !strip
+	source = git://github.com/KiCad/kicad-packages3D.git
+	md5sums = SKIP
+
+pkgname = kicad-packages3d-git
+
