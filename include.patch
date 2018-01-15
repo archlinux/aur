@@ -1,11 +1,11 @@
 diff --git a/JASP-Engine/JASP-Engine.pro b/JASP-Engine/JASP-Engine.pro
-index 1eb77cdf..438b206d 100644
+index 82f3f985..197fd8f6 100644
 --- a/JASP-Engine/JASP-Engine.pro
 +++ b/JASP-Engine/JASP-Engine.pro
-@@ -73,6 +73,7 @@ INCLUDEPATH += \
- 
+@@ -76,6 +76,7 @@ INCLUDEPATH += \
  linux:INCLUDEPATH += \
  	/usr/share/R/include \
+         /usr/lib/R/library/include \
 +	/usr/include/R \
  	$$_R_HOME/site-library/Rcpp/include
  
