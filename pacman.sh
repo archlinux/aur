@@ -14,10 +14,12 @@ alias bl.pacman.show_not_maintained_by_pacman_system_files=bl_tools_show_not_mai
 bl_pacman_show_not_maintained_by_pacman_system_files() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Shows all files which are not maintained by pacman on currently running
-    system.
+        Shows all files which are not maintained by pacman on currently running
+        system.
 
-    `bl.pacman.show_not_maintained_by_pacman_system_file`
+        ```bash
+            bl.pacman.show_not_maintained_by_pacman_system_file
+        ```
     '
     local allFiles=$(mktemp)
     local allMaintainedFiles=$(mktemp)
@@ -52,9 +54,11 @@ alias bl.pacman.show_config_backups=bl_pacman_show_config_backups
 bl_pacman_show_config_backups() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Shows all config backups created by pacman.
+        Shows all config backups created by pacman.
 
-    `bl.pacman.show_config_backups`
+        ```bash
+            bl.pacman.show_config_backups
+        ```
     '
     cd / 1>/dev/null
     for pattern in '*.pacnew' '*.orig' '*_backup*' '*.pacorig'; do

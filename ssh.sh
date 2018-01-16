@@ -14,10 +14,12 @@ alias bl.ssh.screen=bl_ssh_screen
 bl_ssh_screen() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Wraps the ssh client for automatically starting a screen session on
-    server.
+        Wraps the ssh client for automatically starting a screen session on
+        server.
 
-    `bl.ssh.screen user@host [SSH_OPTIONS]`
+        ```bash
+            bl.ssh.screen user@host [SSH_OPTIONS]
+        ```
     '
     ssh "$1" -t 'screen -r || screen -S main' "${@:2}"
     return $?
@@ -44,15 +46,21 @@ alias bl.ssh.print=bl_ssh_print
 bl_ssh_print() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Prints a file via ssh. A given printable file will be sent to a given
-    location via scp. The file be stored in remotes home directory with given
-    name. After this procedure a remote print order will be sent.
+        Prints a file via ssh. A given printable file will be sent to a given
+        location via scp. The file be stored in remotes home directory with
+        given name. After this procedure a remote print order will be sent.
 
-    ```
-        bl.ssh.print /home/hans/document.txt
-        bl.ssh.print /home/hans/document.txt hans
-        bl.ssh.print /home/hans/document.txt hans hp15
-    ```
+        ```bash
+            bl.ssh.print /home/hans/document.txt
+        ```
+
+        ```bash
+            bl.ssh.print /home/hans/document.txt hans
+        ```
+
+        ```bash
+            bl.ssh.print /home/hans/document.txt hans hp15
+        ```
     '
     local user='sickertt'
     local host='login.informatik.uni-freiburg.de'

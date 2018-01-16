@@ -15,9 +15,11 @@ alias bl.network.wlan_start=bl.network_wlan_start
 bl_network_wlan_start() {
     # shellcheck disable=SC2034
     local __documentation__='
-    Starts wlan functionality.
+        Starts wlan functionality.
 
-    `bl.network.wlan_start`
+        ```bash
+            bl.network.wlan_start
+        ```
     '
     wpa_supplicant -c /etc/wpa_supplicant.conf -i wlan0 -D wext -B
     dhclient wlan0
@@ -27,9 +29,11 @@ alias bl.network.wlan_stop=bl_network_wlan_stop
 bl_network_wlan_stop() {
     # shellcheck disable=SC2034
     local __documentation__='
-    Stops wlan functionality.
+        Stops wlan functionality.
 
-    `bl.network.wlan_stop`
+        ```bash
+            bl.network.wlan_stop
+        ```
     '
     killall wpa_supplicant
     killall dhclient
@@ -40,9 +44,11 @@ alias bl.network.wlan_restart=bl_network_wlan_restart
 bl_network_wlan_restart() {
     # shellcheck disable=SC2034
     local __documentation__='
-    Restart wlan functionality.
+        Restart wlan functionality.
 
-    `bl.network.wlan_restart`
+        ```bash
+            bl.network.wlan_restart
+        ```
     '
     bl.network.wlan_stop
     bl.network.wlan_start

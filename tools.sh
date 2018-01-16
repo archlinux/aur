@@ -14,37 +14,37 @@ alias bl.tools.is_defined=bl_tools_is_defined
 bl_tools_is_defined() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Tests if variable is defined (can also be empty)
+        Tests if variable is defined (can also be empty)
 
-    >>> local foo="bar"
-    >>> bl.tools.is_defined foo; echo $?
-    >>> [[ -v foo ]]; echo $?
-    0
-    0
-    >>> local defined_but_empty=""
-    >>> bl.tools.is_defined defined_but_empty; echo $?
-    0
-    >>> bl.tools.is_defined undefined_variable; echo $?
-    1
-    >>> set -o nounset
-    >>> bl.tools.is_defined undefined_variable; echo $?
-    1
-    Same Tests for bash < 4.3
-    >>> bl_tools__bash_version_test=true
-    >>> local foo="bar"
-    >>> bl.tools.is_defined foo; echo $?
-    0
-    >>> bl_tools__bash_version_test=true
-    >>> local defined_but_empty=""
-    >>> bl.tools.is_defined defined_but_empty; echo $?
-    0
-    >>> bl_tools__bash_version_test=true
-    >>> bl.tools.is_defined undefined_variable; echo $?
-    1
-    >>> bl_tools__bash_version_test=true
-    >>> set -o nounset
-    >>> bl.tools.is_defined undefined_variable; echo $?
-    1
+        >>> local foo="bar"
+        >>> bl.tools.is_defined foo; echo $?
+        >>> [[ -v foo ]]; echo $?
+        0
+        0
+        >>> local defined_but_empty=""
+        >>> bl.tools.is_defined defined_but_empty; echo $?
+        0
+        >>> bl.tools.is_defined undefined_variable; echo $?
+        1
+        >>> set -o nounset
+        >>> bl.tools.is_defined undefined_variable; echo $?
+        1
+        Same Tests for bash < 4.3
+        >>> bl_tools__bash_version_test=true
+        >>> local foo="bar"
+        >>> bl.tools.is_defined foo; echo $?
+        0
+        >>> bl_tools__bash_version_test=true
+        >>> local defined_but_empty=""
+        >>> bl.tools.is_defined defined_but_empty; echo $?
+        0
+        >>> bl_tools__bash_version_test=true
+        >>> bl.tools.is_defined undefined_variable; echo $?
+        1
+        >>> bl_tools__bash_version_test=true
+        >>> set -o nounset
+        >>> bl.tools.is_defined undefined_variable; echo $?
+        1
     '
     (
     set +o nounset
@@ -52,8 +52,9 @@ bl_tools_is_defined() {
             && [ -z "${bl_tools__bash_version_test:-}" ]; then
         [[ -v "${1:-}" ]] || exit 1
     else # for bash < 4.3
-        # NOTE: ${varname:-foo} expands to foo if varname is unset or set to the
-        # empty string; ${varname-foo} only expands to foo if varname is unset.
+        # NOTE: ${varname:-foo} expands to foo if varname is unset or set to
+        # the empty string; ${varname-foo} only expands to foo if varname is
+        # unset.
         # shellcheck disable=SC2016
         eval '! [[ "${'"${1}"'-this_variable_is_undefined_!!!}"' \
             ' == "this_variable_is_undefined_!!!" ]]'
@@ -65,19 +66,19 @@ alias bl.tools.is_empty=bl_tools_is_empty
 bl_tools_is_empty() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Tests if variable is empty (undefined variables are not empty)
+        Tests if variable is empty (undefined variables are not empty)
 
-    >>> local foo="bar"
-    >>> bl.tools.is_empty foo; echo $?
-    1
-    >>> local defined_and_empty=""
-    >>> bl.tools.is_empty defined_and_empty; echo $?
-    0
-    >>> bl.tools.is_empty undefined_variable; echo $?
-    1
-    >>> set -u
-    >>> bl.tools.is_empty undefined_variable; echo $?
-    1
+        >>> local foo="bar"
+        >>> bl.tools.is_empty foo; echo $?
+        1
+        >>> local defined_and_empty=""
+        >>> bl.tools.is_empty defined_and_empty; echo $?
+        0
+        >>> bl.tools.is_empty undefined_variable; echo $?
+        1
+        >>> set -u
+        >>> bl.tools.is_empty undefined_variable; echo $?
+        1
     '
     local variable_name="$1"
     bl.tools.is_defined "$variable_name" || return 1
@@ -87,13 +88,13 @@ alias bl.tools.is_main=bl_tools_is_main
 bl_tools_is_main() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Returns true if current script is being executed.
+        Returns true if current script is being executed.
 
-    NOTE: This test passes because `bl.tools.is_main` is called by "doctest.sh"
-    which is being executed.
+        NOTE: This test passes because `bl.tools.is_main` is called by
+        "doctest.sh" which is being executed.
 
-    >>> bl.tools.is_main && echo yes
-    yes
+        >>> bl.tools.is_main && echo yes
+        yes
     '
     [[ "${BASH_SOURCE[1]}" = "$0" ]]
 }
@@ -101,11 +102,11 @@ alias bl.tools.unique=bl_tools_unique
 bl_tools_unique() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    >>> local foo="a\nb\na\nb\nc\nb\nc"
-    >>> echo -e "$foo" | bl.tools.unique
-    a
-    b
-    c
+        >>> local foo="a\nb\na\nb\nc\nb\nc"
+        >>> echo -e "$foo" | bl.tools.unique
+        a
+        b
+        c
     '
     nl "$@" | sort --key 2 | uniq --skip-fields 1 | sort --numeric-sort | \
         sed 's/\s*[0-9]\+\s\+//'
@@ -114,21 +115,22 @@ alias bl.tools.run_with_appended_shebang=bl_tools_run_with_appended_shebang
 bl_tools_run_with_appended_shebang() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    This function reads and returns the shebang from given file if exist.
+        This function reads and returns the shebang from given file if exist.
 
-    ```
-        /usr/bin/env python -O /path/to/script.py
+        ```bash
+            /usr/bin/env python -O /path/to/script.py
 
-        bl.tools.run_with_appended_shebang -O -- /path/to/script.py
-    ```
-    ```
-        /usr/bin/env python -O /path/to/script.py argument1 argument2
+            bl.tools.run_with_appended_shebang -O -- /path/to/script.py
+        ```
 
-        bl.tools.run_with_appended_shebang -O -- \
-            /path/to/script.py \
-            argument1 \
-            argument2
-    ...
+        ```bash
+            /usr/bin/env python -O /path/to/script.py argument1 argument2
+
+            bl.tools.run_with_appended_shebang -O -- \
+                /path/to/script.py \
+                argument1 \
+                argument2
+        ```
     '
     local shebangArguments=''
     local arguments=''
@@ -168,10 +170,12 @@ alias bl.tools.make_single_executbale=bl_tools_make_single_executable
 bl_tools_make_single_executable() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Creates a bsd and virtually posix shell compatible single executable file
-    from an application directory.
+        Creates a bsd and virtually posix shell compatible single executable
+        file from an application directory.
 
-    `bl.tools.make_single_executable /applicationDirectory startFile`
+        ```bash
+            bl.tools.make_single_executable /applicationDirectory startFile
+        ```
     '
     if [[ ! "$1" ]]; then
         echo "Usage: $0 <DIRECTOTY_PATH> [EXECUTABLE_FILE_NAME] [RELATIVE_START_FILE_PATH]"
@@ -207,16 +211,19 @@ alias bl.tools.send_e_mail=bl_tools_send_e_mail
 bl_tools_send_e_mail() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Sends an email.
+        Sends an email.
 
-    ```
-        bl.tools.send_e_mail subject content address
-        bl.tools.send_e_mail \
-            subject \
-            content \
-            address \
-            "Sun, 2 Feb 1986 14:23:56 +0100"
-    ```
+        ```bash
+            bl.tools.send_e_mail subject content address
+        ```
+
+        ```bash
+            bl.tools.send_e_mail \
+                subject \
+                content \
+                address \
+                "Sun, 2 Feb 1986 14:23:56 +0100"
+        ```
     '
     local eMailAddress="$ILU_ALTERNATE_USER_EMAIL_ADDRESS"
     if [ "$3" ]; then
@@ -242,9 +249,11 @@ alias bl.tools.make_openssl_pem_file=bl_tools_make_openssl_pem_file
 bl_tools_make_openssl_pem_file() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Creates a concatenated pem file needed for server with https support.
+        Creates a concatenated pem file needed for server with https support.
 
-    `bl.tools.make_openssl_pem_file`
+        ```bash
+            bl.tools.make_openssl_pem_file
+        ```
     '
     local host='localhost'
     if [[ "$1" ]]; then

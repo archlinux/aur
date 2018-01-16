@@ -35,11 +35,13 @@ alias bl.changeroot=bl_changeroot
 bl_changeroot() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    This function performs a linux change root if needed and provides all
-    kernel api filesystems in target root by using a change root interface
-    with minimal needed rights.
+        This function performs a linux change root if needed and provides all
+        kernel api filesystems in target root by using a change root interface
+        with minimal needed rights.
 
-    `changeroot /new_root /usr/bin/env bash some arguments`
+        ```bash
+            changeroot /new_root /usr/bin/env bash some arguments
+        ```
     '
     if [[ "$1" == '/' ]]; then
         shift
@@ -54,9 +56,12 @@ alias bl.changeroot.with_fake_fallback=bl_changeroot_with_fake_fallback
 bl_changeroot_with_fake_fallback() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Perform the available change root program wich needs at least rights.
+        Perform the available change root program wich needs at least rights.
 
-    `bl_changeroot_with_fake_fallback /new_root /usr/bin/env bash some arguments`
+        ```bash
+            bl_changeroot_with_fake_fallback /new_root /usr/bin/env bash \
+                some arguments
+        ```
     '
     if [[ "$UID" == '0' ]]; then
         chroot "$@"
@@ -72,7 +77,10 @@ bl_changeroot_with_kernel_api() {
     Performs a change root by mounting needed host locations in change root
     environment.
 
-    `bl_changeroot_with_kernel_api /new_root /usr/bin/env bash some arguments`
+    ```bash
+        bl_changeroot_with_kernel_api /new_root /usr/bin/env bash \
+                some arguments
+    ```
     '
     local new_root_location="$1"
     if [[ ! "$new_root_location" =~ .*/$ ]]; then

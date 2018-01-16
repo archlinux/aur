@@ -24,41 +24,47 @@ bl.module.import bashlink.tools
 # region variables
 # shellcheck disable=SC2034,SC2016
 bl_doctest__documentation__='
-    The doctest module implements function and module level testing via "doc
-    strings".
-    Tests can be run by invoking `doctest.sh file1 folder1 file2 ...`.
-    #### Options:
-    ```
-    --help|-h                   Print help message.
-    --side-by-side              Print diff of failing tests side by side.
-    --no-check-namespace        Do not warn about unprefixed definitions.
-    --no-check-undocumented     Do not warn about undocumented functions.
-    --use-nounset               Accessing undefined variables produces error.
-    --verbose|-v                Be more verbose
-    ```
-    #### Example output `./doctest.sh -v arguments.sh`
+    The doctest module implements function and module level testing via
+    documentation strings. Tests can be run by invoking:
+
     ```bash
-    [verbose:doctest.sh:330] bl.arguments:[PASS]
-    [verbose:doctest.sh:330] bl.arguments.get_flag:[PASS]
-    [verbose:doctest.sh:330] bl.arguments.get_keyword:[PASS]
-    [verbose:doctest.sh:330] bl.arguments.get_parameter:[PASS]
-    [verbose:doctest.sh:330] bl.arguments.get_positional:[PASS]
-    [verbose:doctest.sh:330] bl.arguments.set:[PASS]
-    [info:doctest.sh:590] bl.arguments - passed 6/6 tests in 918 ms
-    [info:doctest.sh:643] Total: passed 1/1 modules in 941 ms
+        doctest.sh file1 folder1 file2 ...
     ```
+
+    #### Options:
+
+    ```
+        --help|-h                   Print help message.
+        --side-by-side              Print diff of failing tests side by side.
+        --no-check-namespace        Do not warn about unprefixed definitions.
+        --no-check-undocumented     Do not warn about undocumented functions.
+        --use-nounset               Accessing undefined variables produces error.
+        --verbose|-v                Be more verbose
+    ```
+
+    #### Example output for `./doctest.sh -v arguments.sh`
+
+    ```bash
+        [verbose:doctest.sh:330] bl.arguments:[PASS]
+        [verbose:doctest.sh:330] bl.arguments.get_flag:[PASS]
+        [verbose:doctest.sh:330] bl.arguments.get_keyword:[PASS]
+        [verbose:doctest.sh:330] bl.arguments.get_parameter:[PASS]
+        [verbose:doctest.sh:330] bl.arguments.get_positional:[PASS]
+        [verbose:doctest.sh:330] bl.arguments.set:[PASS]
+        [info:doctest.sh:590] bl.arguments - passed 6/6 tests in 918 ms
+        [info:doctest.sh:643] Total: passed 1/1 modules in 941 ms
+    ```
+
     A docstring can be defined for a function by defining a variable named
-    `__documentation__` at the function scope.
-    On the module level, the variable name should be `<module_name>__documentation__`
-    (e.g. `bl_arguments__documentation__` for the example above).
-    Note: The docstring needs to be defined with single quotes.
-    Code contained in a module level variable named
-    `<module_name>__bl_doctest_setup__` will be run once before all the Tests of
-    a module are run. This is usefull for defining mockup functions/data
-    that can be used throughout all tests.
+    `__documentation__` at the function scope. On the module level, the
+    variable name should be `<module_name>__documentation__` (e.g.
+    `bl_arguments__documentation__` for the example above). NOTE: The
+    "docstring" needs to be defined with single quotes. Code contained in a
+    module level variable named `<module_name>__bl_doctest_setup__` will be run
+    once before all the tests of a module are run. This is usefull for defining
+    mockup functions/data that can be used throughout all tests.
+
     +bl.documentation.exclude_print
-    #### Tests
-    Tests are delimited by blank lines:
     >>> echo bar
     bar
     >>> echo $(( 1 + 2 ))
@@ -124,66 +130,66 @@ alias bl.doctest.compare_result=bl_doctest_compare_result
 bl_doctest_compare_result() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    >>> local buffer="line 1
-    >>> line 2"
-    >>> local got="line 1
-    >>> line 2"
-    >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
-    0
-    >>> local buffer="line 1
-    >>> foo"
-    >>> local got="line 1
-    >>> line 2"
-    >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
-    1
-    >>> local buffer="+bl.doctest.contains
-    >>> line
-    >>> line"
-    >>> local got="line 1
-    >>> line 2"
-    >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
-    0
-    >>> local buffer="+bl.doctest.contains
-    >>> line
-    >>> foo"
-    >>> local got="line 1
-    >>> line 2"
-    >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
-    1
-    >>> local buffer="+bl.doctest.ellipsis
-    >>> line
-    >>> ...
-    >>> "
-    >>> local got="line
-    >>> line 2
-    >>> "
-    >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
-    0
-    >>> local buffer="+bl.doctest.ellipsis
-    >>> line
-    >>> ...
-    >>> line 2
-    >>> "
-    >>> local got="line
-    >>> ignore
-    >>> ignore
-    >>> line 2
-    >>> "
-    >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
-    0
-    >>> local buffer="+bl.doctest.ellipsis
-    >>> line
-    >>> ...
-    >>> line 2
-    >>> "
-    >>> local got="line
-    >>> ignore
-    >>> ignore
-    >>> line 2
-    >>> line 3
-    >>> "
-    >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
-    1
+        >>> local buffer="line 1
+        >>> line 2"
+        >>> local got="line 1
+        >>> line 2"
+        >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
+        0
+        >>> local buffer="line 1
+        >>> foo"
+        >>> local got="line 1
+        >>> line 2"
+        >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
+        1
+        >>> local buffer="+bl.doctest.contains
+        >>> line
+        >>> line"
+        >>> local got="line 1
+        >>> line 2"
+        >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
+        0
+        >>> local buffer="+bl.doctest.contains
+        >>> line
+        >>> foo"
+        >>> local got="line 1
+        >>> line 2"
+        >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
+        1
+        >>> local buffer="+bl.doctest.ellipsis
+        >>> line
+        >>> ...
+        >>> "
+        >>> local got="line
+        >>> line 2
+        >>> "
+        >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
+        0
+        >>> local buffer="+bl.doctest.ellipsis
+        >>> line
+        >>> ...
+        >>> line 2
+        >>> "
+        >>> local got="line
+        >>> ignore
+        >>> ignore
+        >>> line 2
+        >>> "
+        >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
+        0
+        >>> local buffer="+bl.doctest.ellipsis
+        >>> line
+        >>> ...
+        >>> line 2
+        >>> "
+        >>> local got="line
+        >>> ignore
+        >>> ignore
+        >>> line 2
+        >>> line 3
+        >>> "
+        >>> bl.doctest.compare_result "$buffer" "$got"; echo $?
+        1
     '
     local buffer="$1"
     local got="$2"
@@ -270,16 +276,16 @@ alias bl.doctest.eval=bl_doctest_eval
 bl_doctest_eval() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    >>> local test_buffer="
-    >>> echo foo
-    >>> echo bar
-    >>> "
-    >>> local output_buffer="foo
-    >>> bar"
-    >>> bl_doctest_use_side_by_side_output=false
-    >>> bl_doctest_module_reference_under_test=module
-    >>> bl_doctest_nounset=false
-    >>> bl.doctest.eval "$test_buffer" "$output_buffer"
+        >>> local test_buffer="
+        >>> echo foo
+        >>> echo bar
+        >>> "
+        >>> local output_buffer="foo
+        >>> bar"
+        >>> bl_doctest_use_side_by_side_output=false
+        >>> bl_doctest_module_reference_under_test=module
+        >>> bl_doctest_nounset=false
+        >>> bl.doctest.eval "$test_buffer" "$output_buffer"
     '
     local test_buffer="$1"
     [[ -z "$test_buffer" ]] && return 0
@@ -364,83 +370,83 @@ alias bl.doctest.parse_docstring=bl_doctest_parse_docstring
 bl_doctest_parse_docstring() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    >>> local docstring="
-    >>>     (test)block
-    >>>     output block
-    >>> "
-    >>> _() {
-    >>>     local output_buffer="$2"
-    >>>     echo block:
-    >>>     while read -r line; do
-    >>>         if [ -z "$line" ]; then
-    >>>             echo "empty_line"
-    >>>         else
-    >>>             echo "$line"
-    >>>         fi
-    >>>     done <<< "$output_buffer"
-    >>> }
-    >>> bl.doctest.parse_docstring "$docstring" _ "(test)"
-    block:
-    output block
-    >>> local docstring="
-    >>>     Some text (block 1).
-    >>>
-    >>>
-    >>>     Some more text (block 1).
-    >>>     (test)block 2
-    >>>     (test)block 2.2
-    >>>     output block 2
-    >>>     (test)block 3
-    >>>     output block 3
-    >>>
-    >>>     Even more text (block 4).
-    >>> "
-    >>> local i=0
-    >>> _() {
-    >>>     local test_buffer="$1"
-    >>>     local output_buffer="$2"
-    >>>     local text_buffer="$3"
-    >>>     local line
-    >>>     (( i++ ))
-    >>>     echo "text_buffer (block $i):"
-    >>>     if [ ! -z "$text_buffer" ]; then
-    >>>         while read -r line; do
-    >>>             if [ -z "$line" ]; then
-    >>>                 echo "empty_line"
-    >>>             else
-    >>>                 echo "$line"
-    >>>             fi
-    >>>         done <<< "$text_buffer"
-    >>>     fi
-    >>>     echo "test_buffer (block $i):"
-    >>>     [ ! -z "$test_buffer" ] && echo "$test_buffer"
-    >>>     echo "output_buffer (block $i):"
-    >>>     [ ! -z "$output_buffer" ] && echo "$output_buffer"
-    >>>     return 0
-    >>> }
-    >>> bl.doctest.parse_docstring "$docstring" _ "(test)"
-    text_buffer (block 1):
-    Some text (block 1).
-    empty_line
-    empty_line
-    Some more text (block 1).
-    test_buffer (block 1):
-    output_buffer (block 1):
-    text_buffer (block 2):
-    test_buffer (block 2):
-    block 2
-    block 2.2
-    output_buffer (block 2):
-    output block 2
-    text_buffer (block 3):
-    test_buffer (block 3):
-    block 3
-    output_buffer (block 3):
-    output block 3
-    text_buffer (block 4):
-    Even more text (block 4).
-    test_buffer (block 4):
-    output_buffer (block 4):
+        >>> local docstring="
+        >>>     (test)block
+        >>>     output block
+        >>> "
+        >>> _() {
+        >>>     local output_buffer="$2"
+        >>>     echo block:
+        >>>     while read -r line; do
+        >>>         if [ -z "$line" ]; then
+        >>>             echo "empty_line"
+        >>>         else
+        >>>             echo "$line"
+        >>>         fi
+        >>>     done <<< "$output_buffer"
+        >>> }
+        >>> bl.doctest.parse_docstring "$docstring" _ "(test)"
+        block:
+        output block
+        >>> local docstring="
+        >>>     Some text (block 1).
+        >>>
+        >>>
+        >>>     Some more text (block 1).
+        >>>     (test)block 2
+        >>>     (test)block 2.2
+        >>>     output block 2
+        >>>     (test)block 3
+        >>>     output block 3
+        >>>
+        >>>     Even more text (block 4).
+        >>> "
+        >>> local i=0
+        >>> _() {
+        >>>     local test_buffer="$1"
+        >>>     local output_buffer="$2"
+        >>>     local text_buffer="$3"
+        >>>     local line
+        >>>     (( i++ ))
+        >>>     echo "text_buffer (block $i):"
+        >>>     if [ ! -z "$text_buffer" ]; then
+        >>>         while read -r line; do
+        >>>             if [ -z "$line" ]; then
+        >>>                 echo "empty_line"
+        >>>             else
+        >>>                 echo "$line"
+        >>>             fi
+        >>>         done <<< "$text_buffer"
+        >>>     fi
+        >>>     echo "test_buffer (block $i):"
+        >>>     [ ! -z "$test_buffer" ] && echo "$test_buffer"
+        >>>     echo "output_buffer (block $i):"
+        >>>     [ ! -z "$output_buffer" ] && echo "$output_buffer"
+        >>>     return 0
+        >>> }
+        >>> bl.doctest.parse_docstring "$docstring" _ "(test)"
+        text_buffer (block 1):
+        Some text (block 1).
+        empty_line
+        empty_line
+        Some more text (block 1).
+        test_buffer (block 1):
+        output_buffer (block 1):
+        text_buffer (block 2):
+        test_buffer (block 2):
+        block 2
+        block 2.2
+        output_buffer (block 2):
+        output block 2
+        text_buffer (block 3):
+        test_buffer (block 3):
+        block 3
+        output_buffer (block 3):
+        output block 3
+        text_buffer (block 4):
+        Even more text (block 4).
+        test_buffer (block 4):
+        output_buffer (block 4):
     '
     local preserve_prompt
     bl.arguments.set "$@"

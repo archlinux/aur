@@ -14,10 +14,12 @@ alias bl.system.compile_and_install_without_root=bl_system_compile_and_install_w
 bl_system_compile_and_install_without_root() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Compiles and installs a program by its given source code. Your have to
-    be inside the source code folder to run this function.
+        Compiles and installs a program by its given source code. Your have to
+        be inside the source code folder to run this function.
 
-    `system.compile_and_install_without_root /home/user/myUser/`
+        ```bash
+            system.compile_and_install_without_root /home/user/myUser/
+        ```
     '
     local install_location="~/system/"
     if [ "$1" ]; then
@@ -34,10 +36,12 @@ alias bl.system.mount_root_file_system_writable=bl_system_mount_root_file_system
 bl_system_mount_root_file_system_writable() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    If root file system is mounted as read only this command makes it
-    runnable.
+        If root file system is mounted as read only this command makes it
+        runnable.
 
-    `bl.system.mount_root_file_system_writable`
+        ```bash
+            bl.system.mount_root_file_system_writable
+        ```
     '
     mount -rw --options remount /
     return $?
@@ -46,10 +50,12 @@ alias bl.system.restore_grub=bl_system_restore_grub
 bl_system_restore_grub() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Restores the linux boot-manager grub if it was overwritten (e.g. in
-    windows).
+        Restores the linux boot-manager grub if it was overwritten (e.g. in
+        windows).
 
-    `bl.system.restore_grub`
+        ```bash
+            bl.system.restore_grub
+        ```
     '
     # TODO use arch chroot
     echo 'Mount systems root filesystem'

@@ -57,7 +57,7 @@ bl_arguments_get_flag() {
         Sets `variable_name` to `true` if flag (or on of its aliases) is
         contained in the argument array (see `bl.arguments.set`).
 
-        ```
+        ```bash
             bl.arguments.get_flag flag [flag_aliases...] variable_name
         ```
 
@@ -103,7 +103,7 @@ bl_arguments_get_keyword() {
         Sets `variable_name` to the value of `keyword` the argument array (see
         `bl.arguments.set`) contains `keyword=value`.
 
-        ```
+        ```bash
             bl.arguments.get_keyword keyword variable_name
         ```
 
@@ -151,11 +151,11 @@ bl_arguments_get_parameter() {
         Sets `variable_name` to the field following `parameter` (or one of the
         `parameter_aliases`) from the argument array (see `bl.arguments.set`).
 
-        ```
+        ```bash
             bl.arguments.get_parameter parameter [parameter_aliases...] variable_name
         ```
 
-        ```
+        ```bash
             bl.arguments.get_parameter --log-level -l loglevel
         ```
 
@@ -195,7 +195,7 @@ bl_arguments_get_positional() {
         Get the positional parameter at `index`. Use after extracting
         parameters, keywords and flags.
 
-        ```
+        ```bash
             bl.arguments.get_positional index variable_name
         ```
 
@@ -247,7 +247,7 @@ bl_arguments_wrapper_with_minimum_number_of_arguments() {
         `--log-level` and `warning` if not at least two arguments are given to
         `program_name`:
 
-        ```
+        ```bash
             program_name $(bl.arguments.wrapper_with_minimum_number_of_arguments \
                 NUMBER_OF_DEFAULT_ARGUMENTS \
                 MINIMUM_NUMBER_OF_ARGUMENTS_TO_OVERWRITE_DEFAULT_ARGUMENTS \

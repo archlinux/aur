@@ -40,7 +40,7 @@ alias bl.module.determine_aliases=bl_module_determine_aliases
 bl_module_determine_aliases() {
     # shellcheck disable=SC2016,2034
     local __documentation__='
-    Returns all defined aliases in the current scope.
+        Returns all defined aliases in the current scope.
     '
     alias | grep '^alias' \
         | cut --delimiter ' ' --fields 2 - | cut --delimiter '=' --fields 1
@@ -49,9 +49,11 @@ alias bl.module.determine_declared_names=bl_module_determine_declared_names
 bl_module_determine_declared_names() {
     # shellcheck disable=SC2016,2034
     local __documentation__='
-    Return all declared variables and function in the current scope.
+        Return all declared variables and function in the current scope.
 
-    `declarations="$(bl.module.determine_declared_names)"`
+        ```bash
+            declarations="$(bl.module.determine_declared_names)"
+        ```
     '
     local only_functions="${1:-}"
     [ -z "$only_functions" ] && only_functions=false
@@ -67,7 +69,7 @@ alias bl.module.log=bl_module_log
 bl_module_log() {
     # shellcheck disable=SC2016,2034
     local __documentation__='
-    Logs arbitrary strings with given level.
+        Logs arbitrary strings with given level.
     '
     if hash bl.logging.log &>/dev/null; then
         bl.logging.log "$@"
@@ -108,7 +110,7 @@ alias bl.module.import_with_namespace_check=bl_module_import_with_namespace_chec
 bl_module_import_with_namespace_check() {
     # shellcheck disable=SC2016,2034
     local __documentation__='
-    Sources a script and checks variable definitions before and after sourcing.
+        Sources a script and checks variable definitions before and after sourcing.
     '
     local file_path="$1"
     local resolved_scope_name="$2"
@@ -214,38 +216,40 @@ alias bl.module.resolve=bl_module_resolve
 bl_module_resolve() {
     # shellcheck disable=SC2016,2034
     local __documentation__='
-    IMPORTANT: Do not use "bl.module.import" inside functions -> aliases do not work
-    TODO: explain this in more detail
-    >>> (
-    >>> bl.module.import bashlink.logging
-    >>> bl.logging.set_level warn
-    >>> bl.module.import test/mockup_module-b.sh false
-    >>> )
-    +bl.doctest.contains
-    imported module c
-    module "mockup_module_c" defines unprefixed name: "foo123"
-    imported module b
-    Modules should be imported only once.
-    >>> (bl.module.import test/mockup_module_a.sh && \
-    >>>     bl.module.import test/mockup_module_a.sh)
-    imported module a
-    >>> (
-    >>> bl.module.import test/mockup_module_a.sh false
-    >>> echo $bl_module_declared_function_names_after_source
-    >>> )
-    imported module a
-    mockup_module_a_foo
-    >>> (
-    >>> bl.module.import bashlink.logging
-    >>> bl.logging.set_level warn
-    >>> bl.module.import test/mockup_module_c.sh false
-    >>> echo $bl_module_declared_function_names_after_source
-    >>> )
-    +bl.doctest.contains
-    imported module b
-    imported module c
-    module "mockup_module_c" defines unprefixed name: "foo123"
-    foo123
+        IMPORTANT: Do not use `bl.module.import` inside functions -> aliases do
+        not work.
+
+        TODO: explain this in more detail
+        >>> (
+        >>> bl.module.import bashlink.logging
+        >>> bl.logging.set_level warn
+        >>> bl.module.import test/mockup_module-b.sh false
+        >>> )
+        +bl.doctest.contains
+        imported module c
+        module "mockup_module_c" defines unprefixed name: "foo123"
+        imported module b
+        Modules should be imported only once.
+        >>> (bl.module.import test/mockup_module_a.sh && \
+        >>>     bl.module.import test/mockup_module_a.sh)
+        imported module a
+        >>> (
+        >>> bl.module.import test/mockup_module_a.sh false
+        >>> echo $bl_module_declared_function_names_after_source
+        >>> )
+        imported module a
+        mockup_module_a_foo
+        >>> (
+        >>> bl.module.import bashlink.logging
+        >>> bl.logging.set_level warn
+        >>> bl.module.import test/mockup_module_c.sh false
+        >>> echo $bl_module_declared_function_names_after_source
+        >>> )
+        +bl.doctest.contains
+        imported module b
+        imported module c
+        module "mockup_module_c" defines unprefixed name: "foo123"
+        foo123
     '
     local name="$1"
     local caller_path

@@ -16,9 +16,11 @@ bl_string_make_command_promt_prefix() {
     local errorNumber=$?
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Generates a new user prompt with useful runtime parameters.
+        Generates a new user prompt with useful runtime parameters.
 
-    `bl.string.make_command_promt_prefix`
+        ```bash
+            bl.string.make_command_promt_prefix
+        ```
     '
     local systemLoadAverage=$(uptime | grep --extended-regexp --only-matching \
         '[0-9]{1,2}\.[0-9]{1,2}' | head --lines 1)
@@ -51,14 +53,14 @@ alias bl.string.validate_argument=bl_string_validate_argument
 bl_string_validate_argument() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__="
-    Validates a given bash argument.
+        Validates a given bash argument.
 
-    >>> bl.string.validate_argument hans
-    'hans'
-    >>> bl.string.validate_argument ha'n's
-    \"ha'n's\"
-    >>> bl.string.validate_argument h\"a\"'n's
-    'h\"a\"\'n\'s'
+        >>> bl.string.validate_argument hans
+        'hans'
+        >>> bl.string.validate_argument ha'n's
+        \"ha'n's\"
+        >>> bl.string.validate_argument h\"a\"'n's
+        'h\"a\"\'n\'s'
     "
     if [[ ! "$(grep "'" <<< "$1")" ]]; then
         echo "'$1'"
@@ -73,10 +75,12 @@ alias bl.string.validate_regular_expression_replacement=bl_string_validate_regul
 bl_string_validate_regular_expression_replacement() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    This functions escapes every special meaning character for a sed
-    replacement.
+        This functions escapes every special meaning character for a sed
+        replacement.
 
-    >>> sed "s/myInputString/$(bl.string.validate_regular_expression_replacement "\hans/peter&klaus")/g"
+        ```bash
+            sed "s/myInputString/$(bl.string.validate_regular_expression_replacement "\hans/peter&klaus")/g"
+        ```
     '
     echo "$1" | sed --expression 's/\\/\\\\/g' --expression 's/\//\\\//g' \
         --expression 's/&/\\\&/g'
@@ -86,20 +90,26 @@ alias bl.string.images_to_css_classes=bl_string_images_to_css_classes
 bl_string_images_to_css_classes() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    This function converts a folder of images to a single includeable css
-    file.
+        This function converts a folder of images to a single includeable css
+        file.
 
-    ```
-        bl.string.images_to_css_casses \
-            /path/to/image/directory/ \
-            .*\.\(png\|jpg\|jpeg\)
-        bl.string.images_to_css_classes \
-            /path/to/image/directory/ \
-            .*\.\(png\|jpg\|jpeg\) \
-            /first/exclude/location \
-            /second/exclude/location ...
-        bl.string.images_to_css_classes
-    ```
+        ```bash
+            bl.string.images_to_css_casses \
+                /path/to/image/directory/ \
+                .*\.\(png\|jpg\|jpeg\)
+        ```
+
+        ```bash
+            bl.string.images_to_css_classes \
+                /path/to/image/directory/ \
+                .*\.\(png\|jpg\|jpeg\) \
+                /first/exclude/location \
+                /second/exclude/location ...
+        ```
+
+        ```bash
+            bl.string.images_to_css_classes
+        ```
     '
     local source='.'
     if [ -d "$1" ]; then
@@ -134,18 +144,21 @@ alias bl.string.merge_text_files=bl_string_merge_text_files
 bl_string_merge_text_files() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Concatenate files and print on the standard output.
+        Concatenate files and print on the standard output.
 
-    ```
-        bl.string.merge_text_files a.txt b.txt
-        bl.string.merge_text_files \
-            a.txt \
-            b.txt \
-            c.txt \
-            --append "\n# endregion\n" \
-            --between "\n# endregion\n\n# region %s\n"
-            --prepend "# region %s\n"
-    ```
+        ```bash
+            bl.string.merge_text_files a.txt b.txt
+        ```
+
+        ```bash
+            bl.string.merge_text_files \
+                a.txt \
+                b.txt \
+                c.txt \
+                --append "\n# endregion\n" \
+                --between "\n# endregion\n\n# region %s\n"
+                --prepend "# region %s\n"
+        ```
     '
     local append='\n// endregion'
     local prep end='// region %s\n\n'
@@ -197,18 +210,18 @@ alias bl.string.translate=bl_string_translate
 bl_string_translate() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Translates a given string in a given (or automatic detected) language and
-    gives a translation in given language (German by default) back. Accesses
-    "http://translate.google.com" from terminal.
+        Translates a given string in a given (or automatic detected) language
+        and gives a translation in given language (German by default) back.
+        Accesses "http://translate.google.com" from terminal.
 
-    >>> bl.string.translate hello
-    Hallo
-    >>> bl.string.translate 'Hello my darling'
-    Hallo mein Schatz
-    >>> bl.string.translate hello fr
-    bonjour
-    >>> bl.string.translate hello en fr
-    bonjour
+        >>> bl.string.translate hello
+        Hallo
+        >>> bl.string.translate 'Hello my darling'
+        Hallo mein Schatz
+        >>> bl.string.translate hello fr
+        bonjour
+        >>> bl.string.translate hello en fr
+        bonjour
     '
     local defaultTargetLanguage=de
     local help="translate <text> [[<source language>] <target language>]\n

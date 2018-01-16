@@ -14,10 +14,10 @@ alias bl.number.calculate_percent=bl_number_calculate_percent
 bl_number_calculate_percent() {
     # shellcheck disable=SC2016,SC2034
     __documentation__='
-    Calculates percent of second argument from the first argument.
+        Calculates percent of second argument from the first argument.
 
-    >>> bl_number_calculate_percent 100 50
-    50
+        >>> bl_number_calculate_percent 100 50
+        50
     '
     echo "$(((($2 * 10000) / $1) / 100)).$(sed --regexp-extended \
         's/^(.)$/0\1/g' <<<$(((($2 * 10000) / $1) % 100)))"

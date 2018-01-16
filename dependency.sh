@@ -19,14 +19,14 @@ alias bl.dependency.check_pkgconfig=bl_dependency_check_pkgconfig
 bl_dependency_check_pkgconfig() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    This function check if all given libraries can be found.
+        This function check if all given libraries can be found.
 
-    >>> bl.dependency.check_shared_library libc.so; echo $?
-    0
-    >>> bl.dependency.check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
-    2
-    >>> bl.dependency.check_shared_library __not_existing__ 1>/dev/null; echo $?
-    2
+        >>> bl.dependency.check_shared_library libc.so; echo $?
+        0
+        >>> bl.dependency.check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
+        2
+        >>> bl.dependency.check_shared_library __not_existing__ 1>/dev/null; echo $?
+        2
     '
     local return_code=0
     local library
@@ -47,14 +47,14 @@ alias bl.dependency.check_shared_library=bl_dependency_check_shared_library
 bl_dependency_check_shared_library() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    This function check if all given shared libraries can be found.
+        This function check if all given shared libraries can be found.
 
-    >>> bl.dependency.check_shared_library libc.so; echo $?
-    0
-    >>> bl.dependency.check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
-    2
-    >>> bl.dependency.check_shared_library __not_existing__ 1>/dev/null; echo $?
-    2
+        >>> bl.dependency.check_shared_library libc.so; echo $?
+        0
+        >>> bl.dependency.check_shared_library libc.so __not_existing__ 1>/dev/null; echo $?
+        2
+        >>> bl.dependency.check_shared_library __not_existing__ 1>/dev/null; echo $?
+        2
     '
     local return_code=0
     local pattern
@@ -77,17 +77,17 @@ alias bl.dependency.check=bl_dependency_check
 bl_dependency_check() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    This function check if all given dependencies are present.
+        This function check if all given dependencies are present.
 
-    >>> bl.dependency.check mkdir ls; echo $?
-    0
-    >>> bl.dependency.check mkdir __not_existing__ 1>/dev/null; echo $?
-    2
-    >>> bl.dependency.check __not_existing__ 1>/dev/null; echo $?
-    2
-    >>> bl.dependency.check "ls __not_existing__"; echo $?
-    __not_existing__
-    2
+        >>> bl.dependency.check mkdir ls; echo $?
+        0
+        >>> bl.dependency.check mkdir __not_existing__ 1>/dev/null; echo $?
+        2
+        >>> bl.dependency.check __not_existing__ 1>/dev/null; echo $?
+        2
+        >>> bl.dependency.check "ls __not_existing__"; echo $?
+        __not_existing__
+        2
     '
     local return_code=0
     local dependency

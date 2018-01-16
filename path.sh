@@ -14,10 +14,12 @@ alias bl.path.run_in_programs_location=bl_path_run_in_programs_location
 bl_path_run_in_programs_location() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Changes current working directory to given program path and runs the
-    program.
+        Changes current working directory to given program path and runs the
+        program.
 
-    `bl.path.run_in_programs_location /usr/bin/python3.2`
+        ```bash
+            bl.path.run_in_programs_location /usr/bin/python3.2
+        `
     '
     if [ "$1" ] && [ -f "$1" ]; then
         cd "$(dirname "$1")"
@@ -50,32 +52,32 @@ alias bl.path.convert_to_relative=bl_path_convert_to_relative
 bl_path_convert_to_relative() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Computes relative path from first given argument to second one.
+        Computes relative path from first given argument to second one.
 
-    >>> bl.path.convert_to_relative /A/B/C /A
-    ../..
-    >>> bl.path.convert_to_relative /A/B/C /A/B
-    ..
-    >>> bl.path.convert_to_relative /A/B/C /A/B/C/D
-    D
-    >>> bl.path.convert_to_relative /A/B/C /A/B/C/D/E
-    D/E
-    >>> bl.path.convert_to_relative /A/B/C /A/B/D"
-    ../D
-    >>> bl.path.convert_to_relative /A/B/C /A/B/D/E
-    ../D/E
-    >>> bl.path.convert_to_relative /A/B/C /A/D
-    ../../D
-    >>> bl.path.convert_to_relative /A/B/C /A/D/E
-    ../../D/E
-    >>> bl.path.convert_to_relative /A/B/C /D/E/F
-    ../../../D/E/F
-    >>> bl.path.convert_to_relative / /
-    .
-    >>> bl.path.convert_to_relative /A/B/C /A/B/C
-    .
-    >>> bl.path.convert_to_relative /A/B/C /
-    ../../../
+        >>> bl.path.convert_to_relative /A/B/C /A
+        ../..
+        >>> bl.path.convert_to_relative /A/B/C /A/B
+        ..
+        >>> bl.path.convert_to_relative /A/B/C /A/B/C/D
+        D
+        >>> bl.path.convert_to_relative /A/B/C /A/B/C/D/E
+        D/E
+        >>> bl.path.convert_to_relative /A/B/C /A/B/D"
+        ../D
+        >>> bl.path.convert_to_relative /A/B/C /A/B/D/E
+        ../D/E
+        >>> bl.path.convert_to_relative /A/B/C /A/D
+        ../../D
+        >>> bl.path.convert_to_relative /A/B/C /A/D/E
+        ../../D/E
+        >>> bl.path.convert_to_relative /A/B/C /D/E/F
+        ../../../D/E/F
+        >>> bl.path.convert_to_relative / /
+        .
+        >>> bl.path.convert_to_relative /A/B/C /A/B/C
+        .
+        >>> bl.path.convert_to_relative /A/B/C /
+        ../../../
     '
     # both $1 and $2 are absolute paths beginning with /
     # returns relative path to $2/$target from $1/$source
@@ -118,12 +120,15 @@ alias bl.path.open=bl_path_open
 bl_path_open() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Opens a given path with a useful program.
+        Opens a given path with a useful program.
 
-    ```
-        bl.path.open http://www.google.de
-        bl.path.open file.text
-    ```
+        ```bash
+            bl.path.open http://www.google.de
+        ```
+
+        ```bash
+            bl.path.open file.text
+        ```
     '
     local program
     for program in gnome-open kde-open gvfs-open exo-open xdg-open gedit \
@@ -140,9 +145,11 @@ alias bl.path.unpack=bl_path_unpack
 bl_path_unpack() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Unpack archives in various formats.
+        Unpack archives in various formats.
 
-    `unpack path/to/archiv.zip`
+        ```bash
+            unpack path/to/archiv.zip`
+        ```
     '
     if [ -f "$1" ]; then
         local command
@@ -192,12 +199,15 @@ alias bl.path.pack=bl_path_pack
 bl_path_pack() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Packs archives.
+        Packs archives.
 
-    ```
-        bl.path.pack archiv.zip /path/to/file.ext
-        bl.path.pack archiv.zip /path/to/directory
-    ```
+        ```bash
+            bl.path.pack archiv.zip /path/to/file.ext
+        ```
+
+        ```bash
+            bl.path.pack archiv.zip /path/to/directory
+        ```
     '
     if [ -d "$2" ] || [ -f "$2" ]; then
         local command

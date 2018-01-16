@@ -19,34 +19,37 @@ alias bl.dictionary.get=bl_dictionary_get
 bl_dictionary_get() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Usage: `variable=$(bl.dictionary.get dictionary_name key)`
 
-    >>> bl.dictionary.get unset_map unset_value; echo $?
-    1
-    >>> bl_dictionary__bash_version_test=true
-    >>> bl.dictionary.get unset_map unset_value; echo $?
-    1
+        ```bash
+            variable=$(bl.dictionary.get dictionary_name key)
+        ```
 
-    >>> bl.dictionary.set map foo 2
-    >>> bl.dictionary.set map bar 1
-    >>> bl.dictionary.get map foo
-    >>> bl.dictionary.get map bar
-    2
-    1
+        >>> bl.dictionary.get unset_map unset_value; echo $?
+        1
+        >>> bl_dictionary__bash_version_test=true
+        >>> bl.dictionary.get unset_map unset_value; echo $?
+        1
 
-    >>> bl.dictionary.set map foo "a b c"
-    >>> bl.dictionary.get map foo
-    a b c
+        >>> bl.dictionary.set map foo 2
+        >>> bl.dictionary.set map bar 1
+        >>> bl.dictionary.get map foo
+        >>> bl.dictionary.get map bar
+        2
+        1
 
-    >>> bl_dictionary__bash_version_test=true
-    >>> bl.dictionary.set map foo 2
-    >>> bl.dictionary.get map foo
-    2
+        >>> bl.dictionary.set map foo "a b c"
+        >>> bl.dictionary.get map foo
+        a b c
 
-    >>> bl_dictionary__bash_version_test=true
-    >>> bl.dictionary.set map foo "a b c"
-    >>> bl.dictionary.get map foo
-    a b c
+        >>> bl_dictionary__bash_version_test=true
+        >>> bl.dictionary.set map foo 2
+        >>> bl.dictionary.get map foo
+        2
+
+        >>> bl_dictionary__bash_version_test=true
+        >>> bl.dictionary.set map foo "a b c"
+        >>> bl.dictionary.get map foo
+        a b c
     '
     local name="$1"
     local key="$2"
@@ -64,28 +67,30 @@ alias bl.dictionary.get_keys=bl_dictionary_get_keys
 bl_dictionary_get_keys() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Get keys of a dictionary as array.
+        Get keys of a dictionary as array.
 
-    Usage: `bl.dictionary.get_keys dictionary_name`
+        ```bash
+            bl.dictionary.get_keys dictionary_name
+        ```
 
-    >>> bl.dictionary.set map foo "a b c" bar 5
-    >>> bl.dictionary.get_keys map
-    bar
-    foo
+        >>> bl.dictionary.set map foo "a b c" bar 5
+        >>> bl.dictionary.get_keys map
+        bar
+        foo
 
-    >>> bl.dictionary.set map foo "a b c" bar 5
-    >>> local key
-    >>> for key in $(bl.dictionary.get_keys map); do
-    >>>     echo "$key": "$(bl.dictionary.get map "$key")"
-    >>> done
-    bar: 5
-    foo: a b c
+        >>> bl.dictionary.set map foo "a b c" bar 5
+        >>> local key
+        >>> for key in $(bl.dictionary.get_keys map); do
+        >>>     echo "$key": "$(bl.dictionary.get map "$key")"
+        >>> done
+        bar: 5
+        foo: a b c
 
-    >>> bl_dictionary__bash_version_test=true
-    >>> bl_dictionary_set map foo "a b c" bar 5
-    >>> bl_dictionary_get_keys map | sort -u
-    bar
-    foo
+        >>> bl_dictionary__bash_version_test=true
+        >>> bl_dictionary_set map foo "a b c" bar 5
+        >>> bl_dictionary_get_keys map | sort -u
+        bar
+        foo
     '
     local name="$1"
     local keys key
@@ -109,29 +114,29 @@ alias bl.dictionary.set=bl_dictionary_set
 bl_dictionary_set() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-    Usage: `bl.dictionary.set dictionary_name key value`
+        ```bash
+            bl.dictionary.set dictionary_name key value
+        ```
 
-    #### Tests
+        >>> bl.dictionary.set map foo 2
+        >>> echo ${bl_dictionary__store_map[foo]}
+        2
+        >>> bl.dictionary.set map foo "a b c" bar 5
+        >>> echo ${dictionary__store_map[foo]}
+        >>> echo ${dictionary__store_map[bar]}
+        a b c
+        5
+        >>> bl.dictionary.set map foo "a b c" bar; echo $?
+        1
 
-    >>> bl.dictionary.set map foo 2
-    >>> echo ${bl_dictionary__store_map[foo]}
-    2
-    >>> bl.dictionary.set map foo "a b c" bar 5
-    >>> echo ${dictionary__store_map[foo]}
-    >>> echo ${dictionary__store_map[bar]}
-    a b c
-    5
-    >>> bl.dictionary.set map foo "a b c" bar; echo $?
-    1
-
-    >>> bl_dictionary__bash_version_test=true
-    >>> bl.dictionary.set map foo 2
-    >>> echo $bl_dictionary__store_map_foo
-    2
-    >>> bl_dictionary__bash_version_test=true
-    >>> bl.dictionary.set map foo "a b c"
-    >>> echo $bl_dictionary__store_map_foo
-    a b c
+        >>> bl_dictionary__bash_version_test=true
+        >>> bl.dictionary.set map foo 2
+        >>> echo $bl_dictionary__store_map_foo
+        2
+        >>> bl_dictionary__bash_version_test=true
+        >>> bl.dictionary.set map foo "a b c"
+        >>> echo $bl_dictionary__store_map_foo
+        a b c
     '
     local name="$1"
     while true; do
