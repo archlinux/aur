@@ -2,8 +2,8 @@
 # Contributor: Patrick Bartels <pckbls@gmail.com>
 
 pkgname=sndio
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 epoch=1
 pkgdesc='Small audio and MIDI framework part of the OpenBSD project'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ backup=('etc/conf.d/sndiod')
 source=("http://www.sndio.org/${pkgname}-${pkgver}.tar.gz"
         'sndiod.conf'
         'sndiod.service')
-sha256sums=('bcc33213f02adc71bd0c3543f3b243847e7d27c5243b0b558182bc1b3056e4b1'
+sha256sums=('68713db624797dbff69c0f4ce1b24054fb0803da340508edbc5e08d6778f9781'
             '231404ff10698c168bed189d09dc6b6642c0ea624175ca8a441162a4b5abc1fb'
             '1e21e02c833b3f30c3f7965b1affa768dc8bb09b459a6aadf43a566269928ee4')
 
