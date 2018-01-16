@@ -14,6 +14,6 @@ pkgbase = clever-arch-test
 	source = clever-tools-@VERSION@_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/@VERSION@/clever-tools-@VERSION@_linux.tar.gz
 	source = clever-wrapper.sh
 	sha256sums = @SHA256@
-	sha256sums = b9180d74661b32aebed117c44cd2afbb157aa9b93374b354a7a45974aaba4eb6
+	sha256sums = 47e0f16f00d261f3f5919344929a8931e56b7e79ac3919f3d47a64ddd7fe8318
 
 pkgname = clever-arch-test
