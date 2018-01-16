@@ -6,8 +6,8 @@
 pkgname=firefox-beta
 name=firefox-beta
 pkgver=58.0.100
-pkgrel=4
-ver=58.0b16
+pkgrel=5
+ver=58.0
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -73,8 +73,7 @@ sha256sums=('657f049cde85d649cec249ae246fa14bd90201fce0c64ac2764b769eb44e5820'
             '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
             '24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            'ef2647ee1b82d46f3bd4b503e3e0ea7350360e898ab1272b82d6892b75eba5f6')
-
+            '26da57145a065cad2f425ab56e0cdee0082ae577218e690b6d2ad22476988ec4')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
