@@ -3,7 +3,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=6.2.3
+pkgver=6.2.4
 pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.ta
         "libseafile.in.patch"
         "openssl-1.1.diff"
         "mysql-setup.patch")
-sha256sums=('77bfc8a0037d37588edf96e46b3975453ff6e48a06b4343ce97d9381618cc111'
+sha256sums=('52acba9db35effff5ed072088ab489ee1fd4b4b209a02a3d5a5713ae6b4b0475'
             '52fb29858f6424052cf01630ad72b5687a4fb259f23f9efc97f08be04a883218'
             'da31d1b61031cbacc42e1ab708c67c83dba933ff391b07677dabab7ab79729f4'
             '6bd632f8741b039bad961af3d6850b651e25b7e7a3018d6e2789f350ff93bb78'
