@@ -1,0 +1,25 @@
+pkgbase = plexdrive-sqlite
+	pkgdesc = Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem. This version uses sqlite and has hard-drive caching.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/dweidenfeld/plexdrive
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = MIT
+	makedepends = go
+	depends = fuse
+	provides = plexdrive
+	conflicts = plexdrive-bin
+	conflicts = plexdrive-git
+	conflicts = plexdrive-dev-git
+	conflicts = plexdrive
+	conflicts = plexdrive-mongodb-bin
+	conflicts = plexdrive-mongodb
+	conflicts = plexdrive-sqlite-bin
+	source = https://github.com/dweidenfeld/plexdrive/archive/3.0.0.tar.gz
+	sha256sums = 186133f0704b3ba2652750d235b8c5126efb8037321de8918170446e309198db
+
+pkgname = plexdrive-sqlite
+
