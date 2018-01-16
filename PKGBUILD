@@ -25,12 +25,12 @@ prepare()
 build()
 {
   cd "$srcdir/psp-ports/pspirkeyb"
-  PATH=/usr/bin:$PATH make
+  make
 }
 
 package()
 {
   cd "$srcdir/psp-ports/pspirkeyb"
-  PATH=/usr/bin:$PATH make install PSPDIR="$pkgdir"/usr/psp
+  make install PSPDIR="$pkgdir"/usr/psp
 }
 
