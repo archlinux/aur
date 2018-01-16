@@ -1,4 +1,5 @@
-# Maintainer: Christoph Bayer <chrbayer@criby.de>
+# Maintainer: Halit Alptekin <halitalptekin@sabanciuniv.edu>
+# Contributor: Christoph Bayer <chrbayer@criby.de>
 
 _rev=r03
 _sdkver=5.0
