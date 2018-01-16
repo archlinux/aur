@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.27.0.r493.gf19797dea6
+pkgver=0.28.0.r121.g0192eeb09c
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -9,14 +9,15 @@ license=('GPL3')
 url='http://mpv.io/'
 depends=(
     # official repositories:
-        'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'openal' 'smbclient' 'vapoursynth' 'vulkan-icd-loader' 'zlib'
+        'openal' 'smbclient' 'vulkan-icd-loader' 'zlib'
         
     # AUR:
-        'mujs' 'rsound' 'sndio' 'shaderc-git' 'crossc'
+        'ffmpeg-git' 'mujs' 'rsound' 'sndio' 'shaderc-git' 'crossc'
+        'vapoursynth-git'
 )
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
@@ -133,6 +134,7 @@ build() {
         --disable-direct3d \
         --enable-shaderc \
         --enable-crossc \
+        --disable-d3d11 \
         --disable-rpi \
         --disable-ios-gl \
         --enable-plain-gl \
