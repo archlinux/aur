@@ -7,7 +7,7 @@ pkgname=openssl098-dev
 _ver=0.9.8zh
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]*/.${_ver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (0.9.8 branch)'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -58,10 +58,10 @@ package() {
 	install -D -m0755 libssl.so.0.9.8 "${pkgdir}/usr/lib/libssl.so.0.9.8"
 	install -D -m0755 libcrypto.so.0.9.8 "${pkgdir}/usr/lib/libcrypto.so.0.9.8"
         mkdir -p "${pkgdir}/usr/lib/openssl-0.9.8"
-        ln -s "${pkgdir}/usr/lib/libssl.so.0.9.8" "${pkgdir}/usr/lib/openssl-0.9.8/libssl.so.0.9.8"
-        ln -s "${pkgdir}/usr/lib/libssl.so.0.9.8" "${pkgdir}/usr/lib/openssl-0.9.8/libssl.so"
-        ln -s "${pkgdir}/usr/lib/libcrypto.so.0.9.8" "${pkgdir}/usr/lib/openssl-0.9.8/libcrypto.so.0.9.8"
-        ln -s "${pkgdir}/usr/lib/libcrypto.so.0.9.8" "${pkgdir}/usr/lib/openssl-0.9.8/libcrypto.so"
+        ln -s "/usr/lib/libssl.so.0.9.8" "${pkgdir}/usr/lib/openssl-0.9.8/libssl.so.0.9.8"
+        ln -s "/usr/lib/libssl.so.0.9.8" "${pkgdir}/usr/lib/openssl-0.9.8/libssl.so"
+        ln -s "/usr/lib/libcrypto.so.0.9.8" "${pkgdir}/usr/lib/openssl-0.9.8/libcrypto.so.0.9.8"
+        ln -s "/usr/lib/libcrypto.so.0.9.8" "${pkgdir}/usr/lib/openssl-0.9.8/libcrypto.so"
 
 
 	install -D -m0755 apps/openssl "${pkgdir}/usr/bin/openssl098"
