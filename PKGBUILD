@@ -10,9 +10,9 @@ makedepends=('git')
 groups=('neovim-plugins')
 
 #temp pkgver variables
-pkgver=0.8
-pkgrel=2
-_themes_pkgver=r1230.793ce66
+pkgver=0.9
+pkgrel=1
+_themes_pkgver=r1279.4b7f77e
 source=("${pkgname[0]}::git://github.com/vim-airline/${pkgname[0]#neo}.git#tag=v$pkgver"
         "${pkgname[1]}::git://github.com/vim-airline/${pkgname[1]#neo}.git#commit=${_themes_pkgver#*.}")
 sha256sums=('SKIP' 'SKIP')
@@ -36,6 +36,9 @@ package_neovim-airline() {
   cp -R autoload/* "$pkgdir/$_installpath/autoload"
   cp -R t/* "$pkgdir/$_installpath/t"
   install -Dvm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname[0]}/LICENSE"
+
+  # This one conflicts with vim-airline-themes
+  rm "$pkgdir/usr/share/nvim/runtime/autoload/airline/themes/dark.vim"
 }
 
 package_neovim-airline-themes(){
