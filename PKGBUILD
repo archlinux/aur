@@ -1,7 +1,7 @@
 # Maintainer: Timo Schwichtenberg <therealbassx at yahoo dot de>
 pkgname=forge-gui-desktop
 pkgver=1.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Implementation of Magic the Gathering that lets you play against a computer AI"
 arch=('any')
 url="https://www.slightlymagic.net/wiki/Forge"
@@ -17,7 +17,7 @@ package() {
 	install -d -m0755 "$pkgdir"/usr/share/$pkgname/res
 	cp -r "$srcdir"/res/* "$pkgdir"/usr/share/$pkgname/res
 	install -Dm0664 "$srcdir"/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-	install -Dm0644 "$srcdir"/AppIcon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+	install -Dm0644 "$srcdir"/filedetails.php?repname=Forge\&path=%2Ftrunk%2FAppIcon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
 	install -Dm0644 "$srcdir"/$pkgname-$pkgver-jar-with-dependencies.jar "$pkgdir"/usr/share/java/$pkgname.jar
   	_deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
 	_startfile="$pkgdir/usr/bin/$pkgname.sh"

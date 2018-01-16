@@ -1,7 +1,7 @@
 pkgbase = forge-gui-desktop
 	pkgdesc = Implementation of Magic the Gathering that lets you play against a computer AI
 	pkgver = 1.6.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.slightlymagic.net/wiki/Forge
 	arch = any
 	license = GPL3
