@@ -25,10 +25,10 @@ package() {
   install -d "${pkgdir}/usr/share/bash-completion/completions"
   install -d "${pkgdir}/usr/share/zsh/site-functions"
 
-  install "${srcdir}/linux/nodegit.node" "${pkgdir}/usr/lib/${pkgname}/nodegit.node"
-  install "${srcdir}/linux/clever" "${pkgdir}/usr/lib/${pkgname}/clever"
+  install "${srcdir}/nodegit.node" "${pkgdir}/usr/lib/${pkgname}/nodegit.node"
+  install "${srcdir}/clever" "${pkgdir}/usr/lib/${pkgname}/clever"
   install "${srcdir}/clever-wrapper.sh" "${pkgdir}/usr/bin/clever"
 
-  "${srcdir}/linux/clever" --bash-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/bash-completion/completions/clever"
-  "${srcdir}/linux/clever" --zsh-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/zsh/site-functions/_clever"
+  "${srcdir}/clever" --bash-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/bash-completion/completions/clever"
+  "${srcdir}/clever" --zsh-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/zsh/site-functions/_clever"
 }
