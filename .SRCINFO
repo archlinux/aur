@@ -1,11 +1,12 @@
 pkgbase = vcash-bin
 	pkgdesc = A decentralized currency for the internet.
 	pkgver = 0.6.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openvcash/vcash
 	arch = x86_64
 	license = AGPL3
 	depends = gcc-libs
+	optdepends = vcash-rpc: rpc command script
 	provides = vcash
 	conflicts = vcash
 	source = https://github.com/openvcash/vcash-electron/releases/download/v0.33.1/Vcash-Electron-GUI-0.33.1-linux64.zip
