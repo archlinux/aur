@@ -1,4 +1,5 @@
-# Maintainer=rafaelsoaresbr <rafaelsoaresbr@gmail.com>
+# Maintainer: cr0mag <phillips.julian AT gmail DOT com>
+# Contributor: rafaelsoaresbr <rafaelsoaresbr@gmail.com>
 # wokd
 # Contributing: https://github.com/rafaelsoaresbr/pkgbuild
 # Builds: https://gitlab.com/rafaelsoaresbr/pkgbuild/builds
@@ -6,34 +7,33 @@
 pkgname=('wokd')
 
 # Version
-pkgver=2.2.0
+pkgver=2.5.0
 pkgrel=1
 #epoch=
 
 # Generic
-pkgdesc="Webserver of Kimchi - a cherrypy framework for multi-purpose plug-ins"
+pkgdesc="Webserver originated from Kimchi - a cherrypy framework for multi-purpose plug-ins"
 arch=('any')
-url="http://kimchi-project.github.io/wok/"
-license=('AGPL2.1' 'Apache')
+url="https://github.com/kimchi-project/wok/"
+license=('LGPL' 'Apache')
 groups=('kimchi-project')
 
 # Dependencies
-depends=('logrotate'
-         'nginx'
+depends=('nginx'
          'openssl'
          'python2-cherrypy'
          'python2-cheetah'
+	 'python2-pam'
+	 'python2-m2crypto'
          'python2-jsonschema'
+	 'python2-psutil'
          'python2-ldap'
          'python2-lxml'
-         'python2-m2crypto'
          'python2-ordereddict'
-         'python2-psutil'
-         'pypam2-bzr'
-         'ttf-font-awesome'
-         'ttf-opensans')
+         'ttf-font-awesome-4'
+         'websockify')
 #optdepends=()
-makedepends=('git')
+makedepends=('git' 'libxslt' 'logrotate')
 #checkdepends=()
 
 # Package Relations
@@ -48,7 +48,7 @@ install=wokd.install
 #changelog=
 
 # Sources
-source=('https://github.com/kimchi-project/wok/archive/'${pkgver}'.tar.gz' 'python.patch' 'wokd.install')
+source=('https://github.com/kimchi-project/wok/archive/'${pkgver}'.tar.gz' 'wokd.install')
 #source_i686=("")
 #source_x86_64=("")
 #noextract=()
@@ -59,16 +59,20 @@ source=('https://github.com/kimchi-project/wok/archive/'${pkgver}'.tar.gz' 'pyth
 #md5sums_i686=()
 #md5sums_x86_64=()
 #sha1sums=()
-sha256sums=('c75d0d7018bef12b31df270cc4ee22d19eec6790291c44f7e993e7f39eadabf2'
-            '808dcc04b66dd241eb1c434f75221e1c3762f65ed5beec77407bd123b965ee62'
-            '21df69251ab787c5c0601bcf6d84fcd2836ad2080b0d6600c817dd290286eb1f')
+sha256sums=('d400333eb4b133e331beac0418962ad5ff0f64c08d6071eb9fca3ff4ad35e643'
+            'b3c549d393739c0a0ffda289dc8d20c1f1228963ad82d1a107e986e74b52939c')
 
 #pkgver() {
 #}
 
 prepare() {
   cd "$srcdir/wok-${pkgver}"
-  patch -p1 <../python.patch
+  #replaces previous python.patch file
+  sed --in-place 's/^#!\/usr\/bin\/python/#!\/usr\/bin\/python2/' src/wok/proxy.py
+  #can't find upper-case PAM module; better solution?
+  sed --in-place 's/^import PAM/import pam/' src/wok/auth.py
+  #workaround for https://github.com/kimchi-project/wok/issues/234
+  sed --in-place 's/cherrypy.engine.timeout_monitor.unsubscribe()/#cherrypy.engine.timeout_monitor.unsubscribe()/' src/wok/server.py
 }
 
 build() {
