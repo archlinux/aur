@@ -1,0 +1,12 @@
+pkgbase = openclipart-png
+	pkgdesc = Openclipart package from Ubuntu (PNG version)
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://openclipart.org
+	arch = any
+	license = CC0
+	source = http://de.archive.ubuntu.com/ubuntu/pool/universe/o/openclipart/openclipart-png_0.18+dfsg-14_all.deb
+	md5sums = 8549b0bb15bbd3d1af0eb9e6137ccb82
+
+pkgname = openclipart-png
+
