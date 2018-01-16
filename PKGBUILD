@@ -2,15 +2,15 @@
 
 pkgname=cquery-git
 _pkgname=cquery
-pkgver=826.6c1126a
+pkgver=1177.2533f13
 pkgrel=1
 pkgdesc='Low-latency vscode language server for large C++ code-bases, powered by libclang.'
 arch=('any')
 url='https://github.com/jacobdufault/cquery/'
 license=('MIT')
 depends=('clang')
-makedepends=("git" "python")
-source=('git+https://github.com/jacobdufault/cquery.git')
+makedepends=("git" "python" "llvm")
+source=('git+https://github.com/jacobdufault/cquery.git#branch=master')
 md5sums=(
     'SKIP'
 )
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
     cd $_pkgname
-    git submodule update --init --recursive
+    git submodule update --init
     sed -e "s/, '-Werror'//g" -i ./wscript
 }
 
