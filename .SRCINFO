@@ -1,0 +1,13 @@
+pkgbase = openclipart-libreoffice
+	pkgdesc = Openclipart Gallary package from Ubuntu for LibreOffice
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://openclipart.org
+	arch = any
+	license = CC0
+	depends = openclipart-png
+	source = http://de.archive.ubuntu.com/ubuntu/pool/universe/o/openclipart/openclipart-libreoffice_0.18+dfsg-14_all.deb
+	md5sums = d29ff698393310caaee600cf5d17f4a1
+
+pkgname = openclipart-libreoffice
+
