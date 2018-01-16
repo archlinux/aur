@@ -10,7 +10,7 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 groups=(kf5)
 depends=(qt5-quickcontrols2 qt5-graphicaleffects)
-makedepends=(extra-cmake-modules qt5-tools)
+makedepends=(extra-cmake-modules qt5-tools qt5-svg)
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"{,.sig})
 sha256sums=('1b5bbce792db12e19aaa41095c8b9d7f662a98d3f1358ae05b29835bd5b1f885'
             'SKIP')
