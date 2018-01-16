@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=gr-lida-git
-pkgver=412.a321e48
+pkgver=463.79a28a4
 pkgrel=1
 pkgdesc="Frontend for DosBox, ScummVM and VDMSound"
 arch=('i686' 'x86_64')
 url="http://www.gr-lida.org/"
 license=('GPL2')
-depends=('qt4')
+depends=('qt4' 'poppler-qt4' 'phonon-qt4')
 optdepends=('dosbox: Enable support for dosbox emulator'
 	    'scummvm: Enable support for scummvm emulator')
 makedepends=('git')
