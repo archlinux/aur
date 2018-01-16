@@ -1,4 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
+
 pkgname=teamocil
 pkgver=1.4.2
 pkgrel=1
@@ -14,7 +16,7 @@ sha256sums=('221bf0b600e0a277c98befbecea8a454ee87dbd1c7e8767a2f64dda8dc18aed0')
 
 package() {
   cd $srcdir
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
   gem install --no-user-install --ignore-dependencies --verbose -i "$pkgdir$_gemdir" -n "$pkgdir"/usr/bin $pkgname-$pkgver.gem
 }
 
