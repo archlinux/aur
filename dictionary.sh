@@ -26,7 +26,7 @@ bl_dictionary_get() {
 
         >>> bl.dictionary.get unset_map unset_value; echo $?
         1
-        >>> bl_dictionary__bash_version_test=true
+        >>> bl_dictionary_bash_version_test=true
         >>> bl.dictionary.get unset_map unset_value; echo $?
         1
 
@@ -41,23 +41,22 @@ bl_dictionary_get() {
         >>> bl.dictionary.get map foo
         a b c
 
-        >>> bl_dictionary__bash_version_test=true
+        >>> bl_dictionary_bash_version_test=true
         >>> bl.dictionary.set map foo 2
         >>> bl.dictionary.get map foo
         2
 
-        >>> bl_dictionary__bash_version_test=true
+        >>> bl_dictionary_bash_version_test=true
         >>> bl.dictionary.set map foo "a b c"
         >>> bl.dictionary.get map foo
         a b c
     '
     local name="$1"
     local key="$2"
-    if [[ ${BASH_VERSINFO[0]} -lt 4 ]] \
-            || ! [ -z "${bl_dictionary__bash_version_test:-}" ]; then
-        local store="bl_dictionary__store_${name}_${key}"
+    if [[ ${BASH_VERSINFO[0]} -lt 4 ]] || ! [ -z "${bl_dictionary_bash_version_test:-}" ]; then
+        local store="bl_dictionary_store_${name}_${key}"
     else
-        local store="bl_dictionary__store_${name}[${key}]"
+        local store="bl_dictionary_store_${name}[${key}]"
     fi
     bl.tools.is_defined "${store}" || return 1
     local value="${!store}"
@@ -86,25 +85,26 @@ bl_dictionary_get_keys() {
         bar: 5
         foo: a b c
 
-        >>> bl_dictionary__bash_version_test=true
-        >>> bl_dictionary_set map foo "a b c" bar 5
-        >>> bl_dictionary_get_keys map | sort -u
+        >>> bl_dictionary_bash_version_test=true
+        >>> bl.dictionary.set map foo "a b c" bar 5
+        >>> bl.dictionary.get_keys map | sort -u
         bar
         foo
     '
     local name="$1"
-    local keys key
-    local store='bl_dictionary__store_'"${name}"
-    if [[ ${BASH_VERSINFO[0]} -lt 4 ]] \
-            || ! [ -z "${bl_dictionary__bash_version_test:-}" ]; then
-        for key in $(declare -p | cut -d' ' -f3 \
-                | grep -E "^${store}" | cut -d '=' -f1); do
+    local keys
+    local store="bl_dictionary_store_${name}"
+    if [[ ${BASH_VERSINFO[0]} -lt 4 ]] || ! [ -z "${bl_dictionary_bash_version_test:-}" ]; then
+        for key in $(declare -p | cut -d' ' -f3 | grep -E "^${store}" | \
+            cut -d '=' -f1)
+        do
             echo "${key#${store}_}"
         done
     else
         # shellcheck disable=SC2016
         eval 'keys="${!'"$store"'[@]}"'
     fi
+    local key
     # shellcheck disable=SC2154
     for key in ${keys:-}; do
         echo "$key"
@@ -119,23 +119,23 @@ bl_dictionary_set() {
         ```
 
         >>> bl.dictionary.set map foo 2
-        >>> echo ${bl_dictionary__store_map[foo]}
+        >>> echo ${bl_dictionary_store_map[foo]}
         2
         >>> bl.dictionary.set map foo "a b c" bar 5
-        >>> echo ${dictionary__store_map[foo]}
-        >>> echo ${dictionary__store_map[bar]}
+        >>> echo ${dictionary_store_map[foo]}
+        >>> echo ${dictionary_store_map[bar]}
         a b c
         5
         >>> bl.dictionary.set map foo "a b c" bar; echo $?
         1
 
-        >>> bl_dictionary__bash_version_test=true
+        >>> bl_dictionary_bash_version_test=true
         >>> bl.dictionary.set map foo 2
-        >>> echo $bl_dictionary__store_map_foo
+        >>> echo $bl_dictionary_store_map_foo
         2
-        >>> bl_dictionary__bash_version_test=true
+        >>> bl_dictionary_bash_version_test=true
         >>> bl.dictionary.set map foo "a b c"
-        >>> echo $bl_dictionary__store_map_foo
+        >>> echo $bl_dictionary_store_map_foo
         a b c
     '
     local name="$1"
@@ -146,11 +146,11 @@ bl_dictionary_set() {
         (( $# % 2 )) || return 1
         # shellcheck disable=SC2154
         if [[ ${BASH_VERSINFO[0]} -lt 4 ]] \
-                || ! [ -z "${bl_dictionary__bash_version_test:-}" ]; then
-            eval "bl_dictionary__store_${name}_${key}=""$value"
+                || ! [ -z "${bl_dictionary_bash_version_test:-}" ]; then
+            eval "bl_dictionary_store_${name}_${key}=$value"
         else
-            declare -Ag "bl_dictionary__store_${name}"
-            eval "bl_dictionary__store_${name}[${key}]=""$value"
+            declare -Ag "bl_dictionary_store_${name}"
+            eval "bl_dictionary_store_${name}[${key}]=$value"
         fi
         (( $# == 1 )) && return
     done

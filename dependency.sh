@@ -15,6 +15,36 @@ source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.logging
 # endregion
 # region functions
+alias bl.dependency.check=bl_dependency_check
+bl_dependency_check() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        This function check if all given dependencies are present.
+
+        >>> bl.dependency.check mkdir ls; echo $?
+        0
+        >>> bl.dependency.check mkdir __not_existing__ 1>/dev/null; echo $?
+        2
+        >>> bl.dependency.check __not_existing__ 1>/dev/null; echo $?
+        2
+        >>> bl.dependency.check "ls __not_existing__"; echo $?
+        __not_existing__
+        2
+    '
+    local return_code=0
+    local dependency
+    if ! hash &>/dev/null; then
+        bl.logging.critical 'Missing dependency "hash" to check for available executables.'
+        return 1
+    fi
+    for dependency in $@; do
+        if ! hash "$dependency" &>/dev/null; then
+            return_code=2
+            echo "$dependency"
+        fi
+    done
+    return $return_code
+}
 alias bl.dependency.check_pkgconfig=bl_dependency_check_pkgconfig
 bl_dependency_check_pkgconfig() {
     # shellcheck disable=SC2016,SC2034
@@ -69,36 +99,6 @@ bl_dependency_check_shared_library() {
         then
             return_code=2
             echo "$pattern"
-        fi
-    done
-    return $return_code
-}
-alias bl.dependency.check=bl_dependency_check
-bl_dependency_check() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        This function check if all given dependencies are present.
-
-        >>> bl.dependency.check mkdir ls; echo $?
-        0
-        >>> bl.dependency.check mkdir __not_existing__ 1>/dev/null; echo $?
-        2
-        >>> bl.dependency.check __not_existing__ 1>/dev/null; echo $?
-        2
-        >>> bl.dependency.check "ls __not_existing__"; echo $?
-        __not_existing__
-        2
-    '
-    local return_code=0
-    local dependency
-    if ! hash &>/dev/null; then
-        bl.logging.critical 'Missing dependency "hash" to check for available executables.'
-        return 1
-    fi
-    for dependency in $@; do
-        if ! hash "$dependency" &>/dev/null; then
-            return_code=2
-            echo "$dependency"
         fi
     done
     return $return_code

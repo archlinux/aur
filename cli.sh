@@ -41,40 +41,40 @@ bl_cli_disable_color() {
         red
     '
     bl_cli_color_enabled=false
-    bl_cli_color_default=''
-
-    bl_cli_color_black=''
-    bl_cli_color_red=''
-    bl_cli_color_green=''
-    bl_cli_color_yellow=''
-    bl_cli_color_blue=''
-    bl_cli_color_magenta=''
-    bl_cli_color_cyan=''
-    bl_cli_color_lightgray=''
-
-    bl_cli_color_darkgray=''
-    bl_cli_color_lightred=''
-    bl_cli_color_lightgreen=''
-    bl_cli_color_lightyellow=''
-    bl_cli_color_lightblue=''
-    bl_cli_color_lightmagenta=''
-    bl_cli_color_lightcyan=''
-    bl_cli_color_white=''
-
-    # flags
-    bl_cli_color_bold=''
-    bl_cli_color_dim=''
-    bl_cli_color_underline=''
-    bl_cli_color_blink=''
-    bl_cli_color_invert=''
-    bl_cli_color_invisible=''
-
-    bl_cli_color_nobold=''
-    bl_cli_color_nodim=''
-    bl_cli_color_nounderline=''
-    bl_cli_color_noblink=''
-    bl_cli_color_noinvert=''
-    bl_cli_color_noinvisible=''
+    local name
+    for name in \
+        default \
+        black \
+        red \
+        green \
+        yellow \
+        blue \
+        magenta \
+        cyan \
+        lightgray \
+        darkgray \
+        lightred \
+        lightgreen \
+        lightyellow \
+        lightblue \
+        lightmagenta \
+        lightcyan \
+        white \
+        bold \
+        dim \
+        underline \
+        blink \
+        invert \
+        invisible \
+        nobold \
+        nodim \
+        nounderline \
+        noblink \
+        noinvert \
+        noinvisible
+    do
+        eval "bl_cli_color_${name}=''"
+    done
 }
 alias bl.cli.enable_color=bl_cli_enable_color
 bl_cli_enable_color() {
@@ -88,40 +88,40 @@ bl_cli_enable_color() {
         \033[0;31m red \033[0m
     '
     bl_cli_color_enabled=true
-    bl_cli_color_default='\033[0m'
-
-    bl_cli_color_black='\033[0;30m'
-    bl_cli_color_red='\033[0;31m'
-    bl_cli_color_green='\033[0;32m'
-    bl_cli_color_yellow='\033[0;33m'
-    bl_cli_color_blue='\033[0;34m'
-    bl_cli_color_magenta='\033[0;35m'
-    bl_cli_color_cyan='\033[0;36m'
-    bl_cli_color_lightgray='\033[0;37m'
-
-    bl_cli_color_darkgray='\033[0;90m'
-    bl_cli_color_lightred='\033[0;91m'
-    bl_cli_color_lightgreen='\033[0;92m'
-    bl_cli_color_lightyellow='\033[0;93m'
-    bl_cli_color_lightblue='\033[0;94m'
-    bl_cli_color_lightmagenta='\033[0;95m'
-    bl_cli_color_lightcyan='\033[0;96m'
-    bl_cli_color_white='\033[0;97m'
-
-    # flags
-    bl_cli_color_bold='\033[1m'
-    bl_cli_color_dim='\033[2m'
-    bl_cli_color_underline='\033[4m'
-    bl_cli_color_blink='\033[5m'
-    bl_cli_color_invert='\033[7m'
-    bl_cli_color_invisible='\033[8m'
-
-    bl_cli_color_nobold='\033[21m'
-    bl_cli_color_nodim='\033[22m'
-    bl_cli_color_nounderline='\033[24m'
-    bl_cli_color_noblink='\033[25m'
-    bl_cli_color_noinvert='\033[27m'
-    bl_cli_color_noinvisible='\033[28m'
+    local suffix
+    for suffix in \
+        "default='\033[0m'" \
+        "black='\033[0;30m'" \
+        "red='\033[0;31m'" \
+        "green='\033[0;32m'" \
+        "yellow='\033[0;33m'" \
+        "blue='\033[0;34m'" \
+        "magenta='\033[0;35m'" \
+        "cyan='\033[0;36m'" \
+        "lightgray='\033[0;37m'" \
+        "darkgray='\033[0;90m'" \
+        "lightred='\033[0;91m'" \
+        "lightgreen='\033[0;92m'" \
+        "lightyellow='\033[0;93m'" \
+        "lightblue='\033[0;94m'" \
+        "lightmagenta='\033[0;95m'" \
+        "lightcyan='\033[0;96m'" \
+        "white='\033[0;97m'" \
+        "bold='\033[1m'" \
+        "dim='\033[2m'" \
+        "underline='\033[4m'" \
+        "blink='\033[5m'" \
+        "invert='\033[7m'" \
+        "invisible='\033[8m'" \
+        "nobold='\033[21m'" \
+        "nodim='\033[22m'" \
+        "nounderline='\033[24m'" \
+        "noblink='\033[25m'" \
+        "noinvert='\033[27m'" \
+        "noinvisible='\033[28m'"
+    do
+        eval "bl_cli_color_${suffix}"
+    done
 }
 ## region glyphs
 alias bl.cli.disable_unicode_glyphs=bl_cli_disable_unicode_glyphs
@@ -136,24 +136,27 @@ bl_cli_disable_unicode_glyphs() {
         +
     '
     bl_cli_unicode_enabled=false
-    bl_cli_powerline_pointingarrow='~'
-    bl_cli_powerline_arrowleft='<'
-    bl_cli_powerline_arrowright='>'
-    bl_cli_powerline_arrowrightdown='>'
-    bl_cli_powerline_arrowdown='_'
-    bl_cli_powerline_plusminus='+-'
-    bl_cli_powerline_branch='|}'
-    bl_cli_powerline_refersto='*'
-    bl_cli_powerline_ok='+'
-    bl_cli_powerline_fail='x'
-    bl_cli_powerline_lightning='!'
-    bl_cli_powerline_cog='{*}'
-    bl_cli_powerline_heart='<3'
-
-    # colorful
-    bl_cli_powerline_star='*'
-    bl_cli_powerline_saxophone='(yeah)'
-    bl_cli_powerline_thumbsup='(ok)'
+    local suffix
+    for suffix in \
+        "pointingarrow='~'" \
+        "arrowleft='<'" \
+        "arrowright='>'" \
+        "arrowrightdown='>'" \
+        "arrowdown='_'" \
+        "plusminus='+-'" \
+        "branch='|}'" \
+        "refersto='*'" \
+        "ok='+'" \
+        "fail='x'" \
+        "lightning='!'" \
+        "cog='{*}'" \
+        "heart='<3'" \
+        "star='*'" \
+        "saxophone='(yeah)'" \
+        "thumbsup='(ok)'"
+    do
+        eval "bl_cli_powerline_${suffix}"
+    done
 }
 alias bl.cli.enable_unicode_glyphs=bl_cli_enable_unicode_glyphs
 bl_cli_enable_unicode_glyphs() {
@@ -167,24 +170,27 @@ bl_cli_enable_unicode_glyphs() {
         \u2714
     '
     bl_cli_unicode_enabled=true
-    bl_cli_powerline_pointingarrow='\u27a1'
-    bl_cli_powerline_arrowleft='\ue0b2'
-    bl_cli_powerline_arrowright='\ue0b0'
-    bl_cli_powerline_arrowrightdown='\u2198'
-    bl_cli_powerline_arrowdown='\u2b07'
-    bl_cli_powerline_plusminus='\ue00b1'
-    bl_cli_powerline_branch='\ue0a0'
-    bl_cli_powerline_refersto='\u27a6'
-    bl_cli_powerline_ok='\u2714'
-    bl_cli_powerline_fail='\u2718'
-    bl_cli_powerline_lightning='\u26a1'
-    bl_cli_powerline_cog='\u2699'
-    bl_cli_powerline_heart='\u2764'
-
-    # colorful
-    bl_cli_powerline_star='\u2b50'
-    bl_cli_powerline_saxophone='\u1f3b7'
-    bl_cli_powerline_thumbsup='\u1f44d'
+    local suffix
+    for suffix in \
+        "pointingarrow='\u27a1'" \
+        "arrowleft='\ue0b2'" \
+        "arrowright='\ue0b0'" \
+        "arrowrightdown='\u2198'" \
+        "arrowdown='\u2b07'" \
+        "plusminus='\ue00b1'" \
+        "branch='\ue0a0'" \
+        "refersto='\u27a6'" \
+        "ok='\u2714'" \
+        "fail='\u2718'" \
+        "lightning='\u26a1'" \
+        "cog='\u2699'" \
+        "heart='\u2764'" \
+        "star='\u2b50'" \
+        "saxophone='\u1f3b7'" \
+        "thumbsup='\u1f44d'"
+    do
+        eval "bl_cli_powerline_${suffix}"
+    done
 }
 # TODO improve unicode detection
 alias bl.cli.glyph_available_in_font=bl_cli_glyph_available_in_font
