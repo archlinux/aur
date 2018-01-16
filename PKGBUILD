@@ -12,12 +12,12 @@ conflicts=('psp-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://ftp.gnu.org/pub/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.bz2"
         "gcc-$pkgver-PSP.patch"
-        "ftp://ftp.gmplib.org/pub/gmp-5.1.3/gmp-5.1.3.tar.bz2"
-        "http://www.multiprecision.org/mpc/download/mpc-1.0.2.tar.gz"
+        "https://gmplib.org/download/gmp/gmp-5.1.3.tar.lz"
+        "https://ftp.gnu.org/gnu/mpc/mpc-1.0.2.tar.gz"
         "http://www.mpfr.org/mpfr-3.1.2/mpfr-3.1.2.tar.bz2")
 md5sums=('6f831b4d251872736e8e9cc09746f327'
          '472c84cce740a223420e186a35954fe4'
-         'a082867cbca5e898371a97bb27b31fea'
+         'bdffbffc1fb4a7205f20acbdf18be28e'
          '68fadff3358fb3e7976c7a398a0af4c3'
          'ee2c3ac63bf0c2359bf08fc3ee094c19')
 
