@@ -1,0 +1,44 @@
+From 81117504d9d59c57a256ce095096695adb4c5e86 Mon Sep 17 00:00:00 2001
+From: Ben Boeckel <ben.boeckel@kitware.com>
+Date: Tue, 24 Oct 2017 14:55:17 -0400
+Subject: [PATCH] fontconfig: bump to 2.12.6
+
+Fixes a compile error with GCC 7.2.1.
+
+Reported-by: Fabian Wein <fabian.wein@fau.de>
+---
+ projects/apple-unix/fontconfig.cmake | 2 +-
+ versions.cmake                       | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/projects/apple-unix/fontconfig.cmake b/projects/apple-unix/fontconfig.cmake
+index 5de222f..419038d 100644
+--- a/projects/apple-unix/fontconfig.cmake
++++ b/projects/apple-unix/fontconfig.cmake
+@@ -5,7 +5,7 @@ else ()
+ endif ()
+ 
+ superbuild_add_project(fontconfig
+-  DEPENDS freetype libxml2
++  DEPENDS freetype libxml2 png
+   BUILD_IN_SOURCE 1
+   CONFIGURE_COMMAND
+     <SOURCE_DIR>/configure
+diff --git a/versions.cmake b/versions.cmake
+index 09d9cf2..c6b394d 100644
+--- a/versions.cmake
++++ b/versions.cmake
+@@ -64,8 +64,8 @@ superbuild_set_revision(freetype
+   URL_MD5 bf0a210b6fe781228fa0e4a80691a521)
+ 
+ superbuild_set_revision(fontconfig
+-  URL     "http://www.paraview.org/files/dependencies/fontconfig-2.12.1.tar.bz2"
+-  URL_MD5 b5af5a423ee3b5cfc34846838963c058)
++  URL     "http://www.paraview.org/files/dependencies/fontconfig-2.12.6.tar.bz2"
++  URL_MD5 733f5e2371ca77b69707bd7b30cc2163)
+ 
+ superbuild_set_revision(libxml2
+   URL     "http://www.paraview.org/files/dependencies/libxml2-2.7.8.tar.gz"
+--
+libgit2 0.26.0
+

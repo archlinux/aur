@@ -8,21 +8,23 @@
 # Contributor: Simon Zilliken <simon____AT____zilliken____DOT____name>
 
 pkgname=paraview-superbuild
-pkgver=5.2.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (built using superbuild system)'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('bzip2' 'freetype2' 'glu' 'libxml2' 'python2-matplotlib' 'mesa'
-         'openmpi' 'python2-numpy' 'libpng' 'zlib'
+depends=('bzip2' 'freetype2' 'glu' 'python2-matplotlib' 'mesa'
+         'openmpi' 'python2-numpy' 'libpng' 'zlib' 'gperf'
          'libxt' 'qt5-x11extras' 'qt5-tools' 'qt5-xmlpatterns' 'boost')
 makedepends=('cmake' 'gcc-fortran' 'git' 'llvm')
 source=("git+https://gitlab.kitware.com/paraview/paraview-superbuild.git#tag=v${pkgver}"
-        "paraview-superbuild.sh")
+        "paraview-superbuild.sh"
+        "fontconfig_2.12.6.patch")
 sha1sums=('SKIP'
-          'bb389666a765ff558233fced708e3a9c991b0650')
-conflicts=('paraview')
+          'bb389666a765ff558233fced708e3a9c991b0650'
+          '2cbe4244eb4e752dad0ee991254d717313592647'
+          '78bce3d15e1577602a69468dd5360d0ef66a13d4')
 provides=('paraview')
 
 prepare() {
@@ -33,6 +35,9 @@ prepare() {
 
   #rm -rf "${srcdir}/build"
   mkdir -p "${srcdir}/build"
+
+  cd "${srcdir}/${pkgname}/superbuild"
+  patch -p1 < "${srcdir}"/fontconfig_2.12.6.patch
 }
 
 build() {
@@ -82,7 +87,7 @@ build() {
     -DENABLE_silo:BOOL=ON \
     -DENABLE_socat:BOOL=ON \
     -DENABLE_szip:BOOL=ON \
-    -DENABLE_visitbridge:BOOL=ON \
+    -DENABLE_visitbridge:BOOL=OFF \
     -DENABLE_vortexfinder2:BOOL=OFF \
     -DENABLE_vrpn:BOOL=OFF \
     -DENABLE_xdmf3:BOOL=ON \
@@ -94,7 +99,7 @@ build() {
     -DUSE_SYSTEM_freetype:BOOL=ON \
     -DUSE_SYSTEM_glu:BOOL=ON \
     -DUSE_SYSTEM_hdf5:BOOL=OFF \
-    -DUSE_SYSTEM_libxml2:BOOL=ON \
+    -DUSE_SYSTEM_libxml2:BOOL=OFF \
     -DUSE_SYSTEM_llvm:BOOL=ON \
     -DUSE_SYSTEM_matplotlib:BOOL=ON \
     -DUSE_SYSTEM_mesa:BOOL=ON \
@@ -104,7 +109,7 @@ build() {
     -DUSE_SYSTEM_osmesa:BOOL=OFF \
     -DUSE_SYSTEM_png:BOOL=ON \
     -DUSE_SYSTEM_python:BOOL=ON \
-    -DUSE_SYSTEM_qt4:BOOL=ON \
+    -DUSE_SYSTEM_qt4:BOOL=OFF \
     -DUSE_SYSTEM_qt5:BOOL=ON \
     -DUSE_SYSTEM_tbb:BOOL=OFF \
     -DUSE_SYSTEM_zlib:BOOL=ON \
@@ -118,6 +123,8 @@ package() {
   cd "${srcdir}/build"
 
   make DESTDIR="${pkgdir}" install
+
+  rm -rf -- ${pkgdir}/home
 
   # Install script to set path
   install -Dm755 "${srcdir}/paraview-superbuild.sh" \
