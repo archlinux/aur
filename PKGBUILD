@@ -20,7 +20,7 @@ build()
   cd "$srcdir/psp-ports/libogg"
   sh autogen.sh
   make distclean # autogen calls configure
-  export LDFLAGS="-L$(/usr/bin/psp-config --pspsdk-path)/lib -L$(/usr/bin/psp-config --psp-prefix)/lib -lc -lpspuser"
+  export LDFLAGS="-L$(psp-config --pspsdk-path)/lib -L$(psp-config --psp-prefix)/lib -lc -lpspuser"
   export LIBS="-lc -lpspuser"
   mkdir -p build-psp && pushd build-psp
   ../configure --prefix=/usr/psp --host=psp 
