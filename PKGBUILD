@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 depends=('java-environment-jdk=7' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff' 'libxml2')
 makedepends=('java-runtime=7' 'apache-ant' 'autoconf' 'gcc' 'make' 'git' 'libx11' 'pkg-config' 'rsync' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff')
 conflicts=('lightzone')
-source=('git+https://github.com/ktgw0316/LightZone.git')
+source=('git+https://github.com/Aries85/LightZone.git')
 sha256sums=('SKIP')
 
 pkgver() {
