@@ -3,14 +3,14 @@
 _gitname="jalv_select"
 pkgname="jalv-select"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A little GUI to select installed LV2 plug-ins and run them with jalv."
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10/jalv_select"
 license=('custom:Public Domain')
 depends=('jalv' 'gtkmm')
 source=("https://github.com/brummer10/${_gitname}/archive/V${pkgver}.tar.gz")
-md5sums=('741e79d38d8f30abb6c4131ccdf8e779')
+md5sums=('51ed9195cf3347b675b9e5e37d92c2af')
 
 build() {
   cd "${srcdir}/${_gitname}-${pkgver}"
