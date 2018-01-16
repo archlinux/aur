@@ -3,14 +3,14 @@
 pkgbase='nginx-unit'
 pkgname=('nginx-unitd' 'nginx-unit-python' 'nginx-unit-php')
 _shortname='unit'
-pkgver=0.3
+pkgver=0.4
 pkgrel=3
 pkgdesc="Dynamic web application server, designed to run applications in multiple languages."
 arch=('i686' 'x86_64')
 url="http://unit.nginx.org/"
 license=('Apache-2.0')
 source=($pkgbase-$pkgver.tar.gz::"https://hg.nginx.org/$_shortname/archive/$pkgver.tar.gz")
-md5sums=("62ac119c9e345e0b447356b543111b33")
+md5sums=("e321d4ffeb4d4ff856454d7198f8decb")
 makedepends=('php-embed' 'python')
 
 build() {
