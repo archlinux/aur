@@ -1,17 +1,17 @@
-# Maintainer: Scott Dickson <scottfoesho@gmail.com>
+# Maintainer: Scott Dickson <scottfoesho AT gmail DOT com>
 
 pkgname=plexdrive
 pkgver=5.0.0
 pkgrel=1
 pkgdesc='Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem, with direct delete option on the filesystem.'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://github.com/dweidenfeld/plexdrive'
 license=('MIT')
 depends=('fuse')
 makedepends=('go')
-conflicts=("plexdrive-bin" "plexdrive-git" "plexdrive-dev-git")
+conflicts=("plexdrive-bin" "plexdrive-git" "plexdrive-dev-git" "plexdrive-mongodb" "plexdrive-mongodb-bin" "plexdrive-sqlite" "plexdrive-sqlite-bin")
 source=(https://github.com/dweidenfeld/plexdrive/archive/5.0.0.tar.gz)
-md5sums=('4babdf453fd969776a4e3480079ec698')
+sha256sums=('68763993a3da3d8ccd0dc18b3a5db7ab7ad8d03fde2d9be2ef4829e8356225bd')
 _goroot='/usr/lib/go'
 
 build() {
@@ -19,7 +19,7 @@ build() {
   cd plexdrive
   export GOROOT="$_goroot"
   GOPATH=$PWD && export GOPATH
-  mv ../plexdrive-${pkgver}/main.go .
+  cp ../plexdrive-${pkgver}/*.go .
 	mv ../plexdrive-${pkgver}/* src/github.com/dweidenfeld/plexdrive
   go get bazil.org/fuse
   go get github.com/boltdb/bolt
