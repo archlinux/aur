@@ -6,7 +6,7 @@
 pkgname=firefox-beta
 name=firefox-beta
 pkgver=58.0.100
-pkgrel=5
+pkgrel=7
 ver=58.0
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
@@ -24,24 +24,6 @@ options=(!emptydirs !makeflags !strip)
 source=("https://archive.mozilla.org/pub/firefox/candidates/58.0-candidates/build1/source/firefox-58.0.source.tar.xz"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$name.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-install-dir.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/1000_gentoo_install_dir.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/1001_add_gentoo_preferences.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/1002_drop_build_id.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/1003_gentoo_specific_pgo.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/1004_fix_hardened_pie_detection.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/1005_fix_fortify_sources.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/2001_system_harfbuzz.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/2002_system_graphite2.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/2003_musl_fix_gettid_inclusion.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/2004_nICEr-implicit-decls.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/6001_add_missing_header_for_basename.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/6002_add_alternate_name_for_private_siginfo_struct_member.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/6003_fix_syscall_wrappers_on_musl.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/6004_musl_drop_alloc_hooks.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/6005_musl_memory_report.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/6006_musl_pthread_setname.patch
-https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/6007_musl_fix_tools.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-location.services.mozilla.com.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
@@ -51,24 +33,6 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/id.patch
 sha256sums=('657f049cde85d649cec249ae246fa14bd90201fce0c64ac2764b769eb44e5820'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            'f337793c7ba07d2e2d4df9a8adf8e47da3ed61f2ef77330c673a521361614b44'
-            '3a3ebfc60dc7f307faad86bbd4b19ddf3831c79e5ac48a6e844ee4f11700c493'
-            '9595a3be842a1bb40076d70ffec2b09dc8b9d9318b7cbf226229dda6f3aad26d'
-            '765d9670345a02cadd56b7f6e9c931961ec79632187ab88a304cd6313c00deab'
-            'f112c7b500c281d429669f92b39efa9990bdee2b178b9474150adf0c0d403652'
-            '34cf4e33dc1ff6bd4416ec91ea27cdd8b4149be37c97c1c38910193a38abd232'
-            '9fb4323d9afc43486ba26d6b0233583c9a8735f18f60c368125385be8cd22bd9'
-            '9c24e722d560ad62ee6672577742674d1479f955bb2ae5b7ef5b91eff0dde408'
-            '33ed936b143342969d2cf86d7724fe86954724ad6a65ce6a3fc6df662e7df865'
-            '10956f70de73d726ee8e6e71ace291cf842f78b3b91faa3f8868ac36c11c7387'
-            '6f51f713abe4f6c5955b38d10d4ba266a4cee538719e0b7681fecec56b916d39'
-            '0c8a66e4a787edf48d4c4b88cafa3e284dea6f9f523b5a370ad3a52fdf39a797'
-            '45d5f114fe589fc789dc7c981cfe5aea29a90fd60aa00b4a59a356440343c793'
-            '878f1f071f8cd1259bd00674bfa02df49a7eb1a84da94ed7919cc900a7b3999f'
-            'b74b1a880065e4b6598206265fca5376165190291ddf2df51671eed7aaadfb19'
-            '9d918abce2abaa8633a56b5509f088fb0524c5b0134a062c6f00175f6f23329e'
-            '2b4a1780670ceb6e2022153f3c35f82e4c40d19ac67dbeaf47f53bd5be6fedbb'
             'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
             '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
             '24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040'
