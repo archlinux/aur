@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef@gmail.com>
 
 pkgname=faust2pd
-pkgver=2.15
+pkgver=2.16
 pkgrel=1
 pkgdesc="Generate Pd GUI abstractions from Faust programs"
 arch=("i686" "x86_64")
@@ -10,8 +10,8 @@ url="http://purelang.bitbucket.org/"
 depends=('pure' 'pure-xml' 'pd' 'curl')
 makedepends=('faust')
 groups=(pure-complete pure-multimedia)
-source=("https://bitbucket.org/purelang/pure-lang/downloads/$pkgname-$pkgver.tar.gz")
-md5sums=('27b938620a6392f08197157436246727')
+source=("https://github.com/agraef/pure-lang/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('abaf2274b78ebaace64c1908bf2801b3')
 
 # NOTE: The tarball contains C++ sources generated from the Faust programs,
 # which may need updating, depending on the Faust version we're compiling
