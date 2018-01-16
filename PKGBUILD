@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=icewm-git
-pkgver=1.4.2.580
+pkgver=1.4.2.1048
 pkgrel=1
 pkgdesc="A window manager designed for speed, usability, and consistency"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/bbidulock/icewm"
 license=('LGPL')
 provides=('icewm' 'icewm2')
 conflicts=('icewm' 'icewm2' 'icwm-cvs' 'icwm-ak' 'icwm-init0' 'icwm-testing' 'icwm-zstegi')
-depends=('libxft' 'libxinerama' 'gdk-pixbuf2' 'libxrandr' 'libsndfile' 'libsm' 'fribidi')
-makedepends=('git' 'xorg-mkfontdir' 'linuxdoc-tools' 'asciidoctor')
+depends=('libxft' 'libxinerama' 'libxpm' 'libjpeg' 'libxrandr' 'libsndfile' 'fribidi')
+makedepends=('git' 'xorg-mkfontdir' 'asciidoctor')
 optdepends=('icewm-extra-themes: extra themes')
 source=("$pkgname::git+https://github.com/bbidulock/icewm.git")
 md5sums=('SKIP')
@@ -23,12 +23,11 @@ pkgver() {
 build() {
   cd $pkgname
   ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc \
-    --enable-shaped-decorations --enable-gradients \
-    --enable-guievents --with-icesound=ALSA,OSS \
-    --disable-menus-gnome2 \
-    EXTRA_LIBS="/usr/lib/libsupc++.a"
-  make V=0
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man
+  make
 }
 
 package() {
