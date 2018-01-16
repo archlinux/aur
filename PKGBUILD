@@ -1,11 +1,11 @@
-# Maintainer:
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: juergen <juergen@archlinux.org>
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=text2pdf
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 _commit=3f6d725379337d0b9bde2e5e350fdfc249216be7
 pkgdesc='Convert text files to PDF'
 arch=('i686' 'x86_64')
