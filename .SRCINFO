@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-keepawake-git
+	pkgdesc = Prevent your computer from activating the screensaver, turning off your screen or suspending when it is idle for a while.
+	pkgver = r26.c2483f9
+	pkgrel = 1
+	url = https://github.com/jenspfahl/KeepAwake
+	install = gschemas.install
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = gnome-shell-extensions
+	depends = gnome-shell
+	provides = gnome-shell-extension-keepawake=r26.c2483f9
+	conflicts = gnome-shell-extension-keepawake
+	source = gnome-shell-extension-keepawake::git+https://github.com/jenspfahl/KeepAwake
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-keepawake-git
+
