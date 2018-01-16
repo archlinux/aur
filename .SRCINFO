@@ -1,6 +1,6 @@
 pkgbase = rescuetime
 	pkgdesc = Application time-tracking for Linux. Stable version
-	pkgver = 2.10.0.1322
+	pkgver = 2.10.0.1338
 	pkgrel = 1
 	url = https://www.rescuetime.com
 	install = rescuetime.install
@@ -11,10 +11,10 @@ pkgbase = rescuetime
 	depends = xorg-xprop
 	depends = xprintidle
 	conflicts = rescuetime-beta
-	source_i686 = rescuetime_2.10.0.1322_i686.deb::https://www.rescuetime.com/installers/rescuetime_current_i386.deb
-	sha256sums_i686 = df67ba8238a46314b5b9e069a8b1768adb2f01a29bb406049274cbac3197011b
-	source_x86_64 = rescuetime_2.10.0.1322_amd64.deb::https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
-	sha256sums_x86_64 = 4bdd2b0470c9b8e33ddf911193fb245fbfd42b0cb669de5a5c853cf4e88ba62c
+	source_i686 = rescuetime_2.10.0.1338_i686.deb::https://www.rescuetime.com/installers/rescuetime_current_i386.deb
+	sha256sums_i686 = dec8079a7f0888ec92a0b3a26dfbe14c6213e9788de61ad1772f07066753ace8
+	source_x86_64 = rescuetime_2.10.0.1338_amd64.deb::https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
+	sha256sums_x86_64 = 90b30405b98e8da7aa670acdcffa52e79ae212c1f833556646ab31455cd05708
 
 pkgname = rescuetime
 
