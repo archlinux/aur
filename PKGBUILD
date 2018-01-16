@@ -37,7 +37,9 @@ DEST_MODULE_LOCATION[0]="/kernel/drivers/video"\
 BUILT_MODULE_NAME[1]="nvidia-uvm"\
 DEST_MODULE_LOCATION[1]="/kernel/drivers/video"\
 BUILT_MODULE_NAME[2]="nvidia-modeset"\
-DEST_MODULE_LOCATION[2]="/kernel/drivers/video"' dkms.conf
+DEST_MODULE_LOCATION[2]="/kernel/drivers/video"\
+BUILT_MODULE_NAME[3]="nvidia-drm"\
+DEST_MODULE_LOCATION[3]="/kernel/drivers/video"' dkms.conf
 }
 
 build() {
@@ -56,6 +58,9 @@ package_nvidia-zen() {
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-modeset.ko" \
         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-modeset.ko"
+
+    install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-drm.ko" \
+        "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-drm.ko"
 
     if [[ "$CARCH" = "x86_64" ]]; then
         install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
