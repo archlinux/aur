@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Berthaud <alexandre at berthaud dot me>
 
 pkgname=clever-tools-bin
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Clever Cloud CLI tool (binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('libcurl-compat'
 options=('!strip')
 source=("clever-tools-${pkgver}_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/${pkgver}/clever-tools-${pkgver}_linux.tar.gz"
         "clever-wrapper.sh")
-sha256sums=('dbacaff787410592f775b23c3a0659e7813b1569c6c7153573fd24f99649ca0a'
+sha256sums=('332e7a8ec3f41a196376d1f9886e27c6ea0061657953f0f106e99f864e68a418'
             '47e0f16f00d261f3f5919344929a8931e56b7e79ac3919f3d47a64ddd7fe8318')
 
 package() {
