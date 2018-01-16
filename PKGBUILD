@@ -1,8 +1,9 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: foutrelis 
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Philipp Sandhaus <philipp.sandhaus@gmx.de>
 # Contributor: Robert Emil Berge <filoktetes@linuxophic.org>
 # Contributor: Gnud <ach.gnud@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=denemo
 epoch=1
@@ -25,18 +26,18 @@ sha256sums=('d07d7c5bce5569e25fceb02727f5c8f4ff2f579947b612e2bf9b48573bd1eca3'
 prepare() {
   cd "$srcdir"
   LC_ALL=en_US.UTF-8 tar xzf ${pkgname}-${pkgver}.tar.gz
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   sed -i 's|<audio.h>|<portaudio.h>|' src/audio/pitchrecog.c
 }
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   [ -x configure ] || ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
