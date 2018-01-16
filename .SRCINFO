@@ -1,0 +1,18 @@
+pkgbase = vcash-rpc-git
+	pkgdesc = Bash RPC script for Vcash.
+	pkgver = r10.843f87b
+	pkgrel = 1
+	url = https://github.com/openvcash/vcash-bash-rpc
+	arch = any
+	license = Unknown
+	makedepends = git
+	depends = bash
+	depends = jq
+	depends = vcash
+	provides = vcash-rpc
+	conflicts = vcash-rpc
+	source = git+https://github.com/openvcash/vcash-bash-rpc.git
+	sha512sums = SKIP
+
+pkgname = vcash-rpc-git
+
