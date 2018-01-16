@@ -1,7 +1,7 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
 pkgname='gnulium-git'
-pkgver=0.1.1.r7.g95c746d
+pkgver=1.0.0.r0.g9b8df37
 pkgrel=1
 pkgdesc="A Graphical Ui for managing scripts and ideas! (Github version)"
 arch=('any')
@@ -16,10 +16,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-		( set -o pipefail
-			git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-		)
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
   # git log -1 --date=format:%Y%m%d --pretty=format:%cd
 }
 
@@ -33,6 +33,6 @@ package() {
   cd "${srcdir}/${pkgname}"
   install -Dm755 ./gnulium ${pkgdir}/usr/bin/gnulium
   install -Dm644 ./appconf/gnulium.desktop ${pkgdir}/usr/share/applications/gnulium.desktop
-	install -Dm644 ./appconf/gnulium.svg ${pkgdir}/usr/share/pixmaps/gnulium.svg
-	install -Dm644 ./LICENSE ${pkgdir}/usr/share/licenses/gnulium/LICENSE
+  install -Dm644 ./appconf/gnulium.svg ${pkgdir}/usr/share/pixmaps/gnulium.svg
+  install -Dm644 ./LICENSE ${pkgdir}/usr/share/licenses/gnulium/LICENSE
 }
