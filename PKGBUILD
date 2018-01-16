@@ -1,4 +1,5 @@
 # $Id$
+# Maintainer : Pedro E. M. Brito <pedroembrito@gmail.com>
 # Maintainer : Tom Gundersen <teg@jklm.no>
 # Maintainer : Ionut Biru <ibiru@archlinux.org>
 
