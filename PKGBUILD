@@ -3,7 +3,7 @@
 # To install, run `makepkg -is`
 
 pkgname=ulauncher-git
-pkgver=3.1.0
+pkgver=DEV
 pkgrel=1
 pkgdesc='Application launcher for Linux'
 arch=('any')
