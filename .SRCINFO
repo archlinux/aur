@@ -1,0 +1,13 @@
+pkgbase = openclipart2-libreoffice
+	pkgdesc = Openclipart 2.0 Gallary package from Ubuntu for LibreOffice
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://openclipart.org
+	arch = any
+	license = CC0
+	depends = openclipart2-png
+	source = http://de.archive.ubuntu.com/ubuntu/pool/universe/o/openclipart2/openclipart2-libreoffice_2.0+dfsg-1ubuntu1_all.deb
+	md5sums = eeef9113e2445e177bf86a695496dd7a
+
+pkgname = openclipart2-libreoffice
+
