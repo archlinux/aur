@@ -7,7 +7,7 @@
 _hkgname=language-c
 pkgname=haskell-language-c5
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Analysis and generation of C code"
 url="http://visq.github.io/language-c/"
 license=("custom:BSD3")
