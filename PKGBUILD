@@ -1,15 +1,15 @@
 # Maintainer: George Tokmaji <tokmajigeorge@gmail.com>
 pkgname=geogebra-classic
-pkgver=6.0.410.0
+pkgver=6.0.417.0
 pkgrel=1
-_pkgfile="${pkgname}_${pkgver}-201712102344_amd64.deb"
+_pkgfile="${pkgname}_${pkgver}-201801141926_amd64.deb"
 pkgdesc="Dynamic mathematics software with interactive graphics, algebra and spreadsheet"
 arch=('x86_64')
 url="http://www.geogebra.org"
 license=('CCPL:by-nc' 'CCPL:by-sa' 'GPL3')
 depends=('alsa-lib' 'mpfr' 'gtk2' 'libxtst' 'gconf' 'nss' 'nodejs' 'xdg-utils' 'libxss')
 source=("http://www.geogebra.net/linux/pool/main/g/geogebra-classic/${_pkgfile}")
-sha256sums=('57adb6cd1c676d1cfbe9ac6c35276d87053ef83dcc4f20c47f46bb4d398335ca')
+sha256sums=('3d9a2bccbe01c81d4a34fa60a17dc2daedef3425722768101b09e77bb7e8b107')
 
 prepare() {
 bsdtar -xf data.tar.xz
