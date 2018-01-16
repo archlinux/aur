@@ -3,8 +3,8 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=6.2.3
-pkgrel=3
+pkgver=6.2.4
+pkgrel=1
 pkgdesc="The web end of seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
@@ -13,7 +13,7 @@ depends=("seafile-server" "python2-virtualenv" 'libmemcached')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "seahub-preupgrade")
-sha256sums=('5111945fb226a6cc315468df1d60958e78d75a43c817b7f0d1569070f3ebce34'
+sha256sums=('03a4d6a1915b27db88ad3cadaf5bad30b2c934384516cadc0f6190757f4f008f'
             'd3b0d33848ab9e0dbb9ea6e6e385fc4ffa82a77193af447edef7646d68e396b1')
 # Strip is not happy on precompiled libs in virtualenv, temporary disable
 options=("!strip")
@@ -37,7 +37,7 @@ package() {
     "${pkgdir}/usr/bin/seahub-preupgrade"
 
   # Create private virtualenv
-  virtualenv2 --no-wheel --system-site-packages "${pkgdir}/usr/lib/seafile/seafileenv"
+  virtualenv2 --no-wheel "${pkgdir}/usr/lib/seafile/seafileenv"
   source "${pkgdir}/usr/lib/seafile/seafileenv/bin/activate"
   pip2 --isolated install --no-compile \
     -r "${srcdir}/${pkgname}-${pkgver}-server/requirements.txt"
