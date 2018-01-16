@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('qt4')
 conflicts=('dboxfe')
-source=(http://skylink.dl.sourceforge.net/project/dboxfe.berlios/dboxfe-$pkgver.tar.bz2)
+source=(https://downloads.sourceforge.net/project/dboxfe.berlios/dboxfe-$pkgver.tar.bz2)
 
 build() {
   cd $srcdir/dboxfe-$pkgver
