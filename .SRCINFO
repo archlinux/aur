@@ -1,7 +1,7 @@
 pkgbase = nginx-unit
 	pkgdesc = Dynamic web application server, designed to run applications in multiple languages.
-	pkgver = 0.3
-	pkgrel = 3
+	pkgver = 0.4
+	pkgrel = 1
 	url = http://unit.nginx.org/
 	arch = i686
 	arch = x86_64
