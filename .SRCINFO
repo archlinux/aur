@@ -1,10 +1,10 @@
 pkgbase = libtmcg
 	pkgdesc = LibTMCG is a C++ library for creating secure and fair online card games.
 	pkgver = 1.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/libtmcg/
 	arch = x86_64
-	license = GPL2+
+	license = GPL2
 	depends = libgcrypt
 	depends = gmp
 	source = http://download.savannah.gnu.org/releases/libtmcg/libTMCG-1.3.10.tar.gz
