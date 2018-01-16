@@ -2,16 +2,17 @@
 
 _gitname=tr1pd
 pkgname=tr1pd-git
-pkgver=0.2.0.r9.gfba7e6b
+pkgver=0.2.0.r14.g2be4c1e
 pkgrel=1
 pkgdesc="tamper resistant audit log"
 url="https://github.com/kpcyrd/tr1pd"
-depends=('gcc-libs' 'libsodium' 'libseccomp')
+depends=('gcc-libs' 'libsodium' 'libseccomp' 'libcap')
 makedepends=('cargo' 'git')
 provides=('tr1pd')
 conflicts=('tr1pd')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 license=('AGPL3')
+install='tr1pd.install'
 source=("git+https://github.com/kpcyrd/$_gitname.git")
 sha512sums=('SKIP')
 
