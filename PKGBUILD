@@ -17,12 +17,12 @@ md5sums=('SKIP')
 build()
 {
   cd "$srcdir/psp-ports/jpeg"
-  make
+  PATH=/usr/bin:$PATH make
 }
 
 package()
 {
   cd "$srcdir/psp-ports/jpeg"
-  make install PSPDIR="$pkgdir"/usr/psp
+  PATH=/usr/bin:$PATH make install PSPDIR="$pkgdir"/usr/psp
 }
 
