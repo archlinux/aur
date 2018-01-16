@@ -1,4 +1,5 @@
-# Maintainer=rafaelsoaresbr <rafaelsoaresbr@gmail.com>
+# Maintainer: cr0mag <phillips.julian AT gmail DOT com>
+# Contributor: rafaelsoaresbr <rafaelsoaresbr@gmail.com>
 # ginger-base
 # Contributing: https://github.com/rafaelsoaresbr/pkgbuild
 # Builds: https://gitlab.com/rafaelsoaresbr/pkgbuild/builds
@@ -6,15 +7,15 @@
 pkgname=('ginger-base')
 
 # Version
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 #epoch=
 
 # Generic
 pkgdesc="Basic host management for WoK"
 arch=('any')
-url="http://kimchi-project.github.io/gingerbase/"
-license=('AGPL2.1' 'Apache')
+url="https://github.com/kimchi-project/gingerbase"
+license=('LGPL' 'Apache')
 groups=('kimchi-project')
 
 # Dependencies
@@ -48,7 +49,7 @@ source=('https://github.com/kimchi-project/gingerbase/archive/'${pkgver}'.tar.gz
 #md5sums_i686=()
 #md5sums_x86_64=()
 #sha1sums=()
-sha256sums=('bda800554cada0436244792489b12e5eac4af5718e6b830311953790fe98affe')
+sha256sums=('c120e3e809300c156c478810f1201d4c680c1c3b651bae15555f6ed23506e544')
 
 #pkgver() {
 #}
