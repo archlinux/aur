@@ -1,14 +1,13 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer:  Jonathan Steel <jsteel at archlinux.org>
+# Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: tocer.deng <tocer.deng@gmail.com>
 
 pkgname=apvlv
 pkgver=0.1.5
-pkgrel=5
-pkgdesc='PDF/DJVU/TXT viewer which behaves like Vim'
+pkgrel=6
+pkgdesc='PDF/DJVU/TXT viewer which behaves like vi'
 arch=('x86_64')
 url="http://naihe2010.github.com/apvlv/"
 license=('GPL2')
