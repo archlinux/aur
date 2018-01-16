@@ -6,7 +6,7 @@ pkgdesc="A simple and private notes app."
 arch=('x86_64')
 url="https://github.com/standardnotes/desktop"
 license=('GPL3')
-provides=('sn')
+provides=('standard-notes')
 
 source_x86_64=("https://github.com/standardnotes/desktop/releases/download/v${pkgver}/standard-notes-${pkgver}-x86_64.AppImage")
 noextract=("standard-notes-${pkgver}-x86_64.AppImage")
@@ -15,5 +15,5 @@ options=(!strip)
 sha256sums_x86_64=('55aa58ebd78a4186d190895042009047c6b346626df185ddb478b54a2098f318')
 
 package () {
-  install -Dm 775 "standard-notes-${pkgver}-x86_64.AppImage" "${pkgdir}/usr/bin/sn"
+  install -Dm 775 "standard-notes-${pkgver}-x86_64.AppImage" "${pkgdir}/usr/bin/standard-notes"
 }
