@@ -4,18 +4,18 @@
 
 _gitname=libgit2
 pkgname=libgit2-git
-pkgver=0.21.0.r65.g9b87998
+pkgver=0.26.0.r379.gf1323d9c1
 epoch=2
 pkgrel=1
 pkgdesc='A linkable library for Git'
 arch=('i686' 'x86_64')
-url="http://libgit2.github.com/"
+url="https://libgit2.github.com/"
 license=('GPL2')
-depends=(zlib openssl libssh2)
-makedepends=(cmake python2 git)
+depends=(zlib openssl libssh2 curl)
+makedepends=(cmake python git)
 provides=('libgit2')
 conflicts=('libgit2')
-source=(git://github.com/libgit2/libgit2.git)
+source=(git+https://github.com/libgit2/libgit2.git)
 md5sums=(SKIP)
 
 pkgver() {
@@ -25,8 +25,7 @@ pkgver() {
 
 build() {
   cd $_gitname
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-    -DTHREADSAFE=ON -DPYTHON_EXECUTABLE=/usr/bin/python2
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTHREADSAFE=ON
   make
 }
 
