@@ -1,11 +1,10 @@
 pkgname='gimp-plugin-gmic-git'
 _name='gmic'
 pkgver=v.218.r4.g6267a65
-pkgrel=1
-pkgdesc="QFront-end to the image processing framework G'MICQ"
+pkgrel=2
+pkgdesc="Front-end to the image processing framework G'MICQ"
 url="https://github.com/c-koi/${_name}-qt"
-makedepends=('qt5-base')
-depends=('gimp' 'libpng' 'zlib' 'fftw' 'curl')
+depends=('gimp' 'libpng' 'zlib' 'fftw' 'curl' 'qt5-base')
 license=('GPL3')
 arch=('i686' 'x86_64')
 source=("git+${url}.git" "git+https://github.com/dtschump/${_name}.git")
