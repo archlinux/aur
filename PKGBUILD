@@ -6,7 +6,7 @@
 pkgname=firefox-beta
 name=firefox-beta
 pkgver=58.0.100
-pkgrel=7
+pkgrel=8
 ver=58.0
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
@@ -36,7 +36,6 @@ sha256sums=('657f049cde85d649cec249ae246fa14bd90201fce0c64ac2764b769eb44e5820'
             'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
             '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
             '24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '26da57145a065cad2f425ab56e0cdee0082ae577218e690b6d2ad22476988ec4')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
