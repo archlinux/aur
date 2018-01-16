@@ -12,9 +12,8 @@ pkgdesc="A music score editor"
 arch=('x86_64')
 url="http://www.denemo.org"
 license=('GPL')
-depends=('aubio' 'portaudio' 'lilypond' 'gtk3' 'libxml2' 'fftw' 'librsvg'
-	 'fluidsynth' 'libsmf' 'evince' 'gtksourceview3' 'portmidi'
-	 'rubberband' 'guile2.0')
+depends=('aubio' 'lilypond' 'gtk3' 'libxml2' 'fftw' 'librsvg' 'fluidsynth'
+	 'libsmf' 'evince' 'gtksourceview3' 'portmidi' 'guile2.0')
 makedepends=('intltool' 'git')
 noextract=(${pkgname}-${pkgver}.tar.gz)
 validpgpkeys=('C66734FA5D60E4DDD882EF81AE6F83BB6C574235')
