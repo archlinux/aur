@@ -2,43 +2,32 @@
 
 _srcname=mpv
 pkgname=mpv-full
-pkgver=0.27.0
-pkgrel=4
+pkgver=0.28.0
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url='http://mpv.io/'
 depends=(
     # official repositories:
-        'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'openal' 'smbclient' 'vapoursynth' 'vulkan-icd-loader' 'zlib'
+        'openal' 'smbclient' 'vulkan-icd-loader' 'zlib'
+        
     # AUR:
-        'mujs' 'rsound' 'sndio'
+        'ffmpeg-git' 'mujs' 'rsound' 'sndio' 'shaderc-git' 'crossc'
+        'vapoursynth-git'
 )
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
-makedepends=('mesa' 'python-docutils' 'ladspa')
+makedepends=('mesa' 'python-docutils' 'ladspa' 'vulkan-headers' 'wayland-protocols')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
-source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz"
-        '0001-opengl-backend-support-multiple-backends.patch'
-        '0002-vaapi-Use-libva2-message-callbacks.patch'
-        '0003-demux_lavf-return-AVERROR_EOF-on-file-end.patch')
-sha256sums=('341d8bf18b75c1f78d5b681480b5b7f5c8b87d97a0d4f53a5648ede9c219a49c'
-            '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a'
-            '3c3517f4f4c71e39e1e04ea440688fc8d7b3dc55e6bc0a9398d11a9b75bde07d'
-            '5de6c616428c87cf9b39d8ba24446d65d175050c083e1054194d93cf03d5816a')
-
-prepare() {
-    cd "${_srcname}-${pkgver}"
-    patch -Np1 -i "${srcdir}/0001-opengl-backend-support-multiple-backends.patch"
-    patch -Np1 -i "${srcdir}/0002-vaapi-Use-libva2-message-callbacks.patch"
-    patch -Np1 -i "${srcdir}/0003-demux_lavf-return-AVERROR_EOF-on-file-end.patch"
-}
+source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz")
+sha256sums=('eeac559d422357470040b83d8cdabec74b8a64ce8f50d5ee421dd3e4c73457b4')
 
 build() {
     cd "${_srcname}-${pkgver}"
@@ -49,8 +38,8 @@ build() {
     ./waf configure \
         --color='yes' \
         --prefix='/usr' \
-        --confdir='/etc/mpv' \
         --progress \
+        --confdir='/etc/mpv' \
         \
         --enable-libmpv-shared \
         --disable-libmpv-static \
@@ -66,11 +55,10 @@ build() {
         --disable-test \
         --disable-clang-database \
         \
+        --disable-android \
         --disable-uwp \
         --disable-win32-internal-pthreads \
         --enable-iconv \
-        --enable-termios \
-        --enable-shm \
         --enable-libsmbclient \
         --enable-lua \
         --enable-javascript \
@@ -107,7 +95,10 @@ build() {
         \
         --disable-cocoa \
         --enable-drm \
+        --enable-drmprime \
         --enable-gbm \
+        --enable-wayland-scanner \
+        --enable-wayland-protocols \
         --enable-wayland \
         --enable-x11 \
         --enable-xv \
@@ -132,20 +123,18 @@ build() {
         --enable-caca \
         --enable-jpeg \
         --disable-direct3d \
-        --disable-android \
+        --enable-shaderc \
+        --enable-crossc \
+        --disable-d3d11 \
         --disable-rpi \
         --disable-ios-gl \
         --enable-plain-gl \
         --disable-mali-fbdev \
         --enable-gl \
+        --enable-vulkan \
         \
-        --enable-vaapi-hwaccel \
-        --disable-videotoolbox-hwaccel-new \
-        --disable-videotoolbox-hwaccel-old \
         --disable-videotoolbox-gl \
-        --enable-vdpau-hwaccel \
         --disable-d3d-hwaccel \
-        --disable-d3d-hwaccel-new \
         --disable-d3d9-hwaccel \
         --disable-gl-dxinterop-d3d9 \
         --enable-cuda-hwaccel \
@@ -158,7 +147,7 @@ build() {
         \
         --disable-apple-remote \
         --disable-macos-touchbar
-        
+    
     ./waf build
 }
 
