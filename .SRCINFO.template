@@ -1,0 +1,19 @@
+pkgbase = clever-tools-bin
+	pkgdesc = Clever Cloud CLI tool (binary)
+	pkgver = @VERSION@
+	pkgrel = 1
+	url = https://www.clever-cloud.com/doc/clever-tools/getting_started/
+	arch = x86_64
+	license = MIT
+	depends = libcurl-compat
+	depends = gcc-libs
+	depends = libnghttp2
+	depends = libssh2
+	depends = libpsl
+	options = !strip
+	source = clever-tools-@VERSION@_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/@VERSION@/clever-tools-@VERSION@_linux.tar.gz
+	source = clever-wrapper.sh
+	sha256sums = @SHA256@
+	sha256sums = b9180d74661b32aebed117c44cd2afbb157aa9b93374b354a7a45974aaba4eb6
+
+pkgname = clever-tools-bin
