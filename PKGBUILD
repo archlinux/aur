@@ -17,8 +17,8 @@ source=("http://dl.google.com/android/repository/sys-img/android/sysimg_arm-${_s
 sha1sums=('0b2e21421d29f48211b5289ca4addfa7f4c7ae5a')
 
 package() {
-  mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_sdkint}/default"
-  cp -dpr --no-preserve=ownership "${srcdir}/armeabi-v7a" "${pkgdir}/opt/android-sdk/system-images/android-${_sdkint}/default/armeabi-v7a"
+  mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_sdkint}/"
+  mv "${srcdir}/armeabi-v7a" "${pkgdir}/opt/android-sdk/system-images/android-${_sdkint}/armeabi-v7a"
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
