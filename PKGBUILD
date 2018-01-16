@@ -17,7 +17,7 @@ options=('!strip')
 source=("clever-tools-${pkgver}_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/${pkgver}/clever-tools-${pkgver}_linux.tar.gz"
         "clever-wrapper.sh")
 sha256sums=('dbacaff787410592f775b23c3a0659e7813b1569c6c7153573fd24f99649ca0a'
-            'b9180d74661b32aebed117c44cd2afbb157aa9b93374b354a7a45974aaba4eb6')
+            '47e0f16f00d261f3f5919344929a8931e56b7e79ac3919f3d47a64ddd7fe8318')
 
 package() {
   install -d "${pkgdir}/usr/bin"
