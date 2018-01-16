@@ -10,6 +10,7 @@ pkgbase = plexdrive-mongodb
 	license = MIT
 	makedepends = go
 	depends = fuse
+	depends = mongodb
 	provides = plexdrive
 	conflicts = plexdrive-bin
 	conflicts = plexdrive-git
@@ -17,7 +18,7 @@ pkgbase = plexdrive-mongodb
 	conflicts = plexdrive
 	conflicts = plexdrive-mongodb-bin
 	conflicts = plexdrive-sqlite
-	conflicts = plexdrive-bin-sqlite
+	conflicts = plexdrive-sqlite-bin
 	source = https://github.com/dweidenfeld/plexdrive/archive/4.0.0.tar.gz
 	sha256sums = c19fcfead0916900324f5e4ad581cb4d2004b84caf483ec6ebf6ccfcf251e9c0
 
