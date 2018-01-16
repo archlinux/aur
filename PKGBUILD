@@ -18,7 +18,7 @@ build()
   cd "$srcdir/pspsdk"
   ./bootstrap
   mkdir -p build-psp && pushd build-psp
-  ../configure --prefix=/usr --target=psp
+  ../configure --with-pspdev=/usr --target=psp
 }
 
 package()
