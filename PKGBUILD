@@ -3,48 +3,38 @@
 # Contributor: Bertram Felgenhauer <int-e@gmx.de>
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=camlidl
-pkgver=1.05
-pkgrel=7
+pkgver=1.06
+_pkgver=${pkgver/\./}
+pkgrel=1
 pkgdesc="A stub code generator and COM binding for Objective Caml (OCaml)"
 arch=('i686' 'x86_64')
 url="https://github.com/xavierleroy/camlidl"
 license=('custom')
 depends=('ocaml')
 options=(staticlibs)
-source=(http://caml.inria.fr/pub/old_caml_site/distrib/bazar-ocaml/$pkgname-$pkgver.tar.gz
-        arch-build-system-fix.patch
-        rename-array-module-for-ocaml-4.03.patch
+source=(https://github.com/xavierleroy/$pkgname/archive/$pkgname$_pkgver.tar.gz
         META.camlidl)
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -Np1 -i ${srcdir}/arch-build-system-fix.patch
-  patch -Np1 -i ${srcdir}/rename-array-module-for-ocaml-4.03.patch
-  cp config/Makefile.unix config/Makefile
-}
-
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgname$_pkgver"
+  cp config/Makefile.unix config/Makefile
   make all
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgname$_pkgver"
 
-  local _ocamldir=$(ocamlc -where)
-  mkdir -p ${pkgdir}/usr/bin ${pkgdir}/${_ocamldir}/{caml,${pkgname}}
+  local _bindir=$pkgdir/usr/bin
+  local _ocamldir=$pkgdir/$(ocamlc -where)
+  mkdir -p $_bindir $_ocamldir/{caml,stublibs,$pkgname}
 
-  make DESTDIR=${pkgdir} install
+  make BINDIR=$_bindir OCAMLLIB=$_ocamldir install
 
   install -Dm644 ${srcdir}/META.camlidl ${pkgdir}/${_ocamldir}/${pkgname}/META
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha1sums=('2a0d5ba70fea8c1de1c5387f8b2058357b2177df'
-          'b5cf6873bda3fe48f9946f09ccea39cd60fda59c'
-          '19e42c60e2e7448951fc87bb70a3e8fb26244e08'
+sha1sums=('674c75608faa841caea5a3d3c75dc8ff58d5c5a4'
           '2e26acb071e62574ced84ff7aa3a7164e27daef0')
-sha256sums=('857ed5bd3b2f99c62813070e1a5b4b6375e837c6815f4ad956baeb6f8c660311'
-            '4b5a3495db307970fef1e408e1e5caa92c3d3fde5c5fafe81b6d679662ab688c'
-            '78646a2022617e484b48aa7a5f7aa322696639b8b1eb195f07e88eb143dd735d'
+sha256sums=('abf490f1b07f23ed8c9f050475832436c56db22c40083c87f89cb5d4250cf12a'
             '1a060499f884670ad3ad5f9dbd8421ea3754947b0ee955424490848acb39ce42')

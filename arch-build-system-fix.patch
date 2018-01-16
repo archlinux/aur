@@ -1,42 +1,3 @@
-From a29e6b96b4574be8eaeb8c9c7514583734108cae Mon Sep 17 00:00:00 2001
-From: Bertram Felgenhauer <int-e@gmx.de>
-Date: Thu, 27 Oct 2016 10:45:13 +0200
-Subject: [PATCH 1/2] arch build system fix
-
----
- config/Makefile.unix  |  8 +++++---
- lib/Makefile          | 10 ++++++++--
- runtime/Makefile.unix |  2 +-
- 3 files changed, 14 insertions(+), 6 deletions(-)
-
-diff --git a/config/Makefile.unix b/config/Makefile.unix
-index cf4549c..fc8c063 100644
---- a/config/Makefile.unix
-+++ b/config/Makefile.unix
-@@ -19,7 +19,7 @@ OSTYPE=unix
- 
- # How to invoke the C preprocessor
- # Works on most Unix systems:
--CPP=/lib/cpp
-+CPP=$(shell which cpp)
- # Alternatives:
- # CPP=cpp
- # CPP=/usr/ccs/lib/cpp
-@@ -31,10 +31,12 @@ RANLIB=ranlib
- #RANLIB=:
- 
- # Location of the Objective Caml library in your installation
--OCAMLLIB=/usr/local/lib/ocaml
-+OCAMLBASEDIR=$(shell ocamlc -where)
-+OCAMLLIB=$(DESTDIR)$(OCAMLBASEDIR)
-+OCAMLINCDIR=$(DESTDIR)$(OCAMLBASEDIR)/caml
- 
- # Where to install the binaries
--BINDIR=/usr/local/bin
-+BINDIR=$(DESTDIR)/usr/bin
- 
- # The Objective Caml compilers (the defaults below should be OK)
- OCAMLC=ocamlc -g
 diff --git a/lib/Makefile b/lib/Makefile
 index 7ce04da..c347d6f 100644
 --- a/lib/Makefile
@@ -57,20 +18,3 @@ index 7ce04da..c347d6f 100644
 +	fi
  
  .SUFFIXES: .mli .ml .cmi .cmo .cmx
- 
-diff --git a/runtime/Makefile.unix b/runtime/Makefile.unix
-index 5617349..737b048 100644
---- a/runtime/Makefile.unix
-+++ b/runtime/Makefile.unix
-@@ -22,7 +22,7 @@ libcamlidl.a: $(OBJS)
- 	$(RANLIB) $@
- 
- install:
--	cp camlidlruntime.h $(OCAMLLIB)/caml/camlidlruntime.h
-+	cp camlidlruntime.h $(OCAMLINCDIR)/camlidlruntime.h
- 	cp libcamlidl.a $(OCAMLLIB)/libcamlidl.a
- 	cd $(OCAMLLIB); $(RANLIB) libcamlidl.a
- 
--- 
-2.10.1
-
