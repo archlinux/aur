@@ -8,7 +8,7 @@ pkgbase = python-galsim-git
 	license = BSD
 	makedepends = git
 	makedepends = scons
-	makedepends = boost
+	makedepends = boost-libs
 	makedepends = fftw
 	makedepends = tmv-git
 	makedepends = python
@@ -18,12 +18,17 @@ pkgbase = python-galsim-git
 pkgname = python-galsim-git
 	depends = python
 	depends = boost-libs
-	depends = fftw
 	depends = tmv-git
+	depends = galsim-common-git
 
 pkgname = python2-galsim-git
 	depends = python2
 	depends = boost-libs
+	depends = tmv-git
+	depends = galsim-common-git
+
+pkgname = galsim-common-git
+	pkgdesc = common files for python-galsim-git and python2-galsim-git
 	depends = fftw
 	depends = tmv-git
 
