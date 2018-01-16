@@ -25,12 +25,12 @@ prepare() {
 build()
 {
   cd "$srcdir/zlib-${pkgver}"
-  make
+  PATH=/usr/bin:$PATH make
 }
 
 package()
 {
   cd "$srcdir/zlib-${pkgver}"
-  make install PSPDIR="$pkgdir"/usr/psp
+  PATH=/usr/bin:$PATH make install PSPDIR="$pkgdir"/usr/psp
 }
 
