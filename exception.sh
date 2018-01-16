@@ -14,7 +14,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.logging
 # endregion
-# region functions
+# region variables
 # shellcheck disable=SC2034,SC2016
 bl_exception__documentation__='
     NOTE: The try block is executed in a subshell, so no outer variables can be
@@ -164,27 +164,8 @@ bl_exception__documentation__='
 bl_exception_active=false
 bl_exception_active_before_try=false
 declare -ig bl_exception_try_catch_level=0
-alias bl.exception.error_handler=bl_exception_error_handler
-bl_exception_error_handler() {
-    local error_code=$?
-    local traceback="Traceback (most recent call first):"
-    local -i i=0
-    while caller $i > /dev/null
-    do
-        local -a trace=( $(caller $i) )
-        local line=${trace[0]}
-        local subroutine=${trace[1]}
-        local filename=${trace[2]}
-        traceback="$traceback"'\n'"[$i] ${filename}:${line}: ${subroutine}"
-        ((i++))
-    done
-    if (( bl_exception_try_catch_level == 0 )); then
-        bl.logging.plain "$traceback" 1>&2
-    else
-        bl.logging.plain "$traceback" >"$bl_exception_last_traceback_file"
-    fi
-    exit $error_code
-}
+# endregion
+# region functions
 alias bl.exception.activate=bl_exception_activate
 bl_exception_activate() {
     $bl_exception_active && return 0
@@ -264,6 +245,27 @@ bl_exception_enter_try() {
     fi
     bl.exception.deactivate
     bl.exception.try_catch_level+=1
+}
+alias bl.exception.error_handler=bl_exception_error_handler
+bl_exception_error_handler() {
+    local error_code=$?
+    local traceback="Traceback (most recent call first):"
+    local -i i=0
+    while caller $i > /dev/null
+    do
+        local -a trace=( $(caller $i) )
+        local line=${trace[0]}
+        local subroutine=${trace[1]}
+        local filename=${trace[2]}
+        traceback="$traceback"'\n'"[$i] ${filename}:${line}: ${subroutine}"
+        ((i++))
+    done
+    if (( bl_exception_try_catch_level == 0 )); then
+        bl.logging.plain "$traceback" 1>&2
+    else
+        bl.logging.plain "$traceback" >"$bl_exception_last_traceback_file"
+    fi
+    exit $error_code
 }
 alias bl.exception.exit_try=bl_exception_exit_try
 bl_exception_exit_try() {
