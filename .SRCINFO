@@ -1,10 +1,10 @@
 pkgbase = dkgpg
 	pkgdesc = The Distributed Privacy Guard (DKGPG) implements Distributed Key Generation (DKG) and Threshold Cryptography for OpenPGP.
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/dkgpg/
 	arch = x86_64
-	license = GPL2+
+	license = GPL2
 	depends = libtmcg
 	depends = libgcrypt
 	depends = gmp
