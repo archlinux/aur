@@ -205,7 +205,7 @@ END
 
 msg2 'renaming'
 
-  ln -s "/usr/lib/firefox-beta/firefox/firefox-bin"  "$pkgdir/usr/bin/firefox-beta"
+  ln -s "/usr/lib/firefox-beta/firefox-bin"  "$pkgdir/usr/bin/firefox-beta"
 
 
 rm "$pkgdir/usr/bin/firefox"
