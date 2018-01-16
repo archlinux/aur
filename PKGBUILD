@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-sdk-git
-pkgver=1.2a.r8.ge2b2f3d
+pkgver=1.2a.r16.gc3ba904
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=(
@@ -15,18 +15,16 @@ makedepends=(
     # official repositories:
         'git' 'perl' 'cmake'
     # AUR:
-        'git-lfs' 'gcc5'
+        'git-lfs' 'gcc49'
 )
 provides=('intel-media-sdk' 'libmfx')
-conflicts=('intel-media-sdk' 'libmfx' 'libmfx-git')
-source=('intel-media-sdk-gcc5-fix.patch'
-        'intel-media-sdk-change-gcc-version.patch'
+conflicts=('intel-media-sdk' 'libmfx')
+source=('intel-media-sdk-change-gcc-version.patch'
         'intel-media-sdk-detect-intel-opencl.patch'
         'intel-media-sdk-add-runtime-libraries.patch')
-sha256sums=('e8687d509fcdefe0b9d01f12c7437425aa12791795046506fb13483dcca924ab'
-            '1e87af43f125b37b1ed12f5fd9f87a0260fe05204d12ac29567eeb389284de31'
+sha256sums=('d9fc114d06624504891b545df2913b01d4b07edfb99512388490eae40f9b9ab7'
             '689ebc270532c0e1e5132d39898ff2a93fe3483a5a2673aea396a24fc07ad24c'
-            'a4e02e01fbb289503be58006a3ddfdf4a1e4a1e127bcb64c5b539b94c53700cf')
+            '8bbbbe1729c54980103c7ab76815a565df7427ce44bd2789c891a1d521e1f737')
 
 prepare() {
     # makepkg does not support cloning git-lfs repositories
@@ -42,12 +40,12 @@ prepare() {
         cd "$pkgname"
     fi
     
-    for _patch in intel-media-sdk-gcc5-fix.patch \
-                  intel-media-sdk-change-gcc-version.patch \
+    for _patch in intel-media-sdk-change-gcc-version.patch \
                   intel-media-sdk-detect-intel-opencl.patch \
                   intel-media-sdk-add-runtime-libraries.patch
     do
-        if patch -Nsp1 --dry-run -i "${srcdir}/${_patch}" >/dev/null
+        printf '%s\n' "Checking patch '${_patch}'"
+        if patch -Np1 --dry-run -i "${srcdir}/${_patch}" >/dev/null
         then
             patch -Np1 -i "${srcdir}/${_patch}"
         fi
@@ -70,6 +68,7 @@ build() {
     export CXXFLAGS="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')"
     
     perl tools/builder/build_mfx.pl \
+                            --no-warn-as-error \
                             --cmake='intel64.make.release' \
                             --prefix='/usr' \
     
@@ -84,20 +83,18 @@ package() {
         DESTDIR="$pkgdir" \
         install
     
-    [ "$CARCH" = 'x86_64' ] && _arch='x64' && _libarch='64'
-    [ "$CARCH" = 'i686'   ] && _arch='x86' && _libarch='32'
+    mv -f  "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
     
-    mkdir -p "${pkgdir}/usr/"{include/mfx,lib/pkgconfig,share/"$pkgname"}
-    
-    # remove unneeded directory '/usb/lib64' (or '/usr/lib32')
-    mv -f  "${pkgdir}/usr/lib${_libarch}"/* "${pkgdir}/usr/lib"
-    rm -rf "${pkgdir}/usr/lib${_libarch}"
+    mkdir -p "${pkgdir}/usr/"{include/mfx,lib/"$pkgname"}
     
     # move samples to a better place
-    mv -f "${pkgdir}/usr/samples" "${pkgdir}/usr/share/${pkgname}"
+    mv -f "${pkgdir}/usr/samples" "${pkgdir}/usr/lib/${pkgname}"
     
-    # bellow are fixes for building ffmpeg
-    # (use symlinks to preserve compatibility with binary-only Intel products)
+    # license
+    cd "${srcdir}/${pkgname}"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    # bellow are fixes for ffmpeg (some paths are hardcoded, use symlinks)
     
     # includes
     cd "${pkgdir}/usr/include"
@@ -108,22 +105,6 @@ package() {
         cd ..
     done
     
-    # libraries
-    cd "${pkgdir}/usr/lib/lin_${_arch}"
-    for _lib in *.a
-    do
-        cd ..
-        ln -sf "lin_${_arch}/$_lib" "$_lib"
-        cd "lin_${_arch}"
-    done
-    
-    # pkgconfig files
-    cd "${pkgdir}/usr/lib/lin_${_arch}/pkgconfig"
-    ln -sf mfx.pc libmfx.pc
-    cd "${pkgdir}/usr/lib/pkgconfig"
-    ln -sf ../"lin_${_arch}/pkgconfig/mfx.pc"       mfx.pc
-    ln -sf ../"lin_${_arch}/pkgconfig/libmfx.pc" libmfx.pc
-    
     # plugins
     cd "${pkgdir}/usr/plugins"
     for _plugin in *
@@ -131,7 +112,7 @@ package() {
         ln -sf ../plugins/"$_plugin" ../lib/"$_plugin"
     done
     
-    # license
-    cd "${srcdir}/${pkgname}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # pkgconfig file
+    cd "${pkgdir}/usr/lib/pkgconfig"
+    ln -sf mfx.pc libmfx.pc
 }
