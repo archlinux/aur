@@ -1,4 +1,5 @@
-# Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
+# Maintainer: Halit Alptekin <halitalptekin@sabanciuniv.edu>
+# Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
