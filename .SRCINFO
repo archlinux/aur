@@ -1,0 +1,25 @@
+pkgbase = ccminer-nanashi-git
+	pkgdesc = Coin miner using CUDA for nVidia GPUs.
+	pkgver = r8.4209e41
+	pkgrel = 1
+	url = http://ccminer.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cuda
+	makedepends = nvidia-utils
+	makedepends = gcc6
+	depends = cuda
+	depends = curl
+	depends = jansson
+	depends = nvidia-utils
+	depends = openssl-1.0
+	depends = libcurl-openssl-1.0
+	provides = ccminer
+	conflicts = ccminer
+	options = !emptydirs
+	source = git+https://github.com/wrhight/ccminer-nanashi.git
+	sha256sums = SKIP
+
+pkgname = ccminer-nanashi-git
+
