@@ -1,0 +1,111 @@
+From 6f388cbcf00514618cc17a747c14ab3013e07846 Mon Sep 17 00:00:00 2001
+From: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
+Date: Sat, 28 Jan 2017 21:18:38 +0100
+Subject: [PATCH] Allow the RPC server to listen on an IPv6 address
+ (cherry-picked from commit ac661ff09)
+
+Signed-off-by: Pedro E. M. Brito <pedroembrito@gmail.com>
+---
+ daemon/daemon.c                |  2 +-
+ daemon/transmission-daemon.1   |  4 ++--
+ libtransmission/rpc-server.c   | 15 ++++++---------
+ libtransmission/transmission.h |  2 +-
+ 4 files changed, 10 insertions(+), 13 deletions(-)
+
+diff --git a/daemon/daemon.c b/daemon/daemon.c
+index 40ac5a67f..e2d492e6b 100644
+--- a/daemon/daemon.c
++++ b/daemon/daemon.c
+@@ -131,7 +131,7 @@ static const struct tr_option options[] =
+     { 912, "encryption-tolerated", "Prefer unencrypted peer connections", "et", 0, NULL },
+     { 'i', "bind-address-ipv4", "Where to listen for peer connections", "i", 1, "<ipv4 addr>" },
+     { 'I', "bind-address-ipv6", "Where to listen for peer connections", "I", 1, "<ipv6 addr>" },
+-    { 'r', "rpc-bind-address", "Where to listen for RPC connections", "r", 1, "<ipv4 addr>" },
++    { 'r', "rpc-bind-address", "Where to listen for RPC connections", "r", 1, "<ip addr>" },
+     { 953, "global-seedratio", "All torrents, unless overridden by a per-torrent setting, should seed until a specific ratio", "gsr", 1, "ratio" },
+     { 954, "no-global-seedratio", "All torrents, unless overridden by a per-torrent setting, should seed regardless of ratio", "GSR", 0, NULL },
+     { 'x', "pid-file", "Enable PID file", "x", 1, "<pid-file>" },
+diff --git a/daemon/transmission-daemon.1 b/daemon/transmission-daemon.1
+index ce44c087b..c30619fa5 100644
+--- a/daemon/transmission-daemon.1
++++ b/daemon/transmission-daemon.1
+@@ -41,7 +41,7 @@ via RPC commands from transmission's web interface or
+ .It Fl a Fl -allowed Ar x.x.x.x,...
+ Allow RPC access to a comma-delimited whitelist of IP addresses.
+ Wildcards can be specified in an address by using '*'.
+-Default: "127.0.0.1"
++Default: "127.0.0.1,::1"
+ Example: "127.0.0.*,192.168.1.*"
+ .It Fl b Fl -blocklist
+ Enable peer blocklists. Transmission understands the bluetack blocklist file format.
+@@ -84,7 +84,7 @@ Listen for IPv4 BitTorrent connections on a specific address. Only one IPv4 list
+ .It Fl I Fl -bind-address-ipv6
+ Listen for IPv6 BitTorrent connections on a specific address. Only one IPv6 listening address is allowed. Default: :: (All addresses)
+ .It Fl r Fl -rpc-bind-address
+-Listen for RPC connections on a specific address. This must be an IPv4 address. Only one RPC listening address is allowed. Default: 0.0.0.0 (All addresses)
++Listen for RPC connections on a specific address. This must be an IPv4 or IPv6 address. Only one RPC listening address is allowed. Default: 0.0.0.0 (All IPv4 addresses)
+ .It Fl -paused
+ Pause all torrents on startup
+ .It Fl L Fl -peerlimit-global Ar limit
+diff --git a/libtransmission/rpc-server.c b/libtransmission/rpc-server.c
+index 588cb5e0b..70f70b36a 100644
+--- a/libtransmission/rpc-server.c
++++ b/libtransmission/rpc-server.c
+@@ -55,7 +55,7 @@ struct tr_rpc_server
+     bool isHostWhitelistEnabled;
+     tr_port            port;
+     char             * url;
+-    struct in_addr     bindAddress;
++    struct tr_address  bindAddress;
+     struct evhttp    * httpd;
+     struct event     * start_retry_timer;
+     int                start_retry_counter;
+@@ -1058,10 +1058,7 @@ tr_rpcIsPasswordEnabled (const tr_rpc_server * server)
+ const char *
+ tr_rpcGetBindAddress (const tr_rpc_server * server)
+ {
+-  tr_address addr;
+-  addr.type = TR_AF_INET;
+-  addr.addr.addr4 = server->bindAddress;
+-  return tr_address_to_string (&addr);
++  return tr_address_to_string (&server->bindAddress);
+ }
+ 
+ /****
+@@ -1195,16 +1192,16 @@ tr_rpcInit (tr_session  * session, tr_variant * settings)
+       tr_logAddNamedError (MY_NAME, _("%s is not a valid address"), str);
+       address = tr_inaddr_any;
+     }
+-  else if (address.type != TR_AF_INET)
++  else if (address.type != TR_AF_INET && address.type != TR_AF_INET6)
+     {
+-      tr_logAddNamedError (MY_NAME, _("%s is not an IPv4 address. RPC listeners must be IPv4"), str);
++      tr_logAddNamedError (MY_NAME, _("%s is not an IPv4 or IPv6 address. RPC listeners must be IPv4 or IPv6"), str);
+       address = tr_inaddr_any;
+     }
+-  s->bindAddress = address.addr.addr4;
++  s->bindAddress = address;
+ 
+   if (s->isEnabled)
+     {
+-      tr_logAddNamedInfo (MY_NAME, _("Serving RPC and Web requests on port 127.0.0.1:%d%s"), (int) s->port, s->url);
++      tr_logAddNamedInfo (MY_NAME, _("Serving RPC and Web requests on %s:%d%s"), tr_rpcGetBindAddress(s), (int)s->port, s->url);      
+       tr_runInEventThread (session, startServer, s);
+ 
+       if (s->isWhitelistEnabled)
+diff --git a/libtransmission/transmission.h b/libtransmission/transmission.h
+index e213a8f4e..9abff6ee6 100644
+--- a/libtransmission/transmission.h
++++ b/libtransmission/transmission.h
+@@ -122,7 +122,7 @@ const char* tr_getDefaultDownloadDir (void);
+ 
+ #define TR_DEFAULT_BIND_ADDRESS_IPV4        "0.0.0.0"
+ #define TR_DEFAULT_BIND_ADDRESS_IPV6             "::"
+-#define TR_DEFAULT_RPC_WHITELIST          "127.0.0.1"
++#define TR_DEFAULT_RPC_WHITELIST      "127.0.0.1,::1"
+ #define TR_DEFAULT_RPC_HOST_WHITELIST              ""
+ #define TR_DEFAULT_RPC_PORT_STR                "9091"
+ #define TR_DEFAULT_RPC_URL_STR       "/transmission/"
+-- 
+2.15.1
+
