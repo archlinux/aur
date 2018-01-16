@@ -28,10 +28,10 @@ build() {
   autoconf --force
   autoheader --force
   automake --add-missing
-  export LDFLAGS="-L$(/usr/bin/psp-config --pspsdk-path)/lib -L$(/usr/bin/psp-config --psp-prefix)/lib -lc -lpspuser"
+  export LDFLAGS="-L$(psp-config --pspsdk-path)/lib -L$(psp-config --psp-prefix)/lib -lc -lpspuser"
   export LIBS="-lc -lpspuser"
   mkdir -p build-psp && pushd build-psp
-  ../configure --prefix=/usr/psp --host=psp --disable-esd psp_config=/usr/bin/psp-config
+  ../configure --prefix=/usr/psp --host=psp --disable-esd
   
   # FIXME: AC_REPLACE_FUNCS(strcasecmp strdup strstr) in configure.in results in .lo.o files added to LIBOBJS
   sed -i "s|LIBOBJS= \${LIBOBJDIR}strcasecmp.lo\$U.o \${LIBOBJDIR}strdup.lo\$U.o \${LIBOBJDIR}strstr.lo\$U.o|LIBOBJS= \${LIBOBJDIR}strcasecmp.lo \${LIBOBJDIR}strdup.lo \${LIBOBJDIR}strstr.lo|g" libmikmod/Makefile
