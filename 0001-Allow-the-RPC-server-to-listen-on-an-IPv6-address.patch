@@ -4,7 +4,7 @@ Date: Sat, 28 Jan 2017 21:18:38 +0100
 Subject: [PATCH] Allow the RPC server to listen on an IPv6 address
  (cherry-picked from commit ac661ff09)
 
-Signed-off-by: Pedro E. M. Brito <pedroembrito@gmail.com>
+Signed-off-by: Pedro Brito <pedroembrito@gmail.com>
 ---
  daemon/daemon.c                |  2 +-
  daemon/transmission-daemon.1   |  4 ++--
