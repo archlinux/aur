@@ -4,7 +4,7 @@
 # OPTIONS+=(debug !strip)
 
 pkgname=tinc-pre-git
-pkgver=1.1pre15.13.ge88b3fb5
+pkgver=1.1pre15.39.g43cf631b
 pkgrel=1
 pkgdesc="Virtual Private Network daemon (prerelease)"
 arch=('any')
@@ -28,6 +28,10 @@ build() {
     autoreconf -fsi
     ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
     make
+
+    cd systemd
+    make tinc.service
+    make tinc@.service
 }
 
 package() {
