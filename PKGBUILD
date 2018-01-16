@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Berthaud <alexandre at berthaud dot me>
 
-pkgname=clever-tools-bin
+pkgname=clever-arch-test
 pkgver=0.9.3
 pkgrel=1
 pkgdesc="Clever Cloud CLI tool (binary)"

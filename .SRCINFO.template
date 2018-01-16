@@ -1,4 +1,4 @@
-pkgbase = clever-tools-bin
+pkgbase = clever-arch-test
 	pkgdesc = Clever Cloud CLI tool (binary)
 	pkgver = @VERSION@
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = clever-tools-bin
 	sha256sums = @SHA256@
 	sha256sums = b9180d74661b32aebed117c44cd2afbb157aa9b93374b354a7a45974aaba4eb6
 
-pkgname = clever-tools-bin
+pkgname = clever-arch-test
