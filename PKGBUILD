@@ -4,8 +4,8 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=jhbuild
-pkgver=3.15.92+1489+g43760b5d
-pkgrel=2
+pkgver=3.15.92+1631+g65862991
+pkgrel=1
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
@@ -17,7 +17,7 @@ optdepends=('subversion: fetch subversion repositories'
             'bzr: fetch Bazaar repositories'
             'mercurial: fetch Mercurial repositories'
             'darcs: fetch Darcs repositories')
-_commit=43760b5d
+_commit=65862991
 source=("$pkgname::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
         "module_args.patch")
 sha256sums=('SKIP'
@@ -55,4 +55,4 @@ package() {
 }
 
 # list of dependencies reported by 'jhbuild sysdeps'
-depends+=(anthy argyllcms caribou check cmake cups docbook-sgml docbook-utils docbook-xsl dotconf doxygen espeak exempi fwupdate git gmime gperf gtkspell3 hyphen intltool itstool kyotocabinet libatasmart libcanberra libdmapsharing libdvdread libgexiv2 libgphoto2 libhangul libical libmusicbrainz5 libndp liboauth libpwquality libraw libunwind libvirt libvpx llvm mpc ninja openldap opus plymouth poppler-glib ppp python-cairo python-pillow ragel ruby rust sane smbclient source-highlight startup-notification taglib udisks2 usbredir v4l-utils vala valgrind wavpack wget wireless_tools xf86-input-wacom xmlto xorg-server-xwayland xorg-util-macros xtrans yasm perl-file-copy-recursive)
+depends+=(anthy argyllcms caribou check cmake cups docbook-sgml docbook-utils docbook-xsl dotconf doxygen espeak exempi fwupdate git gmime gperf gtkspell3 hyphen intltool itstool kyotocabinet libatasmart libcanberra libdmapsharing libdvdread libgexiv2 libgphoto2 libhangul libical libmusicbrainz5 libndp libnfs liboauth libplist libpwquality libraw libunwind libvirt libvpx llvm mpc ninja openldap opus plymouth poppler-glib ppp python-cairo python-pillow ragel ruby rust sane smbclient source-highlight startup-notification taglib udisks2 usbredir v4l-utils vala valgrind wavpack wget wireless_tools xf86-input-wacom xmlto xorg-server-xwayland xorg-util-macros xtrans yasm perl-file-copy-recursive)
