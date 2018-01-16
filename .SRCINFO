@@ -1,0 +1,27 @@
+pkgbase = gnustep-gui
+	pkgdesc = The GNUstep GUI class library
+	pkgver = 0.25.1
+	pkgrel = 4
+	url = http://www.gnustep.org/
+	arch = x86_64
+	groups = gnustep-core
+	license = LGPL
+	makedepends = gcc-objc
+	makedepends = gnustep-base
+	makedepends = gnustep-make
+	depends = aspell
+	depends = gcc-libs
+	depends = libcups
+	depends = audiofile
+	depends = libsndfile
+	depends = giflib
+	depends = libao
+	conflicts = gnustep-gui-svn
+	options = !makeflags
+	source = ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.25.1.tar.gz
+	source = giflib-5.1.patch
+	sha256sums = 3aacb277976014cfd4394084066187430100657dea234da91d9ae5015e747c66
+	sha256sums = 0c004c9816b626e168d085cc140c18bb6b5a2a06160aecfdffc0b00532fbed69
+
+pkgname = gnustep-gui
+
