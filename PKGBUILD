@@ -24,6 +24,7 @@ build() {
 package_nginx-unitd() {
   cd "$srcdir"/$_shortname-$pkgver
   make DESTDIR="$pkgdir" unitd-install
+  install -m 644 -D "$startdir"/unit.service "$pkgdir"/usr/lib/systemd/system/unit.service
 }
 
 package_nginx-unit-python() {
