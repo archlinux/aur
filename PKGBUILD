@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Berthaud <alexandre at berthaud dot me>
 
 pkgname=clever-arch-test
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Clever Cloud CLI tool (binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('libcurl-compat'
 options=('!strip')
 source=("clever-tools-${pkgver}_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/${pkgver}/clever-tools-${pkgver}_linux.tar.gz"
         "clever-wrapper.sh")
-sha256sums=('adcae5af912dcbdc74d996b6e94767f24d16bf1bdcd5073797f999fe75b018a4'
+sha256sums=('dbacaff787410592f775b23c3a0659e7813b1569c6c7153573fd24f99649ca0a'
             'b9180d74661b32aebed117c44cd2afbb157aa9b93374b354a7a45974aaba4eb6')
 
 package() {
