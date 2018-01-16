@@ -27,4 +27,6 @@ package() {
   cd "$srcdir/${_pkgname}"
   install -d -m0755 "${pkgdir}/usr/bin"
   make SBINDIR="${pkgdir}/usr/bin" install
+  cd "${pkgdir}/usr/bin"
+  mv not not-${_pkgname}
 }
