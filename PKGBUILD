@@ -2,13 +2,13 @@
 
 _name=lute
 pkgname=${_name}-git
-pkgver=0.1.0
+pkgver=0.1.0.44.g6cc7dcc
 pkgrel=1
 pkgdesc='A rom library management system for organised gamers'
 arch=('x86_64')
 url='https://github.com/ingolemo/lute'
 license=('GPL3')
-depends=('python' 'python-click' 'python-requests' 'python-toml')
+depends=('python' 'python-click' 'python-parsimonious' 'python-requests' 'python-toml')
 source=('git://github.com/ingolemo/lute.git')
 md5sums=('SKIP')
 
