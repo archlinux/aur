@@ -7,8 +7,8 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=65.0.3315.3
-pkgrel=7
+pkgver=65.0.3322.3
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -114,7 +114,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/edgy.patch
 )
 
 
-sha256sums=('850b0c8ca1646f7ba94816ce2a47d21f454ce9aff00bf994d9143d475249314c'
+sha256sums=('b43070ce9edee64667022ae4eabf8929f3e713f9eead3ba092545a45b7667913'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
