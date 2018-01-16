@@ -5,6 +5,7 @@ _pkgname=plasma5-applets-active-window-control
 _gitpkgname=plasma-active-window-control
 pkgver=r11.6c94e5a
 pkgrel=1
+epoch=1
 pkgdesc="Plasmoid for Plasma 5. Allowes advanced control of active window."
 arch=('i686' 'x86_64')
 url="https://phabricator.kde.org/source/$_gitpkgname"
