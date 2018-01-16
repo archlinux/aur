@@ -16,7 +16,7 @@ depends=('libcurl-compat'
 options=('!strip')
 source=("clever-tools-${pkgver}_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/${pkgver}/clever-tools-${pkgver}_linux.tar.gz"
         "clever-wrapper.sh")
-sha256sums=('335fb02e45653799377131938d788d5ddcfb3f8f4b69b7452713547e5f94546e'
+sha256sums=('dbacaff787410592f775b23c3a0659e7813b1569c6c7153573fd24f99649ca0a'
             'b9180d74661b32aebed117c44cd2afbb157aa9b93374b354a7a45974aaba4eb6')
 
 package() {
