@@ -25,10 +25,10 @@ source=('influxdb.sysusers' 'influxdb.tmpfiles' 'LICENSE')
 sha256sums=('a5ffcdb6db92ed33eccd14a93f1243c18d0d64724de641730af451c99642d6d6' 'e2aa59413a6204737383b86cedefd866d7073f56ace5b89aad38c530cc86e60c' 'bece49bfc61abbb9d0b69bebb47955a44617ada83186c95db5651cd40c0a867a')
 
 package() {
-  cd $srcdir
-  install -Dm644 influxdb.sysusers "$pkgdir/usr/lib/sysusers.d/influxdb.conf"
-  install -Dm644 influxdb.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/influxdb.conf"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/influxdb-bin/LICENSE"
+  cd $srcdir/influxdb-$pkgver-$pkgrel
+  install -Dm644 ../influxdb.sysusers "$pkgdir/usr/lib/sysusers.d/influxdb.conf"
+  install -Dm644 ../influxdb.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/influxdb.conf"
+  install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/influxdb-bin/LICENSE"
 
   install -Dm755 usr/bin/influxd "$pkgdir/usr/bin/influxd"
   install -Dm755 usr/bin/influx "$pkgdir/usr/bin/influx"
