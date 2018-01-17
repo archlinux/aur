@@ -1,0 +1,22 @@
+pkgbase = glava-git
+	pkgdesc = GLava - OpenGL audio spectrum visualizer
+	pkgver = r66.ff7d879
+	pkgrel = 1
+	url = https://github.com/wacossusca34/glava
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python
+	depends = x-server
+	depends = pulseaudio
+	depends = glfw
+	optdepends = glfw-x11-git: native transparency option (rebuild required)
+	provides = glava
+	conflicts = glava
+	source = glava::git+https://github.com/wacossusca34/glava
+	source = glad::git+https://github.com/Dav1dde/glad
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = glava-git
+
