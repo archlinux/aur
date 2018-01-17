@@ -4,7 +4,7 @@
 
 pkgname=gimp-git
 epoch=1
-pkgver=2.9.8.317.g4849d41060
+pkgver=2.9.8.337.gdf70a35b71
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'alsa-lib: for MIDI event controller module'
             'curl: for URI support'
             'ghostscript: for postscript support')
-options=('!libtool' '!makeflags')
+options=('!libtool')
 provides=('gimp')
 conflicts=('gimp')
 source=(git://git.gnome.org/gimp
@@ -52,7 +52,7 @@ build() {
     --enable-mp --enable-gimp-console --enable-gimp-remote \
     --enable-python --with-gif-compression=lzw --with-libcurl \
     --without-aa --without-hal --without-gvfs --without-gnomevfs
-  make
+  PYTHONPATH="/usr/share/glib-2.0:${PYTHONPATH}" make
 }
 
 package() {
