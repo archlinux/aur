@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
+# $Id$
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: Vesa Kaihlavirta <vegai@iki.fi>
 # Contributor: Sebastian Sareyko <public@nooms.de>
 
 pkgname=gnustep-base
-pkgver=1.25.0
-pkgrel=4
+pkgver=1.25.1
+pkgrel=1
 pkgdesc="The GNUstep base package"
 arch=('x86_64')
 url="http://www.gnustep.org/"
@@ -15,8 +15,10 @@ makedepends=(gcc-objc)
 conflicts=('gnustep-base-svn')
 groups=('gnustep-core')
 options=('!emptydirs' '!makeflags')
-source=(ftp://ftp.gnustep.org/pub/gnustep/core/$pkgname-$pkgver.tar.gz)
-sha256sums=('f5159a7d70e06b9dfb96c5f8ac572e3a5e6cf8de7bafb056bc9b2e0c4f93c347')
+source=(https://github.com/gnustep/libs-base/releases/download/base-${pkgver//./_}/gnustep-base-${pkgver}.tar.gz{,.sig})
+sha256sums=('f28beb9ca485674bcce3053896ad90a31b109fb97c5a041827c72f241e8db69e'
+            'SKIP')
+validpgpkeys=('83AAE47CE829A4146EF83420CA868D4C99149679')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
