@@ -7,11 +7,11 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 # latest commit on stable branch
-_commit='a1b2c92d8290c76a29ccd0887a92ac064e1bb5a1'
+_commit='242f14c5a807bb50bfda18568887deae1eb8a3ec'
 # Bump this to latest major release for signed tag verification,
 # the commit count is handled by pkgver() function.
-pkgver=236.0
-pkgrel=3
+pkgver=236.81
+pkgrel=1
 arch=('x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')
@@ -52,11 +52,6 @@ sha512sums=('SKIP'
             '10190fba9f39a8f4b620a0829e0ba8ed63bb4dbeca712966011ee7807880d01ab2abff1a80baafeb6674db70526a473fe585db8190e864f318fc4d6068552618')
 
 _backports=(
-  # cryptsetup-generator: Don't mistake NULL input as OOM (#7688) 
-  'aff0b1fa7bf2ca60fd5ffdf7ea25184d576cf61d'
-
-  # networkd: call link_set_routing_policy_rule before setting routes (#7815)
-  '27c34f732e7767b5cdc90fe7ad03ae0ea625671c'
 )
 
 _reverts=(
