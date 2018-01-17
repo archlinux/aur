@@ -1,6 +1,6 @@
 pkgbase = mate-control-center-dev
 	pkgdesc = The Control Center for MATE
-	pkgver = 1.19.1
+	pkgver = 1.19.2
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -39,8 +39,8 @@ pkgbase = mate-control-center-dev
 	provides = mate-control-center-gtk3
 	conflicts = mate-control-center
 	conflicts = mate-control-center-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-control-center-1.19.1.tar.xz
-	sha1sums = e8fc2892d13d1108e25d68fcb517f1e586206edc
+	source = http://pub.mate-desktop.org/releases/1.19/mate-control-center-1.19.2.tar.xz
+	sha1sums = 493bb007cb475da266f481e2dc506aa8b7629b39
 
 pkgname = mate-control-center-dev
 	pkgdesc = The Control Center for MATE (GTK3 version)
