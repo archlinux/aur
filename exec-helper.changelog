@@ -2,11 +2,14 @@ Changelog
 =========
 
 
-0.1.1_189_g589c8c9
+0.1.1_192_g69ccc21
 ------------
 
 New
 ~~~
+- Added a version option displaying the version and copyright
+  information for the particular exec-helper instance. [Bart Verhagen]
+- CI: Removed spurious install-aur script. [Bart Verhagen]
 - Added EH_WORKING_DIR predefined pattern. This pattern can now be used
   when the current working directory should be used rather than the
   directory of the used configuration file. [Bart Verhagen]

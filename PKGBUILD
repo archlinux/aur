@@ -1,7 +1,7 @@
 # Maintainer: Bart Verhagen <barrie.verhagen@gmail.com>
 pkgname=('exec-helper-git' 'exec-helper-git-docs')
 pkgbase='exec-helper-git'
-pkgver=0.1.1_189_g589c8c9
+pkgver=0.1.1_192_g69ccc21
 pkgrel=1
 epoch=
 pkgdesc="How To Get Coffee In Peace: a shell meta-wrapper"
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=exec-helper.changelog
-source=('exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=589c8c9c33118dae8552f2e22ec37e119ebe2f1a')
+source=('exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=69ccc215a5d8055f23c4283dfb092ce6616248c4')
 noextract=()
 validpgpkeys=()
 
@@ -30,13 +30,17 @@ _build_dir='build'
 _exec_helper_build_targets=('exec-helper' 'docs-man')
 _exec_helper_docs_build_targets=('docs-html')
 
+_system_description=$(lsb_release --description --short | sed 's/"//g')
+_source_version=0.1.1_192_g69ccc21
+_release_version="($_system_description) $_source_version"
+_copyright="Copyright (c) $(date +'%Y') Bart Verhagen"
+
 pkgver() {
     printf "%s" $pkgver
 }
 
 build() {
-    # Explicitly set cmake to use the system catch package without installing this package: this way we are sure no test related stuff can be built
-    cmake -G "Unix Makefiles" -H"$_git_dir" -B"$_build_dir" -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_YAML_CPP=ON -DUSE_SYSTEM_GSL=ON -DBUILD_HTML_DOCUMENTATION=ON -DBUILD_MAN_DOCUMENTATION=ON
+    cmake -G "Unix Makefiles" -H"$_git_dir" -B"$_build_dir" -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_YAML_CPP=ON -DUSE_SYSTEM_GSL=ON -DBUILD_HTML_DOCUMENTATION=ON -DBUILD_MAN_DOCUMENTATION=ON -DENABLE_TESTING=OFF -DENABLE_WERROR=OFF -DVERSION="$_release_version" -DCOPYRIGHT="$_copyright"
     _nb_of_cores=$(grep -c ^processor /proc/cpuinfo)
     make --directory "$_build_dir" --jobs ${_nb_of_cores} ${_exec_helper_build_targets[@]} ${_exec_helper_docs_build_targets[@]}
 }
