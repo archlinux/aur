@@ -2,7 +2,7 @@
 
 pkgname=jigdo
 pkgver=0.7.3
-pkgrel=1
+pkgrel=6
 pkgdesc="Distribute large images by sending and receiving the files that make them up"
 arch=('i686' 'x86_64')
 url="http://atterer.org/jigdo/"
