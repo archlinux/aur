@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Advanced DRI Configurator
+Comment=Change 3D Acceleration options
+Exec=adriconf
+Icon=/usr/share/icons/adriconf-icon.png
+Type=Application
+Categories=GNOME;Application;Settings;AdvancedSettings;
+StartupNotify=true
