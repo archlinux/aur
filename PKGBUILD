@@ -52,7 +52,7 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
 pkgver=4.14.14
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -82,7 +82,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
         '0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
+        '0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
+        '0005-tools-objtool-makefile-don-t-assume-sync-check.sh-is-executable.patch')
 
 _kernelname=${pkgbase#linux} 
 
@@ -109,6 +110,10 @@ prepare() {
         msg "Fix #56711"
         patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
     
+    ### Fix https://www.spinics.net/lists/stable/msg207374.html
+        msg "Fix execvp: ./sync-check.sh error"
+        patch -Np1 -i ../0005-tools-objtool-makefile-don-t-assume-sync-check.sh-is-executable.patch
+    
     ### Patch source with UKSM
         msg "Patching source with UKSM"
 	patch -Np1 -i ../${_uksm_patch}
@@ -116,10 +121,6 @@ prepare() {
     ### Patch source to enable more gcc CPU optimizatons via the make nconfig
         msg "Patching source with gcc patch to enable more cpus types"
 	patch -Np1 -i ../${_gcc_patch}
-	
-    ### Fix https://www.spinics.net/lists/stable/msg207374.html
-        msg "Fix execvp: ./sync-check.sh error"
-        chmod +x tools/objtool/sync-check.sh
     
     ### Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
@@ -390,7 +391,8 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             'f665daaec89b15d3a4cf2cabaf2b423dcda5e005860275753575f6bbed6815c3f17558b24da01ce6f6f0aeba900c506c32efa50754592625f3b513c7f14aea62'
             '2ab17dfa1d37a73441f2e42883358763db648c5b863e76a8d7b3b344c1b293ffee5f72c8ed1f8219cec8c8419898fac59b21e0b6bf47daee17e426b18d907df9'
             '24dccb21b187f331955d6f4d992b2ccd9cbf27acd83e4ff417921e200a1ebc4f52ec9732180a6d3922f86d2422ab0047558c62b76253e6f81983f26d0ae10f76'
-            'bd0a758c7cc185cf5f29ea1d0a8964d12592c45cd9560d1f0508ad0dc102920e4f45aaa6921e58f145daea211340e8884f530a07c8da76f12af817c812b021dc')
+            'bd0a758c7cc185cf5f29ea1d0a8964d12592c45cd9560d1f0508ad0dc102920e4f45aaa6921e58f145daea211340e8884f530a07c8da76f12af817c812b021dc'
+            '04a80e7018ba3d4f2d69f642c82673b2364c7096fa0f3dd7c086e55e21944cbd77153469ad3c1bc277b174e8087c69540710135f8e6d5b5775e43c73f0aae059')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
