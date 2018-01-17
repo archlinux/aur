@@ -1,7 +1,7 @@
 pkgbase = openbazaar
 	pkgdesc = Front-end Electron application for talking with the OpenBazaar daemon
 	pkgver = 2.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openbazaar.org
 	install = openbazaar.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = openbazaar
 	source = openbazaar.desktop
 	md5sums = 8cc60a88961c0e17ed5d623a6da174a2
 	md5sums = 122a3e23d7ecfef0a82e756cb97c3e98
-	md5sums = 43c9c9ef1d3ca873eea6b6343ca072e8
+	md5sums = 2e7c7804b970baa7f9274dae47618a52
 
 pkgname = openbazaar
 
