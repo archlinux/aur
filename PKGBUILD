@@ -55,8 +55,7 @@ build() {
 	cd "$srcdir/$_pkgbase/build"
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DCMAKE_BUILD_TYPE=Release \
-	  -DUSE_SYSTEM_CURL=ON
+	  -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
@@ -68,7 +67,7 @@ check() {
 package_yuzu-git() {
 	depends=('sdl2' 'libpng')
 
-	install -Dm755 "$srcdir/$_pkgbase/build/src/yuzu/yuzu" "$pkgdir/usr/bin/$_pkgbase"
+	install -Dm755 "$srcdir/$_pkgbase/build/bin/yuzu-cmd" "$pkgdir/usr/bin/${_pkgbase}-cmd"
 }
 
 package_yuzu-qt-git() {
