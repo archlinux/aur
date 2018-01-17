@@ -1,15 +1,15 @@
 pkgbase = gnustep-make
 	pkgdesc = The GNUstep make package
 	pkgver = 2.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnustep.org/
 	arch = x86_64
 	groups = gnustep-core
 	license = GPL
 	conflicts = gnustep-make-svn
 	backup = etc/GNUstep/GNUstep.conf
-	source = ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-make-2.7.0.tar.gz
-	sha256sums = 90a01cbfb68aafe01c4cc4123121ebd2da0e1e2076795b5682f0833fddf311ce
+	source = https://github.com/gnustep/tools-make/archive/make-2_7_0.tar.gz
+	sha256sums = 34fb9e848607e6d069bf10141d438c60e04d296a2501b2db1ba6ae28c57dbc56
 
 pkgname = gnustep-make
 
