@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc='Top-like interface for container metrics'
 depends=('glibc')
 arch=('x86_64')
-url="https://ctop.sh/"
-_url="https://github.com/bcicen/ctop"
-url="https://ctop.sh/"
+url='https://ctop.sh/'
+_url='https://github.com/bcicen/ctop'
+url='https://ctop.sh/'
 license=('MIT')
 source=("${_url}/releases/download/v$pkgver/${pkgname}-$pkgver-linux-amd64"
         'LICENSE')
