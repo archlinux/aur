@@ -4,7 +4,7 @@
 
 pkgname=nrpe
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('x86_64')
 license=('GPL')
@@ -30,7 +30,6 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc/nrpe \
     --libexecdir=/usr/lib/monitoring-plugins \
-    --enable-command-args \
     --with-nrpe-user=31 --with-nrpe-group=31 \
     --with-nagios-user=31 --with-nagios-group=31 \
     --with-piddir=/run/nrpe
