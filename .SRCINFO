@@ -1,0 +1,21 @@
+pkgbase = transmission-cli-git
+	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)
+	pkgver = 2.92.r324.geb5d1a79c
+	pkgrel = 1
+	url = http://www.transmissionbt.com/
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = libevent
+	depends = systemd
+	conflicts = transmission-cli
+	replaces = transmission-cli
+	source = git+https://github.com/transmission/transmission.git
+	source = transmission-cli.sysusers
+	source = transmission-cli.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2
+	sha256sums = 1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451
+
+pkgname = transmission-cli-git
+
