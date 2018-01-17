@@ -1,24 +1,30 @@
-# Maintainer: Bjoern Franke <bjo@nord-west.org>
+# Maintainer: Kewl <lfxm@bmup.fv.psh (rot1)>
+# Contributor: Bjoern Franke <bjo@nord-west.org>
 
 pkgname=xnconvert
-pkgver=1.74
+pkgver=1.76
 pkgrel=1
-pkgdesc="A cross-platform batch image-converter and resizer with a powerful and ease of use experience."
+pkgdesc="A powerful batch image-converter and resizer."
 url="http://www.xnview.com/en/xnconvert/"
 arch=('x86_64' 'i686')
 license=('custom')
-depends=('glib2' 'expat' 'libpng12')
-source=('xnconvert.desktop')
-source_i686=("http://download.xnview.com/XnConvert-linux.tgz")
-source_x86_64=("http://download.xnview.com/XnConvert-linux-x64.tgz")
-sha256sums=('b163bca7039f6877239535b88b9aacb6fde78573dc141a52addb99cb85b35f82')
-sha256sums_x86_64=('329832996766b9b1b259b7a8161a431c3c1edc9753590b6c4b6f93ea5868f752')
-sha256sums_i686=('7757d4e865e3dbab8f795dd37fefdf83293b5e305ab42fc64320668dfc8836fe')
+depends=('glib2' 'expat' 'qt5-svg')
+source=("${pkgname}.desktop")
+source_x86_64=("XnConvert-linux-x64_${pkgver}.tgz::http://download.xnview.com/XnConvert-linux-x64.tgz")
+source_i686=("XnConvert-linux_${pkgver}.tgz::http://download.xnview.com/XnConvert-linux.tgz")
+md5sums=('3f33af83785546964d6e28ad1e06b642')
+md5sums_x86_64=('7519caab24f87794d5a8806e9fd8a35a')
+md5sums_i686=('bd7e065c5588d2e878b8605acddaf683')
 
 package() {
-  install -d "$pkgdir"/{opt/xnconvert,usr/bin}
-  cp -R XnConvert/* "$pkgdir"/opt/xnconvert
-  ln -s /opt/xnconvert/xnconvert.sh "$pkgdir"/usr/bin/xnconvert
-  install -Dm644 xnconvert.desktop "$pkgdir"/usr/share/applications/xnconvert.desktop
-  install -Dm644 XnConvert/license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
+  install -d "${pkgdir}/opt/${pkgname}"
+  cp -dr XnConvert/* "${pkgdir}/opt/${pkgname}"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s /opt/${pkgname}/xnconvert.sh "${pkgdir}/usr/bin/${pkgname}"
+
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 XnConvert/license.txt "${pkgdir}/usr/share/licenses/$pkgname/license.txt"
+
+  rm "${pkgdir}/opt/${pkgname}/XnConvert.desktop"
 }
