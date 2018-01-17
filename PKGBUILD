@@ -5,7 +5,7 @@
 _ver=1.19
 _pkgbase=mate-system-monitor
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="A system monitor for MATE (GTK3 version)"
 url="http://mate-desktop.org"
@@ -18,7 +18,7 @@ makedepends=('docbook2x' 'mate-common>=1.19' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('4a858eeefdd9f5435177b3c8c21affdf2f57fbd0')
+sha1sums=('d92a6a28e5499c5cc0ddd0f95b0caf59ffc2e2c0')
 
 prepare() {
     cd "${srcdir}"
