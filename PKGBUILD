@@ -1,7 +1,7 @@
 # Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 _npmname=gitlab-letsencrypt
-_npmver=3.0.0
+_npmver=3.1.0
 pkgname=nodejs-$_npmname
 pkgver=$_npmver
 pkgrel=1
@@ -23,4 +23,4 @@ package() {
   npm install -g --user root --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" $_npmname@$_npmver
   chmod -R 755 $_npmdir$_npmname
 }
-md5sums=('f074690c2ceacbd4e88ad2a37dfe0fa7')
+sha256sums=('36c27375216fa72cbd01a6656762c031578f3db3e36d815953d4a387016ec23c')

@@ -1,15 +1,15 @@
 pkgbase = nodejs-gitlab-letsencrypt
 	pkgdesc = Easily generate a Let's Encrypt certificate for GitLab.com hosted pages
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/rolodato/gitlab-letsencrypt
 	arch = any
 	license = GPL3
 	makedepends = npm
 	depends = nodejs
-	noextract = gitlab-letsencrypt-3.0.0.tgz
-	source = https://registry.npmjs.org/gitlab-letsencrypt/-/gitlab-letsencrypt-3.0.0.tgz
-	md5sums = f074690c2ceacbd4e88ad2a37dfe0fa7
+	noextract = gitlab-letsencrypt-3.1.0.tgz
+	source = https://registry.npmjs.org/gitlab-letsencrypt/-/gitlab-letsencrypt-3.1.0.tgz
+	sha256sums = 36c27375216fa72cbd01a6656762c031578f3db3e36d815953d4a387016ec23c
 
 pkgname = nodejs-gitlab-letsencrypt
 
