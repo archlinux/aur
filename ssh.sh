@@ -10,20 +10,6 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region functions
-alias bl.ssh.screen=bl_ssh_screen
-bl_ssh_screen() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        Wraps the ssh client for automatically starting a screen session on
-        server.
-
-        ```bash
-            bl.ssh.screen user@host [SSH_OPTIONS]
-        ```
-    '
-    ssh "$1" -t 'screen -r || screen -S main' "${@:2}"
-    return $?
-}
 alias bl.ssh.make_key=bl_ssh_make_key
 bl_ssh_make_key() {
     # shellcheck disable=SC2016,SC2034
@@ -108,6 +94,20 @@ bl_ssh_print() {
         echo "Given file doesn't exist."
         return $?
     fi
+}
+alias bl.ssh.screen=bl_ssh_screen
+bl_ssh_screen() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        Wraps the ssh client for automatically starting a screen session on
+        server.
+
+        ```bash
+            bl.ssh.screen user@host [SSH_OPTIONS]
+        ```
+    '
+    ssh "$1" -t 'screen -r || screen -S main' "${@:2}"
+    return $?
 }
 # endregion
 # region vim modline

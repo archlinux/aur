@@ -10,26 +10,6 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 # region functions
-alias bl.path.run_in_programs_location=bl_path_run_in_programs_location
-bl_path_run_in_programs_location() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        Changes current working directory to given program path and runs the
-        program.
-
-        ```bash
-            bl.path.run_in_programs_location /usr/bin/python3.2
-        `
-    '
-    if [ "$1" ] && [ -f "$1" ]; then
-        cd "$(dirname "$1")"
-        "./$(basename "$1")" $*
-        return $?
-    else
-        echo 'Please insert a path to an executable file.'
-        return $?
-    fi
-}
 alias bl.path.convert_to_absolute=bl_path_convert_to_absolute
 bl_path_convert_to_absolute() {
     # shellcheck disable=SC2016,SC2034
@@ -131,8 +111,21 @@ bl_path_open() {
         ```
     '
     local program
-    for program in gnome-open kde-open gvfs-open exo-open xdg-open gedit \
-        mousepad gvim vim emacs nano vi less cat
+    for program in \
+        gnome-open \
+        kde-open \
+        gvfs-open \
+        exo-open \
+        xdg-open \
+        gedit \
+        mousepad \
+        gvim \
+        vim \
+        emacs \
+        nano \
+        vi \
+        less \
+        cat
     do
         if hash "$program" 2>/dev/null; then
             "$program" "$1"
@@ -141,65 +134,11 @@ bl_path_open() {
     done
     return $?
 }
-alias bl.path.unpack=bl_path_unpack
-bl_path_unpack() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        Unpack archives in various formats.
-
-        ```bash
-            unpack path/to/archiv.zip`
-        ```
-    '
-    if [ -f "$1" ]; then
-        local command
-        case "$1" in # switch
-            *.tar.bz2|*.tbz2)
-                command="tar --extract --verbose --bzip2 --file \"$1\""
-                ;;
-            *.tar.gz|*.tgz)
-                command="tar --extract --verbose --gzip --file \"$1\""
-                ;;
-            *.bz2)
-                command="bzip2 --decompress \"$1\""
-                ;;
-            *.rar)
-                command="unrar x \"$1\""
-                ;;
-            *.gz)
-                command="gzip --decompress \"$1\""
-                ;;
-            *.tar)
-                command="tar --extract --verbose --file \"$1\""
-                ;;
-            *.zip)
-                command="unzip -o \"$1\""
-                ;;
-            *.Z)
-                command="compress -d \"$1\""
-                ;;
-            *.7z)
-                7z x "$1"
-                ;;
-            *)
-                echo  "Cannot extract \"$1\"."
-                ;;
-        esac
-        if [ "$command" ]; then
-            echo "Running: [$command]."
-            eval "$command"
-            return $?
-        fi
-    else
-        echo "\"$1\" is not a valid file."
-        return $?
-    fi
-}
 alias bl.path.pack=bl_path_pack
 bl_path_pack() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-        Packs archives.
+        Packs files in an archive.
 
         ```bash
             bl.path.pack archiv.zip /path/to/file.ext
@@ -255,6 +194,80 @@ bl_path_pack() {
         fi
     else
         echo "\"$2\" is not a valid file or directory."
+        return $?
+    fi
+}
+alias bl.path.run_in_programs_location=bl_path_run_in_programs_location
+bl_path_run_in_programs_location() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        Changes current working directory to given program path and runs the
+        program.
+
+        ```bash
+            bl.path.run_in_programs_location /usr/bin/python3.2
+        `
+    '
+    if [ "$1" ] && [ -f "$1" ]; then
+        cd "$(dirname "$1")"
+        "./$(basename "$1")" $*
+        return $?
+    else
+        echo 'Please insert a path to an executable file.'
+        return $?
+    fi
+}
+alias bl.path.unpack=bl_path_unpack
+bl_path_unpack() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        Unpack archives in various formats.
+
+        ```bash
+            unpack path/to/archiv.zip`
+        ```
+    '
+    if [ -f "$1" ]; then
+        local command
+        case "$1" in # switch
+            *.tar.bz2|*.tbz2)
+                command="tar --extract --verbose --bzip2 --file \"$1\""
+                ;;
+            *.tar.gz|*.tgz)
+                command="tar --extract --verbose --gzip --file \"$1\""
+                ;;
+            *.bz2)
+                command="bzip2 --decompress \"$1\""
+                ;;
+            *.rar)
+                command="unrar x \"$1\""
+                ;;
+            *.gz)
+                command="gzip --decompress \"$1\""
+                ;;
+            *.tar)
+                command="tar --extract --verbose --file \"$1\""
+                ;;
+            *.zip)
+                command="unzip -o \"$1\""
+                ;;
+            *.Z)
+                command="compress -d \"$1\""
+                ;;
+            *.7z)
+                7z x "$1"
+                ;;
+            *)
+                echo  "Cannot extract \"$1\"."
+                ;;
+        esac
+        if [ "$command" ]; then
+            echo "Running: [$command]."
+            eval "$command"
+            return $?
+        fi
+    else
+        echo "\"$1\" is not a valid file."
         return $?
     fi
 }

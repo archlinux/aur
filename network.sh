@@ -40,6 +40,7 @@ bl_network_wlan_stop() {
     killall dhclient3
     return $?
 }
+# NOTE: Depends on "bl.network.wlan_start" and "bl.network.wlan_stop"
 alias bl.network.wlan_restart=bl_network_wlan_restart
 bl_network_wlan_restart() {
     # shellcheck disable=SC2034
