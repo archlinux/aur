@@ -12,6 +12,7 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
+bl.module.import bashlink.globals
 bl.module.import bashlink.logging
 bl.module.import bashlink.path
 # endregion
@@ -612,7 +613,7 @@ bl_filesystem_make_uefi_boot_entry() {
                 vmlinuz-linux-lts
         ```
     '
-    local kernel_parameter_file_path="${ILU_CONFIG_PATH}linux/kernel/${1}CommandLine"
+    local kernel_parameter_file_path="${bl_globals_configuration_path}linux/kernel/${1}CommandLine"
     local kernel='vmlinuz-linux'
     if [[ "$2" ]]; then
         kernel="$2"
@@ -703,7 +704,7 @@ bl_filesystem_write_blockdevice_to_image() {
     if [[ "$1" ]]; then
         source="$1"
     fi
-    local target="${ILU_DATA_PATH}private/backup/backup-sd-card.img"
+    local target="${bl_globals_data_path}private/backup/backup-sd-card.img"
     if [[ "$2" ]]; then
         target="$2"
     fi
@@ -722,7 +723,7 @@ bl_filesystem_write_image_to_blockdevice() {
                 /dev/mmcblk0
         ```
     '
-    local source="${ILU_DATA_PATH}temp/image/"*.img
+    local source="${bl_globals_data_path}temp/image/"*.img
     if [[ "$1" ]]; then
         source="$1"
     fi

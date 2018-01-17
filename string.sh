@@ -94,12 +94,15 @@ bl_string_make_command_promt_prefix() {
     if  (( return_code == 0 )); then
         error_promt="${bl_cli_color_green}>${bl_cli_color_default}"
     fi
-    local git_branch="$(git branch 2>/dev/null | sed --regexp-extended \
-        "s/^\* (.*)$/ $(bl.string.validate_regular_expression_replacement "$bl_cli_color_red")\1$(bl.string.validate_regular_expression_replacement "$bl_cli_color_cyan")/g" \
-        | tr --delete "\n" | sed 's/  / /g' | sed 's/^ *//g' | \
+    local git_branch="$(git branch 2>/dev/null | \
+        sed --regexp-extended \
+        "s/^\* (.*)$/ $(bl.string.validate_regular_expression_replacement "$bl_cli_color_red")\1$(bl.string.validate_regular_expression_replacement "$bl_cli_color_cyan")/g" | \
+        tr --delete "\n" | \
+        sed 's/  / /g' | \
+        sed 's/^ *//g' | \
         sed 's/ *$//g')"
     if [ "$git_branch" ]; then
-        git_branch="(${bl_cli_color_light_gray}git${bl_cli_color_default})-(${bl_cli_color_cyan}${git_branch}${bl_cli_color_default})"
+        git_branch="(${bl_cli_color_lightgray}git${bl_cli_color_default})-(${bl_cli_color_cyan}${git_branch}${bl_cli_color_default})"
     fi
     local user_name
     if [ "$(id --user)" = 0 ]; then
@@ -109,7 +112,7 @@ bl_string_make_command_promt_prefix() {
     if [[ "$TERM" != linux ]]; then
         local title_bar="\[\e]0;\u@\h:$(pwd)\a\]"
     fi
-    export PS1="${title_bar}${error_promt} ${bl_cli_color_cyan}${user_name}${bl_cli_color_light_gray}@${bl_cli_color_cyan}\h${bl_cli_color_dark_gray} (${system_load_average}) ${bl_cli_color_light_gray}\w${bl_cli_color_default}\n${git_branch}${bl_cli_color_dark_gray}> ${bl_cli_color_default}"
+    export PS1="${title_bar}${error_promt} ${bl_cli_color_cyan}${user_name}${bl_cli_color_lightgray}@${bl_cli_color_cyan}\h${bl_cli_color_magenta} (${system_load_average}) ${bl_cli_color_lightgray}\w${bl_cli_color_default}\n${git_branch}${bl_cli_color_darkgray}> ${bl_cli_color_default}"
     return $?
 }
 alias bl.string.merge_text_files=bl_string_merge_text_files

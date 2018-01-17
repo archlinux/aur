@@ -9,6 +9,12 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region import
+# shellcheck disable=SC2016,SC2155
+# shellcheck source=module.sh
+source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
+bl.module.import bashlink.globals
+# endregion
 # region functions
 alias bl.tools.is_defined=bl_tools_is_defined
 bl_tools_is_defined() {
@@ -225,7 +231,7 @@ bl_tools_send_e_mail() {
                 "Sun, 2 Feb 1986 14:23:56 +0100"
         ```
     '
-    local eMailAddress="$ILU_ALTERNATE_USER_EMAIL_ADDRESS"
+    local eMailAddress="$bl_globals_user_e_mail_address"
     if [ "$3" ]; then
         eMailAddress="$3"
     fi

@@ -9,6 +9,12 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# region import
+# shellcheck disable=SC2016,SC2155
+# shellcheck source=module.sh
+source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
+bl.module.import bashlink.globals
+# endregion
 # region functions
 alias bl.ssh.make_key=bl_ssh_make_key
 bl_ssh_make_key() {
@@ -21,7 +27,7 @@ bl_ssh_make_key() {
         bl.ssh.make_key hans
     ```
     '
-    local user="$ILU_USER_EMAIL_ADDRESS"
+    local user="$bl_globals_e_mail_address"
     if [ "$1" ]; then
         user="$1"
     fi
@@ -48,40 +54,41 @@ bl_ssh_print() {
             bl.ssh.print /home/hans/document.txt hans hp15
         ```
     '
-    local user='sickertt'
-    local host='login.informatik.uni-freiburg.de'
-    local defaultPrinter='hp15'
-    local usageMessage="Usage: "$0" <file> [login] [printer] [withFileContentPipe]"
+    local user=sickertt
+    local host=login.informatik.uni-freiburg.de
+    local default_printer=hp15
+    local usage_message="Usage: "$0" <file> [login] [printer] [withFileContentPipe]"
 
     if (( $# = 0 )); then
-        echo "$usageMessage"
+        echo "$usage_message"
     # 1. argument: File, which we want to print.
     elif [ -f "$1" ]; then
         # 2. argument: Check for given user name.
-        if [ "$2" ]; then
-            local login="$2"@"$host"
+        if [ $2 ]; then
+            local login="${2}${host}"
         elif [ "$user" ]; then
-            local login="$user"@"$host"
+            local login="${user}@${host}"
         else
             # Grab user from "~/.ssh/config".
-            local userRow=$(cat ~/.ssh/config | grep "$host" -A1 | \
-                grep -i user)
-            if [ "$userRow" ]; then
-                local user=$(echo ${userRow} | sed s/user\\s//ig)
-                local login="$user"@"$host"
+            local user_row="$(cat ~/.ssh/config | \
+                grep "$host" -A1 | \
+                grep -i user)"
+            if [ $user_row ]; then
+                local user="$(echo "$user_row" | sed s/user\\s//ig)"
+                local login="${user}@${host}"
             else
-                echo 'No login given.'
-                echo "$usageMessage"
+                echo No login given.
+                echo "$usage_message"
             fi
         fi
         # 3. argument: Select printer.
-        local printer=defaultPrinter
+        local printer="$default_printer"
         if [ "$3" ]; then
             local printer="$3"
         fi
         # 4. argument: Determines which way to use for transport file content.
         if [ "$4" ]; then
-            echo 'Pipe file content through ssh.'
+            echo Pipe file content through ssh.
             cat "$1" | ssh "$login" lpr -P"$printer"
             return $?
         else
