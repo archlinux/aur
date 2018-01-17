@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ImageVis3D
+GenericName=Volume Renderer
+Comment=Volume rendering for biomedical computing
+Icon=imagevis3d
+Categories=
+Exec=imagevis3d %U
+TryExec=imagevis3d
+StartupNotify=true
+Terminal=false

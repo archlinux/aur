@@ -1,0 +1,18 @@
+pkgbase = imagevis3d-bin
+	pkgdesc = ImageVis3D is a new volume rendering program developed by the NIH/NIGMS Center for Integrative Biomedical Computing. The main design goals are simplicity, scalability, and interactivity..
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://www.sci.utah.edu/software/imagevis3d.html
+	arch = x86_64
+	license = MIT
+	depends = qt4
+	provides = imagevis3d
+	source = http://www.sci.utah.edu/releases/imagevis3d_v3.1.0/ImageVis3D-3.1.0-Ubuntu-13.10-x86_64.tar.gz
+	source = https://raw.githubusercontent.com/SCIInstitute/ImageVis3D/master/ImageVis3D/Resources/icon_128.png
+	source = imagevis3d.desktop
+	sha512sums = e48a9cc52e49209c2c70b34286b87024c9722b4346c2033bfb3c02c54fbb6871a32ab775a299a507b9eb6ec12fece87746ef72fa569637f67f69aaa93e5fbf16
+	sha512sums = 9e3da908b0705a801783a2a3d529e6a61d31bcaa8c2e4812b3e95750ba7c0263f8025e6e5057844526f6c23c7f7a488e547035a78e388e0985d51345b6145cab
+	sha512sums = 64546ea80c9dab14da3812a13ecd4ac92d66ed6a077bd5b77886edc74133225b4edc8cda912d7d68ab0344572625fb8a0f3e42a8cef2d7028ac63f710afb6783
+
+pkgname = imagevis3d-bin
+
