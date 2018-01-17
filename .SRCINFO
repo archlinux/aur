@@ -1,10 +1,9 @@
 pkgbase = lxc-selinux
 	pkgdesc = Linux Containers
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.1.1
+	pkgrel = 1
 	epoch = 1
 	url = http://linuxcontainers.org
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = docbook2x
@@ -23,18 +22,18 @@ pkgbase = lxc-selinux
 	optdepends = lua
 	optdepends = lua-filesystem: lxc-top
 	optdepends = lua-alt-getopt: lxc-top
-	provides = lxc=2.1.0-2
+	provides = lxc=2.1.1-1
 	conflicts = lxc
 	options = emptydirs
 	backup = etc/lxc/default.conf
 	backup = etc/default/lxc
-	source = https://linuxcontainers.org/downloads/lxc/lxc-2.1.0.tar.gz
-	source = https://linuxcontainers.org/downloads/lxc/lxc-2.1.0.tar.gz.asc
+	source = https://linuxcontainers.org/downloads/lxc/lxc-2.1.1.tar.gz
+	source = https://linuxcontainers.org/downloads/lxc/lxc-2.1.1.tar.gz.asc
 	source = lxc.tmpfiles.d
 	source = lxc.service
 	source = lxc-auto.service
 	validpgpkeys = 602F567663E593BCBD14F338C638974D64792D67
-	sha256sums = 394407305a409eb1f95fe06e7718acfe89b1d5df267b0c6aafb1d714e2038de2
+	sha256sums = 68663a67450a8d6734e137eac54cc7077209fb15c456eec401a2c26e6386eff6
 	sha256sums = SKIP
 	sha256sums = 10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479
 	sha256sums = 711fb84c87b143cb0098e095fdebb040b15f553a854efbe846a00100bdb9ae88
