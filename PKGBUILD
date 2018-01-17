@@ -3,7 +3,7 @@
 # Contributer: Sébastien Luttringer <seblu@aur.archlinux.org>
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules virtualbox-ck-guest-modules)
-pkgver=5.2.4
+pkgver=5.2.6
 pkgrel=1
 arch=('x86_64')
 url='http://virtualbox.org'
@@ -67,3 +67,4 @@ package_virtualbox-ck-guest-modules() {
 }
 
 # vim:set ts=2 sw=2 et:
+
