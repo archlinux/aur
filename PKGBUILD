@@ -1,4 +1,4 @@
-# Maintainer: DerWaldFreak <derwaldfreak@gmx.de> (just changed brother-mfc-1910w from: )
+# Maintainer: nuerich <noo@mailoo.org> (just changed brother-mfc-1910w from: )
 # Contributor: X-san <deastman94@gmail.com>
 pkgname="brother-mfc-1810"
 pkgver="3.0.1"
