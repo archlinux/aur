@@ -8,7 +8,7 @@ pkgbase = javafx9-scenebuilder
 	license = BSD License
 	depends = libarchive
 	source = http://download.gluonhq.com/scenebuilder/9.0.1/install/linux/scenebuilder-9.0.1.deb
-	sha1sums = 55d4a20888365f8c8ca96f0b98a3ea4cb03854c7
+	sha1sums = 3e6c227779e2ed3d01459f2466b4039fb4963901
 
 pkgname = javafx9-scenebuilder
 
