@@ -3,32 +3,34 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=5169.4d20e3acb
+pkgver=2.5.10.r128.ga5c5d6911
 pkgrel=1
 pkgdesc="A functional programming language for realtime audio signal processing."
 arch=('i686' 'x86_64')
 url="http://faust.grame.fr/"
 license=('GPL')
-depends=(
+depends=('llvm-libs'
 # needed for sound2faust:
 	 'libsndfile'
+# needed for libfaustremote and faustbench:
+#	 'jack2'
 # needed for libHTTPDFaust:
 	 'libmicrohttpd' 'openssl')
-# We need xxd at build time, which is provided by 'gvim', 'vim' and 'xxd'
-# (AUR).
-makedepends=('git' 'xxd')
-optdepends=('python2: needed for faust2md'
+# We need xxd at build time, which is provided by 'gvim', 'vim' and
+# 'xxd-standalone' (AUR).
+makedepends=('llvm' 'git' 'xxd')
+optdepends=('clang: needed for sound2reader'
+	    'python2: needed for faust2md'
 	    'ruby: needed for faust2sc and scbuilder')
-provides=('faust')
+provides=('faust' 'faust2-git')
 conflicts=('faust')
 # This keeps the static libraries. Remove the 'staticlibs' option if this
 # isn't wanted.
 options=('strip' 'staticlibs')
 # We're using the (default) master-dev branch of Faust here, which has all the
 # latest changes. End users might want to use the master branch instead, which
-# is recommended, since it's supposedly more stable and tested, but
-# nevertheless (mostly) up-to-date.
-source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=old-master"
+# is supposedly more stable and tested, but nevertheless (mostly) up-to-date.
+source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=master-dev"
 	"git+https://github.com/rukano/emacs-faust-mode.git"
 	"python2-fix.patch")
 md5sums=('SKIP' 'SKIP'
@@ -36,11 +38,14 @@ md5sums=('SKIP' 'SKIP'
 
 pkgver() {
   cd $srcdir/$pkgname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  # use un-annotated tags per
+  # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd $srcdir/$pkgname
+  git submodule update --init
   # fix up scripts like faust2md which need python2 to run
   patch -Np1 < $srcdir/python2-fix.patch
 }
@@ -54,6 +59,8 @@ prepare() {
 build() {
   cd $srcdir/$pkgname
   make PREFIX=/usr world
+  # 'remote' and 'benchmark' are disabled right now since they require jack2.
+  #make benchmark remote PREFIX=/usr
 }
 
 package() {
@@ -62,7 +69,7 @@ package() {
 
   # docs
   install -d "$pkgdir/usr/share/doc/faust"
-  install -Dm644 documentation/*.{pdf,html} "$pkgdir/usr/share/doc/faust"
+  for x in documentation/*.{pdf,html} libraries/doc/*.{pdf,html}; do test -f $x && install -Dm644 $x "$pkgdir/usr/share/doc/faust"; done
 
   # examples
   install -d "$pkgdir/usr/share/faust/examples"
