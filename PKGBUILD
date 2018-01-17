@@ -13,6 +13,7 @@ license=('GPL' 'LGPL')
 depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8' \
 	'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils' \
 	'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'dbus-glib' 'gtk-doc' \
+	'poppler-glib' 'poppler-data' \
 	'babl>0.1.38' 'gegl-git>0.3.26' 'openexr>=1.6.1' 'mypaint-brushes>=1.3.0')
 makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' \
                    'gnome-python>=2.16.2' 'poppler>=0.12.4' \
