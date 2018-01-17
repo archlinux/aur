@@ -16,11 +16,11 @@ pkgdesc='keeps hard links in sync.'
 arch=('any')
 url="http://torben.website/${pkgname}"
 license=('CC-BY-3.0')
-depends=('python' 'boostnode')
+depends=(python boostnode)
 provides=(filelinker)
 source=("${pkgname}.py")
-md5sums=('SKIP')
-copyToAUR=true
+md5sums=(SKIP)
+copy_to_aur=true
 
 package() {
     install -D --mode 755 "${srcdir}/${pkgname}.py" \
