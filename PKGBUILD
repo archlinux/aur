@@ -69,7 +69,7 @@ _rtver=10
 _rtpatchver=rt${_rtver}
 _srcpatch="${_pkgver##*\.*\.}"
 pkgver=${_pkgver}.${_rtver}
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -116,7 +116,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
         '0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
         '0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
-        '0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
+        '0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
+        '0007-tools-objtool-makefile-don-t-assume-sync-check.sh-is-executable.patch')
         
 _kernelname=${pkgbase#linux} 
 
@@ -154,6 +155,10 @@ prepare() {
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
         patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+        
+    ### Fix https://www.spinics.net/lists/stable/msg207374.html
+        msg "Fix execvp: ./sync-check.sh error"
+        patch -Np1 -i ../0007-tools-objtool-makefile-don-t-assume-sync-check.sh-is-executable.patch    
     
     ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
     # Stops X from hanging on certain NVIDIA cards
@@ -200,10 +205,6 @@ prepare() {
     ### Patch source to enable more gcc CPU optimizatons via the make nconfig
         msg "Patching source with gcc patch to enable more cpus types"
 	patch -Np1 -i ../${_gcc_patch}
-	
-    ### Fix https://www.spinics.net/lists/stable/msg207374.html
-        msg "Fix execvp: ./sync-check.sh error"
-        chmod +x tools/objtool/sync-check.sh
     
     ### Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
@@ -496,7 +497,8 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             'baa77972acdc1820af6ea82ae72e1dbc793bde242d77a5176ab29444c8a3e3c3670907a5e289045d1246e2dd706cdab64659f82605e2f84b30d5b3c8f3272de5'
             '096eb9bbdeacae276145fc7b28946e8f6a432f9b5159b8a33d1df00c820d8b96780cc84541c30bb75bf8d9324ecb3222c2bcd9630d5310ef1d17d6fad0f68a15'
             'cfc7ee58c22639ed6a891ad6f42b2fbe15f684d706c8026b8b0cb463a06d8446ac06cacdac47a1e1c91028bea1611ae2e5d017a7e07a5471589039f33501966b'
-            'fcc40dc86dd432be76854e3c51889db488de0f1029ecc227b92c4f58c62ba928f7dc3b9515ac3ca0a08d6a0a72ca4a1a754d47c4fb274fe89f09a2a336088e7a')
+            'fcc40dc86dd432be76854e3c51889db488de0f1029ecc227b92c4f58c62ba928f7dc3b9515ac3ca0a08d6a0a72ca4a1a754d47c4fb274fe89f09a2a336088e7a'
+            '04a80e7018ba3d4f2d69f642c82673b2364c7096fa0f3dd7c086e55e21944cbd77153469ad3c1bc277b174e8087c69540710135f8e6d5b5775e43c73f0aae059')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
