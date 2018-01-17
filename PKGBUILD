@@ -13,15 +13,15 @@ pkgname=reachable-watcher
 pkgver=1.0.13
 pkgrel=15
 pkgdesc='Check status codes of web servers and sends notification e-mails'
-arch=('any')
+arch=(any)
 url='http://torben.website/reachableWatcher'
 license=('CC-BY-3.0')
-depends=('bash' 'curl' 'grep' 'coreutils')
+depends=(bash curl grep coreutils)
 optdepends=('msmtp: for automatic email notifications on missing sources')
 provides=(reachable-watcher)
-source=('reachableWatcher.sh' 'reachableWatcher.service')
-md5sums=('SKIP' 'SKIP')
-copyToAUR=true
+source=(reachableWatcher.sh reachableWatcher.service)
+md5sums=(SKIP SKIP)
+copy_to_aur=true
 
 package() {
     install -D --mode 755 "${srcdir}/reachableWatcher.sh" \
