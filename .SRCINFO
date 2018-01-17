@@ -1,7 +1,7 @@
 pkgbase = glava-git
 	pkgdesc = OpenGL audio spectrum visualizer
 	pkgver = r66.ff7d879
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wacossusca34/glava
 	arch = x86_64
 	license = GPL
@@ -12,8 +12,8 @@ pkgbase = glava-git
 	depends = glfw
 	provides = glava
 	conflicts = glava
-	source = glava::git+https://github.com/wacossusca34/glava
-	source = glad::git+https://github.com/Dav1dde/glad
+	source = git+https://github.com/wacossusca34/glava
+	source = git+https://github.com/Dav1dde/glad
 	md5sums = SKIP
 	md5sums = SKIP
 

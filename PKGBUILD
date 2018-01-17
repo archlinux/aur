@@ -3,7 +3,7 @@
 _pkgname=glava
 pkgname=${_pkgname}-git
 pkgver=r66.ff7d879
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenGL audio spectrum visualizer"
 arch=('x86_64')
 url='https://github.com/wacossusca34/glava'
@@ -12,32 +12,38 @@ depends=('x-server' 'pulseaudio' 'glfw')
 makedepends=('git' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/wacossusca34/glava"
-	"glad::git+https://github.com/Dav1dde/glad")
+source=("git+https://github.com/wacossusca34/glava"
+        "git+https://github.com/Dav1dde/glad")
 md5sums=('SKIP'
-	'SKIP')
+         'SKIP')
 
 pkgver() {
-	cd "$srcdir/${_pkgname}"
+	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${_pkgname}"
+	cd "${_pkgname}"
+
 	git submodule init
-	git config submodule.glad.url "$srcdir/glad"
+	git config submodule.glad.url "${srcdir}/glad"
 	git submodule update
 }
 
 build() {
-	cd "$srcdir/${_pkgname}"
-	make -j1 # glava's makefile has a race condition
+	cd "${_pkgname}"
+
+	# glava's Makefile has a race condition
+	# See https://github.com/wacossusca34/glava/issues/8
+	make -j1
 }
 
 package() {
-	cd "$srcdir/${_pkgname}"
+	cd "${_pkgname}"
 
-        install -Dm755 glava "${pkgdir}/usr/bin/glava"
+	# glava's Makefile doesn't respect $DESTDIR & co
+	# See https://github.com/wacossusca34/glava/issues/8 (comments)
+	install -Dm755 glava "${pkgdir}/usr/bin/glava"
 
 	install -d "${pkgdir}/etc/xdg"
 	cp -rv shaders "${pkgdir}/etc/xdg/glava"
