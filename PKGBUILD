@@ -19,6 +19,7 @@ pkgdesc="Port of Android 5/6 (Lollipop/Marshmallow)'s material design icons to A
 arch=('any')
 url="https://github.com/GreenRaccoon23/${pkgname}"
 license=('GPL3')
+depends=('ttf-roboto')
 makedepends=('intltool' 'librsvg' 'gtk-update-icon-cache')
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
@@ -29,19 +30,6 @@ _commit="5143e7847d61ee4df177616ecae5e4b16bfb9d09"
 #   https://github.com/GreenRaccoon23/archdroid-icon-theme/raw/master/bak
 source=("https://raw.githubusercontent.com/GreenRaccoon23/${pkgname}/${_commit}/${pkgname}.tar.xz")
 md5sums=("d64b070d1731eb4c57d4bc260257273e")
-
-prepare() {
-  if fc-list | grep Roboto >/dev/null; then
-    return 0;
-  fi;
-
-  error "Required font 'Roboto' is not installed.";
-  error "Please install a font package which includes 'Roboto', such as:";
-  for f in ttf-roboto ttf-roboto-font ttf-google-fonts-git ttf-google-fonts-hg otf-google-fonts-hg; do
-    echo "${f}";
-  done;
-  return 1;
-};
 
 package() {
   msg2 "Installing ${pkgname}...";
