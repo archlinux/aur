@@ -2,7 +2,9 @@
 _ecmwfname=bufrdc
 pkgname=libbufr-ecmwf
 pkgver=000409
-pkgrel=1
+tablever=4.1.2
+_ecmwfdir=35752466
+pkgrel=2
 pkgdesc="ECMWF WMO FM-94 BUFR encode/decode library"
 arch=(i686 x86_64)
 url="https://software.ecmwf.int/wiki/display/BUFR/BUFRDC+Home"
@@ -11,8 +13,9 @@ groups=(science)
 depends=()
 makedepends=(rsync gcc-fortran)
 options=('staticlibs')
-source=(https://software.ecmwf.int/wiki/download/attachments/35752466/${_ecmwfname}_${pkgver}.tar.gz)
-md5sums=('4f924c5b821e280da84b4e6389f522f2')
+source=(https://software.ecmwf.int/wiki/download/attachments/$_ecmwfdir/${_ecmwfname}_${pkgver}.tar.gz https://software.ecmwf.int/wiki/download/attachments/$_ecmwfdir/bufrdc_tables-${tablever}.tar.gz)
+md5sums=('4f924c5b821e280da84b4e6389f522f2'
+         '31fb65adb1d9885ab50c429c9f71d046')
 
 build() {
   cd ${srcdir}/${_ecmwfname}_${pkgver}
@@ -34,6 +37,8 @@ build() {
   # hard-coded during compilation
   _response="${_response}/usr/share/gribdc\n"
   echo -e $_response | ./build_library
+  cd ${srcdir}/${_ecmwfname}_${pkgver}/bufrtables
+  tar zxvf ${srcdir}/bufrdc_tables-${tablever}.tar.gz
 }
 
 package() {
