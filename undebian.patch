@@ -1,5 +1,5 @@
 diff --git a/Common.mk b/Common.mk
-index 64325fd..7e30d4e 100644
+index 83a4076f..e0cb81f0 100644
 --- a/Common.mk
 +++ b/Common.mk
 @@ -47,7 +47,6 @@ else
@@ -11,8 +11,8 @@ index 64325fd..7e30d4e 100644
  
  ifeq ($(UNAME_S),Windows)
 @@ -296,7 +295,7 @@ ifeq ($(UNAME_S),Windows)
-    JAVA_INC := -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_60/include
-    JAVA_INC += -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_60/include/win32
+    JAVA_INC := -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_131/include
+    JAVA_INC += -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_131/include/win32
  else
 -   JAVA_INC := -I/usr/lib/jvm/default-java/include $(jvm_includes)
 +   JAVA_INC := -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux
@@ -20,7 +20,7 @@ index 64325fd..7e30d4e 100644
  
  #=============================================================
 diff --git a/Library.mk b/Library.mk
-index 12657ad..500f193 100644
+index 12657ad2..500f1939 100644
 --- a/Library.mk
 +++ b/Library.mk
 @@ -39,17 +39,8 @@ ifeq ($(UNAME_S),Windows)
@@ -44,7 +44,7 @@ index 12657ad..500f193 100644
  
  ifeq ($(UNAME_S),Windows)
 diff --git a/USBDM_API_Example/Common.mk b/USBDM_API_Example/Common.mk
-index d6f5d71..dcbc3b1 100644
+index d6f5d711..dcbc3b1c 100644
 --- a/USBDM_API_Example/Common.mk
 +++ b/USBDM_API_Example/Common.mk
 @@ -47,7 +47,6 @@ else
@@ -65,7 +65,7 @@ index d6f5d71..dcbc3b1 100644
  
  #=============================================================
 diff --git a/USBDM_Programmer_API_Example/Common.mk b/USBDM_Programmer_API_Example/Common.mk
-index 2d8dffd..7988431 100644
+index af7d8c90..3a1a635e 100644
 --- a/USBDM_Programmer_API_Example/Common.mk
 +++ b/USBDM_Programmer_API_Example/Common.mk
 @@ -47,7 +47,6 @@ else
@@ -76,7 +76,7 @@ index 2d8dffd..7988431 100644
  endif
  
  ifeq ($(UNAME_S),Windows)
-@@ -292,7 +291,7 @@ ifeq ($(UNAME_S),Windows)
+@@ -290,7 +289,7 @@ ifeq ($(UNAME_S),Windows)
     JAVA_INC := -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_60/include
     JAVA_INC += -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_60/include/win32
  else

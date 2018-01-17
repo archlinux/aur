@@ -1,12 +1,12 @@
 # Maintainer: Thomas Hebb <tommyhebb@gmail.com>
 pkgname=usbdm-git
-pkgver=512.fef0fb9
+pkgver=1102.62ab4f14
 pkgrel=1
 pkgdesc="Debugger interface for Freescale RS08,HCS08,HCS12,Coldfire and ARM-Kinetis Devices."
 arch=("i686" "x86_64")
 url="http://usbdm.sourceforge.net/"
 license=('GPL2')
-depends=("java-runtime" "webkitgtk2" "xerces-c" "tcl" "wxgtk" "xdg-utils")
+depends=("java-runtime" "webkit2gtk" "xerces-c" "tcl" "wxgtk" "xdg-utils")
 makedepends=("java-environment")
 provides=("usbdm")
 conflicts=("usbdm")
@@ -17,7 +17,7 @@ source=("git+https://github.com/podonoghue/usbdm-eclipse-makefiles-build.git"
         "undebian.patch"
         "60-usbdm.rules")
 sha256sums=('SKIP'
-            '70b10fac3ae580ca0f951b94b3713cd2b7a9c023502bf6cfe47ef07206499b52'
+            '0cedd9a6fcd1abdbfe3df8a2237c152f4c32ffb9c4de191b73ffae1c2895ffa5'
             '88eaab73a1020ac84d4979a4f70f122214b0042d167942a95bddd0560f0e3aa8')
 
 pkgver() {
@@ -28,6 +28,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/usbdm-eclipse-makefiles-build"
 	patch -p1 -i "${srcdir}/undebian.patch"
+	sed -i -e 's/xercesc_3_1/xercesc/' 'MergeXML/src/xmlParser.h'
 }
 
 build() {
