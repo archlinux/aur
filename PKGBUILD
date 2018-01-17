@@ -1,4 +1,4 @@
-# Contributor: monty <linksoft [at] gmx [dot] de>
+# Contributor: givemeurhats <givemeurhats [at] gmail [dot] com>
 
 pkgname=navicat-lite
 pkgver=10.0.6
@@ -8,10 +8,10 @@ pkgdesc="A fast, reliable and affordable Database Administration tool purpose-bu
 url="http://www.navicat.com"
 license=('custom')
 arch=('any')
-source=(http://dl.dropbox.com/u/152616/navicat100_lite_en.tar.gz
+source=(https://www.dropbox.com/s/n8sc4a18dt3x7w9/navicat-lite-10.0.6-2-any.pkg.tar.xz
         navicat.desktop
         navicat)
-md5sums=('f44cb252012eadd5d4935414de68d087'
+md5sums=('c53a6a71c7518cba1a057953ca07ff92'
          '0a40410d7be7d9e324002c368eafd0b3'
          'a7f10a4d9c2c3901829c35c5bf9aae97')
 
