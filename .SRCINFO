@@ -1,14 +1,14 @@
 pkgbase = marker-git
 	pkgdesc = A gtk3 markdown editor
-	pkgver = 2017.11.01.r0.g952eab1
+	pkgver = 2018.01.09.r116.g0323bd56
 	pkgrel = 1
 	url = https://github.com/fabiocolacio/Marker
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = meson
 	depends = gtksourceview3
+	depends = gtkspell3
 	depends = webkit2gtk
 	optdepends = pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX
 	provides = marker

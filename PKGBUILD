@@ -2,13 +2,13 @@
 # Contributor:
 
 pkgname=marker-git
-pkgver=2017.11.01.r0.g952eab1
+pkgver=2018.01.09.r116.g0323bd56
 pkgrel=1
 pkgdesc="A gtk3 markdown editor"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/fabiocolacio/Marker"
 license=('GPL3')
-depends=('gtksourceview3' 'webkit2gtk')
+depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk')
 makedepends=('git' 'meson')
 optdepends=('pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX')
 provides=("${pkgname%-*}")
