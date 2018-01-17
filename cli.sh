@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# shellcheck disable=SC2016,SC2155
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
@@ -108,38 +109,39 @@ bl_cli_enable_color() {
         >>> echo -E $bl_cli_color_red red $bl_cli_color_default
         \033[0;31m red \033[0m
     '
+    # shellcheck disable=SC2034
     bl_cli_color_enabled=true
     local suffix
     for suffix in \
-        "black='\033[0;30m'" \
-        "blink='\033[5m'" \
-        "blue='\033[0;34m'" \
-        "bold='\033[1m'" \
-        "cyan='\033[0;36m'" \
-        "darkgray='\033[0;90m'" \
-        "default='\033[0m'" \
-        "dim='\033[2m'" \
-        "green='\033[0;32m'" \
-        "invert='\033[7m'" \
-        "invisible='\033[8m'" \
-        "lightblue='\033[0;94m'" \
-        "lightcyan='\033[0;96m'" \
-        "lightgray='\033[0;37m'" \
-        "lightgreen='\033[0;92m'" \
-        "lightmagenta='\033[0;95m'" \
-        "lightred='\033[0;91m'" \
-        "lightyellow='\033[0;93m'" \
-        "magenta='\033[0;35m'" \
-        "nodim='\033[22m'" \
-        "noblink='\033[25m'" \
-        "nobold='\033[21m'" \
-        "noinvert='\033[27m'" \
-        "noinvisible='\033[28m'" \
-        "nounderline='\033[24m'" \
-        "red='\033[0;31m'" \
-        "underline='\033[4m'" \
-        "white='\033[0;97m'" \
-        "yellow='\033[0;33m'"
+        "black='\\033[0;30m'" \
+        "blink='\\033[5m'" \
+        "blue='\\033[0;34m'" \
+        "bold='\\033[1m'" \
+        "cyan='\\033[0;36m'" \
+        "darkgray='\\033[0;90m'" \
+        "default='\\033[0m'" \
+        "dim='\\033[2m'" \
+        "green='\\033[0;32m'" \
+        "invert='\\033[7m'" \
+        "invisible='\\033[8m'" \
+        "lightblue='\\033[0;94m'" \
+        "lightcyan='\\033[0;96m'" \
+        "lightgray='\\033[0;37m'" \
+        "lightgreen='\\033[0;92m'" \
+        "lightmagenta='\\033[0;95m'" \
+        "lightred='\\033[0;91m'" \
+        "lightyellow='\\033[0;93m'" \
+        "magenta='\\033[0;35m'" \
+        "nodim='\\033[22m'" \
+        "noblink='\\033[25m'" \
+        "nobold='\\033[21m'" \
+        "noinvert='\\033[27m'" \
+        "noinvisible='\\033[28m'" \
+        "nounderline='\\033[24m'" \
+        "red='\\033[0;31m'" \
+        "underline='\\033[4m'" \
+        "white='\\033[0;97m'" \
+        "yellow='\\033[0;33m'"
     do
         eval "bl_cli_color_${suffix}"
     done
@@ -190,25 +192,26 @@ bl_cli_enable_unicode_glyphs() {
         >>> echo -E "$bl_cli_powerline_ok"
         \u2714
     '
+    # shellcheck disable=SC2034
     bl_cli_unicode_enabled=true
     local suffix
     for suffix in \
-        "arrowdown='\u2b07'" \
-        "arrowleft='\ue0b2'" \
-        "arrowright='\ue0b0'" \
-        "arrowrightdown='\u2198'" \
-        "branch='\ue0a0'" \
-        "cog='\u2699'" \
-        "fail='\u2718'" \
-        "heart='\u2764'" \
-        "lightning='\u26a1'" \
-        "ok='\u2714'" \
-        "pointingarrow='\u27a1'" \
-        "plusminus='\ue00b1'" \
-        "refersto='\u27a6'" \
-        "star='\u2b50'" \
-        "saxophone='\u1f3b7'" \
-        "thumbsup='\u1f44d'"
+        "arrowdown='\\u2b07'" \
+        "arrowleft='\\ue0b2'" \
+        "arrowright='\\ue0b0'" \
+        "arrowrightdown='\\u2198'" \
+        "branch='\\ue0a0'" \
+        "cog='\\u2699'" \
+        "fail='\\u2718'" \
+        "heart='\\u2764'" \
+        "lightning='\\u26a1'" \
+        "ok='\\u2714'" \
+        "pointingarrow='\\u27a1'" \
+        "plusminus='\\ue00b1'" \
+        "refersto='\\u27a6'" \
+        "star='\\u2b50'" \
+        "saxophone='\\u1f3b7'" \
+        "thumbsup='\\u1f44d'"
     do
         eval "bl_cli_powerline_${suffix}"
     done

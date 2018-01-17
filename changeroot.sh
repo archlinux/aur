@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# shellcheck disable=SC2016,SC2155
 # region imports
 # shellcheck source=module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
@@ -54,7 +55,7 @@ bl_changeroot() {
 }
 alias bl.changeroot.with_fake_fallback=bl_changeroot_with_fake_fallback
 bl_changeroot_with_fake_fallback() {
-    # shellcheck disable=SC2016,SC2034
+    # shellcheck disable=SC2016,SC2034,SC1004
     local __documentation__='
         Perform the available change root program wich needs at least rights.
 
@@ -72,14 +73,14 @@ bl_changeroot_with_fake_fallback() {
 }
 alias bl.changeroot.with_kernel_api=bl_changeroot_with_kernel_api
 bl_changeroot_with_kernel_api() {
-    # shellcheck disable=SC2016,SC2034
+    # shellcheck disable=SC2016,SC2034,SC1004
     local __documentation__='
     Performs a change root by mounting needed host locations in change root
     environment.
 
     ```bash
-        bl_changeroot_with_kernel_api /new_root /usr/bin/env bash \
-                some arguments
+        bl_changeroot_with_kernel_api /new_root /usr/bin/env bash some \
+            arguments
     ```
     '
     local new_root_location="$1"

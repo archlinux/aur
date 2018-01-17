@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# shellcheck disable=SC2016,SC2155
 # region variables
 bl_time_start=0
 # endregion

@@ -9,6 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
+# shellcheck disable=SC2016,SC2155
 # region functions
 alias bl.cracking.endless_loop=bl_cracking_endless_loop
 bl_cracking_endless_loop() {
@@ -37,7 +38,7 @@ bl_cracking_fake_sudo_password_attempt() {
     '
     local number password
     for number in 1 2 3; do
-        read -sp '[sudo] password for '$(whoami)': ' password
+        read -rsp "[sudo] password for $(whoami): " password
         sleep 1
         echo -e '\nSorry, try again.'
     done
