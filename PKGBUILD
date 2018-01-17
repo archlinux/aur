@@ -2,12 +2,12 @@
 # modified version of the khard-git package by David Runge <dave@sleepmap.de>
 
 pkgname=khard
-pkgver=0.11.4
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Console CardDAV client"
 license=("GPL3")
 url="https://github.com/scheibler/khard"
-depends=('python-configobj' 'python-vobject' 'python-atomicwrites' 'python-yaml')
+depends=('python-configobj' 'python-vobject' 'python-atomicwrites' 'python-ruamel-yaml')
 makedepends=('python-setuptools')
 optdepends=('vdirsyncer: Synchronization of address books with a DAV server.')
             # Apparently there is no python3 alternative yet
@@ -15,7 +15,7 @@ optdepends=('vdirsyncer: Synchronization of address books with a DAV server.')
             # guide to install it anyway.
             # 'python2-caldavclientlibrary-svn: Create and remove address books on the DAV server using davcontroller utility.'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('547d3a92721a303c187d7df6b18bda3f')
+md5sums=('9a810bfce0c27cc5dfbd7210a5745e1a')
 install="${pkgname}.install"
 provides=('khard' 'davcontroller')
 conflicts=('khard')
