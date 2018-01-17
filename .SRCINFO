@@ -1,13 +1,13 @@
 pkgbase = facedetect-git
-	pkgdesc = a simple face detector for batch processing
-	pkgver = r30.cfb2af1
+	pkgdesc = a simple face detector for batch processing, used by fgallery
+	pkgver = r32.15cfda5
 	pkgrel = 1
 	url = https://www.thregr.org/~wavexx/software/facedetect/
 	arch = any
 	license = GPL2
 	depends = opencv
-	depends = python2
-	depends = python2-numpy
+	depends = python
+	depends = python-numpy
 	source = facedetect-git::git+https://github.com/wavexx/facedetect
 	sha256sums = SKIP
 
