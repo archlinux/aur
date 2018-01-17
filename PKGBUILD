@@ -5,7 +5,7 @@
 _ver=1.19
 _pkgbase=mate-terminal
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="The MATE Terminal Emulator"
 url="http://mate-desktop.org"
@@ -18,7 +18,7 @@ makedepends=('docbook2x' 'intltool>=0.50.1' 'yelp-tools' 'vte3' 'mate-desktop>=1
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('bd0bebc8407cbd857b18d9283fa9bcc92feaf84c')
+sha1sums=('252f2da1aa5ae2bfc424ab6fee9885c1381c5109')
 
 prepare() {
     cd "${srcdir}"
