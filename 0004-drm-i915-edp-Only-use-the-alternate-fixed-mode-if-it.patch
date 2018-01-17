@@ -4,7 +4,7 @@ In-Reply-To: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffe
 References: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
 From: Jim Bride <jim.bride@linux.intel.com>
 Date: Mon, 6 Nov 2017 13:38:57 -0800
-Subject: [PATCH 6/6] drm/i915/edp: Only use the alternate fixed mode if it's
+Subject: [PATCH 4/4] drm/i915/edp: Only use the alternate fixed mode if it's
  asked for
 
 In commit dc911f5bd8aa ("drm/i915/edp: Allow alternate fixed mode for

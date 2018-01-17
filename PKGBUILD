@@ -66,10 +66,10 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.14.13
+pkgver=4.14.14
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -131,15 +131,13 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch'
-        '0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
-        '0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch'
-        '0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
+        '0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
+        '0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
+        '0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'ce897f467e80452f29d7a7a8809e8585ea12192a2c32e4d18578f64b043e802e'
+            '62d656b98f0dc143216cb9650bd9b96cd83d92925731e9f0bec5eb4d6358e603'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             '70a9d2e9277e064bf54b2839b6fc35bfd5a98848e35c43da0ef4bc8d9fe88ff3'
@@ -152,17 +150,15 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'cfe7d6be0c243bcf6e30f1145991424ad3fa90d43bda214e0df613de007699b6'
             '19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0'
             '7c51d0053053a3a0f6ed8759a5464ed5a3275a9dd832513a5678c3bcead9e5d5'
-            '934c661ba5e19f13d39ded0a353bd4d38404bb1b83b66a6f9243c61933fffcdd'
+            'ccd60e7fb0653e1edc2d277d93c907456cfbd8bb934cc540d115dbd27b349086'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
-            '9251c03da9d4b64591d77f490ff144d4ba514e66e74294ada541bf827306c9c4'
-            '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
-            '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
-            'c3d743a0e193294bc5fbae65e7ba69fd997cd8b2ded9c9a45c5151d71d9cfb95'
-            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
+            '767af9b833ff51e57738356c7895ccfa8d4a8e386759f34ffe92573f2331e5c0'
+            'f723c341df165e1a6280fdbab013b5f4256c429c4de7330f1f162feccf1fb3d7'
+            'ec69fb66b2e4baff93ba371c38ff9e7527208203b2b3ab7eea182c274e1201c6'
+            '4b92975a3a961593590c990c0ab731d6ec9ddce30be440dd05f5f31695b97a78')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -180,26 +176,18 @@ prepare() {
   ### Disable USER_NS for non-root users by default
       msg "Disable USER_NS for non-root users by default"
       patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  
-  ### Fix https://bugs.archlinux.org/task/56575
-      msg "Fix #56575" 
-      patch -Np1 -i ../0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
 
   ### Fix https://nvd.nist.gov/vuln/detail/CVE-2017-8824
       msg "Fix CVE-2017-8824"
-      patch -Np1 -i ../0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+      patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
   
   ### Fix https://bugs.archlinux.org/task/56605
       msg "Fix #56605"
-      patch -Np1 -i ../0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  
-  ### Fix https://bugs.archlinux.org/task/56846
-      msg "Fix #56846"
-      patch -Np1 -i ../0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-  
+      patch -Np1 -i ../0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+    
   ### Fix https://bugs.archlinux.org/task/56711
       msg "Fix #56711"
-      patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+      patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   
   ### Patch source with BFQ-SQ-MQ
         msg "Fix patching with 20180109"
