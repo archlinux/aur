@@ -1,7 +1,7 @@
 # Maintainer: Thomas Hebb <tommyhebb@gmail.com>
 pkgname=usbdm-git
 pkgver=1102.62ab4f14
-pkgrel=1
+pkgrel=2
 pkgdesc="Debugger interface for Freescale RS08,HCS08,HCS12,Coldfire and ARM-Kinetis Devices."
 arch=("i686" "x86_64")
 url="http://usbdm.sourceforge.net/"
@@ -28,7 +28,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/usbdm-eclipse-makefiles-build"
 	patch -p1 -i "${srcdir}/undebian.patch"
-	sed -i -e 's/xercesc_3_1/xercesc/' 'MergeXML/src/xmlParser.h'
+	sed -i -e 's/xercesc_3_1/xercesc/g' 'MergeXML/src/xmlParser.h'
 }
 
 build() {
