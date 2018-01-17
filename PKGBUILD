@@ -7,7 +7,8 @@ arch=('x86_64')
 url="https://github.com/jedisct1/dnscrypt-proxy"
 license=('custom:ISC')
 makedepends=('git' 'go')
-conflicts=('dnscrypt-proxy')
+provides=('dnscrypt-proxy-go')
+conflicts=('dnscrypt-proxy' 'dnscrypt-proxy-go')
 backup=('etc/dnscrypt-proxy/dnscrypt-proxy.toml' 'etc/dnscrypt-proxy/forwarding-rules.txt' 'etc/dnscrypt-proxy/blacklist.txt')
 source=('git+https://github.com/jedisct1/dnscrypt-proxy.git'
         'dnscrypt-proxy.service')
