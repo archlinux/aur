@@ -11,7 +11,7 @@ md5sums=('0cf0b7703c212901954b5b9b2111b402')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1515733790/s/$_s/t/$_t/Ant-Nebula.tar")
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1515733790/s/$_s/t/$_t/u//Ant-Nebula.tar")
 
 package(){
 	cd "$srcdir"
