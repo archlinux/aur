@@ -1,7 +1,7 @@
 pkgbase = emby-server-beta
 	pkgdesc = Bring together your videos, music, photos, and live television
 	pkgver = 3.2.60.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://emby.media
 	install = emby-server.install
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = emby-server-beta
 	depends = ffmpeg
 	depends = skia-sharp58
 	depends = sqlite
+	provides = emby-server
+	conflicts = emby-server
 	backup = etc/conf.d/emby-server
 	source = https://github.com/MediaBrowser/Emby/releases/download/3.2.60.15/embyserver-netcore-3.2.60.15.zip
 	source = emby-server

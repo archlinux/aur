@@ -5,13 +5,15 @@
 
 pkgname=emby-server-beta
 pkgver=3.2.60.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('any')
 url='http://emby.media'
 license=('GPL2')
 depends=('dotnet-runtime' 'ffmpeg' 'skia-sharp58' 'sqlite')
 install='emby-server.install'
+provides=('emby-server')
+conflicts=('emby-server')
 source=("https://github.com/MediaBrowser/Emby/releases/download/${pkgver}/embyserver-netcore-${pkgver}.zip"
         'emby-server'
         'emby-migrate-database'
