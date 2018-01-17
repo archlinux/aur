@@ -1,15 +1,26 @@
 pkgbase = ginger
-	pkgdesc = HTML5 management for KVM
-	pkgver = 1.3.0.1
-	pkgrel = 3
+	pkgdesc = Host system administration for WoK.
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/kimchi-project/ginger
 	arch = any
-	license = LGPL2.1
+	groups = kimchi-project
+	license = LGPL
 	license = APACHE
-	depends = kimchi
-	backup = etc/kimchi/kimchi.conf
-	source = https://github.com/kimchi-project/ginger/archive/1.3.0.1-final.tar.gz
-	md5sums = 2150b504f5df529bccf0314beec841a7
+	depends = hddtemp
+	depends = lm_sensors
+	depends = python2-augeas
+	depends = python2-netaddr
+	depends = python2-ipaddr
+	depends = python2-magic
+	depends = python2-crypto
+	depends = python2-ethtool
+	depends = libuser
+	depends = wokd
+	depends = ginger-base
+	backup = etc/wok/plugins.d/ginger.conf
+	source = https://github.com/kimchi-project/ginger/archive/2.4.0.tar.gz
+	sha256sums = 8ede9c4876419116f1027b5a7f40935c72d8b269a341b1f0b768d0581591219b
 
 pkgname = ginger
 
