@@ -12,6 +12,7 @@ depends=('python' 'jq')
 
 package() {
 
+    srcdir="$(pwd)/whatnext-1.0/"
 	cd "$pkgdir"
 	mkdir -p usr/lib/whatnext
 	mkdir -p usr/bin
