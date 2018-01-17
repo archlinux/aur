@@ -7,7 +7,7 @@ pkgdesc="Command-line status monitor for tor"
 arch=(any)
 url="https://nyx.torproject.org/"
 license=(GPL3)
-depends=('stem>=1.6.0')
+depends=('python-setuptools' 'stem>=1.6.0')
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz
 	https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz.asc)
 md5sums=('14dbd97e35ffcedbe7fd7124a21b3e5e'
