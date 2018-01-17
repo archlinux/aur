@@ -13,13 +13,13 @@ pkgname=proxy
 pkgver=1.0.14
 pkgrel=12
 pkgdesc='automate your installation process'
-arch=('any')
+arch=(any)
 url='http://torben.website/proxy'
 license=('CC-BY-3.0')
-depends=('bash' 'docker')
-source=('base.yml' 'Dockerfile' 'proxy.service')
-md5sums=('SKIP' 'SKIP' 'SKIP')
-copyToAUR=true
+depends=(bash docker)
+source=(base.yml Dockerfile proxy.service)
+md5sums=(SKIP SKIP SKIP)
+copy_to_aur=true
 
 package() {
     install -D --mode 755 "${srcdir}/base.yml" \
