@@ -3,15 +3,15 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=man-pages-ru
-pkgver=4.15_2383_2383_20171230
-pkgrel=2
+pkgver=4.15_2383_2383_20180113
+pkgrel=1
 pkgdesc="Russian Linux man pages"
 arch=(any)
 url="https://sourceforge.net/projects/man-pages-ru/"
 depends=(man)
 license=('FDL')
 source=(http://downloads.sourceforge.net/project/man-pages-ru/man-pages-ru_${pkgver//_/-}.tar.bz2)
-sha256sums=('adab9dc57e8d8df4f1b17153a65f0d7d1abe892cb4672124c6a30869dce84d18')
+sha256sums=('af0c39e68ff378be3331a676c5f9bdd3f6ee553d338ca0ee8374204b1f936810')
 
 package() {
   cd "$srcdir"/man-pages-ru_${pkgver//_/-}
