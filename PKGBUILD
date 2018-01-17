@@ -4,7 +4,7 @@
 
 pkgname=nvidia-ck
 pkgver=387.34
-pkgrel=7
+pkgrel=8
 epoch=1
 _extramodules=extramodules-4.14-ck
 _pkgdesc="NVIDIA drivers for linux-ck."
@@ -13,7 +13,7 @@ arch=('x86_64')
 url="http://www.nvidia.com/"
 depends=('linux-ck>=4.14' 'linux-ck<4.15' 'libgl' "nvidia-utils=${pkgver}")
 makedepends=('linux-ck-headers>=4.14' 'linux-ck-headers<4.15' 'nvidia-libgl')
-conflicts=('nvidia-340xx-ck' 'nvidia-304xx-ck')
+conflicts=('nvidia-340xx-ck')
 #groups=('ck-generic')
 #replaces=()
 license=('custom')
