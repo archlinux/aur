@@ -67,7 +67,7 @@ package() {
     install -d "$pkgdir"/usr/share/licenses/java$_major-$_pkgname
 
     msg2 "Removing redundancies..."
-    rm    db/bin/*.bat
+    #rm    db/bin/*.bat
     rm    db/3RDPARTY
     rm    db/LICENSE
     rm -r jre/lib/desktop/icons/HighContrast/
