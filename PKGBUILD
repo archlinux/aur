@@ -12,16 +12,14 @@ depends=('python' 'jq')
 
 package() {
 
-    scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-    baseDir="$scriptDir/../"
-
 	cd "$pkgdir"
+	srcDir="../../src/whatnext-master"
 	mkdir -p usr/lib/whatnext
 	mkdir -p usr/bin
-	cp $baseDir/*.sh usr/lib/whatnext/
-	cp $baseDir/*.py usr/lib/whatnext/
-	cp $baseDir/whatnext usr/lib/whatnext/
-	cp $scriptDir/wn-link usr/bin/whatnext
+	cp $srcDir/*.sh usr/lib/whatnext/
+	cp $srcDir/*.py usr/lib/whatnext/
+	cp $srcDir/whatnext usr/lib/whatnext/
+	cp $srcDir/wn-link usr/bin/whatnext
 	pwd
     find .
 }
