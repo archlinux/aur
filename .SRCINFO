@@ -1,0 +1,21 @@
+pkgbase = python-skymapper-git
+	pkgdesc = PALpy is a python interface to the PAL positional astronomy library
+	pkgver = r104.c4ddfec
+	pkgrel = 1
+	url = https://github.com/pmelchior/skymapper
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	makedepends = cython
+	makedepends = cython2
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	source = python-skymapper-git::git+https://github.com/pmelchior/skymapper
+	md5sums = SKIP
+
+pkgname = python-skymapper-git
+
+pkgname = python2-skymapper-git
+
