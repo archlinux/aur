@@ -3,9 +3,9 @@
 _pkgname=jdk
 pkgname=jdk8
 _major=8
-_minor=152
-_build=b16
-_hash=aa0333dd3019491ca4f6ddbe78cdb6d0
+_minor=162
+_build=b12
+_hash=0da788060d494f5095bf8624735fa2f1
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit"
@@ -48,7 +48,7 @@ source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pk
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
-md5sums=('20dddd28ced3179685a5f58d3fcbecd8'
+md5sums=('781e3779f0c134fb548bde8b8e715e90'
          'b3c7031bc65c28c2340302065e7d00d3'
          '8a66f50efdc867ffd6a27168bc93b210'
          '1cbde70639abd98db4bace284dbf2bc4'
