@@ -6,7 +6,7 @@ Before=nss-lookup.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/dnscrypt-proxy
+ExecStart=/usr/bin/dnscrypt-proxy --config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
 
 [Install]
 WantedBy=multi-user.target
