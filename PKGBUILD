@@ -70,7 +70,7 @@ package() {
     install -d "$pkgdir"/usr/share/licenses/java$_major-$_pkgname
 
     msg2 "Removing redundancies..."
-    rm    db/bin/*.bat
+    #rm    db/bin/*.bat
     rm    jre/lib/fontconfig.*.bfc
     rm    jre/lib/fontconfig.*.properties.src
     rm    jre/*.txt
