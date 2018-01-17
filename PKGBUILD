@@ -3,31 +3,48 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust
-pkgver=0.9.73
+pkgver=2.5.10
+tag=$(echo $pkgver | sed -e 's/\./-/g' -e s/^/v/)
 pkgrel=1
 pkgdesc="A functional programming language for realtime audio signal processing."
 arch=('i686' 'x86_64')
 url="http://faust.grame.fr/"
 license=('GPL')
-depends=('ruby'
+depends=('llvm-libs'
 # needed for sound2faust:
 	 'libsndfile'
+# needed for libfaustremote and faustbench:
+#	 'jack2'
 # needed for libHTTPDFaust:
 	 'libmicrohttpd' 'openssl')
-# We need xxd at build time, which is provided by 'gvim', 'vim' and 'xxd'
-# (AUR).
-makedepends=('git' 'xxd')
+# We need xxd at build time, which is provided by 'gvim', 'vim' and
+# 'xxd-standalone' (AUR).
+makedepends=('llvm' 'git' 'xxd')
+optdepends=('clang: needed for sound2reader'
+	    'python2: needed for faust2md'
+	    'ruby: needed for faust2sc and scbuilder')
 provides=('faust')
 conflicts=('faust')
 # This keeps the static libraries. Remove the 'staticlibs' option if this
 # isn't wanted.
 options=('strip' 'staticlibs')
-source=("http://downloads.sourceforge.net/project/faudiostream/$pkgname-$pkgver.tgz"
-	"debversion.patch"
-	"git+https://github.com/rukano/emacs-faust-mode.git")
-md5sums=('a29822139d37183dc5e952a52759e35d'
-	 '234425476fd8dae5c2d20cb0fbd377b5'
-         'SKIP')
+source=("$pkgname::git+https://github.com/grame-cncm/faust.git#tag=$tag"
+	"git+https://github.com/rukano/emacs-faust-mode.git"
+	"python2-fix.patch"
+	"llvm-501-fix.patch")
+md5sums=('SKIP'
+	 'SKIP'
+         '8680b87fc4e34445e02f34781ee45f19'
+         'abac254a7fbe56f927e3d14ab5603849')
+
+prepare() {
+  cd $srcdir/$pkgname
+  git submodule update --init
+  # fix up scripts like faust2md which need python2 to run
+  patch -Np1 < $srcdir/python2-fix.patch
+  # temporary fix in 2.5.10
+  patch -Np1 < $srcdir/llvm-501-fix.patch
+}
 
 # NOTE: libHTTPDFaust requires 'liblo', 'libmicrohttpd' and 'openssl'.
 # Similarly, sound2faust requires libsndfile which we also include by default.
@@ -35,23 +52,20 @@ md5sums=('a29822139d37183dc5e952a52759e35d'
 # changing the build target from 'world' to 'all' and removing the
 # corresponding dependencies above.
 
-prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  patch -p1 -i ../debversion.patch
-}
-
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname
   make PREFIX=/usr world
+  # 'remote' and 'benchmark' are disabled right now since they require jack2.
+  #make benchmark remote PREFIX=/usr
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname
   make install PREFIX=/usr DESTDIR="$pkgdir"
 
   # docs
   install -d "$pkgdir/usr/share/doc/faust"
-  install -Dm644 documentation/*.{pdf,txt} "$pkgdir/usr/share/doc/faust"
+  for x in documentation/*.{pdf,html} libraries/doc/*.{pdf,html}; do test -f $x && install -Dm644 $x "$pkgdir/usr/share/doc/faust"; done
 
   # examples
   install -d "$pkgdir/usr/share/faust/examples"

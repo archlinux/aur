@@ -1,0 +1,55 @@
+commit 84eb2ee2de8abb5994add78ef966ae6bb831b415
+Author: Stephane Letz <letz@grame.fr>
+Date:   Mon Jan 8 11:48:53 2018 +0100
+
+    Makefile upgrated for LLVM 5.0.1.
+
+diff --git a/benchmark/Makefile b/benchmark/Makefile
+index 1240aa6a7..92e895722 100644
+--- a/benchmark/Makefile
++++ b/benchmark/Makefile
+@@ -73,13 +73,13 @@ CXX = /opt/local/libexec/llvm-3.9/bin/clang++
+ LLC = /opt/local/libexec/llvm-3.9/bin/llc
+ endif
+ 
+-ifeq ($(LLVM_VERSION),$(filter $(LLVM_VERSION), 4.0.0, 4.0.1))
++ifeq ($(LLVM_VERSION),$(filter $(LLVM_VERSION), 4.0.0 4.0.1))
+ LLVM_VERSION  = LLVM_40
+ CXX = /opt/local/libexec/llvm-4.0/bin/clang++
+ LLC = /opt/local/libexec/llvm-4.0/bin/llc
+ endif
+ 
+-ifeq ($(LLVM_VERSION),$(filter $(LLVM_VERSION), 5.0.0))
++ifeq ($(LLVM_VERSION),$(filter $(LLVM_VERSION), 5.0.0 5.0.1))
+ LLVM_VERSION  = LLVM_50
+ CXX = /opt/local/libexec/llvm-5.0/bin/clang++
+ LLC = /opt/local/libexec/llvm-5.0/bin/llc
+diff --git a/compiler/Makefile.unix b/compiler/Makefile.unix
+index e544aab02..3444aa61e 100755
+--- a/compiler/Makefile.unix
++++ b/compiler/Makefile.unix
+@@ -150,7 +150,7 @@ else ifeq ($(LLVM_VERSION),$(filter $(LLVM_VERSION), 4.0.0 4.0.1))
+     CLANGLIBS=$(CLANGLIBSLIST)
+     CXXFLAGS += -std=gnu++11
+ 
+-else ifeq ($(LLVM_VERSION),$(filter $(LLVM_VERSION), 5.0.0))
++else ifeq ($(LLVM_VERSION),$(filter $(LLVM_VERSION), 5.0.0 5.0.1))
+     LLVM_VERSION = LLVM_50
+     CLANGLIBS=$(CLANGLIBSLIST)
+     CXXFLAGS += -std=gnu++11
+diff --git a/examples/Makefile.llvmcompile b/examples/Makefile.llvmcompile
+index a7579a0a6..08e3cab81 100644
+--- a/examples/Makefile.llvmcompile
++++ b/examples/Makefile.llvmcompile
+@@ -57,6 +57,11 @@ LLVM_VERSION  = LLVM_40
+ LLVM_PREFIX = /opt/local/libexec/llvm-4.0/bin
+ endif
+ 
++ifeq ($(LLVM_VERSION),$(filter $(LLVM_VERSION), 5.0.0 5.0.1))
++LLVM_VERSION  = LLVM_50
++LLVM_PREFIX = /opt/local/libexec/llvm-5.0/bin
++endif
++
+ CLANG = $(LLVM_PREFIX)/clang++
+ OPT = $(LLVM_PREFIX)/opt
+ LLC = $(LLVM_PREFIX)/llc

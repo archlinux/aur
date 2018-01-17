@@ -1,0 +1,10 @@
+diff --git a/tools/faust2appls/faust2md b/tools/faust2appls/faust2md
+index 2e460fcb9..5831a86a9 100755
+--- a/tools/faust2appls/faust2md
++++ b/tools/faust2appls/faust2md
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #---------------------- faust2md -----------------------
+ # Usage: `faust2md [-t 4] [-c] [-f] foo.dsp > foo.md`
