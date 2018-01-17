@@ -27,5 +27,4 @@ package() {
     install -D -m 644 $srcdir/DEF/include/* $pkgdir/usr/include
 
     install -D -m 644 $srcdir/DEF/LICENSE.TXT $pkgdir/usr/share/DEF/copyright
-	make DESTDIR="$pkgdir/" 
 }
