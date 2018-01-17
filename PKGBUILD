@@ -38,7 +38,6 @@ package() {
     cp $srcdir/${_name}.desktop usr/share/applications/
     rm usr/share/applications/openbazaar2.desktop
     mv usr/share/doc/openbazaar2 usr/share/doc/openbazaar
-    mv usr/share/pixmaps/openbazaar2.png usr/share/pixmaps/openbazaar.png
 
     cd $pkgdir/usr/lib/openbazaar/resources/app
     npm prune --production
@@ -49,6 +48,3 @@ package() {
         	-or -name "temp" -prune -exec rm -r '{}' \; 
 }
 
-md5sums=('43c9c9ef1d3ca873eea6b6343ca072e8')
-md5sums_i686=('c99e5279fd2d96e547c900627e0b8e92')
-md5sums_x86_64=('ba5e51f6fc8cc035ab667b5e995de9fe')
