@@ -1,7 +1,7 @@
 pkgbase = ophidian-verilog-parser-git
 	pkgdesc = A Flex/Bison parser for the IEEE 1364-2001 Verilog Standard.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/eclufsc/verilog-parser
 	arch = x86_64
 	groups = ophidian
@@ -10,6 +10,7 @@ pkgbase = ophidian-verilog-parser-git
 	makedepends = make
 	makedepends = bison
 	makedepends = flex
+	options = staticlibs
 	source = git+https://gitlab.com/eclufsc/verilog-parser.git#branch=master
 	md5sums = SKIP
 
