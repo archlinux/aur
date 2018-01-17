@@ -1,12 +1,13 @@
 # Maintainer: Bernardo Ferrari Mendonca <bernardo.mferrari@gmail.com>
 pkgname=ophidian-lef-git
 pkgver=5.8
-pkgrel=1
+pkgrel=2
 groups=('ophidian')
 pkgdesc="Cadence's LEF parser toolkit including C++ and C APIs"
 arch=('x86_64')
 url="https://gitlab.com/eclufsc/LEF"
 license=('Apache')
+options=(staticlibs)
 makedepends=('make' 'bison' 'flex' 'zlib')
 source=('git+https://gitlab.com/eclufsc/LEF.git#branch=master')
 md5sums=('SKIP')

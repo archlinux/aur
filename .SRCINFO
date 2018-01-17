@@ -1,7 +1,7 @@
 pkgbase = ophidian-lef-git
 	pkgdesc = Cadence's LEF parser toolkit including C++ and C APIs
 	pkgver = 5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/eclufsc/LEF
 	arch = x86_64
 	groups = ophidian
@@ -10,6 +10,7 @@ pkgbase = ophidian-lef-git
 	makedepends = bison
 	makedepends = flex
 	makedepends = zlib
+	options = staticlibs
 	source = git+https://gitlab.com/eclufsc/LEF.git#branch=master
 	md5sums = SKIP
 
