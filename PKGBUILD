@@ -11,19 +11,17 @@ makedepends=('python-setuptools')
 depends=(
   'python'
   'python-click'
-  'python-future>0.14.0'
-  'python-jinja>=2.9'
+  'python-future'
+  'python-jinja'
   'python-lzstring'
   'python-markdown'
   'python-matplotlib'
-  'python-networkx<2'
-  'python-numpy>=1.9.2'
+  'python-networkx'
+  'python-numpy'
   'python-requests'
   'python-simplejson'
   'python-spectra'
   'python-yaml')
-provides=('python-multiqc')
-conflicts=('python-multiqc')
 options=(!emptydirs)
 source=("https://github.com/ewels/MultiQC/archive/v${pkgver}.tar.gz")
 md5sums=('67c4aae8b85ae40fcb2e98319fb629ac')
