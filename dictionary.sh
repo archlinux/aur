@@ -96,7 +96,7 @@ bl_dictionary_get_keys() {
     local keys
     local store="bl_dictionary_store_${name}"
     if [[ ${BASH_VERSINFO[0]} -lt 4 ]] || ! [ -z "${bl_dictionary_bash_version_test:-}" ]; then
-        for key in $(declare -p | cut -d' ' -f3 | grep -E "^${store}" | \
+        for key in $(declare -p | cut -d' ' -f3 | command grep -E "^${store}" | \
             cut -d '=' -f1)
         do
             echo "${key#${store}_}"

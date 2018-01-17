@@ -13,13 +13,13 @@ pkgname=bash-link
 pkgver=1.0.29
 pkgrel=27
 pkgdesc='a high reliable bash library'
-arch=('any')
+arch=(any)
 url='http://torben.website/bashlink'
 license=('CC-BY-3.0')
 depends=()
 source=(arguments.sh array.sh changeroot.sh cli.sh cracking.sh dependency.sh dictionary.sh display.sh doctest.sh documentation.sh exception.sh filesystem.sh globals.sh logging.sh module.sh network.sh number.sh pacman.sh path.sh ssh.sh string.sh system.sh time.sh tools.sh)
 md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
-copyToAUR=true
+copy_to_aur=true
 
 package() {
     install -D --mode 755 "${srcdir}/"* "${pkgdir}/usr/bin/bashlink/"

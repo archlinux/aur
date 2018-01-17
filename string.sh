@@ -84,7 +84,7 @@ bl_string_images_to_css_classes() {
         done
         if $valid_path; then
             local image_class_name="$(echo "$image_file_path" | tr '@#&%+./_{; ' '-' | \
-                grep --only-matching --extended-regexp '[^-].+$')"
+                command grep --only-matching --extended-regexp '[^-].+$')"
             echo ".image-data-${image_class_name}{background-image: url(\"data:$(file --brief --mime-type "$image_file_path");base64,$(base64 --wrap 0 "$image_file_path")\")}"
         fi
     done
@@ -189,7 +189,7 @@ bl_string_merge_text_files() {
         esac
     done
     # shellcheck disable=SC2059
-    printf "$prepend" "$(echo "$file_paths" | grep --only-matching \
+    printf "$prepend" "$(echo "$file_paths" | command grep --only-matching \
         --extended-regexp '^[^ ]+')"
     local index=0
     local file_path
@@ -336,9 +336,9 @@ bl_string_validate_argument() {
         >>> bl.string.validate_argument h"a"ns
         h"a"ns
     '
-    if ! grep "'" <<< "$1" &>/dev/null; then
+    if ! command grep "'" <<< "$1" &>/dev/null; then
         echo "'$1'"
-    elif ! grep '"' <<< "$1" &>/dev/null; then
+    elif ! command grep '"' <<< "$1" &>/dev/null; then
         echo "\"$1\""
     else
         echo "'$(sed "s/'/\\'/g" <<< "$1")'"

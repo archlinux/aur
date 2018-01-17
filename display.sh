@@ -168,8 +168,8 @@ bl_display_wacom_toggle_finger_touch_state() {
             bl.display.wacom_toggle_finger_touch_state disable
         ```
     '
-    if (xinput --list-props 'Wacom ISDv4 E6 Finger touch' | grep \
-        'Device Enabled' | cut --fields 3 | grep 1 --quiet
+    if (xinput --list-props 'Wacom ISDv4 E6 Finger touch' | command grep \
+        'Device Enabled' | cut --fields 3 | command grep 1 --quiet
         [[ "$1" != enable ]]) || [[ "$1" == disable ]]
     then
         xinput set-prop 'Wacom ISDv4 E6 Finger touch' 'Device Enabled' 0

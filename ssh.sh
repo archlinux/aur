@@ -71,8 +71,8 @@ bl_ssh_print() {
         else
             # Grab user from "~/.ssh/config".
             local user_row="$(
-                grep "$host" -A1 ~/.ssh/config | \
-                grep -i user)"
+                command grep "$host" -A1 ~/.ssh/config | \
+                command grep -i user)"
             if [[ "$user_row" != '' ]]; then
                 # shellcheck disable=SC2001
                 local user="$(echo "$user_row" | sed s/user\\s//ig)"

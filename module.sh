@@ -43,7 +43,7 @@ bl_module_determine_aliases() {
     local __documentation__='
         Returns all defined aliases in the current scope.
     '
-    alias | grep '^alias' \
+    alias | command grep '^alias' \
         | cut --delimiter ' ' --fields 2 - | cut --delimiter '=' --fields 1
 }
 alias bl.module.determine_declared_names=bl_module_determine_declared_names
@@ -61,7 +61,7 @@ bl_module_determine_declared_names() {
     {
         declare -F | cut --delimiter ' ' --fields 3
         $only_functions || \
-        declare -p | grep '^declare' | cut --delimiter ' ' --fields 3 - | \
+        declare -p | command grep '^declare' | cut --delimiter ' ' --fields 3 - | \
             cut --delimiter '=' --fields 1
     } | sort --unique
 }

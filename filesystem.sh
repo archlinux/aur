@@ -203,9 +203,9 @@ bl_filesystem_btrfs_is_root() {
         >>> bl.filesystem.btrfs_is_root /broot/foo; echo $?
         1
     '
-    (btrfs subvolume show "$1" | grep 'is btrfs root') &>/dev/null || \
-        (btrfs subvolume show "$1" | grep 'is toplevel') &>/dev/null || \
-        (btrfs subvolume show "$1" | grep 'Name:.*<FS_TREE>') &>/dev/null || \
+    (btrfs subvolume show "$1" | command grep 'is btrfs root') &>/dev/null || \
+        (btrfs subvolume show "$1" | command grep 'is toplevel') &>/dev/null || \
+        (btrfs subvolume show "$1" | command grep 'Name:.*<FS_TREE>') &>/dev/null || \
         return 1
 }
 alias bl.filesystem.btrfs_is_subvolume=bl_filesystem_btrfs_is_subvolume
@@ -482,7 +482,7 @@ bl_filesystem_create_partition_via_offset() {
     local sector_size="$(blockdev --getbsz "$device")"
     # NOTE: partx's NAME field corresponds to partition labels
     local partition_info=$(partx --raw --noheadings --output \
-        START,NAME,UUID,TYPE "$device" 2>/dev/null| grep "$name_or_uuid")
+        START,NAME,UUID,TYPE "$device" 2>/dev/null| command grep "$name_or_uuid")
     local offset_sectors="$(echo "$partition_info"| cut --delimiter ' ' \
         --fields 1)"
     if [ -z "$offset_sectors" ]; then

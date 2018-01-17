@@ -160,7 +160,7 @@ bl_tools_make_single_executable() {
     cat << EOF 1>"$file_name"
 #!/usr/bin/env bash
 executable_directory_path="\$(mktemp -d 2>/dev/null || mktemp -d -t '' 2>/dev/null)" && \\
-data_offset="\$(("\$(grep --text --line-number '^exit \\\$?$' "\$0" | \\
+data_offset="\$(("\$(command grep --text --line-number '^exit \\\$?$' "\$0" | \\
     cut -d ':' -f 1)" + 1))" && \\
 tail -n +\$dataOffset "\$0" | tar -xzf - -C "\$executableDirectory" \\
     1>/dev/null && \\

@@ -83,18 +83,18 @@ bl_cli_unicode_enabled=false
 alias bl.cli.glyph_available_in_font=bl_cli_glyph_available_in_font
 bl_cli_glyph_available_in_font() {
     local current_font
-    current_font=$(xrdb -q | grep -i facename | cut -d: -f2)
+    current_font=$(xrdb -q | command grep -i facename | cut -d: -f2)
     local font_file_name
     font_file_name=$(fc-match "$current_font" | cut -d: -f1)
-    #font_path=$(fc-list "$current_font" | grep "$font_file_name" | cut -d: -f1)
+    #font_path=$(fc-list "$current_font" | command grep "$font_file_name" | cut -d: -f1)
     local font_file_extension="${font_file_name##*.}"
     # Alternative or to be sure
-    #font_path=$(lsof -p $(ps -o ppid= -p $$) | grep fonts)
+    #font_path=$(lsof -p $(ps -o ppid= -p $$) | command grep fonts)
     if [[ $font_file_extension == otf ]]; then
-        otfinfo /usr/share/fonts/OTF/Hack-Regular.otf -u | grep -i uni27a1
+        otfinfo /usr/share/fonts/OTF/Hack-Regular.otf -u | command grep -i uni27a1
     elif [[ $font_file_extension == ttf ]]; then
         ttfdump -t cmap /usr/share/fonts/TTF/Hack-Regular.ttf 2>/dev/null | \
-            grep 'Char 0x27a1'
+            command grep 'Char 0x27a1'
     else
         return 1
     fi
@@ -295,7 +295,7 @@ else
     bl_cli_disable_color
 fi
 # TODO this breaks dracut (segfault)
-#(echo -e $'\u1F3B7' | grep -v F3B7) &> /dev/null
+#(echo -e $'\u1F3B7' | command grep -v F3B7) &> /dev/null
 if bl.tools.is_defined NO_UNICODE; then
     bl.cli.disable_unicode_glyphs
 else

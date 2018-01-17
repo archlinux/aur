@@ -94,7 +94,7 @@ bl_dependency_check_shared_library() {
     local pattern
     for pattern in "$@"; do
         if ! ldconfig --print-cache | cut --fields 1 --delimiter ' ' | \
-            grep "$pattern" &>/dev/null
+            command grep "$pattern" &>/dev/null
         then
             return_code=2
             echo "$pattern"

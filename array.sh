@@ -27,7 +27,7 @@ bl_array_filter() {
     local element
     for element in "$@"; do
         echo "$element"
-    done | grep --extended-regexp "$pattern"
+    done | commannd grep --extended-regexp "$pattern"
 }
 alias bl.array.get_index=bl_array_get_index
 bl_array_get_index() {

@@ -264,7 +264,7 @@ bl_doctest_get_function_docstring() {
     local function_name="$1"
     (
         if ! docstring="$(type "$function_name" | \
-            grep "$bl_doctest_regular_expression_one_line")"
+            command grep "$bl_doctest_regular_expression_one_line")"
         then
             docstring="$(type "$function_name" | sed --quiet "$bl_doctest_regular_expression")"
         fi
@@ -464,7 +464,7 @@ bl_doctest_parse_docstring() {
                 ;;
             TEST)
                 #[ -z "$indentation" ] &&
-                    #indentation="$(echo "$line"| grep -o "^[[:blank:]]*")"
+                    #indentation="$(echo "$line"| command grep -o "^[[:blank:]]*")"
                 if [ "$line" = '' ]; then
                     next_state=TEXT
                     eval_buffers
@@ -589,7 +589,7 @@ bl_doctest_eval() {
             echo "bl.module.determine_declared_names > $declared_names_after_run_file_path"
         )"
         # run in clean environment
-        if echo "$output_buffer" | grep '+bl.doctest.no_capture_stderr' &>/dev/null; then
+        if echo "$output_buffer" | command grep '+bl.doctest.no_capture_stderr' &>/dev/null; then
             bash --noprofile --norc <(echo "$test_script")
         else
             bash --noprofile --norc 2>&1 <(echo "$test_script")
@@ -607,8 +607,8 @@ bl_doctest_eval() {
     got="$(eval_with_check "$test_buffer" "$module" "$function_name")"
     bl_doctest_new_declared_names="$(diff \
         "$declared_names_before_run_file_path" \
-        "$declared_names_after_run_file_path" \
-        | grep -e "^>" | sed 's/^> //')"
+        "$declared_names_after_run_file_path" | \
+            command grep -e "^>" | sed 's/^> //')"
     bl.doctest.print_declaration_warning "$module" "$function_name"
     rm "$declared_names_before_run_file_path"
     rm "$declared_names_after_run_file_path"
@@ -689,7 +689,7 @@ bl_doctest_test() {
         # shellcheck disable=SC2154
         local declared_function_names="$module_declared_function_names_after_source"
         # NOTE: Adds internal already loaded but correctly prefixed functions.
-        declared_function_names+=" $(! declare -F | cut -d' ' -f3 | grep -e "^$scope_name" )"
+        declared_function_names+=" $(! declare -F | cut -d' ' -f3 | command grep -e "^$scope_name" )"
         # NOTE: Removes duplicates.
         declared_function_names="$(bl.string.get_unique_lines <(echo "$declared_function_names"))"
         local total=0

@@ -86,7 +86,7 @@ bl_documentation_generate() {
         # shellcheck disable=SC2154
         local declared_function_names="$module_declared_function_names_after_source"
         # NOTE: Adds internal already loaded but correctly prefixed functions.
-        declared_function_names+=" $(! declare -F | cut -d' ' -f3 | grep -e "^$scope_name" )"
+        declared_function_names+=" $(! declare -F | cut -d' ' -f3 | command grep -e "^$scope_name" )"
         # NOTE: Removes duplicates.
         declared_function_names="$(bl.string.get_unique_lines <(echo "$declared_function_names"))"
         # Module level documentation
