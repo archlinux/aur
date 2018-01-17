@@ -8,7 +8,7 @@ pkgbase = citus-git
 	makedepends = postgresql-libs
 	makedepends = git
 	depends = postgresql
-	source = git+https://github.com/citusdata/citus
+	source = citus-git::git+https://github.com/citusdata/citus
 	sha1sums = SKIP
 
 pkgname = citus-git
