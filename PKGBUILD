@@ -2,7 +2,7 @@
 
 _pkgname='ccminer'
 pkgname="${_pkgname}-nanashi-git"
-pkgver=r8.4209e41
+pkgver=r9.5ff7b99
 pkgrel=1
 pkgdesc="Coin miner using CUDA for nVidia GPUs."
 arch=('x86_64')

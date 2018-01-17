@@ -1,6 +1,6 @@
 pkgbase = ccminer-nanashi-git
 	pkgdesc = Coin miner using CUDA for nVidia GPUs.
-	pkgver = r8.4209e41
+	pkgver = r9.5ff7b99
 	pkgrel = 1
 	url = http://ccminer.org/
 	arch = x86_64
