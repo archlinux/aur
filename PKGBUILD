@@ -1,6 +1,6 @@
 # Maintainer: snafu
 pkgname=env-modules
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
@@ -21,9 +21,8 @@ changelog=
 source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" zshcomp.patch)
 noextract=()
 validpgpkeys=()
-md5sums=('454dba418b1556d2fd5de753fbbabe0b'
-         '2c6c0e8095d624da825e9a2938de0582')
-
+md5sums=('8626844e7de49a321e658f9d485e546b'
+         '5b4c34fac86b88c96a092c5972afa1fe')
 
 # Install locations:
 install_prefix=/usr
@@ -55,7 +54,8 @@ build() {
 		--disable-set-manpath \
 		--enable-compat-version \
 		--enable-example-modulefiles \
-		--enable-doc-install
+		--enable-doc-install \
+        --without-pager
 
 	make
 }
