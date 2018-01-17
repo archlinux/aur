@@ -2,25 +2,19 @@
 # Maintainer: Matthieu Rakotojaona <matthieu.rakotojaona@gmail.com>
 
 pkgname=facedetect-git
-pkgver=r30.cfb2af1
+pkgver=r32.15cfda5
 pkgrel=1
 arch=('any')
 pkgdesc='a simple face detector for batch processing, used by fgallery'
 url='https://www.thregr.org/~wavexx/software/facedetect/'
 license=('GPL2')
-depends=('opencv' 'python2' 'python2-numpy')
+depends=('opencv' 'python' 'python-numpy')
 source=("$pkgname::git+https://github.com/wavexx/facedetect")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-  # facedetect is written in python2 style
-  cd "${pkgname}"
-  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' facedetect
 }
 
 package() {
