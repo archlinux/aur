@@ -2,8 +2,8 @@
 # Maintainer: Christoph Haag <haagch+aur@frickel.club>
 
 pkgname=adriconf-git
-pkgver=0.9.1
-pkgrel=12
+pkgver=r34.3057768
+pkgrel=1
 pkgdesc="Graphical configuration tool for the Direct Rendering Infrastructure"
 arch=('any')
 url="https://github.com/jlHertel/adriconf"
@@ -16,9 +16,16 @@ sha256sums=('SKIP'
             '1d13c7efdb9aab23dd963c2ce2cbbb25b32039611e4b7b314684967d7432eea4'
             'd7354c488a3b8dd04d0758569a2268c631475fb07d38eb38e4f5afeea958a5ae')
 
+pkgver() {
+  cd adriconf
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
 prepare() {
   cd adriconf
-  git pull origin pull/4/head --no-edit
 }
 
 build() {
