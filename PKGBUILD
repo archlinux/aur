@@ -13,15 +13,15 @@ pkgname=generic-service-handler
 pkgver=1.0.9
 pkgrel=11
 pkgdesc='easy service handling'
-arch=('any')
+arch=(any)
 url='http://torben.website/genericServiceHandler'
 license=('CC-BY-3.0')
-depends=('bash' 'coreutils' 'proxps-ng' 'sed' 'grep' 'util-linux')
+depends=(bash coreutils proxps-ng sed grep util-linux)
 optdepens=('sudo: for root service handling and configured user switching support')
 provides=(generic-service-handler)
-source=('genericServiceHandler.sh')
-md5sums=('SKIP')
-copyToAUR=true
+source=(genericServiceHandler.sh)
+md5sums=(SKIP)
+copy_to_aur=true
 
 package() {
     install -D --mode 755 "${srcdir}/genericServiceHandler.sh" \
