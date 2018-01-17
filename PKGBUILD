@@ -2,7 +2,6 @@
 pkgname=whatnext
 pkgver=0.1
 pkgrel=1
-pkgdesc=""
 arch=('x86_64')
 pkgdesc="Control your recurrent activities in a smart way"
 url="https://github.com/jeanCarloMachado/whatnext"
@@ -10,7 +9,6 @@ source=("https://github.com/jeanCarloMachado/whatnext/archive/master.zip")
 md5sums=('344a735ed9ee4e8c7ae391d411ad0614')
 license=('MIT')
 depends=('python' 'jq')
-md5sums=()
 
 package() {
 
