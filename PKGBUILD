@@ -20,6 +20,4 @@ package() {
 	cp $srcDir/*.py usr/lib/whatnext/
 	cp $srcDir/whatnext usr/lib/whatnext/
 	cp $srcDir/wn-link usr/bin/whatnext
-	pwd
-    find .
 }
