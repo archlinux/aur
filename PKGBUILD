@@ -1,4 +1,5 @@
-# Maintainer: Limao Luo <luolimao@gmail.com>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Limao Luo <luolimao@gmail.com>
 # Contributor: Marek Otahal <markotahal@gmail.com>
 # Contributor: Gen2ly <toddrpartridge@gmail.com>
 
@@ -19,16 +20,16 @@ PKGEXT='.pkg.tar'
 source=(hib://Machinarium_full_en.tar.gz
         $pkgname.sh
         $pkgname.desktop
-        https://apps.ubuntu.com/site_media/icons/2015/07/machinariumIjgfeQ.png
-        http://dl.dropbox.com/u/3395784/aur/machinarium/machinarium-browser.swf)
+        https://apps.ubuntu.com/site_media/icons/2015/07/machinariumIjgfeQ.png)
 sha1sums=('b0cd45fa1d75b29a9cb761f96ef398cec29d8c12'
           'e78be4e1e9752586188dce39e24da457711ee5b3'
           '1febb90a558e55cb42531cac96bfb3d07698fef8'
-          'eeb580db1ecce734ad9b1b7a4d59f4ce43ea750a'
-          '8f5a30be012632538d46fd815277f2cee1edb80b')
+          'eeb580db1ecce734ad9b1b7a4d59f4ce43ea750a')
 
 package() {
-    install -Dm644 $pkgname-browser.swf "$pkgdir"/usr/share/games/$pkgname/$pkgname-browser.swf
+    install -dm644 "$pkgdir"/usr/share/games/$pkgname
+    # Install swf file as per https://bbs.archlinux.org/viewtopic.php?pid=1079661#p1079661
+    dd if=Machinarium/Machinarium of="$pkgdir"/usr/share/games/$pkgname/$pkgname-browser.swf ibs=1 skip=$(grep -abo FWS Machinarium/Machinarium|cut -f1 -d:|tail -1)
     install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
     install -Dm644 machinariumIjgfeQ.png "$pkgdir"/usr/share/icons/$pkgname.png
     desktop-file-install $pkgname.desktop --dir "$pkgdir"/usr/share/applications/
