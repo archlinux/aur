@@ -22,10 +22,10 @@ bl_path_convert_to_absolute() {
     '
     local path="$1"
     if [ -d "$path" ]; then
-        echo "$(cd "$path" && pwd)"
+        cd "$path" &>/dev/null && pwd
     else
         local file_name="$(basename "$path")"
-        local absolute_path="$(cd "$(dirname "$path")" && pwd)"
+        local absolute_path="$(cd "$(dirname "$path")" &>/dev/null && pwd)"
         echo "${absolute_path}/${file_name}"
     fi
 }
@@ -210,11 +210,11 @@ bl_path_run_in_programs_location() {
         `
     '
     if [ "$1" ] && [ -f "$1" ]; then
-        cd "$(dirname "$1")"
-        "./$(basename "$1")" $*
+        cd "$(dirname "$1")" && \
+        "./$(basename "$1")" "$@"
         return $?
     else
-        echo 'Please insert a path to an executable file.'
+        echo Please insert a path to an executable file.
         return $?
     fi
 }

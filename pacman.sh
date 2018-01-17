@@ -26,11 +26,12 @@ bl_pacman_show_config_backups() {
             bl.pacman.show_config_backups
         ```
     '
-    cd / 1>/dev/null
+    pushd / 1>/dev/null && \
     for pattern in '*.pacnew' '*.orig' '*_backup*' '*.pacorig'; do
         sudo find -name "$pattern" -and \( -type f -or -type l -or -type d \)
     done
-    cd - 1>/dev/null
+    # shellcheck disable=SC2164
+    popd 1>/dev/null
     return $?
 }
 alias bl.pacman.show_not_maintained_by_pacman_system_files=bl_tools_show_not_maintained_by_pacman_system_files
@@ -63,8 +64,9 @@ bl_pacman_show_not_maintained_by_pacman_system_files() {
         sort | uniq --unique
     local number_of_files=$(wc --lines "$paths_file_path" | cut --delimiter ' ' --field 1)
     local number_of_maintained_files=$(wc --lines "$maintained_paths_file_path" | cut --delimiter ' ' --field 1)
-    local number_if_not_maintained_files
-    (( number_of_not_maintained_files=number_of_all_files - number_of_maintained_files ))
+    local number_of_not_maintained_files
+    (( number_of_not_maintained_files=(( number_of_files - number_of_maintained_files )) ))
+    # shellcheck disable=SC2086
     cat << EOF
 
 Number of files: $number_of_files 100%

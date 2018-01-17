@@ -11,12 +11,12 @@
 # endregion
 # shellcheck disable=SC2016,SC2155
 # region import
+# shellcheck source=./cli.sh
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.arguments
 bl.module.import bashlink.cli
 bl.module.import bashlink.documentation
-bl.module.import bashlink.exception
 bl.module.import bashlink.logging
 bl.module.import bashlink.path
 bl.module.import bashlink.string
@@ -38,7 +38,6 @@ bl_doctest__documentation__='
     ```
         --help|-h                   Print help message.
         --side-by-side              Print diff of failing tests side by side.
-        --no-check-namespace        Do not warn about unprefixed definitions.
         --no-check-undocumented     Do not warn about undocumented functions.
         --use-nounset               Accessing undefined variables produces error.
         --verbose|-v                Be more verbose
@@ -122,11 +121,13 @@ bl_doctest__documentation__='
     ...
     -bl.documentation.exclude_print
 '
-bl_doctest_exception_active=false
+bl_doctest_module_reference_under_test=''
 bl_doctest_name_indicator=__documentation__
+bl_doctest_nounset=false
+bl_doctest_supress_undocumented=false
 bl_doctest_regular_expression="/${bl_doctest_name_indicator}='/,/';$/p"
 bl_doctest_regular_expression_one_line="${bl_doctest_name_indicator}='.*';$"
-bl_doctest_module_reference_under_test=''
+bl_doctest_use_side_by_side_output=false
 # endregion
 # region functions
 alias bl.doctest.compare_result=bl_doctest_compare_result
@@ -286,15 +287,17 @@ bl_doctest_parse_arguments() {
         -bl.documentation.exclude
     '
     bl.arguments.set "$@"
+    local help
     bl.arguments.get_flag --help -h help
-    $help && bl.documentation.print_docstring "$bl_doctest__documentation__" && return 0
+    $help && \
+        bl.documentation.print_docstring "$bl_doctest__documentation__" && \
+        return 0
     bl.arguments.get_flag --side-by-side bl_doctest_use_side_by_side_output
-    # do not warn about unprefixed names
-    bl.arguments.get_flag --no-check-namespace bl_doctest_supress_declaration
     # do not warn about undocumented functions
     bl.arguments.get_flag --no-check-undocumented bl_doctest_supress_undocumented
     # use set -o nounset inside tests
     bl.arguments.get_flag --use-nounset bl_doctest_nounset
+    local verbose
     bl.arguments.get_flag --verbose -v verbose
     bl.arguments.apply_new
     if $verbose; then
@@ -303,7 +306,7 @@ bl_doctest_parse_arguments() {
         bl.logging.set_level info
     fi
     bl.time.start
-    if [ $# -eq 0 ] || [ "$@" == '' ]; then
+    if [[ $# == 0 ]]; then
         bl.doctest.test bashlink
     else
         local name
@@ -574,7 +577,7 @@ bl_doctest_eval() {
             # _ can be used as anonymous variable (without warning)
             echo "_=''"
             echo "bl.module.determine_declared_names > $declared_names_before_run_file_path"
-            $doctest_nounset && echo 'set -o nounset'
+            $bl_doctest_nounset && echo 'set -o nounset'
             # NOTE: We havt to wrap the test context a function to ensure the
             # "local" keyword has an effect inside.
             echo "
@@ -595,8 +598,10 @@ bl_doctest_eval() {
         return $result
     }
     declared_names_before_run_file_path="$(mktemp --suffix=bashlink-doctest)"
+    # shellcheck disable=SC2064
     trap "rm --force $declared_names_before_run_file_path; exit" EXIT
     declared_names_after_run_file_path="$(mktemp --suffix=bashlink-doctest)"
+    # shellcheck disable=SC2064
     trap "rm --force $declared_names_after_run_file_path; exit" EXIT
     # TODO $module $function_name as parameters
     got="$(eval_with_check "$test_buffer" "$module" "$function_name")"
@@ -608,7 +613,7 @@ bl_doctest_eval() {
     rm "$declared_names_before_run_file_path"
     rm "$declared_names_after_run_file_path"
     if ! bl.doctest.compare_result "$output_buffer" "$got"; then
-        echo -e "${bl_cli_color_lightred}test:${bl_cli_color_default}"
+        echo -e "${bl_cli_color_light_red}test:${bl_cli_color_default}"
         echo "$test_buffer"
         if $bl_doctest_use_side_by_side_output; then
             output_buffer="expected"$'\n'"${output_buffer}"
@@ -618,9 +623,9 @@ bl_doctest_eval() {
             bl.tools.dependency_check colordiff && diff=colordiff
             $diff --side-by-side <(echo "$output_buffer") <(echo "$got")
         else
-            echo -e "${bl_cli_color_lightred}expected:${bl_cli_color_default}"
+            echo -e "${bl_cli_color_light_red}expected:${bl_cli_color_default}"
             echo "$output_buffer"
-            echo -e "${bl_cli_color_lightred}got:${bl_cli_color_default}"
+            echo -e "${bl_cli_color_light_red}got:${bl_cli_color_default}"
             echo "$got"
         fi
         return 1
@@ -637,9 +642,9 @@ bl_doctest_run_test() {
     if bl.doctest.parse_docstring "$docstring" bl_doctest_eval '>>>' \
         "$module" "$function_name"
     then
-        bl.logging.verbose "$test_name:[${bl_cli_color_lightgreen}PASS${bl_cli_color_default}]"
+        bl.logging.verbose "$test_name:[${bl_cli_color_light_green}PASS${bl_cli_color_default}]"
     else
-        bl.logging.warn "$test_name:[${bl_cli_color_lightred}FAIL${bl_cli_color_default}]"
+        bl.logging.warn "$test_name:[${bl_cli_color_light_red}FAIL${bl_cli_color_default}]"
         return 1
     fi
 }
@@ -670,17 +675,18 @@ bl_doctest_test() {
                 done
             fi
             if ! $excluded; then
-                local name="$(bl.module.remove_known_file_extension \
-                    "$(echo "$sub_file_path" | sed --regexp-extended \
-                        "s:${scope_name}/([^/]+):${scope_name}.\1:")")"
+                # shellcheck disable=SC1117
+                local name="$(bl.module.remove_known_file_extension "$(echo "$sub_file_path" | sed --regexp-extended "s:${scope_name}/([^/]+):${scope_name}.\1:")")"
                 bl.doctest.test "$name"
             fi
         done
         return 0
     fi
     (
-        bl.module.import_without_namespace_check "$bl_doctest_module_reference_under_test"
+        bl.module.import_without_namespace_check \
+            "$bl_doctest_module_reference_under_test"
         # NOTE: Get all external module prefix and unprefixed function names.
+        # shellcheck disable=SC2154
         local declared_function_names="$module_declared_function_names_after_source"
         # NOTE: Adds internal already loaded but correctly prefixed functions.
         declared_function_names+=" $(! declare -F | cut -d' ' -f3 | grep -e "^$scope_name" )"

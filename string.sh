@@ -11,6 +11,7 @@
 # endregion
 # shellcheck disable=SC2016,SC2155
 # region import
+# shellcheck source=./cli.sh
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.cli
@@ -18,7 +19,7 @@ bl.module.import bashlink.cli
 # region functions
 alias bl.string.generate_random=bl_string_generate_random
 bl_string_generate_random() {
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c "$1"
+    tr -dc 'a-zA-Z0-9' </dev/urandom | head -c "$1"
 }
 alias bl.string.get_unique_lines=bl_string_get_unique_lines
 bl_string_get_unique_lines() {
@@ -35,7 +36,7 @@ bl_string_get_unique_lines() {
 }
 alias bl.string.images_to_css_classes=bl_string_images_to_css_classes
 bl_string_images_to_css_classes() {
-    # shellcheck disable=SC2016,SC2034
+    # shellcheck disable=SC1004,SC2016,SC2034
     local __documentation__='
         This function converts a folder of images to a single includeable css
         file.
@@ -68,10 +69,11 @@ bl_string_images_to_css_classes() {
         path_pattern="$1"
         shift
     fi
-    find "$source" -regex "^$path_pattern$" | while read image_file_path; do
+    local image_file_path
+    find "$source" -regex "^$path_pattern$" | while read -r image_file_path; do
         local valid_path=true
         local exclude_path
-        for excludePath in $@; do
+        for exclude_path in "$@"; do
             exclude_path="$(echo "$exclude_path" | sed 's/\/$//g')"
             if [[ "$exclude_path" == "$(dirname "$image_file_path")" ]] || \
                [[ "$exclude_path" == "$image_file_path" ]]
@@ -100,38 +102,42 @@ bl_string_make_command_promt_prefix() {
             bl.string.make_command_promt_prefix
         ```
     '
-    local system_load_average="$(uptime | \
-        command grep --extended-regexp --only-matching \
-        '[0-9]{1,2}[.,][0-9]{1,2}' | \
-            head --lines 1)"
     local error_promt="(${bl_cli_color_red}${return_code}${bl_cli_color_default})"
     if  (( return_code == 0 )); then
         error_promt="${bl_cli_color_green}>${bl_cli_color_default}"
     fi
-    local git_branch="$(git branch 2>/dev/null | \
-        sed --regexp-extended \
-        "s/^\* (.*)$/ $(bl.string.validate_regular_expression_replacement "$bl_cli_color_red")\1$(bl.string.validate_regular_expression_replacement "$bl_cli_color_cyan")/g" | \
+    # shellcheck disable=SC1117
+    local git_branch="$(git branch 2>/dev/null | sed --regexp-extended "s/^\* (.*)$/ $(bl.string.validate_regular_expression_replacement "$bl_cli_color_red")\1$(bl.string.validate_regular_expression_replacement "$bl_cli_color_cyan")/g" | \
         tr --delete "\n" | \
         sed 's/  / /g' | \
         sed 's/^ *//g' | \
         sed 's/ *$//g')"
     if [ "$git_branch" ]; then
-        git_branch="(${bl_cli_color_lightgray}git${bl_cli_color_default})-(${bl_cli_color_cyan}${git_branch}${bl_cli_color_default})"
+        git_branch="(${bl_cli_color_light_gray}git${bl_cli_color_default})-(${bl_cli_color_cyan}${git_branch}${bl_cli_color_default})"
     fi
     local user_name
     if [ "$(id --user)" = 0 ]; then
         user_name="${bl_cli_color_red}"
     fi
+    # shellcheck disable=SC1117
     user_name+="\u$bl_cli_color_default"
+    local title_bar=''
     if [[ "$TERM" != linux ]]; then
-        local title_bar="\[\e]0;\u@\h:$(pwd)\a\]"
+        # shellcheck disable=SC1117
+        title_bar="\[\e]0;\u@\h:$(pwd)\a\]"
     fi
-    export PS1="${title_bar}${error_promt} ${bl_cli_color_cyan}${user_name}${bl_cli_color_lightgray}@${bl_cli_color_cyan}\h${bl_cli_color_magenta} (${system_load_average}) ${bl_cli_color_lightgray}\w${bl_cli_color_default}\n${git_branch}${bl_cli_color_darkgray}> ${bl_cli_color_default}"
+    local system_load_average="$(
+        uptime | \
+        command grep --extended-regexp --only-matching \
+            '[0-9]{1,2}[.,][0-9]{1,2}' | \
+        head --lines 1)"
+    # shellcheck disable=SC1117
+    export PS1="${title_bar}${error_promt} ${bl_cli_color_cyan}${user_name}${bl_cli_color_light_gray}@${bl_cli_color_cyan}\h${bl_cli_color_default} (${bl_cli_color_magenta}${system_load_average}${bl_cli_color_default}) ${bl_cli_color_light_gray}\w${bl_cli_color_default}\n${git_branch}${bl_cli_color_dark_gray}> ${bl_cli_color_default}"
     return $?
 }
 alias bl.string.merge_text_files=bl_string_merge_text_files
 bl_string_merge_text_files() {
-    # shellcheck disable=SC2016,SC2034
+    # shellcheck disable=SC1004,SC2016,SC2034
     local __documentation__='
         Concatenate files and print on the standard output.
 
@@ -150,6 +156,7 @@ bl_string_merge_text_files() {
         ```
     '
     local append='\n// endre''gion'
+    local file_paths=''
     local prepend='// re''gion %s\n\n'
     local between='\n// endre''gion\n\n// re''gion %s\n\n'
     while true; do
@@ -172,27 +179,30 @@ bl_string_merge_text_files() {
             '')
                 break ;;
             *)
-                if [ $file_paths ]; then
+                if [ "$file_paths" = '' ]; then
                     file_paths+=" $1"
                 else
-                    local file_paths="$1"
+                    file_paths="$1"
                 fi
                 shift
                 ;;
         esac
     done
+    # shellcheck disable=SC2059
     printf "$prepend" "$(echo "$file_paths" | grep --only-matching \
         --extended-regexp '^[^ ]+')"
     local index=0
     local file_path
     for file_path in ${file_paths[*]}; do
         if (( index > 0 )); then
+            # shellcheck disable=SC2059
             printf "$between" "$file_path"
         fi
-        cat $file_path
-        index+=1
+        cat "$file_path"
+        (( index += 1 ))
     done
-    printf "$append"
+    # shellcheck disable=SC2059
+    printf "$append" "$file_path"
     return $?
 }
 alias bl.string.translate=bl_string_translate
@@ -205,7 +215,7 @@ bl_string_translate() {
 
         >>> bl.string.translate hello
         Hallo
-        >>> bl.string.translate 'Hello my darling'
+        >>> bl.string.translate "Hello my darling"
         Hallo mein Schatz
         >>> bl.string.translate hello fr
         bonjour
@@ -213,42 +223,89 @@ bl_string_translate() {
         bonjour
     '
     local default_target_language=de
-    local help="translate <text> [[<source language>] <target language>]\n
-                if target missing, use $default_target_language\n
-                if source missing, use auto\n
-                list supported languages: translate -l"
-    local languages="af=Afrikaans\n sq=Albanisch\n ar=Arabisch\n hy=Armenisch\n
-                     az=Aserbaidschanisch\n eu=Baskisch\n bn=Bengalisch\n
-                     bg=Bulgarisch\n zh-TW=Chinesisch (traditionell)\n
-                     zh-CN=Chinesisch (vereinfacht)\n da=DÃ¤nisch\n
-                     de=Deutsch\n en=Englisch\n eo=Esperanto\n et=Estnisch\n
-                     fi=Finnisch\n fr=FranzÃ¶sisch\n gl=Galizisch\n 
-                     ka=Georgisch\n el=Griechisch\n gu=Gujarati\n 
-                     ht=Haitianisch\n iw=HebrÃ¤isch\n hi=Hindi\n 
-                     id=Indonesisch\n ga=Irisch\n is=IslÃ¤ndisch\n 
-                     it=Italienisch\n ja=Japanisch\n yi=Jiddisch\n kn=Kannada\n
-                     ca=Katalanisch\n ko=Koreanisch\n hr=Kroatisch\n
-                     la=Lateinisch\n lv=Lettisch\n lt=Litauisch\n 
-                     ms=Malaysisch\n mt=Maltesisch\n mk=Mazedonisch\n
-                     nl=NiederlÃ¤ndisch\n no=Norwegisch\n fa=Persisch\n 
-                     pl=Polnisch\n pt=Portugiesisch\n ro=RumÃ¤nisch\n
-                     ru=Russisch\n sv=Schwedisch\n sr=Serbisch\n
-                     sk=Slowakisch\n sl=Slowenisch\n es=Spanisch\n sw=Suaheli\n
-                     tl=Tagalog\n ta=Tamil\n te=Telugu\n th=ThailÃ¤ndisch\n
-                     cs=Tschechisch\n tr=TÃ¼rkisch\n uk=Ukrainisch\n
-                     hu=Ungarisch\n ur=Urdu\n vi=Vietnamesisch\n cy=Walisisch\n
-                     be=WeiÃrussisch"
-    if [[ "$1" = -h || "$1" = --help || "$#" < 1 ]]; then
-        echo -e "$help"
+    if [[ "$1" = -h || "$1" = --help || "$#" -lt 1 ]]; then
+        cat <<EOF
+translate <text> [[<source language>] <target language>]
+
+if target missing, use $default_target_language
+if source missing, use "auto"
+list supported languages: translate -l
+EOF
     elif [[ "$1" = -l || "$1" = --languages ]]; then
-        echo -e "$languages"
+        cat <<EOF
+af=Afrikaans
+sq=Albanisch
+ar=Arabisch
+hy=Armenisch
+az=Aserbaidschanisch
+eu=Baskisch
+bn=Bengalisch
+bg=Bulgarisch
+zh-TW=Chinesisch (traditionell)
+zh-CN=Chinesisch (vereinfacht)
+da=Dänisch
+de=Deutsch
+en=Englisch
+eo=Esperanto
+et=Estnisch
+fi=Finnisch
+fr=Französisch
+gl=Galizisch
+ka=Georgisch
+el=Griechisch
+gu=Gujarati
+ht=Haitianisch
+iw=Hebräisch
+hi=Hindi
+id=Indonesisch
+ga=Irisch
+is=Isländisch
+it=Italienisch
+ja=Japanisch
+yi=Jiddisch
+kn=Kannada
+ca=Katalanisch
+ko=Koreanisch
+hr=Kroatisch
+la=Lateinisch
+lv=Lettisch
+lt=Litauisch
+ms=Malaysisch
+mt=Maltesisch
+mk=Mazedonisch
+nl=Niederländisch
+no=Norwegisch
+fa=Persisch
+pl=Polnisch
+pt=Portugiesisch
+ro=Rumänisch
+ru=Russisch
+sv=Schwedisch
+sr=Serbisch
+sk=Slowakisch
+sl=Slowenisch
+es=Spanisch
+sw=Suaheli
+tl=Tagalog
+ta=Tamil
+te=Telugu
+th=Thailändisch
+cs=Tschechisch
+tr=Türkisch
+uk=Ukrainisch
+hu=Ungarisch
+ur=Urdu
+vi=Vietnamesisch
+cy=Walisisch
+be=Weißrussisch"
+EOF
     else
-        if [ "$3" ]; then
+        if [[ "$#" -gt 2 ]]; then
             source="$2"
             local target="$3"
         else
             source=auto
-            if [ "$2" ]; then
+            if [[ "$#" -gt 1 ]]; then
                 local target="$2"
             else
                 local target="$default_target_language"
@@ -269,16 +326,16 @@ bl_string_translate() {
 alias bl.string.validate_argument=bl_string_validate_argument
 bl_string_validate_argument() {
     # shellcheck disable=SC2016,SC2034
-    local __documentation__="
+    local __documentation__='
         Validates a given bash argument.
 
         >>> bl.string.validate_argument hans
-        'hans'
-        >>> bl.string.validate_argument ha'n's
-        \"ha'n's\"
-        >>> bl.string.validate_argument h\"a\"'n's
-        'h\"a\"\'n\'s'
-    "
+        "hans"
+        >>> bl.string.validate_argument ha"n"s
+        "ha"n"s"
+        >>> bl.string.validate_argument h"a"ns
+        h"a"ns
+    '
     if ! grep "'" <<< "$1" &>/dev/null; then
         echo "'$1'"
     elif ! grep '"' <<< "$1" &>/dev/null; then

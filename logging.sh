@@ -11,6 +11,7 @@
 # endregion
 # shellcheck disable=SC2016,SC2155
 # region import
+# shellcheck source=./arguments.sh
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.arguments
@@ -18,6 +19,7 @@ bl.module.import bashlink.array
 bl.module.import bashlink.cli
 # endregion
 # region variables
+# shellcheck disable=SC2034
 bl_logging__documentation__='
     The available log levels are:
     error critical warn info debug
@@ -83,13 +85,13 @@ bl_logging_levels=(
 )
 # matches the order of logging levels
 bl_logging_levels_color=(
-    $bl_cli_color_red
-    $bl_cli_color_magenta
-    $bl_cli_color_yellow
-    $bl_cli_color_yellow
-    $bl_cli_color_cyan
-    $bl_cli_color_green
-    $bl_cli_color_blue
+    "$bl_cli_color_red"
+    "$bl_cli_color_magenta"
+    "$bl_cli_color_yellow"
+    "$bl_cli_color_yellow"
+    "$bl_cli_color_cyan"
+    "$bl_cli_color_green"
+    "$bl_cli_color_blue"
 )
 bl_logging_commands_level=$(bl.array.get_index 'critical' "${bl_logging_levels[@]}")
 bl_logging_level=$(bl.array.get_index 'critical' "${bl_logging_levels[@]}")
@@ -139,6 +141,32 @@ bl_logging_get_prefix() {
     local prefix=[${loglevel}:"$path":${BASH_LINENO[1]}]
     echo "$prefix"
 }
+alias bl.logging.plain=bl_logging_plain
+bl_logging_plain() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        >>> bl.logging.set_level info
+        >>> bl.logging.set_commands_level debug
+        >>> bl.logging.debug "not shown"
+        >>> echo "not shown"
+        >>> bl.logging.plain "shown"
+        shown
+    '
+    $bl_logging_off && return 0
+    if [[ "$bl_logging_log_file" != "" ]]; then
+        echo -e "$@" >> "$bl_logging_log_file"
+        if $bl_logging_tee_fifo_active; then
+            echo -e "$@"
+        fi
+    else
+        if $bl_logging_output_to_saved_file_descriptors; then
+            echo -e "$@" 1>&3 2>&4
+        else
+            echo -e "$@"
+        fi
+    fi
+}
+# NOTE: Depends on "bl.logging.plain"
 alias bl.logging.log=bl_logging_log
 bl_logging_log() {
     local level="$1"
@@ -164,31 +192,6 @@ alias bl.logging.info='bl_logging_log info'
 alias bl.logging.verbose='bl_logging_log verbose'
 alias bl.logging.warn='bl_logging_log warn'
 alias bl.logging.warning=bl.logging.warn
-alias bl.logging.plain=bl_logging_plain
-bl_logging_plain() {
-    # shellcheck disable=SC2016,2034
-    local __documentation__='
-        >>> bl.logging.set_level info
-        >>> bl.logging.set_commands_level debug
-        >>> bl.logging.debug "not shown"
-        >>> echo "not shown"
-        >>> bl.logging.plain "shown"
-        shown
-    '
-    $bl_logging_off && return 0
-    if [[ "$bl_logging_log_file" != "" ]]; then
-        echo -e "$@" >> "$bl_logging_log_file"
-        if $bl_logging_tee_fifo_active; then
-            echo -e "$@"
-        fi
-    else
-        if $bl_logging_output_to_saved_file_descriptors; then
-            echo -e "$@" 1>&3 2>&4
-        else
-            echo -e "$@"
-        fi
-    fi
-}
 alias bl.logging.set_commands_level=bl_logging_set_commands_level
 bl_logging_set_commands_level() {
     bl_logging_commands_level=$(bl.array.get_index "$1" "${bl_logging_levels[@]}")
@@ -200,6 +203,7 @@ bl_logging_set_commands_level() {
 }
 alias bl.logging.set_command_output_off=bl_logging_set_command_output_off
 bl_logging_set_command_output_off() {
+    # shellcheck disable=SC2034
     bl_logging_commands_output_saved="$bl_logging_options_command"
     bl_logging_set_file_descriptors "$bl_logging_log_file" \
         --logging="$bl_logging_options_log" --commands="off"
@@ -212,7 +216,7 @@ bl_logging_set_command_output_on() {
 }
 alias bl.logging.set_file_descriptors=bl_logging_set_file_descriptors
 bl_logging_set_file_descriptors() {
-    # shellcheck disable=SC2016,2034
+    # shellcheck disable=SC1004,SC2016,SC2034
     local __documentation__='
         >>> local test_file="$(mktemp)"
         >>> bl.logging.plain "test_file:" >"$test_file"
@@ -422,6 +426,7 @@ bl_logging_set_file_descriptors() {
         trap '[ -p "$bl_logging_tee_fifo" ] && rm -rf "$bl_logging_tee_fifo_dir"; exit' EXIT
         tee --append "$log_file" <"$bl_logging_tee_fifo" &
         exec 1>>"$bl_logging_tee_fifo" 2>>"$bl_logging_tee_fifo"
+        # shellcheck disable=SC2034
         bl_logging_commands_tee_fifo_active=true
         if [[ "$bl_logging_options_log" != tee ]]; then
             bl_logging_output_to_saved_file_descriptors=true
@@ -437,7 +442,7 @@ bl_logging_set_file_descriptors() {
 }
 alias bl.logging.set_level=bl_logging_set_level
 bl_logging_set_level() {
-    # shellcheck disable=SC2016,2034
+    # shellcheck disable=SC2016,SC2034
     local __documentation__='
         >>> bl.logging.set_commands_level info
         >>> bl.logging.set_level info
@@ -455,7 +460,7 @@ bl_logging_set_level() {
 }
 alias bl.logging.set_log_file=bl_logging_set_log_file
 bl_logging_set_log_file() {
-    # shellcheck disable=SC2016,2034
+    # shellcheck disable=SC2016,SC2034
     local __documentation__='
         >>> local test_file="$(mktemp)"
         >>> bl.logging.plain "test_file:" >"$test_file"

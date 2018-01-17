@@ -11,7 +11,8 @@
 # endregion
 # shellcheck disable=SC2016,SC2155
 # region import
-# shellcheck source=module.sh
+# shellcheck source=./globals.sh
+# shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.globals
 bl.module.import bashlink.string
@@ -166,7 +167,7 @@ tail -n +\$dataOffset "\$0" | tar -xzf - -C "\$executableDirectory" \\
 "\${executable_directory_path}/${directory_name}/${relative_start_file_path}" "\$@"
 exit \$?
 EOF
-    local temporay_archiv_file_path="$(mktemp).tar.gz"
+    local temporary_archiv_file_path="$(mktemp).tar.gz"
     tar --create --verbose --gzip --posix --file \
         "$temporary_archiv_file_path" "$1"
     cat "$temporary_archiv_file_path" 1>>"$file_name"
@@ -175,7 +176,7 @@ EOF
 }
 alias bl.tools.run_with_appended_shebang=bl_tools_run_with_appended_shebang
 bl_tools_run_with_appended_shebang() {
-    # shellcheck disable=SC2016,SC2034
+    # shellcheck disable=SC1004,SC2016,SC2034
     local __documentation__='
         This function reads and returns the shebang from given file if exist.
 
@@ -230,7 +231,7 @@ bl_tools_run_with_appended_shebang() {
 }
 alias bl.tools.send_e_mail=bl_tools_send_e_mail
 bl_tools_send_e_mail() {
-    # shellcheck disable=SC2016,SC2034
+    # shellcheck disable=SC1004,SC2016,SC2034
     local __documentation__='
         Sends an email.
 

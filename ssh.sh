@@ -11,7 +11,8 @@
 # endregion
 # shellcheck disable=SC2016,SC2155
 # region import
-# shellcheck source=module.sh
+# shellcheck source=./globals.sh
+# shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.globals
 # endregion
@@ -27,7 +28,7 @@ bl_ssh_make_key() {
         bl.ssh.make_key hans
     ```
     '
-    local user="$bl_globals_e_mail_address"
+    local user="$bl_globals_user_e_mail_address"
     if [ "$1" ]; then
         user="$1"
     fi
@@ -57,23 +58,23 @@ bl_ssh_print() {
     local user=sickertt
     local host=login.informatik.uni-freiburg.de
     local default_printer=hp15
-    local usage_message="Usage: "$0" <file> [login] [printer] [withFileContentPipe]"
-
+    local usage_message="Usage: $0 <file> [login] [printer] [withFileContentPipe]"
     if (( $# = 0 )); then
         echo "$usage_message"
     # 1. argument: File, which we want to print.
     elif [ -f "$1" ]; then
         # 2. argument: Check for given user name.
-        if [ $2 ]; then
+        if [[ $# -ge 2 ]]; then
             local login="${2}${host}"
         elif [ "$user" ]; then
             local login="${user}@${host}"
         else
             # Grab user from "~/.ssh/config".
-            local user_row="$(cat ~/.ssh/config | \
-                grep "$host" -A1 | \
+            local user_row="$(
+                grep "$host" -A1 ~/.ssh/config | \
                 grep -i user)"
-            if [ $user_row ]; then
+            if [[ "$user_row" != '' ]]; then
+                # shellcheck disable=SC2001
                 local user="$(echo "$user_row" | sed s/user\\s//ig)"
                 local login="${user}@${host}"
             else
@@ -89,7 +90,7 @@ bl_ssh_print() {
         # 4. argument: Determines which way to use for transport file content.
         if [ "$4" ]; then
             echo Pipe file content through ssh.
-            cat "$1" | ssh "$login" lpr -P"$printer"
+            ssh "$login" lpr -P"$printer" < "$1"
             return $?
         else
             echo "Copy file to server via scp ($login)."
@@ -113,6 +114,7 @@ bl_ssh_screen() {
             bl.ssh.screen user@host [SSH_OPTIONS]
         ```
     '
+    # shellcheck disable=SC2029
     ssh "$1" -t 'screen -r || screen -S main' "${@:2}"
     return $?
 }

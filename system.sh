@@ -22,7 +22,7 @@ bl_system_compile_and_install_without_root() {
             system.compile_and_install_without_root /home/user/myUser/
         ```
     '
-    local install_location="~/system/"
+    local install_location=~/system/
     if [ "$1" ]; then
         install_location="$1"
     fi

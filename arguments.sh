@@ -11,7 +11,7 @@
 # endregion
 # shellcheck disable=SC2016,SC2155
 # region import
-# shellcheck source=module.sh
+# shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.array
 # endregion

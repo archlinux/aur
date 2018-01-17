@@ -164,6 +164,8 @@ bl_exception__documentation__='
 '
 bl_exception_active=false
 bl_exception_active_before_try=false
+bl_exception_last_traceback=''
+bl_exception_last_traceback_file_path=''
 declare -ig bl_exception_try_catch_level=0
 # endregion
 # region functions
@@ -218,7 +220,7 @@ bl_exception_activate() {
 }
 alias bl.exception.deactivate=bl_exception_deactivate
 bl_exception_deactivate() {
-    # shellcheck disable=SC2016,2034
+    # shellcheck disable=SC2016,SC2034
     local __documentation__='
     >>> set -o errtrace
     >>> trap '\''echo $foo'\'' ERR
@@ -241,7 +243,8 @@ bl_exception_deactivate() {
 alias bl.exception.enter_try=bl_exception_enter_try
 bl_exception_enter_try() {
     if (( bl_exception_try_catch_level == 0 )); then
-        bl_exception_last_traceback_file="$(mktemp --suffix=rebash-exception)"
+        bl_exception_last_traceback_file_path="$(
+            mktemp --suffix=rebash-exception)"
         bl_exception_active_before_try=$bl_exception_active
     fi
     bl.exception.deactivate
@@ -250,21 +253,21 @@ bl_exception_enter_try() {
 alias bl.exception.error_handler=bl_exception_error_handler
 bl_exception_error_handler() {
     local error_code=$?
-    local traceback="Traceback (most recent call first):"
-    local -i i=0
-    while caller $i > /dev/null
-    do
-        local -a trace=( $(caller $i) )
+    local traceback='Traceback (most recent call first):'
+    local -i index=0
+    while caller $index > /dev/null; do
+        local -a trace=("$(caller $index)")
         local line=${trace[0]}
         local subroutine=${trace[1]}
         local filename=${trace[2]}
-        traceback="$traceback"'\n'"[$i] ${filename}:${line}: ${subroutine}"
-        ((i++))
+        # shellcheck disable=SC1117
+        traceback="${traceback}\n[$index] ${filename}:${line}: ${subroutine}"
+        (( index++ ))
     done
     if (( bl_exception_try_catch_level == 0 )); then
         bl.logging.plain "$traceback" 1>&2
     else
-        bl.logging.plain "$traceback" >"$bl_exception_last_traceback_file"
+        bl.logging.plain "$traceback" >"$bl_exception_last_traceback_file_path"
     fi
     exit $error_code
 }
@@ -273,14 +276,15 @@ bl_exception_exit_try() {
     local bl_exception_result=$1
     bl_exception_try_catch_level+=-1
     if (( bl_exception_try_catch_level == 0 )); then
-        $bl_exception_active_before_try && bl_exception_activate
+        $bl_exception_active_before_try && bl.exception.activate
+        # shellcheck disable=SC2034
         bl_exception_last_traceback="$(
-            bl.logging.cat "$bl_exception_last_traceback_file"
-        )"
-        rm "$bl_exception_last_traceback_file"
+            bl.logging.cat "$bl_exception_last_traceback_file_path")"
+        rm "$bl_exception_last_traceback_file_path"
     else
         bl.exception.activate
     fi
+    # shellcheck disable=SC2086
     return $bl_exception_result
 }
 alias bl.exception.try='bl.exception.enter_try; (bl.exception.activate; '

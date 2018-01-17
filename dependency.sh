@@ -32,13 +32,13 @@ bl_dependency_check() {
         __not_existing__
         2
     '
-    local return_code=0
-    local dependency
     if ! hash &>/dev/null; then
         bl.logging.critical 'Missing dependency "hash" to check for available executables.'
         return 1
     fi
-    for dependency in $@; do
+    local return_code=0
+    local dependency
+    for dependency in "$@"; do
         if ! hash "$dependency" &>/dev/null; then
             return_code=2
             echo "$dependency"
@@ -59,14 +59,13 @@ bl_dependency_check_pkgconfig() {
         >>> bl.dependency.check_shared_library __not_existing__ 1>/dev/null; echo $?
         2
     '
-    local return_code=0
-    local library
-
     if ! bl.dependency.check pkg-config &>/dev/null; then
         bl.logging.critical 'Missing dependency "pkg-config" to check for packages.'
         return 1
     fi
-    for library in $@; do
+    local return_code=0
+    local library
+    for library in "$@"; do
         if ! pkg-config "$library" &>/dev/null; then
             return_code=2
             echo "$library"
@@ -87,14 +86,13 @@ bl_dependency_check_shared_library() {
         >>> bl.dependency.check_shared_library __not_existing__ 1>/dev/null; echo $?
         2
     '
-    local return_code=0
-    local pattern
-
     if ! bl.dependency.check ldconfig &>/dev/null; then
         bl.logging.critical 'Missing dependency "ldconfig" to check for shared libraries.'
         return 1
     fi
-    for pattern in $@; do
+    local return_code=0
+    local pattern
+    for pattern in "$@"; do
         if ! ldconfig --print-cache | cut --fields 1 --delimiter ' ' | \
             grep "$pattern" &>/dev/null
         then

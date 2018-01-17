@@ -73,9 +73,8 @@ bl_documentation_generate() {
                 done
             fi
             if ! $excluded; then
-                local name="$(bl.module.remove_known_file_extension \
-                    "$(echo "$sub_file_path" | sed --regexp-extended \
-                        "s:${scope_name}/([^/]+):${scope_name}.\1:")")"
+                # shellcheck disable=SC1117
+                local name="$(bl.module.remove_known_file_extension "$(echo "$sub_file_path" | sed --regexp-extended "s:${scope_name}/([^/]+):${scope_name}.\1:")")"
                 bl.documentation.generate "$name"
             fi
         done
@@ -84,12 +83,14 @@ bl_documentation_generate() {
     (
         bl.module.import "$module_reference" 1>&2
         # NOTE: Get all external module prefix and unprefixed function names.
+        # shellcheck disable=SC2154
         local declared_function_names="$module_declared_function_names_after_source"
         # NOTE: Adds internal already loaded but correctly prefixed functions.
         declared_function_names+=" $(! declare -F | cut -d' ' -f3 | grep -e "^$scope_name" )"
         # NOTE: Removes duplicates.
         declared_function_names="$(bl.string.get_unique_lines <(echo "$declared_function_names"))"
         # Module level documentation
+        # shellcheck disable=SC2154
         local module_documentation_variable_name="${scope_name}${bl_doctest_name_indicator}"
         local docstring="${!module_documentation_variable_name}"
         bl.logging.plain "## Module $module_name"

@@ -9,7 +9,7 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
-# shellcheck disable=SC2016,SC2155
+# shellcheck disable=SC2016,SC2034,SC2155
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
@@ -26,6 +26,55 @@ bl_cli__documentation__='
     [bl.cli.enable_unicode_glyphs](#function-bl_cli_enable_unicode_glyphs)
 '
 bl_cli_color_enabled=false
+## region color
+bl_cli_color_black=''
+bl_cli_color_blink=''
+bl_cli_color_blue=''
+bl_cli_color_bold=''
+bl_cli_color_cyan=''
+bl_cli_color_dark_gray=''
+bl_cli_color_default=''
+bl_cli_color_dim=''
+bl_cli_color_green=''
+bl_cli_color_invert=''
+bl_cli_color_invisible=''
+bl_cli_color_light_blue=''
+bl_cli_color_light_cyan=''
+bl_cli_color_light_gray=''
+bl_cli_color_light_green=''
+bl_cli_color_light_magenta=''
+bl_cli_color_light_red=''
+bl_cli_color_light_yellow=''
+bl_cli_color_magenta=''
+bl_cli_color_nodim=''
+bl_cli_color_noblink=''
+bl_cli_color_nobold=''
+bl_cli_color_noinvert=''
+bl_cli_color_noinvisible=''
+bl_cli_color_nounderline=''
+bl_cli_color_red=''
+bl_cli_color_underline=''
+bl_cli_color_white=''
+bl_cli_color_yellow=''
+## endregion
+## region unicode glyphs
+bl_cli_powerline_arrow_down='_'
+bl_cli_powerline_arrow_left='<'
+bl_cli_powerline_arrow_right='>'
+bl_cli_powerline_arrow_right_down='>'
+bl_cli_powerline_branch='|}'
+bl_cli_powerline_cog='{*}'
+bl_cli_powerline_fail='x'
+bl_cli_powerline_heart='<3'
+bl_cli_powerline_lightning='!'
+bl_cli_powerline_ok='+'
+bl_cli_powerline_pointingarrow='~'
+bl_cli_powerline_plusminus='+-'
+bl_cli_powerline_refersto='*'
+bl_cli_powerline_star='*'
+bl_cli_powerline_saxophone='(yeah)'
+bl_cli_powerline_thumbsup='(ok)'
+## endregion
 # NOTE: Use 'xfd -fa <font-name>' to watch glyphs.
 bl_cli_unicode_enabled=false
 # endregion
@@ -70,19 +119,19 @@ bl_cli_disable_color() {
         blue \
         bold \
         cyan \
-        darkgray \
+        dark_gray \
         default \
         dim \
         green \
         invert \
         invisible \
-        lightblue \
-        lightcyan \
-        lightgray \
-        lightgreen \
-        lightmagenta \
-        lightred \
-        lightyellow \
+        light_blue \
+        light_cyan \
+        light_gray \
+        light_green \
+        light_magenta \
+        light_red \
+        light_yellow \
         magenta \
         nodim \
         noblink \
@@ -118,19 +167,19 @@ bl_cli_enable_color() {
         "blue='\\033[0;34m'" \
         "bold='\\033[1m'" \
         "cyan='\\033[0;36m'" \
-        "darkgray='\\033[0;90m'" \
+        "dark_gray='\\033[0;90m'" \
         "default='\\033[0m'" \
         "dim='\\033[2m'" \
         "green='\\033[0;32m'" \
         "invert='\\033[7m'" \
         "invisible='\\033[8m'" \
-        "lightblue='\\033[0;94m'" \
-        "lightcyan='\\033[0;96m'" \
-        "lightgray='\\033[0;37m'" \
-        "lightgreen='\\033[0;92m'" \
-        "lightmagenta='\\033[0;95m'" \
-        "lightred='\\033[0;91m'" \
-        "lightyellow='\\033[0;93m'" \
+        "light_blue='\\033[0;94m'" \
+        "light_cyan='\\033[0;96m'" \
+        "light_gray='\\033[0;37m'" \
+        "light_green='\\033[0;92m'" \
+        "light_magenta='\\033[0;95m'" \
+        "light_red='\\033[0;91m'" \
+        "light_yellow='\\033[0;93m'" \
         "magenta='\\033[0;35m'" \
         "nodim='\\033[22m'" \
         "noblink='\\033[25m'" \
@@ -161,24 +210,24 @@ bl_cli_disable_unicode_glyphs() {
     bl_cli_unicode_enabled=false
     local suffix
     for suffix in \
-        "arrowdown='_'" \
-        "arrowleft='<'" \
-        "arrowright='>'" \
-        "arrowrightdown='>'" \
-        "branch='|}'" \
-        "cog='{*}'" \
-        "fail='x'" \
-        "heart='<3'" \
-        "lightning='!'" \
-        "ok='+'" \
-        "pointingarrow='~'" \
-        "plusminus='+-'" \
-        "refersto='*'" \
-        "star='*'" \
-        "saxophone='(yeah)'" \
-        "thumbsup='(ok)'"
+        arrow_down \
+        arrow_left \
+        arrow_right \
+        arrow_right_down \
+        branch \
+        cog \
+        fail \
+        heart \
+        lightning \
+        ok \
+        pointingarrow \
+        plusminus \
+        refersto \
+        star \
+        saxophone \
+        thumbsup
     do
-        eval "bl_cli_powerline_${suffix}"
+        eval "bl_cli_powerline_${name}=bl_cli_powerline_${name}_backup"
     done
 }
 alias bl.cli.enable_unicode_glyphs=bl_cli_enable_unicode_glyphs
@@ -192,14 +241,35 @@ bl_cli_enable_unicode_glyphs() {
         >>> echo -E "$bl_cli_powerline_ok"
         \u2714
     '
+    local suffix
+    for suffix in \
+        arrow_down \
+        arrow_left \
+        arrow_right \
+        arrow_right_down \
+        branch \
+        cog \
+        fail \
+        heart \
+        lightning \
+        ok \
+        pointingarrow \
+        plusminus \
+        refersto \
+        star \
+        saxophone \
+        thumbsup
+    do
+        eval "bl_cli_powerline_${name}_backup=bl_cli_powerline_${name}"
+    done
     # shellcheck disable=SC2034
     bl_cli_unicode_enabled=true
     local suffix
     for suffix in \
-        "arrowdown='\\u2b07'" \
-        "arrowleft='\\ue0b2'" \
-        "arrowright='\\ue0b0'" \
-        "arrowrightdown='\\u2198'" \
+        "arrow_down='\\u2b07'" \
+        "arrow_left='\\ue0b2'" \
+        "arrow_right='\\ue0b0'" \
+        "arrow_right_down='\\u2198'" \
         "branch='\\ue0a0'" \
         "cog='\\u2699'" \
         "fail='\\u2718'" \

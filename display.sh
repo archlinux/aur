@@ -21,12 +21,13 @@ bl_display_load_xinit_sources() {
             bl.display.load_xinit_sources
         ```
     '
-    local xinitRCPath='/etc/X11/xinit/xinitrc.d'
-    if [ -d "$XINIT_RC_PATH" ]; then
-        for filePath in "${XINIT_RC_PATH}/"*; do
-            [ -x "$filePath" ] && source "$filePath"
+    local xinit_rc_path='/etc/X11/xinit/xinitrc.d'
+    if [ -d "$xinit_rc_path" ]; then
+        local file_path
+        for file_path in "${xinit_rc_path}/"*; do
+            # shellcheck disable=SC1090
+            [ -x "$file_path" ] && source "$file_path"
         done
-        unset filePath
     fi
 }
 alias bl.display.wacom_map=bl_display_wacom_map
@@ -44,24 +45,24 @@ bl_display_wacom_map() {
         rotation="$1"
         ;;
     '');; *)
-        echo -en\
-            "Usage: bl.display.wacom_map [rotate]\nwhere [rotate] is one of\n"\
-            "\thalf\tinvert mapping\n"\
-            "\tccw\tturn mapping by 90° to the left\n"\
-            "\tcw\tturn mapping by 90° to the right\n"\
-            "\tnone\treset rotation\n"
+        echo -en \
+            'Usage: bl.display.wacom_map [rotate]\n' \
+            'where [rotate] is one of\n' \
+            '\thalf\tinvert mapping\n' \
+            '\tccw\tturn mapping by 90° to the left\n' \
+            '\tcw\tturn mapping by 90° to the right\n' \
+            '\tnone\treset rotation\n'
         ;;
     esac
     display=''
     if [ "$display" = '' ]; then
-        display='LVDS1'
+        display=LVDS1
     fi
     IFS=$'\n'
-    for i in `xsetwacom --list devices | cut -f1 | sed 's/ *$//g'`; do
-        xsetwacom set "$i" MapToOutput "$display"
-        if [ $rotation ]; then
-            xsetwacom set "$i" Rotate $rotation
-        fi
+    local device
+    for device in $(xsetwacom --list devices | cut -f1 | sed 's/ *$//g'); do
+        xsetwacom set "$device" MapToOutput "$display"
+        xsetwacom set "$device" Rotate "$rotation"
     done
     unset IFS
 }
