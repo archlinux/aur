@@ -4,9 +4,10 @@
 pkgname=jdk-arm
 _pkgname=jdk
 _major=8
-_minor=152
-_build=b16
-_token="aa0333dd3019491ca4f6ddbe78cdb6d0"
+_minor=162
+_build=b12
+_token="0da788060d494f5095bf8624735fa2f1"
+
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (v8) for ARMv7, ARMv6 and ARMv8 (64-bit)"
@@ -55,9 +56,9 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca')
-md5sums_armv6h=('a246083db6881b1a126f72f55f12a049')
-md5sums_armv7h=('a246083db6881b1a126f72f55f12a049')
-md5sums_aarch64=('1e176764eac28d5c785b2016e028e096')
+md5sums_armv6h=('24cca1caa653ab675971c3e25cbd789b')
+md5sums_armv7h=('24cca1caa653ab675971c3e25cbd789b')
+md5sums_aarch64=('b9415a7acae4bb019e39b7169d3de384')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
