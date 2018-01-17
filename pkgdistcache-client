@@ -231,7 +231,7 @@ def connect_to_cache_process(cache_file):
         try:
             sock.connect(cache_file)
             return sock
-        except ConnectionRefusedError as e:
+        except (FileNotFoundError, ConnectionRefusedError):
             spawn_cache_process(cache_file)
 
 
