@@ -1,7 +1,7 @@
 pkgbase = ophidian-def-git
 	pkgdesc = Cadence's DEF parser toolkit including C++ and C APIs
 	pkgver = 5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/eclufsc/DEF
 	arch = x86_64
 	groups = ophidian
@@ -10,6 +10,7 @@ pkgbase = ophidian-def-git
 	makedepends = bison
 	makedepends = flex
 	makedepends = zlib
+	options = staticlibs
 	source = git+https://gitlab.com/eclufsc/DEF.git#branch=master
 	md5sums = SKIP
 
