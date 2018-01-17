@@ -6,13 +6,13 @@
 pkgname="lightzone-git"
 _pkgname="lightzone"
 pkgver=4.0.0.913.gb6b80116
-pkgrel=1
+pkgrel=2
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom (latest git version)"
 url="http://lightzoneproject.org/"
 license=('custom:BSD-3-Clause')
 arch=('i686' 'x86_64')
-depends=('java-environment-jdk=7' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff' 'libxml2')
-makedepends=('java-runtime=7' 'apache-ant' 'autoconf' 'gcc' 'make' 'git' 'libx11' 'pkg-config' 'rsync' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff')
+depends=('java-runtime=7' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff' 'libxml2')
+makedepends=('java-environment=7' 'apache-ant' 'autoconf' 'gcc' 'make' 'git' 'libx11' 'pkg-config' 'rsync' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff')
 conflicts=('lightzone')
 source=('git+https://github.com/Aries85/LightZone.git')
 sha256sums=('SKIP')
