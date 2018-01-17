@@ -5,7 +5,7 @@
 
 pkgname=lib32-gsm
 _pkgbase=gsm
-pkgver=1.0.14
+pkgver=1.0.17
 pkgrel=1
 pkgdesc="Shared libraries for GSM 06.10 lossy speech compression"
 arch=('x86_64')
@@ -14,25 +14,24 @@ license=('custom')
 makedepends=('gcc-multilib')
 depends=('glibc' 'gsm')
 source=("http://www.quut.com/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz"
-        'gsm.patch')
-sha256sums=('5814a16a30b3c026871b3739812dc4a2a84299331182c987da1c212c93e9352c'
-            'f2883e05bfe7faa6298c61bd68fbf99fed6b5e1024267547667ca859d33b74a1')
+        'gsm-shared.patch')
+sha256sums=('855a57d1694941ddf3c73cb79b8d0b3891e9c9e7870b4981613b734e1ad07601'
+            '1b9fabd7da83a688fc0e5ec712d53c428ff5575b1d5feac8437283ade1448c2b')
+
+prepare() {
+  cd "${srcdir}/${_pkgbase}-${pkgver%.*}-pl${pkgver##*.}/"
+
+  patch -p0 -i "${srcdir}/gsm-shared.patch"
+}
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver%.*}-pl${pkgver##*.}/"
 
-  patch -Np0 -i "${srcdir}/${_pkgbase}.patch"
-
   # flags for shared lib
   CFLAGS="${CFLAGS} -fPIC"
-  make -j1 \
+  make \
     CC="gcc -m32" \
-    CCFLAGS="-c ${CFLAGS}" \
-    INSTALL_ROOT="${pkgdir}/usr" \
-    GSM_INSTALL_LIB="${pkgdir}/usr/lib32" \
-    GSM_INSTALL_INC="${pkgdir}/usr/include/gsm" \
-    GSM_INSTALL_MAN="${pkgdir}/usr/share/man/man3" \
-    TOAST_INSTALL_MAN="${pkgdir}/usr/share/man/man1"
+    CCFLAGS="-c ${CFLAGS} -fPIC"
 }
 
 package() {
@@ -43,7 +42,6 @@ package() {
 
   make -j1 \
     CC="gcc -m32" \
-    CCFLAGS="-c ${CFLAGS}" \
     INSTALL_ROOT="${pkgdir}/usr" \
     GSM_INSTALL_LIB="${pkgdir}/usr/lib32" \
     GSM_INSTALL_INC="${pkgdir}/usr/include/gsm" \
