@@ -2,13 +2,13 @@
 
 pkgname='xmrig-nvidia'
 pkgver=2.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Monero cryptocurrency GPU miner, HTTP API disabled'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-nvidia'
 depends=('libuv' 'cuda')
 optdepends=('monero: wallet')
-makedepends=('cmake' 'libuv' 'cuda')
+makedepends=('cmake' 'libuv' 'cuda-toolkit')
 license=('GPL')
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz"
@@ -23,6 +23,10 @@ prepare() {
 
   # create build dir
   [ -d build ] || mkdir build
+
+  # fix compilation issue affecting CUDA9.1 (is backwards compatible)
+  # NOTE: only needed for xmrig-nvidia version 2.4.2, already fixed upstream
+  sed -i -e 's/#include <device_functions.hpp>/#include <device_functions.h>/' src/nvidia/cuda_extra.cu
 
   # reset default donate level
   sed -i -e 's/constexpr const int kDonateLevel = 5;/constexpr const int kDonateLevel = 0;/g' src/donate.h
