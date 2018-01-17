@@ -3,8 +3,8 @@
 # Based on hplip from [extra]
 
 pkgname=hplip-minimal
-pkgver=3.16.11
-pkgrel=2
+pkgver=3.17.11
+pkgrel=1
 pkgdesc="The HP printer drivers, and not much else"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://hplipopensource.com"
@@ -15,7 +15,7 @@ optdepends=('cups: for printing support' 'libusb: for advanced usb support')
 conflicts=('hplip')
 options=('!docs')
 source=("http://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz")
-md5sums=('7d187c3142ba323a3021767d333ad9f4')
+md5sums=('09f3d50a2ba95e0fb66c78da7bab13ba')
 
 prepare() {
   cd "$srcdir/hplip-$pkgver"
@@ -24,7 +24,7 @@ prepare() {
   # Use system foomatic-rip for hpijs driver instead of foomatic-rip-hplip
   # The hpcups driver does not use foomatic-rip
   local i
-  for i in ppd/hpijs/*.ppd.gz ; do
+  for i in ppd/hpcups/*.ppd.gz ; do
     rm -f ${i}.temp
     gunzip -c ${i} | sed 's/foomatic-rip-hplip/foomatic-rip/g' |  gzip > ${i}.temp || return 1
     mv ${i}.temp ${i}
@@ -46,7 +46,7 @@ build() {
 
 package() {
   cd "$srcdir/hplip-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  make MAKEOPTS="-j1" DESTDIR="$pkgdir/" install
 
   # remove config provided by sane and autostart of hp-daemon
   rm -rf "$pkgdir"/etc/{sane.d,xdg}
