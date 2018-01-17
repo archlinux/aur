@@ -2,7 +2,7 @@
 # Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=openspades
-pkgver=0.1.1c
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A clone of Voxlap Ace of Spades 0.75"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('curl' 'desktop-file-utils' 'glew' 'hicolor-icon-theme' 'mesa' 'openal'
 makedepends=('cmake' 'git' 'imagemagick' 'unzip' 'wget' 'zip')
 install=openspades.install
 source=("${pkgname}-v${pkgver}.tar.gz"::"https://github.com/yvt/openspades/archive/v${pkgver}.tar.gz")
-sha256sums=('e51d6b9422aef149944d7f6a28a284291fb322a025b3fee8bd2cc9da622a73c7')
+sha256sums=('f4947232eded073469d07935783786efd70e7d73e615326dbb66676c4e8724a8')
 
 
 
