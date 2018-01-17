@@ -1,6 +1,6 @@
 pkgbase = jdk-demos
 	pkgdesc = Demos and samples of common tasks and new functionality in Oracle Java 8 Development Kit
-	pkgver = 8u152
+	pkgver = 8u162
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = jdk-demos
 	optdepends = java-environment>=8: Compile and run examples
 	optdepends = gradle: Compile examples
 	options = !strip
-	source = http://download.oracle.com/otn-pub/java/jdk/8u152-b16-demos/aa0333dd3019491ca4f6ddbe78cdb6d0/jdk-8u152-linux-x64-demos.tar.gz
-	md5sums = b7ef81c03716504dbdc07f795c100023
+	source = http://download.oracle.com/otn-pub/java/jdk/8u162-b12-demos/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64-demos.tar.gz
+	md5sums = 847cf2f5d6464001841d1a79cd7b61b8
 
 pkgname = jdk-demos
 
