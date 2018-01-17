@@ -1,6 +1,6 @@
 # Maintainer: Adrián Laviós <adrian@lavios.eu>
 pkgname=dnscrypt-proxy-go-git
-pkgver=r119.1a502d0
+pkgver=2.0.0alpha10.r5.ge2510ae
 pkgrel=1
 pkgdesc="A modern client implementation written in Go of the DNSCrypt v2 protocol."
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/dnscrypt-proxy"
-  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
