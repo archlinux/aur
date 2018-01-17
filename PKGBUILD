@@ -3,7 +3,7 @@ _pkgbase='yuzu'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
 pkgver=r5516.1aa4cdc3
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
@@ -77,5 +77,5 @@ package_yuzu-qt-git() {
 
 	cd "$srcdir/$_pkgbase/build"
 	make DESTDIR="$pkgdir/" install
-	rm "$pkgdir/usr/bin/$_pkgbase"
+	rm "$pkgdir/usr/bin/${_pkgbase}-cmd"
 }

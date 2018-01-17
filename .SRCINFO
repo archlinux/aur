@@ -1,7 +1,7 @@
 pkgbase = yuzu-git
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger
 	pkgver = r5516.1aa4cdc3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/citra-emu/citra/
 	arch = i686
 	arch = x86_64
