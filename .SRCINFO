@@ -1,0 +1,15 @@
+pkgbase = ophidian-units-git
+	pkgdesc = A compile-time, header-only, dimensional analysis and unit conversion library built on c++14 with no dependencies.
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://gitlab.com/eclufsc/units
+	arch = any
+	groups = ophidian
+	license = custom
+	makedepends = cmake
+	makedepends = make
+	source = git+https://gitlab.com/eclufsc/units.git#branch=master
+	md5sums = SKIP
+
+pkgname = ophidian-units-git
+
