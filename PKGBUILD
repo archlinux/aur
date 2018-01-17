@@ -2,7 +2,7 @@
 
 pkgname=openbazaar
 pkgver=2.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
 url="http://openbazaar.org"
@@ -30,7 +30,7 @@ package(){
 	install -d $pkgdir/${appdir%%/$pkgname}
 	cp -rf $pkgname-desktop-$pkgver $pkgdir/$appdir
 	install -Dm755 $pkgname.js $pkgdir/usr/bin/$pkgname
-	install -Dm644 $pkgname-desktop-$pkgver/imgs/icon.png $pkgdir/usr/share/pixmaps/$pkgname.png
+	install -Dm644 $pkgname-desktop-$pkgver/imgs/icon.png $pkgdir/usr/share/pixmaps/${pkgname}2.png
 	install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 	
 	cd $pkgdir/$appdir
@@ -47,4 +47,4 @@ package(){
 
 md5sums=('8cc60a88961c0e17ed5d623a6da174a2'
          '122a3e23d7ecfef0a82e756cb97c3e98'
-         '43c9c9ef1d3ca873eea6b6343ca072e8')
+         '2e7c7804b970baa7f9274dae47618a52')
