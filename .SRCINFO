@@ -1,6 +1,6 @@
 pkgbase = jre8
 	pkgdesc = Oracle Java 8 Runtime Environment
-	pkgver = 8u152
+	pkgver = 8u162
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre8.install
@@ -35,10 +35,10 @@ pkgbase = jre8
 	backup = etc/java-jre8/psfont.properties.ja
 	backup = etc/java-jre8/psfontj2d.properties
 	backup = etc/java-jre8/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jre-8u152-linux-x64.tar.gz
+	source = http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jre-8u162-linux-x64.tar.gz
 	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
 	source = policytool-jre8.desktop
-	md5sums = 32c9a36d3869b13db18e8bd5bfc14dcb
+	md5sums = f013f8c00d7bfe1e5f0b6b94fb660ea7
 	md5sums = b3c7031bc65c28c2340302065e7d00d3
 	md5sums = ef3ff483db5d38ed106e0b819006bdae
 

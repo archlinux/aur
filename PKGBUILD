@@ -5,9 +5,9 @@
 _pkgname=jre
 pkgname=jre8
 _major=8
-_minor=152
-_build=b16
-_hash=aa0333dd3019491ca4f6ddbe78cdb6d0
+_minor=162
+_build=b12
+_hash=0da788060d494f5095bf8624735fa2f1
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment"
@@ -45,7 +45,7 @@ install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-x64.tar.gz"
         "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "policytool-$_jname.desktop")
-md5sums=('32c9a36d3869b13db18e8bd5bfc14dcb'
+md5sums=('f013f8c00d7bfe1e5f0b6b94fb660ea7'
          'b3c7031bc65c28c2340302065e7d00d3'
          'ef3ff483db5d38ed106e0b819006bdae')
 ## Alternative mirror, if your local one is throttled:
