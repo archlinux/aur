@@ -14,7 +14,7 @@
 
 pkgname=archdroid-icon-theme
 pkgver=r131.5143e7847
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Android 5/6 (Lollipop/Marshmallow)'s material design icons to Arch."
 arch=('any')
 url="https://github.com/GreenRaccoon23/${pkgname}"
