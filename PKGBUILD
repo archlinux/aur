@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar-git
-pkgver=v2.1.0.rc2.r0.g4efc83fc
+pkgver=v2.1.0.rc4.r42.gcb036b67
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)" 
 arch=(any)
@@ -36,7 +36,7 @@ package(){
 	install -Dm755 ${pkgname%%-git}.js $pkgdir/usr/bin/${pkgname%%-git}
 
 	msg2 "Installing icons and desktop menu entry"
-	install -Dm644 ${pkgname%%-git}/imgs/icon.png $pkgdir/usr/share/pixmaps/${pkgname%%-git}.png
+	install -Dm644 ${pkgname%%-git}/imgs/icon.png $pkgdir/usr/share/pixmaps/${pkgname%%-git}2.png
 	install -Dm644 ${pkgname%%-git}.desktop $pkgdir/usr/share/applications/${pkgname%%-git}.desktop
 	
 	# Cleanup
@@ -59,4 +59,4 @@ pkgver() {
 
 md5sums=('SKIP'
          '446ad1e41acd07468c3750a9027dc8f8'
-         '43c9c9ef1d3ca873eea6b6343ca072e8')
+         '2e7c7804b970baa7f9274dae47618a52')
