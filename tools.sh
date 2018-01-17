@@ -14,6 +14,7 @@
 # shellcheck source=module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.globals
+bl.module.import bashlink.string
 # endregion
 # region functions
 alias bl.tools.is_defined=bl_tools_is_defined
@@ -105,6 +106,31 @@ bl_tools_is_main() {
     '
     [[ "${BASH_SOURCE[1]}" = "$0" ]]
 }
+alias bl.tools.make_openssl_pem_file=bl_tools_make_openssl_pem_file
+bl_tools_make_openssl_pem_file() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        Creates a concatenated pem file needed for server with https support.
+
+        ```bash
+            bl.tools.make_openssl_pem_file
+        ```
+    '
+    local host='localhost'
+    if [[ "$1" ]]; then
+        host="$1"
+    fi
+    echo 'Create your private key without a password.'
+    openssl genrsa -out "${host}.key" 1024
+    echo 'Create a temporary csr file.'
+    openssl req -new -key "${host}.key" -out "${host}.csr"
+    echo 'Self-sign your certificate.'
+    openssl x509 -req -days 365 -in "${host}.csr" -signkey "${host}.key" -out \
+        "${host}.crt"
+    echo 'Creating a pem file.'
+    cat "${host}.key" "${host}.crt" 1>"${host}.pem"
+    return $?
+}
 alias bl.tools.make_single_executbale=bl_tools_make_single_executable
 bl_tools_make_single_executable() {
     # shellcheck disable=SC2016,SC2034
@@ -131,13 +157,13 @@ bl_tools_make_single_executable() {
     local directory_name="$(basename "$(readlink --canonicalize "$1")")"
     # NOTE: short option is necessary for mac compatibility.
     cat << EOF 1>"$file_name"
-#!/bin/bash
-executableDirectory=\$(mktemp -d 2>/dev/null || mktemp -d -t '' 2>/dev/null)
-dataOffset=\$((\$(grep --text --line-number '^exit \\\$?$' "\$0" | \\
-    cut -d ':' -f 1) + 1))
+#!/usr/bin/env bash
+executable_directory_path="\$(mktemp -d 2>/dev/null || mktemp -d -t '' 2>/dev/null)" && \\
+data_offset="\$(("\$(grep --text --line-number '^exit \\\$?$' "\$0" | \\
+    cut -d ':' -f 1)" + 1))" && \\
 tail -n +\$dataOffset "\$0" | tar -xzf - -C "\$executableDirectory" \\
     1>/dev/null && \\
-"\${executableDirectory}/${directory_name}/${relative_start_file_path}" "\$@"
+"\${executable_directory_path}/${directory_name}/${relative_start_file_path}" "\$@"
 exit \$?
 EOF
     local temporay_archiv_file_path="$(mktemp).tar.gz"
@@ -168,15 +194,14 @@ bl_tools_run_with_appended_shebang() {
                 argument2
         ```
     '
-    # TODO STAND
     local shebang_arguments=''
     local arguments=''
-    local applicationPath=''
-    local shebangArgumentsEnded=false
+    local application_file_path=''
+    local shebang_arguments_ended=false
     while true; do
         case "$1" in
             --)
-                shebangArgumentsEnded=true
+                shebang_arguments_ended=true
                 shift
                 ;;
             '')
@@ -184,23 +209,23 @@ bl_tools_run_with_appended_shebang() {
                 break
                 ;;
             *)
-                if ! $shebangArgumentsEnded; then
-                    shebangArguments+=" $(validateBashArgument "$1")"
-                elif [[ ! "$applicationPath" ]]; then
-                    applicationPath="$1"
+                if ! $shebang_arguments_ended; then
+                    shebang_arguments+=" $(bl.string.validate_regular_expression_replacement "$1")"
+                elif [ "$application_file_path" = '' ]; then
+                    application_file_path="$1"
                 else
-                    arguments+=" $(validateBashArgument "$1")"
+                    arguments+=" $(bl.string.validate_regular_expression_replacement "$1")"
                 fi
                 shift
                 ;;
         esac
     done
-    local applicationRunCommand="$(head --lines 1 "$applicationPath" | sed \
+    local command="$(head --lines 1 "$application_file_path" | sed \
         --regexp-extended \
-        's/^#!(.+)$/\1/g')${shebangArguments} ${applicationPath} $arguments"
+        's/^#!(.+)$/\1/g')$shebang_arguments $application_file_path $arguments"
     # NOTE: The following line could be useful for debugging scenarios.
-    #echo "Run: \"$applicationRunCommand\""
-    eval "$applicationRunCommand"
+    #echo "Run: \"$command\""
+    eval "$command"
     return $?
 }
 alias bl.tools.send_e_mail=bl_tools_send_e_mail
@@ -221,49 +246,24 @@ bl_tools_send_e_mail() {
                 "Sun, 2 Feb 1986 14:23:56 +0100"
         ```
     '
-    local eMailAddress="$bl_globals_user_e_mail_address"
+    local e_mail_address="$bl_globals_user_e_mail_address"
     if [ "$3" ]; then
-        eMailAddress="$3"
+        e_mail_address="$3"
     fi
     local date="$(date)"
     if [ "$4" ]; then
         date="$4"
     fi
     msmtp -t <<EOF
-From: $eMailAddress
-To: $eMailAddress
-Reply-To: $eMailAddress
+From: $e_mail_address
+To: $e_mail_address
+Reply-To: $e_mail_address
 Date: $date
 Subject: $1
 
 $2
 
 EOF
-    return $?
-}
-alias bl.tools.make_openssl_pem_file=bl_tools_make_openssl_pem_file
-bl_tools_make_openssl_pem_file() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        Creates a concatenated pem file needed for server with https support.
-
-        ```bash
-            bl.tools.make_openssl_pem_file
-        ```
-    '
-    local host='localhost'
-    if [[ "$1" ]]; then
-        host="$1"
-    fi
-    echo 'Create your private key without a password.'
-    openssl genrsa -out "${host}.key" 1024
-    echo 'Create a temporary csr file.'
-    openssl req -new -key "${host}.key" -out "${host}.csr"
-    echo 'Self-sign your certificate.'
-    openssl x509 -req -days 365 -in "${host}.csr" -signkey "${host}.key" -out \
-        "${host}.crt"
-    echo 'Creating a pem file.'
-    cat "${host}.key" "${host}.crt" 1>"${host}.pem"
     return $?
 }
 # endregion
