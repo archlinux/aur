@@ -19,7 +19,7 @@ license=('MIT')
 makedepends=(
   'git'
   'protobuf'
-  'python-pycurl'
+  'python-requests'
   'python-setuptools'
   'python-tox'
 )
