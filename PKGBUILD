@@ -1,12 +1,12 @@
 # Maintainer: Jean Carlo Machado <contato@jeancarlomachado.com.br>
 pkgname=whatnext
-pkgver=0.1
+pkgver=1.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Control your recurrent activities in a smart way"
 url="https://github.com/jeanCarloMachado/whatnext"
-source=("https://github.com/jeanCarloMachado/whatnext/archive/master.zip")
-md5sums=('d8f0c6fdbac16557244604f5eeda475b')
+source=("https://github.com/jeanCarloMachado/whatnext/archive/1.0.zip")
+md5sums=('36e196fce5cdf72eaa607a145d155ea7')
 license=('MIT')
 depends=('python' 'jq')
 
