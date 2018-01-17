@@ -5,7 +5,7 @@
 _ver=1.19
 _pkgbase=mate-settings-daemon
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="The MATE Settings daemon"
 url="http://mate-desktop.org"
@@ -20,7 +20,7 @@ groups=('mate')
 replaces=("${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3" "${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('559767773e15bcf4e0b9f0725c00f38008bd958e')
+sha1sums=('a55f2b69382d5eb58c5e4ceb0a5b6b2cd4443a94')
 
 prepare() {
     cd "${srcdir}"
