@@ -1,0 +1,85 @@
+#!/usr/bin/sh
+
+APPARMOR_FUNCTIONS='/usr/lib/apparmor/rc.apparmor.functions'
+
+aa_action()
+{
+    echo $1
+    shift
+    "$@"
+    return $?
+}
+
+aa_log_warning_msg()
+{
+    echo "Warning: $@"
+}
+
+aa_log_failure_msg()
+{
+    echo "Error: $@"
+}
+
+aa_log_action_start()
+{
+    echo "$@"
+}
+
+aa_log_action_end()
+{
+    echo -n
+}
+
+aa_log_daemon_msg()
+{
+    echo "$@"
+}
+
+aa_log_skipped_msg()
+{
+    echo "Skipped: $@"
+}
+
+aa_log_end_msg()
+{
+    echo -n
+}
+
+# source apparmor function library
+if [ -f "${APPARMOR_FUNCTIONS}" ]; then
+	. ${APPARMOR_FUNCTIONS}
+else
+	aa_log_failure_msg "Unable to find AppArmor initscript functions"
+	exit 1
+fi
+
+case "$1" in
+	start)
+		apparmor_start
+		rc=$?
+		;;
+	stop)
+		apparmor_stop
+		rc=$?
+		;;
+	restart|reload|force-reload)
+		apparmor_restart
+		rc=$?
+		;;
+	try-restart)
+		apparmor_try_restart
+		rc=$?
+		;;
+	kill)
+		apparmor_kill
+		rc=$?
+		;;
+	status)
+		apparmor_status
+		rc=$?
+		;;
+	*)
+		exit 1
+		;;
+esac
+exit $rc

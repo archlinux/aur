@@ -1,13 +1,24 @@
 [Unit]
-Description=AppArmor profiles
+Description=Load AppArmor profiles
 DefaultDependencies=no
-After=local-fs.target
 Before=sysinit.target
+After=systemd-journald-audit.socket
+After=var.mount var-lib.mount
+ConditionSecurity=apparmor
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/apparmor_load.sh
-ExecStop=/usr/bin/apparmor_unload.sh
+ExecStart=/usr/lib/apparmor/apparmor.systemd reload
+ExecReload=/usr/lib/apparmor/apparmor.systemd reload
+
+# systemd maps 'restart' to 'stop; start' which means removing AppArmor confinement
+# from running processes (and not being able to re-apply it later).
+# Upstream systemd developers refused to implement an option that allows overriding
+# this behaviour, therefore we have to make ExecStop a no-op to error out on the
+# safe side.
+#
+# If you really want to unload all AppArmor profiles, run   aa-teardown
+ExecStop=/usr/bin/true
 RemainAfterExit=yes
 
 [Install]

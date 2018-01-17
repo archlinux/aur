@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+test $# = 0 || {
+	echo "Usage: $0"
+	echo
+	echo "Unloads all AppArmor profiles"
+	exit 1
+}
+
+/usr/lib/apparmor/apparmor.systemd stop
