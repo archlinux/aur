@@ -1,0 +1,12 @@
+[Unit]
+Description=DNSCrypt client proxy
+Documentation=https://github.com/jedisct1/dnscrypt-proxy
+After=network.target
+Before=nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dnscrypt-proxy --config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+
+[Install]
+WantedBy=multi-user.target
