@@ -30,9 +30,10 @@ md5sums_x86_64=('ad4f2d4335006582ec774673535e3d88'
 prepare() {
     cd "${srcdir}"
 
-    7z x -y "${srcdir}/$_upkgname-$pkgver-$CARCH.AppImage" usr/share/icons
-    7z x -y "${srcdir}/$_upkgname-$pkgver-$CARCH.AppImage" $_pkgname.png
-    7z x -y "${srcdir}/$_upkgname-$pkgver-$CARCH.AppImage" $_pkgname.desktop
+    # Extract relevant files from AppImage, redirect to /dev/null to avoid spamming the terminal
+    7z x -y "${srcdir}/$_upkgname-$pkgver-$CARCH.AppImage" usr/share/icons > /dev/null
+    7z x -y "${srcdir}/$_upkgname-$pkgver-$CARCH.AppImage" $_pkgname.png > /dev/null
+    7z x -y "${srcdir}/$_upkgname-$pkgver-$CARCH.AppImage" $_pkgname.desktop > /dev/null
 
     # Patch desktop file
     patch -p1 < $_pkgname-$CARCH.desktop.patch
