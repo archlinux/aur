@@ -1,31 +1,18 @@
 # Maintainer: GreenRaccoon23 <GreenRaccoon a t gmail d o t com>
 
-# NOTE!
-#   Install 'archdroid-icon-theme' instead of this package.
+# NOTE: Please install 'archdroid-icon-theme' instead.
 #
-# OTHER NOTES:
-# This is the git variant of 'archdroid-icon-theme'.
+# Both packages provide the same version, but 'archdroid-icon-theme'
+# installs faster.
 #
-# This git variant is NOT a newer release than 'archdroid-icon-theme';
-#   both packages are always updated at the same time.
-#   This one is merely an alternative in case the other fails to install.
-# The non-git variant downloads and installs MUCH faster than this one:
-#   'archdroid-icon-theme' == 1MB download (xz archive),
-#   'archdroid-icon-theme-git' == 50MB download (full git clone/gz archive).
-# In other words, download 'archdroid-icon-theme' instead of this package,
-#   unless you have a specific reason otherwise
-#   (e.g., 'archdroid-icon-theme' doesn't download correctly).
+# This package is a fallback in case 'archdroid-icon-theme' fails to
+# install.
 #
-# Since this theme is comprised of svg images, it uses local fonts.
-#   The few icons which display text require the Roboto font.
-# If you do not have Roboto installed but want to install this theme anyway,
-#   comment out the `prepare()` function or insert a `return` at the top of it.
+# Please report bugs in the AUR comments or here:
+# https://github.com/GreenRaccoon23/archdroid-icon-theme/issues
 #
-# If you find any problems or have any suggestions, ideas, or requests,
-#   by all means, please let me know:
-#     'https://github.com/GreenRaccoon23/archdroid-icon-theme/issues'
-# I'd appreciate your feedback and most likely
-#   will implement any additions you request.
+# Please submit suggestions, ideas, or requests through the link above.
+# I would appreciate your feedback and am open to requests.
 
 pkgname=archdroid-icon-theme-git
 pkgver=r131.5143e7847
