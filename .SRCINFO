@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq
 	pkgver = 4.14.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
 	license = GPL2
@@ -34,6 +34,7 @@ pkgbase = linux-bfq-mq
 	source = 0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 	source = 0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
 	source = 0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+	source = 0005-tools-objtool-makefile-don-t-assume-sync-check.sh-is-executable.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
@@ -60,6 +61,7 @@ pkgbase = linux-bfq-mq
 	sha256sums = f723c341df165e1a6280fdbab013b5f4256c429c4de7330f1f162feccf1fb3d7
 	sha256sums = ec69fb66b2e4baff93ba371c38ff9e7527208203b2b3ab7eea182c274e1201c6
 	sha256sums = 4b92975a3a961593590c990c0ab731d6ec9ddce30be440dd05f5f31695b97a78
+	sha256sums = 11bbe5a18c86926824b142aa7c3df4bbd05371ed28b8b8e2ec0e505f8589d063
 
 pkgname = linux-bfq-mq
 	pkgdesc = The Linux-bfq-mq kernel and modules with the BFQ-MQ scheduler

@@ -69,7 +69,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.14.14
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -133,7 +133,8 @@ source=(# mainline kernel patches
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
         '0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
+        '0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
+        '0005-tools-objtool-makefile-don-t-assume-sync-check.sh-is-executable.patch')
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
@@ -158,7 +159,8 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '767af9b833ff51e57738356c7895ccfa8d4a8e386759f34ffe92573f2331e5c0'
             'f723c341df165e1a6280fdbab013b5f4256c429c4de7330f1f162feccf1fb3d7'
             'ec69fb66b2e4baff93ba371c38ff9e7527208203b2b3ab7eea182c274e1201c6'
-            '4b92975a3a961593590c990c0ab731d6ec9ddce30be440dd05f5f31695b97a78')
+            '4b92975a3a961593590c990c0ab731d6ec9ddce30be440dd05f5f31695b97a78'
+            '11bbe5a18c86926824b142aa7c3df4bbd05371ed28b8b8e2ec0e505f8589d063')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -188,6 +190,10 @@ prepare() {
   ### Fix https://bugs.archlinux.org/task/56711
       msg "Fix #56711"
       patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  
+  ### Fix https://www.spinics.net/lists/stable/msg207374.html
+      msg "Fix execvp: ./sync-check.sh error"
+      patch -Np1 -i ../0005-tools-objtool-makefile-don-t-assume-sync-check.sh-is-executable.patch
   
   ### Patch source with BFQ-SQ-MQ
         msg "Fix patching with 20180109"
@@ -224,9 +230,6 @@ prepare() {
   ### Patch source to enable more gcc CPU optimizatons via the make nconfig
   msg "Patch source with gcc patch to enable more cpus types"
   patch -Np1 -i ../${_gcc_patch}
-
-  # Fix https://www.spinics.net/lists/stable/msg207374.html
-  chmod +x tools/objtool/sync-check.sh
   
   # Clean tree and copy ARCH config over
   make mrproper
