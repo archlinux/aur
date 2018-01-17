@@ -7,7 +7,7 @@
 
 pkgname=mythtv
 pkgver=29.0
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -21,7 +21,10 @@ makedepends=('libcec' 'libxml2' 'mesa' 'openssl' 'yasm' 'x264' 'gdb' 'libcdio' '
 optdepends=('glew: for GPU commercial flagging'
             'libcec: for consumer electronics control capabilities'
             'libxml2: to read blu-ray metadata'
-            'openssl: for AirTunes (RAOP) support')
+            'openssl: for AirTunes (RAOP) support'
+			'python-future: for metadata-lookup / cover art'
+			'python-requests: for metadata-lookup / cover art'
+			'python-requests-cache: for metadata-lookup / cover art')
 conflicts=('myththemes' 'mythplugins-mythvideo')
 replaces=('myththemes' 'mythplugins-mythvideo')
 install='mythtv.install'
