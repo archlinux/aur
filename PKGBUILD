@@ -1,7 +1,7 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
 pkgname='gnulium-git'
-pkgver=1.0.0.r0.g9b8df37
+pkgver=1.0.1.r0.g43b05ec
 pkgrel=1
 pkgdesc="A Graphical Ui for managing scripts and ideas! (Github version)"
 arch=('any')
@@ -9,8 +9,6 @@ url="https://github.com/LinArcX/Gnulium"
 license=('GPL-3.0')
 depends=('qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-charts' 'jcal-git')
 makedepends=('git' 'qt5-base')
-provides=("${pkgname%-git}") # provides=("${pkgname}" 'gnulium')
-conflicts=("${pkgname%-git}") # conflicts=("${pkgname}" 'gnulium') 
 source=("${pkgname}::git+https://github.com/LinArcX/Gnulium.git")
 sha256sums=('SKIP')
 
@@ -20,7 +18,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-  # git log -1 --date=format:%Y%m%d --pretty=format:%cd
 }
 
 build() {
