@@ -3,9 +3,9 @@ _basename="SceneBuilder-9"
 _originalbasename="SceneBuilder"
 pkgname="javafx9-scenebuilder"
 _debpkg=scenebuilder
-pkgver="9.0.0"
+pkgver="9.0.1"
 pkgrel=1
-pkgdesc="The latest version of Gluon Scene Builder for Java 9, it was released on Sep 26, 2017."
+pkgdesc="The latest version of Gluon Scene Builder for Java 9, it was released on Oct 17, 2017."
 arch=('x86_64' 'i686')
 url="http://gluonhq.com/labs/scene-builder/"
 license=('BSD License')
@@ -41,3 +41,4 @@ package() {
   install -m644 "${srcdir}/opt/${_basename}/${_basename}.desktop" "${pkgdir}/usr/share/applications/"
   install -m644 "${srcdir}/opt/${_basename}/${_basename}.png" "${pkgdir}/usr/share/pixmaps/"
 }
+
