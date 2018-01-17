@@ -1,0 +1,30 @@
+pkgbase = ophidian-git
+	pkgdesc = Open-Source Library for Physical Design Research and Teaching.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/eclufsc/ophidian
+	arch = any
+	groups = ophidian
+	license = Apache
+	makedepends = cmake
+	makedepends = make
+	makedepends = boost>=1.65
+	makedepends = coin-or-lemon
+	makedepends = ophidian-lef-git
+	makedepends = ophidian-def-git
+	makedepends = ophidian-flute-git
+	makedepends = ophidian-verilog-parser-git
+	makedepends = ophidian-units-git
+	depends = boost>=1.65
+	depends = coin-or-lemon
+	depends = ophidian-lef-git
+	depends = ophidian-def-git
+	depends = ophidian-flute-git
+	depends = ophidian-verilog-parser-git
+	depends = ophidian-units-git
+	options = staticlibs
+	source = git+https://gitlab.com/eclufsc/ophidian.git#branch=build_system
+	md5sums = SKIP
+
+pkgname = ophidian-git
+
