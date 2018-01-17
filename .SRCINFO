@@ -5,7 +5,7 @@ pkgbase = ophidian-units-git
 	url = https://gitlab.com/eclufsc/units
 	arch = any
 	groups = ophidian
-	license = custom
+	license = MIT
 	makedepends = cmake
 	makedepends = make
 	source = git+https://gitlab.com/eclufsc/units.git#branch=master

@@ -6,7 +6,7 @@ groups=('ophidian')
 pkgdesc="A compile-time, header-only, dimensional analysis and unit conversion library built on c++14 with no dependencies."
 arch=('any')
 url="https://gitlab.com/eclufsc/units"
-license=('custom')
+license=('MIT')
 makedepends=('cmake' 'make')
 source=('git+https://gitlab.com/eclufsc/units.git#branch=master')
 md5sums=('SKIP')
