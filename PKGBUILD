@@ -6,10 +6,10 @@ pkgname=networkmanager-noscan
 provides=('networkmanager')
 replaces=('networkmanager')
 conflicts=('networkmanager')
-pkgver=1.10.2
+pkgver=1.10.3dev+38+g78ef57197
 pkgrel=1
 pkgdesc="Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless cards)"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="https://wiki.gnome.org/Projects/NetworkManager"
 _pppver=2.4.7
@@ -18,11 +18,13 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
              glib2-docs)
 checkdepends=(libx11 python-dbus)
-_commit=7ebc9258452623679b9f1c27aee94c528c14b273  # tags/1.10.2^0
+_commit=78ef571972aa3bf81b287d767ae02471e2924027  # nm-1-10
 source=("git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
+        0001-nmp-netns-Mount-proc-in-the-new-namespace.patch
         NetworkManager.conf 20-connectivity.conf
         disable_wifi_scan_when_connected.patch)
 sha256sums=('SKIP'
+            '9be1576cce4eb36697a13a1edd15faed66393f97ab5df2c19650989cd0b644a0'
             'dd2d3a9c8a08ce961e263e1847453890f1b24c72a806d8c83a5b69b227a5ccec'
             '477d609aefd991c48aca93dc7ea5a77ebebf46e0481184530cceda4c0d8d72c6'
             '860a772fcc26271f6a25a2baa0d92088e63dbf1770ccc4c25e71653dbe46b96b')
@@ -31,6 +33,10 @@ prepare() {
   mkdir -p libnm{,-glib}/usr/{include,lib/{girepository-1.0,pkgconfig},share/{gir-1.0,gtk-doc/html,vala/vapi}}
 
   cd NetworkManager
+
+  # Fix test_netns_general in our containers
+  patch -Np1 -i ../0001-nmp-netns-Mount-proc-in-the-new-namespace.patch
+
   patch -Np1 -i ../disable_wifi_scan_when_connected.patch
   NOCONFIGURE=1 ./autogen.sh
 }
@@ -47,7 +53,7 @@ build() {
     --localstatedir=/var \
     runstatedir=/run \
     --sbindir=/usr/bin \
-    --libexecdir=/usr/lib/NetworkManager \
+    --libexecdir=/usr/lib \
     --disable-ifcfg-rh \
     --disable-ifcfg-suse \
     --disable-ifnet \
@@ -67,7 +73,7 @@ build() {
     --enable-polkit-agent \
     --enable-teamdctl \
     --enable-wifi \
-    --with-config-dhcp-default=dhclient \
+    --with-config-dhcp-default=internal \
     --with-config-dns-rc-manager-default=resolvconf \
     --with-config-logging-backend-default=journal \
     --with-config-plugins-default=keyfile,ibft \
@@ -76,12 +82,11 @@ build() {
     --with-dhclient=/usr/bin/dhclient \
     --with-dist-version="$pkgver-$pkgrel, Arch Linux" \
     --with-dnsmasq=/usr/bin/dnsmasq \
-    --with-dnssec-trigger=/usr/lib/dnssec-trigger \
+    --with-dnssec-trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
     --with-hostname-persist=default \
     --with-iptables=/usr/bin/iptables \
     --with-kernel-firmware-dir=/usr/lib/firmware \
     --with-libnm-glib \
-    --with-libsoup \
     --with-modem-manager-1 \
     --with-nmcli \
     --with-nmtui \
