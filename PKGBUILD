@@ -28,6 +28,5 @@ package() {
     install -D -m 644 $srcdir/LEF/include/* $pkgdir/usr/include
 
     install -D -m 644 $srcdir/LEF/LICENSE.TXT $pkgdir/usr/share/LEF/copyright
-	make DESTDIR="$pkgdir/" 
 }
 
