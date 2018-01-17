@@ -1,0 +1,1003 @@
+--- jigdo-0.7.3.orig/Makefile.in
++++ jigdo-0.7.3/Makefile.in
+@@ -15,7 +15,7 @@
+ 
+ PACKAGE =	jigdo
+ INSTALL =	@INSTALL@
+-INSTALL_EXE =	@INSTALL@ -s
++INSTALL_EXE =	@INSTALL@ #-s
+ INSTALL_DATA =	@INSTALL@ -m 644
+ INSTALL_SCRIPT = @INSTALL@ -m 755
+ AWK =		@AWK@
+--- jigdo-0.7.3.orig/src/compat.hh
++++ jigdo-0.7.3/src/compat.hh
+@@ -20,6 +20,7 @@
+ 
+ #include <string>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <unistd-jigdo.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+--- jigdo-0.7.3.orig/src/jigdo-file.cc
++++ jigdo-0.7.3/src/jigdo-file.cc
+@@ -770,6 +770,7 @@
+     case JigdoFileCmd::LIST_TEMPLATE:
+       returnValue = JigdoFileCmd::listTemplate(); break;
+     case JigdoFileCmd::MD5SUM:
++      JigdoFileCmd::optCheckFiles = true; // Quick fix, possibly not 100% correct
+       returnValue = JigdoFileCmd::md5sumFiles();  break;
+     }
+   }
+--- jigdo-0.7.3.orig/src/Makefile.in
++++ jigdo-0.7.3/src/Makefile.in
+@@ -50,11 +50,12 @@
+ windows-res =	@IF_WINDOWS@ jigdo.res
+ test-programs =	job/jigdo-io-test@exe@ \
+ 		job/makeimagedl-info-test@exe@ job/url-mapping-test@exe@ \
+-		net/proxyguess-test@exe@ net/uri-test@exe@ \
++		net/proxyguess-test@exe@ \
+ 		util/autonullptr-test@exe@ util/rsyncsum-test@exe@ \
+ 		util/gunzip-test@exe@ util/log-test@exe@ \
+ 		util/md5sum-test@exe@ util/mimestream-test@exe@ \
+ 		util/string-utf-test@exe@
++# net/uri-test@exe@ needs curl
+ 
+ # fmt -s -w1|sed 's%[^a-zA-Z0-9./-]\+%%g'|sort|fmt -w60|sed 's%$% \\%'
+ objects-jigdo =	compat.o glibcurl/glibcurl.o gtk/gtk-makeimage.o \
+--- jigdo-0.7.3.orig/src/recursedir.cc
++++ jigdo-0.7.3/src/recursedir.cc
+@@ -33,6 +33,7 @@
+ 
+ #include <iostream>
+ #include <errno.h>
++#include <string.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <unistd-jigdo.h>
+--- jigdo-0.7.3.orig/src/util/configfile.cc
++++ jigdo-0.7.3/src/util/configfile.cc
+@@ -18,7 +18,7 @@
+ 
+ #include <iostream>
+ #include <fstream>
+-
++#include <cstring>
+ #include <configfile.hh>
+ #include <string.hh>
+ //______________________________________________________________________
+--- jigdo-0.7.3.orig/src/util/md5sum.hh
++++ jigdo-0.7.3/src/util/md5sum.hh
+@@ -29,6 +29,7 @@
+ #include <config.h>
+ 
+ #include <cstdlib>
++#include <cstring>
+ #include <iosfwd>
+ #include <string>
+ 
+--- jigdo-0.7.3.orig/src/util/string-utf.cc
++++ jigdo-0.7.3/src/util/string-utf.cc
+@@ -15,7 +15,7 @@
+ #include <glib.h>
+ #include <stdarg.h>
+ #include <stdio.h>
+-
++#include <string.h>
+ #include <debug.hh>
+ #include <string-utf.hh>
+ //______________________________________________________________________
+--- jigdo-0.7.3.orig/src/net/proxyguess-test.cc
++++ jigdo-0.7.3/src/net/proxyguess-test.cc
+@@ -18,6 +18,7 @@
+ #include <algorithm>
+ #include <map>
+ #include <sstream>
++#include <memory>
+ #include <glib.h>
+ 
+ #include <debug.hh>
+--- jigdo-0.7.3.orig/src/gtk/jigdo.cc
++++ jigdo-0.7.3/src/gtk/jigdo.cc
+@@ -12,10 +12,10 @@
+ #include <config.h>
+ 
+ #if DEBUG
+-#  include <string.h>
+ #  include <unistd-jigdo.h>
+ #endif
+ 
++#include <string.h>
+ #include <iostream>
+ #include <string>
+ #include <vector>
+--- jigdo-0.7.3.orig/src/gtk/gtk-single-url.cc
++++ jigdo-0.7.3/src/gtk/gtk-single-url.cc
+@@ -15,7 +15,7 @@
+ 
+ #include <time.h>
+ #include <errno.h>
+-
++#include <string.h>
+ #include <autoptr.hh>
+ #include <gtk-single-url.hh>
+ #include <joblist.hh>
+--- jigdo-0.7.3.orig/scripts/debian-mirrors.jigdo
++++ jigdo-0.7.3/scripts/debian-mirrors.jigdo
+@@ -1,263 +1,137 @@
+ Debian=http://ftp.us.debian.org/debian/         # US United States
+-Debian=http://ftp.debian.org/debian/            # US United States
+-Non-US=http://non-us.debian.org/debian-non-US/  # NL Netherlands (Amsterdam)
+-Debian=http://debian.hands.com/debian/          # GB Great Britain
+-Non-US=http://debian.hands.com/debian-non-US/   # GB Great Britain
+-Debian=http://debian.crosslink.net/debian/      # US United States (Virginia)
++Non-US=http://archive.debian.org/debian-non-US/ # NL Netherlands (Amsterdam)
++Debian=http://ftp.uk.debian.org/debian/         # GB Great Britain (London)
+ Debian=http://mirror.aarnet.edu.au/debian/      # AU Australia (Canberra)
+-Non-US=http://mirror.aarnet.edu.au/debian-non-US/ # AU Australia (Canberra)
+-Debian=http://ftp.wa.au.debian.org/debian/      # AU Australia (Perth, Western)
+-Non-US=http://ftp.wa.au.debian.org/debian-non-US/ # AU Australia (Perth, Western)
+ Debian=http://ftp.monash.edu.au/pub/linux/debian/ # AU Australia (Melbourne)
+-Non-US=http://ftp.monash.edu.au/pub/linux/debian-non-US/ # AU Australia (Melbourne)
+-Non-US=http://ftp.progsoc.uts.edu.au/pub/Linux/debian-non-US/ # AU Australia (Sydney)
+-Debian=ftp://ftp.nluug.nl/pub/os/Linux/distr/debian/ # NL Netherlands
+-Debian=ftp://ftp.demon.co.uk/pub/mirrors/linux/debian/ # GB Great Britain
+-Debian=ftp://ftp.uwa.edu.au/mirrors/linux/debian/ # AU Australia (Perth, Western)
++Debian=http://ftp.nluug.nl/pub/os/Linux/distr/debian/ # NL Netherlands
++Debian=http://ftp.uwa.edu.au/debian/            # AU Australia (Perth, Western)
+ Non-US=ftp://ftp.uwa.edu.au/mirrors/linux/debian-non-US/ # AU Australia (Perth, Western)
+-Debian=http://mirror.eftel.com/debian/          # AU Australia (Perth, Western)
+-Non-US=http://mirror.eftel.com/debian-non-US/   # AU Australia (Perth, Western)
+-Debian=ftp://sunsite.ust.hk/pub/debian/         # HK Hong Kong
+-Debian=http://ftp.tiscali.be/debian/            # BE Belgium
+-Non-US=http://ftp.tiscali.be/debian-non-US/     # BE Belgium
++Debian=http://mirror.eftel.com/debian/          # AU Australia
++Non-US=http://mirror.eftel.com/debian-non-US/   # AU Australia
+ Debian=http://ftp.kulnet.kuleuven.ac.be/debian/ # BE Belgium (Leuven)
+-Non-US=http://ftp.kulnet.kuleuven.ac.be/debian-non-US/ # BE Belgium (Leuven)
+-Debian=http://mirrors.sunsite.dk/debian/        # DK Denmark (Aalborg)
+-Non-US=http://mirrors.sunsite.dk/debian-non-US/ # DK Denmark (Aalborg)
+-Debian=http://debian.efis.ucr.ac.cr/debian/     # CR Costa Rica (San Jose)
+-Non-US=http://debian.efis.ucr.ac.cr/debian-non-US/ # CR Costa Rica (San Jose)
++Debian=http://ftp.dk.debian.org/debian/         # DK Denmark (Aalborg)
++Non-US=http://ftp.dk.debian.org/debian-non-US/  # DK Denmark (Aalborg)
+ Debian=http://ftp.it.debian.org/debian/         # IT Italy (Milan)
+-Non-US=http://ftp.it.debian.org/debian-non-US/  # IT Italy (Milan)
+-Debian=http://ftp2.it.debian.org/debian/        # IT Italy (Bologna)
+-Non-US=http://ftp2.it.debian.org/debian-non-US/ # IT Italy (Bologna)
+-Debian=ftp://ftp-linux.cc.gatech.edu/debian/    # US United States (Atlanta, Georgia)
++Debian=http://giano.com.dist.unige.it/debian/   # IT Italy (Genoa)
++Non-US=http://giano.com.dist.unige.it/debian-non-US/ # IT Italy (Genoa)
++Debian=http://ftp.gtlib.gatech.edu/debian/      # US United States (Atlanta, Georgia)
+ Debian=http://ftp.egr.msu.edu/debian/           # US United States (Lansing, Michigan)
+-Debian=http://distro.ibiblio.org/pub/Linux/distributions/debian/ # US United States (Chapel Hill, North Carolina)
+-Debian=ftp://ftp.mcc.ac.uk/pub/linux/distributions/Debian/ # GB Great Britain
++Debian=http://distro.ibiblio.org/debian/        # US United States (Chapel Hill, North Carolina)
++Debian=http://debian.man.ac.uk/debian/          # GB Great Britain
+ Debian=http://ftp.cz.debian.org/debian/         # CZ Czech Republic
+ Non-US=http://ftp.cz.debian.org/debian-non-US/  # CZ Czech Republic
+ Debian=http://ftp.tu-clausthal.de/pub/linux/debian/ # DE Germany (Clausthal-Zellerfeld, Niedersachsen)
+-Non-US=http://ftp.tu-clausthal.de/pub/linux/debian-non-US/ # DE Germany (Clausthal-Zellerfeld, Niedersachsen)
+-Debian=http://ftp.sk.debian.org/debian/         # SK Slovakia (Kosice)
+-Non-US=http://ftp.sk.debian.org/debian-non-US/  # SK Slovakia (Kosice)
+-Debian=http://toxo.com.uvigo.es/debian/         # ES Spain (Vigo, Pontevedra)
+-Non-US=http://toxo.com.uvigo.es/debian-non-US/  # ES Spain (Vigo, Pontevedra)
+ Debian=http://ftp.at.debian.org/debian/         # AT Austria (Vienna)
+-Non-US=http://ftp.at.debian.org/debian-non-US/  # AT Austria (Vienna)
+ Debian=http://ftp.de.debian.org/debian/         # DE Germany (Dresden)
+-Non-US=http://ftp.de.debian.org/debian-non-US/  # DE Germany (Dresden)
+ Debian=http://mirror.switch.ch/ftp/mirror/debian/ # CH Switzerland (Zurich)
+-Non-US=http://mirror.switch.ch/ftp/mirror/debian-non-US/ # CH Switzerland (Zurich)
++Debian=http://ftp.nara.wide.ad.jp/debian/       # JP Japan (Nara)
++Non-US=http://ftp.nara.wide.ad.jp/debian-non-US/ # JP Japan (Nara)
+ Debian=http://ftp2.jp.debian.org/debian/        # JP Japan (Kashiwa NOC, Chiba)
+ Non-US=http://ftp2.jp.debian.org/debian-non-US/ # JP Japan (Kashiwa NOC, Chiba)
+ Debian=http://ftp.bg.debian.org/debian/         # BG Bulgaria (Sofia)
+-Non-US=http://ftp.bg.debian.org/debian-non-US/  # BG Bulgaria (Sofia)
+ Debian=http://ftp-mirror.internap.com/pub/debian/ # US United States (Seattle)
+-Debian=http://ftp.cerias.purdue.edu/pub/os/debian/ # US United States (West Lafayette, Indiana)
+ Debian=http://ftp.ru.debian.org/debian/         # RU Russia (Chernogolovka, Moscow)
+-Non-US=http://ftp.ru.debian.org/debian-non-US/  # RU Russia (Chernogolovka, Moscow)
+-Debian=http://ftp.bononia.it/debian/            # IT Italy (Rome)
+-Non-US=http://ftp.bononia.it/debian-non-US/     # IT Italy (Rome)
+-Debian=http://ftp.students.cs.unibo.it/debian/  # IT Italy (Bologna)
+-Non-US=http://ftp.students.cs.unibo.it/debian-non-US/ # IT Italy (Bologna)
+-Debian=http://ftp.sunet.se/pub/os/Linux/distributions/debian/ # SE Sweden (Uppsala)
+-Non-US=http://ftp.sunet.se/pub/os/Linux/distributions/debian-non-US/ # SE Sweden (Uppsala)
+-Debian=ftp://ftp.dkuug.dk/pub/debian/           # DK Denmark (Copenhagen)
++Debian=http://ftp.sunet.se/pub/Linux/distributions/debian/ # SE Sweden (Uppsala)
++Non-US=http://ftp.sunet.se/pub/Linux/distributions/debian-non-US/ # SE Sweden (Uppsala)
+ Debian=http://freedom.dicea.unifi.it/ftp/pub/linux/debian/ # IT Italy (Firenze)
+-Non-US=http://freedom.dicea.unifi.it/ftp/pub/linux/debian-non-US/ # IT Italy (Firenze)
+ Debian=http://ftp.pl.debian.org/debian/         # PL Poland (Gda&#324;sk)
+ Non-US=http://ftp.pl.debian.org/debian-non-US/  # PL Poland (Gda&#324;sk)
+ Debian=http://ftp2.de.debian.org/debian/        # DE Germany (Guetersloh)
+ Non-US=http://ftp2.de.debian.org/debian-non-US/ # DE Germany (Guetersloh)
+ Debian=http://ftp.iut-bm.univ-fcomte.fr/debian/ # FR France (Belfort)
+-Non-US=http://ftp.iut-bm.univ-fcomte.fr/debian-non-US/ # FR France (Belfort)
+-Debian=http://ring.asahi-net.or.jp/archives/linux/debian/debian/ # JP Japan (Tokyo)
+-Non-US=http://ring.asahi-net.or.jp/archives/linux/debian/debian-non-US/ # JP Japan (Tokyo)
+ Debian=http://ftp.eudil.fr/debian/              # FR France (Lille)
+ Non-US=http://ftp.eudil.fr/debian-non-US/       # FR France (Lille)
+-Debian=ftp://ftp.cs.unm.edu/mirrors/debian/     # US United States (Santa Fe, New Mexico)
+-Debian=http://ftp.uevora.pt/debian/             # PT Portugal (&Eacute;vora)
+-Non-US=http://ftp.uevora.pt/debian-non-US/      # PT Portugal (&Eacute;vora)
+-Debian=ftp://ftp.arnes.si/packages/debian/      # SI Slovenia
+-Non-US=ftp://ftp.arnes.si/packages/debian-non-US/ # SI Slovenia
++Debian=http://ftp.pt.debian.org/debian/         # PT Portugal (&Eacute;vora)
++Debian=http://ftp.arnes.si/pub/packages/debian/ # SI Slovenia
+ Debian=http://ftp.fr.debian.org/debian/         # FR France
+ Non-US=http://ftp.fr.debian.org/debian-non-US/  # FR France
++Debian=http://ftp.tw.debian.org/debian/         # TW Taiwan (Taipei)
+ Debian=ftp://ftp.proxad.net/mirrors/ftp.debian.org/ # FR France
+ Non-US=ftp://ftp.proxad.net/mirrors/nonus.debian.org/ # FR France
+-Debian=http://debian.uni-essen.de/debian/       # DE Germany (Essen, Nordrhein-Westfalen)
+-Debian=http://www.mirror.ac.uk/sites/ftp.debian.org/debian/ # GB Great Britain (Canterbury and Lancaster)
+-Non-US=http://www.mirror.ac.uk/sites/non-us.debian.org/debian-non-US/ # GB Great Britain (Canterbury and Lancaster)
+-Debian=ftp://ftp.minet.net/debian/              # FR France (Evry)
+-Non-US=ftp://ftp.minet.net/debian-non-US/       # FR France (Evry)
+-Debian=http://ftp.is.co.za/debian/              # ZA South Africa (Johannesburg)
+-Non-US=http://ftp.is.co.za/debian-non-US/       # ZA South Africa (Johannesburg)
+-Debian=ftp://ftp.index.hu/debian/               # HU Hungary (Budapest)
+-Non-US=ftp://ftp.index.hu/debian-non-US/        # HU Hungary (Budapest)
+-Debian=ftp://ftp.dti.ad.jp/pub/Linux/debian/    # JP Japan (Tokyo)
++Debian=http://debian.uni-duisburg-essen.de/debian/ # DE Germany (Essen, Nordrhein-Westfalen)
++Debian=http://www.mirrorservice.org/sites/ftp.debian.org/debian/ # GB Great Britain (Canterbury)
++Non-US=http://www.mirrorservice.org/sites/non-us.debian.org/debian-non-US/ # GB Great Britain (Canterbury)
++Debian=ftp://ftp.mirrorservice.org/sites/ftp.debian.org/debian/ # GB Great Britain (Canterbury)
++Non-US=ftp://ftp.mirrorservice.org/sites/non-us.debian.org/debian-non-US/ # GB Great Britain (Canterbury)
++Debian=http://ftp.dti.ad.jp/pub/Linux/debian/   # JP Japan (Tokyo)
+ Non-US=ftp://ftp.dti.ad.jp/pub/Linux/debian-non-US/ # JP Japan (Tokyo)
+ Debian=http://ftp.esat.net/pub/linux/debian/    # IE Ireland (Dublin)
+ Non-US=http://ftp.esat.net/pub/linux/debian-non-US/ # IE Ireland (Dublin)
+-Debian=http://ftp.du.se/debian/                 # SE Sweden
+-Non-US=http://ftp.du.se/debian-non-US/          # SE Sweden
+-Debian=http://mirror.direct.ca/linux/debian/    # CA Canada (Vancouver)
+-Non-US=http://mirror.direct.ca/linux/debian-non-US/ # CA Canada (Vancouver)
+-Debian=http://ftp.si.debian.org/debian/         # SI Slovenia (Maribor)
+-Non-US=http://ftp.si.debian.org/debian-non-US/  # SI Slovenia (Maribor)
+-Debian=http://mirror.cs.wisc.edu/pub/mirrors/linux/debian/ # US United States (Madison, Wisconsin)
+-Debian=ftp://ftp.linux.co.za/pub/distributions/debian/ # ZA South Africa (Johannesburg)
+-Debian=http://ftp.kfki.hu/debian/               # HU Hungary (Budapest)
+-Non-US=http://ftp.kfki.hu/debian-non-US/        # HU Hungary (Budapest)
++Debian=http://debian.camtp.uni-mb.si/debian/    # SI Slovenia (Maribor)
++Debian=http://mirror.cs.wisc.edu/debian/        # US United States (Madison, Wisconsin)
++Debian=http://ftp.kfki.hu/linux/debian/         # HU Hungary (Budapest)
++Non-US=http://ftp.kfki.hu/linux/debian-non-US/  # HU Hungary (Budapest)
+ Debian=http://ftp.hk.debian.org/debian/         # HK Hong Kong
+-Non-US=http://ftp.hk.debian.org/debian-non-US/  # HK Hong Kong
+-Debian=http://ftp.kornet.net/pub/Linux/debian/  # KR Korea (Seoul)
+-Debian=ftp://ftp.nuri.net/pub/debian/           # KR Korea (Seoul)
+-Debian=http://ftp.eu.uu.net/debian/             # NL Netherlands (Amsterdam)
+-Non-US=http://ftp.eu.uu.net/debian-non-US/      # NL Netherlands (Amsterdam)
++Non-US=ftp://ftp.hk.debian.org/debian-non-US/   # HK Hong Kong
+ Debian=http://gd.tuwien.ac.at/opsys/linux/debian/ # AT Austria (Vienna)
+-Non-US=http://gd.tuwien.ac.at/opsys/linux/debian-non-US/ # AT Austria (Vienna)
+-Debian=http://ftp.info.iut-tlse3.fr/debian/     # FR France
+-Non-US=http://ftp.info.iut-tlse3.fr/debian-non-US/ # FR France
+-Debian=http://ftp.latnet.lv/linux/debian/       # LV Latvia (Riga)
+-Non-US=http://ftp.latnet.lv/linux/debian-non-US/ # LV Latvia (Riga)
+ Debian=http://ftp.no.debian.org/debian/         # NO Norway (Oslo)
+-Non-US=http://ftp.no.debian.org/debian-non-US/  # NO Norway (Oslo)
+ Debian=http://ftp.icm.edu.pl/pub/Linux/debian/  # PL Poland (Warsaw)
+ Non-US=http://ftp.icm.edu.pl/pub/Linux/distributions/debian-non-US/ # PL Poland (Warsaw)
+-Debian=http://ftp.ee.debian.org/debian/         # EE Estonia
+-Non-US=http://ftp.ee.debian.org/debian-non-US/  # EE Estonia
+ Debian=http://ftp.freenet.de/debian/            # DE Germany (D&uuml;sseldorf)
+-Non-US=http://ftp.freenet.de/debian-non-US/     # DE Germany (D&uuml;sseldorf)
+-Debian=ftp://ftp.uwsg.indiana.edu/linux/debian/ # US United States (Bloomington, Indiana)
+-Debian=http://debian.tod.net/debian/            # US United States (Cleveland, Ohio)
++Debian=http://ftp.uwsg.indiana.edu/linux/debian/ # US United States (Bloomington, Indiana)
+ Debian=http://ftp.hu.debian.org/debian/         # HU Hungary (Budapest)
+-Non-US=http://ftp.hu.debian.org/debian-non-US/  # HU Hungary (Budapest)
+-Debian=http://debian.inf.elte.hu/debian/        # HU Hungary (Budapest)
+-Non-US=http://debian.inf.elte.hu/debian-non-US/ # HU Hungary (Budapest)
+ Debian=http://ftp.nz.debian.org/debian/         # NZ New Zealand (Wellington)
+-Non-US=http://ftp.nz.debian.org/debian-non-US/  # NZ New Zealand (Wellington)
+ Debian=http://ftp.eq.uc.pt/software/Linux/debian/ # PT Portugal (Coimbra)
+-Non-US=http://ftp.eq.uc.pt/software/Linux/debian-non-US/ # PT Portugal (Coimbra)
+ Debian=http://debian.mur.at/debian/             # AT Austria (Graz)
+-Non-US=http://debian.mur.at/debian-non-US/      # AT Austria (Graz)
+-Debian=http://ftp.uni-erlangen.de/pub/Linux/debian/ # DE Germany (Erlangen)
+-Non-US=http://ftp.uni-erlangen.de/pub/Linux/debian/debian-non-US/ # DE Germany (Erlangen)
+ Debian=http://debian.otenet.gr/debian/          # GR Greece (Athens)
+ Non-US=http://debian.otenet.gr/debian-non-US/   # GR Greece (Athens)
+-Debian=http://dennou-t.ms.u-tokyo.ac.jp/library/Linux/debian/ # JP Japan (Tokyo)
+-Non-US=http://dennou-t.ms.u-tokyo.ac.jp/library/Linux/debian-non-US/ # JP Japan (Tokyo)
+-Debian=http://dennou-k.gaia.h.kyoto-u.ac.jp/library/Linux/debian/ # JP Japan (Kyoto)
+-Non-US=http://dennou-k.gaia.h.kyoto-u.ac.jp/library/Linux/debian-non-US/ # JP Japan (Kyoto)
+-Debian=http://dennou-q.geo.kyushu-u.ac.jp/library/Linux/debian/ # JP Japan (Fukuoka)
+-Non-US=http://dennou-q.geo.kyushu-u.ac.jp/library/Linux/debian-non-US/ # JP Japan (Fukuoka)
+-Debian=http://natasha.stmarytx.edu/debian/      # US United States (San Antonio, Texas)
++Debian=http://dennou-k.gfd-dennou.org/debian/   # JP Japan (Kyoto)
++Non-US=http://dennou-k.gfd-dennou.org/library/Linux/debian-non-US/ # JP Japan (Kyoto)
++Debian=http://dennou-q.gfd-dennou.org/debian/   # JP Japan (Fukuoka)
++Non-US=http://dennou-q.gfd-dennou.org/library/Linux/debian-non-US/ # JP Japan (Fukuoka)
+ Debian=http://ftp2.fr.debian.org/debian/        # FR France
+-Non-US=http://ftp2.fr.debian.org/debian-non-US/ # FR France
+-Debian=http://ftp.gul.uc3m.es/debian/           # ES Spain (Leganes, Madrid)
+-Non-US=http://ftp.gul.uc3m.es/debian-non-US/    # ES Spain (Leganes, Madrid)
+ Debian=http://ftp.ndlug.nd.edu/mirrors/debian/  # US United States (Notre Dame, Indiana)
+ Debian=ftp://debian.das.ufsc.br/pub/debian/     # BR Brazil (Florian&oacute;polis)
+-Non-US=ftp://debian.das.ufsc.br/pub/debian-non-US/ # BR Brazil (Florian&oacute;polis)
+ Debian=http://debian.ua.pt/debian/              # PT Portugal (Aveiro)
+ Debian=http://debian.uchicago.edu/debian/       # US United States (Chicago, Illinois)
+ Debian=http://ftp.irb.hr/debian/                # HR Croatia (Zagreb)
+ Non-US=http://ftp.irb.hr/debian-non-US/         # HR Croatia (Zagreb)
+-Debian=http://ftp.es.debian.org/debian/         # ES Spain (Madrid)
+-Non-US=http://ftp.es.debian.org/debian-non-US/  # ES Spain (Madrid)
+ Debian=http://ftp.se.debian.org/debian/         # SE Sweden (Ume&aring;)
+ Non-US=http://ftp.se.debian.org/debian-non-US/  # SE Sweden (Ume&aring;)
+ Debian=http://carroll.aset.psu.edu/pub/linux/distributions/debian/ # US United States (Pennsylvania)
+-Debian=http://sunsite.informatik.rwth-aachen.de/ftp/pub/Linux/debian/ # DE Germany (Aachen)
+-Non-US=http://sunsite.informatik.rwth-aachen.de/ftp/pub/Linux/debian-non-US/ # DE Germany (Aachen)
+-Debian=ftp://ftp.lip6.fr/pub/linux/distributions/debian/ # FR France (Jussieu)
+-Debian=http://debian.fifi.org/debian/           # US United States (California)
++Debian=http://ftp.informatik.rwth-aachen.de/ftp/pub/Linux/debian/ # DE Germany (Aachen)
++Non-US=http://ftp.informatik.rwth-aachen.de/ftp/pub/Linux/debian-non-US/ # DE Germany (Aachen)
++Debian=http://ftp.lip6.fr/pub/linux/distributions/debian/ # FR France (Jussieu)
+ Debian=http://ftp.fi.debian.org/debian/         # FI Finland (Tampere)
+-Non-US=http://ftp.fi.debian.org/debian-non-US/  # FI Finland (Tampere)
+ Debian=http://ftp-stud.fht-esslingen.de/debian/ # DE Germany (Esslingen)
+ Non-US=http://ftp-stud.fht-esslingen.de/debian-non-US/ # DE Germany (Esslingen)
+ Debian=http://debian.sh.cvut.cz/debian/         # CZ Czech Republic (Prague)
+-Non-US=http://debian.sh.cvut.cz/debian-non-US/  # CZ Czech Republic (Prague)
+-Debian=http://ftp.tku.edu.tw/OS/Linux/distributions/debian/ # TW Taiwan (TamSui)
+-Non-US=http://ftp.tku.edu.tw/OS/Linux/distributions/debian/non-US/ # TW Taiwan (TamSui)
+ Debian=ftp://gladiator.real-time.com/linux/debian/ # US United States (Minneapolis, Minnesota)
+ Debian=http://mirrors.kernel.org/debian/        # US United States (Santa Clara, California)
++Debian=http://mirrors.nl.kernel.org/debian/     # NL Netherlands (Amsterdam)
++Debian=http://mirrors.se.kernel.org/debian/     # SE Sweden (Umea)
+ Debian=http://mirrors.xmission.com/debian/      # US United States (Salt Lake City, Utah)
+-Debian=http://mirrors.rcn.net/debian/           # US United States (Fairfax, Virginia)
+-Debian=http://ftp.keystealth.org/debian/        # US United States (Redwood City, California)
++Debian=http://ftp.keystealth.orgdebian/         # US United States (Redwood City, California)
+ Debian=http://debian.yorku.ca/debian/           # CA Canada (Toronto, Ontario)
+-Non-US=http://debian.yorku.ca/debian/non-US/    # CA Canada (Toronto, Ontario)
+-Debian=ftp://ftp.stw-bonn.de/pub/mirror/debian/ # DE Germany (Bonn)
+-Debian=ftp://ftp.edisontel.com/pub/Debian_Mirror/ # IT Italy
++Debian=http://ftp.stw-bonn.de/debian/           # DE Germany (Bonn)
+ Debian=http://debian.ens-cachan.fr/ftp/debian/  # FR France
++Non-US=http://debian.ens-cachan.fr/ftp/debian-non-US/ # FR France
+ Debian=http://ftp.easynet.be/ftp/debian/        # BE Belgium (Brussels)
+-Non-US=http://ftp.easynet.be/ftp/debian-non-US/ # BE Belgium (Brussels)
+-Debian=http://ameba.sc-uni.ktu.lt/debian/       # LT Lithuania (Kaunas)
+-Non-US=http://ameba.sc-uni.ktu.lt/debian-non-US/ # LT Lithuania (Kaunas)
++Debian=http://ftp.litnet.lt/debian/             # LT Lithuania (http://ftp.litnet.lt)
+ Debian=http://ftp.ticklers.org/debian/          # GB Great Britain (London)
+-Non-US=http://ftp.ticklers.org/debian/non-US/   # GB Great Britain (London)
+-Debian=ftp://ftp.stealth.net/pub/mirrors/ftp.debian.org/ # US United States (New York)
+-Debian=http://ftp.lug.udel.edu/debian/          # US United States (Newark, Delaware)
+-Non-US=http://ftp.lug.udel.edu/debian-non-US/   # US United States (Newark, Delaware)
+-Debian=ftp://debian.marked.no/debian/           # NO Norway (Oslo)
+-Non-US=ftp://debian.marked.no/debian-non-US/    # NO Norway (Oslo)
+-Debian=ftp://ftp.linux.co.uk/pub/debian/        # GB Great Britain
+-Non-US=ftp://ftp.linux.co.uk/pub/debian/non-US/ # GB Great Britain
+-Debian=ftp://ftp.gui.uva.es/debian/             # ES Spain (Valladolid)
++Debian=http://ftp.lug.udel.edu/pub/debian/      # US United States (Newark, Delaware)
+ Debian=http://ftp.rediris.es/debian/            # ES Spain (Madrid)
+-Non-US=http://ftp.rediris.es/debian-non-US/     # ES Spain (Madrid)
+ Debian=http://download.unesp.br/linux/debian/   # BR Brazil (S&atilde;o Paulo)
+ Non-US=http://download.unesp.br/linux/debian-non-US/ # BR Brazil (S&atilde;o Paulo)
+ Debian=http://mirror.pacific.net.au/debian/     # AU Australia (Sydney)
+-Non-US=http://mirror.pacific.net.au/debian-non-US/ # AU Australia (Sydney)
+ Debian=http://debian.lcs.mit.edu/debian/        # US United States (Cambridge, Massachusetts)
+ Debian=http://ftp.u-picardie.fr/mirror/debian/  # FR France (Amiens)
+-Non-US=http://ftp.u-picardie.fr/mirror/debian-non-US/ # FR France (Amiens)
+ Debian=http://ftp.belnet.be/debian/             # BE Belgium (Brussels)
+-Non-US=http://ftp.belnet.be/debian-non-US/      # BE Belgium (Brussels)
+-Debian=http://ftp.au.debian.org/debian/         # AU Australia
+-Non-US=http://ftp.au.debian.org/debian-non-US/  # AU Australia
+-Debian=http://linux.sarang.net/ftp/mirror/os/linux/distribution/debian/ # KR Korea (Seoul)
+-Non-US=http://linux.sarang.net/ftp/mirror/os/linux/distribution/debian-non-US/ # KR Korea (Seoul)
+-Debian=http://ftp.rutgers.edu/pub/debian/       # US United States (Piscataway, New Jersey)
+-Debian=http://debian.rutgers.edu/               # US United States (Piscataway, New Jersey)
+-Non-US=ftp://debian.hanyang.ac.kr/debian-non-US/ # KR Korea (Ansan)
+ Debian=http://ftp.surfnet.nl/os/Linux/distr/debian/ # NL Netherlands
+-Debian=ftp://download.xs4all.nl/pub/mirror/debian/ # NL Netherlands (AMS-IX, Amsterdam)
+ Debian=http://debian.mirrors.easynet.fr/        # FR France (Paris)
+-Non-US=ftp://debian.mirrors.easynet.fr/debian-non-US/ # FR France (Paris)
+-Debian=http://ftp.debian.nl/debian/             # NL Netherlands (Alphen aan den Rijn)
+-Non-US=http://ftp.debian.nl/debian-non-US/      # NL Netherlands (Alphen aan den Rijn)
+-Debian=http://www.zentek-international.com/mirrors/debian/debian/ # HK Hong Kong
++Debian=http://ftp.debian.nl/debian/             # NL Netherlands (Amsterdam)
+ Debian=http://ftp.u-strasbg.fr/debian/          # FR France
+ Non-US=http://ftp.u-strasbg.fr/debian-non-US/   # FR France
+-Debian=http://archive.progeny.com/debian/       # US United States (Indianapolis, Indiana)
+-Debian=http://mirror.csit.fsu.edu/debian/       # US United States (Tallahassee, Florida)
+-Non-US=http://mirror.csit.fsu.edu/debian-non-US/ # US United States (Tallahassee, Florida)
+ Debian=http://kebo.vlsm.org/debian/             # ID Indonesia (Surabaya)
+-Non-US=http://kebo.vlsm.org/debian-non-US/      # ID Indonesia (Surabaya)
+-Debian=http://ftp.br.debian.org/debian/         # BR Brazil (Curitiba)
+-Non-US=http://ftp.br.debian.org/debian-non-US/  # BR Brazil (Curitiba)
+-Debian=http://ftp.linuxforum.net/ftp/debian/    # CN China
+-Non-US=http://ftp.linuxforum.net/ftp/debian-non-US/ # CN China
+-Debian=http://debian.nettuno.it/debian/         # IT Italy
+-Non-US=http://debian.nettuno.it/debian-non-US/  # IT Italy
+-Debian=http://ftp.carnet.hr/pub/debian/         # HR Croatia (Zagreb)
+-Non-US=http://ftp.carnet.hr/pub/debian/debian-non-US/ # HR Croatia (Zagreb)
++Debian=http://ftp.br.debian.org/debian/         # BR Brazil (Curitiba, Paran&aacute;)
++Debian=http://ftp.carnet.hr/debian/             # HR Croatia (Zagreb)
+ Debian=http://ftp.nl.debian.org/debian/         # NL Netherlands (Enschede)
+ Non-US=http://ftp.nl.debian.org/debian-non-US/  # NL Netherlands (Enschede)
+ Debian=http://ftp.iinet.net.au/debian/debian/   # AU Australia (Perth)
+ Non-US=http://ftp.iinet.net.au/debian/debian-non-US/ # AU Australia (Perth)
+-Debian=http://ftp.xgate.co.kr/debian/           # KR Korea (Seoul)
+-Non-US=http://ftp.xgate.co.kr/debian-non-US/    # KR Korea (Seoul)
+ Debian=http://debian.balt.net/debian/           # LT Lithuania (Vilnius)
+-Non-US=http://debian.balt.net/debian-non-US/    # LT Lithuania (Vilnius)
+-Debian=http://debian.3wsi.net/debian/           # ID Indonesia (World Trade Center, Jakarta)
+-Non-US=http://debian.3wsi.net/debian-non-US/    # ID Indonesia (World Trade Center, Jakarta)
+ Debian=http://linux.csua.berkeley.edu/debian/   # US United States (Berkeley, California)
+-Non-US=http://linux.csua.berkeley.edu/debian-non-US/ # US United States (Berkeley, California)
+-Debian=http://mirror.devolus.org/debian/        # KR Korea
+-Non-US=http://mirror.devolus.org/debian-non-US/ # KR Korea
+ Debian=http://ftp.silug.org/pub/debian/         # US United States (Illinois)
+-Debian=http://ftp.externet.hu/debian/           # HU Hungary
+ Debian=ftp://ftp.fu-berlin.de/pub/unix/linux/mirrors/debian/ # DE Germany (Berlin)
+ Non-US=ftp://ftp.fu-berlin.de/pub/unix/linux/mirrors/debian-non-US/ # DE Germany (Berlin)
+ Debian=http://ftp.funet.fi/pub/linux/mirrors/debian/ # FI Finland
+@@ -265,336 +139,278 @@
+ Debian=http://debian.iskon.hr/debian/           # HR Croatia (Zagreb)
+ Non-US=http://debian.iskon.hr/debian-non-US/    # HR Croatia (Zagreb)
+ Debian=http://debian.tu-bs.de/debian/           # DE Germany (Braunschweig)
+-Non-US=http://debian.tu-bs.de/debian-non-US/    # DE Germany (Braunschweig)
+ Debian=http://ftp.uni-koeln.de/debian/          # DE Germany (K&ouml;ln)
+-Non-US=http://ftp.uni-koeln.de/debian-non-US/   # DE Germany (K&ouml;ln)
+-Debian=ftp://ftp.nectec.or.th/pub/linux-distributions/Debian/ # TH Thailand
+-Non-US=ftp://ftp.nectec.or.th/pub/linux-distributions/Debian-non-US/ # TH Thailand
+ Debian=http://debian.nsu.ru/debian/             # RU Russia (Novosibirsk)
+-Non-US=http://debian.nsu.ru/debian-non-US/      # RU Russia (Novosibirsk)
+-Debian=http://ftp.iitm.ac.in/debian/            # IN India (Madras)
+-Non-US=http://ftp.iitm.ac.in/debian-non-US/     # IN India (Madras)
+-Debian=http://debian.pffa.de/mirrors/debian/    # DE Germany (Berlin)
+-Non-US=http://debian.pffa.de/mirrors/debian-non-US/ # DE Germany (Berlin)
+-Debian=ftp://linux.csie.nctu.edu.tw/debian/     # TW Taiwan
+-Non-US=ftp://linux.csie.nctu.edu.tw/distributions/debian/debian-non-US/ # TW Taiwan
+ Debian=http://ftp.is.debian.org/debian/         # IS Iceland (Reykjavik)
+-Non-US=http://ftp.is.debian.org/debian-non-US/  # IS Iceland (Reykjavik)
+-Debian=ftp://debian.pipcom.com/debian/debian/   # CA Canada (Peterborough, Ontario)
+-Non-US=ftp://debian.pipcom.com/debian/debian-non-US/ # CA Canada (Peterborough, Ontario)
+-Debian=http://debian.experimentos.cl/debian/    # CL Chile (Valparaiso)
+-Non-US=http://debian.experimentos.cl/debian-non-US/ # CL Chile (Valparaiso)
+ Debian=http://ftp.debian.skynet.be/ftp/debian/  # BE Belgium (Brussels)
+ Non-US=http://ftp.debian.skynet.be/ftp/debian-non-US/ # BE Belgium (Brussels)
+ Debian=http://debian.secsup.org/                # US United States
+-Debian=http://debian.psu.ru/debian/             # RU Russia (Perm)
+-Non-US=http://debian.psu.ru/debian-non-US/      # RU Russia (Perm)
+ Debian=http://ftp.tu-graz.ac.at/mirror/debian/  # AT Austria (Graz)
+-Non-US=http://ftp.tu-graz.ac.at/mirror/debian-non-US/ # AT Austria (Graz)
+-Debian=http://ftp.dk.debian.org/debian/         # DK Denmark
+-Non-US=http://ftp.dk.debian.org/debian-non-US/  # DK Denmark
+-Debian=http://ftp.lugs.org.sg/debian/           # SG Singapore
+ Debian=http://linux.org.by/debian/              # BY Belarus (Minsk)
+ Non-US=http://linux.org.by/debian-non-US/       # BY Belarus (Minsk)
+-Debian=ftp://ftp.mpi-sb.mpg.de/pub/linux/distributions/debian/debian/ # DE Germany (Saarbr&uuml;cken)
+-Non-US=ftp://ftp.mpi-sb.mpg.de/pub/linux/distributions/debian/non-us/debian-non-US/ # DE Germany (Saarbr&uuml;cken)
+-Debian=http://ftp.cl.debian.org/debian/         # CL Chile (Santiago)
+-Non-US=http://ftp.cl.debian.org/debian-non-US/  # CL Chile (Santiago)
+-Debian=http://obelix.umh.es/pub/debian/debian/  # ES Spain (Elche)
+-Non-US=http://obelix.umh.es/pub/debian/debian-non-US/ # ES Spain (Elche)
++Debian=ftp://ftp.mpi-sb.mpg.de/pub/linux/debian/ # DE Germany (Saarbr&uuml;cken)
+ Debian=http://ftp.tiscali.nl/debian/            # NL Netherlands (Amsterdam)
+ Non-US=http://ftp.tiscali.nl/debian-non-US/     # NL Netherlands (Amsterdam)
+-Debian=http://debian.teleglobe.net/             # US United States (Newark, New Jersey and London, Great Britain)
+-Non-US=http://debian.teleglobe.net/non-US/      # US United States (Newark, New Jersey and London, Great Britain)
+-Debian=http://ftp.zcu.cz/ftp/pub/linux/debian/  # CZ Czech Republic (Plzen)
+-Non-US=http://ftp.zcu.cz/ftp/pub/linux/debian-non-US/ # CZ Czech Republic (Plzen)
++Debian=http://ftp.zcu.cz/mirrors/debian/        # CZ Czech Republic (Plzen)
+ Debian=http://ftp.jyu.fi/debian/                # FI Finland (Jyv&auml;skyl&auml;)
+ Non-US=http://ftp.jyu.fi/debian-non-US/         # FI Finland (Jyv&auml;skyl&auml;)
+-Debian=http://ftp.unina.it/pub/linux/distributions/debian/debian/ # IT Italy (Napoli)
+-Non-US=http://ftp.unina.it/pub/linux/distributions/debian/debian-non-US/ # IT Italy (Napoli)
+-Debian=http://kalle.csb.ki.se/pub/linux/debian/ # SE Sweden (Huddinge)
+-Non-US=http://kalle.csb.ki.se/pub/linux/debian-non-US/ # SE Sweden (Huddinge)
+-Debian=http://ftp.ntua.gr/pub/linux/debian/     # GR Greece (Athens)
+-Non-US=http://ftp.ntua.gr/pub/linux/debian-non-US/ # GR Greece (Athens)
+-Debian=http://ftp.ipv6.opentransit.net/debian/  # FR France (Paris)
+-Non-US=http://ftp.ipv6.opentransit.net/debian-non-US/ # FR France (Paris)
+-Debian=http://ftp.leo.org/debian/               # DE Germany (Munich)
+-Non-US=http://ftp.leo.org/debian-non-US/        # DE Germany (Munich)
+-Debian=http://ftp.matrix.net.br/pub/debian/     # BR Brazil (Sao Paulo)
+-Debian=http://techweb.rfa.org/debian/           # US United States (Washington, D.C.)
+-Debian=http://mirror.pudas.net/debian/          # SE Sweden
+-Non-US=http://mirror.pudas.net/debian-non-US/   # SE Sweden
+-Debian=http://debian.oregonstate.edu/debian/    # US United States (Corvallis, Oregon)
++Debian=http://ftp.gr.debian.org/debian/         # GR Greece (Athens)
++Debian=http://debian.osuosl.org/debian/         # US United States (Corvallis, Oregon)
+ Debian=http://debian.csie.ntu.edu.tw/debian/    # TW Taiwan
+-Non-US=http://debian.csie.ntu.edu.tw/debian-non-US/ # TW Taiwan
+-Debian=http://ftp.tiscali.de/pub/debian/debian/ # DE Germany (Frankfurt am Main)
+-Non-US=http://ftp.tiscali.de/pub/debian/debian-non-US/ # DE Germany (Frankfurt am Main)
+-Debian=http://lyre.mit.edu/debian/              # US United States (Cambridge, Massachusetts)
+-Debian=http://debian.udsu.ru/debian/            # RU Russia
+-Non-US=http://debian.udsu.ru/debian-non-US/     # RU Russia
+-Debian=http://debian.linux.org.tw/debian/       # TW Taiwan (Taipei)
+-Non-US=http://debian.linux.org.tw/debian-non-US/ # TW Taiwan (Taipei)
+-Debian=http://debian.lami.univ-evry.fr/debian/  # FR France (Evry)
+-Non-US=http://debian.lami.univ-evry.fr/debian-non-US/ # FR France (Evry)
+ Debian=http://sft.if.usp.br/debian/             # BR Brazil (Sao Paulo)
+-Non-US=http://sft.if.usp.br/debian-non-US/      # BR Brazil (Sao Paulo)
+-Debian=http://mirror.cict.fr/debian/            # FR France (Toulouse)
+-Non-US=http://mirror.cict.fr/debian-non-US/     # FR France (Toulouse)
+-Debian=http://ftp.cprm.net/debian/              # PT Portugal (Lisboa)
+-Non-US=http://ftp.cprm.net/debian/non-US/       # PT Portugal (Lisboa)
+-Debian=http://wuarchive.wustl.edu/mirrors/debian/ # US United States (St. Louis, Missouri)
+-Debian=ftp://mir1.ovh.net/debian/               # FR France
++Debian=http://debian.cict.fr/debian/            # FR France (Toulouse)
++Debian=http://mir1.ovh.net/debian/              # FR France
+ Non-US=ftp://mir1.ovh.net/debian-non-US/        # FR France
+ Debian=http://mir2.ovh.net/debian/              # FR France
+ Non-US=http://mir2.ovh.net/debian-non-US/       # FR France
+-Debian=http://linux.cdpa.nsysu.edu.tw/debian/   # TW Taiwan
+-Non-US=http://linux.cdpa.nsysu.edu.tw/debian-non-US/ # TW Taiwan
+-Debian=ftp://mirror.ipartners.pl/pub/debian/    # PL Poland
+-Non-US=ftp://mirror.ipartners.pl/pub/debian-non-US/ # PL Poland
+-Debian=http://mirror.mcs.anl.gov/debian/        # US United States (Chicago, Illinois)
++Debian=http://ftp.twaren.net/debian/            # TW Taiwan (Tainan)
++Debian=http://mirror.anl.gov/debian/            # US United States (Chicago, Illinois)
+ Debian=http://linorg.usp.br/debian/             # BR Brazil (Sao Paulo)
+-Non-US=http://linorg.usp.br/debian-non-US/      # BR Brazil (Sao Paulo)
+-Debian=http://koyanet.lv/ftp/debian/            # LV Latvia (Riga)
+-Non-US=http://koyanet.lv/ftp/debian-non-US/     # LV Latvia (Riga)
+-Debian=http://softcity.libero.it/debian/        # IT Italy (Milano)
+-Non-US=http://softcity.libero.it/debian-non-US/ # IT Italy (Milano)
+-Debian=http://debian.serveftp.net/debian/       # DE Germany (N&uuml;rnberg)
+-Non-US=http://debian.serveftp.net/debian-non-US/ # DE Germany (N&uuml;rnberg)
+-Debian=http://mirror.averse.net/debian/         # SG Singapore
+-Non-US=http://mirror.averse.net/debian-non-US/  # SG Singapore
+-Debian=ftp://ftp.nerim.net/debian/              # FR France (Paris)
++Debian=http://koyanet.lv/debian/                # LV Latvia (Riga)
++Debian=http://ftp.nerim.net/debian/             # FR France (Paris)
+ Non-US=ftp://ftp.nerim.net/debian-non-US/       # FR France (Paris)
+-Debian=http://ftp.pop-ce.rnp.br/debian/         # BR Brazil (Fortaleza, Cear&aacute;)
+ Debian=http://debian.osdn.org.ua/debian/        # UA Ukraine (Kiev)
+ Non-US=http://debian.osdn.org.ua/debian-non-US/ # UA Ukraine (Kiev)
+-Debian=http://ftp.kreonet.re.kr/pub/Linux/debian/ # KR Korea (Daejeon)
+-Non-US=http://ftp.kreonet.re.kr/pub/Linux/debian-non-US/ # KR Korea (Daejeon)
+-Debian=http://debian.goldweb.com.au/debian/     # AU Australia (Canberra)
+-Debian=ftp://ftp.tu-chemnitz.de/pub/linux/debian/debian/ # DE Germany (Chemnitz)
++Debian=http://ftp.tu-chemnitz.de/pub/linux/debian/debian/ # DE Germany (Chemnitz)
+ Non-US=ftp://ftp.tu-chemnitz.de/pub/linux/debian/debian-non-US/ # DE Germany (Chemnitz)
+ Debian=http://ftp.tr.debian.org/debian/         # TR Turkey (Ankara)
+-Non-US=http://ftp.tr.debian.org/debian-non-US/  # TR Turkey (Ankara)
+-Debian=ftp://www.buraphalinux.org/pub/debian/   # TH Thailand (Chonburi)
+ Debian=http://ftp.sun.ac.za/ftp/debian/         # ZA South Africa (Stellenbosch)
+-Non-US=http://ftp.sun.ac.za/ftp/debian/non-US/  # ZA South Africa (Stellenbosch)
+-Debian=http://debian.essentkabel.com/debian/    # NL Netherlands (Zwolle)
+-Non-US=http://debian.essentkabel.com/debian-non-US/ # NL Netherlands (Zwolle)
+-Debian=http://ftp.uni-stuttgart.de/debian/      # DE Germany (Stuttgart)
+-Non-US=http://ftp.uni-stuttgart.de/debian-non-US/ # DE Germany (Stuttgart)
+-Debian=http://debian.2z.net/debian/             # US United States (Hibbing, Minnesota)
+ Debian=http://ftp.psn.ru/debian/                # RU Russia (Pushchino, Moscow Region)
+-Non-US=http://ftp.psn.ru/debian-non-US/         # RU Russia (Pushchino, Moscow Region)
+ Debian=http://debian.ludost.net/debian/         # BG Bulgaria (Sofia)
+ Non-US=http://debian.ludost.net/debian-non-US/  # BG Bulgaria (Sofia)
+-Debian=http://debian.blueyonder.co.uk/          # GB Great Britain (London, Heathrow)
+-Non-US=http://debian.blueyonder.co.uk/non-US/   # GB Great Britain (London, Heathrow)
+-Debian=http://mirror.datafast.net.au/linux/debian/ # AU Australia (Geelong, Victoria)
+-Debian=ftp://ftp.europeonline.net/debian/       # LU Luxembourg
+-Non-US=ftp://ftp.europeonline.net/debian/non-US/ # LU Luxembourg
+ Debian=http://sluglug.ucsc.edu/debian/          # US United States (Santa Cruz, California)
+-Debian=ftp://ftp.cs.stevens-tech.edu/pub/Linux/distributions/debian/ # US United States (Hoboken, New Jersey)
+ Debian=http://mi.mirror.garr.it/mirrors/debian/ # IT Italy (Milano)
+-Non-US=http://mi.mirror.garr.it/mirrors/debian/non-US/ # IT Italy (Milano)
+-Debian=http://ftp.uni-kl.de/pub/linux/debian/   # DE Germany (Kaiserslautern)
++Debian=http://ftp.uni-kl.de/debian/             # DE Germany (Kaiserslautern)
+ Debian=http://ftp.hr.debian.org/debian/         # HR Croatia (Zagreb)
+-Non-US=http://ftp.hr.debian.org/debian-non-US/  # HR Croatia (Zagreb)
+ Debian=http://ftp.univie.ac.at/systems/linux/debian/debian/ # AT Austria (Wien)
+ Non-US=http://ftp.univie.ac.at/systems/linux/debian/debian-non-US/ # AT Austria (Wien)
+-Debian=http://nisamox.fciencias.unam.mx/debian/ # MX Mexico
+-Non-US=http://nisamox.fciencias.unam.mx/debian-non-US/ # MX Mexico
++Debian=http://ftp.mx.debian.org/debian/         # MX Mexico
+ Debian=http://mirror.positive-internet.com/debian/ # GB Great Britain (London)
+-Debian=http://ftp.bme.hu/OS/Linux/dist/debian/  # HU Hungary (Budapest)
+-Debian=http://ftp.duth.gr/debian/               # GR Greece (Xanthi)
+-Non-US=http://ftp.duth.gr/debian-non-US/        # GR Greece (Xanthi)
+-Debian=http://ftp.linux.pt/pub/mirrors/debian/  # PT Portugal (Lisboa)
+-Non-US=http://ftp.linux.pt/pub/mirrors/debian/non-US/ # PT Portugal (Lisboa)
++Debian=http://ftp.bme.hu/debian/                # HU Hungary (Budapest)
++Debian=http://ftp.duth.gr/debian/               # GR Greece (Thrace)
+ Debian=http://debian.fastweb.it/debian/         # IT Italy (Milano)
+-Non-US=http://debian.fastweb.it/debian-non-US/  # IT Italy (Milano)
+-Debian=http://debian.kida.net/debian.mirror/debian/ # CA Canada (Kelowna, British Columbia)
+ Debian=http://ftp3.nrc.ca/debian/               # CA Canada (Ottawa)
+ Non-US=http://ftp3.nrc.ca/debian-non-US/        # CA Canada (Ottawa)
+-Debian=http://debian.ihug.com.au/debian/        # AU Australia (Surry Hills, Sydney)
+-Non-US=http://debian.ihug.com.au/debian-non-US/ # AU Australia (Surry Hills, Sydney)
+ Debian=http://ftp.ie.debian.org/debian/         # IE Ireland (Dublin)
+ Non-US=http://ftp.ie.debian.org/debian-non-US/  # IE Ireland (Dublin)
+ Debian=http://debian.ubiobio.cl/debian/         # CL Chile (Concepcion)
+-Non-US=http://debian.ubiobio.cl/debian-non-US/  # CL Chile (Concepcion)
+ Debian=http://linux.iq.usp.br/debian/           # BR Brazil (S&atilde;o Paulo)
+ Non-US=http://linux.iq.usp.br/debian-non-US/    # BR Brazil (S&atilde;o Paulo)
+-Debian=ftp://mirror.nus.edu.sg/pub/Debian/      # SG Singapore
+-Non-US=ftp://mirror.nus.edu.sg/pub/Debian-non-US/ # SG Singapore
++Debian=http://mirror.nus.edu.sg/Debian/         # SG Singapore
++Non-US=http://mirror.nus.edu.sg/Debian-non-US/  # SG Singapore
+ Debian=http://the.earth.li/debian/              # GB Great Britain (London)
+-Non-US=http://the.earth.li/debian-non-US/       # GB Great Britain (London)
+-Debian=http://slugsite.louisville.edu/debian/   # US United States (Louisville, Kentucky)
+-Debian=http://cudlug.cudenver.edu/debian/       # US United States (Denver, Colorado)
+-Debian=http://ftp.softnet.tuc.gr/ftp/linux/debian/ # GR Greece (Chania)
+-Non-US=http://ftp.softnet.tuc.gr/ftp/linux/debian-non-US/ # GR Greece (Chania)
+-Debian=ftp://ftp.uos.ac.kr/mirror/Linux/debian/debian/ # KR Korea
+-Non-US=ftp://ftp.uos.ac.kr/mirror/Linux/debian/debian-non-US/ # KR Korea
+-Debian=ftp://ftp.linux.org.tr/pub/mirrors/debian/ # TR Turkey (Ankara)
+-Debian=http://ftp.uk.debian.org/debian/         # GB Great Britain (London)
+-Non-US=http://ftp.uk.debian.org/debian-non-US/  # GB Great Britain (London)
++Debian=http://ftp.linux.org.tr/debian/          # TR Turkey (Ankara)
++Debian=http://ukdebian.mirror.anlx.net/debian/  # GB Great Britain (London)
+ Debian=http://mirror.ox.ac.uk/debian/           # GB Great Britain (Oxford)
+-Non-US=http://mirror.ox.ac.uk/debian-non-US/    # GB Great Britain (Oxford)
+-Debian=ftp://mirrors.geeks.org/debian/          # US United States (Minneapolis, Minnesota)
+-Debian=http://mirrors.engr.arizona.edu/debian/  # US United States (Tucson, Arizona)
+-Debian=http://debian.ambra.ro/debian/           # RO Romania (Piatra Neamt)
+-Non-US=http://debian.ambra.ro/debian-non-US/    # RO Romania (Piatra Neamt)
+-Debian=http://mirrors.terrabox.com/debian/      # US United States (Dallas, Texas)
++Debian=http://mirrors.geeks.org/debian/         # US United States (Minneapolis, Minnesota)
+ Debian=http://ftp.crihan.fr/debian/             # FR France (Rouen)
+ Non-US=http://ftp.crihan.fr/debian-non-US/      # FR France (Rouen)
+ Debian=http://ftp.ro.debian.org/debian/         # RO Romania (Iasi)
+ Non-US=http://ftp.ro.debian.org/debian-non-US/  # RO Romania (Iasi)
+ Debian=http://opensource.nchc.org.tw/debian/    # TW Taiwan
+-Non-US=http://opensource.nchc.org.tw/debian-non-US/ # TW Taiwan
+ Debian=http://mirrors.geekbone.org/debian/      # CN China (Shanghai)
+ Non-US=http://mirrors.geekbone.org/debian-non-US/ # CN China (Shanghai)
+-Debian=http://debian.midco.net/debian/          # US United States
+ Debian=http://debian.uni.edu.ni/debian/         # NI Nicaragua (Managua)
+-Non-US=http://debian.uni.edu.ni/debian/         # NI Nicaragua (Managua)
+-Debian=http://ftp.ps.pl/pub/Linux/debian/       # PL Poland (Szczecin)
+-Non-US=http://ftp.ps.pl/pub/Linux/debian-non-us/ # PL Poland (Szczecin)
++Non-US=http://debian.uni.edu.ni/debian-non-US/  # NI Nicaragua (Managua)
+ Debian=http://ftp.port80.se/debian/             # SE Sweden (Stockholm)
+ Non-US=http://ftp.port80.se/debian-non-US/      # SE Sweden (Stockholm)
+ Debian=http://debian.inode.at/debian/           # AT Austria (Vienna)
+-Non-US=http://debian.inode.at/debian-non-US/    # AT Austria (Vienna)
+ Debian=http://mirrors.usc.edu/pub/linux/distributions/debian/ # US United States (Los Angeles, California)
+-Debian=http://mirror.here.dk/debian/            # DK Denmark (Copenhagen)
+-Non-US=http://mirror.here.dk/debian-non-US/     # DK Denmark (Copenhagen)
+-Debian=http://jane.uab.es/debian/               # ES Spain (Barcelona, Catalunya)
+-Non-US=http://jane.uab.es/debian-non-US/        # ES Spain (Barcelona, Catalunya)
+-Debian=http://mirrors.sec.informatik.tu-darmstadt.de/debian/debian/ # DE Germany (Darmstadt)
+-Non-US=http://mirrors.sec.informatik.tu-darmstadt.de/debian/debian-non-US/ # DE Germany (Darmstadt)
+ Debian=http://debian.uni-c.dk/debian/           # DK Denmark (Copenhagen)
+-Non-US=http://debian.uni-c.dk/debian-non-US/    # DK Denmark (Copenhagen)
+-Debian=http://ftp.caliu.info/debian/            # ES Spain (Barcelona)
+-Non-US=http://ftp.caliu.info/debian-non-US/     # ES Spain (Barcelona)
+-Debian=http://mirror.hamakor.org.il/pub/mirrors/debian/ # IL Israel (Haifa, Actcom)
+-Non-US=http://mirror.hamakor.org.il/pub/mirrors/debian-non-US/ # IL Israel (Haifa, Actcom)
+-Debian=http://ftp.isu.edu.tw/pub/Linux/Debian/debian/ # TW Taiwan (Kaohsiung)
+-Debian=http://debian.mirrors.pair.com/          # US United States (Pittsburgh, PA)
+-Debian=ftp://debian.ihug.co.nz/debian/          # NZ New Zealand (Auckland)
+-Non-US=ftp://debian.ihug.co.nz/debian-non-US/   # NZ New Zealand (Auckland)
+-Debian=ftp://ftp.tuxfamily.org/debian/          # FR France (Paris)
+-Non-US=ftp://ftp.tuxfamily.org/debian-non-US/   # FR France (Paris)
+-Debian=http://debian.spark.net.gr/debian/       # GR Greece (Thessaloniki)
+-Non-US=http://debian.spark.net.gr/debian-non-US/ # GR Greece (Thessaloniki)
+-Debian=http://debian.fapeal.br/debian/          # BR Brazil (Macei&oacute;, Alagoas)
+-Non-US=http://debian.fapeal.br/debian-non-US/   # BR Brazil (Macei&oacute;, Alagoas)
+-Debian=http://debian.luxadmin.org/debian/       # LU Luxembourg (Hamm)
+-Non-US=http://debian.luxadmin.org/debian-non-US/ # LU Luxembourg (Hamm)
++Debian=http://ftp.cica.es/debian/               # ES Spain (Sevilla)
++Debian=http://ftp.caliu.cat/debian/             # ES Spain (Barcelona)
++Debian=http://ftp.isu.edu.tw/debian/            # TW Taiwan (Kaohsiung)
+ Debian=http://lug.mtu.edu/debian/               # US United States (Houghton, Michigan)
+-Debian=http://ftp.jp.debian.org/debian/         # JP Japan (Nara)
+-Non-US=http://ftp.jp.debian.org/debian-non-US/  # JP Japan (Nara)
+ Debian=http://ftp.yz.yamagata-u.ac.jp/debian/   # JP Japan (Yonezawa, Yamagata)
+ Non-US=http://ftp.yz.yamagata-u.ac.jp/debian-non-US/ # JP Japan (Yonezawa, Yamagata)
+-Debian=http://debian.vicnet.net.au/debian/      # AU Australia (Melbourne)
+-Non-US=http://debian.vicnet.net.au/debian-non-US/ # AU Australia (Melbourne)
+-Debian=http://debian.mirror.solnet.ch/debian/   # CH Switzerland (Solothurn)
+-Non-US=http://debian.mirror.solnet.ch/debian-non-US/ # CH Switzerland (Solothurn)
+-Debian=ftp://ftp.solnet.ch/mirror/Debian/debian/ # CH Switzerland (Solothurn)
+-Non-US=ftp://ftp.solnet.ch/mirror/Debian/debian-non-US/ # CH Switzerland (Solothurn)
+-Debian=ftp://less.cogeco.net/pub/debian/        # CA Canada (Burlington, Ontario)
+-Debian=http://debian.org.ua/debian/             # UA Ukraine (Kiev)
+-Non-US=http://debian.org.ua/debian-non-US/      # UA Ukraine (Kiev)
++Debian=http://ftp.ua.debian.org/debian/         # UA Ukraine (Kiev, UA)
+ Debian=http://ftp.kr.debian.org/debian/         # KR Korea (Daejeon)
+-Non-US=http://ftp.kr.debian.org/debian-non-US/  # KR Korea (Daejeon)
+-Debian=http://gulus.usherbrooke.ca/debian/      # CA Canada (Universit&eacute; de Sherbrooke, Qu&eacute;bec)
+-Non-US=http://gulus.usherbrooke.ca/debian-non-US/ # CA Canada (Universit&eacute; de Sherbrooke, Qu&eacute;bec)
+ Debian=http://ftp.lug.ro/debian/                # RO Romania (Bucharest)
+-Non-US=http://ftp.lug.ro/debian-non-US/         # RO Romania (Bucharest)
+-Debian=ftp://ftp.corbina.ru/pub/Linux/debian/   # RU Russia (Moscow)
+-Debian=http://ftp.sayclub.com/pub/debian/       # KR Korea (KIDC)
+-Non-US=http://ftp.sayclub.com/pub/debian-non-us/ # KR Korea (KIDC)
+-Debian=http://debian.indika.net.id/debian/      # ID Indonesia ( Data Center, Cyber Building, Jakarta)
+-Debian=http://debian.samara.ru/debian/          # RU Russia (Samara)
++Debian=ftp://ftp.corbina.net/debian/            # RU Russia (Moscow)
+ Debian=ftp://ftp.pucpr.br/debian/               # BR Brazil (Curitiba)
+ Non-US=ftp://ftp.pucpr.br/debian-non-US/        # BR Brazil (Curitiba)
+ Debian=http://debian.mines.inpl-nancy.fr/debian/ # FR France (Nancy)
+-Non-US=http://debian.mines.inpl-nancy.fr/debian-non-US/ # FR France (Nancy)
+-Debian=http://ftp.uni-bayreuth.de/linux/Debian/debian/ # DE Germany (Bayreuth)
+-Non-US=http://ftp.uni-bayreuth.de/linux/Debian/debian-non-US/ # DE Germany (Bayreuth)
+-Debian=http://ftp.ds.hj.se/pub/Linux/distributions/debian/ # SE Sweden (J&ouml;nk&ouml;ping)
+-Debian=http://debian.logiclinux.com/debian/     # AR Argentina (CF)
+-Non-US=http://debian.logiclinux.com/debian-non-US/ # AR Argentina (CF)
+-Debian=ftp://ftp.cica.es/debian/                # ES Spain (Sevilla)
+-Non-US=ftp://ftp.cica.es/debian-non-US/         # ES Spain (Sevilla)
+-Debian=ftp://ftp.uni-sofia.bg/debian/           # BG Bulgaria (Sofia)
+-Non-US=ftp://ftp.uni-sofia.bg/debian-non-US/    # BG Bulgaria (Sofia)
+-Debian=http://debian.nctu.edu.tw/debian/        # TW Taiwan (HsinChu)
+-Non-US=http://debian.nctu.edu.tw/debian-non-US/ # TW Taiwan (HsinChu)
+-Debian=ftp://ftp.3logic.net/debian/             # UA Ukraine (Kherson)
+-Non-US=ftp://ftp.3logic.net/debian-non-US/      # UA Ukraine (Kherson)
+-Debian=http://debian.im.nuk.edu.tw/pub/debian/debian/ # TW Taiwan (Nan-Tzu, Kaohsiung)
+-Non-US=http://debian.im.nuk.edu.tw/pub/debian/debian-non-US/ # TW Taiwan (Nan-Tzu, Kaohsiung)
+-Debian=http://debian.cn99.com/debian/           # CN China (Changzhou)
+-Non-US=http://debian.cn99.com/debian-non-US/    # CN China (Changzhou)
++Debian=http://ftp.uni-bayreuth.de/debian/       # DE Germany (Bayreuth)
++Debian=http://ftp.ds.karen.hj.se/debian/        # SE Sweden (J&ouml;nk&ouml;ping)
++Debian=http://debian.logiclinux.com/debian/     # AR Argentina
++Debian=http://ftp.uni-sofia.bg/debian/          # BG Bulgaria (Sofia, 42.6740/23.3305)
++Debian=http://debian.nctu.edu.tw/debian/        # TW Taiwan (Hsinchu)
++Debian=ftp://ftp.3logic.net/debian/             # UA Ukraine (Kherson, UA)
+ Debian=http://ftp.coe.psu.ac.th/debian/         # TH Thailand (Computer Engineering Dept.)
+-Non-US=http://ftp.coe.psu.ac.th/debian-non-US/  # TH Thailand (Computer Engineering Dept.)
+-Debian=http://mirror.cpsc.ucalgary.ca/debian/   # CA Canada (Calgary, Alberta)
+-Non-US=http://mirror.cpsc.ucalgary.ca/debian-non-US/ # CA Canada (Calgary, Alberta)
+-Debian=ftp://ftp.informatik.hu-berlin.de/pub/Mirrors/ftp.de.debian.org/debian/ # DE Germany (Berlin)
+-Non-US=ftp://ftp.informatik.hu-berlin.de/pub/Mirrors/ftp.de.debian.org/debian-non-US/ # DE Germany (Berlin)
+-Debian=ftp://sb.itc.u-tokyo.ac.jp/DEBIAN/debian/ # JP Japan (Tokyo)
+-Non-US=ftp://sb.itc.u-tokyo.ac.jp/DEBIAN/debian-non-US/ # JP Japan (Tokyo)
+-Debian=http://ftp.riken.go.jp/pub/Linux/debian/debian/ # JP Japan (Saitama)
+-Debian=http://debian.vinita.lt/debian/          # LT Lithuania (Vilnius)
+-Non-US=http://debian.vinita.lt/debian-non-US/   # LT Lithuania (Vilnius)
+-Debian=http://debian.wow-vision.com.sg/debian/  # SG Singapore
+-Non-US=http://debian.wow-vision.com.sg/debian-non-US/ # SG Singapore
++Debian=http://ftp.v6.coe.psu.ac.th/debian/      # TH Thailand (Computer Engineering Dept.)
++Debian=http://mirror.cpsc.ucalgary.ca/mirror/debian.org/debian/ # CA Canada (Calgary, Alberta)
++Debian=ftp://ftp.informatik.hu-berlin.de/pub/Linux/debian/ # DE Germany (Berlin)
++Debian=http://ftp.riken.jp/Linux/debian/debian/ # JP Japan (N35.779633, E139.615734)
+ Debian=http://debian.shimpinomori.net/debian/   # JP Japan (Tokyo)
+ Non-US=http://debian.shimpinomori.net/debian-non-US/ # JP Japan (Tokyo)
+ Debian=http://mirror.peer1.net/debian/          # CA Canada
+-Non-US=http://mirror.peer1.net/debian-non-US/   # CA Canada
+-Debian=ftp://ftp.debian.ikoula.com/debian/      # FR France (Ikoula http://www.ikoula.com/)
+-Non-US=ftp://ftp.debian.ikoula.com/debian-non-US/ # FR France (Ikoula http://www.ikoula.com/)
+-Debian=http://ring.hosei.ac.jp/archives/linux/debian/debian/ # JP Japan (Tokyo)
+-Non-US=http://ring.hosei.ac.jp/archives/linux/debian/debian-non-US/ # JP Japan (Tokyo)
+-Debian=http://debian.internet.gr/debian/        # GR Greece (Agios Stefanos, Athens)
+-Non-US=http://debian.internet.gr/debian-non-US/ # GR Greece (Agios Stefanos, Athens)
+-Debian=http://fatboy.umng.edu.co/debian/        # CO Colombia (Bogota DC)
+-Non-US=http://fatboy.umng.edu.co/debian/        # CO Colombia (Bogota DC)
+-Debian=ftp://ftp.scarlet.be/pub/debian/         # BE Belgium (Vilvoorde)
+-Non-US=ftp://ftp.scarlet.be/pub/debian-non-US/  # BE Belgium (Vilvoorde)
+-Debian=http://mirrors.chipset.or.id/debian/     # ID Indonesia
+-Debian=http://debian.savoirfairelinux.net/debian/ # CA Canada (Montreal)
+-Non-US=http://debian.savoirfairelinux.net/debian-non-US/ # CA Canada (Montreal)
+ Debian=ftp://ftp.man.szczecin.pl/pub/Linux/debian/ # PL Poland (Szczecin)
+-Non-US=ftp://ftp.man.szczecin.pl/pub/Linux/debian-non-US/ # PL Poland (Szczecin)
+-Debian=http://www.las.ic.unicamp.br/pub/debian/ # BR Brazil (Campinas - SP)
+-Debian=http://ftp.gwdg.de/pub/linux/debian/debian/ # DE Germany (G&ouml;ttingen)
+-Non-US=http://ftp.gwdg.de/pub/linux/debian/debian-non-US/ # DE Germany (G&ouml;ttingen)
+-Debian=http://casa.callbright.com/debian/       # MA Morocco (Casablanca)
+-Non-US=http://casa.callbright.com/debian-non-US/ # MA Morocco (Casablanca)
+-Debian=http://ftp.vthd-net.com/debian/          # FR France (Rocquencourt)
+-Non-US=http://ftp.vthd-net.com/pub/linux/debian-non-US/ # FR France (Rocquencourt)
+-Debian=ftp://ftp.tomstroubleshooting.com/debian/ # US United States (Orlando, Florida)
+-Debian=http://www.ring.gr.jp/archives/linux/debian/debian/ # JP Japan
+-Non-US=http://www.ring.gr.jp/archives/linux/debian/debian-non-US/ # JP Japan
+-Debian=http://debian.mirror.cygnal.ca/debian/   # CA Canada (Burlington, Ontario)
+-Non-US=http://debian.mirror.cygnal.ca/debian-non-US/ # CA Canada (Burlington, Ontario)
+-Debian=http://komo.vlsm.org/debian/             # ID Indonesia (Gedung Cyber, Jakarta)
+-Non-US=http://komo.vlsm.org/debian-non-US/      # ID Indonesia (Gedung Cyber, Jakarta)
++Debian=http://debian.las.ic.unicamp.br/debian/  # BR Brazil (Campinas - SP)
++Debian=http://ftp5.gwdg.de/pub/linux/debian/debian/ # DE Germany (G&ouml;ttingen)
++Non-US=http://ftp5.gwdg.de/pub/linux/debian/debian-non-US/ # DE Germany (G&ouml;ttingen)
++Debian=http://debian.mirror.rafal.ca/debian/    # CA Canada (Ontario)
++Non-US=http://debian.mirror.rafal.ca/debian-non-US/ # CA Canada (Ontario)
+ Debian=http://debian.mirrors.tds.net/debian/    # US United States (Wisconsin)
+-Debian=http://debian.ethz.ch/debian/            # CH Switzerland (Zurich)
+-Non-US=http://debian.ethz.ch/debian-non-US/     # CH Switzerland (Zurich)
+-Debian=http://ftp.de.debian.org/debian-amd64/debian/ # DE Germany (Dresden)
+-Debian=http://bytekeeper.as28747.net/debian-amd64/debian/ # BE Belgium
+-Debian=http://bach.hpc2n.umu.se/debian-amd64/debian/ # SE Sweden
+-Debian=http://hanzubon.jp/debian-amd64/debian/  # JP Japan
+-Debian=ftp://mirror.switch.ch/mirror/debian-amd64/debian/ # CH Switzerland
+-Debian=http://mirror.espri.arizona.edu/debian-amd64/debian/ # US USA, Arizona
+-Debian=http://ftp.nl.debian.org/debian-amd64/debian/ # NL Netherlands (Enschede)
+-Debian=ftp://ftp2.caliu.info/debian-amd64/debian/ # ES Spain (Barcelona)
+-Debian=http://debian.csail.mit.edu/debian-amd64/debian/ # US USA, Massachusetts
+-Debian=http://planetmirror.com/pub/debian-amd64/debian/ # AU Australia
+-Debian=http://ftp.ru.debian.org/debian-amd64/   # RU Russia (Chernogolovka, Moscow)
+-Debian=http://ftp.it.debian.org/debian-amd64/   # IT Italy (Milan)
+-Debian=http://ftp2.it.debian.org/debian-amd64/  # IT Italy (Bologna)
+-Debian=http://ftp.lug.ro/debian-amd64/          # RO Romania (Bucharest)
+-Debian=http://ftp.es.debian.org/debian-amd64/debian/ # ES Spain (Madrid)
+-Debian=http://ftp.jp.debian.org/debian-amd64/debian/ # JP Japan (Nara)
+-Debian=http://ftp.cl.debian.org/debian-amd64/debian/ # CL Chile (Santiago)
+-Debian=http://mirror.hamakor.org.il/pub/mirrors/debian-amd64/ # IL Israel (Haifa, Actcom)
+-Debian=http://ftp.belnet.be/debian-amd64/debian/ # BE Belgium (Brussels)
+-Debian=ftp://debian.gala.net/debian-amd64/      # UA Ukraine
++Debian=http://ftp.ch.debian.org/debian/         # CH Switzerland (Zurich, Hoenggerberg)
++Non-US=http://ftp.ch.debian.org/debian-non-US/  # CH Switzerland (Zurich, Hoenggerberg)
++Debian=http://debian.cites.uiuc.edu/pub/debian/ # US United States
++Debian=http://mirrors.telianet.dk/debian/       # DK Denmark (Glostrup, Copenhagen)
++Non-US=http://mirrors.telianet.dk/debian-non-us/ # DK Denmark (Glostrup, Copenhagen)
++Debian=http://webb.ens-cachan.fr/debian/        # FR France (Ecole Normale Superieure de Cachan)
++Non-US=http://webb.ens-cachan.fr/debian-non-US/ # FR France (Ecole Normale Superieure de Cachan)
++Debian=http://ftp.jaist.ac.jp/pub/Linux/Debian/ # JP Japan (Ishikawa)
++Debian=http://ftp.mgts.by/debian/               # BY Belarus (, Minsk)
++Debian=http://mirrors.ircam.fr/pub/debian/      # FR France
++Non-US=http://mirrors.ircam.fr/pub/debian-non-US/ # FR France
++Debian=http://ftp.unina.it/pub/linux/distributions/debian/ # IT Italy (Naples)
++Debian=http://ftp.hosteurope.de/pub/linux/debian/ # DE Germany (Cologne)
++Debian=http://mirror.optus.net/debian/          # AU Australia
++Debian=http://ftp.informatik.uni-frankfurt.de/debian/ # DE Germany (Frankfurt)
++Debian=http://debian.unesr.edu.ve/debian/       # VE Venezuela (Caracas)
++Debian=http://ftp.ccc.uba.ar/pub/linux/debian/debian/ # AR Argentina
++Debian=http://ftp.gva.es/mirror/debian/         # ES Spain (Valencia)
++Non-US=http://ftp.gva.es/mirror/debian-non-US/  # ES Spain (Valencia)
++Debian=http://debian.telecoms.bg/debian/        # BG Bulgaria (Varna)
++Debian=http://debian.fastbull.org/debian/       # IT Italy (Torino -)
++Debian=http://mirrors.tummy.com/debian/         # US United States (Colorado, USA)
++Debian=http://debian.mirror.frontiernet.net/debian/ # US United States (Rochester, NY)
++Debian=http://debian.netcologne.de/debian/      # DE Germany (Koeln)
++Debian=http://artfiles.org/debian/              # DE Germany (Hamburg)
++Debian=http://debian.intergenia.de/debian/      # DE Germany (2x D?sseldorf/DE, 2x Frankfurt am Main/DE (loadbalanced))
++Non-US=http://debian.intergenia.de/debian-non-US/ # DE Germany (2x D?sseldorf/DE, 2x Frankfurt am Main/DE (loadbalanced))
++Debian=http://debian.pop-sc.rnp.br/debian/      # BR Brazil (Florian&oacute;polis)
++Debian=http://ftp.es.debian.org/debian/         # ES Spain
++Debian=ftp://ftp.mipt.ru/debian/                # RU Russia
++Debian=http://debian.savoirfairelinux.net/debian/ # CA Canada (Montreal)
++Debian=http://debian.mirror.iweb.ca/debian/     # CA Canada (Montreal)
++Debian=http://mirror.nttu.edu.tw/debian/        # TW Taiwan (Tai-Tung)
++Debian=http://debian.cruisix.net/debian/        # DE Germany (Nuernberg)
++Debian=http://debian.ciencias.uchile.cl/debian/ # CL Chile (Santiago)
++Debian=http://godel.cs.bilgi.edu.tr/debian/     # TR Turkey (Istanbul)
++Debian=http://mmc.geofisica.unam.mx/debian/     # MX Mexico ( D.F.)
++Debian=http://debian.mirror.web4u.cz/           # CZ Czech Republic (Prague)
++Debian=http://debian.mirror.inra.fr/debian/     # FR France (Versailles)
++Debian=ftp://ftp.rrzn.uni-hannover.de/debian/debian/ # DE Germany (Hannover)
++Debian=http://mirror.cc.columbia.edu/pub/linux/debian/debian/ # US United States (New York, NY)
++Debian=http://ftp.vectranet.pl/debian/          # PL Poland (Slupsk)
++Debian=http://debian.co.il/debian/              # IL Israel (Rishon Leziyon)
++Debian=http://debian.thaios.net/debian/         # TH Thailand (Bangkok)
++Debian=http://debian.bsnet.se/debian/           # SE Sweden (Ronneby)
++Debian=http://debian.charite.de/debian/         # DE Germany (Berlin)
++Debian=http://debian.mirror.ac.za/debian/       # ZA South Africa (Cape Town)
++Debian=http://debian.csie.nctu.edu.tw/debian/   # TW Taiwan
++Debian=http://ftp.mikesnet.ro/debian/           # RO Romania (Cluj-Napoca, Cluj)
++Debian=http://ftp.iitm.ac.in/debian/            # IN India (Madras)
++Debian=http://ftp.jp.debian.org/debian/         # JP Japan (Tokyo)
++Debian=http://debian.mirrors.crysys.hu/debian/  # HU Hungary (Budapest)
++Debian=http://debian.ynet.sk/debian/            # SK Slovakia (Bratislava)
++Debian=http://mirrors.nfsi.pt/debian/           # PT Portugal (Lisbon)
++Debian=http://ftp.grokthis.net/debian/          # US United States (Philadelphia, PA)
++Debian=http://debian.eso-es.net/debian/         # TR Turkey (Eski&#351;ehir)
++Debian=http://ftp.udc.es/debian/                # ES Spain (A Coru&ntilde;a)
++Debian=http://debian.csg.uzh.ch/debian/         # CH Switzerland (Zurich)
++Debian=http://ftp.sk.debian.org/debian/         # SK Slovakia (Bratislava)
++Debian=http://ftp.cc.uoc.gr/mirrors/linux/debian/ # GR Greece (Crete / Heraklion)
++Debian=http://mirror.isoc.org.il/pub/debian/    # IL Israel
++Debian=http://debian.torredehanoi.org/debian/   # AR Argentina (Buenos Aires)
++Debian=http://mirror.yandex.ru/debian/          # RU Russia (Moscow)
++Debian=http://mirrors.xenir.com/debian/         # US United States (Charlottesville, Va.)
++Debian=http://neacm.fe.up.pt/debian/            # PT Portugal (Porto)
++Debian=http://ftp.pwr.wroc.pl/debian/           # PL Poland (Wroclaw)
++Debian=http://cesium.di.uminho.pt/pub/debian/   # PT Portugal (Braga)
++Debian=http://debian.utalca.cl/debian/          # CL Chile (Talca)
++Debian=http://ftp.debianclub.org/debian/        # TH Thailand (Bangkok)
++Debian=http://debian.med.univ-tours.fr/debian/  # FR France (Tours)
++Debian=http://ftp.plusline.de/debian/           # DE Germany (Frankfurt am Main)
++Non-US=http://ftp.plusline.de/debian-non-US/    # DE Germany (Frankfurt am Main)
++Debian=http://ftp.man.poznan.pl/pub/linux/debian/debian/ # PL Poland (Poznan)
++Non-US=http://ftp.man.poznan.pl/pub/linux/debian/debian-non-US/ # PL Poland (Poznan)
++Debian=http://ftp.univ-pau.fr/linux/mirrors/debian/ # FR France (Pau)
++Debian=http://debian.dynamica.it/debian/        # IT Italy (Milan)
++Non-US=http://debian.dynamica.it/debian-non-US/ # IT Italy (Milan)
++Debian=http://debian.mnet.bg/debian/            # BG Bulgaria (Varna)
++Debian=http://debian.mirrors.easynews.com/linux/debian/ # US United States (Phoenix, AZ)
++Debian=http://debian.sth.sze.hu/debian/         # HU Hungary
++Debian=http://ftp.ncnu.edu.tw/debian/           # TW Taiwan (Puli, Nantou)
++Debian=http://debian.netvisao.pt/               # PT Portugal (Palmela)
++Debian=http://mirror.units.it/debian/           # IT Italy (Trieste)
++Debian=http://ftp.uga.edu/debian/               # US United States (Athens, GA)
++Debian=http://debian.dcc.fc.up.pt/debian/       # PT Portugal (Porto, Campo Alegre)
++Debian=http://mirror.cse.unsw.edu.au/debian/    # AU Australia (Sydney)
++Debian=http://ftp.au.debian.org/debian/         # AU Australia (Canberra)
++Debian=http://ftp.ee.debian.org/debian/         # EE Estonia
++Non-US=http://ftp.ee.debian.org/debian-non-US/  # EE Estonia
++Debian=http://mirror.csclub.uwaterloo.ca/debian/ # CA Canada (Waterloo, Ontario)
++Debian=http://debian.grn.cat/debian/            # ES Spain
++Debian=http://ftp.be.debian.org/debian/         # BE Belgium
++Debian=http://mirror.steadfast.net/debian/      # US United States (Chicago, IL)
++Debian=ftp://ftp.univ-nantes.fr/debian/         # FR France
++Debian=http://debian.com.es/debian/             # ES Spain (Madrid)
++Debian=http://debian.ues.edu.sv/debian/         # SV El Salvador
++Debian=http://debian.lth.se/debian/             # SE Sweden
++Debian=ftp://ftp.df.lth.se/debian/              # SE Sweden (Lund)
++Debian=http://www.cohsoft.com/debian/           # JP Japan (Kanagawa)
++Debian=http://dennou-h.gfd-dennou.org/debian/   # JP Japan (Kyoto)
++Non-US=http://dennou-h.gfd-dennou.org/library/Linux/debian-non-US/ # JP Japan (Kyoto)
++Debian=http://piotrkosoft.net/pub/mirrors/debian/ # PL Poland
++Debian=http://ftp.netspace.net.au/pub/debian/   # AU Australia (Melbourne)
++Debian=http://mirrors.compuscene.org/debian/    # FR France
++Debian=http://mirror.ayous.org/debian/          # DE Germany (Darmstadt)
++Debian=http://ftp.cse.yzu.edu.tw/pub/Linux/debian/debian/ # TW Taiwan (Taoyuan)
++Debian=http://ftp.ca.debian.org/debian/         # CA Canada
++Debian=http://ftp.antik.sk/debian/              # SK Slovakia (Kosice)
++Debian=http://debian.revolsys.fr/debian/        # FR France (Strasbourg)
++Debian=ftp://ftp.is.co.za/debian/               # ZA South Africa
++Debian=http://debian.res.um.edu.mt/debian/      # MT Malta (University of)
++Debian=http://ftp.utexas.edu/debian/            # US United States
++Debian=http://mirror.fdcservers.net/debian/     # US United States (Chicago Illinois)
++Debian=http://debian.univ-reims.fr/debian/      # FR France (Reims)
++Debian=http://debian.networx-bg.com/debian/     # BG Bulgaria (Rousse)
++Debian=http://ftp.si.debian.org/debian/         # SI Slovenia (Ljubljana)
++Debian=http://mirror.mirohost.net/debian/       # UA Ukraine (, Kyiv)
++Debian=http://www.anheng.com.cn/debian/         # CN China (www.anheng.com)
++Debian=http://ftp.daum.net/debian/              # KR Korea (Seoul)
++Debian=http://mirror.rit.edu/debian/            # US United States (Rochester, NY)
++Debian=http://debian.corenetworks.net/debian/   # US United States
++Debian=http://debian.comu.edu.tr/debian/        # TR Turkey (Canakkale)
++Debian=http://ftp2.debian.org.ua/debian/        # UA Ukraine (Kiev, UA)
++Debian=http://mirror.its.uidaho.edu/pub/debian/ # US United States (Moscow, ID)
++Debian=http://ftp.cvut.cz/debian/               # CZ Czech Republic (Prague)
++Debian=http://debian.stream.uz/debian/          # UZ Uzbekistan (39-41, Zarqaynar str., Tashkent)
++Debian=http://ftp.debian.chuvsu.ru/debian/      # RU Russia (Chuvash State University. Cheboksary.)
++Debian=http://mirror.sim.ul.pt/debian/          # PT Portugal (Lisboa)
++Debian=http://ftp.seclan.com/debian/            # FI Finland
++Debian=http://debian.ignum.cz/debian/           # CZ Czech Republic (Prague)
++Debian=http://ftp.metu.edu.tr/debian/           # TR Turkey (Ankara - TURKEY)
++Debian=http://repository.linux.pf/debian/       # PF French Polynesia (Polynésie française)
++Debian=http://debian.cs.binghamton.edu/debian/  # US United States (Binghamton, New York, USA)
++Debian=http://ftp.nc.debian.org/debian/         # NC New Caledonia (Noumea)
++Debian=http://debian.lagis.at/debian/           # AT Austria (Linz)
++Debian=http://ftp.ba.debian.org/debian/         # BA Bosnia & Herzegovina (Sarajevo)
++Debian=http://mirror.sov.uk.goscomb.net/debian/ # GB Great Britain (London, E14)
++Debian=http://mirror.unej.ac.id/debian/         # ID Indonesia (Jember, East Java)
++Debian=http://ftp.cl.debian.org/debian/         # CL Chile (Santiago de)
++Debian=http://mirror.hmc.edu/debian/            # US United States (Claremont, CA, US)
++Debian=http://debian.morphium.info/debian/      # DE Germany (manitu data center (manitu.de))
++Debian=http://debian.mirror.dkm.cz/debian/      # CZ Czech Republic (Prague)
++Debian=http://mirrors.hosef.org/debian/         # US United States (University of Hawaii)
++Debian=http://mirror.neolabs.kz/debian/         # KZ Kazakhstan (Almaty)
++Debian=http://ftp.tcc.edu.tw/debian/            # TW Taiwan (TaiChung County)
++Debian=http://debian.mirror.cambrium.nl/debian/ # NL Netherlands (Amsterdam)
++Debian=http://debian.superhosting.cz/debian/    # CZ Czech Republic
++Debian=http://debian.md/debian/                 # MD Moldova (Chi&#537;in&#259;u)
++Debian=http://mirror.debian.mn/debian/          # MN Mongolia (STIT, Ulaanbaatar)
++Debian=http://mirror.waia.asn.au/debian/        # AU Australia (Perth, Western)
++Debian=http://mirror.svk.su/debian/             # RU Russia (, Moscow)
++Debian=http://mirror2.corbina.ru/debian/        # RU Russia (MSK Corbina Telecom)
++Debian=http://mirror.cse.iitk.ac.in/debian/     # IN India (IIT Kanpur, Kanpur -208016)
++Debian=http://mirrors.ucr.ac.cr/debian/         # CR Costa Rica (Centro de Inform\341tica)
++Debian=http://debian.ipacct.com/debian/         # BG Bulgaria (Sofia)
++Debian=http://ftp.tku.edu.tw/debian/            # TW Taiwan
++Debian=http://mirror.transact.net.au/debian/    # AU Australia (Canberra, ACT)
++Debian=http://mirrors.modwest.com/debian/       # US United States (Missoula, Montana)
++Debian=http://mirror.giantix-server.de/debian/  # DE Germany (Karlsruhe)
++Debian=http://debian.mirror.root.lu/debian/     # LU Luxembourg (Steinsel)
++Debian=http://debian.advalem.net/debian/        # FR France (Paris, Ile de)
++Debian=http://mirrors.bloomu.edu/debian/        # US United States (Bloomsburg, PA)
++Debian=http://debian.usu.edu/debian/            # US United States (Logan, UT)
+--- jigdo-0.7.3.orig/scripts/jigdo-mirror
++++ jigdo-0.7.3/scripts/jigdo-mirror
+@@ -71,7 +71,7 @@
+ maxMissing=100
+ 
+ filesPerFetch=10
+-wgetOpts="--passive-ftp --no-directories --non-verbose"
++wgetOpts="--passive-ftp --no-directories --no-verbose"
+ 
+ # To find the template file, first the leafname of the template's URL
+ # is extracted from the .jigdo file. Next, for a .jigdo file named
+--- jigdo-0.7.3.orig/doc/jigdo-file.1
++++ jigdo-0.7.3/doc/jigdo-file.1
+@@ -412,8 +412,7 @@
+ \fB--merge\fR an `[Image]\&'
+ section with arbitrary content and then have the MD5
+ checksum automatically added by
+-\fBjigdo-file\fR\&. The section `FORMAT OF
+-.JIGDO FILES' below explains the
++\fBjigdo-file\fR\&. The section `FORMAT OF .JIGDO FILES' below explains the
+ `[Image]\&' section contents in greater
+ detail.
+ .TP

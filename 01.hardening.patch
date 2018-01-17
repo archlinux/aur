@@ -1,0 +1,29 @@
+--- jigdo-0.7.3.orig/Makefile.in
++++ jigdo-0.7.3/Makefile.in
+@@ -32,7 +32,7 @@ catalogs =	@CATALOGS@
+ # "gfx" symlink is needed for the pixmaps to be found by jigdo
+ all doc mostlyclean dep depend: Makefile
+ 		-test -h gfx -o -d gfx || ln -s "$(srcdir)/gfx" gfx
+-		cd src && $(MAKE) $@
++		cd src && $(MAKE) $@ EXTRA_CFLAGS="$(EXTRA_CFLAGS)" EXTRA_CXXFLAGS="$(EXTRA_CXXFLAGS)" EXTRA_LDFLAGS="$(EXTRA_LDFLAGS)"
+ 		cd doc && $(MAKE) $@
+ 		cd po  && $(MAKE) $@
+ check test: Makefile
+--- jigdo-0.7.3.orig/src/Makefile.in
++++ jigdo-0.7.3/src/Makefile.in
+@@ -24,12 +24,12 @@ CPPFLAGS =	@CPPFLAGS@ -I. -I"$(srcdir)"
+ 		-DPACKAGE_LOCALE_DIR="\"$(datadir)/locale\"" \
+ 		$(GTKCFLAGS) $(CURLCFLAGS) # $(LIBWWWCFLAGS)
+ CC =		@CC@
+-CFLAGS =	@CFLAGS@ $(X)
++CFLAGS =	@CFLAGS@ $(X) $(EXTRA_CFLAGS)
+ CXX =		@CXX@
+-CXXFLAGS =	@CXXFLAGS@ $(X)
++CXXFLAGS =	@CXXFLAGS@ $(X) $(EXTRA_CXXFLAGS)
+ LD =		@CXX@
+ LD_C =		@CC@
+-LDFLAGS =	@LIBS@ @LDFLAGS@ $(Y)
++LDFLAGS =	@LIBS@ @LDFLAGS@ $(Y) $(EXTRA_LDFLAGS)
+ LIBS =		@LIBS@
+ AWK =		@AWK@
+ GLADECODE =	glade-2 -w # Create code from .glade file
