@@ -1,13 +1,13 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname=psi-git
-pkgver=1.3_dev_20180109
+pkgver=1.3_dev_20180117
 pkgrel=1
 pkgdesc="A jabber client. GIT version"
 arch=('i686' 'x86_64')
 url="http://psi-im.org/"
 license=('GPL2')
-depends=('qca-qt5' 'qt5-x11extras' 'qt5-multimedia' 'aspell' 'libxss' 'minizip' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('git')
+depends=('qca-qt5' 'qt5-x11extras' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'hunspell' 'aspell' 'libxss' 'minizip' 'desktop-file-utils' 'hicolor-icon-theme')
+makedepends=('git' 'cmake')
 replaces=('psi' 'psi-qt5-git')
 conflicts=('psi' 'psi-qt5-git')
 source=('git+https://github.com/psi-im/psi.git')
