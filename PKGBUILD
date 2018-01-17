@@ -1,5 +1,5 @@
 pkgname=webdir-git
-pkgver=0.1.0.62.gac7fad4
+pkgver=0.1.0.68.g78f51b3
 pkgrel=1
 pkgdesc="A simple asynchronous static file server"
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd $pkgname
-	env CARGO_INCREMENTAL=0 cargo build --release
+	cargo build --release --features sendfile
 }
 
 package() {
