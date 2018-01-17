@@ -1,12 +1,13 @@
 # Maintainer: Bernardo Ferrari Mendonca <bernardo.mferrari@gmail.com>
 pkgname=ophidian-flute-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 groups=('ophidian')
 pkgdesc="A rectilinear Steiner minimal tree and wirelength algorithm described in the ICCAD 04 and ISPD 05 papers."
 arch=('x86_64')
 url="https://gitlab.com/eclufsc/Flute"
 license=('custom')
+options=(staticlibs)
 makedepends=('make' 'bison' 'flex')
 source=('git+https://gitlab.com/eclufsc/Flute.git#branch=master')
 md5sums=('SKIP')
