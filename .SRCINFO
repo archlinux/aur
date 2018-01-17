@@ -1,10 +1,10 @@
 pkgbase = glava-git
 	pkgdesc = OpenGL audio spectrum visualizer
 	pkgver = r66.ff7d879
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wacossusca34/glava
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = python
 	depends = x-server
