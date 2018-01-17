@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=dyndhcpd
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='start DHCP daemon that dynamically creates configuration based on assigned IP address'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('markdown')
 license=('GPL')
 backup=('etc/dyndhcpd/dhcpd.conf')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
-source=("http://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('87a2b4412ed87ff2a1fd8137b5e9fb60deff96fefed7ed5aecbed35e2ea9a137'
+source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
+sha256sums=('1c1d1b49421d1e4a6b108129f377ea4449f6e275ca2820d368e51f0945836bb2'
             'SKIP')
 
 build() {
