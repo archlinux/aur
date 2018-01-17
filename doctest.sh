@@ -18,6 +18,7 @@ bl.module.import bashlink.documentation
 bl.module.import bashlink.exception
 bl.module.import bashlink.logging
 bl.module.import bashlink.path
+bl.module.import bashlink.string
 bl.module.import bashlink.time
 bl.module.import bashlink.tools
 # endregion
@@ -520,7 +521,7 @@ bl_doctest_print_declaration_warning() {
     local test_name="$module"
     [[ "$function_name" != '' ]] && test_name="$function_name"
     [ "$bl_doctest_new_declared_names" = '' ] && return
-    bl.tools.unique <<< "$bl_doctest_new_declared_names" \
+    bl.string.get_unique_lines <<< "$bl_doctest_new_declared_names" \
         | while read -r variable_or_function
     do
         if ! [[ "$variable_or_function" =~ ^${module}[._]* ]]; then
@@ -683,7 +684,7 @@ bl_doctest_test() {
         # NOTE: Adds internal already loaded but correctly prefixed functions.
         declared_function_names+=" $(! declare -F | cut -d' ' -f3 | grep -e "^$scope_name" )"
         # NOTE: Removes duplicates.
-        declared_function_names="$(bl.tools.unique <(echo "$declared_function_names"))"
+        declared_function_names="$(bl.string.get_unique_lines <(echo "$declared_function_names"))"
         local total=0
         local success=0
         bl.time.start

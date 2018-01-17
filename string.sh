@@ -19,6 +19,19 @@ alias bl.string.generate_random=bl_string_generate_random
 bl_string_generate_random() {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c "$1"
 }
+alias bl.string.get_unique_lines=bl_string_get_unique_lines
+bl_string_get_unique_lines() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        >>> local foo="a\nb\na\nb\nc\nb\nc"
+        >>> echo -e "$foo" | bl.string.get_unique_lines
+        a
+        b
+        c
+    '
+    nl "$@" | sort --key 2 | uniq --skip-fields 1 | sort --numeric-sort | \
+        sed 's/\s*[0-9]\+\s\+//'
+}
 alias bl.string.images_to_css_classes=bl_string_images_to_css_classes
 bl_string_images_to_css_classes() {
     # shellcheck disable=SC2016,SC2034
@@ -265,9 +278,9 @@ bl_string_validate_argument() {
         >>> bl.string.validate_argument h\"a\"'n's
         'h\"a\"\'n\'s'
     "
-    if [[ ! "$(grep "'" <<< "$1")" ]]; then
+    if ! grep "'" <<< "$1" &>/dev/null; then
         echo "'$1'"
-    elif [[ ! "$(grep '"' <<< "$1")" ]]; then
+    elif ! grep '"' <<< "$1" &>/dev/null; then
         echo "\"$1\""
     else
         echo "'$(sed "s/'/\\'/g" <<< "$1")'"

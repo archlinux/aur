@@ -16,6 +16,7 @@ bl.module.import bashlink.arguments
 bl.module.import bashlink.doctest
 bl.module.import bashlink.logging
 bl.module.import bashlink.path
+bl.module.import bashlink.string
 bl.module.import bashlink.tools
 # endregion
 # region functions
@@ -86,7 +87,7 @@ bl_documentation_generate() {
         # NOTE: Adds internal already loaded but correctly prefixed functions.
         declared_function_names+=" $(! declare -F | cut -d' ' -f3 | grep -e "^$scope_name" )"
         # NOTE: Removes duplicates.
-        declared_function_names="$(bl.tools.unique <(echo "$declared_function_names"))"
+        declared_function_names="$(bl.string.get_unique_lines <(echo "$declared_function_names"))"
         # Module level documentation
         local module_documentation_variable_name="${scope_name}${bl_doctest_name_indicator}"
         local docstring="${!module_documentation_variable_name}"

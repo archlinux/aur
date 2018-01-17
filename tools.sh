@@ -53,19 +53,20 @@ bl_tools_is_defined() {
         1
     '
     (
-    set +o nounset
-    if ((BASH_VERSINFO[0] >= 4)) && ((BASH_VERSINFO[1] >= 3)) \
-            && [ -z "${bl_tools__bash_version_test:-}" ]; then
-        [[ -v "${1:-}" ]] || exit 1
-    else # for bash < 4.3
-        # NOTE: ${varname:-foo} expands to foo if varname is unset or set to
-        # the empty string; ${varname-foo} only expands to foo if varname is
-        # unset.
-        # shellcheck disable=SC2016
-        eval '! [[ "${'"${1}"'-this_variable_is_undefined_!!!}"' \
-            ' == "this_variable_is_undefined_!!!" ]]'
-        exit $?
-    fi
+        set +o nounset
+        if ((BASH_VERSINFO[0] >= 4)) && ((BASH_VERSINFO[1] >= 3)) \
+                && [ -z "${bl_tools__bash_version_test:-}" ]; then
+            [[ -v "${1:-}" ]] || exit 1
+        else # for bash < 4.3
+            # NOTE: ${varname:-foo} expands to foo if varname is unset or set to
+            # the empty string; ${varname-foo} only expands to foo if varname is
+            # unset.
+            # shellcheck disable=SC2016
+            eval \
+                '! [[ "${'"${1}"'-this_variable_is_undefined_!!!}"' \
+                ' == "this_variable_is_undefined_!!!" ]]'
+            exit $?
+        fi
     )
 }
 alias bl.tools.is_empty=bl_tools_is_empty
@@ -104,18 +105,47 @@ bl_tools_is_main() {
     '
     [[ "${BASH_SOURCE[1]}" = "$0" ]]
 }
-alias bl.tools.unique=bl_tools_unique
-bl_tools_unique() {
+alias bl.tools.make_single_executbale=bl_tools_make_single_executable
+bl_tools_make_single_executable() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-        >>> local foo="a\nb\na\nb\nc\nb\nc"
-        >>> echo -e "$foo" | bl.tools.unique
-        a
-        b
-        c
+        Creates a bsd and virtually posix shell compatible single executable
+        file from an application directory.
+
+        ```bash
+            bl.tools.make_single_executable /applicationDirectory startFile
+        ```
     '
-    nl "$@" | sort --key 2 | uniq --skip-fields 1 | sort --numeric-sort | \
-        sed 's/\s*[0-9]\+\s\+//'
+    if [[ ! "$1" ]]; then
+        echo "Usage: $0 <DIRECTOTY_PATH> [EXECUTABLE_FILE_NAME] [RELATIVE_START_FILE_PATH]"
+        exit 1
+    fi
+    local file_name=index.sh
+    if [[ $2 ]]; then
+        file_name="$2"
+    fi
+    local relative_start_file_path=./index
+    if [[ $3 ]]; then
+        relative_start_file_path="$3"
+    fi
+    local directory_name="$(basename "$(readlink --canonicalize "$1")")"
+    # NOTE: short option is necessary for mac compatibility.
+    cat << EOF 1>"$file_name"
+#!/bin/bash
+executableDirectory=\$(mktemp -d 2>/dev/null || mktemp -d -t '' 2>/dev/null)
+dataOffset=\$((\$(grep --text --line-number '^exit \\\$?$' "\$0" | \\
+    cut -d ':' -f 1) + 1))
+tail -n +\$dataOffset "\$0" | tar -xzf - -C "\$executableDirectory" \\
+    1>/dev/null && \\
+"\${executableDirectory}/${directory_name}/${relative_start_file_path}" "\$@"
+exit \$?
+EOF
+    local temporay_archiv_file_path="$(mktemp).tar.gz"
+    tar --create --verbose --gzip --posix --file \
+        "$temporary_archiv_file_path" "$1"
+    cat "$temporary_archiv_file_path" 1>>"$file_name"
+    chmod +x "$file_name"
+    return $?
 }
 alias bl.tools.run_with_appended_shebang=bl_tools_run_with_appended_shebang
 bl_tools_run_with_appended_shebang() {
@@ -138,7 +168,8 @@ bl_tools_run_with_appended_shebang() {
                 argument2
         ```
     '
-    local shebangArguments=''
+    # TODO STAND
+    local shebang_arguments=''
     local arguments=''
     local applicationPath=''
     local shebangArgumentsEnded=false
@@ -170,47 +201,6 @@ bl_tools_run_with_appended_shebang() {
     # NOTE: The following line could be useful for debugging scenarios.
     #echo "Run: \"$applicationRunCommand\""
     eval "$applicationRunCommand"
-    return $?
-}
-alias bl.tools.make_single_executbale=bl_tools_make_single_executable
-bl_tools_make_single_executable() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        Creates a bsd and virtually posix shell compatible single executable
-        file from an application directory.
-
-        ```bash
-            bl.tools.make_single_executable /applicationDirectory startFile
-        ```
-    '
-    if [[ ! "$1" ]]; then
-        echo "Usage: $0 <DIRECTOTY_PATH> [EXECUTABLE_FILE_NAME] [RELATIVE_START_FILE_PATH]"
-        exit 1
-    fi
-    local fileName='index.sh'
-    if [[ "$2" ]]; then
-        fileName="$2"
-    fi
-    local relativeStartFilePath='./index'
-    if [[ "$3" ]]; then
-        relativeStartFilePath="$3"
-    fi
-    local directoryName=$(basename $(readlink --canonicalize "$1"))
-    # NOTE: short option is necessary for mac compatibility.
-    cat << EOF 1>"$fileName"
-#!/bin/bash
-executableDirectory=\$(mktemp -d 2>/dev/null || mktemp -d -t '' 2>/dev/null)
-dataOffset=\$((\$(grep --text --line-number '^exit \\\$?$' "\$0" | \\
-    cut -d ':' -f 1) + 1))
-tail -n +\$dataOffset "\$0" | tar -xzf - -C "\$executableDirectory" \\
-    1>/dev/null && \\
-"\${executableDirectory}/${directoryName}/${relativeStartFilePath}" "\$@"
-exit \$?
-EOF
-    local tempArchiv=$(mktemp).tar.gz
-    tar --create --verbose --gzip --posix --file "$tempArchiv" "$1" &&
-    cat "$tempArchiv" 1>>"$fileName"
-    chmod +x "$fileName"
     return $?
 }
 alias bl.tools.send_e_mail=bl_tools_send_e_mail
