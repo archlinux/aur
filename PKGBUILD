@@ -6,7 +6,7 @@ arch=('x86_64')
 pkgdesc="Control your recurrent activities in a smart way"
 url="https://github.com/jeanCarloMachado/whatnext"
 source=("https://github.com/jeanCarloMachado/whatnext/archive/master.zip")
-md5sums=('84e3948f36312c94b0baf360009f26f6')
+md5sums=('d8f0c6fdbac16557244604f5eeda475b')
 license=('MIT')
 depends=('python' 'jq')
 
