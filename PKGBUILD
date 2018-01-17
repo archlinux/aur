@@ -1,23 +1,24 @@
 #Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=lua51-luacheck
-pkgver=0.20.0
-_rockname=luacheck
-_rockrel=1
-pkgrel=2
+pkgver=0.21.2
+pkgrel=1
 pkgdesc="A simple static analyzer"
 arch=('i686' 'x86_64')
 url="https://github.com/mpeterv/luacheck"
 license=('MIT')
-depends=('lua' 'lua-filesystem')
 makedepends=('luarocks5.1')
+depends=('lua51' 'lua-filesystem' 'lua51-filesystem')
 conflicts=()
-source=("https://luarocks.org/${_rockname}-${pkgver}-${_rockrel}.src.rock")
-sha256sums=('a23664b495f14ddb81d6e2bb35fea02885130751de4fc6f8e341fcc79b82be11')
+source=("https://github.com/mpeterv/luacheck/archive/${pkgver}.tar.gz"
+        "luacheck")
+sha256sums=('b1528bd73dc0da2c36dc3f93110a83362553546c2f5a354be0c0162149eb1abc'
+            'b75ff5098951e643061279780c4608049656149c76651d9dd78762e2cecd7584')
 
 package() {
-    luarocks-5.1 --tree="$pkgdir/usr" install --deps-mode=none "${_rockname}-${pkgver}-${_rockrel}.src.rock"
-      find "$pkgdir/usr" -name manifest -delete
-
+ cd ${srcdir}/luacheck-$pkgver 
+  luarocks-5.1 --tree="$pkgdir/usr" install --deps-mode=none "luacheck-scm-1.rockspec"
+  find "$pkgdir/usr" -name manifest -delete
+  install ../luacheck $pkgdir/usr/bin
 }
 
