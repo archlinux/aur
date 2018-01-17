@@ -1,12 +1,12 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
-# Maintainer: Tom Gundersen <teg@jklm.no>
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Tom Gundersen <teg@jklm.no>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 
 _pkgbase=transmission
 _pkgname=transmission-cli
 pkgname=transmission-cli-git
 pkgver=2.92.r324.geb5d1a79c
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
@@ -38,6 +38,7 @@ build() {
   cd build
 
   cmake \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DENABLE_CLI=ON \
     -DENABLE_GTK=OFF \
