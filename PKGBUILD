@@ -1,7 +1,7 @@
 # Maintainer: Que Quotion <quequotion@bugmenot.com>
 # Contributor: Ramana Kumar <firstname@member.fsf.org>
 pkgname=firefox-sync
-pkgver=20180112
+pkgver=20180118
 pkgrel=1
 pkgdesc="Speed up Firefox using tmpfs"
 arch=('i686' 'x86_64')
@@ -9,20 +9,13 @@ url="http://wiki.archlinux.org/index.php/Speed-up_Firefox_using_tmpfs"
 license=('GPL')
 depends=('rsync' 'firefox')
 makedepends=('bash')
-source=(${pkgname} 'firefox-sync.desktop')
-md5sums=('4e7949eaed8f284233d2ecdecc28534c'
-         '710f182537f640ce8ca77474e7943113')
+source=(${pkgname} "${pkgname}.service")
+md5sums=('069e493c9025889787f0181c75f8c727'
+         'bc73b9d80232fea8a8bef24bfb125fe6')
 package() {
   sed -i "3 c\
 LINK=$(ls -d1 ~/.mozilla/firefox/*.default | head -n 1 | xargs basename)
 " $pkgname
-  install -D ${pkgname} ${pkgdir}/usr/bin/${pkgname}
-  cd ${pkgdir}/usr/bin
-  bash -c '{
-echo "#!/bin/bash"
-echo "firefox-sync && firefox \"\${@}\" && firefox-sync"
-} > syncfox'
-  find ${pkgdir}/usr/bin -type f -exec chmod 755 {} \;
-  find ${pkgdir}/usr/bin -type d -exec chmod 755 {} \;
-  install -Dm 644 {"${srcdir}","${pkgdir}"/etc/xdg/autostart}/firefox-sync.desktop
+  install -Dm 755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  install -Dm 644 {"${srcdir}","${pkgdir}"/usr/lib/systemd/user}/"${pkgname}".service
 }

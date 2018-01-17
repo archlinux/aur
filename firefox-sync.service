@@ -1,0 +1,11 @@
+[Unit]
+Description=Synchronize tmpfs and on-disk Firefox profiles
+
+[Service]
+Type=idle
+RemainAfterExit=true
+ExecStart=/usr/bin/firefox-sync
+ExecStop=/usr/bin/firefox-sync
+
+[Install]
+WantedBy=default.target

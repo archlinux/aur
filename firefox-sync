@@ -18,6 +18,7 @@ This program syncs your firefox profile to a ramdisk (/dev/shm) and back.
 -h prints this help message
 -d prints the default profile directory
 -p [dir] set the profile basename
+-r restores on-disk profile (use only before uninstalling firefox-sync)
 EOF
 exit 0
 }
@@ -29,6 +30,11 @@ case $options in
      exit 0;;
   h) longhelp;;
   p) LINK="$OPTARG";;
+  r) mv "$VOLATILE" "~/.mozilla/firefox/$LINK-copy"
+     mv ~/.mozilla/firefox/"$LINK"{,-trash}
+     mv ~/.mozilla/firefox/"$STATIC"{,-trash}
+     mv ~/.mozilla/firefox/"$LINK"{-copy,}
+     rm -rf ~/.mozilla/firefox/{"$LINK","$STATIC"}-trash;;
   ?) usage
      exit 0;;
   esac

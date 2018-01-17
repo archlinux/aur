@@ -1,6 +1,6 @@
 pkgbase = firefox-sync
 	pkgdesc = Speed up Firefox using tmpfs
-	pkgver = 20180112
+	pkgver = 20180118
 	pkgrel = 1
 	url = http://wiki.archlinux.org/index.php/Speed-up_Firefox_using_tmpfs
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = firefox-sync
 	depends = rsync
 	depends = firefox
 	source = firefox-sync
-	source = firefox-sync.desktop
-	md5sums = 4e7949eaed8f284233d2ecdecc28534c
-	md5sums = 710f182537f640ce8ca77474e7943113
+	source = firefox-sync.service
+	md5sums = 069e493c9025889787f0181c75f8c727
+	md5sums = bc73b9d80232fea8a8bef24bfb125fe6
 
 pkgname = firefox-sync
 
