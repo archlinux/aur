@@ -2,21 +2,17 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=vim-airline-themes
-pkgver=r1230.793ce66
+pkgver=r1279.4b7f77e
+# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 pkgrel=1
 pkgdesc='Themes for vim-airline'
 arch=('any')
 url='https://github.com/vim-airline/vim-airline-themes'
 license=('MIT')
-makedepends=('git')
 groups=('vim-plugins')
-source=("git+https://github.com/vim-airline/$pkgname.git#commit=${pkgver#*.}")
+makedepends=('git')
+source=("git+https://github.com/vim-airline/$pkgname#commit=${pkgver#*.}")
 md5sums=('SKIP')
-
-#prepare() {
-#  cd "$pkgname"
-#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
 
 package() {
   cd "$pkgname"
@@ -27,4 +23,4 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
