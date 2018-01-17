@@ -13,10 +13,10 @@ pkgname=backup-rotation
 pkgver=1.0.88
 pkgrel=35
 pkgdesc='This script allows you to create a local or remote backup rotation for your files.'
-arch=('any')
+arch=(any)
 url='http://torben.website/backupRotation'
 license=('CC-BY-3.0')
-depends=('bash' 'rsync' 'findutils')
+depends=(bash rsync findutils)
 optdepends=(
     'coreutils: for well formatted reportings about successful backup creations.'
     'curl: needed to send monitoring informations with advanced meta data.'
@@ -24,9 +24,9 @@ optdepends=(
     'sed: for well formatted reportings about successful backup creations.'
     'tree: for well formatted reportings about successful backup creations.')
 provides=(backup-rotation)
-source=('backupRotation.sh' 'backupRotation.timer' 'backupRotation.service')
-md5sums=('SKIP' 'SKIP' 'SKIP')
-copyToAUR=true
+source=(backupRotation.sh backupRotation.timer backupRotation.service)
+md5sums=(SKIP SKIP SKIP)
+copy_to_aur=true
 
 package() {
     install -D --mode 755 "${srcdir}/backupRotation.sh" \
