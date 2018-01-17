@@ -1,9 +1,10 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jre
-pkgver=9.0.1
+pkgver=9.0.4
 _major=${pkgver/.*}
 _build=11
+_hash=c2514751926b4512b076cc82f959763f
 pkgrel=1
 pkgdesc="Oracle Java Runtime Environment"
 arch=('x86_64')
@@ -34,9 +35,9 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
         "policytool-$_jname.desktop")
-sha256sums=('3c64953465e98dbab0e449954a918fada703cd0341aa98cff68854852663ee86'
+sha256sums=('331d6560ba0eadd6266e082e1a3ccd26777c48db881be07cb496805cd301d705'
             'de76dfab62f38b061fe3c99053451ed0d1b9971e892c44e7b893c604607e5694')
 
 package() {
