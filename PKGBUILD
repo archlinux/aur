@@ -2,7 +2,7 @@
 _pkgbase='yuzu'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=5434.bf1084f
+pkgver=r5516.1aa4cdc3
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -14,13 +14,17 @@ source=("$_pkgbase::git+https://github.com/yuzu-emu/yuzu"
         'git+https://github.com/philsquared/Catch'
         'git+https://github.com/MerryMage/dynarmic'
         'git+https://github.com/herumi/xbyak'
-        'git+https://github.com/fmtlib/fmt')
+        'git+https://github.com/fmtlib/fmt'
+	'git+https://github.com/svn2github/inih'
+	'git+https://github.com/yuzu-emu/unicorn')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+	 'SKIP'
+	 'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgbase"
@@ -38,6 +42,7 @@ prepare() {
 	git config submodule.xbyak.url "$srcdir/xbyak"
 	git config submodule.fmt.url "$srcdir/fmt"
 	git config submodule.inih.url "$srcdir/inih"
+	git config submodule.unicorn.url "$srcdir/unicorn"
 	git submodule update
 
 	cd externals/dynarmic
