@@ -1,6 +1,6 @@
 pkgbase = mate-screensaver-dev
 	pkgdesc = Screensaver for MATE
-	pkgver = 1.19.0
+	pkgver = 1.19.1
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = mate-screensaver-dev
 	provides = mate-screensaver-gtk3
 	conflicts = mate-screensaver
 	conflicts = mate-screensaver-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-screensaver-1.19.0.tar.xz
-	sha1sums = 6ace0a24c4386216630ae9633d029167899875c9
+	source = http://pub.mate-desktop.org/releases/1.19/mate-screensaver-1.19.1.tar.xz
+	sha1sums = 6fa1fe3f9c30749073d2d900a32d6d5ada6be668
 
 pkgname = mate-screensaver-dev
 	pkgdesc = Screensaver for MATE (GTK3 version)
