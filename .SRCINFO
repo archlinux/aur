@@ -1,0 +1,16 @@
+pkgbase = ophidian-flute-git
+	pkgdesc = A rectilinear Steiner minimal tree and wirelength algorithm described in the ICCAD 04 and ISPD 05 papers.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/eclufsc/Flute
+	arch = x86_64
+	groups = ophidian
+	license = custom
+	makedepends = make
+	makedepends = bison
+	makedepends = flex
+	source = git+https://gitlab.com/eclufsc/Flute.git#branch=master
+	md5sums = SKIP
+
+pkgname = ophidian-flute-git
+
