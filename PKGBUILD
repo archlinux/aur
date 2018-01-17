@@ -13,11 +13,10 @@ depends=('python' 'jq')
 package() {
 
 	cd "$pkgdir"
-	srcDir="../../src/whatnext-master"
 	mkdir -p usr/lib/whatnext
 	mkdir -p usr/bin
-	cp $srcDir/*.sh usr/lib/whatnext/
-	cp $srcDir/*.py usr/lib/whatnext/
-	cp $srcDir/whatnext usr/lib/whatnext/
-	cp $srcDir/wn-link usr/bin/whatnext
+	cp "$srcdir"/*.sh usr/lib/whatnext/
+	cp "$srcdir"/*.py usr/lib/whatnext/
+	cp "$srcdir"/whatnext usr/lib/whatnext/
+	cp "$srcdir"/wn-link usr/bin/whatnext
 }
