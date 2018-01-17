@@ -1,0 +1,25 @@
+From ce4cc6bd9cc593d133c302c7387551d4c630b525 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Adri=C3=A1n=20Lavi=C3=B3s=20Gomis?= <adrian@lavios.eu>
+Date: Wed, 17 Jan 2018 09:04:40 +0100
+Subject: [PATCH 5/5] Change query.log path to /var/log/dnscrypt-proxy/
+
+---
+ dnscrypt-proxy/dnscrypt-proxy.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dnscrypt-proxy/dnscrypt-proxy.toml b/dnscrypt-proxy/dnscrypt-proxy.toml
+index f2f26b0..7d85151 100644
+--- a/dnscrypt-proxy/dnscrypt-proxy.toml
++++ b/dnscrypt-proxy/dnscrypt-proxy.toml
+@@ -54,7 +54,7 @@ block_ipv6 = false
+ 
+ [query_log]
+ ### Full path to the query log file
+-# file = "query.log"
++# file = "/var/log/dnscrypt-proxy/query.log"
+ 
+ ### Query log format (currently supported: tsv and ltsv)
+ format = "tsv"
+-- 
+2.15.1
+
