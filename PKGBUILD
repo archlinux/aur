@@ -5,7 +5,7 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.14.13
+pkgver=4.14.14
 _srcname=linux-4.14
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
@@ -20,10 +20,8 @@ arch_config_trunk=dc615c7e4fc98551f6b2df9d0e97743350ba94bd
 # Arch additional patches
 arch_patches=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
   0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
   0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
   0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -43,7 +41,7 @@ for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'ce897f467e80452f29d7a7a8809e8585ea12192a2c32e4d18578f64b043e802e'
+            '62d656b98f0dc143216cb9650bd9b96cd83d92925731e9f0bec5eb4d6358e603'
             'SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -51,10 +49,8 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '24b8cf6829dafcb2b5c76cffaae6438ad2d432f13d6551fa1c8f25e66b751ed4'
             '80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794'
             'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
-            '9251c03da9d4b64591d77f490ff144d4ba514e66e74294ada541bf827306c9c4'
             '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
             '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
-            'c3d743a0e193294bc5fbae65e7ba69fd997cd8b2ded9c9a45c5151d71d9cfb95'
             'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
 
 validpgpkeys=(
@@ -94,6 +90,9 @@ prepare() {
   for n in ${arch_patches[@]} ; do patch -Np1 -i ../$n ; done
 
   cp -Tf ../config .config
+
+  # Add CONFIG_RETPOLINE=y
+  echo "CONFIG_RETPOLINE=y" >> .config
 
   ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
