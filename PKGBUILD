@@ -2,7 +2,7 @@
 # Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=sc-im-git
-pkgver=current
+pkgver=latest
 pkgrel=1
 pkgdesc='A spreadsheet program based on SC'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ MAKEFLAGS='-j1'
 prepare() {
   cd "$srcdir/sc-im/src"
   # install things in the correct place for package managers
-  patch <../../../arch.patch
+  patch < "$srcdir/arch.patch"
 }
 
 pkgver() {

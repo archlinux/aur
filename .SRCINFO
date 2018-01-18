@@ -1,6 +1,6 @@
 pkgbase = sc-im-git
 	pkgdesc = A spreadsheet program based on SC
-	pkgver = current
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/andmarti1424/sc-im
 	arch = i686
