@@ -1,8 +1,8 @@
-# Maintainer: Miguel de Val-Borro <miguel.deval@gmail.com>
+# Maintainer: Miguel de Val-Borro <miguel . deval @ gmail . com>
 
 pkgname=python-astroquery
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of tools for querying astronomical web forms and databases"
 arch=('x86_64')
 url="http://astroquery.readthedocs.org/en/latest/"
