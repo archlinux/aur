@@ -13,7 +13,6 @@ license=(GPL)
 depends=(libsecret gtk-vnc vte3 telepathy-glib avahi dconf spice-gtk3 gnutls freerdp)
 makedepends=(docbook-xsl intltool openssh itstool spice-protocol vala gnome-common appstream-glib git)
 optdepends=('openssh: SSH plugin')
-groups=(gnome-extra)
 _commit=5f615ff250186b6d3156d99d9d22e84259a1119b  # master
 source=("git+https://git.gnome.org/browse/vinagre#commit=$_commit"
         freerdp2017.diff)
