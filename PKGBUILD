@@ -1,8 +1,8 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=r8082.d4e41c4f9
-pkgrel=2
+pkgver=r9217.8721f7ed7
+pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
@@ -33,7 +33,8 @@ build() {
               -DBUILD_GITHUB_PLUGIN=ON \
               -DKICAD_SCRIPTING=ON \
               -DKICAD_SCRIPTING_MODULES=ON \
-              -DKICAD_SCRIPTING_WXPYTHON=ON
+              -DKICAD_SCRIPTING_WXPYTHON=ON \
+              -DKICAD_SCRIPTING_ACTION_MENU=ON
 
   # -DKICAD_SPICE=ON is not yet added because it really depends an
   # unreleased version of ngspice...
