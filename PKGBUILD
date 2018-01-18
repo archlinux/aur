@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/marshall/logcat-color'
 license=('Apache')
 depends=('python2-colorama')
+makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/l/logcat-color/logcat-color-${pkgver}.tar.gz")
 
 build() {
