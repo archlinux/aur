@@ -1,7 +1,7 @@
 pkgbase = gnustep-back
 	pkgdesc = The GNUstep GUI Backend
-	pkgver = 0.25.1
-	pkgrel = 2
+	pkgver = 0.26.2
+	pkgrel = 1
 	url = http://www.gnustep.org/
 	arch = x86_64
 	groups = gnustep-core
@@ -17,8 +17,8 @@ pkgbase = gnustep-back
 	depends = freetype2
 	depends = cairo
 	conflicts = gnustep-back-svn
-	source = ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-0.25.1.tar.gz
-	sha256sums = ea563b7d6e4bd8b13856306c94bfe06b0909b71e62ab70dccf1c208f4889e2bf
+	source = https://github.com/gnustep/libs-back/releases/download/back-0_26_2/gnustep-back-0.26.2.tar.gz
+	sha256sums = 1807306b47f3cdb9f30743b5706d0e618621459ddf6347fad8c838867ed23322
 
 pkgname = gnustep-back
 

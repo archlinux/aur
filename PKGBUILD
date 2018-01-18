@@ -4,8 +4,8 @@
 # Contributor: Sebastian Sareyko <public@nooms.de>
 
 pkgname=gnustep-back
-pkgver=0.25.1
-pkgrel=2
+pkgver=0.26.2
+pkgrel=1
 pkgdesc="The GNUstep GUI Backend"
 arch=('x86_64')
 url="http://www.gnustep.org/"
@@ -14,8 +14,11 @@ depends=(libgl libxmu gcc-libs freetype2 cairo)
 makedepends=('gnustep-make' 'gnustep-base' 'gnustep-gui' 'libffi' 'gcc-objc')
 conflicts=('gnustep-back-svn')
 groups=('gnustep-core')
-source=(ftp://ftp.gnustep.org/pub/gnustep/core/$pkgname-$pkgver.tar.gz)
-sha256sums=('ea563b7d6e4bd8b13856306c94bfe06b0909b71e62ab70dccf1c208f4889e2bf')
+source=(https://github.com/gnustep/libs-back/releases/download/back-${pkgver//./_}/gnustep-back-$pkgver.tar.gz)
+#{,.sig}) # Upstream Signature wasn't correctly created
+sha256sums=('1807306b47f3cdb9f30743b5706d0e618621459ddf6347fad8c838867ed23322')
+#            'SKIP')
+#validpgpkeys=('83AAE47CE829A4146EF83420CA868D4C99149679')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
