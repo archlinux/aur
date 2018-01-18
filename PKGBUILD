@@ -1,9 +1,9 @@
-# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
+# Maintainer: Miguel de Val-Borro <miguel . deval @ gmail . com>
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 
 pkgname=num-utils
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Set of programs for dealing with numbers from the command line."
 arch=(i686 x86_64)
 license=("GPL")
