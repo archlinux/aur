@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Protonmail
+Comment=Protonmail desktop client
+Exec=/usr/bin/protonmail-desktop
+Icon=/opt/protonmail-desktop/icons/protonmail-desktop.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Network;Email;
+MimeType=message/rfc822;x-scheme-handler/mailto;application/x-xpinstall;

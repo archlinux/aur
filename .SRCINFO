@@ -1,0 +1,19 @@
+pkgbase = protonmail-desktop
+	pkgdesc = Unofficial app that emulates a native client for the ProtonMail e-mail service
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/protonmail-desktop/application
+	arch = any
+	license = GPL3
+	provides = protonmail-desktop
+	source = https://github.com/protonmail-desktop/application/releases/download/v0.5.4/protonmail-desktop-0.5.4.tar.gz
+	source = https://i.imgur.com/hySaVZp.png
+	source = protonmail-desktop.desktop
+	source = protonmail-desktop
+	md5sums = 515731f7f255ae3605f5ca013b14420e
+	md5sums = 3cd502ea0bdb20f99cc8a018084746d4
+	md5sums = 738f1086d70031a262aacf329de0d06c
+	md5sums = 6edb6dd0aad1511978dca145114e87b7
+
+pkgname = protonmail-desktop
+
