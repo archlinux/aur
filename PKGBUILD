@@ -1,6 +1,6 @@
 # Maintainer: Adrián Laviós <adrian@lavios.eu>
 pkgname=dnscrypt-proxy-go-git
-pkgver=2.0.0beta1.r4.g41a9bf5
+pkgver=2.0.0beta2.r2.g35a65bc
 pkgrel=1
 pkgdesc="A modern client implementation written in Go of the DNSCrypt v2 protocol."
 arch=('x86_64')
@@ -22,11 +22,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
-  sed -i 's/"dnscrypt-resolvers.csv"/"\/var\/cache\/dnscrypt-proxy\/dnscrypt-resolvers.csv"/g' dnscrypt-proxy.toml
-  sed -i 's/"forwarding-rules.txt"/"\/etc\/dnscrypt-proxy\/forwarding-rules.txt"/g' dnscrypt-proxy.toml
-  sed -i 's/"query.log"/"\/var\/log\/dnscrypt-proxy\/query.log"/g' dnscrypt-proxy.toml
-  sed -i 's/"blacklist.txt"/"\/etc\/dnscrypt-proxy\/blacklist.txt"/g' dnscrypt-proxy.toml
-  sed -i 's/"blocked.log"/"\/var\/log\/dnscrypt-proxy\/blocked.log"/g' dnscrypt-proxy.toml
+  sed -i 's|'\''dnscrypt-resolvers\.csv'\''|'\''/var/cache/dnscrypt-proxy/dnscrypt-resolvers\.csv'\''|g' dnscrypt-proxy.toml
+  sed -i 's|'\''forwarding-rules\.txt'\''|'\''/etc/dnscrypt-proxy/forwarding-rules\.txt'\''|g' dnscrypt-proxy.toml
+  sed -i 's|'\''query\.log'\''|'\''/var/log/dnscrypt-proxy/query\.log'\''|g' dnscrypt-proxy.toml
+  sed -i 's|'\''blacklist\.txt'\''|'\''/etc/dnscrypt-proxy/blacklist\.txt'\''|g' dnscrypt-proxy.toml
+  sed -i 's|'\''blocked\.log'\''|'\''/var/log/dnscrypt-proxy/blocked\.log'\''|g' dnscrypt-proxy.toml
 }
 
 build() {
