@@ -14,12 +14,12 @@ optdepends=('openmw: make engine configuration files')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
-source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.2/tes3mp-GNU.Linux-x86_64-release-0.6.2.tar.gz'
+source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.2/tes3mp-GNU.Linux-x86_64-release-0.6.2-hotfixed.tar.gz'
         'https://raw.githubusercontent.com/TES3MP/openmw-tes3mp/master/files/tes3mp/tes3mp_logo.png'
         'tes3mp.desktop'
         'tes3mp-server.desktop'
         'tes3mp-browser.desktop')
-sha256sums=('aeb33cadd3079bf52c56d89b17b75a6e26c590336a10d9dc04ead18023bbf512'
+sha256sums=('bb7797d8cd66253115feef9493d3c941433cf52fef56bc652385d9f0fc04e51f'
           '861e5e8cc7ddec2dbfb842d68cdd45e7cc564079b9cb37ad113ff140bf424fd9'
           'c7e47f887457d72aee46f29d0f947e7c42a40676c5e80427b502af8d24b299a4'
           '2bd9e9dddda956c7cbdc8bdf2448d42500aa88ffb7fb01d2cbffc58c22fdf57d'
