@@ -20,7 +20,7 @@ MAKEFLAGS='-j1'
 prepare() {
   cd "$pkgname-$pkgver/src"
   # install things in the correct place for package managers
-  patch <../../../arch.patch
+  patch <"$srcdir/arch.patch"
 }
 
 build() {
