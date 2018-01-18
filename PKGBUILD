@@ -2,7 +2,7 @@
 
 pkgbase=('python-concurrencytest')
 pkgname=('python-concurrencytest' 'python2-concurrencytest')
-pkgdesc="A"
+pkgdesc="Python testtools extension for running unittest suites concurrently."
 pkgver=0.1.2
 pkgrel=1
 arch=('any')
