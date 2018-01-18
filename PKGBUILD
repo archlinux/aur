@@ -3,7 +3,7 @@
 
 pkgname=pybind11
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight header-only library to create Python bindings of existing C++ code'
 arch=('any')
 url='http://pybind11.readthedocs.org/'
@@ -17,8 +17,15 @@ makedepends=(
         'python-breathe'
 )
 checkdepends=('cmake' 'python-pytest' 'python-numpy')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz")
-sha256sums=('f8bd1509578b2a1e7407d52e6ee8afe64268909a1bbda620ca407318598927e7')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz"
+        'pybind11-numpy1.14-fix.patch')
+sha256sums=('f8bd1509578b2a1e7407d52e6ee8afe64268909a1bbda620ca407318598927e7'
+            '6b797fcb9c3f8a121bbfc7ff005e3573d80630fcc12f4231fb388f1c5ba1f736')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/pybind11-numpy1.14-fix.patch"
+}
 
 build () {
     cd "${pkgname}-${pkgver}/docs"
