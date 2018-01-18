@@ -2,11 +2,11 @@
 pkgname=google-java-format-git
 pkgdesc="Reformats Java source code to comply with Google Java Style"
 pkgrel=1
-pkgver=r400.830daee
+pkgver=r417.1dde65f
 arch=('any')
 url="https://github.com/google/google-java-format"
 license=('Apache')
-makedepends=('git')
+makedepends=('git' 'maven')
 depends=('java-runtime')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
