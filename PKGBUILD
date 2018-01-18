@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidolib-git
-pkgver=2805.5d64194b
+pkgver=2988.f80cb52a
 pkgrel=1
 pkgdesc="engine for the graphic rendering of music scores, based on the Guido Music Notation format (git version)"
 arch=('x86_64' 'i686')
@@ -46,7 +46,7 @@ package() {
     cp src/guido2.ttf "$pkgdir/usr/share/fonts/truetype/guido"
     # desktop files and icons
     install -d "$pkgdir/usr/share"
-    cp -R environments/Qt/package/debiansvn/usr/share/applications environments/Qt/package/debiansvn/usr/share/icons "$pkgdir/usr/share"
+    cp -R environments/Qt/package/debianbase/usr/share/applications environments/Qt/package/debianbase/usr/share/icons "$pkgdir/usr/share"
     # docs and examples
     install -d "$pkgdir/usr/share/guido/doc"
     install -Dm644 package/doc/*.pdf "$pkgdir/usr/share/guido/doc"
