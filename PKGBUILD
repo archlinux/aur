@@ -8,7 +8,8 @@ pkgdesc="Graphical configuration tool for the Direct Rendering Infrastructure"
 arch=('any')
 url="https://github.com/jlHertel/adriconf"
 license=('GPL')
-depends=('gtk3' 'libxml++' 'boost')
+depends=('gtk3' 'libxml++')
+makedepends=('gtkmm3' 'boost')
 source=(git+https://github.com/jlHertel/adriconf.git
 	adriconf.desktop
 	adriconf-icon.png)
