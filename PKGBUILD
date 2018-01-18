@@ -132,6 +132,8 @@ _package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
   sed "${_subst}" ../90-linux.hook |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  sed "${_subst}" ../99-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"  
 }
 
 _package-headers() {
