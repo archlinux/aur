@@ -4,10 +4,18 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
+##
+## The following variables take integer value, change at your wish
+##
+## Config you want to build kernel:
+## 1 xanmod's provided (default)
+## 2 Archlinux stock
+_configuration=1
+
 pkgbase=linux-xanmod-lts
 _srcname=linux-4.9
-pkgver=4.9.76
-xanmod=81
+pkgver=4.9.77
+xanmod=82
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -16,7 +24,7 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=2f8df9c7b351459eb5ffd59e548fa6f00035567c
+arch_config_trunk=bc8f2c3d6e03768966f91582b78db1e9f804e16a
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         # pacman hook for initramfs regeneration
@@ -26,30 +34,32 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         change-default-console-loglevel.patch)
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${arch_config_trunk}")
 
-sha256sums=('8d7f67124192dfa499a09eed9d5b924f3f949e4b90a19765da3eca213bce802a'
+sha256sums=('e535bbb398c739ea83485bc6ea041bfdcd56197d75512e4465cdfb48cd220aff'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1e8264f69abb56b25009636693c3e6cf564a90379704a62cae2b3681cd6f66f1'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
-sha256sums_x86_64=('3190c72835aa75ee984b83bc463ebf317c9f50d09200808bfe08464e5a08bc56')
+sha256sums_x86_64=('3de28992dd99ed2dbe327042a715dd0293c3ab37a46c74fa97b39c48403bc9f4')
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
 
-  msg2 "What config you want?"
-  echo -en "     1. upstream Xanmod\n     2. Archlinux stock\n   Selection: "
-  read -n 1 answer && echo
-  case $answer in
-    1) true ;;
-    2) cat "${srcdir}/config" > ./.config ;;
-    *) echo "Please choose 1 or 2"; exit 1 ;;
+  case $_configuration in
+    1) true ; answer="Xanmod" ;;
+    2) cat "${srcdir}/config" > ./.config ; answer="Archlinux" ;;
+    *) echo "Variable _configuration should be 1 or 2"; exit 1 ;;
   esac
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  warning "This package is now totally non-interactive!!!!!"
+  msg "Building this kernel with configuration provided by: $answer"
+  sleep 5
+  warning "To change this modify _configuration variable in PKGBUILD"
 
   if [ "${_kernelname}" != "" ]; then
     #sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
