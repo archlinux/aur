@@ -1,15 +1,15 @@
 pkgbase = phpcov
 	pkgdesc = A command-line frontend for the PHP_CodeCoverage library.
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://github.com/sebastianbergmann/phpcov
 	install = phpcov.install
 	arch = any
 	license = BSD
 	depends = php
-	source = https://phar.phpunit.de/phpcov-4.0.3.phar
-	source = https://raw.githubusercontent.com/sebastianbergmann/phpcov/4.0.3/LICENSE
-	sha512sums = e782aab1b75a90d61a6db3678bcda7a666aeffdd784a82ae51e9858c5401790c3632c64b1c61d82cbe8b2d3f5fb5040dda941f25ecc01f63a424fec538c3b9f4
+	source = https://phar.phpunit.de/phpcov-4.0.4.phar
+	source = https://raw.githubusercontent.com/sebastianbergmann/phpcov/4.0.4/LICENSE
+	sha512sums = 8ef3fcb45b192bfc8c5b62461e6b2de93780ab41a064c4d203a51c97dcc039f81065326b368a4e74dfcec47c7845a50282cd97260476ea119c74d16de376f621
 	sha512sums = 0c378b544f9c7b28ef0cb9c7e43dfb9108943c6a050a7cd28bcfa713f091659c6766c56ef2736d133e4644a79d10ba96fcfb2bd65a52a5137d4d0d3933db442a
 
 pkgname = phpcov
