@@ -118,7 +118,7 @@ void portfolio_print_all(FILE* fp) {
         memset(ticker_name_string, '\0', 32);
         free(data);
     }
-    printf("\nTotals: Value: $%lf. Expenditures: $%lf. Profit: %lf (%lf%%)\n",
+    printf("\nTotals: Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %6.2lf (%4.2lf%%)\n",
            total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent);
     free(str);
     free(ticker_name_string);
@@ -133,7 +133,7 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp){
         if (a[0] == 0 && a[1] == 0)
             printf("Your portfolio does not contain %s\n", ticker_name_string);
         else
-            printf("%lf %s. Value: $%lf. Expenditure: $%lf. Profit: %lf (%lf%%)\n",
+            printf("%8.4lf %5s. Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %6.2lf (%4.2lf%%)\n",
                    a[0] / ticker_price_usd, ticker_name_string, a[0], a[1], a[0] - a[1], (100 * (a[0] - a[1])) / a[1]);
     } else{
         free(a);

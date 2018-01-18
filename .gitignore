@@ -3,3 +3,7 @@ CMakeLists.txt
 cmake-build-debug/
 *.o
 tick
+tick.1.gz
+*.xz
+src/
+pkg/
