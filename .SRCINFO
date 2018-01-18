@@ -1,6 +1,6 @@
 pkgbase = glava-git
 	pkgdesc = OpenGL audio spectrum visualizer
-	pkgver = r70.fc45b8d
+	pkgver = r73.dbcecc9
 	pkgrel = 1
 	url = https://github.com/wacossusca34/glava
 	arch = x86_64
