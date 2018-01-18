@@ -1,8 +1,8 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=dfhack
-pkgver=0.44.03
-_pkgver=$pkgver-beta1
+pkgver=0.44.05
+_pkgver=$pkgver-alpha1
 pkgrel=1
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
