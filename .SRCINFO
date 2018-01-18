@@ -1,0 +1,18 @@
+pkgbase = python2-bleah-git
+	pkgdesc = A BLE scanner for 'smart' devices hacking based on the bluepy library, dead easy to use because retarded devices should be dead easy to hack.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/evilsocket/bleah
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-bluepy
+	depends = python2-terminaltables
+	source = python2-bleah-git::git+https://github.com/evilsocket/bleah
+	md5sums = SKIP
+
+pkgname = python2-bleah-git
+
