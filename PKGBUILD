@@ -7,7 +7,7 @@ pkgname=openssl098-dev
 _ver=0.9.8zh
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]*/.${_ver//[0-9.]/}}
-pkgrel=2
+pkgrel=3
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (0.9.8 branch)'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -67,7 +67,7 @@ package() {
 	install -D -m0755 apps/openssl "${pkgdir}/usr/bin/openssl098"
         
         mkdir -p "${pkgdir}/usr/include"
-        cp -rv include/openssl "${pkgdir}/usr/include/openssl-0.9.8"
+        cp -rvL include/openssl "${pkgdir}/usr/include/openssl-0.9.8"
 
 	mkdir -p "${pkgdir}/usr/share/licenses"
 	ln -s ${_pkgbasename} "${pkgdir}/usr/share/licenses/${pkgname}"

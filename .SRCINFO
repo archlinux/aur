@@ -1,7 +1,7 @@
 pkgbase = openssl098-dev
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (0.9.8 branch)
 	pkgver = 0.9.8.zh
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openssl.org
 	arch = i686
 	arch = x86_64
