@@ -2,21 +2,21 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-calfw-git
-pkgver=20180118.03abce9
-pkgrel=2
+pkgver=1.6.r35.g8ff7e75
+pkgrel=1
 pkgdesc="A calendar framework for Emacs"
 url="https://github.com/kiwanami/emacs-calfw"
 arch=('any')
 license=('GPL')
 depends=('emacs')
 install=emacs-calfw-git.install
-source=(git://github.com/kiwanami/emacs-calfw.git)
+source=(git://github.com/tumashu/emacs-calfw.git)
 md5sums=('SKIP')
 _gitname=emacs-calfw
 
 pkgver() {
   cd $_gitname
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | tr -d v
 }
 
 build() {

@@ -1,13 +1,13 @@
 pkgbase = emacs-calfw-git
 	pkgdesc = A calendar framework for Emacs
-	pkgver = 20180118.03abce9
-	pkgrel = 2
+	pkgver = 1.6.r35.g8ff7e75
+	pkgrel = 1
 	url = https://github.com/kiwanami/emacs-calfw
 	install = emacs-calfw-git.install
 	arch = any
 	license = GPL
 	depends = emacs
-	source = git://github.com/kiwanami/emacs-calfw.git
+	source = git://github.com/tumashu/emacs-calfw.git
 	md5sums = SKIP
 
 pkgname = emacs-calfw-git
