@@ -5,7 +5,7 @@
 
 _pkgname=Minecraft-Overviewer
 pkgname=(${_pkgname,,}{,-docs}-git)
-pkgver=0.12.0.r158.2add961
+pkgver=0.12.0.r204.22b9ab3
 pkgrel=1
 pkgdesc="Render large resolution images of a Minecraft map with a Google Maps powered interface"
 arch=('x86_64' 'i686')
