@@ -8,7 +8,7 @@ license=('GPL')
 depends=("java-runtime")
 makedepends=("java-environment>=8" "maven")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iotaledger/iri/archive/v$pkgver.tar.gz")
-md5sums=('31327d6afa5e91a022e8a4d142cd244c')
+md5sums=('f2f138067dc272a460fd3fc0fc969b02')
  
 build(){
     cd $pkgname-$pkgver

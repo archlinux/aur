@@ -9,7 +9,7 @@ pkgbase = iri
 	makedepends = maven
 	depends = java-runtime
 	source = iri-1.4.1.6.tar.gz::https://github.com/iotaledger/iri/archive/v1.4.1.6.tar.gz
-	md5sums = 31327d6afa5e91a022e8a4d142cd244c
+	md5sums = f2f138067dc272a460fd3fc0fc969b02
 
 pkgname = iri
 
