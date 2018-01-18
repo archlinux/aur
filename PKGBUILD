@@ -63,6 +63,15 @@ extract-component() {
 }
 
 prepare() {
+  echo "************************************************************"
+  echo "***                                                      ***"
+  echo "***         RIGHT NOW THE STABLE RELEASE IS NEWER!       ***"
+  echo "***                                                      ***"
+  echo "***     Edit this if you *really* want an old beta =]    ***"
+  echo "***         otherwise go and install unity-editor        ***"
+  echo "************************************************************"
+  return 1
+
   chmod +x "${srcdir}/UnitySetup-${_version}${_build}"
 }
 
