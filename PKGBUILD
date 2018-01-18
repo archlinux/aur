@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2017.3.0
-_build=f1
-_buildtag=20171206
-_randomstring=3c89f8d277f5
+_build=p2
+_buildtag=20180117
+_randomstring=7807bc63c3ab
 _prefix=/opt/Unity
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -18,7 +18,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('desktop-file-utils'
          'xdg-utils'
-         'gcc-multilib'
+         'gcc-libs'
+         'lib32-gcc-libs'
          'gconf'
          'libgl'
          'glu'
@@ -41,7 +42,7 @@ source=("${_unitydownloads}/UnitySetup-${_version}${_build}"
         'unity-editor'
         'unity-editor.desktop'
         'unity-editor-icon.png')
-sha1sums=('864eec744e5ca360c41e6121ddbd4cbb48659fe4'
+sha1sums=('ed56e42d211732e37fa84aa31b0d3eb2c92b177d'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '6ba1a3051bc0d5ed08e2fa4551d0f6c679109176'
           'fddf4861974f88f0565de7f54f7418204e729894')
