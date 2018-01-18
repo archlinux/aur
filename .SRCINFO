@@ -10,7 +10,7 @@ pkgbase = wpgtk-git
 	depends = python-gobject
 	depends = gtk3
 	depends = libxslt
-	depends = python-pywal-git
+	depends = python-pywal
 	optdepends = feh: set wallpaper
 	optdepends = nitrogen: set wallpaper
 	provides = wpgtk=r421.413248a
