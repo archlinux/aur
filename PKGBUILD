@@ -5,8 +5,8 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=58.0.100
-pkgrel=10
+pkgver=58.0.300
+pkgrel=1
 ver=58.0
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
-source=("https://archive.mozilla.org/pub/firefox/candidates/58.0-candidates/build1/source/firefox-58.0.source.tar.xz"
+source=("https://archive.mozilla.org/pub/firefox/candidates/58.0-candidates/build3/source/firefox-58.0.source.tar.xz"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$name.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
@@ -30,7 +30,7 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disabl
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/id.patch
 )
 
-sha256sums=('657f049cde85d649cec249ae246fa14bd90201fce0c64ac2764b769eb44e5820'
+sha256sums=('8774c2625b5238a883294b7bc0a6eedc2d03d8df39722dc4f571506f99a03897'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
