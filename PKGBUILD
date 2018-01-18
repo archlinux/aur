@@ -4,7 +4,7 @@
 pkgname=pantheon-code-git
 pkgver=r2477.0a016808
 pkgrel=1
-pkgdesc='The Pantheon Text Editor'
+pkgdesc='Code editor designed for elementary OS'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/code'
 license=('GPL3')
