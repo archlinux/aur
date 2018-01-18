@@ -1,0 +1,15 @@
+pkgbase = tick
+	pkgdesc = Command line stock tracker
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aokellermann/tick
+	arch = x86_64
+	license = MIT
+	depends = curl
+	provides = tick
+	conflicts = tick
+	source = git://github.com/aokellermann/tick
+	md5sums = SKIP
+
+pkgname = tick
+

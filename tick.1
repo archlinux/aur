@@ -1,0 +1,32 @@
+.TH TICK "1" "January 2018" "Tick 1.003" "User Commands"
+
+.SH NAME
+Tick - Command line stock price tracker.
+
+.SH SYNOPSIS
+tick [OPTION]...
+
+.SH DESCRIPTION
+Create your portfolio by adding your current holdings. Then, you can use the built in functions to get information on the current price. Stock information taken from IEX's API.
+
+.SS
+Portfolio:
+
+.TP
+[add/rm/set] [symbol] [quantity of shares] [USD spent]
+Either adds, removes, or sets the amount of the given stock with respect to the given values. The parameter add will add your input to the current portfolio, rm will subtract from your current portfolio, and set will set your portfolio to the input, discarding any existing data about that stock.
+
+.TP
+[check] [currency name/all]
+Prints information about your current portfolio holdings. Either a symbol or the keyword 'all' can be used. The keyword 'all' will print information about all your current holdings, as well as a grand total.
+
+.SH FILES
+.I ~/.tick_portfolio
+.RS
+Portfolio file.
+
+.SH GITHUB
+Please report any bugs using the GitHub issue tracker: https://github.com/aokellermann/tick/issues
+
+.SH AUTHORS
+Antony Kellermann -- https://github.com/aokellermann
