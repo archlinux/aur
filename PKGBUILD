@@ -2,14 +2,14 @@
 
 pkgname=frc-toolchain
 pkgver=20180117
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapackage for installing all of the FIRST Robotics Competition C/C++ build system components"
 arch=('any')
 url='https://github.com/wpilibsuite/'
 license=('GPL')
 groups=('frc-toolchain')
 depends=('arm-frc-linux-gnueabi-gcc'
-         'arm-frc-linux-gnueabi-frcmake-hg'
+         'arm-frc-linux-gnueabi-frcmake'
          'arm-frc-linux-gnueabi-gdb')
 optdepends=('arm-frc-linux-gnueabi-wpilib: for building robot code without Eclipse plugins')
 conflicts=('frc-2017')
