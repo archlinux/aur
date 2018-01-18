@@ -2,7 +2,7 @@
 
 _pkgbase=it87
 pkgname=it87-dkms-git
-pkgver=77.62042c9
+pkgver=133.7f59901
 pkgrel=1
 pkgdesc="Linux Driver for ITE LPC chips"
 arch=('x86_64' 'i686')
@@ -31,13 +31,14 @@ prepare() {
 package() {
   cd "$srcdir/$_pkgbase"
 
+  install -d "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+  cp -r ${srcdir}/${_pkgbase}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+
   install -Dm644 ${srcdir}/dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 
   sed -e "s/@_PKGBASE@/${_pkgbase}/" \
     -e "s/@PKGVER@/${pkgver}/" \
     -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 
-  cp -r ${srcdir}/${_pkgbase}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
-  
   install -Dm644 ${srcdir}/it87.conf "${pkgdir}"/usr/lib/depmod.d/it87.conf
 }
