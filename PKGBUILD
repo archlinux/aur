@@ -1,8 +1,8 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=debug_assert-git
-pkgver=1.2.r0.g0e61b7f
-pkgrel=1
+pkgver=1.3.r1.gbcbc80a
+pkgrel=2
 pkgdesc="Simple, flexible and modular assertion macro"
 arch=('any')
 url="https://github.com/foonathan/debug_assert"
@@ -21,8 +21,18 @@ pkgver() {
   )
 }
 
+build() {
+  cd "$srcdir/${pkgname%-git}"
+  mkdir -p build
+  cd build
+
+  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
+  make
+}
+
 package() {
-  mkdir -p "$pkgdir/usr/include"
-  cp "$srcdir/${pkgname%-git}/debug_assert.hpp" "$pkgdir/usr/include"
+  cd "$srcdir/${pkgname%-git}/build"
+  make install
   install -D -m644 "$srcdir/${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
