@@ -1,0 +1,17 @@
+pkgbase = arm-frc-linux-gnueabi-frcmake-git
+	pkgdesc = Wrapper scripts for using CMake with the FRC toolchain
+	pkgver = r102.c13ded0
+	pkgrel = 1
+	url = https://github.com/wpilibsuite/toolchain-builder/
+	arch = any
+	groups = frc-toolchain
+	license = GPL
+	makedepends = git
+	depends = cmake
+	provides = arm-frc-linux-gnueabi-frcmake
+	conflicts = arm-frc-linux-gnueabi-frcmake-hg
+	source = git+https://github.com/wpilibsuite/toolchain-builder
+	sha512sums = SKIP
+
+pkgname = arm-frc-linux-gnueabi-frcmake-git
+
