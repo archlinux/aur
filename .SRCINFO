@@ -1,0 +1,16 @@
+pkgbase = libretro-snes9x2002-git
+	pkgdesc = SNES libretro core heavily optimized for ARM
+	pkgver = r175.a6cf15d
+	pkgrel = 1
+	url = https://github.com/libretro/snes9x2002
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	groups = libretro
+	license = unknown
+	makedepends = git
+	source = git+https://github.com/libretro/snes9x2002.git
+	md5sums = SKIP
+
+pkgname = libretro-snes9x2002-git
+
