@@ -2,7 +2,7 @@
 
 _pkgname=understand
 pkgname=$_pkgname-bin
-_pkgbuild=851
+_pkgbuild=923
 pkgver=4.0.$_pkgbuild
 pkgrel=1
 pkgdesc="Static analysis tool for maintaining, measuring & analyzing critical or large code bases."
