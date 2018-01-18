@@ -1,12 +1,12 @@
 pkgbase = ant-gtk-theme
 	pkgdesc = Ant Theme for GTK 3.x
 	pkgver = 1.0.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.gnome-look.org/p/1099856/
 	arch = any
 	depends = gtk3
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1515733716/s/$_s/t/$_t/u//Ant.tar
-	md5sums = f5baea52b8f6c96a2b88e0df617908eb
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1516251112/s/$_s/t/$_t/u//Ant.tar
+	md5sums = d2b3f9ccbe756d84f473ce4ce9edcae2
 
 pkgname = ant-gtk-theme
 
