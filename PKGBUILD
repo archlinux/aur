@@ -2,13 +2,13 @@
 
 pkgname=jigdo
 pkgver=0.7.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Distribute large images by sending and receiving the files that make them up"
 arch=('i686' 'x86_64')
 url="http://atterer.org/jigdo/"
 license=('GPL2')
 depends=('db' 'wget')
-makedepends=('docbook-utils' 'docbook-sgml')
+makedepends=('docbook-utils' 'docbook-sgml' 'perl-sgmls')
 source=("http://atterer.org/sites/atterer/files/2009-08/$pkgname/$pkgname-$pkgver.tar.bz2"
 	"00.richard_fixes.patch"
 	"01.hardening.patch"
