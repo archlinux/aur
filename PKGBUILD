@@ -4,7 +4,7 @@ _pkgname=vtrunkd
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=0.1601_10_g82e93_dirty
-pkgrel=5
+pkgrel=6
 pkgdesc='Universal network link bonding and multichannel VPN.'
 url='http://github.com/VrayoSystems/vtrunkd'
 license=('GPL2')
@@ -69,11 +69,19 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   make DESTDIR="${pkgdir}" install
+
+  # Remove pre-installed config file -- we install it as an .example config under the documentation directory.
   rm -f "${pkgdir}/etc/vtrunkd.conf" "${pkgdir}/etc/vtrunkd_client.conf"
+
+  # make install installs a symlink to itself -- so remove it, and we install it later manually.
+  rm -f "${pkgdir}/usr/share/man/man8/vtrunkd.8"
 
   for _docfile in Credits INSTALL README.md version.h; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
+
+  install -D -v -m644 "${srcdir}/${_pkgname}/vtrunkd.8" "${pkgdir}/usr/share/man/man8/vtrunkd.8"
+  gzip -9 "${pkgdir}/usr/share/man/man8/vtrunkd.8"
 
   install -D -v -m644 "${srcdir}/${_pkgname}/vtrunkd.conf" "${pkgdir}/usr/share/doc/${_pkgname}/vtrunkd.conf.example"
   install -D -v -m644 "${srcdir}/${_pkgname}/vtrunkd_client.conf" "${pkgdir}/usr/share/doc/${_pkgname}/vtrunkd_client.conf.example"
