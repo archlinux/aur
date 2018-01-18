@@ -1,7 +1,7 @@
 pkgbase = bbdb
 	pkgdesc = A rolodex-like database for Emacs
 	pkgver = 3.1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://savannah.nongnu.org/projects/bbdb
 	install = bbdb.install
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = bbdb
 	source = https://download.savannah.gnu.org/releases/bbdb/bbdb-3.1.2.tar.gz
 	source = https://download.savannah.gnu.org/releases/bbdb/bbdb-3.1.2.tar.gz.sig
 	validpgpkeys = 8085E99D2879C87C1CDE452998D4FA2244A3B825
-	md5sums = b57cbb57ab8d4235517e79011fb52b2f
-	md5sums = SKIP
+	sha256sums = 05780f030584ddaa717d04700bc70e7d9e929141223c7f130fc0c778d73241bf
+	sha256sums = SKIP
 
 pkgname = bbdb
 
