@@ -1,0 +1,43 @@
+post_upgrade() {
+  msg2 "If you see a 'No block source available' message in the bottom-left corner of the application, close the application, wait 30 seconds, then relaunch it from Terminal with the command `dash-qt -reindex &disown`";
+};
+
+_msg() {
+  _green "==> ";
+  _white "$@";
+  tput sgr 0;
+};
+
+_msg2() {
+  _blue "  -> ";
+  _white "$@";
+  tput sgr 0;
+};
+
+_green() {
+  _color "2" "${1}";
+};
+
+_blue() {
+  _color "4" "${1}";
+};
+
+_white() {
+  _color "7";
+  for line; do
+    echo "${line}" ;
+  done ;
+};
+
+_color() {
+  tput bold;
+  tput setaf "${1}";
+
+  if ! [ "${2}" ]; then
+    return;
+  fi;
+
+  printf "%s" "${2}";
+};
+
+# vim: ts=2 sw=2 et:

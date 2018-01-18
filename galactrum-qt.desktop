@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Galactrum
+Comment=Galactrum P2P Cryptocurrency
+Exec=galactrum-qt %u
+Terminal=false
+Type=Application
+Icon=galactrum256
+MimeType=x-scheme-handler/galactrum;
+Categories=Office;Finance;
