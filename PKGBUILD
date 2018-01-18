@@ -1,9 +1,10 @@
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: kpcyrd <git@rxv.cc>
+# Contributor: Justin Dray <justin@dray.be>
 # Contributor: Mikeserv
 
 pkgname=bcache-tools
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace tools for bcache until bcache merges with either dm or md"
 changelog=bcache-tools.changelog
 arch=('i686' 'x86_64')
@@ -12,30 +13,32 @@ license=('GPL')
 depends=('util-linux')
 makedepends=('git')
 install="${pkgname}.install"
-source=("https://github.com/g2p/${pkgname}/archive/v${pkgver}.zip"
+source=("https://github.com/g2p/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'crc64.patch'
         'initcpio-arch.patch')
-md5sums=('b5371b89410f6be90bbf2cfc1c45d96d'
-         '265f3d6ad0bd1596eac8a2c3512f2d87'
-         '208d7024340b8db3cf21325df40b6267')
+sha256sums=('d56923936f37287efc57a46315679102ef2c86cd0be5874590320acd48c1201c'
+            '2536e1ea76b32b4ee4543524c64f488ccc0fe037256ce9d5c5029e873161de7e'
+            '70c14ef1b5fd41f6a34afc888c5e478bd7bea296b49643f59714c518c6e4f831')
 
 prepare() {
-	 cd "${srcdir}/${pkgname}-${pkgver}"
-	 patch -Np1 -i "${srcdir}/initcpio-arch.patch"
-	 patch -Np1 -i "${srcdir}/crc64.patch"
- }
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/initcpio-arch.patch"
+  patch -Np1 -i "${srcdir}/crc64.patch"
+}
 
- build() {
-	 cd "${srcdir}/${pkgname}-${pkgver}"
-	 make
- }
+build() {
+  cd "${pkgname}-${pkgver}"
+  make
+}
 
- package() {
-	 cd "${srcdir}/${pkgname}-${pkgver}"
-	 mkdir -p ${pkgdir}/usr/bin
-	 mkdir -p ${pkgdir}/usr/lib/udev/rules.d
-	 mkdir -p ${pkgdir}/usr/share/man/man8
-	 mkdir -p ${pkgdir}/usr/lib/initcpio/install
+package() {
+  cd "${pkgname}-${pkgver}"
+  mkdir -p ${pkgdir}/usr/bin
+  mkdir -p ${pkgdir}/usr/lib/udev/rules.d
+  mkdir -p ${pkgdir}/usr/share/man/man8
+  mkdir -p ${pkgdir}/usr/lib/initcpio/install
 
-	 make DESTDIR="${pkgdir}" install
- }
+  make DESTDIR="${pkgdir}" install
+}
+
+# vim:set ts=2 sw=2 et:

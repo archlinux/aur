@@ -1,7 +1,7 @@
 pkgbase = bcache-tools
 	pkgdesc = Userspace tools for bcache until bcache merges with either dm or md
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bcache.evilpiepirate.org/
 	install = bcache-tools.install
 	changelog = bcache-tools.changelog
@@ -10,12 +10,12 @@ pkgbase = bcache-tools
 	license = GPL
 	makedepends = git
 	depends = util-linux
-	source = https://github.com/g2p/bcache-tools/archive/v1.0.8.zip
+	source = https://github.com/g2p/bcache-tools/archive/v1.0.8/bcache-tools-1.0.8.tar.gz
 	source = crc64.patch
 	source = initcpio-arch.patch
-	md5sums = b5371b89410f6be90bbf2cfc1c45d96d
-	md5sums = 265f3d6ad0bd1596eac8a2c3512f2d87
-	md5sums = 208d7024340b8db3cf21325df40b6267
+	sha256sums = d56923936f37287efc57a46315679102ef2c86cd0be5874590320acd48c1201c
+	sha256sums = 2536e1ea76b32b4ee4543524c64f488ccc0fe037256ce9d5c5029e873161de7e
+	sha256sums = 70c14ef1b5fd41f6a34afc888c5e478bd7bea296b49643f59714c518c6e4f831
 
 pkgname = bcache-tools
 
