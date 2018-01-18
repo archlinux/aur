@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 276082 2017-12-26 02:22:10Z eschwartz $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Eric Belanger <belanger@astro.umontreal.ca>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Eric Belanger <belanger@astro.umontreal.ca>
 # Contributor: Ravi Desai <ravster3@hotmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=xfe
 pkgver=1.42
-pkgrel=1
+pkgrel=2
 pkgdesc="X File Explorer (Xfe) is an MS-Explorer like file manager for X."
 arch=('x86_64')
 url="http://roland65.free.fr/xfe"
@@ -13,10 +13,10 @@ license=("GPL")
 depends=('fox>=1:1.6' 'fox<1:1.7' 'freetype2')
 makedepends=('intltool')
 source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('34326f185070db02e7419f85f7967cdf')
+sha256sums=('a1e3e892584988c80b3a492f7b3cb78e1ee84d7148e6d1fc9d6054bbd8063bec')
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   export CFLAGS="$CFLAGS `pkg-config --cflags freetype2`"
   aclocal
   automake --add-missing
@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
