@@ -4,7 +4,7 @@ _pkgname=vtrunkd
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=0.1601_10_g82e93_dirty
-pkgrel=4
+pkgrel=5
 pkgdesc='Universal network link bonding and multichannel VPN.'
 url='http://github.com/VrayoSystems/vtrunkd'
 license=('GPL2')
@@ -24,7 +24,8 @@ checkdepends=(
 provides=("${_pkgname}=${pkgver}")
 # replaces=("${_pkgname}<=${pkgver}")
 conflicts=("${_pkgname}")
-backup=('etc/vtrunkd.conf')
+# backup=('etc/vtrunkd.conf' 'etc/vtrunkd_client.conf')
+backup=()
 options=('!emptydirs')
 source=(
   "${_pkgname}::git+http://github.com/VrayoSystems/${_pkgname}"
@@ -66,13 +67,17 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  
+
   make DESTDIR="${pkgdir}" install
+  rm -f "${pkgdir}/etc/vtrunkd.conf" "${pkgdir}/etc/vtrunkd_client.conf"
 
   for _docfile in Credits INSTALL README.md version.h; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
-  
+
+  install -D -v -m644 "${srcdir}/${_pkgname}/vtrunkd.conf" "${pkgdir}/usr/share/doc/${_pkgname}/vtrunkd.conf.example"
+  install -D -v -m644 "${srcdir}/${_pkgname}/vtrunkd_client.conf" "${pkgdir}/usr/share/doc/${_pkgname}/vtrunkd_client.conf.example"
+
   install -D -v -m644 "${srcdir}/howtos.url" "${pkgdir}/usr/share/doc/${_pkgname}/howtos.url"
   install -D -v -m644 "${srcdir}/website.url" "${pkgdir}/usr/share/doc/${_pkgname}/website.url"
 }
