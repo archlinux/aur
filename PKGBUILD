@@ -1,26 +1,26 @@
-# Maintainer: Gus deMayo <gus.demayo@gmail.com>
+# Maintainer: Augustin deMayo <gus.demayo@gmail.com>
 
-pkgname="desktop-dimmer"
-fullpkgname="Desktop Dimmer"
-pkgver=2.9.0
+pkgname='desktop-dimmer'
+fullpkgname='Desktop Dimmer'
+pkgver=4.0.4
 pkgrel=1
-pkgdesc="Enables darker-than-dark Desktop dimming for your displays."
-arch=("x86_64")
-url="https://github.com/sidneys/${pkgname}"
-license=("MIT")
-source=("https://github.com/sidneys/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman")
-md5sums=("2B05B940AACD2F31902D85B96CA30B79")
-replace_str="\/opt\/${fullpkgname}\/${pkgname}"
+pkgdesc='Enables darker-than-dark Desktop dimming for your displays.'
+arch=('x86_64')
+url='https://github.com/sidneys/${pkgname}'
+license=('MIT')
+source=('https://github.com/sidneys/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman')
+md5sums=('BD4370EE7D3E11BA8C5114481F8DDB7B')
+replace_str='\/opt\/${fullpkgname}\/${pkgname}'
 
 package() {
-    cd "${srcdir}/"
-    install -dm755 "${pkgdir}/opt/"
-    install -dm644 "${pkgdir}/usr/share/applications/"
-    install -dm755 "${pkgdir}/usr/share/icons/"
-    cp -r "${srcdir}/opt/${fullpkgname}" "${pkgdir}/opt/"
-    cp -r "${srcdir}/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    cp -r "${srcdir}/usr/share/icons" "${pkgdir}/usr/share/"
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/${fullpkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    sed -i "s/${replace_str}/${pkgname}/g" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    cd '${srcdir}/'
+    install -dm755 '${pkgdir}/opt/'
+    install -dm644 '${pkgdir}/usr/share/applications/'
+    install -dm755 '${pkgdir}/usr/share/icons/'
+    cp -r '${srcdir}/opt/${fullpkgname}' '${pkgdir}/opt/'
+    cp -r '${srcdir}/usr/share/applications/${pkgname}.desktop' '${pkgdir}/usr/share/applications/'
+    cp -r '${srcdir}/usr/share/icons' '${pkgdir}/usr/share/'
+    mkdir -p '${pkgdir}/usr/bin'
+    ln -s '/opt/${fullpkgname}/${pkgname}' '${pkgdir}/usr/bin/${pkgname}'
+    sed -i 's/${replace_str}/${pkgname}/g' '${pkgdir}/usr/share/applications/${pkgname}.desktop'
 }
