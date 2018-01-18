@@ -1,4 +1,6 @@
-pkg/*
-src/*
+pkg
+src
 *.pkg.tar.xz
-transmisson-remote-gui/*
+*.log
+transmisson-remote-gui
+transgui

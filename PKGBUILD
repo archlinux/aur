@@ -4,17 +4,17 @@
 
 pkgname=transgui-gtk2-git
 _pkgname=transgui
-pkgver=046e04f
+pkgver=5.13.0.r25.gafb6da4
 pkgrel=1
+epoch=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=(i686 x86_64)
 url='https://github.com/leonsoft-kras/transmisson-remote-gui'
 license=(GPL2)
-depends=(gtk2 desktop-file-utils)
-makedepends=(git lazarus unzip)
+depends=(gtk2)
+makedepends=(git lazarus)
 provides=(transmission-remote-gui transmission-remote-gui-gtk2)
-conflicts=(transmission-remote-gui-qt4 transmission-remote-gui-svn transmission-remote-gui transmission-remote-gui-gtk2)
-install=transgui-gtk2-git.install
+conflicts=(transmission-remote-gui-qt4 transmission-remote-gui-svn transmission-remote-gui transmission-remote-gui-gtk2 transgui-gtk transgui-qt)
 source=('git://github.com/transmission-remote-gui/transgui.git'
         ${_pkgname}.desktop)
 md5sums=('SKIP'
@@ -23,7 +23,7 @@ _ws=gtk2
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --always | sed 's|-|.|g'
+	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
@@ -44,7 +44,7 @@ package() {
   rm "${pkgdir}/usr/share/${_pkgname}/lang/transgui.template"
 
   install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}"
-  install -D -m 644 readme.txt history.txt LICENSE.txt "${pkgdir}/usr/share/doc/${pkgname}"
+  install -D -m 644 readme.txt history.txt LICENSE "${pkgdir}/usr/share/doc/${pkgname}"
 
   install -D -m 644 "${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -D -m 644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
