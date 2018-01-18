@@ -1,5 +1,5 @@
 # Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
-# Maintainer: Kewl <echo kewl@blto.eu.org | tr b a>
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname=simplenote-electron-bin
 _pkgname=simplenote
