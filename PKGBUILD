@@ -2,13 +2,13 @@
 
 _pkgname=glava
 pkgname=${_pkgname}-git
-pkgver=r66.ff7d879
-pkgrel=4
+pkgver=r69.91e1a74
+pkgrel=1
 pkgdesc="OpenGL audio spectrum visualizer"
 arch=('x86_64')
 url='https://github.com/wacossusca34/glava'
 license=('GPL3')
-depends=('x-server' 'pulseaudio' 'glfw')
+depends=('x-server' 'pulseaudio' 'glfw' 'libxext')
 makedepends=('git' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -33,18 +33,11 @@ prepare() {
 build() {
 	cd "${_pkgname}"
 
-	# glava's Makefile has a race condition
-	# See https://github.com/wacossusca34/glava/issues/8
-	make -j1
+	make
 }
 
 package() {
 	cd "${_pkgname}"
 
-	# glava's Makefile doesn't respect $DESTDIR & co
-	# See https://github.com/wacossusca34/glava/issues/8 (comments)
-	install -Dm755 glava "${pkgdir}/usr/bin/glava"
-
-	install -d "${pkgdir}/etc/xdg"
-	cp -rv shaders "${pkgdir}/etc/xdg/glava"
+	make DESTDIR="${pkgdir}/" install
 }
