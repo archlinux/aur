@@ -1,7 +1,7 @@
 # Maintainer: ber532k <ber532k@gmx.de>
 
 pkgname=tmux-xpanes
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='Create multiple panes with ultimate terminal divider.'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/greymd/tmux-xpanes'
 depends=('tmux')
 license=('MIT')
 source=("https://github.com/greymd/tmux-xpanes/archive/v$pkgver.tar.gz")
-md5sums=('f31ff4e0810dcacb0d3dcbca71f64783')
+md5sums=('4fb9caa88536cc2d3457fe12b73bd87e')
 
 package() {
     install -D -m 755 "$srcdir/tmux-xpanes-$pkgver/bin/xpanes" "$pkgdir/usr/bin/xpanes"
