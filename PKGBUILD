@@ -3,16 +3,16 @@
 readonly REPO="github.com/projectatomic/skopeo"
 
 pkgname=skopeo
-pkgver=0.1.19
+pkgver=0.1.27
 pkgrel=1
 pkgdesc='A command line utility for various operations on container images and image repositories.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://${REPO}"
 license=('Apache')
 makedepends=('go' 'go-md2man' 'gpgme' 'btrfs-progs' 'device-mapper')
-depends=('gpgme' 'device-mapper')
+depends=('gpgme' 'device-mapper' 'ostree')
 source=("https://github.com/projectatomic/${pkgname}/archive/v${pkgver}/${pkgname}.tar.gz")
-sha256sums=("b0735a46cada57008803b78330b4822f133f1a5fb9ea3b75d3453d64c4b33ab6")
+sha256sums=("a72a920bc13260ac167f938e9b7dbbb0a53bf0a82c5d76109b2b5aaba62be71a")
 
 prepare() {
     rm -rf "${srcdir}/src"
