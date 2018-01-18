@@ -4,7 +4,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=gnuplot-headless
-pkgver=5.0.6
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="Plotting package which outputs to PostScript, PNG, GIF, and others, without any X or latex depencies." 
 arch=('i686' 'x86_64') 
@@ -17,7 +17,7 @@ conflicts=('gnuplot')
 options=('!makeflags')
 source=("http://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-$pkgver.tar.gz"
         "lua53_compat.patch")
-sha1sums=('f7b8948166b22e5bd658d5cf7579716f4821dba0'
+sha1sums=('fc39158851f39e48136d2bdd3f753bf46a99965c'
           '9005fa9e4da91ceedb8ccd1d761866e7b064f8b1')
 
 prepare() {
