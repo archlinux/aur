@@ -79,13 +79,16 @@ bl_cli_powerline_thumbsup='(ok)'
 bl_cli_unicode_enabled=false
 # endregion
 # region functions
-# TODO improve unicode detection
 alias bl.cli.glyph_available_in_font=bl_cli_glyph_available_in_font
 bl_cli_glyph_available_in_font() {
-    local current_font
-    current_font=$(xrdb -q | command grep -i facename | cut -d: -f2)
-    local font_file_name
-    font_file_name=$(fc-match "$current_font" | cut -d: -f1)
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        Check if unicode glyphicons are available.
+
+        >>> bl.cli.glyph_available_in_font
+    '
+    local current_font="$(xrdb -q | command grep -i facename | cut -d: -f2)"
+    local font_file_name="$(fc-match "$current_font" | cut -d: -f1)"
     #font_path=$(fc-list "$current_font" | command grep "$font_file_name" | cut -d: -f1)
     local font_file_extension="${font_file_name##*.}"
     # Alternative or to be sure
@@ -208,8 +211,8 @@ bl_cli_disable_unicode_glyphs() {
         +
     '
     bl_cli_unicode_enabled=false
-    local suffix
-    for suffix in \
+    local name
+    for name in \
         arrow_down \
         arrow_left \
         arrow_right \
@@ -227,7 +230,7 @@ bl_cli_disable_unicode_glyphs() {
         saxophone \
         thumbsup
     do
-        eval "bl_cli_powerline_${name}=bl_cli_powerline_${name}_backup"
+        eval "bl_cli_powerline_${name}=\"\$bl_cli_powerline_${name}_backup\""
     done
 }
 alias bl.cli.enable_unicode_glyphs=bl_cli_enable_unicode_glyphs
@@ -242,7 +245,7 @@ bl_cli_enable_unicode_glyphs() {
         \u2714
     '
     local suffix
-    for suffix in \
+    for name in \
         arrow_down \
         arrow_left \
         arrow_right \
@@ -260,7 +263,7 @@ bl_cli_enable_unicode_glyphs() {
         saxophone \
         thumbsup
     do
-        eval "bl_cli_powerline_${name}_backup=bl_cli_powerline_${name}"
+        eval "[[ -z \"\$bl_cli_powerline_${name}_backup\" ]] && bl_cli_powerline_${name}_backup=\"\$bl_cli_powerline_${name}\""
     done
     # shellcheck disable=SC2034
     bl_cli_unicode_enabled=true

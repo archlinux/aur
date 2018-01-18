@@ -201,19 +201,6 @@ bl_logging_set_commands_level() {
         bl.logging.set_command_output_off
     fi
 }
-alias bl.logging.set_command_output_off=bl_logging_set_command_output_off
-bl_logging_set_command_output_off() {
-    # shellcheck disable=SC2034
-    bl_logging_commands_output_saved="$bl_logging_options_command"
-    bl_logging_set_file_descriptors "$bl_logging_log_file" \
-        --logging="$bl_logging_options_log" --commands="off"
-}
-alias bl.logging.set_command_output_on=bl_logging_set_command_output_on
-bl_logging_set_command_output_on() {
-    bl.logging.set_file_descriptors "$bl_logging_log_file" \
-        --logging="$bl_logging_options_log" \
-        --commands="std"
-}
 alias bl.logging.set_file_descriptors=bl_logging_set_file_descriptors
 bl_logging_set_file_descriptors() {
     # shellcheck disable=SC1004,SC2016,SC2034
@@ -439,6 +426,21 @@ bl_logging_set_file_descriptors() {
     elif [[ "$bl_logging_options_command" == "off" ]]; then
         exec 1>>/dev/null 2>>/dev/null
     fi
+}
+# NOTE: Depends on "bl.logging.set_file_descriptors"
+alias bl.logging.set_command_output_off=bl_logging_set_command_output_off
+bl_logging_set_command_output_off() {
+    # shellcheck disable=SC2034
+    bl_logging_commands_output_saved="$bl_logging_options_command"
+    bl.logging.set_file_descriptors "$bl_logging_log_file" \
+        --logging="$bl_logging_options_log" --commands="off"
+}
+# NOTE: Depends on "bl.logging.set_file_descriptors"
+alias bl.logging.set_command_output_on=bl_logging_set_command_output_on
+bl_logging_set_command_output_on() {
+    bl.logging.set_file_descriptors "$bl_logging_log_file" \
+        --logging="$bl_logging_options_log" \
+        --commands="std"
 }
 alias bl.logging.set_level=bl_logging_set_level
 bl_logging_set_level() {

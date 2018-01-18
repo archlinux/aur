@@ -28,8 +28,11 @@ bl_dependency_check() {
         2
         >>> bl.dependency.check __not_existing__ 1>/dev/null; echo $?
         2
-        >>> bl.dependency.check "ls __not_existing__"; echo $?
+        >>> bl.dependency.check ls __not_existing__; echo $?
         __not_existing__
+        2
+        >>> bl.dependency.check "ls __not_existing__"; echo $?
+        ls __not_existing__
         2
     '
     if ! hash &>/dev/null; then

@@ -37,6 +37,37 @@ bl_module_prevent_namespace_check=true
 bl_module_scope_rewrites=('^bashlink([._][a-zA-Z_-]+)$/bl\1/')
 # endregion
 # region functions
+alias bl.module.check_name=bl_module_check_name
+bl_module_check_name() {
+    local name="$1"
+    local resolved_scope_name="$2"
+    local alternate_resolved_scope_name="$(echo "$resolved_scope_name" | \
+        sed --regexp-extended 's/\./_/g')"
+    if ! [[ \
+        "$name" =~ ^${resolved_scope_name}[_A-Z]* || \
+        "$name" =~ ^${alternate_resolved_scope_name//\./\\./}[_A-Z]* \
+    ]]; then
+        local excluded=false
+        local excluded_pattern
+        for excluded_pattern in "${bl_module_allowed_scope_names[@]}"; do
+            if [[ $name =~ ^${excluded_pattern}[._A-Z]* ]]; then
+                excluded=true
+                break
+            fi
+        done
+        if ! $excluded; then
+            for excluded_pattern in "${bl_module_allowed_names[@]}"; do
+                if [[ "$excluded_pattern" = "$name" ]]; then
+                    excluded=true
+                    break
+                fi
+            done
+        fi
+        if ! $excluded; then
+            return 1
+        fi
+    fi
+}
 alias bl.module.determine_aliases=bl_module_determine_aliases
 bl_module_determine_aliases() {
     # shellcheck disable=SC2016,SC2034
@@ -127,8 +158,6 @@ bl_module_import_with_namespace_check() {
         --suffix=bashlink-module-declared-names-after-source)"
     # NOTE: All variables which are declared after "determine_declared_names"
     # will be interpreted as newly introduced variables from given module.
-    local alternate_resolved_scope_name="$(echo "$resolved_scope_name" | \
-        sed --regexp-extended 's/\./_/g')"
     local name
     bl.module.determine_declared_names \
         true \
@@ -142,11 +171,10 @@ bl_module_import_with_namespace_check() {
     bl.module.determine_declared_names \
         >"$bl_module_declared_names_before_source_file_path"
     while read -r name ; do
-        if [[ $name =~ ^${resolved_scope_name}[_A-Z]$ ]] || [[ $name =~ ^${alternate_resolved_scope_name//\./\\\\./}[.A-Z]$ ]]; then
+        if bl.module.check_name "$name" "$resolved_scope_name"; then
             bl.module.log warn \
                 "Namespace \"$resolved_scope_name\" in \"$scope_name\" is" \
-                "not clean: Name \"$name\" is" \
-                "already defined." \
+                "not clean: Name \"$name\" is already defined." \
                 1>&2
         fi
     done < "$bl_module_declared_names_before_source_file_path"
@@ -162,32 +190,17 @@ bl_module_import_with_namespace_check() {
         command grep -e "^>" | sed 's/^> //'
     )"
     for name in $new_declared_names; do
-        if ! [[ $name =~ ^${resolved_scope_name}[_A-Z]* || $name =~ ^${alternate_resolved_scope_name//\./\\./}[_A-Z]* ]]; then
-            local excluded=false
-            local excluded_pattern
-            for excluded_pattern in "${bl_module_allowed_scope_names[@]}"; do
-                if [[ $name =~ ^${excluded_pattern}[._A-Z]* ]]; then
-                    excluded=true
-                    break
-                fi
-            done
-            if ! $excluded; then
-                for excluded_pattern in "${bl_module_allowed_names[@]}"; do
-                    if [[ "$excluded_pattern" = "$name" ]]; then
-                        excluded=true
-                        break
-                    fi
-                done
-            fi
-            if ! $excluded; then
-                bl.module.log \
-                    warn \
-                    "Module \"$scope_name\" introduces a global" \
-                    "unprefixed name: \"$name\". Maybe it should be" \
-                    "prefixed with \"${resolved_scope_name}\" or" \
-                    "\"$alternate_resolved_scope_name\"." \
-                    1>&2
-            fi
+        if ! bl.module.check_name "$name" "$resolved_scope_name"; then
+            local alternate_resolved_scope_name="$(
+                echo "$resolved_scope_name" | sed --regexp-extended 's/\./_/g'
+            )"
+            bl.module.log \
+                warn \
+                "Module \"$scope_name\" introduces a global unprefixed name:" \
+                "\"$name\". Maybe it should be prefixed with \"" \
+                "${resolved_scope_name}\" or \"" \
+                "$alternate_resolved_scope_name\"." \
+                1>&2
         fi
     done
     # Mark introduced names as checked.

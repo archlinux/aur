@@ -59,7 +59,7 @@ bl_dictionary_get() {
     else
         local store="bl_dictionary_store_${name}[${key}]"
     fi
-    bl.tools.is_defined "${store}" || return 1
+    bl.tools.is_defined "$store" || return 1
     local value="${!store}"
     echo "$value"
 }
