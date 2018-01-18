@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r131745
+pkgver=27.0.50.r131803
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -26,12 +26,12 @@ pkgver() {
 
 prepare() {
   cd emacs
-  patch -Np1 < $srcdir/check_IM6.patch
+  patch -Np1 < "$srcdir"/check_IM6.patch
 }
 
 build() {
   cd emacs
-  [[ -x configure ]] || ( ./autogen.sh && ./autogen.sh autoconf )
+  [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
   ac_cv_lib_gif_EGifPutExtensionLast=yes PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig" \
     ./configure --program-transform-name='s/^ctags$/ctags.emacs/' \
     --prefix=/usr \
@@ -44,6 +44,7 @@ build() {
     --with-modules \
     --with-xft \
     --without-gconf \
+    --without-gsettings \
     --with-imagemagick \
     --without-xwidgets \
     --without-pop \
