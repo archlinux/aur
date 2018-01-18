@@ -4,8 +4,9 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch" "python-pytorch-cuda" "python2-pytorch-cuda")
 _pkgname="pytorch"
+_commit=af3964a
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="http://pytorch.org"
@@ -13,7 +14,7 @@ license=('BSD')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools'
              'python-yaml' 'python2-yaml' 'python-numpy' 'python2-numpy'
              'gcc6' 'cmake' 'cuda' 'cudnn' 'git')
-source=("${_pkgname}-${pkgver}::git://github.com/pytorch/pytorch.git#tag=v${pkgver}"
+source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#commit=$_commit"
         "git://github.com/facebookincubator/gloo"
         "git://github.com/pybind/pybind11"
         "git://github.com/nanopb/nanopb")
@@ -45,7 +46,7 @@ build() {
   # Uncomment and modify the following line to enable Intel MKL and magma support
   #CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
   CFLAGS="${CFLAGS/-fno-plt/}" \
-  CXXFLAGS="${CFLAGS/-fno-plt/}" \
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}" \
   NO_CUDA=1 \
   WITH_CUDA=0 \
   WITH_CUDNN=0 \
@@ -56,7 +57,7 @@ build() {
   # Uncomment and modify the following line to enable Intel MKL and magma support
   #CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
   CFLAGS="${CFLAGS/-fno-plt/}" \
-  CXXFLAGS="${CFLAGS/-fno-plt/}" \
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}" \
   NO_CUDA=1 \
   WITH_CUDA=0 \
   WITH_CUDNN=0 \
@@ -69,7 +70,7 @@ build() {
   CC=gcc-6 \
   CXX=g++-6 \
   CFLAGS="${CFLAGS/-fno-plt/}" \
-  CXXFLAGS="${CFLAGS/-fno-plt/}" \
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}" \
   WITH_CUDA=1 \
   CUDA_HOME=/opt/cuda \
   WITH_CUDNN=1 \
@@ -85,7 +86,7 @@ build() {
   CC=gcc-6 \
   CXX=g++-6 \
   CFLAGS="${CFLAGS/-fno-plt/}" \
-  CXXFLAGS="${CFLAGS/-fno-plt/}" \
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}" \
   WITH_CUDA=1 \
   CUDA_HOME=/opt/cuda \
   WITH_CUDNN=1 \
