@@ -1,22 +1,30 @@
-# Maintainer: synapse84 <synapse84 at gmail dot com>
+# Maintainer: Giovanni Harting <539@idlegandalf.com>
+# Contributor: synapse84 <synapse84 at gmail dot com>
 
 pkgname=mumble-snapshot
-pkgver=1.3.0_2584_g53c5a91
+pkgver=1.3.0_2586_g894ade2
 pkgrel=1
 pkgdesc="A high quality voice chat program."
 arch=('i686' 'x86_64')
 url="https://www.mumble.info/"
 license=('BSD')
-depends=('qt5-base' 'qt5-svg' 'opus' 'speex' 'libpulse' 'avahi' 'protobuf' 'speech-dispatcher')
-makedepends=('boost' 'qt5-tools')
+depends=('qt5-svg' 'opus' 'speex' 'protobuf' 'hicolor-icon-theme' 'libspeechd' 'libpulse')
+makedepends=('boost' 'qt5-tools' 'python' 'libsndfile' 'speech-dispatcher')
 optdepends=('espeak: speech synthesizer')
 provides=('mumble')
 conflicts=('mumble')
-install=mumble.install
-source=("https://dl.mumble.info/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig})
+source=("https://dl.mumble.info/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig}
+	"float_overload.patch")
 validpgpkeys=('C4666C6767A26017CE68406988048D0D625297A0')
-sha256sums=('0f5b042d56da91fdaada7016ca8f94bedf4fbaa0a78c7c57f54ca5b97c3ead82'
-            'SKIP')
+sha256sums=('a0b8720e01495c399d14c2051bcf5e7356ceea8e0162a75cc4e10039a5324f7e'
+            'SKIP'
+            'c65cd76cdc4243ce29d7ce005a438e0a1bd7f99327e2623bea9436901fab98ec')
+
+
+prepare() {
+    cd $srcdir/mumble-${pkgver//_/\~}~snapshot
+    patch -Np1 -i "${srcdir}/float_overload.patch"
+}
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
