@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/jlHertel/adriconf"
 license=('GPL')
 depends=('gtk3' 'libxml++')
-makedepends=('gtkmm3' 'boost')
+makedepends=('cmake' 'gtkmm3' 'boost')
 source=(git+https://github.com/jlHertel/adriconf.git
 	adriconf.desktop
 	adriconf-icon.png)
