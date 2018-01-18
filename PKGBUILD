@@ -13,7 +13,7 @@ depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutte
 makedepends=(pkgconfig intltool gobject-introspection itstool vala gnome-common git appstream-glib
              gnome-video-effects)
 optdepends=('gnome-video-effects: Camera effects')
-groups=(gnome-extra)
+groups=(gnome)
 options=(!emptydirs)
 _commit=41843aad67d56918587543aec22ba15cfef25ebc  # master~1
 source=("git+https://git.gnome.org/browse/cheese#commit=$_commit")
