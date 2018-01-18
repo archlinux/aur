@@ -1,0 +1,22 @@
+pkgbase = papirus-dark-kde-git
+	pkgdesc = Papirus Dark theme for KDE
+	pkgver = r2.de1a069
+	pkgrel = 1
+	url = https://github.com/droserasprout/papirus-dark-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plasma-workspace
+	depends = papirus-icon-theme
+	provides = papirus-dark-kde
+	conflicts = papirus-dark-kde
+	replaces = papirus-dark-aurorae-theme-git
+	replaces = papirus-dark-color-scheme-git
+	replaces = papirus-dark-konsole-colorscheme-git
+	replaces = papirus-dark-yakuake-theme-git
+	options = !strip
+	source = papirus-dark-kde::git+https://github.com/droserasprout/papirus-dark-kde.git
+	sha256sums = SKIP
+
+pkgname = papirus-dark-kde-git
+
