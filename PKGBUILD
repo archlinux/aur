@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains generic definitions of geometric shapes and
 url='http://ros.org/wiki/geometric_shapes'
 
 pkgname='ros-kinetic-geometric-shapes'
-pkgver='0.5.2'
-_pkgver_patch=0
+pkgver='0.5.3'
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-visualization-msgs
@@ -19,11 +19,11 @@ ros_makedepends=(ros-kinetic-visualization-msgs
   ros-kinetic-shape-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
+  eigen3
   qhull
   assimp
-  eigen3
-  boost
   console-bridge
+  boost
   pkg-config)
 
 ros_depends=(ros-kinetic-visualization-msgs
@@ -34,10 +34,10 @@ ros_depends=(ros-kinetic-visualization-msgs
   ros-kinetic-shape-msgs)
 depends=(${ros_depends[@]}
   assimp
+  qhull
   boost
   eigen3
-  console-bridge
-  qhull)
+  console-bridge)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/geometric_shapes/${pkgver}-${_pkgver_patch}
@@ -48,7 +48,14 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometric_shapes-release-release-kinetic-geometric_shapes-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometric_shapes-release/archive/release/kinetic/geometric_shapes/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a5aeb3ef5402030a448c61e2c26a22c1cb480c937d0fbcebbd5be42ae74a4545')
+sha256sums=('6da99e2c74ec9592c4812811c32389e733dfe1f1202fdf1b6ccf8b5d27ae721d')
+
+prepare() {
+  cd ${srcdir}
+  find . -iname *.cpp \
+	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
+	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \;
+}
 
 build() {
   # Use ROS environment variables
