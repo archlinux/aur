@@ -7,7 +7,7 @@ set -u
 pkgname='konica-minolta-bizhub-ic-601'
 pkgver='20000.0001'
 pkgrel=1
-pkgdesc='PostScript printer driver for C7000 C6000'
+pkgdesc='PostScript printer driver for bizhub PRESS C7000 C6000'
 arch=('any')
 url='https://kmbs.konicaminolta.us/kmbs/support-downloads'
 license=('custom:proprietary')
