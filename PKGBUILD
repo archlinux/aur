@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt is a Qt-based framework for GUI development for ROS."
 url='http://ros.org/wiki/rqt'
 
 pkgname='ros-kinetic-rqt'
-pkgver='0.3.1'
+pkgver='0.5.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="rqt-release-release-kinetic-rqt-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt-release/archive/release/kinetic/rqt/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b49195fe85910edec7010d0d624cea5ed62250731b4457fda34ed6bd28e1631f')
+sha256sums=('af64e2e1fafd9744f59cb8c9db459dc63c02fa8cf2e20a1a33342d11abbb5144')
 
 build() {
   # Use ROS environment variables
