@@ -1,0 +1,31 @@
+pkgbase = kawaii-player
+	pkgdesc = A powerful frontend for MPV with media server and torrent streaming capabilities
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://github.com/kanishka-linux/kawaii-player
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = curl
+	depends = ffmpegthumbnailer
+	depends = libnotify
+	depends = libtorrent-rasterbar
+	depends = mpv
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-dbus
+	depends = python-lxml
+	depends = python-mutagen
+	depends = python-pillow
+	depends = python-pycurl
+	depends = python-pyqt5
+	depends = python-pytaglib
+	depends = qt5-webengine
+	depends = sqlite3
+	depends = wget
+	depends = youtube-dl
+	source = https://github.com/kanishka-linux/kawaii-player/releases/download/v2.9.0-0/kawaii-player-2.9.0-0.tar.bz2
+	md5sums = b469c0deb51ecf1322f2a7eb8c5cd3bd
+
+pkgname = kawaii-player
+
