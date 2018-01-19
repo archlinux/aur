@@ -1,0 +1,44 @@
+Kernel driver for the Broadcom bcm2079x contactless
+communication controller
+
+General
+-------
+
+The bcm2079x is an integrated Controller for contactless communication.
+
+Host Interfaces: I2C, SPI and UART, this driver supports I2C.
+
+The Driver
+----------
+
+The bcm2079x-i2c driver can be found under drivers/misc/bcm2079x-i2c.c and its
+header file include/linux/platform_data/bcm2079x.h.
+
+The userspace application uses /dev/bcm2079x-i2c device to communicate with the
+Controller using NCI command messages. In a typical scenario application
+will open /dev/bcm2079x-i2c; power up and wake up the Controller chip using
+ioctl(). write to the Controller using write(). poll() the device to check if
+data is available. Use read() to read the data from the Controller.
+
+The driver waits for bcm2079x Controller's interrupt which occurs if there are
+data to be read.  Then, poll() will indicate the fact to the userspace.  read()
+will return full NCI or HCI packet to the userspace application. Unsolicited
+read() will receive garbage data.
+
+Userspace application may use ioctl() to allow the Controller to enter snooze or
+sleep mode.
+
+Userspace application may use ioctl() to set the client address the driver uses
+to communicate with the Controller.  This allows userspace application to change
+the device address of the Controller.
+
+Platform Data
+-------------
+
+The following platform data should be set when configuring board.
+
+struct bcm2079x_platform_data {
+	unsigned int irq_gpio;
+	unsigned int en_gpio;
+	unsigned int wake_gpio;
+};

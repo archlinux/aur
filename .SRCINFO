@@ -1,0 +1,21 @@
+pkgbase = bcm2079x-i2c
+	pkgdesc = DKMS module for bcm2079x-i2c NFC driver used in Lenovo ThinkPad T440s. Not useful as-is, because the userspace portion is only make for Android so far.
+	pkgver = 1
+	pkgrel = 1
+	url = https://patchwork.kernel.org/patch/2847848/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	conflicts = bcm2079x-i2c
+	source = bcm2079x-i2c.c
+	source = bcm2079x.h
+	source = dkms.conf
+	source = Makefile
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = bcm2079x-i2c
+
