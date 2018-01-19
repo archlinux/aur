@@ -1,15 +1,17 @@
 pkgbase = polarr
 	pkgdesc = Professional Photo Editing Tools for Everyone.
 	pkgver = 4.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.polarr.co
 	arch = x86_64
 	license = custom
+	makedepends = squashfs-tools
+	makedepends = sed
 	depends = gconf
 	depends = vips
 	provides = polarr
-	source = https://pickystore.blob.core.windows.net/models/polarr_4.4.5_amd64_xenial.deb
-	sha256sums = 9c6e19bf770f68ca207ac8a4019fad252be05440b23d2d626ba1520a514442bf
+	source = https://api.snapcraft.io/api/v1/snaps/download/oOxiekhc2pVHoTfGudxNM0xNUEJWG5jD_3.snap
+	sha256sums = 80ea19f34e538f8e5b8d450c8228a81a2368f7e4265726f043fc91437e40116b
 
 pkgname = polarr
 
