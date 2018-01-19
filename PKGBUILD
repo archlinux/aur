@@ -12,6 +12,7 @@ sha256sums=('28ae5ef435d3fca2564123e857c1a638d1faa67950d1c48093b9baf96118e221')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
+  chmod +x fw
   cp fw "${pkgdir}/usr/bin/fw"
 }
 
