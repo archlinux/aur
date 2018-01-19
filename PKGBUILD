@@ -1,6 +1,6 @@
 pkgname=mingw-w64-qwt-qt4
 pkgver=6.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Widgets for Technical Applications (mingw-w64, qwt-qt4.dll only)"
 arch=('any')
 license=('custom:qwt')
@@ -37,7 +37,7 @@ build() {
 
     # Make install locations consistent with Arch's native Qwt:
     sed -i 's|$${QWT_INSTALL_PREFIX}/doc|$${QWT_INSTALL_PREFIX}/share/doc/qwt|' qwtconfig.pri
-    sed -i 's|$${QWT_INSTALL_PREFIX}/include|$${QWT_INSTALL_PREFIX}/include/qwt|' qwtconfig.pri
+    sed -i 's|$${QWT_INSTALL_PREFIX}/include|$${QWT_INSTALL_PREFIX}/include/qwt-qt4|' qwtconfig.pri
 
     # No need for docs:
     sed -i "s|= target doc|= target|" src/src.pro
@@ -55,12 +55,20 @@ build() {
 }
 
 package() {
+
   for _target in ${_architectures}; do
+
     cd "${srcdir}/${pkgname}-${pkgver}-build-${_target}/qwt-${pkgver}"
-    install -d "$pkgdir"/usr/${_target}/{lib,bin}
-    install -m 644 lib/libqwt-qt4.dll.a "$pkgdir"/usr/${_target}/lib/
-    install -m 755 lib/qwt-qt4.dll "$pkgdir"/usr/${_target}/bin
+
+    make INSTALL_ROOT=${pkgdir} QTDIR=/usr/${_target}/ install
+
+    cd "${pkgdir}/usr/${_target}"
+
+    # Move DLLs from lib to bin
+    mkdir -p bin
+    mv lib/*.dll bin/
     ${_target}-strip --strip-unneeded "$pkgdir"/usr/${_target}/bin/*.dll
     ${_target}-strip -g "$pkgdir"/usr/${_target}/lib/*.a
+    rm -r "$pkgdir"/usr/${_target}/share "$pkgdir"/usr/${_target}/features
   done
 }
