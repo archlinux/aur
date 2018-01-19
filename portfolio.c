@@ -62,7 +62,7 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
         free(end);
         fclose(fp);
     } else {
-        if (iex_get_current_price(ticker_name_string) == -1)
+        if (api_get_current_price(ticker_name_string) == -1)
             return;
         if (option == REMOVE) {
             printf("You don't have any %s to remove!\n", ticker_name_string);
@@ -125,16 +125,18 @@ void portfolio_print_all(FILE* fp) {
 }
 
 double* portfolio_print_stock(char* ticker_name_string, FILE* fp){
-    double ticker_price_usd = iex_get_current_price(ticker_name_string);
     double* a = malloc(sizeof(double) * 2);
     if (portfolio_get_usd_spent(ticker_name_string, fp)) {
-        a[0] = portfolio_get_quantity_shares(ticker_name_string, fp) * ticker_price_usd;
+        a[0] = portfolio_get_quantity_shares(ticker_name_string, fp);
         a[1] = portfolio_get_usd_spent(ticker_name_string, fp);
-        if (a[0] == 0 && a[1] == 0)
+        if (a[0] == 0)
             printf("Your portfolio does not contain %s\n", ticker_name_string);
-        else
-            printf("%8.4lf %5s. Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %6.2lf (%4.2lf%%)\n",
+        else {
+            double ticker_price_usd = api_get_current_price(ticker_name_string);
+            a[0] *= ticker_price_usd;
+            printf("%8.2lf %5s. Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %6.2lf (%4.2lf%%)\n",
                    a[0] / ticker_price_usd, ticker_name_string, a[0], a[1], a[0] - a[1], (100 * (a[0] - a[1])) / a[1]);
+        }
     } else{
         free(a);
         return NULL;
