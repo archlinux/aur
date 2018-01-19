@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical us
 url='http://ros.org/wiki/qt_gui'
 
 pkgname='ros-kinetic-qt-gui'
-pkgver='0.3.3'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-kinetic-qt_gui-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/kinetic/qt_gui/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1377e7ae44774ce7eede30eabf3f22901f000b604068a2a049407f099af3fb0c')
+sha256sums=('638ee4683cb0800b062719be7abf95b00681b975c540d905b6fd5b5b93f905b9')
 
 build() {
   # Use ROS environment variables
