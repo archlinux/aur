@@ -15,6 +15,8 @@ makedepends=(itstool libnautilus-extension texlive-bin gobject-introspection
              intltool docbook-xsl python gtk-doc git gnome-common)
 optdepends=('texlive-bin: DVI support'
 	    'gvfs: bookmark support and session saving')
+provides=("evince=$pkgver")
+conflicts=("evince")
 groups=(gnome)
 options=('!emptydirs')
 _commit=2a4995479ccf65f5bd15df13f9b6c810c3156b58  # master
