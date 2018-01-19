@@ -2,28 +2,26 @@
 
 pkgname='python-pybedtools'
 pkgver=0.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for Aaron Quinlan's bedtools."
 arch=('any')
 url="http://daler.github.io/pybedtools"
 license=('GPL2')
 depends=(
+  'bedtools'
   'python'
   'python-numpy'
   'python-pandas'
-  'python-pysam>=0.8.1'
+  'python-pysam'
   'python-six')
-makedepends=('cython' 'python-setuptools')
+makedepends=('python' 'cython' 'python-setuptools')
 optdepends=(
-  'bedtools: more-or-less required by namesake'
   'htslib: for working with SAM/BAM/CRAM files'
   'python-matplotlib: for plotting genomic intervals'
   'ucsc-kent-genome-tools: for bedgraph to bigwig conversions')
-provides=('python-pybedtools')
-conflicts=('python-pybedtools')
 options=(!emptydirs)
-source=("https://github.com/daler/${pkgname//python-/}/archive/v${pkgver}.tar.gz")
-md5sums=('2791d8005a3ce286e597de5adc68a369')
+source=("https://pypi.python.org/packages/09/57/e7668e8644c60413be05b8cc9c23aaea3a0717b4025843d8c26b7c4822af/pybedtools-0.7.10.tar.gz")
+sha256sums=('518a2311bd33f29cf2ee8fc1a028dda8c8e380c9fc83fcb0fbaa206933174b50')
 
 package() {
   cd "${srcdir}/${pkgname//python-/}-${pkgver}"
