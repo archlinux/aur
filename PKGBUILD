@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_gui_py enables GUI plugins to use the Python client library f
 url='http://ros.org/wiki/rqt_gui_py'
 
 pkgname='ros-kinetic-rqt-gui-py'
-pkgver='0.3.1'
+pkgver='0.5.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="rqt-release-release-kinetic-rqt_gui_py-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt-release/archive/release/kinetic/rqt_gui_py/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('efa137f7a504e7519420cf1d37d28f31761bcee5200f4f581aa3fe1eaea7d604')
+sha256sums=('5562a8e2a995ecde75a3fc7ae8cb824b905d25d8de32f11172723087fd7847f7')
 
 build() {
   # Use ROS environment variables
