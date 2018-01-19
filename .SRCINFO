@@ -6,6 +6,7 @@ pkgbase = python-orderedmultidict
 	arch = any
 	license = custom:UNLICENSE
 	makedepends = python
+	makedepends = python-setuptools
 	depends = python
 	depends = python-six
 	source = https://pypi.python.org/packages/source/o/orderedmultidict/orderedmultidict-0.7.5.tar.gz
