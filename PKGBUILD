@@ -2,7 +2,7 @@
 
 pkgname=work-hours-counter
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GUI work hours calculator written in Scala"
 arch=('any')
 url="https://github.com/YanDoroshenko/work-hours-counter"
