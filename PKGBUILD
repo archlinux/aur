@@ -1,7 +1,7 @@
 # Maintainer: Einar Lielmanis <einar@spicausis.lv>
 
 pkgname=sylpheed-beta
-pkgver=3.6.0
+pkgver=3.7.0beta1
 pkgrel=1
 pkgdesc="Lightweight and user-friendly e-mail client. Latest official beta version."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gpgme' 'gtk2' 'compface' 'gtkspell')
 options=('libtool')
 conflicts=('sylpheed' 'sylpheed-beta-iconmod')
 provides=('sylpheed')
-source=(http://sylpheed.sraoss.jp/sylpheed/v3.6/sylpheed-$pkgver.tar.bz2{,.asc})
+source=(http://sylpheed.sraoss.jp/sylpheed/v3.7.0/sylpheed-$pkgver.tar.bz2{,.asc})
 
 build() {
   cd "$srcdir/sylpheed-$pkgver"
@@ -28,5 +28,5 @@ package() {
 
 validpgpkeys=('8CF3A5AC417ADE72B0AA4A835024337CC00C2E26')
 
-md5sums=('5b72a9173963be38efe5fb0b3f5cc44b'
+md5sums=('21826a6096cc6feb732bdaeb87435435'
          'SKIP')
