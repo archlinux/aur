@@ -1,7 +1,7 @@
 pkgbase = pascalabcnet
 	pkgdesc = PascalABC.NET compiler
-	pkgver = 3.3.0.1599
-	pkgrel = 2
+	pkgver = 3
+	pkgrel = 3
 	url = https://github.com/pascalabcnet/pascalabcnet
 	arch = any
 	license = LGPL3
@@ -10,7 +10,7 @@ pkgbase = pascalabcnet
 	source = http://pascalabc.net/downloads/PABCNETC.zip
 	source = pabcnetc.sh
 	source = pabcnetcclear.sh
-	sha256sums = d63890e3316a4c7cc50f373cc0277edb4f29381dd9c9a8c9b663c7f3d6e9e1d7
+	sha256sums = SKIP
 	sha256sums = 5903380803609b5eaa0a5a1cfc5ddf86ffffc8a3fce312eb733adab660ce035c
 	sha256sums = 42fd2a14dffc555046f187a501ba1fffcff11d95cc39f68484fe32204fe73b75
 
