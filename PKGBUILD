@@ -1,6 +1,6 @@
 pkgname=brightnessctl
-pkgver=0.3
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Lightweight brightness control tool"
 arch=('i686' 'x86_64')
 url='https://github.com/Hummer12007/brightnessctl'
@@ -9,7 +9,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/Hummer12007/brightnessctl/archive/$pkgver.tar.gz"
   90-backlight.rules
 )
-sha256sums=('f05cb357a300ec04b0bbbe967436354fc97c5cdce36e2a682721b6ae1fb3b42e'
+sha256sums=('3e81dfa7c5faba29df88a7c4569c7ebaf511c3de4d489a8c8e305ab51b9e3059'
             '16ce09fbfcb7111cd62377160255f6d7b5559c6915719c05aa76d69591a632eb')
 
 build() {
