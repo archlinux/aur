@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MyEtherWallet
+Comment=Free, open-source, client-side tool for easily & securely interacting with the Ethereum network
+Icon=myetherwallet
+Exec=myetherwallet
+Categories=Network;

@@ -1,0 +1,19 @@
+pkgbase = myetherwallet
+	pkgdesc = Free, open-source, client-side tool for easily & securely interacting with the Ethereum network
+	pkgver = 3.11.2.4
+	pkgrel = 1
+	url = https://github.com/kvhnuke/etherwallet
+	arch = any
+	license = MIT
+	depends = xdg-utils
+	source = https://github.com/kvhnuke/etherwallet/releases/download/v3.11.2.4/etherwallet-v3.11.2.4.zip
+	source = myetherwallet.desktop
+	source = myetherwallet
+	source = LICENSE
+	md5sums = 31a387d5601eec30190b7b8cc834987e
+	md5sums = 7ede310a5ce49d1e13aaafdf486324d2
+	md5sums = 812af8159b21a3895a9dd5ed6621c912
+	md5sums = 1d90c6c90650a922d22d50bdc0194e89
+
+pkgname = myetherwallet
+
