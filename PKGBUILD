@@ -4,7 +4,7 @@ pkgdesc="ROS - rostopic contains the rostopic command-line tool for displaying d
 url='http://ros.org/wiki/rostopic'
 
 pkgname='ros-kinetic-rostopic'
-pkgver='1.12.7'
+pkgver='1.12.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rostopic-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rostopic/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('69b9ff60dfc1326269f3cf56c984f9fd8377acbbf6540565ba293bf56b109a64')
+sha256sums=('181d58a9230fef46361042f1686748ca2351b308c07af6485a3c263e350c6769')
 
 build() {
   # Use ROS environment variables
