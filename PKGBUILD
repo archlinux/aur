@@ -1,7 +1,7 @@
 # Maintainer: Juri Grabowski <gratuxri@gmail.com>
 
 pkgname=kartina-tv-bin
-pkgver=2.73
+pkgver=2.74
 pkgrel=0
 pkgdesc="iptv player for kartina.tv"
 url=http://jo2003.github.io/vlc_record/
@@ -11,9 +11,10 @@ depends=()
 provides=(kartina-tv)
 conflicts=(kartina-tv-git)
 
-source_x86_64=(http://www.kartina.tv/media/ktv_player/kartina_tv_2.73.0B11-20170214_amd64.deb)
+source_x86_64=(http://firmware.kartina.tv/pc/linux/kartina_tv_2.74.1_20171117_amd64.deb)
 
-md5sums_x86_64=('1aa80e4e53b7e3a61829c85b948cd66b')
+sha512sums_x86_64=('098f54f579ee3571dc31753c408663e337a210f263fa1ee2db3903139b0a4ab6d694ddbd7de2a4d37f9bbcefd6eba5770bc39143e8578b12e7120ce6e6e93a78')
+
 
 package() {
   tar -xf data.tar.?z -C "$pkgdir" ./usr
