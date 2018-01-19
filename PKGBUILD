@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=2.5.10.r130.g2f6e1c1d2
+pkgver=2.5.10.r131.gb4ee8d605
 pkgrel=1
 epoch=2
 pkgdesc="A functional programming language for realtime audio signal processing."
@@ -32,7 +32,7 @@ options=('strip' 'staticlibs')
 # latest changes. End users might want to use the master branch instead, which
 # is supposedly more stable and tested, but nevertheless (mostly) up-to-date.
 source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=master-dev"
-	"git+https://github.com/rukano/emacs-faust-mode.git"
+	"git+https://github.com/agraef/emacs-faust-mode.git"
 	"python2-fix.patch")
 md5sums=('SKIP' 'SKIP'
          '8680b87fc4e34445e02f34781ee45f19')
