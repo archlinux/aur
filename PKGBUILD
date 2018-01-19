@@ -5,17 +5,15 @@ _pkgbase=poppler
 pkgbase=poppler-lcdfilter
 pkgname=('poppler-lcdfilter' 'poppler-glib-lcdfilter')
 pkgver=0.43.0
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=('GPL')
 makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg' 'gtk2' 'qt4' 'pkgconfig' 'lcms2' 'gobject-introspection' 'icu' 'qt5-base' 'git' 'python2')
 options=('!emptydirs')
 url="http://poppler.freedesktop.org/"
 source=(http://poppler.freedesktop.org/${_pkgbase}-${pkgver}.tar.xz
-        test::git+https://cgit.freedesktop.org/poppler/test/#commit=0d2bfd4
         poppler-subpixel.patch)
 sha256sums=('SKIP'
-         'SKIP'
          'SKIP')
 
 build() {
@@ -47,7 +45,7 @@ package_poppler-lcdfilter() {
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
   conflicts=("poppler-qt3<${pkgver}" "poppler")
   provides=("poppler=$pkgver")
- 
+
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   sed -e 's/^glib_subdir =.*/glib_subdir =/' \
       -e 's/^qt4_subdir =.*/qt4_subdir =/' \
