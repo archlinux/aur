@@ -1,0 +1,51 @@
+# arg 1:  the new package version
+post_install() {
+	if [ ! -d /var/cache/pixelserv ]; then
+		/bin/mkdir /var/cache/pixelserv
+	fi
+	/bin/chown -R nobody:root /var/cache/pixelserv
+	/bin/chmod -R 755 /var/cache/pixelserv
+cat << EOF
+
+    In order to use pixelserv-tls you need to:
+        1. create root CA certificate https://git.io/vNuoH
+
+            cd /var/cache/pixelserv
+            sudo -u nobody openssl genrsa -out ca.key 1024
+            sudo -u nobody openssl req -key ca.key -new -x509 -days 3650 -sha256 -extensions v3_ca -out ca.crt -subj "/CN=Pixelserv CA"
+
+        2. import CA certificate
+
+            cp /var/cache/pixelserv/ca.crt /usr/share/ca-certificates/trust-source/anchors/ca.pixelserv.crt
+            trust extract-compat
+
+    ... OR just run script as user "nobody":
+
+        sudo -u nobody pixelserv-ca-init
+
+    ... THEN start/enable systemd service:
+        sudo systemctl enable --now pixelserv-tls
+
+EOF
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	post_install
+}
+
+# arg 1:  the old package version
+post_remove() {
+cat << EOF
+
+    If you won't use pixelserv-tls anymore you may remove "Pixelserv CA" certificate
+    and pixelserv-tls's cert folder using:
+
+        rm /usr/share/ca-certificates/trust-source/anchors/ca.pixelserv.crt
+        trust extract-compat
+
+        rm -rf /var/cache/pixelserv
+
+EOF
+}

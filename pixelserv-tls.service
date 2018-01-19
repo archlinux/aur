@@ -1,0 +1,10 @@
+[Unit]
+Description=A tiny bespoke webserver for adblock with HTTP/1.1 and HTTPS support
+After=network.target
+
+[Service]
+ExecStart=/bin/pixelserv-tls -f -z /var/cache/pixelserv
+Restart=always
+
+[Install]
+WantedBy=mutli-user.target
