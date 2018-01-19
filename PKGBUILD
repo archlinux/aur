@@ -10,7 +10,7 @@ _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 
 pkgname=unity-editor-standardassets
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=1
+pkgrel=2
 pkgdesc="Unity Standard Assets for easily getting started building projects in Unity."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -23,12 +23,15 @@ options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
 unity-setup() {
-  ./UnitySetup-${_version}${_build} -d "${startdir}" -l "${pkgdir}${_prefix}" -u $@
+  ./UnitySetup-${_version}${_build} \
+    --download-location="${startdir}" \
+    --install-location="${pkgdir}${_prefix}" \
+    --unattended $@
 }
 
 extract-component() {
   msg2 "Extracting $1..."
-  yes | unity-setup -c $1 > "/tmp/$1.log"
+  yes | unity-setup --components=$1 > "/tmp/$1.log"
 }
 
 prepare() {
