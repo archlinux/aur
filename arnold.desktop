@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Arnold
 GenericName=Amstrad CPC emulator
-Exec=arnold
+Exec=/usr/bin/arnold
 Icon=/usr/share/pixmaps/arnold.png
 Type=Application
 Categories=Games;Emulator;

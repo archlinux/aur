@@ -4,32 +4,24 @@
 # Contributor: milko
 
 pkgname=arnold
-pkgver=2009.05.31
-pkgrel=5
-pkgdesc="An Amstrad CPC emulator using SDL with a GTK+ interface"
-arch=('i686' 'x86_64')
-url="http://www.yasara.org/cpc/"
-depends=('sdl' 'gtk2' 'libpulse')
+pkgver=1.0.0
+pkgrel=1
+epoch=1
+pkgdesc="An Amstrad CPC emulator using SDL with a WxGTK interface"
+arch=('x86_64')
+url='http://www.cpctech.org.uk/'
+depends=('wxgtk2' 'sdl')
 license=('GPL')
-source=("http://www.yasara.org/cpc/arnold_tng.zip" arnold.desktop arnold.png)
-md5sums=('b9fcee41371a3d16b1ce2e268778a2c6'
-         '99e21ce02a53282529af21ff3abbcabd'
-         '7914c93646818037948eebba293520bc')
+source=('http://www.cpctech.org.uk/arnold_1.0.0-1_amd64.deb' arnold.desktop arnold.png)
+sha256sums=('28874e9c758a2c3a92bf50d475b67d985ba7f4683b63452c3d1fa93061e51752'
+            'c58dc13b7f92a84b688fbd037991aed054a727ee04206efdefc272c95e9a2772'
+            '45aa62abcd36f125a4d47dbe2569b21a52068b57138c138814d35188dd5e49d5')
 
-build() {
-  cd "$srcdir"/arnold_tng/src
-
-  ./configure
-  sed -e 's/-DHAVE_SDL=1/-DHAVE_SDL=1 -DHAVE_GL=1/g' -e 's/-lSDL/-lSDL -lGL/g' -i Makefile
-  make clean
-  make
-
-}
 package () {
-  cd "$srcdir"/arnold_tng/src
-
-  install -D  ../arnold "$pkgdir"/usr/bin/arnold
+  bsdtar -xf data.tar.gz -C "${pkgdir}"
+  install -d "${pkgdir}/usr/bin"  
   install -D -m644 "$srcdir"/arnold.desktop "$pkgdir"/usr/share/applications/arnold.desktop
   install -D -m644 "$srcdir"/arnold.png "$pkgdir"/usr/share/pixmaps/arnold.png
 }
+
 
