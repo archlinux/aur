@@ -1,10 +1,12 @@
-# Maintainer: Robin Baumgartner <robin@baumgartners.ch>
+# Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
+# Contributor: Robin Baumgartner <robin@baumgartners.ch>
 # Contributor: Max Roder <maxroder@web.de>
 # Contributor: Oleg Finkelshteyn <olegfink@gmail.com>
 
 pkgname='ripit'
 pkgver='4.0.0_beta20140508'
-pkgrel='2'
+_debver='4.0.0~beta20140508'
+pkgrel='3'
 pkgdesc='Command line tool to rip tracks from audio cds and encode them'
 arch=('any')
 license=('GPL')
@@ -20,8 +22,8 @@ optdepends=(
   'perl-libwww: Submitting to CDDB' 
   'libmusicbrainz3: Tagging (Musicbrainz.org)'
 )
-source=(${pkgname}-${pkgver}.tar.bz2)
-md5sums=('aba1187fc3040ef4814c43e5c788bbeb')
+source=("https://mirrors.xmission.com/ubuntu/pool/universe/r/ripit/${pkgname}_${_debver}.orig.tar.bz2")
+sha256sums=('5b01cf33c0649115cd831b12ee4600256fba68c66ea92b1372a1bd8ce6925ab9')
 backup=('etc/ripit/config')
 
 package() {
