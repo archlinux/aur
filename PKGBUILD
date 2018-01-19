@@ -2,7 +2,7 @@
 
 _pkgname='Cerberus'
 pkgname="python-cerberus"
-pkgver=0.9.2
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Lightweight, extensible data validation library for Python'
 arch=('any')
@@ -11,7 +11,7 @@ license=('ISC')
 depends=()
 makedepends=('python' 'python-setuptools')
 source=("https://pypi.python.org/packages/source/C/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b122c7b2cbf856ea2587e187fac968fc8dcd49d47aa1f239abd9eaa0ed86a7ce')
+sha256sums=('a5b39090fde3ec3294c9d7030b8eda935b42222160a66a922e0c8aea34cabfdf')
 
 check() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
