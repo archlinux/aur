@@ -2,7 +2,7 @@
 
 _gitname=wget
 pkgname=$_gitname-git
-pkgver=1.19.2.r12.g6aa6b669
+pkgver=1.19.3
 pkgrel=1
 pkgdesc="A network utility to retrieve files from the Web"
 arch=('i686' 'x86_64')
@@ -24,6 +24,7 @@ build() {
   cd $_gitname
   git submodule init
   git config submodule.gnulib.url "$srcdir/gnulib"
+  git submodule update gnulib
   ./bootstrap
   ./configure --prefix=/usr --without-included-regex --enable-nls --enable-dependency-tracking --with-ssl=gnutls --sysconfdir=/etc --with-metalink
   make
