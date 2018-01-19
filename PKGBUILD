@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=65.0.3323.0
+pkgver=65.0.3324.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
@@ -111,10 +111,11 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/p2.patch
 https://raw.githubusercontent.com/bn0785ac/in-night/master/e3.patch
 https://raw.githubusercontent.com/bn0785ac/in-night/master/pt.patch
 https://raw.githubusercontent.com/bn0785ac/in-night/master/edgy.patch
+https://raw.githubusercontent.com/bn0785ac/in-night/master/k2.patch
 )
 
 
-sha256sums=('c6a06d42e8f840efa5c1e364069d4df43a69a8183d69d68b5f0677dd2dbedbed'
+sha256sums=('5887f1177cbd09ef119ade9ce247e55497e04f7622df986a6763bf49c7aae14a'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -161,7 +162,7 @@ sha256sums=('c6a06d42e8f840efa5c1e364069d4df43a69a8183d69d68b5f0677dd2dbedbed'
             '48a42d38899795d4e959c6ec27a5e2288a3db54d3abf99f9caae887402d53988'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
             '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
-            '41fa66c8a12d3341010a58e1c78d005a10d3ac7527a88b7a8c005b35de58c0bb'
+            '0c2732c1554f294b8fd2c17ae85c3ed7f86bb0b09b15dfec54378fec357acb33'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'b80b351152d3415b5b7dbfaf07edd94bb8f7dd56eab4380c577b102c6b758c10'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
@@ -208,7 +209,9 @@ sha256sums=('c6a06d42e8f840efa5c1e364069d4df43a69a8183d69d68b5f0677dd2dbedbed'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
-            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
+            'dcd9fdf6928b9524dc01fbf283c263ff38e133852666ef350623f5f4f654f43c'
+            'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80')
+
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
