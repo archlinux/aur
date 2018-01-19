@@ -5,7 +5,7 @@
 
 pkgname=freefilesync
 pkgver=9.7
-pkgrel=2
+pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="http://www.freefilesync.org/"
