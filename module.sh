@@ -20,7 +20,7 @@ shopt -s expand_aliases
 # shellcheck source=./path.sh
 source "$(dirname "${BASH_SOURCE[0]}")/path.sh"
 # endregion
-# region var iables
+# region variables
 bl_module_allowed_names=(BASH_REMATCH COLUMNS HISTFILESIZE HISTSIZE LINES)
 bl_module_allowed_scope_names=()
 bl_module_bash_version_test=''
@@ -105,7 +105,7 @@ bl_module_is_defined() {
     local __documentation__='
         Tests if variable is defined (can also be empty)
 
-        >>> local foo="bar"
+        >>> local foo=bar
         >>> bl.module.is_defined foo; echo $?
         >>> [[ -v foo ]]; echo $?
         0
@@ -118,7 +118,8 @@ bl_module_is_defined() {
         >>> set -o nounset
         >>> bl.module.is_defined undefined_variable; echo $?
         1
-        Same Tests for bash < 4.3
+
+        # Same Tests for bash < 4.3
         >>> bl_module_bash_version_test=true
         >>> local foo="bar"
         >>> bl.module.is_defined foo; echo $?
@@ -361,14 +362,13 @@ alias bl.module.resolve=bl_module_resolve
 bl_module_resolve() {
     # shellcheck disable=SC1004,SC2016,SC2034
     local __documentation__='
-        IMPORTANT: Do not use `bl.module.import` inside functions -> aliases do
-        not work.
+        NOTE: Do not use `bl.module.import` inside functions -> aliases do not
+        work.
 
-        TODO: explain this in more detail
         >>> (
         >>> bl.module.import bashlink.logging
-        >>> bl.logging.set_level warn
-        >>> bl.module.import test/mockup_module-b.sh false
+        >>> bl_logging_set_level warn
+        >>> bl.module.import mockup/b false
         >>> )
         +bl.doctest.contains
         imported module c

@@ -189,7 +189,6 @@ alias bl.logging.info='bl_logging_log info'
 alias bl.logging.verbose='bl_logging_log verbose'
 alias bl.logging.warn='bl_logging_log warn'
 alias bl.logging.warning=bl.logging.warn
-alias bl.logging.set_commands_level=bl_logging_set_commands_level
 alias bl.logging.set_file_descriptors=bl_logging_set_file_descriptors
 bl_logging_set_file_descriptors() {
     # shellcheck disable=SC1004,SC2016,SC2034
@@ -431,6 +430,7 @@ bl_logging_set_command_output_on() {
         --commands="std"
 }
 # NOTE: Depends on "bl.logging.set_command_output_on", bl.logging.set_command_output_off"
+alias bl.logging.set_commands_level=bl_logging_set_commands_level
 bl_logging_set_commands_level() {
     local level="$1"
     if [ "$level" = 'warn' ]; then
