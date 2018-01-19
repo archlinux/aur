@@ -8,7 +8,7 @@ url="https://github.com/protonmail-desktop/application"
 license=('GPL3')
 arch=('any')
 provides=('protonmail-desktop')
-depends=('gconf');
+depends=('gconf')
 source=(https://github.com/protonmail-desktop/application/releases/download/v0.5.4/protonmail-desktop-0.5.4.tar.gz
         https://i.imgur.com/hySaVZp.png
         protonmail-desktop.desktop
