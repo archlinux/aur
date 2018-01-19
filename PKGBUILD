@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui an
 url='http://ros.org/wiki/qt_gui_cpp'
 
 pkgname='ros-kinetic-qt-gui-cpp'
-pkgver='0.3.3'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,6 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-kinetic-pluginlib
   ros-kinetic-python-qt-binding
+  ros-kinetic-cmake-modules
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
@@ -21,7 +22,8 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=(ros-kinetic-qt-gui
   ros-kinetic-pluginlib)
-depends=(${ros_depends[@]})
+depends=(${ros_depends[@]}
+  tinyxml)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/qt_gui_cpp/${pkgver}-${_pkgver_patch}
@@ -32,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-kinetic-qt_gui_cpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/kinetic/qt_gui_cpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7bbfd8af3664061e932de7e5e8d994b196fe446328439b1ea60abd42a60e9bb1')
+sha256sums=('4483632d337af8dc1a20b03f777acc4a6c1bd3bcd3e9fd40cc068cdf25e4dfde')
 
 build() {
   # Use ROS environment variables
