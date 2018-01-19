@@ -1,6 +1,6 @@
 pkgbase = qubes-usb-proxy
 	pkgdesc = The Qubes service for proxying USB devices
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://qubes-os.org
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = qubes-usb-proxy
 	makedepends = gcc
 	depends = sh
 	depends = qubes-vm-core
-	source = https://github.com/QubesOS/qubes-app-linux-usb-proxy/archive/v1.0.13.tar.gz
-	sha256sums = d7d8685f302c2eb8c92f68a9f3e2f3361efa1e580d5b48ffeda5c48ed3bf8622
+	source = https://github.com/QubesOS/qubes-app-linux-usb-proxy/archive/v1.0.14.tar.gz
+	sha256sums = 0c1729763b5409b165dd9b408e3551948c63b04e80450a99d439cdcd7c4e9da8
 
 pkgname = qubes-usb-proxy
 
