@@ -1,17 +1,17 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-# Warning: If you are downgrading from the development branch (Wine ≥ 2.1,
+# Warning: If you are downgrading from the development branch (Wine ≥ 3.1,
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable
-pkgver=2.0.4
+pkgver=3.0
 pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/2.0/wine-$pkgver.tar.xz{,.sign}
+source=(https://dl.winehq.org/wine/source/3.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
 	wine-binfmt.conf)
-sha512sums=('8fccb93e5ebe482ed81e948e3b7f87d4fe5b1f838a10f9cdcafa9561de4ef54b7d5acdc292bf28ad3aaf44be34c5ad8452ebbfc39f49f95fcbe9f9d0fcfc862c'
+sha512sums=('a51f41b66f4805e09b223528eff6670e94b9c0c0c947be647507baf9d8d9afe7c3fdc88684c2c8d3573b4739d9a086ab929a744a8594d3c8f6ceb52070f43f0a'
             'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
@@ -32,22 +32,24 @@ depends=(desktop-file-utils fontconfig freetype2 gettext glu lcms2
   lib32-libxdamage lib32-libxi lib32-libxml2 lib32-libxrandr)
 
 makedepends=(alsa-lib fontforge giflib gnutls gst-plugins-base-libs
-  libgl libldap libpng libpulse libxcomposite libxinerama libxmu
-  libxslt libxxf86vm mesa mpg123 ncurses ocl-icd openal opencl-headers
-  samba v4l-utils gcc lib32-alsa-lib lib32-giflib lib32-gnutls
-  lib32-gst-plugins-base-libs lib32-libgl lib32-libldap lib32-libpng
-  lib32-libpulse lib32-libxcomposite lib32-libxinerama lib32-libxmu
-  lib32-libxslt lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ocl-icd
-  lib32-openal lib32-v4l-utils)
+  libgl libgphoto2 libldap libpng libpulse libxcomposite libxinerama
+  libxmu libxslt libxxf86vm mesa mpg123 ncurses ocl-icd openal
+  opencl-headers samba v4l-utils gcc lib32-alsa-lib lib32-giflib
+  lib32-gnutls lib32-gst-plugins-base-libs lib32-libgl
+  lib32-libgphoto2 lib32-libldap lib32-libpng lib32-libpulse
+  lib32-libxcomposite lib32-libxinerama lib32-libxmu lib32-libxslt
+  lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ocl-icd lib32-openal
+  lib32-v4l-utils)
 
 optdepends=(alsa-lib alsa-plugins cups dosbox giflib gnutls
-  gst-plugins-base-libs libjpeg-turbo libldap libpng libpulse
-  libxcomposite libxinerama libxslt mpg123 ncurses ocl-icd openal
-  samba v4l-utils lib32-alsa-lib lib32-alsa-plugins lib32-giflib
-  lib32-gnutls lib32-gst-plugins-base-libs lib32-libjpeg-turbo
-  lib32-libldap lib32-libpng lib32-libpulse lib32-libxcomposite
-  lib32-libxinerama lib32-libxslt lib32-mpg123 lib32-ncurses
-  lib32-ocl-icd lib32-openal lib32-v4l-utils)
+  gst-plugins-base-libs libgphoto2 libjpeg-turbo libldap libpng
+  libpulse libxcomposite libxinerama libxslt mpg123 ncurses ocl-icd
+  openal samba v4l-utils lib32-alsa-lib lib32-alsa-plugins
+  lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs
+  lib32-libgphoto2 lib32-libjpeg-turbo lib32-libldap lib32-libpng
+  lib32-libpulse lib32-libxcomposite lib32-libxinerama lib32-libxslt
+  lib32-mpg123 lib32-ncurses lib32-ocl-icd lib32-openal
+  lib32-v4l-utils)
 
 provides=("wine=$pkgver")
 conflicts=("wine")
