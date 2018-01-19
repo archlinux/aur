@@ -5,6 +5,7 @@ pkgbase = protonmail-desktop
 	url = https://github.com/protonmail-desktop/application
 	arch = any
 	license = GPL3
+	depends = gconf
 	provides = protonmail-desktop
 	source = https://github.com/protonmail-desktop/application/releases/download/v0.5.4/protonmail-desktop-0.5.4.tar.gz
 	source = https://i.imgur.com/hySaVZp.png
