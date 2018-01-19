@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-lycheejs
+	pkgdesc = Manage lychee.js Projects and Libraries
+	pkgver = r6.128e6e3
+	pkgrel = 1
+	url = https://github.com/Artificial-Engineering/gnome-shell-extension-lycheejs
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/Artificial-Engineering/gnome-shell-extension-lycheejs
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-lycheejs
+
