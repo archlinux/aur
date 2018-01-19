@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=2.5.10.r131.gb4ee8d605
+pkgver=2.5.17.r9470.455f4e95e
 pkgrel=1
 epoch=2
 pkgdesc="A functional programming language for realtime audio signal processing."
@@ -39,9 +39,15 @@ md5sums=('SKIP' 'SKIP'
 
 pkgver() {
   cd $srcdir/$pkgname
+
   # use un-annotated tags per
   # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+  # ... but unfortunately many releases go untagged right now, so we rather do
+  # it like this, because that gives us the real release number as running
+  # `faust --version` will report it
+  echo $(make debversion|sed -e s/+git.*//).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
