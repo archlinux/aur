@@ -5,12 +5,15 @@
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
 # Maintainer:  twa022 <twa022 at gmail dot com>
 
+# Use the master branch if _branch is not defined
+_branch="5.0"
+
 _pkgname=kmymoney
 pkgname=${_pkgname}-git
 pkgver=4.100.90+1409+gd16c1ae9
 pkgrel=1
 pkgdesc="Personal finance manager for KDE which operates similarly to MS-Money or Quicken"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://github.com/KDE/kmymoney"
 license=('GPL')
 depends=('kdewebkit' 'aqbanking' 'libalkimia-qt5' 'libical'
@@ -18,7 +21,9 @@ depends=('kdewebkit' 'aqbanking' 'libalkimia-qt5' 'libical'
 makedepends=('extra-cmake-modules' 'doxygen' 'kdoctools')
 conflicts=("${_pkgname}")
 provides=("${pkgname}=${pkgver%%+}")
-source=("${_pkgname}::git+https://github.com/KDE/kmymoney#branch=5.0")
+source=()
+[[ "${_branch}" == '' ]] && _branch='master'
+source=("${_pkgname}::git+https://github.com/KDE/kmymoney#branch=${_branch}")
 sha256sums=('SKIP')
 
 pkgver() {
