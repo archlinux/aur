@@ -8,10 +8,10 @@ url="http://www.navicat.com"
 license=('GPL3')
 arch=('any')
 provides=('navicat')
-source=(https://www.dropbox.com/s/n8sc4a18dt3x7w9/navicat-lite-10.0.6-2-any.pkg.tar.xz
+source=(https://www.dropbox.com/s/k7k8yojg2nu5mov/navicat100_lite_en.tar.gz
         navicat.desktop
         navicat)
-md5sums=('c53a6a71c7518cba1a057953ca07ff92'
+md5sums=('f44cb252012eadd5d4935414de68d087'
          '0a40410d7be7d9e324002c368eafd0b3'
          'a7f10a4d9c2c3901829c35c5bf9aae97')
 
@@ -19,7 +19,7 @@ package() {
   mkdir -p ${pkgdir}/opt/navicat
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/share/applications
-  cp -R ${srcdir}/navicat${pkgver}-any/* ${pkgdir}/opt/navicat/
+  cp -R ${srcdir}/navicat100_lite_en/* ${pkgdir}/opt/navicat/
   cp ${srcdir}/navicat ${pkgdir}/usr/bin/
   chmod +x ${pkgdir}/usr/bin/navicat
   cp ${srcdir}/navicat.desktop ${pkgdir}/usr/share/applications/

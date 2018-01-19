@@ -6,10 +6,10 @@ pkgbase = navicat-lite
 	arch = any
 	license = GPL3
 	provides = navicat
-	source = https://www.dropbox.com/s/n8sc4a18dt3x7w9/navicat-lite-10.0.6-2-any.pkg.tar.xz
+	source = https://www.dropbox.com/s/k7k8yojg2nu5mov/navicat100_lite_en.tar.gz
 	source = navicat.desktop
 	source = navicat
-	md5sums = c53a6a71c7518cba1a057953ca07ff92
+	md5sums = f44cb252012eadd5d4935414de68d087
 	md5sums = 0a40410d7be7d9e324002c368eafd0b3
 	md5sums = a7f10a4d9c2c3901829c35c5bf9aae97
 
