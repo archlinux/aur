@@ -1,7 +1,7 @@
 pkgbase = nzbhydra2
 	pkgdesc = Meta search for NZB indexers
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theotherp/nzbhydra2
 	install = nzbhydra2.install
 	arch = any
