@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_gui_cpp enables GUI plugins to use the C++ client library for
 url='http://ros.org/wiki/rqt_gui_cpp'
 
 pkgname='ros-kinetic-rqt-gui-cpp'
-pkgver='0.3.1'
+pkgver='0.5.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="rqt-release-release-kinetic-rqt_gui_cpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt-release/archive/release/kinetic/rqt_gui_cpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('25e4ae609e21f719f9363bea1130aa7b6046fa663accf5f22446caffd9b4b3c1')
+sha256sums=('7e649bc586f53c1e3d5d997916b7422b4097795580fdc9421898a3b54eae26c6')
 
 build() {
   # Use ROS environment variables
