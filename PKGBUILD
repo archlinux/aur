@@ -1,8 +1,8 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2017.3.2
-_pkgver=2017.3.2
+pkgver=2017.3.3
+_pkgver=2017.3.3
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE. Professional edition."
 arch=('i686' 'x86_64')
@@ -53,19 +53,20 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'jupyter: For support Jupyter Notebook')
 # https://download.jetbrains.com/python/pycharm-professional-${_pkgver}-no-jdk.tar.gz.sha256
 if [[ $pycharm_professional_nojdk = "yes" ]]; then
-sha256sums=('acd599a1318c94b5e0092189eea856a84e7f3cb4ada0022a3c107fdd6296dfa6'
+sha256sums=('249a29318b53003662dbf330fb4e177218740ac1334e0f2401bacec6f3fc49d1'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
             '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
             'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
             '675a2a9f94baa4dd27d30cd3d1948a6ca1e8a3628722303ecd615fc4fe9b4798')
 else
-sha256sums=('9beb725a83a3ea67200b121cbbc4062899a1c6baff2e02a017e8dde412de0a2f'
+sha256sums=('f97d56f15750b6a1a94aeeeaab16ab7b6b52f3a32a01f28e2439aa44d4e60ca0'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
             '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
             'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
             '675a2a9f94baa4dd27d30cd3d1948a6ca1e8a3628722303ecd615fc4fe9b4798')
+
 fi
 
 package() {
