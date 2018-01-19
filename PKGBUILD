@@ -1,17 +1,18 @@
 # Maintainer: Albert Graef <aggraef at gmail.com>
 
 pkgname=faustlive-git
-pkgver=799.0207de7
+pkgver=2.46.r800.d800edf
 pkgrel=1
+epoch=1
 pkgdesc="A graphical frontend to the Faust compiler."
 arch=('i686' 'x86_64')
 url="http://faust.grame.fr/"
 license=('GPL')
-# NOTE: faust2-git used to be a make dependency, but this doesn't work in the
-# latest revisions of FaustLive any more, since it will try to link against
-# the static qrencode and microhttpd libraries which aren't normally installed
-# on Arch. Thus faust2-git is now required at runtime.
-depends=('qt4' 'faust2-git' 'jack2' 'qrencode' 'libmicrohttpd' 'openssl' 'liblo' 'curl')
+# Qt5 will work as well, but I found that FaustLive has some issues with it
+# (invisible check boxes in some parts of the GUI), so we build against Qt4
+# for now. YMMV, though, if you want to use Qt5 instead, replace the
+# dependency below and use 'qm=qmake-qt5' in the build command.
+depends=('qt4' 'faust' 'jack2' 'qrencode' 'libmicrohttpd' 'openssl' 'liblo' 'curl')
 makedepends=('git')
 provides=('faustlive')
 conflicts=('faustlive')
@@ -20,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$pkgname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $(cat Resources/distVersion.txt).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
@@ -30,7 +31,7 @@ prepare() {
 
 build() {
   cd $srcdir/$pkgname
-  make arch=Linux PREFIX=/usr STATIC=0 NETJACK=1
+  make arch=Linux PREFIX=/usr STATIC=0 NETJACK=1 qm=qmake-qt4
 }
 
 package() {
