@@ -1,7 +1,7 @@
 pkgbase = unity-editor-windows
 	pkgdesc = Allows building your Unity projects for the Windows platform
 	pkgver = 2017.3.0p2+20180117
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unity3d.com/
 	arch = x86_64
 	license = custom
