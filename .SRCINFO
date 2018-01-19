@@ -6,9 +6,10 @@ pkgbase = python-intervals
 	arch = any
 	license = BSD
 	makedepends = python
+	makedepends = python-setuptools
 	depends = python
 	depends = python-infinity
-  source = https://pypi.python.org/packages/30/7a/7364356d073426b73014bc6f7aab36914fd9fc53e8d99150a0de69d7846a/intervals-0.8.0.tar.gz
+	source = https://pypi.python.org/packages/30/7a/7364356d073426b73014bc6f7aab36914fd9fc53e8d99150a0de69d7846a/intervals-0.8.0.tar.gz
 	md5sums = d2e7b132a4a00f001938cf47884b5e60
 
 pkgname = python-intervals
