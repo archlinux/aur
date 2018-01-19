@@ -458,7 +458,7 @@ else
         fi
 
         # INCLUDE HOSTS.HEAD FILE AS THE BEGINNING OF THE NEW TARGET HOSTS FILE
-        if [ "$hostshead" == "0" ] || [ $hostshead -eq 0 ]; then
+        if [ "$hostshead" == "0" ]; then
             rm $_v -- "$hostsfile" || _notify 1 "FAILED to delete existing $hostsfile."
         else
             cp $_v -f -- "$hostshead" "$hostsfile" || _notify 1 "FAILED to replace $hostsfile with $hostshead"

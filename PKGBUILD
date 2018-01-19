@@ -1,7 +1,7 @@
 # Maintainer/Originator: Jake VanderKolk <jakevanderkolk@gmail.com>
 pkgname=hostsblock
-pkgver=0.999.6
-pkgrel=3
+pkgver=0.999.7
+pkgrel=0
 pkgdesc="A script that downloads, sorts, and compiles multiple ad- and malware-blocking hosts files."
 arch=(any)
 url="http://gaenserich.github.com/hostsblock/"
@@ -10,6 +10,7 @@ depends=(bash curl grep sed coreutils gzip)
 optdepends=('dnsmasq: helps speed up DNS resolutions'
 	    'pixelserv: removes boilerplate page on blocked urls'
 	    'kwakd: removes boilerplate page on blocked urls (recommended)'
+            'pixelserv-tls: removes boilerplate page on blocked urls (supports HTTPS)'
 	    'unzip: allows the use of zipped downloads'
 	    'p7zip: allows the use of 7zipped downloads'
             'pigz: improves performance of gzip operations')
@@ -17,7 +18,7 @@ backup=('var/lib/hostsblock/hostsblock.conf' 'var/lib/hostsblock/black.list' 'va
 changelog=$pkgname.changelog
 install=$pkgname.install
 source=('hostsblock.sh' 'hostsblock.conf' 'black.list' 'white.list' 'hosts.head' 'hostsblock.service' 'hostsblock.timer')
-sha1sums=('5bb46b63a3371494cbd1ccc5b955583c635267d7'
+sha1sums=('895e820e6ff80d9e7a8fec5992dedd72b7dc57c7'
           'd9db54fb078ff0e674a1f32a886ad29969830459'
           '30fdaad1ee0497b9b88b61cfbd958d20c644801b'
           '11ab0a6bac002879a04872ec06a3611c32c80e1d'
@@ -29,10 +30,10 @@ package() {
   mkdir -p -m 750 "$pkgdir"/var/lib/hostsblock
   install -Dm750 "$srcdir"/hostsblock.sh "$pkgdir"/usr/bin/hostsblock
   ln -sf /usr/bin/hostsblock "$pkgdir"/usr/bin/hostsblock-urlcheck
-  install -Dm640 "$srcdir"/hostsblock.conf "$pkgdir"/var/lib/hostsblock/hostsblock.conf
-  install -Dm640 "$srcdir"/black.list "$pkgdir"/var/lib/hostsblock/black.list
-  install -Dm640 "$srcdir"/white.list "$pkgdir"/var/lib/hostsblock/white.list
-  install -Dm640 "$srcdir"/hosts.head "$pkgdir"/var/lib/hostsblock/hosts.head
+  install -Dm644 "$srcdir"/hostsblock.conf "$pkgdir"/var/lib/hostsblock/hostsblock.conf
+  install -Dm644 "$srcdir"/black.list "$pkgdir"/var/lib/hostsblock/black.list
+  install -Dm644 "$srcdir"/white.list "$pkgdir"/var/lib/hostsblock/white.list
+  install -Dm644 "$srcdir"/hosts.head "$pkgdir"/var/lib/hostsblock/hosts.head
   install -Dm644 "$srcdir"/hostsblock.service "$pkgdir"/usr/lib/systemd/system/hostsblock.service
   install -Dm644 "$srcdir"/hostsblock.timer "$pkgdir"/usr/lib/systemd/system/hostsblock.timer
 }

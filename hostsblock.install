@@ -17,6 +17,7 @@ add_user_group() {
         gpasswd -A hostsblock hostsblock
     fi
     chown -R hostsblock:hostsblock /var/lib/hostsblock /usr/bin/hostsblock
+    chmod 755 /var/lib/hostsblock
 }
 
 post_install() {

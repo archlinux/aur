@@ -1,5 +1,12 @@
 See https://github.com/gaenserich/hostsblock/commits/master for a complete list of updates
 
+Version 0.999.7 (Alpha 7) (19.01.2018)
+*Typo fixes in install.sh (Commits ccdd26d14fce89452e71f7fa4310360f51e0c94e 895e820e6ff80d9e7a8fec5992dedd72b7dc57c7)
+*Added cryptomining block lists (Commits efee8ca4a08867a076c5ac8a0a93d7a149214239 2dc51cdc97db0d73bcb00d68b54da0f8e929ee36)
+*Fixed permission errors in packaging (Commit 1a272e22638661f0f527310937189383a75bd2d1)
+*Added optdepend (pixelserv-tls) (Commit 156dfeefd16a8f4fb93267116c4c13de0ddeb93b)
+*Fixed superficial warning (Commit e271d78a3b79dac2d337f3a00dc0bc21c74307c1)
+
 Version 0.999.6 (Alpha 6) (03.08.2017)
 *Fixed parsing function that falsely expected gzip
 *Fixed verbosity typo
