@@ -1,6 +1,6 @@
 pkgbase = taisei-git
 	pkgdesc = Open source Touhou clone (development version)
-	pkgver = 1.1.r354.gf0c8cca
+	pkgver = 1.1.r506.g65fffdee
 	pkgrel = 1
 	url = https://taisei-project.org/
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = taisei-git
 	license = MIT
 	makedepends = git
 	makedepends = meson
+	makedepends = pandoc
 	depends = sdl2_mixer
 	depends = sdl2_ttf
 	depends = libzip
