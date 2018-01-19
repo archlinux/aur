@@ -1,0 +1,54 @@
+diff --git a/packaging/linux/build_binaries.sh b/packaging/linux/build_binaries.sh
+index 0afe99519..d1e9bdaa7 100755
+--- a/packaging/linux/build_binaries.sh
++++ b/packaging/linux/build_binaries.sh
+@@ -59,17 +59,6 @@ should_build_kbfs() {
+   [ "$mode" != "production" ]
+ }
+ 
+-# Install the electron dependencies.
+-if should_build_kbfs ; then
+-  echo "Installing Node modules for Electron"
+-  # Can't seem to get the right packages installed under NODE_ENV=production.
+-  export NODE_ENV=development
+-  export KEYBASE_SKIP_DEV_TOOLS=1
+-  (cd "$this_repo/shared" && yarn)
+-  unset KEYBASE_SKIP_DEV_TOOLS
+-  export NODE_ENV=production
+-fi
+-
+ build_one_architecture() {
+   layout_dir="$build_root/binaries/$debian_arch"
+   mkdir -p "$layout_dir/usr/bin"
+@@ -125,15 +114,6 @@ build_one_architecture() {
+   # find the current user.
+   USER="$(whoami)" KBNM_INSTALL_ROOT=1 KBNM_INSTALL_OVERLAY="$layout_dir" "$layout_dir/usr/bin/kbnm" install
+ 
+-  # Build Electron.
+-  echo "Building Electron client for $electron_arch..."
+-  (
+-    cd "$this_repo/shared"
+-    yarn run package -- --platform linux --arch "$electron_arch" --appVersion "$version"
+-    rsync -a "desktop/release/linux-${electron_arch}/Keybase-linux-${electron_arch}/" \
+-      "$layout_dir/opt/keybase"
+-  )
+-
+   # Copy in the icon images.
+   for size in 16 32 128 256 512 ; do
+     icon_dest="$layout_dir/usr/share/icons/hicolor/${size}x${size}/apps"
+@@ -168,7 +148,6 @@ export CGO_ENABLED=1
+ if [ -z "${KEYBASE_SKIP_64_BIT:-}" ] ; then
+   export GOARCH=amd64
+   export debian_arch=amd64
+-  export electron_arch=x64
+   build_one_architecture
+ else
+   echo SKIPPING 64-bit build
+@@ -177,7 +156,6 @@ fi
+ if [ -z "${KEYBASE_SKIP_32_BIT:-}" ] ; then
+   export GOARCH=386
+   export debian_arch=i386
+-  export electron_arch=ia32
+   build_one_architecture
+ else
+   echo SKIPPING 32-bit build

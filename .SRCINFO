@@ -1,0 +1,27 @@
+pkgbase = keybase-headless-git
+	pkgdesc = The Keybase Go client and filesystem. No GUI part
+	pkgver = 1.0.39+17925.050a48cc6e
+	pkgrel = 2
+	url = https://keybase.io
+	install = keybase.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	makedepends = git
+	depends = bash
+	depends = glibc
+	depends = fuse2
+	conflicts = keybase
+	conflicts = keybase-release
+	conflicts = keybase-bin
+	conflicts = keybase-git
+	source = git+https://github.com/keybase/client
+	source = git+https://github.com/keybase/kbfs
+	source = no-gui.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = f5ebf72c2edbfca1f3326e0aced42ca9
+
+pkgname = keybase-headless-git
+
