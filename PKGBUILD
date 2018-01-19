@@ -1,17 +1,17 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 @ hw.ac.uk>
 pkgname=musikcube-git
-pkgver=r1473.05ef7949
-pkgrel=2
+pkgver=r1767.cce2dbdb
+pkgrel=1
 pkgdesc="a terminal-based cross-platform music player, audio engine, metadata indexer, and server"
 arch=('x86_64')
 url="https://github.com/clangen/musikcube"
 license=('BSD')
-depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'boost' 'pulseaudio' 'libpulse' 'alsa-lib' 'curl')
+depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame'
+         'ncurses' 'boost' 'pulseaudio' 'libpulse' 'alsa-lib' 'curl')
 makedepends=('cmake' 'git')
-source=('musikcube::git+https://github.com/clangen/musikcube.git'
-'LICENSE.txt')
-md5sums=('SKIP'
-'e6df0c6007ed2ff48cf09efb93ea4593')
+conflicts=('musikcube')
+source=('musikcube::git+https://github.com/clangen/musikcube.git')
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
@@ -28,5 +28,5 @@ package() {
     cd "$srcdir/${pkgname%-git}"
     make DESTDIR="$pkgdir/" install
 
-    install -D -m644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
