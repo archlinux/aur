@@ -1,7 +1,7 @@
 pkgbase = khard
 	pkgdesc = Console CardDAV client
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scheibler/khard
 	install = khard.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = khard
 	depends = python-vobject
 	depends = python-atomicwrites
 	depends = python-ruamel-yaml
+	depends = python-unidecode
 	optdepends = vdirsyncer: Synchronization of address books with a DAV server.
 	provides = khard
 	provides = davcontroller

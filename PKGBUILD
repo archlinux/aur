@@ -3,11 +3,11 @@
 
 pkgname=khard
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Console CardDAV client"
 license=("GPL3")
 url="https://github.com/scheibler/khard"
-depends=('python-configobj' 'python-vobject' 'python-atomicwrites' 'python-ruamel-yaml')
+depends=('python-configobj' 'python-vobject' 'python-atomicwrites' 'python-ruamel-yaml' 'python-unidecode')
 makedepends=('python-setuptools')
 optdepends=('vdirsyncer: Synchronization of address books with a DAV server.')
             # Apparently there is no python3 alternative yet
