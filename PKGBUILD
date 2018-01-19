@@ -6,7 +6,7 @@ arch=('any')
 url='http://www.virtualbox.org'
 license=('custom:PUEL')
 install=virtualbox-guest-iso.install
-replaces=('virtualbox-additions' 'virtualbox-iso-additions' 'virtualbox-guest-iso')
+replaces=('virtualbox-additions' 'virtualbox-iso-additions' 'virtualbox-guest-iso' 'virtualbox51-guest-iso')
 conflicts=('virtualbox-additions' 'virtualbox-iso-additions' 'virtualbox-guest-iso')
 noextract=(VBoxGuestAdditions_$pkgver.iso)
 source=("http://download.virtualbox.org/virtualbox/$pkgver/VBoxGuestAdditions_$pkgver.iso"
@@ -18,5 +18,5 @@ package() {
   install -Dm 644 VBoxGuestAdditions_$pkgver.iso \
     "$pkgdir/usr/lib/virtualbox/additions/VBoxGuestAdditions.iso"
   install -Dm 644 "$srcdir/license" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/virtualbox-guest-iso/LICENSE"
 }
