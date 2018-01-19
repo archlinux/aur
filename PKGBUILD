@@ -5,8 +5,8 @@
 _subarchs=(armv5 armv6h armv7h armv8)
 pkgbase='distccd-alarm'
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
-_date=20171210
-pkgver=7.2.0
+_date=20180117
+pkgver=7.2.1
 pkgrel=1
 arch=('x86_64')
 license=('GPL' )
@@ -21,10 +21,10 @@ source=(
 "x-tools7h-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools7h.tar.xz"
  "x-tools8-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools8.tar.xz"
 'config.in' 'service.in')
-md5sums=('9cfadee932063e8341c14036c5c10e90'
-         '12ae25e2529387fe7a038c24429bad81'
-         'b2abddab4c216150b3be8854d6b4afd6'
-         'ceed447e8789f7579e7b99a394c02a82'
+md5sums=('6b46c7f97439ee8479f9fb8d1ab96b59'
+         '5f39d31ba0c3a41a7336fb20d8b1febd'
+         'ec73099f9ce47a6f86069fd253d60279'
+         '9c45700408b0ec6084571b8f1d6a7ff9'
          '48b71f968488a4322a715d633eb6879e'
          '7e664f8ce386f467f1a7381c9ac3c06f')
 
