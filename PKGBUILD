@@ -2,7 +2,6 @@
 
 pkgname=navicat-lite
 pkgver=10.0.6
-_pkgver=${pkgver%.*}
 pkgrel=2
 pkgdesc="A fast, reliable and affordable Database Administration tool purpose-built for simplifying database management and reducing administration costs."
 url="http://www.navicat.com"
@@ -20,7 +19,7 @@ package() {
   mkdir -p ${pkgdir}/opt/navicat
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/share/applications
-  cp -R ${srcdir}/navicat${_pkgver/./}_lite_en/* ${pkgdir}/opt/navicat/
+  cp -R ${srcdir}/navicat${pkgver}-any/* ${pkgdir}/opt/navicat/
   cp ${srcdir}/navicat ${pkgdir}/usr/bin/
   chmod +x ${pkgdir}/usr/bin/navicat
   cp ${srcdir}/navicat.desktop ${pkgdir}/usr/share/applications/
