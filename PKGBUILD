@@ -8,7 +8,7 @@ url="http://www.navicat.com"
 license=('GPL3')
 arch=('any')
 provides=('navicat')
-depends=('wine-stable')
+depends=('wine')
 source=(https://www.dropbox.com/s/k7k8yojg2nu5mov/navicat100_lite_en.tar.gz
         navicat.desktop
         navicat)
