@@ -16,7 +16,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.logging
 # endregion
 # region variables
-# TODO implement dependency check in import mechanism
 # shellcheck disable=SC2034
 bl_changeroot__dependencies__=(mountpoint mount umount mkdir)
 # shellcheck disable=SC2034

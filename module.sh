@@ -20,7 +20,7 @@ shopt -s expand_aliases
 # shellcheck source=./path.sh
 source "$(dirname "${BASH_SOURCE[0]}")/path.sh"
 # endregion
-# region variables
+# region var iables
 bl_module_allowed_names=(BASH_REMATCH COLUMNS HISTFILESIZE HISTSIZE LINES)
 bl_module_allowed_scope_names=()
 bl_module_bash_version_test=''
@@ -33,7 +33,7 @@ bl_module_directory_names_to_ignore=(apiDocumentation documentation node_modules
 bl_module_file_names_to_ignore=(package.json package-lock.json PKGBUILD readme.md)
 bl_module_import_level=0
 bl_module_imported=("$(bl.path.convert_to_absolute "${BASH_SOURCE[0]}")" "$(bl.path.convert_to_absolute "${BASH_SOURCE[1]}")" "$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[0]}")/path.sh")")
-bl_module_known_extensions=(.sh '' .bash .shell .zsh .csh)
+bl_module_known_extensions=(.sh '' .zsh .csh .ksh .bash .shell)
 bl_module_prevent_namespace_check=true
 bl_module_scope_rewrites=('^bashlink([._][a-zA-Z_-]+)$/bl\1/')
 # endregion
@@ -49,20 +49,22 @@ bl_module_check_name() {
         "$name" =~ ^${alternate_resolved_scope_name//\./\\./}[_A-Z]* \
     ]]; then
         local excluded=false
-        local excluded_pattern
-        for excluded_pattern in "${bl_module_allowed_scope_names[@]}"; do
-            if [[ $name =~ ^${excluded_pattern}[._A-Z]* ]]; then
-                excluded=true
-                break
-            fi
-        done
-        if ! $excluded; then
-            for excluded_pattern in "${bl_module_allowed_names[@]}"; do
-                if [[ "$excluded_pattern" = "$name" ]]; then
+        if [[ -z "$3" ]]; then
+            local excluded_pattern
+            for excluded_pattern in "${bl_module_allowed_scope_names[@]}"; do
+                if [[ $name =~ ^${excluded_pattern}[._A-Z]* ]]; then
                     excluded=true
                     break
                 fi
             done
+            if ! $excluded; then
+                for excluded_pattern in "${bl_module_allowed_names[@]}"; do
+                    if [[ "$excluded_pattern" = "$name" ]]; then
+                        excluded=true
+                        break
+                    fi
+                done
+            fi
         fi
         if ! $excluded; then
             return 1
@@ -226,7 +228,7 @@ bl_module_import_with_namespace_check() {
     bl.module.determine_declared_names \
         >"$bl_module_declared_names_before_source_file_path"
     while read -r name ; do
-        if bl.module.check_name "$name" "$resolved_scope_name"; then
+        if bl.module.check_name "$name" "$resolved_scope_name" true; then
             bl.module.log warn \
                 "Namespace \"$resolved_scope_name\" in \"$scope_name\" is" \
                 "not clean: Name \"$name\" is already defined." \
@@ -450,8 +452,13 @@ bl_module_resolve() {
             fi
         done
         if [ "$file_path" = '' ]; then
-            local new_name="$(echo "$name" | sed --regexp-extended \
-                's:\.([^.]+?)(\.(sh|bash|zsh|csh))?$:/\1\2:')"
+            local extension_pattern='('
+            for extension in "${bl_module_known_extensions[@]}"; do
+                extension_pattern+="$extension|"
+            done
+            extension_pattern+=')'
+            # shellcheck disable=SC1117
+            local new_name="$(echo "$name" | sed --regexp-extended "s:\.([^.]+?)(\.$extension_pattern)?$:/\1\2:")"
             if [ "$new_name" = "$name" ]; then
                 break
             else
@@ -471,7 +478,12 @@ bl_module_resolve() {
         return 1
     fi
     if [ "$2" = true ]; then
-        echo "$(bl.path.convert_to_absolute "$file_path")/$(basename "$1")"
+        local scope_name="$(basename "$1")"
+        if [[ "$file_path" == "$current_path"* ]] && [[ "$(basename "$1")" != bashlink.* ]]; then
+            scope_name="bashlink.$(
+                bl_module_remove_known_file_extension "$scope_name")"
+        fi
+        echo "$(bl.path.convert_to_absolute "$file_path")/$scope_name"
     else
         bl.path.convert_to_absolute "$file_path"
     fi

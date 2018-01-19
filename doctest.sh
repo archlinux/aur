@@ -547,12 +547,12 @@ bl_doctest_eval() {
     local output_buffer="$2"
     local text_buffer="${3-}"
     local module_name="${4-}"
-    local module_module_file_path="$(bl.path.convert_to_absolute "$(
-        dirname "${BASH_SOURCE[0]}"
-    )")/module.sh"
+    local module_module_file_path="$(bl.module.resolve bashlink.module)"
     local function_name="${5-}"
     local result=0
-    local setup_identifier="${module_name//[^[:alnum:]_]/_}"__bl_doctest_setup__
+    local scope_name="$(bl.module.rewrite_scope_name "$(
+        bl.module.remove_known_file_extension "$module_name")")"
+    local setup_identifier="${scope_name//[^[:alnum:]_]/_}"__doctest_setup__
     local setup_string="${!setup_identifier:-}"
     local declared_names_before_run_file_path="$(
         mktemp --suffix=bashlink-doctest)"
@@ -568,7 +568,7 @@ bl_doctest_eval() {
         # Suppress the warnings here because they have already been printed
         # when analyzing the module initially.
         echo "bl_module_prevent_namespace_check=true"
-        echo "bl.module.import $bl_doctest_module_reference_under_test"
+        echo "bl.module.import '$bl_doctest_module_reference_under_test' '${BASH_SOURCE[1]}'"
         echo "bl_module_prevent_namespace_check=false"
         echo "$setup_string"
         # _ can be used as anonymous variable (without warning)
@@ -587,7 +587,9 @@ bl_doctest_eval() {
     )"
     # run in clean environment
     local output
-    if echo "$output_buffer" | command grep '+bl.doctest.no_capture_stderr' &>/dev/null; then
+    if echo "$output_buffer" | command grep '+bl.doctest.no_capture_stderr' \
+        &>/dev/null
+    then
         output="$(bash --noprofile --norc <(echo "$test_script"))"
     else
         output="$(bash --noprofile --norc 2>&1 <(echo "$test_script"))"
@@ -601,26 +603,15 @@ bl_doctest_eval() {
         test_name="$module_name"
     fi
     if [[ "$bl_doctest_new_declared_names" != '' ]]; then
-        local resolved_module_name
-        if resolved_module_name="$(
-            bl.module.resolve "$bl_doctest_module_reference_under_test" true \
-            2>/dev/null
-        )"; then
-            local scope_name="$(bl.module.rewrite_scope_name "$(
-                bl.module.remove_known_file_extension "$(
-                    echo "$resolved_module_name" | \
-                    sed --regexp-extended 's:^.*/([^/]+)$:\1:'
-                )")")"
-            local name
-            bl.string.get_unique_lines <<< "$bl_doctest_new_declared_names" | \
-            while read -r name; do
-                if ! bl.module.check_name "$name" "$scope_name"; then
-                    bl.logging.warn \
-                        "Test for \"$test_name\" in module \"$module_name\"" \
-                        "introduces a global unprefixed name: \"$name\"."
-                fi
-            done
-        fi
+        local name
+        bl.string.get_unique_lines <<< "$bl_doctest_new_declared_names" | \
+        while read -r name; do
+            if ! bl.module.check_name "$name" "$scope_name"; then
+                bl.logging.warn \
+                    "Test for \"$test_name\" in module \"$module_name\"" \
+                    "introduces a global unprefixed name: \"$name\"."
+            fi
+        done
     fi
     rm "$declared_names_before_run_file_path"
     rm "$declared_names_after_run_file_path"

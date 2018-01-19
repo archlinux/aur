@@ -12,6 +12,7 @@
 # shellcheck disable=SC2016,SC2155
 # region import
 # shellcheck source=./arguments.sh
+# shellcheck source=./cli.sh
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
 bl.module.import bashlink.arguments
@@ -34,7 +35,7 @@ bl_logging__documentation__='
     >>> bl.logging.warn warn-message
     >>> bl.logging.info info-message
     >>> bl.logging.debug debug-message
-    +doctest_contains
+    +bl.doctest.contains
     error-message
     critical-message
 
@@ -77,7 +78,6 @@ bl_logging_file_descriptors_saved=false
 bl_logging_levels=(
     error
     critical
-    warn
     warning
     info
     verbose
@@ -87,7 +87,6 @@ bl_logging_levels=(
 bl_logging_levels_color=(
     "$bl_cli_color_red"
     "$bl_cli_color_magenta"
-    "$bl_cli_color_yellow"
     "$bl_cli_color_yellow"
     "$bl_cli_color_cyan"
     "$bl_cli_color_green"
@@ -137,6 +136,7 @@ bl_logging_get_prefix() {
     # shellcheck disable=SC2154
     local loglevel=${color}${level}${bl_cli_color_default}
     local path="${BASH_SOURCE[2]##./}"
+    # shellcheck disable=SC2154
     echo "${loglevel}:${bl_cli_color_light_gray}$(basename "$path")${bl_cli_color_default}:${bl_cli_color_light_cyan}${BASH_LINENO[1]}${bl_cli_color_default}:"
 }
 alias bl.logging.plain=bl_logging_plain
@@ -172,11 +172,10 @@ bl_logging_log() {
         level=warning
     fi
     shift
-    local level_index
-    level_index=$(bl.array.get_index "$level" "${bl_logging_levels[@]}")
+    local level_index=$(bl.array.get_index "$level" "${bl_logging_levels[@]}")
     if [ "$level_index" -eq -1 ]; then
         bl.logging.log critical "loglevel \"$level\" not available, use one of: "\
-            "${bl_logging_levels[@]}"
+            "${bl_logging_levels[*]} or warn"
         return 1
     fi
     if [ "$bl_logging_level" -ge "$level_index" ]; then
@@ -191,14 +190,6 @@ alias bl.logging.verbose='bl_logging_log verbose'
 alias bl.logging.warn='bl_logging_log warn'
 alias bl.logging.warning=bl.logging.warn
 alias bl.logging.set_commands_level=bl_logging_set_commands_level
-bl_logging_set_commands_level() {
-    bl_logging_commands_level=$(bl.array.get_index "$1" "${bl_logging_levels[@]}")
-    if [ "$bl_logging_level" -ge "$bl_logging_commands_level" ]; then
-        bl.logging.set_command_output_on
-    else
-        bl.logging.set_command_output_off
-    fi
-}
 alias bl.logging.set_file_descriptors=bl_logging_set_file_descriptors
 bl_logging_set_file_descriptors() {
     # shellcheck disable=SC1004,SC2016,SC2034
@@ -352,13 +343,12 @@ bl_logging_set_file_descriptors() {
     local options_log options_command
     bl.arguments.get_keyword --logging options_log
     bl.arguments.get_keyword --commands options_command
-    [[ "${options_log-}" == "" ]] && options_log=std
-    [[ "${options_command-}" == "" ]] && options_command=std
+    [[ "${options_log-}" == '' ]] && options_log=std
+    [[ "${options_command-}" == '' ]] && options_command=std
     bl_logging_options_log="$options_log"
     bl_logging_options_command="$options_command"
     set -- "${bl_arguments_new[@]:-}"
     local log_file="$1"
-
     bl_logging_off=false
     # restore
     if $bl_logging_file_descriptors_saved; then
@@ -370,14 +360,14 @@ bl_logging_set_file_descriptors() {
     bl_logging_tee_fifo_active=false
     bl_logging_output_to_saved_file_descriptors=false
 
-    if [[ "$log_file" == "" ]]; then
+    if [ "$log_file" = '' ]; then
         bl_logging_log_file=""
-        [[ "$bl_logging_options_log" == "tee" ]] && return 1
-        [[ "$bl_logging_options_command" == "tee" ]] && return 1
-        if [[ "$bl_logging_options_log" == "off" ]]; then
+        [ "$bl_logging_options_log" = 'tee' ] && return 1
+        [ "$bl_logging_options_command" = 'tee' ] && return 1
+        if [ "$bl_logging_options_log" = 'off' ]; then
             bl_logging_off=true
         fi
-        if [[ "$bl_logging_options_command" == "off" ]]; then
+        if [ "$bl_logging_options_command" = 'off' ]; then
             exec 3>&1 4>&2
             bl_logging_file_descriptors_saved=true
             exec &>/dev/null
@@ -392,19 +382,19 @@ bl_logging_set_file_descriptors() {
         bl_logging_file_descriptors_saved=true
     fi
 
-    if [[ "$bl_logging_options_log" == tee ]]; then
-        if [[ "$bl_logging_options_command" != "tee" ]]; then
+    if [ "$bl_logging_options_log" = tee ]; then
+        if [ "$bl_logging_options_command" != tee ]; then
             bl_logging_log_file="$log_file"
             bl_logging_tee_fifo_active=true
         fi
-    elif [[ "$bl_logging_options_log" == "stdout" ]]; then
+    elif [ "$bl_logging_options_log" = stdout ]; then
         true
-    elif [[ "$bl_logging_options_log" == "file" ]]; then
+    elif [ "$bl_logging_options_log" = file ]; then
         bl_logging_log_file="$log_file"
-    elif [[ "$bl_logging_options_log" == "off" ]]; then
+    elif [ "$bl_logging_options_log" = off ]; then
         bl_logging_off=true
     fi
-    if [[ "$bl_logging_options_command" == "tee" ]]; then
+    if [ "$bl_logging_options_command" = tee ]; then
         bl_logging_tee_fifo_dir="$(mktemp --directory --suffix rebash-logging-fifo)"
         bl_logging_tee_fifo="$bl_logging_tee_fifo_dir/fifo"
         mkfifo "$bl_logging_tee_fifo"
@@ -416,12 +406,12 @@ bl_logging_set_file_descriptors() {
         if [[ "$bl_logging_options_log" != tee ]]; then
             bl_logging_output_to_saved_file_descriptors=true
         fi
-    elif [[ "$bl_logging_options_command" == "stdout" ]]; then
+    elif [ "$bl_logging_options_command" = stdout ]; then
         true
-    elif [[ "$bl_logging_options_command" == "file" ]]; then
+    elif [ "$bl_logging_options_command" = file ]; then
         exec 1>>"$log_file" 2>>"$log_file"
         bl_logging_output_to_saved_file_descriptors=true
-    elif [[ "$bl_logging_options_command" == "off" ]]; then
+    elif [ "$bl_logging_options_command" = off ]; then
         exec 1>>/dev/null 2>>/dev/null
     fi
 }
@@ -440,6 +430,19 @@ bl_logging_set_command_output_on() {
         --logging="$bl_logging_options_log" \
         --commands="std"
 }
+# NOTE: Depends on "bl.logging.set_command_output_on", bl.logging.set_command_output_off"
+bl_logging_set_commands_level() {
+    local level="$1"
+    if [ "$level" = 'warn' ]; then
+        level=warning
+    fi
+    bl_logging_commands_level=$(bl.array.get_index "$level" "${bl_logging_levels[@]}")
+    if [ "$bl_logging_level" -ge "$bl_logging_commands_level" ]; then
+        bl.logging.set_command_output_on
+    else
+        bl.logging.set_command_output_off
+    fi
+}
 alias bl.logging.set_level=bl_logging_set_level
 bl_logging_set_level() {
     # shellcheck disable=SC2016,SC2034
@@ -451,7 +454,11 @@ bl_logging_set_level() {
         3
         3
     '
-    bl_logging_level=$(bl.array.get_index "$1" "${bl_logging_levels[@]}")
+    local level="$1"
+    if [ "$level" = 'warn' ]; then
+        level=warning
+    fi
+    bl_logging_level=$(bl.array.get_index "$level" "${bl_logging_levels[@]}")
     if [ "$bl_logging_level" -ge "$bl_logging_commands_level" ]; then
         bl.logging.set_command_output_on
     else
@@ -462,15 +469,15 @@ alias bl.logging.set_log_file=bl_logging_set_log_file
 bl_logging_set_log_file() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-        >>> local test_file="$(mktemp)"
-        >>> bl.logging.plain "test_file:" >"$test_file"
-        >>> bl.logging.set_log_file "$test_file"
+        >>> local test_file_path="$(mktemp)"
+        >>> bl.logging.plain "test_file:" >"$test_file_path"
+        >>> bl.logging.set_log_file "$test_file_path"
         >>> bl.logging.plain logging
-        >>> bl.logging.set_log_file "$test_file"
+        >>> bl.logging.set_log_file "$test_file_path"
         >>> echo echo
         >>> bl.logging.set_log_file ""
-        >>> bl.logging.cat "$test_file"
-        >>> rm "$test_file"
+        >>> bl.logging.cat "$test_file_path"
+        >>> rm "$test_file_path"
         logging
         echo
         test_file:
@@ -479,16 +486,16 @@ bl_logging_set_log_file() {
 
         >>> bl.logging.set_commands_level debug
         >>> bl.logging.set_level debug
-        >>> local test_file="$(mktemp)"
-        >>> bl.logging.plain "test_file:" >"$test_file"
-        >>> bl.logging.set_log_file "$test_file"
+        >>> local test_file_path="$(mktemp)"
+        >>> bl.logging.plain "test_file:" >"$test_file_path"
+        >>> bl.logging.set_log_file "$test_file_path"
         >>> bl.logging.plain 1
         >>> bl.logging.set_log_file ""
-        >>> bl.logging.set_log_file "$test_file"
+        >>> bl.logging.set_log_file "$test_file_path"
         >>> bl.logging.plain 2
         >>> bl.logging.set_log_file ""
-        >>> bl.logging.cat "$test_file"
-        >>> rm "$test_file"
+        >>> bl.logging.cat "$test_file_path"
+        >>> rm "$test_file_path"
         1
         2
         test_file:
@@ -496,7 +503,7 @@ bl_logging_set_log_file() {
         2
     '
     [[ "$bl_logging_log_file" == "$1" ]] && return 0
-    bl.logging.set_file_descriptors ""
+    bl.logging.set_file_descriptors ''
     [ "$1" = '' ] && return 0
     bl.logging.set_file_descriptors "$1" --commands=tee --logging=tee
 }

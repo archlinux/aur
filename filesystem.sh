@@ -19,18 +19,26 @@ bl.module.import bashlink.logging
 bl.module.import bashlink.path
 # endregion
 # region variables
+# shellcheck disable=SC2034
+bl_filesystem__dependencies__=(pv)
 # shellcheck disable=SC2034,SC1004
-bl_filesystem__doc_test_setup__='
+bl_filesystem__doctest_setup__='
     # Runs once before tests are started:
-
+    # region import
+    bl.module.import bashlink.array
     bl.module.import bashlink.doctest
+    # endregion
     doc_test_capture_stderr=false
     blkid() {
-        [[ "${@: -1}" != "/dev/sda2" ]] && return 0
-        echo gpt
-        echo "only discoverable by blkid"
-        echo boot_partition
-        echo 192d8b9e
+        if [[ "${@: -1}" != "/dev/sda2" ]]; then
+            return 0
+        fi
+        cat <<EOF
+gpt
+only discoverable by blkid
+boot_partition
+192d8b9e
+EOF
     }
     btrfs() {
         if [[ $1 == subvolume ]] && [[ $2 == snapshot ]]; then
@@ -47,8 +55,7 @@ bl_filesystem__doc_test_setup__='
             shift
             echo btrfs receive $@
         fi
-        if [[ $1 == subvolume ]] && [[ $2 == list ]] && \
-            [[ "${!#}" == /broot ]]
+        if [[ $1 == subvolume ]] && [[ $2 == list ]] && [[ "${!#}" == /broot ]]
         then
             echo '\'' ID 256 parent 5 top level 5 path __active
                 ID 259 parent 256 top level 256 path __active/var
@@ -59,52 +66,52 @@ bl_filesystem__doc_test_setup__='
                 ID 1663 parent 1661 top level 1661 path __snapshot/backup_last/usr
                 ID 1664 parent 1661 top level 1661 path __snapshot/backup_last/home'\''
         fi
+        local paths=(
+            /broot/__active
+            /broot/__active/var
+            /broot/__active/usr
+            /broot/__active/home
+            /broot/__snapshot/backup_last
+            /broot/__snapshot/backup_last/var
+            /broot/__snapshot/backup_last/usr
+            /broot/__snapshot/backup_last/home
+        )
         if [[ $1 == subvolume ]] && [[ $2 == show ]]; then
             if [[ $3 == /broot ]]; then
-                echo "Name:             <FS_TREE>"
-                echo "UUID:             123456ab-abc1-2345"
+                cat <<EOF
+Name:             <FS_TREE>
+UUID:             123456ab-abc1-2345
+EOF
                 return 0
             fi
-            # check if subvolume
-            [[ $3 == /broot/__active ]] && return 0
-            [[ $3 == /broot/__active/var ]] && return 0
-            [[ $3 == /broot/__active/usr ]] && return 0
-            [[ $3 == /broot/__active/home ]] && return 0
-            [[ $3 == /broot/__snapshot/backup_last ]] && return 0
-            [[ $3 == /broot/__snapshot/backup_last/var ]] && return 0
-            [[ $3 == /broot/__snapshot/backup_last/usr ]] && return 0
-            [[ $3 == /broot/__snapshot/backup_last/home ]] && return 0
-            # return error if not a subvolume
-            return 1
+            # Check if subvolume present and return error if not.
+            bl.array.contains "${paths[*]}" "$3"
+            return $?
         fi
         if [[ $1 == subvolume ]] && [[ $2 == delete ]]; then
-            # check if subvolume
-            [[ $3 == /broot/__active ]] && return 0
-            [[ $3 == /broot/__active/var ]] && return 0
-            [[ $3 == /broot/__active/usr ]] && return 0
-            [[ $3 == /broot/__active/home ]] && return 0
-            [[ $3 == /broot/__snapshot/backup_last ]] && return 0
-            [[ $3 == /broot/__snapshot/backup_last/var ]] && return 0
-            [[ $3 == /broot/__snapshot/backup_last/usr ]] && return 0
-            [[ $3 == /broot/__snapshot/backup_last/home ]] && return 0
-            # return error if not a subvolume
-            return 1
+            # Check if subvolume present and return error if not.
+            bl.array.contains "${paths[*]}" "$3"
+            return $?
         fi
     }
     lsblk() {
-        if [[ "${@: -1}" == "" ]];then
+        if [[ "${@: -1}" == "" ]]; then
             echo "lsblk: : not a block device"
             return 1
         fi
-        if [[ "${@: -1}" != "/dev/sdb" ]];then
-            echo "/dev/sda disk"
-            echo "/dev/sda1 part SYSTEM_LABEL 0x7"
-            echo "/dev/sda2 part"
+        if [[ "${@: -1}" != "/dev/sdb" ]]; then
+            cat <<EOF
+/dev/sda disk
+/dev/sda1 part SYSTEM_LABEL 0x7
+/dev/sda2 part
+EOF
         fi
-        if [[ "${@: -1}" != "/dev/sda" ]];then
-            echo "/dev/sdb disk"
-            echo "/dev/sdb1 part boot_partition "
-            echo "/dev/sdb2 part system_partition"
+        if [[ "${@: -1}" != "/dev/sda" ]]; then
+            cat <<EOF
+/dev/sdb disk
+/dev/sdb1 part boot_partition
+/dev/sdb2 part system_partition
+EOF
         fi
     }
     mv() {
@@ -121,6 +128,21 @@ bl_filesystem__doc_test_setup__='
 # endregion
 # region functions
 ## region btrfs
+alias bl.filesystem.btrfs_is_root=bl_filesystem_btrfs_is_root
+bl_filesystem_btrfs_is_root() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        >>> bl.filesystem.btrfs_is_root /broot; echo $?
+        0
+        >>> bl.filesystem.btrfs_is_root /broot/foo; echo $?
+        1
+    '
+    (btrfs subvolume show "$1" | command grep 'is btrfs root') &>/dev/null || \
+        (btrfs subvolume show "$1" | command grep 'is toplevel') &>/dev/null || \
+        (btrfs subvolume show "$1" | command grep 'Name:.*<FS_TREE>') &>/dev/null || \
+        return 1
+}
+# NOTE: Depends on "bl.filesystem.is_root"
 alias bl.filesystem.btrfs_find_root=bl_filesystem_btrfs_find_root
 bl_filesystem_btrfs_find_root() {
     # shellcheck disable=SC2016,SC2034
@@ -141,72 +163,29 @@ bl_filesystem_btrfs_find_root() {
         path="$(dirname "$path")"
     done
 }
-alias bl.filesystem.btrfs_get_child_volumes=bl_filesystem_btrfs_get_child_volumes
-bl_filesystem_btrfs_get_child_volumes() {
+# NOTE: Depends on "bl.filesystem.is_root"
+alias bl.filesystem.btrfs_subvolume_filter=bl_filesystem_btrfs_subvolume_filter
+bl_filesystem_btrfs_subvolume_filter() {
     # shellcheck disable=SC2016,SC2034
     local __documentation__='
-        Returns absolute paths to subvolumes.
-
-        >>> bl.filesystem.btrfs_get_child_volumes /broot/__active
-        /broot/__active/var
-        /broot/__active/usr
-        /broot/__active/home
-        >>> bl.filesystem.btrfs_get_child_volumes /broot/__snapshot/backup_last
-        /broot/__snapshot/backup_last/var
-        /broot/__snapshot/backup_last/usr
-        /broot/__snapshot/backup_last/home
+        >>> bl.filesystem.btrfs_subvolume_filter /broot parent 256
+        ID 259 parent 256 top level 256 path __active/var
+        ID 258 parent 256 top level 256 path __active/usr
+        ID 257 parent 256 top level 256 path __active/home
+        >>> bl.filesystem.btrfs_subvolume_filter /broot id 256
+        ID 256 parent 5 top level 5 path __active
     '
-    local volume="$1"
-    local btrfs_root entry volume_id volume_relative
-    bl.filesystem.btrfs_is_subvolume "${volume}" || return 1
-    btrfs_root="$(bl.filesystem.btrfs_find_root "$volume")"
-    volume_relative="$(bl.path.converto_to_relative "$btrfs_root" "$volume")"
-    entry="$(
-        bl.filesystem.btrfs_subvolume_filter "$btrfs_root" path "$volume_relative"
-    )"
-    volume_id="$(bl.filesystem.btrfs_get_subvolume_list_field id "$entry")"
-    bl.filesystem.btrfs_subvolume_filter "$btrfs_root" parent "$volume_id" \
-        | while read -r entry
-    do
-        child_path="$(bl.filesystem.btrfs_get_subvolume_list_field path "$entry")"
-        echo "${btrfs_root}/${child_path}"
+    local btrfs_root="$(realpath "$1")"
+    local target_key="$2"
+    local target_value="$3"
+    local entry
+    bl.filesystem.btrfs_is_root "$btrfs_root" || return 1
+    btrfs subvolume list -p "$btrfs_root" | while read -r entry; do
+        local value="$(bl.filesystem.btrfs_get_subvolume_list_field "$target_key" "$entry")"
+        if [[ "$value" == "$target_value" ]]; then
+            echo "$entry"
+        fi
     done
-}
-alias bl.filesystem.btrfs_get_subvolume_list_field=bl_filesystem_btrfs_get_subvolume_list_field
-bl_filesystem_btrfs_get_subvolume_list_field() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        >>> local entry="$(btrfs subvolume list /broot | head -n1)"
-        >>> bl.filesystem.btrfs_get_subvolume_list_field path "$entry"
-        >>> bl.filesystem.btrfs_get_subvolume_list_field ID "$entry"
-        >>> bl.filesystem.btrfs_get_subvolume_list_field parent "$entry"
-        __active
-        256
-        5
-    '
-    local target="$1"
-    local entry=("$2")
-    local found=false
-    local field
-    for field in "${entry[@]}"; do
-        $found && echo "$field" && break
-        # case insensitive match (bash >= 4)
-        [[ "${field,,}" == "${target,,}" ]] && found=true
-    done
-}
-alias bl.filesystem.btrfs_is_root=bl_filesystem_btrfs_is_root
-bl_filesystem_btrfs_is_root() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        >>> bl.filesystem.btrfs_is_root /broot; echo $?
-        0
-        >>> bl.filesystem.btrfs_is_root /broot/foo; echo $?
-        1
-    '
-    (btrfs subvolume show "$1" | command grep 'is btrfs root') &>/dev/null || \
-        (btrfs subvolume show "$1" | command grep 'is toplevel') &>/dev/null || \
-        (btrfs subvolume show "$1" | command grep 'Name:.*<FS_TREE>') &>/dev/null || \
-        return 1
 }
 alias bl.filesystem.btrfs_is_subvolume=bl_filesystem_btrfs_is_subvolume
 bl_filesystem_btrfs_is_subvolume() {
@@ -226,6 +205,84 @@ bl_filesystem_btrfs_is_subvolume() {
     '
     btrfs subvolume show "$1" &>/dev/null
 }
+# NOTE: Depends on "bl.filesystem.btrfs_subvolume", "bl.filesystem.btrfs_subvolume_filter"
+alias bl.filesystem.btrfs_get_child_volumes=bl_filesystem_btrfs_get_child_volumes
+bl_filesystem_btrfs_get_child_volumes() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        Returns absolute paths to subvolumes.
+
+        >>> bl.filesystem.btrfs_get_child_volumes /broot/__active
+        /broot/__active/var
+        /broot/__active/usr
+        /broot/__active/home
+        >>> bl.filesystem.btrfs_get_child_volumes /broot/__snapshot/backup_last
+        /broot/__snapshot/backup_last/var
+        /broot/__snapshot/backup_last/usr
+        /broot/__snapshot/backup_last/home
+    '
+    local volume="$1"
+    bl.filesystem.btrfs_is_subvolume "${volume}" || return 1
+    local btrfs_root="$(bl.filesystem.btrfs_find_root "$volume")"
+    local volume_relative="$(bl.path.convert_to_relative "$btrfs_root" "$volume")"
+    local entry="$(
+        bl.filesystem.btrfs_subvolume_filter "$btrfs_root" path "$volume_relative"
+    )"
+    local volume_id="$(bl.filesystem.btrfs_get_subvolume_list_field id "$entry")"
+    bl.filesystem.btrfs_subvolume_filter "$btrfs_root" parent "$volume_id" \
+    | while read -r entry; do
+        echo "${btrfs_root}/$(bl.filesystem.btrfs_get_subvolume_list_field path "$entry")"
+    done
+}
+alias bl.filesystem.btrfs_get_subvolume_list_field=bl_filesystem_btrfs_get_subvolume_list_field
+bl_filesystem_btrfs_get_subvolume_list_field() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        >>> local entry="$(btrfs subvolume list /broot | head -n1)"
+        >>> bl.filesystem.btrfs_get_subvolume_list_field path "$entry"
+        >>> bl.filesystem.btrfs_get_subvolume_list_field ID "$entry"
+        >>> bl.filesystem.btrfs_get_subvolume_list_field parent "$entry"
+        __active
+        256
+        5
+    '
+    local target="$1"
+    local entry
+    read -r -a entry <<< "$2"
+    local found=false
+    local field
+    for field in "${entry[@]}"; do
+        if $found; then
+            echo "$field"
+            break
+        fi
+        # case insensitive match (bash >= 4)
+        if [[ "${field,,}" == "${target,,}" ]]; then
+            found=true
+        fi
+    done
+}
+alias bl.filesystem.btrfs_subvolume_set_read_only=bl_filesystem_btrfs_subvolume_set_read_only
+bl_filesystem_btrfs_subvolume_set_read_only() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        Make subvolume writable or readonly. Also applies to child subvolumes.
+    '
+    local volume="$1"
+    local read_only="$2"
+    [ -z "$2" ] && read_only=true
+    # if setting to writable set top volume first
+    $read_only || btrfs property set -ts "$volume" ro $read_only
+    local child
+    bl.filesystem.btrfs_get_child_volumes "$volume" | while read -r child; do
+        btrfs property set -ts "$child" ro $read_only
+    done
+    # if setting to read_only set top volume last
+    if $read_only; then
+        btrfs property set -ts "$volume" ro $read_only
+    fi
+}
+# NOTE: Depends on "bl.filesystem.btrfs_subvolume_set_read_only"
 alias bl.filesystem.btrfs_send=bl_filesystem_btrfs_send
 bl_filesystem_btrfs_send() {
     # shellcheck disable=SC2016,SC2034
@@ -244,7 +301,7 @@ bl_filesystem_btrfs_send() {
     local target_path="$2"
     local target_directory_path="$(dirname "$2")"
     # Note btrfs send can only operate on read-only snapshots
-    bl.filesystem.btrfs_subvolume_set_reas_only "$volume" true
+    bl.filesystem.btrfs_subvolume_set_read_only "$volume" true
     btrfs send "$volume" | \
         pv --progress --timer --rate --average-rate --bytes | \
         btrfs receive "$target_directory_path"
@@ -260,6 +317,7 @@ bl_filesystem_btrfs_send() {
     mv "${target_directory_path}/$volume_name" "$target_path"
     bl.filesystem.btrfs_subvolume_set_read_only "$volume" false
 }
+# NOTE: Depends on "bl.filesystem.btrfs_subvolume_set_read_only"
 alias bl.filesystem.btrfs_send_update=bl_filesystem_btrfs_send_update
 bl_filesystem_btrfs_send_update() {
     # shellcheck disable=SC1004,SC2016,SC2034
@@ -415,50 +473,6 @@ bl_filesystem_btrfs_subvolume_delete() {
         btrfs subvolume delete "$child"
     done
     btrfs subvolume delete "$volume"
-}
-alias bl.filesystem.btrfs_subvolume_filter=bl_filesystem_btrfs_subvolume_filter
-bl_filesystem_btrfs_subvolume_filter() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        >>> bl.filesystem.btrfs_subvolume_filter /broot parent 256
-        ID 259 parent 256 top level 256 path __active/var
-        ID 258 parent 256 top level 256 path __active/usr
-        ID 257 parent 256 top level 256 path __active/home
-        >>> bl.filesystem.btrfs_subvolume_filter /broot id 256
-        ID 256 parent 5 top level 5 path __active
-    '
-    local btrfs_root="$(realpath "$1")"
-    local target_key="$2"
-    local target_value="$3"
-    local entry
-    bl.filesystem.btrfs_is_root "$btrfs_root" || return 1
-    btrfs subvolume list -p "$btrfs_root" | while read -r entry; do
-        local value
-        value="$(bl.filesystem.btrfs_get_subvolume_list_field "$target_key" "$entry")"
-        if [[ "$value" == "$target_value" ]]; then
-            echo "$entry"
-        fi
-    done
-}
-alias bl.filesystem.btrfs_subvolume_set_read_only=bl_filesystem_btrfs_subvolume_set_read_only
-bl_filesystem_btrfs_subvolume_set_read_only() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        Make subvolume writable or readonly. Also applies to child subvolumes.
-    '
-    local volume="$1"
-    local read_only="$2"
-    [ -z "$2" ] && read_only=true
-    # if setting to writable set top volume first
-    $read_only || btrfs property set -ts "$volume" ro $read_only
-    local child
-    bl.filesystem.btrfs_get_child_volumes "$volume" | while read -r child; do
-        btrfs property set -ts "$child" ro $read_only
-    done
-    # if setting to read_only set top volume last
-    if $read_only; then
-        btrfs property set -ts "$volume" ro $read_only
-    fi
 }
 ## endregion
 alias bl.filesystem.close_crypt_blockdevice=bl_filesystem_close_crypt_blockdevice

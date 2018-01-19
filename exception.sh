@@ -23,14 +23,14 @@ bl_exception__documentation__='
 
     >>> bl.exception.activate
     >>> false
-    +doctest_ellipsis
+    +bl.doctest.ellipsis
     Traceback (most recent call first):
     ...
 
     >>> bl.exception.activate
     >>> bl.exception.try {
     >>>     false
-    >>> }; bl.exception.catch {
+    >>> } bl.exception.catch {
     >>>     echo caught
     >>> }
     caught
@@ -38,7 +38,7 @@ bl_exception__documentation__='
     exception in a subshell:
     >>> bl.exception.activate
     >>> ( false )
-    +doctest_ellipsis
+    +bl.doctest.ellipsis
     Traceback (most recent call first):
     ...
     Traceback (most recent call first):
@@ -47,10 +47,10 @@ bl_exception__documentation__='
     >>> bl.exception.try {
     >>>     (false; echo "this should not be printed")
     >>>     echo "this should not be printed"
-    >>> }; bl.exception.catch {
+    >>> } bl.exception.catch {
     >>>     echo caught
     >>> }
-    +doctest_ellipsis
+    +bl.doctest.ellipsis
     caught
 
     Nested exception:
@@ -58,7 +58,7 @@ bl_exception__documentation__='
     >>>     true
     >>>     bl.exception.try {
     >>>         false
-    >>>     }; bl.exception.catch {
+    >>>     } bl.exception.catch {
     >>>         echo caught inside foo
     >>>     }
     >>>     false # this is cought at top level
@@ -67,7 +67,7 @@ bl_exception__documentation__='
     >>>
     >>> bl.exception.try {
     >>>     bl_exception_foo
-    >>> }; bl.exception.catch {
+    >>> } bl.exception.catch {
     >>>     echo caught
     >>> }
     >>>
@@ -80,7 +80,7 @@ bl_exception__documentation__='
     >>>     true
     >>>     bl.exception.try {
     >>>         false
-    >>>     }; bl.exception.catch {
+    >>>     } bl.exception.catch {
     >>>         echo caught inside foo
     >>>     }
     >>>     false # this is not caught
@@ -90,7 +90,7 @@ bl_exception__documentation__='
     >>> foo "exception NOT ACTIVE:"
     >>> bl.exception.activate
     >>> foo "exception ACTIVE:"
-    +doctest_ellipsis
+    +bl.doctest.ellipsis
     exception NOT ACTIVE:
     caught inside foo
     this should never be printed
@@ -108,7 +108,7 @@ bl_exception__documentation__='
     >>>     false
     >>>     echo "should not be printed"
     >>>     )
-    >>> }; bl.exception.catch {
+    >>> } bl.exception.catch {
     >>>     echo caught
     >>> }
     caught
@@ -116,11 +116,11 @@ bl_exception__documentation__='
     Print a caught exception traceback.
     >>> bl.exception.try {
     >>>     false
-    >>> }; bl.exception.catch {
+    >>> } bl.exception.catch {
     >>>     echo caught
-    >>>     echo "$exception_last_traceback"
+    >>>     echo "$bl_exception_last_traceback"
     >>> }
-    +doctest_ellipsis
+    +bl.doctest.ellipsis
     caught
     Traceback (most recent call first):
     ...
@@ -128,27 +128,27 @@ bl_exception__documentation__='
     Different syntax variations are possible.
     >>> bl.exception.try {
     >>>     ! true
-    >>> }; bl.exception.catch {
+    >>> } bl.exception.catch {
     >>>     echo caught
     >>> }
 
     >>> bl.exception.try
     >>>     false
-    >>> bl.exception.catch {
+    >>> bl.exception.catch_single {
     >>>     echo caught
     >>> }
     caught
 
     >>> bl.exception.try
     >>>     false
-    >>> bl.exception.catch
+    >>> bl.exception.catch_single
     >>>     echo caught
     caught
 
     >>> bl.exception.try {
     >>>     false
     >>> }
-    >>> bl.exception.catch {
+    >>> bl.exception.catch_single {
     >>>     echo caught
     >>> }
     caught
@@ -156,7 +156,7 @@ bl_exception__documentation__='
     >>> bl.exception.try {
     >>>     false
     >>> }
-    >>> bl.exception.catch
+    >>> bl.exception.catch_single
     >>> {
     >>>     echo caught
     >>> }
@@ -228,7 +228,7 @@ bl_exception_deactivate() {
     >>> trap -p ERR | cut --delimiter "'\''" --fields 2
     >>> bl.exception.deactivate
     >>> trap -p ERR | cut --delimiter "'\''" --fields 2
-    bl.exception.error_handler
+    bl_exception_error_handler
     echo $foo
     '
     $bl_exception_active || return 0
@@ -248,7 +248,7 @@ bl_exception_enter_try() {
         bl_exception_active_before_try=$bl_exception_active
     fi
     bl.exception.deactivate
-    bl.exception.try_catch_level+=1
+    (( bl_exception_try_catch_level++ ))
 }
 alias bl.exception.error_handler=bl_exception_error_handler
 bl_exception_error_handler() {
@@ -274,7 +274,7 @@ bl_exception_error_handler() {
 alias bl.exception.exit_try=bl_exception_exit_try
 bl_exception_exit_try() {
     local bl_exception_result=$1
-    bl_exception_try_catch_level+=-1
+    (( bl_exception_try_catch_level-- ))
     if (( bl_exception_try_catch_level == 0 )); then
         $bl_exception_active_before_try && bl.exception.activate
         # shellcheck disable=SC2034
@@ -288,7 +288,8 @@ bl_exception_exit_try() {
     return $bl_exception_result
 }
 alias bl.exception.try='bl.exception.enter_try; (bl.exception.activate; '
-alias bl.exception.catch='true); bl.exception.exit_try $? || '
+alias bl.exception.catch='; true); bl.exception.exit_try $? || '
+alias bl.exception.catch_single='true); bl.exception.exit_try $? || '
 # endregion
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:

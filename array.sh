@@ -11,6 +11,31 @@
 # endregion
 # shellcheck disable=SC2016,SC2155
 # region functions
+alias bl.array.contains=bl_array_contains
+bl_array_contains() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        Checks if given item equals to one item in given array.
+
+        >>> local a=(a b c)
+        >>> bl.array.contains "${a[*]}" c
+        >>> echo $?
+        0
+        >>> bl.array.contains "a b c" b
+        >>> echo $?
+        0
+        >>> bl.array.contains "a b c" d
+        >>> echo $?
+        1
+    '
+    local item
+    for item in $1; do
+        if [ "$2" = "$item" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
 alias bl.array.filter=bl_array_filter
 bl_array_filter() {
     # shellcheck disable=SC2016,SC2034
