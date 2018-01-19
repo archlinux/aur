@@ -2,7 +2,7 @@
 # Contributor: Michael Herold
 
 pkgname=scudcloud
-pkgver=1.63
+pkgver=1.64
 pkgrel=1
 epoch=2
 pkgdesc="A Slack client for Linux"
