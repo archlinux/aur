@@ -10,18 +10,17 @@
 
 # 0: No changes -- cannot be _coinstalled with the GTK2 version
 # 1: Change dockbarx to dockbarm -- install alongside dockbarx (GTK2 version)
-_coinstall=0
+_coinstall=1
 
 _pkgname=dockbarx
 pkgname="${_pkgname}"-gtk3-git
 _branchname='pygi-migration'
 epoch=1
-pkgver=0.92+33+gfd33e48
+pkgver=0.92+64+g9c55bf8
 pkgrel=1
 pkgdesc="DockBarX GTK3 port. (Standalone panel and mate applet)"
 arch=('i686' 'x86_64')
-#url="https://github.com/M7S/dockbarx"
-url="https://github.com/amper128/dockbarx"
+url="https://github.com/M7S/dockbarx"
 license=('GPL3')
 depends=('libkeybinder3' 'python2-cairo' 'python2-dbus' 'python2-gobject' 'python2-pillow'
          'python2-xlib' 'python2-xdg' 'python2-xcffib' 'gtk3')
@@ -31,24 +30,12 @@ optdepends=('mate-panel: mate applet'
             'dockmanager: dockmanager plugins'
             'cardapio-bzr: Menu applet for standalone dock - dockx')
 makedepends=('git')
-provides=("${_pkgname}=${pkgver%%+*}")
-#source=("${_pkgname}"::git+https://github.com/M7S/dockbarx.git#branch=${_branchname})
-source=("${_pkgname}"::git+https://github.com/amper128/dockbarx.git#branch=${_branchname}
-        '34fe342585e7b3f87ffe04a98079826ff6b7f32a.patch')
-
-_commits=('1aa7665c0bebfd5a5f9cf4ec5bc6980ad67e83c4'
-          '84dcc2825d44557571138cb16f9533b339b91370'
-          '1d270a7a29847b69082800aa82f7779a0c675909')
-for _commit in "${_commits[@]}" ; do 
-	source+=("https://github.com/M7S/dockbarx/commit/${_commit}.patch")
-	sha256sums+=('SKIP')
-done
-
-sha256sums=('SKIP'
-            '7b81316a73b68fd5c38351f1501569c166aed300d41fb62898f5adfb25a9f161'
-            '1b1f527436b85ba460a0c95cd1bbfceb3ce16a8ab82c215c2f18456e4fe874bc'
-            '6eba00088c1094aee041b26407d5c8e9f19da2eaee491cc9aff92a11285efba2'
-            'c3100ef3c9c6592c11e687837eaca3242fdd4b3074aedd8414961f6fad658f5f')
+provides=()
+if [[ "${_coinstall}" != '1' ]] ; then
+  provides+=("${_pkgname}=${pkgver%%+*}")
+fi
+source=("${_pkgname}"::git+https://github.com/M7S/dockbarx.git#branch=${_branchname})
+sha256sums=('SKIP')
 
 [ "${_coinstall}" == '1' ] || conflicts+=("${_pkgname}" "${_pkgname}-git")
 
@@ -58,13 +45,8 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
-  for _commit in "${_commits[@]}" ; do
-    echo ">> ${_commit}"
-    patch -Np1 -i ../"${_commit}".patch
-  done
-  patch -uNp2 -r- -i ../34fe342585e7b3f87ffe04a98079826ff6b7f32a.patch
   if [[ "${_coinstall}" == '1' ]] ; then
+    cd "${_pkgname}"
     find . -type f -exec sed -i -e 's:dockbarx:dockbarm:g;s:Dockbarx:Dockbarm:g' \
                                 -e 's:DockbarX:DockbarM:g;s:DockBarx:DockBarm:g;s:DockBarX:DockBarM:g' \
                                 -e 's:dockx:dockm:g;s:DockX:DockM:g' \
