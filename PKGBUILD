@@ -144,9 +144,9 @@ package_virtualbox51() {
              'libxcursor' 'libxinerama' 'libx11' 'libxext' 'libxmu' 'libxt'
              'qt5-base' 'qt5-x11extras' 'VIRTUALBOX-HOST-MODULES')
     optdepends=('vde2: Virtual Distributed Ethernet support'
-                'virtualbox-guest-iso: Guest Additions CD image'
-                'virtualbox-ext-vnc: VNC server support'
-                'virtualbox-sdk: Developer kit')
+                'virtualbox51-guest-iso: Guest Additions CD image'
+                'virtualbox51-ext-vnc: VNC server support'
+                'virtualbox51-sdk: Developer kit')
     backup=('etc/vbox/vbox.cfg')
     replaces=('virtualbox-ose' 'virtualbox')
     conflicts=('virtualbox-ose' 'virtualbox')
@@ -220,7 +220,7 @@ package_virtualbox51() {
     cd "$srcdir"
 
     #licence
-    install -Dm644 VirtualBox-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 VirtualBox-$pkgver/COPYING "$pkgdir/usr/share/licenses/virtualbox/LICENSE"
 
     # install systemd stuff
     install -Dm644 60-vboxdrv.rules "$pkgdir/usr/lib/udev/rules.d/60-vboxdrv.rules"
@@ -250,7 +250,7 @@ package_virtualbox51-sdk() {
     cp -r sdk "$pkgdir/usr/lib/virtualbox"
     # licence
     install -Dm644 "$srcdir/VirtualBox-$pkgver/COPYING" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        "$pkgdir/usr/share/licenses/virtualbox-sdk/LICENSE"
 }
 
 package_virtualbox51-host-dkms() {
@@ -259,8 +259,9 @@ package_virtualbox51-host-dkms() {
     replaces=('virtualbox-source'
               'virtualbox-host-source'
               'virtualbox-host-modules-lts'
-              'virtualbox-host-dkms')
-    conflicts=('virtualbox-source' 'virtualbox-host-source')
+              'virtualbox-host-dkms'
+              'virtualbox51-host-dkms')
+    conflicts=('virtualbox-source' 'virtualbox-host-source' 'virtualbox-host-dkms')
     provides=('VIRTUALBOX-HOST-MODULES')
     optdepends=('linux-headers: build modules against Arch kernel'
                 'linux-lts-headers: build modules against LTS kernel'
@@ -273,14 +274,14 @@ package_virtualbox51-host-dkms() {
     cp -r src "$pkgdir/usr/src/vboxhost-${pkgver}_OSE"
     # licence
     install -Dm644 "$srcdir/VirtualBox-$pkgver/COPYING" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        "$pkgdir/usr/share/licenses/virtualbox-host-dkms/LICENSE"
     # module loading
-    local _p="$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+    local _p="$pkgdir/usr/lib/modules-load.d/virtualbox-host-dkms.conf"
     install -Dm644 /dev/null "$_p"
     printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" > "$_p"
     # starting vbox 5.1, dkms.conf file was dropped
     local _p="$pkgdir/usr/src/vboxhost-${pkgver}_OSE/dkms.conf"
-    install -Dm644 "$srcdir/$pkgname.conf" "$_p"
+    install -Dm644 "$srcdir/virtualbox-host-dkms.conf" "$_p"
     sed -i "s,@VERSION@,$pkgver," "$_p"
 }
 
@@ -290,7 +291,8 @@ package_virtualbox51-guest-dkms() {
     replaces=('virtualbox-archlinux-source'
               'virtualbox-guest-source'
               'virtualbox-guest-modules-lts'
-              'virtualbox-guest-dkms')
+              'virtualbox-guest-dkms'
+              'virtualbox51-guest-dkms')
     provides=('VIRTUALBOX-GUEST-MODULES')
     conflicts=('virtualbox-archlinux-source' 
                'virtualbox-guest-source' 
@@ -306,14 +308,14 @@ package_virtualbox51-guest-dkms() {
     cp -r src "$pkgdir/usr/src/vboxguest-${pkgver}_OSE"
     # licence
     install -Dm644 "$srcdir/VirtualBox-$pkgver/COPYING" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        "$pkgdir/usr/share/licenses/virtualbox-guest-dkms/LICENSE"
     # module loading
-    local _p="$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+    local _p="$pkgdir/usr/lib/modules-load.d/virtualbox-guest-dkms.conf"
     install -Dm644 /dev/null "$_p"
     printf "vboxguest\nvboxsf\nvboxvideo\n" > "$_p"
     # starting vbox 5.1, dkms.conf file was dropped
     local _p="$pkgdir/usr/src/vboxguest-${pkgver}_OSE/dkms.conf"
-    install -Dm644 "$srcdir/$pkgname.conf" "$_p"
+    install -Dm644 "$srcdir/virtualbox-guest-dkms.conf" "$_p"
     sed -i "s,@VERSION@,$pkgver," "$_p"
 }
 
@@ -324,10 +326,12 @@ package_virtualbox51-guest-utils() {
              'VIRTUALBOX-GUEST-MODULES')
     replaces=('virtualbox-archlinux-additions' 
               'virtualbox-guest-additions'
-              'virtualbox-guest-utils')
+              'virtualbox-guest-utils'
+              'virtualbox51-guest-utils')
     conflicts=('virtualbox-archlinux-additions' 
                'virtualbox-guest-additions' 
                'virtualbox51-guest-utils-nox'
+               'virtualbox-guest-utils-nox'
                'virtualbox-guest-utils')
 
     source "VirtualBox-$pkgver/env.sh"
@@ -348,7 +352,7 @@ package_virtualbox51-guest-utils() {
     install -Dm644 vboxservice.service "$pkgdir/usr/lib/systemd/system/vboxservice.service"
     install -Dm644 virtualbox-guest-utils.sysusers "$pkgdir/usr/lib/sysusers.d/virtualbox-guest-utils.conf"
     # licence
-    install -Dm644 VirtualBox-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 VirtualBox-$pkgver/COPYING "$pkgdir/usr/share/licenses/virtualbox-guest-utils/LICENSE"
 }
 
 package_virtualbox51-guest-utils-nox() {
@@ -368,7 +372,7 @@ package_virtualbox51-guest-utils-nox() {
     install -Dm644 virtualbox-guest-utils.sysusers "$pkgdir/usr/lib/sysusers.d/virtualbox-guest-utils.conf"
     # licence
     install -Dm644 "$srcdir/VirtualBox-$pkgver/COPYING" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        "$pkgdir/usr/share/licenses/virtualbox-guest-utils-nox/LICENSE"
 }
 
 package_virtualbox51-ext-vnc() {
@@ -382,7 +386,7 @@ package_virtualbox51-ext-vnc() {
     install -Dm644 VNC-*.vbox-extpack "$pkgdir/usr/share/virtualbox/extensions/VNC-${pkgver}.vbox-extpack"
     # licence
     install -Dm644 "$srcdir/VirtualBox-$pkgver/COPYING" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        "$pkgdir/usr/share/licenses/virtualbox-ext-vnc/LICENSE"
 }
 
 # vim:set ts=4 sw=4 et:
