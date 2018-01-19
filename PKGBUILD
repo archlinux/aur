@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_py_common provides common functionality for rqt plugins writt
 url='http://ros.org/wiki/rqt_py_common'
 
 pkgname='ros-kinetic-rqt-py-common'
-pkgver='0.4.5'
+pkgver='0.5.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,13 +29,13 @@ depends=(${ros_depends[@]})
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/rqt_py_common/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rqt_common_plugins-release-release-kinetic-rqt_py_common-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/kinetic/rqt_py_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('31c393631616f812c2fa716949cb20f4878fab0bb7b4580cebbdd06afb343efb')
+_dir="rqt-release-release-kinetic-rqt_py_common-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt-release/archive/release/kinetic/rqt_py_common/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('c9c4185b52c7945d2edb69634f4b1b41190130762b97fe8791cef56db84b52ba')
 
 build() {
   # Use ROS environment variables
