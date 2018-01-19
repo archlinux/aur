@@ -4,7 +4,8 @@ GenericName=
 Comment=Software for LC-MS data management and analyses
 Exec=TOPPAS
 Icon=applications-science
-Terminal=false
 Type=Application
+Terminal=false
 Categories=Science;
 StartupNotify=false
+
