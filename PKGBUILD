@@ -2,8 +2,8 @@
 # Contributor:  Alexander Birukov <sanya.rnd@gmail.com>
 
 pkgname=pascalabcnet
-pkgver=3.3.0.1599
-pkgrel=2
+pkgver=3
+pkgrel=3
 pkgdesc="PascalABC.NET compiler"
 arch=('any')
 url="https://github.com/pascalabcnet/pascalabcnet"
@@ -25,7 +25,7 @@ source=(
     $_pabcclear.sh
 )
 sha256sums=(
-    'd63890e3316a4c7cc50f373cc0277edb4f29381dd9c9a8c9b663c7f3d6e9e1d7'
+    'SKIP'
     '5903380803609b5eaa0a5a1cfc5ddf86ffffc8a3fce312eb733adab660ce035c'
     '42fd2a14dffc555046f187a501ba1fffcff11d95cc39f68484fe32204fe73b75'
 )
