@@ -3,20 +3,20 @@
 
 _pkgname=gvfs
 pkgname=${_pkgname}-light
-pkgver=1.34.1+8+g091ac25d
+pkgver=1.34.1+11+gad63dfb7
 pkgrel=1
 pkgdesc="Virtual filesystem implementation for GIO, without network/optical/misc support."
 url="https://wiki.gnome.org/Projects/gvfs"
 arch=('i686' 'x86_64')
 license=('LGPL')
-conflicts=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 depends=('udisks2' 'gcr' 'libarchive' 'libgphoto2' 'fuse')
 makedepends=('git' 'gtk-doc' 'polkit' 'libcap')
 optdepends=('gvfs-mtp: MTP device support'
             'gtk3: Recent files support')
 groups=('gnome')
-_commit=091ac25d59d0dc0f5fed17510b0593bcd86e9fc9 # gnome-3-26
+_commit=ad63dfb7ecd0819177cfb7588f10458516f26aa6 # gnome-3-26
 source=("git+https://git.gnome.org/browse/gvfs#commit=${_commit}"
         'gvfsd.hook')
 sha256sums=('SKIP'
