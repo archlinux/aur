@@ -1,0 +1,15 @@
+pkgbase = python-pyevtk
+	pkgdesc = Export data as binary VTK files
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://bitbucket.org/pauloh/pyevtk
+	arch = any
+	license = BSD
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/p/pyevtk/pyevtk-1.1.0.tar.gz
+	source = https://bitbucket.org/pauloh/pyevtk/raw/e253ef56687d86be5daf1d9e6ad9fcf9cffbb327/src/LICENSE
+	md5sums = 2ae1a98ddbfc51a48996cb680caa2957
+	md5sums = 25974a4eee315dd7dd57ce00237cd2c8
+
+pkgname = python-pyevtk
+
