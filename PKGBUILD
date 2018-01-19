@@ -7,8 +7,8 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=65.0.3324.0
-pkgrel=2
+pkgver=65.0.3325.0
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
 arch=('i686' 'x86_64')
@@ -115,7 +115,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/k2.patch
 )
 
 
-sha256sums=('5887f1177cbd09ef119ade9ce247e55497e04f7622df986a6763bf49c7aae14a'
+sha256sums=('341cbd2d2ac870484589d6f28b697a981126d98a9f0c9092a618c78c78715a64'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -354,7 +354,7 @@ patch -Np1 -i ../edgy.patch
 #patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
-patch -Np1 -i ../gna.patch
+#patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
 
 
