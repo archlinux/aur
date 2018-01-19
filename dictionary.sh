@@ -123,8 +123,8 @@ bl_dictionary_set() {
         >>> echo ${bl_dictionary_store_map[foo]}
         2
         >>> bl.dictionary.set map foo "a b c" bar 5
-        >>> echo ${dictionary_store_map[foo]}
-        >>> echo ${dictionary_store_map[bar]}
+        >>> echo ${bl_dictionary_store_map[foo]}
+        >>> echo ${bl_dictionary_store_map[bar]}
         a b c
         5
         >>> bl.dictionary.set map foo "a b c" bar; echo $?

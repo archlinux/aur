@@ -93,8 +93,8 @@ bl_logging_levels_color=(
     "$bl_cli_color_green"
     "$bl_cli_color_blue"
 )
-bl_logging_commands_level=$(bl.array.get_index 'critical' "${bl_logging_levels[@]}")
-bl_logging_level=$(bl.array.get_index 'critical' "${bl_logging_levels[@]}")
+bl_logging_commands_level=$(bl.array.get_index critical "${bl_logging_levels[@]}")
+bl_logging_level=$(bl.array.get_index critical "${bl_logging_levels[@]}")
 bl_logging_log_file=''
 bl_logging_off=false
 bl_logging_options_log=std
@@ -137,9 +137,7 @@ bl_logging_get_prefix() {
     # shellcheck disable=SC2154
     local loglevel=${color}${level}${bl_cli_color_default}
     local path="${BASH_SOURCE[2]##./}"
-    path=$(basename "$path")
-    local prefix=[${loglevel}:"$path":${BASH_LINENO[1]}]
-    echo "$prefix"
+    echo "${loglevel}:${bl_cli_color_light_gray}$(basename "$path")${bl_cli_color_default}:${bl_cli_color_light_cyan}${BASH_LINENO[1]}${bl_cli_color_default}:"
 }
 alias bl.logging.plain=bl_logging_plain
 bl_logging_plain() {

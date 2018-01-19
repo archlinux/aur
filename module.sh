@@ -23,6 +23,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/path.sh"
 # region variables
 bl_module_allowed_names=(BASH_REMATCH COLUMNS HISTFILESIZE HISTSIZE LINES)
 bl_module_allowed_scope_names=()
+bl_module_bash_version_test=''
 bl_module_declared_function_names_after_source=''
 bl_module_declared_function_names_before_source_file_path=''
 # shellcheck disable=SC2034
@@ -96,6 +97,59 @@ bl_module_determine_declared_names() {
             cut --delimiter '=' --fields 1
     } | sort --unique
 }
+alias bl.module.is_defined=bl_module_is_defined
+bl_module_is_defined() {
+    # shellcheck disable=SC2016,SC2034
+    local __documentation__='
+        Tests if variable is defined (can also be empty)
+
+        >>> local foo="bar"
+        >>> bl.module.is_defined foo; echo $?
+        >>> [[ -v foo ]]; echo $?
+        0
+        0
+        >>> local defined_but_empty=""
+        >>> bl.module.is_defined defined_but_empty; echo $?
+        0
+        >>> bl.module.is_defined undefined_variable; echo $?
+        1
+        >>> set -o nounset
+        >>> bl.module.is_defined undefined_variable; echo $?
+        1
+        Same Tests for bash < 4.3
+        >>> bl_module_bash_version_test=true
+        >>> local foo="bar"
+        >>> bl.module.is_defined foo; echo $?
+        0
+        >>> bl_module_bash_version_test=true
+        >>> local defined_but_empty=""
+        >>> bl.module.is_defined defined_but_empty; echo $?
+        0
+        >>> bl_module_bash_version_test=true
+        >>> bl.module.is_defined undefined_variable; echo $?
+        1
+        >>> bl_module_bash_version_test=true
+        >>> set -o nounset
+        >>> bl.module.is_defined undefined_variable; echo $?
+        1
+    '
+    (
+        set +o nounset
+        if ((BASH_VERSINFO[0] >= 4)) && ((BASH_VERSINFO[1] >= 3)) \
+                && [ -z "$bl_module_bash_version_test" ]; then
+            [[ -v "${1:-}" ]] || exit 1
+        else # for bash < 4.3
+            # NOTE: ${varname:-foo} expands to foo if varname is unset or set to
+            # the empty string; ${varname-foo} only expands to foo if varname is
+            # unset.
+            # shellcheck disable=SC2016
+            eval \
+                '! [[ "${'"$1"'-this_variable_is_undefined_!!!}"' \
+                ' == "this_variable_is_undefined_!!!" ]]'
+            exit $?
+        fi
+    )
+}
 alias bl.module.is_imported=bl_module_is_imported
 bl_module_is_imported() {
     local caller_file_path="${BASH_SOURCE[1]}"
@@ -134,9 +188,10 @@ bl_module_import_raw() {
     bl_module_import_level=$((bl_module_import_level + 1))
     # shellcheck disable=SC1090
     source "$1"
-    [ $? = 1 ] && \
-        bl.module.log critical "Failed to source module \"$1\"." && \
+    if [ $? = 1 ]; then
+        bl.module.log critical "Failed to source module \"$1\"."
         return 1
+    fi
     bl_module_import_level=$((bl_module_import_level - 1))
 }
 # NOTE: Depends on "bl.module.log"
@@ -240,9 +295,7 @@ bl_module_import() {
     fi
     # NOTE: We have to use "local" before to avoid shadowing the "$?" value.
     local result
-    result="$(bl.module.resolve "$1" true "$caller_file_path")"
-    local return_code=$?
-    if (( return_code == 0 )); then
+    if result="$(bl.module.resolve "$1" true "$caller_file_path")"; then
         local file_path="$(echo "$result" | sed --regexp-extended 's:^(.+)/[^/]+$:\1:')"
         local scope_name="$(echo "$result" | sed --regexp-extended 's:^.*/([^/]+)$:\1:')"
         if [[ -d "$file_path" ]]; then
@@ -283,7 +336,7 @@ bl_module_import() {
             fi
         fi
     else
-        echo "$result"
+        echo "$result" 1>&2
         return 1
     fi
 }
@@ -296,9 +349,11 @@ bl_module_import_without_namespace_check() {
     if bl.module.is_imported "$1" "$caller_file_path"; then
         return 0
     fi
-    local file_path="$(bl.module.resolve "$1" "${BASH_SOURCE[1]}")"
-    bl_module_imported+=("$file_path")
-    bl.module.import_raw "$file_path"
+    local file_path
+    if file_path="$(bl.module.resolve "$1" "${BASH_SOURCE[1]}")"; then
+        bl_module_imported+=("$file_path")
+        bl.module.import_raw "$file_path"
+    fi
 }
 alias bl.module.resolve=bl_module_resolve
 bl_module_resolve() {
@@ -396,7 +451,7 @@ bl_module_resolve() {
         done
         if [ "$file_path" = '' ]; then
             local new_name="$(echo "$name" | sed --regexp-extended \
-                's:.([^.]+?)(\.(sh|bash|zsh|csh))?$:/\1\2:')"
+                's:\.([^.]+?)(\.(sh|bash|zsh|csh))?$:/\1\2:')"
             if [ "$new_name" = "$name" ]; then
                 break
             else

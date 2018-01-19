@@ -70,18 +70,20 @@ bl_doctest__documentation__='
     bar
     >>> echo $(( 1 + 2 ))
     3
-    But can also occur right after another:
     >>> echo foo
     foo
     >>> echo bar
     bar
-    Single quotes can be escaped like so:
+
+    ##### Single quotes can be escaped like so:
     >>> echo '"'"'$foos'"'"'
     $foos
-    Or so
+
+    ##### Or so
     >>> echo '\''$foos'\''
     $foos
-    Some text in between.
+
+    ##### Some text in between.
     Multiline output
     >>> local i
     >>> for i in 1 2; do
@@ -89,7 +91,8 @@ bl_doctest__documentation__='
     >>> done
     1
     2
-    Ellipsis support
+
+    ##### Check ellipsis support
     >>> local i
     >>> for i in 1 2 3 4 5; do
     >>>     echo $i;
@@ -98,7 +101,8 @@ bl_doctest__documentation__='
     1
     2
     ...
-    Ellipsis are non greedy
+
+    ##### Ellipsis are non greedy.
     >>> local i
     >>> for i in 1 2 3 4 5; do
     >>>     echo $i;
@@ -108,17 +112,18 @@ bl_doctest__documentation__='
     ...
     4
     5
-    Each testcase has its own scope:
+
+    ##### Each testcase has its own scope:
     >>> local testing="foo"; echo $testing
     foo
     >>> [ -z "${testing:-}" ] && echo empty
     empty
-    Syntax error in testcode:
+
+    ##### Check for syntax error in test code:
     >>> f() {a}
     +bl.doctest.contains
-    +bl.doctest.ellipsis
-    syntax error near unexpected token `{a}
-    ...
+    `{a}
+
     -bl.documentation.exclude_print
 '
 bl_doctest_module_reference_under_test=''
@@ -199,13 +204,6 @@ bl_doctest_compare_result() {
     local got="$2"
     local buffer_line
     local got_line
-    compare_lines() {
-        if $contains; then
-            [[ "$got_line" == *"$buffer_line"* ]] || return 1
-        else
-            [[ "$buffer_line" == "$got_line" ]] || return 1
-        fi
-    }
     local result=0
     local contains=false
     local ellipsis=false
@@ -213,6 +211,13 @@ bl_doctest_compare_result() {
     local ellipsis_waiting=false
     local end_of_buffer=false
     local end_of_got=false
+    bl_doctest_compare_lines() {
+        if $contains; then
+            [[ "$got_line" == *"$buffer_line"* ]] || return 1
+        else
+            [ "$got_line" = "$buffer_line" ] || return 1
+        fi
+    }
     while true; do
         # parse buffer line
         if ! $ellipsis_waiting && ! $end_of_buffer && ! read -r -u3 buffer_line; then
@@ -233,13 +238,12 @@ bl_doctest_compare_result() {
         if $end_of_got || ! read -r -u4 got_line; then
             end_of_got=true
         fi
-
         # set result
-        if $ellipsis;then
-            if [[ "$buffer_line" == "..." ]]; then
+        if $ellipsis; then
+            if [ "$buffer_line" = '...' ]; then
                 ellipsis_on=true
-            else
-                [[ "$buffer_line" != "" ]] && $ellipsis_on && ellipsis_waiting=true
+            elif [[ "$buffer_line" != '' ]] && $ellipsis_on; then
+                ellipsis_waiting=true
             fi
         fi
         $end_of_buffer && $end_of_got && break
@@ -247,14 +251,14 @@ bl_doctest_compare_result() {
         $end_of_got && $ellipsis_waiting && result=1 && break
         $end_of_buffer && $ellipsis_on && break
         if $ellipsis_on; then
-            if compare_lines; then
+            if bl_doctest_compare_lines; then
                 ellipsis_on=false
                 ellipsis_waiting=false
             else
                 $end_of_got && result=1
             fi
         else
-            compare_lines || result=1
+            bl_doctest_compare_lines || result=1
         fi
     done 3<<< "$buffer" 4<<< "$got"
     return $result
@@ -284,9 +288,10 @@ bl_doctest_parse_arguments() {
         >>> echo $?
         +bl.doctest.contains
         +bl.doctest.ellipsis
-        Failed to test file: non_existing_module
+        critical: Module file path for "non_existing_module" could not be
         ...
         1
+
         -bl.documentation.exclude
     '
     bl.arguments.set "$@"
@@ -430,7 +435,7 @@ bl_doctest_parse_docstring() {
     # Remove trailing blank license.
     [[ "$(tail --lines=1 <<< "$docstring")" != *[![:space:]]* ]] &&
         docstring="$(head --lines=-1 <<< "$docstring")"
-    eval_buffers() {
+    bl_doctest_eval_buffers() {
         $parse_buffers_function "$test_buffer" "$output_buffer" \
             "$text_buffer" "$module_name" "$function_name"
         local result=$?
@@ -454,7 +459,7 @@ bl_doctest_parse_docstring() {
                     [ ! -z "$text_buffer" ] && text_buffer+=$'\n'"$line"
                 elif [[ "$line" = "$prompt"* ]]; then
                     next_state=TEST
-                    [ ! -z "$text_buffer" ] && eval_buffers
+                    [ ! -z "$text_buffer" ] && bl_doctest_eval_buffers
                     $preserve_prompt && temp_prompt="$prompt" && prompt=""
                     test_buffer="${line#$prompt}"
                     $preserve_prompt && prompt="$temp_prompt"
@@ -470,7 +475,7 @@ bl_doctest_parse_docstring() {
                     #indentation="$(echo "$line"| command grep -o "^[[:blank:]]*")"
                 if [ "$line" = '' ]; then
                     next_state=TEXT
-                    eval_buffers
+                    bl_doctest_eval_buffers
                     [ $? == 1 ] && return 1
                 elif [[ "$line" = "$prompt"* ]]; then
                     next_state=TEST
@@ -490,11 +495,11 @@ bl_doctest_parse_docstring() {
             OUTPUT)
                 if [ "$line" = '' ]; then
                     next_state=TEXT
-                    eval_buffers
+                    bl_doctest_eval_buffers
                     [ $? == 1 ] && return 1
                 elif [[ "$line" = "$prompt"* ]]; then
                     next_state=TEST
-                    eval_buffers
+                    bl_doctest_eval_buffers
                     [ $? == 1 ] && return 1
                     $preserve_prompt && temp_prompt="$prompt" && prompt=""
                     if [ -z "$test_buffer" ]; then
@@ -519,7 +524,7 @@ bl_doctest_parse_docstring() {
     # shellcheck disable=SC2154
     [[ "$(tail --lines=1 <<< "$text_buffer")" = "" ]] &&
         text_buffer="$(head --lines=-1 <<< "$text_buffer" )"
-    eval_buffers
+    bl_doctest_eval_buffers
 }
 # NOTE: Depends on "pring_declarations_warning".
 alias bl.doctest.eval=bl_doctest_eval
@@ -533,7 +538,7 @@ bl_doctest_eval() {
         >>> local output_buffer="foo
         >>> bar"
         >>> bl_doctest_use_side_by_side_output=false
-        >>> bl_doctest_module_reference_under_test=module
+        >>> bl_doctest_module_reference_under_test=bashlink.module
         >>> bl_doctest_nounset=false
         >>> bl.doctest.eval "$test_buffer" "$output_buffer"
     '
@@ -557,7 +562,7 @@ bl_doctest_eval() {
         mktemp --suffix=bashlink-doctest)"
     # shellcheck disable=SC2064
     trap "rm --force $declared_names_after_run_file_path; exit" EXIT
-    test_script="$(
+    local test_script="$(
         echo '[ -z "$BASH_REMATCH" ] && BASH_REMATCH=""'
         echo source "$module_module_file_path"
         # Suppress the warnings here because they have already been printed
@@ -591,23 +596,31 @@ bl_doctest_eval() {
         "$declared_names_before_run_file_path" \
         "$declared_names_after_run_file_path" | \
             command grep -e '^>' | sed 's/^> //')"
-    local test_name="$module_name"
+    local test_name="$function_name"
+    if [ -z "$test_name" ]; then
+        test_name="$module_name"
+    fi
     if [[ "$bl_doctest_new_declared_names" != '' ]]; then
-        local scope_name="$(bl.module.rewrite_scope_name "$(
-            bl.module.remove_known_file_extension "$(
-                bl.module.resolve "$1" true | \
-                sed --regexp-extended 's:^.*/([^/]+)$:\1:'
-            )")")"
-        local name
-        bl.string.get_unique_lines <<< "$bl_doctest_new_declared_names" | \
-        while read -r name; do
-            if ! bl.module.check_name "$name" "$scope_name"; then
-                bl.logging.warn
-                    "Test for function \"$test_name\" in module \"" \
-                    "$module_name\" introduces a global unprefixed name: \"" \
-                    "$name\"."
-            fi
-        done
+        local resolved_module_name
+        if resolved_module_name="$(
+            bl.module.resolve "$bl_doctest_module_reference_under_test" true \
+            2>/dev/null
+        )"; then
+            local scope_name="$(bl.module.rewrite_scope_name "$(
+                bl.module.remove_known_file_extension "$(
+                    echo "$resolved_module_name" | \
+                    sed --regexp-extended 's:^.*/([^/]+)$:\1:'
+                )")")"
+            local name
+            bl.string.get_unique_lines <<< "$bl_doctest_new_declared_names" | \
+            while read -r name; do
+                if ! bl.module.check_name "$name" "$scope_name"; then
+                    bl.logging.warn \
+                        "Test for \"$test_name\" in module \"$module_name\"" \
+                        "introduces a global unprefixed name: \"$name\"."
+                fi
+            done
+        fi
     fi
     rm "$declared_names_before_run_file_path"
     rm "$declared_names_after_run_file_path"
@@ -648,8 +661,13 @@ bl_doctest_run_test() {
 alias bl_doctest_test=bl.doctest.test
 bl_doctest_test() {
     bl_doctest_module_reference_under_test="$1"
-    local result="$(
-        bl.module.resolve "$bl_doctest_module_reference_under_test" true)"
+    local result
+    if ! result="$(
+        bl.module.resolve "$bl_doctest_module_reference_under_test" true
+    )"; then
+        echo "$result" 1>&2
+        return 1
+    fi
     local file_path="$(
         echo "$result" | sed --regexp-extended 's:^(.+)/[^/]+$:\1:')"
     local module_name="$(

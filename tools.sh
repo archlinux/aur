@@ -18,59 +18,7 @@ bl.module.import bashlink.globals
 bl.module.import bashlink.string
 # endregion
 # region functions
-alias bl.tools.is_defined=bl_tools_is_defined
-bl_tools_is_defined() {
-    # shellcheck disable=SC2016,SC2034
-    local __documentation__='
-        Tests if variable is defined (can also be empty)
-
-        >>> local foo="bar"
-        >>> bl.tools.is_defined foo; echo $?
-        >>> [[ -v foo ]]; echo $?
-        0
-        0
-        >>> local defined_but_empty=""
-        >>> bl.tools.is_defined defined_but_empty; echo $?
-        0
-        >>> bl.tools.is_defined undefined_variable; echo $?
-        1
-        >>> set -o nounset
-        >>> bl.tools.is_defined undefined_variable; echo $?
-        1
-        Same Tests for bash < 4.3
-        >>> bl_tools__bash_version_test=true
-        >>> local foo="bar"
-        >>> bl.tools.is_defined foo; echo $?
-        0
-        >>> bl_tools__bash_version_test=true
-        >>> local defined_but_empty=""
-        >>> bl.tools.is_defined defined_but_empty; echo $?
-        0
-        >>> bl_tools__bash_version_test=true
-        >>> bl.tools.is_defined undefined_variable; echo $?
-        1
-        >>> bl_tools__bash_version_test=true
-        >>> set -o nounset
-        >>> bl.tools.is_defined undefined_variable; echo $?
-        1
-    '
-    (
-        set +o nounset
-        if ((BASH_VERSINFO[0] >= 4)) && ((BASH_VERSINFO[1] >= 3)) \
-                && [ -z "${bl_tools__bash_version_test:-}" ]; then
-            [[ -v "${1:-}" ]] || exit 1
-        else # for bash < 4.3
-            # NOTE: ${varname:-foo} expands to foo if varname is unset or set to
-            # the empty string; ${varname-foo} only expands to foo if varname is
-            # unset.
-            # shellcheck disable=SC2016
-            eval \
-                '! [[ "${'"${1}"'-this_variable_is_undefined_!!!}"' \
-                ' == "this_variable_is_undefined_!!!" ]]'
-            exit $?
-        fi
-    )
-}
+alias bl.tools.is_defined=bl_module_is_defined
 alias bl.tools.is_empty=bl_tools_is_empty
 bl_tools_is_empty() {
     # shellcheck disable=SC2016,SC2034

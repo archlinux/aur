@@ -13,7 +13,6 @@
 # region import
 # shellcheck source=./module.sh
 source "$(dirname "${BASH_SOURCE[0]}")/module.sh"
-bl.module.import bashlink.tools
 # endregion
 # region variables
 # shellcheck disable=SC2034
@@ -299,7 +298,8 @@ else
 fi
 # TODO this breaks dracut (segfault)
 #(echo -e $'\u1F3B7' | command grep -v F3B7) &> /dev/null
-if bl.tools.is_defined NO_UNICODE; then
+# NOTE: "bl.tools.is_defined" results in an dependency cycle.
+if bl.module.is_defined NO_UNICODE; then
     bl.cli.disable_unicode_glyphs
 else
     bl.cli.enable_unicode_glyphs
