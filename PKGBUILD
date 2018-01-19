@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.14
-_pkgver=4.14.13
+_pkgver=4.14.14
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/copperhead/linux-hardened'
@@ -20,39 +20,31 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         90-linux.hook  # pacman hook for initramfs regeneration
         linux.preset   # standard config files for mkinitcpio ramdisk
 
-        # https://bugs.archlinux.org/task/56575
-        e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
         # https://bugs.archlinux.org/task/56605
         xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-lookup.patch
-        # https://bugs.archlinux.org/task/56846
-        cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
         # https://bugs.archlinux.org/task/56711
         drm-i915-edp-Only-use-the-alternate-fixed-mode-if-its-asked-for.patch
 
         CVE-2017-8824-dccp-use-after-free-in-DCCP-code.patch
         CVE-2017-17448-netfilter-nfnetlink_cthelper-Add-missing-permission-checks.patch
         CVE-2017-17450-netfilter-xt_osf-Add-missing-permission-checks.patch
-        CVE-2017-17741-KVM-Fix-stack-out-of-bounds-read-in-write_mmio.patch
 )
 replaces=('linux-grsec')
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'ce897f467e80452f29d7a7a8809e8585ea12192a2c32e4d18578f64b043e802e'
+            '62d656b98f0dc143216cb9650bd9b96cd83d92925731e9f0bec5eb4d6358e603'
             'SKIP'
-            '6b12f95c7eecfc3629fe94079f5a82d509a31621f689503dd91225c730ed0371'
+            '0ee89f7c93da3708047467041d4fed7f2f19e07d2a46c3184f61d8ba5d36a80a'
             'SKIP'
-            'd0c7c7c5ebd1a77047bb85dd441f11dcc45bd2491f70b841e985a42b4b9975bf'
+            '382a1b290ea06caef391fbb6987246a7bbacf2a7f87d37e7b039e5792d957c57'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
             '294c928b8252112d621df1d13fbfeade13f28ddea034d44e89db41b66d2b7d45'
-            '721c387db986d883a6df6b0da17941ce6d59811b0647ae6653b978c5ee144f19'
             'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148'
             '6be803c62b7ce41f1b4de6c867715398812b1c1a3e68a0078512f2872e2a3fa9'
             'b833ad4354fcd2cc6ee60c971088f77aa5b06a58fce346c40268c0b05b1e8cb5'
-            '72efa781c8ee1175a8865e6a12568aaf3bac4b76d4285819c6a75a3e5fe41435'
-            'ee125179fdd295266aba52e1aebaef97cb41f4a05d9cd1c2b11b4ce83746e197')
+            '72efa781c8ee1175a8865e6a12568aaf3bac4b76d4285819c6a75a3e5fe41435')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
