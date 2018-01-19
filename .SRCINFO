@@ -1,0 +1,20 @@
+pkgbase = fmidi-git
+	pkgdesc = Library and programs to read and play back MIDI files
+	pkgver = v0.1.r2.851fdc6
+	pkgrel = 1
+	url = https://github.com/jpcima/fmidi
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = boost
+	depends = libev
+	depends = rtmidi
+	provides = fmidi
+	conflicts = fmidi
+	options = staticlibs
+	source = fmidi::git+https://github.com/jpcima/fmidi.git
+	md5sums = SKIP
+
+pkgname = fmidi-git
+
