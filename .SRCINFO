@@ -8,6 +8,7 @@ pkgbase = transmission-cli-git
 	depends = curl
 	depends = libevent
 	depends = systemd
+	provides = transmission-cli
 	conflicts = transmission-cli
 	replaces = transmission-cli
 	source = git+https://github.com/transmission/transmission.git

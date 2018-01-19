@@ -14,6 +14,7 @@ pkgdesc='Fast, easy, and free BitTorrent client (CLI tools, daemon and web clien
 depends=(curl libevent systemd)
 conflicts=(transmission-cli)
 replaces=(transmission-cli)
+provides=(transmission-cli)
 source=(git+https://github.com/transmission/transmission.git
         transmission-cli.sysusers
         transmission-cli.tmpfiles)
