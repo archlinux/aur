@@ -12,10 +12,10 @@
 
 pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
-pkgver=2.14.21
+pkgver=2.14.22
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release'
-url='http://qgis.org/'
+url='https://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('expat' 'gcc-libs' 'gdal' 'geos' 'glibc' 'libspatialite' 'postgresql-libs' 'proj'
@@ -36,7 +36,7 @@ optdepends=('gpsbabel: GPS Tool plugin'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-md5sums=('e018fb3a2af6de75b3b04ee3be012f6b')
+md5sums=('72e609f334358f6a2cdc6defbf59e41d')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -74,6 +74,9 @@ build() {
 #    -DWITH_GLOBE=TRUE
 
   make
+
+  LD_LIBRARY_PATH="$PWD/output/lib/" make synccrsdb
+  mv /tmp/srs.db ../resources/
 }
 
 package() {
