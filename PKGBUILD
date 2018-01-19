@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_gui provides the main to start an instance of the ROS integra
 url='http://ros.org/wiki/rqt_gui'
 
 pkgname='ros-kinetic-rqt-gui'
-pkgver='0.3.1'
+pkgver='0.5.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="rqt-release-release-kinetic-rqt_gui-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt-release/archive/release/kinetic/rqt_gui/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('05d5dc291f3194a0abf2ed49cd26b33fb3bef45e742b86a88e348f8c2d402952')
+sha256sums=('ebc17ee30ca55f8db9ec9fc43bfecbe684e78fdff42ba8449069de593f7e1215')
 
 build() {
   # Use ROS environment variables
