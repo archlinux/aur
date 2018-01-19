@@ -1,33 +1,44 @@
 # Maintainer: Yichao Zhou <broken.zhou@gmail.com>
 
-_pkgname=evince
 pkgname=evince-lcdfilter
-pkgver=3.20.1
-pkgrel=0
+_pkgname=evince
+pkgver=3.26.0+14+g2a499547
+pkgrel=2
 pkgdesc="Document viewer (PDF, Postscript, djvu, tiff, dvi, XPS, SyncTex support with gedit, comics books (cbr,cbz,cb7 and cbt))"
 url="https://wiki.gnome.org/Apps/Evince"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=(GPL)
-depends=(gtk3 libgxps libspectre gsfonts poppler-glib-lcdfilter djvulibre t1lib dconf
+depends=(gtk3 libgxps libspectre gsfonts poppler-glib djvulibre t1lib dconf
          libsecret gsettings-desktop-schemas gnome-desktop libarchive
          gst-plugins-base-libs)
 makedepends=(itstool libnautilus-extension texlive-bin gobject-introspection
-             intltool docbook-xsl python gtk-doc)
+             intltool docbook-xsl python gtk-doc git gnome-common)
 optdepends=('texlive-bin: DVI support'
-            'gvfs: bookmark support and session saving')
-provides=("evince=$pkgver")
-conflicts=("evince")
+	    'gvfs: bookmark support and session saving')
 groups=(gnome)
 options=('!emptydirs')
-source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
+_commit=2a4995479ccf65f5bd15df13f9b6c810c3156b58  # master
+source=("git+https://git.gnome.org/browse/evince#commit=$_commit"
         evince-poppler-subpixel.patch)
-sha256sums=('fc7ac23036939c24f02e9fed6dd6e28a85b4b00b60fa4b591b86443251d20055'
+sha256sums=('SKIP'
             'SKIP')
 
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $_pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
+
+
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
   patch -Np1 -i ../evince-poppler-subpixel.patch
 
+  BROWSER_PLUGIN_DIR=/usr/lib/epiphany/plugins \
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib/$_pkgname \
     --disable-static \
@@ -42,8 +53,7 @@ build() {
     --enable-comics \
     --enable-gtk-doc \
     --enable-multimedia \
-    --disable-schemas-compile \
-    --disable-browser-plugin
+    --disable-schemas-compile
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
@@ -51,6 +61,6 @@ build() {
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
