@@ -9,6 +9,7 @@ pkgbase = libretro-snes9x2002-git
 	groups = libretro
 	license = unknown
 	makedepends = git
+	depends = libretro-core-info
 	source = git+https://github.com/libretro/snes9x2002.git
 	md5sums = SKIP
 

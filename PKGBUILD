@@ -9,6 +9,7 @@ arch=('arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/$_gitname"
 license=('unknown')
 groups=('libretro')
+depends=('libretro-core-info')
 makedepends=('git')
 source=("git+https://github.com/libretro/$_gitname.git")
 md5sums=('SKIP')
