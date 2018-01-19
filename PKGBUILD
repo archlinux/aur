@@ -1,25 +1,39 @@
-# Maintainer: tommyshem
+# Maintainer: sum01 <sum01@protonmail.com>
+# Contributor: tommyshem
 # Previous Maintainer: Atnanasis <ys2000pro@gmail.com>
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-nightly-bin
-pkgver=1.3.5.73
+pkgver=1.3.5.78
 pkgrel=1
-_hash="1.3.5-dev.73"
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
 license=('MIT')
-optdepends=(xclip)
-conflicts=( "micro-git" "micro" )
-provides=("micro")
-# Binary tar files from github 
-source_x86_64=("https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux64.tar.gz")
-source_i686=("https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux32.tar.gz")
-# Check sums for files downloaded --> Not checking as only upstream has write access to github binary. 
-sha256sums_i686=(SKIP)
-sha256sums_x86_64=(SKIP)
-
-package(){
- install -Dm755 $srcdir/micro-${_hash}/micro "$pkgdir/usr/bin/micro"
- install -Dm644 $srcdir/micro-${_hash}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+depends=('glibc')
+makedepends=('grep' 'sed' 'curl')
+optdepends=('xclip: for copying to and from the terminal')
+conflicts=('micro')
+provides=('micro')
+pkgver() {
+	curl -s 'https://api.github.com/repos/zyedidia/micro/releases/tags/nightly' | grep -oEm 1 '[0-9]+\.[0-9]+\.[0-9]+\-(dev\.)?[0-9]+' | sed -E 's/\-(dev\.)?/\./'
+}
+build() {
+	if [[ $CARCH == "i686" ]]; then
+		_bits="32"
+	else
+		_bits="64"
+	fi
+	if [[ -e "$srcdir/micro" ]]; then
+		rm -rf "$srcdir/micro"
+	fi
+	_realver=$(curl -s 'https://api.github.com/repos/zyedidia/micro/releases/tags/nightly' | grep -oEm 1 '[0-9]+\.[0-9]+\.[0-9]+\-(dev\.)?[0-9]+')
+	_filename="micro-$_realver-linux$_bits.tar.gz"
+	cd "$srcdir"
+	wget "https://github.com/zyedidia/micro/releases/download/nightly/$_filename"
+	tar -xvf "$_filename"
+	mv -f "$srcdir/micro-$_realver" "$srcdir/micro"
+}
+package() {
+	install -Dsm755 "$srcdir/micro/micro" "$pkgdir/usr/bin/micro"
+	install -Dm644 "$srcdir/micro/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

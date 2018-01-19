@@ -1,4 +1,3 @@
-.version.info
-.name.info
-.old-version.info
-micro-editor-check.log
+*
+!PKGBUILD
+!.SRCINFO
