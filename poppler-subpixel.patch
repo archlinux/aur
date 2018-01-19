@@ -25,7 +25,7 @@ index 78d24bb..d482ceb 100644
 +        cairo_get_font_options (cr, fo);
 +
 +        subpixel_rendering = poppler_page_support_subpixel_rendering (page);
-+        printf("subpixel_rendering %d\n", subpixel_rendering);
++        // printf("subpixel_rendering %d\n", subpixel_rendering);
 +        if (subpixel_rendering) {
 +                cairo_set_source_rgb (cr, 1., 1., 1.);
 +                cairo_paint (cr);
@@ -135,7 +135,7 @@ index 7d748b9..5caf01b 100644
  }
  
 +GBool Gfx::checkNormalBlendModeOnly(Object *str) {
-+  printf("check blender mode start\n");
++  // printf("check blender mode start\n");
 +  char *cmd;
 +  Object obj;
 +  Object args[maxArgs];
@@ -157,7 +157,7 @@ index 7d748b9..5caf01b 100644
 +        if (res->lookupGState(args[0].getName(), &obj1)) {
 +          if (!obj1.dictLookup("BM", &obj2)->isNull()) {
 +            if (state->parseBlendMode(&obj2, &mode)) {
-+              printf("check blend mode: %d\n", mode);
++              // printf("check blend mode: %d\n", mode);
 +              onlyNormalBlendMode &= (mode == gfxBlendNormal);
 +            }
 +          }

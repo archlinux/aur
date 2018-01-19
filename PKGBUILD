@@ -5,7 +5,7 @@ _pkgbase=poppler
 pkgbase=poppler-lcdfilter
 pkgname=('poppler-lcdfilter' 'poppler-glib-lcdfilter')
 pkgver=0.43.0
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 license=('GPL')
 makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg' 'gtk2' 'qt4' 'pkgconfig' 'lcms2' 'gobject-introspection' 'icu' 'qt5-base' 'git' 'python2')
@@ -32,11 +32,6 @@ build() {
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
 
   make
-}
-
-check() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  LANG=en_US.UTF8 make check
 }
 
 package_poppler-lcdfilter() {
