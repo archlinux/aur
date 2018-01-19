@@ -2,7 +2,7 @@
 
 _gitname=wget2
 pkgname=${_gitname}-git
-pkgver=0.0.r1589.g1383c21e
+pkgver=1.99.0.r34.g9a0d9eae
 pkgrel=1
 pkgdesc="Updated version of popular Wget tool"
 arch=('i686' 'x86_64')
@@ -21,8 +21,10 @@ build() {
   cd $_gitname
   git submodule init
   git config submodule.gnulib.url "$srcdir/gnulib"
+  git submodule update gnulib
   ./bootstrap
   ./configure --prefix=/usr --sysconfdir=/etc
+  make
 }
 
 package() {
@@ -33,9 +35,8 @@ package() {
 pkgver() {
   cd $_gitname
   #Use the tag from the last commit.
-  # XXX: Hack for a decent version number till the first version is tagged
-  git tag v0.0 e0452bc || true
-  git describe --always --tags --long | sed 's/^v//; s/-/.r/; s/-/./g'
+  # git describe --always --tags --long | sed 's/^v//; s/-/.r/; s/-/./g; s/wget2.//g'
+  git describe --tags --long | cut -f6- | sed 's/wget2-//g; s/-/.r/; s/-/./g'
 }
 
 check() {
