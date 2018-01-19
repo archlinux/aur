@@ -1,0 +1,15 @@
+pkgbase = stegsnow
+	pkgdesc = The program SNOW is used to conceal messages in ASCII text by appending whitespace to the end of lines.
+	pkgver = 20130616
+	pkgrel = 1
+	url = http://www.darkside.com.au/snow/
+	arch = any
+	license = Apache 2.0
+	provides = stegsnow
+	source = git+https://anonscm.debian.org/git/collab-maint/stegsnow.git
+	source = stegsnow.patch
+	md5sums = SKIP
+	md5sums = 3fc8c6e36aec935e1c5c2ff4ab428500
+
+pkgname = stegsnow
+
