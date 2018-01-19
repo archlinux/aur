@@ -4,7 +4,7 @@ pkgdesc="ROS - The actionlib stack provides a standardized interface for interfa
 url='http://www.ros.org/wiki/actionlib'
 
 pkgname='ros-kinetic-actionlib'
-pkgver='1.11.9'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,8 +26,11 @@ ros_depends=(ros-kinetic-std-msgs
   ros-kinetic-message-runtime
   ros-kinetic-rospy
   ros-kinetic-roscpp
-  ros-kinetic-rostest)
+  ros-kinetic-rostest
+  ros-kinetic-roslib
+  ros-kinetic-rostopic)
 depends=(${ros_depends[@]}
+  wxpython
   boost)
 
 # Git version (e.g. for debugging)
@@ -39,7 +42,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="actionlib-release-release-kinetic-actionlib-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/actionlib-release/archive/release/kinetic/actionlib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('778c047042b71c31de53455562745b7f05a3afbea29962ad6e65cdfb3775fac7')
+sha256sums=('328a2bbb5befe4855eb0628caa0d8fb642a47ce976492c632d8d2fb8399f541c')
 
 build() {
   # Use ROS environment variables
