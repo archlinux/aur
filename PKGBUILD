@@ -4,23 +4,23 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=libctl
-pkgver=3.2.2
-pkgrel=4
+pkgver=4.0.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/Libctl"
 pkgdesc="A free Guile-based library implementing flexible control files for scientific simulations."
-depends=('guile1.8' 'gcc-fortran')
-source=("https://github.com/stevengj/$pkgname/files/1323238/$pkgname-$pkgver.tar.gz")
-md5sums=('5fd7634dc9ae8e7fa70a68473b9cbb68')
-license=('GPL')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/stevengj/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('bdd7ee50f62d765b080a40d3cad4c22abdc790241318f0e7d51562411d6864cf')
+license=('LGPL')
 options=('!libtool')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
-  ./configure --prefix=/usr LIBS="-lm" GUILE='/usr/bin/guile1.8' GUILE_CONFIG='/usr/bin/guile-config1.8'
+  cd $pkgname-$pkgver
+  ./autogen.sh
+  ./configure --prefix=/usr LIBS="-lm" 
   make 
 }
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
-  make DESTDIR=${pkgdir} install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
