@@ -5,7 +5,7 @@
 pkgname=faust
 pkgver=2.5.10
 tag=$(echo $pkgver | sed -e 's/\./-/g' -e s/^/v/)
-pkgrel=1
+pkgrel=2
 pkgdesc="A functional programming language for realtime audio signal processing."
 arch=('i686' 'x86_64')
 url="http://faust.grame.fr/"
@@ -29,7 +29,7 @@ conflicts=('faust')
 # isn't wanted.
 options=('strip' 'staticlibs')
 source=("$pkgname::git+https://github.com/grame-cncm/faust.git#tag=$tag"
-	"git+https://github.com/rukano/emacs-faust-mode.git"
+	"git+https://github.com/agraef/emacs-faust-mode.git"
 	"python2-fix.patch"
 	"llvm-501-fix.patch")
 md5sums=('SKIP'
