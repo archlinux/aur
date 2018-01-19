@@ -2,7 +2,7 @@
 _pkgname=music21
 pkgname=python-$_pkgname
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit for computer-aided musical analysis"
 arch=('any')
 url="http://web.mit.edu/music21"
@@ -21,5 +21,5 @@ sha512sums=('9be1cab600b92774ea18354ac473ecb27550ecf135719fe38d203462110d10cdedf
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
 	install -D -m644 ${srcdir}/$_pkgname-$pkgver/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	python setup.py install --root="$pkgdir"
+	python setup.py install --optimize=1 --root=$pkgdir
 }

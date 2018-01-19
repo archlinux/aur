@@ -1,7 +1,7 @@
 pkgbase = python-music21
 	pkgdesc = A toolkit for computer-aided musical analysis
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://web.mit.edu/music21
 	arch = any
 	license = BSD
