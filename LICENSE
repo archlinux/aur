@@ -1,0 +1,256 @@
+END-USER LICENSE AGREEMENT
+
+This Software Agreement ("Agreement") is between You (either an individual or
+an entity), the End User, and Qoitech AB. ("Qoitech"). The Agreement authorizes
+You to use the Software specified in Clause 1 below, which may be stored on a
+CD-ROM, sent to You by electronic mail, or downloaded from Qoitech's Web pages
+or Servers or from other sources under the terms and conditions set forth
+below. This is an agreement on end-user rights and not an agreement for sale.
+Except as provided elsewhere in this Agreement, Qoitech and/or its licensors
+continues to own the copy of the Software and the physical media contained in
+the sales package and any other copy that You are authorized to make pursuant
+to this Agreement. Read this Agreement carefully before installing,
+downloading, or using the Software. By clicking on the "I Accept" button while
+installing, downloading, and/or using the Software, You agree to the terms and
+conditions of this Agreement. If You do not agree to all of the terms and
+conditions of this Agreement, promptly click the "Decline" or "I Do Not Accept"
+button, cancel the installation or downloading, or destroy or return the
+Software and accompanying documentation to Qoitech. YOU AGREE THAT YOUR USE OF
+THE SOFTWARE ACKNOWLEDGES THAT YOU HAVE READ THIS AGREEMENT, UNDERSTAND IT, AND
+AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS.
+
+1. SOFTWARE.
+
+As used in this Agreement, the term "Software" means, collectively: (i) all the
+contents of the disk(s), CD-ROM(s), electronic mail and its file attachments,
+or other media with which this Agreement is provided, including the object code
+form of the software delivered via a CD- ROM, electronic mail, or Web page (ii)
+digital images, stock photographs, clip art, or other artistic works ("Stock
+Files") (iii) related explanatory written materials and any other possible
+documentation related thereto ("Documentation"); (iv) fonts, and (v) upgrades,
+modified versions, updates, additions, and copies of the Software (collectively
+"Updates"), if any, licensed to You by Qoitech under this Agreement.
+
+2. END USER RIGHTS AND USE.
+
+Qoitech grants You non-exclusive, non-transferable end-user rights to install
+the Software on the local hard disk(s) or other permanent storage media of one
+computer and use the Software on a single computer or terminal at a time.
+Except as provided by any Open Source License Terms, You may use the Software
+only for the sole purpose of power consumption analysis. You acknowledge that
+certain software components of the Software ("Open Source Components") may be
+covered by so-called "Open Source License Terms". As used herein, Open Source
+License Terms means any software licenses approved as open source licenses by
+the Open Source Initiative or any substantially similar licenses, including
+without limitation any license that, as a condition of use, modification, or
+distribution of the software licensed under such license or other software
+incorporated into, derived from or distributed with such software, requires
+that the distributor: (a) make the software available in source code format;
+(b) grant permission for creation of derivative works; or (c) grant a royalty
+free license thereto or under any associated intellectual property rights. To
+the extent required by the licenses covering Open Source Components, the terms
+of such licenses will apply in lieu of the terms of this Agreement. To the
+extent the terms of the licenses applicable to Open Source Components prohibit
+any of the restrictions in this Agreement with respect to such Open Source
+Component, such restrictions will not apply to such Open Source Component.To
+the extent the terms of the licenses applicable to Open Source Components
+require Qoitech to provide source code for such Open Source Component to You,
+Qoitech shall do so upon Your request. To the extent the terms of the licenses
+applicable to Open Source Components require Qoitech to make an offer to
+provide source code for such Open Source Component to You, this provision
+constitutes such offer. You shall not otherwise cause any portion of the
+Software to become subject to any license obligation under any Open Source
+License Terms. For clarity, in the event that all or any portion of the
+Software provided hereunder does not reference, or otherwise indicate, such
+Open Source License Terms, this Agreement shall control. Please see the license
+information in eula.txt as distributed together with the software to review the
+complete list of Open Source Components, Copyright holders, and applicable Open
+Source License Terms. Qoitech offers to provide source code of software
+licensed under the GPL or LGPL or some other open source licenses allowing
+source code distribution to you on a CD-ROM for a charge covering the cost of
+performing such distribution, such as the cost of media, shipping and handling,
+upon written request to Qoitech AB, Mobilvägen 4, SE-223 62 Lund, Sweden. This
+offer is valid for a period of three (3) years from the date of the
+distribution of this product by Qoitech. As an alternative to the above
+"written request", you can download the same source code from
+http://source.qoitech.com. Qoitech collects anonymous usage data to help us
+make this product better. Once sent to Qoitech, the data is stored in
+aggregated form and made available to Qoitech employees. The Software collects
+information from devices connected via debug interfaces such as serial ports
+that will be stored as data files on your local media. Qoitech takes no
+responsibility for security or privacy related to any such data files. Except
+as expressly set forth in this Agreement, this Agreement does not grant you any
+intellectual property rights in the Software, and you cannot use the Software
+except as specified herein.
+
+3. LIMITATIONS ON END USER RIGHTS.
+
+Unless a Third Party License provides otherwise as to a particular portion of
+the Software, You may not copy, distribute, or make derivative works of the
+Software except as follows: (a) You may not use, modify, translate, reproduce,
+or transfer the right to use the Software or copy the Software except as
+expressly provided in this Agreement. (b) You may not resell, sublicense, rent,
+lease, or lend the Software. (c) You may not reverse engineer, reverse compile,
+disassemble, or otherwise attempt to discover the source code of the Software
+(except to the extent that this restriction is expressly prohibited by law) or
+create derivative works based on the Software. (d) Unless stated otherwise in
+the Documentation, You shall not display, modify, reproduce, or distribute any
+of the Stock Files included with the Software. In the event that the
+Documentation allows You to display the Stock Files, You shall not distribute
+the Stock Files on a stand-alone basis, i.e., in circumstances in which the
+Stock Files constitute the primary value of the product being distributed. You
+should review the "Readme" files associated with the Stock Files that You use
+to ascertain what rights You have with respect to such materials. Stock Files
+may not be used in the production of libelous, defamatory, fraudulent,
+infringing, lewd, obscene, or pornographic material or in any otherwise illegal
+manner. You may not register or claim any rights in the Stock Files or
+derivative works thereof. (e) You agree that You shall only use the Software in
+a manner that complies with all applicable laws, including, but not limited to,
+applicable restrictions concerning copyright and other intellectual property
+rights. Likewise, You shall not develop any application or other software using
+the SDK that infringes any copyright, trademark, trade secret, trade dress,
+patent or other intellectual property right of any person or defames any person
+or violates their rights of publicity or privacy. Where a Third Party License
+provides additional rights to copy, distribute, or make derivative works of a
+particular portion of the Software, those additional rights apply only to such
+portion, and to no other.
+
+4. COPYRIGHT.
+
+The Software and all rights, without limitation including proprietary rights
+therein, are owned by Qoitech and/or its licensors and affiliates and are
+protected by international treaty provisions and all other applicable national
+laws of the country in which it is being used. The structure, organization, and
+code of the Software are the valuable trade secrets and confidential
+information of Qoitech and/or its licensors and affiliates. You must not copy
+the Software, except as set forth in clause 3 (Limitations On End-User Rights).
+Any copies which You are permitted to make pursuant to this Agreement must
+contain the same copyright and other proprietary notices that appear on the
+Software.
+
+5. MULTIPLE ENVIRONMENT SOFTWARE / MULTIPLE LANGUAGE SOFTWARE / DUAL MEDIA SOFTWARE / MULTIPLE COPIES / UPDATES.
+
+If the Software supports multiple platforms or languages, if You receive the
+Software on multiple media, or if You otherwise receive multiple copies of the
+Software, the number of computers on which all versions of the Software are
+installed shall be one computer. You may not rent, lease, sublicense, lend, or
+transfer versions or copies of the Software You do not use. If the Software is
+an Update to a previous version of the Software, You must possess valid
+end-user rights to such a previous version in order to use the Update, and You
+may use the previous version for ninety (90) days after You receive the Update
+in order to assist You in the transition to the Update. After such time You no
+longer have a right to use the previous version, except for the sole purpose of
+enabling You to install the Update. The foregoing limitations in this clause 5
+may not apply to portions of the Software covered by Open Source License Terms.
+
+6. COMMENCEMENT, TERM & TERMINATION.
+
+This Agreement is effective from the first date You download the Software. This
+Agreement will automatically expire on the date of expiry stated in the
+application or after 1 year, whichever comes first. You may terminate this
+Agreement at any time by permanently deleting, destroying, and returning, at
+Your own costs, the Software, all backup copies, and all related materials
+provided by Qoitech. This Agreement can be terminated in writing by Qoitech, at
+any time, without prior notice. Notwithstanding the above, this Agreement will
+terminate, and the license granted to you by this Agreement will be revoked,
+immediately, without any notice from Qoitech if you fail to comply with any
+provision of this Agreement. Upon termination, you must destroy the Software.
+In such an event, You must immediately delete, destroy, or return at Your own
+cost, the Software, all backup copies, and all related material to Qoitech.
+
+7. YOU ACKNOWLEDGE THAT THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, AND TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW NEITHER QOITECH, ITS LICENSORS OR AFFILIATES, NOR THE COPYRIGHT HOLDERS MAKE ANY REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR THAT THE SOFTWARE WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS, OR OTHER RIGHTS. THERE IS NO WARRANTY BY QOITECH OR BY ANY OTHER PARTY THAT THE FUNCTIONS CONTAINED IN THE SOFTWARE WILL MEET YOUR REQUIREMENTS OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE. YOU ASSUME ALL RESPONSIBILITY AND RISK FOR THE SELECTION OF THE SOFTWARE TO ACHIEVE YOUR INTENDED RESULTS AND FOR THE INSTALLATION, USE, AND RESULTS OBTAINED FROM IT.
+
+8. NO OTHER OBLIGATIONS.
+
+This Agreement creates no obligations on the part of Qoitech other than as
+specifically set forth herein.
+
+9. LIMITATION OF LIABILITY.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL QOITECH,
+ITS EMPLOYEES OR LICENSORS OR AFFILIATES BE LIABLE FOR ANY LOST PROFITS,
+REVENUE, SALES, DATA, OR COSTS OF PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES,
+PROPERTY DAMAGE, PERSONAL INJURY, INTERRUPTION OF BUSINESS, LOSS OF BUSINESS
+INFORMATION, OR FOR ANY SPECIAL, DIRECT, INDIRECT, INCIDENTAL, ECONOMIC, COVER,
+PUNITIVE, SPECIAL, OR CONSEQUENTIAL DAMAGES, HOWEVER CAUSED AND WHETHER ARISING
+UNDER CONTRACT, TORT, NEGLIGENCE, OR OTHER THEORY OF LIABILITY ARISING OUT OF
+THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF QOITECH OR ITS LICENSORS
+OR AFFILIATES ARE ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. BECAUSE SOME
+COUNTRIES/STATES/ JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF LIABILITY, BUT
+MAY ALLOW LIABILITY TO BE LIMITED, IN SUCH CASES, QOITECH, ITS EMPLOYEES OR
+LICENSORS OR AFFILIATES' LIABILITY SHALL BE LIMITED TO U.S. $50. Nothing
+contained in this Agreement shall prejudice the statutory rights of any party
+dealing as a consumer. Nothing contained in this Agreement limits Qoitech's
+liability to You in the event of death or personal injury resulting from
+Qoitech's negligence. Qoitech is acting on behalf of its employees and
+licensors or affiliates for the purpose of disclaiming, excluding, and/or
+restricting obligations, warranties, and liability as provided in this clause
+9, but in no other respects and for no other purpose.
+
+10. TECHNICAL SUPPORT.
+
+Qoitech has no obligation to furnish You with technical support unless
+separately agreed in writing between You and Qoitech.
+
+11. EXPORT CONTROL.
+
+The Software, including technical data, may include cryptographic software
+subject to export controls under the U.S. Export Administration Regulations
+("EAR") and may be subject to import or export controls in other countries.
+Software may not be downloaded, or otherwise exported or re-exported (i) into,
+or to a national or resident of, Cuba, Iran, Iraq, Iran, North Korea, Libya,
+Sudan, Syria, or any country to which the U.S. has embargoed goods; or (ii) to
+anyone on the U.S. Treasury Department's list of Specially Designated Nations
+or the U.S. Commerce Department's Table of Denial Orders. The EAR prohibits the
+use of the Software and technical data by a Government End User, as defined
+hereafter, without a license from the U.S. government. A Government End User is
+defined in Part 772 of the EAR as "any foreign central, regional, or local
+government department, agency, or other entity performing governmental
+functions; including governmental research institutions, governmental
+corporations, or their separate business units (as defined in part 772 of the
+EAR) which are engaged in the manufacture or distribution of items or services
+controlled on the Wassenaar Munitions List, and international governmental
+organizations. This term does not include: utilities (telecommunications
+companies and Internet service providers; banks and financial institutions;
+transportation; broadcast or entertainment; educational organizations; civil
+health and medical organizations; retail or wholesale firms; and manufacturing
+or industrial entities not engaged in the manufacture or distribution of items
+or services controlled on the Wassenaar Munitions List.)" You agree to strictly
+comply with all applicable import and export regulations and acknowledge that
+You have the responsibility to obtain licenses to export, re-export, transfer,
+or import the Software. You further represent that You are not a Government End
+User as defined above, and You will not transfer the Software to any Government
+End User without a license.
+
+12.INDEMNIFICATION.
+
+To the maximum extent permitted by law, you agree to defend, indemnify and hold
+harmless Qoitech, its affiliates and their respective directors, officers,
+employees and agents from and against any and all claims, actions, suits or
+proceedings, as well as any and all losses, liabilities, damages, costs and
+expenses (including reasonable attorney’s fees) arising out of or accruing from
+(a) your use of the Software, and (b) any non-compliance by you with this
+License Agreement.
+
+13. NOTICES.
+
+All notices and return of the Software and Documentation should be delivered
+to: Qoitech AB. Mobilvägen 4, SE-223 62 Lund, Sweden
+
+14. APPLICABLE LAW & GENERAL PROVISIONS.
+
+This Agreement is governed by the laws of Japan. All disputes arising from or
+relating to this Agreement shall be finally settled under the Rules of
+Arbitration of the International Chamber of Commerce by one arbitrator
+appointed in accordance with the said Rules. The arbitration procedure shall
+take place in Tokyo, Japan and in the English language. If any part of this
+Agreement is found void and unenforceable, it will not affect the validity of
+the balance of the Agreement, which shall remain valid and enforceable
+according to its terms. This Agreement may only be modified by a writing signed
+by an authorized officer of Qoitech, although Qoitech may vary the terms of
+this Agreement. This is the entire agreement between Qoitech and You relating
+to the Software, and it supersedes any prior representations, discussions,
+undertakings, end-user agreements, communications, or advertising relating to
+the Software. I/We acknowledge that I/We have read the above terms and
+conditions and by indicating our acceptance of the same agree to be bound by
+them.
