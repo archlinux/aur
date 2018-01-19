@@ -18,6 +18,7 @@ bl_path_convert_to_absolute() {
     Converts given path into an absolute one.
 
     >>> bl.path.convert_to_absolute ./
+    +bl.doctest.contains
     /
     '
     local path="$1"
@@ -43,7 +44,7 @@ bl_path_convert_to_relative() {
         D
         >>> bl.path.convert_to_relative /A/B/C /A/B/C/D/E
         D/E
-        >>> bl.path.convert_to_relative /A/B/C /A/B/D"
+        >>> bl.path.convert_to_relative /A/B/C /A/B/D
         ../D
         >>> bl.path.convert_to_relative /A/B/C /A/B/D/E
         ../D/E

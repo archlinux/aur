@@ -35,7 +35,7 @@ bl_module_import_level=0
 bl_module_imported=("$(bl.path.convert_to_absolute "${BASH_SOURCE[0]}")" "$(bl.path.convert_to_absolute "${BASH_SOURCE[1]}")" "$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[0]}")/path.sh")")
 bl_module_known_extensions=(.sh '' .zsh .csh .ksh .bash .shell)
 bl_module_prevent_namespace_check=true
-bl_module_scope_rewrites=('^bashlink([._][a-zA-Z_-]+)$/bl\1/')
+bl_module_scope_rewrites=('^bashlink(([._]mockup)?[._][a-zA-Z_-]+)$/bl\1/')
 # endregion
 # region functions
 alias bl.module.check_name=bl_module_check_name
@@ -45,8 +45,8 @@ bl_module_check_name() {
     local alternate_resolved_scope_name="$(echo "$resolved_scope_name" | \
         sed --regexp-extended 's/\./_/g')"
     if ! [[ \
-        "$name" =~ ^${resolved_scope_name}[_A-Z]* || \
-        "$name" =~ ^${alternate_resolved_scope_name//\./\\./}[_A-Z]* \
+        "$name" =~ ^${resolved_scope_name}([_A-Z]+|$) || \
+        "$name" =~ ^${alternate_resolved_scope_name//\./\\./}([_A-Z]+|$) \
     ]]; then
         local excluded=false
         if [[ -z "$3" ]]; then
@@ -180,6 +180,9 @@ bl_module_log() {
     elif [[ "$2" != '' ]]; then
         local level=$1
         shift
+        if [ "$level" = warn ]; then
+            level=warning
+        fi
         echo "${level}: $*"
     else
         echo "info: $*"
@@ -228,7 +231,7 @@ bl_module_import_with_namespace_check() {
     ## region check if scope is clean before sourcing
     bl.module.determine_declared_names \
         >"$bl_module_declared_names_before_source_file_path"
-    while read -r name ; do
+    while read -r name; do
         if bl.module.check_name "$name" "$resolved_scope_name" true; then
             bl.module.log warn \
                 "Namespace \"$resolved_scope_name\" in \"$scope_name\" is" \
@@ -255,9 +258,9 @@ bl_module_import_with_namespace_check() {
             bl.module.log \
                 warn \
                 "Module \"$scope_name\" introduces a global unprefixed name:" \
-                "\"$name\". Maybe it should be prefixed with \"" \
-                "${resolved_scope_name}\" or \"" \
-                "$alternate_resolved_scope_name\"." \
+                "\"$name\". Maybe it should be prefixed with" \
+                "\"${resolved_scope_name}\" or" \
+                "\"$alternate_resolved_scope_name\"." \
                 1>&2
         fi
     done
@@ -289,6 +292,45 @@ bl_module_import_with_namespace_check() {
 # NOTE: Depends on "bl.module.import_raw" and "bl.module.import_with_namespace_check"
 alias bl.module.import=bl_module_import
 bl_module_import() {
+    # shellcheck disable=SC1004,SC2016,SC2034
+    local __documentation__='
+        NOTE: Do not use `bl.module.import` inside functions -> aliases do not
+        work.
+
+        >>> (
+        >>>     bl.module.import bashlink.logging
+        >>>     bl_logging_set_level warn
+        >>>     bl.module.import bashlink.mockup.b false
+        >>> )
+        +bl.doctest.contains
+        imported module c
+        introduces a global unprefixed name: "foo123". Maybe it should be
+        imported module b
+
+        Modules should be imported only once.
+        >>> (
+        >>>     bl.module.import bashlink.mockup.a
+        >>>     bl.module.import bashlink.mockup.a
+        >>> )
+        imported module a
+        >>> (
+        >>>     bl.module.import bashlink.mockup.a false
+        >>>     echo $bl_module_declared_function_names_after_source
+        >>> )
+        imported module a
+        bl_mockup_a_foo
+        >>> (
+        >>>     bl.module.import bashlink.logging
+        >>>     bl_logging_set_level warn
+        >>>     bl.module.import bashlink.mockup.c false
+        >>>     echo $bl_module_declared_function_names_after_source
+        >>> )
+        +bl.doctest.contains
+        imported module b
+        imported module c
+        introduces a global unprefixed name: "foo123". Maybe it should be
+        foo123
+    '
     local caller_file_path="${BASH_SOURCE[1]}"
     if (( $# == 2 )); then
         caller_file_path="$2"
@@ -360,42 +402,6 @@ bl_module_import_without_namespace_check() {
 }
 alias bl.module.resolve=bl_module_resolve
 bl_module_resolve() {
-    # shellcheck disable=SC1004,SC2016,SC2034
-    local __documentation__='
-        NOTE: Do not use `bl.module.import` inside functions -> aliases do not
-        work.
-
-        >>> (
-        >>> bl.module.import bashlink.logging
-        >>> bl_logging_set_level warn
-        >>> bl.module.import mockup/b false
-        >>> )
-        +bl.doctest.contains
-        imported module c
-        module "mockup_module_c" defines unprefixed name: "foo123"
-        imported module b
-        Modules should be imported only once.
-        >>> (bl.module.import test/mockup_module_a.sh && \
-        >>>     bl.module.import test/mockup_module_a.sh)
-        imported module a
-        >>> (
-        >>> bl.module.import test/mockup_module_a.sh false
-        >>> echo $bl_module_declared_function_names_after_source
-        >>> )
-        imported module a
-        mockup_module_a_foo
-        >>> (
-        >>> bl.module.import bashlink.logging
-        >>> bl.logging.set_level warn
-        >>> bl.module.import test/mockup_module_c.sh false
-        >>> echo $bl_module_declared_function_names_after_source
-        >>> )
-        +bl.doctest.contains
-        imported module b
-        imported module c
-        module "mockup_module_c" defines unprefixed name: "foo123"
-        foo123
-    '
     local name="$1"
     local caller_path
     # shellcheck disable=SC2034
@@ -471,7 +477,7 @@ bl_module_resolve() {
     if [ "$file_path" = '' ]; then
         bl.module.log \
             critical \
-            "Module file path for \"$name\" could not be resolved for" \
+            "Module file path for \"$1\" could not be resolved for" \
             "\"${BASH_SOURCE[1]}\" in \"$caller_path\", \"$execution_path\"" \
             "or \"$current_path\" for one of the file extension:" \
             "${extension_description}."

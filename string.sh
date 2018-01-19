@@ -213,14 +213,25 @@ bl_string_translate() {
         and gives a translation in given language (German by default) back.
         Accesses "http://translate.google.com" from terminal.
 
-        >>> bl.string.translate hello
-        Hallo
-        >>> bl.string.translate "Hello my darling"
-        Hallo mein Schatz
-        >>> bl.string.translate hello fr
-        bonjour
-        >>> bl.string.translate hello en fr
-        bonjour
+        ```bash
+            bl.string.translate hello
+            # Hallo
+        ```
+
+        ```bash
+            bl.string.translate "Hello my darling"
+            # Hallo mein Schatz
+        ```
+
+        ```bash
+            bl.string.translate hello fr
+            # bonjour
+        ```
+
+        ```bash
+            bl.string.translate hello en fr
+            # bonjour
+        ```
     '
     local default_target_language=de
     if [[ "$1" = -h || "$1" = --help || "$#" -lt 1 ]]; then
@@ -300,6 +311,7 @@ cy=Walisisch
 be=Weißrussisch"
 EOF
     else
+        local source
         if [[ "$#" -gt 2 ]]; then
             source="$2"
             local target="$3"
@@ -311,7 +323,7 @@ EOF
                 local target="$default_target_language"
             fi
         fi
-        local result="$(curl -s -i --user-agent "" -d "sl=$source" -d \
+        local result="$(curl -s -i --user-agent '' -d "sl=$source" -d \
             "tl=$target" --data-urlencode "text=$1" \
             http://translate.google.com)"
         # NOTE Temporary outcomment to have right code highlighting.
@@ -330,10 +342,13 @@ bl_string_validate_argument() {
         Validates a given bash argument.
 
         >>> bl.string.validate_argument hans
-        "hans"
-        >>> bl.string.validate_argument ha"n"s
-        "ha"n"s"
-        >>> bl.string.validate_argument h"a"ns
+        +bl.doctest.contains
+        hans
+        >>> bl.string.validate_argument "\"ha\"ns"
+        +bl.doctest.contains
+        "ha"ns
+        >>> bl.string.validate_argument h\"a\"ns
+        +bl.doctest.contains
         h"a"ns
     '
     if ! command grep "'" <<< "$1" &>/dev/null; then

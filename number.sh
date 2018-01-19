@@ -18,7 +18,7 @@ bl_number_calculate_percent() {
         Calculates percent of second argument from the first argument.
 
         >>> bl_number_calculate_percent 100 50
-        50
+        50.00
     '
     echo "$(((($2 * 10000) / $1) / 100)).$(sed --regexp-extended \
         's/^(.)$/0\1/g' <<<$(((($2 * 10000) / $1) % 100)))"
