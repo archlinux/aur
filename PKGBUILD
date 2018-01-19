@@ -17,13 +17,13 @@ depends=('boost-libs' 'icu' 'libpng' 'libjpeg' 'libtiff' 'freetype2'
 	 'libxml2' 'python2' 'proj' 'cairo' 'cairomm' 'python-cairo'
 	 'postgresql-libs' 'postgis' 'gdal' 'curl' 'libltdl' 'libwebp')
 optdepends=('libxslt:         Web Map Service'
-            'python2-lxml:    Web Map Service'
-            'python2-pillow:  Web Map Service'
-            'python-nose:     Web Map Service'
-            'apache:          Web Map Service'
-            'mod_fastcgi:     Web Map Service - or:'
-            'mod_fcgid:       Web Map Service - or:'
-            'mod_wsgi2:       Web Map Service')
+			'python2-lxml:    Web Map Service'
+			'python2-pillow:  Web Map Service'
+			'python-nose:     Web Map Service'
+			'apache:          Web Map Service'
+			'mod_fastcgi:     Web Map Service - or:'
+			'mod_fcgid:       Web Map Service - or:'
+			'mod_wsgi2:       Web Map Service')
 makedepends=('scons' 'boost' 'git')
 conflicts=('mapnik')
 provides=('mapnik=3.0.18')
@@ -33,28 +33,28 @@ source=("git://github.com/mapnik/mapnik.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+	cd "$srcdir/$_pkgname"
 
-  git describe --long | cut -c2- | sed 's/-/./g'
+	echo "3.0.18$(git describe --long | cut -c8- | sed 's/-/./g')"
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+	cd "$srcdir/$_pkgname"
 
-  git submodule update --init deps/mapbox
+	git submodule update --init deps/mapbox
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+	cd "$srcdir/$_pkgname"
 
-  scons configure \
-    PREFIX="/usr" \
-    INPUT_PLUGINS=all \
-    DESTDIR="$pkgdir"
-  scons $MAKEFLAGS
+	scons configure \
+		PREFIX="/usr" \
+		INPUT_PLUGINS=all \
+		DESTDIR="$pkgdir"
+	scons $MAKEFLAGS
 }
 
 package(){
-  cd "$srcdir/$_pkgname"
-  make PYTHON=python2 DESTDIR="$pkgdir" install
+	cd "$srcdir/$_pkgname"
+	make PYTHON=python2 DESTDIR="$pkgdir" install
 }
