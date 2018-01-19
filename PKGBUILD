@@ -22,10 +22,6 @@ sha1sums=('864eec744e5ca360c41e6121ddbd4cbb48659fe4')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
-mk-prefix-dir() {
-  mkdir -p "${pkgdir}${_prefix}"
-}
-
 unity-setup() {
   ./UnitySetup-${_version}${_build} -d "${startdir}" -l "${pkgdir}${_prefix}" -u $@
 }
@@ -40,7 +36,6 @@ prepare() {
 }
 
 package() {
-  mk-prefix-dir
   extract-component StandardAssets
 
   if [ -z "${_keepdownloads}" ]; then
