@@ -2,8 +2,9 @@
 # Submitter: Schala Zeal <schalaalexiazeal@gmail.com>
 
 pkgname=spigot
-pkgver=1.12.2
-_build=68
+_pkgver=1.12.2
+_build=70
+pkgver="${_pkgver}+b${_build}"
 pkgrel=1
 pkgdesc="High performance Minecraft server implementation"
 arch=('any')
@@ -13,17 +14,17 @@ depends=("java-runtime-headless>=8" 'screen' 'sudo' 'fontconfig' 'bash' 'awk' 's
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 makedepends=("java-environment>=8" 'git')
-provides=("minecraft-server=${pkgver%_*}" "bukkit=${pkgver%_*}" "craftbukkit=${pkgver%_*}")
+provides=("minecraft-server=${_pkgver%_*}" "bukkit=${_pkgver%_*}" "craftbukkit=${_pkgver%_*}")
 conflicts=("bukkit" "craftbukkit" "spigot-patcher")
 backup=("etc/conf.d/${pkgname}")
 install="${pkgname}.install"
-source=("BuildTools-${pkgver}-${_build}.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/${_build}/artifact/target/BuildTools.jar"
+source=("BuildTools-${_pkgver}+b${_build}.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/${_build}/artifact/target/BuildTools.jar"
 	"${pkgname}-backup.service"
 	"${pkgname}-backup.timer"
 	"${pkgname}.service"
 	"${pkgname}.conf"
 	"${pkgname}.sh")
-sha512sums=('cc5049bf3388a11f7bb1eb018099b63740f8a742c89cc732723c37e4749a958f5f19d8da952fe937f2e4c54591df18e85054fa6c5c901e451d75bfd7b76056cd'
+sha512sums=('ba3e671fd0bd4bca861d66db9fce159f66f55f588c42618d0efc2d65ce962dc35d0b69c6d4ea7b328f7b438be5b826a6b9419cf8625ac32e71458a1522e7d862'
             '914d079718bcf4adbe60ec1414ae95220be9e0ba6da8135d13fc9f1f82c7a5f1fb1844764a9d827bb9583bee2f6c10111880d0bcba135ec61d63b53a3f2aab27'
             '76c77e47c442b477216e968db2213612579b24add54cf0e0512f808498673500b4d24e59bce70b1e7479d724a9a897ceb154e937b88a476beb11c8776258b36c'
             'bfebbb163fe81dbf086f1511c60953c5ef4149e69c80e6a01af35ea67279e2c652072c9342a71e5d1c178a5504fc9d0275c19f51aacb65b722654c5c42a9b1cb'
@@ -35,7 +36,7 @@ _server_root="/srv/craftbukkit"
 
 build() {
 	export MAVEN_OPTS="-Xmx2g"
-	java -jar "BuildTools-${pkgver}-${_build}.jar" --rev "${pkgver}"
+	java -jar "BuildTools-${_pkgver}+b${_build}.jar" --rev "${_pkgver}"
 }
 
 package() {
@@ -44,8 +45,8 @@ package() {
 	install -Dm644 "${_game}.service" "${pkgdir}/usr/lib/systemd/system/${_game}.service"
 	install -Dm644 "${_game}-backup.service" "${pkgdir}/usr/lib/systemd/system/${_game}-backup.service"
 	install -Dm644 "${_game}-backup.timer" "${pkgdir}/usr/lib/systemd/system/${_game}-backup.timer"
-	install -Dm644 "${_game}-${pkgver}.jar" "${pkgdir}${_server_root}/${_game}.${pkgver}.jar"
-	ln -s "${_game}.${pkgver}.jar" "${pkgdir}${_server_root}/${_game}.jar"
+	install -Dm644 "${_game}-${_pkgver}.jar" "${pkgdir}${_server_root}/${_game}.${_pkgver}.jar"
+	ln -s "${_game}.${_pkgver}.jar" "${pkgdir}${_server_root}/${_game}.jar"
 
 	# Link the log files
 	mkdir -p "${pkgdir}/var/log/"
