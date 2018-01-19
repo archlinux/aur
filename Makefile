@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g -Wall --std=c99
-OBJECTS = main.o iex.o portfolio.o
+OBJECTS = main.o api.o portfolio.o
 LIBS = -lcurl
 BIN = tick
 DESTDIR = /usr

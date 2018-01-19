@@ -1,4 +1,4 @@
-.TH TICK "1" "January 2018" "Tick 1.003" "User Commands"
+.TH TICK "1" "January 2018" "Tick 1.1.0" "User Commands"
 
 .SH NAME
 Tick - Command line stock price tracker.
@@ -7,14 +7,14 @@ Tick - Command line stock price tracker.
 tick [OPTION]...
 
 .SH DESCRIPTION
-Create your portfolio by adding your current holdings. Then, you can use the built in functions to get information on the current price. Stock information taken from IEX's API.
+Create your portfolio by adding your current holdings. Then, you can use the built in functions to get information on the current price. Stock information taken from IEX and Alpha Vantage's free API.
 
 .SS
 Portfolio:
 
 .TP
 [add/rm/set] [symbol] [quantity of shares] [USD spent]
-Either adds, removes, or sets the amount of the given stock with respect to the given values. The parameter add will add your input to the current portfolio, rm will subtract from your current portfolio, and set will set your portfolio to the input, discarding any existing data about that stock.
+Either adds, removes, or sets the amount of the given stock with respect to the given values. The parameter add will add your input to the current portfolio, rm will subtract from your current portfolio, and set will set your portfolio to the input, discarding any existing data about that stock. Trading fees should be factored into "USD SPENT".
 
 .TP
 [check] [currency name/all]
