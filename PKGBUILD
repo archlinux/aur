@@ -21,9 +21,9 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.14.13
-xanmod=18_rev2
-pkgrel=3
+pkgver=4.14.14
+xanmod=19
+pkgrel=2
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -31,16 +31,14 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=dc615c7e4fc98551f6b2df9d0e97743350ba94bd
+arch_config_trunk=d7be4a31834e3c592dd1fbda9615127725671959
 
 # Arch additional patches
 arch_patches=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
-  0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0005-cgroup-fix-css_task_iter-crash-on-CSS_TASK_ITER_PROC.patch
-  0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
@@ -52,18 +50,16 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('f4eb2b71168c53754843abdf47f4c81fd2be72f65ac283f06229838fb214ae25'
+sha256sums=('4f57a9336d6c62b227465ff6b95a5cacb030889daa3fa6d52f6dd78bac183a52'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
-            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
-            '9251c03da9d4b64591d77f490ff144d4ba514e66e74294ada541bf827306c9c4'
-            '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
-            '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
-            'c3d743a0e193294bc5fbae65e7ba69fd997cd8b2ded9c9a45c5151d71d9cfb95'
-            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
-sha256sums_x86_64=('24b8cf6829dafcb2b5c76cffaae6438ad2d432f13d6551fa1c8f25e66b751ed4')
+            '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
+            '5694022613bb49a77d3dfafdd2e635e9015e0a9069c58a07e99bdc5df6520311'
+            '2f46093fde72eabc0fd25eff5065d780619fc5e7d2143d048877a8220d6291b0'
+            '6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794')
+sha256sums_x86_64=('edaf7bebcaf3032e3bf15353e0773e39872c73fc024ca4d23383195a13745b2e')
 
 _kernelname=${pkgbase#linux}
 
@@ -93,6 +89,15 @@ prepare() {
   # [1] https://bugs.archlinux.org/task/56575
   # [2] https://nvd.nist.gov/vuln/detail/CVE-2017-8824
   for n in ${arch_patches[@]} ; do patch -Np1 -i ../$n ; done
+
+  # CVE-2017-5715 [branch target injection] aka 'Spectre Variant 2'
+  sed -i "s|# CONFIG_RETPOLINE.*|CONFIG_RETPOLINE=y|" ./.config
+
+  # CVE-2017-5754 [rogue data cache load] aka 'Meltdown' aka 'Variant 3'
+  sed -i "s|# CONFIG_PAGE_TABLE_ISOLATION.*|CONFIG_PAGE_TABLE_ISOLATION=y|" ./.config
+
+  # Enable IKCONFIG following Arch's philosophy
+  sed -i "s|# CONFIG_IKCONFIG.*|CONFIG_IKCONFIG=y\nCONFIG_IKCONFIG_PROC=y|" ./.config
 
   # EXPERIMENTAL: let's user choose microarchitecture optimization in GCC
   ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
