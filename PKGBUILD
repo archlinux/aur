@@ -3,9 +3,9 @@
 
 pkgname=irssi-xmpp
 pkgver=0.54
-pkgrel=1
-pkgdesc="irssi plugin to connect to the Jabber network"
-url="http://cybione.org/~irssi-xmpp"
+pkgrel=2
+pkgdesc='irssi plugin to connect to the Jabber network'
+url='http://cybione.org/~irssi-xmpp'
 arch=('x86_64')
 license=('GPL2')
 depends=('glib2' 'loudmouth' 'irssi')
