@@ -15,7 +15,7 @@ pkgbase = wapiti
 	depends = python-mako
 	depends = python-pysocks
 	source = http://downloads.sourceforge.net/sourceforge/wapiti/wapiti/wapiti-3.0.0/wapiti-3.0.0.tar.gz
-	sha256sums = 4708fa1d8159b0a5e606bdb26e1454e8df1d8bf6e11d9ad63c84e12e8edc8daa
+	sha256sums = 4238b336773b6cb1a36a5a2f2fa0bbe413a41e13fa6f5b109dbf6bbc897e4b46
 
 pkgname = wapiti
 
