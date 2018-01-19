@@ -2,6 +2,7 @@
 
 pkgname=navicat-lite
 pkgver=10.0.6
+_pkgver=${pkgver%.*}
 pkgrel=2
 pkgdesc="A fast, reliable and affordable Database Administration tool purpose-built for simplifying database management and reducing administration costs."
 url="http://www.navicat.com"
