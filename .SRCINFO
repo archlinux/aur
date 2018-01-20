@@ -1,10 +1,11 @@
 pkgbase = bash-link
 	pkgdesc = a high reliable bash library
-	pkgver = 1.0.34
-	pkgrel = 32
+	pkgver = 1.0.35
+	pkgrel = 33
 	url = http://torben.website/bashlink
 	arch = any
 	license = CC-BY-3.0
+	optdepends = pv: for advanced filesystem operations and process visualisation
 	source = arguments.sh
 	source = array.sh
 	source = changeroot.sh
