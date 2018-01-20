@@ -1,8 +1,8 @@
 pkgname=fool
 appname='fool'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 license=('MIT')
 depends=('ncurses')
 pkgdesc='A powerful git terminal interface which focuses on usability.'
@@ -16,7 +16,6 @@ package() {
   # local INSTALL_DIR=/usr/
   # local MAN_DIR=/usr/local/man
 
-  tree
   mkdir -p "$pkgdir/usr/bin/"
   cp -v ./$pkgname "$pkgdir/usr/bin/"
 
