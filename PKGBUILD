@@ -10,7 +10,7 @@
 _pkgname=pyparted
 pkgbase=python-${_pkgname}
 pkgname=(python-${_pkgname} python2-${_pkgname})
-pkgver=3.10.7
+pkgver=3.11.1
 pkgrel=1
 pkgdesc="Python module for GNU parted"
 url="https://github.com/rhinstaller/pyparted"
@@ -19,8 +19,8 @@ license=('GPL2')
 makedepends=('pkg-config' 'python' 'python2' 'parted>=3.0')
 conflicts=('pyparted-git')
 replaces=('pyparted')
-source=("https://github.com/rhinstaller/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('c57fed2a8d04511b12891fd59b6dd6840439aada7e5ebeab14a56e6e4f201c249046ee87d9d25af1b3f02960994efb0a2973f25928a9df85d48bbd1bc196ab07')
+source=("https://github.com/dcantrell/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('4fe627693db803a82cacb37be8f2bee3527ee8d0d564229d7328a4e5c8dfa7cdd7a06c328ac7fa6b07c8f0c74d5db304410eaf312a60a0d494525d32c873fefd')
 
 package_python-pyparted() {
   pkgdesc="Python module for GNU parted - python 3.x pkg"
