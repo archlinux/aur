@@ -1,22 +1,46 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
-_name='declxml'
-pkgname='python-declxml'
+_name=declxml
+pkgbase='python-declxml'
+pkgname=('python-declxml' 'python2-declxml')
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Declarative XML processing for Python."
-arch=('x86_64')
-url="https://github.com/gatkin/${_name}"
+arch=('any')
+url="https://pypi.python.org/pypi/declxml"
 license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
-provides=('python-declxml')
-conflicts=('python-declxml')
+makedepends=(
+  'python' 'python-setuptools'
+  'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("https://github.com/gatkin/${_name}/archive/${pkgver}.tar.gz")
-md5sums=('2ce79a9e0d5807666a06419eba7fecfc')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/gatkin/"${_name}"/archive/"${pkgver}".tar.gz)
+sha256sums=('aa3d919a5ac41b47dd1e02fc3f135571cbf83dbe3a85a745348d938c81329b1d')
+
+prepare() {
+  cp -a "${_name}"-"${pkgver}"{,-py2}
+}
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}"/"${_name}"-"${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+build(){
+  cd "${srcdir}"/"${_name}"-"${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
+  python2 setup.py build
+}
+
+package_python2-declxml() {
+  cd "${_name}"-"${pkgver}"-py2
+  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+}
+
+package_python-declxml() {
+  cd "${_name}"-"${pkgver}"
+  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }

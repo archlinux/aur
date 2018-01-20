@@ -1,17 +1,19 @@
 pkgbase = python-declxml
 	pkgdesc = Declarative XML processing for Python.
 	pkgver = 0.10.0
-	pkgrel = 1
-	url = https://github.com/gatkin/declxml
-	arch = x86_64
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/declxml
+	arch = any
 	license = MIT
+	makedepends = python
 	makedepends = python-setuptools
-	depends = python
-	provides = python-declxml
-	conflicts = python-declxml
+	makedepends = python2
+	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/gatkin/declxml/archive/0.10.0.tar.gz
-	md5sums = 2ce79a9e0d5807666a06419eba7fecfc
+	source = python-declxml-0.10.0.tar.gz::https://github.com/gatkin/declxml/archive/0.10.0.tar.gz
+	sha256sums = aa3d919a5ac41b47dd1e02fc3f135571cbf83dbe3a85a745348d938c81329b1d
 
 pkgname = python-declxml
+
+pkgname = python2-declxml
 
