@@ -3,15 +3,15 @@
 
 pkgname=conky-lua-archers-git
 _pkgname=conky
-pkgver=3169.262a2925
+pkgver=3185.ac56f205
 pkgrel=1
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky/"
 license=('GPL3' 'BSD')
 replaces=('torsmo' 'conky')
-conflicts=('conky' 'conky-lua' 'conky-lua-arch' 'conky-lua-nv' 'conky-lua-archers')
 provides=('conky')
+conflicts=('conky' 'conky-lua' 'conky-lua-arch' 'conky-lua-nv' 'conky-lua-archers')
 depends=(
 	'alsa-lib'
 	'cairo'
@@ -37,10 +37,8 @@ makedepends=(
 	'perl-xml-libxml'
 	'perl-xml-sax-expat'
 )
-source=("git://github.com/brndnmtthws/${_pkgname}.git"
-	'asciime.patch')
-sha1sums=('SKIP'
-	  'b07407c2be11cee7bd50e046024b89cf2579c448')
+source=("git://github.com/brndnmtthws/${_pkgname}.git")
+sha1sums=('SKIP')
 options=('!strip' 'debug')
 
 pkgver() {
@@ -50,7 +48,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	patch -p1 -i ../asciime.patch # db2x_manxml fails on non-ascii chars
 	mkdir -p build/               # as @afaikifreedom recommended
 }
 

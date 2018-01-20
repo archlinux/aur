@@ -2,7 +2,7 @@
 
 makepkg --nobuild --skipinteg
 
-rm -rf src/ conky*
+rm -rf pkg/ src/ conky*
 
 namcap PKGBUILD && makepkg --printsrcinfo > .SRCINFO || exit 1
 git add . || exit 1 # PKGBUILD prepare4uploadpkg.sh .SRCINFO
