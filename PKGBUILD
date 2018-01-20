@@ -13,6 +13,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-gd"
          "${pkgbase}-imap"
          "${pkgbase}-intl"
+         "${pkgbase}-sodium"
          "${pkgbase}-odbc"
          "${pkgbase}-pgsql"
          "${pkgbase}-pspell"
@@ -20,24 +21,25 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.2.0RC6
+pkgver=7.2.1
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('PHP')
 url='http://www.php.net'
-makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libxslt' 'libzip' 'net-snmp'
+makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'libxslt' 'libzip' 'net-snmp'
              'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre')
 checkdepends=('procps-ng')
-source=("https://downloads.php.net/~pollita/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
+source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha256sums=('be4df00ff5b66e9f13c83e1d08d1d5384ae7ccc820e26f7e5f9e660011496a9e'
+sha512sums=('2445f2cff20214b521c48592e5ab42b770c291702178d7cb2a84912c81b7e5d2cc45948a3a4a7830194fa444708d544c73efbaa8e90c95ab77937f7feffb2ffc'
             'SKIP'
-            '07acff660e194197cfbcc955c0d362d6de063e6475668f3df03bfff023af11ed'
-            'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
-            'd62ffe6a693336752d4decb2acba09b67bdf7cad19807eccf8795f9386303923'
-            '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
-            '8ab87630a2e1e031a1f42ce6063a1d9646b0d4299a9260fe4ebeb5cfc38e6972')
-validpgpkeys=('1729F83938DA44E27BA0F4D3DBDB397470D12172')
+            '65ea5cb38c1fc1874b2a4d08bc52443f9ed5dcc92cf99023a74292c78f9074516296f56c768f7efa8a1f0838feac47b356d3da6fdb1199419bebec3a93204ae6'
+            'eccbe1a0c7b2757ab3c982c871cc591a66ad70f085aaa0d44f93cacacedc7b8fd21b8d0c66471327ff070db1bab1ab83a802f6fa190f33bdd74c134975e3910e'
+            '87453c9f41204bc7a20cbf2a85ee44965f7754529e2c17fb60bdfe42ded7a894d6e7fcc30fe6c650ea5f92f95920161522ef3ce0f355686a2fed7f0857abdd5c'
+            '824e9a0d10063283357d49a81ab49bf834afd24f098482bdbaa9ab60bbad2b0dea6f5879259b73717d437626b02fb4f2d3ef68b7bcbb26bee274a7b61144720f'
+            '1606178f55dee8ca6a3cf47c7db486dca0c261bfffbaf4f69450a3497643910c65f8ee1543839ae4213d8b396afc6e5f86141accac553545c35fe234a50f56e6')
+validpgpkeys=('B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F'
+              '1729F83938DA44E27BA0F4D3DBDB397470D12172')
 
 prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}
@@ -45,6 +47,8 @@ prepare() {
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
 	patch -p0 -i ${srcdir}/php.ini.patch
+
+	rm tests/output/stream_isatty_*.phpt
 }
 
 build() {
@@ -107,6 +111,7 @@ build() {
 		--with-pspell=shared \
 		--with-readline \
 		--with-snmp=shared \
+		--with-sodium=shared \
 		--with-sqlite3=shared,/usr \
 		--with-tidy=shared \
 		--with-unixODBC=shared,/usr \
@@ -182,7 +187,7 @@ package_php-zts() {
 	# remove static modules
 	rm -f ${pkgdir}/usr/lib/php/modules/*.a
 	# remove modules provided by sub packages
-	rm -f ${pkgdir}/usr/lib/php/modules/{enchant,gd,imap,intl,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+	rm -f ${pkgdir}/usr/lib/php/modules/{enchant,gd,imap,intl,sodium,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
 	# remove empty directory
 	rmdir ${pkgdir}/usr/include/php/include
 }
@@ -297,6 +302,16 @@ package_php-zts-intl() {
 	provides=("${_pkgbase}-intl=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/php/modules/intl.so
+}
+
+package_php-zts-sodium() {
+	pkgdesc='sodium module for PHP'
+	depends=("${pkgbase}" 'libsodium')
+	replaces=("${_pkgbase}-sodium")
+	conflicts=("${_pkgbase}-sodium")
+	provides=("${_pkgbase}-sodium=${pkgver}")
+
+	install -D -m755 ${srcdir}/build/modules/sodium.so ${pkgdir}/usr/lib/php/modules/sodium.so
 }
 
 package_php-zts-odbc() {
