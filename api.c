@@ -56,7 +56,6 @@ double api_get_current_price(char* ticker_name_string) {
     val = alphavantage_get_current_price(ticker_name_string);
     if (val != -1)
         return val;
-    printf("Invalid symbol.\n");
     return -1;
 }
 
@@ -68,9 +67,11 @@ double iex_get_current_price(char* ticker_name_string) {
     memcpy(&iex_api_string[37 + ticker_name_len], "/quote/latestPrice", 18);
 
     String* pString = api_curl_data(iex_api_string);
-    if (strcmp(pString->data, "Unknown symbol") == 0)
-        return -1;
     free(iex_api_string);
+    if (strcmp(pString->data, "Unknown symbol") == 0) {
+        api_string_destroy(&pString);
+        return -1;
+    }
     double ret = strtod(pString->data, NULL);
     api_string_destroy(&pString);
     return ret;
@@ -78,19 +79,24 @@ double iex_get_current_price(char* ticker_name_string) {
 
 double alphavantage_get_current_price(char* ticker_name_string) {
     char* av_str = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=1min&apikey=DFUMLJ1ILOM2G7IH&datatype=csv&symbol=";
-    char* alphavantage_api_string = calloc(128, sizeof(char));
-    memcpy(alphavantage_api_string, av_str, 128);
+    char* alphavantage_api_string = calloc(160, sizeof(char));
+    memcpy(alphavantage_api_string, av_str, 160);
     size_t av_len = strlen(alphavantage_api_string);
     memcpy(&alphavantage_api_string[av_len], ticker_name_string, 10);
     String* pString = api_curl_data(alphavantage_api_string);
     if (pString->data[0] == '{'){
         api_string_destroy(&pString);
-        memset(alphavantage_api_string, '\0', 128);
+        memset(alphavantage_api_string, '\0', 160);
         av_str = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&apikey=DFUMLJ1ILOM2G7IH&datatype=csv&symbol=";
-        memcpy(alphavantage_api_string, av_str, 128);
+        memcpy(alphavantage_api_string, av_str, 160);
         av_len = strlen(alphavantage_api_string);
         memcpy(&alphavantage_api_string[av_len], ticker_name_string, 10);
         pString = api_curl_data(alphavantage_api_string);
+    }
+    if (pString->data[0] == '{'){
+        free(alphavantage_api_string);
+        api_string_destroy(&pString);
+        return -1;
     }
     int i = 0;
     for (int j = 0; j < 9; i++, j++)
