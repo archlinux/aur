@@ -3,4 +3,5 @@ pkg/
 *.pkg.tar.xz
 *.pkg.tar
 *.src.tar.gz
-cpma-1.50-nomaps.zip
+cpma-*-nomaps.zip
+cpma-mappack-full.zip
