@@ -2,7 +2,7 @@
 
 _pkgname=mint-y-theme
 pkgname=${_pkgname}-git
-pkgver=105.15dab8b
+pkgver=147.7d5dae9
 pkgrel=1
 pkgdesc="LinuxMint 18 Theme"
 arch=('any')
