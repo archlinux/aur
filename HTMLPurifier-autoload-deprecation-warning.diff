@@ -1,0 +1,32 @@
+--- /dev/null
++++ b/library/vendor/HTMLPurifier.autoload-legacy.php
+@@ -0,0 +1,15 @@
++<?php
++
++/**
++ * @file
++ * Legacy autoloader for systems lacking spl_autoload_register
++ *
++ * Must be separate to prevent deprecation warning on PHP 7.2
++ */
++
++function __autoload($class)
++{
++    return HTMLPurifier_Bootstrap::autoload($class);
++}
++
++// vim: et sw=4 sts=4
+--- a/library/vendor/HTMLPurifier.autoload.php
++++ b/library/vendor/HTMLPurifier.autoload.php
+@@ -14,10 +14,7 @@
+         spl_autoload_register('__autoload');
+     }
+ } elseif (!function_exists('__autoload')) {
+-    function __autoload($class)
+-    {
+-        return HTMLPurifier_Bootstrap::autoload($class);
+-    }
++    require dirname(__FILE__) . '/HTMLPurifier.autoload-legacy.php';
+ }
+ 
+ if (ini_get('zend.ze1_compatibility_mode')) {

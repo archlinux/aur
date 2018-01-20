@@ -1,0 +1,541 @@
+diff --git a/.travis.yml b/.travis.yml
+index 34a4e5f633..102a024475 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -8,6 +8,8 @@ php:
+   - '5.6'
+   - '7.0'
+   - '7.1'
++  - '7.2'
++  - nightly
+ 
+ matrix:
+   include:
+@@ -18,6 +20,8 @@ matrix:
+     - PHPCS_VERSION=2.9.1
+     - LOCALE_GEN=1
+     - ENABLE_LDAP=1
++  allow_failures:
++    - php: nightly
+ 
+ services:
+   - mysql
+diff --git a/library/Icinga/Authentication/User/DbUserBackend.php b/library/Icinga/Authentication/User/DbUserBackend.php
+index 6a2e2f6463..8cf4f5f401 100644
+--- a/library/Icinga/Authentication/User/DbUserBackend.php
++++ b/library/Icinga/Authentication/User/DbUserBackend.php
+@@ -117,7 +117,7 @@ protected function initializeFilterColumns()
+      *
+      * @return void
+      */
+-    public function insert($table, array $bind)
++    public function insert($table, array $bind, array $types = array())
+     {
+         $this->requireTable($table);
+         $bind['created_at'] = date('Y-m-d H:i:s');
+@@ -138,7 +138,7 @@ public function insert($table, array $bind)
+      * @param   array   $bind
+      * @param   Filter  $filter
+      */
+-    public function update($table, array $bind, Filter $filter = null)
++    public function update($table, array $bind, Filter $filter = null, array $types = array())
+     {
+         $this->requireTable($table);
+         $bind['last_modified'] = date('Y-m-d H:i:s');
+diff --git a/library/Icinga/Authentication/UserGroup/DbUserGroupBackend.php b/library/Icinga/Authentication/UserGroup/DbUserGroupBackend.php
+index 844b6da3c9..17562d2f43 100644
+--- a/library/Icinga/Authentication/UserGroup/DbUserGroupBackend.php
++++ b/library/Icinga/Authentication/UserGroup/DbUserGroupBackend.php
+@@ -130,7 +130,7 @@ protected function initializeFilterColumns()
+      * @param   string  $table
+      * @param   array   $bind
+      */
+-    public function insert($table, array $bind)
++    public function insert($table, array $bind, array $types = array())
+     {
+         $bind['created_at'] = date('Y-m-d H:i:s');
+         parent::insert($table, $bind);
+@@ -143,7 +143,7 @@ public function insert($table, array $bind)
+      * @param   array   $bind
+      * @param   Filter  $filter
+      */
+-    public function update($table, array $bind, Filter $filter = null)
++    public function update($table, array $bind, Filter $filter = null, array $types = array())
+     {
+         $bind['last_modified'] = date('Y-m-d H:i:s');
+         parent::update($table, $bind, $filter);
+diff --git a/library/Icinga/Chart/Donut.php b/library/Icinga/Chart/Donut.php
+index 1efc9546be..74f93d7d80 100644
+--- a/library/Icinga/Chart/Donut.php
++++ b/library/Icinga/Chart/Donut.php
+@@ -344,7 +344,7 @@ protected function encode($content)
+ 
+     protected function renderAttributes(array $attributes)
+     {
+-        $html = [];
++        $html = array();
+ 
+         foreach ($attributes as $name => $value) {
+             if ($value === null) {
+diff --git a/library/Icinga/Data/Filter/FilterQueryString.php b/library/Icinga/Data/Filter/FilterQueryString.php
+index 692f7da935..2a36f78373 100644
+--- a/library/Icinga/Data/Filter/FilterQueryString.php
++++ b/library/Icinga/Data/Filter/FilterQueryString.php
+@@ -155,7 +155,7 @@ protected function readFilters($nestingLevel = 0, $op = null)
+                     }
+                 }
+ 
+-                if ($op === null && count($filters > 0) && ($next === '&' || $next === '|')) {
++                if ($op === null && count($filters) > 0 && ($next === '&' || $next === '|')) {
+                     $op = $next;
+                     continue;
+                 }
+diff --git a/library/Icinga/File/Storage/TemporaryLocalFileStorage.php b/library/Icinga/File/Storage/TemporaryLocalFileStorage.php
+index 05d633588e..6fd751c783 100644
+--- a/library/Icinga/File/Storage/TemporaryLocalFileStorage.php
++++ b/library/Icinga/File/Storage/TemporaryLocalFileStorage.php
+@@ -41,7 +41,7 @@ public function __destruct()
+         foreach ($directoryIterator as $path => $entry) {
+             /** @var \SplFileInfo $entry */
+ 
+-            if ($entry->isDir()) {
++            if ($entry->isDir() && ! $entry->isLink()) {
+                 rmdir($path);
+             } else {
+                 unlink($path);
+diff --git a/library/Icinga/Web/Form/Element/Note.php b/library/Icinga/Web/Form/Element/Note.php
+index 5344fb31cb..9569dee55c 100644
+--- a/library/Icinga/Web/Form/Element/Note.php
++++ b/library/Icinga/Web/Form/Element/Note.php
+@@ -48,7 +48,7 @@ public function init()
+      *
+      * @return  bool            Always true
+      */
+-    public function isValid($value)
++    public function isValid($value, $context = null)
+     {
+         return true;
+     }
+diff --git a/library/Icinga/Web/Session.php b/library/Icinga/Web/Session.php
+index e6f7218ad2..40df89f9e4 100644
+--- a/library/Icinga/Web/Session.php
++++ b/library/Icinga/Web/Session.php
+@@ -29,7 +29,7 @@ class Session
+     public static function create(BaseSession $session = null)
+     {
+         if ($session === null) {
+-            self::$session = new PhpSession();
++            self::$session = PhpSession::create();
+         } else {
+             self::$session = $session;
+         }
+diff --git a/library/Icinga/Web/Session/Php72Session.php b/library/Icinga/Web/Session/Php72Session.php
+new file mode 100644
+index 0000000000..9003d7e1fc
+--- /dev/null
++++ b/library/Icinga/Web/Session/Php72Session.php
+@@ -0,0 +1,121 @@
++<?php
++/* Icinga Web 2 | (c) 2017 Icinga Development Team | GPLv2+ */
++
++namespace Icinga\Web\Session;
++
++use Icinga\Application\Logger;
++use Icinga\Exception\ConfigurationError;
++use Icinga\Web\Cookie;
++
++/**
++ * Session implementation in PHP
++ */
++class Php72Session extends PhpSession
++{
++    /**
++     * Open a PHP session
++     */
++    protected function open()
++    {
++        session_name($this->sessionName);
++
++        $cookie = new Cookie('bogus');
++        session_set_cookie_params(
++            0,
++            $cookie->getPath(),
++            $cookie->getDomain(),
++            $cookie->isSecure(),
++            true
++        );
++
++        session_start(array(
++            'use_cookies'       => true,
++            'use_only_cookies'  => true,
++            'use_trans_sid'     => false
++        ));
++    }
++
++    /**
++     * Read all values written to the underling session and make them accessible.
++     */
++    public function read()
++    {
++        $this->clear();
++        $this->open();
++
++        foreach ($_SESSION as $key => $value) {
++            if (strpos($key, self::NAMESPACE_PREFIX) === 0) {
++                $namespace = new SessionNamespace();
++                $namespace->setAll($value);
++                $this->namespaces[substr($key, strlen(self::NAMESPACE_PREFIX))] = $namespace;
++            } else {
++                $this->set($key, $value);
++            }
++        }
++
++        session_write_close();
++    }
++
++    /**
++     * Write all values of this session object to the underlying session implementation
++     */
++    public function write()
++    {
++        $this->open();
++
++        foreach ($this->removed as $key) {
++            unset($_SESSION[$key]);
++        }
++        foreach ($this->values as $key => $value) {
++            $_SESSION[$key] = $value;
++        }
++        foreach ($this->removedNamespaces as $identifier) {
++            unset($_SESSION[self::NAMESPACE_PREFIX . $identifier]);
++        }
++        foreach ($this->namespaces as $identifier => $namespace) {
++            $_SESSION[self::NAMESPACE_PREFIX . $identifier] = $namespace->getAll();
++        }
++
++        session_write_close();
++    }
++
++    /**
++     * Delete the current session, causing all session information to be lost
++     */
++    public function purge()
++    {
++        $this->open();
++        $_SESSION = array();
++        $this->clear();
++        session_destroy();
++        $this->clearCookies();
++        session_write_close();
++    }
++
++    /**
++     * @see Session::getId()
++     */
++    public function getId()
++    {
++        if (($id = session_id()) === '') {
++            // Make sure we actually get a id
++            $this->open();
++            session_write_close();
++            $id = session_id();
++        }
++
++        return $id;
++    }
++
++    /**
++     * Assign a new sessionId to the currently active session
++     */
++    public function refreshId()
++    {
++        $this->open();
++        if ($this->exists()) {
++            session_regenerate_id();
++        }
++        session_write_close();
++    }
++}
+diff --git a/library/Icinga/Web/Session/PhpSession.php b/library/Icinga/Web/Session/PhpSession.php
+index e00544cf9b..36dd84e9dd 100644
+--- a/library/Icinga/Web/Session/PhpSession.php
++++ b/library/Icinga/Web/Session/PhpSession.php
+@@ -33,6 +33,21 @@ class PhpSession extends Session
+      */
+     protected $sessionName = 'Icingaweb2';
+ 
++    /**
++     * Create a new PHPSession object using the provided options (if any)
++     *
++     * @param   array   $options    An optional array of ini options to set
++     *
++     * @return  static
++     *
++     * @throws  ConfigurationError
++     * @see     http://php.net/manual/en/session.configuration.php
++     */
++    public static function create(array $options = null)
++    {
++        return version_compare(PHP_VERSION, '7.2.0') < 0 ? new self($options) : new Php72Session($options);
++    }
++
+     /**
+      * Create a new PHPSession object using the provided options (if any)
+      *
+diff --git a/modules/monitoring/application/views/helpers/PluginOutput.php b/modules/monitoring/application/views/helpers/PluginOutput.php
+index 5224185bcb..2a8e300f40 100644
+--- a/modules/monitoring/application/views/helpers/PluginOutput.php
++++ b/modules/monitoring/application/views/helpers/PluginOutput.php
+@@ -163,8 +163,14 @@ protected function getPurifier()
+         if (self::$purifier === null) {
+             require_once 'HTMLPurifier/Bootstrap.php';
+             require_once 'HTMLPurifier.php';
++
++            $oldErrorReportingLevel = error_reporting();
++            error_reporting($oldErrorReportingLevel & ~ E_DEPRECATED);
++
+             require_once 'HTMLPurifier.autoload.php';
+ 
++            error_reporting($oldErrorReportingLevel);
++
+             $config = HTMLPurifier_Config::createDefault();
+             $config->set('Core.EscapeNonASCIICharacters', true);
+             $config->set('HTML.Allowed', 'p,br,b,a[href|target],i,table,tr,th[colspan],td[colspan],div,*[class]');
+diff --git a/modules/monitoring/library/Monitoring/Plugin.php b/modules/monitoring/library/Monitoring/Plugin.php
+index 2edc459700..e8e1f5dbb8 100644
+--- a/modules/monitoring/library/Monitoring/Plugin.php
++++ b/modules/monitoring/library/Monitoring/Plugin.php
+@@ -3,6 +3,8 @@
+ 
+ namespace Icinga\Module\Monitoring;
+ 
++use Icinga\Application\Cli;
++
+ require_once ICINGA_LIBDIR . '/Icinga/Application/Cli.php';
+ 
+ class Plugin extends Cli
+diff --git a/modules/test/application/clicommands/PhpCommand.php b/modules/test/application/clicommands/PhpCommand.php
+index 8a62deffd9..8e50d78c12 100644
+--- a/modules/test/application/clicommands/PhpCommand.php
++++ b/modules/test/application/clicommands/PhpCommand.php
+@@ -3,8 +3,11 @@
+ 
+ namespace Icinga\Module\Test\Clicommands;
+ 
++use ErrorException;
+ use Icinga\Application\Icinga;
+ use Icinga\Cli\Command;
++use RecursiveDirectoryIterator;
++use RecursiveIteratorIterator;
+ 
+ /**
+  * PHP unit- & style-tests
+@@ -68,7 +71,7 @@ public function unitAction()
+             . $phpUnit
+             . ' -c modules/test/phpunit.xml'
+             . ' ' . join(' ', array_merge($options, $this->params->getAllStandalone()));
+-        
++
+         if ($this->isVerbose) {
+             $res = `$command`;
+             foreach (preg_split('/\n/', $res) as $line) {
+@@ -155,6 +158,96 @@ public function styleAction()
+         );
+     }
+ 
++    /**
++     * Run code-validity checks
++     *
++     * This command checks whether icingaweb and installed modules match PHP syntax.
++     *
++     * USAGE
++     *
++     * icingacli test php validity
++     */
++    public function validityAction()
++    {
++        $types = array(
++            T_CLASS     => 'class',
++            T_INTERFACE => 'interface'
++        );
++
++        if (version_compare(PHP_VERSION, '5.4.0') > -1) {
++            $types[T_TRAIT] = 'trait';
++        }
++
++        $files = array();
++        $baseDir = realpath(__DIR__ . '/../../../..');
++        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($baseDir));
++
++        foreach ($iterator as $path => $info) {
++            /** @var \SplFileInfo $info */
++            if (preg_match(
++                '~\A(?:test|vendor|modules/[^/]+/test|library/Icinga/Test)(?:/|\z)~',
++                $iterator->getInnerIterator()->getSubPath()
++            ) || ! ($info->isFile() && preg_match('/\.php\z/', $path))) {
++                continue;
++            }
++
++            $content = file_get_contents("file://$path");
++            $lines = explode("\n", $content);
++            $tokens = token_get_all($content);
++            $lastDocComment = '';
++
++            foreach ($tokens as $token) {
++                if (! is_array($token)) {
++                    continue;
++                }
++
++                list($tokenNr, $raw, $lineNr) = $token;
++
++                if ($tokenNr === T_DOC_COMMENT) {
++                    $lastDocComment = $raw;
++                    continue;
++                }
++
++                if (array_key_exists($tokenNr, $types)) {
++                    $matches = array();
++                    if (preg_match('/\A\s*(\w+)\s+\w+/', $lines[$lineNr - 1], $matches)) {
++                        list($_, $type) = $matches;
++
++                        if ($type === $types[$tokenNr]) {
++                            // Valid definition header
++
++                            if (! preg_match('/@deprecated\b/', $lastDocComment)) {
++                                $files[] = $path;
++                            }
++                        }
++                    }
++
++                    // Bad definition header
++                    break;
++                }
++            }
++
++            // No definition header
++        }
++
++        define('ICINGA_LIBDIR', "$baseDir/library");
++
++        require_once 'HTMLPurifier/Bootstrap.php';
++        require_once 'HTMLPurifier.php';
++
++        $oldErrorReportingLevel = error_reporting();
++        error_reporting($oldErrorReportingLevel & ~ E_DEPRECATED);
++
++        require_once 'HTMLPurifier.autoload.php';
++
++        error_reporting($oldErrorReportingLevel);
++
++        foreach ($files as $file) {
++            printf('+ require_once %s;%s', var_export($file, true), PHP_EOL);
++            require_once $file;
++        }
++    }
++
+     /**
+      * Setup the directory where to put report files and return its path
+      *
+diff --git a/test/php/library/Icinga/Application/PhpCodeValidityTest.php b/test/php/library/Icinga/Application/PhpCodeValidityTest.php
+new file mode 100644
+index 0000000000..6a3ff3beb0
+--- /dev/null
++++ b/test/php/library/Icinga/Application/PhpCodeValidityTest.php
+@@ -0,0 +1,50 @@
++<?php
++/* Icinga Web 2 | (c) 2017 Icinga Development Team | GPLv2+ */
++
++namespace Tests\Icinga\Application;
++
++use DirectoryIterator;
++use Icinga\Application\Config;
++use Icinga\Data\ConfigObject;
++use Icinga\File\Storage\TemporaryLocalFileStorage;
++use Icinga\Test\BaseTestCase;
++
++class PhpCodeValidityTest extends BaseTestCase
++{
++    /**
++     * Collect all classes, interfaces and traits and let PHP validate them as if included
++     */
++    public function testAllClassesInterfacesAndTraits()
++    {
++        $baseDir = realpath(__DIR__ . '/../../../../..');
++        $storage = new TemporaryLocalFileStorage();
++
++        $storage->create('etc/icingaweb2/config.ini', (string) new Config(new ConfigObject(array(
++            'global' => array(
++                'module_path'       => "$baseDir/modules",
++                'config_backend'    => 'ini'
++            )
++        ))));
++
++        $icingacli = 'ICINGAWEB_CONFIGDIR=' . $storage->resolvePath('etc/icingaweb2')
++            . ' ' . realpath('/proc/self/exe') . " $baseDir/bin/icingacli";
++
++        foreach (new DirectoryIterator("$baseDir/modules") as $module) {
++            if (! $module->isDot() && $module->isDir()) {
++                $this->system("$icingacli module enable {$module->getFilename()}");
++            }
++        }
++
++        $this->system("$icingacli test php validity");
++    }
++
++    protected function system($command)
++    {
++        echo "+ $command" . PHP_EOL;
++
++        $return = 127;
++        system($command, $return);
++
++        $this->assertSame(0, $return);
++    }
++}
+diff --git a/test/php/library/Icinga/File/Storage/LocalFileStorageTest.php b/test/php/library/Icinga/File/Storage/LocalFileStorageTest.php
+index 86ccc6f03c..5f104a50c4 100644
+--- a/test/php/library/Icinga/File/Storage/LocalFileStorageTest.php
++++ b/test/php/library/Icinga/File/Storage/LocalFileStorageTest.php
+@@ -11,10 +11,16 @@
+ 
+ class LocalFileStorageTest extends BaseTestCase
+ {
++    /**
++     * @var int
++     */
++    protected $oldErrorReportingLevel;
++
+     public function __construct($name = null, array $data = array(), $dataName = '')
+     {
+         parent::__construct($name, $data, $dataName);
+ 
++        $this->oldErrorReportingLevel = error_reporting();
+         error_reporting(E_ALL | E_STRICT);
+ 
+         set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+@@ -35,6 +41,12 @@ public function __construct($name = null, array $data = array(), $dataName = '')
+         });
+     }
+ 
++    public function __destruct()
++    {
++        error_reporting($this->oldErrorReportingLevel);
++        restore_error_handler();
++    }
++
+     public function testGetIterator()
+     {
+         $lfs = new TemporaryLocalFileStorage();
+diff --git a/test/php/library/Icinga/Web/Session/PhpSessionTest.php b/test/php/library/Icinga/Web/Session/PhpSessionTest.php
+index d835fb034c..224e984621 100644
+--- a/test/php/library/Icinga/Web/Session/PhpSessionTest.php
++++ b/test/php/library/Icinga/Web/Session/PhpSessionTest.php
+@@ -13,7 +13,7 @@ private function getSession()
+         if (!is_writable('/tmp')) {
+             $this->markTestSkipped('Could not write to session directory');
+         }
+-        return new PhpSession(
++        return PhpSession::create(
+             array(
+                 'use_cookies'   => false,
+                 'save_path'     => '/tmp',
