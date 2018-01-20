@@ -1,7 +1,7 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=asp-https
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Arch Linux build source file management tool (with patch to use HTTPS by default)"
 arch=(any)
@@ -12,7 +12,7 @@ conflicts=(asp)
 provides=(asp)
 makedepends=(asciidoc)
 source=($pkgname-$pkgver.tar.gz::https://github.com/julianbrost/asp-https/archive/v$pkgver-https.tar.gz)
-sha256sums=('2e1b2831bf5fc81ef64f26e0832ab697fccd2e05063050917f40f062ee512069')
+sha256sums=('38043722d92122e9f72a9924e20b1556cb80d1be1b19b7ead70674c8249308c3')
 
 build() {
 	cd asp-https-$pkgver-https
