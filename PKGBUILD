@@ -21,6 +21,10 @@ pkgver() {
   git describe | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
+prepare() {
+  sed -e 's/DengXian Light/\\xe5\\xae\\x8b\\xe4\\xbd\\x93/' -e 's/DengXian/\\xe5\\xae\\x8b\\xe4\\xbd\\x93/' -i  xlnt/source/detail/serialization/xlsx_producer.cpp
+}
+
 build() {
   unset LDFLAGS
   for _arch in ${_architectures}; do
