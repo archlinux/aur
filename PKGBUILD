@@ -5,12 +5,12 @@
 _pkgname=libass
 pkgname=lib32-${_pkgname}
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable library for SSA/ASS subtitles rendering (32 bit)"
 arch=('x86_64')
 url='https://github.com/libass/libass/'
 license=('BSD')
-depends=("${_pkgbase}" 'lib32-fontconfig' 'lib32-fribidi' 'lib32-harfbuzz' 'lib32-glibc' 'lib32-glib2')
+depends=("${_pkgname}" 'lib32-fontconfig' 'lib32-fribidi' 'lib32-harfbuzz' 'lib32-glibc' 'lib32-glib2')
 provides=('libass.so')
 makedepends=('gcc-multilib' 'nasm')
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
