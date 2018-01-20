@@ -9,9 +9,12 @@ _webview_provider=webkit
 # set the JavaScript provider: either script, qml, auto or none
 _js_provider=qml
 
+# whether the experimental JSON export is enabled: ON or OFF
+_json_export=ON
+
 _reponame=tageditor
 pkgname=tageditor
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
@@ -23,10 +26,11 @@ depends=('qtutilities>=5.6.0' 'tagparser>=6.2.0' 'desktop-file-utils' 'xdg-utils
 [[ $_js_provider == script ]] && depends+=('qt5-script>=5.6')
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative>=5.6')
 makedepends=('cmake' 'qt5-tools')
+[[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('bff72b3df7c919e45d7d0113b5b6ba5f939282c98d15a11a5e8c5d14d9d33dde')
+sha256sums=('3d9204c7a7e5a06916a7f6b97fbb50a32282c762fd9a432106254ed0d9706d79')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
@@ -34,7 +38,9 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DWEBVIEW_PROVIDER="${_webview_provider}" \
-    -DJS_PROVIDER="${_js_provider}"
+    -DJS_PROVIDER="${_js_provider}" \
+    -DENABLE_JSON_EXPORT="${_json_export}" \
+    -DREFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator'
   make
 }
 
