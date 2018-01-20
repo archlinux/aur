@@ -1,6 +1,6 @@
 pkgbase = multisystem
 	pkgdesc = A GUI tool to create a usb system that can boot multiple distro's
-	pkgver = 1.0411
+	pkgver = 1.0412
 	pkgrel = 1
 	url = http://liveusb.info/dotclear/index.php
 	arch = i686
