@@ -30,3 +30,13 @@ post_remove() {
   /usr/bin/getent group icinga &> /dev/null && /usr/bin/groupdel icinga &> /dev/null
   /usr/bin/getent group icingacmd &> /dev/null && /usr/bin/groupdel icingacmd &> /dev/null
 }
+
+post_upgrade() {
+  if [[ "$(vercmp "$2" '2.8.0')" -lt 0 ]]; then
+    cat << EOF
+==> Icinga version 2.8.0 requires an DB IDO schema upgrade and uses new paths
+==> for certificates. Check the upgrading instructions for details:
+==> https://www.icinga.com/docs/icinga2/latest/doc/16-upgrading-icinga-2/#upgrading-to-v28
+EOF
+  fi
+}
