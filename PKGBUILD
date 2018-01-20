@@ -2,7 +2,7 @@
 
 pkgname=ryzen-stabilizator-git
 _pkgname=ryzen-stabilizator
-pkgver=r2.f7eadf1
+pkgver=r7.1310afe
 pkgrel=1
 pkgdesc="Disables C6 C-state on an AMD Ryzen processor, in order to help with the infamous
 MCE-random-reboots-while-idle issue."
@@ -35,14 +35,17 @@ build() {
   export GOPATH="${srcdir}/go"
   cd "${GOPATH}/src/${_pkgname}"
   go get
-  go build
+  go build -ldflags "-X main.version=git-$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd "${_pkgname}"
 
   install -Dm 644 "${srcdir}/ryzen-stabilizator.conf" "${pkgdir}/etc/modules-load.d/ryzen-stabilizator.conf"
-  install -Dm 644 "${srcdir}/${_pkgname}/contrib/systemd/ryzen-stabilizator.service" "${pkgdir}/usr/lib/systemd/system/ryzen-stabilizator.service"
+  for s in ryzen-stabilizator ryzen-stabilizator@boot ryzen-stabilizator@resume; do
+    install -Dm 644 "${srcdir}/${_pkgname}/contrib/systemd/${s}.service" "${pkgdir}/usr/lib/systemd/system/${s}.service"
+  done
+  install -Dm 644 "${srcdir}/${_pkgname}/contrib/systemd/ryzen-stabilizator.target" "${pkgdir}/usr/lib/systemd/system/ryzen-stabilizator.target"
   install -Dm 755 "${srcdir}/${_pkgname}/ryzen-stabilizator" "${pkgdir}/usr/bin/ryzen-stabilizator"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
