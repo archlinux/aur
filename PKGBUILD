@@ -2,7 +2,7 @@
 
 _pkgname=sonospy
 pkgname=$_pkgname-git
-pkgver=16
+pkgver=360
 pkgrel=1
 pkgdesc="A music server for Sonos"
 arch=('any')
@@ -24,9 +24,9 @@ source=("$pkgname::git://github.com/henkelis/sonospy.git"
         'sonospy.tmpfile')
 backup=('etc/sonospy/sonospy.conf')
 md5sums=('SKIP'
-         'cb1aa86902f5a04b5bc86e30eb50fe9c'
+         'ba80b3b6ef03365df3cee5bc0a7d38f8'
          '407a5cc2b1d16f35aef94b0448a08083'
-         'd2503c694ce7a653943e1406fc14dd2e'
+         '8540b7e955534c61033f8daa13461d32'
          '88de0ae42d0579e32f8df3a3fdc16694'
          '6f7306d7872d3c2e0bb6dd7b52b73171'
          'ef3a9e190911c931311e8fd9f0c6e4ef')
@@ -43,7 +43,9 @@ package() {
   install -Dm644 sonospy.sysusers "$pkgdir/usr/lib/sysusers.d/sonospy.conf"
   install -Dm644 sonospy.tmpfile "$pkgdir/usr/lib/tmpfiles.d/sonospy.conf"
 
+  mv $srcdir/sonospy-git/sonospy/scan.ini $srcdir/sonospy-git/sonospy/scan2.ini
+  mv $srcdir/sonospy-git/sonospy/pycpoint.ini $srcdir/sonospy-git/sonospy/pycpoint2.ini
   install -dm755 "$pkgdir"/opt/sonospy/{app,data}
   cp -rp $pkgname/* "$pkgdir/opt/sonospy/app/"
-  install -D -m644 sonospy.conf "${pkgdir}/etc/sonospy/sonospy.conf"
+  install -Dm644 sonospy.conf "${pkgdir}/etc/sonospy/sonospy.conf"
 }

@@ -3,8 +3,10 @@ post_install() {
   touch /opt/sonospy/data/sonospy.db
   ln -s /opt/sonospy/data/sonospy.db /opt/sonospy/app/sonospy/sonospy.db
   ln -s /opt/sonospy/data/sonospy.db /opt/sonospy/app/sonospy.db
-  mv -n /opt/sonospy/app/sonospy/pycpoint.ini /opt/sonospy/data/pycpoint.ini
+  mv -n /opt/sonospy/app/sonospy/pycpoint2.ini /opt/sonospy/data/pycpoint.ini
   ln -s /opt/sonospy/data/pycpoint.ini /opt/sonospy/app/sonospy/pycpoint.ini
+  mv -n /opt/sonospy/app/sonospy/scan2.ini /opt/sonospy/data/scan.ini
+  ln -s /opt/sonospy/data/scan.ini /opt/sonospy/app/sonospy/scan.ini
   mv -n /opt/sonospy/app/sonospy/userindex2.ini /opt/sonospy/data/userindex3.ini
   ln -s /opt/sonospy/data/userindex3.ini /opt/sonospy/app/sonospy/userindex3.ini
   ln -s /opt/sonospy/data/userindex3.ini /opt/sonospy/app/userindex3.ini
@@ -15,6 +17,8 @@ post_install() {
 
  echo "Add sonospy path /opt/sonospy/app/* to /usr/local/bin/python script: "
  echo "see https://wiki.archlinux.org/index.php/Python#Dealing_with_version_problem_in_build_scripts"
+ echo "set music library location in /etc/sonospy/sonospy.conf"
+ echo "Sonospy config files are stored in /opt/sonospy/data"
 }
 
 post_upgrade() {

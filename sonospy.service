@@ -12,7 +12,7 @@ Environment="SONOSPY_INI=userindex3.ini"
 EnvironmentFile=-/etc/sonospy/sonospy.conf
 Type=forking
 ExecStart=/opt/sonospy/app/sonospy_proxy -sSonospy=${SERVICE},${SONOSPY_DB},${SONOSPY_INI} -r
-#ExecStop=/opt/sonospy/app/sonospy_stop
+ExecStop=/opt/sonospy/app/sonospy_stop
 
 [Install]
 WantedBy=multi-user.target
