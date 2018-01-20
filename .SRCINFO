@@ -1,0 +1,21 @@
+pkgbase = rox-filer-hugeicons
+	pkgdesc = A fork of rox-filer having 64 - 512px icons
+	pkgver = 2.11.h
+	pkgrel = 1
+	url = https://github.com/jun7/rox-filer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	makedepends = libxslt
+	makedepends = git
+	depends = sh
+	depends = libsm
+	depends = gtk2
+	provides = rox
+	conflicts = rox
+	source = git://github.com/jun7/rox-filer.git#branch=stable
+	md5sums = SKIP
+
+pkgname = rox-filer-hugeicons
+
