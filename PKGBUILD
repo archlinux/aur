@@ -9,7 +9,6 @@ arch=('any')
 url="http://culmus.sourceforge.net"
 license=('GPL2')
 depends=('fontconfig' 'xorg-fonts-alias' 'xorg-font-utils' 'xorg-fonts-encodings')
-install=${pkgname}.install
 source=(
   "http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
   "$pkgname-0.121-fontconfig_fix.patch"
@@ -39,4 +38,7 @@ package() {
   install -d ${pkgdir}/etc/fonts/conf.avail/
   install -m644 ${srcdir}/culmus-$pkgver/culmus.conf \
     ${pkgdir}/etc/fonts/conf.avail/61-culmus.conf
+
+  # symlink for the abovementioned config file
+  ln -fs "../conf.avail/61-culmus.conf" "${pkgdir}/etc/fonts/conf.d"
 }
