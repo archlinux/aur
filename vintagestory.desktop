@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Vintage Story
+Comment=Innovate and explore in a sandbox world
+Icon=/usr/share/pixmaps/vintagestory.xpm
+Exec=mono /usr/share/vintagestory/Vintagestory.exe
+Path=
+NoDisplay=false
+Categories=Game;
+StartupNotify=false
+Terminal=false
