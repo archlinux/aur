@@ -4,12 +4,12 @@
 pkgbase=dakota
 pkgname=dakota
 pkgver=6.7
-pkgrel=1 
+pkgrel=2
 pkgdesc="A flexible, extensible interface between analysis codes and iterative systems analysis methods"
 arch=(i686 x86_64)
 url="https://dakota.sandia.gov/"
 license=('LGPL')
-depends=('boost' 'icu' 'lapack' 'openmotif' 'tinyxml')
+depends=('boost' 'cddlib' 'icu' 'lapack' 'openmotif' 'tinyxml')
 makedepends=('cmake' 'gcc-fortran' 'python2')
 options=(!strip)
 _filename=$pkgname-$pkgver-release-public-src-UI
@@ -39,6 +39,11 @@ package() {
   rm $pkgdir/usr/lib/libtinyxml.so
   rm -rf $pkgdir/usr/examples
   rm $pkgdir/usr/include/menu.h
+  rm $pkgdir/usr/include/cdd.h
+  rm $pkgdir/usr/include/cddmp.h
+  rm $pkgdir/usr/include/cddtypes.h
+  rm $pkgdir/usr/include/setoper.h
+
 }
 
 md5sums=('be1f372e7457281a7aafc887789cb199')
