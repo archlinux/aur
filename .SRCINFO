@@ -1,6 +1,6 @@
 pkgbase = neph-git
 	pkgdesc = A modern command line job processor
-	pkgver = v0.1.17.r0.f968d2a
+	pkgver = v0.1.18.r0.7d31aad
 	pkgrel = 1
 	url = https://tbrand.github.io/neph/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = neph-git
 	makedepends = git
 	makedepends = crystal
 	depends = glibc
+	depends = libyaml
 	provides = neph
 	conflicts = neph
 	source = neph::git+https://github.com/tbrand/neph.git
