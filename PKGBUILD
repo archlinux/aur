@@ -5,15 +5,14 @@ pkgver=0.13
 pkgrel=1
 pkgdesc="various Openbox pipemenus"
 arch=(any)
-url="https://github.com/corenominal/cb-pipemenus"
+url="https://github.com/TamCore/cb-pipemenus"
 depends=('openbox' 'zenity' 'terminator' 'wget' 'compton' 'curl' 'tar' 'python2-paramiko')
 license=('custom')
-source=(https://github.com/corenominal/cb-pipemenus/archive/master.zip)
-sha256sums=('e2cfb418a35d4a5e62455c2beba02c3a312b9b2c7c2b1f8863c554e5a35b7474')
+source=(https://github.com/TamCore/cb-pipemenus/archive/master.zip)
+sha256sums=('885c9c149b821556d9b446cfccb49200523fc404e406d2c0aeb4b88e4b170016')
 
 prepare() {
   cd "${pkgname}-master"
-  sed -i 's/env python$/env python2/' cb-*
 }
 
 package() {
