@@ -1,0 +1,16 @@
+pkgbase = cups-fgl-printers-git
+	pkgdesc = CUPS drivers for FGL-based ticket printers
+	pkgver = r5.ff6abcc
+	pkgrel = 1
+	url = https://github.com/pretix/cups-fgl-printers
+	arch = any
+	license = GPL
+	makedepends = make
+	makedepends = cups
+	depends = python
+	depends = python-pillow
+	source = git+https://github.com/pretix/cups-fgl-printers.git
+	sha256sums = SKIP
+
+pkgname = cups-fgl-printers-git
+
