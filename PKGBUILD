@@ -4,7 +4,7 @@
 pkgbase=linux-clear
 pkgver=4.14.14
 _srpm=511
-pkgrel=1
+pkgrel=2
 _srcname=linux-${pkgver}
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
