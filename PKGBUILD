@@ -13,7 +13,7 @@ _cur_kernel="$(uname -r)"
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=6
+pkgrel=7
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -63,6 +63,8 @@ build() {
 
 package() {
 	cd "$srcdir/drivers/input/mouse"
+
+	_EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 
 	install -D -m 0644 psmouse.ko.gz "$pkgdir/${_EXTRAMODULES}/psmouse.ko.gz"
 
