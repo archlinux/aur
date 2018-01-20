@@ -14,10 +14,13 @@ pkgver=1.0.9
 pkgrel=11
 pkgdesc='easy service handling'
 arch=(any)
-url='http://torben.website/genericServiceHandler'
-license=('CC-BY-3.0')
+url=http://torben.website/genericServiceHandler
+license=(CC-BY-3.0)
+devdepends=(bashlink shellcheck)
 depends=(bash coreutils proxps-ng sed grep util-linux)
-optdepens=('sudo: for root service handling and configured user switching support')
+optdepens=(
+    'sudo: for root service handling and configured user switching support'
+)
 provides=(generic-service-handler)
 source=(genericServiceHandler.sh)
 md5sums=(SKIP)
