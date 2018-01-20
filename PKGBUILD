@@ -1,14 +1,15 @@
+# Michael J. Pento <mjpento@verizon.net>
 # Maintainer: Will Price <willprice94+arch@gmail.com>
 # Contributor: Andrew67 (.desktop file, icon, 64bit compatibility)
 
 pkgname=energia
 pkgver=1.6.10E18
-pkgrel=2
+pkgrel=3
 pkgdesc="Energia is a Arduino IDE clone for use with the MSP430 launchpad"
 arch=('x86_64')
 url="http://energia.nu/"
 license=('GPL')
-depends=(java-environment java-rxtx libusb-compat gcc-libs-multilib)
+depends=('java-environment' 'java-rxtx' 'libusb-compat' 'gcc-libs-multilib')
 provides=('energia')
 # staticlibs keeps all *.a files which are necessary since we bundle a toolchain
 # !strip disable stripping of debug symbols which are useful
@@ -18,7 +19,7 @@ source=('energia.desktop'
         '71-ti-permissions.rules'
         "${pkgname}-${pkgver}.tar.xz::http://energia.nu/downloads/downloadv4.php?file=energia-${pkgver}-linux64.tar.xz")
 md5sums=('a7ce061d9fc0f9530e058204e532b40b'
-         '4d16b78cdc123adeed25600803998ee9'
+         '8633ff7228aed033d9c9befb82581af9'
          'c50e1eb0dfe7c79aa93c13ba7a23aafe')
 
 # Don't compress, takes too long
