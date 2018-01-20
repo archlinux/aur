@@ -1,6 +1,6 @@
 pkgbase = flobby-git
 	pkgdesc = spring lobby client
-	pkgver = 0.2.123.gf207595
+	pkgver = 0.2.131.g708b76c
 	pkgrel = 1
 	url = https://github.com/cleanrock/flobby
 	arch = i686

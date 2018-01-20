@@ -1,6 +1,6 @@
 # Maintainer: Johan Rehnberg <cleanrock@gmail.com>
 pkgname=flobby-git
-pkgver=0.2.123.gf207595
+pkgver=0.2.131.g708b76c
 pkgrel=1
 pkgdesc="spring lobby client"
 arch=('i686' 'x86_64')
@@ -35,17 +35,18 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  mkdir "$srcdir/$_gitname/build"
+  cd "$srcdir/$_gitname/build"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   
   # use this cmake line instead of above to skip building and installing pr-downloader
-  #cmake -DWITH_PRD=OFF -DCMAKE_INSTALL_PREFIX=/usr .
+  #cmake -DWITH_PRD=OFF -DCMAKE_INSTALL_PREFIX=/usr ..
 
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_gitname/build"
   make DESTDIR="$pkgdir/" install
 }
 
