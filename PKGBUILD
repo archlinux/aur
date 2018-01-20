@@ -56,25 +56,13 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # get kernel version
-  #make prepare
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  # ... or manually edit .config
-
-  # rewrite configuration
-  yes "" | make config >/dev/null
+  make ARCH=x86_64 olddefconfig
 }
 
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make ARCH=x86_64 LOCALVERSION= CONFIG_DEBUG_SECTION_MISMATCH=y ${MAKEFLAGS}
 }
 
 _package() {
@@ -133,7 +121,7 @@ _package() {
   sed "${_subst}" ../90-linux.hook |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
   sed "${_subst}" ../99-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"  
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 }
 
 _package-headers() {
