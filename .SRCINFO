@@ -11,6 +11,7 @@ pkgbase = impacket-git
 	depends = python2-pcapy
 	depends = python2-pyasn1
 	depends = python2-pyopenssl
+	depends = python-ldap3
 	provides = impacket=0.9.16.dev
 	conflicts = impacket
 	source = impacket::git+https://github.com/CoreSecurity/impacket

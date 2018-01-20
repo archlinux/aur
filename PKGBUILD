@@ -8,7 +8,7 @@ pkgdesc="Latest Impacket including new features, particularly in the examples sc
 arch=('any')
 url="https://github.com/CoreSecurity/impacket"
 license=('Modified Apache, see LICENSE file')
-depends=('python2-crypto' 'python2-pcapy' 'python2-pyasn1' 'python2-pyopenssl')
+depends=('python2-crypto' 'python2-pcapy' 'python2-pyasn1' 'python2-pyopenssl' 'python-ldap3')
 makedepends=('python2-setuptools')
 
 makedepends+=('git')
