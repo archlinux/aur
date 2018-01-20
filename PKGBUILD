@@ -1,20 +1,49 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
-pkgname='python-codecov'
-pkgver=2.0.10
+_name=codecov
+pkgbase='python-codecov'
+pkgname=('python-codecov' 'python2-codecov')
+pkgver=2.0.14
 pkgrel=1
 pkgdesc="Hosted coverage reports for Github, Bitbucket and Gitlab"
-arch=('x86_64')
+arch=('any')
 url="https://pypi.python.org/pypi/codecov"
-license=('Apache-2.0')
-depends=('python' 'python-requests>=2.7.9' 'python-coverage')
-makedepends=('python-setuptools')
+license=('Apache')
+makedepends=(
+  'python' 'python-setuptools'
+  'python2' 'python2-setuptools')
 checkdepends=('python-unittest2')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/2f/f0/7953d35f10c36488451773fe0c56ec90c8703588b6d134a7434374870583/codecov-${pkgver}.tar.gz")
-md5sums=('751f873eb9427e088e17f41d030fdeee')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/cc/03/c327fbcd736de126e4f2d1eab7a70d0bf9df8089042946fedd652d000239/codecov-2.0.14.tar.gz)
+sha256sums=('ba77d1438683daeae122962776c38fb88c5dc9b12dd0b40b3d1a98fef8219727')
+
+prepare() {
+  cp -a "${_name}"-"${pkgver}"{,-py2}
+}
 
 package() {
-  cd "${srcdir}/codecov-${pkgver}"
+  cd "${srcdir}"/"${_name}"-"${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+build(){
+  cd "${srcdir}"/"${_name}"-"${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
+  python2 setup.py build
+}
+
+package_python2-codecov() {
+  depends=('python2' 'python2-requests' 'python2-coverage')
+
+  cd "${_name}"-"${pkgver}"-py2
+  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+}
+
+package_python-codecov() {
+  depends=('python' 'python-requests' 'python-coverage')
+
+  cd "${_name}"-"${pkgver}"
+  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
 }
