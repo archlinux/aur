@@ -1,7 +1,7 @@
 pkgbase = python-toyplot
 	pkgdesc = A modern Python plotting toolkit supporting electronic publishing and reproducibility
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://toyplot.readthedocs.io/
 	arch = any
 	license = custom:sandia
@@ -17,5 +17,5 @@ pkgname = python-toyplot
 	depends = python
 
 pkgname = python2-toyplot
-	depends = python
+	depends = python2
 
