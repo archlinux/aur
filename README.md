@@ -1,5 +1,4 @@
 ## Command line stock and cryptocurrency portfolio tracker.
-##### Information is taken from IEX, Alpha Vantage, web API.
 #### How to install:
 ```bash
 $ git clone https://github.com/aokellermann/tick.git
@@ -41,9 +40,14 @@ securities may take up to 10 seconds each. This is due to Alpha Vantage's
 relatively slow API. NYSE and NASDAQ listed stocks and ETFs, as well as cryptocurrencies
 should take less than one second to print each.
 
-Once installed, you may read the man page for more information. Prices are
-taken from IEX, Alpha Vantage, and Coinmarketcap's web APIs.
+Once installed, you may read the man page for more information.
 
+#### License
+MIT License
+
+Stock information is taken from IEX's free API. Mutual fund and over-the-counter information is taken from Alpha Vantage's
+free API. Cryptocurrency information is taken from Coinmarketcap's free API. Please do not abuse the APIs by repeatedly requesting
+information. Read the provided license for more information.
 #### Future Ideas
 * Command to get info about a security
 * More robust information in "check"
