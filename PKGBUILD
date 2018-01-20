@@ -1,8 +1,8 @@
 # Maintainer: copygirl <copygirl@mcft.net>
 pkgname=vintagestory
 pkgver=1.4.9.3
-pkgrel=1
-pkgdesc="Vintage Story"
+pkgrel=2
+pkgdesc="An in-development indie sandbox game about innovation and exploration"
 arch=("any")
 url="https://www.vintagestory.at/"
 license=("custom")
