@@ -2,12 +2,12 @@
 
 pkgname=xcursor-pixelfun
 pkgver=3.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Minimalistic cursor theme with a piece of old-school"
 arch=('any')
 url="https://www.gnome-look.org/p/999913/"
 license=('GPL')
-source=(https://dl.opendesktop.org/api/files/downloadfile/id/1461762510/s/303fce4eb9bbfc9b81e7796100813e30/t/1516313549/u//168338-pixelfun3.tar.gz)
+source=(https://kycok.sknt.ru/nextcloud/index.php/s/YcyY2upNqQNVwsr/download)
 sha1sums=('d6c226831bfd11669a8ef18040d5b9cb4c0015a8')
 
 build() {
