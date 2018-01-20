@@ -1,10 +1,11 @@
 pkgname=raiblocks-git
-pkgver=9.0.r87.g52e0ef67
+pkgver=9.0.r136.g92169180
 pkgrel=1
 pkgdesc="RaiBlocks is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
 url="http://raiblocks.com/"
 license=('BSD 2-clause')
+makedepends=('cmake')
 depends=('qt5-base'  'boost>=1.66.0' 'boost-libs>=1.66.0')
 provides=(raiblocks)
 install=install
