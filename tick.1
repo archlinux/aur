@@ -1,4 +1,4 @@
-.TH TICK "1" "January 2018" "Tick 1.1.0" "User Commands"
+.TH TICK "1" "January 2018" "Tick 1.2.0" "User Commands"
 
 .SH NAME
 Tick - Command line stock price tracker.
@@ -13,8 +13,14 @@ Create your portfolio by adding your current holdings. Then, you can use the bui
 Portfolio:
 
 .TP
-[add/rm/set] [symbol] [quantity of shares] [USD spent]
-Either adds, removes, or sets the amount of the given stock with respect to the given values. The parameter add will add your input to the current portfolio, rm will subtract from your current portfolio, and set will set your portfolio to the input, discarding any existing data about that stock. Trading fees should be factored into "USD SPENT".
+[add/rm/set] [symbol/USD$] [quantity of shares] [USD spent]
+Either adds, removes, or sets the amount of the given stock with respect to the given values. The parameter add will add your
+input to the current portfolio, rm will subtract from your current portfolio, and set will set your portfolio to the input,
+discarding any existing data about that stock. Trading fees should be factored into "USD SPENT". "Symbol" may also be input
+as "USD$" for US Dollars. This is good for keeping track of how much money is unallocated in your brokerage account. Typically,
+your initial amount of USD can be added as "tick add USD$ [amount] [amount]", where [amount] is the same number. When you are
+paid dividends or capital gains that are not reinvested into a specific security, you should update your portfolio with
+"tick add USD$ [dividend/capital gain amount] 0".
 
 .TP
 [check] [currency name/all]

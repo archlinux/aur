@@ -8,7 +8,7 @@ void portfolio_file_init() {
     portfolio_file = path;
 }
 
-void portfolio_modify(char* ticker_name_string, double quantity_shares, double usd_spent, FILE* fp, int option){
+void portfolio_modify(char* ticker_name_string, double quantity_shares, double usd_spent, FILE* fp, int option) {
     if (portfolio_contains(ticker_name_string, fp)) {
         long position = ftell(fp);
         fseek(fp, 0, SEEK_END);
@@ -62,8 +62,10 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
         free(end);
         fclose(fp);
     } else {
-        if (api_get_current_price(ticker_name_string) == -1)
+        if (api_get_current_price(ticker_name_string) == -1 && strcmp("USD$", ticker_name_string) != 0) {
+            printf("Invalid symbol.\n");
             return;
+        }
         if (option == REMOVE) {
             printf("You don't have any %s to remove!\n", ticker_name_string);
             return;
@@ -124,22 +126,21 @@ void portfolio_print_all(FILE* fp) {
     free(ticker_name_string);
 }
 
-double* portfolio_print_stock(char* ticker_name_string, FILE* fp){
+double* portfolio_print_stock(char* ticker_name_string, FILE* fp) {
     double* a = malloc(sizeof(double) * 2);
-    if (portfolio_get_usd_spent(ticker_name_string, fp)) {
-        a[0] = portfolio_get_quantity_shares(ticker_name_string, fp);
-        a[1] = portfolio_get_usd_spent(ticker_name_string, fp);
-        if (a[0] == 0)
-            printf("Your portfolio does not contain %s\n", ticker_name_string);
-        else {
-            double ticker_price_usd = api_get_current_price(ticker_name_string);
-            a[0] *= ticker_price_usd;
-            printf("%8.2lf %5s. Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %6.2lf (%4.2lf%%)\n",
-                   a[0] / ticker_price_usd, ticker_name_string, a[0], a[1], a[0] - a[1], (100 * (a[0] - a[1])) / a[1]);
-        }
-    } else{
+    a[0] = portfolio_get_quantity_shares(ticker_name_string, fp);
+    a[1] = portfolio_get_usd_spent(ticker_name_string, fp);
+    if (a[0] == 0 && a[1] == 0) {
         free(a);
-        return NULL;
+        a = NULL;
+    } else {
+        double ticker_price_usd = 1;
+        if (strcmp(ticker_name_string, "USD$") != 0) {
+            ticker_price_usd = api_get_current_price(ticker_name_string);
+            a[0] *= ticker_price_usd;
+        }
+        printf("%8.2lf %5s. Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %6.2lf (%4.2lf%%)\n",
+               a[0] / ticker_price_usd, ticker_name_string, a[0], a[1], a[0] - a[1], (100 * (a[0] - a[1])) / a[1]);
     }
     return a;
 }
