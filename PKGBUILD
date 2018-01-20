@@ -13,7 +13,7 @@ _cur_kernel="$(uname -r)"
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=5
+pkgrel=6
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -33,6 +33,10 @@ sha256sums=('91a0c1c59e0365155f9bd9ce147b954a95c97c2b921f96365c40562088a85792'
             '9593921667ac355a677d65840edfa18961b708995e11192dd569ead7b3363b2d')
 
 build() {
+
+    msg2 "Try to detect extramodules directory for current kernel"
+	_EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
+	msg2 "Module will be installed to: $_EXTRAMODULES"
 
 	msg2 "Getting source from $_gitroot"
 	cd "$srcdir"
@@ -60,16 +64,9 @@ build() {
 package() {
 	cd "$srcdir/drivers/input/mouse"
 
-	# determin dir name in /usr/lib/modules/
+	install -D -m 0644 psmouse.ko.gz "$pkgdir/${_EXTRAMODULES}/psmouse.ko.gz"
 
-	_EXTRAMODULES=$(ls /usr/lib/modules | grep extra)
-
-	# for lts or ARCH kernel you can make like this (if it not only one):
-	#_EXTRAMODULES=$(ls /usr/lib/modules | grep extra |grep lts)
-	#_EXTRAMODULES=$(ls /usr/lib/modules | grep extra |grep ARCH)
-
-	install -D -m 0644 psmouse.ko.gz "$pkgdir/usr/lib/modules/${_EXTRAMODULES}/psmouse.ko.gz"
-
-	# if you have not one kernel installed, you should change install string for EXTRAMODULES manualy:
+	# if you have not one kernel installed and _EXTRAMODULES not proper detected:
+	# you should change install string for EXTRAMODULES manualy:
 	# install -D -m 0644 psmouse.ko.gz "$pkgdir/usr/lib/modules/{YOUR_EXTRAMODULES_DIR}/psmouse.ko.gz"
 }
