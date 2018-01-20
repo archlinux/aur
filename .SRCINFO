@@ -8,8 +8,8 @@ pkgbase = matcha-gtk-theme
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = gtk3
-	source = matcha-gtk-theme-3.3.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1516445437/s/42a24031969957e87068a379697f5425/t/1516464558/Matcha.tar.xz
-	source = matcha-gtk-theme-dark-3.3.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1516445440/s/42a24031969957e87068a379697f5425/t/1516464558/Matcha-dark.tar.xz
+	source = matcha-gtk-theme-3.3.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1516445437/s/6baa6f8e4adefe4e75723ecaf7640583/t/1516464575/Matcha.tar.xz
+	source = matcha-gtk-theme-dark-3.3.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1516445440/s/6baa6f8e4adefe4e75723ecaf7640583/t/1516464575/Matcha-dark.tar.xz
 	sha256sums = d206efd1f5a49cd00034af7f96fe7a9e55a309b93d618a81b6f87df28514dab5
 	sha256sums = be6a63526e9d687e4f5e1c4dd7c4c4c64c6c5cc6677dfe7405f4c7dff6a8283d
 
