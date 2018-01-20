@@ -9,12 +9,12 @@ url="http://catacombsnatch.net/"
 license=('custom')
 depends=('java-runtime' 'xorg-server-utils' 'openal')
 source=(catacomb-snatch.jar::http://ci.catacombsnatch.net/job/Catacomb-Snatch/${pkgrel}/artifact/build/libs/Catacomb-Snatch-${pkgver}-BETA.jar
-        catacomb-snatch.png::https://raw.github.com/Maescool/Catacomb-Snatch/develop/res/art/icon/icon64.png
+        catacomb-snatch.png::https://github.com/Maescool/Catacomb-Snatch/blob/develop/src/main/resources/art/icon/icon64.png
         catacomb-snatch.desktop
         catacomb-snatch
         LICENSE::https://raw.github.com/Maescool/Catacomb-Snatch/develop/LICENSE)
 md5sums=('ecf29c4d44a8593b543170d21dd6ef56'
-         'a1654d780d1a5d838b30cffc41b48450'
+         '0a4a3647c4ec422a536e0867c296b42e'
          '040847ddc7698129b98d302075adc8f9'
          '9c26092103b98564f9127936faf72fdb'
          '2abf3da47075351544e764f3b4c89317')
