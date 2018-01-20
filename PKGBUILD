@@ -2,11 +2,11 @@
 
 _plug=fft3dfilter
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r22.b023e21
+pkgver=r69.9050e69
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='https://github.com/VFR-maniac/VapourSynth-FFT3DFilter'
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?t=175199'
 license=('GPL')
 depends=('vapoursynth'
          'fftw'
@@ -14,12 +14,8 @@ depends=('vapoursynth'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/VFR-maniac/VapourSynth-FFT3DFilter.git"
-        '3.patch'
-        )
-sha1sums=('SKIP'
-          'f73fd4fbadac6fc0f4a346750af66ce59caeac75'
-          )
+source=("${_plug}::git+https://github.com/myrsloik/VapourSynth-FFT3DFilter.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -28,22 +24,21 @@ pkgver() {
 }
 
 prepare() {
-  rm -fr "${_plug}/VapourSynth.h"
-
   cd "${_plug}"
-  patch -p1 -i "${srcdir}/3.patch"
+  mkdir -p build
+
+  sed 's|fftw3f_threads|fftw3f|g' -i meson.build
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
-    --prefix=/usr \
-    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
-    --extra-ldflags="${LDFLAGS}"
-  make
+  cd "${_plug}/build"
+  CXXFLAGS+=" -lfftw3f_threads"
+  meson .. --prefix=/usr
+  ninja
 }
 
 package(){
-  make -C "${_plug}" DESTDIR="${pkgdir}" install
+  cd "${_plug}/build"
+  DESTDIR="${pkgdir}" ninja install
 #   install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
