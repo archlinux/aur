@@ -1,0 +1,21 @@
+pkgbase = python-toyplot
+	pkgdesc = A modern Python plotting toolkit supporting electronic publishing and reproducibility
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = http://toyplot.readthedocs.io/
+	arch = any
+	license = custom:sandia
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-toyplot-0.16.0.tar.gz::https://github.com/eaton-lab/toyplot/archive/0.16.0.tar.gz
+	sha256sums = fc181b875ce6bd36c2e8ba79f5c409500a8f7d1f82ac36bf36fa3f3d6b578f3a
+
+pkgname = python-toyplot
+	depends = python
+
+pkgname = python2-toyplot
+	depends = python
+
