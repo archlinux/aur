@@ -1,0 +1,6 @@
+*.swp
+
+# makepkg
+pkg/
+src
+*.pkg.tar.xz
