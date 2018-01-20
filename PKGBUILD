@@ -4,7 +4,7 @@ pkgname=lesspass-desktop-git
 _gitname=desktop
 pkgver=r60.dff0326
 pkgrel=1
-pkgdesc="Lesspass - desktop version"
+pkgdesc="LessPass - desktop version"
 arch=('any')
 url="https://github.com/lesspass/desktop.git"
 license=('GPL3')
@@ -17,7 +17,7 @@ source=("git://github.com/lesspass/desktop.git"
 	"lesspass-desktop.desktop"
 	"lesspass.sh")
 sha256sums=("SKIP"
-	"da822ae7f5ed272bb3d92c6da49572ee8740a19889f798f74778d44d7a70ab96"
+	"5b7fe2b9640d2b623cb58bfcf97d1f8566d7297238234b1b02a3353bd43f8fa8"
 	"83b2ea4e48956b4f04984442161e236feb9e3e2f1801061dcbaeef9c9c06d445")
 
 pkgver() {
