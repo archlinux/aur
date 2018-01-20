@@ -1,22 +1,37 @@
 pkgbase = python-gffutils
-	pkgdesc = GFF and GTF file manipulation and interconversion
+	pkgdesc = GFF and GTF file manipulation and interconversion in Python
 	pkgver = 0.9
-	pkgrel = 1
-	url = https://github.com/daler/gffutils
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/gffutils
 	arch = any
 	license = MIT
+	makedepends = python
 	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-gffutils-0.9.tar.gz::https://pypi.python.org/packages/b4/ea/54ca403a8d471849606fb432b9afcf73c8c5105ea2dd87b8d38bd5217c5a/gffutils-0.9.tar.gz
+	sha256sums = e1b0bf2b422ec3491be13d77bf7baf71d274abd844e8f8b6c1217a95b236218b
+
+pkgname = python-gffutils
 	depends = python
 	depends = python-argcomplete
 	depends = python-argh
 	depends = python-pyfaidx
 	depends = python-simplejson
 	depends = python-six
-	optdepends = python-biopython: for sequence manipulation
 	optdepends = bedtools: for genomic interval arithemtic
+	optdepends = python-biopython: for sequence manipulation
 	optdepends = python-pybedtools: wrapper for bedtools
-	source = https://github.com/daler/gffutils/archive/v0.9.tar.gz
-	md5sums = 819e44d2995175d6b0e575ecf07fc50f
 
-pkgname = python-gffutils
+pkgname = python2-gffutils
+	depends = python2
+	depends = python2-argcomplete
+	depends = python2-argh
+	depends = python2-pyfaidx
+	depends = python2-simplejson
+	depends = python2-six
+	optdepends = bedtools: for genomic interval arithemtic
+	optdepends = python2-biopython: for sequence manipulation
+	optdepends = python2-pybedtools: wrapper for bedtools
 
