@@ -1,0 +1,10 @@
+
+post_install() {
+  echo "=> To make TiMidity++ or WildMidi use the FreePats patches, copy"
+  echo "   /usr/share/freepats/timidity-freepats.cfg to /etc/timidity++/timidity.cfg"
+  echo "   or /usr/share/freepats/wildmidi-freepats.cfg to /etc/wildmidi/wildmidi.cfg"
+}
+
+post_upgrade() {
+  post_install
+}
