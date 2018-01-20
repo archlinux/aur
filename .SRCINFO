@@ -1,4 +1,4 @@
-pkgbase = mosdepth
+pkgbase = mosdepth-bin
 	pkgdesc = Fast BAM/CRAM depth calculation for WGS, exome, or targeted sequencing
 	pkgver = 0.2.1
 	pkgrel = 2
@@ -12,5 +12,5 @@ pkgbase = mosdepth
 	sha256sums = 6e3dbd2ac93ee9e770f922de4b1641882558e1e70cf2168e509c6bc07d9486e7
 	sha256sums = 7aadd0f322a50723a5b396cfe8eb640728be03918a8d41b5a8ab1ba4943c26c6
 
-pkgname = mosdepth
+pkgname = mosdepth-bin
 
