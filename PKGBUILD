@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('git' 'cmake>=3.1.0')
 conflicts=('xlnt')
 provides=('xlnt')
-source=("git://github.com/tfussell/xlnt.git")
+source=('git://github.com/tfussell/xlnt.git')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -21,6 +21,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  sed -e 's/DengXian Light/\\xe5\\xae\\x8b\\xe4\\xbd\\x93/' -e 's/DengXian/\\xe5\\xae\\x8b\\xe4\\xbd\\x93/' -i  xlnt/source/detail/serialization/xlsx_producer.cpp
 }
 
 build() {
