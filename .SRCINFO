@@ -1,0 +1,18 @@
+pkgbase = cups-pdf-to-pdf-git
+	pkgdesc = CUPS-PDF v3 with text print support
+	pkgver = 3.0.1_r7.63ab5e7
+	pkgrel = 1
+	url = https://github.com/alexivkin/CUPS-PDF-to-PDF
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = cups
+	depends = ghostscript
+	provides = cups-pdf=3.0.1_r7.63ab5e7
+	conflicts = cups-pdf
+	backup = etc/cups/cups-pdf.conf
+	source = cups-pdf-to-pdf-git::git+https://github.com/alexivkin/CUPS-PDF-to-PDF
+	md5sums = SKIP
+
+pkgname = cups-pdf-to-pdf-git
+
