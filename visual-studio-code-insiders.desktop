@@ -7,5 +7,5 @@ Name=Visual Studio Code Insiders
 Comment=Editor for building and debugging modern web and cloud applications
 Categories=Development;WebDevelopment;IDE;Utility;TextEditor;
 StartupNotify=true
-StartupWMClass=code
+StartupWMClass=code - insiders
 Name[en_US]=Visual Studio Code Insiders

@@ -16,9 +16,9 @@ source_i686=(code_ia32_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net
               ${pkgname}.desktop
               )
 sha256sums_x86_64=('SKIP'
-                   '117924d685c4332d89e117481e14e432646c17e80b54baff1477fb967295b2b7')
+                   'd1e09a7fd4f877485fc584c798b8f9ac953a97662562540b9b5009c86f1b3')
 sha256sums_i686=('SKIP'
-                 '117924d685c4332d89e117481e14e432646c17e80b54baff1477fb967295b2b7')
+                 '21ad1e09a7fd4f877485fc584c798b8f9ac953a97662562540b9b5009c86f1b3')
 pkgver() {
     if [ "${CARCH}" = "x86_64" ]; then
         IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://vscode-update.azurewebsites.net/latest/linux-x64/insider); echo "${ADDR[5]}" | sed 's/code-insider-//g' | sed 's/_amd64.tar.gz//g' | sed 's/-/./g'
