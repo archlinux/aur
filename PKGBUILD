@@ -25,19 +25,19 @@ build() {
 
 package() {
   # install Type1 fonts
-  install -d ${pkgdir}/usr/share/fonts/Type1
-  install -m644 ${srcdir}/culmus-$pkgver/*.{afm,pfa} \
-    ${pkgdir}/usr/share/fonts/Type1
+  install -d "${pkgdir}/usr/share/fonts/Type1"
+  install -m644 "${srcdir}/culmus-$pkgver/"*.{afm,pfa} \
+    "${pkgdir}/usr/share/fonts/Type1"
 
   # install ttf fonts
-  install -d ${pkgdir}/usr/share/fonts/TTF
-  install -m644 ${srcdir}/culmus-$pkgver/*.ttf \
-    ${pkgdir}/usr/share/fonts/TTF
+  install -d "${pkgdir}/usr/share/fonts/TTF"
+  install -m644 "${srcdir}/culmus-${pkgver}/"*.ttf \
+    "${pkgdir}/usr/share/fonts/TTF"
 
   # install provided config file with priority 61
-  install -d ${pkgdir}/etc/fonts/conf.avail/
-  install -m644 ${srcdir}/culmus-$pkgver/culmus.conf \
-    ${pkgdir}/etc/fonts/conf.avail/61-culmus.conf
+  install -d "${pkgdir}/etc/fonts/conf.avail/"
+  install -m644 "${srcdir}/culmus-${pkgver}/culmus.conf" \
+    "${pkgdir}/etc/fonts/conf.avail/61-culmus.conf"
 
   # symlink for the abovementioned config file
   ln -fs "../conf.avail/61-culmus.conf" "${pkgdir}/etc/fonts/conf.d"
