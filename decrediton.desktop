@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Decrediton
+Exec=decrediton %f
+Icon=decrediton
+Comment=Decrediton is a cross-platform GUI for decred written in node.js using Electron.
+Categories=Utility;
+Terminal=false
+StartupNotify=true
