@@ -1,4 +1,4 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Josia Roßkopf <josia-login@rosskopfs.de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 
