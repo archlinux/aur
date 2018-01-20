@@ -11,7 +11,7 @@ optdepends=('gnupg: for GPG'
             'pam_u2f-git: for U2F (use patched version!)')
 install=yubikey-touch-detector.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/maximbaz/yubikey-touch-detector/releases/download/$pkgver/$pkgname-src.tar.gz"
-        "$pkgname-$pkgver.tar.gz::https://github.com/maximbaz/yubikey-touch-detector/releases/download/$pkgver/$pkgname-src.tar.gz.sig"
+        "$pkgname-$pkgver.tar.gz.sig::https://github.com/maximbaz/yubikey-touch-detector/releases/download/$pkgver/$pkgname-src.tar.gz.sig"
         'PKGBUILD.sig')
 sha256sums=('29954e91d3b2fb97ed6528e3fa08acf62ec6b9b9caaea01d9bfe8cf6e7c34295'
             'SKIP'
