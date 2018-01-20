@@ -47,7 +47,7 @@ prepare()
 
 build()
 {
-# 	GL=gl2
+# 	GL=gl1
 # 	GL=gles2
 	cd $srcdir/NFSIISE
 	./compile_nfs $COMPILE_ARG $GL
