@@ -1,21 +1,50 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
-pkgname='python-fastcluster'
+_name=fastcluster
+pkgbase='python-fastcluster'
+pkgname=('python-fastcluster' 'python2-fastcluster')
 pkgver=1.1.24
-pkgrel=1
-pkgdesc="Fast hierarchical clustering routines for R and Python."
+pkgrel=2
+pkgdesc="Fast hierarchical clustering routines for R and Python"
 arch=('any')
 url="https://pypi.python.org/pypi/fastcluster"
 license=('BSD')
-depends=('python' 'python-numpy>=1.9.2')
-makedepends=('python-setuptools')
-provides=('python-fastcluster')
-conflicts=('python-fastcluster')
+makedepends=(
+  'python' 'python-setuptools'
+  'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/1e/00/9910dd324f32582051d0ee6922c3cd4727234aae96366f3867c46a70cd78/fastcluster-${pkgver}.tar.gz")
-md5sums=('e71235732f43f5f19d71cfaf3b45ff0c')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/1e/00/9910dd324f32582051d0ee6922c3cd4727234aae96366f3867c46a70cd78/fastcluster-1.1.24.tar.gz)
+sha256sums=('a5d1922b1db6f4c3012416e7dc14de2984b9335a48c895e1698afd5c718312b0')
+
+prepare() {
+  cp -a "${_name}"-"${pkgver}"{,-py2}
+}
 
 package() {
-  cd "${srcdir}/fastcluster-${pkgver}"
+  cd "${srcdir}"/"${_name}"-"${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+build(){
+  cd "${srcdir}"/"${_name}"-"${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
+  python2 setup.py build
+}
+
+package_python2-fastcluster() {
+  depends=('python2' 'python2-numpy')
+
+  cd "${_name}"-"${pkgver}"-py2
+  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm644 COPYING.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
+}
+
+package_python-fastcluster() {
+  depends=('python' 'python-numpy')
+
+  cd "${_name}"-"${pkgver}"
+  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm644 COPYING.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
 }
