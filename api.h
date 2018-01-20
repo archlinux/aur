@@ -66,6 +66,9 @@ double iex_get_current_price(char* ticker_name_string);
  */
 double alphavantage_get_current_price(char* ticker_name_string);
 
+
+double coinmarketcap_get_current_price(char* ticker_name_string);
+
 /**
  * Destroys STRING object and frees memory
  * @param phString the String to destroy

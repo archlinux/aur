@@ -1,30 +1,32 @@
-.TH TICK "1" "January 2018" "Tick 1.2.0" "User Commands"
+.TH TICK "1" "January 2018" "Tick 1.3.0" "User Commands"
 
 .SH NAME
-Tick - Command line stock price tracker.
+Tick - Command line stock and cryptocurrency portfolio tracker.
 
 .SH SYNOPSIS
 tick [OPTION]...
 
 .SH DESCRIPTION
-Create your portfolio by adding your current holdings. Then, you can use the built in functions to get information on the current price. Stock information taken from IEX and Alpha Vantage's free API.
+Create your portfolio by adding your current holdings. Then, use the option "check" to get information on the current price.
 
 .SS
 Portfolio:
 
 .TP
-[add/rm/set] [symbol/USD$] [quantity of shares] [USD spent]
-Either adds, removes, or sets the amount of the given stock with respect to the given values. The parameter add will add your
-input to the current portfolio, rm will subtract from your current portfolio, and set will set your portfolio to the input,
-discarding any existing data about that stock. Trading fees should be factored into "USD SPENT". "Symbol" may also be input
-as "USD$" for US Dollars. This is good for keeping track of how much money is unallocated in your brokerage account. Typically,
-your initial amount of USD can be added as "tick add USD$ [amount] [amount]", where [amount] is the same number. When you are
-paid dividends or capital gains that are not reinvested into a specific security, you should update your portfolio with
-"tick add USD$ [dividend/capital gain amount] 0".
+[add/rm/set] [symbol/crypto_id/USD$] [quantity of shares] [USD spent]
+Either adds, removes, or sets the amount of the given stock with respect to the given values. The parameter "add" will add
+your input to the current portfolio, "rm" will subtract from your current portfolio, and "set" will set your portfolio to
+the input, discarding any existing data about that security. Trading fees should be factored into "USD SPENT". As an exception,
+cryptocurrencies must be specified by their name (e.g. "ripple", instead of "xrp"), due to duplicate tickers in both the
+US stock market and the cryptocurrency market. You may also input as "usd$" for US Dollars. This is helpful for keeping
+track of how much money is unallocated in your brokerage account. Typically, your initial amount of USD can be added as
+"tick add USD$ [amount] [amount]", where [amount] is the same number. When you are paid dividends or capital gains that
+are not reinvested into a specific security, you should update your portfolio with "tick add USD$ [dividend/capital gain amount] 0".
 
 .TP
-[check] [currency name/all]
-Prints information about your current portfolio holdings. Either a symbol or the keyword 'all' can be used. The keyword 'all' will print information about all your current holdings, as well as a grand total.
+[check] [currency name/crypto_id/all]
+Prints information about your current portfolio holdings. Either a symbol or the keyword 'all' can be used. The keyword "all"
+will print information about all your current holdings, as well as a grand total.
 
 .SH FILES
 .I ~/.tick_portfolio
@@ -36,3 +38,10 @@ Please report any bugs using the GitHub issue tracker: https://github.com/aokell
 
 .SH AUTHORS
 Antony Kellermann -- https://github.com/aokellermann
+
+.SH LICENSE
+MIT License
+
+Stock information is taken from IEX's free API. Mutual fund and over-the-counter information is taken from Alpha Vantage's
+free API. Cryptocurrency information is taken from Coinmarketcap's free API. Please do not abuse the APIs by repeatedly requesting
+information. Read the provided license for more information.

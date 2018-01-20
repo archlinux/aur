@@ -56,6 +56,9 @@ double api_get_current_price(char* ticker_name_string) {
     val = alphavantage_get_current_price(ticker_name_string);
     if (val != -1)
         return val;
+    val = coinmarketcap_get_current_price(ticker_name_string);
+    if (val != -1)
+        return val;
     return -1;
 }
 
@@ -106,6 +109,31 @@ double alphavantage_get_current_price(char* ticker_name_string) {
     for (int j = 0; pString->data[i] != ','; i++, j++)
         price_string[j] = pString->data[i];
     free(alphavantage_api_string);
+    double ret = strtod(price_string, NULL);
+    free(price_string);
+    api_string_destroy(&pString);
+    return ret;
+}
+
+double coinmarketcap_get_current_price(char* ticker_name_string) {
+    char* cmc_str = "https://api.coinmarketcap.com/v1/ticker/";
+    char* coinmarketcap_api_string = calloc(64, sizeof(char));
+    memcpy(coinmarketcap_api_string, cmc_str, 40);
+    memcpy(&coinmarketcap_api_string[40], ticker_name_string, 20);
+    String* pString = api_curl_data(coinmarketcap_api_string);
+    if (pString->data[0] == '{'){
+        free(coinmarketcap_api_string);
+        api_string_destroy(&pString);
+        return -1;
+    }
+    int i = 0;
+    for (int j = 0; j < 19; i++, j++)
+        while (pString->data[i] != '"')
+            i++;
+    char* price_string = (char*)calloc(16, 1);
+    for (int j = 0; pString->data[i] != '"'; i++, j++)
+        price_string[j] = pString->data[i];
+    free(coinmarketcap_api_string);
     double ret = strtod(price_string, NULL);
     free(price_string);
     api_string_destroy(&pString);
