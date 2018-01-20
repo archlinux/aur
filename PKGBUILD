@@ -37,7 +37,7 @@ build() {
 
   install -m755 -d "$srcdir"/tmp "$srcdir"/tmp/env "$srcdir"/tmp/local
   msg "Running GOG installer (Don't customize or launch game)"
-  wine "${srcdir}/setup_homm_3_complete_${pkgver}.exe"
+  wine "${srcdir}/setup_homm3_complete_${pkgver}.exe"
   # Unfortunately, /verysilent doesn't work
   # messagebox from showing up and blocking. Manual intervention is required
 #  msg "Installing HD patch"
