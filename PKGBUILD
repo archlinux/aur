@@ -3,12 +3,13 @@
 pkgname=cdo
 pkgver=1.9.2
 fileID=16035
-pkgrel=0
+pkgrel=1
 pkgdesc="Command line tool manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. There are more than 400 operators available."
 url="https://code.zmaw.de/projects/cdo"
 license=('GPLv2')
-depends=('netcdf' 'hdf5' 'proj' 'szip' 'eccodes' 'udunits' 'fftw' 'curl' 'jasper' 'magics++')
-makedepends=('netcdf' 'hdf5' 'proj' 'szip' 'eccodes' 'udunits' 'fftw' 'curl' 'jasper' 'magics++')
+depends=('netcdf' 'hdf5' 'proj' 'libaec' 'eccodes' 'udunits' 'fftw' 'curl' 'jasper' 'magics++')
+makedepends=('netcdf' 'hdf5' 'proj' 'libaec' 'eccodes' 'udunits' 'fftw' 'curl' 'jasper' 'magics++')
+:q
 provides=()
 conflicts=()
 replaces=()
