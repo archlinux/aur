@@ -4,7 +4,7 @@ _name=gffutils
 pkgbase='python-gffutils'
 pkgname=('python-gffutils' 'python2-gffutils')
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="GFF and GTF file manipulation and interconversion in Python"
 arch=('any')
 url="https://pypi.python.org/pypi/gffutils"
@@ -48,7 +48,7 @@ package_python2-gffutils() {
 
   cd "${_name}"-"${pkgver}"-py2
   python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   mv "${pkgdir}"/usr/bin/"${_name}"-cli "${pkgdir}"/usr/bin/"${_name}"-cli2
 }
@@ -68,5 +68,5 @@ package_python-gffutils() {
 
   cd "${_name}"-"${pkgver}"
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }

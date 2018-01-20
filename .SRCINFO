@@ -1,7 +1,7 @@
 pkgbase = python-gffutils
 	pkgdesc = GFF and GTF file manipulation and interconversion in Python
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/gffutils
 	arch = any
 	license = MIT
