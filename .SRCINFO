@@ -1,0 +1,16 @@
+pkgbase = unimatrix-git
+	pkgdesc = Python script to simulate the display from "The Matrix" in terminal. Uses half-width katakana unicode characters by default, but can use custom character sets.
+	pkgver = r30.3692561
+	pkgrel = 1
+	url = https://github.com/will8211/unimatrix
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	provides = unimatrix
+	conflicts = unimatrix
+	source = unimatrix-git::git+https://github.com/will8211/unimatrix.git
+	sha256sums = SKIP
+
+pkgname = unimatrix-git
+
