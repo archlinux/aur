@@ -16,11 +16,12 @@ pkgdesc='a high reliable bash library'
 arch=(any)
 url=http://torben.website/bashlink
 license=(CC-BY-3.0)
-devdepends=('shellcheck: to check source code syntax quality')
+devdepends=(shellcheck)
 depends=()
 optdepends=(
     'pv: for advanced filesystem operations and process visualisation'
 )
+provides=(bashlink-doctest bashlink-document)
 source=(
     arguments.sh
     array.sh
@@ -72,7 +73,11 @@ md5sums=(
 copy_to_aur=true
 
 package() {
-    install -D --mode 755 "${srcdir}/"* "${pkgdir}/usr/bin/bashlink/"
+    install -D --mode 644 "${srcdir}/"* "${pkgdir}/usr/bin/bashlink/"
+    install -D --mode 755 "${srcdir}/doctest.sh" "${pkgdir}/usr/bin/bashlink/"
+    install -D --mode 755 "${srcdir}/documentation.sh" "${pkgdir}/usr/bin/bashlink/"
+    ln --symbolic bashlink/doctest.sh /usr/bin/bashlink-doctest
+    ln --symbolic bashlink/documentation.sh /usr/bin/bashlink-document
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
