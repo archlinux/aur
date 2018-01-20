@@ -1,6 +1,6 @@
 pkgbase = brewstillery
 	pkgdesc = BrewStillery is a brewer's, vintner's, and distiller's calculator. It has a multitude of great functions, such as calculating ABV, determining carbonation, and total sparge water needed.
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://monkeylog.in
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = brewstillery
 	depends = ttf-roboto
 	provides = brewstillery
 	conflicts = brewstillery
-	source = https://github.com/MonkeyLog/BrewStillery/archive/5.3.0.tar.gz
-	md5sums = 4ac6d984c85aad9dc30841f4920ad37d
+	source = https://github.com/MonkeyLog/BrewStillery/archive/5.3.1.tar.gz
+	md5sums = fd994a52d6fdf5aee2af89fff9bcab87
 
 pkgname = brewstillery
 
