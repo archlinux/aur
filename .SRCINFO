@@ -1,7 +1,7 @@
 pkgbase = python-toytree
 	pkgdesc = A minimalist Python tree plotting library using toyplot graphs
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://toytree.readthedocs.io/
 	arch = any
 	license = GPL3
@@ -19,7 +19,7 @@ pkgname = python-toytree
 	depends = python-toyplot
 
 pkgname = python2-toytree
-	depends = python
-	depends = python-numpy
-	depends = python-toyplot
+	depends = python2
+	depends = python2-numpy
+	depends = python2-toyplot
 

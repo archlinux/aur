@@ -3,7 +3,7 @@
 pkgbase='python-toytree'
 pkgname=('python-toytree' 'python2-toytree')
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist Python tree plotting library using toyplot graphs"
 arch=('any')
 url="http://toytree.readthedocs.io/"
@@ -33,7 +33,7 @@ build(){
 }
 
 package_python2-toytree() {
-  depends=('python' 'python-numpy' 'python-toyplot')
+  depends=('python2' 'python2-numpy' 'python2-toyplot')
 
   cd toytree-"${pkgver}"-py2
   python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
