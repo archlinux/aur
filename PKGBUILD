@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=65.0.3322.3
-pkgrel=2
+pkgrel=3
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -146,7 +146,7 @@ sha256sums=('b43070ce9edee64667022ae4eabf8929f3e713f9eead3ba092545a45b7667913'
             '66d0a7672b29293080baa141540bfdf584d3f013c6d2115fa2c9dfa28beee934'
             'd975a6abd6cb8ff2a2178d9a4755ea978033af522a0b4121d025703133a87ca2'
             'a392decc52fff5cd660f293b26739d7203f8678cc57d560f1b42efff1d43dc0d'
-            'dfac4673959a225462c629045db1c0fd736717d11d8256a9827b45c3b5dadc44'
+            '038571a1df00b5ec63a20b442a7e6a0b382b805f4bb91fff1ed8186a9cf8d066'
             'db1d9f62899a1acf917394d807f10765f3cbeef63c42f1e8359239b806f42517'
             '3d66b22f1ba6d7309eafd93e3b0a3d9ec841828f88cd8e267a7760585776dd5b'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
@@ -280,6 +280,7 @@ patch -Np1 -i ../023.patch
 #patch -Np1 -i ../024.patch
 patch -Np1 -i ../025.patch
 #patch -Np1 -i ../026.patch
+patch -Np1 -i ../027.patch
 patch -Np1 -i ../029.patch
 patch -Np1 -i ../030.patch
 patch -Np1 -i ../CP.patch
