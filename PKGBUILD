@@ -2,7 +2,7 @@
 
 pkgname=corebird
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Gtk+ Twitter Client"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -32,6 +32,7 @@ conflicts=('corebird-git')
 build() {
   cd ${pkgname}-${pkgver}
 
+  sed -i -e "s|buildtype=debug|buildtype=release|g" meson.build
   meson builddir --prefix=/usr -D VIDEO=yes -D SPELLCHECK=yes
   ninja -C builddir
 }
