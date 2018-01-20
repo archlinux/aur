@@ -1,4 +1,5 @@
 # Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
+# Maintainer: Julian Brost <julian@0x4a42.net>
 # Contributor: bebehei <bebe@bebehei.de>
 
 pkgname=('icinga2-common' 'icinga2' 'icinga-studio')
