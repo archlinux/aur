@@ -1,6 +1,6 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma5-applets-docker
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Start and stop docker images"
 arch=('i686' 'x86_64')
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=()
 changelog=()
-source=('https://github.com/naraesk/plasma-docker/archive/v1.1.0.tar.gz')
+source=('https://github.com/naraesk/plasma-docker/archive/v1.1.1.tar.gz')
 noextract=()
-md5sums=('a233a486e5404c9fb6392c74572de65c')
+md5sums=('6865ee415f6d9caff9276bb303e06b01')
 
 prepare() {
   cd plasma-docker-${pkgver}
