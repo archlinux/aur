@@ -3,7 +3,7 @@
 # Contributor: Lukas Weber <laochailan@web.de>
 
 pkgname=taisei-git
-pkgver=1.1.r506.g65fffdee
+pkgver=1.1.r508.g21cab243
 pkgrel=1
 pkgdesc="Open source Touhou clone (development version)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('sdl2_mixer' 'sdl2_ttf' 'libzip' 'hicolor-icon-theme')
 provides=('taisei')
 conflicts=('taisei')
-makedepends=('git' 'meson' 'pandoc')
+makedepends=('git' 'meson' 'python-docutils')
 source=(taisei::"git+https://github.com/taisei-project/taisei.git")
 md5sums=('SKIP')
 
