@@ -31,7 +31,7 @@ backup=("etc/webapps/${pkgname}/parameters.yml"
 package() {
     cd "${pkgdir}"
     mkdir -p usr/share/webapps
-    mv "${srcdir}/release-${pkgver}" usr/share/webapps/${pkgname}
+    mv "${srcdir}/${pkgver}" usr/share/webapps/${pkgname}
 
     WALLABAG_CONF_DIR="${pkgdir}/usr/share/webapps/${pkgname}/app/config"
 
