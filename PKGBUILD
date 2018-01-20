@@ -10,10 +10,11 @@ _kver=4.14
 _gitroot=git://repo.or.cz/linux.git
 _gitcommit=linux-$_kver.y
 _cur_kernel="$(uname -r)"
+_EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=7
+pkgrel=8
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -33,9 +34,6 @@ sha256sums=('91a0c1c59e0365155f9bd9ce147b954a95c97c2b921f96365c40562088a85792'
             '9593921667ac355a677d65840edfa18961b708995e11192dd569ead7b3363b2d')
 
 build() {
-
-    msg2 "Try to detect extramodules directory for current kernel"
-	_EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 	msg2 "Module will be installed to: $_EXTRAMODULES"
 
 	msg2 "Getting source from $_gitroot"
@@ -63,8 +61,6 @@ build() {
 
 package() {
 	cd "$srcdir/drivers/input/mouse"
-
-	_EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 
 	install -D -m 0644 psmouse.ko.gz "$pkgdir/${_EXTRAMODULES}/psmouse.ko.gz"
 
