@@ -1,6 +1,6 @@
 # Maintainer: Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
 pkgname=keepass-de
-pkgver=2.36
+pkgver=2.37
 pkgrel=1
 pkgdesc="German locale for keepass"
 license=('GPL2')
