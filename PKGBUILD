@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=65.0.3325.0
+pkgver=66.0.3326.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
@@ -115,7 +115,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/k2.patch
 )
 
 
-sha256sums=('341cbd2d2ac870484589d6f28b697a981126d98a9f0c9092a618c78c78715a64'
+sha256sums=('5c6ac056e716d35fa54d798aac8624ab95812b6a671d74dddee4541f62e3fc3a'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -162,7 +162,7 @@ sha256sums=('341cbd2d2ac870484589d6f28b697a981126d98a9f0c9092a618c78c78715a64'
             '48a42d38899795d4e959c6ec27a5e2288a3db54d3abf99f9caae887402d53988'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
             '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
-            '0c2732c1554f294b8fd2c17ae85c3ed7f86bb0b09b15dfec54378fec357acb33'
+            'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'b80b351152d3415b5b7dbfaf07edd94bb8f7dd56eab4380c577b102c6b758c10'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
@@ -354,7 +354,7 @@ patch -Np1 -i ../edgy.patch
 #patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
-#patch -Np1 -i ../gna.patch
+patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
 
 
@@ -456,6 +456,8 @@ python2 build/util/lastchange.py -m GPU_LISTS_VERSION \
 
 
 #its optimized for 16 ram, if you get segfaults or crashes read linuxfromscratch.org/blfs/view/svn/xsoft/chromium.html
+
+msg2 'you may get oom errors if you make something edgy while you are building me'
 
   ninja -j8 -C out/Release  pdf chrome chrome_sandbox chromedriver
 }
