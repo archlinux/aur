@@ -8,7 +8,7 @@ pkgname=inox-edgy
 pk=enox
 name=chromium
 pkgver=66.0.3326.0
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
 arch=('i686' 'x86_64')
@@ -281,7 +281,7 @@ patch -Np1 -i ../023.patch
 #patch -Np1 -i ../024.patch
 patch -Np1 -i ../025.patch
 #patch -Np1 -i ../026.patch
-#patch -Np1 -i ../027.patch
+patch -Np1 -i ../027.patch
 patch -Np1 -i ../029.patch
 patch -Np1 -i ../030.patch
 patch -Np1 -i ../CP.patch
