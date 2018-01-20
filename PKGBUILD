@@ -1,6 +1,6 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
 pkgver=4.0.10665
-pkgrel=1
+pkgrel=2
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
 _gamehdpatchname="HoMM3%20HD%20Latest.exe"
@@ -52,12 +52,12 @@ package() {
   install -Dm644 ${srcdir}/local_machine.reg ${pkgdir}/usr/share/${pkgname}/local_machine.reg
 
   # Install license
-  install -Dm644 "${srcdir}/tmp/env/drive_c/GOG Games/homm 3 complete/EULA.txt" "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 "${srcdir}/tmp/env/drive_c/GOG Games/HoMM 3 Complete/EULA.txt" "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 
   # Install game
   install -m755 -d "${pkgdir}"/opt/gog/
   # mv instead of cp to save disk space
-  mv "${srcdir}/tmp/env/drive_c/GOG Games/homm 3 complete" ${pkgdir}/opt/gog/${pkgname#gog-}
+  mv "${srcdir}/tmp/env/drive_c/GOG Games/HoMM 3 Complete" ${pkgdir}/opt/gog/${pkgname#gog-}
   # Remove unneeded files
   rm -rf ${pkgdir}/opt/gog/${pkgname#gog-}/unins*
   rm -rf ${pkgdir}/opt/gog/${pkgname#gog-}/*.lnk
