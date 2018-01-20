@@ -32,6 +32,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_gitname}"
 
+  # Fix build issue as reported by Kniyl here
+  # https://github.com/CastXML/CastXML/issues/102
   sed -i "s|\${llvm_libs}||g" src/CMakeLists.txt
 
   cmake -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build \
