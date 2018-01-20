@@ -2,13 +2,13 @@
 _name=pyevtk
 pkgname=python-${_name}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Export data as binary VTK files'
 arch=('any')
 url='https://bitbucket.org/pauloh/pyevtk'
 license=('BSD')
 depends=('python-numpy')
-makedepends=('')
+makedepends=('python-setuptools')
 optdepends=()
 source=(
 	"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
