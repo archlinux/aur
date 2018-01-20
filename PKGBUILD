@@ -1,29 +1,34 @@
-# Maintainer: Sirat18 <aur@sirat18.de>
-# Contributor: Paolo Giangrandi <peoro.noob@gmail.com>
+# Maintainer: Paul Taylor <bao7uo at gmail dot com>
+
 pkgname=impacket-git
 _gitname=impacket
-pkgver=0.9.14.r1707.g79dda7f
+pkgver=0.9.16.dev
 pkgrel=1
-pkgdesc="Collection of Python2 classes focused on providing access to network packets"
-arch=('i686' 'x86_64')
-url="http://corelabs.coresecurity.com/index.php?module=Wiki&action=view&type=tool&name=Impacket"
-license=('APACHE')
-depends=('python2' 'python2-crypto')
-optdepends=('pcapy: traffic sniffing example programs')
-makedepends=('sed')
-source=("$_gitname::git+https://github.com/CoreSecurity/impacket.git")
-sha512sums=('SKIP')
-conflicts=('impacket')
-provides=('impacket')
+pkgdesc="Latest Impacket including new features, particularly in the examples scripts"
+arch=('any')
+url="https://github.com/CoreSecurity/impacket"
+license=('Modified Apache, see LICENSE file')
+depends=('python2-crypto' 'python2-pcapy' 'python2-pyasn1' 'python2-pyopenssl')
+makedepends=('python2-setuptools')
+
+makedepends+=('git')
+source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
+for integ in $(get_integlist)
+do
+  typeset -n array="${integ}sums"
+  array+=('SKIP')
+done
+provides+=("$_gitname=$pkgver")
+conflicts+=("$_gitname")
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-    printf "%s.r%s.g%s" "$(git describe --tags --always | awk -F '[-_]' '{ print $2 "." $3 "." $4 }')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_gitname"
+  grep -Po "(?<=version=').*(?=',)" setup.py | tr '\n' '.'
+printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/$_gitname"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1 || return 1
-  install -D LICENSE ${pkgdir}/usr/share/licenses/impacket/LICENSE
+  cd "$_gitname"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
