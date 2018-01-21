@@ -5,7 +5,7 @@
 
 pkgname=dunst-git
 _pkgname=dunst
-pkgver=v1.3.0.r11.g8144a95
+pkgver=1.3.0.r11.g8144a95
 pkgrel=1
 pkgdesc="Lightweight and customizable notification daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
