@@ -1,0 +1,6 @@
+src/
+pkg/
+edisyn/
+edisyn-bin-*.tar.xz
+edisyn-bin-*.src.tar.gz
+.AURINFO

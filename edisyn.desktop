@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Edisyn
+Comment=A cross-platform synthesizer patch editor library
+TryExec=edisyn
+Exec=edisyn %F
+#Icon=edisyn
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Audio;Midi;Music
