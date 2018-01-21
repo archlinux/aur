@@ -6,8 +6,9 @@ path <- commandArgs(trailingOnly = TRUE)
 .libPaths(new = path)
 print(path)
 
-libs <- c('jmvcore','ggplot2','R6','RProtoBuf','devtools')
+libs <- c('jmvcore','ggplot2','R6','RProtoBuf','devtools','evaluate','markdown','knitr','gridExtra','reshape','yaml','highr')
+libs_modules <- c('nloptr')
 
-install.packages(libs,lib=path)
+install.packages(c(libs,libs_modules),lib=path)
 library(devtools)
 install_github('jamovi/jmvcore',lib=path)

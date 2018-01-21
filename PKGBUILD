@@ -15,7 +15,7 @@ source=("rbundle.R"
 	"git+https://github.com/jamovi/jmv.git"
         )
 noextract=()
-md5sums=('47804c91eefab8d14f3ad1af7486e11f'
+md5sums=('104f3fd6500f036265e543f3a66efbe7'
          '7e1ed80a57388f65fe5bf071ee1c877e'
          'SKIP'
          'SKIP')
