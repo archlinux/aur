@@ -1,11 +1,14 @@
-# Maintainer: Albert Vendrell <alvenca at gmail dot com>
+# Maintainer: SharkEzz <icraft640@gmail.com>
+# Contributor: Albert Vendrell <alvenca at gmail dot com>
 # Contributor: Martin Minka <martin dot minka at gmail dot com>
 # Contributor: Henk Westhuis <henk underscore westhuis at hotmail dot com>
+
+
 pkgname=gitextensions
 epoch=1
-pkgver=2.50.02
+pkgver=2.51.RC2
 pkgrel=1
-pkgdesc="Graphical user interface for Git that allows you control Git without using the commandline."
+pkgdesc="Graphical user interface for Git that allows you control Git without using the command line."
 arch=('any')
 url="http://gitextensions.github.io/"
 license=('GPL3')
@@ -21,7 +24,7 @@ source=('gitextensions'
 md5sums=('b01b1bf6d75b30f6763daa0498385e99'
          'cd36dafb8e961f67701117f622240e9b'
          'bbd6381241e896200c8494981115dff6'
-         'c519774b49eac1df4f732510f9c2a4a8')
+         'b8cdc6428395308bf6ab1635c20b8d09')
 
 package() {
   install -d "$pkgdir"/usr/share/GitExtensions/
