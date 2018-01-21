@@ -1,6 +1,6 @@
 pkgbase = rspamd-git
 	pkgdesc = Rapid spam filtering system
-	pkgver = r1
+	pkgver = r11305
 	pkgrel = 1
 	url = https://github.com/vstakhov/rspamd
 	arch = i686
@@ -18,6 +18,9 @@ pkgbase = rspamd-git
 	depends = sqlite
 	depends = hiredis
 	depends = file
+	depends = libfann
+	depends = gd
+	depends = icu
 	provides = rspamd
 	conflicts = rspamd
 	source = rspamd::git+https://github.com/vstakhov/rspamd.git

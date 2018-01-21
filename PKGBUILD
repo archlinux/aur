@@ -1,13 +1,14 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('rspamd-git')
 _srcname='rspamd'
 pkgdesc='Rapid spam filtering system'
-pkgver='r1'
+pkgver='r11305'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url="https://github.com/vstakhov/${_srcname}"
 license=('Apache')
 
-depends=('openssl' 'libevent' 'glib2' 'gmime' 'luajit' 'sqlite' 'hiredis' 'file')
+depends=('openssl' 'libevent' 'glib2' 'gmime' 'luajit' 'sqlite' 'hiredis' 'file' 'libfann' 'gd' 'icu')
 makedepends=('git' 'cmake' 'pkgconfig' 'ragel')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
