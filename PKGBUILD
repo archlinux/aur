@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 307136 2017-10-07 23:32:58Z anatolik $
+# $Id: PKGBUILD 313398 2017-12-20 17:55:01Z anatolik $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
@@ -8,30 +8,29 @@
 pkgname='qemu-minimal'
 #pkgdesc="A generic and open source machine emulator and virtualizer"
 pkgdesc="A generic and open source machine emulator and virtualizer. This is a stripped-down version of the official package and requires only the bare essentials for running on a headless server."
-pkgver=2.10.1
-pkgrel=1
-arch=(i686 x86_64)
+pkgver=2.11.0
+pkgrel=3
+arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
 _headlessdeps=(seabios gnutls libpng libaio numactl jemalloc xfsprogs libnfs
                lzo snappy curl vde2 libcap-ng spice libcacard usbredir)
 _minimaldeps=(seabios libaio jemalloc
-              lzo snappy curl libcap-ng)
-#depends=(virglrenderer sdl2 vte3 brltty "${_headlessdeps[@]}")
+              lzo curl libcap-ng)
+#depends=(virglrenderer sdl2 vte3 libpulse "${_headlessdeps[@]}")
 #makedepends=(spice-protocol python2 ceph libiscsi glusterfs)
-depends=(pixman libjpeg "${_minimaldeps[@]}")
+depends=(pixman "${_minimaldeps[@]}")
 makedepends=(python2)
 conflicts=('qemu' 'qemu-headless')
+provides=('qemu' 'qemu-headless')
 source=("$url/download/${pkgname:0:-8}-${pkgver}.tar.bz2"{,.sig}
-        qemu.sysusers
         qemu-ga.service
         65-kvm.rules
         allow_elf64.patch)
-sha256sums=('8e040bc7556401ebb3a347a8f7878e9d4028cf71b2744b1a1699f4e741966ba8'
+sha256sums=('c4f034c7665a84a1c3be72c8da37f3c31ec063475699df062ab646d8b2e17fcb'
             'SKIP'
-            'dd43e2ef062b071a0b9d0d5ea54737f41600ca8a84a8aefbebb1ff09f978acfb'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
-            '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7'
+            'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
             '13a6d9e678bdc9e1f051006cfd0555f5a80582368f54c8a1bb5a78ece3832ac4')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
@@ -62,8 +61,7 @@ build() {
 #    --disable-gtk \
 #    --disable-vte \
 #    --disable-opengl \
-#    --disable-virglrenderer \
-#    --disable-brlapi
+#    --disable-virglrenderer
   _build minimal \
     --audio-drv-list= \
     --disable-bluez \
@@ -72,8 +70,12 @@ build() {
     --disable-vte \
     --disable-opengl \
     --disable-virglrenderer \
-    --disable-brlapi \
-    --disable-spice
+    --enable-seccomp \
+    --enable-tpm \
+    --disable-docs \
+    --disable-libiscsi \
+    --disable-spice \
+    --target-list=x86_64-softmmu
 }
 
 _build() (
@@ -136,7 +138,6 @@ _package() {
 
   # systemd stuff
   install -Dm644 65-kvm.rules "$pkgdir/usr/lib/udev/rules.d/65-kvm.rules"
-  install -Dm644 qemu.sysusers "$pkgdir/usr/lib/sysusers.d/qemu.conf"
 
   # remove conflicting /var/run directory
   cd "$pkgdir"
