@@ -39,5 +39,5 @@ build() {
 
 package() {
 	cd $pkgname-$_gitrev
-	python setup.py install --root "$pkgdir" --optimize=1
+	python setup.py install --root="$pkgdir" --optimize=1
 }
