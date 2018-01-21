@@ -6,11 +6,15 @@
 
 pkgname=pjsua
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source command line SIP user agent"
 arch=(i686 x86_64)
 url="http://www.pjsip.org/pjsua.htm"
-depends=('ffmpeg' 'speex')
+depends=(
+  'bcg729'
+  'ffmpeg'
+  'speex'
+)
 license=('GPL')
 source=(http://www.pjsip.org/release/$pkgver/pjproject-$pkgver.tar.bz2)
 sha512sums=('cd15afee2a02659668ff228b2652d2bd179393e3b5031afae1c326354fb9676babc08eb689e466165536abc360684299b4fdb41dbb1148aed89afe1ce7e5d979')
