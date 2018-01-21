@@ -1,0 +1,28 @@
+pkgbase = garliccoin-cli
+	pkgdesc = Peer-to-peer digital meme godcoin
+	pkgver = v0.15.0.1rc1.46.g44da89deb
+	pkgrel = 1
+	url = https://garlicoin.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = boost-libs
+	makedepends = boost
+	makedepends = gcc
+	makedepends = make
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	depends = gcc-libs
+	depends = miniupnpc
+	depends = openssl
+	depends = db4.8
+	provides = garlicoin
+	conflicts = garlicoin
+	source = git://github.com/retosen/Garlicoin.git
+	sha256sums = SKIP
+
+pkgname = garliccoin-cli
+
