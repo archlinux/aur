@@ -1,27 +1,28 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=edisyn
+_githash="aa653caa498f8cc9bf582cf77279e2568023ad41"
 pkgname="${_pkgname}-bin"
 pkgver=13
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform synthesizer patch editor library"
 arch=('i686' 'x86_64')
 url="https://github.com/eclab/edisyn/"
 license=('Apache')
 depends=('java-runtime=7')
-#provides=("${_pkgname}")
-#conflicts=("${_pkgname}")
-source=("${_pkgname}::git://github.com/eclab/${_pkgname}.git#commit=a436731d3eb980399efdd0b59d9d10d5e1b6aee6"
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("https://github.com/eclab/edisyn/raw/${_githash}/jar/edisyn.jar"
         "${_pkgname}.desktop"
         "${_pkgname}.sh")
-md5sums=('SKIP'
+md5sums=('c4ef78b127533bbf40325bda77f657f1'
          '5022b2d274e99ca6704f4dd69e17a1cb'
          'a6f1544c7b08354593f2c5b91258d88c')
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  install -Dm644 "jar/${_pkgname}.jar" \
+  install -Dm644 "${srcdir}/${_pkgname}.jar" \
     "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.jar"
   install -Dm755 "${srcdir}/${_pkgname}.sh" \
     "${pkgdir}/usr/bin/${_pkgname}"
