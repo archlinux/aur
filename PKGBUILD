@@ -1,13 +1,13 @@
 # Maintainer: makz <contact+aur@makz.me>
-# Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
+# Maintainer: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 
 pkgname=ckb-next-git
-pkgver=0.2.8.r264.g142b307
+pkgver=0.2.9.r0.gb31dc2b
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git master branch"
 arch=('i686' 'x86_64')
-url="https://github.com/mattanger/ckb-next"
+url="https://github.com/ckb-next/ckb-next"
 license=('GPL2')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
@@ -16,7 +16,7 @@ optdepends=('libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (
 conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next')
 provides=('ckb-next')
 install=ckb-next-git.install
-source=('ckb-next-git::git+https://github.com/mattanger/ckb-next.git')
+source=('ckb-next-git::git+https://github.com/ckb-next/ckb-next.git')
 md5sums=('SKIP')
 
 pkgver() {
