@@ -3,7 +3,7 @@
 pkgbase='python-toyplot'
 pkgname=('python-toyplot' 'python2-toyplot')
 pkgver=0.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern Python plotting toolkit supporting electronic publishing and reproducibility"
 arch=('any')
 url="http://toyplot.readthedocs.io/"
@@ -33,7 +33,7 @@ build(){
 }
 
 package_python2-toyplot() {
-  depends=('python2')
+  depends=('python2' 'python2-multipledispatch')
 
   cd toyplot-"${pkgver}"-py2
   python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
@@ -41,7 +41,7 @@ package_python2-toyplot() {
 }
 
 package_python-toyplot() {
-  depends=('python')
+  depends=('python' 'python-multipledispatch')
 
   cd toyplot-"${pkgver}"
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
