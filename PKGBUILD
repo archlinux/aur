@@ -4,7 +4,7 @@ pkgname=imagescan
 _pkgname=utsushi
 pkgver=3.33.0
 _pkgver=0.33.0
-pkgrel=3
+pkgrel=4
 _fedrel=27
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
 arch=("i686" "x86_64")
@@ -46,6 +46,7 @@ build() {
 package() {
   cd $srcdir/${_pkgname}-${_pkgver}
   make DESTDIR=${pkgdir} install
+  sed -i 's/ACTION!="add"/ACTION!="add|bind"/g' $pkgdir/etc/udev/rules.d/utsushi-esci.rules
   install -Dm644 ${srcdir}/utsushi-scan-gtkmm.desktop $pkgdir/usr/share/applications/utsushi-scan-gtkmm.desktop
   install -Dm644 ${srcdir}/utsushi.conf $pkgdir/etc/utsushi/utsushi.conf
 }
