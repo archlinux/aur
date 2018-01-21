@@ -1,6 +1,6 @@
 pkgbase = dumpasn1
 	pkgdesc = ASN.1 analyze tool
-	pkgver = 20170307
+	pkgver = 20170309
 	pkgrel = 1
 	url = http://www.cs.auckland.ac.nz/~pgut001
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = dumpasn1
 	sha256sums = f58dfb06633792773b4e539666f0fac52eb44acf29619175d073b146e22785e4
 
 pkgname = dumpasn1
-
