@@ -1,7 +1,7 @@
 # Maintainer: Greg White <gwhite@kupulau.com> 
 pkgname=postgis-src
 _pkgname=${pkgname}
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=2
 pkgdesc="Postgres GIS extensions (from source)"
 arch=('i686' 'x86_64')
@@ -12,12 +12,12 @@ optdepends=('gtk2-appmenu: for GTK support')
 provides=("$_pkgname=$pkgver")
 conflicts=($_pkgname postgis)
 source=("http://download.osgeo.org/postgis/source/postgis-${pkgver}.tar.gz")
-sha256sums=('23625bc99ed440d53a20225721095a3f5c653b62421c4d597c8038f0d7a321d9')
+sha256sums=('ea5374c5db6b645ba5628ddcb08f71d3b3d90a464d366b4e1d20d5a268bde4b9')
 
 build() {
   cd postgis-${pkgver}
 
-  ./configure --prefix=/usr --with-gdalconfig=/usr/bin/gdal-config --with-gui
+  ./configure --without-json --prefix=/usr --with-gdalconfig=/usr/bin/gdal-config --with-gui
   make
 }
 
