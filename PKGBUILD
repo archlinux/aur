@@ -1,8 +1,8 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=github-release
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="Command-line app to create and edit releases on GitHub (and upload artifacts)"
 arch=('i686' 'x86_64')
 url="https://github.com/aktau/${pkgname}"
@@ -11,7 +11,7 @@ depends=('glibc')
 conflicts=("${pkgname}-bin")
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('ac4a75d69a7bad7c77fd6d752b061456ed9298dd2b561139ad9fd71b08f373b5e6e04f6bc4379e42982d63ffc68d89f40d209193b1d95e73cc3ccb40416c4293')
+sha512sums=('b339e5c21200b4079c08f9f9a722d3ce990d184ee5300536c6b32bf64fc7dbc95881fe8fb42f8274a33350b290cf3a5b588e5ee784e173b631b9dc2decd284df')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
