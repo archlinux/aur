@@ -4,7 +4,7 @@ _pkgname=vala-panel
 pkgname=${_pkgname}-git
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.3.8
+pkgver=0.3.72
 pkgrel=1
 pkgdesc="Gtk3 panel for compositing window managers"
 url="https://github.com/rilian-la-te/vala-panel"
@@ -34,7 +34,7 @@ prepare() {
   cd "${srcdir}/${_cmakename}"
   cp -r . "${srcdir}/${_pkgname}/cmake"
   cd "${srcdir}/${_dbusmenuname}"
-  cp -r . "${srcdir}/${_pkgname}/lib/dbusmenu"
+  cp -r . "${srcdir}/${_pkgname}/dbusmenu"
 }
 
 build() {
