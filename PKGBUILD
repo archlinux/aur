@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mit-scheme-git
-pkgver=9.2.0.1181.g34ecd0262
+pkgver=9.2.0.1296.g417307e00
 pkgrel=1
 pkgdesc="MIT/GNU Scheme from git"
 arch=('i686' 'x86_64')
@@ -22,6 +22,7 @@ pkgver() {
 }
 
 build() {
+  LANG=C
   cd $_gitname/src
   ./Setup.sh
   ./configure --prefix=/usr --with-x --enable-native-code
