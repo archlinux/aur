@@ -1,32 +1,13 @@
 pkgbase = artisan-roaster-scope
 	pkgdesc = Artisan is a software that helps coffee roasters record, analyze, and control roast profiles.
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/artisan-roaster-scope/artisan
-	install = artisan-roaster-scope.install
-	arch = any
+	arch = x86_64
 	license = GPL3
-	makedepends = git
-	depends = python2
-	depends = python2-sip
-	depends = python2-scipy
-	depends = python2-numpy
-	depends = python2-pyserial
-	depends = python2-requests
-	depends = python2-pyqt5
-	depends = python2-matplotlib
-	depends = python2-qrcode
-	depends = python2-bottle
-	depends = python2-gevent
-	depends = python2-gevent-websocket
-	depends = python2-phidgets
-	depends = python2-pymodbus
-	depends = python2-yoctopuce
-	depends = python2-unidecode
-	source = https://github.com/artisan-roaster-scope/artisan/archive/v1.1.0.tar.gz
-	source = artisan-v1.1.0-bugs.patch
-	md5sums = 87d84a79537c3c66fafa367d779eeb17
-	md5sums = 72da7888224102ee896a1d1ebebaa1b5
+	depends = python
+	source = https://github.com/artisan-roaster-scope/artisan/releases/download/v1.2.0/artisan-linux-1.2.0_amd64.deb
+	sha256sums = 292734bd254e49a93eb173869cb49c87c2ddca077eacbcde080c48fa8eeb5d6f
 
 pkgname = artisan-roaster-scope
 
