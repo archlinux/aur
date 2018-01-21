@@ -1,5 +1,5 @@
 # Maintainer: TheGuardianWolf <lichking21st(at)windowslive.com>
-pkgname=garliccoin-cli-git
+pkgname=garlicoin-cli-git
 _gitname=Garlicoin
 pkgver=v0.15.0.1rc1.46.g44da89deb
 pkgrel=1

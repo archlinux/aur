@@ -1,4 +1,4 @@
-pkgbase = garliccoin-cli-git
+pkgbase = garlicoin-cli-git
 	pkgdesc = Peer-to-peer digital meme godcoin
 	pkgver = v0.15.0.1rc1.46.g44da89deb
 	pkgrel = 1
@@ -25,5 +25,5 @@ pkgbase = garliccoin-cli-git
 	source = git://github.com/retosen/Garlicoin.git
 	sha256sums = SKIP
 
-pkgname = garliccoin-cli-git
+pkgname = garlicoin-cli-git
 
