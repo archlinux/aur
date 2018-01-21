@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=gxine-hg
-pkgver=r2472.4f14ca6182f8
+pkgver=r2489.d96baecd1c34
 pkgrel=1
 pkgdesc="GTK-based front end for xine"
 arch=('x86_64')
