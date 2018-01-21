@@ -1,0 +1,31 @@
+pkgbase = python-ete
+	pkgdesc = Python toolkit for building, comparing, annotating, manipulating and visualising phylogenetic trees
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/ete
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-ete-3.1.1.tar.gz::https://pypi.python.org/packages/21/17/3c49b7fafe10ed63bb7904ebf9764b98db726aa5fd482fb006818854bc04/ete3-3.1.1.tar.gz
+	sha256sums = 870a3d4b496a36fbda4b13c7c6b9dfa7638384539ae93551ec7acb377fb9c385
+
+pkgname = python-ete
+	depends = python
+	depends = python-six
+	optdepends = python-lxml: Nexml and Phyloxml support
+	optdepends = python-numpy: ArrayTable and ClusterTree class support
+	optdepends = python-pyqt4: tree visualization and image rendering
+	optdepends = python-pyqt5: tree visualization and image rendering
+
+pkgname = python2-ete
+	depends = python2
+	depends = python2-six
+	optdepends = python2-lxml: Nexml and Phyloxml support
+	optdepends = python2-numpy: ArrayTable and ClusterTree class support
+	optdepends = python2-pyqt4: tree visualization and image rendering
+	optdepends = python2-pyqt5: tree visualization and image rendering
+
