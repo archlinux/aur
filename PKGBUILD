@@ -1,14 +1,14 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Christian Kohlstedde <christian+arch-pkg@kohlsted.de>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=bcg729
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="g729 codec"
 arch=('x86_64')
 url="http://www.linphone.org/eng/documentation/dev/bcg729.html"
 license=('GPL')
-depends=('mediastreamer')
+depends=('glibc')
 validpgpkeys=('9774BC1725758EB16D639F8B3ECD52DEE2F56985')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BelledonneCommunications/bcg729/archive/$pkgver.tar.gz")
 sha256sums=('94b3542a06cbd96306efc19f959f9febae62806a22599063f82a8c33e989d48b')
