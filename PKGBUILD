@@ -1,12 +1,13 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=aur-out-of-date
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Determines out-of-date AUR packages"
 arch=('x86_64' 'i686')
 url="https://github.com/simon04/aur-out-of-date"
 license=('GPL')
 source=("https://github.com/simon04/$pkgname/archive/v$pkgver.tar.gz")
+makedepends=('git' 'go')
 
 build() {
 	cd "$pkgname-$pkgver"
