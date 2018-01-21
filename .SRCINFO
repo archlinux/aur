@@ -1,21 +1,29 @@
 pkgbase = zyn-fusion
 	pkgdesc = ZynAddSubFX with a new interactive UI
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zynaddsubfx.sourceforge.net/zyn-fusion.html
+	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = chrpath
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	makedepends = ruby
 	depends = fftw
 	depends = libglvnd
 	depends = mxml
 	depends = jack2
 	depends = liblo
+	depends = lash
+	depends = alsa-lib
+	depends = portaudio
 	provides = zynaddsubfx
 	conflicts = zynaddsubfx
 	options = !strip
-	source = file://zyn-fusion-linux-64bit-3.0.3-release.tar.bz2
-	sha512sums = bbceefdfef92fe4b163d4c583c2ea41b02af22707df235c1ec203f7bef82319201aaff16b52bd452957c872a91d8c5b9a65d6c9240200a404f0a35398096a45c
+	source = git+https://github.com/zynaddsubfx/zynaddsubfx.git#tag=3.0.3
+	source = git+https://github.com/mruby-zest/mruby-zest-build.git#commit=f98cdb072bb25bdcc2f5fe8370dce204b1149000
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = zyn-fusion
 

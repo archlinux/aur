@@ -1,38 +1,55 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=zyn-fusion
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ZynAddSubFX with a new interactive UI"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://zynaddsubfx.sourceforge.net/zyn-fusion.html"
-license=('custom')
-depends=('fftw' 'libglvnd' 'mxml' 'jack2' 'liblo')
-makedepends=('chrpath')
+license=('GPL2' 'LGPL2.1')
+depends=('fftw' 'libglvnd' 'mxml' 'jack2' 'liblo' 'lash' 'alsa-lib' 'portaudio')
+makedepends=('git' 'ruby')
 provides=('zynaddsubfx')
 conflicts=('zynaddsubfx')
 options=('!strip')
-source=("file://$pkgname-linux-64bit-$pkgver-release.tar.bz2")
-sha512sums=('bbceefdfef92fe4b163d4c583c2ea41b02af22707df235c1ec203f7bef82319201aaff16b52bd452957c872a91d8c5b9a65d6c9240200a404f0a35398096a45c')
+source=("git+https://github.com/zynaddsubfx/zynaddsubfx.git#tag=$pkgver"
+        'git+https://github.com/mruby-zest/mruby-zest-build.git#commit=f98cdb072bb25bdcc2f5fe8370dce204b1149000')
+sha512sums=('SKIP' 'SKIP')
+
+prepare() {
+	cd zynaddsubfx
+	git submodule update --init
+
+	cd ../mruby-zest-build
+	git submodule update --init
+	make setup
+}
 
 build() {
-	cd "$pkgname"
-	chrpath -d zynaddsubfx ZynAddSubFX.so ZynAddSubFX.lv2/ZynAddSubFX{,_ui}.so
+	mkdir -p build-zynaddsubfx
+	cd build-zynaddsubfx
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DGuiModule=zest ../zynaddsubfx
+	make
+
+	cd ../mruby-zest-build
+	make builddep
+	make
+	make pack
 }
 
 package() {
-	cd "$pkgname"
+	install -Dm644 zynaddsubfx/COPYING "$pkgdir"/usr/share/licenses/zynaddsubfx/COPYING
+	cd build-zynaddsubfx
+	make DESTDIR="$pkgdir/" install
+
+	cd ../mruby-zest-build
+
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
 	install -d "$pkgdir"/opt/"$pkgname"
-	cp -a * "$pkgdir"/opt/"$pkgname"/
+	install -m755 package/zest "$pkgdir"/opt/"$pkgname"/zyn-fusion
+	cp -a package/{libzest.so,font,schema} "$pkgdir"/opt/"$pkgname"/
+	install -d "$pkgdir"/opt/"$pkgname"/qml
+	touch "$pkgdir"/opt/"$pkgname"/qml/MainWindow.qml
 
-	install -d "$pkgdir"/usr/bin
-	ln -s /opt/"$pkgname"/zyn{addsubfx,-fusion} "$pkgdir"/usr/bin/
-	install -d "$pkgdir"/usr/share/zynaddsubfx
-	ln -s /opt/"$pkgname"/banks "$pkgdir"/usr/share/zynaddsubfx/
-	install -d "$pkgdir"/usr/lib/{vst,lv2}
-	ln -s /opt/"$pkgname"/ZynAddSubFX.so "$pkgdir"/usr/lib/vst/
-	ln -s /opt/"$pkgname"/ZynAddSubFX.lv2{,presets} "$pkgdir"/usr/lib/lv2/
-
-	install -d "$pkgdir"/usr/share/licenses/"$pkgname"
-	ln -s /opt/"$pkgname"/zyn-fusion-ELUA.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE # Not a typo…
+	ln -s /opt/"$pkgname"/zyn-fusion "$pkgdir"/usr/bin/
 }
