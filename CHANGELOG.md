@@ -3,6 +3,10 @@
 ## [Unreleased]
 Nothing to report...
 
+## [2.07] - 2018.01.21
+### **Changes**
+- changed configuration setup, much simplier now.
+
 ## [2.06] - 2016.10.26
 ### **Fixes**
 - Fixed incorrect range checking for printer selection from complete list
@@ -60,7 +64,8 @@ Nothing to report...
 ### Fixed
 - Fix regex in select printer dialog.
 
-[Unreleased]: https://github.com/hv15/sshprint/compare/2.06...HEAD
+[Unreleased]: https://github.com/hv15/sshprint/compare/2.07...HEAD
+[2.07]: https://github.com/hv15/sshprint/compare/2.06...2.07
 [2.06]: https://github.com/hv15/sshprint/compare/2.05...2.06
 [2.05]: https://github.com/hv15/sshprint/compare/2.04...2.05
 [2.04]: https://github.com/hv15/sshprint/compare/2.03...2.04
