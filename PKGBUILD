@@ -6,7 +6,7 @@
 
 pkgname=conky-nvidia
 _pkgname=conky
-pkgver=1.10.6
+pkgver=1.10.7
 pkgrel=1
 pkgdesc='Lightweight system monitor for X'
 provides=('conky')
@@ -17,19 +17,14 @@ arch=('i686' 'x86_64')
 makedepends=('cmake' 'docbook2x' 'docbook-xml' 'man-db' 'perl-xml-libxml' 'perl-xml-sax-expat' 'docbook-xsl')
 depends=('glib2' 'curl' 'lua' 'wireless_tools' 'libxml2' 'libxft' 'libxdamage' 'libxinerama' 'imlib2' 'libxnvctrl')
 source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz"
-	'ascii.patch'
-	'lua53.patch'
-	'include_functional.patch')
-sha1sums=('54cb3322dc3a969f1fda03383012c61d57261345'
-          '96cdbc38e8706c8a3120601983df5c7265716128'
-          'a3a74542b6524e5663ad37aaba292b48e8bea3b1'
-          '1c52147c9cacde6c1115cc73cd3099f2602c24f7')
+	'lua53.patch')
+
+sha1sums=('65f8ec4899ad4d26875d30030b819984b325cc7d'
+          'a3a74542b6524e5663ad37aaba292b48e8bea3b1')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	patch -p1 -i ../ascii.patch # db2x_manxml fails on non-ascii chars
 	patch -p1 -i ../lua53.patch # lua_gettable returns an int in lua-5.3
-	patch -p1 -i ../include_functional.patch # for compiling with C++11
 }
 
 build() {
