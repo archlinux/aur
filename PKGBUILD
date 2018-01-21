@@ -1,7 +1,7 @@
 # Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
 
 pkgname='buck'
-pkgver='2017.10.01.01'
+pkgver='2017.11.16.01'
 pkgrel=1
 pkgdesc='A fast build system that encourages the creation of small, reusable modules over a variety of platforms and languages.'
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('watchman: prevent Buck from parsing all of your build files every t
 url='https://buckbuild.com'
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('abf8feee6d435d467f62122983a9e161b7ab3f0eb0dc5b0179fc12709d5bcb32')
+sha256sums=('4cabece42f1d1d6b31088150d56c23740ed7167a66e1584aba4b205c5260d369')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
