@@ -1,24 +1,28 @@
-# Maintainer: Thiago Coutinho <root thiagoc net>
+# Maintainer: Christian Kohlstedde <christian kohlsted de>
+# Contributor: Thiago Coutinho <root thiagoc net>
 # Contributor: Marti Raudsepp <marti@juffo.org>
 # Contributor: Sonny Piers <sonny <AT> fastmail <DOT> net>
 # Submitter: sputnick <gilles.quenot <AT> gmail <DOT> com>
 
 pkgname=pjsua
-pkgver=2.4
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Open source command line SIP user agent"
 arch=(i686 x86_64)
 url="http://www.pjsip.org/pjsua.htm"
-depends=(ffmpeg)
+depends=('ffmpeg' 'speex')
 license=('GPL')
 source=(http://www.pjsip.org/release/$pkgver/pjproject-$pkgver.tar.bz2)
+sha512sums=('cd15afee2a02659668ff228b2652d2bd179393e3b5031afae1c326354fb9676babc08eb689e466165536abc360684299b4fdb41dbb1148aed89afe1ce7e5d979')
  
 build() {
   cd $srcdir/pjproject-$pkgver
-  # make -j breaks the build
-  export MAKEFLAGS=
-  ./configure --prefix=/usr
-  #make dep
+  ./configure \
+    --prefix=/usr \
+    --enable-shared \
+    --disable-static \
+    --with-external-speex
+  make dep
   make
 }
 package() {
@@ -26,4 +30,3 @@ package() {
   make DESTDIR=$pkgdir install
   install -D -m755 pjsip-apps/bin/pjsua-*gnu $pkgdir/usr/bin/pjsua
 }
-md5sums=('39629ca3fcedbdc7dbd8c5a707060095')
