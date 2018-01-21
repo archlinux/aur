@@ -1,7 +1,7 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=ttyd
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Share your terminal over the web'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('json-c' 'libpcap' 'libwebsockets' 'zlib')
 makedepends=('cmake' 'libwebsockets-static')
 source=("ttyd-$pkgver.tar.gz::https://github.com/tsl0922/ttyd/archive/$pkgver.tar.gz")
-sha512sums=('52591fa5a0a6bda623f0437b5900d7f22ad87a904a0d04710ac2f3d5fddbb9e1311b764339483b0820e416e646a62133c7598b88573120c86dd20f98aea0dfed')
+sha512sums=('925eddcb1ac290d329480329abd0626837e1c402f257519638c6033dc5998d8e4777218d415fd49d8934c8f47d850eb3ba93406f4d70f841d165312d78016bce')
 
 build() {
   cd ttyd-$pkgver
