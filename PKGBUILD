@@ -26,7 +26,8 @@ optdepends=('kdesu: for KDE'
             'octopi-notifier: for notifications'
             'pkgfile: to view uninstalled pkg contents in ArchLinux'
 	    'xfce4-notifyd: for notifications in XFCE'
-	    'pacmanlogviewer: to view pacman log files')
+	    'pacmanlogviewer: to view pacman log files'
+	    'qtermwidget: for embedded terminal')
 provides=('octopi' 'octopi-notifier' 'octopi-repoeditor'
 	  'octopi-cachecleaner' 'octopi-pacmanhelper')
 conflicts=('octopi' 'octopi-notifier' 'octopi-repoeditor'

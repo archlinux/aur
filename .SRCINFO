@@ -27,6 +27,7 @@ pkgbase = octopi-git
 	optdepends = pkgfile: to view uninstalled pkg contents in ArchLinux
 	optdepends = xfce4-notifyd: for notifications in XFCE
 	optdepends = pacmanlogviewer: to view pacman log files
+	optdepends = qtermwidget: for embedded terminal
 	provides = octopi
 	provides = octopi-notifier
 	provides = octopi-repoeditor
