@@ -1,7 +1,11 @@
 # Maintainer: Nick Levesque <nick.levesque@gmail.com>
 # Contributor: Kevin Hanselman <kevin-hanselman@gmail.com>
 pkgname=fwup-git
-pkgver=0.19.0
+pkgver=v0.19.0.r5.ga107d81
+pkgver() {
+    cd "$pkgname"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
+}
 pkgrel=1
 pkgdesc="Configurable embedded Linux firmware update creator and runner"
 arch=('any')

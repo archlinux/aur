@@ -1,6 +1,6 @@
 pkgbase = fwup-git
 	pkgdesc = Configurable embedded Linux firmware update creator and runner
-	pkgver = 0.19.0
+	pkgver = v0.19.0.r5.ga107d81
 	pkgrel = 1
 	url = https://github.com/fhunleth/fwup
 	arch = any
