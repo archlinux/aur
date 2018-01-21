@@ -1,7 +1,7 @@
 # Maintainer: Aaron DeVore <aaron.devore@gmail.com>
 # Contributor: Mathieu Clabaut <mathieu.clabaut@gmail.com>
 pkgname=mwlib.rl
-pkgver=0.14.3
+pkgver=0.14.5
 pkgrel=1
 pkgdesc="Converts MediaWiki articles to pdf, odf, and docbook"
 arch=('any')
@@ -10,9 +10,9 @@ license=("BSD")
 depends=('python2' 'mwlib.ext' 'texvc' 'python2-pygments' 'fribidi' 'ploticus'
 'imagemagick' 'ghostscript' 'ocaml' 'mwlib')
 makedepends=('mercurial' 'python2-distribute' 'python2-docutils')
-source=("http://pypi.python.org/packages/source/m/$pkgname/$pkgname-$pkgver.zip"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.zip"
         'license.txt')
-md5sums=('26954d7d58ed2f1c00bc9c4c9ee2630b'
+md5sums=('829855896a6bf95083fb6fb5c515840f'
          '472b2de7c34ecbd590240179882e36f8')
 
 build() {
