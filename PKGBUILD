@@ -1,5 +1,5 @@
 # Maintainer: TheGuardianWolf <lichking21st(at)windowslive.com>
-pkgname=garliccoin-cli
+pkgname=garliccoin-cli-git
 _gitname=Garlicoin
 pkgver=v0.15.0.1rc1.46.g44da89deb
 pkgrel=1
@@ -9,8 +9,8 @@ license=('MIT')
 pkgdesc="Peer-to-peer digital meme godcoin"
 depends=('gcc-libs' 'miniupnpc' 'openssl' 'db4.8')
 makedepends=('pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'make' 'automake' 'autoconf' 'libtool')
-provides=('garlicoin')
-conflicts=('garlicoin')
+provides=('garlicoin-cli')
+conflicts=('garlicoin-cli' 'garlicoin')
 source=('git://github.com/retosen/Garlicoin.git')
 sha256sums=('SKIP')
 
