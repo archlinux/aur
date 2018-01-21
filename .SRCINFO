@@ -1,30 +1,37 @@
 pkgbase = libindicator-ubuntu
 	pkgdesc = A set of symbols and convience functions that all indicators would like to use
-	pkgver = 16.10.0.16.10.20160913
-	pkgrel = 1
+	pkgver = 16.10.0.18.04.20171205.1
+	pkgrel = 2
 	url = https://launchpad.net/libindicator
 	arch = i686
 	arch = x86_64
 	groups = unity
 	license = GPL
+	makedepends = ido-ubuntu
+	makedepends = glib2
 	makedepends = gtk2-ubuntu
 	makedepends = gtk3-ubuntu
-	makedepends = glib2
-	makedepends = ido-ubuntu
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/libindicator_16.10.0+16.10.20160913.orig.tar.gz
-	sha512sums = d5a82fa3ee9db1b85680c348041aee88fe83d3f221d6f5b5abd2d4ac0394ece8fdfc146db88ad3a945496c4c3654ce121c60907c26b307015334537ccb73ba48
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/libindicator_16.10.0+18.04.20171205.1.orig.tar.gz
+	sha512sums = 5baa282e09a23462aedd6a3ae705232237bd171c5d66c0bc68e68ea056f9a4dee5ad61888f32bee39978f144aaf240f940b76406389559a0a4e5687c7988cb3f
+
+pkgname = libindicator-common
+	pkgdesc = A set of symbols and convience functions that all indicators would like to use (common files)
 
 pkgname = libindicator-gtk2-ubuntu
 	pkgdesc = A set of symbols and convience functions that all indicators would like to use (GTK+ 2 library)
 	depends = cairo
 	depends = gtk2-ubuntu
 	depends = glib2
+	provides = libindicator-gtk2
+	conflicts = libindicator-gtk2
 
 pkgname = libindicator-gtk3-ubuntu
 	pkgdesc = A set of symbols and convience functions that all indicators would like to use (GTK+ 3 library)
 	depends = gtk3-ubuntu
 	depends = glib2
 	depends = ido-ubuntu
+	provides = libindicator-gtk3
+	conflicts = libindicator-gtk3
 	options = 
 	options = !emptydirs
 
