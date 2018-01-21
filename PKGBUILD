@@ -2,10 +2,11 @@
 # Contributer: uth 2.0.0 update
 #
 # Supported Platforms	Features
-# Haswell 	(HSW)	vp8enc
-# Bay Trail M 	(BYT)	vp8enc
-# Broadwell 	(BRW)	vp9dec vp9enc
-# Braswell 	(BSW)	vp8enc vp9dec
+# Haswell       (HSW)	vp8enc
+# Bay Trail M   (BYT)	vp8enc
+# Broadwell     (BRW)	vp9dec vp9enc
+# Braswell      (BSW)	vp8enc vp9dec
+#  
 #
 # The libva-intel-driver package isn't compiled with support for loading this driver
 # so in order to use this driver's features with non hybrid codecs either
@@ -17,9 +18,10 @@ _gitroot="git+https://github.com/01org/intel-hybrid-driver.git"
 _gitname=intel-hybrid-driver
 _pkgver=2.0.0
 pkgver=$_pkgver.r169.edead0c
-pkgrel=1
+pkgrel=2
 pkgdesc='Libva support for partially hardware accelerated encode and decode on Haswell and newer'
-arch=('i686' 'x86_64')
+arch=('x86_64')
+install=${pkgname}.install
 url='https://01.org/linuxmedia/vaapi'
 license=('MIT')
 depends=('libva' 'libcmrt')
@@ -39,7 +41,8 @@ prepare() {
 
 build() {
   cd ${srcdir}/${_gitname}
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr \
+    --disable-x11
   make
 }
 
