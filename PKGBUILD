@@ -4,7 +4,7 @@ _name=ete3
 pkgbase='python-ete'
 pkgname=('python-ete' 'python2-ete')
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python toolkit for building, comparing, annotating, manipulating and visualising phylogenetic trees"
 arch=('any')
 url="https://pypi.python.org/pypi/ete"
@@ -44,6 +44,8 @@ package_python2-ete() {
 
   cd "${_name}"-"${pkgver}"-py2
   python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+
+  mv "${pkgdir}"/usr/bin/"${_name}" "${pkgdir}"/usr/bin/"${_name}"-2
 }
 
 package_python-ete() {
