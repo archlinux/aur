@@ -1,0 +1,19 @@
+pkgbase = zsh-dircolors-solarized-git
+	pkgdesc = Solarized dircolors plugin for zsh
+	pkgver = r17.2d41598
+	pkgrel = 1
+	url = https://github.com/joel-porquet/zsh-dircolors-solarized
+	install = zsh-dircolors-solarized.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = zsh>=4.3.9
+	provides = zsh-dircolors-solarized
+	conflicts = zsh-dircolors-solarized
+	source = zsh-dircolors-solarized::git://github.com/joel-porquet/zsh-dircolors-solarized
+	source = git+https://github.com/seebi/dircolors-solarized.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zsh-dircolors-solarized-git
+

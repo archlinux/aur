@@ -1,0 +1,16 @@
+post_install() {
+    echo
+    echo "  -> add \"/usr/share/zsh/plugins/zsh-dircolors-solarized/zsh-dircolors-solarized.zsh\" to your \$HOME/.zshrc"
+    echo
+    echo "  -> run setupsolarized ... (pick one)"
+    echo "      ├ dircolors.ansi-universal // $(tput bold)default$(tput sgr0): universal theme for 16- and 256-color terminals"
+    echo "      ├ dircolors.ansi-dark      // optimized version for universal for dark backgrounds"
+    echo "      ├ dircolors.ansi-light     // optimized version of universal for light backgrounds"
+    echo "      └ dircolors.256dark        // degraded solarized dark theme"
+    echo
+}
+
+post_remove() {
+    echo "  -> remove \"source /usr/share/zsh/plugins/zsh-dircolors-solarized/zsh-dircolors-solarized.zsh\" from your \$HOME.zshrc"
+    echo "  -> you may remove \".zsh-dircolors.config\" from your \$HOME"
+}
