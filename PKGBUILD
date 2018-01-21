@@ -3,8 +3,8 @@
 
 
 pkgname=pharo-launcher
-pkgver=6.0
-pkgrel=4
+pkgver=1.1
+pkgrel=0
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(i686 x86_64)
 source=($pkgname-$pkgver.tar.gz)
@@ -15,12 +15,12 @@ depends=('pharo-spur-vm')
 
 source=(
 	'http://files.pharo.org/media/logo/icon-lighthouse-128x128.png'
-	'http://files.pharo.org/platform/launcher/PharoLauncher-user-stable-2017.12.18.zip'
+	'http://files.pharo.org/platform/launcher/PharoLauncher-user-stable-2018.01.16.zip'
 )
 
 md5sums=(
 	'dec67d08d24433696375a319de029f34'
-	'91b5f22e7791f4cf6b27007848a0b0bc'
+	'1d65793eef99259889c57f2d845e8abe'
 )
 
 prepare() {
