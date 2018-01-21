@@ -3,14 +3,14 @@
 # Previous Maintainer: Atnanasis <ys2000pro@gmail.com>
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-nightly-bin
-pkgver=1.3.5.78
+pkgver=1.3.5.81
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
 license=('MIT')
 depends=('glibc')
-makedepends=('grep' 'sed' 'curl')
+makedepends=('grep' 'sed' 'curl' 'wget' 'tar' 'coreutils')
 optdepends=('xclip: for copying to and from the terminal')
 conflicts=('micro')
 provides=('micro')
