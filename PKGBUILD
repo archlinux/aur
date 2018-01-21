@@ -1,9 +1,9 @@
-# $Id: PKGBUILD,v 1.12 2005/11/11 18:46:32 simo Exp $
-# Maintainer: Jonathan Schaeffer <Joschaeffer@gmail.com>
+# Maintainer: Bert Peters <bert@bertptrs.nl>
+# Previously: Jonathan Schaeffer <Joschaeffer@gmail.com>
 
 pkgname=trang
 _pkgname="jing-trang"
-pkgver=20131210
+pkgver=20151127
 pkgrel=1
 pkgdesc="Converts between different schema languages for XML"
 url="https://github.com/relaxng/jing-trang"
@@ -28,5 +28,5 @@ package() {
   install -D -m755 "${srcdir}/trang" "${pkgdir}/usr/bin/trang" || return 1
 }
 
-sha256sums=('4cedef9de8d15f1bb5aa01620ffb1f9d55ab877419167c3a7b25b3caa8caad9d'
+sha256sums=('04cdf589abc5651d40f44fbc3415cb094672cb3c977770b2d9f6ea33e6d8932b'
             '1641a4fa0578ddec1afb374a5da75be6816e659f60c98207619f656cb90ca135')
