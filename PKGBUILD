@@ -1,13 +1,13 @@
 # Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
 pkgname=jamovi-git
 _pkgname=jamovi
-pkgver=r709.202e3b2
+pkgver=r716.8774368
 pkgrel=1
 pkgdesc="Open Source Software to bridge the gap between researcher and statistician"
 arch=('any')
 url="https://www.jamovi.org/"
 license=('GPL')
-depends=('electron' 'python' 'python-protobuf' 'python-tornado' 'python-nanomsg' 'python-yaml' 'boost-libs' 'python-chardet' 'r-cran-rinside')
+depends=('electron' 'python' 'python-protobuf' 'python-tornado' 'python-nanomsg' 'python-yaml' 'boost-libs' 'python-chardet' 'r-cran-rinside' 'gcc6-libs') #gcc6 libs added for libgfortran.so.3
 optdepends=("jamovi-rbundle: R backend for various analyses")
 makedepends=('boost' 'npm' 'cython' 'git' 'r-cran-rinside')
 provides=("${pkgname%-git}")
@@ -17,7 +17,7 @@ source=(git+https://github.com/jamovi/jamovi.git
 	"jamovi.sh"
 	"rinclude.patch")
 md5sums=('SKIP'
-         '207b3012a3235d9f9a0ec12fa4027694'
+         '75dc797390f0697fd9bc71c82563f857'
          '38fec18885de4ecbb91aef1f201c20d7'
          'f873dbb9ac296cd6f563ed03f018fe97')
 
