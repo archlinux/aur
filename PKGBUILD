@@ -11,7 +11,9 @@ license=('GPL')
 depends=('vapoursynth'
          'fftw'
          )
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/myrsloik/VapourSynth-FFT3DFilter.git")
