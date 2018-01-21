@@ -1,4 +1,4 @@
-pkgbase = apvlv
+pkgbase = apvlv-git
 	pkgdesc = PDF/DJVU/TXT viewer which behaves like vi
 	pkgver = 0.1.5.25.g8547fbc
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = apvlv
 	source = git+https://github.com/naihe2010/apvlv.git
 	md5sums = SKIP
 
-pkgname = apvlv
+pkgname = apvlv-git
 

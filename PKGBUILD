@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: tocer.deng <tocer.deng@gmail.com>
 
-pkgname=apvlv
+pkgname=apvlv-git
 pkgver=0.1.5.25.g8547fbc
 pkgrel=1
 pkgdesc='PDF/DJVU/TXT viewer which behaves like vi'
