@@ -1,7 +1,7 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
 pkgname='battlescribe'
-pkgver='2.01.07'
+pkgver='2.01.09'
 pkgrel=1
 pkgdesc="An army list builder for table-top games."
 arch=(any)
@@ -14,7 +14,7 @@ source=("http://battlescribe.net/files/BattleScribe_$pkgver""_Multi.zip"
 		"$pkgname.desktop"
 		"$pkgname.png"
 		'BattleScribe.sh')
-md5sums=('f1fc07152b2d2621e83ef17e9b2e20e3'
+md5sums=('1794e583e58c57d2f015bb45730cdf97'
          '33aafcfc46f7f1ada23015a830413763'
          'd0fef06c5b080003f84a0e148fbe9261'
          'cf0f2351b3241aa80cd80854fd73045f')
