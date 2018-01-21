@@ -1,4 +1,5 @@
-# Maintainer: Nikola Milinković <nikmil@gmail.com>
+# Maintainer: SharkEzz <icraft640@gmail.com>
+# Contributor: Nikola Milinković <nikmil@gmail.com>
 
 # Set to 'y' to enable Numix-like icons for Octopi notifier
 _numixicons=
@@ -15,7 +16,7 @@ url="https://github.com/aarnt/octopi"
 license=('GPL2')
 install=$pkgname.install
 makedepends=('git' 'qt5-base')
-depends=('qt5-quickcontrols' 'pacman' 'pkgfile' 'knotifications' 'alpm_octopi_utils' 'xterm')
+depends=('qt5-quickcontrols' 'pacman' 'pkgfile' 'knotifications' 'alpm_octopi_utils' 'xterm' 'qtermwidget')
 optdepends=('kdesu: for KDE'
             'gksu: for XFCE, Gnome, LXDE, Cinnamon'
             'gnome-keyring: for password management'
