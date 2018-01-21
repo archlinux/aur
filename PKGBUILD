@@ -10,9 +10,9 @@
 _use_ppa=true
 
 pkgbase=gtk3-ubuntu
-pkgname=(gtk3-ubuntu gtk-update-icon-cache)
+pkgname=(gtk3-ubuntu gtk-update-icon-cache-ubuntu)
 _ubuntu_rel=2ubuntu1
-pkgver=3.22.26+47+g3a1a7135a2
+pkgver=3.22.26
 pkgrel=1
 pkgdesc="GObject-based multi-platform toolkit"
 arch=(x86_64)
@@ -55,18 +55,15 @@ prepare() {
     # https://bugs.archlinux.org/task/56474
     patch -Np1 -i ../0001-entry-Undo-ABI-breakage-from-addition-of-insert_emoj.patch
 
-    # fix ubuntu_gtk_custom_menu_items patch
-    patch -p1 -i ../ubuntu_gtk_custom_menu_items.patch
-
     local patches=(
         016_no_offscreen_widgets_grabbing.patch
         017_no_offscreen_device_grabbing.patch
         060_ignore-random-icons.patch
         073_treeview_almost_fixed.patch
-        074_eventbox_scroll_mask.patch
         no-accessibility-dump.patch
         bzg_gtkcellrenderer_grabbing_modifier.patch
         print-dialog-show-options-of-remote-dnssd-printers.patch
+	ubuntu_gtk_custom_menu_items.patch
         uimanager-guard-against-nested-node-updates.patch
         x-canonical-accel.patch
         message-dialog-restore-traditional-look-on-unity.patch
@@ -120,9 +117,11 @@ package_gtk3-ubuntu() {
 
 }
 
-package_gtk-update-icon-cache() {
+package_gtk-update-icon-cache-ubuntu() {
   pkgdesc="GTK+ icon cache updater"
   depends=(gdk-pixbuf2 hicolor-icon-theme)
+  provides=(gtk-update-icon-cache)
+  conflicts=(gtk-update-icon-cache)
 
   cd gtk+
   install -D gtk/gtk-update-icon-cache "$pkgdir/usr/bin/gtk-update-icon-cache"
