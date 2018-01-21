@@ -1,25 +1,26 @@
 # Maintainer: Aaron DeVore <aaron.devore@gmail.com>
 # Contributor: Erol V. Aktay <e.aktay@gmail.com>
 pkgname='mwlib'
-pkgver='0.15.14'
-pkgrel='2'
+pkgver='0.15.19'
+pkgrel='1'
 pkgdesc="Converts MediaWiki articles to pdf, odf, and docbook"
 arch=('i686' 'x86_64')
 url="http://code.pediapress.com/wiki/wiki"
 license=("BSD")
 depends=('python2' 'perl' 'python-imaging' 'python2-odfpy' 'python2-flup'
-         'python2-pyparsing>=1.4.11' 'twisted' 'python2-dateutil>=1.4.1' 'python2-pypdf>=1.12' 'python2-webob'
-         'python2-timelib' 'python2-lockfile' 'python2-gevent' 'python2-bottle' 'python2-qserve'
-         'python2-lxml' 'python2-sqlite3dbm' 'python2-roman' 'python2-apipkg' 'python2-py')
+         'python2-pyparsing>=1.4.11' 'python2-twisted' 'python2-dateutil>=1.4.1' 'python2-pypdf>=1.12'
+         'python2-webob' 'python2-timelib' 'python2-lockfile' 'python2-gevent' 'python2-bottle'
+         'python2-qserve' 'python2-lxml' 'python2-sqlite3dbm' 'python2-roman'
+         'python2-apipkg' 'python2-py')
 optdepends=('texvc'
  'imagemagick'
  'blahtex'
 )
 makedepends=('re2c' 'python2-setuptools')
 changelog=Changelog
-source=("http://pypi.python.org/packages/source/m/$pkgname/$pkgname-$pkgver.zip"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.zip"
         license.txt)
-md5sums=('137a565db5327f85d2c399dbdec5c92b'
+md5sums=('c07887b34b35fbaa962ba19bfb01f327'
          '62eb6f0bfb7c407593db61962e221844')
 
 prepare() {
