@@ -7,7 +7,7 @@
 
 pkgname=kimchi
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KVM management plugin for WoK."
 arch=(any)
 url="https://github.com/kimchi-project/kimchi"
