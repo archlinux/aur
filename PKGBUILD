@@ -3,7 +3,7 @@
 
 pkgname=lix
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 changelog=.CHANGELOG
 conflicts=("${pkgname}-git")
 source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
@@ -19,7 +19,7 @@ pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
 license=('custom:CC0')
-depends=('allegro')
+depends=('allegro' 'enet')
 makedepends=('git' 'dmd' 'dub')
 
 build()
