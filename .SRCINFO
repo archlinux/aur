@@ -2,6 +2,7 @@ pkgbase = pharo-launcher
 	pkgdesc = Pharo Launcher helps you manage your Pharo images
 	pkgver = 1.1
 	pkgrel = 0
+	epoch = 1
 	url = http://www.pharo-project.org/
 	arch = i686
 	arch = x86_64

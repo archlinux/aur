@@ -5,6 +5,7 @@
 pkgname=pharo-launcher
 pkgver=1.1
 pkgrel=0
+epoch=1
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(i686 x86_64)
 source=($pkgname-$pkgver.tar.gz)
