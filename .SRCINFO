@@ -1,7 +1,7 @@
 pkgbase = energia
 	pkgdesc = Energia is a Arduino IDE clone for use with the MSP430 launchpad
 	pkgver = 1.6.10E18
-	pkgrel = 3
+	pkgrel = 4
 	url = http://energia.nu/
 	install = energia.install
 	arch = x86_64
