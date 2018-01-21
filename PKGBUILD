@@ -1,7 +1,7 @@
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=alm
-pkgver=0.4.0
+pkgver=2.38.1
 pkgrel=1
 pkgdesc="The best IDE for TypeScript"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'python2' 'gnuplot')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
 "$pkgname.desktop")
-sha256sums=('4e974084434d88dcd64efe4f84ec0ff73155ef2182116affd2942a84fb2acaaa'
+sha256sums=('7fbd77d13b2eb3c7be8908fe710ec979b45e55c8fc7b1624cca9c0f16b36e558'
             'f404ecd34354822f0d2112dcf082ee6b155fe84433e5a9fcc972bc01df561042')
 
 build() {
