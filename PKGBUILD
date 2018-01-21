@@ -1,18 +1,17 @@
 # Maintainer: Rémi BERTHO <remi.bertho@dalan.fr>
 # Contributor: Rémi BERTHO <remi.bertho@dalan.fr>
 pkgname=libcsuper
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc="Universal points counter allowing reflexion exemption - Library"
 arch=(any)
 url="https://www.dalan.fr"
 license=('GPL')
 depends=('libxml++' 'glibmm' 'muparser' 'podofo' 'cairo')
-optdepends=('csuper-cli' 'csuper-gtk')
 makedepends=('cmake')
 install="INSTALL"
 source=(https://www.binaries.dalan.fr/Csuper/$pkgver/csuper-$pkgver-sources.tar.xz)
-sha512sums=('51fc47154c31325b0a2066df7f70330d6bc6a678505e065e7ae9bc259a04796c4607c5a809e36c097cf549766f3e9efdce59f98f02fbe68a295323bfa06a8901')
+sha512sums=('2ac8906142c91509814719b843b4047ed9c30200531de973beced4551bf225e112e22c3457c156309c33b036752647c12380fa51e9e46a3e363310bea35a10f1')
  
 build()
 {
