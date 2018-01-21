@@ -1,8 +1,48 @@
 Version history
 ===============
 
+0.9.9
+-----
+
+2018-01-22
+
+Added Arty's multiplayer maps: Knock 'em Dead, Pyramid Scheme, Pandemonium
+Box. Modified Rubix's Access Denied to make it completely symmetric.
+
+Fix #289: Replays that didn't point to levels, or even empty text files,
+crashed the replay browser on highlight.
+
+Fix #290: Fixed crash when running Lix from the quicklaunch bar on Windows.
+Allegro 5 has an issue where the Windows sound driver depends on an active
+display, and I assumed that the sound initialization would always succeed.
+I've reordered my initializations and display an error message, not crash, in
+case the sound driver still fails to initialize, which should be rare.
+
+Fix #288: Added optional program-wide hotkey to take a screenshot of the
+entire Lix window, saved in the export directory. No default keybinding.
+Plays disksave.ogg on screenshotting.
+
+Fix #291: Replay verifier called from the replay browser won't interrupt
+the main menu music.
+
+Fix #286: The player list in the multiplayer lobby won't draw over other parts
+of the window.
+
+The splat ruler isn't drawn while the mouse hovers over the panel. All three
+colored bars of the ruler are drawn at 80 % opacity, not 100 %, to keep
+terrain details visible behind. Activating splat ruler/exit ping doesn't play
+a sound effect anymore.
+
+Drew sunglasses icon and multiplayer nuke icon at scale 200 %.
+
+Savestates during game play clock.ogg, not disksave.ogg, because they aren't
+written to disk. disksave.ogg is always played quietly, not loudly, because
+the sound file is extremely loud already.
+
 0.9.8
 -----
+
+2018-01-15
 
 lemforum: Lix Cannon, cover confusing gaps that were solid. Pipe Dream, remove
 miners, improve lower route. Snow Jump, raise two pieces slightly.
