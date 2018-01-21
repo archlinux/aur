@@ -4,7 +4,7 @@
 
 pkgname="home-assistant"
 pkgdesc='Open-source home automation platform running on Python 3'
-pkgver=0.60.1
+pkgver=0.61.1
 pkgrel=1
 url="https://home-assistant.io/"
 license=('APACHE')
@@ -23,7 +23,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "home-assistant.sysusers"
         "home-assistant-tmpfile.conf"
         "hass.install")
-sha512sums=('ec960544dbf1839964958eada30bb7467138ba4a263c748a30cd9cd5879d5a203d8da940fd996723c0272d3c45a096c5324e469acbfcfa1acb34ff6071995fb1'
+sha512sums=('e94a140b1217a76669077ede1d5d01fde35efa95aa8fac349f2440e75b5f111ac73146a0e209b4d7591498d178893908eaf521b13a38cdf1429e477113164b12'
             'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
             '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
             '8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad'
@@ -39,6 +39,7 @@ prepare() {
   # typing package is a backport of standard library < 3.5
   replace 'typing>=3,<4' '' setup.py
   replace 'voluptuous>=0.10.5' 'voluptuous>=0.9.3' setup.py
+  replace 'yarl>=0.18.0' 'yarl>=0.16.0' setup.py
 }
 
 replace() {
