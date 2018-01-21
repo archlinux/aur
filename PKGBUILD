@@ -10,8 +10,8 @@
 
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git')
-pkgver=8.0.0.r158636.6b74e46fb96
-_pkgver_base=8.0.0
+pkgver=8.0.1.r159589.5839d47d0d6
+_pkgver_base=8.0.1
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
 arch=('any')
@@ -47,9 +47,8 @@ prepare() {
 
         cd ${srcdir}/${_basedir}
 
-        # link isl/cloog for in-tree builds
+        # link isl for in-tree builds
         ln -s ../isl-${_islver} isl
-        ln -s ../cloog-${_cloogver} cloog
 
         # Do not run fixincludes
         sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
@@ -60,7 +59,7 @@ prepare() {
         # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
         sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-        mkdir ${srcdir}/gcc-build
+        mkdir -p "${srcdir}/gcc-build"
 }
 
 build() {
