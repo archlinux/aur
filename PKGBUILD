@@ -7,16 +7,13 @@
 
 pkgname=kimchi
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="KVM management plugin for WoK."
 arch=(any)
 url="https://github.com/kimchi-project/kimchi"
 license=('LGPL' 'Apache')
 groups=('kimchi-project')
-depends=('bridge-utils'
-         'dnsmasq'
-         'ebtables'
-	 'libvirt-python2'
+depends=('libvirt-python2'
 	 'open-iscsi'
 	 'nfs-utils'
          'python2-paramiko'
