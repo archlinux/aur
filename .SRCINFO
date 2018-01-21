@@ -1,6 +1,6 @@
 pkgbase = gtk3-ubuntu
 	pkgdesc = GObject-based multi-platform toolkit
-	pkgver = 3.22.26+47+g3a1a7135a2
+	pkgver = 3.22.26
 	pkgrel = 1
 	url = http://www.gtk.org/
 	install = gtk3.install
@@ -39,6 +39,7 @@ pkgbase = gtk3-ubuntu
 	depends = shared-mime-info
 	depends = wayland
 	depends = wayland-protocols
+	depends = gtk-update-icon-cache
 	source = git+https://git.gnome.org/browse/gtk+#commit=3a1a7135a276f2b6336c7566f6342da739a41d39
 	source = 0001-entry-Undo-ABI-breakage-from-addition-of-insert_emoj.patch
 	source = ubuntu_gtk_custom_menu_items.patch
@@ -46,7 +47,7 @@ pkgbase = gtk3-ubuntu
 	source = gtk-query-immodules-3.0.hook
 	source = gtk-update-icon-cache.hook
 	source = gtk-update-icon-cache.script
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_3.22.26+47+g3a1a7135a2-2ubuntu1.debian.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_3.22.26-2ubuntu1.debian.tar.xz
 	sha512sums = SKIP
 	sha512sums = aa57f33b55ef858e9ddb305c01ddd4c995c6cbb0ea429844e5b6e77321192909090e6f77de7d4484c46838bdba989105bfefdff594f46dc80544820bcffcfb46
 	sha512sums = d369ea456ee48c371506dedc5e0ca8d60d9bcca9362dc76caaa4d70adf67b32524aabcb2383136cbbf023dadcba0c54a37db25cde89944d1cfe2ae7ac8bd9258
@@ -83,12 +84,8 @@ pkgname = gtk3-ubuntu
 	depends = wayland
 	depends = wayland-protocols
 	depends = gtk-update-icon-cache
+	depends = gtk-update-icon-cache
 	provides = gtk3-print-backends
 	conflicts = gtk3-print-backends
 	replaces = gtk3-print-backends<=3.22.26-1
-
-pkgname = gtk-update-icon-cache
-	pkgdesc = GTK+ icon cache updater
-	depends = gdk-pixbuf2
-	depends = hicolor-icon-theme
 

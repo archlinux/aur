@@ -9,8 +9,7 @@
 
 _use_ppa=true
 
-pkgbase=gtk3-ubuntu
-pkgname=(gtk3-ubuntu gtk-update-icon-cache-ubuntu)
+pkgname=gtk3-ubuntu
 _ubuntu_rel=2ubuntu1
 pkgver=3.22.26
 pkgrel=1
@@ -21,7 +20,7 @@ install=gtk3.install
 depends=(adwaita-icon-theme at-spi2-atk atk cairo cantarell-fonts dconf desktop-file-utils
 	gdk-pixbuf2 gtk-update-icon-cache json-glib libepoxy librsvg libxcomposite libxcursor
 	libxdamage libxi libxinerama libxkbcommon libxrandr mesa pango shared-mime-info wayland
-	wayland-protocols)
+	wayland-protocols gtk-update-icon-cache)
 makedepends=(colord gobject-introspection git gtk-doc libcanberra rest libcups glib2-docs sassc)
 license=(LGPL)
 _commit=3a1a7135a276f2b6336c7566f6342da739a41d39  # gtk-3-22
@@ -117,14 +116,3 @@ package_gtk3-ubuntu() {
 
 }
 
-package_gtk-update-icon-cache-ubuntu() {
-  pkgdesc="GTK+ icon cache updater"
-  depends=(gdk-pixbuf2 hicolor-icon-theme)
-  provides=(gtk-update-icon-cache)
-  conflicts=(gtk-update-icon-cache)
-
-  cd gtk+
-  install -D gtk/gtk-update-icon-cache "$pkgdir/usr/bin/gtk-update-icon-cache"
-  install -Dm644 ../gtk-update-icon-cache.hook "$pkgdir/usr/share/libalpm/hooks/gtk-update-icon-cache.hook"
-  install -D ../gtk-update-icon-cache.script "$pkgdir/usr/share/libalpm/scripts/gtk-update-icon-cache"
-}
