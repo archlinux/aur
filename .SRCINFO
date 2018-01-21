@@ -1,10 +1,12 @@
 pkgbase = centrifuge-bin
 	pkgdesc = Bioinformatics taxonomic classifier for microbial classification
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ccb.jhu.edu/software/centrifuge/
 	arch = x86_64
 	license = GPL3
+	provides = centrifuge
+	conflicts = centrifuge
 	source = ftp://ftp.ccb.jhu.edu/pub/infphilo/centrifuge/downloads/centrifuge-1.0.3-beta-Linux_x86_64.zip
 	sha256sums = acf3612c92f50d256715e8847a5c68bf58dc7bf7cb730f37e53f7c49930cdaa3
 
