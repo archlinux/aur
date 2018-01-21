@@ -1,6 +1,6 @@
 pkgname=oor
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Overlay Router (formerly LISPmob) - Locator/ID Separation Protocol (LISP) and LISP Mobile Node implementation"
 url="https://openoverlayrouter.org/"
 arch=('x86_64' 'i686' 'armv6h')
@@ -29,7 +29,7 @@ build() {
 package() {
   cd oor
   make PREFIX="/usr/bin/" DESTDIR="$pkgdir" install
-  install -Dm644 oor/oor.conf.example "$pkgdir"/etc/oor.conf
+  install -Dm600 oor/oor.conf.example "$pkgdir"/etc/oor.conf
   install -Dm644 "$srcdir"/oor.service "$pkgdir"/usr/lib/systemd/system/oor.service
 }
 
