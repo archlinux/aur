@@ -3,7 +3,7 @@
 
 _pkgname=onedrive
 pkgname=$_pkgname-git
-pkgver=r154.g4511242
+pkgver=1.1.1.r0.gd9a5d1b
 pkgrel=1
 epoch=1
 pkgdesc='Free OneDrive client written in D'
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd $_pkgname
 
-  printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
