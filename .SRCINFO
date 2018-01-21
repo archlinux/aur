@@ -14,6 +14,7 @@ pkgbase = wget2-git
 	depends = libpsl
 	depends = gpgme
 	depends = nghttp2
+	depends = lzip
 	optdepends = ca-certificates: HTTPS Downloads
 	provides = wget2
 	conflicts = wget2
