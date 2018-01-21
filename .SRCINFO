@@ -1,0 +1,16 @@
+pkgbase = libtickit
+	pkgdesc = Library for building interactive full-screen terminal programs.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.leonerd.org.uk/code/libtickit
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libtermkey
+	depends = unibilium>=1.1.0
+	conflicts = libtickit-git
+	source = http://www.leonerd.org.uk/code/libtickit/libtickit-0.2.tar.gz
+	sha512sums = 5ba8581dfc17d0f56fc9e543aa452980ce864a5079a34d60db3a15b49c82c894ce082598865aeaa28c32c32549c40582fb40d1209ea893c8c6993604cae9437b
+
+pkgname = libtickit
+
