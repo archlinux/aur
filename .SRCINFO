@@ -1,0 +1,18 @@
+pkgbase = nerd-fonts-fira-mono
+	pkgdesc = Patched font Fira Mono from nerd-fonts library
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	install = nerd-fonts-fira-mono.install
+	arch = any
+	license = MIT
+	depends = fontconfig
+	depends = xorg-font-utils
+	depends = wget
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v1.2.0/FiraMono.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v1.2.0/LICENSE
+	sha256sums = 77ffee4498e23e3215edc9ea6eefa9f10b03deb6815dc3ccb9ad3336cd478f5c
+	sha256sums = d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5
+
+pkgname = nerd-fonts-fira-mono
+
