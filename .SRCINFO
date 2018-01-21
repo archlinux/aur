@@ -1,18 +1,18 @@
 pkgbase = openecardapp
 	pkgdesc = Open eCard-App (opencard) is an open source alternative of the AusweisApp
 	pkgver = 1.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openecard.org
 	arch = any
 	license = GPL3
 	depends = java-runtime
 	depends = pcsclite
-	noextract = richclient-1.2.4-20161024-1455.jar
-	noextract = cifs-1.2.4-20161024-1455.jar
-	source = https://jnlp.openecard.org/richclient-1.2.4-20161024-1455.jar
-	source = https://jnlp.openecard.org/cifs-1.2.4-20161024-1455.jar
-	sha256sums = 2768fd0a0fdc1eab5531f72e72221c30301b6978dd599cb1dd278df4edd98684
-	sha256sums = acefa03ac2e97b5d7dcdc2eba754dea0a66fe3499b952d89913586c62fefd513
+	noextract = richclient-1.2.4-20171212-0958.jar
+	noextract = cifs-1.2.4-20171212-0958.jar
+	source = https://jnlp.openecard.org/richclient-1.2.4-20171212-0958.jar
+	source = https://jnlp.openecard.org/cifs-1.2.4-20171212-0958.jar
+	sha256sums = d91e7902e81fc70c0b065f03284940bf943580f9f4185bcb72f093fb35f470b2
+	sha256sums = 394fcf87049fe7c62a661e626f7ac85efb8b7195bdec900fe2daf8d1a9308865
 
 pkgname = openecardapp
 
