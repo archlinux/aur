@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.2.beta2.r0.ga1782046e2
+pkgver=8.2.beta3.r0.g56a4bc7e76
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -29,11 +29,11 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
   'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
-  'meataxe: faster matrix arithmetic over finite fields'
+  'shared_meataxe: faster matrix arithmetic over finite fields'
   'sirocco: for computing the fundamental group of the complement of a plane curve'
   'three.js: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
-  mcqd coxeter3 bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
+  mcqd coxeter3 bliss-graphs tdlib python2-pkgconfig shared_meataxe libfes git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-threejs.patch pari-stackwarn.patch
@@ -48,7 +48,7 @@ sha256sums=('SKIP'
             'afd0952b9bb8f52fd428eae36cf719a58ff85a894baae88cbb2124e043768cc7'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             '514135b920a43f999571a15e97b41e14f5bed59f65b19643864dc23555a7b830'
-            'bfd2a20a33ab19a8a8b216a77d07f62e809fe1e1879c4f171ce5dca62fd482e9'
+            'e4a2f1de73dc3a6deedc1a05d716facd94afc9fe98239c4300e1b67375f95fc1'
             '28d7789b8d777922ab8871ca43b6afab751428cae875c0343d3962e6a2030b88'
             '1024f3a6a9a1a6ae96d9962bb7d1f5842f4a4a5ff5098afad81a60188b7d5160'
             'b9ab2bb5f381ea425e8763b81b8b3a108a3951c594fb1f37f7df921e7c77e26d'
