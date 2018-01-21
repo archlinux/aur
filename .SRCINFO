@@ -8,6 +8,7 @@ pkgbase = vnote-git
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-webengine
+	depends = qt5-svg
 	source = git://github.com/tamlok/vnote.git
 	sha256sums = SKIP
 

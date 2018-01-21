@@ -6,7 +6,7 @@ pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=('any')
 url='https://tamlok.github.io/vnote/'
 license=('MIT')
-depends=('qt5-base' 'qt5-webengine')
+depends=('qt5-base' 'qt5-webengine' 'qt5-svg')
 makedepends=('git')
 
 source=("git://github.com/tamlok/vnote.git")
