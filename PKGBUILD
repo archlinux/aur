@@ -1,10 +1,12 @@
-# Maintainer: James Bunton <jamesbunton@delx.net.au>
+# Maintainer: SharkEzz <icraft640@gmail.com>
+# Contributor: James Bunton <jamesbunton@delx.net.au>
+
 
 # The latest version can be found like this:
 # $ curl -s https://bluejeans.com/downloads | grep 'desktop/linux'
 
 pkgname=bluejeans
-pkgver=1.27.29
+pkgver=1.32.7
 pkgrel=1
 pkgdesc="BlueJeans desktop app for video calls"
 arch=('x86_64')
@@ -69,7 +71,8 @@ depends=('alsa-lib'
          'zlib')
 install=bluejeans.install
 source=(https://swdl.bluejeans.com/desktop/linux/${pkgver%.*}/${pkgver}/bluejeans-${pkgver}.x86_64.rpm)
-sha256sums=('dcf77da576e340dbb37c4a0252ddcfc4ae818c182eaf2a55a049a00dd989a324')
+
+sha256sums=('3c0e37ebfbb7ffbadcbde9815c70d59c8efb1825fdcd170629b95b2b49de1ef6')
 
 package() {
   # add bluejeans wrapper to /usr/bin
