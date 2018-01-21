@@ -3,7 +3,7 @@
 
 pkgname=('polis-daemon' 'polis-cli' 'polis-qt')
 pkgbase=polis
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=0
 arch=('i686' 'x86_64')
 url="http://www.polispay.org/"
@@ -17,7 +17,7 @@ license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/polispay/polis/archive/v${pkgver}.tar.gz"
 	"txmempool.patch"
 	"polisd@.service")
-sha256sums=('d5bd3482f707dc281a41e1661d0d0081d7a0a54e516046f60921724a3c809619'
+sha256sums=('94b09a54ca943d4132ae06abc89c41229bb8c83a3ee9e5a0a5d257076386ccd3'
 	    '2d033c1ee77e1fae89da61f3b0e494feaf91f1b860fe4b3c0ec848c013776a25'
             '59fc628be7c2aa6dc6db31d7a621392d2e24f1722328b4cfb0797ffe76e108be')
 
