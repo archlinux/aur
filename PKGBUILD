@@ -1,51 +1,48 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Contributer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=ucsc-kent-genome-tools
-pkgver=347
+pkgver=348
 pkgrel=1
-pkgdesc="UCSC genome browser 'kent' bioinformatic utilities"
-arch=('i686' 'x86_64')
+pkgdesc="UCSC Kent bioinformatics utilities: kent source utilities"
+arch=('x86_64')
 url="http://hgdownload.soe.ucsc.edu/admin/exe/"
-license=('other')
-install=$pkgname.install
-depends=('mariadb-clients' 'libpng' 'openssl')
-source=(http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v${pkgver}.src.tgz)
-sha1sums=('25b6351f795f11e95e061b00dfd1b027dc4dd776')
+license=('custom:UCSC')
+install="${pkgname}".install
+depends=('libpng' 'mariadb-clients' 'uuid' 'openssl')
+source=(
+  .hg.conf
+  "${pkgname}".sh
+  "${pkgname}"-"${pkgver}".src.tgz::http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v"${pkgver}".src.tgz
+)
+sha256sums=(
+  '359db5b022847d3d674f21821fa08a363d2183379d59a2b63129fcf90954d674'
+  '926eb0ff0bdce64d6a3439647d8b7c639b26a7211d9eee11bdaab9bd473c0959'
+  '8ef45648fd4d022d33fd57f1dd2702a56074364eea3c3334d77f501128f390a5'
+)
 
 prepare() {
-  cd "${srcdir}/userApps/"
+  cd "${srcdir}"/userApps
   make clean
 }
 
 build() {
-  cd "${srcdir}/userApps/"
-  # don't know why I need the next three lines
-  make libs
-  cp kent/src/lib/x86_64/* kent/src/lib/local/.
-  cp kent/src/lib/local/* kent/src/lib/x86_64/.
+  cd "${srcdir}"/userApps
   make all
 }
 
 package() {
-  cd "${srcdir}/userApps/"
-  mkdir -p "${pkgdir}/opt/${pkgname}/"
-  cp -a * "${pkgdir}/opt/${pkgname}/."
-  rm -rf "${pkgdir}/opt/${pkgname}/kent"
+  install -Dm644 .hg.conf "${pkgdir}"/opt/"${pkgname}"/.hg.conf
+  install -Dm755 "${pkgname}".sh  "${pkgdir}"/etc/profile.d/"${pkgname}".sh
 
-  mkdir -p "$pkgdir/etc/profile.d"
-  echo "export PATH=/opt/${pkgname}/bin:"'$PATH' > "$pkgdir/etc/profile.d/${pkgname}.sh"
-  chmod +x "$pkgdir/etc/profile.d/${pkgname}.sh"
+  for script in "${srcdir}"/userApps/bin/*; do
+    install -Dm755 "${script}" "${pkgdir}"/opt/"${pkgname}"/$(basename "${script}")
+  done
 
-  cat  > "${pkgdir}/opt/${pkgname}/.hg.conf" <<EOF
-db.host=genome-mysql.cse.ucsc.edu
-db.user=genomep
-db.password=password
-central.db=hgcentral
-EOF
-   
-  install -D -m644 licenseUcscGenomeBrowser.txt "${pkgdir}/usr/share/licenses/${pkgname}/licenseUcscGenomeBrowser.txt"
-  install -D -m644 GenomeBrowserLicense.pdf "${pkgdir}/usr/share/licenses/${pkgname}/GenomeBrowserLicense.pdf"
-  install -D -m644 licenseBlat.txt "${pkgdir}/usr/share/licenses/${pkgname}/licenseBlat.txt"
+  install -Dm644 "${srcdir}"/userApps/README "${pkgdir}"/usr/share/doc/"${pkgname}"/README
+  install -Dm644 "${srcdir}"/userApps/kentUtils.Documentation.txt "${pkgdir}"/usr/share/doc/"${pkgname}"/kentUtils.Documentation.txt
+
+  install -Dm644 "${srcdir}"/userApps/licenseUcscGenomeBrowser.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/licenseUcscGenomeBrowser.txt
+  install -Dm644 "${srcdir}"/userApps/GenomeBrowserLicense.pdf "${pkgdir}"/usr/share/licenses/"${pkgname}"/GenomeBrowserLicense.pdf
+  install -Dm644 "${srcdir}"/userApps/licenseBlat.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/licenseBlat.txt
 }
-
-# vim:set ts=2 sw=2 et:

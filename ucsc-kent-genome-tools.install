@@ -1,4 +1,3 @@
-## arg 1:  the new package version
 post_install() {
    echo
    echo "To enable access to the UCSC SQL database, run the following for each user:"
@@ -10,4 +9,3 @@ post_install() {
    echo "To enable them immediately"
    echo
 }
-
