@@ -1,30 +1,21 @@
 pkgname=go-bin
-pkgver=1.5rc1
+pkgver=1.9.2
 pkgrel=1
 provides=('go')
-conflicts=('go')
 pkgdesc='Compiler and tools for the Go programming language from Google'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='http://golang.org/'
-license=('BSD')
-makedepends=('git' 'go')
+license=('custom')
+depends=('bash' 'perl')
+optdepends=('java-environment: for running testsuite')
 options=('!strip' 'staticlibs')
-
-sha1sums_i686=('97ae55622479bbffaed893d72f699b32437acc8d')
-sha1sums_x86_64=('2abf55effd93f5c2dcef306eaf14d3e7f614a407')
-
-source_i686=("https://storage.googleapis.com/golang/go${pkgver}.linux-386.tar.gz")
-source_x86_64=("https://storage.googleapis.com/golang/go${pkgver}.linux-amd64.tar.gz")
+sha1sums_x86_64=('94c889e039e3d2e94ed95e8f8cb747c5bc1c2b58'
+                 '0428eb2625009006fe0a64883ec74f528c7a02c6')
+source_x86_64=("https://storage.googleapis.com/golang/go${pkgver}.linux-amd64.tar.gz" etcgobin)
 
 package() {
-	mkdir -p $pkgdir/usr/local
-	tar -C $pkgdir/usr/local -xzf go${pkgver}.linux-*.tar.gz
-
-	# bin
-	mkdir -p $pkgdir/etc/profile.d
-	cat > $pkgdir/etc/profile.d/go-bin.sh <<-'EOF'
-	#!/bin/sh
-
-	export PATH=$PATH:/usr/local/go/bin
-	EOF
+  install -d "$pkgdir"/opt
+  tar -C "$pkgdir"/opt -xzf go${pkgver}.linux-*.tar.gz
+  install -Dm755 "$srcdir"/etcgobin "$pkgdir"/etc/profile.d/go-bin.sh
+  install -Dm644 "$srcdir"/go/LICENSE "$pkgdir"/usr/share/licenses/go-bin/LICENSE
 }

@@ -1,21 +1,20 @@
 pkgbase = go-bin
 	pkgdesc = Compiler and tools for the Go programming language from Google
-	pkgver = 1.5rc1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = http://golang.org/
 	arch = x86_64
-	arch = i686
-	license = BSD
-	makedepends = git
-	makedepends = go
+	license = custom
+	depends = bash
+	depends = perl
+	optdepends = java-environment: for running testsuite
 	provides = go
-	conflicts = go
 	options = !strip
 	options = staticlibs
-	source_x86_64 = https://storage.googleapis.com/golang/go1.5rc1.linux-amd64.tar.gz
-	sha1sums_x86_64 = 2abf55effd93f5c2dcef306eaf14d3e7f614a407
-	source_i686 = https://storage.googleapis.com/golang/go1.5rc1.linux-386.tar.gz
-	sha1sums_i686 = 97ae55622479bbffaed893d72f699b32437acc8d
+	source_x86_64 = https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
+	source_x86_64 = etcgobin
+	sha1sums_x86_64 = 94c889e039e3d2e94ed95e8f8cb747c5bc1c2b58
+	sha1sums_x86_64 = 0428eb2625009006fe0a64883ec74f528c7a02c6
 
 pkgname = go-bin
 
