@@ -22,7 +22,7 @@ pkgbase = garlicoin-cli-git
 	provides = garlicoin-cli
 	conflicts = garlicoin-cli
 	conflicts = garlicoin
-	source = git://github.com/retosen/Garlicoin.git
+	source = git://github.com/GarlicoinOrg/Garlicoin.git
 	sha256sums = SKIP
 
 pkgname = garlicoin-cli-git

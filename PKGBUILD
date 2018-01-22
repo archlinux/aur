@@ -11,7 +11,7 @@ depends=('gcc-libs' 'miniupnpc' 'openssl' 'db4.8')
 makedepends=('pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'make' 'automake' 'autoconf' 'libtool')
 provides=('garlicoin-cli')
 conflicts=('garlicoin-cli' 'garlicoin')
-source=('git://github.com/retosen/Garlicoin.git')
+source=('git://github.com/GarlicoinOrg/Garlicoin.git')
 sha256sums=('SKIP')
 
 pkgver() {
