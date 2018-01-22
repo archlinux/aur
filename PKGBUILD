@@ -8,10 +8,10 @@
 # SELinux Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
 
 pkgname=coreutils-selinux
-pkgver=8.28
+pkgver=8.29
 pkgrel=1
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 url='https://www.gnu.org/software/coreutils/'
 groups=('selinux')
@@ -21,7 +21,7 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 source=("https://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig})
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
-md5sums=('e7cb20d0572cc40d9f47ede6454406d1'
+md5sums=('960cfe75a42c9907c71439f8eb436303'
          'SKIP')
 
 prepare() {
