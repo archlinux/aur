@@ -26,11 +26,6 @@ prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
 }
 
-package() {
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
-}
-
 build(){
   cd "${srcdir}"/"${_name}"-"${pkgver}"
   python setup.py build
