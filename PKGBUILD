@@ -3,8 +3,8 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.10.1
-pkgrel=2
+pkgver=3.10.2
+pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="http://www.cmake.org/"
@@ -15,7 +15,7 @@ optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
         'cmake-3.10-boost-1.66-support.patch')
-sha512sums=('14e9a7f01747b369cad3c4e4e83bc777c0c98ce69209456f60d086d2471302f66dc1c1d22fd04e11dcb64de4bfc7dacd9aca70ee0e5f006abd1df79ef642eeed'
+sha512sums=('f58fdd025285c9ff5396c0bd0d9573fc8a498fcbe5c11b336cb8ad6154ca6bc875c1a5e22d6654ba98596791ecf89ae8adffb83450839fa1275756b0af5bf82b'
             'edc24a0e057056427e15b0b4c23828c8d0d23a69061d0ede9ae1bb6104bece53157480f63361b48994ea9f3b12f5bcd9f1d56c4f7d5c4b1b88c8e1a7b6ee5b68')
 
 prepare() {
