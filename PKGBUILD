@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-mailer
-pkgver=0.7
-pkgrel=4
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="A module that simplifies sending email."
 arch=('any')
 url='http://pypi.python.org/pypi/mailer'
@@ -10,12 +10,10 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/m/mailer/mailer-$pkgver.zip")
+sha256sums=('3411a12197731e0d5379ab194d9acc8d0d71c8b95fdfb11474d67c3e9860070e')
 options=(!emptydirs)
 
 package() {
 	cd "$srcdir/mailer-$pkgver"
-	2to3 -nw .
 	python setup.py install --root="$pkgdir" -O1
 }
-
-sha256sums=('294097bdd3698d1268b3bc07d90b3b47b56cce47c61a394322ac68f9fee0f8f3')
