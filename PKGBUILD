@@ -1,14 +1,14 @@
 pkgname=janusvr
 pkgdesc='JanusVR is a 3D VR internet browser'
 url='http://www.dgp.toronto.edu/~mccrae/projects/firebox/'
-pkgver=53.11
+pkgver=59.8
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 janusver=$(curl http://www.janusvr.com/version.html)
 source=("janusvr${janusver}.gz::http://downloads.janusvr.com/janusvr_linux.tar.gz"
         "janusvr.sh"
-	"http://janusvr.com/images/logoonly.png"
+	"https://janusvr.com/images/logos/logoonly.png"
         "janusvr.desktop")
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'sqlite' 'dbus-glib' 'qt5-multimedia')
 optdepends=("oculus-rift-sdk-jherico-git: For libOVR including a fix for mesa. Don't forget to Replace /opt/janusvr/libOVRRT64_0.so.5.0.1")
