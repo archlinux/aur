@@ -5,7 +5,7 @@
 pkgbase='python-pymunk'
 _libname=${pkgbase/python-/}
 pkgname=('python-pymunk' 'python2-pymunk')
-pkgver=5.1.0
+pkgver=5.3.2
 pkgrel=1
 pkgdesc="A wrapper around the 2d physics library Chipmunk"
 arch=('any')
@@ -13,6 +13,7 @@ url='http://www.pymunk.org/en/latest/'
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.zip")
+sha256sums=('d8b22479c71b886b34c103ca7d272aa207a974057ba90eeb85be2e793ff36d4a')
 
 prepare() {
 	cd "$srcdir"/pymunk-$pkgver
@@ -54,5 +55,3 @@ package_python2-pymunk() {
 
 	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
-
-sha256sums=('83b3c6db9b556af215d5cb858b88745924afab53f0025f20e89491e65f606424')
