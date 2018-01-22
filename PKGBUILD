@@ -2,14 +2,14 @@
 
 pkgname=taudem
 _pkgname=TauDEM
-pkgver=5.3.8
+pkgver=5.3.8  
 pkgrel=1
 pkgdesc="TauDEM (Terrain Analysis Using Digital Elevation Models) is a suite of Digital Elevation Model (DEM) tools for the extraction and analysis of hydrologic information from topography as represented by a DEM."
 arch=(i686 x86_64)
 url="http://hydrology.uwrl.usu.edu/taudem"
 license=('GPL')
-depends=('gdal')
-makedepends=('openmpi' 'cmake')
+depends=('gdal' 'openmpi')
+makedepends=('cmake')
 optdepends=()
 provides=()
 conflicts=()
@@ -21,6 +21,7 @@ md5sums=('593ffc11acd3d92d656863424f981a19')
 build() {   
   cd ${srcdir}/${_pkgname}-${pkgver}/src
   
+  export LC_ALL=C  
   make
 }
 
@@ -56,6 +57,7 @@ package() {
   install -Dm755 slopeavedown "${pkgdir}/usr/local/bin/slopeavedown"
   install -Dm755 streamnet "${pkgdir}/usr/local/bin/streamnet"
   install -Dm755 threshold "${pkgdir}/usr/local/bin/threshold"
+  install -Dm755 twi "${pkgdir}/usr/local/bin/threshold"
 }  
 
 
