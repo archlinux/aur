@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-insiders
 pkgver=1.20.0.1516256318
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
@@ -16,7 +16,7 @@ source_i686=(code_ia32_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net
               ${pkgname}.desktop
               )
 sha256sums_x86_64=('SKIP'
-                   'd1e09a7fd4f877485fc584c798b8f9ac953a97662562540b9b5009c86f1b3')
+                   '21ad1e09a7fd4f877485fc584c798b8f9ac953a97662562540b9b5009c86f1b3')
 sha256sums_i686=('SKIP'
                  '21ad1e09a7fd4f877485fc584c798b8f9ac953a97662562540b9b5009c86f1b3')
 pkgver() {
