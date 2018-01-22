@@ -1,0 +1,17 @@
+pkgbase = mdcat
+	pkgdesc = Show CommonMark (a standardized Markdown dialect) documents on text terminals.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/lunaryorn/mdcat
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	conflicts = mdcat-git
+	source = mdcat-0.4.0.tar.gz::https://github.com/lunaryorn/mdcat/archive/mdcat-0.4.0.tar.gz
+	sha512sums = 9670511a1da2954d435c248bb7c4e85aeaf52410fe3b5bf6c60916448516ee509c3bdd282f8e7c4532dff2fb461d0d14c08afce2d53ef285bd16b56f06d1556d
+
+pkgname = mdcat
+
