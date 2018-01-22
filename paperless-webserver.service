@@ -1,0 +1,11 @@
+[Unit]
+Description=Paperless webserver
+
+[Service]
+User=httpdjg
+Group=httpdjg
+ExecStart=python /usr/share/webapps/paperless/src/manage.py runserver 127.0.0.1:8000
+
+[Install]
+WantedBy=multi-user.target
+

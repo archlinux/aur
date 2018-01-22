@@ -1,0 +1,11 @@
+[Unit]
+Description=Paperless consumer
+
+[Service]
+User=paperless
+Group=paperless
+ExecStart=python /usr/share/webapps/paperless/src/manage.py document_consumer
+
+[Install]
+WantedBy=multi-user.target
+
