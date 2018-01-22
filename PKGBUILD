@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=python2-pysqlcipher
-pkgver=2.6.7
+pkgver=2.6.9.1
 pkgrel=1
 pkgdesc="Python interface to SQLCipher"
 arch=(any)
@@ -16,4 +16,4 @@ package(){
 
   python2 setup.py install --root="$pkgdir"
 }
-md5sums=('e8c6904a369b2287e240f5fd1d7eb5b0')
+md5sums=('502c1543199f53c561a9d649abc1fb77')
