@@ -2,29 +2,31 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=1.1.54310
+pkgver=1.1.54337
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
 license=('Apache')
-depends=('ncurses' 'readline' 'unixodbc' 'termcap')
-makedepends=('poco' 'cmake')
+depends=('ncurses' 'readline' 'unixodbc' 'termcap' 'double-conversion' 'capnproto' 're2' 'gtest' 'poco')
+makedepends=('cmake')
 source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/google/cctz/archive/4f9776a.tar.gz
         https://github.com/edenhill/librdkafka/archive/3401fa1.tar.gz
         https://github.com/lz4/lz4/archive/c10863b.tar.gz
         https://github.com/ClickHouse-Extras/zookeeper/archive/d2f05a6.tar.gz
         https://github.com/facebook/zstd/archive/f4340f4.tar.gz
+        https://github.com/Dead2/zlib-ng/archive/e07a52d.tar.gz
         clickhouse-server.service
         re2-length.patch
         libunwind.patch)
-md5sums=('9d022df076ff8e6ad9a175f3c1b017a2'
+md5sums=('e6a1820e3267a39f831223f46ef42d64'
          '5323f7ba2565a84a80a93edde95eb4fe'
          '6bc0f4f409d8ff24019afd9e15cd3d19'
          '7b92f0554687e6a8949adc5c10aeff78'
          '6636ab50e66d1c0a1e05d83ed6154bdc'
          'e3212525a38d6cc38e26979a10c174ed'
+         '87676f8d7fcdea908476029f92b8103f'
          'f9f5663b0a9a58e99f481efe9d193e85'
          '143f0146c3ef3a6832191fba352b70c4'
          'f3f60b75abf8d6f21de74db6e88e1e7b')
@@ -34,6 +36,7 @@ install=$pkgname.install
 prepare() {
   cd ClickHouse-$pkgver-stable
   sed -e 's/mysqlxx common\(.*\) \(\${Z_LIB}\)/mysqlxx \2 common\1/' -i libs/libmysqlxx/CMakeLists.txt
+  sed -e '/FindODBC/s/^/#/' -i CMakeLists.txt
   patch -p1 < ../re2-length.patch
   patch -p1 < ../libunwind.patch
   mkdir -p contrib/cctz contrib/librdkafka contrib/lz4 contrib/zookeeper contrib/zstd
@@ -42,11 +45,15 @@ prepare() {
   mv ../lz4-c10863b*/* contrib/lz4/
   mv ../zookeeper-d2f05a6*/* contrib/zookeeper/
   mv ../zstd-f4340f4*/* contrib/zstd/
+  mv ../zlib-ng-e07a52d*/* contrib/zlib-ng/
+  for dir in contrib/*/; do
+    rmdir $dir &> /dev/null || true
+  done
 }
 
 build() {
   cd ClickHouse-$pkgver-stable
-  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False .
+  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=False .
   make clickhouse
 }
 
