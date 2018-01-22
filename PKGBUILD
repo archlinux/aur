@@ -6,7 +6,7 @@
 # URL used for version checking: http://dustkid.com/backend8/dustmod_version.php
 
 pkgname=dustforce-hib-dustmod
-pkgver=1.0+h20141222_8.1.1
+pkgver=1.0+h20141222_8.1.2
 _hibver=2014-12-22
 _hibver_windows=07012015
 pkgrel=1
@@ -15,7 +15,7 @@ url='https://dustkidblog.wordpress.com/2016/11/19/dustmod-has-updated/'
 arch=('x86_64')
 license=('custom:commercial')
 depends=('mesa' 'libgl' 'sdl2' 'libxdamage' 'freealut' 'libidn' 'libvorbis'
-         'libxft' 'xdg-utils')
+         'libxft' 'xdg-utils' 'openssl-1.0')
 PKGEXT='.pkg.tar'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
@@ -29,8 +29,8 @@ source=("hib://${_installer}"
         'dustforce-hib-dustmod.desktop')
 md5sums=('e2fa7efd5b9ec64fc453f32480f63ad4'
          'fed1b6d82bdbea66d242eaaaf7d3a2f2'
-         '483702c3cdd4edc9e006c229b9685ab4'
-         '91948b90d63e5a874932ef84a0974fc9'
+         '5458f106b78f210dda7cb8e37525205c'
+         '1e1900f7d2956acbaa38797f06f068f2'
          '7b30db080ff59c0eba443b14da7c39bc'
          'cc98a6127bc6d6cbdcfced14c69327cf')
 # zip with no top-level directory - will extract manually
