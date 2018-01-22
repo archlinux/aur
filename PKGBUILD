@@ -6,7 +6,7 @@
 
 pkgname=libpulse-nosystemd
 pkgdesc="Client library for PulseAudio"
-pkgver=11.0
+pkgver=11.1
 pkgrel=1
 arch=(i686 x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -18,7 +18,7 @@ conflicts=('libpulse')
 replaces=('libpulse')
 backup=(etc/pulse/client.conf)
 options=(!emptydirs)
-_commit=8db681606cd8cbb8cee67529937deaa9e4558db9  # tags/v11.0^0
+_commit=f93e372b0b2cb960df04de3f0a8fbea683bb8229  # tags/v11.1^0
 source=("git+https://anongit.freedesktop.org/git/pulseaudio/pulseaudio#commit=$_commit")
 sha256sums=('SKIP')
 
