@@ -26,21 +26,21 @@ prepare() {
 build() {
   cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
 
-  ##Build
-  #if [[ -d "build" ]]; then
-  #  (rm -rf build)
-  #fi
+  #Build
+  if [[ -d "build" ]]; then
+    (rm -rf build)
+  fi
 
-  #mkdir build
-  #cd build
+  mkdir build
+  cd build
 
-  #cmake \
-  #-DLIB_POSTFIX= \
-  #-DCMAKE_INSTALL_PREFIX=/usr \
-  #-DOSGEARTH_USE_QT=/usr \
-  #..
+  cmake \
+  -DLIB_POSTFIX= \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DOSGEARTH_USE_QT=/usr \
+  ..
 
-  #make -j3
+  make -j3
 }
 
 package() {
