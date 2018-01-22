@@ -1,8 +1,8 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=mkl-dnn
-pkgver=0.10
-pkgrel=5
+pkgver=0.12
+pkgrel=0
 
 epoch=
 pkgdesc="Intel® Math Kernel Library for Deep Neural Networks"
@@ -26,7 +26,7 @@ sha1sums=('SKIP')
 
 build() {
   cd "${srcdir}/mkl-dnn"
-  git checkout v0.10
+  git checkout "v$pkgver"
   ([[ ! -d external ]] && (cd scripts && ./prepare_mkl.sh && cd -)) || true
   mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr .. && make doc && make -j2 mkldnn
 }
