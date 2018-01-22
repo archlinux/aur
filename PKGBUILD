@@ -26,20 +26,21 @@ prepare() {
 build() {
   cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
 
-  #Build
-  if [[ -d "build" ]]; then
-    (rm -rf build)
-  fi
+  ##Build
+  #if [[ -d "build" ]]; then
+  #  (rm -rf build)
+  #fi
 
-  mkdir build
-  cd build
+  #mkdir build
+  #cd build
 
-  cmake \
-  -DLIB_POSTFIX= \
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  ..
+  #cmake \
+  #-DLIB_POSTFIX= \
+  #-DCMAKE_INSTALL_PREFIX=/usr \
+  #-DOSGEARTH_USE_QT=/usr \
+  #..
 
-  make
+  #make -j3
 }
 
 package() {
@@ -49,6 +50,6 @@ package() {
   install -d ${pkgdir}/usr/share/osgearth
   install -d ${pkgdir}/usr/share/osgearth/test
   install -d ${pkgdir}/usr/share/osgearth/data
-  install -Dm644 ${srcdir}/${pkgname}-${pkgname}-${pkgver}/tests/* ${pkgdir}/usr/share/osgearth/test
+  cp -rfv ${srcdir}/${pkgname}-${pkgname}-${pkgver}/tests/* ${pkgdir}/usr/share/osgearth/test
   cp -rfv ${srcdir}/${pkgname}-${pkgname}-${pkgver}/data/* ${pkgdir}/usr/share/osgearth/data
 }
