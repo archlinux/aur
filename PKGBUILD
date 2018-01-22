@@ -1,12 +1,12 @@
-# PKBGUILD: Martino Pilia <martino.pilia@gmail.com>
+# Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=minc-toolkit-v2
 pkgver=1.9.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Medical Imaging NetCDF Toolkit"
 arch=('any')
 url="https://www.mcgill.ca/bic/software/minc"
 license=('GPL3')
-depends=('perl' 'libjpeg-turbo' 'libxi' 'libxmu' 'libgl' 'glu' 'fftw' 'glut' 'netcdf' 'pcre' 'zlib' 'hdf5' 'nifticlib' 'insight-toolkit')
+depends=('perl' 'libjpeg-turbo' 'libxi' 'libxmu' 'libgl' 'glu' 'fftw' 'glut' 'netcdf' 'pcre' 'zlib' 'hdf5' 'nifticlib' 'insight-toolkit' 'elastix')
 makedepends=('git' 'cmake' 'bc' 'libhdf5')
 provides=('minc-toolkit')
 source=('git+https://github.com/BIC-MNI/minc-toolkit-v2.git'
@@ -74,17 +74,18 @@ prepare() {
 
     cmake .. \
         -DCMAKE_BUILD_TYPE:STRING=Release   \
-        -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}${_install_prefix}" \
+        -DCMAKE_INSTALL_PREFIX:PATH="${_install_prefix}" \
         -DMT_BUILD_ABC:BOOL=ON   \
         -DMT_BUILD_ANTS:BOOL=ON   \
         -DMT_BUILD_C3D:BOOL=ON   \
-        -DMT_BUILD_ELASTIX:BOOL=ON   \
+        -DMT_BUILD_ELASTIX:BOOL=OFF   \
         -DMT_BUILD_IM:BOOL=OFF   \
         -DMT_BUILD_ITK_TOOLS:BOOL=ON   \
         -DMT_BUILD_LITE:BOOL=OFF   \
         -DMT_BUILD_SHARED_LIBS:BOOL=ON   \
         -DMT_BUILD_VISUAL_TOOLS:BOOL=ON   \
         -DMT_USE_OPENMP:BOOL=ON   \
+        -DUSE_SYSTEM_ELASTIX:BOOL=ON   \
         -DUSE_SYSTEM_FFTW3D:BOOL=ON   \
         -DUSE_SYSTEM_FFTW3F:BOOL=ON   \
         -DUSE_SYSTEM_GLUT:BOOL=ON   \
@@ -111,7 +112,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname/build"
 
-	make install
+	make install DESTDIR="${pkgdir}"
 
 	cd "${pkgdir}${_install_prefix}"
 	rm -rf minc-toolkit-config*
