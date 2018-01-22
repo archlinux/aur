@@ -14,7 +14,7 @@ provides=("mapcrafter")
 optdepends=(
     "python2-pillow: support for mapcrafter_png-it.py script"
 )
-source=("https://github.com/mapcrafter/mapcrafter/archive/v.${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mapcrafter/mapcrafter/archive/v.${pkgver}.tar.gz")
 
 sha256sums=('f3b698d34c02c2da0c4d2b7f4e251bcba058d0d1e4479c0418eeba264d1c8dae')
 
