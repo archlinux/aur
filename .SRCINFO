@@ -1,17 +1,21 @@
 pkgbase = python-declxml-git
 	pkgdesc = Declarative XML processing for Python.
-	pkgver = r79.b59c66c
+	pkgver = 0.10.0.r0.gb59c66c
 	pkgrel = 1
-	url = https://github.com/gatkin/declxml
-	arch = x86_64
+	url = https://pypi.python.org/pypi/declxml
+	arch = any
 	license = MIT
+	makedepends = python
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python2
+	makedepends = python2-setuptools
 	provides = python-declxml
 	conflicts = python-declxml
 	options = !emptydirs
-	source = git+https://github.com/gatkin/declxml.git
-	md5sums = SKIP
+	source = declxml-0.10.0.r0.gb59c66c::git+https://github.com/gatkin/declxml.git
+	sha256sums = SKIP
 
 pkgname = python-declxml-git
+
+pkgname = python2-declxml-git
 

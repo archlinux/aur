@@ -1,27 +1,50 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
-_name='declxml'
-pkgname='python-declxml-git'
-pkgver=r79.b59c66c
+_name=declxml
+pkgbase='python-declxml-git'
+pkgname=('python-declxml-git' 'python2-declxml-git')
+pkgver=0.10.0.r0.gb59c66c
 pkgrel=1
 pkgdesc="Declarative XML processing for Python."
-arch=('x86_64')
-url="https://github.com/gatkin/${_name}"
+arch=('any')
+url="https://pypi.python.org/pypi/declxml"
 license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
 provides=('python-declxml')
 conflicts=('python-declxml')
+makedepends=(
+  'python' 'python-setuptools'
+  'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("git+https://github.com/gatkin/${_name}.git")
-md5sums=('SKIP')
+source=("${_name}"-"${pkgver}"::git+https://github.com/gatkin/"${_name}".git)
+sha256sums=('SKIP')
 
-pkgver() {  # Number of revisions since beginning of history
-  cd "${srcdir}/${_name}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() {
+  cd "${_name}"-"${pkgver}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
-  cd "${srcdir}/${_name}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+prepare() {
+  cp -a "${_name}"-"${pkgver}"{,-py2}
+}
+
+build(){
+  cd "${srcdir}"/"${_name}"-"${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
+  python2 setup.py build
+}
+
+package_python2-declxml-git() {
+  cd "${_name}"-"${pkgver}"-py2
+
+  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+}
+
+package_python-declxml-git() {
+  cd "${_name}"-"${pkgver}"
+
+  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
