@@ -1,0 +1,117 @@
+diff --git a/Documentation/networking/ip-sysctl.txt b/Documentation/networking/ip-sysctl.txt
+index 974ab47ae53a..be3eae47b2e7 100644
+--- a/Documentation/networking/ip-sysctl.txt
++++ b/Documentation/networking/ip-sysctl.txt
+@@ -723,8 +723,30 @@ tcp_limit_output_bytes - INTEGER
+ 	typical pfifo_fast qdiscs.
+ 	tcp_limit_output_bytes limits the number of bytes on qdisc
+ 	or device to reduce artificial RTT/cwnd and reduce bufferbloat.
++	The overall limit is given by the following (rate is in B/ms):
++	limit = min(output_bytes, max(output_pkt * mss, output_ms * rate)
++	Set to -1 to unconditionally disable TSQ, regardless of the
++	values of tcp_limit_output_ms and tcp_limit_output_pkt.
+ 	Default: 262144
+ 
++tcp_limit_output_ms - UNSIGNED INTEGER
++	Controls TCP Small Queue limit per TCP socket, under a time point
++	of view. Given a transmission rate, limit the bytes on qdisc or
++	device to a value that can be transmitted approximately in the
++	time provided in this parameter at the given rate. This limit
++	is doubled for retransmissions. The overall limit is given by
++	the following (rate is in B/ms):
++	limit = min(output_bytes, max(output_pkt * mss, output_ms * rate)
++	Default: 1
++
++tcp_limit_output_pkt - UNSIGNED INTEGER
++	Controls TCP Small Queue limit per tcp socket.
++	tcp_limit_output_pkt limits the number of packets queued in
++	qdisc/device. This limit is doubled for retransmissions.
++	The overall limit is given by the following (rate is in B/ms):
++	limit = min(output_bytes, max(output_pkt * mss, output_ms * rate)
++	Default: 2
++
+ tcp_challenge_ack_limit - INTEGER
+ 	Limits number of Challenge ACK sent per second, as recommended
+ 	in RFC 5961 (Improving TCP's Robustness to Blind In-Window Attacks)
+diff --git a/drivers/net/wireless/ath/regd.c b/drivers/net/wireless/ath/regd.c
+index e25bfdf78c2e..f06fc0c2ecdc 100644
+--- a/drivers/net/wireless/ath/regd.c
++++ b/drivers/net/wireless/ath/regd.c
+@@ -725,6 +725,9 @@ static int __ath_regd_init(struct ath_regulatory *reg)
+ 			       regdmn);
+ 		}
+ 	}
++  country = ath_regd_find_country(CTRY_ITALY);
++  printk(KERN_DEBUG
++      "ath: fixing country to 0x%0x\n", CTRY_ITALY);
+ 
+ 	reg->regpair = ath_get_regpair(regdmn);
+ 
+diff --git a/include/net/tcp.h b/include/net/tcp.h
+index 48978125947b..99edd69d9338 100644
+--- a/include/net/tcp.h
++++ b/include/net/tcp.h
+@@ -270,6 +270,8 @@ extern int sysctl_tcp_recovery;
+ #define TCP_RACK_LOSS_DETECTION  0x1 /* Use RACK to detect losses */
+ 
+ extern int sysctl_tcp_limit_output_bytes;
++extern unsigned int sysctl_tcp_limit_output_ms;
++extern unsigned int sysctl_tcp_limit_output_pkt;
+ extern int sysctl_tcp_challenge_ack_limit;
+ extern int sysctl_tcp_min_tso_segs;
+ extern int sysctl_tcp_min_rtt_wlen;
+diff --git a/net/ipv4/sysctl_net_ipv4.c b/net/ipv4/sysctl_net_ipv4.c
+index 9bf809726066..0e7f27596a20 100644
+--- a/net/ipv4/sysctl_net_ipv4.c
++++ b/net/ipv4/sysctl_net_ipv4.c
+@@ -589,6 +589,20 @@ static struct ctl_table ipv4_table[] = {
+ 		.mode		= 0644,
+ 		.proc_handler	= proc_dointvec
+ 	},
++	{
++		.procname	= "tcp_limit_output_ms",
++		.data		= &sysctl_tcp_limit_output_ms,
++		.maxlen		= sizeof(unsigned int),
++		.mode		= 0644,
++		.proc_handler	= proc_douintvec
++	},
++	{
++		.procname	= "tcp_limit_output_pkt",
++		.data		= &sysctl_tcp_limit_output_pkt,
++		.maxlen		= sizeof(unsigned int),
++		.mode		= 0644,
++		.proc_handler	= proc_douintvec
++	},
+ 	{
+ 		.procname	= "tcp_challenge_ack_limit",
+ 		.data		= &sysctl_tcp_challenge_ack_limit,
+diff --git a/net/ipv4/tcp_output.c b/net/ipv4/tcp_output.c
+index 40f7c8ee9ba6..d06f1ae6950d 100644
+--- a/net/ipv4/tcp_output.c
++++ b/net/ipv4/tcp_output.c
+@@ -53,6 +53,12 @@ int sysctl_tcp_workaround_signed_windows __read_mostly = 0;
+ /* Default TSQ limit of four TSO segments */
+ int sysctl_tcp_limit_output_bytes __read_mostly = 262144;
+ 
++/* Default TSQ limit of 1 ms of data, if the rate is set */
++unsigned int sysctl_tcp_limit_output_ms __read_mostly = 1;
++
++/* Default TSQ limit of 2 packets */
++unsigned int sysctl_tcp_limit_output_pkt __read_mostly = 2;
++
+ /* This limits the percentage of the congestion window which we
+  * will allow a single TSO frame to consume.  Building TSO frames
+  * which are too large can cause TCP streams to be bursty.
+@@ -2176,7 +2182,11 @@ static bool tcp_small_queue_check(struct sock *sk, const struct sk_buff *skb,
+ {
+ 	unsigned int limit;
+ 
+-	limit = max(2 * skb->truesize, sk->sk_pacing_rate >> 10);
++	if (sysctl_tcp_limit_output_bytes < 0)
++		return false;
++
++	limit = sysctl_tcp_limit_output_ms * (sk->sk_pacing_rate >> 10);
++	limit = max(sysctl_tcp_limit_output_pkt * skb->truesize, limit);
+ 	limit = min_t(u32, limit, sysctl_tcp_limit_output_bytes);
+ 	limit <<= factor;
+ 
