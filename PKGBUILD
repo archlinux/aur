@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=chromedriver-dev
 pkgver=2.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone server which implements WebDriver's wire protocol (for google-chrome-dev)"
 arch=( 'x86_64' )
 url="https://sites.google.com/a/chromium.org/chromedriver/"
@@ -22,5 +22,5 @@ sha512sums=('0da15aee65c7f13552a57cc77212206fcd9a76b3cb912d85807760d6fb44b122e85
 
 package() {
   mkdir -p "${pkgdir}/usr/bin/"
-  install -D -m 755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/"
+  install -D -m 755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
