@@ -1,7 +1,7 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='artemis'
-pkgver=16.0.9
+pkgver=16.0.17
 pkgrel=1
 pkgdesc='A free genome viewer and annotation tool that allows visualization of biological sequence features'
 arch=('x86_64')
