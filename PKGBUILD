@@ -3,7 +3,7 @@
 # See COPYING for license details.
 
 pkgname='wifiphisher'
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 groups=('blackarch' 'blackarch-wireless' 'blackarch-social')
 pkgdesc='Fast automated phishing attacks against WPA networks.'
@@ -20,5 +20,5 @@ package() {
   python2 setup.py install --root=$pkgdir
 }
 
-md5sums=('ddff26c8e062c540b4b3e8c67d2a1655'
+md5sums=('bd4357b8a97cdcfb36624245c4f963da'
          '20fc8c517c5e85c8a47e2372beecd83c')
