@@ -11,7 +11,7 @@ url="https://github.com/01org/mkl-dnn"
 license=('APACHE')
 groups=()
 depends=()
-makedepends=( 'git' 'cmake>=2.8' 'doxygen>=1.8.5' )
+makedepends=( 'wget' 'git' 'cmake>=2.8' 'doxygen>=1.8.5' )
 checkdepends=()
 optdepends=()
 provides=()
