@@ -7,7 +7,7 @@
 _attempt_fix=0
 
 pkgname=google-earth-pro
-pkgver=7.3.0.3832
+pkgver=7.3.1.4505
 pkgrel=1
 pkgdesc="3D interface to explore the globe, terrain, streets, buildings and other planets - Pro"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stab
         'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
-md5sums=('b9d8281257b7ebf0dfac1ab1d3578681'
+md5sums=('43c092347fee3c2da9b871b3829070ca'
          '34c413a93b06010e66a1a1c4c9386696'
          '598d579a1c3199c77850d86ba78f7b44'
          'SKIP'
