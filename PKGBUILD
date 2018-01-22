@@ -2,7 +2,8 @@
 
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
-pkgver=3.42
+pkgver=3.43
+_commit=a513685ebefd5f5dc78caff6272f5a7d2d692e1d
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
@@ -19,11 +20,11 @@ optdepends=('bitkeeper'
             'mercurial'
             'src'
             'subversion')
-source=("$url$pkgbase-$pkgver.tar.xz")
-sha512sums=('6bd8cf43c7e8c9491233b6ff55a3fafaa80a80b226239b28de45fe9f29360deb7475512b0416c2ad6723e1a4111385de24542f19ffe22ed97f771f1fdb2feeff')
+source=("https://gitlab.com/esr/$pkgbase/repository/$pkgver/archive.tar.gz")
+sha512sums=('0f01b1281d85fc746758c2de7e28b9d26907a938f642c7b9519877d5d717c5fb8ab45c85a36abd874a19bf87b673a814852d4e984bf4dfc0d60dce861dabaf29')
 
 prepare() {
-  cd "$pkgbase-$pkgver"
+  cd "$pkgbase-$pkgver-$_commit"
 
   for patch in ../*.patch; do
     if [ ! -f "$patch" ]; then
@@ -35,7 +36,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgbase-$pkgver"
+  cd "$pkgbase-$pkgver-$_commit"
   make all
 
   if [ "$pkgname" == "cyreposurgeon" ]; then
@@ -44,12 +45,12 @@ build() {
 }
 
 build_cyreposurgeon() {
-  cd "$srcdir/$pkgbase-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver-$_commit"
   make PYVERSION=3.6 cyreposurgeon
 }
 
 package_reposurgeon() {
-  cd "$pkgbase-$pkgver"
+  cd "$pkgbase-$pkgver-$_commit"
   make DESTDIR="$pkgdir" prefix=/usr install
 
   install -dm755 "$pkgdir/usr/share/emacs/site-lisp"
@@ -61,6 +62,6 @@ package_reposurgeon() {
 package_cyreposurgeon() {
   arch=('i686' 'x86_64')
 
-  cd "$pkgbase-$pkgver"
+  cd "$pkgbase-$pkgver-$_commit"
   make DESTDIR="$pkgdir" prefix=/usr install-cyreposurgeon
 }
