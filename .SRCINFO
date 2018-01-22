@@ -1,16 +1,25 @@
 pkgbase = python-pyvcf
-	pkgdesc = A Variant Call Format reader for Python.
+	pkgdesc = A Variant Call Format reader for Python
 	pkgver = 0.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/PyVCF
 	arch = any
-	license = BSD
-	makedepends = cython
+	license = custom:population-genetics-technologies
+	makedepends = python
 	makedepends = python-setuptools
-	depends = python
+	makedepends = cython
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = cython2
 	options = !emptydirs
-	source = https://pypi.python.org/packages/20/b6/36bfb1760f6983788d916096193fc14c83cce512c7787c93380e09458c09/PyVCF-0.6.8.tar.gz
-	md5sums = 3cc70aa59e62dab7b4a85bd5a9f2e714
+	source = https://raw.githubusercontent.com/jamescasbon/PyVCF/476169cd457ba0caa6b998b301a4d91e975251d9/LICENSE
+	source = python-pyvcf-0.6.8.tar.gz::https://pypi.python.org/packages/20/b6/36bfb1760f6983788d916096193fc14c83cce512c7787c93380e09458c09/PyVCF-0.6.8.tar.gz
+	sha256sums = f4a2bc89af6b660958705e9f5e47ed5ebf31690101b121b9016b807ee1967e6a
+	sha256sums = e9d872513d179d229ab61da47a33f42726e9613784d1cb2bac3f8e2642f6f9d9
 
 pkgname = python-pyvcf
+	depends = python
+
+pkgname = python2-pyvcf
+	depends = python2
 
