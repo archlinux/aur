@@ -1,6 +1,6 @@
 pkgbase = r-cran-pillar
 	pkgdesc = Format columns of data using the full range of colours in modern terminals.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/pillar/index.html
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = r-cran-pillar
 	depends = r-cran-utf8
 	provides = r-pillar
 	conflicts = r-pillar
-	source = http://cran.r-project.org/src/contrib/pillar_1.0.1.tar.gz
-	md5sums = 37946c66aceea43c4b8b16256fd2390e
+	source = http://cran.r-project.org/src/contrib/pillar_1.1.0.tar.gz
+	sha256sums = 58a29e8d0d3a47150caf8cb1aba5dc5eca233ac8d4626f4b23beb8b5ae9003be
 
 pkgname = r-cran-pillar
 
