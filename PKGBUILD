@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=adapta-backgrounds
-pkgver="0.5.1.1"
+pkgver="0.5.3.1"
 pkgrel=1
 pkgdesc="Wallpaper collection for adapta-project"
 arch=(any)
@@ -8,18 +8,23 @@ url="https://github.com/adapta-project/${pkgname}"
 license=('GPL2' 'CCPL')
 optdepends=('adapta-gtk-theme: The corresponding GTK theme')
 makedepends=('glib2>=2.48.0'
-             'libxml2')
+             'libxml2'
+             'meson')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('899cd890c85de44e46bd281e8d6875f2de49faacad4aa4b8b387e1b258d7a8a5')
+sha256sums=('18fd7304bd30139161c9dca6b62862deb6c63f2159314539c972498c51770769')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    meson build --prefix=/usr
+}
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    ./autogen.sh
-    make
+    cd "${pkgname}-${pkgver}/build"
+    ninja
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    make DESTDIR="$pkgdir" install
+    cd "${pkgname}-${pkgver}/build"
+    DESTDIR="$pkgdir" ninja install
 }
 

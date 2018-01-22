@@ -1,6 +1,6 @@
 
 .SRCINFO: PKGBUILD
-	mksrcinfo
+	makepkg --printsrcinfo > .SRCINFO
 
 package: PKGBUILD .SRCINFO
 	updpkgsums
