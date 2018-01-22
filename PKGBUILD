@@ -2,7 +2,7 @@
 
 pkgname="logic2010"
 pkgver="20180112"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="Educational symbolic logic software provided for free by UCLA"
 arch=('any')
 url="https://logiclx.humnet.ucla.edu"
@@ -28,6 +28,6 @@ package() {
     install -Dm 755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
    
     install -Dm 644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    unzip -j "Contents/Java/logic.jar" "images/Logic2010_256.png"
-    install -Dm 644 "Logic2010_256.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    bsdtar -xqf "Contents/Java/logic.jar" "images/Logic2010_256.png"
+    install -Dm 644 "images/Logic2010_256.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }

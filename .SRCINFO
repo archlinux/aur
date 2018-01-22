@@ -1,7 +1,7 @@
 pkgbase = logic2010
 	pkgdesc = Educational symbolic logic software provided for free by UCLA
 	pkgver = 20180112
-	pkgrel = 4
+	pkgrel = 5
 	url = https://logiclx.humnet.ucla.edu
 	arch = any
 	license = custom
