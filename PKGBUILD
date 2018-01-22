@@ -8,7 +8,7 @@ arch=('any')
 url="https://www.gnome-look.org/p/999808/"
 license=('WTFPL')
 depends=('tar')
-source=("https://dl.opendesktop.org/api/files/download/id/1460734986/168310-StormDrops-cursors.tar.gz")
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1460734986/s/8ae38eedfd63ba0d993a2a39fe051705/t/1516624220/u//168310-StormDrops-cursors.tar.gz")
 md5sums=('93d8777443deade775c99e4ccb141a19')
 
 package() {
