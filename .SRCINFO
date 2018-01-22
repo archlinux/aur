@@ -1,7 +1,7 @@
 pkgbase = snapd
 	pkgdesc = Service and tools for management of snap packages.
 	pkgver = 2.30
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = snapd
 	makedepends = git
 	makedepends = go-pie
 	makedepends = go-tools
-	makedepends = bzr
 	makedepends = libcap
 	makedepends = python-docutils
 	makedepends = systemd
