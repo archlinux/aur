@@ -4,7 +4,7 @@ _name=pybedtools
 pkgbase='python-pybedtools'
 pkgname=('python-pybedtools' 'python2-pybedtools')
 pkgver=0.7.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Python wrapper for the bioinformatics genomic arithmetic tool bedtools"
 arch=('any')
 url="https://pypi.python.org/pypi/pybedtools"
@@ -54,7 +54,7 @@ package_python2-pybedtools() {
   mv "${pkgdir}"/usr/bin/pybedtools "${pkgdir}"/usr/bin/pybedtools2
 
   for script in "${pkgdir}"/usr/bin/*.py;do
-    mv "${pkgdir}"/usr/bin/"${script}" "${pkgdir}"/usr/bin/"${script%.*py}"2.py
+    mv "${script}" "${pkgdir}"/usr/bin/$(basename "${script%.*py}")2.py
   done
 }
 
