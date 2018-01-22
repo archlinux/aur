@@ -7,7 +7,7 @@
 
 pkgname=kdevelop-git
 pkgver=0.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
 arch=('i686' 'x86_64')
 url='http://www.kdevelop.org'
@@ -54,6 +54,7 @@ makedepends=(
     'qt5-tools'
     'plasma-framework'
     'kdevelop-pg-qt'
+    'kdoctools'
     'purpose'
     'clang'
 )
@@ -65,7 +66,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd kdevelop
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
