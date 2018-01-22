@@ -3,7 +3,7 @@
 
 pkgname=vdhcoapp
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion application for Video DownloadHelper browser add-on"
 arch=('i686' 'x86_64')
 url="https://github.com/mi-g/vdhcoapp"
