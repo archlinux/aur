@@ -2,11 +2,11 @@
 
 pkgname=minio-client
 pkgver=2017_12_12T01_08_02Z
-pkgrel=1
+pkgrel=2
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
 arch=('x86_64' 'i686')
 url='https://minio.io/downloads/#minio-client'
-license=('APACHE2')
+license=('Apache')
 makedepends=('go' 'git')
 depends=('glibc')
 install=mc.install
