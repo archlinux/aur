@@ -2,7 +2,7 @@
 # Contributor: <kfgz at interia dot pl>
 
 pkgname=nwipe
-pkgver=0.21
+pkgver=0.24
 pkgrel=1
 pkgdesc="A fork of the dwipe command that will securely erase disks using a variety of recognised methods"
 arch=('i686' 'x86_64')
@@ -23,4 +23,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('74b47a48c25332f2d817c8a88f2c3026')
+md5sums=('902ce622c67a639a247c55be399ccc0e')
