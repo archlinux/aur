@@ -3,7 +3,7 @@
 pkgname=jotta-cli
 pkgver=0.3.4269
 pkgrel=1
-pkgdesc="Jottacloud CLI."
+pkgdesc="Jottacloud command line client to back up/share your files to/on Jottacloud."
 makedepends=()
 arch=('x86_64' 'i686')
 license=('custom: (C) Jotta AS 2018')
