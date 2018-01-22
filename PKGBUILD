@@ -1,4 +1,5 @@
-# Maintainer: Spike29 <leguen.yannick@gmail.com>
+# Maintainer: Jake <aur@ja-ke.tech>
+# Contributor: Spike29 <leguen.yannick@gmail.com>
 # Contributor: Samir Faci <csgeek@archlinux.us>
 # Contributor: TimothÃ©e Ravier <tim@siosm.fr>
 
