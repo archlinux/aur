@@ -1,22 +1,22 @@
 # Maintainer:   Maximilian Weiss <$(echo "bWF4QG1heHdlaXNzLmlv" | base64 -d)>
-# Contributor:  Daniel Kraft <$(echo "ZEBkb21vYi5ldQo=" | base64 -d)>
 # Contributor:  Jeremy Rand <$(echo "YmlvbGl6YXJkODlAZ21haWwuY29tCg==" | base64 -d)>
+# Contributor:  Daniel Kraft <$(echo "ZEBkb21vYi5ldQo=" | base64 -d)>
 # Contributor:  The Namecoin Core Developers
 # Contributor:  The Bitcoin Core Developers
 
 
 pkgname=namecoin-core-wallet
-pkgver=v0.13.99.name.tab.beta1
-pkgrel=10
+pkgver=v0.15.99.name.tab.beta1
+pkgrel=1
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1511029686
+epoch=1516571444
 
 
-# Release commit for nc0.13.99-name-tab-beta1
-_commit=a11e75411af3b612a36e3516e461934838c0c53b
+# Release commit for nc0.15.99-name-tab-beta1
+_commit=fab005af18da02cad6b48b9d218e73d2c3eecd4d
 
 
 pkgdesc='This package provides the Namecoin Core GUI client and CLI daemon.'
@@ -38,15 +38,19 @@ source=('git://github.com/namecoin/namecoin-core'
 sha256sums=('SKIP'
             '0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc'
             'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04'
-            'e34a576066c39b2ca4ad192683b3c75fe86c9fedc30176dc60306d539863a139')
+            '52ac2022fabd9b1428956b8202788f564d00c1778f5c7e78dd960c6ad6c70db0')
 
-
-build() {
+prepare() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
     git checkout "$_commit"
     cd "$srcdir/"
     patch -p0 -i patch.diff
+}
+
+
+build() {
+
     cd "$srcdir/namecoin-core/"
     ./autogen.sh
 
@@ -91,3 +95,5 @@ package() {
     ln -s "libnamecoinconsensus.so.0.0.0" "libnamecoinconsensus.so.0"
     ln -s "libnamecoinconsensus.so.0.0.0" "libnamecoinconsensus.so"
 }
+
+
