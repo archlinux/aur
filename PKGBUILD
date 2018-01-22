@@ -2,7 +2,7 @@
 # Maintainer: Sébastien Faucheux <faucheux.seb@gmail.com>
 
 pkgname=gnome-settings-daemon-shutdown
-pkgver=3.26.1
+pkgver=3.26.2
 pkgrel=1
 pkgdesc="The GNOME Settings daemon with shutdown button action"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ provides=('gnome-settings-daemon')
 conflicts=('gnome-settings-daemon')
 source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname:0:21}/${pkgver:0:4}/${pkgname:0:21}-$pkgver.tar.xz
         shutdown.patch)
-sha256sums=('711ac9bad06f6a4225f5eb2f4796474662f81f7077e16a4b7ee7ab974b65d893'
+sha256sums=('5a3d156b35e03fa3c28fddd0321f6726082a711973dee2af686370faae2e75e4'
             'cd2136653c24f85865b9011fdc3620448b771d9c50a7e7e16191c352ff02feda')
 
 prepare() {
