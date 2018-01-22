@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=friture-git
-pkgver=v0.24.r0.g75e8cd8
+pkgver=v0.32.r1.g1ef377d
 pkgrel=1
 pkgdesc="An application to visualize and analyze live audio data in real-time."
 arch=(i686 x86_64)
