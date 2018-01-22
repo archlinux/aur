@@ -3,7 +3,7 @@
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 
 pkgname=chipmunk
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=1
 pkgdesc="A high-performance 2D rigid body physics library"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
 source=(http://files.slembcke.net/chipmunk/release/Chipmunk-${pkgver%%.*}.x/Chipmunk-$pkgver.tgz)
+sha256sums=('288c8465fcaa671bab890c0b24627816efa10da2c5eabbeb36feb0d6deb1ca5a')
 
 build() {
   cd "$srcdir/Chipmunk-$pkgver"
@@ -31,5 +32,3 @@ package() {
   install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   make DESTDIR="$pkgdir" install
 }
-
-sha256sums=('fe54b464777d89882a9f9d3d6deb17189af8bc5d63833b25bb1a7d16c3e69260')
