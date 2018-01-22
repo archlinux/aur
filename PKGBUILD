@@ -1,7 +1,7 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com> 
 
 pkgname=magic-wormhole
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Securely transfer data between computers"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 conflicts=("wormhole" "wormhole-server")
 provides=("wormhole" "wormhole-server")
-md5sums=('26d8772911ec68a88e80916f7fdeb970')
+md5sums=('0c57f5e9e4aaece6887824012da62f85')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
