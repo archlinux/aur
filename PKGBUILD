@@ -7,13 +7,13 @@
 
 pkgname=('gurobi')
 _basename=gurobi
-pkgver=7.5.1
-pkgrel=4
+pkgver=7.5.2
+pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="http://www.gurobi.com/products/gurobi-optimizer"
 license=('custom')
-depends=('python>=3.5.0' 'python<3.7' 'python2>=2.7.0')
+depends=('python>=3.6.0' 'python<3.7' 'python2>=2.7.0')
 optdepends=(
   'gcc: C/C++ programming interfaces support'
   'java-environment: Java programming interface support'
@@ -25,7 +25,7 @@ source=(
   "gurobi.sh"
   "gurobi_setup.m"
 )
-sha256sums=('7f5c8b0c3d3600ab7a1898f43e238a9d9a32ac1206f2917fb60be9bbb76111b6'
+sha256sums=('d2e6e2eb591603d57e54827e906fe3d7e2e0e1a01f9155d33faf5a2a046d218e'
             '30d535f7100627195dbe8d1c9a5ce603ed645b93eb8869984eb8a15e8db6d1c8'
             'fd328dc00b276258e7828b301c93574f9aa8e6f143caf5428a648851a6ecf93c')
 
@@ -69,7 +69,7 @@ package_gurobi() {
   # Programming interfaces
   install lib/*.so* "${pkgdir}/usr/lib/"
   install -m644 lib/*.a "${pkgdir}/usr/lib/"
-  ln -sf ./libgurobi.so.7.5.1 "${pkgdir}/usr/lib/libgurobi75.so"
+  ln -sf ./libgurobi.so.7.5.2 "${pkgdir}/usr/lib/libgurobi75.so"
   ln -sf ./libgurobi_g++5.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
