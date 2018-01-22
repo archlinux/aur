@@ -5,12 +5,12 @@
 
 _pkgbase=snapd
 pkgname=snapd-git
-pkgver=2.30.r543.g0c74b1f63
+pkgver=2.30.r724.gfbf2e1304
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
-makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'python-docutils' 'systemd' 'xfsprogs' 'libseccomp')
+makedepends=('git' 'go-pie' 'go-tools' 'libseccomp' 'libcap' 'python-docutils' 'systemd' 'xfsprogs' 'libseccomp')
 checkdepends=('python' 'squashfs-tools' 'indent' 'shellcheck')
 
 options=('!strip' 'emptydirs')
