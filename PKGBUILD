@@ -2,7 +2,7 @@
 _pkgname=elastix
 pkgname=${_pkgname}-git
 pkgver=4.304@3344.r945.g522843d9
-pkgrel=1
+pkgrel=2
 pkgdesc='Toolbox for rigid and nonrigid registration of images'
 arch=('x86_64')
 url='http://elastix.isi.uu.nl/'
@@ -11,6 +11,7 @@ provides=('elastix')
 depends=('insight-toolkit')
 makedepends=('cmake')
 optdepends=()
+conflicts=('elastix-bin' 'elastix')
 source=('git+https://github.com/SuperElastix/elastix.git')
 sha512sums=('SKIP')
 
@@ -46,10 +47,6 @@ package() {
 	cd "${srcdir}/${_pkgname}/build"
 
 	make install
-
-	mkdir elastix
-	mv $pkgdir/usr/include/* elastix/.
-	mv elastix $pkgdir/usr/include/.
 
 	cd ..
 
