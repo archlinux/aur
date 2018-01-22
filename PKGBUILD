@@ -2,8 +2,8 @@
 # based on script by: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=python2-mapnik
-pkgver=3.0.13
-pkgrel=2
+pkgver=3.0.16
+pkgrel=1
 
 pkgdesc="Python2 bindings for Mapnik"
 url="https://github.com/mapnik/python-mapnik"
@@ -11,16 +11,8 @@ arch=('any')
 license=('LGPL')
 depends=('python2' 'mapnik' 'python2-cairo' 'python2-pypdf2')
 makedepends=('python2-setuptools')
-source=("https://github.com/mapnik/python-mapnik/archive/v$pkgver.tar.gz"
-        "patch_dynamicmodule.patch")
-sha1sums=('0b60b471fb2afad080e703cf3ceae72e31633344'
-          'SKIP')
-
-prepare() {
-  cd python-mapnik-$pkgver
-  pwd
-  patch -p0 < ../patch_dynamicmodule.patch
-}
+source=("https://github.com/mapnik/python-mapnik/archive/v$pkgver.tar.gz")
+sha1sums=('8e30049954b14282667677a5d5a145eddedfc8df')
 
 package() {
 	cd python-mapnik-$pkgver
