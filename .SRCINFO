@@ -1,12 +1,19 @@
 pkgbase = python-multiqc
-	pkgdesc = Aggregate bioinformatics analyses results across many samples into a single report
+	pkgdesc = Create aggregate bioinformatics analysis reports across many samples and tools
 	pkgver = 1.4
-	pkgrel = 1
-	url = https://github.com/ewels/MultiQC
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/multiqc
 	arch = any
 	license = GPL3
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-multiqc-1.4.tar.gz::https://pypi.python.org/packages/af/a1/5c5702c4b0ce9ee6fb7d1c982cc6f20832a85bfce184dcb8178f0bdcb5df/multiqc-1.4.tar.gz
+	sha256sums = a83ea64c9a92137a63fc3c6ea37b13af241f9cd9b800eb17d9f03a5d7f261d46
+
+pkgname = python-multiqc
 	depends = python
 	depends = python-click
 	depends = python-future
@@ -20,9 +27,19 @@ pkgbase = python-multiqc
 	depends = python-simplejson
 	depends = python-spectra
 	depends = python-yaml
-	options = !emptydirs
-	source = python-multiqc-1.4.tar.gz::https://pypi.python.org/packages/af/a1/5c5702c4b0ce9ee6fb7d1c982cc6f20832a85bfce184dcb8178f0bdcb5df/multiqc-1.4.tar.gz
-	sha256sums = a83ea64c9a92137a63fc3c6ea37b13af241f9cd9b800eb17d9f03a5d7f261d46
 
-pkgname = python-multiqc
+pkgname = python2-multiqc
+	depends = python2
+	depends = python2-click
+	depends = python2-future
+	depends = python2-jinja
+	depends = python2-lzstring
+	depends = python2-markdown
+	depends = python2-matplotlib
+	depends = python2-networkx
+	depends = python2-numpy
+	depends = python2-requests
+	depends = python2-simplejson
+	depends = python2-spectra
+	depends = python2-yaml
 
