@@ -1,5 +1,5 @@
 pkgname=janusvr
-pkgdesc='JanusVR is a 3D VR internet browser'
+pkgdesc='3D VR internet browser'
 url='http://www.dgp.toronto.edu/~mccrae/projects/firebox/'
 pkgver=59.8
 pkgrel=1
