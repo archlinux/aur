@@ -1,0 +1,21 @@
+pkgbase = python-rabadb
+	pkgdesc = Lightweight uncomplicated schemaless ORM on top of sqlite3 for Python
+	pkgver = 1.0.5
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/rabaDB
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-rabadb-1.0.5.tar.gz::https://pypi.python.org/packages/11/10/e8397c370efd954209089319b3d842a1689499a5b5c20812e5094d32b83f/rabaDB-1.0.5.tar.gz
+	sha256sums = e447a93b6bf22479766ee73533416a30cd6859644854e50c3030285a3d009498
+
+pkgname = python-rabadb
+	depends = python
+
+pkgname = python2-rabadb
+	depends = python2
+
