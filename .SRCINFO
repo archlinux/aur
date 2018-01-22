@@ -1,18 +1,27 @@
 pkgbase = python-pyvcf-git
-	pkgdesc = A Variant Call Format reader for Python.
+	pkgdesc = A Variant Call Format reader for Python
 	pkgver = v0.5.0.r266.g476169c
-	pkgrel = 1
-	url = https://github.com/jamescasbon/PyVCF
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/PyVCF
 	arch = any
-	license = BSD
-	makedepends = cython
+	license = custom:population-genetics-technologies
+	makedepends = python
 	makedepends = python-setuptools
+	makedepends = cython
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = cython2
+	options = !emptydirs
+	source = PyVCF-v0.5.0.r266.g476169c::git+https://github.com/jamescasbon/PyVCF.git
+	sha256sums = SKIP
+
+pkgname = python-pyvcf-git
 	depends = python
 	provides = python-pyvcf
 	conflicts = python-pyvcf
-	options = !emptydirs
-	source = git+https://github.com/jamescasbon/PyVCF.git
-	md5sums = SKIP
 
-pkgname = python-pyvcf-git
+pkgname = python2-pyvcf-git
+	depends = python2
+	provides = python2-pyvcf
+	conflicts = python2-pyvcf
 
