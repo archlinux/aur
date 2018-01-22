@@ -1,8 +1,9 @@
 # Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 # Contributor: Karel Louwagie <karel@louwagie.net>
+# Contributor: Serge Pavlyuk <flopss at gmail dot com>
 
 pkgname=toggldesktop
-pkgver=7.4.76
+pkgver=7.4.90
 pkgrel=1
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
@@ -10,6 +11,7 @@ url="https://github.com/toggl/toggldesktop"
 license=('BSD')
 depends=('libxss'
          'openssl'
+         'poco'
          'qt5-base'
          'qt5-declarative'
          'qt5-location'
@@ -21,21 +23,28 @@ depends=('libxss'
 makedepends=('readline' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/toggl/toggldesktop/archive/v${pkgver}.tar.gz"
         "production.patch"
-        )
+        "systemlibs.patch")
 
-sha512sums=('a1b8cc5b5c5ccd6d552ec3e2058c805ac1cdeceffc05e8f1407fe7847a265067898a16cec98824807da2e631e3b75d16bc373fefca30ff2d89f72691dcac04fe'
-            '484c6e3ba73e2f2ccbe9737424bee68624bd8d46a06735937b3ca134aa34ad9e335b260f7d22bcd3e351ae9d8b989ef048e78cf7ed52bac363bb651a7d229428')
+sha512sums=('be9fa6de6516fc55cbb616a358b8fc636fce38a430e2609cf314439da1625134be1986a2ef19cc3b2ffcea065d8a578fdc321f708f5ddb88524f3d6d9bfcc806'
+            '484c6e3ba73e2f2ccbe9737424bee68624bd8d46a06735937b3ca134aa34ad9e335b260f7d22bcd3e351ae9d8b989ef048e78cf7ed52bac363bb651a7d229428'
+            'e2084ecaf7ba3d3c630597450f5aff6bb65844002f2f7332a01228f0f0f0a2c8dae7b7af5f28063db63c5ce10dcd0b21d92adfb5fd8e25677e94eaa0c578c34d')
 
 conflicts=('toggldesktop-bin' 'toggl-bin')
 
 prepare() {
   cd "${srcdir}"
 
-  # patch to build for production
-  # https://github.com/toggl/toggldesktop/wiki/Building-Toggl-Desktop-from-source-for-usage-with-live-servers
   (
     cd "${pkgname}-${pkgver}"
-    patch -p1 < ../production.patch
+
+    # patch to build for production
+    # https://github.com/toggl/toggldesktop/wiki/Building-Toggl-Desktop-from-source-for-usage-with-live-servers
+    msg2 "production patch"
+    patch -p1  < ../production.patch
+
+    # patch to use sytem openssl and poco libs
+    msg2 "systmlibs patch"
+    patch -p1  < ../systemlibs.patch
   )
 
   # make the run script
@@ -75,11 +84,6 @@ package() {
   # Copy Bugsnag library
   install -Dm644 third_party/bugsnag-qt/build/release/libbugsnag-qt.so.1 ${out}/lib/libbugsnag-qt.so.1
 
-  # Copy Poco libraries
-  for lib in libPocoCrypto.so.31 libPocoData.so.31 libPocoDataSQLite.so.31 libPocoFoundation.so.31 libPocoJSON.so.31 libPocoNet.so.31 libPocoNetSSL.so.31 libPocoUtil.so.31 libPocoXML.so.31; do
-    install -Dm644 third_party/poco/lib/Linux/x86_64/${lib} ${out}/lib/${lib}
-  done
-
   # Copy executable
   install -Dm755 src/ui/linux/TogglDesktop/build/release/TogglDesktop ${out}
 
@@ -101,5 +105,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
-
