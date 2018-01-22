@@ -3,8 +3,8 @@
 # PKGBUILD Source: https://github.com/statianzo/PKGBUILD-wercker-cli
 
 pkgname=wercker-cli
-pkgver=1.0.643
-pkgrel=3
+pkgver=1.0.1062
+pkgrel=1
 pkgdesc='Wercker CLI'
 url='http://wercker.com/cli'
 license=('unknown')
@@ -13,7 +13,8 @@ depends=()
 makedepends=()
 optdepends=()
 source=("https://s3.amazonaws.com/downloads.wercker.com/cli/versions/${pkgver}/linux_amd64/wercker")
-sha256sums=('13baac83cfafe6663401e6b5b2cf95ee453255a2100a6c68dc1933a14258b05b')
+md5sums=('66a2a98dc4aa10f623da84a1e27cb590')
+sha256sums=('71d598bc18386f0ac9792d41b48a62e0fcd1000fcd17dc5339999ec9f3a38ec9')
 
 package() {
   cd "${srcdir}"
