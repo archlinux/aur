@@ -1,21 +1,43 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
-pkgname='python-rednose'
+_name=rednose
+pkgbase='python-rednose'
+pkgname=('python-rednose' 'python2-rednose')
 pkgver=1.2.3
-pkgrel=1
-pkgdesc="Pretty output formatter for python-nosetests"
-arch=('x86_64')
-url="https://github.com/JBKahn/rednose"
-license=('BSD')
-depends=('python' 'python-colorama' 'python-termstyle>=0.1.7')
-makedepends=('python-setuptools')
-provides=('python-rednose')
-conflicts=('python-rednose')
+pkgrel=2
+pkgdesc="Pretty output formatter with color for python-nosetests"
+arch=('any')
+url=https://pypi.python.org/pypi/"${_name}"
+license=('custom')
+makedepends=(
+  'python' 'python-setuptools'
+  'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("https://github.com/JBKahn/rednose/archive/${pkgver}.tar.gz")
-md5sums=('90eb1b96d36db1f807f2fe1285dddd73')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/e2/7d/7c46f895be2641a40a5db7ca53670e676518c859f5e2cdb9bea4481cddd9/rednose-1.2.3.tar.gz)
+sha256sums=('d0c88a722ef98d731e2d19dc33969b7bcb0368632fc87d3401b871b24ab7a587')
 
-package() {
-  cd "${srcdir}/rednose-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+prepare() {
+  cp -a "${_name}"-"${pkgver}"{,-py2}
+}
+
+build(){
+  cd "${srcdir}"/"${_name}"-"${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
+  python2 setup.py build
+}
+
+package_python2-rednose() {
+  depends=('python2' 'python2-colorama' 'python2-termstyle')
+
+  cd "${_name}"-"${pkgver}"-py2
+  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+}
+
+package_python-rednose() {
+  depends=('python' 'python-colorama' 'python-termstyle')
+
+  cd "${_name}"-"${pkgver}"
+  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
 }
