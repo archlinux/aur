@@ -2,4 +2,3 @@
 
 cd /opt/chipmachine
 exec ./chipmachine "$@"
-
