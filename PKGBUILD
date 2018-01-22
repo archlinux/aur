@@ -1,6 +1,6 @@
 # Maintainer: Nils Christopher Brause <nilschrbrause@googlemail.com>
 pkgname=waylandpp
-pkgver=0.1.6
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Wayland C++ bindings'
 arch=('i686' 'x86_64' 'armv5' 'armv6' 'armv7' 'armv8')
@@ -10,7 +10,7 @@ depends=(wayland)
 conflicts=(waylandpp-git)
 makedepends=(cmake)
 source=("https://github.com/NilsBrause/waylandpp/archive/$pkgver.zip")
-md5sums=('7d7485d47af869b3cc6b50748bc37336')
+md5sums=('bddb1f08e40a80e0db39b06b7ef38753')
 
 build()
 {
