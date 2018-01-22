@@ -38,4 +38,11 @@ pre_upgrade() {
 
 post_upgrade() {
     rm -rf /var/lib/wallabag/var/cache/*
+    echo ""
+    echo "====================================================================================="
+    echo "               If you upgraded from 2.2.3 to 2.3.X you need to do database           "
+    echo "                          migrations, check the guide:                               "
+    echo "https://doc.wallabag.org/en/admin/upgrade.html#explanations-about-database-migrations"
+    echo "====================================================================================="
+    echo ""
 }
