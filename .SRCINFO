@@ -1,23 +1,37 @@
 pkgbase = python-pyentrezid
 	pkgdesc = Converts Ensembl, Uniprot, and HGNC IDs to Entrez Gene Id
-	pkgver = 1.4.9
+	pkgver = 1.5.8.2
 	pkgrel = 1
-	url = https://github.com/lwgray/pyEntrezId
+	url = https://pypi.python.org/pypi/PyEntrezId
 	arch = any
 	license = MIT
+	makedepends = python
 	makedepends = python-setuptools
-	depends = python
-	depends = python-colorama>=0.3.7
-	depends = python-nose>=1.3.7
-	depends = python-pygments>=2.1.3
-	depends = python-rednose>=1.1.1
-	depends = python-termstyle>=0.1.10
-	depends = python-requests>=2.10.0
-	depends = python-xmltodict>=0.10.1
-	conflicts = python-pyentrezid
+	makedepends = python2
+	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/lwgray/pyEntrezId/archive/1.4.9.tar.gz
-	md5sums = b740cfc50a6ed8b50468557f6872c047
+	source = https://raw.githubusercontent.com/lwgray/pyEntrezId/28286cf21b876dd4894bf21a222dfd1022441b75/LICENSE
+	source = python-pyentrezid-1.5.8.2.tar.gz::https://pypi.python.org/packages/3f/23/14d4062c213506b25e453d2a858a3ce7564e821b1ae0d3f9b1619d739594/PyEntrezId-1.5.8.2.tar.gz
+	sha256sums = 21366ef752c0c7fbf91c46ff163212d3991c6f31cf5edd216467966c50783e7e
+	sha256sums = eb413e67109c1609464fda325fd1b6703bdfacff93e83cfd02e9ba2b937c230f
 
 pkgname = python-pyentrezid
+	depends = python
+	depends = python-colorama
+	depends = python-nose
+	depends = python-pygments
+	depends = python-rednose
+	depends = python-termstyle
+	depends = python-requests
+	depends = python-xmltodict
+
+pkgname = python2-pyentrezid
+	depends = python2
+	depends = python2-colorama
+	depends = python2-nose
+	depends = python2-pygments
+	depends = python2-rednose
+	depends = python2-termstyle
+	depends = python2-requests
+	depends = python2-xmltodict
 
