@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=genact
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A nonsense activity generator"
 url="https://github.com/svenstaro/genact"
