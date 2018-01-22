@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-pid-2018-latest
 	pkgdesc = 2017/2018 Timetable data for the timetable search engines by CHAPS: Trains in Praha public transport reagion (PID).
-	pkgver = 2017_12_12
-	pkgrel = 2
+	pkgver = 2018_1_22
+	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
@@ -12,14 +12,14 @@ pkgbase = idos-timetable-data-chaps-trains-pid-2018-latest
 	optdepends = idos-timetable-tariff-mhd-pid: For showing prices.
 	optdepends = idos-timetable-maps-mhd-pid: For displaying routes on maps.
 	optdepends = idos-timetable-additionalinfo-mhd-pid: For additional information (photographs of some stops).
-	provides = idos-timetable-data-chaps-trains-pid-2018=2017_12_12
-	provides = idos-timetable-data=2017_12_12
-	provides = idos-timetable-data-trains=2017_12_12
-	provides = idos-timetable-data-trains-pid=2017_12_12
-	provides = idos-timetable-data-trains-pid-2018=2017_12_12
+	provides = idos-timetable-data-chaps-trains-pid-2018=2018_1_22
+	provides = idos-timetable-data=2018_1_22
+	provides = idos-timetable-data-trains=2018_1_22
+	provides = idos-timetable-data-trains-pid=2018_1_22
+	provides = idos-timetable-data-trains-pid-2018=2018_1_22
 	conflicts = idos-timetable-data-chaps-trains-pid-2018
 	replaces = idos-timetable-data-chaps-trains-pid-latest
-	replaces = idos-timetable-data-chaps-trains-pid-2018<=2017_12_12
+	replaces = idos-timetable-data-chaps-trains-pid-2018<=2018_1_22
 	source = vlakpid18.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAKPID18.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
