@@ -1,7 +1,7 @@
 # Maintainer: TheGuardianWolf <lichking21st(at)windowslive.com>
 pkgname=garlicoin-cli-git
 _gitname=Garlicoin
-pkgver=v0.15.0.1rc1.46.g44da89deb
+pkgver=20180121185844.arm.linux.gnueabihf
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://garlicoin.io/"

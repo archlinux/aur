@@ -1,6 +1,6 @@
 pkgbase = garlicoin-cli-git
 	pkgdesc = Peer-to-peer digital meme godcoin
-	pkgver = v0.15.0.1rc1.46.g44da89deb
+	pkgver = 20180121185844.arm.linux.gnueabihf
 	pkgrel = 1
 	url = https://garlicoin.io/
 	arch = i686
