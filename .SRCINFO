@@ -1,7 +1,7 @@
 pkgbase = battlejump
 	pkgdesc = Arcade game inspired by Monster Farm Jump.
 	pkgver = 0.12.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.battlejump.com
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,14 @@ pkgbase = battlejump
 	depends = curl
 	depends = java-runtime
 	depends = libcurl-compat
-	source = http://www.battlejump.com/Download/Battle_Jump_v0122_Linux_.tar.gz
+	source = http://www.battlejump.com/Download/Battle_Jump_v0122_Linux_x64.tar.gz
 	source = battlejump.desktop
+	source = battlejumplauncher.desktop
+	source = battlejump.sh
 	md5sums = 4c8c3b0dab9d9b9295b5134dc2c79944
-	md5sums = 5d91df9432b184e88b98ae4f6009c107
+	md5sums = b6966061a4f38179ffa0f20ca605348f
+	md5sums = f10f4d87f398ab1fbdf57d0c9b84e619
+	md5sums = ce06f699c2cc5884a9595ccffedfafad
 
 pkgname = battlejump
 

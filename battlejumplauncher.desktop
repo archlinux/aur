@@ -4,6 +4,6 @@ Type=Application
 Name=Battle Jump Launcher
 GenericName=Battle Jump Launcher
 Comment="Arcade game inspired by Monster Farm Jump."
-Exec=/usr/bin/battlejumplauncher
+Exec=/usr/bin/battlejump -l
 Categories=Game;ArcadeGame
 Icon=/usr/share/battlejump/Images/Logo/ico-48.png
