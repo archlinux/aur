@@ -4,13 +4,11 @@ _name=pybedtools
 pkgbase='python-pybedtools-git'
 pkgname=('python-pybedtools-git' 'python2-pybedtools-git')
 pkgver=0.7.10.r25.g9ab3ff6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for the bioinformatics genomic arithmetic tool bedtools"
 arch=('any')
 url="https://pypi.python.org/pypi/pybedtools"
 license=('GPL2')
-provides=('python-pybedtools')
-conflicts=('python-pybedtools')
 makedepends=(
   'python' 'python-setuptools' 'cython'
   'python2' 'python2-setuptools' 'cython2')
@@ -47,6 +45,8 @@ package_python2-pybedtools-git() {
     'htslib: for working with SAM/BAM/CRAM files'
     'python2-matplotlib: for plotting genomic intervals'
     'ucsc-kent-genome-tools: for bedgraph to bigwig conversions')
+  provides=('python2-pyvcf')
+  conflicts=('python2-pyvcf')
 
   cd "${_name}"-"${pkgver}"-py2
   python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
@@ -72,6 +72,8 @@ package_python-pybedtools-git() {
     'htslib: for working with SAM/BAM/CRAM files'
     'python-matplotlib: for plotting genomic intervals'
     'ucsc-kent-genome-tools: for bedgraph to bigwig conversions')
+  provides=('python-pyvcf')
+  conflicts=('python-pyvcf')
 
   cd "${_name}"-"${pkgver}"
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
