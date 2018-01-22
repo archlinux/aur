@@ -2,13 +2,12 @@
 
 pkgname="logic2010"
 pkgver="20180112"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Educational symbolic logic software provided for free by UCLA"
 arch=('any')
 url="https://logiclx.humnet.ucla.edu"
 license=('custom')
-depends=('bash' 'java-runtime')
-makedepends=('unzip')
+depends=('java-runtime')
 source=("$url/auto_remote/desktop/$pkgver/Logic2010_mac_$pkgver.zip"
         "LICENSE"
         "logic2010.sh"
