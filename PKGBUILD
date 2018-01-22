@@ -5,11 +5,11 @@
 
 pkgname=silo
 pkgver=4.10.2
-pkgrel=7
+pkgrel=8
 pkgdesc="A Mesh and Field I/O Library and Scientific Database"
 url="https://wci.llnl.gov/simulation/computer-codes/silo"
 arch=('i686' 'x86_64')
-depends=('qt4' 'python2' 'szip' 'hdf5')
+depends=('qt4' 'python2' 'hdf5')
 makedepends=('gcc-fortran')
 license=('BSD' 'custom')
 source=("https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
