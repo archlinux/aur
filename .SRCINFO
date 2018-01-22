@@ -1,14 +1,21 @@
 pkgbase = python-memoized-property
 	pkgdesc = Python decorator for defining properties that only run their fget function once
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/memoized-property
 	arch = any
 	license = BSD
+	makedepends = python
 	makedepends = python-setuptools
-	depends = python
-	source = https://pypi.python.org/packages/70/db/23f8b5d86c9385299586c2469b58087f658f58eaeb414be0fd64cfd054e1/memoized-property-1.0.3.tar.gz
-	md5sums = ae9bf3ef40b9a08a4f1798fb322c6865
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-memoized-property-1.0.3.tar.gz::https://pypi.python.org/packages/70/db/23f8b5d86c9385299586c2469b58087f658f58eaeb414be0fd64cfd054e1/memoized-property-1.0.3.tar.gz
+	sha256sums = 4be4d0209944b9b9b678dae9d7e312249fe2e6fb8bdc9bdaa1da4de324f0fcf5
 
 pkgname = python-memoized-property
+	depends = python
+
+pkgname = python2-memoized-property
+	depends = python2
 
