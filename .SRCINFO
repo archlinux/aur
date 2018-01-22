@@ -1,20 +1,29 @@
 pkgbase = python-polo
 	pkgdesc = Python optimal leaf ordering for hierarchical clustering
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
-	url = https://github.com/adrianveres/polo
+	url = https://pypi.python.org/pypi/polo
 	arch = any
 	license = MIT
-	makedepends = cython
+	makedepends = python
 	makedepends = python-setuptools
-	depends = python
-	depends = python-numpy>=1.9.2
-	depends = python-scipy
-	provides = python-polo
-	conflicts = python-polo
+	makedepends = cython
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = cython2
 	options = !emptydirs
-	source = https://github.com/adrianveres/polo/archive/0.4.tar.gz
-	md5sums = a5d3d2b09b18b34b4e368b1936197fd6
+	source = python-polo-0.5.tar.gz::https://pypi.python.org/packages/58/cd/cd9950e2584edc24b63944734152092052b20e9b78fe50b3292f402e0652/polo-0.5.tar.gz
+	source = https://raw.githubusercontent.com/adrianveres/polo/7c1fe6893d4874a0097f10c42f4a86c5ca77388e/LICENSE
+	sha256sums = 956e2b7cf7825988f7085616058b985742483d7b7d0634e0e9d3f679a88bc232
+	sha256sums = 1e8c74335e5bc366e844b49f1e9cd551d9eacdc17b94ed7d89cc2bff47cfb651
 
 pkgname = python-polo
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+
+pkgname = python2-polo
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
 
