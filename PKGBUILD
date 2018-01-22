@@ -3,7 +3,7 @@
 pkgname=appimage-git
 _gitname=AppImageKit
 pkgdesc="Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, Ubuntu, Fedora, debian and derivatives."
-pkgver=r908.3a2c98d
+pkgver=r982.3f74bcd
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://appimage.org"
@@ -41,14 +41,14 @@ prepare() {
   # Generate appimaged.service file
   echo "[Unit]" > appimaged.service
   echo "Description=AppImage daemon" >> appimaged.service
-  echo "After=basic.target" >> appimaged.service
+  echo "After=display-manager.service" >> appimaged.service
   echo "[Service]" >> appimaged.service
   echo "ExecStart=/usr/bin/appimaged" >> appimaged.service
   echo "Restart=always" >> appimaged.service
   echo "RestartSec=5s" >> appimaged.service
   echo "StartLimitInterval=0" >> appimaged.service
   echo "[Install]" >> appimaged.service
-  echo "WantedBy=graphical.target" >> appimaged.service
+  echo "WantedBy=default.target" >> appimaged.service
 }
 
 build() {
