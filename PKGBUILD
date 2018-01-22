@@ -2,7 +2,7 @@
 
 pkgname="logic2010"
 pkgver="20180112"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Educational symbolic logic software provided for free by UCLA"
 arch=('any')
 url="https://logiclx.humnet.ucla.edu"

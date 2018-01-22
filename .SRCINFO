@@ -1,12 +1,10 @@
 pkgbase = logic2010
 	pkgdesc = Educational symbolic logic software provided for free by UCLA
 	pkgver = 20180112
-	pkgrel = 2
+	pkgrel = 4
 	url = https://logiclx.humnet.ucla.edu
 	arch = any
 	license = custom
-	makedepends = unzip
-	depends = bash
 	depends = java-runtime
 	source = https://logiclx.humnet.ucla.edu/auto_remote/desktop/20180112/Logic2010_mac_20180112.zip
 	source = LICENSE
