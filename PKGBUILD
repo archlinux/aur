@@ -56,13 +56,13 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  make ARCH=x86_64 olddefconfig
+  make olddefconfig
 }
 
 build() {
   cd ${_srcname}
 
-  make ARCH=x86_64 LOCALVERSION= CONFIG_DEBUG_SECTION_MISMATCH=y ${MAKEFLAGS}
+  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 _package() {
