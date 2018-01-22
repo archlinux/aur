@@ -1,0 +1,16 @@
+pkgbase = vcfanno-bin
+	pkgdesc = Annotate a VCF with other VCFs/BEDs/tabixed files
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://github.com/brentp/vcfanno
+	arch = x86_64
+	license = MIT
+	provides = vcfanno
+	conflicts = vcfanno
+	source = vcfanno-0.2.8.tar.gz::https://github.com/brentp/vcfanno/archive/v0.2.8.tar.gz
+	source = vcfanno-0.2.8-binary::https://github.com/brentp/vcfanno/releases/download/v0.2.8/vcfanno_linux64
+	sha256sums = cdb550f28d9b6d15105432b0414afa735a352839e27eda4efa954f29c000e7f8
+	sha256sums = 72caf9aeb0dceabea8ad4677a075ddb75b9cc1ba9779bb786033c35dde05fe73
+
+pkgname = vcfanno-bin
+
