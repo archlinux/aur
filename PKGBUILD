@@ -1,29 +1,35 @@
-# Contributer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Contributer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=gatk
-_pkgver=4.beta.6
-pkgver="${_pkgver//.beta/}"
+pkgver=4.0.0.0
 pkgrel=1
-pkgdesc="Genome Analysis Toolkit - Variant Discovery in High-Throughput Sequencing Data"
+epoch=2
+pkgdesc="Variant discovery in high-throughput bioinformatics sequencing data"
 arch=('any')
-url="https://software.broadinstitute.org/gatk/"
-license=('BSD3')
-depends=('bash' 'java-runtime>=8' 'gradle')
-provides=('gatk')
-conflicts=('gatk')
-source=("https://github.com/broadinstitute/${pkgname}/archive/${_pkgver}.tar.gz")
-md5sums=('caff053f04974044e06cd5fc8e344d7c')
+url=https://software.broadinstitute.org/"${pkgname}"
+license=('custom:broadinstitute')
+depends=('java-runtime>=8' 'gradle')
+source=(
+  gatk.sh
+  "${pkgname}"-"${pkgver}".tar.gz::https://github.com/broadinstitute/"${pkgname}"/archive/"${pkgver}".tar.gz
+)
+sha256sums=(
+  '279d9fa4f9711b31a312a372216fbc0a61901db5a8e1b6c714bd96bafd0714f2'
+  '473fabecc406c9cdaf1fe5648b26b51d9c71870af5e2e6557c73131e941b80d7'
+)
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd "${srcdir}/${pkgname}"-"${pkgver}"
   ./gradlew localJar
 }
 
 package() {
-  install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/build/libs/gatk-package-unspecified-SNAPSHOT-local.jar" "${pkgdir}/usr/share/java/${pkgname}-${_pkgver}/GenomeAnalysisTK.jar"
-  install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}-${_pkgver}/LICENSE.TXT"
-  install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}-${_pkgver}/README.md"
-  install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/AUTHORS" "${pkgdir}/usr/share/doc/${pkgname}-${_pkgver}/AUTHORS"
-}
+  install -Dm755 gatk.sh "${pkgdir}"/usr/bin/gatk
 
+  cd "${srcdir}/${pkgname}"-"${pkgver}"
+  install -Dm644 LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.TXT
+  install -Dm644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
+  install -Dm644 AUTHORS "${pkgdir}"/usr/share/doc/"${pkgname}"/AUTHORS
+  install -Dm644 build/libs/gatk-package-unspecified-SNAPSHOT-local.jar "${pkgdir}"/usr/share/java/"${pkgname}"/GenomeAnalysisTK.jar
+}
