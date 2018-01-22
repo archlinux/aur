@@ -2,7 +2,7 @@
 
 pkgname=imgur-screenshot-git
 _pkgname=imgur-screenshot
-pkgver=1.7.4.r0.g1c65555
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Take screenshot selection, upload to imgur + more cool things"
 arch=('any')
@@ -13,18 +13,18 @@ optdepends=('libnotify: for desktop notifications'
             'scrot: for making screenshots'
             'xclip: for copying screenshot URLs to clipboard')
 install='imgur-screenshot.install'
-source=('git+https://github.com/jomo/imgur-screenshot.git'
+source=('git+https://github.com/jomo/imgur-screenshot.git#tag=v1.7.3'
         'imgur-screenshot.desktop'
         'imgur-screenshot.png')
 md5sums=('SKIP'
          '459431a977061e56894315ce151d9bef'
          '3780c9f2183f7d4705ab86ab077e3885')
 
-pkgver() {
-  cd "$_pkgname"
-  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-}
+#pkgver() {
+#  cd "$_pkgname"
+#  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+#}
 
 prepare() {
   cd "$srcdir/$_pkgname"
