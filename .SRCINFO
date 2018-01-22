@@ -1,6 +1,6 @@
 pkgbase = jotta-cli
 	pkgdesc = Jottacloud CLI.
-	pkgver = 0.3.4195
+	pkgver = 0.3.4269
 	pkgrel = 1
 	url = http://docs.jottacloud.com/jottacloud-command-line-tool
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = jotta-cli
 	provides = jotta-cli
 	options = !strip
 	options = !upx
-	source_x86_64 = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.3.4195_amd64.deb
-	sha256sums_x86_64 = fe249d2e6406e1bcb3c7006a02a4bad7ebc1c60187b22ead4216e9ae1a391563
-	source_i686 = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.3.4195_i386.deb
-	sha256sums_i686 = ff1539e894d6744661de67bcf5fd32e3568ec4201a50e940bd12782430d7f55e
+	source_x86_64 = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.3.4269_amd64.deb
+	sha256sums_x86_64 = 17e569ca5772f8c1da48112511e259079ee245191d02663ab5f18877067e0eec
+	source_i686 = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.3.4269_i386.deb
+	sha256sums_i686 = cb7aa62d4346bb60de056b77605af8e621b641520ace7ecd952c5d4277f725b6
 
 pkgname = jotta-cli
 

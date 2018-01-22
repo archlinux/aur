@@ -1,7 +1,7 @@
 # Maintainer: Joakim Nylen (jnylen) <me@jnylen.nu>
 
 pkgname=jotta-cli
-pkgver=0.3.4195
+pkgver=0.3.4269
 pkgrel=1
 pkgdesc="Jottacloud CLI."
 makedepends=()
@@ -13,8 +13,8 @@ options=('!strip' '!upx')
 provides=('jotta-cli')
 conflicts=()
 
-sha256sums_x86_64=('fe249d2e6406e1bcb3c7006a02a4bad7ebc1c60187b22ead4216e9ae1a391563')
-sha256sums_i686=('ff1539e894d6744661de67bcf5fd32e3568ec4201a50e940bd12782430d7f55e')
+sha256sums_x86_64=('17e569ca5772f8c1da48112511e259079ee245191d02663ab5f18877067e0eec')
+sha256sums_i686=('cb7aa62d4346bb60de056b77605af8e621b641520ace7ecd952c5d4277f725b6')
 
 source_x86_64=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${pkgver}_amd64.deb")
 
