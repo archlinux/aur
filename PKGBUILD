@@ -3,7 +3,7 @@
 # Contributor: Denis Wernert <denis@wernert.info>
 
 pkgname=ocaml-ssl
-pkgver=0.5.3
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="OCaml SSL Library"
 arch=('i686' 'x86_64')
@@ -31,4 +31,4 @@ package() {
   awk 'BEGIN{P=0} /License/ {P = 1;} {if (P) print}' README.md > $pkgdir/usr/share/licenses/$pkgname/license
 }
 
-md5sums=('9fd48066d1cd4db52b40e2f59a7d4d83')
+md5sums=('cdb1cdf9ee8c582165d4d11f35e53c4d')
