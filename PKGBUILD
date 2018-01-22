@@ -1,7 +1,7 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 pkgname=naaman
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Not Another Aur MANager"
 arch=("any")
 url="https://github.com/enckse/$pkgname"
@@ -14,11 +14,11 @@ source=("https://github.com/enckse/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('950faaed0145573ee56763b9224f306c7791b89e24c42a5c88c01183cb52fc4a')
 
 build() {
-    cd $srcdir/$pkgname
+    cd $srcdir/$pkgname-$pkgver
     make completions manpages
 }
 package() {
-    cd $srcdir/$pkgname
+    cd $srcdir/$pkgname-$pkgver
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     install -Dm644 bin/bash.completions $pkgdir/usr/share/bash-completion/completions/$pkgname
     install -Dm755 naaman.py $pkgdir/usr/bin/naaman
