@@ -1,6 +1,7 @@
 # Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 # Contributor: Karel Louwagie <karel@louwagie.net>
 # Contributor: Serge Pavlyuk <flopss at gmail dot com>
+# Contributor: phi-mah
 
 pkgname=toggldesktop
 pkgver=7.4.90
