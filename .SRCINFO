@@ -15,3 +15,18 @@ pkgbase = ndpi
 
 pkgname = ndpi
 
+pkgbase = ndpi
+	pkgdesc = Open and Extensible GPLv3 Deep Packet Inspection Library
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://www.ntop.org/products/ndpi/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	conflicts = ndpi-svn
+	options = staticlibs
+	source = https://github.com/ntop/nDPI/archive/2.2.tar.gz
+	md5sums = e5f73354c082c7136572c846d166d3cb
+
+pkgname = ndpi
+
