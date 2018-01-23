@@ -4,7 +4,7 @@
 
 pkgname=wildfly-11
 pkgver=11.0.0.Final
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Wildfly Application Server'
 arch=('any')
