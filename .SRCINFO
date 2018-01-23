@@ -1,7 +1,7 @@
 pkgbase = ao
 	pkgdesc = An Electron wrapper for Microsoft To-Do
-	pkgver = 5.2.0
-	pkgrel = 2
+	pkgver = 5.3.0
+	pkgrel = 1
 	url = https://klauscfhq.github.io/ao/
 	arch = x86_64
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = ao
 	depends = libxss
 	provides = ao
 	conflicts = ao-git
-	source = https://github.com/klauscfhq/ao/releases/download/v5.2.0/ao-5.2.0-amd64.deb
-	md5sums = 8281cc9859e755225b4495b848e1fe15
+	source = https://github.com/klauscfhq/ao/releases/download/v5.3.0/ao_5.3.0_amd64.deb
+	md5sums = 2407096c392aed98086aadbdbac6bb2f
 
 pkgname = ao
 
