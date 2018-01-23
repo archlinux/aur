@@ -1,7 +1,7 @@
 pkgbase = chipmachine
 	pkgdesc = Demoscene/Retro Music Player
 	pkgver = 1.4b3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sasq64/chipmachine
 	arch = i686
 	arch = x86_64
@@ -16,12 +16,10 @@ pkgbase = chipmachine
 	depends = fftw
 	source = chipmachine-v1.4b3.tar.gz::https://github.com/sasq64/chipmachine/archive/v1.4b3.tar.gz
 	source = apone-chipmachine-v1.4b3.tar.gz::https://github.com/sasq64/apone/archive/chipmachine-v1.4b3.tar.gz
-	source = chipmachine
-	source = cm
+	source = apone-chipmachine-v1.4b3-datadir.patch
 	sha256sums = b01f123e157d72eee4f4d3784f82b1ab0cc5b4d968067b0af50163321d3f5cb4
 	sha256sums = e411d6515064bb2c952a95aad6bcfc70c1f6b58f40d7874f671ef26185911156
-	sha256sums = 55bc037642af379ac1bec1c0b6ab10a1af8d13d5fb98fd92e413984516afcd30
-	sha256sums = 75659c95d717851986bbadcf3d3dddb3d72f92720cdd58a97b870e91daf73b5c
+	sha256sums = d31e25b31467e02fa0ef636217dad64db4ad1f58420ac51ce8ad98bbdeda7da2
 
 pkgname = chipmachine
 

@@ -1,0 +1,13 @@
+# Fix 'File not found: data/Songlengths.txt' when data is in a different directory than the binary.
+
+--- apone/mods/musicplayer/plugins/viceplugin/VicePlugin.cpp
++++ apone/mods/musicplayer/plugins/viceplugin/VicePlugin.cpp
+@@ -497,7 +497,7 @@ template <typename T> T from_hex(const std::string &s) {
+ 
+ void VicePlugin::readLengths() {
+ 
+-	File fp{"data/Songlengths.txt"};
++	File fp{dataDir + "/data/Songlengths.txt"};
+ 	string secs, mins;
+ 	vector<uint16_t> lengths;
+ 	for(const auto &l : fp.getLines()) {
