@@ -3,13 +3,13 @@
 # Contributor: speps
 # Contributor: Bernardo Barros
 pkgname=muse
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="A MIDI/Audio sequencer with recording and editing capabilities"
 arch=('i686' 'x86_64')
 url="http://muse-sequencer.org/"
 license=('GPL2')
-depends=('qt5-base' 'fluidsynth' 'liblo' 'gtkmm' 'lib32-gtk2' 'gcc-libs-multilib' 'jack')
+depends=('qt5-base' 'fluidsynth' 'liblo' 'gtkmm' 'lib32-gtk2' 'gcc-libs-multilib' 'jack' 'rtaudio')
 makedepends=('cmake' 'gcc6' 'ladspa' 'lv2' 'dssi' 'dssi-vst' 'ladish' 'liblo' 'qt5-tools')
 optdepends=(
     'python2: Python scripting'
@@ -24,7 +24,7 @@ install="${pkgname}.install"
 provides=('muse')
 conflicts=('muse')
 source=("https://github.com/muse-sequencer/muse/archive/muse_${pkgver//./_}.tar.gz")
-sha256sums=('72952f094c8c843586679a0f893bf122bd099847490ddf16a829ca5e361e70d1')
+sha256sums=('49326fce7b2aecbc4b6f70b86cc5e502d3d8c8872f5f3583a9fe945865d6372e')
 
 build() {
   cd "${srcdir}/muse-muse_${pkgver//./_}/muse3"
@@ -49,7 +49,8 @@ build() {
         -DENABLE_FLUID=1 \
         -DENABLE_DSSI=1 \
         -DENABLE_LASH=1 \
-        -DENABLE_OSC=1 ..
+        -DENABLE_OSC=1 \
+        -DENABLE_RTAUDIO=1 ..
   make
 }
 

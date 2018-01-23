@@ -1,7 +1,7 @@
 pkgbase = muse
 	pkgdesc = A MIDI/Audio sequencer with recording and editing capabilities
-	pkgver = 3.0.0
-	pkgrel = 3
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = http://muse-sequencer.org/
 	install = muse.install
 	arch = i686
@@ -23,6 +23,7 @@ pkgbase = muse
 	depends = lib32-gtk2
 	depends = gcc-libs-multilib
 	depends = jack
+	depends = rtaudio
 	optdepends = python2: Python scripting
 	optdepends = python2-pyqt5: Python scripting
 	optdepends = ladspa: ladspa plugin support
@@ -32,8 +33,8 @@ pkgbase = muse
 	optdepends = ladish: LASH session support
 	provides = muse
 	conflicts = muse
-	source = https://github.com/muse-sequencer/muse/archive/muse_3_0_0.tar.gz
-	sha256sums = 72952f094c8c843586679a0f893bf122bd099847490ddf16a829ca5e361e70d1
+	source = https://github.com/muse-sequencer/muse/archive/muse_3_0_1.tar.gz
+	sha256sums = 49326fce7b2aecbc4b6f70b86cc5e502d3d8c8872f5f3583a9fe945865d6372e
 
 pkgname = muse
 
