@@ -3,7 +3,7 @@ pkgbase = rsyslog
 	pkgver = 8.32.0
 	pkgrel = 1
 	url = http://www.rsyslog.com/
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = postgresql-libs>=8.4.1
 	makedepends = libmariadbclient
