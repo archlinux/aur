@@ -5,7 +5,7 @@ pkgver=17.12
 pkgrel=0
 
 epoch=
-pkgdesc="ARM Computer Vision and Machine Learning Library (OpenCL + NEON Backends)"
+pkgdesc="ARM Computer Vision and Machine Learning Library (arm64-v8a OpenCL + NEON Backends)"
 arch=( 'x86_64' )
 url="https://github.com/ARM-software/ComputeLibrary"
 license=('MIT')
