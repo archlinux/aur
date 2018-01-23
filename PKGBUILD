@@ -1,6 +1,6 @@
 pkgname=tresorit
 pkgver=3.0.483.730
-pkgrel=1
+pkgrel=2
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
 url="http://www.tresorit.com/"
@@ -11,7 +11,7 @@ source=("tresorit_installer_${pkgver}.run::https://installerstorage.blob.core.wi
         "tresorit.service")
 
 sha1sums=('13c36ac9496795a0c86ef62104613bc3cc61f3e4'
-          '17de06b432b0e9fdd2ac9175a520c27c4d803199')
+          '2f6c3f0c4f3da3e13c71896a2f73299b2968ecf8')
 
 prepare() {
   # Validate signature

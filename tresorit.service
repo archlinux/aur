@@ -2,7 +2,7 @@
 Description=Tresorit: Encrypted cloud storage for your confidential files.
 
 [Service]
-ExecStart=/home/user/.local/share/tresorit/tresorit --hidden
+ExecStart=%h/.local/share/tresorit/tresorit --hidden
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 
