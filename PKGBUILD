@@ -30,7 +30,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  git submodule init
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git submodule update
 }
