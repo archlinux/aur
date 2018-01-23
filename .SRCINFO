@@ -1,11 +1,11 @@
 pkgbase = ddnet
 	pkgdesc = DDraceNetwork, a mod of Teeworlds
-	pkgver = 11.0.1
+	pkgver = 11.0.2
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = x86_64
 	license = custom:BSD
-	license = cc-by-nc-sa-3.0
+	license = CCPL:by-nc-sa
 	makedepends = cmake
 	makedepends = imagemagick
 	makedepends = gendesk
@@ -22,8 +22,8 @@ pkgbase = ddnet
 	provides = teeworlds-ddnet
 	conflicts = teeworlds-ddnet
 	replaces = teeworlds-ddnet
-	source = https://ddnet.tw/downloads/DDNet-11.0.1.tar.xz
-	sha256sums = d7a3419dc1bb8c9580c19d3ad627fe77071e31f7e84f8c8728e1e46ed7a15a61
+	source = https://ddnet.tw/downloads/DDNet-11.0.2.tar.xz
+	sha256sums = f5d8842dd18563f437534fd53315cb00812fe0d40ea70ae5225f503c6f618987
 
 pkgname = ddnet
 
