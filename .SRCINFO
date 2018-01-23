@@ -1,14 +1,10 @@
 pkgbase = file-linker
-	pkgdesc = keeps hard links in sync.
-	pkgver = 1.0.2
-	pkgrel = 8
-	url = http://torben.website/fileLinker
+	pkgdesc = This package violates AUR guidelines
+	pkgver = 1.0
+	pkgrel = 1
+	url = dev.null
 	arch = any
-	license = CC-BY-3.0
-	depends = python
-	provides = file-linker
-	source = fileLinker.py
-	md5sums = SKIP
+	license = None
 
 pkgname = file-linker
 
