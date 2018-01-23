@@ -2,7 +2,7 @@
 
 pkgname=mkl-dnn
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 
 epoch=
 pkgdesc="Intel® Math Kernel Library for Deep Neural Networks"
@@ -36,8 +36,6 @@ build() {
 package() {
   cd "${srcdir}/mkl-dnn/build"
   make install
-  rm ${pkgdir}/usr/include/libiomp*
-  rm ${pkgdir}/usr/include/libmklml*
   mkdir -p ${pkgdir}/usr/include/mkldnn/include/
   cp -r ../external/mkl*/include/* ${pkgdir}/usr/include/mkldnn/include/
   mkdir -p ${pkgdir}/usr/lib/mkldnn/lib/
