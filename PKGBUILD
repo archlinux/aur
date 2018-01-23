@@ -1,14 +1,14 @@
 pkgname=archvyrt
-pkgver=0.3.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="libvirt provisioner for archlinux libvirt hosts"
 url="https://github.com/andrekeller/archvyrt"
-depends=('python' 'python-setuptools' 'libvirt-python3' 'gptfdisk' 'arch-install-scripts' 'debootstrap')
+depends=('python' 'python-setuptools' 'libvirt-python' 'gptfdisk' 'arch-install-scripts' 'debootstrap')
 makedepends=('python-setuptools' )
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/source/a/archvyrt/archvyrt-$pkgver.tar.gz")
-md5sums=('e0acd7ff8a90c5d211797859d59c4a9b')
+source=("https://files.pythonhosted.org/packages/source/a/archvyrt/archvyrt-$pkgver.tar.gz")
+md5sums=('a19f80a2df28c330fa44a170d2039e09')
 
 build() {
     cd $srcdir/archvyrt-$pkgver
