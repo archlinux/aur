@@ -1,15 +1,10 @@
 pkgbase = filelinker
-	pkgdesc = keeps hard links in sync.
-	pkgver = 1.0.11
-	pkgrel = 17
-	url = http://torben.website/filelinker
+	pkgdesc = This package violates AUR guidelines
+	pkgver = 1.0
+	pkgrel = 1
+	url = dev.null
 	arch = any
-	license = CC-BY-3.0
-	depends = python
-	depends = boostnode
-	provides = filelinker
-	source = filelinker.py
-	md5sums = SKIP
+	license = None
 
 pkgname = filelinker
 
