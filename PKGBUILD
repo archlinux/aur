@@ -7,8 +7,8 @@ _lang=en-US
 pkgname=${_name}-${_channel}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=59.0a1
-pkgver=59.0a1.20171114
+_version=60.0a1
+pkgver=60.0a1.20180123
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -22,7 +22,7 @@ optdepends=('pulseaudio: audio support'
             'networkmanager: location detection via available WiFi networks'
             'speech-dispatcher: text-to-speech'
             'startup-notification: support for FreeDesktop Startup Notification')
-_url="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central"
+_url="https://download-installer.cdn.mozilla.net/pub/${_name}/nightly/latest-mozilla-central"
 _src="${_name}-${_version}.${_lang}.linux"
 _filename="$(date +%Y%m%d)-${_src}"
 source=("${pkgname}.desktop" 'vendor.js')
@@ -32,10 +32,8 @@ source_i686=("${_filename}-i686.tar.bz2"::"${_url}/${_src}-i686.tar.bz2"
 source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}/${_src}-x86_64.tar.bz2"
                "${_filename}-x86_64.tar.bz2.asc"::"${_url}/${_src}-x86_64.tar.bz2.asc"
                "${_filename}-x86_64.txt"::"${_url}/${_src}-x86_64.txt")
-sha512sums=(
-    'b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
-    'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
-)
+sha512sums=('14393ed4224a6bc3f86ff9c57d02a6d4110c0e47aeaece6d02eac1f577fb9c38455a478da020e90a5f1ab726c46862d7a0e8f82100628d185954c9f82e0ca8c3'
+            'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
 sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
