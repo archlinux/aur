@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=sejda-desktop
-pkgver=3.2.5
+pkgver=3.3.0
 pkgrel=1
 license=('custom:EULA')
 pkgdesc='PDF editor'
@@ -26,3 +26,4 @@ package() {
     ln -s /opt/sejda-desktop/${_i} "${pkgdir}/usr/share/licenses/${pkgname}/${_i}"
   done
 }
+sha512sums=('13f8ab22b83a0ba8220cda89e63888b638e9aa1920d13c22f21155cd2e8e0933500eb0cee32686e3eeaabcc8bd0a2ffd0fdc1d5e9d71eaa24acc159b7090a484')
