@@ -1,0 +1,18 @@
+pkgbase = calc-git
+	pkgdesc = A simple command line calculator.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/darshanparajuli/calc
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = rustc
+	makedepends = cargo
+	source = git+https://github.com/darshanparajuli/calc
+	md5sums = SKIP
+
+pkgname = calc-git
+
