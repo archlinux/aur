@@ -1,6 +1,6 @@
 pkgbase = min-browser-bin
 	pkgdesc = A faster, smarter web browser.
-	pkgver = 1.6.3
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://palmeral.github.io/min/
 	install = min-browser-bin.install
@@ -13,9 +13,9 @@ pkgbase = min-browser-bin
 	depends = desktop-file-utils
 	depends = nss
 	depends = gnuplot
-	noextract = Min_1.6.3_amd64.deb
-	source = https://github.com/minbrowser/min/releases/download/v1.6.3/Min_1.6.3_amd64.deb
-	md5sums = 2c8ac1d6e991832e5e31f78e0bc2f9fd
+	noextract = Min_1.7.0_amd64.deb
+	source = https://github.com/minbrowser/min/releases/download/v1.7.0/Min_1.7.0_amd64.deb
+	md5sums = e20a7b70f4bbf01ffb4797e530feed97
 
 pkgname = min-browser-bin
 
