@@ -4,7 +4,7 @@
 pkgbase=webkitgtk
 pkgname=(webkitgtk webkitgtk2)
 pkgver=2.4.11
-pkgrel=10
+pkgrel=11
 pkgdesc="Legacy Web content engine"
 arch=(i686 x86_64)
 url="https://webkitgtk.org/"
@@ -62,7 +62,7 @@ _build() (
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-  make -j$(nproc) all stamp-po
+  make all stamp-po
 )
 
 build() {

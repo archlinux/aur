@@ -1,7 +1,7 @@
 pkgbase = webkitgtk
 	pkgdesc = Legacy Web content engine
 	pkgver = 2.4.11
-	pkgrel = 10
+	pkgrel = 11
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
 	arch = i686
