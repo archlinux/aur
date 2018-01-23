@@ -13,13 +13,16 @@ replaces=()
 source=(${pkgname}::git+https://github.com/nana-4/materia-theme.git)
 sha256sums=('SKIP')
 
-pkgver=r551.de1b86d
+pkgver=r613.62d928c
 pkgver() {
   cd "$srcdir/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 pkgrel=1
+
 package() {
   cd "$srcdir/${pkgname}"
-  destdir="${pkgdir}" ./install.sh
+  mkdir -p "${pkgdir}/usr/share/themes"
+  ./install.sh -d "${pkgdir}/usr/share/themes"
 }
