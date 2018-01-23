@@ -9,7 +9,13 @@ url="http://www.qtile.org"
 license=('MIT')
 depends=('python' 'pango' 'python-xcffib>=0.5.1' 'python-cairocffi>=0.8.0')
 makedepends=('python-distribute')
-optdepends=('python-setproctitle: change the process name to qtile')
+optdepends=('python-setproctitle: change the process name to qtile'
+            'python-mpd2: Mpd widget'
+            'python-gobject: dbus interface'
+            'python-dbus: dbus interface, Mpris, Mpris2, KeyboardKbdd widgets'
+            'python-iwlib: Wlan widget'
+            'python-keyring: Imap widget'
+            'khal: calendar widget')
 conflicts=('qtile-git')
 install=${pkgname}.install
 source=("https://github.com/qtile/qtile/archive/v${pkgver}.tar.gz")
