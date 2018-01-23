@@ -1,0 +1,13 @@
+post_install() {
+    echo "----------------------------------------------------------------"
+    echo "To enable the infocus time tracker on your account:"
+    echo "systemctl --user enable infocus"
+    echo "systemctl --user start infocus"
+    echo "----------------------------------------------------------------"
+
+    xdg-icon-resource forceupdate
+}
+
+post_remove() {
+    xdg-icon-resource forceupdate
+}
