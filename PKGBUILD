@@ -4,7 +4,7 @@
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
 pkgname=dosbox-multilib-patched
-_rev=4034
+_rev=4068
 pkgver=0.74.$_rev
 pkgrel=1
 pkgdesc="An emulator with builtin DOS for running DOS Games. 32-bit build with selected patches"
