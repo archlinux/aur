@@ -1,4 +1,4 @@
-pkgbase = calc-git
+pkgbase = calc
 	pkgdesc = A simple command line calculator.
 	pkgver = 0.1.0
 	pkgrel = 1

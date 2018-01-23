@@ -1,4 +1,5 @@
 # Maintainer: Darshan Parajuli <parajulidarshan@gmail.com>
+pkgbase=calc
 pkgname=calc-git
 pkgver=0.1.0
 pkgrel=1
