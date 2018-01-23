@@ -11,8 +11,9 @@ pkgbase = omp-git
 	depends = libclastfm
 	depends = libconfig
 	depends = taglib
-	provides = omp
+	provides = omp-git
 	conflicts = omp
+	conflicts = omp-git
 	source = omp-git::git+https://github.com/TheWiseNoob/OpenMusicPlayer.git
 	sha256sums = SKIP
 
