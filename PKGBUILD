@@ -1,9 +1,9 @@
 # Maintainer: Nick Levesque <nick.levesque@gmail.com>
 # Contributor: Kevin Hanselman <kevin-hanselman@gmail.com>
 pkgname=fwup-git
-pkgver=v0.19.0.r5.ga107d81
+pkgver=v1.0.0.r0.gdbca9ec
 pkgrel=1
-pkgdesc="Configurable embedded Linux firmware update creator and runner"
+pkgdesc="Configurable embedded Linux firmware update creator and runner (latest from git master)"
 arch=('any')
 url="https://github.com/fhunleth/fwup"
 license=('Apache v2.0')
