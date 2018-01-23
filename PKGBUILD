@@ -1,7 +1,7 @@
 _npmname=http-master
 pkgname=nodejs-http-master # All lowercase
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="a front end http service with with easy setup of reverse proxy/redirecting/other-actions logic"
 arch=(any)
 url="https://github.com/encharm/http-master"
@@ -19,5 +19,10 @@ package() {
 	mkdir -p $_npmdir
 	cd $_npmdir
 	npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+	mkdir "$pkgdir/etc/systemd/system"
+        mkdir "$pkgdir/etc/http-master"
+        cp "$pkgdir/usr/lib/node_modules/http-master/http-master-upstart.conf" "$pkgdir/etc/http-master/http-master.conf"
+        cp "$pkgdir/usr/lib/node_modules/http-master/http-master.service" "$pkgdir/etc/systemd/system/."
+
 #    rmdir "$pkgdir/usr/etc"
 }
