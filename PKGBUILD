@@ -3,25 +3,23 @@
 # Contributor: Rick Rein <jeebusroxors@gmail.com>
 # Contributor: samuellittley <supersam.littley@gmail.com>
 pkgname=xprintidle
-pkgver=0.2
-pkgrel=7
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Print X idle time"
-arch=(i686 x86_64)
-license=('GPL')
+arch=('x86_64')
+license=('GPL2')
 depends=('libxss')
-url=http://www.dtek.chalmers.se/~henoch/text/xprintidle.html
-source=(https://launchpad.net/ubuntu/+archive/primary/+files/xprintidle_$pkgver.orig.tar.gz)
-md5sums=('254071bee32447566be4a4f42b9a19ff')
+url="https://github.com/g0hl1n/xprintidle"
+source=("https://github.com/g0hl1n/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('7755ad4a35773349de1b432fda24ac51b14e8e989fe2ad7c98af214ce7b2f45e5b527758933bcc84c6625199e2b38ef0bd3f18f622ce6e84b0cf321476606cc8')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  export LIBS=-lXext
+  cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr --x-libraries=/usr/lib
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make prefix="$pkgdir/usr" "libexecdir=$pkgdir/usr/bin" install
+  cd "${pkgname}-${pkgver}"
+  make prefix="${pkgdir}/usr" install
 }
