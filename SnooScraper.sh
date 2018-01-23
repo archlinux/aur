@@ -1,14 +1,12 @@
 #!/bin/sh
 
-#multireddits, scrape reddit/insta/imgur/tumblr accounts, config file
-
 #Subreddit Scraper - to download posts (eg. images) fitting certain criteria from a subreddit, and commonly linked sites
 #Oliver Galvin - 2017-18
 
 ### User Modifiable Parameters
 ###
-target=1000		#Number of posts to try to scrape, 0 for no target
-limit=0		#Max number of posts to search, should be >= target, 0 for no limit
+target=25		#Number of posts to try to scrape, 0 for no target
+limit=100		#Max number of posts to search, should be >= target, 0 for no limit
 post=0			#1 to allow text posts, 0 to only allow links
 nonimage=0		#1 to allow non-image links, 0 to allow only images
 gif=0			#1 to allow animations/videos, 0 to only allow static images
@@ -100,6 +98,7 @@ getinsta () {
 }
 
 gettumblr () {
+	#Find single image link from Open Graph tag and download from a tumblr post
 	url="$1"; url=${url#*//}; url=${url%\?*}; term="\"og:image\" content="
 	url=$(curl -sLk --retry 1 "http://${url}" | grep -Po "${term}\".*?\"" | sed "s/${term}//g" | tr -d '"')
 	[ -z "$url" ] && return
@@ -117,7 +116,7 @@ getalbum () {
 	[ -z "$data" ] && return
 	base="http://i.imgur.com/"
 	case "${url%/*}" in
-		imgur.com/a|www.imgur.com/a|imgur.com/gallery|www.imgur.com/gallery)
+		*/a|*/gallery)
 			c=$(echo "$data" | jq -r '.album_images.images | length')
 			list=$(echo "$data" | jq -r '.album_images.images | map(.hash,.ext) | join(",")' | sed -e 's/,\./\./g' -e 's/,/\n/g')
 			i=0; l=${#c}
@@ -212,7 +211,7 @@ getsub () {
 				elif [ "$i" = 1 ]; then getinsta "$url"
 				elif [ "$t" = 1 ]; then gettumblr "$url"
 				else curl -sk --retry 1 "http://${url}" -o "$name" &
-				: $(( tally=tally+1 ))
+					 : $(( tally=tally+1 ))
 				fi
 			fi
 		done
