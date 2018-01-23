@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.14.14
-	pkgrel = 2
+	pkgver = 4.14.15
+	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
 	license = GPL2
@@ -12,8 +12,8 @@ pkgbase = linux-bfq-mq
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.14.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.14.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.15.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.15.sign
 	source = https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/4.14-bfq-sq-mq-git-20180113-v2.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/0009-bfq-sq-mq-fix-patching-error-with-20180109.patch
@@ -34,12 +34,11 @@ pkgbase = linux-bfq-mq
 	source = 0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 	source = 0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
 	source = 0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-	source = 0005-tools-objtool-makefile-don-t-assume-sync-check.sh-is-executable.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
 	sha256sums = SKIP
-	sha256sums = 62d656b98f0dc143216cb9650bd9b96cd83d92925731e9f0bec5eb4d6358e603
+	sha256sums = 54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030
 	sha256sums = SKIP
 	sha256sums = 8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8
 	sha256sums = 70a9d2e9277e064bf54b2839b6fc35bfd5a98848e35c43da0ef4bc8d9fe88ff3
@@ -61,7 +60,6 @@ pkgbase = linux-bfq-mq
 	sha256sums = f723c341df165e1a6280fdbab013b5f4256c429c4de7330f1f162feccf1fb3d7
 	sha256sums = ec69fb66b2e4baff93ba371c38ff9e7527208203b2b3ab7eea182c274e1201c6
 	sha256sums = 4b92975a3a961593590c990c0ab731d6ec9ddce30be440dd05f5f31695b97a78
-	sha256sums = 11bbe5a18c86926824b142aa7c3df4bbd05371ed28b8b8e2ec0e505f8589d063
 
 pkgname = linux-bfq-mq
 	pkgdesc = The Linux-bfq-mq kernel and modules with the BFQ-MQ scheduler
@@ -72,19 +70,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.14.14
-	provides = linux=4.14.14
+	provides = linux-bfq-mq=4.14.15
+	provides = linux=4.14.15
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.14.14
-	provides = linux-bfq-mq-headers=4.14.14
-	provides = linux-headers=4.14.14
+	depends = linux-bfq-mq=4.14.15
+	provides = linux-bfq-mq-headers=4.14.15
+	provides = linux-headers=4.14.15
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.14.14
-	provides = linux-bfq-mq-docs=4.14.14
-	provides = linux-docs=4.14.14
+	depends = linux-bfq-mq=4.14.15
+	provides = linux-bfq-mq-docs=4.14.15
+	provides = linux-docs=4.14.15
 
