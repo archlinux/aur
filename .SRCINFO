@@ -1,0 +1,18 @@
+pkgbase = jadx-unstable-bin
+	pkgdesc = Command line and GUI tools to produce Java source code from Android Dex and APK files
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/skylot/jadx
+	arch = any
+	license = Apache
+	depends = java-runtime
+	depends = bash
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = jadx
+	conflicts = jadx
+	source = https://dl.bintray.com/skylot/jadx/jadx-0.7.0-b373-d42bf2d.zip
+	sha256sums = 453f85736ca7f6561ff330c6572f9a6441eae1007e1fd35ee1bc522fc4a3bc07
+
+pkgname = jadx-unstable-bin
+
