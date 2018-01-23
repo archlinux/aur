@@ -2,12 +2,13 @@
 
 pkgname=python-gattlib
 pkgver=0.20150805
-pkgrel=2
+pkgrel=3
 pkgdesc='This is a Python library to use the GATT Protocol for Bluetooth LE devices. It is a wrapper around the implementation used by gatttool in bluez package. It does not call other binaries to do its job :)'
 arch=(any)
 url="https://bitbucket.org/OscarAcena/pygattlib"
 license=('Apache')
 depends=('python' 'boost' 'bluez-libs')
+makedepends=('python-setuptools')
 source=(
     "https://pypi.python.org/packages/be/2f/5b1aecec551b42b59d8b399ad444b5672972efb590ca83d784dbe616a3e1/gattlib-0.20150805.tar.gz#md5=f620eca190bb7acd67c7aafecaedb6c2"
     "gattlib.patch"
