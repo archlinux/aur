@@ -1,0 +1,17 @@
+pkgbase = flite-hts-engine
+	pkgdesc = Flite + HTS engine to synthesize speech waveform from HMMs trained by hts.
+	pkgver = 1.07
+	pkgrel = 1
+	url = https://sourceforge.net/projects/hts-engine/files/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	depends = glibc
+	options = staticlibs
+	source = http://downloads.sourceforge.net/hts-engine/flite%2Bhts_engine-${pkgver}.tar.gz
+	md5sums = 541a07777c7b1ea518e1f6f4c745ecc0
+	sha256sums = 5a17c16683a8353077560e0e9b779c331ccc1a5f8da51740612043e65fc9e805
+
+pkgname = flite-hts-engine
+
