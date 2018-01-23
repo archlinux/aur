@@ -1,9 +1,9 @@
 [Unit]
-Description=SimpleRT Daemon
+Description=SimpleRT Daemon on %i
 
 [Service]
 Type=idle
-ExecStart=/usr/lib/simple-rt/simple-rt -i enp5s0
+ExecStart=/usr/lib/simple-rt/simple-rt -i %i
 WorkingDirectory=/usr/lib/simple-rt
 Restart=always
 

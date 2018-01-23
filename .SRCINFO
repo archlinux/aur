@@ -1,6 +1,6 @@
 pkgbase = simple-rt
 	pkgdesc = SimpleRT - Reverse Tethering utility for Android
-	pkgver = 20170403.114_616dc03
+	pkgver = 20170510.132_c270fc9
 	pkgrel = 1
 	url = https://github.com/vvviperrr/SimpleRT
 	arch = x86
@@ -9,10 +9,11 @@ pkgbase = simple-rt
 	makedepends = git
 	makedepends = make
 	depends = libusb
+	depends = net-tools
 	source = simple-rt::git://github.com/vvviperrr/SimpleRT
-	source = simple-rt.service
+	source = simple-rt@.service
 	md5sums = SKIP
-	md5sums = dcb8298e9ce2e3b7dc515e47c3e880d9
+	md5sums = abce660a402beaf33a2e964d140294d6
 
 pkgname = simple-rt
 
