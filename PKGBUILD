@@ -5,6 +5,8 @@ pkgdesc="LISP Information Groper, a tool that can be used to query the LISP Map-
 url="https://github.com/LISPmob/lig-lispmob"
 arch=('x86_64' 'i686' 'armv6h')
 license=('BSD-3-clause')
+depends=('openssl')
+makedepends=('git')
 _commit=268024993fa6e8864085676222b9490022ce928c
 source=("git+https://github.com/LISPmob/lig-lispmob#commit=$_commit")
 sha256sums=('SKIP')

@@ -7,6 +7,8 @@ pkgbase = lig
 	arch = i686
 	arch = armv6h
 	license = BSD-3-clause
+	makedepends = git
+	depends = openssl
 	source = git+https://github.com/LISPmob/lig-lispmob#commit=268024993fa6e8864085676222b9490022ce928c
 	sha256sums = SKIP
 
