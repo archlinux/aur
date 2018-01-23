@@ -7,8 +7,7 @@ You can scrape a subreddit downloading posts and content from their links, depen
 Animated GIFs for example can be large, and can quickly add up to take up valuable disk space, so downloading them can be turned off. Another issue on reddit is that often images are not linked directly but via webpages on sites like imgur. I have included functions which go on to get data from those sites so as to not miss anything. These functions can be called separately using the command line options, to just download a whole imgur album for 
 example.
 
-My aim is to keep SnooScraper written in POSIX-compliant shell script, for portability and efficiency, it should work in any shell. I've tried it in bash, dash and zsh on GNU/Linux so far. It should work on other operating systems but I haven't tried. SnooScraper is free software, feel free to submit issues, patches, or use it in 
-your own project.
+My aim is to keep SnooScraper written in POSIX-compliant shell script, for portability and efficiency, it should work in any shell. I've tried it in bash, dash and zsh on GNU/Linux so far. It should work on other operating systems but I haven't tried. SnooScraper is free software, feel free to submit issues, patches, or use it in your own project.
 
 **Supported External Sites:** imgur, tumblr, instagram
 
@@ -30,7 +29,7 @@ Files will be named after the ID (a base 36 number) of the reddit post from whic
 
 ## Planned Features
 
-In the future I plan to add more sites (twitter, flickr, wikimedia, pinterest, maybe more), and the ability to scare multiple subreddits simultaniously. Also more options: to change the sort method, narrow down by upvotes, start searching at different dates, etc.
+In the future I plan to add more sites (twitter, flickr, wikimedia, pinterest, maybe more), and the ability to scrape multiple subreddits simultaneously. Also more options: to change the sort method, narrow down by upvotes, start/end searches at different dates, etc.
 
 I would also like to add the ability to scrape whole reddit accounts, and possibly accounts on the external sites. Reddit accounts are becoming [their own subreddits](https://www.reddit.com/60p3n1) anyway. Also potentially different download methods to increase speed and better handle parallel downloads.
 
