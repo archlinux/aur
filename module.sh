@@ -32,9 +32,17 @@ bl_module_declared_names_before_source_file_path=''
 bl_module_directory_names_to_ignore=(apiDocumentation documentation node_modules)
 bl_module_file_names_to_ignore=(package.json package-lock.json PKGBUILD readme.md)
 bl_module_import_level=0
-bl_module_imported=("$(bl.path.convert_to_absolute "${BASH_SOURCE[0]}")" "$(bl.path.convert_to_absolute "${BASH_SOURCE[1]}")" "$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[0]}")/path.sh")")
+bl_module_imported=(
+    "$(bl.path.convert_to_absolute "${BASH_SOURCE[0]}")"
+    "$(bl.path.convert_to_absolute "${BASH_SOURCE[1]}")"
+    "$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[0]}")/path.sh")"
+)
 bl_module_known_extensions=(.sh '' .zsh .csh .ksh .bash .shell)
 bl_module_prevent_namespace_check=true
+bl_module_retrieve_remote_modules=false
+if $bl_module_retrieve_remote_modules; then
+    bl_module_remote_module_cache_path="$(mktemp --directory)"
+fi
 bl_module_scope_rewrites=('^bashlink(([._]mockup)?[._][a-zA-Z_-]+)$/bl\1/')
 # endregion
 # region functions
@@ -455,6 +463,20 @@ bl_module_resolve() {
             if [[ -e "${current_path}/${name}${extension}" ]]; then
                 file_path="${current_path}/${name}${extension}"
                 break
+            fi
+            if $bl_module_retrieve_remote_modules; then
+                # Try if already downloaded remote module exists.
+                if [[ -e "${bl_module_remote_module_cache_path}/${name}${extension}" ]]; then
+                    file_path="${bl_module_remote_module_cache_path}/${name}${extension}"
+                    break
+                fi
+                # Try to download needed module.
+                if wget "http:// /${name}${extension}" \
+                    -O "${bl_module_remote_module_cache_path}/${name}${extension}"
+                then
+                    file_path="${bl_module_remote_module_cache_path}/${name}${extension}"
+                    break
+                fi
             fi
         done
         if [ "$file_path" = '' ]; then

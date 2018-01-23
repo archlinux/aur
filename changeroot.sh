@@ -43,13 +43,12 @@ bl_changeroot() {
             changeroot /new_root /usr/bin/env bash some arguments
         ```
     '
-    if [[ "$1" == '/' ]]; then
+    if [ "$1" = / ]; then
         shift
-        return $?
-    else
-        bl_changeroot_with_kernel_api "$@"
+        "$@"
         return $?
     fi
+    bl_changeroot_with_kernel_api "$@"
     return $?
 }
 alias bl.changeroot.with_fake_fallback=bl_changeroot_with_fake_fallback
@@ -63,7 +62,7 @@ bl_changeroot_with_fake_fallback() {
                 some arguments
         ```
     '
-    if [[ "$UID" == '0' ]]; then
+    if [ "$UID" = 0 ]; then
         chroot "$@"
         return $?
     fi
@@ -78,8 +77,9 @@ bl_changeroot_with_kernel_api() {
     environment.
 
     ```bash
-        bl_changeroot_with_kernel_api /new_root /usr/bin/env bash some \
-            arguments
+        bl_changeroot_with_kernel_api \
+            /new_root \
+            /usr/bin/env bash some arguments
     ```
     '
     local new_root_location="$1"
@@ -87,7 +87,7 @@ bl_changeroot_with_kernel_api() {
         new_root_location+='/'
     fi
     local mountpoint_path
-    for mountpoint_path in ${bl_changeroot_kernel_api_locations[*]}; do
+    for mountpoint_path in "${bl_changeroot_kernel_api_locations[@]}"; do
         mountpoint_path="${mountpoint_path:1}"
         # TODO fix
         #./build-initramfs.sh -d -p ../../initramfs -s -t /mnt/old
@@ -159,7 +159,7 @@ bl_changeroot_with_kernel_api() {
             # NOTE: "return_code" remains with an error code if there was
             # given one in all iterations.
             # shellcheck disable=SC2181
-            (( $? != 0 )) && return_code=$?
+            [[ $? != 0 ]] && return_code=$?
         else
             bl.logging.warn \
                 "Location \"${new_root_location}${mountpoint_path}\" should be a mountpoint but isn't."

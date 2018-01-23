@@ -151,7 +151,7 @@ bl_logging_plain() {
         shown
     '
     $bl_logging_off && return 0
-    if [[ "$bl_logging_log_file" != "" ]]; then
+    if [[ "$bl_logging_log_file" != '' ]]; then
         echo -e "$@" >> "$bl_logging_log_file"
         if $bl_logging_tee_fifo_active; then
             echo -e "$@"
@@ -168,7 +168,7 @@ bl_logging_plain() {
 alias bl.logging.log=bl_logging_log
 bl_logging_log() {
     local level="$1"
-    if [ "$level" = 'warn' ]; then
+    if [ "$level" = warn ]; then
         level=warning
     fi
     shift
