@@ -1,0 +1,24 @@
+pkgbase = kepka-git
+	pkgdesc = Unofficial Telegram Desktop messaging app
+	pkgver = r3355.7debac66
+	pkgrel = 1
+	url = https://github.com/procxx/kepka
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = dee
+	makedepends = python
+	depends = qt5-imageformats
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = ffmpeg
+	depends = openal
+	depends = openssl
+	depends = minizip
+	depends = zlib
+	source = kepka-git::git+https://github.com/procxx/kepka.git
+	sha512sums = SKIP
+
+pkgname = kepka-git
+
