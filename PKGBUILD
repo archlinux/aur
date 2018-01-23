@@ -8,8 +8,8 @@ _lang=eo
 pkgname=${_name}-${_channel}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=59.0a1
-pkgver=59.0a1.20170922
+_version=60.0a1
+pkgver=60.0a1.20170922
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -32,8 +32,8 @@ source=("${pkgname}.desktop" 'vendor.js')
 # source_x86_64=("${_url}/${_src}-x86_64.tar.bz2"{,.asc} "${_urlUS}/${_srcUS}-x86_64.txt")
 source_i686=("${_url}/${_src}-i686.tar.bz2" "${_urlUS}/${_srcUS}-i686.txt")
 source_x86_64=("${_url}/${_src}-x86_64.tar.bz2" "${_urlUS}/${_srcUS}-x86_64.txt")
-sha512sums=('4483c4bf8234123a2692db2b577a4db026d58b68bc729fc4f2468f37107f87b6ef0cb37da2e97a5340510dfa1e2937fb6e98f781e9d926c5ddc41a246bdf5e84'
-'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
+sha512sums=('ba6d165fb119de50d1105614ed063c26e4d3a8877cbab2a71e875458209218ade173dacdae2f06bf66dba39ebc005f371d74d68baa0c8bc7dbdd23ded077eee6'
+            'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 # sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
 # sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
 sha512sums_i686=('SKIP' 'SKIP')
