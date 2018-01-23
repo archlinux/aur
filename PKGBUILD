@@ -2,7 +2,7 @@
 
 pkgname=bisq
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
 url="https://bitsquare.io/"
@@ -14,7 +14,7 @@ source=("${pkgname}::git+https://github.com/bisq-network/exchange.git#tag=v${pkg
         "bisq.desktop")
 sha256sums=('SKIP'
             '175e18841dd216ca84391a89b0fba0b12bf575ec095d200ae9a3babc83693e31'
-            '2f9da2f32bb7d023af78bcbf688bc8dc01f24e1d6c7e3227928e22338343587c')
+            '8496c6f259873435591ff2106ce6a4e05a8c272b8a374f924c6090e48701b2d8')
 
 prepare() {
   msg 'Fixing protoc path...'
