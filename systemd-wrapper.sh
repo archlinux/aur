@@ -1,5 +1,5 @@
 #!/bin/bash
-source /etc/profile.d/wildfly.sh
+source /etc/profile.d/wildfly-11.sh
 source /etc/profile.d/jre.sh
 
 if [ "$JBOSS_MODE" = "standalone" ]; then
