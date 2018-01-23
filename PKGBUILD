@@ -1,5 +1,5 @@
 # Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) >
-
+# Maintainer: Maciej Borzecki <maciek.borzecki@gmail.com>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Zygmunt Krynicki <me at zygoon dot pl>
 
