@@ -1,0 +1,20 @@
+pkgbase = mailcap-mime-types
+	pkgdesc = A modern /etc/mime.types file from mailcap
+	pkgver = 2.1.48+14+g5811758
+	pkgrel = 2
+	url = https://pagure.io/mailcap
+	arch = any
+	license = MIT
+	checkdepends = python
+	makedepends = git
+	provides = mime-types
+	provides = mailcap
+	conflicts = mime-types
+	conflicts = mailcap
+	replaces = mime-types
+	backup = etc/mime.types
+	source = git+https://pagure.io/mailcap#commit=58117584fa573c92d918245d38269cc63cec5996
+	sha256sums = SKIP
+
+pkgname = mailcap-mime-types
+
