@@ -1,18 +1,10 @@
 pkgbase = proxy
-	pkgdesc = automate your installation process
-	pkgver = 1.0.15
-	pkgrel = 13
-	url = http://torben.website/proxy
+	pkgdesc = This package violates AUR guidelines
+	pkgver = 1.0
+	pkgrel = 1
+	url = dev.null
 	arch = any
-	license = CC-BY-3.0
-	depends = bash
-	depends = docker
-	source = base.yml
-	source = Dockerfile
-	source = proxy.service
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	license = None
 
 pkgname = proxy
 
