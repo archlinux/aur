@@ -1,5 +1,5 @@
 # Location of WildFly
-export JBOSS_HOME=/opt/wildfly
+export JBOSS_HOME=/opt/wildfly-11
 
 # Application server mode (standalone/domain)
 export JBOSS_MODE=standalone
@@ -15,7 +15,7 @@ export JBOSS_HOST_CONFIG=host-master.xml
 export JBOSS_USER=wildfly
 
 # PID file
-export JBOSS_PIDFILE=/run/wildfly/wildfly.pid
+export JBOSS_PIDFILE=/run/wildfly-11/wildfly.pid
 
 # Location to keep the console log
-export JBOSS_CONSOLE_LOG=/var/log/wildfly/console.log
+export JBOSS_CONSOLE_LOG=/var/log/wildfly-11/console.log

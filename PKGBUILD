@@ -4,7 +4,7 @@
 
 pkgname=wildfly-11
 pkgver=11.0.0.Final
-pkgrel=5
+pkgrel=6
 
 pkgdesc='Wildfly Application Server'
 arch=('any')
@@ -42,7 +42,7 @@ source=(http://download.jboss.org/wildfly/${pkgver}/wildfly-${pkgver}.tar.gz
 	systemd-wrapper.sh)
 sha256sums=('a2f5fb4187369196003e31eb086f0a1f7bfc0645a3a61a53ed20ab5853481e71'
             'd181fac387240edf22b7f99f2db366e45d02f9f5057aabe0470b7a359e6a7a7c'
-            '3b2d059fcecb799ea8134b23ee0b77b4bc53dd99c7bd541679c4c139638b323a'
+            '948b3a74ef4a37b236878ce37d0f68b6cbbe271d401d2aa3c29a71cfc0ddca15'
             'a360ddb4beb9c704257bd78e08e8eea69c43b410a9c93d346541158c3b9d4330'
             'f2433ee9fe38afa8276e83da44d5263f0e000dd0403a5d2d4bf055f80aa289d9')
 
