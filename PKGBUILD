@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=2.5.17.r9479.1a4ac773e
+pkgver=2.5.17.r9480.ddcb1670c
 pkgrel=1
 epoch=2
 pkgdesc="A functional programming language for realtime audio signal processing."
@@ -72,9 +72,6 @@ build() {
 package() {
   cd $srcdir/$pkgname
   make install PREFIX=/usr DESTDIR="$pkgdir"
-
-  # get rid of some junk that's only needed on iOS
-  rm -rf "$pkgdir/usr/share/faust/osclib"
 
   # docs
   install -d "$pkgdir/usr/share/doc/faust"
