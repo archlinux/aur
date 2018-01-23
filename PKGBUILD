@@ -9,7 +9,7 @@ depends=('python' 'python' 'python-flask' 'python-flask-compress' 'python-flask-
 makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-${pkgver}.tar.gz")
 md5sums=('cbf406569dee560e8aa5a5daf048148b')
 
 build() {

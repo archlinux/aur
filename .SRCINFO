@@ -14,7 +14,7 @@ pkgbase = python-gdbgui
 	depends = python-gevent
 	depends = python-pygdbmi
 	depends = python-pygments
-	source = python-gdbgui-0.10.1.0.tar.gz::https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-0.10.1.0.tar.gz
+	source = python-gdbgui-0.10.1.0.tar.gz::python-gdbgui-0.10.1.0.tar.gz::https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-0.10.1.0.tar.gz
 	md5sums = cbf406569dee560e8aa5a5daf048148b
 
 pkgname = python-gdbgui
