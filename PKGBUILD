@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Calle Erlandsson <calle@calleerlandsson.com>
 
 pkgname=pick
