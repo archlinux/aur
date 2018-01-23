@@ -51,8 +51,8 @@ _use_current=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.14
-pkgver=4.14.14
-pkgrel=2
+pkgver=4.14.15
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -82,8 +82,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch'
         '0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch'
-        '0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0005-tools-objtool-makefile-don-t-assume-sync-check.sh-is-executable.patch')
+        '0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
 
 _kernelname=${pkgbase#linux} 
 
@@ -109,10 +108,6 @@ prepare() {
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
         patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-    
-    ### Fix https://www.spinics.net/lists/stable/msg207374.html
-        msg "Fix execvp: ./sync-check.sh error"
-        patch -Np1 -i ../0005-tools-objtool-makefile-don-t-assume-sync-check.sh-is-executable.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -379,7 +374,7 @@ done
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            'abc13c99eb85b2bd25f3ac07fccdad52a801118a86d3cd153a8ca6254730e5604e34261e98945352b23cf0e0a0317074a5008701d1240cc958ef4199bffd1ab6'
+            'faf165072fcff9f6f8cec76f0c35cf422afc453dfa2fc9ab5bc918eb177ebefd1e305f2c994a90c9dff073151762d79359789d118307ba15f53a020426c291a8'
             'SKIP'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '44b31276d4d712e4e1e1455e128daa079ddd9d72a4620289607faf6134a225737004e8742de79e0283e98ef2d4f746f075e041870d37eab191c93c566f945c7f'
@@ -391,8 +386,7 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             'f665daaec89b15d3a4cf2cabaf2b423dcda5e005860275753575f6bbed6815c3f17558b24da01ce6f6f0aeba900c506c32efa50754592625f3b513c7f14aea62'
             '2ab17dfa1d37a73441f2e42883358763db648c5b863e76a8d7b3b344c1b293ffee5f72c8ed1f8219cec8c8419898fac59b21e0b6bf47daee17e426b18d907df9'
             '24dccb21b187f331955d6f4d992b2ccd9cbf27acd83e4ff417921e200a1ebc4f52ec9732180a6d3922f86d2422ab0047558c62b76253e6f81983f26d0ae10f76'
-            'bd0a758c7cc185cf5f29ea1d0a8964d12592c45cd9560d1f0508ad0dc102920e4f45aaa6921e58f145daea211340e8884f530a07c8da76f12af817c812b021dc'
-            '04a80e7018ba3d4f2d69f642c82673b2364c7096fa0f3dd7c086e55e21944cbd77153469ad3c1bc277b174e8087c69540710135f8e6d5b5775e43c73f0aae059')
+            'bd0a758c7cc185cf5f29ea1d0a8964d12592c45cd9560d1f0508ad0dc102920e4f45aaa6921e58f145daea211340e8884f530a07c8da76f12af817c812b021dc')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
