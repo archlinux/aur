@@ -1,6 +1,6 @@
 # Maintainer: Martin Trigaux <me@mart-e.be>
 pkgname=ardor
-pkgver=2.0.12
+pkgver=2.0.13
 pkgrel=1
 pkgdesc="The Ardor Reference Software Client for use with the Ardor Blockchain Platform."
 arch=()
@@ -15,7 +15,7 @@ source=(
 	ardor.service
 )
 sha256sums=(
-	'9fa13a5e1be551231b1d6843aa606e279c6156978b6423ccb3e3f9f7c4643033'
+	'184d15da639c76556985ae1bcddef36c3e1bcf2e7a6e11501b9aa80e0456a5c2'
 	'7b044d914d07f31d97746d9e5438dbcfedcd2e81e8acadb4c96dd315f2ce4862'
 )
 
