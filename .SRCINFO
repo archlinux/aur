@@ -1,0 +1,14 @@
+pkgbase = lig
+	pkgdesc = LISP Information Groper, a tool that can be used to query the LISP Map-Server database
+	pkgver = r139.g2680249
+	pkgrel = 1
+	url = https://github.com/LISPmob/lig-lispmob
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	license = BSD-3-clause
+	source = git+https://github.com/LISPmob/lig-lispmob#commit=268024993fa6e8864085676222b9490022ce928c
+	sha256sums = SKIP
+
+pkgname = lig
+
