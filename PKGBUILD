@@ -4,7 +4,7 @@
 
 pkgname=wildfly-11
 pkgver=11.0.0.Final
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Wildfly Application Server'
 arch=('any')
@@ -47,10 +47,10 @@ sha256sums=('a2f5fb4187369196003e31eb086f0a1f7bfc0645a3a61a53ed20ab5853481e71'
             'f2433ee9fe38afa8276e83da44d5263f0e000dd0403a5d2d4bf055f80aa289d9')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/wildfly-${pkgver}"
   rm -f bin/*.{bat,exe}
   install -dm755 ${pkgdir}/${_pkgloc}
-  cp -R ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/${_pkgloc}/${pkgname}
+  cp -R ${srcdir}/wildfly-${pkgver} ${pkgdir}/${_pkgloc}/${pkgname}
 
   # Prepare systemd service file
   install -Dm755 ${srcdir}/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service

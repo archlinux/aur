@@ -1,7 +1,7 @@
 pkgbase = wildfly-11
 	pkgdesc = Wildfly Application Server
 	pkgver = 11.0.0.Final
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.wildfly.org/
 	install = wildfly-11.install
 	arch = any
