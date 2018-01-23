@@ -1,5 +1,5 @@
 post_install() {
-  . /etc/profile.d/wildfly.sh
+  . /etc/profile.d/wildfly-11.sh
 
   getent group $JBOSS_USER >/dev/null 2>&1 || groupadd -r $JBOSS_USER
   getent passwd $JBOSS_USER >/dev/null 2>&1 || useradd -g $JBOSS_USER -d $JBOSS_HOME -s /bin/bash -r $JBOSS_USER
@@ -22,7 +22,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-  . /etc/profile.d/wildfly.sh
+  . /etc/profile.d/wildfly-11.sh
 
   if getent passwd $JBOSS_USER >/dev/null 2>&1; then
     userdel $JBOSS_USER
