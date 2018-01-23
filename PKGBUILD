@@ -3,7 +3,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=6.2.4
+pkgver=6.2.5
 pkgrel=1
 pkgdesc="The web end of seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -13,7 +13,7 @@ depends=("seafile-server" "python2-virtualenv" 'libmemcached')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "seahub-preupgrade")
-sha256sums=('03a4d6a1915b27db88ad3cadaf5bad30b2c934384516cadc0f6190757f4f008f'
+sha256sums=('80a7a1cadde8e8e570bdc454bc4a4902ebcace97b347f9eef701b5ab02742039'
             'd3b0d33848ab9e0dbb9ea6e6e385fc4ffa82a77193af447edef7646d68e396b1')
 # Strip is not happy on precompiled libs in virtualenv, temporary disable
 options=("!strip")
