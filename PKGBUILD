@@ -32,8 +32,8 @@ pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.14
 _minor=14
 pkgver=${__basekernel}.${_minor}
-pkgrel=1
-lqxrel=1
+pkgrel=3
+lqxrel=3
 pkgbase=linux-lqx
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
 _lqxpatchname="${pkgver}-${lqxrel}.patch"
@@ -64,7 +64,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.
 
 sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8'
             'SKIP'
-            'f698a979cdcc429eb1ab6c02cd9aec03e9b4e3a4063cefaca08c796d08d6d0a60f0173acacdca93f29dd73b4ee65198acfa6f84918875478b5c8866d827ea488'
+            '3460d93615eab6a8d4a4cbb376e715394d07dc8c47806490e443a53c30680d011db6d39648013c9dce6c0d1503b792ea2715217f38a5787ef3d4c365f6892967'
             '26a6b00695e998cd3a3e259602ed7d3c50943d43ce9fda36eeebbec00074416f4f8281b856008cc45962ab8fc054fd85606abfb14517d72d82c231845d52eecd'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
@@ -84,10 +84,7 @@ prepare() {
 
   # Add Liquorix patches
   patch -Np1 -i ../$_lqxpatchname
-  
-  # https://www.spinics.net/lists/stable/msg207374.html
-  chmod +x tools/objtool/sync-check.sh
-  
+
     # Trying oldcfg if possible and if selected
   if [ "$_config" = "old" ]; then
     if [ -e /proc/config.gz ]; then
