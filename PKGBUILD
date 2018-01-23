@@ -8,7 +8,7 @@ pkgdesc="A simple command line calculator."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/darshanparajuli/calc"
 license=('MIT')
-makedepends=('git' 'rustc' 'cargo')
+makedepends=('git' 'cargo')
 source=('git+https://github.com/darshanparajuli/calc')
 md5sums=('SKIP')
 

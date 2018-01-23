@@ -9,7 +9,6 @@ pkgbase = calc
 	arch = armv7h
 	license = MIT
 	makedepends = git
-	makedepends = rustc
 	makedepends = cargo
 	source = git+https://github.com/darshanparajuli/calc
 	md5sums = SKIP
