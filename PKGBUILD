@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Denis Wernert <deniswernert@gmail.com>
+# Maintainer: Luca P <meti at lplab.net>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Denis Wernert <deniswernert@gmail.com>
 
 pkgname=liblogging
 pkgver=1.0.6
 pkgrel=1
 pkgdesc="easy to use, portable, open source library for system logging"
 url="http://www.liblogging.org/"
-arch=('x86_64')
+arch=('any')
 license=('GPL')
 depends=('systemd')
 makedepends=('python-docutils')
