@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=2.5.17.r9470.455f4e95e
+pkgver=2.5.17.r9479.1a4ac773e
 pkgrel=1
 epoch=2
 pkgdesc="A functional programming language for realtime audio signal processing."
@@ -32,10 +32,9 @@ options=('strip' 'staticlibs')
 # latest changes. End users might want to use the master branch instead, which
 # is supposedly more stable and tested, but nevertheless (mostly) up-to-date.
 source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=master-dev"
-	"git+https://github.com/agraef/emacs-faust-mode.git"
 	"python2-fix.patch")
-md5sums=('SKIP' 'SKIP'
-         '8680b87fc4e34445e02f34781ee45f19')
+md5sums=('SKIP'
+         '5bd95373f2d6f4e86a2befab669339f8')
 
 pkgver() {
   cd $srcdir/$pkgname
@@ -57,7 +56,7 @@ prepare() {
   patch -Np1 < $srcdir/python2-fix.patch
 }
 
-# NOTE: libHTTPDFaust requires 'liblo', 'libmicrohttpd' and 'openssl'.
+# NOTE: libHTTPDFaust requires 'libmicrohttpd' and 'openssl'.
 # Similarly, sound2faust requires libsndfile which we also include by default.
 # These are all optional, so you can get rid of the extra dependencies by
 # changing the build target from 'world' to 'all' and removing the
@@ -73,6 +72,9 @@ build() {
 package() {
   cd $srcdir/$pkgname
   make install PREFIX=/usr DESTDIR="$pkgdir"
+
+  # get rid of some junk that's only needed on iOS
+  rm -rf "$pkgdir/usr/share/faust/osclib"
 
   # docs
   install -d "$pkgdir/usr/share/doc/faust"
@@ -99,5 +101,5 @@ package() {
 
   # emacs
   install -d "$pkgdir/usr/share/emacs/site-lisp/"
-  install -Dm644 "$srcdir/emacs-faust-mode/faust-mode.el" "$pkgdir/usr/share/emacs/site-lisp/"
+  install -Dm644 faust-mode.el "$pkgdir/usr/share/emacs/site-lisp/"
 }
