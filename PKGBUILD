@@ -1,5 +1,6 @@
 # Wildfly Application Server package
-# Maintainer: Zdenek Obst <zdenek dot obst at gmail dot com>
+# Maintainer: Kacper Lukawski <kacluk98 at gmail dot com>
+# Contributor: Zdenek Obst <zdenek dot obst at gmail dot com>
 
 pkgname=wildfly
 pkgver=11.0.0.Final
