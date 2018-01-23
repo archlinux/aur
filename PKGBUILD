@@ -1,21 +1,21 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
-pkgname=aarch64-linux-gnu-armcl-opencl+neon
-pkgver=17.12
+pkgname=armcl-opencl
+pkgver=18.08
 pkgrel=0
 
 epoch=
-pkgdesc="ARM Computer Vision and Machine Learning Library (OpenCL + NEON Backends)"
+pkgdesc="ARM Computer Vision and Machine Learning Library (x86_64 OpenCL Backend)"
 arch=( 'x86_64' )
 url="https://github.com/ARM-software/ComputeLibrary"
 license=('MIT')
 groups=()
 depends=()
-makedepends=( 'scons>=2.3' 'git' 'doxygen>=1.8.5' 'aarch64-linux-gnu-gcc' )
+makedepends=( 'scons>=2.3' 'git' 'doxygen>=1.8.5' )
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=( 'aarch64-linux-gnu-armcl-neon' )
+conflicts=()
 replaces=()
 backup=()
 options=( !strip )
@@ -27,10 +27,10 @@ sha1sums=('SKIP')
 build() {
   cd "${srcdir}/ComputeLibrary"
   git checkout "v$pkgver"
-  scons -j2 \
-  os=linux arch=arm64-v8a build=cross_compile \
+  scons -j`cat /proc/cpuinfo | grep -i "processor" | wc -l` \
+  os=linux arch=x86_64 build=native \
   Werror=0 debug=0 asserts=0 \
-  neon=1 \
+  neon=0 \
   opencl=1 gles_compute=0 embed_kernels=1 \
   examples=0 \
   set_soname=0 \
@@ -45,10 +45,10 @@ build() {
 
 package() {
   cd "${srcdir}/ComputeLibrary"
-  mkdir -p ${pkgdir}/usr/aarch64-linux-gnu/lib/
-  cp -r build/*.a ${pkgdir}/usr/aarch64-linux-gnu/lib/
-  cp -r build/*.so ${pkgdir}/usr/aarch64-linux-gnu/lib/
+  mkdir -p ${pkgdir}/usr/lib/
+  cp -r build/*.a ${pkgdir}/usr/lib/
+  cp -r build/*.so ${pkgdir}/usr/lib/
 
-  mkdir -p ${pkgdir}/usr/aarch64-linux-gnu/include/arm_compute/
-  cp -r arm_compute/* ${pkgdir}/usr/aarch64-linux-gnu/include/arm_compute/
+  mkdir -p ${pkgdir}/usr/include/arm_compute/
+  cp -r arm_compute/* ${pkgdir}/usr/include/arm_compute/
 }
