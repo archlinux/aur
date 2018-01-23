@@ -2,8 +2,8 @@
 # Contributor: olantwin <olantwin@gmail.com>
 
 pkgname=vim-airline
-pkgver=0.8
-pkgrel=5
+pkgver=0.9
+pkgrel=1
 pkgdesc='Lean & mean statusline/tabline for ViM'
 arch=('any')
 url='https://github.com/vim-airline/vim-airline'
@@ -11,8 +11,9 @@ license=('MIT')
 depends=('vim-runtime' 'vim-airline-themes')
 makedepends=('git')
 groups=('vim-plugins')
+optdepends=('powerline-fonts')
 #optdepends=('otf-powerline-symbols-git: Use the Powerline symbols')
-source=("git+https://github.com/$pkgname/$pkgname.git#commit=410429a95c67eed8eeb26681838d3766a2437806")
+source=("git+https://github.com/$pkgname/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 package() {
@@ -29,4 +30,4 @@ package() {
 }
 
 # getver: raw.githubusercontent.com/vim-airline/vim-airline/master/CHANGELOG.md
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
