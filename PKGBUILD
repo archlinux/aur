@@ -2,12 +2,12 @@
 
 #######################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
-#                enough rope to hang yourself, but by default it 
+#                enough rope to hang yourself, but by default it
 #                only enables the features I use.
 #
 #        TLDR: yaourt users, cry me a river.
 #
-#        Everyone else: do not update blindly this PKGBUILD. At least 
+#        Everyone else: do not update blindly this PKGBUILD. At least
 #        make sure to compare and understand the changes.
 #
 #######################################################################
@@ -17,9 +17,9 @@
 #
 # Pick a branch from the output of "git branch" ran on your local copy
 # of the emacs repository.
-# 
-# E.g.: 
-# 
+#
+# E.g.:
+#
 # BRANCH=master
 # BRANCH=emacs-26
 #
@@ -45,7 +45,7 @@ NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
                   # Read https://wiki.archlinux.org/index.php/X_resources
                   # https://en.wikipedia.org/wiki/X_resources
                   # and https://www.emacswiki.org/emacs/XftGnuEmacs
-                  # for some tips on using outline fonts with 
+                  # for some tips on using outline fonts with
                   # Xft, if you choose no toolkit or Lucid.
                   #
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
@@ -61,7 +61,7 @@ CAIRO=            # Highly experimental. Maintaner dissapeared.
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
-MAGICK=           # Imagemagick 6 libraries support. Imagemagick, 
+MAGICK=           # Imagemagick 6 libraries support. Imagemagick,
                   # like flash, is bug ridden and won't die; yet useful.
 NOGZ=             # Don't compress el files.
 #######################################################################
@@ -72,7 +72,7 @@ if [[ BRANCH = "emacs-26" ]]; then
 else
   pkgname=emacs-git
 fi
-pkgver=27.0.50.131754
+pkgver=27.0.50.131882
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
@@ -96,17 +96,17 @@ if [[ $LTO = "yes" ]]; then
   export tXXFLAGS+=" -flto"
 fi
 
-if [[ $NOTKIT = "YES" ]]; then  
+if [[ $NOTKIT = "YES" ]]; then
   depends+=( 'dbus high-color-icon-theme' 'libxinearama' 'libxrandr' 'lcms2' 'librsvg' );
-elif [[ $LUCID = "YES" ]]; then  
+elif [[ $LUCID = "YES" ]]; then
   depends+=( 'dbus high-color-icon-theme' 'libxinearama' 'libfixes' 'lcms2' 'librsvg' 'xaw3d' );
 elif [[ $GTK2 = "YES" ]]; then
   depends+=( 'gtk2' );
-else 
-  depends+=( 'gtk3' ); 
+else
+  depends+=( 'gtk3' );
 fi
 
-if [[ $GPM = "YES" ]]; then 
+if [[ $GPM = "YES" ]]; then
   depends+=( 'gpm');
 fi
 
@@ -118,7 +118,7 @@ if [[ $OTF = "YES" ]] && [[ ! $M17N = "YES" ]]; then
   depends+=( 'libotf' );
 fi
 
-if [[ $MAGICK = "YES" ]]; then 
+if [[ $MAGICK = "YES" ]]; then
   depends+=( 'libmagick6'  'libjpeg-turbo' 'giflib' );
 elif [[ ! $NOX = "YES" ]]; then
   depends+=( 'libjpeg-turbo' 'giflib' );
@@ -126,25 +126,25 @@ else
   depends+=();
 fi
 
-if [[ $CAIRO = "YES" ]]; then 
-  depends+=( 'cairo' ); 
+if [[ $CAIRO = "YES" ]]; then
+  depends+=( 'cairo' );
 fi
 
 if [[ $XWIDGETS = "YES" ]]; then
-  if [[ $GTK2 = "YES" ]] || [[ $LUCID = "YES" ]] || [[ $NOTKIT = "YES" ]] || [[ $CLI = "YES" ]]; then 
+  if [[ $GTK2 = "YES" ]] || [[ $LUCID = "YES" ]] || [[ $NOTKIT = "YES" ]] || [[ $CLI = "YES" ]]; then
     echo "";
     echo "";
     echo "Xwidgets support *requires* gtk+3!!!";
     echo "";
     echo "";
     exit 1;
-  else 
+  else
     depends+=( 'webkit2gtk' );
   fi
 fi
 
-if [[ $DOCS_PDF = "YES" ]]; then 
-  makedepends+=( 'texlive-core' ); 
+if [[ $DOCS_PDF = "YES" ]]; then
+  makedepends+=( 'texlive-core' );
 fi
 #######################################################################
 
@@ -179,13 +179,13 @@ build() {
   cd "$srcdir/emacs-git"
 
   local _conf=(
-    --prefix=/usr 
-    --sysconfdir=/etc 
-    --libexecdir=/usr/lib 
-    --localstatedir=/var 
-    --mandir=/usr/share/man 
-    --with-gameuser=:games 
-    --with-sound=alsa 
+    --prefix=/usr
+    --sysconfdir=/etc
+    --libexecdir=/usr/lib
+    --localstatedir=/var
+    --mandir=/usr/share/man
+    --with-gameuser=:games
+    --with-sound=alsa
     --with-modules
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings you set in ~/.emacs.
@@ -205,36 +205,36 @@ if [[ $CLANG = "YES" ]]; then
  );
 fi
 
-if [[ $LTO = "YES" ]]; then 
-  _conf+=( 
-    '--enable-link-time-optimization' 
-  ); 
+if [[ $LTO = "YES" ]]; then
+  _conf+=(
+    '--enable-link-time-optimization'
+  );
 fi
 
 if [[ $CLI = "YES" ]]; then
-  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' --without-lcms2' '--without-rsvg' ); 
+  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' --without-lcms2' '--without-rsvg' );
 elif [[ $NOTKIT = "YES" ]]; then
-  _conf+=( '--with-x-toolkit=no' 'without-toolkit-scrollbars' '--with-xft' '--without-xaw3d' ); 
+  _conf+=( '--with-x-toolkit=no' 'without-toolkit-scrollbars' '--with-xft' '--without-xaw3d' );
 elif [[ $LUCID = "YES" ]]; then
-  _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' ); 
-elif [[ $GTK2 = "YES" ]]; then 
+  _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' );
+elif [[ $GTK2 = "YES" ]]; then
   _conf+=( '--with-x-toolkit=gtk2' '--without-gsettings' '--without-xaw3d' );
-else [[ GTK3 = "YES" ]]; then
-  _conf+=( '--with-x-toolkit=gtk3' --without-xaw3d' ); 
+else
+  _conf+=( '--with-x-toolkit=gtk3' --without-xaw3d' );
 fi
 
-if [[ ! $GPM = "YES" ]]; then 
-  _conf+=( '--without-gpm' ); 
+if [[ ! $GPM = "YES" ]]; then
+  _conf+=( '--without-gpm' );
 fi
 
-if [[ ! $M17N = "YES" ]]; then 
-  _conf+=( '--without-m17n-flt' ); 
+if [[ ! $M17N = "YES" ]]; then
+  _conf+=( '--without-m17n-flt' );
 fi
 
-if [[ $MAGICK = "YES" ]]; then 
-  _conf+=( 
+if [[ $MAGICK = "YES" ]]; then
+  _conf+=(
     '--with-imagemagick'
- ); 
+ );
   export PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig
 else
   _conf+=( '--without-imagemagick' );
@@ -250,12 +250,12 @@ else
   );
 fi
 
-if [[ $CAIRO = "YES" ]]; then 
-  _conf+=( '--with-cairo' ); 
+if [[ $CAIRO = "YES" ]]; then
+  _conf+=( '--with-cairo' );
 fi
 
-if [[ $XWIDGETS = "YES" ]]; then 
-  _conf+=( '--with-xwidgets' ); 
+if [[ $XWIDGETS = "YES" ]]; then
+  _conf+=( '--with-xwidgets' );
 fi
 
 if [[ $NOGZ = "YES" ]]; then
@@ -275,11 +275,11 @@ fi
   ./configure "${_conf[@]}"
 
   # Using "make" instead of "make bootstrap" enables incremental
-  # compiling. Less time recompiling. Yay! But you may 
-  # need to use bootstrap sometimes to unbreak the build. 
+  # compiling. Less time recompiling. Yay! But you may
+  # need to use bootstrap sometimes to unbreak the build.
   # Just add it to the command line.
   #
-  # Please note that incremental compilation implies that you 
+  # Please note that incremental compilation implies that you
   # are reusing your src directory!
   #
   make
@@ -290,11 +290,11 @@ fi
   #cd ../
 
   # Optional documentation formats.
-  if [[ $DOCS_HTML = "YES" ]]; then 
-    make html; 
+  if [[ $DOCS_HTML = "YES" ]]; then
+    make html;
   fi
-  if [[ $DOCS_PDF = "YES" ]]; then 
-    make pdf; 
+  if [[ $DOCS_PDF = "YES" ]]; then
+    make pdf;
   fi
   if [[ $CHECK = "YES" ]]; then
     make check;
@@ -328,9 +328,9 @@ package() {
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
   chown -R root:games "$pkgdir"/var/games
-  
+
   # The logic used to install systemd's user service is partially broken
-  # under Arch Linux model, because it adds $DESTDIR as prefix to the 
+  # under Arch Linux model, because it adds $DESTDIR as prefix to the
   # final Exec targets. The fix is to hack it with an axe.
   install -Dm644 etc/emacs.service \
     "$pkgdir"/usr/lib/systemd/user/emacs.service
