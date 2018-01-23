@@ -2,7 +2,7 @@
 # Contributor: Jan Keith Darunday <jkcdarunday@gmail.com>
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
-pkgver=20180119_125231
+pkgver=20180122_074750
 pkgrel=1
 pkgdesc="The Free On-line Dictionary of Computing for dictd et al."
 arch=('any')
