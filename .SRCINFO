@@ -1,35 +1,5 @@
 pkgbase = seafile-helper
 	pkgdesc = Seafile-server and seahub helper for upgrade and deployment
-	pkgver = 0.1
-	pkgrel = 1
-	url = https://github.com/jojotango/seafile-helper
-	arch = any
-	license = GPL3
-	depends = python-setuptools
-	depends = seafile-server
-	depends = seahub
-	source = https://github.com/jojotango/seafile-helper/archive/v0.1.tar.gz
-	sha256sums = 84d6f1abc647f5f92b1fd3aca6e3977d3aa86669f6b8332f92054171f60d3c32
-
-pkgname = seafile-helper
-
-pkgbase = seafile-helper
-	pkgdesc = Seafile-server and seahub helper for upgrade and deployment
-	pkgver = 0.1.1
-	pkgrel = 1
-	url = https://github.com/jojotango/seafile-helper
-	arch = any
-	license = GPL3
-	depends = python-setuptools
-	depends = seafile-server
-	depends = seahub
-	source = https://github.com/jojotango/seafile-helper/archive/v0.1.1.tar.gz
-	sha256sums = 481b556a8e030ae911baeedae5c67388e25d3401199adb33d5259cdf0123bf74
-
-pkgname = seafile-helper
-
-pkgbase = seafile-helper
-	pkgdesc = Seafile-server and seahub helper for upgrade and deployment
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/jojotango/seafile-helper
