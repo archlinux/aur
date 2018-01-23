@@ -1,19 +1,10 @@
 pkgbase = generic-service-handler
-	pkgdesc = easy service handling
-	pkgver = 1.0.10
-	pkgrel = 12
-	url = http://torben.website/genericServiceHandler
+	pkgdesc = This package violates AUR guidelines
+	pkgver = 1.0
+	pkgrel = 1
+	url = dev.null
 	arch = any
-	license = CC-BY-3.0
-	depends = bash
-	depends = coreutils
-	depends = proxps-ng
-	depends = sed
-	depends = grep
-	depends = util-linux
-	provides = generic-service-handler
-	source = genericServiceHandler.sh
-	md5sums = SKIP
+	license = None
 
 pkgname = generic-service-handler
 
