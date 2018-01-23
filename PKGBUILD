@@ -5,7 +5,7 @@
 
 pkgname=faust
 pkgver=2.5.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A functional programming language for realtime audio signal processing."
 arch=('x86_64')
 url="https://faust.grame.fr/"
@@ -52,31 +52,34 @@ package() {
   install -d "${pkgdir}/usr/share/${pkgname}/examples"
   cp -R "examples/"* "${pkgdir}/usr/share/${pkgname}/examples/"
 
-  ## syntax highlighting files
   cd syntax-highlighting
   # atom
   install -Dm644 "atom/language-${pkgname}/package.json" \
-    "${pkgdir}/usr/lib/atom/dot-atom/packages/language-faust/package.json"
+    "${pkgdir}/usr/lib/atom/dot-atom/packages/language-${pkgname}/package.json"
   install -Dm644 "atom/language-${pkgname}/grammars/${pkgname}.cson" \
-    "${pkgdir}/usr/lib/atom/dot-atom/packages/language-faust/grammars/${pkgname}.cson"
+    "${pkgdir}/usr/lib/atom/dot-atom/packages/language-${pkgname}/grammars/${pkgname}.cson"
   install -Dm644 "atom/language-${pkgname}/settings/language-${pkgname}.cson" \
-    "${pkgdir}/usr/lib/atom/dot-atom/packages/language-faust/settings/language-${pkgname}.cson"
-  install -t "${pkgdir}/usr/lib/atom/dot-atom/packages/language-faust/snippets/" \
+    "${pkgdir}/usr/lib/atom/dot-atom/packages/language-${pkgname}/settings/language-${pkgname}.cson"
+  install -t "${pkgdir}/usr/lib/atom/dot-atom/packages/language-${pkgname}/snippets/" \
     -Dm644 "atom/language-${pkgname}/snippets/"*
   install -Dm644 "atom/language-${pkgname}/process-palette.json.linux" \
     "${pkgdir}/usr/share/doc/${pkgname}/process-palette.json"
   # kate
-  install -Dm644 faust.xml "$pkgdir/usr/share/apps/katepart/syntax/faust.xml"
+  install -Dm644 "${pkgname}.xml" \
+    "${pkgdir}/usr/share/apps/katepart/syntax/${pkgname}.xml"
   # gedit
-  install -Dm644 faust.lang "$pkgdir/usr/share/gtksourceview-2.0/language-specs/faust.lang"
-  install -Dm644 faust.lang "$pkgdir/usr/share/gtksourceview-3.0/language-specs/faust.lang"
+  install -Dm644 "${pkgname}.lang" \
+    "${pkgdir}/usr/share/gtksourceview-2.0/language-specs/${pkgname}.lang"
+  install -Dm644 "${pkgname}.lang" \
+    "${pkgdir}/usr/share/gtksourceview-3.0/language-specs/${pkgname}.lang"
   # highlight
   install -Dm644 dsp.lang "$pkgdir/usr/share/highlight/langDefs/dsp.lang"
   # nano
   install -Dm644 "${pkgname}.nanorc" "$pkgdir/usr/share/nano/${pkgname}.nanorc"
   # vim
-  install -Dm644 faust.vim "$pkgdir/usr/share/vim/vimfiles/syntax/faust.vim"
+  install -Dm644 "${pkgname}.vim" \
+    "$pkgdir/usr/share/vim/vimfiles/syntax/${pkgname}.vim"
   # emacs
-  install -d "$pkgdir/usr/share/emacs/site-lisp/"
-  install -Dm644 "$srcdir/emacs-faust-mode/faust-mode.el" "$pkgdir/usr/share/emacs/site-lisp/"
+  install -Dm644 "${srcdir}/emacs-${pkgname}-mode/${pkgname}-mode.el" \
+    "$pkgdir/usr/share/emacs/site-lisp/${pkgname}-mode.el"
 }
