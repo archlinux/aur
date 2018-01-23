@@ -1,11 +1,11 @@
 pkgbase = ddnet-git
 	pkgdesc = DDraceNetwork, a mod of Teeworlds
-	pkgver = 11.0.r10.gc8d4b605b
+	pkgver = 11.0.2.r0.g39cb6ad8b
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = x86_64
 	license = custom:BSD
-	license = cc-by-nc-sa-3.0
+	license = CCPL:by-nc-sa
 	makedepends = git
 	makedepends = cmake
 	makedepends = imagemagick
