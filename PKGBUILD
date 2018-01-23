@@ -2,7 +2,7 @@
 
 pkgname=encryptpad-git
 _pkgname=${pkgname%-git}
-pkgver=v0.3.2.5.r19.g26db7e8
+pkgver=0.3.2.5.r19.g26db7e8
 pkgrel=1
 pkgdesc="Minimalist secure text editor and binary encryptor that implements RFC 4880 Open PGP format"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
  
 build() {
