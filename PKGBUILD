@@ -1,7 +1,7 @@
 # Maintainer: xsmile <sascha_r gmx de>
 
 pkgname=myetherwallet
-pkgver=3.11.3.0
+pkgver=3.11.3.1
 pkgrel=1
 pkgdesc='Free, open-source, client-side tool for easily & securely interacting with the Ethereum network'
 arch=('any')
@@ -12,7 +12,7 @@ source=("$url/releases/download/v$pkgver/etherwallet-v$pkgver.zip"
         'myetherwallet.desktop'
         'myetherwallet'
         'LICENSE')
-md5sums=('de29b1ce27f1b087d66ef366d12f48af'
+md5sums=('ce1facfd6774324a4371d1942b7af587'
          '7ede310a5ce49d1e13aaafdf486324d2'
          '812af8159b21a3895a9dd5ed6621c912'
          '1d90c6c90650a922d22d50bdc0194e89')
