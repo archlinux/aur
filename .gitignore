@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!firefox-always-nightly.install
+!firefox-nightly.desktop
+!firefox-nightly-safe.desktop

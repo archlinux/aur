@@ -1,0 +1,22 @@
+post_install() {
+  getent group munin >/dev/null || groupadd --system munin
+  chown -R :firefox "/opt/firefox-nightly"
+  chmod -R g+w "/opt/firefox-nightly"
+
+  echo "==> Firefox Nightly automatic updates
+
+  Add yourself to the \`firefox\` group to enable automatic updates (faster,
+  smaller download size, with built-in integrity checking).
+
+  Only do this if you are the only user of your machine, as Firefox will write
+  updated files in the global install location as the user and group running
+  Firefox... so it could cause problems for other users.
+
+  It is safe to update this package with pacman after automatic updates.
+  To disable, set \`app.update.enable\` to \`false\` in about:config."
+
+}
+
+post_upgrade() {
+  post_install
+}
