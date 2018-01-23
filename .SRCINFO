@@ -1,0 +1,19 @@
+pkgbase = squashfs-tools-git
+	pkgdesc = Tools for squashfs, a highly compressed read-only filesystem for Linux.
+	pkgver = 1806.fb33dfc
+	pkgrel = 1
+	url = https://github.com/plougher/squashfs-tools
+	arch = x86_64
+	license = GPL2
+	depends = zlib
+	depends = lzo
+	depends = xz
+	depends = lz4
+	depends = zstd
+	provides = squashfs-tools
+	conflicts = squashfs-tools
+	source = squashfs-tools::git+https://github.com/plougher/squashfs-tools.git
+	md5sums = SKIP
+
+pkgname = squashfs-tools-git
+
