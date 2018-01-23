@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=vim-sensible
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="vim defaults everyone can agree on"
 arch=('any')
@@ -12,7 +12,7 @@ license=('custom:vim')
 groups=('vim-plugins')
 depends=('vim')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c503b7e45659749a1644fbe04c9000446984a862582fa05f529bcf5543cf3341')
+sha256sums=('3b83f8f6445fff628cab4a5571984eb853fe9c3d53297ff3e8a647d1576940f3')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
