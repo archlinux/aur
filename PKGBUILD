@@ -2,16 +2,17 @@
 pkgname=jetbrains-mps
 _pkgname=mps
 _pkgver=2017.3
-pkgver=${_pkgver}.2
+pkgver=${_pkgver}.3
 pkgrel=1
 pkgdesc="JetBrains Meta Programming System"
 arch=('any')
 url="http://www.jetbrains.com/mps/index.html"
 license=('custom: MPS license agreement')
-depends=('jdk')
+depends=('java-environment' 'bash')
+optdepends=('python: support for scripts like restart.py')
 
 source=("https://download.jetbrains.com/mps/${_pkgver}/MPS-${pkgver}.tar.gz")
-sha256sums=('62aac485679f132beabadfa818b0d9ca2fa1da5a111605a2427174157f88d0aa')
+sha256sums=('ae1f17ee2e87ddf86781f1729a2661f3b592c5dc2fa3d985b6cbde57b792f149')
 
 build() {
   cd "${srcdir}"
