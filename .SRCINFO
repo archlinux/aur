@@ -1,0 +1,18 @@
+pkgbase = sshoot
+	pkgdesc = Manage multiple sshuttle VPN sessions.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/albertodonato/sshoot
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyaml
+	depends = python-prettytable
+	depends = python-argcomplete
+	depends = python-xdg
+	source = https://github.com/albertodonato/sshoot/archive/v1.4.0.tar.gz
+	sha256sums = a8f7406245fd148e9dae101d21cf375b5cdd4890d7a7a32f3b574cb106e039f1
+
+pkgname = sshoot
+
