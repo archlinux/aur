@@ -1,6 +1,6 @@
 # Maintainer: cth451 <cth451@gmail.com>
 pkgname=materia-theme
-_date=20171213
+_date=20180110
 _gnomever=3.26
 pkgver=${_gnomever}.${_date}
 pkgrel=1
@@ -14,7 +14,7 @@ provides=('flatplat-theme' 'flatplat-theme-laptop')
 conflicts=('flatplat-theme-git' 'flatplat-theme-laptop')
 replaces=('flatplat-theme' 'flatplat-theme-laptop')
 source=(materia-${_date}.tar.gz::"https://github.com/nana-4/materia-theme/archive/v${_date}.tar.gz")
-sha256sums=('be1bd5c77339f5441be88b468212dfdc43d510ac7b3b876872dee1ecc77da864')
+sha256sums=('44e2bfd5abb475a448f3aa9ad9b1d57cf86e6583483b45656a7516fd8070f8f9')
 
 package() {
   cd "${srcdir}/materia-theme-${_date}"
