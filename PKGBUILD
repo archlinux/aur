@@ -3,7 +3,7 @@
 
 pkgname=python2-zeroc-ice
 pkgver=3.7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ice is comprehensive RPC framework with support for Python, C++, .NET, Java, JavaScript and more."
 url="https://zeroc.com"
 depends=('python2')
@@ -26,5 +26,4 @@ build() {
 package() {
     cd $srcdir/zeroc-ice-$pkgver
     python2 setup.py install --root="$pkgdir" --optimize=1
-    mv $pkgdir/usr/bin/slice2py $pkgdir/usr/bin/slice2py2
 }
