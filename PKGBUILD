@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-driver-git
-pkgver=r140.e7f3a83.gmmlib.r8.b1451bb
+pkgver=r164.660e855.gmmlib.r8.b1451bb
 pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=(
      # AUR:
          'libva-git'
 )
-makedepends=('git' 'cmake' 'gcc6')
+makedepends=('git' 'cmake')
 provides=('intel-media-driver')
 conflicts=('intel-media-driver')
 options=('!emptydirs')
@@ -36,13 +36,16 @@ pkgver() {
 }
 
 build() {
+    # do not treat warnings as errors (reverts upstream commit fa0d40ee6d3d7ec34478da166b2740eaf9b7c0ce)
+    cd "$pkgname"
+    sed -i '/PROPERTIES[[:space:]]COMPILE_FLAGS[[:space:]]"-Werror")/d' media_driver/media_top_cmake.cmake
+    
+    cd "$srcdir"
     mkdir -p build
     cd build
     
     cmake \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
-        -DCMAKE_CXX_COMPILER='/usr/bin/g++-6' \
-        -DCMAKE_C_COMPILER='/usr/bin/gcc-6' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DINSTALL_DRIVER_SYSCONF='ON' \
