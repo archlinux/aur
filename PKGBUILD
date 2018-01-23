@@ -4,7 +4,7 @@
 
 pkgname=wildfly-11
 pkgver=11.0.0.Final
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Wildfly Application Server'
 arch=('any')
@@ -44,7 +44,7 @@ sha256sums=('a2f5fb4187369196003e31eb086f0a1f7bfc0645a3a61a53ed20ab5853481e71'
             '65e4b22b106aa16413e5c95686969b3f16974235451d8445ce4c562299325412'
             '3b2d059fcecb799ea8134b23ee0b77b4bc53dd99c7bd541679c4c139638b323a'
             'a360ddb4beb9c704257bd78e08e8eea69c43b410a9c93d346541158c3b9d4330'
-            '922035fcf68a66ed4b36a89370d2335941cb64ef8561e81fa6f59b5784f659e1')
+            'f2433ee9fe38afa8276e83da44d5263f0e000dd0403a5d2d4bf055f80aa289d9')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"

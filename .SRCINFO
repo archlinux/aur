@@ -1,7 +1,7 @@
 pkgbase = wildfly-11
 	pkgdesc = Wildfly Application Server
 	pkgver = 11.0.0.Final
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.wildfly.org/
 	install = wildfly-11.install
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = wildfly-11
 	sha256sums = 65e4b22b106aa16413e5c95686969b3f16974235451d8445ce4c562299325412
 	sha256sums = 3b2d059fcecb799ea8134b23ee0b77b4bc53dd99c7bd541679c4c139638b323a
 	sha256sums = a360ddb4beb9c704257bd78e08e8eea69c43b410a9c93d346541158c3b9d4330
-	sha256sums = 922035fcf68a66ed4b36a89370d2335941cb64ef8561e81fa6f59b5784f659e1
+	sha256sums = f2433ee9fe38afa8276e83da44d5263f0e000dd0403a5d2d4bf055f80aa289d9
 
 pkgname = wildfly-11
 
