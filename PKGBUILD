@@ -1,7 +1,5 @@
-# Maintainer: Danny Su <contact@dannysu.com>
-
 pkgname=tresorit
-pkgver=3.0.452.678
+pkgver=3.0.483.730
 pkgrel=1
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
@@ -9,9 +7,11 @@ url="http://www.tresorit.com/"
 install=tresorit.install
 license=('custom:tresorit')
 makedepends=('xxd')
-source=("tresorit_installer_${pkgver}.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run")
+source=("tresorit_installer_${pkgver}.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run"
+        "tresorit.service")
 
-sha1sums=('SKIP')
+sha1sums=('13c36ac9496795a0c86ef62104613bc3cc61f3e4'
+          '17de06b432b0e9fdd2ac9175a520c27c4d803199')
 
 prepare() {
   # Validate signature
@@ -31,6 +31,7 @@ package() {
   mkdir -p "$pkgdir/opt/tresorit"
   install -Dm755 ../archlinux_user_install "$pkgdir/opt/tresorit/archlinux_user_install"
   install -Dm755 ../systemd_runner "$pkgdir/opt/tresorit/systemd_runner"
+  install -Dm644 "$srcdir"/tresorit.service "$pkgdir"/usr/lib/systemd/user/tresorit.service
 
   if [ $CARCH == "x86_64" ]; then
       cp -r ./tresorit/tresorit_x64/* "$pkgdir/opt/tresorit"
