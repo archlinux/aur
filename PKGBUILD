@@ -4,7 +4,7 @@
 pkgname=visit
 pkgver=2.12.3
 _pkgver=${pkgver//./_}
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
@@ -96,7 +96,7 @@ build() {
   cmake "${srcdir}/${pkgname}${pkgver}/src" \
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DCMAKE_INSTALL_PREFIX:PATH=/opt/${pkgname} \
-    -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
+    -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx \
     -DVISIT_FORTRAN:BOOL=ON -DVISIT_GFORTRAN_DIR=/usr -DCMAKE_Fortran_COMPILER=gfortran \
     -DVISIT_PARALLEL:BOOL=ON -DVISIT_MPI_COMPILER=mpicc -DVISIT_MPI_FORTRAN_COMPILER=mpifort \
     -DVISIT_CGNS_DIR:PATH=/usr \
@@ -111,7 +111,7 @@ build() {
     -DVISIT_THREAD:BOOL=ON \
     -DVISIT_TCMALLOC_DIR:PATH=/usr \
     -DVISIT_VTK_DIR:PATH="/opt/vtk-${_vtk_ver}" -DVISIT_VTK_SKIP_INSTALL:BOOL=ON -DVISIT_VTK_VERSION:STRING="${_vtk_ver}"\
-    -DVISIT_ZLIB_DIR:PATH=/usr
+    -DVISIT_ZLIB:BOOLD=ON -DVISIT_ZLIB_DIR:PATH=/usr
 
   # Does not compile for now
   #-DVISIT_NETCDF_DIR=/usr \
