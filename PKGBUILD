@@ -3,7 +3,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2018.113.0_9_g25d444554
+pkgver=20180120_33_gf5def7bb0
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
@@ -40,7 +40,7 @@ esac
 
 pkgver() {
 	cd "$srcdir/osu"
-	git describe --always --tags | sed -e 's/^v//g' -e 's/-/_/g'
+	git describe --always --tags | sed -E -e 's/^(v|changelog-)//g' -e 's/-/_/g'
 }
 
 build() {
