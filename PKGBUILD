@@ -2,7 +2,7 @@
 
 _pkgname=cleanupdate
 pkgname=cleanupdate-git
-pkgver=r148.c09bb5d
+pkgver=r150.d0b7181
 pkgrel=0
 pkgdesc="A simple script to speed up updating and cleaning your system"
 arch=('any')
@@ -13,8 +13,9 @@ depends=('bash'
         'ncurses'
         'sudo')
 makedepends=('git')
-optdepends=('yaourt: needed for AUR support (alternative to pacaur)'
-		'pacaur: needed for AUR support (preferred to yaourt)')
+optdepends=('trizen: needed for AUR support (preferred to yaourt or pacaur)'
+    'yaourt: needed for AUR support (preferred to pacaur)'
+		'pacaur: needed for AUR support (alternative to trizen)')
 conflicts=()
 source=("git://github.com/cubanpit/$_pkgname")
 md5sums=('SKIP')
