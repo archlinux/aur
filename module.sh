@@ -38,6 +38,9 @@ bl_module_imported=(
     "$(bl.path.convert_to_absolute "$(dirname "${BASH_SOURCE[0]}")/path.sh")"
 )
 bl_module_known_extensions=(.sh '' .zsh .csh .ksh .bash .shell)
+bl_module_known_remote_urls=(
+    http://torben.website/bashlink/data/distributionBundle
+)
 bl_module_prevent_namespace_check=true
 bl_module_retrieve_remote_modules=false
 if $bl_module_retrieve_remote_modules; then
@@ -471,12 +474,18 @@ bl_module_resolve() {
                     break
                 fi
                 # Try to download needed module.
-                if wget "http:// /${name}${extension}" \
-                    -O "${bl_module_remote_module_cache_path}/${name}${extension}"
-                then
-                    file_path="${bl_module_remote_module_cache_path}/${name}${extension}"
-                    break
-                fi
+                local url
+                for url in "${bl_module_known_remote_urls[@]}"; do
+                    mkdir \
+                        --parents \
+                        "$(dirname "${bl_module_remote_module_cache_path}/${name}")"
+                    if wget "${url}/${name}${extension}" \
+                        -O "${bl_module_remote_module_cache_path}/${name}${extension}"
+                    then
+                        file_path="${bl_module_remote_module_cache_path}/${name}${extension}"
+                        break
+                    fi
+                done
             fi
         done
         if [ "$file_path" = '' ]; then

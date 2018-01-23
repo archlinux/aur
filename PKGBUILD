@@ -10,9 +10,9 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=bash-link
-pkgver=1.0.38
-pkgrel=36
-pkgdesc='a high reliable bash library'
+pkgver=1.0.40
+pkgrel=38
+pkgdesc='A high reliable bash library.'
 arch=(any)
 url=http://torben.website/bashlink
 license=(CC-BY-3.0)
@@ -73,11 +73,11 @@ md5sums=(
 copy_to_aur=true
 
 package() {
-    install -D --mode 644 "${srcdir}/"* "${pkgdir}/usr/bin/bashlink/"
-    install -D --mode 755 "${srcdir}/doctest.sh" "${pkgdir}/usr/bin/bashlink/"
-    install -D --mode 755 "${srcdir}/documentation.sh" "${pkgdir}/usr/bin/bashlink/"
-    ln --symbolic bashlink/doctest.sh /usr/bin/bashlink-doctest
-    ln --symbolic bashlink/documentation.sh /usr/bin/bashlink-document
+    install -D --mode 644 "${srcdir}/"* "${pkgdir}/usr/lib/bashlink/"
+    install -D --mode 755 "${srcdir}/doctest.sh" "${pkgdir}/usr/lib/bashlink/"
+    install -D --mode 755 "${srcdir}/documentation.sh" "${pkgdir}/usr/lib/bashlink/"
+    ln --symbolic /usr/lib/bashlink/doctest.sh /usr/bin/bashlink-doctest
+    ln --symbolic /usr/lib/bashlink/documentation.sh /usr/bin/bashlink-document
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
