@@ -1,13 +1,20 @@
+# Maintainer: Jake <aur@ja-ke.tech>
+
 pkgname=openvisualtraceroute
-pkgver=1.6.2
+_short_pkgname=ovtr
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Open source cross-platform Java Visual Traceroute"
 arch=('i686' 'x86_64')
 license=('LGPLv3')
 url="http://sourceforge.net/projects/openvisualtrace"
 depends=('java-runtime' 'traceroute')
-source=("http://downloads.sourceforge.net/project/openvisualtrace/${pkgver}/OpenVisualTraceRoute${pkgver}.zip")
-sha256sums=('afcbaf65adba5839d9f8b5fd1626dafd1dbe94dffa525df533b9385f343dc0d2')
+source=("http://downloads.sourceforge.net/project/openvisualtrace/${pkgver}/OpenVisualTraceRoute${pkgver}.zip"
+        "ovtr"
+        "ovtr.desktop")
+sha256sums=('4bca294af87528b0c99d35fe4ea20ff2b1961f092818c4966ccfac37756002b8'
+            '8eb4f3ad755ce5c0ec8a85331cd291da71d70d5325cf2ad5133aca9e736c8e1d'
+            'af0cef38105d65182c261067577f8ff68bf50e71d4d2f4fc7fe8e0ba4472d22f')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="x86"
@@ -26,13 +33,15 @@ package() {
   cp -rPf "native/linux/${_arch}/"*.so "${pkgdir}/usr/share/OpenVisualTraceRoute/native/linux/${_arch}"
   cp -rPf "lib/"*.jar "${pkgdir}/usr/share/OpenVisualTraceRoute/lib"
 
-  sed -i 's|sudo ||g' "ovtr.sh"
-
-  echo -e "#!/bin/sh\n(cd /usr/share/OpenVisualTraceRoute; ./ovtr.sh)" > ovtr
-
-  install -m755 "ovtr" "${pkgdir}/usr/bin/ovtr"
-  install -m755 "ovtr.sh" "${pkgdir}/usr/share/OpenVisualTraceRoute/"
+  install -m755 "${srcdir}/${_short_pkgname}" "${pkgdir}/usr/bin/${_short_pkgname}"
+  install -m755 "ovtr_run_as_root.sh" "${pkgdir}/usr/share/OpenVisualTraceRoute/"
   install -m755 "org.leo.traceroute.jar" "${pkgdir}/usr/share/OpenVisualTraceRoute/"
+  
+  install -d -m755 "${pkgdir}/usr/lib"
+  ln -s /usr/lib/libpcap.so.1 ${pkgdir}/usr/lib/libpcap.so.0.8
+  
+  install -D -m644 "${srcdir}/${_short_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_short_pkgname}.desktop"
+  install -D -m644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/${_short_pkgname}.png"
 }
 
 # vim:set ts=2 sw=2 et:
