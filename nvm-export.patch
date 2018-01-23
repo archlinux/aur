@@ -1,8 +1,8 @@
 diff --git a/src/base/reconstruction.cc b/src/base/reconstruction.cc
-index 5674363..794b994 100755
+index c9a65fc..29358b3 100755
 --- a/src/base/reconstruction.cc
 +++ b/src/base/reconstruction.cc
-@@ -952,7 +952,7 @@ void Reconstruction::ImportPLY(const std::string& path) {
+@@ -972,7 +972,7 @@ void Reconstruction::ImportPLY(const std::string& path) {
    }
  }
  
@@ -11,7 +11,7 @@ index 5674363..794b994 100755
    std::ofstream file(path, std::ios::trunc);
    CHECK(file.is_open()) << path;
  
-@@ -979,7 +979,13 @@ bool Reconstruction::ExportNVM(const std::string& path) const {
+@@ -999,7 +999,13 @@ bool Reconstruction::ExportNVM(const std::string& path) const {
          -1 * camera.Params(SimpleRadialCameraModel::extra_params_idxs[0]);
      const Eigen::Vector3d proj_center = image.ProjectionCenter();
  
@@ -39,11 +39,11 @@ index 7cb5ffb..c2b1d84 100755
    bool ExportBundler(const std::string& path,
                       const std::string& list_path) const;
    void ExportPLY(const std::string& path) const;
-diff --git a/src/exe/model_converter.cc b/src/exe/model_converter.cc
-index 9e14d73..c5bfcbf 100755
---- a/src/exe/model_converter.cc
-+++ b/src/exe/model_converter.cc
-@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
+diff --git a/src/exe/colmap.cc b/src/exe/colmap.cc
+index 0a8476b..07e2954 100755
+--- a/src/exe/colmap.cc
++++ b/src/exe/colmap.cc
+@@ -838,7 +838,7 @@ int RunModelConverter(int argc, char** argv) {
    } else if (output_type == "txt") {
      reconstruction.WriteText(output_path);
    } else if (output_type == "nvm") {
@@ -53,10 +53,10 @@ index 9e14d73..c5bfcbf 100755
      reconstruction.ExportBundler(output_path + ".bundle.out",
                                   output_path + ".list.txt");
 diff --git a/src/ui/main_window.cc b/src/ui/main_window.cc
-index 09d8020..48c1177 100755
+index 2811fc4..e01a4bb 100755
 --- a/src/ui/main_window.cc
 +++ b/src/ui/main_window.cc
-@@ -855,7 +855,7 @@ void MainWindow::ExportAs() {
+@@ -807,7 +807,7 @@ void MainWindow::ExportAs() {
          const Reconstruction& reconstruction =
              reconstruction_manager_.Get(SelectedReconstructionIdx());
          if (filter == "NVM (*.nvm)") {

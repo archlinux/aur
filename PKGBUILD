@@ -1,9 +1,9 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
-fragment="#branch=master"
+fragment="#branch=dev"
 pkgname=${name}-git
-pkgver=3.3.r4.g1305bfb
+pkgver=3.3.r88.gb2af900
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree-1048576.bin"
         )
 md5sums=('SKIP'
-         '8a9f76c21ae93e5f5571f372f5401423'
+         '3c0027625739e972f8af8bea6f557b35'
          'ebb1dc43e014a1e720a06422c6248a40'
          '55d81534d969cf706719007462f20443'
          '3521ff3c601596473c6ce5256772f606'
