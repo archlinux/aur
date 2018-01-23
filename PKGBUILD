@@ -1,7 +1,7 @@
 pkgname=lig
 pkgver=r139.g2680249
 pkgrel=1
-pkgdesc="LISP Information Groper, a tool that can be used to query the LISP Map-Server database"
+pkgdesc="LISP Internet Groper, a tool that can be used to query the LISP Map-Server database"
 url="https://github.com/LISPmob/lig-lispmob"
 arch=('x86_64' 'i686' 'armv6h')
 license=('BSD-3-clause')
