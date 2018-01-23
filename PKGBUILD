@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <arch+pub@sergej.pp.ru>
-# Maintainer: Kaiting Chen <kaiting.chen@kiwilight.com>
+# Maintainer: Luca P <meti at lplab.net>
+# Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
+# Contributor: Kaiting Chen <kaiting.chen@kiwilight.com>
 
 pkgname='librelp'
 pkgver=1.2.14
 pkgrel=1
 pkgdesc="The Reliable Event Logging Protocol"
 url="http://www.librelp.com/"
-arch=('x86_64')
+arch=('any')
 license=('GPL3')
 depends=('gnutls')
 source=("http://download.rsyslog.com/librelp/librelp-${pkgver}.tar.gz")
