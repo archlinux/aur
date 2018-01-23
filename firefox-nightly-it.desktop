@@ -1,4 +1,5 @@
 [Desktop Entry]
+Version=1.0
 Name=Firefox Nightly
 GenericName=Web Browser
 GenericName[ar]=متصفح وِب
@@ -85,13 +86,24 @@ Comment[zh_TW]=瀏覽網際網路
 Exec=firefox-nightly-it --class=FirefoxNightly %u
 Icon=firefox-nightly-it
 Terminal=false
+X-MultipleArgs=false
 Type=Application
-MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;text/mml;
 StartupNotify=true
 StartupWMClass=FirefoxNightly
-Categories=Network;WebBrowser;
-Keywords=web;browser;internet;
-Actions=new-window;new-private-window;
+Categories=GNOME;GTK;Network;WebBrowser;
+Keywords=Internet;WWW;Browser;Web;Explorer
+Keywords[eo]=Internet;WWW;Browser;Web;Explorer;Interreto;Retumilo;Fajrfokso;Retumo;TTT;
+Keywords[fr]=Internet;WWW;Browser;Web;Explorer;Fureteur;Surfer;Navigateur
+Actions=ProfileManager;new-window;new-private-window;
+
+[Desktop Action ProfileManager]
+Name=Profile Manager
+Name[eo]=Mastrumilo de profiloj
+Name[fr]=Gestionnaire de profil
+Name[it]=Gestore dei profili
+Exec=firefox-nightly-it --class=FirefoxNightly -P
+
 [Desktop Action new-window]
 Name=New Window
 Name[ach]=Dirica manyen
