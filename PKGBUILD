@@ -1,5 +1,5 @@
 pkgname=cargo-bloat-git
-pkgver=0.1.0.10.g0484c2d
+pkgver=0.2.0.30.gf381537
 pkgrel=1
 pkgdesc="Find out what takes most of the space in your executable"
 arch=('x86_64')
