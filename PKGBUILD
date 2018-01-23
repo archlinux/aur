@@ -1,6 +1,6 @@
 # Maintainer: Nick Levesque <nick.levesque@gmail.com>
 pkgname=fwup
-pkgver=v0.19.0.r0.g0a5313f
+pkgver=v1.0.0.r0.gdbca9ec
 pkgrel=1
 pkgdesc="Configurable embedded Linux firmware update creator and runner"
 arch=('any')
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/fhunleth/fwup#tag=v0.19.0')
+source=('git+https://github.com/fhunleth/fwup#tag=v1.0.0')
 noextract=()
 md5sums=('SKIP')
 
@@ -25,19 +25,18 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname}"
     ./autogen.sh
     ./configure --prefix=/usr
     make
 }
 
-# Disabled until next release where test 145 is fixed
-#check() {
-#    cd "$srcdir/${pkgname%-git}"
-#    make check
-#}
+check() {
+    cd "$srcdir/${pkgname}"
+    make check
+}
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname}"
     make DESTDIR="$pkgdir/" install
 }
