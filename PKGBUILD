@@ -7,6 +7,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url="https://sourceforge.net/projects/hts-engine/files/"
 license=('BSD')
 depends=('glibc')
+depends=('hts-engine')
 options=('staticlibs')
 source=('http://downloads.sourceforge.net/hts-engine/flite%2Bhts_engine-${pkgver}.tar.gz')
 md5sums=('541a07777c7b1ea518e1f6f4c745ecc0')
