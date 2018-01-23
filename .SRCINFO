@@ -1,16 +1,15 @@
 pkgbase = libps2000a
 	pkgdesc = library for picotech oscilloscope 2000 series
-	pkgver = 1.1.6_5r18
+	pkgver = 1.4.0_5r09
 	pkgrel = 1
 	url = http://www.picotech.com/linux.html
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = dpkg
 	depends = libusb
 	options = !strip
-	source = http://labs.picotech.com/debian/pool/main/libp/libps2000a/libps2000a_1.1.6-5r18_amd64.deb
-	md5sums = 3d73c530d561e7e57ef31477d3311082
+	source = http://labs.picotech.com/debian/pool/main/libp/libps2000a/libps2000a_1.4.0-5r09_amd64.deb
+	md5sums = 6387651a76718629f7ee832121d3e51e
 
 pkgname = libps2000a
 
