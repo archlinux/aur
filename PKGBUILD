@@ -4,7 +4,7 @@
 # Contributor 3: Anuj More <anujmorex@gmail.com>
 
 pkgname=google-appengine-java
-pkgver=1.9.60
+pkgver=1.9.61
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Google App Engine SDK for Java'
@@ -22,5 +22,5 @@ package() {
   install -D -m755 profile.appengine-java-sdk "${pkgdir}/etc/profile.d/appengine-java-sdk.sh"
 }
 
-sha1sums=('92c61310a09ae55c2db7d078b199e9092def2988'
+sha1sums=('d8356b3b059d8876874e3be101b9941dce836474'
           '2b3afe55cfb6847b957ec10eec981363797ce09e')
