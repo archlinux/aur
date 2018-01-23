@@ -1,7 +1,7 @@
 # Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 _npmname=gitlab-letsencrypt
-_npmver=3.1.0
+_npmver=3.1.1
 pkgname=nodejs-$_npmname
 pkgver=$_npmver
 pkgrel=2
@@ -26,4 +26,4 @@ package() {
   ## Remove empty dir
   rmdir "$pkgdir/usr/etc/"
 }
-sha256sums=('36c27375216fa72cbd01a6656762c031578f3db3e36d815953d4a387016ec23c')
+sha256sums=('8d737f7ec01797c642a4dedde83598484e5ae7750bcc6d40d13fd05e66e6414e')
