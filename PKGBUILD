@@ -1,13 +1,13 @@
 # Maintainer: gue5t <gue5t@aur.archlinux.org>
 pkgname=python-mastodon
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="python bindings for the Mastodon RPC API"
 arch=('any')
 url="https://pypi.python.org/pypi/Mastodon.py"
 license=('GPL')
 groups=()
-depends=()
+depends=(python-requests python-dateutil python-six python-pytz python-decorator)
 makedepends=()
 optdepends=()
 provides=()
