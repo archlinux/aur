@@ -2,8 +2,8 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 ########[ OPTIONS ]########################################
-# Comment out if you want to build all language translations
-export LG2=en
+# Uncomment if you do not want to build all language translations
+#export LG2=en
 
 # Download sources from within i2p
 #_i2p_fetch=1
