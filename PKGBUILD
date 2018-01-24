@@ -3,7 +3,7 @@
 
 _gemname=coderay
 pkgname=ruby-$_gemname
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Fast syntax highlighting for selected languages.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('3d06b4e1026489d5a9a9e5d31c41e3c6af84ac29f7d4e8cc29cca54f764209982a3257b5a4493bfdee44738c1c7eb3b020e43e1313c715ccccdc4734a66013d9')
+sha512sums=('bd25c0091a271048165af33f60ab846cb623a0da68e5540d98ea2b1c6bdf3348811d98519e537435c9a5515e751ce5975a02adccec9ef225f042a27c43009e63')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
