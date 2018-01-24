@@ -1,0 +1,12 @@
+[Unit]
+Description=Standalone I2P BitTorrent Client
+
+[Service]
+User=xd
+Group=xd
+WorkingDirectory=~
+ExecStart=/usr/bin/XD /etc/xd.conf
+#Restart=on-failure
+
+[Install]
+WantedBy=default.target

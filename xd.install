@@ -1,0 +1,9 @@
+post_install() {
+    getent passwd xd &>/dev/null || {
+        echo -n ">>> Creating xd-torrent user... "
+        useradd --system --user-group -m --home /var/lib/xd xd
+        echo "done"
+    } # NOTE: we do not autoremove user due to security concerns (Arch policy)
+
+    sudo -u xd XD --genconf /etc/xd.conf
+}
