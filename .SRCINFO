@@ -1,0 +1,18 @@
+pkgbase = python-snowboy-git
+	pkgdesc = A hotword detection engine - Python bindings
+	pkgver = v1.2.0.r128.g4ee4811
+	pkgrel = 1
+	url = https://snowboy.kitt.ai/
+	arch = x86_64
+	license = Apache
+	makedepends = swig
+	makedepends = python-setuptools
+	depends = python
+	depends = atlas-lapack
+	provides = python-snowboy
+	conflicts = python-snowboy
+	source = git+https://github.com/Kitt-AI/snowboy.git
+	md5sums = SKIP
+
+pkgname = python-snowboy-git
+
