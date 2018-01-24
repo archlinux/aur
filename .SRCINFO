@@ -1,0 +1,18 @@
+pkgbase = ruby-oauth-0.5.4
+	pkgdesc = OAuth Core Ruby implementation
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = http://www.rubydoc.info/gems/oauth/0.5.4
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby>=2.0.0
+	provides = ruby-oauth=0.5.4
+	conflicts = ruby-oauth
+	noextract = oauth-0.5.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/oauth-0.5.4.gem
+	sha256sums = 3e017ed1c107eb6fe42c977b78c8a8409249869032b343cf2f23ac80d16b5fff
+
+pkgname = ruby-oauth-0.5.4
+
