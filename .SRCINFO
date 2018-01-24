@@ -1,0 +1,26 @@
+pkgbase = occi-core
+	pkgdesc = OCCI is a collection of classes to simplify the implementation of the Open Cloud Computing API in Ruby
+	pkgver = 4.3.6
+	pkgrel = 1
+	url = http://egi-fctf.github.io/rOCCI-core/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = ruby>=1.9.3
+	depends = ruby-activesupport>=4.0.0
+	depends = ruby-activesupport<6
+	depends = ruby-hashie>=3.3.1
+	depends = ruby-hashie<3.5
+	depends = ruby-json>=1.8.1
+	depends = ruby-json<3
+	depends = ruby-settingslogic>=2.0.9
+	depends = ruby-settingslogic<3
+	depends = ruby-uuidtools>=2.1.3
+	depends = ruby-uuidtools<3
+	noextract = occi-core-4.3.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/occi-core-4.3.6.gem
+	sha256sums = fa49dbbfd479a2ff403dd5a3eb7c5793f0a62a27dd4b6e8e8f162373f00087b8
+
+pkgname = occi-core
+
