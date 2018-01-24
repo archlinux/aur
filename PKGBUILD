@@ -1,7 +1,7 @@
 # Maintainer: chr0mag <phillips.julian AT gmail DOT com>
 pkgname=sos
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A unified tool for collecting system logs and other debug information"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python'
 	 'python-lxml'
 	 'xz'
 	 'tar')
-makedepends=('python-sphinx')
+makedepends=('python-sphinx' 'python-nose' 'python-coverage')
 checkdepends=()
 optdepends=()
 provides=()
@@ -34,7 +34,10 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
+	# fix for: https://github.com/sosreport/sos/commit/0b30e8f72c3c669455209d15b1eb01de20c7d578
 	patch sos/plugins/haproxy.py < ../../$_urlparsefix
+	#add basic Arch policy
+	cp ../../arch.py sos/policies
 }
 
 build() {
@@ -44,6 +47,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
+	make test
 }
 
 package() {
@@ -53,8 +57,6 @@ package() {
 	mkdir ${pkgdir}/usr/bin
 	mv ${pkgdir}/usr/sbin/sosreport ${pkgdir}/usr/bin
 	rmdir ${pkgdir}/usr/sbin
-	#add basic Arch policy
-	cp ../../arch.py ${pkgdir}/usr/lib/python3.6/site-packages/sos/policies
-	#disable plugins that cause issues
+	#workaround for: https://github.com/sosreport/sos/issues/77
 	sed --in-place 's/#disable = rpm, selinux, dovecot/disable = rpm, selinux, dovecot, sunrpc, nfsserver, distupgrade/' ${pkgdir}/etc/sos.conf
 }

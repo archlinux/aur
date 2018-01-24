@@ -1,11 +1,13 @@
 pkgbase = sos
 	pkgdesc = A unified tool for collecting system logs and other debug information
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sosreport/sos
 	arch = any
 	license = GPL2
 	makedepends = python-sphinx
+	makedepends = python-nose
+	makedepends = python-coverage
 	depends = python
 	depends = python-six
 	depends = python-lxml
