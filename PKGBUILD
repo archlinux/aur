@@ -2,7 +2,7 @@
 
 pkgname=paperless
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Scan, index, and archive all of your paper documents"
 arch=('any')
 url="https://github.com/danielquinn/paperless"
@@ -15,9 +15,8 @@ source=("https://github.com/danielquinn/${pkgname}/archive/${pkgver}.tar.gz"
         paperless-webserver.service)
 sha512sums=('446c19da97276d9832d712c8cea23d56f435162a207de842603e60fd863ca6b1bd8a7671692040b40cd74e803ee9cca48dfb639870523b00f15e0f7198d9d707'
             'eb453491ad689505db8e1f9ca91a292eff0ad6ffaf530ed6c6d9b28131379b29d055bdf2533b8d18f2ad590054b24ccaa7df0880c4d89f66c0fce84473445e40'
-            'd6dcd6c4bf102e1a527ef30e15cc1d8841cc10b270fe576f233e1d28b7773da81b2ddd94ccdc1e7202f65a750ef0a9d6d9bc59b951dceec28f9b7a1bc330ca5f'
-            '9b93c34d7d5249be6dc15ed92e6914022c0d1a4f7af161f72379d73c215e7c4cc833befb1e28d02390573f41e9a99a6bcb9d77373d879c803c2f48510fc676e0')
-
+            'ddf9988e5e479e41558bda7fc866e181aebc1f18d13214dfd09a51a54227a0b885046e63e018b9360ff6e4af3d4998a4af3bc6ce0cefdba42d165fa2d9cf735c'
+            'd607f7393571d0b7bbeaa27a2b6084dfad03097734b288a1ff848d9309a5dd59cf72924c6d0eeedb8f8afa9a08716349c6546ac3b30bb0db34dd45cbb87c87b4')
 _datadir="/usr/share/webapps/${pkgname}"
 _systemddir="/usr/lib/systemd/system/"
 
