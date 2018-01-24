@@ -4,13 +4,13 @@
 pkgname=trang
 _pkgname="jing-trang"
 pkgver=20151127
-pkgrel=3
+pkgrel=4
 pkgdesc="Converts between different schema languages for XML"
 url="https://github.com/relaxng/jing-trang"
 arch=('any')
 license=('GPL')
 depends=(java-runtime)
-depends=(java-environment)
+makedepends=(java-environment)
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/relaxng/${_pkgname}/archive/V${pkgver}.tar.gz"
 	trang
