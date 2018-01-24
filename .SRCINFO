@@ -1,0 +1,26 @@
+pkgbase = phantomjs
+	pkgdesc = Headless WebKit with JavaScript API
+	pkgver = 2.1.1
+	pkgrel = 9
+	url = http://www.phantomjs.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = LGPL
+	license = MIT
+	makedepends = git
+	depends = icu
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = fontconfig
+	depends = gperf
+	depends = ruby
+	depends = python2
+	depends = openssl-1.0
+	source = git+https://github.com/ariya/phantomjs.git#tag=2.1.1
+	source = icu59.patch
+	sha512sums = SKIP
+	sha512sums = e349a14c5d32e5627f28be6ebd20104370ec6b7f086f670e7f19b484b38839220cfeb49178765f38d918d05fb889bbc990f8a3809db6d9e1cbde0af5b9dd923b
+
+pkgname = phantomjs
+
