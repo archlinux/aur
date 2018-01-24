@@ -1,9 +1,10 @@
 # Maintainer: KillWolfVlad <github.com/KillWolfVlad>
 # Contributor: WaveHack <email@wavehack.net>
+# Contributor: Whovian9369 <Whovian9369@gmail.com>
 
 pkgname=('gitahead')
 pkgrel=1
-pkgver=2.0.2
+pkgver=2.0.6
 pkgdesc='THE MOST POWERFUL GIT GUI'
 url='http://gitahead.scitools.com/'
 provides=('gitahead')
@@ -18,7 +19,7 @@ source=(
   "gitahead.png"
   "gitahead.sh"
 )
-sha256sums=('0e31392a69d87a32ee2c097c83fdc7f8508bf0379ab1bb0adf58a76881577838'
+sha256sums=('8050a8e840fda8434d8fbb03208c3793cfe52f4156bd43fe2b30fe874a33addb'
             'd71bfb48c954d213986816fc29478c7f80c8bd2dd10d2889bf51897d649eedd6'
             '6070ebf6752f55f8b7d8a79107ce491c3acf04310eeb9a8242b83cfb4df055f2'
             '66cb53fc57eb2ce2e6cd02ff392476fdfb91b723b76ef5da1856e9b5dc1b5c75'

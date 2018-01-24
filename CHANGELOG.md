@@ -1,8 +1,57 @@
+# [v2.0.6 - 2018-01-23](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.0.5)
+
+## Fixed
+
+- Disable editing and hide caret on untracked files in the diff view.
+- Fixed failure to cancel remote transfer in some cases.
+- Fixed failure to report error after invalid offline registration attempt.
+
+# [v2.0.5 - 2018-01-17](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.0.4)
+
+## Added
+
+- Added theme menu item to edit the current theme.
+
+## Fixed
+
+- Fixed crash on some diffs.
+- (Win) Fixed issues with localized repository and config path names.
+
+## Changed
+
+- Changed HEAD reference color in dark theme.
+
+# [v2.0.4 - 2018-01-10](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.0.3)
+
+## Added
+
+- Allow more SSL errors to be ignored.
+- Remember ignored SSL errors and don't continue to prompt about them.
+- (Mac) Added 'Open in GitAhead' services context menu action.
+
+## Fixed
+
+- Fixed crash on conflicted files that only exist on one side of the merge.
+- (Win) Install updates in the previous install location.
+
+# [v2.0.3 - 2018-01-05](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.0.2)
+
+## Added
+
+- Remember 'no commit' setting in the merge dialog.
+- Added more specific error message on failure to establish SSL connection.
+- Allow certain SSL errors to be ignored.
+- (Win) Added explorer context menu shortcuts to installer.
+
+## Fixed
+
+- Fixed integration with GitLab. A personal access token is now required for authentication.
+
 # [v2.0.2 - 2017-12-22](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.0.1)
 
 ## Fixed
 
-Fixed issues with offline licenses.
+- Fixed issues with offline licenses.
 
 # [v2.0.1 - 2017-12-20](https://gitahead.com/cgi-bin/update.py?platform=linux&version=2.0.0)
 
