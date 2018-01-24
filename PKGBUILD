@@ -1,12 +1,13 @@
 pkgname=('ncid' 'ncid-client' 'ncid-tools' 'ncid-extensions' 'ncid-module-alert' 'ncid-module-initmodem' 'ncid-module-skel')
 pkgbase=ncid
-pkgver=1.7
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Network caller ID."
 arch=('x86_64')
 url="http://ncid.sourceforge.net/"
 license=('GPL3')
 depends=()
+makedepends=('libnotify' 'perl')
 optdepends=()
 provides=()
 conflicts=()
@@ -14,10 +15,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://downloads.sourceforge.net/project/ncid/ncid/$pkgver/$pkgbase-$pkgver-src.tar.gz")
-md5sums=('2425156c4a022168650e447b1f534bd6')
+source=("https://downloads.sourceforge.net/project/ncid/ncid/1.7/$pkgbase-$pkgver-src.tar.gz" "ncidd_pause.patch")
+md5sums=('aabb0d49de9f6ece5c9413e4245926f6' '324ff0e797bb8f21b3906b28bb07de04')
 
 build() {
+	cd "$srcdir"
+        patch -p0 < ncidd_pause.patch
 	cd "$srcdir/$pkgbase"
 	make package
 }

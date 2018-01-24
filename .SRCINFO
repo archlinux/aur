@@ -1,12 +1,16 @@
 pkgbase = ncid
 	pkgdesc = Network caller ID.
-	pkgver = 1.7
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = http://ncid.sourceforge.net/
 	arch = x86_64
 	license = GPL3
-	source = http://downloads.sourceforge.net/project/ncid/ncid/1.7/ncid-1.7-src.tar.gz
-	md5sums = 2425156c4a022168650e447b1f534bd6
+	makedepends = libnotify
+	makedepends = perl
+	source = https://downloads.sourceforge.net/project/ncid/ncid/1.7/ncid-1.7.2-src.tar.gz
+	source = ncidd_pause.patch
+	md5sums = aabb0d49de9f6ece5c9413e4245926f6
+	md5sums = 324ff0e797bb8f21b3906b28bb07de04
 
 pkgname = ncid
 	pkgdesc = Network caller ID server.
