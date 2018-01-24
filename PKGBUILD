@@ -3,9 +3,9 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=2.2.1
-_gitrev=758
-_gitver=5dad2d62
+pkgver=2.3.0
+_gitrev=774
+_gitver=ef2108c2
 _fullver="$pkgver.$_gitrev-$_gitver"
 _fullname="$pkgname-$_fullver"
 pkgrel=2
@@ -20,8 +20,8 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         "${_fullname}_osx.tar.gz::https://downloads.plex.tv/plexmediaplayer/${_fullver}/PlexMediaPlayer-${_fullver}-macosx-x86_64.zip"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
-sha512sums=('78214a4322979ec25486234ab1ecb74fbd3ea817a1a086c1cf6ce48ba3eb25b496d9e1cc7cb16cc937a81b7ca8c42ded320ab1c7953caee916c77780f562e5e8'
-            '9ab9b8d9d2b067584bee7a1e0c7e6d4190975659d6708bf1a59746e6ab6fcebc9574ba23edfe7c3caa6f2ebf38c7d08c0236008507cb7e5de8625dd26438501c'
+sha512sums=('345c15a65a4f1b2590c7f99794b5986c3764c03b519cf11343a7d111e50959638396d51ed7ce666b91912f57d842ce221b24055d26fc6b332ca87eda5467d30c'
+            '0c75dd187454ffa940863164cea5a10fc92b28ecc81a2acb8fa7e5204f16509425f728b8a069036042f4601b1635a1ab944b24a14ca4771e850c12209766ef1a'
             'f24d70646babc2d248d6159442e3b9d5518276e7d8e33004f13d260953ebcd741067c507a47de25c24842e4391f4c403cdb46dc989b52fa1dde38a7312382db1')
 
 prepare() {
