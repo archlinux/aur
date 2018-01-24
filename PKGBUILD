@@ -1,7 +1,7 @@
 # Maintainer: Shengyu Zhang <arch at srain.im>
 
 pkgname=srain-dev
-pkgver=0.713.2ddb6dc
+pkgver=0.861.57b757b
 pkgrel=1
 pkgdesc="Modern, beautiful IRC client written in GTK+ 3, develop and debug version"
 arch=('i686' 'x86_64')
