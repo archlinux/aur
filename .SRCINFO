@@ -1,0 +1,16 @@
+pkgbase = ruby-settingslogic
+	pkgdesc = A simple and straightforward settings solution that uses an ERB enabled YAML file and a singleton design pattern.
+	pkgver = 2.0.9
+	pkgrel = 1
+	url = https://github.com/binarylogic/settingslogic
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	noextract = settingslogic-2.0.9.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/settingslogic-2.0.9.gem
+	sha256sums = 5925a91d0d48dfb59a6e48ae2bb9c9b801fe6fab25a8e8d302ce8699d92f2ae6
+
+pkgname = ruby-settingslogic
+
