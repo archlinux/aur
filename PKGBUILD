@@ -5,7 +5,7 @@
 
 pkgname=duplicati2-beta
 pkgver=2.0.2.1
-pkgrel=2
+pkgrel=3
 _date=2017-08-01
 _branch=beta
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
@@ -19,8 +19,8 @@ source=(https://github.com/duplicati/duplicati/releases/download/v${pkgver}-${pk
 	duplicati.sysusers
 	duplicati-cli)
 sha256sums=('e37d126296024a5fae48fdc9896c97a334eeeb6b008a970aa0e1632bc13c77b0'
-            'ec25b25d0e331ddfb90940555068aa941c3d5dfaf858cffb6c75e810175c9d27'
-            '087db7ce97c4180006c2708d49024c0393f48f83ea2ce8b0b6354fffa554ece9'
+            '0a4f2a0a6ee8f38166e4d4490db867fa60dddb01ed209ff6a4fe4d5ab79ffa94'
+            '46acdb205b9ec152b6028b15a0b4754ff34ac835d49ce765b8ef47a038dbb6e6'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'f6f903ca443935314afeab4cd2e46cf4bef7c5fb1e81c2d95f670f0993774ce5')
 arch=('i686' 'x86_64')
