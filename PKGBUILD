@@ -72,7 +72,7 @@ if [[ BRANCH = "emacs-26" ]]; then
 else
   pkgname=emacs-git
 fi
-pkgver=27.0.50.131888
+pkgver=27.0.50.131889
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
@@ -238,16 +238,6 @@ if [[ $MAGICK = "YES" ]]; then
   export PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig
 else
   _conf+=( '--without-imagemagick' );
-fi
-
-if [[ $XML2 = "YES" ]]; then
-  _conf+=(
-    '--with-xml2'
-  );
-else
-  _conf+=(
-    '--without-xml2'
-  );
 fi
 
 if [[ $CAIRO = "YES" ]]; then
