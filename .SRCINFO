@@ -1,0 +1,24 @@
+pkgbase = occi-cli
+	pkgdesc = This gem is a client implementation of the Open Cloud Computing Interface in Ruby
+	pkgver = 4.3.10
+	pkgrel = 1
+	url = http://egi-fctf.github.io/rOCCI-cli/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = ruby>=1.9.3
+	depends = ruby-activesupport>=4.0.0
+	depends = ruby-activesupport<5
+	depends = ruby-highline>=1.6.21
+	depends = ruby-highline<2
+	depends = ruby-json>=1.8.1
+	depends = ruby-json<3
+	depends = occi-api>=4.3.14
+	depends = occi-api<5
+	noextract = occi-cli-4.3.10.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/occi-cli-4.3.10.gem
+	sha256sums = 8d7c20c5db39a0c794be8e2f022da501b84d799dc906dc5803ff1058d7cdc6fe
+
+pkgname = occi-cli
+
