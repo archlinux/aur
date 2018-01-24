@@ -2,7 +2,7 @@
 
 pkgname=kubernetes-built
 pkgnameorg=kubernetes
-pkgver=1.8.2
+pkgver=1.8.5
 pkgrel=1
 pkgrelorg=1
 _contribver=0.7.0
@@ -24,10 +24,10 @@ source=("https://versaweb.dl.sourceforge.net/project/aur-kubernetes-built/kubern
 #	"https://github.com/kubernetes/contrib/archive/$_contribver.tar.gz"
 		)
 # noextract=("kubernetes-built-$pkgver-$pkgrel-x86_64.pkg.tar.xz")
-sha256sums=('426a8e429b7784c8485ebb7b9c3d7dae96b81719a536930b9b32ea74abfb72a7'
+sha256sums=('35bd76dfc4263eadf718c23778767bba7c3102f60ac1d4cf62836fdc1045fdb9'
 #	'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
 )
-md5sums=('eac42ed80b7c547af13b295cb23976ea'
+md5sums=('e296aed0ff3d64184b70ee70f5a7828f'
 #	'bcbca37b78cf18848976593b97580037'
 )
 
