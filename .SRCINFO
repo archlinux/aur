@@ -1,6 +1,6 @@
 pkgbase = libcotp
 	pkgdesc = C library that generates TOTP and HOTP
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/paolostivanin/libcotp
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = libcotp
 	makedepends = cmake
 	depends = libbaseencode
 	options = !strip
-	source = https://github.com/paolostivanin/libcotp/archive/v1.0.10.tar.gz
-	sha256sums = 34af119cb367b8ea6cf15a7dfbcd87687be27e55b3a95f82ac84e6dc735bce4e
+	source = https://github.com/paolostivanin/libcotp/archive/v1.0.11.tar.gz
+	sha256sums = fd01f46a81a1f2811c932eab336276d982369401ae405e36034f1aa859b04a74
 
 pkgname = libcotp
 
