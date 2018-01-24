@@ -1,3 +1,4 @@
+
 # Maintainer: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
 # Contributor: Swift Geek <swifgeek ɐ google m č0m>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
@@ -5,7 +6,7 @@
 
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}
-pkgver=1.37.2
+pkgver=1.38.6
 pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
@@ -23,10 +24,9 @@ source=("git+https://github.com/prusa3d/Slic3r.git#tag=version_$pkgver"
         "Move-Slic3r-data-to-usr-share-slic3r.patch"
         'slic3r.desktop')
 md5sums=('SKIP'
-         '7ae5572aa5f23f073dd696f7446d6529'
+         '87c8e0bfdd7e132938ec0ff9edb5dc18'
          '1941c1ede2f03774ffb77f68a7c33572')
 
-        
 prepare() {
   cd "${srcdir}/Slic3r"
   patch -p1 -i "$srcdir/Move-Slic3r-data-to-usr-share-slic3r.patch"
@@ -62,13 +62,17 @@ package () {
   # ZSH autocompletion
   install -Dm 0644 "utils/zsh/functions/_slic3r" "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
 
+  # Resources
+  mkdir -p "$pkgdir/usr/share/${_pkgname}"
+  cp -R resources/icons "$pkgdir/usr/share/${_pkgname}/"
+  cp -R resources/profiles "$pkgdir/usr/share/${_pkgname}/"
+
   # Desktop file
   install -d "$pkgdir/usr/share/applications"
   install -m 644 "$srcdir/slic3r.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
   # Desktop icon
   mkdir -p "$pkgdir/usr/share/icons/hicolor/"{128x128,192x192}/apps/
-  ln -s "/usr/share/${_pkgname}/Slic3r_128px.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-  ln -s "/usr/share/${_pkgname}/Slic3r_192px.png" "$pkgdir/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
+  ln -s "/usr/share/${_pkgname}/icons/Slic3r_128px.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+  ln -s "/usr/share/${_pkgname}/icons/Slic3r_192px.png" "$pkgdir/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
 }
-

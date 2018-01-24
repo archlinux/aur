@@ -20,18 +20,18 @@ index 43d7dee7..7939a767 100644
  install(FILES lib/Slic3r.pm DESTINATION lib/slic3r-prusa3d)
  install(DIRECTORY lib/Slic3r DESTINATION lib/slic3r-prusa3d)
 diff --git a/lib/Slic3r.pm b/lib/Slic3r.pm
-index 17b78326..92f1842c 100644
+index 66039ddf..bb7e1eb5 100644
 --- a/lib/Slic3r.pm
 +++ b/lib/Slic3r.pm
-@@ -51,7 +51,7 @@ warn "Running Slic3r under Perl 5.16 is neither supported nor recommended\n"
- 
+@@ -41,7 +41,7 @@ warn "Running Slic3r under Perl 5.16 is neither supported nor recommended\n"
  use FindBin;
- # Path to the images.
--our $var = sub { decode_path($FindBin::Bin) . "/var/" . $_[0] };
-+our $var = sub { decode_path($FindBin::Bin) . "/../share/slic3r-prusa3d/" . $_[0] };
+ 
+ # Let the XS module know where the GUI resources reside.
+-set_resources_dir(decode_path($FindBin::Bin) . (($^O eq 'darwin') ? '/../Resources' : '/resources'));
++set_resources_dir("/usr/share/slic3r-prusa3d");
+ set_var_dir(resources_dir() . "/icons");
  
  use Moo 1.003001;
- 
 diff --git a/slic3r.pl b/slic3r.pl
 index 4b6e43e4..d833ed1b 100755
 --- a/slic3r.pl
