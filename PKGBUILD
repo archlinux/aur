@@ -1,8 +1,8 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: JC Francois <jc.francois@gmail.com>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=tiddlywiki
-pkgver=5.1.14
+pkgver=5.1.15
 pkgrel=1
 pkgdesc='Personal wiki where everything is in one html-file'
 arch=('i686' 'x86_64')
