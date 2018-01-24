@@ -1,18 +1,20 @@
 pkgbase = cloudabi-utils
 	pkgdesc = a number of libraries and utilities that can be used to easily start CloudABI programs
-	pkgver = 0.24
+	pkgver = 0.38
 	pkgrel = 1
 	url = https://github.com/NuxiNL/cloudabi-utils
 	arch = x86_64
 	arch = aarch64
+	groups = cloudabi
 	license = GPL
 	makedepends = cloudabi
 	makedepends = cmake
-	depends = glibc
 	depends = libyaml
 	depends = argdata
-	source = https://github.com/NuxiNL/cloudabi-utils/archive/v0.24.tar.gz
-	sha512sums = 6f441f05e15438dcde7d6cf9191fc573a11607022061a7df456f4d73c96246473a9ce767360ac9e569dc34e8c78b17d38a82d31d72455e3257e292362aa7aa9e
+	depends = yaml2argdata
+	depends = flower
+	source = https://github.com/NuxiNL/cloudabi-utils/archive/v0.38.tar.gz
+	sha512sums = 6418ec2c9bf008885a7b3936fced6c1a9dbf07ee31567f51b0ac4541a34a99113e7ed3dcf09900dec04d2dc6285b32f7b8322061d6b11fa70ab05b9786040561
 
 pkgname = cloudabi-utils
 
