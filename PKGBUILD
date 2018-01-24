@@ -12,8 +12,9 @@ depends=(
   'atlas-lapack'
 )
 makedepends=(
-  'swig'
+  'git'
   'python-setuptools'
+  'swig'
 )
 conflicts=('python-snowboy')
 provides=('python-snowboy')
