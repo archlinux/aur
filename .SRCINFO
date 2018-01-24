@@ -1,0 +1,22 @@
+pkgbase = weeb-rs-git
+	pkgdesc = A library manager for anime and series - rust rewrite
+	pkgver = r39.def4e05
+	pkgrel = 1
+	url = https://github.com/cosarara97/fucking-weeb-rs
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gtk3
+	depends = openssl
+	provides = weeb-rs
+	provides = weeb
+	conflicts = weeb-rs
+	conflicts = weeb
+	source = weeb-rs::git+https://github.com/cosarara97/fucking-weeb-rs.git
+	md5sums = SKIP
+
+pkgname = weeb-rs-git
+
