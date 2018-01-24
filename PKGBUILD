@@ -2,8 +2,8 @@
 
 pkgname=kicad-footprints-git
 _pkgname=${pkgname%-*}
-pkgver=dae2bc57
-pkgrel=2
+pkgver=r1078.bdb3d3cd
+pkgrel=1
 pkgdesc="Official KiCad footprint libraries"
 arch=('any')
 url="https://github.com/KiCad/kicad-footprints"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git rev-parse --short HEAD # Fix to better comply with github display
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
