@@ -4,12 +4,12 @@
 pkgname=riemann-bin
 _pkgbase=${pkgname%%-bin}
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitors distributed systems (precompiled)"
 arch=('any')
 url="http://$_pkgbase.io/"
 license=('EPL')
-depends=('java-runtime' 'bash')
+depends=('java-runtime-headless>=8' 'bash')
 provides=('riemann')
 conflicts=('riemann')
 install="$_pkgbase.install"
