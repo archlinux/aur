@@ -3,10 +3,10 @@
 
 pkgname=flower
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="label-based networking daemon"
 arch=('x86_64' 'aarch64')
-url='https://github.com/NuxiNL/cloudabi-utils'
+url='https://github.com/NuxiNL/flower'
 license=('BSD')
 depends=('arpc' 'argdata' 'jsoncpp')
 makedepends=('cmake' 'python-pypeg2' 'python-toposort')

@@ -1,8 +1,8 @@
 pkgbase = flower
 	pkgdesc = label-based networking daemon
 	pkgver = 0.10
-	pkgrel = 1
-	url = https://github.com/NuxiNL/cloudabi-utils
+	pkgrel = 2
+	url = https://github.com/NuxiNL/flower
 	arch = x86_64
 	arch = aarch64
 	license = BSD
