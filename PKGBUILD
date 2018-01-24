@@ -2,7 +2,7 @@
 
 pkgname=kraken
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kraken taxonomic sequence classification system"
 arch=('i686' 'x86_64')
 url=https://github.com/DerrickWood/"${pkgname}"
@@ -28,9 +28,6 @@ package() {
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
 
   mkdir -p "${pkgdir}""${_installation_dir}"
-  mkdir -p "${pkgdir}"/usr/bin
-  mkdir -p "${pkgdir}"/usr/share/licenses
-  mkdir -p "${pkgdir}"/usr/share/doc
 
   make -C src install
 
