@@ -1,0 +1,26 @@
+pkgbase = showdown-git
+	pkgdesc = A gnome application that allows you to view Markdown
+	pkgver = 0.6.r4.g0e07f5e
+	pkgrel = 1
+	url = https://craigbarnes.gitlab.io/showdown/
+	arch = any
+	license = GPL3
+	makedepends = vala
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = gtk3
+	makedepends = glib2
+	makedepends = webkit2gtk
+	makedepends = discount
+	makedepends = libxml2
+	depends = discount
+	depends = webkit2gtk
+	depends = gtk-update-icon-cache
+	provides = showdown
+	conflicts = showdown
+	source = git+https://github.com/craigbarnes/showdown.git
+	sha256sums = SKIP
+
+pkgname = showdown-git
+
