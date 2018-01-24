@@ -1,0 +1,22 @@
+pkgbase = occi-api
+	pkgdesc = This gem provides ready-to-use client classes to simplify the integration of OCCI into your application
+	pkgver = 4.3.15
+	pkgrel = 1
+	url = http://egi-fctf.github.io/rOCCI-api/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = ruby>=1.9.3
+	depends = ruby-httparty>=0.13.1
+	depends = ruby-httparty<1
+	depends = ruby-json>=1.8.1
+	depends = ruby-json<3
+	depends = occi-core>=4.3.6
+	depends = occi-core<5
+	noextract = occi-api-4.3.15.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/occi-api-4.3.15.gem
+	sha256sums = 1611fc08076e41c35b0d9769eebd589dbeab3e3b502637946aba326110532a8f
+
+pkgname = occi-api
+
