@@ -8,11 +8,11 @@ pkgname=('ginger-base')
 
 # Version
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 #epoch=
 
 # Generic
-pkgdesc="Basic host management for WoK"
+pkgdesc="Basic host management plugin for WoK"
 arch=('any')
 url="https://github.com/kimchi-project/gingerbase"
 license=('LGPL' 'Apache')
@@ -22,7 +22,7 @@ groups=('kimchi-project')
 depends=('python2-configobj'
          'python2-pyparted'
          'wokd')
-#optdepends=()
+optdepends=('sos: sosreport support')
 makedepends=('git')
 #checkdepends=()
 
