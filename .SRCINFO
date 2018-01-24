@@ -1,12 +1,12 @@
 pkgbase = cloudabi
 	pkgdesc = Constants, types and data structures used by CloudABI
-	pkgver = 0.19
+	pkgver = 0.19.p1
 	pkgrel = 1
 	url = https://github.com/NuxiNL/cloudabi
 	arch = any
 	license = BSD
-	source = https://github.com/NuxiNL/cloudabi/archive/v0.19.tar.gz
-	sha512sums = 5977aec66e2e6e31dae332966b45f905fdca8dfad6d6d94312dfbde242c0c791a6c201dbe996d9a8aa6f2f9dc7842fa34d7961e19bf096f9500df19399ac4af8
+	source = cloudabi-0.19.p1.tar.gz::https://github.com/NuxiNL/cloudabi/archive/f40e30c15d139fb8e9957dcaf05904ac51b0ddbb.tar.gz
+	sha512sums = b75125221143efe9eeab51f8dea26ec8b966edf635bd7e63ce83caafbd8ac157d6a302de25fa85133fa4aee0ee27d72f564537961068217ce63df61e96227ee0
 
 pkgname = cloudabi
 
