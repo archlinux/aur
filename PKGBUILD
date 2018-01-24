@@ -1,26 +1,26 @@
-# Maintainer: Axilleas Pipinellis <axilleas@archlinux.info>
+# Maintainer: Achilleas Pipinellis <axilleas archlinux gr>
 
 _pkgname=snf_image_creator
 pkgname=snf-image-creator
-pkgver=0.9
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="Command line tool for creating images"
 url="https://github.com/grnet/snf-image-creator"
 arch=('any')
 license=('GPL3')
-changelog=ChangeLog
 depends=('python2' 'rsync' 'libguestfs' 'python2-pythondialog' 'python2-sendfile'
 'python2-progress' 'python2-ansicolors' 'kamaki'  'python2-sh' 'python2-pyparted')
 makedepends=('python2-distribute' 'python2-sphinx')
-optdepends=('winexe: support for Windows images',
+optdepends=('winexe-git: support for Windows images',
             'hivex: support for Windows images')
-source=("https://pypi.python.org/packages/source/s/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("https://github.com/grnet/$pkgname/archive/$pkgver.tar.gz")
+
+sha256sums=('9d2f9ac93e5858a8ecf8b197da046daba483d5d4acbcf60b3d4390ce73b867a4')
 
 package() {
 
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir" -O1
-  install -Dm644 ChangeLog "$pkgdir/usr/share/$pkgname/ChangeLog"
 
   # Build documentation and man page
   cd "$srcdir/$_pkgname-$pkgver/docs"
@@ -32,5 +32,3 @@ package() {
   cp -r _build/html/ "$pkgdir/usr/share/docs/$pkgname/html"
 
 }
-
-md5sums=('13be21e7beebac5b81a3db5e5c0c7f38')
