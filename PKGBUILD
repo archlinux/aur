@@ -5,9 +5,8 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=58.0.400
-pkgrel=1
-ver=58.0
+pkgver=59.0.3
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -21,7 +20,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
-source=("https://archive.mozilla.org/pub/firefox/releases/$ver/source/firefox-$ver.source.tar.xz"
+source=("https://hg.mozilla.org/releases/mozilla-beta/archive/c94e1fd9fe7a47c51c421db2a7052292ac411e3a.tar.gz"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$name.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
@@ -30,13 +29,13 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disabl
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/id.patch
 )
 
-sha256sums=('0e0a39caabf94d7467d8bb4008fa9e7340a7be57b8c78ccf0cf98791a3bfaaff'
+sha256sums=('2a8d7905ba5312cfebc6bc2ae01a2e5ee76172f155ea439e6982671ff3df9419'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
             '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
             '24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040'
-            '26da57145a065cad2f425ab56e0cdee0082ae577218e690b6d2ad22476988ec4')
+            '7e44bd2eb4ce243ef47451e64e793203c8d637f900c86889106eb7f8adf79296')
 
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -55,7 +54,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd firefox-$ver
+  cd mozilla-beta-c94e1fd9fe7a47c51c421db2a7052292ac411e3a
   patch -Np1 -i ../id.patch
 
 
@@ -122,7 +121,7 @@ END
 }
 
 build() {
-  cd firefox-$ver
+  cd mozilla-beta-c94e1fd9fe7a47c51c421db2a7052292ac411e3a
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -138,7 +137,7 @@ build() {
 }
 
 package() {
-  cd firefox-$ver
+  cd mozilla-beta-c94e1fd9fe7a47c51c421db2a7052292ac411e3a
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
