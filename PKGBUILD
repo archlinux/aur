@@ -7,7 +7,7 @@ pkgname=firefox-beta
 name=firefox-beta
 pkgver=59.0.3
 ver=59.0.b3
-pkgrel=4
+pkgrel=5
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -22,7 +22,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
-source=("hg+$_repo#tag=DEVEDITION_${pkgver//./_}_RELEASE"
+source=("hg+$_repo#tag=DEVEDITION_${ver//./_}_RELEASE"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$name.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
