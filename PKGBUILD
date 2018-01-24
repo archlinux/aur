@@ -2,13 +2,14 @@
 # Do not forget SRCINFO :  makepkg --printsrcinfo > .SRCINFO
 pkgname=soapui
 pkgver=5.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP."
 arch=('i686' 'x86_64')
 url="http://www.soapui.org/"
 license=('EUPL V.1.1')
 groups=()
 depends=('java-environment>=8' 'hicolor-icon-theme')
+optdepends=('java-openjfx: Open JFX for Internal browser')
 source=("https://s3.amazonaws.com/downloads.eviware/soapuios/$pkgver/SoapUI-$pkgver-EB-linux-bin.tar.gz"
         "http://freeapps.co.uk.s3.amazonaws.com/images/thumbnails/$pkgname.png"
         "$pkgname.desktop"
