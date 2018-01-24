@@ -3,12 +3,12 @@
 
 pkgname=arpc
 pkgver=0.7
-pkgrel=1
-pkgdesc="binary serialisation format inspired by YAML, MessagePack and nvlists"
+pkgrel=2
+pkgdesc="GRPC-like RPC library that supports file descriptor passing by using Argdata "
 arch=('x86_64' 'aarch64')
-url='https://github.com/NuxiNL/cloudabi-utils'
+url='https://github.com/NuxiNL/arpc'
 license=('BSD')
-depends=()
+depends=('argdata')
 makedepends=('cmake' 'python-pypeg2' 'python-toposort')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NuxiNL/$pkgname/archive/v$pkgver.tar.gz")
