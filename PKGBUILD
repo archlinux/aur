@@ -5,7 +5,7 @@
 # or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }'
 
 pkgname=google-chrome-beta
-pkgver=64.0.3282.113
+pkgver=64.0.3282.119
 pkgrel=1
 pkgdesc="The popular and trusted web browser by Google (Beta Channel)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ _channel=beta
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         'eula_text.html'
         "google-chrome-$_channel.sh")
-md5sums=('abe6176116e0b65c3635a5523bbcbd30'
+md5sums=('95c41b9c6b12b1cba3e252eafa0bb7be'
          'd50d8f0a6940791eabc41c4f64e6a3cf'
          'ca16d5162eed85b1ba4e6b9fc37f9e35')
 
@@ -47,11 +47,6 @@ package() {
     install -Dm644 "$pkgdir"/opt/google/chrome-$_channel/product_logo_${i/x*}_${pkgname/*-}.png \
                    "$pkgdir"/usr/share/icons/hicolor/$i/apps/google-chrome-$_channel.png
   done
-
-  # Man page
-  if [[ -f "$pkgdir"/usr/share/man/man1/google-chrome-$_channel.1 ]]; then
-    gzip "$pkgdir"/usr/share/man/man1/google-chrome-$_channel.1
-  fi
 
   # License
   install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome-$_channel/eula_text.html
