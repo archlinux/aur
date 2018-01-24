@@ -157,6 +157,7 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
 # If you have license nags check the logs at /var/log/basis/
 # Check the status with
 #   systemctl status basis_lmgrd.service
+#   /usr/local/basis/blmgr/lmutil lmstat -a
 
 # The setup for a fully functioning Basis BBx Progression Pro/5 environment
 # is extensive and not covered here.
@@ -185,11 +186,11 @@ _logfolder='/var/log/basis'
 
 pkgname='basis-pro5'
 pkgver='16.00'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='BASIS BBx Progression Pro/5 Business BASIC eXtended for BBj'
 url='http://www.basis.com/'
 license=('custom')
-depends=('glibc' 'jdk' 'wget' 'gzip') # The Windows install recommends jdk over jre so we do too. OpenJDK does not work.
+depends=('glibc' 'java-environment-jdk>=7' 'java-environment-jdk<=8' 'wget' 'gzip') # The Windows install recommends jdk over jre so we do too. OpenJDK does not work.
 optdepends=('ncompress: Original compress for logs instead of gzip')
 #backup=("${_basedir##/}/blmgr/Register.properties")
 options=('!docs' 'emptydirs' '!strip') # strip is so poorly implemented that it changes the content and date on executables, even when there's nothing to strip! What were they thinking?
