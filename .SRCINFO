@@ -1,6 +1,6 @@
 pkgbase = hexlify-git
 	pkgdesc = Python's {un,}hexlify for the command-line.
-	pkgver = r10.b345530
+	pkgver = r14.109ae5b
 	pkgrel = 1
 	url = https://github.com/duesee/hexlify
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = hexlify-git
 	makedepends = rust
 	makedepends = cargo
 	provides = hexlify
+	provides = unhexlify
 	source = git+https://github.com/duesee/hexlify
 	md5sums = SKIP
 

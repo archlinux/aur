@@ -1,13 +1,13 @@
 # Maintainer: Damian Poddebniak <poddebniak at fh-muenster dot de>
 pkgname=hexlify-git
-pkgver=r10.b345530
+pkgver=r14.109ae5b
 pkgrel=1
 pkgdesc="Python's {un,}hexlify for the command-line."
 arch=('x86_64' 'i686' )
 url="https://github.com/duesee/hexlify"
 license=('AGPLv3')
 makedepends=('git' 'rust' 'cargo')
-provides=('hexlify')
+provides=('hexlify' 'unhexlify')
 source=('git+https://github.com/duesee/hexlify')
 md5sums=('SKIP')
 
@@ -20,6 +20,7 @@ package() {
   cd "$srcdir/hexlify"
   mkdir -p $pkgdir/usr/bin
   install -o root -g root -m 755 target/release/hexlify $pkgdir/usr/bin
+  ln -s /usr/bin/hexlify $pkgdir/usr/bin/unhexlify
 }
 
 pkgver() {
