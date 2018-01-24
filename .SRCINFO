@@ -1,0 +1,13 @@
+pkgbase = python-knack
+	pkgdesc = A Python command line interface framework
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Microsoft/knack
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://github.com/Microsoft/knack/archive/0.3.1.tar.gz
+	md5sums = 5b207dfc864cf2830273ffeb3ae9469e
+
+pkgname = python-knack
+
