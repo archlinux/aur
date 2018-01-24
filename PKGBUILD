@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.2.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -47,7 +47,7 @@ md5sums=('a0ff29ba87d22b695baa48194b1ebfd2'
          '990b8abd0bfbba23a7ce82c59f2e3d64'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
-         '94d5aa0e8aa3d4170bcea71078a9da25'
+         '20c5b0c6b4e23e55b25ab6c28dda709d'
          '291d3c95e445fe65caf40c3605efd186'
          'c227ffa88ddebc34cb715b73640cd845'
          '93fe5e50cf3fcb08b24cf29b0cace85b')
