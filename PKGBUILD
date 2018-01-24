@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-git
-pkgver=3.7.0a0.r99720.e3510d74aa
+pkgver=3.7.0a0.r100826.8ded5b8037
 pkgrel=1
 _pybasever=3.7
 _pkgname=cpython
@@ -11,7 +11,7 @@ license=('custom')
 url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'xz' 'git')
-optdepends=('tk: for tkinter' 'sqlite' 'xz: for lzma')
+optdepends=('tk: for tkinter' 'sqlite' 'xz: for lzma' 'libtirpc: for nis')
 options=(debug !strip !makeflags)
 source=("git+https://github.com/python/cpython#branch=master")
 sha256sums=('SKIP')
@@ -42,13 +42,11 @@ build() {
 
   ./configure --prefix=/usr \
               --enable-shared \
-              --with-threads \
               --with-computed-gotos \
               --enable-ipv6 \
               --with-valgrind \
               --with-system-expat \
-              --with-dbmliborder=gdbm:ndbm \
-              --with-system-ffi
+              --with-dbmliborder=gdbm:ndbm
 
   make
 }
