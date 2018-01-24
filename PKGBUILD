@@ -1,7 +1,7 @@
 # Maintainer: Jonas Schürmann <jonasschuermann@aol.de>
 # Contributor: condy <condy0919[at]gmail[dot]com>
 pkgname=psysh
-pkgver=0.8.16
+pkgver=0.8.17
 pkgrel=1
 pkgdesc="PsySH is a runtime developer console, interactive debugger and REPL for PHP."
 url="http://psysh.org"
