@@ -1,7 +1,7 @@
 pkgbase = python-wxpython-phoenix
 	pkgdesc = wxPython 4.x. This is a split package providing both Python 2 and Python 3 versions of wxPython 4.x (aka wxPython Phoenix)
 	pkgver = 4.0.0b2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wxWidgets/Phoenix
 	arch = any
 	license = custom:wxWindows
@@ -23,6 +23,8 @@ pkgbase = python-wxpython-phoenix
 	provides = wxpython-phoenix
 	conflicts = wxpython-phoenix-bin
 	conflicts = wxpython-phoenix-git
+	conflicts = sk1
+	conflicts = wammu
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-4.0.0b2.tar.gz
 	sha256sums = 1d34c3e2ff475ca6d2a11e8addd0333e4f616cc74f6bfcda5c6e96f51478666d

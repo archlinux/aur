@@ -2,7 +2,7 @@
 pkgbase=('python-wxpython-phoenix')
 pkgname=('python-wxpython-phoenix' 'python2-wxpython-phoenix')
 pkgver=4.0.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc="wxPython 4.x. This is a split package providing both Python 2 and Python 3 versions of wxPython 4.x (aka wxPython Phoenix)"
 _name=wxPython
 arch=('any')
@@ -12,7 +12,7 @@ groups=()
 depends=('python')
 makedepends=('python-setuptools' 'python2-setuptools' 'mesa' 'glu' 'git' 'libpng' 'libjpeg-turbo' 'libtiff' 'sdl' 'gst-plugins-base' 'libnotify' 'freeglut' 'gtk3' 'webkit2gtk')
 provides=('wxpython-phoenix')
-conflicts=('wxpython-phoenix-bin' 'wxpython-phoenix-git')
+conflicts=('wxpython-phoenix-bin' 'wxpython-phoenix-git' 'sk1' 'wammu')
 replaces=()
 backup=()
 options=(!emptydirs)
