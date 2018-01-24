@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=marker
-pkgver=2018.01.09
+pkgver=2018.01.24
 pkgrel=1
 pkgdesc='Markdown editor for linux made with Gtk+-3.0'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk')
 makedepends=('meson')
 optdepends=('pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('bd8b074ca5c1cdb4d85186b0a5d7d78e6880fcb4fba710a69b5f55194dd2d6be')
+sha256sums=('fd817fb9ab2a2cd004cd2c0e615bd0c74b1d63cf17e0f95d10207d79f746faf9')
 
 prepare() {
   sed -e '/^meson.add_install_script/ s/^#*/#/' -i Marker-$pkgver/meson.build
