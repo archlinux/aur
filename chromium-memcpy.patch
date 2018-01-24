@@ -1,0 +1,13 @@
+diff --git a/cc/paint/raw_memory_transfer_cache_entry.cc b/cc/paint/raw_memory_transfer_cache_entry.cc
+index 9e4660c..95ad50b 100644
+--- a/cc/paint/raw_memory_transfer_cache_entry.cc
++++ b/cc/paint/raw_memory_transfer_cache_entry.cc
+@@ -4,6 +4,8 @@
+ 
+ #include "cc/paint/raw_memory_transfer_cache_entry.h"
+ 
++#include <string.h>
++
+ namespace cc {
+ 
+ ClientRawMemoryTransferCacheEntry::ClientRawMemoryTransferCacheEntry(
