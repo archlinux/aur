@@ -1,0 +1,18 @@
+pkgbase = ruby-awesome_print-1.8.0
+	pkgdesc = Great Ruby dubugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/awesome-print/awesome_print
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	provides = ruby-awesome_print=1.8.0
+	conflicts = ruby-awesome_print
+	noextract = awesome_print-1.8.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/awesome_print-1.8.0.gem
+	sha256sums = 50b0cab61afe582bc675202dc8f6745b97aae7fefe29d06a91a669d763805991
+
+pkgname = ruby-awesome_print-1.8.0
+
