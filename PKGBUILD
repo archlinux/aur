@@ -1,40 +1,47 @@
-# Maintainer: Afri 5chdn <aur@5chdn.co>
+# Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) >
+# Contributor: Afri 5chdn <aur@5chdn.co>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethminer
-pkgver=0.12.0.dev2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Ethereum miner with OpenCL, CUDA and stratum support."
 arch=('x86_64')
-depends=(
-  'boost'
-  'boost-libs'
-  'jsoncpp'
-  'libjson-rpc-cpp-git'
-  'opencl-headers'
-  'python2'
-)
-optdeps=(
-  'cuda: NVIDEA GPU mining support.'
-  'opencl-mesa: AMD/ATI GPU mining support.'
-)
 url="https://github.com/ethereum-mining/ethminer"
 license=('MIT')
-source=(
-  "https://github.com/ethereum-mining/ethminer/releases/download/v${pkgver}/ethminer-${pkgver}-Linux.tar.gz"
+depends=('mesa')
+makedepends=(
+  'cmake'
+  'python'
 )
-sha256sums=(
-  'e2b6f595c76075549ca59ba239d26b96d0bd6d886441c3fd16e0e0975777aed7'
-)
-provides=(
-  'ethminer'
-)
-conflicts=(
-  'ethereum'
-  'ethminer-git'
-  'ethereum-git'
-)
+optdepends=('cuda: NVIDIA cuda mining support')
+conflicts=('ethereum')
+source=("https://github.com/ethereum-mining/ethminer/archive/v${pkgver}.tar.gz")
+sha256sums=('72bf827a922b797d556f8f03980185c4857bb82074b4c8b5f63b5d5e140893b8')
+
+build () {
+
+  cd $pkgname-$pkgver
+  mkdir -p build && cd build
+
+  if [ -f '/opt/cuda/bin/nvcc' ]; then
+    export CC=gcc-6
+    export CCX=g++-6
+    cmake .. \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DETHASHCUDA=ON
+  else
+    cmake .. \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release
+  fi
+
+  make
+}
+
 
 package() {
-  install -Dm755 -t "${pkgdir}"/usr/bin ${srcdir}/bin/ethminer
+  cd $pkgname-$pkgver/build
+  make DESTDIR=$pkgdir install
 }
