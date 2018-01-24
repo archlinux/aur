@@ -1,0 +1,22 @@
+pkgbase = ruby-activesupport-4.2.10
+	pkgdesc = A toolkit of support libraries and Ruby core extensions extracted from the Rails framework. Rich support for multibyte strings, internationalization, time zones, and testing.
+	pkgver = 4.2.10
+	pkgrel = 1
+	url = http://rubyonrails.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby>=1.9.3
+	depends = ruby-i18n>0.7
+	depends = ruby-minitest>5.1
+	depends = ruby-thread_safe>=0.3.4
+	depends = ruby-tzinfo>1.1
+	provides = ruby-activesupport=4.2.10
+	conflicts = ruby-activesupport
+	noextract = activesupport-4.2.10.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/activesupport-4.2.10.gem
+	sha256sums = 275b14e515eb8c924bafa734417ec053a57f177ae9d3369f753d6f4437922268
+
+pkgname = ruby-activesupport-4.2.10
+
