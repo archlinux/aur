@@ -2,12 +2,12 @@
 
 pkgname='hcloud'
 pkgver='1.2.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="CLI for Hetzner Cloud"
 arch=('x86_64')
 url='https://github.com/hetznercloud/cli'
 license=('MIT')
-makedepends=('go' 'git')
+makedepends=('go')
 provides=('hcloud')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hetznercloud/cli/archive/v${pkgver}.tar.gz")
 sha256sums=('92b00d393e6029fc25fff93d74166c96c0b16aff963355d7ec2a26108e48427a')
