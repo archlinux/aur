@@ -2,7 +2,7 @@
 # Contributor:  Maarten de Vries <maarten@de-vri.es>
 
 pkgname=argdata
-pkgver=0.3pre
+pkgver=0.7
 pkgrel=1
 pkgdesc="binary serialisation format inspired by YAML, MessagePack and nvlists"
 arch=('x86_64' 'aarch64')
@@ -11,14 +11,15 @@ license=('BSD')
 depends=()
 makedepends=('cmake')
 
-_commit="8ad3e676a74dc54467f13bbaba6a8b00bb47bfe2"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/NuxiNL/argdata/archive/$_commit.tar.gz")
-sha512sums=('355ba5b08b3ac2e3ad4ecfab6c6114173cea95c2d9596d36eededc637fd26df0993046884af56771e44076e34327bb645347191554a44f9dd87743af827f12e7')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/NuxiNL/argdata/archive/v$pkgver.tar.gz")
+sha512sums=('cae775ee3634cfd93c6f19cec1ae85bd9a1977a2a916a23c48b77207001d3311cbdefdf39e2146ba2f61478ab6480348213683f860696032c313a9728df2b64f')
 
 prepare() {
+	rm -rf "$srcdir/build"
 	mkdir -p "$srcdir/build"
 	cd "$srcdir/build"
-	cmake "$srcdir/$pkgname-$_commit" \
+
+	cmake "$srcdir/$pkgname-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib
 }
@@ -31,6 +32,6 @@ build() {
 package() {
 	cd "$srcdir/build"
 	make install DESTDIR="$pkgdir"
-	install -m 644 -D -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$_commit/LICENSE"
-	install -m 644 -D -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$_commit/CONTRIBUTORS"
+	install -m 644 -D -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$pkgver/LICENSE"
+	install -m 644 -D -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$pkgver/CONTRIBUTORS"
 }
