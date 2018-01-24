@@ -1,6 +1,6 @@
 pkgbase = kicad-symbols-git
 	pkgdesc = Official KiCad schematic symbol libraries
-	pkgver = 2c615cc
+	pkgver = r714.c85825e
 	pkgrel = 1
 	url = https://github.com/KiCad/kicad-symbols
 	arch = any
