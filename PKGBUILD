@@ -6,7 +6,8 @@
 pkgname=firefox-beta
 name=firefox-beta
 pkgver=59.0.3
-pkgrel=2
+ver=59.0.b3
+pkgrel=4
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -20,7 +21,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
-source=("https://hg.mozilla.org/releases/mozilla-beta/archive/c94e1fd9fe7a47c51c421db2a7052292ac411e3a.tar.gz"
+_repo=https://hg.mozilla.org/mozilla-unified
+source=("hg+$_repo#tag=DEVEDITION_${pkgver//./_}_RELEASE"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$name.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
@@ -54,7 +56,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd mozilla-beta-c94e1fd9fe7a47c51c421db2a7052292ac411e3a
+  cd mozilla-unified
   patch -Np1 -i ../id.patch
 
 
@@ -121,7 +123,7 @@ END
 }
 
 build() {
-  cd mozilla-beta-c94e1fd9fe7a47c51c421db2a7052292ac411e3a
+  cd mozilla-unified
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -137,7 +139,7 @@ build() {
 }
 
 package() {
-  cd mozilla-beta-c94e1fd9fe7a47c51c421db2a7052292ac411e3a
+  cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 

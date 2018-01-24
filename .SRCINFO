@@ -1,7 +1,7 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled
 	pkgver = 59.0.3
-	pkgrel = 2
+	pkgrel = 4
 	url = https://www.mozilla.org/firefox/
 	arch = i686
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = firefox-beta
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://hg.mozilla.org/releases/mozilla-beta/archive/c94e1fd9fe7a47c51c421db2a7052292ac411e3a.tar.gz
+	source = hg+https://hg.mozilla.org/mozilla-unified#tag=DEVEDITION_59_0_3_RELEASE
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-beta.desktop
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
