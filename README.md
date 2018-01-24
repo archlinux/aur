@@ -23,9 +23,11 @@ chmod +x snooscraper.sh
 ./snooscraper -h
 ```
 
-The help text should explain the command line options. Review the parameters and customise them as you like before using. Basically a subreddit's name can be passed to the script to download posts' contents, or URLs of the supported external sites can be passed directly.
+The help text (-h) should explain the command line options. Review the parameters and customise them as you like before using. Basically a subreddit's name can be passed to the script to download posts' contents, or URLs of the supported external sites can be passed directly. Any files already present will not be downloaded, delete them to force redownloading.
 
-Files will be named after the ID (a base 36 number) of the reddit post from which they originate, or a unix timestamp if the URL is passed to the script directly. Reddit post IDs are zero-padded, so when sorting alphabetically they are also in chronological order. Albums have their images with a zero-padded number suffix after a dash, for example: abcxyz-01.jpg, abcxyz-02.jpg,...
+Files will be named after the ID (a base 36 number) of the reddit post from which they originate, or a unix timestamp if the URL is passed to the script directly. Reddit post IDs are zero-padded, so when sorting alphabetically they are also in chronological order. Albums have their images with a zero-padded number suffix after a dash, for example: abcxyz-01.jpg, abcxyz-02.jpg...
+
+A cleaning function (-c) is also included. This attempts to remove any duplicates (ie. reposts, by checking checksums), empty files (404 errors, any failed downloads) or files with the wrong extension (depending on configuration).
 
 ## Planned Features
 
