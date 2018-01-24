@@ -1,0 +1,19 @@
+pkgbase = ruby-httparty-0.15.6
+	pkgdesc = Makes http fun! Also, makes consuming restful web services dead easy.
+	pkgver = 0.15.6
+	pkgrel = 1
+	url = https://johnnunemaker.com/httparty/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby>=2.0.0
+	depends = ruby-multi_xml>=0.5.2
+	provides = ruby-httparty=0.15.6
+	conflicts = ruby-httparty
+	noextract = httparty-0.15.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/httparty-0.15.6.gem
+	sha256sums = fbe0cde25a5325a4e248d4225640529552e6b49622289bdc7110fe294f5f7e2a
+
+pkgname = ruby-httparty-0.15.6
+
