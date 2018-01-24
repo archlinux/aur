@@ -18,15 +18,15 @@
 pkgbase="spl-linux-hardened-git"
 pkgname=("spl-linux-hardened-git" "spl-linux-hardened-git-headers")
 
-pkgver=2018.01.18.r1061.fb79036.4.14.14.a.1
+pkgver=2018.01.24.r1062.23602fd.4.14.14.a.1
 pkgrel=1
 makedepends=("linux-hardened-headers=4.14.14.a-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#commit=fb79036f288ea60b59d21fe250bc17445cf69f37")
+source=("git+https://github.com/zfsonlinux/spl.git#commit=23602fdb39e1254c669707ec9d2d0e6bcdbf1771")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git=2018.01.18.r1061.fb79036" "kmod" "linux-hardened=4.14.14.a-1")
+depends=("spl-utils-common-git=2018.01.24.r1062.23602fd" "kmod" "linux-hardened=4.14.14.a-1")
 
 build() {
     cd "${srcdir}/spl"
