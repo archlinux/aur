@@ -1,7 +1,7 @@
 # Maintainer: Ben Goldberg <jediben97@gmail.com>
 
 pkgname=servy
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A tiny little web server"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache')
 source=("https://github.com/zethra/servy/archive/v$pkgver.tar.gz")
 depends=('gcc-libs-multilib')
 makedepends=('rust' 'cargo')
-sha256sums=("3920c06cebc223cc5dc72a40cb02be7ee06e83d2784a023eeb13b4c0552a8402")
+sha256sums=("3c1024d93539ba52c5276d628281067dc97ea6f24ea5035775380d853da073f9")
 
 build() {
     tar -xf v$pkgver.tar.gz
