@@ -5,5 +5,5 @@ post_install() {
         echo "done"
     } # NOTE: we do not autoremove user due to security concerns (Arch policy)
 
-    sudo -u xd XD --genconf /etc/xd.conf
+    XD --genconf /etc/xd.conf
 }
