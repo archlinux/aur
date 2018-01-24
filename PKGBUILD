@@ -13,14 +13,14 @@ makedepends=('bc' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
 options=('!strip')
 source=(
   "https://download.clearlinux.org/current/source/SRPMS/${_srcname}-${_srpm}.src.rpm"
-  'https://downloadmirror.intel.com/27431/eng/microcode-20180108.tgz'
+  'https://downloadmirror.intel.com/27337/eng/microcode-20171117.tgz'
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   '99-linux.hook'  # pacman hook for remove initramfs
   'linux.preset'   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('58307f20460b14f688dd84179eab61718df1225702819f67cd99baeca121110d'
-            '063f1aa3a546cb49323a5e0b516894e4b040007107b8c8ff017aca8a86204130'
+            '93bd1da9fa58ece0016702e657f708b7e496e56da637a3fe9a6d21f1d6f524dc'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
