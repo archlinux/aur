@@ -1,7 +1,7 @@
 # Maintainer: Christoph Steinacker <archologist.linuxATgooglemailDOTcom>
 pkgname=jes
 pkgver=2.00.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A java-based tool for german cash method of accounting (Einnahme-Überschuss-Rechnung)"
 arch=('any')
 url="http://www.jes-eur.de"
