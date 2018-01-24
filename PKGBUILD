@@ -3,7 +3,7 @@
 _pkgname=snf_image_creator
 pkgname=snf-image-creator
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for creating images"
 url="https://github.com/grnet/snf-image-creator"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python2' 'rsync' 'libguestfs' 'python2-pythondialog' 'python2-sendfile'
 'python2-progress' 'python2-ansicolors' 'kamaki'  'python2-sh' 'python2-pyparted')
 makedepends=('python2-distribute' 'python2-sphinx')
-optdepends=('winexe-git: support for Windows images',
+optdepends=('winexe-git: support for Windows images'
             'hivex: support for Windows images')
 source=("https://github.com/grnet/$pkgname/archive/$pkgver.tar.gz")
 
