@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=2.5.17.r9480.ddcb1670c
+pkgver=2.5.17.r9482.79fed093a
 pkgrel=1
 epoch=2
 pkgdesc="A functional programming language for realtime audio signal processing."
@@ -22,12 +22,13 @@ depends=('llvm-libs'
 makedepends=('llvm' 'git' 'xxd')
 optdepends=('clang: needed for sound2reader'
 	    'python2: needed for faust2md'
-	    'ruby: needed for faust2sc and scbuilder')
+	    'ruby: needed for faust2sc and scbuilder'
+            'java-environment=8: needed for faust2android')
 provides=('faust' 'faust2-git')
 conflicts=('faust')
 # This keeps the static libraries. Remove the 'staticlibs' option if this
 # isn't wanted.
-options=('strip' 'staticlibs')
+options=('staticlibs')
 # We're using the (default) master-dev branch of Faust here, which has all the
 # latest changes. End users might want to use the master branch instead, which
 # is supposedly more stable and tested, but nevertheless (mostly) up-to-date.
@@ -84,18 +85,28 @@ package() {
   ## syntax highlighting files
   cd syntax-highlighting
 
+  # atom
+  install -Dm644 "atom/language-faust/package.json" \
+    "${pkgdir}/usr/lib/atom/dot-atom/packages/language-faust/package.json"
+  install -Dm644 "atom/language-faust/grammars/faust.cson" \
+    "${pkgdir}/usr/lib/atom/dot-atom/packages/language-faust/grammars/faust.cson"
+  install -Dm644 "atom/language-faust/settings/language-faust.cson" \
+    "${pkgdir}/usr/lib/atom/dot-atom/packages/language-faust/settings/language-faust.cson"
+  install -t "${pkgdir}/usr/lib/atom/dot-atom/packages/language-faust/snippets/" \
+    -Dm644 "atom/language-faust/snippets/"*
+  install -Dm644 "atom/language-faust/process-palette.json.linux" \
+	  "${pkgdir}/usr/share/doc/faust/process-palette.json"
   # kate
   install -Dm644 faust.xml "$pkgdir/usr/share/apps/katepart/syntax/faust.xml"
   # gedit
   install -Dm644 faust.lang "$pkgdir/usr/share/gtksourceview-2.0/language-specs/faust.lang"
   install -Dm644 faust.lang "$pkgdir/usr/share/gtksourceview-3.0/language-specs/faust.lang"
-
   # highlight
   install -Dm644 dsp.lang "$pkgdir/usr/share/highlight/langDefs/dsp.lang"
-
+  # nano
+  install -Dm644 "faust.nanorc" "$pkgdir/usr/share/nano/faust.nanorc"
   # vim
   install -Dm644 faust.vim "$pkgdir/usr/share/vim/vimfiles/syntax/faust.vim"
-
   # emacs
   install -d "$pkgdir/usr/share/emacs/site-lisp/"
   install -Dm644 faust-mode.el "$pkgdir/usr/share/emacs/site-lisp/"
