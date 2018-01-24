@@ -1,0 +1,18 @@
+pkgbase = ruby-hashie-3.4.6
+	pkgdesc = Hashie is a collection of classes and mixins that make hashes more powerful.
+	pkgver = 3.4.6
+	pkgrel = 1
+	url = https://github.com/intridea/hashie
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	provides = ruby-hashie=3.4.6
+	conflicts = ruby-hashie
+	noextract = hashie-3.4.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/hashie-3.4.6.gem
+	sha256sums = 92ad8b7a3d4eaea3b7c858070a2f4d1a6e1e4dd3072c26bce85f439429f8c9db
+
+pkgname = ruby-hashie-3.4.6
+
