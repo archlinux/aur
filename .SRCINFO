@@ -1,0 +1,18 @@
+pkgbase = ruby-unf_ext-0.0.7.4
+	pkgdesc = Unicode Normalization Form support library for CRuby.
+	pkgver = 0.0.7.4
+	pkgrel = 1
+	url = https://github.com/knu/ruby-unf_ext
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	provides = ruby-unf_ext=0.0.7.4
+	conflicts = ruby-unf_ext
+	noextract = unf_ext-0.0.7.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/unf_ext-0.0.7.4.gem
+	sha256sums = 8b3e34ddcc5db65c6e0c9f34b5bd62720e770ba04843d601c3730c887f131992
+
+pkgname = ruby-unf_ext-0.0.7.4
+
