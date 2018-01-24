@@ -16,9 +16,8 @@ _gourl='github.com/hetznercloud/cli'
 prepare()
 {
   rm -rf src
-  mkdir -p src
-  mv cli-$pkgver/vendor/* "${srcdir}/src"
-  mv cli-$pkgver "${srcdir}/src/${_gourl}"
+  mv cli-$pkgver/vendor src
+  mv cli-$pkgver "src/${_gourl}"
 }
 
 build()
@@ -35,7 +34,7 @@ check()
 
 package()
 {
-  install -Dsm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/src/${_gourl}/LICENSE" \
-          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dsm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "src/${_gourl}/LICENSE" \
+          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
