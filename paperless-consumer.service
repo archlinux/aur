@@ -2,8 +2,8 @@
 Description=Paperless consumer
 
 [Service]
-User=paperless
-Group=paperless
+User=http
+Group=http
 ExecStart=python /usr/share/webapps/paperless/src/manage.py document_consumer
 
 [Install]
