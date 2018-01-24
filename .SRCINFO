@@ -1,0 +1,19 @@
+pkgbase = ruby-http-cookie-1.0.3
+	pkgdesc = HTTP::Cookie is a Ruby library to handle HTTP Cookies based on RFC 6265.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/sparklemotion/http-cookie
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	depends = ruby-domain_name>0.5
+	provides = ruby-http-cookie=1.0.3
+	conflicts = ruby-http-cookie
+	noextract = http-cookie-1.0.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/http-cookie-1.0.3.gem
+	sha256sums = 2f11269d817bc52ab2af2721e89a377660a961078de2a3a55fc696d7897e8c00
+
+pkgname = ruby-http-cookie-1.0.3
+
