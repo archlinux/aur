@@ -1,0 +1,35 @@
+From 3db76c647a04a603bafae19cc699bd50436d66a2 Mon Sep 17 00:00:00 2001
+From: Jindřich Makovička
+Date: Sat, 20 May 2017 10:34:52 +0200
+Subject: Avoid calling g_strstr_len with NULL haystack
+
+---
+ src/sysdeps/linux.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/sysdeps/linux.c b/src/sysdeps/linux.c
+index 460a03d..99e7261 100644
+--- a/src/sysdeps/linux.c
++++ b/src/sysdeps/linux.c
+@@ -3157,6 +3157,7 @@ sensors_nvidia_smi_read(gboolean setup)
+ 				    || !strcmp(id, ":")
+ 				   )
+ 					continue;
++				stmp = str;
+ 				if ((str = g_strstr_len(str, -1, "Temperature")) != NULL)
+ 					{
+ 					str += 11;
+@@ -3185,6 +3186,10 @@ sensors_nvidia_smi_read(gboolean setup)
+ 					else if ((smi = nvidia_smi_lookup(id)) != NULL)
+ 						smi->temp = temp;
+ 					}
++				else
++					{
++					str = stmp;
++					}
+ 				}
+ 			}
+ 	if (output)
+-- 
+cgit v0.12
+
