@@ -1,7 +1,7 @@
 pkgbase = pipepanic
 	pkgdesc = Pipe connecting game using libSDL
 	pkgver = 0.1.3
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.users.waitrose.com/~thunor/pipepanic
 	arch = i686
 	arch = x86_64
