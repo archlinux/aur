@@ -1,0 +1,20 @@
+pkgbase = neovim-razer-git
+	pkgdesc = Makes RGB Razer keyboards change key colors to complement what you do in neovim.
+	pkgver = 1.1.r8.g019f1a5
+	pkgrel = 1
+	url = https://github.com/DanManN/vim-razer
+	arch = any
+	groups = neovim-plugins
+	license = GNU GPLv3
+	makedepends = git
+	depends = neovim
+	depends = python-neovim
+	depends = openrazer-meta
+	optdepends = polychromatic
+	provides = neovim-razer
+	conflicts = neovim-razer
+	source = git+https://github.com/DanManN/vim-razer.git
+	md5sums = SKIP
+
+pkgname = neovim-razer-git
+
