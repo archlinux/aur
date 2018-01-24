@@ -67,6 +67,10 @@ package() {
      install -Dm644 $i "$pkgdir"/usr/share/licenses/$pkgname/$i
   done
 
+  # Fix Search
+  msg2 "Attempting fix for search..."
+  sed -i '/googleearth-bin/s/^/LC_NUMERIC=en_US.UTF-8 /' "$pkgdir"/$_instdir/googleearth
+
   if [[ $_attempt_fix = 1 ]]; then
     msg2 "Attempting a fix on Panoramio and certain crashes..."
     # Install baifaao.so
