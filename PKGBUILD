@@ -1,20 +1,21 @@
-# Maintainer: ksj <podhorsky.ksj@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: ksj <podhorsky.ksj@gmail.com>
 # Contributor: Yosef Or Boczko <yosefor3@walla.com>
 
-_gitname=gimp
 _version=2.99
+_gitname=gimp
 pkgname=${_gitname}-gtk3-git
 pkgver=2.9.4.r1949.g3762480587
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
 license=('GPL' 'LGPL')
 depends=('babl' 'gegl' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libmng'
          'libexif' 'gtk3' 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme' 'libmypaint')
-makedepends=('git' 'glib-networking' 'intltool' 'poppler-glib' 'alsa-lib' 'iso-codes' 'gobject-introspection' 
-'curl' 'ghostscript' 'libxslt')
+makedepends=('git' 'glib-networking' 'intltool' 'poppler-glib' 'alsa-lib' 'iso-codes'
+	     'gobject-introspection' 'curl' 'ghostscript' 'libxslt' 'appstream-glib'
+	     'pygtk' 'python-cairo')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
 			'libwebkit: for the help browser' 
 			'poppler-glib: for pdf support'
@@ -23,14 +24,10 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 			'xorg-server-xvfb: for xvfb-run'
 			'ghostscript: for postscript support')
 options=('!libtool' '!makeflags')
-install=$pkgname.install
-replaces=("gimp-${_version}")
-provides=("gimp-${_version}")
-conflicts=("gimp-${_version}")
-source=(git://git.gnome.org/gimp#branch=gtk3-port
-		linux.gpl)
-md5sums=('SKIP' #generate with 'makepkg -g'
-         'bb27bc214261d36484093e857f015f38')
+provides=("gimp")
+conflicts=("gimp")
+source=(git://git.gnome.org/gimp#branch=gtk3-port)
+md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
@@ -54,11 +51,10 @@ prepare() {
 build() {
   cd $_gitname
 
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-    --enable-mp --enable-gimp-console \
-    --disable-python --with-gif-compression=lzw --with-libcurl \
-    --without-aa --without-hal --without-gvfs --without-gnomevfs \
-    --disable-gtk-doc
+  ./autogen.sh --prefix=/usr --sysconfdir=/etc --enable-mp --enable-gimp-console \
+	       --enable-python --with-gif-compression=lzw --with-libcurl --without-aa \
+	       --without-hal --without-gvfs --without-gnomevfs --without-webkit \
+	       --enable-gtk-doc
   make
 }
 

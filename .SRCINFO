@@ -1,9 +1,8 @@
 pkgbase = gimp-gtk3-git
 	pkgdesc = GNU Image Manipulation Program
 	pkgver = 2.9.4.r1949.g3762480587
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gimp.org
-	install = gimp-gtk3-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -18,6 +17,9 @@ pkgbase = gimp-gtk3-git
 	makedepends = curl
 	makedepends = ghostscript
 	makedepends = libxslt
+	makedepends = appstream-glib
+	makedepends = pygtk
+	makedepends = python-cairo
 	depends = babl
 	depends = gegl
 	depends = lcms
@@ -40,15 +42,12 @@ pkgbase = gimp-gtk3-git
 	optdepends = curl: for URI support
 	optdepends = xorg-server-xvfb: for xvfb-run
 	optdepends = ghostscript: for postscript support
-	provides = gimp-2.99
-	conflicts = gimp-2.99
-	replaces = gimp-2.99
+	provides = gimp
+	conflicts = gimp
 	options = !libtool
 	options = !makeflags
 	source = git://git.gnome.org/gimp#branch=gtk3-port
-	source = linux.gpl
 	md5sums = SKIP
-	md5sums = bb27bc214261d36484093e857f015f38
 
 pkgname = gimp-gtk3-git
 
