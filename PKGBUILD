@@ -2,11 +2,11 @@
 # Contributor:
 
 pkgname=marker-git
-pkgver=2018.01.09.r116.g0323bd56
+pkgver=2018.01.24.r0.gd21adf6b
 pkgrel=1
-pkgdesc="A gtk3 markdown editor"
+pkgdesc='Markdown editor for linux made with Gtk+-3.0'
 arch=('x86_64')
-url="https://github.com/fabiocolacio/Marker"
+url='https://github.com/fabiocolacio/Marker'
 license=('GPL3')
 depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk')
 makedepends=('git' 'meson')
@@ -27,12 +27,11 @@ prepare() {
 
 build() {
   cd Marker
-  rm -rf _build
-  meson _build --prefix=/usr
-  ninja -C _build
+  meson --prefix=/usr build
+  ninja -C build
 }
 
 package() {
   cd Marker
-  env DESTDIR="$pkgdir" ninja -C _build install
+  DESTDIR="$pkgdir" ninja install -C build
 }
