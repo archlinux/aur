@@ -5,7 +5,7 @@
 
 pkgname=faust
 pkgver=2.5.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A functional programming language for realtime audio signal processing."
 arch=('x86_64')
 url="https://faust.grame.fr/"
@@ -18,6 +18,7 @@ optdepends=('clang: needed for sound2reader'
             'java-runtime=8: needed for faust2android')
 provides=('faust')
 conflicts=('faust-git')
+options=('staticlibs')
 source=("https://github.com/grame-cncm/${pkgname}/releases/download/v${pkgver//./-}/${pkgname}-${pkgver}.tar.gz"
         "git+https://github.com/agraef/emacs-faust-mode.git"
         'python2-fix.patch'

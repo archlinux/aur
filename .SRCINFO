@@ -1,7 +1,7 @@
 pkgbase = faust
 	pkgdesc = A functional programming language for realtime audio signal processing.
 	pkgver = 2.5.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://faust.grame.fr/
 	arch = x86_64
 	license = GPL2
@@ -17,6 +17,7 @@ pkgbase = faust
 	optdepends = java-runtime=8: needed for faust2android
 	provides = faust
 	conflicts = faust-git
+	options = staticlibs
 	source = https://github.com/grame-cncm/faust/releases/download/v2-5-10/faust-2.5.10.tar.gz
 	source = git+https://github.com/agraef/emacs-faust-mode.git
 	source = python2-fix.patch
