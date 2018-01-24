@@ -1,8 +1,8 @@
-From 0b716bdb952b678d9bb5eb32198dbc82ec492df2 Mon Sep 17 00:00:00 2001
-Message-Id: <0b716bdb952b678d9bb5eb32198dbc82ec492df2.1515173964.git.jan.steffens@gmail.com>
+From 4e54373158caa50df5402fdd3db1794c5394026b Mon Sep 17 00:00:00 2001
+Message-Id: <4e54373158caa50df5402fdd3db1794c5394026b.1516188238.git.jan.steffens@gmail.com>
 From: Serge Hallyn <serge.hallyn@canonical.com>
 Date: Fri, 31 May 2013 19:12:12 +0100
-Subject: [PATCH 1/6] add sysctl to disallow unprivileged CLONE_NEWUSER by
+Subject: [PATCH 1/4] add sysctl to disallow unprivileged CLONE_NEWUSER by
  default
 
 Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
@@ -15,7 +15,7 @@ Signed-off-by: Daniel Micay <danielmicay@gmail.com>
  3 files changed, 30 insertions(+)
 
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 500ce64517d93e68..35f5860958b40e9b 100644
+index 500ce64517d9..35f5860958b4 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -102,6 +102,11 @@
@@ -55,7 +55,7 @@ index 500ce64517d93e68..35f5860958b40e9b 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index 56aca862c4f584f5..e8402ba393c1915d 100644
+index 56aca862c4f5..e8402ba393c1 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -105,6 +105,9 @@ extern int core_uses_pid;
@@ -85,7 +85,7 @@ index 56aca862c4f584f5..e8402ba393c1915d 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index c490f1e4313b998a..dd03bd39d7bf194d 100644
+index c490f1e4313b..dd03bd39d7bf 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -24,6 +24,9 @@
