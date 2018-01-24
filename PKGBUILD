@@ -5,8 +5,8 @@
 # Maintainer: Mathias Merscher <archlinux@rheinekopfsache.de>
 
 pkgname=origin-client-bin
-pkgver=3.7.0
-_hash=7ed6862
+pkgver=3.7.1
+_hash=ab0f056
 pkgrel=1
 pkgdesc="The client tools for the Origin platform that powers OpenShift"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=("bash-completions::https://raw.githubusercontent.com/openshift/origin/$_
 
 sha256sums=('54f1f871de93d8090df39153daceb7f660ca5c175a6b4d40392d8401a8c9ec0d'
             '9a6b1f2949e933dd9eac29164f3d14c36efed4a1beb2dc67e9bf7e7fce175487'
-            '573e39965633671aac08d68f57d66ff182fb646649523914f0a60debb6515eba')
+            '56e9dbff7e5e4ade1e92cc10ff1bd1ae2789ec400be0d8a5b2177fd6c465af21')
 
 prepare() {
     # Fix zsh completion
