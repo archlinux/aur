@@ -1,0 +1,24 @@
+pkgbase = ruby-hammer-cli
+	pkgdesc = Hammer cli provides universal extendable CLI interface for ruby apps
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = http://github.com/theforeman/hammer-cli
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = ruby
+	depends = ruby-apipie-bindings>=0.2.0
+	depends = ruby-awesome_print
+	depends = ruby-clamp>1.0
+	depends = ruby-fast_gettext
+	depends = ruby-highline
+	depends = ruby-locale>=2.0.6
+	depends = ruby-logging
+	depends = ruby-unicode-display_width
+	noextract = hammer_cli-0.11.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/hammer_cli-0.11.0.gem
+	sha256sums = 93c666a13301cd99f97556498605194cc7f4563040690b444abd595d194c8db0
+
+pkgname = ruby-hammer-cli
+
