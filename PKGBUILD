@@ -4,7 +4,7 @@
 
 pkgname=seahub
 pkgver=6.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The web end of seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
@@ -37,7 +37,7 @@ package() {
     "${pkgdir}/usr/bin/seahub-preupgrade"
 
   # Create private virtualenv
-  virtualenv2 --no-wheel "${pkgdir}/usr/lib/seafile/seafileenv"
+  virtualenv2 --no-wheel --system-site-packages "${pkgdir}/usr/lib/seafile/seafileenv"
   source "${pkgdir}/usr/lib/seafile/seafileenv/bin/activate"
   pip2 --isolated install --no-compile \
     -r "${srcdir}/${pkgname}-${pkgver}-server/requirements.txt"
