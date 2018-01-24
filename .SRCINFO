@@ -1,0 +1,19 @@
+pkgbase = ruby-unf-0.1.4
+	pkgdesc = This is a wrapper library to bring Unicode Normalization Form support to Ruby/JRuby.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/knu/ruby-unf
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ruby
+	depends = ruby-unf_ext
+	provides = ruby-unf=0.1.4
+	conflicts = ruby-unf
+	noextract = unf-0.1.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/unf-0.1.4.gem
+	sha256sums = 4999517a531f2a955750f8831941891f6158498ec9b6cb1c81ce89388e63022e
+
+pkgname = ruby-unf-0.1.4
+
