@@ -2,7 +2,7 @@
 # Contributor: condy <condy0919[at]gmail[dot]com>
 pkgname=psysh
 pkgver=0.8.17
-pkgrel=1
+pkgrel=2
 pkgdesc="PsySH is a runtime developer console, interactive debugger and REPL for PHP."
 url="http://psysh.org"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ provides=('psysh')
 optdepends=('mariadb: mysql command support')
 source=("https://github.com/bobthecow/psysh/releases/download/v${pkgver}/psysh-v${pkgver}.tar.gz"
         'https://raw.githubusercontent.com/bobthecow/psysh/master/LICENSE')
-sha256sums=('30acec35fb63e9fc2d210003eaf13cd8407120f7b0c47dcf581f99487103b0a3'
+sha256sums=('b250386d7b0ec1db6d2d029a20d2a08e8c64afd06ed6af0bf17a39f92de0a9e6'
             'ffe06af119d0b31e8d5bcfd219648d071023380fb3006b6b07017902ef632ad1')
 
 package() {
