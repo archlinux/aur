@@ -6,7 +6,6 @@ pkgbase = sac-core
 	license = custom
 	makedepends = libarchive
 	depends = pcsclite
-	depends = pcsc-tools
 	depends = libusb-compat
 	depends = openssh
 	depends = nss
