@@ -2,7 +2,7 @@
 
 pkgname=kicad-templates-git
 _pkgname=${pkgname%-*}
-pkgver=ad2966f
+pkgver=r9.ad2966f
 pkgrel=1
 pkgdesc="Official KiCad project templates"
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git rev-parse --short HEAD # Fix to better comply with github display
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
