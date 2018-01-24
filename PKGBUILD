@@ -1,6 +1,6 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 epoch=
 pkgdesc="Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day."
@@ -51,5 +51,5 @@ package() {
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/licenses ${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/licenses
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/scripts ${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/scripts
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/texts ${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/texts
-  install -D ${srcdir}/shadow-of-the-wyrm/sotw.sh ${pkgdir}/usr/bin/sotw  
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw.sh ${pkgdir}/usr/bin/sotw
 }
