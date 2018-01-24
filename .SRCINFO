@@ -1,6 +1,6 @@
 pkgbase = python-azure-cli
 	pkgdesc = Microsoft Azure Command-Line Tools
-	pkgver = 2.0.22
+	pkgver = 2.0.25
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
@@ -12,11 +12,13 @@ pkgbase = python-azure-cli
 	depends = python-colorama
 	depends = python-humanfriendly
 	depends = python-jmespath
+	depends = python-knack
+	depends = python-pytz
 	depends = python-scp
 	depends = python-sshtunnel
 	depends = python-tabulate
-	source = https://github.com/Azure/azure-cli/archive/azure-cli-2.0.22.tar.gz
-	md5sums = c3dbdac6a2c5a0965405bd43ef58c67c
+	source = https://github.com/Azure/azure-cli/archive/azure-cli-2.0.25.tar.gz
+	md5sums = d76fada6e41307ca866023a0eb040c6e
 
 pkgname = python-azure-cli
 
