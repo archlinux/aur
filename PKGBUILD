@@ -35,6 +35,7 @@ build() {
                --enable-multilib \
                --enable-interwork \
                --with-system-readline \
+							 --with-guile=guile-2.0 \
                --disable-nls
   make
 }
