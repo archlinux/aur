@@ -1,9 +1,9 @@
-# Maintainer: JC FRANCOIS <jc.francois@gmail.com>
+# Maintainer: JC FRANCOIS <jc.francois.gmail.com>
 
 pkgname=craftbukkit-spigot
 pkgver=1.12.2
-pkgbuild=64
-pkgrel=1
+pkgbuild=71
+pkgrel=2
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
 arch=(any)
 url="http://www.spigotmc.org/"
@@ -34,17 +34,10 @@ md5sums=('59683171f76e92a06018b3271dd967d4'
 
 prepare() {
   # Get license approval
-  echo -n "Are you in agreement with the Minecraft EULA (https://account.mojang.com/documents/minecraft_eula)? (y/N) "
-  read agree
-
-  if [ "${agree^^}" = "Y" ]; then
-    echo "#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula)." > eula.txt
-    echo "#`date`" >> eula.txt
-    echo "eula=true" >> eula.txt
-  else
-    echo "Can't continue without agreement on license. Aborting."
-    exit 1
-  fi
+  echo "By installing this package you indicate that you are in agreement with the Minecraft EULA (https://account.mojang.com/documents/minecraft_eula)"
+  echo "# By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula)." > eula.txt
+  echo "# `date`" >> eula.txt
+  echo "eula=true" >> eula.txt
 }
 
 build() {
