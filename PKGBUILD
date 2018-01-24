@@ -22,8 +22,6 @@ package() {
   	find ${srcdir} -type f -name "*.sh" -exec chmod 644 '{}' \;
 	install -dm 755 ${pkgdir}${_destname}
   	cp -r ${srcdir}/* ${pkgdir}${_destname}
-  	rm -r ${pkgdir}${_destname}/Sardi-Ghost-Flexible
-  	rm -r ${pkgdir}${_destname}/Sardi-Ghost-Flexible-Colora
 }
 
 
