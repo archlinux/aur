@@ -1,7 +1,7 @@
 pkgbase = kicad-packages3d-git
 	pkgdesc = Official KiCad 3D model libraries for rendering and MCAD integration
-	pkgver = 4e34135f
-	pkgrel = 2
+	pkgver = r674.4e34135f
+	pkgrel = 1
 	url = https://github.com/KiCad/kicad-packages3D
 	arch = any
 	license = GPL

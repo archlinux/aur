@@ -2,8 +2,8 @@
 
 pkgname=kicad-packages3d-git
 _pkgname=kicad-packages3D
-pkgver=4e34135f
-pkgrel=2
+pkgver=r674.4e34135f
+pkgrel=1
 pkgdesc="Official KiCad 3D model libraries for rendering and MCAD integration"
 arch=('any')
 url="https://github.com/KiCad/kicad-packages3D"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git rev-parse --short HEAD # Fix to better comply with github display
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
