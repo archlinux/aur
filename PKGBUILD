@@ -7,7 +7,7 @@
 pkgname=inox-beta
 pk=bnox
 name=chromium
-pkgver=64.0.3282.99
+pkgver=64.0.3282.133
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -114,7 +114,7 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/edgy.patch
 )
 
 
-sha256sums=('2ddb59f5be28d2be0007f22ef8dffbe817de7ea5abc09e5b1c07873f302729c6'
+sha256sums=('cffa16a5a49bb9c0813306b261b90ab1ec549a9d98fe64731afe28ebf535e16b'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
