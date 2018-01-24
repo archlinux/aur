@@ -2,7 +2,7 @@
 # Contributor:  Maarten de Vries <maarten@de-vri.es>
 
 pkgname=arpc
-pkgver=0.6.p1
+pkgver=0.7
 pkgrel=1
 pkgdesc="binary serialisation format inspired by YAML, MessagePack and nvlists"
 arch=('x86_64' 'aarch64')
@@ -11,11 +11,10 @@ license=('BSD')
 depends=()
 makedepends=('cmake' 'python-pypeg2' 'python-toposort')
 
-_commit="49c6d4aa50dd325f9ce56ff9ebe1de210caac593"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/NuxiNL/$pkgname/archive/$_commit.tar.gz")
-sha512sums=('d8d724e49c43d99d5c494404b3458debc82a7fe1c78aa66ef47d217ab05b7c91abc746a730fb91e78d5cc089bc528875b612094ac74898eb149f8f363fbff66b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/NuxiNL/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('4067108f03c2f2ede3ee6caa65b6ee2780b868d84e5344817dbf545a70007931fca5e8fd1cebd9c0e1f1e7872128b9d868cfac19586be7895f3de86b82a56d81')
 
-_dir="$pkgname-$_commit"
+_dir="$pkgname-$pkgver"
 prepare() {
 	rm -rf "$srcdir/build"
 	mkdir -p "$srcdir/build"
