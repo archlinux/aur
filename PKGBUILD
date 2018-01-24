@@ -2,8 +2,8 @@
 # Contributor: falkTX <falktx [at] gmail [dot] com>
 
 pkgname=carla
-pkgver=1.9.7
-pkgrel=5
+pkgver=1.9.8
+pkgrel=1
 pkgdesc="Audio Plugin Host"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
@@ -18,16 +18,8 @@ optdepends=(
   'qt4: LV2 QT4 UI support'
   'zynaddsubfx: ZynAddSubFX banks'
 )
-source=("https://github.com/falkTX/Carla/archive/${pkgver}.tar.gz"
-        "pyqt.patch::https://github.com/falkTX/Carla/commit/9ff1711b8fdf0acb4608498463ed4608889ead1e.patch")
-sha512sums=('f8b7247eace54a49398800a377efa9fb88267d52ccd0297a6fb4b64c04da24ac10260bdfe8ee8f7d15e13928dcc15c3e84a66f7c97c6a11c2bbe0e74b1d60587'
-            '625e6553cef727138ea855bf81fa634597e23e0e1762fd710b6626d2c86bb5df5aba18ae9a80f3243a7ac41a901166eaa8f9c0c9c8a7d688a85156b1f959c5ee')
-
-prepare() {
-  cd "Carla-${pkgver}"
-  # Upstream patch to fix issues with PyQT
-  patch -Np1 -i ${srcdir}/pyqt.patch
-}
+source=("https://github.com/falkTX/Carla/archive/${pkgver}.tar.gz")
+sha512sums=('0f801fdf7704bb3eb62e684134567df3e83a6c7dfad201479039158480f9fbc0c9a91bc007131091c29a87b4cbb2d831797c8c517de9c36399ec7348a8889f5d')
 
 build() {
   cd "Carla-${pkgver}"
