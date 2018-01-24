@@ -3,7 +3,7 @@
 
 pkgname=apache-spark
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
