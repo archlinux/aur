@@ -4,8 +4,8 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=18.04.2
-_umsver=18.04.2
+pkgver=18.04.6
+_umsver=18.04.4
 pkgrel=1
 pkgdesc="Tweak tool for MATE (fork of MintDesktop)"
 arch=('any')
@@ -22,8 +22,8 @@ optdepends=('mate-applet-dock: for Mutiny panel layout'
             'topmenu-gtk: for Mutiny panel layout')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-mate/$pkgname/archive/$pkgver.tar.gz"
         "ubuntu-mate-settings-$_umsver.tar.gz::https://github.com/ubuntu-mate/ubuntu-mate-settings/archive/$_umsver.tar.gz")
-sha256sums=('f083aae9b26677ce04e89d77a1cf68574b9912072532e3a664d407496e726974'
-            '04654d51ded34ec52a6a5e78dbb40431d88e9fcaa5c3721c2b6835e9fc2e27b1')
+sha256sums=('5290e8ed275f8c46347759b6e8f6c9c5519148ec935318ba572e56722b2e348d'
+            '4fc738e151d880fd87bf6c62ee573090855a04df6ba43542d048852d5edd68eb')
 
 prepare() {
   cd "$pkgname-$pkgver"
