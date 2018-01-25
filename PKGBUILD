@@ -1,13 +1,14 @@
 # Maintainer: TC <crt@archlinux.email>
 _pkgname=profanity-omemo-plugin
 pkgname=$_pkgname-git
-pkgver=v0.1.1.44.ge9dc156
+pkgver=0.1.1.44.ge9dc156
 pkgrel=1
 pkgdesc="A Python plugin to use (axolotl / Signal Protocol) encryption for the profanity XMPP messenger"
 arch=('any')
 url="https://github.com/ReneVolution/profanity-omemo-plugin"
 license=('GPL3')
-makedepends=('git' 'python2-cryptography')
+depends=('python2-cryptography')
+makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=profanity-omemo-plugin.install
