@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=cargo-web
-pkgver=0.5.3
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A Cargo subcommand for the client-side Web"
 url="https://github.com/koute/cargo-web"
@@ -10,7 +10,7 @@ optdepends=('chromium: needed for tests')
 arch=('i686' 'x86_64')
 license=('MIT' 'APACHE')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/koute/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('aaff4d69e38406823eeb47f1b7ecc0b11a477cc16b8b25d2186694f4827bafe9')
+sha256sums=('f232fb0702d8a1fc5bd5d3aa6f5de0db254922f5b5723fffd29a1abd92df8008')
 
 build() {
   cd "$pkgname-$pkgver"
