@@ -1,0 +1,36 @@
+pkgbase = ros-kinetic-hector-gazebo-plugins
+	pkgdesc = hector_gazebo_plugins provides gazebo plugins from Team Hector. 6wd, IMU, magnetic field, GPS sonar ranger
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://http://wiki.ros.org/hector_gazebo_plugins
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = gazebo
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-gazebo-dev
+	makedepends = ros-kinetic-std-msgs
+	makedepends = ros-kinetic-std-srvs
+	makedepends = ros-kinetic-geometry-msgs
+	makedepends = ros-kinetic-nav-msgs
+	makedepends = ros-kinetic-tf
+	makedepends = ros-kinetic-dynamic-reconfigure
+	makedepends = ros-kinetic-message-generation
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-gazebo-ros
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-std-srvs
+	depends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-nav-msgs
+	depends = ros-kinetic-tf
+	depends = ros-kinetic-dynamic-reconfigure
+	depends = ros-kinetic-message-runtime
+	depends = python2-rospkg
+	depends = python2-netifaces
+	source = ros-kinetic-hector-gazebo-plugins::git+https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git#tag=0.5.0
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-hector-gazebo-plugins
+
