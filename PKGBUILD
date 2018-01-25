@@ -1,7 +1,7 @@
 # Maintainer: ser nica <swhat at posteo dot eu>
 
 pkgname=veyon
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=2
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
@@ -38,6 +38,7 @@ build() {
     cmake ../"${pkgname}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_VEYON_X11VNC_EXTERNAL=ON \
         -DCMAKE_BUILD_TYPE=Release
     make
 }
