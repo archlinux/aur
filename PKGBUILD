@@ -8,7 +8,7 @@ license=('custom')
 depends=('gdk-pixbuf2' 'gtk3' 'jack')
 makedepends=('git' 'gcc' 'make')
 source=("http://www.landoleet.org/${pkgname}${pkgver//.}_linux_x86_64.tar.xz"
-	"git+http://www-dev.cockos.com/wdl/WDL.git"
+	"git+https://github.com/justinfrankel/WDL.git"
 	'https://stash.reaper.fm/30638/reaper-desktop-support.zip')
 sha256sums=('dc54e4df184628dd72d2b0edbbed01ad1f971d4d79645e85454063f9aec62141'
             'SKIP'
