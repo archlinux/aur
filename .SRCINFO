@@ -10,7 +10,7 @@ pkgbase = ocsstore
 	depends = qt5-base>=5.3.0
 	depends = qt5-websockets>=5.3.0
 	source = https://dl.opendesktop.org/api/files/downloadfile/id/1516693432/s/43b47a16b6dd9e711ee28b02201664bc/t/1516697191/u/ocsstore-3.0.1-1-x86_64.pkg.tar.xz
-	md5sums = SKIP
+	md5sums = b01a86c606196cf13aae745f4b48adde
 
 pkgname = ocsstore
 

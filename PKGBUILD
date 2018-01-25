@@ -16,7 +16,8 @@ md5sums=('SKIP')
 
 
 package() {
-  cp -r $srcdir/usr $pkgdir
+  cp -r $srcdir $pkgdir
   echo "please wait"
 }
 md5sums=('SKIP')
+md5sums=('b01a86c606196cf13aae745f4b48adde')
