@@ -7,11 +7,11 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=sudo-selinux
-_sudover=1.8.21p2
+_sudover=1.8.22
 pkgver=${_sudover/p/.p}
 pkgrel=1
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.sudo.ws/sudo/"
 license=('custom')
 groups=('selinux')
@@ -23,11 +23,10 @@ backup=('etc/sudoers' 'etc/pam.d/sudo')
 install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo.pam)
-sha256sums=('74c5746cd33a814e2431c39faf0d76f7f8a697379bd073862e3b156cf0d76368'
+sha256sums=('7256cb27c20883b14360eddbd17f98922073d104b214cf65aeacf1d9c9b9fd02'
             'SKIP'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
-validpgpkeys=('CCB24BE9E9481B15D34159535A89DFA27EE470C4' # old pgp signing key
-              '59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB') # new pgp signing key
+validpgpkeys=('59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB')
 
 prepare() {
   cd "$srcdir/${pkgname/-selinux}-$_sudover"
