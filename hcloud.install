@@ -1,0 +1,15 @@
+post_install () {
+    echo
+    echo '=> Zsh completion can currently only be enabled manually.'
+    echo '=> Consider adding this line to your ~/.zshrc:'
+    echo
+    echo '>/dev/null command -v hcloud && . <(hcloud completion zsh)'
+    echo
+}
+
+post_remove () {
+    echo
+    echo '=> Remember to remove the Zsh autocompletion for hcloud'
+    echo '=> from your ~/.zshrc if you enabled it during installation.'
+    echo
+}

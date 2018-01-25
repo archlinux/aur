@@ -2,16 +2,18 @@
 
 pkgname='hcloud'
 pkgver='1.2.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="CLI for Hetzner Cloud"
 arch=('x86_64')
 url='https://github.com/hetznercloud/cli'
 license=('MIT')
 optdepends=(
-        'bash-completion: tab auto-completion'
+    'bash-completion: tab auto-completion'
+    'zsh: tab auto-completion'
 )
 makedepends=('go')
 provides=('hcloud')
+install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hetznercloud/cli/archive/v${pkgver}.tar.gz")
 sha256sums=('92b00d393e6029fc25fff93d74166c96c0b16aff963355d7ec2a26108e48427a')
 _gourl='github.com/hetznercloud/cli'
