@@ -2,15 +2,15 @@
 
 pkgname=gawkextlib
 _project=$pkgname
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Library containing APIs used by various GAWK extensions"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL')
 source=("https://downloads.sourceforge.net/$_project/$pkgname-$pkgver.tar.gz")
-md5sums=('23affb4f0936e55c3fdb9b30c7c03039')
-sha256sums=('e3959df018680dde196087120e5672cf1b98cc9c2b1c391c0957ee9f00558048')
+md5sums=('3beafa6ccb68522fb02f4fd16aa5c1dd')
+sha256sums=('ecd06c1857f58530f73866dffb74a32f17d1194c045f351b5ab8acad4f77678c')
 
 build() {
 	cd "$pkgname-$pkgver"
