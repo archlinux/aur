@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schrempf <dominik dot schrempf at gmail dot com>
 pkgname=iqtree-latest
-pkgver=1.6.beta4
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood; multicore version (OMP)"
 arch=(x86_64)
@@ -18,7 +18,7 @@ options=()
 # install=
 # changelog=
 source=("https://github.com/Cibiv/IQ-TREE/archive/v${pkgver}.tar.gz")
-md5sums=('afb89c6106d42f2c115259c6c631298b')
+md5sums=('8e9cf586e803405bc44872fab3e756a1')
 noextract=()
 
 build() {
