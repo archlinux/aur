@@ -1,5 +1,5 @@
 pkgbase = opentx-companion21
-	pkgdesc = EEPROM Editor for OpenTX RC transmitter firmwares
+	pkgdesc = EEPROM Editor for OpenTX RC transmitter firmwares 2.1 releases
 	pkgver = 2.1.9
 	pkgrel = 3
 	url = http://www.open-tx.org/
