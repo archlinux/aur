@@ -1,8 +1,9 @@
 # Maintainer: robertfoster
+# Contributor: abozanich
 
 pkg=linux-sgx-driver
 pkgname=$pkg-dkms-git
-pkgver=1.9.r2.gcd51638
+pkgver=1.9_rhel7.4.r11.gb1c4b78
 pkgrel=1
 pkgdesc="Intel® SGX Linux module - dkms"
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ license=('GPL2')
 depends=('dkms')
 optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
-makedepends=('linux-headers>=4.12' 'linux-headers<4.13' 'linux>=4.12' 'linux<4.13')
+makedepends=('linux-headers>=4.12' 'linux-headers<4.15' 'linux>=4.12' 'linux<4.15')
 source=("$pkg::git+https://github.com/01org/linux-sgx-driver.git"
 	dkms.conf)
 
@@ -31,7 +32,7 @@ package() {
 # Set name and version
   sed -e "s/@PKG@/${pkg}/" \
       -e "s/@PKGVER@/${pkgver}/" \
-      -i "$pkgdir/usr/src/$pkg-$pkgver/dkms.conf"
+      -i "$installDir/dkms.conf"
 
 # Copy sources
   cd $srcdir/$pkg
@@ -44,6 +45,9 @@ package() {
     do
       install -m644 "$f" "${installDir}/$f"
     done
+
+  sed -e "s/-O0//" \
+      -i "$installDir/Makefile"
 }
 
 md5sums=('SKIP'
