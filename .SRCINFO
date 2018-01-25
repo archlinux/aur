@@ -1,13 +1,13 @@
 pkgbase = darch
 	pkgdesc = A utility to that uses Docker to build stateless Arch images that can be booted bare-metal.
-	pkgver = 0.12.0
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://github.com/pauldotknopf/darch
 	arch = x86_64
 	license = MIT
 	depends = docker
-	source = darch-0.12.0.tar.gz::https://github.com/pauldotknopf/darch/releases/download/v0.12.0/darch-amd64.tar.gz
-	md5sums = d2a66b4d7140b3d8d09db18fef16751f
+	source = darch-0.14.3.tar.gz::https://github.com/pauldotknopf/darch/releases/download/v0.14.3/darch-amd64.tar.gz
+	md5sums = b1f01c31e537ac78a4efa9c0f1fa6974
 
 pkgname = darch
 
