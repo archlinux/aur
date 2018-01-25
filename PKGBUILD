@@ -17,7 +17,7 @@ depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi'
          'libxcursor' 'libxinerama' 'libxkbcommon' 'libxp' 'libxrandr'
          'libxss' 'libunwind' 'mesa' 'openjpeg2' 'poppler' 'wayland'
          'shared-mime-info' 'ttf-font' 'scim' 'libibus' 'glib2'
-         'wayland-client' 'wayland-protocols' 'wayland-scanner')
+         'wayland' 'wayland-protocols')
 makedepends=('git' 'python2')
 optdepends=('geoclue: For elocation'
             'gst-plugins-base: Video and thumbnail codecs'
