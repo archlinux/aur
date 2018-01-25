@@ -1,7 +1,8 @@
 # Maintainer: Cody Schafer <aur@codyps.com>
 pkgname=sigrok-firmware-dreamsourcelab-dslogic
+description="Firmware for DreamsourceLab DSLogic & DScope logic analyzers"
 pkgver=0.97
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=(any)
 url=""
@@ -48,6 +49,9 @@ package() {
 
 	install DSLogicPlus.bin    "$_b-plus-fpga.fw"
 	install DSLogicPlus.fw     "$_b-plus-fx2.fw"
+
+	install DSLogicBasic.bin   "$_b-basic-fpga.fw"
+	install DSLogicBasic.fw    "$_b-basic-fx2.fw"
 
 	install DSCope.bin "$_f/dreamsourcelab-dscope-fpga.fw"
 	install DSCope.fw  "$_f/dreamsourcelab-dscope-fx2.fw"
