@@ -1,0 +1,29 @@
+pre_install() {
+    ldconfig >& /dev/null
+}
+
+pre_upgrade() {
+    ldconfig >& /dev/null
+}
+
+pre_remove() {
+    ldconfig >& /dev/null
+}
+
+post_install() {
+    ldconfig >& /dev/null
+    systemctl daemon-reload
+    systemctl restart pcscd.service
+}
+
+post_upgrade() {
+    ldconfig >& /dev/null
+    systemctl daemon-reload
+    systemctl restart pcscd.service
+}
+
+post_remove() {
+    ldconfig >& /dev/null
+    systemctl daemon-reload
+    systemctl restart pcscd.service
+}
