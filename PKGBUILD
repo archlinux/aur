@@ -2,7 +2,7 @@
 # Contributor: Tobias Luther <tobias [at] tonstrom [dot] de>
 
 pkgname=idjc-git
-pkgver=898.4b1539c
+pkgver=917.4cbc71d
 pkgrel=1
 pkgdesc="Powerful client for individuals interested in streaming live radio shows"
 arch=(i686 x86_64)
@@ -32,8 +32,7 @@ source=('idjc::git+https://git.code.sf.net/p/idjc/code')
 
 license=('GPL3')
 
-build()
-{
+build() {
   cd idjc
   ./bootstrap
   export PYTHON=/usr/bin/python2
@@ -44,10 +43,10 @@ build()
   make
 }
 
-package()
-{               
+package() {               
   cd idjc
   make DESTDIR=$pkgdir install
+  sed -i "s/Icon=\/usr\/share\/pixmaps\/${pkgname%%-git}.png/Icon=${pkgname%%-git}/g" $pkgdir/usr/share/applications/${pkgname%%-git}.desktop
 }
 
 pkgver() {
