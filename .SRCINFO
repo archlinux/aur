@@ -1,6 +1,6 @@
 pkgbase = ocsstore
 	pkgdesc = OCS-Store frontend.Downloading and Managing Linux softwares,fonts,artworks,desktop-themes and so on.
-	pkgver = 2.2.1
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://www.opendesktop.org/c/1492685474
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ocsstore
 	depends = libxss
 	depends = qt5-base>=5.3.0
 	depends = qt5-websockets>=5.3.0
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1506729906/s/60f3ad6779b3a25b72f6d4fef88241d7/t/1514886852/ocsstore-2.2.1-1-x86_64.pkg.tar.xz
-	md5sums = SKIP
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1516693432/s/43b47a16b6dd9e711ee28b02201664bc/t/1516697191/u/ocsstore-3.0.1-1-x86_64.pkg.tar.xz
+	md5sums = aad66bc6a3489aaa8e12ed0f48a52611
 
 pkgname = ocsstore
 
