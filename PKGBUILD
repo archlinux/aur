@@ -4,7 +4,7 @@
 
 pkgname=btcaddress-alpha-bin
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 
 
 pkgdesc="Casascius Bitcoin Address Utility"
@@ -28,7 +28,7 @@ source=('btcaddress.png'
 # HTTPS connection on casascius site is invalid
 
 sha256sums=('3e7e6fcfa81a8617414198c46dfa0fa3489c96ac216e902ec5fabfeb664a9442'
-            '1a0321d4e756bbfc06d3b739f64744c0c08f1478a97b27ec92ed342c62da2221'
+            'ec7183ad277d2ccb01e6f8b6099b750fbf974b9acfb3e7139d21b8b54ccee535'
             '008b92949bbcedebc8da278e2c27156a35b3041e232a4e426efce471a6f2506e')
 
 package() {
