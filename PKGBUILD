@@ -1,14 +1,15 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=feedagregator
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RSS and Atom feed agregator in desktop widgets + notifications"
 arch=('any')
 url="https://github.com/j4321/FeedAgregator"
 license=('GPL3')
 makedepends=('python-setuptools')
 depends=('python' 'tk' 'gettext' 'desktop-file-utils' 'libnotify' 
-         'python-beautifulsoup4' 'python-babel' 'tkhtml3-git')
+         'python-beautifulsoup4' 'python-babel' 'python-feedparser'
+         'tkhtml3-git')
 optdepends=('tktray: GUI toolkit for the system tray icon (at least one must be installed)',
             'pygtk: GUI toolkit for the system tray icon (at least one must be installed)',
             'python-pyqt5: GUI toolkit for the system tray icon (at least one must be installed)',
