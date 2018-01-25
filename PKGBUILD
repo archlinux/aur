@@ -13,7 +13,7 @@ backup=('etc/dnscrypt-proxy/dnscrypt-proxy.toml' 'etc/dnscrypt-proxy/forwarding-
 source=('git+https://github.com/jedisct1/dnscrypt-proxy.git'
         'dnscrypt-proxy.service')
 sha512sums=('SKIP'
-            'c897396247a1ada2ab29441bb1ddf35cb0f2687b47d4efe85a4a6753a78698032fc0faa50c266636929147b90bc5db50cb398e82e57bdf5320cb0d7fc9faf2aa')
+            '117d4450fceeaf6806ce0311656946ced556ba25fc96a30fe105b1487c4063fc19694c2889979691d9c3037350fedeff4131728f87064483df3ce5c9e0cbd085')
 
 pkgver() {
   cd "$srcdir/dnscrypt-proxy"
