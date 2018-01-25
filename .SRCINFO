@@ -1,0 +1,14 @@
+pkgbase = gtk-theme-breath
+	pkgdesc = Breath widget theme for GTK 2 and 3
+	pkgver = 5.9.0
+	pkgrel = 1
+	url = https://github.com/manjaro/artwork-breath-gtk
+	arch = any
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	source = breath-5.9.0-1.tar.gz::https://github.com/manjaro/artwork-breath-gtk/archive/da2706640f457f89de6c26312e391b244ff550b4.tar.gz
+	sha256sums = c1ea830c7add04ff76b280a888b68d972133c0cfbde3f96543c779c3b7ae669d
+
+pkgname = gtk-theme-breath
+
