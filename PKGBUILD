@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer
-pkgver=3.3.1
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="A Gtk2 application for searching and streaming videos from YouTube."
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
             )
 
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/trizen/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('91fd0eef5744b0cbb859a87b158ae95bdb2512b921ffab8e916710ac5e9ad092')
+sha256sums=('f36d500f733079bf8cf0fc78550ea215afa485c1ceaeec2bfdaa62a32314a7c8')
 
 package() {
     cd "$_pkgname-$pkgver"
