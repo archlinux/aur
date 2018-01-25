@@ -3,7 +3,7 @@
 # Contributor: hardfalcon <?>
 _pkgname=libnfc
 pkgname="${_pkgname}-git"
-pkgver=1.7.1.r101.ge9a750f
+pkgver=1.7.1.r191.g216145f
 pkgrel=1
 pkgdesc='Platform independent Near Field Communication (NFC) library'
 arch=('i686' 'x86_64')
@@ -30,7 +30,8 @@ prepare() {
     fi
     ./make_release.sh
     #autoreconf -vis
-    ./configure --prefix /usr --enable-doc
+    ./configure --prefix /usr --enable-doc --sysconfdir=/etc
+ 
 }
 
 build() {

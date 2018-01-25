@@ -1,6 +1,6 @@
 pkgbase = libnfc-git
 	pkgdesc = Platform independent Near Field Communication (NFC) library
-	pkgver = 1.7.1.r101.ge9a750f
+	pkgver = 1.7.1.r191.g216145f
 	pkgrel = 1
 	url = http://nfc-tools.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = libnfc-git
 	makedepends = git
 	depends = pcsclite
 	depends = libusb-compat
-	provides = libnfc=1.7.1.r101.ge9a750f
+	provides = libnfc=1.7.1.r191.g216145f
 	conflicts = libnfc
 	conflicts = libnfc-svn
 	replaces = libnfc-svn
