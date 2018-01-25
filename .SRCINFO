@@ -1,5 +1,5 @@
 pkgbase = python2-bs4
-	pkgdesc = Beautiful Soup. bs4 name required by CrackMapExec
+	pkgdesc = Beautiful Soup. bs4 name required by CrackMapExec trunk
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/bs4/
