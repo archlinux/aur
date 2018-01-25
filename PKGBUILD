@@ -32,8 +32,8 @@ source+=("${pkgname}.desktop"
          "${pkgname}.png"
          "${pkgname}.sh")
 
-sha256sums_x86_64=('6192c073a1e32bf2edb2225d9a148b7499ede6a26eb51cac74c899a228ca92c0' 'SKIP')
-sha256sums_i686=(  '83192a3affef590ea31b27a6c061dd18f59783fb47d3b721003892c11045796e' 'SKIP')
+sha256sums_x86_64=('426d2fc15e175e496a2691e268a14804a726354dacbe6ad72e9a3aa41e9c0344' 'SKIP')
+sha256sums_i686=(  'da866589619a22ec2c8e6ab1d5df103957d324ffe23c7e8459278df76dafb419' 'SKIP')
 sha256sums+=('2217f011197329019ae3d282d95623e0230f8f7a3a604290744280530cf1698a'
              '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
              '89ed1cda6611abcbfdafef9aec78ada146643455d6675b22b72319ae286ea67e')
