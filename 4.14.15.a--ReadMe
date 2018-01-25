@@ -1,0 +1,7 @@
+Note: Upstream didn't provided the usual linux-hardened patch for 4.14.15. So, this release is being built directly from the source code found at https://github.com/copperhead/linux-hardened/releases/tag/4.14.15.a   Also, upstream failed to sign the above release....
+
+However, on the plus side, I have calculated the proper sha256sum for the release, and also applied the appropriate Arch patch sets.
+
+If upstream updates the release with a rolling patch and/or signatures, I will update the PKGBUILD accordingly
+
+See https://github.com/copperhead/linux-hardened/releases
