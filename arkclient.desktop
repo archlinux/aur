@@ -8,6 +8,7 @@ Terminal=false
 Type=Application
 Icon=arkclient
 Categories=Finance;
+MimeType: x-scheme-handler/ark;
 Actions=Explorer;
 
 [Desktop Action Explorer]
