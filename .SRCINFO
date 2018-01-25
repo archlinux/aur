@@ -1,0 +1,35 @@
+pkgbase = opentx-companion21
+	pkgdesc = EEPROM Editor for OpenTX RC transmitter firmwares
+	pkgver = 2.1.9
+	pkgrel = 3
+	url = http://www.open-tx.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = xsd
+	makedepends = bc
+	makedepends = python
+	makedepends = avr-gcc
+	makedepends = avr-libc
+	makedepends = sed
+	makedepends = qt5-tools
+	makedepends = python-pyqt5
+	makedepends = arm-none-eabi-gcc
+	makedepends = arm-none-eabi-binutils
+	makedepends = arm-none-eabi-newlib
+	makedepends = fox
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = sdl
+	depends = hicolor-icon-theme
+	optdepends = dfu-util: tool for flashing stm32 based radios
+	provides = companion
+	conflicts = companion
+	conflicts = companion9x-svn
+	conflicts = opentx-companion
+	source = https://github.com/opentx/opentx/archive/2.1.9.tar.gz
+	sha256sums = 13c7d5dbafb1ab086b24e5e7e0836af867a6f2b982d0c5167cf1fc918de6a299
+
+pkgname = opentx-companion21
+
