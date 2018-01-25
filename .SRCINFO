@@ -1,7 +1,7 @@
 pkgbase = warsaw
 	pkgdesc = Banking security tool developed by GAS Tecnologia
 	pkgver = 1.12.3.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://seg.bb.com.br
 	arch = i686
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = warsaw
 	options = !strip
 	source = warsaw.service
 	source = warsaw.openrc
-	sha256sums = dde06741817b8b77d9b1150bd10110d8b22330f8e2900fcae06dcedeee10a09e
-	sha256sums = cfc3c52a08baca16d083cc3b416571c3bea64a7e72819ae75e10746ee7c6d00d
+	md5sums = d614d1164666e3071d9c2001109b0f18
+	md5sums = 0996288430a741c50dc1b89d1909823b
 	source_i686 = https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_32_installer.run
-	sha256sums_i686 = 00c14f1695e39029f75288517128861715be7fac8d8ff742854331c18ce9125c
+	md5sums_i686 = b53b1696e2a0624f54eb516538ac655b
 	source_x86_64 = https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_64_installer.run
-	sha256sums_x86_64 = d8d637a2910aed6ab5e9baa9d2bd85c00259ee133e4aa6219bbf7d1dd3b04f40
+	md5sums_x86_64 = 2d19b66de26dbd01a7980427a0535a8f
 
 pkgname = warsaw
 

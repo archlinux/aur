@@ -3,7 +3,7 @@
 
 pkgname=warsaw
 pkgver=1.12.3.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
 url="https://seg.bb.com.br"
@@ -14,10 +14,11 @@ options=(!strip)
 source=(warsaw.service warsaw.openrc)
 source_i686=(https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_32_installer.run)
 source_x86_64=(https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_64_installer.run)
-sha256sums=('dde06741817b8b77d9b1150bd10110d8b22330f8e2900fcae06dcedeee10a09e'
-            'cfc3c52a08baca16d083cc3b416571c3bea64a7e72819ae75e10746ee7c6d00d')
-sha256sums_i686=('00c14f1695e39029f75288517128861715be7fac8d8ff742854331c18ce9125c')
-sha256sums_x86_64=('d8d637a2910aed6ab5e9baa9d2bd85c00259ee133e4aa6219bbf7d1dd3b04f40')
+md5sums=('d614d1164666e3071d9c2001109b0f18'
+         '0996288430a741c50dc1b89d1909823b')
+md5sums_i686=('b53b1696e2a0624f54eb516538ac655b')
+md5sums_x86_64=('2d19b66de26dbd01a7980427a0535a8f')
+
 
 if [[ $CARCH == x86_64 ]]; then
   _installer=warsaw_64_installer.run
@@ -97,4 +98,21 @@ package() {
   ln -s /etc/warsaw/     "$pkgdir/usr/local/etc/warsaw"
   ln -s /usr/bin/warsaw/ "$pkgdir/usr/local/bin/warsaw"
   ln -s /usr/lib/warsaw/ "$pkgdir/usr/local/lib/warsaw"
+
+  # fixing the new 2018 cancer from
+  # fbello comments at https://aur.archlinux.org/packages/warsaw/?comments=all
+  for i in ld-linux-x86-64.so.2 libc.so.6 libdl.so.2 libpthread.so.0; do
+    cp /usr/lib/$i $pkgdir/usr/lib/warsaw/$i
+  done
+
+  # for i in ld-linux-x86-64.so.2 libc.so.6 libdl.so.2 libpthread.so.0; do
+  #   chattr +i $pkgdir/usr/lib/warsaw/$i
+  # done
+
+  install -dm755  $pkgdir/etc/sysctl.d/
+  cat << EOF > $pkgdir/etc/sysctl.d/warsaw.conf
+net.ipv4.tcp_syncookies=1
+net.ipv4.tcp_synack_retries=3
+net.ipv4.tcp_max_syn_backlog=65536
+EOF
 }
