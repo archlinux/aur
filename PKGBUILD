@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=64.0.3282.113
+pkgver=64.0.3282.119
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -30,9 +30,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-clang-r2.patch
         chromium-exclude_unwind_tables.patch
         chromium-widevine.patch)
-sha256sums=('cffa16a5a49bb9c0813306b261b90ab1ec549a9d98fe64731afe28ebf535e16b'
+sha256sums=('342ea80a925d85f5155b2b423a0d3cbcf2ee5729bf107c601d7d902315d03127'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            'eb542d00801349d6df9b83ae07ddeaf55eddd450a02cf6d4a9b1682092dd8193'
+            'a86a8ec67aed5a94557257b9826c5b8fe37005e8376e75986fee77acd066539a'
             'c82c830bac7ab328a76d85fb141e150a17d02d97138a6daa4720a8a8c371a402'
             '814eb2cecb10cb697e24036b08aac41e88d0e38971741f9e946200764e2401ae'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
