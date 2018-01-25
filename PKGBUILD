@@ -1,7 +1,7 @@
 # Maintainer: Poppy Schmo <poppyschmo at users dot noreply.github.com>
 pkgname=chromebook_keyboard_backlight_driver
-pkgver=1.0r14.g86bac41
-pkgrel=2
+pkgver=1.0r24.g39568fa
+pkgrel=1
 epoch=
 pkgdesc="Keyboard backlight driver for various chromebook models"
 arch=('i686' 'x86_64')
@@ -59,7 +59,6 @@ package() {
 		fi
 	done
 	install -Dm 644 README.markdown "$_docd/README.markdown"
-	install -Dm 644 keyboard_brightness.sh "$_docd/keyboard_brightness.sh"
 	install -Dm 644 "$_conf" "$_confd/$_conf"
 }
 
