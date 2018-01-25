@@ -9,8 +9,8 @@
 # Contributor: Sigitas Mazaliauskas <sigis AT gmail DOT com>
 # Contributor: eworm
 
-pkgname=opera
-pkgver=50.0.2762.67
+pkgname=opera32
+pkgver=45.0.2552.898
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
