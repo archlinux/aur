@@ -1,6 +1,6 @@
 # Maintainer: Stephen Argent <steve [at] tuxcon [dot] com>
 
-pkgname=neon-wallet
+pkgname=neon-wallet-bin
 pkgdesc='Lightweight Wallet for the NEO CryptoCurrency'
 license=('MIT')
 url='https://github.com/CityOfZion/neon-wallet'
@@ -13,7 +13,7 @@ source_x86_64=(
 )
 sha256sums_x86_64=(75f3cd9ccf2d91a17cc3b8c26eeed68406cddb2468fc4c6cf5d97e6a4f33004e)
 
-install=neon-wallet.install
+install=neon-wallet-bin.install
 
 package() {
   if [ "$CARCH" = "x86_64" ] ; then
