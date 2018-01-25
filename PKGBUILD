@@ -1,7 +1,7 @@
-# Contributor: Daniel Milde <info@milde.cz>
+# Maintainer: Daniel Milde <daniel at milde dot cz>
 pkgname=pecl-raphf
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Resource and persistent handles factory"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/raphf"
@@ -22,5 +22,5 @@ package() {
   cd ${srcdir}/raphf-${pkgver}
   make INSTALL_ROOT=${pkgdir} install
   install -d ${pkgdir}/etc/php/conf.d
-  echo ";extension=raphf.so" > ${pkgdir}/etc/php/conf.d/raphf.ini
+  echo ";extension=raphf.so" > ${pkgdir}/etc/php/conf.d/2-raphf.ini
 }
