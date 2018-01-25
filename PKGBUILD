@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=66.0.3330.0
+pkgver=66.0.3331.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 )
 
 
-sha256sums=('0e5047b33fadb07cf91bbdb447ea3d553f241dbffcd7af632fe334047b12210b'
+sha256sums=('e3a2c3172d77a9558771b61f7923f161ba66e2bf75b888c5f3805f323a12031f'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -178,7 +178,7 @@ sha256sums=('0e5047b33fadb07cf91bbdb447ea3d553f241dbffcd7af632fe334047b12210b'
             'f59483b9d7d93fd09ffce43f987078d656a67b2c7b90877d845932f290ce4c8c'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
-            '96fed3b7de6ffceee1e89d8459acbc6c990ec828f60b93385fa414bfe1453819'
+            '8e6dedc40376a11210b1db820a9f34c72d59fa01501541fc923b7aa0bcafea16'
             '518edcadb1538bbcc3309039b9f7d7cff978f90ee9d547000a7e6821d5fa2d13'
             '776c4a7c55f406700714d427061556868d80ec786a2521a5e4660576b18c3d79'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
@@ -212,7 +212,7 @@ sha256sums=('0e5047b33fadb07cf91bbdb447ea3d553f241dbffcd7af632fe334047b12210b'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
-            '3e60735150ca40812d7c0296b52285a9012fb8b9100f24378fea95e20beb43e6')
+            '97d535fac9358857c86f62354a2a224face0a28677d7a9a221f3c351bc014755')
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
