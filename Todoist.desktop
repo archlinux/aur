@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Todoist
+Comment=Todoist for Linux
+Exec=/home/mjg/Software/todoist/Todoist
+Icon=checkbox-checked-symbolic
+Path=
+Terminal=false
+StartupNotify=false
