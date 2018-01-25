@@ -1,7 +1,7 @@
 # Maintainer: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 pkgname=gocryptfs
-pkgver=1.4.2
-_tag=v1.4.2
+pkgver=1.4.3
+_tag=v1.4.3
 pkgrel=1
 pkgdesc="Encrypted overlay filesystem written in Go."
 arch=('i686' 'x86_64' 'armv7h')
