@@ -10,8 +10,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=63.0.3239.132
-pkgrel=3
+pkgver=64.0.3282.119
+pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
 arch=('i686' 'x86_64')
@@ -22,8 +22,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'desktop-file-utils' 'hicolor-icon-theme' 'libva')
 provides=('chromium')
 conflicts=('chromium')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'clang'
-             'lld')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'clang')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -33,25 +32,25 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT
+        chromium-use-fromUTF8-for-UnicodeString-construction.patch
         chromium-omnibox-unescape-fragment.patch
-        chromium-disable-SharedArrayBuffer-by-default.patch
         chromium-skia-harmony.patch
-        chromium-clang-r1.patch
-        chromium-webrtc-r0.patch
+        chromium-memcpy-r0.patch
+        chromium-clang-r2.patch
         chromium-exclude_unwind_tables.patch
         chromium-widevine.patch
         chromium-vaapi-r15.patch
         chromium-libva-r2.patch)
 
-sha256sums=('84c46c2c42faaa102abe0647ee1213615a2522627124924c2741ddc2161b3d8d'
+sha256sums=('342ea80a925d85f5155b2b423a0d3cbcf2ee5729bf107c601d7d902315d03127'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            'ab330f30c14ea3b5e77976d674304b91cfb02251fe8771cecb0bb4092c7f6b74'
+            'a86a8ec67aed5a94557257b9826c5b8fe37005e8376e75986fee77acd066539a'
+            'c82c830bac7ab328a76d85fb141e150a17d02d97138a6daa4720a8a8c371a402'
             '814eb2cecb10cb697e24036b08aac41e88d0e38971741f9e946200764e2401ae'
-            '1e040caa43ba34c627fe3750fb44c781a74298d010ef40657ab8deb4780db70b'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
-            'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
-            'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
-            'e53dc6f259acd39df13874f8a0f440528fae764b859dd71447991a5b1fac7c9c'
+            '455f0029987d9f0532bd9a5250669af5146a9c2b65b776d4a6e2499e8aca7bb4'
+            '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
+            '9478f1ec1a3c53425306cf41c2d0555c215a4f106955d9d6adfff38044530ce8'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             'a15b2ca40b5ca17d4763e41e226fb5faca22277027e8321675c87038dd9879d5'
             'fe45088f04d6f5bb8b2aaad2ef2d4b495ee3a3a91b89fa342e54ac00fe99a97b')
@@ -61,15 +60,16 @@ sha256sums=('84c46c2c42faaa102abe0647ee1213615a2522627124924c2741ddc2161b3d8d'
 readonly -A _system_libs=(
   #[ffmpeg]=ffmpeg            # https://crbug.com/731766
   [flac]=flac
+  #[fontconfig]=fontconfig    # Enable for M65
   #[freetype]=freetype2       # Using 'use_system_freetype=true' until M65
   #[harfbuzz-ng]=harfbuzz     # Using 'use_system_harfbuzz=true' until M65
-  #[icu]=icu                  # https://crbug.com/772655 + need M64 for ICU 60
+  [icu]=icu
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng            # https://crbug.com/752403#c10
   #[libvpx]=libvpx            # https://bugs.gentoo.org/611394
   [libwebp]=libwebp
-  [libxml]=libxml2
+  #[libxml]=libxml2           # https://crbug.com/736026
   [libxslt]=libxslt
   [opus]=opus
   [re2]=re2
@@ -113,25 +113,25 @@ prepare() {
   # https://chromium-review.googlesource.com/c/chromium/src/+/712575
   patch -Np1 -i ../chromium-exclude_unwind_tables.patch
 
+  # https://crbug.com/772655
+  patch -Np1 -i ../chromium-use-fromUTF8-for-UnicodeString-construction.patch
+
   # https://crbug.com/789163
   patch -Np1 -i ../chromium-omnibox-unescape-fragment.patch
-
-  # https://crbug.com/798864
-  patch -Np1 -i ../chromium-disable-SharedArrayBuffer-by-default.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
 
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-clang-r1.patch
-  patch -Np1 -i ../chromium-webrtc-r0.patch
+  patch -Np1 -i ../chromium-memcpy-r0.patch
+  patch -Np1 -i ../chromium-clang-r2.patch
 
   # Remove compiler flags not supported by our system clang
   sed -i \
     -e '/"-Wno-enum-compare-switch"/d' \
     -e '/"-Wno-null-pointer-arithmetic"/d' \
     -e '/"-Wno-tautological-unsigned-zero-compare"/d' \
-    -e '/"-Wno-tautological-unsigned-enum-zero-compare"/d' \
+    -e '/"-Wno-tautological-constant-compare"/d' \
     build/config/compiler/BUILD.gn
 
   # Use Python 2
@@ -205,6 +205,7 @@ build() {
     'use_gconf=false'
     'use_gnome_keyring=false'
     'use_gold=false'
+    'use_lld=false'
     'use_sysroot=false'
     'linux_use_bundled_binutils=false'
     'use_custom_libcxx=false'
