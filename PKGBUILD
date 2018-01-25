@@ -2,7 +2,7 @@
 
 pkgname=private-internet-access-vpn
 pkgver=3.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -12,9 +12,9 @@ makedepends=('git')
 optdepends=('networkmanager: Enables PIA for Network Manager (needs a openvpn plugin)'
             'connman: Enables PIA for Connman')
 			
-sha256sums=('65231f143025e986c6eda0f1fed5f9ff3ff02b076a16a0505f6d0c7215574d7d'
-            'b0ce4be13f3846c88068040680658651864e62d71c8862d70f64a1bd7795ed5b'
-            '25750578307cd9b2d8eb0691232d50f41a591614e50e3206e47b903c4fa0ae9e'
+sha256sums=('d52628bdeb91782aa9db490292d76fcbcabdbfc0dc664f0fd8019f81012fb71f'
+            'e537bd06b2f6f998cf687816e92b2c42771e2fe10b86577d09d1a25d24b0a821'
+            '736ce702003eebc682c609b2e7b2c0127b56c2e0306d90c25201be37e72fa3d4'
             '4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30'
             '797dbdb6e3aadc86f97262e26d61cf4847caf85dda4b7a97cac59088cb912b27'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
@@ -23,33 +23,36 @@ sha256sums=('65231f143025e986c6eda0f1fed5f9ff3ff02b076a16a0505f6d0c7215574d7d'
             'SKIP'
             'SKIP')
 
-source=("https://www.privateinternetaccess.com/openvpn/openvpn-ip-lport.zip"
-        "https://www.privateinternetaccess.com/openvpn/openvpn.zip"
-	"https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
+source=("ip-lport-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn-ip-lport.zip"
+        "default-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn.zip"
+	    "strong-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
         "login-example.conf"
-	"pia-example.conf"
-	"restart.conf"
-	"vpn.sh"
-	"pia.8.gz"
-	"git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
-	"git+https://github.com/masterkorp/openvpn-update-resolv-conf.git")
+	    "pia-example.conf"
+	    "restart.conf"
+	    "vpn.sh"
+	    "pia.8.gz"
+	    "git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
+	    "git+https://github.com/masterkorp/openvpn-update-resolv-conf.git")
 		
-noextract=("openvpn-ip-lport.zip"
-           "openvpn.zip"
-           "openvpn-strong.zip"
+noextract=("ip-lport-$pkgver-$pkgrel.zip"
+           "default-$pkgver-$pkgrel.zip"
+           "strong-$pkgver-$pkgrel.zip"
            "pia.8.gz")
 
 prepare() {
   cd "${srcdir}"
   
   msg2 "Extracting Certifications..."
-  bsdtar -xf openvpn-ip-lport.zip "*.pem" "*.crt"
-  bsdtar -xf openvpn.zip "*.pem" "*.crt"
-  bsdtar -xf openvpn-strong.zip "*.pem" "*.crt"
+  bsdtar -xf ip-lport-$pkgver-$pkgrel.zip "*.pem" "*.crt"
+  bsdtar -xf default-$pkgver-$pkgrel.zip "*.pem" "*.crt"
+  bsdtar -xf strong-$pkgver-$pkgrel.zip "*.pem" "*.crt"
   
   msg2 "Extracting OpenVPN Configurations..."
+  if [ -d "vpn-configs" ]; then
+  	rm -rf vpn-configs
+  fi
   mkdir "vpn-configs"
-  bsdtar -xf openvpn.zip -C vpn-configs *.ovpn
+  bsdtar -xf default-$pkgver-$pkgrel.zip -C vpn-configs *.ovpn
   
   cd "vpn-configs"
   msg2 "Creating Remote Host List..."
