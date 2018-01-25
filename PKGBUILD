@@ -6,7 +6,7 @@
 
 pkgname=gnupg-large-rsa
 _pkgname=gnupg
-pkgver=2.1.22
+pkgver=2.2.4
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard - with fixes to make large RSA keys really work (and even bigger keys)'
 url='http://www.gnupg.org/'
@@ -24,9 +24,9 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
 source=("https://www.gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig} 
         "${pkgname}.patch"
        )
-sha256sums=('46716faf9e1b92cfca86609f3bfffbf5bb4b6804df90dc853ff7061cfcfb4ad7'
+sha256sums=('401a3e64780fdfa6d7670de0880aa5c9d589b3db7a7098979d7606cec546f2ec'
             'SKIP'
-            '293e56dfd71ba2b51d9a2eeef20c4641bd15af7c384807466f385b87119b999c')
+            '2fb51506b247d047986596cce6c93d0a031830ea225b71b65d8f2b09234e348c')
 
 install=install
 
@@ -62,9 +62,6 @@ check() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
-    ln -s gpg2 "${pkgdir}"/usr/bin/gpg
-    ln -s gpgv2 "${pkgdir}"/usr/bin/gpgv
-    ln -s gpg2.1.gz "${pkgdir}"/usr/share/man/man1/gpg.1.gz
 
     cd doc/examples/systemd-user
     for i in *.*; do

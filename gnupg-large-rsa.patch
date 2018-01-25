@@ -1,7 +1,7 @@
-diff -ru a/configure b/configure
---- a/configure	2016-01-26 13:54:50.000000000 +0100
-+++ b/configure	2016-03-06 18:34:29.190228228 +0100
-@@ -2866,7 +2866,7 @@
+diff -ru gnupg-2.2.4.origin/configure gnupg-2.2.4/configure
+--- gnupg-2.2.4.origin/configure	2017-12-20 09:12:57.000000000 +0100
++++ gnupg-2.2.4/configure	2018-01-25 17:29:37.739860947 +0100
+@@ -2939,7 +2939,7 @@
  
  ac_config_headers="$ac_config_headers config.h"
  
@@ -10,10 +10,10 @@ diff -ru a/configure b/configure
  
  # Find a good install program.  We prefer a C program (faster),
  # so one script is as good as another.  But avoid the broken or
-diff -ru a/g10/keygen.c b/g10/keygen.c
---- a/g10/keygen.c	2016-01-26 10:36:37.000000000 +0100
-+++ b/g10/keygen.c	2017-03-01 15:00:00.000000000 +0100
-@@ -1612,7 +1612,7 @@
+diff -ru gnupg-2.2.4.origin/g10/keygen.c gnupg-2.2.4/g10/keygen.c
+--- gnupg-2.2.4.origin/g10/keygen.c	2017-12-13 10:15:01.000000000 +0100
++++ gnupg-2.2.4/g10/keygen.c	2018-01-25 17:29:37.739860947 +0100
+@@ -1632,7 +1632,7 @@
    int err;
    char *keyparms;
    char nbitsstr[35];
@@ -22,16 +22,16 @@ diff -ru a/g10/keygen.c b/g10/keygen.c
  
    log_assert (is_RSA(algo));
  
-@@ -2086,6 +2086,12 @@
-       *max=441;
+@@ -2107,6 +2107,12 @@
        def=255;
        break;
-+
+ 
 +    case PUBKEY_ALGO_RSA:
 +      *min = opt.compliance == CO_DE_VS ? 2048 : 1024;
 +      *max = (opt.flags.large_rsa?16384:4096);
 +      def = 2048;
 +      break;
-
-    default:
-      *min = opt.compliance == CO_DE_VS ? 2048 : 1024;
++
+     default:
+       *min = opt.compliance == CO_DE_VS ? 2048: 1024;
+       *max = 4096;
