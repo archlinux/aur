@@ -7,7 +7,6 @@ pkgname=crackmapexec
 _pkgname=CrackMapExec
 pkgver=3.1.5
 pkgrel=1
-groups=('archstrike' 'archstrike-exploit')
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
 url='https://github.com/byt3bl33d3r/CrackMapExec'
