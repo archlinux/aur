@@ -2,9 +2,10 @@
 # Contributor: Tom Tobin <archlinux@tomxtobin.com>
 
 pkgname=dep
-pkgver=0.3.2
-pkgrel=2
-_commitHash="8ddfc8afb2d520d41997ebddd921b52152706c01"
+pkgver=0.4.1
+pkgrel=1
+_commitHash="37d9ea0ac16f0e0a05afc3b60e1ac8c364b6c329"
+_commitDate="2018-01-25"
 pkgdesc="Go dependency tool"
 arch=('x86_64' 'i686')
 url="https://github.com/golang/dep"
@@ -13,10 +14,10 @@ makedepends=('go')
 options=('!strip' '!emptydirs')
 provides=("dep")
 source=("https://github.com/golang/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('327124953d76293eaba6001e17bb8a31371313ab39eed1fa9eac01f8b5c1de21')
+sha256sums=('df9b050bf4dbb2a8cf04372097a68b04a6ae1986ed7c5086914ac86d74ea9d49')
 
 _importpath='github.com/golang/dep'
-_ldflags="-s -w -X main.buildDate=$(date "+%Y-%m-%d") -X main.commitHash=${_commitHash} -X main.Version=v${pkgver}"
+_ldflags="-s -w -X main.buildDate=${_commitDate} -X main.commitHash=${_commitHash} -X main.version=v${pkgver}"
 
 prepare() {
   if [[ ! -r ${_importpath} ]]; then
