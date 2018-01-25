@@ -10,7 +10,7 @@ license=('GPLv2')
 depends=('qt5-base' 'libxrandr' 'libxtst' 'pam' 'openssl' 'libjpeg-turbo' 'zlib' 'qca-qt5')
 optdepends=('kldap: KDE support')
 makedepends=('git' 'cmake' 'qt5-tools')
-_commit=14ef71781c9c933603bf3ecd83dba6b2841cdff1 #tags/4.0.3
+_commit=f8defd5f6dce4f2ba66abb509c718325783005a5 #tags/4.0.4
 source=("git+${url}/veyon#commit=$_commit"
     "git+${url}/ultravnc.git"
     "git+${url}/libvncserver.git"
