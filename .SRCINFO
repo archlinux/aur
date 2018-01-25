@@ -1,15 +1,16 @@
 pkgbase = shub-bin
 	pkgdesc = Scrapinghub Command Line Client
-	pkgver = 2.5.1
+	pkgver = 2.7.0
 	pkgrel = 1
-	url = https://scrapinghub.com/
+	url = https://github.com/scrapinghub/shub/
 	arch = x86_64
 	license = BSD
-	optdepends = python-scrapy: scrapy python script.
-	provides = shub=2.5.1
+	provides = shub=2.7.0
 	conflicts = shub
-	source = https://github.com/scrapinghub/shub/releases/download/v2.5.1/shub-v2.5.1-linux-x64.tar.gz
-	sha256sums = 5e449fa2378f6f32b047aac2efd981d462440b70e762fa3eceff0a28347a3842
+	source = https://github.com/scrapinghub/shub/releases/download/v2.7.0/shub-v2.7.0-linux-x64.tar.gz
+	source = https://raw.githubusercontent.com/scrapinghub/shub/master/LICENSE
+	sha256sums = 5d41a49f9ff083c33669ee44c69d6898b4bc9ead6946fccd88a285cad048fe56
+	sha256sums = 49ea6190a7f081686a8c71faba2f915c9dbdbee99572e7b26612f30098a130a1
 
 pkgname = shub-bin
 
