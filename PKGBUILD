@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=('cups')
+optdepends=('brscan4' 'brscan-skey')
 install="$pkgname.install"
 source=(
   "http://download.brother.com/welcome/dlf102538/mfcj460dwlpr-$pkgver-$pkgrel.i386.rpm"
