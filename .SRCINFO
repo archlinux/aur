@@ -1,0 +1,20 @@
+pkgbase = ros-kinetic-ackermann-msgs
+	pkgdesc = ROS messages for robots using Ackermann steering.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://wiki.ros.org/ackermann_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-std-msgs
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-std-msgs
+	depends = python2-rospkg
+	source = ros-kinetic-ackermann-msgs::git+https://github.com/ros-drivers/ackermann_msgs.git#tag=1.0.1
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-ackermann-msgs
+
