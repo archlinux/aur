@@ -20,4 +20,3 @@ package() {
   echo "please wait"
 }
 md5sums=('SKIP')
-md5sums=('aad66bc6a3489aaa8e12ed0f48a52611')
