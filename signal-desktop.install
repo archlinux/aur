@@ -1,11 +1,18 @@
 post_install()
 {
+	is="is"; it="it"
   pacman -Qi libappindicator-gtk2 2>&1|grep "Required By"|grep -q None
+  [ $? -eq 0 ] && libappindicator="libappindicator-gtk2"
+  pacman -Qi libappindicator-gtk3 2>&1|grep "Required By"|grep -q None
   if [ $? -eq 0 ]; then
+		[ "$libappindicator" ] && libappindicator="${libappindicator} and " && is="are" && it="them"
+	  libappindicator="${libappindicator}libappindicator-gtk3"
+	fi
+  if [ "$libappindicator" ]; then
     echo
-    echo "libappindicator-gtk2 is obsolete and may even break"
+    echo "$libappindicator $is obsolete and may even break"
     echo "the tray icon of Signal-Desktop and other Electron apps."
-    echo "As no package depends on it any more it may be safely removed."
+    echo "As no package depends on $it it is recommended to remove $it."
     echo
   fi
 
@@ -15,8 +22,8 @@ post_install()
     if [ $? -ne 0 ]; then
       echo
       echo "Tray icons are no longer supported by default on Gnome."
-      echo "If you want use the tray icon of Signal-Desktop:"
-      echo "pacman -S gnome-shell-extension-topicons-plus"
+      echo "If you want use the tray icon of Signal-Desktop,"
+      echo "install gnome-shell-extension-topicons-plus from AUR."
       echo "Then re-login and enable this extension in 'Tweaks' (gnome-tweak-tool)."
       echo
     fi

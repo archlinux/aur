@@ -6,8 +6,8 @@ if [ $? -eq 0 ]; then
   if [ $? -ne 0 ]; then
     while [ "$1" = "--use-tray-icon" -o "$1" = "--start-in-tray" ]; do shift; done
     echo "Tray icons are no longer supported by default on Gnome."
-    echo "If you want use the tray icon of Signal-Desktop:"
-    echo "pacman -S gnome-shell-extension-topicons-plus"
+    echo "If you want use the tray icon of Signal-Desktop,"
+    echo "install gnome-shell-extension-topicons-plus from AUR."
     echo "Then re-login and enable this extension in 'Tweaks' (gnome-tweak-tool)."
   fi 
 fi
