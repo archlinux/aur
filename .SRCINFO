@@ -1,0 +1,14 @@
+pkgbase = php-tcpdf
+	pkgdesc = PHP library for generating PDF documents on-the-fly.
+	pkgver = 6.2.13
+	pkgrel = 1
+	url = https://tcpdf.org
+	arch = any
+	license = GPL
+	depends = php
+	provides = php-tcpdf
+	source = php-tcpdf.tar.gz::https://github.com/tecnickcom/TCPDF/archive/6.2.13.tar.gz
+	md5sums = 36b65a265b1a88a2d19bbbe489b5f374
+
+pkgname = php-tcpdf
+
