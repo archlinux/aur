@@ -1,13 +1,14 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
-pkgver=5.0.7.52912
+pkgver=5.0.11.53634
 pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
 license=('GPL')
-arch=('i686' 'x86_64')
-depends=(apr-util dbus-glib glu gtk2 libgl libidn libjpeg-turbo libpng
-         libxml2 mesa nss openal pangox-compat sdl zlib)
+arch=('x86_64')
+depends=(dbus-glib gconf glu gtk2 lib32-libidn lib32-libsndfile
+         lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng
+         libxss libxml2 mesa nss openal sdl vlc zlib)
 optdepends=(
   'alsa-lib: for ALSA support'
   'pepper-flash: for inworld Flash support'
@@ -18,23 +19,17 @@ optdepends=(
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
 install=firestorm.install
-source=(0001-firestorm-libgl-path.patch
+source=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Releasex64_x86_64_$pkgver.tar.xz"
+        0001-firestorm-libgl-path.patch
         firestorm.desktop
         firestorm.launcher)
-source_i686=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Release_i686_$pkgver.tar.xz")
-source_x86_64=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Releasex64_x86_64_$pkgver.tar.xz")
-sha256sums=('619153f3540ad48ec31c702086883a6adccacc70b384b300edaa6f7957f27232'
-            '6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1'
-            'b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530')
-sha256sums_i686=('40272fac6ba8346d9d031a1ce399d1d4a107784dcd15e59e1c69a4bbd8100514')
-sha256sums_x86_64=('240538c2cb7b8116fc938fa1218dda0d7fb0d4daa0c3454044995773bd3d60f2')
+sha512sums=('c344aaf51a0489ebb84bdf65b757af36a6706a5f87177a3747a54e3fe24ea922d69e7d1d4562e2a2ce8379f36fd3dc45d8818a940202ef817b44f6f424a3c05b'
+            '760dc097786275f4d60f9562e22d16b20151c4918cea89508bbe0b649d62b5158326d97086958acd1948c0cbb2f6693d2ac75224487b98729098b99936d0c57a'
+            'aaebbd7376e98ce267b99d1b86efb75c5515047ba127e42810b4560361841ee9e00eb20b7939371f6f0076642f51cec7e3d3881cfb9fd8de55e0888c9059c41d'
+            'c84fc42b0e3edded09a57a8c9a38d64ee57bc60e72fa7d1fc98f0dd292f0428314f53907010da666f123067f951584ae8d36e1cbfaf31fff3aae02b2ed79fdf6')
 
 prepare() {
-  if [ "$CARCH" = "i686" ]; then
-    mv "$srcdir/Phoenix_FirestormOS-Release_i686_$pkgver" "$srcdir/firestorm"
-  else
-    mv "$srcdir/Phoenix_FirestormOS-Releasex64_x86_64_$pkgver" "$srcdir/firestorm"
-  fi
+  mv "$srcdir/Phoenix_FirestormOS-Releasex64_x86_64_$pkgver" "$srcdir/firestorm"
 
   cd "firestorm"
   for patch in ../*.patch; do
