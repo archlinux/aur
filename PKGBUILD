@@ -1,6 +1,6 @@
 pkgname='sac-core'
 pkgver='9.1.7'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='Safenet Authentication Client for Alladin eToken, stripped core package'
 arch=('x86_64')
 depends=('pcsclite' 'libusb-compat' 'openssh' 'nss')
