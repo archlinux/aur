@@ -24,7 +24,7 @@ pkgbase = snort
 	source = http://rules.emergingthreats.net/open/snort-2.9.0/emerging.rules.tar.gz
 	source = snort@.service
 	md5sums = 378e3938b2b5c8e358f942d0ffce18cc
-	md5sums = 4688b17998ccbb1518113376c39a158c
+	md5sums = SKIP
 	md5sums = a847030a34396e6b2d1cacd272ad42da
 
 pkgname = snort
