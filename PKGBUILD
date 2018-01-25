@@ -1,14 +1,14 @@
 # Maintainer: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=trenchbroom-git
-pkgver=r5063.942528c0c
-pkgrel=2
+pkgver=r5067.769b7e04d
+pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
 arch=('i686' 'x86_64')
 url="http://kristianduske.com/trenchbroom"
 license=('GPLv3')
 
-makedepends=('git' 'clang' 'pandoc')
+makedepends=('git' 'pandoc')
 depends=('freeimage' 'freetype2' 'wxgtk-trenchbroom' 'mesa' 'libgl' 'freeglut' 'libxxf86vm' 'glew' 'glm')
 
 source=(git://github.com/kduske/TrenchBroom.git#branch=release/v2.0.0)
@@ -17,8 +17,8 @@ sha1sums=('SKIP')
 build() {
 	mkdir TrenchBroom/build
 	cd TrenchBroom/build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release ..
-	make -j8
+	cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DwxWidgets_PREFIX=/opt/wxgtk-trenchbroom
+	cmake --build . --target TrenchBroom
 }
 
 pkgver() {
