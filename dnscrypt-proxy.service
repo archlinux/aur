@@ -1,13 +1,15 @@
 [Unit]
 Description=DNSCrypt client proxy
 Documentation=https://github.com/jedisct1/dnscrypt-proxy
+Requires=dnscrypt-proxy.socket
+After=dnscrypt-proxy.socket
 After=network.target
 Before=nss-lookup.target
 
 [Service]
 Type=simple
+NonBlocking=true
 ExecStart=/usr/bin/dnscrypt-proxy --config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
-AmbientCapabilities=CAP_NET_BIND_SERVICE
 DynamicUser=yes
 ProtectHome=true
 CacheDirectory=dnscrypt-proxy
