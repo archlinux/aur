@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-git
-pkgver=20180112.20024
+pkgver=20180125.20078
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://launchpad.net/inkscape"
@@ -55,4 +55,5 @@ build() {
 package() {
   cd "$_gitname/build"
   make DESTDIR="$pkgdir" install
+  rm "$pkgdir"/usr/share/icons/hicolor/icon-theme.cache
 }
