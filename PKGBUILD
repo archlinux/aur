@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=87+7+g70cb725
+pkgver=90+35+gcea2124
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
@@ -74,18 +74,20 @@ prepare() {
 build() {
   cd ${pkgname}
   python setup.py build
+  make -C doc
 }
 
 check() {
   cd ${pkgname}
   PYTHONPATH=".:${PYTHONPATH}" py.test \
-    -k 'not test_rlib and not test_progress and not test_ppu and not test_elf'
+    -k 'not test_rlib and not test_progress and not test_ppu and not test_elf and not test_icc and not test_presenters'
 }
 
 package() {
   cd ${pkgname}
   python setup.py install --skip-build -O1 --root="${pkgdir}"
-  install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 doc/diffoscope.1 -t "${pkgdir}/usr/share/man/man1"
 }
 
 # vim: ts=2 sw=2 et:

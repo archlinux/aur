@@ -1,6 +1,6 @@
 pkgbase = diffoscope-git
 	pkgdesc = Tool for in-depth comparison of files, archives, and directories
-	pkgver = 87+7+g70cb725
+	pkgver = 90+35+gcea2124
 	pkgrel = 1
 	url = https://diffoscope.org/
 	arch = i686
