@@ -2,7 +2,7 @@
 
 pkgname=wxgtk-trenchbroom
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK+3 implementation of wxWidgets API for GUI with TrenchBroom patches."
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
@@ -12,8 +12,6 @@ depends=('gtk3' 'gst-plugins-base-libs' 'libsm' 'libxxf86vm' 'libnotify')
 makedepends=('gst-plugins-base' 'gconf' 'glu' 'webkit2gtk' 'libnotify' 'gtk2')
 optdepends=('webkit2gtk: for webview support')
 options=('!emptydirs')
-conflicts=('wxgtk')
-provides=('wxgtk')
 
 source=(https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.0/wxWidgets-${pkgver}.tar.bz2
 		make-abicheck-non-fatal.patch
@@ -36,7 +34,7 @@ prepare() {
 build() {
 	cd wxWidgets-${pkgver}
 	./autogen.sh
-	./configure --prefix=/usr --libdir=/usr/lib --with-gtk=3 --with-opengl --enable-unicode \
+	./configure --prefix=/opt/$pkgname --libdir=/usr/lib --with-gtk=3 --with-opengl --enable-unicode \
 	--enable-graphics_ctx --enable-mediactrl --enable-webview --with-regex=builtin \
 	--with-libpng=sys --with-libxpm=sys --with-libjpeg=sys --with-libtiff=sys \
 	--disable-precomp-headers
@@ -47,7 +45,7 @@ build() {
 package() {
 	cd wxWidgets-${pkgver}
 	make DESTDIR="${pkgdir}" install
-	install -D -m644 "docs/licence.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	ln -s /usr/include/wx-3.1/wx $pkgdir/usr/include/wx
+	install -D -m644 "docs/licence.txt" "$pkgdir/opt/$pkgname/share/licenses/$pkgname/LICENSE"
+	ln -s /opt/$pkgname/include/wx-3.1/wx $pkgdir/opt/$pkgname/include/wx
 }
 
