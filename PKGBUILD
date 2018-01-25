@@ -5,22 +5,20 @@ pkgname=mos-bin
 pkgver=1.24.bd8e2958
 pkgrel=1
 pkgdesc="This package contains the Mongoose OS CLI tool."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://mongoose-os.com"
-license=('GPLv2')
+license=('GLPv2')
 groups=('')
 depends=('libftdi-compat' 'libusb>=1.0.16')
 options=('!strip' '!emptydirs')
-source_i686=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_1.24+bd8e2958~zesty0_i386.deb")
 source_x86_64=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_1.24+bd8e2958~zesty0_amd64.deb")
-sha512sums_i686=('553b3c2cda7ca97d0958ed94132861d018217612a5335594c443ab5b8981cfa2')
 sha512sums_x86_64=('16e30058cabf35c2078238b2cd29ca83f4a9086a3f788793b5742b71f234870ac10bd2a93a163998388a6bee7dae27c2c1e95f46a90872739b42e1b027ca1d4a')
 
 package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-
-	install -D -m644 "/usr/share/doc/mos/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	
+	#install -D -m644 "/usr/share/doc/mos/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
