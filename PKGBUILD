@@ -5,8 +5,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-surface4      # Build kernel with a different name
-_srcname=linux-4.14.2
-pkgver=4.14.2
+_srcname=linux-4.14.15
+pkgver=4.14.15
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -33,15 +33,15 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('e92690620a4e4811c6b37b2f1b6c9b32a1dde40aa12be6527c8dc215fb27464c'
+sha256sums=('ffc393a0c66f80375eacd3fb177b92e5c9daa07de0dcf947e925e049352e6142'
             'SKIP'
-            'efd4cd1ec319e9eed73f67b66de5a761a8365b9b227479f073f9115550cb157c'
+            'd3890f7442ea8b72c61bbe943527ba252869927a9463a878a41c7e21d6b2b27a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '260859d91e9c77c8231d9ba9f86ab1c970be21da2134efd6b4df139321b80b1d'
-            'c57e13c8a15d06e4e04cda4ae95c7920cbd8b8b40a17252f2413c8b57da952f3'
-            '8d724a67ebb52b5130c855907c17a050a3224ec2fdc11f1544723b5025a36c17'
+            'fae3adc1b4ff965e8026f02633afadf75c916c817ff48ced41d5d6f637eb89e9'
+            'ac822d7550a8e4070b5760d7fb86c0e0dba6328a63b85d001f3e19d11a3ed417'
             '835ff847328db11f31d2eb954f45a6067527626dbf984793c44982ef5f60863e'
             '985141fe1d694b95bc78a4b0f3dafcc2cbddabcf2c44eda8feb92847bf9f9c68'
             '82d0fa48947aff93cbbc9a0f0f3020bf95e860d604549b20f7ef8e1634798bd8')
