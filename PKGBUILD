@@ -49,7 +49,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'ad0f318809d074ee387f48fdfcb711b0fa3eb378867ac65c6da3d490834e649d'
             'f69b0f127f8f1a2b4b34dedaf3c37ef3e561e75fea4de031993341a93c0456d9'
             '139b6357a092ecc0284ba8f4440f7babcb6f5ac81a52420ad950de4cd2f281dd'
-            'fe2f82b81d689ec35a9ecb3ecf1ebc17c39dcbf214039f200ff19a27cd2482e9')
+            '6462a384cd181ccc48c87305da67bc50606537efbaeaafab5992975c6ea9256a')
 
 
 _kernelname=${pkgbase#linux}
