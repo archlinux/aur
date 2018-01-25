@@ -1,6 +1,6 @@
 pkgname='sac-core'
 pkgver='9.1.7'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Safenet Authentication Client for Alladin eToken, stripped core package'
 arch=('x86_64')
 depends=('pcsclite' 'libusb-compat' 'openssh' 'nss')
@@ -33,7 +33,8 @@ package() {
     ln -sf libeToken.so.9.1.7 libeToken.so
 
     cd "$pkgdir/usr/lib/pcsc/drivers/aks-ifdh.bundle/Contents/Linux/"
-    ln -sf libAksIfdh.so.9.0 libAksIfdh.so
+    ln -sf libAksIfdh.so.9.1 libAksIfdh.so
+    ln -sf libAksIfdh.so.9.1 libAksIfdh.so.9
 }
 
 post_install() {
