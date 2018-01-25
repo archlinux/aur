@@ -1,7 +1,7 @@
 pkgbase = xmind
 	pkgdesc = Brainstorming and Mind Mapping Software
 	pkgver = 3.7.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.xmind.net
 	install = xmind.install
 	arch = i686
