@@ -1,0 +1,25 @@
+pkgbase = crackmapexec
+	pkgdesc = A swiss army knife for pentesting Windows/Active Directory environments
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = https://github.com/byt3bl33d3r/CrackMapExec
+	arch = any
+	groups = archstrike
+	groups = archstrike-exploit
+	license = GPL3
+	makedepends = python2-setuptools
+	depends = impacket
+	depends = python2-gevent
+	depends = python2-netaddr
+	depends = python2-crypto
+	depends = python2-pyasn1
+	depends = python2-termcolor
+	depends = python2-colorama
+	depends = python2-pyopenssl
+	depends = python2-msgpack
+	depends = python2-requests
+	source = https://github.com/byt3bl33d3r/CrackMapExec/archive/v3.1.5.tar.gz
+	sha512sums = c7501afc0f659466eca76863c8afeb262150f3f13ccf9d21412e69b114295c28ba001e979aae014124b31653a0a95a5a4afc5970892d01454f9941a82b6182ec
+
+pkgname = crackmapexec
+
