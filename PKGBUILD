@@ -1,7 +1,8 @@
-# Maintainer: der_ronny <ronnymichaelradke[at]web[dot]de>
+# Submitter: der_ronny <ronnymichaelradke[at]web[dot]de>
+# Maintainer: Marcel Robitaille <mail@marcelrobitaille.me>
 # Co-Maintainer: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
 pkgname=repetier-host
-pkgver=1.6.2
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="almost complete 3d-printing workflow"
 url='http://www.repetier.com/'
@@ -10,15 +11,12 @@ license=('custom')
 depends=('desktop-file-utils' 'mono')
 optdepends=('slic3r' 'skeinforge')
 source=("http://download.repetier.com/files/host/linux/repetierHostLinux_${pkgver//./_}.tgz"
-        "${pkgname}_buildfix.diff"
         "${pkgname}_fix-desktop-file.diff")
-md5sums=('bc455ac8ebfbe88c2fd0f9eef0f6dcb4'
-         '971ee8f825963df09be4470f268cfe89'
+md5sums=('688744a981bfe2ba4bb06084c66c407c'
          '9862b0f96ee420233b92b936d131707d')
 
 prepare() {
   cd ${srcdir}/RepetierHost
-  patch -p1 -i "${srcdir}/${pkgname}_buildfix.diff"
   patch -p1 -i "${srcdir}/${pkgname}_fix-desktop-file.diff"
 }
 
