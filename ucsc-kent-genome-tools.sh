@@ -1,1 +1,1 @@
-export PATH=/opt/ucsc-kent-genome-tools/bin:$PATH
+export PATH=/opt/ucsc-kent-genome-tools:$PATH
