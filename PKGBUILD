@@ -2,7 +2,7 @@
 
 pkgname=ocaml-biniou
 _oname=biniou
-pkgver=1.0.12
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A binary data serialization format inspired by JSON'
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,16 +12,15 @@ depends=('glibc')
 makedepends=('ocaml-easy-format' 'ocaml-findlib' 'ocamlbuild')
 url="https://github.com/mjambon/biniou"
 source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b946e720d94d524b95bb0401d9e47a971e9234df808fe5f12601140ab09ec686')
+sha256sums=('d939a9d58660201738c3d22ad5b7976deb2917b22591a07525807bb741357d36')
 build() {
-  cd $srcdir/$_oname-$pkgver
-  make && make doc
+    cd ${srcdir}/${_oname}-${pkgver}
+    make all
 }
 
 package() {
-  cd $srcdir/$_oname-$pkgver
-  mkdir -p $pkgdir/usr/bin $pkgdir$(ocamlfind printconf destdir)
-  make OCAMLFIND_DESTDIR=${pkgdir}$(ocamlfind printconf destdir) install BINDIR="${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/doc/$pkgname"
-  install -t "${pkgdir}/usr/share/doc/$pkgname" doc/*
+    cd ${srcdir}/${_oname}-${pkgver}
+    export OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
+    install -dm755 "$OCAMLFIND_DESTDIR"
+    jbuilder install
 }
