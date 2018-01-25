@@ -1,11 +1,10 @@
-# Maintainer:
-# Contributor: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Suzy Williams <suzanne.williams3@verizon.net>
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=yabasic
-pkgver=2.78.2
+pkgver=2.78.3
 pkgrel=1
 pkgdesc="Yet Another Basic"
 arch=('i686' 'x86_64')
@@ -32,3 +31,4 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+sha256sums=('2d9855e2b69af0508377316cb989a461b0f3cfefde63fbdcc1854e6d5e5f23ff')
