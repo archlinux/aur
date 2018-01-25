@@ -1,4 +1,4 @@
-# Maintainer: William Hobbs <hobbledehoy899@protonmail.org>
+# Maintainer: hobbledehoy899 <hobbledehoy899@protonmail.org>
 
 pkgname=palemoon-unstable-bin
 pkgver=27.8.0a1
