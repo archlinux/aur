@@ -10,7 +10,7 @@ pkgbase = todoist-linux-bin
 	source = https://s3.amazonaws.com/kamhix/downloads/todoist-linux-64bits.tar.gz
 	source = Todoist.desktop
 	md5sums = c107b9c92f9eab3a33b42afa434e28f0
-	md5sums = ee8b4a0222a19f04bdefff72f51c30a3
+	md5sums = e3d5d47be26b1875ea420f807f97cee1
 
 pkgname = todoist-linux-bin
 
