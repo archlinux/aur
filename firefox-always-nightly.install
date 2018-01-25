@@ -1,5 +1,5 @@
 post_install() {
-  getent group munin >/dev/null || groupadd --system munin
+  getent group firefox >/dev/null || groupadd --system firefox
   chown -R :firefox "/opt/firefox-nightly"
   chmod -R g+w "/opt/firefox-nightly"
 

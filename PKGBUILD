@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 
 pkgver=999.0a1 # High number so we're always picked up for upgrade
-pkgrel=22 # Actual revision of this script (but has no other effect because of above)
+pkgrel=23 # Actual revision of this script (but has no other effect because of above)
 
 # Go through the hierarchy of dated builds, as the checksums there are
 # generated within 4-5 minutes, instead of several hours in latest/
