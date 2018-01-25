@@ -2,7 +2,7 @@
 
 pkgname=kubernetes-built
 pkgnameorg=kubernetes
-pkgver=1.8.5
+pkgver=1.9.0
 pkgrel=1
 pkgrelorg=1
 _contribver=0.7.0
@@ -24,10 +24,10 @@ source=("https://versaweb.dl.sourceforge.net/project/aur-kubernetes-built/kubern
 #	"https://github.com/kubernetes/contrib/archive/$_contribver.tar.gz"
 		)
 # noextract=("kubernetes-built-$pkgver-$pkgrel-x86_64.pkg.tar.xz")
-sha256sums=('35bd76dfc4263eadf718c23778767bba7c3102f60ac1d4cf62836fdc1045fdb9'
+sha256sums=('3b54f92a38ff20c40bc6f51489dc0cfb4b5d1592e4b591668f11861951fc6b15'
 #	'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
 )
-md5sums=('e296aed0ff3d64184b70ee70f5a7828f'
+md5sums=('9a8837245a3ae54ee05dfaac7157e4a7'
 #	'bcbca37b78cf18848976593b97580037'
 )
 
@@ -41,7 +41,7 @@ prepare() {
 package() {
     [ "$CARCH" = 'x86_64' ] && _kubearch=amd64
 
-    binaries=(apiextensions-apiserver cloud-controller-manager kube-proxy kube-apiserver kube-controller-manager kubelet kubeadm kubemark hyperkube kube-aggregator kube-scheduler kubectl kubefed kubemark gke-certificates-controller)
+    binaries=(apiextensions-apiserver cloud-controller-manager kube-proxy kube-apiserver kube-controller-manager kubelet kubeadm kubemark hyperkube kube-aggregator kube-scheduler kubectl kubemark gke-certificates-controller)
     for bin in "${binaries[@]}"; do
         install -Dm755 $srcdir/usr/bin/$bin $pkgdir/usr/bin/$bin
     done
