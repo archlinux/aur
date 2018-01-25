@@ -1,13 +1,13 @@
 pkgbase = kubeadm-bin
 	pkgdesc = Kubernetes.io kubeadm binary
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = http://kubernetes.io
 	arch = x86_64
 	license = apache
 	conflicts = kubernetes
-	source_x86_64 = https://packages.cloud.google.com/apt/pool/kubeadm_1.9.1-00_amd64_31ec5709ec1eb37b194563cb28eaafafd1f0c9d009239cdfb694686066b35c2e.deb
-	sha256sums_x86_64 = 31ec5709ec1eb37b194563cb28eaafafd1f0c9d009239cdfb694686066b35c2e
+	source_x86_64 = https://packages.cloud.google.com/apt/pool/kubeadm_1.9.2-00_amd64_869c826d406035aad1617118f88d5c627e16797388a5e2b3735d7b825d62e7ad.deb
+	sha256sums_x86_64 = 869c826d406035aad1617118f88d5c627e16797388a5e2b3735d7b825d62e7ad
 
 pkgname = kubeadm-bin
 
