@@ -1,0 +1,24 @@
+post_install() {
+  echo  "Usage:"
+  echo  "/omemo (on|off)"
+  echo  ">>Turns on/off the usage of the plugin while it may be still loaded in profanity. (Default=ON)"
+  echo  
+  echo  "/omemo status" 
+  echo  ">>Displays the current status in profanity's console window"
+  echo
+  echo  "/omemo start [contact jid]" 
+  echo  ">>Starts a new conversation with the given contact, if not given, the one in the current chat"
+  echo
+  echo  "/omemo end [contact jid]" 
+  echo  ">>Ends the conversation with the given contact jid or, if not given, the one in the current chat"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  echo
+}
+
+# vim:set ts=2 sw=2 et:
