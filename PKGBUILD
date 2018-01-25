@@ -5,7 +5,7 @@
 
 _srcname=vlc
 pkgname=vlc-decklink
-pkgver=2.2.7
+pkgver=2.2.8
 pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
 arch=('i686' 'x86_64')
@@ -65,7 +65,7 @@ source=("http://download.videolan.org/${_srcname}/${pkgver}/${_srcname}-${pkgver
         'lua53_compat.patch'
         'vlc-2.2.6-fix-memleak.patch'
         'update-vlc-plugin-cache.hook')
-sha256sums=('225c4cc22f4d7623ec2d4bda10f7e6e93bcf8de66d2a99145f85735963ee2026'
+sha256sums=('9bf046848fb56d93518881b39099b8288ee005d5ba0ddf705b6f6643b8d562ec'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
             '235ea97afcc46cb7b8b180c4cfc7abd44077c036991eb7e3e4af0f8e6ad8f91b'
             '4105af8697ac641867a76ddef5f91c69999bf6f980a5681bc36155bbce021f02')
@@ -102,7 +102,7 @@ build() {
         --enable-realrtsp \
         --enable-aa \
         --enable-vcdx \
-        --enable-upnp \
+        --disable-upnp \
         --enable-opus \
         --enable-sftp \
         --enable-decklink
