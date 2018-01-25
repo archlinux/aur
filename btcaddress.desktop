@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Comment=Casascius Bitcoin Address Utility
+Terminal=false
+Name=Bitcoin Address Utility
+Exec=mono /opt/btcaddress/BtcAddress.exe
+Type=Application
+Icon=btcaddress.png
+Categories=Accessories;Office;Finance;
