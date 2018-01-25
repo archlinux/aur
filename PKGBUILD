@@ -1,6 +1,6 @@
 # Maintainer: Your Name <jc.francois@gmail.com>
 pkgname=beaker-browser-bin
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="Peer-to-peer browser with tools to create and host websites"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("https://github.com/beakerbrowser/beaker/releases/download/${pkgver}/bea
         "beaker.png"
         "LICENSE")
 noextract=()
-md5sums=('fc52cd3de85b7410632be78c9d224565'
+md5sums=('230f726139d12a40f98d078904ea162d'
          '9b63b4e9b329c43ccbf4c9fda09afbd0'
          '6294b99dbab87ee048a65a202dd05d9b'
          '9cbb1795dc2934472f7c2b021294964d'
@@ -30,4 +30,5 @@ package() {
     install -Dm755 ${srcdir}/beaker-browser-${pkgver}-${arch}.AppImage  ${pkgdir}/opt/beaker-browser/beaker-browser.AppImage
 }
 
-# for next revision, install /usr/share/appimagekit/no_desktopintegration to get rid of beaker-browser.sh
+# Possible alternative to deleting unwanted files at every run:
+# install /usr/share/appimagekit/no_desktopintegration to prevent installation (but from ALL AppImages)
