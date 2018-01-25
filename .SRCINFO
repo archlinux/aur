@@ -1,12 +1,12 @@
 pkgbase = python-tkcalendar
 	pkgdesc = Calendar widget for Tkinter
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/tkcalendar
 	arch = any
 	license = GPL3
-	source = tkcalendar-1.1.3.tar.gz::https://github.com/j4321/tkcalendar/archive/v1.1.3.tar.gz
-	sha512sums = 1bb07566ffb9b8f4965b70a10457026f03178a6f88a9e401111aa2164a23591c826cc914960db011205d547d9f6021b8c1578e119e3fc9485700ab0e4dca95e5
+	source = tkcalendar-1.1.4.tar.gz::https://github.com/j4321/tkcalendar/archive/v1.1.4.tar.gz
+	sha512sums = 5eb060a350bcdf811f77763fdece69e7077fddf92a6be6832003e68a12a455958e63b11dfd6ec0238b80e3950cb9cf814ed61e6af09eaf4a2454794875a5ea26
 
 pkgname = python-tkcalendar
 	depends = python
