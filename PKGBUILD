@@ -5,7 +5,7 @@
 
 pkgname=idjc
 pkgver=0.8.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
 license=('GPL2')
@@ -48,6 +48,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
+    sed -i "s/Icon=\/usr\/share\/pixmaps\/$pkgname.png/Icon=$pkgname/g" $pkgdir/usr/share/applications/$pkgname.desktop
 }
 
 md5sums=('47f13035d94f5c378bf237c335194a4d')
