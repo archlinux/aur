@@ -28,5 +28,5 @@ package() {
   ./install.sh --install_path ${pkgdir}
 
   # install license
-  install -D -m644 COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  install -D -m644 COPYING "$pkgdir"/usr/share/licenses/"$_pkgname"/LICENSE
 }
