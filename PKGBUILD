@@ -2,7 +2,7 @@
 
 pkgname=sylpheed-beta
 pkgver=3.7.0beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight and user-friendly e-mail client. Latest official beta version."
 arch=('i686' 'x86_64')
 url="http://sylpheed.sraoss.jp/en/"
@@ -11,7 +11,7 @@ depends=('gpgme' 'gtk2' 'compface' 'gtkspell')
 options=('libtool')
 conflicts=('sylpheed' 'sylpheed-beta-iconmod')
 provides=('sylpheed')
-source=(http://sylpheed.sraoss.jp/sylpheed/v3.7.0/sylpheed-$pkgver.tar.bz2{,.asc})
+source=(http://sylpheed.sraoss.jp/sylpheed/v3.7beta/sylpheed-$pkgver.tar.bz2{,.asc})
 
 build() {
   cd "$srcdir/sylpheed-$pkgver"
