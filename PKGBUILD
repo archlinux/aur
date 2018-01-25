@@ -72,7 +72,7 @@ if [[ BRANCH = "emacs-26" ]]; then
 else
   pkgname=emacs-git
 fi
-pkgver=27.0.50.131889
+pkgver=27.0.50.131892
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
@@ -212,7 +212,7 @@ if [[ $LTO = "YES" ]]; then
 fi
 
 if [[ $CLI = "YES" ]]; then
-  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' --without-lcms2' '--without-rsvg' );
+  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' );
 elif [[ $NOTKIT = "YES" ]]; then
   _conf+=( '--with-x-toolkit=no' 'without-toolkit-scrollbars' '--with-xft' '--without-xaw3d' );
 elif [[ $LUCID = "YES" ]]; then
@@ -220,7 +220,7 @@ elif [[ $LUCID = "YES" ]]; then
 elif [[ $GTK2 = "YES" ]]; then
   _conf+=( '--with-x-toolkit=gtk2' '--without-gsettings' '--without-xaw3d' );
 else
-  _conf+=( '--with-x-toolkit=gtk3' --without-xaw3d' );
+  _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
 fi
 
 if [[ ! $GPM = "YES" ]]; then
