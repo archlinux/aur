@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=weather-go
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Weather via the command line'
 url=https://github.com/jessfraz/weather
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('689300d65f1055764cc21aa5a8a1bf6368a9259da9c1945d51046340e304f99e2e23d01c102445647226b191629d3ce527b624db50bfaf72e933b557e973280d')
+sha512sums=('9023e47e97e04510677da5c85f38bcd9bed4f2111c2a40ff6117b37eb73bf16c290c7c8dc4e89f44e508a9593b5d5369ed5281db1d9033e32a6fa3ac60f24ef0')
 
 prepare() {
   mkdir -p src/github.com/jessfraz
