@@ -1,6 +1,6 @@
 pkgbase = inox-edgy
 	pkgdesc = A web browser built for speed, simplicity, and security, always nightly!, its canary
-	pkgver = 66.0.3329.1
+	pkgver = 66.0.3330.0
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = inox-edgy.install
@@ -43,7 +43,7 @@ pkgbase = inox-edgy
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-66.0.3329.1.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-66.0.3330.0.tar.xz
 	source = chromium-launcher-5.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v5.tar.gz
 	source = https://raw.githubusercontent.com/bn0785ac/in-night/master/enox.desktop
 	source = https://raw.githubusercontent.com/bn0785ac/in-night/master/breakpad-use-ucontext_t.patch
@@ -139,7 +139,8 @@ pkgbase = inox-edgy
 	source = https://raw.githubusercontent.com/bn0785ac/in-night/master/pt.patch
 	source = https://raw.githubusercontent.com/bn0785ac/in-night/master/edgy.patch
 	source = https://raw.githubusercontent.com/bn0785ac/in-night/master/k2.patch
-	sha256sums = 547523dd770912621f98d9b0aaff134a3954c2e1fa18708577e50ef1352a7a4b
+	source = https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
+	sha256sums = 0e5047b33fadb07cf91bbdb447ea3d553f241dbffcd7af632fe334047b12210b
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
 	sha256sums = 2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb
 	sha256sums = 6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8
@@ -235,6 +236,7 @@ pkgbase = inox-edgy
 	sha256sums = cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4
 	sha256sums = 042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da
 	sha256sums = cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80
+	sha256sums = 3e60735150ca40812d7c0296b52285a9012fb8b9100f24378fea95e20beb43e6
 
 pkgname = inox-edgy
 
