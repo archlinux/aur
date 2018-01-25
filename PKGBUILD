@@ -1,5 +1,7 @@
 # $Id$
 # vim:set ft=sh:
+# Maintainer: Andreas Baumann <mail AT andreasbaumann DOT cc >
+# based on opera PKGBUILD by:
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
