@@ -4,8 +4,8 @@
 # pinned package. For those that wish to remain on 2.1 branch
 pkgname=opentx-companion21
 pkgver=2.1.9
-pkgrel=3
-pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
+pkgrel=4
+pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares 2.1 releases" 
 arch=('x86_64')
 url="http://www.open-tx.org/"
 license=('GPL')
