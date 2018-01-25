@@ -46,16 +46,4 @@ build() {
 package_veyon() {
     cd build
     make DESTDIR="${pkgdir}" install
-    
-    #### Uncomment the following lines to 
-    #### Install icon and desktop shortcut
-    
-    #install -m 644 -Dt "${pkgdir}/usr/share/pixmaps/" \
-    #    "${srcdir}/${pkgname}/master/data/${pkgname}-master.xpm"
-
-    #install -m 644 -Dt "${pkgdir}/usr/share/applications/" \
-    #    "${srcdir}/${pkgname}/master/data/${pkgname}-master.desktop.in"
-
-    #mv "${pkgdir}/usr/share/applications/${pkgname}-master.desktop.in" \
-    #    "${pkgdir}/usr/share/applications/${pkgname}-master.desktop"
 }
