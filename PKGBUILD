@@ -1,11 +1,11 @@
-# Maintainer: Carsten Haitzler <raster@rasterman.com>
+\# Maintainer: Carsten Haitzler <raster@rasterman.com>
 # Contributor: Gavin Fernandes <gavinfernandes2012@gmail.com>
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.20.99.56662.g10103b9b45
+pkgver=1.20.99.57067.g15c7bbf5fa
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi'
          'libpulse' 'libspectre' 'libraw' 'librsvg' 'libwebp' 'libxcomposite'
          'libxcursor' 'libxinerama' 'libxkbcommon' 'libxp' 'libxrandr'
          'libxss' 'libunwind' 'mesa' 'openjpeg2' 'poppler' 'wayland'
-         'shared-mime-info' 'ttf-font' 'scim' 'libibus' 'glib2')
+         'shared-mime-info' 'ttf-font' 'scim' 'libibus' 'glib2'
+         'wayland-client' 'wayland-protocols' 'wayland-scanner')
 makedepends=('git' 'python2')
 optdepends=('geoclue: For elocation'
             'gst-plugins-base: Video and thumbnail codecs'
