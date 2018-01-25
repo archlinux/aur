@@ -1,13 +1,16 @@
 pkgbase = libmd
 	pkgdesc = message digest functions for BSD systems
-	pkgver = 0.0.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://www.hadrons.org/software/libmd/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	source = https://libbsd.freedesktop.org/releases/libmd-0.0.0.tar.xz
-	sha256sums = fd3f2366236fb3fd0dac0c0a77ffff8511e2939c79d1d58daf56e3f5ee383a88
+	source = https://archive.hadrons.org/software/libmd/libmd-1.0.0.tar.xz
+	source = https://archive.hadrons.org/software/libmd/libmd-1.0.0.tar.xz.asc
+	validpgpkeys = 4F3E74F436050C10F5696574B972BF3EA4AE57A3
+	sha256sums = f21aea69f6411cb4307cda1f6378c7ed07830202b5f4cb9e64f681fdaf2d64c7
+	sha256sums = SKIP
 
 pkgname = libmd
 
