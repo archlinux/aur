@@ -1,11 +1,12 @@
 pkgbase = hcloud
 	pkgdesc = CLI for Hetzner Cloud
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hetznercloud/cli
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	optdepends = bash-completion: tab auto-completion
 	provides = hcloud
 	source = hcloud-1.2.0.tar.gz::https://github.com/hetznercloud/cli/archive/v1.2.0.tar.gz
 	sha256sums = 92b00d393e6029fc25fff93d74166c96c0b16aff963355d7ec2a26108e48427a
