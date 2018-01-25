@@ -1,6 +1,6 @@
-pkgbase = opera
+pkgbase = opera32
 	pkgdesc = A fast and secure web browser
-	pkgver = 50.0.2762.67
+	pkgver = 45.0.2552.898
 	pkgrel = 1
 	url = http://www.opera.com/
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = opera
 	optdepends = upower: opera battery save
 	options = !strip
 	options = !zipman
-	backup = etc/opera/default
-	source = https://get.geo.opera.com/pub/opera/desktop/50.0.2762.67/linux/opera-stable_50.0.2762.67_amd64.deb
+	backup = etc/opera32/default
+	source = https://get.geo.opera.com/pub/opera32/desktop/45.0.2552.898/linux/opera32-stable_45.0.2552.898_amd64.deb
 	source = opera
 	source = default
 	source = eula.html
@@ -36,5 +36,5 @@ pkgbase = opera
 	sha512sums = 444e27eb486d80fbe3027c10e21b9e18a56de62d218ec5ca26d3a50847567ae9b8233dd1dd9a91efb697822c28c245caa6f28bcdc2ddcdf8a32067ae5a339ace
 	sha512sums = 9fd239d630f183147ff824c8ce87705e1a919e33b3d912f6871b5e68e123be7f843ffef2e3f2835fecc676ea2f548150eb06f154830cf865bd3392188b008671
 
-pkgname = opera
+pkgname = opera32
 
