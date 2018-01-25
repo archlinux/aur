@@ -5,6 +5,12 @@ pkgbase = dxvk-git
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	license = zlib/libpng
+	makedepends = ninja
+	makedepends = meson
+	makedepends = glslang
+	makedepends = mingw-w64-gcc
+	depends = vulkan-icd-loader
+	depends = wine-staging
 	source = git+https://github.com/doitsujin/dxvk.git
 	md5sums = SKIP
 
