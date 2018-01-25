@@ -1,7 +1,7 @@
 # Maintainer: Jiri Tyr <jiri.tyr@gmail.com>
 
 pkgname='gbt'
-pkgver='1.1.7'
+pkgver='1.2.0'
 pkgrel=1
 pkgdesc='Highly configurable prompt builder for Bash and ZSH written in Go'
 url="https://github.com/jtyr/gbt"
@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('gbt-git')
 optdepends=('nerd-fonts-complete')
 source=("https://github.com/jtyr/gbt/releases/download/v$pkgver/$pkgname-$pkgver-linux-amd64.tar.gz")
-sha256sums=('43381907ae603aa2331335d9a5cef1f5e0306a10571cfe661256ef5a18574243')
+sha256sums=('333a4a726ba815ab2a142174d070ac95ca87905307461b2b8b3a06eef4ecbe54')
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname" -t "$pkgdir/usr/bin"
