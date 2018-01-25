@@ -2,7 +2,7 @@
 
 pkgname=qmodbus-git
 _gitname=qmodbus
-pkgver=r125.2186db8
+pkgver=r146.8c18311
 pkgrel=1
 pkgdesc='QModBus is a free Qt-based implementation of a ModBus master application. A graphical user interface allows easy communication with ModBus slaves over serial line interface. QModBus also includes a bus monitor for examining all traffic on the bus.'
 arch=('x86_64' 'i686')
@@ -37,7 +37,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/applications"
 	mkdir -p "$pkgdir/usr/bin"
 	
-	cp "$srcdir/$_gitname/QModBus" "$pkgdir/usr/share/qmodbus/build/qmodbus"	
+	cp "$srcdir/$_gitname/qmodbus" "$pkgdir/usr/share/qmodbus/build/qmodbus"	
 	cp "$srcdir/$_gitname/data/logo.png" "$pkgdir/usr/share/qmodbus/data/"
 	cp "$srcdir/$_gitname/qmodbus.desktop" "$pkgdir/usr/share/applications/"
 	
