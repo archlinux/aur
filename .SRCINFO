@@ -1,0 +1,22 @@
+pkgbase = ros-kinetic-robotnik-sensors
+	pkgdesc = Robotnik standard sensors description. URDF and meshses.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://wiki.ros.org/robotnik_sensors
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-urdf
+	makedepends = ros-kinetic-xacro
+	depends = ros-kinetic-hector-gazebo-plugins
+	depends = ros-kinetic-xacro
+	depends = ros-kinetic-urdf
+	depends = python2-rospkg
+	depends = python2-netifaces
+	source = ros-kinetic-robotnik-sensors::git+https://github.com/RobotnikAutomation/robotnik_sensors.git#tag=kinetic-multi-devel
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-robotnik-sensors
+
