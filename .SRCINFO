@@ -1,0 +1,22 @@
+pkgbase = brother-mfc-j460dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J460DW
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-j460dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf102538/mfcj460dwlpr-1.0.0-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf102539/mfcj460dwcupswrapper-1.0.0-0.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = 9d14b32b44551df81c2cf1f1d0ec7dc9
+	md5sums = 6ab0a419ac295472a09318b9537253ae
+	md5sums = 97ad0cffd216059e9d1d3121899d8646
+	md5sums = 8fd9dfb02716f9334bf07a119fa2e486
+
+pkgname = brother-mfc-j460dw
+
