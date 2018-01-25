@@ -1,7 +1,7 @@
-# Contributor: Daniel Milde <info@milde.cz>
+# Maintainer: Daniel Milde <daniel at milde dot cz>
 pkgname=pecl-propro
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Property proxy"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/propro"
@@ -22,5 +22,5 @@ package() {
   cd ${srcdir}/propro-${pkgver}
   make INSTALL_ROOT=${pkgdir} install
   install -d ${pkgdir}/etc/php/conf.d
-  echo ";extension=propro.so" > ${pkgdir}/etc/php/conf.d/propro.ini
+  echo ";extension=propro.so" > ${pkgdir}/etc/php/conf.d/1-propro.ini
 }
