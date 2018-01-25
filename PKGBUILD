@@ -1,6 +1,6 @@
 pkgname=mupen64plus-qt
-pkgver=1.10
-pkgrel=2
+pkgver=1.11
+pkgrel=1
 pkgdesc="A basic launcher for Mupen64Plus"
 arch=('i686' 'x86_64')
 url="https://github.com/dh4/mupen64plus-qt"
@@ -8,12 +8,10 @@ license=('BSD')
 depends=('quazip' 'mupen64plus' 'hicolor-icon-theme')
 install=mupen64plus-qt.install
 source=(https://github.com/dh4/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('526fa06e481ba4db84024a72535fc0c40dc06332bdb2985e90023948cbabac83')
+sha256sums=('28a9566f138ff5048dd761fa867892fc7325bdc489a79057360f2e4ddaac8eee')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-
-    sed -i 's#include <quazip/#include <quazip5/#g' src/common.cpp src/emulation/emulatorhandler.cpp
 
     qmake-qt5
     make
