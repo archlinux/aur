@@ -4,7 +4,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-git
-pkgver=21.0.1.r0.g4eb5be49
+pkgver=21.0.2.r0.g6ed55995
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -12,13 +12,15 @@ url="https://github.com/jp9000/obs-studio"
 license=("GPL2")
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
          "qt5-x11extras" "curl" "gtk-update-icon-cache")
-makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack" "vlc" "swig" "python")
+makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
+             "vlc" "swig" "luajit" "python")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "jack: JACK Support"
             "vlc: VLC Media Source"
-						"swig: Scripting"
-						"python: Python scripting")
+            "swig: Scripting"
+						"luajit: Lua scripting"
+            "python: Python scripting")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/jp9000/obs-studio.git#branch=master"
@@ -41,8 +43,10 @@ build() {
 
   mkdir -p build; cd build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-	-DOBS_VERSION_OVERRIDE=$pkgver ..
+  cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DLUAJIT_INCLUDE_DIR=/usr/include/luajit-2.0 \
+		-DOBS_VERSION_OVERRIDE=$pkgver ..
 
   make
 }
