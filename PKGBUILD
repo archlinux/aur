@@ -2,12 +2,12 @@
 
 pkgname=python-iwlib
 pkgver=1.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Python module to interface with iwlib'
 arch=('x86_64')
 url='https://github.com/nathan-hoad/python-iwlib'
 license=('GPL2')
-depends=('python' 'iw')
+depends=('python' 'wireless_tools')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nathan-hoad/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('2b79e412949a465d1383620745b6bfbf5924ef8ed47d459882afc5c86e54d10d1b963055df7076a481fb7bd6ade1d318ce35ed36ee5c129c048bbf6b1790f432')
