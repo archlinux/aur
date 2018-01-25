@@ -1,7 +1,8 @@
-# Contributor: Jonathan Ryan <jryan@curious-computing.com>
-# Contributor: Hussam Al-Tayeb <hussam@visp.net.lb>
+# Maintainer: Dominik Schrempf <dominik.schrempf at openmailbox dot org>
+# Contributor: Jonathan Ryan <jryan at curious-computing dot com>
+# Contributor: Hussam Al-Tayeb <hussam at visp dot net dot lb>
 pkgname=htpdate
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A client for time synchronisation"
 arch=(i686 x86_64)
@@ -9,8 +10,8 @@ url="http://www.vervest.org/htp/"
 license=(GPL2)
 depends=('glibc')
 source=("http://www.vervest.org/htp/archive/c/${pkgname}-${pkgver}.tar.xz" "htpdate.service")
-md5sums=('51fcfe05fc4f8be6b19ecbaf88e8deaa'
-         'b419153625904d9a5544e585f69c66c5')
+md5sums=('9d5ca69be06edf5d535b52b5f790da4e'
+         'fd11d26ebff84d9538ce9ab6238fae73')
 build() {
   cd ${pkgname}-${pkgver}
   make
