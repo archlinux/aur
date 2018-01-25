@@ -1,6 +1,6 @@
 # Maintainer: Adrián Laviós <adrian@lavios.eu>
 pkgname=dnscrypt-proxy-go-git
-pkgver=2.0.0beta9.r3.geb4f392
+pkgver=2.0.0beta9.r9.g803bc18
 pkgrel=1
 pkgdesc="A modern client implementation written in Go of the DNSCrypt v2 protocol."
 arch=('x86_64')
@@ -24,7 +24,6 @@ prepare() {
   cd "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
   sed -i 's|\['\''127\.0\.0\.1:53'\'', '\''\[::1\]:53'\''\]|\[\]|g' dnscrypt-proxy.toml
   sed -i 's|'\''dnscrypt-proxy\.log'\''|'\''/var/log/dnscrypt-proxy/dnscrypt-proxy\.log'\''|g' dnscrypt-proxy.toml
-  sed -i 's|'\''dnscrypt-resolvers\.csv'\''|'\''/var/cache/dnscrypt-proxy/dnscrypt-resolvers\.csv'\''|g' dnscrypt-proxy.toml
   sed -i 's|'\''forwarding-rules\.txt'\''|'\''/etc/dnscrypt-proxy/forwarding-rules\.txt'\''|g' dnscrypt-proxy.toml
   sed -i 's|'\''query\.log'\''|'\''/var/log/dnscrypt-proxy/query\.log'\''|g' dnscrypt-proxy.toml
   sed -i 's|'\''nx\.log'\''|'\''/var/log/dnscrypt-proxy/nx\.log'\''|g' dnscrypt-proxy.toml
@@ -32,6 +31,7 @@ prepare() {
   sed -i 's|'\''blocked\.log'\''|'\''/var/log/dnscrypt-proxy/blocked\.log'\''|g' dnscrypt-proxy.toml
   sed -i 's|'\''ip-blacklist\.txt'\''|'\''/etc/dnscrypt-proxy/ip-blacklist\.txt'\''|g' dnscrypt-proxy.toml
   sed -i 's|'\''ip-blocked\.log'\''|'\''/var/log/dnscrypt-proxy/ip-blocked\.log'\''|g' dnscrypt-proxy.toml
+  sed -i 's|'\''public-resolvers\.md'\''|'\''/var/cache/dnscrypt-proxy/public-resolvers\.md'\''|g' dnscrypt-proxy.toml
 }
 
 build() {
