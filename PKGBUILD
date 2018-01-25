@@ -4,7 +4,7 @@
 
 pkgname=python26
 pkgver=2.6.9
-pkgrel=12
+pkgrel=14
 _pybasever=2.6
 pkgdesc="Legacy version Python 2.6 of the high-level scripting language"
 arch=('i686' 'x86_64' 'arm')
@@ -15,7 +15,6 @@ makedepends=('gcc5' 'tk>=8.5.0')
 optdepends=('tk: for IDLE, pynche and modulator'
             'net-tools: arp, ifconfig and netstat are used in the uuid module')
 checkdepends=('net-tools')
-provides=(python2=${pkgver})
 changelog=ChangeLog
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
         modulator-launcher
@@ -184,7 +183,7 @@ package() {
   mv "${pkgdir}"/usr/bin/idle{,${_pybasever}}
   mv "${pkgdir}"/usr/bin/pydoc{,${_pybasever}}
   mv "${pkgdir}"/usr/bin/2to3{,-${_pybasever}}
-  mv "${pkgdir}"/usr/share/man/man1/python{.1,${pkgver}}
+  mv "${pkgdir}"/usr/share/man/man1/python{,${_pybasever}}.1
 
   # clean up #!s
   find "${pkgdir}/usr/lib/python${_pybasever}/" -name '*.py' | xargs sed -i \

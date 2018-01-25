@@ -1,7 +1,7 @@
 pkgbase = python26
 	pkgdesc = Legacy version Python 2.6 of the high-level scripting language
 	pkgver = 2.6.9
-	pkgrel = 12
+	pkgrel = 14
 	url = https://www.python.org/
 	changelog = ChangeLog
 	arch = i686
@@ -21,7 +21,6 @@ pkgbase = python26
 	depends = libffi
 	optdepends = tk: for IDLE, pynche and modulator
 	optdepends = net-tools: arp, ifconfig and netstat are used in the uuid module
-	provides = python2=2.6.9
 	source = https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tar.xz
 	source = modulator-launcher
 	source = pynche-launcher
