@@ -9,14 +9,14 @@
 
 pkgname=keepassxc-git
 _gitname=keepassxc
-pkgver=2.2.2.r199.gd2063cc3
+pkgver=2.2.4.r431.g46c58b32
 pkgrel=1
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassxc"
 license=('GPL2')
 depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 
-         'desktop-file-utils' 'yubikey-personalization')
+         'desktop-file-utils' 'yubikey-personalization' 'libsodium')
 install=keepassxc.install
 makedepends=('git' 'intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
 conflicts=('keepassxc')
@@ -47,6 +47,7 @@ build() {
         -DWITH_XC_HTTP=ON \
         -DWITH_XC_YUBIKEY=ON \
         -DWITH_XC_SSHAGENT=ON \
+        -DWITH_XC_BROWSER=ON \
         -DCMAKE_BUILD_TYPE=Release ..
     make
 }
