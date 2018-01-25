@@ -1,0 +1,22 @@
+pkgbase = ros-kinetic-twist-mux-msgs
+	pkgdesc = ROS The twist_mux msgs and actions package
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://wiki.ros.org/twist_mux_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-actionlib
+	makedepends = ros-kinetic-actionlib-msgs
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-actionlib
+	depends = ros-kinetic-actionlib-msgs
+	depends = python2-rospkg
+	source = ros-kinetic-twist-mux-msgs::git+https://github.com/ros-teleop/twist_mux_msgs.git#tag=2.0.0
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-twist-mux-msgs
+
