@@ -1,0 +1,20 @@
+pkgbase = ros-kinetic-robotnik-msgs
+	pkgdesc = ROS Definition of msgs and services used by some Robotnik's packages
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://wiki.ros.org/robotnik_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-std-msgs
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-std-msgs
+	depends = python2-rospkg
+	source = ros-kinetic-robotnik-msgs::git+https://github.com/RobotnikAutomation/robotnik_msgs.git#tag=master
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-robotnik-msgs
+
