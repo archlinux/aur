@@ -19,7 +19,7 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "jack: JACK Support"
             "vlc: VLC Media Source"
             "swig: Scripting"
-						"luajit: Lua scripting"
+            "luajit: Lua scripting"
             "python: Python scripting")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
@@ -44,9 +44,9 @@ build() {
   mkdir -p build; cd build
 
   cmake \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DLUAJIT_INCLUDE_DIR=/usr/include/luajit-2.0 \
-		-DOBS_VERSION_OVERRIDE=$pkgver ..
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLUAJIT_INCLUDE_DIR=/usr/include/luajit-2.0 \
+    -DOBS_VERSION_OVERRIDE=$pkgver ..
 
   make
 }
@@ -57,4 +57,4 @@ package() {
   make install DESTDIR="$pkgdir"
 }
 
-# vim: ts=2:sw=2
+# vim: ts=2:sw=2:expandtab
