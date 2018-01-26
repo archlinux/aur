@@ -4,7 +4,7 @@
 pkgname=nvidia-340xx-ck
 pkgver=340.106
 _extramodules=extramodules-4.14-ck
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('x86_64')
 url="http://www.nvidia.com/"
