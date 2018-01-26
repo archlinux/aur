@@ -2,7 +2,7 @@
 
 _gemname=locale
 pkgname=ruby-$_gemname
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Ruby-Locale is the pure ruby library which provides basic APIs for localization.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('d31ee2630b8f5d10043992856a7a368c67de3e5c')
+sha1sums=('e4e70de4b0cbbc641afa8cf90833fb0057318d27')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
