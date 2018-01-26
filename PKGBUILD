@@ -1,7 +1,7 @@
 pkgname=devrantron
 _pkgname=devrantron
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc='DevRant client written in NodeJS'
 arch=('x86_64')
 url='https://github.com/tahnik/devrantron'
@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 build() {
 	if [ ! -f package.deb ]
 	then	
-		wget $(cat latest | jq --raw-output '.assets[5] | .browser_download_url') -O package.deb
+		wget $(cat latest | jq --raw-output '.assets[6] | .browser_download_url') -O package.deb
 	fi	
 	ar x package.deb
 	tar xf data.tar.xz
