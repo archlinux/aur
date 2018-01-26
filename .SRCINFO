@@ -1,6 +1,6 @@
 pkgbase = dongle-unlock
 	pkgdesc = Automatically unlock encrypted devices with a thumbdrive-dongle or enter a passphrase to unlock them during boot with systemd. Conflicts probably with entries in /etc/crypttab
-	pkgver = 1
+	pkgver = 1.1
 	pkgrel = 1
 	install = dongle-unlock.install
 	arch = any
