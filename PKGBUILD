@@ -6,7 +6,7 @@ pkgver=1.4.3
 pkgrel=1
 pkgdesc='Library wraps around the pysmb library'
 arch=('any')
-depends=('python-pysmbc' 'python-pyasn1')
+depends=('python-pysmb' 'python-pyasn1')
 source=("https://github.com/pschmitt/$_pkg/archive/$pkgver.tar.gz")
 md5sums=('c3c74647cc62c6cf216fc20d31554c90')
 
