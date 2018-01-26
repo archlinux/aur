@@ -2,7 +2,7 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
 
 pkgname=guacamole-server
-pkgver=0.9.13
+pkgver=0.9.14
 pkgrel=1
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,13 +20,14 @@ optdepends=('libssh: for ssh protocol support'
 )
 install=$pkgname.install
 
-source=("http://downloads.sourceforge.net/project/guacamole/current/source/$pkgname-$pkgver-incubating.tar.gz" 'guacd.service')
+source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz"
+        'guacd.service')
  
-md5sums=('fed1d18e6b18b114375bfabcf02f5607'
+md5sums=('cadc90e526ccf63e01c65017c8881717'
          'dfaa29349d2e73af6dac75d6cafbd762')
  
 build() {
-	cd "$srcdir"/$pkgname-$pkgver-incubating
+	cd "$srcdir"/$pkgname-$pkgver
 	PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
 	CFLAGS+=" -I/usr/include/openssl-1.0" \
 	LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
@@ -35,7 +36,7 @@ build() {
 }
  
 package() {
-	cd "$srcdir"/$pkgname-$pkgver-incubating
+	cd "$srcdir"/$pkgname-$pkgver
 	make DESTDIR="$pkgdir" install
         mkdir -p "$pkgdir"/usr/lib/systemd/system/
         install -Dm644 "$srcdir"/guacd.service "$pkgdir"/usr/lib/systemd/system/

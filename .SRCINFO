@@ -1,6 +1,6 @@
 pkgbase = guacamole-server
 	pkgdesc = Guacamole proxy daemon
-	pkgver = 0.9.13
+	pkgver = 0.9.14
 	pkgrel = 1
 	url = http://guacamole.sourceforge.net/
 	install = guacamole-server.install
@@ -31,9 +31,9 @@ pkgbase = guacamole-server
 	replaces = libguac-client-ssh
 	replaces = libguac-client-vnc
 	replaces = libguac-client-rdp
-	source = http://downloads.sourceforge.net/project/guacamole/current/source/guacamole-server-0.9.13-incubating.tar.gz
+	source = http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/0.9.14/source/guacamole-server-0.9.14.tar.gz
 	source = guacd.service
-	md5sums = fed1d18e6b18b114375bfabcf02f5607
+	md5sums = cadc90e526ccf63e01c65017c8881717
 	md5sums = dfaa29349d2e73af6dac75d6cafbd762
 
 pkgname = guacamole-server
