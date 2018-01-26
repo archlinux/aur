@@ -1,3 +1,3 @@
 #!/bin/bash
 unset WINEPREFIX
-wine /usr/share/ltspice/LTspiceHelp.chm "$@"
+wine /usr/share/doc/ltspice/LTspiceHelp.chm "$@"
