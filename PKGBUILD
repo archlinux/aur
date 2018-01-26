@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar-git
-pkgver=v2.1.0.rc4.r42.gcb036b67
+pkgver=v2.1.0.rc5.r0.ga692b00a
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)" 
 arch=(any)
@@ -59,4 +59,4 @@ pkgver() {
 
 md5sums=('SKIP'
          '446ad1e41acd07468c3750a9027dc8f8'
-         '2e7c7804b970baa7f9274dae47618a52')
+         'a278f17aa965510cadb534df49b245dd')
