@@ -3,7 +3,7 @@
 
 pkgname=nodejs-jsdoc
 pkgver=3.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An API documentation generator for JavaScript'
 url='https://github.com/jsdoc3/jsdoc'
 arch=(any)
@@ -16,9 +16,9 @@ md5sums=('50026a112a0adcc8d1413ab838f76fe6')
 build() {
 	cd "$srcdir/package"
 	npm install
+	npm pack
 }
 
 package() {
-	cd "$srcdir/package"
-	npm install -g --user root --prefix "$pkgdir/usr"
+	npm install "$srcdir/package/jsdoc-$pkgver.tgz" -g --user root --prefix "$pkgdir/usr"
 }
