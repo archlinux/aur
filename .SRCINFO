@@ -1,0 +1,27 @@
+pkgbase = dongle-unlock
+	pkgdesc = Automatically unlock encrypted devices with a thumbdrive-dongle or enter a passphrase to unlock them during boot with systemd. Conflicts probably with entries in /etc/crypttab
+	pkgver = 1
+	pkgrel = 1
+	install = dongle-unlock.install
+	arch = any
+	license = GPL
+	depends = cryptsetup
+	depends = systemd
+	backup = manolo.luksopenwithkey.service
+	backup = manolo.luksopenwithoutkey.service
+	backup = manolo.luksopenwithkey.service
+	backup = mnt-daten.mount
+	backup = mnt-dongle.mount
+	source = dongle-unlock.install
+	source = manolo.luksopenwithkey.service
+	source = manolo.luksopenwithoutkey.service
+	source = mnt-daten.mount
+	source = mnt-dongle.mount
+	sha256sums = 28f945e0d986f9b5d3e3ba1485d3481c7f2f2ed1e775b67b3e20b501d7212cb0
+	sha256sums = 0df9ae0585ceb6174a8e1a7a4cc0fd1523d9127591689c49f89635c3d15e7374
+	sha256sums = fabc2b2a3624b9c30384ee709f03379bbbbff99a07ad166a077eadac20a750cc
+	sha256sums = e339d777ca20a3e8660573da4eed6d0b96b0305d96a9e419c56443f9441fb393
+	sha256sums = 3f90778a0eb8eb30226f11fba81c11f66b6c1164294c538a25e12b4a65a28624
+
+pkgname = dongle-unlock
+

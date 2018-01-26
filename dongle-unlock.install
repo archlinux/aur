@@ -1,0 +1,14 @@
+post_install() {
+ echo "===> you need to enable /etc/systemd/system/manolo.luksopenwithkey.service and /etc/systemd/system/manolo.luksopenwithoutkey.service with systemctl"
+ echo "===> you need to configure /etc/systemd/system/mnt-dongle.mount and /etc/systemd/system/mnt-daten.mount:"
+ echo "===> mnt-dongle.mount uses the filesystem uuid of the thumbdrive and mnt-daten.mount opens the specified device with a keyfile in the mounted path (etc/fstab) (add more ExecStart lines for more devices)"
+ echo "===> the naming of mnt-dongle.mount and mnt-daten.mount depends on the mountpoints in /etc/fstab. rename the *.mount-files as needed"
+ echo "===> comment lines in /etc/crypttab which would access the same devices to avoid conflicts with cryptsetup@DEVICE.service (device is busy failure)"
+}
+post_upgrade() {
+    post_install
+}
+post_remove() {
+ echo "===> remove unneeded symlinks of services, optional: uncomment lines in /etc/crypttab"
+}
+

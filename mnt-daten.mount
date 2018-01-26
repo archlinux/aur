@@ -1,0 +1,15 @@
+# selbst erstellt 20.01.18
+
+[Unit]
+ConditionPathExists=/dev/disk/by-label/daten
+After=systemd-cryptsetup@md1.service manolo.luksopenwithoutkey.service
+
+[Mount]
+Where=/mnt/daten
+What=/dev/disk/by-label/daten
+Type=ext4
+Options=defaults,usrjquota=aquota.user,jqfmt=vfsv1
+
+#[Install]
+#WantedBy=basic.target
+

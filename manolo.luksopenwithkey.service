@@ -1,0 +1,20 @@
+# selbst erstellt 20.1.18
+
+[Unit]
+Description=Unlock Encrypted Device With Keyfile for MD RAID 1
+Conflicts=umount.target
+DefaultDependencies=no
+BindsTo=dev-mapper-%i.device
+After=dev-md1.device mnt-dongle.mount
+Requires=dev-md1.device
+Before=mnt-daten.mount
+ConditionPathExists=/mnt/dongle/.Thumb0.db
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/lib/systemd/systemd-cryptsetup attach 'storage' '/dev/md1' '/mnt/dongle/.Thumb0.db' 'luks';
+#ExecStop=/usr/bin/systemctl stop --no-block mnt-dongle.mount 
+
+[Install]
+WantedBy=basic.target
