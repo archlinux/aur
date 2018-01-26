@@ -1,7 +1,18 @@
-Note: Upstream didn't provided the usual linux-hardened patch for 4.14.15. So, this release is being built directly from the source code found at https://github.com/copperhead/linux-hardened/releases/tag/4.14.15.a   Also, upstream failed to sign the above release....
+Note: Upstream didn't provided the usual linux-hardened patch for 4.14.15. So, the initial release was built directly from the source code found at https://github.com/copperhead/linux-hardened/releases/tag/4.14.15.a   Also, upstream failed to sign the above release....
 
 However, on the plus side, I have calculated the proper sha256sum for the release, and also applied the appropriate Arch patch sets.
 
 If upstream updates the release with a rolling patch and/or signatures, I will update the PKGBUILD accordingly
 
 See https://github.com/copperhead/linux-hardened/releases
+
+UPDATE:
+The signed patch was finally released, and I have updated the PKGBUILD accordingly. However, possibly because linux-hardened-apparmor is now slightly ahead of linux-hardened, I had to make a choice about whether or not to enable "CONFIG_LOCAL_SANITIZE", which zero-fills uninitialized local variables. The default is 'NO'. and since the option requires compiler support, I went with this choice. If this is a problem, let me know. (Note: When linux-hardened is next updated, whether or not this option is enabled will be up to @Anthrax)
+
+Hopefully, 4.14.16 will see a return to the normal release cycle and linux-hardened-apparmor will be fully in sync with linux-hardened... I apologise for any inconvenience, but it was brought about by things beyond my control and the only alternative would have been to delay the update.
+
+Irvine
+
+
+
+

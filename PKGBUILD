@@ -1,16 +1,20 @@
 # Maintainer: Irvine <irvinemcminn_at_that gmail_place>
 
 pkgbase=linux-hardened-apparmor
-_srcname=linux-hardened-4.14.15.a
+_srcname=linux-4.14
 _pkgver=4.14.15
 pkgver=${_pkgver}.a
-pkgrel=1
+pkgrel=2
 url='https://github.com/copperhead/linux-hardened'
 arch=('x86_64')
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=(https://github.com/copperhead/linux-hardened/archive/4.14.15.a.tar.gz
+source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
+        https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign
+        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz
+        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign
+        https://github.com/thestinger/linux-hardened/releases/download/${pkgver}/linux-hardened-${pkgver}.patch{,.sig}
         config.x86_64  # the main kernel config files
         60-linux.hook  # pacman hook for depmod
         90-linux.hook  # pacman hook for initramfs regeneration
@@ -26,8 +30,13 @@ source=(https://github.com/copperhead/linux-hardened/archive/4.14.15.a.tar.gz
         CVE-2017-17450-netfilter-xt_osf-Add-missing-permission-checks.patch
 )
 replaces=('linux-grsec')
-sha256sums=('b0889785c19533708d29ff559d414a19fd7115973e6e61c614c5f7dae0990fd7'
-            'f7a481a87ba85c8a2dc31abd9df1b77263e49de66f0ec2af979c24d589288adb'
+sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+            'SKIP'
+            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
+            'SKIP'
+            '55f4dfaf88a98368f29c7503b8a67a35105a11376cd91a1096ed18eabed5a288'
+            'SKIP'
+            '2fdd2497e3df02a0624a068605007dc91d92304562977279d54b3381ad6e2ef0'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -46,6 +55,12 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd ${_srcname}
 
+  # add upstream patch
+  msg2 "Applying upstream patch"
+  patch -Np1 < ../patch-${_pkgver}
+  # XXX: GNU patch doesn't support git-style file mode
+  chmod +x tools/objtool/sync-check.sh
+
   # apply all patches
   for _patch in "${source[@]}"; do
     _patch=${_patch%%::*}
@@ -56,6 +71,10 @@ prepare() {
       patch -Np1 < "../${_patch}"
     fi
   done
+
+  # linux hardened patch
+  msg2 "Applying hardened patch"
+  patch -Np1 < ../linux-hardened-${pkgver}.patch
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
