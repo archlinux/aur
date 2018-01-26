@@ -1,0 +1,13 @@
+diff --git a/ranger/ext/img_display.py b/ranger/ext/img_display.py
+index 0e6b08f..3d272f6 100644
+--- a/ranger/ext/img_display.py
++++ b/ranger/ext/img_display.py
+@@ -106,6 +106,8 @@ class W3MImageDisplayer(ImageDisplayer):
+             start_y, width, height))
+         self.process.stdin.flush()
+         self.process.stdout.readline()
++        self.quit()
++        self.is_initialized = False
+ 
+     def clear(self, start_x, start_y, width, height):
+         if not self.is_initialized or self.process.poll() is not None:

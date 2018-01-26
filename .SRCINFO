@@ -1,0 +1,34 @@
+pkgbase = ranger-w3m-memleak-fix
+	pkgdesc = A simple, vim-like file manager, with patch to help w3m memory leak
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://ranger.nongnu.org
+	arch = any
+	license = GPL
+	depends = python
+	optdepends = atool: for previews of archives
+	optdepends = elinks: for previews of html pages
+	optdepends = ffmpegthumbnailer: for video previews
+	optdepends = highlight: for syntax highlighting of code
+	optdepends = libcaca: for ASCII-art image previews
+	optdepends = lynx: for previews of html pages
+	optdepends = mediainfo: for viewing information about media files
+	optdepends = odt2txt: for OpenDocument texts
+	optdepends = perl-image-exiftool: for viewing information about media files
+	optdepends = poppler: for pdf previews
+	optdepends = python-chardet: in case of encoding detection problems
+	optdepends = sudo: to use the "run as root"-feature
+	optdepends = transmission-cli: for viewing bittorrent information
+	optdepends = w3m: for previews of images and html pages
+	provides = ranger
+	conflicts = ranger
+	source = http://ranger.nongnu.org/ranger-1.8.1.tar.gz
+	source = http://ranger.nongnu.org/ranger-1.8.1.tar.gz.sig
+	source = w3m.patch
+	validpgpkeys = 1E9B36EC051FF6F7FFC969A7F08CE1E200FB5CDF
+	sha256sums = 1433f9f9958b104c97d4b23ab77a2ac37d3f98b826437b941052a55c01c721b4
+	sha256sums = SKIP
+	sha256sums = bcf95b349b38907b73000dae3e2e7f3448109b044a0711529e99c0dcebb83250
+
+pkgname = ranger-w3m-memleak-fix
+
