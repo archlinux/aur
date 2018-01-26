@@ -1,0 +1,14 @@
+pkgbase = slime-company
+	pkgdesc = A company-mode completion backend for Slime
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/anwyn/slime-company
+	arch = any
+	license = GPL3
+	depends = slime
+	depends = emacs-company-mode
+	source = slime-company-1.1.tar.gz::https://github.com/anwyn/slime-company/archive/v1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = slime-company
+
