@@ -1,6 +1,6 @@
 # Maintainer: Karel Koči <cynerd@email.cz>
 pkgname=ttysterm
-pkgver=20170112
+pkgver=20171215
 pkgrel=1
 pkgdesc="Simple serial terminal"
 arch=('i686' 'x86_64')
@@ -9,17 +9,13 @@ license=('GPL3')
 depends=('lockdev')
 makedepends=('git')
 #changelog="debian/changelog"
-source=("$pkgname::git://rtime.felk.cvut.cz/sojka/sterm.git"
-	"Fix-install-strip.patch")
-md5sums=('SKIP'
-	'e37c9b06de817993830efe9e277e740c')
+source=("$pkgname::git://rtime.felk.cvut.cz/sojka/sterm.git")
+md5sums=('SKIP')
 
 prepare() {
 	cd "$pkgname"
 	# Reset to specified version
 	git reset --hard $pkgver
-	# Fix install strip
-	patch -i $srcdir/Fix-install-strip.patch
 }
 
 build() {
