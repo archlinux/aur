@@ -34,3 +34,19 @@
  	create_dicts_array();
  
  	/* Check if the stored default dictionary is (still) available, fall back to the first
+--- geany-plugins-1.32/build/spellcheck.m4.orig	2017-07-16 19:00:27.000000000 +0000
++++ geany-plugins-1.32/build/spellcheck.m4	2018-01-21 21:56:47.533646705 +0000
+@@ -4,11 +4,11 @@
+ 
+     ENCHANT_VERSION=1.3
+     OPT_ENCHANT_VERSION=1.5
+-    PKG_CHECK_MODULES([ENCHANT], [enchant >= ${OPT_ENCHANT_VERSION}],
++    PKG_CHECK_MODULES([ENCHANT], [enchant-2 >= ${OPT_ENCHANT_VERSION}],
+                       have_enchant_1_5=yes,
+                       have_enchant_1_5=no)
+     GP_CHECK_PLUGIN_DEPS([spellcheck], [ENCHANT],
+-                         [enchant >= ${ENCHANT_VERSION}])
++                         [enchant-2 >= ${ENCHANT_VERSION}])
+ 
+     AM_CONDITIONAL([HAVE_ENCHANT_1_5], [test "$have_enchant_1_5" = yes])
+     GP_COMMIT_PLUGIN_STATUS([Spellcheck])
