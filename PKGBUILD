@@ -1,14 +1,15 @@
-# Maintainer: Ivy Foster <joyfulgirl@archlinux.us>
+# Maintainer: Ivy Foster <code@escondida.tk>
 
-pkgname='fist'
-pkgver='4.0'
+pkgname=fist
+pkgver=4.0
 pkgrel=1
 pkgdesc='Emphatic message generator'
-arch=('i686' 'x86_64')
-url='http://www.fourmilab.ch/fist/'
+arch=(i686 x86_64)
+url='https://www.fourmilab.ch/fist/'
 license=('custom:PublicDomain')
-source=("http://www.fourmilab.ch/fist/fist-$pkgver.tar.gz")
-md5sums=('f59c4b52a04e1d13b077510cf66589e9')
+source=("https://www.fourmilab.ch/fist/fist-$pkgver.tar.gz")
+# checksums not provided by upstream
+md5sums=(f59c4b52a04e1d13b077510cf66589e9)
 
 build() {
 	cd "fist-$pkgver"

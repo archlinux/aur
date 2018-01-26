@@ -2,11 +2,11 @@ pkgbase = fist
 	pkgdesc = Emphatic message generator
 	pkgver = 4.0
 	pkgrel = 1
-	url = http://www.fourmilab.ch/fist/
+	url = https://www.fourmilab.ch/fist/
 	arch = i686
 	arch = x86_64
 	license = custom:PublicDomain
-	source = http://www.fourmilab.ch/fist/fist-4.0.tar.gz
+	source = https://www.fourmilab.ch/fist/fist-4.0.tar.gz
 	md5sums = f59c4b52a04e1d13b077510cf66589e9
 
 pkgname = fist
