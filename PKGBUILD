@@ -1,32 +1,35 @@
-# Maintainer: Arthur Țițeică / arthur dot titeica with gmail
+# Maintainer: Jean Lucas <jean@4ray.co>
+# Contributor: Arthur Țițeică / arthur dot titeica with gmail
 
-_pkgname="morty"
-pkgname="morty-git"
-pkgver=r21.cb702c9
+pkgname=morty-git
+pkgver=0+73+5dca044
 pkgrel=1
-pkgdesc="Web content sanitizer proxy as a service"
-arch=('i686' 'x86_64')
-url="https://github.com/asciimoo/morty"
-license=('AGPL3')
-provides=('morty')
-makedepends=('go' 'git')
-source=("git+https://github.com/asciimoo/morty.git")
-md5sums=(SKIP)
+pkgdesc='Privacy-aware web content sanitizer proxy-as-a-service'
+arch=(any)
+url='https://github.com/asciimoo/morty'
+license=(AGPL3)
+provides=(morty)
+makedepends=(git go)
+optdepends=('searx-git: A privacy-respecting, hackable metasearch engine')
+source=(git+https://github.com/asciimoo/morty.git)
+sha512sums=(SKIP)
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $srcdir/morty
+
+  printf 0+%s+%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}
-  GOPATH=${srcdir}/${_pkgname} go get -v -x github.com/asciimoo/morty
+  cd $srcdir/morty
+
+  GOPATH=$srcdir/morty go get -v -x github.com/asciimoo/morty
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
-  install -D bin/morty "${pkgdir}/usr/bin/morty"
+  cd $srcdir/morty
+
+  install -D bin/morty $pkgdir/usr/bin/morty
 }
 
 # vim:set ts=2 sw=2 et:
-
