@@ -2,8 +2,8 @@
 # Contributor: Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx-git
-pkgver=v0.13.1+43+gbec9906b
-pkgrel=2
+pkgver=0.13.1+43+gbec9906b
+pkgrel=1
 pkgdesc='A privacy-respecting, hackable metasearch engine'
 arch=(any)
 url='https://asciimoo.github.io/searx/'
@@ -34,7 +34,7 @@ sha512sums=(SKIP
 pkgver() {
   cd $srcdir/searx
 
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/v//;s/-/+/g'
 }
 
 prepare() {
