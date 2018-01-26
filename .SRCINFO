@@ -1,7 +1,7 @@
 pkgbase = puppet-lint
 	pkgdesc = Check that your Puppet manifests conform to the style guide.
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rodjek/puppet-lint
 	arch = i686
 	arch = x86_64
