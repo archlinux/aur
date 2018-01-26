@@ -10,7 +10,7 @@ pkgbase = libhdf5
 	makedepends = gcc-fortran
 	depends = zlib
 	depends = bash
-	source = ftp://ftp.hdfgroup.org/HDF5/releases/hdf5-1.10/hdf5-1.10.1/src/hdf5-1.10.1.tar.bz2
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.1/src/hdf5-1.10.1.tar.bz2
 	md5sums = d89893c05ee7ea8611b51bb39450d64e
 
 pkgname = libhdf5

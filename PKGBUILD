@@ -12,7 +12,7 @@ url="http://www.hdfgroup.org/HDF5/"
 license=('custom')
 depends=('zlib' 'bash')
 makedepends=('time' 'gcc-fortran')
-source=(ftp://ftp.hdfgroup.org/HDF5/releases/${real_pkgname}-${_pkgver}/${real_pkgname}-${pkgver}/src/${real_pkgname}-${pkgver}.tar.bz2)
+source=(https://support.hdfgroup.org/ftp/HDF5/releases/${real_pkgname}-${_pkgver}/${real_pkgname}-${pkgver}/src/${real_pkgname}-${pkgver}.tar.bz2)
 md5sums=('d89893c05ee7ea8611b51bb39450d64e')
 
 build() {
