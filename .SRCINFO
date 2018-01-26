@@ -1,7 +1,7 @@
 pkgbase = jadx-unstable-bin
 	pkgdesc = Command line and GUI tools to produce Java source code from Android Dex and APK files
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skylot/jadx
 	arch = any
 	license = Apache
