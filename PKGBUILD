@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libidn2-git
-pkgver=2.0.3.r13.g8c3d4f8
+pkgver=2.0.4.r20.g45b56ae
 pkgrel=1
 pkgdesc="An implementation of IDNA 2008 and TR46"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/libidn/#libidn2"
 license=('GPL' 'LGPL')
 depends=('glibc' 'libunistring')
-makedepends=('git' 'gengetopt')
+makedepends=('git' 'gengetopt' 'gtk-doc')
 provides=('libidn2')
 conflicts=('libidn2')
 options=('staticlibs')
@@ -26,7 +26,7 @@ build() {
   cd "libidn2"
 
   ./bootstrap
-  ./configure --prefix="/usr"
+  ./configure --prefix="/usr" --enable-gtk-doc
   make
 }
 
