@@ -1,4 +1,4 @@
-# Maintainer: Stephen Gregoratto <s.gregoratto@gmail.com>
+# Maintainer: Stephen Gregoratto <themanhimself@sgregoratto.me>
 
 pkgname="adlmidi-git"
 pkgdesc="Commandline program that plays MIDI via software OPL3 emulation"
