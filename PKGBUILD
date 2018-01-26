@@ -3,7 +3,7 @@ pkgbase='dbb-app'
 pkgname=("${pkgbase}" 'dbb-cli')
 gitname="${pkgbase}"
 pkgrel=1
-pkgver='2.1.1'
+pkgver='2.2.2'
 url='https://digitalbitbox.com/'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -22,7 +22,7 @@ build() {
     cd "${srcdir}/${gitname}"
 
     ./autogen.sh
-    ./configure --prefix=/usr --with-gui=qt5 --enable-shared=no --disable-udev-check LDFLAGS="-pthread"
+    ./configure --prefix=/usr --with-gui=qt5 --enable-shared=no --enable-libusb --disable-udev-check LDFLAGS="-pthread"
     make
 }
 
@@ -33,7 +33,7 @@ package_dbb-app() {
     cd "${srcdir}/${gitname}"
 
     install -Dm0755 src/dbb-app "${pkgdir}/usr/bin/dbb-app"
-    install -Dm0644 src/qt/res/dbb.png "${pkgdir}/usr/share/pixmaps/digitalbitbox.png"
+    install -Dm0644 src/qt/res/dbb_icon.png "${pkgdir}/usr/share/pixmaps/digitalbitbox.png"
 
     install -Dm0644 "${srcdir}/digitalbitbox.desktop" "${pkgdir}/usr/share/applications/digitalbitbox.desktop"
 
