@@ -8,7 +8,7 @@
 # Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
-pkgver=0.5.1.r9.gfc3cdbf
+pkgver=0.5.1.r82.ga34942e
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
