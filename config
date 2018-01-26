@@ -1,0 +1,25 @@
+### SnooScraper Configuration
+# Be careful, setting high values or enabling too much will slow down scrape times
+# Any text after a # symbol on a line will be treated as comments and ignored
+###
+
+#These parameters will control how many posts to try to download
+##
+target=25		#Number of posts to try to scrape, 0 for no target
+limit=100		#Max number of posts to search, should be >= target, 0 for no limit
+##
+
+#These parameters can be set to 'off', 'include', or 'only'
+#Up to ONE parameter can be set to 'only'
+##
+post=off		#Allow text posts, rather than just links
+nonimage=off		#Allow links to sites other than images
+gif=off			#Allow animations/video clips
+album=include		#Allow imgur albums
+##
+
+#These parameters can be set to 'on or 'off'
+##
+insta=on		#Get images/clips from instagram posts
+tumblr=on		#Get images from tumblr posts
+##
