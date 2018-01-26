@@ -3,31 +3,28 @@
 # Contributor: Lukas Weber <laochailan@web.de>
 
 pkgname=taisei
-pkgver=1.1.2
+pkgver=1.2
 pkgrel=1
 pkgdesc="Open source Touhou clone"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
 depends=('sdl2_mixer' 'sdl2_ttf' 'libzip' 'hicolor-icon-theme')
-makedepends=('cmake')
+makedepends=('meson' 'python-docutils')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/taisei-project/taisei/archive/v$pkgver.tar.gz")
-sha256sums=('9b9ce2828a9c1fcc1de148e927c00b8bd541f891cae2df50552b9bba8f34122f')
+sha256sums=('8d2d682eeeb6284bc726b8ae52c355848b007957d2dc6bdd973f6384ae075ea3')
 
 build() {
   cd $pkgname-$pkgver
-
-  cmake ./ \
-    -DTAISEI_VERSION_OVERRIDE=$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  arch-meson . build
+  ninja -C build
 }
 
 package() {
   cd $pkgname-$pkgver
 
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja -C build install
+
   # license
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
