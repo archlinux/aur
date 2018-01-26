@@ -1,0 +1,23 @@
+pkgbase = otpclient
+	pkgdesc = Simple GTK+ v3 TOTP/HOTP client that uses libcotp
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/paolostivanin/OTPClient
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = gtk3
+	depends = glib2
+	depends = json-glib
+	depends = libgcrypt
+	depends = json-glib
+	depends = libzip
+	depends = libcotp
+	depends = pkg-config
+	provides = otpclient
+	source = https://github.com/paolostivanin/OTPClient/archive/v1.0.6.tar.gz
+	sha256sums = 1f213de12d09c512944a2d13550e9e2439cbe638302b7eb54c75f93bb3451e07
+
+pkgname = otpclient
+
