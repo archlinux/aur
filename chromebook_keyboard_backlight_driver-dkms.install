@@ -1,0 +1,17 @@
+
+post_install() {
+    local _confd=/etc/modules-load.d
+    local _conf=chromebook_keyboard_backlight_driver.conf
+    (
+        source /usr/share/makepkg/util/message.sh
+        colorize
+        msg "Note: added $_conf to $_confd"
+        msg2 "Delete to prevent auto-loading"
+        msg2 "Reboot"
+    )
+}
+
+post_upgrade() {
+    post_install
+}
+
