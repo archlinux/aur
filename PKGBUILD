@@ -17,12 +17,14 @@ license=('GPL3')
 depends=(
     'accuraterip-checksum'          # for accuraterip-checksum calculation
     'cddb-py'                       # for showing but not using disc info if not in MusicBrainz (issue #28)
-    'cdparanoia'                    # for the actual ripping
     'cdrdao'                        # for session, TOC, pregap, and ISRC extraction
-    'libsndfile'                    # for reading wav files (pulls in flac, also required for reading flac files)
+    'flac'                          # for reading flac files
+    'libcdio-paranoia'              # for the actual ripping
+    'libsndfile'                    # for reading wav files
     'mutagen'                       # for metadata handling
     'python2-musicbrainzngs'        # for metadata lookup
     'python2-pycdio'                # for storing drive identification in config file
+    'python2-requests'              # for retrieving AccurateRip database entries
     'python2-setuptools'            # for plugin support
     'sox'                           # for track peak detection'
     )
