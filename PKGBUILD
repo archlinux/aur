@@ -1,19 +1,19 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
+# Maintainer: Ivy Foster <code@escondida.tk>
 
-pkgbase='frotz-git'
-pkgname=('frotz-ncurses-git' 'frotz-dumb-git')
+pkgbase=frotz-git
+pkgname=(frotz-ncurses-git frotz-dumb-git)
 pkgver=2.44.r188.g869c99e
 pkgrel=1
 pkgdesc='Z-machine interpreter for interactive fiction games'
 
-conflicts=('frotz')
-replaces=('frotz')
+conflicts=(frotz)
+provides=(frotz)
 
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='http://frotz.sourceforge.net/'
-license=('GPL')
+license=(GPL)
 source=('git+https://github.com/DavidGriffith/frotz')
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
 	cd frotz

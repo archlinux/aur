@@ -6,8 +6,8 @@ pkgbase = frotz-git
 	arch = i686
 	arch = x86_64
 	license = GPL
+	provides = frotz
 	conflicts = frotz
-	replaces = frotz
 	source = git+https://github.com/DavidGriffith/frotz
 	md5sums = SKIP
 
