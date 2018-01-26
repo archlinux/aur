@@ -1,7 +1,7 @@
 pkgbase = snapd
 	pkgdesc = Service and tools for management of snap packages.
 	pkgver = 2.30
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
 	arch = i686

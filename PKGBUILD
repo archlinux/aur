@@ -7,7 +7,7 @@ pkgname=snapd
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 pkgver=2.30
-pkgrel=8
+pkgrel=9
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -61,8 +61,9 @@ build() {
   CGO_ENABLED=0 go build -o $GOPATH/bin/snap-exec "${_gourl}/cmd/snap-exec"
 
   # Generate the real systemd units out of the available templates
-  make -C data/systemd
-    SNAP_MOUNT_DIR=/var/lib/snapd/snap
+  make -C data/systemd \
+    SNAP_MOUNT_DIR=/var/lib/snapd/snap \
+    SNAPD_ENVIRONMENT_FILE=/etc/default/snapd
 
   cd cmd
   autoreconf -i -f
