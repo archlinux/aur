@@ -5,16 +5,17 @@
 _subarchs=(armv5 armv6h armv7h armv8)
 pkgbase='distccd-alarm'
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
-_date=20180117
+_date=20180125
 pkgver=7.2.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL' )
 pkgdesc="Toolchain for Arch ARM builds via distcc on x86_64 slaves"
 url="https://archlinuxarm.org/wiki/Distcc_Cross-Compiling"
 depends=('distcc')
 options=('libtool' 'emptydirs' '!strip')
-_URL="https://archlinuxarm.org/builder/xtools"
+#_URL="https://archlinuxarm.org/builder/xtools"
+_URL="https://archlinuxarm.org/builder/xtools/$pkgver-$pkgrel"
 source=(
   "x-tools-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools.tar.xz"
 "x-tools6h-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools6h.tar.xz"
