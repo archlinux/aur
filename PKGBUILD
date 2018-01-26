@@ -2,14 +2,14 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=v0.11.0.rc3.r0.gba0d7ea7
+pkgver=v0.11.0.rc5.r0.gf7ab20c7
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
 arch=(arm armv6h armv7h aarch64 i686 x86_64)
 url="http://openbazaar.org"
 license=('MIT')
 depends=()
-install=${_pkgname}.install
+backup=("var/lib/openbazaar")
 makedepends=(go git upx)
 conflicts=('openbazaard')
 options=('strip' 'upx')
