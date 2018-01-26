@@ -13,7 +13,7 @@ makedepends=('intltool' 'python2' 'yasm' 'wget' 'cmake' 'bzip2' 'gcc-libs'
              'zlib' 'libnotify' 'gst-plugins-base' 'gtk3' 'dbus-glib' 'libass'
              'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora' 'libsamplerate'
              'x264' 'libx264' 'jansson' 'librsvg' 'libgudev')
-source=(https://handbrake.fr/mirror/HandBrake-$pkgver.tar.bz2)
+source=(https://download.handbrake.fr/releases/$pkgver/HandBrake-$pkgver.tar.bz2)
 sha256sums=('ffdee112f0288f0146b965107956cd718408406b75db71c44d2188f5296e677f')
 
 build() {
