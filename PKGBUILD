@@ -6,7 +6,7 @@
 # Contributor: Jonhoo <jon at thesquareplanet.com>
 pkgname=signal
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
 depends=('electron')
@@ -27,7 +27,7 @@ sha512sums=('SKIP'
 prepare() {
   cd "${pkgname}-${pkgver}"
   # Fix issues/1988
-  sed -i 's/"electron": "1.7.10"/"electron": "1.6.15"/' package.json
+  # sed -i 's/"electron": "1.7.10"/"electron": "1.6.15"/' package.json
 }
 
 build() {
