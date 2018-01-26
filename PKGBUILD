@@ -5,12 +5,11 @@
 
 pkgname=avahi-nosystemd
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour'
 url='https://github.com/lathiat/avahi'
 license=('LGPL')
 arch=('i686' 'x86_64')
-options=('!emptydirs')
 depends=('expat' 'libdaemon' 'glib2' 'libcap' 'gdbm' 'dbus')
 optdepends=('gtk3: avahi-discover, avahi-discover-standalone, bshell, bssh, bvnc'
             'gtk2: gtk2 bindings'
@@ -35,10 +34,10 @@ source=("git+https://github.com/lathiat/avahi#commit=$_commit"
         avahi-daemon.rc
         avahi-dnsconfd.rc
         0001-avahi-python-Use-the-agnostic-DBM-interface.patch)
-sha1sums=('SKIP'
-          '2f580771e008ed09e9c6caf5ee0a2707a6f04ded'
-          'c14d281a023b2c3ed834a107ad1e7f13c5c7469a'
-          'f5519fe4338e5d984a44ee9dff3d7c7ea10c3965')
+sha512sums=('SKIP'
+            '6e9d7bcebd69325ed9e131f68077779c45dc3a6018d4d069b9d57553d89bf3a5201e483e8c114f8c02fb3b37678f3decfc6a259b22c32bb0ed5956bd9d4d2312'
+            'b4f45f6dcb1e9f2406d1dac4c51999d764855f61f5f8f0b45677606b1aa74d712273270747961591fa166f03abb11913018bee42cb2437c246170557acbe9b41'
+            '8cfc7c2cb0061e6348caa96b73bb6069efce5b4438962aa12448e46bc950a47c1f18059afbb1cacf7b2a1aa21f77025472532ad5e6eddb17834a8b1a34432226')
 
 install=avahi.install
 
@@ -81,6 +80,8 @@ package() {
 	make DESTDIR="${pkgdir}" install
 	make DESTDIR="$pkgdir" -C avahi-python/avahi2 install \
 		PYTHON=/usr/bin/python2 pythondir=/usr/lib/python2.7/site-packages
+
+	rmdir "$pkgdir/run"
 
 	# this isn't ported
 	sed -i '1s|python3|python2|' "$pkgdir/usr/bin/avahi-bookmarks"
