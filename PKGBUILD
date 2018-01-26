@@ -1,8 +1,9 @@
 # vim: ts=2 sts=2 sw=2 et ft=sh
 # Maintainer: Matt Rickard <mrick@google.com> 
+# Contributor: Brad Erhart <brae.04+aur@gmail.com>
 
 pkgname=minikube
-pkgver=0.24.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Minikube is a tool that makes it easy to run Kubernetes locally"
 url="https://github.com/kubernetes/minikube"
@@ -14,12 +15,12 @@ depends=(
 optdepends=(
   'kubectl-bin: to manage the cluster'
   'virtualbox'
-  'docker-machine-kvm'
+  'docker-machine-driver-kvm2'
 )
 makedepends=()
 
 source=(minikube_$pkgver::https://storage.googleapis.com/minikube/releases/v$pkgver/minikube-linux-amd64)
-sha256sums=('1261de09386fd1f4ee7a4645958757c2c9e69f419a2a4ca8aff475017a7e036e')
+sha256sums=('5676f2d4f37f1c6f9cf99d56c7e1a3016976d657f9715e8cb255667a0c5803c1')
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
