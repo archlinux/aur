@@ -3,8 +3,8 @@
 
 pkgbase=linux-clear
 pkgver=4.14.15
-_srpm=514
-pkgrel=1
+_srpm=515
+pkgrel=2
 _srcname=linux-${pkgver}
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -19,7 +19,7 @@ source=(
   '99-linux.hook'  # pacman hook for remove initramfs
   'linux.preset'   # standard config files for mkinitcpio ramdisk
 )
-sha256sums=('de29d0e5ad2b46c53cc0566c919e2b8dbd11aedd22b6f8b22a98c0309f808d75'
+sha256sums=('f7a37e8e44c2184285113dd84ad115e73f288463fa05916d486a149115a4db43'
             '93bd1da9fa58ece0016702e657f708b7e496e56da637a3fe9a6d21f1d6f524dc'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
