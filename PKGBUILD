@@ -3,13 +3,13 @@
 
 pkgname=searx-git
 pkgver=0.13.1+43+gbec9906b
-pkgrel=1
+pkgrel=2
 pkgdesc='A privacy-respecting, hackable metasearch engine'
 arch=(any)
 url='https://asciimoo.github.io/searx/'
 license=(AGPL)
 makedepends=(git openssl)
-depends=(python-certifi
+depends=(python2-certifi
          python2-flask
          python2-flask-babel
          python2-lxml
