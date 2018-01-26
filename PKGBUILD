@@ -7,7 +7,7 @@
 
 pkgname=firefox-esr-gtk2
 _pkgname=firefox-esr
-pkgver=52.5.3
+pkgver=52.6.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -28,18 +28,16 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         firefox.desktop firefox-symbolic.svg
         0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
         firefox-install-dir.patch fix-wifi-scanner.diff
-        glibc-2.26-fix.diff
         rust-i686.patch
         make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
         nvidia-GLSL-version.patch
         firefox-52-disable-pocket-leftovers.patch)
-sha256sums=('e42fba89277aceafc11475c237067e027b78193d8e7b07519a75ea0036b49c55'
+sha256sums=('587cd94a315f5a94bf5c1f85e4a0ea92c9103503b51d649a3c4a4a122d691e42'
             'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
-            'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
             '7760ebe71f4057cbd2f52b715abaf0d944c14c39e2bb2a5322114ad8451e12d9'
             'd8c5c30589c0e176d260a5814f3cb99e94267b3185ab40ff01bf33a58f375d6a'
@@ -71,10 +69,6 @@ prepare() {
 
   # https://bugs.archlinux.org/task/54395 // https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
-  patch -d toolkit/crashreporter/google-breakpad/src/client -Np4 < ../glibc-2.26-fix.diff
 
   # Build with the rust targets we actually ship
   patch -Np1 -i ../rust-i686.patch
