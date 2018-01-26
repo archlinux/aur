@@ -1,6 +1,6 @@
 pkgname='sac-core'
 pkgver='9.1.7'
-pkgrel='7'
+pkgrel='9'
 pkgdesc='Safenet Authentication Client for Alladin eToken, stripped core package'
 arch=('x86_64')
 depends=('pcsclite' 'libusb-compat' 'openssh' 'nss')
@@ -37,3 +37,10 @@ package() {
     ln -sf libAksIfdh.so.9.1 libAksIfdh.so
     ln -sf libAksIfdh.so.9.1 libAksIfdh.so.9
 }
+
+# To add eToken to Firefox eval output of this cmd:
+#  find ~ -name secmod.db -type f -printf "modutil -dbdir %h -add eToken -libfile /usr/lib/libeToken.so -mechanisms RSA:DES -force\n"
+
+# To add eToken to Chromium run this cmd:
+#  modutil -dbdir sql:.pki/nssdb/ -add "eToken" -libfile /usr/lib/libeToken.so
+#  modutil -dbdir sql:.pki/nssdb/ -list
