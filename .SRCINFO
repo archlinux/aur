@@ -1,6 +1,6 @@
 pkgbase = doomretro
 	pkgdesc = The classic, refined DOOM source port
-	pkgver = 2.6.4
+	pkgver = 2.6.5
 	pkgrel = 1
 	url = http://doomretro.com
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = doomretro
 	depends = sdl2_image
 	depends = sdl2_mixer
 	optdepends = timidity++: for music playback
-	source = doomretro-2.6.4.tar.gz::https://github.com/bradharding/doomretro/archive/v2.6.4.tar.gz
-	sha256sums = c2b89fe058735eee167c5ade240c094aae2cd0a3009ce588b5e481c83896d19b
+	source = doomretro-2.6.5.tar.gz::https://github.com/bradharding/doomretro/archive/v2.6.5.tar.gz
+	sha256sums = d0a3a008e2899b10d26ee7b695f8d3ad0cf3f9ea8c6e5fbe2f7b0e5f0bb2e39c
 
 pkgname = doomretro
 
