@@ -1,6 +1,6 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
-pkgver=2.10.1
+pkgver=2.10.2
 _srcname="Rocket.Chat.Electron-$pkgver"
 pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
@@ -9,10 +9,9 @@ url="https://github.com/RocketChat/Rocket.Chat.Electron"
 license=('MIT')
 depends=('libxss' 'gconf' 'nss' 'alsa-lib' 'gtk2' 'libxtst')
 makedepends=('sed' 'yarn' 'gulp' 'python2')
-checkdepends=('electron')
 conflicts=('rocketchat-client-bin')
 source=("https://github.com/RocketChat/Rocket.Chat.Electron/archive/$pkgver.tar.gz")
-sha512sums=('3b3f98749dcc052618e738f225b70d2495bec83cad6251f49983cfe30a3277c5172e8db9c2343439d9571facafd6282bcf534fc57007a08234d3e8d9aac7dc3f')
+sha512sums=('4641f280213f881f158a9d136fd4efb80050b26fd01536d68c6ef5eeeff7342aaa488821574ac40f0e682a86d4f1065a35fbbcec571125e5aef59987edcda1ab')
 prepare() {
   sed -i 's/"deb",/"dir"/' "$srcdir/$_srcname/package.json"
   sed -i '/"rpm"/d' "$srcdir/$_srcname/package.json"
@@ -22,11 +21,6 @@ build() {
   cd "$srcdir/$_srcname"
   yarn install --non-interactive --pure-lockfile --cache-folder "$srcdir/yarn-cache"
   yarn release
-}
-check() {
-  cd "$srcdir/$_srcname"
-  yarn check --integrity
-  yarn test
 }
 package() {
   install -Dm644 "$srcdir/$_srcname/snap/gui/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
