@@ -3,7 +3,7 @@ _npmname=ArkClient
 _appname=arkclient
 pkgname=ark-desktop
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi Platform Ark Lite Client"
 arch=(x86_64)
 url="https://github.com/ArkEcosystem/ark-desktop"
@@ -34,7 +34,7 @@ package() {
 
   install -Dm644 "${srcdir}/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
   install -Dm644 "${srcdir}/${_appname}.svg" "${pkgdir}/usr/share/pixmaps/${_appname}.svg"
-  install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
