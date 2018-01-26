@@ -7,8 +7,8 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=65.0.3322.3
-pkgrel=3
+pkgver=65.0.3325.18
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -111,10 +111,13 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/p2.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/e3.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/edgy.patch
+https://raw.githubusercontent.com/bn0785ac/in-night/master/k2.patch
+https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
+https://raw.githubusercontent.com/bn0785ac/in-night/master/k3.patch
 )
 
 
-sha256sums=('b43070ce9edee64667022ae4eabf8929f3e713f9eead3ba092545a45b7667913'
+sha256sums=('23351d66cbb811fe5f11ab828321bbb7974659efc7c16afff985745083114448'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -190,7 +193,7 @@ sha256sums=('b43070ce9edee64667022ae4eabf8929f3e713f9eead3ba092545a45b7667913'
             '6130351d4c918e5b60f0ea4914e7e2f26fe4221ac97bcecacb4161fd2d23906c'
             'fb3abae54309adf69b98bd2435fbc23f17bc526dbf1d1e97907da87e7cf0aeed'
             'fb7c96ecf7f97fd6d356b8ca714efc518fc5bf40d92a23a5ff1ad8462d56b248'
-            'ff99e980b62102ba5d42474cf7c77946e6bc3af575eb8e2bb0e059acdc395ba4'
+            '359b7502b1930b643db9a6aec3e75c06c1f917dd774c7562ac256a519cbaa6d7'
             '38af0293f67513b2480047aebbd84fd5998ab3a20fb1af7a3f1e52b97dd27b20'
             '6d3251fb5aa200725a8cdc977d203ef98aaf8ed1564d0a4fa3b67c29a56520a9'
             'aaf6af367fcd478499f306cb1db44bbd4f58fadfc4b969046ec9fb47a2327db7'
@@ -208,7 +211,11 @@ sha256sums=('b43070ce9edee64667022ae4eabf8929f3e713f9eead3ba092545a45b7667913'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
-            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
+            '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
+            'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
+            '11b66c829c124cf764a0e6971dc0cf67adea5058b5777355b85b2a0540f550d6'
+            '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0')
+
 
 
 
