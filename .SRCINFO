@@ -1,8 +1,8 @@
 pkgbase = ruby-text
 	pkgdesc = Calculates the Levenshtein distance between two byte strings.
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
-	url = http://www.erikveen.dds.nl/text/index.html
+	url = https://rubygems.org/gems/text
 	arch = i686
 	arch = x86_64
 	groups = pacgem
@@ -10,10 +10,10 @@ pkgbase = ruby-text
 	makedepends = ruby
 	makedepends = binutils
 	depends = ruby
-	noextract = text-1.3.0.gem
+	noextract = text-1.3.1.gem
 	options = !emptydirs
-	source = http://rubygems.org/gems/text-1.3.0.gem
-	md5sums = d5ca93bcf591d60eb4fb3dcd09db1391
+	source = http://rubygems.org/gems/text-1.3.1.gem
+	md5sums = 514c3d1db7a955fe793fc0cb149c164f
 
 pkgname = ruby-text
 
