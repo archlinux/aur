@@ -41,6 +41,7 @@ prepare() {
   patch -p1 < ../re2-length.patch
   patch -p1 < ../libunwind.patch
   mkdir -p contrib/cctz contrib/librdkafka contrib/lz4 contrib/zookeeper contrib/zstd
+  rm -rf contrib/{cctz,librdkafka,lz4,zookeeper,zstd,zlib-ng,poco}/*
   mv ../cctz-4f9776a*/* contrib/cctz/
   mv ../librdkafka-3401fa1*/* contrib/librdkafka/
   mv ../lz4-c10863b*/* contrib/lz4/
@@ -55,7 +56,7 @@ prepare() {
 
 build() {
   cd ClickHouse-$pkgver-stable
-  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=True .
+  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=True -D POCO_STATIC:BOOL=True .
   make clickhouse
 }
 
