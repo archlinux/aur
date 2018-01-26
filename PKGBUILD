@@ -2,13 +2,13 @@
 
 pkgname=windows8-cursor
 pkgver=1.01
-pkgrel=4
+pkgrel=5
 pkgdesc="Cursors similliar to Windows 8 cursor"
 arch=('any')
 url="http://gnome-look.org/content/show.php/?content=155025"
 license=("GPL")
 source=("https://dl.opendesktop.org/api/files/download/id/1460735137/155025-win8.tar.gz")
-sha1sums=('d0707f4f5b2e669cea4139f3df6863572082bbba')
+sha1sums=('a5385e8e0dcb319287f1a99b4eb90be3c27ce1a2')
 
 package()
 {
