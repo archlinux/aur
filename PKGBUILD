@@ -4,7 +4,7 @@
 
 _gemname=ascii85
 pkgname=ruby-$_gemname
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Ascii85 encoder/decoder'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/${_gemname//a/A}-$pkgver.gem)
 noextract=(${_gemname//a/A}-$pkgver.gem)
-sha256sums=('f854f2ebb0bd13f80ee9018a904357175337cfe0816ecb60466ca2d0fad22549')
+sha256sums=('7ae3f2eb83ef5962016802caf0ce7db500c1cc25f385877f6ec64a29cfa8a818')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
