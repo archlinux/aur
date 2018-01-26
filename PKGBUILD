@@ -2,13 +2,12 @@
 
 pkgname=mingw-w64-dlib
 _pkgname=dlib
-pkgver=19.8
-pkgrel=2
+pkgver=19.9
+pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. (mingw-w64)"
 arch=('any')
 url="http://www.dlib.net/"
 license=('Boost Software License')
-depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 optdepends=('mingw-w64-giflib: for GIF support'
             'mingw-w64-lapack: for BLAS and LAPACK support'
@@ -18,8 +17,8 @@ optdepends=('mingw-w64-giflib: for GIF support'
 options=('!buildflags' '!strip' 'staticlibs')
 source=(https://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2
         dlib.patch)
-sha512sums=('13d354e2e35c93c1b84bbc680e38cfe043199a18cb362426f21962a3d2eb116c86dd83af4eacd131e3749d3a4eadcf58a9db28133ec508de0c2a4cb3eb87dbf1'
-            'c0951d8915c4d45bf9dec355a54fbe4b7e82db36cc7009c6ac2a145a5ba4a1f5ca7aedfadd5e478ab17ddf037a9460a5f18891b793f76f4f8274d0fb14ed5faa')
+sha512sums=('3cbd2b7d2cad2e494a14e9f19469e6ab33263ad87aa32e6f65de689ebfb395277fd5d5c3fd4a510cc16d3a8768d9685652c8378fcde0ceec5234363ab492b473'
+            'd9ffa19acf700bddef82cf02902887351036a17d9b9e840c0553a676e3fff021e5ec05aa1cca284fa74b81bea7916974c476d98575d0ae649f7478618ae89e63')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -34,7 +33,11 @@ build() {
     cd ${srcdir}
     for _arch in ${_architectures}; do
         mkdir -p "${_pkgname}-build-${_arch}" && pushd "${_pkgname}-build-${_arch}"
-        ${_arch}-cmake "../${_pkgname}-${pkgver}"
+        ${_arch}-cmake \
+            -DUSE_AVX_INSTRUCTIONS:BOOL=ON \
+            -DUSE_SSE2_INSTRUCTIONS:BOOL=ON \
+            -DUSE_SSE4_INSTRUCTIONS:BOOL=ON \
+            "../${_pkgname}-${pkgver}"
         make
         popd
     done
@@ -48,4 +51,5 @@ package() {
         ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
         popd
     done
+    install -Dm644 "${_pkgname}-${pkgver}/dlib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
