@@ -1,0 +1,15 @@
+--- Makefile.libretro.orig	2018-01-26 10:18:19.894468948 +0100
++++ Makefile.libretro	2018-01-26 10:19:15.297452917 +0100
+@@ -5,9 +5,9 @@
+ NEWCPU ?= 1
+ HAVE_LIBCO ?= 1
+ 
+-IPFSUPPORT ?= 0
+-IPFDIR ?=
+-CAPSIMAGE_VERSION ?= 5
++IPFSUPPORT ?= 1
++IPFDIR ?= /usr/include
++CAPSIMAGE_VERSION ?= 4
+ 
+ ifeq ($(IPFSUPPORT), 1)
+ CAPS_DIR = $(IPFDIR)
