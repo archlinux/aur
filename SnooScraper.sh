@@ -1,35 +1,72 @@
 #!/bin/sh
 
-#Subreddit Scraper - to download posts (eg. images) fitting certain criteria from a subreddit, and commonly linked sites
-#Oliver Galvin - 2017-18
+#SnooScraper - scrape reddit posts for content fitting certain criteria, and commonly used image sites
+#Copyright 2018 Oliver Galvin <odg@riseup.net>
 
-### User Modifiable Parameters
-###
-target=25		#Number of posts to try to scrape, 0 for no target
-limit=100		#Max number of posts to search, should be >= target, 0 for no limit
-post=0			#1 to allow text posts, 0 to only allow links
-nonimage=0		#1 to allow non-image links, 0 to allow only images
-gif=0			#1 to allow animations/videos, 0 to only allow static images
-album=1			#1 to allow imgur albums, 0 to only allow single images
-insta=1			#1 to also get images from instagram posts
-tumblr=1		#1 to also get images from tumblr posts
-###
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #Error handling
 depends="sh curl jq sed grep find"
-for c in $depends; do if ! command -v "$c" >/dev/null 2>&1; then echo "Dependency ${c} is missing. Aborting."; exit 1; fi; done
-if [ $# -gt 2 ]; then echo "Too many options. Aborting."; exit 1; fi
-if [ $# = 1 ] && [ ! "$1" = "-h" ]; then echo "Missing option. Aborting."; exit 1; fi
+for c in $depends; do if ! command -v "$c" >/dev/null 2>&1; then echo "Error: dependency ${c} is missing. Aborting."; exit 1; fi; done
+if [ $# -gt 2 ]; then echo "Error: too many options. Aborting."; exit 1; fi
+if [ $# = 1 ] && [ ! "$1" = "-h" ]; then echo "Error: missing option. Aborting."; exit 1; fi
 trap 'echo "Interrupted, finishing early."; exit 1' INT
 
+#Default configuration values
+target=25; limit=100
+post=0; nonimage=0; gif=0; album=1
+insta=1; tumblr=1
+
+#Get the configuration if it exists, if necessary
+if [ -e config ]; then
+	while read -r line; do
+		line=$(echo "${line%%\#*}" | tr -d '[:space:]')
+		name=${line%%=*}; value=${line##*=}
+		[ -z "$line" ] && continue
+		case $name in
+			target|limit) eval "$name=$value" ;;
+			post|nonimage|gif|album)
+				case $value in
+					only)	if [ "$only" ]; then echo "Error: One one option can be set to 'only'. Aborting."; exit 1
+						else eval "$name=1"; only="$name"
+						fi ;;
+					include) eval "$name=1" ;;
+					off) eval "$name=0" ;;
+					*) echo "Error: invalid value in config file. Aborting."; exit 1 ;;
+				esac ;;
+			insta|tumblr)
+				case $value in
+					on) eval "$name=1" ;;
+					off) eval "$name=0" ;;
+					*) echo "Error: invalid value in config file. Aborting."; exit 1 ;;
+				esac ;;
+			*) echo "Error: invalid config file. Aborting."; exit 1 ;;
+		esac
+	done < config
+elif [ ! "$1" = "-h" ] && [ ! $# = 0 ]; then echo "Warning: no config file found, using default parameters."; fi
+
 #Global variables
-name=$(date +%s)
-tally=0
+progname=$(basename "$0")
+name=$(date +%s); tally=0
 url=$2; url=${url#*//}; url=${url#m.}
+
+echo "${progname} - v0.1
+---"
 
 clean () {
 	sub="$1"
-	if [ -z "${sub}" ] || [ ! -d "${sub}" ]; then echo "Dump ${sub} does not exist. Aborting."; exit; fi
+	if [ -z "${sub}" ] || [ ! -d "${sub}" ]; then echo "Error: dump ${sub} does not exist. Aborting."; exit; fi
 	echo "Tidying dump of /r/${sub} to remove failed downloads or duplicates/reposts."
 	rm -f "${sub}/temp" "${sub}/found"
 
@@ -146,12 +183,12 @@ getalbum () {
 }
 
 getsub () {
+	sub=$1; page=0; max=1000; per=$max; before=$(date +%s)
+	if [ -z "$sub" ]; then echo "No subreddit given. Aborting."; exit 1; fi
 	echo "Scraping ${target} posts from /r/${sub} matching your criteria."
 	echo
 
 	printf "Initialising... "
-	sub=$1; page=0; max=1000; per=$max; before=$(date +%s)
-	if [ -z "$sub" ]; then echo "No subreddit given. Aborting."; exit 1; fi
 	api="https://elastic.pushshift.io/rs/submissions/_search/?sort=created_utc:desc&_source=url,permalink,created_utc"
 	if ! ping -c1 elastic.pushshift.io > /dev/null 2>&1; then echo "pushshift.io API is down, try again later. Aborting."; exit 1; fi
 	mkdir -p "$sub"; cd "$sub" || exit
@@ -199,7 +236,13 @@ getsub () {
 					if [ "$a" = 0 ] && [ "$i" = 0 ] && [ "$t" = 0 ]; then n=1; fi
 					ext="" ;;
 			esac
-			[ ${#name} -lt 6 ] && name=$(printf "%0$((6-${#name}))d$name")
+			case "$only" in
+				post) [ "$p" = 0 ] && continue ;;
+				nonimage) [ "$n" = 0 ] && continue ;;
+				gif) [ "$g" = 0 ] && continue ;;
+				album) [ "$a" = 0 ] && continue ;;
+			esac
+			[ ${#name} -lt 6 ] && name=$(printf "%0$((6-${#name}))d$name") #Zero pad reddit IDs
 			name="${name}${ext}"
 			if [ "$p" -le "$post" ] && \
 			   [ "$n" -le "$nonimage" ] && \
@@ -241,8 +284,9 @@ case $1 in
 	-t|--tumblr) gettumblr "$url" ;;
 	-h|--help|'')
 	echo "
-Usage: scrapesub [-s subreddit] [-c subreddit] [-a URL] [-i URL] [-t URL] [-h]
-       Subreddit Scraper - to download posts (eg. images) fitting certain criteria from a subreddit, and commonly linked sites
+Usage: ${progname} [-s subreddit] [-c subreddit] [-a URL] [-i URL] [-t URL] [-h]
+
+Download posts (eg. images) fitting certain criteria from a subreddit, and commonly linked sites
 
 Arguments:
 	-h, --help	Display this message and exit
