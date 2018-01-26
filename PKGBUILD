@@ -11,6 +11,8 @@ arch=('x86_64')
 license=('MIT')
 depends=('libidn2' 'libunistring')
 makedepends=('libxslt' 'python' 'publicsuffix-list' 'gtk-doc')
+provides=('libpsl')
+conflicts=('libpsl')
 source=(git+https://github.com/rockdaboot/${_pkgname}.git)
 sha512sums=('SKIP')
 

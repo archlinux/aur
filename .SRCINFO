@@ -11,6 +11,8 @@ pkgbase = libpsl-git
 	makedepends = gtk-doc
 	depends = libidn2
 	depends = libunistring
+	provides = libpsl
+	conflicts = libpsl
 	source = git+https://github.com/rockdaboot/libpsl.git
 	sha512sums = SKIP
 
