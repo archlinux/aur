@@ -1,0 +1,20 @@
+pkgbase = buchhaltung-git
+	pkgdesc = The ledger helper buchhaltung tool
+	pkgver = 20180121
+	pkgrel = 1
+	url = https://johannesgerer.com/software/#buchhaltung
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = stack
+	optdepends = aqbanking: Required for direct retrieval of bank transcations via FinTS/HBCI/EBICS (Germany) or OFXDirectConnect (USA, Canada, UK)
+	optdepends = dbacl: Bayesian classifier used to match transaction to accounts.
+	optdepends = hledger: for quering the ledger, create balance and report statements, web interface, etc.
+	provides = buchhaltung
+	options = strip
+	source = git+https://github.com/johannesgerer/buchhaltung
+	sha256sums = SKIP
+
+pkgname = buchhaltung-git
+
