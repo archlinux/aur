@@ -3,7 +3,7 @@
 
 pkgname=searx-git
 pkgver=v0.13.1+43+gbec9906b
-pkgrel=1
+pkgrel=2
 pkgdesc='A privacy-respecting, hackable metasearch engine'
 arch=(any)
 url='https://asciimoo.github.io/searx/'
@@ -20,6 +20,7 @@ depends=(python-certifi
          python2-yaml
          python2-requests
          python2-pysocks)
+optdepends=('morty-git: Privacy-aware web content sanitizer proxy-as-a-service')
 conflicts=(searx)
 backup=(etc/searx/settings.yml)
 install=searx.install
