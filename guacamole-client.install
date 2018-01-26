@@ -1,5 +1,7 @@
-## arg 1:  the new package version
-## arg 2:  the old package version
+. /usr/share/makepkg/util/message.sh
+colorize
+
 post_upgrade() {
-	echo -e "\n  Attention. Since version 0.9.10, webapp changed to guacamole-incubating\n  Change your URI accordingly.\n"
+	msg "War deployed to /var/lib/tomcat8/webapps/guacamole.war"
+        warning "Since version 0.9.10, webapp is named \'guacamole-incubating\'. Change your URI accordingly."
 }

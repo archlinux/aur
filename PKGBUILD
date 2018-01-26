@@ -2,34 +2,35 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
  
 pkgname=guacamole-client
-pkgver=0.9.13
+pkgver=0.9.14
 pkgrel=1
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
 url="http://guacamole.sourceforge.net/"
 license=('GPL3')
 replaces=('guacamole')
-depends=('java-runtime' 'tomcat7')
+depends=('java-runtime' 'tomcat8')
 makedepends=('maven')
-source=("http://downloads.sourceforge.net/project/guacamole/current/source/$pkgname-$pkgver-incubating.tar.gz" "guacamole.properties")
+source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz"
+        "guacamole.properties")
 install=guacamole-client.install
 
-md5sums=('3d0b7ae28148276fbbdac7dc464fcf6e'
+md5sums=('6b169a272629d960aca313cd56828008'
          '1f3ec0a32cc3c6b4f7aeb8a3b2e7531b')
  
-backup=('usr/share/tomcat7/.guacamole/guacamole.properties' 'usr/share/tomcat7/.guacamole/user-mapping.xml')
+backup=('usr/share/tomcat8/.guacamole/guacamole.properties' 'usr/share/tomcat8/.guacamole/user-mapping.xml')
  
 build() {
-	cd "$srcdir"/$pkgname-$pkgver-incubating
+	cd "$srcdir"/$pkgname-$pkgver
 	mvn package
 }
  
 package() {
-	cd "$srcdir"/$pkgname-$pkgver-incubating
-	mkdir -m 775 -p "$pkgdir"/var/lib/tomcat7/
-	mkdir -m 775 -p "$pkgdir"/var/lib/tomcat7/webapps/
-	mkdir -p "$pkgdir"/usr/share/tomcat7/.${pkgname%-*}/
-	install -D ${pkgname%-*}/target/${pkgname%-*}-$pkgver-incubating.war "$pkgdir"/var/lib/tomcat7/webapps/guacamole-incubating.war
-	install -D ${pkgname%-*}/doc/example/user-mapping.xml "$pkgdir"/usr/share/tomcat7/.guacamole/
-	install -D "$srcdir"/guacamole.properties "$pkgdir"/usr/share/tomcat7/.guacamole/
+	cd "$srcdir"/$pkgname-$pkgver
+	mkdir -m 775 -p "$pkgdir"/var/lib/tomcat8/
+	mkdir -m 775 -p "$pkgdir"/var/lib/tomcat8/webapps/
+	mkdir -p "$pkgdir"/usr/share/tomcat8/.${pkgname%-*}/
+	install -D ${pkgname%-*}/target/${pkgname%-*}-$pkgver.war "$pkgdir"/var/lib/tomcat8/webapps/guacamole.war
+	install -D ${pkgname%-*}/doc/example/user-mapping.xml "$pkgdir"/usr/share/tomcat8/.guacamole/
+	install -D "$srcdir"/guacamole.properties "$pkgdir"/usr/share/tomcat8/.guacamole/
 }
