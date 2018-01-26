@@ -4,6 +4,7 @@ pkgbase = ttf-consolas-with-powerline
 	pkgrel = 1
 	url = https://github.com/v1v1anb3nson/ttf-consolas-with-powerline
 	arch = any
+	makedepends = git
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = git+https://github.com/v1v1anb3nson/ttf-consolas-with-powerline.git
