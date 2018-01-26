@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-company-mode-git
-pkgver=0.9.4.42.g4004c7f
+pkgver=0.9.4.54.gd789f26
 pkgrel=1
 pkgdesc="Modular in-buffer completion framework for Emacs - git checkout"
 url="http://company-mode.github.io"
@@ -29,6 +29,6 @@ build() {
 
 package() {
   cd $_gitname
-  install -d "${pkgdir}"/usr/share/emacs/site-lisp/company-mode
-  install -m644 *.el{c,} "${pkgdir}"/usr/share/emacs/site-lisp/company-mode/
+  install -d "${pkgdir}"/usr/share/emacs/site-lisp/$_gitname
+  install -m644 *.el{c,} "${pkgdir}"/usr/share/emacs/site-lisp/$_gitname/
 }
