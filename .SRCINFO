@@ -1,0 +1,32 @@
+pkgbase = porntime-bin
+	pkgdesc = Stream porn movies from torrents. Skip the downloads. Launch, click, watch.
+	pkgver = 0.3.8
+	pkgrel = 4
+	url = http://porntime.ws/
+	install = porntime.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = ttf-liberation
+	depends = gconf
+	depends = nss
+	depends = libxtst
+	depends = gtk2
+	depends = alsa-lib
+	optdepends = net-tools: necessary for the new vpn feature
+	provides = porntime
+	conflicts = porntime
+	options = !strip
+	source = icon.png
+	source = porntime.install
+	source = porntime.desktop
+	md5sums = 69d7b9c45f83c399b1c68e85c2921a9a
+	md5sums = eda173affdfd1630ff6a0bfa566bc1de
+	md5sums = 886a43e17c69dd434b2bbb243fefee75
+	source_x86_64 = http://porntime.ws/PornTimeX64.tar.gz
+	md5sums_x86_64 = 3f67821d7bfc80bd8bb858bc92f5425b
+	source_i686 = http://porntime.ws/PornTimeX32.tar.gz
+	md5sums_i686 = 7dc74d8e04b62925a54c14b29d8b1f3d
+
+pkgname = porntime-bin
+

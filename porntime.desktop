@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PornTime
+Comment=Watch torrent movies instantly
+Exec=porntime %U
+Icon=porntime
+Terminal=false
+Type=Application
+Categories=Player;Video;Network;
