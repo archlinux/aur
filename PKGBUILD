@@ -2,9 +2,9 @@
 pkgname=onscripter-jh
 _pkgname=jh10001-onscripter-jh
 pkgdesc="onscripter fork with custom improvements."
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
-_commit=e0eaf62c1cd6
+_commit=647954377a77
 arch=('i686' 'x86_64' 'armv7h')
 url="https://bitbucket.org/jh10001/onscripter-jh"
 license=('GPL')
@@ -14,7 +14,7 @@ conflicts=('onscripter-jh-hg')
 provides=('onscripter-jh-hg')
 source=("https://bitbucket.org/jh10001/onscripter-jh/get/SDL2.zip"
         "target.patch")
-sha256sums=('6f0c6495c72477af2d52d64182b964aa567db9bb8729f5cf03e0b29b40c70ace'
+sha256sums=('b9c564dd080ae8d94681c0879e0c7302bcf13d7753eef747ac566cbe72c88447'
             'd169f6ec66c70429bce973be76f77c8ae05ecaead30e1586e5f68e284dfc4b94')
 
 prepare() {
