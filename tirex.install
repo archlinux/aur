@@ -1,0 +1,37 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+## arg 1:  the new package version
+pre_install() {
+    :
+}
+
+## arg 1:  the new package version
+post_install() {
+    groupadd tirex
+    useradd -g tirex -d /dev/null -s /bin/false tirex
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    :
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    :
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    :
+}
+
+## arg 1:  the old package version
+post_remove() {
+    userdel tirex
+    groupdel tirex
+}

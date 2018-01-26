@@ -1,12 +1,13 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=tirex-git
 pkgver=r222.a0c8d0d
-pkgrel=1
+pkgrel=2
 pkgdesc="Tirex tile queue manager. A drop-in replacement for renderd."
 arch=('i686' 'x86_64')
 url='https://github.com/geofabrik/tirex'
 license=('GPL2')
 groups=()
+install='tirex.install'
 depends=(
   # official packages
   'mapnik' 'perl-json' 'perl-gd' 'perl-libwww'
@@ -17,8 +18,12 @@ makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
 options=()
-source=("${pkgname%-VCS}"::'git+https://github.com/geofabrik/Tirex.git')
-md5sums=('SKIP')
+source=(
+  "${pkgname%-VCS}"::'git+https://github.com/geofabrik/Tirex.git'
+  'tirex.conf'
+)
+sha256sums=('SKIP'
+            '4881d8b6fdccbe18295c7549b17819202d6304cc06112c259bf7a4a55ee1053a')
 
 pkgver() {
   cd "$srcdir/${pkgname%-VCS}"
