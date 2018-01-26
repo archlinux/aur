@@ -2,7 +2,7 @@
 
 pkgname=ocaml-easy-format
 _oname=easy-format
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Data pretty printing made easy"
 url="https://github.com/mjambon/easy-format"
@@ -11,14 +11,16 @@ options=('!strip' 'staticlibs')
 license=('BSD')
 makedepends=('ocaml-findlib')
 source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a288fabcdc19c2262e76cf93e0fd987fe1b21493edd13309522fbae405329ffd')
+sha256sums=('489d55ea5de171cea2d7e2114bcd5cebd1fcbf89f839fbf3757769507502e1f0')
 build() {
-  cd $srcdir/$_oname-$pkgver
-  make
+  cd ${srcdir}/${_oname}-${pkgver}
+  make all
+  sed -i '/doc:\s\[/,$d' _build/default/easy-format.install
 }
 
 package() {
-  cd $srcdir/$_oname-$pkgver
-  mkdir -p ${pkgdir}$(ocamlfind printconf destdir)
-  make OCAMLFIND_DESTDIR=${pkgdir}$(ocamlfind printconf destdir) install
+  cd ${srcdir}/${_oname}-${pkgver}
+  export OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
+  install -dm755 "$OCAMLFIND_DESTDIR"
+  jbuilder install
 }
