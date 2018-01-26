@@ -5,7 +5,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.20.99.57067.g15c7bbf5fa
+pkgver=1.20.99.57388.g7255954ccc
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi'
          'libxcursor' 'libxinerama' 'libxkbcommon' 'libxp' 'libxrandr'
          'libxss' 'libunwind' 'mesa' 'openjpeg2' 'poppler' 'wayland'
          'shared-mime-info' 'ttf-font' 'scim' 'libibus' 'glib2'
-         'wayland' 'wayland-protocols')
+         'wayland' 'wayland-protocols' 'libxkbcommon-x11')
 makedepends=('git' 'python2')
 optdepends=('geoclue: For elocation'
             'gst-plugins-base: Video and thumbnail codecs'
