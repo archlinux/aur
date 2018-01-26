@@ -16,6 +16,7 @@ pkgbase = gnustep-gui
 	depends = libsndfile
 	depends = giflib
 	depends = libao
+	optdepends = flite1: required for speech synthesis
 	conflicts = gnustep-gui-svn
 	options = !makeflags
 	source = https://github.com/gnustep/libs-gui/releases/download/gui-0_26_2/gnustep-gui-0.26.2.tar.gz

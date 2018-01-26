@@ -12,6 +12,7 @@ url="http://www.gnustep.org/"
 license=('LGPL')
 depends=('aspell' 'gcc-libs' 'libcups' 'audiofile' 'libsndfile' 'giflib' 'libao')
 makedepends=('gcc-objc' 'gnustep-base' 'gnustep-make')
+optdepends=('flite1: required for speech synthesis')
 conflicts=('gnustep-gui-svn')
 groups=('gnustep-core')
 options=('!makeflags')
