@@ -4,8 +4,8 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-nightly
-pkgver=59.0a1.20180103
-_version=59.0a1
+pkgver=60.0a1.20180124
+_version=60.0a1
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Nightly build"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ provides=("thunderbird=$_version")
 install="$pkgname.install"
 
 FX_SRC="thunderbird-${_version}.en-US.linux-${CARCH}"
-FX_SRC_URI="http://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central/${FX_SRC}"
+FX_SRC_URI="https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/${FX_SRC}"
 
 source=("${FX_SRC_URI}.txt"
         "${FX_SRC_URI}.tar.bz2"
