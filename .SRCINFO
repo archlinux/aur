@@ -1,14 +1,20 @@
 pkgbase = 1password-cli
 	pkgdesc = 1Password command line tool
-	pkgver = 0.1.1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://app-updates.agilebits.com/product_history/CLI
 	arch = x86_64
+	arch = i686
+	arch = arm
 	license = custom
 	options = !strip
 	options = !emptydirs
-	source = https://cache.agilebits.com/dist/1P/op/pkg/v0.1.1/op_linux_amd64_v0.1.1.zip
-	sha256sums = 6dc01dce5138f5ec8c6d6853fb22d02cfe1c0b0178f02754278d4dcac11f038b
+	source_x86_64 = https://cache.agilebits.com/dist/1P/op/pkg/v0.2.1/op_linux_amd64_v0.2.1.zip
+	sha256sums_x86_64 = 3ba640545e32c94775534dfc8bf036398ad573d0f001492e7f1818e77d183b73
+	source_i686 = https://cache.agilebits.com/dist/1P/op/pkg/v0.2.1/op_linux_386_v0.2.1.zip
+	sha256sums_i686 = 71fd9885d28346384dd7833552d7e0f149da0cbe774ad927ffceea8985a7dff0
+	source_arm = https://cache.agilebits.com/dist/1P/op/pkg/v0.2.1/op_linux_arm_v0.2.1.zip
+	sha256sums_arm = b7cd9c03638ac2369db3b8f95cb2959642b219ed7938f6583561a6c5fc697c3d
 
 pkgname = 1password-cli
 
