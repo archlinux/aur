@@ -3,7 +3,7 @@
 _pkgname=jadx
 pkgname=jadx-unstable-bin
 pkgver=0.7.0
-_pkgver=b373-d42bf2d
+_pkgver=b375-d42bf2d
 pkgrel=1
 pkgdesc='Command line and GUI tools to produce Java source code from Android Dex and APK files'
 url='https://github.com/skylot/jadx'
@@ -13,7 +13,7 @@ depends=('java-runtime' 'bash' 'fontconfig' 'xorg-font-utils')
 provides=('jadx')
 conflicts=('jadx')
 source=("https://dl.bintray.com/skylot/$_pkgname/${_pkgname}-${pkgver}-${_pkgver}.zip")
-sha256sums=('453f85736ca7f6561ff330c6572f9a6441eae1007e1fd35ee1bc522fc4a3bc07')
+sha256sums=('59b248cc18bdbbc5767ac92544538936c2eaa3091bbc8a09e60d9c959dc23966')
 
 package() {
   install -Dm 755 bin/jadx "${pkgdir}/usr/share/java/${_pkgname}/bin/jadx"

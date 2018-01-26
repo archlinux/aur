@@ -11,8 +11,8 @@ pkgbase = jadx-unstable-bin
 	depends = xorg-font-utils
 	provides = jadx
 	conflicts = jadx
-	source = https://dl.bintray.com/skylot/jadx/jadx-0.7.0-b373-d42bf2d.zip
-	sha256sums = 453f85736ca7f6561ff330c6572f9a6441eae1007e1fd35ee1bc522fc4a3bc07
+	source = https://dl.bintray.com/skylot/jadx/jadx-0.7.0-b375-d42bf2d.zip
+	sha256sums = 59b248cc18bdbbc5767ac92544538936c2eaa3091bbc8a09e60d9c959dc23966
 
 pkgname = jadx-unstable-bin
 
