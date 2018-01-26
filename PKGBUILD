@@ -2,12 +2,12 @@
 
 pkgname=libmypaint
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="a library for making brushstrokes which is used by MyPaint and other projects, with GEGL support"
 arch=('i686' 'x86_64')
 url="http://mypaint.org/"
 license=('ISC')
-depends=('json-c' 'gegl')
+depends=('json-c>=0.13' 'gegl')
 makedepends=('intltool' 'python' 'gobject-introspection')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mypaint/libmypaint/archive/v${pkgver}.tar.gz"
         'versioning.patch')
