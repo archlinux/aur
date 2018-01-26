@@ -3,7 +3,8 @@
 
 pkgname=code
 pkgdesc='Microsoft Code -- The Open Source build of Visual Studio Code (vscode)'
-pkgver=1.19.2
+pkgver=1.19.3
+_pkgver=v$pkgver
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
@@ -14,7 +15,7 @@ depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
 conflicts=('vscode-oss' 'visual-studio-code-oss')
 provides=('vscode-oss' 'visual-studio-code-oss')
 
-source=("vscode::git+https://github.com/Microsoft/vscode#tag=${pkgver}"
+source=("vscode::git+https://github.com/Microsoft/vscode#tag=${_pkgver}"
         "${pkgname}.desktop"
         "startup_script.patch"
         "product_json.patch")
