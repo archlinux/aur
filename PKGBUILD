@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Frederic Bezies < fredbezies at gmail dot com>
 # Contributor: jddolvin <jddolvin@atheist.com>
 # Contributor: arriagga <ramon.arriaga@gmail.com>
