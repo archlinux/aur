@@ -3,12 +3,13 @@
 
 pkgname=dlib
 _pkgname=dlib
-pkgver=19.8
-pkgrel=2
+pkgver=19.9
+pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
 url="http://www.dlib.net/"
 license=('Boost Software License')
+makedepends=('cmake')
 optdepends=('blas: for BLAS support'
             'cuda: for CUDA support'
             'cudnn: for CUDNN support'
@@ -19,7 +20,7 @@ optdepends=('blas: for BLAS support'
             'neon: for neon support'
             'sqlite: for sqlite support')
 source=(https://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2)
-sha512sums=('13d354e2e35c93c1b84bbc680e38cfe043199a18cb362426f21962a3d2eb116c86dd83af4eacd131e3749d3a4eadcf58a9db28133ec508de0c2a4cb3eb87dbf1')
+sha512sums=('3cbd2b7d2cad2e494a14e9f19469e6ab33263ad87aa32e6f65de689ebfb395277fd5d5c3fd4a510cc16d3a8768d9685652c8378fcde0ceec5234363ab492b473')
 
 build() {
     cd "${srcdir}"
@@ -28,6 +29,9 @@ build() {
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
         -DBUILD_SHARED_LIBS:BOOL=ON \
+        -DUSE_AVX_INSTRUCTIONS:BOOL=ON \
+        -DUSE_SSE2_INSTRUCTIONS:BOOL=ON \
+        -DUSE_SSE4_INSTRUCTIONS:BOOL=ON \
         -DCUDA_HOST_COMPILER='/usr/bin/cc-6' \
         -DCMAKE_BUILD_TYPE=Release \
         "../${_pkgname}-${pkgver}"
