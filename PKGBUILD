@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=64.0.3282.133
-pkgrel=4
+pkgrel=5
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -274,7 +274,7 @@ patch -Np1 -i ../020.patch
 patch -Np1 -i ../021.patch
 patch -Np1 -i ../022.patch
 patch -Np1 -i ../023.patch
-patch -Np1 -i ../024.patch
+#patch -Np1 -i ../024.patch
 patch -Np1 -i ../025.patch
 #patch -Np1 -i ../026.patch
 patch -Np1 -i ../027.patch
@@ -283,10 +283,13 @@ patch -Np1 -i ../030.patch
 patch -Np1 -i ../CP.patch
 patch -Np1 -i ../032.patch
 patch -Np1 -i ../034.patch
-patch -Np1 -i ../036.patch
+#patch -Np1 -i ../035.patch
+patch -Np1 -i ../360.patch
+patch -Np1 -i ../888.patch
+patch -Np1 -i ../meme.patch
+
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-patch -Np1 -i ../888.patch
 patch -Np1 -i ../pt.patch
 
 
@@ -319,15 +322,16 @@ patch -Np1 -i ../c.patch
 patch -Np1 -i ../d.patch
 patch -Np1 -i ../e.patch
 patch -Np1 -i ../k.patch
-patch -Np1 -i ../k1.patch
 patch -Np1 -i ../l.patch
 patch -Np1 -i ../l2.patch
 patch -Np1 -i ../l3.patch
 patch -Np1 -i ../m.patch
 patch -Np1 -i ../n.patch
 patch -Np1 -i ../o.patch
-patch -Np1 -i ../p.patch
-
+patch -Np1 -i ../p1.patch
+patch -Np1 -i ../p2.patch
+patch -Np1 -i ../e3.patch
+patch -Np1 -i ../narnia1.patch
 
 #patch -Np1 -i ../9k.patch
 #patch -Np1 -i ../048.patch
@@ -335,7 +339,11 @@ patch -Np1 -i ../p.patch
 patch -Np1 -i ../12.patch
 patch -Np1 -i ../16.patch
 
+msg2 'mitigate webrtc'
+patch -Np1 -i ../edgy.patch
 
+patch -Np1 -i ../k1.patch
+#patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
   patch -Np1 -i ../gnb.patch
