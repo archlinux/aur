@@ -1,0 +1,12 @@
+pkgbase = python-easypysmb
+	pkgdesc = Library wraps around the pysmb library
+	pkgver = 1.4.3
+	pkgrel = 1
+	arch = any
+	depends = python-pysmbc
+	depends = python-pyasn1
+	source = https://github.com/pschmitt/easypysmb/archive/1.4.3.tar.gz
+	md5sums = c3c74647cc62c6cf216fc20d31554c90
+
+pkgname = python-easypysmb
+
