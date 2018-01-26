@@ -1,7 +1,7 @@
 # Maintainer: Poppy Schmo <poppyschmo at users dot noreply.github.com>
 pkgname=chromebook_keyboard_backlight_driver
 pkgver=1.0r24.g39568fa
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Keyboard backlight driver for various chromebook models"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/corcoran/chromebook_keyboard_backlight_driver"
 license=('GPL')
 depends=()
 makedepends=('linux-headers')
-provides=(${pkgname})
-conflicts=(${pkgname})
+provides=("$pkgname")
+conflicts=("$pkgname")
 install=${pkgname}.install
 source=("git://github.com/corcoran/chromebook_keyboard_backlight_driver.git")
 md5sums=('SKIP')
@@ -26,16 +26,17 @@ build() {
 }
 
 package() {
-	local _excl _confd _conf _docd _newest each tdir
+	local _excl _confd _conf _docd _newest each tdir _multi
 	_excl=_bl # don't autoload chromeos_keyboard_bl.ko variant
 	_confd=$pkgdir/etc/modules-load.d
 	_conf=chromebook_keyboard_backlight_driver.conf
 	_docd=$pkgdir/usr/share/doc/$pkgname
+	_bin=$pkgdir/usr/bin
 	_newest=
 	cd "$srcdir/$pkgname"
 	_multi=skipped_kernels.log
 	echo "# Modules for these kernels were skipped during install" > "$_multi"
-	echo '# modules for' ${pkgname} > "$_conf"
+	echo "# Modules for $pkgname" > "$_conf"
 	for each in *.ko; do
 		if [[ $(file "$each") != *BuildID* ]]; then
 			continue
@@ -60,6 +61,7 @@ package() {
 	done
 	install -Dm 644 README.markdown "$_docd/README.markdown"
 	install -Dm 644 "$_conf" "$_confd/$_conf"
+	install -Dm 6711 keyboard_brightness "$_bin/keyboard_brightness"
 }
 
 # vim:ft=sh:noet:list
