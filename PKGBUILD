@@ -3,14 +3,14 @@
 
 pkgname=overture
 pkgver=1.3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS upstream switcher written in Go in order to purify DNS records"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url="https://github.com/shawn1m/overture"
 license=("MIT")
 provides=("overture")
 optdepends=("dnsmasq: advanced DNS configuration")
-makedepends=("go>=1.7")
+makedepends=("go>=1.9")
 backup=("etc/overture/config.json" "etc/overture/hosts" "etc/overture/china_ip_list.txt" "etc/overture/gfwlist.txt")
 
 install=${pkgname}.install
