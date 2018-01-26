@@ -63,7 +63,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcname=linux-4.14
 pkgver=4.14.15
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -90,6 +90,7 @@ source=(
   "$_preck2/1588e6bf316231685204e358dfe172851b39fd1e.patch"
   "$_preck2/df2a75f4864b30011ab6a6f365d9378d8eafa53b.patch"
   "$_preck2/a79d648fcde72fc98048d4435bc86864a59fd01b.patch"
+  "unfuck_MuQSS_for_4.14.15+.patch::https://github.com/ckolivas/linux/commit/25849740d77dfc089fdbfb53623e50d38a972aff.patch"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
   0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
@@ -114,6 +115,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'd2f59cf1c5187204eced6e53806b187e90698fcb2309955aed4020a15c659ae1'
             '3d4d2506795c4bd914959758f5b69ccf5a4f5a21f5d4bfc87bf0aa3b4b58f4c6'
             '0dbf2d23df0b5d023794332872b8b346d0c4994576b778396364e803acac4498'
+            'e0f40fc665ca9fa3cd1f3c9055aa11ea3d5f2790c7c9face69254a24ef27ec04'
             'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
             '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
             '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
@@ -126,7 +128,6 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
-  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
 
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
@@ -150,6 +151,7 @@ prepare() {
   patch -Np1 -i ../1588e6bf316231685204e358dfe172851b39fd1e.patch
   patch -Np1 -i ../df2a75f4864b30011ab6a6f365d9378d8eafa53b.patch
   patch -Np1 -i ../a79d648fcde72fc98048d4435bc86864a59fd01b.patch
+  patch -Np1 -i ../unfuck_MuQSS_for_4.14.15+.patch
 
   # Patch source to unlock additional gcc CPU optimizatons
   # https://github.com/graysky2/kernel_gcc_patch
