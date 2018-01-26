@@ -2,20 +2,26 @@
 
 pkgname=qtcreator-doxygen
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Doxygen Plugin for Qt Creator"
 url=https://github.com/fpoussin/qtcreator-doxygen
 arch=(x86_64)
-depends=()
+makedepends=("qtcreator-src")
+depends=("qtcreator")
 license=(MIT)
-_qtver=4.4.x
+# _qtver=4.4.x
 
-md5sums=('a84fcd8bb999611246520ff183f73f4f')
+md5sums=('16f7716c27bbbf22ba329da92d00d6ed')
 
-source=("https://github.com/fpoussin/qtcreator-doxygen/releases/download/v$pkgver/libDoxygen-$pkgver-qtc$_qtver-x86_64.so")
-
+source=("https://github.com/fpoussin/qtcreator-doxygen/archive/v$pkgver.tar.gz")
+build() {
+  cd "$srcdir/$pkgname-$pkgver/"
+   QTC_SOURCE=/usr/src/qtcreator QTC_BUILD=build qmake\
+        "LIBS+=-L/usr/lib/qtcreator/ -L/usr/lib/qtcreator/plugins"
+  make -j`nproc`
+}
 
 package() {
-    mkdir -p "${pkgdir}/usr/lib/qtcreator/plugins/"
-    cp libDoxygen-$pkgver-qtc$_qtver-x86_64.so "${pkgdir}/usr/lib/qtcreator/plugins/"
+  cd "${srcdir}/$pkgname-$pkgver/"
+  make INSTALL_ROOT="${pkgdir}/usr" install
 }
