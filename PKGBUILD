@@ -2,7 +2,7 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.1.383
+pkgver=1.1.419
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.6.1
@@ -23,15 +23,13 @@ source=(
 	"https://s3.amazonaws.com/rstudio-buildtools/gin-$_ginver.zip"
 	"https://s3.amazonaws.com/rstudio-buildtools/gwt-$_gwtver.zip"
 	'https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip'
-	'socketproxy-openssl.patch'
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
 sha256sums=(
-	'0647140dc5f527b4b5c184e4280e967c3ce381596e317423d4e940d6da03c388'
+	'597c373092ea3416da2e44fada07734e106b40f961784bf5d951641c18c29f3a'
 	'f561f4eb5d5fe1cff95c881e6aed53a86e9f0de8a52863295a8600375f96ab94'
 	'aa65061b73836190410720bea422eb8e787680d7bc0c2b244ae6c9a0d24747b3'
 	'4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
-	'794f7a1eff009d2ff5576bb9ace50f6fedc96cf7c2709680c7531b426037bfe7'
 )
 
 _pkgname=rstudio
@@ -58,11 +56,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgname-$_pkgname-"*
-	
-	# problem with openssl-1.1.0. Fixed in some future rstudio-1.1.x:
-	# https://github.com/rstudio/rstudio/pull/1894
-	# adapted from upstream patch
-	patch -p 1 -i "$srcdir/socketproxy-openssl.patch"
 	
 	install -d src/gwt/lib/{gin/$_ginver,gwt/$_gwtver}
 	
