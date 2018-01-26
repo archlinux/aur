@@ -1,32 +1,11 @@
-pre_install() {
-    ldconfig >& /dev/null
-}
-
-pre_upgrade() {
-    ldconfig >& /dev/null
-}
-
-pre_remove() {
-    ldconfig >& /dev/null
-}
-
 post_install() {
-    ldconfig >& /dev/null
-    systemctl daemon-reload
-    systemctl restart pcscd.service
-    echo "Run 'sudo ldconfig && sudo systemctl restart pcscd.service' after install"
+    echo "Run 'sudo ldconfig && sudo systemctl restart pcscd.service' after (re)install"
 }
 
 post_upgrade() {
-    ldconfig >& /dev/null
-    systemctl daemon-reload
-    systemctl restart pcscd.service
-    echo "Run 'sudo ldconfig && sudo systemctl restart pcscd.service' after install"
+    echo "Run 'sudo ldconfig && sudo systemctl restart pcscd.service' after upgrade"
 }
 
 post_remove() {
-    ldconfig >& /dev/null
-    systemctl daemon-reload
-    systemctl restart pcscd.service
-    echo "Run 'sudo ldconfig && sudo systemctl restart pcscd.service' after install"
+    echo "Run 'sudo ldconfig && sudo systemctl restart pcscd.service' after remove"
 }
