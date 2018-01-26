@@ -1,0 +1,5 @@
+*.run
+*.tar.xz
+*.patch
+pkg/*
+src/*
