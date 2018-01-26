@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=65.0.3325.18
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -361,6 +361,11 @@ patch -Np1 -i ../edgy.patch
 
   #patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
+  patch -Np1 -i ../k3.patch
+
+  patch -Np1 -i ../k2.patch
+
+  patch -Np1 -i ../desu.patch
 
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
