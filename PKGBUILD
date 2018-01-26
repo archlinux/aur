@@ -3,7 +3,7 @@
 pkgname=rrootage
 pkgver=0.23a
 pkgrel=2
-pkgdesc='rRootage is an abstract shooter, created by Kenta Cho and ported to Linux by Evil Mr Henry.'
+pkgdesc='Abstract shooter, created by Kenta Cho and ported to Linux by Evil Mr Henry.'
 url='http://rrootage.sourceforge.net/'
 license=('custom:rrootage')
 

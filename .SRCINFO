@@ -1,5 +1,5 @@
 pkgbase = rrootage
-	pkgdesc = rRootage is an abstract shooter, created by Kenta Cho and ported to Linux by Evil Mr Henry.
+	pkgdesc = Abstract shooter, created by Kenta Cho and ported to Linux by Evil Mr Henry.
 	pkgver = 0.23a
 	pkgrel = 2
 	url = http://rrootage.sourceforge.net/
