@@ -19,11 +19,16 @@ options=()
 provides=('osu-lazer')
 conflicts=('osu-lazer')
 source=('git+https://github.com/ppy/osu.git'
+        'git+https://github.com/ppy/osu-framework'
+        'git+https://github.com/ppy/osu-resources'
         'osu-launcher'
         'osu-lazer.desktop'
         'osu-lazer.png'
         'x-osu-lazer.xml')
+
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'c499dbff1d9a8f382e7b3cf4a95b58b9f02fb98e66e50cddb5d7d6c8a5223d2d'
             '11d29c2654896607f37bc5c8e558ea245d8e3b1b412dcba03033bf1db6580ebe'
             '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
@@ -43,15 +48,21 @@ pkgver() {
 	git describe --always --tags | sed -E -e 's/^(v|changelog-)//g' -e 's/-/_/g'
 }
 
-build() {
-	cd "$srcdir/osu"
+prepare() {
+	cd "${srcdir}/osu"
 
-	# Initialize submodules
+	# Prepare submodules
 	git submodule init
+	git config submodule.osu-framework.url "${srcdir}/osu-framework"
+	git config submodule.osu-resources.url "${srcdir}/osu-resources"
 	git submodule update --recursive
 
 	# Download dependencies
 	nuget restore
+}
+
+build() {
+	cd "$srcdir/osu"
 
 	# Symlink netstandard for xbuild
 	mkdir -p "osu.Game/bin/Release"
