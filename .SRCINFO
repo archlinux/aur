@@ -1,12 +1,14 @@
 pkgbase = translate-shell-git
 	pkgdesc = A command-line interface and interactive shell for Google Translate.
-	pkgver = v0.9.0.4.7.g1a4d83e
+	pkgver = 0.9.6.6.r3.g0060b10
 	pkgrel = 1
-	url = http://www.soimort.org/translate-shell/
+	url = https://www.soimort.org/translate-shell/
 	arch = i686
 	arch = x86_64
 	license = custom:PublicDomain
 	makedepends = git
+	depends = gawk
+	depends = bash
 	optdepends = fribidi: display right-to-left languages
 	optdepends = mplayer: Text-to-Speech functionality
 	optdepends = mplayer2: Text-to-Speech functionality
@@ -16,7 +18,8 @@ pkgbase = translate-shell-git
 	optdepends = rlwrap: readline-style editing and history in the interactive mode
 	optdepends = emacs: Emacs interface
 	provides = translate-shell
-	source = git://github.com/soimort/translate-shell.git
+	conflicts = translate-shell
+	source = git+https://github.com/soimort/translate-shell.git
 	md5sums = SKIP
 
 pkgname = translate-shell-git
