@@ -4,15 +4,15 @@
 # Contributor: Paolo Stivanin <admin@polslinux.it>
 
 pkgname=winff
-pkgver=1.5.4
-pkgrel=3
+pkgver=1.5.5+f721e4d
+pkgrel=1
 pkgdesc='GUI for ffmpeg'
 url='https://github.com/WinFF/winff/'
 license=('GPL3')
 arch=('x86_64')
-depends=('ffmpeg' 'gtk2' 'xterm')
+depends=('ffmpeg' 'gtk2')
 makedepends=('lazarus' 'lazarus-gtk2' 'gendesk' 'tar' 'git')
-source=('git+https://github.com/WinFF/winff.git#commit=220b2128833c675aa110e34f542ea2950829309e')
+source=('git+https://github.com/WinFF/winff.git#commit=f721e4d')
 md5sums=('SKIP')
 
 prepare() {

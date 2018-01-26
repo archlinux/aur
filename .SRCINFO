@@ -1,7 +1,7 @@
 pkgbase = winff
 	pkgdesc = GUI for ffmpeg
-	pkgver = 1.5.4
-	pkgrel = 3
+	pkgver = 1.5.5+f721e4d
+	pkgrel = 1
 	url = https://github.com/WinFF/winff/
 	arch = x86_64
 	license = GPL3
@@ -12,8 +12,7 @@ pkgbase = winff
 	makedepends = git
 	depends = ffmpeg
 	depends = gtk2
-	depends = xterm
-	source = git+https://github.com/WinFF/winff.git#commit=220b2128833c675aa110e34f542ea2950829309e
+	source = git+https://github.com/WinFF/winff.git#commit=f721e4d
 	md5sums = SKIP
 
 pkgname = winff
