@@ -2,12 +2,9 @@
 
 pkgbase=frotz-git
 pkgname=(frotz-ncurses-git frotz-dumb-git)
-pkgver=2.44.r188.g869c99e
+pkgver=2.44.r196.gf3ceac9
 pkgrel=1
 pkgdesc='Z-machine interpreter for interactive fiction games'
-
-conflicts=(frotz)
-provides=(frotz)
 
 arch=(i686 x86_64)
 url='http://frotz.sourceforge.net/'
@@ -23,11 +20,8 @@ pkgver() {
 prepare() {
 	cd frotz
 	sed '/^PREFIX/ s:/usr/local:/usr:
-		/^CONFIG_DIR = $(PREFIX)/ s/^/#/
-		/^CONFIG_DIR/ s:/usr/local::
-		/^CURSES/ s/-lcurses/-lncurses/
-		/^#CURSES_DEF/ s/^#//' \
-		-i Makefile
+		/^MAN_PREFIX/ s:$:/share:
+		' -i Makefile
 }
 
 build() {
@@ -37,6 +31,8 @@ build() {
 }
 
 package_frotz-ncurses-git() {
+	conflicts=(frotz)
+	provides=(frotz)
 	depends=('ncurses')
 
 	cd frotz
@@ -44,6 +40,9 @@ package_frotz-ncurses-git() {
 }
 
 package_frotz-dumb-git() {
+	conflicts=(frotz-dumb)
+	provides=(frotz-dumb)
+
 	cd frotz
 	make DESTDIR="$pkgdir" install_dumb
 }
