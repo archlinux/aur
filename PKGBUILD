@@ -2,7 +2,7 @@
 
 DLAGENTS=('https::/usr/bin/curl -A "Mozilla/4.0" -fLC - -o %o %u')
 pkgname=pycom-firmware-updater
-pkgver=1.1.6b0
+pkgver=1.10.0b4
 pkgrel=1
 pkgdesc="Pycom firmware updater for WiPy and LoPy IOT boards"
 url="https://www.pycom.io/"
@@ -16,7 +16,7 @@ optdepends=('python2-qscintilla-qt4: gui'
 source=('https://software.pycom.io/findupgrade?product=pycom-firmware-updater&type=all&platform=unix&redirect=true'
         'lopyupdate.sh'
 	'lopyupdate.desktop')
-md5sums=('c0a1d701979f5a6354022baf1b88a9a5'
+md5sums=('e6eb1d08185cbbe2bd88fa5b665540d6'
          '268d38fbb3f7d8ee962760abb6169505'
          '6af9152e7aa93baa74b59cbc0af2ba71')
 
