@@ -6,7 +6,7 @@
 _pkgbase=glfw
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-x11-git" "$_pkgbase-wayland-git")
-pkgver=3.2.r0.gf6ec835
+pkgver=3.2.1.r479.g973bf296
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.glfw.org/"
@@ -41,7 +41,6 @@ package_glfw-x11-git() {
     -Wno-dev \
     ..
   make DESTDIR="$pkgdir" install
-  install -D -m644 ../COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 package_glfw-wayland-git() {
@@ -58,7 +57,6 @@ package_glfw-wayland-git() {
     -Wno-dev \
     ..
   make DESTDIR="$pkgdir" install
-  install -D -m644 ../COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim:set ts=2 sw=2 et:
