@@ -1,6 +1,6 @@
 pkgbase = djgpp-gcc
 	pkgdesc = GCC for the djgpp cross-compiler
-	pkgver = 7.2.0
+	pkgver = 7.3.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
@@ -17,14 +17,14 @@ pkgbase = djgpp-gcc
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-7.3.0/gcc-7.3.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
 	source = lto.patch
-	source = gcc-7.2.0-djgpp.diff
-	sha256sums = 1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a
+	source = gcc-7.3.0-djgpp.diff
+	sha256sums = 832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c
 	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
 	sha256sums = c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0
-	sha256sums = ef436e945a0bf386c033e6c05a5692621a0927f25fa6c5cedc2e7d1d931fe235
+	sha256sums = 3d805b0d5d5180531858f830d9a022ae9a61f5768535bd0e794d8a1b2eb430b6
 
 pkgname = djgpp-gcc
 

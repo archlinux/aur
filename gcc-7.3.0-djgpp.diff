@@ -32,8 +32,6 @@ index bff875a6822..fc06ee7b663 100644
     dir[*length] = '\0';
  }
  
-diff --git a/gcc/ada/gcc-interface/Make-lang.in b/gcc/ada/gcc-interface/Make-lang.in
-index eb0489b4a50..166a7432647 100644
 diff --git a/gcc/ada/s-os_lib.adb b/gcc/ada/s-os_lib.adb
 index 36064e97bd3..18bfb484074 100644
 --- a/gcc/ada/s-os_lib.adb
@@ -47,10 +45,6 @@ index 36064e97bd3..18bfb484074 100644
     --  Used to initialize Current_Temp_File_Name and Temp_File_Name_Last_Digit
  
     Current_Temp_File_Name : String := First_Temp_File_Name;
-diff --git a/gcc/config/i386/xm-djgpp.h b/gcc/config/i386/xm-djgpp.h
-index de0dace1707..57c037a7df0 100644
-diff --git a/gcc/gcov-tool.c b/gcc/gcov-tool.c
-index 74e77b90d72..a0e85f72256 100644
 diff --git a/gcc/ginclude/float.h b/gcc/ginclude/float.h
 index 658017fd63a..e6504b94d07 100644
 --- a/gcc/ginclude/float.h
@@ -93,8 +87,8 @@ index 969a531033f..3c07d60a62c 100644
    file->buffer = _cpp_convert_input (pfile,
  				     CPP_OPTION (pfile, input_charset),
  				     buf, size + 16, total,
-diff --git a/libcpp/lex.c b/libcpp/lex.c
-index 9edd2a6afdb..4a4fa56b280 100644
+diff --git a/libgfortran/intrinsics/chmod.c b/libgfortran/intrinsics/chmod.c
+index d08418d773f..109e15ff3ab 100644
 --- a/libgfortran/intrinsics/chmod.c
 +++ b/libgfortran/intrinsics/chmod.c
 @@ -443,7 +443,7 @@ clause_done:
@@ -125,7 +119,7 @@ index 9edd2a6afdb..4a4fa56b280 100644
  	  file_mode |= S_ISVTX;
  	else if (!is_dir)
 diff --git a/libgfortran/io/unix.c b/libgfortran/io/unix.c
-index c76b427387a..2edd317d619 100644
+index bb9bc9a5c12..79d25e1ebe0 100644
 --- a/libgfortran/io/unix.c
 +++ b/libgfortran/io/unix.c
 @@ -210,6 +210,9 @@ typedef struct
@@ -138,7 +132,7 @@ index c76b427387a..2edd317d619 100644
  
  /* fix_fd()-- Given a file descriptor, make sure it is not one of the
     standard descriptors, returning a non-standard descriptor.  If the
-@@ -1153,8 +1156,13 @@ tempfile_open (const char *tempdir, char **fname)
+@@ -1187,8 +1190,13 @@ tempfile_open (const char *tempdir, char **fname)
    char *template = xmalloc (tempdirlen + 23);
  
  #ifdef HAVE_MKSTEMP
@@ -152,7 +146,7 @@ index c76b427387a..2edd317d619 100644
  
  #ifdef HAVE_UMASK
    /* Temporarily set the umask such that the file has 0600 permissions.  */
-@@ -1520,6 +1528,13 @@ open_external (st_parameter_open *opp, unit_flags *flags)
+@@ -1554,6 +1562,13 @@ open_external (st_parameter_open *opp, unit_flags *flags)
      return NULL;
    fd = fix_fd (fd);
  
@@ -280,8 +274,53 @@ index 4ce342c9626..b89b07cb4be 100644
  //    operation_would_block = 			EWOULDBLOCK,
  
  #ifdef _GLIBCXX_HAVE_EOWNERDEAD
+diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
+index 512167f6f2d..de56387511e 100644
+--- a/libstdc++-v3/include/experimental/bits/fs_path.h
++++ b/libstdc++-v3/include/experimental/bits/fs_path.h
+@@ -53,6 +53,11 @@
+ # include <algorithm>
+ #endif
+ 
++#if defined(__DJGPP__)
++# define _GLIBCXX_FILESYSTEM_IS_DJGPP 1
++# include <algorithm>
++#endif
++
+ namespace std _GLIBCXX_VISIBILITY(default)
+ {
+ namespace experimental
+@@ -460,6 +465,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+     {
+ #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
+       return __ch == L'/' || __ch == preferred_separator;
++#elif defined(_GLIBCXX_FILESYSTEM_IS_DJGPP)
++      return __ch == '/' || __ch == '\\';
+ #else
+       return __ch == '/';
+ #endif
+@@ -826,6 +833,9 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+ #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
+     std::replace(_M_pathname.begin(), _M_pathname.end(), L'/',
+ 		 preferred_separator);
++#elif defined(_GLIBCXX_FILESYSTEM_IS_DJGPP)
++    std::replace(_M_pathname.begin(), _M_pathname.end(), '\\',
++		 preferred_separator);
+ #endif
+     return *this;
+   }
+@@ -997,7 +1007,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+   inline bool
+   path::is_absolute() const
+   {
+-#ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
++#if defined(_GLIBCXX_FILESYSTEM_IS_WINDOWS) \
++  || defined(_GLIBCXX_FILESYSTEM_IS_DJGPP)
+     return has_root_name();
+ #else
+     return has_root_directory();
 diff --git a/libstdc++-v3/src/filesystem/ops.cc b/libstdc++-v3/src/filesystem/ops.cc
-index c711de16f06..a38ee5d9abe 100644
+index 8de3511346e..9da49f9b233 100644
 --- a/libstdc++-v3/src/filesystem/ops.cc
 +++ b/libstdc++-v3/src/filesystem/ops.cc
 @@ -269,8 +269,10 @@ namespace
@@ -295,3 +334,23 @@ index c711de16f06..a38ee5d9abe 100644
  #endif
      return file_type::unknown;
  
+diff --git a/libstdc++-v3/src/filesystem/path.cc b/libstdc++-v3/src/filesystem/path.cc
+index c66d52bf4b0..a4e5f348a24 100644
+--- a/libstdc++-v3/src/filesystem/path.cc
++++ b/libstdc++-v3/src/filesystem/path.cc
+@@ -370,8 +370,13 @@ path::_M_split_cmpts()
+ 	_M_add_root_dir(0);
+       ++pos;
+     }
+-#ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
++#if defined(_GLIBCXX_FILESYSTEM_IS_WINDOWS) \
++  || defined(_GLIBCXX_FILESYSTEM_IS_DJGPP)
++#ifdef __DJGPP__
++  else if (len > 1 && _M_pathname[1] == ':')
++#else
+   else if (len > 1 && _M_pathname[1] == L':')
++#endif
+     {
+       // got disk designator
+       _M_add_root_name(2);
+

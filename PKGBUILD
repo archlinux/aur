@@ -3,7 +3,7 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-gcc
-pkgver=7.2.0
+pkgver=7.3.0
 _target="i686-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
@@ -20,11 +20,11 @@ options=('!strip' 'staticlibs' '!emptydirs')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
         "lto.patch"
-	"gcc-7.2.0-djgpp.diff")
-sha256sums=('1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
+	"gcc-7.3.0-djgpp.diff")
+sha256sums=('832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0'
-            'ef436e945a0bf386c033e6c05a5692621a0927f25fa6c5cedc2e7d1d931fe235')
+            '3d805b0d5d5180531858f830d9a022ae9a61f5768535bd0e794d8a1b2eb430b6')
 
 prepare() {
   cd gcc-$pkgver
@@ -36,7 +36,7 @@ prepare() {
   patch -Np0 < ../lto.patch
 
   # Other DJGPP related changes
-  patch -Np1 < ../gcc-7.2.0-djgpp.diff
+  patch -Np1 < ../gcc-7.3.0-djgpp.diff
 }
 
 build() {
@@ -51,6 +51,7 @@ build() {
     --enable-lto --disable-libgomp \
     --disable-multilib --enable-checking=release \
     --disable-libstdcxx-pch \
+    --enable-libstdcxx-filesystem-ts \
     --disable-install-libiberty
   make all
 }
