@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=softmaker-office-2018-bin
-pkgver=2018.920
+pkgver=2018.922
 pkgrel=1
 pkgdesc="Softmaker Office 2018, proprietary office suite; word processing, spreadsheets, presentations"
 url="http://softmaker.com"
@@ -25,8 +25,8 @@ md5sums=('7afe83509fe2e5455fb5c832544a1a5e'
          '3c7d81e64333e7ab15676f08886736ee'
          '494d6d84e3855303c86a93d57bc95788'
          '9e2fe397368fff4297f28338dd09f142')
-md5sums_x86_64=('55951a013764c5c2fbce73163408b643')
-md5sums_i686=('c49d13eaa615e3c06e31049d8a554443')
+md5sums_x86_64=('3e8b603e388896814e479880f96e7336')
+md5sums_i686=('643a2937dfe5e25c155df77d7e74c90b')
 sha512sums=('267a49d68130d5c5fed4319de91972d7b71510a0c090be3343965997bb6554dcc197405d6272971195d2b5df9ec270c9b620820cb2ea1bff35eeef0d013f1d97'
             '5cc874d89f36a570d8ed93d86034649c63f52ac429dfc69db8e9fe89ade32023ec64ab1e17dfa1b67a60e90ad5c82d1ee7007f09682273de5f8aa7abc0d53e9b'
             '17971aed65cd1432e3ed361c6fb4c150e52bc2a7fa17505ceedbbae190e2dba87d7ab4233edda4e0841b2ab2d1912bfddca70e9bf3b699803e72573d8f5b8f25'
@@ -34,12 +34,12 @@ sha512sums=('267a49d68130d5c5fed4319de91972d7b71510a0c090be3343965997bb6554dcc19
             'ee5021d7625682233ddb4ca21251dda6d01e50354ee0df9fdae93ab09f1a70fdd6f216dd9c0555d8780c628014acbaae6a5f185444e45852bf977c9d73c22f7d'
             'c09f7d80c7be33b26c384a18514ddc6f9c9d1b2669037a5921212a1d2b3b316a12524d458872446e1a850f87bec4af4e14d99967713d07d5dd7425b658b900f6'
             '02528e698373bd36f5bfe4671f75fc6a7f995e297f6069a838b8b66b0d9b840724548dfe15549b0216e34ee59e74a869ee6504890347bb035f2a1cd0fc91d9ac')
-sha512sums_x86_64=('7c3c3bf517e4c123d30362e14fe6880a20b2a0b4ff7217fb137edd40813372ca5f802f507cbdca01153dd721a886a97e260ec525168df73b881c2f0a5fe0ff04')
-sha512sums_i686=('b3eea4c13318d28154c192c2ed3672a01477956d8deea2272ac363b2cd983e7052dde61cbbcb5a36fd9ad2d18d578172d9b94792f1a80bda48952062efa5d55c')
+sha512sums_x86_64=('a9f4a6326d03948f7e069dcea2e19074372e5a02bfd8fd81d912a945764f0200469afcef8716944915f373767c43d86d01c22fe98dbe831647c048b2f6a15a9d')
+sha512sums_i686=('8b44ace95677208350880ca3b08262e75ad7176409611a8b9f88d9ddde04348a71943d260998f2debaa5450b324a1edbac1a4414afcf52537a2ff8f2eaa9b300')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/smoffice2018"
-  tar -xzf "${srcdir}/office.tgz" -C "${pkgdir}/usr/share/smoffice2018"
+  bsdtar xf "${srcdir}/office.tar.lzma" -C "${pkgdir}/usr/share/smoffice2018"
 
   install -Dm 755 -t "${pkgdir}/usr/bin" "${srcdir}/planmaker18" "${srcdir}/presentations18" "${srcdir}/textmaker18"
   for size in 16 32 48 64 128 256 512; do
