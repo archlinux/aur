@@ -25,7 +25,7 @@ optdepends=('pepper-flash: support for Flash content'
 install=inox-hard.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$name-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/bnox.desktop
+        https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/inox.desktop
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/breakpad-use-ucontext_t.patch
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/crc32c-string-view-check.patch
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/chromium-gn-bootstrap-r17.patch
