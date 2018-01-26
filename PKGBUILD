@@ -1,17 +1,17 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
+# Maintainer: Ivy Foster <code@escondida.tk>
 
 pkgname=cgo-git
-pkgver=0.r40.gc1ed336
-pkgrel=2
+pkgver=0.r47.gca69bbb
+pkgrel=1
 pkgdesc='A terminal gopher client'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='https://github.com/kieselsteini/cgo'
-license=('custom:cgo-git')
-makedepends=('git')
-provides=('cgo')
-conflicts=('cgo')
+license=(ISC)
+makedepends=(git)
+provides=(cgo)
+conflicts=(cgo)
 source=('git+https://github.com/kieselsteini/cgo.git')
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
 	cd cgo
@@ -26,7 +26,9 @@ build() {
 package() {
 	cd cgo
 	make DESTDIR="$pkgdir" PREFIX=/usr install
-	install -Dm644 cgo.c "$pkgdir/usr/share/licenses/cgo-git/cgo.c"
+
+	install -d "$pkgdir/usr/share/licenses/cgo-git"
+	sed '/^ \*\//q' cgo.c > "$pkgdir/usr/share/licenses/cgo-git/LICENSE"
 	install -Dm644 cgo.1 "$pkgdir/usr/share/man/man1/cgo.1"
 	install -Dm644 cgorc "$pkgdir/usr/share/doc/cgo-git/cgorc"
 }
