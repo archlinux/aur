@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=64.0.3282.133
-pkgrel=2
+pkgrel=4
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ optdepends=('pepper-flash: support for Flash content'
 install=inox-hard.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$name-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/inox.desktop
+        https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/bnox.desktop
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/breakpad-use-ucontext_t.patch
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/crc32c-string-view-check.patch
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/chromium-gn-bootstrap-r17.patch
@@ -105,13 +105,18 @@ https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/bp.patch
 https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/CP.patch
 https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/888.patch
 https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/pt.patch
-https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/036.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/meme.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/p1.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/p2.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/e3.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/narnia1.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/edgy.patch
 )
 
 
 sha256sums=('cffa16a5a49bb9c0813306b261b90ab1ec549a9d98fe64731afe28ebf535e16b'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
+            '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
             '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
             'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
@@ -198,7 +203,13 @@ sha256sums=('cffa16a5a49bb9c0813306b261b90ab1ec549a9d98fe64731afe28ebf535e16b'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
-            '9d144732d593d9ee82f99b24009a193e61ef8560aff92a15effdae95a0897c61')
+            'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5'
+            '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
+            '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
+            '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
+            '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d'
+            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
+
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
