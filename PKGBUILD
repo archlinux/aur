@@ -17,7 +17,7 @@ md5sums=(SKIP)
 
 pkgver() {
 	cd frotz
-	git describe | sed 's,-\(.*\)-,.r\1.,'
+	git describe | sed 's@-\(.*\)-@.r\1.@'
 }
 
 prepare() {
