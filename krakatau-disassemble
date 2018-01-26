@@ -1,2 +1,10 @@
-#!/bin/sh
-JAVA_HOME=/usr/lib/jvm/default python2 -O /usr/share/krakatau/disassemble.py "$@"
+#!/usr/bin/sh
+
+if command -v pypy &> /dev/null; then
+  PYTHON=pypy
+else
+  PYTHON=python2
+fi
+
+export JAVA_HOME=/usr/lib/jvm/default
+exec $PYTHON -O /usr/share/krakatau/disassemble.py "$@"
