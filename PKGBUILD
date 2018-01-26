@@ -1,6 +1,6 @@
 # Maintainer: Manuel Conzelmann <manuel.conzelmann at hs-furtwangen dot de>
 pkgname=dongle-unlock
-pkgver=1
+pkgver=1.1
 pkgrel=1
 pkgdesc="Automatically unlock encrypted devices with a thumbdrive-dongle or enter a passphrase to unlock them during boot with systemd. Conflicts probably with entries in /etc/crypttab"
 arch=('any')
@@ -17,5 +17,5 @@ package() {
     install -D -m644 $srcdir/manolo.luksopenwithkey.service $pkgdir/etc/systemd/system/manolo.luksopenwithkey.service || return 1
     install -D -m644 $srcdir/manolo.luksopenwithoutkey.service $pkgdir/etc/systemd/system/manolo.luksopenwithoutkey.service || return 1
     install -D -m644 $srcdir/mnt-dongle.mount $pkgdir/etc/systemd/system/mnt-dongle.mount || return 1
-    install -D -m644 $srcdir/mnt-dongle.mount $pkgdir/etc/systemd/system/mnt-daten.mount || return 1
+    install -D -m644 $srcdir/mnt-daten.mount $pkgdir/etc/systemd/system/mnt-daten.mount || return 1
 }
