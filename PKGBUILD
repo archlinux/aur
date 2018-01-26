@@ -1,7 +1,7 @@
-# Maintainer: KingofToasters <s.gregoratto@gmail.com>
+# Maintainer: KingofToasters <themanhimself@sgregoratto.me>
 
 pkgname=otpclient-git
-dirname="OTPClient"
+_dirname="OTPClient"
 pkgver=1.0.6
 pkgrel=1
 pkgdesc="Simple GTK+ v3 TOTP/HOTP client that uses libcotp"
@@ -15,13 +15,12 @@ source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$dirname"
+	cd "$_dirname"
  	printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-	
-	cd $dirname
+	cd $_dirname
 	mkdir build 
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
@@ -29,6 +28,6 @@ build() {
 }
 
 package() {
-	cd $dirname/build
+	cd $_dirname/build
 	make DESTDIR="$pkgdir/" install
 }
