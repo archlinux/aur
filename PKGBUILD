@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin-wine32
-pkgvers=2.18-2
-pkgver=2.18_2
+pkgvers=2.18-4
+pkgver=2.18_4
 pkgrel=2
 epoch=
 pkgdesc="Deepin Wine32"
