@@ -1,4 +1,4 @@
-# Maintainer: KingofToasters <s.gregoratto@gmail.com>
+# Maintainer: KingofToasters <themanhimself@sgregoratto.me>
 
 pkgname=otpclient
 _dirname=OTPClient
@@ -10,7 +10,7 @@ url="https://github.com/paolostivanin/OTPClient"
 license=('GPL3')
 depends=('gtk3' 'glib2' 'json-glib' 'libgcrypt' 'json-glib' 'libzip' 'libcotp' 'pkg-config')
 makedepends=('cmake' 'git')
-provides=(otpclient)
+conflicts=(otpclient)
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('1f213de12d09c512944a2d13550e9e2439cbe638302b7eb54c75f93bb3451e07')
 
