@@ -1,0 +1,18 @@
+pkgbase = passhole
+	pkgdesc = KeePass CLI + dmenu interface
+	pkgver = r69.5f561f6
+	pkgrel = 1
+	arch = any
+	makedepends = python-setuptools
+	depends = python-future
+	depends = python-future
+	depends = python-pykeepass
+	depends = python-pygpgme
+	depends = python-colorama
+	depends = python-pyuserinput-git
+	depends = python-easypysmb
+	source = git+https://github.com/purdueLUG/passhole.git
+	md5sums = SKIP
+
+pkgname = passhole
+
