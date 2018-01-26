@@ -1,12 +1,12 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=minc-toolkit-v2
-pkgver=1.9.15
-pkgrel=2
+pkgver=1.9.16
+pkgrel=1
 pkgdesc="Medical Imaging NetCDF Toolkit"
 arch=('any')
 url="https://www.mcgill.ca/bic/software/minc"
 license=('GPL3')
-depends=('perl' 'libjpeg-turbo' 'libxi' 'libxmu' 'libgl' 'glu' 'fftw' 'glut' 'netcdf' 'pcre' 'zlib' 'hdf5' 'nifticlib' 'insight-toolkit' 'elastix')
+depends=('perl' 'libjpeg-turbo' 'libxi' 'libxmu' 'libgl' 'glu' 'fftw' 'glut' 'netcdf' 'pcre' 'zlib' 'hdf5' 'nifticlib' 'insight-toolkit' 'elastix' 'lapacke' 'blas')
 makedepends=('git' 'cmake' 'bc' 'libhdf5')
 provides=('minc-toolkit')
 source=('git+https://github.com/BIC-MNI/minc-toolkit-v2.git'
@@ -14,7 +14,7 @@ source=('git+https://github.com/BIC-MNI/minc-toolkit-v2.git'
 sha512sums=('SKIP'
             '28e12be5c8c7e397a063fa570fd4819dc45daf845a608164b9e7aec6fb6fb99d58f4f494d648147613bb80393b88d40f63748ea9f6096d96a1df1e66d17bbed7')
 
-_release_commit="29273c3f065c86496c6a1270355077b534e676a3"
+_release_commit="f7952e966e2fdd6169098df8c8ae13968b3e4832"
 
 _itk=`ls /usr/lib/cmake | grep -m1 ITK`
 _install_prefix="/usr/share/minc"
@@ -63,6 +63,37 @@ prepare() {
 	sed -i \
 		'6iLINK_DIRECTORIES(${LIBMINC_LIBRARY_DIRS})' \
 		patch_morphology/legacy/CMakeLists.txt
+
+	# blas and liblapacke for patch_morphology
+	sed -i \
+		'20ilapacke' \
+		patch_morphology/src/CMakeLists.txt
+	sed -i \
+		'51icblas' \
+		patch_morphology/src/CMakeLists.txt
+	sed -i \
+		'51ilapacke' \
+		patch_morphology/src/CMakeLists.txt
+	sed -i \
+		'76ilapacke' \
+		patch_morphology/src/CMakeLists.txt
+	sed -i \
+		'76icblas' \
+		patch_morphology/src/CMakeLists.txt
+
+	# blas and lapacke for spams_test in BEaST
+	sed -i \
+		'166iblas' \
+		BEaST/CMakeLists.txt
+	sed -i \
+		'167ilapack' \
+		BEaST/CMakeLists.txt
+	sed -i \
+		'201iblas' \
+		BEaST/CMakeLists.txt
+	sed -i \
+		'201ilapack' \
+		BEaST/CMakeLists.txt
 
 	# the compiler won't like this
 	sed -i \
