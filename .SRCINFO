@@ -1,0 +1,10 @@
+pkgbase = tpac
+	pkgdesc = trizen wrapper to mimic yaourt's search feature
+	pkgver = 1.0rc1
+	pkgrel = 1
+	arch = any
+	source = https://github.com/romano21A/trizen-pac/archive/v1.0-rc1.tar.gz
+	sha256sums = 2e1e47b9ee5c795daee54426af282e58cf21d2ba733ebb778cd3544f8169f1e3
+
+pkgname = tpac
+
