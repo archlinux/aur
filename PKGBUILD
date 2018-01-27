@@ -29,5 +29,6 @@ build() {
 
 package() {
   cd "$srcdir/$_realname-$pkgver"
-  install -Dm755 tint $pkgdir/usr/bin/tint
+  install -Dm644 debian/copyright "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 tint "$pkgdir/usr/bin/tint"
 }
