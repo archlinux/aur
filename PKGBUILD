@@ -2,10 +2,10 @@
 _pkgname=eteroj.lv2
 pkgname=eteroj-lv2
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OSC injection/ejection from/to UDP/TCP/Serial for LV2"
 arch=('i686' 'x86_64')
-url='http://open-music-kontrollers.ch/lv2/eteroj'
+url='http://open-music-kontrollers.ch/lv2/eteroj/'
 license=('Artistic2.0')
 groups=('lv2-plugins')
 depends=('libuv')
@@ -16,12 +16,13 @@ replaces=()
 backup=()
 options=()
 install=
-source=("https://github.com/OpenMusicKontrollers/$_pkgname/archive/$pkgver.tar.gz")
+source=("https://git.open-music-kontrollers.ch/lv2/$_pkgname/snapshot/$_pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('c48ee78f3e63013beb5443b5bd0c0520')
+sha256sums=('0052c4adebcf00da7b83a8c6dfc305e32ba18052c703db1583757babb4bc5ef4')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
+
   rm -rf build
 	mkdir build
 }
