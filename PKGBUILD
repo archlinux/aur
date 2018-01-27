@@ -1,6 +1,6 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=feedagregator
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="RSS and Atom feed agregator in desktop widgets + notifications"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('tktray: GUI toolkit for the system tray icon (at least one must be 
             'zenity: nicer color chooser',
             'python-tkcolorpicker: nicer color chooser')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/j4321/FeedAgregator/archive/v${pkgver}.tar.gz")
-sha512sums=('b4b2903a575d0b9d0dee8f859d97512ede6367408d5267742d99efd74025e5544b285bfd2c7ba97e4d0718b548f2faa87935db367ad60839d1c2452fbedcd1af')
+sha512sums=('88eccaf919547248b0774213f1bf18850abc8dc81153c45b87dd62e2294c3993b1bd4026d61083836d9cf28ac9d9e20cbb3208d3fd26047c77a7f43710d09e4e')
 
 package() {
  cd "$srcdir/FeedAgregator-${pkgver}"
