@@ -2,7 +2,7 @@
 
 pkgname=ladish
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
 url="https://github.com/LADI/ladish"
