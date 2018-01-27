@@ -2,13 +2,13 @@
 
 pkgname=paperless
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Scan, index, and archive all of your paper documents"
 arch=('any')
 url="https://github.com/danielquinn/paperless"
 license=('GPL3')
 options=(!buildflags)
-depends=('python-django' 'python-django-extensions' 'python-django-rest-framework' 'python-django-crispy-forms' 'python-django-filter' 'python-fuzzywuzzy' 'python-pyocr' 'python-gnupg' 'python-pilkit' 'python-dotenv' 'python-dateutils' 'python-magic' 'python-django-flat-responsive' 'python-langdetect' 'tesseract' 'unpaper' 'ghostscript')
+depends=('python-django' 'python-django-extensions' 'python-django-rest-framework' 'python-django-crispy-forms' 'python-django-filter' 'python-fuzzywuzzy' 'python-pyocr' 'python-gnupg' 'python-pilkit' 'python-dotenv' 'python-dateutil' 'python-magic' 'python-django-flat-responsive' 'python-langdetect' 'tesseract' 'unpaper' 'ghostscript')
 source=("https://github.com/danielquinn/${pkgname}/archive/${pkgver}.tar.gz"
         paperless.conf
         paperless-consumer.service
