@@ -20,7 +20,7 @@ build() {
   cd "${pkgname}-${pkgver}"
 
   msg2 'Building...'
-  patch < ../../makefile.patch
+  patch < ../makefile.patch
   autoreconf -i
   ./configure \
       --prefix=/usr \
