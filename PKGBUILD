@@ -12,7 +12,7 @@ license=('MIT')
 pkgdesc="Standalone I2P BitTorrent Client written in GO"
 provides=(xd-torrent)
 conflicts=(xd-torrent)
-source=("git://github.com/majestrate/XD.git"
+source=("git+https://github.com/majestrate/XD.git"
         "xd.service")
 md5sums=('SKIP'
          '7f87ea2d6fc76aee8821efc5709a0115')
