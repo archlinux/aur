@@ -11,7 +11,7 @@ license=('BSD')
 source=(${pkgname%-git}::git+https://github.com/projectNe10/Ne10
         "linux-install-rules.patch")
 sha256sums=('SKIP'
-            '659e7915c4484f3cd85e7e5ada6561731e209533ffce21ec2609b2ce251cc161')
+            '8e958fb35b71b46e53966ade8add96f81c5390ce4d2dc8028e4634802929b88c')
 provides=('libne10')
 conflicts=('libne10')
 

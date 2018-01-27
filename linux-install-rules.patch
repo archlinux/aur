@@ -123,14 +123,14 @@ index 4aa19e4..f4f878e 100644
  endif()
 diff --git a/ne10.pc.in b/ne10.pc.in
 new file mode 100644
-index 0000000..6c22e48
+index 0000000..2dc9e51
 --- /dev/null
 +++ b/ne10.pc.in
 @@ -0,0 +1,13 @@
 +prefix=@prefix@
 +exec_prefix=@exec_prefix@
 +libdir=@libdir@
-+includedir=@includedir@
++includedir=@includedir@/ne10
 +LV_CXXFLAGS=@LV_CXXFLAGS@
 +
 +
@@ -138,5 +138,5 @@ index 0000000..6c22e48
 +Description: Ne10: An open optimized software library project for the ARM® Architecture
 +Requires:
 +Version: @LIBVER@
-+Libs: -L${libdir} -lne10
++Libs: -L${libdir} -lNE10
 +Cflags: -I${includedir} ${LV_CXXFLAGS}
