@@ -34,13 +34,5 @@ package()
 {
   cd "$srcdir/pspsdk/build-psp"
   make install DESTDIR="$pkgdir"
-
-  # call psp-config with full path as PATH has /bin first
-  # path must end with /bin/psp-config so move it to /usr/psp/bin
-  install -d "$pkgdir"/usr/psp/bin/
-  mv "$pkgdir"/usr/bin/psp-config "$pkgdir"/usr/psp/bin/psp-config
-  echo '#/bin/sh' > psp-config
-  echo '/usr/psp/bin/psp-config $*' >> psp-config
-  install -m755 psp-config "$pkgdir"/usr/bin
 }
 
