@@ -29,7 +29,7 @@ pkgbase = linux-xanmod
 	sha256sums = 2f46093fde72eabc0fd25eff5065d780619fc5e7d2143d048877a8220d6291b0
 	sha256sums = 6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794
 	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=d7be4a31834e3c592dd1fbda9615127725671959
-	sha256sums_x86_64 = 24b8cf6829dafcb2b5c76cffaae6438ad2d432f13d6551fa1c8f25e66b751ed4
+	sha256sums_x86_64 = edaf7bebcaf3032e3bf15353e0773e39872c73fc024ca4d23383195a13745b2e
 
 pkgname = linux-xanmod
 	pkgdesc = The Linux kernel and modules with Xanmod patches
