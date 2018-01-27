@@ -6,7 +6,7 @@
 pkgname=firefox-beta
 name=firefox-beta
 pkgver=59.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -31,13 +31,15 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix2.patch
 )
 
-sha256sums=('2a8d7905ba5312cfebc6bc2ae01a2e5ee76172f155ea439e6982671ff3df9419'
+sha256sums=('b69fb207d792d9002d147402def7837e6036e35496bb91b9d5e3f72f0a191aca'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
             '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
             '24019d3d7e6b169087d4515db9d3a179239d1e4fe726f0906f6f26877c726040'
-            '7e44bd2eb4ce243ef47451e64e793203c8d637f900c86889106eb7f8adf79296')
+            '7e44bd2eb4ce243ef47451e64e793203c8d637f900c86889106eb7f8adf79296'
+            '7e44dc0dc836a31c6f8e3e3461aeb636de210fb5a238e58a0eb10787ca4ad958'
+            '32d04bf9c5c76ec3803aa7e1f82ca11dc5ea3d32b86d054168f4cc1e1ef9960c')
 
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
