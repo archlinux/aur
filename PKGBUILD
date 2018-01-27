@@ -26,12 +26,14 @@ source=("git+https://github.com/rstudio/rstudio.git"
         "https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
         "https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
         "https://s3.amazonaws.com/rstudio-buildtools/QtSDK-${_qtver}-x86_64.tar.gz"
-        "https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip")
+        "https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip"
+        "rstudio.sh")
 md5sums=('SKIP'
          'e2617189fe5c138945b8cc95f26bd476'
          'ddd572887957fd5cdfde3469bd8c1102'
          'bb822961716efd40d570a07a34c9c373'
-         '0e03798b8e53096c4a906bde05e32378')
+         '0e03798b8e53096c4a906bde05e32378'
+         '625896d99d6f3367304e728da34d33eb')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
@@ -81,7 +83,8 @@ package() {
     make DESTDIR="${pkgdir}" install
     # Install the license
     install -Dm 644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-    # Create symlinks
-    install -d "${pkgdir}/usr/bin"
-    ln -sf /usr/lib/rstudio/bin/rstudio "${pkgdir}/usr/bin/rstudio"
+    # Install launch script
+    install -Dm 755 "${srcdir}/rstudio.sh" "${pkgdir}/usr/bin/rstudio"
+    # Fix LD_LIBRARY_PATH in .desktop file
+    sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio|g' "${pkgdir}/usr/share/applications/rstudio.desktop"
 }

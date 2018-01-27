@@ -47,11 +47,13 @@ pkgbase = rstudio-desktop-git
 	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.8.1.zip
 	source = https://s3.amazonaws.com/rstudio-buildtools/QtSDK-5.10.0-x86_64.tar.gz
 	source = https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip
+	source = rstudio.sh
 	md5sums = SKIP
 	md5sums = e2617189fe5c138945b8cc95f26bd476
 	md5sums = ddd572887957fd5cdfde3469bd8c1102
 	md5sums = bb822961716efd40d570a07a34c9c373
 	md5sums = 0e03798b8e53096c4a906bde05e32378
+	md5sums = 625896d99d6f3367304e728da34d33eb
 
 pkgname = rstudio-desktop-git
 
