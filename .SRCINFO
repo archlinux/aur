@@ -1,6 +1,6 @@
 pkgbase = kubernetes-built
 	pkgdesc = Production-Grade Container Scheduling and Management - binary version of aur-kubernetes
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = http://kubernetes.io/
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = kubernetes-built
 	backup = etc/kubernetes/kubelet
 	backup = etc/kubernetes/proxy
 	backup = etc/kubernetes/scheduler
-	source = https://versaweb.dl.sourceforge.net/project/aur-kubernetes-built/kubernetes-1.9.1-1-x86_64.pkg.tar.xz
-	md5sums = 4ab88cf8e050650028ad3b5d6921cbf1
-	sha256sums = ff5849c09b0ef385ef8c378798c1248eae020776adba6d2184b90a786770314e
+	source = https://versaweb.dl.sourceforge.net/project/aur-kubernetes-built/kubernetes-1.9.2-1-x86_64.pkg.tar.xz
+	md5sums = f27befec908547021c8d3be6bf51c298
+	sha256sums = 9a279a37e3386a9f2986b9848c302481e6a57d9630d988f23b50d9a2573f0eee
 
 pkgname = kubernetes-built
 
