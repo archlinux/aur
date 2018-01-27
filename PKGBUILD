@@ -2,13 +2,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname='persepolis-git'
-pkgver=3.0.1.r0.gf76881a
+pkgver=3.0.1.r26.g18a69b5
 pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features (Github version)."
 arch=('any')
 url="https://persepolisdm.github.io/"
 license=('GPL3')
-depends=('aria2' 'libnotify' 'python' 'python-psutil' 'python-pyqt5' 'python-requests' 'python-setproctitle' 'qt5-svg' 'sound-theme-freedesktop')
+depends=('aria2' 'libnotify' 'python' 'python-psutil' 'python-pyqt5' 'python-requests' 'python-setproctitle' 'qt5-svg' 'sound-theme-freedesktop' 'youtube-dl')
 makedepends=('git' 'python-setuptools')
 optdepends=('firefox-flashgot: for integrating with firefox')
 provides=("${pkgname%-git}")
