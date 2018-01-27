@@ -21,9 +21,9 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.14.14
-xanmod=19
-pkgrel=2
+pkgver=4.14.15
+xanmod=20
+pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -50,16 +50,16 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('4f57a9336d6c62b227465ff6b95a5cacb030889daa3fa6d52f6dd78bac183a52'
+sha256sums=('819c76bd7d21a14b8da8f33445dbd009eb6d9bbe50dcf9770f50258f04159358'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
-            '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
+            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
             '5694022613bb49a77d3dfafdd2e635e9015e0a9069c58a07e99bdc5df6520311'
             '2f46093fde72eabc0fd25eff5065d780619fc5e7d2143d048877a8220d6291b0'
             '6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794')
-sha256sums_x86_64=('edaf7bebcaf3032e3bf15353e0773e39872c73fc024ca4d23383195a13745b2e')
+sha256sums_x86_64=('24b8cf6829dafcb2b5c76cffaae6438ad2d432f13d6551fa1c8f25e66b751ed4')
 
 _kernelname=${pkgbase#linux}
 
