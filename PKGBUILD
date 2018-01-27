@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://packages.debian.org/jessie/tint"
 license=('BSD')
 groups=()
-depends=()
+depends=('ncurses>=5.7')
 makedepends=()
 provides=()
 conflicts=()
