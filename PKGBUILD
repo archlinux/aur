@@ -3,7 +3,7 @@
 
 pkgname=conky-lua-archers-git
 _pkgname=conky
-pkgver=3188.562c7375
+pkgver=3190.8616f80b
 pkgrel=1
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
@@ -91,7 +91,7 @@ package() {
 	cd "${srcdir}/${_pkgname}/build"
 	make DESTDIR=${pkgdir} install
 	cd ..
-	install -D -m644 LICENSE.GPL ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.GPL
+	install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 	install -D -m644 LICENSE.BSD ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.BSD
 	install -D -m644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
 	install -D -m644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
