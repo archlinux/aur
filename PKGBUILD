@@ -34,6 +34,10 @@ prepare ()
 build()
 {
   cd "$srcdir/gcc-$pkgver"
+
+  # fix conflict with system mpfr 4.0
+  export CFLAGS="-I$PWD/mpfr/src/"
+
   mkdir -p build-psp && pushd build-psp
   ../configure --prefix=/usr --target=psp \
     --enable-languages="c" --enable-lto --with-newlib --with-gmp --with-mpfr --without-headers --disable-libssp  
