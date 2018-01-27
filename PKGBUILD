@@ -2,12 +2,12 @@
 
 pkgname='openastro'
 pkgver='1.1.56'
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source fully-featured astrology software'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.openastro.org/'
-depends=('imagemagick' 'python-dateutil' 'python-cairo' 'python-pytz' 'pyswisseph' 'python-gobject')
+depends=('imagemagick' 'python-dateutil' 'python-cairo' 'python-pytz' 'pyswisseph3' 'python-gobject')
 makedepends=('python-setuptools')
 optdepends=()
 conflicts=('openastro-dev' 'swisseph_12' 'swisseph_18' 'swisseph-fixstars')
