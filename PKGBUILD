@@ -2,7 +2,7 @@
 
 pkgname=oragono
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
@@ -42,7 +42,9 @@ package() {
     local _conf=/var/lib/oragono/
     install -Dm 644 oragono.service $pkgdir/usr/lib/systemd/system/oragono.service
     install -Dm 644 oragono-rotate $pkgdir/etc/logrotate.d/oragono
-    cd ${srcdir}/$pkgname/build/linux
+    cd ${srcdir}/$pkgname
+    install -Dm 644 LICENSE $pkgdir/usr/share/$pkgname/LICENSE
+    cd build/linux
     install -Dm 755 oragono $pkgdir/usr/bin/oragono
     install -Dm 644 oragono.motd $pkgdir/$_conf/ircd.motd
     install -Dm 644 oragono.yaml $pkgdir/etc/oragono.conf
