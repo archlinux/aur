@@ -6,13 +6,13 @@
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
 
 pkgname=tengine
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl-1.0' 'geoip')
+depends=('pcre' 'zlib' 'openssl' 'geoip' 'mailcap')
 backup=('etc/tengine/fastcgi.conf'
         'etc/tengine/fastcgi_params'
         'etc/tengine/koi-win'
@@ -30,8 +30,8 @@ source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate
        )
-sha256sums=('1d164fdbc4d460cce5f202de332447556ec9439016fa33ceddc736acfaa53be2'
-            '7abffe0f1ba1ea4d6bd316350a03257cc840a9fbb2e1b640c11e0eb9351a9044'
+sha256sums=('f27e9891d4f37d265648963e3af9a78d10f143fa92453263bc533cadf4b2d846'
+            'bbc2a744fcc65b496549a312a19aba2ee87840ad36a523c2e6bc2a585861bbcd'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
 build() {
@@ -46,8 +46,6 @@ build() {
         --dso-tool-path=/usr/bin/dso_tool \
         --pid-path=/run/tengine.pid \
         --lock-path=/run/lock/tengine.lock \
-        --with-cc-opt="-I/usr/include/openssl-1.0" \
-        --with-ld-opt="-L/usr/lib/openssl-1.0" \
         --user=http \
         --group=http \
         --http-log-path=/var/log/tengine/access.log \
@@ -85,17 +83,19 @@ package() {
     make DESTDIR="$pkgdir" install
 
     install -Dm644 contrib/vim/ftdetect/nginx.vim \
-      "$pkgdir"/usr/share/vim/vimfiles/ftdetect/nginx.vim
+      "$pkgdir"/usr/share/vim/vimfiles/ftdetect/tengine.vim
     install -Dm644 contrib/vim/syntax/nginx.vim \
-      "$pkgdir"/usr/share/vim/vimfiles/syntax/nginx.vim
+      "$pkgdir"/usr/share/vim/vimfiles/syntax/tengine.vim
     install -Dm644 contrib/vim/indent/nginx.vim \
-      "$pkgdir"/usr/share/vim/vimfiles/indent/nginx.vim
+      "$pkgdir"/usr/share/vim/vimfiles/indent/tengine.vim
 
     sed -e 's|\<user\s\+\w\+;|user html;|g' \
         -e '44s|html|/usr/share/tengine/html|' \
         -e '54s|html|/usr/share/tengine/html|' \
         -i "$pkgdir"/etc/tengine/tengine.conf
     rm "$pkgdir"/etc/tengine/*.default
+    rm "$pkgdir"/etc/tengine/mime.types # in mailcap
+    ln -s /etc/nginx/mime.types "$pkgdir"/etc/tengine/mime.types # from mailcap
 
     install -d "$pkgdir"/var/lib/tengine
     install -dm700 "$pkgdir"/var/lib/tengine/proxy
