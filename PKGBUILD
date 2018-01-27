@@ -37,13 +37,12 @@ prepare ()
 build()
 {
   cd "$srcdir/gcc-$pkgver"
-
-  # fix conflict with system mpfr 4.0
-  export CFLAGS="-I$PWD/mpfr/src/"
-
   mkdir -p build-psp && pushd build-psp
   ../configure --prefix=/usr --target=psp \
-    --enable-languages="c,c++" --enable-lto --with-newlib --with-gmp --with-mpfr --enable-cxx-flags="-G0"  
+    --enable-languages="c,c++" --enable-lto --with-newlib \
+    --with-gmp-include="${PWD}/../gmp" --with-gmp-lib="${PWD}/gmp/.libs" \
+    --with-mpfr-include="${PWD}/../mpfr/src" --with-mpfr-lib="${PWD}/mpfr/src/.libs" \
+    --enable-cxx-flags="-G0"
   make 
 }
 
