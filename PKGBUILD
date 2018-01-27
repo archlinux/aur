@@ -22,7 +22,6 @@ md5sums=('40e4674fcf2531c638cc32b6b09123aa')
 
 build() {
   cd "$srcdir/$_realname-$pkgver"
-  sed -i "s#/var/games#$HOME/.tint#" Makefile
   sed -i "s#/usr/games#/usr/bin#" Makefile
   make || return 1
 }
