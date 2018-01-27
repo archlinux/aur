@@ -1,4 +1,4 @@
-# Maintainer: Joaquin Garmendia <joaquingc123@gmail.com>
+# Maintainer: Joaquin Garmendia <joaquingc123 at gmail dot com>
 
 pkgname=droidbot-git
 _pkgname=droidbot
