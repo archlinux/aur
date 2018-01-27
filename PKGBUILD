@@ -1,14 +1,13 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 pkgname=patchmatrix
-_pkgcommit=9b0f06d91fb1e81081296e9fabac43c137d55edf
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A JACK patch bay in flow-matrix layout"
 arch=('i686' 'x86_64')
-url='https://gitlab.com/OpenMusicKontrollers/patchmatrix'
+url='https://git.open-music-kontrollers.ch/lad/patchmatrix/'
 license=('Artistic2.0')
 groups=()
-depends=('jack' 'hicolor-icon-theme' 'libxext' 'libgl')
+depends=('jack' 'hicolor-icon-theme' 'libgl')
 makedepends=('cmake' 'lv2')
 provides=()
 conflicts=()
@@ -16,18 +15,19 @@ replaces=()
 backup=()
 options=()
 install=()
-source=("https://gitlab.com/OpenMusicKontrollers/$pkgname/repository/archive.tar.bz2?ref=$pkgver")
+source=("https://git.open-music-kontrollers.ch/lad/$pkgname/snapshot/$pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('6dcb7dd10bb03427fe72c5238d6c0067')
+sha256sums=('e5dcccc5d1d170d19a292d1ece814c097109c0f0c7c45364d35e81237f469ca7')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver-$_pkgcommit"
+  cd "$srcdir/$pkgname-$pkgver"
+
   rm -rf build
 	mkdir build
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver-$_pkgcommit/build"
+  cd "$srcdir/$pkgname-$pkgver/build"
 
   cmake \
     -DCMAKE_BUILD_TYPE="Release" \
@@ -37,13 +37,13 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver-$_pkgcommit/build"
+  cd "$srcdir/$pkgname-$pkgver/build"
 
   make DESTDIR="$pkgdir/" install
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver-$_pkgcommit/build"
+  cd "$srcdir/$pkgname-$pkgver/build"
 
   #TODO
 }
