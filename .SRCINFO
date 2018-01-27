@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-google-search-link-fix
+	pkgdesc = Firefox extension that prevents Google and Yandex search pages from replacing direct URLs with tracking URLs when you click them
+	pkgver = 1.6.6
+	pkgrel = 1
+	url = https://github.com/palant/searchlinkfix
+	arch = any
+	license = MPL2
+	depends = firefox
+	noextract = google_search_link_fix-1.6.6-an+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/351740/google_search_link_fix-1.6.6-an+fx.xpi
+	sha256sums = 577c3741e9779f22c39afb599628ee20b3edc6908067d5eade7e943241d54f8f
+
+pkgname = firefox-extension-google-search-link-fix
+
