@@ -6,5 +6,6 @@ script:
   - mkdir -p ~/.ssh
   - echo -e "Host aur.archlinux.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - mv id_rsa ~/.ssh/
+  - chmod 600 ~/.ssh/id_rsa
   - git remote add aur git+ssh://aur@aur.archlinux.org/home-assistant.git
   - git push aur HEAD:master
