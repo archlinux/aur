@@ -1,6 +1,6 @@
 # Maintainer: Jan Max Meyer <codepilot@phorward.info>
 pkgname=unicc
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 epoch=
 pkgdesc="Universal parser generator for C and Python"
@@ -13,7 +13,7 @@ checkdepends=()
 #changelog=CHANGELOG
 source=("https://phorward.info/download/unicc/$pkgname-$pkgver.tar.gz"
 "https://phorward.info/download/unicc/unicc.pdf")
-md5sums=('d2f4e97e06bc3c849e9ab1a70c3686b4'
+md5sums=('e8f12989154c0f1d29e0ed5ee2c879c9'
 '9811c687109166f57537177b9da1b31f')
 
 build() {

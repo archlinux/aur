@@ -1,6 +1,6 @@
 pkgbase = unicc
 	pkgdesc = Universal parser generator for C and Python
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://phorward.info
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = unicc
 	arch = armv6h
 	license = BSD
 	depends = phorward>=0.21.0
-	source = https://phorward.info/download/unicc/unicc-1.3.2.tar.gz
+	source = https://phorward.info/download/unicc/unicc-1.3.3.tar.gz
 	source = https://phorward.info/download/unicc/unicc.pdf
-	md5sums = d2f4e97e06bc3c849e9ab1a70c3686b4
+	md5sums = e8f12989154c0f1d29e0ed5ee2c879c9
 	md5sums = 9811c687109166f57537177b9da1b31f
 
 pkgname = unicc
