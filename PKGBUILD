@@ -1,6 +1,6 @@
 # Maintainer: Jennifer Zhou <0@jezh.me>
 pkgname=tin-summer
-pkgver=1.20.2
+pkgver=1.20.3
 pkgrel=1
 pkgdesc="Find build artifacts that are taking up disk space"
 arch=('x86_64')
