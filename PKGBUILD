@@ -3,8 +3,8 @@
 _pkgnamefmt=LibreOffice
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-bin
-_LOver=6.0.0.2
-pkgver=6.0.0.2
+_LOver=6.0.0.3
+pkgver=6.0.0.3
 _basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=('curl>=7.20.0' 'hunspell>=1.2.8' 'python>=3.5' 'libwpd>=0.9.2' 'libwps'
 		 'libmspub' 'harfbuzz-icu' 'glew' 'nss' 'clucene' 'hicolor-icon-theme'
 		 'desktop-file-utils' 'shared-mime-info' 'glu' 'libpagemaker'
 		 'libxinerama' 'libabw' 'libmwaw' 'libe-book' 'libcups' 'gtk2'
-		 'liborcus' 'liblangtag' 'libexttextcat' 'libfbclient' 'libcmis')
+		 'liborcus' 'liblangtag' 'libexttextcat' 'libcmis')
 optdepends=('java-runtime:          adds java support'
             'java-environment:      required by extension-wiki-publisher and extension-nlpsolver'
             'pstoedit:              translates PostScript and PDF graphics into other vector formats'
