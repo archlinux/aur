@@ -39,8 +39,10 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-clang-r2.patch
         chromium-exclude_unwind_tables.patch
         chromium-widevine.patch
-        chromium-vaapi-r15.patch
-        chromium-libva-r2.patch)
+        chromium-vaapi-move.patch.gz
+        chromium-vaapi-init.patch
+        chromium-vaapi-rgbx.patch
+        chromium-vaapi-r16.patch)
 
 sha256sums=('342ea80a925d85f5155b2b423a0d3cbcf2ee5729bf107c601d7d902315d03127'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
@@ -52,8 +54,10 @@ sha256sums=('342ea80a925d85f5155b2b423a0d3cbcf2ee5729bf107c601d7d902315d03127'
             '4495e8b29dae242c79ffe4beefc5171eb3c7aacb7e9aebfd2d4d69b9d8c958d3'
             '9478f1ec1a3c53425306cf41c2d0555c215a4f106955d9d6adfff38044530ce8'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            'a15b2ca40b5ca17d4763e41e226fb5faca22277027e8321675c87038dd9879d5'
-            'fe45088f04d6f5bb8b2aaad2ef2d4b495ee3a3a91b89fa342e54ac00fe99a97b')
+            '12d6663bc61845414b284bb9e2d455e0f4e40f5ae69d035f00505ce9c9403169'
+            '8a81a14af625c8b79006d1b9b4321d5487bc2e56a3fb3a677f9a8dab369be7af'
+            '0a9186ab591773f8fb6cbc908f9bbf4bc1508f1095b6c1cd7479aac945045373'
+            'b82047df666e6bbf66e0c0911d20c5001bd1100fd08adafa92cac5f02a887a01')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -145,8 +149,10 @@ prepare() {
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
 
   # VA-API patch
-  patch -p1 -i "${srcdir}/chromium-vaapi-r15.patch"
-  patch -p1 -i "${srcdir}/chromium-libva-r2.patch"
+  patch -Np1 -i "${srcdir}/chromium-vaapi-move.patch"
+  patch -Np1 -i "${srcdir}/chromium-vaapi-init.patch"
+  patch -Np1 -i "${srcdir}/chromium-vaapi-rgbx.patch"
+  patch -Np1 -i "${srcdir}/chromium-vaapi-r16.patch"
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
