@@ -1,0 +1,16 @@
+pkgbase = eidolon-git
+	pkgdesc = Provides a single TUI-based registry for drm-free, wine and steam games on linux, accessed through a rofi launch menu.
+	pkgver = r64.6d949a8
+	pkgrel = 1
+	url = https://github.com/nicohman/eidolon
+	arch = any
+	license = GPL
+	makedepends = rust
+	makedepends = cargo
+	depends = rofi
+	conflicts = eidolon
+	source = git+https://github.com/nicohman/eidolon.git
+	sha256sums = SKIP
+
+pkgname = eidolon-git
+
