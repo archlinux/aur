@@ -1,18 +1,17 @@
 pkgbase = vm-lv2
 	pkgdesc = A virtual machine LV2 plugin bundle
 	pkgver = 0.4.0
-	pkgrel = 1
-	url = http://open-music-kontrollers.ch/lv2/vm
+	pkgrel = 2
+	url = http://open-music-kontrollers.ch/lv2/vm/
 	arch = i686
 	arch = x86_64
 	groups = lv2-plugins
 	license = Artistic2.0
 	makedepends = cmake
 	makedepends = lv2
-	depends = libxext
 	depends = libgl
-	source = https://gitlab.com/OpenMusicKontrollers/vm.lv2/repository/archive.tar.bz2?ref=0.4.0
-	md5sums = fcf2745c059035eb10bb56604af96c31
+	source = https://git.open-music-kontrollers.ch/lv2//vm.lv2/snapshot/vm.lv2-0.4.0.tar.xz
+	sha256sums = 207379efad6af3a5e3fdb6e81455ab1ee54554f8f420e67f521ffff883c2152d
 
 pkgname = vm-lv2
 
