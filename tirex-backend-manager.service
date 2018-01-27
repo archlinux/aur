@@ -1,0 +1,13 @@
+[Unit]
+Description=tirex backend manager
+PartOf=tirex.target
+After=tirex.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tirex-backend-manager
+User=tirex
+Group=tirex
+
+[Install]
+WantedBy=tirex.target

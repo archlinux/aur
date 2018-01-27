@@ -1,0 +1,6 @@
+[Unit]
+Description=tirex server
+Wants=tirex-backend-manager.service tirex-master.service
+
+[Install]
+WantedBy=multi-user.target
