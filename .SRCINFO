@@ -1,7 +1,7 @@
 pkgbase = arm-frc-linux-gnueabi-gcc
 	pkgdesc = The GNU Compiler Collection (arm-frc-linux-gnueabi)
 	pkgver = 5.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
