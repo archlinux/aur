@@ -3,14 +3,14 @@
 
 pkgname=quarry
 pkgver=0.3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-purpose GUI for Go, Amazons, and Othello"
 arch=('i686' 'x86_64')
 # Originally http://home.gna.org/quarry/ (abandoned)
 # Brief developement at https://gitorious.org/quarry/ (dead with gitorious)
 url='https://gitorious.org/quarry/quarry/'
 license=('GPL')
-depends=('librsvg' 'desktop-file-utils' 'gtk2')
+depends=('librsvg' 'gtk2')
 optdepends=('gnugo: play Go against the computer'
             'grhino: play Othello against the computer')
 makedepends=('xmlto')
