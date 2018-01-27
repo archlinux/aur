@@ -1,0 +1,20 @@
+pkgbase = libne10-git
+	pkgdesc = An open optimized software library project for the ARM® Architecture
+	pkgver = v1.1.2.r98.ga778f6d
+	pkgrel = 1
+	url = https://github.com/projectNe10/Ne10
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	makedepends = doxygen
+	makedepends = cmake
+	provides = libne10
+	conflicts = libne10
+	source = libne10::git+https://github.com/projectNe10/Ne10
+	source = linux-install-rules.patch
+	sha256sums = SKIP
+	sha256sums = 659e7915c4484f3cd85e7e5ada6561731e209533ffce21ec2609b2ce251cc161
+
+pkgname = libne10-git
+
