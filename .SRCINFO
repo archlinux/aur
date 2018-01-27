@@ -1,6 +1,6 @@
 pkgbase = vimix-gtk-themes-git
 	pkgdesc = Vimix is a flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell
-	pkgver = 114.ce18a5f
+	pkgver = 129.34b37c2
 	pkgrel = 1
 	url = https://github.com/vinceliuice/vimix-gtk-themes
 	arch = any
