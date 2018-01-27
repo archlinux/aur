@@ -1,11 +1,12 @@
 # Maintainer: Pablo Moyano (p4block)
 pkgname=polarisbioseditor-git
-pkgver=r18.896b2ec
+pkgver=r41.31add7b
 pkgrel=1
 pkgdesc="BIOS editor for AMD Polaris cards"
 arch=('x86_64')
 url="https://github.com/jaschaknack/PolarisBiosEditor"
 license=('GPL3')
+depends=('mono')
 makedepends=('git')
 source=("git+https://github.com/jaschaknack/PolarisBiosEditor.git")
 md5sums=('SKIP')

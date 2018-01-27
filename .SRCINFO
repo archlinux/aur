@@ -1,11 +1,12 @@
 pkgbase = polarisbioseditor-git
 	pkgdesc = BIOS editor for AMD Polaris cards
-	pkgver = r18.896b2ec
+	pkgver = r41.31add7b
 	pkgrel = 1
 	url = https://github.com/jaschaknack/PolarisBiosEditor
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	depends = mono
 	source = git+https://github.com/jaschaknack/PolarisBiosEditor.git
 	md5sums = SKIP
 
