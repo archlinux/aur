@@ -6,7 +6,7 @@ arch=(any)
 url='http://elementary.io'
 license=(LGPL)
 depends=(switchboard-git)
-
+provides('libswitchboard-2.0.so=0-64' 'libswitchboard-2.0.so')
 package(){
   /bin/true
 }
