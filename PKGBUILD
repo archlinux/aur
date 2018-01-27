@@ -2,27 +2,27 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=laditools-git
-pkgver=r266.19f5455
+pkgver=1.0.r34.g2946670
 pkgrel=1
 pkgdesc="Utilities to improve integration and workflow with JACK and LASH."
 arch=('any')
 url="https://github.com/LADI/laditools"
 license=('GPL3')
-depends=('glade' 'jack' 'pygtk' 'python2' 'python2-enum' 'python2-yaml')
+depends=('glade' 'jack' 'pygtk' 'python2' 'python2-enum34' 'python2-yaml')
 makedepends=('git' 'python2-distutils-extra')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname}::git+https://github.com/LADI/laditools.git")
+source=("${pkgname%-*}::git+https://github.com/alessio/laditools.git")
 sha512sums=('SKIP')
 _branch=master
 
 prepare() {
-  cd "${pkgname}"
+  cd "${pkgname%-*}"
   git checkout ${_branch}
 }
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname%-*}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -30,11 +30,11 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname}"
+  cd "${pkgname%-*}"
   python2 setup.py build
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname%-*}"
   python2 setup.py install --prefix=/usr --root="${pkgdir}/"
 }
