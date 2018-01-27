@@ -1,0 +1,15 @@
+pkgbase = faience-ng-icon-theme
+	pkgdesc = Continued development of Faenza\Faience Icon Theme
+	pkgver = 20180126
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1210208/
+	arch = any
+	license = GPL3
+	provides = faience-ng-icon-theme
+	conflicts = faience-ng-icon-theme
+	options = !strip
+	source = https://github.com/faience/faience-ng-icon-theme/releases/download/v20180126/faience-ng-icon-theme-20180126.tar.gz
+	md5sums = dd9bfcc215345e16cd6559915d40bb6c
+
+pkgname = faience-ng-icon-theme
+
