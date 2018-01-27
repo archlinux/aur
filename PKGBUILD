@@ -2,7 +2,7 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-tray-appindicator
-_pkgver=6.2.2
+_pkgver=6.2.3
 pkgver=$_pkgver
 pkgrel=1
 pkgdesc="Tray icon using appindicator which feets better in KDE"
@@ -14,13 +14,14 @@ makedepends=('gettext' 'itstool' 'vala>=0.36' 'libappindicator-gtk3' 'meson' 'ni
 options=(!emptydirs)
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz"
-        #"git-$pkgver-$pkgrel.patch::https://github.com/manjaro/pamac/compare/v6.2.1...master.patch"
+        #"git-$pkgver-$pkgrel.patch::https://github.com/manjaro/pamac/compare/v$_pkgver...master.patch"
        )
-sha256sums=('24637013909663fe1e2d51944341822ac97ed01f45e2acf092191e0fb8631fac')
+sha256sums=('dee61e9614142c201e53c9a9b74b686511c7cd37f89b85248b84d6b3128c9e68')
 
 prepare() {
-  cd "$srcdir/pamac-$_pkgver"
+  cd "$srcdir/pamac-$pkgver"
   # patches here
+  #patch -p1 -i "$srcdir/git-$pkgver-$pkgrel.patch"
 
   # adjust version string
   sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" src/manager_window.vala
