@@ -3,7 +3,7 @@
 pkgname=tint-tetris
 _realname=tint
 pkgver=0.04+nmu1
-pkgrel=1
+pkgrel=2
 pkgdesc="TINT Is Not Tetris(tm) ...at least the name isn't"
 arch=('i686' 'x86_64')
 url="https://packages.debian.org/jessie/tint"
