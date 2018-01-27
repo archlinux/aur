@@ -1,7 +1,7 @@
 # Maintainer: Krystian Chachula <krystiancha@gmail.com>
 pkgname=raspicam-git
-pkgver=r54.076fd8b
-pkgrel=2
+pkgver=r55.59d92e6
+pkgrel=1
 pkgdesc="C++ API for using Raspberry camera (with OpenCV)"
 arch=('any')
 url="http://www.uco.es/investiga/grupos/ava/node/40"
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('raspicam::git+https://github.com/protecto/raspicam.git#branch=patch-1')
+source=('raspicam::git+https://github.com/cedricve/raspicam.git')
 noextract=()
 md5sums=('SKIP')
 
