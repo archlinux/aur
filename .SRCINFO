@@ -16,6 +16,5 @@ pkgbase = quickcurver-git
 	source = git+https://github.com/lirios/fluid
 	md5sums = SKIP
 	md5sums = SKIP
-
 pkgname = quickcurver-git
 

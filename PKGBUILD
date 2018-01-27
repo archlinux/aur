@@ -39,5 +39,5 @@ build() {
 }
 
 package() {
-  install -D "$srcdir/$_pkgname/build/QuickCurver" "$pkgdir/usr/bin/$_pkgname"
+  install -D "$srcdir/$_pkgname/build/src/QuickCurver" "$pkgdir/usr/bin/$_pkgname"
 }
