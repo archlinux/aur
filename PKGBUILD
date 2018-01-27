@@ -13,6 +13,7 @@ md5sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir"/psplibraries
+  # https://github.com/pspdev/psplibraries/pull/36
   patch -Np1 -i "$srcdir"/psplibraries-cmake.patch
 }
          
