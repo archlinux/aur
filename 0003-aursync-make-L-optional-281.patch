@@ -1,13 +1,27 @@
-From 5a6ca442b7499d15d95005f77db591d01facd6ad Mon Sep 17 00:00:00 2001
+From 3ed30e94e974988acd36c77dd73820366a311ff0 Mon Sep 17 00:00:00 2001
 From: Alad Wenter <alad@mailbox.org>
 Date: Sat, 27 Jan 2018 03:21:37 +0100
 Subject: [PATCH] aursync: make -L optional (#281)
 
 ---
+ bin/aurbuild   | 2 +-
  bin/aursync    | 7 ++++---
  man1/aursync.1 | 7 ++++++-
- 2 files changed, 10 insertions(+), 4 deletions(-)
+ 3 files changed, 11 insertions(+), 5 deletions(-)
 
+diff --git a/bin/aurbuild b/bin/aurbuild
+index 05df8b0..babd81d 100755
+--- a/bin/aurbuild
++++ b/bin/aurbuild
+@@ -5,7 +5,7 @@ readonly PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+ set -e
+ 
+ declare -a gpg_args=(--detach-sign --no-armor --verbose --batch)
+-declare -a makechrootpkg_args=(-cnu) makepkg_args=(-Lcrs)
++declare -a makechrootpkg_args=(-cnu) makepkg_args=(-crs)
+ declare -i chroot=0 sign_pkg=0
+ 
+ conf_chroot() {
 diff --git a/bin/aursync b/bin/aursync
 index fdf485d..1a96c0d 100755
 --- a/bin/aursync

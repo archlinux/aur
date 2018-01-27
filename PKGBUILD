@@ -1,7 +1,7 @@
 # Maintainer: Alad Wenter <alad@mailbox.org>
 pkgname=aurutils
 pkgver=1.5.3
-pkgrel=6
+pkgrel=7
 pkgdesc='helper tools for the arch user repository'
 arch=('any')
 url='https://github.com/AladW/aurutils'
@@ -24,7 +24,7 @@ sha256sums=('a09088a460e352179dbf799d915e866af47aa280474a9c943f8e6885490734c5'
             'SKIP'
             '5001ece7fc2a4ec7e1860a0162e042f19adab13bad5c1070436306f2fe2f2b86'
             'f0a2d95b4fb51e4a392e0515ef6e10e0478a609caf7257aa8a896fadf027bfbb'
-            '4019c459d9c5e9592af3f290920f3f5e039bedfa29ddd3f130639db18b2c9f45')
+            'ada79e7e8c637704081a00a8a7253744eb8776ffe16042a1e197b9e67f335317')
 # Alad Wenter <alad@mailbox.org>
 validpgpkeys=('DBE7D3DD8C81D58D0A13D0E76BC26A17B9B7018A')
 
