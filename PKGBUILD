@@ -1,7 +1,7 @@
 # Author and maintainer: jbarnett (aur AT wbarnett DOT us)
 pkgname=openvpn-pia
 pkgver=2018.01.25
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenVPN configuration files for Private Internet Access VPN"
 url="https://www.privateinternetaccess.com"
 arch=('x86_64')
@@ -11,7 +11,7 @@ install='openvpn-pia.install'
 source=(${url}/openvpn/openvpn-strong.zip
         README)
 sha512sums=('9f2661e742d3a66ce679255d5a722abc320f0250586f844ba00955a903079d8fb4b14579114fb181f9ed58fafe6076fc1f839e725d2169808003ccb6ccbbff96'
-            '45cf92acfcc3b6167f3a41536cd1c7bba0c65445a4ce7d9257519d2a8747cf3c0e1159531389ac2ab719e7969c6e8bf6c7a1b232025d14057e82c0bc2b4f3265')
+            '80aeaa4945b1c7df5eec07886dca24a5803f89f1904eb4252097a918e10b910ea655addcb99124ff0b86250a1b98a490c39e195c2cb4e725b5ea00312e594c5a')
 
 prepare() {
     cd $srcdir
