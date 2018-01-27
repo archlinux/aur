@@ -1,4 +1,4 @@
-# Maintainer: Joaquin Garmendia <joaquingc123@gmail.com>
+# Maintainer: Joaquin Garmendia <joaquingc123 at gmail dot com>
 # Contributor: Orestis Floros <orestisf1993@gmail.com>
 
 pkgname=gtk-arc-flatabulous-theme-git
