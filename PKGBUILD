@@ -1,7 +1,7 @@
 # Maintainer: Morgana <morganamilo@gmail.com>
 pkgname=superproductivity
 _pkgname=superProductivity
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='To Do List / Time Tracker with Jira Integration.'
 arch=('x86_64')
@@ -11,7 +11,8 @@ depends=('gtk2' 'libxss' 'gconf' 'nss' 'nspr' 'libnotify' 'libappindicator' 'lib
 makedepends=()
 source=("https://github.com/johannesjo/super-productivity/releases/download/v${pkgver}/superProductivity_${pkgver}_amd64.deb" "LICENSE")
 noextract=()
-md5sums=('635d3b51b95714fdd08afd8a85bad7bc' '66b9e0d3d2b55636d9687b1381f5f97d')
+md5sums=('b11c3c5bc621ac61757692ce2ff209be'
+         '66b9e0d3d2b55636d9687b1381f5f97d')
 
 prepare() {
 	cd ${srcdir}
@@ -31,7 +32,7 @@ package() {
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/${_pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-	for size in 16 24 32 48 64 96 128 256 512; do
+	for size in 16 24 32 48 64 96 128 256; do
         	install -Dm644 "${srcdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
     	done
 
