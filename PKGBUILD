@@ -3,7 +3,7 @@
 _pkgorg=bus1
 _pkgname=dbus-broker
 pkgdesc='Linux D-Bus Message Broker'
-pkgver=r963.a75ba60
+pkgver=r1056.d4a8ac3
 pkgrel=1
 
 pkgname=$_pkgname-git
@@ -14,6 +14,7 @@ depends=('libsystemd' 'expat' 'glib2')
 makedepends=('git' 'meson' 'systemd' 'python-docutils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+
 source=("$pkgname::git+https://github.com/$_pkgorg/$_pkgname"
         "git+https://github.com/c-util/c-rbtree"
         "git+https://github.com/c-util/c-sundry"
@@ -45,9 +46,10 @@ prepare() {
 
 build() {
   cd build
-  meson setup ../$pkgname --prefix=/usr --buildtype=release -Db_lto=true
+  CFLAGS="$CFLAGS -Wno-unused-parameter"
+  CFLAGS="$CFLAGS -Wno-maybe-uninitialized"
+  arch-meson ../$pkgname
   ninja
-  make -C ../$pkgname BUILDDIR="$PWD" docs
 }
 
 check() {
@@ -58,7 +60,6 @@ check() {
 package() {
   cd build
   DESTDIR="$pkgdir" ninja install
-  install -Dt "$pkgdir/usr/share/man/man1" -m644 docs/*.1
 }
 
 # vim:set sw=2 et:
