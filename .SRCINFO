@@ -1,0 +1,15 @@
+pkgbase = raspicam-git
+	pkgdesc = C++ API for using Raspberry camera (with OpenCV)
+	pkgver = r54.076fd8b
+	pkgrel = 2
+	url = http://www.uco.es/investiga/grupos/ava/node/40
+	arch = any
+	license = BSD
+	makedepends = git
+	provides = raspicam
+	conflicts = raspicam
+	source = raspicam::git+https://github.com/protecto/raspicam.git#branch=patch-1
+	md5sums = SKIP
+
+pkgname = raspicam-git
+
