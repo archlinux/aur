@@ -1,14 +1,13 @@
 _pkgname=merkaartor
 pkgname=$_pkgname-git
-pkgver=0.18.2.r0.g59d30ce
+pkgver=0.18.3.r46.gbbdce9f7
 pkgrel=1
 pkgdesc='Merkaartor openstreetmap mapping program'
 url='http://www.merkaartor.be/'
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('qt5-svg' 'gdal' 'qt5-webkit' 'desktop-file-utils' 'gtk-update-icon-cache')
+depends=('qt5-svg' 'gdal' 'hicolor-icon-theme')
 makedepends=('qt5-tools' 'git')
-install="$pkgname.install"
 source=("git+https://github.com/openstreetmap/${_pkgname}.git")
 md5sums=('SKIP')
 provides=("$_pkgname")
