@@ -13,11 +13,11 @@ source=('https://pypi.python.org/packages/8c/4c/6c01f8205f25d0f2fd654d589e7b6521
 md5sums=('d66f8bfaf6f06d3097c87aa047574fcb')
 
 build() {
-    cd $srcdir/voicerss-tts-1.0.4
+    cd $srcdir/voicerss_tts-1.0.4
     python setup.py build
 }
 
 package() {
-    cd $srcdir/voicerss-tts-1.0.4
+    cd $srcdir/voicerss_tts-1.0.4
     python setup.py install --root="$pkgdir" --optimize=1 
 }
