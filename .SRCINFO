@@ -1,18 +1,17 @@
 pkgbase = midi-matrix-lv2
 	pkgdesc = LV2 'Midi Matrix' plugin bundle: 'Channel Filter'
 	pkgver = 0.20.0
-	pkgrel = 1
-	url = http://open-music-kontrollers.ch/lv2/midi_matrix
+	pkgrel = 2
+	url = http://open-music-kontrollers.ch/lv2/midi_matrix/
 	arch = i686
 	arch = x86_64
 	groups = lv2-plugins
 	license = Artistic2.0
 	makedepends = cmake
 	makedepends = lv2
-	depends = libxext
 	depends = libgl
-	source = https://github.com/OpenMusicKontrollers/midi_matrix.lv2/archive/0.20.0.tar.gz
-	md5sums = 459f9186e7e0e4d4f73f33beef6defd4
+	source = https://git.open-music-kontrollers.ch/lv2/midi_matrix.lv2/snapshot/midi_matrix.lv2-0.20.0.tar.xz
+	sha256sums = 884099e426275b8e7e9b4ec62d00bcb59f52faf4ef0a955305a792f032bc9c49
 
 pkgname = midi-matrix-lv2
 
