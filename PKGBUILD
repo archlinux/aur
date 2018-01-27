@@ -1,8 +1,9 @@
 # Maintainer: Dhananjay Balan <mail@dbalan.in>
 
 pkgname=minio-client
-pkgver=2017_12_12T01_08_02Z
-pkgrel=2
+pkgver=2018_01_18T21_18_56Z
+_binname=mcli
+pkgrel=1
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
 arch=('x86_64' 'i686')
 url='https://minio.io/downloads/#minio-client'
@@ -27,6 +28,6 @@ build() {
 package() {
   export GOPATH="$srcdir/go"
   cd "$GOPATH/src/github.com/minio/mc"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$_binname"
 }
 # vim:set ts=2 sw=2 et:
