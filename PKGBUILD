@@ -1,8 +1,8 @@
 # Maintainer: Iwan Timmer <irtimmer at gmail dot com>
 
 pkgname=k4dirstat
-pkgver=3.1.2
-_commit=0b055582e48c
+pkgver=3.1.3
+_commit=fcf698417d42
 pkgrel=1
 pkgdesc="A graphical disk usage utility for KDE (KDE4 port)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('hicolor-icon-theme' 'kdelibs4support' )
 makedepends=('extra-cmake-modules' 'kdoctools' 'karchive')
 source=("https://bitbucket.org/jeromerobert/k4dirstat/get/k4dirstat-$pkgver.tar.bz2")
-sha256sums=('91682188f4f969b6a75ea6fc72f502cd583967b4764f54e155754d11b8049aa6')
+sha256sums=('8dedbbcf9eaf8519eb836332b1792774db355710b558706cf6470cbc2f45412a')
 
 build() {
   cd "${srcdir}/jeromerobert-k4dirstat-$_commit"
