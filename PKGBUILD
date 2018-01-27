@@ -3,10 +3,12 @@
 # Contributor: MKzero <info[at]linux-web-development[dot]de>
 # Upstream: Bitwig GmbH <support@bitwig.com>
 
-# PKGBUILD taken wholesale from stylemistake's bitwig-studio package
+# Original PKGBUILD taken wholesale from stylemistake's bitwig-studio package
+# JF added a prepare() to allow side-by-side installation with release version
 
 pkgname='bitwig-studio-beta'
-pkgver='2.3beta1'
+_pkgname='bitwig-studio'
+pkgver='2.3beta2'
 _pkgver='2.3'
 pkgrel='1'
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
@@ -19,15 +21,44 @@ license=('custom')
 depends=('jack' 'gtk2' 'gtk3' 'lib32-gcc-libs' 'libbsd' 'xcb-util' 'xcb-util-wm' 'xdg-utils' 'zenity')
 optdepends=('alsa-lib' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
-conflicts=('bitwig-studio' 'bitwig-studio-legacy' 'bitwig-8-track')
 options=(!strip)
 source=("https://downloads.bitwig.com/beta/${_pkgver}/bitwig-studio-${pkgver}.deb")
-sha256sums=('ae1e4c8b5551d0d13497b6ca0987ae6cca9b4f722b00815d4ccfcd8e7a8d4a52')
+sha256sums=('c26c701b87b69b93a197147be631b67c1b4c236684d04342390feb8c4617502e')
+
+prepare() {
+	msg2 "Unpacking archive contents..."
+	bsdtar -xf ${srcdir}/data.tar.xz -C ${srcdir}/
+
+	msg2 "Moving things around so we can install side-by-side with bitwig-studio..."
+	cd ${srcdir}/opt/
+	mv ${_pkgname} ${pkgname}
+
+	cd ${srcdir}/usr/
+	rm bin/${_pkgname}
+	ln -s /opt/${pkgname}/${_pkgname} bin/${pkgname}
+
+	cd share/
+	mv applications/${_pkgname}.desktop applications/${pkgname}.desktop
+	sed -i "s|${_pkgname}|${pkgname}|g;
+	        7s|Studio|Studio Beta|;
+			11s|bitwig-|bitwig-beta-|g" applications/${pkgname}.desktop
+
+	mv mime/packages/${_pkgname}.xml  mime/packages/${pkgname}.xml
+	sed -i "s|bitwig-|bitwig-beta-|g;
+	        s|Studio |Studio Beta |g" mime/packages/${pkgname}.xml
+
+	cd icons/hicolor/
+	for icon in 48x48/apps/*.png scalable/apps/*.svg; do
+		mv "$icon" "${icon/./-beta.}"
+	done
+	for icon in scalable/mimetypes/*.svg; do
+		mv "$icon" "${icon/bitwig-/bitwig-beta-}"
+	done
+}
 
 package() {
-  # Unpack package contents
-  bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
+	mv ${srcdir}/{opt,usr} ${pkgdir}/
 
-  # Install license
-  install -D -m644 ${pkgdir}/opt/bitwig-studio/EULA.rtf ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	# Install license
+	install -D -m644 ${pkgdir}/opt/${pkgname}/EULA.rtf ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
