@@ -9,7 +9,7 @@ _IA32_EFI_IN_ARCH_X64="1"
 ## "1" to enable EMU build, "0" to disable
 _GRUB_EMU_BUILD="0"
 
-_UNIFONT_VER="9.0.06"
+_UNIFONT_VER="10.0.06"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -18,7 +18,7 @@ _UNIFONT_VER="9.0.06"
 [[ "${CARCH}" == "i686" ]] && _EMU_ARCH="i386"
 
 pkgname="grub-git"
-pkgver=2.02.r65.g666237205
+pkgver=2.02.r86.gb4d709b6e
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
@@ -58,12 +58,12 @@ source=("grub::git+git://git.savannah.gnu.org/grub.git"
         'grub.cfg')
 sha256sums=('SKIP'
             'SKIP'
-            '4246c4773ed70f78a7e27ff1118fd257a280d1102200265ad5d58bb2011195ef'
+            '0d81571fc519573057b7641d26a31ead55cc0b02a931589fb346a3a534c3dcc1'
             'SKIP'
             '37adb95049f6cdcbdbf60ed6b6440c5be99a4cd307a0f96c3c3837b6c2e07f3c'
             'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            'df764fbd876947dea973017f95371e53833bf878458140b09f0b70d900235676'
+            '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
 validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' Serbinenko <phcoder@gmail.com>
               '95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
