@@ -1,28 +1,37 @@
-# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
+# Maintainer: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
+# Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
-pkgname=vmware-component-extractor-git
+_pkgname=vmware-component-extractor
+pkgname=${_pkgname}-git
 pkgver=0.2.b3b995a
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract VMware Tools ISO from component file"
 arch=('i686' 'x86_64')
 license=('custom')
 url='https://github.com/17twenty/VMWare-Component-Extractor'
-depends=()
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=("${pkgname}::git+https://github.com/17twenty/VMWare-Component-Extractor#branch=master")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver () {
   cd "${srcdir}/${pkgname}"
   echo "0.$(git rev-list --count HEAD).$(git describe --always | sed 's|-|.|g')"
 }
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}"
+  sed -i -e 's/\$(CXX)/\$(CXX) $(CXXFLAGS)/' Makefile
+}
+
+build()
+{
+  cd "${srcdir}/${pkgname}"
+  export CXXFLAGS="$CXXFLAGS -std=c++03"
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -d "${pkgdir}"/usr/bin/
-  install -m755 VMWareComponentExtractor "${pkgdir}"/usr/bin/
+  install -Dm 755 VMWareComponentExtractor "$pkgdir"/usr/bin/vmware-component-extractor
 }
