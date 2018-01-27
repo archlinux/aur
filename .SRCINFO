@@ -2,11 +2,11 @@ pkgbase = xml2
 	pkgdesc = XML/Unix Processing Tools to convert XML and HTML to and from a line-oriented format more amenable to processing by classic Unix pipeline processing tools
 	pkgver = 0.5
 	pkgrel = 1
-	url = http://www.ofb.net/~egnor/xml2/
+	url = http://http.debian.net/debian/pool/main/x/xml2/
 	arch = x86_64
 	license = GPL
 	depends = libxml2
-	source = http://download.ofb.net/gale/xml2-0.5.tar.gz
+	source = http://http.debian.net/debian/pool/main/x/xml2/xml2_0.5.orig.tar.gz
 	md5sums = 48eacf64b01ca3a4a5afb1a36f5906e6
 
 pkgname = xml2
