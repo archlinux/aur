@@ -2,24 +2,36 @@
 # Contributor:
 
 pkgbase=linux-clear
+_srcname=linux-4.14
 pkgver=4.14.15
-_srpm=515
-pkgrel=2
-_srcname=linux-${pkgver}
+_rel=516
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
-makedepends=('bc' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
+makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
 options=('!strip')
 source=(
-  "https://download.clearlinux.org/current/source/SRPMS/${_srcname}-${_srpm}.src.rpm"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${pkgver}-${_rel}"
   'https://downloadmirror.intel.com/27337/eng/microcode-20171117.tgz'
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   '99-linux.hook'  # pacman hook for remove initramfs
   'linux.preset'   # standard config files for mkinitcpio ramdisk
 )
-sha256sums=('f7a37e8e44c2184285113dd84ad115e73f288463fa05916d486a149115a4db43'
+validpgpkeys=(
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+)
+sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+            'SKIP'
+            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
+            'SKIP'
+            'SKIP'
             '93bd1da9fa58ece0016702e657f708b7e496e56da637a3fe9a6d21f1d6f524dc'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -29,21 +41,22 @@ sha256sums=('f7a37e8e44c2184285113dd84ad115e73f288463fa05916d486a149115a4db43'
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd ${srcdir}
+  cd ${_srcname}
   
-  bsdtar xJf ${_srcname}.tar.xz
-
-  cd "${srcdir}/${_srcname}"
-
+  # add upstream patch
+  patch -p1 -i ../patch-${pkgver}
   chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
-
-  cp -Tf ../config .config
+  
+  cp -Tf $srcdir/clearlinux/config .config
   cp -a /usr/lib/firmware/i915 firmware/
   cp -a ${srcdir}/intel-ucode firmware/
   rm -f firmware/intel-ucode/0f*
 
   # Apply clearlinux patches
-  for i in ${srcdir}/*.patch; do patch -p1 < $i; done
+  for i in $(grep "^Patch" ${srcdir}/clearlinux/linux.spec | sed -n 's/.*: //p'); do
+    msg "Applying ${i}"
+    patch -p1 -i "$srcdir/clearlinux/${i}"
+  done
   
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
