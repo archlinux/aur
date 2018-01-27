@@ -1,5 +1,33 @@
+From 4c68a56b8f0fa16222e6885eca66324a16b785d3 Mon Sep 17 00:00:00 2001
+From: Michel Zou <xantares09@hotmail.com>
+Date: Sat, 27 Jan 2018 14:51:15 +0100
+Subject: [PATCH 1/2] Shorten toolchain install location
+
+---
+ patches/psp-cmake                 | 4 ++--
+ scripts/cmake-toolchain-script.sh | 5 +++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/patches/psp-cmake b/patches/psp-cmake
+index c79d45f..68a9217 100755
+--- a/patches/psp-cmake
++++ b/patches/psp-cmake
+@@ -1,11 +1,11 @@
+ #!/bin/sh
+ 
+-MODULE_PATH=$(psp-config --psp-prefix)/share/cmake-2.8/Modules
++MODULE_PATH=$(psp-config --psp-prefix)/share/cmake
+ psp_prefix=`psp-config --psp-prefix`
+ 
+ cmake \
+   -DCMAKE_INSTALL_PREFIX:PATH=${psp_prefix} \
+   -DBUILD_SHARED_LIBS:BOOL=OFF \
+   -DCMAKE_MODULE_PATH=$MODULE_PATH \
+-  -DCMAKE_TOOLCHAIN_FILE=$MODULE_PATH/Platform/PSP.cmake \
++  -DCMAKE_TOOLCHAIN_FILE=$MODULE_PATH/PSP.cmake \
+   "$@"
 diff --git a/scripts/cmake-toolchain-script.sh b/scripts/cmake-toolchain-script.sh
-index c24ab34..28295bb 100755
+index c24ab34..556fb3c 100755
 --- a/scripts/cmake-toolchain-script.sh
 +++ b/scripts/cmake-toolchain-script.sh
 @@ -1,7 +1,8 @@
@@ -9,7 +37,69 @@ index c24ab34..28295bb 100755
 -TOOLCHAIN_SCRIPT_PATH=$(psp-config --psp-prefix)/share/cmake-2.8/Modules/Platform
 +DESTDIR=$1
 +PSP_CMAKE_PATH=${DESTDIR}$(psp-config --pspdev-path)/bin
-+TOOLCHAIN_SCRIPT_PATH=${DESTDIR}$(psp-config --psp-prefix)/share/cmake-2.8/Modules/Platform
++TOOLCHAIN_SCRIPT_PATH=${DESTDIR}$(psp-config --psp-prefix)/share/cmake
  
  ## copy toolchain script and psp-cmake
  install -d $TOOLCHAIN_SCRIPT_PATH
+
+From 70750bee5f6bf6e1db11b48091dfbfc0a201d7d3 Mon Sep 17 00:00:00 2001
+From: Michel Zou <xantares09@hotmail.com>
+Date: Sat, 27 Jan 2018 15:06:22 +0100
+Subject: [PATCH 2/2] Enhance PSP toolchain
+
+- Dont force compiler but use CMAKE_<LANG>_STANDARD_LIBRARIES
+- Add missing libraries
+---
+ patches/PSP.cmake | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/patches/PSP.cmake b/patches/PSP.cmake
+index c225a74..f99ef5d 100644
+--- a/patches/PSP.cmake
++++ b/patches/PSP.cmake
+@@ -3,25 +3,23 @@ SET(CMAKE_SYSTEM_VERSION 1)
+ SET(CMAKE_CROSSCOMPILING TRUE)
+ 
+ # set compiler
+-INCLUDE(CMakeForceCompiler)
+-CMAKE_FORCE_C_COMPILER(psp-gcc GNU)
+-CMAKE_FORCE_CXX_COMPILER(psp-g++ GNU)
++set (CMAKE_C_COMPILER psp-gcc)
++set (CMAKE_CXX_COMPILER psp-g++)
+ 
+ SET(BUILD_SHARED_LIBS FALSE)
+ SET(CMAKE_EXECUTABLE_SUFFIX ".elf")
+ 
+ # set find root path
+-SET(CMAKE_FIND_ROOT_PATH "")
+-FOREACH(i "--pspsdk-path" "--psp-prefix")
+-  EXECUTE_PROCESS(
+-	COMMAND "psp-config" ${i}
+-	OUTPUT_VARIABLE output
+-	OUTPUT_STRIP_TRAILING_WHITESPACE)
+-
+-  LIST(APPEND CMAKE_FIND_ROOT_PATH "${output}")
+-  INCLUDE_DIRECTORIES(SYSTEM "${output}/include")
+-  LINK_DIRECTORIES("${output}/lib")
+-ENDFOREACH()
++execute_process (COMMAND psp-config --pspsdk-path
++  OUTPUT_VARIABLE PSPSDK_PATH
++  OUTPUT_STRIP_TRAILING_WHITESPACE)
++
++execute_process (COMMAND psp-config --psp-prefix
++  OUTPUT_VARIABLE PSP_PREFIX
++  OUTPUT_STRIP_TRAILING_WHITESPACE)
++
++set (CMAKE_FIND_ROOT_PATH "${PSPSDK_PATH};${PSP_PREFIX}")
++include_directories (SYSTEM "${PSPSDK_PATH}/include;${PSP_PREFIX}/include")
+ 
+ SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+ SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+@@ -31,4 +29,6 @@ SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+ ADD_DEFINITIONS("-G0")
+ 
+ # linker flags
+-LINK_LIBRARIES(pspdebug pspdisplay pspge pspsdk c pspuser)
++set(PSP_LIBRARIES "-lpspdebug -lpspdisplay -lpspge -lpspctrl -lc -lpspsdk -lc -lpspnet -lpspnet_inet -lpspnet_apctl -lpspnet_resolver -lpspaudiolib -lpsputility -lpspuser -lpspkernel -L${PSPSDK_PATH}/lib -L${PSP_PREFIX}/lib")
++set(CMAKE_C_STANDARD_LIBRARIES "${PSP_LIBRARIES}")
++set(CMAKE_CXX_STANDARD_LIBRARIES "-lstdc++ ${PSP_LIBRARIES}")
