@@ -7,7 +7,7 @@ pkgdesc="Linux Kernel Crypto API User Space Interface Library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.chronox.de/libkcapi.html"
 makedepends=('autoconf' 'automake' 'm4' 'make' 'pkg-config')
-license=('MIT')
+license=('BSD' 'GPL2')
 source=("http://www.chronox.de/$pkgname/$pkgname-$pkgver.tar.xz"
         "http://www.chronox.de/$pkgname/$pkgname-$pkgver.tar.xz.asc"
         "makefile.patch")
