@@ -2,7 +2,7 @@
 
 _pkgname=folder-color
 pkgname=${_pkgname}-bzr
-pkgver=0.0.80.r266
+pkgver=0.0.86.r281
 pkgrel=1
 pkgdesc="Folder color switcher extension for nautilus, caja, and nemo"
 arch=(any)
