@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   echo "Pull request, skipping publication to aur"
