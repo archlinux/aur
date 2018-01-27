@@ -1,0 +1,39 @@
+# Maintainer: David Runge <dave@sleepmap.de>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: speps <speps at aur dot archlinux dot org>
+# Contributor: hm_b <holger@music-nerds.net>
+# Contributor: Leslie P. Polzer <polzer@stardawn.org>
+# Contributor: Philipp Überbacher <murks at lavabit dot com>
+
+pkgname=jack_capture
+pkgver=0.9.73
+pkgrel=3
+pkgdesc="Simple command line tool to record JACK audio output to a file"
+arch=('x86_64')
+url="https://github.com/kmatheussen/jack_capture"
+license=('GPL2')
+depends=('jack' 'lame' 'liblo')
+optdepends=('meterbridge: levels monitor'
+            'zenity: gtk2 gui')
+source=("https://github.com/kmatheussen/${pkgname}/archive/$pkgver.tar.gz")
+sha512sums=('eecab2e26d5e83b65adf386d6fb38f2d9169cf1574e462ec455367f7d98f4f4d5a9d0766b9c572cfdcb43c55ae914bb8a2222267842c9912e2afe13c1f7b0038')
+
+
+build() {
+  cd "${pkgname}-${pkgver}"
+
+  make
+}
+
+package(){
+  cd "${pkgname}-${pkgver}"
+
+  make PREFIX="${pkgdir}/usr" install
+
+  # gtk2 gui
+  install -Dm755 "${pkgname}_gui" "${pkgdir}/usr/bin/${pkgname}_gui"
+
+  # doc
+  install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+}
+# vim:set ts=2 sw=2 et:
