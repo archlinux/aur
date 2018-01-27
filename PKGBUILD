@@ -4,7 +4,7 @@
 
 pkgname=xfce4-panel-compiz
 _realname=xfce4-panel
-pkgver=4.12.1
+pkgver=4.12.2
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment with fixes for Compiz"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(http://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkg
         workspace-pager.patch
         button-visibility.patch
         scrolling-viewports.patch)
-sha256sums=('93d58b80cca9c9eb58adb281bc75404df7cf6cae89f7f98bb9f38690009aa2e8'
+sha256sums=('42058abb81b8f87691d3999627447de71c3285bcf055f308aab5cefab2de0ce9'
             '006889db18e8579033db32eeb85257b1f55b7c378881b69a7671d708304f91af'
             '556f7ecc22fdf024101d2e8a0416b953efaef48ff4ed649aab97d5b115a94931'
             '8ca306d6fa63e47008223205b6aed887c02ea313fd0db996b40218771c18224e')
