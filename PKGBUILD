@@ -1,13 +1,13 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.0.0r1795.d7e28f99
+pkgver=0.1.1r2164.ad3e2a5d
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
 url='http://ziglang.org'
 license=('MIT')
-depends=('llvm' 'clang' 'ncurses')
+depends=('llvm' 'clang')
 makedepends=('cmake')
 provides=(zig)
 conflicts=(zig)
@@ -16,17 +16,15 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$provides"
-    printf "0.0.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.1.1r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "$srcdir/$provides"
     mkdir -p build
     cd build
-    # llvm-config not passing appropriate linker flags so we pass explicitly
     cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_EXE_LINKER_FLAGS="-lcurses -ltinfo" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-name=crt1.o)) \
         -DZIG_LIBC_INCLUDE_DIR=$(echo -n | cc -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2- | sed "s/ .*//") \
@@ -36,8 +34,8 @@ build() {
 
 check() {
     # We rebuild and install into a new local directory so we can test the
-    # stdlib before installing. The `--zig-std-dir` option does not work as
-    # expected with the `build` command right now so, hence the workaround.
+    # stdlib before installing. The `--zig-install-prefix` option does not work
+    # as expected with the `build` command right now so, hence the workaround.
     cd "$srcdir/$provides"
     mkdir -p build_test
     cd build_test
