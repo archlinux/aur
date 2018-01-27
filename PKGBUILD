@@ -1,8 +1,8 @@
 # Maintainer: Pedro Silva <psilva+git@pedrosilva.pt>
 
 pkgname=ape
-pkgver=2.0.50
-pkgrel=2
+pkgver=2.0.53
+pkgrel=1
 pkgdesc="A plasmid editor"
 arch=('any')
 url="http://biologylabs.utah.edu/jorgensen/wayned/ape/"
