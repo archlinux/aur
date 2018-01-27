@@ -1,7 +1,7 @@
 # Author and maintainer: jbarnett (aur AT wbarnett DOT us)
 pkgname=openvpn-pia
-pkgver=2018.01.09
-pkgrel=2
+pkgver=2018.01.25
+pkgrel=1
 pkgdesc="OpenVPN configuration files for Private Internet Access VPN"
 url="https://www.privateinternetaccess.com"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('openvpn')
 install='openvpn-pia.install'
 source=(${url}/openvpn/openvpn-strong.zip
         README)
-sha512sums=('471e94d24d935129963f73294a237a74e53151ef806ad7dc94ad0c267cbfdbe96421e9a8a61183ea5e6307699824acdc78b86906436b196177c8f65b0dd14fd6'
+sha512sums=('9f2661e742d3a66ce679255d5a722abc320f0250586f844ba00955a903079d8fb4b14579114fb181f9ed58fafe6076fc1f839e725d2169808003ccb6ccbbff96'
             '45cf92acfcc3b6167f3a41536cd1c7bba0c65445a4ce7d9257519d2a8747cf3c0e1159531389ac2ab719e7969c6e8bf6c7a1b232025d14057e82c0bc2b4f3265')
 
 prepare() {
