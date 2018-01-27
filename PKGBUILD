@@ -1,7 +1,7 @@
 # Author and maintainer: jbarnett (aur AT wbarnett DOT us)
 pkgname=openvpn-pia
 pkgver=2018.01.25
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenVPN configuration files for Private Internet Access VPN"
 url="https://www.privateinternetaccess.com"
 arch=('x86_64')

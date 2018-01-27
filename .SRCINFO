@@ -1,7 +1,7 @@
 pkgbase = openvpn-pia
 	pkgdesc = OpenVPN configuration files for Private Internet Access VPN
 	pkgver = 2018.01.25
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.privateinternetaccess.com
 	install = openvpn-pia.install
 	arch = x86_64

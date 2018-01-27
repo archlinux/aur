@@ -15,15 +15,17 @@ Optionally, put your password as the second line of /etc/openvpn-pia.conf
 to enable auto login. Note that your password will be stored in plain
 text!
 
-NOTE: PIA does not support IPv6. Disable it:
+**NOTE**: PIA does not support IPv6. Disable it:
 https://wiki.archlinux.org/index.php/IPv6#Disable_IPv6
+
+**NOTE**: Ensure you are using PIA's DNS servers according to your setup.
 
 
 ## RUNNING
 
 # systemctl start openvpn-client@config-name
 
-Where config-name is the name of the configuration file. For example,
+where config-name is the name of the configuration file. For example,
 for US-New-York-City.conf do:
 
 # systemctl start openvpn-client@US-New-York-City
@@ -43,7 +45,7 @@ See https://helpdesk.privateinternetaccess.com/hc/en-us/articles/231734668-Secur
 PIA does not version their files, but you can check to see if the zip
 file has been updated by doing:
 
-    curl --head --silent https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip | grep "Last-Modified"
+    $ curl --head --silent https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip | grep "Last-Modified"
 
-If you notice the date is newer than the package date, please leave a
-comment on the AUR page.
+If you notice the date is newer than the package date, please flag the
+package as out of date.
