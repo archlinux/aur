@@ -41,7 +41,7 @@ prepare() {
 	mv applications/${_pkgname}.desktop applications/${pkgname}.desktop
 	sed -i "s|${_pkgname}|${pkgname}|g;
 	        7s|Studio|Studio Beta|;
-			11s|bitwig-|bitwig-beta-|g" applications/${pkgname}.desktop
+	        11s|bitwig-|bitwig-beta-|g" applications/${pkgname}.desktop
 
 	mv mime/packages/${_pkgname}.xml  mime/packages/${pkgname}.xml
 	sed -i "s|bitwig-|bitwig-beta-|g;
