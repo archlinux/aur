@@ -1,6 +1,6 @@
 pkgbase = garlium-git
 	pkgdesc = A lightweight desktop wallet for Garlicoin, based on Electrum.
-	pkgver = 3.0.3.1.r160.gd15071a2
+	pkgver = 3.0.3.1.r166.g1341214c
 	pkgrel = 1
 	url = https://xske.github.io/garlium/
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = garlium-git
 	depends = python-pbkdf2
 	depends = python-protobuf
 	depends = python-pyaes
+	depends = python-pycryptodomex
 	depends = python-pyqt5
 	depends = python-pysocks
 	depends = python-qrcode
@@ -21,7 +22,7 @@ pkgbase = garlium-git
 	depends = python-scrypt
 	provides = garlium
 	conflicts = garlium
-	source = garlium-git::git+https://github.com/xSke/Garlium
+	source = garlium-git::git+https://github.com/xSke/garlium
 	md5sums = SKIP
 
 pkgname = garlium-git
