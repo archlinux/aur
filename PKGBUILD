@@ -32,8 +32,8 @@ build() {
 package() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
     
-    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/${pkgname}/register.sh"
-    install    -m744 unregister.sh "${pkgdir}/usr/share/haskell/${pkgname}/unregister.sh"
+    install -Dm 744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install -Dm 744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
 
     runhaskell Setup copy --destdir="${pkgdir}"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
