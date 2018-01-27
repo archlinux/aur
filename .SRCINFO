@@ -1,6 +1,6 @@
 pkgbase = minishift-bin
 	pkgdesc = Tool that makes it easy to run OpenShift locally.
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/minishift/minishift
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = minishift-bin
 	optdepends = virtualbox: to use minishift with VirtualBox virtualization
 	optdepends = docker-machine-kvm: to use minishisft with KVM virtualization
 	provides = minishift
-	source = https://github.com/minishift/minishift/releases/download/v1.11.0/minishift-1.11.0-linux-amd64.tgz
-	sha256sums = af7c380e8af383ae8d101d855bac70b9d83bc7c6b5850daea0fc8949e74d1c36
+	source = https://github.com/minishift/minishift/releases/download/v1.12.0/minishift-1.12.0-linux-amd64.tgz
+	sha256sums = c9fce2a50b98f7d46bca84e5f95e1da9ea7fd6e703ce9c6fa697e9855945ab1f
 
 pkgname = minishift-bin
 
