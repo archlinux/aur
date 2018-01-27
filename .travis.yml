@@ -1,2 +1,9 @@
 language: ruby
-script: true
+before_install:
+- openssl aes-256-cbc -K $encrypted_0727dd33f742_key -iv $encrypted_0727dd33f742_iv
+  -in id_rsa.enc -out id_rsa -d
+script:
+  - mkdir ~/.ssh
+  - mv id_rsa ~/.ssh/
+  - git remote add aur git+ssh://aur@aur.archlinux.org/home-assistant.git
+  - git push aur HEAD:master
