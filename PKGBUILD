@@ -2,7 +2,7 @@
 
 pkgname=xed-git
 _pkgbasename=xed
-pkgver=1.6.3.r0.g4fe403d
+pkgver=master.lmde3.r0.gd5ccae3
 pkgrel=1
 pkgdesc="A small and lightweight text editor. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,10 +13,15 @@ makedepends=('git' 'gnome-common' 'iso-codes' 'gobject-introspection')
 provides=($pkgname $_pkgbasename)
 conflicts=(${_pkgbasename})
 url='https://github.com/linuxmint/xed'
-install=xed.install
 
 source=("${pkgname}::git+https://github.com/linuxmint/${_pkgbasename}.git")
 md5sums=('SKIP')
+
+prepare() {
+    cd ${srcdir}/${pkgname}
+    # https://www.archlinux.org/todo/enchant-221-rebuild/
+    sed -i 's/, enchant/, enchant-2/' configure.ac
+}
 
 pkgver() {
     cd ${srcdir}/${pkgname}
