@@ -1,7 +1,7 @@
 pkgname="eidolon"
 pkgver=1.1.1
-pkgrel=2
-pkgdesc="A couple of full-dark, neutral-gray themes (for GTK2, GTK3, Shell, and GDM) using the Equilux palette."
+pkgrel=1
+pkgdesc="Provides a single TUI-based registry for drm-free, wine and steam games on linux, accessed through a rofi launch menu."
 arch=('any')
 url="https://github.com/nicohman/eidolon"
 license=('GPL')
