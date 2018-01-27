@@ -1,23 +1,30 @@
 # Maintainer: WoefulDerelict <WoefulDerelict at GMail dot com>
 
 pkgname=laditools
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Utilities to improve integration and workflow with JACK and LASH."
 arch=('any')
-url="https://launchpad.net/laditools"
+url="https://github.com/LADI/laditools"
 license=('GPL3')
-depends=('glade' 'jack' 'pygtk' 'python2' 'python2-enum' 'python2-yaml')
+depends=('glade' 'jack' 'pygtk' 'python2' 'python2-enum34' 'python2-yaml')
 makedepends=('git' 'python2-distutils-extra')
-source=("http://repo.or.cz/w/laditools.git/snapshot/2b3f5356ac5a79bcb5184498e49f3d6ea3943f14.tar.gz")
-sha512sums=('3cc54e2251b244c64f9f28560cf6a03343139b1ea3e227004cd54310517ac4e4ddccae088de93fab91f934d403d084dee25c2d31b5818b4349268feafdb084b0')
+source=("https://github.com/alessio/laditools/archive/v${pkgver}.tar.gz"
+        "enum34.diff")
+sha512sums=('7f56d669cc1e468e0aa68b541f0da8b98cfdcceb6fd9e55a054d7622c4066f6422d367034697a4838bcd2f2caf14a1281f66b70f6ff4adff7de3c91f51f1bcdb'
+            'b406924a4b59ec15e7db4af926d7ec1e8c8802cede7d77d8d524592aa99c858e24cc9ce5f513d592dbecb9f3614404250e5a7963425d00b435cd8f6eb103a362')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 -i ${srcdir}/enum34.diff
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-2b3f535"
+  cd "${pkgname}-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-2b3f535"
+  cd "${pkgname}-${pkgver}"
   python2 setup.py install --prefix=/usr --root="${pkgdir}/"
 }
