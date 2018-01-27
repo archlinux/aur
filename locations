@@ -1,0 +1,3 @@
+answer BINDIR /usr/bin
+answer SBINDIR /usr/sbin
+answer LIBDIR /usr/lib/vmware-tools

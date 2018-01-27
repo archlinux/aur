@@ -1,0 +1,14 @@
+[Unit]
+Description=ThinPrint service to access to host printers
+ConditionVirtualization=vmware
+Requires=org.cups.cupsd.service
+After=org.cups.cupsd.service
+
+[Service]
+Type=simple
+Environment=TPVMLP_SVC=global
+ExecStart=/usr/bin/tpvmlp
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=VMware Tools 
+ConditionVirtualization=vmware
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/vmtoolsd
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target
