@@ -2,13 +2,13 @@
 
 pkgname=libidn2-git
 pkgver=2.0.4.r20.g45b56ae
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of IDNA 2008 and TR46"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/libidn/#libidn2"
 license=('GPL' 'LGPL')
 depends=('glibc' 'libunistring')
-makedepends=('git' 'gengetopt' 'gtk-doc')
+makedepends=('git' 'gengetopt' 'gtk-doc' 'rsync' 'wget')
 provides=('libidn2')
 conflicts=('libidn2')
 options=('staticlibs')
