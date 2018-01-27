@@ -1,6 +1,6 @@
 [Unit]
 Description=A web server based on Nginx and has many advanced features
-After=network.target
+After=network.target network-online.target nss-lookup.target
 
 [Service]
 Type=forking
@@ -9,8 +9,7 @@ PrivateDevices=yes
 SyslogLevel=err
 
 ExecStart=/usr/bin/tengine -g 'pid /run/tengine.pid;'
-ExecReload=/usr/bin/kill -HUP $MAINPID
-KillSignal=SIGQUIT
+ExecReload=/usr/bin/tengine -s reload
 KillMode=mixed
 
 [Install]
