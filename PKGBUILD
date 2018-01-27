@@ -1,11 +1,11 @@
 # Maintainer: Ralph Alexander Bariz <ralph.bariz at protonmail.ch>
 
-pkgname=('ldc-armv7h' 'liblphobos-armv7h')
+pkgname=('ldc-armv7h' 'liblphobos-armv7h' 'dub-armv7h')
 groups=('dlang' 'dlang-ldc')
-conflicts=('ldc' 'liblphobos')
+conflicts=('ldc' 'liblphobos' 'dub')
 pkgver=1.6.0
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A D Compiler based on the LLVM Compiler Infrastructure including D runtime and libphobos2"
 arch=('armv7h')
 url="https://github.com/ldc-developers/ldc"
@@ -61,10 +61,6 @@ package_ldc-armv7h() {
 package_liblphobos-armv7h() {
   provides=('d-runtime' 'd-stdlib')
 
-  cd "${srcdir}/${_pkgdir}"
-
-  provides=('d-runtime' 'd-stdlib')
-
   cd "${srcdir}/${_pkgdir}/lib"
   install -D "libdruntime-ldc-debug.a" "${pkgdir}/usr/lib/libdruntime-ldc-debug.a"
   install -D "libdruntime-ldc.a" "${pkgdir}/usr/lib/libdruntime-ldc.a"
@@ -82,7 +78,14 @@ package_liblphobos-armv7h() {
 
   cd "${srcdir}/${_pkgdir}"
   install -D "LICENSE" "${pkgdir}/usr/share/licenses/liblphobos/LICENSE"
+}
 
+package_dub-armv7h() {
+  cd "${srcdir}/${_pkgdir}/bin"
+  install -D "dub" "${pkgdir}/usr/bin/dub"
+
+  cd "${srcdir}/${_pkgdir}"
+  install -D "LICENSE" "${pkgdir}/usr/share/licenses/dub/LICENSE"
 }
 
 
