@@ -1,0 +1,13 @@
+Index: taffybar-0.4.6/taffybar.cabal
+===================================================================
+--- taffybar-0.4.6.orig/taffybar.cabal
++++ taffybar-0.4.6/taffybar.cabal
+@@ -27,7 +27,7 @@ flag network-uri
+ library
+   default-language: Haskell2010
+   build-depends: base > 3 && < 5,
+-                 time >= 1.4 && < 1.7,
++                 time >= 1.4 && < 1.9,
+                  time-locale-compat >= 0.1 && < 0.2,
+                  old-locale,
+                  containers,

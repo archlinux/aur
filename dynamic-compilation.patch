@@ -1,0 +1,13 @@
+Index: taffybar-0.4.6/src/System/Taffybar.hs
+===================================================================
+--- taffybar-0.4.6.orig/src/System/Taffybar.hs
++++ taffybar-0.4.6/src/System/Taffybar.hs
+@@ -195,7 +195,7 @@ defaultParams :: Dyre.Params TaffybarCon
+ defaultParams = Dyre.defaultParams { Dyre.projectName = "taffybar"
+                                    , Dyre.realMain = realMain
+                                    , Dyre.showError = showError
+-                                   , Dyre.ghcOpts = ["-threaded", "-rtsopts"]
++                                   , Dyre.ghcOpts = ["-threaded", "-rtsopts", "-dynamic"]
+                                    , Dyre.rtsOptsHandling = Dyre.RTSAppend ["-I0", "-V0"]
+                                    }
+ 
