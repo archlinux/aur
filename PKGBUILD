@@ -3,14 +3,15 @@
 
 pkgname=morty-git
 pkgver=0+73+5dca044
-pkgrel=2
+pkgrel=3
 pkgdesc='Privacy-aware web content sanitizer proxy-as-a-service'
 arch=(any)
 url='https://github.com/asciimoo/morty'
 license=(AGPL3)
 provides=(morty)
 makedepends=(git go)
-optdepends=('searx-git: A privacy-respecting, hackable metasearch engine')
+optdepends=('searx: A privacy-respecting, hackable metasearch engine'
+            'searx-git: A privacy-respecting, hackable metasearch engine (Git)')
 source=(git+https://github.com/asciimoo/morty.git
         morty.service)
 sha512sums=(SKIP
