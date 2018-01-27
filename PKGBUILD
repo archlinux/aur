@@ -2,17 +2,17 @@
 
 pkgname=python-dash
 _pkgname=dash
-pkgver=0.17.7
+pkgver=0.20.0
 pkgrel=1
-pkgdesc="Minimal task scheduling abstraction"
+pkgdesc="A python framework for building analytical web applications"
 arch=('any')
 url="https://github.com/dask/dask"
 license=('MIT')
-depends=('python' 'python-dash-renderer' 'python-flask' 'python-flask-compress' 'python-flask-seasurf' 'python-plotly' 'python-requests')
+depends=('python' 'python-dash-renderer' 'python-dash-core-components' 'python-dash-html-components' 'python-flask' 'python-flask-compress' 'python-flask-seasurf' 'python-plotly' 'python-requests')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('1414157e4161d246066d2fa4b322d61871e38cb8d808705ea2694c3ab074ccf2')
+sha256sums=('71a4fc6bce89bc983fd9dddbd29db9ffb3e2132dd0036cf10a614fe64f20714b')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
