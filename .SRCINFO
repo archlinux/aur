@@ -1,0 +1,11 @@
+pkgbase = libswitchboard-2.0.so
+	pkgdesc = Meta package for libswitchboard
+	pkgver = 20182701
+	pkgrel = 1
+	url = http://elementary.io
+	arch = any
+	license = LGPL
+	depends = switchboard-git
+
+pkgname = libswitchboard-2.0.so
+
