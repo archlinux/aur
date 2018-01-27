@@ -1,7 +1,7 @@
 pkgbase = paperless
 	pkgdesc = Scan, index, and archive all of your paper documents
 	pkgver = 1.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/danielquinn/paperless
 	arch = any
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = paperless
 	depends = python-gnupg
 	depends = python-pilkit
 	depends = python-dotenv
-	depends = paython-dateutils
+	depends = python-dateutils
 	depends = python-magic
 	depends = python-django-flat-responsive
 	depends = python-langdetect
