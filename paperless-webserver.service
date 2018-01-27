@@ -4,7 +4,7 @@ Description=Paperless webserver
 [Service]
 User=http
 Group=http
-ExecStart=python /usr/share/webapps/paperless/src/manage.py runserver 127.0.0.1:8000
+ExecStart=/usr/bin/python /usr/share/webapps/paperless/src/manage.py runserver 127.0.0.1:8000
 
 [Install]
 WantedBy=multi-user.target

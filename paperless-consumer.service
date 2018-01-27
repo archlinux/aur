@@ -4,7 +4,7 @@ Description=Paperless consumer
 [Service]
 User=http
 Group=http
-ExecStart=python /usr/share/webapps/paperless/src/manage.py document_consumer
+ExecStart=/usr/bin/python /usr/share/webapps/paperless/src/manage.py document_consumer
 
 [Install]
 WantedBy=multi-user.target
