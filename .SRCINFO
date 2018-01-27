@@ -1,7 +1,7 @@
 pkgbase = conky-cairo
 	pkgdesc = conky - built for nvidia n (tolua++_5.3 in AUR) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.
-	pkgver = 1.10.6
-	pkgrel = 2
+	pkgver = 1.10.7
+	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
 	arch = i686
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = conky-cairo
 	conflicts = conky
 	replaces = torsmo
 	replaces = conky
-	source = https://github.com/brndnmtthws/conky/archive/v1.10.6.tar.gz
-	md5sums = bcd9e0ff7304e14f07aea53efa73998f
+	source = https://github.com/brndnmtthws/conky/archive/v1.10.7.tar.gz
+	md5sums = SKIP
 
 pkgname = conky-cairo
 

@@ -22,8 +22,8 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.10.6
-pkgrel=2
+pkgver=1.10.7
+pkgrel=1
 pkgdesc='conky - built for nvidia n (tolua++_5.3 in AUR) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
 license=('GPL3' 'BSD')
@@ -60,7 +60,7 @@ case ${_myopts} in
 	makedepends=( 'cmake' )
 
 	source=(${url}/archive/v${pkgver}.tar.gz)
-	md5sums=('bcd9e0ff7304e14f07aea53efa73998f')
+	md5sums=('SKIP')
 esac
 
 
