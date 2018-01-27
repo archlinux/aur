@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-freon-git
-pkgver=29.r0.ga6f7584
+pkgver=33.r0.gbf029d7
 pkgrel=1
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
@@ -17,17 +17,17 @@ optdepends=(
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'gnome-shell-extensions-git')
 install="gschemas.install"
-source=("${pkgname}::git+https://github.com/UshakovVasilii/gnome-shell-extension-freon.git")
+source=("${pkgname%-*}::git+https://github.com/UshakovVasilii/gnome-shell-extension-freon.git")
 sha512sums=('SKIP')
 _branch=master
 
 prepare() {
-  cd "${pkgname}"
+  cd "${pkgname%-*}"
   git checkout ${_branch}
 }
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname%-*}"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/^EGO.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
