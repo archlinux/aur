@@ -5,9 +5,8 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=59.0.3
-ver=59.0.b3
-pkgrel=5
+pkgver=59.0.4
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -21,14 +20,15 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
-_repo=https://hg.mozilla.org/mozilla-unified
-source=("hg+$_repo#tag=DEVEDITION_${ver//./_}_RELEASE"
+source=("https://hg.mozilla.org/mozilla-unified/archive/FIREFOX_59_0b4_RELEASE.tar.gz"
         https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/$name.desktop 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg 
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-location.services.mozilla.com.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/id.patch
+https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix.patch
+https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix2.patch
 )
 
 sha256sums=('2a8d7905ba5312cfebc6bc2ae01a2e5ee76172f155ea439e6982671ff3df9419'
@@ -56,7 +56,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd mozilla-unified
+  cd mozilla-unified-FIREFOX_59_0b4_RELEASE
   patch -Np1 -i ../id.patch
 
 
@@ -64,7 +64,8 @@ prepare() {
 patch -Np1 -i ../firefox-52-disable-data-sharing-infobar.patch
 patch -Np1 -i ../firefox-52-disable-location.services.mozilla.com.patch
 patch -Np1 -i ../firefox-52-disable-telemetry.patch
-
+patch -Np1 -i ../fix.patch
+patch -Np1 -i ../fix2.patch
 
 
   cat >.mozconfig <<END
@@ -75,11 +76,11 @@ ac_add_options --enable-release
 ac_add_options --enable-gold
 ac_add_options --enable-pie
 ac_add_options --enable-optimize="-O2"
-ac_add_options --disable-stylo
+
 
 # Branding
-ac_add_options --enable-official-branding
-ac_add_options --enable-update-channel=release
+ac_add_options --with-branding=browser/branding/aurora
+ac_add_options --enable-update-channel=aurora
 ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=0
@@ -115,6 +116,7 @@ ac_add_options --disable-accessibility
 # faster build 
 ac_add_options --disable-tests
 
+ac_add_options --enable-rust-simd
 # please put 1.25 times your number of threads
 
 mk_add_options MOZ_MAKE_FLAGS="-j10"
@@ -123,7 +125,7 @@ END
 }
 
 build() {
-  cd mozilla-unified
+  cd mozilla-unified-FIREFOX_59_0b4_RELEASE
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -139,7 +141,7 @@ build() {
 }
 
 package() {
-  cd mozilla-unified
+  cd mozilla-unified-FIREFOX_59_0b4_RELEASE
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
@@ -172,23 +174,19 @@ app.distributor.channel=$name
 app.partner.archlinux=archlinux
 END
 
-  for i in 16 22 24 32 48 256; do
-    install -Dm644 browser/branding/official/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$name.png"
+  for i in 16 32 48 64 128; do
+    install -Dm644 browser/branding/aurora/default$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
-  install -Dm644 browser/branding/official/content/icon64.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$name.png"
-  install -Dm644 browser/branding/official/mozicon128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$name.png"
-  install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$name.png"
-  install -Dm644 browser/branding/official/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$name.png"
+  install -Dm644 browser/branding/aurora/content/about-logo.png \
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
+  install -Dm644 browser/branding/aurora/content/about-logo@2x.png \
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgname.png"
   install -Dm644 ../firefox-symbolic.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$name-symbolic.svg"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
 
-  install -Dm644 ../$name.desktop \
-    "$pkgdir/usr/share/applications/$name.desktop"
+  install -Dm644 ../$pkgname.desktop \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # Use system-provided dictionaries
 
@@ -207,7 +205,7 @@ END
 
 msg2 'renaming'
 
-  ln -s "/usr/lib/firefox-beta/firefox/firefox-bin"  "$pkgdir/usr/bin/firefox-beta"
+  ln -s "/usr/lib/firefox-beta/firefox-bin"  "$pkgdir/usr/bin/firefox-beta"
 
 
 rm "$pkgdir/usr/bin/firefox"

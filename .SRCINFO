@@ -1,7 +1,7 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org, with telemetry, webrtc and signing disabled
-	pkgver = 59.0.3
-	pkgrel = 5
+	pkgver = 59.0.4
+	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = i686
 	arch = x86_64
@@ -44,13 +44,15 @@ pkgbase = firefox-beta
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=DEVEDITION_59_0_b3_RELEASE
+	source = https://hg.mozilla.org/mozilla-unified/archive/FIREFOX_59_0b4_RELEASE.tar.gz
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-beta.desktop
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-symbolic.svg
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-data-sharing-infobar.patch
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-location.services.mozilla.com.patch
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/firefox-52-disable-telemetry.patch
 	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/id.patch
+	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix.patch
+	source = https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix2.patch
 	sha256sums = 2a8d7905ba5312cfebc6bc2ae01a2e5ee76172f155ea439e6982671ff3df9419
 	sha256sums = d6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd
 	sha256sums = a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9
