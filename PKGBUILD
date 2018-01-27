@@ -1,11 +1,11 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 _pkgname=synthpod
 pkgname="${_pkgname}-git"
-pkgver=0.1.4903
-pkgrel=1
+pkgver=0.1.5465
+pkgrel=2
 pkgdesc="Lightweight non-linear plugin host"
 arch=('i686' 'x86_64')
-url="http://open-music-kontrollers.ch/lv2/synthpod"
+url="http://open-music-kontrollers.ch/lv2/synthpod/"
 license=('Artistic2.0')
 groups=('lv2-plugins' 'lv2-hosts')
 depends=('lilv' 'libuv' 'jack' 'zita-alsa-pcmi' 'gtk2' 'gtk3' 'qt4' 'qt5-base')
@@ -16,12 +16,13 @@ conflicts=("$_pkgname")
 replaces=()
 backup=()
 options=()
-source=("$_pkgname::git+https://gitlab.com/OpenMusicKontrollers/synthpod.git")
+source=("$_pkgname::git+https://git.open-music-kontrollers.ch/lv2/synthpod")
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
+
   cat VERSION
 }
 
@@ -55,6 +56,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname/build"
+
   make DESTDIR="$pkgdir/" install
 }
 

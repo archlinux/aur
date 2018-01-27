@@ -1,8 +1,8 @@
 pkgbase = synthpod-git
 	pkgdesc = Lightweight non-linear plugin host
-	pkgver = 0.1.4903
-	pkgrel = 1
-	url = http://open-music-kontrollers.ch/lv2/synthpod
+	pkgver = 0.1.5465
+	pkgrel = 2
+	url = http://open-music-kontrollers.ch/lv2/synthpod/
 	arch = i686
 	arch = x86_64
 	groups = lv2-plugins
@@ -25,8 +25,8 @@ pkgbase = synthpod-git
 	optdepends = vm-lv2
 	provides = synthpod
 	conflicts = synthpod
-	source = synthpod::git+https://gitlab.com/OpenMusicKontrollers/synthpod.git
-	md5sums = SKIP
+	source = synthpod::git+https://git.open-music-kontrollers.ch/lv2/synthpod
+	sha256sums = SKIP
 
 pkgname = synthpod-git
 
