@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://tong.nongnu.org/"
 license=('GPL3')
 depends=('sdl_image' 'sdl_mixer')
-source=("http://www.nongnu.org/tong/$pkgname-$pkgver.tar.gz"
+source=("http://tong.nongnu.org/$pkgname-$pkgver.tar.gz"
 	"$pkgname.desktop")
 md5sums=('a9d70c7b2f637e9d95e6fbdf6d22782d'
 	'90695390ee1c4fd907a00beedb1e651d')
