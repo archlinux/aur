@@ -1,5 +1,3 @@
-# Maintainer: xantares <xantares09 at hotmail dot com>
-
 pkgname=psp-libvorbis
 pkgver=1.1.1
 pkgrel=1
@@ -8,7 +6,7 @@ arch=(any)
 url="http://www.xiph.org/vorbis/"
 license=('BSD')
 groups=('psp')
-depends=('psp-sdk')
+depends=('psp-sdk' 'psp-libogg')
 makedepends=('psp-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("git+https://github.com/pspdev/psp-ports.git")
