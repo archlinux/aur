@@ -1,7 +1,7 @@
 pkgbase = ldc-armv7h
 	pkgdesc = A D Compiler based on the LLVM Compiler Infrastructure including D runtime and libphobos2
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ldc-developers/ldc
 	arch = armv7h
@@ -10,6 +10,7 @@ pkgbase = ldc-armv7h
 	license = BSD
 	conflicts = ldc
 	conflicts = liblphobos
+	conflicts = dub
 	source = https://github.com/ldc-developers/ldc/releases/download/v1.6.0/ldc2-1.6.0-linux-armhf.tar.xz
 	source = ldc2.conf
 	md5sums = 7b4ee4abb90a8d30df27e86f4b0b829b
@@ -24,4 +25,6 @@ pkgname = ldc-armv7h
 pkgname = liblphobos-armv7h
 	provides = d-runtime
 	provides = d-stdlib
+
+pkgname = dub-armv7h
 
