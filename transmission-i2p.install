@@ -1,0 +1,21 @@
+post_install() {
+    getent passwd transmission-i2p &>/dev/null || {
+        echo -n ">>> Creating transmission-i2p user... "
+        useradd --system --user-group -m --home /var/lib/transmission-i2p transmission-i2p
+        echo "done"
+
+        mkdir -p /var/lib/transmission-i2p/.config/transmission-daemon
+
+        # TODO: generate config with transmission-i2p-daemon -d (need to fix the defaults in code first)
+        cp /usr/share/transmission-i2p/settings.json.example /var/lib/transmission-i2p/.config/transmission-daemon/settings.json
+
+        sudo chown -R transmission-i2p:transmission-i2p /var/lib/transmission-i2p/
+    } # NOTE: we do not autoremove user due to security concerns (Arch policy)
+
+
+    echo ">>> Enable BOB in i2pd.conf:"
+    echo ">>>     [bob]"
+    echo ">>>     enabled = true"
+    echo ">>>     address = 127.0.0.1"
+    echo ">>>     port = 2827"
+}

@@ -1,0 +1,15 @@
+--- a/m4/glib-gettext.m4	2018-01-26 23:05:34.433711507 -0500
++++ b/m4/glib-gettext.m4	2018-01-26 22:11:57.277193787 -0500
+@@ -35,10 +35,10 @@
+ dnl We go to great lengths to make sure that aclocal won't 
+ dnl try to pull in the installed version of these macros
+ dnl when running aclocal in the glib directory.
+ dnl
+-m4_copy([AC_DEFUN],[glib_DEFUN])
+-m4_copy([AC_REQUIRE],[glib_REQUIRE])
++dnl m4_copy([AC_DEFUN],[glib_DEFUN])
++dnl m4_copy([AC_REQUIRE],[glib_REQUIRE])
+ dnl
+ dnl At the end, if we're not within glib, we'll define the public
+ dnl definitions in terms of our private definitions.
+ dnl
