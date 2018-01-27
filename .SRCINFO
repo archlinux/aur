@@ -10,6 +10,7 @@ pkgbase = neovim-latex-previewer-git
 	depends = vim
 	depends = xdotool
 	depends = mupdf
+	depends = unionfs-fuse
 	provides = neovim-latex-previewer
 	conflicts = neovim-latex-previewer
 	source = git+https://github.com/emakman/neovim-latex-previewer.git
