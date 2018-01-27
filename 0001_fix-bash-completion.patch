@@ -1,0 +1,27 @@
+diff -ur chocolate-doom-3.0.0.orig/man/bash-completion/Makefile.in chocolate-doom-3.0.0/man/bash-completion/Makefile.in
+--- chocolate-doom-3.0.0.orig/man/bash-completion/Makefile.in	2017-12-30 13:22:42.000000000 -0800
++++ chocolate-doom-3.0.0/man/bash-completion/Makefile.in	2018-01-27 04:59:41.032103406 -0800
+@@ -519,19 +519,19 @@
+ 
+ 
+ @HAVE_PYTHON_TRUE@@PROGRAM_PREFIX@doom: $(top_srcdir)/src $(DOCGEN) $(BASH_COMPLETION_TEMPLATES)
+-@HAVE_PYTHON_TRUE@	$(DOCGEN) -g doom -b $(MANDIR)/doom.template \
++@HAVE_PYTHON_TRUE@	$(DOCGEN) -g doom -b doom.template \
+ @HAVE_PYTHON_TRUE@                  $(top_srcdir)/src $(top_srcdir)/src/doom > $@
+ 
+ @HAVE_PYTHON_TRUE@@PROGRAM_PREFIX@heretic: $(top_srcdir)/src $(DOCGEN) $(BASH_COMPLETION_TEMPLATES)
+-@HAVE_PYTHON_TRUE@	$(DOCGEN) -g heretic -b $(MANDIR)/heretic.template \
++@HAVE_PYTHON_TRUE@	$(DOCGEN) -g heretic -b heretic.template \
+ @HAVE_PYTHON_TRUE@                  $(top_srcdir)/src $(top_srcdir)/src/heretic > $@
+ 
+ @HAVE_PYTHON_TRUE@@PROGRAM_PREFIX@hexen: $(top_srcdir)/src $(DOCGEN) $(BASH_COMPLETION_TEMPLATES)
+-@HAVE_PYTHON_TRUE@	$(DOCGEN) -g hexen -b $(MANDIR)/hexen.template \
++@HAVE_PYTHON_TRUE@	$(DOCGEN) -g hexen -b hexen.template \
+ @HAVE_PYTHON_TRUE@                  $(top_srcdir)/src $(top_srcdir)/src/hexen > $@
+ 
+ @HAVE_PYTHON_TRUE@@PROGRAM_PREFIX@strife: $(top_srcdir)/src $(DOCGEN) $(BASH_COMPLETION_TEMPLATES)
+-@HAVE_PYTHON_TRUE@	$(DOCGEN) -g strife -b $(MANDIR)/strife.template \
++@HAVE_PYTHON_TRUE@	$(DOCGEN) -g strife -b strife.template \
+ @HAVE_PYTHON_TRUE@                  $(top_srcdir)/src $(top_srcdir)/src/strife > $@
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
