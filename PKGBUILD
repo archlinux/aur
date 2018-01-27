@@ -2,13 +2,13 @@
 _pkgname=sherlock.lv2
 pkgname=sherlock-lv2
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An investigative LV2 plugin bundle"
 arch=('i686' 'x86_64')
-url='http://open-music-kontrollers.ch/lv2/sherlock'
+url='http://open-music-kontrollers.ch/lv2/sherlock/'
 license=('Artistic2.0')
 groups=('lv2-plugins')
-depends=('libxext' 'libgl' 'sratom')
+depends=('libgl' 'sratom')
 makedepends=('cmake' 'lv2' 'flex')
 provides=()
 conflicts=()
@@ -16,12 +16,13 @@ replaces=()
 backup=()
 options=()
 install=
-source=("https://github.com/OpenMusicKontrollers/$_pkgname/archive/$pkgver.tar.gz")
+source=("https://git.open-music-kontrollers.ch/lv2/$_pkgname/snapshot/$_pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('9efb09aab563ab16a968a258c041d5f0')
+sha256sums=('cc0b4bae1b575b4c019732f3cadeda4a8398c5d1ad0d7f4e9327fc2d076ef7ef')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
+
   rm -rf build
 	mkdir build
 }
