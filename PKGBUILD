@@ -2,7 +2,7 @@
 
 pkgname='xd-torrent-git'
 _gitname='XD'
-pkgver=v0.1.0.pre2
+pkgver=0.1.0.pre2
 pkgrel=1
 arch=('any')
 url="https://github.com/majestrate/XD"
@@ -21,7 +21,7 @@ backup=("etc/xd.conf")
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  echo $(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  echo $(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//')
 }
 
 build() {
