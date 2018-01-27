@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=compsize-git
-pkgver=r88.58ff588
+pkgver=v1.0.r5.g01ad3d0
 pkgrel=1
 pkgdesc="Btrfs: find compression type/ratio on a file or set of files"
 arch=('any')
