@@ -9,7 +9,7 @@ pkgdesc="Seamless R and C++ Integration"
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('i686' 'x86_64')
 license=('GPL2' 'GPL3')
-depends=('r')
+depends=('r>=3.0.0')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('bebac0782862c15c2944764343e55582')
 

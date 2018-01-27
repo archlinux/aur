@@ -7,7 +7,7 @@ pkgbase = r-cran-rcpp
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	depends = r
+	depends = r>=3.0.0
 	source = http://cran.r-project.org/src/contrib/Rcpp_0.12.15.tar.gz
 	md5sums = bebac0782862c15c2944764343e55582
 
