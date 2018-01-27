@@ -1,6 +1,6 @@
 # Maintainer: Marc Cousin <cousinmarc@gmail.com>
 pkgname=mkvtoolnix-git
-pkgver=r10458.f07203fb4
+pkgver=r11478.dc0774258
 pkgrel=1
 pkgdesc="Git version of mkvtoolnix (to get the latest mkvtoolnix-gui)"
 arch=(x86 x86_64)
@@ -14,7 +14,7 @@ makedepends=('libmatroska' 'flac' 'libvorbis' 'file' 'wxgtk'
 provides=('mkvtoolnix')
 conflicts=('mkvtoolnix-cli' 'mkvtoolnix-gui')
 replaces=('mkvtoolnix')
-source=('git://github.com/mbunkus/mkvtoolnix.git')
+source=('git+https://gitlab.com/mbunkus/mkvtoolnix.git')
 noextract=()
 md5sums=('SKIP')
 
