@@ -47,5 +47,5 @@ package() {
   done
 }
 md5sums=('4c0ca11a8034b53c0c5b7b9830442cd7'
-         'b4d5afd97c8ac229f6027d7853c73c0c'
+         '41620b204a536559eee380bcd8ec43df'
          'ea377d9d48f6abe4d9b1554122fcff83')

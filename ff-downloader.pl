@@ -239,50 +239,11 @@ if (!$BUILD) {
 my $ff_destname = "firefox-${FULLVER}.tar.bz2";
 my $ff_bz2 = "firefox-${VER}.tar.bz2";
 if (! -e $ff_destname) {
-    # Use HTTP because it downloads much faster in practice.
-    # This is not a security issue because checksums are downloaded via HTTPS.
-    my $ff_url = URI->new('http://releases.mozilla.org');
+    my $ff_url = URI->new('https://releases.mozilla.org');
     my $ff_path = "${ff_basepath}/linux-${ARCH}/${LANG}/${ff_bz2}";
     $ff_url->path($ff_path);
     get_url( $ff_url, $ff_destname ) or die qq(:: ERROR - can't download $ff_destname\n);
 } else {
     say qq{:: "$ff_destname" already present in the filesystem, skip download}
 }
-
-##downloading sha512sums##
-my $checksums_fname = "firefox-${FULLVER}-SHA512SUMS";
-if (! -e $checksums_fname) {
-    my $ff_url = URI->new('https://releases.mozilla.org');
-    $ff_url->path("${ff_basepath}/SHA512SUMS");
-    get_url( $ff_url, $checksums_fname ) or die qq(:: ERROR - can't download $checksums_fname\n);
-} else {
-    say qq{:: "$checksums_fname" already present in the filesystem, skip download}
-}
-
-## calculating & comparing sha512 digest
-say ':: verifying sha512 checksum ... ';
-
-my @sha512_file = read_file($checksums_fname);
-my $search_string = "linux-${ARCH}/${LANG}/${ff_bz2}";
-my $sha512s;
-for (@sha512_file)
-{
-    if ($_ =~ /([a-z0-9]+)\s{2}[\.\/]*$search_string/)
-    {
-        $sha512s= $1;
-        last;
-    }
-}
-$sha512s or die qq{:: ERROR - can't find a valid SHA512 checksum in file "$checksums_fname"!};
-
-open(FILE, $ff_destname) or die qq{:: ERROR - can't open "$ff_destname": $!};
-binmode(FILE);
-my $digest = Digest::SHA->new(512)->addfile(*FILE)->hexdigest;
-close(FILE);
-
-if ( $digest eq $sha512s ) {
-    say 'DONE';
-} else {
-    say qq{:: ERROR - checksum does not match. Try to delete "$ff_destname" and start again.};
-    exit 1;
-}
+say 'DONE';
