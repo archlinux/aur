@@ -1,9 +1,14 @@
 post_install() {
   echo "Installed MESA SDK to /opt/mesasdk"
+
+  # we know this is an OK arch and has the prereqs
+  touch opt/mesasdk/etc/check_arch.done
+  touch opt/mesasdk/etc/check_preq.done
+
   GCC_VERSION=$(/opt/mesasdk/bin/gcc -dumpversion)
   /opt/mesasdk/libexec/gcc/x86_64-pc-linux-gnu/${GCC_VERSION}/install-tools/mkheaders /opt/mesasdk
-  touch /opt/mesasdk/.regen_header
-  echo "Fixed header files"
+  touch /opt/mesasdk/etc/regen_headers.done
+  echo "Regenerated headers"
 }
 
 post_upgrade() {
