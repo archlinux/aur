@@ -1,0 +1,15 @@
+pkgbase = ptyget-bin
+	pkgdesc = Toolset for running programs in their "interactive mode" behaviours.
+	pkgver = 6
+	pkgrel = 1
+	url = https://jdebp.eu/Softwares/djbwares/
+	arch = x86_64
+	groups = djbwares
+	license = custom:ISC
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://jdebp.eu/Repository/debian/dists/stable/main/binary-amd64/ptyget_6_amd64.deb
+	sha512sums_x86_64 = 78a9569af9773e19af426d7f383334158d52a89198dcbab10283234e70688c7524e2f3ebfe88c18f72058a85e2553b87cc41bc8bab45f1ed33d24d726b30834e
+
+pkgname = ptyget-bin
+
