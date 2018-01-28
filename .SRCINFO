@@ -1,0 +1,21 @@
+pkgbase = woff2-bin
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/google/woff2
+	arch = x86_64
+	license = MIT
+	depends = brotli
+	conflicts = woff2
+	conflicts = woff2-git
+	noextract = libwoff1_1.0.2-1_amd64.deb
+	noextract = libwoff-dev_1.0.2-1_amd64.deb
+	noextract = woff2_1.0.2-1_amd64.deb
+	source_x86_64 = http://httpredir.debian.org/debian/pool/main/w/woff2/libwoff1_1.0.2-1_amd64.deb
+	source_x86_64 = http://httpredir.debian.org/debian/pool/main/w/woff2/libwoff-dev_1.0.2-1_amd64.deb
+	source_x86_64 = http://httpredir.debian.org/debian/pool/main/w/woff2/woff2_1.0.2-1_amd64.deb
+	sha1sums_x86_64 = 4e50cce8dd19a399a36c9d109e17e8ab838cf25e
+	sha1sums_x86_64 = e3fc8fc4e245881b30650509ffe3f6e639632a47
+	sha1sums_x86_64 = 4e1d97b96222dd10d53eb813c12dd861f49b308d
+
+pkgname = woff2-bin
+
