@@ -4,16 +4,16 @@
 
 pkgname=camorama
 pkgver=0.19
-pkgrel=5
+pkgrel=6
 pkgdesc="Webcam application featuring various image filters"
-url="http://camorama.fixedgear.org"
-arch=('i686' 'x86_64')
-license=('GPL')
+url="https://git.gnome.org/browse/archive/$pkgname"
+arch=('x86_64')
+license=('GPL2')
 depends=('libgnomeui')
-makedepends=('intltool' 'gettext')
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2
+makedepends=('intltool')
+source=($pkgname-$pkgver.tar.xz::$url/snapshot/$pkgname-${pkgver/./-}.tar.xz
         $pkgname.patch)
-md5sums=('75025ba37d1dd1c398d92ba2dbef43ee'
+md5sums=('803f057da811162104133883541fbcb0'
          '03892e0cad8402f578579214fb9b054a')
 
 prepare() {
