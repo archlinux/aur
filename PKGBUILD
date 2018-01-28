@@ -8,7 +8,7 @@ pkgdesc='Create pro-quality virtual tours (trial version).'
 arch=('x86_64')
 url='http://kolor.com/'
 license=('custom: "commercial"')
-depends=('qt5-base')
+depends=('qt5-base' 'libsrtp0')
 install=$pkgname.install
 
   source=("PanotourPro_Linux64_$_pkgver.tar.gz::http://download.kolor.com/ptp/stable/linux64targz"

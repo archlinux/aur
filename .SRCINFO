@@ -7,6 +7,7 @@ pkgbase = panotourpro
 	arch = x86_64
 	license = custom: "commercial"
 	depends = qt5-base
+	depends = libsrtp0
 	source = PanotourPro_Linux64_259_2017-12-20.tar.gz::http://download.kolor.com/ptp/stable/linux64targz
 	source = panotourpro
 	source = panotourpro.desktop
