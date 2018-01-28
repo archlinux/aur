@@ -6,12 +6,12 @@
 
 pkgname=dvdstyler
 pkgver=3.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform DVD authoring application"
 arch=('i686' 'x86_64')
 url="http://www.dvdstyler.de/"
 license=('GPL')
-depends=('cdrkit' 'dvdauthor' 'dvd+rw-tools' 'zip' 'xmlto' 'wxgtk' 'wxsvg>=1.5.11' 'mjpegtools' 'libgnomeui' 'libexif')
+depends=('cdrkit' 'dvdauthor' 'dvd+rw-tools' 'zip' 'xmlto' 'wxgtk' 'wxsvg>=1.5.12' 'mjpegtools' 'libgnomeui' 'libexif')
 makedepends=('docbook-xsl' 'flex')
 optdepends=('dvdisaster: ECC support'
 	    'xine-ui: DVD preview player'

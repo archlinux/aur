@@ -1,7 +1,7 @@
 pkgbase = dvdstyler
 	pkgdesc = Cross-platform DVD authoring application
 	pkgver = 3.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.dvdstyler.de/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = dvdstyler
 	depends = zip
 	depends = xmlto
 	depends = wxgtk
-	depends = wxsvg>=1.5.11
+	depends = wxsvg>=1.5.12
 	depends = mjpegtools
 	depends = libgnomeui
 	depends = libexif
