@@ -1,0 +1,23 @@
+pkgbase = ta-lib-git
+	pkgdesc = A library providing common functions for the technical analysis of financial market data
+	pkgver = v0.6.0.rc.1.r3.ga61875c1
+	pkgrel = 1
+	url = https://github.com/vbmithr/ta-lib
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = m4
+	makedepends = make
+	source = ta-lib::git+https://github.com/vbmithr/ta-lib
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 10ddcfc0d685173fdee2d7e8791540bb1a8526a0f66f7795bdf7dad23457b10e
+
+pkgname = ta-lib-git
+
