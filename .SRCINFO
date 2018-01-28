@@ -1,0 +1,18 @@
+pkgbase = hyperledger-indy-node
+	pkgdesc = A self-sovereign identity ecosystem on top of a distributed ledger. It is the core project for Indy
+	pkgver = 1.2.284
+	pkgrel = 1
+	url = https://github.com/hyperledger/indy-node
+	arch = i686
+	arch = x86_64
+	groups = hyperledger
+	license = APACHE
+	makedepends = python
+	depends = python-dateutil
+	depends = hyperledger-indy-plenum
+	depends = python-timeout-decorator
+	source = https://github.com/hyperledger/indy-node/archive/1.2.284-master.tar.gz
+	md5sums = dc98170bbb10ea1504084b44576a708f
+
+pkgname = hyperledger-indy-node
+
