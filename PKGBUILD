@@ -1,9 +1,10 @@
 # Wildfly Application Server package
+# Contributor: Holger Rauch <holger dot rauch at posteo dot de>
 # Maintainer: Zdenek Obst <zdenek dot obst at gmail dot com>
 
 pkgname=wildfly
-pkgver=10.1.0.Final
-pkgrel=1
+pkgver=11.0.0.Final
+pkgrel=2
 
 pkgdesc='Wildfly Application Server'
 arch=('any')
@@ -33,17 +34,26 @@ backup=(etc/profile.d/${pkgname}.sh
         ${_pkgloc}/${pkgname}/bin/jboss-cli-logging.properties
         ${_pkgloc}/${pkgname}/bin/jboss-cli.xml
         ${_pkgloc}/${pkgname}/bin/standalone.conf)
+
 install=${pkgname}.install
+
 source=(http://download.jboss.org/wildfly/${pkgver}/wildfly-${pkgver}.tar.gz
         ${pkgname}.service
         ${pkgname}.sh
         ${pkgname}.install
 	systemd-wrapper.sh)
-sha256sums=('80781609be387045273f974662dadf7f64ad43ee93395871429bc6b7786ec8bc'
+
+sha256sums=('a2f5fb4187369196003e31eb086f0a1f7bfc0645a3a61a53ed20ab5853481e71'
             '65e4b22b106aa16413e5c95686969b3f16974235451d8445ce4c562299325412'
             '3b2d059fcecb799ea8134b23ee0b77b4bc53dd99c7bd541679c4c139638b323a'
             'a360ddb4beb9c704257bd78e08e8eea69c43b410a9c93d346541158c3b9d4330'
             '922035fcf68a66ed4b36a89370d2335941cb64ef8561e81fa6f59b5784f659e1')
+
+sha512sums=('02ebeb2d35649f575b0bde53c4ac5e5932405ced47e46bf6089dbd6cd26a44fc1b9bbcd2ce19b3a39a91de1b7f40f2c70bac4bb96cde2727e0ba700d7200a78e'
+            'cab55d727ea2be620dba204c63a5156fe23386475d242d9988101174eaec7a58524e97e90947f522a09c9d9df6e18cb9e06af56edb9a693796f25f840f553fb3'
+            'b5ce879d81cfe825b75edb97de27c7f4c75465cb514fc500f5f7ab9fef9fb87142456692f29a3f327981631a28755d02b7edf9368e5b5d09b372a6606a457d16'
+            'd0bbd9e446d3e3640a13c64ee7dde15ff4527cccaa4c66814d262b54c8b22a8603ebe8ef8afa578a56732137a9b2fcf4e313d1c9768c2b356f3c8fbfeaa9453a'
+            '73ef19d07c79a9b644511209e11b04a0c23c837593ed27a6221989fda415d9bbd789ae2dbfa292236d37536aae317fc3612391311db58816549c44960d611dc9')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
