@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-ironicclient' 'python2-ironicclient')
-pkgver='1.17.1'
+pkgver='2.2.0'
 pkgrel='1'
 pkgdesc='Python client library for Ironic'
 arch=('any')
