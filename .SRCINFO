@@ -1,7 +1,7 @@
 pkgbase = searx
 	pkgdesc = A privacy-respecting, hackable metasearch engine
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://asciimoo.github.io/searx/
 	install = searx.install
 	arch = any

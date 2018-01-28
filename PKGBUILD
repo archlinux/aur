@@ -4,7 +4,7 @@
 
 pkgname=searx
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -43,8 +43,7 @@ package() {
 
   python2 setup.py install --root=$pkgdir --optimize=1
   
-  mv $pkgdir/usr/lib/python2.7/site-packages/{README.rst,searx/}
-  mv $pkgdir/usr/lib/python2.7/site-packages/{tests,searx/}
+  mv $pkgdir/usr/lib/python2.7/site-packages/{README.rst,requirements*,tests,searx}
   
   mkdir -p $pkgdir/etc/searx
   mv $pkgdir/usr/lib/python2.7/site-packages/searx/settings.yml $pkgdir/etc/searx/
