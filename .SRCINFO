@@ -1,0 +1,32 @@
+pkgbase = cinepaint
+	pkgdesc = Sophisticated graphics manipulation programm supporting > 8bit pictures
+	pkgver = 1.0.4
+	pkgrel = 6
+	epoch = 1
+	url = http://www.cinepaint.org
+	arch = x86_64
+	license = LGPL
+	license = GPL
+	license = MIT
+	makedepends = python2
+	makedepends = gutenprint>=5.2.9
+	makedepends = optipng
+	depends = gtk2
+	depends = openexr
+	depends = lcms
+	depends = libxpm
+	depends = fltk
+	depends = ftgl
+	depends = libxxf86vm
+	optdepends = python2: for python plug-ins
+	optdepends = gutenprint: for print plug-ins
+	optdepends = ghostscript: for pdf plug-ins
+	source = http://downloads.sourceforge.net/sourceforge/cinepaint/cinepaint-1.0-4.tar.gz
+	source = LICENSE
+	source = cinepaint-libpng15.patch
+	sha1sums = 2049958784d211cc0be8f41f3473433479ba71fe
+	sha1sums = ca8411db87f3fc51bbdfade22f4e1f555b2ee19e
+	sha1sums = 3dfc9f06f02791aee59b60d33ddf9d305b0f1de5
+
+pkgname = cinepaint
+
