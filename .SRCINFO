@@ -1,7 +1,7 @@
 pkgbase = scanssh
 	pkgdesc = Fast SSH server and open proxy scanner.
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.monkey.org/~provos/scanssh/
 	arch = i686
 	arch = x86_64
