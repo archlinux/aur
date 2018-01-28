@@ -1,33 +1,36 @@
 pkgname=ghdl
 pkgver=0.35
-pkgrel=1
-_gccver=7.2.0
+pkgrel=2
+_gccver=7.3.0
 _islver=0.18
-arch=('i686' 'x86_64')
+arch=('aarch64' 'x86_64')
 pkgdesc='VHDL simulator'
-url='https://github.com/tgingold/ghdl'
+url='https://github.com/ghdl/ghdl'
 license=('GPLv2')
 makedepends=('gcc-ada' 'git')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
 source=(
-  "git+https://github.com/tgingold/ghdl#tag=v${pkgver}"
+  "git+https://github.com/ghdl/ghdl#tag=v${pkgver}"
   "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
-md5sums=(
+sha256sums=(
   'SKIP'
-  'ff370482573133a7fcdd96cd2f552292'
-  '11436d6b205e516635b666090b94ab32'
+  '832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
+  '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
 )
 
 prepare() {
-  cd "${srcdir}/ghdl"
-  ./configure --prefix=/usr --with-gcc="${srcdir}/gcc-${_gccver}"
-  make copy-sources
+  ln -s gcc-${_gccver/+/-} gcc
 
-  cd "${srcdir}/gcc-${_gccver}"
+  cd ghdl
+  ./configure --prefix=/usr --with-gcc="${srcdir}/gcc"
+  make copy-sources
+  cd ..
+
+  cd gcc
 
   # link isl for in-tree build
   ln -s ../isl-${_islver} isl
@@ -36,30 +39,32 @@ prepare() {
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
   # Arch Linux installs x86_64 libraries /lib
-  [[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+  sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+
+  # Arch Linux ARM installs aarch64 libraries /lib
+  sed -i '/lp64=/s/lib64/lib/' gcc/config/aarch64/t-aarch64-linux
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-  mkdir "${srcdir}/gcc-build"
+  mkdir -p "$srcdir/gcc-build"
 }
 
 build() {
-  cd "${srcdir}/gcc-build"
+  cd gcc-build
 
   # using -pipe causes spurious test-suite failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
-  "${srcdir}/gcc-${_gccver}/configure" --prefix=/usr \
+  "$srcdir/gcc/configure" --prefix=/usr \
     --libdir=/usr/lib \
     --libexecdir=/usr/lib \
     --mandir=/usr/share/man \
     --infodir=/usr/share/info \
     --enable-shared \
     --enable-threads=posix \
-    --enable-libmpx \
     --with-system-zlib \
     --with-isl \
     --enable-__cxa_atexit \
@@ -74,7 +79,6 @@ build() {
     --enable-install-libiberty \
     --with-linker-hash-style=gnu \
     --enable-gnu-indirect-function \
-    --disable-multilib \
     --disable-werror \
     --enable-checking=release \
     --enable-default-pie \
@@ -82,6 +86,7 @@ build() {
     \
     --enable-languages=vhdl \
     --disable-bootstrap \
+    --disable-multilib \
     --disable-libgomp \
     --disable-libquadmath
 
