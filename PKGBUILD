@@ -114,7 +114,6 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/edgy.patch
 https://raw.githubusercontent.com/bn0785ac/in-night/master/k2.patch
 https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 https://raw.githubusercontent.com/bn0785ac/in-night/master/k3.patch
-https://raw.githubusercontent.com/bn0785ac/in-night/master/hell.patch
 )
 
 
@@ -215,8 +214,7 @@ sha256sums=('23351d66cbb811fe5f11ab828321bbb7974659efc7c16afff985745083114448'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             '11b66c829c124cf764a0e6971dc0cf67adea5058b5777355b85b2a0540f550d6'
-            '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0'
-            '2716f2b1905dd909a82d29c942e130618d904bb7e36f03d14d4153e596b7655f')
+            '191a5764a79f4c9cd99d8f50d27c00a59cdf4bc314e94eb02b3fc4bee0fd81a0')
 
 
 
