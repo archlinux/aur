@@ -1,8 +1,8 @@
-# Maintainer: Jake <ja.ke@posteo.de>
+# Maintainer: Jake <aur@ja-ke.tech>
 
 pkgname=searx-py3
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine (python3 based)"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -42,8 +42,7 @@ package() {
 
   python3.6 setup.py install --root=$pkgdir --optimize=1
   
-  mv $pkgdir/usr/lib/python3.6/site-packages/{README.rst,searx/}
-  mv $pkgdir/usr/lib/python3.6/site-packages/{tests,searx/}
+  mv $pkgdir/usr/lib/python2.7/site-packages/{README.rst,requirements*,tests,searx}
   
   mkdir -p $pkgdir/etc/searx
   mv $pkgdir/usr/lib/python3.6/site-packages/searx/settings.yml $pkgdir/etc/searx/
