@@ -3,16 +3,17 @@
 
 pkgname=perl-task-weaken
 _cpanname="Task-Weaken"
-pkgver=1.04
-pkgrel=2
+pkgver=1.05
+pkgrel=1
 pkgdesc="Ensure that a platform has weaken support"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.5.0')
 url="http://search.cpan.org/dist/$_cpanname"
-source=("http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/$_cpanname-$pkgver.tar.gz")
-md5sums=('affd0c395515bb95d29968404d7fe6de')
+#source=("http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/$_cpanname-$pkgver.tar.gz")
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/$_cpanname-$pkgver.tar.gz")
+sha256sums=('85f3bf738d0e94f935d9efd83575a2afd0aafb66adcc6624cee5064146f6b95c')
 
 # Function to change to the working directory and set
 # environment variables to override undesired options.
