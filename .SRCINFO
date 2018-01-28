@@ -1,0 +1,20 @@
+pkgbase = panotourpro
+	pkgdesc = Create pro-quality virtual tours (trial version).
+	pkgver = 2.5.9
+	pkgrel = 1
+	url = http://kolor.com/
+	install = panotourpro.install
+	arch = x86_64
+	license = custom: "commercial"
+	depends = qt5-base
+	source = PanotourPro_Linux64_259_2017-12-20.tar.gz::http://download.kolor.com/ptp/stable/linux64targz
+	source = panotourpro
+	source = panotourpro.desktop
+	source = panotourpro.png
+	md5sums = 889f62c426d55b5d4313a9f1d0b234df
+	md5sums = 2fb0de89c4749a8a50c7a8fe14555d98
+	md5sums = 361fb305589d79e1047f57c8809a6a30
+	md5sums = 38a6cdebc5175c97a5cd0a8cac4b1b11
+
+pkgname = panotourpro
+

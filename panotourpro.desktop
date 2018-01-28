@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Kolor Panotour Pro
+Comment=Create pro-quality virtual tours
+Exec=panotourpro
+Icon=/usr/share/pixmaps/panotourpro.png
+Terminal=false
+Type=Application
+Categories=Application;Graphics;
+StartupNotify=true
+Name[en_US]=Kolor Panotour Pro
