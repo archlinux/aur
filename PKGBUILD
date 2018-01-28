@@ -1,6 +1,6 @@
 # Maintainer: Paul Knopf <pauldotknopf@gmail.com>
 pkgname=darch
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 epoch=
 pkgdesc="A utility to that uses Docker to build stateless Arch images that can be booted bare-metal."
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pauldotknopf/darch/releases/download/v$pkgver/darch-amd64.tar.gz")
-md5sums=('b115316e8a722a21555d48c064ae89d1')
+md5sums=('416f797d5a2bae6d8efe2a203114222d')
 noextract=()
 validpgpkeys=()
 package() {
