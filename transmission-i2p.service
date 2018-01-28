@@ -5,7 +5,7 @@ Description=Standalone I2P BitTorrent client over I2P network
 User=transmission-i2p
 Group=transmission-i2p
 WorkingDirectory=~
-ExecStart=/usr/bin/transmission-daemon -f --log-error
+ExecStart=/usr/bin/transmission-i2p-daemon -f -M --log-error
 #Restart=on-failure
 
 [Install]
