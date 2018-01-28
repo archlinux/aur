@@ -1,8 +1,16 @@
 # Maintainer: Sebastien Bariteau <numkem@gmail.com>
+#
+# i3pystatus doesn't have releases; it's rolling release.
+# This package attempts to track recent stable versions, but is updated
+# manually so we can check that it buidls/runs.
+#
+# This'll be improved at some point to be an automated process.
+
+_pkgrev=3eb12a361fef480426a5afb37ff772bbfd87d408
 
 pkgname=i3pystatus
 pkgdesc="i3status replacement written in python for the i3 window manager"
-pkgver=3.35
+pkgver=r1712.3eb12a3
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('mit')
@@ -19,15 +27,20 @@ optdepends=('python-pyalsaaudio: For the alsa module.',
             'python-basiciw: For the wireless module.'
             'python-colour: For the pulseaudio module.')
 url="https://github.com/enkore/i3pystatus"
-source=("https://github.com/enkore/i3pystatus/archive/$pkgver.tar.gz")
-md5sums=('f3e70d903484469f77b3e8bf39466338')
+source=("git+https://github.com/enkore/i3pystatus.git#commit=$_pkgrev")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}"
   python setup.py install --prefix=/usr --root="$pkgdir"
 } 
