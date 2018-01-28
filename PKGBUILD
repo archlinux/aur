@@ -15,10 +15,6 @@ sha256sums=('SKIP')
 arch=('any')
 license=("GPL")
 
-prepare() {
-   cd $srcdir/$pkgname
-}
-
 package() {
   cd $srcdir/$pkgname
   make
