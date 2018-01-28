@@ -1,7 +1,7 @@
 pkgbase = mcomix-gtk3-git
-	pkgdesc = A user-friendly, customizable image viewer specifically designed to handle comic books
+	pkgdesc = A comic book reader. Ported to GTK3, works well with retina/hidpi
 	pkgver = r1475.3f8f3dc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/mcomix/
 	install = mcomix-gtk3-git.install
 	arch = any
@@ -23,9 +23,9 @@ pkgbase = mcomix-gtk3-git
 	provides = mcomix
 	conflicts = mcomix mcomix-git
 	source = mcomix-gtk3-git::git+http://git.code.sf.net/p/mcomix/git
-	source = https://gist.githubusercontent.com/ilikenwf/f661cb781da598660a88bbaffd4c6f5d/raw/8cd953c27afe44964093fe59ec580ae70ae6058c/gtk3.patch
+	source = https://gist.githubusercontent.com/ilikenwf/f661cb781da598660a88bbaffd4c6f5d/raw/1b47b11b11f1340cf563d251cee92967bd9de275/gtk3.patch
 	sha256sums = SKIP
-	sha256sums = 00b2daf67c170acf215bb63a6a1cae4840d2826f5ebcbf43cd45805d007a025a
+	sha256sums = 11caa3211c49df1ebcf13e15c79ba3cbed5efcdeacceaa8dce444a4af4961848
 
 pkgname = mcomix-gtk3-git
 
