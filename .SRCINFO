@@ -11,6 +11,7 @@ pkgbase = hyperledger-indy-plenum
 	depends = python-base58
 	depends = python-indy_crypto
 	depends = python-intervaltree
+	depends = python-jsonpickle
 	depends = python-leveldb
 	depends = python-libnacl
 	depends = python-msgpack
