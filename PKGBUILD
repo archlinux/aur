@@ -1,4 +1,4 @@
-# Contributor: Fincer <fincer89 at hotmail dot com>
+# Contributor: asm0dey <pavel.finkelshtein@gmail.com>
 pkgname=panotourpro
 pkgver=2.5.9
 _pkgver=259_2017-12-20
