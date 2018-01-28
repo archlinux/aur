@@ -2,7 +2,7 @@
 
 _module='reno'
 pkgname='python-reno'
-pkgver='2.5.1'
+pkgver='2.6.0'
 pkgrel='1'
 pkgdesc='OpenStack RElease NOtes manager'
 arch=('any')
