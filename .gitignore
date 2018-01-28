@@ -1,0 +1,5 @@
+gtk3.patch
+*.pkg.*
+pkg
+src
+mcomix-gtk3-git

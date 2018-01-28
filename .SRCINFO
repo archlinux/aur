@@ -1,0 +1,31 @@
+pkgbase = mcomix-gtk3-git
+	pkgdesc = A user-friendly, customizable image viewer specifically designed to handle comic books
+	pkgver = r1475.3f8f3dc
+	pkgrel = 1
+	url = https://sourceforge.net/projects/mcomix/
+	install = mcomix-gtk3-git.install
+	arch = any
+	license = GPL
+	makedepends = gettext
+	makedepends = intltool
+	depends = pygtk
+	depends = python2-pillow
+	depends = xdg-utils
+	depends = python2
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = python2-setuptools
+	optdepends = libunrar: for rar compressed comics
+	optdepends = p7zip: for 7z compressed comics
+	optdepends = unrar: for rar compressed comics
+	optdepends = unzip: for zip compressed comics
+	optdepends = mupdf: for PDF comics
+	provides = mcomix
+	conflicts = mcomix mcomix-git
+	source = mcomix-gtk3-git::git+http://git.code.sf.net/p/mcomix/git
+	source = https://gist.githubusercontent.com/ilikenwf/f661cb781da598660a88bbaffd4c6f5d/raw/8cd953c27afe44964093fe59ec580ae70ae6058c/gtk3.patch
+	sha256sums = SKIP
+	sha256sums = 00b2daf67c170acf215bb63a6a1cae4840d2826f5ebcbf43cd45805d007a025a
+
+pkgname = mcomix-gtk3-git
+

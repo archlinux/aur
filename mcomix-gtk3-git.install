@@ -1,0 +1,35 @@
+pkgname=mcomix
+
+post_install() {
+    if [ -f usr/bin/xdg-icon-resource ]; then
+        xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+    fi
+    if [ -f usr/sbin/gconfpkg ]; then
+        usr/sbin/gconfpkg --install ${pkgname} &> /dev/null
+    fi
+    update-desktop-database -q
+    update-mime-database /usr/share/mime
+}
+
+pre_upgrade() {
+    pre_remove $1
+}
+
+post_upgrade() {
+    echo 'In case of any issues with zoom keybindings, delete ~/.config/mcomix/keybindings.conf'
+    post_install $1
+}
+
+pre_remove() {
+    if [ -f usr/sbin/gconfpkg ]; then
+        usr/sbin/gconfpkg --uninstall ${pkgname} &> /dev/null
+    fi
+}
+
+post_remove() {
+    if [ -f usr/bin/xdg-icon-resource ]; then
+        xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+    fi
+    update-desktop-database -q
+    update-mime-database /usr/share/mime &> /dev/null
+}
