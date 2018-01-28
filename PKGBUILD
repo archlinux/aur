@@ -18,7 +18,7 @@ package() {
   python setup.py install -O1 --root="$pkgdir"
   install -Dm644 indy_node/general_config/general_config.py $pkgdir/etc/indy/indy_config.py
   rm -rf $pkgdir/home
-  rm -rf $pkgdir/usr/bin/{get_keys,init_bls_keys}
+  rm -rf $pkgdir/usr/bin/{get_keys,init_bls_keys,*.bat}
   rm -rf $pkgdir/usr/lib/python3.6/site-packages/data/{__init__.py,__pycache__}
 }
 
