@@ -1,23 +1,24 @@
 # Contributor: Roman Voropaev <voropaev.roma@gmail.com>
 
 pkgbase='nginx-unit'
-pkgname=('nginx-unitd' 'nginx-unit-python' 'nginx-unit-php')
+pkgname=('nginx-unitd' 'nginx-unit-python' 'nginx-unit-php' 'nginx-unit-go')
 _shortname='unit'
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic web application server, designed to run applications in multiple languages."
 arch=('i686' 'x86_64')
 url="http://unit.nginx.org/"
 license=('Apache-2.0')
 source=($pkgbase-$pkgver.tar.gz::"https://hg.nginx.org/$_shortname/archive/$pkgver.tar.gz")
 md5sums=("11555971d26ea16723516485670543ee")
-makedepends=('php-embed' 'python')
+makedepends=('php-embed' 'python' 'go')
 
 build() {
   cd "$srcdir"/$_shortname-$pkgver
   ./configure --prefix=/usr --sbindir=/usr/bin
   ./configure python
   ./configure php
+  ./configure go
   make all
 }
 
@@ -37,4 +38,10 @@ package_nginx-unit-php() {
   depends=('nginx-unitd' 'php')
   cd "$srcdir"/$_shortname-$pkgver
   make DESTDIR="$pkgdir" php-install
+}
+
+package_nginx-unit-go() {
+  depends=('nginx-unitd' 'go')
+  cd "$srcdir"/$_shortname-$pkgver
+  make DESTDIR="$pkgdir" go-install
 }
