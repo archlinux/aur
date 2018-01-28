@@ -1,21 +1,21 @@
 # Maintainer: Dan Beste <Dan.Ray.Beste@gmail.com>
 
 pkgname='stratis-cli'
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='stratis-cli is a tool that provides a command-line interface (CLI) for interacting with the Stratis daemon, stratisd.'
 arch=('any')
 license=('apache2')
 url='stratis-storage.github.io'
 depends=('python-argparse')
-makedepends=('git')
+makedepends=('git' 'python-pylint python-tox')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  'afd78f7b7defdf403ef428858150f4e3f3acbca0fc4aaf9e93a73d4885b6d431'
+  'f1d9045dcade917fbd3f24704328a9e85e685b2507d83f290933ee3a2ab598c9'
 )
 
 check() {
