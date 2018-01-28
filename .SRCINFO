@@ -1,0 +1,37 @@
+pkgbase = firefox-ubuntu-bin
+	pkgdesc = Standalone web browser from mozilla.org with Ubuntu patches (binary)
+	pkgver = 58.0
+	pkgrel = 1
+	url = https://www.mozilla.org/firefox/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MPL
+	depends = dbus-glib
+	depends = ffmpeg
+	depends = gtk2
+	depends = gtk3
+	depends = hunspell
+	depends = icu
+	depends = libpulse
+	depends = libvpx
+	depends = libxt
+	depends = mime-types
+	depends = mozilla-common
+	depends = nss
+	depends = sqlite
+	depends = startup-notification
+	depends = ttf-font
+	optdepends = libnotify: Notification integration
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = pulseaudio: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	provides = firefox
+	provides = firefox-ubuntu
+	conflicts = firefox
+	conflicts = firefox-ubuntu
+	source = http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_58.0+build6-0ubuntu0.17.10.1_amd64.deb
+	md5sums = f0f4787491e5731c50c20cd7a74f4504
+
+pkgname = firefox-ubuntu-bin
+
