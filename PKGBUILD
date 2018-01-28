@@ -5,13 +5,13 @@
 
 pkgname=brutalchess
 pkgver=0.5.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Chess game inspired by 'Battle Chess'. Features full 3D graphics."
-url="http://sourceforge.net/projects/$pkgname"
+url="https://sourceforge.net/projects/$pkgname"
 license=('GPL2')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('sdl_image' 'freetype2' 'glu')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-alpha-$pkgver-src.tar.gz")
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-alpha-$pkgver-src.tar.gz")
 md5sums=('370476b63091b8d82a9ea57c604dcbab')
 
 prepare() {
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr --libexecdir=/usr/bin
+  ./configure --prefix=/usr --libexecdir=/usr/lib/$pkgname
   make
 }
 
@@ -35,5 +35,5 @@ check() {
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
