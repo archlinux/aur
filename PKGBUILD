@@ -9,7 +9,7 @@ url="http://bioq5jbcnfopqwvk7qssaxcl7avzeta6mu72jmxjeowflpcrhf6q.b32.i2p/transmi
 depends=('i2pd' 'openssl-1.0')
 #('curl' 'libidn2' 'libnghttp2' 'libssh2' 'libpsl') # TODO: are these deps transitive?
 makedepends=('git')
-#license=('?')
+license=('MIT')
 pkgdesc="Standalone I2P BitTorrent Client over I2P network"
 provides=(transmission-i2p)
 conflicts=(transmission-i2p)
