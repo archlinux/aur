@@ -1,7 +1,7 @@
-# Maintainer: Jesse Juhani Jaara <gmail.com: jesse.jaara>
+# Contributor: Jesse Juhani Jaara <gmail.com: jesse.jaara>
 
 pkgname=mingw-w64-pugixml
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="Light-weight, simple and fast XML parser for C++ with XPath support (mingw-w64)"
 arch=('any')
@@ -11,27 +11,26 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("http://github.com/zeux/pugixml/releases/download/v${pkgver}/pugixml-${pkgver}.tar.gz")
-md5sums=('17e6a3996de2942629dce65db1a701c5')
+sha256sums=('8ef26a51c670fbe79a71e9af94df4884d5a4b00a2db38a0608a87c14113b2904')
+
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/pugixml-${pkgver}"
   for _arch in ${_architectures}; do
-    unset LDFLAGS
 
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
-    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release \
-                   -DLIB_INSTALL_DIR=lib \
-                   -DBUILD_SHARED_LIBS=OFF \
-                   ../scripts
+    ${_arch}-cmake \
+      -DLIB_INSTALL_DIR=lib \
+      -DBUILD_SHARED_LIBS=OFF \
+      ..
     make
     popd
 
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release \
-                   -DLIB_INSTALL_DIR=lib \
-                   -DDBUILD_SHARED_LIBS=ON \
-                   ../scripts
+    ${_arch}-cmake \
+      -DLIB_INSTALL_DIR=lib \
+      ..
     make
     popd
   done
