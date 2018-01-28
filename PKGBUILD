@@ -2,7 +2,7 @@
 
 pkgname='cen64'
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Cycle-accurate Nintendo 64 emulator'
 arch=('i686' 'x86_64')
 url='http://www.cen64.com/'
@@ -27,7 +27,9 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}/build"
 
-  cmake ..
+  cmake                         \
+    -DCMAKE_BUILD_TYPE=Release  \
+    ..
   make
 }
 
