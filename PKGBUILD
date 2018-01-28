@@ -4,11 +4,12 @@ pkgname=woff2-bin
 pkgver=1.0.2
 _debver=1.0.2-1
 pkgrel=1
-pkgdesc=""
+pkgdesc="Utilities for converting TTF fonts to the compressed WOFF 2.0 format, and vice versa."
 url="https://github.com/google/woff2"
 arch=(x86_64)
 license=(MIT)
 depends=(brotli)
+provides=(woff2)
 conflicts=(woff2 woff2-git)
 
 source_x86_64=(
