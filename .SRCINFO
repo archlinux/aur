@@ -1,0 +1,22 @@
+pkgbase = ewbf-miner
+	pkgdesc = EWBF's CUDA Zcash miner
+	pkgver = v0.3.4b
+	pkgrel = 1
+	url = https://github.com/nanopool/ewbf-miner
+	arch = x86_64
+	license = https://github.com/nanopool/ewbf-miner/blob/master/README.md
+	depends = nvidia-utils
+	depends = opencl-nvidia
+	depends = libpciaccess
+	depends = libx11>=1.4.99.1
+	depends = libxext
+	depends = ncurses
+	depends = ocl-icd>=1.0
+	depends = nvidia
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/nanopool/ewbf-miner/releases/download/v0.3.4b/Zec.miner.0.3.4b.Linux.Bin.tar.gz
+	sha512sums_x86_64 = 435467b1286dafdf93c4d2ff5d856ab2d8253b4835660d8fc88cd9cd4fe9ea21545021bfe082891dbb3dace3e4abfa052cad7b398a31099bcefd9392db4e31b7
+
+pkgname = ewbf-miner
+
