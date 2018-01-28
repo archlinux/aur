@@ -1,0 +1,33 @@
+pkgbase = hyperledger-indy-plenum
+	pkgdesc = The heart of the distributed ledger technology inside Hyperledger Indy
+	pkgver = 1.2.227
+	pkgrel = 1
+	url = https://github.com/hyperledger/indy-plenum
+	arch = i686
+	arch = x86_64
+	groups = hyperledger
+	license = APACHE
+	makedepends = python
+	depends = python-base58
+	depends = python-indy_crypto
+	depends = python-intervaltree
+	depends = python-leveldb
+	depends = python-libnacl
+	depends = python-msgpack
+	depends = python-orderedset
+	depends = python-portalocker
+	depends = python-prompt_toolkit
+	depends = python-psutil
+	depends = python-pygments
+	depends = python-pysha3
+	depends = python-pyzmq
+	depends = python-raet
+	depends = python-rlp
+	depends = python-semantic-version
+	depends = python-sortedcontainers
+	depends = python-ujson
+	source = https://github.com/hyperledger/indy-plenum/archive/1.2.227-master.tar.gz
+	md5sums = 8e1b4d683b7ece64d4b81278dfda3cf1
+
+pkgname = hyperledger-indy-plenum
+
