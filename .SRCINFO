@@ -1,0 +1,15 @@
+pkgbase = ksonnet-bin
+	pkgdesc = A CLI-supported framework that streamlines writing and deployment of Kubernetes configurations to multiple clusters.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/ksonnet/ksonnet
+	arch = x86_64
+	license = Apache-2.0
+	provides = ksonnet=0.8.0
+	conflicts = ksonnet
+	source = ksonnet-bin-0.8.0.tar.gz::https://github.com/ksonnet/ksonnet/releases/download/v0.8.0/ks_0.8.0_linux_amd64.tar.gz
+	md5sums = b8145ce03a382bde7fcace1410b10405
+	sha256sums = 058ada432f5eb9f9b17e16cd45f8ce35da935c1bec9ed102b5330089c7e23df6
+
+pkgname = ksonnet-bin
+
