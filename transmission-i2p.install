@@ -4,7 +4,7 @@ post_install() {
         useradd --system --user-group -m --home /var/lib/transmission-i2p transmission-i2p
         echo "done"
 
-        mkdir -p /var/lib/transmission-i2p/.config/transmission-daemon
+        mkdir -p /var/lib/transmission-i2p/{.config/transmission-daemon,downloads,incomplete}
 
         # TODO: generate config with transmission-i2p-daemon -d (need to fix the defaults in code first)
         cp /usr/share/transmission-i2p/settings.json.example /var/lib/transmission-i2p/.config/transmission-daemon/settings.json
