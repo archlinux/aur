@@ -42,7 +42,7 @@ package() {
 
   python3.6 setup.py install --root=$pkgdir --optimize=1
   
-  mv $pkgdir/usr/lib/python2.7/site-packages/{README.rst,requirements*,tests,searx}
+  mv $pkgdir/usr/lib/python3.6/site-packages/{README.rst,requirements*,tests,searx}
   
   mkdir -p $pkgdir/etc/searx
   mv $pkgdir/usr/lib/python3.6/site-packages/searx/settings.yml $pkgdir/etc/searx/
