@@ -5,7 +5,7 @@ pkgdesc="Warcraft1 Mod that allows you to play Warcraft1 with the Stratagus engi
 arch=("i686" "x86_64")
 url="https://github.com/Wargus/war1gus"
 license=('GPL')
-depends=('stratagus' 'ffmpeg2theora' 'cdparanoia' 'timidity++' 'gtk2' )
+depends=('stratagus' 'ffmpeg2theora' 'cdparanoia' 'timidity++' 'gtk2' 'imagemagick')
 source=("war1gus::git://github.com/Wargus/war1gus.git")
 md5sums=('SKIP')
 provides=('war1gus=2.4.1')

@@ -11,6 +11,7 @@ pkgbase = war1gus-git
 	depends = cdparanoia
 	depends = timidity++
 	depends = gtk2
+	depends = imagemagick
 	provides = war1gus=2.4.1
 	conflicts = war1gus
 	replaces = war1gus
