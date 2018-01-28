@@ -8,7 +8,7 @@ pkgname=inox-beta
 pk=bnox
 name=chromium
 pkgver=64.0.3282.119
-pkgrel=15
+pkgrel=16
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -111,7 +111,6 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/p2.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/e3.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/narnia1.patch
 https://raw.githubusercontent.com/bn0785ac/ih-beta/edgy.patch
-https://raw.githubusercontent.com/bn0785ac/ih-beta/hell.patch
 )
 
 
@@ -209,8 +208,7 @@ sha256sums=('342ea80a925d85f5155b2b423a0d3cbcf2ee5729bf107c601d7d902315d03127'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d'
-            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d'
-            '2716f2b1905dd909a82d29c942e130618d904bb7e36f03d14d4153e596b7655f')
+            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
