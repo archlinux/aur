@@ -1,7 +1,7 @@
 # Maintainer: Elvis Angelaccio <elvis dot angelaccio at kde dot org>
 
 pkgname=kronometer
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A simple chronometer application."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('kxmlgui' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kronometer-git')
 source=(http://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('ee533762ffaa78a39a2ba3b45c71ee2ec2e72ca59e989255cdc1a0cc01fe3b30')
+sha256sums=('7d4092e576f9b0be20d5b36c57eee089964f8215672be88797c8c2b44ac462a1')
 
 prepare() {
   mkdir -p build
