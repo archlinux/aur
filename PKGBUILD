@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=grpn
-pkgver=1.4.1
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A graphical reverse polish notation (RPN) calculator'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/getreu/grpn'
 license=('GPL')
 depends=('gtk2')
 source=($pkgname-$pkgver.tar.gz::https://github.com/getreu/$pkgname/archive/v${pkgver}.tar.gz)
-sha256sums=('c786ac498f6038079a9e66d3a9130ffd152c4436ebe6598ca213b813b2582fc0')
+sha256sums=('0498d15c5544b9a278a2d9b89733eaf70c8d1667a060add8bec4a03c21f5fbbb')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver/src
