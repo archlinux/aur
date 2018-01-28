@@ -1,7 +1,6 @@
 # Maintainer: robertfoster
 
-pkgbase=python-rlp
-pkgname=(python-rlp python2-rlp)
+pkgname=python-rlp
 pkgver=0.6.0
 pkgrel=1
 pkgdesc="A package for encoding and decoding data in and from Recursive Length Prefix notation"
@@ -16,15 +15,9 @@ build() {
   cd $srcdir
 }
 
-package_python-rlp() {
+package () {
   cd $srcdir/rlp-$pkgver
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-}
-
-package_python2-rlp() {
-  depends=('python2')
-  cd $srcdir/rlp-$pkgver
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
 md5sums=('433c15b0efa188752448a0dd422a5bc0')

@@ -13,6 +13,3 @@ pkgbase = python-rlp
 
 pkgname = python-rlp
 
-pkgname = python2-rlp
-	depends = python2
-
