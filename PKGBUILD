@@ -2,7 +2,7 @@
 # Contributor: shuall <shualloret @ gmail . com>
 
 pkgname=chaiscript
-pkgver=5.7.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Embedded scripting language designed from the ground up to directly target C++"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('cmake')
 url="http://www.chaiscript.com"
 license=('BSD')
 source=(https://github.com/Chaiscript/Chaiscript/archive/v${pkgver}.tar.gz)
-sha256sums=('3f261ad74c4f9f9a6877afba266c35050c9c2d56ddeeb25cdeb2734e5fc51d99')
+sha256sums=('ec4b51e30afbc5133675662882c59417a36aa607556ede7ca4736fab2b28c026')
 provides=('chaiscript')
 install=${pkgname}.install
 
