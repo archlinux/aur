@@ -72,7 +72,7 @@ if [[ BRANCH = "emacs-26" ]]; then
 else
   pkgname=emacs-git
 fi
-pkgver=27.0.50.131892
+pkgver=27.0.50.131923
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
@@ -319,14 +319,6 @@ package() {
   chmod 775 "$pkgdir"/var/games/emacs
   chown -R root:games "$pkgdir"/var/games
 
-  # The logic used to install systemd's user service is partially broken
-  # under Arch Linux model, because it adds $DESTDIR as prefix to the
-  # final Exec targets. The fix is to hack it with an axe.
-  install -Dm644 etc/emacs.service \
-    "$pkgdir"/usr/lib/systemd/user/emacs.service
-  sed -i -e 's#\(ExecStart\=\)#\1\/usr\/bin\/#' \
-    -e 's#\(ExecStop\=\)#\1\/usr\/bin\/#' \
-    "$pkgdir"/usr/lib/systemd/user/emacs.service
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
