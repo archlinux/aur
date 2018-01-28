@@ -1,7 +1,7 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=tirex-git
 pkgver=r222.a0c8d0d
-pkgrel=3
+pkgrel=4
 pkgdesc="Tirex tile queue manager. A drop-in replacement for renderd."
 arch=('i686' 'x86_64')
 url='https://github.com/geofabrik/tirex'
@@ -17,6 +17,7 @@ depends=(
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
+backup=('etc/tirex/tirex.conf')
 options=()
 source=("${pkgname%-VCS}"::'git+https://github.com/geofabrik/Tirex.git'
         'tirex.conf'
@@ -42,6 +43,9 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-VCS}"
   make DESTDIR="$pkgdir/" install-all
+
+  # create directory for example map
+  install -d -m 755 ${pkgdir}/var/lib/tirex/tiles/example
 
   # install systemd unit files
   cd $srcdir

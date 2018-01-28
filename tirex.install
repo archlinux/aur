@@ -32,6 +32,5 @@ pre_remove() {
 
 ## arg 1:  the old package version
 post_remove() {
-    groupdel tirex
     userdel tirex
 }
