@@ -1,7 +1,7 @@
 pkgbase = python-troveclient
 	pkgdesc = Client library for OpenStack DBaaS API
-	pkgver = 2.12.0
-	pkgrel = 2
+	pkgver = 2.14.0
+	pkgrel = 1
 	url = http://docs.openstack.org/developer/python-troveclient
 	arch = any
 	license = Apache
@@ -48,7 +48,7 @@ pkgbase = python-troveclient
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-troveclient#tag=2.12.0
+	source = git+https://git.openstack.org/openstack/python-troveclient#tag=2.14.0
 	md5sums = SKIP
 
 pkgname = python-troveclient

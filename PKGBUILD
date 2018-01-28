@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-troveclient' 'python2-troveclient')
-pkgver='2.12.0'
-pkgrel='2'
+pkgver='2.14.0'
+pkgrel='1'
 pkgdesc='Client library for OpenStack DBaaS API'
 arch=('any')
 url="http://docs.openstack.org/developer/${pkgname}"
