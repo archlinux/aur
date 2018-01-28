@@ -4,7 +4,7 @@
 pkgbase=python-tarantool
 pkgname=(python-tarantool python2-tarantool)
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client library for Tarantool 1.6 Database'
 arch=('any')
 url='https://github.com/tarantool/tarantool-python'
@@ -15,6 +15,7 @@ source=("https://pypi.io/packages/source/t/tarantool/tarantool-$pkgver.tar.bz2")
 sha512sums=('8565bce244b399c37308a78bc1e6bfc23ad6b75fa334be0df2c7d6723d048917d55e272cdd1f1dc5b2771da2ce3102b2d292472159a89aaca5d23137d7783006')
 
 prepare() {
+  sed -i 's/msgpack-python/msgpack/g' tarantool-$pkgver/setup.py
   cp -a tarantool-$pkgver{,-py2}
 }
 
