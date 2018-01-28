@@ -4,7 +4,7 @@
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A messaging library for Python'
 arch=('any')
 url="http://kombu.readthedocs.org/"
@@ -18,12 +18,23 @@ checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-redis' 'pyt
               'python-sqlalchemy' 'python2-sqlalchemy' 'python-pyro' 'python2-pyro'
               'python2-librabbitmq' 'python-boto3')
               # 'python2-boto3': Not packaged yet
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/celery/kombu/archive/v$pkgver.tar.gz")
-sha512sums=('de754a0a6410ab17f2f9a81afc374fe95d1baac8965b6b5f2e0760726982b8c927b8f15cab9dcc42f03c36ddffbe76452c3c962a0645d154af8a7b3e906bfccb')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/celery/kombu/archive/v$pkgver.tar.gz"
+        "msgpack-fix.patch::https://github.com/celery/kombu/commit/9883a300f619e1a78376cce8ab311a7e573337c2.patch")
+sha512sums=('de754a0a6410ab17f2f9a81afc374fe95d1baac8965b6b5f2e0760726982b8c927b8f15cab9dcc42f03c36ddffbe76452c3c962a0645d154af8a7b3e906bfccb'
+            '22c3bce03f077fe0e4cf9d62623d404f7bfef310fe6641ef6c3681239272de81de22578148eaf8f04a462417b81f57fd13cf858deefa8d682643f97240073ed7')
 
 prepare() {
-  sed -i 's/for qname, queue in items(self._queues):/for qname, queue in list(items(self._queues)):/' kombu-$pkgver/kombu/messaging.py
+  # https://github.com/celery/kombu/pull/822
+  patch -d kombu-$pkgver -p1 < msgpack-fix.patch
   cp -a kombu-$pkgver{,-py2}
+}
+
+build() {
+  cd "$srcdir"/kombu-$pkgver
+  python setup.py build
+
+  cd "$srcdir"/kombu-$pkgver-py2
+  python2 setup.py build
 }
 
 check() {
@@ -49,7 +60,7 @@ package_python-kombu() {
               # 'python-librabbitmq: C optimization for AMQP transport' Not available for python 3 yet
 
   cd "$srcdir"/kombu-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
@@ -68,7 +79,7 @@ package_python2-kombu() {
               # 'python2-boto3: for Amazon SQS support': Not packaged yet
 
   cd "$srcdir"/kombu-$pkgver-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
