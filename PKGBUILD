@@ -45,5 +45,6 @@ prepare() {
 }
 
 package() {
-	install -Dm755 etc usr -t "$pkgdir/"
+	cp -r etc "$pkgdir/"
+	cp -r usr "$pkgdir/"
 }
