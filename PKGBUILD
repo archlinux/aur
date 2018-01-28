@@ -21,15 +21,12 @@ prepare() {
 
   bsdtar -xf "../drawio-desktop-$pkgver.zip" -C .
   rm -rf "META-INF" "WEB-INF"
-
-  # remove electron from dependencies
-  sed '/"electron": ".*"/d' -i 'package.json'
 }
 
 build() {
   cd "$srcdir/drawio-$pkgver"
 
-  npm install --cache ../npm-cache
+  npm install --cache ../npm-cache --only=production
   rm -f 'package-lock.json'
 }
 
