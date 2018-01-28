@@ -2,8 +2,8 @@
 
 pkgname=('python-heatclient'
          'python2-heatclient')
-pkgver='1.12.0'
-pkgrel='2'
+pkgver='1.13.0'
+pkgrel='1'
 pkgdesc='Python client library for Heat'
 arch=('any')
 url="http://docs.openstack.org/developer/${pkgname}/"
