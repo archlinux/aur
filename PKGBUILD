@@ -2,6 +2,20 @@
 # Contributor: Alexander Kuznecov <alexander@kuznetcov.me>
 
 _pkgname=nginx
+pkgname=nginx-custom
+pkgver=1.12.2
+pkgrel=3
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server (with standard, additional and 3rd party modules)'
+arch=('x86_64')
+url='https://nginx.org'
+license=('custom')
+depends=('pcre' 'zlib' 'openssl' 'pam' 'geoip' 'geoip-database' 'gd' 'libxslt' 'mailcap')
+checkdepends=('perl' 'perl-gd' 'perl-io-socket-ssl' 'perl-fcgi' 'perl-cache-memcached'
+              'memcached' 'ffmpeg' 'inetutils')
+makedepends=('libxslt' 'gd' 'mercurial')
+conflicts=('nginx' 'nginx-unstable' 'nginx-svn' 'nginx-devel' 'nginx-custom-dev' 'nginx-full')
+provides=('nginx')
+
 _user='http'
 _group='http'
 _doc_root="/usr/share/${_pkgname}/html"
@@ -13,50 +27,6 @@ _lock_path='/var/lock'
 _access_log_path="/var/log/${_pkgname}/access.log"
 #_error_log_path="/var/log/${_pkgname}/error.log"
 _error_log_path='stderr'
-
-# 3d party modules
-_cachepurge_ver="2.3"
-_cachepurge_dirname="ngx_cachepurge"
-_slowfscache_ver="1.10"
-_slowfscache_dirname="ngx_slowfscache"
-_echo_ver="7740e11558b530b66b469c657576f5280b7cdb1b"
-_echo_dirname="ngx_echo"
-_headersmore_ver="v0.32"
-_headersmore_dirname="ngx_headersmore"
-_uploadprogress_ver="v0.9.2"
-_uploadprogress_dirname="ngx_uploadprogress"
-_upstreamfair_hash="89f72d881ba123ddcc281f9ff2535b10e35555a1"
-_upstreamfair_dirname="ngx_upstreamfair"
-_fancyindex_ver="v0.4.1"
-_fancyindex_dirname="ngx_fancyindex"
-_authpam_ver="1.5.1"
-_authpam_dirname="ngx_authpam"
-_pagespeed_ver="1.11.33.4"
-_pagespeed_dirname="ngx_pagespeed"
-_rtmp_ver="v1.1.11"
-_rtmp_dirname="ngx_rtmp"
-_davext_ver="v0.0.3"
-_davext_dirname="ngx_davext"
-_naxsi_ver="0.55.3"
-_naxsi_dirname="ngx_naxsi"
-_accesskey_ver="2.0.4"
-_accesskey_dirname="ngx_accesskey"
-
-pkgname=nginx-custom
-pkgver=1.12.2
-pkgrel=2
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server (with standard, additional and 3rd party modules)'
-arch=('x86_64')
-
-depends=('pcre' 'zlib' 'openssl' 'pam' 'geoip' 'geoip-database' 'gd' 'libxslt' 'mailcap')
-checkdepends=('perl' 'perl-gd' 'perl-io-socket-ssl' 'perl-fcgi' 'perl-cache-memcached'
-              'memcached' 'ffmpeg' 'inetutils')
-makedepends=('libxslt' 'gd' 'mercurial')
-
-url='https://nginx.org'
-license=('custom')
-conflicts=('nginx' 'nginx-unstable' 'nginx-svn' 'nginx-devel' 'nginx-custom-dev' 'nginx-full')
-provides=('nginx')
 backup=("${_conf_path}/fastcgi.conf"
         "${_conf_path}/fastcgi_params"
         "${_conf_path}/koi-win"
@@ -66,8 +36,34 @@ backup=("${_conf_path}/fastcgi.conf"
         "${_conf_path}/uwsgi_params"
         "${_conf_path}/win-utf"
         "etc/logrotate.d/nginx")
-_user=http
-_group=http
+
+# 3d party modules
+_cachepurge_ver="2.3"
+_cachepurge_dirname="ngx_cachepurge-${_cachepurge_ver}"
+_slowfscache_ver="1.10"
+_slowfscache_dirname="ngx_slowfscache-${_slowfscache_ver}"
+_echo_ver="7740e11558b530b66b469c657576f5280b7cdb1b"
+_echo_dirname="ngx_echo-${_echo_ver}"
+_headersmore_ver="v0.32"
+_headersmore_dirname="ngx_headersmore-${_headersmore_ver}"
+_uploadprogress_ver="v0.9.2"
+_uploadprogress_dirname="ngx_uploadprogress-${_uploadprogress_ver}"
+_upstreamfair_hash="89f72d881ba123ddcc281f9ff2535b10e35555a1"
+_upstreamfair_dirname="ngx_upstreamfair"
+_fancyindex_ver="v0.4.2"
+_fancyindex_dirname="ngx_fancyindex-${_fancyindex_ver}"
+_authpam_ver="1.5.1"
+_authpam_dirname="ngx_authpam-${_authpam_ver}"
+_pagespeed_ver="1.11.33.4"
+_pagespeed_dirname="ngx_pagespeed-${_pagespeed_ver}"
+_rtmp_ver="v1.1.11"
+_rtmp_dirname="ngx_rtmp-${_rtmp_ver}"
+_davext_ver="v0.0.3"
+_davext_dirname="ngx_davext-${_davext_ver}"
+_naxsi_ver="0.55.3"
+_naxsi_dirname="ngx_naxsi-${_naxsi_ver}"
+_accesskey_ver="2.0.4"
+_accesskey_dirname="ngx_accesskey-${_accesskey_ver}"
 
 source=("nginx.sh"
         "nginx.conf"
@@ -91,27 +87,27 @@ source=("nginx.sh"
         "${_accesskey_dirname}.tar.gz::https://github.com/Martchus/nginx-accesskey/archive/v${_accesskey_ver}.tar.gz"
 )
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
-         '845cab784b50f1666bbf89d7435ac7af'
-         'b50a547d387c4af8e9b89a5e79d22fed'
-         '4d8529216812e5cc35a28c721e239b9e'
-         '4d2fc76211435f029271f1cf6d7eeae3'
-         'SKIP'
-         'SKIP'
-         'e1dd79f0ec82415bbf8a1cb938988955'
-         '3d4ec04bbc16c3b555fa20392c1119d1'
-         '68a1af12d5c1218fb2b3e05ed7ff6f0c'
-         '1f8ab14fa3dd171bf3b6c7b18783bc22'
-         'c9cdf7f9a27361159b282e1faa618094'
-         '1c2b08220f5118e3f16026fc530797cb'
-         '403e3c72c33ed275b203226ee1927e46'
-         '1e0bbd4535386970d63f51064626bc9a'
-         '8e280b6c8845bbe71bf99748da63d73f'
-         'd5ccb4cab81edc32ff99a2a46e8a9ffc'
-         'b471efc97b9602c5b4087756c9295496'
-         '2cb502dbda335be4ebd5fed0b3182bae'
-         'b50f6d41aa017cbfcab577ed70d7b3b7'
-         '838abf762055e489afd98940ef3bcba0')
+sha256sums=('c147953bd4e10ea3a74d9b4add59f18fc0bed093016a53a1d33ea2b9065cdc23'
+            '8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
+            '06ebe161af3e761f2e2e35a67c6c0af27bf61aea7cd4ba8b28372ced5e3b3175'
+            'c61cf4fefeb2a3b4c5eaba61123546e03f87c701466e8dad2c9262433f13b2d5'
+            '305f379da1d5fb5aefa79e45c829852ca6983c7cd2a79328f8e084a324cf0416'
+            'SKIP'
+            'SKIP'
+            '8327150864ca267b735d550d3304030efbbd863fdddfe0a94e970f249a8827ee'
+            '279e0d8a46d3b1521fd43b3f78bc1c08b263899142a7cc5058c1c0361a92c89c'
+            '1e81453942e5b0877de1f1f06c56ae82918ea9818255cb935bcb673c95a758a1'
+            '7dfecce1856b20157905f4f1fa419dc48858e5336b2c3701d1523b4abf54685b'
+            'd5921ea7ab4f4a77b9fe360721304238e3efb653ecd3c887291f1521e84e8c7b'
+            '135a58c527d00020eaabdc3fd3645601a35876a72fc7cdbe479de6a8458dafc4'
+            '13befeb7b4509abff0c0b2d4c76af4b4f9bc33f38153091d1bd85279e23453c6'
+            '77676842919134af88a7b4bfca4470223e3a00d287d17c0dbdc9a114a685b6e7'
+            '87d4f70349f3ab2c1ec60656b4ff1c9a3df738d74240048283a9acb9574f871a'
+            '97408b04bf7395ab34d7b5baed95ae3dc928746213ca02590773b66a7697a7dc'
+            'ce5860791ccbe5ad372332157004be649239110f453ae2c27fc0322f27de20e6'
+            'd428a0236c933779cb40ac8c91afb19d5c25a376dc3caab825bfd543e1ee530d'
+            '0b3c95d250772dc89ad8b49e47c1e024c5ae2c76c0cffa445e9fe05c4dd13495'
+            'ae006b875e23d9ddc9c481d301c21b8a1775e578171e910890facc9e26bfbee2')
 
 prepare() {
   mv ngx-fancyindex-* ${_fancyindex_dirname}
