@@ -4,7 +4,7 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.22.1.r1074.4a1e47e
+pkgver=0.24.3.r1153.b52c6ff
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard"
 arch=('i686' 'x86_64')
@@ -12,8 +12,11 @@ url="http://drobilla.net/software/lilv"
 license=("custom:ISC")
 depends=('sratom' 'python-numpy')
 makedepends=('subversion' 'swig')
-optdepends=("bash-completion: auto-complete words")
-provides=("${_pkgname}")
+optdepends=(
+    "bash-completion: auto-complete words"
+    "libsndfile: lv2apply utility"
+)
+provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}" "${_pkgname}-svn")
 source=("${_pkgname}::git+http://git.drobilla.net/${_pkgname}.git")
 md5sums=('SKIP')
