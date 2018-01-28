@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=64.0.3282.119
-pkgrel=10
+pkgrel=12
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -251,11 +251,7 @@ prepare() {
   fi
   echo "LASTCHANGE=$_chrome_build_hash-" >build/util/LASTCHANGE
 
-  # Enable support for the Widevine CDM plugin
-  # libwidevinecdm.so is not included, but can be copied over from Chrome
-  # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
-  sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
-    patch -Np1
+
 
 patch -Np1 -i ../001.patch
 patch -Np1 -i ../002.patch
