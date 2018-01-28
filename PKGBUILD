@@ -3,7 +3,7 @@
 # Contributor: stef204 <https://aur.archlinux.org/account/stef204>
 
 pkgname='borgmatic'
-pkgver=1.1.11
+pkgver=1.1.14
 pkgrel=2
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
@@ -13,15 +13,12 @@ depends=('borg' 'python-pykwalify' 'python-ruamel-yaml')
 makedepends=('git' 'python-setuptools' 'python-tox')
 provides=('borgmatic')
 install="${pkgname}.install"
-# Main repository moved over to gittea. Switch to using commits until tags are
-# fixed:
-_commit='3e26e70d0c188641efa978d777202064c7200b99'
 source=(
-  "git+https://projects.torsion.org/witten/borgmatic.git#commit=${commit}"
+  "${pkgname}-${pkgver}.tar.gz::https://projects.torsion.org/witten/borgmatic/archive/${pkgver}.tar.gz"
   "${pkgname}.install"
 )
 sha256sums=(
-  'SKIP'
+  '9436b10bd245f73a529ca91d98b98bdc047e268efbdfb619dd5c65b477af043a'
   '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b'
 )
 
