@@ -40,7 +40,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   printf '%s\n' \
   '#!/bin/sh' \
-  'exec electron /usr/lib/draw.io "$@"' \
+  'exec electron /usr/lib/draw.io "$@" > /dev/null 2> /dev/null' \
   > "$pkgdir/usr/bin/draw.io"
   chmod a+x "$pkgdir/usr/bin/draw.io"
 
@@ -50,7 +50,7 @@ package() {
   '[Desktop Entry]' \
   'Name=draw.io' \
   'Comment=draw.io desktop' \
-  'Exec=/bin/bash -c '"'"'exec /usr/bin/draw.io "$@" > /dev/null 2> /dev/null'"'"' bash %U' \
+  'Exec=/usr/bin/draw.io %U' \
   'Terminal=false' \
   'Type=Application' \
   'Icon=draw.io' \
