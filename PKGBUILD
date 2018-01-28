@@ -5,7 +5,7 @@
 
 pkgbase=linux-x205ta
 _srcname=linux-4.14
-pkgver=4.14.14
+pkgver=4.14.15
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -36,7 +36,7 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '62d656b98f0dc143216cb9650bd9b96cd83d92925731e9f0bec5eb4d6358e603'
+            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
             'SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -49,7 +49,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'ad0f318809d074ee387f48fdfcb711b0fa3eb378867ac65c6da3d490834e649d'
             'f69b0f127f8f1a2b4b34dedaf3c37ef3e561e75fea4de031993341a93c0456d9'
             '139b6357a092ecc0284ba8f4440f7babcb6f5ac81a52420ad950de4cd2f281dd'
-            '6462a384cd181ccc48c87305da67bc50606537efbaeaafab5992975c6ea9256a')
+            'bc5a0627d2ece60073ad93a14c8710dec0fdd22fb0455a159ac219fef813c211')
 
 
 _kernelname=${pkgbase#linux}
