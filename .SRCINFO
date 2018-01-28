@@ -5,6 +5,7 @@ pkgbase = sc-im-git
 	url = https://github.com/andmarti1424/sc-im
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = BSD
 	depends = libxml2
 	depends = libzip
