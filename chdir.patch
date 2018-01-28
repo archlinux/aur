@@ -1,5 +1,5 @@
---- mitmf.py	2015-12-10 21:33:55.685686688 +0100
-+++ mitmf.py	2015-12-10 21:34:13.124298820 +0100
+--- mitmf.py	2018-01-28 11:29:57.104044000 +0100
++++ mitmf.py	2018-01-28 11:30:44.495220869 +0100
 @@ -25,6 +25,7 @@
  import argparse
  import sys
@@ -8,10 +8,3 @@
  import threading
  import core.responder.settings as settings
  
-@@ -179,4 +180,4 @@
-     reactor.run()
-     print "\n"
- 
--    shutdown()
-\ No newline at end of file
-+    shutdown()
