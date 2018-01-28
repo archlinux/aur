@@ -1,7 +1,7 @@
 pkgbase = perl-ppi
 	pkgdesc = Parse, Analyze and Manipulate Perl (without perl)
-	pkgver = 1.224
-	pkgrel = 2
+	pkgver = 1.236
+	pkgrel = 1
 	url = http://search.mcpan.org/dist/PPI
 	arch = any
 	license = PerlArtistic
@@ -19,9 +19,8 @@ pkgbase = perl-ppi
 	depends = perl-task-weaken
 	depends = perl>=5.6.0
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/M/MI/MITHALDU/PPI-1.224.tar.gz
-	md5sums = 527b70bb15263c4f3907d6d4b5be6dba
-	sha512sums = 7c5f4a01b3d4a1e7e2f68d7e5c81368387fbe9a4cd2f20afc494706f742c9ba0b293747b692fb77af9a1457e077687c7d5217bf09137ab71bb50ba52da24431c
+	source = http://search.mcpan.org/CPAN/authors/id/M/MI/MITHALDU/PPI-1.236.tar.gz
+	sha512sums = 93a7f4059b12156bdcba77958c17841ab43d85cb0045d0c58d087d6e637e09e253a559cfe465d9d8699329098582759cb8381978c121b9661a9a755e919dece1
 
 pkgname = perl-ppi
 
