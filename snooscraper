@@ -193,7 +193,7 @@ getsub () {
 	if ! ping -c1 elastic.pushshift.io > /dev/null 2>&1; then echo "pushshift.io API is down, try again later. Aborting."; exit 1; fi
 	mkdir -p "$sub"; cd "$sub" || exit
 	trap 'echo "Interrupted, removing temporary files and finishing early."; rm -f temp found; exit 1' INT
-	find . -type f -printf "%f\\n" | sed 's/[\.-].*//g' | sort -u | sed ':r;s/^0//g;tr' > found
+	find . -type f | sed -e 's/.*\///g' -e 's/[\.-].*//g' -e ':r;s/^0//g;tr' | sort -u > found
 	if [ "$limit" -gt 0 ] && [ "$limit" -le "$per" ]; then per=$limit; fi
 	echo "done."
 
