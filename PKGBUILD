@@ -23,6 +23,8 @@ md5sums=('SKIP'
          'a5952b62a60d951948f9776aefa4715c')
 install="transmission-i2p.install"
 
+#options=(debug)
+
 pkgver() {
   cd "$srcdir/$_gitname"
   #echo $(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
@@ -43,7 +45,12 @@ prepare() {
 build() {
   cd "$srcdir/$_gitname"
 
-  CFLAGS="-D_LINUX_QUOTA_VERSION=2" \
+  if check_option "debug" "y"
+  then
+        DEBUG_CFLAGS="-D_DEBUG "
+  fi
+
+  CFLAGS="$DEBUG_CFLAGS -D_LINUX_QUOTA_VERSION=2 " \
   LDFLAGS="-L/usr/lib/openssl-1.0" \
   OPENSSL_CFLAGS="-I/usr/include/openssl-1.0" \
   ./configure --prefix=$pkgdir/usr \
