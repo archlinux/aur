@@ -12,7 +12,7 @@ optdepends=('monero: wallet')
 makedepends=('cmake' 'libuv' 'libmicrohttpd')
 conflicts=('xmrig-bin' 'xmrig')
 license=('GPL')
-backup=("etc/${pkgname}/xmrig.conf")
+backup=("etc/xmrig/xmrig.conf")
 source=("xmrig.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('2107c5ca279a1184d0052a9e4fce4d70f0472354807adb1faa1fd6ff3925cdac'
