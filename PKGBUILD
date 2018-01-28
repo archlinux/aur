@@ -1,14 +1,13 @@
 # Maintainer: Johannes Sjölund <j dot sjolund at gmail dot com>
 pkgname=truestudio
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible and extensible Arm development and debugging IDE by Atollic."
 arch=('x86_64')
 url="https://atollic.com/truestudio/"
 license=(custom)
-depends=('java-runtime' 'lib32-glibc' 'libusb' 'ncurses5-compat-libs')
+depends=('java-runtime' 'lib32-glibc' 'libusb' 'ncurses5-compat-libs' 'webkit2gtk')
 options=(!strip)
-install=$pkgname.install
 source=(http://download.atollic.com/TrueSTUDIO/installers/Atollic_TrueSTUDIO_for_STM32_linux_x86_64_v${pkgver}_20180117-1023.tar.gz)
 sha256sums=('450a1ae159ff58799af9a8190b801ac11c02e11c1578d23120689074c60a444b')
 
@@ -60,19 +59,5 @@ Terminal=false
 StartupNotify=true
 Type=Application
 Categories=Development
-EOF
-
-	cat <<EOF > "${pkgdir}/usr/share/applications/TrueSTUDIO-licensemanager-x86_64-${pkgver}.desktop"
-[Desktop Entry]
-Name=License Manager for Atollic TrueSTUDIO ${pkgver}
-Comment=License Manager for Atollic TrueSTUDIO ${pkgver}
-GenericName=License Manager for TrueSTUDIO
-Exec=/opt/${pkgname}/ide/licensemanager %F
-Icon=/opt/${pkgname}/ide/TrueSTUDIO.ico
-Path=/opt/${pkgname}/ide/
-Terminal=false
-StartupNotify=true
-Type=Application
-Categories=System;Utility;Settings
 EOF
 }
