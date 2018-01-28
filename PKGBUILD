@@ -2,7 +2,7 @@
 
 pkgname=pymakr_ide
 pkgver=1.0.0b8
-pkgrel=2
+pkgrel=3
 pkgdesc="Pymakr IDE for WiPy IOT boards"
 url="https://www.pycom.io/"
 license=('unknown')
@@ -13,5 +13,8 @@ md5sums=('d339903241b28220476b4fd6661c588e')
  
 package() {
   cd $srcdir
-  cp -r usr $pkgdir/
+  tar xJf data.tar.xz
+  cp -r . $pkgdir/
+  rm $pkgdir/data.tar.xz $pkgdir/control.tar.gz
+  # ls $pkgdir
 }
