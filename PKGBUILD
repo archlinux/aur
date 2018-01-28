@@ -19,10 +19,9 @@ source=("git+https://github.com/l-n-s/transmission-i2p.git"
         "transmission-i2p.service")
 md5sums=('SKIP'
          'e8b2a730396b9e1e90acb4424d704063'
-         '8ca7b41404b7e7a6dc0818ebf473e8e2'
-         'f62153e9e02b0bd0df612feee80da12e')
+         'e801960cbf81ceb246108ca7edd8086f'
+         'a5952b62a60d951948f9776aefa4715c')
 install="transmission-i2p.install"
-#backup=("etc/.conf")
 
 pkgver() {
   cd "$srcdir/$_gitname"
