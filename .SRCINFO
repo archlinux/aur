@@ -1,9 +1,10 @@
 pkgbase = freeradius-client
 	pkgdesc = FreeRADIUS Client Software
 	pkgver = 1.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.freeradius.org/Radiusclient
 	arch = x86_64
+	arch = i686
 	license = BSD
 	depends = sh
 	source = freeradius-client-1.1.7.tar.gz::https://github.com/FreeRADIUS/freeradius-client/archive/release_1_1_7.tar.gz

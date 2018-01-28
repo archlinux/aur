@@ -1,12 +1,11 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Kalidarn
 
 pkgname=freeradius-client
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeRADIUS Client Software"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://wiki.freeradius.org/Radiusclient"
 license=('BSD')
 depends=('sh')
