@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=64.0.3282.119
-pkgrel=15
+pkgrel=16
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -350,7 +350,7 @@ patch -Np1 -i ../k1.patch
 
   patch -Np1 -i ../gnb.patch
 
- patch -Np1 -i ../hell.patch
+
 
 
   # Fixes from Gentoo
