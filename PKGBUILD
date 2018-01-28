@@ -33,14 +33,14 @@ build() {
 package() {
   cd "$srcdir/drawio-$pkgver"
 
-  mkdir -p "$pkgdir/usr/share/webapps"
-  cp -rp . "$pkgdir/usr/share/webapps/draw.io"
+  mkdir -p "$pkgdir/usr/lib"
+  cp -rp . "$pkgdir/usr/lib/draw.io"
 
   # create run script
   mkdir -p "$pkgdir/usr/bin"
   printf '%s\n' \
   '#!/bin/sh' \
-  'exec electron /usr/share/webapps/draw.io "$@"' \
+  'exec electron /usr/lib/draw.io "$@"' \
   > "$pkgdir/usr/bin/draw.io"
   chmod a+x "$pkgdir/usr/bin/draw.io"
 
