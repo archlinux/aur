@@ -1,8 +1,9 @@
 #!/bin/sh
 
 #SnooScraper - scrape reddit posts for content fitting certain criteria, and commonly used image sites
-#Copyright 2018 Oliver Galvin <odg@riseup.net>
-
+#
+# Copyright 2018 Oliver Galvin <odg@riseup.net>
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -182,16 +183,31 @@ getalbum () {
 	esac
 }
 
+getuser () {
+	user=$1
+	if [ -z "$user" ]; then echo "No username given. Aborting."; exit 1; fi
+	echo "Scraping ${target} posts from /u/${user} matching your criteria."
+	echo
+	user="author:${user}"
+	getreddit "$user"
+}
+
 getsub () {
-	sub=$1; page=0; max=1000; per=$max; before=$(date +%s)
+	sub=$1
 	if [ -z "$sub" ]; then echo "No subreddit given. Aborting."; exit 1; fi
 	echo "Scraping ${target} posts from /r/${sub} matching your criteria."
 	echo
+	sub="subreddit:${sub}"
+	getreddit "$sub"
+}
+
+getreddit () {
+	criteria=$1; page=0; max=1000; per=$max; before=$(date +%s); given=${criteria#*:}
 
 	printf "Initialising... "
 	api="https://elastic.pushshift.io/rs/submissions/_search/?sort=created_utc:desc&_source=url,permalink,created_utc"
 	if ! ping -c1 elastic.pushshift.io > /dev/null 2>&1; then echo "pushshift.io API is down, try again later. Aborting."; exit 1; fi
-	mkdir -p "$sub"; cd "$sub" || exit
+	mkdir -p "$given"; cd "$given" || exit
 	trap 'echo "Interrupted, removing temporary files and finishing early."; rm -f temp found; exit 1' INT
 	find . -type f | sed -e 's/.*\///g' -e 's/[\.-].*//g' -e ':r;s/^0//g;tr' | sort -u > found
 	if [ "$limit" -gt 0 ] && [ "$limit" -le "$per" ]; then per=$limit; fi
@@ -200,7 +216,7 @@ getsub () {
 	#Loop for each subreddit page
 	until [ "$tally" -ge "$target" ] && [ "$target" -gt 0 ] || [ "$per" -le 0 ] || [ "$before" = "null" ]; do
 		printf "Getting JSON data... "
-		url="${api}&size=${per}&q=(subreddit:${sub}%20AND%20created_utc:%3C${before})"
+		url="${api}&size=${per}&q=(${criteria}%20AND%20created_utc:%3C${before})"
 		curl -sk --retry 1 "$url" -o temp
 		list=$(jq -j '.hits.hits[]._source | .url + ",",(.permalink | split("/")[4] + "\n")' temp | grep -vf found | sed 's/amp;//g')
 		[ "$gif" = 0 ] && list=$(echo "$list" | grep -v -e 'gfycat' -e '\.gif')
@@ -271,27 +287,31 @@ getsub () {
 	echo "done."
 
 	echo
-	echo "Saved content from ${tally} posts to $(pwd)/${sub}"
-	[ "$per" -le 0 ] && echo "Reached the limit of posts to search and could not find enough posts matching your criteria."
+	echo "Saved content from ${tally} posts to $(pwd)/${given}"
+	if [ "$per" -le 0 ] && [ "$tally" -lt "$target" ]; then
+		echo "Reached the limit of posts to search and could not find enough posts matching your criteria."
+	fi
 	[ "$before" = "null" ] && echo "Ran out of posts in the subreddit to search, could not find enough posts."
 }
 
 case $1 in
 	-s|--sub) getsub "$2" ;;
+	-u|--user) getuser "$2" ;;
 	-c|--clean) clean "$2" ;;
 	-i|--instagram) getinsta "$url" ;;
 	-a|--album) getalbum "$url" ;;
 	-t|--tumblr) gettumblr "$url" ;;
 	-h|--help|'')
 	echo "
-Usage: ${progname} [-s subreddit] [-c subreddit] [-a URL] [-i URL] [-t URL] [-h]
+Usage: ${progname} [-s subreddit] [-u username] [-c subreddit/username] [-a URL] [-i URL] [-t URL] [-h]
 
-Download posts (eg. images) fitting certain criteria from a subreddit, and commonly linked sites
+Download posts (eg. images) fitting certain criteria from reddit, and commonly linked sites
 
 Arguments:
 	-h, --help	Display this message and exit
 	-s, --sub	Scrape posts from the given subreddit
-	-c, --clean	Tidy reposts/failures from a subreddit dump
+	-u, --user	Scrape posts by the given user
+	-c, --clean	Tidy reposts/failures from a subreddit/user dump
 	-a, --album	Download all images in an Imgur album at URL
 	-i, --instagram	Download images/videos from an Instagram post at URL
 	-t, --tumblr	Download all images in a Tumblr post at URL
