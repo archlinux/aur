@@ -3,7 +3,7 @@
 pkgname=kubernetes-built
 pkgnameorg=kubernetes
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgrelorg=1
 _contribver=0.7.0
 _contribdate="2017-10-01"

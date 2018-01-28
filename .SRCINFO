@@ -1,7 +1,7 @@
 pkgbase = kubernetes-built
 	pkgdesc = Production-Grade Container Scheduling and Management - binary version of aur-kubernetes
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kubernetes.io/
 	arch = x86_64
 	license = APACHE
