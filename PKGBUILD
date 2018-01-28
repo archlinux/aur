@@ -1,7 +1,8 @@
+# Maintainer : Leonidas Spyropoulos <artafinde at gmail com>
+# Contributor: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
-# Previous Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
-# Previous Maintainer: Mario J Steele <mario@ruby-im.net>
-# Maintainer: Miguel Revilla <yo@miguelrevilla.com>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Contributor: Mario J Steele <mario@ruby-im.net>
 
 pkgname=dvdstyler
 pkgver=3.0.4
