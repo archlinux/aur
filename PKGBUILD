@@ -7,8 +7,8 @@
 pkgname=inox-beta
 pk=bnox
 name=chromium
-pkgver=64.0.3282.133
-pkgrel=2
+pkgver=64.0.3282.119
+pkgrel=3
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -114,7 +114,7 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/edgy.patch
 )
 
 
-sha256sums=('cffa16a5a49bb9c0813306b261b90ab1ec549a9d98fe64731afe28ebf535e16b'
+sha256sums=('eb6db09426acab82cb328a252cd9baff3765e32407013441c25819b87dedfab9'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -127,7 +127,7 @@ sha256sums=('cffa16a5a49bb9c0813306b261b90ab1ec549a9d98fe64731afe28ebf535e16b'
             '5c8c3ad7d5b4ebda7508e3aee13349fc8ad627d7a7e3147168e214f03e433168'
             '885bd27063ebc43b7030e9d9d364a46a248c4744f66c466017b42a83a279e6ab'
             '8696919f69ef927f095944ae7ef869b283450a4b2cdd4efdebc51fc2b1e747e0'
-            'a4001820866b9b29ef7f670728e99e7d79c7d3301898b26062bb1c91acdb13e5'
+            'b9899b26e65a6fc376bffd8cb685667b0ec1b04e90c8250f40c969bf4602c5a0'
             'fd5fdc83665113677951e2e713a4696d999a070d6b59bb57319df357b35d4fad'
             '3850ad42d0cb4ca011d46b9d569a0a2bf83476f0c3da70c74d4f011cec59f885'
             '7beb0f3bbc55960092347767d423415860a3867525f6d1bbb057b3d72fae0618'
@@ -156,9 +156,9 @@ sha256sums=('cffa16a5a49bb9c0813306b261b90ab1ec549a9d98fe64731afe28ebf535e16b'
             '6a016da94025ddf28f589e86c953b9eb7561d97709871231c96b0fe7f0778cb7'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '1e9fc91a973977bdd03fddb65610f34e60a0fbd357033137dbb12f4657b14cf8'
-            '6f0768e13f2218597f7c39f4398381934333ec302756147e488defa01cbb1c4c'
+            'e5f43c7014d140fd6b4c6cf478ae4edb107d963b8868dda0e19f74523f7385da'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
-            '80d2974001708c288a54c24e1dc896ef25916552b740765f6066a244c05ffcd5'
+            'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
             '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
             '8f7d2baca6d96b1e668c8c2bcb1efe5daa0e1cb33de89e12165ea22c73ce8741'
@@ -166,14 +166,14 @@ sha256sums=('cffa16a5a49bb9c0813306b261b90ab1ec549a9d98fe64731afe28ebf535e16b'
             'f79555d6517335891dd74521189b6f3eca543a02699c34fbb92c874b4f080674'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
-            '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
-            '4a533acefbbc1567b0d74a1c0903e9179b8c59c1beabe748850795815366e509'
-            '7b88830c5e0e9819f514ad68aae885d427541a907e25607e47dee1b0f38975fd'
-            '8c10e3b03b13555b461add586422472e0a96d3af49a078d6d952bc0719ba9d94'
-            'cc08b771d83b7434c3173c27419bc7d1d4ee375256f3169ef2b9333ba1f2beeb'
-            '53a1e8da18069eb4d6ab3af9c923c22a0f020241a4839c3140e3601052ddf6ff'
-            '896993987d4ef9f0ac7db454f288117316c2c80ed0b6764019afd760db222dad'
-            '3df9b3bbdc07fde63d9e400954dcc6ab6e0e5454f0ef6447570eef0549337354'
+            '52a3e05fed6d7486a15c336ba57180218e040b38702ab4ef79d97e2a2c293162'
+            '5c1f367e4b5d73401eedb0cb9e872e1955c6f0d4c3720c08afd2a74b54c8dd61'
+            '18ad268d9ad1ec4ae136f38ce0a2079820b63528ba062c63210fe44759a6d2f0'
+            '73e3a7865b98ab3bfebca6d1f31c5387e0719288fb47fd98b543063dadaaae19'
+            'b030b9fe17daf854b90693efab696c56ce62aef0796a50334b8354fdf953ac5a'
+            'fe491bdc640b1d56f76319885399cd83d1935a61c0036ca9765ab40c5ce13b3b'
+            '07e7b3b432b8f5398909f1250c595adb9ecc69a47e4d3a9bf3cf88c3893b22fc'
+            '51ee1c87a7889f9fae1fd0ecad57d97394cc89b1cea83bafdbaa8992a87e6561'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
             '33369c2c13df92b16759a4ec56650cc52353110454775016bde277c1bce96ee5'
@@ -207,8 +207,7 @@ sha256sums=('cffa16a5a49bb9c0813306b261b90ab1ec549a9d98fe64731afe28ebf535e16b'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
-            '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d'
-            '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
+            '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d')
 
 
 
@@ -252,7 +251,11 @@ prepare() {
   fi
   echo "LASTCHANGE=$_chrome_build_hash-" >build/util/LASTCHANGE
 
-
+  # Enable support for the Widevine CDM plugin
+  # libwidevinecdm.so is not included, but can be copied over from Chrome
+  # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
+  sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
+    patch -Np1
 
 patch -Np1 -i ../001.patch
 patch -Np1 -i ../002.patch
@@ -349,6 +352,7 @@ patch -Np1 -i ../k1.patch
   # Fix build with glibc 2.26
 
   patch -Np1 -i ../gnb.patch
+
 
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
