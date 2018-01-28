@@ -8,7 +8,7 @@ pkgname=inox-edgy
 pk=enox
 name=chromium
 pkgver=66.0.3333.0
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
 arch=('i686' 'x86_64')
@@ -113,6 +113,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/pt.patch
 https://raw.githubusercontent.com/bn0785ac/in-night/master/edgy.patch
 https://raw.githubusercontent.com/bn0785ac/in-night/master/k2.patch
 https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
+https://raw.githubusercontent.com/bn0785ac/in-night/master/hell.patch
 )
 
 
@@ -212,7 +213,10 @@ sha256sums=('adfee341c26d6f0c38a3ed98d836c415a40f751041e7a329dcf9518cf310ec0c'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
-            '1ddbbdfd1b7cf45920d57898ee2ec9bc33a91267c933621ba17cfefd6af7c2ba')
+            '1ddbbdfd1b7cf45920d57898ee2ec9bc33a91267c933621ba17cfefd6af7c2ba'
+            '2716f2b1905dd909a82d29c942e130618d904bb7e36f03d14d4153e596b7655f')
+
+
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -358,6 +362,7 @@ patch -Np1 -i ../edgy.patch
 patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
 #patch -Np1 -i ../desu.patch
+ patch -Np1 -i ../hell.patch
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
   

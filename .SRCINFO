@@ -1,7 +1,7 @@
 pkgbase = inox-edgy
 	pkgdesc = A web browser built for speed, simplicity, and security, always nightly!, its canary
 	pkgver = 66.0.3333.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = inox-edgy.install
 	arch = i686
@@ -140,6 +140,7 @@ pkgbase = inox-edgy
 	source = https://raw.githubusercontent.com/bn0785ac/in-night/master/edgy.patch
 	source = https://raw.githubusercontent.com/bn0785ac/in-night/master/k2.patch
 	source = https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
+	source = https://raw.githubusercontent.com/bn0785ac/in-night/master/hell.patch
 	sha256sums = adfee341c26d6f0c38a3ed98d836c415a40f751041e7a329dcf9518cf310ec0c
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
 	sha256sums = 2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb
@@ -237,6 +238,7 @@ pkgbase = inox-edgy
 	sha256sums = 042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da
 	sha256sums = cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80
 	sha256sums = 1ddbbdfd1b7cf45920d57898ee2ec9bc33a91267c933621ba17cfefd6af7c2ba
+	sha256sums = 2716f2b1905dd909a82d29c942e130618d904bb7e36f03d14d4153e596b7655f
 
 pkgname = inox-edgy
 
