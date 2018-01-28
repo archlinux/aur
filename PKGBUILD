@@ -18,7 +18,7 @@ package(){
 	# Extract package data
 	mkdir ${srcdir}/extracted
 	tar xvzf Zec.miner.${_pkggit}.Linux.Bin.tar.gz -C "${srcdir}"
-#	mkdir -p "${pkgdir}/etc/ewbf-miner"
+	mkdir -p "/etc/ewbf-miner"
 #	mv ${srcdir}/{miner.cfg,Help.txt} ${pkgdir}/etc/ewbf-miner
 	install -D -m755 "$srcdir/miner "/usr/bin/ewbf-miner"
 	install -D -m644 "$srcdir/{miner.cfg},Help.txt} "/etc/ewbf-miner"
