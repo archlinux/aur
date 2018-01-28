@@ -1,9 +1,12 @@
 [Desktop Entry]
 Type=Application
-Categories=Application;Office;Database;
+Version=1.1
 Name=TreeLine
-Comment=TreeLine outliner and database manager
-Icon=/usr/share/icons/treeline/tree/treelogo.png
-Terminal=false
+GenericName=Outliner
+Comment=Organize text information in a tree structure
 Exec=treeline %f
+Icon=treeline-icon
+StartupNotify=true
+Terminal=false
+Categories=Office;TextTools;
 MimeType=application/x-treeline;
