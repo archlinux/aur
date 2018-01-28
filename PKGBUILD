@@ -1,4 +1,4 @@
-# Maintainer: Jake <ja.ke@posteo.de>
+# Maintainer: Jake <aur@ja-ke.tech>
 # Based on searx-git, thanks to: 
 # Jean Lucas <jean at 4ray dot co> and Reventlov <contact+aur at volcanis dot me>
 
