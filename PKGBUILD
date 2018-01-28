@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=xtables-geoip-db
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="GeoIP Database for xtables."
 arch=('any')
 license=('BSD' 'GPL')
