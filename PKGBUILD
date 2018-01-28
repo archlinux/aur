@@ -1,14 +1,14 @@
 # $Id: PKGBUILD 273896 2017-12-11 20:04:09Z jlichtblau $
-# Maintainer: 
+# Maintainer: Evgeny Kurnevsky <kurnevsky@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=motion
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A software motion detector which grabs images from video4linux devices and/or from webcams"
 arch=('x86_64')
 license=('GPL')
-url="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome"
+url="https://motion-project.github.io"
 depends=('sqlite' 'ffmpeg')
 backup=('etc/motion/motion.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Motion-Project/motion/archive/release-$pkgver.tar.gz")

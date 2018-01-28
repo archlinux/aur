@@ -1,8 +1,8 @@
 pkgbase = motion
 	pkgdesc = A software motion detector which grabs images from video4linux devices and/or from webcams
 	pkgver = 4.1.1
-	pkgrel = 1
-	url = http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
+	pkgrel = 2
+	url = https://motion-project.github.io
 	arch = x86_64
 	license = GPL
 	depends = sqlite
