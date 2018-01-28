@@ -41,7 +41,7 @@ prepare() {
 package() {
     [ "$CARCH" = 'x86_64' ] && _kubearch=amd64
 
-    binaries=(apiextensions-apiserver cloud-controller-manager kube-proxy kube-apiserver kube-controller-manager kubelet kubeadm kubemark hyperkube kube-aggregator kube-scheduler kubectl kubemark gke-certificates-controller)
+    binaries=(apiextensions-apiserver cloud-controller-manager kube-proxy kube-apiserver kube-controller-manager kubelet kubefed kubeadm kubemark hyperkube kube-aggregator kube-scheduler kubectl kubemark gke-certificates-controller)
     for bin in "${binaries[@]}"; do
         install -Dm755 $srcdir/usr/bin/$bin $pkgdir/usr/bin/$bin
     done
