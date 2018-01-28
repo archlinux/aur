@@ -2,14 +2,14 @@
 
 pkgname=('python-bittrex' 'python2-bittrex')
 _pkgname=${pkgname[0]}
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Python bindings for bittrex'
 url='https://github.com/ericsomdahl/python-bittrex'
 license=('MIT')
 arch=('any')
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('b4499255d2498b266416b0f063397b86')
+md5sums=('8588f8b2d9059e113398ebc0ad0a7f31')
 
 package_python-bittrex() {
   depends=('python-requests')
