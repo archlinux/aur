@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=libindy-crypto
-pkgver=1.3.0
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Shared crypto library for Hyperledger Indy components"
 arch=(i686 x86_64)
@@ -9,18 +9,18 @@ url="https://github.com/hyperledger/indy-crypto"
 license=('APACHE')
 depends=('')
 makedepends=('rust')
-source=("https://github.com/hyperledger/indy-sdk/archive/v$pkgver.tar.gz")
+source=("https://github.com/hyperledger/indy-crypto/archive/master.zip")
 
 build() {
-  cd $srcdir/indy-sdk-$pkgver
-  cd libindy
+  cd $srcdir/indy-crypto-master
+  cd $pkgname
   cargo build --release
 }
 
 package() {
-  cd $srcdir/indy-sdk-$pkgver
-  cd libindy
-  install -Dm755 target/release/libindy.so "$pkgdir/usr/lib/libindy.so"
+  cd $srcdir/indy-crypto-master
+  cd $pkgname
+  install -Dm755 target/release/libindy_crypto.so "$pkgdir/usr/lib/libindy_crypto.so"
   cp -r include $pkgdir/usr/include
 }
 
