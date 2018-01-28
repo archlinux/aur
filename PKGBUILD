@@ -2,7 +2,7 @@
 
 pkgname=python-fuzzyfinder
 _name=fuzzyfinder
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 license=('BSD')
 pkgdesc='Fuzzy Finder implemented in Python. Matches partial string entries from a list of strings.'
@@ -11,7 +11,7 @@ depends=('python')
 arch=('any')
 url='https://github.com/amjith/fuzzyfinder'
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('ca7d092096846fe1b4feb5ef1efc2011e87d07e8af1d948f529fa703c68016d5')
+sha256sums=('c56d86f110866becad6690c7518f7036c20831c0f82fc87eba8fdb943132f04b')
 
 package() {
   cd "$srcdir/$_name-$pkgver"

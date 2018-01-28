@@ -1,14 +1,14 @@
 pkgbase = python-fuzzyfinder
 	pkgdesc = Fuzzy Finder implemented in Python. Matches partial string entries from a list of strings.
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/amjith/fuzzyfinder
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/f/fuzzyfinder/fuzzyfinder-2.0.0.tar.gz
-	sha256sums = ca7d092096846fe1b4feb5ef1efc2011e87d07e8af1d948f529fa703c68016d5
+	source = https://files.pythonhosted.org/packages/source/f/fuzzyfinder/fuzzyfinder-2.1.0.tar.gz
+	sha256sums = c56d86f110866becad6690c7518f7036c20831c0f82fc87eba8fdb943132f04b
 
 pkgname = python-fuzzyfinder
 
