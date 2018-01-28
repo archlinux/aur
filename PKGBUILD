@@ -2,7 +2,7 @@
 
 
 pkgname=gnome-shell-extension-ubuntu-dock 
-pkgver=0.8.1
+pkgver=0.9
 pkgrel=1
 pkgdesc="The gnome extension that provides the new ubuntu dock"
 url="https://github.com/micheleg/dash-to-dock/tree/ubuntu-dock"
@@ -10,7 +10,7 @@ arch=(any)
 license=(GPL)
 depends=(gnome-shell)
 makedepends=(git)
-sha256sums=("07dff979b646ee00427045a72698ec0fb2993174e41a874471c41b2bc075c64f")
+sha256sums=("cd708d2e923e01af73d1e1d4f4c7a739469c44692c066e027cfacd2bf7269683")
 source=("http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-shell-extension-ubuntu-dock/${pkgname}_${pkgver}.tar.xz")
 
 prepare() {
