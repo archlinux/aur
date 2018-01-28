@@ -2,7 +2,7 @@
 
 _gitname=tr1pd
 pkgname=tr1pd-git
-pkgver=0.2.0.r14.g2be4c1e
+pkgver=0.2.0.r25.g6707d9d
 pkgrel=1
 pkgdesc="tamper resistant audit log"
 url="https://github.com/kpcyrd/tr1pd"
@@ -31,9 +31,9 @@ package() {
   install -Dm755 target/release/tr1pd target/release/tr1pctl -t "$pkgdir/usr/bin"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_gitname"
 
-  install -Dm644 "docs/tr1pd.service" "$pkgdir/usr/lib/systemd/system/tr1pd.service"
-  install -Dm644 "docs/tr1pd-sysuser.conf" "$pkgdir/usr/lib/sysusers.d/tr1pd.conf"
-  install -Dm644 "docs/tr1pd-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/tr1pd.conf"
+  install -Dm644 "contrib/tr1pd.service" "$pkgdir/usr/lib/systemd/system/tr1pd.service"
+  install -Dm644 "contrib/tr1pd-sysuser.conf" "$pkgdir/usr/lib/sysusers.d/tr1pd.conf"
+  install -Dm644 "contrib/tr1pd-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/tr1pd.conf"
 
   install -d "$pkgdir/etc/bash_completion.d"
   "$pkgdir/usr/bin/tr1pd" bash-completion > "$pkgdir/etc/bash_completion.d/tr1pd"
