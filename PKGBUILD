@@ -9,7 +9,7 @@ url="https://github.com/dimka665/awesome-slugify"
 license=('GPL3')
 depends=('python2' 'python2-unidecode>=0.04.14' 'python2-regex')
 makedepends=("python2-setuptools")
-source=(http://pypi.python.org/packages/source/a/$_pkgname/$_pkgname-$pkgver.tar.gz)
+source=(https://pypi.python.org/packages/source/a/$_pkgname/$_pkgname-$pkgver.tar.gz)
 md5sums=('58b9b751b4670e3c221f008dd61348a8')
 
 package() {
