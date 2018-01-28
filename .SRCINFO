@@ -1,7 +1,7 @@
 pkgbase = gimp-gtk3-git
 	pkgdesc = GNU Image Manipulation Program
 	pkgver = 2.9.4.r1949.g3762480587
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gimp.org
 	arch = i686
 	arch = x86_64
@@ -47,7 +47,9 @@ pkgbase = gimp-gtk3-git
 	options = !libtool
 	options = !makeflags
 	source = git+https://git.gnome.org/browse/gimp#branch=gtk3-port
+	source = linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ginux.gpl?h=packages/gimp
 	md5sums = SKIP
+	md5sums = bb27bc214261d36484093e857f015f38
 
 pkgname = gimp-gtk3-git
 
