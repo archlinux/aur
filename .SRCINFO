@@ -1,0 +1,15 @@
+pkgbase = rpglefmt-git
+	pkgdesc = Format Free Form ILE RPG programs
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/andlrc/rpglefmt
+	arch = any
+	license = GNU
+	makedepends = git
+	makedepends = make
+	provides = rpglefmt
+	source = rpglefmt::git+git://github.com/andlrc/rpglefmt#branch=master
+	md5sums = SKIP
+
+pkgname = rpglefmt-git
+
