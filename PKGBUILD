@@ -15,10 +15,12 @@ provides=(transmission-i2p)
 conflicts=(transmission-i2p)
 source=("git+https://github.com/l-n-s/transmission-i2p.git"
         "m4-glib-gettext.patch"
+        "utp-debug.patch"
         "settings.json"
         "transmission-i2p.service")
 md5sums=('SKIP'
          'e8b2a730396b9e1e90acb4424d704063'
+         'f554af5f5b1c200f1464122fad1c2272'
          'e801960cbf81ceb246108ca7edd8086f'
          'a5952b62a60d951948f9776aefa4715c')
 install="transmission-i2p.install"
@@ -35,6 +37,7 @@ prepare() {
   cd "$srcdir/$_gitname"
 
   patch -p1 < ../m4-glib-gettext.patch
+  patch -p1 < ../utp-debug.patch
 
   rm missing
 

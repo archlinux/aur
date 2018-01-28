@@ -1,0 +1,24 @@
+diff --git a/third-party/libutp/utp.h b/third-party/libutp/utp.h
+index 0086d4c..b0f6e5b 100644
+--- a/third-party/libutp/utp.h
++++ b/third-party/libutp/utp.h
+@@ -130,17 +130,17 @@ void UTP_GetDelays(struct UTPSocket *socket, int32 *ours, int32 *theirs, uint32
+ 
+ size_t UTP_GetPacketSize(struct UTPSocket *socket);
+ 
+ #ifdef _DEBUG
+-struct UTPStats {
++typedef struct UTPStats {
+ 	uint64 _nbytes_recv;	// total bytes received
+ 	uint64 _nbytes_xmit;	// total bytes transmitted
+ 	uint32 _rexmit;		// retransmit counter
+ 	uint32 _fastrexmit;	// fast retransmit counter
+ 	uint32 _nxmit;		// transmit counter
+ 	uint32 _nrecv;		// receive counter (total)
+ 	uint32 _nduprecv;	// duplicate receive counter
+-};
++} UTPStats;
+ 
+ // Get stats for UTP socket
+ void UTP_GetStats(struct UTPSocket *socket, UTPStats *stats);
+ #endif
