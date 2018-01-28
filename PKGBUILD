@@ -1,6 +1,6 @@
 # Maintainer: TheGoliath
 pkgname=ewbf-miner
-pkgrel=1
+pkgrel=2
 _pkggit=0.3.4b
 pkgver=v0.3.4b
 pkgdesc="EWBF's CUDA Zcash miner"
@@ -18,8 +18,8 @@ package(){
 	# Extract package data
 	mkdir ${srcdir}/extracted
 	tar xvzf Zec.miner.${_pkggit}.Linux.Bin.tar.gz -C "${srcdir}"
-	mkdir -p "/etc/ewbf-miner"
+	mkdir -p "${pkgdir}/etc/ewbf-miner"
 #	mv ${srcdir}/{miner.cfg,Help.txt} ${pkgdir}/etc/ewbf-miner
-	install -D -m755 "$srcdir/miner "/usr/bin/ewbf-miner"
-	install -D -m644 "$srcdir/{miner.cfg},Help.txt} "/etc/ewbf-miner"
+	install -D -m755 "{srcdir}/miner "${pkgdir}/usr/bin/ewbf-miner"
+	install -D -m644 "{srcdir}/{miner.cfg},Help.txt} "${pkdir}/etc/ewbf-miner"
 }

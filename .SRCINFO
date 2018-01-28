@@ -1,7 +1,7 @@
 pkgbase = ewbf-miner
 	pkgdesc = EWBF's CUDA Zcash miner
 	pkgver = v0.3.4b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nanopool/ewbf-miner
 	arch = x86_64
 	license = https://github.com/nanopool/ewbf-miner/blob/master/README.md
