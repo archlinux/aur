@@ -16,10 +16,9 @@ sha512sums_x86_64=('435467b1286dafdf93c4d2ff5d856ab2d8253b4835660d8fc88cd9cd4fe9
 package(){
 
 	# Extract package data
-	mkdir ${srcdir}/extracted
 	tar xvzf Zec.miner.${_pkggit}.Linux.Bin.tar.gz -C "${srcdir}"
 	mkdir -p "${pkgdir}/etc/ewbf-miner"
 #	mv ${srcdir}/{miner.cfg,Help.txt} ${pkgdir}/etc/ewbf-miner
-	install -D -m755 "{srcdir}/miner "${pkgdir}/usr/bin/ewbf-miner"
-	install -D -m644 "{srcdir}/{miner.cfg},Help.txt} "${pkdir}/etc/ewbf-miner"
+	install -D -m755 "${srcdir}/miner "${pkgdir}/usr/bin/ewbf-miner"
+	install -D -m644 "${srcdir}/{miner.cfg,Help.txt} "${pkdir}/etc/ewbf-miner/"
 }
