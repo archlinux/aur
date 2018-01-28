@@ -2,32 +2,29 @@
 
 pkgname=snpeff
 pkgver=4_3t
-pkgrel=1
+pkgrel=2
 pkgdesc="Genetic variant annotation and effect prediction toolbox"
 arch=('any')
 url="http://snpeff.sourceforge.net/"
-license=('LGPLv3')
+license=('(L)GPL3')
 depends=('java-runtime>=8')
-provides=('snpeff')
-conflicts=('snpeff')
 source=(
-  "http://sourceforge.net/projects/${pkgname}/files/snpEff_v${pkgver}_core.zip"
-  "snpeff"
-  "snpsift"
+  snpEff.sh
+  SnpSift.sh
+  http://sourceforge.net/projects/"${pkgname}"/files/snpEff_v"${pkgver}"_core.zip
 )
-md5sums=(
-  '1fa84a703580a423e27f1e14a945901c'
-  '9f0415d2e713f0acffec4d88253e769d'
-  '3a2f8a17dfffca77375806d2dee12b0c'
+sha256sums=(
+  'e0ba5679a90efdb39cd9398b1db708444fd8e5321182cedf72696b3ae1e2e2b9'
+  '4bd0163c6b8864ed6ea3f20d215b0bf371e10eaa4156ffcf8429d6f71ded93e3'
+  'd55a7389a78312947c1e7dadf5e6897b42d3c6e942e7c1b8ec68bb35d2ae2244'
 )
 
 package() {
   cd "${srcdir}/"
 
-  install -Dm644 "snpEff/snpEff.jar"  "${pkgdir}/usr/share/java/snpEff_v${pkgver}/snpEff.jar"
-  install -Dm644 "snpEff/SnpSift.jar" "${pkgdir}/usr/share/java/snpEff_v${pkgver}/SnpSift.jar"
-  install -Dm644 "snpEff/snpEff.config" "${pkgdir}/usr/share/java/snpEff_v${pkgver}/snpEff.config"
-
-  install -Dm755 "snpeff" "${pkgdir}/usr/bin/snpEff"
-  install -Dm755 "snpsift" "${pkgdir}/usr/bin/SnpSift"
+  install -Dm644 snpEff/snpEff.jar  "${pkgdir}"/usr/share/java/snpEff/snpEff.jar
+  install -Dm644 snpEff/SnpSift.jar "${pkgdir}"/usr/share/java/snpEff/SnpSift.jar
+  install -Dm644 snpEff/snpEff.config "${pkgdir}"/usr/share/java/snpEff/snpEff.config
+  install -Dm755 snpEff.sh "${pkgdir}"/usr/bin/snpEff
+  install -Dm755 SnpSift.sh "${pkgdir}"/usr/bin/SnpSift
 }
