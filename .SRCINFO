@@ -1,6 +1,6 @@
 pkgbase = neph-git
 	pkgdesc = A modern command line job processor
-	pkgver = v0.1.19.r0.2965255
+	pkgver = v0.1.21.r0.6e967e7
 	pkgrel = 1
 	url = https://tbrand.github.io/neph/
 	arch = i686
