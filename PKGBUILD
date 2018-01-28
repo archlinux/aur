@@ -2,7 +2,7 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra2"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
@@ -16,7 +16,7 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
         'nzbhydra2.sysusers')
 
 sha256sums=('77ec913150e9fe9321dadadd2543627fd9d28ef2ced619b1ea1286e127f3f13a'
-            '07fe26612eed64a1c64704e963d834fdd52435fd37470325f196cab6f464c3a9'
+            'ba66d266c5be20cf13edade732207e2c276bd32e9bdfd46ef37b1139934e4c97'
             '8c864fa865c92a6e0182f4dd3d4032ad85f09d021444cca217efafecbeff33c3'
             '355dafa76d39c42f0a449080b2fe3673536e409da3f3b6c89f03c09dd303438c'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a')
