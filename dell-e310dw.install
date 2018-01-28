@@ -1,0 +1,36 @@
+post_install() {
+  __port2=`lpinfo -v | grep -i 'usb://Dell/E310dw' | head -1`
+  if [ "$__port2" = '' ];then
+          __port2=`lpinfo -v | grep 'usb://' | head -1`
+  fi
+  __port=`echo $__port2| sed s/direct//g`
+  if [ "$__port" = '' ];then
+          __port="usb:/dev/usb/lp0"
+  fi
+
+  lpadmin -p E310dw -E -v $__port -P /usr/share/cups/model/E310dw.ppd
+  if systemctl -q is-active org.cups.cupsd.service ;then
+    systemctl restart org.cups.cupsd.service
+  else
+    echo "As CUPS is not running now, start it after installation"
+    echo "and type command:"
+    echo "  lpadmin -p E310dw -E -v URL -P /usr/share/cups/model/E310dw.ppd"
+    echo "where URL can be found using command:"
+    echo "  lpinfo -v | grep -i 'Dell'"
+    echo "You can also register new printer using web interface at:"
+    echo "  http://localhost:631/"
+  fi
+}
+
+post_upgrade() {
+  /bin/true
+}
+
+pre_remove() {
+  lpadmin -x E310dw
+}
+
+op=$1
+shift
+
+$op "$@"
