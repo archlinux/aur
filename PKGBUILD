@@ -3,8 +3,8 @@
 # Original script by: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.2.4
-_build=119785
+pkgver=5.2.6
+_build=120293
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
@@ -171,7 +171,7 @@ EOF
 # vim:set ts=2 sw=2 ft=sh et:
 
 
-md5sums=('70973209cc9bc0e82e40a34362061f96'
+md5sums=('d39f07e14d78c1d22c19cb2d6cc383a6'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'
