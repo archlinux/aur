@@ -1,4 +1,5 @@
-# Maintainer: Miguel Revilla <yo@miguelrevilla.com>
+# Maintainer : Leonidas Spyropoulos <artafinde at gmail com>
+# Contributor: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: Joshua Stiefer <facedelajunk@gmail.com>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
