@@ -8,7 +8,6 @@ pkgbase = wxsvg
 	license = custom:wxWindows
 	depends = wxgtk
 	depends = ffmpeg
-	depends = ffmpeg0.10
 	depends = webkitgtk2
 	depends = libexif
 	options = !libtool
