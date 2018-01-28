@@ -3,9 +3,12 @@
 # PRE-BUILD INSTRUCTIONS:
 # -----------------------
 #
-# Replace the dummy tl-4.8.0-server.zip in the same directory
-# as the PKGBUILD with the real thing.  Download it from here:
-# https://www.cendio.com/thinlinc/download
+# There is no public mirror for tl-4.8.1-server.zip.
+# Download it by registering here:
+# https://www.cendio.com/thinlinc/download/registration
+#
+# Place the downloaded file in the same directory as this PKGBUILD.
+# You can also set up a tlserver:// DLAGENT in /etc/makepkg.conf.
 
 pkgname=thinlinc-server
 pkgver=4.8.1
@@ -26,7 +29,7 @@ optdepends=('nfs-utils: Local drive redirection'
 
 _archive_name=tl-${pkgver}-server
 
-source=("${_archive_name}.zip"
+source=("tlserver://${_archive_name}.zip"
         'LICENSE'
         'tlwebaccess.service'
         'tlwebadm.service'
@@ -40,6 +43,8 @@ sha256sums=('8a05ee7115988b0deef3cc9cf7243826844cf39f7b643e7ce83b6bc69f8e08e4'
             'a1fe20c565e7e468407d73a0f59c8c352318a7e4c8e85fe068d89cbb0afd5e71')
 
 _extract_dir="extract"
+
+DLAGENTS+=("tlserver::/usr/bin/echo Could not find %u.  Please read the PKGBUILD.")
 
 build()
 {
