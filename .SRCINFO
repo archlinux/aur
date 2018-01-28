@@ -1,0 +1,15 @@
+pkgbase = python-indy_crypto
+	pkgdesc = Official wrapper for Hyperledger Indy Crypto library
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/hyperledger/indy-crypto
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = python
+	depends = libindy-crypto
+	source = https://github.com/hyperledger/indy-crypto/archive/master.zip
+	md5sums = SKIP
+
+pkgname = python-indy_crypto
+
