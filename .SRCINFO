@@ -10,6 +10,7 @@ pkgbase = hyperledger-indy-plenum
 	makedepends = python
 	depends = python-base58
 	depends = python-indy_crypto
+	depends = python-ioflo
 	depends = python-intervaltree
 	depends = python-jsonpickle
 	depends = python-leveldb

@@ -9,8 +9,9 @@ arch=(i686 x86_64)
 url="https://github.com/hyperledger/${_pkgname}"
 license=('APACHE')
 groups=('hyperledger')
-depends=('python-base58' 'python-indy_crypto' 'python-intervaltree' 'python-jsonpickle' 'python-leveldb' 'python-libnacl' 'python-msgpack' 'python-orderedset' 'python-portalocker' 
-'python-prompt_toolkit' 'python-psutil' 'python-pygments' 'python-pysha3' 'python-pyzmq' 'python-raet' 'python-rlp' 'python-semantic-version' 'python-sortedcontainers' 'python-ujson')
+depends=('python-base58' 'python-indy_crypto' 'python-ioflo' 'python-intervaltree' 'python-jsonpickle' 'python-leveldb' 'python-libnacl' 'python-msgpack' 'python-orderedset' 
+	 'python-portalocker' 'python-prompt_toolkit' 'python-psutil' 'python-pygments' 'python-pysha3' 'python-pyzmq' 'python-raet' 'python-rlp' 'python-semantic-version' 
+	 'python-sortedcontainers' 'python-ujson')
 makedepends=('python')
 source=("https://github.com/hyperledger/${_pkgname}/archive/$pkgver-master.tar.gz")
 
