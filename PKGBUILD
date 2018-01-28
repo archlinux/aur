@@ -22,7 +22,7 @@ pkgver()
 package()
 {
 	cd "$srcdir/${pkgname%-git}"
-	make
+	make CFLAGS="-O2 -DFEAT_ICEBREAK" rpglefmt
 	install -D rpglefmt $pkgdir/usr/bin/rpglefmt
 	install -Dm644 rpglefmt.1 $pkgdir/usr/share/man/man1/rpglefmt.1
 }
