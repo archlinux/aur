@@ -2,7 +2,7 @@
 
 pkgname=collabora-online-server-nodocker
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -35,7 +35,7 @@ optdepends=(
   'hyphen-hu: Hungarian hyphenation rules for LibreOffice'
   'hyphen-pl: Polish hyphenation rules for LibreOffice'
 )
-depends=(cpio)
+depends=(cpio noto-fonts)
 source=(
   'https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/Packages'
   install
@@ -63,21 +63,19 @@ backup=(
 # From Debian’s pre/post scripts
 install=install
 
-_upstream_deps='loolwsd code-brand'
+_upstream_deps='loolwsd code-brand collaboraofficebasis5.3-calc collaboraofficebasis5.3-core collaboraofficebasis5.3-extension-pdf-import collaboraofficebasis5.3-filter-data collaboraofficebasis5.3-graphicfilter collaboraofficebasis5.3-images collaboraofficebasis5.3-impress collaboraofficebasis5.3-ooofonts collaboraofficebasis5.3-writer'
 _upstream_equiv='
   adduser             = 
   cpio                = 
   fontconfig          = fontconfig
   init-system-helpers = 
   libc6               = gcc-libs
-  libcairo2           = cairo
   libcap2             = libcap
   libcap2-bin         = libcap
   libcups2            = libcups
-  libdbus-glib-1-2    = dbus-glib
   libgcc1             = gcc-libs
   libgl1-mesa-glx     = mesa-libgl
-  libodbc1            = unixodbc
+  libpam0g            = pam
   libpng12-0          = libpng12
   libpococrypto48     = poco178
   libpocofoundation48 = poco178
@@ -89,6 +87,8 @@ _upstream_equiv='
   libsm6              = libsm
   libssl1.0.0         = openssl-1.0
   libstdc++6          = gcc-libs
+  libxcb-render0      = libxcb
+  libxcb-shm0         = libxcb
   libxinerama1        = libxinerama
   zlib1g              = zlib
 '
