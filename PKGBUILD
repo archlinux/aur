@@ -3,14 +3,13 @@
 
 pkgname=nteract-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.4.3
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Interactive literate coding notebook"
 url='https://nteract.io'
 arch=('x86_64')
 license=('BSD-3-Clause')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nodejs' 'nss' 'python')
-makedepends=('gendesk')
 optdepends=('ihaskell-git: support for Haskell'
             'julia: support for Julia (requires the "IJulia" package)'
             'python-ipykernel: support for Python 3'
@@ -19,14 +18,10 @@ optdepends=('ihaskell-git: support for Haskell'
             'sagemath-jupyter: support for SageMath')
 install=$pkgname.install
 
-source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v0.4.3/nteract_0.4.3_amd64.deb"
+source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v${pkgver}/nteract_${pkgver}_amd64.deb"
         "LICENSE")
-sha256sums=('5a2fab27241082d6fe4d1375ee8a3a33eefdc2cf5e0df0624ad8ab8adc475980'
-            '9810f3d57c552d3b3f6c82cb3b6f3402d6faf94fc5a63067fe28360fb3b8b688')
-
-prepare() {
-  gendesk -f -n --name="${_pkgname}" --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Development"
-}
+sha256sums=('05b86b032a689f6ac8919a1d18a9cb7ec920130805db1cc98b5201440f80774f'
+            '866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71')
 
 package() {
   cd "$srcdir"
@@ -42,7 +37,8 @@ package() {
   ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Place desktop entry and icons
-  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}.desktop"
+  sed -i 's/opt/usr\/lib/' "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
   install -dm755 "${pkgdir}/usr/share/icons/hicolor/"
   cp -R "${srcdir}/usr/share/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
 
