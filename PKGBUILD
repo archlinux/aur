@@ -2,7 +2,7 @@
 
 _module='shade'
 pkgname=('python-shade' 'python2-shade')
-pkgver='1.24.0'
+pkgver='1.26.0'
 pkgrel='1'
 pkgdesc='Simple client library for interacting with OpenStack clouds'
 arch=('any')
