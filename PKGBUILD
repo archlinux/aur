@@ -4,24 +4,21 @@
 
 pkgname=pharo-launcher
 pkgver=1.1
-pkgrel=0
+pkgrel=2
 epoch=1
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
-arch=(i686 x86_64)
+arch=(x86_64)
 source=($pkgname-$pkgver.tar.gz)
 url="http://www.pharo-project.org/"
 license=('MIT')
 makedepends=('gendesk')
-depends=('pharo-spur-vm')
 
 source=(
-	'http://files.pharo.org/media/logo/icon-lighthouse-128x128.png'
-	'http://files.pharo.org/platform/launcher/PharoLauncher-user-stable-2018.01.16.zip'
+	'http://files.pharo.org/pharo-launcher/1.1/PharoLauncher-linux-1.1-x64.zip'
 )
 
 md5sums=(
-	'dec67d08d24433696375a319de029f34'
-	'1d65793eef99259889c57f2d845e8abe'
+	'65e32da85f014e2c9682c35ccfa21b0b'
 )
 
 prepare() {
@@ -33,18 +30,31 @@ package() {
 	cd $srcdir/
 
 	mkdir -p $pkgdir/usr/share/pharo-launcher/
-	mkdir -p $pkgdir/usr/bin/
+	mkdir -p $pkgdir/usr/share/pharo/
 	mkdir -p $pkgdir/usr/share/pixmaps/
+	mkdir -p $pkgdir/usr/bin/
 
-	cp -f $srcdir/PharoLauncher.* $pkgdir/usr/share/pharo-launcher/
+	cp -fR $srcdir/pharo/shared/* $pkgdir/usr/share/pharo-launcher/
 	chgrp -R users $pkgdir/usr/share/pharo-launcher/
 	chmod -R 775 $pkgdir/usr/share/pharo-launcher/
 
+	cp -fR $srcdir/pharo/bin/* $pkgdir/usr/share/pharo/
+	chgrp -R users $pkgdir/usr/share/pharo/
+	chmod -R 775 $pkgdir/usr/share/pharo/
 
-	echo "/usr/bin/pharo-spur /usr/share/pharo-launcher/PharoLauncher.image" > $pkgdir/usr/bin/pharo-launcher
+	sed -i 's/ROOT=`dirname "$DIR"`/ROOT=\/usr\/share/' $srcdir/pharo/pharo
+	sed -i 's/LINUX="$ROOT\/bin"/LINUX="$ROOT\/pharo"/' $srcdir/pharo/pharo
+	sed -i 's/RESOURCES="$ROOT\/shared"/RESOURCES="~"/' $srcdir/pharo/pharo
+	sed -i 's/ICONS="$ROOT\/icons"/ICONS="$ROOT\/pixmaps"/' $srcdir/pharo/pharo
+
+	cp -f $srcdir/pharo/pharo $pkgdir/usr/bin/pharo
+	chmod +x $pkgdir/usr/bin/pharo
+
+	echo "/usr/bin/pharo /usr/share/pharo-launcher/Pharo.image" > $pkgdir/usr/bin/pharo-launcher
 	chmod +x $pkgdir/usr/bin/pharo-launcher
 
-	cp $srcdir/icon-lighthouse-128x128.png	$pkgdir/usr/share/pixmaps/$pkgname.png
+	cp $srcdir/pharo/icons/Pharo.png	$pkgdir/usr/share/pixmaps/$pkgname.png
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+
 }
