@@ -1,7 +1,7 @@
 pkgbase = psi-plus-plugins-git
 	pkgdesc = Additional plugins for Psi+ (built with Qt 5.x)
-	pkgver = 1.2.161.1.gf3b641d3
-	pkgrel = 2
+	pkgver = 1.2.191.0.g4915f009
+	pkgrel = 1
 	url = http://psi-plus.com
 	arch = x86_64
 	license = GPL2
@@ -13,8 +13,8 @@ pkgbase = psi-plus-plugins-git
 	depends = qt5-webengine
 	optdepends = libotr: for OTR plugin
 	optdepends = tidyhtml: for OTR plugin
-	provides = psi-plus-plugins=1.2.161.1.gf3b641d3
-	provides = psi-plus-plugins-qt5-git=1.2.161.1.gf3b641d3
+	provides = psi-plus-plugins=1.2.191.0.g4915f009
+	provides = psi-plus-plugins-qt5-git=1.2.191.0.g4915f009
 	conflicts = psi-plus-plugins
 	conflicts = psi-plus-plugins-qt5-git
 	source = git://github.com/psi-plus/psi-plus-snapshots
