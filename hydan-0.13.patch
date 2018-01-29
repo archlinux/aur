@@ -1,0 +1,157 @@
+diff -aur hydan/hdn_crypto.c hydan.fix/hdn_crypto.c
+--- hydan/hdn_crypto.c	2004-06-24 01:03:49.000000000 +0000
++++ hydan.fix/hdn_crypto.c	2018-01-28 01:29:43.646404182 +0000
+@@ -68,7 +68,9 @@
+ uint8_t *hdn_crypto_hash (char *in)
+ {
+     uint8_t *digest;
+-    EVP_MD_CTX ctx;
++    EVP_MD_CTX *ctx;
++
++    ctx = EVP_MD_CTX_new();
+ 
+     if (!in)
+         return NULL;
+@@ -76,9 +78,11 @@
+     if (!(digest = malloc (EVP_MAX_MD_SIZE)))
+         return NULL;
+ 
+-    EVP_DigestInit (&ctx, HASH_ALGO);
+-    EVP_DigestUpdate (&ctx, in, strlen (in));
+-    EVP_DigestFinal (&ctx, digest, NULL);
++    EVP_DigestInit (ctx, HASH_ALGO);
++    EVP_DigestUpdate (ctx, in, strlen (in));
++    EVP_DigestFinal (ctx, digest, NULL);
++
++    EVP_MD_CTX_free (ctx);
+ 
+     return digest;
+ }
+@@ -88,26 +92,30 @@
+     uint8_t *cipher = NULL;
+     uint32_t out_sz, sz, total_sz;
+     hdn_data_t *in = (*inout);
+-    EVP_CIPHER_CTX ctx;
++    EVP_CIPHER_CTX *ctx;
++
++    ctx = EVP_CIPHER_CTX_new ();
++    if (!ctx)
++        HDN_EXIT ("Error allocating memory for encryption context. ");
+ 
+     /*
+      * init context, bf in cbc mode, default impl
+      */
+-    EVP_EncryptInit (&ctx, CRYPTO_ALGO, key, iv);
+-    cipher = malloc (sizeof (in->sz) + in->sz + EVP_CIPHER_CTX_block_size(&ctx));
++    EVP_EncryptInit (ctx, CRYPTO_ALGO, key, iv);
++    cipher = malloc (sizeof (in->sz) + in->sz + EVP_CIPHER_CTX_block_size(ctx));
+ 
+     if (!cipher)
+         HDN_EXIT ("Error allocating memory for encryption. "
+                   "Requested %d bytes of memory.",
+-                  sizeof (in->sz) + in->sz + EVP_CIPHER_CTX_block_size(&ctx));
++                  sizeof (in->sz) + in->sz + EVP_CIPHER_CTX_block_size(ctx));
+ 
+     /*
+      * save the size, and make sure that it's a multiple of the cipher
+      * block size
+      */
+     sz = in->sz;
+-    in->sz += EVP_CIPHER_CTX_block_size(&ctx) -
+-        ((in->sz + sizeof (in->sz)) % EVP_CIPHER_CTX_block_size(&ctx));
++    in->sz += EVP_CIPHER_CTX_block_size(ctx) -
++        ((in->sz + sizeof (in->sz)) % EVP_CIPHER_CTX_block_size(ctx));
+ 
+     /*
+      * whiten it
+@@ -117,10 +125,10 @@
+     /*
+      * encrypt everything
+      */
+-    EVP_EncryptUpdate (&ctx, cipher, &out_sz, (char *)in, sizeof(in->sz) + sz);
++    EVP_EncryptUpdate (ctx, cipher, &out_sz, (char *)in, sizeof(in->sz) + sz);
+     total_sz = out_sz;
+ 
+-    EVP_EncryptFinal (&ctx, cipher + total_sz, &out_sz);
++    EVP_EncryptFinal (ctx, cipher + total_sz, &out_sz);
+     total_sz += out_sz;
+ 
+     /*
+@@ -138,8 +146,9 @@
+     /*
+      * cleanup
+      */
+-    EVP_CIPHER_CTX_cleanup (&ctx);
++    EVP_CIPHER_CTX_cleanup (ctx);
+     if (cipher) free (cipher);
++    if (ctx) EVP_CIPHER_CTX_free (ctx);
+ }
+ 
+ void hdn_crypto_decrypt (hdn_data_t **inout, uint8_t *key)
+@@ -147,23 +156,27 @@
+     uint8_t *plain = NULL;
+     uint32_t out_sz;
+     hdn_data_t *in = (*inout);
+-    EVP_CIPHER_CTX ctx;
++    EVP_CIPHER_CTX *ctx;
++
++    ctx = EVP_CIPHER_CTX_new ();
++    if (!ctx)
++        HDN_EXIT ("Error allocating memory for encryption context. ");
+ 
+     /*
+      * init
+      */
+-    EVP_DecryptInit (&ctx, CRYPTO_ALGO, key, iv);
+-    plain = malloc (in->sz + EVP_CIPHER_CTX_block_size(&ctx));
++    EVP_DecryptInit (ctx, CRYPTO_ALGO, key, iv);
++    plain = malloc (in->sz + EVP_CIPHER_CTX_block_size(ctx));
+ 
+     if (!plain)
+         HDN_EXIT ("Error allocating memory for decryption. "
+-                  "Requested %d bytes.", in->sz + EVP_CIPHER_CTX_block_size(&ctx));
++                  "Requested %d bytes.", in->sz + EVP_CIPHER_CTX_block_size(ctx));
+ 
+     /*
+      * decrypt
+      */
+-    EVP_DecryptUpdate (&ctx, plain, &out_sz, in->content, in->sz);
+-    EVP_DecryptFinal (&ctx, plain + out_sz, &out_sz);
++    EVP_DecryptUpdate (ctx, plain, &out_sz, in->content, in->sz);
++    EVP_DecryptFinal (ctx, plain + out_sz, &out_sz);
+ 
+     /*
+      * store only the right length worth of decryption
+@@ -181,7 +194,8 @@
+     /*
+      * cleanup
+      */
+-    EVP_CIPHER_CTX_cleanup (&ctx);
++    EVP_CIPHER_CTX_cleanup (ctx);
+     if (plain) free (plain);
++    if (ctx) EVP_CIPHER_CTX_free (ctx);
+ }
+ 
+diff -aur hydan/hdn_exe.c hydan.fix/hdn_exe.c
+--- hydan/hdn_exe.c	2004-05-26 19:42:44.000000000 +0000
++++ hydan.fix/hdn_exe.c	2018-01-28 01:27:02.940370747 +0000
+@@ -11,7 +11,7 @@
+ /*
+  * checks wether a section is code or not
+  */
+-inline char hdn_exe_section_is_code (hdn_sections_t *hs)
++char hdn_exe_section_is_code (hdn_sections_t *hs)
+ {
+ #if (defined(__CYGWIN32__) || defined(_Windows) || defined(_WIN32))
+ 
+diff -aur hydan/hdn_exe.h hydan.fix/hdn_exe.h
+--- hydan/hdn_exe.h	2004-05-26 16:16:38.000000000 +0000
++++ hydan.fix/hdn_exe.h	2018-01-28 01:26:57.247059868 +0000
+@@ -19,6 +19,6 @@
+ /*
+  * is a section code or not?
+  */
+-inline char hdn_exe_section_is_code (hdn_sections_t *hs);
++char hdn_exe_section_is_code (hdn_sections_t *hs);
+ 
+ #endif//!HDN_EXE_H_
