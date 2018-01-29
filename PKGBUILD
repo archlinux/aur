@@ -1,3 +1,5 @@
+# Maintainer: Doron Behar <doron.behar@gmail.com>
+
 pkgname="urxvt-bidi"
 pkgver=2.12
 pkgrel=1
