@@ -1,15 +1,15 @@
 # Maintainer: Mykola Dimura <mykola.dimura@gmail.com>
 pkgname=mingw-w64-pteros-git
-pkgver=r689.0a1dec3
+pkgver=r860.f277c42
 pkgrel=1
 pkgdesc="C++ library for molecular modeling. (mingw-w64)"
 arch=('any')
-url='http://pteros.sourceforge.net/'
+url='https://github.com/yesint/pteros'
 license=('Artistic License 2.0')
-depends=('mingw-w64-crt' 'mingw-w64-gcc' 'mingw-w64-boost' 'mingw-w64-eigen' 'mingw-w64-python-bin')
+depends=('mingw-w64-crt' 'mingw-w64-gcc' 'mingw-w64-boost' 'mingw-w64-eigen')
 makedepends=('mingw-w64-cmake' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("${pkgname%-git}::git+https://git.code.sf.net/p/pteros/code#branch=experimental")
+source=("${pkgname%-git}"'::git+https://github.com/mdimura/pteros.git#branch=master')
 sha1sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -18,7 +18,7 @@ build() {
   cd "$srcdir/${pkgname%-git}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release ..
+    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release -DWITH_PYTHON=OFF ..
     make
     popd
   done
