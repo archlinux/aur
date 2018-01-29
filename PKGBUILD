@@ -4,11 +4,11 @@
 # Contributor: Oleg Finkelshteyn <olegfink@gmail.com>
 
 pkgname='ripit'
-pkgver='4.0.0_beta20140508'
-_debver='4.0.0~beta20140508'
-pkgrel='3'
+pkgver='4.0.0_rc_20161009'
+pkgrel='1'
 pkgdesc='Command line tool to rip tracks from audio cds and encode them'
 arch=('any')
+url='https://www.ripit.pl'
 license=('GPL')
 depends=('cdparanoia' 'cddb_get' 'perl-xml-simple' 'perl-mp3-tag')
 optdepends=(
@@ -22,8 +22,8 @@ optdepends=(
   'perl-libwww: Submitting to CDDB' 
   'libmusicbrainz3: Tagging (Musicbrainz.org)'
 )
-source=("https://mirrors.xmission.com/ubuntu/pool/universe/r/ripit/${pkgname}_${_debver}.orig.tar.bz2")
-sha256sums=('5b01cf33c0649115cd831b12ee4600256fba68c66ea92b1372a1bd8ce6925ab9')
+source=("https://www.ripit.pl/ripit/ripit-${pkgver}.tar.bz2")
+sha256sums=('2434ec6e5b8044de9b081cb7a0c713e52a09443270c6abe9f415a006ecda0c66')
 backup=('etc/ripit/config')
 
 package() {
