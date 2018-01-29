@@ -2,8 +2,9 @@
 
 _rev=r01
 _sdkint=26
+_sdkver=8.0.0
 pkgname="android-sources-${_sdkint}"
-pkgver="${_sdkint}_${_rev}"
+pkgver="${_sdkver}_${_rev}"
 pkgrel=1
 pkgdesc="Android SDK Sources, API-${_sdkint}"
 arch=(any)
