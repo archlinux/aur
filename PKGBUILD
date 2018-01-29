@@ -6,10 +6,10 @@ pkgver=1.2.0
 pkgrel=4
 pkgdesc="Library that helps applications to read and write XSPF playlists"
 url="http://libspiff.sourceforge.net/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom')
 depends=('uriparser' 'expat' 'gcc-libs')
-source=(http://downloads.sourceforge.net/libspiff/$pkgname-$pkgver.tar.bz2)
+source=(https://downloads.sourceforge.net/libspiff/$pkgname-$pkgver.tar.bz2)
 md5sums=('eceb3bf8fd4af3b09ea06c5c029cd647')
 
 prepare() {
