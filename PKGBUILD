@@ -5,12 +5,12 @@
 
 pkgname='ripit'
 pkgver='4.0.0_rc_20161009'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Command line tool to rip tracks from audio cds and encode them'
 arch=('any')
 url='https://www.ripit.pl'
 license=('GPL')
-depends=('cdparanoia' 'cddb_get' 'perl-xml-simple' 'perl-mp3-tag')
+depends=('cdparanoia' 'cddb_get' 'perl-xml-simple' 'perl-mp3-tag' 'perl-libwww')
 optdepends=(
   'flac: Encoding (FLAC)'
   'lame: Encoding (MP3)'

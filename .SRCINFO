@@ -1,7 +1,7 @@
 pkgbase = ripit
 	pkgdesc = Command line tool to rip tracks from audio cds and encode them
 	pkgver = 4.0.0_rc_20161009
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ripit.pl
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = ripit
 	depends = cddb_get
 	depends = perl-xml-simple
 	depends = perl-mp3-tag
+	depends = perl-libwww
 	optdepends = flac: Encoding (FLAC)
 	optdepends = lame: Encoding (MP3)
 	optdepends = vorbis-tools: Encoding (Vorbis)
