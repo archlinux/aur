@@ -7,7 +7,7 @@ pkgdesc="Shared crypto library for Hyperledger Indy components"
 arch=(i686 x86_64)
 url="https://github.com/hyperledger/indy-crypto"
 license=('APACHE')
-depends=('')
+depends=('libindy-crypto')
 makedepends=('rust')
 source=("https://github.com/hyperledger/indy-sdk/archive/v$pkgver.tar.gz")
 

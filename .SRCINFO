@@ -7,6 +7,7 @@ pkgbase = libindy
 	arch = x86_64
 	license = APACHE
 	makedepends = rust
+	depends = libindy-crypto
 	source = https://github.com/hyperledger/indy-sdk/archive/v1.3.0.tar.gz
 	md5sums = SKIP
 
