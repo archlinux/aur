@@ -1,90 +1,36 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# $Id$
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dooble
-pkgver=1.56c
-pkgrel=2
-pkgdesc='A safe WebKit Web browser'
-url='http://dooble.sourceforge.net/'
-arch=('i686' 'x86_64')
-license=('custom:3-clause BSD')
-depends=('libpng' 'qt5-base' 'qt5-webkit' 'openssl' 'libspoton>=2015.06.17' "dooble-common=${pkgver}")
-makedepends=('libpng' 'qt5-base' 'qt5-webkit' 'openssl' 'qt5-tools' 'sed' 'coreutils')
-source=("dooble-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%20${pkgver}/Dooble.d.tar.gz?r=")
-sha256sums=('03b5bb0460aa8f4f731a47b70c571942a186fb0e7c4b74f546cef356be0afe6a')
+pkgver=2.1.6
+pkgrel=1
+pkgdesc="Colorful Web browser"
+arch=(x86_64)
+url="https://textbrowser.github.io/dooble/"
+license=('BSD')
+depends=('qt5-webengine')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/textbrowser/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('35b3e12763e9f7350efd2d91b312f5511eff62e76a015ad46ae9cb4a07ea92d8')
 
-# Dependency (from ldd output) tree:
-# libpng
-# qt5-base
-#   icu
-#     gcc-libs
-#   libjpeg-turbo
-#   sqlite
-#   mesa-libgl
-#     mesa
-#       libdrm
-#       libxdamage
-#       libxxf86vm
-#   libxrender
-# qt5-webkit
-#   libxcomposite
-#     libxfixes
-#       libx11
-#         libxcb
-#           libxdmcp & libxau
-#             glibc
-#       libxext
-#   libxslt
-#     libgcrypt
-#       libgpg-error
-#     libxml2
-#       xz
-#       zlib
-#   qt5-sensors & qt5-location
-#     qt5-declarative
-#   gstreamer0.10-base
-#     gstreamer0.10
-#       glib2
-#         libffi
-#         pcre
-#     orc
-# openssl
-
-
-
-build()
-{
-    cd "$srcdir/dooble.d/Version 1.x/"
-    sed -i 's_-Werror__g' dooble.qt5.pro
-    sed -i 's_-lspoton_-lspoton -lQt5PrintSupport_g' dooble.qt5.pro
-    qmake-qt5 -o Makefile dooble.qt5.pro
-    make distclean
-    qmake-qt5 -o Makefile dooble.qt5.pro
-    sed -i '/^INCPATH/s:=:= -I/usr/include/qt/QtWidgets:' Makefile
-    sed -i '/^INCPATH/s:=:= -I/usr/include/qt/QtWebKitWidgets:' Makefile
-    sed -i '/^INCPATH/s:=:= -I/usr/include/qt/QtPrintSupport:' Makefile
-    sed -i '/#include/s:QtGui/\([^>]*\)QAction:\1:' Include/*.h
-    make
+prepare() {
+	cd $pkgname-$pkgver/2.x
+	sed -i '/QMAKE_LFLAGS_RELEASE += -Wl,-rpath/d' dooble.pro
+	sed -i 's|Exec=.*|Exec=dooble|
+                s|Icon=.*|Icon=dooble|' dooble.desktop
+	sed -i 's|QString path(QDir::currentPath());|QString path("/usr/share/dooble");|' Source/dooble_settings.cc
 }
 
-package()
-{
-    cd "$srcdir/dooble.d/Version 1.x/"
-    install -Dm755  Dooble         -- "${pkgdir}/usr/lib/${pkgname}/Dooble"
-    install -Dm755  dooble.sh      -- "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644  dooble.desktop -- "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    
-    
-    msg "Editing files for the file system adaption"
-    
-    sed -i s_"/usr/local/dooble/"_"/usr/lib/${pkgname}/"_g -- "${pkgdir}/usr/bin/${pkgname}"
-    sed -i s_"/usr/local/dooble"_"/usr/share/dooble"_g     -- "${pkgdir}/usr/bin/${pkgname}"
-    sed -i s_"\./Dooble"_"../../lib/${pkgname}/Dooble"_g   -- "${pkgdir}/usr/bin/${pkgname}"
-    sed -i /LD_LIBRARY_PATH/d                              -- "${pkgdir}/usr/bin/${pkgname}"
-    
-    sed -i s_'/usr/local/dooble/Lib\x00'_'/usr/lib\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'_g  \
-	-- "${pkgdir}/usr/lib/${pkgname}/Dooble" # The replacements's length must match the pattern's length
-    
-    sed -i s_'/usr/local/dooble/dooble.sh'_"/usr/bin/${pkgname}"_g  \
-	-- "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+build() {
+	cd $pkgname-$pkgver/2.x
+	qmake
+	make
 }
 
+package() {
+	cd $pkgname-$pkgver/2.x
+	install -Dm755 Dooble "$pkgdir/usr/bin/dooble"
+	install -Dm644 Icons/Logo/dooble.png "$pkgdir/usr/share/pixmaps/dooble.png"
+	install -Dm644 dooble.desktop "$pkgdir/usr/share/applications/dooble.desktop"
+	install -Dm644 -t "$pkgdir/usr/share/dooble/Translations" Translations/dooble_*.qm
+	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/dooble/LICENSE"
+}
