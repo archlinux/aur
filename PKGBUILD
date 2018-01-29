@@ -1,6 +1,6 @@
 # Maintainer: Sol Bekic <s+aur at s-ol dot nu>
 pkgname=kodelife
-pkgver=0.5.1.0
+pkgver=0.5.2.1
 pkgrel=2
 pkgdesc='Real-time GPU shader editor, live-code performance tool and graphics prototyping sketchpad'
 url='https://hexler.net/software/kodelife'
@@ -8,7 +8,7 @@ license=('unknown')
 arch=('x86_64')
 depends=('alsa-lib' 'libglvnd' 'libxcursor' 'libxinerama' 'libxrandr' 'libcurl-gnutls')
 source=("https://hexler.net/pub/kodelife/$pkgname-$pkgver-linux-$arch.zip")
-sha256sums=('266a4b8e0d7cd2dd63ad56c9d1fd5e164265b41a6b7be4e39000541ba9f6c199')
+sha256sums=('4202de930ebf0966565b86a1fd5d144992ed28157eef946c97931126c255b23d')
 
 package() {
 	install -D -m755 "$srcdir/KodeLife" "$pkgdir/usr/bin/KodeLife"
