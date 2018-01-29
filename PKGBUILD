@@ -2,7 +2,7 @@
 
 pkgname=sylpheed-beta
 pkgver=3.7.0beta1
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight and user-friendly e-mail client. Latest official beta version."
 arch=('i686' 'x86_64')
 url="http://sylpheed.sraoss.jp/en/"
@@ -16,6 +16,12 @@ source=(http://sylpheed.sraoss.jp/sylpheed/v3.7beta/sylpheed-$pkgver.tar.bz2{,.a
 build() {
   cd "$srcdir/sylpheed-$pkgver"
   #cd "$srcdir/sylpheed-3.5.1" # RC paths
+
+  # fix enchant maintainers moving things around for fun
+  sed -i 's:enchant/enchant.h:enchant-2/enchant.h:g' src/compose.c
+  sed -i 's:PKG_CONFIG --libs enchant:PKG_CONFIG --libs enchant-2:g' configure.ac
+
+  autoconf
   ./configure --prefix=/usr --enable-ldap --enable-gpgme
   make
 }
