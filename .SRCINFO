@@ -1,0 +1,16 @@
+pkgbase = helm-system-packages-git
+	pkgdesc = A Helm interface to your package manager
+	pkgver = 2017.12.28.ga91e7ac
+	pkgrel = 1
+	url = https://github.com/emacs-helm/helm-system-packages
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs
+	provides = helm-system-packages
+	conflicts = helm-system-packages
+	source = git+https://github.com/emacs-helm/helm-system-packages
+	sha1sums = SKIP
+
+pkgname = helm-system-packages-git
+
