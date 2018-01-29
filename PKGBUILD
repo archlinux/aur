@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "atcore"
-  cmake -DCMAKE_INSTALL_PREFIX=$(qtpaths --install-prefix) -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DBUILD_TEST_GUI=ON -DBUILD_DOCS=ON CMakeLists.txt 
+  cmake -DCMAKE_INSTALL_PREFIX=$(qtpaths --install-prefix) -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DBUILD_GUI=ON -DBUILD_DOCS=ON CMakeLists.txt 
   make
 }
 package(){
