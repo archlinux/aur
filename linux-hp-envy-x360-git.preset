@@ -4,6 +4,7 @@ ALL_config="/etc/mkinitcpio.conf"
 ALL_kver="/boot/vmlinuz-linux-hp-envy-x360-git"
 
 PRESETS=('default' 'fallback')
+MODULES=(amdgpu)
 
 #default_config="/etc/mkinitcpio.conf"
 default_image="/boot/initramfs-linux-hp-envy-x360-git.img"
