@@ -1,6 +1,6 @@
 pkgbase = python2-pwntools-git
 	pkgdesc = A CTF framework and exploit development library.
-	pkgver = 3.12.0beta0.r1.g5c4def05
+	pkgver = 3.12.0beta0.r13.ga208251d
 	pkgrel = 1
 	url = https://github.com/Gallopsled/pwntools
 	arch = any
