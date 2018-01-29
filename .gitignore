@@ -1,5 +1,4 @@
 pkg
 src
-*.gz
-*.xz
-
+*.pkg.tar*
+paperkey-*.tar.gz
