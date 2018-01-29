@@ -1,7 +1,7 @@
 # Maintainer: chr0mag <phillips.julian AT gmail DOT com>
 pkgname=sos
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A unified tool for collecting system logs and other debug information"
 arch=('any')
@@ -29,7 +29,7 @@ noextract=()
 md5sums=()
 sha256sums=('f62df231dd3c86a54645989f943bac6f5fdf45ffb210f4b76b4a5cc565296902'
             'acf581080bad7772f10e183d18a2d1c2cf9bd9be91ee490e38ef5c5647859d6c'
-            '281c8911687c2485b97db4891fd76f5d6e7071e7eebebeea5805edc77371de7b')
+            '8a6565c1f7cd59ee9de3fc3896cafbf270a8e135e752901e8527471a7a405774')
 validpgpkeys=()
 
 prepare() {
@@ -58,5 +58,5 @@ package() {
 	mv ${pkgdir}/usr/sbin/sosreport ${pkgdir}/usr/bin
 	rmdir ${pkgdir}/usr/sbin
 	#workaround for: https://github.com/sosreport/sos/issues/77
-	sed --in-place 's/#disable = rpm, selinux, dovecot/disable = rpm, selinux, dovecot, sunrpc, nfsserver, distupgrade/' ${pkgdir}/etc/sos.conf
+	#sed --in-place 's/#disable = rpm, selinux, dovecot/disable = rpm, selinux, dovecot, sunrpc, nfsserver, distupgrade/' ${pkgdir}/etc/sos.conf
 }
