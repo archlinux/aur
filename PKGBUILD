@@ -1,7 +1,8 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
+
 pkgname='perl-dbix-class'
-pkgver='0.082840'
-pkgrel='4'
+pkgver='0.082841'
+pkgrel='1'
 pkgdesc="Extensible and flexible object <-> relational mapper."
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -23,6 +24,7 @@ depends=(
   'perl-mro-compat>=0.12'
   'perl-namespace-clean>=0.24'
   'perl-path-class>=0.18'
+  'perl-scalar-list-utils>=1.16'
   'perl-scope-guard>=0.03'
   'perl-sql-abstract>=1.81'
   'perl-sub-name>=0.04'
@@ -39,7 +41,7 @@ makedepends=(
 )
 url='http://search.cpan.org/dist/DBIx-Class'
 source=("https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/DBIx-Class-${pkgver}.tar.gz")
-sha512sums=('0ae0c724c57cd2b62b9d711633bfc2ba4320c15f6e9d0253381c9ffae495355e32888ec87d6a85c85000d434cedb51789f4b7807da157de8b08723333b66a0d2')
+sha512sums=('a9c54c0cdb7a2dc93a4b3acb90974e6db80d5eaa95c723c0c3895c99b53be00ed182d4cdc6c5350ee7f120f29172c06494d5c647b8eb4643b91387c0ffee694b')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
