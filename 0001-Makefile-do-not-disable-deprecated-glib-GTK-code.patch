@@ -1,0 +1,46 @@
+From 76e1c9f353e2168ae2eae1d09c2979e7547b0e1a Mon Sep 17 00:00:00 2001
+From: "G.raud" <graud@gmx.com>
+Date: Mon, 29 Jan 2018 09:53:14 +0100
+Subject: [PATCH] Makefile: do not disable deprecated glib/GTK code
+
+This change fixes the build of gjackspa against recent glib/glibmm
+(compiles with version 2.50.3).
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index a5d5984..0e5139b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -54,12 +54,12 @@ PACKAGE_VERSION	= $(VERSION)
+ # Remove the _g<SHA1> part from the $VERSION
+ RPM_VERSION	= $(shell echo $(VERSION) | $(SED) -e 's/_g[0-9a-z]\+//')
+ 
+ CFLAGS ?= -Wall -Werror -g
+ CXXFLAGS ?= $(CFLAGS)
+-override CFLAGS += -DG_DISABLE_DEPRECATED `pkg-config --cflags glib-2.0`
+-override CXXFLAGS += -DG_DISABLE_DEPRECATED `pkg-config --cflags glib-2.0`
++override CFLAGS += `pkg-config --cflags glib-2.0`
++override CXXFLAGS += `pkg-config --cflags glib-2.0`
+ override LDFLAGS += -lm -ljack -ldl `pkg-config --libs glib-2.0` -g
+ 
+ PROGS = njackspa gjackspa qjackspa jackspa-cli
+ SCRIPTS =
+ MODULES = jackspa.o control.o
+@@ -168,11 +168,11 @@ ChangeLog :
+ 	> $@
+ 
+ njackspa : njackspa.c curses.c $(COMMONS) $(MODULES)
+ 	$(CC) $(CFLAGS) -o $@ $< $(MODULES) $(LDFLAGS) -lncurses
+ gjackspa : gjackspa.cpp $(COMMONS) $(MODULES)
+-	$(CXX) $(CXXFLAGS) `pkg-config gtkmm-2.4 --cflags` -DGTK_DISABLE_DEPRECATED \
++	$(CXX) $(CXXFLAGS) `pkg-config gtkmm-2.4 --cflags` \
+ 	  -o $@ $< $(MODULES) $(LDFLAGS) `pkg-config gtkmm-2.4 --libs`
+ qjackspa : force $(QMAKE_MAKEFILE)
+ 	$(MAKE) -f $(QMAKE_MAKEFILE)
+ jackspa-cli : jackspa-cli.c $(COMMONS) $(MODULES)
+ 	$(CC) -D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED $(CFLAGS) \
+-- 
+2.11.0
+
