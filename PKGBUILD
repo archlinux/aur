@@ -2,7 +2,7 @@
 
 pkgname=cjson
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultralightweight JSON parser in ANSI C"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/DaveGamble/cJSON"
@@ -17,7 +17,7 @@ build() {
 	rm -rf build
 	mkdir build
 	cd build || return 1
-	cmake .. -DENABLE_CJSON_UTILS=On -DCMAKE_INSTALL_PREFIX=/usr
+	cmake .. -DENABLE_CJSON_UTILS=On -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
 	make || return 1
 }
 
