@@ -2,15 +2,15 @@
 
 _name=cruzdb
 pkgbase='python-cruzdb'
-pkgname=('python-cruzdb' 'python2-cruzdb')
+pkgname=('python2-cruzdb')
 pkgver=0.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Pythonic interface to the bioinformatics UCSC genome databses"
 arch=('any')
 url=https://pypi.python.org/pypi/"${_name}"
 license=('MIT')
 makedepends=(
-  'python' 'python-setuptools'
+#  'python' 'python-setuptools'
   'python2' 'python2-setuptools')
 options=(!emptydirs)
 source=(
@@ -27,25 +27,25 @@ prepare() {
 }
 
 build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py build
+  # cd "${srcdir}"/"${_name}"-"${pkgver}"
+  # python setup.py build
 
   cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
   python2 setup.py build
 }
 
 package_python2-cruzdb() {
-  depends=('python2' 'mysql-python' 'python2-six' 'python-sqlalchemy2')
+  depends=('python2' 'mysql-python' 'python2-six' 'python2-sqlalchemy')
 
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
   cd "${_name}"-"${pkgver}"-py2
   python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
 }
 
-package_python-cruzdb() {
-  depends=('python' 'mysql-python' 'python-six' 'python-sqlalchemy')
+# package_python-cruzdb() {
+#   depends=('python' 'mysql-python' 'python-six' 'python-sqlalchemy')
 
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-}
+#   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+#   cd "${_name}"-"${pkgver}"
+#   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+# }
