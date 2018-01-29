@@ -6,16 +6,16 @@
 # Contributor: misc <tastky@gmail.com>
 # Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
 
-pkgbase=linux-ryzen-git
+pkgbase=linux-hp-envy-x360-git
 _srcname=linux
-pkgver=4.15.r0.gd8a5b80568a9
+pkgver=4.15.staging
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
+source=('git+git://people.freedesktop.org/~agd5f/linux'
         # the main kernel config files
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -25,7 +25,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         )
 sha256sums=('SKIP'
             'SKIP'
-            '6c4ab77d0be624799b9b8e12b228fe181577b298d73355b14618ebf1f5675fa7'
+            'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             )
 
@@ -34,11 +34,13 @@ _kernelname=${pkgbase#linux}
 pkgver() {
   cd "${_srcname}"
 
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  #git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  echo '4.15.staging'
 }
 
 prepare() {
   cd "${_srcname}"
+  git reset --hard amd-staging-drm-next
   
   patch -Np1 -i "${srcdir}/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
 
@@ -56,10 +58,10 @@ prepare() {
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   make oldconfig # using old config from previous kernel version
+  #make menuconfig # CLI menu for configuration
   #make olddefconfig # old config from previous kernel, defaults for new options
   # ... or manually edit .config
 }

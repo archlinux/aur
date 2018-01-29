@@ -1,14 +1,14 @@
-# mkinitcpio preset file for the 'linux-ryzen-git' package
+# mkinitcpio preset file for the 'linux-hp-envy-x360-git' package
 
 ALL_config="/etc/mkinitcpio.conf"
-ALL_kver="/boot/vmlinuz-linux-ryzen-git"
+ALL_kver="/boot/vmlinuz-linux-hp-envy-x360-git"
 
 PRESETS=('default' 'fallback')
 
 #default_config="/etc/mkinitcpio.conf"
-default_image="/boot/initramfs-linux-ryzen-git.img"
+default_image="/boot/initramfs-linux-hp-envy-x360-git.img"
 #default_options=""
 
 #fallback_config="/etc/mkinitcpio.conf"
-fallback_image="/boot/initramfs-linux-ryzen-git-fallback.img"
+fallback_image="/boot/initramfs-linux-hp-envy-x360-git-fallback.img"
 fallback_options="-S autodetect"
