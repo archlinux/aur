@@ -26,13 +26,16 @@ sha256sums=('2baa736d67e1bfb3fba25f0c7154cb07235ec63619ac003c4ee6dbee7eb15108'
             'ad8029bf201260608daf7ed4d109731bbf247e8597e36cc1dea915fceae51b56')
 backup=("etc/videoserverd.conf")
 
-build() {
+prepare() {
   cd "${srcdir}"
   bsdtar xf "data.tar.gz"
   bsdtar xf "data.tar.xz"
+  sed -i 's|$(dirname "$(readlink /etc/init.d/videoserver)")|/opt/ivideon/ivideon-server|g' "opt/ivideon/ivideon-server/serverctl.sh"
+}
+
+build() {
   rm "opt/ivideon/ivideon-server/install_services.sh"
   rm "opt/ivideon/ivideon-server/initd.sh"
-  rm "opt/ivideon/ivideon-server/serverctl.sh"
 }
 
 package() {
