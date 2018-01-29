@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url='http://www.cs.ubc.ca/~mariusm/index.php/FLANN/FLANN'
 license=('BSD')
 depends=('lz4' 'hdf5')
-makedepends=('cmake' 'python2' 'texlive-bin')
+makedepends=('cmake' 'python2' 'texlive-core')
 optdepends=('python2: python bindings'
             'cuda: cuda support')
 source=("https://github.com/mariusmuja/flann/archive/${pkgver}.tar.gz" "system_lz4.patch")
