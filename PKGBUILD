@@ -1,10 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
-# $Id: PKGBUILD 102862 2013-12-22 20:59:29Z bpiotrowski $
-# Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
 
 pkgname=libdaq-static
 _pkgname=libdaq
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Data Acquisition library for packet I/O.'
 arch=('i686' 'x86_64')
@@ -16,7 +14,7 @@ conflicts=('libdaq')
 options=('!libtool' 'staticlibs')
 makedepends=('ca-certificates')
 source=(http://www.snort.org/downloads/snortplus/daq-${pkgver}.tar.gz)
-md5sums=('1cb03aa4d29a4833a9e7f2aaa6b5888e')
+sha512sums=('7c5341853eff6d2f94cc0b0c38df03b3595c6b829581cbe756582c33de813fba018fa4a984e8ea66fbb2849e573d33bb1fbd23a77f4ac7e0f93fe66ff205c95d')
 
 build() {
   cd "${srcdir}/daq-${pkgver}"
