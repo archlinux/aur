@@ -16,8 +16,6 @@ build() {
 }
 package() {
 	install -d "${pkgdir}/opt/${pkgname}"
-	install -d "${pkgdir}/usr/bin/"
 	cp -r bilibili-live-helper/* "${pkgdir}/opt/${pkgname}"
-	ln -s "${pkgdir}/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
