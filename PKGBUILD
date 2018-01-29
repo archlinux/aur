@@ -6,13 +6,13 @@
 _jqueryver=1.9.1
 pkgname=etherpad-lite
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
 arch=(any)
 url="http://etherpad.org"
 license=('Apache')
-depends=('nodejs' 'coffeescript' 'gnuplot')
+depends=('coffeescript' 'nodejs')
 makedepends=('npm')
 optdepends=('sqlite: to use sqlite as databse'
             'mariadb: to use mariadb as database'
@@ -38,20 +38,20 @@ prepare() {
   # create needed initializing file
   touch src/.ep_initialized
   # create custom js and css from templates
-  cp src/static/custom/js.template src/static/custom/index.js
-  cp src/static/custom/js.template src/static/custom/pad.js
-  cp src/static/custom/js.template src/static/custom/timeslider.js
-  cp src/static/custom/css.template src/static/custom/index.css
-  cp src/static/custom/css.template src/static/custom/pad.css
-  cp src/static/custom/css.template src/static/custom/timeslider.css
+  cp -v src/static/custom/js.template src/static/custom/index.js
+  cp -v src/static/custom/js.template src/static/custom/pad.js
+  cp -v src/static/custom/js.template src/static/custom/timeslider.js
+  cp -v src/static/custom/css.template src/static/custom/index.css
+  cp -v src/static/custom/css.template src/static/custom/pad.css
+  cp -v src/static/custom/css.template src/static/custom/timeslider.css
 
   # write dirty.db to StateDirectory by default
   sed -i 's/var\/dirty.db/\/var\/lib\/etherpad-lite\/dirty.db/g' \
     settings.json.template
 
   # create needed symlink because setup is weird
-  mkdir node_modules && cd node_modules
-  ln -s ../src "ep_${pkgname}"
+  mkdir -v node_modules && cd node_modules
+  ln -vs ../src "ep_${pkgname}"
 }
 
 build() {
@@ -69,56 +69,52 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   # install initialization file
-  install -t "${pkgdir}/usr/share/${pkgname}/src/" -Dm644 \
-    "src/.ep_initialized"
+  install -t "${pkgdir}/usr/share/${pkgname}/src/" \
+    -vDm644 "src/.ep_initialized"
 
   # node modules
-  mv node_modules "${pkgdir}/usr/share/${pkgname}/"
+  mv -v node_modules "${pkgdir}/usr/share/${pkgname}/"
 
   # custom js and css templates
-  install -t "${pkgdir}/etc/${pkgname}/custom" -Dm0640 \
-    "src/static/custom/"*.{css,js}
-  rm -r src/static/custom
+  install -t "${pkgdir}/etc/${pkgname}/custom" \
+    -vDm0644 "src/static/custom/"*.{css,js}
+  rm -rv src/static/custom
 
   # move sources
-  mv src/* "${pkgdir}/usr/share/${pkgname}/src/"
+  mv -v src/* "${pkgdir}/usr/share/${pkgname}/src/"
 
   # symlink directory for custom css and js
-  ln -s "/etc/${pkgname}/custom/" \
+  ln -vs "/etc/${pkgname}/custom/" \
     "${pkgdir}/usr/share/${pkgname}/src/static/"
 
   # symlink needed files (not yet created)
-  ln -s /var/lib/etherpad-lite/SESSIONKEY.txt \
+  ln -vs /var/lib/etherpad-lite/SESSIONKEY.txt \
     "${pkgdir}/usr/share/${pkgname}/SESSIONKEY.txt"
-  ln -s /var/lib/etherpad-lite/APIKEY.txt \
+  ln -vs /var/lib/etherpad-lite/APIKEY.txt \
     "${pkgdir}/usr/share/${pkgname}/APIKEY.txt"
 
   #jquery
-  install -Dm0644 "${srcdir}/jquery.js" \
+  install -vDm0644 "${srcdir}/jquery.js" \
     "${pkgdir}/usr/share/${pkgname}/src/static/js/jquery.js"
 
   # configuration
-  install -Dm0644 settings.json.template \
+  install -vDm0644 settings.json.template \
     "${pkgdir}/etc/${pkgname}/settings.json"
 
   # systemd service
-  install -Dm0644 "${srcdir}/${pkgname}.service" \
+  install -vDm0644 "${srcdir}/${pkgname}.service" \
     "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
   # systemd-sysusers
-  install -Dm0644 "${srcdir}/${pkgname}-sysusers.conf" \
+  install -vDm0644 "${srcdir}/${pkgname}-sysusers.conf" \
     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 
   # systemd-tmpfiles
-  install -Dm0644 "${srcdir}/${pkgname}-tmpfiles.conf" \
+  install -vDm0644 "${srcdir}/${pkgname}-tmpfiles.conf" \
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   # documentation
-  install -Dm0644 CHANGELOG.md \
-    "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-  install -Dm0644 CONTRIBUTING.md \
-    "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.md"
-  install -Dm0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm0644 documentation.html \
-    "${pkgdir}/usr/share/doc/${pkgname}/documentation.html"
+  install -t "${pkgdir}/usr/share/doc/${pkgname}/" \
+    -vDm0644 {CHANGELOG,CONTRIBUTING,README}.md \
+    -vDm0644 documentation.html
 }
