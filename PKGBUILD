@@ -2,8 +2,8 @@
 # Maintainer: Jguer <joaogg3@gmail.com>
 VCS="git"
 pkgname="yay-git"
-pkgver=99
-pkgrel=1
+pkgver=100
+pkgrel=2
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go. (development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Jguer/yay"
@@ -15,6 +15,11 @@ conflicts=('yay-bin' 'yay')
 provides=('yay')
 source=("git+https://github.com/Jguer/yay/")
 md5sums=("SKIP")
+
+pkgver() {
+  cd "$srcdir/${pkgname%-${VCS}}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   export GOPATH="${srcdir}/.go"
