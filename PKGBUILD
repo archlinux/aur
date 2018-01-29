@@ -3,7 +3,7 @@
 
 pkgname=wcalc
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A flexible command-line scientific calculator"
 arch=('i686' 'x86_64')
 url="http://w-calc.sourceforge.net/"
