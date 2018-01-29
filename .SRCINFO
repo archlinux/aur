@@ -8,6 +8,7 @@ pkgbase = hyperledger-indy-node
 	groups = hyperledger
 	license = APACHE
 	makedepends = python
+	depends = python-charm-crypto-git
 	depends = python-dateutil
 	depends = hyperledger-indy-anoncreds
 	depends = hyperledger-indy-plenum

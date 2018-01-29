@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/hyperledger/${_pkgname}"
 license=('APACHE')
 groups=('hyperledger')
-depends=('python-dateutil' 'hyperledger-indy-anoncreds' 'hyperledger-indy-plenum' 'python-timeout-decorator')
+depends=('python-charm-crypto-git' 'python-dateutil' 'hyperledger-indy-anoncreds' 'hyperledger-indy-plenum' 'python-timeout-decorator')
 makedepends=('python')
 source=("https://github.com/hyperledger/${_pkgname}/archive/$pkgver-master.tar.gz")
 
