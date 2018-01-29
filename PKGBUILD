@@ -2,9 +2,9 @@
 
 pkgname=imagescan
 _pkgname=utsushi
-pkgver=3.33.0
-_pkgver=0.33.0
-pkgrel=4
+pkgver=3.34.0
+_pkgver=0.34.0
+pkgrel=1
 _fedrel=27
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ conflicts=("libmagick")
 source=("http://support.epson.net/linux/src/scanner/imagescanv3/fedora/${pkgname}-${pkgver}-1epson4fedora${_fedrel}.src.rpm"
         "utsushi-scan-gtkmm.desktop"
         "utsushi.conf")
-md5sums=('3fdfb2b36715bac1c2c1600b06a74028'
+md5sums=('ef5ed51545fc6451ced1f17d18ef287e'
          '34907cc33aa800c54ff83abb0eac3fc4'
          '65872f825a1787db89faa0a68611ed81')
 backup=("etc/utsushi/utsushi.conf")
