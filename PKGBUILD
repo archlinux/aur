@@ -1,17 +1,18 @@
+# Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Nathan Owe <ndowens04+AUR@gmail.com>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=grap
 pkgver=1.45
-pkgrel=2
+pkgrel=3
 pkgdesc='A language for typesetting graphs.'
 arch=('i686' 'x86_64')
-url='https://packages.debian.org/sid/text/grap'
+url="https://www.lunabase.org/~faber/Vault/software/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 license=('custom')
 depends=('gcc-libs')
-source=("https://packages.debian.org/pool/main/g/$pkgname/${pkgname}_${pkgver}.orig.tar.gz")
-sha512sums=('35e6a4e504aeb5649e74511d6e807506e71573e85fbea76cdd8e6b9c8d4b13ce02459bbc982f8b6abe898319f4560877df80c2f75300d152ac1bf76f81d9c15c')
+source=("https://www.lunabase.org/~faber/Vault/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('e23a5dda5d68140cab860f076f432785cf5d78f51ee09ba6f90cea3de9901066f61867db9fa84a1e09f2a4763083bfb4e16199cc0fdafbf39fcb5605c8b7ce96')
 
 build() {
   cd $pkgname-$pkgver
@@ -22,5 +23,5 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+  install -Dm644 COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/COPYRIGHT
 }
