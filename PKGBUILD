@@ -1,14 +1,14 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='artemis'
-pkgver=16.0.17
+pkgver=16.0.18
 pkgrel=1
-pkgdesc='A free genome viewer and annotation tool that allows visualization of biological sequence features'
+pkgdesc='A genome viewer and annotation tool that visualizes biological sequence features'
 arch=('x86_64')
-url=http://www.sanger.ac.uk/resources/software/"${artemis}"
+url=http://www.sanger.ac.uk/science/tools/"${artemis}"
 license=('GPL2')
 depends=('java-runtime>=1.6')
-source=("${pkgname}"-"${pkgver}".tar.gz::ftp://ftp.sanger.ac.uk/pub/resources/software/"${pkgname}"/"${pkgname}".tar.gz)
+source=("${pkgname}"-"${pkgver}".tar.gz::ftp://ftp.sanger.ac.uk/pub/resources/software/"${pkgname}"/v16/v"${pkgver}".tar.gz)
 sha256sums=('84a79eef8887994facb786ed095400ca5d7ddbfb1b126b2f3906db3dc1775813')
 
 package() {
