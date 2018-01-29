@@ -1,6 +1,6 @@
 #Contributor: Hector Mtz-Seara <hseara.#at#.gmail*.*com>
 pkgname=pyzo
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="Pyzo is a cross-platform Python IDE focused on interactivity and introspection, which makes it very suitable for scientific computing."
 url="http://pyzo.org"
@@ -18,7 +18,7 @@ makedepends=('python-setuptools')
 
 source=("https://github.com/pyzo/pyzo/archive/v${pkgver}.tar.gz")
 
-sha1sums=('0599c645b5428d9074788836179623ba35b9322a')
+sha1sums=('f0d99253bd53902854b0fc995f61818eb79ca212')
 
 
 build(){
@@ -42,7 +42,7 @@ Encoding=UTF-8
 Name=pyzo
 Comment=Pyzo is a cross-platform Python IDE
 Exec=/usr/bin/pyzo
-Icon=/usr/lib/python3.5/site-packages/pyzo/resources/appicons/pyzologo.ico
+Icon=/usr/lib/python3.6/site-packages/pyzo/resources/appicons/pyzologo.ico
 Categories=Python;Development;IDE;
 EOF
 
