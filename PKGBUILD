@@ -3,7 +3,7 @@
 
 pkgname=icesl
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A GPU accelerated modeler and slicer for 3D printing"
 arch=('x86_64')
 url="http://shapeforge.loria.fr/icesl/"
@@ -16,5 +16,5 @@ package() {
 	bsdtar -xf control.tar.gz ./copyright
 	install -Dm644 $srcdir/copyright $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	bsdtar -xf $srcdir/data.tar.xz -C $pkgdir
-	ln -s $pkgdir/usr/share/$pkgname/bin/IceSL-slicer $pkgdir/usr/bin/$pkgname
+	ln -s /usr/share/$pkgname/bin/IceSL-slicer $pkgdir/usr/bin/$pkgname
 }
