@@ -1,6 +1,6 @@
 pkgbase = ocserv
 	pkgdesc = OpenConnect VPN Server
-	pkgver = 0.11.9
+	pkgver = 0.11.10
 	pkgrel = 1
 	url = https://gitlab.com/ocserv/ocserv
 	arch = i686
@@ -24,8 +24,8 @@ pkgbase = ocserv
 	depends = geoip
 	backup = etc/ocserv.config
 	backup = etc/ocserv-passwd
-	source = ocserv-0.11.9.tar.gz::https://gitlab.com/ocserv/ocserv/repository/archive.tar.gz?ref=ocserv_0_11_9
-	sha256sums = 4f44d5351a8b329386693ba68527331d2f944f67c218dfce591e1eb2d1c2be7e
+	source = ocserv-0.11.10.tar.gz::https://gitlab.com/ocserv/ocserv/repository/archive.tar.gz?ref=ocserv_0_11_10
+	sha256sums = 16a2874e9b8ecda70441a5ba9504cb85484e551d3bea88b92ca6937245e7d202
 
 pkgname = ocserv
 
