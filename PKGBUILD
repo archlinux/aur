@@ -2,13 +2,13 @@
 pkgname=vita3k-git
 _pkgname=vita3k
 pkgver=r2.d03e8f9
-pkgrel=1
+pkgrel=2
 pkgdesc="PlayStation Vita emulator"
 arch=('x86_64')
 url="https://vita3k.github.io/"
 license=('GPL2')
-depends=('unicorn')
-makedepends=('sdl2' 'git' 'cmake')
+depends=('unicorn' 'sdl2')
+makedepends=('git' 'cmake')
 provides=('vita3k')
 conflicts=('vita3k')
 source=(
