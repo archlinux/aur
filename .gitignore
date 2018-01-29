@@ -1,0 +1,13 @@
+pkg/
+src/
+*pkg.tar*
+capstone
+ELFIO
+glbinding
+microprofile
+sdl2-cmake-scripts
+vita3k
+vita-headers
+vita-toolchain
+yaml-cpp
+
