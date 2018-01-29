@@ -1,15 +1,15 @@
 pkgbase = diesel_cli
 	pkgdesc = CLI for the Diesel crate
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = http://diesel.rs/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	license = Apache
 	makedepends = cargo
-	source = diesel_cli-1.0.0.tar.gz::https://github.com/diesel-rs/diesel/archive/v1.0.0.tar.gz
-	sha256sums = 781fc72e7580e98f47b859e737bc2d40d92d50bfe8dbe2aedd5cf3e4a9289013
+	source = diesel_cli-1.1.1.tar.gz::https://github.com/diesel-rs/diesel/archive/v1.1.1.tar.gz
+	sha256sums = b0f29d67c7251003eef3af515052bdc0dea3c72b08830a6ff1fc4b8b7b6b13a6
 
 pkgname = diesel_cli
 

@@ -1,13 +1,13 @@
 pkgname=diesel_cli
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='CLI for the Diesel crate'
 arch=(i686 x86_64)
 url='http://diesel.rs/'
 license=(MIT Apache)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/diesel-rs/diesel/archive/v$pkgver.tar.gz")
-sha256sums=('781fc72e7580e98f47b859e737bc2d40d92d50bfe8dbe2aedd5cf3e4a9289013')
+sha256sums=('b0f29d67c7251003eef3af515052bdc0dea3c72b08830a6ff1fc4b8b7b6b13a6')
 
 build() {
 	cd "$srcdir/diesel-$pkgver/$pkgname"
