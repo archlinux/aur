@@ -1,12 +1,12 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=zyn-fusion
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="ZynAddSubFX with a new interactive UI"
 arch=('i686' 'x86_64')
 url="http://zynaddsubfx.sourceforge.net/zyn-fusion.html"
 license=('GPL2' 'LGPL2.1')
-depends=('fftw' 'libglvnd' 'mxml' 'jack2' 'liblo' 'lash' 'alsa-lib' 'portaudio')
+depends=('fftw' 'libglvnd' 'mxml' 'jack' 'liblo' 'lash' 'alsa-lib' 'portaudio')
 makedepends=('git' 'ruby-rake')
 provides=('zynaddsubfx')
 conflicts=('zynaddsubfx')
