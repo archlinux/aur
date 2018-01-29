@@ -4,10 +4,10 @@
 
 _gemname=gtk3
 pkgname=ruby-$_gemname
-pkgver=3.0.8
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='Ruby/GTK3 is a Ruby binding of GTK+-3.x.'
-arch=(i686 x86_64)
+arch=('x86_64')
 url='http://ruby-gnome2.sourceforge.jp/'
 license=(LGPL2.1)
 depends=(ruby-atk ruby-gdk3 ruby-gdk_pixbuf2 ruby-gio2 ruby-glib2 ruby-pango gtk3)
@@ -15,7 +15,7 @@ makedepends=(gobject-introspection)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('24bb8e5224cd326ddbcfb5f5d14a72c9dbe8ced2')
+sha1sums=('dfd27d02cdb5630a0abd211e324be54c48e4b5b0')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
