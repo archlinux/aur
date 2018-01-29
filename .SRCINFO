@@ -1,0 +1,32 @@
+pkgbase = python2-abjad
+	pkgdesc = Tool for formalized music score control.
+	pkgver = 2.21
+	pkgrel = 1
+	url = https://github.com/Abjad/abjad
+	arch = any
+	license = GPL 3
+	makedepends = python2-setuptools
+	depends = lilypond
+	depends = python2
+	depends = python2-mock
+	depends = python2-funcsigs
+	depends = python2-enum34
+	depends = python2-pathlib2
+	depends = python2-scandir
+	depends = python2-ply
+	depends = python2-six
+	optdepends = graphviz: to create rhythm-trees graphs and other tree structures
+	optdepends = fluidsynth: to play generated MIDI files (instead of timidity++)
+	optdepends = timidity++: to play generated MIDI files (instead of fluidsynth)
+	optdepends = jupyter: browser-based interactive notebook for programming
+	optdepends = ipython2: an enhanced Python 2 console
+	optdepends = python2-ipykernel: Python 2 support for Jupyter
+	optdepends = python2-ipywidgets: IPython2 widgets for Jupyter notebook
+	optdepends = python2-pypdf2: PDF toolkit
+	provides = python-abjad
+	conflicts = python-abjad
+	source = https://github.com/Abjad/abjad/archive/v2.21.tar.gz
+	sha256sums = 5fc1fc977b9521d4b9ce1aa8bdea1aa07306e313bd03feea15e8c680b4f27c5b
+
+pkgname = python2-abjad
+
