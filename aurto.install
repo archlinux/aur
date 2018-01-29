@@ -27,7 +27,9 @@ post_install() {
   sudo -u "$user" repo-add /var/cache/pacman/aurto/aurto.db.tar 2>/dev/null
 
   echo 'aurto: Adding passwordless use of arch-nspawn, mkarchroot, makechrootpkg, aurbuild_chroot' >&2
-  cp /etc/sudoers /etc/sudoers.aurto-backup
+  if ! test -f /etc/sudoers.aurto-backup; then
+    cp /etc/sudoers /etc/sudoers.aurto-backup
+  fi
   echo "## aurto rules
 %$user ALL=(ALL) NOPASSWD: /usr/bin/arch-nspawn
 %$user ALL=(ALL) NOPASSWD:SETENV: /usr/bin/makechrootpkg
