@@ -2,7 +2,7 @@
 
 pkgname=sylpheed-beta-iconmod
 pkgver=3.7.0beta1
-pkgrel=1
+pkgrel=3
 pkgdesc="Lightweight e-mail client. Latest official beta with the coonsden.com icon theme."
 arch=('i686' 'x86_64')
 url="http://sylpheed.sraoss.jp/en/"
@@ -22,8 +22,12 @@ build() {
   cp -r "$srcdir/Sylpheed3.0_icon-set/src" "$srcdir/sylpheed-$pkgver"
   cd "$srcdir/sylpheed-$pkgver"
 
-  ./configure --prefix=/usr --enable-ldap --enable-gpgme
+  # fix enchant maintainers moving things around for fun
+  sed -i 's:enchant/enchant.h:enchant-2/enchant.h:g' src/compose.c
+  sed -i 's:PKG_CONFIG --libs enchant:PKG_CONFIG --libs enchant-2:g' configure.ac
 
+  autoconf
+  ./configure --prefix=/usr --enable-ldap --enable-gpgme
   make
 }
 

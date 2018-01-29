@@ -1,7 +1,7 @@
 pkgbase = sylpheed-beta-iconmod
 	pkgdesc = Lightweight e-mail client. Latest official beta with the coonsden.com icon theme.
 	pkgver = 3.7.0beta1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://sylpheed.sraoss.jp/en/
 	arch = i686
 	arch = x86_64
