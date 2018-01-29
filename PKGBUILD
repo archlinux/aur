@@ -1,6 +1,7 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Submitter: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Maintainer: Sujeet Akula <sujeet@freeboson.org>
 pkgname=ossec-local
-pkgver=2.9.0
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="Open Source Host-based Intrusion Detection System"
 arch=('i686' 'x86_64')
@@ -10,11 +11,29 @@ depends=('openssl')
 backup=('var/ossec/etc/ossec.conf')
 install=ossec.install
 options=('emptydirs')
-source=(ossec-hids-$pkgver.tar.gz::https://github.com/ossec/ossec-hids/archive/$pkgver.tar.gz
-        config)
-sha256sums=('626d9b8d6dbddee8d99f4622d54a28849ef2014aa96e14c9d183a7a8dde1d9f2'
-            '10d1cd8589d7aca030ea391b6cca312b91d5aa31f56e60a20b6a56652906db5c')
-
+source=(
+    "ossec-hids-$pkgver.tar.gz"::"https://github.com/ossec/ossec-hids/archive/$pkgver.tar.gz"
+    "https://github.com/ossec/ossec-hids/releases/download/$pkgver/ossec-hids-$pkgver.tar.gz.asc"
+    config
+)
+md5sums=(
+    '5ea64f58d1a6c5c20cadc449d0616f56'  # ossec-hids-2.9.3.tar.gz
+    'SKIP'                              # ossec-hids-2.9.3.tar.gz.asc
+    '510463fc82537b59a45fe55993e6d712'  # config
+)
+sha256sums=(
+    '6b70a8f93fc2412bfc34a793a53b4d22323568866c09fde87c7d3a9d04e3b313'  # ossec-hids-2.9.3.tar.gz
+    'SKIP'                                                              # ossec-hids-2.9.3.tar.gz.asc
+    '10d1cd8589d7aca030ea391b6cca312b91d5aa31f56e60a20b6a56652906db5c'  #  config
+)
+sha512sums=(
+    '4c98d9f7c94e4a25966b73d9c7348039dd4da5e22d3361abc7811f648986383c262fffe72339db8af2a57fdf3debd4285afccbdef5befad3bde9f0e7acf8b6d7'	# ossec-hids-2.9.3.tar.gz
+    'SKIP'                                                              																# ossec-hids-2.9.3.tar.gz.asc
+	'8947b8407e6d7545c18b7d7390e7ea2f170743c1beffc7a7ed575c9ffbc24ec8f9c6ab21765eae39a56304afeb8733e88bea2abf7bb788142872abdb877d34bc'  # config
+)
+validpgpkeys=(
+    'B50FB1947A0AE31145D05FADEE1B0E6B2D8387B7'  # Scott R. Shinn <scott@atomicorp.com>
+)
 _instdir="/var/ossec"
 
 _preparevars() {
