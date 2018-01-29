@@ -1,0 +1,5 @@
+/wlroots-git/
+/pkg/
+/src/
+*.pkg.tar
+*.pkg.tar.*
