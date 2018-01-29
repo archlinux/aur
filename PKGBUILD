@@ -7,8 +7,8 @@
 
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=v4.15-rc9
-pkgver=4.15rc9
+_tag=v4.15
+pkgver=4.15
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
