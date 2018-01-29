@@ -1,11 +1,10 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=aumix
 pkgver=2.9.1
-pkgrel=8
+pkgrel=9
 pkgdesc="A color text mode sound mixer with GPM support"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 license=('GPL')
 depends=()
 makedepends=('gtk2' 'gpm' 'ncurses')
