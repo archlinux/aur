@@ -3,7 +3,7 @@
 
 pkgname=python-internetarchive
 pkgver=1.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Wrapper for the various Internet Archive APIs (IA-S3, Metadata API, etc)'
 arch=('any')
 url='https://github.com/jjjake/ia-wrapper'
@@ -31,6 +31,7 @@ provides=('python-internetarchive')
 conflicts=('python-internetarchive-git' 'python2-internetarchive-git')
 
 build() {
+  cd internetarchive-${pkgver}
   python setup.py build
 }
 

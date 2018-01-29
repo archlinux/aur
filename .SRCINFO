@@ -1,7 +1,7 @@
 pkgbase = python-internetarchive
 	pkgdesc = Wrapper for the various Internet Archive APIs (IA-S3, Metadata API, etc)
 	pkgver = 1.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jjjake/ia-wrapper
 	arch = any
 	license = AGPL3
