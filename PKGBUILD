@@ -2,7 +2,7 @@
 _name=audition
 pkgname=${_name}-git
 pkgver=r1.7f43782
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple now-playing server"
 arch=(i686 x86_64)
 url='https://github.com/jreinert/audition'
