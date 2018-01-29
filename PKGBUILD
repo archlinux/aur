@@ -14,6 +14,7 @@ source=("https://github.com/hyperledger/indy-sdk/archive/v$pkgver.tar.gz")
 build() {
   cd $srcdir/indy-sdk-$pkgver
   cd libindy
+  sed -i 's/0.0.14/0.0.16/g' Cargo.toml
   cargo build --release
 }
 
