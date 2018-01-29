@@ -1,0 +1,18 @@
+[Unit]
+Description=Indy Node
+Requires=indy-node-control.service
+
+[Service]
+EnvironmentFile=/etc/indy/indy.env
+ExecStart=/usr/bin/start_indy_node ${NODE_NAME} ${NODE_PORT} ${NODE_CLIENT_PORT}
+User=indy
+DynamicUser=yes
+Restart=on-failure
+RestartSec=10
+StartLimitBurst=10
+StartLimitInterval=200
+TimeoutSec=300
+LimitNOFILE=16384:65536
+
+[Install]
+WantedBy=multi-user.target
