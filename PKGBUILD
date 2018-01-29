@@ -9,7 +9,7 @@
 
 pkgname=acestream-engine
 pkgver=3.1.16
-pkgrel=5
+pkgrel=6
 _ubuntuver=16.04
 pkgdesc="ACE Stream engine"
 arch=('x86_64')
@@ -21,12 +21,12 @@ install='acestream-engine.install'
 source=(
   "acestream-engine.service"
   "http://dl.acestream.org/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
-  "https://archive.archlinux.org/packages/p/python2-m2crypto/python2-m2crypto-0.23.0-2-x86_64.pkg.tar.xz"
+  "https://archive.archlinux.org/packages/p/python2-m2crypto/python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz"
 )
 sha256sums=(
   'b9863a9dd3ee6d41d18475f5f539107fe81a573f45ca1cb98013441f955f1af0'
   '452bccb8ae8b5ff4497bbb796081dcf3fec2b699ba9ce704107556a3d6ad2ad7'
-  'a58bcd992b4823b8cf3c9d5794d0eb631438a63db8a03488fff571cfdc71a768'
+  '177c22681be64a7533b3303652da8724aa20edcbead87be90765bc5040f4cff5'
 )
 
 package() {
