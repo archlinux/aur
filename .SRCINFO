@@ -1,0 +1,25 @@
+pkgbase = python-cyvcf2
+	pkgdesc = Fast VCF/BCF processor in Python using Cython and htslib
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/cyvcf2
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-cyvcf2-0.8.6.tar.gz::https://pypi.python.org/packages/39/c9/b2b5d29b945e5599cddc0f04aa10e7f50e45d80a32cf22aa639d0b3a201b/cyvcf2-0.8.6.tar.gz
+	sha256sums = eca706d5c94786fe94c27839772f16d0e1b04de6569857ef2180035f6d07b03d
+
+pkgname = python-cyvcf2
+	depends = python
+	depends = python-numpy
+	depends = htslib
+
+pkgname = python2-cyvcf2
+	depends = python2
+	depends = python2-numpy
+	depends = htslib
+
