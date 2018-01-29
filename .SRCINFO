@@ -4,6 +4,7 @@ pkgbase = idesk
 	pkgrel = 8
 	url = https://sourceforge.net/projects/idesk/
 	arch = x86_64
+	arch = i686
 	license = GPL
 	depends = pkgconfig
 	depends = imlib2
