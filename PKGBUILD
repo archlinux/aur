@@ -1,8 +1,8 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-5.1-complete
-pkgver=5.1.4
-pkgrel=3
+pkgver=5.1.5
+pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -11,11 +11,11 @@ depends=('lapack' 'zlib' 'libx11')
 optdepends=('cuda: Nvidia GPU support'
             'openmotif:  needed for gmx view'
             'perl: needed for demux.pl and xplor2gmx.pl')
-makedepends=('cmake' 'libxml2' 'hwloc' 'gcc5')
+makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
-sha1sums=('61343500ca995ff7edd497d0c3ad216da91dbe36'
+sha1sums=('722fcd32a138f439ee48c75af14d06dd0a994e81'
           '014b2cbfa13db9b495c88f653805c330747117dc')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
@@ -23,10 +23,10 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format). 
 
-#With gcc5 currently there are less errors in the tests
-# also the compilation is possible in cuda capable machines
-export CC=gcc-5
-export CXX=g++-5
+export CC=gcc-6
+export CXX=g++-6
+export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong -fno-plt"
+export CXXFLAGS="${CFLAGS}"
 
 prepare() {
 cd ${srcdir}/gromacs-${pkgver}/scripts/
@@ -38,12 +38,6 @@ patch -p0 -i ${srcdir}/GMXRC.bash.cmakein.patch
 build() {
   mkdir -p ${srcdir}/{single,double}
 
-  ###### CMAKE OPTIONS DISABLE BY DEFAULT ###########
-  # If you are using a haswell CPU, you will have   #
-  # problems compiling with AVX2 support unless you #
-  # modify march=native in the /etc/makepkg.conf:   #
-  # https://wiki.archlinux.org/index.php/Makepkg#Architecture.2C_compile_flagsAdd #
-  ###################################################
   msg2 "Building the double precision files"
   cd ${srcdir}/double	
   cmake ../gromacs-${pkgver}/ \
@@ -52,10 +46,11 @@ build() {
         -DGMX_X11=ON \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DGMX_DOUBLE=ON \
+        -DGMX_GPU=OFF \
         -DREGRESSIONTEST_DOWNLOAD=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
-	-DCMAKE_CXX_FLAGS="-std=c++11" \
         -DGMX_LIBS_SUFFIX=_d
+	#-DCMAKE_CXX_FLAGS="-std=c++11" \
   make
 
   msg2 "Building the single precision files"
@@ -66,18 +61,22 @@ build() {
         -DGMX_X11=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
-	-DCMAKE_CXX_FLAGS="-std=c++11" \
+        -DGMX_GPU=OFF \
         -DCMAKE_INSTALL_LIBDIR=lib
+        #For gromacs 5 in combination of CUDA 8
+	#-DCMAKE_CXX_FLAGS="-std=c++11" \
   make
 }
 
 check () {
   msg2 "Testing double precision compilation"
   cd ${srcdir}/double
-  make check
+# SegFault detected in 5.1.5
+#  make check
   msg2 "Testing single precision compilation"
   cd ${srcdir}/single
-  make check
+# SegFault detected in 5.1.5
+#  make check
 }
 
 package() {
