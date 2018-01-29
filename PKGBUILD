@@ -3,7 +3,7 @@
 
 pkgname=mattermost-desktop-bin
 _pkgname=mattermost-desktop
-pkgver=3.7.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Mattermost Desktop (Beta) for Linux (binary)"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ source=(${_pkgname}.desktop)
 source_x86_64=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz")
 source_i686=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-ia32.tar.gz")
 sha256sums=('9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093')
-sha256sums_x86_64=('45ee2fbb5863cf19b3b9629d444cf660de7ef13010d2e62190acaa60e8dd4cac')
-sha256sums_i686=('9b371cd21e9361b2850dba43e532d056af93a7f30581b1f4b05d9c4f38495993')
+sha256sums_x86_64=('bbb6b9e0d9265973d8509ed66c11bf9d2bffe73d7abf5713e12d3aa53a7fbfe5')
+sha256sums_i686=('645fcaeca6d1fe18caf3bfe96d648631961fe96aae520252bdb84b65054cb16f')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
