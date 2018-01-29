@@ -1,7 +1,7 @@
 pkgbase = openbazaard
 	pkgdesc = Server daemon for communication between client and OpenBazaar network (Latest devel version)
 	pkgver = 0.10.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openbazaar.org
 	install = openbazaard.install
 	arch = i686
@@ -14,9 +14,11 @@ pkgbase = openbazaard
 	source = https://github.com/OpenBazaar/openbazaar-go/archive/v0.10.1.tar.gz
 	source = openbazaard.service
 	source = openbazaard.conf
+	source = openbazaard.sysuser.conf
 	md5sums = 5fc9d28716c230abf7659a5ab70fb4f1
 	md5sums = b0193c5364076ce7b112f13edf995ac1
 	md5sums = 9fd31f8bc5b6ccc21a52fc1b58fdb9d6
+	md5sums = 92cd2fa8929c5acddbddf7d4fc2fd494
 
 pkgname = openbazaard
 

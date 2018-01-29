@@ -2,7 +2,7 @@
 
 pkgname=openbazaard
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
 arch=(i686 x86_64)
 url="http://openbazaar.org"
@@ -13,8 +13,9 @@ makedepends=(go upx)
 _user=github.com/OpenBazaar
 _repo=openbazaar-go
 source=("https://github.com/OpenBazaar/openbazaar-go/archive/v$pkgver.tar.gz"
-	"$pkgname.service"
-	"$pkgname.conf"
+	$pkgname.service
+	$pkgname.conf
+	$pkgname.sysuser.conf
 )
 options=('strip' 'upx')
 
@@ -36,9 +37,11 @@ package() {
   
   install -Dm755 $GOPATH/bin/${_repo} $pkgdir/usr/bin/$pkgname
   install -Dm644 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
-  install -D -m644 $srcdir/$pkgname.conf $pkgdir/etc/conf.d/$pkgname
+  install -Dm644 $srcdir/$pkgname.conf $pkgdir/etc/conf.d/$pkgname
+  install -Dm755 $srcdir/$pkgname.sysuser.conf $pkgdir/usr/lib/sysusers.d/$pkgname.conf
 }
 
 md5sums=('5fc9d28716c230abf7659a5ab70fb4f1'
          'b0193c5364076ce7b112f13edf995ac1'
-         '9fd31f8bc5b6ccc21a52fc1b58fdb9d6')
+         '9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
+         '92cd2fa8929c5acddbddf7d4fc2fd494')
