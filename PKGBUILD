@@ -1,7 +1,7 @@
 # Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) 
 pkgname=vita3k-git
 _pkgname=vita3k
-pkgver=r3.92a3667
+pkgver=r2.d03e8f9
 pkgrel=1
 pkgdesc="PlayStation Vita emulator"
 arch=('x86_64')
@@ -56,9 +56,7 @@ build() {
 	msg2 "Create build"
 	mkdir -p build && cd build
 	msg2 "Create cmake"
-	# Build system broken, link everything relevant just to be sure
-	# https://github.com/Vita3K/Vita3K/issues/9
-	cmake -E env CXXFLAGS="-lglib-2.0 -lpthread -lm -lunicorn" cmake -DCMAKE_INSTALL_PREFIX=/usr ../src
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ../src
 	make
 }
 
