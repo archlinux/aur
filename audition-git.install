@@ -1,3 +1,9 @@
 post_install() {
+    echo 'Creating user for audition'
     useradd -M -s /bin/false audition
+}
+
+post_remove() {
+    echo 'Deleting audition user'
+    userdel audition
 }

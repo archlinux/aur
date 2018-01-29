@@ -13,13 +13,11 @@ conflicts=('audition-bin')
 provides=('audition')
 source=(
     "${_name}::git+https://github.com/jreinert/audition"
-    audition-git.install
     audition.service
 )
 
 sha512sums=(
     SKIP
-    879788a9cf0c6bd609f22e27c83c8889e0649a0f5af44609495936cb31a4ed85f8e7bf0981794a9098a5fcd00c1bb150a6e06ea157cee99fcf28feb50260b9af
     f8e89fad14a3ba3cf030fa64bbd12edb2bbab8b82a897beda53a545bf6fdb4d1c34e2d2ae7cd9204b3b342a84038c7151ec49ed6b5640da0d266146ed63eb4ff
 )
 
