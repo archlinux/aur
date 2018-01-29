@@ -8,7 +8,7 @@ arch=('any')
 url="http://gnome-look.org/content/show.php/?content=155025"
 license=("GPL")
 source=("https://dl.opendesktop.org/api/files/downloadfile/id/1460735137/s/e6598df800b1e29b5b3f045dfdc69dda/t/1516944582/u//155025-win8.tar.gz")
-sha1sums=('d0707f4f5b2e669cea4139f3df6863572082bbba')
+sha1sums=('SKIP')
 
 package()
 {
