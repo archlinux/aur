@@ -5,7 +5,7 @@
 
 pkgname=pistache-git
 _name=${pkgname%-git}
-pkgver=189.9827cda
+pkgver=204.b66415a
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Modern and elegant HTTP and REST framework for C++'
@@ -15,20 +15,12 @@ makedepends=('cmake' 'git')
 provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/oktal/${_name}"
-source=("${_name}::git://github.com/oktal/${_name}.git"
-        '0001-Export-targets.patch')
-sha256sums=('SKIP'
-            '68140dc3747b36e3287913cdb4e4ae1a2cc85d69e28560dee3937f6143e0cc5f')
+source=("${_name}::git://github.com/oktal/${_name}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
   echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_name}"
-
-  patch -p1 -i "${srcdir}/0001-Export-targets.patch"
 }
 
 build() {
