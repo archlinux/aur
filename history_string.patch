@@ -1,0 +1,26 @@
+Description: Handle more than 256 characters in the history
+Author: <bdefreese@bddebian3.bddebian.com>
+
+--- a/src/history.cc
++++ b/src/history.cc
+@@ -41,15 +41,14 @@
+   ifstream f(filename);
+   if (!f) return;
+ 
++  string line_text;
++
+   while (!f.eof()) {
+-    char line_text[256];
+     string line_str;
+ 
+-    f.getline(line_text, sizeof(line_text));
+-    if (*line_text) {
+-      line_str = line_text;
+-      history.push_back(line_str);
+-    }
++    getline(f,line_text);
++    line_str = line_text;
++    history.push_back(line_str);
+   }
+ 
+   m_file_entries = history.size();

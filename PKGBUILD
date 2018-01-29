@@ -4,21 +4,32 @@
 
 pkgname=gmrun
 pkgver=0.9.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple program which provides a run program window"
 arch=('x86_64')
 url="http://sf.net/projects/gmrun"
 license=('GPL')
 depends=('gtk2' 'popt')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
-	gcc43.patch)
+	gcc43.patch
+	return-type-gtk_completion_line_get_type.patch
+	history_string.patch)
 md5sums=('6cef37a968006d9496fc56a7099c603c'
-	 '3a0b69d8c2cac6cfb551b9d235441ecb')
+         '3a0b69d8c2cac6cfb551b9d235441ecb'
+         '0b467e3cdb14ca9f93176d3193659af7'
+         'f33450f3fae35ed6111aec8417c4d3d6')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	patch -p0 -i "$srcdir/gcc43.patch"
+	patch -p1 -i "$srcdir/return-type-gtk_completion_line_get_type.patch"
+	patch -p1 -i "$srcdir/history_string.patch"
+}
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	patch -p0 -i "$srcdir/gcc43.patch"
 	./configure --prefix=/usr
 	make
 }
