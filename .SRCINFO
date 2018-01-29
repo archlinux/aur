@@ -1,6 +1,6 @@
 pkgbase = urxvt-bidi
 	pkgdesc = Extension for adding bidirectional support to urxvt
-	pkgver = 2.11
+	pkgver = 2.12
 	pkgrel = 1
 	url = https://metacpan.org/pod/distribution/Text-Bidi/misc/bidi
 	install = urxvt-bidi.install
@@ -8,8 +8,8 @@ pkgbase = urxvt-bidi
 	license = GPL
 	depends = rxvt-unicode
 	depends = perl-text-bidi
-	source = https://api.metacpan.org/source/KAMENSKY/Text-Bidi-2.11/misc/bidi
-	md5sums = c34e22c25f46048427e7fd973c843547
+	source = https://fastapi.metacpan.org/source/KAMENSKY/Text-Bidi-2.12/misc/bidi
+	md5sums = bdc8cb27b622692382f3a7a0ebacf4ef
 
 pkgname = urxvt-bidi
 
