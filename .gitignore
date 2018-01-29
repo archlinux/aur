@@ -1,0 +1,6 @@
+src/
+pkg/
+
+jd-gui/
+
+*.pkg.tar.xz
