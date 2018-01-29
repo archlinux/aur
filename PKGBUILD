@@ -8,10 +8,11 @@ url="https://github.com/pandaGao/bilibili-live-helper"
 install=${pkgname}.install
 license=('MIT')
 depends=()
-makedepends=('tar' 'curl')
+makedepends=('tar' 'git')
 build() {
-	curl -O https://github.com/OriginCode/AURFiles/raw/master/bilibili-live-helper.tar.gz
-	tar xvf ./bilibili-live-helper.tar.gz
+	git clone https://github.com/OriginCode/AURFiles
+	cp ./AURFiles/${pkgname}.tar.gz .
+	tar xvf ./${pkgname}.tar.gz
 }
 package() {
 	install -d "${pkgdir}/opt/${pkgname}"
