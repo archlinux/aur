@@ -2,7 +2,7 @@
 
 pkgname=kepubify-bin
 _pkgname=kepubify
-pkgver=1.3.5
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Convert your ePubs into kepubs, with a easy-to-use command-line tool."
 arch=('x86_64')
