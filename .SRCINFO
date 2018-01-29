@@ -1,0 +1,15 @@
+pkgbase = charmtimetracker
+	pkgver = 1.12.0rc1
+	pkgrel = 1
+	url = https://github.com/KDAB/Charm
+	arch = any
+	license = GPL
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-script
+	depends = qtkeychain
+	source = https://github.com/KDAB/Charm/archive/1.12.0rc1.tar.gz
+	sha256sums = 0d82acb0d39f0598a293cb0bd22063fd24b90d2c3152695771d2b5b6a1589dad
+
+pkgname = charmtimetracker
+
