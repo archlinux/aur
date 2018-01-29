@@ -2,7 +2,7 @@
 pkgname=parabot-git
 provides=(parabot)
 pkgver=r71.0ef2c63
-pkgrel=2
+pkgrel=3
 pkgdesc='Rust irc bot'
 arch=(i686 x86_64)
 url=https://github.com/ParadoxSpiral/parabot

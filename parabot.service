@@ -7,6 +7,7 @@ Type=simple
 ExecStart=/usr/bin/env RUST_BACKTRACE=1 /usr/bin/parabot %h/.config/parabot/conf.toml
 WorkingDirectory=%h
 Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=default.target
