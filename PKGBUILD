@@ -1,7 +1,8 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Eduardo Reveles <me at osiux dot ws>
 
 pkgname=perl-net-frame
-pkgver=1.15
+pkgver=1.17
 pkgrel=1
 pkgdesc="the base framework for frame crafting"
 _dist=Net-Frame
@@ -11,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=(perl perl-bit-vector perl-class-gomor perl-net-ipv6addr perl-socket6)
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/$_dist-$pkgver.tar.gz")
-md5sums=('927650f18121f369e1a167272b9efbda')
+md5sums=('9219f01c4ac55e6aba518529df9edb92')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
