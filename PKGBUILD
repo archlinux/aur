@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc
 _srcname=linux-4.14
-_stable=4.14.14
-_patchver=4.14.15
+_stable=4.14.15
+_patchver=4.14.16
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -37,11 +37,11 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '62d656b98f0dc143216cb9650bd9b96cd83d92925731e9f0bec5eb4d6358e603'
+            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
             'SKIP'
-            '4790e72f7a827cea37155e07ae68ac2ec50280b3d26eb7e93f30ae872a5d72d1'
+            'a24fcd7ce735726dafd22835737d449591287625fb244f6ec8401bf418e20b18'
             'SKIP'
-            'edaf7bebcaf3032e3bf15353e0773e39872c73fc024ca4d23383195a13745b2e'
+            '34b38a7611124dcbb70cf26d8a05c860f2050f3993b233643d9dfdd94b7e15c6'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -58,8 +58,6 @@ prepare() {
   # add upstream patch
   # ONLY comment out for initial rc (ie 4.10 --> 4.10.1rc1) -- needed for all others
   patch -p1 -i "../patch-${_stable}"
-
-  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
 
   # add rc patch
   patch -p1 -i "../$_rcpatch"
