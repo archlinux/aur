@@ -2,7 +2,7 @@
 
 pkgname=jgnash-git
 pkgnameorg=jgnash
-pkgver=2.33.1
+pkgver=2.34.0
 pkgrel=1
 pkgdesc="Cross platform personal finance application written in Java - Build from GitHub"
 arch=('any')
@@ -12,8 +12,8 @@ provides=('jgnash')
 conflicts=('jgnash')
 depends=('java-runtime' 'jdk8-openjdk' 'java-rhino' 'java-openjfx' 'rhino' 'gradle' 'java-environment-common' 'java-runtime-common')
 source=(https://github.com/ccavanaugh/jgnash/archive/master.tar.gz)
-sha256sums=('dec107820d104ae40be685ff1c53be23f726071cbc00012431e9efeb2b5bb7c6')
-md5sums=('8b1e987b2f826884877813f79e0d08ed')
+sha256sums=('f2fca192d0cebb8d652a0a31b92246d14cb6c757db4082c41d9a8a502878b32e')
+md5sums=('df15d3113997274f751aad61c2a8214f')
 
 prepare() {
   cd "${srcdir}"/jgnash-master
