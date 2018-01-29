@@ -7,9 +7,9 @@ pkgrel=2
 pkgdesc="Portable and powerful unit testing framework for handling automated tests in C++"
 url="http://cpptest.sourceforge.net"
 license=('LGPL')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('gcc-libs')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('79b9bff371d182f11a3235969f84ccb6')
 
 
