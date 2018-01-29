@@ -1,0 +1,29 @@
+pkgbase = python-cruzdb
+	pkgdesc = Pythonic interface to the bioinformatics UCSC genome databses
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/cruzdb
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://raw.githubusercontent.com/brentp/cruzdb/master/LICENSE
+	source = python-cruzdb-0.5.6.tar.gz::https://pypi.python.org/packages/07/bd/af49692ea709c50da87b2532bf067b42b27efad5f2939e870cdb8c0ee3b9/cruzdb-0.5.6.tar.gz
+	sha256sums = 495dc89f2efd71124650d0baeb8d5595af084f6979337e6fb8e9ef7e88adc5d6
+	sha256sums = db53459768b35daa1c0f7f0dd16796d51e1ff3a1558962bfc20fab1f0a14c7f4
+
+pkgname = python-cruzdb
+	depends = python
+	depends = mysql-python
+	depends = python-six
+	depends = python-sqlalchmey
+
+pkgname = python2-cruzdb
+	depends = python2
+	depends = mysql-python
+	depends = python2-six
+	depends = python-sqlalchmey2
+
