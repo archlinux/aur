@@ -21,7 +21,7 @@ package() {
   cd $srcdir/indy-crypto-master
   cd $pkgname
   install -Dm755 target/release/libindy_crypto.so "$pkgdir/usr/lib/libindy_crypto.so"
-  cp -r include $pkgdir/usr/include
+  cp -r include $pkgdir/usr/include/indy_crypto
 }
 
 md5sums=('SKIP')
