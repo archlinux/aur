@@ -1,17 +1,16 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=libdaq
-pkgver=2.0.6
-pkgrel=2
+pkgver=2.2.2
+pkgrel=1
 pkgdesc='Data Acquisition library for packet I/O.'
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url='http://www.snort.org/'
 license=('GPL')
 depends=('libpcap')
 makedepends=('ca-certificates')
-source=(http://www.snort.org/downloads/snort/daq-${pkgver}.tar.gz)
-md5sums=('2cd6da422a72c129c685fc4bb848c24c')
+source=(http://www.snort.org/downloads/snortplus/daq-${pkgver}.tar.gz)
+sha512sums=('7c5341853eff6d2f94cc0b0c38df03b3595c6b829581cbe756582c33de813fba018fa4a984e8ea66fbb2849e573d33bb1fbd23a77f4ac7e0f93fe66ff205c95d')
 
 build() {
   cd "${srcdir}/daq-${pkgver}"
