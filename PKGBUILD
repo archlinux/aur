@@ -2,10 +2,10 @@
 # Contributor:
 
 pkgbase=linux-clear
-_srcname=linux-4.14
-pkgver=4.14.15
-_rel=516
-pkgrel=3
+_srcname=linux-4.15
+pkgver=4.15.0
+_rel=517
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -14,8 +14,8 @@ options=('!strip')
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${pkgver}-${_rel}"
   'https://downloadmirror.intel.com/27337/eng/microcode-20171117.tgz'
   '60-linux.hook'  # pacman hook for depmod
@@ -27,9 +27,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
-            'SKIP'
-            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
+sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
             'SKIP'
             '93bd1da9fa58ece0016702e657f708b7e496e56da637a3fe9a6d21f1d6f524dc'
@@ -44,7 +42,7 @@ prepare() {
   cd ${_srcname}
   
   # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
+  #patch -p1 -i ../patch-${pkgver}
   chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
   
   cp -Tf $srcdir/clearlinux/config .config
