@@ -1,7 +1,7 @@
 pkgbase = yeahlaunch
 	pkgdesc = Very simple application launcher which puts a horizontal menu on top of your screen.
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.4
+	pkgrel = 1
 	url = http://phrat.de/yeahtools.html
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = yeahlaunch
 	makedepends = gcc
 	makedepends = make
 	depends = libx11
-	source = http://phrat.de/yeahlaunch-0.2.tar.gz
-	md5sums = 17519b8924fdb1fac1455e34a3f1539e
+	source = https://bstern.org/yeahlaunch/yeahlaunch-0.4.tar.xz
+	sha512sums = 81ed8501b2af5b800ec1f682267faa6125bb9b5440fe5d524ae10a1248fbddca21c71701aeebefd02049bd9887aea2cf01b7362b30c3256c8b27c9839cfd92b4
 
 pkgname = yeahlaunch
 

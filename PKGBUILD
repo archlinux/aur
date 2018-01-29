@@ -1,8 +1,9 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: DonVla <donvla@users.sourceforge.net>
 
 pkgname=yeahlaunch
-pkgver=0.2
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="Very simple application launcher which puts a horizontal menu on top of your screen."
 arch=(i686 x86_64)
 url="http://phrat.de/yeahtools.html"
@@ -11,8 +12,9 @@ groups=('yeahtools')
 depends=('libx11')
 makedepends=('gcc' 'make')
 #install=
-source=(http://phrat.de/$pkgname-$pkgver.tar.gz)
-md5sums=('17519b8924fdb1fac1455e34a3f1539e')
+#source=(http://phrat.de/$pkgname-$pkgver.tar.gz)
+source=(https://bstern.org/$pkgname/$pkgname-$pkgver.tar.xz)
+sha512sums=('81ed8501b2af5b800ec1f682267faa6125bb9b5440fe5d524ae10a1248fbddca21c71701aeebefd02049bd9887aea2cf01b7362b30c3256c8b27c9839cfd92b4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
