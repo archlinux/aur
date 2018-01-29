@@ -1,8 +1,8 @@
 # Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) 
 pkgname=vita3k-git
 _pkgname=vita3k
-pkgver=r2.d03e8f9
-pkgrel=2
+pkgver=r6.3c0f4d2
+pkgrel=3
 pkgdesc="PlayStation Vita emulator"
 arch=('x86_64')
 url="https://vita3k.github.io/"
@@ -62,5 +62,6 @@ build() {
 
 package() {
 	cd $_pkgname
-	install -Dm755 build/emulator/Vita3K "$pkgdir/usr/bin"
+	install -Dm755 build/emulator/Vita3K "$pkgdir/usr/bin/vita3k"
+	install -Dm644 src/emulator/shaders/* -t "$pkgdir/usr/bin/shaders/"
 }
