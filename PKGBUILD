@@ -9,10 +9,10 @@ url="http://osp.kitchen/tools/ospkit/"
 license=('AGPL')
 depends=('desktop-file-utils' 'qt5-webkit')
 makedepends=('git')
+conflicts=('ospkit')
 provides=('ospkit')
-source=('git+http://gitlab.constantvzw.org/osp/tools.ospkit.git' 'ospkit.desktop' 'ospkit.png')
-md5sums=('SKIP' 'b921f154668105b891a8eac7e12ce94d' '908a48e767b3286fa6e9a1d8b571ef65')
-conflicts=("")
+source=('git+http://gitlab.constantvzw.org/osp/tools.ospkit.git' 'ospkit.desktop' 'http://osp.kitchen/static/img/OSP_new-frog.svg')
+md5sums=('SKIP' 'b921f154668105b891a8eac7e12ce94d' '49d812e67d58a48758ea3743ef6b6b5a')
 
 pkgver() {
 	cd "$srcdir/tools.ospkit"
@@ -26,10 +26,7 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	install "$srcdir/tools.ospkit/src/OSPKit" "$pkgdir/usr/bin/ospkit"
-	mkdir -p "$pkgdir/usr/share/applications"
+	install -Dm755 "$srcdir/tools.ospkit/src/OSPKit" "$pkgdir/usr/bin/ospkit"
 	install -Dm644 ospkit.desktop "$pkgdir/usr/share/applications/ospkit.desktop"
-	mkdir -p "$pkgdir/usr/share/pixmaps"
-	install -Dm644 ospkit.png "$pkgdir/usr/share/pixmaps/ospkit.png"
+	install -Dm644 OSP_new-frog.svg "$pkgdir/usr/share/pixmaps/ospkit.svg"
 }
