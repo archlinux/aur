@@ -1,0 +1,10 @@
+[Unit]
+Description = simple now-playing server
+After = network.target
+
+[Service]
+ExecStart = /usr/bin/audition
+User = audition
+
+[Install]
+WantedBy = multiuser.target
