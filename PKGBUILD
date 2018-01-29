@@ -2,7 +2,7 @@
 # Contributor: Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>
 pkgname=dict-gcide
 _debver=0.48.4
-pkgver=0.51
+pkgver=0.52
 pkgrel=1
 pkgdesc="GNU version of the Collaborative International Dictionary of English for dictd et al."
 arch=('any')
@@ -18,7 +18,7 @@ source=('fixes.sed'
         "ftp://ftp.gnu.org/gnu/gcide/gcide-${pkgver}.tar.xz"{,.sig})
 sha512sums=('3adc1c75e9f96883966236131518b4b8f4c6c588759112417ec46c35d421da87ddd1bac156fa0bf55c64f939cbe1efd235d0854b4dfe8cfa1278917d6fef07f5'
             '82939f8c9e2bb30368b673784abaf85724a04fb9ebab382b6908034e0978d4d47039b7667573b88fe074bb29ea232b9e11129ac30ba6e88d5b9271df3b2ad302'
-            'a388a43d255c28a933d301140f233ae602249dc1fa223dd91ea8c4b2fc0736ff88ed60357b08050217b5513638c7015e4c99dfd084cfad61eec503822558711a'
+            '260e4e7bb30ac857255b9a1f696b18b77bbae06574bb0f0cc35b38be7399bf497d3c561ab0d4a4b7e8fc3127c6bf72efde8e1d4a28fa428f82178d0972f704b3'
 						'SKIP')
 validpgpkeys=('325F650C4C2B6AD58807327A3602B07F55D0C732')
 
@@ -27,7 +27,7 @@ prepare() {
 	sed -i 's`\(\./webfilter\) | \(\./webfmt -c\)`\1 | sed -Ef fixes.sed | \2`' "${pkgname}-${_debver}/Makefile.in"
 
 	rm -rf "${pkgname}-${_debver}/cide"
-	ln -s "${srcdir}/gcide-0.51" "${pkgname}-${_debver}/cide"
+	ln -s "${srcdir}/gcide-${pkgver}" "${pkgname}-${_debver}/cide"
 	cd "${pkgname}-${_debver}/cide"
 	for file in CIDE.?
 	do
