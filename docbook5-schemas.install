@@ -3,7 +3,7 @@ _rootcatalog=/etc/xml/catalog
 
 post_install() {
   if [[ -w $_rootcatalog ]]; then
-    for v in 5.0; do
+    for v in 5.1; do
       xmlcatalog --noout --add "delegatePublic" \
         "-//OASIS//DTD DocBook XML ${v}//EN" \
         "file://${_datadir}/xml/docbook5/schema/dtd/${v}/catalog.xml" \
@@ -34,7 +34,7 @@ post_install() {
 
 post_remove() {
   if [[ -w $_rootcatalog ]]; then
-    for v in 5.0; do
+    for v in 5.1; do
        xmlcatalog --noout --del \
        "file://${_datadir}/xml/docbook5/schema/dtd/${v}/catalog.xml" \
        ${_rootcatalog}
