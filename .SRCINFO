@@ -1,0 +1,12 @@
+pkgbase = bilibili-live-helper
+	pkgdesc = Helper for Bilibili Live.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/pandaGao/bilibili-live-helper
+	install = bilibili-live-helper.install
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+
+pkgname = bilibili-live-helper
+
