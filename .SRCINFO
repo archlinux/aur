@@ -1,6 +1,6 @@
 pkgbase = tr1pd-git
 	pkgdesc = tamper resistant audit log
-	pkgver = 0.2.0.r25.g6707d9d
+	pkgver = 0.2.0.r34.g687603a
 	pkgrel = 1
 	url = https://github.com/kpcyrd/tr1pd
 	install = tr1pd.install
@@ -15,6 +15,7 @@ pkgbase = tr1pd-git
 	depends = libsodium
 	depends = libseccomp
 	depends = libcap
+	depends = zeromq
 	provides = tr1pd
 	conflicts = tr1pd
 	source = git+https://github.com/kpcyrd/tr1pd.git

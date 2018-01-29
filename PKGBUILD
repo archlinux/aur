@@ -2,11 +2,11 @@
 
 _gitname=tr1pd
 pkgname=tr1pd-git
-pkgver=0.2.0.r25.g6707d9d
+pkgver=0.2.0.r34.g687603a
 pkgrel=1
 pkgdesc="tamper resistant audit log"
 url="https://github.com/kpcyrd/tr1pd"
-depends=('gcc-libs' 'libsodium' 'libseccomp' 'libcap')
+depends=('gcc-libs' 'libsodium' 'libseccomp' 'libcap' 'zeromq')
 makedepends=('cargo' 'git')
 provides=('tr1pd')
 conflicts=('tr1pd')
@@ -24,6 +24,11 @@ pkgver() {
 build() {
   cd "$_gitname"
   cargo build --release
+}
+
+check() {
+  cd "$_gitname"
+  cargo test --release
 }
 
 package() {
