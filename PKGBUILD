@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-saharaclient' 'python2-saharaclient')
-pkgver='1.3.0'
-pkgrel='2'
+pkgver='1.4.0'
+pkgrel='1'
 pkgdesc='Python client library for Sahara'
 arch=('any')
 url="http://docs.openstack.org/developer/${pkgname}/"
@@ -22,7 +22,7 @@ checkdepends=('python-pbr' 'python2-pbr'
               'python-hacking' 'python2-hacking'
               'python-pycodestyle' 'python2-pycodestyle'
               'python-oslotest' 'python2-oslotest'
-              'python-os-testr'
+              'python-os-testr' 'python2-os-testr'
               'python-requests-mock' 'python2-requests-mock'
               'python-testrepository' 'python2-testrepository')
 source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
@@ -43,10 +43,10 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}"
-  python setup.py testr
+  ostestr
 
   cd "${srcdir}/${pkgname}-py2"
-  PYTHON=python2 python2 setup.py testr
+  ostestr2
 }
 
 package_python-saharaclient() {
