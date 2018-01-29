@@ -1,13 +1,13 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 pkgname="brlaser-git"
-pkgver=v3.r24.gf1e0b2d
-pkgrel=2
+pkgver=v3.r35.g3946f2e
+pkgrel=1
 pkgdesc="CUPS driver for the Brother DCP-7065DN"
 arch=('x86_64')
 url="https://github.com/pdewacht/brlaser"
 license=('GPL2')
 depends=('cups')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
@@ -20,8 +20,7 @@ pkgver() {
 
 prepare() {
 	cd $pkgname
-	./autogen.sh
-	./configure --prefix=/usr
+	cmake .
 }
 
 build() {
