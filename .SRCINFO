@@ -1,0 +1,17 @@
+pkgbase = python-charm-crypto-git
+	pkgdesc = A framework for rapidly prototyping advanced cryptosystems
+	pkgver = v0.43.r151.g3527a695
+	pkgrel = 1
+	url = https://github.com/JHUISI/charm
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = python
+	depends = openssl
+	depends = pbc
+	depends = python-pyparsing
+	source = charm-crypto::git+https://github.com/JHUISI/charm.git
+	md5sums = SKIP
+
+pkgname = python-charm-crypto-git
+
