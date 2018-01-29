@@ -2,7 +2,7 @@
 
 pkgname=kicad-templates-git
 _pkgname=${pkgname%-*}
-pkgver=r9.ad2966f
+pkgver=r12.774d539
 pkgrel=1
 pkgdesc="Official KiCad project templates"
 arch=('any')
@@ -30,6 +30,4 @@ package() {
   cd "$srcdir/build"
 
   make DESTDIR="$pkgdir" install
-  rm ${pkgdir}/usr/share/kicad/template/*.kicad_wks
-  rm ${pkgdir}/usr/share/kicad/template/kicad.pro
 }

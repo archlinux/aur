@@ -1,6 +1,6 @@
 pkgbase = kicad-templates-git
 	pkgdesc = Official KiCad project templates
-	pkgver = r9.ad2966f
+	pkgver = r12.774d539
 	pkgrel = 1
 	url = https://github.com/KiCad/kicad-templates
 	arch = any
