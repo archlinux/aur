@@ -9,6 +9,7 @@ pkgbase = hyperledger-indy-node
 	license = APACHE
 	makedepends = python
 	depends = python-dateutil
+	depends = hyperledger-indy-anoncreds
 	depends = hyperledger-indy-plenum
 	depends = python-timeout-decorator
 	source = https://github.com/hyperledger/indy-node/archive/1.2.284-master.tar.gz
