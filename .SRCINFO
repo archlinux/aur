@@ -1,0 +1,14 @@
+pkgbase = aurto
+	pkgver = 0.1
+	pkgrel = 1
+	install = aurto.install
+	arch = any
+	license = MIT
+	depends = aurutils
+	depends = devtools
+	depends = systemd
+	source = https://github.com/alexheretic/aurto/archive/v0.1.tar.gz
+	sha256sums = 91435ee92ae97e94011e27eb646c0ec7e0c3da486b4df7f173686fa9250f59eb
+
+pkgname = aurto
+

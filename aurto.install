@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+set -eu
+user="${SUDO_USER:-$USER}"
+
+function initialised {
+  grep -q '^Include = /etc/pacman.d/aurto$' /etc/pacman.conf
+}
+
+post_install() {
+  if initialised; then
+    echo 'Already initialised' >&2
+    exit 0
+  fi
+
+  echo "aurto: Initialising for user: $user"
+  echo "$user" > /usr/lib/aurto/user
+  chmod 700 /usr/lib/aurto/user
+
+  echo 'aurto: Adding include /etc/pacman.d/aurto to pacman.conf' >&2
+  if ! test -f /etc/pacman.conf.aurto-backup; then
+    cp /etc/pacman.conf /etc/pacman.conf.aurto-backup
+  fi
+  echo -e "# aurto repo\\nInclude = /etc/pacman.d/aurto" >> /etc/pacman.conf
+
+  install -d /var/cache/pacman/aurto -o "$user"
+  sudo -u "$user" repo-add /var/cache/pacman/aurto/aurto.db.tar 2>/dev/null
+
+  echo 'aurto: Creating /var/lib/aurto-builder chroot'
+  rm -rf /var/lib/aurto-builder*
+  mkarchroot /var/lib/aurto-builder base-devel pigz >/dev/null 2>&1
+  arch-nspawn /var/lib/aurto-builder /bin/bash -c "
+    sed -i 's/COMPRESSGZ=(gzip -c -f -n)/COMPRESSGZ=(pigz -c -f -n)/' /etc/makepkg.conf
+    sed -i \"s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.gz'/\" /etc/makepkg.conf
+  "
+
+  echo 'aurto: Adding passwordless use of arch-nspawn, mkarchroot, makechrootpkg, aurbuild_chroot' >&2
+  cp /etc/sudoers /etc/sudoers.aurto-backup
+  echo "## aurto rules
+%$user ALL=(ALL) NOPASSWD: /usr/bin/arch-nspawn
+%$user ALL=(ALL) NOPASSWD: /usr/bin/mkarchroot
+%$user ALL=(ALL) NOPASSWD:SETENV: /usr/bin/makechrootpkg
+%$user ALL=(ALL) NOPASSWD:SETENV: /usr/bin/aurbuild_chroot
+## /aurto rules" >> /etc/sudoers
+
+  echo 'aurto: Adding systemd timer update tasks' >&2
+  systemctl enable --now /usr/lib/systemd/system/check-aurto-git-trigger.timer
+  systemctl enable --now /usr/lib/systemd/system/update-aurto.timer
+}
+
+pre_remove() {
+  if ! initialised; then
+    exit 0
+  fi
+
+  echo 'aurto: Removing systemd timer update tasks' >&2
+  systemctl disable --now check-aurto-git-trigger.timer
+  systemctl disable --now update-aurto.timer
+}
+
+post_remove() {
+  if ! initialised; then
+    exit 0
+  fi
+
+  echo 'aurto: Removing aurto rules from /etc/sudoers' >&2
+  sed -i '/^## aurto rules$/,/^## \/aurto rules$/d' /etc/sudoers
+
+  echo 'aurto: Removing /var/lib/aurto-builder' >&2
+  rm -rf /var/lib/aurto-builder* || true
+
+  echo 'aurto: Removing /var/cache/pacman/aurto' >&2
+  rm -rf /var/cache/pacman/aurto || true
+
+  echo 'aurto: Removing include from pacman.conf' >&2
+  sed -i '/^Include = \/etc\/pacman.d\/aurto$/d' /etc/pacman.conf
+  sed -i '/^# aurto repo$/d' /etc/pacman.conf
+}
