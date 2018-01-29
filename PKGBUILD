@@ -17,7 +17,7 @@ md5sums=('df15d3113997274f751aad61c2a8214f')
 
 prepare() {
   cd "${srcdir}"/jgnash-master
-  gradle -g /tmp clean DistTar
+  gradle --stacktrace -g /tmp clean DistTar
 }
 
 package() {
