@@ -1,7 +1,7 @@
 # Maintainers: Perry Hung <perry@leaflabs.com> Florent Thiery <fthiery@gmail.com>
 pkgname=decklink
-pkgver=10.9.3
-pkgrel=2
+pkgver=10.9.10
+pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
 url="https://www.blackmagicdesign.com/support/family/capture-and-playback"
@@ -14,9 +14,9 @@ install='decklink.install'
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/593cebbfb81f43e3a24ca19a8679df4c"
+pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/86f9afa3ef88483eb14c922bd012b1aa"
 pkgsrc_file=$pkgname-${pkgver}.tar.gz
-pkgsrc_sha256sum="51d53ecdbcc2253a484c3aaf5149623045ea3459926eec4b767a7d5ede683f61"
+pkgsrc_sha256sum="1b66bb89aaef77dbfdd6913eb7067f0511866070ff8916a5e3af1d68e3fcfe84"
 
 prepare() {
   if [ -f $pkgsrc_file ]; then
@@ -39,9 +39,9 @@ package() {
 
 	tar xf desktopvideo-*-${_arch}.tar.gz
 	cp -a desktopvideo-*-${_arch}/* $pkgdir
-	mv $pkgdir/usr/sbin/* $pkgdir/usr/bin
 	rm -rf $pkgdir/usr/sbin
 
 	tar xf mediaexpress-*-${_arch}.tar.gz
 	cp -a mediaexpress-*-${_arch}/* $pkgdir
 }
+
