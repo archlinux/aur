@@ -2,7 +2,7 @@
 # Contributor: AlmAck
 
 pkgname=plasma5-themes-chakra-heritage
-pkgver=2016.12
+pkgver=2017.11
 pkgrel=1
 pkgdesc='Chakra Plasma 5 Look & Feel theme files'
 url='http://www.chakralinux.org'
@@ -13,8 +13,8 @@ depends=('plasma-framework')
 makedepends=('extra-cmake-modules')
 optdepends=('plasma5-wallpapers-chakra-tulip')
 
-_gitsha='f72c02cc'
-source=("git://git.chakralinux.org/heritage.git#commit=${_gitsha}")
+_gitsha='0eb77277'
+source=("git+https://code.chakralinux.org/tools/heritage.git#commit=${_gitsha}")
 md5sums=('SKIP')
 
 prepare() {
