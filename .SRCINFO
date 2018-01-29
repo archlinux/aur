@@ -1,11 +1,11 @@
 pkgbase = excavator
 	pkgdesc = Excavator by NiceHash. NiceHash's proprietary low-level CUDA miner.
 	pkgver = v1.4.1a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nicehash/excavator
 	arch = x86_64
 	license = https://github.com/nicehash/excavator/blob/master/excavator-EULA.txt
-	depends = libopencl
+	depends = nvidia-utils
 	depends = ncurses5-compat-libs
 	depends = libpciaccess
 	depends = libx11>=1.4.99.1

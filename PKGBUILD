@@ -1,6 +1,6 @@
 # Maintainer: TheGoliath
 pkgname=excavator
-pkgrel=2
+pkgrel=3
 _pkggit=1.4.1a-xenial0
 pkgver=v1.4.1a
 pkgdesc="Excavator by NiceHash. NiceHash's proprietary low-level CUDA miner."
