@@ -9,7 +9,6 @@ pkgbase = python-aniso8601
 	depends = python
 	depends = python-dateutil
 	options = !emptydirs
-	source = https://bitbucket.org/nielsenb/aniso8601/get/v2.0.0.tar.gz
 	md5sums = 9dde72e6b399a8ffb3c80edd25a79217
 	sha256sums = e070a1b211d19ed778eeedf7143bc95e8b0c60c6007c0a14411cc76e23ce9b1b
 	sha512sums = 7d3de62f179cf683d1f2ed019d373e9c68a4957f13f79f5b4caa77f9cb7662e80110a3769df8935f701995c013dd2389ffe723648be8a7f06bf1a5648b47075a
