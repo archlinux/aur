@@ -6,8 +6,13 @@ pkgbase = libindy
 	arch = i686
 	arch = x86_64
 	license = APACHE
+	makedepends = cmake
+	makedepends = pkg-config
 	makedepends = rust
 	depends = libindy-crypto
+	depends = libsodium
+	depends = openssl
+	depends = sqlite3
 	source = https://github.com/hyperledger/indy-sdk/archive/v1.3.0.tar.gz
 	md5sums = SKIP
 
