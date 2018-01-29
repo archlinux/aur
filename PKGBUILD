@@ -7,11 +7,8 @@ pkgdesc="Bitmap version of the GNU Unifont"
 arch=('any')
 license=('GPL')
 url="http://unifoundry.com/unifont.html"
-source=(http://unifoundry.com/pub/unifont-${pkgver}/font-builds/unifont-${pkgver}.pcf.gz
-"$pkgname.install")
-sha256sums=('e644cd7ef7ee01d1f7247d49559435bc59e7f5f7e0886d3109d04e0250c9146a'
-            '4722b8c18c60ef36a1702b0dbbfbd723384b4cb04d30bdc324013a2a524936e3')
-install="$pkgname.install"
+source=(http://unifoundry.com/pub/unifont-${pkgver}/font-builds/unifont-${pkgver}.pcf.gz)
+sha256sums=('e644cd7ef7ee01d1f7247d49559435bc59e7f5f7e0886d3109d04e0250c9146a')
 noextract=(unifont-${pkgver}.pcf.gz)
 
 _pcf_gz=unifont-$pkgver.pcf.gz
