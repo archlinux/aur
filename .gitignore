@@ -1,0 +1,5 @@
+/bspwc-git/
+/src/
+/pkg/
+*.pkg.tar
+*.pkg.tar.*
