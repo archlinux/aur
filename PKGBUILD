@@ -22,8 +22,8 @@ prepare() {
 }
 
 build() {
-  cd build
-  cmake ../${pkgname}-${pkgver}/Release \
+  cd ${srcdir}/${pkgname}-${pkgver}/build
+  cmake ../Release \
     -DBUILD_TESTS=OFF \
     -DBUILD_SAMPLES=OFF \
     -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 \
@@ -35,8 +35,8 @@ build() {
 }
 
 package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
   make -C build DESTDIR="${pkgdir}" install
-  cd ${pkgname}-${pkgver}
   install -Dm644 license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 ThirdPartyNotices.txt ${pkgdir}/usr/share/licenses/${pkgname}/ThirdPartyNotices
 }
