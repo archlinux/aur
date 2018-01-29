@@ -4,3 +4,4 @@ post_install() {
 }
 pre_remove() {
 	rm /usr/bin/bilibili-live-helper
+}
