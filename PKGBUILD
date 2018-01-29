@@ -1,11 +1,11 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=logitechmediaserver-git
-pkgver=20171117.2fae540
+pkgver=20180129.2623ec2
 _gitver=7.9
 pkgrel=1
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Git-Version, if you prefer stability consider using logitechmediaserver instead)'
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/stefansielaff/slimserver'
 license=('GPL' 'custom')
 provides=('logitechmediaserver')
@@ -55,16 +55,17 @@ install=install
 source=("slimserver.tar.gz::${url}/archive/public/${_gitver}.tar.gz"
         "slimserver-vendor.tar.gz::${url}-vendor/archive/public/${_gitver}.tar.gz"
         'service')
-sha256sums=('SKIP'
-	    'SKIP'
-	    'f5c64f2a066914dbab9a1dd4a8ec33895645a72bde3bdbeb83c49e4624a997cb')
+sha256sums=('23f1b0a0a678c34c039b15fd1d1dca54ef28dbaaa44e4f825d72c204ab3f793b'
+            '0a0bf36270a45739507b3041ab0fa27d72987f7cd3170b1906bbb1a129c344df'
+            'f5c64f2a066914dbab9a1dd4a8ec33895645a72bde3bdbeb83c49e4624a997cb')
 
 prepare() {
 	cd "${srcdir}/slimserver-public-${_gitver}"
 	case $CARCH in
-	    x86_64) rm -rf Bin/{arm,armhf}-linux ;;
-	    i686) rm -rf Bin/{arm,armhf}-linux ;;
-	    arm*) rm -rf Bin/{i386,x86_64}-linux ;;
+	    x86_64) rm -rf Bin/{arm,armhf,aarch64}-linux ;;
+	    i686) rm -rf Bin/{arm,armhf,aarch64}-linux ;;
+	    aarch64) rm -rf Bin/{i386,x86_64,arm,armhf}-linux ;;
+	    arm*) rm -rf Bin/{i386,x86_64,aarch64}-linux ;;
 	esac
 	cd "${srcdir}/slimserver-public-${_gitver}/CPAN"
 	mkdir _PRESERVE
