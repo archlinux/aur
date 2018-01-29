@@ -10,7 +10,7 @@ url="https://rocket.chat"
 options=()
 
 source_x86_64=("https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${pkgver}/rocketchat_${pkgver}_amd64.deb")
-md5sums_x86_64=('10cc4fc63955f5e8b0c9de965e7707f3')
+md5sums_x86_64=('dbcdab3a63ac4313530fbcfb9c2fb875')
 
 depends=('libnotify' 'gconf' 'libxss')
 optdepends=()
