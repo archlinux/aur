@@ -1,14 +1,14 @@
 # Maintainer: Sam Linnfer <littlelightlittlefire@gmail.com>
 pkgname=souffle-git
-pkgver=r1390.2b4ccd0
-pkgrel=2
+pkgver=r1407.96a4907
+pkgrel=1
 pkgdesc="Soufflé is a translator of declarative Datalog programs into the C++ language"
 arch=('any')
 url="https://github.com/souffle-lang/souffle"
 license=('UPL')
 groups=()
 depends=('sqlite' 'python' 'zlib')
-makedepends=('git' 'autoconf' 'automake' 'bison' 'doxygen' 'flex' 'sqlite' 'libtool' 'jdk8-openjdk' 'pkg-config' 'python' 'zlib')
+makedepends=('git' 'autoconf' 'automake' 'bison' 'doxygen' 'flex' 'sqlite' 'libtool' 'jdk8-openjdk' 'pkg-config' 'python' 'zlib' 'mcpp')
 provides=('souffle-git')
 conflicts=('souffle-git')
 backup=()
@@ -30,10 +30,10 @@ build() {
     sh ./bootstrap
     ./configure --prefix=/usr
 
-    make
+    make -j
 
     # Disable tests since some of them don't compile
-    # make check
+    make check
 }
 
 package() {
