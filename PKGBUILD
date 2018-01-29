@@ -28,8 +28,8 @@ fi
 
 _pkgname='adminer-editor'
 pkgname="${_pkgname}"
-pkgver=4.3.1
-pkgrel=1
+pkgver='4.5.0'
+pkgrel='1'
 pkgdesc='Database data editing tool written in PHP'
 arch=('any')
 url='https://www.adminer.org/en/editor/'
@@ -40,7 +40,7 @@ _verwatch=("${url}" '/static/download/[0-9\.]\+/editor-\([0-9\.]\+\).php' 'l')
 install="${_pkgname}.install"
 #source=("http://downloads.sourceforge.net/adminer/editor-${pkgver}.php")
 source=("https://www.adminer.org/static/download/${pkgver}/editor-${pkgver}.php")
-sha256sums=('e81764cd0fd29af5c43bdc8d4442e25d0635c4d648204dad71b3b890def8e97f')
+sha256sums=('4ecdb723e431f8df7f7b3fa281bc4d8fd6e60e58513a43f475ba31689fb2592d')
 
 package() {
   set -u
@@ -50,7 +50,7 @@ package() {
   # Its similar to phpMyAdmin
   install -Dpm644 <(cat << EOF
 # Installed by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 Alias /${_opt_WWWName}${_opt_HexCode} "/usr/share/webapps/${_pkgname}"
 <Directory "/usr/share/webapps/${_pkgname}">
   AllowOverride All
