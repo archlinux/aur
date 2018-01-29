@@ -2,8 +2,8 @@
 
 pkgname=imagescan-plugin-networkscan
 pkgver=1.1.1
-_pkgver=1.3.23
-pkgrel=3
+_pkgver=1.3.24
+pkgrel=4
 _fedrel=27
 pkgdesc="Plugin for using Epson scanners with Image Scan v3 over network"
 arch=("i686" "x86_64")
@@ -15,8 +15,8 @@ source=("imagescan-plugin-networkscan.install")
 source_i686=("https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x86/imagescan-bundle-fedora-${_fedrel}-${_pkgver}.x86.rpm.tar.gz")
 source_x86_64=("https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x64/imagescan-bundle-fedora-${_fedrel}-${_pkgver}.x64.rpm.tar.gz")
 md5sums=('f608c4458ec47603ce868e443d42ccd0')
-md5sums_i686=('5449f8b54dcce1641927b563491b83f5')
-md5sums_x86_64=('98ec6bb036a6c72976f3c76b32be6416')
+md5sums_i686=('08fce81402d595391ff52ebe17174cd3')
+md5sums_x86_64=('0a8bb4b0143429a6bc4b2ebbd5411025')
 if [[ ${CARCH} = "x86_64" ]]; then
   _pkgarch="x64"
 else
