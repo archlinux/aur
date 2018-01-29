@@ -4,9 +4,9 @@
 
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.14
-_zenpatch=zen-4.14.15-f695616ca01b187a24635fe51e10c17dc5bccaa2.diff
-pkgver=4.14.15
+_srcname=linux-4.15
+_zenpatch=zen-4.15-0ec9904b5ddaaae80333758f49b0a6e0982156f9.diff
+pkgver=4.15
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -16,8 +16,8 @@ options=('!strip')
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
   "https://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.xz"
   "https://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.sign"
   'config'         # the main kernel config file
@@ -30,13 +30,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
+            '3fe1e6d40a0815b779208aff12e9e2df5bf00a34671a8a1d09ab966b303a09a2'
             'SKIP'
-            '59068dd9ecee6ebd312a6c161fd2484c9e6289efbfd0eeb1804e6ca180dee0be'
-            'SKIP'
-            'a85bd6e7ff862148b10751a064c710aca6eb9c39a0ba8c06363c299def87d30f'
+            '3a9abcfa72a369aa35e7345fe46360d912aefa603334b194d3680eff8b1fc276'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -47,8 +45,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
-  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
+  #patch -p1 -i ../patch-${pkgver}
 
   # security patches
 
