@@ -7,6 +7,7 @@ pkgbase = libindy-crypto
 	arch = x86_64
 	license = APACHE
 	makedepends = rust
+	depends = libsodium
 	source = https://github.com/hyperledger/indy-crypto/archive/master.zip
 	md5sums = SKIP
 
