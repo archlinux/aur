@@ -2,7 +2,7 @@
 
 pkgname=ruby-cache_method
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Like alias_method, but it's cache_method!"
 arch=(any)
 url="https://github.com/seamusabshere/cache_method"
@@ -15,6 +15,7 @@ noextract=(${pkgname#ruby-}-$pkgver.gem)
 sha512sums=('72a311551097cb35eab5b8493f00c2af4cf6bc9bc530252fef14a7652e50f672ba5fc6a1dac7d4812e52b624e4c8807fc95130179cd220373316718f527439a0')
 
 package() {
-  cd "$srcdir"
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')" -n "$pkgdir/usr/bin" "${pkgname#ruby-}-$pkgver.gem"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --no-user-install --ignore-dependencies -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "${pkgname#ruby-}-$pkgver.gem"
+  rm "$pkgdir/$_gemdir/cache/${pkgname#ruby-}-$pkgver.gem"
 }
