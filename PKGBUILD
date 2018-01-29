@@ -1,7 +1,7 @@
 # Maintainer: queueRAM <queueRAM@gmail.com>
 pkgname=hydan
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="steganographically conceal messages in 32-bit applications"
 arch=('i686' 'x86_64')
 url="http://www.crazyboy.com/hydan/"
@@ -10,7 +10,7 @@ depends=('openssl')
 source=("http://www.crazyboy.com/hydan/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver.patch")
 sha256sums=('47f295a20c6a07fa0c244b48ab506067a981fc780305c307b8f345b6b6302023'
-            'e5f0773ca2f1577df353ca195451d17d924c6ed166a03d30537ec2c5c168acf7')
+            '6e98805eef28a907a124cd3687e39b463be3b5dbd13034ae06234f662557fefd')
 
 prepare() {
 	cd "$pkgname"
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	make CFLAGS="$CFLAGS -Ilibdisasm/src/arch/i386/libdisasm -DVARBITS"
+	make CFLAGS="$CFLAGS -I$srcdir/$pkgname/libdisasm/src/arch/i386/libdisasm -DVARBITS"
 }
 
 package() {

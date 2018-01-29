@@ -1,7 +1,7 @@
 pkgbase = hydan
 	pkgdesc = steganographically conceal messages in 32-bit applications
 	pkgver = 0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.crazyboy.com/hydan/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hydan
 	source = http://www.crazyboy.com/hydan/hydan-0.13.tar.gz
 	source = hydan-0.13.patch
 	sha256sums = 47f295a20c6a07fa0c244b48ab506067a981fc780305c307b8f345b6b6302023
-	sha256sums = e5f0773ca2f1577df353ca195451d17d924c6ed166a03d30537ec2c5c168acf7
+	sha256sums = 6e98805eef28a907a124cd3687e39b463be3b5dbd13034ae06234f662557fefd
 
 pkgname = hydan
 

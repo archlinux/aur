@@ -155,3 +155,44 @@ diff -aur hydan/hdn_exe.h hydan.fix/hdn_exe.h
 +char hdn_exe_section_is_code (hdn_sections_t *hs);
  
  #endif//!HDN_EXE_H_
+diff -aur hydan/hdn_io.c hydan.fix/hdn_io.c
+--- hydan/hdn_io.c	2004-05-26 14:56:23.000000000 +0000
++++ hydan.fix/hdn_io.c	2018-01-29 21:18:48.275372408 +0000
+@@ -128,7 +128,7 @@
+ {
+     int fd;
+ 
+-    if ( (fd = open (filename, O_CREAT | O_WRONLY | O_TRUNC)) < 0)
++    if ( (fd = open (filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU)) < 0)
+     {
+         perror ("open");
+         exit (1);
+diff -aur hydan/libdisasm/src/arch/i386/libdisasm/bastard.c hydan.fix/libdisasm/src/arch/i386/libdisasm/bastard.c
+--- hydan/libdisasm/src/arch/i386/libdisasm/bastard.c	2003-12-01 01:13:35.000000000 +0000
++++ hydan.fix/libdisasm/src/arch/i386/libdisasm/bastard.c	2018-01-29 21:09:02.240952152 +0000
+@@ -1,4 +1,6 @@
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "./libdis.h"
+ #include "./bastard.h"
+ #ifdef _MSC_VER
+diff -aur hydan/libdisasm/src/arch/i386/libdisasm/i386_invariant.c hydan.fix/libdisasm/src/arch/i386/libdisasm/i386_invariant.c
+--- hydan/libdisasm/src/arch/i386/libdisasm/i386_invariant.c	2003-12-01 01:13:35.000000000 +0000
++++ hydan.fix/libdisasm/src/arch/i386/libdisasm/i386_invariant.c	2018-01-29 21:11:13.993780351 +0000
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "./i386_opcode.h"
+ #ifdef _MSC_VER
+ 	#include <memory.h>
+diff -aur hydan/libdisasm/src/arch/i386/libdisasm/vm.c hydan.fix/libdisasm/src/arch/i386/libdisasm/vm.c
+--- hydan/libdisasm/src/arch/i386/libdisasm/vm.c	2003-12-01 01:13:35.000000000 +0000
++++ hydan.fix/libdisasm/src/arch/i386/libdisasm/vm.c	2018-01-29 21:20:00.525095533 +0000
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <string.h>
+ #include "./libdis.h"
+ #include "./i386.h"
+ #ifdef _MSC_VER
