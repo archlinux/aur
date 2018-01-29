@@ -1,4 +1,5 @@
-# Maintainer: Tomáš Mládek <tmladek @ inventati doth ork>
+# Maintainer: Zach <mikezackles @ gmail . com>
+# Contributor: Tomáš Mládek <tmladek @ inventati doth ork>
 # Contributor: shuall <shualloret @ gmail . com>
 
 pkgname=chaiscript-git
