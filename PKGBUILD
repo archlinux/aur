@@ -1,26 +1,37 @@
-# Maintainer: Ian D. Scott <ian@perebruin.com>
+# Maintainer: Ian Douglas Scott <ian@iandouglasscott.com>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
+
 pkgname=wikicurses-git
-pkgver=v1.2.r1.gbee3398
+pkgver=1.4.r1.gfc1c793
 pkgrel=1
 pkgdesc="A simple curses interface for accessing Wikipedia."
 arch=('any')
 url="https://github.com/ids1024/wikicurses"
 license=('MIT')
-makedepends=('git' 'python-setuptools')
-depends=('python' 'python-urwid' 'python-beautifulsoup4' 'python-lxml')
+makedepends=('git')
+depends=('python' 'python-setuptools' 'python-urwid' 'python-beautifulsoup4' 'python-lxml')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 backup=('etc/wikicurses.conf')
-source=('git://github.com/ids1024/wikicurses.git')
+source=("git+${url}.git")
 md5sums=('SKIP')
-_gitname="wikicurses"
 
 pkgver () {
-  cd $srcdir/$_gitname
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "${srcdir}"/${pkgname%-git}
+
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${srcdir}"/${pkgname%-git}
+
+  python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  python setup.py install --root="$pkgdir"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/wikicurses-git/LICENSE"
+  cd "${srcdir}"/${pkgname%-git}
+
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 README.md "${pkgdir}"/usr/share/doc/${pkgname}/README.md
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
