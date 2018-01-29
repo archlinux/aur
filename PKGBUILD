@@ -13,7 +13,7 @@ optdepends=()
 makedepends=()
 install="aurto.install"
 source=("https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('91435ee92ae97e94011e27eb646c0ec7e0c3da486b4df7f173686fa9250f59eb')
+sha256sums=('7173bf8a4ebb7203bb26f727851f5a1d9b6f351a347b3e242680ae7f44e7a3f6')
 
 build() {
   cd "$pkgname-$pkgver"
