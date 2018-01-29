@@ -2,7 +2,7 @@
 
 pkgname=firefox-nightly-zh-cn
 _pkgname=firefox-nightly
-pkgver=59.0a1
+pkgver=60.0a1
 pkgrel=1
 pkgdesc="Chinese Simplified For Firefox Nightly"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("$pkgname.desktop"
         "${_baseurl}${_filename}.tar.bz2")
 sha512sums=('SKIP'
             'SKIP'
-            "${_sha512sum}")
+            "SKIP")
 
 
 package() {
