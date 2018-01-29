@@ -29,7 +29,7 @@ fi
 
 _pkgname='adminer'
 pkgname="${_pkgname}-git"
-pkgver=4.3.1.r0.g7af1ee37
+pkgver=4.5.0.r0.g536999d4
 pkgrel=1
 pkgdesc='a web based SQL management tool supporting MySQL, PostgreSQL, SQLite, MS SQL, Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB. Formerly phpMinAdmin.'
 arch=('any')
@@ -65,7 +65,7 @@ package() {
   # Its similar to phpMyAdmin. I don't like opening up the entire /srv folder.
   install -Dpm644 <(cat << EOF
 # Installed by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 Alias /${_opt_WWWName}${_opt_HexCode} "/usr/share/webapps/${_pkgname}"
 <Directory "/usr/share/webapps/${_pkgname}">
   AllowOverride All
