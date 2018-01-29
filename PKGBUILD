@@ -19,14 +19,16 @@ provides=("firefox=$pkgver")
 install=$pkgname.install
 _baseurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/"
 _filename="firefox-${pkgver}.zh-CN.linux-${CARCH}"
-_sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2$" | grep sha512 | cut -d " " -f1)"
+# _sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2$" | grep sha512 | cut -d " " -f1)"
 source=("$pkgname.desktop"
         "vendor.js"
-        "${_baseurl}${_filename}.tar.bz2")
+        "${_baseurl}${_filename}.tar.bz2"
+        "${_baseurl}${_filename}.tar.bz2.asc")
 sha512sums=('SKIP'
             'SKIP'
+            "SKIP"
             "SKIP")
-
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 
 package() {
   # Create directories

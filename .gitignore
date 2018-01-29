@@ -1,4 +1,5 @@
 /src/
 /firefox-*.zh-CN.linux-x86_64.tar.bz2
+/firefox-*.zh-CN.linux-x86_64.tar.bz2.asc
 /pkg/
 /firefox-nightly-zh-cn-*-x86_64.pkg.tar.xz
