@@ -3,8 +3,8 @@
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.14
-pkgver=4.14.15
+_srcname=linux-4.15
+pkgver=4.15
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -14,33 +14,27 @@ options=('!strip')
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
   'config'         # the main kernel config file
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   'linux.preset'   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
-            'SKIP'
-            'edaf7bebcaf3032e3bf15353e0773e39872c73fc024ca4d23383195a13745b2e'
+            '8e80162a2d8952b7e0a4967647eed940b2b983e950bfe630918bd90cb1107a25'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
-            '5694022613bb49a77d3dfafdd2e635e9015e0a9069c58a07e99bdc5df6520311'
-            '2f46093fde72eabc0fd25eff5065d780619fc5e7d2143d048877a8220d6291b0'
-            '6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794')
+            '7b7363b53c68f52b119df994c9c08d4f29271b408f021366ab23f862518bd9bc'
+            'ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215')
 
 _kernelname=${pkgbase#linux}
 
@@ -48,8 +42,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
-  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
+  #patch -p1 -i ../patch-${pkgver}
 
   # security patches
 
@@ -59,14 +52,8 @@ prepare() {
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
-  # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-
-  # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
   cp -Tf ../config .config
 
