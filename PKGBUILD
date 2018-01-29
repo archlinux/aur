@@ -1,17 +1,17 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-email-stuffer"
-pkgver="0.014"
+pkgver="0.016"
 pkgrel="1"
 pkgdesc="A more casual approach to creating and sending emails"
 arch=('any')
 url="http://search.cpan.org/dist/Email-Stuffer"
 license=('PerlArtistic')
-depends=('perl' 'perl-email-mime>=1.920' 'perl-email-sender' 'perl-params-util>=1.05')
-makedepends=('perl-moo' 'perl-test-pod>=1.41')
+depends=('perl-email-mime>=1.943' 'perl-email-sender' 'perl-module-runtime' 'perl-params-util>=1.05' 'perl-scalar-list-utils')
+makedepends=('perl-email-sender>=0.120000' 'perl-moo' 'perl-test-fatal')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Stuffer-${pkgver}.tar.gz")
-sha512sums=('93abda5a306ae22e3c0e0682d983d48945805662a83ef7cd717a38a59d38f11a277ad000b1182901f9c8145ff4fba852be2da3253cfa090f5c6f747426bd0bd3')
+source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Stuffer-${pkgver}.tar.gz")
+sha512sums=('61ce86b245c2d43b6211f35ec02e62573239e8ad0e629b3b7fd779bec51f10961345611432a7694e52144fc3737f6a507da3ad65a1575d466d6ba9b6fee9047b')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -36,7 +36,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" '(' -name .packlist -o -name perllocal.pod ')' -delete
 }
 
 # Local Variables:
