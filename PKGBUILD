@@ -4,7 +4,7 @@ _name=cruzdb
 pkgbase='python-cruzdb'
 pkgname=('python-cruzdb' 'python2-cruzdb')
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Pythonic interface to the bioinformatics UCSC genome databses"
 arch=('any')
 url=https://pypi.python.org/pypi/"${_name}"
@@ -35,7 +35,7 @@ build(){
 }
 
 package_python2-cruzdb() {
-  depends=('python2' 'mysql-python' 'python2-six' 'python-sqlalchmey2')
+  depends=('python2' 'mysql-python' 'python2-six' 'python-sqlalchemy2')
 
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
   cd "${_name}"-"${pkgver}"-py2
@@ -43,7 +43,7 @@ package_python2-cruzdb() {
 }
 
 package_python-cruzdb() {
-  depends=('python' 'mysql-python' 'python-six' 'python-sqlalchmey')
+  depends=('python' 'mysql-python' 'python-six' 'python-sqlalchemy')
 
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
   cd "${_name}"-"${pkgver}"

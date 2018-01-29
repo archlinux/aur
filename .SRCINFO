@@ -1,7 +1,7 @@
 pkgbase = python-cruzdb
 	pkgdesc = Pythonic interface to the bioinformatics UCSC genome databses
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/cruzdb
 	arch = any
 	license = MIT
@@ -19,11 +19,11 @@ pkgname = python-cruzdb
 	depends = python
 	depends = mysql-python
 	depends = python-six
-	depends = python-sqlalchmey
+	depends = python-sqlalchemy
 
 pkgname = python2-cruzdb
 	depends = python2
 	depends = mysql-python
 	depends = python2-six
-	depends = python-sqlalchmey2
+	depends = python-sqlalchemy2
 
