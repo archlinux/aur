@@ -2,25 +2,25 @@
 # Contributor: Noel Kuntze <noel@familie-kuntze.de>
 
 pkgname=pcs
-pkgver=0.9.157
-pkgrel=1
+pkgver=0.9.162
+pkgrel=2
 pkgdesc='pacemaker corosync shell utility for cluster configuration'
 arch=('any')
 url='http://clusterlabs.org/'
 license=('GPL2')
-depends=('python' 'python-lxml')
-makedepends=('ruby-bundler')
+depends=('python' 'python-lxml' 'python-setuptools')
+makedepends=('ruby-bundler' 'wget')
 source=("https://github.com/ClusterLabs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('9e235349882b3090d4a9f09ffdd4656b')
+sha512sums=('9616487e89882b2bf5007fb61adad4af88e164d003fd6401924fbff10c811ac1873607013226b4032ac4efaa5df5b36f5a39c8edafd572a7c2241855de39df18')
 
-build() {
-  cd $pkgname-$pkgver
-  make -C pcsd BUILD_GEMS=true build_gems
-}
+#build() {
+#  cd $pkgname-$pkgver
+#  make -C pcsd BUILD_GEMS=true build_gems
+#}
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR="${pkgdir}" BUILD_GEMS=false install install_pcsd
+  make DESTDIR="${pkgdir}" install
   rm -fr "${pkgdir}/usr/bin"
   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 }
