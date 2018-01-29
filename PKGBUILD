@@ -1,3 +1,4 @@
+# Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) >
 # Maintainer: rich_o <aurua@riseup.net>
 
 pkgname=paperkey
