@@ -15,6 +15,7 @@ source=(
     "${_name}::git+https://github.com/jreinert/audition"
     audition.service
 )
+install="$pkgname.install"
 
 sha512sums=(
     SKIP
