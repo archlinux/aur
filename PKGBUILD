@@ -3,7 +3,7 @@
 
 pkgname=klog
 pkgver=0.9.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Ham radio logging program'
 arch=('i686' 'x86_64')
 url='http://jaime.robles.es/klog'
@@ -23,5 +23,6 @@ build() {
 package() {
   cd "${srcdir}"/${pkgname}-${pkgver}
 
-  install -Dm 755 build/target/klog "${pkgdir}"/usr/bin/klog
+  install -Dm644 klog.1 "${pkgdir}"/usr/share/man/man1/klog.1
+  install -Dm755 build/target/klog "${pkgdir}"/usr/bin/klog
 }
