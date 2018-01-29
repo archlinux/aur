@@ -1,7 +1,7 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 
 pkgname=pokemon-revolution-online-bin
-pkgver=0.98.3.jolly.ol.snorlax
+pkgver=0.98.4.revolution.2018
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
@@ -24,12 +24,12 @@ package() {
     # Variables
     ## i know this isn't a good thing and nobody wants to see this on aur, but it'll make things easier for me #Fabian
     ## directory files naming is usually VNAMING_Date, binary VNAMING.x86_64
-    __VNAMING="PROLinux64" ##like PROLinux95_45_data, PROLinux95_45.x86_64
+    __VNAMING="PROLinux" ##like PROLinux95_45_data, PROLinux95_45.x86_64
 
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="https://tiny.cc/PROLinux" ##download link
-    __DDLFN="PROLinux64.zip" ##filename
-    __DDLFSHA256="4998dd3eaa8c441ad08d9ae0128705e5b520e8b9511a050b2c9aaeb8b623a7bb" #sha256sum
+    __DDLFN="PRO2k18Linux.zip" ##filename
+    __DDLFSHA256="3f854d1aa54e4e78ba237e4ca119022e15ddada20586d8b44b9e9ef91f082223" #sha256sum
 
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then
