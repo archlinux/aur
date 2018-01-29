@@ -21,7 +21,8 @@ package() {
   cd $srcdir/indy-sdk-$pkgver
   cd libindy
   install -Dm755 target/release/libindy.so "$pkgdir/usr/lib/libindy.so"
-  cp -r include $pkgdir/usr/include
+  install -d 755 $pkgdir/usr/include/indy/
+  cp include/*.h $pkgdir/usr/include/indy/
 }
 
 md5sums=('SKIP')
