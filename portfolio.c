@@ -62,7 +62,7 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
         free(end);
         fclose(fp);
     } else {
-        if (api_get_current_price(ticker_name_string) == -1 && strcmp("USD$", ticker_name_string) != 0) {
+        if (strlen(ticker_name_string) > 16 || (api_get_current_price(ticker_name_string) == -1 && strcmp("USD$", ticker_name_string) != 0)) {
             printf("Invalid symbol.\n");
             return;
         }
@@ -102,7 +102,7 @@ void portfolio_print_all(FILE* fp) {
     char* str = (char*) calloc(64, sizeof(char));
     char* ticker_name_string = (char*) calloc(32, sizeof(char));
     double* data;
-    double total_owned = 0, total_spent = 0;
+    double total_owned = 0, total_spent = 0, total_gain_1d = 0;
     int i;
     char c;
     while (fgets(str, 63, fp) != NULL) {
@@ -115,32 +115,45 @@ void portfolio_print_all(FILE* fp) {
         if (data != NULL) {
             total_owned += data[0];
             total_spent += data[1];
+            total_gain_1d += data[2];
         }
         memset(str, '\0', 64);
         memset(ticker_name_string, '\0', 32);
         free(data);
     }
-    printf("\nTotals: Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %6.2lf (%4.2lf%%)\n",
-           total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent);
+    printf("\nTotals: Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %6.2lf (%4.2lf%%) 1d: %6.2lf (%4.2lf%%)\n",
+           total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
+            total_gain_1d, 100 * total_gain_1d / total_spent);
     free(str);
     free(ticker_name_string);
 }
 
 double* portfolio_print_stock(char* ticker_name_string, FILE* fp) {
-    double* a = malloc(sizeof(double) * 2);
+    /**
+     * Values in USD
+     * a[0] -- current balance
+     * a[1] -- amount spent
+     * a[2] -- 1d gain
+     */
+    double* a = malloc(sizeof(double) * 3);
     a[0] = portfolio_get_quantity_shares(ticker_name_string, fp);
     a[1] = portfolio_get_usd_spent(ticker_name_string, fp);
+    a[2] = 0;
     if (a[0] == 0 && a[1] == 0) {
         free(a);
         a = NULL;
     } else {
-        double ticker_price_usd = 1;
+        double ticker_current_price_usd = 1, ticker_1d_price_usd, ticker_1d_percent_change = 0;
         if (strcmp(ticker_name_string, "USD$") != 0) {
-            ticker_price_usd = api_get_current_price(ticker_name_string);
-            a[0] *= ticker_price_usd;
+            ticker_current_price_usd = api_get_current_price(ticker_name_string);
+            ticker_1d_price_usd = api_get_1d_price(ticker_name_string);
+            a[2] = ((ticker_current_price_usd - ticker_1d_price_usd) * a[0]);
+            ticker_1d_percent_change = 100 * (ticker_current_price_usd / ticker_1d_price_usd - 1);
+            a[0] *= ticker_current_price_usd;
         }
-        printf("%8.2lf %5s. Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %6.2lf (%4.2lf%%)\n",
-               a[0] / ticker_price_usd, ticker_name_string, a[0], a[1], a[0] - a[1], (100 * (a[0] - a[1])) / a[1]);
+        printf("%8.2lf %6s. Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %8.2lf (%6.2lf%%). 1d: %8.2lf (%6.2lf%%).\n",
+               a[0] / ticker_current_price_usd, ticker_name_string, a[0], a[1], a[0] - a[1], (100 * (a[0] - a[1])) / a[1],
+        a[2], ticker_1d_percent_change);
     }
     return a;
 }

@@ -62,6 +62,19 @@ double api_get_current_price(char* ticker_name_string) {
     return -1;
 }
 
+double api_get_1d_price(char* ticker_name_string){
+    double val = iex_get_1d_price(ticker_name_string);
+    if (val != -1)
+        return val;
+    val = alphavantage_get_1d_price(ticker_name_string);
+    if (val != -1)
+        return val;
+    val = coinmarketcap_get_1d_price(ticker_name_string);
+    if (val != -1)
+        return val;
+    return -1;
+}
+
 double iex_get_current_price(char* ticker_name_string) {
     size_t ticker_name_len = strlen(ticker_name_string);
     char* iex_api_string = calloc(64, sizeof(char));
@@ -87,7 +100,7 @@ double alphavantage_get_current_price(char* ticker_name_string) {
     size_t av_len = strlen(alphavantage_api_string);
     memcpy(&alphavantage_api_string[av_len], ticker_name_string, 10);
     String* pString = api_curl_data(alphavantage_api_string);
-    if (pString->data[0] == '{'){
+    if (pString->data[0] == '{') {
         api_string_destroy(&pString);
         memset(alphavantage_api_string, '\0', 160);
         av_str = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&apikey=DFUMLJ1ILOM2G7IH&datatype=csv&symbol=";
@@ -96,7 +109,7 @@ double alphavantage_get_current_price(char* ticker_name_string) {
         memcpy(&alphavantage_api_string[av_len], ticker_name_string, 10);
         pString = api_curl_data(alphavantage_api_string);
     }
-    if (pString->data[0] == '{'){
+    if (pString->data[0] == '{') {
         free(alphavantage_api_string);
         api_string_destroy(&pString);
         return -1;
@@ -105,7 +118,7 @@ double alphavantage_get_current_price(char* ticker_name_string) {
     for (int j = 0; j < 9; i++, j++)
         while (pString->data[i] != ',')
             i++;
-    char* price_string = (char*)calloc(16, 1);
+    char* price_string = (char*) calloc(16, 1);
     for (int j = 0; pString->data[i] != ','; i++, j++)
         price_string[j] = pString->data[i];
     free(alphavantage_api_string);
@@ -121,7 +134,7 @@ double coinmarketcap_get_current_price(char* ticker_name_string) {
     memcpy(coinmarketcap_api_string, cmc_str, 40);
     memcpy(&coinmarketcap_api_string[40], ticker_name_string, 20);
     String* pString = api_curl_data(coinmarketcap_api_string);
-    if (pString->data[0] == '{'){
+    if (pString->data[0] == '{') {
         free(coinmarketcap_api_string);
         api_string_destroy(&pString);
         return -1;
@@ -130,7 +143,7 @@ double coinmarketcap_get_current_price(char* ticker_name_string) {
     for (int j = 0; j < 19; i++, j++)
         while (pString->data[i] != '"')
             i++;
-    char* price_string = (char*)calloc(16, 1);
+    char* price_string = (char*) calloc(16, 1);
     for (int j = 0; pString->data[i] != '"'; i++, j++)
         price_string[j] = pString->data[i];
     free(coinmarketcap_api_string);
@@ -140,10 +153,96 @@ double coinmarketcap_get_current_price(char* ticker_name_string) {
     return ret;
 }
 
+double iex_get_1d_price(char* ticker_name_string) {
+    size_t ticker_name_len = strlen(ticker_name_string);
+    char* iex_api_string = calloc(64, sizeof(char));
+    memcpy(iex_api_string, "https://api.iextrading.com/1.0/stock/", 37);
+    memcpy(&iex_api_string[37], ticker_name_string, ticker_name_len);
+    memcpy(&iex_api_string[37 + ticker_name_len], "/previous?format=csv", 21);
+
+    String* pString = api_curl_data(iex_api_string);
+    free(iex_api_string);
+
+    if (strcmp(pString->data, "Unknown symbol") == 0) {
+        api_string_destroy(&pString);
+        return -1;
+    }
+    int i = 0;
+    for (int j = 0; j < 15; i++, j++)
+        while (pString->data[i] != ',')
+            i++;
+    char* price_string = (char*) calloc(16, 1);
+    for (int j = 0; pString->data[i] != ','; i++, j++)
+        price_string[j] = pString->data[i];
+    double ret = strtod(price_string, NULL);
+    free(price_string);
+    api_string_destroy(&pString);
+    return ret;
+}
+
+double alphavantage_get_1d_price(char* ticker_name_string){
+    size_t ticker_name_len = strlen(ticker_name_string);
+    char* alphavantage_api_string = calloc(128, sizeof(char));
+    memcpy(alphavantage_api_string, "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&apikey=DFUMLJ1ILOM2G7IH&datatype=csv&symbol=", 128);
+    size_t prefix = strlen(alphavantage_api_string);
+    memcpy(&alphavantage_api_string[prefix], ticker_name_string, ticker_name_len);
+    String* pString = api_curl_data(alphavantage_api_string);
+    if (pString->data[0] == '{') {
+        free(alphavantage_api_string);
+        api_string_destroy(&pString);
+        return -1;
+    }
+    int i = 0;
+    for (int j = 0; j < 14; i++, j++)
+        while (pString->data[i] != ',')
+            i++;
+    char* price_string = (char*) calloc(16, 1);
+    for (int j = 0; pString->data[i] != ','; i++, j++)
+        price_string[j] = pString->data[i];
+    double ret = strtod(price_string, NULL);
+    free(alphavantage_api_string);
+    free(price_string);
+    api_string_destroy(&pString);
+    return ret;
+}
+
+double coinmarketcap_get_1d_price(char* ticker_name_string){
+    char* cmc_str = "https://api.coinmarketcap.com/v1/ticker/";
+    char* coinmarketcap_api_string = calloc(64, sizeof(char));
+    memcpy(coinmarketcap_api_string, cmc_str, 40);
+    memcpy(&coinmarketcap_api_string[40], ticker_name_string, 20);
+    String* pString = api_curl_data(coinmarketcap_api_string);
+    if (pString->data[0] == '{') {
+        free(coinmarketcap_api_string);
+        api_string_destroy(&pString);
+        return -1;
+    }
+    int i = 0;
+    for (int j = 0; j < 19; i++, j++)
+        while (pString->data[i] != '"')
+            i++;
+    char* price_string = (char*) calloc(16, 1);
+    for (int j = 0; pString->data[i] != '"'; i++, j++)
+        price_string[j] = pString->data[i];
+    char* percent_string = (char*) calloc(16, 1);
+    i = 0;
+    for (int j = 0; j < 51; i++, j++)
+        while (pString->data[i] != '"')
+            i++;
+    for (int j = 0; pString->data[i] != '"'; i++, j++)
+        percent_string[j] = pString->data[i];
+    free(coinmarketcap_api_string);
+    double current_price = strtod(price_string, NULL);
+    double percent_change = strtod(percent_string, NULL);
+    free(price_string);
+    free(percent_string);
+    api_string_destroy(&pString);
+    return current_price - (current_price * (percent_change/100));
+}
+
 void api_string_destroy(String** phString) {
     String* pString = *phString;
     free(pString->data);
     free(*phString);
     *phString = NULL;
 }
-
