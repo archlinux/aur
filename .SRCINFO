@@ -20,9 +20,11 @@ pkgbase = openbazaard-git
 	source = openbazaar-go::git+https://github.com/OpenBazaar/openbazaar-go.git
 	source = openbazaard.service
 	source = openbazaard.conf
+	source = openbazaard.sysuser.conf
 	md5sums = SKIP
 	md5sums = b0193c5364076ce7b112f13edf995ac1
 	md5sums = 9fd31f8bc5b6ccc21a52fc1b58fdb9d6
+	md5sums = 92cd2fa8929c5acddbddf7d4fc2fd494
 
 pkgname = openbazaard-git
 

@@ -17,8 +17,10 @@ _user=github.com/OpenBazaar
 _repo=openbazaar-go
 
 source=("${_repo}::git+https://${_user}/${_repo}.git"
-	"${_pkgname}.service"
-	"${_pkgname}.conf")
+	${_pkgname}.service
+	${_pkgname}.conf
+	${_pkgname}.sysuser.conf
+)
 
 export GOOS=linux
 case "$CARCH" in
@@ -55,8 +57,10 @@ package() {
   install -Dm755 $GOPATH/bin/${_repo} $pkgdir/usr/bin/${_pkgname}
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
   install -D -m644 $srcdir/${_pkgname}.conf $pkgdir/etc/conf.d/${_pkgname}
+  install -Dm755 $srcdir/${_pkgname}.sysuser.conf $pkgdir/usr/lib/sysusers.d/${_pkgname}.conf
 }
 
 md5sums=('SKIP'
          'b0193c5364076ce7b112f13edf995ac1'
-         '9fd31f8bc5b6ccc21a52fc1b58fdb9d6')
+         '9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
+         '92cd2fa8929c5acddbddf7d4fc2fd494')
