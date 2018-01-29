@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=64.0.3282.119
-pkgrel=18
+pkgrel=20
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ optdepends=('pepper-flash: support for Flash content'
 install=inox-hard.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$name-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/bnox.desktop
+        https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/inox.desktop
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/breakpad-use-ucontext_t.patch
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/crc32c-string-view-check.patch
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/chromium-gn-bootstrap-r17.patch
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/inox-hardened/edgy.patch
 
 sha256sums=('342ea80a925d85f5155b2b423a0d3cbcf2ee5729bf107c601d7d902315d03127'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
+            'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
             '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
             'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
@@ -156,9 +156,9 @@ sha256sums=('342ea80a925d85f5155b2b423a0d3cbcf2ee5729bf107c601d7d902315d03127'
             '6a016da94025ddf28f589e86c953b9eb7561d97709871231c96b0fe7f0778cb7'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '1e9fc91a973977bdd03fddb65610f34e60a0fbd357033137dbb12f4657b14cf8'
-            '5d879e485053a20b355da27be68ddd7e1eea6565f6053e8e4f604cc8da053246'
+            '6f0768e13f2218597f7c39f4398381934333ec302756147e488defa01cbb1c4c'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
-            'bc31df03dbddf8f1389ca482c5ba97dfc1a77834bdfbc952dc60cf4da73713a1'
+            '80d2974001708c288a54c24e1dc896ef25916552b740765f6066a244c05ffcd5'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
             '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
             '8f7d2baca6d96b1e668c8c2bcb1efe5daa0e1cb33de89e12165ea22c73ce8741'
@@ -166,14 +166,14 @@ sha256sums=('342ea80a925d85f5155b2b423a0d3cbcf2ee5729bf107c601d7d902315d03127'
             'f79555d6517335891dd74521189b6f3eca543a02699c34fbb92c874b4f080674'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
-            '8d9ebc86511704bfd27d18e5e917ae6c0fc44c2e16520dfb98e14f18fe40a6ee'
-            '721e07d904e3bcb643f9aac8e8faa7ff7beeebf66fe5a3813bbc0177452e2c5b'
-            '559061ca2cebc75b27ed8a1545ec2d50f8abf9ae8b0a425a775c2a3e5c85c87d'
-            '4e939a98d3da3e90b4403b2105ccb908cd6abd51ee27f42247fd1d38887d3e05'
-            '9b1b9bbeff504689e780a42e92397967d90fc817e9172fc121417e3a70ab031f'
-            '20aa259c9ca06d4040673b0164c171c047d4f463c1193ecfc045337480f6d9af'
-            '65fdcaade1b6948594fac7c2f6af3a1bc43557937a8260003842845ea307c41a'
-            '2c0c865c325db53da6066afe4c9f81c156b8add0428068c0725d8a84d738e1b5'
+            '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
+            '4a533acefbbc1567b0d74a1c0903e9179b8c59c1beabe748850795815366e509'
+            '7b88830c5e0e9819f514ad68aae885d427541a907e25607e47dee1b0f38975fd'
+            '8c10e3b03b13555b461add586422472e0a96d3af49a078d6d952bc0719ba9d94'
+            'cc08b771d83b7434c3173c27419bc7d1d4ee375256f3169ef2b9333ba1f2beeb'
+            '53a1e8da18069eb4d6ab3af9c923c22a0f020241a4839c3140e3601052ddf6ff'
+            '896993987d4ef9f0ac7db454f288117316c2c80ed0b6764019afd760db222dad'
+            '3df9b3bbdc07fde63d9e400954dcc6ab6e0e5454f0ef6447570eef0549337354'
             '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
             'f4122246d8d4898937de2f221248b8452fd3d24058b1d27005349e245c051e79'
             '33369c2c13df92b16759a4ec56650cc52353110454775016bde277c1bce96ee5'
@@ -209,6 +209,7 @@ sha256sums=('342ea80a925d85f5155b2b423a0d3cbcf2ee5729bf107c601d7d902315d03127'
             '862a852fbe5d502ac35227c46ca54304f47e7400041dff806f10bd2d82f7b971'
             '4705552f63a28314f3225ebc0cf9d82993466397de2eee3dc9b2c4a085c63f7d'
             '78774357a0a86bb0379d7b21ceefd645e2fffd7b131b8fdc30772a1960364f1d')
+
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
