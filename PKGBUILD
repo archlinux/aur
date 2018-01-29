@@ -2,8 +2,8 @@
 
 
 pkgname=('python2-msmbuilder')
-pkgver=3.3.1
-pkgrel=5
+pkgver=3.8.0
+pkgrel=1
 pkgdesc='A python package which implements a series of statistical models for high-dimensional time-series'
 url='http://msmbuilder.org/'
 license=("LGPL")
@@ -12,17 +12,8 @@ depends=('python2-mdtraj' 'python2-cvxopt' 'python2-scikit-learn' 'python2-numpy
 optdepends=()
 makedepends=('python2-setuptools')
 options=('!libtool')
-source=("https://github.com/msmbuilder/msmbuilder/archive/${pkgver}.tar.gz"
-        "patch.i0.c")
-sha1sums=('fcb5ad6fabb5aead4c78d3fed782665d090c0caa'
-          'f0129777e7f9fb28074b86d47d6bb8b94f763063') 
-
-prepare() {
-  cd "$srcdir"
-  cp patch.i0.c msmbuilder-3.3.1/msmbuilder/hmm/cephes/
-  cd  msmbuilder-3.3.1/msmbuilder/hmm/cephes/
-  patch i0.c < patch.i0.c
-}
+source=("https://github.com/msmbuilder/msmbuilder/archive/${pkgver}.tar.gz")
+sha1sums=('dce2a640ecd277554b9a425d094737cd136f509d') 
 
 build() {
   msg2 "Building msmbuilder - Python 2"
