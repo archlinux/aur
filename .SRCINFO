@@ -1,9 +1,8 @@
 pkgbase = paperkey
 	pkgdesc = Make long term backups of OpenPGP keys by printing only the secret bits on paper.
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jabberwocky.com/software/paperkey/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = glibc

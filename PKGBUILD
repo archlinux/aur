@@ -3,9 +3,9 @@
 
 pkgname=paperkey
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Make long term backups of OpenPGP keys by printing only the secret bits on paper."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.jabberwocky.com/software/paperkey/"
 license=('GPL2')
 depends=('glibc')
