@@ -1,0 +1,13 @@
+pkgbase = sylvan
+	pkgdesc = Sylvan is a parallel (multi-core) MTBDD library written in C.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/trolando/sylvan
+	arch = x86_64
+	license = Apache2.0
+	depends = gcc-libs
+	source = https://github.com/trolando/sylvan/archive/v1.4.0.tar.gz
+	sha256sums = a316db7adadd5578d2b25f037eba29614b65060c6ff47edbdc2d2578ccc0edc9
+
+pkgname = sylvan
+
