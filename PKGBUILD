@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 174748 2016-05-11 04:31:41Z fyan $
-# Maintainer: Crotok <crotok [at] mailbox [dot] org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Crotok <crotok [at] mailbox [dot] org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=perl-gtk2-unique
 _cpanname=Gtk2-Unique
 pkgver=0.05
-pkgrel=20
+pkgrel=21
 pkgdesc="Perl bindings for the C library libunique"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
