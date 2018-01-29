@@ -1,14 +1,14 @@
 pkgbase = paperkey
 	pkgdesc = Make long term backups of OpenPGP keys by printing only the secret bits on paper.
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = http://www.jabberwocky.com/software/paperkey/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = glibc
-	source = http://www.jabberwocky.com/software/paperkey/paperkey-1.4.tar.gz
-	sha256sums = e12bb0ec835127d12a922a8d60b3dfdb3ca8ee60bb5b4d15ae4cea85bbcf336f
+	source = http://www.jabberwocky.com/software/paperkey/paperkey-1.5.tar.gz
+	sha256sums = c4737943083ce92e41faf13c27a9d608105b6285c0840dfb684a7ee294142ddf
 
 pkgname = paperkey
 
