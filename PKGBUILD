@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=65.0.3298.3
+pkgver=65.0.3315.3
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
@@ -17,10 +17,14 @@ source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
   'chromium-FORTIFY_SOURCE-r2.patch'
+  'chromium-gn-r0.patch'
+  'chromium-vulkan-r0.patch'
 )
-sha512sums=('f1ed9a403036e87da7897f173eeb1aa71fe2650efc5ef5b98f814c7d4d9c879971597f9ded11324c86d6edc7f12f3bcf2786a6fb022e9697dbdb8eae086e18b7'
+sha512sums=('c7f0feda90c0df15058473d39482e9b9a9b3236dcb90ff8ba7ad53afde2fce4901b2cbd678d8470560cc0cb6e31c8d3caee9f0a9f100d82d95feacabcdb7f8ce'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
-            '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c')
+            '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c'
+            'de085e2e159ea1fb14c39d630e77459f0e67497479169ce3253bc098a06deea75020289c091e816df1ee81ccec9de695ecd59f29e9d847c20693ef2710659dcd'
+            'd16dc06dca3b52302d805589dbcc5a31de26f71b1aa0d721e53cf941e7e995b5196a8ddc93150b5f8f661f88015fd64203633b0f04cbd479272f0b45bc106b16')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -38,6 +42,8 @@ prepare() {
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
   patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r2.patch"
+  patch -p1 -i "$srcdir/chromium-gn-r0.patch"
+  patch -p1 -i "$srcdir/chromium-vulkan-r0.patch"
 }
 
 build() {
