@@ -1,0 +1,81 @@
+From 321c218002f989dc7cb693bdabb69b6dd94589ce Mon Sep 17 00:00:00 2001
+From: John Whittington <git@jbrengineering.co.uk>
+Date: Mon, 29 Jan 2018 11:23:45 +0000
+Subject: [PATCH] Patch toolchain and CMSIS path for arch
+
+---
+ platform.txt | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/platform.txt b/platform.txt
+index 03f054f..a22fa1a 100644
+--- a/platform.txt
++++ b/platform.txt
+@@ -19,7 +19,7 @@
+ # For more info:
+ # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5---3rd-party-Hardware-specification
+ 
+-name=Arduino SAMD (32-bits ARM Cortex-M0+) Boards
++name=Arch Linux Arduino SAMD (32-bits ARM Cortex-M0+) Boards
+ version=1.6.16
+ 
+ # Compile variables
+@@ -31,7 +31,7 @@ compiler.warning_flags.default=
+ compiler.warning_flags.more=-Wall
+ compiler.warning_flags.all=-Wall -Wextra
+ 
+-compiler.path={runtime.tools.arm-none-eabi-gcc.path}/bin/
++compiler.path=/usr/bin/
+ compiler.c.cmd=arm-none-eabi-gcc
+ compiler.c.flags=-mcpu={build.mcu} -mthumb -c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -nostdlib --param max-inline-insns-single=500 -MMD
+ compiler.c.elf.cmd=arm-none-eabi-gcc
+@@ -64,8 +64,8 @@ compiler.S.extra_flags=
+ compiler.ar.extra_flags=
+ compiler.elf2hex.extra_flags=
+ 
+-compiler.arm.cmsis.c.flags="-I{runtime.tools.CMSIS-4.5.0.path}/CMSIS/Include/" "-I{runtime.tools.CMSIS-Atmel-1.1.0.path}/CMSIS/Device/ATMEL/"
+-compiler.arm.cmsis.ldflags="-L{runtime.tools.CMSIS-4.5.0.path}/CMSIS/Lib/GCC/" -larm_cortexM0l_math
++compiler.arm.cmsis.c.flags="-I/usr/share/arduino/packages/arduino/tools/CMSIS/4.5.0/CMSIS/Include/" "-I/usr/share/arduino/packages/arduino/tools/CMSIS-Atmel/1.0.0/CMSIS/Device/ATMEL/"
++compiler.arm.cmsis.ldflags="-L/usr/share/arduino/packages/arduino/tools/CMSIS/4.5.0/CMSIS/Lib/GCC/" -larm_cortexM0l_math
+ 
+ # USB Flags
+ # ---------
+@@ -117,7 +117,7 @@ recipe.size.regex=\.text\s+([0-9]+).*
+ #
+ # AVRDUDE
+ #
+-tools.avrdude.path={runtime.tools.avrdude.path}
++tools.avrdude.path=/usr
+ tools.avrdude.cmd={path}/bin/avrdude
+ tools.avrdude.config.path={path}/etc/avrdude.conf
+ 
+@@ -131,7 +131,7 @@ tools.avrdude_remote.upload.pattern="openocd --version 2>&1 | grep 2016 && if op
+ #
+ # BOSSA
+ #
+-tools.bossac.path={runtime.tools.bossac-1.7.0.path}
++tools.bossac.path=/usr/bin/
+ tools.bossac.cmd=bossac
+ tools.bossac.cmd.windows=bossac.exe
+ 
+@@ -148,7 +148,7 @@ tools.bossac.upload.network_pattern="{network_cmd}" -address {serial.port} -port
+ # OpenOCD sketch upload
+ #
+ 
+-tools.openocd.path={runtime.tools.openocd-0.9.0-arduino6-static.path}
++tools.openocd.path=/usr/
+ tools.openocd.cmd=bin/openocd
+ tools.openocd.cmd.windows=bin/openocd.exe
+ 
+@@ -177,7 +177,7 @@ tools.openocd.bootloader.pattern="{path}/{cmd}" {bootloader.verbose} -s "{path}/
+ # FIXME: this programmer is a workaround for default options being overwritten by uploadUsingPreferences
+ #
+ 
+-tools.openocd-withbootsize.path={runtime.tools.openocd-0.9.0-arduino6-static.path}
++tools.openocd-withbootsize.path=/usr/
+ tools.openocd-withbootsize.cmd=bin/openocd
+ tools.openocd-withbootsize.cmd.windows=bin/openocd.exe
+ 
+-- 
+2.16.1
+
