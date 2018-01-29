@@ -18,7 +18,7 @@ sha256sums=('1d960dde256e0b1d018d763648f32f8a00f79a26007c48b16fe4cd313e71072f'
 options=('!makeflags')
 
 build() {
-  cd ${srcdir}/$pkgname-$_pkgver
+  cd $pkgname-$_pkgver
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin \
 	      --bigloolibdir=/usr/lib/bigloo/4.3b 
@@ -27,18 +27,18 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/$pkgname-$_pkgver
+  cd $pkgname-$_pkgver
   make test
 }
   
 package() {
-  cd ${srcdir}/$pkgname-$_pkgver
-  make DESTDIR=${pkgdir} install
+  cd $pkgname-$_pkgver
+  make DESTDIR="$pkgdir" install
 
-  install -Dm644 arch/archlinux/conf.d/hop.in $pkgdir/etc/conf.d/hop
+  install -Dm644 arch/archlinux/conf.d/hop.in "$pkgdir"/etc/conf.d/hop
   install -Dm644 arch/archlinux/systemd/hop.service.in \
-	  $pkgdir/usr/lib/systemd/system/hop.service
+	  "$pkgdir"/usr/lib/systemd/system/hop.service
   install -Dm644 arch/archlinux/systemd/hop.socket.in \
-	  $pkgdir/usr/lib/systemd/system/hop.socket
-  cd ${pkgdir}/usr/bin; rm hop; ln -s hop-$pkgver hop
+	  "$pkgdir"/usr/lib/systemd/system/hop.socket
+  cd "$pkgdir"/usr/bin; rm hop; ln -s hop-$pkgver hop
 }
