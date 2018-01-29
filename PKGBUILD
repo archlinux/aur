@@ -1,8 +1,8 @@
 # Maintainer: Tomáš Mládek <tmladek @ inventati doth ork>
 # Contributor: shuall <shualloret @ gmail . com>
 
-pkgname=chaiscript
-pkgver=6.0.0
+pkgname=chaiscript-git
+pkgver=6.0.0.r101.g0c32c50
 pkgrel=1
 pkgdesc="Embedded scripting language designed from the ground up to directly target C++"
 arch=('any')
@@ -10,13 +10,20 @@ depends=('ncurses')
 makedepends=('cmake')
 url="http://www.chaiscript.com"
 license=('BSD')
-source=(https://github.com/Chaiscript/Chaiscript/archive/v${pkgver}.tar.gz)
-sha256sums=('ec4b51e30afbc5133675662882c59417a36aa607556ede7ca4736fab2b28c026')
+source=("$pkgname::git+https://github.com/Chaiscript/Chaiscript.git")
+sha256sums=('SKIP')
 provides=('chaiscript')
+conflicts=('chaiscript')
 install=${pkgname}.install
 
+pkgver() {
+  cd "$pkgname"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-  cd ChaiScript-${pkgver}
+  cd "$pkgname"
 
   msg 'Building...'
   cmake -DCMAKE_INSTALL_PREFIX=/usr ./
@@ -24,7 +31,7 @@ build() {
 }
 
 package() {
-  cd ChaiScript-${pkgver}
+  cd "$pkgname"
 
   msg 'Installing...'
   make DESTDIR="$pkgdir" install
