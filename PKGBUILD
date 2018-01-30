@@ -1,8 +1,8 @@
 # Maintainer: Raphael Simon <simon.raphael@gmail.com>
 
 pkgbase=linux-samus4
-pkgver=4.14
-pkgrel=5
+pkgver=4.15
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/raphael/linux-samus"
 license=('GPL2')
@@ -245,6 +245,6 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-md5sums=('a6c2aaf3e36b212b4f25091e60296825'
-         '999898798e691fc980edcddb758824f4'
+md5sums=('28885983647a54833ed9cf307e38f638'
+         '1650da55eee1ef55196f4c49a2f709af'
          '5aae464a8085b2f3adcdcaff29853d04')
