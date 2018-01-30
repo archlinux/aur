@@ -6,7 +6,7 @@ _version=2.99
 _gitname=gimp
 pkgname=${_gitname}-gtk3-git
 pkgver=2.9.4.r1949.g3762480587
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
@@ -17,13 +17,15 @@ makedepends=('git' 'glib-networking' 'intltool' 'poppler-glib' 'alsa-lib' 'iso-c
 	     'gobject-introspection' 'curl' 'ghostscript' 'libxslt' 'appstream-glib'
 	     'pygtk' 'python-cairo')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
-			'libwebkit: for the help browser' 
-			'poppler-glib: for pdf support'
-			'alsa-lib: for MIDI event controller module'
-			'curl: for URI support'
-			'xorg-server-xvfb: for xvfb-run'
-			'ghostscript: for postscript support')
-options=('!libtool' '!makeflags')
+	    'libwebkit: for the help browser'
+	    'libwebp: for support of the webp file format' 
+	    'poppler-glib: for pdf support'
+	    'openexr: for the openexr file format' 
+	    'alsa-lib: for MIDI event controller module'
+	    'curl: for URI support'
+	    'xorg-server-xvfb: for xvfb-run'
+	    'ghostscript: for postscript support')
+options=('!libtool')
 provides=("gimp")
 conflicts=("gimp")
 source=(git+https://git.gnome.org/browse/gimp#branch=gtk3-port 'linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ginux.gpl?h=packages/gimp'
