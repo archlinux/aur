@@ -4,7 +4,7 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/wiki/catkin'
 
 pkgname='ros-kinetic-catkin'
-pkgver='0.7.8'
+pkgver='0.7.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,10 +20,11 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=()
 depends=(${ros_depends[@]}
   python2-argparse
-  gtest
+  python2-empy
   python2-catkin-pkg
+  gtest
   python2-nose
-  python2-empy)
+  gmock)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/catkin/${pkgver}-${_pkgver_patch}
@@ -34,7 +35,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="catkin-release-release-kinetic-catkin-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/catkin-release/archive/release/kinetic/catkin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4b2b3b1697689bcdc1ddc5aab99a93bef8abed989aa3a48623ad357d38fdc3c9')
+sha256sums=('d4ce26525bab7a1914ca1a0880430c7eef40a6d874d1fa9c6cb7a21c9a260489')
 
 build() {
   # Use ROS environment variables
