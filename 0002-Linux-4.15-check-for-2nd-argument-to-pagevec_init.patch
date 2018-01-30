@@ -1,0 +1,104 @@
+From c8c8e5eca6ab79d651a761f4cde1fad5061b760e Mon Sep 17 00:00:00 2001
+From: Stephan Wiesand <stephan.wiesand@desy.de>
+Date: Fri, 22 Dec 2017 14:40:32 +0100
+Subject: [PATCH 2/2] Linux 4.15: check for 2nd argument to pagevec_init
+
+Linux 4.15 removes the distinction between "hot" and "cold" cache
+pages, and pagevec_init() no longer takes a "cold" flag as the
+second argument. Add a configure test and use it in osi_vnodeops.c .
+
+Reviewed-on: https://gerrit.openafs.org/12824
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+Tested-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit fb1f14d8ee963678a9caad0538256c99c159c2c4)
+
+Reviewed-on: https://gerrit.openafs.org/12829
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 7a80b4ba67b0d295df72e87da4aa638bd5e245de)
+
+Change-Id: I525d17abe9b57c3017cf9cf76321f25eb819133c
+---
+ acinclude.m4                 |  1 +
+ src/afs/LINUX/osi_vnodeops.c | 12 ++++++++++++
+ src/cf/linux-test4.m4        | 10 ++++++++++
+ 3 files changed, 23 insertions(+)
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index ebfa0cb2a..918013920 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -1103,6 +1103,7 @@ case $AFS_SYSNAME in *_linux* | *_umlinux*)
+ 	  	 LINUX_AOP_WRITEBACK_CONTROL
+ 		 LINUX_FS_STRUCT_FOP_HAS_SPLICE
+ 		 LINUX_KERNEL_POSIX_LOCK_FILE_WAIT_ARG
++		 LINUX_KERNEL_PAGEVEC_INIT_COLD_ARG
+ 		 LINUX_POSIX_TEST_LOCK_RETURNS_CONFLICT
+ 		 LINUX_POSIX_TEST_LOCK_CONFLICT_ARG
+ 		 LINUX_KERNEL_SOCK_CREATE
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index c2cd4f742..f744bd94b 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -2191,7 +2191,11 @@ afs_linux_readpage_fastpath(struct file *fp, struct page *pp, int *codep)
+ 	AFS_GLOCK();
+ 	goto out;
+     }
++#if defined(PAGEVEC_INIT_COLD_ARG)
+     pagevec_init(&lrupv, 0);
++#else
++    pagevec_init(&lrupv);
++#endif
+ 
+     code = afs_linux_read_cache(cacheFp, pp, tdc->f.chunk, &lrupv, NULL);
+ 
+@@ -2351,7 +2355,11 @@ afs_linux_bypass_readpages(struct file *fp, struct address_space *mapping,
+     ancr->offset = auio->uio_offset;
+     ancr->length = auio->uio_resid;
+ 
++#if defined(PAGEVEC_INIT_COLD_ARG)
+     pagevec_init(&lrupv, 0);
++#else
++    pagevec_init(&lrupv);
++#endif
+ 
+     for(page_ix = 0; page_ix < num_pages; ++page_ix) {
+ 
+@@ -2571,7 +2579,11 @@ afs_linux_readpages(struct file *fp, struct address_space *mapping,
+     task = afs_pagecopy_init_task();
+ 
+     tdc = NULL;
++#if defined(PAGEVEC_INIT_COLD_ARG)
+     pagevec_init(&lrupv, 0);
++#else
++    pagevec_init(&lrupv);
++#endif
+     for (page_idx = 0; page_idx < num_pages; page_idx++) {
+ 	struct page *page = list_entry(page_list->prev, struct page, lru);
+ 	list_del(&page->lru);
+diff --git a/src/cf/linux-test4.m4 b/src/cf/linux-test4.m4
+index 5a4615f3f..5a53f9818 100644
+--- a/src/cf/linux-test4.m4
++++ b/src/cf/linux-test4.m4
+@@ -163,6 +163,16 @@ AC_DEFUN([LINUX_KERNEL_POSIX_LOCK_FILE_WAIT_ARG], [
+ 		       [])
+ ])
+ 
++AC_DEFUN([LINUX_KERNEL_PAGEVEC_INIT_COLD_ARG], [
++  AC_CHECK_LINUX_BUILD([for 2nd argument in pagevec_init found in pre-4.15 kernels],
++		       [ac_cv_linux_kernel_pagevec_init_cold_arg],
++		       [#include <linux/pagevec.h>],
++		       [pagevec_init(0,0);],
++		       [PAGEVEC_INIT_COLD_ARG],
++		       [define if your kernel uses 2 arguments for pagevec_init],
++		       [])
++])
++
+ AC_DEFUN([LINUX_KERNEL_SOCK_CREATE], [
+   AC_CHECK_LINUX_BUILD([for 5th argument in sock_create found in some SELinux kernels],
+ 		       [ac_cv_linux_kernel_sock_create_v],
+-- 
+2.16.1
+

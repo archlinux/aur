@@ -6,7 +6,7 @@
 pkgname=openafs-modules
 _srcname=openafs
 pkgver=1.6.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -15,9 +15,13 @@ depends=('openafs')
 makedepends=('libelf' 'linux-headers')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
+source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+        0001-Linux-use-plain-page_cache_alloc.patch
+        0002-Linux-4.15-check-for-2nd-argument-to-pagevec_init.patch)
 install=openafs-modules.install
-sha256sums=('5c617948b6bf5a079c14fb7ee86b99e97d23fe6267ca5e079364acc3f55ccea6')
+sha256sums=('5c617948b6bf5a079c14fb7ee86b99e97d23fe6267ca5e079364acc3f55ccea6'
+            '985d88ead08ffff3e5d681673185b9655a2d1993605377e16fcc9bc840341fe7'
+            '23fcddf5f4740f4ab701c60c81844bd56d64b8d2b7c194a637610c4a7d45fc9c')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -27,8 +31,12 @@ _kernelver=$(cat ${_extramodules}/version)
 prepare() {
   cd ${srcdir}/${_srcname}-${pkgver}
 
+  # Add support for Linux 4.15
+  patch -p1 < "${srcdir}"/0001-Linux-use-plain-page_cache_alloc.patch
+  patch -p1 < "${srcdir}"/0002-Linux-4.15-check-for-2nd-argument-to-pagevec_init.patch
+
   # Only needed when changes to configure were made
-  # ./regen.sh -q
+  ./regen.sh -q
 }
 
 build() {
