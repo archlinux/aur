@@ -30,11 +30,13 @@ prepare() {
 }
 
 package_indicator-sysmonitor-budgie-git() {
+  pkgdesc="${pkgdesc}, budgie-panel version"
   cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" installbudgie
 }
 
 package_indicator-sysmonitor-appindicator-git() {
+  pkgdesc="${pkgdesc}, appindicator version"
   depends+=('libappindicator-gtk3')
   cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" install

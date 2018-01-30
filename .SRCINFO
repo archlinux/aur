@@ -17,8 +17,10 @@ pkgbase = indicator-sysmonitor-git
 	md5sums = SKIP
 
 pkgname = indicator-sysmonitor-budgie-git
+	pkgdesc = A configurable system monitoring applet, budgie-panel version
 
 pkgname = indicator-sysmonitor-appindicator-git
+	pkgdesc = A configurable system monitoring applet, appindicator version
 	depends = python
 	depends = python-psutil
 	depends = libappindicator-gtk3
