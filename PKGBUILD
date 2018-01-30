@@ -8,6 +8,8 @@ pkgdesc="An unofficial api for Google Play Music."
 _gitver="$pkgver"
 url="https://github.com/simon-weber/gmusicapi"
 
+provides=('python-gmusicapi')
+
 depends=(
     'python'
     'python-future'
