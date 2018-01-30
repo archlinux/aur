@@ -1,4 +1,5 @@
 # Maintainer: Alex "grevus" Lobtsov <alex@lobtsov.com>
+# Maintainer: Kai Korla <balticer@balticer.de>
 pkgname=php-redis
 pkgver=3.1.6
 pkgrel=1
