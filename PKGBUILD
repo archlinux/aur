@@ -1,7 +1,7 @@
 # Maintainer: Marshall Ward <f90nml@marshallward.org>
 
 pkgname=python-f90nml
-pkgver=0.20
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Fortran namelist parser for Python"
 arch=('any')
@@ -18,9 +18,9 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=('https://pypi.python.org/packages/8f/9f/843a9ae3d9222b49a6dc19b7d6f1d9df7ed706479a6b8791e7432e01c376/f90nml-0.20.tar.gz#md5=f473aa34f9bc2e947275620bc1660b6f')
+source=('https://pypi.python.org/packages/9e/61/fdb99ff828ddbeb51649dba16bf5cc0ac76d538252ab2ee93a62c503b107/f90nml-1.0.1.tar.gz#md5=a029611eb1298f35935289627909c1c4')
 noextract=()
-md5sums=('f473aa34f9bc2e947275620bc1660b6f')
+md5sums=('a029611eb1298f35935289627909c1c4')
 
 package() {
     cd ${srcdir}/f90nml-${pkgver}
