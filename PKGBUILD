@@ -1,7 +1,7 @@
 # Contributor: b00rt00s <bomby.zrzuc@gmail.com>
 
 pkgname=vesta
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies."
 url="http://jp-minerals.org/vesta"
@@ -18,8 +18,8 @@ install="vesta.install"
 md5sums=('25d5c67b4180e227aa3fe2727119a68a'
          'fdd7040720e4b58a26caa7db09669acf'
          'caabe467168af9e44cf380af1abfe280')
-md5sums_i686=('4d1fff60ae40a64bb301bb822c2f946b')
-md5sums_x86_64=('e3df33ea2707496087adb97d62416c07')
+md5sums_i686=('3198e5f31f41a802d218db32104892ac')
+md5sums_x86_64=('2821a10bf0c223ab6dc1e65483b2bf6f')
 
 
 package() {
