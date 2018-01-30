@@ -54,8 +54,7 @@ package_python-piff-git() {
 package_python2-piff-git() {
 	  		  depends=('python2')
 	  		  cd $pkgbase-py2
-	  		  python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-			  mv ${pkgdir}/usr/bin/piffify  ${pkgdir}/usr/bin/piffify_py2
-			  mv ${pkgdir}/usr/bin/plotify  ${pkgdir}/usr/bin/plotify_py2
+			  rm -rf "$pkgdir"/usr/bin
+			  python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 			  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
