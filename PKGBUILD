@@ -5,12 +5,12 @@ pkgver() {
     cd "${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=2
+pkgrel=3
 pkgdesc="XMonad support for Gnome Flashback"
 arch=('any')
 url="https://github.com/tlonic/gnome-flashback-xmonad"
 license=('GPL')
-depends=('haskell-xmonad' 'gnome-flashback' 'compton')
+depends=('xmonad' 'gnome-flashback' 'compton')
 source=('gnome-flashback-xmonad::git+https://github.com/tlonic/gnome-flashback-xmonad.git')
 md5sums=('SKIP')
 
