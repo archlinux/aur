@@ -1,7 +1,7 @@
 pkgbase = franz
 	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more.
-	pkgver = 5.0.0_beta.14
-	pkgrel = 3
+	pkgver = 5.0.0_beta.15
+	pkgrel = 1
 	url = https://meetfranz.com/
 	arch = i686
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = franz
 	depends = libxkbfile
 	depends = gconf
 	conflicts = franz-bin
-	source = https://github.com/meetfranz/franz/archive/v5.0.0-beta.14.tar.gz
+	source = https://github.com/meetfranz/franz/archive/v5.0.0-beta.15.tar.gz
 	source = franz.desktop
-	sha256sums = 5dedd748870c9603da06270ae78749b9c22bd834d98e024c74252f47e8b49d39
+	sha256sums = 90a69d7a59663ae24c42abcdf55dbd9df23a8383d5325014f4fd47ab384e2ea9
 	sha256sums = 79813a0f7db258fc7c4969cc20b412771530865bec36c0a4b9e18a2e435d97b8
 
 pkgname = franz
