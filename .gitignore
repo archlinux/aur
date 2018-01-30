@@ -1,0 +1,23 @@
+# package src/pkg archives, downloaded sources
+*.tar*
+*.tgz
+*.txz
+*.tbz2
+*.tgz
+*.zip
+
+# signed sources
+*.asc
+*.sig
+
+# subfolders, e.g. source or built package trees, vcs
+*/**/
+src/
+pkg/
+
+# backup files
+*~
+*.bak
+
+# mkpkg status files, from soyuz.archlinux.org
+.mkpkg_check
