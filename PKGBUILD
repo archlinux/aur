@@ -1,5 +1,7 @@
 # Maintainer: Joaquin Garmendia <joaquingc123 at gmail dot com>
 
+# All my PKGBUILDs can be found in https://www.github.com/joaquingx/PKGBUILDs
+
 pkgname=droidbot-git
 _pkgname=droidbot
 pkgver=1.0.2b1.r146.gea838a9
