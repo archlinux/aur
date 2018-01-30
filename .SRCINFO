@@ -23,6 +23,10 @@ pkgbase = unifont
 	sha512sums = dfbbcc9b81591471562431f6f6742dea2b98ea3095010ed821f05f900616ea6ceab3715da569a1c894715568387b7d35125e7a796ac6d859a0ba63f1ea24a65c
 	sha512sums = 5396f1f624a76cf266dcd3fcec99361e4935b3d0fdce16b9dfd117cf9aff9a0a8e55ca8e47df867ba96acfebbf80eb85d666472f22a31b1aeb86748c617066c1
 
+pkgname = pcf-unifont
+	pkgdesc = A free bitmap font with wide Unicode support (PCF version)
+	arch = any
+
 pkgname = psf-unifont
 	pkgdesc = A free bitmap font with wide Unicode support (PSF version, for APL)
 	arch = any
