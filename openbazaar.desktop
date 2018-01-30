@@ -8,5 +8,5 @@ Type=Application
 StartupNotify=true
 Categories=Utility;
 Categories=Application;Network;
-MimeType=application/x-openbazaar;x-scheme-handler/ob;
+MimeType=x-scheme-handler/ob;
 StartupWMClass=openbazaar desktop client
