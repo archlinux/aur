@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=poseidon
 pkgver=0.7.3
