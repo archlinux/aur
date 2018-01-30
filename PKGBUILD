@@ -31,9 +31,17 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="lms1xx-release-release-kinetic-lms1xx-${pkgver}-${_pkgver_patch}"
+_dir="LMS1xx-release-release-kinetic-lms1xx-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/clearpath-gbp/lms1xx-release/archive/release/kinetic/lms1xx/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('c14f2f6e88a9f791ec177ad64ea3a5013d52642ace02c6011c6a490652660abc')
+
+prepare() {
+  cd ${srcdir}
+  find . \( -iname *.cpp -o -iname *.h \) \
+	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
+	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
+	  -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \;
+}
 
 build() {
   # Use ROS environment variables
