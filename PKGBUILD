@@ -2,7 +2,7 @@
 
 pkgname=signal-desktop
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
 license=('GPL3')
@@ -17,7 +17,7 @@ source=("git+${url}.git#tag=v${pkgver}" 'signal-desktop.desktop' 'signal-desktop
 sha256sums=('SKIP'
             '2287a32ed2ad8772fab02b7ec3bda185c6e85263f7b6b62595b66535ba8687b0'
             '235711732657fab3a6c420bd975bb02ed8757d5e741b563490c0bc74ea1182b9'
-            'c83f0d15bf90ad5d218bc8051a1f67fed67b8709d79e6b1339b6ad653a0168de')
+            '882ffedd0b319705271c113f21f7cecf76b28f581fa5aa4e9ca63f447d072655')
 
 build() {
   cd ${_basename}
@@ -33,7 +33,7 @@ package() {
   mkdir -p ${pkgdir}/usr/{bin,lib/${pkgname},share/applications}
   install -Dm755 -t ${pkgdir}/usr/bin ${pkgname}
   install -Dm644 -t ${pkgdir}/usr/share/applications ${pkgname}.desktop
-  for i in 16 24 32 48 64 128 256 512; do install -Dm644 ${_basename}/build/icons/png/${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png; done
+  for i in 16 24 32 48 64 128 256 512; do install -Dm644 ${_basename}/build/icons/png/${i}* ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png; done
   cd ${pkgdir}/usr/lib/${pkgname}
   cp -r ${srcdir}/${_basename}/dist/linux-unpacked/* .
   find . -type d | xargs chmod 755

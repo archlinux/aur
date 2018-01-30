@@ -1,7 +1,7 @@
 pkgbase = signal-desktop
 	pkgdesc = Private messaging from your desktop
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WhisperSystems/Signal-Desktop
 	install = signal-desktop.install
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = signal-desktop
 	sha256sums = SKIP
 	sha256sums = 2287a32ed2ad8772fab02b7ec3bda185c6e85263f7b6b62595b66535ba8687b0
 	sha256sums = 235711732657fab3a6c420bd975bb02ed8757d5e741b563490c0bc74ea1182b9
-	sha256sums = c83f0d15bf90ad5d218bc8051a1f67fed67b8709d79e6b1339b6ad653a0168de
+	sha256sums = 882ffedd0b319705271c113f21f7cecf76b28f581fa5aa4e9ca63f447d072655
 
 pkgname = signal-desktop
 

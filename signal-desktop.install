@@ -1,13 +1,13 @@
 post_install()
 {
-	is="is"; it="it"
+  is="is"; it="it"
   pacman -Qi libappindicator-gtk2 2>&1|grep "Required By"|grep -q None
   [ $? -eq 0 ] && libappindicator="libappindicator-gtk2"
   pacman -Qi libappindicator-gtk3 2>&1|grep "Required By"|grep -q None
   if [ $? -eq 0 ]; then
-		[ "$libappindicator" ] && libappindicator="${libappindicator} and " && is="are" && it="them"
-	  libappindicator="${libappindicator}libappindicator-gtk3"
-	fi
+    [ "$libappindicator" ] && libappindicator="${libappindicator} and " && is="are" && it="them"
+    libappindicator="${libappindicator}libappindicator-gtk3"
+  fi
   if [ "$libappindicator" ]; then
     echo
     echo "$libappindicator $is obsolete and may even break"
