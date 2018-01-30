@@ -1,16 +1,16 @@
 # Maintainer: somekool <somekool _ at _ gmail _ dot _com>
 
-pkgname=netvirt-agent-git
-srcgiturl=https://github.com/mathieujobin/netvirt
-pkgver=v0.6.r173.758f816
+pkgname=netvirt-agent-beta-git
+srcgiturl=https://github.com/netvirt/netvirt
+pkgver=v0.6.r174.gfc16fbe
 pkgrel=1
 pkgdesc="NetVirt is an open source network virtualization platform (NVP)."
 arch=('i686' 'x86_64')
 url="http://netvirt.org"
 license=('GPLv3')
 depends=()
-optdepends=()
-makedepends=('git' 'scons' 'cmake' 'libcap') # 'libqt4-dev' 'libssl-dev')
+optdepends=('qt4')
+makedepends=('git' 'scons' 'cmake' 'libevent' 'openssl')
 source=("${pkgname}::git+${srcgiturl}.git")
 md5sums=('SKIP')
 
@@ -25,17 +25,8 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${pkgname}
   set -e
+  git checkout proto1.2
   git submodule update --init --recursive
-
-  pushd udt4
-  make > /dev/null
-  popd
-
-  pushd libconfig
-  #fix_libconfig_git
-  [ ! -f Makefile ] && ./configure
-  make > /dev/null
-  popd
 
   pushd tapcfg
   ./buildall.sh linuxonly || true > /dev/null
@@ -48,7 +39,7 @@ build() {
   [ -d ${srcdir}/${pkgname}/build ] && rm -fr ${srcdir}/${pkgname}/build
   mkdir ${srcdir}/${pkgname}/build
   cd ${srcdir}/${pkgname}/build
-  cmake .. -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr -DWITH_GUI=OFF -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so -DOPENSSL_ROOT_DIR=/usr/lib/openssl-1.0 -DOPENSSL_LIBRARIES=/usr/lib/openssl-1.0
+  cmake .. -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr -DWITH_GUI=OFF
   make nvagent
   echo ======================== build completed ========================
 }

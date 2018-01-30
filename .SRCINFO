@@ -1,6 +1,6 @@
-pkgbase = netvirt-agent-git
+pkgbase = netvirt-agent-beta-git
 	pkgdesc = NetVirt is an open source network virtualization platform (NVP).
-	pkgver = 0.6.r20.g3798298
+	pkgver = 0.99.r20.g3798298
 	pkgrel = 3798298
 	url = http://netvirt.org
 	arch = i686
@@ -9,9 +9,8 @@ pkgbase = netvirt-agent-git
 	makedepends = git
 	makedepends = scons
 	makedepends = cmake
-	makedepends = libcap
 	source = netvirt-agent-git::git+https://github.com/netvirt/netvirt.git
 	md5sums = SKIP
 
-pkgname = netvirt-agent-git
+pkgname = netvirt-agent-beta-git
 
