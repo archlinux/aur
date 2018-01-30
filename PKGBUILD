@@ -1,8 +1,8 @@
 # Maintainer: Sree Harsha Totakura <sreeharsha at lastname dot in>
 
 pkgname=kerneloops-git
-pkgver=0.12.r28.g64e6bd9
-pkgrel=5
+pkgver=0.12.r44.g00ac663
+pkgrel=1
 pkgdesc="Client tool for reporting OOPS to http://oops.kernel.org/"
 arch=('i686' 'x86_64')
 url="http://oops.kernel.org/"
