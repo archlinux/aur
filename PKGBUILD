@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar
-pkgver=2.0.21
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
 url="http://openbazaar.org"
@@ -45,6 +45,6 @@ package(){
         	-or -executable -type f -exec rm -r '{}' \;
 }
 
-md5sums=('8cc60a88961c0e17ed5d623a6da174a2'
+md5sums=('0faec43ca6ee9a19bb269b87497e621d'
          '122a3e23d7ecfef0a82e756cb97c3e98'
          '2e7c7804b970baa7f9274dae47618a52')
