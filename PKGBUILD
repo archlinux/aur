@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ parser for the Unified Robot Descript
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-kinetic-urdf'
-pkgver='1.12.11'
+pkgver='1.12.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,31 +15,31 @@ ros_makedepends=(ros-kinetic-cmake-modules
   ros-kinetic-urdf-parser-plugin
   ros-kinetic-roscpp
   ros-kinetic-rosconsole-bridge
-  ros-kinetic-rostest
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
+  urdfdom-headers
   urdfdom
-  urdfdom-headers)
+  tinyxml)
 
 ros_depends=(ros-kinetic-roscpp
   ros-kinetic-pluginlib
-  ros-kinetic-urdf-parser-plugin
   ros-kinetic-rosconsole-bridge)
 depends=(${ros_depends[@]}
+  urdfdom-headers
   urdfdom
-  urdfdom-headers)
+  tinyxml)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/urdf/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# source=("${_dir}"::"git+https://github.com/ros-gbp/urdf-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="robot_model-release-release-kinetic-urdf-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/kinetic/urdf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0daae3e609cd81cdf99b9d014c64ef8160225f0e5bb263a58380d4d5bbbe02e0')
+_dir="urdf-release-release-kinetic-urdf-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/urdf-release/archive/release/kinetic/urdf/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('3ef94e4c96e189e1df3b4e57d0309bd1bd76a7a28a674a5944e26b8fd674cb33')
 
 build() {
   # Use ROS environment variables
