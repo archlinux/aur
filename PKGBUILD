@@ -1,5 +1,7 @@
 # Maintainer: Joaquin Garmendia <joaquingc123 at gmail dot com>
 
+# All my PKGBUILDs can be found in https://www.github.com/joaquingx/PKGBUILDs
+
 pkgname=codeforces-parser-git
 pkgver=r48.5287a01
 pkgrel=2
