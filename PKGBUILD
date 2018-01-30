@@ -17,7 +17,7 @@ conflicts=("${_pkgname}" 'tao-framework' 'tao-framework-svn')
 provides=("${_pkgname}")
 install="monogame.install"
 source=("http://www.monogame.net/releases/v${pkgver}/monogame-sdk.run"
-        "https://raw.githubusercontent.com/mono/MonoGame/develop/LICENSE.txt"
+        "https://raw.githubusercontent.com/MonoGame/MonoGame/v${pkgver}/LICENSE.txt"
         "MonogamePipeline.desktop"
         "monogame-pipeline-tool"
         "mgcb")
