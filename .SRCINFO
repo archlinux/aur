@@ -1,7 +1,7 @@
 pkgbase = python-oslo-log
 	pkgdesc = Oslo Log library
 	pkgver = 3.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/developer/oslo.log/
 	arch = any
 	license = Apache
