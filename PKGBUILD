@@ -1,7 +1,7 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=splunk
-basever=7.0.1
-pkgver=${basever}_2b5b15c4ee89
+basever=7.0.2
+pkgver=${basever}_03bbabbd5c0f
 pkgrel=1
 pkgdesc="Statistical analysis and search tool for logs and machine data"
 url="https://www.splunk.com/"
@@ -12,8 +12,8 @@ source=("$pkgname.service")
 source_i686=("https://download.splunk.com/products/splunk/releases/$basever/linux/$pkgname-${pkgver//_/-}-Linux-i686.tgz")
 source_x86_64=("https://download.splunk.com/products/splunk/releases/$basever/linux/$pkgname-${pkgver//_/-}-Linux-x86_64.tgz")
 sha256sums=('ca96b85750a0592208facc747bbe1eb22b0a35b6dee841e6f51f1ad6a9157757')
-sha256sums_x86_64=('f2fc3356837a9be48fe4788d6990d7f02b139f4d5d33afccaeb4bc24bd364797')
-sha256sums_i686=('d5472d4ffa60f3ac1599c9a0e5490e247e3066b40b3afb939af165fb6c1b572c')
+sha256sums_x86_64=('e9e8502c8e2366573ff32d9a3ebd5f8efc71f52b9dcb58992754cbcddca2e1f3')
+sha256sums_i686=('626e38601d0c187f703c315ce59bee0c09902e6392f8e24f7ce50ad1e1f10947')
 
 package() {
 	cd "$srcdir"
