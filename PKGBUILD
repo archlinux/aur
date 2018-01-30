@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=65.0.3325.18
+pkgver=66.0.3334.0
 pkgrel=5
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -111,9 +111,9 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/p2.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/e3.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/pt.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/edgy.patch
-https://raw.githubusercontent.com/bn0785ac/in-night/master/k2.patch
-https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
-https://raw.githubusercontent.com/bn0785ac/in-night/master/k3.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/k2.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/k3.patch
 )
 
 
@@ -366,7 +366,7 @@ patch -Np1 -i ../edgy.patch
 
   patch -Np1 -i ../k2.patch
 
-  patch -Np1 -i ../desu.patch
+  #patch -Np1 -i ../desu.patch
 
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
