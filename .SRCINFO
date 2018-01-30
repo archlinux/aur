@@ -1,7 +1,7 @@
 pkgbase = synfigstudio-git
 	pkgdesc = Professional vector animation program (GUI)
 	pkgver = r8165.bd7d8b2cc
-	pkgrel = 2
+	pkgrel = 4
 	url = http://synfig.org
 	arch = i686
 	arch = x86_64
