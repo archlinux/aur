@@ -2,8 +2,8 @@
 # Contributor: Aliaksandr Stelmachonak <mail.avatar@gmail.com>
 
 pkgname=zoiper
-pkgver=5.2.10
-pkgrel=2
+pkgver=5.2.12
+pkgrel=1
 pkgdesc="A SIP and IAX2 VoIP softphone"
 url="http://www.zoiper.com/"
 arch=("i686" "x86_64")

@@ -1,7 +1,7 @@
 pkgbase = zoiper
 	pkgdesc = A SIP and IAX2 VoIP softphone
-	pkgver = 5.2.10
-	pkgrel = 2
+	pkgver = 5.2.12
+	pkgrel = 1
 	url = http://www.zoiper.com/
 	arch = i686
 	arch = x86_64
