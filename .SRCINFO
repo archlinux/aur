@@ -1,0 +1,30 @@
+pkgbase = ros-kinetic-velocity-controllers
+	pkgdesc = ROS - velocity_controllers.
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_controllers/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-control-msgs
+	makedepends = ros-kinetic-controller-interface
+	makedepends = ros-kinetic-control-toolbox
+	makedepends = ros-kinetic-realtime-tools
+	makedepends = ros-kinetic-angles
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-forward-command-controller
+	makedepends = ros-kinetic-urdf
+	depends = ros-kinetic-control-msgs
+	depends = ros-kinetic-controller-interface
+	depends = ros-kinetic-control-toolbox
+	depends = ros-kinetic-realtime-tools
+	depends = ros-kinetic-angles
+	depends = ros-kinetic-forward-command-controller
+	depends = ros-kinetic-urdf
+	source = velocity_controllers::git+https://github.com/ros-gbp/ros_controllers-release.git#tag=release/kinetic/velocity_controllers/0.13.2-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-velocity-controllers
+
