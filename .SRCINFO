@@ -1,7 +1,7 @@
 pkgbase = inox-edgy
 	pkgdesc = A web browser built for speed, simplicity, and security, always nightly!, its canary
 	pkgver = 66.0.3334.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = inox-edgy.install
 	arch = i686

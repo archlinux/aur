@@ -8,7 +8,7 @@ pkgname=inox-edgy
 pk=enox
 name=chromium
 pkgver=66.0.3334.0
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
 arch=('i686' 'x86_64')
@@ -360,7 +360,7 @@ patch -Np1 -i ../edgy.patch
 patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
 #patch -Np1 -i ../desu.patch
- patch -Np1 -i ../hell.patch
+ #patch -Np1 -i ../hell.patch
 
   # Fix incorrect inclusion of <string_view> in modes other than >= C++17
   
