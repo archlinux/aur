@@ -1,14 +1,14 @@
 pkgbase = lariza
 	pkgdesc = Simple WebKit2GTK+ Browser
-	pkgver = 17.11
+	pkgver = 18.01
 	pkgrel = 1
 	url = https://www.uninformativ.de/projects/lariza/
 	arch = i686
 	arch = x86_64
 	license = custom:PIZZA-WARE
 	depends = webkit2gtk
-	source = lariza-17.11.tar.gz::https://github.com/vain/lariza/archive/v17.11.tar.gz
-	sha512sums = ae683db771be24afdedd9ecef8a234dd028e08cd8e8f610eb7e4174c6f9631424e723b0c59dbc88ab34e29c3b0851441d6a7e3e1b62b988a469f3be48775e5e9
+	source = lariza-18.01.tar.gz::https://github.com/vain/lariza/archive/v18.01.tar.gz
+	sha512sums = d0b059e5eb76b72beb0c41ab8d86a39da1447598db848d8f16ce91e413ca57006abe3b7784a253784c281e112f8c51a09902a3b66def3860fc62233c1cadf811
 
 pkgname = lariza
 
