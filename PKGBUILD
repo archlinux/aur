@@ -2,7 +2,7 @@
 
 _pkgname=podcastparser
 pkgname=python-$_pkgname
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="podcast parser for gpodder"
 arch=('any')
@@ -11,7 +11,7 @@ license=('ISC')
 depends=('python')
 conflicts=('')
 source=(https://github.com/gpodder/podcastparser/archive/$pkgver.tar.gz)
-md5sums=('fbd743f9deb0c02c1fd52161a4d6f66b')
+md5sums=('cb61f980aa7b616da4aa3c419e6083da')
 
 package() {
   cd $srcdir/$_pkgname-$pkgver
