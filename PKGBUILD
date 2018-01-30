@@ -1,14 +1,14 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=blink1
-pkgver=1.95
-pkgrel=2
+pkgver=1.98
+pkgrel=1
 pkgdesc='software for blink(1) USB RGB LED'
 arch=('i686' 'x86_64')
 url='https://github.com/todbot/blink1'
 license=('GPL')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/todbot/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ea3a1d366b290d70ea21624b4c920f768872679f18fff8d2987c9e9d8b7e432a')
+sha256sums=('56cba26c4d22b515f22104eb0bb7ef47accdac50ed43d775ccb81b2294a2ad13')
 
 prepare() {
 	cd ${srcdir}/${pkgname}-${pkgver}/commandline/
