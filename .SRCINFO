@@ -27,6 +27,10 @@ pkgname = psf-unifont
 	pkgdesc = A free bitmap font with wide Unicode support (PSF version, for APL)
 	arch = any
 
+pkgname = hex-unifont
+	pkgdesc = A free bitmap font with wide Unicode support (hex version)
+	arch = any
+
 pkgname = unifont-utils
 	pkgdesc = A free bitmap font with wide Unicode support - utilities
 	arch = i686
