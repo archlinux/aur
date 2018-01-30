@@ -1,7 +1,7 @@
 pkgbase = gpodder3
 	pkgdesc = A podcast receiver/catcher
 	pkgver = 3.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gpodder.org/
 	install = gpodder.install
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = gpodder3
 	conflicts = gpodder
 	conflicts = gpodder2
 	conflicts = gpodder-git
-	source = gpodder-3.10.0.tar.gz::http://github.com/gpodder/gpodder/archive/gpodder-3.10.0
+	source = gpodder-3.10.0.tar.gz::http://github.com/gpodder/gpodder/archive/3.10.0.tar.gz
 	md5sums = 2303a104690a614935f06f5c6d2ab3ef
 	sha1sums = bae623e6465f28d75c75170279ffd4e51d3769c7
 

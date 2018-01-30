@@ -3,7 +3,7 @@
 pkgname=gpodder3
 _pkgname=gpodder
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A podcast receiver/catcher'
 license=('GPL3')
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('libgpod: for ipod support'
             'mutagen: audio tagging'
             'webkit2gtk: HTML show notes'
             'python-html5lib: clickable links')
-source=("${_pkgname}-${pkgver}.tar.gz::http://github.com/${_pkgname}/${_pkgname}/archive/${_pkgname}-${pkgver}")
+source=("${_pkgname}-${pkgver}.tar.gz::http://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz")
 install=gpodder.install
 
 package() {
