@@ -1,7 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mysqltuner
-pkgver=1.7.2
+pkgver=1.7.5
+_commit='073a6244a58ddede3cc824fd8b5ca970390bab10'
 pkgrel=1
 pkgdesc='MySQLTuner - review configuration quickly and make adjustments to increase performance and stability'
 arch=('any')
@@ -9,7 +10,7 @@ url='http://www.mysqltuner.com'
 license=('GPL')
 makedepends=('git' 'markdown')
 depends=('perl')
-source=("mysqltuner::git://github.com/rackerhacker/MySQLTuner-perl.git#tag=${pkgver}")
+source=("mysqltuner::git://github.com/rackerhacker/MySQLTuner-perl.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 build() {
