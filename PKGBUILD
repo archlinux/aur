@@ -6,7 +6,7 @@
 
 pkgbase=iup
 pkgname=('iup' 'lua-iup' 'lua51-iup' 'lua52-iup')
-pkgver=3.23
+pkgver=3.24
 pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ source=(
   "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
 )
 
-md5sums=('7cac2a0b6da0cbecf183142d4a0fcf9d'
-         '7abb85d6fb814ef1c42d90cd82bd4a9b')
+md5sums=('085d133ab88e1d83f8a1b8a21245c5f7'
+         '9c5ace22bbba8ff33a28c0c5ddd73727')
 
 prepare() {
   # Link iupview statically
@@ -69,7 +69,6 @@ build() {
     iupmot \
     iupcd \
     iupcontrols \
-    iupmatrixex \
     iupgl \
     iup_plot \
     iup_mglplot \
@@ -124,7 +123,6 @@ _lua_iup_package_helper() {
     iupluaimglib \
     iupluacontrols \
     iupluaglcontrols \
-    iupluamatrixex \
     iuplua_mglplot \
     iuplua_plot \
     iuplua_scintilla \
