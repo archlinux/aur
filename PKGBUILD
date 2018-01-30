@@ -12,7 +12,7 @@ depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'm17n-lib' 'libxrandr'
 	 'jansson' 'lcms2' 'libmagick6')
 makedepends=('git' 'texlive-core')
 conflicts=('emacs')
-options=('docs' '!emptydirs' '!makeflags')
+options=('docs' '!emptydirs')
 provides=('emacs')
 source=("git://git.savannah.gnu.org/emacs.git")
 sha256sums=('SKIP')
