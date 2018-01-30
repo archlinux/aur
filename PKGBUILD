@@ -4,10 +4,10 @@ pkgdesc="ROS - tf2 is the second generation of the transform library, which lets
 url='http://www.ros.org/wiki/tf2'
 
 pkgname='ros-kinetic-tf2'
-pkgver='0.5.16'
+pkgver='0.5.17'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-tf2-msgs
@@ -33,13 +33,14 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry2-release-release-kinetic-tf2-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b70c705a838c3cdabbb6570691a519028e5674d6fb9322a61a50d55ee9e58e1f')
+sha256sums=('96d727feb495eb40f3273d3bc88b33c9716ec2c87b72bcd8817c1305bc79acfd')
 
 prepare() {
   cd ${srcdir}
-  find . -iname *.cpp \
-	  -exec sed -i "s/logWarn/CONSOLE_BRIDGE_logWarn/g" {} \; \
-	  -exec sed -i "s/logError/CONSOLE_BRIDGE_logError/g" {} \;
+  find . \( -iname *.cpp -o -iname *.h \) \
+	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
+	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
+	  -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \;
 }
 
 build() {
