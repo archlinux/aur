@@ -1,4 +1,4 @@
-# Maintainer: Samuel FORESTIER <archey@samuel.domains>
+# Maintainer: Samuel FORESTIER <contact@samuel.domains>
 
 ############# How to package latest release ? #############
 ## $ git clone https://aur.archlinux.org/archey4.git
@@ -10,7 +10,7 @@
 ###########################################################
 
 pkgname=archey4
-pkgver=v4.3.1
+pkgver=v4.3.2
 pkgrel=1
 pkgdesc="Maintained fork of the original Archey Linux system tool"
 arch=('any')
@@ -21,13 +21,12 @@ optdepends=('dnsutils: `WAN_IP` would be detected 5x faster'
             'net-tools: Quicker local IP addresses detection'
             'pciutils: [graphical env.] GPU would not be detected without it'
             'wmctrl: [graphical env.] `WindowManager` would be more accurate'
-            'virt-what: [virtual env.] `Model` would contain details about the 
-hypervisor')
+            'virt-what: [virtual env.] `Model` would contain details about the hypervisor')
 provides=('archey' 'archey4')
 conflicts=('archey' 'archey-git' 'archey-plus' 'archey2' 'archey3-git' 'pyarchey')
 source=("https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('13d41bb6a99b7ab35f511daf4919cbf4')
-sha256sums=('457dd4d7929cdb01ec1fd3117967cba2307f21417c08680e424db8f525399181')
+md5sums=('5e2e4de0a86d442ef6843d19644c6a57')
+sha256sums=('b27c8ad9c4a4ee7d649699e600e49642eacce4290f7aa5fe51f8ad980cde1def')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver:1}"
@@ -38,4 +37,5 @@ package() {
 	install -D -m644 config.json ${pkgdir}/etc/archey4/config.json
 	install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 	install -D -m644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+	install -D -m644 COPYRIGHT.md ${pkgdir}/usr/share/doc/${pkgname}/COPYRIGHT.md
 }
