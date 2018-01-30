@@ -1,6 +1,6 @@
 # Maintainer: Adrián Laviós <adrian@lavios.eu>
 pkgname=dnscrypt-proxy-go
-pkgver=2.0.0beta11
+pkgver=2.0.0beta12
 pkgrel=1
 pkgdesc="A modern client implementation written in Go of the DNSCrypt v2 protocol."
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('dnscrypt-proxy')
 backup=('etc/dnscrypt-proxy/dnscrypt-proxy.toml' 'etc/dnscrypt-proxy/forwarding-rules.txt' 'etc/dnscrypt-proxy/blacklist.txt')
 source=("https://github.com/jedisct1/dnscrypt-proxy/archive/${pkgver}.tar.gz"
         'dnscrypt-proxy.service')
-sha512sums=('df5d419d592a7b689047dce765f5a7b32b5d5895ad3953ae7ab9cfa4935ffd7e3391d36dfd4e6cbced01fb18c2e633bd2310b59e35ffb2c32be89d7a16115efe'
+sha512sums=('292ee2fd25342d1d7e8b5b1d72242345ab7e38118f7eb96ed04a804140bc54368762c434e85a73a06878bbe92fbca68ac655f7514949979d79b70f01589bfb95'
             '117d4450fceeaf6806ce0311656946ced556ba25fc96a30fe105b1487c4063fc19694c2889979691d9c3037350fedeff4131728f87064483df3ce5c9e0cbd085')
 
 prepare() {
