@@ -2,9 +2,9 @@
 # Contributor: John D Jones III jnbek1972 __AT__ $mailservice_by_google __DOT__ com
 
 _npmname=tldr
-_npmver=3.0.1
+_npmver=3.1.1
 pkgname=nodejs-tldr # All lowercase
-pkgver=3.0.1
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Simplified and community-driven man pages"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('232694cd7df5627035a18a3dd92982e1a8eef64f3879ef290f8668816a8f6aac')
+sha256sums=('f8123229ca6ab215a0bad64954ca44fde2e22cbda202f2cf96a55510eaf6de18')
 
 package() {
   cd "$srcdir"
