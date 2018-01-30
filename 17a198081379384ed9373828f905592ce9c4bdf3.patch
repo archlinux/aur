@@ -1,0 +1,25 @@
+From 17a198081379384ed9373828f905592ce9c4bdf3 Mon Sep 17 00:00:00 2001
+From: Robert Schumacher <roschuma@microsoft.com>
+Date: Wed, 3 Jan 2018 14:09:36 -0800
+Subject: [PATCH] Fix warning due to boost 1.66
+
+---
+ Release/include/pplx/threadpool.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Release/include/pplx/threadpool.h b/Release/include/pplx/threadpool.h
+index c67db358..db1e97c8 100644
+--- a/Release/include/pplx/threadpool.h
++++ b/Release/include/pplx/threadpool.h
+@@ -67,9 +67,10 @@ class threadpool
+     boost::asio::io_service& service() { return m_service; }
+ 
+ protected:
+-    threadpool(size_t num_threads) : m_service(num_threads) {}
++    threadpool(size_t num_threads) : m_service(static_cast<int>(num_threads)) {}
+ 
+     boost::asio::io_service m_service;
+ };
+ 
+ }
++
