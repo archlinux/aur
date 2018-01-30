@@ -1,10 +1,10 @@
-# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
+# Maintainer: Miguel de Val-Borro <miguel.deval [at] gmail [dot] com>
 # Contributor: Matteo Paoluzzi <duwath [at] gmail [dot] com>
 # Contributor: jmf <jmf [at] mesecons [dot] net>
 
 pkgname=xephem
 pkgver=3.7.7
-pkgrel=6
+pkgrel=7
 pkgdesc="The Serious Interactive Astronomical Software Ephemeris"
 arch=('i686' 'x86_64')
 url="http://www.clearskyinstitute.com/xephem/xephem.html"
@@ -15,7 +15,7 @@ makedepends=()
 source=(http://www.clearskyinstitute.com/xephem/$pkgname-$pkgver.tgz
 http://www.clearskyinstitute.com/xephem/contrib/xephem-3.7.7_openssl.patch)
 md5sums=('27c67061a89085bf2b0d4e9deb758a79'
-'9315ccb614b9415d29115a23c314babc')
+'27b747ea7f31270547047117fceaa283')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/GUI/$pkgname
