@@ -1,16 +1,9 @@
 pkgbase = pcf-unifont
-	pkgdesc = Bitmap version of the GNU Unifont
-	pkgver = 10.0.07
-	pkgrel = 1
-	url = http://unifoundry.com/unifont.html
+	pkgdesc = 
+	pkgver = 0
+	pkgrel = 0
 	arch = any
-	license = GPL
-	noextract = unifont-10.0.07.pcf.gz
-	source = http://unifoundry.com/pub/unifont-10.0.07/font-builds/unifont-10.0.07.pcf.gz
-	source = http://unifoundry.com/pub/unifont-10.0.07/font-builds/unifont-10.0.07.pcf.gz.sig
-	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = d7a745f5ca128cabf515743f9d6355aed066dadf113f4a2aa1dd8ffd6194fa19
-	sha256sums = SKIP
+	license = custom
 
-pkgname = pcf-unifont
+pkgname = obsolete-pkgbase-20180130-ii
 
