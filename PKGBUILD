@@ -8,7 +8,7 @@
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
@@ -34,7 +34,7 @@ source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate
         )
-sha256sums=('f27e9891d4f37d265648963e3af9a78d10f143fa92453263bc533cadf4b2d846'
+sha256sums=('7ba9dabc17d68b43fd777c7bb3e4bf6a2296540d4bfe18e18f7fddf386fb2394'
             'bbc2a744fcc65b496549a312a19aba2ee87840ad36a523c2e6bc2a585861bbcd'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
