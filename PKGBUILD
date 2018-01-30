@@ -2,9 +2,9 @@
 
 pkgname="jackmidi2osc-git"
 pkgver=0.2.r2.gedc653c
-pkgrel=2
+pkgrel=3
 epoch=
-pkgdesc="Github version of ulam compiler and MFM simulator"
+pkgdesc="Github version of jackmidi2osc"
 arch=('any')
 url="https://github.com/x42/jackmidi2osc"
 license=('(L)GPL3')
