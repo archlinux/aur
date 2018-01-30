@@ -8,6 +8,8 @@ url="https://github.com/glankk/n64"
 source=("git+https://github.com/glankk/n64.git")
 makedepends=('git' 'lib32-glibc')
 depends=('lib32-jansson' 'lib32-lua' 'lib32-libusb')
+conflicts=('n64-toolchain')
+provides=('n64-toolchain')
 sha512sums=('SKIP')
 options=('!buildflags' '!strip')
 
@@ -33,7 +35,6 @@ build() {
   # Build with 32-bit ABI.
   export PATH=/opt/n64-dev/usr/bin:$PATH
   make CFLAGS="-m32"
-
 }
 
 package() {
