@@ -4,33 +4,33 @@
 
 # Arch 32 is untested and unlikely to work. Patches welcome.
 
-_opt_RPM=1
-# 0 = deb
-# 1 = rpm
+_opt_RPM=1 # Default 1
+# 0 = deb, the deb has hardcoded references to /usr/local/lib
+# 1 = rpm, the RPM has hardcoded references to /usr/local/lib64
+# Not sure which is worse. Neither until someone reports a printer not working, fixed by switching to the other one.
 
 # https://askubuntu.com/questions/314833/diagnosing-the-problem-when-canon-printer-fails-to-print-under-ubuntu
-_opt_altver=3
+# https://www.reddit.com/r/linux4noobs/comments/7tiemc/canon_mf4320_printer_does_not_print_and_cpu_hangs/
+_opt_altver=3 # Default 3 until cnpkmoduleufr2 bug is fixed in version>3.40, then 0
 # 0 all files from latest version only
 # 1-3 to mix in some files from an old version to squash bugs
 #   1 Mix from original tar. These tar are large and Canon makes old versions unavailable in less than 2 years. Noone wants to supply these.
-#   2 same as 1 but generate bsdiff file
-#   3 Mix from bspatch files generated in 2
+#   2 same as 1, also generate bsdiff file
+#   3 Mix from bspatch files generated in 2, no tar needed
 
-_opt_use_other=0
+_opt_use_other=0 # Default 0
 # 0 = use this package complete
-# 1 = exclude files for use with cndrvcups-common-lb
-# 2 = exclude files for use with cndrvcups-lb
-#   Package cndrvcups-lb adds symlinks for /usr/lib32/libColorGearC.so.1.0.0 during install
-#   This causes conflict when switching over. Use --force
+# 1 = install only cndrvcups-lb files for use with cndrvcups-common-lb
+# 2 = install only cndrvcups-common-lb files for use with cndrvcups-lb or cndrvcups-lt
 
-_opt_32bitonly=0
+_opt_32bitonly=0 # Required 0
 # 0 = 64 bit files which have many 32 bit files mixed in
 # 1 = Use all 32 bit files on 64 bit platform.
 #   This doesn't work because 64 bit ghostscript can't load 32-bit .so for -sDEVICE=opvp -sDriver=libcanonc3pl.so
 
 _opt_debug_cnpkmoduleufr2=0
 # 0 = normal
-# 1 = add old lib32-glibc to cnpkmoduleufr2
+# 1 = add old lib32-glibc to cnpkmoduleufr2. This is a hassle to make work because LD_ functions can't work on suid executables. get rid of suid and it just segfaults on old libs.
 # dmesg
 # cnpkmoduleufr2[1531]: segfault at 0 ip 00000000f7607cc3 sp 00000000ff9a34f0 error 4 in libc-2.26.so[f758a000+1c8000]
 
@@ -73,15 +73,44 @@ _opt_debug_pstoufr2cpca=0
 # lib32/libgcc_s.so.1           core/gcc-libs
 
 set -u
+# The conditionals were getting way too complicated. Translate options to simple install flags.
+_inst_common=0
+_inst_lb=0
+_inst_mix=0        # Mixing from any source, alternate tar.gz or bspatch files
+_inst_bsdiff=0     # Need bsdiff and bspatch utilities
+_inst_alternate=0  # Need alternate version of tar.gz
+_inst_patch=0      # Mixing from bspatch files, not tar.gz
+if [ "${_opt_use_other}" -ne 1 ]; then
+  _inst_common=1
+fi
+if [ "${_opt_use_other}" -ne 2 ]; then
+  _inst_lb=1
+  if [ "${_opt_altver}" -ne 0 ]; then
+    _inst_mix=1
+    if [ "${_opt_altver}" -ge 1 ] && [ "${_opt_altver}" -le 2 ]; then
+      _inst_alternate=1
+    fi
+    if [ "${_opt_altver}" -ge 2 ]; then
+      _inst_bsdiff=1
+    fi
+    if [ "${_opt_altver}" -eq 3 ]; then
+      _inst_patch=1
+    fi
+  fi
+fi
+
 pkgname='cndrvcups-lb-bin'
+
 #pkgver='3.00'; _commonver='3.10'; _dl0='0'; _dl1='0100003440'; _dl2='09'; _co='us' # http://gdlp01.c-wss.com/gds/0/0100003440/09/Linux_UFRII_PrinterDriver_V300_us_EN.tar.gz
 #pkgver='3.00'; _commonver='3.10'; _dl0='8'; _dl1='0100002708'; _dl2='12'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/12/Linux_UFRII_PrinterDriver_V300_uk_EN.tar.gz 3d4210670e5844d118c5350643b046e9126726eadca4d0f5d2b9c904133e956d
 #pkgver='3.10'; _commonver='3.40'; _dl0='0'; _dl1='0100003440'; _dl2='10'; _co='us' # http://gdlp01.c-wss.com/gds/0/0100003440/10/Linux_UFRII_PrinterDriver_V310_us_EN.tar.gz
-#pkgver='3.10'; _commonver='3.40'; _dl0='0'; _dl1='0100003440'; _dl2='10'; _co='uk'
+#pkgver='3.10'; _commonver='3.40'; _dl0='0'; _dl1='0100003440'; _dl2='10'; _co='uk' # bbb4d87eec24278246eecd85860f7b2b5f854d035ed8b9a2980ea10b0e995eff
 #pkgver='3.20'; _commonver='3.60'; _dl0='8'; _dl1='0100002708'; _dl2='14'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/14/Linux_UFRII_PrinterDriver_V320_uk_EN.tar.gz b28bc2b460aeddcb7800983d2fad8c29ea6efcc95ad767a78fe6c25d0956f242
 #pkgver='3.30'; _commonver='3.70'; _dl0='8'; _dl1='0100002708'; _dl2='15'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/15/Linux_UFRII_PrinterDriver_V330_uk_EN.tar.gz df669767927a8e17faefe72b4a2c259cd944162b5ed046d44dedbbdb943cf756
 #pkgver='3.31'; _commonver='3.71'; _dl0='8'; _dl1='0100007658'; _dl2='03'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/16/linux-UFRII-drv-v331-uken.tar.gz c1211cbe27034847284541fcc613b86ccfe99418a6a2cbb4589b99ffe1af4645
 pkgver='3.40'; _commonver='3.80'; _dl0='8'; _dl1='0100002708'; _dl2='17'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100002708/17/linux-UFRII-drv-v340-uken.tar.gz fb3701f564f987126a9a3d03a163951f3182d6f7d626530a6767cb1f996fa203
+#pkgver='3.40_02'; _commonver='3.80'; _dl0='0'; _dl1='0100003440'; _dl2='14'; _co='us' # http://gdlp01.c-wss.com/gds/0/0100003440/14/linux-UFRII-drv-v340-02-usen.tar.gz ef5421f98ae428ad8ad11ed5d9fb0e53bdc03b2693e79d590cf778fbe68250b5
+
 _pkgver="${pkgver}"
 pkgrel='2'
 pkgdesc='CUPS Canon UFR II LT driver for imageCLASS D LBP i-SENSYS MF imagePRESS iPR imageRUNNER iR ADVANCE iR-ADV FAX color copiers and printers, does not require PCL/PXL or PS dealer LMS license'
@@ -89,11 +118,9 @@ pkgdesc='CUPS Canon UFR II LT driver for imageCLASS D LBP i-SENSYS MF imagePRESS
 # UFR II but not included: Laser Shot
 arch=('i686' 'x86_64')
 url='http://support-asia.canon-asia.com/contents/ASIA/EN/0100270810.html'
-license=('custom')
-depends=('gcc-libs' 'libglade' 'glib2' 'gtk2' 'libxml2' 'libcups' 'libpng12' 'zlib')
-depends_x86_64=("${depends[@]/#/lib32-}")
-makedepends=('gzip')
-replaces=('canon-ufr')
+license=('GPL' 'MIT' 'custom')
+_depsdual=('glibc' 'gcc-libs') # 'libpng12'
+depends=('bzip2' 'gnutls' 'icu' 'lz4' 'pcre' 'xz' 'avahi' 'gtk2' 'libglade' 'libpng' 'ghostscript' 'cups' 'libcups')
 case "${_opt_use_other}" in
 0)
   conflicts=('cndrvcups-common-lb' 'cndrvcups-lb')
@@ -110,29 +137,42 @@ case "${_opt_use_other}" in
   provides=("cndrvcups-common-lb=${_commonver}")
   ;;
 esac
-if [ "${_opt_altver}" -ge 2 ]; then
+if [ "${_inst_lb}" -ne 0 ]; then
+  _depsdual+=('icu' 'libxml2' 'zlib')
+  optdepends_i686=('libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices')
+  optdepends_x86_64=('lib32-libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices')
+fi
+depends_i686+=("${_depsdual[@]}")
+depends_x86_64+=("${_depsdual[@]/#/lib32-}")
+unset _depsdual
+replaces=('canon-ufr')
+if [ "${_inst_bsdiff}" -ne 0 ]; then
   makedepends+=('bsdiff')
 fi
-options=('!strip')
+options=('!emptydirs' '!strip')
+_pkgverV="${_pkgver//_/-}"
+_pkgverS="${_pkgver%%_*}"
 if [ "$(vercmp "${_pkgver}" '3.30')" -le 0 ]; then
-  _srcdir=("Linux_UFRII_PrinterDriver_V${pkgver//./}_${_co}_EN")
+  _srcdir=("Linux_UFRII_PrinterDriver_V${_pkgverV//./}_${_co}_EN")
 else
-  _srcdir=("linux-UFRII-drv-v${pkgver//./}-${_co}en")
+  _srcdir=("linux-UFRII-drv-v${_pkgverV//./}-${_co}en")
 fi
+unset _pkgverV
 source=("http://gdlp01.c-wss.com/gds/${_dl0}/${_dl1}/${_dl2}/${_srcdir}.tar.gz")
-if [ "${_opt_altver}" -ne 0 ]; then
+unset _dl0 _dl1 _dl2
+if [ "${_inst_mix}" -ne 0 ]; then
   _pkgverA='3.20'
   pkgver="${_pkgver}.r${_pkgverA}"
-  if [ "${_opt_altver}" -ge 1 ] && [ "${_opt_altver}" -le 2 ]; then
+  if [ "${_inst_alternate}" -ne 0 ]; then
     _coA='uk'
     _altversrc="Linux_UFRII_PrinterDriver_V${_pkgverA//./}_${_coA}_EN"
     source+=("file://${_altversrc}.tar.gz")
   fi
+  if [ "${_inst_patch}" -ne 0 ]; then
+    source+=("patch.RPM.cnpkmoduleufr2.${_pkgverS}-${_pkgverA}.bspatch" "patch.Debian.cnpkmoduleufr2.${_pkgverS}-${_pkgverA}.bspatch")
+  fi
 fi
-if [ "${_opt_altver}" -eq 3 ]; then
-  source+=("patch.RPM.cnpkmoduleufr2.${_pkgver}-${_pkgverA}.bspatch" "patch.Debian.cnpkmoduleufr2.${_pkgver}-${_pkgverA}.bspatch")
-fi
-if [ "${_opt_debug_cnpkmoduleufr2}" -ne 0 ]; then
+if [ "${_inst_lb}" -ne 0 ] && [ "${_opt_debug_cnpkmoduleufr2}" -ne 0 ]; then
   source+=(
     #'https://archive.archlinux.org/packages/l/lib32-glibc/lib32-glibc-2.25-1-x86_64.pkg.tar.xz'
     #'https://archive.archlinux.org/packages/l/lib32-glibc/lib32-glibc-2.24-2-x86_64.pkg.tar.xz'
@@ -163,68 +203,81 @@ package() {
     local _p1='_'
     local _p2='_'
   fi
-  local _cncom="cndrvcups-common${_p1}${_commonver}-1${_p2}${_archf[${CARCH}]}"
-  local _cnufr="cndrvcups-ufr2-${_co}${_p1}${_pkgver}-1${_p2}${_archf[${CARCH}]}"
-  local _arpat="patch.${_archrpmf[${_opt_RPM}]}.cnpkmoduleufr2.${_pkgver}-${_pkgverA}.bspatch"
+  if [ "${_inst_common}" -ne 0 ]; then
+    local _cncom="cndrvcups-common${_p1}${_commonver}-1${_p2}${_archf[${CARCH}]}"
+  fi
+  if [ "${_inst_lb}" -ne 0 ]; then
+    local _cnufr="cndrvcups-ufr2-${_co}${_p1}${_pkgverS}-1${_p2}${_archf[${CARCH}]}"
+  fi
+  if [ "${_inst_bsdiff}" -ne 0 ]; then
+    local _arpat="patch.${_archrpmf[${_opt_RPM}]}.cnpkmoduleufr2.${_pkgverS}-${_pkgverA}.bspatch"
+  fi
   if [ "${_opt_RPM}" -ne 0 ]; then
-    if [ "${_opt_use_other}" -ne 1 ]; then
+    if [ "${_inst_common}" -ne 0 ]; then
+      set +u; msg2 "Packaging ${_archrpmf[${_opt_RPM}]} common"; set -u
       bsdtar -xf "${srcdir}/${_srcdir}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cncom}.${_archrpme[${_opt_RPM}]}"
       mv "usr/share/doc/cndrvcups-common-${_commonver}"/*.txt "usr/share/licenses/${pkgname}/"
       rmdir "usr/share/doc/cndrvcups-common-${_commonver}"
     fi
-    if [ "${_opt_use_other}" -ne 2 ]; then
+    if [ "${_inst_lb}" -ne 0 ]; then
+      set +u; msg2 "Packaging ${_archrpmf[${_opt_RPM}]} lb"; set -u
       bsdtar -xf "${srcdir}/${_srcdir}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cnufr}.${_archrpme[${_opt_RPM}]}"
-      mv "usr/share/doc/cndrvcups-ufr2-${_co}-${_pkgver}"/*.txt "usr/share/licenses/${pkgname}/"
+      mv "usr/share/doc/cndrvcups-ufr2-${_co}-${_pkgverS}"/*.txt "usr/share/licenses/${pkgname}/"
+
+      if [ "${_inst_alternate}" -ne 0 ]; then
+        if [ "${_inst_bsdiff}" -ne 0 ] && [ "${_opt_altver}" -eq 2 ]; then
+          mv 'usr/bin/cnpkmoduleufr2'{,.old}
+        fi
+        set +u; msg2 "Mixing from alternate ${_altversrc}"; set -u
+        local _cnufrA="cndrvcups-ufr2-${_coA}${_p1}${_pkgverA}-1${_p2}${_archf[${CARCH}]}"
+        bsdtar -xf "${srcdir}/${_altversrc}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cnufrA}.${_archrpme[${_opt_RPM}]}" 'usr/bin/cnpkmoduleufr2'
+        if [ "${_inst_bsdiff}" -ne 0 ] && [ "${_opt_altver}" -eq 2 ]; then
+          set +u; msg2 "bsdiff to \${startdir}/${_arpat}"; set -u
+          bsdiff 'usr/bin/cnpkmoduleufr2'{.old,} "${startdir}/${_arpat}"
+          rm 'usr/bin/cnpkmoduleufr2.old'
+        fi
+      fi
     fi
+
     cp -dprx 'usr/local/.' 'usr/'
     rm -r 'usr/local'
-
-    if [ "${_opt_altver}" -ge 1 ] && [ "${_opt_altver}" -le 2 ]; then
-      if [ "${_opt_altver}" -eq 2 ]; then
-        mv 'usr/bin/cnpkmoduleufr2'{,.old}
-      fi
-      set +u; msg2 "Using alternate ${_altversrc}"; set -u
-      local _cnufrA="cndrvcups-ufr2-${_coA}${_p1}${_pkgverA}-1${_p2}${_archf[${CARCH}]}"
-      bsdtar -xf "${srcdir}/${_altversrc}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cnufrA}.${_archrpme[${_opt_RPM}]}" 'usr/bin/cnpkmoduleufr2'
-      if [ "${_opt_altver}" -eq 2 ]; then
-        bsdiff 'usr/bin/cnpkmoduleufr2'{.old,} "${startdir}/${_arpat}"
-        rm 'usr/bin/cnpkmoduleufr2.old'
-      fi
-    fi
 
     if [ "${_opt_32bitonly}" -eq 0 ]; then
       mv 'usr/lib' 'usr/lib32'
       mv 'usr/lib64' 'usr/lib'
-      # This 32 bit lib is only searched for in /usr/lib
+      # This 32 bit lib is only searched for in /usr/lib. postinst puts it in both places.
       ln -s '../lib32/libc3pl.so' -t 'usr/lib'
     else
       mkdir 'usr/lib32'
       mv 'usr/lib'/*.so* 'usr/lib'/*.a 'usr/lib32'
     fi
   else
-    if [ "${_opt_use_other}" -ne 1 ]; then
+    if [ "${_inst_common}" -ne 0 ]; then
+      set +u; msg2 "Packaging ${_archrpmf[${_opt_RPM}]} common"; set -u
       bsdtar -xvf "${srcdir}/${_srcdir}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cncom}.${_archrpme[${_opt_RPM}]}"
       bsdtar -xf 'data.tar.gz'
       mv 'usr/share/doc/cndrvcups-common'/*.txt.gz "usr/share/licenses/${pkgname}/"
+      chmod 777 'etc/cngplp'/*/
     fi
-    if [ "${_opt_use_other}" -ne 2 ]; then
+    if [ "${_inst_lb}" -ne 0 ]; then
+      set +u; msg2 "Packaging ${_archrpmf[${_opt_RPM}]} lb"; set -u
       bsdtar -xvf "${srcdir}/${_srcdir}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cnufr}.${_archrpme[${_opt_RPM}]}"
       bsdtar -xf 'data.tar.gz'
       mv "usr/share/doc/cndrvcups-ufr2-${_co}"/*.txt.gz "usr/share/licenses/${pkgname}/"
-    fi
-    chmod 777 'etc/cngplp'/*/
 
-    if [ "${_opt_altver}" -ne 0 ]; then
-      if [ "${_opt_altver}" -eq 2 ]; then
-        mv 'usr/bin/cnpkmoduleufr2'{,.old}
-      fi
-      set +u; msg2 "Using alternate ${_altversrc}"; set -u
-      local _cnufrA="cndrvcups-ufr2-${_coA}${_p1}${_pkgverA}-1${_p2}${_archf[${CARCH}]}"
-      bsdtar -xvf "${srcdir}/${_altversrc}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cnufrA}.${_archrpme[${_opt_RPM}]}"
-      bsdtar -xf 'data.tar.gz' 'usr/bin/cnpkmoduleufr2'
-      if [ "${_opt_altver}" -eq 2 ]; then
-        bsdiff 'usr/bin/cnpkmoduleufr2'{.old,} "${startdir}/${_arpat}"
-        rm 'usr/bin/cnpkmoduleufr2.old'
+      if [ "${_inst_alternate}" -ne 0 ]; then
+        if [ "${_inst_bsdiff}" -ne 0 ] && [ "${_opt_altver}" -eq 2 ]; then
+          mv 'usr/bin/cnpkmoduleufr2'{,.old}
+        fi
+        set +u; msg2 "Mixing from alternate ${_altversrc}"; set -u
+        local _cnufrA="cndrvcups-ufr2-${_coA}${_p1}${_pkgverA}-1${_p2}${_archf[${CARCH}]}"
+        bsdtar -xvf "${srcdir}/${_altversrc}/${_archd[${CARCH}]}/${_archrpmf[${_opt_RPM}]}/${_cnufrA}.${_archrpme[${_opt_RPM}]}"
+        bsdtar -xf 'data.tar.gz' 'usr/bin/cnpkmoduleufr2'
+        if [ "${_inst_bsdiff}" -ne 0 ] && [ "${_opt_altver}" -eq 2 ]; then
+          set +u; msg2 "bsdiff to \${startdir}/${_arpat}"; set -u
+          bsdiff 'usr/bin/cnpkmoduleufr2'{.old,} "${startdir}/${_arpat}"
+          rm 'usr/bin/cnpkmoduleufr2.old'
+        fi
       fi
     fi
     rm 'data.tar.gz' 'control.tar.gz' 'debian-binary'
@@ -244,17 +297,19 @@ package() {
       if [ "${_opt_32bitonly}" -ne 0 ]; then
         mv *.a '../lib32/'
       fi
-      # This 32 bit lib is only searched for in /usr/lib
+      # This 32 bit lib is only searched for in /usr/lib. postinst puts it in both places.
       ln -s '../lib32/libc3pl.so'
       popd > /dev/null
     fi
   fi
 
-  if [ "${_opt_debug_pstoufr2cpca}" -ne 0 ]; then
-    if [ "${_opt_use_other}" -ne 2 ]; then
-      mv 'usr/lib/cups/filter/pstoufr2cpca'{,.arch}
-    fi
-    install -Dm755 <(cat << EOF
+  if [ "${_inst_lb}" -ne 0 ]; then
+    if [ "${_opt_debug_pstoufr2cpca}" -ne 0 ]; then
+      set +u; msg2 "Debug pstoufr2cpca"; set -u
+      if [ "${_opt_use_other}" -ne 2 ]; then
+        mv 'usr/lib/cups/filter/pstoufr2cpca'{,.arch}
+      fi
+      install -Dm755 <(cat << EOF
 #!/bin/bash
 umask 000
 set > "/tmp/pstoufr2cpca.\$\$.env"
@@ -266,10 +321,10 @@ cat > "/tmp/pstoufr2cpca.\$\$.prn"
 <"/tmp/pstoufr2cpca.\$\$.prn" \
 strace -f -o "/tmp/pstoufr2cpca.\$\$.strace" '/usr/lib/cups/filter/pstoufr2cpca.arch' "\$@" 2>"/tmp/pstoufr2cpca.\$\$.debug" | tee "/tmp/pstoufr2cpca.\$\$.ufr"
 EOF
-    ) 'usr/lib/cups/filter/pstoufr2cpca'
-    if [ "${_opt_use_other}" -eq 2 ]; then
-      mv 'usr/lib/cups/filter/pstoufr2cpca'{,.new}
-      install -m744 <(cat << EOF
+      ) 'usr/lib/cups/filter/pstoufr2cpca'
+      if [ "${_opt_use_other}" -eq 2 ]; then
+        mv 'usr/lib/cups/filter/pstoufr2cpca'{,.new}
+        install -m744 <(cat << EOF
 #!/bin/bash
 
 if [ "\$(stat -c '%s' 'pstoufr2cpca')" -ge 5000 ]; then
@@ -278,36 +333,37 @@ fi
 cp '/usr/lib/cups/filter/pstoufr2cpca'{.new,}
 echo 'Filter debugger installed. Watch /tmp for print files.'
 EOF
-      ) 'usr/lib/cups/filter/pstoufr2cpca.inst.sh'
+        ) 'usr/lib/cups/filter/pstoufr2cpca.inst.sh'
+      fi
     fi
-  fi
 
-  if [ "${_opt_debug_cnpkmoduleufr2}" -ne 0 ]; then
-    install -d "${pkgdir}/usr/lib32/${pkgname}/"
-    mv "${srcdir}/usr/lib32"/* "${pkgdir}/usr/lib32/${pkgname}/"
-    mv 'usr/bin/cnpkmoduleufr2'{,.arch}
-    install -Dm755 <(cat << EOF
+    if [ "${_opt_debug_cnpkmoduleufr2}" -ne 0 ]; then
+      set +u; msg2 "Debug cnpkmoduleufr2"; set -u
+      install -d "${pkgdir}/usr/lib32/${pkgname}/"
+      mv "${srcdir}/usr/lib32"/* "${pkgdir}/usr/lib32/${pkgname}/"
+      mv 'usr/bin/cnpkmoduleufr2'{,.arch}
+      install -Dm755 <(cat << EOF
 #!/bin/bash
 # These LD_ don't work because cnpkmoduleufr2 is setuid
 #LD_PRELOAD=/usr/lib32/${pkgname}/libc.so.6
 LD_LIBRARY_PATH=/usr/lib32/{pkgname}/ '/usr/bin/cnpkmoduleufr2.arch' "\$@"
 EOF
-    ) 'usr/bin/cnpkmoduleufr2'
+      ) 'usr/bin/cnpkmoduleufr2'
+    fi
+
+    # The filter works in /usr/bin but it's expected in .../cups/filter/
+    ln -s '/usr/bin/c3pldrv' -t 'usr/lib/cups/filter/'
+
+    if [ "${_inst_patch}" -ne 0 ]; then
+      set +u; msg2 "Patching alternate to ${_pkgverA}"; set -u
+      bspatch 'usr/bin/cnpkmoduleufr2'{,.new} "${srcdir}/${_arpat}"
+      chmod 755 'usr/bin/cnpkmoduleufr2.new'
+      mv 'usr/bin/cnpkmoduleufr2'{.new,}
+    fi
+    # grep -he '^*ModelName:' 'usr/share/cups/model'/*.ppd > "${startdir}/models.${_pkgver}.txt"
+
+    gzip 'usr/share/cups/model'/*.ppd
   fi
-
-  # Let's put the filter where they look first
-  ln -s '/usr/bin/c3pldrv' -t 'usr/lib/cups/filter/'
-
-  if [ "${_opt_altver}" -eq 3 ]; then
-    set +u; msg2 "Patching alternate to ${_pkgverA}"; set -u
-    bspatch 'usr/bin/cnpkmoduleufr2'{,.new} "${srcdir}/${_arpat}"
-    chmod 755 'usr/bin/cnpkmoduleufr2.new'
-    mv 'usr/bin/cnpkmoduleufr2'{.new,}
-  fi
-
-  # grep -he '^*ModelName:' 'usr/share/cups/model'/*.ppd > "${startdir}/models.${_pkgver}.txt"
-
-  gzip 'usr/share/cups/model'/*.ppd
 
   set +u
 }
