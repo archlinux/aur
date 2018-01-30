@@ -30,14 +30,14 @@ post_install() {
   echo "$user" > /usr/lib/aurto/user
   chmod 700 /usr/lib/aurto/user
 
+  install -d /var/cache/pacman/aurto -o "$user"
+  sudo -u "$user" repo-add /var/cache/pacman/aurto/aurto.db.tar 2>/dev/null
+
   echo 'aurto: Adding include /etc/pacman.d/aurto to pacman.conf' >&2
   if ! test -f /etc/pacman.conf.aurto-backup; then
     cp /etc/pacman.conf /etc/pacman.conf.aurto-backup
   fi
   echo -e "# aurto repo\\nInclude = /etc/pacman.d/aurto" >> /etc/pacman.conf
-
-  install -d /var/cache/pacman/aurto -o "$user"
-  sudo -u "$user" repo-add /var/cache/pacman/aurto/aurto.db.tar 2>/dev/null
 
   echo 'aurto: Adding passwordless use of arch-nspawn, mkarchroot, makechrootpkg, aurbuild_chroot' >&2
   if ! test -f /etc/sudoers.aurto-backup; then
@@ -79,12 +79,12 @@ post_remove() {
   echo 'aurto: Removing aurto rules from /etc/sudoers' >&2
   clean_sudoers
 
-  echo 'aurto: Removing /var/cache/pacman/aurto' >&2
-  rm -rf /var/cache/pacman/aurto || true
-
   echo 'aurto: Removing include from pacman.conf' >&2
   sed -i '/^Include = \/etc\/pacman.d\/aurto$/d' /etc/pacman.conf
   sed -i '/^# aurto repo$/d' /etc/pacman.conf
+
+  echo 'aurto: Removing /var/cache/pacman/aurto' >&2
+  rm -rf /var/cache/pacman/aurto || true
 
   rm -rf /usr/lib/aurto/user || true
 }
