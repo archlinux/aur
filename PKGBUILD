@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=libuev
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Lightweight event loop library'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('pkgconfig')
 makedepends=('gcc')
 license=('custom')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('a59044bd59292cdd0bd626df5f8215b6819dd2358420c22cd694a29d8bcdcd56')
+sha256sums=('a40b6207d7533d33c19bbe64d2120f624ec37650e7d5c4e8d1deb41d4b1e6c3e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
