@@ -1,14 +1,14 @@
 # Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname="budgetwarrior"
-pkgver="0.4.2"
+pkgver="1.0"
 pkgrel="1"
 pkgdesc="Simple command line utility to helps keeping track of your expenses and the state of your budget."
 url="https://github.com/wichtounet/budgetwarrior"
 license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('clang')
-depends=('boost' 'util-linux')
+depends=('boost' 'util-linux' 'openssl')
 changelog="ChangeLog"
 source=("git://github.com/wichtounet/budgetwarrior.git#tag=${pgkver}")
 md5sums=('SKIP')
