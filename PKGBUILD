@@ -1,22 +1,40 @@
 pkgname="gnome-shell-extension-laine-git"
 pkgdesc="Gnome extension which allows the control of the volume of individual applications as well as a more in depth control of mpris aware applications from a single applet"
-pkgver=r109.5ba80c0
+pkgver=3.24.r2.g838d89e
 pkgrel=1
 arch=(any)
 url="https://github.com/johnhoran/Laine"
-license=('GPL2')
+license=(GPLv2)
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
 md5sums+=('SKIP')
 provides+=($_gitname)
 conflicts+=($_gitname)
-depends[dconf]=dconf
+
 pkgver() {
   cd ${_gitname:-$pkgname}
   git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
   [ ${PIPESTATUS[0]} -ne 0 ] && \
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+depends[gnomeshell]=gnome-shell
+
+package_20_version() {
+  local compatibles=($(\
+    find -path ./pkg -type d -prune -o \
+    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
+    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
+  depends+=("gnome-shell>=3.${compatibles[0]}")
+  local max="${compatibles[-1]}"
+  if [ "3.$max" != $(
+    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
+
+  ) ]; then
+    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
+  fi
+  unset depends[gnomeshell]
 }
 
 package() {
@@ -46,4 +64,12 @@ fi
 package_10_schemas() {
   msg2 'Installing schemas...'
   find -name '*.xml' -exec install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" '{}' +
+}
+
+depends+=(gnome-shell-extensions)
+
+package_03_unify_conveniencejs() {
+  ln -fs \
+    ../user-theme@gnome-shell-extensions.gcampax.github.com/convenience.js \
+    "$destdir/convenience.js"
 }
