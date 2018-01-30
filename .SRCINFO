@@ -1,20 +1,20 @@
 pkgbase = vcf-validator
-	pkgdesc = Validation suite for Variant Call Format (VCF) files, implemented using C++11
+	pkgdesc = Validation suite for Variant Call Format (VCF) files
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EBIvariation/vcf-validator
 	arch = i686
 	arch = x86_64
-	license = Apache2.0
+	license = Apache
+	makedepends = cmake
+	makedepends = boost
 	depends = libpthread-stubs
-	depends = libodb
 	depends = libodb-sqlite
 	depends = odb
-	depends = sqlite>=3
 	provides = vcf-validator
 	conflicts = vcf-validator
-	source = https://github.com/EBIvariation/vcf-validator/archive/v0.6.tar.gz
-	md5sums = 870899c6ba0ba83b4e0926b54681fce2
+	source = vcf-validator-0.6.tar.gz::https://github.com/EBIvariation/vcf-validator/archive/v0.6.tar.gz
+	sha256sums = 9ae64caea3439feed1f24268d82610f90dac6578169e0d87f82caeb7c349dadc
 
 pkgname = vcf-validator
 
