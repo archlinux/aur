@@ -3,7 +3,7 @@
 pkgbase=python-abjad
 pkgname=(python-abjad python2-abjad)
 pkgver=2.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for formalized music score control."
 arch=("any")
 url="https://github.com/Abjad/abjad"
