@@ -1,0 +1,119 @@
+#!/usr/bin/env ruby
+# This file is part of crypto-cli, https://github.com/elisaado/crypto-cli
+# The prices are provided by Moonstats, an amazing website
+
+require 'faraday'
+require 'json'
+
+currencies = []
+
+# I love long lines
+JSON.parse(Faraday.get('https://www.moonstats.com/cache/json/coins.json').body).sort_by {|currency| currency['name'].downcase}.each { |currency| currencies.push({slug: currency['slug'], name: currency['name']})}
+
+if ARGV[0].to_s.strip.size > 0 && (ARGV[1].to_s.strip.size > 0 || ARGV[0].to_s.downcase == 'list')
+  case ARGV[0].downcase
+  when 'list'
+    currencies.each do |currency|
+      puts "Name: #{currency[:name]}"
+      puts "Slug: #{currency[:slug].upcase}"
+      puts
+    end
+  when 'search'
+    term = ARGV[1].downcase
+    results = currencies.select {|currency| currency[:name].match(/#{term}/i) || currency[:slug].match(/#{term}/i) }
+    
+    if results.size > 0
+      results.each do |currency|
+        puts "Name: #{currency[:name]}"
+        puts "Slug: #{currency[:slug].upcase}"
+        puts
+      end
+    else
+      puts 'No currencies were found using that term...'
+    end
+  when 'vearch'
+    term = ARGV[1].downcase
+    results = currencies.select {|currency| currency[:name].match(/#{term}/i) || currency[:slug].match(/#{term}/i) }
+    
+    if results.size > 0
+      results.each do |currency|
+        puts "Name: #{currency[:name]}"
+        puts "Slug: #{currency[:slug].upcase}"
+        puts
+        puts 'Price:'
+        prices = JSON.parse(Faraday.get("https://www.moonstats.com/cache/json/#{currency[:slug]}/latest.json").body)
+        if ARGV[2].to_s.strip.size > 0
+          price = prices[ARGV[2].strip.downcase]
+          if price.nil?
+            puts 'Unkown currency provided as third argument, using default...'
+            puts "  BTC: Ƀ#{prices['btc']}"
+            puts "  EUR: €#{prices['eur']}"
+            puts "  USD: $#{prices['usd']}"
+          else
+            puts "  #{ARGV[2].upcase}: #{price}#{ARGV[2]}"
+          end
+        else
+          puts "  BTC: Ƀ#{prices['btc']}"
+          puts "  EUR: €#{prices['eur']}"
+          puts "  USD: $#{prices['usd']}"
+        end
+
+        puts
+        puts 'Change:'
+        puts "  #{JSON.parse(Faraday.get("https://www.moonstats.com/cache/json/#{currency[:slug]}/cmc.json").body)[2]}%"
+        puts
+
+        sleep 0.5 if results.size > 1 # Don't wanna get rate-limited or DOS the website
+      end
+    else
+      puts 'No currencies were found using that term...'
+      puts
+    end
+  when 'view'
+    term = ARGV[1].downcase
+    currency = currencies.find {|currency| currency[:name].downcase == term.downcase || currency[:slug].downcase == term}
+
+    if !currency.nil?
+      puts "Name: #{currency[:name]}"
+      puts "Slug: #{currency[:slug].upcase}"
+      puts
+      puts 'Price:'
+      prices = JSON.parse(Faraday.get("https://www.moonstats.com/cache/json/#{currency[:slug]}/latest.json").body)
+      if ARGV[2].to_s.strip.size > 0
+        price = prices[ARGV[2].strip.downcase]
+        if price.nil?
+          puts 'Unkown currency provided as third argument, using default...'
+          puts "  BTC: Ƀ#{prices['btc']}"
+          puts "  EUR: €#{prices['eur']}"
+          puts "  USD: $#{prices['usd']}"
+        else
+          puts "  #{ARGV[2].upcase}: #{price}#{ARGV[2]}"
+        end
+      else
+        puts "  BTC: Ƀ#{prices['btc']}"
+        puts "  EUR: €#{prices['eur']}"
+        puts "  USD: $#{prices['usd']}"
+      end
+
+      puts
+      puts 'Change:'
+      puts "  #{JSON.parse(Faraday.get("https://www.moonstats.com/cache/json/#{currency[:slug]}/cmc.json").body)[2]}%"
+      puts
+    else
+      puts 'Unkown currency provided as second argument...'
+      puts
+    end
+  end 
+  puts 'Everything provided by Moonstats'
+  puts 'Crypto-CLI is made by Eli Saado and contributors'
+else
+  puts 'Usage: crypto-cli [command] [command arguments]'
+  puts '  list -- List all cryptocurrencies this program supports (sorted alphabetically)'
+  puts '  search [term] -- Search through the list mentioned earlier'
+  puts '  vearch [term] [currency to show price in (optional)] -- Search and view the matched cryptocurrencies (BTC, EUR, and USD)'
+  puts '  view [slug or name] [currency to show price in (optional)] -- View cryptocurrency price (BTC, EUR, and USD)'
+  puts
+  puts 'Everything provided by Moonstats'
+  puts 'Crypto-CLI is made by Eli Saado and contributors'
+  exit
+end

@@ -1,0 +1,12 @@
+pkgbase = crypto-cli
+	pkgdesc = View the prices of (many) cryptocurrencies from your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = ruby
+	source = crypto-cli
+	sha256sums = 001078b50c1a64b200b8901691970ec75bc8084f1c8af3a25d657c183f1ca27c
+
+pkgname = crypto-cli
+
