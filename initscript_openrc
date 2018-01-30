@@ -37,7 +37,12 @@ stop() {
       kill -9 "${_pid}" &> /dev/null
     done
   }
-  eend "$?"
+  _running="$(pidof "${_DAEMON}" | tr ' ' '\n' | wc -l)"
+  if [ ${_running} -gt 0 ]; then
+    eerror "Failed to stop or kill all ${_DAEMON} processes."
+    eerror "Remaining processes: ${_running}."
+  fi
+  eend "${_running}"
 }
 
 reload() {

@@ -42,8 +42,22 @@ case "$1" in
   ;;
   stop)
     stat_busy "Stopping ${_pretty_name}"
-    [ ! -z "$PID" ] && kill $PID &> /dev/null || kill -9 $PID &>/dev/null
-    if [ $? -gt 0 ]; then
+    if [ ! -z "${PID}" ]; then
+      kill "${PID}"
+    else
+      _pids="$(pidof "${_DAEMON}")"
+      for _pid in ${_pids}; do
+        kill "${_pid}" &> /dev/null
+      done
+    fi
+    _pids="$(pidof "${_DAEMON}")"
+    for _pid in ${_pids}; do
+      kill -9 "${_pid}" &> /dev/null
+    done
+    _running="$(pidof "${_DAEMON}" | tr ' ' '\n' | wc -l)"
+    if [ ${_running} -gt 0 ]; then
+      echo "Failed to stop or kill all ${_DAEMON} processes."
+      echo "Remaining processes: ${_running}."
       stat_fail
     else
       rm_daemon wwwoffle
