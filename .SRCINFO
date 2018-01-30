@@ -1,0 +1,38 @@
+pkgbase = python-piff-git
+	pkgdesc = Piff is a Python software package for modeling the point-spread function (PSF) across multiple detectors in the full field of view
+	pkgver = v0.1.0.r527.250432f
+	pkgrel = 1
+	url = https://github.com/rmjarvis/Piff
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python
+	makedepends = libffi
+	makedepends = python-cffi
+	makedepends = python-numpy
+	makedepends = python-scipy
+	makedepends = python-pyaml
+	makedepends = python-treecorr-git
+	makedepends = python-fitsio-git
+	makedepends = python-scikit-learn
+	makedepends = python-lmfit
+	makedepends = python-matplotlib
+	makedepends = python2
+	makedepends = python2-cffi
+	makedepends = python2-numpy
+	makedepends = python2-scipy
+	makedepends = python2-pyaml
+	makedepends = python2-treecorr-git
+	makedepends = python2-fitsio-git
+	makedepends = python2-scikit-learn
+	makedepends = python2-lmfit
+	makedepends = python2-matplotlib
+	source = python-piff-git::git+https://github.com/rmjarvis/Piff
+	md5sums = SKIP
+
+pkgname = python-piff-git
+	depends = python
+
+pkgname = python2-piff-git
+	depends = python2
+
