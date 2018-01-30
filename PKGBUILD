@@ -5,7 +5,7 @@
 pkgname=codeforces-parser-git
 pkgver=r48.5287a01
 pkgrel=2
-pkgdesc="Parse sample tests of Codeforces competitions, and generate tests automatically."
+pkgdesc="Parse sample tests of Codeforces Competitions, and generate tests automatically."
 arch=("any")
 url="https://github.com/johnathan79717/${pkgname%-git}"
 license=('MIT')
