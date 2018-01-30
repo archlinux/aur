@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 makedepends=('clang')
 depends=('boost' 'util-linux' 'openssl')
 changelog="ChangeLog"
-source=("git://github.com/wichtounet/budgetwarrior.git#tag=${pgkver}")
+source=("git://github.com/wichtounet/budgetwarrior.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 prepare() {
