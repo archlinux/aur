@@ -29,8 +29,10 @@ build() {
     source /etc/profile.d/jre.sh
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
 
-    [[ "$CARCH" = @(x86_64|aarch64) ]] && _bits=64 || _bits=32
-    ant -Dbits=${_bits} -Dos.arch="$(uname -m)" jar compile-c-unix
+    [[ "$CARCH" = @(x86_64|aarch64) ]] && _bits=64    || _bits=32
+    [[ "$CARCH" = arm*              ]] && _arch=armhf || _arch=x86
+
+    ant -Dbits="$_bits" -Ddist.arch="$_arch" jar compile-c-unix
 }
 
 package() {
