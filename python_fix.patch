@@ -1,0 +1,31 @@
+--- a/pointgrey_camera_driver-release-release-kinetic-pointgrey_camera_driver-0.13.4-0/cmake/download_flycap	2017-10-26 08:41:26.000000000 -0700
++++ b/pointgrey_camera_driver-release-release-kinetic-pointgrey_camera_driver-0.13.4-0/cmake/download_flycap	2018-01-30 00:05:08.371364896 -0800
+@@ -134,14 +134,14 @@
+     os.mkdir(os.path.join(include_path, flycap_folder))
+ 
+     for files in include_files:
+-	if files.endswith(".h"):
+-            shutil.move(os.path.join(include_path, files), os.path.join(include_path, flycap_folder))
++        if files.endswith(".h"):
++            shutil.move(os.path.join(include_path, files), os.path.join(include_path, flycap_folder))
+ 
+     shutil.copyfile(shared_library, library_dest)
+ else:
+     for deb in debs:
+         logging.info("Extracting: %s", deb)
+-    	subprocess.check_call(['dpkg', '--extract', deb, '.'])
++        subprocess.check_call(['dpkg', '--extract', deb, '.'])
+ 
+     logging.info("Copying shared library.")
+     shutil.copyfile(shared_library, library_dest)
+--- a/pointgrey_camera_driver-release-release-kinetic-pointgrey_camera_driver-0.13.4-0/cmake/DownloadFlyCap.cmake	2017-10-26 08:41:26.000000000 -0700
++++ b/pointgrey_camera_driver-release-release-kinetic-pointgrey_camera_driver-0.13.4-0/cmake/DownloadFlyCap.cmake	2018-01-30 00:16:00.735068299 -0800
+@@ -15,7 +15,7 @@
+   set(DOWNLOAD_SCRIPT "${PROJECT_SOURCE_DIR}/cmake/download_flycap")
+ 
+   execute_process(
+-    COMMAND /usr/bin/env python ${DOWNLOAD_SCRIPT} ${POINTGREY_ARCH} ${POINTGREY_LIB} ${OS_CODE_NAME}
++    COMMAND /usr/bin/env python2 ${DOWNLOAD_SCRIPT} ${POINTGREY_ARCH} ${POINTGREY_LIB} ${OS_CODE_NAME}
+     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+ 
+   set(${POINTGREY_LIB_VAR} ${POINTGREY_LIB} PARENT_SCOPE)

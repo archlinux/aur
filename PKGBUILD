@@ -23,9 +23,9 @@ ros_makedepends=(ros-kinetic-nodelet
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   curl
-  dpkg
-  libusb-1.0-dev
-  libraw1394-dev)
+  libusb
+  libraw1394
+  dpkg)
 
 ros_depends=(ros-kinetic-image-transport
   ros-kinetic-nodelet
@@ -39,8 +39,8 @@ ros_depends=(ros-kinetic-image-transport
   ros-kinetic-image-exposure-msgs
   ros-kinetic-stereo-image-proc)
 depends=(${ros_depends[@]}
-  libusb-1.0-dev
-  libraw1394-dev)
+  libusb
+  libraw1394)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/pointgrey_camera_driver/${pkgver}-${_pkgver_patch}
@@ -50,8 +50,15 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="pointgrey_camera_driver-release-release-kinetic-pointgrey_camera_driver-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-drivers-gbp/pointgrey_camera_driver-release/archive/release/kinetic/pointgrey_camera_driver/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5071819dbbc690a77113595dba44f1d6ba7baef7cd7ec55c4f120b11ed20e086')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-drivers-gbp/pointgrey_camera_driver-release/archive/release/kinetic/pointgrey_camera_driver/${pkgver}-${_pkgver_patch}.tar.gz"
+		python_fix.patch)
+sha256sums=('5071819dbbc690a77113595dba44f1d6ba7baef7cd7ec55c4f120b11ed20e086'
+            '64641306a635a6201f2f52546ca1a14fbf7b254d66784d3919c79a35731614d0')
+
+prepare() {
+  cd ${srcdir}
+  patch -p1 -i python_fix.patch
+}
 
 build() {
   # Use ROS environment variables
