@@ -1,7 +1,7 @@
 # Maintainer: Ben Morgan <neembi@gmail.com>
 # vim: set ts=2 sw=2:
 pkgname=repoctl
-pkgver=0.16
+pkgver=0.17
 pkgrel=1
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64' 'armv7h')
@@ -24,8 +24,6 @@ build() {
   src="$srcdir/src/github.com/cassava/repoctl"
   cd "$src/cmd/repoctl"
   GOPATH="$srcdir" go build
-  cd "$src/cmd/repols"
-  GOPATH="$srcdir" go build
 }
 
 package() {
@@ -34,7 +32,6 @@ package() {
   # Install repoctl program
   install -d "$pkgdir/usr/bin"
   install -m755 cmd/repoctl/repoctl "$pkgdir/usr/bin/"
-  install -m755 cmd/repols/repols "$pkgdir/usr/bin/"
 
   # Install other documentation
   install -d "$pkgdir/usr/share/doc/repoctl"
@@ -42,6 +39,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/repoctl/LICENSE"
 
   # Install completion files
-  install -Dm644 contrib/zsh_completion "$pkgdir/usr/share/zsh/site-functions/_repoctl"
+  install -Dm644 contrib/repoctl_completion.zsh "$pkgdir/usr/share/zsh/site-functions/_repoctl"
+  install -Dm644 contrib/repoctl_completion.bash "$pkgdir/usr/share/bash-completion/completions/repoctl"
 }
-md5sums=('ad08ce91da8dec8ef48f3cf6777d7c25')
+md5sums=('9c7d2a8c717fdc712ed5f099132b9473')
