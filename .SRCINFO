@@ -1,7 +1,7 @@
 pkgbase = g2
 	pkgdesc = 2D graphics library; can be used with C, C++, Fortran to generate flow charts.
 	pkgver = 0.72
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/g2/?source=directory
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = g2
 	depends = gcc
 	depends = libpng
 	depends = libjpeg
-	source = http://downloads.sourceforge.net/sourceforge/g2/g2-0.72.tar.gz
+	source = g2-0.72.tar.gz::https://github.com/danielrmeyer/g2/archive/0.72.tar.gz
 	source = g2-0.72.patch
-	md5sums = 4b2dc9252c1c785dcb0e0a84d7ba7119
-	md5sums = 0da69af435b52809f43e1fdf5610daa4
+	sha256sums = 22e1f1caf1335f260355092a4fb79adcf01d49454de970f7574cc042ede41f91
+	sha256sums = f4857ac3507c362e19608a23e705ad576fd64aa71bb31c87b58f999653f23e72
 
 pkgname = g2
 
