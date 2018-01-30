@@ -1,0 +1,19 @@
+pkgbase = termshot
+	pkgdesc = Turns a cli command's output into a screenshot including colors and interactive text
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/pierrekilly/shell-utils
+	arch = any
+	groups = pk-shell-utils
+	license = MIT
+	depends = phantomjs
+	depends = imagemagick
+	depends = ptyget
+	depends = aha
+	source = https://raw.githubusercontent.com/pierrekilly/shell-utils/v1.0/termshot/termshot
+	source = https://raw.githubusercontent.com/pierrekilly/shell-utils/v1.0/LICENSE
+	sha512sums = 932850afee383da0b5dfcf247ec97d2d00f5b80e2f6ef4dca4a4cf5b89590b3d577e63826833f4b83129343ca9f532c27e887a753788abbb547613a57e3546b9
+	sha512sums = d5b15c6b6ecc1e496b487ce982ff767c2c1ca0dba73e2f64e5bfff4873332ac99efbe34f0bebac676de8a300fdef7b2029e6ea6e66671b9d31ad28a3c37baaf0
+
+pkgname = termshot
+
