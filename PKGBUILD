@@ -8,7 +8,7 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
 pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -16,7 +16,7 @@ _headlessdeps=(seabios gnutls libpng libaio numactl jemalloc xfsprogs libnfs
                lzo snappy curl vde2 libcap-ng spice libcacard usbredir)
 depends=(virglrenderer sdl2 vte3 libpulse "${_headlessdeps[@]}")
 makedepends=(spice-protocol python2 ceph libiscsi glusterfs)
-source=("$url/download/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
+source=("$url/download/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         qemu-ga.service
         65-kvm.rules
         allow_elf64.patch
@@ -24,7 +24,7 @@ source=("$url/download/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
         audio-improvements.patch
         v2_qemu_zen_smt_cache.patch
         v4_ivshmem.patch)
-sha256sums=('c4f034c7665a84a1c3be72c8da37f3c31ec063475699df062ab646d8b2e17fcb'
+sha256sums=('c9d34a79024eae080ce3853aa9afe503824520eefb440190383003081ce7f437'
             'SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
