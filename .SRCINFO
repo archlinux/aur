@@ -1,15 +1,15 @@
 pkgbase = phyml-mpi
 	pkgdesc = Builds phylogenies from DNA or protein sequences using a maximum likelihood approach, using multiple proccessors
 	pkgver = 3.3.20180129
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/stephaneguindon/phyml
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = openmpi
-	source = https://github.com/stephaneguindon/phyml/archive/v3.3.20180129.tar.gz
-	sha256sums = 2cf298369219778f14bba3a6b38b76931bc24bf68bca559e5dc11eba1a715d0c
+	source = https://github.com/stephaneguindon/phyml/archive/3.3.20180129.tar.gz
+	sha256sums = 9fe2158ca6dfdd08269b3890d6f5e35d4cbaef2f7c9be9ed3bd3af8209f4862b
 
 pkgname = phyml-mpi
 
