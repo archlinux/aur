@@ -1,0 +1,15 @@
+pkgbase = crusta
+	pkgdesc = Blazingly fast full feature web browser with unique features
+	pkgver = 1.4.3.1
+	pkgrel = 1
+	url = http://crustabrowser.com/
+	arch = x86_64
+	license = GPL3
+	depends = qt5-speech
+	depends = qt5-svg
+	depends = qt5-webengine
+	source = crusta-1.4.3.1.tar.gz::https://github.com/CrustaBrowser/CrustaBrowser/archive/1.4.3.1.tar.gz
+	sha256sums = 5181bc8f3677fa31ebf312744577f679e385ad60e88069eed6f45fe774e1f548
+
+pkgname = crusta
+
