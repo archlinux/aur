@@ -5,14 +5,14 @@
 
 pkgname=jpilot
 pkgver=1.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop organizer application for the Palm Pilot"
 arch=('i686' 'x86_64')
 url="http://www.jpilot.org/"
 license=('GPL2')
 depends=('openssl' 'gtk2' 'pilot-link')
 makedepends=('intltool')
-source=(http://jpilot.org/$pkgname-$pkgver.tar.gz)
+source=(http://jpilot.org/tarballs/$pkgname-$pkgver.tar.gz)
 sha256sums=('2c28ed7acea27ae3d541036f2e2ca5ed7e0121badf477e3cfa5ec8d282337e23')
 
 prepare() {
