@@ -2,7 +2,7 @@
 # Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 pkgname=acmetool
-pkgver=0.0.61
+pkgver=0.0.63
 pkgrel=1
 pkgdesc="An easy-to-use command line tool for automatically acquiring certificates from ACME servers (such as Let's Encrypt)"
 arch=(i686 x86_64 armv7h)
@@ -18,7 +18,7 @@ source=(acmetool-$pkgver.tar.gz::https://github.com/hlandau/acme/archive/v$pkgve
         acmetool.tmpfile
         )
 
-sha256sums=('af6742fc4f5cf69c25994f3654c53718640271fa4cd2738e831617cb2a42e32e'
+sha256sums=('3036240a2435db25588c4c98d377c737a9d876195220abd5e047c916b2159dd1'
             'fd80a26fbb3f644af1fa994134446702932968519797227e07a1368dea80f0bc'
             'de9d31c97000445e3da4dccca404efa9c23203d5fe345befdd9926bcdb6b36e3'
             '82cd724853507a6d96f7a432aa44c457e76f4d6c0f1ad35142287b7c383d5c0b'
