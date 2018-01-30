@@ -4,10 +4,11 @@
 # Contributor: Roman Kyrylych <roman@archlinux.org>
 # Contributor: Michal Kaliszka <desmont@gmail.com>
 # Contributor: Zsolt Varadi <sysop_xxl@fibermail.hu>
+# Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 
 pkgname=tea
 pkgver=44.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt-based text editor for Linux and *BSD. With an ultimate small size TEA provides you hundreds of functions."
 arch=('x86_64')
 url="http://semiletov.org/tea/"
