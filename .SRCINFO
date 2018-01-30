@@ -1,0 +1,23 @@
+pkgbase = fgit-git
+	pkgdesc = Folder Git
+	pkgver = r86.44b62b2
+	pkgrel = 1
+	url = https://github.com/l0b0/fgit
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = bash
+	depends = git
+	depends = ncurses
+	provides = fgit
+	conflicts = fgit
+	source = git+https://github.com/l0b0/fgit.git
+	source = git+https://github.com/l0b0/make-includes.git
+	source = git+https://github.com/l0b0/shell-includes.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = fgit-git
+

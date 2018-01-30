@@ -1,0 +1,41 @@
+# Maintainer: Victor Engmark <victor.engmark@gmail.com>
+pkgname=fgit-git
+pkgver=r87.342b35d
+pkgrel=1
+pkgdesc="Folder Git"
+arch=('any')
+url='https://github.com/l0b0/fgit'
+license=('GPL3')
+depends=('bash' 'git' 'ncurses')
+makedepends=('git' 'make')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(
+    'git+https://github.com/l0b0/fgit.git'
+    'git+https://github.com/l0b0/make-includes.git'
+    'git+https://github.com/l0b0/shell-includes.git'
+)
+md5sums=('SKIP' 'SKIP' 'SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    git submodule init
+    git config submodule.mysubmodule.url $srcdir/make-includes
+    git config submodule.mysubmodule.url $srcdir/shell-includes
+    git submodule update
+}
+
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	make test
+}
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+	make PREFIX="${pkgdir}/usr" DESTDIR="/usr" install
+}

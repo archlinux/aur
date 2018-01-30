@@ -1,0 +1,7 @@
+fgit/
+*.pkg.tar.xz
+.idea/
+make-includes/
+pkg/
+shell-includes/
+src/
