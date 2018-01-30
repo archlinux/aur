@@ -7,7 +7,7 @@ pkgrel=1
 arch=('any')
 license=('GPL2+')
 url='https://packages.debian.org/sid/bdf2psf'
-source=("http://ftp.debian.org/debian/pool/main/c/console-setup/bdf2psf_${pkgver}_all.deb")
+source=("http://deb.debian.org/debian/pool/main/c/console-setup/bdf2psf_${pkgver}_all.deb")
 md5sums=('cb2d4448ad9ef18c73b73ec17335d3da')
 depends=('perl')
 
