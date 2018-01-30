@@ -1,0 +1,16 @@
+--- a/src/extension/dbus/document-interface.cpp	2018-01-30 
+13:25:37.223212133 -0400
++++ b/src/extension/dbus/document-interface.cpp.new	2018-01-30 
+13:32:50.061211325 -0400
+@@ -39,8 +39,8 @@
+ #include "print.h" //IO
+ #include "selection-chemistry.h"// lots of selection functions
+ #include "selection.h" //selection struct
+-#include "sp-ellipse.h"
+-#include "sp-object.h"
+-#include "sp-root.h"
++#include "object/sp-ellipse.h"
++#include "object/sp-object.h"
++#include "object/sp-root.h"
+ #include "style.h" //style_write
+ #include "util/units.h"
