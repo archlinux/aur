@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-092-git
-pkgver=20180112.18198
+pkgver=20180129.18207
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, from git branch 0.92.x"
 url="https://gitlab.com/inkscape/inkscape"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('gtkspell' 'gtkmm' 'gc' 'poppler-glib' 'potrace' 'libxslt' 'gsl' 'libmagick6'
+depends=('gtkspell' 'gtkmm' 'gc' 'poppler-glib' 'potrace' 'libxslt' 'gsl'
 	 'python2' 'popt' 'libcdr' 'libvisio' 'popt' 'dbus-glib' 'gtkspell')
 optdepends=('python2-numpy: some extensions'
             'python2-lxml: some extensions and filters'
