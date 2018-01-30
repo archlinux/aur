@@ -1,41 +1,35 @@
-# Maintainer:
+# $Id$
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Thomas Dziedzic <gostrc@gmail.com>
 # Contributor: J. W. Birdsong <jwbirdsong@gmail.com>
 
 pkgname=luakit
-pkgver=2016.08.30
-pkgrel=3
+pkgver=2017.08.10
+pkgrel=1
 pkgdesc='Browser framework based on Webkit and Lua'
-arch=('x86_64' 'i686' 'armv7h')
-url='https://github.com/luakit/luakit'
+arch=('x86_64')
+url='https://luakit.github.io/'
 license=('GPL3')
-makedepends=('help2man' 'git')
-depends=('webkitgtk2' 'lua51-filesystem' 'libunique' 'luajit')
-backup=('etc/xdg/luakit/binds.lua'
-        'etc/xdg/luakit/globals.lua'
-        'etc/xdg/luakit/modes.lua'
+depends=('webkit2gtk' 'lua51-filesystem' 'luajit')
+makedepends=('help2man')
+backup=('etc/xdg/luakit/globals.lua'
         'etc/xdg/luakit/rc.lua'
         'etc/xdg/luakit/theme.lua'
         'etc/xdg/luakit/webview.lua'
+        'etc/xdg/luakit/webview_wm.lua'
         'etc/xdg/luakit/window.lua')
-options=('!makeflags')
-source=("git://github.com/luakit/luakit.git#commit=cd8487a")
-md5sums=('SKIP')
-
-prepare() {
-  sed -i '1s,lua,luajit,' luakit/build-utils/gentokens.lua
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/luakit/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('23d98b6b51b66c85b6823cd287e161e1093b80639f06f1da9b0a7290b0859d37')
 
 build() {
-  make -C luakit USE_LUAJIT=1 PREFIX=/usr all
+  cd $pkgname-$pkgver
+  make USE_LUAJIT=1 DEVELOPMENT_PATHS=0 PREFIX=/usr all
 }
 
 package() {
-  make -C luakit PREFIX=/usr DESTDIR="$pkgdir" install
-  chmod -x "$pkgdir/usr/share/pixmaps/luakit.png"
-  chmod -x "$pkgdir/usr/share/applications/luakit.desktop"
+  cd $pkgname-$pkgver
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
