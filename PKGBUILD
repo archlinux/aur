@@ -2,13 +2,13 @@
 
 _gemname=locale
 pkgname=ruby-$_gemname
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Ruby-Locale is the pure ruby library which provides basic APIs for localization.'
 arch=(any)
 url='https://github.com/ruby-gettext/locale'
 license=(Ruby LGPLv3+)
-depends=(ruby)
+depends=(ruby ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
