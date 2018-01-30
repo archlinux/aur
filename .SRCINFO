@@ -1,12 +1,12 @@
 pkgbase = photon
 	pkgdesc = A command-line client utility, written in Haskell, similar to curl that also integrates API-Auth authentication for RESTable API endpoints.
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/mattmoore/photon
 	arch = x86_64
 	license = MIT
-	source = https://github.com/mattmoore/photon/releases/download/0.1.10/photon_0.1.10-1_linux_x86_64.tar.xz
-	sha256sums = 8c0a1fb6f4182698dc6bd836d98e20225e2c00128f81829e8b4e01b2957f6368
+	source = https://github.com/mattmoore/photon/releases/download/0.1.11/photon_0.1.11-1_linux_x86_64.tar.xz
+	sha256sums = d6f49d2df9da7e760522cae0c235ef90151c35dd0c9c0bb3651bf2a9f46b5a76
 
 pkgname = photon
 
