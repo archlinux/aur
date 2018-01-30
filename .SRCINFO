@@ -1,6 +1,6 @@
 pkgbase = emacs-lucid-git
 	pkgdesc = GNU Emacs. Official git master.
-	pkgver = 27.0.50.r131803
+	pkgver = 27.0.50.r131970
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
@@ -28,9 +28,7 @@ pkgbase = emacs-lucid-git
 	options = !emptydirs
 	options = !makeflags
 	source = git://git.savannah.gnu.org/emacs.git
-	source = check_IM6.patch
 	sha256sums = SKIP
-	sha256sums = 19f6e3e50ab63296d5b021184fe5ddea35ed4332d2f48c2b616a393d9744d56e
 
 pkgname = emacs-lucid-git
 
