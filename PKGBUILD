@@ -3,7 +3,7 @@
 pkgname=mitmf-git
 pkgdesc="Framework for Man-In-The-Middle attacks."
 pkgver=r452.ba0989b
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/byt3bl33d3r/MITMf"
 license=('GNU')
@@ -13,7 +13,7 @@ depends=('python2' 'libnetfilter_queue' 'libpcap' 'libjpeg-turbo' 'capstone' 'py
 source=("${pkgname}::git+https://github.com/byt3bl33d3r/MITMf"
 	"chdir.patch")
 sha256sums=('SKIP'
-            '80faecdc720878b6633f0af025d4097cdb6637a6d0c8ae29e51522a6721af650')
+            '1f09d4e2dbfa0456f8a3c09889e4ecfa8d0f3e54c47e7a726363561c7e356d96')
 options=(!strip)
 
 pkgver() {
