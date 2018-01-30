@@ -2,7 +2,7 @@
 
 _pkgname=indy-node
 pkgname=hyperledger-${_pkgname}
-pkgver=1.2.287
+pkgver=1.2.289
 pkgrel=1
 pkgdesc="A self-sovereign identity ecosystem on top of a distributed ledger. It is the core project for Indy"
 arch=(i686 x86_64)
@@ -17,10 +17,12 @@ source=("https://github.com/hyperledger/${_pkgname}/archive/$pkgver-master.tar.g
 	indy-node.service  
 	init_indy_node  
 	node_control.conf
+	patch
 )
 
 package() {
   cd $srcdir/${_pkgname}-$pkgver-master
+  patch -Np1 -i ../patch
   python setup.py install -O1 --root="$pkgdir"
 
 # dirs to be created
@@ -58,9 +60,10 @@ cp ../node_control.conf $pkgdir/etc/indy/
   cp ../indy-node.conf $pkgdir/usr/lib/sysusers.d
 }
 
-md5sums=('7bc7a5e9b2a4d823eca95c999fbf56f0'
+md5sums=('d4dae2a46cfed11d3a1279eed64c01a8'
          '800c812d8a6bfb1cbc9a2361413746db'
          '02486863bad2eab23a40510a3d6f0747'
          '6d0ef3bcbfe3dead0a875768f8d133eb'
          '1882142ad925365e0aa4ce269ce6b7ed'
-         'ae156c4380f773d48f51650932d2b518')
+         'ae156c4380f773d48f51650932d2b518'
+         '0d28567fd81dabdf178a2f8bc7c6dfc8')
