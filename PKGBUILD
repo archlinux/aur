@@ -69,7 +69,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.14.15
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -83,7 +83,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.14"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
-_bfq_mq_ver='20180113-v2'
+_bfq_mq_ver='20180130'
 _bfq_mq_patch="4.14-bfq-sq-mq-git-${_bfq_mq_ver}.patch"
 source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -140,7 +140,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
-            '70a9d2e9277e064bf54b2839b6fc35bfd5a98848e35c43da0ef4bc8d9fe88ff3'
+            'adee2d85010ee82aea734f1bbebb128e8dcfdaf3ff842de761a40b23f9533b53'
             '3e4cdb014a55ed0aeb8512b784c518f6beda0196bac03419b3c87de44267cd79'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'ed4dec610bb99928c761dee5891b9f79770f0265678c232b0d4c1879beb73e94'
@@ -195,9 +195,8 @@ prepare() {
         msg "Fix naming schema in BFQ-SQ-MQ patch"
         sed -i -e "s|PATCHLEVEL = 15|PATCHLEVEL = 14|g" \
             -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
-            -i -e "s|EXTRAVERSION = -rc7|EXTRAVERSION =|g" \
-            -i -e "s|EXTRAVERSION = -bfq-rc7|EXTRAVERSION =|g" \
-            -i -e "s|EXTRAVERSION = -bfq-mq-rc7|EXTRAVERSION =|g" \
+            -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
+            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" \
             -i -e "s|NAME = Fearless Coyote|NAME = Petit Gorille|g" ../${_bfq_mq_patch}
         msg "Patching source with BFQ-SQ-MQ patches"
         patch -Np1 -i ../${_bfq_mq_patch}
