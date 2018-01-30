@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=teamviewer-quicksupport-beta
-pkgver=11.0.52520
+pkgver=11.0.90184
 _pkgver_major=${pkgver%%.*}
 pkgrel=1
 pkgdesc='Teamviewer Quicksupport - All-In-One Software for Remote Support and Online Meetings - beta version'
@@ -10,27 +10,35 @@ url='http://www.teamviewer.com/'
 depends=('bash')
 options=('!strip')
 depends_x86_64=(
+	'lib32-alsa-lib'
 	'lib32-fontconfig'
 	'lib32-libpng12'
 	'lib32-libsm'
+	'lib32-libxdamage'
 	'lib32-libxinerama'
-	'lib32-libxrender')
+	'lib32-libxrandr'
+	'lib32-libxrender'
+	'lib32-libxtst')
 depends_i686=(
+	'alsa-lib'
 	'fontconfig'
 	'libpng12'
 	'libsm'
+	'libxdamage'
 	'libxinerama'
-	'libxrender')
+	'libxrandr'
+	'libxrender'
+	'libxtst')
 conflicts=('teamviewer' 'teamviewer-quicksupport')
 provides=('teamviewer-quicksupport')
 license=('custom')
 source=("teamviewer_qs-${pkgver}.tar.gz::http://download.teamviewer.com/download/version_${_pkgver_major}x/teamviewer_qs.tar.gz")
-sha256sums=('0f6b9ee146fcb64dd953d3dd82320d6574050105eec8923e3296ae28b10a27f1')
+sha256sums=('b04ab46adec3771ba0a67c9a6d379bc752b4cfefaf9e7211a02f4d5b98589a4e')
 
 prepare() {
 	cd teamviewerqs/
 
-	if ! grep -q "^TV_VERSION=\"${pkgver}\"\$" tv_bin/script/tvw_config; then
+	if ! grep -q "^TV_VERSION=\"${pkgver/\~/ }\"\$" tv_bin/script/tvw_config; then
 		msg "Version does not match!"
 		exit 1
 	fi
