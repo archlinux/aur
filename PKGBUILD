@@ -2,12 +2,12 @@
 
 pkgname=elfio
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ELFIO is a small, header-only C++ library that provides a simple interface for reading and generating files in ELF binary format"
 arch=('i686' 'x86_64')
 url="http://elfio.sourceforge.net/"
 license=('MIT License')
-depends=('glibc')
+depends=('gcc-libs')
 makedepends=()
 options=('strip')
 source=("http://sourceforge.net/projects/elfio/files/ELFIO-sources/ELFIO-$pkgver/$pkgname-$pkgver.tar.gz")
