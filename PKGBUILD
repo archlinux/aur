@@ -1,5 +1,7 @@
 # Maintainer: Joaquin Garmendia <joaquingc123 at gmail dot com>
 
+# All my PKGBUILDs can be found in https://www.github.com/joaquingx/PKGBUILDs
+
 pkgname=python-binarytree
 pkgver=3.0.1
 pkgrel=1
