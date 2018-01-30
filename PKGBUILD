@@ -1,29 +1,21 @@
+# Maintainer: Michael Armbruster <michael at armbrust dot me>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 _pkgbase=libbluray
 pkgname=lib32-${_pkgbase}
-pkgver=0.9.2
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback (32 bit)"
 arch=('x86_64')
 url="http://www.videolan.org/developers/libbluray.html"
 license=('LGPL2.1')
-#depends=("$_pkgbase" 'lib32-fontconfig' 'lib32-glibc' 'libfreetype.so' 'lib32-libxml2' 'lib32-freetype2')
-depends=("$_pkgbase" 'lib32-fontconfig' 'lib32-glibc' 'lib32-freetype2' 'lib32-libxml2' 'lib32-freetype2')
-makedepends=('gcc-multilib' 'apache-ant' 'java-environment')
-optdepends=('java-environment: BD-J library')
+depends=("$_pkgbase" 'lib32-fontconfig' 'lib32-glibc' 'lib32-freetype2' 'lib32-libxml2')
+makedepends=('gcc-multilib' 'apache-ant' 'java-environment=8')
+optdepends=('java-runtime=8: BD-J library')
 provides=('libbluray.so')
-source=("ftp://ftp.videolan.org/pub/videolan/$_pkgbase/$pkgver/$_pkgbase-$pkgver.tar.bz2"
-'libbluray-jdk8.patch')
-sha512sums=('f7fda2ef4c0ec70eb9a38aed0e76d21d8784410cb13713e7ee66ecd23a1cc58325977b046d40c526554a4a4e4cf96706a233e15451bf34892aff201b47e25aef'
-            'a984861ad5073bfdafd9980bd5b37146de4896dad6672dfc8f1c5b49bc0a73a5a1f86fbe5fc40aa29848678cafe71e13d2834956e03b92af5dcde33b36b787e7')
-
-prepare() {
-  cd $_pkgbase-$pkgver
-
-  patch -Np1 -i ../libbluray-jdk8.patch
-}
+source=("ftp://ftp.videolan.org/pub/videolan/$_pkgbase/$pkgver/$_pkgbase-$pkgver.tar.bz2")
+sha512sums=('e1360ad08aa6cc67a80efa81a09004faebbe31105f1961494f82f655e3e7378b198ee3bc534b0d0c2bfec726939b11b545cc8bbfa30794fc647432dadf71089b')
 
 build() {
   export CC='gcc -m32'
