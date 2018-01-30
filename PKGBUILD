@@ -3,7 +3,7 @@
 
 _pkgname=privacybadger
 pkgname=firefox-extension-${_pkgname}
-pkgver=2017.11.20
+pkgver=2018.1.22
 pkgrel=1
 pkgdesc="Privacy Badger blocks spying ads and invisible trackers."
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi"
         "${_pkgname}-${pkgver}.xpi.sig::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi.sig")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('f09ca263862a317ad89321353101fe6d238cfee85711089c53dd21fc07e2122a'
+sha256sums=('97b21b5ca8866ba44c3bf958f36157b0ff8397986d9d4c2ce8a9a82fead04029'
             'SKIP')
 validpgpkeys=('88F8662241B0C16C16E3B5A7950FC3999D80F309') # Alexei <alexei@eff.org>
 
