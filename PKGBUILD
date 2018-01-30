@@ -2,7 +2,7 @@
 
 pkgname=python-fastrpc-git
 _gitname=fastrpc
-pkgver=python8.0.1
+pkgver=v8.0.8.r3.g24413dd
 pkgrel=1
 pkgdesc="Python FastRPC library"
 url="https://github.com/seznam/fastrpc"
@@ -21,5 +21,9 @@ pkgver() {
 package() {
   cd "$srcdir/$_gitname/python"
   python setup.py install --root=$pkgdir
+
+  cd "$srcdir/$_gitname/netcat"
+  install -D -m755 fastrpc-netcat3 "$pkgdir/usr/bin/fastrpc-netcat3"
+  install -D -m755 fastrpc-netcat "$pkgdir/usr/bin/fastrpc-netcat"
 }
 
