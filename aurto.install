@@ -7,6 +7,19 @@ function initialised {
   grep -q '^Include = /etc/pacman.d/aurto$' /etc/pacman.conf
 }
 
+function setup_sudoers {
+  echo "## aurto rules
+%$user ALL=(ALL) NOPASSWD: /usr/bin/arch-nspawn
+%$user ALL=(ALL) NOPASSWD: /usr/bin/pacsync aurto
+%$user ALL=(ALL) NOPASSWD:SETENV: /usr/bin/makechrootpkg
+%$user ALL=(ALL) NOPASSWD:SETENV: /usr/bin/aurbuild_chroot
+## /aurto rules" >> /etc/sudoers
+}
+
+function clean_sudoers {
+  sed -i '/^## aurto rules$/,/^## \/aurto rules$/d' /etc/sudoers
+}
+
 post_install() {
   if initialised; then
     echo 'Already initialised' >&2
@@ -30,15 +43,22 @@ post_install() {
   if ! test -f /etc/sudoers.aurto-backup; then
     cp /etc/sudoers /etc/sudoers.aurto-backup
   fi
-  echo "## aurto rules
-%$user ALL=(ALL) NOPASSWD: /usr/bin/arch-nspawn
-%$user ALL=(ALL) NOPASSWD:SETENV: /usr/bin/makechrootpkg
-%$user ALL=(ALL) NOPASSWD:SETENV: /usr/bin/aurbuild_chroot
-## /aurto rules" >> /etc/sudoers
+  setup_sudoers
 
   echo 'aurto: Adding systemd timer update tasks' >&2
   systemctl enable --now /usr/lib/systemd/system/check-aurto-git-trigger.timer
   systemctl enable --now /usr/lib/systemd/system/update-aurto.timer
+}
+
+
+post_upgrade() {
+  if ! initialised; then
+    exit 0
+  fi
+
+  ## redo to support package to package changes
+  clean_sudoers
+  setup_sudoers
 }
 
 pre_remove() {
@@ -47,8 +67,8 @@ pre_remove() {
   fi
 
   echo 'aurto: Removing systemd timer update tasks' >&2
-  systemctl disable --now check-aurto-git-trigger.timer
-  systemctl disable --now update-aurto.timer
+  systemctl disable --now check-aurto-git-trigger.timer || true
+  systemctl disable --now update-aurto.timer || true
 }
 
 post_remove() {
@@ -57,7 +77,7 @@ post_remove() {
   fi
 
   echo 'aurto: Removing aurto rules from /etc/sudoers' >&2
-  sed -i '/^## aurto rules$/,/^## \/aurto rules$/d' /etc/sudoers
+  clean_sudoers
 
   echo 'aurto: Removing /var/cache/pacman/aurto' >&2
   rm -rf /var/cache/pacman/aurto || true
