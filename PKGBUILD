@@ -1,9 +1,9 @@
 # Maintainer: Dicebot <public@dicebot.lv>
 pkgname=dstep
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Automatic C header to D module translator"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 groups=('dlang')
 url="https://github.com/jacob-carlborg/dstep"
 license=('custom')
