@@ -2,7 +2,7 @@
 _module='oslo.log'
 pkgname=('python-oslo-log' 'python2-oslo-log')
 pkgver='3.36.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Oslo Log library'
 arch=('any')
 url="https://docs.openstack.org/developer/${_module}/"

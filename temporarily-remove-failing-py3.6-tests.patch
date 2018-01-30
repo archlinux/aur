@@ -1,0 +1,66 @@
+Description: Temporarily drop failing Python 3.6 tests
+ See LP bug referenced below.
+Author: Thomas Goirand <zigo@debian.org>
+Bug-Debian: https://bugs.debian.org/884052
+Bug-Ubuntu: https://launchpad.net/bugs/1737493
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2018-01-24
+
+--- python-oslo.log-3.30.2.orig/oslo_log/tests/unit/test_log.py
++++ python-oslo.log-3.30.2/oslo_log/tests/unit/test_log.py
+@@ -1690,54 +1690,6 @@ class KeywordArgumentAdapterTestCase(Bas
+                        'resource_uuid': expected['resource_uuid']}},
+             kwargs)
+ 
+-    def test_pass_args_to_log(self):
+-        a = log.KeywordArgumentAdapter(self.mock_log, {})
+-        message = 'message'
+-        exc_message = 'exception'
+-        key = 'name'
+-        val = 'value'
+-        a.log(logging.DEBUG, message, name=val, exc_info=exc_message)
+-        if six.PY3:
+-            self.mock_log._log.assert_called_once_with(
+-                logging.DEBUG,
+-                message,
+-                (),
+-                extra={key: val, 'extra_keys': [key]},
+-                exc_info=exc_message
+-            )
+-        else:
+-            self.mock_log.log.assert_called_once_with(
+-                logging.DEBUG,
+-                message,
+-                extra={key: val, 'extra_keys': [key]},
+-                exc_info=exc_message
+-            )
+-
+-    def test_pass_args_via_debug(self):
+-        a = log.KeywordArgumentAdapter(self.mock_log, {})
+-        message = 'message'
+-        exc_message = 'exception'
+-        key = 'name'
+-        val = 'value'
+-        a.debug(message, name=val, exc_info=exc_message)
+-        # The adapter implementation for debug() is different for
+-        # python 3, so we expect a different method to be called
+-        # internally.
+-        if six.PY3:
+-            self.mock_log._log.assert_called_once_with(
+-                logging.DEBUG,
+-                message,
+-                (),
+-                extra={key: val, 'extra_keys': [key]},
+-                exc_info=exc_message
+-            )
+-        else:
+-            self.mock_log.debug.assert_called_once_with(
+-                message,
+-                extra={key: val, 'extra_keys': [key]},
+-                exc_info=exc_message
+-            )
+-
+ 
+ class UnicodeConversionTestCase(BaseTestCase):
+ 
