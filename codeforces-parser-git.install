@@ -1,0 +1,5 @@
+post_install(){
+	echo "The templates are located in /etc/codeforces-parser/main.{cc,go,kt}"
+	echo "To change the path of the templates for {cc,go,kt} you need to"
+	echo "modify /usr/bin/codeforces-parser in line {25,31,37}"	
+}

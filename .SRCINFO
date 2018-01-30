@@ -1,0 +1,21 @@
+pkgbase = codeforces-parser-git
+	pkgdesc = Parse sample tests of Codeforces competitions, and generate tests automatically.
+	pkgver = r48.5287a01
+	pkgrel = 1
+	url = https://github.com/johnathan79717/codeforces-parser
+	install = codeforces-parser-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = time
+	depends = python-urllib3
+	optdepends = go: for go support
+	optdepends = kotlin: for kotlin support
+	provides = codeforces-parser
+	conflicts = codeforces-parser
+	source = git+https://github.com/johnathan79717/codeforces-parser
+	sha256sums = SKIP
+
+pkgname = codeforces-parser-git
+
