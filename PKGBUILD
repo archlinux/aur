@@ -1,6 +1,8 @@
 # Maintainer: Joaquin Garmendia <joaquingc123 at gmail dot com>
 # Contributor: Orestis Floros <orestisf1993@gmail.com>
 
+# All my PKGBUILDs can be found in https://www.github.com/joaquingx/PKGBUILDs
+
 pkgname=gtk-arc-flatabulous-theme-git
 _pkgname=arc-flatabulous-theme
 pkgver=r709.1b1b7c9
