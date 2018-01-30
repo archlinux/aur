@@ -1,0 +1,16 @@
+pkgbase = emacs-async
+	pkgdesc = A module for doing asynchronous processing in Emacs
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = https://github.com/jwiegley/emacs-async
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-async
+	conflicts = emacs-async
+	source = https://github.com/jwiegley/emacs-async/archive/v1.9.2.tar.gz
+	sha256sums = fb1e87fe5a53fb4d92069d031ca17ba2122240e63b6c351ec6b488b421d1382b
+
+pkgname = emacs-async
+
