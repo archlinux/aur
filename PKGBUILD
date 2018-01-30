@@ -5,7 +5,7 @@
 # Contributor:  Pooler                   <https://bitcointalk.org/index.php?action=profile;u=43931>
 
 pkgname=electrum-vtc
-pkgver=2.9.3.5
+pkgver=2.9.3.6
 pkgrel=1
 pkgdesc='A simple, powerful, and secure Vertcoin wallet which has no sync time or long waits for the blockchain to download.'
 
@@ -36,7 +36,7 @@ source=("Electrum-VTC-$pkgver.tar.gz::https://github.com/vertcoin/$pkgname/relea
 
 validpgpkeys=('E44EAD1F0BB016963229A6A304E9BCFB4E777CA3')
 
-sha256sums=('af4434e357926569fc6c23c8406188c2c5fa7f92f00c37ccb1c12999ab367bd3'
+sha256sums=('8b07a684c076f40cf55355261213f50799a6513b80c163caa8667d39828ad09d'
             'SKIP')
 
 prepare() {
