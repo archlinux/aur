@@ -9,7 +9,7 @@ license=('custom:NCL Source Code License')
 arch=('i686' 'x86_64')
 depends=('libxext' 'cairo' 'pixman' 'fontconfig' 'expat' 'bzip2' 'zlib' 'netcdf' 'hdf5-cpp-fortran' 
          'triangle' 'hdf4-nonetcdf' 'netcdf-fortran' 'libxt' 'libxaw' 'libxext' 'libxpm' 'udunits'
-         'libx11' 'imake' 'g2clib' 'gdal' 'lesstif' 'glibc' 'libjpeg' 'libpng' 'jasper' 'szip'
+         'libx11' 'imake' 'g2clib' 'gdal' 'lesstif' 'glibc' 'libjpeg' 'libpng' 'jasper' 'libaec'
          'libxaw' 'tcsh' 'flex' 'gsl' 'hdf-eos2' 'hdf-eos5')
 makedepends=('gcc' 'gcc-fortran' 'tcsh' 'byacc')
 provides=('ncl')
