@@ -3,22 +3,15 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgname=bashdb
-pkgver=4.3_0.9
-pkgrel=4
+pkgver=4.4_0.94
+pkgrel=1
 pkgdesc="A debugger for Bash scripts loosely modeled on the gdb command syntax"
 arch=('any')
 url="http://bashdb.sourceforge.net/"
 license=('GPL')
-depends=('bash' 'python2-pygments' 'pygmentize')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-${pkgver/_/-}.tar.bz2 python2.patch)
-md5sums=('2f2479933a4e19663349b66f87d0290a'
-         '7e2fdd6ecb69cfd2cc2dba33c700c800')
-
-prepare() {
-  cd $pkgname-${pkgver//_/-}
-  patch -Np1 -i "$srcdir"/python2.patch
-  sed -i "s#'4.2' | '4.1'#'4.3' | '4.2' | '4.1'#" configure
-}
+depends=('bash' 'python-pygments' 'pygmentize')
+source=(https://downloads.sourceforge.net/$pkgname/$pkgname-${pkgver/_/-}.tar.bz2)
+sha512sums=('97e7d057f16d90d7f1677e1b29d2467d5ee263e9aaad64e2d7a8b8a19b3f3ca68023f23a45faea235fdba57e803fae762a19aab67f650b81e868a8a01c5b1fb7')
 
 build() {
   cd $pkgname-${pkgver//_/-}
