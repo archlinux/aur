@@ -12,7 +12,7 @@ source=($pkgname::git+https://github.com/GZHU-Dress/minieap.git
         'minieap-gzhu.service')
 
 md5sums=('SKIP'
-         'a9e80450c7d9836f0170e025293b838b')
+         '89b995651402c632b0bd3d4fba1065c2')
 
 pkgver() {
     cd "$srcdir/$pkgname"

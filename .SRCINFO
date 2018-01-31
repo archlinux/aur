@@ -11,7 +11,7 @@ pkgbase = minieap-gzhu-git
 	source = minieap-gzhu-git::git+https://github.com/GZHU-Dress/minieap.git
 	source = minieap-gzhu.service
 	md5sums = SKIP
-	md5sums = a9e80450c7d9836f0170e025293b838b
+	md5sums = 89b995651402c632b0bd3d4fba1065c2
 
 pkgname = minieap-gzhu-git
 
