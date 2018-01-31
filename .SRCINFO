@@ -1,6 +1,6 @@
 pkgbase = fgit-git
 	pkgdesc = Folder Git
-	pkgver = r86.44b62b2
+	pkgver = 1.0.1.r0.92ed9eb
 	pkgrel = 1
 	url = https://github.com/l0b0/fgit
 	arch = any

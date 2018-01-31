@@ -1,6 +1,6 @@
 # Maintainer: Victor Engmark <victor.engmark@gmail.com>
 pkgname=fgit-git
-pkgver=r87.342b35d
+pkgver=1.0.1.r0.92ed9eb
 pkgrel=1
 pkgdesc="Folder Git"
 arch=('any')
@@ -19,7 +19,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
