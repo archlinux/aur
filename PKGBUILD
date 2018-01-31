@@ -2,7 +2,7 @@
 
 pkgname=gtkspellmm
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ binding for the gtkspell library"
 arch=('i686' 'x86_64')
 url="http://gtkspell.sourceforge.net/"
