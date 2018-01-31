@@ -12,8 +12,8 @@ StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=sonarqube
 RuntimeDirectory=sonarqube
-ExecStart=/usr/share/sonarqube/bin/$ARCH/sonar.sh start
-ExecStop=/usr/share/sonarqube/bin/$ARCH/sonar.sh stop
+ExecStart=/usr/share/sonarqube/bin/linux-x86-64/sonar.sh start
+ExecStop=/usr/share/sonarqube/bin/linux-x86-64/sonar.sh stop
 
 [Install]
 WantedBy=multi-user.target
