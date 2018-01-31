@@ -2,7 +2,7 @@
 pkgname=fgit-git
 pkgver=1.0.1.r0.92ed9eb
 pkgrel=2
-pkgdesc="Folder Git"
+pkgdesc="Run git commands on multiple repositories with a single command"
 arch=('any')
 url='https://github.com/l0b0/fgit'
 license=('GPL3')
