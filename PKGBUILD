@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "$hdfeos5"
+  cd "hdfeos5"
   make DESTDIR="$pkgdir" install
   
   # delete common files
