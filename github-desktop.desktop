@@ -6,5 +6,5 @@ Comment[eu]=GitHub-ekin lan egin zure ordenagailutik.
 Exec=/usr/bin/github-desktop %U
 Terminal=false
 Type=Application
-Icon=github
+Icon=github-desktop
 Categories=Development;

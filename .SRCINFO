@@ -1,6 +1,6 @@
 pkgbase = github-desktop
 	pkgdesc = GUI for managing Git and GitHub.
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://desktop.github.com
 	arch = x86_64
@@ -18,6 +18,6 @@ pkgbase = github-desktop
 	source = git+https://github.com/desktop/desktop.git#tag=release-1.0.12-beta0
 	source = github-desktop.desktop
 	sha256sums = SKIP
-	sha256sums = ce0dae70066703df656aa6f509f9a7f4f59e081e8f05be8aa7a81ee4605661c3
+	sha256sums = be057e4a392e64760f7a40203ac886b7cf5551de254ad55c706376dca8aa4341
 
 pkgname = github-desktop
