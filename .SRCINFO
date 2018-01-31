@@ -12,6 +12,7 @@ pkgbase = yay
 	makedepends = go
 	depends = sudo
 	conflicts = yay-bin
+	conflicts = yay-git
 	options = !strip
 	options = !emptydirs
 	source = https://github.com/Jguer/yay/archive/v2.219.tar.gz
