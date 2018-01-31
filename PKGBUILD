@@ -3,7 +3,7 @@
 pkgname=xkcdpass
 _pkgname=XKCD-password-generator-xkcdpass
 pkgver=1.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate secure multiword passwords/passphrases, inspired by XKCD"
 arch=('any')
 url="https://github.com/redacted/XKCD-password-generator"
@@ -31,4 +31,5 @@ package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1
     install -m644 -D LICENSE.BSD "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.BSD"
+    install -m644 -D xkcdpass.1 "${pkgdir}/usr/share/man/man1/xkcdpass.1"
 }
