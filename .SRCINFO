@@ -1,0 +1,27 @@
+pkgbase = python-crimson
+	pkgdesc = Bioinformatics tool outputs converter to JSON or YAML
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/crimson
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2-wheel
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python-wheel
+	options = !emptydirs
+	source = python-crimson-0.3.0.tar.gz::https://pypi.python.org/packages/bf/8e/cdddc397f92fc1199195f01446bd3407dcb6f6ab8983f32a5e8798348809/Crimson-0.3.0.tar.gz
+	sha256sums = 7f78aca574cc9be93ca61baa91873867b40254441b77dddf86099b9071623a9b
+
+pkgname = python-crimson
+	depends = python
+	depends = python-click
+	depends = python-yaml
+
+pkgname = python2-crimson
+	depends = python2
+	depends = python2-click
+	depends = python2-yaml
+
