@@ -8,6 +8,7 @@ pkgbase = chirp-daily
 	depends = python2-lxml
 	depends = python2-pyserial
 	depends = pygtk
+	depends = python2-suds
 	optdepends = hamradio-menus
 	provides = chirp
 	conflicts = chirp
