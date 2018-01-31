@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fslpy
-pkgver=1.5.4
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="The fslpy package is a collection of utilities and data abstractions used by FSLeyes."
 arch=('any')
@@ -8,17 +8,15 @@ url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
 license=('Apache')
 groups=()
 depends=('python')
-makedepends=('python-six' 'python-numpy' 'python-matplotlib' 'python-deprecation' 'python-nibabel' 'wxpython-phoenix' 'python-indexed-gzip')
+makedepends=('python-six' 'python-numpy' 'python-matplotlib' 'python-deprecation' 'python-nibabel' 'python-wxpython-phoenix' 'python-indexed-gzip')
 optdepends=()
 provides=()
 conflicts=()
 replaces=()
 source=($pkgname-$pkgver.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fslpy/repository/archive.tar.gz?ref=$pkgver)
-sha256sums=('a81346aff4c0ea8d01645d48bb877f1fc5ed6df1928df398d67bc697c49986ee')
+sha256sums=('5951fd6e0edda70acab87d93aab9b2f254c989861de7b4c4154f216cd86742d3')
 
 package() {
   cd "$srcdir/${pkgname#fsleyes-}-$pkgver-"*
-  # "Patching" for scipy 1.0 support
-  sed -i 's/scipy>=0\.18,<1/scipy/g' requirements.txt
   python setup.py install --root="$pkgdir/" --optimize=1
 }
