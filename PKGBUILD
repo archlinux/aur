@@ -3,7 +3,7 @@
 pkgname=ryzen-stabilizator-git
 _pkgname=ryzen-stabilizator
 pkgver=r12.95f0b25
-pkgrel=1
+pkgrel=2
 pkgdesc="Disables C6 C-state and/or processor boosting on an AMD Ryzen processor, in order to help with the infamous
 MCE-random-reboots-while-idle issue."
 arch=("x86_64")
@@ -13,9 +13,9 @@ makedepends=(go)
 source=("${_pkgname}"::git+https://github.com/qrwteyrutiyoup/ryzen-stabilizator.git
         ryzen-stabilizator.conf
 )
-
 md5sums=('SKIP'
          '68ffee4082ac24a004eb981fcf685f35')
+backup=('etc/ryzen-stabilizator/profiles.toml')
 
 pkgver() {
   cd "${_pkgname}"
@@ -35,7 +35,7 @@ build() {
   export GOPATH="${srcdir}/go"
   cd "${GOPATH}/src/${_pkgname}"
   go get
-  go build -ldflags "-X main.version=git-$(git rev-parse --short HEAD)"
+  go build -ldflags "-X main.version=${pkgver}-${pkgrel}"
 }
 
 package() {
@@ -47,6 +47,7 @@ package() {
   done
   install -Dm 644 "${srcdir}/${_pkgname}/contrib/systemd/ryzen-stabilizator.target" "${pkgdir}/usr/lib/systemd/system/ryzen-stabilizator.target"
   install -Dm 644 "${srcdir}/${_pkgname}/contrib/profiles.toml.sample" "${pkgdir}/etc/ryzen-stabilizator/profiles.toml"
+  install -Dm 644 "${srcdir}/${_pkgname}/contrib/profiles.toml.sample" "${pkgdir}/etc/ryzen-stabilizator/profiles.toml.sample"
   install -Dm 755 "${srcdir}/${_pkgname}/ryzen-stabilizator" "${pkgdir}/usr/bin/ryzen-stabilizator"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
