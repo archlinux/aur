@@ -1,0 +1,17 @@
+pkgbase = pikaur-git
+	pkgdesc = Minimalistic AUR helper.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/actionless/pikaur
+	arch = any
+	license = GPLv3
+	makedepends = nuitka
+	depends = python3
+	depends = pacman
+	depends = git
+	depends = sudo
+	source = git+https://github.com/actionless/pikaur.git#branch=master
+	md5sums = SKIP
+
+pkgname = pikaur-git
+
