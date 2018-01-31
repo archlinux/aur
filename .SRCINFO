@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-argos-git
+	pkgdesc = Create GNOME Shell extensions in seconds.
+	pkgver = r38.a038299
+	pkgrel = 1
+	url = https://github.com/roberthawdon/argos
+	install = gschemas.install
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = gnome-shell-extensions
+	depends = gnome-shell
+	provides = gnome-shell-extension-argos=r38.a038299
+	conflicts = gnome-shell-extension-argos
+	source = gnome-shell-extension-argos::git+https://github.com/roberthawdon/argos
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-argos-git
+
