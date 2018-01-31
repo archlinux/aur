@@ -32,3 +32,4 @@ package()
 		install -Dm755 $f $pkgdir/usr/bin/$(basename $f)
 	done
 }
+
