@@ -3,7 +3,7 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 
 pkgname=worker
-pkgver=3.14.0
+pkgver=3.15.0
 pkgrel=1
 pkgdesc="A file manager for the X Window System"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ depends=('avfs' 'gcc-libs' 'libx11' 'file')
 makedepends=('libxt')
 source=(http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2
         http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2.asc)
-sha256sums=('192ffbee512d8a0828d33a30193f3a6de900a74556c963464762c18de566151b'
-            '55750c4c5c01f43cb976fe7a83ff4a33ebf67aff737ad13351cc7abfef9f4ce7')
+sha256sums=('04fcf5fda0a338aedc92092aafc8f0bdd30b65c1d62ffd52ef0a2ea590005751'
+            '70a5e9fab108033f6f34cd12ad37e1a320fdf3b23161e293add2788252cdeafd')
 validpgpkeys=('F9299EE90A729029E71AF26B667132D0FBC52B37') # Ralf Hoffmann
 
 build() {
