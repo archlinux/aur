@@ -1,12 +1,11 @@
-# Submitter: Peter Lamby <peterlamby@web.de>
-# Maintainer: Max Falk <gmdfalk@gmail.com>
+# Maintainer: Tobias Hübner <dasNeutrum at gmx dot de>
 
 _pkgname=sonarqube
 pkgname=${_pkgname}-lts
-pkgver=5.6.4
+pkgver=6.7.1
 pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://www.sonarqube.org/"
 license=('LGPL3')
 
@@ -30,17 +29,23 @@ source=("https://sonarsource.bintray.com/Distribution/${_pkgname}/${_pkgname}-${
         "${_pkgname}-tmpfile.conf"
         "${_pkgname}-user.conf")
 
-sha256sums=('3a4916b82d04843941a427058dae951578450e235a14f95811535bf9f30bf33b'
-            'acf98543b635778a690c5d1a8796bf67de725eeda1c72856bd63ea148a892223'
+sha256sums=('74cc70ef75d83fa260c7be86863416f45e092f77a2582ab51529d84f9a696fc7'
+            'cb3e3e810892e4d7ccf7a843ae1cb7daa14e3395025d0cc505b562f45e4f1ee9'
             '6e024de469ebb1bc4083274412f0a5d68d5fa511c2139ce4cb1d243c51ff9535'
             '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    # Copy everything except bin and conf to /usr/share/sonarqube.
+    # Copy everything except conf and logs to /usr/share/sonarqube.
     install -dm755 "${pkgdir}/usr/share/${_pkgname}"
-    cp -dr --no-preserve=ownership {bin,data,extensions,lib,temp,web} "${pkgdir}/usr/share/${_pkgname}/"
+    cp -dr --no-preserve=ownership {bin,data,elasticsearch,extensions,lib,temp,web} "${pkgdir}/usr/share/${_pkgname}/"
+    
+    # Delete unused files.
+    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/linux-x86-32"
+    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/macosx-universal-64"
+    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/windows-x86-32"
+    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/windows-x86-64"
 
     # Install the license.
     install -Dm644 "COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
@@ -55,18 +60,10 @@ package() {
     install -Dm644 "${_pkgname}-user.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
     install -Dm644 "${_pkgname}-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
-    # Symbolic links because SonarQube expects a specific directory layout.
+    # Create symbolic links because SonarQube expects a specific directory layout.
     ln -s "/var/log/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/logs"
     ln -s "/run/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/run"
     ln -s "/etc/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/conf"
-    
-    # Modify the service file in place to adjust the binary path to the CPU architecture. This is necessary because
-    # SonarQube expects a certain directory layout. The alternative would be to patch SonarQube's config files.
-    if [[ "$CARCH" == 'x86_64' ]]; then
-        sed -i 's/\$ARCH/linux-x86-64/g' "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-    elif [[ "$CARCH" == 'i686' ]]; then
-        sed -i 's/\$ARCH/linux-x86-32/g' "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-    fi
 }
 
 
