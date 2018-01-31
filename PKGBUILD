@@ -1,7 +1,7 @@
 # Maintainer: Victor Engmark <victor.engmark@gmail.com>
 pkgname=fgit-git
 pkgver=1.0.1.r0.92ed9eb
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder Git"
 arch=('any')
 url='https://github.com/l0b0/fgit'

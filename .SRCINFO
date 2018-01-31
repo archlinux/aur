@@ -1,7 +1,7 @@
 pkgbase = fgit-git
 	pkgdesc = Folder Git
 	pkgver = 1.0.1.r0.92ed9eb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/l0b0/fgit
 	arch = any
 	license = GPL3
