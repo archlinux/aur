@@ -1,0 +1,24 @@
+pkgbase = piklab-qt-svn
+	pkgdesc = IDE for Microchip PIC and dsPIC microcontrollers similar to the MPLAB environment
+	pkgver = r2982
+	pkgrel = 1
+	url = http://piklab.sourceforge.net
+	install = piklab.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = automoc4
+	depends = libusb-compat
+	depends = qt4
+	optdepends = pk2cmd-plus: PICkit 2 CLI software with updated DeviceFile and udev rules
+	optdepends = pikloops: Utility to compute timing loops
+	optdepends = gputils: PIC programming utilities
+	optdepends = sdcc: C compiler
+	provides = piklab
+	source = piklab::svn+https://svn.code.sf.net/p/piklab/code/trunk/
+	sha256sums = SKIP
+
+pkgname = piklab-qt-svn
+

@@ -1,0 +1,198 @@
+Index: piklab_kde4/cmake/Piklab.cmake
+===================================================================
+--- piklab_kde4/cmake/Piklab.cmake	(revision 2982)
++++ piklab_kde4/cmake/Piklab.cmake	(working copy)
+@@ -13,6 +13,8 @@
+ set(QT_USE_QTXML 1)
+ set(QT_USE_QT3SUPPORT 1)
+ set(QT_USE_QTTEST 1)
++set(QT_USE_QTNETWORK 1)
++
+ include(${QT_USE_FILE})
+ 
+ macro(automoc)
+Index: piklab_kde4/src/common/common/global.h
+===================================================================
+--- piklab_kde4/src/common/common/global.h	(revision 2982)
++++ piklab_kde4/src/common/common/global.h	(working copy)
+@@ -40,8 +40,6 @@
+ 
+ #if defined(NO_KDE)
+ 
+-typedef QTemporaryFile KTemporaryFile;
+-
+ #  include "common/nokde/nokde_klocale.h"
+ #  include "common/nokde/nokde_kurl.h"
+ #  include "common/nokde/nokde_kcmdlineargs.h"
+Index: piklab_kde4/src/common/global/CMakeLists.txt
+===================================================================
+--- piklab_kde4/src/common/global/CMakeLists.txt	(revision 2982)
++++ piklab_kde4/src/common/global/CMakeLists.txt	(working copy)
+@@ -26,5 +26,8 @@
+ )
+ automoc(${global_STAT_SRCS})
+ add_library(global STATIC ${global_STAT_SRCS})
++if(QT_ONLY)
++	target_link_libraries(global nokde)
++endif()
+ 
+ ADD_DEPENDENCIES(global generate)
+Index: piklab_kde4/src/common/global/pfile.cpp
+===================================================================
+--- piklab_kde4/src/common/global/pfile.cpp	(revision 2982)
++++ piklab_kde4/src/common/global/pfile.cpp	(working copy)
+@@ -98,10 +98,12 @@
+ bool PURL::File::openForWrite()
+ {
+   close();
+-  _tmp.reset(new KTemporaryFile);
+   if (!_extension.isEmpty()) {
+-    _tmp->setSuffix("." + _extension);
++    _tmp.reset(new QTemporaryFile("." + _extension));
++  } else {
++    _tmp.reset(new QTemporaryFile);
+   }
++
+   if (!_tmp->open()) {
+     _error = i18n("Could not create temporary file.");
+     _log.sorry(_error, i18n("File: %1").arg(_tmp->name()));
+@@ -148,10 +150,12 @@
+       return false;
+     }
+ 
+-    _tmp.reset(new KTemporaryFile);
+     if (!_extension.isEmpty()) {
+-      _tmp->setSuffix("." + _extension);
++      _tmp.reset(new QTemporaryFile("." + _extension));
++    } else {
++      _tmp.reset(new QTemporaryFile);
+     }
++
+     if (!_tmp->open()) {
+       _error = i18n("Could not create temporary file.");
+       _log.sorry(_error, i18n("File: %1").arg(_tmp->name()));
+@@ -199,7 +203,7 @@
+ bool PURL::TempFile::openForWrite()
+ {
+   close();
+-  _tmp.reset(new KTemporaryFile);
++  _tmp.reset(new QTemporaryFile);
+ #if defined(NO_KDE)
+   _tmp->setFileTemplate(QLatin1String("XXXXXX") + _extension);
+   _tmp->setAutoRemove(true);
+Index: piklab_kde4/src/common/global/pfile.h
+===================================================================
+--- piklab_kde4/src/common/global/pfile.h	(revision 2982)
++++ piklab_kde4/src/common/global/pfile.h	(working copy)
+@@ -36,7 +36,7 @@
+   QString errorString() const;
+ 
+ protected:
+-  std::auto_ptr<KTemporaryFile> _tmp;
++  std::auto_ptr<QTemporaryFile> _tmp;
+   std::auto_ptr<QFile>       _file;
+   std::auto_ptr<QTextStream> _stream;
+   QString                    _error;
+Index: piklab_kde4/src/common/nokde/nokde_klocale.h
+===================================================================
+--- piklab_kde4/src/common/nokde/nokde_klocale.h	(revision 2982)
++++ piklab_kde4/src/common/nokde/nokde_klocale.h	(working copy)
+@@ -15,6 +15,7 @@
+ {
+ public:
+   void setActiveCatalog(const char*) {}
++  bool setCountry(const QString &, void *) {}
+ };
+ 
+ class KLocalizedString : public QString
+Index: piklab_kde4/src/dev-utils/CMakeLists.txt
+===================================================================
+--- piklab_kde4/src/dev-utils/CMakeLists.txt	(revision 2982)
++++ piklab_kde4/src/dev-utils/CMakeLists.txt	(working copy)
+@@ -1,6 +1,11 @@
+ add_subdirectory(generator)
+-add_subdirectory(html_generator)
+-add_subdirectory(list_generator)
++
++#these depend on libgui stuff which has too much KDE deps
++if(NOT QT_ONLY)
++	add_subdirectory(list_generator)
++	add_subdirectory(html_generator)
++endif()
++
+ add_subdirectory(usb_snoop_filter)
+ add_subdirectory(usbmon_filter)
+ add_subdirectory(pickit2_to_data)
+Index: piklab_kde4/src/dev-utils/html_generator/html_generator.cpp
+===================================================================
+--- piklab_kde4/src/dev-utils/html_generator/html_generator.cpp	(revision 2982)
++++ piklab_kde4/src/dev-utils/html_generator/html_generator.cpp	(working copy)
+@@ -11,10 +11,9 @@
+ #include <qdir.h>
+ #include <qfile.h>
+ #include <qtextstream.h>
+-#include <kapplication.h>
+-#include <kcmdlineargs.h>
+-#include <kaboutdata.h>
+ 
++#include "common/common/global.h"
++
+ #include "devices/list/device_list.h"
+ #include "progs/list/prog_list.h"
+ #include "tools/list/tool_list.h"
+Index: piklab_kde4/src/dev-utils/list_generator/list_generator.cpp
+===================================================================
+--- piklab_kde4/src/dev-utils/list_generator/list_generator.cpp	(revision 2982)
++++ piklab_kde4/src/dev-utils/list_generator/list_generator.cpp	(working copy)
+@@ -9,10 +9,9 @@
+ #include <qdir.h>
+ #include <qfile.h>
+ #include <qtextstream.h>
+-#include <kapplication.h>
+-#include <kcmdlineargs.h>
+-#include <kaboutdata.h>
+ 
++#include "common/common/global.h"
++
+ #include "devices/base/device_group.h"
+ #include "devices/list/device_list.h"
+ #include "devices/pic/base/pic.h"
+Index: piklab_kde4/src/dev-utils/pickit3_dds_parser/CMakeLists.txt
+===================================================================
+--- piklab_kde4/src/dev-utils/pickit3_dds_parser/CMakeLists.txt	(revision 2982)
++++ piklab_kde4/src/dev-utils/pickit3_dds_parser/CMakeLists.txt	(working copy)
+@@ -5,4 +5,4 @@
+ )
+ automoc(${pickit3_dds_parser_SRCS})
+ add_executable(pickit3_dds_parser ${pickit3_dds_parser_SRCS})
+-target_link_libraries(pickit3_dds_parser ${PROG_CLI_LIBS})
++target_link_libraries(pickit3_dds_parser ${PROG_CLI_LIBS} global)
+Index: piklab_kde4/src/dev-utils/pickit3_dds_parser/pickit3_dds_parser.cpp
+===================================================================
+--- piklab_kde4/src/dev-utils/pickit3_dds_parser/pickit3_dds_parser.cpp	(revision 2982)
++++ piklab_kde4/src/dev-utils/pickit3_dds_parser/pickit3_dds_parser.cpp	(working copy)
+@@ -14,9 +14,7 @@
+ #include <qtextstream.h>
+ #include <qregexp.h>
+ 
+-#include <kcmdlineargs.h>
+-#include <klocale.h>
+-
++#include "common/common/global.h"
+ #include "common/common/misc.h"
+ #include "common/common/number.h"
+ #include "common/global/about.h"
+Index: piklab_kde4/src/dev-utils/usb_snoop_filter/usb_snoop_filter.cpp
+===================================================================
+--- piklab_kde4/src/dev-utils/usb_snoop_filter/usb_snoop_filter.cpp	(revision 2982)
++++ piklab_kde4/src/dev-utils/usb_snoop_filter/usb_snoop_filter.cpp	(working copy)
+@@ -12,9 +12,6 @@
+ #include <qtextstream.h>
+ #include <qregexp.h>
+ 
+-#include <kcmdlineargs.h>
+-#include <klocale.h>
+-
+ #include "common/common/misc.h"
+ #include "common/common/number.h"
+ #include "common/global/about.h"
