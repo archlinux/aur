@@ -1,8 +1,8 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=signal-desktop
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
 license=('GPL3')

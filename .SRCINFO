@@ -1,7 +1,7 @@
 pkgbase = signal-desktop
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/WhisperSystems/Signal-Desktop
 	install = signal-desktop.install
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = signal-desktop
 	conflicts = signal
 	conflicts = signal-desktop-bin
 	conflicts = signal-desktop-beta
-	source = git+https://github.com/WhisperSystems/Signal-Desktop.git#tag=v1.2.0
+	source = git+https://github.com/WhisperSystems/Signal-Desktop.git#tag=v1.3.0
 	source = signal-desktop.desktop
 	source = signal-desktop
 	source = signal-desktop.install
