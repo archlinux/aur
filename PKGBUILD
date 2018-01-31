@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=lambdanative
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Write mobile applications in Scheme'
 arch=('x86_64' 'i686')
