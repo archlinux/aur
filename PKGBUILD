@@ -9,8 +9,8 @@ depends=('mingw-w64-netcdf')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 license=('GPL')
-source=("ftp://ftp.unidata.ucar.edu/pub/netcdf/${spkgname}-${pkgver}.tar.gz")
-md5sums=('d32b20c00f144ae6565d9e98d9f6204c')
+source=("http://www.gfd-dennou.org/arch/netcdf/unidata-mirror/netcdf-cxx-${pkgver}.tar.gz")
+sha256sums=('95ed6ab49a0ee001255eac4e44aacb5ca4ea96ba850c08337a3e4c9a0872ccd1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
