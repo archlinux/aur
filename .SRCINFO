@@ -6,8 +6,8 @@ pkgbase = paudit
 	arch = any
 	license = GPL
 	depends = yaourt
-	source = paudit.sh
-	md5sums = 4a9956c27933cf302c72056aec86201c
+	source = https://github.com/Myl0g/paudit/archive/v1.1.tar.gz
+	md5sums = 15ec9bd4dbe9312a2ec73a6dde884021
 
 pkgname = paudit
 

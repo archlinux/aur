@@ -8,10 +8,11 @@ arch=(any)
 url="https://github.com/Myl0g/paudit"
 license=('GPL')
 depends=('yaourt')
-source=("$pkgname.sh")
+source=("https://github.com/Myl0g/${pkgname}/archive/v${pkgver}.tar.gz")
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	mv "$pkgname.sh" "$pkgdir/usr/bin/paudit"
+	install -d "${pkgdir}/usr/bin"
+	mv "${srcdir}/${pkgname}-${pkgver}/${pkgname}.sh" "${pkgdir}/usr/bin/paudit"
+	chmod 755 "${pkgdir}/usr/bin/paudit"
 }
-md5sums=('4a9956c27933cf302c72056aec86201c')
+md5sums=('15ec9bd4dbe9312a2ec73a6dde884021')
