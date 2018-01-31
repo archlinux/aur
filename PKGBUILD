@@ -1,8 +1,8 @@
 # Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) 
 pkgname=vita3k-git
 _pkgname=vita3k
-pkgver=r6.3c0f4d2
-pkgrel=3
+pkgver=r11.40a247b
+pkgrel=1
 pkgdesc="PlayStation Vita emulator"
 arch=('x86_64')
 url="https://vita3k.github.io/"
@@ -56,7 +56,7 @@ build() {
 	msg2 "Create build"
 	mkdir -p build && cd build
 	msg2 "Create cmake"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ../src
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
