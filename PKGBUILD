@@ -62,8 +62,8 @@ _localmodcfg=
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14.15
-pkgrel=2
+pkgver=4.14.16
+pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -102,9 +102,9 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
+            '35a107a45a6e8884d3ab442f9845007e3fcf9998441bf2324a86e91056628fe7'
             'SKIP'
-            '658a768ef37645c4af0d0da825902ede0997090b4b234ffe3742c668ecd00607'
+            'fc3033c9f914bf8b6da687b97bca27b897c551993e5737d14e68469793446031'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
