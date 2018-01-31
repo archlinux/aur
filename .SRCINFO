@@ -1,6 +1,6 @@
 pkgbase = mutant
 	pkgdesc = Linux Spotlight Productivity launcher, but more customizable.
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/m0n0l0c0/mutant
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = mutant
 	depends = gtk3
 	depends = librsvg
 	provides = mutant
-	source = mutant::https://github.com/m0n0l0c0/mutant/archive/v0.1.4.tar.gz
+	source = mutant::https://github.com/m0n0l0c0/mutant/archive/v0.1.5.tar.gz
 	source = mutant-packager::https://github.com/m0n0l0c0/mutant-packager/archive/v0.1.5.tar.gz
-	sha256sums = aeadd26d5f712dfb491ba58e9e952a5a8f2bdf6dd33df7889d94aec4512da89c
+	sha256sums = 462b874dea5673252ec481d4580b4bb8be4e58958a7d5662935fbf33f531fed9
 	sha256sums = 0029373d851cd86f01e97f452826d84f45646a30c569ec72c3653fa85fecd7ea
 
 pkgname = mutant
