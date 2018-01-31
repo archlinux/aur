@@ -1,8 +1,9 @@
 /**
- * API data is taken from IEX Trading, Alpha Vantage, and Coinmarketcap.
+ * API data is taken from IEX Trading, Alpha Vantage, Coinmarketcap, and News API.
  * https://iextrading.com/developer/docs/
  * https://www.alphavantage.co/documentation/
  * https://coinmarketcap.com/api/
+ * https://newsapi.org/docs
  */
 
 #ifndef IEX_H
@@ -13,6 +14,7 @@
 #include <string.h>
 #include <curl/curl.h>
 #include <stddef.h>
+#include <json-c/json_tokener.h>
 
 struct string {
     char* data;
@@ -20,6 +22,8 @@ struct string {
 };
 
 typedef struct string String;
+
+typedef struct json_object Json;
 
 /**
  * Creates and returns a STRING
@@ -31,9 +35,10 @@ String* api_string_init(void);
 /**
  * GETs data from API server and returns it in a String
  * @param url API url to GET
+ * @param post_field data needed for POST
  * @return NULL if no response from server. Otherwise, String containing data.
  */
-String* api_curl_data(char* url);
+String* api_curl_data(char* url, char* post_field);
 
 /**
  * Returns current price of a stock or cryptocurrency.
@@ -110,6 +115,25 @@ double alphavantage_get_1d_price(char* ticker_name_string);
  * @return current price of cryptocurrency
  */
 double coinmarketcap_get_1d_price(char* ticker_name_string);
+
+/**
+ * Prints top three news articles in the past week based on the given string
+ * @param ticker_name_string the string
+ */
+void news_print_top_three(char* ticker_name_string);
+
+/**
+ * Given a JSON formatted string, print title, source, author, and url of articles
+ * @param data the json formatted data
+ */
+void json_print_news(char* data);
+
+/**
+ * Given a url, returns a shorter link using goo.gl
+ * @param url_string the link to shorten
+ * @return the shortened link
+ */
+const char* google_shorten_link(char* url_string);
 
 /**
  * Destroys String object and frees memory

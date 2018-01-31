@@ -1,4 +1,4 @@
-.TH TICK "1" "January 2018" "Tick 1.4.0" "User Commands"
+.TH TICK "1" "January 2018" "Tick 1.5.0" "User Commands"
 
 .SH NAME
 Tick - Command line stock and cryptocurrency portfolio tracker.
@@ -28,6 +28,14 @@ are not reinvested into a specific security, you should update your portfolio wi
 Prints information about your current portfolio holdings. Either a symbol or the keyword 'all' can be used. The keyword "all"
 will print information about all your current holdings, as well as a grand total.
 
+.SS
+News:
+
+.TP
+[news] [symbol]
+Prints information on the top three news articles in the past 14 days. The article titles, sources, authors, dates, and URLs
+will be displayed. Technically, the input may be something completely unrelated to investing. This may be amended in the future.
+
 .SH FILES
 .I ~/.tick_portfolio
 .RS
@@ -42,6 +50,9 @@ Antony Kellermann -- https://github.com/aokellermann
 .SH LICENSE
 MIT License
 
-Stock information is taken from IEX's free API. Mutual fund and over-the-counter information is taken from Alpha Vantage's
-free API. Cryptocurrency information is taken from Coinmarketcap's free API. Please do not abuse the APIs by repeatedly requesting
-information. Read the provided license for more information.
+Stock information is taken from IEX's free API. Mutual fund and over-the-counter
+information is taken from Alpha Vantage's free API. Cryptocurrency information
+is taken from Coinmarketcap's free API. News information is taken from News
+API. Shortened links are provided by Google's URL Shortener API. Please do
+not abuse the APIs by repeatedly requesting information. Read the provided
+license for more information.

@@ -3,7 +3,13 @@
 #include "portfolio.h"
 
 int main(int argc, char* argv[]) {
-    if (argc < 3 || argc == 4 || argc > 5) {
+    if (argc == 3 && strcmp(argv[1], "news") == 0) {
+        if (strlen(argv[2]) <= 16 && strlen(argv[2]) > 1)
+            news_print_top_three(argv[2]);
+        else printf("Input invalid length.\n");
+        return 0;
+    }
+    if (argc == 1 || argc == 4 || argc > 5) {
         printf("Invalid arguments. Type \"man tick\" for help.\n");
         return 0;
     }

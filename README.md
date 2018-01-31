@@ -40,15 +40,27 @@ securities may take up to 10 seconds each. This is due to Alpha Vantage's
 relatively slow API. NYSE and NASDAQ listed stocks and ETFs, as well as cryptocurrencies
 should take less than one second to print each.
 
+To get the top three news articles on a specific stock or cryptocurrency,
+you can run
+
+```bash
+$ tick news [symbol]
+```
+
 Once installed, you may read the man page for more information.
 
 #### License
 MIT License
 
-Stock information is taken from IEX's free API. Mutual fund and over-the-counter information is taken from Alpha Vantage's
-free API. Cryptocurrency information is taken from Coinmarketcap's free API. Please do not abuse the APIs by repeatedly requesting
-information. Read the provided license for more information.
+Stock information is taken from IEX's free API. Mutual fund and over-the-counter
+information is taken from Alpha Vantage's free API. Cryptocurrency information
+is taken from Coinmarketcap's free API. News information is taken from News
+API. Shortened links are provided by Google's URL Shortener API. Please do
+not abuse the APIs by repeatedly requesting information. Read the provided
+license for more information.
 #### Future Ideas
 * Command to get info about a security
 * More robust information in "check"
-* Historical support -- 24h/7d profits
+* Historical support -- 7d/28d profits
+* Reduce API calls
+* Find a new API to hand all stock calls (quandl?). Alpha Vantage is unreliable

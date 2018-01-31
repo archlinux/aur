@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -g -Wall --std=c99
 OBJECTS = main.o api.o portfolio.o
-LIBS = -lcurl
+LIBS = -lcurl -ljson-c
 BIN = tick
 DESTDIR = /usr
 
