@@ -1,7 +1,7 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
-pkgver=0.8.8
-pkgrel=3
+pkgver=0.8.9
+pkgrel=1
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
 url="http://lmb.bioch.ox.ac.uk/coot/"
@@ -25,7 +25,7 @@ source=(http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/source/releases/
         coot.in
         )
 
-sha256sums=('df31ab66d7c3de6524fefcafaab6acc11e4525b930fed3b929ed773ae1776aa7'
+sha256sums=('3b4674e9dd83afcb1769df99fbe3d47077a42fe2761ef3defc44722b2d7a14e0'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
             '2babfbc3cb798868d9e22f19ee49d12981fac35e3dfba2d8f7318716f59f673c'
@@ -37,7 +37,7 @@ sha256sums=('df31ab66d7c3de6524fefcafaab6acc11e4525b930fed3b929ed773ae1776aa7'
             '423a50d27639376c52e6987877acea908d854decb48c7c2452f7f5ecb92b60e9'
             'f4747e1fc7a3387f42b6c40358f999404761a0282ee6be3c621091d9d5d88099'
             'dd2eb7c66ff2fa6f68a9d1e834e1911d2a1669a76ed29b5dbd6863619edcba18'
-            '987e41d1b8adf87c2b66e75c07ac85810381354b3b78cb708ebadd8bbada8251'
+            'b07517bdf9fcee43cf13533902ef333adcdaa45e60905628dfefc98ff55e95b5'
             '5ba4e0d9bdc4db0bab403b8f9aadb1320af60e91f9ed87e81dc680425375590b')
 
 build() {
