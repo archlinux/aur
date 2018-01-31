@@ -4,12 +4,12 @@
 
 pkgname=godot
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('scons' 'clang' 'yasm')
+makedepends=('scons' 'gcc' 'yasm')
 depends=('libxcursor' 'libxinerama' 'freetype2' 'alsa-lib' 'libxrandr' 'libxi' 'libglvnd')
 conflicts=("godot-git" "godot-pulse")
 _arch=''
@@ -40,7 +40,7 @@ build() {
   scons platform=x11 \
         tools=yes \
         target=release_debug \
-        use_llvm=yes \
+        use_llvm=no \
         builtin_openssl=yes \
         colored=yes \
         pulseaudio=no bits=${_arch} -j $((`nproc`+1))
@@ -55,6 +55,6 @@ package() {
 
   cd "${srcdir}"/${pkgname}-${pkgver}-stable
 
-  install -D -m755 bin/godot.x11.opt.tools.${_arch}.llvm "${pkgdir}"/usr/bin/godot
+  install -D -m755 bin/godot.x11.opt.tools.${_arch} "${pkgdir}"/usr/bin/godot
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/godot/LICENSE
 }
