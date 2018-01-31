@@ -1,13 +1,13 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=r9217.8721f7ed7
-pkgrel=1
+pkgver=r9341.e69ddf0e1
+pkgrel=2
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
 license=('GPL')
-depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'wxpython' 'oce')
+depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'wxpython' 'oce' 'ngspice>=27')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
@@ -36,8 +36,6 @@ build() {
               -DKICAD_SCRIPTING_WXPYTHON=ON \
               -DKICAD_SCRIPTING_ACTION_MENU=ON
 
-  # -DKICAD_SPICE=ON is not yet added because it really depends an
-  # unreleased version of ngspice...
   make
 }
 
