@@ -17,7 +17,7 @@ pkgbase = jaziku
 	depends = imagemagick
 	depends = hpgl
 	depends = dos2unix
-	optdepends = ncl: maps)
+	optdepends = ncl: maps
 	source = jaziku-1.0.0.tar.gz::https://docs.google.com/uc?id=0B2KQf7Dbx7DUakRMcEM3WUstMFE&export=download
 	md5sums = 2f985d0d3a8fe2650aecbb96e0672114
 

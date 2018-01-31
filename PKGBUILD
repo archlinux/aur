@@ -7,7 +7,7 @@ url="http://hg.ideam.gov.co:8000/meteorologia/jaziku/summary"
 arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('python2' 'python2-distribute' 'python2-scipy' 'python2-dateutil' 'python2-matplotlib' 'python2-numpy' 'python2-pillow' 'python2-clint' 'imagemagick' 'hpgl' 'dos2unix')
-optdepends=("ncl: maps)")
+optdepends=("ncl: maps")
 source=("$pkgname-$pkgver.tar.gz::https://docs.google.com/uc?id=0B2KQf7Dbx7DUakRMcEM3WUstMFE&export=download")
 md5sums=('2f985d0d3a8fe2650aecbb96e0672114')
 
