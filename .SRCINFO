@@ -16,9 +16,9 @@ pkgbase = jaziku
 	depends = python2-clint
 	depends = imagemagick
 	depends = hpgl
-	depends = ncl
 	depends = dos2unix
-	source = https://docs.google.com/uc?id=0B2KQf7Dbx7DUakRMcEM3WUstMFE&export=download
+	optdepends = ncl: maps)
+	source = jaziku-1.0.0.tar.gz::https://docs.google.com/uc?id=0B2KQf7Dbx7DUakRMcEM3WUstMFE&export=download
 	md5sums = 2f985d0d3a8fe2650aecbb96e0672114
 
 pkgname = jaziku
