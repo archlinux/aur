@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IBM Capsense USB Util
+Comment=Graphical utility for configuring xwhatsit capsense keyboard controllers
+Exec=ibm_capsense_usb_util
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=preferences-desktop-keyboard
+Categories=Settings;HardwareSettings;Qt;
