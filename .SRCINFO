@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.14.15
-	pkgrel = 2
+	pkgver = 4.14.16
+	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
 	license = GPL2
@@ -12,8 +12,8 @@ pkgbase = linux-bfq-mq
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.15.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.15.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.16.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.16.sign
 	source = https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/4.14-bfq-sq-mq-git-20180130.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.14/0009-bfq-sq-mq-fix-patching-error-with-20180109.patch
@@ -38,7 +38,7 @@ pkgbase = linux-bfq-mq
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
 	sha256sums = SKIP
-	sha256sums = 54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030
+	sha256sums = 35a107a45a6e8884d3ab442f9845007e3fcf9998441bf2324a86e91056628fe7
 	sha256sums = SKIP
 	sha256sums = 8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8
 	sha256sums = adee2d85010ee82aea734f1bbebb128e8dcfdaf3ff842de761a40b23f9533b53
@@ -51,7 +51,7 @@ pkgbase = linux-bfq-mq
 	sha256sums = cfe7d6be0c243bcf6e30f1145991424ad3fa90d43bda214e0df613de007699b6
 	sha256sums = 19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0
 	sha256sums = 7c51d0053053a3a0f6ed8759a5464ed5a3275a9dd832513a5678c3bcead9e5d5
-	sha256sums = ccd60e7fb0653e1edc2d277d93c907456cfbd8bb934cc540d115dbd27b349086
+	sha256sums = 472e17f1a637228ef10d6bcf29e266e8d745f2a86bcbbdb7985545b37f9be1cf
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = 5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184
@@ -70,19 +70,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.14.15
-	provides = linux=4.14.15
+	provides = linux-bfq-mq=4.14.16
+	provides = linux=4.14.16
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.14.15
-	provides = linux-bfq-mq-headers=4.14.15
-	provides = linux-headers=4.14.15
+	depends = linux-bfq-mq=4.14.16
+	provides = linux-bfq-mq-headers=4.14.16
+	provides = linux-headers=4.14.16
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.14.15
-	provides = linux-bfq-mq-docs=4.14.15
-	provides = linux-docs=4.14.15
+	depends = linux-bfq-mq=4.14.16
+	provides = linux-bfq-mq-docs=4.14.16
+	provides = linux-docs=4.14.16
 
