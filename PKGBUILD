@@ -26,7 +26,7 @@ package_goland() {
   install -d -m 755 "${pkgdir}/usr/share/applications/"
   install -d -m 755 "${pkgdir}/usr/share/pixmaps/"
 
-  rsync -rtl "${srcdir}/GoLand-${pkgver%.*}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jre64
+  rsync -rtl "${srcdir}/GoLand-${pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jre64
 
   chmod +x "${pkgdir}/opt/${pkgbase}/plugins/intellij-go-plugin/lib/dlv/linux/dlv"
   ln -s "/opt/${pkgbase}/bin/${pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
@@ -39,5 +39,5 @@ package_goland-jre() {
   replaces=('gogland-jre')
 
   install -d -m 755 "${pkgdir}/opt/${pkgbase}"
-  rsync -rtl "${srcdir}/GoLand-${pkgver%.*}/jre64" "${pkgdir}/opt/${pkgbase}"
+  rsync -rtl "${srcdir}/GoLand-${pkgver}/jre64" "${pkgdir}/opt/${pkgbase}"
 }
