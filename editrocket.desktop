@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=EditRocket
+GenericName=Text Editor
+Comment=Syntax highlighting for over 20 programming languages.
+Exec=/opt/editrocket/editrocket.sh %F
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Categories=Utility;TextEditor;
+Icon=editrocket
