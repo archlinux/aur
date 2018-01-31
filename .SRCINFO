@@ -6,6 +6,7 @@ pkgbase = hdf-eos5
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = zlib
 	depends = libaec
 	depends = hdf5_18
 	depends = gdal
@@ -13,7 +14,6 @@ pkgbase = hdf-eos5
 	options = libtool
 	options = staticlibs
 	source = ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.1.16.tar.Z
-	source = patches.tar.gz
 	md5sums = c4a3286f38a2faafc840017af4bd39d6
 	md5sums = 0d0285e6f81f24a961adf9d9f84973ce
 

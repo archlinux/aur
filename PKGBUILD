@@ -8,28 +8,14 @@ pkgdesc="The HDF-EOS5 is a software library designed built on HDF5 to support th
 url="http://www.hdfeos.org/software/library.php"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('libaec' 'hdf5_18' 'gdal' 'hdf-eos-common')
+depends=('zlib' 'libaec' 'hdf5_18' 'gdal' 'hdf-eos-common')
 options=('libtool' 'staticlibs')
-source=(ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.$pkgver.tar.Z 'patches.tar.gz')
+source=(ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.$pkgver.tar.Z)
 md5sums=('c4a3286f38a2faafc840017af4bd39d6'
          '0d0285e6f81f24a961adf9d9f84973ce')
 
-prepare() {
-  cd "$srcdir/hdfeos5"
-  # patches
-  #patch -Np1 --ignore-whitespace -i "$srcdir/patches/pthreads.patch"
-  patch -Np1 --ignore-whitespace -i "$srcdir/patches/pkg-config.patch"
-  patch -Np1 --ignore-whitespace -i "$srcdir/patches/configure.patch"
-  patch -Np1 --ignore-whitespace -i "$srcdir/patches/gctp_remove.patch"
-  patch -Np1 --ignore-whitespace -i "$srcdir/patches/libtool_fixes.patch"
-  patch -Np1 --ignore-whitespace -i "$srcdir/patches/hdf5_transition.patch"
-  patch -Np1 --ignore-whitespace -i "$srcdir/patches/hdf_hl.patch"
-  #patch -Np1 --ignore-whitespace -i "$srcdir/patches/strcpy-overlap.patch"
-  patch -Np1 --ignore-whitespace -i "$srcdir/patches/fix_HE5_EHHEisHE5.patch"
-}
-
 build() {
-  cd "$srcdir/hdfeos5"
+  cd "hdfeos5"
   #export LDFLAGS="-lhe5_hdfeos -lGctp -lhdf5_hl -lhdf5 -ljpeg -lz -lsz -lm"
   export LDFLAGS="-lhdf5_hl -lhdf5 -ljpeg -lz -lsz -lm"
 
@@ -58,7 +44,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/hdfeos5"
+  cd "$hdfeos5"
   make DESTDIR="$pkgdir" install
   
   # delete common files
