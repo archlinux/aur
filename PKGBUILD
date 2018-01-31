@@ -2,8 +2,8 @@
 
 pkgname=ryzen-stabilizator-git
 _pkgname=ryzen-stabilizator
-pkgver=r12.95f0b25
-pkgrel=2
+pkgver=r13.16edcc5
+pkgrel=1
 pkgdesc="Disables C6 C-state and/or processor boosting on an AMD Ryzen processor, in order to help with the infamous
 MCE-random-reboots-while-idle issue."
 arch=("x86_64")
