@@ -11,8 +11,7 @@ arch=('i686' 'x86_64')
 depends=('zlib' 'libaec' 'hdf5_18' 'gdal' 'hdf-eos-common')
 options=('libtool' 'staticlibs')
 source=(ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.$pkgver.tar.Z)
-md5sums=('c4a3286f38a2faafc840017af4bd39d6'
-         '0d0285e6f81f24a961adf9d9f84973ce')
+md5sums=('c4a3286f38a2faafc840017af4bd39d6')
 
 build() {
   cd "hdfeos5"
