@@ -1,21 +1,7 @@
-From 76e1c9f353e2168ae2eae1d09c2979e7547b0e1a Mon Sep 17 00:00:00 2001
-From: "G.raud" <graud@gmx.com>
-Date: Mon, 29 Jan 2018 09:53:14 +0100
-Subject: [PATCH] Makefile: do not disable deprecated glib/GTK code
-
-This change fixes the build of gjackspa against recent glib/glibmm
-(compiles with version 2.50.3).
----
- Makefile | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index a5d5984..0e5139b 100644
---- a/Makefile
-+++ b/Makefile
-@@ -54,12 +54,12 @@ PACKAGE_VERSION	= $(VERSION)
- # Remove the _g<SHA1> part from the $VERSION
- RPM_VERSION	= $(shell echo $(VERSION) | $(SED) -e 's/_g[0-9a-z]\+//')
+diff -uNr ngjackspa-1.0.orig/Makefile ngjackspa-1.0/Makefile
+--- ngjackspa-1.0.orig/Makefile	2013-07-07 08:49:29.000000000 +0200
++++ ngjackspa-1.0/Makefile	2018-01-31 15:24:08.623983438 +0100
+@@ -56,8 +56,8 @@
  
  CFLAGS ?= -Wall -Werror -g
  CXXFLAGS ?= $(CFLAGS)
@@ -26,11 +12,7 @@ index a5d5984..0e5139b 100644
  override LDFLAGS += -lm -ljack -ldl `pkg-config --libs glib-2.0` -g
  
  PROGS = njackspa gjackspa qjackspa jackspa-cli
- SCRIPTS =
- MODULES = jackspa.o control.o
-@@ -168,11 +168,11 @@ ChangeLog :
- 	> $@
- 
+@@ -170,7 +170,7 @@
  njackspa : njackspa.c curses.c $(COMMONS) $(MODULES)
  	$(CC) $(CFLAGS) -o $@ $< $(MODULES) $(LDFLAGS) -lncurses
  gjackspa : gjackspa.cpp $(COMMONS) $(MODULES)
@@ -39,8 +21,14 @@ index a5d5984..0e5139b 100644
  	  -o $@ $< $(MODULES) $(LDFLAGS) `pkg-config gtkmm-2.4 --libs`
  qjackspa : force $(QMAKE_MAKEFILE)
  	$(MAKE) -f $(QMAKE_MAKEFILE)
- jackspa-cli : jackspa-cli.c $(COMMONS) $(MODULES)
- 	$(CC) -D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED $(CFLAGS) \
--- 
-2.11.0
-
+diff -uNr ngjackspa-1.0.orig/qjackspa.pro ngjackspa-1.0/qjackspa.pro
+--- ngjackspa-1.0.orig/qjackspa.pro	2013-07-07 08:49:29.000000000 +0200
++++ ngjackspa-1.0/qjackspa.pro	2018-01-31 15:24:30.582983191 +0100
+@@ -6,7 +6,6 @@
+ PKGCONFIG += glib-2.0
+ DEPENDPATH += .
+ INCLUDEPATH += .
+-DEFINES += G_DISABLE_DEPRECATED
+ LIBS += -ljack -ldl -lm
+ 
+ # Input
