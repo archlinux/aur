@@ -5,16 +5,16 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=185.0.0
+pkgver=186.0.0
 pkgrel=1
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform (gcloud), plus Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
 arch=('i686' 'x86_64')
 # replaces() only works for sysupgrade, not normal install/upgrade
-conflicts=('google-appengine-python-php'
+conflicts=('google-appengine-python-php' 'google-appengine-go'
            'google-appengine-python' 'google-appengine-php')
-replaces=('google-appengine-python-php'
+replaces=('google-appengine-python-php' 'google-appengine-go'
           'google-appengine-python' 'google-appengine-php')
 depends=('python2')
 optdepends=('go: for Go version of App Engine'
@@ -27,13 +27,13 @@ options=('!strip' 'staticlibs')
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
 sha256sums_x86_64=(
-  '407c7318f25435ebd32cf12bf536da501786aa3095da406eab240e5e936202bb'
+  '7ca6c11e5a8d62882d54313fcb10a5270c278a33b9e6c7d7ffb8c5e45677b1a2'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
 sha256sums_i686=(
-  'b2211e9979aa0f840a8d9cf60f96a9c75fc884fd49e7e08493a565d9f3116179'
+  'd7bb560076ab07ea2e179e373d59e1f901d648c045ed286ac5301cf067b8e6bf'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 
 prepare() {
@@ -58,7 +58,7 @@ package() {
 
   # app-engine-python is actually the PHP+Python SDK widgets combined
   # NOTE: due to how Google is using argparse we must bare word the components
-  _components=(app-engine-python beta)
+  _components=(app-engine-python beta app-engine-go)
   msg2 "Running bootstrapping script and adding these additional components:"
   msg2 "${_components[*]}"
   python2 "$pkgdir/opt/$pkgname/bin/bootstrapping/install.py" \
