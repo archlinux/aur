@@ -1,6 +1,6 @@
 pkgbase = inkscape-git
 	pkgdesc = An Open Source vector graphics editor, using SVG file format, from git master
-	pkgver = 20180130.20096
+	pkgver = 20180131.20102
 	pkgrel = 1
 	url = https://launchpad.net/inkscape
 	arch = i686
@@ -36,6 +36,7 @@ pkgbase = inkscape-git
 	optdepends = python2-lxml: some extensions and filters
 	optdepends = uniconvertor: reading/writing to some proprietary formats
 	optdepends = ruby: for simplepath extension
+	optdepends = imagemagick6: for some file conversions
 	provides = inkscape
 	conflicts = inkscape
 	options = !libtool

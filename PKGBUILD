@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-git
-pkgver=20180130.20096
+pkgver=20180131.20102
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://launchpad.net/inkscape"
@@ -14,7 +14,8 @@ depends=('aspell' 'gc' 'poppler-glib' 'libxslt' 'gsl' 'libyaml' 'potrace' 'gdl>=
 optdepends=('python2-numpy: some extensions'
             'python2-lxml: some extensions and filters'
             'uniconvertor: reading/writing to some proprietary formats'
-	    'ruby: for simplepath extension')
+	    'ruby: for simplepath extension'
+	    'imagemagick6: for some file conversions')
 makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'pango' 'python' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
@@ -38,14 +39,14 @@ prepare() {
   sed -i 's|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
   sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
   sed -i 's|"python"|"python2"|g' src/main.cpp
-  patch -Np1 < "$srcdir"/document-interface.patch
+  patch -Np1 < "$srcdir"/document-interface.patch || true
 }
 
 build() {
   cd "$_gitname"
   [[ -d build ]] || mkdir build
   cd build
-  
+  export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
   cmake .. \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=RELEASE \
@@ -57,5 +58,4 @@ build() {
 package() {
   cd "$_gitname/build"
   make DESTDIR="$pkgdir" install
-  rm "$pkgdir"/usr/share/icons/hicolor/icon-theme.cache
 }
