@@ -1,6 +1,6 @@
 pkgbase = stride
 	pkgdesc = Stride Desktop
-	pkgver = 1.7.9
+	pkgver = 1.10.7
 	pkgrel = 1
 	url = www.atlassian.com
 	install = .install
