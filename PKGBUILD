@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_geometry_msgs."
 url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-kinetic-tf2-geometry-msgs'
-pkgver='0.5.15'
+pkgver='0.5.17'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,11 +19,11 @@ ros_makedepends=(ros-kinetic-python-orocos-kdl
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-kinetic-python-orocos-kdl
-  ros-kinetic-geometry-msgs
+ros_depends=(ros-kinetic-geometry-msgs
+  ros-kinetic-python-orocos-kdl
+  ros-kinetic-tf2
   ros-kinetic-orocos-kdl
-  ros-kinetic-tf2-ros
-  ros-kinetic-tf2)
+  ros-kinetic-tf2-ros)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry2-release-release-kinetic-tf2_geometry_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2_geometry_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e3e26012a3ce1b82cc8d29f313cce7848903452086767b29aa06dc57fd8883f9')
+sha256sums=('739892a28b4b006471aca208af2fd593aed061313bb084114d672444a1423f86')
 
 build() {
   # Use ROS environment variables
