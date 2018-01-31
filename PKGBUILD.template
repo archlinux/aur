@@ -1,0 +1,26 @@
+# Maintainer: larte <lauri.arte@gmail.com>
+# Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
+
+pkgname=draft-bin
+pkgdesc="Draft client"
+pkgver=PKGVER
+pkgrel=1
+arch=('i686' 'x86_64')
+url="http://draft.sh"
+license=('mit')
+conflicts=()
+_draft_file=draft-$pkgver
+source_i686=($_draft_file::URL_386)
+source_x86_64=($_draft_file::URL_AMD64)
+md5sums_i686=('MD5_386')
+md5sums_x86_64=('MD5_AMD64')
+
+package() {
+  FOLDER="linux-386"
+  if [[ $CARCH -eq 'x86_64' ]];
+  then
+    FOLDER="linux-amd64"
+  fi
+
+  install -Dm 755 "$srcdir/$FOLDER/draft" "$pkgdir/usr/bin/draft"
+}

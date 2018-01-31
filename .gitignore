@@ -1,0 +1,5 @@
+*.bak
+tmp
+src
+pkg
+draft-*
