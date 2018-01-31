@@ -2,7 +2,7 @@
 pkgname=frequest-git
 pkgver=v1.1.r3.1d67226
 pkgrel=1
-pkgdesc=""
+pkgdesc="A fast, lightweight and open-source desktop application to execute HTTP(s) requests"
 arch=('x86' 'x86_64')
 url="https://fabiobento512.github.io/FRequest/"
 license=('GPL')
