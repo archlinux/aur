@@ -1,0 +1,7 @@
+.idea/
+make-includes/
+pkg/
+*.pkg.tar.xz
+shell-includes/
+src/
+*.tar.gz
