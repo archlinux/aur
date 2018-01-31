@@ -4,12 +4,12 @@
 
 pkgname=xsoldier
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="2D shoot 'em up single-player game"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.interq.or.jp/libra/oohara/xsoldier"
-license=('GPL')
-depends=('sdl_image')
+license=('GPL2')
+depends=('sdl_image' 'libxpm')
 install="${pkgname}.install"
 source=("${url}/${pkgname}-${pkgver}.tar.gz"
         "install-paths.patch"
@@ -17,7 +17,7 @@ source=("${url}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop")
 md5sums=('f76c2e5465a1a2aca2286415b13b01a4'
          '6ea2ecd288e44090f79aa77292a5c74e'
-         '438b0f26e90042e2b2fa47894b194613'
+         'badce1acc663e08bdc65ab2bedcfe879'
          '27d579d5645e77957cec358ded399d2b')
 
 prepare() {
