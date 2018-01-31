@@ -3,7 +3,7 @@
 
 pkgname=i3lock-media-keys
 pkgver=2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="An improved screenlocker based upon XCB and PAM. Includes patches for media control support when locked."
 arch=('x86_64')
 url="https://i3wm.org/i3lock/"
@@ -13,8 +13,8 @@ depends=('xcb-util-image' 'libev' 'cairo' 'libxkbcommon-x11' 'pam')
 options=('docs')
 conflicts=('i3lock')
 backup=("etc/pam.d/i3lock")
-source=("https://i3wm.org/i3lock/$pkgname-$pkgver.tar.bz2"
-        "https://i3wm.org/i3lock/$pkgname-$pkgver.tar.bz2.asc"
+source=("https://i3wm.org/i3lock/i3lock-$pkgver.tar.bz2"
+        "https://i3wm.org/i3lock/i3lock-$pkgver.tar.bz2.asc"
         "allow_media_keys.patch")
 sha256sums=('29eb32bf317fad7b292e15be6c02d693bfc6dbfdd6d98f0a6db71e189140c8ee'
             'SKIP'
@@ -34,7 +34,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/i3lock-${pkgver}"
 
   # Fix ticket FS#31544, sed line taken from gentoo
   sed -i -e 's:login:system-auth:' i3lock.pam
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/i3lock-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   install -Dm644 i3lock.1.gz ${pkgdir}/usr/share/man/man1/i3lock.1.gz
