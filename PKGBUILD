@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-mga
-pkgver=xf86+video+mga+1.6.5+8+g2998868
+pkgver=1.6.5+8+g2998868
 pkgrel=1
 pkgdesc="X.org mga video driver"
 arch=(x86_64)
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe | sed 's/^.*mga-//g' | sed 's/-/+/g'
 }
 
 prepare() {
