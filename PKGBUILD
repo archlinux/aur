@@ -25,6 +25,15 @@ package() {
 	install -Dm 644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/
 	# Copy fonts
 	install -Dm 644 ${pkgname}/assets/fonts/*.ttf ${pkgdir}/usr/share/fonts/TTF/
+	# Create symbolic links for any assets containing non-lowercase letters
+	IFS=$(echo -en "\n\b") # Loop on newlines, not spaces
+	for file in $(find ${pkgname}/assets/ -not -path "*/fonts/*" -regex ".*/.*[A-Z].*"); do
+		filename="$(basename -- "$file")"
+		# Check if filename is not the same as itself lowercased
+		if [ "$filename" != "${filename,,}" ]; then
+			ln -sf "$filename" "${file%/*}/${filename,,}"
+		fi
+	done
 	# Move application files
 	mv ${pkgname} ${pkgdir}/usr/share/${pkgname}
 }
