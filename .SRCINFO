@@ -1,12 +1,12 @@
 pkgbase = ramroot
 	pkgdesc = Load root filesystem completely to RAM during boot
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/arcmags/ramroot
 	arch = any
 	license = GPL
 	depends = sudo
-	source = https://github.com/arcmags/ramroot/1.1.6.tar.gz
-	md5sums = c93a20f98c97f306528e5cbbac4ca907
+	source = https://github.com/arcmags/ramroot/1.1.8.tar.gz
+	md5sums = 9412771e7ba0736c37d87f05c28abe24
 
 pkgname = ramroot
