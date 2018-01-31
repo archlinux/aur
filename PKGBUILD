@@ -2,16 +2,16 @@
 # Contributor: richli
 
 pkgname=hdf-eos5
-pkgver=1.15
-pkgrel=4
+pkgver=1.16
+pkgrel=1
 pkgdesc="The HDF-EOS5 is a software library designed built on HDF5 to support the same Grid/Point/Swath functionality in HDF-EOS 2 and to the extent possible it will be built with the same calling sequences as the original HDF-EOS 2 library."
 url="http://www.hdfeos.org/software/library.php"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('szip' 'hdf5_18' 'gdal' 'hdf-eos-common')
+depends=('libaec' 'hdf5_18' 'gdal' 'hdf-eos-common')
 options=('libtool' 'staticlibs')
 source=(ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.$pkgver.tar.Z 'patches.tar.gz')
-md5sums=('5d607a13dd42e559bfc90e278a8ec919'
+md5sums=('c4a3286f38a2faafc840017af4bd39d6'
          '0d0285e6f81f24a961adf9d9f84973ce')
 
 prepare() {
