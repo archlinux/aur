@@ -2,8 +2,6 @@
 # Contributor: Allen Choong <allencch at hotmail dot com>
 # Contributor: Indeed <fengjared at gmail dot com>
 
-# Arch 32 is untested and unlikely to work. Patches welcome.
-
 _opt_RPM=1 # Default 1
 # 0 = deb, the deb has hardcoded references to /usr/local/lib
 # 1 = rpm, the RPM has hardcoded references to /usr/local/lib64
@@ -113,9 +111,8 @@ pkgver='3.40'; _commonver='3.80'; _dl0='8'; _dl1='0100002708'; _dl2='17'; _co='u
 
 _pkgver="${pkgver}"
 pkgrel='2'
-pkgdesc='CUPS Canon UFR II LT driver for imageCLASS D LBP i-SENSYS MF imagePRESS iPR imageRUNNER iR ADVANCE iR-ADV FAX color copiers and printers, does not require PCL/PXL or PS dealer LMS license'
+pkgdesc='CUPS Canon UFR II LT driver for imageCLASS D Laser Shot LBP i-SENSYS MF imagePRESS iPR imageRUNNER iR ADVANCE iR-ADV FAX color copiers and printers, does not require PCL/PXL or PS dealer LMS license'
 # Not UFR II: PRO PC-D
-# UFR II but not included: Laser Shot
 arch=('i686' 'x86_64')
 url='http://support-asia.canon-asia.com/contents/ASIA/EN/0100270810.html'
 license=('GPL' 'MIT' 'custom')
@@ -242,14 +239,16 @@ package() {
     cp -dprx 'usr/local/.' 'usr/'
     rm -r 'usr/local'
 
-    if [ "${_opt_32bitonly}" -eq 0 ]; then
-      mv 'usr/lib' 'usr/lib32'
-      mv 'usr/lib64' 'usr/lib'
-      # This 32 bit lib is only searched for in /usr/lib. postinst puts it in both places.
-      ln -s '../lib32/libc3pl.so' -t 'usr/lib'
-    else
-      mkdir 'usr/lib32'
-      mv 'usr/lib'/*.so* 'usr/lib'/*.a 'usr/lib32'
+    if [ "${CARCH}" = 'x86_64' ]; then
+      if [ "${_opt_32bitonly}" -eq 0 ]; then
+        mv 'usr/lib' 'usr/lib32'
+        mv 'usr/lib64' 'usr/lib'
+       # This 32 bit lib is only searched for in /usr/lib. postinst puts it in both places.
+        ln -s '../lib32/libc3pl.so' -t 'usr/lib'
+      else
+        mkdir 'usr/lib32'
+        mv 'usr/lib'/*.so* 'usr/lib'/*.a 'usr/lib32'
+      fi
     fi
   else
     if [ "${_inst_common}" -ne 0 ]; then
@@ -282,24 +281,26 @@ package() {
     fi
     rm 'data.tar.gz' 'control.tar.gz' 'debian-binary'
 
-    # move the 32 bit libs into lib32
-    if pushd 'usr/lib/' > /dev/null; then
-      local _lib32=()
-      local _f _t
-      for _f in *.so*; do
-        _t="$(file -L "${_f}")"
-        if [ "${_t//32-bit/}" != "${_t}" ]; then
-          _lib32+=("${_f}")
+    if [ "${CARCH}" = 'x86_64' ]; then
+      # move the 32 bit libs into lib32
+      if pushd 'usr/lib/' > /dev/null; then
+        local _lib32=()
+        local _f _t
+        for _f in *.so*; do
+          _t="$(file -L "${_f}")"
+          if [ "${_t//32-bit/}" != "${_t}" ]; then
+            _lib32+=("${_f}")
+          fi
+        done
+        mkdir '../lib32'
+        mv "${_lib32[@]}" '../lib32/'
+        if [ "${_opt_32bitonly}" -ne 0 ]; then
+          mv *.a '../lib32/'
         fi
-      done
-      mkdir '../lib32'
-      mv "${_lib32[@]}" '../lib32/'
-      if [ "${_opt_32bitonly}" -ne 0 ]; then
-        mv *.a '../lib32/'
+        # This 32 bit lib is only searched for in /usr/lib. postinst puts it in both places.
+        ln -s '../lib32/libc3pl.so'
+        popd > /dev/null
       fi
-      # This 32 bit lib is only searched for in /usr/lib. postinst puts it in both places.
-      ln -s '../lib32/libc3pl.so'
-      popd > /dev/null
     fi
   fi
 
