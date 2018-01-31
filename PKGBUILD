@@ -10,7 +10,7 @@ pkgrel=1
 url='https://gnumdk.github.io/lollypop-web/'
 arch=('i686' 'x86_64')
 license=('GPL3')
-makedepends=('meson' 'ninja')
+makedepends=('git' 'meson' 'ninja')
 depends=(
   'appstream-glib' 'desktop-file-utils' 'gobject-introspection' 'gst-python'
   'gstreamer' 'gtk3' 'itstool' 'python-cairo' 'python-dbus' 'python-gobject'
