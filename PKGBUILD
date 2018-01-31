@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss04
-pkgver=1.13.4
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: Menlo.'
 arch=('any')
@@ -21,7 +21,7 @@ conflicts=('ttf-iosevka-pack'
            'ttf-iosevka-term-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-term-ss04-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('789e3fc665667dec1a80aefc87e51dc5fbf995cd142fd4863db2831d1b8ca8bc'
+sha256sums=('ce14f5045b278c76c62ce0cc57b1f63c92084aa0d7ba0e435b931576d79d81c6'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
