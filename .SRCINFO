@@ -1,13 +1,13 @@
 pkgbase = paudit
 	pkgdesc = Simple Arch package audit script
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/Myl0g/paudit
 	arch = any
 	license = GPL
 	depends = yaourt
-	source = https://github.com/Myl0g/paudit/archive/v1.1.tar.gz
-	md5sums = 15ec9bd4dbe9312a2ec73a6dde884021
+	source = https://github.com/Myl0g/paudit/archive/v1.2.tar.gz
+	md5sums = 032866229d45bdab2c971f56c83fc691
 
 pkgname = paudit
 

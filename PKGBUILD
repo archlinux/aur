@@ -1,6 +1,6 @@
 # Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 pkgname=paudit
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 epoch=
 pkgdesc="Simple Arch package audit script "
@@ -15,4 +15,4 @@ package() {
 	mv "${srcdir}/${pkgname}-${pkgver}/${pkgname}.sh" "${pkgdir}/usr/bin/paudit"
 	chmod 755 "${pkgdir}/usr/bin/paudit"
 }
-md5sums=('15ec9bd4dbe9312a2ec73a6dde884021')
+md5sums=('032866229d45bdab2c971f56c83fc691')
