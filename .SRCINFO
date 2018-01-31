@@ -1,0 +1,17 @@
+pkgbase = gpsim-svn
+	pkgdesc = A full-featured software simulator for Microchip PIC microcontrollers
+	pkgver = r2435
+	pkgrel = 1
+	url = http://gpsim.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gputils
+	depends = gtk2+extra
+	depends = popt
+	conflicts = gpsim
+	source = gpsim::svn+https://svn.code.sf.net/p/gpsim/code/trunk/
+	sha256sums = SKIP
+
+pkgname = gpsim-svn
+
