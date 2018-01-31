@@ -17,7 +17,7 @@ makedepends=('cmake' 'clang' 'clang-tools-extra' 'boost' 'llvm')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('7a41deebf594e845a02f9f037a00f8cc19af65ba2fd7c364a0e5c3702e324506')
+sha256sums=('54975c21e7c23f6e759654dc20ab83a70cd2513216f1217b39babbf24235602c')
 
 prepare() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
