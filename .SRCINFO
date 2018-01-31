@@ -1,0 +1,38 @@
+pkgbase = python-hgvs
+	pkgdesc = HGVS Python parser, formatter, mapper, validator
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://hgvs.readthedocs.io/en/stable/
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-hgvs-1.1.1.tar.gz::https://pypi.python.org/packages/8a/cd/57dbb98737c3abccd486ca8a216525765ea1d6681bedf72a2227a386f23b/hgvs-1.1.1.tar.gz#md5=fe9996f6eab2e0cb9b43d5397c981ee7
+	sha256sums = b063ee42aabc4a7ed673ad71ba6fb06f7bb953413e1747d9dfae9e94c4ae1b7e
+
+pkgname = python-hgvs
+	depends = python
+	depends = python-attrs
+	depends = python-biocommons.seqrepo
+	depends = python-biopython
+	depends = python-bioutils
+	depends = python-parsley
+	depends = python-psycopg2
+	depends = python-six
+	optdepends = ipython: for hgvs-shell utility
+
+pkgname = python2-hgvs
+	depends = python2
+	depends = python2-attrs
+	depends = python2-biocommons.seqrepo
+	depends = python2-biopython
+	depends = python2-bioutils
+	depends = python2-configparser
+	depends = python2-enum34
+	depends = python2-parsley
+	depends = python2-psycopg2
+	depends = python2-six
+
