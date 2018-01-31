@@ -9,7 +9,7 @@
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.14
 _pkgver=4.14.15
-_rtpatchver=rt12
+_rtpatchver=rt13
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('x86_64')
@@ -45,7 +45,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
             '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
             'SKIP'
-            '76e6628c22b80ea7e6aaea028bd91847eb2e7819e1887ea3a6a5f19dd661e261'
+            '5b8dbdebc9034b2aa26250e630cad31cfe32044ce2e8b9e81a53fcfae069dfeb'
             'SKIP'
             '8ff52002e8b6b2ec628fc699ff32c989ddc07b59587b73211c5fba6d897eb599'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
