@@ -12,7 +12,7 @@ depends=('libaec' 'hdf5_18' 'gdal' 'hdf-eos-common')
 options=('libtool' 'staticlibs')
 source=(ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.$pkgver.tar.Z 'patches.tar.gz')
 md5sums=('c4a3286f38a2faafc840017af4bd39d6'
-         '0d0285e6f81f24a961adf9d9f84973ce')
+         'e65fffc8956e953f37a767ce9782b592')
 
 prepare() {
   cd "$srcdir/hdfeos5"
