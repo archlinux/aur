@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=molequeue
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Desktop integration of high performance computing resources"
 arch=(x86_64)
@@ -9,16 +9,11 @@ url="http://www.openchemistry.org/"
 license=(custom)
 depends=(qt5-base)
 makedepends=(cmake)
-source=($pkgname-$pkgver.tar.gz::"https://github.com/OpenChemistry/molequeue/archive/$pkgver.tar.gz"
-        molequeue-gcc6.patch::"https://github.com/OpenChemistry/molequeue/commit/a983ff61.patch")
-md5sums=('2f49f3e28965af6fec8a6df37d8ec697'
-         'd57372453ba647ea741b0efb7e50dc50')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/OpenChemistry/molequeue/archive/$pkgver.tar.gz")
+sha256sums=('7dd234742c8d73be95281fedf4ed9d09648ecc351afb5f098cd32f48c3df3bd5')
 
 prepare() {
   mkdir -p build
-# Fix GCC6 detection
-  cd $pkgname-$pkgver
-  patch -p1 -i ../molequeue-gcc6.patch
 }
 
 build() {
@@ -32,5 +27,5 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir"/$pkgname-$pkgver/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSE  -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
