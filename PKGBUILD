@@ -1,7 +1,7 @@
 # Maintainer: Victor Engmark <victor.engmark@gmail.com>
 pkgname=fgit-git
-pkgver=1.0.1.r0.92ed9eb
-pkgrel=2
+pkgver=1.0.2.r0.360dc3f
+pkgrel=1
 pkgdesc="Run git commands on multiple repositories with a single command"
 arch=('any')
 url='https://github.com/l0b0/fgit'
