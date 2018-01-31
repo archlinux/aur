@@ -1,6 +1,6 @@
 pkgbase = drawio-batch
 	pkgdesc = Command line converter for draw.io diagrams
-	pkgver = 8.0.1
+	pkgver = 8.0.1.1
 	pkgrel = 1
 	url = https://github.com/languitar/drawio-batch
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = drawio-batch
 	makedepends = python-setuptools
 	depends = python
 	depends = phantomjs
-	source = https://github.com/languitar/drawio-batch/archive/8.0.1.tar.gz
-	md5sums = 63a1456042ccb442dc1b0d9f2c0ee952
+	source = https://github.com/languitar/drawio-batch/archive/8.0.1.1.tar.gz
+	md5sums = 50a4671a6c1fa9bef3461f47c048b339
 
 pkgname = drawio-batch
 
