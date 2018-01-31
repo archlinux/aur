@@ -3,7 +3,3 @@ post_install() {
 	mkdir -p "/var/lib/prometheus"
 	chown prometheus.prometheus /var/lib/prometheus
 }
-
-post_remove() {
-	userdel prometheus
-}
