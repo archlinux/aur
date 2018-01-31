@@ -1,8 +1,8 @@
 ## arg 1:  the new package version
 print_notes() {
-    echo "By installing this package, you agree the Intel's Software Tools License Agreement."
-    echo 'Please see the license at /usr/share/licenses/ncsdk/LICENSE.'
-    echo 'Check out /usr/share/ncsdk/examples for sample codes.'
+    echo ">>> By installing this package, you agree the Intel's Software Tools License Agreement."
+    echo '>>> Please see the license at /usr/share/licenses/ncsdk/LICENSE.'
+    echo '>>> Check out /usr/share/ncsdk/examples for sample codes.'
 }
 
 pre_install() {
