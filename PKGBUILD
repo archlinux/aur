@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="Graphical program that sends svg files to vinyl cutters"
 url="https://github.com/Timmmm/robocut"
 license=('GPL3')
-arch=('i686' 'x86_64')
-depends=('qt5-svg' 'libusb')
+arch=('x86_64')
+depends=('qt5-svg')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz"
         "$pkgname.desktop")
@@ -22,8 +22,8 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make INSTALL_ROOT=$pkgdir install
-  install -Dm644 ../$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -d $pkgdir/usr/share/robocut/examples
-  install -m644 examples/* $pkgdir/usr/share/robocut/examples
+  make INSTALL_ROOT="$pkgdir" install
+  install -Dm644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -d "$pkgdir/usr/share/robocut/examples"
+  install -m644 examples/* "$pkgdir/usr/share/robocut/examples"
 }
