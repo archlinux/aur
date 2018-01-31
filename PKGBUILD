@@ -17,12 +17,14 @@ md5sums=("5399bbb72ef2cc35414ae78f1b5c0c61"
 
 package() {
 	# Create directory structure
-	install -dm 755 ${pkgdir}/usr/{bin,share/{,pixmaps,applications}}
+	install -dm 755 ${pkgdir}/usr/{bin,share/{,pixmaps,applications,fonts/TTF}}
 	# Copy console launcher .sh
 	install -Dm 755 ${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
 	# Copy application icon and .desktop launcher file
 	install -Dm 644 ${pkgname}/assets/gameicon.xpm ${pkgdir}/usr/share/pixmaps/${pkgname}.xpm
 	install -Dm 644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/
+	# Copy fonts
+	install -Dm 644 ${pkgname}/assets/fonts/*.ttf ${pkgdir}/usr/share/fonts/TTF/
 	# Move application files
 	mv ${pkgname} ${pkgdir}/usr/share/${pkgname}
 }
