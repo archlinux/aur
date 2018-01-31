@@ -9,7 +9,8 @@ license=('GPL')
 groups=()
 depends=('libmatroska' 'expat' 'flac' 'libvorbis' 'file' 'boost-libs' 'lzo' 'wxgtk' 'xdg-utils' 'desktop-file-utils' 'qt5-base' 'libogg' 'zlib' 'curl' 'libxkbcommon-x11')
 makedepends=('libmatroska' 'flac' 'libvorbis' 'file' 'wxgtk'
-             'boost-libs' 'lzo' 'xdg-utils' 'boost' 'ruby' 'git' 'libxslt' 'po4a' 'docbook-xsl')
+             'boost-libs' 'lzo' 'xdg-utils' 'boost' 'ruby' 'git' 'libxslt' 'po4a' 'docbook-xsl'
+	     'cmark' 'rake')
 
 provides=('mkvtoolnix')
 conflicts=('mkvtoolnix-cli' 'mkvtoolnix-gui')
