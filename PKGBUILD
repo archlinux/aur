@@ -2,8 +2,8 @@
 # https://github.com/FabioLolix
 
 pkgname=toptracker
-pkgver=1.4.9
-_srcrel=145
+pkgver=1.5.1
+_srcrel=169
 pkgrel=1
 pkgdesc="Time tracking software for remote teams and individuals"
 arch=('x86_64')
@@ -14,13 +14,13 @@ depends=('qt5-svg'
          'libxss'
          'gtk2'
          'gtk3'
-         'gcc-libs-multilib'
+         'gcc-libs'
          'libappindicator-gtk2')
 source=("https://d101nvfmxunqnl.cloudfront.net/desktop/builds/redhat/${pkgname}_${pkgver}-${_srcrel}_x86_64.rpm"
         'toptracker.desktop'
         'LICENSE')
 noextract=("${pkgname}_${pkgver}-${_srcrel}_x86_64.rpm")
-md5sums=('9d8da8294d415cc2de910903247675bc'
+md5sums=('c4a2702630dd574292bc2df6bf2ab527'
          'a58411ebce05fdd699fb70aa53767564'
          '0a9b08905e1cc75c6b23e6055efb2881')
 
