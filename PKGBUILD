@@ -1,6 +1,6 @@
 pkgname=mupen64plus-video-gliden64
-pkgver=2.0
-_pkgver=2_0
+pkgver=3.0
+_pkgver=3_0
 pkgrel=1
 pkgdesc="A new generation, open-source graphics plugin for N64 emulators"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('mupen64plus')
 makedepends=('cmake' 'boost')
 source=(https://github.com/gonetz/GLideN64/archive/Public_Release_${_pkgver}.tar.gz)
-sha256sums=('c1214e29a33ee5058d0a333d362851d466f496450bfc156c1c44f3864649e482')
+sha256sums=('65138b9bdf81c519f040ad907608df293825af5cac02a0ca68e8e0cce1046843')
 
 build() {
     cd "$srcdir/GLideN64-Public_Release_$_pkgver/src"
