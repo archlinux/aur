@@ -2,8 +2,8 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.9
-pkgrel=2
+pkgver=0.9.10
+pkgrel=1
 changelog=.CHANGELOG
 conflicts=("${pkgname}-git")
 source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
@@ -14,7 +14,7 @@ sha512sums=('SKIP'
             '52d49562cd9be4eec76b464153af1cce2211fdbd6113a6a60df042f7e8f7e6a8f1942df883dfaaa6c1bbfea004c4154d884dfa767e25fa3fadf9c58be1103fe6')
 
 _pkgname=${pkgname}
-# template start; name=lix; version=0.4;
+# template start; name=lix; version=0.5;
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -25,6 +25,7 @@ makedepends=('git' 'dmd' 'dub')
 build()
 {
 	cd "${srcdir}/${_pkgname}"
+	_r=0
 	
 	# force an upgrade of the dependencies to the local folder, without --cache=local they get added to the users home directory
 	dub upgrade --cache=local
@@ -45,9 +46,38 @@ build()
 	dub remove-local enumap-*/enumap
 	dub clean-caches
 	
-	if [[ $_r != 0 ]] ; then
+	if [[ "$_r" != 0 ]] ; then
 		# dub failed so we also fail after we removed the local dependencies
-		return $_r
+		return "$_r";
+	fi
+}
+
+check()
+{
+	cd "${srcdir}/${_pkgname}"
+	_r=0
+	
+	# force an upgrade of the dependencies to the local folder, without --cache=local they get added to the users home directory
+	dub upgrade --cache=local
+	
+	# add local dependencies to search path
+	dub add-local allegro-*/allegro
+	dub add-local derelict-enet-*/derelict-enet
+	dub add-local derelict-util-*/derelict-util
+	dub add-local enumap-*/enumap
+	
+	dub test --cache=local || _r=$?
+	
+	# remove local dependencies from search path so dub don't find them later again
+	dub remove-local allegro-*/allegro
+	dub remove-local derelict-enet-*/derelict-enet
+	dub remove-local derelict-util-*/derelict-util
+	dub remove-local enumap-*/enumap
+	dub clean-caches
+	
+	if [[ "$_r" != 0 ]] ; then
+		# dub failed so we also fail after we removed the local dependencies
+		return "$_r"
 	fi
 }
 

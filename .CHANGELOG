@@ -1,6 +1,45 @@
 Version history
 ===============
 
+0.9.10
+------
+
+2018-01-30
+
+Updated Arty's multiplayer maps, removed Knock 'em Dead, added Feaster Islands.
+
+Fix #294: Loading manual savestates could occasionally desync physics.
+This fix is covered with an automatic regression test.
+
+Fix #295: Stateload won't preserve the future when you wish to discard
+replay actions undone with framestepping. Covered with an automatic
+regression test.
+
+Fix #250: Permanent abilities appear as little icons over your own lix.
+
+Slightly reduced Lix's hunger for RAM by running the garbage collection
+more often. I still have to debug this gigantic hunger for RAM properly.
+On large maps, Lix might want 1.5 GB on Windows and 500 MB on Linux.
+
+Hardcoded the first miner eye position for the fuse and ability icons. Reason:
+This miner pose covers the eye with her arm.
+
+Don't paint over the level search button when the directory list updates.
+
+Translated the search string "Search for filenames or level titles".
+
+Removed the unused multiplayer jingles from data/sound/.
+
+Editor shows coordinates only in decimal, not in hex. The map size dialog
+still displays the size both in decimal and in hex.
+
+Editor doesn't count exits in singleplayer maps, to improve the visible
+difference between singleplayer and multiplayer maps.
+
+Documented SiegeLord's batch file for the Windows build. Discourage installing
+extra software on Windows merely to build 64-bit. 32-bit Lix runs fine and
+is easier to build.
+
 0.9.9
 -----
 
