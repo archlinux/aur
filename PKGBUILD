@@ -1,7 +1,7 @@
 # Contributor: Hy Goldsher aka hyness <hyness-at-gmail>
 # Maintainer: Hy Goldsher aka hyness <hyness-at-gmail>
 pkgname=davmail
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc="a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service"
 arch=('i686' 'x86_64')
@@ -11,14 +11,14 @@ makedepends=('unzip')
 depends=('java-runtime')
 [ "$CARCH" = "i686" ] && _ARCH=x86
 [ "$CARCH" = "x86_64" ] && _ARCH=x86_64
-_rev=2524
+_rev=2554
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-linux-${_ARCH}-$pkgver-$_rev.tgz
         $pkgname.desktop
         $pkgname.sh
         $pkgname@.system_service
         $pkgname@.user_service)
-[ "$CARCH" = "i686" ] && md5sums=('8a9abad445d17b8c51b91d842a3dc000')
-[ "$CARCH" = "x86_64" ] && md5sums=('2580073b956a31f24abd70ecead4ea96')
+[ "$CARCH" = "i686" ] && md5sums=('7e5a371f71134f12d27583202b01c141')
+[ "$CARCH" = "x86_64" ] && md5sums=('fbeba8322422e011bec0094e93f28c11')
 md5sums+=('1df37a6120d88de8df3cb735977336ba'
           '4a88ecc8e4db82e744e35ad497ad37d9'
           '8d373851babe1d8bb860228c8b4db702'
