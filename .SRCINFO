@@ -6,6 +6,10 @@ pkgbase = hdf-eos-common
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = szip
+	depends = hdf5-cpp-fortran
+	depends = hdf4-nonetcdf
+	depends = gdal
 	source = ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.1.16.tar.Z
 	md5sums = c4a3286f38a2faafc840017af4bd39d6
 
