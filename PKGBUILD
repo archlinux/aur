@@ -2,7 +2,7 @@
 pkgname=vita3k-git
 _pkgname=vita3k
 pkgver=r11.40a247b
-pkgrel=1
+pkgrel=2
 pkgdesc="PlayStation Vita emulator"
 arch=('x86_64')
 url="https://vita3k.github.io/"
@@ -62,6 +62,6 @@ build() {
 
 package() {
 	cd $_pkgname
-	install -Dm755 build/emulator/Vita3K "$pkgdir/usr/bin/vita3k"
+	install -Dm755 build/src/emulator/Vita3K "$pkgdir/usr/bin/vita3k"
 	install -Dm644 src/emulator/shaders/* -t "$pkgdir/usr/bin/shaders/"
 }
