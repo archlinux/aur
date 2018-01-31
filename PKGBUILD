@@ -5,6 +5,7 @@ pkgdesc="A C++ vine copula library"
 license=('MIT')
 arch=('i686' 'x86_64')
 url="https://github.com/vinecopulib/vinecopulib"
+depends=('gcc-libs')
 makedepends=('cmake' 'eigen' 'boost')
 source=("https://github.com/vinecopulib/vinecopulib/archive/v${pkgver}.tar.gz")
 sha256sums=('f9b9b66b2fc73214d6ab0db37bf226601c9de85c4d318248247a2931a0df08ec')
