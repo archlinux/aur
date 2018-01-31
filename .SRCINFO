@@ -1,0 +1,12 @@
+pkgbase = cumulonimbus
+	pkgdesc = A simple, beautiful podcast app.
+	pkgver = 1.9.6
+	pkgrel = 1
+	url = https://github.com/z-------------/cumulonimbus
+	arch = x86_64
+	license = APACHE
+	source = https://github.com/z-------------/cumulonimbus/releases/download/v1.9.6/cumulonimbus_1.9.6_amd64.deb
+	sha256sums = 5f58d9a493dcfb6354b9b857801f3e6fdce6f392e056bc7566b8c48d4ed74240
+
+pkgname = cumulonimbus
+
