@@ -1,0 +1,17 @@
+pkgbase = swift-protobuf-git
+	pkgdesc = CatBoost is an open-source gradient boosting on decision trees library with categorical features support out of the box.
+	pkgver = 1.0.2
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/apple/swift-protobuf
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	depends = protobuf
+	depends = swift-language
+	provides = swift-protobuf
+	source = swift-protobuf::git+https://github.com/apple/swift-protobuf.git
+	md5sums = SKIP
+
+pkgname = swift-protobuf-git
+
