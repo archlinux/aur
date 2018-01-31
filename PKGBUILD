@@ -4,7 +4,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-git
-pkgver=21.0.2.r0.g6ed55995
+pkgver=21.0.2.r12.gc87597f7
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -26,6 +26,7 @@ conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/jp9000/obs-studio.git#branch=master"
        "git+https://github.com/Mixer/ftl-sdk.git")
 md5sums=("SKIP" "SKIP")
+options=(!ccache)
 
 pkgver() {
   cd $pkgname
@@ -45,7 +46,6 @@ build() {
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLUAJIT_INCLUDE_DIR=/usr/include/luajit-2.0 \
     -DOBS_VERSION_OVERRIDE=$pkgver ..
 
   make
