@@ -1,17 +1,16 @@
 # Contributor: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 #
 # Note to self. It is necessary to remove the current Go4 installation -if any- otherwise the compilation fails.
-#               As of 5.2.0-2 it seems like this is no longer the case
 #
 # It looks that ROOT6 requires the modification/definition of the variable ROOT_INCLUDE_PATH to /usr/include/go4
 #
 pkgname=go4
 _Pkgname=Go4
 pkgver=5.2.0
-pkgrel=2
+pkgrel=4
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('i686' 'x86_64')
-depends=('root' 'qt4')
+depends=('root=6.10.08' 'qt4')
 url="https://www.gsi.de/en/work/research/electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
@@ -24,13 +23,14 @@ prepare() {
   cd go4-${pkgver}
 
   # make it installation friendly
-  sed -i 's#\$(GO4EXEPATH)#$(DESTDIR)/&#g' Makefile
-  sed -i 's#\$(GO4INCPATH)#$(DESTDIR)/&#g' Makefile
-  sed -i 's#\$(GO4LIBPATH)#$(DESTDIR)/&#g' Makefile
-  sed -i 's#\$(GO4TOPPATH)#$(DESTDIR)/&#g' Makefile
+  sed -i 's#\$(GO4EXEPATH)#$(DESTDIR)&#g' Makefile
+  sed -i 's#\$(GO4INCPATH)#$(DESTDIR)&#g' Makefile
+  sed -i 's#\$(GO4LIBPATH)#$(DESTDIR)&#g' Makefile
+  sed -i 's#\$(GO4TOPPATH)#$(DESTDIR)&#g' Makefile
 
-  msg "fixing QGo4Widget.cpp:324:25: error: cannot convert ‘bool’ to ‘TGo4ViewPanel*’ in initialization"
-  sed -i 's#TGo4ViewPanel\* res = false;#TGo4ViewPanel\* res = 0;#g' qt4/Go4GUI/QGo4Widget.cpp
+  # Does not seem needed since 5.2.0
+  #msg "fixing QGo4Widget.cpp:324:25: error: cannot convert ‘bool’ to ‘TGo4ViewPanel*’ in initialization"
+  #sed -i 's#TGo4ViewPanel\* res = false;#TGo4ViewPanel\* res = 0;#g' qt4/Go4GUI/QGo4Widget.cpp
 
 }
 
@@ -47,7 +47,7 @@ package() {
 
   #install the package
   cd go4-${pkgver}
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}/" install
 
   #install the license
   install -Dm644 "${srcdir}/go4-${pkgver}/Go4License.txt" "$pkgdir/usr/share/licenses/go4/Go4License.txt"
@@ -68,8 +68,10 @@ package() {
 
   ## new ROOT_INCLUDE_PATH definition
   install -d ${pkgdir}/etc/profile.d
-  echo 'export ROOT_INCLUDE_PATH=$ROOT_INCLUDE_PATH:/usr/include/go4' > ${srcdir}/go4.sh
-  echo 'setenv ROOT_INCLUDE_PATH $ROOT_INCLUDE_PATH:/usr/include/go4' > ${srcdir}/go4.csh
+  echo 'source /usr/bin/go4login' > ${srcdir}/go4.sh
+
+  echo 'export ROOT_INCLUDE_PATH=$ROOT_INCLUDE_PATH:/usr/include/go4' >> ${srcdir}/go4.sh
+  echo 'setenv ROOT_INCLUDE_PATH $ROOT_INCLUDE_PATH:/usr/include/go4' >> ${srcdir}/go4.csh
 
   install -m755 ${srcdir}/go4.sh  ${pkgdir}/etc/profile.d/go4.sh
   install -m755 ${srcdir}/go4.csh ${pkgdir}/etc/profile.d/go4.csh
