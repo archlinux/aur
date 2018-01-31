@@ -1,0 +1,15 @@
+pkgbase = spredit-bin
+	pkgdesc = SPRedit - a C64 hires/overlay sprite editor. This is a crossplatform tool to create Commodore 64 hires or overlayed sprites, and convert between various formats like native C64 'prg' or 'bmp' from/to this program's own 'ols' format.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/spredit/
+	arch = i686
+	arch = x86_64
+	depends = allegro4
+	options = !strip
+	options = !emptydirs
+	source_i686 = https://sourceforge.net/projects/spredit/files/SPRedit-1.0-i386.deb/download
+	sha512sums_i686 = e51bf82162690a8ed28a2342d7f701c51ff85e3e9fd8c4f56e7c506c44befb455a249d4c627f052c578355465ac58b7d49cf25e41365320090a138ccc1120453
+
+pkgname = spredit-bin
+
