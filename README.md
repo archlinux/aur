@@ -53,7 +53,7 @@ Once installed, you may read the man page for more information.
 MIT License
 
 Stock information is taken from IEX's free API. Mutual fund and over-the-counter
-information is taken from Alpha Vantage's free API. Cryptocurrency information
+information is taken from Alpha Vantage's and Morningstar's free API. Cryptocurrency information
 is taken from Coinmarketcap's free API. News information is taken from News
 API. Shortened links are provided by Google's URL Shortener API. Please do
 not abuse the APIs by repeatedly requesting information. Read the provided
@@ -63,4 +63,5 @@ license for more information.
 * More robust information in "check"
 * Historical support -- 7d/28d profits
 * Reduce API calls
-* Find a new API to hand all stock calls (quandl?). Alpha Vantage is unreliable
+* Find a new API to hand all stock calls (morningstar?). Alpha Vantage is
+unreliable and having 4 different sources is not optimal.

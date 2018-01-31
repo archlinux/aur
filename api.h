@@ -1,9 +1,10 @@
 /**
- * API data is taken from IEX Trading, Alpha Vantage, Coinmarketcap, and News API.
+ * API data is taken from IEX Trading, Alpha Vantage, Coinmarketcap, News API, and Morningstar.
  * https://iextrading.com/developer/docs/
  * https://www.alphavantage.co/documentation/
  * https://coinmarketcap.com/api/
  * https://newsapi.org/docs
+ * http://www.morningstar.com/
  */
 
 #ifndef IEX_H
@@ -42,6 +43,11 @@ String* api_curl_data(char* url, char* post_field);
 
 /**
  * Returns current price of a stock or cryptocurrency.
+ * Order:
+ * 1. IEX -- NASDAQ/NYSE/NYSEARCA
+ * 2. Alpha Vantage -- OTCMKTS
+ * 3. Morningstar -- MUTF
+ * 4. Coinmarketcap -- CRYPTO
  * @param ticker_name_string symbol
  * @return current price of stock
  */
@@ -69,6 +75,16 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hStrin
  * @return current price of stock
  */
 double iex_get_current_price(char* ticker_name_string);
+
+/**
+ * Returns current price of a mutual fund with data from Morningstar
+ * Tested for MUTF and OTCMKTS listed securities.
+ * Fast -- should take less than one second per call.
+ * @param ticker_name_string symbol
+ * @param offset number of days ago to get price of (0 = today)
+ * @return price of security
+ */
+double morningstar_get_price(char* ticker_name_string, int offset);
 
 /**
  * Returns current price of a mutual fund or over-the-counter stock with data from Alpha Vantage.

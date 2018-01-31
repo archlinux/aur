@@ -65,6 +65,9 @@ double api_get_current_price(char* ticker_name_string) {
     val = alphavantage_get_current_price(ticker_name_string);
     if (val != -1)
         return val;
+    val = morningstar_get_price(ticker_name_string, 0);
+    if (val != -1)
+        return val;
     val = coinmarketcap_get_current_price(ticker_name_string);
     if (val != -1)
         return val;
@@ -78,10 +81,55 @@ double api_get_1d_price(char* ticker_name_string) {
     val = alphavantage_get_1d_price(ticker_name_string);
     if (val != -1)
         return val;
+    val = morningstar_get_price(ticker_name_string, 1);
+    if (val != -1)
+        return val;
     val = coinmarketcap_get_1d_price(ticker_name_string);
     if (val != -1)
         return val;
     return -1;
+}
+
+double morningstar_get_price(char* ticker_name_string, int offset) {
+    time_t now = time(NULL);
+    struct tm* ts;
+    char* today_char = calloc(16, 1);
+    char* yesterday_char = calloc(16, 1);
+    ts = localtime(&now);
+    mktime(ts);
+    ts->tm_mday -= offset;
+    strftime(today_char, 16, "%Y-%m-%d", ts);
+    ts->tm_mday--;
+    mktime(ts);
+    strftime(yesterday_char, 16, "%Y-%m-%d", ts);
+
+    char* morningstar_api_string = calloc(512, 1);
+    sprintf(morningstar_api_string, "%s%s%s%s|%s%s",
+            "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?ticker=",
+            ticker_name_string,
+            "&showVol=true&dtype=his&f=d&curry=USD&range=", yesterday_char, today_char,
+            "&isD=true&isS=true&hasF=true&ProdCode=DIRECT");
+    String* pString = api_curl_data(morningstar_api_string, NULL);
+    free(morningstar_api_string);
+    free(today_char);
+    free(yesterday_char);
+
+    Json* jobj = json_tokener_parse(pString->data);
+    if (strcmp("null", pString->data) == 0){
+        api_string_destroy(&pString);
+        return -1;
+    }
+    Json* price_data_list = json_object_object_get(jobj, "PriceDataList");
+    Json* price = json_object_array_get_idx(price_data_list, 0);
+    Json* current = json_object_object_get(price, "Max");
+    char* price_string = (char*) json_object_to_json_string(current);
+    char* copy = calloc(16, 1);
+    strcpy(copy, price_string);
+    json_object_put(jobj);
+    double ret = strtod(copy, NULL);
+    free(copy);
+    api_string_destroy(&pString);
+    return ret;
 }
 
 double iex_get_current_price(char* ticker_name_string) {
@@ -289,7 +337,7 @@ void json_print_news(char* data) {
         source_name = json_object_object_get(source, "name");
         source_string = json_object_to_json_string(source_name);
         date = json_object_object_get(article, "publishedAt");
-        date_string = (char*)json_object_to_json_string(date);
+        date_string = (char*) json_object_to_json_string(date);
         date_string[11] = '\"';
         date_string[12] = '\0';
         url = json_object_object_get(article, "url");
