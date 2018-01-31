@@ -1,0 +1,25 @@
+pkgbase = i3lock-media-keys
+	pkgdesc = An improved screenlocker based upon XCB and PAM. Includes patches for media control support when locked.
+	pkgver = 2.10
+	pkgrel = 1
+	url = https://i3wm.org/i3lock/
+	arch = x86_64
+	groups = i3
+	license = MIT
+	depends = xcb-util-image
+	depends = libev
+	depends = cairo
+	depends = libxkbcommon-x11
+	depends = pam
+	options = docs
+	backup = etc/pam.d/i3lock
+	source = https://i3wm.org/i3lock/i3lock-media-keys-2.10.tar.bz2
+	source = https://i3wm.org/i3lock/i3lock-media-keys-2.10.tar.bz2.asc
+	source = allow_media_keys.patch
+	validpgpkeys = 424E14D703E7C6D43D9D6F364E7160ED4AC8EE1D
+	sha256sums = 29eb32bf317fad7b292e15be6c02d693bfc6dbfdd6d98f0a6db71e189140c8ee
+	sha256sums = SKIP
+	sha256sums = 077d3fd09a3f32e8aa13d9a7d5639e8e6112938287e185653d23ac674f3d92ec
+
+pkgname = i3lock-media-keys
+

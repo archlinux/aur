@@ -1,0 +1,100 @@
+Original Author: Johannes Frankenau
+https://github.com/i3/i3lock/commit/4d85b886fc16376c85c9ea444ca6b9c0a65cccc5
+
+diff --git a/i3lock.1 b/i3lock.1
+index 55af52d..0f00e20 100644
+--- a/i3lock.1
++++ b/i3lock.1
+@@ -28,6 +28,7 @@ i3lock \- improved screen locker
+ .RB [\|\-u\|]
+ .RB [\|\-e\|]
+ .RB [\|\-f\|]
++.RB [\|\-m\|]
+ 
+ .SH DESCRIPTION
+ .B i3lock
+@@ -105,6 +106,11 @@ your computer with the enter key.
+ .B \-f, \-\-show-failed-attempts
+ Show the number of failed attempts, if any.
+ 
++.TP
++.B \-m, \-\-pass-media-keys
++Allow the following keys to be used while the screen is locked by passing them through:
++XF86AudioPlay, XF86AudioPause, XF86AudioStop, XF86AudioPrev, XF86AudioNext, XF86AudioMute, XF86AudioLowerVolume, XF86AudioRaiseVolume.
++
+ .TP
+ .B \-\-debug
+ Enables debug logging.
+diff --git a/i3lock.c b/i3lock.c
+index 87a77b1..7b787fa 100644
+--- a/i3lock.c
++++ b/i3lock.c
+@@ -15,6 +15,7 @@
+ #include <stdbool.h>
+ #include <stdint.h>
+ #include <xcb/xcb.h>
++#include <xcb/xproto.h>
+ #include <xcb/xkb.h>
+ #include <err.h>
+ #include <assert.h>
+@@ -89,6 +90,7 @@ cairo_surface_t *img = NULL;
+ bool tile = false;
+ bool ignore_empty_password = false;
+ bool skip_repeated_empty_password = false;
++bool pass_media_keys = false;
+ 
+ /* isutf, u8_dec © 2005 Jeff Bezanson, public domain */
+ #define isutf(c) (((c)&0xC0) != 0x80)
+@@ -413,6 +415,21 @@ static void handle_key_press(xcb_key_press_event_t *event) {
+         n = xkb_keysym_to_utf8(ksym, buffer, sizeof(buffer));
+     }
+ 
++    if (pass_media_keys) {
++        switch (ksym) {
++            case XKB_KEY_XF86AudioPlay:
++            case XKB_KEY_XF86AudioPause:
++            case XKB_KEY_XF86AudioStop:
++            case XKB_KEY_XF86AudioPrev:
++            case XKB_KEY_XF86AudioNext:
++            case XKB_KEY_XF86AudioMute:
++            case XKB_KEY_XF86AudioLowerVolume:
++            case XKB_KEY_XF86AudioRaiseVolume:
++                xcb_send_event(conn, true, screen->root, XCB_EVENT_MASK_BUTTON_PRESS, (char *)event);
++                return;
++        }
++    }
++
+     switch (ksym) {
+         case XKB_KEY_j:
+         case XKB_KEY_m:
+@@ -835,6 +852,7 @@ int main(int argc, char *argv[]) {
+         {"ignore-empty-password", no_argument, NULL, 'e'},
+         {"inactivity-timeout", required_argument, NULL, 'I'},
+         {"show-failed-attempts", no_argument, NULL, 'f'},
++        {"pass-media-keys", no_argument, NULL, 'm'},
+         {NULL, no_argument, NULL, 0}};
+ 
+     if ((pw = getpwuid(getuid())) == NULL)
+@@ -842,7 +860,7 @@ int main(int argc, char *argv[]) {
+     if ((username = pw->pw_name) == NULL)
+         errx(EXIT_FAILURE, "pw->pw_name is NULL.\n");
+ 
+-    char *optstring = "hvnbdc:p:ui:teI:f";
++    char *optstring = "hvnbdc:p:ui:teI:fm";
+     while ((o = getopt_long(argc, argv, optstring, longopts, &longoptind)) != -1) {
+         switch (o) {
+             case 'v':
+@@ -900,9 +918,12 @@ int main(int argc, char *argv[]) {
+             case 'f':
+                 show_failed_attempts = true;
+                 break;
++            case 'm':
++                pass_media_keys = true;
++                break;
+             default:
+                 errx(EXIT_FAILURE, "Syntax: i3lock [-v] [-n] [-b] [-d] [-c color] [-u] [-p win|default]"
+-                                   " [-i image.png] [-t] [-e] [-I timeout] [-f]");
++                                   " [-i image.png] [-t] [-e] [-I timeout] [-f] [-m]");
+         }
+     }
+ 
