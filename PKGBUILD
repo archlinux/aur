@@ -9,11 +9,11 @@
 # * https://github.com/bohoomil/fontconfig-ultimate/blob/master/freetype/03-infinality-2.6.3-2016.04.16.patch#L2092
 # * https://www.reddit.com/r/archlinux/comments/5qkvqb/best_way_to_approximate_infinalitys_ultimate5
 
-__arch_pkg_commit="c5ddeea84d3b9ec030f8508cf3c4ad4b66d265bb"
+__arch_pkg_commit="514f0d40b6602a391f285465c05115deb2420823"
 
 pkgname=freetype2-ultimate5
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeType patched for effect similar to Infinality's ultimate5 preset."
 url="https://www.freetype.org/"
 conflicts=(freetype2)
@@ -30,6 +30,7 @@ source=(
 	"upstream_1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2&id=$__arch_pkg_commit"
 	"upstream_2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2&id=$__arch_pkg_commit"
 	"upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=$__arch_pkg_commit"
+	"upstream_4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-psaux-Correctly-handle-Flex-features-52846.patch?h=packages/freetype2&id=$__arch_pkg_commit"
 
 	# FreeType source code.
 	https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2
@@ -39,6 +40,7 @@ sha1sums=(
 	"b69531770c343d403be294b7e4d25ac45738c833"
 	"3d26a569f0cb94c28a550577f5dcaadb4e193d91"
 	"770f1981734a837bcf065564c91644b4cc5e256a"
+	"21ad7dd31e16adb5b39adfa5671018a736626562"
 	"94c4399b1a55c5892812e732843fcb4a7c2fe657"
 )
 

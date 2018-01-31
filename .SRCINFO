@@ -1,7 +1,7 @@
 pkgbase = freetype2-ultimate5
 	pkgdesc = FreeType patched for effect similar to Infinality's ultimate5 preset.
 	pkgver = 2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	arch = x86_64
 	license = GPL
@@ -14,14 +14,16 @@ pkgbase = freetype2-ultimate5
 	provides = libfreetype.so
 	conflicts = freetype2
 	source = like-ultimate5.patch
-	source = upstream_1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2&id=c5ddeea84d3b9ec030f8508cf3c4ad4b66d265bb
-	source = upstream_2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2&id=c5ddeea84d3b9ec030f8508cf3c4ad4b66d265bb
-	source = upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=c5ddeea84d3b9ec030f8508cf3c4ad4b66d265bb
+	source = upstream_1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2&id=514f0d40b6602a391f285465c05115deb2420823
+	source = upstream_2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2&id=514f0d40b6602a391f285465c05115deb2420823
+	source = upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=514f0d40b6602a391f285465c05115deb2420823
+	source = upstream_4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-psaux-Correctly-handle-Flex-features-52846.patch?h=packages/freetype2&id=514f0d40b6602a391f285465c05115deb2420823
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.9.tar.bz2
 	sha1sums = 97253086dd201b7e368e8ee897a0c977b0908c4e
 	sha1sums = b69531770c343d403be294b7e4d25ac45738c833
 	sha1sums = 3d26a569f0cb94c28a550577f5dcaadb4e193d91
 	sha1sums = 770f1981734a837bcf065564c91644b4cc5e256a
+	sha1sums = 21ad7dd31e16adb5b39adfa5671018a736626562
 	sha1sums = 94c4399b1a55c5892812e732843fcb4a7c2fe657
 
 pkgname = freetype2-ultimate5
