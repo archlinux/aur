@@ -3,7 +3,7 @@
 
 pkgname=i3lock-media-keys
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An improved screenlocker based upon XCB and PAM. Includes patches for media control support when locked."
 arch=('x86_64')
 url="https://i3wm.org/i3lock/"
@@ -11,6 +11,7 @@ license=('MIT')
 groups=("i3")
 depends=('xcb-util-image' 'libev' 'cairo' 'libxkbcommon-x11' 'pam')
 options=('docs')
+conflicts=('i3lock')
 backup=("etc/pam.d/i3lock")
 source=("https://i3wm.org/i3lock/$pkgname-$pkgver.tar.bz2"
         "https://i3wm.org/i3lock/$pkgname-$pkgver.tar.bz2.asc"
