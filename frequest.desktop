@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=FReqeust
+GenericName=FRequest
+Comment=
+Icon=/usr/share/icons/frequest.png
+Exec=frequest
+StartupNotify=true
+Terminal=False
+Categories=Application;Network;

@@ -1,0 +1,22 @@
+pkgbase = frequest-git
+	pkgver = v1.1.r3.1d67226
+	pkgrel = 1
+	url = https://fabiobento512.github.io/FRequest/
+	arch = x86
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt5-base>=5.10.0
+	provides = frequest
+	conflicts = frequest
+	source = frequest::git+https://github.com/fabiobento512/FRequest.git
+	source = git+https://github.com/fabiobento512/CommonUtils.git
+	source = git+https://github.com/fabiobento512/CommonLibs.git
+	source = frequest.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 528da4abe728d414e6f8d8764dd26006
+
+pkgname = frequest-git
+
