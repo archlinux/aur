@@ -1,8 +1,9 @@
 pkgbase = i3lock-media-keys
 	pkgdesc = An improved screenlocker based upon XCB and PAM. Includes patches for media control support when locked.
 	pkgver = 2.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://i3wm.org/i3lock/
+	install = i3lock-media-keys.install
 	arch = x86_64
 	groups = i3
 	license = MIT

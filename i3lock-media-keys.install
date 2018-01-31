@@ -1,0 +1,18 @@
+post_install(){
+    cat <<EOD
+
+
+    WARNING: This patch allows these keys to be used even when your
+    computer is locked. Make extra sure that the following keys are not bound
+    to anything potentially harmful!"
+
+    XF86AudioPlay, XF86AudioPause, XF86AudioStop, XF86AudioPrev, XF86AudioNext,
+    XF86AudioMute, XF86AudioLowerVolume, XF86AudioRaiseVolume.
+
+    These patches have been rejected by upstream on the grounds of it not being
+    secure. Please do not request that they merge these patches.
+
+
+
+EOD
+}
