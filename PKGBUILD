@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('libaec' 'hdf5-cpp-fortran' 'hdf4-nonetcdf' 'gdal' 'hdf-eos-common')
 options=('libtool' 'staticlibs')
 source=(ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos/latest_release/HDF-EOS${pkgver}v1.00.tar.Z)
-md5sums=('b8648484fc78a2db7073dd603f3fb251')
+md5sums=('4697174a9296aa3d921915b75b3362d1')
 
 build() {
   cd $srcdir/hdfeos

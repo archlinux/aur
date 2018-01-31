@@ -14,7 +14,7 @@ pkgbase = hdf-eos2
 	options = libtool
 	options = staticlibs
 	source = ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos/latest_release/HDF-EOS2.20v1.00.tar.Z
-	md5sums = b8648484fc78a2db7073dd603f3fb251
+	md5sums = 4697174a9296aa3d921915b75b3362d1
 
 pkgname = hdf-eos2
 
