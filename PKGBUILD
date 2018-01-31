@@ -1,9 +1,10 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
-pkgname=python-torchtext
 _pkgname=torchtext
+_pythonver=`python -V | awk '{print $2}' | sed '$s/..$//'`
+pkgname=python-torchtext
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Data loaders and abstractions for text and NLP'
 arch=(any)
 url='https://github.com/pytorch/text'
@@ -18,4 +19,6 @@ package() {
   cd $srcdir/$_pkgname-$pkgver
 
   python setup.py install --root=$pkgdir --optimize=1
+
+  chmod 644 $pkgdir/usr/lib/python$_pythonver/site-packages/$_pkgname-$pkgver-py$_pythonver.egg-info/*
 }
