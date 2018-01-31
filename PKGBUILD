@@ -1,7 +1,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 _pkgname=hangups
 pkgname=${_pkgname}-git
-pkgver=0.4.3.r11.g4e597f4
+pkgver=0.4.4.r23.gaae6991
 pkgrel=1
 epoch=1
 
@@ -11,6 +11,8 @@ url="http://github.com/tdryer/hangups"
 license=('MIT')
 depends=('python' 'python-purplex' 'python-requests' 'python-urwid' 'python-appdirs' 'python-aiohttp' 'python-robobrowser' 'python-configargparse' 'python-werkzeug' 'python-reparser' 'python-readlike' 'python-protobuf' 'python-mechanicalsoup' 'python-multidict')
 makedepends=('git')
+provides=('hangups')
+conflicts=('hangups')
 source=('git+https://github.com/tdryer/hangups.git')
 md5sums=('SKIP')
 
