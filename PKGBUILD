@@ -42,7 +42,10 @@ package() {
     cp -dr --no-preserve=ownership {bin,data,elasticsearch,extensions,lib,temp,web} "${pkgdir}/usr/share/${_pkgname}/"
     
     # Delete unused files.
-    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/{linux-x86-32,macosx-universal-64,windows-x86-32,windows-x86-64}"
+    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/linux-x86-32"
+    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/macosx-universal-64"
+    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/windows-x86-32"
+    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/windows-x86-64"
 
     # Install the license.
     install -Dm644 "COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
