@@ -5,13 +5,11 @@ pkgname=herrie
 pkgver=2.2
 pkgrel=4
 pkgdesc="Minimalistic music player for the command line"
-url="http://herrie.info"
-arch=('i686' 'x86_64')
+url="https://github.com/EdSchouten/herrie"
+arch=('x86_64')
 license=('custom')
 depends=('libmodplug' 'libsndfile' 'libid3tag' 'libxspf' 'libmad' 'curl' 'glib2')
-provides=('herrie-git')
-conflicts=('herrie-git')
-source=($url/distfiles/$pkgname-$pkgver.tar.bz2)
+source=($pkgname-$pkgver.tar.bz2::$url/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.bz2)
 md5sums=('88832b10298ab89473730eb0c93b6ddf')
 
 prepare() {
@@ -33,6 +31,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR=$pkgdir install
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  make DESTDIR="$pkgdir" install
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
