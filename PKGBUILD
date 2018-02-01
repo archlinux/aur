@@ -9,19 +9,18 @@
 #
 # namcap also warns that 'java-environment' is a dependency. This is untrue:
 # java-runtime suffices.
-#
 
 pkgname=splitter
-pkgver=r584
+pkgver=r590
 pkgrel=1
 pkgdesc='Utility for splitting OpenStreetMap maps into tiles.'
 url='http://www.mkgmap.org.uk/'
 license=(GPL)
 arch=(any)
-depends=(java-runtime sh libcups)
+depends=(java-runtime=8 sh libcups)
 source=("http://www.mkgmap.org.uk/download/${pkgname}-${pkgver}.zip"
         "${pkgname}")
-sha256sums=('c8129b859a5ba57d62dff4a4f8607254a1fc42f1b17eaddaf777d7f145f5e573'
+sha256sums=('73d65196de41a2ae911a3a064a4c4b6d52784422fce0fceb39aa20647c5b76f8'
             '40f984bc54a946678eeb3d554a84fad32d6a41038d42990d5336d4b1bdfbc63d')
 
 package() {
