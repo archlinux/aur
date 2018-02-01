@@ -7,7 +7,7 @@
 
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=2.0.0.r5414.8d0ce19c
+pkgver=2.0.0.r5437.71aa6873
 _upver=2.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ url="http://qt-project.org/wiki/PySide"
 makedepends=("python"{,2}"-shiboken2-git" 'cmake'
              'phonon-qt5' 'git' 'python2-sphinx' 'graphviz' 'qt5-base'
              'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative'
-             'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d'
+             'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d' 'qt5-3d'
              'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.9")
 sha256sums=('SKIP')
@@ -41,7 +41,7 @@ build(){
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_PYTHON_VERSION=2 \
         -DBUILD_TESTS=OFF \
-        -DQt5WebKitWidgets_FOUND=FALSE ..
+        -DQt5WebKitWidgets_FOUND=FALSE -DQt53DInput_FOUND=FALSE -DQt53DRender_FOUND=FALSE ..
     make
 
     # Build for python3.
@@ -54,7 +54,7 @@ build(){
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_PYTHON_VERSION=3 \
         -DBUILD_TESTS=OFF \
-        -DQt5WebKitWidgets_FOUND=FALSE ..
+        -DQt5WebKitWidgets_FOUND=FALSE -DQt53DInput_FOUND=FALSE -DQt53DRender_FOUND=FALSE ..
     make
 }
 
