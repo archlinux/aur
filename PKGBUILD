@@ -1,5 +1,5 @@
 pkgname='python-entry'
-pkgver=4.70a65f2
+pkgver=5.77b7517
 pkgrel=1
 pkgdesc='Do getopt with one decorator.'
 arch=('any')
