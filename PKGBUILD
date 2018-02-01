@@ -2,7 +2,7 @@
 # former Maintainer: si_kabayan <aaizap4p at gmail dot com>
 pkgname=raccoon
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Alternative Google Play (with GUI) client to download Android APK files to your computer"
 url="http://www.onyxbits.de/raccoon"
@@ -12,14 +12,14 @@ makedepends=("gradle")
 install=raccoon.install
 source=('raccoon.desktop'
         'https://github.com/onyxbits/Raccoon/raw/master/artwork/icon.svg'
-        #"$pkgname-$pkgver.tar.gz::https://github.com/onyxbits/raccoon4/archive/v$pkgver.tar.gz"
-        "$pkgname-$pkgver.jar::http://raccoon.onyxbits.de/sites/raccoon.onyxbits.de/files/raccoon-$pkgver.jar"
+        "$pkgname-$pkgver.tar.gz::https://github.com/onyxbits/raccoon4/archive/v$pkgver.tar.gz"
+        #"$pkgname-$pkgver.jar::http://raccoon.onyxbits.de/sites/raccoon.onyxbits.de/files/raccoon-$pkgver.jar"
         "raccoon.install"
         "build-on-linux.patch")
 noextract=('${pkgname}-${pkgver}.jar')
 sha512sums=('99ae7ab9aa77f6de0779c9179e16dbccd36362adc710cd5d7289c473b6aff62d39a0e29be63840bc7f614e360d17b51f877ff2bf2fda938da8fa13e3f9248647'
             'f63e94b86f5b111b8833d53767b0f6eada48426e1b0e30df0137bed455c80ec37087f656e2f0cac9386f4d25441686df82c988252120fc335028d2885b8653f6'
-            'b62bd97912302382aa4006db6d11128b7572dd7d736a9e8ed1e8c5a8d418ab68d5face2502b5488fd82a405de4fad2df0eafd47afcbb748f271a8756a73e5a54'
+            'baca4d1b668e2025abd67de4452ad3bc5be2e2192d40a3bd49347446c49583a4c0e5e6be755433fb88e743b888565fa58eb5cc30c8c42a6bd0789aee61ca97e2'
             '0e095c7cb167fd049968ba9e7c5acf51c3454aca884fd3106209d9ba92cd434c22c1398996f58238e98c692d7b0a635c6e6fb60782ba0dcb79cd837fe9ed7bba'
             '20128abc55e1a38a77247fd1452c94fe7c77ffadbbf541198957bbe1238097f8e9c51cb74292fee1f47da588370e3dd19f8f33cab482288ce23c52d5db9304e8')
 
