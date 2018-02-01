@@ -5,7 +5,7 @@
 
 _pkgbase=snapd
 pkgname=snapd-git
-pkgver=2.30.r915.g6f97fbe87
+pkgver=2.30.r1117.g0f6035e74
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
@@ -165,6 +165,7 @@ package_snapd-git() {
   make -C "$srcdir/$_pkgbase/data/systemd" install \
        BINDIR=/bin \
        SYSTEMDSYSTEMUNITDIR=/usr/lib/systemd/system \
+       SNAP_MOUNT_DIR=/var/lib/snapd/snap \
        DESTDIR="$pkgdir"
 
   # Install polkit policy
