@@ -4,7 +4,7 @@
 
 pkgname=openmw-tes3mp
 pkgver=0.6.2
-pkgrel=4
+pkgrel=5
 pkgdesc="TES3MP is a project aiming to add multiplayer functionality to OpenMW, a free and open source recreation of the popular Bethesda Softworks game \"The Elder Scrolls III: Morrowind\"."
 arch=('x86_64')
 url="https://github.com/TES3MP/openmw-tes3mp"
@@ -19,7 +19,7 @@ source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.2/
         'tes3mp.desktop'
         'tes3mp-server.desktop'
         'tes3mp-browser.desktop')
-sha256sums=('bb7797d8cd66253115feef9493d3c941433cf52fef56bc652385d9f0fc04e51f'
+sha256sums=('958080e63602ef2e0f86956ba3333b7304defd8d8e70a4166df620ece3cb1f0a'
           '861e5e8cc7ddec2dbfb842d68cdd45e7cc564079b9cb37ad113ff140bf424fd9'
           'c7e47f887457d72aee46f29d0f947e7c42a40676c5e80427b502af8d24b299a4'
           '2bd9e9dddda956c7cbdc8bdf2448d42500aa88ffb7fb01d2cbffc58c22fdf57d'
