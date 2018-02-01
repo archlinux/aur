@@ -1,6 +1,6 @@
 # Maintainer: Sergey Malkin <adresatt@gmail.com>
 pkgname=python-neo
-pkgver=0.3.3
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Neo is a Python package for working with electrophysiology data in Python"
 arch=("i686" "x86_64")
@@ -9,7 +9,7 @@ license=("custom")
 depends=("python" "python-numpy" "python-quantities")
 makedepends=('python-setuptools')
 source=("https://github.com/NeuralEnsemble/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("c1df54efde7376c6e24bd517417e2d06")
+md5sums=("ba857329e6d4859cd9ea8eb8f63c8ade")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
