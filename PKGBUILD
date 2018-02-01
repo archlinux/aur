@@ -19,6 +19,8 @@ optdepends=('gtk-engine-murrine: for gtk2 themes'
 	    )
 source=("git+${url}")
 sha256sums=('SKIP')
+provides=('gtk-arc-flatabulous-theme')
+conflicts=('gtk-arc-flatabulous-theme')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
