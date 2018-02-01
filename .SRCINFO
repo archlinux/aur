@@ -1,14 +1,14 @@
 pkgbase = otfcc
 	pkgdesc = A C library and utility for parsing and writing OpenType font files.
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/caryll/otfcc
 	arch = i686
 	arch = x86_64
 	license = APACHE
 	makedepends = premake-git
-	source = https://github.com/caryll/otfcc/archive/v0.8.0.tar.gz
-	md5sums = e25ff996878f2360e7b047cc335b5e09
+	source = https://github.com/caryll/otfcc/archive/v0.8.1.tar.gz
+	md5sums = 490e2e7dd91e7f2ff1cd93e74369dfff
 
 pkgname = otfcc
 
