@@ -1,6 +1,6 @@
 pkgbase = eovim-git
 	pkgdesc = EFL powered Neovim GUI
-	pkgver = r202.82ef9bb
+	pkgver = r311.08ccc91
 	pkgrel = 1
 	url = https://github.com/jeanguyomarch/eovim
 	arch = x86_64
