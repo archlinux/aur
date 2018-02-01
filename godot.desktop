@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Godot 2
+Comment=Application for making games
+Exec=/usr/bin/godot2 %U
+Icon=godot2
+Terminal=false
+Type=Application
+Categories=Utility;Game;
