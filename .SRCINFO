@@ -1,5 +1,5 @@
 pkgbase = swift-protobuf-git
-	pkgdesc = CatBoost is an open-source gradient boosting on decision trees library with categorical features support out of the box.
+	pkgdesc = Plugin and runtime library for using protobuf with Swift.
 	pkgver = 1.0.2
 	pkgrel = 1
 	epoch = 0
