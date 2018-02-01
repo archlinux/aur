@@ -1,6 +1,6 @@
 # Maintainer: TheGoliath
 pkgname=excavator
-pkgrel=3
+pkgrel=4
 _pkggit=1.4.1a-xenial0
 pkgver=v1.4.1a
 pkgdesc="Excavator by NiceHash. NiceHash's proprietary low-level CUDA miner."
@@ -17,5 +17,6 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-
+	msg2 "You should grab yourself a config at 'https://github.com/nicehash/excavator/blob/master/default_command_file.json'"
+	msg2 "You now can run excavator by specifying the path to the command file (excavator -c /tmp/default_command_file.json'"
 }
