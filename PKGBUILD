@@ -2,7 +2,7 @@
 
 _pkgname=qtpad
 pkgname="$_pkgname"-git
-pkgver=0.0.0
+pkgver=1.0.0
 pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
