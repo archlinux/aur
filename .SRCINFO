@@ -1,11 +1,10 @@
 pkgbase = darch
 	pkgdesc = A utility to that uses containerd to build stateless operating system images that can be booted bare-metal.
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/godarch/darch
 	arch = x86_64
 	license = MIT
-	depends = glibc,
 	depends = libseccomp
 	provides = containerd,
 	provides = runc

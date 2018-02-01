@@ -1,14 +1,14 @@
 # Maintainer: Paul Knopf <pauldotknopf@gmail.com>
 pkgname=darch
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A utility to that uses containerd to build stateless operating system images that can be booted bare-metal."
 arch=('x86_64')
 url="https://github.com/godarch/darch"
 license=('MIT')
 groups=()
-depends=('glibc', 'libseccomp')
+depends=('libseccomp')
 makedepends=()
 checkdepends=()
 optdepends=()
