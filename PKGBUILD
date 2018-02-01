@@ -2,8 +2,8 @@
 # Contributor: b.klettbach@gmail.com
 
 pkgname=multimc5
-pkgver=0.6.2
-pkgrel=1
+pkgver=0.6.1
+pkgrel=2
 __pkgver_libnbtplusplus=multimc-0.5.0
 __pkgver_quazip=multimc-2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
