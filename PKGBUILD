@@ -8,8 +8,11 @@ arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/spredit/"
 depends=('allegro4')
 options=('!strip' '!emptydirs')
-source_i686=("https://sourceforge.net/projects/spredit/files/SPRedit-1.0-i386.deb/download")
+source_i686=("https://svwh.dl.sourceforge.net/project/spredit/SPRedit-1.0-i386.deb")
 sha512sums_i686=('e51bf82162690a8ed28a2342d7f701c51ff85e3e9fd8c4f56e7c506c44befb455a249d4c627f052c578355465ac58b7d49cf25e41365320090a138ccc1120453')
+source_x86_64=("https://svwh.dl.sourceforge.net/project/spredit/SPRedit-1.0-i386.deb")
+sha512sums_x86_64=('e51bf82162690a8ed28a2342d7f701c51ff85e3e9fd8c4f56e7c506c44befb455a249d4c627f052c578355465ac58b7d49cf25e41365320090a138ccc1120453')
+
 
 package(){
 
