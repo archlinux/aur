@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-robot-localization
 	pkgdesc = ROS - The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
-	pkgver = 2.4.0
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = http://ros.org/wiki/robot_localization
 	arch = any
@@ -23,6 +23,8 @@ pkgbase = ros-kinetic-robot-localization
 	makedepends = ros-kinetic-tf2-geometry-msgs
 	makedepends = ros-kinetic-nav-msgs
 	makedepends = ros-kinetic-tf2
+	makedepends = ros-kinetic-roslint
+	makedepends = ros-kinetic-eigen-conversions
 	makedepends = eigen3
 	makedepends = cmake
 	depends = ros-kinetic-tf2-ros
@@ -39,8 +41,9 @@ pkgbase = ros-kinetic-robot-localization
 	depends = ros-kinetic-tf2-geometry-msgs
 	depends = ros-kinetic-nav-msgs
 	depends = ros-kinetic-tf2
+	depends = ros-kinetic-eigen-conversions
 	depends = eigen3
-	source = robot_localization::git+https://github.com/cra-ros-pkg/robot_localization-release.git#tag=release/kinetic/robot_localization/2.4.0-0
+	source = robot_localization::git+https://github.com/cra-ros-pkg/robot_localization-release.git#tag=release/kinetic/robot_localization/2.4.2-0
 	md5sums = SKIP
 
 pkgname = ros-kinetic-robot-localization

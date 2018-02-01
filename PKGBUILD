@@ -4,7 +4,7 @@ pkgdesc="ROS - The robot_localization package provides nonlinear state estimatio
 url='http://ros.org/wiki/robot_localization'
 
 pkgname='ros-kinetic-robot-localization'
-pkgver='2.4.0'
+pkgver='2.4.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -25,7 +25,8 @@ ros_makedepends=(ros-kinetic-tf2-ros
   ros-kinetic-tf2-geometry-msgs
   ros-kinetic-nav-msgs
   ros-kinetic-tf2
-  ros-kinetic-roslint)
+  ros-kinetic-roslint
+  ros-kinetic-eigen-conversions)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3
@@ -44,7 +45,8 @@ ros_depends=(ros-kinetic-tf2-ros
   ros-kinetic-cmake-modules
   ros-kinetic-tf2-geometry-msgs
   ros-kinetic-nav-msgs
-  ros-kinetic-tf2)
+  ros-kinetic-tf2
+  ros-kinetic-eigen-conversions)
 depends=(${ros_depends[@]}
   eigen3)
 
