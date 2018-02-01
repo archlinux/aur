@@ -1,6 +1,6 @@
 pkgbase = python-neo
 	pkgdesc = Neo is a Python package for working with electrophysiology data in Python
-	pkgver = 0.3.3
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://neuralensemble.org/neo
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = python-neo
 	depends = python
 	depends = python-numpy
 	depends = python-quantities
-	source = https://github.com/NeuralEnsemble/python-neo/archive/0.3.3.tar.gz
-	md5sums = c1df54efde7376c6e24bd517417e2d06
+	source = https://github.com/NeuralEnsemble/python-neo/archive/0.5.2.tar.gz
+	md5sums = ba857329e6d4859cd9ea8eb8f63c8ade
 
 pkgname = python-neo
 
