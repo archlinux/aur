@@ -1,0 +1,17 @@
+pkgbase = pymol2
+	pkgdesc = Molecular visualization system on an Open Source foundation with PyQt interface
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://pymol.org/2/
+	arch = x86_64
+	license = Commercial
+	provides = pymol2
+	conflicts = pymol2
+	noextract = PyMOL-2.0.7_0-Linux-x86_64.tar.bz2
+	options = !strip
+	source = https://pymol.org/installers/PyMOL-2.0.7_0-Linux-x86_64.tar.bz2
+	sha1sums = 967495b4810f7bf72f914e0f1a3648a4614f258d
+	sha256sums = c7fb43f512882f250d006d0cb6eda70951d75671c411ca0fd665321820316bd4
+
+pkgname = pymol2
+
