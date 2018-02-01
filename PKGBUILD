@@ -1,8 +1,9 @@
-# Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+# Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=blis
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('i686' 'x86_64')
 depends=('glibc')
@@ -12,8 +13,7 @@ url='https://github.com/flame/blis'
 #conflicts=('blas' 'cblas')
 options=('!makeflags' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/flame/blis/archive/${pkgver}.tar.gz")
-md5sums=('85f7fc63ca3dec48d02655ccdb775700')
-sha512sums=('a8b0fbbeede584c54548f366ffd2d4cc94fd6b86bd7de7b8cacf59c40acd4349593198f1f8fade739ba39ad21eb2dd2e078aa31491fa9cea5451d160e88d04ff')
+sha512sums=('f0981b6f33a56fc3f48a4570333899f30745f64928cf3599f9cd398d276c49d82f847fe73694cb3fd718ab42c8b3d48b606f63e7236ca9049f817456cac326e0')
 
 prepare() {
 # Determine appropriate BLIS kernel for CPU
