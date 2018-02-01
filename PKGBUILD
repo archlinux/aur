@@ -1,7 +1,7 @@
 _npmname=osmtogeojson
-_npmver=2.2.12
+_npmver=3.0.0-beta.3
 pkgname=nodejs-osmtogeojson # All lowercase
-pkgver=2.2.12
+pkgver=3.0.0b3
 pkgrel=1
 pkgdesc="Convert OSM data to GeoJSON"
 arch=(any)
@@ -22,4 +22,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('f084f7d7d5f038a4383b31c036347a134b0819d3')
+sha1sums=('499f91feaa612ec845df420f107e2e6bc28f0563')
