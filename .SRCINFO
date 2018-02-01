@@ -16,3 +16,23 @@ pkgbase = libbulletml
 
 pkgname = libbulletml
 
+pkgbase = libbulletml
+	pkgdesc = C++ library to handle BulletML, a markup language to describe bullets in shooting games.
+	pkgver = 0.0.6
+	pkgrel = 3
+	url = http://shinh.skr.jp/libbulletml/index_en.html
+	arch = x86_64
+	arch = i686
+	license = custom:libbulletml
+	noextract = d_cpp.tar.bz2
+	source = http://shinh.skr.jp/libbulletml/libbulletml-0.0.6.tar.bz2
+	source = http://shinh.skr.jp/d/d_cpp.tar.bz2
+	source = http://http.debian.net/debian/pool/main/b/bulletml/bulletml_0.0.6-7.debian.tar.xz
+	source = Makefile
+	sha256sums = 7c37f3d2d52825417c5de716f89bea4b71156371e698e2579daf7921df07aa79
+	sha256sums = f0a9f01ef9daaa980f876253c81e8e76eea17b7de1aa569bf23661b456c5c9d3
+	sha256sums = e85182a82604b4bc3c3f42b35f5d77decd327239602bcc4b5ac3a2e1269f211e
+	sha256sums = 0d04bf79f0c9ae834a2520190507d5b1bf8e1f501a0ef5fadcee9575eb2c8bf2
+
+pkgname = libbulletml
+
