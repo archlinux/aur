@@ -1,13 +1,13 @@
 pkgbase = nodejs-docs
 	pkgdesc = Node.js API documentation.
-	pkgver = 9.2.0
+	pkgver = 9.5.0
 	pkgrel = 1
 	url = https://nodejs.org/en/docs/
 	arch = any
 	license = MIT
 	options = docs
-	source = https://nodejs.org/dist/v9.2.0/node-v9.2.0.tar.gz
-	sha256sums = 905ce9067b56f298ce110db4dd63cdeca8fce8097394f8ea9e4fe37fef2834ee
+	source = https://nodejs.org/dist/v9.5.0/node-v9.5.0.tar.gz
+	sha256sums = 039d4f6fa5b5855f44a662297c0ac515ef49047af721201e9f53c5d16fd3824c
 
 pkgname = nodejs-docs
 
