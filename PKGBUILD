@@ -5,13 +5,13 @@
 
 pkgname=gtk-arc-flatabulous-theme-git
 _pkgname=arc-flatabulous-theme
-pkgver=r709.1b1b7c9
+pkgver=20180201.r0.g0492475
 pkgrel=1
 pkgdesc="Arc theme with Flatabulous window controls."
 arch=('any')
 url="https://github.com/andreisergiu98/${_pkgname}"
 license=('GPL3')
-makedepends=('git' 'gtk3')
+makedepends=('git' 'gtk3' 'sassc')
 optdepends=('gtk-engine-murrine: for gtk2 themes'
             'gnome-themes-standard: for gtk2 themes'
 	    'arc-icon-theme: recommended icon theme'
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
