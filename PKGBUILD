@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/pandaGao/bilibili-live-helper"
 install=${pkgname}.install
 license=('MIT')
-depends=()
+depends=('cairo' 'libxtst' 'libxi' 'gtk2' 'libxrandr' 'pango' 'fontconfig' 'libxss' 'gdk-pixbuf2' 'nss' 'freetype2' 'nspr' 'gconf' 'libxext' 'libxdamage' 'atk' 'libxrender' 'libxcomposite' 'libxcursor' 'libxfixes' 'libx11' 'alsa-lib' 'libcups')
 makedepends=('tar' 'git')
 build() {
 	git clone https://github.com/OriginCode/AURFiles
