@@ -1,7 +1,7 @@
 # Maintainer: Sergey Malkin <adresatt@gmail.com>
 
 pkgname=python-quantities
-pkgver=0.11.1
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="A Python package for handling physical quantities."
 url="http://packages.python.org/quantities"
@@ -10,7 +10,7 @@ license=("BSD")
 depends=("python" "python-numpy")
 makedepends=("python-setuptools")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=("a65e07e765bad0c53d872fa2f09f3c42")
+md5sums=("e788b8007902d61d3fb27f6a886da1a4")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
