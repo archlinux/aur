@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5f3f133..08463ec 100644
+index 13b92c4..63e463c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -6,9 +6,9 @@ if(NOT CMAKE_BUILD_TYPE)
@@ -14,19 +14,19 @@ index 5f3f133..08463ec 100644
  
  
  
-@@ -53,6 +53,7 @@ add_subdirectory (editcase)
+@@ -54,6 +54,7 @@ add_subdirectory (editcase)
  add_subdirectory (align)
  add_subdirectory (autowrap)
  add_subdirectory (drawline)
 +add_subdirectory (far-gvfs)
+ add_subdirectory (editorcomp)
  
- install(PROGRAMS "${INSTALL_DIR}/far2l" DESTINATION "bin" )
- 
+ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 diff --git a/far2l/CMakeLists.txt b/far2l/CMakeLists.txt
-index 7213211..b894d7d 100644
+index cfde084..aa30aa1 100644
 --- a/far2l/CMakeLists.txt
 +++ b/far2l/CMakeLists.txt
-@@ -187,6 +187,6 @@ add_custom_command(TARGET far2l POST_BUILD
+@@ -188,6 +188,6 @@ add_custom_command(TARGET far2l POST_BUILD
  if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
  #TODO
  else()
