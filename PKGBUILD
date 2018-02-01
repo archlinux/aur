@@ -1,7 +1,7 @@
 # Maintainer: Marc Steiner (Marc3842h) <info@marcsteiner.me>
 _pkgname=titan-bot
 pkgname=titan-bot-git
-pkgver=1.6.0
+pkgver=1.6.0_8add450
 pkgrel=1
 pkgdesc="A free, advanced CS:GO report and commendation bot built with performance and ease-of-use in mind"
 arch=("x86_64")
@@ -21,8 +21,6 @@ pkgver() {
 }
 
 build() {
-	makepkg --printsrcinfo > .SRCINFO
-
     cd Titan
     
     chmod +x build.sh
