@@ -2,7 +2,7 @@
 
 pkgname=kvazaar
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source HEVC encoder licensed under LGPLv2.1'
 arch=('i686' 'x86_64')
 url='http://ultravideo.cs.tut.fi/#encoder'
@@ -29,7 +29,7 @@ build() {
         --enable-static='no' \
         --enable-shared='yes' \
         --enable-fast-install='yes' \
-        --with-cryptopp
+        --without-cryptopp
         
     make
 }
