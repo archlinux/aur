@@ -73,7 +73,7 @@ package_python-pyside2-git(){
     depends=('python' "python-shiboken2-git" "pyside2-common-git" "qt5-base")
     pkgdesc="LGPL Qt bindings for Python 3"
     optdepends=('qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia'
-                'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d'
+                'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d' 'qt5-3d'
                 'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 
     cd "$srcdir"/$pkgbase/sources/pyside2/build-py3
@@ -89,7 +89,7 @@ package_python2-pyside2-git(){
     depends=('python2' "python2-shiboken2-git" "pyside2-common-git" "qt5-base")
     pkgdesc="LGPL Qt bindings for Python 2"
     optdepends=('qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia'
-                'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d'
+                'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d' 'qt5-3d'
                 'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 
     cd "$srcdir"/$pkgbase/sources/pyside2/build-py2
