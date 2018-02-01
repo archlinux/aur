@@ -1,6 +1,6 @@
 # Maintainer: Vincent Gatine <nurelin@nurelin.eu>
 pkgname=eovim-git
-pkgver=r202.82ef9bb
+pkgver=r311.08ccc91
 pkgrel=1
 epoch=
 pkgdesc="EFL powered Neovim GUI"
@@ -33,7 +33,11 @@ prepare() {
 	cd "$pkgname"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DCMAKE_BUILD_TYPE=Release ..
+	cmake \
+	-DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DLIB_INSTALL_DIR="lib/" \
+	..
 }
 
 build() {
