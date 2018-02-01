@@ -4,8 +4,8 @@
 
 pkgbase=freetype2-old-hinting
 pkgname=('freetype2-old-hinting')
-pkgver=2.8.1
-pkgrel=1
+pkgver=2.9
+pkgrel=2
 pkgdesc="Font rasterization library (including the old hinting engine)"
 arch=(i686 x86_64)
 license=('GPL')
@@ -15,18 +15,17 @@ url="https://www.freetype.org/"
 depends=('zlib' 'bzip2' 'sh' 'libpng' 'harfbuzz')
 makedepends=('libx11')
 source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
-        https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-${pkgver}.tar.bz2{,.sig}
         0001-Enable-table-validation-modules.patch
-        0003-Enable-infinality-subpixel-hinting.patch
-        0004-Enable-long-PCF-family-names.patch
+        0002-Enable-infinality-subpixel-hinting.patch
+        0003-Enable-long-PCF-family-names.patch
+        0001-psaux-Correctly-handle-Flex-features-52846.patch
         freetype2.sh)
-sha1sums=('417bb3747c4ac95b6f2652024a53fad45581fa1c'
+sha1sums=('94c4399b1a55c5892812e732843fcb4a7c2fe657'
           'SKIP'
-          '9ee079ee02e6b6895802104f58cd5e5be517dce7'
-          'SKIP'
-          'b31882ef5e8447e761acee1c4a44c0630cd4d465'
-          '41d27140fd590945e22e012c9dce62de3d6f11e6'
-          '334f229875039794adeb574e27d365bb445fb314'
+          'b69531770c343d403be294b7e4d25ac45738c833'
+          '3d26a569f0cb94c28a550577f5dcaadb4e193d91'
+          '770f1981734a837bcf065564c91644b4cc5e256a'
+          '21ad7dd31e16adb5b39adfa5671018a736626562'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
@@ -36,8 +35,12 @@ prepare() {
 
   cd freetype2
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-  patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
-  patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
+  patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
+  patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
+
+  # Freetype 2.9 regression: bad rendering for some Type 1 fonts
+  # https://savannah.nongnu.org/bugs/?52846
+  patch -Np1 -i ../0001-psaux-Correctly-handle-Flex-features-52846.patch
 
   sed -ri 's|/\* +(#define +CFF_CONFIG_OPTION_OLD_ENGINE) +\*/|\1|' include/freetype/config/ftoption.h
 }
