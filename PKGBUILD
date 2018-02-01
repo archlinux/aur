@@ -2,7 +2,7 @@
 
 pkgname=jbake
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="JBake is a Java based, open source, static site/blog generator for developers & designers"
 arch=('any')
 url="http://jbake.org"
@@ -21,6 +21,6 @@ package() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/opt/jbake/bin/jbake" "${pkgdir}/usr/bin/jbake"
+  ln -s /opt/jbake/bin/jbake "${pkgdir}/usr/bin/jbake"
 }
 
