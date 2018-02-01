@@ -1,5 +1,5 @@
 pkgbase = python-pycryptodome
-	pkgver = 3.4.8
+	pkgver = 3.4.9
 	pkgrel = 1
 	url = http://www.pycryptodome.org/
 	arch = x86_64
@@ -7,9 +7,9 @@ pkgbase = python-pycryptodome
 	makedepends = gmp
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/p/pycryptodome/pycryptodome-3.4.8.tar.gz
-	sha256sums = ede7f1f44b0895feb8ddbf882d1a7eb504deb3fa34fcc4860d6065c25cbdf175
-	sha512sums = b211dad8f74b3c37c43adf0f6389a3df1bb56d7ebc2083fe36ea657ed5290a106b4c61b855e21c0ab1271d0bbc847e7d81a63984f80384b47a0196daa7e3867c
+	source = https://files.pythonhosted.org/packages/source/p/pycryptodome/pycryptodome-3.4.9.tar.gz
+	sha256sums = 00cc7767c7bbe91f15a65a1b2ebe7a08002b8ae8221c1dcecc5c5c9ab6f79753
+	sha512sums = ba6d856ee3f428eed4f5944199733217a76756a3855e1981c7ce30651a37a4a8d26b23e1e88a1b81457e1e4ae52d57ab70490021d5c889cc153591b5c8f22143
 
 pkgname = python-pycryptodome
 	pkgdesc = Collection of cryptographic algorithms and protocols, implemented for use from Python 3.
