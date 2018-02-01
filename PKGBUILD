@@ -3,15 +3,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-js2-mode
-pkgver=20150909
-pkgrel=2
+pkgver=20170721
+pkgrel=1
 pkgdesc="An improved JavaScript mode for GNU Emacs"
 arch=('any')
 url="http://code.google.com/p/js2-mode/"
 license=('GPL2')
 depends=('emacs')
-source=(https://github.com/mooz/js2-mode/archive/$pkgver.tar.gz)
-md5sums=('41149d4ec8fa207a4df69d06fb0df54a')
+source=($pkgname-$pkgver.tar.gz::https://github.com/mooz/js2-mode/archive/$pkgver.tar.gz)
+md5sums=('d3c5430af92b6a51103d10635a4ea9a0')
 
 build() {
   cd "$srcdir"/${pkgname#emacs-}-$pkgver
