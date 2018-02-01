@@ -62,7 +62,7 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
         free(end);
         fclose(fp);
     } else {
-        if (strlen(ticker_name_string) > 16 || (api_get_current_price(ticker_name_string) == -1 && strcmp("USD$", ticker_name_string) != 0)) {
+        if (strlen(ticker_name_string) > 16 || (api_get_current_price(ticker_name_string) == NULL && strcmp("USD$", ticker_name_string) != 0)) {
             printf("Invalid symbol.\n");
             return;
         }
@@ -143,10 +143,13 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp) {
         free(a);
         a = NULL;
     } else {
+        double* ticker_data;
         double ticker_current_price_usd = 1, ticker_1d_price_usd, ticker_1d_percent_change = 0;
         if (strcmp(ticker_name_string, "USD$") != 0) {
-            ticker_current_price_usd = api_get_current_price(ticker_name_string);
-            ticker_1d_price_usd = api_get_1d_price(ticker_name_string);
+            ticker_data = api_get_current_price(ticker_name_string);
+            ticker_current_price_usd = ticker_data[0];
+            ticker_1d_price_usd = ticker_data[1];
+            free(ticker_data);
             a[2] = ((ticker_current_price_usd - ticker_1d_price_usd) * a[0]);
             ticker_1d_percent_change = 100 * (ticker_current_price_usd / ticker_1d_price_usd - 1);
             a[0] *= ticker_current_price_usd;

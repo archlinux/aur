@@ -35,11 +35,6 @@ $ tick check [symbol/crypto_id/all]
 The string "all" will list your entire portfolio, as well as produce a grand
 total.
 
-Please be aware that printing information for mutual funds and over-the-counter
-securities may take up to 10 seconds each. This is due to Alpha Vantage's
-relatively slow API. NYSE and NASDAQ listed stocks and ETFs, as well as cryptocurrencies
-should take less than one second to print each.
-
 To get the top three news articles on a specific stock or cryptocurrency,
 you can run
 
@@ -53,7 +48,7 @@ Once installed, you may read the man page for more information.
 MIT License
 
 Stock information is taken from IEX's free API. Mutual fund and over-the-counter
-information is taken from Alpha Vantage's and Morningstar's free API. Cryptocurrency information
+information is taken from and Morningstar's free API. Cryptocurrency information
 is taken from Coinmarketcap's free API. News information is taken from News
 API. Shortened links are provided by Google's URL Shortener API. Please do
 not abuse the APIs by repeatedly requesting information. Read the provided
@@ -62,6 +57,3 @@ license for more information.
 * Command to get info about a security
 * More robust information in "check"
 * Historical support -- 7d/28d profits
-* Reduce API calls
-* Find a new API to hand all stock calls (morningstar?). Alpha Vantage is
-unreliable and having 4 different sources is not optimal.

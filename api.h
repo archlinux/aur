@@ -1,20 +1,19 @@
 /**
- * API data is taken from IEX Trading, Alpha Vantage, Coinmarketcap, News API, and Morningstar.
+ * API data is taken from IEX Trading, Morningstar, Coinmarketcap, and News API.
  * https://iextrading.com/developer/docs/
- * https://www.alphavantage.co/documentation/
+ * http://www.morningstar.com/
  * https://coinmarketcap.com/api/
  * https://newsapi.org/docs
- * http://www.morningstar.com/
  */
 
-#ifndef IEX_H
-#define IEX_H
+#ifndef API_H
+#define API_H
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <curl/curl.h>
 #include <stddef.h>
+#include <curl/curl.h>
 #include <json-c/json_tokener.h>
 
 struct string {
@@ -42,24 +41,17 @@ String* api_string_init(void);
 String* api_curl_data(char* url, char* post_field);
 
 /**
- * Returns current price of a stock or cryptocurrency.
+ * Returns a double* containing the current price and yesterday's price of a stock or cryptocurrency.
+ * [0] = current intraday price
+ * [1] = last close price
  * Order:
  * 1. IEX -- NASDAQ/NYSE/NYSEARCA
- * 2. Alpha Vantage -- OTCMKTS
- * 3. Morningstar -- MUTF
- * 4. Coinmarketcap -- CRYPTO
+ * 2. Morningstar -- MUTF/OTCMKTS
+ * 3. Coinmarketcap -- CRYPTO
  * @param ticker_name_string symbol
- * @return current price of stock
+ * @return price data
  */
-double api_get_current_price(char* ticker_name_string);
-
-/**
- * If it is a listed security, returns the close price of the previous day.
- * If it is a cryptocurrency, returns the price 24 hours ago
- * @param ticker_name_string symbol
- * @return one day ago's price
- */
-double api_get_1d_price(char* ticker_name_string);
+double* api_get_current_price(char* ticker_name_string);
 
 /**
  * writefunction for cURL HTTP GET
@@ -68,69 +60,29 @@ double api_get_1d_price(char* ticker_name_string);
 size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* hString);
 
 /**
- * Returns current price of a stock with data from IEX.
+ * Returns current and yesterday's price of a stock with data from IEX.
  * Tested for NASDAQ, NYSE, and NYSEARCA listed stocks/ETFs.
- * Fast -- should take less than one second per call.
  * @param ticker_name_string symbol
  * @return current price of stock
  */
-double iex_get_current_price(char* ticker_name_string);
+double* iex_get_price(char* ticker_name_string);
 
 /**
- * Returns current price of a mutual fund with data from Morningstar
+ * Returns current and yesterday's price of a mutual fund with data from Morningstar
  * Tested for MUTF and OTCMKTS listed securities.
- * Fast -- should take less than one second per call.
  * @param ticker_name_string symbol
  * @param offset number of days ago to get price of (0 = today)
  * @return price of security
  */
-double morningstar_get_price(char* ticker_name_string, int offset);
+double* morningstar_get_price(char* ticker_name_string);
 
 /**
- * Returns current price of a mutual fund or over-the-counter stock with data from Alpha Vantage.
- * Tested for MUTF and OTCMKTS listed securities.
- * Dreadfully slow -- may take up to ten seconds per call.
- * @param ticker_name_string symbol
- * @return current price of security
- */
-double alphavantage_get_current_price(char* ticker_name_string);
-
-/**
- * Returns current price of a cryptocurrency with data from Coinmarketcap.
+ * Returns current and yesterday's price of a cryptocurrency with data from Coinmarketcap.
  * All cryptocurrencies listed on Coinmarketcap will work.
- * Fast -- should take less than one second per call.
  * @param ticker_name_string symbol
  * @return current price of cryptocurrency
  */
-double coinmarketcap_get_current_price(char* ticker_name_string);
-
-/**
- * Returns previous close price of a stock with data from IEX.
- * Tested for NASDAQ, NYSE, and NYSEARCA listed stocks/ETFs.
- * Fast -- should take less than one second per call.
- * @param ticker_name_string symbol
- * @return current price of stock
- */
-double iex_get_1d_price(char* ticker_name_string);
-
-/**
- * Returns previous close price of a mutual fund or over-the-counter stock with data from Alpha Vantage.
- * Tested for MUTF and OTCMKTS listed securities.
- * Dreadfully slow -- may take up to ten seconds per call.
- * @param ticker_name_string symbol
- * @return current price of security
- */
-double alphavantage_get_1d_price(char* ticker_name_string);
-
-/**
- * Returns price 24 hours ago of a cryptocurrency with data from Coinmarketcap.
- * If the symbol is not on IEX, Alpha Vantage will be used
- * Tested for MUTF and OTCMKTS listed securities.
- * Fast -- should take less than one second per call.
- * @param ticker_name_string symbol
- * @return current price of cryptocurrency
- */
-double coinmarketcap_get_1d_price(char* ticker_name_string);
+double* coinmarketcap_get_price(char* ticker_name_string);
 
 /**
  * Prints top three news articles in the past week based on the given string

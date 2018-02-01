@@ -58,51 +58,59 @@ String* api_curl_data(char* url, char* post_field) {
     return pString;
 }
 
-double api_get_current_price(char* ticker_name_string) {
-    double val = iex_get_current_price(ticker_name_string);
-    if (val != -1)
+double* api_get_current_price(char* ticker_name_string) {
+    double* val;
+    if (strlen(ticker_name_string) > 5) {
+        val = coinmarketcap_get_price(ticker_name_string);
         return val;
-    val = alphavantage_get_current_price(ticker_name_string);
-    if (val != -1)
+    }
+    val = iex_get_price(ticker_name_string);
+    if (val != NULL)
         return val;
-    val = morningstar_get_price(ticker_name_string, 0);
-    if (val != -1)
+    val = morningstar_get_price(ticker_name_string);
+    if (val != NULL)
         return val;
-    val = coinmarketcap_get_current_price(ticker_name_string);
-    if (val != -1)
+    val = coinmarketcap_get_price(ticker_name_string);
+    if (val != NULL)
         return val;
-    return -1;
+    return NULL;
 }
 
-double api_get_1d_price(char* ticker_name_string) {
-    double val = iex_get_1d_price(ticker_name_string);
-    if (val != -1)
-        return val;
-    val = alphavantage_get_1d_price(ticker_name_string);
-    if (val != -1)
-        return val;
-    val = morningstar_get_price(ticker_name_string, 1);
-    if (val != -1)
-        return val;
-    val = coinmarketcap_get_1d_price(ticker_name_string);
-    if (val != -1)
-        return val;
-    return -1;
+double* iex_get_price(char* ticker_name_string) {
+    char* iex_api_string = calloc(64, sizeof(char));
+    sprintf(iex_api_string, "%s%s%s", "https://api.iextrading.com/1.0/stock/", ticker_name_string,
+            "/quote");
+    String* pString = api_curl_data(iex_api_string, NULL);
+    free(iex_api_string);
+    if (strcmp(pString->data, "Unknown symbol") == 0) {
+        api_string_destroy(&pString);
+        return NULL;
+    }
+    Json* jobj = json_tokener_parse(pString->data);
+    double* ret = malloc(sizeof(double) * 2);
+    char* price_string = (char*) json_object_to_json_string(json_object_object_get(jobj, "latestPrice"));
+    char* close_price_string = (char*) json_object_to_json_string(json_object_object_get(jobj, "previousClose"));
+    ret[0] = strtod(price_string, NULL);
+    ret[1] = strtod(close_price_string, NULL);
+    api_string_destroy(&pString);
+    return ret;
 }
 
-double morningstar_get_price(char* ticker_name_string, int offset) {
+double* morningstar_get_price(char* ticker_name_string) {
     time_t now = time(NULL);
     struct tm* ts;
     char* today_char = calloc(16, 1);
     char* yesterday_char = calloc(16, 1);
     ts = localtime(&now);
+    if (ts->tm_wday == 0) //if sunday
+        ts->tm_mday -= 2;
+    else if (ts->tm_hour <= 16 || ts->tm_wday == 6) //if before market close or saturday
+        ts->tm_mday--;
     mktime(ts);
-    ts->tm_mday -= offset;
     strftime(today_char, 16, "%Y-%m-%d", ts);
     ts->tm_mday--;
     mktime(ts);
     strftime(yesterday_char, 16, "%Y-%m-%d", ts);
-
     char* morningstar_api_string = calloc(512, 1);
     sprintf(morningstar_api_string, "%s%s%s%s|%s%s",
             "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?ticker=",
@@ -115,188 +123,46 @@ double morningstar_get_price(char* ticker_name_string, int offset) {
     free(yesterday_char);
 
     Json* jobj = json_tokener_parse(pString->data);
-    if (strcmp("null", pString->data) == 0){
+    if (strcmp("null", pString->data) == 0) {
         api_string_destroy(&pString);
-        return -1;
+        return NULL;
     }
+    double* ret = malloc(sizeof(double) * 2);
     Json* price_data_list = json_object_object_get(jobj, "PriceDataList");
-    Json* price = json_object_array_get_idx(price_data_list, 0);
-    Json* current = json_object_object_get(price, "Max");
-    char* price_string = (char*) json_object_to_json_string(current);
-    char* copy = calloc(16, 1);
-    strcpy(copy, price_string);
+    Json* price_data = json_object_array_get_idx(price_data_list, 0);
+    Json* current = json_object_object_get(price_data, "Datapoints");
+    Json* yesterday = json_object_array_get_idx(json_object_array_get_idx(current, 1), 0);
+    char* price = (char*) json_object_to_json_string(yesterday);
+    ret[0] = strtod(price, NULL);
+    Json* today = json_object_array_get_idx(json_object_array_get_idx(current, 0), 0);
+    price = (char*) json_object_to_json_string(today);
+    ret[1] = strtod(price, NULL);
     json_object_put(jobj);
-    double ret = strtod(copy, NULL);
-    free(copy);
     api_string_destroy(&pString);
     return ret;
 }
 
-double iex_get_current_price(char* ticker_name_string) {
-    size_t ticker_name_len = strlen(ticker_name_string);
-    char* iex_api_string = calloc(64, sizeof(char));
-    memcpy(iex_api_string, "https://api.iextrading.com/1.0/stock/", 37);
-    memcpy(&iex_api_string[37], ticker_name_string, ticker_name_len);
-    memcpy(&iex_api_string[37 + ticker_name_len], "/quote/latestPrice", 18);
-
-    String* pString = api_curl_data(iex_api_string, NULL);
-    free(iex_api_string);
-    if (strcmp(pString->data, "Unknown symbol") == 0) {
-        api_string_destroy(&pString);
-        return -1;
-    }
-    double ret = strtod(pString->data, NULL);
-    api_string_destroy(&pString);
-    return ret;
-}
-
-double alphavantage_get_current_price(char* ticker_name_string) {
-    char* av_str = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=1min&apikey=DFUMLJ1ILOM2G7IH&datatype=csv&symbol=";
-    char* alphavantage_api_string = calloc(160, sizeof(char));
-    memcpy(alphavantage_api_string, av_str, 160);
-    size_t av_len = strlen(alphavantage_api_string);
-    memcpy(&alphavantage_api_string[av_len], ticker_name_string, 10);
-    String* pString = api_curl_data(alphavantage_api_string, NULL);
-    if (pString->data[0] == '{') {
-        api_string_destroy(&pString);
-        memset(alphavantage_api_string, '\0', 160);
-        av_str = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&apikey=DFUMLJ1ILOM2G7IH&datatype=csv&symbol=";
-        memcpy(alphavantage_api_string, av_str, 160);
-        av_len = strlen(alphavantage_api_string);
-        memcpy(&alphavantage_api_string[av_len], ticker_name_string, 10);
-        pString = api_curl_data(alphavantage_api_string, NULL);
-    }
-    if (pString->data[0] == '{') {
-        free(alphavantage_api_string);
-        api_string_destroy(&pString);
-        return -1;
-    }
-    int i = 0;
-    for (int j = 0; j < 9; i++, j++)
-        while (pString->data[i] != ',')
-            i++;
-    char* price_string = (char*) calloc(16, 1);
-    for (int j = 0; pString->data[i] != ','; i++, j++)
-        price_string[j] = pString->data[i];
-    free(alphavantage_api_string);
-    double ret = strtod(price_string, NULL);
-    free(price_string);
-    api_string_destroy(&pString);
-    return ret;
-}
-
-double coinmarketcap_get_current_price(char* ticker_name_string) {
-    char* cmc_str = "https://api.coinmarketcap.com/v1/ticker/";
+double* coinmarketcap_get_price(char* ticker_name_string) {
     char* coinmarketcap_api_string = calloc(64, sizeof(char));
-    memcpy(coinmarketcap_api_string, cmc_str, 40);
-    memcpy(&coinmarketcap_api_string[40], ticker_name_string, 20);
+    sprintf(coinmarketcap_api_string, "%s%s", "https://api.coinmarketcap.com/v1/ticker/", ticker_name_string);
     String* pString = api_curl_data(coinmarketcap_api_string, NULL);
-    if (pString->data[0] == '{') {
-        free(coinmarketcap_api_string);
-        api_string_destroy(&pString);
-        return -1;
-    }
-    int i = 0;
-    for (int j = 0; j < 19; i++, j++)
-        while (pString->data[i] != '"')
-            i++;
-    char* price_string = (char*) calloc(16, 1);
-    for (int j = 0; pString->data[i] != '"'; i++, j++)
-        price_string[j] = pString->data[i];
     free(coinmarketcap_api_string);
-    double ret = strtod(price_string, NULL);
-    free(price_string);
-    api_string_destroy(&pString);
-    return ret;
-}
-
-double iex_get_1d_price(char* ticker_name_string) {
-    size_t ticker_name_len = strlen(ticker_name_string);
-    char* iex_api_string = calloc(64, sizeof(char));
-    memcpy(iex_api_string, "https://api.iextrading.com/1.0/stock/", 37);
-    memcpy(&iex_api_string[37], ticker_name_string, ticker_name_len);
-    memcpy(&iex_api_string[37 + ticker_name_len], "/previous?format=csv", 21);
-
-    String* pString = api_curl_data(iex_api_string, NULL);
-    free(iex_api_string);
-
-    if (strcmp(pString->data, "Unknown symbol") == 0) {
-        api_string_destroy(&pString);
-        return -1;
-    }
-    int i = 0;
-    for (int j = 0; j < 15; i++, j++)
-        while (pString->data[i] != ',')
-            i++;
-    char* price_string = (char*) calloc(16, 1);
-    for (int j = 0; pString->data[i] != ','; i++, j++)
-        price_string[j] = pString->data[i];
-    double ret = strtod(price_string, NULL);
-    free(price_string);
-    api_string_destroy(&pString);
-    return ret;
-}
-
-double alphavantage_get_1d_price(char* ticker_name_string) {
-    size_t ticker_name_len = strlen(ticker_name_string);
-    char* alphavantage_api_string = calloc(128, sizeof(char));
-    memcpy(alphavantage_api_string,
-           "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&apikey=DFUMLJ1ILOM2G7IH&datatype=csv&symbol=",
-           128);
-    size_t prefix = strlen(alphavantage_api_string);
-    memcpy(&alphavantage_api_string[prefix], ticker_name_string, ticker_name_len);
-    String* pString = api_curl_data(alphavantage_api_string, NULL);
     if (pString->data[0] == '{') {
-        free(alphavantage_api_string);
         api_string_destroy(&pString);
-        return -1;
+        return NULL;
     }
-    int i = 0;
-    for (int j = 0; j < 14; i++, j++)
-        while (pString->data[i] != ',')
-            i++;
-    char* price_string = (char*) calloc(16, 1);
-    for (int j = 0; pString->data[i] != ','; i++, j++)
-        price_string[j] = pString->data[i];
-    double ret = strtod(price_string, NULL);
-    free(alphavantage_api_string);
-    free(price_string);
+    Json* jobj = json_tokener_parse(pString->data);
+    Json* data = json_object_array_get_idx(jobj, 0);
+    Json* usd = json_object_object_get(data, "price_usd");
+    Json* percent_change_1d = json_object_object_get(data, "percent_change_24h");
+    char* price = (char*) json_object_get_string(usd);
+    char* change_1d = (char*) json_object_get_string(percent_change_1d);
+    double* ret = malloc(sizeof(double) * 2);
+    ret[0] = strtod(price, NULL);
+    ret[1] = ret[0] - ((strtod(change_1d, NULL)/100) * ret[0]);
     api_string_destroy(&pString);
+    json_object_put(jobj);
     return ret;
-}
-
-double coinmarketcap_get_1d_price(char* ticker_name_string) {
-    char* cmc_str = "https://api.coinmarketcap.com/v1/ticker/";
-    char* coinmarketcap_api_string = calloc(64, sizeof(char));
-    memcpy(coinmarketcap_api_string, cmc_str, 40);
-    memcpy(&coinmarketcap_api_string[40], ticker_name_string, 20);
-    String* pString = api_curl_data(coinmarketcap_api_string, NULL);
-    if (pString->data[0] == '{') {
-        free(coinmarketcap_api_string);
-        api_string_destroy(&pString);
-        return -1;
-    }
-    int i = 0;
-    for (int j = 0; j < 19; i++, j++)
-        while (pString->data[i] != '"')
-            i++;
-    char* price_string = (char*) calloc(16, 1);
-    for (int j = 0; pString->data[i] != '"'; i++, j++)
-        price_string[j] = pString->data[i];
-    char* percent_string = (char*) calloc(16, 1);
-    i = 0;
-    for (int j = 0; j < 51; i++, j++)
-        while (pString->data[i] != '"')
-            i++;
-    for (int j = 0; pString->data[i] != '"'; i++, j++)
-        percent_string[j] = pString->data[i];
-    free(coinmarketcap_api_string);
-    double current_price = strtod(price_string, NULL);
-    double percent_change = strtod(percent_string, NULL);
-    free(price_string);
-    free(percent_string);
-    api_string_destroy(&pString);
-    return current_price - (current_price * (percent_change / 100));
 }
 
 void news_print_top_three(char* ticker_name_string) {
@@ -361,15 +227,12 @@ void json_print_news(char* data) {
 }
 
 const char* google_shorten_link(char* url_string) {
-    char* google_api_string = calloc(256, sizeof(char));
-    memcpy(google_api_string,
-           "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAoMAvMPpc7U8lfrnGMk2ZKl966tU2pppU",
-           256);
+    char* google_api_string = "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAoMAvMPpc7U8lfrnGMk2ZKl966tU2pppU";
     char* post_string = calloc(1024, 1);
     sprintf(post_string, "{\"longUrl\": \"%s\"}", url_string);
     String* pString = api_curl_data(google_api_string, post_string);
-    free(post_string);
     free(google_api_string);
+    free(post_string);
     Json* jobj = json_tokener_parse(pString->data);
     Json* short_url = json_object_object_get(jobj, "id");
     const char* short_url_string = json_object_to_json_string(short_url);
