@@ -1,0 +1,19 @@
+pkgbase = drawterm-9front-hg
+	pkgdesc = Drawterm fork by 9front project.
+	pkgver = r326.fac7facfeaa8
+	pkgrel = 1
+	url = http://drawterm.9front.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = gcc
+	makedepends = mercurial
+	depends = xorg-server
+	conflicts = drawterm-git
+	conflicts = drawterm-hg
+	source = drawterm-9front-hg::hg+https://code.9front.org/hg/drawterm
+	md5sums = SKIP
+
+pkgname = drawterm-9front-hg
+
