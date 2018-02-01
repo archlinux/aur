@@ -1,0 +1,13 @@
+pkgbase = leitz-icon
+	pkgdesc = driver for Leitz Icon label printer
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://support.leitz.com/hc/de/community/posts/207467817-Driver-or-app-for-Linux
+	arch = x86_64
+	license = unknown
+	depends = cups
+	source = https://web.leitz-cloud.com/1/files/share/511/Public/Software/Linux/Drivers/LeitzIconDriversForLinux1.0.3.zip/449f3bc489b024
+	md5sums = 5457e0fb8ca2d79998ddc9237d76bc42
+
+pkgname = leitz-icon
+
