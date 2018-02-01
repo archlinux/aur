@@ -13,7 +13,7 @@
 
 pkgname=go-git
 epoch=1
-pkgver=1.9.2
+pkgver=1.10rc1
 pkgrel=1
 pkgrepo=go
 pkgdesc='Core compiler tools for the Go programming language'
@@ -22,7 +22,7 @@ url='http://golang.org/'
 license=(BSD)
 makedepends=(git go)
 options=(!strip staticlibs)
-_commit=2ea7d3461bb41d0ae12b56ee52d43314bcdb97f9
+_commit=5348aed83e39bd1d450d92d7f627e994c2db6ebf
 source=(git+https://go.googlesource.com/go#commit=$_commit)
 md5sums=('SKIP')
 
@@ -49,16 +49,8 @@ check() {
   export PATH="$srcdir/$pkgrepo-$pkgver/bin:$PATH"
   export GO_TEST_TIMEOUT_SCALE=2
 
-  # The cgo_test and race tests fail via run.bash but not if run manually.
-  # Assume that five "failed" messages are okay and just re-run failed tests.
   cd $pkgrepo/src
-  ./run.bash --no-rebuild -v -v -v -k |& tee run.log
-  if (( $(grep -c Failed: run.log) > 5 )) && grep -q FAILED run.log; then
-    return 1
-  fi
-
-  go tool dist test -v -v -v -run=^cgo_test$
-  go tool dist test -v -v -v -run=^race$
+  ./run.bash --no-rebuild -v -v -v -k
 }
 
 package() {
