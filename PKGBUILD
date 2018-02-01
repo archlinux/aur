@@ -2,7 +2,7 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=kitch
-pkgver=24.9.0
+pkgver=24.10.0
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -17,7 +17,7 @@ install="kitch.install"
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
 source=("https://github.com/itchio/itch/archive/v${pkgver}-canary.tar.gz")
-sha256sums=('12dd02875d42fc33acacf544f1fc69faee0a1d5e3d6e57548f1c1deb7c6303c4')
+sha256sums=('4353f4a8795d573a9d4db57d67f39fca1614a78568b6d6a56bd18d45471b4b46')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=386
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/itch-${pkgver}-canary"
-  export CI_BUILD_TAG="v24.9.0-canary"
+  export CI_BUILD_TAG="v24.10.0-canary"
   export CI_CHANNEL="canary"
 
   release/ci-compile.js
