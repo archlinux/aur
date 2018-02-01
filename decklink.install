@@ -32,7 +32,9 @@ post_install() {
 ## arg 2:  the old package version
 pre_upgrade() {
   lsmod | grep blackmagic && modprobe -r blackmagic || true
-  rm -f "/lib/modules/*/kernel/drivers/blackmagic.ko"
+  lsmod | grep snd_blackmagic_io && rmmod -f snd_blackmagic_io || true
+  lsmod | grep blackmagic_io && rmmod -f blackmagic_io || true
+  rm -f "/lib/modules/*/kernel/drivers/*blackmagic*.ko"
 }
 
 ## arg 1:  the new package version
