@@ -3,7 +3,7 @@
 
 pkgname=snakemake
 pkgver=4.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
@@ -33,4 +33,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	python setup.py install --skip-build -O1 --root="$pkgdir"
+	
+	install -d "$pkgdir/etc/bash_completion.d"
+	"$pkgdir/usr/bin/snakemake" --bash-completion >"$pkgdir/etc/bash_completion.d/snakemake"
 }
