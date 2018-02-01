@@ -21,7 +21,7 @@ sha256sums=('37c4a748273ed32cc5ec16fa083dfc4f708374b1a9811b03baf311265f6b5f4d')
 
 prepare() {
 	cd "${srcdir}/${pkgname#gtk\-}-${pkgver}"
-	autoreconf -fi 
+	autoreconf -fi
 }
 
 build() {
