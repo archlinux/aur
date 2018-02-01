@@ -4,8 +4,8 @@
 
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
-pkgver=1.19.6
-pkgrel=2
+pkgver=1.19.6+13+gd0d1a694f
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -16,38 +16,39 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
-             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols')
-source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
+             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'git')
+_commit=d0d1a694f967af770fba0d36043fd5218ff20984 # branch 1.19
+#source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
+source=("git+https://anongit.freedesktop.org/git/xorg/xserver.git#commit=$_commit"
         nvidia-add-modulepath-support.patch
         xserver-autobind-hotplug.patch
         xvfb-run
         xvfb-run.1
-	revert-udev-changes.diff
         freedesktop-bug-865.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
 	      'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
 	      '995ED5C8A6138EB0961F18474C09DD83CAAA50B2')
-sha256sums=('a732502f1db000cf36a376cd0c010ffdbf32ecdd7f1fa08ba7f5bdf9601cc197'
-            'SKIP'
+sha256sums=('SKIP'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-	    'ce9b235c053ac85a9da86fba3b60fcfc48d36a8bd789b94ed79d5d571bc7b0aa'
             '460615227a7e42d124639d4ae02e55d1b2a250c7bdf539e018b46de71230364f')
 
+pkgver() {
+  cd xserver
+  git describe --tags | sed 's/^xorg-server-//;s/_/./g;s/-/+/g'
+}
+
 prepare() {
-  cd "xorg-server-${pkgver}"
+  cd xserver
+  #cd "${pkgbase}-${pkgver}"
 
   # merged upstream in trunk
   patch -Np1 -i ../nvidia-add-modulepath-support.patch
   # patch from Fedora, not yet merged
   patch -Np1 -i ../xserver-autobind-hotplug.patch
-
-  # https://bugs.archlinux.org/task/56804 
-  # https://bugs.freedesktop.org/show_bug.cgi?id=104382
-  patch -Rp1 -i ../revert-udev-changes.diff
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
@@ -63,7 +64,8 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
   export LDFLAGS=${LDFLAGS/,-z,now}
 
-  cd "xorg-server-${pkgver}"
+  cd xserver
+#  cd "xorg-server-${pkgver}"
   ./configure --prefix=/usr \
       --enable-ipv6 \
       --enable-dri \
@@ -121,7 +123,8 @@ package_xorg-server-bug865() {
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server.install
 
-  cd "xorg-server-${pkgver}"
+  cd xserver
+#  cd "xorg-server-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
