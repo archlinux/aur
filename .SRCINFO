@@ -1,0 +1,10 @@
+pkgbase = clarcharr-theme
+	pkgdesc = This package violates AUR guidelines
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://dev.null
+	arch = any
+	license = None
+
+pkgname = clarcharr-theme
+
