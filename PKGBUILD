@@ -6,43 +6,40 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv
-pkgver=29.0
-pkgrel=7
+pkgver=29.1
+pkgrel=1
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
-depends=('fftw' 'libass' 'libavc1394' 'libiec61883' 'libva' 'libxinerama' 'libpulse' 'jack'
-         'mysql-python' 'libvpx' 'perl-dbd-mysql' 'exiv2' 'libvdpau' 'libx264' 'lame' 'x265'
-         'perl-net-upnp' 'python2-lxml' 'qt5-webkit' 'qt5-script' 'taglib' 'urlgrabber' 'libxrandr')
-makedepends=('libcec' 'libxml2' 'mesa' 'openssl' 'yasm' 'x264' 'gdb' 'libcdio' 'lirc'
-			 'perl-io-socket-inet6' 'perl-libwww' 'mariadb-clients')
+depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva' 'libiec61883' 'python2'
+		 'qt5-webkit' 'x265' 'libx264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr')
+# 'ttf-liberation' 
+makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec' 'x264' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww' 'mysql-python'
+             'perl-dbd-mysql' 'python2-lxml')
 optdepends=('glew: for GPU commercial flagging'
             'libcec: for consumer electronics control capabilities'
             'libxml2: to read blu-ray metadata'
-            'openssl: for AirTunes (RAOP) support'
-			'python-future: for metadata-lookup / cover art'
-			'python-requests: for metadata-lookup / cover art'
-			'python-requests-cache: for metadata-lookup / cover art')
+            'perl-net-upnp: UPnP backend'
+            'urlgrabber: Downloading files'
+            'python-future: for metadata-lookup / cover art'
+            'python-requests: for metadata-lookup / cover art'
+            'python-requests-cache: for metadata-lookup / cover art')
 conflicts=('myththemes' 'mythplugins-mythvideo')
 replaces=('myththemes' 'mythplugins-mythvideo')
 install='mythtv.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$pkgver.tar.gz"
         'mythbackend.service'
 		'99-mythbackend.rules'
-		'mythtv.install'
-		'qt510.patch')
-sha512sums=('6d79d943b95b1816b4fce52f3de3e01ebcdcc2779f852ec8cf5e3a81f8be4c730a254ff78b52e36ac522ff99b125501f0cba33a2d4c01571552e09fb4dba18c2'
+		'mythtv.install')
+sha512sums=('0ac0dc2061ac6165d2a5eb14a4cd984d5d79aadc3452f3df5c02c86ba057285a29b20f29fed4381c5867aaee7b0088797f588e69a0d9d225be2edac600c885fd'
             '41533da5d8ef694d8c12f60d956673d9e49fb6781ae58d6bfd0bf31e4f380fddb508f9cad3b91264a3ad55853c24c6932bdf83bb5b711c34c0836d71b46be02c'
             'fc02c190f01dbfb803b87ea0a6cdf408ce7706dc1ed74fba939931c129fdeb5dab1105caf9f71f029843a4d74db888084f92173c3be240d8492454633311f7c8'
-			'db78be27826be44e97d8680aa860f2e85c94e017aa649d183ee5d71310c95e31669330d3b4496c52143892f238300e57ae88ab0a737ca135ab6f2ce361814e36'
-            '5070b4e8ad5ebd4208a3e8393ebabb55118615c2966cb1ba585e94084c4ad643dc5644bfca9267eb81e6c27be16b088e541aa8118a43cbebaf9d28c52e15a35c')
+			'db78be27826be44e97d8680aa860f2e85c94e017aa649d183ee5d71310c95e31669330d3b4496c52143892f238300e57ae88ab0a737ca135ab6f2ce361814e36')
 
 prepare() {
   cd $pkgname-$pkgver/$pkgname
-
-  patch -Np2 -i ../../qt510.patch
 
   find 'bindings/python' 'contrib' 'programs/scripts' -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
 }
