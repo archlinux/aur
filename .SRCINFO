@@ -1,0 +1,24 @@
+pkgbase = filebrowser-bin
+	pkgdesc = Web File Manager which can be used as a middleware or standalone app.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/filebrowser/filebrowser
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	backup = etc/filebrowser/config.json
+	backup = usr/share/filebrowser/storage/README.txt
+	backup = usr/lib/systemd/system/filebrowser.service
+	source = filebrowser.service
+	source = config.json
+	source = README.txt
+	source = https://raw.githubusercontent.com/hacdias/filebrowser/master/LICENSE.md
+	md5sums = 8c32a68ea6e6c9079f989bf72bb37ba9
+	md5sums = d47072829df221f4ac29b9f299d964f0
+	md5sums = 93513176e4f94536c504e5d5045e70f8
+	md5sums = d92e60ee98664c54f68aa515a6169708
+	source_x86_64 = linux-amd64-filebrowser.tar.gz::https://github.com/filebrowser/filebrowser/releases/download/v1.5.0/linux-amd64-filebrowser.tar.gz
+	md5sums_x86_64 = 62c40a4f5da3a6fb8ae6a596a363f4f0
+
+pkgname = filebrowser-bin
+

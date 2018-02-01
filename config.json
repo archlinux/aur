@@ -1,0 +1,15 @@
+{
+  "port": 8080,
+  "address": "0.0.0.0",
+  "database": "/usr/share/filebrowser/database.db",
+  "log": "stdout",
+  "plugin": "",
+  "scope": "/usr/share/filebrowser/storage/",
+  "allowCommands": true,
+  "allowEdit": true,
+  "allowNew": true,
+  "commands": [
+    "git",
+    "svn"
+  ]
+}
