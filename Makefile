@@ -5,8 +5,8 @@ CFLAGS ?= -O2
 prefix ?= /usr/local
 VDIR = tinyxml
 
-includedir ?= include
-libdir ?= lib
+includedir ?= $(prefix)/include
+libdir ?= $(prefix)/lib
 
 MAJOR=0d2
 MINOR=0
@@ -42,17 +42,18 @@ doxy:
 	doxygen
 
 install: all
-	install -D -m 644 bulletml.d $(DESTDIR)/$(prefix)/$(includedir)/d/bulletml.d
-	install -D -m 644 tinyxml/tinyxml.h $(DESTDIR)/$(prefix)/$(includedir)/bulletml/tinyxml/tinyxml.h
-	install -m 644 *.h $(DESTDIR)/$(prefix)/$(includedir)/bulletml
-	install -d $(DESTDIR)/$(prefix)/$(libdir)
-	install -m 644 libbulletml.a $(DESTDIR)/$(prefix)/$(libdir)
-	install -m 644 libbulletml.so.$(MAJOR).$(MINOR) $(DESTDIR)/$(prefix)/$(libdir)
+	install -D -m 644 bulletml.d $(DESTDIR)/$(includedir)/d/bulletml.d
+	install -D -m 644 tinyxml/tinyxml.h \
+		$(DESTDIR)/$(includedir)/bulletml/tinyxml/tinyxml.h
+	install -m 644 *.h $(DESTDIR)/$(includedir)/bulletml
+	install -d $(DESTDIR)/$(libdir)
+	install -m 644 libbulletml.a $(DESTDIR)/$(libdir)
+	install -m 644 libbulletml.so.$(MAJOR).$(MINOR) $(DESTDIR)/$(libdir)
 	ln -f -r -s \
-		$(DESTDIR)/$(prefix)/$(libdir)/libbulletml.so.$(MAJOR).$(MINOR) \
-		$(DESTDIR)/$(prefix)/$(libdir)/libbulletml.so.$(MAJOR)
+		$(DESTDIR)/$(libdir)/libbulletml.so.$(MAJOR).$(MINOR) \
+		$(DESTDIR)/$(libdir)/libbulletml.so.$(MAJOR)
 	ln -f -r -s \
-		$(DESTDIR)/$(prefix)/$(libdir)/libbulletml.so.$(MAJOR).$(MINOR) \
-		$(DESTDIR)/$(prefix)/$(libdir)/libbulletml.so
+		$(DESTDIR)/$(libdir)/libbulletml.so.$(MAJOR).$(MINOR) \
+		$(DESTDIR)/$(libdir)/libbulletml.so
 
 PHONY: all clean doxy install

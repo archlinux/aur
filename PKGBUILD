@@ -3,7 +3,7 @@
 
 pkgname=libbulletml
 pkgver=0.0.6
-pkgrel=4
+pkgrel=5
 pkgdesc='C++ library to handle BulletML, a markup language to describe bullets in shooting games.'
 url='http://shinh.skr.jp/libbulletml/index_en.html'
 license=('custom:libbulletml')
@@ -21,7 +21,7 @@ sha256sums=(
 	7c37f3d2d52825417c5de716f89bea4b71156371e698e2579daf7921df07aa79
 	f0a9f01ef9daaa980f876253c81e8e76eea17b7de1aa569bf23661b456c5c9d3
 	e85182a82604b4bc3c3f42b35f5d77decd327239602bcc4b5ac3a2e1269f211e
-	ce5f9d510b81f6a7141408ca2c3c80d86dc7d371098696965d752381b7fdeba9
+	061c2e980e72b151fe2fc26a5b083f82a4403d6cd788aadba96e27f78810d24d
 )
 noextract=(d_cpp.tar.bz2)
 
