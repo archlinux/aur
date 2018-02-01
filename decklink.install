@@ -48,7 +48,7 @@ pre_remove() {
 
 ## arg 1:  the old package version
 post_remove() {
-  rm -f "/lib/modules/*/kernel/drivers/blackmagic.ko"
+  rm -f "/lib/modules/*/kernel/drivers/*blackmagic*.ko"
 }
 
 # vim:set ts=2 sw=2 et:
