@@ -1,17 +1,18 @@
 pkgbase = darch
 	pkgdesc = A utility to that uses containerd to build stateless operating system images that can be booted bare-metal.
-	pkgver = 0.16.3
-	pkgrel = 3
-	url = https://github.com/pauldotknopf/darch
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/godarch/darch
 	arch = x86_64
 	license = MIT
+	depends = glibc,
 	depends = libseccomp
 	provides = containerd,
 	provides = runc
 	conflicts = containerd,
 	conflicts = runc
-	source = darch-0.16.3.tar.gz::https://github.com/pauldotknopf/darch/releases/download/v0.16.3/darch-amd64-with-runtime.tar.gz
-	md5sums = 63cc34e92c1c4e70705e391bade5fe0e
+	source = darch-0.17.0.tar.gz::https://github.com/godarch/darch/releases/download/v0.17.0/darch-amd64-with-runtime.tar.gz
+	md5sums = 1aeca279d9e67df2e0035cbc99e2e6f5
 
 pkgname = darch
 
