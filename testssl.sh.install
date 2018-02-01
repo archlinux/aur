@@ -1,0 +1,6 @@
+post_upgrade() {
+    echo
+    echo ":: testssl.sh installed as testssl"
+    echo ":: previous versions < v2.4.r2097.g7585ab6 were installed as testssl.sh"
+    echo
+}
