@@ -8,7 +8,7 @@
 
 pkgname=thunderbird-gtk2
 _pkgname=thunderbird
-pkgver=52.5.2
+pkgver=52.6.0
 pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org"
 arch=(i686 x86_64)
@@ -24,13 +24,12 @@ conflicts=(thunderbird)
 options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
         0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
-        no-crmf.diff rust-i686.patch glibc-2.26-fix.diff fix-wifi-scanner.diff
+        no-crmf.diff rust-i686.patch fix-wifi-scanner.diff
         $_pkgname.desktop thunderbird-install-dir.patch)
-sha256sums=('7772e1865cd4cbaac82ea05374d0ae51f754f47c6160c9b83919da483d620ee5'
+sha256sums=('16215fb5a3765c7e5a40eadc1f3aed6918294f6d8ef1552d2aa37656055045a8'
             '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
             'a7317caba56e89932bd9e3b9352d94701dd9a419685057f238b1ded8dc0adcd7'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
-            'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
             'e44c55501f650a4e80b9c353b81f33e07ca65808db831eff6ca616aded233827'
             '24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d')
@@ -59,10 +58,6 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../no-crmf.diff
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
-  patch -d mozilla/toolkit/crashreporter/google-breakpad/src/client -Np4 < ../glibc-2.26-fix.diff
 
   # Build with the rust targets we actually ship
   patch -d mozilla -Np1 < ../rust-i686.patch
@@ -106,7 +101,6 @@ ac_add_options --with-system-libvpx
 ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
-ac_add_options --enable-system-pixman
 
 # Features
 ac_add_options --enable-alsa
