@@ -1,9 +1,9 @@
 # Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) >
 pkgname=firefox-ubuntu-bin
 _pkgname=firefox
-pkgver=58.0
-_ubuntuver="$pkgver+build6-0ubuntu0.17.10.1_amd64"
-pkgrel=2
+pkgver=58.0.1
+_ubuntuver="$pkgver+build1-0ubuntu0.17.10.1_amd64"
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with Ubuntu patches (binary)"
 arch=("x86_64")
 url="https://www.mozilla.org/firefox/"
@@ -34,7 +34,7 @@ optdepends=(
 provides=('firefox' 'firefox-ubuntu')
 conflicts=('firefox' 'firefox-ubuntu')
 source=("http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_$_ubuntuver.deb")
-md5sums=('f0f4787491e5731c50c20cd7a74f4504')
+md5sums=('6c5227b9e6058b8ca3b58b7379b62d77')
 
 prepare() {
 	# Don't extract copyright files, which are included in the licenses package
