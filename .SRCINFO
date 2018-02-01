@@ -6,6 +6,7 @@ pkgbase = fava
 	arch = any
 	license = GPL
 	depends = beancount
+	depends = python-pip
 	depends = python-click
 	depends = python-markdown2
 	depends = python-flask
