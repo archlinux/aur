@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tabbed-vain
-pkgver=0.6r37
+pkgver=0.6
 pkgrel=1
 pkgdesc="Suckless tabbed modified to suit the author's needs"
 arch=('i686' 'x86_64')
@@ -13,19 +13,19 @@ depends=('libxft')
 makedepends=('git')
 conflicts=('tabbed')
 provides=('tabbed')
-source=("git+https://github.com/vain/tabbed-vain.git#commit=b98fd6d9015323c57904be9c3529038e1e91f6ea"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vain/$pkgname/archive/$pkgver.tar.gz"
         'config.h')
-md5sums=('SKIP'
+md5sums=('654bab23528cca963dd59612ef11cdd3'
          '061c739dc784bf74e92bd5b7a1100623')
 
 build() {
-  cd "${pkgname}"
-  cp "${srcdir}/config.h" config.h
+  cd $pkgname-$pkgver
+  cp "${srcdir}"/config.h config.h
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd $pkgname-$pkgver
 
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
