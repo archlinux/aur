@@ -6,7 +6,7 @@
 pkgname='kapacitor'
 _gitname='kapacitor'
 pkgver='1.4.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Open source framework for processing, monitoring, and alerting on time series data'
 arch=('i686' 'x86_64')
 url='http://influxdb.org/'
@@ -30,19 +30,14 @@ build()
   export GOBIN="$GOPATH/bin"
   export PATH="$GOBIN:$PATH"
   mkdir -p "$GOPATH/src/github.com/influxdata"
-  mv -f "$srcdir/kapacitor" "$GOPATH/src/github.com/influxdata/"
+  ln -sf "$srcdir/kapacitor" "$GOPATH/src/github.com/influxdata/kapacitor"
 
   cd "$GOPATH/src/github.com/influxdata/kapacitor"
-
-  #echo "Downloading dependencies"
-  #go get github.com/sparrc/gdm
-  #gdm restore
 
   revision=`git rev-parse HEAD`
   version=`git describe --tags`
   echo "Building kapacitor version=$version commit=$revision branch=master"
-  go install -ldflags="-X main.version=$version -X main.commit=$revision -X main.branch=master" ./cmd/...
-
+  go install -ldflags="-X main.version=$version -X main.commit=$revision -X main.branch=master" ./cmd/... ./tick/cmd/...
 }
 package()
 {
@@ -52,10 +47,14 @@ package()
 
   cd $GOBIN
   install -Dsm755 kapacitord "$pkgdir/usr/bin/kapacitord"
-  install -Dsm755 kapacitor "$pkgdir/usr/bin/kapacitor"
+  install -Dsm755 kapacitor  "$pkgdir/usr/bin/kapacitor"
+  install -Dsm755 tickfmt    "$pkgdir/usr/bin/"
+  install -Dsm755 tickdoc    "$pkgdir/usr/bin/"
 
   cd "$GOPATH/src/github.com/influxdata/kapacitor"
   install -Dm644 scripts/kapacitor.service "$pkgdir/usr/lib/systemd/system/kapacitor.service"
-  install -Dm644 "etc/kapacitor/kapacitor.conf" "$pkgdir/etc/kapacitor/kapacitor.conf"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/kapacitor/LICENSE"
+  install -Dm644 etc/kapacitor/kapacitor.conf "$pkgdir/etc/kapacitor/kapacitor.conf"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/kapacitor/LICENSE"
+  completions=usr/share/bash-completion/completions/kapacitor
+  install -Dm644 $completions "$pkgdir/$completions"
 }
