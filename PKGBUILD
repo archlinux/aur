@@ -2,7 +2,7 @@
 
 _pkgname=qtpad
 pkgname="$_pkgname"-git
-pkgver=1.0.0
+pkgver=0
 pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -26,5 +26,5 @@ pkgver()
 package()
 {
   cd "$_pkgname"
-  python setup.py install --root="$pkgdir"
+  python setup.py install --optimize="1" --root="$pkgdir"
 }
