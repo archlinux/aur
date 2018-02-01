@@ -6,7 +6,7 @@
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='1.4.2'
+pkgver='1.4.3'
 pkgrel='1'
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -29,7 +29,7 @@ build()
   export GOBIN="$GOPATH/bin"
   export PATH="$GOBIN:$PATH"
   mkdir -p "$GOPATH/src/github.com/influxdata"
-  mv -f "$srcdir/influxdb" "$GOPATH/src/github.com/influxdata/"
+  cp -af "$srcdir/influxdb" "$GOPATH/src/github.com/influxdata/"
 
   cd "$GOPATH/src/github.com/influxdata/influxdb"
 
