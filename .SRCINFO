@@ -1,0 +1,19 @@
+pkgbase = python-galsim-extra-git
+	pkgdesc = A package of modules that can be loaded in galsim config files
+	pkgver = ec746d5
+	pkgrel = 1
+	url = https://github.com/esheldon/galsim_extra
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	source = python-galsim-extra-git::git+https://github.com/esheldon/galsim_extra
+	md5sums = SKIP
+
+pkgname = python-galsim-extra-git
+	depends = 
+
+pkgname = python2-galsim-extra-git
+	depends = 
+
