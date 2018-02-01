@@ -1,3 +1,33 @@
+load_modules() {
+  modprobe blackmagic
+  modprobe blackmagic-io
+  modprobe snd_blackmagic-io
+}
+
+unload_module() {
+  echo Unloading $1
+  rmmod -f $1 || true
+}
+
+unload_modules() {
+  unload_module blackmagic
+  unload_module snd_blackmagic_io
+  unload_module blackmagic_io
+}
+
+remove_module_files() {
+  rm -f /lib/modules/*/kernel/drivers/*blackmagic*.ko
+  rm -rf /var/lib/dkms/blackmagic*
+  rm -rf /usr/src/blackmagic*
+  depmod -a
+}
+
+pre_upgrade() {
+  unload_modules
+  remove_module_files
+}
+
+
 ## arg 1:  the new package version
 pre_install() {
   true
@@ -8,11 +38,13 @@ post_install() {
   ldconfig
 
   cd /usr/src/blackmagic-${1%%-*}*
+  #sed -i 's/..\/..\/lib\/blackmagic/\/usr\/lib\/blackmagic\/DesktopVideo/' dkms.conf
   make
   install -D -m 0644 blackmagic.ko "/lib/modules/$(uname -r)/kernel/drivers"
   make clean
 
   cd /usr/src/blackmagic-io-${1%%-*}*
+  #sed -i 's/..\/..\/lib\/blackmagic/\/usr\/lib\/blackmagic\/DesktopVideo/' dkms.conf
   make
   install -D -m 0644 blackmagic-io.ko "/lib/modules/$(uname -r)/kernel/drivers"
   install -D -m 0644 snd_blackmagic-io.ko "/lib/modules/$(uname -r)/kernel/drivers"
@@ -21,20 +53,9 @@ post_install() {
   depmod -a
 
   echo ">>> Loading modules..."
-  modprobe blackmagic
-  modprobe blackmagic-io
-  modprobe snd_blackmagic-io
+  load_modules
 
   update-desktop-database -q
-}
-
-## arg 1:  the new package version
-## arg 2:  the old package version
-pre_upgrade() {
-  lsmod | grep blackmagic && modprobe -r blackmagic || true
-  lsmod | grep snd_blackmagic_io && rmmod -f snd_blackmagic_io || true
-  lsmod | grep blackmagic_io && rmmod -f blackmagic_io || true
-  rm -f "/lib/modules/*/kernel/drivers/*blackmagic*.ko"
 }
 
 ## arg 1:  the new package version
@@ -45,12 +66,12 @@ post_upgrade() {
 
 ## arg 1:  the old package version
 pre_remove() {
-  lsmod | grep blackmagic && modprobe -r blackmagic || true
+  unload_modules
 }
 
 ## arg 1:  the old package version
 post_remove() {
-  rm -f "/lib/modules/*/kernel/drivers/*blackmagic*.ko"
+  remove_module_files
 }
 
 # vim:set ts=2 sw=2 et:
