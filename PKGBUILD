@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/nicehash/excavator"
 license=('https://github.com/nicehash/excavator/blob/master/excavator-EULA.txt')
 groups=('')
-depends=('nvidia-utils' 'ncurses5-compat-libs' 'libpciaccess' 'libx11>=1.4.99.1' 'libxext' 'ocl-icd>=1.0' 'nvidia')
+depends=('nvidia-utils' 'ncurses5-compat-libs' 'libpciaccess' 'libx11>=1.4.99.1' 'libxext' 'ocl-icd>=1.0' 'cuda')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/nicehash/excavator/releases/download/${pkgver}/excavator_${_pkggit}_amd64.deb")
 sha512sums_x86_64=('d2e121811b24974140b6534ec2d4e94fc02927ed6c6c03ff08a631b3979003750dad59b3fa89fd83c9a75323dbe1807b08373f074c81ee21a473d6f58e51f985')
@@ -17,7 +17,5 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-
-	install -D -m644 "/usr/share/doc/excavator/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }

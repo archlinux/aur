@@ -11,7 +11,7 @@ pkgbase = excavator
 	depends = libx11>=1.4.99.1
 	depends = libxext
 	depends = ocl-icd>=1.0
-	depends = nvidia
+	depends = cuda
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://github.com/nicehash/excavator/releases/download/v1.4.1a/excavator_1.4.1a-xenial0_amd64.deb
