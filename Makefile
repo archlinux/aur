@@ -29,16 +29,13 @@ libbulletml.so.$(MAJOR).$(MINOR): $(OBJS) $(TINYXML)
 bulletml.d: bulletml_d.cpp
 	perl ../d_cpp/create_d_import.pl bulletml_d.cpp bulletml.d
 
-$(TINYXML): %.o: %.cpp
-	$(CXX) -c $(CXXFLAGS) -fPIC -fpic $(INCLUDES) $< -o $@
-
 clean:
 	rm -f calc.cpp libbulletml.a libbulletml.so.$(MAJOR).$(MINOR) *.o tinyxml/*.o
 
 calc.cpp: calc.yy
 		bison -y calc.yy -o calc.cpp
 
-$(OBJS): %.o: %.cpp
+$(OBJS) $(TINYXML): %.o: %.cpp
 	$(CXX) -c $(CXXFLAGS) -fPIC -fpic $(INCLUDES) $<
 
 doxy:
