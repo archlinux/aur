@@ -1,0 +1,35 @@
+pkgbase = python-pixmappy-git
+	pkgdesc = Python interface to gbdes pixel map (astrometry) solutions
+	pkgver = r39.b7c163f
+	pkgrel = 1
+	url = https://github.com/gbernstein/pixmappy
+	arch = any
+	license = BSD
+	checkdepends = python-setuptools
+	checkdepends = python2-setuptools
+	makedepends = git
+	makedepends = python-astropy
+	makedepends = python-future
+	makedepends = python-numpy
+	makedepends = python-scipy
+	makedepends = python-yaml
+	makedepends = python2-astropy
+	makedepends = python2-future
+	makedepends = python2-numpy
+	makedepends = python2-scipy
+	makedepends = python2-yaml
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	optdepends = python-scikit-learn
+	optdepends = python2-scikit-learn
+	optdepends = python-lmfit
+	optdepends = python2-lmfit
+	source = python-pixmappy-git::git+https://github.com/gbernstein/pixmappy#branch=pickle
+	md5sums = SKIP
+
+pkgname = python-pixmappy-git
+	depends = 
+
+pkgname = python2-pixmappy-git
+	depends = 
+
