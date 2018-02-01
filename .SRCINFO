@@ -1,13 +1,12 @@
 pkgbase = dell-e310dw
 	pkgdesc = CUPS driver for the Dell Laser Printer E310dw
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dell.com/support/home/us/en/04/product-support/product/dell-e310dw-printer/drivers?os=es11
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = unknown
-	makedepends = rpmextract
 	depends = perl
 	depends = cups
 	depends = psutils

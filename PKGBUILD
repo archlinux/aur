@@ -2,14 +2,14 @@
 
 pkgname='dell-e310dw'
 pkgver='3.2.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='CUPS driver for the Dell Laser Printer E310dw'
 arch=('i686' 'x86_64')
 url='http://www.dell.com/support/home/us/en/04/product-support/product/dell-e310dw-printer/drivers?os=es11'
 license=('GPL' 'unknown')
 depends=('perl' 'cups' 'psutils')
 depends_x86_64=('lib32-glibc')
-makedepends=('rpmextract')
+makedepends=()
 options=('emptydirs')
 source=('dell_lpdwrapper_E310dw.patch'
         'https://downloads.dell.com/FOLDER03004762M/1/Printer_E310dw_Driver_Dell_A00_LINUX.zip')
@@ -19,8 +19,8 @@ md5sums=('52e489ab76b36340d41c4141b04da6e7'
 
 prepare() {
   cd "$srcdir"
-  rpmextract.sh ./E310-Linux/e310dwcupswrapper-3.2.0-1.i386.rpm
-  rpmextract.sh ./E310-Linux/e310dwlpr-3.2.0-1.i386.rpm
+  bsdtar -xf ./E310-Linux/e310dwcupswrapper-3.2.0-1.i386.rpm
+  bsdtar -xf ./E310-Linux/e310dwlpr-3.2.0-1.i386.rpm
 
   cd "$srcdir/opt" || return 1
   patch -p1 < "$srcdir/dell_lpdwrapper_E310dw.patch"
