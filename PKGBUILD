@@ -2,9 +2,9 @@
 pkgname="powerline-rs"
 pkgdesc="powerline-shell rewritten in Rust. Inspired by powerline-go."
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 url="https://github.com/jD91mZM2/powerline-rs"
-license=("MIT" "custom:MIT")
+license=("MIT")
 source=("https://github.com/jD91mZM2/powerline-rs/archive/v$pkgver.tar.gz")
 sha256sums=('535296578bf5e8d7676a02ea64523af7b5d2fd2b6d446f8094ae40f1d99683e8')
 arch=("x86_64" "i386" "arm" "armv6h" "armv7h" "aarch64")
