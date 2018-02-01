@@ -35,13 +35,13 @@ license=('PHP')
 
 
 url='http://www.php.net'
-makedepends=('apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu' 
+makedepends=('apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu'
 			'libmcrypt' 'libxslt' 'libzip' 'net-snmp' 
 			'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 
 			'libtool' 'freetds' 'pcre' 'c-client')
 
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
-        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
+        'apache.patch' 'apache.conf' 'enchant-2.patch' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 
         )
 sha256sums=('4b2bc823e806dbf7b62fe0b92b0d14b0c6e03f88c3fc5d96278416c54ce11f6c'
             'SKIP'
@@ -50,6 +50,7 @@ sha256sums=('4b2bc823e806dbf7b62fe0b92b0d14b0c6e03f88c3fc5d96278416c54ce11f6c'
             '75322f9b38c5961faddcb4f5333fbcb5ea5955e4f54f1eec223fc4367eb3b247'
             'b6b7f3ced56b75bf95513a46f43cde41fc28da714f5e0ed181caf2266f2f0c27'
             '2f678d039313ee613d59c8b4bf9f48068085df0fa8ac7ca4cf807e168061a8c9'
+            'da784a8fc52285e64d88ca40cd9d71b31074a5644827fcabd33dcc1f8da5ed3f'
             )
 # keys from http://php.net/downloads.php#gpg-7.0
 #
@@ -76,6 +77,7 @@ prepare() {
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
 	patch -p0 -i ${srcdir}/php.ini.patch
+	patch -p0 -i ${srcdir}/enchant-2.patch
 }
 
 
