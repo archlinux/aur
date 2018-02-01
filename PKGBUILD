@@ -9,13 +9,16 @@ install=${pkgname}.install
 license=('MIT')
 depends=('cairo' 'libxtst' 'libxi' 'gtk2' 'libxrandr' 'pango' 'fontconfig' 'libxss' 'gdk-pixbuf2' 'nss' 'freetype2' 'nspr' 'gconf' 'libxext' 'libxdamage' 'atk' 'libxrender' 'libxcomposite' 'libxcursor' 'libxfixes' 'libx11' 'alsa-lib' 'libcups')
 makedepends=('tar' 'git')
+source=('git+https://github.com/OriginCode/AURFiles')
+md5sums=('SKIP')
+
 build() {
-	git clone https://github.com/OriginCode/AURFiles
-	cp ./AURFiles/${pkgname}.tar.gz .
+	cd "$srcdir/AURFiles"
 	tar xvf ./${pkgname}.tar.gz
 }
-package() {
-	install -d "${pkgdir}/opt/${pkgname}"
-	cp -r bilibili-live-helper/* "${pkgdir}/opt/${pkgname}"
-}
 
+package() {
+	cp -r ${srcdir}/AURFiles/${pkgname} .
+	install -d "${pkgdir}/opt/${pkgname}"
+	cp -r ./bilibili-live-helper/* "${pkgdir}/opt/${pkgname}"
+}
