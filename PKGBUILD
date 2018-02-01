@@ -1,8 +1,8 @@
-# Maintainer:  Kyle Meyer <kyle@kyleam.com>
-# https://github.com/kyleam/maint-aur/tree/master/snakemake
+# Maintainer: Philipp A. <flying-sheep@web.de>
+# Contributor: Kyle Meyer <kyle@kyleam.com>
 
 pkgname=snakemake
-pkgver=4.3.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=('any')
@@ -15,8 +15,13 @@ optdepends=(
   'python-docutils: For report generation'
 )
 license=('MIT')
-source=("https://pypi.io/packages/source/s/snakemake/snakemake-$pkgver.tar.gz")
-md5sums=('b0c721e3293aa3acbeb0d0a79a65b945')
+source=("snakemake-$pkgver.tar.gz::https://bitbucket.org/snakemake/snakemake/get/v$pkgver.tar.gz")
+md5sums=('da36f8c1afc926726ec50c76c55b0ce6')
+
+prepare() {
+	rm -rf "$srcdir/$pkgname-$pkgver"
+	mv "$srcdir/$pkgname-$pkgname-"* "$srcdir/$pkgname-$pkgver"
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
