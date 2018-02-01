@@ -1,15 +1,17 @@
-commit ca7beb741b4708e7f2cb2e3c33aafc11b560cb59
-Author: Narrat <autumn-wind@web.de>
-Date:   Tue Apr 4 22:19:53 2017 +0200
+From ca7beb741b4708e7f2cb2e3c33aafc11b560cb59 Mon Sep 17 00:00:00 2001
+From: Narrat <autumn-wind@web.de>
+Date: Tue, 4 Apr 2017 22:19:53 +0200
+Subject: [PATCH 1/2] Replace srand()/rand() combo with getrandom()
 
-    Replace srand()/rand() combo with getrandom()
-    
-    This requires glibc-2.25.
-    
-    Reason for the move: The time based initialization is a security issue.
-    Additionally is the rand() RNG not the best one out there.
-    
-    The newly getentropy/getrandom() from glibc uses for random numbers /dev/(u)random, which are a better choice.
+This requires glibc-2.25.
+
+Reason for the move: The time based initialization is a security issue.
+Additionally is the rand() RNG not the best one out there.
+
+The newly getentropy/getrandom() from glibc uses for random numbers /dev/(u)random, which are a better choice.
+---
+ src/correcthorse.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
 diff --git a/src/correcthorse.c b/src/correcthorse.c
 index 506e8db..77c8a39 100644
@@ -49,3 +51,65 @@ index 506e8db..77c8a39 100644
  }
  
  static void rand_perm(size_t *dest, size_t n)
+-- 
+2.16.1
+
+
+From 77cd9e1d5d6f9d247f3af733d36f4835f621cf4a Mon Sep 17 00:00:00 2001
+From: Max Bruckner <max@maxbruckner.de>
+Date: Thu, 1 Feb 2018 21:54:56 +0100
+Subject: [PATCH 2/2] Make random numbers uniformly distributed.
+
+---
+ src/correcthorse.c | 26 ++++++++++++++++++--------
+ 1 file changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/src/correcthorse.c b/src/correcthorse.c
+index 77c8a39..ac7ca45 100644
+--- a/src/correcthorse.c
++++ b/src/correcthorse.c
+@@ -14,6 +14,7 @@
+ #include <unistd.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <stdint.h>
+ #include <sys/random.h>
+ 
+ #ifdef _GNU_SOURCE
+@@ -30,16 +31,25 @@ static void print_version(char *argv0);
+ 
+ static size_t rand_index(size_t n)
+ {
+-    unsigned long seed_feed[1];
+-    int ret=0;
++    size_t random_number = 0;
++    size_t max = SIZE_MAX - (SIZE_MAX % n);
++    ssize_t written = 0;
+ 
+-    ret = getrandom(seed_feed, sizeof(long), 0);
+-    if (ret <= 0) {
+-        fprintf(stderr, "getrandom() returned %d: ", ret);
+-        perror("");
+-    }
++    /* discard values that are in the last section of the
++     * range of SIZE_MAX that would be cut off by the modulo
++     * operator. This way we get a uniformly distributed random
++     * number without small bias. */
++    do
++    {
++        written = getrandom(&random_number, sizeof(size_t), 0);
++        if (written != sizeof(size_t))
++        {
++            fprintf(stderr, "getrandom() returned %d: ", (int)written);
++            perror("");
++        }
++    } while (random_number > max);
+ 
+-    return *seed_feed % n;
++    return random_number % n;
+ }
+ 
+ static void rand_perm(size_t *dest, size_t n)
+-- 
+2.16.1
+

@@ -3,7 +3,7 @@
 
 pkgname=correcthorse
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Passphrase generator based on https://xkcd.com/936/"
 arch=('i686' 'x86_64')
 url="https://github.com/rmartinjak/correcthorse"
@@ -12,7 +12,7 @@ depends=('glibc>=2.25')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/rmartinjak/$pkgname/archive/v$pkgver.tar.gz
         change_prng.patch)
 md5sums=('3d691f786f5879f5b902585472d6d195'
-         '652145bc56a7d199c95c241cb3744760')
+         '502d2efc2d46cc3c1a92a8245daa380a')
 
 
 prepare() {
