@@ -3,13 +3,13 @@
 pkgname="budgetwarrior-git"
 _pkgname="budgetwarrior"
 pkgver=1.0.r1.gcf1b0dd
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple command line utility to helps keeping track of your expenses and the state of your budget."
 url="https://github.com/wichtounet/budgetwarrior"
 license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake' 'clang')
-depends=('boost' 'util-linux' 'openssl')
+depends=('util-linux' 'openssl')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 changelog="ChangeLog"
