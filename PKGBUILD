@@ -16,7 +16,8 @@ backup=(etc/zookeeper/configuration.xsl
         etc/zookeeper/zoo.cfg)
 install=install_zookeeper.sh
 
-_closest="https://archive.apache.org/dist/"
+_apache_cgi="http://www.apache.org/dyn/closer.cgi"
+_closest=$(curl "${_apache_cgi}?asjson=1" | tr -d '\n ' | sed -r 's/.*"preferred":"(.+)".*/\1/')
 _app_path="/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
 source=(${_closest}/${_app_path}
         systemd_zookeeper.service
