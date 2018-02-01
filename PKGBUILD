@@ -2,7 +2,7 @@
 
 pkgname=opensc-openct
 _pkgname=OpenSC
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='OpenSC compiled with OpenCT instead of PCSC, working with e.g. SafeNet/Aladdin eToken Pro 64k'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url='https://github.com/OpenSC/OpenSC/wiki'
 license=('LGPL')
 depends=('openssl' 'openct')
 source=("https://github.com/OpenSC/OpenSC/archive/$pkgver.tar.gz")
-sha256sums=('4969627f0eab48bef6a5d9e162facc3a49ba8e675fadb8a9a446391fcfa19bc6')
+sha256sums=('007c4622afc225b8d7a1bea54f5325affa4417f4e17aaa03256aa9f4c25782fd')
 
 
 _prefix=/opt/$pkgname
