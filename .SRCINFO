@@ -1,6 +1,6 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.7.0a0.r100826.8ded5b8037
+	pkgver = 3.8.0a0.r100955.07a1892f82
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686

@@ -1,9 +1,9 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-git
-pkgver=3.7.0a0.r100826.8ded5b8037
+pkgver=3.8.0a0.r100955.07a1892f82
 pkgrel=1
-_pybasever=3.7
+_pybasever=3.8
 _pkgname=cpython
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf "%s.r%s.%s" \
-      "3.7.0a0" \
+      "$_pybasever.0a0" \
       "$(git rev-list --count HEAD)" \
       "$(git rev-parse --short HEAD)"
 }
@@ -65,7 +65,7 @@ package() {
     "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/libpython${_pybasever}m.so"
 
   # Fix pycairo build
-  ln -sf python3.7m-config "${pkgdir}/usr/bin/python3.7-config"
+  ln -sf python${_pybasever}m-config "${pkgdir}/usr/bin/python$_pybasever-config"
 
   # Clean-up reference to build directory
   sed -i "s|$srcdir/${_pkgname}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/Makefile"
