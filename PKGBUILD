@@ -21,6 +21,8 @@ pkgver() {
 }
 
 build() {
+	makepkg --printsrcinfo > .SRCINFO
+
     cd Titan
     
     chmod +x build.sh
