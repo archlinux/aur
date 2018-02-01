@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=jdtls
-pkgver=0.11.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Eclipse Java language server"
 arch=(any)
