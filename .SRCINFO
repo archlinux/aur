@@ -1,0 +1,20 @@
+pkgbase = deswl-shapelets-git
+	pkgdesc = DES WL pipeline code for measuring PSF and shear with shapelets
+	pkgver = r591.61b4606
+	pkgrel = 1
+	url = https://github.com/rmjarvis/deswl_shapelets
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = atlas-lapack
+	makedepends = tmv-git
+	makedepends = ccfits
+	depends = atlas-lapack
+	depends = tmv-git
+	depends = ccfits
+	source = deswl-shapelets::git+https://github.com/rmjarvis/deswl_shapelets
+	md5sums = SKIP
+
+pkgname = deswl-shapelets-git
+
