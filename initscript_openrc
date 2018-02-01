@@ -32,11 +32,13 @@ start() {
 stop() {
   ebegin "Stopping $(basename "${_DAEMON}")"
   start-stop-daemon --stop --exec "${_DAEMON}" || {
+    sleep 1
     _pids="$(pidof "${_DAEMON}")"
     for _pid in ${_pids}; do
       kill -9 "${_pid}" &> /dev/null
     done
   }
+  sleep 1
   _running="$(pidof "${_DAEMON}" | tr ' ' '\n' | wc -l)"
   if [ ${_running} -gt 0 ]; then
     eerror "Failed to stop or kill all ${_DAEMON} processes."

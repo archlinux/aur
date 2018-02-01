@@ -50,10 +50,12 @@ case "$1" in
         kill "${_pid}" &> /dev/null
       done
     fi
+    sleep 1
     _pids="$(pidof "${_DAEMON}")"
     for _pid in ${_pids}; do
       kill -9 "${_pid}" &> /dev/null
     done
+    sleep 1
     _running="$(pidof "${_DAEMON}" | tr ' ' '\n' | wc -l)"
     if [ ${_running} -gt 0 ]; then
       echo "Failed to stop or kill all ${_DAEMON} processes."
