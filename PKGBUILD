@@ -2,7 +2,7 @@
 # Contributor: b.klettbach@gmail.com
 
 pkgname=multimc5
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 __pkgver_libnbtplusplus=multimc-0.5.0
 __pkgver_quazip=multimc-2
@@ -12,7 +12,8 @@ url="http://multimc.org/"
 license=('Apache')
 depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg')
 makedepends=('git' 'patch' 'cmake' 'qt5-tools' 'qt5-x11extras' 'java-environment>=8')
-optdepends=('mcedit: Allows editing of minecraft worlds')
+optdepends=('mcedit: Allows editing of minecraft worlds'
+  'xorg-xrandr: Some modpacks require this to launch')
 conflicts=('multimc5-git' 'multimc-git' 'multimc')
 source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
   "https://github.com/MultiMC/libnbtplusplus/archive/${__pkgver_libnbtplusplus}.tar.gz"
