@@ -1,0 +1,37 @@
+diff -rupN geary-0.12.0.orig/CMakeLists.txt geary-0.12.0/CMakeLists.txt
+--- geary-0.12.0.orig/CMakeLists.txt	2018-01-16 21:45:14.731988942 +0100
++++ geary-0.12.0/CMakeLists.txt	2018-01-16 21:47:51.510178769 +0100
+@@ -96,7 +96,7 @@ find_package(PkgConfig)
+ pkg_check_modules(LIBUNITY QUIET unity>=5.12.0)
+ pkg_check_modules(LIBMESSAGINGMENU QUIET messaging-menu>=12.10.2)
+
+-pkg_check_modules(ENCHANT QUIET enchant)
++pkg_check_modules(ENCHANT QUIET enchant-2)
+
+ pkg_check_modules(SQLITE3 sqlite3 REQUIRED)
+ if (NOT ${SQLITE3_VERSION} VERSION_LESS 3.12)
+diff -rupN geary-0.12.0.orig/src/CMakeLists.txt geary-0.12.0/src/CMakeLists.txt
+--- geary-0.12.0.orig/src/CMakeLists.txt	2018-01-16 21:45:14.738655384 +0100
++++ geary-0.12.0/src/CMakeLists.txt	2018-01-16 21:48:40.088633141 +0100
+@@ -508,7 +508,7 @@ pkg_check_modules(DEPS REQUIRED
+     webkit2gtk-4.0>=${TARGET_WEBKIT}
+     webkit2gtk-web-extension-4.0>=${TARGET_WEBKIT}
+     javascriptcoregtk-4.0>=${TARGET_WEBKIT}
+-    enchant>=1.6
++    enchant-2>=1.6
+     libunwind-generic>=1.1
+     ${EXTRA_CLIENT_PKG_CONFIG}
+ )
+diff --git a/meson.build b/meson.build
+index 5874a98c..818d55f6 100644
+--- a/meson.build
++++ b/meson.build
+@@ -61,7 +61,7 @@ webkit2gtk_dep = dependency('webkit2gtk-4.0', version: '>=' + target_webkit)
+ webkit2gtk_web_extension_dep = dependency('webkit2gtk-web-extension-4.0', version: '>=' + target_webkit)
+ javascriptcoregtk_lib = cc.find_library('javascriptcoregtk-4.0', version: '>=' + target_webkit)
+ javascriptcoregtk_vapi = valac.find_library('javascriptcore-4.0', dirs: vapi_dir)
+-enchant = dependency('enchant', version: '>= 1.6')
++enchant = dependency('enchant-2', version: '>= 1.6')
+ libunwind = declare_dependency(
+    dependencies: [
+      valac.find_library('libunwind', dirs: vapi_dir),

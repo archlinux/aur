@@ -3,32 +3,56 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=geary-git
-pkgver=r3094.6154e2ea
+pkgver=r3419.b7eea857
 pkgrel=1
-pkgdesc="A new lightweight, easy-to-use, feature-rich email client (beta version)"
+pkgdesc="A lightweight email client for the GNOME desktop"
 arch=(i686 x86_64)
 url="https://wiki.gnome.org/Apps/Geary"
-license=('GPL')
-depends=('libcanberra' 'gmime' 'webkit2gtk' 'libgnome-keyring' 'libnotify' 'libgee' 'hicolor-icon-theme' 'desktop-file-utils' 'gobject-introspection')
-makedepends=('cmake' 'vala' 'git' 'intltool' 'gnome-doc-utils')
+license=('GPL3')
+depends=('cairo' 'enchant' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc' 'gmime'
+         'gnome-keyring' 'gtk3' 'iso-codes' 'libcanberra' 'libgee' 'libnotify'
+         'libsecret' 'libsoup' 'libxml2' 'pango' 'sqlite' 'webkit2gtk')
+makedepends=('cmake' 'gnome-doc-utils' 'gobject-introspection' 'intltool'
+             'vala')
 provides=('geary')
 conflicts=('geary')
-source=('git://git.gnome.org/geary')
-md5sums=('SKIP')
+source=('git://git.gnome.org/geary'
+        'geary-enchant2.patch')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
 	cd "$srcdir/geary"
 	printf "r%s.%s" "$(git rev-list --count master)" "$(git rev-parse --short master)"
 }
 
+prepare() {
+  cd "$srcdir/geary"
+
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build
+
+  patch -Np1 -i ../geary-enchant2.patch
+}
+
 build() {
 	cd "$srcdir/geary"
-	./configure --prefix=/usr --disable-schemas-compile --disable-desktop-update --disable-icon-update
+
+	cd build
+
+	cmake .. \
+	    -DCMAKE_INSTALL_PREFIX='/usr' \
+	    -DDESKTOP_UPDATE='FALSE' \
+	    -DICON_UPDATE='FALSE' \
+	    -DGSETTINGS_COMPILE='FALSE' \
+	    -DGSETTINGS_COMPILE_IN_PLACE='FALSE'
 	make
 }
 
 package() {
 	cd "$srcdir/geary"
-	make install DESTDIR="$pkgdir"
-	install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	cd build
+	make DESTDIR="${pkgdir}" install
 }
