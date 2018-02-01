@@ -56,4 +56,4 @@ install: all
 		$(DESTDIR)/$(libdir)/libbulletml.so.$(MAJOR).$(MINOR) \
 		$(DESTDIR)/$(libdir)/libbulletml.so
 
-PHONY: all clean doxy install
+.PHONY: all clean doxy install
