@@ -40,7 +40,7 @@ pkgver() {
 
 prepare() {
   cd "${_srcname}"
-  git reset --hard amd-staging-drm-next
+  git reset --hard amd-staging-4.15
   
   patch -Np1 -i "${srcdir}/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
 
