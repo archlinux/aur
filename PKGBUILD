@@ -4,7 +4,7 @@
 pkgname=freetype2-ttmetrics
 _srcname=freetype
 pkgver=2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Font rasterization library with TrueType metrics enabled"
 arch=(i686 x86_64)
 license=('GPL')
@@ -24,7 +24,7 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pk
         0001-psaux-Correctly-handle-Flex-features-52846.patch
         freetype2.sh
         enable_truetype_like_size_metrics.patch
-        revert_allow_linear_scaling.patch)
+        fix_metrics_on_size_request.patch)
 sha1sums=('94c4399b1a55c5892812e732843fcb4a7c2fe657'
           'b69531770c343d403be294b7e4d25ac45738c833'
           '3d26a569f0cb94c28a550577f5dcaadb4e193d91'
@@ -32,7 +32,7 @@ sha1sums=('94c4399b1a55c5892812e732843fcb4a7c2fe657'
           '21ad7dd31e16adb5b39adfa5671018a736626562'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f'
           '833a8622bc61fc6f41c0e87c3614dec73490c9b1'
-          'f2cc372aedce56b387ee0c5403745d642bd44fe8')
+          'fcb6e379591f06793d4e081f8a9ea7731b484478')
 
 prepare() {
   cd ${_srcname}-${pkgver}
@@ -48,8 +48,12 @@ prepare() {
 
   # ttmetrics patches
   # see https://bbs.archlinux.org/viewtopic.php?id=226380
+  #
+  # with thanks to the freebsd developers for the second patch,
+  # see https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=219608 and
+  # https://bugs.freebsd.org/bugzilla/attachment.cgi?id=183997&action=diff
   patch -Np1 -i ../enable_truetype_like_size_metrics.patch
-  patch -Np1 -i ../revert_allow_linear_scaling.patch
+  patch -Np1 -i ../fix_metrics_on_size_request.patch
 }
 
 build() {

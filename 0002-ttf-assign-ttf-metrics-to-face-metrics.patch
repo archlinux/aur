@@ -1,0 +1,30 @@
+From ef93a2bd34c1e569897303b5858d4f39c037d75b Mon Sep 17 00:00:00 2001
+From: Daniel Hirt <hirt.danny@gmail.com>
+Date: Tue, 11 Jul 2017 21:50:35 +0300
+Subject: [PATCH 2/2] [ttf] assign ttf metrics to face metrics
+
+This got dropped by bcc74f4dafee25ea89f1d3144646cba7e30f9908.
+It has caused a regression with when doing basic reading of metrics,
+for example with the following:
+ft.face->size->metrics.ascender
+
+Values calculated from v2.8 and up are different than previous versions.
+---
+ src/truetype/ttdriver.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/truetype/ttdriver.c b/src/truetype/ttdriver.c
+index a1653b24..5d8ece46 100644
+--- a/src/truetype/ttdriver.c
++++ b/src/truetype/ttdriver.c
+@@ -357,6 +357,7 @@
+     if ( FT_IS_SCALABLE( size->face ) )
+     {
+       error = tt_size_reset( ttsize, 0 );
++      ttsize->root.metrics = *ttsize->metrics;
+ 
+ #ifdef TT_USE_BYTECODE_INTERPRETER
+       /* for the `MPS' bytecode instruction we need the point size */
+-- 
+2.13.2
+
