@@ -1,6 +1,6 @@
 pkgbase = servy
 	pkgdesc = A tiny little web server
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/zethra/servy
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = servy
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs-multilib
-	source = https://github.com/zethra/servy/archive/v0.2.0.tar.gz
-	sha256sums = 3c1024d93539ba52c5276d628281067dc97ea6f24ea5035775380d853da073f9
+	source = https://github.com/zethra/servy/archive/v0.3.0.tar.gz
+	sha256sums = f75a829a7ff73beb99fc734d41a1bdbd23c29c7e1794e59be699db474b8b5a89
 
 pkgname = servy
 
