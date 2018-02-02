@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/fedora-python/python-ethtool"
 license=('GPL')
 makedepends=('asciidoc' 'libnl' 'python-setuptools' 'python2-setuptools')
-source=("${pkgbase}-${pkgver}::https://github.com/fedora-python/${pkgbase}/archive/v${pkgver}.tar.gz")
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/fedora-python/${pkgbase}/archive/v${pkgver}.tar.gz")
 sha512sums=('f7fe0dadae8b163a0116c64b1b3c6897bc7d302d1b764abf26e853342495ab3fefc0558ab08c6081b1cda535c134c7181c08951c96c1cf389ae069acc4c8efab')
 
 prepare(){
