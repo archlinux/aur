@@ -13,7 +13,7 @@ depends=(
   'cython'
   'opencv'
   'tensorflow'
-  'caffe'
+  'caffe-cpu'
   'python-markdown'
   'python-pillow'
   'python-pyaml'
