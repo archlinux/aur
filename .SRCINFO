@@ -9,7 +9,11 @@ pkgbase = sn-bin
 	noextract = standard-notes-2.0.42-x86_64.AppImage
 	options = !strip
 	source_x86_64 = https://github.com/standardnotes/desktop/releases/download/v2.0.42/standard-notes-2.0.42-x86_64.AppImage
+	source_x86_64 = standard-notes.desktop
+	source_x86_64 = icon-512x512.png
 	sha256sums_x86_64 = 55aa58ebd78a4186d190895042009047c6b346626df185ddb478b54a2098f318
+	sha256sums_x86_64 = ed6ac9a8bb319f4ad28329f3e4d5cab5db66c9cda2f2f2597375472cff209ba5
+	sha256sums_x86_64 = e61d2ea951779692dfaa515bd13fefe7faa1be2a23ffde147c29aad24cf4f070
 
 pkgname = sn-bin
 

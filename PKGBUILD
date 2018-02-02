@@ -1,4 +1,6 @@
 # Maintainer: JoshuaRLi <joshua.r.li.98 at gmail com>
+# Please submit comments/issues here: https://github.com/JoshuaRLi/PKGBUILDs
+
 pkgname=sn-bin
 pkgver=2.0.42
 pkgrel=1
@@ -8,12 +10,22 @@ url="https://github.com/standardnotes/desktop"
 license=('GPL3')
 provides=('standard-notes')
 
-source_x86_64=("https://github.com/standardnotes/desktop/releases/download/v${pkgver}/standard-notes-${pkgver}-x86_64.AppImage")
+source_x86_64=("https://github.com/standardnotes/desktop/releases/download/v${pkgver}/standard-notes-${pkgver}-x86_64.AppImage"
+               "standard-notes.desktop"
+               "icon-512x512.png")
+
+sha256sums_x86_64=('55aa58ebd78a4186d190895042009047c6b346626df185ddb478b54a2098f318'
+                   'ed6ac9a8bb319f4ad28329f3e4d5cab5db66c9cda2f2f2597375472cff209ba5'
+                   'e61d2ea951779692dfaa515bd13fefe7faa1be2a23ffde147c29aad24cf4f070')
+
+# An AppImage is a binary format, not an archive, so do not attempt to extract it.
 noextract=("standard-notes-${pkgver}-x86_64.AppImage")
+
 # stripping an AppImage binary will pretty much destroy it, so tell makepkg not to do so
 options=(!strip)
-sha256sums_x86_64=('55aa58ebd78a4186d190895042009047c6b346626df185ddb478b54a2098f318')
 
 package () {
   install -Dm 775 "standard-notes-${pkgver}-x86_64.AppImage" "${pkgdir}/usr/bin/standard-notes"
+  install -Dm 644 "standard-notes.desktop" "${pkgdir}/usr/share/applications/standard-notes.desktop"
+  install -Dm 644 "icon-512x512.png" "${pkgdir}/usr/share/pixmaps/standard-notes.png"
 }
