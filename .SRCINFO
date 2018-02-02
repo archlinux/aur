@@ -1,14 +1,13 @@
 pkgbase = emerald-icon-theme
 	pkgdesc = Fresh and simple personality icon theme
-	pkgver = 2.7
+	pkgver = 20180202
 	pkgrel = 1
-	epoch = 1
 	url = https://www.gnome-look.org/p/1012534
 	arch = any
 	license = GPL3
 	depends = hicolor-icon-theme
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1515376357/s/eb09032c0d9d77d3f9bf5b60f2efa958/t/1515392250/emerald-icon-theme.tar.xz
-	sha256sums = 5d7c5dfcf6ace0c859e7dbc2e11ca729eec3be9e5d267f2339cb185c0e7df2d8
+	source = emerald-icon-theme-2018.02.02.tar.gz::https://github.com/vinceliuice/emerald-icon-theme/archive/2018.02.02.tar.gz
+	sha256sums = c97571d8ceba34ba18940336a68ee85cacd8d2f48553570b3b8a29829f100555
 
 pkgname = emerald-icon-theme
 
