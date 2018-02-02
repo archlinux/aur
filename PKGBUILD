@@ -5,7 +5,7 @@
 
 pkgbase=lightdm-git
 pkgname=('lightdm-git' 'liblightdm-qt4-git' 'liblightdm-qt5-git')
-pkgver=1.25.0.r25.g666ea0d6
+pkgver=1.25.1.r6.g8c134bd0
 pkgrel=1
 pkgdesc='A lightweight display manager'
 arch=('i686' 'x86_64')
