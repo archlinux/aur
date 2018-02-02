@@ -1,0 +1,17 @@
+pkgbase = python-vcard
+	pkgdesc = vCard validator
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/l0b0/vcard
+	arch = any
+	license = GPL3
+	makedepends = python
+	depends = python
+	depends = python-isodate
+	provides = python-vcard
+	conflicts = python-vcard-git
+	source = https://files.pythonhosted.org/packages/source/v/vcard/vcard-0.10.2.tar.gz
+	sha512sums = 7fdcdccbe6c27f059c79169b652a84265741d96b1f242929b2406462f0bbd8ab3d071653fcb0ca4b29ea5a8d2763a8c4b89f23b22fbcb0537e5281f4621f380e
+
+pkgname = python-vcard
+
