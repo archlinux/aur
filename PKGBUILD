@@ -4,7 +4,7 @@ pkgdesc="ROS - Components of MoveIt that offer interaction via interactive marke
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-ros-robot-interaction'
-pkgver='0.9.9'
+pkgver='0.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_ros_robot_interaction-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_robot_interaction/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d6a9cb75fd600405bdce07aee508db3ab8ff4806868438784f5b0d54197f9d90')
+sha256sums=('01d139273b82e0d03307e5fe18ce418f2db6a97cacc44cbb1a71a033a1a54555')
 
 build() {
   # Use ROS environment variables
