@@ -1,8 +1,9 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 _orgname=openorienteering
 _pkgname=mapper
+_branch=master
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.7.93pre.r4311.0c8cf890
+pkgver=0.7.93pre.r4331.5c9dbedf
 pkgrel=1
 pkgdesc="Map drawing program from OpenOrienteering"
 arch=('i686' 'x86_64')
@@ -14,12 +15,12 @@ optdepends=('qt5-imageformats: Support for TIFF etc.')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
 install=${pkgname//-git}.install
-#source=("${_pkgname}-master::git://github.com/${_orgname}/${_pkgname}.git")
-source=("https://github.com/${_orgname}/${_pkgname}/archive/master.tar.gz")
+#source=("${_pkgname}-${_branch}::git://github.com/${_orgname}/${_pkgname}.git#branch=${_branch}")
+source=("https://github.com/${_orgname}/${_pkgname}/archive/${_branch}.tar.gz")
 sha256sums=('SKIP')
 
 #pkgver() {
-#  cd ${_pkgname}-master
+#  cd ${_pkgname}-${_branch}
 #
 #  RELEASE="$(git describe --tags $(git rev-list --tags --max-count=1) | tr '-' '.')"
 #  REVISION="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
@@ -29,7 +30,7 @@ sha256sums=('SKIP')
 pkgver() {
   api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
   base="8a8986ec"
-  head=$(curl -s "$api_url/git/refs/heads/master" | \
+  head=$(curl -s "$api_url/git/refs/heads/${_branch}" | \
     python -c "import sys, json; print(json.load(sys.stdin)['object']['sha'][:8])")
   count=$(curl -s "$api_url/compare/${base}...${head}" | \
     python -c "import sys, json; print(json.load(sys.stdin)['total_commits'] + 1)")
@@ -39,7 +40,7 @@ pkgver() {
 }
 
 prepare() {
-  cd ${_pkgname}-master/translations
+  cd ${_pkgname}-${_branch}/translations
   weblate_url="https://hosted.weblate.org/download/${_orgname}"
   for lang in `ls OpenOrienteering_*.ts | sed 's/OpenOrienteering_\(.*\)\.ts/\1/;/template/d;s/zh_CN/zh_Hans/'`; do
     curl -so OpenOrienteering_$lang.ts $weblate_url/${_pkgname}/$lang/
@@ -54,7 +55,7 @@ prepare() {
 }
 
 build() {
-  cd ${_pkgname}-master
+  cd ${_pkgname}-${_branch}
 
   rm -rf build
   mkdir -p build
@@ -70,7 +71,7 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}-master/build
+  cd ${_pkgname}-${_branch}/build
 
   make DESTDIR=${pkgdir}/ install
 }
