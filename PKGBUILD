@@ -13,13 +13,13 @@ depends=('ffmpeg' 'python2-crypto' 'python2-future' 'python2-lxml'
 optdepends=('php-mcrypt: for AdobeHDS.php based downloader backend'
             'rtmpdump: for downloading Areena audio streams')
 makedepends=('python2-setuptools')
-provides=(${pkgname}=$pkgver)
-conflicts=(${pkgname})
+provides=("yle-dl=$pkgver")
+conflicts=('yle-dl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aajanki/yle-dl/archive/${pkgver}.tar.gz")
 md5sums=('f632381c47aa09d8601912286e10d406')
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "yle-dl-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 

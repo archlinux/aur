@@ -16,8 +16,8 @@ pkgbase = python2-yle-dl
 	depends = wget
 	optdepends = php-mcrypt: for AdobeHDS.php based downloader backend
 	optdepends = rtmpdump: for downloading Areena audio streams
-	provides = python2-yle-dl=2.30
-	conflicts = python2-yle-dl
+	provides = yle-dl=2.30
+	conflicts = yle-dl
 	source = python2-yle-dl-2.30.tar.gz::https://github.com/aajanki/yle-dl/archive/2.30.tar.gz
 	md5sums = f632381c47aa09d8601912286e10d406
 
