@@ -3,7 +3,7 @@
 
 pkgname=dep
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 _commitHash="37d9ea0ac16f0e0a05afc3b60e1ac8c364b6c329"
 _commitDate="2018-01-25"
 pkgdesc="Go dependency tool"
@@ -13,7 +13,7 @@ license=('BSD')
 makedepends=('go')
 options=('!strip' '!emptydirs')
 provides=("dep")
-source=("https://github.com/golang/$pkgname/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golang/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('df9b050bf4dbb2a8cf04372097a68b04a6ae1986ed7c5086914ac86d74ea9d49')
 
 _importpath='github.com/golang/dep'
