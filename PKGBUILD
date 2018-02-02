@@ -2,7 +2,7 @@
 
 _name=ddnet-maps
 pkgname=$_name-git
-pkgver=r995.g2213cc6
+pkgver=r998.g35459d0
 pkgrel=1
 pkgdesc="All released maps with configs for a DDraceNetwork server"
 arch=(any)
@@ -33,14 +33,14 @@ package() {
   cd $_name
   
   _datadir="$pkgdir/usr/share/ddnet/data"
-  install -d -m755 "$_datadir/types/"
+  install -d -m755 $_datadir/types/
   
   install -m644 autoexec_server.cfg $_datadir
   install -m644 reset.cfg           $_datadir
   install -m644 storage.cfg         $_datadir
   
     # Disable test flag
-  sed '/sv_test_cmds/s/1/0/' -i "$_datadir/autoexec_server.cfg"
+  sed '/sv_test_cmds/s/1/0/' -i $_datadir/autoexec_server.cfg
   
     # Append a '#' to line of the map type you DO NOT want to be installed
   cp -a types/brutal    $_datadir/types/
@@ -52,4 +52,14 @@ package() {
   cp -a types/oldschool $_datadir/types/
   cp -a types/race      $_datadir/types/
   cp -a types/solo      $_datadir/types/
+
+    # Also make the maps available for the client
+  install -d -m755 $_datadir/maps/
+  cd $_datadir/maps/
+  for type in $(ls $_datadir/types/); do
+    ln -rs $_datadir/types/$type/maps/* .
+  done
+    # Avoid file conflicts as they are already provided in DDNet package
+  rm "$_datadir/maps/Goo!.map"
+  rm "$_datadir/maps/Kobra 4.map"
 }
