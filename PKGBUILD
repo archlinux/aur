@@ -4,7 +4,7 @@ pkgname=sourcery-codebench-mips-linux-gnu
 pkgver=2016.05_8
 pkgrel=1
 pkgdesc="Sourcery CodeBench Lite ${pkgver//_/-} for MIPS GNU/Linux"
-url='https://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/mips-gnu-linux'
+url='https://sourcery.mentor.com/GNUToolchain/subscription3130?lite=MIPS'
 arch=('i686' 'x86_64')
 license=('GPL')
 source=("https://sourcery.mentor.com/GNUToolchain/package13838/public/mips-linux-gnu/mips-${pkgver//_/-}-mips-linux-gnu-i686-pc-linux-gnu.tar.bz2")
