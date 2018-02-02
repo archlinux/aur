@@ -25,13 +25,6 @@ prepare() {
 
 	# Get modules
 	git submodule update --init --recursive
-
-	# NOTE: Upstream is using a custom version of boost nowide, so we have to
-	#       keep it built in this package instead of using boost-nowide package.
-	#       Patch for nowide is currently pending.
-	#       Also, nowide is being integrated in official boost releases, so this
-	#       package may break in future versions.
-# 	sed -i '/ADD_SUBDIRECTORY(nowide\/src)/d' libutil/CMakeLists.txt
 }
 
 build() {
