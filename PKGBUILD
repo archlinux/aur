@@ -5,12 +5,12 @@
 _hkgname=GLURaw
 pkgname=haskell-gluraw
 pkgver=2.0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A raw binding for the OpenGL graphics system"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
-depends=('ghc-libs' 'haskell-openglraw>=3.0.0.0' 'libgl')
+depends=('ghc-libs' 'haskell-openglraw>=3.0.0.0' 'libgl' 'glu')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 sha512sums=('dccd459c9392b1608d91cb80904346472209cb5dc8f2afbbb1ad07e24ddc0c8affc2eda4bb9aec9b2bc0e94e4546685cb60239c5687c629a8184b91162b4cc56')
