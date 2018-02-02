@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=coinmon
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc='Cryptocurrency price monitoring tool'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("coinmon-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=("${source[@]%%::*}")
-sha512sums=('5587ad1a0842bd10644acb04a41e3a251804bb01d4f4f02ed0e855fbd7a4bf1e7c670f4599540c9150e84479a3b7498ffcc7a53e8394ba6cd88a8969229ea02c')
+sha512sums=('b5feb285f61f18ec2f0e639bd834f6bc781de024a8f0533128ded8495ff71971b236b8b4788e371d49c171faa9fac1d05447e6d4fc48af0148200a67f12a912a')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr --ignore-scripts --production coinmon-$pkgver.tar.gz
