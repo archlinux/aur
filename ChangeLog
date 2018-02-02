@@ -1,3 +1,8 @@
+2018-02-02 Pierre Choffet <peuc@wanadoo.fr>
+	* r3846.7ba2df70-1 :
+	Update versioning scheme
+	Workaround upstream bug in install process
+
 2017-05-11 Pierre Choffet <peuc@wanadoo.fr>
 	* 0.8.1.r3017.bf9fcc60-5 :
 	Add missing runtime dependency
@@ -5,15 +10,15 @@
 2017-03-12 Pierre Choffet <peuc@wanadoo.fr>
 	* 0.8.1.r3017.bf9fcc60-4 :
 	Fix copy of rttr.sh launch script
-	
+
 2017-03-10 Pierre Choffet <peuc@wanadoo.fr>
 	* 0.8.1.r3017.bf9fcc60-3 :
 	Fix package install on x86_64 systems
-	
+
 	* 0.8.1.r3017.bf9fcc60-2 :
 	Fix return-to-the-roots.install sha256sums value
 	Add missing build dependencies
 	Add missing run dependencies
-	
+
 	* 0.8.1.r3017.bf9fcc60-1 :
 	Initial PKGBUILD
