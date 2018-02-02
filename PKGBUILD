@@ -12,7 +12,7 @@ makedepends=('nuitka')
 depends=(
   'webkitgtk'
   'webkitgtk2'
-  'omxplayer'
+  'omxplayer-git'
   'youtube-dl'
   'xpdf'
   'wget'
