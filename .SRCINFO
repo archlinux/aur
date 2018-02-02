@@ -18,7 +18,7 @@ pkgbase = jaziku
 	depends = dos2unix
 	optdepends = ncl: maps
 	optdepends = hpgl: interpolation
-	source = jaziku-1.0.0.tar.gz::https://bitbucket.org/XavierCLL/jaziku/get/py3.tar.bz2
+	source = jaziku-1.0.0.tar.bz2::https://bitbucket.org/XavierCLL/jaziku/get/py3.tar.bz2
 	md5sums = SKIP
 
 pkgname = jaziku

@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('python' 'python-distribute' 'python-scipy' 'python-dateutil' 'python-matplotlib' 'python-numpy' 'python-pillow' 'python-clint' 'imagemagick' 'dos2unix')
 optdepends=('ncl: maps' 'hpgl: interpolation')
-source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/XavierCLL/jaziku/get/py3.tar.bz2")
+source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/XavierCLL/jaziku/get/py3.tar.bz2")
 md5sums=('SKIP')
 
 build() {
