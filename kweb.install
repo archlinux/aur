@@ -1,0 +1,12 @@
+post_install() {
+    xdg-icon-resource forceupdate
+
+    echo '----------------------------------------------------------------'
+    echo 'Execute the following command to generate a kweb configuration:'
+    echo '    python2 /usr/local/bin/kwebhelper.py cmd "#formdataintern&proc=update"'
+    echo '----------------------------------------------------------------'
+}
+
+post_remove() {
+    xdg-icon-resource forceupdate
+}
