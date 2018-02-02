@@ -1,25 +1,22 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='python-slackclient'
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Python Slack client for the Web and RTM API"
 arch=('x86_64')
 url="https://pypi.python.org/pypi/slackclient"
 license=('MIT')
-depends=('python'
-  'python-websocket-client>=0.35'
-  'python-websocket-client<1.0a0'
-  'python-requests>=2.11'
-  'python-requests<3.0a0'
-  'python-six>=1.10'
-  'python-six<2.0a0')
-conflicts=('python-slackclient')
-provides=('python-slackclient')
-makedepends=('python-setuptools')
+depends=(
+  'python'
+  'python-websocket-client'
+  'python-requests'
+  'python-six'
+)
+makedepends=('python' 'python-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/65/86/abb78f9c1c9eb8cde227e6cfee46921ec5e536a91a0ff2934922fddc56ec/slackclient-1.1.0.tar.gz")
-md5sums=('a0138aa105392556dc497d5a335f0e7c')
+source=("https://pypi.python.org/packages/08/6e/c84dcf7c18c0a79c17a3dec971bcfa746ea1e23d4f41ba1de7eead203266/slackclient-1.1.2.tar.gz")
+sha256sums=('2e5840eba5af71487803b4eb8427ba19e1347fae6ed25cff53e0a6ea6c6832f5')
 
 package() {
   cd "${srcdir}/slackclient-${pkgver}"
