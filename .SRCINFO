@@ -1,30 +1,39 @@
 pkgbase = linux-xanmod-lts
-	pkgver = 4.9.77
+	pkgver = 4.14.15
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
-	makedepends = docbook-xsl
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.9.77-xanmod82.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.14.15-xanmod20.tar.gz
+	source = 60-linux.hook
 	source = 90-linux.hook
-	source = linux-lts.preset
-	source = change-default-console-loglevel.patch
-	sha256sums = e535bbb398c739ea83485bc6ea041bfdcd56197d75512e4465cdfb48cd220aff
-	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
-	sha256sums = 1e8264f69abb56b25009636693c3e6cf564a90379704a62cae2b3681cd6f66f1
-	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=bc8f2c3d6e03768966f91582b78db1e9f804e16a
-	sha256sums_x86_64 = 3de28992dd99ed2dbe327042a715dd0293c3ab37a46c74fa97b39c48403bc9f4
+	source = linux-xanmod-lts.preset
+	source = choose-gcc-optimization.sh
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux-lts&id=d9eb6c8046bcd2265f6bb6e2a777f4752a7ebc2f
+	source = 0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch?h=packages/linux-lts&id=d9eb6c8046bcd2265f6bb6e2a777f4752a7ebc2f
+	source = 0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch?h=packages/linux-lts&id=d9eb6c8046bcd2265f6bb6e2a777f4752a7ebc2f
+	source = 0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux-lts&id=d9eb6c8046bcd2265f6bb6e2a777f4752a7ebc2f
+	sha256sums = 819c76bd7d21a14b8da8f33445dbd009eb6d9bbe50dcf9770f50258f04159358
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5
+	sha256sums = 36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98
+	sha256sums = 5694022613bb49a77d3dfafdd2e635e9015e0a9069c58a07e99bdc5df6520311
+	sha256sums = 2f46093fde72eabc0fd25eff5065d780619fc5e7d2143d048877a8220d6291b0
+	sha256sums = 6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794
+	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=d9eb6c8046bcd2265f6bb6e2a777f4752a7ebc2f
+	sha256sums_x86_64 = c645053c4525a1a70d5c10b52257ac136da7e9059b6a4a566a857a3d42046426
 
 pkgname = linux-xanmod-lts
-	pkgdesc = The Linux kernel and modules with Xanmod patches - LTS branch
-	install = linux-lts.install
+	pkgdesc = The Linux kernel and modules with Xanmod patches
+	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
@@ -33,5 +42,5 @@ pkgname = linux-xanmod-lts
 	backup = etc/mkinitcpio.d/linux-xanmod-lts.preset
 
 pkgname = linux-xanmod-lts-headers
-	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel - LTS branch
+	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
 
