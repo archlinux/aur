@@ -1,0 +1,26 @@
+pkgbase = python-pipreqs
+	pkgdesc = Pip requirements.txt generator based on imports in project
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://github.com/bndr/pipreqs
+	arch = any
+	license = Apache License 2.0
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/67/63/84409df1acd879d239e53599de2b3df45013e6cf46406fd94e86822635f3/pipreqs-0.4.9.tar.gz
+	md5sums = daf927ef489ccc83ff8fffe922c10f11
+
+pkgname = python-pipreqs
+	depends = python
+	depends = python-wheel
+	depends = python-docopt
+	depends = python-yarg
+
+pkgname = python2-pipreqs
+	depends = python2
+	depends = python2-wheel
+	depends = python2-docopt
+	depends = python2-yarg
+
