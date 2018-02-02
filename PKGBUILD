@@ -11,7 +11,7 @@ license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'opusfile' 'curl') #mariadb
 makedepends=('git' 'cmake' 'imagemagick' 'gendesk' 'python' 'gtest')
 optdepends=('ddnet-skins: more skins for your tee'
-            'ddnet-maps-git: mainly important for a DDNet Server')
+            'ddnet-maps-git: have all DDNet maps available offline')
 provides=('teeworlds-ddnet-git' 'ddnet')
 conflicts=('teeworlds-ddnet-git' 'ddnet')
 replaces=('teeworlds-ddnet-git')
@@ -28,7 +28,8 @@ pkgver() {
 }
 
 prepare() {
-    mkdir build || true
+    [ -d build ] && rm -rf build
+    mkdir build
     cd build
 
       # Client
