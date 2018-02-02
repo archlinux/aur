@@ -1,8 +1,8 @@
 # Maintainer: Noeljnuior <liamgliamgmailcom>
 
 pkgname=pscripts-git
-pkgver=0.1a
-pkgrel=2
+pkgver=r101.931081d
+pkgrel=1
 pkgdesc="Noeljunior's pscripts: some handy scripts for users and sysadmins"
 arch=('any')
 url="https://github.com/Noeljunior/pscripts"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 package() {
 	cd $srcdir/$pkgname
 
-    ./sysadmin/pscripts --install "${pkgdir}/opt/pscripts" --profile "${pkgdir}/etc/profile.d/pscripts.sh"
+    ./sysadmin/pscripts --install "${pkgdir}/opt/pscripts" --profile "${pkgdir}/etc/profile.d/pscripts.sh" --rm-prefix "${pkgdir}"
 }
 
 pkgver() {
