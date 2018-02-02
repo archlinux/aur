@@ -1,0 +1,20 @@
+pkgbase = python-wq-git
+	pkgdesc = This is a simple work queue written in python
+	pkgver = v0.1.0.r157.653a758
+	pkgrel = 1
+	url = https://github.com/esheldon/wq.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	source = python-wq-git::git+https://github.com/esheldon/wq.git
+	md5sums = SKIP
+
+pkgname = python-wq-git
+	depends = python
+
+pkgname = python2-wq-git
+	depends = python2
+	depends = python
+
