@@ -10,7 +10,7 @@ pkgver=2.10.1
 pkgrel=1
 pkgdesc='A library for building easy-to-use commandline tools.'
 arch=(any)
-url='http://rubygems.org/gems/cri'
+url='https://rubygems.org/gems/cri'
 license=(MIT)
 depends=('ruby-colored>=1.2')
 makedepends=(rubygems)
