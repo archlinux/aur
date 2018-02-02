@@ -5,19 +5,23 @@
 
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
-pkgver=0.4.2
-pkgrel=4
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="Control your monitor by software using the DDC/CI protocol"
 arch=('i686' 'x86_64')
-url="http://ddccontrol.sourceforge.net/"
+url="https://github.com/ddccontrol/ddccontrol"
 license=('GPL')
 depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2')
-makedepends=('gtk2')
-source=("http://downloads.sourceforge.net/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"
+makedepends=('gtk2' 'autoconf' 'intltool')
+source=("https://github.com/ddccontrol/ddccontrol/archive/${pkgver}.tar.gz"
         "org.ddccontrol.pkexec.gddccontrol.policy")
 options=('!libtool')
-sha256sums=('986f3b4b27ec04e1da493de3aaab01cd5ea9566d7572c1a40b8d43cd7a491e84'
+sha256sums=('10e19c7201bb9e80d8d4293f8090d5ce97b0f49a13bd7e8e7af53b7e8ae4e5fb'
             '811bf1ecc85045e80757ea553591c00e32bb93d529a761b18bb501d0f2bf82c5')
+prepare() {
+	cd "${srcdir}"/${pkgbase}-${pkgver}
+	test -f configure || ./autogen.sh
+}
 
 build() {
   cd "${srcdir}"/${pkgbase}-${pkgver}
@@ -30,7 +34,7 @@ build() {
 package_ddccontrol() {
   install=ddccontrol.install
   cd "${srcdir}"/${pkgbase}-${pkgver}
-  for i in src/lib src/ddcpci src/ddccontrol po man doc; do
+  for i in src/lib src/ddcpci src/ddccontrol po man; do # removed: doc (no objects to do in html/*)
     make DESTDIR="${pkgdir}" install -C $i
   done
 
