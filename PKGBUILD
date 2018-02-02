@@ -12,7 +12,7 @@ url="http://flask-assets.readthedocs.org"
 license=('BSD')
 depends=('python2' 'python2-flask' 'python2-webassets')
 makedepends=('python2-distribute')
-source=("http://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('d7fa762f704ab5eb62e6801d43ce2300')
 
 package() {
