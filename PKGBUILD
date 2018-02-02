@@ -1,6 +1,6 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname="xidlehook"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="xautolock rewrite in Rust, with a few extra features"
 url="https://github.com/jD91mZM2/xidlehook"
@@ -10,7 +10,7 @@ makedepends=()
 optdepends=()
 depends=()
 source=("https://github.com/jD91mZM2/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('3f720bc1cc93887537138deb478c4e897cb1bae1bfef295ce14c2a77398a740c')
+sha256sums=('ec81a6e51638d0ed598ad7a68447852bffeb6534196e067073f24ce3a391e3e1')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
