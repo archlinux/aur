@@ -14,7 +14,8 @@ pkgdesc="Semi-legacy 3D interface to explore the globe, terrain, streets, buildi
 arch=('x86_64')
 url="https://www.google.com/earth/index.html"
 license=('custom:earth')
-depends=('glu' 'hicolor-icon-theme' 'ld-lsb>=3-5' 'libsm' 'libxrender' 'nss')
+depends=('glu' 'hicolor-icon-theme' 'ld-lsb>=3-5' 'libsm' 'libxrender' 'nss'
+         'libproxy' 'gst-plugins-base-libs' 'libxi' 'fontconfig' 'alsa-lib' 'libcups')
 [[ $_attempt_fix = 1 ]] && depends+=('freeimage' 'libpng15' 'qtwebkit')
 optdepends=('catalyst-utils: For AMD Catalyst'
             'nvidia-utils: For the NVIDIA driver')
