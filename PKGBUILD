@@ -1,24 +1,20 @@
 # Maintainer: Marc Steiner (Marc3842h) <info@marcsteiner.me>
 _pkgname=titan-bot
 pkgname=titan-bot-git
-pkgver=1.6.0_8add450
-pkgrel=1
+pkgver=1.6.0_rc1
+pkgrel=2
 pkgdesc="A free, advanced CS:GO report and commendation bot built with performance and ease-of-use in mind"
 arch=("x86_64")
 url="https://github.com/Marc3842h/Titan"
 license=("MIT")
-depends=("mono" "gtk3" "gtk-sharp-3" "libnotify" "libappindicator-gtk3")
-makedepends=("git" "msbuild-stable")
+depends=("mono>=5.4.0" "gtk3" "gtk-sharp-3" "libnotify" "libappindicator-gtk3")
+makedepends=("git" "msbuild")
+provides=("titan-bot")
 install="Titan.install"
 source=("git://github.com/Marc3842h/Titan.git" "titan" "Titan.desktop")
 sha256sums=("SKIP" 
-            "99e8b16775ed6b8bd952b41c91fd9120c0cb6d8a72a593e23d125b93deaa38db" 
+            "0db0d38173ad4631a75d8cffe725e99bf05c4c5724cf3acfb413684b71fa88db" 
             "0340ee6a5ec048c5b994bbdbba9337989a1dd415c5765560401f20acad96cf1b")
-
-pkgver() {
-	cd Titan
-	echo -n "${pkgver}_" && git rev-parse --short HEAD
-}
 
 build() {
     cd Titan
@@ -42,6 +38,6 @@ package() {
     done
     
     for f in $(ls Titan/bin/Release/Resources); do
-        install -Dm755 "Titan/bin/Release/Resources/$f" "$pkgdir/opt/Titan/$f"
+        install -Dm755 "Titan/bin/Release/Resources/$f" "$pkgdir/opt/Titan/Resources/$f"
     done
 }

@@ -1,3 +1,14 @@
 #!/usr/bin/env bash
 
+# Quick and dirty hack to change permissions from root to our own
+owner=$(stat -c '%U' /opt/Titan)
+
+if [ "$owner" != "$USER" ]; then
+    sudo chown $USER /opt/Titan
+    
+    for f in $(ls -d $(find /opt/Titan)); do
+        sudo chown $USER $f
+    done
+fi
+
 mono /opt/Titan/Titan.exe
