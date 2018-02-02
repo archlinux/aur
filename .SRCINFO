@@ -1,6 +1,6 @@
 pkgbase = eclipse-texlipse
 	pkgdesc = LaTeX support plugin for Eclipse IDE
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://projects.eclipse.org/projects/science.texlipse
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = eclipse-texlipse
 	depends = texlive-core
 	provides = texlipse
 	conflicts = texlipse
-	source = https://ci.eclipse.org/texlipse/job/release/3/org.eclipse.texlipse%24org.eclipse.texlipse-site/artifact/org.eclipse.texlipse/org.eclipse.texlipse-site/2.0.0-SNAPSHOT/org.eclipse.texlipse-site-2.0.0-SNAPSHOT.zip
-	sha256sums = 4326cef594b3082e8ebdf3d66c4ff27ed890dc93f91af2c283c6c945a64ac0c0
+	source = https://ci.eclipse.org/texlipse/job/release/4/org.eclipse.texlipse%24org.eclipse.texlipse-site/artifact/org.eclipse.texlipse/org.eclipse.texlipse-site/2.0.1-SNAPSHOT/org.eclipse.texlipse-site-2.0.1-SNAPSHOT.zip
+	sha256sums = a17beab47cc78bd08250c918e7c62ef9cafe5e561ac12dab8793e1e2114082c0
 
 pkgname = eclipse-texlipse
 
