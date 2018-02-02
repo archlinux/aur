@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Beaker
+Comment=Peer-to-peer web browser with tools to create and host websites
+Exec=beaker
+Icon=beaker
+Categories=Network;WebBrowser;

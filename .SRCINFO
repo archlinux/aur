@@ -1,0 +1,21 @@
+pkgbase = beaker-browser
+	pkgdesc = Peer-to-peer web browser with tools to create and host websites
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = https://github.com/beakerbrowser/beaker
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = python2
+	depends = electron
+	options = !strip
+	source = beaker-0.7.10.tar.gz::https://github.com/beakerbrowser/beaker/archive/0.7.10.tar.gz
+	source = beaker.sh
+	source = beaker.desktop
+	sha256sums = 0ab22342a0727e2ccba8ad712956be5526f454a3e6df309b9c4bb9eb1f23e4b8
+	sha256sums = 23ea9820de249cb65d319e943d200940d929a3c8261b5d978848ddc44554728f
+	sha256sums = f6ac7e3d7d8d729afc32b804bab9b6f1b5ae0f0b8d350c17c8f6efba222b6165
+
+pkgname = beaker-browser
+
