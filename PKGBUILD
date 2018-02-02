@@ -11,6 +11,7 @@ url=${__github}
 arch=('any')
 license=('MIT')
 depends=('ruby-cztop')
+makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::${__github}/archive/${_gitcommit}.tar.gz)
 sha256sums=('7c93b7ddca64b87b61c00bbad0fc88e8aa271ef5a379bdadd1ad97b3f3fda058')
