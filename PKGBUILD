@@ -14,6 +14,7 @@ depends=('ruby')
 makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
+noexctract=("${_gemname}-${pkgver}.gem")
 sha256sums=('7eb2f63487ccb943fae0eca561729c48d4d5654d76f8330aa16ed1dcdbebf33b')
 sha512sums=('88eef1dd3ef28de80a1de3dcd7e9fc33cf54235f9eb0e060ea7bb214494c738d35f0236d03533e3a1c2aa4531ae1df522a03ecbb34e489a1960bd964cfb08f52')
 
@@ -45,7 +46,6 @@ END
 }
 
 package() {
-  cd ${_gemname}-${pkgver}
   local _gemdir="$(gem env gemdir)"
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
