@@ -3,7 +3,7 @@
 pkgname=sftpman
 epoch=1
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Application that handles sshfs/sftp file systems mounting."
 arch=('any')
 url="https://github.com/spantaleev/sftpman"
