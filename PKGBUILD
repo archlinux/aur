@@ -33,7 +33,7 @@ package() {
   local _gemdir="$(gem env gemdir)"
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
   mkdir -p "${pkgdir}/usr/bin/"
-  mv "${pkgdir}/${_gemdir}/bin/iruby" "${pkgdir}/usr/bin/"
+  mv "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/bin/iruby" "${pkgdir}/usr/bin/"
   install -Dm 644 README.md CHANGES -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
