@@ -5,7 +5,7 @@
 
 _pkgbase=snapd
 pkgname=snapd-git
-pkgver=2.30.r1117.g0f6035e74
+pkgver=2.30.r1155.gefd597409
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
@@ -129,12 +129,6 @@ check() {
 package_snapd-git() {
   export GOPATH="$srcdir/go"
 
-  # Ensure that we have /var/lib/snapd/{hostfs,lib/gl}/ as they are required by
-  # snap-confine for constructing some bind mounts around.
-  install -d -m 755 \
-            "$pkgdir/var/lib/snapd/hostfs/" \
-            "$pkgdir/var/lib/snapd/lib/gl/"
-
   # Install snap, snapctl, snap-update-ns, snap-seccomp, snap-exec and snapd
   # executables
   install -d -m 755 "$pkgdir/usr/bin/"
@@ -209,6 +203,8 @@ package_snapd-git() {
   install -d -m 755 "$pkgdir/var/lib/snapd/snap/bin"
   install -d -m 755 "$pkgdir/var/lib/snapd/snaps"
   install -d -m 755 "$pkgdir/var/lib/snapd/lib/gl"
+  install -d -m 755 "$pkgdir/var/lib/snapd/lib/gl32"
+  install -d -m 755 "$pkgdir/var/lib/snapd/lib/vulkan"
   # these dirs have special permissions
   install -d -m 000 "$pkgdir/var/lib/snapd/void"
   install -d -m 700 "$pkgdir/var/lib/snapd/cookie"
