@@ -2,12 +2,13 @@
 
 pkgname=ephyviewer
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python package for handling physical quantities."
 url="http://packages.python.org/quantities"
 arch=("any")
 license=("BSD")
-depends=("python" "python-neo-git" "python-pyqtgraph")
+depends=("python-numpy" "python-scipy" "python-matplotlib" "python-neo-git" "python-pyqtgraph")
+provides=("ephyviewer")
 makedepends=("python-setuptools")
 source=("https://github.com/NeuralEnsemble/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("d2cb03ebdd881fd5c9ccc306ee970156")
