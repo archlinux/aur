@@ -30,7 +30,6 @@ build() {
 }
 
 package() {
-	cp -r ${srcdir}/${_pkgname}/builds/${_pkgname}/ .
 	install -d "${pkgdir}/opt/${_pkgname}"
-	cp -r ./${_pkgname}/* "${pkgdir}/opt/${_pkgname}"
+	cp -r ${srcdir}/${_pkgname}/builds/${_pkgname}/* "${pkgdir}/opt/${_pkgname}"
 }
