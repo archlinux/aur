@@ -4,7 +4,7 @@ pkgdesc="ROS - The move_group node for MoveIt."
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-ros-move-group'
-pkgver='0.9.9'
+pkgver='0.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_ros_move_group-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_move_group/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('289602ddcda7a823247732365f34429b57a5bba84264b327bcf271bb521e69e4')
+sha256sums=('8574a70a5802b6707fb429262cd10cf6aa43ea7f1a011733884049084931134f')
 
 build() {
   # Use ROS environment variables
