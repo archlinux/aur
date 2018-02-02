@@ -11,7 +11,7 @@
 # when mpv depends on a feature that hasn't been merged into upstream ffmpeg.
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.28.0.r143.g0d964471b8
+pkgver=0.28.0.r189.g7f3c7100d5
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
