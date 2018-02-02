@@ -4,7 +4,7 @@ pkgdesc="ROS - Core libraries used by MoveIt!."
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-core'
-pkgver='0.9.9'
+pkgver='0.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,6 @@ ros_makedepends=(ros-kinetic-eigen-stl-containers
   ros-kinetic-catkin
   ros-kinetic-eigen-conversions
   ros-kinetic-std-msgs
-  ros-kinetic-moveit-resources
   ros-kinetic-shape-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
@@ -75,7 +74,16 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('edb0d7caa88a17d43fc759d2f424af4ca7944011730be409c9c4f7703423dbaa')
+sha256sums=('6cd9d4a1e2838682c6a33311984a5148b1cf74df61cb109a43bed82ffbe0b6ce')
+
+prepare() {
+  cd ${srcdir}
+  find . \( -iname *.cpp -o -iname *.h \) \
+	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
+	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
+	  -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \; \
+	  -exec sed -r -i "s/[^_]logInform/CONSOLE_BRIDGE_logInform/" {} \;
+}
 
 build() {
   # Use ROS environment variables
