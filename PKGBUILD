@@ -1,6 +1,6 @@
 # Maintainer: Preisschild <florian dot stroeger at gmail dot com>
 pkgname=emerald-wallet-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Ethereum Classic Wallet"
 arch=('x86_64')

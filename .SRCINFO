@@ -1,6 +1,6 @@
 pkgbase = emerald-wallet-bin
 	pkgdesc = Ethereum Classic Wallet
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/ethereumproject/emerald-wallet
 	arch = x86_64
