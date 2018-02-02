@@ -1,5 +1,5 @@
 pkgname=topinambour-git
-pkgver=1.0.14.r14.g5266d82
+pkgver=2.0.1.r0.g7681e4d
 pkgrel=1
 pkgdesc="vte terminal based on the ruby-gtk3 bindings"
 arch=('i686' 'x86_64')
