@@ -1,8 +1,8 @@
-# Maintainer: Chris Salzberg <chris@dejimata.com>
-
+# Maintainer: Sean Haugh <seanphaugh@gmail.com>
+# Contributor: Chris Salzberg <chris@dejimata.com>
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=neomutt.20170225.r1.gb0997a4c
+pkgver=20171215.r144.gb7da81ad
 pkgrel=1
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
@@ -10,42 +10,37 @@ license=('GPL')
 source=('git+https://github.com/neomutt/neomutt.git#branch=master')
 sha256sums=('SKIP')
 arch=('i686' 'x86_64')
-depends=('openssl' 'gdbm' 'mime-types' 'libsasl' 'gnupg' 'gpgme' 'libidn' 'krb5' 'notmuch-runtime')
+depends=('notmuch-runtime' 'lua' 'python')
 optdepends=('urlview: for url menu')
 makedepends=('git' 'gnupg' 'libxslt')
-conflicts=('mutt')
-provides=('mutt')
+conflicts=('neomutt')
+provides=('neomutt')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   # Get the version number.
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^neomutt-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
 
   # Configure the build.
- ./prepare \
+  ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
     --enable-debug \
     --enable-pgp \
     --enable-gpgme \
     --enable-notmuch \
-    --enable-pop \
-    --enable-imap \
-    --enable-smtp \
-    --enable-hcache \
-    --enable-sidebar \
+    --enable-lua \
     --with-gss=/usr \
     --with-ssl=/usr \
-    --with-sasl \
-    --with-curses=/usr \
-    --with-regex \
-    --with-idn \
-    --with-gdbm
+    --with-sasl=/usr \
+    --with-idn=/usr \
+    --with-gdbm=/usr
 
   # Build it!
   make
@@ -56,9 +51,5 @@ package() {
 
   # Install the program.
   make DESTDIR="${pkgdir}" install
-
-  # Cruft we don't want.
-  rm "${pkgdir}"/etc/mime.types{,.dist}
 }
-
 # vim: ft=sh ts=2 sw=2 et

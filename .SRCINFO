@@ -1,6 +1,6 @@
 pkgbase = neomutt-git
 	pkgdesc = The New Mutt: powerful text-based mail client with all the best feature patches
-	pkgver = neomutt.20170225.r1.gb0997a4c
+	pkgver = 20171215.r144.gb7da81ad
 	pkgrel = 1
 	url = http://www.neomutt.org/
 	arch = i686
@@ -9,18 +9,12 @@ pkgbase = neomutt-git
 	makedepends = git
 	makedepends = gnupg
 	makedepends = libxslt
-	depends = openssl
-	depends = gdbm
-	depends = mime-types
-	depends = libsasl
-	depends = gnupg
-	depends = gpgme
-	depends = libidn
-	depends = krb5
 	depends = notmuch-runtime
+	depends = lua
+	depends = python
 	optdepends = urlview: for url menu
-	provides = mutt
-	conflicts = mutt
+	provides = neomutt
+	conflicts = neomutt
 	source = git+https://github.com/neomutt/neomutt.git#branch=master
 	sha256sums = SKIP
 
