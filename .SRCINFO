@@ -1,6 +1,6 @@
 pkgbase = python-codecov
 	pkgdesc = Hosted coverage reports for Github, Bitbucket and Gitlab
-	pkgver = 2.0.14
+	pkgver = 2.0.15
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/codecov
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-codecov
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-codecov-2.0.14.tar.gz::https://pypi.python.org/packages/cc/03/c327fbcd736de126e4f2d1eab7a70d0bf9df8089042946fedd652d000239/codecov-2.0.14.tar.gz
-	sha256sums = ba77d1438683daeae122962776c38fb88c5dc9b12dd0b40b3d1a98fef8219727
+	source = python-codecov-2.0.15.tar.gz::https://pypi.python.org/packages/77/f2/9790ee0f04eb0571841aff5ba1709c7869e82aa2145a04a3d4770807ff50/codecov-2.0.15.tar.gz
+	sha256sums = 8ed8b7c6791010d359baed66f84f061bba5bd41174bf324c31311e8737602788
 
 pkgname = python-codecov
 	depends = python
