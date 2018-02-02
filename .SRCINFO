@@ -1,12 +1,12 @@
 pkgbase = xidlehook
 	pkgdesc = xautolock rewrite in Rust, with a few extra features
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/jD91mZM2/xidlehook
 	arch = x86_64
 	license = MIT
-	source = https://github.com/jD91mZM2/xidlehook/archive/0.1.0.tar.gz
-	sha256sums = 3f720bc1cc93887537138deb478c4e897cb1bae1bfef295ce14c2a77398a740c
+	source = https://github.com/jD91mZM2/xidlehook/archive/0.1.1.tar.gz
+	sha256sums = ec81a6e51638d0ed598ad7a68447852bffeb6534196e067073f24ce3a391e3e1
 
 pkgname = xidlehook
 
