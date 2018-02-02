@@ -10,23 +10,24 @@
 ###########################################################
 
 pkgname=archey4
-pkgver=v4.3.2
+pkgver=v4.3.3
 pkgrel=1
 pkgdesc="Maintained fork of the original Archey Linux system tool"
 arch=('any')
 url="https://git.io/archey4"
 license=('GPL')
 depends=('python3' 'lsb-release' 'procps')
-optdepends=('dnsutils: `WAN_IP` would be detected 5x faster'
+optdepends=('bind-tools: `WAN_IP` would be detected 5x faster'
             'net-tools: Quicker local IP addresses detection'
+            'wget: Needed if `bind-tools` is not present'
             'pciutils: [graphical env.] GPU would not be detected without it'
             'wmctrl: [graphical env.] `WindowManager` would be more accurate'
             'virt-what: [virtual env.] `Model` would contain details about the hypervisor')
 provides=('archey' 'archey4')
 conflicts=('archey' 'archey-git' 'archey-plus' 'archey2' 'archey3-git' 'pyarchey')
 source=("https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('5e2e4de0a86d442ef6843d19644c6a57')
-sha256sums=('b27c8ad9c4a4ee7d649699e600e49642eacce4290f7aa5fe51f8ad980cde1def')
+md5sums=('dac84f78399561c3eeedd19c3f86b8a6')
+sha256sums=('d0f7ed3832e162915a02ced2e706b4593f47a54ea06749b1b2200b605e2b1ba7')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver:1}"
