@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd ${_gemname}-${pkgver}
-  gem build ${_gemname}.gemspec
+  gem build .gemspec
 }
 
 
