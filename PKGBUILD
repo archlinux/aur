@@ -2,7 +2,7 @@
 
 pkgname=cquery-git
 _pkgname=cquery
-pkgver=1284.f96f20f
+pkgver=1374.ae0323a
 pkgrel=1
 pkgdesc='Low-latency vscode language server for large C++ code-bases, powered by libclang.'
 arch=('any')
@@ -30,15 +30,15 @@ build() {
     cd $_pkgname
     # --variant=custom will not add extra CXXFLAGS
     python waf configure --variant=custom --prefix="$pkgdir/usr" --llvm-config=/usr/bin/llvm-config
-    python waf build
+    python waf build --variant=custom
 }
 
 check() {
     cd $_pkgname
-    yes | build/release/bin/cquery --test-unit --test-index --clang-sanity-check
+    yes | build/custom/bin/cquery --test-unit --test-index --clang-sanity-check
 }
 
 package() {
     cd $_pkgname
-    python waf install
+    python waf install --variant=custom
 }
