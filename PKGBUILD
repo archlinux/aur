@@ -4,7 +4,7 @@
 #              from the AppImage package.
 
 pkgname=inboxer
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unofficial, free and open-source Google Inbox Desktop App"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=()
 install=
 source=("https://github.com/denysdovhan/inboxer/releases/download/v${pkgver}/inboxer-${pkgver}-x86_64.AppImage"
         "inboxer.sh")
-sha256sums=('c419f6b51be82dfb35e1f1b2c7954998accfdd4c8ec90857fc49fac7c205fcb2'
+sha256sums=('9a83ec32f222697786c19a3f51e7b4cbce307d413bf2f1eabf9e4aee3a3111d9'
             'ec740d8e9aa0ae6485a0ca44e5bbee959337ca414d40478d3e420abf22522544')
 validpgpkeys=()
 
