@@ -3,19 +3,27 @@
 
 pkgname=pothos
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Pothos data-flow framework"
 arch=('i686' 'x86_64')
 url="https://github.com/pothosware/PothosCore/wiki"
 license=('boost')
-depends=('python' 'poco' 'soapysdr-git' 'portaudio')
+depends=('python' 'poco' 'qwt' 'soapysdr-git' 'portaudio')
 makedepends=('git' 'nlohmann-json')
-source=("git+https://github.com/pothosware/PothosCore.git#tag=pothos-$pkgver")
-sha256sums=('SKIP')
+source=(
+    "git+https://github.com/pothosware/PothosCore.git#tag=pothos-$pkgver"
+    "PothosFlow.desktop"
+)
+sha256sums=(
+    'SKIP'
+    '4ace40dfff405cf861845cc0f9cf772a39aabc7f3447f5fdf2d0cb74f9b166c4'
+)
 
 prepare() {
     cd "$srcdir/PothosCore"
-    git submodule update --init --recursive
+    git submodule init
+    git submodule deinit poco
+    git submodule update --recursive
 }
 
 build() {
@@ -24,6 +32,9 @@ build() {
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DENABLE_INTERNAL_POCO=OFF \
+        -DENABLE_INTERNAL_MUPARSERX=ON \
+        -DENABLE_INTERNAL_SPUCE=ON \
         "$srcdir/PothosCore"
     make
 }
@@ -31,4 +42,8 @@ build() {
 package() {
     cd "$srcdir/pothos-build"
     make DESTDIR="$pkgdir" install
+    
+    install -Dm644 "$srcdir/PothosFlow.desktop" "$pkgdir/usr/share/applications/PothosFlow.desktop"
+    install -d "$pkgdir/usr/share/pixmaps"
+    convert "$srcdir/PothosCore/flow/icons/PothosFlow.ico" "$pkgdir/usr/share/pixmaps/PothosFlow.png"
 }
