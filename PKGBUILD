@@ -12,7 +12,7 @@ provides=('standard-notes')
 
 source_x86_64=("https://github.com/standardnotes/desktop/releases/download/v${pkgver}/standard-notes-${pkgver}-x86_64.AppImage"
                "standard-notes.desktop"
-               "icon-512x512.png")
+               "https://github.com/standardnotes/desktop/raw/master/app/icon/Icon-512x512.png")
 
 sha256sums_x86_64=('55aa58ebd78a4186d190895042009047c6b346626df185ddb478b54a2098f318'
                    'ed6ac9a8bb319f4ad28329f3e4d5cab5db66c9cda2f2f2597375472cff209ba5'
@@ -27,5 +27,5 @@ options=(!strip)
 package () {
   install -Dm 775 "standard-notes-${pkgver}-x86_64.AppImage" "${pkgdir}/usr/bin/standard-notes"
   install -Dm 644 "standard-notes.desktop" "${pkgdir}/usr/share/applications/standard-notes.desktop"
-  install -Dm 644 "icon-512x512.png" "${pkgdir}/usr/share/pixmaps/standard-notes.png"
+  install -Dm 644 "Icon-512x512.png" "${pkgdir}/usr/share/pixmaps/standard-notes.png"
 }
