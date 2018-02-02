@@ -15,7 +15,7 @@ optdepends=('php-mcrypt: for AdobeHDS.php based downloader backend'
 makedepends=('python2-setuptools')
 provides=("yle-dl=$pkgver")
 conflicts=('yle-dl')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/aajanki/yle-dl/archive/${pkgver}.tar.gz")
+source=("yle-dl-$pkgver.tar.gz::https://github.com/aajanki/yle-dl/archive/${pkgver}.tar.gz")
 md5sums=('f632381c47aa09d8601912286e10d406')
 
 package() {
