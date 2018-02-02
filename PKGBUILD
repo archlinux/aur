@@ -1,22 +1,22 @@
 # Maintainer: (epsilom) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 pkgname=jaziku
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Jaziku is statistical inference software for the teleconnections analysis"
-url="http://hg.ideam.gov.co:8000/meteorologia/jaziku/summary"
+url="https://bitbucket.org/XavierCLL/jaziku"
 arch=('i686' 'x86_64')
 license=('GPLv3')
-depends=('python2' 'python2-distribute' 'python2-scipy' 'python2-dateutil' 'python2-matplotlib' 'python2-numpy' 'python2-pillow' 'python2-clint' 'imagemagick' 'hpgl' 'dos2unix')
-optdepends=("ncl: maps")
-source=("$pkgname-$pkgver.tar.gz::https://docs.google.com/uc?id=0B2KQf7Dbx7DUakRMcEM3WUstMFE&export=download")
-md5sums=('2f985d0d3a8fe2650aecbb96e0672114')
+depends=('python' 'python-distribute' 'python-scipy' 'python-dateutil' 'python-matplotlib' 'python-numpy' 'python-pillow' 'python-clint' 'imagemagick' 'dos2unix')
+optdepends=('ncl: maps' 'hpgl: interpolation')
+source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/XavierCLL/jaziku/get/py3.tar.bz2")
+md5sums=('SKIP')
 
 build() {
-    cd $pkgname-$pkgver
-    python2 ./setup.py build || return 1
+    cd XavierCLL-jaziku*
+    python ./setup.py build || return 1
 }
 
 package(){
-    cd $pkgname-$pkgver
-    python2 ./setup.py install --root=$pkgdir || return 1
+    cd XavierCLL-jaziku*
+    python ./setup.py install --root=$pkgdir || return 1
 }
