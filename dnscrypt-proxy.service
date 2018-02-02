@@ -4,6 +4,7 @@ Documentation=https://github.com/jedisct1/dnscrypt-proxy
 Requires=dnscrypt-proxy.socket
 After=network.target
 Before=nss-lookup.target
+Wants=nss-lookup.target
 
 [Service]
 Type=simple

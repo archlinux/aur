@@ -1,6 +1,6 @@
 # Maintainer: Adrián Laviós <adrian@lavios.eu>
 pkgname=dnscrypt-proxy-go-git
-pkgver=2.0.0rc.r7.gbf56644
+pkgver=2.0.0rc.r14.g9dd6863
 pkgrel=1
 pkgdesc="A modern client implementation written in Go of the DNSCrypt v2 protocol."
 arch=('x86_64')
@@ -11,9 +11,11 @@ provides=('dnscrypt-proxy-go')
 conflicts=('dnscrypt-proxy' 'dnscrypt-proxy-go')
 backup=('etc/dnscrypt-proxy/dnscrypt-proxy.toml')
 source=('git+https://github.com/jedisct1/dnscrypt-proxy.git'
-        'dnscrypt-proxy.service')
+        'dnscrypt-proxy.service'
+        'dnscrypt-proxy.socket')
 sha512sums=('SKIP'
-            '117d4450fceeaf6806ce0311656946ced556ba25fc96a30fe105b1487c4063fc19694c2889979691d9c3037350fedeff4131728f87064483df3ce5c9e0cbd085')
+            '7bf620078831c4be7fe2d40d7f3d955e6ceebf37e5a1621fbd4dfe07bb85b7a63ea391df96d982d5b21f049ca0de4f45d47d2347baded8e39b3b30338a608433'
+            '1332b2842768848f0a2c0f5e3117e6c1397b0693b6ea9b9fd322efb278b519f8673f72ecfec962be0f469175daf781499c86742bf22baf1e260f2445102485b8')
 
 pkgver() {
   cd "$srcdir/dnscrypt-proxy"
@@ -57,7 +59,7 @@ package() {
   install -Dm644 "example-blacklist.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-blacklist.txt"
   
   install -Dm644 "$srcdir/dnscrypt-proxy.service" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.service"
-  install -Dm644 "../systemd/dnscrypt-proxy.socket" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.socket"
+  install -Dm644 "$srcdir/dnscrypt-proxy.socket" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.socket"
     
   install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
