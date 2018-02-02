@@ -12,6 +12,7 @@ pkgbase = zyn-fusion
 	makedepends = cmake
 	makedepends = python
 	makedepends = ruby-rake
+	makedepends = glu
 	depends = fftw
 	depends = libglvnd
 	depends = mxml
