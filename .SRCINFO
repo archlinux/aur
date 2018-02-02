@@ -1,0 +1,21 @@
+pkgbase = ca-certificates-tw
+	pkgdesc = Root certificates of Taiwan government
+	pkgver = 20120928
+	pkgrel = 1
+	url = https://grca.nat.gov.tw
+	arch = any
+	license = custom:EULA
+	depends = ca-certificates-utils
+	source = https://grca.nat.gov.tw/repository/Certs/GRCA2.cer
+	source = https://gca.nat.gov.tw/repository/Certs/GCA2.cer
+	source = https://gca.nat.gov.tw/repository/Certs/GCA_OCSP.cer
+	source = https://grca.nat.gov.tw/download/GPKI_CP_eng_v1.9.pdf
+	source = LICENSE
+	sha256sums = 70b922bfda0e3f4a342e4ee22d579ae598d071cc5ec9c30f123680340388aea5
+	sha256sums = 1f992b635905fc0eecedaabceaf9741d77778dd838de92b5bb5111722f4631d6
+	sha256sums = 5b8a89ef5cb658f26a21f10d6c91681d79bd96a6b0c9b27606f4218b0e5781e0
+	sha256sums = 5702eb9a7d8827512ecc983386215ff601f341d4cbd8702cf8646263236d2525
+	sha256sums = d7169dff03f201a9845ba87aafcc8392ce72e84cd7b846b7dbbbbd2c131fa2ee
+
+pkgname = ca-certificates-tw
+
