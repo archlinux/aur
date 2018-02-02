@@ -3,7 +3,7 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=56.0.3
+pkgver=56.0.4
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -24,8 +24,8 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=7b7aa8b4b5d17ce21072054285618fd6434e5482
-source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
+_commit=d7f689c984bf15259ae5c882ab7d36919f3bbda8
+source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
         no-crmf.diff
@@ -38,7 +38,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/distribution.ini"
         "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1"
         jack-system-ports.patch
-        disable_e10s.patch
+        "fix_crash_e10s_upload_cancel.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_crash_e10s_upload_cancel.patch"
         wifi-disentangle.patch
         0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
         "mozilla-ucontext-$_patchrev.patch::$_patchurl/mozilla-ucontext.patch"
@@ -56,7 +56,7 @@ sha256sums=('SKIP'
             'e144a6fac4466acdba86194b43fb41c185c38e296d6262f26c3bff3d2b6db3be'
             '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6'
             'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
-            '9e633483d774606259287b9ce3463dd9c68d8aada4ec255f2d86b74cc984d0f2'
+            '73e13bf689838e4b27cdb08f040fbafb308aaf2990f5e1bf193a69a9dd736794'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
             '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012'
@@ -181,7 +181,7 @@ END
   patch -Np1 -i "../mozilla-kde-$_patchrev.patch"
   patch -Np1 -i "../firefox-kde-$_patchrev.patch"
   patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
-  patch -Np1 -i "../disable_e10s.patch"
+  patch -Np1 -i "../fix_crash_e10s_upload_cancel.patch"
 
   msg "Add missing file in Makefile for pgo builds"
   patch -Np1 -i "../pgo_fix_missing_kdejs.patch"
