@@ -1,7 +1,7 @@
 pkgbase = enyo-doom
 	pkgdesc = A frontend for Doom engines
-	pkgver = 1.04
-	pkgrel = 2
+	pkgver = 1.05
+	pkgrel = 1
 	url = https://gitlab.com/sdcofer70/enyo-doom
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = enyo-doom
 	optdepends = zdoom
 	optdepends = prboom-plus
 	optdepends = gzdoom
-	source = enyo-doom-1.04.tar.gz::https://gitlab.com/sdcofer70/enyo-doom/repository/archive.tar.gz?ref=1.04
-	sha256sums = 7dfe9eb50cc043c40af95cfe67121458998f3e762d5876711cf6b341b3bd5d02
+	source = enyo-doom-1.05.tar.bz2::https://gitlab.com/sdcofer70/enyo-doom/repository/1.05/archive.tar.bz2
+	sha256sums = c8f18daf02ab6aa53055f147fcd35fc0f34727a2bcfd8233613a3f0a63c29a90
 
 pkgname = enyo-doom
 
