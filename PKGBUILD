@@ -7,7 +7,7 @@ pkgname=snapd
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 pkgver=2.30
-pkgrel=9
+pkgrel=10
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -80,9 +80,6 @@ build() {
 
 package() {
   export GOPATH="$srcdir/go"
-  # Ensure that we have /var/lib/snapd/{hostfs,lib/gl}/ as they are required
-  # by snap-confine for constructing some bind mounts around.
-  install -dm755 "$pkgdir/var/lib/snapd/hostfs/" "$pkgdir/var/lib/snapd/lib/gl/"
 
   # Install bash completion
   install -Dm644 "$srcdir/$pkgname/data/completion/snap" \
@@ -97,6 +94,7 @@ package() {
      DBUSSERVICESDIR=/usr/share/dbus-1/services \
      BINDIR=/usr/bin \
      SYSTEMDSYSTEMUNITDIR=/usr/lib/systemd/system \
+     SNAP_MOUNT_DIR=/var/lib/snapd/snap \
      DESTDIR="$pkgdir"
 
   # Install polkit policy
@@ -127,6 +125,8 @@ package() {
   install -dm755 "$pkgdir/var/lib/snapd/snap/bin"
   install -dm755 "$pkgdir/var/lib/snapd/snaps"
   install -dm755 "$pkgdir/var/lib/snapd/lib/gl"
+  install -dm755 "$pkgdir/var/lib/snapd/lib/gl32"
+  install -dm755 "$pkgdir/var/lib/snapd/lib/vulkan"
   install -dm000 "$pkgdir/var/lib/snapd/void"
   install -dm700 "$pkgdir/var/lib/snapd/cookie"
   install -dm700 "$pkgdir/var/lib/snapd/cache"
