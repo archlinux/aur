@@ -1,0 +1,16 @@
+pkgbase = ruby-cztop
+	pkgdesc = CZMQ Ruby binding, based on the generated low-level FFI bindings of CZMQ
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/paddor/cztop
+	arch = any
+	license = ISC
+	depends = ruby
+	depends = czmq
+	options = !emptydirs
+	source = ruby-cztop-0.12.2.tar.gz::https://github.com/paddor/cztop/archive/v0.12.2.tar.gz
+	sha256sums = af8bd2044892f535eae3a509dc94b07a1aaae86b20edf035d32733376e4ef58b
+	sha512sums = af5c9aa15df526d0068b430e430e9bb24e2b3651eda3e495c3d49cf80d9af3229d1a664815de78ca57898d69b2b3e77a0c11f847fcbaf14cb26b394f0e790998
+
+pkgname = ruby-cztop
+
