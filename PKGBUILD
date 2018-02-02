@@ -2,7 +2,7 @@
 
 _pkgname=sonarqube
 pkgname=${_pkgname}
-pkgver=6.7.1
+pkgver=7.0
 pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=("x86_64")
@@ -29,7 +29,7 @@ source=("https://sonarsource.bintray.com/Distribution/${_pkgname}/${_pkgname}-${
         "${_pkgname}-tmpfile.conf"
         "${_pkgname}-user.conf")
 
-sha256sums=('74cc70ef75d83fa260c7be86863416f45e092f77a2582ab51529d84f9a696fc7'
+sha256sums=('263942458279e2cf73fd86671511ac8ef0707e41ed51c9737142f8738bc7c060'
             'cb3e3e810892e4d7ccf7a843ae1cb7daa14e3395025d0cc505b562f45e4f1ee9'
             '6e024de469ebb1bc4083274412f0a5d68d5fa511c2139ce4cb1d243c51ff9535'
             '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d')
