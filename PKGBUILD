@@ -2,7 +2,7 @@
 pkgname=bilibili-live-helper
 pkgver=1.1.2
 pkgrel=1
-pkgdesc="Helper for Bilibili Live."
+pkgdesc="A Helper for Bilibili Live."
 arch=('x86_64')
 url="https://github.com/pandaGao/bilibili-live-helper"
 install=${pkgname}.install
