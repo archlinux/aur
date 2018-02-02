@@ -1,13 +1,13 @@
-# Maintainer: Slavi Pantaleev <s.pantaleev at gmail.com>
+# Maintainer: Slavi Pantaleev <slavi at devture.com>
 
 pkgname=sftpman
 epoch=1
-pkgver=0.6.3
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Application that handles sshfs/sftp file systems mounting."
 arch=('any')
 url="https://github.com/spantaleev/sftpman"
-license=('BSD')
+license=('GPL3')
 depends=('python' 'sshfs' 'python-setuptools')
 makedepends=('git')
 optdepends=('sftpman-gtk: GTK frontend')
