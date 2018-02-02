@@ -1,0 +1,22 @@
+pkgbase = python-yarg
+	pkgdesc = A semi hard Cornish cheese, also queries PyPI
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/kura/yarg
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/d4/c8/cc640404a0981e6c14e2044fc64e43b4c1ddf69e7dddc8f2a02638ba5ae8/yarg-0.1.9.tar.gz
+	md5sums = a17cb3e82fcd86e4184ec0f8c2e013c7
+
+pkgname = python-yarg
+	depends = python
+	depends = python-requests
+
+pkgname = python2-yarg
+	depends = python2
+	depends = python2-requests
+
