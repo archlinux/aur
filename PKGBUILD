@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_eigen."
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-tf2-eigen'
-pkgver='0.5.16'
+pkgver='0.5.17'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry2-release-release-kinetic-tf2_eigen-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2_eigen/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2c9ff02e4145f81d34b4a6cf4a583fa12d7d8f2ef54139f7bd213e2953c13e8e')
+sha256sums=('965c2488fa8f18d56d02dd815c908718712813c3633623085a0476f256b0bc61')
 
 build() {
   # Use ROS environment variables
