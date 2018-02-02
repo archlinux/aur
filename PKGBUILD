@@ -4,7 +4,7 @@ pkgdesc="ROS - Components of MoveIt connecting to MongoDB."
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-ros-warehouse'
-pkgver='0.9.9'
+pkgver='0.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_ros_warehouse-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_warehouse/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('582446b83cec5d7b791bf8602be590f02b41e3563cc71ed241cecfac26bfbaf6')
+sha256sums=('fb2e4b0576b27bf47ab63d6bc652f97f60839f06005b00510850695317f23b6d')
 
 build() {
   # Use ROS environment variables
