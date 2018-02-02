@@ -1,0 +1,12 @@
+pkgbase = hacked-aio-righty
+	pkgdesc = Hacked-aio Cursor Theme for Righties
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://store.kde.org/content/show.php?content=176043
+	arch = any
+	license = CCPL
+	source = https://www.dropbox.com/s/jpvh2km9udtjoju/Hacked-aio.tgz
+	md5sums = 473bb7c66bd8ead96a6a9bbe1f0b099f
+
+pkgname = hacked-aio-righty
+
