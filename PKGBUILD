@@ -8,7 +8,7 @@ url="https://github.com/pandaGao/bilibili-live-helper"
 install=${pkgname}.install
 license=('MIT')
 depends=('cairo' 'libxtst' 'libxi' 'gtk2' 'libxrandr' 'pango' 'fontconfig' 'libxss' 'gdk-pixbuf2' 'nss' 'freetype2' 'nspr' 'gconf' 'libxext' 'libxdamage' 'atk' 'libxrender' 'libxcomposite' 'libxcursor' 'libxfixes' 'libx11' 'alsa-lib' 'libcups')
-makedepends=('tar' 'git')
+makedepends=('tar')
 source=('git+https://github.com/OriginCode/AURFiles')
 md5sums=('SKIP')
 
