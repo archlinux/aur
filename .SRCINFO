@@ -1,0 +1,16 @@
+pkgbase = wyslij-po
+	pkgdesc = Submit PO files to the Translation Project
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://wyslij-po.software.gnu.org.ua/
+	arch = x86_64
+	license = GPL
+	depends = mailutils
+	source = ftp://download.gnu.org.ua/pub/release/wyslij-po/wyslij-po-3.2.tar.gz
+	source = ftp://download.gnu.org.ua/pub/release/wyslij-po/wyslij-po-3.2.tar.gz.sig
+	validpgpkeys = 325F650C4C2B6AD58807327A3602B07F55D0C732
+	sha1sums = 26cc5ace2839b653c3da4e71931909cf31ada420
+	sha1sums = SKIP
+
+pkgname = wyslij-po
+
