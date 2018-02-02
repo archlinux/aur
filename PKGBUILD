@@ -3,7 +3,7 @@
 
 pkgname=pothos
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Pothos data-flow framework"
 arch=('i686' 'x86_64')
 url="https://github.com/pothosware/PothosCore/wiki"
@@ -44,6 +44,5 @@ package() {
     make DESTDIR="$pkgdir" install
     
     install -Dm644 "$srcdir/PothosFlow.desktop" "$pkgdir/usr/share/applications/PothosFlow.desktop"
-    install -d "$pkgdir/usr/share/pixmaps"
-    convert "$srcdir/PothosCore/flow/icons/PothosFlow.ico" "$pkgdir/usr/share/pixmaps/PothosFlow.png"
+    install -Dm644 "$srcdir/PothosCore/flow/icons/PothosFlow.png" "$pkgdir/usr/share/pixmaps/PothosFlow.png"
 }
