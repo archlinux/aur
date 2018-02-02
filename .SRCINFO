@@ -1,0 +1,13 @@
+pkgbase = ida-free
+	pkgdesc = Freeware version of the world's smartest and most feature-full disassembler
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://www.hex-rays.com/products/ida/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://out7.hex-rays.com/files/idafree70_linux.run
+	sha256sums = 6e589aa5dfe20ab3028aeb3ba4c1c4f1d987522a6f1d7ad4861240be7851178f
+
+pkgname = ida-free
+
