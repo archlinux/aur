@@ -4,7 +4,7 @@ pkgdesc="ROS - Package for all inverse kinematics solvers in MoveIt!."
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-kinematics'
-pkgver='0.9.9'
+pkgver='0.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_kinematics-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_kinematics/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('06ad5bda630d586e350a069a57bc370b29cb61c9d92f05fddc04dd344e96ffaf')
+sha256sums=('6024a1343ca34528dc927abe545071dc28204af84477f5bf322619c4f221d1fc')
 
 build() {
   # Use ROS environment variables
