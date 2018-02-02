@@ -1,6 +1,6 @@
-post_upgrade() {
-    echo "For upgrade don't forget to execute:"
-    echo 'seahub-preupgrade'
-    echo 'In your seafile-server instance directory'
-    echo 'For instance /usr/share/seafile-server/'
+post_upgrade() { 
+    # Remove old virtualenv and script upgrade 
+    # More infos: pacman -Qc seahub
+    rm -rf /usr/lib/seafile
+    rm -f  /usr/bin/seahub-preupgrade
 }

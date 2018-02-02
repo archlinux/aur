@@ -1,61 +1,82 @@
-# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Maintainer: Joffrey Darcq <j-off@live.fr>
+# Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Edvinas Valatka <edacval@gmail.com>
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
-pkgname=seahub
+pkgname='seahub'
 pkgver=6.2.5
-pkgrel=2
-pkgdesc="The web end of seafile server"
+pkgrel=3
+pkgdesc='The web frontend for seafile server'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
-license=('Apache')
-depends=("seafile-server" "python2-virtualenv" 'libmemcached')
+license=('Apache' 'PSF' 'MIT' 'BSD')
+depends=('seafile-server' 'libmemcached' 'libmariadbclient')
+optdepends=('memcached' 'mariadb')
+makedepends=('python2-virtualenv')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
-        "seahub-preupgrade")
-sha256sums=('80a7a1cadde8e8e570bdc454bc4a4902ebcace97b347f9eef701b5ab02742039'
-            'd3b0d33848ab9e0dbb9ea6e6e385fc4ffa82a77193af447edef7646d68e396b1')
-# Strip is not happy on precompiled libs in virtualenv, temporary disable
-options=("!strip")
+changelog="ChangeLog"
+source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz")
+sha256sums=('80a7a1cadde8e8e570bdc454bc4a4902ebcace97b347f9eef701b5ab02742039')
 
 prepare () {
-  cd "${srcdir}/${pkgname}-${pkgver}-server"
+    cd "${srcdir}/${pkgname}-${pkgver}-server"
 
-  # Fix all script's python 2 requirement
-  grep -s -l -r '#!/usr/bin/env python\b' "${srcdir}/${pkgname}-${pkgver}-server" \
+    # Fix all script's python 2 requirement
+    grep -s -l -r '#!/usr/bin/env python\b' "./" \
     | xargs sed -i -e '1 s|env python\b|env python2|'
+
+    # Add python utils modules to requirements.txt
+    {
+        echo 'flup'             # WSGI support
+        echo 'MySQL-python'     # MySQL support
+        echo 'pylibmc'          # Memcached support
+        echo 'django-pylibmc'   # Memcached support
+    } >> "./requirements.txt"
 }
 
 package() {
-  # Install seahub
-  install -dm755 "${pkgdir}/usr/share/seafile-server/seahub"
-  cp -r -p "${srcdir}/seahub-${pkgver}-server/"* \
-    "${pkgdir}/usr/share/seafile-server/seahub/"
+    cd "${srcdir}/seahub-${pkgver}-server/"
 
-  # Install seahub preupgrade script
-  install -D -m755 "${srcdir}/seahub-preupgrade" \
-    "${pkgdir}/usr/bin/seahub-preupgrade"
+    # Install seahub
+    install -dm755 "${pkgdir}/usr/share/seafile-server/seahub" 
+    cp -r -p "./"* "${pkgdir}/usr/share/seafile-server/seahub/"
 
-  # Create private virtualenv
-  virtualenv2 --no-wheel --system-site-packages "${pkgdir}/usr/lib/seafile/seafileenv"
-  source "${pkgdir}/usr/lib/seafile/seafileenv/bin/activate"
-  pip2 --isolated install --no-compile \
-    -r "${srcdir}/${pkgname}-${pkgver}-server/requirements.txt"
-  pip2 --isolated install --no-compile \
-    gunicorn pylibmc django-pylibmc
-  deactivate
-  virtualenv2 --relocatable "${pkgdir}/usr/lib/seafile/seafileenv"
+    # Create VirtualEnv 
+    virtualenv="${pkgdir}/usr/lib/seahub"
+    virtualenv2 --no-wheel --system-site-packages "${virtualenv}"
 
-  # Recompile all .pyc files in virtualenv.
-  # Not stricly required, but useful for printing valid source file paths in case of python exceptions.
-  # One caveat: requires minimum 1GB RAM, comment next two commands in case of < 1GB RAM
-  # _gaiohttp.py excluded due to https://github.com/benoitc/gunicorn/issues/810
-  python2 -m compileall -q -f -d /usr/lib/seafile/seafileenv/bin \
-        -- "${pkgdir}/usr/lib/seafile/seafileenv/bin"
-  python2 -m compileall -q -f -d /usr/lib/seafile/seafileenv/lib/python2.7 \
-        -x '.*/gunicorn/workers/_gaiohttp.py' \
-        -- "${pkgdir}/usr/lib/seafile/seafileenv/lib/python2.7"
+    # Activates the VirtualEnv
+    source "${virtualenv}/bin/activate"
 
-  # Fix virtualenv paths
-  sed -i "s#${pkgdir}##" "${pkgdir}"/usr/lib/seafile/seafileenv/bin/activate*
+    # Fix subprocess exception if gunicorn is already installed
+    printf 'Installing gunicorn...'
+    pip2 install --isolated --no-compile --upgrade --force-reinstall gunicorn > /dev/null && \
+    printf 'done.\n'
+
+    # Install requirements
+    pip2 install --isolated --no-compile -r "./requirements.txt"
+    
+    deactivate  # Deactivate VirtualEnv
+
+    # Use relative path
+    virtualenv2 --relocatable "${virtualenv}"
+
+    # Recompile all .pyc files in virtualenv.
+    # Not stricly required
+    # But useful for printing valid source file paths in case of python exceptions.
+    # Requires minimum 1GB RAM, comment next two commands in case of < 1GB RAM
+    # _gaiohttp.py excluded due to https://github.com/benoitc/gunicorn/issues/810
+
+    printf "Compile all .py in %s/..." "${virtualenv}/bin"
+    python2 -m compileall \
+            -q -f -d "${virtualenv#$pkgdir}/bin" \
+            -- "${virtualenv}/bin" && \
+    printf 'done.\n'
+
+    printf "Compile all .py in %s/..." "${virtualenv}/lib/python2.7"
+    python2 -m compileall \
+            -q -f -d "${virtualenv#$pkgdir}/lib/python2.7" \
+            -x '.*/gunicorn/workers/_gaiohttp.py' \
+            -- "${virtualenv}/lib/python2.7" && \
+    printf 'done.\n'
 }

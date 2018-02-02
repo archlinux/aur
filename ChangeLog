@@ -1,6 +1,17 @@
-Seahub 6.2.5-3:
-- python2-virtualenv and libmemcached moved to makedepends
-- virtualenv moved to /usr/lib/seahub (more intuitive)
-- seahub-preupgrade script is no longer maintained but it remains available in the package
-- Fix subprocess exception if gunicorn is already installed
-- Fix jpeg thumbnails, add openjpeg2 depdend (thanks Klemens)
+2018-02-03 Joffrey <j-off@live.fr>
+	
+	* Version: v6.2.5-2 -> 6.2.5-3
+	
+	* ChangeLog: Add Changelog
+	
+	* PKGBUILD: Use python2-virtualenv only for makedepends
+	Python modules utils are added to requirements.txt
+	Seahub virtualenv is now to /usr/lib/seahub (more appropriate)
+	Fix subprocess exception if gunicorn already installed
+
+	* seahub-preupgrade: Will no longer be installed, it isn't a part of seahub 
+	sources, an ArchLinux user can package it, it will be deleted soon.
+
+	* nginx.example.conf: Add nginx configuration example for https and wsgi
+
+	* seahub.install: Remove old virtualenv and seahub-preupgrade of your system
