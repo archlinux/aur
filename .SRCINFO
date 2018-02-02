@@ -1,0 +1,13 @@
+pkgbase = desktop-webmail
+	pkgdesc = Aims to bring Webmail integration to Linux Desktops
+	pkgver = 003
+	pkgrel = 1
+	url = https://launchpad.net/desktop-webmail
+	arch = any
+	license = GPL3
+	makedepends = intltool
+	source = https://launchpad.net/desktop-webmail/trunk/003/+download/desktop-webmail-003.tar.gz
+	md5sums = 8a380b96e244e653c7adad596ee441bc
+
+pkgname = desktop-webmail
+
