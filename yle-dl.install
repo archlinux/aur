@@ -1,9 +1,0 @@
-post_install() {
-  echo "Youtube-dl is now used as the default backend."
-  echo "To change back to the PHP one you need to define"
-  echo 'environment variable `YLE_DL_BACKEND=adobehdsphp`.'
-}
-
-post_upgrade() {
-  post_install
-}

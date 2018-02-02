@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ -z "$YLE_DL_BACKEND" ]; then
-    YLE_DL_BACKEND="youtubedl"
-fi
-
-python2 /usr/share/yle-dl/yle-dl.py --backend $YLE_DL_BACKEND $@

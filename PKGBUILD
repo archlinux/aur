@@ -1,38 +1,25 @@
-#Maintainer: Jesse Jaara <gmail.com: jesse.jaara>
+# Maintainer: sumt <sumt at sci dot fi>
+# Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=yle-dl
-pkgver=2.16
+pkgver=2.30
 pkgrel=1
-_gitid=bc104d2
 pkgdesc="Download video and audio from YLE Areena."
-arch=("any")
+arch=('any')
 url="http://aajanki.github.io/yle-dl/"
-license=("GPL2")
-depends=('python2-crypto' 'python2-youtube-dl')
-optdepends=('php-mcrypt: old PHP backend'
-            'rtmpdump: old rtmpdump backend')
-install=yle-dl.install
-_adobehdsversion=2016.05.28
-source=("yle-dl"
-        "yle-dl-${pkgver}.tar.gz::https://github.com/aajanki/yle-dl/tarball/${pkgver}"
-        "AdobeHDS-${_adobehdsversion}.php::https://raw.githubusercontent.com/K-S-V/Scripts/3a9b748f957a921c5f846b3ebc7c99bb8255d2e0/AdobeHDS.php")
-md5sums=('1138f597102f6fb4bc43f7dc9a003a3c'
-         '90afd517302c2ee6feeee497de2de46b'
-         '81751f2c5184f33a539b5e0bdfdf7adc')
-
-prepare() {
-  cd "${srcdir}/aajanki-${pkgname}-${_gitid}"
-
-  sed 's|/usr/local|/usr|' -i yle-dl
-  sed "s|'php'|'php', '-d extension=bcmath.so', '-d extension=curl.so', '-d extension=mcrypt.so'|" -i yle-dl
-}
+license=('GPL3')
+depends=('ffmpeg' 'python-crypto' 'python-future' 'python-lxml'
+         'python-pyamf' 'python-requests' 'youtube-dl' 'wget')
+optdepends=('php-mcrypt: for AdobeHDS.php based downloader backend'
+            'rtmpdump: for downloading Areena audio streams')
+makedepends=('python-setuptools')
+provides=(${pkgname}=$pkgver)
+conflicts=(${pkgname})
+source=("$pkgname-$pkgver.tar.gz::https://github.com/aajanki/yle-dl/archive/${pkgver}.tar.gz")
+md5sums=('f632381c47aa09d8601912286e10d406')
 
 package() {
-  cd "${srcdir}/aajanki-${pkgname}-${_gitid}"
-
-  make prefix=/usr DESTDIR="${pkgdir}" install
-
-  install -D -m644 "${srcdir}/AdobeHDS-${_adobehdsversion}.php" "${pkgdir}/usr/share/yle-dl/AdobeHDS.php"
-  install -D -m644 "${srcdir}/aajanki-${pkgname}-${_gitid}/yle-dl" "${pkgdir}/usr/share/yle-dl/yle-dl.py"
-  install -D -m755 "${srcdir}/yle-dl" "${pkgdir}/usr/bin/yle-dl"
+  cd "$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
+
