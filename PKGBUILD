@@ -1,7 +1,7 @@
 # Maintainer: Genki Sky <sky at genki dot is>
 
 pkgname=tla-toolbox
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc='IDE for the TLA+ tools'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='http://research.microsoft.com/en-us/um/people/lamport/tla/toolbox.html'
 license=('MIT')
 depends=('java-runtime')
 source=("https://tla.msr-inria.inria.fr/tlatoolbox/products/TLAToolbox-$pkgver-linux.gtk.x86_64.zip")
-sha256sums=('c05fc4f8ef38d0cd97a8b74eec08ba9d210929e1a6b5767a2d6d3c939b7c14d0')
+sha256sums=('72d301f32fa222f994c3e16c87724b20eacf0f1e2e06471e0c1d6c7d1a71baac')
 
 package() {
     mkdir -p "$pkgdir"/usr/share/java/tla-toolbox
