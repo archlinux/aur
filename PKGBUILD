@@ -4,7 +4,7 @@ pkgdesc="ROS - Components of MoveIt used for manipulation."
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-ros-manipulation'
-pkgver='0.9.9'
+pkgver='0.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -46,7 +46,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_ros_manipulation-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_manipulation/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('db67c1ac90395633a35e47ba622a83a790e766c235768a97452cac623daee410')
+sha256sums=('86eae61940953905324d290e0839ac6c26bd838971453c5509e8cec2acb91108')
 
 build() {
   # Use ROS environment variables
