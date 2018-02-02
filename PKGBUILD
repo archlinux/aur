@@ -5,15 +5,15 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 _pkgname=telepathy-qt
 _pkgbase=telepathy-qt5
-pkgname=$_pkgbase-git
-pkgver=0.9.7.r6.gd108b58
+pkgname=$_pkgname-git
+pkgver=0.9.7.r34.gf81ae2d3
 pkgrel=1
 arch=(i686 x86_64)
 url="http://telepathy.freedesktop.org/wiki/"
 license=(LGPL)
 provides=($_pkgbase)
 makedepends=(telepathy-farstream libxslt python2 cmake doxygen qt5-base)
-source=(git+https://github.com/TelepathyQt/telepathy-qt.git#branch=dev)
+source=(git+https://github.com/TelepathyQt/telepathy-qt.git)
 md5sums=('SKIP')
 validpgpkeys=('AA33B0D27868E36C151780F0FE0B6D736B1195ED') # Alexandr Akulich
 
