@@ -1,0 +1,15 @@
+pkgbase = ruby-iruby
+	pkgdesc = A Ruby kernel for Jupyter
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/SciRuby/iruby
+	arch = any
+	license = MIT
+	depends = ruby-cztop
+	options = !emptydirs
+	source = ruby-iruby-0.3.tar.gz::https://github.com/SciRuby/iruby/archive/49e3a23223280cf2d81a4a5686915655538bf7f8.tar.gz
+	sha256sums = 7c93b7ddca64b87b61c00bbad0fc88e8aa271ef5a379bdadd1ad97b3f3fda058
+	sha512sums = 681216c6fd913cc87d9d6c4c643917e263fb45b76ce03bc51120f294b4cdd43bb1acbeb1e8923d727cd43b8bb15a5b458678b14633f628de6525b6325d3e613a
+
+pkgname = ruby-iruby
+
