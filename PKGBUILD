@@ -2,7 +2,7 @@
      
 pkgname=nvidia-pf
 pkgver=387.34
-pkgrel=4
+pkgrel=5
 _goodkver=4.14
 _badkver=4.15
 _modver=${_goodkver}-pf
@@ -23,6 +23,8 @@ license=('custom')
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+md5sums_i686=('4e356a75541633ac3f9ac0f53bb65823')
+md5sums_x86_64=('a009bbc502c30e4b483d71be9fa51790')
 
 
 
@@ -61,10 +63,7 @@ package() {
 
   gzip "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
   install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
-  
-  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "${startdir}/nvidia.install"
+ 
   echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-pf.conf"
 }
 
-md5sums_i686=('4e356a75541633ac3f9ac0f53bb65823')
-md5sums_x86_64=('a009bbc502c30e4b483d71be9fa51790')
