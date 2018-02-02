@@ -10,6 +10,8 @@ install=${pkgname}.install
 license=('MIT')
 depends=('cairo' 'libxtst' 'libxi' 'gtk2' 'libxrandr' 'pango' 'fontconfig' 'libxss' 'gdk-pixbuf2' 'nss' 'freetype2' 'nspr' 'gconf' 'libxext' 'libxdamage' 'atk' 'libxrender' 'libxcomposite' 'libxcursor' 'libxfixes' 'libx11' 'alsa-lib' 'libcups')
 makedepends=('tar' 'electron')
+provides=('bilibili-live-helper')
+conflicts=('bilibili-live-helper')
 source=('git+https://github.com/pandaGao/bilibili-live-helper')
 md5sums=('SKIP')
 

@@ -31,6 +31,8 @@ pkgbase = bilibili-live-helper-git
 	depends = libx11
 	depends = alsa-lib
 	depends = libcups
+	provides = bilibili-live-helper
+	conflicts = bilibili-live-helper
 	source = git+https://github.com/pandaGao/bilibili-live-helper
 	md5sums = SKIP
 
