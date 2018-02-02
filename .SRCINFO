@@ -1,7 +1,7 @@
 pkgbase = ddnet
 	pkgdesc = DDraceNetwork, a mod of Teeworlds
 	pkgver = 11.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ddnet.tw
 	arch = x86_64
 	license = custom:BSD
@@ -18,7 +18,7 @@ pkgbase = ddnet
 	depends = opusfile
 	depends = curl
 	optdepends = ddnet-skins: more skins for your tee
-	optdepends = ddnet-maps-git: mainly important for a DDNet Server
+	optdepends = ddnet-maps-git: have all DDNet maps available offline
 	provides = teeworlds-ddnet
 	conflicts = teeworlds-ddnet
 	replaces = teeworlds-ddnet
