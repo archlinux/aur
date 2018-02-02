@@ -1,7 +1,7 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
 pkgname=diceware
-pkgver=0.9.1
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Wordlist-based password generator."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/ulif/diceware"
 license=('GPL3')
 depends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ulif/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('4ad3b67858861b6e6444ef9fc2dd8aa0f8dc41dcd0106660431abee3be3e3e1116ead11ba59a459842bcad6959eb4daa9453fd34e50def874d9bd6bbd591d51b')
+sha512sums=('133fcead6084d35472832b7e665c7d40fa2884e0dc09324c8bba3403310241d8c3aff4f7d36767b1017ea6ce9a397567e691b8514e40e112c11bef0fa61377df')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
