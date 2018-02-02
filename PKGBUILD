@@ -1,7 +1,7 @@
 # Contributor: Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname='swisseph'
-pkgver='2.07'
+pkgver='2.07.01'
 pkgrel='1'
 pkgdesc='High precision Swiss Ephemeris developed by Astrodienst.'
 arch=('i686' 'x86_64')
@@ -31,3 +31,4 @@ package() {
     rm "${pkgdir}/usr/include/swisseph/swedll.h"
 }
 
+sha256sums=('3b22a09eb000c48f357b7a947b0a8a9995195e6797ff10a48698f50b3c8aaf8e')
