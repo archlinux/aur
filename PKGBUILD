@@ -7,7 +7,7 @@ pkgname='ros-kinetic-srdfdom'
 pkgver='0.4.2'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-urdfdom-py
@@ -38,6 +38,14 @@ depends=(${ros_depends[@]}
 _dir="srdfdom-release-release-kinetic-srdfdom-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/srdfdom-release/archive/release/kinetic/srdfdom/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('2f7dfc30af56d54c3ca610f648ab68face2697f3d4e135410b749dae0d5d0d80')
+
+prepare() {
+  cd ${srcdir}
+  find . \( -iname *.cpp -o -iname *.h \) \
+	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
+	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
+	  -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \;
+}
 
 build() {
   # Use ROS environment variables
