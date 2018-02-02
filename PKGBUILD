@@ -10,7 +10,7 @@ url='https://github.com/slytomcat/yandex-disk-indicator'
 license=('GPL3')
 depends=('yandex-disk' 'python' 'python-pyinotify' 'pygobject-devel' 'python-gobject' 'libappindicator-gtk3' 'xclip' 'zenity')
 source=("https://github.com/slytomcat/yandex-disk-indicator/archive/${pkgver}.tar.gz")
-md5sums=('97981a420e497b4fcee7f82d7323464b')
+md5sums=('2bbaac0bcabe1f5f6a8d89bac0bf7fba')
 
 package() {
     cd $srcdir

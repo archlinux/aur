@@ -15,7 +15,7 @@ pkgbase = yandex-disk-indicator
 	depends = xclip
 	depends = zenity
 	source = https://github.com/slytomcat/yandex-disk-indicator/archive/1.9.18.tar.gz
-	md5sums = 97981a420e497b4fcee7f82d7323464b
+	md5sums = 2bbaac0bcabe1f5f6a8d89bac0bf7fba
 
 pkgname = yandex-disk-indicator
 
