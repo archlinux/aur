@@ -1,13 +1,15 @@
 pkgbase = python-exchangelib
 	pkgdesc = Client for Microsoft Exchange Web Services (EWS)
 	pkgver = 1.10.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ecederstrand/exchangelib
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
 	depends = python-cached-property
+	depends = python-cryptography
+	depends = python-lxml
 	depends = python-dnspython
 	depends = python-requests-ntlm
 	depends = python-pytz

@@ -1,14 +1,14 @@
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 # Contributor: Arthur Țițeică | arthur dot titeica with gmail
-# Maintaienr: Guillaume Horel <guillaume.horel@gmail.com>
 _pkgname=exchangelib
 pkgname=python-exchangelib
 pkgver=1.10.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for Microsoft Exchange Web Services (EWS)"
 arch=(any)
 url="https://github.com/ecederstrand/exchangelib"
 license=('BSD')
-depends=('python' 'python-cached-property' 'python-dnspython' 'python-requests-ntlm' 'python-pytz' 'python-future' 'python-tzlocal')
+depends=('python' 'python-cached-property' 'python-cryptography' 'python-lxml' 'python-dnspython' 'python-requests-ntlm' 'python-pytz' 'python-future' 'python-tzlocal')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
 "LICENSE")
