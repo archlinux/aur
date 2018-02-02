@@ -1,0 +1,12 @@
+pkgbase = hacked-aio-lefty
+	pkgdesc = Hacked-aio Cursor Theme for Lefties
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://store.kde.org/content/show.php?content=176043
+	arch = any
+	license = CCPL
+	source = https://www.dropbox.com/s/mk5767mpzxtxvgf/Hacked-aio.tgz
+	md5sums = d293223dfc521e8099ebd308644bb45a
+
+pkgname = hacked-aio-lefty
+
