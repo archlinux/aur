@@ -17,6 +17,7 @@ backup=('usr/share/ddnet/data/autoexec_server.cfg'
         'usr/share/ddnet/data/storage.cfg')
 source=("git+https://github.com/ddnet/$_name.git")
 md5sums=('SKIP')
+PKGEXT='.pkg.tar'
 
 pkgver() {
   cd $_name
