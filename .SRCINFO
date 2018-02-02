@@ -1,0 +1,12 @@
+pkgbase = dotcopter
+	pkgdesc = A small tool to manage dotfile installation.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/bomgar/dotcopter
+	arch = x86_64
+	license = Apache-2.0
+	source = https://github.com/bomgar/dotcopter/releases/download/0.3.0/dotcopter
+	sha256sums = 65acc88a90b39b91e768252edeb5d0f10d66cc95a11403685fd01f1fa93305a9
+
+pkgname = dotcopter
+
