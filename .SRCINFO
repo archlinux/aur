@@ -30,6 +30,7 @@ pkgbase = bilibili-live-helper
 	depends = libx11
 	depends = alsa-lib
 	depends = libcups
+	conflicts = bilibili-live-helper-git
 	source = git+https://github.com/OriginCode/AURFiles
 	md5sums = SKIP
 
