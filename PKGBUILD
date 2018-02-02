@@ -2,7 +2,7 @@
 
 pkgname=kicad-templates-git
 _pkgname=${pkgname%-*}
-pkgver=r12.774d539
+pkgver=r34.024bbbe
 pkgrel=1
 pkgdesc="Official KiCad project templates"
 arch=('any')
