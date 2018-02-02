@@ -4,7 +4,7 @@ pkgdesc="ROS - Components of MoveIt connecting to perception."
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-ros-perception'
-pkgver='0.9.9'
+pkgver='0.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,6 +27,7 @@ ros_makedepends=(ros-kinetic-message-filters
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   glut
+  mesa-libgl
   eigen
   glew)
 
@@ -46,7 +47,7 @@ ros_depends=(ros-kinetic-message-filters
 depends=(${ros_depends[@]}
   glut
   glew
-  )
+  mesa-libgl)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/moveit_ros_perception/${pkgver}-${_pkgver_patch}
@@ -57,7 +58,16 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_ros_perception-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_perception/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('35fdc4058a0aeaab566f2f9042c543f452ce55c45bfce4002c337402f8449e66')
+sha256sums=('a198270fca359a2d4fb0bdfaed0abcd345f5953de0640d4f55f54b47a8593d92')
+
+prepare() {
+  cd ${srcdir}
+  find . \( -iname *.cpp -o -iname *.h \) \
+	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
+	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
+	  -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \; \
+	  -exec sed -r -i "s/[^_]logInform/CONSOLE_BRIDGE_logInform/" {} \;
+}
 
 build() {
   # Use ROS environment variables
