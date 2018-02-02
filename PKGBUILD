@@ -28,7 +28,8 @@ prepare() {
 
 build() {
     cd $_pkgname
-    python waf configure --prefix="$pkgdir/usr" --llvm-config=/usr/bin/llvm-config
+    # --variant=custom will not add extra CXXFLAGS
+    python waf configure --variant=custom --prefix="$pkgdir/usr" --llvm-config=/usr/bin/llvm-config
     python waf build
 }
 
