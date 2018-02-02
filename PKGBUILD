@@ -2,7 +2,7 @@
 # Contributor: Francois Boulogne <fboulogne@april.org>
 
 pkgname=paperwork
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='A tool to make papers searchable - scan & forget'
 arch=('any')
@@ -22,8 +22,8 @@ source=("paperwork.desktop"
         "paperwork-gui-${pkgver}.tgz::https://github.com/openpaperwork/paperwork/archive/${pkgver}.tar.gz"
         "paperwork-backend-${pkgver}.tgz::https://github.com/openpaperwork/paperwork-backend/archive/${pkgver}.tar.gz")
 md5sums=('4496dc70b2f159c7ea28160d2ebb60fe'
-         '610b1ba13f5a76c001102ead8e3b1899'
-         '86d51453f92ad682def068da926d8c19')
+         '1d985becc77640a578446f0196af897a'
+         '36fc0ae8ef24076d05760dc26f5a8bc3')
 install=paperwork.install
 
 build() {
