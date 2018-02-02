@@ -1,0 +1,19 @@
+pkgbase = slingswarm
+	pkgdesc = GTK3 application launcher similar to Mac OS launchpad and Wayland compatible.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/echo-devim/slingswarm
+	install = slingswarm.install
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = libgee
+	depends = gnome-menus
+	depends = glib2
+	depends = gtk3
+	source = https://github.com/echo-devim/slingswarm/archive/34e2e0446381ffbbcac7ba530286b6d10010f2a5.tar.gz
+	sha256sums = fcf9c41aa0dfcc68f9dc09d600b801c501c40d7e993154834357bbdf58745504
+
+pkgname = slingswarm
+
