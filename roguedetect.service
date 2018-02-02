@@ -1,0 +1,10 @@
+[Unit]
+Description=detect rogue DHCP server entities
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/roguedetect /etc/rogue_detector.cfg >/dev/null
+
+[Install]
+WantedBy=multi-user.target
