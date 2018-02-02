@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-arctis7
 	pkgdesc = Configuration files to support SteelSeries Arctis 7 mono/stereo output on pulseaudio
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = LGPL
 	depends = pulseaudio
