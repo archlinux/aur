@@ -1,6 +1,6 @@
 pkgbase = google-chrome
 	pkgdesc = The popular and trusted web browser by Google (Stable Channel)
-	pkgver = 64.0.3282.119
+	pkgver = 64.0.3282.140
 	pkgrel = 1
 	url = https://www.google.com/chrome
 	install = google-chrome.install
@@ -22,10 +22,10 @@ pkgbase = google-chrome
 	optdepends = xdg-utils
 	options = !emptydirs
 	options = !strip
-	source = google-chrome-stable_64.0.3282.119_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	source = google-chrome-stable_64.0.3282.140_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	source = eula_text.html
 	source = google-chrome-stable.sh
-	md5sums = 9c7227daaa03e9b3dacbff1bc8e5ec90
+	md5sums = 97fb280440e99882fa5065f2a567c03d
 	md5sums = d50d8f0a6940791eabc41c4f64e6a3cf
 	md5sums = 99fa93d5e7fb5d622cef0f9621f3ffa3
 
