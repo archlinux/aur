@@ -1,8 +1,9 @@
 [Desktop Entry]
+Version=1.1
 Name=Standard Notes
 StartupWMClass=Standard Notes
+Type=Application
+Icon=standard-notes
 Comment=A simple and private notes app.
 Exec=standard-notes
 Terminal=false
-Type=Application
-Icon=standard-notes
