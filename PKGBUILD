@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de
 
 pkgname=aurel-git
-pkgver=v0.9.2017_01_14
+pkgver=0.9.2017_01_14
 pkgrel=1
 pkgdesc="Search and download AUR packages from Emacs"
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf %s.%s $(git describe --tags|tr - .) $(git log -1 --format="%cd" --date=short | tr - _)
+  printf %s.%s $(git describe --tags|tr - .| cut -c2-) $(git log -1 --format="%cd" --date=short | tr - _) 
 }
 
 package() {
