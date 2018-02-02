@@ -1,0 +1,20 @@
+pkgbase = wxpython-gtk2
+	pkgdesc = A wxWidgets GUI toolkit for Python (GTK2 version)
+	pkgver = 3.0.2.0
+	pkgrel = 6
+	url = https://www.wxpython.org
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = mesa
+	makedepends = glu
+	depends = wxgtk2
+	depends = python2
+	provides = wxpython
+	conflicts = wxpython
+	source = https://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2
+	source = fix-plot.patch
+	sha256sums = d54129e5fbea4fb8091c87b2980760b72c22a386cb3b9dd2eebc928ef5e8df61
+	sha256sums = 2d8b2bdbf55172738c7bf93955e552aac61842800c3b8b0a2e1f07f4314abc65
+
+pkgname = wxpython-gtk2
+
