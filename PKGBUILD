@@ -4,7 +4,7 @@ pkgdesc="ROS - Components of MoveIt that offer simpler interfaces to planning an
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-ros-planning-interface'
-pkgver='0.9.9'
+pkgver='0.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -51,7 +51,16 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_ros_planning_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_planning_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('145c27dc2dd3d50fe02a87afb6bd2bf13571dc1e644d0c6c616aee2884bf43b2')
+sha256sums=('c6bb07307640514920fee79e24986d40bdbc85bc1a469d0560d318fea6b061c3')
+
+prepare() {
+  cd ${srcdir}
+  find . \( -iname *.cpp -o -iname *.h \) \
+	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
+	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
+	  -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \; \
+	  -exec sed -r -i "s/[^_]logInform/CONSOLE_BRIDGE_logInform/" {} \;
+}
 
 build() {
   # Use ROS environment variables
