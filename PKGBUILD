@@ -10,6 +10,7 @@ url=${__github}
 arch=('any')
 license=('ISC')
 depends=('ruby' 'czmq')
+makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::${__github}/archive/v${pkgver}.tar.gz)
 sha256sums=('af8bd2044892f535eae3a509dc94b07a1aaae86b20edf035d32733376e4ef58b')
