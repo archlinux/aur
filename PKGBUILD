@@ -1,6 +1,6 @@
 # Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 pkgname=earlyoom
-pkgver=0.12
+pkgver=1.0
 pkgrel=1
 pkgdesc="Early OOM Daemon for Linux"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 source=(
 	"https://github.com/rfjakob/$pkgname/archive/v$pkgver.tar.gz"
 )
-sha256sums=('854c4b2d02cf630db6128eb46275416b97fc48c917c7f9f9af9b84c8065da09e')
+sha256sums=('0bc278a3744f454f3a29835a4ef939498d7044b78d490aff7f5a6ab6596bb0cb')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -28,6 +28,5 @@ package() {
 
 	make install
 	# make install doesn't install the manpage for some reason
-	gzip earlyoom.1
 	install -Dm644 earlyoom.1.gz "${DESTDIR}${PREFIX}/share/man/man1/earlyoom.1.gz"
 }
