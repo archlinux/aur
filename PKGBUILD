@@ -1,14 +1,14 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=fluid-git
-pkgver=20171214.667.40542bf
+pkgver=20180122.749.361f053
 pkgrel=1
 pkgdesc="Components for Qt Quick applications with Material Design"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('MPL2')
 depends=('qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg' 'ttf-roboto')
-makedepends=('git' 'qbs' 'qt5-tools')
+makedepends=('git' 'liri-qbs-shared-git' 'qt5-tools')
 options=(debug !strip)
 conflicts=('fluid')
 replaces=('fluid')
@@ -39,6 +39,7 @@ build() {
 	qbs build --no-install -d build profile:qt5 \
 		modules.lirideployment.prefix:/usr \
 		modules.lirideployment.qmlDir:/usr/lib/qt/qml \
+		projects.Fluid.useSystemQbsShared:true \
 		projects.Fluid.withDocumentation:false
 }
 
