@@ -1,0 +1,6 @@
+Seahub 6.2.5-3:
+- python2-virtualenv and libmemcached moved to makedepends
+- virtualenv moved to /usr/lib/seahub (more intuitive)
+- seahub-preupgrade script is no longer maintained but it remains available in the package
+- Fix subprocess exception if gunicorn is already installed
+- Fix jpeg thumbnails, add openjpeg2 depdend (thanks Klemens)
