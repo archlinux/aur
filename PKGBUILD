@@ -20,7 +20,6 @@ build() {
 }
 
 package() {
-	cp -r ${srcdir}/AURFiles/${pkgname} .
 	install -d "${pkgdir}/opt/${pkgname}"
-	cp -r ./bilibili-live-helper/* "${pkgdir}/opt/${pkgname}"
+	cp -r ${srcdir}/AURFiles/${pkgname}/* "${pkgdir}/opt/${pkgname}"
 }
