@@ -15,8 +15,8 @@ yellow="${bold}$(tput setaf 3)"
 post_install() {
     note "The launchers are called 'vuze' and 'azureus' (symlink)."
     note "It is recommended to disable the builtin automatic updater in:
-          Tools > Options > Interface > Start, and
-          Tools > Options > Plugins > Plugin Update"
+      Tools > Options > Interface > Start, and
+      Tools > Options > Plugins > Plugin Update"
 }
 
 post_upgrade() {
