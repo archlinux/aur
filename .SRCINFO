@@ -1,6 +1,6 @@
 pkgbase = binkd
 	pkgdesc = Binkley protocol daemon for transferring files between Fidonet systems
-	pkgver = 1.0.4
+	pkgver = 1.1a.96
 	pkgrel = 1
 	url = https://github.com/pgul/binkd
 	install = binkd.install
@@ -8,7 +8,7 @@ pkgbase = binkd
 	arch = x86_64
 	license = GPL
 	backup = etc/binkd/binkd.conf
-	source = git+https://github.com/pgul/binkd.git#commit=c335d3e86e3caea04072dde0968d08cb31d6a1e0
+	source = git+https://github.com/pgul/binkd.git#commit=c7a1ed04e4b784db44cd87cb8ff5f003d786e977
 	source = binkd.service
 	source = binkd@.service
 	source = binkd.socket

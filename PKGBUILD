@@ -2,8 +2,8 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=binkd
-pkgver=1.0.4
-_pkgcommit=c335d3e86e3caea04072dde0968d08cb31d6a1e0
+pkgver=1.1a.96
+_pkgcommit=c7a1ed04e4b784db44cd87cb8ff5f003d786e977
 pkgrel=1
 pkgdesc="Binkley protocol daemon for transferring files between Fidonet systems"
 arch=('i686' 'x86_64')
@@ -22,13 +22,13 @@ sha256sums=('SKIP'
             '2ddcb26a54f7a0f9a8ab5d8819431fb1f2bd961169c6fe5e7afa7f4c89e11786'
             '5032916082884a938978f0d5168fd053baab230bd34e84008ae637515e04a685')
 
-pkgver() {
-  cd "$srcdir"
-  git describe --tags | sed 's/^binkd-//; s/-/.r/; s/[-_]/./g'
-}
+#pkgver() {
+#  cd "$srcdir"
+#  git describe --tags | sed 's/^binkd-//; s/-/.r/; s/[-_]/./g'
+#}
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/binkd"
   cp mkfls/unix/{Makefile*,configure*,install-sh,mkinstalldirs} .
   ./configure \
     --prefix=/usr           \
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/binkd"
   make DESTDIR="$pkgdir" install
 
   mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
