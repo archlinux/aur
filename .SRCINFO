@@ -1,0 +1,14 @@
+pkgbase = python2-vsc-install
+	pkgdesc = Shared setuptools functions and classes for python libraries developed by UGent's HPC group
+	pkgver = 0.10.27
+	pkgrel = 2
+	url = https://github.com/hpcugent/vsc-install
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/v/vsc-install/vsc-install-0.10.27.tar.gz
+	md5sums = f0a3b39fd984c9bbb21d33c1039fabc5
+
+pkgname = python2-vsc-install
+
