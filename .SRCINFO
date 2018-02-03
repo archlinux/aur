@@ -10,6 +10,7 @@ pkgbase = libbonobo
 	license = LGPL
 	makedepends = intltool
 	makedepends = pkgconfig
+	makedepends = python
 	depends = orbit2
 	depends = libxml2
 	depends = glib2
