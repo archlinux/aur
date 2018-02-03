@@ -1,12 +1,12 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname="aur-creator-tools-git"
-pkgver=r6.7ceae9b
+pkgver=r8.181e1e1
 pkgrel=2
 pkgdesc="Small tools to create and maintain AUR packages"
 url="https://github.com/jD91mZM2/aur-creator-tools"
 arch=("x86_64" "i386")
 license=("MIT", "custom:MIT")
-makedepends=()
+makedepends=("git")
 optdepends=()
 depends=()
 source=("$pkgname::git+https://github.com/jD91mZM2/aur-creator-tools")
