@@ -3,14 +3,14 @@
 pkgname='homegear-homematicbidcos'
 _gitname='Homegear-HomeMaticBidCoS'
 pkgdesc='HomeMatic BidCoS module for Homegear'
-pkgver=0.7.12
+pkgver=0.7.15
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 url="https://homegear.eu"
 depends=('homegear')
 source=("https://github.com/Homegear/${_gitname}/archive/${pkgver}.tar.gz")
-sha512sums=('f28968db4b107e5206ffb889002b792b42fafa11ee301914e39badd79175820b27d6aae56010d5bb651bf4f03997ba1bbd3b8203883ab2c05e744481ca01635b')
+sha512sums=('b2b57e216f8820abba45dd715ed3e1fc13297a42ecb14f5a1df4742a1214ba49da7eedd717a5a9661374be1233df5b975ae3a748fc7d5fb3d8de371ee14eb7f1')
 install=homegear-homematicbidcos.install
 backup=('etc/homegear/families/homematicbidcos.conf')
 
