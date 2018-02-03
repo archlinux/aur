@@ -1,7 +1,7 @@
 pkgbase = xrootd
 	pkgdesc = Software framework for fast, low latency, scalable and fault tolerant data access.
 	pkgver = 4.8.1
-	pkgrel = 3
+	pkgrel = 1
 	url = http://xrootd.org/
 	arch = i686
 	arch = x86_64

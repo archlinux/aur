@@ -3,7 +3,7 @@
 # Contributor: Alex Pearce < alex at alexpearce dot me >
 pkgname=xrootd
 pkgver=4.8.1
-pkgrel=3
+pkgrel=1
 pkgdesc="Software framework for fast, low latency, scalable and fault tolerant data access."
 provides=('xrootd' 'xrootd-abi0')
 arch=('i686' 'x86_64')
