@@ -5,12 +5,12 @@
 pkgname=foxitreader
 pkgver=2.4.1.0609
 _foxitrevision=r08f07f8
-pkgrel=7
+pkgrel=8
 pkgdesc="A fast, secure and complete PDF viewer"
 arch=('x86_64')
 url="https://www.foxitsoftware.com/products/pdf-reader/"
 license=('custom:EULA')
-depends=('libsecret' 'qt5-webkit')
+depends=('libsecret')
 makedepends=('p7zip')
 source=("http://cdn09.foxitsoftware.com/pub/foxit/reader/desktop/linux/2.x/${pkgver%.*.*}/en_us/FoxitReader${pkgver}_Server_x64_enu_Setup.run.tar.gz"
         "https://www.foxitsoftware.com/products/pdf-reader/eula.html"
