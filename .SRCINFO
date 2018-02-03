@@ -1,0 +1,29 @@
+pkgbase = talend-open-studio-esb
+	pkgdesc = Talend Open Studio for ESB 7.0.1 x86_64
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://einjel-frontend.herokuapp.com
+	arch = x86_64
+	license = GPL
+	depends = unzip
+	depends = jdk8-openjdk
+	depends = jre8-openjdk
+	depends = jre8-openjdk-headless
+	optdepends = jdk7-openjdk
+	optdepends = jre7-openjdk
+	optdepends = jre7-openjdk-headless
+	provides = talend
+	conflicts = talend
+	options = !libtool
+	options = !emptydirs
+	source = https://sourceforge.net/projects/talendesb/files/Talend%20Open%20Studio%20for%20ESB/7.0.1M1/TOS_ESB-20171115_1047-V7.0.1M1.zip/download
+	source = talend.desktop
+	source = talend.png
+	source = talend
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d8a58f5a2c9431c1f0edc36d5fa2a93f42593b063548cc539227c895694737aa
+	sha256sums = SKIP
+
+pkgname = talend-open-studio-esb
+
