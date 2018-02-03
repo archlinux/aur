@@ -1,19 +1,27 @@
 pkgbase = python-slackclient
-	pkgdesc = Python Slack client for the Web and RTM API
+	pkgdesc = Python Slack API clients for Web API and RTM API
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/slackclient
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-slackclient-1.1.2.tar.gz::https://pypi.python.org/packages/08/6e/c84dcf7c18c0a79c17a3dec971bcfa746ea1e23d4f41ba1de7eead203266/slackclient-1.1.2.tar.gz
+	sha256sums = 2e5840eba5af71487803b4eb8427ba19e1347fae6ed25cff53e0a6ea6c6832f5
+
+pkgname = python-slackclient
 	depends = python
 	depends = python-websocket-client
 	depends = python-requests
 	depends = python-six
-	options = !emptydirs
-	source = https://pypi.python.org/packages/08/6e/c84dcf7c18c0a79c17a3dec971bcfa746ea1e23d4f41ba1de7eead203266/slackclient-1.1.2.tar.gz
-	sha256sums = 2e5840eba5af71487803b4eb8427ba19e1347fae6ed25cff53e0a6ea6c6832f5
 
-pkgname = python-slackclient
+pkgname = python2-slackclient
+	depends = python2
+	depends = python2-websocket-client
+	depends = python2-requests
+	depends = python2-six
 
