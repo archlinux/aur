@@ -9,7 +9,7 @@ pkgname='qemu-minimal'
 #pkgdesc="A generic and open source machine emulator and virtualizer"
 pkgdesc="A generic and open source machine emulator and virtualizer. This is a stripped-down version of the official package and requires only the bare essentials for running on a headless server."
 pkgver=2.11.0
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -23,11 +23,11 @@ depends=(pixman "${_minimaldeps[@]}")
 makedepends=(python2)
 conflicts=('qemu' 'qemu-headless')
 provides=('qemu' 'qemu-headless')
-source=("$url/download/${pkgname:0:-8}-${pkgver}.tar.bz2"{,.sig}
+source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig}
         qemu-ga.service
         65-kvm.rules
         allow_elf64.patch)
-sha256sums=('c4f034c7665a84a1c3be72c8da37f3c31ec063475699df062ab646d8b2e17fcb'
+sha256sums=('c9d34a79024eae080ce3853aa9afe503824520eefb440190383003081ce7f437'
             'SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
