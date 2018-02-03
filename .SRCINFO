@@ -1,14 +1,14 @@
 pkgbase = python-asif
 	pkgdesc = A Python 3.5, asyncio- and decorator-based IRC framework
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/minus7/asif
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/asif/asif-0.2.1.tar.gz
-	sha256sums = ce611356802567852dda6323979b678f3fc5568216b997fedc769544f0897ec7
+	source = https://files.pythonhosted.org/packages/source/a/asif/asif-0.2.2.tar.gz
+	sha256sums = db4eb4cfd45176483631172338e239c65cd60f617bf83189714cb85ff6e716e1
 
 pkgname = python-asif
 
