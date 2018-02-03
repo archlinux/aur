@@ -1,55 +1,49 @@
-# Maintainer: Sean Haugh <seanphaugh@gmail.com>
+# Maintainer: Alad Wenter <alad@mailbox.org>
+# Contributor: Sean Haugh <seanphaugh@gmail.com>
 # Contributor: Chris Salzberg <chris@dejimata.com>
 _pkgname=neomutt
 pkgname=neomutt-git
 pkgver=20171215.r144.gb7da81ad
-pkgrel=1
-pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
+pkgrel=2
+pkgdesc='A version of mutt with added features - development branch'
 url='http://www.neomutt.org/'
 license=('GPL')
 source=('git+https://github.com/neomutt/neomutt.git#branch=master')
 sha256sums=('SKIP')
 arch=('i686' 'x86_64')
-depends=('notmuch-runtime' 'lua' 'python')
-optdepends=('urlview: for url menu')
-makedepends=('git' 'gnupg' 'libxslt')
+depends=('notmuch-runtime' 'lua')
+optdepends=('python: keybase.py')
+makedepends=('git' 'gnupg' 'libxslt' 'docbook-xsl' 'lynx')
 conflicts=('neomutt')
 provides=('neomutt')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  # Get the version number.
-  git describe --long --tags | sed 's/^neomutt-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/^neomutt-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+    cd "$_pkgname"
 
-  # Configure the build.
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --enable-debug \
-    --enable-pgp \
-    --enable-gpgme \
-    --enable-notmuch \
-    --enable-lua \
-    --with-gss=/usr \
-    --with-ssl=/usr \
-    --with-sasl=/usr \
-    --with-idn=/usr \
-    --with-gdbm=/usr
-
-  # Build it!
-  make
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --libexecdir=/usr/lib \
+        --gpgme \
+        --enable-lua \
+        --notmuch \
+        --gss \
+        --ssl \
+        --sasl \
+        --with-ui=ncurses \
+        --with-idn=/usr \
+        --gdbm
+    make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-
-  # Install the program.
-  make DESTDIR="${pkgdir}" install
+    cd "$_pkgname"
+    make DESTDIR="$pkgdir" install
 }
-# vim: ft=sh ts=2 sw=2 et
+
+# vim: ft=sh ts=4 sw=4 et
