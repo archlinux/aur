@@ -9,14 +9,14 @@ pkgbase = nestopia
 	makedepends = mesa
 	makedepends = xdg-utils
 	makedepends = cmake
+	makedepends = git
 	depends = sdl2
-	depends = alsa-lib
 	depends = gtk3
 	depends = glu
 	depends = libarchive
 	depends = libao
-	source = nestopia-1.48.tar.gz::https://github.com/rdanbrook/nestopia/tarball/1.48
-	sha256sums = ee14b9476748669ac1af73116beb2a6e3dd6b41c0b1d2f7149fb8716bb02d749
+	source = git+https://github.com/rdanbrook/nestopia.git#tag=1.48
+	sha256sums = SKIP
 
 pkgname = nestopia
 
