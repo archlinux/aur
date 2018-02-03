@@ -8,7 +8,7 @@ pkgname=inox-edgy
 pk=enox
 name=chromium
 pkgver=66.0.3338.0
-pkgrel=3
+pkgrel=5
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
 arch=('i686' 'x86_64')
@@ -165,7 +165,7 @@ sha256sums=('829b33412e00ef0a06ca2bd9198b7e0594fe0bb2664974b5b5c27accc97a1a92'
             '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
-            '05a20da5aa00af019d885d5df21081d41d7860359b8234dc1530ab88c2756d62'
+            '69ea6c777c4096797fb05da7a8de4502fd69f04574f3caf2715068db0cfbcbf6'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
             '3bada398110162424b4ef39a531efe627924a87666042dff6716a53e830a578d'
