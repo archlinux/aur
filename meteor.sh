@@ -2,7 +2,7 @@
 
 if [ ! -d "$HOME/.meteor" ]; then
   install -d "$HOME/.meteor"
-  cp -R /usr/share/meteor/* "$HOME/.meteor/"
+  cp -r /usr/share/meteor/* "$HOME/.meteor/"
 fi
 
-$HOME/.meteor/meteor "$@"
+"$HOME/.meteor/meteor" "$@"
