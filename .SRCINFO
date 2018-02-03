@@ -1,12 +1,11 @@
 pkgbase = picpuz
 	pkgdesc = 'jigsaw puzzle' program.
 	pkgver = 2.8
-	pkgrel = 1
-	url = http://www.kornelix.com/picpuz/
+	pkgrel = 2
+	url = http://www.kornelix.net/picpuz/picpuz.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = pkgconfig
 	depends = gtk3
 	source = http://www.kornelix.net/downloads/tarballs/picpuz-2.8.tar.gz
 	md5sums = 6ae07ffc875fb2b6e53b492e7da6cdb4
