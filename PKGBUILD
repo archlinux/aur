@@ -4,7 +4,7 @@
 _name=pynzb
 pkgname=python2-$_name
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A unified API for parsing NZB files"
 arch=('any')
 url="http://pypi.python.org/pypi/pynzb/"
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('python2' 'expat')
 makedepends=('python2-distribute')
 conflicts=('pynzb')
-optdepends=('python-lxml: Use lxml instead of expat')
+optdepends=('python2-lxml: Use lxml instead of expat')
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz)
 md5sums=('63c74a36348ac28aa99732dcb8be8c59')
 
