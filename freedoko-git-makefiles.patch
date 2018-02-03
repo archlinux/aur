@@ -105,9 +105,9 @@ diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefi
  endif
  
 diff -ru --no-dereference -x .git FreeDoko-orig/src/Makefile FreeDoko/src/Makefile
---- FreeDoko-orig/src/Makefile	2018-01-09 11:35:43.068467026 +0100
-+++ FreeDoko/src/Makefile	2018-01-09 11:36:31.247364688 +0100
-@@ -282,7 +282,6 @@
+--- FreeDoko-orig/src/Makefile	2018-02-03 13:08:27.308068751 +0100
++++ FreeDoko/src/Makefile	2018-02-03 13:17:38.273976791 +0100
+@@ -264,7 +264,6 @@
  		-DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' \
  		-DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
  	  $(PROGRAM)
