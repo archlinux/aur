@@ -2,13 +2,13 @@
 
 pkgname=musikcube
 pkgver=0.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based cross-platform music player, audio engine, metadata indexer, and server"
 arch=('x86_64')
 url="https://github.com/clangen/$pkgname"
 license=('BSD')
 conflicts=("$pkgname-git")
-depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'boost' 'pulseaudio' 'libpulse' 'alsa-lib' 'curl')
+depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'boost' 'pulseaudio' 'libpulse' 'libev' 'alsa-lib' 'curl')
 makedepends=('cmake')
 source=(https://github.com/clangen/musikcube/archive/$pkgver.tar.gz
         LICENSE.txt)
