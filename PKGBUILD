@@ -16,7 +16,7 @@ pkgname=vmware-workstation11
 pkgver=11.1.4
 _buildver=3848939
 _pkgver=${pkgver}_${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -117,7 +117,7 @@ sha256sums=(
   'd1aae68a0864d4483039302931b8a571b2c660706d1c7a7572bd9d6fdc099c37'
   '7523a9ddd5f6dd00202a8928610a41d135a04497c64ddd2b88fbb155d7a37543'
 )
-options=(!strip staticlibs emptydirs)
+options=(!strip emptydirs)
 
 
 _isoimages=(freebsd linux netware solaris windows winPre2k)
@@ -413,7 +413,7 @@ package() {
     patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"
   done
 
-  rm -r "$pkgdir/usr/lib/vmware/modules/source"
+  rm -r "$pkgdir/usr/lib/vmware/modules"/{binary,source}
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware for macOS guest support"
