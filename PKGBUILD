@@ -1,8 +1,8 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet
-pkgver=11.0.2
-pkgrel=2
+pkgver=11.0.3
+pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
 url="https://ddnet.tw"
@@ -15,7 +15,7 @@ provides=('teeworlds-ddnet')
 conflicts=('teeworlds-ddnet')
 replaces=('teeworlds-ddnet')
 source=("https://ddnet.tw/downloads/DDNet-$pkgver.tar.xz")
-sha256sums=('f5d8842dd18563f437534fd53315cb00812fe0d40ea70ae5225f503c6f618987')
+sha256sums=('ff2593771e4023919c42ace9c44c8db2bb26890cb5fa60b5592f10e8d63d56cc')
 
 prepare() {
     [ -d build ] && rm -rf build
