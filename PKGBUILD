@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: aimileus < me at aimileus dot nl >
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Tiago Pierezan Camargo <tcamargo@gmail.com>
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
@@ -11,17 +12,18 @@ url='http://0ldsk00l.ca/nestopia/'
 license=('GPL')
 arch=('x86_64')
 depends=('sdl2' 'alsa-lib' 'gtk3' 'glu' 'libarchive' 'libao')
-makedepends=('unzip' 'mesa' 'xdg-utils' 'cmake')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rdanbrook/nestopia/tarball/$pkgver")
-sha256sums=('ee14b9476748669ac1af73116beb2a6e3dd6b41c0b1d2f7149fb8716bb02d749')
+makedepends=('unzip' 'mesa' 'xdg-utils' 'cmake' 'git')
+source=("git+https://github.com/rdanbrook/nestopia.git#tag=$pkgver")
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir"/rdanbrook-nestopia-*
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  cd "$pkgname"
+  autoreconf -vif
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir"/rdanbrook-nestopia-*
+  cd "$pkgname"
   make install DESTDIR="$pkgdir"
 }
