@@ -1,15 +1,21 @@
 pkgbase = python-termstyle
 	pkgdesc = Console colouring for Python
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/termstyle
-	arch = x86_64
+	arch = any
 	license = BSD
+	makedepends = python
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python2
+	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.python.org/packages/65/53/4dfdfe12b499f375cc78caca9cf146c01e752bab7713de4510d35e3da306/termstyle-0.1.11.tar.gz
-	md5sums = b6ec81a1c7ebe06f139ce3c294bd3ff8
+	source = python-termstyle-0.1.11.tar.gz::https://pypi.python.org/packages/65/53/4dfdfe12b499f375cc78caca9cf146c01e752bab7713de4510d35e3da306/termstyle-0.1.11.tar.gz
+	sha256sums = ef74b83698ea014112040cf32b1a093c1ab3d91c4dd18ecc03ec178fd99c9f9f
 
 pkgname = python-termstyle
+	depends = python
+
+pkgname = python2-termstyle
+	depends = python2
 
