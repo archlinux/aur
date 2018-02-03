@@ -2,14 +2,14 @@
 
 pkgname='homegear-nodes-core'
 pkgdesc='Homegear core nodes for Node-BLUE'
-pkgver=0.7.12
+pkgver=0.7.15
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 url="https://homegear.eu"
 depends=('libhomegear-base' 'libhomegear-node' 'libmodbus')
 source=("https://github.com/Homegear/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('317423a2f024027091e448cfa44924696c7bdb62059543d797eed919095e6affc8ba7a1157ccb301eec9bfc286f37c832d8c24489e62f25ec325abb8566b557a')
+sha512sums=('e468362ecac27f12e931b84e26f4db8ab57ef4293b0660ba6e3e39504d96ae192a18d97487e4e3a7ed8ed58a622472d1c928fbadaab270659e75d59ddd47d42b')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
