@@ -1,15 +1,15 @@
 pkgbase = mopidy-git
 	pkgdesc = An extensible music server written in Python
-	pkgver = 2.1.0.r38.g33856830
+	pkgver = 2.1.0.r55.g9e31e76a
 	pkgrel = 1
-	url = http://www.mopidy.com
+	url = https://github.com/mopidy/mopidy
 	arch = any
 	license = APACHE
 	makedepends = git
+	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-pykka
 	depends = python2-requests
-	depends = python2-setuptools
 	depends = python2-tornado
 	depends = gst-python2
 	depends = gst-plugins-base
@@ -19,9 +19,9 @@ pkgbase = mopidy-git
 	optdepends = mopidy-spotify: Spotify backend
 	optdepends = mopidy-scrobbler: Last.FM scrobbler
 	optdepends = mopidy-MPRIS: MPRIS frontend
-	provides = mopidy=2.1.0.r38.g33856830-1
+	provides = mopidy=2.1.0.r55.g9e31e76a-1
 	conflicts = mopidy
-	source = git+https://github.com/mopidy/mopidy.git
+	source = git+https://github.com/mopidy/mopidy
 	source = mopidy@.service
 	source = mopidy-user.service
 	md5sums = SKIP
