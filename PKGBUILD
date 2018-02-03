@@ -2,7 +2,7 @@
 
 pkgname=curecoin-qt-git
 pkgver=r130.17d71dd
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('curecoin-qt')
 conflicts=('curecoin-qt')
 depends=('qt5-base' 'qt5-tools' 'miniupnpc' 'boost-libs' 'openssl-1.0')
-makedepends=('db')
+makedepends=('boost' 'db')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git#branch=master"
         "0001-miniupnpc.patch"
         "0002-boost166.patch"
