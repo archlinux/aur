@@ -1,7 +1,7 @@
 pkgbase = sndio
 	pkgdesc = Small audio and MIDI framework part of the OpenBSD project
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = http://www.sndio.org/
 	install = sndio.install
@@ -9,7 +9,7 @@ pkgbase = sndio
 	arch = x86_64
 	license = ISC
 	depends = alsa-lib
-	backup = etc/conf.d/sndiod
+	backup = etc/default/sndiod
 	source = http://www.sndio.org/sndio-1.4.0.tar.gz
 	source = sndiod.tmpfiles
 	sha256sums = 68713db624797dbff69c0f4ce1b24054fb0803da340508edbc5e08d6778f9781

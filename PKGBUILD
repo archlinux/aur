@@ -3,7 +3,7 @@
 
 pkgname=sndio
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Small audio and MIDI framework part of the OpenBSD project'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='http://www.sndio.org/'
 license=('ISC')
 depends=('alsa-lib')
 install="$pkgname.install"
-backup=('etc/conf.d/sndiod')
+backup=('etc/default/sndiod')
 source=("http://www.sndio.org/${pkgname}-${pkgver}.tar.gz"
         'sndiod.tmpfiles')
 sha256sums=('68713db624797dbff69c0f4ce1b24054fb0803da340508edbc5e08d6778f9781'
@@ -33,8 +33,8 @@ package() {
     make DESTDIR="$pkgdir" install
     
     # systemd service
-    install -D -m644 contrib/default.sndiod  "${pkgdir}/etc/default/sndiod"
-    install -D -m644 contrib/sndiod.service  "${pkgdir}/usr/lib/systemd/system/sndiod.service"
+    install -D -m644 contrib/default.sndiod "${pkgdir}/etc/default/sndiod"
+    install -D -m644 contrib/sndiod.service "${pkgdir}/usr/lib/systemd/system/sndiod.service"
     
     # create ephemeral dirs via tmpfiles
     install -D -m644 "${srcdir}/sndiod.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/sndiod.conf"
