@@ -1,6 +1,6 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 pkgname=emoj
-pkgver=0.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Find relevant emoji from text on the command-line"
 arch=("any")
@@ -10,7 +10,7 @@ depends=('nodejs' 'xsel')
 makedepends=('npm')
 source=(https://github.com/sindresorhus/$pkgname/archive/v$pkgver.tar.gz)
 noextract=($pkgname-$pkgver.tgz)
-sha1sums=('52f2594b4fdf76a664205ac9bd526be95dccf680')
+sha1sums=('7c2d49f26e3ab744c7c929f8d60a63fa9acf4f54')
 
 package() {
   cd $srcdir
