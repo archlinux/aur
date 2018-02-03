@@ -1,19 +1,19 @@
-# Maintainer: Frank LENORMAND <lenormf@gmail.com>
-
-_gitname=dvtm
+# Maintainer: Sean Haugh <seanphaugh@gmail.com>
+# Contributor: Frank Lenormand <lenormf@gmail.com>
+_pkgname=dvtm
+_owner=martanne
 pkgname=dvtm-git
 pkgver=0.15.37.gb45828d
-pkgver() { ( cd $_gitname && git describe | sed 's/^v//; s/-/./g'; ) }
 pkgrel=2
-pkgdesc='Dynamic virtual terminal manager.'
+pkgdesc='Dynamic virtual terminal manager'
 arch=('i686' 'x86_64')
-url='http://www.brain-dump.org/projects/dvtm/'
+url="https://github.com/$_owner/$_pkgname"
 license=('MIT')
-depends=('sh' 'ncurses')
-makedepends=(git)
-provides=(dvtm)
-conflicts=(dvtm)
-source=('git://github.com/martanne/dvtm.git')
+depends=('sh')
+makedepends=('git')
+provides=("$_pkgname=$pkgver-$pkgrel")
+conflicts=('dvtm')
+source=("git+https://github.com/$_owner/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,24 +22,23 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/${_gitname}"
+	cd "$_pkgname"
 	[[ -e "$srcdir/config.h" ]] && cp "$srcdir/config.h" .
 
 	sed -i"" 's/CFLAGS =/CFLAGS +=/' config.mk
 }
 
 build() {
-	cd "${srcdir}/${_gitname}"
-
-	make clean
+	cd "$_pkgname"
 	make
 }
 
 package() {
-	cd "${srcdir}/${_gitname}"
+	cd "$_pkgname"
+	make PREFIX=/usr DESTDIR="$pkgdir" install
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	make PREFIX=/usr DESTDIR="${pkgdir}" install
-	install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	rm -rf "${pkgdir}/usr/share/terminfo"
+	msg "Removing /usr/share/terminfo for compatibility with ncurses..."
+	rm -rv "$pkgdir/usr/share/terminfo"
 }
+# vim: set ts=2 sw=2 noet:
