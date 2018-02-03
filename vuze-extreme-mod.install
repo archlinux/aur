@@ -15,6 +15,9 @@ yellow="${bold}$(tput setaf 3)"
 post_install() {
     note "The launcher is called: 'vuze-extreme-mod'"
     note "This package installs side-by-side with 'vuze'."
+    note "It is recommended to disable the builtin automatic updater in:
+      Tools > Options > Interface > Start, and
+      Tools > Options > Plugins > Plugin Update"
 }
 
 post_upgrade() {
