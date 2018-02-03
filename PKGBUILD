@@ -18,7 +18,7 @@ prepare() {
   git clone ${__github}
   cd ${_gemname}
   git checkout v0.14.1
-  git submodule update
+  git submodule update --init
 }
 
 build() {
