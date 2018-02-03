@@ -8,6 +8,7 @@ pkgbase = libgnomeui
 	license = LGPL
 	makedepends = intltool
 	makedepends = pkg-config
+	makedepends = python
 	depends = libbonoboui
 	depends = libgnome-keyring
 	depends = libsm
