@@ -5,6 +5,6 @@ includedir=${prefix}/include
 
 Name: OpenVX
 Description: An open, royalty-free standard for cross platform acceleration of computer vision applications
-Version: 1.1
+Version: 1.2
 Libs: -L${libdir} -lopenvx -lvxu
 Cflags: -I${includedir} 

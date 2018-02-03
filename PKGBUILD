@@ -1,28 +1,27 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=openvx
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc='An open, royalty-free standard for cross platform acceleration of computer vision applications'
 arch=('i686' 'x86_64')
 url='https://www.khronos.org/openvx/'
-license=('MIT')
-makedepends=('cmake' 'python2')
+license=('APACHE')
+depends=('gcc-libs')
+makedepends=('cmake' 'python')
 provides=('libopenvx.so' 'libvxu.so')
 source=("https://www.khronos.org/registry/OpenVX/sample/openvx_sample_${pkgver}.tar.bz2"
         "${pkgname}.pc")
 noextract=("openvx_sample_${pkgver}.tar.bz2")
-sha256sums=('cebda8a6a4802d7f56cb618bc12e7cd3333aa1d9a5a3259e7250e24163bb0c01'
-            'e4c665b8ee74f8618ff46ad36e1f515c5ff2fb4d5e610ff43b0b69f1a3338714')
+sha256sums=('8f61203572668f7719bc9f86bc24ca06c51a98531ca7941264bd7cbbaa7b9aaa'
+            '92c695748c9be151c5eca9fc61da742fc391b45a623fb851ac56b80b5ab6cd40')
 
 prepare() {
-    # extract source file to a directory in the format ${pkgname}-${pkgver}
     mkdir -p "${pkgname}-${pkgver}"
     cd "${pkgname}-${pkgver}"
-    tar xf ../"openvx_sample_${pkgver}.tar.bz2" --strip 1
     
-    # fix: CMakeLists uses a non existing directory in the source tree
-    sed -i 's/^add_subdirectory( sample-c++ )/#add_subdirectory( sample-c++ )/' CMakeLists.txt
+    # extract source file to a directory in the format ${pkgname}-${pkgver}
+    tar xf ../"openvx_sample_${pkgver}.tar.bz2" --strip 1
 }
 
 build() {
@@ -31,15 +30,18 @@ build() {
     [ "$CARCH" = 'x86_64' ] && _architecture='64'
     [ "$CARCH" = 'i686'   ] && _architecture='32'
     
-    python2 Build.py \
+    python Build.py \
         --os='Linux' \
         --arch="$_architecture" \
         --conf='Release' \
         --gen='Unix Makefiles' \
         --build='True' \
-        --opencl='False' \
-        --openmp='True' \
-        --package='False'
+        --dump_commands \
+        --ix \
+        --nn \
+        --tiling \
+        --s16 \
+        --openmp
 }
 
 package() {
