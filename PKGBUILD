@@ -2,7 +2,7 @@
 
 basename=thinkpad-wmi
 pkgname=thinkpad_wmi-dkms
-pkgver=20180203.12
+pkgver=r12.aa470c9
 pkgrel=1
 pkgdesc="DKMS controlled modules for ThinkPad's WMI Bios Settings functionality"
 arch=('x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${basename}"
-    echo "$(git log -1 --format="%cd" --date=short | sed 's|-||g').$(git rev-list --count master)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

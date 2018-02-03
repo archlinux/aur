@@ -1,6 +1,6 @@
 pkgbase = thinkpad_wmi-dkms
 	pkgdesc = DKMS controlled modules for ThinkPad's WMI Bios Settings functionality
-	pkgver = 20180203.12
+	pkgver = r12.aa470c9
 	pkgrel = 1
 	url = https://github.com/c0d3z3r0/thinkpad-wmi
 	arch = x86_64
