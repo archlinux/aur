@@ -1,10 +1,11 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+#
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=(lua-zlib lua51-zlib lua52-zlib)
 pkgbase=lua-zlib
 epoch=1
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 url="http://github.com/brimworks/lua-zlib"
 pkgdesc='Simple streaming interface to zlib for Lua.'
@@ -13,7 +14,7 @@ license=('MIT')
 makedepends=('cmake' 'lua' 'lua51' 'lua52' 'zlib' 'git')
 conflicts=('lua-lzlib')
 source=("lua-zlib-$pkgver.tar.gz::https://github.com/brimworks/lua-zlib/archive/v$pkgver.tar.gz")
-sha256sums=('9f0820cc14873248a0c5ae22623cb2fc767fb830e47f6b34b01d71a6e1db2356')
+sha256sums=('26b813ad39c94fc930b168c3418e2e746af3b2e80b92f94f306f6f954cc31e7d')
 
 build() {
   cp -a "$srcdir"/lua-zlib-$pkgver "$srcdir"/lua51-zlib-$pkgver
