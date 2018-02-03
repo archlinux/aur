@@ -1,7 +1,7 @@
 pkgbase = vsmodelcreator-git
 	pkgdesc = Vintage Story Model Creator
 	pkgver = r225.75c385c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anegostudios/vsmodelcreator
 	arch = any
 	license = Apache
