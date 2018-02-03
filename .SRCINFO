@@ -1,4 +1,4 @@
-pkgbase = talend-open-studio-esb
+pkgbase = talend-open-studio-esb-7.0.1
 	pkgdesc = Talend Open Studio for ESB 7.0.1 x86_64
 	pkgver = 7.0.1
 	pkgrel = 1
