@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbluray-git
-pkgver=1.0.1.72.gb5e30fca
+pkgver=1.0.2.7.g6021ff97
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ depends=('libxml2'
          )
 makedepends=('git'
              'apache-ant'
+             'java-environment<=8'
              'libaacs'
              )
 optdepends=('libaacs: Enable AACS decryption'
@@ -46,8 +47,7 @@ build() {
   cd libbluray
   ./configure \
     --prefix=/usr \
-    --disable-static \
-    --enable-udf
+    --disable-static
 
   make
 }
