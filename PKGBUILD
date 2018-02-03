@@ -1,5 +1,5 @@
 pkgname=turtlecoin-git
-pkgver=r110.1913ba5
+pkgver=r109.215ae8b
 pkgrel=1
 pkgdesc="Turtlecoin simplewallet and miner"
 arch=('x86_64')
