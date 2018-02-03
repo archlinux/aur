@@ -19,6 +19,7 @@ sha512sums=('af5c9aa15df526d0068b430e430e9bb24e2b3651eda3e495c3d49cf80d9af3229d1
 prepare() {
   cd ${_gemname}-${pkgver}
   sed 's|git ls-files -z|find -print0|' -i ${_gemname}.gemspec
+  sed 's|~>|>=|g' -i ${_gemname}.gemspec # don't give a fuck about rubys bla bla
 }
 
 build() {
