@@ -1,12 +1,10 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Contributor: dkasak <dkasak AT termina.org.uk>
+# Contributor: jyantis <yantis@yantis.net>
 # Contributor: Sid Karunaratne <sid at karunaratne dot net>
 # Contributor: xF0E
 
-# Note: There is also a git version of this package build called
-# vowpal-wabbit-git that has python 2 support and much more up to date
-
 pkgname=vowpal_wabbit
-pkgver=8.1.1
+pkgver=8.5.0
 pkgrel=1
 pkgdesc="Vowpal Wabbit is a machine learning system which pushes the frontier of ML with techniques such as online, hashing, allreduce, reductions, learning2search, active, and interactive learning. Includes extra utilities."
 arch=(i686 x86_64)
@@ -14,19 +12,19 @@ url='https://github.com/JohnLangford/vowpal_wabbit'
 license=('custom')
 depends=('boost')
 source=("https://github.com/JohnLangford/vowpal_wabbit/archive/${pkgver}.tar.gz")
-sha256sums=("174609bb09eaeac150c08639a82713a2290442a42bc0b23d53943e9a0f22911b")
+sha256sums=('f90167312b0e12e85331e4fdd790268eab508c2a59764ae164bacc7cd6149732')
 provides=('vowpal-wabbit' 'vowpal-wabbit-git')
 conflicts=('vowpal-wabbit' 'vowpal-wabbit-git')
 
 build() {
-  cd vowpal_wabbit-${pkgver}
+  cd vowpal_wabbit-${pkgver} || exit
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd vowpal_wabbit-${pkgver}
+  cd vowpal_wabbit-${pkgver} || exit
 
   # Install Custom License
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
