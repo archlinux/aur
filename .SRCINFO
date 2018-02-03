@@ -1,15 +1,15 @@
 pkgbase = exodus-bundler
 	pkgdesc = Painless relocation of Linux binaries
-	pkgver = 1.1.2
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/Intoli/exodus
 	arch = any
 	license = BSD
 	depends = python
 	depends = python-setuptools
-	provides = exodus-bundler=1.1.2-1
-	source = https://github.com/Intoli/exodus/archive/v1.1.2.tar.gz
-	md5sums = 31e3ad8f9e8e9cbb9e82ea21d532c0fb
+	provides = exodus-bundler=1.1.5-1
+	source = https://github.com/Intoli/exodus/archive/v1.1.5.tar.gz
+	md5sums = fc29f5377753e1ad4abb1a4161c82024
 
 pkgname = exodus-bundler
 
