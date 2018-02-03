@@ -5,7 +5,7 @@
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-gcc
-pkgver=7.2.1+20180116
+pkgver=7.3.0
 _islver=0.18
 pkgrel=1
 pkgdesc="Cross GCC for the MinGW-w64 cross-compiler"
@@ -23,15 +23,17 @@ provides=('mingw-w64-gcc-base')
 replaces=()
 backup=()
 options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
-source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
+#source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
+source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
 	"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2")
-validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9) # bpiotrowski@archlinux.org
-sha256sums=('7757097376a0766bbbeed8c90ee08cab93b33d89f3e72358c8bf984401bf69d9'
+validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # richard.guenther@gmail.com
+sha256sums=('832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
             'SKIP'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b')
 
 prepare() {
-  mv gcc-${pkgver/+/-} gcc
+  ln -s gcc-${pkgver/+/-} gcc
   cd "$srcdir"/gcc
   # link isl for in-tree builds
   ln -sf ../isl-${_islver} isl
