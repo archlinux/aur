@@ -9,6 +9,7 @@ pkgbase = libbonoboui
 	license = LGPL
 	makedepends = intltool
 	makedepends = pkg-config
+	makedepends = python
 	depends = libgnomecanvas
 	depends = libgnome
 	options = !emptydirs
