@@ -3,23 +3,20 @@
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 # Contributor: Dylon Edwards <deltaecho@archlinux.us>
 pkgname=kcm-wacomtablet
-pkgver=3.0.0~beta1
+pkgver=2.9.82
 pkgrel=2
+epoch=1
 pkgdesc="KDE GUI for the Wacom Linux Drivers"
 arch=('i686' 'x86_64')
 url="https://www.linux-apps.com/p/1127862/"
-license=('GPL2')
+license=('GPL')
 depends=('plasma-framework' 'xf86-input-wacom')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdoctools' 'kdelibs4support' 'python')
-# https://quickgit.kde.org/?p=wacomtablet.git
-source=("https://dl.opendesktop.org/api/files/download/id/1466630714/114856-wacomtablet-${pkgver}.tar.xz")
-md5sums=('95d1d29063d6de2ab0881c33e8eacb05')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdoctools')
+source=("wacomtablet-$pkgver::git://anongit.kde.org/wacomtablet.git#tag=v${pkgver}")
+md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/wacomtablet-$pkgver"
-
-  sed -i "s|(MacroOptionalAddSubdirectory)|(ECMOptionalAddSubdirectory)|" CMakeLists.txt
-  sed -i "s|macro_optional_add_subdirectory|ECM_OPTIONAL_ADD_SUBDIRECTORY|" CMakeLists.txt
 }
 
 build() {
@@ -27,8 +24,7 @@ build() {
 
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    -DCMAKE_BUILD_TYPE=Release
   make
 }
 
