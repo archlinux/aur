@@ -5,7 +5,7 @@
 
 _pkgname=beaker
 pkgname=beakerbrowser
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="Beaker is an experimental peer-to-peer Web browser. It adds new APIs for \ building hostless applications, while remaining compatible with the rest of the Web"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("$pkgname"
 	"${pkgname}.desktop")
 
 sha256sums=(
-fbbabfe4fc7188a1e321674e0f5eb0bd5e0a6d37d7537935ea9bb8f22878f9f1
+c81c515820bc7f402732861140905eb1ddf99cc8ac0fc6ea1f0249750ff36a21
 7a0ab6f0bfde635de0dea1a5e57e641de973544ba9a5fb8498c098563ad35783
 2a47f24244ad653dd52728c952c78bc39d343c9c7c697279205eab6711d9e070
 )
