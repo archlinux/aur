@@ -1,6 +1,6 @@
-# Maintainer: drakkan <nicola.murino@gmail.com>
+# Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-glib-networking
-pkgver=2.50.0
+pkgver=2.54.1
 pkgrel=1
 pkgdesc="Network-related GIO modules for glib (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=(mingw-w64-glib2 mingw-w64-gnutls)
 makedepends=(mingw-w64-configure)
 source=("https://download.gnome.org/sources/glib-networking/${pkgver%.*}/glib-networking-${pkgver}.tar.xz")
 options=(!strip !buildflags !libtool staticlibs)
-sha256sums=('3f1a442f3c2a734946983532ce59ed49120319fdb10c938447c373d5e5286bee')
+sha256sums=('eaa787b653015a0de31c928e9a17eb57b4ce23c8cf6f277afaec0d685335012f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
