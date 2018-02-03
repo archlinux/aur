@@ -1,4 +1,4 @@
-# Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) >
+# Maintainer: aimileus <me at aimileus dot nl>
 # Maintainer: Maciej Borzecki <maciek.borzecki@gmail.com>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Zygmunt Krynicki <me at zygoon dot pl>
