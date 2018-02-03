@@ -1,0 +1,18 @@
+pkgbase = ruby-czmq-ffi-gen
+	pkgdesc = low-level Ruby binding for CZMQ
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/paddor/czmq-ffi-gen
+	arch = any
+	license = ISC
+	makedepends = ruby-rdoc
+	depends = czmq
+	depends = ruby
+	depends = ruby-ffi
+	options = !emptydirs
+	source = ruby-czmq-ffi-gen-0.14.1.tar.gz::https://github.com/paddor/czmq-ffi-gen/archive/v0.14.1.tar.gz
+	sha256sums = deed2095fd22e7650fea684617182d8d524c642904edf9f06b28382b437effec
+	sha512sums = 4cce5a874c077fb045158d16658d16092be27fda3cf938f3a699fe85a23105c119d0114beba867baf73069a0472681642f7aff97ac330ef8541d2b548249bf91
+
+pkgname = ruby-czmq-ffi-gen
+
