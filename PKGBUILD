@@ -20,6 +20,7 @@ sha512sums=('681216c6fd913cc87d9d6c4c643917e263fb45b76ce03bc51120f294b4cdd43bb1a
 prepare() {
   cd ${_gemname}-${_gitcommit}
   sed 's|git ls-files|find|' -i ${_gemname}.gemspec
+  sed 's|~>|>=|g' -i ${_gemname}.gemspec # don't give a fuck about rubys bla bla
 }
 
 build() {
