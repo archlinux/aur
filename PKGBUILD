@@ -4,26 +4,29 @@
 
 pkgname='php7-homegear'
 pkgdesc='Patched version of PHP for Homegear'
-pkgver=7.2.0
-_pthreadversion=b3e691f25cd659bcdb504b61e8da235251cb3b5a
+pkgver=7.2.2
+_pthreadversion=64fff4f6aeadbcb5da2713304e00b9135cb296fd
 _pkgbase=php
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('PHP')
 url='http://www.php.net'
 depends=('gmp' 'enchant' 'libedit' 'libmcrypt' 'libzip' 'libxml2' 'openssl')
 source=("http://www.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
-        "https://github.com/krakjoe/pthreads/archive/${_pthreadversion}.tar.gz")
-sha512sums=('828d38727edde0dbc6483add6cdc21d33527b887bffaedad2d7f53e25d58a6f661ac341a23db02741bc37248d161aaffd72026dd8ef85ac851594c127d6c0133'
-            '748894d295d8c5db57261ac0317a43fc49e6365f712be6916d765543341fb622ef37e4ee7113daaafe533c485c127208262c53e52480421385f6c6608449edb5')
+        "https://github.com/krakjoe/pthreads/archive/${_pthreadversion}.tar.gz"
+        'enchant-2.patch')
+sha512sums=('36a3565161fc481307ac3e76c8d2ccc457c265bf510f085be1907835c7da7c747a0876502192d77bd664f94a584a1b149deee2600c650481fbedbf02d72d5fd0'
+            '68d6c6c863a9cebee15eb8480f927b49b5c52fe28c3a30342a81bcda5f009fcc21d3888e73444cc3d1da2877410719180c0668c60c462e7f2bd07670c7b04057'
+            '89993be67988f6db09e1102214a41fdb7223274bc6ca71f1defc5fe9548d832485f7133b8ba82860f04da00c7f655d701c7550460c0172a2a2d31ef3f3f96038')
 options=(!emptydirs)
 
 prepare() {
-	cd "${srcdir}/${_pkgbase}-${pkgver}/ext"
+	cd "${srcdir}/${_pkgbase}-${pkgver}"
+    patch -p1 -i "${srcdir}/enchant-2.patch"
 
-	if [ ! -d "pthreads" ]; then
-		mv "${srcdir}/pthreads-${_pthreadversion}" pthreads
-		sed -i 's/{ZEND_STRL("cli")}/{ZEND_STRL("homegear")}/g' pthreads/php_pthreads.c
+	if [ ! -d "ext/pthreads" ]; then
+		mv "${srcdir}/pthreads-${_pthreadversion}" ext/pthreads
+		sed -i 's/{ZEND_STRL("cli")}/{ZEND_STRL("homegear")}/g' ext/pthreads/php_pthreads.c
 	fi
 }
 
@@ -103,14 +106,14 @@ build() {
 
 
 package() {
-	cd ${srcdir}/${_pkgbase}-${pkgver}
+	cd "${srcdir}/${_pkgbase}-${pkgver}"
 
 	make INSTALL_ROOT="${pkgdir}" install
 
-	mv ${pkgdir}/usr/include/php7-homegear/php/* ${pkgdir}/usr/include/php7-homegear/
-	install -d -m755 ${pkgdir}/usr/lib
-	mv ${pkgdir}/usr/lib/homegear/php/lib/libphp7.a ${pkgdir}/usr/lib/libphp7-homegear.a
+	mv "${pkgdir}/usr/include/php7-homegear/php/"* "${pkgdir}/usr/include/php7-homegear/"
+	install -d -m755 "${pkgdir}/usr/lib"
+	mv "${pkgdir}/usr/lib/homegear/php/lib/libphp7.a" "${pkgdir}/usr/lib/libphp7-homegear.a"
 
-    rm -r ${pkgdir}/usr/lib/homegear
-    rm -r ${pkgdir}/man
+    rm -r "${pkgdir}/usr/lib/homegear"
+    rm -r "${pkgdir}/man"
 }
