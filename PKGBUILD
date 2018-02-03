@@ -1,12 +1,12 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-datasync-legacy
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtDataSync"
 license=('BSD')
-depends=('qt5-base' 'qt5-jsonserializer>=2.1.0' 'qt5-backgroundprocess>=1.5.0' 'qt5-websockets')
+depends=('qt5-base' 'qt5-jsonserializer>=2.1.0' 'qt5-backgroundprocess>=1.5.0' 'qt5-websockets' 'qt5-datasync>=4.0.0')
 makedepends=('qt5-tools' 'git' 'qpm')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
