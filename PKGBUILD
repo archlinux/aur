@@ -2,7 +2,7 @@
 # Contributor: rtfreedman  <rob<d_t>til<d_t>freedman<a@T>g*a*l<d_t>com>
 
 pkgname=exfat-utils-nofuse
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc='Utilities for the exFAT file system without fuse (to prefer exfat kernel module over fuse)'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('exfat-utils')
 conflicts=('fuse-exfat' 'exfat-utils' )
 replaces=('exfat-utils')
 source=(exfat-${pkgver}.tar.gz::https://github.com/relan/exfat/archive/v${pkgver}.tar.gz)
-sha512sums=('f90b1eff5c51ff93377f82f2838d214e0670a4a8c54fb7c0ec8ce743971b35867975568b8886e8fae8e320706419cf4e39d0852e68350c9b999cf0be4c5f88fc')
+sha512sums=('2805d8a59c53db348265943bfd5537aa1dfc87582fb1a3e9cba6ab112b93632be3c0932f72b57c7839d60faf1d455f56fd7d7a7f49e3e9419f4b6715332e939a')
 
 build() {
   cd exfat-${pkgver}
