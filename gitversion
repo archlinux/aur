@@ -1,6 +1,0 @@
-#!/bin/bash
-
-#DIRNAME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-#SHA=`git --git-dir $DIRNAME/.git rev-parse HEAD `
-
-echo '{"SemVer":"1.0.0"}'

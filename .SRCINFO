@@ -1,13 +1,18 @@
 pkgbase = darch-alpha-git
-	pkgdesc = A utility to that uses Docker to build stateless Arch images that can be booted bare-metal.
-	pkgver = 1.0.0.10a50c38ee2064bdc96f101cb6cb02169ecb2bf1
+	pkgdesc = A utility to that uses containerd to build stateless operating system images that can be booted bare-metal.
+	pkgver = 05557ee31a34414087a0e38db389e15118e462b4
 	pkgrel = 1
-	url = https://github.com/pauldotknopf/darch
+	url = https://github.com/godarch/darch
 	arch = x86_64
 	license = MIT
-	makedepends = jq go
-	depends = docker
-	source = darch::git+https://github.com/pauldotknopf/darch.git#branch=develop
+	makedepends = go
+	depends = libseccomp
+	provides = containerd,
+	provides = runc
+	conflicts = containerd,
+	conflicts = runc,
+	conflicts = darch
+	source = git+https://github.com/godarch/darch.git#branch=develop
 	md5sums = SKIP
 
 pkgname = darch-alpha-git
