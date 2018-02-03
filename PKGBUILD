@@ -3,14 +3,14 @@
 pkgname='homegear-insteon'
 _gitname='Homegear-Insteon'
 pkgdesc='Insteon module for Homegear'
-pkgver=0.7.12
+pkgver=0.7.15
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 url="https://homegear.eu"
 depends=('homegear')
 source=("https://github.com/Homegear/${_gitname}/archive/${pkgver}.tar.gz")
-sha512sums=('4bb6669c3a7af2d12ebe88fa074fe8014186b9b16e4105baf88527b2977fcc0fd0b5451c3776bacdef307ccd5c1c457e6a5dd8b7b534490f3be20a331b0418df')
+sha512sums=('99545e5ff5b4d0a824025afb76b4d8e7b26533c1c50e77817e8d5b93f74806bbe6904b4fdeed42ef230f0e551b9f99fa196484c0bbddf6d5be0acc62fb48e0c8')
 install=homegear-insteon.install
 backup=('etc/homegear/families/insteon.conf')
 
