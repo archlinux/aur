@@ -3,14 +3,14 @@
 pkgname='homegear-max'
 _gitname='Homegear-MAX'
 pkgdesc='eQ-3 MAX! module for Homegear'
-pkgver=0.7.12
+pkgver=0.7.15
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 url="https://homegear.eu"
 depends=('homegear')
 source=("https://github.com/Homegear/${_gitname}/archive/${pkgver}.tar.gz")
-sha512sums=('a80d7fa66da921892343465a67e74b70a88665d38f40d7046ff17e24cae9a75b23e0fbe0ed5b2a8169d6eb99b7f8f62579babdfab9502159d17f5a4504a439e5')
+sha512sums=('404ece6a80e2043874408cbdb81dbc6e94120aabfa4b8e85eba9a5cec9bd449168d5cd6c01681ff5c00c29268085cf5d93b6115119e0ef5e9283444956c29e34')
 install=homegear-max.install
 backup=('etc/homegear/families/max.conf')
 
