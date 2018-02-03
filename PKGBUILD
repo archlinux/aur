@@ -5,12 +5,12 @@
 
 pkgname=wxlua
 pkgver=2.8.12.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of bindings to the wxWidgets library for the Lua programming language."
 arch=('i686' 'x86_64')
 url="http://wxlua.sourceforge.net"
 license=('custom:wxWindows')
-depends=('lua' 'desktop-file-utils' 'wxgtk2.8' 'webkitgtk2' )
+depends=('lua52' 'desktop-file-utils' 'wxgtk2.8' 'webkitgtk2' )
 makedepends=('cmake')
 provides=('wxstedit')
 conflicts=('wxstedit')
