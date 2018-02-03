@@ -1,18 +1,28 @@
-# Maintainer: Alex Smith <azphreal19@protonmail.com>
-_name=zgitignore
-pkgname=python-${_name}
-pkgver=0.7
+# Maintainer: Omar Pakker <archlinux@opakker.nl>
+
+pkgname=python-zgitignore
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Check if a file is ignored by a .zgitignore file, compatible with .gitignore syntax"
-arch=('any')
 url="https://github.com/zb3/zgitignore"
-license=('MIT')
-#makedepends=
 depends=('python')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=("SKIP")
+makedepends=('python-setuptools')
+license=('MIT')
+arch=('any')
+source=("https://pypi.python.org/packages/8d/ab/4dbba4077f232ed0651619c96dbda30bedb72066a074c94b24100d0dc579/zgitignore-${pkgver}.tar.gz")
+sha256sums=('d35d009b42831a2010423a0dbf7ffaed11935b455511d42ec009486cee312153')
+
+build() {
+	cd "zgitignore-${pkgver}"
+	python setup.py build
+}
+
+check() {
+	cd "zgitignore-${pkgver}"
+	python setup.py test
+}
 
 package() {
-    cd "${_name}-${pkgver}"
-    python ./setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+	cd "zgitignore-${pkgver}"
+	python setup.py install --root="$pkgdir/" --optimize=1
 }
