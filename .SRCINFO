@@ -1,0 +1,21 @@
+pkgbase = easybuild-framework-git
+	pkgdesc = A software build and installation framework for HPC systems (development)
+	pkgver = 3.5.1.r14.g5774d360d
+	pkgrel = 2
+	url = https://github.com/easybuilders
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-vsc-base
+	depends = env-modules-tcl
+	optdepends = lmod: another module management tool
+	optdepends = fpm: Generate packages of your modules to be installed later
+	optdepends = easybuild-easyconfigs-git: collection of build parameters
+	optdepends = easybuild-easyblocks-git: collection of module recipes
+	source = git+https://github.com/easybuilders/easybuild-framework.git#branch=develop
+	md5sums = SKIP
+
+pkgname = easybuild-framework-git
+
