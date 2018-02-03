@@ -1,7 +1,7 @@
 pkgbase = pymol2
-	pkgdesc = Molecular visualization system on an Open Source foundation with PyQt interface
+	pkgdesc = Molecular visualization system on an Open Source foundation with modern PyQt interface. Includes Python 2 & 3 Bindings.
 	pkgver = 2.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pymol.org/2/
 	arch = x86_64
 	license = Commercial
@@ -10,13 +10,18 @@ pkgbase = pymol2
 	depends = glew
 	depends = glut
 	depends = libgl
-	provides = pymol2
-	conflicts = pymol2
-	noextract = PyMOL-2.0.7_0-Linux-x86_64.tar.bz2
+	depends = libxml2
+	depends = python-numpy
+	depends = python-pmw
+	depends = python-pyqt5
+	conflicts = pymol
 	options = !strip
-	source = https://pymol.org/installers/PyMOL-2.0.7_0-Linux-x86_64.tar.bz2
-	sha1sums = 967495b4810f7bf72f914e0f1a3648a4614f258d
-	sha256sums = c7fb43f512882f250d006d0cb6eda70951d75671c411ca0fd665321820316bd4
+	source = https://anaconda.org/schrodinger/pymol/2.0.7/download/linux-64/pymol-2.0.7-py27_0.tar.bz2
+	source = https://anaconda.org/schrodinger/pymol/2.0.7/download/linux-64/pymol-2.0.7-py36_0.tar.bz2
+	sha1sums = 8f23550513b341fad8a5753aa17facf755414684
+	sha1sums = aefc79f370cb550a6a91c6e2b14378498eb111f5
+	sha256sums = ab828a456a9e82f137b753e5d66ff3510663c24d220fb731b58b0bddf5e819b5
+	sha256sums = 64e7980ed33a13bd4ee1b18455e32d90089e259b0c26662519b0d41b7a4ae753
 
 pkgname = pymol2
 
