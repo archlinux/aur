@@ -12,22 +12,23 @@ license=('ISC')
 depends=('czmq' 'ruby' 'ruby-ffi')
 makedepends=('ruby-rdoc')
 options=('!emptydirs')
-source=(${pkgname}-${pkgver}.tar.gz::${__github}/archive/v${pkgver}.tar.gz)
-sha256sums=('deed2095fd22e7650fea684617182d8d524c642904edf9f06b28382b437effec')
-sha512sums=('4cce5a874c077fb045158d16658d16092be27fda3cf938f3a699fe85a23105c119d0114beba867baf73069a0472681642f7aff97ac330ef8541d2b548249bf91')
 
 prepare() {
-  cd ${_gemname}-${pkgver}
+  # we clone because of submodules
+  git clone ${__github}
+  cd ${_gemname}
+  git checkout v0.14.1
+  git submodule update
 }
 
 build() {
-  cd ${_gemname}-${pkgver}
+  cd ${_gemname}
   gem build ${_gemname}.gemspec
 }
 
 
 package() {
-  cd ${_gemname}-${pkgver}
+  cd ${_gemname}
   local _gemdir="$(gem env gemdir)"
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
   install -Dm 644 README.md CHANGES.md -t "${pkgdir}/usr/share/doc/${pkgname}"
