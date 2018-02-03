@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-astroplan
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A python package to help astronomers plan observations"
 arch=('i686' 'x86_64')
 url="https://astroplan.readthedocs.io/en/latest/"
@@ -9,6 +9,7 @@ license=('BSD')
 depends=('python>=3.5' 'python-numpy' 'python-astropy>=1.3' 'python-pytz')
 makedepends=('cython')
 optdepends=('python-matplotlib: Plotting support'
+            'python-pytest-mpl: Testing the plot function'
             'python-astroquery: Astroquery support')
 source=("https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-${pkgver}.tar.gz"
         'astroplan-ephem.patch')
