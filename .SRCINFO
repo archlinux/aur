@@ -7,7 +7,6 @@ pkgbase = fakeroot-tcp
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	groups = base-devel
 	license = GPL
 	makedepends = po4a
 	depends = glibc
