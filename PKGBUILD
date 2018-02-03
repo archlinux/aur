@@ -3,7 +3,7 @@
 
 pkgname=sndio
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='Small audio and MIDI framework part of the OpenBSD project'
 arch=('i686' 'x86_64')

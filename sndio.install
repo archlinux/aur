@@ -2,6 +2,13 @@ post_install() {
     getent passwd sndiod >/dev/null 2>&1 || useradd -r -G audio -s /sbin/nologin -d /run/sndiod sndiod
 }
 
+post_upgrade() {
+  if (( $(vercmp $2 1:1.4.0-5) < 0 ));
+  then
+    usermod -s /sbin/nologin -d /run/sndiod sndiod
+  fi
+}
+
 post_remove() {
     getent passwd sndiod >/dev/null 2>&1 && userdel sndiod
 }

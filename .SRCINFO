@@ -1,7 +1,7 @@
 pkgbase = sndio
 	pkgdesc = Small audio and MIDI framework part of the OpenBSD project
 	pkgver = 1.4.0
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = http://www.sndio.org/
 	install = sndio.install
