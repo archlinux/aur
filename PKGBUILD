@@ -1,12 +1,12 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=anirem
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool to passivly check for updates on seasons, for proxer.me"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/SeasonProxer"
 license=('BSD')
-depends=('qt5-base' 'qt5-datasync' 'qt5-restclient')
+depends=('qt5-base' 'qt5-datasync-legacy' 'qt5-restclient')
 provides=('seasonproxer')
 conflicts=('seasonproxer')
 source=("https://install.skycoder42.de/pkg/${pkgname}-${pkgver}.tar.xz")

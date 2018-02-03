@@ -1,13 +1,13 @@
 pkgbase = anirem
 	pkgdesc = A tool to passivly check for updates on seasons, for proxer.me
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Skycoder42/SeasonProxer
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = qt5-base
-	depends = qt5-datasync
+	depends = qt5-datasync-legacy
 	depends = qt5-restclient
 	provides = seasonproxer
 	conflicts = seasonproxer
