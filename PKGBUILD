@@ -12,9 +12,6 @@ _use_tentative_patches=
 ### Use patches from https://marc.info/?l=linux-block&m=150797307912556&w=1
 _use_blk_mq_patches=
 
-### Use disable writeback throttling: https://marc.info/?l=linux-block&m=150486424501778&w=2
-_use_lucamiccio_patch=
-
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
@@ -98,7 +95,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_lucjanpath}/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch"
         "${_lucjanpath}/blk-mq-v10/0057-blk-mq-SCSI-implement-get-budget-and-put_budget-for-blk-mq.patch"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
-        "${_lucjanpath}/0300-Disable-writeback-throttling.patch"
         "${_gcc_path}/${_gcc_patch}"
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
          # the main kernel config files
@@ -177,14 +173,6 @@ prepare() {
         msg " $p" 
         patch -Np1 -i "$p"; done
         fi     
-    
-    ### Patch from https://marc.info/?l=linux-block&m=150486424501778&w=2
-        if [ -n "$_use_lucamiccio_patch" ]; then
-        msg "Apply Luca Miccio patch"
-        for p in "${srcdir}"/0300*.patch*; do 
-        msg " $p" 
-        patch -Np1 -i "$p"; done
-        fi
     
     ### Patch source to enable more gcc CPU optimizatons via the make nconfig
         msg "Patching source with gcc patch to enable more cpus types"
@@ -468,7 +456,6 @@ sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b
             '82e624f91c6609bec6ebbc284c8413e638802d3306d6e3826524631fd3a4fdaaed9a85a366e9d3deab2d1b1638f2225a64942e754145ea30da896fc3155574eb'
             '75403516c0e64e13c66602ade9ac12fd553ec811628b4bba79686e183e12a798281566dfdbbe0ba1217ebe8ee1d294a7ca904c36d7b760bcb558ddca0cb7f260'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
-            'a1ccc22354a420467fb912f822585ed4573e68f4694f02ab83d7c8e352da88be495acb3cb4c451c27ca0cf0befe5925b8734d37205bb3dfdaf86d2dedef0798f'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
             '9ba7b130dd4146f5c65e539662fa6779d12de7d3a182184cc8e088c2af002bc1a8357e89e524f7625738f6662c20b1fd51e9ed4b3e0f7e78ccc45ac6abb85fdd'
