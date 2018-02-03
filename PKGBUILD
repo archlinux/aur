@@ -1,6 +1,6 @@
 # Maintainer: Svexican <svexican@gmail.com>
 pkgname=postgrest-bin
-pkgver=0.4.3.0
+pkgver=0.4.4.0
 pkgrel=1
 epoch=
 pkgdesc="REST API for any Postgres database"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/begriffs/postgrest/releases/download/v$pkgver/postgrest-v$pkgver-ubuntu.tar.xz")
 noextract=()
-sha512sums=('c4117a32704479c2c2437ff5460b9efd344223d9fd7b6b38c90831aecd9f5dcdebcadb2235d5aec0c647a2fd549a097e508fc5bd9dbbd3e56ff7a5ef76d41b03')
+sha512sums=('3ab349e35159353e42ce2fda741620c20e4f91f99f039b0a05caa64274de8aacfcb6a4afd0cd0b568a20cc4f6c3ca4c5832600d5da4543a0ee5a187e03b627f6')
 validpgpkeys=()
 
 package() {
