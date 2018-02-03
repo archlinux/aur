@@ -1,9 +1,9 @@
 pkgname=python-clay-player-git
-pkgver=0.r73.cccc975
+pkgver=0.r87.d5be32f
 pkgrel=1
 pkgdesc="Command Line Player for Google Play Music"
 url="https://github.com/and3rson/clay"
-depends=('python' 'python-gmusicapi' 'python-pyaml' 'python-urwid')
+depends=('python' 'python-gmusicapi' 'python-pyaml' 'python-urwid' 'python-codename')
 makedepends=('python-setuptools' 'git')
 license=('GPLv3')
 arch=('any')

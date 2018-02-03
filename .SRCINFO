@@ -1,6 +1,6 @@
 pkgbase = python-clay-player-git
 	pkgdesc = Command Line Player for Google Play Music
-	pkgver = 0.r73.cccc975
+	pkgver = 0.r87.d5be32f
 	pkgrel = 1
 	url = https://github.com/and3rson/clay
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = python-clay-player-git
 	depends = python-gmusicapi
 	depends = python-pyaml
 	depends = python-urwid
+	depends = python-codename
 	source = python-clay-player-git::git+https://github.com/and3rson/clay
 	sha256sums = SKIP
 
