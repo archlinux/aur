@@ -2,7 +2,7 @@
 _pkgname=elastix
 pkgname=${_pkgname}-git
 pkgver=4.304@3344.r945.g522843d9
-pkgrel=2
+pkgrel=3
 pkgdesc='Toolbox for rigid and nonrigid registration of images'
 arch=('x86_64')
 url='http://elastix.isi.uu.nl/'
@@ -34,7 +34,7 @@ prepare() {
 	cd build
 
 	cmake .. \
-		-DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" \
+		-DCMAKE_INSTALL_PREFIX:PATH="/usr" \
 		-DCMAKE_BUILD_TYPE:STRING=Release
 }
 
@@ -46,7 +46,7 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}/build"
 
-	make install
+	make install DESTDIR="${pkgdir}"
 
 	cd ..
 
