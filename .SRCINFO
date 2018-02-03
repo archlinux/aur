@@ -16,6 +16,3 @@ pkgbase = python-termstyle
 pkgname = python-termstyle
 	depends = python
 
-pkgname = python2-termstyle
-	depends = python2
-
