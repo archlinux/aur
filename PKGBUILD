@@ -4,8 +4,8 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=6.6.0
-pkgrel=6
+pkgver=6.7.0
+pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=crashplan-pro.install
 source=(https://download.code42.com/installs/linux/install/CrashPlanSmb/CrashPlanSmb_${pkgver}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('3345e13e06b9f39006376c33c7fc692febab9f83a40384efa756c47a1d30fdff'
+sha256sums=('d8080c72f02ec443ab5fa36cba9af65aeee0d12fcc8bb021d99b4aacba9bfe38'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'fd4c80dbd2ea3dcfc9966832a599f1bb310f705f813474d1900c1867ea55155c')
 
