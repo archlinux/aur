@@ -1,9 +1,10 @@
 pkgbase = easybuild-framework-git
 	pkgdesc = A software build and installation framework for HPC systems (development)
 	pkgver = 3.5.1.r14.g5774d360d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/easybuilders
 	arch = any
+	groups = easybuild-git
 	license = GPL
 	makedepends = git
 	makedepends = python2-setuptools
