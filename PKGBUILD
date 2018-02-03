@@ -1,7 +1,7 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=tirex-git
 pkgver=r222.a0c8d0d
-pkgrel=4
+pkgrel=5
 pkgdesc="Tirex tile queue manager. A drop-in replacement for renderd."
 arch=('i686' 'x86_64')
 url='https://github.com/geofabrik/tirex'
@@ -10,7 +10,7 @@ groups=()
 install='tirex.install'
 depends=(
   # official packages
-  'mapnik' 'perl-json' 'perl-gd' 'perl-libwww'
+  'mapnik' 'perl-json' 'perl-gd' 'perl-libwww' 'mapserver'
   # AUR packages
   'perl-ipc-sharelite'
 )
