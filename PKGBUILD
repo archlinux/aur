@@ -15,10 +15,8 @@ source=("https://github.com/$_owner/$_pkgname/archive/v$pkgver.tar.gz")
 md5sums=('fc29f5377753e1ad4abb1a4161c82024')
 
 package() {
-  cd "$_pkgname-$pkgver"
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
-  install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE.md" \
-                 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
+	cd "$_pkgname-$pkgver"
+	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-# vim:set ts=2 sw=2 et:
+# vim:set ts=2 sw=2 noet:
