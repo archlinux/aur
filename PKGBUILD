@@ -5,7 +5,7 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.14.15
+pkgver=4.14.17
 _srcname=linux-4.14
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
@@ -15,14 +15,14 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=dc615c7e4fc98551f6b2df9d0e97743350ba94bd
+arch_config_trunk=80d6f250c03d7999a35bf421391106875e973a9e
 
 # Arch additional patches
 arch_patches=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0003-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0004-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+  0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+  0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -41,17 +41,17 @@ for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
+            '1e62d56e37bd15daec7c3d20a605624e1e0a21c44856880c6dbe0c9e41cabfa8'
             'SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            '24b8cf6829dafcb2b5c76cffaae6438ad2d432f13d6551fa1c8f25e66b751ed4'
+            'edaf7bebcaf3032e3bf15353e0773e39872c73fc024ca4d23383195a13745b2e'
             '80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794'
-            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
-            '6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8'
-            '1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d'
-            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d')
+            '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
+            '5694022613bb49a77d3dfafdd2e635e9015e0a9069c58a07e99bdc5df6520311'
+            '2f46093fde72eabc0fd25eff5065d780619fc5e7d2143d048877a8220d6291b0'
+            '6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -91,8 +91,8 @@ prepare() {
 
   cp -Tf ../config .config
 
-  # Add CONFIG_RETPOLINE=y
-  echo "CONFIG_RETPOLINE=y" >> .config
+  # Add BPF_JIT_ALWAYS_ON, missing in Arch repos for branch 4.14
+  echo "CONFIG_BPF_JIT_ALWAYS_ON=y" >> .config
 
   ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
