@@ -17,6 +17,7 @@ function setup_sudoers {
 }
 
 function clean_sudoers {
+  ## removes everything between `## aurto rules` & `## /aurto rules` in the sudoers file
   sed -i '/^## aurto rules$/,/^## \/aurto rules$/d' /etc/sudoers
 }
 
@@ -33,19 +34,19 @@ post_install() {
   install -d /var/cache/pacman/aurto -o "$user"
   sudo -u "$user" repo-add /var/cache/pacman/aurto/aurto.db.tar 2>/dev/null
 
-  echo 'aurto: Adding include /etc/pacman.d/aurto to pacman.conf' >&2
+  echo 'aurto: Adding include /etc/pacman.d/aurto >> pacman.conf' >&2
   if ! test -f /etc/pacman.conf.aurto-backup; then
     cp /etc/pacman.conf /etc/pacman.conf.aurto-backup
   fi
   echo -e "# aurto repo\\nInclude = /etc/pacman.d/aurto" >> /etc/pacman.conf
 
-  echo 'aurto: Adding passwordless use of arch-nspawn, mkarchroot, makechrootpkg, aurbuild_chroot' >&2
+  echo 'aurto: Adding passwordless use of arch-nspawn, makechrootpkg, aurbuild_chroot, pacsync aurto' >&2
   if ! test -f /etc/sudoers.aurto-backup; then
     cp /etc/sudoers /etc/sudoers.aurto-backup
   fi
   setup_sudoers
 
-  echo 'aurto: Adding systemd timer update tasks' >&2
+  echo 'aurto: Adding & enabling systemd timer update tasks' >&2
   systemctl enable --now /usr/lib/systemd/system/check-aurto-git-trigger.timer
   systemctl enable --now /usr/lib/systemd/system/update-aurto.timer
 }
