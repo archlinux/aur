@@ -1,0 +1,15 @@
+binary_message() {
+    echo "To prevent problems with software of other coins the binaries for this package are as follows:"
+    echo "  connectivity_tool => TC-connectivity_tool"
+    echo "  miner => TC-miner"
+    echo "  simplewallet => TC-simplewallet"
+    echo "  walletd => TC-walletd"
+    echo
+}
+post_install() {
+    binary_message
+}
+
+post_upgrade() {
+    binary_message
+}
