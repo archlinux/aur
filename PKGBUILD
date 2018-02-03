@@ -7,19 +7,19 @@ pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64')
 url="https://www.biglybt.com/"
 license=('GPL3')
-depends=('desktop-file-utils' 'java-runtime>=8')
-makedepends=('java-runtime=8')
+depends=('desktop-file-utils' 'java-runtime>=9')
+makedepends=('java-runtime>=8')
 options=('!strip')
 install=$pkgname.install
-source=("https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
+source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
 md5sums=('1e059362ac473e4a8c386bb5115bffa4')
 
 prepare() {
   rm -rf $pkgname
 
-  msg2 "Extrcting GitHub_BiglyBT_Installer.sh..."
-  export app_java_home=$(echo /usr/lib/jvm/java-8*/jre)
-  sh GitHub_BiglyBT_Installer.sh -q -dir "$srcdir"/$pkgname
+  msg2 "Extrcting GitHub_BiglyBT_Installer_$pkgver.sh..."
+  export app_java_home=$(ls -d /usr/lib/jvm/java-{8,9,10}-*/jre | sort -V | tail -1)
+  sh GitHub_BiglyBT_Installer_$pkgver.sh -q -dir "$srcdir"/$pkgname
 }
 
 package() {

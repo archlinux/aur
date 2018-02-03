@@ -6,11 +6,11 @@ pkgbase = biglybt
 	install = biglybt.install
 	arch = x86_64
 	license = GPL3
-	makedepends = java-runtime=8
+	makedepends = java-runtime>=8
 	depends = desktop-file-utils
-	depends = java-runtime>=8
+	depends = java-runtime>=9
 	options = !strip
-	source = https://github.com/BiglySoftware/BiglyBT/releases/download/v1.4.0.0/GitHub_BiglyBT_Installer.sh
+	source = GitHub_BiglyBT_Installer_1.4.0.0.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v1.4.0.0/GitHub_BiglyBT_Installer.sh
 	md5sums = 1e059362ac473e4a8c386bb5115bffa4
 
 pkgname = biglybt
