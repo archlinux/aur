@@ -23,7 +23,7 @@ makedepends=('git'
 optdepends=('gst-libav: AAC+ and WMA support'
 	'mopidy-spotify: Spotify backend'
 	'mopidy-scrobbler: Last.FM scrobbler'
-	'mopidy-MPRIS: MPRIS frontend')
+	'mopidy-mpris: MPRIS frontend')
 provides=("$_pkgname=$pkgver-$pkgrel")
 conflicts=('mopidy')
 source=("git+https://github.com/$_owner/$_pkgname"

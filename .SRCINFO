@@ -18,7 +18,7 @@ pkgbase = mopidy-git
 	optdepends = gst-libav: AAC+ and WMA support
 	optdepends = mopidy-spotify: Spotify backend
 	optdepends = mopidy-scrobbler: Last.FM scrobbler
-	optdepends = mopidy-MPRIS: MPRIS frontend
+	optdepends = mopidy-mpris: MPRIS frontend
 	provides = mopidy=2.1.0.r55.g9e31e76a-1
 	conflicts = mopidy
 	source = git+https://github.com/mopidy/mopidy
