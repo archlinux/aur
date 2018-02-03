@@ -1,10 +1,11 @@
 pkgbase = lmms-beta-bin
 	pkgdesc = Beta version of the Linux MultiMedia Studio.
 	pkgver = 1.2.0_rc5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lmms.io/
 	arch = x86_64
 	license = GPL
+	depends = fuse2
 	depends = sdl
 	depends = glib2
 	depends = fluidsynth
