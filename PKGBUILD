@@ -3,7 +3,7 @@
 
 pkgname=sndio
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Small audio and MIDI framework part of the OpenBSD project'
 arch=('i686' 'x86_64')
@@ -34,12 +34,12 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m644 "$srcdir/sndiod.conf"    "$pkgdir/etc/conf.d/sndiod"
-    install -D -m644 "$srcdir/sndiod.service" "$pkgdir/usr/lib/systemd/system/sndiod.service"
+    install -D -m644 "${srcdir}/sndiod.conf"    "${pkgdir}/etc/conf.d/sndiod"
+    install -D -m644 "${srcdir}/sndiod.service" "${pkgdir}/usr/lib/systemd/system/sndiod.service"
     
     # create a LICENSE file
     sed -n '3,15p' libsndio/sndio.h > LICENSE  # create file
     sed -i '1,13s/^.\{,3\}//'         LICENSE  # erase C comments
     
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
