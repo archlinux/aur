@@ -1,9 +1,10 @@
 [Unit]
 Description=DNSCrypt client proxy
-Documentation=https://github.com/jedisct1/dnscrypt-proxy
+Documentation=https://github.com/jedisct1/dnscrypt-proxy/wiki
 Requires=dnscrypt-proxy.socket
 After=network.target
 Before=nss-lookup.target
+Wants=nss-lookup.target
 
 [Service]
 Type=simple
