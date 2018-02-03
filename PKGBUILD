@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=extempore-git
-pkgver=0.7.0.r360.g624309ff
+pkgver=0.7.0.r388.g951540a0
 pkgrel=1
 pkgdesc="A cyber-physical programming environment for live coding"
 arch=('i686' 'x86_64')
@@ -38,6 +38,7 @@ build() {
         ../extempore
 
   make
+  make assets
 }
 
 package() {
