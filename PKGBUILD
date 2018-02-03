@@ -6,15 +6,15 @@
 # Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
 pkgname=git-crypt-git
-pkgver=0.5.0_4_g788a6a9
-pkgrel=2
+pkgver=0.6.0_0_g546664f
+pkgrel=1
 _branch=master
 pkgdesc="Transparent file encryption in Git"
 arch=('i686' 'x86_64')
 url="http://www.agwa.name/projects/${pkgname%-git}/"
 license=('GPL3')
 makedepends=('git')
-depends=('git' 'openssl-1.0')
+depends=('git' 'openssl')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git://github.com/AGWA/${pkgname%-git}.git#branch=$_branch")
@@ -27,22 +27,10 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-
-  # https://github.com/AGWA/git-crypt/issues/111
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-  export CXXFLAGS+=" -I/usr/include/openssl-1.0"
-  export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
-
   make PREFIX=/usr
 }
 
 package() {
   cd "${pkgname%-git}"
-
-  # https://github.com/AGWA/git-crypt/issues/111
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-  export CXXFLAGS+=" -I/usr/include/openssl-1.0"
-  export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
-
   make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
