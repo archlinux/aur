@@ -6,15 +6,15 @@ pkgbase = biglybt-extreme-mod
 	install = biglybt-extreme-mod.install
 	arch = x86_64
 	license = GPL3
-	makedepends = java-runtime=8
+	makedepends = java-runtime>=8
 	depends = desktop-file-utils
 	depends = java-runtime>=9
 	noextract = 18562d1516610368-biglybt-extreme-mod-sb-innovation-1-4-0-0-beta-rev1-biglybt_1.4.0.0_20180122.zip
 	options = !strip
-	source = https://github.com/BiglySoftware/BiglyBT/releases/download/v1.4.0.0/GitHub_BiglyBT_Installer.sh
+	source = GitHub_BiglyBT_Installer_1.4.0.0b1.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v1.4.0.0/GitHub_BiglyBT_Installer.sh
 	source = http://www.sb-innovation.de/attachments/f41/18562d1516610368-biglybt-extreme-mod-sb-innovation-1-4-0-0-beta-rev1-biglybt_1.4.0.0_20180122.zip
+	md5sums = 1e059362ac473e4a8c386bb5115bffa4
 	md5sums = de9fa89bafd150041855857243b3cbde
-	md5sums = 6f65f35a8eb15890e08f53085645fb8d
 
 pkgname = biglybt-extreme-mod
 

@@ -9,21 +9,21 @@ arch=('x86_64')
 url="http://www.sb-innovation.de/f41/"
 license=('GPL3')
 depends=('desktop-file-utils' 'java-runtime>=9')
-makedepends=('java-runtime=8')
+makedepends=('java-runtime>=8')
 options=('!strip')
 install=$pkgname.install
-source=("https://github.com/BiglySoftware/BiglyBT/releases/download/v$_ver/GitHub_BiglyBT_Installer.sh"
+source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$_ver/GitHub_BiglyBT_Installer.sh"
         'http://www.sb-innovation.de/attachments/f41/18562d1516610368-biglybt-extreme-mod-sb-innovation-1-4-0-0-beta-rev1-biglybt_1.4.0.0_20180122.zip')
 noextract=($(basename ${source[1]}))
-md5sums=('de9fa89bafd150041855857243b3cbde'
-         '6f65f35a8eb15890e08f53085645fb8d')
+md5sums=('1e059362ac473e4a8c386bb5115bffa4'
+         'de9fa89bafd150041855857243b3cbde')
 
 prepare() {
   rm -rf $pkgname
 
-  msg2 "Extrcting GitHub_BiglyBT_Installer.sh..."
-  export app_java_home=$(echo /usr/lib/jvm/java-8*/jre)
-  sh GitHub_BiglyBT_Installer.sh -q -dir "$srcdir"/$pkgname
+  msg2 "Extrcting GitHub_BiglyBT_Installer_$pkgver.sh..."
+  export app_java_home=$(ls -d /usr/lib/jvm/java-{8,9,10}-*/jre | sort -V | tail -1)
+  sh GitHub_BiglyBT_Installer_$pkgver.sh -q -dir "$srcdir"/$pkgname
 }
 
 package() {
