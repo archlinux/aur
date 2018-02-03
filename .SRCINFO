@@ -1,8 +1,8 @@
 pkgbase = pdfmixtool
 	pkgdesc = An application to split, merge, rotate and mix PDF files
 	pkgver = 0.2.1
-	pkgrel = 1
-	url = http://www.scarpetta.eu/page/pdf-mix-tool
+	pkgrel = 2
+	url = http://www.scarpetta.eu/pdfmixtool
 	arch = i686
 	arch = x86_64
 	license = GPL
