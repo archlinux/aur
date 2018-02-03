@@ -19,6 +19,7 @@ prepare() {
   cd ${_gemname}
   git checkout v0.14.1
   git submodule update --init
+  sed 's|~>|>=|g' -i ${_gemname}.gemspec # don't give a fuck about rubys bla bla
 }
 
 build() {
