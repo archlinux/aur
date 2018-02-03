@@ -3,7 +3,7 @@
 
 pkgname=sndio
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Small audio and MIDI framework part of the OpenBSD project'
 arch=('i686' 'x86_64')
@@ -13,11 +13,9 @@ depends=('alsa-lib')
 install="$pkgname.install"
 backup=('etc/conf.d/sndiod')
 source=("http://www.sndio.org/${pkgname}-${pkgver}.tar.gz"
-        'sndiod.conf'
-        'sndiod.service')
+        'sndiod.tmpfiles')
 sha256sums=('68713db624797dbff69c0f4ce1b24054fb0803da340508edbc5e08d6778f9781'
-            '231404ff10698c168bed189d09dc6b6642c0ea624175ca8a441162a4b5abc1fb'
-            '1e21e02c833b3f30c3f7965b1affa768dc8bb09b459a6aadf43a566269928ee4')
+            'c28700653292cee52feb0e5c3e15866902cb965f752056b8b6b10cdf7eecbc29')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -34,8 +32,12 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m644 "${srcdir}/sndiod.conf"    "${pkgdir}/etc/conf.d/sndiod"
-    install -D -m644 "${srcdir}/sndiod.service" "${pkgdir}/usr/lib/systemd/system/sndiod.service"
+    # systemd service
+    install -D -m644 contrib/default.sndiod  "${pkgdir}/etc/default/sndiod"
+    install -D -m644 contrib/sndiod.service  "${pkgdir}/usr/lib/systemd/system/sndiod.service"
+    
+    # create ephemeral dirs via tmpfiles
+    install -D -m644 "${srcdir}/sndiod.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/sndiod.conf"
     
     # create a LICENSE file
     sed -n '3,15p' libsndio/sndio.h > LICENSE  # create file
