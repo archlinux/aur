@@ -7,7 +7,7 @@
 
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
-pkgver=5.4.1
+pkgver=5.4.6
 pkgrel=1
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')

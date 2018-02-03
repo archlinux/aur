@@ -1,6 +1,6 @@
 pkgbase = opennebula
 	pkgdesc = Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)
-	pkgver = 5.4.1
+	pkgver = 5.4.6
 	pkgrel = 1
 	url = http://docs.opennebula.org/stable
 	install = opennebula.install
@@ -80,7 +80,7 @@ pkgbase = opennebula
 	backup = etc/one/sunstone-views/user.yaml
 	backup = etc/one/sched.conf
 	backup = etc/one/ec2_driver.default
-	source = http://downloads.opennebula.org/packages/opennebula-5.4.1/opennebula-5.4.1.tar.gz
+	source = http://downloads.opennebula.org/packages/opennebula-5.4.6/opennebula-5.4.6.tar.gz
 	source = opennebula.service
 	source = opennebula-scheduler.service
 	source = opennebula-sunstone.service
