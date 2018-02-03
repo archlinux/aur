@@ -4,7 +4,7 @@
 
 pkgname=quake2
 pkgver=r0.16.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Quake 2 engine. You need the retail .pak files to play."
 url="http://www.icculus.org/quake2/"
 arch=('i686' 'x86_64')
@@ -12,9 +12,9 @@ license=('GPL')
 depends=('bash' 'libjpeg' 'sdl' 'libxxf86vm' 'libxxf86dga')
 install="quake2.install"
 source=("http://www.icculus.org/quake2/files/quake2-${pkgver}.tar.gz"
-    'ftp://ftp.idsoftware.com/idstuff/quake2/source/xatrixsrc320.shar.Z'
-    'ftp://ftp.idsoftware.com/idstuff/quake2/source/roguesrc320.shar.Z'
-    'ftp://ftp.idsoftware.com/idstuff/quake2/q2-3.20-x86-full-ctf.exe'
+    'http://www.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z'
+    'http://www.gamers.org/pub/idgames/idstuff/quake2/source/roguesrc320.shar.Z'
+    'http://www.gamers.org/pub/idgames/idstuff/quake2/q2-3.20-x86-full-ctf.exe'
     'http://www.icculus.org/quake2/files/maxpak.pak'
     'http://www.icculus.org/quake2/files/pak10.pak'
     'http://www.icculus.org/quake2/files/pak11.pak'
@@ -25,7 +25,7 @@ source=("http://www.icculus.org/quake2/files/quake2-${pkgver}.tar.gz"
     'http://www.icculus.org/quake2/files/pak17.pak'
     'http://www.icculus.org/quake2/files/pak19.pak'
     'quake2.sh' 'q2ded.sh' 'xatrix.sh' 'rogue.sh' 'ctf.sh' 'snd_alsa.c'
-    'gnusource.patch')
+    'gnusource.patch' 'map_command_fix.patch')
 sha256sums=('98cea3cbd70bd1f195e5190d0ae047c636e00e21dbc6cc5bdee4acd52876d3e9'
             '94bf596cd85d38ea294b99ccb0ebb5e4b9776cca335001b3803e2d8407395589'
             'ceefb2fd748961cb0bc3244220f3eb09d8f7b8ca2eb32cdf9b284727a2fdc919'
@@ -45,7 +45,8 @@ sha256sums=('98cea3cbd70bd1f195e5190d0ae047c636e00e21dbc6cc5bdee4acd52876d3e9'
             '8655b4216ea95d2408dcc28de53e53df587aa6959a95c62cc6d7f3eb63492202'
             'ea50ae5cca9d633fe2ad30c59beb2ad350130bdd2a78f773639794f2c12d1ed1'
             'fd434189a6242ad288e5827c8285e0dca3f26fe447be50204d4b6817cb1ae624'
-            '9ac34f2bebbb6d4a19c590e00db8e5b0034b3ffe2a245a595e28ab43d65d7617')
+            '9ac34f2bebbb6d4a19c590e00db8e5b0034b3ffe2a245a595e28ab43d65d7617'
+            '7ce69543faf226e871dbe78c058a3499f5c283860ae2d9e39e397178123264ec')
 PKGEXT='.pkg.tar'
 
 # Computer Architecture Variable used by Quake2
@@ -103,6 +104,9 @@ prepare() {
     # libjpeg Fix
     /bin/sed -i -e 's:jpeg_mem_src:_&:' \
         "${srcdir}/${pkgname}-${pkgver}/src/ref_candygl/gl_image.c"
+
+    # Map command fix by h3xx
+    /usr/bin/patch -p1 < "${srcdir}/map_command_fix.patch"
 
     msg "Quake 2 patching complete"
 }
