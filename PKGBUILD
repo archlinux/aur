@@ -1,13 +1,13 @@
 # Maintainer: Ethan McTague <ethan@tague.me>
 pkgname=python-wal-steam-git
 _gitname=wal_steam
-pkgver=1.0.1.r0.g7250820
+pkgver=1.0.2.r0.g7250820
 pkgrel=1
 pkgdesc='Generate and change steam colorscheme on the fly'
 arch=('any')
 url='https://github.com/kotajacob/wal_steam'
 license=('MIT')
-depends=('python-pywal-git' 'steam')
+depends=('python-pywal' 'steam')
 source=('git+https://github.com/kotajacob/wal_steam.git')
 md5sums=('SKIP')
 
