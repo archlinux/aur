@@ -1,6 +1,6 @@
 pkgbase = pdfmixtool
 	pkgdesc = An application to split, merge, rotate and mix PDF files
-	pkgver = 0.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = http://www.scarpetta.eu/page/pdf-mix-tool
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = pdfmixtool
 	depends = qt5-base
 	depends = podofo
 	depends = gtk-update-icon-cache
-	source = https://github.com/marcoscarpetta/pdfmixtool/archive/v0.2.tar.gz
-	sha512sums = 7176534606f61f10119fbfc6b7b3949e531b8d9aab9d2f740a7989a886420654017e72edc7ce3d27f5c731ade621acb15ac7d86f002fc2be6d7eaf37d4917bd7
+	source = https://github.com/marcoscarpetta/pdfmixtool/archive/v0.2.1.tar.gz
+	sha512sums = 9fc47df37f1d9e16efeb289f5cebb10458521ab9ab6a97e8fe3b8bb4cd05da9051cdd95beadaf010931f77045b0c6ddede544c5074900cfd8606233c69a9b4ed
 
 pkgname = pdfmixtool
 

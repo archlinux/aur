@@ -1,7 +1,7 @@
 # Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=pdfmixtool
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='An application to split, merge, rotate and mix PDF files'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('qt5-base' 'podofo' 'gtk-update-icon-cache')
 makedepends=('git' 'cmake' 'qt5-tools' 'discount')
 source=("https://github.com/marcoscarpetta/pdfmixtool/archive/v${pkgver}.tar.gz")
-sha512sums=('7176534606f61f10119fbfc6b7b3949e531b8d9aab9d2f740a7989a886420654017e72edc7ce3d27f5c731ade621acb15ac7d86f002fc2be6d7eaf37d4917bd7')
+sha512sums=('9fc47df37f1d9e16efeb289f5cebb10458521ab9ab6a97e8fe3b8bb4cd05da9051cdd95beadaf010931f77045b0c6ddede544c5074900cfd8606233c69a9b4ed')
 
 prepare() {
   cd "${srcdir}/pdfmixtool-${pkgver}"
