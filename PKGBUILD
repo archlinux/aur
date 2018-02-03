@@ -3,12 +3,12 @@
 _pkgname=transip-api
 pkgname=python-${_pkgname}-git
 pkgver=0.3.0.r5.gafb45df
-pkgrel=1
+pkgrel=2
 pkgdesc="Python implementation of TransIP's API (unofficial)"
 arch=('any')
 url="https://github.com/benkonrath/transip-api"
 license=('MIT')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 depends=('python')
 source=("git+https://github.com/benkonrath/transip-api.git")
 sha512sums=('SKIP')
