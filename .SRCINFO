@@ -5,8 +5,8 @@ pkgbase = exodus-bundler
 	url = https://github.com/Intoli/exodus
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	depends = python
-	depends = python-setuptools
 	provides = exodus-bundler=1.1.6-1
 	conflicts = exodus
 	source = https://github.com/Intoli/exodus/archive/v1.1.6.tar.gz
