@@ -14,37 +14,6 @@ index de8162e..6124a71 100644
  
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
-diff --git a/vmmon/Makefile.kernel b/vmmon/Makefile.kernel
-index bf805e0..9aac585 100644
---- a/vmmon/Makefile.kernel
-+++ b/vmmon/Makefile.kernel
-@@ -22,7 +22,7 @@ CC_OPTS += -DVMMON -DVMCORE
- INCLUDE := -I$(SRCROOT)/include -I$(SRCROOT)/common -I$(SRCROOT)/linux \
- 	   -I$(SRCROOT)/vmcore
- 
--EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE)
-+EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE) $(LINUXINCLUDE)
- 
- EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/autoconf/smpcall.c, -DVMW_HAVE_SMP_CALL_3ARG, )
- EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/autoconf/tsc_khz.c, -DVMW_HAVE_TSC_KHZ, )
-diff --git a/vmmon/include/compat_module.h b/vmmon/include/compat_module.h
-index 2af7372..729aedc 100644
---- a/vmmon/include/compat_module.h
-+++ b/vmmon/include/compat_module.h
-@@ -80,4 +80,13 @@ static const char __module_cat(tag, __LINE__)[]                               \
-    typedef int compat_mod_param_bool;
- #endif
- 
-+/*
-+ * Linux kernel >= 4.3.0 does not return anything from misc_deregister
-+ */
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 3, 0)
-+#define compat_misc_deregister(misc) misc_deregister(misc)
-+#else
-+#define compat_misc_deregister(misc) ({misc_deregister(misc);0;})
-+#endif
-+
- #endif /* __COMPAT_MODULE_H__ */
 diff --git a/vmmon/linux/driver.c b/vmmon/linux/driver.c
 index 87cf45b..5390a93 100644
 --- a/vmmon/linux/driver.c
@@ -58,24 +27,6 @@ index 87cf45b..5390a93 100644
  static unsigned int LinuxDriverEstimateTSCkHz(void);
  
  static struct vm_operations_struct vmuser_mops = {
-@@ -126,7 +126,16 @@ static struct vm_operations_struct vmuser_mops = {
- #endif
- };
- 
--static struct file_operations vmuser_fops;
-+static struct file_operations vmuser_fops = {
-+   .owner = THIS_MODULE,
-+   .poll = LinuxDriverPoll,
-+   .unlocked_ioctl = LinuxDriver_Ioctl,
-+   .compat_ioctl = LinuxDriver_Ioctl,
-+   .open = LinuxDriver_Open,
-+   .release = LinuxDriver_Close,
-+   .mmap = LinuxDriverMmap
-+};
-+
- static struct timer_list tscTimer;
- static Atomic_uint32 tsckHz;
- static VmTimeStart tsckHzStartTime;
 @@ -227,7 +228,7 @@ LinuxDriverEstimateTSCkHz(void)
   *----------------------------------------------------------------------
   */
@@ -110,28 +61,6 @@ index 87cf45b..5390a93 100644
  
     linuxState.fastClockThread = NULL;
     linuxState.fastClockFile = NULL;
-@@ -319,21 +328,6 @@ init_module(void)
-    linuxState.fastClockPriority = -20;
-    linuxState.swapSize = VMMON_UNKNOWN_SWAP_SIZE;
- 
--   /*
--    * Initialize the file_operations structure. Because this code is always
--    * compiled as a module, this is fine to do it here and not in a static
--    * initializer.
--    */
--
--   memset(&vmuser_fops, 0, sizeof vmuser_fops);
--   vmuser_fops.owner = THIS_MODULE;
--   vmuser_fops.poll = LinuxDriverPoll;
--   vmuser_fops.unlocked_ioctl = LinuxDriver_Ioctl;
--   vmuser_fops.compat_ioctl = LinuxDriver_Ioctl;
--   vmuser_fops.open = LinuxDriver_Open;
--   vmuser_fops.release = LinuxDriver_Close;
--   vmuser_fops.mmap = LinuxDriverMmap;
--
- #ifdef VMX86_DEVEL
-    devel_init_module();
-    linuxState.minor = 0;
 @@ -360,7 +357,13 @@ init_module(void)
         linuxState.deviceName, linuxState.major, linuxState.minor);
  
@@ -146,17 +75,6 @@ index 87cf45b..5390a93 100644
     LinuxDriverInitTSCkHz();
     Vmx86_InitIDList();
  
-@@ -389,7 +383,9 @@ cleanup_module(void)
- #ifdef VMX86_DEVEL
-    unregister_chrdev(linuxState.major, linuxState.deviceName);
- #else
--   misc_deregister(&linuxState.misc);
-+   if (compat_misc_deregister(&linuxState.misc)) {
-+      Warning("Module %s: error unregistering\n", linuxState.deviceName);
-+   }
- #endif
- 
-    Log("Module %s: unloaded\n", linuxState.deviceName);
 @@ -858,7 +858,7 @@
   */
  
@@ -166,48 +84,10 @@ index 87cf45b..5390a93 100644
  {
     LinuxDriverWakeUp(FALSE);
  }
-@@ -1287,7 +1283,7 @@ LinuxDriverReadTSC(void *data,   // OUT: TSC values
-  *-----------------------------------------------------------------------------
-  */
- 
--__attribute__((always_inline)) static Bool
-+inline __attribute__((always_inline)) static Bool
- LinuxDriverSyncReadTSCs(uint64 *delta) // OUT: TSC max - TSC min
- {
-    TSCDelta tscDelta;
 diff --git a/vmmon/linux/hostif.c b/vmmon/linux/hostif.c
 index fd32013..583d6da 100644
 --- a/vmmon/linux/hostif.c
 +++ b/vmmon/linux/hostif.c
-@@ -37,6 +37,9 @@
- 
- #include <linux/vmalloc.h>
- #include <linux/slab.h>
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
-+#include <linux/sched/signal.h>
-+#endif
- 
- #include <linux/preempt.h>
- #include <linux/poll.h>
-@@ -73,6 +76,7 @@
- #include <linux/capability.h>
- #include <linux/kthread.h>
- #include <linux/wait.h>
-+#include <asm/apic.h>
- #include <linux/signal.h>
- #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
- #include <linux/taskstats_kern.h> // For linux/sched/signal.h without version check
-@@ -142,6 +146,10 @@
-  */
- #define LOCKED_PAGE_SLACK 10000
- 
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
-+#define NR_ANON_PAGES NR_ANON_MAPPED
-+#endif
-+
- static struct {
-    Atomic_uint64     uptimeBase;
-    VersionedAtomic   version;
 @@ -1164,16 +1172,7 @@
  {
     int retval;
@@ -303,16 +183,3 @@ index fd32013..583d6da 100644
     mod_timer(&uptimeState.timer, jiffies + HZ);
  }
  
-diff --git a/vmmon/linux/vmmonInt.h b/vmmon/linux/vmmonInt.h
-index 4dc04e9..993212d 100644
---- a/vmmon/linux/vmmonInt.h
-+++ b/vmmon/linux/vmmonInt.h
-@@ -28,7 +28,7 @@
-  * Hide all kernel compatibility stuff in these macros and functions.
-  */
- 
--#ifdef VMW_HAVE_SMP_CALL_3ARG
-+#if defined (VMW_HAVE_SMP_CALL_3ARG) || LINUX_VERSION_CODE >= KERNEL_VERSION(3, 0, 0)
- #define compat_smp_call_function(fn, info, wait) smp_call_function(fn, info, wait)
- #else
- #define compat_smp_call_function(fn, info, wait) smp_call_function(fn, info, 1, wait)
