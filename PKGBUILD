@@ -4,8 +4,8 @@
 pkgname='homegear'
 _gitname='Homegear'
 pkgdesc='Interface your HomeMatic BidCoS, HomeMatic Wired, MAX!, INSTEON or Philips hue devices with your home automation software or your own control scripts'
-pkgver=0.7.12
-pkgrel=2
+pkgver=0.7.15
+pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 url="https://homegear.eu"
@@ -24,7 +24,7 @@ source=("https://github.com/Homegear/${_gitname}/archive/${pkgver}.tar.gz"
         'homegear-makefile.patch'
         'homegear-config.patch'
         'homegear-ssl-optional.patch')
-sha512sums=('78f5e904f2c52f44a5a1fb28cc715387cd264bab081737026c8e88e88e6ab17572479d6bfb7453b281f3e388932ab1c394a56efc2a64ccd053c7939548efe59a'
+sha512sums=('e460426490d8a16a148ec2341c58f351896ff5cd48fbea09c5782c1253f8c10fad6ac28eb77ceb927bf975439d0698b511194bb0958186f687a21829f45e20c3'
             '825ff21b64323122108aba9d4aaf0a0a2ea5107eb225255d29fa95bd2710e00201fda0d99adeed2890fe7eec17b867e4626fd2dacddd5f9743cf6a07d7ca5333'
             'c58a093cc923551e8482503962bfb9f043ee651b2d9954df6a8bf478715848bdac226dc0f3eb4e4f4aa44cdc9c7ca041560db735e27d6cc89122d02e2ffecc2a'
             'aed267cb77c6a23a563152a17781cbe12fe14b68ed3d77dc75145c6422c3818f0d3550b5d20609d06e0bf937f24627806c0bfb3201fd27da0b420f6fbd4ebc66'
@@ -51,6 +51,9 @@ prepare() {
     # Put the modules in /usr/lib instead of /var/lib because that is where they belong
     sed -i -e 's#libdir = $(localstatedir)/lib/homegear/modules#libdir = $(prefix)/lib/homegear/modules#' homegear-miscellaneous/src/Makefile.am
 
+    # Fix enchant header path change
+    sed -i -e 's# -lenchant # -lenchant-2 #' src/Makefile.am
+
     patch -p1 -i "${srcdir}"/homegear-makefile.patch
     patch -p1 -i "${srcdir}"/homegear-config.patch
     patch -p1 -i "${srcdir}"/homegear-ssl-optional.patch
@@ -69,29 +72,28 @@ package() {
 
     make DESTDIR="${pkgdir}" install
 
-    install -dm755 "${pkgdir}"/etc/homegear
-    cp -r misc/Config\ Directory/* "${pkgdir}"/etc/homegear
-	rm "${pkgdir}"/etc/homegear/homegear-{start,stop}.sh
-    chmod 644 "${pkgdir}"/etc/homegear/*.conf
+    install -dm755 "${pkgdir}/etc/homegear"
+    cp -r "misc/Config Directory/"* "${pkgdir}/etc/homegear"
+	rm "${pkgdir}/etc/homegear/homegear-"{start,stop}.sh
+    chmod 644 "${pkgdir}/etc/homegear/"*.conf
 
-    install -dm750 "${pkgdir}"/var/lib/homegear
-    install -dm755 "${pkgdir}"/var/log/homegear
+    install -dm750 "${pkgdir}/var/lib/homegear"
+    install -dm755 "${pkgdir}/var/log/homegear"
 
-    cp -r misc/State\ Directory/* "${pkgdir}"/var/lib/homegear
-    rm -r "${pkgdir}"/var/lib/homegear/www/rpc/.idea
-    find "${pkgdir}"/var/lib/homegear/www -type d -exec chmod 550 {} \;
-	find "${pkgdir}"/var/lib/homegear/www -type f -exec chmod 440 {} \;
-    install -dm750 "${pkgdir}"/var/lib/homegear/flows/data
-    install -dm750 "${pkgdir}"/var/lib/homegear/phpinclude
-    install -dm550 "${pkgdir}"/var/lib/homegear/scripts
-    install -dm750 "${pkgdir}"/var/lib/homegear/firmware
+    cp -r "misc/State Directory/"* "${pkgdir}/var/lib/homegear"
+    find "${pkgdir}/var/lib/homegear/www" -type d -exec chmod 550 {} \;
+	find "${pkgdir}/var/lib/homegear/www" -type f -exec chmod 440 {} \;
+    install -dm750 "${pkgdir}/var/lib/homegear/flows/data"
+    install -dm750 "${pkgdir}/var/lib/homegear/phpinclude"
+    install -dm550 "${pkgdir}/var/lib/homegear/scripts"
+    install -dm750 "${pkgdir}/var/lib/homegear/firmware"
 
-    install -dm755 "${pkgdir}"/etc/homegear/devices/254
-    cp -r homegear-miscellaneous/misc/Device\ Description\ Files/* "${pkgdir}"/etc/homegear/devices/254
-    chmod 644 "${pkgdir}"/etc/homegear/devices/254/*
+    install -dm755 "${pkgdir}/etc/homegear/devices/254"
+    cp -r "homegear-miscellaneous/misc/Device Description Files/"* "${pkgdir}/etc/homegear/devices/254"
+    chmod 644 "${pkgdir}/etc/homegear/devices/254/"*
 
-    install -Dm755 "${srcdir}"/homegear.service "${pkgdir}"/usr/lib/systemd/system/homegear.service
-    install -Dm755 "${srcdir}"/homegear.sysusers "${pkgdir}"/usr/lib/sysusers.d/homegear.conf
-    install -Dm755 "${srcdir}"/homegear.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/homegear.conf
-    install -Dm755 "${srcdir}"/homegear.logrotate "${pkgdir}"/etc/logrotate.d/homegear
+    install -Dm755 "${srcdir}/homegear.service" "${pkgdir}/usr/lib/systemd/system/homegear.service"
+    install -Dm755 "${srcdir}/homegear.sysusers" "${pkgdir}/usr/lib/sysusers.d/homegear.conf"
+    install -Dm755 "${srcdir}/homegear.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/homegear.conf"
+    install -Dm755 "${srcdir}/homegear.logrotate" "${pkgdir}/etc/logrotate.d/homegear"
 }
