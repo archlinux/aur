@@ -1,8 +1,8 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
-pkgver=2.10.2
+pkgver=2.10.3
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -11,7 +11,7 @@ depends=('libxss' 'gconf' 'nss' 'alsa-lib' 'gtk2' 'libxtst')
 makedepends=('sed' 'yarn' 'gulp' 'python2')
 conflicts=('rocketchat-client-bin')
 source=("https://github.com/RocketChat/Rocket.Chat.Electron/archive/$pkgver.tar.gz")
-sha512sums=('742a05f16aa928023c8483b9a03f6839db0a8ee74c976b3e8a4d839803243cd9df12d124c5440e06853e4c520bce00106e444a091058215ac6385ca3fd6469e5')
+sha512sums=('c8b3e45b9d99129579c84e367f8262d138d14dce1dd4821bf15d3b94f7d8b33ab757ed64dfddde94408f624139e90a1ad079f55616e86287fbc8a3a9f5958b16')
 prepare() {
   sed -i 's/"deb",/"dir"/' "$srcdir/$_srcname/package.json"
   sed -i '/"rpm"/d' "$srcdir/$_srcname/package.json"
