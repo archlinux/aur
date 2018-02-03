@@ -1,14 +1,13 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=etcetera
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple command line tool to keep track of changes to config files of a linux system"
-arch=("x86_64")
+arch=("x86_64" "armv6h")
 url="https://github.com/jeancf/etcetera"
 license=("GPL3")
 depends=("python")
 optdepends=()
-backup=("etc/etcetera.conf")
 options=()
 source=("https://github.com/jeancf/etcetera/archive/v${pkgver}.tar.gz")
 md5sums=('f06d390f34b767b44663a1f8c18f0a14')
