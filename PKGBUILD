@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsoup
-pkgver=2.58.1
-pkgrel=2
+pkgver=2.60.3
+pkgrel=1
 pkgdesc="HTTP client/server library (mingw-w64)"
 arch=(any)
 url="https://download.gnome.org/sources/libsoup"
@@ -10,7 +10,7 @@ depends=('mingw-w64-glib2' 'mingw-w64-glib-networking' 'mingw-w64-libxml2' 'ming
 makedepends=('mingw-w64-configure' 'intltool')
 options=(!strip !buildflags staticlibs)
 source=("http://ftp.gnome.org/pub/GNOME/sources/libsoup/${pkgver%.*}/libsoup-$pkgver.tar.xz")
-sha256sums=('62c669f557de745b7b20ba9d5b74d839c95e4c9cea1a5ab7f3da5531a1aeefb9')
+sha256sums=('1b0dc762f23abe4e0d29b77370e539fd35f31d8e8e0318d6ddccff395be68a22')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
