@@ -1,7 +1,7 @@
 pkgbase = vintagestory
 	pkgdesc = An in-development indie sandbox game about innovation and exploration
 	pkgver = 1.5.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.vintagestory.at/
 	arch = any
 	license = custom
