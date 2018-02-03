@@ -40,7 +40,9 @@ build() {
 	qbs setup-qt /usr/bin/qmake-qt5 qt5
 	qbs config profiles.qt5.baseProfile gcc
 	qbs build --no-install -d build qt5-debug qbs.buildVariant:debug profile:qt5 \
-		qbs.installRoot:/ qbs.installPrefix:usr modules.lirideployment.qmlDir:lib/qt/qml modules.lirideployment.pluginsDir:lib/qt/plugins
+		modules.lirideployment.prefix:/usr \
+		modules.lirideployment.qmlDir:/usr/lib/qt/qml \
+		modules.lirideployment.pluginsDir:/usr/lib/qt/plugins
 }
 
 package() {
