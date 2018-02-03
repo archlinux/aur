@@ -3,7 +3,7 @@
 
 pkgname=scala-ide
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scala IDE for Eclipse, stand-alone version"
 arch=('x86_64')
 url="http://www.scala-ide.org/"
@@ -12,7 +12,8 @@ source=(
   $pkgname-$pkgver.zip::"http://downloads.typesafe.com/scalaide-pack/$pkgver-vfinal-oxygen-212-20170929/scala-SDK-$pkgver-vfinal-2.12-linux.gtk.$CARCH.tar.gz"
 	"LICENSE" "scala-ide.desktop" "product.png" "scala-ide.sh"
 )
-depends=("java-environment>=8" webkitgtk unzip)
+depends=("java-environment>=8" unzip)
+optdepends=("webkitgtk: support for internal SWT Browser") 
 provides=('scala-ide')
 md5sums=('2656fa91a0a89db585390e4446cd361f'
          '58b225f304aaf42c8b8738894a10cb96'
