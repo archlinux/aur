@@ -22,13 +22,11 @@ install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
         $pkgname.desktop
         thunderbird-install-dir.patch
-        no-crmf.diff
-        fix-wifi-scanner.diff)
+        no-crmf.diff)
 sha512sums=('384d78346413c66b02573a6138bde223b6388a306ba535eaf5498867a4dd7bb44b73dda4e7811b728202df0283813bc3365317007a170696bdba0703beb83215'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
-            '8100fd3ea37d998905498d41c8504bfdd6d86766542d6b93107c92382a7525da7f75a83f8ff1e15ad95039d51da2add7e6b18af76d45516a41cdfd1e9f98f262'
-            '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065'
-            '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a')
+            'b10b74e073a369bf06069f21eddaa145eaa93e4b5128ff659eb186598ecce773afc1ce5a4b2208a7c2bb54ee118827db28171875dfdb91fb31cac4598a300371'
+            '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065')
 # RC
 if [[ $_build = ? ]]; then
   source[0]="https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/source/thunderbird-$_major.source.tar.xz"
@@ -58,9 +56,6 @@ prepare() {
 
   msg2 "no-crmf.diff: https://bugzilla.mozilla.org/show_bug.cgi?id=1371991"
   patch -Np1 -i ../no-crmf.diff
-
-  msg2 "fix-wifi-scanner.diff: https://bugzilla.mozilla.org/show_bug.cgi?id=1314968"
-  patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
 
   # API keys
   echo -n "$_google_api_key" >google-api-key
