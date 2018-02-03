@@ -5,7 +5,7 @@
 
 gitname="biosdisk"
 pkgname="${gitname}-git"
-pkgver=v0.75.20.gf534dd2
+pkgver=1.01
 pkgrel=1
 arch=('any')
 pkgdesc="Utility for creating Dell BIOS flash disks"
@@ -21,23 +21,11 @@ source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	 cd "${srcdir}/${gitname}"
-	 git describe --tags | sed 's|-|\.|g'
+    cd "${srcdir}/${gitname}"
+    git describe --tags | sed 's|-|\.|g'
 }
 
 package() {
-	 cd "${srcdir}/${gitname}"
-
-	 install -Dm 755 {,"${pkgdir}"/usr/bin/}biosdisk
-	 install -Dm 755 {,"${pkgdir}"/usr/bin/}blconf
-	 install -Dm 644 {,"${pkgdir}"/etc/}biosdisk.conf
-	 install -Dm 644 {,"${pkgdir}"/usr/man/man8/}biosdisk.8.gz
-	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}dosdisk.img
-	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}dosdisk288.img
-	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}dosdisk8192.img
-	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}dosdisk20480.img
-	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}biosdisk-mkrpm-redhat-template.spec
-	 install -Dm 644 {,"${pkgdir}"/usr/share/biosdisk/}biosdisk-mkrpm-generic-template.spec
-
-	 sed -i 's|python|python2|' "${pkgdir}"/usr/bin/blconf
+    cd "${srcdir}/${gitname}"
+    make DESTDIR="${pkgdir}" install
 }
