@@ -8,7 +8,8 @@ pkgdesc="Painless relocation of Linux binaries"
 arch=('any')
 url="https://github.com/$_owner/$_pkgname"
 license=('BSD')
-depends=('python' 'python-setuptools')
+depends=('python')
+makedepends=('python-setuptools')
 provides=("$pkgname=$pkgver-$pkgrel")
 conflicts=('exodus')
 source=("https://github.com/$_owner/$_pkgname/archive/v$pkgver.tar.gz")
