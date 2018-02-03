@@ -2,15 +2,15 @@
 
 pkgname=otpclient-git
 _dirname="OTPClient"
-pkgver=1.0.6
+pkgver=v1.1.0
 pkgrel=1
 pkgdesc="Simple GTK+ v3 TOTP/HOTP client that uses libcotp"
 arch=('x86_64')
 url="https://github.com/paolostivanin/OTPClient"
 license=('GPL3')
-depends=('gtk3' 'glib2' 'json-glib' 'libgcrypt' 'json-glib' 'libzip' 'libcotp' 'pkg-config')
+depends=('gtk3' 'glib2' 'jansson' 'libgcrypt' 'libzip' 'libcotp' 'pkg-config')
 makedepends=('cmake' 'git')
-provides=(otpclient)
+conflicts=(otpclient)
 source=("git+$url")
 sha256sums=('SKIP')
 
