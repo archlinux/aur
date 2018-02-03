@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="7.0.323.2"
+pkgver="7.0.324.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -9,18 +9,18 @@ depends=('wine' 'hicolor-icon-theme')
 makedepends=('p7zip' 'icoutils' 'gendesk')
 url="http://www.tracker-software.com/product/pdf-xchange-editor"
 _downloadsource="http://www.tracker-software.com/downloads"
-_x64file="EditorV7.x64.msi"
+_x86file="EditorV7.x86.msi"
 _installdir="/usr/lib"
 
-source_x86_64+=($_downloadsource/$_x64file)
-sha256sums_x86_64=('454935b6d71820f3a204266c590f85ad4deb6633c5e347d0f566172a6817df15')
+source=($_downloadsource/$_x86file)
+sha256sums=('2392ec36d36ad4c304757f1548868cdcd02bee04b39df7fe9532d034dfb86870')
 
 prepare()
 {
 
- 7z x "$srcdir/$_x64file" -o"$srcdir"
- 7z x "$srcdir/et_x64.cab" -o"$srcdir"
- 7z x "$srcdir/e_x64.cab" -o"$srcdir"
+ 7z x "$srcdir/$_x86file" -o"$srcdir"
+ 7z x "$srcdir/et_bin.cab" -o"$srcdir"
+ 7z x "$srcdir/e_bin.cab" -o"$srcdir"
 
  7z x "$srcdir/et_res.cab" -o"$srcdir"
  7z x "$srcdir/e_res.cab" -o"$srcdir"
@@ -330,21 +330,21 @@ package()
 
  install -Dm644 "$srcdir/FID_Stamps_DynamicDate" "$pkgdir${_installdir}/$pkgname/Stamps/ENU/DynamicDate.pdf"
 
- install -Dm644 "$srcdir/FID_KeybHook64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/FowpKbd64.dll"
- install -Dm644 "$srcdir/FID_ReadOutLoud64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/ReadOutLoud.pvp"
- install -Dm644 "$srcdir/FID_Optimizer64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/PDFOptimizer.pvp"
- install -Dm644 "$srcdir/FID_SpellChecker64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/SpellChecker.pvp"
- install -Dm644 "$srcdir/FID_GD64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/GoogleDrive.pvp"
- install -Dm644 "$srcdir/FID_Markdown64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/MarkdownPlugin.pvp"
- install -Dm644 "$srcdir/FID_Bookmarks64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/Bookmarks.pvp"
- install -Dm644 "$srcdir/FID_DB64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/DropBox.pvp"
- install -Dm644 "$srcdir/FID_SP64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/SharePoint.pvp"
- install -Dm644 "$srcdir/FID_FileOpenSH64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/FileOpenSH.pvp"
- install -Dm644 "$srcdir/FID_OffConv64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/ConvertPDF.pvp"
- install -Dm644 "$srcdir/FID_PDFA64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/PDFAPlugin.pvp"
- install -Dm644 "$srcdir/FID_OCR64" "$pkgdir${_installdir}/$pkgname/Plugins.x64/OCRPlugin.pvp"
+ install -Dm644 "$srcdir/FID_KeybHook32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/FowpKbd64.dll"
+ install -Dm644 "$srcdir/FID_ReadOutLoud32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/ReadOutLoud.pvp"
+ install -Dm644 "$srcdir/FID_Optimizer32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/PDFOptimizer.pvp"
+ install -Dm644 "$srcdir/FID_SpellChecker32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/SpellChecker.pvp"
+ install -Dm644 "$srcdir/FID_GD32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/GoogleDrive.pvp"
+ install -Dm644 "$srcdir/FID_Markdown32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/MarkdownPlugin.pvp"
+ install -Dm644 "$srcdir/FID_Bookmarks32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/Bookmarks.pvp"
+ install -Dm644 "$srcdir/FID_DB32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/DropBox.pvp"
+ install -Dm644 "$srcdir/FID_SP32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/SharePoint.pvp"
+ install -Dm644 "$srcdir/FID_FileOpenSH32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/FileOpenSH.pvp"
+ install -Dm644 "$srcdir/FID_OffConv32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/ConvertPDF.pvp"
+ install -Dm644 "$srcdir/FID_PDFA32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/PDFAPlugin.pvp"
+ install -Dm644 "$srcdir/FID_OCR32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/OCRPlugin.pvp"
 
- install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/PDFXEditCore.x64.dll"
+ install -Dm644 "$srcdir/FID_ViewerDLL32" "$pkgdir${_installdir}/$pkgname/PDFXEditCore.x86.dll"
  
  install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/PDFXEdit.exe" 
  install -Dm644 "$srcdir/FID_Resource" "$pkgdir${_installdir}/$pkgname/Resources.dat"
@@ -380,11 +380,11 @@ package()
  echo '   mkdir -p "$HOME/.$program/wine"' >> "$pkgdir/usr/bin/$pkgname"
  echo 'fi' >> "$pkgdir/usr/bin/$pkgname"
  echo  'if [ ! -z "$1" ] ; then' >> "$pkgdir/usr/bin/$pkgname"
- echo '   document=$(WINEPREFIX="$HOME/.$program/wine" /usr/bin/winepath -w "$1")' >> "$pkgdir/usr/bin/$pkgname"
+ echo '   document=$(WINEARCH=win32 WINEPREFIX="$HOME/.$program/wine" /usr/bin/winepath -w "$1")' >> "$pkgdir/usr/bin/$pkgname"
  echo 'else' >> "$pkgdir/usr/bin/$pkgname"
  echo '   unset document' >> "$pkgdir/usr/bin/$pkgname"
  echo 'fi' >> "$pkgdir/usr/bin/$pkgname"
- echo 'WINEPREFIX="$HOME/.$program/wine" /usr/bin/wine '\"${_installdir}'/$program/PDFXEdit.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'WINEARCH=win32 WINEPREFIX="$HOME/.$program/wine" /usr/bin/wine '\"${_installdir}'/$program/PDFXEdit.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
 
  chmod 0755 "$pkgdir/usr/bin/$pkgname"
 
