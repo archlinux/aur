@@ -1,0 +1,11 @@
+--- a/astroplan/conftest.py	2017-10-24 09:42:38.000000000 +0800
++++ b/astroplan/conftest.py	2018-02-03 17:18:18.183223264 +0800
+@@ -40,7 +40,7 @@
+ try:
+     PYTEST_HEADER_MODULES['Astropy'] = 'astropy'
+     PYTEST_HEADER_MODULES['pytz'] = 'pytz'
+-    PYTEST_HEADER_MODULES['pyephem'] = 'pyephem'
++    PYTEST_HEADER_MODULES['pyephem'] = 'ephem'
+     PYTEST_HEADER_MODULES['matplotlib'] = 'matplotlib'
+     PYTEST_HEADER_MODULES['nose'] = 'nose'
+     PYTEST_HEADER_MODULES['pytest-mpl'] = 'pytest_mpl'
