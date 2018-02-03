@@ -10,7 +10,7 @@ pkgbase = vpacman
 	depends = wmctrl
 	optdepends = xorg-xwininfo: for fine control of terminal windows
 	optdepends = pkgfile: for faster retrieval of package files
-	source = http://downloads.sourceforge.net/vpacman/vpacman-1.0.0/vpacman-1.0.0.tar.gz
+	source = http://sourceforge.net/projects/vpacman/files/vpacman-1.0.0.tar.gz
 	md5sums = 4eb648ce36c2915a25eec5e12cce61c1
 
 pkgname = vpacman

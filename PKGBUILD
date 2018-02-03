@@ -1,4 +1,4 @@
-# Maintainer: <andrew dot myers at free.fr>
+# Maintainer: <andrew dot myers at fdservices  dot co dot uk>
 pkgname=vpacman
 pkgver=1.0.0
 pkgrel=1
@@ -10,7 +10,7 @@ depends=('tcl' 'tk' 'wmctrl')
 optdepends=('xorg-xwininfo: for fine control of terminal windows'
 			'pkgfile: for faster retrieval of package files'
 			)
-source=(http://downloads.sourceforge.net/vpacman/vpacman-$pkgver/vpacman-$pkgver.tar.gz)
+source=(http://sourceforge.net/projects/vpacman/files/vpacman-$pkgver.tar.gz)
 md5sums=('4eb648ce36c2915a25eec5e12cce61c1')
 
 package() {
