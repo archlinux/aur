@@ -5,7 +5,7 @@
 
 _name=kickthemout
 pkgname=${_name}-git
-pkgver=0.1.r104.ga2e0432
+pkgver=0.1.r110.g0099733
 pkgrel=1
 pkgdesc="Kick devices off your network by performing an ARP Spoof attack."
 arch=('any')
