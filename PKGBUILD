@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=elastix
 pkgver=4.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Toolbox for rigid and nonrigid registration of images'
 arch=('x86_64')
 url='http://elastix.isi.uu.nl/'
@@ -21,7 +21,7 @@ prepare() {
 	cd build
 
 	cmake .. \
-		-DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" \
+		-DCMAKE_INSTALL_PREFIX:PATH="/usr" \
 		-DCMAKE_BUILD_TYPE:STRING=Release
 
 	# Make newer versions of ITK and gcc happy
@@ -45,15 +45,15 @@ build() {
 package() {
 	cd "${srcdir}/src/build"
 
-	make install
+	make install DESTDIR="${pkgdir}"
 
 	cd ..
 
 	install -D -m644 \
 		"LICENSE" \
-		"$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	install -D -m644 \
 		"NOTICE" \
-		"$pkgdir/usr/share/licenses/$_pkgname/NOTICE"
+		"$pkgdir/usr/share/licenses/$pkgname/NOTICE"
 }
