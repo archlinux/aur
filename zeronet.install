@@ -34,12 +34,18 @@ post_install() {
     echo ">>>   python2 zeronet.py --config_file /etc/zeronet.conf ..."
 }
 
+## each separate version number must be less than 3 digit wide !
+function version { echo "$@" | gawk -F. '{ printf("%03d%03d%03d\n", $1,$2,$3); }'; }
+
 post_upgrade() {
     chown -R zeronet:zeronet /opt/zeronet
 
-    echo ">>> UPDATE in 0.6.0: no longer need auth dir (Tor bug 19953 fixed):"
-    echo ">>> Change or add to /etc/tor/torrc:"
-    echo ">>>   DataDirectoryGroupReadable 1"
-    echo ">>>   CookieAuthFile /var/lib/tor/control_auth_cookie"
-    echo ">>> Run: sudo rm -r /var/lib/tor-auth && sudo systemctl restart tor"
+    if [ "$(version "$(echo $2 | sed s/\.r.*//)")" -lt "$(version 0.6.0)" ]
+    then
+        echo ">>> UPDATE in 0.6.0: no longer need auth dir (Tor bug 19953 fixed):"
+        echo ">>> Change or add to /etc/tor/torrc:"
+        echo ">>>   DataDirectoryGroupReadable 1"
+        echo ">>>   CookieAuthFile /var/lib/tor/control_auth_cookie"
+        echo ">>> Run: sudo rm -r /var/lib/tor-auth && sudo systemctl restart tor"
+    fi
 }
