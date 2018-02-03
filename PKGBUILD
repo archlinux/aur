@@ -5,13 +5,13 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=iproute2-selinux
-pkgver=4.14.1
-pkgrel=2
+pkgver=4.15.0
+pkgrel=1
 pkgdesc='IP Routing Utilities with SELinux support'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL2')
 groups=('selinux')
-url='https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git'
+url='https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
 depends=('glibc' 'iptables' 'libelf' 'libselinux')
 optdepends=('linux-atm: ATM support')
 provides=('iproute' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -30,7 +30,7 @@ options=('staticlibs')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("https://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch')
-sha256sums=('d43ac068afcc350a448f4581b6e292331ef7e4e7aa746e34981582d5fdb10067'
+sha256sums=('48d4616a99d7b609b7b795c0ae8ec57099fb0271ed89253e8772c02327798355'
             'SKIP'
             'f60fefe4c17d3b768824bb50ae6416292bcebba06d73452e23f4147b46b827d3')
 
