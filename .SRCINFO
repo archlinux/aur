@@ -1,19 +1,18 @@
 pkgbase = dvtm-git
 	pkgdesc = Dynamic virtual terminal manager.
 	pkgver = 0.15.37.gb45828d
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.brain-dump.org/projects/dvtm/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	depends = sh
 	depends = ncurses
 	provides = dvtm
 	conflicts = dvtm
 	source = git://github.com/martanne/dvtm.git
-	source = config.h
 	md5sums = SKIP
-	md5sums = 243bc2d4085c08d9b748f892f5950a00
 
 pkgname = dvtm-git
 
