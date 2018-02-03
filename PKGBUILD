@@ -2,7 +2,7 @@
 
 pkgname='planck'
 conflicts=('planck-git')
-pkgver=2.8.1
+pkgver=2.11.0
 pkgrel=1
 _pkgnamever=${pkgname}-${pkgver}
 pkgdesc="A stand-alone ClojureScript REPL"
@@ -14,7 +14,7 @@ license=('EPL-1.0')
 source=(
   https://github.com/mfikes/${pkgname}/archive/${pkgver}.tar.gz
 )
-sha256sums=('70dcc04d1f97b90e5830a4c6f92e4a9b8bb1ecca15f33e6656f5c71f254cc729')
+sha256sums=('5eb997639d5303c51ab45c7b23c2db7f5a5bafffe5a5b17803521528bef7e92b')
 
 build() {
   cd "$srcdir/${_pkgnamever}"
