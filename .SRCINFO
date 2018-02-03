@@ -1,0 +1,15 @@
+pkgbase = python2-vsc-base
+	pkgdesc = Basic Python libraries used by UGent's HPC group
+	pkgver = 2.5.8
+	pkgrel = 2
+	url = https://github.com/hpcugent/vsc-base
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-vsc-install
+	source = https://files.pythonhosted.org/packages/source/v/vsc-base/vsc-base-2.5.8.tar.gz
+	md5sums = 57f3f49eab7aa15a96be76e6c89a72d8
+
+pkgname = python2-vsc-base
+
