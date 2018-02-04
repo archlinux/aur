@@ -6,7 +6,6 @@ pkgbase = biglybt
 	install = biglybt.install
 	arch = x86_64
 	license = GPL3
-	makedepends = java-runtime>=8
 	depends = desktop-file-utils
 	depends = java-runtime>=9
 	options = !strip

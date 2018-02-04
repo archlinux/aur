@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://www.biglybt.com/"
 license=('GPL3')
 depends=('desktop-file-utils' 'java-runtime>=9')
-makedepends=('java-runtime>=8')
 options=('!strip')
 install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
