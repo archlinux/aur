@@ -2,12 +2,12 @@
 
 pkgname=gapi-ocaml
 pkgver=0.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple OCaml client for Google Services."
 arch=("x86_64" "i686" "armv7h")
 url="https://astrada.github.io/gapi-ocaml/"
 license=('MIT')
-makedepends=('jbuilder')
+makedepends=('dune')
 depends=(
 'ocaml>=4.02.3'
 'ocaml-findlib>=1.2.7'
