@@ -1,6 +1,6 @@
 pkgbase = turtlecoin-git
 	pkgdesc = Turtlecoin simplewallet and miner
-	pkgver = r110.1913ba5
+	pkgver = r111.ede18c9
 	pkgrel = 1
 	url = https://turtlecoin.lol
 	install = turtlecoin-git.install
@@ -11,9 +11,7 @@ pkgbase = turtlecoin-git
 	depends = boost-libs
 	depends = boost
 	source = git+https://github.com/turtlecoin/turtlecoin.git
-	source = 0001-Various-fixes-for-building-with-gcc-7.2.1.patch
 	sha256sums = SKIP
-	sha256sums = dd9a54526e68bf40460f7ae341cd1ae5e5d841efe0ec1935b40714863c6598ca
 
 pkgname = turtlecoin-git
 

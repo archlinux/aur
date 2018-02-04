@@ -6,6 +6,7 @@ binary_message() {
     echo "  walletd => TC-walletd"
     echo
 }
+
 post_install() {
     binary_message
 }

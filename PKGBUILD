@@ -1,5 +1,5 @@
 pkgname=turtlecoin-git
-pkgver=r109.215ae8b
+pkgver=r111.ede18c9
 pkgrel=1
 pkgdesc="Turtlecoin simplewallet and miner"
 arch=('x86_64')
@@ -8,8 +8,8 @@ license=('custom')
 install="${pkgname}.install"
 makedepends=('git' 'cmake')
 depends=('boost-libs' 'boost')
-source=('git+https://github.com/turtlecoin/turtlecoin.git' '0001-Various-fixes-for-building-with-gcc-7.2.1.patch')
-sha256sums=('SKIP' 'dd9a54526e68bf40460f7ae341cd1ae5e5d841efe0ec1935b40714863c6598ca')
+source=('git+https://github.com/turtlecoin/turtlecoin.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/turtlecoin"
@@ -17,12 +17,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare()
-{
-    cd "$srcdir/turtlecoin"
-    git apply ../../0001-Various-fixes-for-building-with-gcc-7.2.1.patch
 }
 
 build() {
@@ -34,9 +28,9 @@ build() {
 }
 
 package() {
-    install -D -m755 "$srcdir/turtlecoin/build/release/src/connectivity_tool" -T "$pkgdir/usr/bin/TC-connectivity_tool"
-    install -D -m755 "$srcdir/turtlecoin/build/release/src/miner" -T "$pkgdir/usr/bin/TC-miner"
-    install -D -m755 "$srcdir/turtlecoin/build/release/src/simplewallet" -T "$pkgdir/usr/bin/TC-simplewallet"
+    install -D -m755 "$srcdir/turtlecoin/build/release/src/connectivity_tool" -T "$pkgdir/usr/bin/TRTL-connectivity_tool"
+    install -D -m755 "$srcdir/turtlecoin/build/release/src/miner" -T "$pkgdir/usr/bin/TRTL-miner"
+    install -D -m755 "$srcdir/turtlecoin/build/release/src/simplewallet" -T "$pkgdir/usr/bin/TRTL-simplewallet"
     install -D -m755 "$srcdir/turtlecoin/build/release/src/TurtleCoind" -t "$pkgdir/usr/bin/"
-    install -D -m755 "$srcdir/turtlecoin/build/release/src/walletd" -T "$pkgdir/usr/bin/TC-walletd"
+    install -D -m755 "$srcdir/turtlecoin/build/release/src/walletd" -T "$pkgdir/usr/bin/TRTL-walletd"
 }
