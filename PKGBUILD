@@ -5,10 +5,10 @@
 
 pkgname=('mysql' 'libmysqlclient' 'mysql-clients')
 pkgbase=mysql
-pkgver=5.7.20
+pkgver=5.7.21
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'libaio' 'jemalloc')
 _boost_ver=1.59.0
 license=('GPL')
@@ -24,7 +24,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${pkgbase}-${pkgver}.tar.
         "mysqld-tmpfile.conf"
         "mysqld.service"
         "my-default.cnf")
-sha256sums=('5397549bb7c238f396c123db2df4cad2191b11adf8986de7fe63bff8e2786487'
+sha256sums=('fa205079c27a39c24f3485e7498dd0906a6e0b379b4f99ebc0ec38a9ec5b09b7'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
             '1353162f5ae6e3dd4b0b8660738adbbc36c6d514d65331c013d9c45359665c52'
             'ca49f11ed70d4673d14df700caff4380ae27b81d4d10c7a49297d5b56f0eb288'
