@@ -13,7 +13,7 @@ url='http://0ldsk00l.ca/nestopia/'
 license=('GPL')
 arch=('x86_64')
 depends=('sdl2' 'gtk3' 'libarchive')
-makedepends=('unzip' 'mesa' 'xdg-utils' 'cmake' 'git' 'autoconf-archive')
+makedepends=('unzip' 'mesa' 'xdg-utils' 'git' 'autoconf-archive')
 source=("git+https://github.com/rdanbrook/nestopia.git")
 sha256sums=('SKIP')
 

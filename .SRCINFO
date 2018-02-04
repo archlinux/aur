@@ -8,7 +8,6 @@ pkgbase = nestopia-git
 	makedepends = unzip
 	makedepends = mesa
 	makedepends = xdg-utils
-	makedepends = cmake
 	makedepends = git
 	makedepends = autoconf-archive
 	depends = sdl2
