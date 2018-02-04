@@ -12,7 +12,7 @@ arch=(any)
 md5sums=('0df89e396c1230e7b814d21f1fb396b8')
 
 package(){
-   mkdir -p "${pkgdir}"/usr/share/keepass
-   install -m644 French.lngx "${pkgdir}"/usr/share/keepass
+   mkdir -p "${pkgdir}"/usr/share/keepass/Languages
+   install -m644 French.lngx "${pkgdir}"/usr/share/keepass/Languages
 }
 
