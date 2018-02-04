@@ -1,6 +1,6 @@
 pkgbase = teampass
 	pkgdesc = A Collaborative Passwords Manager
-	pkgver = 2.1.27.3
+	pkgver = 2.1.27.10
 	pkgrel = 1
 	url = http://www.teampass.net/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = teampass
 	depends = php
 	depends = php-mcrypt
 	optdepends = php-ldap: if using LDAP identification
-	source = teampass-2.1.27.3.tar.gz::https://github.com/nilsteampassnet/TeamPass/archive/2.1.27.3.tar.gz
-	sha256sums = 08ac143e40b263526a2894692a1b3c2b92fe7b98adf157d64aeefe14643aaaa3
+	source = teampass-2.1.27.10.tar.gz::https://github.com/nilsteampassnet/TeamPass/archive/2.1.27.10.tar.gz
+	sha256sums = c1580b9f398b21b2ce5bcf97040e5fbbf386fef8c84df4cd9f7a562918f404aa
 
 pkgname = teampass
 
