@@ -8,7 +8,7 @@ url=https://hackage.haskell.org/package/gitit
 license=(GPL)
 depends=(libffi gmp zlib)
 optdepends=("git: git support" "mercurial: mercurial support")
-makedepends=(ghc-pristine ghc-static)
+makedepends=(cabal-install ghc-pristine ghc-static)
 source=(https://hackage.haskell.org/package/gitit-$pkgver/gitit-$pkgver.tar.gz)
 sha256sums=('15114e589f90bb4361fda3cbaec23c82c2a765f4e09debc93b2b46ac698053f4')
 
