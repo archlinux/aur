@@ -1,0 +1,103 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.TH TCPSER 1 "July  5, 2006"
+.SH NAME
+tcpser \- emulate a Hayes compatible modem
+.SH SYNOPSIS
+.B tcpser
+\-d \fIdev\fP \-s \fIspeed\fP [\-l \fIlog_level\fP \-t \fItracing_options\fP] ...
+.br
+.B tcpser
+\-v \fIport\fP [\-l \fIlog_level\fP \-t \fItracing_options\fP] ...
+.SH DESCRIPTION
+This manual page documents briefly the
+.B tcpser
+command.
+.PP
+\fBtcpser\fP turns a PC serial port into an emulated Hayes compatible modem that 
+uses TCP/IP for incoming and outgoing connections.  It can be used to allow 
+older applications and systems designed for modem use to operate on the
+Internet.  \fBtcpser\fP supports all standard Hayes commands, and understands
+extended and vendor proprietary commands (though it does not implement
+many of them).  \fBtcpser\fP can be used for both inbound and outbound connections.
+
+.SH OPTIONS
+A summary of options is included below.
+.TP
+.B \-h
+Show summary of options.
+.TP
+.B \-p
+Port to listen on (defaults to 6400).
+.TP
+.B \-t
+Trace flags: (can be combined)
+.PD 0
+.RS 10
+.IP "s"
+modem input
+.IP "S"
+modem output
+.IP "i"
+IP input
+.IP "I"
+IP output
+.RE
+.PD 1
+.TP
+.B \-l
+Log level: 0 (NONE), 1 (FATAL) - 7 (DEBUG_X) (defaults to 0).
+.TP
+.B \-L
+Log file (defaults to stderr).
+.TP
+The following can be repeated for each modem desired (\-s, \-S, and \-i will apply to any subsequent device if not set again):
+.TP
+.B \-d
+Serial device (e.g. /dev/ttyS0).  Cannot be used with \-v
+.TP
+.B \-v
+TCP port for VICE RS232 (e.g. 25232). Cannot be used with \-d
+.TP
+.B \-s
+Serial port speed (defaults to 38400).
+.TP
+.B \-S
+Speed modem will report (defaults to \-s value).
+.TP
+.B \-I
+Invert DCD pin.
+.TP
+.B \-n
+Add phone entry (number=replacement).
+.TP
+.B \-a
+Filename to send to local side upon answer.
+.TP
+.B \-A
+Filename to send to remote side upon answer.
+.TP
+.B \-c
+Filename to send to local side upon connect.
+.TP
+.B \-C
+Filename to send to remote side upon connect.
+.TP
+.B \-N
+Filename to send when no answer.
+.TP
+.B \-B
+Filename to send when modem(s) busy.
+.TP
+.B \-T
+Filename to send upon inactivity timeout.
+.TP
+.B \-i
+Modem init string (defaults to `', leave off `at' prefix when specifying).
+.TP
+.B \-D
+Direct connection (follow with hostname:port for caller, : for receiver).
+.SH AUTHOR
+tcpser was written by Jim Brain <brain@jbrain.com>.
+.PP
+This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
+for the Debian project (but may be used by others).

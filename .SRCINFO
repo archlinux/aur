@@ -1,0 +1,15 @@
+pkgbase = tcpser
+	pkgdesc = Jim Brain's tcpser serial to IP modem emulator (fork by FozzTexx)
+	pkgver = 1.0rc12.fz1.r27.g57d4244
+	pkgrel = 1
+	url = https://github.com/FozzTexx/tcpser
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = git+https://github.com/FozzTexx/tcpser#commit=57d4244ee100c9baea8f8356c4741db63796a4a2
+	source = tcpser.1
+	sha256sums = SKIP
+	sha256sums = d376440db182a0bed9d08624a008aa2cb8a00c0002b8e78316c74533de9ca46e
+
+pkgname = tcpser
+
