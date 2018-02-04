@@ -7,8 +7,8 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=66.0.3338.0
-pkgrel=5
+pkgver=66.0.3339.0
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security, always nightly!, its canary"
 arch=('i686' 'x86_64')
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 )
 
 
-sha256sums=('829b33412e00ef0a06ca2bd9198b7e0594fe0bb2664974b5b5c27accc97a1a92'
+sha256sums=('83cbdcf4f4752d14c0dc50fbb8fed1cab09ab8e213b3bbde2191d91011517913'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -165,7 +165,7 @@ sha256sums=('829b33412e00ef0a06ca2bd9198b7e0594fe0bb2664974b5b5c27accc97a1a92'
             '814fa3b82c8330b944b138ece864be4761fe17f42061816028b5d8c1f2609c8a'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
-            '69ea6c777c4096797fb05da7a8de4502fd69f04574f3caf2715068db0cfbcbf6'
+            '88839d1b570304a162a5f012432badfccc926d30a22ec3481d7167ee616f2880'
             'c81a1414b48fb57e7089f3ceb1e85f34090348f4d6d8c7d1c138afd98a7663d4'
             '73a73b6551595c7bbe4eff6ab8cb5cd110cb62675c855370fc2121ec2e127be3'
             '3bada398110162424b4ef39a531efe627924a87666042dff6716a53e830a578d'
@@ -208,12 +208,11 @@ sha256sums=('829b33412e00ef0a06ca2bd9198b7e0594fe0bb2664974b5b5c27accc97a1a92'
             'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5'
             '1bb54bd32e78bddc68986a5ddb93eff29ac6cfe2744a499f52071fa3420591f0'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
-            '827a3181281096a41d95f31544baf783bab3d97680de8cd012cc11a16b301ec2'
+            '57fdfede4c0aeac19547e8c0ca68f097732ec5210343c0ef9190bde1da2e7a3a'
             'cb2443816f181c50f4e72bca899d52ef1ecd14ec333d271e1e33223ceb6107e4'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             '1ddbbdfd1b7cf45920d57898ee2ec9bc33a91267c933621ba17cfefd6af7c2ba')
-
 
 
 
