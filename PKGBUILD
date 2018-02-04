@@ -9,6 +9,7 @@ arch=('x86_64')
 url='http://img.5cm.ru/'
 license=('GPL')
 depends=('qt4')
+conflicts=('5up')
 options=(!strip)
 
 source=("http://5cm.ru/5up/installers/deb64/5up_${pkgver}_amd64.deb")
@@ -23,8 +24,7 @@ prepare() {
 package() {
   install -dm 755 "$pkgdir/usr/share/licenses/$pkgname/"
   install -dm 755 "$pkgdir/usr/bin/"
-   
+
   install -Dm 755 "$srcdir"/usr/share/doc/5up/copyright "$pkgdir"/usr/share/licenses/$pkgname/
-  install -Dm 755 "$srcdir/usr/bin/5up" "$pkgdir"/usr/bin/  
+  install -Dm 755 "$srcdir/usr/bin/5up" "$pkgdir"/usr/bin/
 }
-   

@@ -6,6 +6,7 @@ pkgbase = 5up-bin
 	arch = x86_64
 	license = GPL
 	depends = qt4
+	conflicts = 5up
 	options = !strip
 	source = http://5cm.ru/5up/installers/deb64/5up_1.7.0_amd64.deb
 	md5sums = 61871c0cbd74176da47235dc0f732160
