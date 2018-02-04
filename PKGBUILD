@@ -2,7 +2,7 @@
 
 pkgname=gnome-osx-space-grey-gtk-theme
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 epoch=5
 pkgdesc='Gnome-OSX V Space Grey GTK Theme'
 arch=('any')
