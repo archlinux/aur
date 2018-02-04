@@ -7,13 +7,12 @@
 pkgname=ruby-cri
 _gemname="${pkgname#ruby-}"
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for building easy-to-use commandline tools.'
 arch=(any)
 url='https://rubygems.org/gems/cri'
 license=(MIT)
 depends=('ruby-colored>=1.2')
-makedepends=(rubygems)
 options=(!emptydirs)
 source=("http://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
@@ -23,8 +22,9 @@ package() {
   # install gem
   HOME=/tmp gem install \
     --no-user-install \
+    --no-document \
     --ignore-dependencies \
-    --install-dir "${pkgdir}$(ruby -rubygems -e 'puts Gem.default_dir')" \
+    --install-dir "${pkgdir}$(ruby -e 'puts Gem.default_dir')" \
     --bindir "${pkgdir}/usr/bin" \
     "${srcdir}/${_gemname}-${pkgver}.gem"
 
