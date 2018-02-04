@@ -4,24 +4,24 @@
 _gemname=sexp_processor
 pkgname="ruby-${_gemname}"
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A branch of ParseTree that brings several sexp processing tools."
 arch=(any)
 url="https://github.com/seattlerb/sexp_processor"
 license=(MIT)
 depends=(ruby)
-makedepends=(rubygems)
 options=(!emptydirs)
 source=("http://gems.rubyforge.org/gems/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
 sha256sums=('b67a289ae4a3968d93dab0803d0ef5a262b6f94138ab98072e489d2aa8af4034')
 
 package() {
-  local _gemdir="$(ruby -rubygems -e 'puts Gem.default_dir')"
+  local _gemdir="$(ruby -e 'puts Gem.default_dir')"
 
   # install gem
   HOME=/tmp gem install \
     --no-user-install \
+    --no-document \
     --ignore-dependencies \
     --install-dir "${pkgdir}${_gemdir}" \
     --bindir "${pkgdir}/usr/bin" \
