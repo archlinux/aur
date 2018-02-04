@@ -7,13 +7,12 @@
 pkgname=ruby-ruby_parser
 _pkgname=ruby_parser
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby parser written in pure ruby.'
 arch=(any)
 url='https://github.com/seattlerb/ruby_parser'
 license=(MIT)
 depends=(ruby-sexp_processor)
-makedepends=(rubygems)
 options=(!emptydirs)
 source=(LICENSE "http://gems.rubyforge.org/gems/${_pkgname}-${pkgver}.gem")
 noextract=("${_pkgname}-${pkgver}.gem")
@@ -24,8 +23,9 @@ package() {
   # install gem
   HOME=/tmp gem install \
     --no-user-install \
+    --no-document \
     --ignore-dependencies \
-    --install-dir "${pkgdir}$(ruby -rubygems -e 'puts Gem.default_dir')" \
+    --install-dir "${pkgdir}$(ruby -e 'puts Gem.default_dir')" \
     --bindir "${pkgdir}/usr/bin" \
     "${srcdir}/${_pkgname}-${pkgver}.gem"
 
