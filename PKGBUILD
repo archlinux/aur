@@ -7,7 +7,7 @@ pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
-depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'opusfile' 'curl') #mariadb
+depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'opusfile' 'curl')
 makedepends=('cmake' 'imagemagick' 'gendesk' 'python' 'gtest')
 optdepends=('ddnet-skins: more skins for your tee'
             'ddnet-maps-git: have all DDNet maps available offline')
@@ -31,14 +31,14 @@ prepare() {
       # Requires 'ddnet-maps-git' package for using DDNet maps
       # Requires a mysql-like database package for score/ranking
     convert "../DDNet-$pkgver/other/icons/DDNet-Server.ico" DDNet-Server.png
-    gendesk -f -n --pkgname "DDNet-Server" --pkgdesc "DDNet Server"        \
+    gendesk -f -n --pkgname "DDNet-Server" --pkgdesc "DDNet Server"          \
         --name 'DDNet Server' --categories 'Game;ArcadeGame' --terminal=true \
         --exec='sh -c "cd /usr/share/ddnet/data && DDNet-Server"'
 }
 
 build() {
     cd build
-    cmake ../DDNet-$pkgver -DCMAKE_BUILD_TYPE=Release #-DMYSQL=ON
+    cmake ../DDNet-$pkgver -DCMAKE_BUILD_TYPE=Release
     make all tools
 }
 
