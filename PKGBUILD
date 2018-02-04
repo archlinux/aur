@@ -2,7 +2,7 @@
 
 pkgname=gnome-osx-hsierra-gtk-theme
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 epoch=5
 pkgdesc='Gnome-OSX V HighSierra GTK Theme'
 arch=('any')
