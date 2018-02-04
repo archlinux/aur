@@ -1,0 +1,15 @@
+pkgbase = dtl-git
+	pkgdesc = diff template library written in C++ (headers only)
+	pkgver = r18.9cf6da7
+	pkgrel = 1
+	url = https://github.com/cubicdaiya/dtl
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = scons
+	makedepends = gtest
+	source = git+https://github.com/cubicdaiya/dtl.git
+	sha256sums = SKIP
+
+pkgname = dtl-git
+
