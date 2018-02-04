@@ -5,14 +5,14 @@
 pkgname=easy-boot-creator
 _pkgname=easy-boot-creator
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to create a bootable usb stick quick and easy"
 url="https://einjel-frontend.herokuapp.com"
 
 arch=('x86_64')
 license=('GPL')
 
-depends=('tar' 'coreutils' 'util-linux' 'parted' 'gksu' 'git')
+depends=('tar' 'coreutils' 'util-linux' 'parted' 'gksu' 'git' 'sdl2_ttf' 'sdl2_image')
 optdepends=('ttf-dejavu')
 
 options=('!libtool' '!emptydirs')
