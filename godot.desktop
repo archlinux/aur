@@ -5,4 +5,4 @@ Exec=/usr/bin/godot %U
 Icon=godot
 Terminal=false
 Type=Application
-Categories=Utility;Game;
+Categories=Development;

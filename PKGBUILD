@@ -3,14 +3,14 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-git
-pkgver=3.0.r10546.93a3d1714
+pkgver=3.1.r12749.ea99b90a7
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('git' 'scons' 'pulseaudio' 'clang')                                                                                                                                                       
-depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa')
+depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa' 'openmp')
 optdepends=()
 conflicts=("godot")
 provides=("godot")
@@ -28,8 +28,8 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'd2f5ae30b8c0c3fd8a20a451d34e9e9d0ba1b60a39b1f68484a9a74227c83822'
-	'b6bb8e42625414303cf7608f08fe63bd3267486bf7a96586ebab05ade5189785'
+	'2ae039a3879b23e157f2125e0b326fa1ef66d56bfd596c790e8943d27652e93a'
+	'99f9d17c4355b274ef0c08069cf6e756a98cd5c9d9d22d1b39f79538134277e1'
 )
 
 
