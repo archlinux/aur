@@ -3,7 +3,7 @@
 ## Build from latest tag
 #_tag=$(git ls-remote -t --refs https://github.com/bitcoin/bitcoin.git | awk '{print $2}' | LC_ALL=C sort -bfV | sed  '/rc[0-9]/d' | tail -n1 | sed -n -e 's/^.*tags\///p')
 pkgname=bitcoin-gui-git
-pkgver=v0.15.1.r1.ga81642c65
+pkgver=v0.15.1.r16.gcb7ef312ff
 pkgrel=1
 pkgdesc='Most recent stable branch, UPNP disabled, w/ Bitcoin binaries, dev tools, GUI, and wallet'
 arch=('i686' 'x86_64')
