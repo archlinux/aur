@@ -1,4 +1,4 @@
-# Maintainer: KingofToasters <themanhimself@sgregoratto.me>
+# Maintainer: KingofToasters  <themanhimself@sgregoratto.me>
 
 pkgname=otpclient
 _dirname=OTPClient
