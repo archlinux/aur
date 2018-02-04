@@ -12,8 +12,8 @@ conflicts=('supercollider' 'sc3-plugins-git')
 provides=('supercollider')
 url="http://supercollider.github.io/"
 license=('GPL3')
-depends=('jack' 'fftw' 'cwiid' 'qtwebkit')
-makedepends=('cmake' 'ruby' 'emacs' 'git' 'qt5-tools')
+depends=('boost-libs' 'jack' 'fftw' 'cwiid' 'qt5-webkit')
+makedepends=('boost' 'cmake' 'ruby' 'emacs' 'git' 'qt5-tools')
 optdepends=('emacs: emacs interface'
             'gedit: gedit interface'
             'vim: vim interface'
