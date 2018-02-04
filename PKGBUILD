@@ -2,20 +2,18 @@
 
 pkgname=4kslideshowmaker
 pkgver=1.7.0.968
-pkgrel=1
+pkgrel=2
 pkgdesc="A straightforward and easy-to-use app to create slideshows from music and photos, with Instagram support."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-slideshowmaker"
 license=('custom:eula')
 depends=('qt5-script' 'qt5-quickcontrols' 'libexif' 'portaudio' 'ffmpeg2.8' 'libjpeg9')
-source=("${pkgname}.desktop"
+source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2"
+        "${pkgname}.desktop"
         "${pkgname}.png")
-source_i686=("${pkgname}_${pkgver}_i386.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_i386.tar.bz2")
-source_x86_64=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2")
-sha256sums=('e77851c895f713a7f615010c0b62d0749254dac5178f9853ae45a915ac1f84f0'
+sha256sums=('c5582e7bdee6761c9556f655f8a01ef19c8806c39df9e4f65bcaadafc8498332'
+            'e77851c895f713a7f615010c0b62d0749254dac5178f9853ae45a915ac1f84f0'
             '8e14e4f39f5b794b56dfe7246723e62b59ab9d664330065847cc90654aee3468')
-sha256sums_i686=('4a16d1b9c9262f3a4e9033e7d00e1db51223cd3d26c9249a0b4f40d69ea13a3c')
-sha256sums_x86_64=('c5582e7bdee6761c9556f655f8a01ef19c8806c39df9e4f65bcaadafc8498332')
 
 package() {
   # Install desktop file
