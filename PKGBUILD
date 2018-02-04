@@ -18,8 +18,8 @@ _jdk_build=16
 _tuxjdk_ver=03
 pkgver=${_java_ver}.${_jdk_update}.${_tuxjdk_ver}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=1
-arch=('i686' 'x86_64')
+pkgrel=2
+arch=('x86_64')
 url='https://github.com/tuxjdk/tuxjdk'
 license=('custom')
 makedepends=('jdk7-openjdk' 'ccache' 'cpio' 'unzip' 'zip'
@@ -35,7 +35,7 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         jaxp-${_repo_ver}.tar.gz::${_url_src}/jaxp/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}/langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz
-        https://github.com/guymers/tuxjdk/archive/${_java_ver}u${_jdk_update}.tar.gz)
+        https://github.com/tuxjdk/tuxjdk/archive/688b97a703c9207276b365872dd00c019b6401e1.tar.gz)
         #https://github.com/tuxjdk/tuxjdk/archive/${pkgver}.tar.gz)
 
 sha256sums=('ee7e72948d54de02f3eca1054def65e2a814c8597196cf1d83a52e9eb5d9258b'
@@ -46,23 +46,18 @@ sha256sums=('ee7e72948d54de02f3eca1054def65e2a814c8597196cf1d83a52e9eb5d9258b'
             'c9ea746cc4a04f9ccb35e4d2e0e495f3ac18a6b14be0af63803c9d329fe145ce'
             '15734ef517ec18b01f9af1d1d75277c133faa2c76a33e46320783cc19d054e00'
             '044d38671b209a0951cbc900a061f821b503580019f3c88015e0c298512e39c9'
-            '8695b5930bd465722d9eab8fecde34d53891866343850fc4acf5eaee12eb16d4')
+            '7464e57811d80c87179699c483d04c524fa2551e7879bdf264c108c0c1c20170')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
-  'i686'  ) _JARCH=i386  ; _DOC_ARCH=x86    ;;
 esac
 
 _jdkname=tuxjdk8
 _jvmdir=/usr/lib/jvm/java-8-tuxjdk
 _prefix="jdk8u-${_repo_ver}/image"
 _imgdir="${_prefix}/jvm/openjdk-1.8.0_$(printf '%.2d' ${_jdk_update})"
-_tuxjdkdir="tuxjdk-${_java_ver}u${_jdk_update}"
+_tuxjdkdir="tuxjdk-688b97a703c9207276b365872dd00c019b6401e1"
 #_tuxjdkdir="tuxjdk-${pkgver}"
-_nonheadless=(bin/policytool
-              lib/${_JARCH}/libjsound.so
-              lib/${_JARCH}/libjsoundalsa.so
-              lib/${_JARCH}/libsplashscreen.so)
 
 prepare() {
   cd "${srcdir}/jdk8u-${_repo_ver}"
@@ -101,15 +96,7 @@ build() {
     --with-zlib=system \
     --with-boot-jdk="/usr/lib/jvm/java-7-openjdk"
 
-    # TODO OpenJDK does not want last version of giflib (add 'giflib' as dependency once fixed)
-    #--with-giflib=system \
-
-  # Without 'DEBUG_BINARIES', i686 won't build
-  # http://mail.openjdk.java.net/pipermail/core-libs-dev/2013-July/019203.html
-  make \
-    DEBUG_BINARIES=true
-  # These help to debug builds:
-  #LOG=trace HOTSPOT_BUILD_JOBS=1
+  make
 
   make docs
 
