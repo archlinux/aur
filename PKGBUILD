@@ -7,7 +7,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver=latest
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A public domain map dataset, tightly integrated vector and raster data, to make maps.
 This package provides the raster data in 1:10mio and 1:50mio scale, converted to jpeg compressed tiff.
 WARNING: Build needs ca. 2.5 GiB space, install ca. 350 MiB big."
@@ -132,9 +132,9 @@ source=(
 
 sha256sums=(
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-  '01983e7a533a2bfc61ee704ec70ead8c78b276b35c8e6755ad8e671892c6eff1287320926bc36ea05fc8f203beee63ed8b2730878ea404c4faec32dbaf2758ac'
+  '45f326fc0252638f967288aacd06af66cc6738da1664b8e1a3e91a07be92842b'
   'SKIP'
-  '46be88d3c7eb023c4c719a8cc8ad98a4915886c283d78cd4134dea828a1c9f4b7199ecfd69bb7374e6e3653b06f5e18a56a17b060ad228ded472ef74b918b871'
+  '718babc7ca208819649828125942f68807006c9307205c0f041de9d7a7e927a0'
 )
 
 pkgver() {
