@@ -2,10 +2,10 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=4.14
+_basekernel=4.15
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.17
+pkgver=${_basekernel}.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -20,25 +20,25 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         '99-grub-ll.hook'
         'menu.lst'
         'preset')
-sha512sums=('77e43a02d766c3d73b7e25c4aafb2e931d6b16e870510c22cef0cdb05c3acb7952b8908ebad12b10ef982c6efbe286364b1544586e715cf38390e483927904d8' 'SKIP'
-            'fd785f0ab864ef4d2b18041183d867fb3a00e6d8718cb016d61a5c6de9f29f6653678ae6cc72593224da3e1bc44cc061d285a2f426ca1d62b4eb571549c440e3' 'SKIP'
-            'cfb57bae802283e7c5fcee08774d33df8e6b60cae0563bd58d0b316c3369faac8f9a666c1e90b9af761dc01fe6381cb1ad37bea8fab7a6f165263a1dd7c0ff0f'
+sha512sums=('c00d92659df815a53dcac7dde145b742b1f20867d380c07cb09ddb3295d6ff10f8931b21ef0b09d7156923a3957b39d74d87c883300173b2e20690d2b4ec35ea' 'SKIP'
+            'd0ffcf6f8311a9b4cfa42cd07c24429af4e2e735c9a841de2baa206873652a42aa4853f19fecc82a2fcf464a39b7a62249c940287a040c4a310e4d024ae5d55f' 'SKIP'
+            '61e6e47701c30ac5c683b86bf37405e9356177c2d5ef98fb401fc8cd2c2f89d09fa1bd47e8fc40ff24139f5ff1199311a23419abd4adb2a15f35629cf815e7b8'
             '7a80f858c32a9dd62f43aba0b7119a1196869216117164bcde24ab46022e8a1bbe27821faa26ca690a1633a5a9fe324e98e5cdf14f37591d569cbc71f542482d'
             'c57a6c8d9978cb6a1034bed33ba5e06bef9b134f22113761798d4fa46e8091e7b0bd26f3a14d79122ba780b2f7a93ca26850f4da6a654f81b34cc79c242f683f'
             'db9080b2548e4dcd61eaaf20cd7d37cbbc8c204ce85a2e3408d0671f6b26010f77a61affd2c77e809768714eca29d3afb64765a3f2099317a2c928eff3feb4cf'
             '73cb4c064d8942fddaac48158b7e77d19afc1cb61f83936f21832ba7d7266ccfd3021114252edd5cec5542096204f48cf30544fd6bffff79bc94d96fabe74f52'
             '62870a08f000abfe8eb1f50271afdf04686af108554f7629dc5e1d7610ad14bdc9cd14d2609270b83f9edb745a520b81fa7bfb92ebcc28a146df040c895b549b')
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7' 'SKIP'
-            '1e62d56e37bd15daec7c3d20a605624e1e0a21c44856880c6dbe0c9e41cabfa8' 'SKIP'
-            'b6286ad5338d6e8fd1050485db8ac49741036a5a8621d2dd2ac4f48991678d0a'
+sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769' 'SKIP'
+            '202a0a34f221ae335de096c292927d7a7d4bcdbc2dd46d43b8a5f6420f95a0cf' 'SKIP'
+            '05c2b7b4648d9fc6101e7ecfbc66d463dde6fa482f924f455a0aa2c0a62821b8'
             '7d56a81083d1468d90ebec97a44ec44f80f8cb87bd506ed1918d6664d6309ad5'
             '3efa91fcb4698bde0598678bbf9a4a747c011823af82704eed2c146ed7cd9734'
             '368fb58e7aa465f597e9a72da4b6eea4183c1a85242173412d54ad18d10d8fb3'
             'a055b6005a324240b35c416d9d08fba21c5f614eefb46f244035d04bf085224f'
             '29fa2c1ea75f55a61276496507b788b1a8bde1d7c16bee4f525651db34076e46')
-md5sums=('bacdb9ffdcd922aa069a5e1520160e24' 'SKIP'
-         '0f72d86a7829537e35ed1a47d0671939' 'SKIP'
-         '1104c462cda1b0de734d5b2a3c503fd1'
+md5sums=('0d701ac1e2a67d47ce7127432df2c32b' 'SKIP'
+         '839159e4710e11dcc836023b3d7b1bf7' 'SKIP'
+         'd677feac9fd958c345255de9391c3442'
          'bc30565cf444b710c252675cf65fb46e'
          'c52c29a8502f6c75e309208f0afab11f'
          '625481f015365febcd65aa136ee555f9'
