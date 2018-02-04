@@ -1,7 +1,7 @@
 pkgname=electrum-ltc
-pkgver=3.0.5.1
+pkgver=3.0.6.1
 pkgrel=1
-pkgdesc="Lightweight Litecoin client"
+pkgdesc='Lightweight Litecoin client'
 arch=(any)
 url=https://electrum-ltc.org/
 license=(MIT)
@@ -19,25 +19,27 @@ depends=(python-dnspython
          python-requests
          python-scrypt
          zbar)
-source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz
-        https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz.asc)
-validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
-sha256sums=(79189a3f8a42bbde69b967141cd733d90d114eacc3705714349f0dd4ea7f9aa9
-            SKIP)
+source=(
+  "electrum-ltc-$pkgver.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/$pkgver"
+)
+sha256sums=(9f219dc570f6a94374e92d36c7a9e0b7ce2dadc4345b2c0e415688aea23ba6ce)
 
 build() {
-  cd Electrum-LTC-$pkgver/
+  cd electrum-ltc-$pkgver/
+  pyrcc5 icons.qrc >gui/qt/icons_rc.py
+  protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
+  contrib/make_locale
   ./setup.py build
 }
 
 package() {
-  cd Electrum-LTC-$pkgver/
+  cd electrum-ltc-$pkgver/
 
-  ./setup.py install -O1 --root=$pkgdir/
+  ./setup.py install -O1 --root="$pkgdir"/
 
-  mkdir -p $pkgdir/usr/share/doc/electrum-ltc/
-  cp AUTHORS README.rst RELEASE-NOTES electrum-ltc.conf.sample $pkgdir/usr/share/doc/electrum-ltc/
+  mkdir -p "$pkgdir"/usr/share/doc/electrum-ltc/
+  cp AUTHORS README.rst RELEASE-NOTES electrum-ltc.conf.sample "$pkgdir"/usr/share/doc/electrum-ltc/
 
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-  cp LICENCE $pkgdir/usr/share/licenses/$pkgname/
+  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
+  cp LICENCE "$pkgdir"/usr/share/licenses/$pkgname/
 }

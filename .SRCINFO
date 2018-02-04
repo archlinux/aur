@@ -1,6 +1,6 @@
 pkgbase = electrum-ltc
 	pkgdesc = Lightweight Litecoin client
-	pkgver = 3.0.5.1
+	pkgver = 3.0.6.1
 	pkgrel = 1
 	url = https://electrum-ltc.org/
 	arch = any
@@ -19,11 +19,8 @@ pkgbase = electrum-ltc
 	depends = python-requests
 	depends = python-scrypt
 	depends = zbar
-	source = https://electrum-ltc.org/download/Electrum-LTC-3.0.5.1.tar.gz
-	source = https://electrum-ltc.org/download/Electrum-LTC-3.0.5.1.tar.gz.asc
-	validpgpkeys = CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA
-	sha256sums = 79189a3f8a42bbde69b967141cd733d90d114eacc3705714349f0dd4ea7f9aa9
-	sha256sums = SKIP
+	source = electrum-ltc-3.0.6.1.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/3.0.6.1
+	sha256sums = 9f219dc570f6a94374e92d36c7a9e0b7ce2dadc4345b2c0e415688aea23ba6ce
 
 pkgname = electrum-ltc
 
