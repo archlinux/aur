@@ -1,0 +1,29 @@
+pkgbase = gcc54
+	pkgdesc = The GNU Compiler Collection (5.4.x)
+	pkgver = 5.4.0
+	pkgrel = 1
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = binutils>=2.26
+	makedepends = libmpc
+	provides = gcc5
+	conflicts = gcc5
+	options = !emptydirs
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.4.0/gcc-5.4.0.tar.bz2
+	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
+	source = 0000-gcc-5.4.ucontext.patch
+	source = 0001-gcc-5.4-SIGSEGV.patch
+	source = 0002-gcc-5.4-__res_state.patch
+	md5sums = 4c626ac2a83ef30dfb9260e6f59c2b30
+	md5sums = 11436d6b205e516635b666090b94ab32
+	md5sums = d5ad288e14234f7961daf5c14eb3dc27
+	md5sums = 6fb3aa8e209629efd48197cc1d3445e2
+	md5sums = 206f4389209e5475faaa4538a4cc567b
+
+pkgname = gcc54
+

@@ -1,0 +1,10 @@
+--- libsanitizer/asan/asan_linux.cc.orig	2018-02-03 18:24:37.977222787 +0100
++++ libsanitizer/asan/asan_linux.cc	2018-02-03 18:25:03.873215178 +0100
+@@ -32,6 +32,7 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <unwind.h>
++#include <signal.h>
+ 
+ #if SANITIZER_FREEBSD
+ #include <sys/link_elf.h>

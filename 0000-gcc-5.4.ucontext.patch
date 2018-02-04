@@ -1,0 +1,13 @@
+--- libsanitizer/sanitizer_common/sanitizer_linux.h.orig	2018-02-03 18:21:04.356118422 +0100
++++ libsanitizer/sanitizer_common/sanitizer_linux.h	2018-02-03 18:22:01.547962570 +0100
+@@ -16,9 +16,9 @@
+ #include "sanitizer_common.h"
+ #include "sanitizer_internal_defs.h"
+ #include "sanitizer_platform_limits_posix.h"
++#include <sys/ucontext.h>
+ 
+ struct link_map;  // Opaque type returned by dlopen().
+-struct sigaltstack;
+ 
+ namespace __sanitizer {
+ // Dirent structure for getdents(). Note that this structure is different from
