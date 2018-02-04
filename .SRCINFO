@@ -1,20 +1,15 @@
 pkgbase = 5up-bin
 	pkgdesc = Handy screenshot making tool. Take screenshots, crop them, draw on them by using built-in editor and share your screenshots over the Internet by instant upload to img.5cm.ru image hosting server.
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://img.5cm.ru/
 	arch = x86_64
 	license = GPL
-	depends = glibc
 	depends = qt4
 	options = !strip
-	source = https://www.dropbox.com/s/osvw05faudyza5t/5up.deb
-	source = 5up.deb.sig
-	validpgpkeys = BC02894E554D22A62D381930300E89650A716A5A
+	source = http://5cm.ru/5up/installers/deb64/5up_1.7.0_amd64.deb
 	md5sums = 61871c0cbd74176da47235dc0f732160
-	md5sums = SKIP
 	sha256sums = 903fb07b86e729364b706d2bb629fe3d680eb509fde3d01a639d4178fe6f4f1b
-	sha256sums = SKIP
 
 pkgname = 5up-bin
 
