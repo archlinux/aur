@@ -21,8 +21,8 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod-lts
 _srcname=linux
-pkgver=4.14.15
-xanmod=20
+pkgver=4.14.17
+xanmod=21
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -31,7 +31,7 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=d9eb6c8046bcd2265f6bb6e2a777f4752a7ebc2f
+arch_config_trunk=3d60a37bad1ef43e3f4a3856aad16f909bc8a6c2
 
 # Arch additional patches
 arch_patches=(
@@ -50,7 +50,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux-lts&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${arch_config_trunk}")
 
-sha256sums=('819c76bd7d21a14b8da8f33445dbd009eb6d9bbe50dcf9770f50258f04159358'
+sha256sums=('043dbeb00d7cdf6b2f15801e23572527dbf41478ad9cdaa8fbe3454da3fc367d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -85,16 +85,7 @@ prepare() {
   sed -i "s|# CONFIG_STACK_VALIDATION.*|CONFIG_STACK_VALIDATION=y|" ./.config
 
   # Archlinux patches
-  # [0] disable USER_NS for non-root users by default
-  # [1] https://bugs.archlinux.org/task/56575
-  # [2] https://nvd.nist.gov/vuln/detail/CVE-2017-8824
   for n in ${arch_patches[@]} ; do patch -Np1 -i ../$n ; done
-
-  # CVE-2017-5715 [branch target injection] aka 'Spectre Variant 2'
-  sed -i "s|# CONFIG_RETPOLINE.*|CONFIG_RETPOLINE=y|" ./.config
-
-  # CVE-2017-5754 [rogue data cache load] aka 'Meltdown' aka 'Variant 3'
-  sed -i "s|# CONFIG_PAGE_TABLE_ISOLATION.*|CONFIG_PAGE_TABLE_ISOLATION=y|" ./.config
 
   # Enable IKCONFIG following Arch's philosophy
   sed -i "s|# CONFIG_IKCONFIG.*|CONFIG_IKCONFIG=y\nCONFIG_IKCONFIG_PROC=y|" ./.config
