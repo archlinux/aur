@@ -1,0 +1,77 @@
+diff -rupN gcc-7.2.0-pristine/gcc/config/msp430/msp430.c gcc-7.2.0-changed/gcc/config/msp430/msp430.c
+--- gcc-7.2.0-pristine/gcc/config/msp430/msp430.c	2017-03-10 20:43:48.186872000 -0500
++++ gcc-7.2.0-changed/gcc/config/msp430/msp430.c	2017-10-18 16:00:46.677567638 -0400
+@@ -748,6 +748,10 @@ hwmult_name (unsigned int val)
+ static void
+ msp430_option_override (void)
+ {
++  /* The MSP430 architecture can safely dereference a NULL pointer. In fact,
++  there are memory mapped registers there.  */
++  flag_delete_null_pointer_checks = 0;
++
+   init_machine_status = msp430_init_machine_status;
+ 
+   if (target_cpu)
+diff -rupN gcc-7.2.0-pristine/gcc/doc/g++.1 gcc-7.2.0-changed/gcc/doc/g++.1
+--- gcc-7.2.0-pristine/gcc/doc/g++.1	2017-08-14 04:30:43.506125138 -0400
++++ gcc-7.2.0-changed/gcc/doc/g++.1	2017-10-18 16:07:27.160923633 -0400
+@@ -7045,7 +7045,8 @@ Use \fB\-fno\-delete\-null\-pointer\-che
+ for programs that depend on that behavior.
+ .Sp
+ This option is enabled by default on most targets.  On Nios \s-1II ELF,\s0 it
+-defaults to off.  On \s-1AVR\s0 and \s-1CR16,\s0 this option is completely disabled.
++defaults to off.  On \s-1AVR\s0, \s-1CR16\s0, and \s-1MSP430\s0 this option is
++completely disabled.
+ .Sp
+ Passes that use the dataflow information
+ are enabled independently at different optimization levels.
+diff -rupN gcc-7.2.0-pristine/gcc/doc/gcc.1 gcc-7.2.0-changed/gcc/doc/gcc.1
+--- gcc-7.2.0-pristine/gcc/doc/gcc.1	2017-08-14 04:30:43.002125125 -0400
++++ gcc-7.2.0-changed/gcc/doc/gcc.1	2017-10-18 16:06:31.367587143 -0400
+@@ -7045,7 +7045,8 @@ Use \fB\-fno\-delete\-null\-pointer\-che
+ for programs that depend on that behavior.
+ .Sp
+ This option is enabled by default on most targets.  On Nios \s-1II ELF,\s0 it
+-defaults to off.  On \s-1AVR\s0 and \s-1CR16,\s0 this option is completely disabled.
++defaults to off.  On \s-1AVR\s0, \s-1CR16\s0, and \s-1MSP430\s0, this option is
++completely disabled.
+ .Sp
+ Passes that use the dataflow information
+ are enabled independently at different optimization levels.
+diff -rupN gcc-7.2.0-pristine/gcc/doc/gcc.info gcc-7.2.0-changed/gcc/doc/gcc.info
+--- gcc-7.2.0-pristine/gcc/doc/gcc.info	2017-08-14 04:30:40.618125066 -0400
++++ gcc-7.2.0-changed/gcc/doc/gcc.info	2017-10-18 16:05:19.124249722 -0400
+@@ -7070,7 +7070,7 @@ optimizations to be performed is desired
+      for programs that depend on that behavior.
+ 
+      This option is enabled by default on most targets.  On Nios II
+-     ELF, it defaults to off.  On AVR and CR16, this option is
++     ELF, it defaults to off.  On AVR, CR16, and MSP430, this option is
+      completely disabled.
+ 
+      Passes that use the dataflow information are enabled independently
+diff -rupN gcc-7.2.0-pristine/gcc/doc/invoke.texi gcc-7.2.0-changed/gcc/doc/invoke.texi
+--- gcc-7.2.0-pristine/gcc/doc/invoke.texi	2017-07-26 08:42:03.184523000 -0400
++++ gcc-7.2.0-changed/gcc/doc/invoke.texi	2017-10-18 16:04:16.724246191 -0400
+@@ -7618,7 +7618,7 @@ Use @option{-fno-delete-null-pointer-che
+ for programs that depend on that behavior.
+ 
+ This option is enabled by default on most targets.  On Nios II ELF, it
+-defaults to off.  On AVR and CR16, this option is completely disabled.  
++defaults to off.  On AVR, CR16, and MSP430, this option is completely disabled.
+ 
+ Passes that use the dataflow information
+ are enabled independently at different optimization levels.
+diff -rupN gcc-7.2.0-pristine/gcc/testsuite/lib/target-supports.exp gcc-7.2.0-changed/gcc/testsuite/lib/target-supports.exp
+--- gcc-7.2.0-pristine/gcc/testsuite/lib/target-supports.exp	2017-03-24 09:59:51.032979000 -0400
++++ gcc-7.2.0-changed/gcc/testsuite/lib/target-supports.exp	2017-10-18 16:26:11.234320570 -0400
+@@ -514,7 +514,8 @@ proc check_effective_target_keeps_null_p
+     if [target_info exists keeps_null_pointer_checks] {
+       return 1
+     }
+-    if { [istarget avr-*-*] } {
++    if { [istarget avr-*-*]
++	 || [istarget msp430-*-*] } {
+ 	return 1;   
+     }
+     return 0
