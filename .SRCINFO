@@ -1,7 +1,7 @@
 pkgbase = arm-frc-linux-gnueabi-gdb
 	pkgdesc = The GNU Debugger (arm-frc-linux-gnueabi)
-	pkgver = 8.0
-	pkgrel = 2
+	pkgver = 8.1
+	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
 	arch = x86_64
@@ -10,16 +10,14 @@ pkgbase = arm-frc-linux-gnueabi-gdb
 	makedepends = texinfo
 	makedepends = python
 	makedepends = guile2.0
-	makedepends = xz
 	depends = ncurses
 	depends = expat
 	depends = xz
+	depends = mpfr
 	depends = gdb-common
-	optdepends = openocd: for debugging JTAG targets
-	optdepends = stlink: for debugging over STLINK
 	options = !emptydirs
-	source = ftp://ftp.gnu.org/gnu/gdb/gdb-8.0.tar.xz
-	sha256sums = f6a24ffe4917e67014ef9273eb8b547cb96a13e5ca74895b06d683b391f3f4ee
+	source = ftp://ftp.gnu.org/gnu/gdb/gdb-8.1.tar.xz
+	sha256sums = af61a0263858e69c5dce51eab26662ff3d2ad9aa68da9583e8143b5426be4b34
 
 pkgname = arm-frc-linux-gnueabi-gdb
 
