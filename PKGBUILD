@@ -1,4 +1,5 @@
 # Contributor: Calimero <calimeroteknik@free.fr>
+# Contributor: jerry73204 <jerry73204@gmail.com>
 
 pkgname=mod_tile-git
 pkgver=0.4.r278.ge25bfdb
