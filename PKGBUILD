@@ -4,7 +4,7 @@
 pkgname=surfraw-git
 _gitname="Surfraw"
 pkgver=2018.02.03.g9b1b780
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell Users' Revolutionary Front Rage Against the Web"
 arch=('any')
 url="https://gitlab.com/surfraw/Surfraw"
