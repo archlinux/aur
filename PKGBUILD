@@ -5,7 +5,7 @@
 
 pkgname=vowpal_wabbit
 pkgver=8.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Vowpal Wabbit is a machine learning system which pushes the frontier of ML with techniques such as online, hashing, allreduce, reductions, learning2search, active, and interactive learning. Includes extra utilities."
 arch=(i686 x86_64)
 url='https://github.com/JohnLangford/vowpal_wabbit'
@@ -21,6 +21,8 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr
   make
+
+  sed -i '1 s|python|python2|' utl/vw-csv2bin
 }
 
 package() {
