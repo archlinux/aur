@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.15
-pkgver=4.15
+pkgver=4.15.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -12,14 +12,12 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-  'config'         # the main kernel config file
-  '60-linux.hook'  # pacman hook for depmod
-  '90-linux.hook'  # pacman hook for initramfs regeneration
-  'linux.preset'   # standard config files for mkinitcpio ramdisk
+  https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  config         # the main kernel config file
+  60-linux.hook  # pacman hook for depmod
+  90-linux.hook  # pacman hook for initramfs regeneration
+  linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 )
@@ -29,7 +27,9 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '8e80162a2d8952b7e0a4967647eed940b2b983e950bfe630918bd90cb1107a25'
+            '202a0a34f221ae335de096c292927d7a7d4bcdbc2dd46d43b8a5f6420f95a0cf'
+            'SKIP'
+            '991672fadc4b0346a4cede2cd51e6c8760cde996780e56f7e372d1d5ab66fb3a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -37,14 +37,13 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215')
 
 _kernelname=${pkgbase#linux}
+: ${_kernelname:=-ARCH}
 
 prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  #patch -p1 -i ../patch-${pkgver}
-
-  # security patches
+  patch -p1 -i ../patch-${pkgver}
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -55,15 +54,13 @@ prepare() {
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
-  cp -Tf ../config .config
-
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
+  cat ../config - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
 
   # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -109,7 +106,7 @@ _package() {
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  local _extramodules="extramodules-${_basekernel}${_kernelname}"
   ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook
