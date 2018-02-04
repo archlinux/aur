@@ -11,7 +11,7 @@ url="http://0pointer.de/lennart/projects/nss-mdns/"
 license=('LGPL')
 depends=('lib32-glibc')
 makedepends=('lib32-gcc-libs')
-source=("http://pkgs.fedoraproject.org/repo/pkgs/${_pkgname}/${_pkgname}-${pkgver}.tar.gz/03938f17646efbb50aa70ba5f99f51d7/${_pkgname}-${pkgver}.tar.gz")
+source=("http://0pointer.de/lennart/projects/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('03938f17646efbb50aa70ba5f99f51d7')
 
 build() {
