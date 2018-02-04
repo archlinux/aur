@@ -10,6 +10,7 @@ pkgbase = nestopia
 	makedepends = xdg-utils
 	makedepends = cmake
 	makedepends = git
+	makedepends = autoconf-archive
 	depends = sdl2
 	depends = gtk3
 	depends = glu
