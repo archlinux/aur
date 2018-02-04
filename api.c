@@ -78,8 +78,7 @@ double* api_get_current_price(char* ticker_name_string) {
 
 double* iex_get_price(char* ticker_name_string) {
     char* iex_api_string = calloc(64, sizeof(char));
-    sprintf(iex_api_string, "%s%s%s", "https://api.iextrading.com/1.0/stock/", ticker_name_string,
-            "/quote");
+    sprintf(iex_api_string, "%s%s%s", "https://api.iextrading.com/1.0/stock/", ticker_name_string, "/quote");
     String* pString = api_curl_data(iex_api_string, NULL);
     free(iex_api_string);
     if (strcmp(pString->data, "Unknown symbol") == 0) {
@@ -93,6 +92,7 @@ double* iex_get_price(char* ticker_name_string) {
     ret[0] = strtod(price_string, NULL);
     ret[1] = strtod(close_price_string, NULL);
     api_string_destroy(&pString);
+    json_object_put(jobj);
     return ret;
 }
 
@@ -159,15 +159,13 @@ double* coinmarketcap_get_price(char* ticker_name_string) {
     char* change_1d = (char*) json_object_get_string(percent_change_1d);
     double* ret = malloc(sizeof(double) * 2);
     ret[0] = strtod(price, NULL);
-    ret[1] = ret[0] - ((strtod(change_1d, NULL)/100) * ret[0]);
+    ret[1] = ret[0] - ((strtod(change_1d, NULL) / 100) * ret[0]);
     api_string_destroy(&pString);
     json_object_put(jobj);
     return ret;
 }
 
 void news_print_top_three(char* ticker_name_string) {
-    char* qchar = calloc(64, 1);
-    sprintf(qchar, "&q=%s", ticker_name_string);
     time_t now = time(NULL);
     struct tm* ts;
     char* yearchar = calloc(64, 1);
@@ -176,38 +174,38 @@ void news_print_top_three(char* ticker_name_string) {
     mktime(ts);
     strftime(yearchar, 64, "%Y-%m-%d", ts);
     char* news_api_string = calloc(256, sizeof(char));
-    sprintf(news_api_string, "%s%s&from=%s",
-            "https://newsapi.org/v2/everything?sortBy=popularity&pageSize=3&language=en&apiKey=1163c352d041460381f0a8273e60a9d1",
-            qchar, yearchar);
+    sprintf(news_api_string, "%s&from=%s&q=%s",
+            "https://newsapi.org/v2/everything?sortBy=relevancy&pageSize=3&language=en&apiKey=1163c352d041460381f0a8273e60a9d1",
+            yearchar, ticker_name_string);
     free(yearchar);
-    free(qchar);
     String* pString = api_curl_data(news_api_string, NULL);
-    json_print_news(pString->data);
+    //printf("%s\n", pString->data);
+    //printf("%s\n", news_api_string);
+    Json* jobj = json_tokener_parse(pString->data);
+    if (strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL,
+               10) > 0)
+        json_print_news(jobj);
+    else printf("No articles. Try a different input.\n");
     free(news_api_string);
     api_string_destroy(&pString);
+    json_object_put(jobj);
 }
 
-void json_print_news(char* data) {
-    Json* jobj = json_tokener_parse(data);
-    Json* articles = json_object_object_get(jobj, "articles");
-    const char* author_string, * title_string, * source_string, * url_string;
-    char* date_string;
-    Json* article, * source, * author, * title, * source_name, * date, * url;
-    for (int i = 0; i < 3; i++) {
-        article = json_object_array_get_idx(articles, (size_t) i);
-        author = json_object_object_get(article, "author");
-        author_string = json_object_to_json_string(author);
-        title = json_object_object_get(article, "title");
-        title_string = json_object_to_json_string(title);
-        source = json_object_object_get(article, "source");
-        source_name = json_object_object_get(source, "name");
-        source_string = json_object_to_json_string(source_name);
-        date = json_object_object_get(article, "publishedAt");
-        date_string = (char*) json_object_to_json_string(date);
-        date_string[11] = '\"';
-        date_string[12] = '\0';
-        url = json_object_object_get(article, "url");
-        url_string = json_object_to_json_string(url);
+void json_print_news(Json* jobj) {
+    Json* article_list = json_object_object_get(jobj, "articles");
+    Json* article;
+    char* author_string, * title_string, * source_string, * date_string, * url_string;
+    int results = (int) strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL,
+                               10);
+    for (int i = 0; i < results && i < 3; i++) {
+        article = json_object_array_get_idx(article_list, (size_t) i);
+        author_string = (char*) json_object_to_json_string(json_object_object_get(article, "author"));
+        title_string = (char*) json_object_to_json_string(json_object_object_get(article, "title"));
+        source_string = (char*) json_object_to_json_string(
+                json_object_object_get(json_object_object_get(article, "source"), "name"));
+        date_string = (char*) json_object_to_json_string(json_object_object_get(article, "publishedAt"));
+
+        url_string = (char*) json_object_to_json_string(json_object_object_get(article, "url"));
         char* url_final = calloc(strlen(url_string + 1), 1);
         for (int k = 0, j = 0; j < strlen(url_string); k++, j++) {
             if (url_string[j] == '\\' || url_string[j] == '\"')
@@ -215,15 +213,19 @@ void json_print_news(char* data) {
             url_final[k] = url_string[j];
         }
 
-        const char* shorten = google_shorten_link(url_final);
-        if (author_string != NULL)
-            printf("Title: %s Source: %s Author: %s Date: %s Url: %s\n", title_string, source_string, author_string,
-                   date_string, shorten);
-        else printf("Title: %s Source: %s Date: %s Url: %s\n", title_string, source_string, date_string, shorten);
+        char* shorten = (char*) google_shorten_link(url_final);
+        printf("Title: %s Source: %s ", title_string, source_string);
+        if (strcmp(author_string, "null") != 0)
+            printf("Author: %s ", author_string);
+        if (strcmp(date_string, "null") != 0) {
+            date_string[11] = '\"';
+            date_string[12] = '\0';
+            printf("Date: %s ", date_string);
+        }
+        printf("Url: %s\n", shorten);
         free(url_final);
         free((void*) shorten);
     }
-    json_object_put(jobj);
 }
 
 const char* google_shorten_link(char* url_string) {
@@ -231,7 +233,6 @@ const char* google_shorten_link(char* url_string) {
     char* post_string = calloc(1024, 1);
     sprintf(post_string, "{\"longUrl\": \"%s\"}", url_string);
     String* pString = api_curl_data(google_api_string, post_string);
-    free(google_api_string);
     free(post_string);
     Json* jobj = json_tokener_parse(pString->data);
     Json* short_url = json_object_object_get(jobj, "id");

@@ -62,7 +62,8 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
         free(end);
         fclose(fp);
     } else {
-        if (strlen(ticker_name_string) > 16 || (api_get_current_price(ticker_name_string) == NULL && strcmp("USD$", ticker_name_string) != 0)) {
+        if (strlen(ticker_name_string) > 16 ||
+            (api_get_current_price(ticker_name_string) == NULL && strcmp("USD$", ticker_name_string) != 0)) {
             printf("Invalid symbol.\n");
             return;
         }
@@ -99,6 +100,7 @@ double portfolio_get_usd_spent(char* ticker_name_string, FILE* fp) {
 }
 
 void portfolio_print_all(FILE* fp) {
+    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)\n");
     char* str = (char*) calloc(64, sizeof(char));
     char* ticker_name_string = (char*) calloc(32, sizeof(char));
     double* data;
@@ -121,9 +123,9 @@ void portfolio_print_all(FILE* fp) {
         memset(ticker_name_string, '\0', 32);
         free(data);
     }
-    printf("\nTotals: Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %6.2lf (%4.2lf%%) 1d: %6.2lf (%4.2lf%%)\n",
+    printf("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
            total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
-            total_gain_1d, 100 * total_gain_1d / total_spent);
+           total_gain_1d, 100 * total_gain_1d / total_spent);
     free(str);
     free(ticker_name_string);
 }
@@ -154,9 +156,10 @@ double* portfolio_print_stock(char* ticker_name_string, FILE* fp) {
             ticker_1d_percent_change = 100 * (ticker_current_price_usd / ticker_1d_price_usd - 1);
             a[0] *= ticker_current_price_usd;
         }
-        printf("%8.2lf %6s. Value: $%8.2lf. Expenditure: $%8.2lf. Profit: %8.2lf (%6.2lf%%). 1d: %8.2lf (%6.2lf%%).\n",
-               a[0] / ticker_current_price_usd, ticker_name_string, a[0], a[1], a[0] - a[1], (100 * (a[0] - a[1])) / a[1],
-        a[2], ticker_1d_percent_change);
+        printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
+               a[0] / ticker_current_price_usd, ticker_name_string, a[0], a[1], a[0] - a[1],
+               (100 * (a[0] - a[1])) / a[1],
+               a[2], ticker_1d_percent_change);
     }
     return a;
 }

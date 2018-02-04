@@ -94,7 +94,7 @@ void news_print_top_three(char* ticker_name_string);
  * Given a JSON formatted string, print title, source, author, and url of articles
  * @param data the json formatted data
  */
-void json_print_news(char* data);
+void json_print_news(Json* jobj);
 
 /**
  * Given a url, returns a shorter link using goo.gl
