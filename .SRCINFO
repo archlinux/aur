@@ -1,6 +1,6 @@
 pkgbase = python-declxml
 	pkgdesc = Declarative XML processing for Python.
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 2
 	url = https://pypi.python.org/pypi/declxml
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-declxml
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-declxml-0.10.0.tar.gz::https://github.com/gatkin/declxml/archive/0.10.0.tar.gz
-	sha256sums = aa3d919a5ac41b47dd1e02fc3f135571cbf83dbe3a85a745348d938c81329b1d
+	source = python-declxml-0.11.0.tar.gz::https://github.com/gatkin/declxml/archive/0.11.0.tar.gz
+	sha256sums = 4102fe3d22377d3a2a27d5fe92489722d2be74df35e5b709f20bbbc9d130a897
 
 pkgname = python-declxml
 
