@@ -1,7 +1,7 @@
 # Maintainer: Maxime Poulin <maxpoulin64@gmail.com>
 pkgname='thelounge'
 _npmname='thelounge'
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Web-based IRC client - Official community fork of Shout"
 url='https://thelounge.github.io/'
@@ -18,7 +18,7 @@ source=(
 )
 noextract=("$_npmname-$pkgver.tgz")
 sha256sums=(
-	'411428dca62edb956623fbaac1db3233653810e90df8ad4df8f2fdd91656121d'
+	'3dfe65a716fd23436d7d711b33ad6d89e1aa649fd696cfdef36fdfa5862cb2cc'
 	'SKIP'
 	'SKIP'
 )
@@ -29,7 +29,7 @@ package() {
 	
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 	
-	echo "/etc/lounge" > "$pkgdir/usr/lib/node_modules/$_npmname/.lounge_home"
+	echo "/etc/thelounge" > "$pkgdir/usr/lib/node_modules/$_npmname/.lounge_home"
 	
 	install -dm700 "$_etc" "$_etc/users"
 	install -Dm600 \

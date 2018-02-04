@@ -6,7 +6,8 @@ After=network.target
 User=thelounge
 Group=thelounge
 Type=simple
-ExecStart=/usr/bin/lounge --home /etc/thelounge start
+Environment=THELOUNGE_HOME=/etc/thelounge
+ExecStart=/usr/bin/lounge start
 ProtectSystem=yes
 ProtectHome=yes
 NoNewPrivileges=yes
