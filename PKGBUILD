@@ -5,7 +5,7 @@
 # in the arch packages now they are mainlined.
 
 pkgname=openvas-systemd
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc="systemd unit files for OpenVAS"
 url="http://openvas.org"
@@ -18,7 +18,7 @@ optdepends=('openvas-scanner: main program'
 
 groups=('openvas')
 source=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ff707b49c68d8c39d184557541b20b6024e23956f7c18dbe79d6a50c0eacf118')
+sha256sums=('bfe0d8757aa593982fe352c7246b4b7def4a808dcbf608c6eec12d3320b80647')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
