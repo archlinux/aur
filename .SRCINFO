@@ -1,24 +1,37 @@
 pkgbase = python-varcode
-	pkgdesc = Library for manipulating genomic variants and predicting their effects.
+	pkgdesc = Python library for manipulating genomic variants and predicting their effects
 	pkgver = 0.5.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/varcode
-	arch = x86_64
-	license = Apache2.0
+	arch = any
+	license = Apache
+	makedepends = python
 	makedepends = python-setuptools
-	depends = python
-	depends = python-biopython>=1.64
-	depends = python-memoized-property>=1.0.2
-	depends = python-numpy>=1.7
-	depends = python-numpy<2.0
-	depends = python-pandas>=0.15
-	depends = python-pyensembl>=1.0.3
-	depends = python-pyvcf>=0.6.7
-	depends = python-sercol>=0.1.0
-	depends = python-serializable>=0.0.8
+	makedepends = python2
+	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.python.org/packages/3a/f2/088d572940ebe0d1e87aee7e7a79308c8c18391124061c0d8362a56ff1e7/varcode-0.5.15.tar.gz
-	md5sums = 2dd5164f11ad90ed9b9c3ac8c03764e1
+	source = python-varcode-0.5.15.tar.gz::https://pypi.python.org/packages/3a/f2/088d572940ebe0d1e87aee7e7a79308c8c18391124061c0d8362a56ff1e7/varcode-0.5.15.tar.gz
+	sha256sums = 27b5617eaa198e3942b21ff7fd0e6eb09ff748c2a259f0ab484876dcd50291c1
 
 pkgname = python-varcode
+	depends = python
+	depends = python-biopython
+	depends = python-memoized-property
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-pyensembl
+	depends = python-pyvcf
+	depends = python-sercol
+	depends = python-serializable
+
+pkgname = python2-varcode
+	depends = python2
+	depends = python2-biopython
+	depends = python2-memoized-property
+	depends = python2-numpy
+	depends = python2-pandas
+	depends = python2-pyensembl
+	depends = python2-pyvcf
+	depends = python2-sercol
+	depends = python2-serializable
 
