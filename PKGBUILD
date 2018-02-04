@@ -57,13 +57,14 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  python2 setup.py build
+  2to3 -w *.py deluge tests
+  python setup.py build
 }
 
 package() {
   cd "${srcdir}/$_gitname"
-
-  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  2to3 -w *.py deluge tests
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   
   cd "${srcdir}"
   install -Dm644 deluge.tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/deluge.conf"
