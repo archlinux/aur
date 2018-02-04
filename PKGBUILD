@@ -52,6 +52,6 @@ package() {
     --optimize=1 \
     --prefix=/usr \
     --root="${pkgdir}"
-  install -vDm644 README.md "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
