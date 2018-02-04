@@ -1,13 +1,13 @@
 # Maintainer: Wolfgang Popp <mail@wolfgang-popp.de>
 
 pkgname=studip-sync-git
-pkgver=r36.5e85f82
+pkgver=r43.02eead4
 pkgrel=1
 pkgdesc="Sync your files from Stud.IP"
 arch=('any')
 url="https://github.com/woefe/studip-sync"
 license=('UNLICENSE')
-depends=('rsync' 'python-requests' 'phantomjs' 'python-selenium')
+depends=('rsync' 'python-requests' 'geckodriver' 'python-selenium')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/woefe/studip-sync.git")
 md5sums=('SKIP')
