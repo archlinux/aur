@@ -7,7 +7,7 @@
 pkgname=deluge-stable-git
 _gitname="deluge"
 _gitbranch="1.3-stable"
-pkgver=1.3.15.r6.g6d14be18b
+pkgver=1.3.15.r14.gb8e5ebe82
 pkgrel=1
 pkgdesc="A bittorrent client written with python and pygtk - Git Stable branch Version"
 arch=('any')
@@ -32,7 +32,9 @@ optdepends=('libtorrent-rasterbar: deluge daemon, including local daemon'
             'python2-notify: libnotify notifications'
             'pygtk: needed for gtk ui'
             'librsvg: needed for gtk ui'
-            'python2-mako: needed for web ui')
+            'python2-mako: needed for web ui'
+			'python2-pygame: audible notifications'
+			'python2-libappindicator: appindicator notifications')
 provides=('deluge')
 conflicts=('deluge' 'deluge-svn' 'deluge-stable' 'deluge-git')
 replaces=('deluge-svn' 'deluge-stable')
@@ -69,6 +71,8 @@ package() {
   install -Dm644 deluge-web.service "$pkgdir/usr/lib/systemd/system/deluge-web.service"
   install -Dm644 deluged.conf "$pkgdir/etc/conf.d/deluged"
 
-  install -d "$pkgdir/srv"
-  install -d -m 664 -o 125 -g 125 "$pkgdir/srv/deluge"
+  echo 'u deluge - "Deluge BitTorrent daemon" /srv/deluge' |
+	      install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  echo 'd /srv/deluge 0775 deluge deluge' |
+	      install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
