@@ -30,8 +30,8 @@ fi
 install=doom3.install
 source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
     'doom3.launcher64' 'doom3-dedicated.launcher64' 'doom3.png' \
-    "ftp://ftp.idsoftware.com/idstuff/source/idtech4-doom3-source-GPL.zip" \
-    "ftp://ftp.idsoftware.com/idstuff/doom3/linux/${pkgname}-linux-${pkgver}.x86.run")
+    'http://www.gamers.org/pub/idgames/idstuff/source/idtech4-doom3-source-GPL.zip' \
+    "http://www.gamers.org/pub/idgames/idstuff/doom3/linux/${pkgname}-linux-${pkgver}.x86.run")
 provides=('doom3')
 conflicts=('doom3-bin' 'iodoom3' 'iodoom3-git' 'iodoom3-bin')
 sha256sums=('ea9fe17fdb19cfe8a22e2b7859093f7a76eeaa51fd2571507b6dc37462515f21'
