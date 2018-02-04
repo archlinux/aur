@@ -3,7 +3,7 @@
 # Contributor: Alexander Bantyev <balsoft@yandex.ru>
 
 pkgname=qomp
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Quick(Qt) Online Music Player"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ depends=('taglib' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
          'gstreamer' 'libcue' 'gst-plugins-good')
 optdepends=('gst-plugins-bad'
             'gst-plugins-ugly')
-makedepends=('git' 'make' 'cmake')
-_commit=0ba092306affeb2c68b1a00dedbf5fa8f749ad45 #tag 1.2.1
+makedepends=('git' 'cmake')
+_commit=230443ed40a99cedbfee7624dcce6db16977a9f6 #tag 1.3.1
 source=("git+https://github.com/qomp/qomp#commit=$_commit")
 md5sums=('SKIP')
 
@@ -34,9 +34,7 @@ build() {
 	-DCMAKE_BUILD_TYPE=Release
   make
 }
-
 package() {
   cd "$srcdir/${pkgname}"
   make DESTDIR="$pkgdir/"  install
 }
-
