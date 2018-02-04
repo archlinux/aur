@@ -6,7 +6,7 @@
 pkgname=fakeroot-tcp
 _pkgname=fakeroot
 pkgver=1.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for simulating superuser privileges,with tcp ipc'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
