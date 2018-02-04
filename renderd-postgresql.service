@@ -1,0 +1,14 @@
+[Unit]
+Description=renderd
+Documentation=man:renderd(1)
+
+After=postgresql.service
+Requires=postgresql.service
+PartOf=postgresql.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/renderd
+
+[Install]
+WantedBy=multi-user.target
