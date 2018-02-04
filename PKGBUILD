@@ -1,7 +1,7 @@
 #Maintainer: naruto522ru <itachi522ru@gmail.com>
 pkgname=5up-bin
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Handy screenshot making tool. Take screenshots, crop them, draw on
  them by using built-in editor and share your screenshots over the Internet by
  instant upload to img.5cm.ru image hosting server.'

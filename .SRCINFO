@@ -1,7 +1,7 @@
 pkgbase = 5up-bin
 	pkgdesc = Handy screenshot making tool. Take screenshots, crop them, draw on them by using built-in editor and share your screenshots over the Internet by instant upload to img.5cm.ru image hosting server.
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://img.5cm.ru/
 	arch = x86_64
 	license = GPL
