@@ -1,7 +1,7 @@
 pkgbase = sir
 	pkgdesc = Simple image resizer in Qt
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://marek629.github.io/SIR/
 	arch = i686
 	arch = x86_64
