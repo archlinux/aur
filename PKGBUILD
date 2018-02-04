@@ -1,13 +1,13 @@
 pkgname=terasology-devbuild
-pkgver=2099
-_omega_ver=857
+pkgver=2104
+_omega_ver=862
 pkgrel=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft! (Last succesful development build)"
 arch=('x86_64' 'i686')
 license=('Apache')
 url="http://terasology.org"
 options=('!strip')
-depends=('java-environment-openjdk=8' 'openal' 'libxcursor' 'libxxf86vm' 'libxrandr' 'lwjgl2')
+depends=('java-environment-openjdk>=8' 'openal' 'libxcursor' 'libxxf86vm' 'libxrandr' 'lwjgl2')
 makedepends=('unzip')
 source=(
     "$pkgname"
@@ -16,7 +16,7 @@ source=(
 )
 sha512sums=('9d2562e769aee38a09de315f9900754827ec2720400e10553f0cbf78c0834bf325220c42c249f17999bc764aa4a0c12aa7abe162d43ea5327672c2fa88fa2669'
             '9ecacc34ae0a17cfe1031f32ee4f25e4e840bed072445ac0a8ffc1b2a012a7b60fed739fcc2ceab8083293a31e7409406bc190c4295022df82815f48c5541d19'
-            '78810d2c5512452091128bf0f5310b3090b756a798dad99b2eb212a5c8a6d4222db436de74c3c5cc830e159f757d870fdd02ef000cd3ed4801179e429ecd2e20')
+            '3dd20b693a405ffb3e6552437f3e7be5359f607aec676af203e7f15477419de41516d350d1d7c9b639e20c391fdbcfad2da64feb4913d7858c416601e294dcf2')
 
 package() {
     cd "$srcdir"
