@@ -1,0 +1,17 @@
+pkgbase = python-py3amf-git
+	pkgdesc = AMF support for Python
+	pkgver = 0.8.7.r0.g06c5ee6
+	pkgrel = 1
+	url = https://github.com/StdCarrot/Py3AMF
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-defusedxml
+	provides = python-pyamf=0.8.7.r0.g06c5ee6
+	conflicts = python-pyamf
+	source = python-py3amf-git::git+https://github.com/StdCarrot/Py3AMF.git
+	md5sums = SKIP
+
+pkgname = python-py3amf-git
+
