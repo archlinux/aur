@@ -6,13 +6,13 @@
 
 pkgname=nestopia
 pkgver=1.48
-pkgrel=2
+pkgrel=3
 pkgdesc='An NES emulator featuring cycle exact emulation, a ridiculous number of mappers, and lots of custom sound chips.'
 url='http://0ldsk00l.ca/nestopia/'
 license=('GPL')
 arch=('x86_64')
-depends=('sdl2' 'gtk3' 'glu' 'libarchive' 'libao')
-makedepends=('unzip' 'mesa' 'xdg-utils' 'cmake' 'git' 'autoconf-archive')
+depends=('sdl2' 'gtk3' 'libarchive' 'libao')
+makedepends=('unzip' 'mesa' 'xdg-utils' 'git' 'autoconf-archive')
 source=("git+https://github.com/rdanbrook/nestopia.git#tag=$pkgver")
 sha256sums=('SKIP')
 
