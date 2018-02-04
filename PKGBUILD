@@ -6,9 +6,9 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 
-_stable_branch="v3_3_x"
+_stable_branch="v4_0_x"
 pkgname=qbittorrent-stable-git
-pkgver=3.3.16.r3.gcc8580631
+pkgver=4.0.3.r34.g239d14fd1
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. Built from source."
 arch=('i686' 'x86_64')
