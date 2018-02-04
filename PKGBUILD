@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname="asf"
-pkgver="3.0.5.9"
+pkgver="3.1.0.0"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('any')
@@ -18,13 +18,13 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/JustArchi/ArchiSteamFarm/r
         "${pkgname}-user.service"
         "${pkgname}.sysusers"
         "NLog.config")
-sha256sums=('0c8904c87d7fe74281469f14705679b80f62809e567bf8b64b15dfd63a56547d'
+sha256sums=('107fe0f7bc4bca1923b5c7803e2e29d9d98c77309e5263effb76b6026c4c7bd0'
             '8d76996c1024b80704b25af8a8800ef3f8a8a518d19c2a1e85ba62b58b22cdfd'
             'e63b55f65e1c0c935945bd788f47a77be82e96a409b64660b5a96b9c190964ff'
             'dcaf43586125e07488e338438158097b31ba335fcb238127dfb785a41d223f49'
             '883373be23f6f49ae597f61c1310d8cd45bce7c3ee1b5d456ffc9fedbe7dd486'
-            'cd2c704c01217c103f8ad1729920a142f63f686351c6a9557c50a33fb3c723fe')
-noextract=('asf-3.0.5.9.zip')
+            'bfefd169626c3aff072e361a0517f2fbc0d2d403c8c61e1659c0bd0174d3d14a')
+noextract=('asf-3.1.0.0.zip')
 
 prepare() {
     7z x -o"${srcdir}/asf" ${pkgname}-${pkgver}.zip

@@ -1,3 +1,12 @@
+2018-02-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.1.0.0-1:
+    [!] Fixed Steam breaking change that made ASF 2FA unable to fetch confirmations in all previous versions.
+    [!] Added alpha release of upcoming IPC GUI.
+    Added new IPC API endpoints: /Api/ASF, /Api/Log.
+    Added new HistoryTarget NLog logging target for internal ASF usage.
+    Further optimized the size of OS-specific builds.
+    Usual amount of code improvements, optimizations and bugfixes.
+    package: added HistoryTarget to NLog.config
 2018-01-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.0.5.9-1:
     Fixed V3.0.5.7 regression that could lead to potential ASF crash in OS-specific variants.
