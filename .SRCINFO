@@ -1,6 +1,6 @@
 pkgbase = pirate-get
 	pkgdesc = A command line interface for the Pirate Bay
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/vikstrous/pirate-get/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = pirate-get
 	depends = python-beautifulsoup4
 	depends = python-termcolor
 	depends = python-colorama
-	source = pirate-get-0.2.11.tar.gz::https://github.com/vikstrous/pirate-get/archive/v0.2.11.tar.gz
-	sha256sums = b568e94f463e99e0f9b6751c67090a63ed00c2b340be9100ff7105cb5a42f429
+	source = pirate-get-0.2.12.tar.gz::https://github.com/vikstrous/pirate-get/archive/v0.2.12.tar.gz
+	sha256sums = 1040ee051710b3d6ab8c59f5c6ffec24f003fd590a6f88373598bd09242a9063
 
 pkgname = pirate-get
 

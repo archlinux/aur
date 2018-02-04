@@ -3,7 +3,7 @@
 # Contributor: Wilson Birney <wpbirney@gmail.com>
 
 pkgname=pirate-get
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc='A command line interface for the Pirate Bay'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://github.com/vikstrous/pirate-get/'
 license=('AGPL')
 depends=('python-setuptools' 'python-veryprettytable' 'python-beautifulsoup4' 'python-termcolor' 'python-colorama')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vikstrous/pirate-get/archive/v${pkgver}.tar.gz")
-sha256sums=('b568e94f463e99e0f9b6751c67090a63ed00c2b340be9100ff7105cb5a42f429')
+sha256sums=('1040ee051710b3d6ab8c59f5c6ffec24f003fd590a6f88373598bd09242a9063')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
