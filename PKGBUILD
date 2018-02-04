@@ -4,7 +4,7 @@ _pkgname=balong-usbdload
 pkgname="${_pkgname}-git"
 _pkgver=latest
 pkgver=r83.fdcec46
-pkgrel=1
+pkgrel=2
 pkgdesc='Low level USB Flashing/ downloader utility for Huawei E3372 and other modems baesd on Balong v7. Includes temporary usb loader "firmware" for some devices.'
 arch=('i686' 'x86_64')
 url="http://github.com/forth32/balong-usbdload"
@@ -19,11 +19,6 @@ provides=(
 conflicts=("${_pkgname}")
 options=()
 
-pkgver() {
-  cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 source=(
   "${_pkgname}::git+https://github.com/forth32/balong-usbdload.git"
   "helpmessages_english.txt"
@@ -35,6 +30,11 @@ sha256sums=(
   '96346a31d173909514a29dca5e2a7eb0540b635ae42220b179f2654a35e9d2ab'
   'b418646e48436a8b55733bf270e3050cbf6ecaa1ec31862f06754333dd691594'
 )
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${srcdir}/${_pkgname}"
