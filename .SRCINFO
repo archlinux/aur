@@ -1,0 +1,20 @@
+pkgbase = ffscreencast
+	pkgdesc = ffmpeg screencast/desktop-recording with video overlay and multi monitor support
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/cytopia/ffscreencast
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = ffmpeg
+	depends = v4l-utils
+	depends = alsa-utils
+	depends = xorg-xdpyinfo
+	provides = ffscreencast
+	source = git+https://github.com/cytopia/ffscreencast.git
+	md5sums = SKIP
+
+pkgname = ffscreencast
+
