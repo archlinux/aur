@@ -2,7 +2,7 @@
 # Contributor: andychu <andy@oilshell.org>
 pkgname=osh
 _pkgname=oil
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A bash-compatible UNIX shell written in Python."
 arch=("x86_64" "i686")
