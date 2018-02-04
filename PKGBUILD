@@ -1,6 +1,6 @@
 # Maintainer: Gaute Hope <eg@gaute.vetsj.com>
 pkgname=astroid
-pkgver=0.10.2
+pkgver=0.11
 pkgrel=1
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
@@ -9,7 +9,7 @@ url="https://github.com/astroidmail/astroid"
 license=('GPL')
 groups=()
 depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkitgtk' 'libsass' 'libpeas' 'gobject-introspection')
-makedepends=('meson' 'git' 'pkg-config' 'python-gobject')
+makedepends=('cmake' 'git' 'pkg-config' 'python-gobject' 'marked')
 checkdepends=('notmuch-runtime')
 optdepends=('gvim: default editor'
             'emacs: can be used as editor'
@@ -23,19 +23,20 @@ install=$pkgname.install
 changelog=
 source=(https://github.com/astroidmail/astroid/archive/v${pkgver}.tar.gz)
 noextract=()
-sha256sums=('ff2941786b0aad221fe428f7d2b961056ec15437ad2070860cd6f1d4d3cd653a')
+sha256sums=('f2ab06859e3d2d6a8e947b6fd640de61b8c49cd0ebbbaaa2df9527ce2efa40db')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  LC_ALL=C meson build --prefix=/usr --buildtype release
+  mkdir -p build
   cd build
+  cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release
   ninja
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
   cd build
-  meson test
+  ninja test
 }
 
 package() {
