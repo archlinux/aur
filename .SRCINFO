@@ -13,7 +13,6 @@ pkgbase = nestopia-git
 	makedepends = autoconf-archive
 	depends = sdl2
 	depends = gtk3
-	depends = glu
 	depends = libarchive
 	source = git+https://github.com/rdanbrook/nestopia.git
 	sha256sums = SKIP
