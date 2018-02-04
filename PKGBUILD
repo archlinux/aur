@@ -45,4 +45,4 @@ package() {
 	install -Dm644 "$srcdir/mopidy-user.service" "$pkgdir/usr/lib/systemd/user/mopidy.service"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-# vim:set ts=2 sw=2 noet:
+# vim: set ts=2 sw=2 noet:
