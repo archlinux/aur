@@ -2,16 +2,16 @@
 # http://packages.gentoo.org/package/sci-visualization/gwyddion
 
 pkgname=gwyddion
-pkgver=2.49
+pkgver=2.50
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 #A modular program for SPM (scanning probe microscopy) and other 2D (height field) data visualization and analysis"
 url="http://gwyddion.net/"
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=(gtkglext pygtk openexr fftw libunique)
+depends=(gtkglext pygtk openexr fftw libunique minizip)
 #depends=('freeglut' 'gtksourceview')
-makedepends=('pkgconfig')
+makedepends=('pkgconfig' 'gconf')
 optdepends=('libxml2: import of SPML and APE DAX data files'
             'zlib: import of SPML data files and import of gzip-compressed data from other file formats (Createc, NRRD, RHK SM4 PRM metadata)'
             'perl: development of plug-in'
@@ -24,7 +24,7 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'libzip: import of APE DAX, NanoObserver, NanoScanTech, OpenGPS and Sensofar PLUX data files'
             'cfitsio: import of Flexible Image Transport System (FITS) files')
 source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
-sha256sums=('625cf6766de5576491e84f4fbb712c568e2f63f4eec6b24a484c5b27dd04fe32')
+sha256sums=('a511b528bfc0fbd53d0d867ece37ce4bf84c0989f75e535631ce60cff77b48ad')
 
 prepare() {
   cd $pkgname-$pkgver
