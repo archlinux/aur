@@ -1,22 +1,28 @@
 pkgbase = caveexpress
 	pkgdesc = Classic 2D platformer with physics-based gameplay and dozens of levels
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = http://www.caveproductions.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = CCPL
+	makedepends = cmake
+	makedepends = glm
 	depends = sdl2_mixer
 	depends = sdl2_image
 	depends = sdl2_net
 	depends = sqlite3
-	depends = tinyxml2
-	depends = lua
-	source = caveexpress-2.3.tar.gz::https://github.com/mgerhardy/caveexpress/archive/2.3.tar.gz
-	source = caveexpress-2.3-issue6.patch
-	sha256sums = 04cb5a75f66eb63f4f09c798559da0363f01b35903651203bd07e9e1dfacb92a
-	sha256sums = 83315c329d0e68c2bac8738ffa09f885a629ecc7f099a1e102bc59f22513f778
+	depends = lua52
+	depends = box2d
+	source = caveexpress-2.4.tar.gz::https://github.com/mgerhardy/caveexpress/archive/2.4.tar.gz
+	source = caveexpress-do-not-sort-empty-cmake-list.patch::https://github.com/mgerhardy/caveexpress/pull/95.patch
+	source = caveexpress-use-system-box2d.patch
+	source = caveexpress-installation-paths.patch
+	sha256sums = c1bf0707a4a2bcf2358b2791d97674a790d9fdce3ba29c695b9fa97030d74d3f
+	sha256sums = ab3a804fcd538cffb7caeddc8fc1fc81918f9ddf0008f54aee51fd5b92c2fad1
+	sha256sums = 8818e828dcd859b7a678d1a224f104e1d58c8e74edf8ee01a3d763a8870f7f49
+	sha256sums = 9e1e3e505af64e2f81bef75788ce099d7f68a2cc8fdbab29295a035418c589b4
 
 pkgname = caveexpress
 
