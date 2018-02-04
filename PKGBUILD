@@ -4,7 +4,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=gcal
-pkgver=4
+pkgver=4.1
 pkgrel=1
 pkgdesc="Display hybrid and proleptic Julian and Gregorian calendar sheets"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('perl')
 install=gcal.install
 source=(ftp://ftp.gnu.org/pub/gnu/$pkgname/$pkgname-$pkgver.tar.xz)
-md5sums=('24f29538cfb06f461951f9e709c476a2')
+md5sums=('7560189fc2393fddc920c5843b27d295')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

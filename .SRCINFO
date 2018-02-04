@@ -1,6 +1,6 @@
 pkgbase = gcal
 	pkgdesc = Display hybrid and proleptic Julian and Gregorian calendar sheets
-	pkgver = 4
+	pkgver = 4.1
 	pkgrel = 1
 	url = http://www.gnu.org/software/gcal/
 	install = gcal.install
@@ -8,8 +8,8 @@ pkgbase = gcal
 	arch = x86_64
 	license = GPL
 	depends = perl
-	source = ftp://ftp.gnu.org/pub/gnu/gcal/gcal-4.tar.xz
-	md5sums = 24f29538cfb06f461951f9e709c476a2
+	source = ftp://ftp.gnu.org/pub/gnu/gcal/gcal-4.1.tar.xz
+	md5sums = 7560189fc2393fddc920c5843b27d295
 
 pkgname = gcal
 
