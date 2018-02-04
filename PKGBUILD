@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts             # Build kernel with a different name
 _srcname=linux-4.9
-_pkgver=4.9.68
-_rtpatchver=rt60
+_pkgver=4.9.76
+_rtpatchver=rt61
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('x86_64')
@@ -28,6 +28,7 @@ source=(
   '60-linux-rt-lts.hook'  # pacman hook for depmod
   '90-linux-rt-lts.hook'  # pacman hook for initramfs regeneration
   'linux-rt-lts.preset'   # standard config files for mkinitcpio ramdisk
+  'change-default-console-loglevel.patch'
   'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
 )
 validpgpkeys=(
@@ -36,17 +37,19 @@ validpgpkeys=(
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
+  '2B82682463E46862339A88A90A120DD923EEDD5F'  # Julia J. Cartwright
 )
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'd2e3dbe2ec7b10dec3d9819a0fd6ce4374d939ab7d8fb0b115ba6110d0dfb22a'
+            '9bc56c158c42d682fc631c2ed98da54bac26c7f0796d75999e48dd4a09b7ad64'
             'SKIP'
-            '9873613e76950c4728cfb6b108fe3dcf19883836bbed4849fc9bf8afe0eefd7f'
+            '836e2d9f9507957eae69e74f383497370c446386e9c5a31e54fd8d50c2828d3a'
             'SKIP'
-            '9e59614db3ccaa9a0638140df50515f31e51ab642f7559b02c9edb4c80c3092d'
+            '1320564cb37cdcbc3e5892b920da331e58eabc363d634b7e95111b6432bec0e3'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 _kernelname=${pkgbase#linux}
@@ -61,6 +64,11 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
+  # remove this when a Kconfig knob is made available by upstream
+  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
+  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # add realtime patch
   msg "applying patch-${_pkgver}-${_rtpatchver}.patch"
