@@ -2,8 +2,8 @@
 
 pkgbase='python-toytree'
 pkgname=('python-toytree' 'python2-toytree')
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="A minimalist Python tree plotting library using toyplot graphs"
 arch=('any')
 url="http://toytree.readthedocs.io/"
@@ -13,7 +13,7 @@ makedepends=(
   'python2' 'python2-setuptools')
 options=(!emptydirs)
 source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/eaton-lab/toytree/archive/"${pkgver}".tar.gz)
-sha256sums=('a2ecc1c4d54f22a2a4f8e713792c6377dc48e25daef26b38f479101b8e8ae306')
+sha256sums=('aac078cd83ad1f4ebab8f48497e562cb52ea146f292d32df10fbf33d7248c740')
 
 prepare() {
   cp -a toytree-"${pkgver}"{,-py2}

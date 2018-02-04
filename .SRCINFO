@@ -1,7 +1,7 @@
 pkgbase = python-toytree
 	pkgdesc = A minimalist Python tree plotting library using toyplot graphs
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = http://toytree.readthedocs.io/
 	arch = any
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = python-toytree
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-toytree-0.1.4.tar.gz::https://github.com/eaton-lab/toytree/archive/0.1.4.tar.gz
-	sha256sums = a2ecc1c4d54f22a2a4f8e713792c6377dc48e25daef26b38f479101b8e8ae306
+	source = python-toytree-0.1.6.tar.gz::https://github.com/eaton-lab/toytree/archive/0.1.6.tar.gz
+	sha256sums = aac078cd83ad1f4ebab8f48497e562cb52ea146f292d32df10fbf33d7248c740
 
 pkgname = python-toytree
 	depends = python
