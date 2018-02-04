@@ -1,7 +1,7 @@
 # Maintainer: copygirl <copygirl@mcft.net>
 pkgname=pulseaudio-arctis7
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Configuration files to support SteelSeries Arctis 7 mono/stereo output on pulseaudio"
 arch=("any")
 license=("LGPL")
@@ -18,7 +18,7 @@ md5sums=("6a489d6877963b7260b5e63e4348a360"
          "b16786cf6b6fd16fe54fbd5770db7447")
 
 package() {
-	install -Dm0644 90-pulseaudio-arctis7.rules "$pkgdir"/usr/udev/rules.d/90-pulseaudio-arctis7.rules
+	install -Dm0644 90-pulseaudio-arctis7.rules "$pkgdir"/usr/lib/udev/rules.d/90-pulseaudio-arctis7.rules
 	install -Dm0644 steelseries-arctis-input.conf "$pkgdir"/usr/share/pulseaudio/alsa-mixer/paths/steelseries-arctis-input.conf
 	install -Dm0644 steelseries-arctis-output-mono.conf "$pkgdir"/usr/share/pulseaudio/alsa-mixer/paths/steelseries-arctis-output-mono.conf
 	install -Dm0644 steelseries-arctis-output-stereo.conf "$pkgdir"/usr/share/pulseaudio/alsa-mixer/paths/steelseries-arctis-output-stereo.conf
