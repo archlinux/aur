@@ -1,6 +1,7 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
+_pythonmod=termstyle
 pkgname='python2-termstyle'
-pkgver='0.1.10'
+pkgver='0.1.11'
 pkgrel='1'
 pkgdesc='console colouring for python'
 arch=('any')
@@ -9,8 +10,8 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
 
-source=("https://github.com/timbertson/termstyle/archive/${pkgver}.tar.gz")
-sha1sums=('8bc0d84c08f1601303b3301acef3f492cd0626e8')
+source=("https://pypi.io/packages/source/${_pythonmod:0:1}/${_pythonmod}/${_pythonmod}-$pkgver.tar.gz")
+sha1sums=('1986f63f4a01b7c80fde3fd985643cfac7b2ee33')
 
 build() {
   cd "termstyle-${pkgver}"
