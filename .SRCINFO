@@ -1,6 +1,6 @@
 pkgbase = mopidy-podcast
 	pkgdesc = Mopidy extension for searching and browsing podcasts.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/tkem/mopidy-podcast
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mopidy-podcast
 	depends = python2-pykka
 	depends = python2-cachetools
 	depends = python2-uritools
-	source = mopidy-podcast-2.0.1.tar.gz::https://github.com/tkem/mopidy-podcast/archive/v2.0.1.tar.gz
-	sha256sums = 446fdc8968d1d6d9d699392d7b24581382ff4b4238631ef1bf7a8cb21cd71340
+	source = mopidy-podcast-2.0.2.tar.gz::https://github.com/tkem/mopidy-podcast/archive/v2.0.2.tar.gz
+	sha256sums = 19a30d4e5523a38b9aab293247c6b1355c3c83a9a8c12a3608e6147896d64198
 
 pkgname = mopidy-podcast
 
