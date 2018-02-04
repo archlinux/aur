@@ -6,7 +6,6 @@ pkgbase = biglybt-extreme-mod
 	install = biglybt-extreme-mod.install
 	arch = x86_64
 	license = GPL3
-	makedepends = java-runtime>=8
 	depends = desktop-file-utils
 	depends = java-runtime>=9
 	noextract = 18562d1516610368-biglybt-extreme-mod-sb-innovation-1-4-0-0-beta-rev1-biglybt_1.4.0.0_20180122.zip
