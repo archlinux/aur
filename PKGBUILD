@@ -1,15 +1,16 @@
-# Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
+# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=fairymax
-pkgver=4.8R
+pkgver=4.8S
 pkgrel=1
 pkgdesc="An engine playing chess variants"
 arch=('i686' 'x86_64')
-url=('http://home.hccnet.nl/h.g.muller/CVfairy.html')
+url='http://home.hccnet.nl/h.g.muller/CVfairy.html'
 license=('custom')
 backup=("usr/share/$pkgname/fmax.ini" "usr/share/$pkgname/qmax.ini")
-source=(http://home.hccnet.nl/h.g.muller/$pkgname.tar.gz)
-md5sums=('8465d0286946d88ca222872565869887')
+source=("http://hgm.nubati.net/$pkgname.tar.gz")
+md5sums=('f0e8ee849f8a2284c7eae25c7dca1b04')
 
 build()
 {
