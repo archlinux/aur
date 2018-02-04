@@ -7,4 +7,4 @@ Exec=ssb-patchwork
 Icon=ssb-patchwork
 Terminal=false
 StartupNotify=false
-Categories=Application;
+Categories=Network;Application;
