@@ -2,7 +2,7 @@
 # Contributor: DeedleFake <yisszev at beckforce dot com>
 
 pkgname=srb2
-pkgver=2.1.19
+pkgver=2.1.20
 _dataver=2.1.14
 _patchver=2.1.15
 pkgrel=1
@@ -17,7 +17,7 @@ source=("https://github.com/STJr/SRB2/archive/SRB2_release_$pkgver.zip"
         "http://rosenthalcastle.org/srb2/SRB2-v${_patchver//./}-patch.zip"
         "srb2.desktop"
         "srb2-opengl.desktop")
-sha256sums=('e01d28591c286539bdf64e91ef83f0f8151922d4533d86ac8d490bc6cd8fd87d'
+sha256sums=('a4018bc29be0a52e4df1a92df9ae04e275a792227a9d6ee6a174099ad15e0db4'
             '89e25aaa793f3b56f0bde04b964bd239f21bb81f9ef5df34717e6afc31ee34d1'
             'ac9fa63f29ad9413797da8c6f0a4f76fa6f4dd0710d1e84a457a8c42cf6df4f9'
             'f696bab390d2b1028bf2f5c5d4d838c0981dc211cec4c4a8f349b7ec0580e701')
@@ -45,7 +45,7 @@ package() {
   install -Dm755 SRB2-SRB2_release_$pkgver/bin/Linux$IS64BIT/Release/lsdl2srb2 \
     "$pkgdir"/usr/bin/srb2
 
-  # data patch 2.1.14 → 2.1.15, no changes for 2.1.16-2.1.19
+  # data patch 2.1.14 → 2.1.15, no changes for 2.1.16-2.1.20
   install -Dm644 patch.dta "$pkgdir"/usr/share/games/SRB2/patch.dta
 
   # icon + .desktop
