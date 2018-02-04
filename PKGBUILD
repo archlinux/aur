@@ -9,8 +9,8 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-opt-git
-pkgver=4.5.0.beta1.r428.gd9cb19b229
-_pkgcommit=d9cb19b229852af157ea092018a89ada27ffb3c3
+pkgver=4.5.0.r967.gcbcbaaa2f3
+_pkgcommit=cbcbaaa2f3f35b0fdeb7bcfc7c9e064ca527bd64
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ optdepends=('bzr: bazaar support'
             'valgrind: analyze support'
             'x11-ssh-askpass: ssh support')
 source=("git+https://code.qt.io/qt-creator/qt-creator.git#commit=${_pkgcommit}"
-        'git+https://code.qt.io/qt-labs/qbs.git'
+        'git+https://code.qt.io/qbs/qbs.git'
         'QtProject-QtCreator-opt-git.xml'
         'qtcreator-opt-git.1'
         'qtcreator-opt-git.desktop')
