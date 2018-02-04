@@ -25,7 +25,7 @@ pkgver() {
 build() {
   cd "$_pkgname"
   autoreconf -vif
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-gui
   make
 }
 
