@@ -1,7 +1,7 @@
 pkgbase = python-astroquery
 	pkgdesc = Set of tools for querying astronomical web forms and databases
-	pkgver = 0.3.6
-	pkgrel = 2
+	pkgver = 0.3.7
+	pkgrel = 1
 	url = http://astroquery.readthedocs.org/en/latest/
 	arch = x86_64
 	license = BSD
@@ -13,8 +13,8 @@ pkgbase = python-astroquery
 	depends = python-keyring
 	depends = python-beautifulsoup4
 	depends = python-html5lib
-	source = https://files.pythonhosted.org/packages/source/a/astroquery/astroquery-0.3.6.tar.gz
-	md5sums = 7d8e3b6d279fad380a0ddc572a723c61
+	source = https://files.pythonhosted.org/packages/source/a/astroquery/astroquery-0.3.7.tar.gz
+	md5sums = 308845b6d9315fb4d582b90f04fcfa05
 
 pkgname = python-astroquery
 
