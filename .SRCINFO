@@ -9,7 +9,7 @@ pkgbase = osh
 	depends = readline
 	options = !strip
 	source = https://www.oilshell.org/download/oil-0.4.0.tar.gz
-	md5sums = 6936c7f310ec0b31b4659c6cb5df66e2
+	md5sums = f2d2da4270faa2d276d52510000bb64d
 
 pkgname = osh
 

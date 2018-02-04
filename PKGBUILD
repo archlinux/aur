@@ -10,7 +10,7 @@ url="https://www.oilshell.org/"
 license=("Apache")
 options=(!strip)
 source=("https://www.oilshell.org/download/$_pkgname-$pkgver.tar.gz")
-md5sums=("6936c7f310ec0b31b4659c6cb5df66e2")
+md5sums=("f2d2da4270faa2d276d52510000bb64d")
 depends=("readline")
 
 build() {
