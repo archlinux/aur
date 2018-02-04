@@ -20,4 +20,4 @@ package() {
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-# vim:set ts=2 sw=2 noet:
+# vim: set ts=2 sw=2 noet:
