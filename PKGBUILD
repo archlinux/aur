@@ -3,8 +3,8 @@
 # Contributor: janezz55
 
 pkgname=dosbox-binutils
-pkgver=2.29
-pkgrel=1
+pkgver=2.29.1
+pkgrel=2
 pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"
@@ -13,39 +13,38 @@ groups=('djgpp')
 depends=('zlib')
 options=('!libtool' '!emptydirs')
 source=("http://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
-        xtors.patch
-        lto-discard.patch)
+      	"binutils-bfd-djgpp.patch"
+	      "binutils-djgpp.patch"
+        "lto-discard.patch")
 sha256sums=('SKIP'
-            'a54efa3f29f14c938fedf29fb352d4f104e8c0ec065c74b0cd3f753fe3e9d4ef'
-            'a7978c3110dbccde7290fb3517121f5cae427728c04e6fb76736f36857514ec9')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93') # Tristan Gingold <adacore dot com, gingold>
 _target="i586-pc-msdosdjgpp"
 
 prepare() {
   cd binutils-$pkgver
 
-  # do not install libiberty
-  sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
-
   # hack! - libiberty configure tests for header files break with FORTIFY_SOURCE
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
-  # put .ctors and .dtors where they belong
-  patch -Np1 < ../xtors.patch
-
-  # discard LTO sections in coff-go32-exe files
-  patch -Np1 < ../lto-discard.patch
+  patch -Np1 <${srcdir}/binutils-djgpp.patch
+  patch -Np1 <${srcdir}/binutils-bfd-djgpp.patch
+  patch -Np2 <${srcdir}/lto-discard.patch
 }
 
 build() {
   mkdir -p binutils-$_target
 
+  export CPPFLAGS="$CPPFLAGS -Ofast"
   cd binutils-$_target
   ../binutils-$pkgver/configure --prefix=/usr \
     --target="$_target" \
     --infodir="/usr/share/info/$_target" \
     --datadir="/usr/$_target/share" \
     --enable-lto --enable-plugins \
+    --disable-install-libiberty \
     --disable-multilib --disable-nls \
     --disable-werror
   make
