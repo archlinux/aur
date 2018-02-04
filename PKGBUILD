@@ -27,7 +27,7 @@ build() {
     cd "$srcdir/gitit-$pkgver"
     cabal --config="$srcdir/.cabal/config" update
     cabal --config="$srcdir/.cabal/config" sandbox init
-    cabal --config="$srcdir/.cabal/config" install --enable-relocatable --force-reinstalls --datadir='$prefix/share/gitit' --docdir='$prefix/share/doc/$abi/$pkgid' --ghc-options=-rtsopts --constraint='pandoc>=1.19.2.2'
+    cabal --config="$srcdir/.cabal/config" install --enable-relocatable --force-reinstalls --datadir='$prefix/share/gitit' --docdir='$prefix/share/doc/$abi/$pkgid' --ghc-options=-rtsopts --constraint='pandoc>=1.19.2.2' --constraint='parsec<3.1.12.0'
 }
 
 package() {
