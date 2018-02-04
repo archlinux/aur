@@ -6,28 +6,28 @@
 # untrue.
 
 pkgname=adsf
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='A web server that you can launch instantly in any directory.'
 arch=(any)
 url='https://github.com/ddfreyne/adsf'
 license=(MIT)
 depends=('ruby-rack<3')
-makedepends=(rubygems)
 provides=(ruby-adsf)
 conflicts=(ruby-adsf)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem"
         "https://github.com/ddfreyne/adsf/blob/${pkgver}/LICENSE")
 noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('b29d3a71877d56b4c5cfe4d856e4aa4d4f6989d545ddb6cdfecc5950223dd51a'
-            '538b506f7ebc8adb1164766a5ede083eda6bb16459c51575723e35df36581a44')
+sha256sums=('b8d598d74a28d0103786c2f64dc927e50fcbb6c0c678af19b8162990cd6e0bbd'
+            'e9b0431c295cde4e96495904c40ebad7d109272212167a1ac8fc911359cd2e6d')
 
 package() {
   HOME=/tmp gem install \
     --no-user-install \
+    --no-document \
     --ignore-dependencies \
-    --install-dir "${pkgdir}$(ruby -rubygems -e 'puts Gem.default_dir')" \
+    --install-dir "${pkgdir}/$(ruby -e 'puts Gem.default_dir')" \
     --bindir "${pkgdir}/usr/bin" \
     "${srcdir}/${pkgname}-${pkgver}.gem"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
