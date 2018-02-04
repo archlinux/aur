@@ -1,19 +1,19 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
-_tag=$(git ls-remote -t --refs https://github.com/mbunkus/mkvtoolnix.git | awk '{print $2}' | LC_ALL=C sort -bfV | tail -n1 | sed -n -e 's/^.*tags\///p')
+_tag=$(git ls-remote -t --refs https://gitlab.com/mbunkus/mkvtoolnix.git | awk '{print $2}' | LC_ALL=C sort -bfV | tail -n1 | sed -n -e 's/^.*tags\///p')
 pkgname=mkvtoolnix-stable-git
-pkgver=17.0.0.r0.g8f500f188
+pkgver=20.0.0.r0.g43b0ec1b2
 pkgrel=1
 pkgdesc="MKVToolnix latest stable release with unit tests"
 arch=(x86 x86_64)
 url="https://www.bunkus.org/videotools/mkvtoolnix"
 license=('GPL')
 depends=('libmatroska' 'expat' 'flac' 'libvorbis' 'file' 'boost-libs' 'lzo' 'wxgtk' 'xdg-utils' 'desktop-file-utils' 'qt5-base' 'libogg' 'zlib' 'curl' 'libxkbcommon-x11' 'qt5-multimedia')
-makedepends=('libmatroska' 'flac' 'libvorbis' 'file' 'wxgtk' 'boost-libs' 'lzo' 'xdg-utils' 'boost' 'ruby' 'git' 'libxslt' 'po4a' 'docbook-xsl' 'gtest')
+makedepends=('libmatroska' 'flac' 'libvorbis' 'file' 'wxgtk' 'boost-libs' 'lzo' 'xdg-utils' 'boost' 'ruby' 'git' 'libxslt' 'po4a' 'docbook-xsl' 'gtest' 'ruby-rake' 'cmark')
 provides=('mkvtoolnix')
 conflicts=('mkvtoolnix' 'mkvtoolnix-cli' 'mkvtoolnix-gui' 'mkvtoolnix-git')
 replaces=('mkvtoolnix')
-source=("git+https://github.com/mbunkus/mkvtoolnix.git#tag=$_tag")
+source=("git+https://gitlab.com/mbunkus/mkvtoolnix.git#tag=$_tag")
 md5sums=('SKIP')
 
 
