@@ -1,0 +1,15 @@
+pkgbase = python-click-default-group
+	pkgdesc = Extends click.Group to invoke a command without explicit subcommand name
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/sublee/click-default-group/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/click-default-group/click-default-group-1.2.tar.gz
+	md5sums = 4ac834c6b2fc605bedca21bdf2d02aa3
+
+pkgname = python-click-default-group
+	depends = python
+
