@@ -3,7 +3,7 @@
 pkgname=pycharm-professional
 pkgver=2017.3.3
 _pkgver=2017.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Python and Django IDE. Professional edition."
 arch=('i686' 'x86_64')
 options=('!strip')
@@ -69,11 +69,17 @@ sha256sums=('f97d56f15750b6a1a94aeeeaab16ab7b6b52f3a32a01f28e2439aa44d4e60ca0'
 
 fi
 
-package() {
+build() {
+  cd pycharm-$_pkgver
+
   # compile PyDev debugger used by PyCharm to speedup debugging
-  python2 pycharm-$_pkgver/helpers/pydev/setup_cython.py build_ext --inplace
-  python3 pycharm-$_pkgver/helpers/pydev/setup_cython.py build_ext --inplace
+  python2 helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
+  python3 helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
   
+  rm -rf bin/fsnotifier{,-arm} lib/libpty/linux/x86
+}
+
+package() {
   # base
   install -dm 755 $pkgdir/opt/$pkgname
   cp -dr --no-preserve=ownership $srcdir/pycharm-$_pkgver/* $pkgdir/opt/$pkgname
@@ -94,11 +100,4 @@ package() {
   # install charm application - for edit a single file in Pycharm
   install -Dm 755 charm $pkgdir/opt/pycharm-professional/bin/
   install -Dm 644 charm.desktop $pkgdir/usr/share/applications/
-  
-  # delete some conflicts files for i686 
-  if [[ $CARCH = 'i686' ]]; then
-    rm -f $pkgdir/opt/$pkgname/bin/libyjpagent-linux64.so
-    rm -f $pkgdir/opt/$pkgname/bin/fsnotifier64
-  fi
-  
 }
