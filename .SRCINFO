@@ -1,7 +1,7 @@
 pkgbase = powerpc-linux-gnu-gcc-stage2
 	pkgdesc = The GNU Compiler Collection. Stage 2 for toolchain building (powerpc-linux-gnu)
 	pkgver = 6.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = powerpc-linux-gnu-gcc-stage2
 	options = !strip
 	source = https://github.com/gcc-mirror/gcc/archive/1bbd3999.tar.gz
 	source = http://isl.gforge.inria.fr/isl-0.16.1.tar.bz2
-	md5sums = d4c4546f927b2984d66574b1b5cb817e
+	md5sums = ff2d7ad9a3144299decbdad85dfcb920
 	md5sums = ac1f25a0677912952718a51f5bc20f32
 
 pkgname = powerpc-linux-gnu-gcc-stage2
