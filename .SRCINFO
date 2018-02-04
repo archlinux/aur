@@ -1,0 +1,26 @@
+pkgbase = amazon-dash-git
+	pkgdesc = Hack your Amazon Dash to run what you want.
+	pkgver = v0.3.3.r21.g6bf9a33
+	pkgrel = 1
+	url = https://github.com/Nekmo/amazon-dash
+	install = amazon-dash.install
+	arch = any
+	license = MIT
+	depends = scapy3k
+	depends = python-yaml
+	depends = python-jsonschema
+	depends = python-requests
+	depends = python-click
+	depends = python-click-default-group
+	options = !emptydirs
+	source = amazon-dash::git+https://github.com/Nekmo/amazon-dash.git#branch=v0.4.0
+	md5sums = SKIP
+
+pkgname = amazon-dash-git
+	depends = scapy3k
+	depends = python-yaml
+	depends = python-jsonschema
+	depends = python-requests
+	depends = python-click
+	depends = python-click-default-group
+

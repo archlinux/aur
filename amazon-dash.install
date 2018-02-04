@@ -1,0 +1,3 @@
+function post_install(){
+    python -m amazon_dash.install
+}
