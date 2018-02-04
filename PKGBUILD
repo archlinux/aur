@@ -8,7 +8,7 @@ pkgname=ipwaiter-git
 # shellcheck disable=SC2034
 pkgdesc="ipwaiter serves iptables"
 # shellcheck disable=SC2034
-pkgver=r11.8acfdf3
+pkgver=r24.56c5b83
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -25,7 +25,7 @@ provides=('ipwaiter')
 conflicts=('ipwaiter')
 # shellcheck disable=SC2034
 license=('GPLv2')
-url="https://github.com/pyamsoft/ipwaiter.git"
+url="https://github.com/pyamsoft/ipwaiter"
 
 ##
 # The SHA256 is constantly changing since this is
@@ -34,7 +34,7 @@ url="https://github.com/pyamsoft/ipwaiter.git"
 # shellcheck disable=SC2034
 sha256sums=('SKIP')
 # shellcheck disable=SC2034
-source=("${_gitname}::git+${url}#branch=master")
+source=("${_gitname}::git+${url}")
 
 ###############################################################################
 
