@@ -8,7 +8,7 @@
 pkgname=laptop-mode-tools-git
 _pkgname=laptop-mode-tools
 pkgver=1.72.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Power Savings tool for Linux'
 arch=('any')
 url='https://github.com/rickysarraf/laptop-mode-tools'
@@ -23,7 +23,7 @@ optdepends=('acpid: ACPI support'
     'ethtool: Ethernet support'
     'wireless_tools: Wi-Fi support'
     'xorg-xset: DPMS standby support'
-    'python2-pyside: LMT GUI')
+    'python-pyqt5: LMT GUI')
 backup=('etc/laptop-mode/conf.d/ac97-powersave.conf'
     'etc/laptop-mode/conf.d/auto-hibernate.conf'
     'etc/laptop-mode/conf.d/battery-level-polling.conf'
