@@ -5,7 +5,7 @@
 
 pkgname=spectrum2
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 #epoch=
 pkgdesc="Create C++ transports easily"
 arch=('any')
@@ -40,7 +40,7 @@ validpgpkeys=()
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cmake . -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr -DSPECTRUM_VERSION=${pkgver} -DIRC_INCLUDE_DIR=/usr/include/qt/Communi
+	cmake . -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_STANDARD=14 -DCMAKE_INSTALL_PREFIX=/usr -DSPECTRUM_VERSION=${pkgver} -DIRC_INCLUDE_DIR=/usr/include/qt/Communi
 	make
 }
 
