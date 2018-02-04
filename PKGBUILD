@@ -6,11 +6,11 @@ _pkgname=naturalearth-data-vector-all
 pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver=latest
-pkgver=2.0.0
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="A public domain map dataset, tightly integrated vector and raster data, to make a variety of maps with cartography or GIS software.
 This package provides the cultural and physical data in 1:10mio, 1:50mio and 1:110mio scale.
-WARNING: About 900 MiB big."
+WARNING: About 1 GiB big."
 arch=(any)
 url="http://www.naturalearthdata.com/"
 license=('custom:public domain')
