@@ -1,8 +1,8 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ogg
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="OCaml binding to libogg"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-ogg"
@@ -11,7 +11,7 @@ depends=('ocaml' 'libogg')
 makedepends=('ocaml-findlib')
 options=('!strip')
 source=("https://github.com/savonet/ocaml-ogg/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('21eaee00d3765b3a78aed78520219a52')
+md5sums=('2f678dccf861a72213fc1a33904d88ee')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
