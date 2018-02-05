@@ -9,7 +9,7 @@ _webview_provider=none
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -21,7 +21,7 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-qtutilities' 'mingw-w64-
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('af1769702676dbde33db692a39f81627b29dc09a8ce8c3bd8c2ee5eef22a5a3f')
+sha256sums=('bb68130de4bb47fb7da4d4cefecbec6ec5fca3408790c172dfd9779b7e3b14d7')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
