@@ -1,7 +1,6 @@
 # Maintainer: JoshuaRLi <joshua.r.li.98 at gmail com>
 # Please submit comments/issues here: https://github.com/JoshuaRLi/PKGBUILDs
 
-_execname_=yn
 pkgname=yn
 pkgver=1.1.3
 pkgrel=1
