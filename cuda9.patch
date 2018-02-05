@@ -1,0 +1,19 @@
+diff --git a/cuda_djezo/eqcuda.hpp b/cuda_djezo/eqcuda.hpp
+index 48d663a..03d7b90 100644
+--- a/cuda_djezo/eqcuda.hpp
++++ b/cuda_djezo/eqcuda.hpp
+@@ -3,7 +3,6 @@
+ #include "cuda.h"
+ #include "cuda_runtime.h"
+ #include "device_launch_parameters.h"
+-#include "device_functions_decls.h"
+ #include "../cpu_tromp/blake2/blake2.h"
+ #include "cuda_djezo.hpp"
+ 
+@@ -96,4 +95,4 @@ struct eq_cuda_context : public eq_cuda_context_interface
+ 
+ #define CONFIG_MODE_1	9, 1248, 12, 640, packer_cantor
+ 
+-#define CONFIG_MODE_2	8, 640, 12, 512, packer_default
+\ No newline at end of file
++#define CONFIG_MODE_2	8, 640, 12, 512, packer_default
