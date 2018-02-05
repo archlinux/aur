@@ -16,10 +16,10 @@ makedepends=('dht'
              'libb64'
              'libevent'
              'libnatpmp'
+             'libtransmission'
              'libutp'
              'meson'
              'miniupnpc'
-             'transmission-cli'
              'vala')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
