@@ -13,7 +13,7 @@ pkgbase = ync-tools
 	depends = libglade
 	depends = libconfig
 	source = https://github.com/Guitar-Man/ync-tools/raw/master/ync-tools-0.79.8.tar.gz
-	md5sums = 1e3d5f8eb1b5472f8746341e7d68509d
+	md5sums = a73e4dc818396f5ea15f0655e697ef28
 
 pkgname = ync-tools
 
