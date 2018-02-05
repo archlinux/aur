@@ -1,0 +1,18 @@
+pkgbase = python-htmlmin
+	pkgdesc = A configurable HTML minifier with safety features
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://htmlmin.readthedocs.io/en/latest/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/h/htmlmin/htmlmin-0.1.12.tar.gz
+	md5sums = a8903c90055b3fd685e3a1ce1ffdd7ac
+
+pkgname = python-htmlmin
+	depends = python
+
+pkgname = python2-htmlmin
+	depends = python2
+
