@@ -1,18 +1,16 @@
 pkgbase = munipack
 	pkgdesc = A general astronomical image processing software
-	pkgver = 0.5.9
+	pkgver = 0.5.10
 	pkgrel = 1
-	url = http://munipack.physics.muni.cz/
+	url = http://munipack.physics.muni.cz
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc-fortran
 	depends = cfitsio
 	depends = wxgtk2
-	optdepends = fitspng: for FITS to PNG conversion
-	optdepends = rawtran: for RAW to FITS conversion
-	source = ftp://integral.physics.muni.cz/pub/munipack/munipack-0.5.9.tar.gz
-	md5sums = e95008291ee3cfb10d51893acb35a24f
+	source = ftp://munipack.physics.muni.cz/pub/munipack/munipack-0.5.10.tar.gz
+	md5sums = dbd91d8a85adf422f422234d0da7bf03
 
 pkgname = munipack
 
