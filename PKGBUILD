@@ -3,7 +3,7 @@
 
 _execname_=yn
 pkgname=yn-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="an interactive y/n prompt"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 provides=('yn')
 
 source_x86_64=("${url}/releases/download/${pkgver}/yn-${pkgver}-bin.tar.gz")
-sha256sums_x86_64=('428b26e3e2095ced9c9a795b706819575f0d9dbe0de79039c9acbd14a0036a99')
+sha512sums_x86_64=('41129d259804d1b2df53f126b08589cecbe4d194679acdc3f49d5dd816ebb4671fdadc9a74b00390e20c7797e49d6069032cd454843b1683318bcdcf04a5aec3')
 
 package () {
   cd "${srcdir}/yn-${pkgver}-bin"
