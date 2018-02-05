@@ -6,8 +6,7 @@ arch=('x86_64')
 url="https://turtlecoin.lol"
 license=('custom')
 install="${pkgname}.install"
-makedepends=('git' 'cmake')
-depends=('boost-libs' 'boost')
+conflicts=('turtlecoin-git')
 source=("https://github.com/turtlecoin/turtlecoin/releases/download/${pkgver}/TurtleCoin-${pkgver}-linux-static-CLI.tar.gz")
 sha256sums=('35b643d3646f52c472fa24c008aa5e17301a93db0a005bb48b7c5cc8ddc642e0')
 
