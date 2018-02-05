@@ -5,6 +5,7 @@ pkgbase = htop-vim-git
 	url = https://github.com/hishamhm/htop
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	makedepends = git
 	makedepends = python2
@@ -18,7 +19,7 @@ pkgbase = htop-vim-git
 	source = git+https://github.com/hishamhm/htop.git
 	source = vim-keybindings.patch
 	sha256sums = SKIP
-	sha256sums = 1fb8e8bfa0575b99a50e49f1f853e921bba457598b22942a1898f5be772e0c91
+	sha256sums = 2a5ca32899e901956068f8a0f4f7532486faba1d1b34103d8f9e588e99037053
 
 pkgname = htop-vim-git
 

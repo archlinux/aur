@@ -61,7 +61,7 @@ index a6394ac..089ee27 100644
     keys['U'] = actionUntagAll;
     keys['c'] = actionTagAllChildren;
 diff --git a/Panel.c b/Panel.c
-index 8c4d44f..9bdc5e9 100644
+index 1e53b4a..7f6580b 100644
 --- a/Panel.c
 +++ b/Panel.c
 @@ -372,14 +372,16 @@ void Panel_draw(Panel* this, bool focus) {
@@ -131,7 +131,7 @@ index 8c4d44f..9bdc5e9 100644
        break;
     case KEY_CTRL('A'):
 diff --git a/README b/README
-index 33a8739..e07bd58 100644
+index 33a8739..d0b00ae 100644
 --- a/README
 +++ b/README
 @@ -17,6 +17,44 @@ but we also have code for running under FreeBSD and Mac OS X
@@ -170,7 +170,7 @@ index 33a8739..e07bd58 100644
 +In order to accomodate these keybindings, the following changes
 +were made to the original keybindings:
 +
-+* Ctrl+F and Ctrt+B can now longer be used to navigate horizontally
++* Ctrl+F and Ctrt+B can no longer be used to navigate horizontally
 +* 'h' can no longer be used to access the help, leaving Ctrl+F1 & '?'
 +* 'k' can no longer be used to kill processes, being replaced with 'x'
 +* 'l' can no longer be used to list open files, being replaced with 'L'
