@@ -1,5 +1,5 @@
 pkgbase = lua-luaossl
-	pkgver = 20170903
+	pkgver = 20171028
 	pkgrel = 0
 	url = http://25thandclement.com/~william/projects/luaossl.html
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = lua-luaossl
 	makedepends = lua51
 	makedepends = lua52
 	depends = openssl
-	source = https://github.com/wahern/luaossl/archive/rel-20170903.tar.gz
-	md5sums = c023511326267ac41eca65063df09c2d
+	source = https://github.com/wahern/luaossl/archive/rel-20171028.tar.gz
+	md5sums = 0859a60515c410e447ffc1d159c3916d
 
 pkgname = lua-luaossl
 	pkgdesc = Most comprehensive OpenSSL module in the Lua universe for Lua 5.3
