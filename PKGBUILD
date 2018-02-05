@@ -1,14 +1,14 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=omim-git
-pkgver=r18788.2cf9376
+pkgver=r26171.b378c80fe3
 pkgrel=1
 pkgdesc='Offline OpenStreetMap maps'
 arch=(i686 x86_64)
 url='http://maps.me/en/home'
 license=(Apache)
-depends=(qt5-base)
-makedepends=(boost cmake clang git)
+depends=(qt5-base qt5-webengine)
+makedepends=(boost cmake clang git ninja)
 source=(git://github.com/mapsme/omim)
 sha1sums=('SKIP')
 
@@ -25,12 +25,12 @@ prepare() {
 build() {
   cd omim
   echo | ./configure.sh
-  qmake-qt5 omim.pro -spec linux-clang
-  make
+  cmake -GNinja .
+  ninja
 }
 
 package() {
   cd omim
-  INSTALL_ROOT="$pkgdir" make install
+  DESTDIR="${pkgdir}" ninja install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
