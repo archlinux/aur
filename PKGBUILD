@@ -2,7 +2,7 @@
 
 pkgname=4store
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient, scalable and stable RDF database"
 arch=('i686' 'x86_64')
 url="http://www.4store.org"
@@ -20,6 +20,7 @@ prepare()
 	echo '1.1.6' >> .version
 	./autogen.sh
 	./configure --prefix=/usr
+	sed -i 's/#define _XOPEN_SOURCE/#define _GNU_SOURCE/' src/frontend/filter-datatypes.c
 }
 
 build()
@@ -31,7 +32,7 @@ build()
 
 package()
 {
-	cd "${srcdir}/${pkgname}-v${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 
 }
