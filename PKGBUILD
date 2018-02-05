@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/sanduhrs/arch-aur-phpcov
 
 pkgname=phpcov
-pkgver=4.0.5
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A command-line frontend for the PHP_CodeCoverage library."
 url="https://github.com/sebastianbergmann/phpcov"
@@ -12,7 +12,7 @@ depends=("php")
 install="${pkgname}.install"
 source=("https://phar.phpunit.de/${pkgname}-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/${pkgname}/${pkgver}/LICENSE")
-sha512sums=('7042a30e2f429ee4faeff365c212cc39a6e97511eed8fff3b6db3e8c84c5405fb920c5c7b2945e6166c7bb0bff00dca20997c675e57fd0a67b2127a5f2074872'
+sha512sums=('780ecf6ef5a07801b107659cac4019ac3738833311408bc43d6fbe1041b974ea311ea581c06a49f7fc1d8ff953c36e7cb92b87fb7ad81e0cc1b8f04e7df5d37e'
             '69613225fea90975f8164b38fb486e27b37ec4f10f785599f930dfcf0920e9737ef69a161ffd042c9b6bdee2b36df350647def58e42fd5f62b4b4b86b8f46fd6')
 
 package() {
