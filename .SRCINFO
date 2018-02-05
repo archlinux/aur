@@ -1,6 +1,6 @@
 pkgbase = libdill
 	pkgdesc = Structured concurrency in C
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = http://libdill.org/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = libdill
 	makedepends = gcc
 	depends = pkgconfig
 	options = !buildflags
-	source = https://github.com/sustrik/libdill/archive/2.1.tar.gz
-	sha256sums = eea6b1da205d7d22a9d3ea0f5ab584c56f3e19bfa9c104857d62ecabc3222c85
+	source = https://github.com/sustrik/libdill/archive/2.2.tar.gz
+	sha256sums = 9df3b9cd50795565e665b0f5664a097d6f62934d3714ba1b073ca5c7a925ad69
 
 pkgname = libdill
 
