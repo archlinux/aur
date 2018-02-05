@@ -1,6 +1,6 @@
 pkgbase = jerasure-git
 	pkgdesc = C implementation of Reed-Solomon coding
-	pkgver = 20150108
+	pkgver = 20180206
 	pkgrel = 1
 	url = https://github.com/tsuraan/Jerasure
 	arch = i686
