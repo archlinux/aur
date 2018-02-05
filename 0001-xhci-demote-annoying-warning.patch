@@ -1,4 +1,4 @@
-From 12ead4a6bf1c967e03955610e00ccabadfd3d58d Mon Sep 17 00:00:00 2001
+From 547c7b5117fffa01d08036d368c2dd6db0ea55d4 Mon Sep 17 00:00:00 2001
 From: Steven Noonan <steven@uplinklabs.net>
 Date: Fri, 16 Sep 2016 10:15:49 -0700
 Subject: [PATCH] xhci: demote annoying warning
@@ -12,18 +12,18 @@ Signed-off-by: Steven Noonan <steven@uplinklabs.net>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
-index cc368ad2b51e..9a9188332dca 100644
+index 353520005c13..bf1641908710 100644
 --- a/drivers/usb/host/xhci-ring.c
 +++ b/drivers/usb/host/xhci-ring.c
-@@ -2489,7 +2489,7 @@ static int handle_tx_event(struct xhci_hcd *xhci,
- 			 */
+@@ -2496,7 +2496,7 @@ static int handle_tx_event(struct xhci_hcd *xhci,
  			if (!(trb_comp_code == COMP_STOPPED ||
- 				trb_comp_code == COMP_STOPPED_LENGTH_INVALID)) {
+ 			      trb_comp_code == COMP_STOPPED_LENGTH_INVALID ||
+ 			      ep_ring->last_td_was_short)) {
 -				xhci_warn(xhci, "WARN Event TRB for slot %d ep %d with no TDs queued?\n",
 +				xhci_dbg(xhci, "WARN Event TRB for slot %d ep %d with no TDs queued?\n",
  						TRB_TO_SLOT_ID(le32_to_cpu(event->flags)),
  						ep_index);
  			}
 -- 
-2.14.1
+2.15.1
 

@@ -1,10 +1,10 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_srcname=linux-4.13
-pkgver=4.13.5
+_srcname=linux-4.14
+pkgver=4.14.17
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
@@ -14,22 +14,21 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
-        'config.i686' 'config.x86_64'
+        'config.x86_64'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-xhci-demote-annoying-warning.patch'
         )
-sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
+sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'ba0cf285525e24850917c2f5cc7c2283b6509e2185bb70108f140f7ec695d57d'
+            '1e62d56e37bd15daec7c3d20a605624e1e0a21c44856880c6dbe0c9e41cabfa8'
             'SKIP'
-            '92d10b01c1393d44317ed1626922dd3b7e96588aed3e59cfc7b8e35bfd290c1c'
-            'e7d44fad5d3d0a3f7134e0dadc35abd18442ee5a7becf7e7da50cc4f2d85b0f4'
+            'dd4614f3700ddb394d510f6a19b3b573cc6559dc3d4b8c75416a625991b64150'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'fc21139a4b77d2739f4aaa4e3d35229c395c311de89709904de15f653b8991fd'
-            'd76affd7c0ad456bf5bb65cabf0ba6d16c6952c2fbea3341caacb23edf48ce32')
+            'ee24bffa6acedfd842416b66a477810108482c97808ec7db0fcc102d13319974')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -51,6 +50,8 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
   patch -Np1 -i "${srcdir}/0001-xhci-demote-annoying-warning.patch"
+
+  chmod +x tools/objtool/sync-check.sh
 
   cp -L "${srcdir}/config.${CARCH}" .config
 
