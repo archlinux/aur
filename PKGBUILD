@@ -17,11 +17,12 @@ url="http://gostcoin.i2p"
 license=('MIT')
 makedepends=('boost' 'cmake')
 
-depends=('boost-libs' 'openssl-1.0' 'i2pd')
+depends=('boost-libs' 'openssl-1.0')
 if [ ! -z "$_BUILD_QT_GUI" ]
 then
 depends+=('qt5-base')
 fi
+optdepends=('i2pd: I2P network transport')
 
 source=("${pkgbase%%-git}::git+https://github.com/GOSTSec/gostcoin"
         "gostcoind.service"
