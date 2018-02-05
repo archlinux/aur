@@ -1,16 +1,16 @@
-diff -aur a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2016-01-15 21:56:57.000000000 +0100
-+++ b/CMakeLists.txt	2016-01-17 20:48:52.194153030 +0100
-@@ -100,7 +100,7 @@
- 	# Don't put this into CMAKE_CXX_FLAGS because otherwise it is cached,
- 	# and when the path is changed both the old and new definition appears
- 	# in the list of flags.
+diff -ura a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2018-02-04 16:39:08.000000000 +0100
++++ b/CMakeLists.txt	2018-02-05 00:38:51.365223943 +0100
+@@ -167,7 +167,7 @@
+ endif()
+ 
+ if(UNIX)
 -	add_definitions("-DOC_SYSTEM_DATA_DIR=\"${CMAKE_INSTALL_PREFIX}/share/games/openclonk\"")
 +	add_definitions("-DOC_SYSTEM_DATA_DIR=\"${CMAKE_INSTALL_PREFIX}/share/openclonk\"")
  endif()
  
  if(APPLE)
-@@ -1461,7 +1461,7 @@
+@@ -1517,13 +1517,13 @@
  			DEPENDS "${native_c4group}"
  			VERBATIM
  		)
@@ -19,12 +19,19 @@ diff -aur a/CMakeLists.txt b/CMakeLists.txt
  	endif()
  endforeach()
  
-@@ -1475,7 +1475,7 @@
- 	install(CODE "execute_process(COMMAND update-desktop-database)")
+ if(NOT APPLE)
+ 	if(NOT HEADLESS_ONLY)
+-		install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/planet/Music.ocg DESTINATION share/games/openclonk)
++		install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/planet/Music.ocg DESTINATION share/openclonk)
+ 	endif()
+ 	# group files (game data)
+ 	add_custom_target(groups DEPENDS ${OC_C4GROUPS})
+@@ -1543,7 +1543,7 @@
+ 		install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/openclonk.appdata.xml DESTINATION share/appdata)
  
- 	# Install binaries
--	install(TARGETS openclonk DESTINATION games)
-+	install(TARGETS openclonk DESTINATION bin)
- 	install(TARGETS c4group DESTINATION bin)
- else()
- 	install(TARGETS openclonk
+ 		# Install binaries
+-		install(TARGETS openclonk DESTINATION games)
++		install(TARGETS openclonk DESTINATION bin)
+ 	else()
+ 		install(TARGETS openclonk
+ 			BUNDLE DESTINATION .
