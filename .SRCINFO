@@ -1,11 +1,11 @@
 pkgbase = marea-icon-theme
 	pkgdesc = Marea Icons
-	pkgver = 1.1
-	pkgrel = 1
+	pkgver = 4.4
+	pkgrel = 9
 	url = https://github.com/Skywol/marea-icon-theme
 	arch = any
 	license = GPL3
-	source = marea-icon-theme-1.1.tar.gz::https://github.com/Skywol/marea-icon-theme/archive/1.1.tar.gz
+	source = marea-icon-theme-4.4.tar.xz::http://mirrors.ustc.edu.cn/deepin/pool/main/m/marea-icon-theme/marea-icon-theme_4.4.tar.xz
 	sha512sums = SKIP
 
 pkgname = marea-icon-theme
