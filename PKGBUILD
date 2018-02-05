@@ -2,7 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
  
 pkgname=emacs-icicles
-pkgver=23716 # Taken from icicles.el
+epoch=1
+pkgver=2018.01.15 # Taken from icicles.el
 pkgrel=1
 pkgdesc="an emacs library that enhances minibuffer completion"
 arch=('any')
@@ -17,7 +18,11 @@ pkgver() {
   cd icicles
   wget http://www.emacswiki.org/emacs/download/icicles{,-chg,-cmd1,-cmd2,-doc1,-doc2,-face,-fn,-mac,-mcmd,-mode,-opt,-var}.el
   
-  echo $(awk '/Update #:/ {print $4}' icicles.el) 
+  echo $(awk '/Version/ {print $3}' icicles.el) 
+}
+
+build() {
+  cd icicles
   emacs -Q -batch -L . -f batch-byte-compile *.el || true
 }
 
