@@ -1,0 +1,18 @@
+pkgbase = python-py-pretty
+	pkgdesc = Formats dates, numbers, etc. in a pretty, human readable format.
+	pkgver = 1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/py-pretty
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/p/py-pretty/py-pretty-1.zip
+	sha256sums = 07364e213272800864f506d454ac093ec85c645e0102a1124961c421627abd03
+
+pkgname = python-py-pretty
+	depends = python-setuptools
+
+pkgname = python2-py-pretty
+	depends = python2-setuptools
+
