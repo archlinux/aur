@@ -1,0 +1,14 @@
+[Unit]
+Description=Aeon Full Node
+After=network.target
+
+[Service]
+User=aeon
+Group=aeon
+WorkingDirectory=~
+RuntimeDirectory=aeon
+Type=simple
+ExecStart=/usr/bin/aeond --no-console
+
+[Install]
+WantedBy=multi-user.target
