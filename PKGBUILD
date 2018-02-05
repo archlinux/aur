@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-qbs-shared-git
-pkgver=20180202.109.c6916ce
+pkgver=20180204.111.b6c137b
 pkgrel=1
 pkgdesc="Extra imports and modules for Qbs"
 arch=('any')
@@ -35,7 +35,7 @@ build() {
 	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 	qbs setup-qt /usr/bin/qmake-qt5 qt5
 	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build profile:qt5 project.prefix:/usr
+	qbs build --no-install -d build profile:qt5 projects.QbsShared.prefix:/usr
 }
 
 package() {
