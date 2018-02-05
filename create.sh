@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [[ ! $# -eq "2" ]]; then
 	echo "Usage:"
 	echo "$0 version version_postfix"
@@ -17,7 +17,5 @@ sed -i "s/_verson_postfix=.*/_version_postfix=$2/g" PKGBUILD
 echo updpkgsums
 updpkgsums
 chmod -v 644 PKGBUILD
-echo mkaurball -f
-mkaurball -f
 makepkg
-mksrcinfo
+makepkg --printsrcinfo > .SRCINFO
