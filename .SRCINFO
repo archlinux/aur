@@ -1,0 +1,12 @@
+pkgbase = libwingpanel-2.0.so
+	pkgdesc = Meta package for libswitchboard
+	pkgver = 20180502
+	pkgrel = 1
+	url = http://elementary.io
+	arch = any
+	license = LGPL
+	depends = wingpanel-git
+	provides = libwingpanel-2.0.so
+
+pkgname = libwingpanel-2.0.so
+
