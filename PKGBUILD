@@ -1,7 +1,7 @@
 # Maintainer: Mingkai Dong <mingkaidong@gmail.com>
 
 pkgname=jerasure-git
-pkgver=20150108
+pkgver=20180206
 pkgrel=1
 pkgdesc="C implementation of Reed-Solomon coding"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ build() {
 
   cd "$srcdir/$_gitbranch"
   autoreconf --force --install
-  ./configure LD_LIBRARY_PATH=/usr/local/lib
+  ./configure --prefix=/usr LD_LIBRARY_PATH=/usr/lib
 
   msg "Starting make..."
 
@@ -44,9 +44,9 @@ build() {
 package() {
   cd "$srcdir/$_gitbranch"
   make DESTDIR="$pkgdir/" install
-  install -Dm644 "$srcdir/$_gitbranch/include/cauchy.h" "$pkgdir/usr/local/include/"
-  install -Dm644 "$srcdir/$_gitbranch/include/galois.h" "$pkgdir/usr/local/include/"
-  install -Dm644 "$srcdir/$_gitbranch/include/liberation.h" "$pkgdir/usr/local/include/"
-  install -Dm644 "$srcdir/$_gitbranch/include/reed_sol.h" "$pkgdir/usr/local/include/"
+  install -Dm644 "$srcdir/$_gitbranch/include/cauchy.h" "$pkgdir/usr/include/"
+  install -Dm644 "$srcdir/$_gitbranch/include/galois.h" "$pkgdir/usr/include/"
+  install -Dm644 "$srcdir/$_gitbranch/include/liberation.h" "$pkgdir/usr/include/"
+  install -Dm644 "$srcdir/$_gitbranch/include/reed_sol.h" "$pkgdir/usr/include/"
   rm -rf "$srcdir/$_gitbranch"
 }
