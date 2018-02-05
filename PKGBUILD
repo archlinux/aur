@@ -2,7 +2,7 @@
 
 pkgname=desk-git
 pkgver=v0.6.0.r10.g20369d7
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight workspace manager for the shell"
 arch=('any')
 url="https://github.com/jamesob/desk"
@@ -22,6 +22,14 @@ pkgver() {
 package() {
     install -dm755 "$pkgdir/usr/bin"
     install -m755 "$srcdir/$pkgname/desk" "$pkgdir/usr/bin/desk"
+
+    # completions
+    install -dm755 "$pkgdir/usr/share/bash/completions"
+    install -m644 "$srcdir/$pkgname/shell_plugins/bash/desk" "$pkgdir/usr/share/bash/completions"
+    install -dm755 "$pkgdir/usr/share/zsh/site-functions"
+    install -m644 "$srcdir/$pkgname/shell_plugins/zsh/_desk" "$pkgdir/usr/share/zsh/site-functions"
+    install -dm755 "$pkgdir/usr/share/fish/completions"
+    install -m644 "$srcdir/$pkgname/shell_plugins/fish/desk.fish" "$pkgdir/usr/share/fish/completions"
 }
 
 # vim:set ts=4 sts=4 sw=4 et:
