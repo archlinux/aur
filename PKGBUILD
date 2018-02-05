@@ -17,6 +17,6 @@ sha512sums_x86_64=('ba6fb9fd7323521bdd825dcd60485e7c8595dc1608827e7d5a6f43e8e054
 package () {
   cd "${srcdir}/yn-${pkgver}"
   make CC='cc' PREFIX="${pkgdir}/usr" install
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
