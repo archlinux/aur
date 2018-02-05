@@ -1,0 +1,3 @@
+post_install() {
+   echo "Hint: You can use the example configuration file provided at /usr/share/i3lock-fancier/default.ini at \$HOME/.config/i3lock-fancier/config.ini"
+}
