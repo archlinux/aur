@@ -31,7 +31,7 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=84ec42b5cd7ba287dd129eda7153c4d023c95cdf
+arch_config_trunk=80a75baddcd9fe59e15638140598d1f953777688
 
 # Arch additional patches
 arch_patches=(
@@ -55,7 +55,7 @@ sha256sums=('e0a021c58d2c5184e997e002ffa394a9a6d8dad216b14907d0bc12f052278dd8'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
             '7b7363b53c68f52b119df994c9c08d4f29271b408f021366ab23f862518bd9bc'
             'ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215')
-sha256sums_x86_64=('991672fadc4b0346a4cede2cd51e6c8760cde996780e56f7e372d1d5ab66fb3a')
+sha256sums_x86_64=('76fdf8b3a2451cb38ec5b66cd266d5b2411353bc5e7a9d3bdefc7cf113b32e5c')
 
 _kernelname=${pkgbase#linux}
 
