@@ -1,7 +1,7 @@
 # Maintainer: copygirl <copygirl@mcft.net>
 pkgname=pulseaudio-arctis7
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Configuration files to support SteelSeries Arctis 7 mono/stereo output on pulseaudio"
 arch=("any")
 license=("LGPL")
@@ -11,7 +11,7 @@ source=("90-pulseaudio-arctis7.rules"
         "steelseries-arctis-output-mono.conf"
         "steelseries-arctis-output-stereo.conf"
         "steelseries-arctis-usb-audio.conf")
-md5sums=("6a489d6877963b7260b5e63e4348a360"
+md5sums=("80256126ac0a8065223957ac2b254e72"
          "2a68f9d0ee3a89c47d0c7781c8f46ce0"
          "0134ec266ddef9a1d4bcfc206b6bcc1d"
          "e8ca5d47324c9b0504e131e9919e109d"
