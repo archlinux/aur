@@ -15,14 +15,9 @@ conflicts=('yn-bin')
 source_x86_64=("${url}/releases/download/${pkgver}/yn-${pkgver}.tar.gz")
 sha512sums_x86_64=('ba6fb9fd7323521bdd825dcd60485e7c8595dc1608827e7d5a6f43e8e0544ac00ee9e33186d74a01d50de96e56e461578b130bbf00e0c9319ae57dae0c976238')
 
-build () {
-    cd "${srcdir}/yn-${pkgver}"
-    make CC='cc'
-}
-
 package () {
   cd "${srcdir}/yn-${pkgver}"
-  make PREFIX="${pkgdir}/usr" install
+  make CC='cc' PREFIX="${pkgdir}/usr" install
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
   install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
