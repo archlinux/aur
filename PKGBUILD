@@ -22,7 +22,9 @@ depends=('python'
          'python-requests'
          'subliminal'
          'python-urllib3'
-         'python-waitress')
+         'python-waitress'
+         'python-langdetect'
+         'python-apprise')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
