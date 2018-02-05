@@ -12,7 +12,7 @@ pkgdesc="Utility for creating Dell BIOS flash disks"
 url="https://github.com/dell/${gitname}"
 license=("GPL")
 makedepends=('git')
-depends=('dos2unix' 'wget' 'syslinux' 'python2')
+depends=(wget syslinux)
 conflicts=("${gitname}")
 provides=("${gitname}")
 backup=("etc/biosdisk.conf")
@@ -27,6 +27,5 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${gitname}"
-    make DESTDIR="${pkgdir}" install
-    mv "${pkgdir}"/usr/{sbin,bin}
+    make DESTDIR="${pkgdir}" sbindir=/usr/bin install
 }
