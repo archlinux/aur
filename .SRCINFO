@@ -1,0 +1,20 @@
+pkgbase = play-with-mpv-git
+	pkgdesc = Chrome extension and python server that allows you to play videos in webpages with MPV instead.
+	pkgver = 0.0.5.718a021
+	pkgrel = 1
+	url = https://github.com/Thann/play-with-mpv
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = python
+	depends = youtube-dl
+	depends = mpv
+	optdepends = peerflix
+	provides = play-with-mpv
+	conflicts = play-with-mpv
+	source = play-with-mpv-git::git+https://github.com/Thann/play-with-mpv.git
+	md5sums = SKIP
+
+pkgname = play-with-mpv-git
+
