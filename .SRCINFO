@@ -1,7 +1,7 @@
 pkgbase = webkitgtk-sharp
 	pkgdesc = C# bindings for WebKitGTK+
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xDarkice/webkitgtk-sharp
 	arch = i686
 	arch = x86_64
