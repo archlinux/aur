@@ -4,7 +4,7 @@
 
 _pkgname=cmdliner
 pkgname=ocaml-${_pkgname}
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An OCaml module for declarative definition of command line interfaces"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('ocaml' 'ocaml-result')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg' 'opam')
 source=("http://erratique.ch/software/${_pkgname}/releases/${_pkgname}-${pkgver}.tbz")
-md5sums=('6baa375f393fbe9ca1fcb0a7a875e001')
+md5sums=('ab2f0130e88e8dcd723ac6154c98a881')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
