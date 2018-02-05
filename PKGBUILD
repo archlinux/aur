@@ -7,7 +7,7 @@
 pkgname=root-extra-dev
 _pkgname=root
 pkgver=6.11.02
-pkgrel=1
+pkgrel=2
 provides=('root' 'root-extra' 'root-extra-dev')
 conflicts=('root' 'root-dev' 'root-extra')
 pkgdesc='C++ data analysis framework and interpreter from CERN with extra features enabled - development release.'
@@ -47,12 +47,12 @@ source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
         'root.xml'
         'rootd'
         'settings.cmake')
-sha256sums=('39fc90ebd12f184572e9e5713ea1f3fb804bc0996b416c90d6b17f2db1e7aaca'
+sha256sums=('7995b0d9b76289800c80faf26e72e9330f1d3874753609096fc8d075b49c5512'
             'f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
             '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
-            '40503aebd8a0ab5380a24d69145cf7d93d483d4d9330e4c23fb04e55c9ed2caf')
+            '0878ab24974c7548ddda5619d24d07d7cea14af92de2d8ed3ccef394feaf1d87')
 prepare() {
     cd "${_pkgname}-${pkgver}"
 
@@ -92,6 +92,7 @@ package() {
 
     install -D -m644 "${srcdir}/${_pkgname}-${pkgver}/build/package/debian/root-system-bin.desktop.in" \
         "${pkgdir}/usr/share/applications/root-system-bin.desktop"
+
     # replace @prefix@ with /usr for the desktop
     sed -e 's_@prefix@_/usr_' -i "${pkgdir}/usr/share/applications/root-system-bin.desktop"
 
