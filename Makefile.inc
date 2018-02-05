@@ -1,9 +1,33 @@
+#
+#  This file is part of MUMPS 5.1.2, released
+#  on Mon Oct  2 07:37:01 UTC 2017
+#
+################################################################################
+#
+#   Makefile.inc.generic
+#
+#   This defines some parameters dependent on your platform; you should
+#   look for the approriate file in the directory ./Make.inc/ and copy it
+#   into a file called Makefile.inc. For example, from the MUMPS root
+#   directory, use 
+#   "cp Make.inc/Makefile.inc.generic ./Makefile.inc"
+#   (see the main README file for details)
+#
+#   If you do not find any suitable Makefile in Makefile.inc, use this file:
+#   "cp Make.inc/Makefile.inc.generic ./Makefile.inc" and modify it according
+#   to the comments given below. If you manage to build MUMPS on a new platform,
+#   and think that this could be useful to others, you may want to send us
+#   the corresponding Makefile.inc file.
+#
+################################################################################
+
+
 ########################################################################
 #Begin orderings
 #
-# NOTE that PORD is distributed within MUMPS by default. If you would like to
-# use other orderings, you need to obtain the corresponding package and modify
-# the variables below accordingly.
+# NOTE that PORD is distributed within MUMPS by default. It is recommended to
+# install other orderings. For that, you need to obtain the corresponding package
+# and modify the variables below accordingly.
 # For example, to have Metis available within MUMPS:
 #          1/ download Metis and compile it
 #          2/ uncomment (suppress # in first column) lines
@@ -13,11 +37,12 @@
 #          4/ Compile and install MUMPS
 #             make clean; make   (to clean up previous installation)
 #
-#          Metis/ParMetis and SCOTCH/PT-SCOTCH (ver 6.0 and later) orderings are now available for MUMPS.
+#          Metis/ParMetis and SCOTCH/PT-SCOTCH (ver 6.0 and later) orderings are recommended.
 #
 
 SCOTCHDIR  = /usr
 ISCOTCH    = -I$(SCOTCHDIR)/include/scotch
+#
 # You have to choose one among the following two lines depending on
 # the type of analysis you want to perform. If you want to perform only
 # sequential analysis choose the first (remember to add -Dscotch in the ORDERINGSF
@@ -25,7 +50,7 @@ ISCOTCH    = -I$(SCOTCHDIR)/include/scotch
 # line (remember to add -Dptscotch in the ORDERINGSF variable below)
 
 LSCOTCH    = -L$(SCOTCHDIR)/lib -lesmumps -lbz2 -lz -lscotch -lscotcherr
-#LSCOTCH    = -L$(SCOTCHDIR)/lib -lptesmumps -lptscotch -lptscotcherr -lscotch
+#LSCOTCH    = -L$(SCOTCHDIR)/lib -lptesmumps -lptscotch -lptscotcherr
 
 
 LPORDDIR = $(topdir)/PORD/lib/
@@ -46,11 +71,10 @@ LMETIS    = -L$(LMETISDIR) -lmetis
 
 # The following variables will be used in the compilation process.
 # Please note that -Dptscotch and -Dparmetis imply -Dscotch and -Dmetis respectively.
-# If you want to use Metis 4.X or an older version, you should use -Dmetis4 instead of -Dmetis 
+# If you want to use Metis 4.X or an older version, you should use -Dmetis4 instead of -Dmetis
 # or in addition with -Dparmetis (if you are using parmetis 3.X or older).
 #ORDERINGSF = -Dscotch -Dmetis -Dpord -Dptscotch -Dparmetis
-#ORDERINGSF  = -Dpord
-ORDERINGSF = -Dscotch -Dmetis -Dpord
+ORDERINGSF  = -Dscotch -Dmetis -Dpord
 ORDERINGSC  = $(ORDERINGSF)
 
 LORDERINGS = $(LMETIS) $(LPORD) $(LSCOTCH)
@@ -85,6 +109,10 @@ AR      = ar vr
 #   (optionnal use "RANLIB = echo" in case of problem)
 RANLIB  = ranlib
 #RANLIB  = echo
+
+# DEFINE HERE YOUR LAPACK LIBRARY
+
+#LAPACK = -llapack
 
 # SCALAP should define the SCALAPACK and  BLACS libraries.
 SCALAP  = -lscalapack -llapack
@@ -122,10 +150,9 @@ LIBOTHERS = -lpthread
 CDEFS = -DAdd_
 
 #COMPILER OPTIONS
-
 OPTF    = -DALLOW_NON_INIT ${CFLAGS} -fPIC
-OPTL    = ${CFLAGS} -fPIC
 OPTC    = ${CFLAGS} -fPIC
+OPTL    = ${CFLAGS} -fPIC
 
 # CHOOSE BETWEEN USING THE SEQUENTIAL OR THE PARALLEL VERSION.
 
