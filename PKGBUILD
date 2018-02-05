@@ -10,7 +10,7 @@
 
 pkgname=davinci-resolve-studio
 _pkgname=resolve-studio
-pkgver=14.2.1
+pkgver=14.3
 pkgrel=0
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
@@ -31,7 +31,7 @@ if [ ! -f ${pkgdir}/DaVinci_Resolve_Studio_${pkgver}_Linux.zip ]; then
 fi
 
 source=("local://DaVinci_Resolve_Studio_${pkgver}_Linux.zip")
-sha256sums=('e7b6b5e8c5c7e046b1bcc3d3055f304bdac7b505615dfaf7b305225fdf9056bf')
+sha256sums=('c13df388f0405dd120ae247e5ea3406dc6dcbef64e32ae3c7c0f37cc0ae6db23')
 
 package() {
 
