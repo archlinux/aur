@@ -6,6 +6,7 @@ pkgbase = sn-bin
 	arch = x86_64
 	license = GPL3
 	provides = standard-notes
+	conflicts = standardnotes-desktop
 	noextract = standard-notes-2.0.42-x86_64.AppImage
 	options = !strip
 	source_x86_64 = https://github.com/standardnotes/desktop/releases/download/v2.0.42/standard-notes-2.0.42-x86_64.AppImage

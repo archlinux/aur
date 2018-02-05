@@ -10,6 +10,9 @@ url="https://github.com/standardnotes/desktop"
 license=('GPL3')
 provides=('standard-notes')
 
+# This conflicting package is currently marked out-of-date.
+conflicts=('standardnotes-desktop')
+
 source_x86_64=("https://github.com/standardnotes/desktop/releases/download/v${pkgver}/standard-notes-${pkgver}-x86_64.AppImage"
                "standard-notes.desktop"
                "https://github.com/standardnotes/desktop/raw/master/app/icon/Icon-512x512.png")
@@ -21,7 +24,7 @@ sha256sums_x86_64=('55aa58ebd78a4186d190895042009047c6b346626df185ddb478b54a2098
 # An AppImage is a binary format, not an archive, so do not attempt to extract it.
 noextract=("standard-notes-${pkgver}-x86_64.AppImage")
 
-# stripping an AppImage binary will pretty much destroy it, so tell makepkg not to do so
+# Stripping an AppImage binary will pretty much destroy it, so tell makepkg not to do so.
 options=(!strip)
 
 package () {
