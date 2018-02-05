@@ -1,0 +1,14 @@
+[Unit]
+Description=Bazarr Service
+After=network.target
+
+[Service]
+Environment=MONO_TLS_PROVIDER=legacy
+User=bazarr
+Group=bazarr
+ExecStart=/usr/bin/bazarr
+Type=simple
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

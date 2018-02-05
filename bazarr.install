@@ -1,0 +1,8 @@
+post_install() {
+    systemd-sysusers bazarr.conf
+    chown -R bazarr: /usr/share/bazarr/data
+}
+
+post_upgrade() {
+    post_install $1
+}
