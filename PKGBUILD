@@ -4,7 +4,7 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
 pkgname=asterisk-cisco
-pkgver=13.16.0
+pkgver=13.19.0
 pkgrel=1
 pkgdesc="A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones"
 provides=('asterisk')
@@ -125,21 +125,23 @@ depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxs
 makedepends=('sqlite3' 'gsm')
 optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'iksemel' 'dahdi')
 source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz \
-	https://issues.asterisk.org/jira/secure/attachment/55535/cisco-usecallmanager-13.16.0.patch \
-	https://issues.asterisk.org/jira/secure/attachment/52325/dialtemplate.xml \
-	https://issues.asterisk.org/jira/secure/attachment/52326/featurepolicy.xml \
-	https://issues.asterisk.org/jira/secure/attachment/55356/SEP000000000000.cnf.xml \
-	https://issues.asterisk.org/jira/secure/attachment/52328/softkeys.xml \
+	https://issues.asterisk.org/jira/secure/attachment/56887/cisco-usecallmanager-13.19.0.patch \
+	https://issues.asterisk.org/jira/secure/attachment/55770/DialTemplate.xml \
+	https://issues.asterisk.org/jira/secure/attachment/55771/FeaturePolicy.xml \
+	https://issues.asterisk.org/jira/secure/attachment/56888/SEPMAC.cnf.xml \
+	https://issues.asterisk.org/jira/secure/attachment/55769/SoftKeys.xml \
+	https://issues.asterisk.org/jira/secure/attachment/55772/AppDialRules.xml \
 	asterisk.service \
 	asterisk.logrotated \
 	asterisk.tmpfile)
 install=asterisk.install
-sha256sums=('bcc81856ef5c624b591d5c11beeb68587cc7b3872cf41f728663b623a28cf865'
-            '4e7e81c9d46fdf169721efa1cf45951c9739182f97ae65f3688ea02813d87919'
-            'e355411c770537143ec258dae932e823df3ca8e7d6c9905b0993c02e60679ab2'
-            'e1d552e9fed66f210571176a1ee8c00f6d6321d9e05f484f21ecacd40641ae4a'
-            '543e4dde1c2e2859708cd040e70879811840ddf1403ca88ed9388e7fd59170bd'
+sha256sums=('57b3f37f7c9f557754b6e67b183922a4957c832dc9150ae4024aedc4948d53d0'
+            '2d37057b7af09ba080655c3f2d17a856f8f8207f81a0b34ba789a843c00e4e07'
+            '10795bc3b2fb28b79b3ab74bbd8f33b667e3bf4b1c87ccfb2aae168f9b07a17c'
+            'da5a87717517b37d0554369235e0bdb86700bd696c1a70db5a47d9f4711b44db'
+            '972e5cb93ea2d4570554beb3188cdb7556950266be6d78d0953c2bc330f404a9'
             'f75707ccd176ae1223f80a1c02fdebafbd0bce3e5ec12667e6e061b0427bb075'
+            'c1243a3459b0d43020f9644fa2a2a6c9003a7bd51927715d626dc4060c234818'
             '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
@@ -169,10 +171,11 @@ package(){
   
   mv ${pkgdir}/var/run ${pkgdir}
 
-  install -D -m 644 ${srcdir}/dialtemplate.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/dialtemplate.xml
-  install -D -m 644 ${srcdir}/featurepolicy.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/featurepolicy.xml
-  install -D -m 644 ${srcdir}/SEP000000000000.cnf.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/SEP000000000000.cnf.xml
-  install -D -m 644 ${srcdir}/softkeys.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/softkeys.xml
+  install -D -m 644 ${srcdir}/DialTemplate.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/DialTemplate.xml
+  install -D -m 644 ${srcdir}/FeaturePolicy.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/FeaturePolicy.xml
+  install -D -m 644 ${srcdir}/SEPMAC.cnf.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/SEPMAC.cnf.xml
+  install -D -m 644 ${srcdir}/SoftKeys.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/SoftKeys.xml
+  install -D -m 644 ${srcdir}/AppDialRules.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/AppDialRules.xml
   install -D -m 644 ${srcdir}/asterisk.logrotated ${pkgdir}/etc/logrotate.d/asterisk
   install -D -m 644 ${srcdir}/asterisk.service ${pkgdir}/usr/lib/systemd/system/asterisk.service
   install -D -m 644 ${srcdir}/asterisk.tmpfile ${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf
