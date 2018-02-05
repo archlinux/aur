@@ -3,12 +3,12 @@
 # Contributor: Eric Vidal <eric@obarun.org>
 
 pkgname=kickshaw
-pkgver=0.5.14
+pkgver=0.5.20
 pkgrel=1
 pkgdesc='A menu editor for openbox'
 url='https://github.com/natemaia/kickshaw'
 arch=('x86_64')
-sha256sums=('931c45cc0eedc78d2b72e6048465fcbaffc79cc41150bfaab98caa6728279e8b')
+sha256sums=('d3995d81ceeeba04c3a73f259e5ca06f897f99b8868dd485b6cf07ef7ede69c5')
 license=('GPL2')
 source=("$url/raw/master/source.tar.gz")
 makedepends=('gtk3' 'gcc')
