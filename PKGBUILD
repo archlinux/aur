@@ -1,6 +1,6 @@
 # Maintainer: redfish <redfish@galactica.pw>
 
-#_BUILD_QT_GUI=1 # comment out to unset
+_BUILD_QT_GUI=1 # comment out to unset
 
 pkgbase=gostcoin-git
 pkgname=('gostcoind-git')
@@ -27,8 +27,6 @@ optdepends=('i2pd: I2P network transport')
 source=("${pkgbase%%-git}::git+https://github.com/GOSTSec/gostcoin"
         "gostcoind.service"
         "gostcoind.conf")
-backup=("etc/gostcoind.conf")
-install="${pkgbase%%-git}.install"
 
 
 pkgver() {
@@ -51,6 +49,10 @@ package_gostcoind-git(){
   provides=('gostcoind')
   conflicts=('gostcoind')
 
+  install="${pkgname%%-git}.install"
+
+  backup=("etc/gostcoind.conf")
+
   install -Dm755 $srcdir/${pkgbase%%-git}/src/gostcoind "$pkgdir/usr/bin/gostcoind"
   install -Dm0644 $srcdir/gostcoind.service $pkgdir/usr/lib/systemd/system/gostcoind.service
   install -Dm0644 $srcdir/gostcoind.conf $pkgdir/etc/gostcoind.conf
@@ -70,7 +72,7 @@ package_gostcoin-qt-git(){
   
   make
 
-  install -Dm755 $srcdir/${pkgbase%%-git}/src/qt/gostcoin-qt "$pkgdir/usr/bin/gostcoin-qt"
+  install -Dm755 $srcdir/${pkgbase%%-git}/gostcoin-qt "$pkgdir/usr/bin/gostcoin-qt"
 }
 
 md5sums=('SKIP'
