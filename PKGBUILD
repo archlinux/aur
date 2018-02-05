@@ -10,6 +10,7 @@ arch=('x86_64')
 url="https://github.com/JoshuaRLi/yn"
 license=('MIT')
 provides=('yn')
+conflicts=('yn')
 
 source_x86_64=("${url}/releases/download/${pkgver}/yn-${pkgver}-bin.tar.gz")
 sha512sums_x86_64=('41129d259804d1b2df53f126b08589cecbe4d194679acdc3f49d5dd816ebb4671fdadc9a74b00390e20c7797e49d6069032cd454843b1683318bcdcf04a5aec3')
