@@ -1,0 +1,21 @@
+pkgbase = rx_tools-git
+	pkgdesc = rx_fm, rx_power, and rx_sdr tools for receiving data from SDRs, based on rtl_fm, rtl_power, and rtl_sdr from librtlsdr, but using the SoapySDR vendor-neutral SDR support library instead, intended to support a wider range of devices than RTL-SDR
+	pkgver = v1.0.3.r5.571cc9a
+	pkgrel = 1
+	url = https://github.com/rxseger/rx_tools
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = soapysdr
+	provides = rx_tools
+	conflicts = rx_tools
+	source = git+https://github.com/rxseger/rx_tools.git
+	md5sums = SKIP
+
+pkgname = rx_tools-git
+
