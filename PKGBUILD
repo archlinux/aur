@@ -1,5 +1,5 @@
 pkgname=mrpt
-pkgver=1.5.3
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Provides an extensive set of libraries, algorithms, and applications employed in a number of mobile robotics research areas."
 arch=('i686' 'x86_64' 'armv7h')
