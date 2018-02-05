@@ -2,7 +2,7 @@
 
 pkgname=xpa
 pkgver=2.1.18
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A messaging system provides seamless communication between many kinds of Unix programs"
 arch=('i686' 'x86_64')
@@ -20,8 +20,11 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/ericmandel/${pkgname}/archive/v${pkgver}.tar.gz)
-sha1sums=('3219a872b033576969ad5a62aab866537ae63b29')
+source=(https://github.com/ericmandel/${pkgname}/archive/v${pkgver}.tar.gz
+        xpa_inc_fail.patch)
+md5sums=('6060daa15541cffd1529b4fefde143a2'
+         '305d9abf968ba15dcdff22b3bc845254')
+
 noextract=()
 
 build() {
