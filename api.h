@@ -104,6 +104,14 @@ void json_print_news(Json* jobj);
 const char* google_shorten_link(char* url_string);
 
 /**
+ * Returns a string stripped of the given char
+ * @param string the string to strip the char from
+ * @param c the char to strip
+ * @return the stripped string
+ */
+const char* strip_char(char* string, char c);
+
+/**
  * Destroys String object and frees memory
  * @param phString the String to destroy
  */

@@ -41,6 +41,8 @@ you can run
 ```bash
 $ tick news [symbol]
 ```
+If you wish to use spaces in your input, you can either surround the phrase
+with quotes or replace spaces with underscores.
 
 Once installed, you may read the man page for more information.
 
@@ -55,5 +57,6 @@ not abuse the APIs by repeatedly requesting information. Read the provided
 license for more information.
 #### Future Ideas
 * Command to get info about a security
-* More robust information in "check"
 * Historical support -- 7d/28d profits
+* Change portfolio structure to JSON format
+* Different ways to sort "check all"

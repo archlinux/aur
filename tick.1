@@ -1,10 +1,10 @@
-.TH TICK "1" "January 2018" "Tick 1.6.1" "User Commands"
+.TH TICK "1" "January 2018" "Tick 1.6.2" "User Commands"
 
 .SH NAME
 Tick - Command line stock and cryptocurrency portfolio tracker.
 
 .SH SYNOPSIS
-tick [OPTION]...
+tick COMMAND [ARGUMENTS]
 
 .SH DESCRIPTION
 Create your portfolio by adding your current holdings. Then, use the option "check" to get information on the current price.
@@ -34,7 +34,9 @@ News:
 .TP
 [news] [symbol]
 Prints information on the top three news articles in the past 14 days. The article titles, sources, authors, dates, and URLs
-will be displayed. Technically, the input may be something completely unrelated to investing. This may be amended in the future.
+will be displayed. If you would like to use a space in your search, you must either use an underscore instead of the space or wrap
+your phrase in double quotes. Technically, the input may be something completely unrelated to investing. This may be amended
+in the future.
 
 .SH FILES
 .I ~/.tick_portfolio

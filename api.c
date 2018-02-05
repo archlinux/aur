@@ -166,6 +166,13 @@ double* coinmarketcap_get_price(char* ticker_name_string) {
 }
 
 void news_print_top_three(char* ticker_name_string) {
+    char* url_encoded_string = calloc(128, 1);
+    for (int i = 0, j = 0; i < 128; i++, j++) {
+        if (ticker_name_string[i] == '_' || ticker_name_string[i] == ' ') {
+            memcpy(&url_encoded_string[i], "%20", 3);
+            i += 2;
+        } else url_encoded_string[i] = ticker_name_string[j];
+    }
     time_t now = time(NULL);
     struct tm* ts;
     char* yearchar = calloc(64, 1);
@@ -176,11 +183,10 @@ void news_print_top_three(char* ticker_name_string) {
     char* news_api_string = calloc(256, sizeof(char));
     sprintf(news_api_string, "%s&from=%s&q=%s",
             "https://newsapi.org/v2/everything?sortBy=relevancy&pageSize=3&language=en&apiKey=1163c352d041460381f0a8273e60a9d1",
-            yearchar, ticker_name_string);
+            yearchar, url_encoded_string);
     free(yearchar);
+    free(url_encoded_string);
     String* pString = api_curl_data(news_api_string, NULL);
-    //printf("%s\n", pString->data);
-    //printf("%s\n", news_api_string);
     Json* jobj = json_tokener_parse(pString->data);
     if (strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL,
                10) > 0)
@@ -199,21 +205,17 @@ void json_print_news(Json* jobj) {
                                10);
     for (int i = 0; i < results && i < 3; i++) {
         article = json_object_array_get_idx(article_list, (size_t) i);
-        author_string = (char*) json_object_to_json_string(json_object_object_get(article, "author"));
-        title_string = (char*) json_object_to_json_string(json_object_object_get(article, "title"));
-        source_string = (char*) json_object_to_json_string(
-                json_object_object_get(json_object_object_get(article, "source"), "name"));
+        author_string = (char*) strip_char(
+                (char*) json_object_to_json_string(json_object_object_get(article, "author")), '\\');
+        title_string = (char*) strip_char(
+                (char*) json_object_to_json_string(json_object_object_get(article, "title")), '\\');
+        source_string = (char*) strip_char((char*) json_object_to_json_string(
+                json_object_object_get(json_object_object_get(article, "source"), "name")), '\\');
         date_string = (char*) json_object_to_json_string(json_object_object_get(article, "publishedAt"));
-
-        url_string = (char*) json_object_to_json_string(json_object_object_get(article, "url"));
-        char* url_final = calloc(strlen(url_string + 1), 1);
-        for (int k = 0, j = 0; j < strlen(url_string); k++, j++) {
-            if (url_string[j] == '\\' || url_string[j] == '\"')
-                j++;
-            url_final[k] = url_string[j];
-        }
-
-        char* shorten = (char*) google_shorten_link(url_final);
+        url_string = (char*) strip_char((char*) json_object_to_json_string(json_object_object_get(article, "url")),
+                                        '\\');
+        char* stripped = (char*) strip_char(url_string, '\"');
+        char* shortened = (char*) google_shorten_link(stripped);
         printf("Title: %s Source: %s ", title_string, source_string);
         if (strcmp(author_string, "null") != 0)
             printf("Author: %s ", author_string);
@@ -222,9 +224,13 @@ void json_print_news(Json* jobj) {
             date_string[12] = '\0';
             printf("Date: %s ", date_string);
         }
-        printf("Url: %s\n", shorten);
-        free(url_final);
-        free((void*) shorten);
+        printf("Url: \"%s\"\n", shortened);
+        free(author_string);
+        free(title_string);
+        free(source_string);
+        free(url_string);
+        free(stripped);
+        free(shortened);
     }
 }
 
@@ -249,6 +255,17 @@ const char* google_shorten_link(char* url_string) {
     free(copy);
     api_string_destroy(&pString);
     return final;
+}
+
+const char* strip_char(char* string, char c) {
+    size_t len = strlen(string);
+    char* final_string = calloc(len + 1, 1);
+    for (int i = 0, j = 0; j < (int) len; i++, j++) {
+        while (string[j] == c)
+            j++;
+        final_string[i] = string[j];
+    }
+    return final_string;
 }
 
 void api_string_destroy(String** phString) {

@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[]) {
     if (argc == 3 && strcmp(argv[1], "news") == 0) {
-        if (strlen(argv[2]) <= 16 && strlen(argv[2]) > 1)
+        if (strlen(argv[2]) <= 32 && strlen(argv[2]) > 1)
             news_print_top_three(argv[2]);
         else printf("Input invalid length.\n");
         return 0;
