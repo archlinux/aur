@@ -7,8 +7,8 @@ arch=(x86_64)
 url="https://www.marvell.com/storage/system-solutions/"
 license=('unknown')
 groups=()
-depends=('rpmextract')
-makedepends=()
+depends=()
+makedepends=('libarchive')
 optdepends=()
 provides=()
 conflicts=()
@@ -31,7 +31,7 @@ build() {
   echo "Extracting RPM."
   rpmfldr=Marvell_MSU_Linux_v${pkgver}
   rpmfn=MSU-${pkgver}-${pkgrel}.x86_64.rpm
-  rpmextract.sh $srcdir/$rpmfldr/$rpmfn
+  bsdtar -xf $srcdir/$rpmfldr/$rpmfn
 }
 
 package() {
