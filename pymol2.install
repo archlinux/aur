@@ -1,0 +1,17 @@
+post_install() {
+	  echo ""
+      echo " ====== "
+	  echo "  To use only the Open Source features in PyMOL2, you can use the \"-n\" option,"
+      echo "  Or you can also add it to lines 28 and 34 /usr/bin/pymol2 to use it "
+      echo "  automatically in every invocation, i.e. line 28 would become:"
+      echo "  "
+      echo "            exec "$python" -m pymol -n \"\$@\""
+      echo "  "
+      echo " ====== "
+      echo ""
+}
+
+post_upgrade() {
+	post_install
+}
+
