@@ -20,7 +20,7 @@ pkgbase = davinci-resolve-studio
 	depends = qt5-webengine
 	depends = qt5-websockets
 	options = !strip
-	source = local://DaVinci_Resolve_Studio_14.2.1_Linux.zip
+	source = local://DaVinci_Resolve_Studio_14.3_Linux.zip
 	sha256sums = c13df388f0405dd120ae247e5ea3406dc6dcbef64e32ae3c7c0f37cc0ae6db23
 
 pkgname = davinci-resolve-studio
