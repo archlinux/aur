@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 # Contributor: said
 # Contributor: Ner0
-# Contributor: farnsworth517 
+# Contributor: farnsworth517
 
 pkgname=soulseekqt
 pkgver=20171121
@@ -12,22 +12,21 @@ arch=('x86_64')
 url="http://www.soulseekqt.net/news/"
 license=('CUSTOM')
 depends=('fontconfig' 'libxext' 'libxrender' 'qt5-multimedia')
-makedepends=('libselinux')
 source=("https://www.dropbox.com/s/ru2mvycljfrejcx/SoulseekQt-$_pkgver-64bit.AppImage"
 	$pkgname.desktop
 )
 
 package () {
-  cd $srcdir
+	cd $srcdir
 
-   ./SoulseekQt-${_pkgver}-64bit  --appimage-extract
+	./SoulseekQt-${_pkgver}-64bit  --appimage-extract
 
-  cd squashfs-root
+	cd squashfs-root
 
-  install -vDm755 SoulseekQt "$pkgdir/usr/bin/$pkgname"
-  install -vDm644 soulseek.png "$pkgdir/usr/share/pixmaps/soulseek.png"
-  install -vDm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -vDm755 SoulseekQt "$pkgdir/usr/bin/$pkgname"
+	install -vDm644 soulseek.png "$pkgdir/usr/share/pixmaps/soulseek.png"
+	install -vDm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
 md5sums=('19af4fe0f7fbd382e3e68eb92f32c52b'
-         '810a4200a3c8568257b66b6bdea5c29c')
+'810a4200a3c8568257b66b6bdea5c29c')
