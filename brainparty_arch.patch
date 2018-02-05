@@ -1,6 +1,6 @@
-diff -ruN brainparty2/BPGame.cpp brainparty/BPGame.cpp
---- brainparty2/BPGame.cpp	2018-01-09 23:22:19.542191103 +0100
-+++ brainparty/BPGame.cpp	2018-01-10 00:20:44.546835911 +0100
+diff -ruN brainparty_orig/BPGame.cpp brainparty/BPGame.cpp
+--- brainparty_orig/BPGame.cpp	2010-04-13 15:44:55.000000000 +0200
++++ brainparty/BPGame.cpp	2018-02-05 22:32:32.583653423 +0100
 @@ -1298,7 +1298,11 @@
  	NumUnlockedGames = 0;
  
@@ -34,9 +34,9 @@ diff -ruN brainparty2/BPGame.cpp brainparty/BPGame.cpp
 -}
 \ Kein Zeilenumbruch am Dateiende.
 +}
-diff -ruN brainparty2/BPList.h brainparty/BPList.h
---- brainparty2/BPList.h	2018-01-09 23:22:19.542191103 +0100
-+++ brainparty/BPList.h	2018-01-09 23:23:05.528574785 +0100
+diff -ruN brainparty_orig/BPList.h brainparty/BPList.h
+--- brainparty_orig/BPList.h	2010-03-02 14:29:45.000000000 +0100
++++ brainparty/BPList.h	2018-02-05 22:32:32.583653423 +0100
 @@ -138,7 +138,7 @@
  	~BPPList();
  	void Add(T item);
@@ -55,9 +55,9 @@ diff -ruN brainparty2/BPList.h brainparty/BPList.h
  	if (safe_delete) {
  		for (int i = data.size() - 1; i >= 0; --i) {
  			T item = data[i];
-diff -ruN brainparty2/main.cpp brainparty/main.cpp
---- brainparty2/main.cpp	2018-01-09 23:22:19.565524292 +0100
-+++ brainparty/main.cpp	2018-01-09 23:28:34.876545566 +0100
+diff -ruN brainparty_orig/main.cpp brainparty/main.cpp
+--- brainparty_orig/main.cpp	2010-04-13 15:44:55.000000000 +0200
++++ brainparty/main.cpp	2018-02-05 22:32:32.583653423 +0100
 @@ -26,6 +26,8 @@
  BPGame* Game;
  
@@ -67,9 +67,9 @@ diff -ruN brainparty2/main.cpp brainparty/main.cpp
  	if ( SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0 ) {
  		fprintf(stderr, "Unable to init SDL: %s\n", SDL_GetError());
  		exit(1);
-diff -ruN brainparty2/Makefile brainparty/Makefile
---- brainparty2/Makefile	2018-01-09 23:22:19.565524292 +0100
-+++ brainparty/Makefile	2018-01-09 23:27:41.916872159 +0100
+diff -ruN brainparty_orig/Makefile brainparty/Makefile
+--- brainparty_orig/Makefile	2010-03-02 14:42:51.000000000 +0100
++++ brainparty/Makefile	2018-02-05 22:32:32.583653423 +0100
 @@ -13,7 +13,7 @@
  else
  	INCLUDES = `sdl-config --cflags` -I/usr/X11R6/include
@@ -79,3 +79,36 @@ diff -ruN brainparty2/Makefile brainparty/Makefile
  	OSXCOMPAT = 
  endif
  
+diff -ruN brainparty_orig/symboliclogic.cpp brainparty/symboliclogic.cpp
+--- brainparty_orig/symboliclogic.cpp	2010-03-02 14:29:45.000000000 +0100
++++ brainparty/symboliclogic.cpp	2018-02-05 22:30:33.070299279 +0100
+@@ -116,7 +116,7 @@
+ 	}
+ }
+ 
+-const char* BPMiniGame_SymbolicLogic::FlattenPremise(BPMiniGame_SymbolicLogic_Premise* premise) {
++const string BPMiniGame_SymbolicLogic::FlattenPremise(BPMiniGame_SymbolicLogic_Premise* premise) {
+ 	ostringstream result;
+ 	
+ 	switch (premise->Type) {
+@@ -150,7 +150,7 @@
+ 			break;
+ 	}
+ 		
+-	return result.str().c_str();
++	return result.str();
+ }
+ 
+ void BPMiniGame_SymbolicLogic::Tick() {
+diff -ruN brainparty_orig/symboliclogic.h brainparty/symboliclogic.h
+--- brainparty_orig/symboliclogic.h	2010-03-02 14:29:45.000000000 +0100
++++ brainparty/symboliclogic.h	2018-02-05 22:30:40.323634769 +0100
+@@ -67,7 +67,7 @@
+ 	void Start();
+ 	int GetWeight();
+ 	void Render();
+-	const char* FlattenPremise(BPMiniGame_SymbolicLogic_Premise* premise);
++	const string FlattenPremise(BPMiniGame_SymbolicLogic_Premise* premise);
+ 	void Tick();
+ 	
+ 	void OnMouseDown();

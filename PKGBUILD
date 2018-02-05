@@ -1,7 +1,7 @@
 # Maintainer: Philipp Lorenz <p.aur@lorenz-ho.me>
 pkgname=brainparty
 pkgver=0.61
-pkgrel=1
+pkgrel=2
 pkgdesc="36 challenging mini games for testing your IQ"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/brainparty"
