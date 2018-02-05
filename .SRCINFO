@@ -1,6 +1,6 @@
 pkgbase = transmission-gtk-git
 	pkgdesc = Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version from github repository)
-	pkgver = 2.93.r335.g7669c97e1
+	pkgver = 2.93.r343.g896de2b59
 	pkgrel = 1
 	url = http://www.transmissionbt.com/
 	arch = i686
