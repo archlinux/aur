@@ -18,7 +18,7 @@ _enable_plasmoid=1
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tray application for Syncthing'
@@ -35,7 +35,7 @@ checkdepends=('cppunit' 'syncthing')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('af1769702676dbde33db692a39f81627b29dc09a8ce8c3bd8c2ee5eef22a5a3f')
+sha256sums=('bb68130de4bb47fb7da4d4cefecbec6ec5fca3408790c172dfd9779b7e3b14d7')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
