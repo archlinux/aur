@@ -1,5 +1,5 @@
 pkgbase = libwingpanel-2.0.so
-	pkgdesc = Meta package for libswitchboard
+	pkgdesc = Meta package for libwingpanel
 	pkgver = 20180502
 	pkgrel = 1
 	url = http://elementary.io
