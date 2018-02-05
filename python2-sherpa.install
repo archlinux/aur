@@ -1,0 +1,3 @@
+post_install() {
+    echo "This package is built with system fftw library. Other things are in default mode. If you want more custom build mode, you can follow the link below and modify the setup.cfg or create a patch yourself: https://github.com/sherpa/sherpa#custom-source-build"
+}
