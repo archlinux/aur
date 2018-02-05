@@ -5,8 +5,8 @@
 # Contributor: mrxx <mrxx at cyberhome dot at>
 # Contributor: Jonhoo <jon at thesquareplanet.com>
 pkgname=signal
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
 depends=('electron')
@@ -37,15 +37,14 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}/dist/linux-unpacked"
+  cd "${pkgname}-${pkgver}"
 
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -r resources "${pkgdir}/usr/lib/${pkgname}/"
+  cp -r dist/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}/"
       
   install -dm755 "${pkgdir}/usr/share/icons/hicolor"
   for i in 16 24 32 48 64 128 256 512; do
-    install -Dm644 "../../build/icons/png/${i}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+    install -Dm644 build/icons/png/${i}* "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
   done
 
   install -dm755 "${pkgdir}/usr/bin"
