@@ -1,0 +1,22 @@
+--- a/setup.cfg	2017-08-03 21:50:56.000000000 +0800
++++ b/setup.cfg	2018-02-05 16:36:19.685492797 +0800
+@@ -31,15 +31,15 @@
+ 
+ # FFTW Library
+ # Uncomment to use a local installation
+-#fftw=local
++fftw=local
+ 
+ # If fftw=local uncomment the following lines and
+ # change the default location of libraries and the name
+ # of the library to be linked (usually fftw3)
+ # (include multiple values by separating them with spaces)
+-#fftw-include_dirs=build/include
+-#fftw-lib-dirs=build/lib
+-#fftw-libraries=fftw3
++fftw-include_dirs=/usr/include
++fftw-lib-dirs=/usr/lib
++fftw-libraries=fftw3
+ 
+ # Region Library
+ # Uncomment to use a local installation
