@@ -1,0 +1,8 @@
+.*.swp
+.*.swo
+
+*.tar.xz
+gostcoin/
+
+pkg/
+src/

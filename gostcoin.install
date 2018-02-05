@@ -1,0 +1,13 @@
+USER=gostcoin
+HOME=/var/lib/gostcoin
+
+post_install() {
+    getent passwd ${USER} &>/dev/null || {
+        echo -n ">>> Creating ${USER} user... "
+        useradd --system --user-group -m --home ${HOME} ${USER}
+        echo "done"
+    } # user not removed on uninstall by Arch policy: no unowned directories
+
+    echo ">>> You must enable [sam] in /etc/i2p/i2pd.conf and set port in /etc/gostcoind.conf"
+    echo ">>> To start gostcoin daemon: systemctl start gostcoind"
+}

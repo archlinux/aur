@@ -1,0 +1,21 @@
+[Unit]
+Description=Coin based on GOST R 34.10 and GOST R 34.11-2012 with I2P support
+After=network.target
+Wants=i2pd.target
+
+[Service]
+User=gostcoin
+Group=gostcoin
+RuntimeDirectory=gostcoind
+RuntimeDirectoryMode=0700
+WorkingDirectory=~
+Type=simple
+ExecStart=/usr/bin/gostcoind -daemon -conf=/etc/gostcoind.conf -datadir=/var/lib/gostcoin -pid=/var/run/gostcoind/gostcoind.pid
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/var/run/gostcoind/gostcoind.pid
+
+### Uncomment, if auto restart needed
+#Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
