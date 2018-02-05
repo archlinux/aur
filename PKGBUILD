@@ -8,7 +8,6 @@ pkgdesc="A simple and private notes app."
 arch=('x86_64')
 url="https://github.com/standardnotes/desktop"
 license=('GPL3')
-provides=('standard-notes')
 
 # This conflicting package is currently marked out-of-date.
 conflicts=('standardnotes-desktop')
