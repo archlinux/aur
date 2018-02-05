@@ -92,7 +92,7 @@ build() {
 
   local _mflags=()
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  if [ -z "${MAKEFLAGS:=}" ] || "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
+  if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
     _mflags+=('-j' "${_nproc}")
   fi
 
