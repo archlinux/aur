@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="7.0.324.0"
+pkgver="7.0.324.1"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -13,7 +13,7 @@ _x86file="EditorV7.x86.msi"
 _installdir="/usr/lib"
 
 source=($_downloadsource/$_x86file)
-sha256sums=('2392ec36d36ad4c304757f1548868cdcd02bee04b39df7fe9532d034dfb86870')
+sha256sums=('9ea5c7d47825da3492c2c16f5c5a4396156dda12db6ea58270632c8291f1813d')
 
 prepare()
 {
@@ -330,7 +330,7 @@ package()
 
  install -Dm644 "$srcdir/FID_Stamps_DynamicDate" "$pkgdir${_installdir}/$pkgname/Stamps/ENU/DynamicDate.pdf"
 
- install -Dm644 "$srcdir/FID_KeybHook32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/FowpKbd64.dll"
+ install -Dm644 "$srcdir/FID_KeybHook32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/FowpKbd.dll"
  install -Dm644 "$srcdir/FID_ReadOutLoud32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/ReadOutLoud.pvp"
  install -Dm644 "$srcdir/FID_Optimizer32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/PDFOptimizer.pvp"
  install -Dm644 "$srcdir/FID_SpellChecker32" "$pkgdir${_installdir}/$pkgname/Plugins.x86/SpellChecker.pvp"
