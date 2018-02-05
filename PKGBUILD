@@ -1,6 +1,6 @@
 # Maintainer: Bartosz Slawianowski <me2.legion at gmail dot com>
 pkgname=ffmpegthumbs-git
-pkgver=r91.c06602f
+pkgver=r99.bb2944b
 pkgrel=1
 pkgdesc="FFmpeg-based thumbnail creator for video files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('ffmpeg' 'kio')
 conflicts=('ffmpegthumbs')
 provides=('ffmpegthumbs')
 makedepends=('extra-cmake-modules' 'git')
-source=("git://anongit.kde.org/ffmpegthumbs#branch=frameworks")
+source=("git://anongit.kde.org/ffmpegthumbs")
 license=('GPL')
 md5sums=('SKIP')
 

@@ -1,6 +1,6 @@
 pkgbase = ffmpegthumbs-git
 	pkgdesc = FFmpeg-based thumbnail creator for video files
-	pkgver = r91.c06602f
+	pkgver = r99.bb2944b
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kdemultimedia/ffmpegthumbs
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = ffmpegthumbs-git
 	depends = kio
 	provides = ffmpegthumbs
 	conflicts = ffmpegthumbs
-	source = git://anongit.kde.org/ffmpegthumbs#branch=frameworks
+	source = git://anongit.kde.org/ffmpegthumbs
 	md5sums = SKIP
 
 pkgname = ffmpegthumbs-git
