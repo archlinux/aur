@@ -1,7 +1,7 @@
 pkgbase = ruby-xdg
 	pkgdesc = XDG provides a module for supporting the XDG Base Directory Standard
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rubyworks/xdg
 	arch = any
 	license = BSD
