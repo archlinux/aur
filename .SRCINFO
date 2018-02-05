@@ -1,7 +1,7 @@
 pkgbase = ruby-bond
 	pkgdesc = Autocompleter for Ruby REPL
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cldwalker/bond
 	arch = any
 	license = MIT
