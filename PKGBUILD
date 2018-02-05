@@ -1,14 +1,13 @@
 # Maintainer: Piotr Balwierz
-# previous maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 pkgname=bedtools
 pkgver=2.27.1
-pkgrel=1
+pkgrel=2
 pkgdesc='powerful toolset for genome arithmetic'
 arch=('i686' 'x86_64')
 url="https://github.com/arq5x/bedtools2"
 license=('GPL2')
 depends=('bash' 'zlib')
-checkdepends=('python')
+checkdepends=('python' 'samtools')
 source=("https://github.com/arq5x/bedtools2/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha1sums=('c210cf3f22c20e28ea24db97972046538978853d')
 
@@ -18,11 +17,12 @@ build()
 	make
 }
 
-check()
-{
-	cd $srcdir/${pkgname}2
-	make test
-}
+# check disabled because it requires python and samtools. Uncomment if you wish.
+# check()
+# {
+	# cd $srcdir/${pkgname}2
+	# make test
+# }
 
 package()
 {
