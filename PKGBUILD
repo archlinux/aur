@@ -18,7 +18,6 @@ sha512sums=('18605753888816f175f86f01df3413902f3b69396b5628160df621c6ccf1080f582
 
 prepare() {
   cd ${_gemname}-${pkgver}
-  sed 's|~>|>=|g' -i ${_gemname}.gemspec # don't give a fuck about rubys bla bla
 }
 
 build() {
