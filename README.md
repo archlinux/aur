@@ -60,3 +60,5 @@ license for more information.
 * Historical support -- 7d/28d profits
 * Change portfolio structure to JSON format
 * Different ways to sort "check all"
+* Look for API to replace Morningstar for MUTF/OTCMKTS data, preferably with
+intraday data

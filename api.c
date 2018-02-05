@@ -42,7 +42,7 @@ String* api_curl_data(char* url, char* post_field) {
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, api_string_writefunc);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &pString->data);
         struct curl_slist* list = NULL;
-        if (url[12] == 'g') {
+        if (url[12] == 'g') { //if using Google Urlshortener, a post field is needed
             list = curl_slist_append(list, "Content-Type: application/json");
             curl_easy_setopt(curl, CURLOPT_HTTPHEADER, list);
             curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_field);
@@ -60,20 +60,20 @@ String* api_curl_data(char* url, char* post_field) {
 
 double* api_get_current_price(char* ticker_name_string) {
     double* val;
-    if (strlen(ticker_name_string) > 5) {
+    if (strlen(ticker_name_string) > 5) { //if symbol length is greater than 5, then it must be a crypto
         val = coinmarketcap_get_price(ticker_name_string);
         return val;
     }
-    val = iex_get_price(ticker_name_string);
+    val = iex_get_price(ticker_name_string); //First tries IEX for intraday prices
     if (val != NULL)
         return val;
-    val = morningstar_get_price(ticker_name_string);
+    val = morningstar_get_price(ticker_name_string); //Secondly tries Morningstar for market open/close data
     if (val != NULL)
         return val;
-    val = coinmarketcap_get_price(ticker_name_string);
+    val = coinmarketcap_get_price(ticker_name_string); //Thirdly tries Coinmarketcap for real-time crypto data
     if (val != NULL)
         return val;
-    return NULL;
+    return NULL; //Invalid symbol
 }
 
 double* iex_get_price(char* ticker_name_string) {
@@ -81,7 +81,7 @@ double* iex_get_price(char* ticker_name_string) {
     sprintf(iex_api_string, "%s%s%s", "https://api.iextrading.com/1.0/stock/", ticker_name_string, "/quote");
     String* pString = api_curl_data(iex_api_string, NULL);
     free(iex_api_string);
-    if (strcmp(pString->data, "Unknown symbol") == 0) {
+    if (strcmp(pString->data, "Unknown symbol") == 0) { //Invalid symbol
         api_string_destroy(&pString);
         return NULL;
     }
@@ -89,8 +89,8 @@ double* iex_get_price(char* ticker_name_string) {
     double* ret = malloc(sizeof(double) * 2);
     char* price_string = (char*) json_object_to_json_string(json_object_object_get(jobj, "latestPrice"));
     char* close_price_string = (char*) json_object_to_json_string(json_object_object_get(jobj, "previousClose"));
-    ret[0] = strtod(price_string, NULL);
-    ret[1] = strtod(close_price_string, NULL);
+    ret[0] = strtod(price_string, NULL); //Intraday current price
+    ret[1] = strtod(close_price_string, NULL); //Previous day's close price
     api_string_destroy(&pString);
     json_object_put(jobj);
     return ret;
@@ -102,41 +102,41 @@ double* morningstar_get_price(char* ticker_name_string) {
     char* today_char = calloc(16, 1);
     char* yesterday_char = calloc(16, 1);
     ts = localtime(&now);
-    if (ts->tm_wday == 0) //if sunday
-        ts->tm_mday -= 2;
-    else if (ts->tm_hour <= 16 || ts->tm_wday == 6) //if before market close or saturday
-        ts->tm_mday--;
     mktime(ts);
     strftime(today_char, 16, "%Y-%m-%d", ts);
-    ts->tm_mday--;
+    if (ts->tm_wday == 0 || ts->tm_wday == 1) //if sunday or monday
+        ts->tm_mday -= 3;
+    else if (ts->tm_wday == 6) //if saturday
+        ts->tm_mday -= 2;
+    else ts->tm_mday--;
+    if (ts->tm_hour <= 16 && ts->tm_wday != 0 && ts->tm_wday != 7) //if before market close and not weekend
+        ts->tm_mday--;
     mktime(ts);
     strftime(yesterday_char, 16, "%Y-%m-%d", ts);
     char* morningstar_api_string = calloc(512, 1);
-    sprintf(morningstar_api_string, "%s%s%s%s|%s%s",
+    sprintf(morningstar_api_string, "%s%s%s%s|%s",
             "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?ticker=",
             ticker_name_string,
-            "&showVol=true&dtype=his&f=d&curry=USD&range=", yesterday_char, today_char,
-            "&isD=true&isS=true&hasF=true&ProdCode=DIRECT");
+            "&showVol=true&dtype=his&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&range=", yesterday_char,
+            today_char);
     String* pString = api_curl_data(morningstar_api_string, NULL);
     free(morningstar_api_string);
     free(today_char);
     free(yesterday_char);
-
     Json* jobj = json_tokener_parse(pString->data);
-    if (strcmp("null", pString->data) == 0) {
+    if (strcmp("null", pString->data) == 0) { //Invalid symbol
         api_string_destroy(&pString);
         return NULL;
     }
     double* ret = malloc(sizeof(double) * 2);
-    Json* price_data_list = json_object_object_get(jobj, "PriceDataList");
-    Json* price_data = json_object_array_get_idx(price_data_list, 0);
-    Json* current = json_object_object_get(price_data, "Datapoints");
-    Json* yesterday = json_object_array_get_idx(json_object_array_get_idx(current, 1), 0);
-    char* price = (char*) json_object_to_json_string(yesterday);
-    ret[0] = strtod(price, NULL);
-    Json* today = json_object_array_get_idx(json_object_array_get_idx(current, 0), 0);
-    price = (char*) json_object_to_json_string(today);
-    ret[1] = strtod(price, NULL);
+    Json* current = json_object_object_get(json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0),
+                                           "Datapoints");
+    Json* today = json_object_array_get_idx(json_object_array_get_idx(current, 1), 0);
+    char* price = (char*) json_object_to_json_string(today);
+    ret[0] = strtod(price, NULL); //Last close price
+    Json* yesterday = json_object_array_get_idx(json_object_array_get_idx(current, 0), 0);
+    price = (char*) json_object_to_json_string(yesterday);
+    ret[1] = strtod(price, NULL); //Close price before last close price
     json_object_put(jobj);
     api_string_destroy(&pString);
     return ret;
@@ -147,7 +147,7 @@ double* coinmarketcap_get_price(char* ticker_name_string) {
     sprintf(coinmarketcap_api_string, "%s%s", "https://api.coinmarketcap.com/v1/ticker/", ticker_name_string);
     String* pString = api_curl_data(coinmarketcap_api_string, NULL);
     free(coinmarketcap_api_string);
-    if (pString->data[0] == '{') {
+    if (pString->data[0] == '{') { //Invalid symbol
         api_string_destroy(&pString);
         return NULL;
     }
@@ -158,8 +158,8 @@ double* coinmarketcap_get_price(char* ticker_name_string) {
     char* price = (char*) json_object_get_string(usd);
     char* change_1d = (char*) json_object_get_string(percent_change_1d);
     double* ret = malloc(sizeof(double) * 2);
-    ret[0] = strtod(price, NULL);
-    ret[1] = ret[0] - ((strtod(change_1d, NULL) / 100) * ret[0]);
+    ret[0] = strtod(price, NULL); //Current real-time price
+    ret[1] = ret[0] - ((strtod(change_1d, NULL) / 100) * ret[0]); //Price 24 hours earlier
     api_string_destroy(&pString);
     json_object_put(jobj);
     return ret;
@@ -167,7 +167,7 @@ double* coinmarketcap_get_price(char* ticker_name_string) {
 
 void news_print_top_three(char* ticker_name_string) {
     char* url_encoded_string = calloc(128, 1);
-    for (int i = 0, j = 0; i < 128; i++, j++) {
+    for (int i = 0, j = 0; i < 128; i++, j++) { //Replace underscores and spaces with url encoded '%20's
         if (ticker_name_string[i] == '_' || ticker_name_string[i] == ' ') {
             memcpy(&url_encoded_string[i], "%20", 3);
             i += 2;
@@ -177,7 +177,7 @@ void news_print_top_three(char* ticker_name_string) {
     struct tm* ts;
     char* yearchar = calloc(64, 1);
     ts = localtime(&now);
-    ts->tm_mday -= 14;
+    ts->tm_mday -= 14; // Lowerbound date is 14 days earlier
     mktime(ts);
     strftime(yearchar, 64, "%Y-%m-%d", ts);
     char* news_api_string = calloc(256, sizeof(char));
@@ -206,7 +206,7 @@ void json_print_news(Json* jobj) {
     for (int i = 0; i < results && i < 3; i++) {
         article = json_object_array_get_idx(article_list, (size_t) i);
         author_string = (char*) strip_char(
-                (char*) json_object_to_json_string(json_object_object_get(article, "author")), '\\');
+                (char*) json_object_to_json_string(json_object_object_get(article, "author")), '\\'); //Strip all attributes of backslashes
         title_string = (char*) strip_char(
                 (char*) json_object_to_json_string(json_object_object_get(article, "title")), '\\');
         source_string = (char*) strip_char((char*) json_object_to_json_string(
@@ -214,14 +214,14 @@ void json_print_news(Json* jobj) {
         date_string = (char*) json_object_to_json_string(json_object_object_get(article, "publishedAt"));
         url_string = (char*) strip_char((char*) json_object_to_json_string(json_object_object_get(article, "url")),
                                         '\\');
-        char* stripped = (char*) strip_char(url_string, '\"');
-        char* shortened = (char*) google_shorten_link(stripped);
+        char* stripped = (char*) strip_char(url_string, '\"'); //Strip url of quotes
+        char* shortened = (char*) google_shorten_link(stripped); //Shorten link
         printf("Title: %s Source: %s ", title_string, source_string);
-        if (strcmp(author_string, "null") != 0)
+        if (strcmp(author_string, "null") != 0) //Some articles don't list authors or dates
             printf("Author: %s ", author_string);
         if (strcmp(date_string, "null") != 0) {
             date_string[11] = '\"';
-            date_string[12] = '\0';
+            date_string[12] = '\0'; //Terminate date string after the day of the month since it include time as well
             printf("Date: %s ", date_string);
         }
         printf("Url: \"%s\"\n", shortened);
@@ -237,7 +237,7 @@ void json_print_news(Json* jobj) {
 const char* google_shorten_link(char* url_string) {
     char* google_api_string = "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAoMAvMPpc7U8lfrnGMk2ZKl966tU2pppU";
     char* post_string = calloc(1024, 1);
-    sprintf(post_string, "{\"longUrl\": \"%s\"}", url_string);
+    sprintf(post_string, "{\"longUrl\": \"%s\"}", url_string); //Format HTTP POST
     String* pString = api_curl_data(google_api_string, post_string);
     free(post_string);
     Json* jobj = json_tokener_parse(pString->data);
@@ -246,7 +246,7 @@ const char* google_shorten_link(char* url_string) {
     char* copy = calloc(1024, 1);
     strcpy(copy, short_url_string);
     char* final = calloc(strlen(copy) + 1, 1);
-    for (int i = 0, j = 0; j < strlen(copy); i++, j++) {
+    for (int i = 0, j = 0; j < strlen(copy); i++, j++) { //Ignore escape characters
         if (copy[j] == '\\' || copy[j] == '\"')
             j++;
         final[i] = copy[j];
