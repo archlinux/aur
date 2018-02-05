@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc
 _srcname=linux-4.15
-_stable=4.15
-_patchver=4.15.1
+_stable=4.15.1
+_patchver=4.15.2
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -35,11 +35,11 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '3867a526b6c1b3f695b3597907ed530468e2c50b7f9e6f7cb689b1d67066b727'
+            '202a0a34f221ae335de096c292927d7a7d4bcdbc2dd46d43b8a5f6420f95a0cf'
             'SKIP'
-            'cfa766f951eaa510aca3e7c31a346f4c608ac60c3c892e1b219707c67b6539a4'
+            '2ad4bdc897fc4a13def5ecc79595d5021c61165fffd677074fdc239a4c335f1a'
             'SKIP'
-            '8e80162a2d8952b7e0a4967647eed940b2b983e950bfe630918bd90cb1107a25'
+            'd7fccd62a83ea0077ba839554e5b59640e9cb52de9c5e061229842beae588c39'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -53,7 +53,7 @@ prepare() {
 
   # add upstream patch
   # ONLY comment out for initial rc (ie 4.10 --> 4.10.1rc1) -- needed for all others
-  #patch -p1 -i "../patch-${_stable}"
+  patch -p1 -i "../patch-${_stable}"
 
   # add rc patch
   patch -p1 -i "../$_rcpatch"
