@@ -2,7 +2,7 @@
 # Contributor: SoVerySour <gmaiadremailfeis22 at gmail dot com>
 
 pkgname=infra-arcana-git
-pkgver=v19.2
+pkgver=v19.2.r4.g48849615
 pkgrel=1
 
 pkgdesc="Roguelike game inspired by the writings of H.P. Lovecraft - git version"
@@ -19,7 +19,7 @@ source=("git+https://github.com/martin-tornqvist/ia.git#branch=develop")
 
 pkgver() {
   cd $srcdir/ia
-  echo "$(git describe --tags | tr - .)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -54,7 +54,7 @@ package() {
 
   install -DTm644 "$srcdir/ia/res/license.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/license.txt"
-  install -DTm644 "$srcdir/ia/res/images/SPECIAL_ELITE_License.txt" \
+  install -DTm644 "$srcdir/ia/res/gfx/SPECIAL_ELITE_License.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/SPECIAL_ELITE_License.txt"
 
   install -DTm644 "$srcdir/ia/res/contact.txt" \
