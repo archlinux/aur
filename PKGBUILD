@@ -1,7 +1,7 @@
 pkgname=libwingpanel-2.0.so
 pkgver=20180502
 pkgrel=1
-pkgdesc='Meta package for libswitchboard'
+pkgdesc='Meta package for libwingpanel'
 arch=(any)
 url='http://elementary.io'
 license=(LGPL)
