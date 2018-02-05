@@ -1,6 +1,6 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 pkgname=tutka
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A free tracker style MIDI sequencer for GNU/Linux."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('qt5-base' 'alsa-lib' 'hicolor-icon-theme')
 makedepends=('qt5-tools')
 source=(http://download.savannah.gnu.org/releases/tutka/$pkgname-$pkgver.tar.xz)
-md5sums=('8af014676139400058fbb67c9fe31210')
+md5sums=('83bc4729fb157490eeb73d2281e480f0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
