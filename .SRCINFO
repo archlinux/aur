@@ -13,6 +13,7 @@ pkgbase = fragments-git
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = libdazzle
+	makedepends = libb64
 	depends = gtk3
 	provides = fragments
 	conflicts = fragments
