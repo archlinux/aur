@@ -2,16 +2,16 @@
 
 _pkgname=ppx_tools
 pkgname=ocaml-${_pkgname}
-pkgver=5.0+4.05.0
+pkgver=5.1+4.06.0
 pkgrel=1
 pkgdesc="Tools for authors of ppx rewriters and other syntactic tools"
 arch=('i686' 'x86_64')
-url="https://github.com/alainfrisch/ppx_tools"
+url="https://github.com/ocaml-ppx/ppx_tools"
 license=('MIT')
 depends=('ocaml')
 makedepends=('ocaml-findlib')
-source=("https://github.com/alainfrisch/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('cf455545d5df2ed447a101f1d44454e9')
+source=("https://github.com/ocaml-ppx/${_pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('6ba2e9690b1f579ba562b86022d1c308')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver/+/-}"
