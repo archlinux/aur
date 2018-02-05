@@ -1,9 +1,9 @@
 binary_message() {
     echo "To prevent problems with software of other coins the binaries for this package are as follows:"
-    echo "  connectivity_tool => TRTL-connectivity_tool"
-    echo "  miner => TRTL-miner"
-    echo "  simplewallet => TRTL-simplewallet"
-    echo "  walletd => TRTL-walletd"
+    echo "  connectivity_tool => trtl-connectivity_tool"
+    echo "  miner => trtl-miner"
+    echo "  simplewallet => trtl-simplewallet"
+    echo "  walletd => trtl-walletd"
     echo
 }
 
