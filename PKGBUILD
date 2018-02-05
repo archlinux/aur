@@ -2,7 +2,7 @@
 _pythonmod=zxcvbn-python
 pkgname=('python2-zxcvbn' 'python-zxcvbn')
 pkgbase=python2-zxcvbn
-pkgver=4.4.18
+pkgver=4.4.19
 pkgrel=1
 pkgdesc="Password strength estimator"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://pypi.python.org/pypi/${_pythonmod}"
 license=('Apache')
 #source=("https://pypi.io/packages/source/${_pythonmod:0:1}/${_pythonmod}/${_pythonmod}-$pkgver.tar.gz")
 source=("https://github.com/dwolfhub/${_pythonmod}/archive/v$pkgver.tar.gz")
-md5sums=('bcfe64ff316368298409884a11ee8a75')
+md5sums=('fe057ff3c170d1b3d0ecc29ba13a5127')
 
 package_python2-zxcvbn() {
   depends=('python2')
