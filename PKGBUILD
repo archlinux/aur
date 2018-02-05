@@ -13,7 +13,7 @@ source=("https://launchpad.net/brainparty/trunk/0.61/+download/brainparty0.61.ta
         "$pkgname.xpm"
         "$pkgname.desktop")
 md5sums=('d6bcdf6261697d206dbbda3362632002'
-         'bb84e4cba9c215c3fece69cc689a0285'
+         '66aa5acbcb0bfa1c8799ae02318ac8d2'
          'e9c0a2036e1966cc0b78a8ba1b45aafd'
          'ace494d9bd4b2442cb2400ca8228f5e1')
 
