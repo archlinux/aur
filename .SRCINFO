@@ -1,7 +1,7 @@
 pkgbase = ync-tools
 	pkgdesc = Yamaha network players control tools
-	pkgver = 0.79.7
-	pkgrel = 1
+	pkgver = 0.79.8
+	pkgrel = 2
 	url = https://github.com/Guitar-Man/ync-tools
 	arch = any
 	license = GPL
@@ -12,8 +12,8 @@ pkgbase = ync-tools
 	depends = tinyxml2
 	depends = libglade
 	depends = libconfig
-	source = https://github.com/Guitar-Man/ync-tools/raw/master/ync-tools-0.79.7.tar.gz
-	md5sums = 4ed70e8602babe9a102ccc4183ea4534
+	source = https://github.com/Guitar-Man/ync-tools/raw/master/ync-tools-0.79.8.tar.gz
+	md5sums = 1e3d5f8eb1b5472f8746341e7d68509d
 
 pkgname = ync-tools
 
