@@ -2,7 +2,7 @@
 
 pkgname=feedthemonkey
 _name=FeedTheMonkey
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Desktop client for the TinyTinyRSS reader"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://jabs.nu/feedthemonkey"
 license=('GPL3')
 depends=('qt5-declarative' 'qt5-quick1' 'qt5-quickcontrols' 'qt5-webengine')
 source=("https://github.com/jeena/${_name}/archive/v${pkgver}.tar.gz")
-md5sums=('792f35061979a1480e44cdd35eb1d245')
+md5sums=('63ae632da7f4c0eb5c91951185cc87bc')
 
 build() {
 	cd "${_name}-$pkgver"
