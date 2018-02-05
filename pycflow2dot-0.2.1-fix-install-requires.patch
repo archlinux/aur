@@ -1,0 +1,11 @@
+--- setup.py	2017-03-09 16:02:06.000000000 -0600
++++ setup.py~	2018-02-05 15:15:16.945059419 -0600
+@@ -25,7 +25,7 @@
+         author_email='jfilippidis@gmail.com',
+         url='https://github.com/johnyf/pycflow2dot',
+         install_requires=[
+-            'networkx == 1.10',
++            'networkx >= 1.10',
+             'pydot >= 1.2.3'],
+         entry_points={
+             'console_scripts': ['cflow2dot = pycflow2dot:main']},
