@@ -14,6 +14,7 @@ depends=('cups' 'ghostscript' 'libglade' 'avahi' 'lz4') # 'hplip' 'foomatic'
 _libpng='libpng12'
 depends_i686=('glibc' 'popt' "${_libpng}" 'xz' 'libjpeg-turbo' 'zlib' 'libtiff')
 depends_x86_64=("${depends_i686[@]/#/lib32-}")
+makedepends_x86_64=("${_libpng}")
 _srcdir='iP1500/bjfilter-common-2.50'
 source=("http://software.canon-europe.com/files/soft22415/software/${_casepkgname}.tar.gz")
 md5sums=('a77599e93a334107eb003e656ff6893b')
