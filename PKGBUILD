@@ -21,8 +21,8 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.15.0
-xanmod=1
+pkgver=4.15.1
+xanmod=2
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -31,7 +31,7 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=9998d4fe8026c686abe8db9d9c5941d3936af3de
+arch_config_trunk=84ec42b5cd7ba287dd129eda7153c4d023c95cdf
 
 # Arch additional patches
 arch_patches=(
@@ -40,22 +40,22 @@ arch_patches=(
 )
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
-       '60-linux.hook'  # pacman hook for depmod
-       '90-linux.hook'  # pacman hook for initramfs regeneration
-       "$pkgbase.preset"   # standard config files for mkinitcpio ramdisk
-       'choose-gcc-optimization.sh'
+       60-linux.hook  # pacman hook for depmod
+       90-linux.hook  # pacman hook for initramfs regeneration
+       ${pkgbase}.preset   # standard config files for mkinitcpio ramdisk
+       choose-gcc-optimization.sh
 )
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('44c38014c5cf7ccf48072bd949ead19cc9299db04428df94a4d2e4b8bdc9d35d'
+sha256sums=('e0a021c58d2c5184e997e002ffa394a9a6d8dad216b14907d0bc12f052278dd8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
             '7b7363b53c68f52b119df994c9c08d4f29271b408f021366ab23f862518bd9bc'
             'ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215')
-sha256sums_x86_64=('8e80162a2d8952b7e0a4967647eed940b2b983e950bfe630918bd90cb1107a25')
+sha256sums_x86_64=('991672fadc4b0346a4cede2cd51e6c8760cde996780e56f7e372d1d5ab66fb3a')
 
 _kernelname=${pkgbase#linux}
 
@@ -86,12 +86,6 @@ prepare() {
   # [2] https://nvd.nist.gov/vuln/detail/CVE-2017-8824
   for n in ${arch_patches[@]} ; do patch -Np1 -i ../$n ; done
 
-  # CVE-2017-5715 [branch target injection] aka 'Spectre Variant 2'
-  sed -i "s|# CONFIG_RETPOLINE.*|CONFIG_RETPOLINE=y|" ./.config
-
-  # CVE-2017-5754 [rogue data cache load] aka 'Meltdown' aka 'Variant 3'
-  sed -i "s|# CONFIG_PAGE_TABLE_ISOLATION.*|CONFIG_PAGE_TABLE_ISOLATION=y|" ./.config
-
   # Enable IKCONFIG following Arch's philosophy
   sed -i "s|# CONFIG_IKCONFIG.*|CONFIG_IKCONFIG=y\nCONFIG_IKCONFIG_PROC=y|" ./.config
 
@@ -99,7 +93,7 @@ prepare() {
   ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -147,7 +141,7 @@ _package() {
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  local _extramodules="extramodules-${_basekernel}${_kernelname}"
   ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook

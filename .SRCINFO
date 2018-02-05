@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod
-	pkgver = 4.15.0
+	pkgver = 4.15.1
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -10,22 +10,22 @@ pkgbase = linux-xanmod
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.15.0-xanmod1.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.15.1-xanmod2.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod.preset
 	source = choose-gcc-optimization.sh
-	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux&id=9998d4fe8026c686abe8db9d9c5941d3936af3de
-	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux&id=9998d4fe8026c686abe8db9d9c5941d3936af3de
-	sha256sums = 44c38014c5cf7ccf48072bd949ead19cc9299db04428df94a4d2e4b8bdc9d35d
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux&id=84ec42b5cd7ba287dd129eda7153c4d023c95cdf
+	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux&id=84ec42b5cd7ba287dd129eda7153c4d023c95cdf
+	sha256sums = e0a021c58d2c5184e997e002ffa394a9a6d8dad216b14907d0bc12f052278dd8
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5
 	sha256sums = 7b7363b53c68f52b119df994c9c08d4f29271b408f021366ab23f862518bd9bc
 	sha256sums = ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215
-	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=9998d4fe8026c686abe8db9d9c5941d3936af3de
-	sha256sums_x86_64 = 8e80162a2d8952b7e0a4967647eed940b2b983e950bfe630918bd90cb1107a25
+	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=84ec42b5cd7ba287dd129eda7153c4d023c95cdf
+	sha256sums_x86_64 = 991672fadc4b0346a4cede2cd51e6c8760cde996780e56f7e372d1d5ab66fb3a
 
 pkgname = linux-xanmod
 	pkgdesc = The Linux kernel and modules with Xanmod patches
