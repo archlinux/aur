@@ -6,7 +6,7 @@
 
 pkgname=gitextensions
 epoch=1
-pkgver=2.51.RC2
+pkgver=2.51
 pkgrel=1
 pkgdesc="Graphical user interface for Git that allows you control Git without using the command line."
 arch=('any')
@@ -24,7 +24,7 @@ source=('gitextensions'
 md5sums=('b01b1bf6d75b30f6763daa0498385e99'
          'cd36dafb8e961f67701117f622240e9b'
          'bbd6381241e896200c8494981115dff6'
-         'b8cdc6428395308bf6ab1635c20b8d09')
+         '195dc3c569ffc10628dac213dffc8be5')
 
 package() {
   install -d "$pkgdir"/usr/share/GitExtensions/
