@@ -1,0 +1,30 @@
+pkgbase = python-apprise
+	pkgdesc = Push Notifications that work with just about every platform
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/caronc/apprise
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/caronc/apprise/archive/v0.0.6.tar.gz
+	sha256sums = 07364e213272800864f506d454ac093ec85c645e0102a1124961c421627abd03
+
+pkgname = python-apprise
+	depends = python-decorator
+	depends = python-requests
+	depends = python-requests-oauthlib
+	depends = python-oauthlib
+	depends = python-urllib3
+	depends = python-six
+	depends = python-click
+
+pkgname = python2-apprise
+	depends = python2-decorator
+	depends = python2-requests
+	depends = python2-requests-oauthlib
+	depends = python2-oauthlib
+	depends = python2-urllib3
+	depends = python2-six
+	depends = python2-click
+
