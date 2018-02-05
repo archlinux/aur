@@ -1,18 +1,17 @@
 # Maintainer: Tomek Łaziuk <tlaziuk@gmail.com>
 
-pkgname=modman-git
 _pkgname=modman
+pkgname=$_pkgname-git
 pkgver=1.12.r31.g799fbd1
-pkgrel=1
+pkgrel=2
 pkgdesc="Magento Module Manager"
 arch=("any")
 url="https://github.com/colinmollenhour/${_pkgname}"
 license=('GPL')
 depends=('bash')
 makedepends=('git')
-conflicts=('modman')
-provides=('modman')
-replaces=('modman')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+https://github.com/colinmollenhour/${_pkgname}.git")
 md5sums=('SKIP')
 

@@ -1,7 +1,7 @@
 pkgbase = modman-git
 	pkgdesc = Magento Module Manager
 	pkgver = 1.12.r31.g799fbd1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/colinmollenhour/modman
 	arch = any
 	license = GPL
@@ -9,7 +9,6 @@ pkgbase = modman-git
 	depends = bash
 	provides = modman
 	conflicts = modman
-	replaces = modman
 	source = git+https://github.com/colinmollenhour/modman.git
 	md5sums = SKIP
 
