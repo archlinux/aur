@@ -1,8 +1,8 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-vorbis
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="OCaml bindings to lbvorbis"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-vorbis"
@@ -11,11 +11,12 @@ depends=('ocaml' 'libvorbis' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
 options=('!strip')
 source=("https://github.com/savonet/ocaml-vorbis/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('bb20473496ea5102c5ccd25aa5ef785d')
+md5sums=('b43a9413852adacdb36fc9e25f419576')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
+    export OCAMLFLAGS="-unsafe-string"
     ./configure
     make
 }
