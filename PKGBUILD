@@ -5,12 +5,13 @@ set -u
 pkgname='cnijfilter-ip1800-bin'
 pkgver='2.70'
 pkgrel='1'
-pkgdesc='Canon IJ Printer Driver for Pixma IP1800 multifunction'
+pkgdesc='Canon IJ Printer Driver for Pixma IP1800 series multifunction'
 arch=('i686' 'x86_64')
 url='http://support-au.canon.com.au/contents/AU/EN/0900718516.html'
 license=('GPL2' 'LGPL2' 'custom')
-depends=('cnijfilter-common' 'libglade') # 'cnijfilter-common270'
-depends_i686=('glibc' 'popt' "libpng12" 'libtiff' 'xz' 'libjpeg-turbo' 'zlib' 'libtiff3' 'gtk' 'libxml')
+depends=('cups' 'ghostscript' 'cnijfilter-common' 'libglade') # 'cnijfilter-common270'
+_libpng='libpng12'
+depends_i686=('glibc' 'popt' "${_libpng}" 'xz' 'libjpeg-turbo' 'zlib' 'libtiff3' 'gtk' 'libxml')
 depends_x86_64=("${depends_i686[@]/#/lib32-}")
 source=("http://files.canon-europe.com/files/soft27213/Software/27213.tgz")
 md5sums=('9a5e8bc016ed78551a7f5d197212e857')
@@ -31,6 +32,7 @@ package() {
   mv 'usr/local/share'/* 'usr/share/'
   rmdir 'usr/local/share' 'usr/local'
   #mv 'usr/lib' 'usr/lib32' # hardcoded paths
+  gzip "${pkgdir}/usr/share/cups/model"/*.ppd
   set +u
 }
 set +u
