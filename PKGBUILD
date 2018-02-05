@@ -10,7 +10,7 @@ url="https://github.com/caronc/apprise"
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/caronc/apprise/archive/v$pkgver.tar.gz")
-sha256sums=('07364e213272800864f506d454ac093ec85c645e0102a1124961c421627abd03')
+sha256sums=('6ea14b4c81bb6e3b033ffd365f493039ebe874b8e0bc90f070572f5e0fc1fb46')
 
 prepare() {
   cp -a apprise-$pkgver{,-py2}
