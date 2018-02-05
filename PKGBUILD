@@ -1,4 +1,4 @@
-# Maintainer: Peter Hoeg <first name at last name dot com>
+# Maintainer: Tomek Łaziuk <tlaziuk@gmail.com>
 
 pkgname=modman
 pkgver=1.12
