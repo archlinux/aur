@@ -3,7 +3,7 @@
 
 pkgname=lxd
 pkgver=2.21
-pkgrel=2
+pkgrel=3
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
@@ -20,6 +20,7 @@ optdepends=(
 source=(
     "https://github.com/lxc/$pkgname/archive/$pkgname-$pkgver.tar.gz"
     "lxd.service"
+    "lxd.socket"
     "dnsmasq-lxd.conf"
     "dnsmasq@lxd.service"
     "lxd.netctl"
@@ -29,6 +30,7 @@ source=(
 
 md5sums=('b7d246790ebd4080b0a1754689999a44'
          '5dde136f2fbcdf5773a011a39c82cfc6'
+         'dfa7033fc39632af0f2c7e26ee966789'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
          '15ae1bc51684d611bded2839ca55a37b'
          '52c641ea0ba5477f5c1a1b857c03dda9'
@@ -61,6 +63,8 @@ package() {
   done
   install -D -m644 "${srcdir}/lxd.service" \
     "${pkgdir}/usr/lib/systemd/system/lxd.service"
+  install -D -m644 "${srcdir}/lxd.socket" \
+    "${pkgdir}/usr/lib/systemd/system/lxd.socket"
 
   # Bash completions
   install -p -m755 "${srcdir}/${pkgname}-${pkgname}-${pkgver}/config/bash/lxd-client" \
