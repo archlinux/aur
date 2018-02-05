@@ -1,37 +1,25 @@
-# Maintainer: Ruben De Smet <me at rubdos dot be>
-
-pkgname=i3lock-fancier-git
-_gitname=i3lock-fancier
-pkgver=r23.37153ec
+# Maintainer: Kevin Diehl <contact@kevin-diehl.de> 
+_pkgname=i3lock-fancier
+pkgname=$_pkgname-git
+pkgver=84aa35006f1cab8eb15f992c1b68dd41cbaab99b
 pkgrel=1
-pkgdesc="i3lock-fancier - yet another i3lock fork"
-arch=('i686' 'x86_64')
-url="https://github.com/SuperPrower/i3lock-fancier"
-license=('BSD')
+pkgdesc="i3lock fork that adds keyboard layout indicator"
+arch=(i686 x86_64)
+url="https://github.com/SuperPrower/i3lock-fancier.git"
+license=('GPL')
 depends=('cairo' 'libev' 'libx11' 'pam' 'xcb-util-image' 'xcb-util-keysyms' 'libxkbcommon-x11')
-makedepends=('git')
-provides=('i3lock')
-conflicts=('i3lock')
-source=("git+https://github.com/SuperPrower/i3lock-fancier.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_gitname"
-}
+makedepends=('make')
+source=('git://github.com/SuperPrower/i3lock-fancier.git')
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$_gitname"
-  make
+    cd "$srcdir/$_pkgname"
+
+    make 
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make install DESTDIR="$pkgdir"
+    cd "$srcdir/$_pkgname"
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/i3lock-fancier/LICENSE"
+    make DESTDIR="$pkgdir" install
 }
