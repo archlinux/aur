@@ -1,6 +1,6 @@
 # Maintainer: Eloy Garcia Almaden <eloy.garcia.pca@gmail.com>
 pkgname=wallpaperdownloader
-pkgver=3.0
+pkgver=3.0-2
 pkgrel=1
 epoch=
 pkgdesc="Download, manage and change automatically your favorite wallpapers from the Internet. It supports GNOME Shell, Plasma 5, MATE, Unity, XFCE, Cinnamon, Budgie and Pantheon"
@@ -42,5 +42,5 @@ package() {
 
   	# .desktop file and icon
   	install -Dm644 "$srcdir/$pkgname/aur/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 "$srcdir/$pkgname/aur/$pkgname.png" "$pkgdir/opt/$pkgname/gui/$pkgname.png"
+	install -Dm644 "$srcdir/$pkgname/aur/$pkgname.svg" "$pkgdir/opt/$pkgname/gui/$pkgname.svg"
 }
