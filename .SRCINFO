@@ -1,7 +1,7 @@
 pkgbase = soulseekqt
 	pkgdesc = A desktop client for the Soulseek peer-to-peer file sharing network
-	pkgver = 20171121
-	pkgrel = 5
+	pkgver = 20180130
+	pkgrel = 1
 	url = http://www.soulseekqt.net/news/
 	arch = x86_64
 	license = CUSTOM
@@ -9,9 +9,9 @@ pkgbase = soulseekqt
 	depends = libxext
 	depends = libxrender
 	depends = qt5-multimedia
-	source = https://www.dropbox.com/s/ru2mvycljfrejcx/SoulseekQt-2017-11-21-64bit.AppImage
+	source = https://www.dropbox.com/s/0vi87eef3ooh7iy/SoulseekQt-2018-1-30-64bit.AppImage
 	source = soulseekqt.desktop
-	md5sums = 19af4fe0f7fbd382e3e68eb92f32c52b
+	md5sums = 1d98331893bc9b9d45ba34f6523353ab
 	md5sums = 810a4200a3c8568257b66b6bdea5c29c
 
 pkgname = soulseekqt
