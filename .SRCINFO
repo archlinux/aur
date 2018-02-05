@@ -1,0 +1,18 @@
+pkgbase = python-bottle-fdsend
+	pkgdesc = Library for constructing responses from file descriptors
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Outernet-Project/bottle-fdsend
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/Outernet-Project/bottle-fdsend/archive/v0.1.tar.gz
+	sha256sums = f13c111a4ea8af6e573ffda0c72989cb8c0cc43be0424b5871eb2a7baab86c8c
+
+pkgname = python-bottle-fdsend
+	depends = python-bottle
+
+pkgname = python2-bottle-fdsend
+	depends = python2-bottle
+
