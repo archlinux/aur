@@ -1,7 +1,7 @@
 pkgbase = thelounge
 	pkgdesc = Web-based IRC client - Official community fork of Shout
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thelounge.github.io/
 	install = install
 	arch = any

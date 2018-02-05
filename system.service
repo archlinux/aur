@@ -7,7 +7,7 @@ User=thelounge
 Group=thelounge
 Type=simple
 Environment=THELOUNGE_HOME=/etc/thelounge
-ExecStart=/usr/bin/lounge start
+ExecStart=/usr/bin/thelounge start
 ProtectSystem=yes
 ProtectHome=yes
 NoNewPrivileges=yes

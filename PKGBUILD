@@ -2,7 +2,7 @@
 pkgname='thelounge'
 _npmname='thelounge'
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based IRC client - Official community fork of Shout"
 url='https://thelounge.github.io/'
 arch=('any')
@@ -29,7 +29,7 @@ package() {
 	
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 	
-	echo "/etc/thelounge" > "$pkgdir/usr/lib/node_modules/$_npmname/.lounge_home"
+	echo "/etc/thelounge" > "$pkgdir/usr/lib/node_modules/$_npmname/.thelounge_home"
 	
 	install -dm700 "$_etc" "$_etc/users"
 	install -Dm600 \
