@@ -7,8 +7,8 @@ pkgdesc="A custom Gold Source engine rewritten from scratch"
 arch=(x86_64)
 url="http://xash.su/"
 license=('GPL3')
-depends=('sdl2')
-makedepends=('cmake')
+depends=('lib32-sdl2')
+makedepends=('cmake' 'gcc-multilib')
 install=
 source=("$pkgname::git+https://github.com/FWGS/xash3d.git"
 "hlsdk::git+https://github.com/FWGS/vgui-dev")
@@ -27,10 +27,10 @@ prepare() {
 build() {
 	cd $srcdir/$pkgname
 	cd build
-	cmake ../. -DHL_SDK_DIR=../../hlsdk \
-		-DXASH_SDL=yes -DXASH_VGUI=yes \
-		-DXASH_64BIT=yes \
-		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake ../. -DHL_SDK_DIR=../../hlsdk -DXASH_SDL=yes \
+		-DXASH_VGUI=yes -DCMAKE_C_FLAGS="-m32" \
+		-DCMAKE_CXX_FLAGS="-m32" -DCMAKE_EXE_LINKER_FLAGS="-m32" \
+		-DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=lib32
 	make
 }
 
