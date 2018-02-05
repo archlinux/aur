@@ -1,17 +1,17 @@
 diff --git a/Action.c b/Action.c
-index ee34a4b..effa033 100644
+index a6394ac..f82ff21 100644
 --- a/Action.c
 +++ b/Action.c
 @@ -382,7 +382,7 @@ static Htop_Reaction actionRedraw() {
  }
  
- static struct { const char* key; const char* info; } helpLeft[] = {
+ static const struct { const char* key; const char* info; } helpLeft[] = {
 -   { .key = " Arrows: ", .info = "scroll process list" },
 +   { .key = "   hjkl: ", .info = "scroll process list" },
     { .key = " Digits: ", .info = "incremental PID search" },
     { .key = "   F3 /: ", .info = "incremental name search" },
     { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -411,11 +411,11 @@ static struct { const char* key; const char* info; } helpRight[] = {
+@@ -411,11 +411,11 @@ static const struct { const char* key; const char* info; } helpRight[] = {
  #endif
     { .key = "      e: ", .info = "show process environment" },
     { .key = "      i: ", .info = "set IO priority" },
@@ -19,7 +19,7 @@ index ee34a4b..effa033 100644
 +   { .key = "      L: ", .info = "list open files with lsof" },
     { .key = "      s: ", .info = "trace syscalls with strace" },
     { .key = "         ", .info = "" },
-    { .key = "   F2 S: ", .info = "setup" },
+    { .key = " F2 C S: ", .info = "setup" },
 -   { .key = "   F1 h: ", .info = "show this help screen" },
 +   { .key = "   F1 ?: ", .info = "show this help screen" },
     { .key = "  F10 q: ", .info = "quit" },
@@ -48,7 +48,7 @@ index ee34a4b..effa033 100644
     keys['U'] = actionUntagAll;
     keys['c'] = actionTagAllChildren;
 diff --git a/Panel.c b/Panel.c
-index 579a82c..c2a854c 100644
+index 8c4d44f..c00012c 100644
 --- a/Panel.c
 +++ b/Panel.c
 @@ -376,10 +376,12 @@ bool Panel_onKey(Panel* this, int key) {
@@ -92,15 +92,15 @@ index 579a82c..c2a854c 100644
     case KEY_PPAGE:
 +   case KEY_CTRL('B'):
        this->selected -= (this->h - 1);
-       this->scrollV -= (this->h - 1);
+       this->scrollV = MAX(0, this->scrollV - this->h + 1);
        this->needsRedraw = true;
        break;
     case KEY_NPAGE:
 +   case KEY_CTRL('F'):
        this->selected += (this->h - 1);
-       this->scrollV = MIN(MAX(0, Vector_size(this->items) - this->h), this->selected - this->h);
-       this->needsRedraw = true;
-@@ -454,7 +466,7 @@ bool Panel_onKey(Panel* this, int key) {
+       this->scrollV = MAX(0, MIN(Vector_size(this->items) - this->h,
+                                  this->scrollV + this->h - 1));
+@@ -455,7 +467,7 @@ bool Panel_onKey(Panel* this, int key) {
     if (this->selected < 0 || size == 0) {
        this->selected = 0;
        this->needsRedraw = true;
@@ -110,7 +110,7 @@ index 579a82c..c2a854c 100644
        this->needsRedraw = true;
     }
 diff --git a/README b/README
-index 1af7377..92a76be 100644
+index 33a8739..e07bd58 100644
 --- a/README
 +++ b/README
 @@ -17,6 +17,44 @@ but we also have code for running under FreeBSD and Mac OS X
