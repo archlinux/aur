@@ -4,13 +4,12 @@
 pkgname=emacs-icicles
 epoch=1
 pkgver=2018.01.15 # Taken from icicles.el
-pkgrel=1
+pkgrel=2
 pkgdesc="an emacs library that enhances minibuffer completion"
 arch=('any')
 url="http://www.emacswiki.org/emacs/Icicles"
 license=('GPL')
-makedepends=(wget)
-install=icicles.install
+makedepends=('wget')
 
 pkgver() {
   [ -d icicles ] && rm -r icicles
@@ -27,6 +26,6 @@ build() {
 }
 
 package() {
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/icicles
-  cp -r "$srcdir"/icicles/* "$pkgdir"/usr/share/emacs/site-lisp/icicles
+  install -d  "$pkgdir"/usr/share/emacs/site-lisp/
+  cp -r "$srcdir"/icicles/* "$pkgdir"/usr/share/emacs/site-lisp/
 }
