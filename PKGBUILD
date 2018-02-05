@@ -19,12 +19,12 @@ pkgbase=grpc
 pkgname=('grpc' 'php-grpc' 'grpc-cli')
 pkgver=1.8.6
 _gtestver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
 license=('BSD')
-makedepends=('re2c' 'protobuf>=3' 'php' 'c-ares'
+makedepends=('re2c' 'protobuf>=3' 'php' 'c-ares' 'openssl-1.0'
              'chrpath' 'gflags'
 )
 source=(
@@ -49,6 +49,9 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # gRPC is not compatible yet with openssl-1.1
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
   # Core
   # Avoid collision with yaourt's environment variable
@@ -80,7 +83,7 @@ _install_dir() (
 )
 
 package_grpc() {
-  depends=('c-ares' 'openssl' 'protobuf>=3')
+  depends=('c-ares' 'openssl-1.0' 'protobuf>=3')
 
   cd "$srcdir/$pkgname-$pkgver"
   _install_dir 755 bins/opt usr/bin
@@ -106,7 +109,7 @@ package_php-grpc() {
 }
 
 package_grpc-cli() {
-  depends=('c-ares' 'gflags' 'protobuf>=3' 'openssl')
+  depends=('c-ares' 'gflags' 'protobuf>=3' 'openssl-1.0')
 
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm755 grpc_cli "$pkgdir"/usr/bin/grpc_cli
