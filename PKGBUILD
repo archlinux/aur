@@ -3,12 +3,11 @@
 
 pkgname='xmrig'
 pkgver='2.4.4'
-pkgrel='1'
-pkgdesc='High Perf CPU Miner'
+pkgrel='2'
+pkgdesc='High Perf CryptoNote CPU Miner (Monero, Aeon)'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
 depends=('libuv' 'libmicrohttpd')
-optdepends=('monero: wallet')
 makedepends=('cmake' 'libuv' 'libmicrohttpd')
 conflicts=('xmrig-bin')
 license=('GPL')
@@ -24,7 +23,10 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}/build"
-  cmake .. -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+  cmake .. \
+    -DCMAKE_C_COMPILER=gcc \
+    -DCMAKE_CXX_COMPILER=g++ \
+    -DCMAKE_BUILD_TYPE=Release
   make
 }
 
