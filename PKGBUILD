@@ -7,7 +7,7 @@
 
 pkgname=chromium-gtk2
 _pkgname=chromium
-pkgver=64.0.3282.119
+pkgver=64.0.3282.140
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security (GTK2 version)"
@@ -17,8 +17,7 @@ license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'clang'
-             'lld')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'clang')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -38,9 +37,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-widevine.patch
         fix-nav-button-layout.patch
         fix-gtk2-namespace.patch)
-sha256sums=('342ea80a925d85f5155b2b423a0d3cbcf2ee5729bf107c601d7d902315d03127'
+sha256sums=('146afbab37982c52251e5c71b6e19e6e7053b527217fe1da9966c794478c29ce'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            'a86a8ec67aed5a94557257b9826c5b8fe37005e8376e75986fee77acd066539a'
+            'cc3a328836af87f3a262ac7a7bc848e0f3a4b2f9f0346ef76b9b059c6f6d32bc'
             'c82c830bac7ab328a76d85fb141e150a17d02d97138a6daa4720a8a8c371a402'
             '814eb2cecb10cb697e24036b08aac41e88d0e38971741f9e946200764e2401ae'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
@@ -203,6 +202,7 @@ build() {
     'use_gconf=false'
     'use_gnome_keyring=false'
     'use_gold=false'
+    'use_lld=false'
     'use_sysroot=false'
     'linux_use_bundled_binutils=false'
     'use_custom_libcxx=false'
