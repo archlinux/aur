@@ -1,17 +1,17 @@
 # Maintainer: Joffrey Darcq <j-off@live.fr>
 
 pkgname='seafile-helper'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Seafile-server and seahub helper for upgrade and deployment'
 arch=('any')
 url="https://github.com/jojotango/${pkgname}"
 license=('GPL3')
-depends=('python-setuptools' 'seafile-server' 'seahub')
+depends=('python-setuptools' 'seahub')
 source=("https://github.com/jojotango/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('481b556a8e030ae911baeedae5c67388e25d3401199adb33d5259cdf0123bf74')
+sha256sums=('2d796a4b432eff182bfe2ff64ceda8b9167b5b8ad5650f1e05d372756ac36225')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
