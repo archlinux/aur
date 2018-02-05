@@ -9,18 +9,18 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/FragmentsApp/Fragments"
 license=('GPL3')
 depends=('gtk3')
-makedepends=('git'
-             'vala'
+makedepends=('dht'
+             'git'
              'gobject-introspection'
-             'meson'
              'libdazzle'
              'libb64'
-             'libutp'
-             'dht'
              'libevent'
-             'miniupnpc'
              'libnatpmp'
-             'transmission-cli')
+             'libutp'
+             'meson'
+             'miniupnpc'
+             'transmission-cli'
+             'vala')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/FragmentsApp/Fragments.git")
