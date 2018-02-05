@@ -2,7 +2,7 @@
 
 A small program to scrape content from a subreddit or reddit user, downloading files matching your criteria. It can also go deeper and scrape images and albums on commonly linked sites.
 
-You can scrape a subreddit or a usernamedownloading posts and content from their posts, depending on the options you pick. I have tested it by downloading large amounts of data and it works well. There are several parameters to customise what kind of content to get and where to get it from, the more you turn on the longer a scrape will take but the more content you will be able to download. 
+You can scrape a subreddit or a username, downloading posts and content from their posts, depending on the options you pick. I have tested it by downloading large amounts of data and it works well. There are several parameters to customise what kind of content to get and where to get it from, the more you turn on the longer a scrape will take but the more content you will be able to download. 
  
 Animated GIFs for example can be large, and can quickly add up to take up valuable disk space, so downloading them can be turned off. Another issue on reddit is that often images are not linked directly but via webpages on sites like imgur. I have included functions which go on to get data from those sites so as to not miss anything. These functions can be called separately using the command line options, to just download a whole imgur album for 
 example.
