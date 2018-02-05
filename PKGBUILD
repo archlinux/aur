@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gtk3' 'sfml' 'tinyxml2' 'libglade' 'libconfig')
 makedepends=('cmake' 'gendesk')
 source=("https://github.com/Guitar-Man/ync-tools/raw/master/ync-tools-${pkgver}.tar.gz")
-md5sums=('1e3d5f8eb1b5472f8746341e7d68509d')
+md5sums=('a73e4dc818396f5ea15f0655e697ef28')
 #options=('!buildflags')
 
 prepare() {
