@@ -1,7 +1,7 @@
 pkgbase = ruby-neovim
 	pkgdesc = Ruby client for Neovim
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexgenco/neovim-ruby
 	arch = any
 	license = MIT

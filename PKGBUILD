@@ -3,7 +3,7 @@
 pkgname=ruby-neovim
 _gemname=${pkgname#ruby-}
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby client for Neovim'
 url='https://github.com/alexgenco/neovim-ruby'
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('042fb77d7f88635cf357f02fb6e7ade6e639917b58bafd39433506f27f3b882c')
 package() {
   cd "${srcdir}"
   local _gemdir="$(/usr/bin/ruby -e'puts Gem.default_dir')"
-  /usr/bin/gem install --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
+  /usr/bin/gem install --no-user-install --no-document --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
   install -D "${pkgdir}${_gemdir}/gems/${_gemname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
