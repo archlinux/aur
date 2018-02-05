@@ -1,6 +1,14 @@
+2018-02-05 Joffrey <j-off@live.fr>
+	* Version: 6.2.5-4
+
+	* PKGBUILD: Use python lib seahub interpreter for all scripts
+	Require seafile-server same version
+	Don't use strip again
+	Remove seahub-preupgrade it is no longer compatible
+
 2018-02-03 Joffrey <j-off@live.fr>
 	
-	* Version: v6.2.5-2 -> 6.2.5-3
+	* Version: 6.2.5-3
 	
 	* ChangeLog: Add Changelog
 	
@@ -13,5 +21,6 @@
 	sources, an ArchLinux user can package it, it will be deleted soon.
 
 	* nginx.example.conf: Add nginx configuration example for https and wsgi
+	https://aur.archlinux.org/cgit/aur.git/plain/nginx.example.conf?h=seahub
 
 	* seahub.install: Remove old virtualenv and seahub-preupgrade of your system

@@ -1,7 +1,7 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
 	pkgver = 6.2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/haiwen/seahub
 	install = seahub.install
 	changelog = ChangeLog
@@ -14,12 +14,14 @@ pkgbase = seahub
 	license = PSF
 	license = MIT
 	license = BSD
+	license = GPL
 	makedepends = python2-virtualenv
-	depends = seafile-server
+	depends = seafile-server=6.2.5
 	depends = libmemcached
 	depends = libmariadbclient
 	optdepends = memcached
 	optdepends = mariadb
+	options = !strip
 	source = seahub-6.2.5-server.tar.gz::https://github.com/haiwen/seahub/archive/v6.2.5-server.tar.gz
 	sha256sums = 80a7a1cadde8e8e570bdc454bc4a4902ebcace97b347f9eef701b5ab02742039
 
