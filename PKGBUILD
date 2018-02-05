@@ -2,7 +2,7 @@
 _gemname=tmuxinator
 pkgname=tmuxinator
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
@@ -16,7 +16,7 @@ md5sums=('a8a3f7d99227de248b73499dc4350a09')
 package() {
     cd $srcdir
     export HOME='/tmp'
-    local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+    local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
     install -d -m 755 ${pkgdir}/usr/bin
     gem install --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n ${pkgdir}/usr/bin ${_gemname}-${pkgver}.gem
 
