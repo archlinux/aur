@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Canon MP510 status monitor
+Name[fr]=Etat imprimante Canon MP510
+Comment=Display Canon MP510 status monitor
+Comment[fr]=Afficher l'état de l'imprimante Canon MP510
+Exec=cngpijmonmp510
+Terminal=false
+Type=Application
+Icon=printer
+StartupNotify=true
+Categories=GTK;System;

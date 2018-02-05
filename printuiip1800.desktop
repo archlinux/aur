@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Canon MP510 printer
+Name[fr]=Imprimante Canon MP510
+Comment=Configure Canon MP510 printer
+Comment[fr]=Configurer l'imprimante Canon MP510
+Exec=printuimp510
+Terminal=false
+Type=Application
+Icon=printer
+StartupNotify=true
+Categories=GTK;System;
