@@ -2,16 +2,16 @@
 
 pkgbase=linux-aufs_friendly  # Build kernel with a different name
 
-# You can change pkgbase back to linux if you want to replace the one from [core].
+# You can change pkgbase back to linux if you want to replace the one from [testing].
 #pkgbase=linux
 # In this case, also uncomment this horrendous hack to complete the 'provides' array for aufs3
 #depmod() { provides+=('aufs_friendly'); unset depmod; depmod "$@"; }
 
-pkgver=4.14.15
+pkgver=4.15.1
 
 #Use the base branch:
 [[ "$pkgver" = *.*.* ]] && _kernel="${pkgver%.*}" || _kernel="${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.kernel.org/'
 license=('GPL2')
@@ -31,32 +31,32 @@ _sha256sums=('SKIP'
              '9a10dc166ef275fe5958bcc2523a47c35d642a17f18ce8aaaecde615ce1c474f')
 
 ## Fetch linux package sources from git
-if [ ! -d core-linux ];then
-  mkdir core-linux || exit 1
-  pushd core-linux || exit 1
+if [ ! -d upstream-linux ];then
+  mkdir upstream-linux || exit 1
+  pushd upstream-linux || exit 1
   git init -q || exit 1
   git remote add packages git://git.archlinux.org/svntogit/packages.git || exit 1
   git fetch packages packages/linux || exit 1
-  git archive "packages/packages/linux:repos/core-${CARCH}" | tar x || exit 1
+  git archive "packages/packages/linux:repos/testing-${CARCH}" | tar x || exit 1
   popd || exit 1
 fi
 
 # add AUFS patches
-if [ ! -f core-linux/patched ];then
+if [ ! -f upstream-linux/patched ];then
   patch -Np0 -i add-aufs-patches.diff || exit 1
-  mv core-linux/PKGBUILD{,.core} || exit 1
-  echo 'Do not remove this file: it indicates that these sources are patched for building an AUFS-friendly kernel.' > core-linux/patched
+  mv upstream-linux/PKGBUILD{,.upstream} || exit 1
+  echo 'Do not remove this file: it indicates that these sources are patched for building an AUFS-friendly kernel.' > upstream-linux/patched
 fi
 
 # change the package basename to what's defined in this file
-sed -i "s/^pkgbase=.*/pkgbase=${pkgbase}/" core-linux/PKGBUILD.core
+sed -i "s/^pkgbase=.*/pkgbase=${pkgbase}/" upstream-linux/PKGBUILD.upstream
 
 # Hack for AUR package naming
 pkgname="linux-aufs_friendly"
 
 ## Bootstrap build
-cp core-linux/* .
-source PKGBUILD.core
+cp upstream-linux/* .
+source PKGBUILD.upstream
 
 # Add AUFS patches' source URLs
 source+=("${_source[@]}")
