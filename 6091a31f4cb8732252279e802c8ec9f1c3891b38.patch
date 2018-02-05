@@ -1,0 +1,31 @@
+From 6091a31f4cb8732252279e802c8ec9f1c3891b38 Mon Sep 17 00:00:00 2001
+From: Romeo Calota <kicsyromy@gmail.com>
+Date: Mon, 25 Dec 2017 15:20:25 +0200
+Subject: [PATCH] Issue #110: Fix icons vertically stretched
+
+---
+ appIndicator.js | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/appIndicator.js b/appIndicator.js
+index fe629c2..46f01eb 100644
+--- a/appIndicator.js
++++ b/appIndicator.js
+@@ -227,7 +227,7 @@ var IconActor = new Lang.Class({
+         this.height = icon_size * scale_factor
+ 
+         this._indicator     = indicator
+-        this._iconSize      = icon_size * scale_factor
++        this._iconSize      = icon_size
+         this._iconCache     = new IconCache.IconCache()
+ 
+         this._mainIcon    = new St.Bin()
+@@ -335,6 +335,8 @@ var IconActor = new Lang.Class({
+     },
+ 
+     _createIconFromPixmap: function(iconSize, iconPixmapArray) {
++        let scale_factor = St.ThemeContext.get_for_stage(global.stage).scale_factor;
++        iconSize = iconSize * scale_factor
+         // the pixmap actually is an array of pixmaps with different sizes
+         // we use the one that is smaller or equal the iconSize
+ 
