@@ -1,0 +1,14 @@
+pkgbase = grasp-pose-generator
+	pkgdesc = Generate grasp pose candidates in point clouds
+	pkgver = 0.0.0.b4f1fee
+	pkgrel = 1
+	url = https://github.com/atenpas/gpg
+	arch = x86_64
+	license = BSD
+	depends = pcl
+	depends = eigen
+	source = grasp-pose-generator-0.0.0.b4f1fee.tar.gz::https://github.com/atenpas/gpg/archive/b4f1fee23e36e53a10b71fb80d3e0da157a52bea.tar.gz
+	sha512sums = 2d33a7c53c3cba133fd142face9daf4c0eb77e4d19ef4e3cd3e0c68b83b687a1ffa0c5d259636abd8b0c765cee72d46ba3337520740a6f2a0c4b7e461e77be84
+
+pkgname = grasp-pose-generator
+
