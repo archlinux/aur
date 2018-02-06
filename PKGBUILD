@@ -44,15 +44,14 @@ pkgver() {
 
 prepare() {
   cd $srcdir/nemo
-
   # Rename 'Files' app name to avoid having the same as nautilus
-  sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop
+  sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop.in
 }
 
 build() {
   cd $srcdir/nemo
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   meson --buildtype plain build --prefix=/usr
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   ninja -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
 
