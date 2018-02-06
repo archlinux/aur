@@ -51,8 +51,8 @@ prepare() {
 build() {
   cd $srcdir/nemo
   meson --buildtype plain build --prefix=/usr
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   ninja -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
 }
 
 package() {
