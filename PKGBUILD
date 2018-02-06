@@ -2,16 +2,16 @@
 
 pkgname=libutp-git
 _pkgname=libutp
-pkgver=r6.33a3b90
+pkgver=r99.fda9f4b
 pkgrel=1
-epoch=1
+epoch=3
 pkgdesc='uTorrent Transport Protocol library'
 url='https://github.com/bittorrent/libutp'
 depends=('glibc')
 provides=('libutp')
 arch=('i686' 'x86_64')
 license=('custom:Public Domain')
-source=("git+https://github.com/FragmentsApp/libutp.git")
+source=("git+https://github.com/transmission/libutp.git#branch=post-3.3-transmission")
 sha256sums=('SKIP')
 
 pkgver(){
@@ -19,8 +19,27 @@ pkgver(){
  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare(){
+if [[ -d $srcdir/build ]]; then
+    rm -rf $srcdir/build
+  fi
+  mkdir $srcdir/build
+}
+build() {
+ cd $srcdir/build
+ cmake ../libutp \
+  -DCMAKE_INSTALL_PREFX='/usr'
+ 
+ make
+}
 package() {
-  cd libutp
-  arch-meson build
-  DESTDIR=$pkgdir ninja -C build install
+  #cd libutp
+  #arch-meson build
+  #DESTDIR=$pkgdir ninja -C build install
+  #mkdir -p $pkgdir/usr/include/libutp
+  #install -D libutp/libutp.a $pkgdir/usr/lib/libutp.a
+  #install -D libutp/libutp.so $pkgdir/usr/lib/libutp.so
+  #cp libutp/*.h $pkgdir/usr/include/libutp
+  cd $srcdir/build
+  make DESTDIR="${pkgdir}" install
 }
