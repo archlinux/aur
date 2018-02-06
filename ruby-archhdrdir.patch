@@ -1,0 +1,12 @@
+diff -aur --no-dereference package.pristine/src/bindings/CMakeLists.txt package.new/src/bindings/CMakeLists.txt
+--- package.pristine/src/bindings/CMakeLists.txt	2017-08-22 18:50:42.000000000 +0200
++++ package.new/src/bindings/CMakeLists.txt	2018-02-06 00:15:44.876654183 +0100
+@@ -150,7 +150,7 @@
+ 
+ 	endif(NOT WIN32)
+ 
+-	include_directories(${YAF_INCLUDE_DIRS} ${RUBY_INCLUDE_DIR})
++	include_directories(${YAF_INCLUDE_DIRS} ${RUBY_INCLUDE_DIR} ${RUBY_ARCHHDR_DIR})
+ 	include(${SWIG_USE_FILE})
+ 
+ 	set(CMAKE_SWIG_FLAGS -c++ -w-801)
