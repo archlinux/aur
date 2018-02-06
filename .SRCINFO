@@ -18,7 +18,7 @@ pkgbase = asn1c-git
 	provides = asn1c
 	conflicts = asn1c
 	options = !strip
-	source = git+https://github.com/vlm/asn1c.git
+	source = git+https://github.com/vlm/asn1c.git#branch=master
 	md5sums = SKIP
 
 pkgname = asn1c-git

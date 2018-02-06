@@ -14,12 +14,15 @@ optdepends=()
 provides=('asn1c')
 conflicts=('asn1c')
 options=('!strip')
-source=(git+https://github.com/vlm/asn1c.git)
+source=(git+https://github.com/vlm/asn1c.git#branch=master)
 md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	( set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 build() {
