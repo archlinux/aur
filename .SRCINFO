@@ -1,0 +1,22 @@
+pkgbase = cpp-alsa-volume-gtk2
+	pkgdesc = Tray Alsa Volume Changer written using gtkmm
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/Vitozz/cppAlsaVolume
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = gtkmm
+	makedepends = glibmm
+	makedepends = alsa-lib
+	makedepends = cmake
+	depends = gtkmm
+	depends = glibmm
+	depends = alsa-lib
+	provides = cpp-alsa-volume=0.3.2
+	conflicts = cpp-alsa-volume
+	source = https://github.com/Vitozz/cppAlsaVolume/archive/v0.3.2.tar.gz
+	md5sums = 67ae1a6a621f76aa1f6e8a1ff863c9e8
+
+pkgname = cpp-alsa-volume-gtk2
+
