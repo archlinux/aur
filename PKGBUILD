@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-no-title-bar-git
 _gitname=no-title-bar
-pkgver=v8.r2.gd5e91ac
+pkgver=v8.r6.g8fe9355
 pkgrel=0
 pkgdesc="No Title Bar removes the title bar, moves the window title and buttons to the top panel."
 arch=('any')
