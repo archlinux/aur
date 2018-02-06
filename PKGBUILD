@@ -1,11 +1,11 @@
-# Maintainer: Nate Nygren <nate.nygren at gmail dot com>
+# Maintainer: TheGoliath
 #
 pkgname=sgminer
 pkgver=5.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-threaded multi-pool GPU miner for scrypt-based coins."
 arch=('i686' 'x86_64')
-url="https://github.com/veox/sgminer"
+url="https://github.com/sgminer-dev/sgminer"
 license=('GPL3')
 depends=('curl' 'libcl' 'libtool' 'pkg-config')
 makedepends=('opencl-headers')
@@ -25,5 +25,6 @@ build() {
 
 package() {
     cd "$srcdir"
+    msg2 "You should consider using something different than this miner. It wasn't updated since 2015!"
     make DESTDIR="$pkgdir" install 
 }

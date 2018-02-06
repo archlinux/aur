@@ -1,8 +1,8 @@
 pkgbase = sgminer
 	pkgdesc = A multi-threaded multi-pool GPU miner for scrypt-based coins.
 	pkgver = 5.1.1
-	pkgrel = 2
-	url = https://github.com/veox/sgminer
+	pkgrel = 3
+	url = https://github.com/sgminer-dev/sgminer
 	arch = i686
 	arch = x86_64
 	license = GPL3
