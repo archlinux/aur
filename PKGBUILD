@@ -3,7 +3,7 @@
 
 pkgname=python-vint
 _pkgname=vint
-pkgver=0.3.15
+pkgver=0.3.18
 pkgrel=0
 pkgdesc="VimL Linter"
 arch=('any')
@@ -13,7 +13,7 @@ url="https://github.com/Kuniwak/vint/"
 license=('MIT')
 options=(!emptydirs)
 source=(https://github.com/Kuniwak/vint/archive/v${pkgver}.tar.gz)
-md5sums=('dcae1942d195888261f1126ced3de7e2')
+md5sums=('55566ca525bc7a532752e759e872388f')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
