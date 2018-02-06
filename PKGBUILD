@@ -3,7 +3,7 @@
 # Contributor: Ner0
 
 pkgname=nemo-git
-pkgver=3.6.2.r1.gae778dd9
+pkgver=master.lmde3.r0.ga5bf0159
 pkgrel=1
 pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ makedepends=('git'
     'gobject-introspection'
     'gtk-doc'
     'intltool'
+    'meson'
     'python-gobject'
     'python2-gobject'
     'python-polib')
@@ -45,31 +46,17 @@ prepare() {
   cd $srcdir/nemo
 
   # Rename 'Files' app name to avoid having the same as nautilus
-  sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop.in.in
+  sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop
 }
 
 build() {
   cd $srcdir/nemo
-
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-static \
-    --libexecdir=/usr/lib/nemo \
-    --disable-update-mimedb \
-    --disable-tracker \
-    --disable-gtk-doc-html \
-    --disable-schemas-compile \
-    --enable-selinux=no \
-    --disable-Werror
-
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
-
-  make
+  meson --buildtype plain build --prefix=/usr
+  ninja -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
 
 package() {
   cd $srcdir/nemo
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
