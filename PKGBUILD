@@ -43,7 +43,7 @@ build() {
 
 check() {
   cd "${pkgname}-${pkgver}"
-  python setup.py test
+  pytest tests/{test_collections.py,test_crypto.py}
 }
 
 package() {
