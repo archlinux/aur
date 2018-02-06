@@ -1,0 +1,17 @@
+pkgbase = pacman-conf-diff-git
+	pkgver = v1.0.0.r0.gc6712f3
+	pkgrel = 1
+	url = https://github.com/Thomaash/pacman-conf-diff
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = python
+	provides = pacman-conf-diff
+	conflicts = pacman-conf-diff
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/Thomaash/pacman-conf-diff.git#branch=master
+	sha256sums = SKIP
+
+pkgname = pacman-conf-diff-git
+
