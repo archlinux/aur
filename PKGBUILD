@@ -13,8 +13,9 @@ set -u
 #_ubver='1.7.6~184~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='17.2'; _ubrel='429'; _libgee='libgee>=0.18.0'
 #_ubver='17.11'; _libgee='libgee>=0.18.0'
-_ubver='18.1'; _libgee='libgee>=0.18.0'
-_ubver='18.1.1'; _libgee='libgee>=0.18.0'
+#_ubver='18.1'; _libgee='libgee>=0.18.0'
+#_ubver='18.1.1'; _libgee='libgee>=0.18.0'
+_ubver='18.2'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
 pkgrel='1'
@@ -40,7 +41,7 @@ _github='teejee2008'
 _verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" '\s\+<title>Timeshift v\([0-9\.]\+\)</title>.*' 'f')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}_v${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1e4f8eb3cba4b166b969e47920a9e25b65e63848d8dfd5d9e982419f37dedc85')
+sha256sums=('ccdcd035217b8fb7dfee20f355ac32077be47b23306226cec879b0f039525a7c')
 #sha256sums[0]='SKIP'
 
 build() {
