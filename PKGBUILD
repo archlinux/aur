@@ -16,16 +16,24 @@ provides=('sgminer')
 source=("${pkgname}::git+https://github.com/nicehash/sgminer.git")
 sha512sums=('SKIP')
 
-
+prepare() {
+    cd "$srcdir/$pkgname"
+    git submodule update --init
+}
 build() {
     cd "$srcdir/$pkgname"
     ./autogen.sh
-    ./configure --prefix=/usr
+    ./configure --prefix="/usr"
     make
+}
+check() {
+    cd "$srcdir/$pkgname"
+
+    make check
 }
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir/$pkgname"
     msg2 "You should consider using something different than this miner. It wasn't updated since 2015!"
     make DESTDIR="$pkgdir" install 
 }
