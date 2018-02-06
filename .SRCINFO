@@ -1,0 +1,13 @@
+pkgbase = nextcloud-theme-breeze-dark-git
+	pkgdesc = A Breeze Dark Theme for Nextcloud based on the Breeze Dark theme made by the KDE Project.
+	pkgver = 20171112.0d844ac
+	pkgrel = 1
+	url = https://github.com/mwalbeck/nextcloud-breeze-dark
+	arch = any
+	license = AGPL3
+	makedepends = git
+	source = git+https://github.com/mwalbeck/nextcloud-breeze-dark.git
+	sha256sums = SKIP
+
+pkgname = nextcloud-theme-breeze-dark-git
+
