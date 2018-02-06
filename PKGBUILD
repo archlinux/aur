@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-dtools
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="OCaml modules for writing daemons"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('ocaml')
 makedepends=('ocaml-findlib')
 options=('!strip')
 source=("https://github.com/savonet/ocaml-dtools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('ca5df5709d6298315689c8b0c2bdb2a1')
+md5sums=('6f4c0467f469b8a1e03f34d35309a0b4')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
