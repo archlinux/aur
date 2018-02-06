@@ -18,7 +18,7 @@ optdepends=('ihaskell-git: support for Haskell'
             'sagemath-jupyter: support for SageMath')
 install=$pkgname.install
 
-source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v0.7.0/nteract-0.7.0.dmg"
+source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v0.7.0/nteract_0.7.0_amd64.deb"
         "LICENSE")
 sha256sums=('76c370fa68f28a9c5f698fd4e88c2b56b4efa86531622f0c5a92f4911e3ff8f6'
             '9810f3d57c552d3b3f6c82cb3b6f3402d6faf94fc5a63067fe28360fb3b8b688')
