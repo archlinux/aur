@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mindustry (Git)
+Comment=A pixelated sandbox tower defense game
+Exec=/usr/bin/mindustry-git
+Icon=/usr/share/pixmaps/mindustry-git.png
+Categories=Game;
+Terminal=false
