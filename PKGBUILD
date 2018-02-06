@@ -2,9 +2,10 @@
 # Contributor:
 
 pkgbase=linux-clear
-_srcname=linux-4.15
-pkgver=4.15.0
-_rel=517
+__basekernel=4.15
+_minor=1
+pkgver=${__basekernel}.${_minor}
+_clearver=${__basekernel}.0-517
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -12,11 +13,11 @@ license=('GPL2')
 makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
 options=('!strip')
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${pkgver}-${_rel}"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clearver}"
   'https://downloadmirror.intel.com/27337/eng/microcode-20171117.tgz'
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -29,6 +30,8 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
+            '202a0a34f221ae335de096c292927d7a7d4bcdbc2dd46d43b8a5f6420f95a0cf'
+            'SKIP'
             'SKIP'
             '93bd1da9fa58ece0016702e657f708b7e496e56da637a3fe9a6d21f1d6f524dc'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -39,10 +42,10 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd ${_srcname}
+  cd linux-${__basekernel}
   
   # add upstream patch
-  #patch -p1 -i ../patch-${pkgver}
+  patch -p1 -i ../patch-${pkgver}
   chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
   
   cp -Tf $srcdir/clearlinux/config .config
@@ -71,7 +74,7 @@ prepare() {
 }
 
 build() {
-  cd ${_srcname}
+  cd linux-${__basekernel}
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -83,7 +86,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd ${_srcname}
+  cd linux-${__basekernel}
 
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
@@ -138,7 +141,7 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
+  cd linux-${__basekernel}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
@@ -208,7 +211,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
+  cd linux-${__basekernel}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   mkdir -p "${_builddir}"
