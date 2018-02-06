@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-cpufreq-git
 _pkgname=cpufreq
-pkgver=v24.0.r9.gf4855a2
+pkgver=v24.0.r13.g1ee267b
 pkgrel=0
 pkgdesc="Gnome Shell CPU Frequency Monitor and Governor Manager."
 arch=('any')
