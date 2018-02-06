@@ -13,7 +13,6 @@ pkgbase = sgminer
 	depends = pkg-config
 	depends = automake
 	depends = autoconf
-	depends = jansson
 	optdepends = ncurses5-compat: For ncurses formatted screen output
 	optdepends = opencl-nvidia: OpenCL implementation for NVIDIA
 	optdepends = opencl-catalyst: OpenCL implementation for AMD

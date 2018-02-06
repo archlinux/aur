@@ -7,7 +7,7 @@ pkgdesc="A multi-threaded multi-pool GPU miner for scrypt-based coins."
 arch=('i686' 'x86_64')
 url="https://github.com/nicehash/sgminer/"
 license=('GPL3')
-depends=('curl' 'ocl-icd' 'libtool' 'pkg-config' 'automake' 'autoconf' 'jansson')
+depends=('curl' 'ocl-icd' 'libtool' 'pkg-config' 'automake' 'autoconf')
 makedepends=('opencl-headers')
 optdepends=('ncurses5-compat: For ncurses formatted screen output'
             'opencl-nvidia: OpenCL implementation for NVIDIA'
