@@ -48,13 +48,6 @@ prepare() {
   sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop.in
 }
 
-build() {
-  cd $srcdir/nemo
-  meson --buildtype plain build --prefix=/usr
-  ninja -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
-}
-
 package() {
   cd $srcdir/nemo
   DESTDIR="$pkgdir" ninja -C build install
