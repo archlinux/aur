@@ -4,11 +4,12 @@
 
 pkgname=clazy
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt oriented code checker based on clang framework"
 url="https://github.com/KDE/clazy"
 license=("GPLv2")
 depends=('llvm' 'clang')
+conflicts=('clazy-git')
 makedepends=('cmake')
 arch=('x86_64' 'x86')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KDE/$pkgname/archive/v$pkgver.tar.gz")
