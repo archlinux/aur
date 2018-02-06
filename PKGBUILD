@@ -3,7 +3,7 @@
 _npmname=imapnotify
 pkgname=nodejs-$_npmname
 pkgver=0.4.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Execute scripts on new messages using IDLE imap command"
 arch=(any)
 url="http://github.com/a-sk/node-imapnotify"
@@ -20,4 +20,5 @@ sha1sums=(efc694293876591a9ad8173c26273568ae122e5c
 
 package() {
     npm install --cache "${srcdir}/npm-cache" -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+    install -Dm644 "${srcdir}/imapnotify@.service" "${pkgdir}/usr/lib/systemd/user/imapnotify@.service"
 }
