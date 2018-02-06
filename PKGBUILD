@@ -2,9 +2,9 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.14
-_pkgver=4.14.15
+_pkgver=4.14.17
 pkgver=${_pkgver}.a
-pkgrel=2
+pkgrel=1
 url='https://github.com/copperhead/linux-hardened'
 arch=('x86_64')
 license=('GPL2')
@@ -26,25 +26,21 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         drm-i915-edp-Only-use-the-alternate-fixed-mode-if-its-asked-for.patch
 
         CVE-2017-8824-dccp-use-after-free-in-DCCP-code.patch
-        CVE-2017-17448-netfilter-nfnetlink_cthelper-Add-missing-permission-checks.patch
-        CVE-2017-17450-netfilter-xt_osf-Add-missing-permission-checks.patch
 )
 replaces=('linux-grsec')
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
+            '1e62d56e37bd15daec7c3d20a605624e1e0a21c44856880c6dbe0c9e41cabfa8'
             'SKIP'
-            '55f4dfaf88a98368f29c7503b8a67a35105a11376cd91a1096ed18eabed5a288'
+            '77b6c3188a029d3a03164b2ca75bcd9781ea8a32b1e021114667e4a39c1b4bd1'
             'SKIP'
-            '2fdd2497e3df02a0624a068605007dc91d92304562977279d54b3381ad6e2ef0'
+            '1c09d2e73fc7940ff7304141430403ea5ba91453abe94755acc361148fe6ff04'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '294c928b8252112d621df1d13fbfeade13f28ddea034d44e89db41b66d2b7d45'
             'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148'
-            '6be803c62b7ce41f1b4de6c867715398812b1c1a3e68a0078512f2872e2a3fa9'
-            'b833ad4354fcd2cc6ee60c971088f77aa5b06a58fce346c40268c0b05b1e8cb5'
-            '72efa781c8ee1175a8865e6a12568aaf3bac4b76d4285819c6a75a3e5fe41435')
+            '6be803c62b7ce41f1b4de6c867715398812b1c1a3e68a0078512f2872e2a3fa9')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
