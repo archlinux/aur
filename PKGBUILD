@@ -8,7 +8,7 @@ license=('custom')
 depends=('python2' 'cronie')
 source=("http://packages.panopta.com/tar/panopta-agent-tarball-latest.tar.gz" "panopta-agent.cron" "license.txt")
 install=$pkgname.install
-md5sums=('a279617492c7566d6444d3f46b1cdae7' '9b2e7feea2a4b4d0ff3ac4b828eaa8bb' '2a657feea0ec01bf57ffad93686ea9c2')
+md5sums=('a279617492c7566d6444d3f46b1cdae7' '50b8bd64e1111f8adf6ffeb55ed37215' '2a657feea0ec01bf57ffad93686ea9c2')
 
 pkgver() {
     cd "$srcdir"
