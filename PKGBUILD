@@ -3,12 +3,14 @@
 
 pkgname=perl-net-frame
 pkgver=1.17
-pkgrel=1
+pkgrel=2
 pkgdesc="the base framework for frame crafting"
 _dist=Net-Frame
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
+makedepends=('perl-module-build')
+checkdepends=('perl-net-ipv4addr')
 depends=(perl perl-bit-vector perl-class-gomor perl-net-ipv6addr perl-socket6)
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/$_dist-$pkgver.tar.gz")

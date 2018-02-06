@@ -1,11 +1,13 @@
 pkgbase = perl-net-frame
 	pkgdesc = the base framework for frame crafting
 	pkgver = 1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Net-Frame
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-net-ipv4addr
+	makedepends = perl-module-build
 	depends = perl
 	depends = perl-bit-vector
 	depends = perl-class-gomor
