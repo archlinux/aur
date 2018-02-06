@@ -1,5 +1,5 @@
 post_install() {
-	dkms install 8723bu/${1%%-*}
+	dkms install rtl8723bu/${1%%-*}
 }
 
 pre_upgrade() {
@@ -11,5 +11,5 @@ post_upgrade() {
 }
 
 pre_remove() {
-	dkms remove 8723bu/${1%%-*} --all
+	dkms remove rtl8723bu/${1%%-*} --all
 }

@@ -1,8 +1,7 @@
 pkgname=rtl8723bu-git-dkms
 _pkgname=rtl8723bu
-_pkgbase=8723bu
 pkgver=r222.41801bc
-pkgrel=4
+pkgrel=5
 pkgdesc="Driver for RTL8723BU DKMS version"
 url="https://github.com/lwfinger/rtl8723bu"
 provides=('rtl8723bu-git-dkms')
@@ -32,13 +31,13 @@ prepare() {
 
 package() {
     cd "${srcdir}"
-    local install_dir="${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+    local install_dir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
     # Copy dkms.conf
     install -Dm644 dkms.conf "${install_dir}/dkms.conf"
     #blacklist rtl8723bu
     install -Dm644 blacklist-rtl8723bu.conf "${pkgdir}"/etc/modprobe.d/blacklist-rtl8723bu.conf
     # Set name and version
-    sed -e "s/@_PKGBASE@/${_pkgbase}/" \
+    sed -e "s/@_PKGBASE@/${_pkgname}/" \
         -e "s/@PKGVER@/${pkgver}/" \
         -i "${install_dir}/dkms.conf"
     cd "${srcdir}/${_pkgname}"
