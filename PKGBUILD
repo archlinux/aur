@@ -2,15 +2,15 @@
 
 pkgname=xcursor-bmz
 pkgver=1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Mouse cursor for X11 desktop. Inspiration was drawn from various sources, including DMZ and Breeze, but design manages to be quite unique."
 arch=('any')
 url="https://www.gnome-look.org/p/1158321/"
 license=('GPL')
 depends=('libxcursor')
-#source=("${pkgname}-${pkgver}.tar.gz::https://dl.opendesktop.org/api/files/download/id/1493318153/BMZ.tar.gz")
-source=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6bc80f6681446a58a4aeec1d920ee78948a8d9477cb1bc84d64403f8d9338f61')
+_hash_time=($(curl -s "$url"|grep -e "hash =" -e "timetamp ="|sed "s/.*= '\(.*\)';/\1/"))
+source=("${pkgname}-${pkgver}.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1515839449/s/${_hash_time[0]}/t/${_hash_time[1]}/BMZ.tar.gz")
+sha256sums=('fb0054106c5c80df446f6bf440fec4c2140030e5fa64676ccb042f700e0cafb6')
 
 
 
