@@ -1,15 +1,15 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=eclair
-pkgver=0.2alpha8
-_commit=8edb2a478c4313bb5d593ca6a08083e8c351d2a7
+pkgver=0.2alpha9
+_commit=951bcc4750602c2eba1998c24bcad3714f24b6ef
 pkgrel=1
 pkgdesc='A scala implementation of the Lightning Network'
 arch=('any')
 url='https://github.com/ACINQ/eclair'
 license=('Apache')
 depends=('java-environment=8' 'java-openjfx')
-makedepends=('maven')
+makedepends=('git' 'maven')
 source=("git+https://github.com/ACINQ/eclair.git#commit=${_commit}"
         'eclair.sh')
 sha256sums=('SKIP'
