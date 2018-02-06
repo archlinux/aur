@@ -17,7 +17,7 @@
 
 pkgbase=grpc
 pkgname=('grpc' 'php-grpc' 'grpc-cli')
-pkgver=1.9.0
+pkgver=1.9.1
 _gtestver=1.8.0
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
@@ -32,7 +32,7 @@ source=(
     https://github.com/google/googletest/archive/release-$_gtestver.tar.gz
 )
 noextract=()
-md5sums=('7c4e4deb1c41fac89ee1eff1d64cd517'
+md5sums=('d1747988298cd075e636307f4ef3fb54'
          '16877098823401d1bf2ed7891d7dce36')
 
 prepare() {
