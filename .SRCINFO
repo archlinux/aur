@@ -1,0 +1,14 @@
+pkgbase = refind-theme-ambience-black-git
+	pkgdesc = Dark minimalistic theme for refind. Fork of refind-ambience.
+	pkgver = r46.446477f
+	pkgrel = 1
+	url = https://gitlab.com/psfloyd/refind-ambience-black.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = refind-efi
+	source = git+https://gitlab.com/psfloyd/refind-ambience-black.git
+	md5sums = SKIP
+
+pkgname = refind-theme-ambience-black-git
+
