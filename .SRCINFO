@@ -1,0 +1,25 @@
+pkgbase = ouroboros-git
+	pkgdesc = Inter-Process Communications (IPC) subsystem for POSIX operating systems
+	pkgver = 0.9.9.r0.g544ad6f
+	pkgrel = 1
+	url = https://ouroboros.ilabt.imec.be
+	arch = x86_64
+	arch = i686
+	arch = arm
+	license = GPL2
+	license = LGPL2.1
+	license = BSD
+	makedepends = git
+	makedepends = fakeroot
+	makedepends = cmake
+	depends = protobuf-c
+	optdepends = libgcrypt
+	optdepends = openssl
+	optdepends = fuse
+	optdepends = dnsutils
+	optdepends = swig
+	source = git+https://ouroboros.ilabt.imec.be/git/ouroboros
+	md5sums = SKIP
+
+pkgname = ouroboros-git
+
