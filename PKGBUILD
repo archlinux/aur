@@ -1,6 +1,6 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=ganv-git
-pkgver=e7731e9
+pkgver=r325.dc3db77
 pkgrel=1
 pkgdesc="An interactive Gtkmm canvas widget for graph-based interfaces"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd ${_gitname}
-  git describe --long --tags --always | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
