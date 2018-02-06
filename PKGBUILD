@@ -2,7 +2,7 @@
 pkgbase=transmission-cmake
 pkgname=(transmission-cmake-cli transmission-cmake-gtk transmission-cmake-qt libtransmission)
 pkgver=2.93
-pkgrel=1
+pkgrel=4
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
@@ -28,7 +28,7 @@ prepare() {
 build() {
   cd build
   
-  cmake ../transmission -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTAL_LIBDIR="/usr/lib/" -DINSTALL_LIB=ON -DENABLE_UTP=ON  -DBUILD_TESTING=ON -DUSE_QT5=ON -DENABLE_CLI=ON -DENABLE_DAEMON=ON  -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_UTP=ON
+  cmake ../transmission -DCMAKE_INSTALL_PREFIX="/usr" -DLIB_INSTALL_DIR='/usr/lib' -DCMAKE_INSTAL_LIBDIR="/usr/lib" -DINSTALL_LIB=ON -DENABLE_UTP=ON  -DBUILD_TESTING=ON -DUSE_QT5=ON -DENABLE_CLI=ON -DENABLE_DAEMON=ON  -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_UTP=ON
   make
 }
 
@@ -92,7 +92,9 @@ package_libtransmission(){
 
   cd build
   make -C libtransmission DESTDIR="$pkgdir" install
-  
+  mkdir -p $pkgdir/usr/lib/
+  mv $pkgdir/usr/lib64/libtransmission.a  $pkgdir/usr/lib/
+  rmdir $pkgdir/usr/lib64 
   install -Dm644 $srcdir/transmission/COPYING "$pkgdir/usr/share/licenses/libtransmission/COPYING"
 
 }
