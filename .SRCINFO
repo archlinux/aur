@@ -6,7 +6,7 @@ pkgbase = xcursor-bmz
 	arch = any
 	license = GPL
 	depends = libxcursor
-	source = xcursor-bmz-1.8.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1515839449/s/f5cfeada23f05e73d360bab9d8e5c6b0/t/1517897479/BMZ.tar.gz
+	source = xcursor-bmz-1.8.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1515839449/s/a675e087d052035a42a635f2284d8461/t/1517897552/BMZ.tar.gz
 	sha256sums = fb0054106c5c80df446f6bf440fec4c2140030e5fa64676ccb042f700e0cafb6
 
 pkgname = xcursor-bmz
