@@ -1,5 +1,5 @@
 pkgbase = java-repl
-	pkgdesc = Read Eval Print Loop for Java
+	pkgdesc = Read Eval Print Loop for Java (latest release)
 	pkgver = 428
 	pkgrel = 1
 	url = https://github.com/albertlatacz/java-repl
