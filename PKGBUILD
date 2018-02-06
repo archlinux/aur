@@ -21,10 +21,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/ChakraCore-${pkgver}/out/Release"
-  make DESTDIR="${pkgdir}" install
-  mkdir -p "${pkgdir}/usr/include"
   mkdir -p "${pkgdir}/usr/lib"
+  mkdir -p "${pkgdir}/usr/include"
   cp "$srcdir/ChakraCore-${pkgver}/out/Release/bin/ChakraCore/libChakraCore.so" "${pkgdir}/usr/lib"
   cp "$srcdir/ChakraCore-${pkgver}/out/Release/include/"*.h "${pkgdir}/usr/include/."
 }
