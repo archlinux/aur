@@ -1,15 +1,15 @@
 pkgbase = draft-bin
 	pkgdesc = Draft client
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = http://draft.sh
 	arch = i686
 	arch = x86_64
 	license = mit
-	source_i686 = draft-0.10.0::https://azuredraft.blob.core.windows.net/draft/draft-v0.10.0-linux-386.tar.gz
-	md5sums_i686 = c3e02176572b85a609155a7da014b3c4
-	source_x86_64 = draft-0.10.0::https://azuredraft.blob.core.windows.net/draft/draft-v0.10.0-linux-amd64.tar.gz
-	md5sums_x86_64 = d8c7fe25a6a04232f9b7df4d969e516c
+	source_i686 = draft-0.10.1::https://azuredraft.blob.core.windows.net/draft/draft-v0.10.1-linux-386.tar.gz
+	md5sums_i686 = c4fbfb3b7c2bfb3d814534db204267f6
+	source_x86_64 = draft-0.10.1::https://azuredraft.blob.core.windows.net/draft/draft-v0.10.1-linux-amd64.tar.gz
+	md5sums_x86_64 = ad8aa45722d228cf7046ea5c9d040aa1
 
 pkgname = draft-bin
 
