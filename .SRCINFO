@@ -1,0 +1,24 @@
+pkgbase = dayjournal
+	pkgdesc = A minimalistic digital journal that lets the content you create outlast DayJournal itself
+	pkgver = 23.0.8
+	pkgrel = 1
+	url = https://burnsoftware.wordpress.com/dayjournal/
+	arch = any
+	license = GPL3
+	depends = gdk-pixbuf2
+	depends = libgee
+	depends = glib2
+	depends = gtk3
+	depends = libnotify
+	depends = pango
+	provides = dayjournal
+	conflicts = dayjournal
+	source = https://iballwasrawt.ru/dayjournal/dayjournal_23.0.8-1_amd64.deb
+	source = https://iballwasrawt.ru/dayjournal/dayjournal.png
+	source = https://iballwasrawt.ru/dayjournal/dayjournal.desktop
+	sha256sums = d39c27fd6d4463144807fadeaeb1c2c1328a4acc77a8c8a8fa955b62bd42eb46
+	sha256sums = 901d182afa6c838077cb163edb80d1e76e23f3bdd9f436797d82a7f7560ac664
+	sha256sums = 1c2e09afd5fc1c6b5ac4b1fd807b1827462a89d824f0c09f5689b8a81dee294a
+
+pkgname = dayjournal
+
