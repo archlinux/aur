@@ -13,14 +13,13 @@ pkgbase = sgminer
 	depends = pkg-config
 	depends = automake
 	depends = autoconf
+	depends = jansson
 	optdepends = ncurses5-compat: For ncurses formatted screen output
 	optdepends = opencl-nvidia: OpenCL implementation for NVIDIA
 	optdepends = opencl-catalyst: OpenCL implementation for AMD
 	provides = sgminer
-	source_i686 = https://github.com/nicehash/sgminer/releases/download/5.6.1/sgminer-5.6.1-nicehash-51-linux-i386.zip
-	sha512sums_i686 = 0354a4cf25bf747435af12fe98b4c99cc9e7682bc5bf8b917897c2b3e3d0bb3838860a8d3667e4786ea34926ce7ed45b208978aa560e8f3ec7bd802272a77316
-	source_x86_64 = https://github.com/nicehash/sgminer/releases/download/5.6.1/sgminer-5.6.1-nicehash-51-linux-amd64.zip
-	sha512sums_x86_64 = 19019fdf8da6e549c4fb81b06915ee810ea5110407209218e8a0206e76cde6240e1b4228179fa8836e711939037ab5138aeaa126a9a5c952ff7625cbc0d8828e
+	source = sgminer::git+https://github.com/nicehash/sgminer.git
+	sha512sums = SKIP
 
 pkgname = sgminer
 
