@@ -1,5 +1,3 @@
-# Maintainer: Ainola
-
 _appname=gtk-communitheme
 pkgname="${_appname}-git"
 pkgver=a6ca20f
