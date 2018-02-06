@@ -1,10 +1,11 @@
 pkgbase = cinepaint
 	pkgdesc = Sophisticated graphics manipulation programm supporting > 8bit pictures
 	pkgver = 1.0.4
-	pkgrel = 6
+	pkgrel = 7
 	epoch = 1
 	url = http://www.cinepaint.org
 	arch = x86_64
+	arch = i686
 	license = LGPL
 	license = GPL
 	license = MIT

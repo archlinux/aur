@@ -1,14 +1,13 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer:
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: tobias [tobias.archlinux.org]
 
 pkgname=cinepaint
 _realver=1.0-4
 pkgver=${_realver/-/.}
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="Sophisticated graphics manipulation programm supporting > 8bit pictures"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 license=('LGPL' 'GPL' 'MIT')
 url="http://www.cinepaint.org"
 depends=('gtk2' 'openexr' 'lcms' 'libxpm' 'fltk' 'ftgl' 'libxxf86vm')
