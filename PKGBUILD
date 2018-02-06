@@ -1,7 +1,8 @@
 # Maintainer: Miguel de Val-Borro <miguel.deval at gmail dot com>
+# Contributor: Universebenzene <universebenzene at sina dot com>
 pkgname=('python2-astropy-helpers')
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities used for building the Astropy python library for astronomy"
 arch=('any')
 url="https://github.com/astropy/astropy-helpers"
@@ -12,6 +13,7 @@ md5sums=('8129ddec049865e7401d1a7e86b3a22b')
 
 build() {
   cd ${srcdir}/astropy-helpers-${pkgver}
+  patch -p1 -i ../../astropy_helpers.patch
   python2 setup.py build --use-system-libraries
 }
 
