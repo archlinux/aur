@@ -10,7 +10,7 @@
 pkgname=davinci-resolve
 _pkgname=resolve
 pkgver=14.3
-pkgrel=0
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
