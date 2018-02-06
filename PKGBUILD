@@ -3,13 +3,13 @@
 
 pkgname=python-gtts-token
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Token for gTTS"
 arch=('any')
 url="https://github.com/Boudewijn26/gTTS-token"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'unzip')
 source=("$pkgname::https://pypi.python.org/packages/4c/c8/dd58eba1464729095217d3acfc4f6581348c6f495ea3342ed7dbc9f9e133/gTTS-token-1.1.1.zip#md5=39f56680d81c3d553ccc663f013a48f8")
 
 prepare() {
