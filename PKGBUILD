@@ -12,7 +12,8 @@ makedepends=('opencl-headers')
 optdepends=('ncurses5-compat: For ncurses formatted screen output'
             'opencl-nvidia: OpenCL implementation for NVIDIA'
             'opencl-catalyst: OpenCL implementation for AMD')
-provides=('sgminer')
+provides=('sgminer' 'sgminer-gm')
+conflicts=('sgminer')
 source=("${pkgname}::git+https://github.com/nicehash/sgminer-gm.git")
 sha512sums=('SKIP')
 
