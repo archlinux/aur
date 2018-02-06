@@ -2,7 +2,7 @@
 
 _pkgname=basilisk
 pkgname=${_pkgname}-bin
-pkgver=55.0.2018.01.05
+pkgver=55.0.2018.02.02
 pkgrel=1
 pkgdesc="Basilisk Browser from the makers of Pale Moon"
 url="http://www.basilisk-browser.org"
@@ -14,7 +14,7 @@ optdepends=('hunspell: spell checker and morphological analyzer'
             'ffmpeg: record, convert, and stream audio and video')
 source=("http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.bz2"
         'basilisk.desktop')
-sha256sums=('d31ced83bc480bce11ee39d1412a1cec406f2ee48b5c089d23abb17c9bc2f30b'
+sha256sums=('7831d636f9590307b474d17578484ac2dac17f56d9013a6564b6102de1bb5d51'
             'c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45')
 
 pkgver() {
