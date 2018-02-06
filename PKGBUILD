@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/ChakraCore-${pkgver}/BuildLinux/Release"
+  cd "$srcdir/ChakraCore-${pkgver}/out/Release"
   make DESTDIR="${pkgdir}" install
   mkdir -p "${pkgdir}/usr/include"
   mkdir -p "${pkgdir}/usr/lib"
