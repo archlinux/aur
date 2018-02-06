@@ -29,6 +29,7 @@ pkgbase = yuzu-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = yuzu-git
 	depends = sdl2
