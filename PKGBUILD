@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=aur-out-of-date
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Determines out-of-date AUR packages"
 arch=('x86_64' 'i686')
 url="https://github.com/simon04/aur-out-of-date"
@@ -15,11 +15,17 @@ prepare() {
   export GOPATH="$srcdir/_go"
   mkdir -p $(dirname "$GOPATH/src/$_importpath")
   ln -sf "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$_importpath"
+  cd "$GOPATH/src/$_importpath"
+  dep ensure
+}
+
+check() {
+  cd "$GOPATH/src/$_importpath"
+  go test $(go list ./...)
 }
 
 build() {
   cd "$GOPATH/src/$_importpath"
-  dep ensure
   go build
 }
 
@@ -29,4 +35,4 @@ package() {
   install -m755 "$pkgname" "$pkgdir/usr/bin/aur-out-of-date"
 }
 
-sha256sums=('37458cb6b92cfe8b0f717779d7ba3b9cd4f7520513f3fea60f7d4864b08f083f')
+sha256sums=('2a9ee02a9a14ed5c2ba67fdefaeba02d003483612529a04c7bd032ed95f1e009')
