@@ -1,6 +1,6 @@
 _gitname="camisole"
 pkgname=camisole-git
-pkgver=0.1.r200.gac1900a
+pkgver=0.1.r206.g032ca70
 pkgrel=1
 pkgdesc="An asyncio-based source compiler and test runner."
 arch=('any')
@@ -11,7 +11,8 @@ provides=('camisole')
 depends=('isolate-git'
          'python'
          'python-aiohttp'
-         'python-msgpack')
+         'python-msgpack'
+         'python-yaml')
 optdepends=('camisole-languages: Metapackage for all the built-in languages')
 makedepends=('git' 'python-setuptools')
 source=("git+${url}.git"

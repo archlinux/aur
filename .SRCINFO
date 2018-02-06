@@ -1,6 +1,6 @@
 pkgbase = camisole-git
 	pkgdesc = An asyncio-based source compiler and test runner.
-	pkgver = 0.1.r200.gac1900a
+	pkgver = 0.1.r206.g032ca70
 	pkgrel = 1
 	url = https://github.com/prologin/camisole
 	install = camisole-git.install
@@ -12,6 +12,7 @@ pkgbase = camisole-git
 	depends = python
 	depends = python-aiohttp
 	depends = python-msgpack
+	depends = python-yaml
 	optdepends = camisole-languages: Metapackage for all the built-in languages
 	provides = camisole
 	conflicts = camisole
