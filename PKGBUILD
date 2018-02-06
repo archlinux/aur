@@ -5,7 +5,7 @@
 
 pkgname=spectrum2
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 #epoch=
 pkgdesc="Create C++ transports easily"
 arch=('any')
@@ -15,14 +15,16 @@ groups=()
 depends=(curl log4cxx popt sqlite)
 makedepends=('protobuf' 'swiften>=3' 'libpqxx' 'libpurple' 'avahi' 'boost'
 'cmake' 'cppunit' 'expat' 'libcommuni' 'libidn' 'sqlite' 'log4cxx' 'libevent'
-'libmariadbclient' 'popt' 'libev' 'dbus-glib' 'curl' 'qt4')
+'libmariadbclient' 'popt' 'libev' 'dbus-glib' 'curl' 'qt4' 'gconf')
 checkdepends=()
 optdepends=('swiften>=3: XMPP backend support'
             'libpqxx: PostgreSQL support'
             'libmariadbclient: MariaDB support'
             'libcommuni: IRC backend support'
+	    'qt4: IRC backend support'
             'protobuf: IRC backend support'
             'libpurple: LibPurple backend support'
+	    'gconf: LibPurple backend support'
             'libev: LibPurple backend support - libev eventloop')
 provides=()
 conflicts=()
