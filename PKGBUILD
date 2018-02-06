@@ -3,7 +3,7 @@
 _pkgbase=monero
 pkgname=monero-gui-bin
 pkgver=0.11.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monero: the secure, private, untraceable currency - release version (Helium Hydra, Point Release 1. Includes daemon, wallet and miner)"
 arch=("x86_64" "i686")
 conflicts=("${_pkgbase}")
@@ -20,10 +20,12 @@ provides=("monerod=${pkgver}"
 
 source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v${pkgver}/monero-gui-linux-x64-v${pkgver}.tar.bz2"
     "monero-wallet-gui"
+    "monero-wallet-gui.desktop"
 )
 
 sha256sums=("e18a13f39a3b4aa87c9afdd9c87dfc087ed4940d99cf18c16ec59037e5f68eaf"
     "8b69aac7caae305676ccebc6dbfa803c9aadf8b82d2ca1ecf2d8302a0d79cfc9"
+    "1a88e0dd59687fc19f4ca84b43311c506e04c1723cb9972faf427942723c73d2"
 )
 
 if [ "$CARCH" = 'i686' ]; then
@@ -45,6 +47,15 @@ package() {
 
     # Wallet launcher script
     install -Dm755 "monero-wallet-gui" "${pkgdir}/usr/bin/monero-wallet-gui"
+
+    # Install icons
+    for i in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256; do
+        curl "https://raw.githubusercontent.com/monero-project/monero-gui/master/images/appicons/$i.png" --silent --create-dirs -o "${srcdir}/icons/${i}/monero-wallet-gui.png"
+        install -Dm644 "${srcdir}/icons/${i}/monero-wallet-gui.png" "${pkgdir}/usr/share/icons/hicolor/${i}/apps/monero-wallet-gui.png"
+    done
+
+    # Install desktop file
+    desktop-file-install -m 644 --dir="${pkgdir}/usr/share/applications/" "${srcdir}/../monero-wallet-gui.desktop"
 
     # Binary symlinks
     ln -sf /usr/share/monero-gui/monerod "${pkgdir}/usr/bin/monerod"

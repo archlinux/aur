@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Monero GUI Wallet
+Comment=Monero: the secure, private, untraceable currency.
+Terminal=false
+Type=Application
+Categories=Application;Network;Finance;
+Icon=monero-wallet-gui
+Exec=/usr/bin/monero-wallet-gui
