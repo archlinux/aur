@@ -8,7 +8,6 @@ pkgdesc="an interactive y/n prompt"
 arch=('x86_64')
 url="https://github.com/JoshuaRLi/yn"
 license=('MIT')
-provides=('yn')
 conflicts=('yn-bin')
 
 source_x86_64=("${url}/releases/download/${pkgver}/yn-${pkgver}.tar.gz")
