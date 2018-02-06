@@ -1,6 +1,6 @@
-# Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
+# Maintainer: Miguel de Val-Borro <miguel.deval at gmail dot com>
 pkgname=('python-astropy-helpers' 'python2-astropy-helpers')
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Utilities used for building the Astropy python library for astronomy"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/astropy/astropy-helpers"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-${pkgver}.tar.gz")
-md5sums=('f908249b595abf957784c002681ec88a')
+md5sums=('8129ddec049865e7401d1a7e86b3a22b')
 
 build() {
   cp -r ${srcdir}/astropy-helpers-${pkgver} ${srcdir}/astropy-helpers-${pkgver}-py2
