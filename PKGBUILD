@@ -2,7 +2,7 @@
 
 pkgname=ocaml-ocamlsdl
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="OCaml interface to the SDL (Simple DirectMedia Layer) library"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/ocamlsdl/"
@@ -17,7 +17,8 @@ build() {
     cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
 
     ./configure
-    make
+    make OCAMLC="ocamlc.opt -unsafe-string" \
+      OCAMLOPT="ocamlopt.opt -unsafe-string"
 }
 
 package() {
