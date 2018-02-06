@@ -1,0 +1,5 @@
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+src/
+pkg/
+litecoin-git/
