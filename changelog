@@ -1,8 +1,88 @@
+vidcutter (5.5.0-1) stable; urgency=medium
+
+  * The most requested feature is finally added; media stream configuration! A
+    new media stream button has been added and enabled for use when
+    clips are all derived from the same source media OR media files added
+    manually all share the same codecs, formats, etc... A view of all
+    detected streams including video, audio, text/subtitles. Chapters are not
+    included as they are treated differently by FFmpeg and followng the usual
+    rule of thumb in VidCutter which is they will be included in your end
+    result if the original source is not corrupt or in some weird non-standard
+    configuration.
+
+  * Migrated main toolbar buttons from QToolBar + QActions to new custom
+    widget VCToolBarButton handling QPushButton with attached. This allows
+    working pressed states on existing toolbar buttons which QToolBar buttons
+    (for reasons I cannot fathom) do not.
+
+  * Tools section added to settings for setting paths to three main tools
+    used by VidCutter; FFmpeg, FFprobe and MediaInfo. Set to Defaults
+    button reverts changes to defaults, especially useful for users of
+    bundled packages of app (AppImage, Windows and macOS which contain
+    these tools prepacked). Allows you to use different versions of said
+    tools.
+
+  * End of file is now being observed in the mpv library event pool so that
+    playback state resets position back to the start, in pause and all
+    controls in their default states.
+
+  * Ability to set clip index list to the left or right (default) of main
+    window.
+
+  * Support for WTV (.wtv - Windows Recorded TV Show) media files
+    (playback and cutting/joining) added.
+
+  * New code for restarting app whe changing themes is causing problems in Windows,
+    starting app again resolves things. My patience for Windows shell is at an all
+    time low so will fix this when my care factor returns (if ever). Windows shell
+    is a joke.
+
+  * Required dependency of PyOpenGL python module introduced for users on slightly
+    older Ubuntu, Fedora and Ubuntu based Linux distributions. such as Mint or
+    ElementaryOS. This now fixes things if you were experiencing immediate
+    segmentation faults when launching. no OpenGL context could be created. Again,
+    this only applies to Linux and only to those distro mentioned above. No user
+    manual tasks needed, Ubuntu and Fedora packaging scripts already updated so 
+    it should all be seamless to the end user.
+
+  * ffprobe code fixed for media that is either problematic or imperfect. stdout 
+    and stderr streams separated for ffprobe calls, thus fixing ffprobe JSON parsing
+    errors and allowing the addition of the new .WTV media file format.
+
+  * Minor changes/improvements to a few other front panel buttons w/ pressed states
+    where previously unavailable + minor cosmetic improvements to color schemes
+    of hover/active state buttons
+
+  * Linux desktop and appdata metadata files switched to reverse domain
+    notation file names as per freedesktop.org specs
+
+  * Fullscreen mode rewrite for Qt 5.10 changes + better support in wayland.
+
+  * OpenGL helpers added to X11 and Wayland based Linux platforms to better
+    assist with fullscreen functionality and video render compatibility any
+    where an OpenGL context can be created.
+
+  * Updated keyboard shortcuts information to include some added keyboard
+    and mouse based shortcuts.
+
+  * Defined cutting regions shown on the timeline are now hidden during
+    the "generating thumbnails" process (mainly evident when turning
+    thumbnails on/off or resizing the application's window)
+
+  * Better detection and prompting if application exit is attempted while
+    video processing jobs in progress, if user decides to continue quitting
+    then kill all VidCutter associated jobs gracefully and force the usual
+    cleanup routines
+
+ -- Pete Alexandrou <pete@ozmartians.com>  Mon, 05 Feb 2018 08:34 +0800
+
 vidcutter (5.0.5-2) stable; urgency=medium
 
   * fixed timeline slider tooltip displaying time position to only appear
     when mouse is over the slider widget. this stops it from constantly
     appearing whenever media position changes like during simple playback
+
+ -- Pete Alexandrou <pete@ozmartians.com>  Thu, 30 Nov 2017 11:45:00 +0800
 
 vidcutter (5.0.5-1) stable; urgency=medium
 
@@ -14,6 +94,8 @@ vidcutter (5.0.5-1) stable; urgency=medium
     a supported distro version so it should be okay to omit on a
     permanent basis.
 
+ -- Pete Alexandrou <pete@ozmartians.com>  Thu, 30 Nov 2017 09:20:00 +0800
+
 vidcutter (5.0.0-1) stable; urgency=medium
 
   * SmartCut feature introduced for frame accurate cuts; beginning and end
@@ -24,10 +106,10 @@ vidcutter (5.0.0-1) stable; urgency=medium
     interface. SmartCut can take up to 2 mins vs a few seconds so use it
     only if frame accuracy is a requirement
 
-  * new progress bars on clips in timeline to visualise video processing in 
+  * new progress bars on clips in timeline to visualise video processing in
     more accurate and modern way
 
-  * thumbnail generation accuracy fixed so thumbnails generated accurately 
+  * thumbnail generation accuracy fixed so thumbnails generated accurately
   	match frame with timecode placement
 
   * new "View keyframes" button option available under Video Info which
@@ -39,7 +121,7 @@ vidcutter (5.0.0-1) stable; urgency=medium
 
   * improvements to stream mapping to help ensure all source media's
   	streams (video, audio, text/subtitles) are included in the target
-  	video produced. only if problems are found during the cut/join 
+  	video produced. only if problems are found during the cut/join
   	process will this be abandoned and FFmpeg then allowed to make its
   	usual "best choice" in choosing the best streams for you
 
@@ -62,6 +144,16 @@ vidcutter (5.0.0-1) stable; urgency=medium
   * countless more improvements and fixes that aren't worth documenting but
   	available in the freely available commit logs if you're interested
 
+ -- Pete Alexandrou <pete@ozmartians.com>  Thu, 16 Nov 2017 00:22:00 +0800
+
+vidcutter (4.0.5-1) stable; urgency=high
+
+  * fix for 32-bit Linux users; the switch to OpenGL rendering
+    broke 32-bit under Linux only due to Python to C data type
+    conversions in the Python interpreter which have been resolved.
+
+ -- Pete Alexandrou <pete@ozmartians.com>  Wed, 15 Aug 2017 18:05:00 +0800
+
 vidcutter (4.0.0-1) stable; urgency=medium
 
   * pure OpenGL rendered window output
@@ -70,11 +162,12 @@ vidcutter (4.0.0-1) stable; urgency=medium
 
   * improved checks and changes to join and merge routines
 
-  * TBA ... more changelog data inserted soon
+  * TBA ... more changelog data inserted soon, this is the biggest
+    release in app's history so the full list is going to be big...
+
+ -- Pete Alexandrou <pete@ozmartians.com>  Thu, 02 Aug 2017 21:37:00 +0800
 
 vidcutter (3.5.0-1) stable; urgency=medium
-
- * changelog added to AUR package; copied from the app's Debian build scripts
 
  * redesigned timeline & slider with timecode labels at fixed intervals as per
    regular video editors
@@ -208,7 +301,8 @@ vidcutter (3.2.0-1) stable; urgency=medium
     disturb the user if an update has been released AND it has been at least one
     week since the last time updates were checked for.
 
- * new startup graphic.
+ * new graphic + version number exposed on startup view within the player
+   component.
 
  * new look dialogs including updater and about.
 
@@ -326,4 +420,3 @@ vidcutter (2.0.0-1) unstable; urgency=low
   * source package automatically created by stdeb 0.8.5
 
  -- Pete Alexandrou <pete@ozmartians.com>  Mon, 02 Jan 2017 08:41:42 +0800
- 
