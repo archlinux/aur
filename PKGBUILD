@@ -19,9 +19,11 @@ optdepends=('ihaskell-git: support for Haskell'
 install=$pkgname.install
 
 source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v0.7.0/nteract_0.7.0_amd64.deb"
-        "LICENSE")
+        #"LICENSE"
+	)
 sha256sums=('76c370fa68f28a9c5f698fd4e88c2b56b4efa86531622f0c5a92f4911e3ff8f6'
-            '9810f3d57c552d3b3f6c82cb3b6f3402d6faf94fc5a63067fe28360fb3b8b688')
+            #'9810f3d57c552d3b3f6c82cb3b6f3402d6faf94fc5a63067fe28360fb3b8b688'
+	    )
 
 prepare() {
   gendesk -f -n --name="${_pkgname}" --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Development"
@@ -47,9 +49,9 @@ package() {
   cp -R "${srcdir}/usr/share/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
 
   # Place license files
-  for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
-    install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
-    rm "${pkgdir}/usr/lib/${_pkgname}/${license}"
-  done
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  #for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
+  #  install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
+  #  rm "${pkgdir}/usr/lib/${_pkgname}/${license}"
+  #done
+  #install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
