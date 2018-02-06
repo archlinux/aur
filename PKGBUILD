@@ -2,7 +2,7 @@
 # Thanks to Adria Arrufat <swiftscythe@gmail.com>
 
 pkgname=clementine-qt5-git
-pkgver=1.3.1.r359.g987aa20b9
+pkgver=1.3.1.r497.g4c29c00e1
 pkgrel=1
 pkgdesc="Experimental Qt5 version of Clementine, a modern music player and library organiser."
 arch=('i686' 'x86_64')
@@ -27,8 +27,9 @@ optdepends=(
 
 url="http://www.clementine-player.org/"
 source=('git+https://github.com/clementine-player/Clementine.git#branch=qt5'
-        'spotify_install.patch')
-sha256sums=('SKIP' '05a438fb445790200258c536d396a6bda9df38a9b775d5259421376ec1878786')
+        'spotify_install.patch' 'spotify_blob.patch')
+sha256sums=('SKIP' '05a438fb445790200258c536d396a6bda9df38a9b775d5259421376ec1878786'
+            '440b7e0b9b70d3e379ec9404eb09c8eca584188d81269904fd57375671a74a8e')
 
 provides=('clementine')
 conflicts=('clementine' 'clementine-lxqt' 'clementine-git')
@@ -42,7 +43,7 @@ pkgver() {
 
 prepare() {
   cd Clementine
-  git revert -n 170c64cd8bef9df2ea88dd4f72eec641c250bcfd
+  git am --signoff -k < ../spotify_blob.patch
   patch -Np0 -i ../spotify_install.patch
 }
 
