@@ -1,0 +1,1 @@
+* * * * *    agent    /usr/bin/python /usr/bin/panopta-agent/panopta_agent.py --from-cron &> /dev/null

@@ -1,0 +1,19 @@
+pkgbase = panopta-agent
+	pkgdesc = Panopt agent
+	pkgver = 2018.06.3
+	pkgrel = 1
+	url = https://my.panopta.com
+	install = panopta-agent.install
+	arch = any
+	license = custom
+	depends = python2
+	depends = cronie
+	source = http://packages.panopta.com/tar/panopta-agent-tarball-latest.tar.gz
+	source = panopta-agent.cron
+	source = license.txt
+	md5sums = a279617492c7566d6444d3f46b1cdae7
+	md5sums = 9b2e7feea2a4b4d0ff3ac4b828eaa8bb
+	md5sums = 2a657feea0ec01bf57ffad93686ea9c2
+
+pkgname = panopta-agent
+

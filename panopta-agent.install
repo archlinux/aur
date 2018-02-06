@@ -1,0 +1,22 @@
+post_install() {
+    # Add agent user
+    if ! (id agent > /dev/null 2>&1 ); then useradd -s /bin/false agent; fi
+    # Change owner of needed directories to the agent user
+    chown -R agent /usr/lib/panopta-agent
+    chown -R agent /usr/bin/panopta-agent
+    chown -R agent /var/lib/panopta-agent
+
+    # Perform the install handshake
+    python2 /usr/bin/panopta-agent/panopta_agent.py --install
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # The agent will leave behind .pyc files, so we need to clear this out manually
+    rm -rf /usr/lib/panopta-agent
+    # Remove agent user
+    if (id agent > /dev/null 2>&1 ); then userdel agent; fi
+}
