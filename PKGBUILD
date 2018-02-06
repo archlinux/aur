@@ -6,7 +6,7 @@
 _pkgbase=glfw
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-x11-git" "$_pkgbase-wayland-git")
-pkgver=3.2.1.r479.g973bf296
+pkgver=3.2.1.r502.gae53cd29
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.glfw.org/"
