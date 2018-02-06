@@ -30,7 +30,7 @@ build() {
   cd "$srcdir/astroid"
   mkdir -p build
   cd build
-  cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release
+  cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   ninja
 }
 
