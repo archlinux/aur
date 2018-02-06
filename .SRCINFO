@@ -1,0 +1,15 @@
+pkgbase = qgmailnotifier
+	pkgdesc = Portable Qt5 based GMail notifier
+	pkgver = 2014.2
+	pkgrel = 1
+	url = https://github.com/eteran/qgmailnotifier
+	arch = x86_64
+	license = GPL
+	depends = qt5-svg
+	source = qgmailnotifier-2014.2.tar.gz::https://github.com/eteran/qgmailnotifier/archive/2014.2.tar.gz
+	source = qgmailnotifier.desktop
+	sha256sums = 16dd31826ddeb09a4316d55c362a64f9f028f5e72a12dedfe54746f65bbc7226
+	sha256sums = d3c5dd85d3b7211e877ccce1f3668bdcfa06b48b30a9fb3b3acb62c1c0fc49f6
+
+pkgname = qgmailnotifier
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=QGmailNotifier
+Comment=GMail notifier
+Exec=qgmailnotifier
+Icon=qgmailnotifier
+Categories=Network;Email;
