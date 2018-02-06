@@ -1,7 +1,7 @@
 pkgbase = man-pages-tr
 	pkgdesc = A collection of Turkish translations of Linux manual pages
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/belgeler/
 	arch = any
 	license = GPL
