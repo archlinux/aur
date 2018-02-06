@@ -104,13 +104,7 @@ double* morningstar_get_price(char* ticker_name_string) {
     ts = localtime(&now);
     mktime(ts);
     strftime(today_char, 16, "%Y-%m-%d", ts);
-    if (ts->tm_wday == 0 || ts->tm_wday == 1) //if sunday or monday
-        ts->tm_mday -= 3;
-    else if (ts->tm_wday == 6) //if saturday
-        ts->tm_mday -= 2;
-    else ts->tm_mday--;
-    if (ts->tm_hour <= 16 && ts->tm_wday != 0 && ts->tm_wday != 7) //if before market close and not weekend
-        ts->tm_mday--;
+    ts->tm_mday -= 7; //get info from past 7 days
     mktime(ts);
     strftime(yesterday_char, 16, "%Y-%m-%d", ts);
     char* morningstar_api_string = calloc(512, 1);
@@ -129,12 +123,13 @@ double* morningstar_get_price(char* ticker_name_string) {
         return NULL;
     }
     double* ret = malloc(sizeof(double) * 2);
-    Json* current = json_object_object_get(json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0),
-                                           "Datapoints");
-    Json* today = json_object_array_get_idx(json_object_array_get_idx(current, 1), 0);
+    Json* datapoints = json_object_object_get(
+            json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0), "Datapoints");
+    size_t size = json_object_array_length(datapoints);
+    Json* today = json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 1), 0); //latest day of data will be in last array index
     char* price = (char*) json_object_to_json_string(today);
     ret[0] = strtod(price, NULL); //Last close price
-    Json* yesterday = json_object_array_get_idx(json_object_array_get_idx(current, 0), 0);
+    Json* yesterday = json_object_array_get_idx(json_object_array_get_idx(datapoints, size - 2), 0);
     price = (char*) json_object_to_json_string(yesterday);
     ret[1] = strtod(price, NULL); //Close price before last close price
     json_object_put(jobj);
@@ -206,7 +201,8 @@ void json_print_news(Json* jobj) {
     for (int i = 0; i < results && i < 3; i++) {
         article = json_object_array_get_idx(article_list, (size_t) i);
         author_string = (char*) strip_char(
-                (char*) json_object_to_json_string(json_object_object_get(article, "author")), '\\'); //Strip all attributes of backslashes
+                (char*) json_object_to_json_string(json_object_object_get(article, "author")),
+                '\\'); //Strip all attributes of backslashes
         title_string = (char*) strip_char(
                 (char*) json_object_to_json_string(json_object_object_get(article, "title")), '\\');
         source_string = (char*) strip_char((char*) json_object_to_json_string(

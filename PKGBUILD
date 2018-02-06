@@ -1,7 +1,7 @@
 # Maintainer: Antony Kellermann <aokellermann@gmail.com>
 
 pkgname=tick
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Command line stock and cryptocurrency portfolio tracker."
 arch=('x86_64')
