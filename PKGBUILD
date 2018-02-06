@@ -4,8 +4,8 @@
 # Maintainer: Nekmo <contacto@nekmo.com>
 _pkgname="amazon-dash"
 pkgname="${_pkgname}-git"
-source=("$_pkgname::git+https://github.com/Nekmo/amazon-dash.git#branch=v0.4.0")
-pkgver=v0.3.3.r21.g6bf9a33
+source=("$_pkgname::git+https://github.com/Nekmo/amazon-dash.git")
+pkgver=v0.4.0.r0.g17672a1
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
