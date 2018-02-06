@@ -14,7 +14,7 @@ license=('custom:ZLIB')
 optdepends=('doxygen: build glfw html documentation')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'wayland-protocols' 'libxkbcommon' 'libgl')
 conflicts=("$_pkgbase")
-provides=("$_pkgbase=3.2")
+provides=("$_pkgbase=3.3")
 source=("$_pkgbase::git+https://github.com/glfw/glfw")
 md5sums=('SKIP')
 
