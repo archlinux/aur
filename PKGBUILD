@@ -3,7 +3,7 @@
 
 pkgbase=tensorflow-git
 pkgname=(tensorflow-git tensorflow-cuda-git python-tensorflow-git python-tensorflow-cuda-git)
-pkgver=1.5.0+rc1+1320+g6e6c7e9545
+pkgver=1.5.0+2146+g283f03c825
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
@@ -37,6 +37,9 @@ prepare() {
   export TF_NEED_MPI=0
   export TF_NEED_S3=0
   export TF_NEED_OPENCL_SYCL=0
+  export TF_NEED_KAFKA=0
+  export TF_NEED_TENSORRT=0
+  export TF_SET_ANDROID_WORKSPACE=0
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
