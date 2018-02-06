@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=GoLand
+Name=GoLand EAP
 Icon=/opt/goland-eap/bin/goland.png
 Exec="/opt/goland-eap/bin/goland.sh" %f
 Comment=The Drive to Develop

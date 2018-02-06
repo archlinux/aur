@@ -3,7 +3,7 @@
 pkgbase=goland-eap
 _pkgbase=goland
 pkgname=(goland-eap goland-eap-jre)
-pkgver=181.2784.36
+pkgver=181.3263.27
 pkgrel=1
 pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
@@ -13,8 +13,8 @@ makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/go/${_pkgbase}-${pkgver}.tar.gz
         jetbrains-goland-eap.desktop)
-sha512sums=('ee6a56e6001f006f015b7a00c25938141d7d0deeda39f61bccfd6add77745d1414d93997f4f20e5a1a95c9516963de4cce6e6e38ae9e73e9b665b9815dace5d8'
-            'fc3f13133e8e9d68d351e9f628f9424c5aec5a323d92c6356ad2a44be69fbf947f3aa458e48139108b0ac2b71bbb9271506b8d91a76f46f7d32cdadf6d8fa962')
+sha512sums=('5e8b93da3e7a97b30fb8ff43f0ba6cb80c9535eeaec51dd7256a43e0192264fd3a9ff92bca442925c122360c0b910c975b358d424f610d9ff25008ac06249221'
+            '23048f7fe57ff86e45ff62f047903f0ad976382084b93c86ba5d5991813f62771e901c365101471a6f42d4cd55f33532175223fce3f1c152edcadd0d3404e0ef')
 
 package_goland-eap() {
   optdepends=('goland-eap-jre: JetBrains custom Java Runtime (Recommended)'
