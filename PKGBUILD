@@ -13,6 +13,7 @@ optdepends=('ncurses5-compat: For ncurses formatted screen output'
             'opencl-nvidia: OpenCL implementation for NVIDIA'
             'opencl-catalyst: OpenCL implementation for AMD')
 provides=('sgminer')
+conflicts=('sgminer-gm')
 source=("${pkgname}::git+https://github.com/nicehash/sgminer.git")
 sha512sums=('SKIP')
 
@@ -34,6 +35,5 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname"
-    msg2 "You should consider using something different than this miner. It wasn't updated since 2015!"
     make DESTDIR="$pkgdir" install 
 }

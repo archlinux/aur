@@ -17,6 +17,7 @@ pkgbase = sgminer
 	optdepends = opencl-nvidia: OpenCL implementation for NVIDIA
 	optdepends = opencl-catalyst: OpenCL implementation for AMD
 	provides = sgminer
+	conflicts = sgminer-gm
 	source = sgminer::git+https://github.com/nicehash/sgminer.git
 	sha512sums = SKIP
 
