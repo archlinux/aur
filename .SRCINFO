@@ -1,0 +1,18 @@
+pkgbase = gforth-git
+	pkgdesc = Gforth is the Forth implementation of the GNU project.
+	pkgver = 20180206
+	pkgrel = 1
+	url = https://www.gnu.org/software/gforth
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = make
+	makedepends = git
+	makedepends = gforth
+	provides = gforth
+	conflicts = gforth
+	source = git+https://git.savannah.gnu.org/git/gforth.git
+	md5sums = SKIP
+
+pkgname = gforth-git
+
