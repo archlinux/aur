@@ -2,13 +2,13 @@
 
 pkgname=lyx-git
 _pkgname=lyx
-pkgver=2.3.0beta1.r682.gfe00302403
+pkgver=2.3.0beta1.r745.g92990adc23
 pkgrel=1
 pkgdesc="An advanced WYSIWYM document processor & LaTeX front-end"
 arch=('i686' 'x86_64')
 url="http://www.lyx.org"
 license=('GPL')
-depends=(qt5-svg qt5-base python imagemagick enchant boost-libs libmythes file)
+depends=(qt5-svg qt5-base python imagemagick enchant python2-pyenchant python-pyenchant boost-libs libmythes file)
 makedepends=(glibc qt5-base git autoconf automake gcc bc)
 optdepends=(texlive-core rcs texlive-latexextra)
 provides=('lyx')
@@ -27,7 +27,8 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	./autogen.sh && ./configure --enable-qt5 --without-enchant --prefix=/usr 
+#	./autogen.sh && ./configure --enable-qt5 --without-enchant --prefix=/usr 
+	./autogen.sh && ./configure --enable-qt5 --prefix=/usr 
 	make -j4
 }
 
