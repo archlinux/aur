@@ -33,9 +33,9 @@ package() {
 
     # Copy cron file
     mkdir -p "$pkgdir/etc/cron.d"
-    mv "$srcdir/$pkgname.cron" "$pkgdir/etc/cron.d/$pkgname"
+    install -Dm644 "$srcdir/$pkgname.cron" "$pkgdir/etc/cron.d/$pkgname"
 
     # Copy license
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-    mv "$srcdir/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+    install -Dm644 "$srcdir/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
