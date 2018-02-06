@@ -1,0 +1,123 @@
+Change history of the rnxcmp AUR package
+
+ 2018-02-06
+   - Initial package 4.0.7
+
+Change history of the RNXCMP software
+
+ 2016-04-14
+   - Version 4.0.7 released.
+   - Licence policy is changed to apply Geospatial Information 
+     Authority of Japan Website Terms of Use. Read Licence.txt.
+
+ 2015-02-19
+   - The values of the following constants are increased:
+        MAXSAT        90     -> 100
+        MAXTYPE       50     -> 100
+        MAXCLM        1024   -> 2048
+        MAX_BUFF_SIZE 131072 -> 204800
+
+ 2014-03-24
+   - Version 4.0.6 released.
+   - Fixing a bug in crx2rnx.c. in outputting epoch lines in case there 
+     are skipped epochs when a corrupted Compact RINEX ver. 3 files 
+     are processed with the option "-s".      
+   - check and stop with an error if value of data exceed the range 
+     allowd in RINEX format (crx2rnx.c).
+   - Manipulation of file names in the new file naming convention
+     (*.rnx/crx) is added, except for front-end tools for DOS. 
+
+ 2012-07-18
+   - Version 4.0.5 released.
+   - Fixing a bug in rnx2crx.c. A variable "dummy" is initialized.
+   - Fixing a bug in displaying error message(#16)
+   - Checking length of input file name
+   - Minor changes to suppress warning messages at compilation.
+
+ 2009-09-08
+   - Due to a bug in the front-end tool RNX2CRZ, output file name 
+     for *.yy[Oo] files were in correct. RNX2CRZ is just replaced 
+     to the bug-fixed one without updating version ID.
+     Thanks to Huib de Ligt for notice and suggestion.
+
+ 2009-07-07
+   - Version 4.0.4 released.
+   - The function "getline" is renamed "ggetline" to avoid confliction 
+      with that referenced in stdio in gcc 4.4. (rnx2crx.c)
+   - A truncatad CRINEX file can have no LF character in the last line.
+     former versions of CRX2RNX crash with core dumping in such cases.
+     This problem is solved by checking null pointer in the macro
+     CHOP_LF to skip when LF is not found. (crx2rnx.c)
+     Thank to Jelemy Palmer for notice and suggestion.
+   - MAXTYPE is increased from 30 to 50 (crx2rnx.c)
+   - correction of typos in error messages.
+   - UNIX front-end tools RNX2CRZ and CRZ2RNX were extensively
+     modified. Resolution of te following ambiguities/bugs in the 
+     previous vresions are major changes:
+        * setting of output directory (default: the same directory
+          as that of the input file)
+        * case of deletion of input files (default: preserve)
+        * case of overwriting an output file (default: inquiring) 
+     Options to control them are added.
+     Users should be careful about it, since, in some cases, the 
+     behavior of the new tools can be different from that of 
+     the old ones concernning for these aspects. 
+   - The UNIX and DOS front-end tools can handle more RINEX file types.
+   - Documentations of the Compact RINEX format (crinex1.0.txt and
+     crinex3.0.txt) are removed from the distribution packages.
+     The following paper is now avairable for the details of the compression
+     format and the developement design of the software:
+      Hatanaka, Y. (2008), A Compression Format and Tools for GNSS Observation
+          Data, Bulletin of the Geospatioal Information Authority of Japan, 55,
+          21-30, available at http://www.gsi.go.jp/ENGLISH/Bulletin55.html.
+
+
+2007-06-21
+  - Version 4.0.3 released by fixing a bug.
+  - It was found that crx2rnx.c version 4.0.0-4.0.2 contains 
+    a serious bug which may output incorrect or corrupted data 
+    due to lack of a procedure to prevent overflow of lower digits
+    of data (or its difference) in middle of the recovering operation.
+    The overflow does not happen at the begining of data arcs, but
+    probability of it increases as many epochs are processed for 
+    a data arc without initialization. Therefore, The higher the 
+    sampling rate is, the easier the overflow happens.
+  - Rnx2crx.c is free from the above bug, but the version of it was 
+    also updated to become the same as crx2rnx.c.
+
+2007-06-10
+  Following changes were made on the front-end tools
+  (suggested by Mike Craymer of Natural Resources Canada)
+  - "compress" command appears in the tool CRZ2RNX was an
+    error and corrected to "uncompress".
+  - modified to accept upper case in the extention of file names.
+
+2007-06-08
+  - Version 4.0.2 released.
+  - Incompatibility between arguments and format strings of sscanf 
+    or sprintf was fixed. This bug was contained in rnx2crx.c 
+    and crx2rnx.c of version 4.0.0 and 4.0.1, and may disturb
+    output files if the programs are compiled with 16-bit compilers.
+  - A string "ver." was eliminated from the display of the program
+    version in the help messages.
+
+2007-06-06
+  - Version 4.0.1 released.
+  - Supports for VMS and SUN OS 4.1.x was terminated.
+  - In the previous versions, the default output file was created
+    in the "current" directory whatever directory the input file
+    was in. From this version, the output file was created in the
+    same directory as the input file that was specified in the
+    command argument.
+  - The above two modifications made it possible to eliminate 
+    system-dependency of the source codes. The adjustment of
+    the source codes before compilation to switch OS environment
+    (UNIX/DOS) became unnecessary.
+
+2007-02-05
+  - Version 4.0.0 created. (It is a test version.)
+  - Capability of conversion from RINEX version 3.00 to Compact
+    RINEX format version 3.0 (RNX2CRX), and vice versa (CRX2RNX),
+    was implemented. Conversion between RINEX version 2.xx
+    and Compact RINEX format version 1.0 is also possible as before.
+

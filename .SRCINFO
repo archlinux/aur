@@ -1,0 +1,19 @@
+pkgbase = rnxcmp
+	pkgdesc = RNX2CRX and CRX2RNX for compression/restoration of RINEX observation files developed by Y. Hatanaka of GSI
+	pkgver = 4.0.7
+	pkgrel = 1
+	url = http://terras.gsi.go.jp/ja/crx2rnx.html
+	changelog = CHANGES.txt
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	depends = tcsh
+	source = http://terras.gsi.go.jp/ja/crx2rnx/RNXCMP_4.0.7_src.tar.gz
+	md5sums = 6597988cc92949b3cff861bc9731ca9e
+
+pkgname = rnxcmp
+
