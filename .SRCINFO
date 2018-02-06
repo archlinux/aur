@@ -1,0 +1,13 @@
+pkgbase = tempus-themes-gtksourceview3
+	pkgdesc = Tempus themes for GTK3 syntax highlighting (used in Gedit, Pluma, Xed)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/protesilaos/tempus-themes-gtksourceview3
+	arch = any
+	license = GPL3
+	depends = gtksourceview3
+	source = tempus-themes-gtksourceview3-0.1.0.tar.gz::https://github.com/protesilaos/tempus-themes-gtksourceview3/archive/0.1.0.tar.gz
+	sha512sums = db49024f0ded89016676ae78feb9d24fbf6d6b8d3b1203969a97ee73d203f36c9f1e8a387852634aa56a1a347e54a9d6da44d06927e9e40b31c1d001386b2466
+
+pkgname = tempus-themes-gtksourceview3
+
