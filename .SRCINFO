@@ -1,14 +1,14 @@
 pkgbase = sonarqube-lts
 	pkgdesc = An open source platform for continuous inspection of code quality
 	pkgver = 6.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sonarqube.org/
 	install = sonarqube-lts.install
 	arch = x86_64
 	license = LGPL3
 	depends = java-runtime>=8
 	optdepends = apache: a fully featured webserver
-	optdepends = mariadb: Fast SQL database server, drop-in replacement for MySQL
+	optdepends = mysql: Fast SQL database server, community edition
 	optdepends = maven: a java project management and project comprehension tool
 	optdepends = postgresql: A sophisticated object-relational DBMS
 	provides = sonarqube

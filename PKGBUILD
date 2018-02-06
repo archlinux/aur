@@ -3,16 +3,16 @@
 _pkgname=sonarqube
 pkgname=${_pkgname}-lts
 pkgver=6.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source platform for continuous inspection of code quality"
-arch=("x86_64")
+arch=('x86_64')
 url="http://www.sonarqube.org/"
 license=('LGPL3')
 
 depends=('java-runtime>=8')
 
 optdepends=('apache: a fully featured webserver'
-            'mariadb: Fast SQL database server, drop-in replacement for MySQL'
+            'mysql: Fast SQL database server, community edition'
             'maven: a java project management and project comprehension tool'
             'postgresql: A sophisticated object-relational DBMS')
 
