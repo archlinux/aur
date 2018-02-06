@@ -7,8 +7,8 @@ pkgbase = blender-plugin-blam
 	license = GPL
 	makedepends = coreutils
 	depends = blender
-	source = http://stuffmatic.github.com/downloads/blam/blam_0.6.zip
-	md5sums = 40a1e3eb94faa8e4ec6c9ea41cf8a35b
+	source = https://github.com/stuffmatic/blam/archive/v0.6.zip
+	md5sums = SKIP
 
 pkgname = blender-plugin-blam
 

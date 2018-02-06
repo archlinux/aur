@@ -1,3 +1,5 @@
+# Maintainer: Aquarius <aaquarius24@yandex.ru>
+
 pkgname=blender-plugin-blam
 pkgver=1
 pkgrel=1
@@ -9,11 +11,11 @@ license=('GPL')
 depends=('blender')
 makedepends=('coreutils')
 conflicts=()
-source=(http://stuffmatic.github.com/downloads/blam/blam_0.6.zip)
-md5sums=(40a1e3eb94faa8e4ec6c9ea41cf8a35b)
+source=(https://github.com/stuffmatic/blam/archive/v0.6.zip)
+md5sums=(SKIP)
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/blam-0.6/src/"
   mkdir -p "$pkgdir/usr/share/blender/$_blender/scripts/addons/"
-  cp blam.py "$pkgdir/usr/share/blender/$_blender/scripts/addons/"
+  cp * "$pkgdir/usr/share/blender/$_blender/scripts/addons/"
 }
