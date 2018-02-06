@@ -19,20 +19,17 @@ source=("$_pkgbase::git+https://github.com/glfw/glfw")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgbase"
+  cd $_pkgbase
   git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  mkdir -p "$srcdir/$_pkgbase/build-x11"
-  mkdir -p "$srcdir/$_pkgbase/build-wayland"
+  mkdir -p $_pkgbase/build-x11
+  mkdir -p $_pkgbase/build-wayland
 }
 
-package_glfw-x11-git() {
-  depends=('libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'libgl')
-  pkgdesc="A free, open source, portable framework for OpenGL application development. (git, X11 version)"
-
-  cd "$srcdir/$_pkgbase/build-x11"
+build() {
+  cd $_pkgbase/build-x11
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
@@ -40,14 +37,9 @@ package_glfw-x11-git() {
     -DGLFW_BUILD_TESTS=OFF \
     -Wno-dev \
     ..
-  make DESTDIR="$pkgdir" install
-}
+  make
 
-package_glfw-wayland-git() {
-  depends=('wayland' 'libxkbcommon' 'libgl')
-  pkgdesc="A free, open source, portable framework for OpenGL application development. (git, Wayland version)"
-
-  cd "$srcdir/$_pkgbase/build-wayland"
+  cd ../build-wayland
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
@@ -56,6 +48,22 @@ package_glfw-wayland-git() {
     -DGLFW_USE_WAYLAND=ON \
     -Wno-dev \
     ..
+  make
+}
+
+package_glfw-x11-git() {
+  depends=('libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'libgl')
+  pkgdesc="A free, open source, portable framework for OpenGL application development. (git, X11 version)"
+
+  cd $_pkgbase/build-x11
+  make DESTDIR="$pkgdir" install
+}
+
+package_glfw-wayland-git() {
+  depends=('wayland' 'libxkbcommon' 'libgl')
+  pkgdesc="A free, open source, portable framework for OpenGL application development. (git, Wayland version)"
+
+  cd $_pkgbase/build-wayland
   make DESTDIR="$pkgdir" install
 }
 
