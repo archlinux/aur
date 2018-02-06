@@ -10,7 +10,6 @@ url='https://nteract.io'
 arch=('x86_64')
 license=('BSD-3-Clause')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nodejs' 'nss' 'python')
-makedepends=('gendesk')
 optdepends=('ihaskell-git: support for Haskell'
             'julia: support for Julia (requires the "IJulia" package)'
             'python-ipykernel: support for Python 3'
@@ -42,7 +41,8 @@ package() {
   ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Place desktop entry and icons
-  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}.desktop"
+  sed -i 's/opt/usr\/lib/' "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
   install -dm755 "${pkgdir}/usr/share/icons/hicolor/"
   cp -R "${srcdir}/usr/share/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
 
