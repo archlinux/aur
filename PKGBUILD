@@ -2,12 +2,12 @@
 
 pkgname=jetbrains-toolbox
 pkgver=1.6.2914
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage all your JetBrains Projects and Tools'
 arch=('x86_64' 'i686')
 url='http://www.jetbrains.com/toolbox/'
 license=('Commercial')
-depends=('fuse' 'glib2' 'libxslt')
+depends=('fuse' 'glib2' 'libxslt' 'libxss')
 optdepends=('java-environment>=8: use system java'
             'java-runtime-common: use system java')
 options=('!strip')
