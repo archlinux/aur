@@ -3,7 +3,7 @@
 _pkgname=rtorrent
 pkgname=rtorrent-ps
 _pkgver=0.9.6
-pkgver=1.0.r68.g882aa4e
+pkgver=1.0.r180.g66e43c4
 pkgrel=1
 pkgdesc='Extended rTorrent distribution with UI enhancements, colorization, and some added features'
 url='https://github.com/pyroscope/rtorrent-ps'
@@ -27,7 +27,7 @@ source=("https://github.com/rakshasa/$_pkgname/archive/$_pkgver.tar.gz"
         'ps-ui_pyroscope_all.patch'
         'ps-view-filter-by_all.patch'
         'pyroscope.patch'
-        'skip-cppunit.patch'
+        'rt-base-cppunit-pkgconfig.patch'
         'ui_pyroscope.cc'
         'ui_pyroscope.h'
         'ui_pyroscope.patch')
@@ -46,7 +46,7 @@ md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
          '7a88f8ab5d41242fdf1428de0e2ca182'
          '26faff00b306b6ef276a7d9e6d964994'
          'bd04a0699b80c8042e1cf63a7e0e4222'
-         'f69c594c417103744619e29ea06f09aa'
+         'd0a956f0eb4b53b66d83df2a8a4d16dc'
          '21fd4b912ddabe32356eef0a4e87c681'
          '1258acfc82c50a8f452ace87fef0b416'
          '0a2bbaf74c7160ba33876dcc2f050f14')
@@ -59,10 +59,11 @@ prepare() {
   sed -i -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1  AC_DEFINE(RT_HEX_VERSION, "$RT_HEX_VERSION", for CPP if checks):" configure.ac
   grep "AC_DEFINE.*API_VERSION" configure.ac >/dev/null || sed -i -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1  AC_DEFINE(API_VERSION, 0, api version):" configure.ac
 
-  RT_PATCHES=( "$srcdir"/skip-cppunit.patch )
+  RT_BASE_PATCHES=( "$srcdir"/rt-base-cppunit-pkgconfig.patch )
+  RT_PATCHES=( )
 
   # Patch rTorrent
-  for corepatch in $srcdir/ps-*_{${_pkgver},all}.patch "${RT_PATCHES[@]}"; do
+  for corepatch in "${RT_BASE_PATCHES[@]}" $srcdir/ps-*_{${_pkgver},all}.patch "${RT_PATCHES[@]}"; do
     test ! -e "$corepatch" || { msg2 "$(basename $corepatch)"; patch -uNp1 -i "$corepatch"; }
   done
 
@@ -86,8 +87,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --with-xmlrpc-c \
-    --disable-debug \
-    --disable-instrumentation
+    --disable-debug
   make
 }
 
