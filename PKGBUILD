@@ -22,7 +22,7 @@ pkgver() {
 }
 
 package() {
-	install -Dm 755 "$srcdir/$_pkgbase/${_pkgbase//-/_}" "$pkgdir/usr/bin"
+	install -Dm 755 -t "$pkgdir/usr/bin" "$srcdir/$_pkgbase/${_pkgbase//-/_}"
 }
 
 
