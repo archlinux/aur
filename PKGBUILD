@@ -3,7 +3,7 @@
 
 pkgname='xmrig-donateless'
 pkgver='2.4.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='High Perf CPU Miner-No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/xmrig/xmrig"
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "xmrig-${pkgver}/build"
-  cmake .. -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+  cmake .. -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=Release
   make
 }
 

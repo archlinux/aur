@@ -1,7 +1,7 @@
 pkgbase = xmrig-donateless
 	pkgdesc = High Perf CPU Miner-No Donate Version
 	pkgver = 2.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmrig/xmrig
 	arch = x86_64
 	arch = armv7h
