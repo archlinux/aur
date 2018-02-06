@@ -3,10 +3,21 @@ post_install() {
     if ! (id panopta-agent > /dev/null 2>&1 ); then
         useradd -r -d /usr/lib/panopta-agent -s /usr/sbin/nologin panopta-agent;
     fi
+
+    # Create necessary data directories
+    mkdir -p /var/log/panopta-agent
+    mkdir -p /var/lib/panopta-agent
+    mkdir -p /usr/share/panopta-agent
+    mkdir -p /etc/panopta-agent
+
     # Change owner of needed directories to the agent user
     chown -R panopta-agent /usr/lib/panopta-agent
     chown -R panopta-agent /usr/bin/panopta-agent
+
+    chown -R panopta-agent /usr/share/panopta-agent
     chown -R panopta-agent /var/lib/panopta-agent
+    chown -R panopta-agent /var/log/panopta-agent
+    chown -R panopta-agent /etc/panopta-agent
 
     # Perform the install handshake
     python2 /usr/bin/panopta-agent/panopta_agent.py --install

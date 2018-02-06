@@ -1,7 +1,7 @@
 pkgbase = panopta-agent
 	pkgdesc = Panopt agent
 	pkgver = 2018.06.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://my.panopta.com
 	install = panopta-agent.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = panopta-agent
 	source = panopta-agent.cron
 	source = license.txt
 	md5sums = a279617492c7566d6444d3f46b1cdae7
-	md5sums = 9b2e7feea2a4b4d0ff3ac4b828eaa8bb
+	md5sums = 50b8bd64e1111f8adf6ffeb55ed37215
 	md5sums = 2a657feea0ec01bf57ffad93686ea9c2
 
 pkgname = panopta-agent
