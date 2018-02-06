@@ -58,11 +58,12 @@ install=install
 prepare() {
   cd "${srcdir}/${_srcname}"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-  cat "${srcdir}/config" > ./.config
+  cat "${srcdir}/config" - > ./.config <<-EOF
+	CONFIG_LOCALVERSION="${_kernelname}"
+	CONFIG_LOCALVERSION_AUTO=n
+	EOF
   sed -i '2iexit 0' scripts/depmod.sh
-  sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-  sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|g" ./.config
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
   chmod +x tools/objtool/sync-check.sh
   make prepare
 }
@@ -76,7 +77,7 @@ build() {
 package_linux-linode() {
   cd "${srcdir}/${_srcname}"
   _kernver="$(make LOCALVERSION= kernelrelease)"
-  emdir="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  emdir="extramodules-${_basekernel}${_kernelname}"
   mkdir -p "${pkgdir}"/{usr/lib/modules/"$emdir",boot/grub}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
