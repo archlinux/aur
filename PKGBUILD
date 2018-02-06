@@ -22,7 +22,9 @@ pkgver() {
 }
 
 package() {
-	install -Dm 755 -t "$pkgdir/usr/bin" "$srcdir/$_pkgbase/${_pkgbase//-/_}"
+	local execname=${_pkgbase//-/_}
+	install -DTm 755 "$srcdir/$_pkgbase/$execname" "$pkgdir/usr/bin/$execname"
+	ln -sr "$pkgdir/usr/bin/$execname" "$pkgdir/usr/bin/pcd"
 }
 
 
