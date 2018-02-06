@@ -1,0 +1,14 @@
+pkgbase = universal-ctags
+	pkgdesc = A maintained ctags implementation
+	pkgver = git
+	pkgrel = 1
+	url = https://ctags.io
+	arch = x86_64
+	license = GPL-2.0
+	provides = ctags,
+	provides = readtags
+	source = https://github.com/universal-ctags/ctags/archive/master.zip
+	sha256sums = 86632272422be614974e5f8ac9a89bfceeaebe52b83b7de53e5878e3d671514c
+
+pkgname = universal-ctags
+
