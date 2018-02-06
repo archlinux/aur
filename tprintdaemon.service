@@ -1,5 +1,5 @@
 [Unit]
-Description=TurboPrintDaemon
+Description=TurboPrint Daemon
 
 [Service]
 Type=forking

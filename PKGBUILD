@@ -1,82 +1,104 @@
-# Maintainerb
-# Contributor: Daniel Cardenas <thecubeisalie@gmail.com>
-pkgname=turboprint
-pkgver=2.40
-_realpkgver=${pkgver}-1
-pkgrel=1
-pkgdesc="High-quality printer driver system for Linux"
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Tristelune tristelune aat archlinux.info
+# Contributor: Daniel Cardenas thecubeisalie at gmail.com
+
+# TODO: Get rid of /usr/local
+# TODO: Use install_post instead of our own package() commands
+# TODO: Change to supplied tpdaemon.service
+
+# Copyright: TurboPrint for Linux is copyright (c) ZEDOnet GmbH, Sedanstrasse 8, 87600 Kaufbeuren, Germany.
+# All rights reserved. You may not distribute the program files by any means, e.g. on WEB servers,
+# CDs, Linux distributions, etc. without the prior written consent of ZEDOnet GmbH.
+
+set -u
+pkgname='turboprint'
+pkgver='2.44'; _pkgrev='1'
+pkgrel='1'
+pkgdesc='High-quality printer driver system for Linux'
 arch=('i686' 'x86_64')
-url="http://www.turboprint.info/"
+url='http://www.turboprint.info/'
 license=('custom')
 depends=('cups' 'ghostscript')
-makedepends=('pacman>=4.2')
-optdepends=('gimp: For GIMP plugin'
-            'kdelibs: For KDE applet'
-            'gnome-panel-bonobo: For GNOME applet'
-            'libgnomeui: For GNOME applet'
-            'firefox: For browsing help')
+optdepends=(
+  'gimp: For GIMP plugin'
+  'kdelibs: For KDE applet'
+  'gnome-panel-bonobo: For GNOME applet'
+  'libgnomeui: For GNOME applet'
+  'firefox: For browsing help'
+)
+backup=('etc/turboprint/system.cfg')
+options=('!strip')
 install="${pkgname}.install"
-source=("turboprint.desktop"
-        "turboprint-monitor.desktop"
-        "tprintdaemon.service")
-source_i686+=("http://www.turboprint.info/tp2/${pkgname}-${_realpkgver}.i586.tgz")
-source_x86_64+=("http://www.turboprint.info/tp2/${pkgname}-${_realpkgver}.x86_64.tgz")
+source=('turboprint.desktop'
+        'turboprint-monitor.desktop'
+        'tprintdaemon.service')
+_srcdir="${pkgname}-${pkgver}-${_pkgrev}"
+# ftp://ftp.zedonet.com/tp2/turboprint-2.44-1.x86_64.tgz
+# ftp://ftp.zedonet.com/tp2/turboprint-2.44-1.i586.tgz
+# http://www.turboprint.info/tp2/arm/turboprint-2.44-1.ARMhf.tgz
+# ftp://ftp.zedonet.com/tp2/arm/turboprint-2.44-1.ARMhf.tgz
+source_i686=("http://www.turboprint.info/tp2/${_srcdir}.i586.tgz")
+source_x86_64=("http://www.turboprint.info/tp2/${_srcdir}.x86_64.tgz")
 md5sums=('e3c504b2c1b7deb01d03fde710b117d7'
          '60a1754b2abd30e75e51acd9576cda43'
-         '4965b03fdb3c57282f74b0d79a66c6ef')
-md5sums_i686=('cf37916b5aa048a6c524e63dbad5ffb4')
-md5sums_x86_64=('775506a50c1faf6cb7b7d55312f3c3b4')
+         '2640e1d95c3579d6cef590d18b4476df')
+md5sums_i686=('ce35e359a863f6e44de115501ffecdbe')
+md5sums_x86_64=('450d17952aec5f4982e09d587fc1fa31')
+sha256sums=('c90e4f71a234dc0638d15305184daeed212ebf1f7efc2f5a2a09895ca09bea6d'
+            'de0c92b665150ceaf33c3cfd94b0afb422609194db9416aff59add5123bb8a2f'
+            'a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad')
+sha256sums_i686=('8ae2795d2cd67c636b340f1660d3350f4173600a828f1d67f985fd27c8fc2bf6')
+sha256sums_x86_64=('f5ae087cdd87ae08cfa8a5769f0ccb2c422df862cac36a31b49189dc7091345b')
 
-build() {
-  [ -f "${srcdir}/${pkgname}-${_realpkgver}.${_arch}.tar" ] && bsdtar -xf "${srcdir}/${pkgname}-${_realpkgver}.${_arch}.tar"
-  cd "${srcdir}/${pkgname}-${_realpkgver}"
-  sed -i 's#^TPDAEMON_USER=lp$#TPDAEMON_USER=root#' system.cfg
-  if ! grep TP_CUPS=1 system.cfg > /dev/null; then
-    echo TP_CUPS=1 >> system.cfg
+prepare() {
+  set -u
+  cd "${_srcdir}"
+  sed -e 's#^\(TPDAEMON_USER\)=.*$#\1=root#' -i 'system.cfg'
+  if ! grep -qe '^TP_CUPS=1' 'system.cfg'; then
+    echo 'TP_CUPS=1' >> 'system.cfg'
   fi
+  set +u
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_realpkgver}"
-  RPM_BUILD_ROOT="${pkgdir}" lib/install-static --rpm
+  set -u
+  cd "${_srcdir}"
+  RPM_BUILD_ROOT="${pkgdir}" 'lib/install-static' --rpm
 
   # Install icons
-  install -D -m644 img/tpapplet.png "${pkgdir}/usr/share/pixmaps/tpapplet.png"
-  install -D -m644 img/tpicon.png "${pkgdir}/usr/share/pixmaps/tpicon.png"
-  install -D -m644 img/tpmonitor.png "${pkgdir}/usr/share/pixmaps/tpmonitor.png"
+  install -Dpm644 'img/tpapplet.png' 'img/tpicon.png' 'img/tpmonitor.png' -t "${pkgdir}/usr/share/pixmaps"
 
   # Install desktop entries
-  install -D -m644 "${srcdir}/turboprint.desktop" "${pkgdir}/usr/share/applications/turboprint.desktop"
-  install -D -m644 "${srcdir}/turboprint-monitor.desktop" "${pkgdir}/usr/share/applications/turboprint-monitor.desktop"
+  install -Dpm644 "${srcdir}/turboprint.desktop" "${srcdir}/turboprint-monitor.desktop" -t "${pkgdir}/usr/share/applications/"
 
   # Install license
-  install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  (cd "${pkgdir}/usr/share/licenses/${pkgname}" && ln -sf "../../${pkgname}/locale/license_en.txt" "LICENSE")
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "../../${pkgname}/locale/license_en.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Install daemon
-  install -D -m644 "${srcdir}/tprintdaemon.service" "${pkgdir}/usr/lib/systemd/system/tprintdaemon.service"
+  install -Dpm644 "${srcdir}/tprintdaemon.service" -t "${pkgdir}/usr/lib/systemd/system/"
 
   # Install CUPS components
-  install -D -m755 "${pkgdir}/usr/lib/turboprint/pstoturboprint" "${pkgdir}/usr/lib/cups/filter/pstoturboprint"
-  install -D -m755 "${pkgdir}/usr/lib/turboprint/commandtoturboprint" "${pkgdir}/usr/lib/cups/filter/commandtoturboprint"
-  install -D -m755 "${pkgdir}/usr/lib/turboprint/tpu" "${pkgdir}/usr/lib/cups/backend/tpu"
+  install -Dpm755 "${pkgdir}/usr/lib/turboprint"/{pstoturboprint,commandtoturboprint} -t "${pkgdir}/usr/lib/cups/filter/"
+  install -Dpm755 "${pkgdir}/usr/lib/turboprint/tpu" -t "${pkgdir}/usr/lib/cups/backend/"
 
   # Install GIMP plugin
-  install -D -m755 "${pkgdir}/usr/lib/turboprint/gimpplugin/gpturboprint" "${pkgdir}/usr/lib/gimp/2.0/plug-ins/gpturboprint"
-  install -D -m644 "${pkgdir}/usr/lib/turboprint/gimpplugin/de.gmo" "${pkgdir}/usr/local/share/locale/de/LC_MESSAGES/gpturboprint.mo"
-  install -D -m644 "${pkgdir}/usr/lib/turboprint/gimpplugin/papers.xml" "${pkgdir}/usr/local/share/gpturboprint/1.1.11/xml/papers.xml"
-  install -D -m644 "${pkgdir}/usr/lib/turboprint/gimpplugin/printers.xml" "${pkgdir}/usr/local/share/gpturboprint/1.1.11/xml/printers.xml"
+  install -Dpm755 "${pkgdir}/usr/lib/turboprint/gimpplugin/gpturboprint" -t "${pkgdir}/usr/lib/gimp/2.0/plug-ins/"
+  install -Dpm644 "${pkgdir}/usr/lib/turboprint/gimpplugin/de.gmo" "${pkgdir}/usr/local/share/locale/de/LC_MESSAGES/gpturboprint.mo"
+  install -Dpm644 "${pkgdir}/usr/lib/turboprint/gimpplugin"/{papers,printers}.xml -t "${pkgdir}/usr/local/share/gpturboprint/1.1.11/xml/"
 
   # Install KDE applet
-  install -D -m644 "${pkgdir}/usr/lib/turboprint/kde42applet/plasma-applet-turboprint.desktop" "${pkgdir}/usr/share/kde4/services/plasma-applet-turboprint.desktop"
-  install -D -m755 "${pkgdir}/usr/lib/turboprint/kde42applet/plasma_applet_turboprint.so" "${pkgdir}/usr/lib/kde4/plasma_applet_turboprint.so"
+  install -Dpm644 "${pkgdir}/usr/lib/turboprint/kde42applet/plasma-applet-turboprint.desktop" -t "${pkgdir}/usr/share/kde4/services/"
+  install -Dpm755 "${pkgdir}/usr/lib/turboprint/kde42applet/plasma_applet_turboprint.so" -t "${pkgdir}/usr/lib/kde4/"
 
   # Install GNOME applet
-  install -D -m644 "${pkgdir}/usr/lib/turboprint/gnomeapplet/tpmonapplet.server" "${pkgdir}/usr/lib/bonobo/servers/tpmonapplet.server"
-  install -D -m755 "${pkgdir}/usr/lib/turboprint/gnomeapplet/tpgnomeapplet" "${pkgdir}/usr/bin/tpgnomeapplet"
+  install -Dpm644 "${pkgdir}/usr/lib/turboprint/gnomeapplet/tpmonapplet.server" -t "${pkgdir}/usr/lib/bonobo/servers/"
+  install -Dpm755 "${pkgdir}/usr/lib/turboprint/gnomeapplet/tpgnomeapplet" -t "${pkgdir}/usr/bin/"
 
   # Fix permissions
   chmod 4755 "${pkgdir}/usr/share/turboprint/lib/pipeutility"
+  set +u
 }
+set +u
 
 # vim:set ts=2 sw=2 et:

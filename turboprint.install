@@ -6,8 +6,6 @@ post_upgrade() {
 
 # arg 1:  the new package version
 post_install() {
-  if [ -x /usr/bin/update-desktop-database ]; then /usr/bin/update-desktop-database -q; fi
-  if [ -x /usr/bin/kbuildsycoca4 ]; then /usr/bin/kbuildsycoca4 &>/dev/null; fi
   echo "TurboPrint 30 day trial version has been installed."
   echo
   echo "If you have a TurboPrint key for the full version, you may install it as root:"
@@ -25,13 +23,7 @@ post_install() {
   echo "3. Log out and log back in"
   echo
   echo "For additional information, see the TurboPrint documentation located at"
-  echo "/usr/share/turboprint/doc."
-}
-
-# arg 1:  the old package version
-post_remove() {
-  if [ -x /usr/bin/update-desktop-database ]; then /usr/bin/update-desktop-database -q; fi
-  if [ -x /usr/bin/kbuildsycoca4 ]; then /usr/bin/kbuildsycoca4 &>/dev/null; fi
+  echo "/usr/share/turboprint/doc"
 }
 
 # vim:set ts=2 sw=2 et:
