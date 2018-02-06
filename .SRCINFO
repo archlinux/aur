@@ -1,6 +1,6 @@
 pkgbase = fslpy
 	pkgdesc = The fslpy package is a collection of utilities and data abstractions used by FSLeyes.
-	pkgver = 1.6.2
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = fslpy
 	makedepends = python-wxpython-phoenix
 	makedepends = python-indexed-gzip
 	depends = python
-	source = fslpy-1.6.2.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fslpy/repository/archive.tar.gz?ref=1.6.2
-	sha256sums = 5951fd6e0edda70acab87d93aab9b2f254c989861de7b4c4154f216cd86742d3
+	source = fslpy-1.6.5.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fslpy/repository/archive.tar.gz?ref=1.6.5
+	sha256sums = 9704773cf2c8fe1d7517336662e558158861faddaecb84be85a2bcaee6aeb464
 
 pkgname = fslpy
 
