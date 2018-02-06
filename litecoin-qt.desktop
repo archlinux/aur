@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Litecoin
+Comment=Litecoin P2P Cryptocurrency
+Exec=litecoin-qt %u
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/litecoin128.png
+MimeType=x-scheme-handler/litecoin;
+Categories=Office;

@@ -1,64 +1,88 @@
-# Maintainer: Raansu <Gero3977@gmail.com>
-# Contributors: Noel Maersk <veox at wemakethings dotnet>; Mike Lenzen <lenzenmi@gmail.com>
+# Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
+# Contributor: shahid <helllamer@gmail.com>
 
-pkgname=litecoin-git
-_gitname=litecoin
-pkgver=v0.10.4.0.12.g699bfd0
+pkgbase=litecoin-git
+pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx-git')
+pkgver=0.15.1rc1+0+gf496412ed
 pkgrel=1
-pkgdesc="A peer-to-peer network-based digital currency (git version)"
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
+makedepends=('git' 'boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
 license=('MIT')
-depends=('qt4' 'gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf')
-makedepends=('pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
-provides=('litecoin' 'litecoin-qt' 'litecoind' 'litecoin-bin' 'litecoin-daemon')
-conflicts=('litecoin' 'litecoin-qt' 'litecoind' 'litecoin-bin' 'litecoin-daemon')
-source=('git://github.com/litecoin-project/litecoin.git'
-        'https://github.com/litecoin-project/litecoin/pull/251.patch')
-sha256sums=('SKIP'         
-            '0a16e5a66d988ca8dabf86bf7c1002db5aa9c52a7107fe3a2f6941c4b03c5b58')
+source=(
+  "$pkgbase::git+https://github.com/litecoin-project/litecoin.git#branch=0.15"
+  'litecoin-qt.desktop'
+)
+sha256sums=('SKIP'
+            'ec2a2669a50fa96147a1d04cacf1cbc3d63238aee97e3b0df3c6f753080dae96')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --tags| sed "s/-/./g"
-}
-
-prepare() {
-    cd "$srcdir/$_gitname"
-    git apply "$srcdir"/251.patch
+    cd "$pkgbase"
+    git describe --long --tags | sed 's/-/+/g; s/^v//'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$pkgbase"
   ./autogen.sh
-  ./configure
-   make -j$(nproc)
-
+  ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb
+  make
 }
 
-package() {
-	# install litecoin-qt client
-	msg2 'Installing litecoin-qt...'
-	install -Dm755 "$srcdir/$_gitname/src/qt/litecoin-qt" "$pkgdir/usr/bin/litecoin-qt"
-	install -Dm644 "$srcdir/$_gitname/share/pixmaps/litecoin128.xpm" "$pkgdir/usr/share/pixmaps/litecoin128.xpm"
-	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian-litecoin/litecoin-qt.desktop"
-	
-	# install litecoin-daemon
-	msg2 'Installing litecoin-daemon...'
-	install -Dm755 "$srcdir/$_gitname/src/litecoind" "$pkgdir/usr/bin/litecoind"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian-litecoin/examples/litecoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/litecoin.conf"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian-litecoin/manpages/litecoin-qt.1" "$pkgdir/usr/share/man/man1/litecoin-qt.1"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian-litecoin/manpages/litecoind.1" "$pkgdir/usr/share/man/man1/litecoind.1"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian-litecoin/manpages/litecoin.conf.5" "$pkgdir/usr/share/man/man5/litecoin.conf.5"
+package_litecoin-qt-git() {
+  pkgdesc="Litecoin is a peer-to-peer network based digital currency - Qt"
+  depends=(boost-libs desktop-file-utils libevent qt5-base miniupnpc qrencode protobuf zeromq)
+  conflicts=(litecoin-qt)
+  provides=(litecoin-qt)
 
-	# install litecoin-cli
-	msg2 'Installing litecoin-cli...'
-	install -Dm755 "$srcdir/$_gitname/src/litecoin-cli" "$pkgdir/usr/bin/litecoin-cli"
+  cd "$pkgbase"
+  install -Dm755 src/qt/litecoin-qt "$pkgdir"/usr/bin/litecoin-qt
+  install -Dm644 "$srcdir"/litecoin-qt.desktop \
+    "$pkgdir"/usr/share/applications/litecoin.desktop
+  install -Dm644 share/pixmaps/bitcoin128.png \
+    "$pkgdir"/usr/share/pixmaps/litecoin128.png
+  install -Dm644 doc/man/litecoin-qt.1 \
+    "$pkgdir"/usr/share/man/man1/litecoin-qt.1
 
-	# install litecoin-tx
-	msg2 'Installing litecoin-tx...'
-	install -Dm755 "$srcdir/$_gitname/src/litecoin-tx" "$pkgdir/usr/bin/litecoin-tx"
-
-	# install license
-	install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+
+package_litecoin-daemon-git() {
+  pkgdesc="Litecoin is a peer-to-peer network based digital currency - daemon"
+  depends=(boost-libs libevent miniupnpc zeromq)
+  conflicts=(litecoin-daemon)
+  provides=(litecoin-daemon)
+
+  cd "$pkgbase"
+  install -Dm755 src/litecoind "$pkgdir"/usr/bin/litecoind
+  install -Dm644 contrib/debian/examples/bitcoin.conf \
+    "$pkgdir/usr/share/doc/$pkgname/examples/litecoin.conf"
+  install -Dm644 doc/man/litecoind.1 \
+    "$pkgdir"/usr/share/man/man1/litecoind.1
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+
+package_litecoin-cli-git() {
+  pkgdesc="Litecoin is a peer-to-peer network based digital currency - RPC client"
+  depends=(boost-libs libevent)
+  conflicts=(litecoin-cli)
+  provides=(litecoin-cli)
+
+  cd "$pkgbase"
+  install -Dm755 src/litecoin-cli "$pkgdir"/usr/bin/litecoin-cli
+  install -Dm644 doc/man/litecoin-cli.1 \
+    "$pkgdir"/usr/share/man/man1/litecoin-cli.1
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+
+package_litecoin-tx-git() {
+  pkgdesc="Litecoin is a peer-to-peer network based digital currency - Transaction tool"
+  depends=(boost-libs openssl)
+  conflicts=(litecoin-tx)
+  provides=(litecoin-tx)
+
+  cd "$pkgbase"
+  install -Dm755 src/litecoin-tx "$pkgdir"/usr/bin/litecoin-tx
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+
+# vim:set ts=2 sw=2 et:
