@@ -1,45 +1,44 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Jon Gjengset <jon@thesquareplanet.com>
 
 pkgname=vuvuzela-git
-pkgver=20160420
+pkgver=r104.b7327a9
 pkgrel=1
 pkgdesc="Scalable Private Messaging"
-arch=('i686' 'x86_64')
-depends=('ncurses')
-makedepends=('git' 'go')
-url="https://github.com/davidlazar/vuvuzela"
+arch=('x86_64' 'i686')
+url="https://vuvuzela.io/"
 license=('AGPL3')
-source=(git+https://github.com/davidlazar/vuvuzela)
+makedepends=('git' 'go>=1.8')
+options=('!strip' '!emptydirs')
+_gourl=vuvuzela.io/vuvuzela/cmd/vuvuzela-client
+source=("git+https://github.com/vuvuzela/vuvuzela.git")
 sha256sums=('SKIP')
-provides=('vuvuzela')
-conflicts=('vuvuzela')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
+  cd "$srcdir/vuvuzela"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${pkgname%-git}
+  export GOROOT=/usr/lib/go
+  export GOPATH="$srcdir/build"
+  mkdir -p "$GOPATH"
 
-  msg2 'Building...'
-  GOPATH="$srcdir" TMPDIR=/tmp go get -u -v github.com/davidlazar/vuvuzela/...
+  mkdir -p "$GOPATH/src/vuvuzela.io"
+  mv "$srcdir/vuvuzela" "$GOPATH/src/vuvuzela.io/vuvuzela"
+  cd "$GOPATH/src/$_gourl"
+
+  msg2 "Downloading dependencies"
+  go get -d -fix .
+
+  msg2 "Building client"
+  go install ./...
 }
 
 package() {
-  cd ${pkgname%-git}
-
-  msg2 'Installing documentation...'
-  install -dm 755 "$pkgdir/usr/share/doc/${pkgname%-git}"
-  for _doc in README.md confs screenshots; do
-    cp -dpr --no-preserve=ownership $_doc \
-      "$pkgdir/usr/share/doc/${pkgname%-git}"
-  done
-
-  msg2 'Installing executables...'
-  find "$srcdir/bin" -mindepth 1 -maxdepth 1 -type f -exec \
-    install -Dm 755 '{}' -t "$pkgdir/usr/bin" \;
-
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  install -Dm755 \
+    "$srcdir/build/bin/vuvuzela-client" \
+    "$pkgdir/usr/bin/vuvuzela-client"
 }
+
+# vim:set ts=2 sw=2 et:
