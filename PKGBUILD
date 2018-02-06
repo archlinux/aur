@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url="http://www.glfw.org/"
 license=('custom:ZLIB')
 optdepends=('doxygen: build glfw html documentation')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'wayland-protocols' 'libxkbcommon')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'wayland-protocols' 'libxkbcommon' 'mesa')
 conflicts=("$_pkgbase")
 provides=("$_pkgbase=3.3")
 source=("$_pkgbase::git+https://github.com/glfw/glfw")
