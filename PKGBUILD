@@ -13,7 +13,7 @@ md5sums=('8f322a60c80e31c34ef8979edaf68aae')
 
 prepare() {
 # remove the following from source, as they already exist in the root file system
-rm man-pages-tr-1.0.5/source/man1/{chage,passwd}.1.xml
+rm man-pages-tr-1.0.5/source/man1/{apropos,man,manpath,chage,passwd}.1.xml
 rm man-pages-tr-1.0.5/source/man5/{passwd,shadow}.5.xml
 rm man-pages-tr-1.0.5/source/man8/{groupadd,groupdel,groupmod,useradd,userdel,usermod}.8.xml
 }
