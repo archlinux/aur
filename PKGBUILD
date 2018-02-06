@@ -1,5 +1,5 @@
 pkgname=turtlecoin-git
-pkgver=r111.ede18c9
+pkgver=r126.f6cf18d
 pkgrel=1
 pkgdesc="Turtlecoin simplewallet and miner"
 arch=('x86_64')
@@ -8,6 +8,7 @@ license=('custom')
 install="${pkgname}.install"
 makedepends=('git' 'cmake')
 depends=('boost-libs' 'boost')
+conflicts=('turtlecoin-bin')
 source=('git+https://github.com/turtlecoin/turtlecoin.git')
 sha256sums=('SKIP')
 

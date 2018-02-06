@@ -1,6 +1,6 @@
 pkgbase = turtlecoin-git
 	pkgdesc = Turtlecoin simplewallet and miner
-	pkgver = r111.ede18c9
+	pkgver = r126.f6cf18d
 	pkgrel = 1
 	url = https://turtlecoin.lol
 	install = turtlecoin-git.install
@@ -10,6 +10,7 @@ pkgbase = turtlecoin-git
 	makedepends = cmake
 	depends = boost-libs
 	depends = boost
+	conflicts = turtlecoin-bin
 	source = git+https://github.com/turtlecoin/turtlecoin.git
 	sha256sums = SKIP
 
