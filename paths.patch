@@ -1,0 +1,14 @@
+diff -aur --no-dereference package.pristine/__init__.py package.new/__init__.py
+--- package.pristine/__init__.py	2017-08-22 18:53:57.000000000 +0200
++++ package.new/__init__.py	2018-02-06 11:43:22.385701679 +0100
+@@ -22,8 +22,8 @@
+ import os
+ import ctypes
+ 
+-PLUGIN_PATH = os.path.join(__path__[0], 'bin', 'yafaray-plugins')
+-BIN_PATH = os.path.join(__path__[0], 'bin')
++PLUGIN_PATH = '/usr/lib/yafaray-plugins'
++BIN_PATH = '/usr/bin'
+ YAF_ID_NAME = "YAFA_V3_RENDER"
+ 
+ # Version to be automatically populated during the cmake build process, getting the version from git tags
