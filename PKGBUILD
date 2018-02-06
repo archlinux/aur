@@ -43,9 +43,13 @@ pkgver() {
 }
 
 prepare() {
-  cd $srcdir/nemo
   # Rename 'Files' app name to avoid having the same as nautilus
-  sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop.in
+  sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' nemo/data/nemo.desktop.in
+}
+
+build() {
+  cd nemo
+  meson --buildtype plain build --prefix=/usr
 }
 
 package() {
