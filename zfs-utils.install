@@ -1,14 +1,11 @@
-
-show_zfs_import_warning() {
-    echo ">>> WARNING: A new systemd unit file was added to archzfs!"
-    echo ">>>          You may need enable zfs-import.target"
-    echo ">>>          See https://github.com/archzfs/archzfs/issues/186"
-}
-
 post_upgrade() {
+    
     # If upgrading from 0.7.4-1 or older
     # display zfs-import warning
     if [[ $(vercmp $2 0.7.4-1) -le 0 ]]; then
-        show_zfs_import_warning
+        echo '>>> WARNING: A new systemd unit file was added to archzfs!'
+        echo '>>>          You may need enable zfs-import.target'
+        echo '>>>          See https://github.com/archzfs/archzfs/issues/186'
     fi
+    
 }
