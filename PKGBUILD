@@ -3,16 +3,15 @@
 # Contributor: Chris Brannon <cmbrannon@cox.net>
 # Contributor: William Giokas <1007380@gmail.com>
 pkgname=ii
-pkgver=1.7
-pkgrel=2
+pkgver=1.8
+pkgrel=1
 pkgdesc="A minimalist FIFO and filesystem-based IRC client"
-license=(MIT)
+license=('MIT')
 arch=('i686' 'x86_64')
 url=http://tools.suckless.org/ii
 depends=('glibc')
 source=("http://dl.suckless.org/tools/$pkgname-$pkgver.tar.gz")
-
-md5sums=('6191008ca09770873d84f40270493d0e')
+md5sums=('fc31ba3ecf6b52c5bae39b70f674543b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
