@@ -21,7 +21,7 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=
-source=(https://github.com/astroidmail/astroid/archive/v${pkgver}.tar.gz)
+source=($pkgname-v$pkgver.tar.gz::https://github.com/astroidmail/astroid/archive/v${pkgver}.tar.gz)
 noextract=()
 sha256sums=('f2ab06859e3d2d6a8e947b6fd640de61b8c49cd0ebbbaaa2df9527ce2efa40db')
 
@@ -29,7 +29,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p build
   cd build
-  cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release
+  cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   ninja
 }
 
