@@ -1,6 +1,6 @@
 pkgbase = intel-media-sdk-git
 	pkgdesc = API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)
-	pkgver = 1.2a.r16.gc3ba904
+	pkgver = 1.2a.r40.gff56d31
 	pkgrel = 1
 	url = https://github.com/Intel-Media-SDK/MediaSDK/
 	arch = x86_64
@@ -18,10 +18,8 @@ pkgbase = intel-media-sdk-git
 	conflicts = libmfx
 	source = intel-media-sdk-change-gcc-version.patch
 	source = intel-media-sdk-detect-intel-opencl.patch
-	source = intel-media-sdk-add-runtime-libraries.patch
 	sha256sums = d9fc114d06624504891b545df2913b01d4b07edfb99512388490eae40f9b9ab7
 	sha256sums = 689ebc270532c0e1e5132d39898ff2a93fe3483a5a2673aea396a24fc07ad24c
-	sha256sums = 8bbbbe1729c54980103c7ab76815a565df7427ce44bd2789c891a1d521e1f737
 
 pkgname = intel-media-sdk-git
 

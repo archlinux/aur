@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-sdk-git
-pkgver=1.2a.r16.gc3ba904
+pkgver=1.2a.r40.gff56d31
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
@@ -20,11 +20,9 @@ makedepends=(
 provides=('intel-media-sdk' 'libmfx')
 conflicts=('intel-media-sdk' 'libmfx')
 source=('intel-media-sdk-change-gcc-version.patch'
-        'intel-media-sdk-detect-intel-opencl.patch'
-        'intel-media-sdk-add-runtime-libraries.patch')
+        'intel-media-sdk-detect-intel-opencl.patch')
 sha256sums=('d9fc114d06624504891b545df2913b01d4b07edfb99512388490eae40f9b9ab7'
-            '689ebc270532c0e1e5132d39898ff2a93fe3483a5a2673aea396a24fc07ad24c'
-            '8bbbbe1729c54980103c7ab76815a565df7427ce44bd2789c891a1d521e1f737')
+            '689ebc270532c0e1e5132d39898ff2a93fe3483a5a2673aea396a24fc07ad24c')
 
 prepare() {
     # makepkg does not support cloning git-lfs repositories
@@ -41,8 +39,7 @@ prepare() {
     fi
     
     for _patch in intel-media-sdk-change-gcc-version.patch \
-                  intel-media-sdk-detect-intel-opencl.patch \
-                  intel-media-sdk-add-runtime-libraries.patch
+                  intel-media-sdk-detect-intel-opencl.patch
     do
         printf '%s\n' "Checking patch '${_patch}'"
         if patch -Np1 --dry-run -i "${srcdir}/${_patch}" >/dev/null
@@ -70,7 +67,7 @@ build() {
     perl tools/builder/build_mfx.pl \
                             --no-warn-as-error \
                             --cmake='intel64.make.release' \
-                            --prefix='/usr' \
+                            --prefix='/usr'
     
     make -C __cmake/intel64.make.release
 }
@@ -87,16 +84,7 @@ package() {
     
     mkdir -p "${pkgdir}/usr/"{include/mfx,lib/"$pkgname"}
     
-    # move samples to a better place
-    mv -f "${pkgdir}/usr/samples" "${pkgdir}/usr/lib/${pkgname}"
-    
-    # license
-    cd "${srcdir}/${pkgname}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    # bellow are fixes for ffmpeg (some paths are hardcoded, use symlinks)
-    
-    # includes
+    # includes (add 'mfx' folder for ffmpeg compatibility)
     cd "${pkgdir}/usr/include"
     for _header in *.h
     do
@@ -112,7 +100,10 @@ package() {
         ln -sf ../plugins/"$_plugin" ../lib/"$_plugin"
     done
     
-    # pkgconfig file
-    cd "${pkgdir}/usr/lib/pkgconfig"
-    ln -sf mfx.pc libmfx.pc
+    # move samples to a better place
+    mv -f "${pkgdir}/usr/samples" "${pkgdir}/usr/lib/${pkgname}"
+    
+    # license
+    cd "${srcdir}/${pkgname}"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
