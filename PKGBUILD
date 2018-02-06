@@ -57,6 +57,7 @@ package_glfw-x11-git() {
 
   cd $_pkgbase/build-x11
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_glfw-wayland-git() {
@@ -65,6 +66,7 @@ package_glfw-wayland-git() {
 
   cd $_pkgbase/build-wayland
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
