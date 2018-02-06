@@ -18,7 +18,6 @@ optdepends=('meterbridge: levels monitor'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('eecab2e26d5e83b65adf386d6fb38f2d9169cf1574e462ec455367f7d98f4f4d5a9d0766b9c572cfdcb43c55ae914bb8a2222267842c9912e2afe13c1f7b0038')
 
-
 build() {
   cd "${pkgname}-${pkgver}"
   make
