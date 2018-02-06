@@ -1,8 +1,8 @@
 # Maintainer: videah <videah at selfish dot systems>
 pkgname=nekojishi
-pkgver=1.01
+pkgver=1.02
 pkgdesc='A free furry/kemono visual novel'
-pkgrel=3
+pkgrel=1
 arch=('any')
 url='https://nekojishi.tw/en-index.html'
 license=('custom:freeware')
@@ -13,7 +13,7 @@ options=(!strip)
 # personal mirror for nekojishi, as it's impossible to use GDrive links in PKGBUILD's
 downloadmirror='https://cloud.videah.xyz/s/3wZSyDDeB4ywNt2/download'
 
-source=("Nekojishi_Standard${pkgver}-pc.zip::${downloadmirror}"
+source=("Nekojishi_Standard${pkgver}-linux.tar.bz2::${downloadmirror}"
 	"${pkgname}.sh"
 	"${pkgname}.desktop"
 	"${pkgname}.png")
