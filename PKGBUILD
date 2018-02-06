@@ -50,7 +50,7 @@ package() {
 
     # Install icons
     for i in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256; do
-        curl "https://raw.githubusercontent.com/monero-project/monero-gui/master/images/appicons/$i.png" --silent --create-dirs -o "${srcdir}/icons/${i}/monero-wallet-gui.png"
+        curl "https://raw.githubusercontent.com/monero-project/monero-gui/release-v${pkgver}/images/appicons/$i.png" --silent --create-dirs -o "${srcdir}/icons/${i}/monero-wallet-gui.png"
         install -Dm644 "${srcdir}/icons/${i}/monero-wallet-gui.png" "${pkgdir}/usr/share/icons/hicolor/${i}/apps/monero-wallet-gui.png"
     done
 
