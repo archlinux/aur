@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/gabmus/hydrapaper
 
 pkgname=hydrapaper-git
-pkgver=1.1.3.r16.g96395b9
+pkgver=1.1.3.r24.g9e0feb8
 pkgrel=1
 pkgdesc='A Gtk utility to set two different backgrounds for each monitor on GNOME'
 arch=('any')
