@@ -1,7 +1,7 @@
 # Maintainer: Mustafa Kuscu <mustafakuscu@gmail.com>
 pkgname=man-pages-tr
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of Turkish translations of Linux manual pages'
 arch=('any')
 license=('GPL')
