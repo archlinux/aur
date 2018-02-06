@@ -18,7 +18,7 @@ depends=('boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'glu' 'qt5-webkit'
 makedepends=('cmake' 'gl2ps')
 optdepends=('cuda' 'openni2' 'python2-sphinx')
 source=("pcl-${pkgver}.tar.gz"::"https://github.com/PointCloudLibrary/pcl/archive/pcl-${pkgver}.tar.gz")
-sha256sums=('4b91c2f82f6d463fdefb68ba1d10ee90747532ed06f1ccdc23de733e631f1dd6')
+sha256sums=('5a102a2fbe2ba77c775bf92c4a5d2e3d8170be53a68c3a76cfc72434ff7b9783')
 
 prepare() {
   cd "${srcdir}/pcl-pcl-${pkgver}"
