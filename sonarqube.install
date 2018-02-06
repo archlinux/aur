@@ -10,7 +10,7 @@ post_install() {
 }
 
 
-post_upgrade(){
+post_upgrade() {
     getent passwd "${username}" >/dev/null 2>&1 || systemd-sysusers "${username}.conf"
     systemd-tmpfiles --create sonarqube.conf
 
