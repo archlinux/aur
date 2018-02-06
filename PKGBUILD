@@ -17,22 +17,22 @@
 pkgbase="spl-linux"
 pkgname=("spl-linux" "spl-linux-headers")
 
-pkgver=0.7.5.4.14.15.1
+pkgver=0.7.6.4.15.1.2
 pkgrel=1
-makedepends=("linux-headers=4.14.15-1" "libelf" "git")
+makedepends=("linux-headers=4.15.1-2" "libelf" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.5/spl-0.7.5.tar.gz")
-sha256sums=("SKIP")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.6/spl-0.7.6.tar.gz")
+sha256sums=("648148762969d1ee94290c494c4f022aeacabe0e84cddf65906af608be666f95")
 license=("GPL")
-depends=("spl-utils-common=0.7.5" "kmod" "linux=4.14.15-1")
+depends=("spl-utils-common=0.7.6" "kmod" "linux=4.15.1-2")
 
 build() {
-    cd "${srcdir}/spl-0.7.5"
+    cd "${srcdir}/spl-0.7.6"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.14.15-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.14.15-1-ARCH/build \
+                --with-linux=/usr/lib/modules/4.15.1-2-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.15.1-2-ARCH/build \
                 --with-config=kernel
     make
 }
@@ -44,7 +44,7 @@ package_spl-linux() {
     groups=("archzfs-linux")
     conflicts=('spl-linux-git')
     replaces=("spl-git")
-    cd "${srcdir}/spl-0.7.5"
+    cd "${srcdir}/spl-0.7.6"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove src dir
@@ -54,9 +54,9 @@ package_spl-linux() {
 package_spl-linux-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
     conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers'  'spl-linux-git-headers' 'spl-linux-vfio-headers' 'spl-linux-vfio-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
-    cd "${srcdir}/spl-0.7.5"
+    cd "${srcdir}/spl-0.7.6"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.14.15-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.15.1-2-ARCH/Module.symvers
 }
