@@ -1,6 +1,6 @@
 _gitname="camisole"
 pkgname=camisole-git
-pkgver=0.1.r110.g9203807
+pkgver=0.1.r200.gac1900a
 pkgrel=1
 pkgdesc="An asyncio-based source compiler and test runner."
 arch=('any')
@@ -8,7 +8,10 @@ url="https://github.com/prologin/${_gitname}"
 license=('GPL')
 conflicts=('camisole')
 provides=('camisole')
-depends=('python' 'python-aiohttp' 'python-jsonschema' 'isolate-git')
+depends=('isolate-git'
+         'python'
+         'python-aiohttp'
+         'python-msgpack')
 optdepends=('camisole-languages: Metapackage for all the built-in languages')
 makedepends=('git' 'python-setuptools')
 source=("git+${url}.git"
