@@ -3,7 +3,7 @@
 pkgbase=python-pyprind
 pkgname=('python-pyprind' 'python2-pyprind')
 _name=PyPrind
-pkgver=2.11.1
+pkgver=2.11.2
 pkgrel=1
 pkgdesc='Python Progress Bar and Percent Indicator Utility'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://pypi.python.org/pypi/PyPrind/'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d277923dfe3bde7d28cffa6cd334977ff8c7a4c71e217e8052b9084fc76191b4')
+sha256sums=('c46cab453b805852853dfe29fd933aa88a2a516153909c695b098e9161a9e675')
 
 prepare() {
   cp -a "${_name}-${pkgver}"{,-python2}

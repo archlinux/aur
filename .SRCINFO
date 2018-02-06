@@ -1,14 +1,14 @@
 pkgbase = python-pyprind
 	pkgdesc = Python Progress Bar and Percent Indicator Utility
-	pkgver = 2.11.1
+	pkgver = 2.11.2
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/PyPrind/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/P/PyPrind/PyPrind-2.11.1.tar.gz
-	sha256sums = d277923dfe3bde7d28cffa6cd334977ff8c7a4c71e217e8052b9084fc76191b4
+	source = https://files.pythonhosted.org/packages/source/P/PyPrind/PyPrind-2.11.2.tar.gz
+	sha256sums = c46cab453b805852853dfe29fd933aa88a2a516153909c695b098e9161a9e675
 
 pkgname = python-pyprind
 	depends = python
