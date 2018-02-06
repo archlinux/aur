@@ -5,7 +5,7 @@ pkgver=0.08
 pkgrel=1
 
 pkgdesc="Recursively browse the filesystem through openbox3 pipe menus. (with icons)"
-url="https://trizenx.blogspot.com/2012/12/obbrowser.html"
+url="https://github.com/trizen/obbrowser"
 
 arch=('any')
 license=('GPL3')
