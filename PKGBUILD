@@ -1,7 +1,7 @@
 # Maintainer: See AUR interface for current maintainer and contact information.
 
 pkgname=groff-git
-pkgver=1.22.3.r3051
+pkgver=1.22.3.real.439.g38fde075
 pkgrel=1
 pkgdesc="GNU Troff. Official git trunk."
 arch=('i686' 'x86_64')
@@ -24,8 +24,7 @@ sha384sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "%s.%s.r%s" "$(cat -s VERSION)" "$(cat -s REVISION)"\
-    "$(git rev-list --count HEAD)"
+  printf "%s" "$(git describe | sed 's/\-/\./g')"
 }
 
 
@@ -60,7 +59,11 @@ check() {
 package() {
   cd "$srcdir/$pkgname"/build
 
-  make DESTDIR="$pkgdir/" install
+  if [[ ${LANG/en_US} ]] || [[ ${LANG/es_CO} ]]; then
+    make DESTDIR="$pkgdir/" PAPER=letter install
+  else
+    make DESTDIR="$pkgdir/" install
+  fi
   
   ## Copypaste from core package's PKGBUILD...
   
