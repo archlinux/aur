@@ -3,7 +3,7 @@
 
 _pkgname=gvfs
 pkgname=${_pkgname}-light
-pkgver=1.34.1+11+gad63dfb7
+pkgver=1.34.2
 pkgrel=1
 pkgdesc="Virtual filesystem implementation for GIO, without network/optical/misc support."
 url="https://wiki.gnome.org/Projects/gvfs"
@@ -16,7 +16,7 @@ makedepends=('git' 'gtk-doc' 'polkit' 'libcap')
 optdepends=('gvfs-mtp: MTP device support'
             'gtk3: Recent files support')
 groups=('gnome')
-_commit=ad63dfb7ecd0819177cfb7588f10458516f26aa6 # gnome-3-26
+_commit=bbebf4e586a8b268a70f5344d3896bd801a450f2 # tags/1.34.2^0
 source=("git+https://git.gnome.org/browse/gvfs#commit=${_commit}"
         'gvfsd.hook')
 sha256sums=('SKIP'
