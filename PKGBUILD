@@ -22,9 +22,9 @@ options=('!strip')
 
 if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
   if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-    ln -s $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
+    ln -sfn $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
   else
-    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in ${pkgdir}"
+    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in ${pkgdir} in your Downloads directory."
     sleep 3
   fi
 fi
