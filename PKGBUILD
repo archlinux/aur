@@ -2,8 +2,8 @@
 # Contributor: Christopher Arndt <chris at chrisarndt.de>
 
 pkgname=linux-show-player
-pkgver=0.5
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Sound cue playback software designed for live musical shows and theatre plays"
 url="http://linux-show-player.sourceforge.net/"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('gst-libav: for larger format support'
             'python-jack-client: for JACK output support')
 options=('!emptydirs')
 source=("https://github.com/FrancescoCeruti/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('437509a570f8e1a3f5dbecbba2c205d0')
+md5sums=('d6c092c1b95c638b0d42367508b97b48')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
