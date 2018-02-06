@@ -1,0 +1,18 @@
+pkgbase = ijava-git
+	pkgdesc = A Java kernel for Jupyter
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/SpencerPark/IJava
+	arch = any
+	license = MIT
+	makedepends = java-environment=9
+	makedepends = gradle
+	depends = jupyter_console
+	depends = java-environment=9
+	source = https://github.com/SpencerPark/IJava/archive/93e9e7bf5ac571b50ec60645327d8dd0d1700dd2.tar.gz
+	source = https://github.com/SpencerPark/jupyter-jvm-basekernel/archive/2b68e1ec48a049ae7f289480c0a088561fe813a0.tar.gz
+	sha256sums = c7467c30f6f34ae9b19947e8568052e06adc8c2d3ce66f682944a1e0c3103c59
+	sha256sums = e455ec7ee5972ce81245fd07e5e183ce8891c4162c41c6cb7a5ee31357946c26
+
+pkgname = ijava-git
+
