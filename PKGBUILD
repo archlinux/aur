@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url="http://www.glfw.org/"
 license=('custom:ZLIB')
 optdepends=('doxygen: build glfw html documentation')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'wayland-protocols' 'libxkbcommon' 'libgl')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'wayland-protocols' 'libxkbcommon')
 conflicts=("$_pkgbase")
 provides=("$_pkgbase=3.3")
 source=("$_pkgbase::git+https://github.com/glfw/glfw")
@@ -52,7 +52,11 @@ build() {
 }
 
 package_glfw-x11-git() {
-  depends=('libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'libgl')
+  depends=('libxi' 'libxrandr' 'libxinerama' 'libxcursor')
+  optdepends=('libgl: for OpenGL support'
+              'opengl-driver: for OpenGL support'
+              'vulkan-icd-loader: for Vulkan support'
+              'vulkan-driver: for Vulkan support')
   pkgdesc="A free, open source, portable framework for OpenGL application development. (git, X11 version)"
 
   cd $_pkgbase/build-x11
@@ -61,7 +65,11 @@ package_glfw-x11-git() {
 }
 
 package_glfw-wayland-git() {
-  depends=('wayland' 'libxkbcommon' 'libgl')
+  depends=('wayland' 'libxkbcommon')
+  optdepends=('libgl: for OpenGL support'
+              'opengl-driver: for OpenGL support'
+              'vulkan-icd-loader: for Vulkan support'
+              'vulkan-driver: for Vulkan support')
   pkgdesc="A free, open source, portable framework for OpenGL application development. (git, Wayland version)"
 
   cd $_pkgbase/build-wayland
