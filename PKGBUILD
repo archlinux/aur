@@ -65,7 +65,7 @@ _amlog='/var/log/amanda'
 set -u
 pkgname='amanda'
 #pkgver='3.3.9'
-pkgver='3.5'
+pkgver='3.5.1'
 pkgrel='1'
 pkgdesc='Advanced Maryland Automatic Network Disk Archiver network backup for Linux Windows clients, supports SSH, AES, GPG, encryption, tape, RAIT, mirror, changers, Amazon S3, ipv6, DVD, NDMP, VTL, advanced scripting'
 arch=('i686' 'x86_64')
@@ -148,7 +148,7 @@ _tapetypes=('tapetypes.txt')
 _verwatch=('http://www.amanda.org/download.php' '\([0-9\.]\+\)' 't')
 _srcdir="${pkgname}-${pkgver}"
 source=("https://prdownloads.sourceforge.net/amanda/amanda-${pkgver}.tar.gz" "xinetd.${pkgname}".{udp,tcp} "${_tapetypes[@]}")
-sha256sums=('099eb36321b1360ebde6156fb1e75f3e0245520b6f886a0e8e0f31a7a6169be4'
+sha256sums=('88ce1ac62f8c30b8d607786a3ca335444a4249ae976baf083956e943b3b409f1'
             '3db294c9d7c610e9c0d531dcc2725dbddf1213fad64f04bc7cf9b1b9c30e9803'
             '46446a8dc4ee8ec39ed0a3e2636fb02a198565e8111abe8392c456da56a007ce'
             'c368e7f9d6d1df703619476e0fcf06e841a7ec86a5a7b86dc499821fbb0a137e')
@@ -387,9 +387,10 @@ EOF
   ln -s '/usr/share/amanda/template.d/' "${pkgdir}${_ametc}/template.d"
   ln -s '/usr/share/amanda/template.d/' "${pkgdir}${_amhome}/template.d"
 
-  # If amada-security.conf is placed in /etc/amanda then we must use
+  # If amanda-security.conf is placed in /etc/amanda then we must use
   # a more restrictive permissions setup and a helper script to create
-  # the folder. amserverconfig doesn't work.
+  # the folder. amserverconfig doesn't work. A better way was found so
+  # this isn't used any more. It documents how it could be done.
   local _helpertext=''
   if [ "${_amsecurity#/etc/amanda/}" != "${_amsecurity}" ]; then
     echo '  chmod 755 "${_ametc}"' >> "${_aminstall}"
