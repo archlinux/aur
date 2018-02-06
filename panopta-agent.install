@@ -10,17 +10,19 @@ post_install() {
     mkdir -p /usr/share/panopta-agent
     mkdir -p /etc/panopta-agent
 
+    # Perform the install handshake
+    python2 /usr/bin/panopta-agent/panopta_agent.py --install
+
     # Change owner of needed directories to the agent user
+    # The initial handshake is performed as root, so update these permissions after
+    chown -R panopta-agent /var/lib/panopta-agent
+    chown -R panopta-agent /var/log/panopta-agent
     chown -R panopta-agent /usr/lib/panopta-agent
     chown -R panopta-agent /usr/bin/panopta-agent
-
     chown -R panopta-agent /usr/share/panopta-agent
-    chown -R panopta-agent /var/lib/panopta-agent
     chown -R panopta-agent /var/log/panopta-agent
     chown -R panopta-agent /etc/panopta-agent
 
-    # Perform the install handshake
-    python2 /usr/bin/panopta-agent/panopta_agent.py --install
 }
 
 post_upgrade() {
