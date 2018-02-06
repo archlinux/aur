@@ -1,0 +1,23 @@
+pkgbase = python-scikit-cuda-git
+	pkgdesc = Python interface to GPU-powered libraries
+	pkgver = 57213a9
+	pkgrel = 1
+	url = http://scikit-cuda.readthedocs.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	depends = cuda
+	depends = python-pycuda
+	depends = python-mako
+	depends = python-pytest
+	optdepends = python-scipy
+	optdepends = python-sphinx
+	optdepends = python-sphinx_rtd_theme
+	source = git+https://github.com/lebedov/scikit-cuda.git
+	sha256sums = SKIP
+
+pkgname = python-scikit-cuda-git
+
