@@ -1,16 +1,15 @@
 # Maintainer: Yauhen Kirylau <yawghen AT gmail.com>
 # Upstream URL: https://github.com/actionless/oomox
 
-_pkgbase=pikaur
 pkgname=pikaur-git
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="AUR helper with minimal dependencies. Review PKGBUILDs all in once, next build them all without user interaction."
 arch=('any')
 url="https://github.com/actionless/pikaur"
 license=('GPLv3')
 source=(
-	"git+https://github.com/actionless/pikaur.git#branch=master"
+	"$pkgname::git+https://github.com/actionless/pikaur.git#branch=master"
 )
 md5sums=(
 	"SKIP"
@@ -26,16 +25,17 @@ makedepends=(
 )
 
 pkgver() {
-	cd "${srcdir}/${_pkgbase}"
+	cd "${srcdir}/${pkgname}"
 	git describe | sed 's/^v//;s/-/+/g'
 }
 
 build() {
-	cd "${srcdir}/${_pkgbase}"
+	cd "${srcdir}/${pkgname}"
 	nuitka --plugin-enable=pylint-warnings --recurse-directory=pikaur --recurse-all ./pikaur.py
 }
 
 package() {
+	cp -r ${srcdir}/${pkgname}/packaging/* ${pkgdir}
 	mkdir -p "${pkgdir}/usr/bin/"
-	install -D -m755 "${srcdir}/${_pkgbase}/pikaur.exe" "${pkgdir}/usr/bin/pikaur"
+	install -D -m755 "${srcdir}/${pkgname}/pikaur.exe" "${pkgdir}/usr/bin/pikaur"
 }
