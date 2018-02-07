@@ -2,7 +2,7 @@
 
 _gemname=backports
 pkgname=ruby-$_gemname
-pkgver=3.6.7
+pkgver=3.11.1
 pkgrel=1
 pkgdesc='Essential backports that enable many of the nice features of Ruby 1.8.7 up to 2.1.0 for earlier versions.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('fd74fb8a139f8371ac9a7a9f067764b99fdb91e1c1d2eabcb187afb804cec7e0b2b0df931aefc8de114e5b51a4974e619afb5cca9403f2c04049f5c281415e56')
+sha512sums=('12f8d536c543bfb86c725c3a9d4dd09dc1a545edacfd3507b38a5a149d009c55a181cab3989854f48f1b480e7bc297196265fcee743be13941e760262185ce9e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
