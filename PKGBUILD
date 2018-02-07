@@ -2,17 +2,17 @@
 
 _gemname=childprocess
 pkgname=ruby-$_gemname
-pkgver=0.5.8
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='This gem aims at being a simple and reliable solution for controlling external programs running in the background on any Ruby / OS combination.'
 arch=(any)
 url='http://github.com/jarib/childprocess'
 license=(MIT)
-depends=(ruby ruby-ffi)
+depends=('ruby' 'ruby-ffi')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('e2871861f727945ee3635364152acbb4229f5b896039f28a9735f5c42230180e4142e7ee1473cd43724483cd63c93d58502e48c9f6554e1b3036dc3f82141a56')
+sha512sums=('7e10c15930012bf99ea28afa677a6f745d4e6ebfc21f21f7101111c5a2d35df4fb146bbddb4d1e7a6711324ee7604af50995960570e85ed3f8fe087c59fc02cf')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
