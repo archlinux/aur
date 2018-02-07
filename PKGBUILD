@@ -1,6 +1,6 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 pkgname='molly-guard'
-pkgver=0.6.4
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="protects machines from accidental shutdowns/reboots (via ssh)"
 arch=('any')
@@ -8,8 +8,10 @@ url="http://packages.debian.org/source/sid/molly-guard" # Didn't find anything e
 license=('Artistic2.0')
 depends=('openssh' 'run-parts')
 makedepends=('docbook-xsl')
-source=("http://http.debian.net/debian/pool/main/m/$pkgname/${pkgname}_${pkgver}.tar.xz"
+source=("http://mirror.unitedcolo.de/debian/pool/main/m/molly-guard/${pkgname}_${pkgver}.tar.xz"
         'molly-guard.sh')
+sha256sums=('ad43869a5c85437b92d827fc2b0f58a6a66c37eb139cca74d71c3dee3837621b'
+            '272ea125b2b9d0a399834fa8337dfde9887d54ab9e671a6f363244863a415f62')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
