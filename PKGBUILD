@@ -3,16 +3,15 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=openage-git
-pkgver=v0.3.0.r1095.g00a7c332
+pkgver=v0.3.0.r1166.g7b7c6f9f
 pkgrel=1
 pkgdesc='A free (as in freedom) clone of the Age of Empires II engine'
 arch=('i686' 'x86_64')
 url='http://openage.sft.mx/'
 license=('GPL3')
-depends=('python' 'libepoxy' 'ftgl' 'sdl2_image' 'opusfile' 'qt5-declarative' 'xdg-utils' 'sdl2' 'qt5-quickcontrols' 'libpng' 'python-pillow' 'python-numpy' 'nyan-lang-git')
-makedepends=('git' 'cmake' 'cython' 'python-pygments' 'opus-tools')
-optdepends=('opus-tools: for the media convert script'
-            'ttf-dejavu: for text display, but you can use any font')
+depends=('python' 'libepoxy' 'ftgl' 'sdl2_image' 'opusfile' 'qt5-declarative' 'xdg-utils' 'sdl2' 'qt5-quickcontrols' 'libpng' 'python-pillow' 'python-numpy' 'nyan-lang-git' 'libogg')
+makedepends=('git' 'cmake' 'cython' 'python-pygments')
+optdepends=('ttf-dejavu: for text display, but you can use any font')
 provides=('openage')
 conflicts=('openage')
 source=("$pkgname::git+https://github.com/SFTtech/openage")
