@@ -1,6 +1,5 @@
-diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_main.c vtuner.linux-driver-rel1.4/vtunerc_main.c
---- vtuner.linux-driver-rel1.4.orig/vtunerc_main.c	2016-01-10 21:20:06.319074454 +0100
-+++ vtuner.linux-driver-rel1.4/vtunerc_main.c	2016-01-10 21:22:45.112413694 +0100
+--- a/vtunerc_main.c
++++ b/vtunerc_main.c
 @@ -22,6 +22,7 @@
  #include <linux/i2c.h>
  #include <asm/uaccess.h>
@@ -9,7 +8,7 @@ diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_main.c vtuner.linux-dri
  
  #include "demux.h"
  #include "dmxdev.h"
-@@ -176,64 +177,53 @@ static char *get_fe_name(struct dvb_fron
+@@ -176,64 +177,53 @@ static char *get_fe_name(struct dvb_frontend_info *feinfo)
  	return (feinfo && feinfo->name) ? feinfo->name : "(not set)";
  }
  
@@ -27,7 +26,8 @@ diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_main.c vtuner.linux-dri
 -#define MAXBUF 512
 -int vtunerc_read_proc(char *buffer, char **start, off_t offset, int size,
 -			int *eof, void *data)
--{
++static int vtunerc_read_proc(struct seq_file *seq, void *v)
+ {
 -	char outbuf[MAXBUF] = "[ vtunerc driver, version "
 -				VTUNERC_MODULE_VERSION " ]\n";
 -	int blen, i, pcnt;
@@ -44,8 +44,6 @@ diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_main.c vtuner.linux-dri
 -		blen = strlen(outbuf);
 -		if (ctx->pidtab[i] != PID_UNKNOWN) {
 -			sprintf(outbuf+blen, " %x", ctx->pidtab[i]);
-+static int vtunerc_read_proc(struct seq_file *seq, void *v)
-+{
 +	int i, pcnt = 0;
 +	struct vtunerc_ctx *ctx = (struct vtunerc_ctx *)seq->private;
 +		seq_printf(seq, "[ vtunerc driver, version "
@@ -74,11 +72,6 @@ diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_main.c vtuner.linux-dri
 -
 -	if (offset != 0)
 -		return 0;
--
--	strcpy(buffer, outbuf);
--
--	/* signal EOF */
--	*eof = 1;
 +			}
 +		seq_printf(seq, " (len=%d)\n", pcnt);
 +		seq_printf(seq, "  FE type : %s\n", get_fe_name(ctx->feinfo));
@@ -86,12 +79,12 @@ diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_main.c vtuner.linux-dri
 +	return 0;
 +}
  
--	return blen;
+-	strcpy(buffer, outbuf);
 +static int vtunerc_proc_open(struct inode *inode, struct file *file)
 +{
 +	int ret;
 +	struct vtunerc_ctx *ctx = PDE_DATA(inode);
-+ 
++
 +	if (!try_module_get(THIS_MODULE))
 +		return -ENODEV;
 +	ret = single_open(file, vtunerc_read_proc, ctx);
@@ -100,20 +93,24 @@ diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_main.c vtuner.linux-dri
 +	return ret;
 +}
  
+-	/* signal EOF */
+-	*eof = 1;
 +static int vtuner_proc_release(struct inode *inode, struct file *file)
 +{
 +	int ret = single_release(inode, file);
 +	module_put(THIS_MODULE);
 +	return ret;
- }
-+ 
++}
+ 
+-	return blen;
 +static const struct file_operations vtunerc_read_proc_fops = {
 +	.open		= vtunerc_proc_open,
 +	.read		= seq_read,
 +	.llseek		= seq_lseek,
 +	.release	= vtuner_proc_release,
 +	};
-+
+ 
+-}
  #endif
  
  static char *my_strdup(const char *s)
@@ -128,9 +125,8 @@ diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_main.c vtuner.linux-dri
  							ctx) == 0)
  				printk(KERN_WARNING
  					"vtunerc%d: Unable to register '%s' proc file\n",
-diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_priv.h vtuner.linux-driver-rel1.4/vtunerc_priv.h
---- vtuner.linux-driver-rel1.4.orig/vtunerc_priv.h	2013-04-18 23:19:32.000000000 +0200
-+++ vtuner.linux-driver-rel1.4/vtunerc_priv.h	2016-01-10 21:22:05.879078901 +0100
+--- a/vtunerc_priv.h
++++ b/vtunerc_priv.h
 @@ -20,6 +20,7 @@
  #include <linux/module.h>	/* Specifically, a module */
  #include <linux/kernel.h>	/* We're doing kernel work */
@@ -139,7 +135,7 @@ diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_priv.h vtuner.linux-dri
  
  #include "demux.h"
  #include "dmxdev.h"
-@@ -108,4 +109,12 @@ if (ctx->config && (ctx->config->debug))
+@@ -108,4 +109,12 @@ if (ctx->config && (ctx->config->debug))				\
  	printk(KERN_DEBUG "vtunerc%d: " fmt, ctx->idx, ##arg);	\
  } while (0)
  

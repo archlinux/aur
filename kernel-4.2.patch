@@ -1,6 +1,5 @@
-diff -uprNx '.*' vtuner.linux-driver.orig/vtunerc_proxyfe.c vtuner.linux-driver/vtunerc_proxyfe.c
---- vtuner.linux-driver.orig/vtunerc_proxyfe.c	2016-01-10 03:06:52.000000000 +0100
-+++ vtuner.linux-driver/vtunerc_proxyfe.c	2016-01-10 12:55:53.141702168 +0100
+--- a/vtunerc_proxyfe.c
++++ b/vtunerc_proxyfe.c
 @@ -36,7 +36,7 @@ struct dvb_proxyfe_state {
  };
  
@@ -10,7 +9,7 @@ diff -uprNx '.*' vtuner.linux-driver.orig/vtunerc_proxyfe.c vtuner.linux-driver/
  {
  	struct dvb_proxyfe_state *state = fe->demodulator_priv;
  	struct vtunerc_ctx *ctx = state->ctx;
-@@ -254,7 +254,7 @@ static int dvb_proxyfe_init(struct dvb_f
+@@ -254,7 +254,7 @@ static int dvb_proxyfe_init(struct dvb_frontend *fe)
  	return 0;
  }
  
@@ -19,7 +18,7 @@ diff -uprNx '.*' vtuner.linux-driver.orig/vtunerc_proxyfe.c vtuner.linux-driver/
  {
  	struct dvb_proxyfe_state *state = fe->demodulator_priv;
  	struct vtunerc_ctx *ctx = state->ctx;
-@@ -267,7 +267,7 @@ static int dvb_proxyfe_set_tone(struct d
+@@ -267,7 +267,7 @@ static int dvb_proxyfe_set_tone(struct dvb_frontend *fe, fe_sec_tone_mode_t tone
  	return 0;
  }
  
@@ -28,7 +27,7 @@ diff -uprNx '.*' vtuner.linux-driver.orig/vtunerc_proxyfe.c vtuner.linux-driver/
  {
  	struct dvb_proxyfe_state *state = fe->demodulator_priv;
  	struct vtunerc_ctx *ctx = state->ctx;
-@@ -293,7 +293,7 @@ static int dvb_proxyfe_send_diseqc_msg(s
+@@ -293,7 +293,7 @@ static int dvb_proxyfe_send_diseqc_msg(struct dvb_frontend *fe, struct dvb_diseq
  	return 0;
  }
  

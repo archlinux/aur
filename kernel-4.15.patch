@@ -1,0 +1,35 @@
+--- a/vtunerc_main.c
++++ b/vtunerc_main.c
+@@ -119,10 +119,6 @@ static int vtunerc_start_feed(struct dvb_demux_feed *feed)
+ 		break;
+ 	case DMX_TYPE_SEC:
+ 		break;
+-	case DMX_TYPE_PES:
+-		printk(KERN_ERR "vtunerc%d: feed type PES is not supported\n",
+-				ctx->idx);
+-		return -EINVAL;
+ 	default:
+ 		printk(KERN_ERR "vtunerc%d: feed type %d is not supported\n",
+ 				ctx->idx, feed->type);
+--- a/vtunerc_proxyfe.c
++++ b/vtunerc_proxyfe.c
+@@ -234,11 +234,6 @@ static int dvb_proxyfe_set_frontend(struct dvb_frontend *fe)
+ 	return 0;
+ }
+ 
+-static int dvb_proxyfe_get_property(struct dvb_frontend *fe, struct dtv_property* tvp)
+-{
+-	return 0;
+-}
+-
+ static enum dvbfe_algo dvb_proxyfe_get_frontend_algo(struct dvb_frontend *fe)
+ {
+ 	return DVBFE_ALGO_SW;
+@@ -478,7 +473,6 @@ static struct dvb_frontend_ops dvb_proxyfe_qpsk_ops = {
+ 	.sleep = dvb_proxyfe_sleep,
+ 
+ 	.get_frontend = dvb_proxyfe_get_frontend,
+-	.get_property = dvb_proxyfe_get_property,
+ 	.get_frontend_algo = dvb_proxyfe_get_frontend_algo,
+ 	.set_frontend = dvb_proxyfe_set_frontend,
+ 

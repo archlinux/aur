@@ -1,7 +1,6 @@
-diff -uprNx '.*' vtuner.linux-driver/vtunerc_ctrldev.c vtuner_tweak/vtunerc_ctrldev.c
---- vtuner.linux-driver/vtunerc_ctrldev.c	2015-03-27 16:20:00.000000000 +0100
-+++ vtuner_tweak/vtunerc_ctrldev.c	2015-05-10 02:19:42.000000000 +0200
-@@ -404,7 +411,7 @@ void vtunerc_unregister_ctrldev(struct v
+--- a/vtunerc_ctrldev.c
++++ b/vtunerc_ctrldev.c
+@@ -404,7 +404,7 @@ void vtunerc_unregister_ctrldev(struct vtunerc_config *config)
  int vtunerc_ctrldev_xchange_message(struct vtunerc_ctx *ctx,
  		struct vtuner_message *msg, int wait4response)
  {
@@ -10,7 +9,7 @@ diff -uprNx '.*' vtuner.linux-driver/vtunerc_ctrldev.c vtuner_tweak/vtunerc_ctrl
  	if (down_interruptible(&ctx->xchange_sem))
  		return -ERESTARTSYS;
  
-@@ -413,7 +420,7 @@ int vtunerc_ctrldev_xchange_message(stru
+@@ -413,7 +413,7 @@ int vtunerc_ctrldev_xchange_message(struct vtunerc_ctx *ctx,
  		up(&ctx->xchange_sem);
  		return 0;
  	}
@@ -19,7 +18,7 @@ diff -uprNx '.*' vtuner.linux-driver/vtunerc_ctrldev.c vtuner_tweak/vtunerc_ctrl
  
  #if 0
  	BUG_ON(ctx->ctrldev_request.type != -1);
-@@ -433,7 +440,7 @@ int vtunerc_ctrldev_xchange_message(stru
+@@ -433,7 +433,7 @@ int vtunerc_ctrldev_xchange_message(struct vtunerc_ctx *ctx,
  
  	if (wait_event_interruptible(ctx->ctrldev_wait_response_wq,
  				ctx->ctrldev_response.type != -1)) {
@@ -28,7 +27,7 @@ diff -uprNx '.*' vtuner.linux-driver/vtunerc_ctrldev.c vtuner_tweak/vtunerc_ctrl
  		ctx->ctrldev_request.type = -1;
  		up(&ctx->xchange_sem);
  		return -ERESTARTSYS;
-@@ -441,7 +448,7 @@ int vtunerc_ctrldev_xchange_message(stru
+@@ -441,7 +441,7 @@ int vtunerc_ctrldev_xchange_message(struct vtunerc_ctx *ctx,
  
  	BUG_ON(ctx->ctrldev_response.type == -1);
  
@@ -37,16 +36,13 @@ diff -uprNx '.*' vtuner.linux-driver/vtunerc_ctrldev.c vtuner_tweak/vtunerc_ctrl
  	memcpy(msg, &ctx->ctrldev_response, sizeof(struct vtuner_message));
  	ctx->ctrldev_response.type = -1;
  
-diff -uprNx '.*' vtuner.linux-driver/vtunerc_main.c vtuner_tweak/vtunerc_main.c
---- vtuner.linux-driver/vtunerc_main.c	2015-03-27 16:20:00.000000000 +0100
-+++ vtuner_tweak/vtunerc_main.c	2015-05-10 02:19:42.000000000 +0200
-@@ -101,10 +101,10 @@ static void pidtab_copy_to_msg(struct vt
- 				struct vtuner_message *msg)
+--- a/vtunerc_main.c
++++ b/vtunerc_main.c
+@@ -102,9 +102,9 @@ static void pidtab_copy_to_msg(struct vtunerc_ctx *ctx,
  {
  	int i;
--
+ 
 -	for (i = 0; i < (MAX_PIDTAB_LEN - 1); i++)
-+	
 +	for (i = 0; i < MAX_PIDTAB_LEN ; i++)
  		msg->body.pidlist[i] = ctx->pidtab[i]; /*TODO: optimize it*/
 -	msg->body.pidlist[MAX_PIDTAB_LEN - 1] = 0;
@@ -54,7 +50,7 @@ diff -uprNx '.*' vtuner.linux-driver/vtunerc_main.c vtuner_tweak/vtunerc_main.c
  }
  
  static int vtunerc_start_feed(struct dvb_demux_feed *feed)
-@@ -128,8 +128,12 @@ static int vtunerc_start_feed(struct dvb
+@@ -128,8 +128,12 @@ static int vtunerc_start_feed(struct dvb_demux_feed *feed)
  		return -EINVAL;
  	}
  
@@ -68,10 +64,9 @@ diff -uprNx '.*' vtuner.linux-driver/vtunerc_main.c vtuner_tweak/vtunerc_main.c
  	if (pidtab_find_index(ctx->pidtab, feed->pid) < 0) {
  		pidtab_add_pid(ctx->pidtab, feed->pid);
  
-diff -uprNx '.*' vtuner.linux-driver/vtunerc_proxyfe.c vtuner_tweak/vtunerc_proxyfe.c
---- vtuner.linux-driver/vtunerc_proxyfe.c	2015-03-27 16:20:00.000000000 +0100
-+++ vtuner_tweak/vtunerc_proxyfe.c	2016-01-10 03:04:10.468098249 +0100
-@@ -174,52 +180,12 @@ static int dvb_proxyfe_set_frontend(stru
+--- a/vtunerc_proxyfe.c
++++ b/vtunerc_proxyfe.c
+@@ -174,52 +174,12 @@ static int dvb_proxyfe_set_frontend(struct dvb_frontend *fe)
  
  		if (ctx->vtype == VT_S2 && c->delivery_system == SYS_DVBS2) {
  			/* DELIVERY SYSTEM: S2 delsys in use */
@@ -127,7 +122,7 @@ diff -uprNx '.*' vtuner.linux-driver/vtunerc_proxyfe.c vtuner_tweak/vtunerc_prox
  
  			/* ROLLOFF */
  			switch (c->rolloff) {
-@@ -506,10 +480,10 @@ static struct dvb_frontend_ops dvb_proxy
+@@ -506,10 +466,10 @@ static struct dvb_frontend_ops dvb_proxyfe_qpsk_ops = {
  		.frequency_tolerance	= 29500,
  		.symbol_rate_min	= 1000000,
  		.symbol_rate_max	= 45000000,
@@ -136,7 +131,7 @@ diff -uprNx '.*' vtuner.linux-driver/vtunerc_proxyfe.c vtuner_tweak/vtunerc_prox
 -			FE_CAN_FEC_5_6 | FE_CAN_FEC_7_8 | FE_CAN_FEC_AUTO |
 -			FE_CAN_QPSK
 +		.caps = FE_CAN_INVERSION_AUTO | FE_CAN_FEC_1_2 |
-+				FE_CAN_FEC_2_3 | FE_CAN_FEC_3_4 | FE_CAN_FEC_4_5 | 
++				FE_CAN_FEC_2_3 | FE_CAN_FEC_3_4 | FE_CAN_FEC_4_5 |
 +				FE_CAN_FEC_5_6 | FE_CAN_FEC_7_8 | FE_CAN_FEC_8_9 |
 +				FE_CAN_QPSK | FE_CAN_RECOVER
  	},
