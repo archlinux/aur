@@ -1,7 +1,7 @@
 pkgbase = blink
 	pkgdesc = A state of the art, easy to use SIP client
 	pkgver = 3.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://icanblink.com
 	arch = any
 	license = GPL3
