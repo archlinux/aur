@@ -1,7 +1,7 @@
 pkgbase = zfs-utils-common
 	pkgdesc = Kernel module support files for the Zettabyte File System.
 	pkgver = 0.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	install = zfs-utils.install
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = zfs-utils-common
 	conflicts = zfs-utils-linux-lts-git
 	replaces = zfs-utils-linux,
 	replaces = zfs-utils-linux-lts
+	backup = etc/zfs/zed.d/zed.rc
+	backup = etc/default/zfs
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.6/zfs-0.7.6.tar.gz
 	source = zfs-utils.bash-completion-r1
 	source = zfs-utils.initcpio.install

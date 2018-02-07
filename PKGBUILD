@@ -8,7 +8,7 @@
 pkgname="zfs-utils-common"
 
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("")
 makedepends=("git")
@@ -28,6 +28,7 @@ provides=("zfs-utils")
 install=zfs-utils.install
 conflicts=('zfs-utils-common-git' 'zfs-utils-linux-git' 'zfs-utils-linux' 'zfs-utils-linux-lts' 'zfs-utils-linux-lts-git')
 replaces=("zfs-utils-linux", "zfs-utils-linux-lts")
+backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs')
 
 build() {
     cd "${srcdir}/zfs-0.7.6"
