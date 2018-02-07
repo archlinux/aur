@@ -7,11 +7,11 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 # latest commit on stable branch
-_commit='242f14c5a807bb50bfda18568887deae1eb8a3ec'
+_commit='46659f7deb962f55c728e70597e37c2a3ab6326d'
 # Bump this to latest major release for signed tag verification,
 # the commit count is handled by pkgver() function.
-pkgver=236.81
-pkgrel=1
+pkgver=237.0
+pkgrel=2
 arch=('x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')
@@ -19,7 +19,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' '
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
-             'meson' 'libseccomp' 'libselinux')
+             'meson' 'libseccomp' 'pcre2' 'libselinux')
 options=('strip')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4')  # Lennart Poettering <lennart@poettering.net>
 # Retrieve the splash-arch.bmp image from systemd package sources, as this
@@ -157,7 +157,7 @@ package_systemd-selinux() {
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd-selinux' 'libidn' 'lz4' 'pam-selinux' 'libelf' 'libseccomp'
-           'util-linux-selinux' 'xz' 'audit')
+           'util-linux-selinux' 'xz' 'pcre2' 'audit')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('nss-myhostname' 'systemd-tools' 'udev'
