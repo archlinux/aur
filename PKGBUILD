@@ -36,7 +36,7 @@ package() {
 
 	install -D -m755 "yncc" "${pkgdir}/usr/bin/yncc"
 	install -D -m755 "yncc-gtk" "${pkgdir}/usr/bin/yncc-gtk"
-	install -D -m755 "libyncapi.a" "${pkgdir}/usr/lib/libyncapi.a"
+	install -D -m755 "libyncapi.so" "${pkgdir}/usr/lib/libyncapi.so"
 
 	install -D -m644 "../../yncapi/yncapi.h" "${pkgdir}/usr/include/yncapi.h"
 
