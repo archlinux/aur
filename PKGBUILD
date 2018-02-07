@@ -22,7 +22,6 @@ pkgver() {
 
 package() {
 	local _refind_home="${pkgdir}$(dirname $(find /boot -name "refind.conf" 2>/dev/null))"
-	echo $_refind_home
 	mkdir -p "${_refind_home}"
 	cp -r "${srcdir}/refind-ambience-black/refind-ambience-black" "${_refind_home}"
 	chmod -R 644 "${_refind_home}/refind-ambience-black"
