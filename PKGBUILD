@@ -3,9 +3,9 @@
 
 _pkgbase=pikaur
 pkgname=pikaur-git
-pkgver=0.1
+pkgver=0.3
 pkgrel=1
-pkgdesc="Minimalistic AUR helper."
+pkgdesc="AUR helper with minimal dependencies. Review PKGBUILDs all in once, next build them all without user interaction."
 arch=('any')
 url="https://github.com/actionless/pikaur"
 license=('GPLv3')
@@ -23,9 +23,6 @@ depends=(
 )
 makedepends=(
 	'nuitka'
-)
-optional=(
-	'gzip: faster db extraction'
 )
 
 pkgver() {
