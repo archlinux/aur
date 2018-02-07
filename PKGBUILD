@@ -1,9 +1,9 @@
-# Maintainer: Dave Blair <mail@dave-blair.de>
+#Maintainer: Dave Blair <mail@dave-blair.de>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
 
 pkgname=chrome-remote-desktop
-pkgver=61.0.3163.20
+pkgver=current
 pkgrel=2
 pkgdesc="Allows you to securely access your computer over the Internet through Chrome."
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
@@ -15,7 +15,7 @@ depends=('python2' 'python2-psutil' 'gconf' 'gtk3' 'nss'
 makedepends=('nano')
 
 #source_i686=("http://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-source_x86_64=("http://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
+source_x86_64=("http://dl.google.com/linux/direct/${pkgname}_${pkgver}_amd64.deb")
 source=("$pkgname.service"
         "crd")
 #md5sums_i686=('bf9135f439fa4bfa1daf16e96c62d87a')
