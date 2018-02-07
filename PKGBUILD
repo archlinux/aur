@@ -1,7 +1,7 @@
 # Maintainer: kitsunyan <kitsunyan@inbox.ru>
 
 pkgname=systemd-boot-password
-pkgver=0.9.6.236
+pkgver=1.0.237
 pkgrel=1
 pkgdesc='systemd-boot with password-protected editor'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL2.1')
 makedepends=('gnu-efi-libs' 'docbook-xsl')
 optdepends=('sbsigntools: signing support')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('a3991d4590cb7fdc8dcf88d29f819b5d25232090a71147ce913e1b8ed1bc4101')
+sha256sums=('aa69062246750a1f8c0141db4c4cfb757e19fefb1574571e4bd0a21f1168fed8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

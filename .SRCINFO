@@ -1,6 +1,6 @@
 pkgbase = systemd-boot-password
 	pkgdesc = systemd-boot with password-protected editor
-	pkgver = 0.9.6.236
+	pkgver = 1.0.237
 	pkgrel = 1
 	url = https://github.com/kitsunyan/systemd-boot-password
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = systemd-boot-password
 	makedepends = gnu-efi-libs
 	makedepends = docbook-xsl
 	optdepends = sbsigntools: signing support
-	source = https://github.com/kitsunyan/systemd-boot-password/releases/download/0.9.6.236/systemd-boot-password-0.9.6.236.tar.xz
-	sha256sums = a3991d4590cb7fdc8dcf88d29f819b5d25232090a71147ce913e1b8ed1bc4101
+	source = https://github.com/kitsunyan/systemd-boot-password/releases/download/1.0.237/systemd-boot-password-1.0.237.tar.xz
+	sha256sums = aa69062246750a1f8c0141db4c4cfb757e19fefb1574571e4bd0a21f1168fed8
 
 pkgname = systemd-boot-password
 
