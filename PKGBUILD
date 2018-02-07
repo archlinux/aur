@@ -2,7 +2,7 @@
 
 pkgname=adom-noteye
 pkgver=3.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A roguelike game with a quest-centric, plot driven structure (+ GUI) - Please consider buying the game on Steam"
 arch=("x86_64")
 url="http://www.adom.de/"
@@ -35,7 +35,7 @@ package() {
     install --mode 755 "${srcdir}/adom.sh" "${pkgdir}/opt/adom/adom.sh"
 
     install -d "${pkgdir}/usr/bin"
-    ln -s "${pkgdir}/opt/adom/adom.sh" "${pkgdir}/usr/bin/adom"
+    ln -s "/opt/adom/adom.sh" "${pkgdir}/usr/bin/adom"
 
     # Add the LICENSE file
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
