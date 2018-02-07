@@ -1,0 +1,4 @@
+*.pkg*
+/lm4tools
+/pkg
+/src
