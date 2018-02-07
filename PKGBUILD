@@ -2,7 +2,7 @@
 
 _gemname=coffee-script-source
 pkgname=ruby-$_gemname
-pkgver=1.10.0
+pkgver=1.12.2
 pkgrel=1
 pkgdesc='The CoffeeScript Compiler'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('09b8a25f185feac94e6d0226accdaf2bee207995a46ede77b6daa581afce7b5c2fc87acc4660d8467fae881d15b2c78c64bc5f1084b68a51ac287efe09a3b053')
+sha512sums=('f20dfc576202e5100f297e28481ac4e61776fd6684600ce5949b5deb26bfbacd74ae183462fc3cdaa81f95eb95729cd520b72841f70b6b4b133b1eea08ed6fcb')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
