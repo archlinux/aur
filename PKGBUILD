@@ -46,8 +46,8 @@ else
 fi
 pkgname="${_pkgname}-git"
 pkgver=2.1.20.r15.g4d2bebba
-pkgrel=1
-pkgdesc='Client/Server network backup for Windows and Linux, builds server or client'
+pkgrel=2
+pkgdesc='Client/Server network backup for Windows Workgroups and Linux, builds server or client'
 arch=('i686' 'x86_64')
 url='https://www.urbackup.org/'
 license=('GPL')
@@ -229,6 +229,15 @@ prepare() {
     msg "Update PKGBUILD with _cryptopp='${CRYPTOPP_NAME}'"
     false
   fi
+
+  cat >> 'cryptoplugin/cryptopp_inc.h' <<EOL
+
+#if (CRYPTOPP_VERSION >= 600) && (__cplusplus >= 201103L)
+    using byte = CryptoPP::byte;
+#else
+    typedef unsigned char byte;
+#endif
+EOL
 
   if [ "${_opt_BuildClient}" -ne 0 ]; then
     ln -sf '../urbackup_frontend_wx' 'client'
