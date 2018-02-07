@@ -1,13 +1,13 @@
 pkgbase = libkeepalive
 	pkgdesc = Enable tcp keepalive features without change in the original program
-	pkgver = 0.2
-	pkgrel = 3
+	pkgver = 0.3
+	pkgrel = 1
 	url = http://sourceforge.net/projects/libkeepalive/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://jaist.dl.sourceforge.net/project/libkeepalive/libkeepalive/0.2/libkeepalive-0.2.tar.gz
-	md5sums = cba031d7855efece5616fb8492c4e868
+	source = http://sourceforge.net/projects/libkeepalive/files/libkeepalive/0.3/libkeepalive-0.3.tar.gz
+	sha256sums = fb577b132a49d289ff3cd0c2a670ddc50028c6dbecfb164958ac031376a82dd2
 
 pkgname = libkeepalive
 
