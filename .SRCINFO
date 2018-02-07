@@ -1,0 +1,23 @@
+pkgbase = emacs-lucid-pre-test
+	pkgdesc = The extensible, customizable, self-documenting real-time display editor, compiled with the lucid toolkit
+	pkgver = 26.0.91
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/emacs.html
+	arch = x86_64
+	license = GPL3
+	depends = libxfixes
+	depends = libmagick6
+	depends = librsvg
+	depends = gpm
+	depends = m17n-lib
+	depends = hicolor-icon-theme
+	depends = dbus
+	depends = alsa-lib
+	depends = gnutls
+	depends = libxrandr
+	depends = libxinerama
+	source = https://github.com/emacs-mirror/emacs/archive/emacs-26.0.91.tar.gz
+	sha1sums = be49ce6c4c42bdb663f8066aba1c4079a6e1bb17
+
+pkgname = emacs-lucid-pre-test
+

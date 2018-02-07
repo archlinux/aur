@@ -1,0 +1,5 @@
+* emacs-lucid-pre-test
+  - This builds emacs 26 (pre-test) from the source [[https://github.com/emacs-mirror/emacs/releases][release tarballs]] of the (unofficial) emacs mirror on github.
+* usage
+  1. clone the repo
+  2. =makepkg --syncdeps --install=
