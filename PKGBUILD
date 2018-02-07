@@ -1,5 +1,5 @@
 pkgname=librepo
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Repodata downloading library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake' 'python')
 checkdepends=('check' 'python-flask' 'python-nose' 'python-pygpgme' 'python-pyxattr')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('d1b55dba36a9a8e17e73f78354baa5f6')
+md5sums=('01fe130eb421580d62e97e4991e94df7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -43,7 +43,7 @@ package() {
 		rmdir "$pkgdir/"usr/lib64
 	fi
 
-	install -D -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
