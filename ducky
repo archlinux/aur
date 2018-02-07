@@ -1,0 +1,54 @@
+#!/usr/bin/sh
+
+
+readonly VERSION="v2.6.3-2"
+readonly NAME=$(basename "${0}")
+
+usage(){
+    echo "${NAME} :
+    encode -i <file> [-o <file>] [-l <keyboardlayout>] : More info with '${NAME} encode -h'
+    decode -f <file> [-l <keyboardlayout>]             : More info with '${NAME} decode -h'
+    flash <file>                                       : Flash your ducky with hexadecimal object file (see /opt/USB-Rubber-Ducky/Firmware)
+    ducky-flasher                                      : Easily flash your USB Rubber ducky from Hak5
+    dump <file>                                        : Dump your ducky into hexadecimal object file
+    -h,--help                                          : Print this message
+    -v,--version                                       : Print the program's version"
+}
+
+version(){
+    echo ${VERSION}
+}
+
+case "$1" in
+    decode)
+        shift
+        /opt/USB-Rubber-Ducky/Decode/ducky-decode.pl $*
+        ;;
+    encode)
+        shift
+        java -jar /opt/USB-Rubber-Ducky/Encoder/encoder.jar $*
+        ;;
+    flash)
+        shift
+        sh /opt/USB-Rubber-Ducky/Flash/flash.sh $*
+        ;;
+    ducky-flasher)
+        python2 /opt/USB-Rubber-Ducky/ducky-flasher/ducky-flasher
+        ;;
+    dump)
+        shift
+        sh /opt/USB-Rubber-Ducky/Flash/dump.sh $*
+        ;;
+    -h|--help|"")
+        usage
+        exit 0
+        ;;
+    -v|--version)
+        version
+        exit 0
+        ;;
+    *)
+        echo "Wrong argument !"
+        usage
+        exit 1
+esac
