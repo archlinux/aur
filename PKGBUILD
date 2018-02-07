@@ -6,8 +6,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=laptop-mode-tools
-pkgver=1.71
-pkgrel=2
+pkgver=1.72.2
+pkgrel=1
 pkgdesc='Power Savings tool for Linux'
 arch=('any')
 url='https://github.com/rickysarraf/laptop-mode-tools/'
@@ -48,7 +48,7 @@ backup=('etc/laptop-mode/conf.d/ac97-powersave.conf'
     'etc/laptop-mode/laptop-mode.conf'
     'etc/laptop-mode/lm-profiler.conf')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/rickysarraf/laptop-mode-tools/archive/${pkgver}.tar.gz")
-sha256sums=('f69c870b07cafcb51df1cb5c25a8b349d1e1a2bd16b6ab33902aa3f8d1e3fa52')
+sha256sums=('665be3b263447a2439a242f6bdf2d12936b0311f18e36da189b3c9500b74559a')
 
 package() {
     cd "${pkgname}-${pkgver}"
