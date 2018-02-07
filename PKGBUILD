@@ -3,7 +3,7 @@
 
 _gemname=ethon
 pkgname=ruby-$_gemname
-pkgver=0.9.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Libcurl wrapper.'
 arch=(any)
@@ -20,4 +20,4 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha512sums=('5061977f6a94b5cf03f361844aea1be38436810fc88d1faa37f12d798050e55da30530d46cda295d7623d810c2286b5683b638077cf01c0b90127bb78b298868')
+sha512sums=('271ff2ce5578352722bab318ad40f06d9c76fdbdead573a015fed0a38f3fd6341bcf70acedaa9470fe97f47069977b09ac9f71d8dacb21b67aad917c2a078c72')
