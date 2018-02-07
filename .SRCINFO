@@ -1,14 +1,23 @@
 pkgbase = openwmail
-	pkgdesc = openwmail
+	pkgdesc = The missing desktop client for Gmail & Google Inbox
 	pkgver = 1.0.0
-	pkgrel = 4
-	url = https://github.com/openwmail/openwmail
+	pkgrel = 1
+	url = https://openwmail.github.io/
 	arch = x86_64
-	license = MLP-2.0
-	depends = libnotify
-	depends = gconf
-	source_x86_64 = https://github.com/openWMail/openWMail/releases/download/v1.0.0/openWMail_1-0-0_Linux_x86_64.deb
-	md5sums_x86_64 = d84ceea682905b58531c43f5962317fb
+	license = MPL
+	makedepends = git
+	makedepends = npm
+	makedepends = python2
+	depends = electron
+	options = !strip
+	source = openWMail-1.0.0.tar.gz::https://github.com/openWMail/openwmail/archive/v1.0.0.tar.gz
+	source = openwmail.sh
+	source = openwmail.desktop
+	source = credentials.js
+	sha256sums = 445f54c02e3b83a5e5997eede34b3c969a67b3bd15f5f921b53e626f2777ebde
+	sha256sums = 5fa3dc9f2c022deab663541ec6269761d2683db0e1edc0d806ebd23a806bc0bd
+	sha256sums = dbc45544162aeebf06ce8037c53c67642c1e170824828d6ee87c0f5435050750
+	sha256sums = f51147540936c439249076b96679da2fc971ea00c9220d736b12f0879ed89467
 
 pkgname = openwmail
 

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=openWMail
+Comment=The missing desktop client for Gmail & Google Inbox
+Exec=openwmail
+Icon=openwmail
+Categories=Network;Email;
