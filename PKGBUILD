@@ -2,7 +2,7 @@
 # Contributer: Amateurfunk Station der Hochschule Niederrhein (DF0FN) <df0fn@hs-niederrhein.de>
 
 pkgname=('svxlink')
-pkgver="15.11"
+pkgver="17.12"
 pkgrel=1
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://sourceforge.net/projects/svxlink/"
@@ -10,7 +10,7 @@ license=('GPL')
 source=("https://github.com/sm0svx/${pkgname}/archive/${pkgver}.tar.gz"
 	"svxlink.service"
 	"remotetrx.service")
-sha256sums=('17bd8a1174c70e990b676210e6edb373732d284aed55c5a82bc378a1d69cecf2'
+sha256sums=('f0c70564ef8083910b178a803121c6a279fbc846cefd591f19e528df960614f8'
             'adc29c81df1794b62bd47202af388397c886cc86a95fa05b3446b3a93a1b3a7c'
             '41adf7f9863f1ea3013b079e628455a22c29d1b369d174bd19905334c9c31543')
 depends=('alsa-utils' 'alsa-lib' 'libsigc++' 'gsm' 'libgcrypt' 'popt' 'tcl' 'speex' 'opus')
