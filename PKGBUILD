@@ -2,7 +2,7 @@
 # Contributor: Jon Gjengset <jon@thesquareplanet.com>
 
 pkgname=vuvuzela-git
-pkgver=r104.b7327a9
+pkgver=r105.eaebd07
 pkgrel=1
 pkgdesc="Scalable Private Messaging"
 arch=('x86_64' 'i686')
@@ -25,6 +25,7 @@ build() {
   mkdir -p "$GOPATH"
 
   mkdir -p "$GOPATH/src/vuvuzela.io"
+  rm -rf "$GOPATH/src/vuvuzela.io/vuvuzela"
   mv "$srcdir/vuvuzela" "$GOPATH/src/vuvuzela.io/vuvuzela"
   cd "$GOPATH/src/$_gourl"
 
