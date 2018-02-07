@@ -1,5 +1,5 @@
 pkgname=pia-launch
-pkgver=20161013
+pkgver=20180207
 pkgrel=1
 pkgdesc="A simple wrapper for OpenVPN for use with Private Internet Access"
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/dh4/pia-launch"
 license=('BSD')
 depends=('openvpn')
 source=('https://www.privateinternetaccess.com/openvpn/openvpn-ip.zip')
-md5sums=('2ea8a0773e0591e7834cd60537fc6959')
+md5sums=(SKIP)
 
 _gitroot='https://github.com/dh4/pia-launch.git'
 _gitname='pia-launch'
