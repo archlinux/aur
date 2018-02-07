@@ -1,7 +1,7 @@
 pkgbase = chrome-remote-desktop
 	pkgdesc = Allows you to securely access your computer over the Internet through Chrome.
-	pkgver = current
-	pkgrel = 2
+	pkgver = 63.0.3239.17
+	pkgrel = 1
 	url = https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp
 	install = chrome-remote-desktop.install
 	arch = x86_64
@@ -24,4 +24,3 @@ pkgbase = chrome-remote-desktop
 	md5sums_x86_64 = a933a425339b7d5da9dcb71fca15611f 
 
 pkgname = chrome-remote-desktop
-
