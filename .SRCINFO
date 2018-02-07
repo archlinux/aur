@@ -1,0 +1,17 @@
+pkgbase = lm4flash-git
+	pkgdesc = Firmware flashing tool for Stellaris Launchpad ICDI
+	pkgver = v0.1.2.r14.g65fbc45
+	pkgrel = 1
+	url = https://github.com/utzig/lm4tools
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = libusb
+	provides = lm4flash
+	conflicts = lm4flash
+	source = git+https://github.com/utzig/lm4tools.git
+	md5sums = SKIP
+
+pkgname = lm4flash-git
+
