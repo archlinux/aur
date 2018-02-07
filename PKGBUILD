@@ -1,17 +1,17 @@
+# Maintainer: johnnybash <georgpfahler[at]wachenzell[dot]org>
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
-# Maintainer: Lukas Sabota [prg318] <LTsmooth42[at]gmail[dot]com>
+# Contributor: Lukas Sabota [prg318] <LTsmooth42[at]gmail[dot]com>
 
 pkgname=quake3-cpma-maps
-pkgver=20121121
-pkgrel=2
+pkgver=20180207
+pkgrel=1
 pkgdesc="Challenge ProMode Arena (CPMA) Official Mappack (Can be used in any Quake 3 Mod)."
-url="http://eu.promode.ru"
+url="http://playmorepromode.org"
 license=('custom')
 arch=('any')
 depends=('quake3' 'quake3-cpma')
-source=('http://users.mrlazyinc.com/gaiia/cpma-mappack-full.zip')
-DLAGENTS=('http::/usr/bin/wget') # server configured to disallow curl -- use wget instead
-md5sums=('4f170d3a4c184897dbc34f48f2be810d')
+source=('http://playmorepromode.org/files/cpma-mappack-full.zip')
+sha256sums=('5db933fc92c41f2e0941ab65725586d4d0c30fe84727427bb6b265e4d941a226')
 
 package() {
 	# Create Destination Directories
