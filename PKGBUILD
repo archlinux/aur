@@ -33,7 +33,7 @@ prepare() {
 build(){
   # QtWebKitWidgets: https://bugreports.qt.io/browse/PYSIDE-598
   # Qt3DInput: https://bugreports.qt.io/browse/PYSIDE-602
-  # Qt3DRender: https://bugreports.qt.io/browse/PYSIDE-598
+  # Qt3DRender: https://bugreports.qt.io/browse/PYSIDE-607
   cmake_args="-DQt5WebKitWidgets_FOUND=FALSE -DQt53DInput_FOUND=FALSE -DQt53DRender_FOUND=FALSE"
 
   # Build for python2.
