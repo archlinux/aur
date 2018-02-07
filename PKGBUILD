@@ -1,9 +1,9 @@
 # Package inspired from homebrew
 
-# Maintainer: Sebastien Duthil <duthils@free.fr>
+# Maintainer: Sebastien Duthil <duthils@duthils.net>
 
 pkgname=cask
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Project management tool for Emacs"
 arch=('any')
@@ -11,7 +11,7 @@ url='https://github.com/cask/cask'
 license=('GPL')
 depends=('emacs>=23' 'python')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8739ba608f23c79b3426faa8b068d5d1bc096c7305ce30b1163babd354be821c')
+sha256sums=('16b1054af3f58cf95b72f2d10e03450f550311774c7f16b918e3f29ecc7fcd13')
 
 package() {
 	cd "${srcdir}/${pkgname}-$pkgver"
