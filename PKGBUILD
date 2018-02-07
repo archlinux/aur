@@ -6,21 +6,23 @@
 pkgname=snapd
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
-pkgver=2.30
-pkgrel=10
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+pkgver=2.31
+pkgrel=1
+arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
 makedepends=('git' 'go-pie' 'go-tools' 'libcap' 'python-docutils' 'systemd' 'xfsprogs')
 conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
-source=("git+https://github.com/snapcore/${pkgname}.git#tag=${pkgver}")
-md5sums=('SKIP')
+source=("$pkgname-$pkgver::https://github.com/snapcore/${pkgname}/archive/$pkgver.tar.gz")
+sha256sums=('973e7e8098f5780d71a0633a0fa7c3371ef7fb7ae120d464b2e25af9588c1f89')
 
 _gourl=github.com/snapcore/snapd
 
 prepare() {
+  cd "$pkgname-$pkgver"
+
   export GOPATH="$srcdir/go"
   mkdir -p "$GOPATH"
 
@@ -28,13 +30,14 @@ prepare() {
   # way we don't have to go get it again and it is exactly what the tag/hash
   # above describes.
   mkdir -p "$(dirname "$GOPATH/src/${_gourl}")"
-  ln --no-target-directory -fs "$srcdir/$pkgname" "$GOPATH/src/${_gourl}"
+  ln --no-target-directory -fs "$srcdir/$pkgname-$pkgver" "$GOPATH/src/${_gourl}"
 
   # Patch snap-seccomp build flags not to link libseccomp statically.
-  sed -i -e 's/-Wl,-Bstatic -lseccomp -Wl,-Bdynamic/-lseccomp/' "$srcdir/$pkgname/cmd/snap-seccomp/main.go"
+  sed -i -e 's/-Wl,-Bstatic -lseccomp -Wl,-Bdynamic/-lseccomp/' "cmd/snap-seccomp/main.go"
 }
 
 build() {
+  cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/go"
 
   export CGO_ENABLED="1"
@@ -43,7 +46,6 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
 
-  cd $pkgname
   ./mkversion.sh $pkgver
 
   # Use get-deps.sh provided by upstream to fetch go dependencies using the
@@ -79,18 +81,19 @@ build() {
 
 
 package() {
+  cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/go"
 
   # Install bash completion
-  install -Dm644 "$srcdir/$pkgname/data/completion/snap" \
+  install -Dm644 data/completion/snap \
     "$pkgdir/usr/share/bash-completion/completion/snap"
-  install -Dm644 "$srcdir/$pkgname/data/completion/complete.sh" \
+  install -Dm644 data/completion/complete.sh \
     "$pkgdir/usr/lib/snapd/complete.sh"
-  install -Dm644 "$srcdir/$pkgname/data/completion/etelpmoc.sh" \
+  install -Dm644 data/completion/etelpmoc.sh \
     "$pkgdir/usr/lib/snapd/etelpmoc.sh"
 
   # Install systemd units, dbus services and a script for environment variables
-  make -C "$srcdir/$pkgname/data/" install \
+  make -C data/ install \
      DBUSSERVICESDIR=/usr/share/dbus-1/services \
      BINDIR=/usr/bin \
      SYSTEMDSYSTEMUNITDIR=/usr/lib/systemd/system \
@@ -98,7 +101,7 @@ package() {
      DESTDIR="$pkgdir"
 
   # Install polkit policy
-  install -Dm644 "$srcdir/$pkgname/data/polkit/io.snapcraft.snapd.policy" \
+  install -Dm644 data/polkit/io.snapcraft.snapd.policy \
     "$pkgdir/usr/share/polkit-1/actions/io.snapcraft.snapd.policy"
 
   # Install executables
@@ -108,7 +111,6 @@ package() {
   install -Dm755 "$GOPATH/bin/snap-seccomp" "$pkgdir/usr/lib/snapd/snap-seccomp"
   install -Dm755 "$GOPATH/bin/snap-update-ns" "$pkgdir/usr/lib/snapd/snap-update-ns"
   install -Dm755 "$GOPATH/bin/snap-exec" "$pkgdir/usr/lib/snapd/snap-exec"
-  install -Dm755 "$srcdir/$pkgname/packaging/fedora/snap-mgmt.sh" "$pkgdir/usr/lib/snapd/snap-mgmt"
 
   # Symlink /var/lib/snapd/snap to /snap so that --classic snaps work
   ln -s var/lib/snapd/snap "$pkgdir/snap"
@@ -131,7 +133,7 @@ package() {
   install -dm700 "$pkgdir/var/lib/snapd/cookie"
   install -dm700 "$pkgdir/var/lib/snapd/cache"
 
-  make -C "$srcdir/$pkgbase/cmd" install DESTDIR="$pkgdir/"
+  make -C cmd install DESTDIR="$pkgdir/"
 
   # Install man file
   "$GOPATH/bin/snap" help --man > "$pkgdir/usr/share/man/man1/snap.1"
