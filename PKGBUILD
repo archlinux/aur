@@ -2,16 +2,16 @@
 
 _gemname=logging
 pkgname=ruby-$_gemname
-pkgver=2.1.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Logging is a flexible logging library for use in Ruby programs'
 arch=(any)
-url='http://rubygems.org/gems/logging'
+url='https://github.com/TwP/logging/'
 depends=('ruby' 'ruby-little-plugger>=1.1' 'ruby-multi_json>=1.10')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('e8aad48ef24f8f70fad2aa4d78c25cb675b8c65ea883e14f6e2697af79111de38bced389d2f20d5699bc722274268ddac835c34f89884ea0aee86571a7ca1b55')
+sha512sums=('9eeaec06f61dec5f79b7b656b77504026d6d91baea52594fa508f1587a8300ebb3d5c30461c7b4a41eb86f7b98530e4f6ab7853946fa14f00b84884be780b64a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
