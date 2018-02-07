@@ -36,7 +36,7 @@ build() {
 check() {
   cd "$srcdir/$pkgname-$pkgver"
   cd build
-  ninja test
+  ctest --output-on-failure
 }
 
 package() {
