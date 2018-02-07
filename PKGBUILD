@@ -1,49 +1,55 @@
-# Maintainer: Jose Marino <jose.marino <at> gmail <dot> com>
-# NOTE (Jose): I have no idea how to properly build an electron application.
-#              The easiest way I could figure out was to extract the binary
-#              from the AppImage package.
+# $Id$
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=inboxer
 pkgver=1.0.2
 pkgrel=1
-pkgdesc="Unofficial, free and open-source Google Inbox Desktop App"
-arch=('x86_64')
+pkgdesc="Unofficial, free and open-source Google Inbox desktop app"
+arch=(any)
 url="https://denysdovhan.com/inboxer/"
-license=('MIT')
-depends=('nss>=3 gtk2')
-makedepends=('')
-checkdepends=()
-optdepends=()
-options=()
-install=
-source=("https://github.com/denysdovhan/inboxer/releases/download/v${pkgver}/inboxer-${pkgver}-x86_64.AppImage"
-        "inboxer.sh")
-sha256sums=('9a83ec32f222697786c19a3f51e7b4cbce307d413bf2f1eabf9e4aee3a3111d9'
-            'ec740d8e9aa0ae6485a0ca44e5bbee959337ca414d40478d3e420abf22522544')
-validpgpkeys=()
+license=(MIT)
+depends=(electron)
+makedepends=(npm)
+options=(!strip)
+source=($pkgname-$pkgver.tar.gz::https://github.com/denysdovhan/$pkgname/archive/v$pkgver.tar.gz
+        $pkgname.sh
+        $pkgname.desktop)
+sha256sums=('2d8ee1fed82091db821a0a96d43fb9e2ad06b49e9f4b6512570f548223945f0e'
+            'd8519d50a0becf00d2cd0809e4363087949fdc3d43c315ce26f87235e9ae6b27'
+            '3048bb5c4d50269d27a46db7ff550f226881bd77ac6672573a0075b3b75ce2a0')
 
-prepare() {
-  chmod u+x inboxer-${pkgver}-x86_64.AppImage
-  ./inboxer-${pkgver}-x86_64.AppImage --appimage-extract > /dev/null 2>&1
-  # Set directory permissions to drwxr-xr-x
-  find squashfs-root -type d -exec chmod 755 {} \;
-
-  # fix .desktop file: executable and categories
-  sed -i -e "s/Exec=.*/Exec=inboxer/" squashfs-root/inboxer.desktop
-  sed -i -e "s/Categories=.*/Categories=Network;Email/" squashfs-root/inboxer.desktop
+build() {
+  cd $pkgname-$pkgver
+  sed -i '/"postinstall"/d' package.json
+  npm install --production
 }
 
 package() {
-  install -D inboxer.sh -t "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 squashfs-root/inboxer.desktop -t "${pkgdir}/usr/share/applications/"
-  cp -a --no-preserve=ownership squashfs-root/app/* "${pkgdir}/opt/${pkgname}/"
-  cp -a --no-preserve=ownership squashfs-root/usr/lib "${pkgdir}/opt/${pkgname}/"
-  cp -a --no-preserve=ownership squashfs-root/usr/share/icons "${pkgdir}/usr/share/"
+  mkdir -p "$pkgdir"/usr/{lib,share/pixmaps}
+  cp -r $pkgname-$pkgver "$pkgdir/usr/lib/$pkgname"
+  ln -s ../../lib/inboxer/app/static/Icon@2x.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # modify installation folder in executable script
-  sed -i -e "s_@FOLDER@_/opt/${pkgname}_" "${pkgdir}/opt/${pkgname}/inboxer.sh"
-
-  # create executable link
-  install -d "${pkgdir}/usr/bin/"
-  ln -sf "/opt/${pkgname}/inboxer.sh" "${pkgdir}/usr/bin/inboxer"
+  # Clean up
+  find "$pkgdir/usr/lib/$pkgname/node_modules" \
+      -name "package.json" \
+        -exec sed -e "s|$srcdir/$pkgname|/usr/lib/$pkgname|" \
+            -i {} \; \
+      -or -name ".*" -prune -exec rm -r '{}' \; \
+      -or -name "*.gyp" -prune -exec rm -r '{}' \; \
+      -or -name "*.gypi" -prune -exec rm -r '{}' \; \
+      -or -name "*.mk" -prune -exec rm -r '{}' \; \
+      -or -name "*Makefile" -prune -exec rm -r '{}' \; \
+      -or -name "bin" -prune -exec rm -r '{}' \; \
+      -or -name "deps" -prune -exec rm -r '{}' \; \
+      -or -name "doc" -prune -exec rm -r '{}' \; \
+      -or -name "example" -prune -exec rm -r '{}' \; \
+      -or -name "man" -prune -exec rm -r '{}' \; \
+      -or -name "nan" -prune -exec rm -r '{}' \; \
+      -or -name "obj.target" -prune -exec rm -r '{}' \; \
+      -or -name "script" -prune -exec rm -r '{}' \; \
+      -or -name "test" -prune -exec rm -r '{}' \; \
+      -or -name "tmp" -prune -exec rm -r '{}' \;
 }
