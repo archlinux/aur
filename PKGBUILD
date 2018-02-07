@@ -3,7 +3,7 @@
 pkgbase=python-abjad
 pkgname=(python-abjad python2-abjad)
 pkgver=2.21
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool for formalized music score control."
 arch=("any")
 url="https://github.com/Abjad/abjad"
@@ -12,13 +12,9 @@ depends=("lilypond")
 makedepends=("python-setuptools" "python2-setuptools")
 conflicts=("python2-abjad")
 optdepends=(
-    "graphviz: to create rhythm-trees graphs and other tree structures"
     "fluidsynth: to play generated MIDI files (instead of timidity++)"
     "timidity++: to play generated MIDI files (instead of fluidsynth)"
-    "jupyter: browser-based interactive notebook for programming"
-    "ipython: an enhanced Python console"
-    "python-ipywidgets: IPython widgets for Jupyter notebook"
-    "python-pypdf2: PDF toolkit"
+    "graphviz: to create rhythm-trees graphs and other tree structures"
     )
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=("5fc1fc977b9521d4b9ce1aa8bdea1aa07306e313bd03feea15e8c680b4f27c5b")
@@ -44,7 +40,7 @@ package_python-abjad() {
     conflicts=("python2-abjad")
 
     cd $srcdir/abjad-$pkgver
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python setup.py install --root="$pkgdir/" --no-compile
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
@@ -63,7 +59,7 @@ package_python2-abjad() {
     provides=("python-abjad")
 
     cd $srcdir/abjad-$pkgver-python2
-    python2 setup.py install --root="$pkgdir/" --optimize=1
+    python2 setup.py install --root="$pkgdir/" --no-compile
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
