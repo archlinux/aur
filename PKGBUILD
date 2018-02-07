@@ -1,6 +1,6 @@
 # Maintainer: ian <ian at kremlin dot cc>
 pkgname=bashstyle-git
-pkgver=0.9.1.r86.g8fecd78
+pkgver=0.10.3.r11.g3613554
 pkgrel=1
 pkgdesc="A PyGTK client for managing bash, readline, vim, and nano settings (git version)"
 arch=('any')
@@ -10,12 +10,10 @@ groups=('system')
 depends=('python2' 'dmidecode' 'gawk' 'sed' 'bc' 'gettext' 'less' 'libnewt' 'python2-configobj' 'python2-gobject' 'hicolor-icon-theme')
 makedepends=('git')
 optdepends=("acpi: showbatteryload support" "tree: fs support")
-install="bashstyle-git.install"
 conflicts=('bashstyle')
 provides=('bashstyle')
-source=("git://github.com/Nanolx/bashstyle-ng.git" "bashstyle-git.install")
-md5sums=('SKIP'
-         '7035b66999f96ea0030d7af7ce14c25a')
+source=("git://github.com/Nanolx/bashstyle-ng.git")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/bashstyle-ng"
@@ -23,7 +21,7 @@ pkgver() {
 }
 build() {
 	cd "$srcdir/bashstyle-ng"
-	./configure --python=/usr/bin/python2 --no-postinstall
+	./configure --python=/usr/bin/python --no-postinstall
 	./make build
 }
 
