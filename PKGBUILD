@@ -2,7 +2,7 @@
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
 pkgver=2.1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -20,6 +20,16 @@ MAKEFLAGS="-j$(nproc)"
 
 build() {
 	sed  -i '/\#include \"cryptopp_inc.h\"/a #include "assert.h"' "${srcdir}/urbackup-server-${pkgver}/cryptoplugin/AESGCMDecryption.h"
+
+	cat >> "${srcdir}/urbackup-server-${pkgver}/cryptoplugin/cryptopp_inc.h" <<EOL
+
+#if (CRYPTOPP_VERSION >= 600) && (__cplusplus >= 201103L)
+    using byte = CryptoPP::byte;
+#else
+    typedef unsigned char byte;
+#endif
+EOL
+
 	cd "${srcdir}/urbackup-server-${pkgver}"
 	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc \
 		--localstatedir=/var --enable-packaging \
