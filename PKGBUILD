@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python2-sherpa
 pkgver=4.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
 url="http://cxc.cfa.harvard.edu/contrib/sherpa/"
@@ -30,8 +30,10 @@ package() {
     unset LDFLAGS
     cd ${srcdir}/sherpa-${pkgver}
 
-    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 {docs/SherpaQuickStart.ipynb,README.md,CITATION} -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
     python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    rm ${pkgdir}/usr/lib/python2.7/site-packages/sherpa-${pkgver}-py2.7.egg-info/SOURCES.txt
 
     mv ${pkgdir}/usr/bin/sherpa_smoke ${pkgdir}/usr/bin/sherpa_smoke2
     mv ${pkgdir}/usr/bin/sherpa_test ${pkgdir}/usr/bin/sherpa_test2
