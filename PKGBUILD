@@ -16,7 +16,6 @@ package() {
   cd "$srcdir/$pkgname"
 
   python setup.py install --root="$pkgdir/" --optimize=1
-
   install -Dm0644 LICENSE* "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
