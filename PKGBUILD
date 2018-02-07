@@ -12,9 +12,11 @@ license=('GPL2')
 depends=("ccnet" "fuse" "python2" "sqlite")
 makedepends=("vala" "intltool")
 source=("seafile-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "libseafile.in.patch")
+        "libseafile.in.patch"
+        "seaf-cli@.service")
 sha256sums=('19f9ccd515af8b4dc422479dfdc69ab3a55978751ed25653e0f5d04196949f6a'
-            'a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076')
+            'a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076'
+            'c37510109c1de64c774896df39aece240c056b54414d2119fca01860211156ba')
 provides=('seafile-client-cli')
 
 prepare () {
@@ -44,4 +46,5 @@ package() {
   cd "${srcdir}/seafile-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
+  install -Dm644 "${srcdir}"/seaf-cli@.service "${pkgdir}"/usr/lib/systemd/system/seaf-cli@.service
 }
