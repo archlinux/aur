@@ -2,17 +2,17 @@
 
 _gemname=jekyll-coffeescript
 pkgname=ruby-$_gemname
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='A CoffeeScript converter for Jekyll.'
 arch=(any)
 url='https://github.com/jekyll/jekyll-coffeescript'
 license=('MIT')
-depends=('ruby' 'ruby-coffee-script>2.2')
+depends=('ruby' 'ruby-coffee-script>2.2' 'ruby-coffee-script-source>1.11.1')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('5fbedb81117649c688e88a0862299f8d928376bc68cc75637f4743e322265601d56fe75778dcdba9eec22e41bc475a54fd09adc6e5d88525a005a0ecf07ea15e')
+sha512sums=('6e6f7c21b01a840c30b668b68da2d0ce657bbc6f6394502c32b93f0a2d8881ce50066dc1f8a34496101db24e97da3ea857ae02f8d983b2cbea90a104a4be8ccf')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
