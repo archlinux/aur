@@ -27,7 +27,7 @@ build() {
 package() {
   mkdir -p "$pkgdir"/usr/{lib,share/pixmaps}
   cp -r $pkgname-$pkgver "$pkgdir/usr/lib/$pkgname"
-  ln -s ../../lib/inboxer/app/static/Icon@2x.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  ln -s ../../lib/$pkgname/app/static/Icon@2x.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
   install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
