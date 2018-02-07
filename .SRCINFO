@@ -1,12 +1,13 @@
 pkgbase = ubuntu-mate-themes
 	pkgdesc = GTK2, GTK3, Unity and Metacity themes from Ubuntu MATE.
 	pkgver = 18.04.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/ubuntu-mate/
 	arch = any
 	groups = mate-extra
 	license = GPL3
 	depends = gtk-engine-murrine
+	optdepends = ubuntu-mate-icon-themes: The official icon themes for Ubuntu MATE.
 	source = http://mirrors.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/ubuntu-mate-themes_18.04.3_all.deb
 	sha512sums = cb1dd1620fee9ca8f2e246cb3c55e62c2c7ba5c685c76f470fd9e0d973f614d029fc3bd0016b89111777e2a62c6bf2cc194e0c95f48f95a2a15d829694978189
 
