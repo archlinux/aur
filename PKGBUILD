@@ -2,17 +2,17 @@
 
 _gemname=pygments.rb
 pkgname=ruby-$_gemname
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='pygments wrapper for ruby'
 arch=(any)
 url='https://github.com/tmm1/pygments.rb'
 license=('MIT')
-depends=('ruby' 'python2' 'ruby-yajl-ruby>=1.2.0' 'ruby-posix-spawn>=0.3.6')
+depends=('ruby' 'python2' 'ruby-multi_json>=1.0.0')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('dee41bf20142b6a63396504b734c183049f84629e7a943bfb361458f6f8d55e9f84ac6c28bac069d839c519eaf562bd73c74e422ebaf750a7430690a8fad043c')
+sha512sums=('f0fc63ec028169872e28e2181c6a10c8a3f5e7f07074ba9f43475a0b5aa403a03d7045abb03433b600ef3d74c460556355b4ee64be598d3b93ddb1e0bb306259')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
