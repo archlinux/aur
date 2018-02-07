@@ -1,0 +1,14 @@
+#!/bin/sh
+
+post_install() {
+	sed -i '/^#0nyX$/,+1 d' /etc/environment
+	printf '\n#0nyX\nGTK_OVERLAY_SCROLLING=0\n#0nyX\nLIBOVERLAY_SCROLLBAR=0'>> /etc/environment
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	sed -i '/^#0nyX$/,+1 d' /etc/environment
+}
