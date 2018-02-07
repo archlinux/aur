@@ -8,7 +8,7 @@
 
 pkgbase=linux-ryzen-git
 _srcname=linux
-pkgver=4.15.r10759.ge237f98a9c13
+pkgver=4.15.r11411.g68c5735eaa5e
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
