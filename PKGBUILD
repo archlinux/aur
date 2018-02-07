@@ -1,4 +1,6 @@
-#Maintainer: Dave Blair <mail@dave-blair.de>
+#Maintainer: klepz <felipe.junger@aluno.ufabc.edu.br>
+
+# Contributor: Dave Blair <mail@dave-blair.de>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
 
@@ -19,7 +21,7 @@ source_x86_64=("http://dl.google.com/linux/direct/${pkgname}_${pkgver}_amd64.deb
 source=("$pkgname.service"
         "crd")
 #md5sums_i686=('bf9135f439fa4bfa1daf16e96c62d87a')
-md5sums_x86_64=('d7203d1b64eebfebc8aacd7b7a6e7b6e')
+md5sums_x86_64=('a933a425339b7d5da9dcb71fca15611f')
 md5sums=('6f6083ff37f036f590702c7b1319445b'
          'ad1e228db2a456bb9e5b11258bc58bf7')
 
