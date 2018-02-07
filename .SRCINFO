@@ -1,0 +1,17 @@
+pkgbase = dnsdiag
+	pkgdesc = DNS Diagnostics and Performance Measurement Tools
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://dnsdiag.org/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dnspython
+	depends = python-cymruwhois
+	source = git+https://github.com/farrokhi/dnsdiag.git#tag=v1.6.3
+	sha256sums = SKIP
+
+pkgname = dnsdiag
+
