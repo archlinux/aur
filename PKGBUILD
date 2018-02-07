@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-cmake
 pkgver=1
-pkgrel=18
+pkgrel=19
 arch=('any')
 pkgdesc="CMake wrapper for MinGW (mingw-w64)"
 depends=('cmake' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
@@ -17,6 +17,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   for _arch in ${_architectures}; do
     sed "s|@TRIPLE@|${_arch}|g" toolchain-mingw.cmake > toolchain-${_arch}.cmake
+    sed "s|@PROCESSOR@|${_arch::-12}|g" toolchain-mingw.cmake > toolchain-${_arch}.cmake
     sed "s|@TRIPLE@|${_arch}|g" mingw-cmake.sh > ${_arch}-cmake
     sed "s|@TRIPLE@|${_arch}|g" mingw-wine.sh > ${_arch}-wine
   done

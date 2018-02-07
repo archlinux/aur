@@ -1,4 +1,5 @@
 set (CMAKE_SYSTEM_NAME Windows)
+set (CMAKE_SYSTEM_PROCESSOR @PROCESSOR@)
 
 # specify the cross compiler
 set (CMAKE_C_COMPILER @TRIPLE@-gcc)
