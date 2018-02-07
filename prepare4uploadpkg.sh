@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-makepkg --nobuild --skipinteg
+makepkg --nobuild --skipinteg || exit 1
 
 rm -rf pkg/ src/ conky*
 
