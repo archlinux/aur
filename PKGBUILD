@@ -26,5 +26,5 @@ package() {
 	cp -r "${srcdir}/refind-ambience-black/refind-ambience-black" "${_refind_home}/themes"
 	chmod -R 644 "${_refind_home}/themes/refind-ambience-black"
 	install -Dm644 "${srcdir}"/refind-ambience-black/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	echo 'Remember to add "include themes//refind-ambience-black/theme.conf" to your refind.conf file'
+	echo 'Remember to add "include themes/refind-ambience-black/theme.conf" to your refind.conf file'
 }
