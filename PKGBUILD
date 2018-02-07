@@ -1,3 +1,5 @@
+# Maintainer: Maarten Baert <maarten-baert@hotmail.com>
+
 pkgname=simplescreenrecorder-git
 pkgver=0.3.8.r89.g2edb032
 pkgrel=1
