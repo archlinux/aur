@@ -2,7 +2,7 @@
 
 pkgname=bedrock
 _gitname=Bedrock
-pkgver=r340.8a823b7
+pkgver=r1318.8187835
 pkgrel=1
 pkgdesc="Rock solid distributed database specializing in active/active automatic failover and WAN replication."
 url="http://bedrockdb.com"
@@ -22,6 +22,20 @@ pkgver() {
       "$(git rev-list --count HEAD)" \
       "$(git log | head -n 1 | cut -d" " -f2 | awk '{print substr($0,0,7)}')"
   )
+}
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+
+  # Fix compilation errors
+  sed -i "s|#include <atomic>|#include <atomic>\n#include <functional>|" \
+    libstuff/libstuff.h
+
+  sed -i "s|/mbedtls/include -Werror -Wno-unu|/mbedtls/include -Wno-unu|" \
+    Makefile
+
+  sed -i 's|"Timestamp"), 1ul)|"Timestamp"), 1ull)|' \
+    libstuff/STCPNode.cpp
 }
 
 build() {
