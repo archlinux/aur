@@ -1,0 +1,17 @@
+pkgbase = terraform-provider-libvirt
+	pkgdesc = Terraform provider for libvirt
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/dmacvicar/terraform-provider-libvirt
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = go
+	makedepends = git
+	depends = terraform
+	depends = libvirt
+	source = https://github.com/dmacvicar/terraform-provider-libvirt/archive/v0.3.tar.gz
+	sha256sums = 968682b29ea8f9bac3a4316c3034648e2a363d95df648a55c905e96623b758d1
+
+pkgname = terraform-provider-libvirt
+
