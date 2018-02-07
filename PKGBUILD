@@ -1,9 +1,9 @@
 # Maintainer: psfloyd <peter.racoon@gmail.com>
 
 pkgname='refind-theme-ambience-black-git'
-pkgver=r46.446477f
+pkgver='r46.446477f'
 pkgrel=1
-pkgdesc="Dark minimalistic theme for refind. Fork of refind-ambience."
+pkgdesc="Dark minimalistic theme for refind UEFI boot manager. Fork of refind-ambience."
 arch=('any')
 url="https://gitlab.com/psfloyd/refind-ambience-black.git"
 license=('MIT')
