@@ -1,7 +1,7 @@
 pkgbase = inboxer
 	pkgdesc = Unofficial, free and open-source Google Inbox desktop app
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://denysdovhan.com/inboxer/
 	arch = any
 	license = MIT
