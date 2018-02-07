@@ -1,6 +1,6 @@
 # Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
 pkgname=electrum-mona
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="A lightweight Monacoin wallet"
 arch=('any')
@@ -24,7 +24,7 @@ depends=('cython'
 optdepends=('python-matplotlib: for plot history')
 makedepends=('python-pycurl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wakiyamap/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('4f5d4506a980415e8c8a63f5c871d5f9c4ab3bf1d7c87f778cce3d9413f19f200e8b16ff17c953d863377a3322eb7a653db4ac186414226a1949ec93e3427a76')
+sha512sums=('043f9f2f70a671649639fb77aea1861673df355c1dfcbd1de6718226cb29fbafda55076f1be5cd9fdebae1a9bd9851d2c4cf33a541578076d58fa7dbed92de55')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/
