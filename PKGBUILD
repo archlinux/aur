@@ -1,20 +1,27 @@
+# Maintainer: marcs <aur@mg.odd.red>
 # Author: Chrome Developer Relations
 
 _npmname=yo
-
-pkgname=nodejs-yeoman
-pkgver=1.8.5
-pkgrel=2
-pkgdesc="Command line interface for creating, building, maintaining, and shipping Yeoman projects."
+_npmver=2.0.1
+pkgname=nodejs-yeoman # All lowercase
+pkgver=2.0.1
+pkgrel=1
+pkgdesc="CLI tool for running Yeoman generators"
 arch=(any)
 url="http://yeoman.io"
-license=('BSD')
-depends=('npm' 'curl' 'git')
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-noextract=($_npmname-$pkgver.tgz)
-sha256sums=('9c184f88a9444192577a95bbf6beb043b6a9ae82f7fe052b293693f2a8e250bd')
+license=()
+depends=('nodejs' 'npm' )
+optdepends=()
+source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
+noextract=($_npmname-$_npmver.tgz)
+sha256sums=('99f9ce281eb3743379af6475f7e16b774ebd3b1b2af9906228f289af1d5df989')
 
 package() {
-	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
-	chmod -R go-w "$pkgdir"/usr
+  cd $srcdir
+  local _npmdir="$pkgdir/usr/lib/node_modules/"
+  mkdir -p $_npmdir
+  cd $_npmdir
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
 }
+
+# vim:set ts=2 sw=2 et:
