@@ -4,7 +4,7 @@
 
 pkgname=tap-plugins
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tom's LADSPA Plugins"
 arch=('x86_64')
 url="http://tap-plugins.sourceforge.net/"
@@ -28,6 +28,5 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir/" install
-  install -vDm644 CREDITS "${pkgdir}/usr/share/doc/${pkgname}/CREDITS"
-  install -vDm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -t "${pkgdir}/usr/share/doc/${pkgname}" -vDm644 {CREDITS,README}
 }
