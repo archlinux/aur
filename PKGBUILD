@@ -1,4 +1,5 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 # Contributor: Aaditya Bagga <aaditya_gnulinux@zoho.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
@@ -6,14 +7,11 @@
 
 pkgname=laptop-mode-tools
 pkgver=1.71
-pkgrel=1
+pkgrel=2
 pkgdesc='Power Savings tool for Linux'
 arch=('any')
-url='https://github.com/rickysarraf/laptop-mode-tools'
-source=(${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/rickysarraf/laptop-mode-tools/archive/${pkgver}.tar.gz)
-sha256sums=('f69c870b07cafcb51df1cb5c25a8b349d1e1a2bd16b6ab33902aa3f8d1e3fa52')
-license=('GPL2')
-depends=('bash')
+url='https://github.com/rickysarraf/laptop-mode-tools/'
+license=('GPL')
 optdepends=('acpid: ACPI support'
     'bluez-utils: Bluetooth support'
     'hdparm: hard disk power management'
@@ -49,14 +47,17 @@ backup=('etc/laptop-mode/conf.d/ac97-powersave.conf'
     'etc/laptop-mode/conf.d/wireless-power.conf'
     'etc/laptop-mode/laptop-mode.conf'
     'etc/laptop-mode/lm-profiler.conf')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/rickysarraf/laptop-mode-tools/archive/${pkgver}.tar.gz")
+sha256sums=('f69c870b07cafcb51df1cb5c25a8b349d1e1a2bd16b6ab33902aa3f8d1e3fa52')
 
 package() {
-    cd "laptop-mode-tools-${pkgver}"
+    cd "${pkgname}-${pkgver}"
 
-    make DESTDIR="${pkgdir}" MAN_D=/usr/share/man LIB_D=/usr/lib PREFIX=/usr INIT_D=false install
-    # use /bin instead of /sbin
+    make DESTDIR="$pkgdir" MAN_D='/usr/share/man' LIB_D='/usr/lib' PREFIX='/usr' INIT_D='false' install
+    
+    # use '/bin' instead of '/sbin'
     mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
-    find "${pkgdir}" -type f -exec sed -i 's|sbin/laptop_mode|bin/laptop_mode|g' '{}' ';'
+    find "$pkgdir" -type f -exec sed -i 's|sbin/laptop_mode|bin/laptop_mode|g' '{}' ';'
 
-    install -Dm755 gui/LMT.py "${pkgdir}/usr/bin/lmt-gui"
+    install -D -m755 gui/LMT.py "${pkgdir}/usr/bin/lmt-gui"
 }
