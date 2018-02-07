@@ -4,7 +4,7 @@
 set -u
 pkgname='urbackup2-client-no-gui'
 pkgver='2.1.17'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='client server backup system'
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url='https://www.urbackup.org/'
@@ -47,6 +47,15 @@ prepare() {
   cd "${_srcdir}"
   sed -e "s:\"${_oldsig}\":\"${_newsig}\":g" -i 'urbackupclient/ClientService.cpp'
   sed -e "s:\"${_oldver}\":\"${_newver}\":g" -i 'client/main.cpp' 'client/Info.cpp' 'urbackupclient/ClientServiceCMD.cpp' 'urbackupclient/ClientService.cpp'
+
+  cat >> 'cryptoplugin/cryptopp_inc.h' <<EOF
+
+#if (CRYPTOPP_VERSION >= 600) && (__cplusplus >= 201103L)
+    using byte = CryptoPP::byte;
+#else
+    typedef unsigned char byte;
+#endif
+EOF
   set +u
 }
 
