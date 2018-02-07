@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=pacoloco-git
-pkgver=r18
+pkgver=r19
 pkgrel=1
 pkgdesc='Lightweight pacman proxy server'
 arch=(i686 x86_64)
@@ -21,7 +21,6 @@ pkgver() {
 
 build() {
   cd pacoloco
-  CFLAGS+=' -DNDEBUG'
   make
 }
 
