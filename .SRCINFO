@@ -1,6 +1,6 @@
 pkgbase = civic
 	pkgdesc = CiviC Toolchain used in the UvA Compiler Construction course
-	pkgver = 1.0.0
+	pkgver = 2018
 	pkgrel = 1
 	arch = x86_64
 	license = custom:UvA Proprietary

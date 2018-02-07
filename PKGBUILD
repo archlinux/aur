@@ -5,7 +5,7 @@ _username=
 _password=
 
 pkgname=civic
-pkgver=1.0.0
+pkgver=2018
 pkgrel=1
 pkgdesc="CiviC Toolchain used in the UvA Compiler Construction course"
 arch=('x86_64')
