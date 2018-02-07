@@ -2,7 +2,7 @@
 
 _gemname=arel
 pkgname=ruby-$_gemname
-pkgver=7.0.0
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='Arel Really Exasperates Logicians  Arel is a SQL AST manager for Ruby'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('dc226b0bb0c1cb0023897de8c8ec3de1657d5a47d78d7a841d8183b18df87bee0c56a3c18004f66f3d914acc1ede6f6a7bce998db64bcf1bac5e14240ddccaf1')
+sha512sums=('f722f4b0aa9a83698f4f7d4791c5c298d2893274eab9ad74f6b1ec903d884220157d00d6f205968805ad30d99e466758c315ecd115a81df6fdecb44f1ca9e32b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
