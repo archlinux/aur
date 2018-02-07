@@ -2,7 +2,7 @@
 
 _gemname=jekyll-gist
 pkgname=ruby-$_gemname
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Liquid tag for displaying GitHub Gists in Jekyll sites.'
 arch=(any)
@@ -19,4 +19,4 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
-sha512sums=('df3917942a59509e9fb494587a882e5303a1fd86c680db21c15f6177e577bd5ba0017be3b6b7d08166712b4fcf3c163ce18fb1810d89e48f96a8be3e831135b9')
+sha512sums=('0ebf8a1fef5649fb85d06b9d62becefeef53b2611621cc2bc9dcceae821a00e5cc86794a603c7971b192ac9efc0e603b32f4a192702d40c05243ff0c3fd8fa98')
