@@ -25,13 +25,13 @@ index 3acf0c5..bd7612b 100644
  implementation("system/windows/services@genServices")
  examples([
 diff --git a/Makefile b/Makefile
-index 2e2bd13c..c5ae915a 100644
+index 2ebc534f..98a0178d 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -32,7 +32,7 @@ endif
- PATH_SET := PATH="$(DEPS_DIR)/bin:/usr/local/bin:$(PATH)"
- CMAKE := $(PATH_SET) CXXFLAGS="-L$(DEPS_DIR)/lib" cmake ../../
- CTEST := $(PATH_SET) ctest ../../
+@@ -70,7 +70,7 @@ CMAKE := $(PATH_SET) LDFLAGS="-L$(DEPS_DIR)/legacy/lib -L$(DEPS_DIR)/lib $(LINK_
+         cmake $(CMAKE_EXTRA) $(SOURCE_DIR)/
+
+ CTEST := $(PATH_SET) ctest $(SOURCE_DIR)/
 -FORMAT_COMMAND := python tools/formatting/git-clang-format.py \
 +FORMAT_COMMAND := python2 tools/formatting/git-clang-format.py \
         "--commit" "master" "-f" "--style=file"

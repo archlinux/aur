@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=2.11.1.r0.g489ec3fc
+pkgver=3.0.0.r17.gbf2b4643
 pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
@@ -15,11 +15,11 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 			 'python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
 			 'gtest' 'gmock' 'lldpd' 'lld' 'zstd' 'rapidjson' 'apt' 'dpkg'
 			 'rpm-org' 'python2-jinja' 'librdkafka-git' 'augeas>=1.9.0'
-			 'boost>=1.65.1' 'boost-libs>=1.65.1')
+			 'boost>=1.65.1' 'boost-libs>=1.65.1' 'libc++' 'cppcheck')
 conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip)
-_gitcommit='b1f2888c8f101f1941a4377635e35f0b4ad9980e'
+_gitcommit='bf2b464301d96b0033a21978faaf3f41719ae04d'
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
@@ -28,7 +28,7 @@ source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit
 sha256sums=('SKIP'
             'ee15a171f114f47a326d236a7d03a07cc3e711016e9a5039638e6137f63e87ec'
             '0c28be3fb234325c3279aa3c02a5b0636db833c06f89ec551b77addb86507ce4'
-            '97b9f3b92f07797cc8027b4dcaef2ae9025d08367030364befe3a8895ededeb3')
+            'bf524b6f0f65e6add6c265082315ac7df9461f7a8a2acfbc840e336794d12a78')
 
 _gitname=${pkgname}
 
@@ -44,7 +44,7 @@ prepare() {
 	git reset HEAD --hard
 	git submodule update --init
 
-	patch -p1 -F3 -i "${srcdir}/arch-linux.patch"
+	patch -p1 -i "${srcdir}/arch-linux.patch"
 
 	find . -type f -name '*apt_sources*' -delete
 	find . -type f -name '*deb_package*' -delete
@@ -63,6 +63,8 @@ build() {
 	#SKIP_TABLES=True # Build platform without any table implementations or specs
 	#SQLITE_DEBUG=True # Enable SQLite query debugging (very verbose!)
 	#export SKIP_TESTS=True SKIP_BENCHMARKS=True
+
+	export CC=/usr/bin/gcc CXX=/usr/bin/g++
 
 	[[ -z $DEBUG ]] || unset DEBUG
 	cmake -Wno-dev \
