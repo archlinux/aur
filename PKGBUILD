@@ -1,7 +1,7 @@
 # Maintainer: Carsten Feuls <archlinux at carstenfeuls dot de>
 
 pkgname=hamlib-git
-pkgver=3f1bde0
+pkgver=aef1f6d1
 pkgrel=1
 pkgdesc="Ham radio equipment control libraries"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
@@ -26,7 +26,8 @@ build() {
 	export PYTHON=/usr/bin/python2
 
 	cd ${srcdir}/${pkgname}
-	./autogen.sh \
+	./bootstrap
+	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--with-perl-binding \
@@ -42,11 +43,11 @@ package() {
 	make DESTDIR=$pkgdir install
 
 	# fix perl module location
-	cd $pkgdir/usr/lib/perl5/site_perl/
-	mkdir -p current/
-	mv auto current
-	mv Hamlib.pm current
-	rm perltest.pl
+	#cd $pkgdir/usr/lib/perl5/site_perl/
+	#mkdir -p current/
+	#mv auto current
+	#mv Hamlib.pm current
+	#rm perltest.pl
 
 	/usr/bin/find $pkgdir -name '.packlist' -delete
 	/usr/bin/find $pkgdir -name '*.pod' -delete
