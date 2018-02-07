@@ -2,7 +2,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=amdvlk-git
-pkgver=r7.a20e789
+pkgver=r16.9cbbd7f
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -35,7 +35,7 @@ pkgver() {
 
 prepare() {
   cd xgl
-  patch -Np1 -i ${srcdir}/0001-remove-linking-with-whole-archive-v2.patch
+  #patch -Np1 -i ${srcdir}/0001-remove-linking-with-whole-archive-v2.patch
 }
 
 build() {
