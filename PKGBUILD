@@ -37,7 +37,7 @@ build() {
 check() {
   cd "$srcdir/astroid"
   cd build
-  ninja test
+  ctest --output-on-failure
 }
 
 package() {
