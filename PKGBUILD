@@ -3,7 +3,7 @@
 pkgname=('python-cymruwhois' 'python2-cymruwhois')
 _gitname='python-cymruwhois'
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Client for the whois.cymru.com service'
 arch=('any')
 url='https://pythonhosted.org/cymruwhois/'
@@ -25,6 +25,7 @@ package_python2-cymruwhois() {
   cd "$srcdir/$_gitname"
 
   python2 setup.py install --root="$pkgdir/" --optimize=1
+  mv "$pkgdir/usr/bin/cymruwhois" "$pkgdir/usr/bin/cymruwhois2"
   install -Dm644 LICENSE* "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
