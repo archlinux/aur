@@ -1,7 +1,7 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern, simple to use, constantly evolving and hella fast MEDIA CUTTER + JOINER w/ frame-accurate SmartCut technology + Qt5, libmpv, FFmpeg and MediaInfo powering the backend.'
 arch=('x86_64')
 license=('GPL3')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 install=${pkgname}.install
 provides=('vidcutter')
 conflicts=('vidcutter-git')
-sha256sums=('bf2d91a82e1ad71cd2b391c96d76579ff1d9519885c279b50f2d6a52a6b1df90')
+sha256sums=('0ea962a6bbad45983a37d1961aca866382228e018043c728d35365599acc0cd5')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
