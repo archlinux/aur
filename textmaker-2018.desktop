@@ -71,7 +71,9 @@ Comment[de]=Die Textverarbeitung TextMaker ermöglicht es Ihnen, beliebige Arten
 Comment[ru]=TextMaker позволяет работать со всеми видами текстовых документов.
 Terminal=false
 Categories=Application;Office;WordProcessor;
-MimeType=application/x-tmdx;application/x-tmvx;application/x-tmd;application/x-tmv;application/msword;application/vnd.ms-word;application/x-doc;text/rtf;application/rtf;application/rtf;application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.text-template;application/vnd.stardivision.writer;application/vnd.sun.xml.writer;application/vnd.sun.xml.writer.template;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.ms-word.document.macroenabled.12;application/vnd.ms-word.document.macroEnabled.12;application/vnd.openxmlformats-officedocument.wordprocessingml.template;application/vnd.ms-word.template.macroenabled.12;application/vnd.ms-word.template.macroEnabled.12;application/x-pocket-word;application/x-dbf;Version=1.0
+MimeType=application/x-tmdx;application/x-tmvx;application/x-tmd;application/x-tmv;application/msword;application/vnd.ms-word;application/x-doc;text/rtf;application/rtf;application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.text-template;application/vnd.stardivision.writer;application/vnd.sun.xml.writer;application/vnd.sun.xml.writer.template;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.ms-word.document.macroenabled.12;application/vnd.openxmlformats-officedocument.wordprocessingml.template;application/vnd.ms-word.template.macroenabled.12;application/x-pocket-word;application/x-dbf;application/msword-template;
+
+Version=1.0
 Name=TextMaker 2018
 Icon=smoffice2018-textmaker
 TryExec=/usr/bin/textmaker18

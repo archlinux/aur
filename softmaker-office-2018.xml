@@ -407,7 +407,7 @@
   </mime-type>
   <mime-type type="application/vnd.ms-excel">
     <icon name="application-vnd.ms-excel" />
-    <generic-icon name="application-x-pmd-mso" />
+    <generic-icon name="application-x-pmd18-mso" />
     <comment>Microsoft Excel Worksheet</comment>
     <comment xml:lang="bg">Microsoft Excel - лист</comment>
     <comment xml:lang="cs">Pracovní sešit Microsoft Excel</comment>
@@ -433,7 +433,7 @@
   </mime-type>
   <mime-type type="application/vnd.ms-excel.sheet.macroenabled.12">
     <icon name="application-vnd.ms-excel.sheet.macroenabled.12" />
-    <generic-icon name="application-x-pmd-mso" />
+    <generic-icon name="application-x-pmd18-mso" />
     <comment>Microsoft Excel Worksheet</comment>
     <comment xml:lang="af">Microsoft Excel-werkvel</comment>
     <comment xml:lang="ar">ورقة عمل Microsoft Excel</comment>
@@ -487,7 +487,7 @@
   </mime-type>
   <mime-type type="application/vnd.ms-excel.sheet.binary.macroenabled.12">
     <icon name="application-vnd.ms-excel.sheet.binary.macroenabled.12" />
-    <generic-icon name="application-x-pmd-mso" />
+    <generic-icon name="application-x-pmd18-mso" />
     <comment>Microsoft Excel Worksheet</comment>
     <comment xml:lang="af">Microsoft Excel-werkvel</comment>
     <comment xml:lang="ar">ورقة عمل Microsoft Excel</comment>
@@ -540,7 +540,7 @@
   </mime-type>
   <mime-type type="application/vnd.ms-excel.template.macroenabled.12">
     <icon name="application/vnd.ms-excel.template.macroenabled.12" />
-    <generic-icon name="application-x-pmd-mso" />
+    <generic-icon name="application-x-pmd18-mso" />
     <comment>Microsoft Excel Worksheet Template</comment>
     <comment xml:lang="af">Microsoft Excel-werkvelsjabloon</comment>
     <comment xml:lang="ar">قالب ورقة عمل Microsoft Excel</comment>
@@ -594,7 +594,7 @@
   </mime-type>
   <mime-type type="application/vnd.ms-powerpoint">
     <icon name="application-vnd.ms-powerpoint" />
-    <generic-icon name="application-x-prd-mso" />
+    <generic-icon name="application-x-prd18-mso" />
     <comment>Microsoft PowerPoint Presentation</comment>
     <comment xml:lang="bg">Microsoft PowerPoint - презентация</comment>
     <comment xml:lang="cs">Prezentace Microsoft PowerPoint</comment>
@@ -617,10 +617,12 @@
     <comment xml:lang="vi">Trình chiếu MS PowerPoint</comment>
     <comment xml:lang="zh-TW">Microsoft PowerPoint 簡報</comment>
     <glob pattern="*.ppt" />
+    <glob pattern="*.pps" />
+    <glob pattern="*.pot" />
   </mime-type>
   <mime-type type="application/vnd.ms-powerpoint.presentation.macroenabled.12">
     <icon name="application/vnd.ms-powerpoint.presentation.macroenabled.12" />
-    <generic-icon name="application-x-prd-mso" />
+    <generic-icon name="application-x-prd18-mso" />
     <comment>Microsoft PowerPoint Presentation</comment>
     <comment xml:lang="af">Microsoft PowerPoint-voorlegging</comment>
     <comment xml:lang="ar">عرض تقديمي لـ Microsoft PowerPoint</comment>
@@ -674,7 +676,7 @@
   </mime-type>
   <mime-type type="application/vnd.ms-powerpoint.template.macroenabled.12">
     <icon name="application-vnd.ms-powerpoint.template.macroenabled.12" />
-    <generic-icon name="application-x-prd-mso" />
+    <generic-icon name="application-x-prd18-mso" />
     <comment>Microsoft PowerPoint Presentation Template</comment>
     <comment xml:lang="af">Microsoft PowerPoint-voorleggingsjabloon</comment>
     <comment xml:lang="ar">قالب عرض تقديمي Microsoft PowerPoint</comment>
@@ -724,12 +726,11 @@
     <comment xml:lang="zh-CN">Microsoft PowerPoint 演示文稿模板</comment>
     <comment xml:lang="zh-TW">Microsoft PowerPoint 簡報範本</comment>
     <glob pattern="*.potm" />
-    <glob pattern="*.pot" />
     <sub-class-of type="application/zip"/>
   </mime-type>
   <mime-type type="application/msword">
     <icon name="application-msword" />
-    <generic-icon name="application-x-tmd-mso" />
+    <generic-icon name="application-x-tmd18-mso" />
     <comment>Microsoft Word Document</comment>
     <comment xml:lang="bg">Microsoft Word - документ</comment>
     <comment xml:lang="cs">Dokument Microsoft Word</comment>
@@ -755,7 +756,7 @@
   </mime-type>
   <mime-type type="application/vnd.ms-word.document.macroenabled.12">
     <icon name="application-vnd.ms-word.document.macroenabled.12" />
-    <generic-icon name="application-x-tmd-mso" />
+    <generic-icon name="application-x-tmd18-mso" />
     <comment>Microsoft Word Document</comment>
     <comment xml:lang="af">Microsoft Word-dokument</comment>
     <comment xml:lang="ar">مستند Microsoft Word</comment>
@@ -809,7 +810,7 @@
   </mime-type>
   <mime-type type="application/vnd.ms-word">
     <icon name="application-vnd.ms-word" />
-    <generic-icon name="application-x-tmd-mso" />
+    <generic-icon name="application-x-tmd18-mso" />
     <comment>Microsoft Word Document</comment>
     <comment xml:lang="bg">Microsoft Word - документ</comment>
     <comment xml:lang="cs">Dokument Microsoft Word</comment>
@@ -835,7 +836,7 @@
   </mime-type>
   <mime-type type="application/vnd.ms-word.template.macroenabled.12">
     <icon name="application/vnd.ms-word.template.macroenabled.12" />
-    <generic-icon name="application-x-tmd-mso" />
+    <generic-icon name="application-x-tmd18-mso" />
     <comment>Microsoft Word Document Template</comment>
     <comment xml:lang="af">Microsoft Word-dokumentsjabloon</comment>
     <comment xml:lang="ar">قالب مستند Microsoft Word</comment>
@@ -889,7 +890,7 @@
   </mime-type>
   <mime-type type="application/msword-template">
     <icon name="application-msword-template" />
-    <generic-icon name="application-x-tmd-mso" />
+    <generic-icon name="application-x-tmd18-mso" />
     <comment>Microsoft Word Document Template</comment>
     <comment xml:lang="af">Microsoft Word-dokumentsjabloon</comment>
     <comment xml:lang="ar">قالب مستند Microsoft Word</comment>
@@ -942,7 +943,7 @@
   </mime-type>
   <mime-type type="application/vnd.openxmlformats-officedocument.presentationml.slideshow">
     <icon name="application-vnd.openxmlformats-officedocument.presentationml.slideshow" />
-    <generic-icon name="application-x-prd-mso" />
+    <generic-icon name="application-x-prd18-mso" />
     <comment>Microsoft PowerPoint Presentation</comment>
     <comment xml:lang="af">Microsoft PowerPoint-voorlegging</comment>
     <comment xml:lang="ar">عرض تقديمي لـ Microsoft PowerPoint</comment>
@@ -995,7 +996,7 @@
   </mime-type>
   <mime-type type="application/vnd.ms-powerpoint.slideshow.macroenabled.12">
     <icon name="application-vnd.ms-powerpoint.slideshow.macroenabled.12" />
-    <generic-icon name="application-x-prd-mso" />
+    <generic-icon name="application-x-prd18-mso" />
     <comment>Microsoft PowerPoint Presentation</comment>
     <comment xml:lang="af">Microsoft PowerPoint-voorlegging</comment>
     <comment xml:lang="ar">عرض تقديمي لـ Microsoft PowerPoint</comment>
@@ -1049,7 +1050,7 @@
   </mime-type>
   <mime-type type="application/vnd.openxmlformats-officedocument.presentationml.presentation">
     <icon name="application-vnd.openxmlformats-officedocument.presentationml.presentation" />
-    <generic-icon name="application-x-prd-mso" />
+    <generic-icon name="application-x-prd18-mso" />
     <comment>Microsoft PowerPoint Presentation</comment>
     <comment xml:lang="af">Microsoft PowerPoint-voorlegging</comment>
     <comment xml:lang="ar">عرض تقديمي لـ Microsoft PowerPoint</comment>
@@ -1102,7 +1103,7 @@
   </mime-type>
   <mime-type type="application/vnd.openxmlformats-officedocument.presentationml.template">
     <icon name="application-vnd.openxmlformats-officedocument.presentationml.template" />
-    <generic-icon name="application-x-prd-mso" />
+    <generic-icon name="application-x-prd18-mso" />
     <comment>Microsoft PowerPoint Presentation Template</comment>
     <comment xml:lang="af">Microsoft PowerPoint-voorleggingsjabloon</comment>
     <comment xml:lang="ar">قالب عرض تقديمي Microsoft PowerPoint</comment>
@@ -1178,37 +1179,12 @@
     <comment xml:lang="vi">Tài liệu MS Pocket Word</comment>
     <comment xml:lang="zh-TW">Microsoft Pocket Word 文件</comment>
     <glob pattern="*.pwd" />
-  </mime-type>
-  <mime-type type="application/x-pocket-word">
-    <icon name="application-x-pocket-word" />
-    <generic-icon name="application-x-tmd18-oth" />
-    <comment>Microsoft Pocket Word Document</comment>
-    <comment xml:lang="bg">Microsoft Pocket Word - документ</comment>
-    <comment xml:lang="cs">Dokument Microsoft Pocket Word</comment>
-    <comment xml:lang="da">Microsoft Pocket Word-dokument</comment>
-    <comment xml:lang="de">Microsoft Pocket Word Dokument</comment>
-    <comment xml:lang="et">Microsoft Pocket Wordi dokument</comment>
-    <comment xml:lang="fi">Microsoft Pocket Word -tekstiasiakirja</comment>
-    <comment xml:lang="fr">Document Microsoft Pocket Word</comment>
-    <comment xml:lang="he">מסמך וורד</comment>
-    <comment xml:lang="it">Documento Microsoft Pocket Word</comment>
-    <comment xml:lang="ja">Microsoft Pocket Word ドキュメント</comment>
-    <comment xml:lang="nb">Microsoft Pocket Word-dokument</comment>
-    <comment xml:lang="pt">Documento do Microsoft Pocket Word</comment>
-    <comment xml:lang="ru">Документ Microsoft Pocket Word</comment>
-    <comment xml:lang="sh">Microsoft Pocket Word dokument</comment>
-    <comment xml:lang="sk">Dokument Microsoft Pocket Word</comment>
-    <comment xml:lang="sl">Dokument programa Microsoft Pocket Word</comment>
-    <comment xml:lang="sr">Microsoft Pocket Word документ</comment>
-    <comment xml:lang="tr">Microsoft Pocket Word Belgesi</comment>
-    <comment xml:lang="vi">Tài liệu MS Pocket Word</comment>
-    <comment xml:lang="zh-TW">Microsoft Pocket Word 文件</comment>
     <glob pattern="*.psw" />
     <glob pattern="*.pwt" />
   </mime-type>
   <mime-type type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
     <icon name="application-vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
-    <generic-icon name="application-x-pmd-mso" />
+    <generic-icon name="application-x-pmd18-mso" />
     <comment>Microsoft Excel Worksheet</comment>
     <comment xml:lang="af">Microsoft Excel-werkvel</comment>
     <comment xml:lang="ar">ورقة عمل Microsoft Excel</comment>
@@ -1261,7 +1237,7 @@
   </mime-type>
   <mime-type type="application/vnd.openxmlformats-officedocument.spreadsheetml.template">
     <icon name="application-vnd.openxmlformats-officedocument.spreadsheetml.template" />
-    <generic-icon name="application-x-pmd-mso" />
+    <generic-icon name="application-x-pmd18-mso" />
     <comment>Microsoft Excel Worksheet Template</comment>
     <comment xml:lang="af">Microsoft Excel-werkvelsjabloon</comment>
     <comment xml:lang="ar">قالب ورقة عمل Microsoft Excel</comment>
@@ -1314,7 +1290,7 @@
   </mime-type>
   <mime-type type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
     <icon name="application-vnd.openxmlformats-officedocument.wordprocessingml.document" />
-    <generic-icon name="application-x-tmd-mso" />
+    <generic-icon name="application-x-tmd18-mso" />
     <comment>Microsoft Word Document</comment>
     <comment xml:lang="af">Microsoft Word-dokument</comment>
     <comment xml:lang="ar">مستند Microsoft Word</comment>
@@ -1367,7 +1343,7 @@
   </mime-type>
   <mime-type type="application/vnd.openxmlformats-officedocument.wordprocessingml.template">
     <icon name="application-vnd.openxmlformats-officedocument.wordprocessingml.template" />
-    <generic-icon name="application-x-tmd-mso" />
+    <generic-icon name="application-x-tmd18-mso" />
     <comment>Microsoft Word Document Template</comment>
     <comment xml:lang="af">Microsoft Word-dokumentsjabloon</comment>
     <comment xml:lang="ar">قالب مستند Microsoft Word</comment>
@@ -1475,6 +1451,12 @@
     <comment>Rich Text Format File</comment>
     <glob pattern="*.rtf" />
   </mime-type>
+  <mime-type type="application/rtf">
+    <icon name="text-rtf" />
+    <generic-icon name="application-x-tmd18-oth" />
+    <comment>Rich Text Format File</comment>
+    <glob pattern="*.rtf" />
+  </mime-type>
   <mime-type type="application/vnd.sun.xml.writer">
     <icon name="application-vnd.sun.xml.writer" />
     <generic-icon name="application-x-tmd18-oth" />
@@ -1524,9 +1506,22 @@
     <comment>StarCalc Document</comment>
     <glob pattern="*.sdc" />
   </mime-type>
+  <mime-type type="application/vnd.stardivision.writer">
+    <icon name="application-vnd.stardivision.writer" />
+    <generic-icon name="application-x-tmd18-oth" />
+    <comment>StarWriter Document</comment>
+    <glob pattern="*.sdw" />
+  </mime-type>
   <mime-type type="text/spreadsheet">
     <icon name="text-spreadsheet" />
-    <generic-icon name="application-x-pmd-mso" />
+    <generic-icon name="application-x-pmd18-mso" />
+    <comment>Spreadsheet Interchange Document</comment>
+    <glob pattern="*.slk" />
+    <glob pattern="*.sylk" />
+  </mime-type>
+  <mime-type type="application/x-sylk">
+    <icon name="text-spreadsheet" />
+    <generic-icon name="application-x-pmd18-mso" />
     <comment>Spreadsheet Interchange Document</comment>
     <glob pattern="*.slk" />
     <glob pattern="*.sylk" />
@@ -1571,5 +1566,243 @@
     <comment xml:lang="zh_TW">PlanMaker 文件</comment>
     <glob pattern="*.pmd" />
     <sub-class-of type="application/x-ole-storage"/>
+  </mime-type>
+  <mime-type type="application/x-doc">
+    <icon name="application-msword" />
+    <generic-icon name="application-x-tmd18-mso" />
+    <comment>Microsoft Word Document</comment>
+    <comment xml:lang="bg">Microsoft Word - документ</comment>
+    <comment xml:lang="cs">Dokument Microsoft Word</comment>
+    <comment xml:lang="da">Microsoft Word-dokument</comment>
+    <comment xml:lang="de">Microsoft Word Dokument</comment>
+    <comment xml:lang="et">Microsoft Wordi dokument</comment>
+    <comment xml:lang="fi">Microsoft Word -tekstiasiakirja</comment>
+    <comment xml:lang="fr">Document Microsoft Word</comment>
+    <comment xml:lang="he">מסמך וורד</comment>
+    <comment xml:lang="it">Documento Microsoft Word</comment>
+    <comment xml:lang="ja">Microsoft Word ドキュメント</comment>
+    <comment xml:lang="nb">Microsoft Word-dokument</comment>
+    <comment xml:lang="pt">Documento do Microsoft Word</comment>
+    <comment xml:lang="ru">Документ Microsoft Word</comment>
+    <comment xml:lang="sh">Microsoft Word dokument</comment>
+    <comment xml:lang="sk">Dokument Microsoft Word</comment>
+    <comment xml:lang="sl">Dokument programa Microsoft Word</comment>
+    <comment xml:lang="sr">Microsoft Word документ</comment>
+    <comment xml:lang="tr">Microsoft Word Belgesi</comment>
+    <comment xml:lang="vi">Tài liệu MS Word</comment>
+    <comment xml:lang="zh-TW">Microsoft Word 文件</comment>
+    <glob pattern="*.doc" />
+  </mime-type>
+  <mime-type type="application/excel">
+    <icon name="application-excel" />
+    <generic-icon name="application-x-pmd18-mso" />
+    <comment>Microsoft Excel Worksheet</comment>
+    <comment xml:lang="bg">Microsoft Excel - лист</comment>
+    <comment xml:lang="cs">Pracovní sešit Microsoft Excel</comment>
+    <comment xml:lang="da">Microsoft Excel-regneark</comment>
+    <comment xml:lang="de">Microsoft Excel Arbeitsblatt</comment>
+    <comment xml:lang="et">Microsoft Exceli töövihik</comment>
+    <comment xml:lang="fi">Microsoft Excel -laskentataulukko</comment>
+    <comment xml:lang="fr">Feuille de calcul Microsoft Excel</comment>
+    <comment xml:lang="he">גיליון עבודה מיקרוסופט אקסל</comment>
+    <comment xml:lang="it">Foglio di lavoro Microsoft Excel</comment>
+    <comment xml:lang="ja">Microsoft Excel ワークシート</comment>
+    <comment xml:lang="nb">Microsoft Excel-ark</comment>
+    <comment xml:lang="pt">Folha de cálculo do Microsoft Excel</comment>
+    <comment xml:lang="ru">Электронная таблица Microsoft Excel</comment>
+    <comment xml:lang="sh">Microsoft Excel radni list</comment>
+    <comment xml:lang="sk">Pracovný zošit Microsoft Excel</comment>
+    <comment xml:lang="sl">Delovni list programa Microsoft Excel</comment>
+    <comment xml:lang="sr">Microsoft Excel радни лист</comment>
+    <comment xml:lang="tr">Microsoft Excel Çalışma Sayfası</comment>
+    <comment xml:lang="vi">Bảng công tác MS Excel</comment>
+    <comment xml:lang="zh-TW">Microsoft Excel 工作表</comment>
+    <glob pattern="*.xls" />
+  </mime-type>
+  <mime-type type="application/x-excel">
+    <icon name="application-vnd.ms-excel" />
+    <generic-icon name="application-x-pmd18-mso" />
+    <comment>Microsoft Excel Worksheet</comment>
+    <comment xml:lang="bg">Microsoft Excel - лист</comment>
+    <comment xml:lang="cs">Pracovní sešit Microsoft Excel</comment>
+    <comment xml:lang="da">Microsoft Excel-regneark</comment>
+    <comment xml:lang="de">Microsoft Excel Arbeitsblatt</comment>
+    <comment xml:lang="et">Microsoft Exceli töövihik</comment>
+    <comment xml:lang="fi">Microsoft Excel -laskentataulukko</comment>
+    <comment xml:lang="fr">Feuille de calcul Microsoft Excel</comment>
+    <comment xml:lang="he">גיליון עבודה מיקרוסופט אקסל</comment>
+    <comment xml:lang="it">Foglio di lavoro Microsoft Excel</comment>
+    <comment xml:lang="ja">Microsoft Excel ワークシート</comment>
+    <comment xml:lang="nb">Microsoft Excel-ark</comment>
+    <comment xml:lang="pt">Folha de cálculo do Microsoft Excel</comment>
+    <comment xml:lang="ru">Электронная таблица Microsoft Excel</comment>
+    <comment xml:lang="sh">Microsoft Excel radni list</comment>
+    <comment xml:lang="sk">Pracovný zošit Microsoft Excel</comment>
+    <comment xml:lang="sl">Delovni list programa Microsoft Excel</comment>
+    <comment xml:lang="sr">Microsoft Excel радни лист</comment>
+    <comment xml:lang="tr">Microsoft Excel Çalışma Sayfası</comment>
+    <comment xml:lang="vi">Bảng công tác MS Excel</comment>
+    <comment xml:lang="zh-TW">Microsoft Excel 工作表</comment>
+    <glob pattern="*.xls" />
+  </mime-type>
+  <mime-type type="application/x-ms-excel">
+    <icon name="application-vnd.ms-excel" />
+    <generic-icon name="application-x-pmd18-mso" />
+    <comment>Microsoft Excel Worksheet</comment>
+    <comment xml:lang="bg">Microsoft Excel - лист</comment>
+    <comment xml:lang="cs">Pracovní sešit Microsoft Excel</comment>
+    <comment xml:lang="da">Microsoft Excel-regneark</comment>
+    <comment xml:lang="de">Microsoft Excel Arbeitsblatt</comment>
+    <comment xml:lang="et">Microsoft Exceli töövihik</comment>
+    <comment xml:lang="fi">Microsoft Excel -laskentataulukko</comment>
+    <comment xml:lang="fr">Feuille de calcul Microsoft Excel</comment>
+    <comment xml:lang="he">גיליון עבודה מיקרוסופט אקסל</comment>
+    <comment xml:lang="it">Foglio di lavoro Microsoft Excel</comment>
+    <comment xml:lang="ja">Microsoft Excel ワークシート</comment>
+    <comment xml:lang="nb">Microsoft Excel-ark</comment>
+    <comment xml:lang="pt">Folha de cálculo do Microsoft Excel</comment>
+    <comment xml:lang="ru">Электронная таблица Microsoft Excel</comment>
+    <comment xml:lang="sh">Microsoft Excel radni list</comment>
+    <comment xml:lang="sk">Pracovný zošit Microsoft Excel</comment>
+    <comment xml:lang="sl">Delovni list programa Microsoft Excel</comment>
+    <comment xml:lang="sr">Microsoft Excel радни лист</comment>
+    <comment xml:lang="tr">Microsoft Excel Çalışma Sayfası</comment>
+    <comment xml:lang="vi">Bảng công tác MS Excel</comment>
+    <comment xml:lang="zh-TW">Microsoft Excel 工作表</comment>
+    <glob pattern="*.xls" />
+  </mime-type>
+  <mime-type type="application/x-msexcel">
+    <icon name="application-vnd.ms-excel" />
+    <generic-icon name="application-x-pmd18-mso" />
+    <comment>Microsoft Excel Worksheet</comment>
+    <comment xml:lang="bg">Microsoft Excel - лист</comment>
+    <comment xml:lang="cs">Pracovní sešit Microsoft Excel</comment>
+    <comment xml:lang="da">Microsoft Excel-regneark</comment>
+    <comment xml:lang="de">Microsoft Excel Arbeitsblatt</comment>
+    <comment xml:lang="et">Microsoft Exceli töövihik</comment>
+    <comment xml:lang="fi">Microsoft Excel -laskentataulukko</comment>
+    <comment xml:lang="fr">Feuille de calcul Microsoft Excel</comment>
+    <comment xml:lang="he">גיליון עבודה מיקרוסופט אקסל</comment>
+    <comment xml:lang="it">Foglio di lavoro Microsoft Excel</comment>
+    <comment xml:lang="ja">Microsoft Excel ワークシート</comment>
+    <comment xml:lang="nb">Microsoft Excel-ark</comment>
+    <comment xml:lang="pt">Folha de cálculo do Microsoft Excel</comment>
+    <comment xml:lang="ru">Электронная таблица Microsoft Excel</comment>
+    <comment xml:lang="sh">Microsoft Excel radni list</comment>
+    <comment xml:lang="sk">Pracovný zošit Microsoft Excel</comment>
+    <comment xml:lang="sl">Delovni list programa Microsoft Excel</comment>
+    <comment xml:lang="sr">Microsoft Excel радни лист</comment>
+    <comment xml:lang="tr">Microsoft Excel Çalışma Sayfası</comment>
+    <comment xml:lang="vi">Bảng công tác MS Excel</comment>
+    <comment xml:lang="zh-TW">Microsoft Excel 工作表</comment>
+    <glob pattern="*.xls" />
+  </mime-type>
+  <mime-type type="application/x-xls">
+    <icon name="application-vnd.ms-excel" />
+    <generic-icon name="application-x-pmd18-mso" />
+    <comment>Microsoft Excel Worksheet</comment>
+    <comment xml:lang="bg">Microsoft Excel - лист</comment>
+    <comment xml:lang="cs">Pracovní sešit Microsoft Excel</comment>
+    <comment xml:lang="da">Microsoft Excel-regneark</comment>
+    <comment xml:lang="de">Microsoft Excel Arbeitsblatt</comment>
+    <comment xml:lang="et">Microsoft Exceli töövihik</comment>
+    <comment xml:lang="fi">Microsoft Excel -laskentataulukko</comment>
+    <comment xml:lang="fr">Feuille de calcul Microsoft Excel</comment>
+    <comment xml:lang="he">גיליון עבודה מיקרוסופט אקסל</comment>
+    <comment xml:lang="it">Foglio di lavoro Microsoft Excel</comment>
+    <comment xml:lang="ja">Microsoft Excel ワークシート</comment>
+    <comment xml:lang="nb">Microsoft Excel-ark</comment>
+    <comment xml:lang="pt">Folha de cálculo do Microsoft Excel</comment>
+    <comment xml:lang="ru">Электронная таблица Microsoft Excel</comment>
+    <comment xml:lang="sh">Microsoft Excel radni list</comment>
+    <comment xml:lang="sk">Pracovný zošit Microsoft Excel</comment>
+    <comment xml:lang="sl">Delovni list programa Microsoft Excel</comment>
+    <comment xml:lang="sr">Microsoft Excel радни лист</comment>
+    <comment xml:lang="tr">Microsoft Excel Çalışma Sayfası</comment>
+    <comment xml:lang="vi">Bảng công tác MS Excel</comment>
+    <comment xml:lang="zh-TW">Microsoft Excel 工作表</comment>
+    <glob pattern="*.xls" />
+  </mime-type>
+  <mime-type type="application/xls">
+    <icon name="application-vnd.ms-excel" />
+    <generic-icon name="application-x-pmd18-mso" />
+    <comment>Microsoft Excel Worksheet</comment>
+    <comment xml:lang="bg">Microsoft Excel - лист</comment>
+    <comment xml:lang="cs">Pracovní sešit Microsoft Excel</comment>
+    <comment xml:lang="da">Microsoft Excel-regneark</comment>
+    <comment xml:lang="de">Microsoft Excel Arbeitsblatt</comment>
+    <comment xml:lang="et">Microsoft Exceli töövihik</comment>
+    <comment xml:lang="fi">Microsoft Excel -laskentataulukko</comment>
+    <comment xml:lang="fr">Feuille de calcul Microsoft Excel</comment>
+    <comment xml:lang="he">גיליון עבודה מיקרוסופט אקסל</comment>
+    <comment xml:lang="it">Foglio di lavoro Microsoft Excel</comment>
+    <comment xml:lang="ja">Microsoft Excel ワークシート</comment>
+    <comment xml:lang="nb">Microsoft Excel-ark</comment>
+    <comment xml:lang="pt">Folha de cálculo do Microsoft Excel</comment>
+    <comment xml:lang="ru">Электронная таблица Microsoft Excel</comment>
+    <comment xml:lang="sh">Microsoft Excel radni list</comment>
+    <comment xml:lang="sk">Pracovný zošit Microsoft Excel</comment>
+    <comment xml:lang="sl">Delovni list programa Microsoft Excel</comment>
+    <comment xml:lang="sr">Microsoft Excel радни лист</comment>
+    <comment xml:lang="tr">Microsoft Excel Çalışma Sayfası</comment>
+    <comment xml:lang="vi">Bảng công tác MS Excel</comment>
+    <comment xml:lang="zh-TW">Microsoft Excel 工作表</comment>
+    <glob pattern="*.xls" />
+  </mime-type>
+  <mime-type type="application/ppt">
+    <icon name="application-vnd.ms-powerpoint" />
+    <generic-icon name="application-x-prd18-mso" />
+    <comment>Microsoft PowerPoint Presentation</comment>
+    <comment xml:lang="bg">Microsoft PowerPoint - презентация</comment>
+    <comment xml:lang="cs">Prezentace Microsoft PowerPoint</comment>
+    <comment xml:lang="da">Microsoft PowerPoint-præsentation</comment>
+    <comment xml:lang="de">Microsoft PowerPoint Präsentation</comment>
+    <comment xml:lang="et">Microsoft PowerPointi esitlus</comment>
+    <comment xml:lang="fi">Microsoft PowerPoint -esitys</comment>
+    <comment xml:lang="fr">Présentation Microsoft PowerPoint</comment>
+    <comment xml:lang="he">מצגת פוורפוינט</comment>
+    <comment xml:lang="it">Presentazione Microsoft PowerPoint</comment>
+    <comment xml:lang="ja">Microsoft PowerPoint プレゼンテーション</comment>
+    <comment xml:lang="nb">Microsoft PowerPoint-presentasjon</comment>
+    <comment xml:lang="pt">Apresentação do Microsoft PowerPoint</comment>
+    <comment xml:lang="ru">Презентация Microsoft PowerPoint</comment>
+    <comment xml:lang="sh">Microsoft PowerPoint prezentacija</comment>
+    <comment xml:lang="sk">Prezentácia Microsoft PowerPoint</comment>
+    <comment xml:lang="sl">Predstavitev programa Microsoft PowerPoint</comment>
+    <comment xml:lang="sr">Microsoft PowerPoint презентација</comment>
+    <comment xml:lang="tr">Microsoft PowerPoint Sunumu</comment>
+    <comment xml:lang="vi">Trình chiếu MS PowerPoint</comment>
+    <comment xml:lang="zh-TW">Microsoft PowerPoint 簡報</comment>
+    <glob pattern="*.ppt" />
+    <glob pattern="*.pps" />
+    <glob pattern="*.pot" />
+  </mime-type>
+  <mime-type type="application/mspowerpoint">
+    <icon name="application-vnd.ms-powerpoint" />
+    <generic-icon name="application-x-prd18-mso" />
+    <comment>Microsoft PowerPoint Presentation</comment>
+    <comment xml:lang="bg">Microsoft PowerPoint - презентация</comment>
+    <comment xml:lang="cs">Prezentace Microsoft PowerPoint</comment>
+    <comment xml:lang="da">Microsoft PowerPoint-præsentation</comment>
+    <comment xml:lang="de">Microsoft PowerPoint Präsentation</comment>
+    <comment xml:lang="et">Microsoft PowerPointi esitlus</comment>
+    <comment xml:lang="fi">Microsoft PowerPoint -esitys</comment>
+    <comment xml:lang="fr">Présentation Microsoft PowerPoint</comment>
+    <comment xml:lang="he">מצגת פוורפוינט</comment>
+    <comment xml:lang="it">Presentazione Microsoft PowerPoint</comment>
+    <comment xml:lang="ja">Microsoft PowerPoint プレゼンテーション</comment>
+    <comment xml:lang="nb">Microsoft PowerPoint-presentasjon</comment>
+    <comment xml:lang="pt">Apresentação do Microsoft PowerPoint</comment>
+    <comment xml:lang="ru">Презентация Microsoft PowerPoint</comment>
+    <comment xml:lang="sh">Microsoft PowerPoint prezentacija</comment>
+    <comment xml:lang="sk">Prezentácia Microsoft PowerPoint</comment>
+    <comment xml:lang="sl">Predstavitev programa Microsoft PowerPoint</comment>
+    <comment xml:lang="sr">Microsoft PowerPoint презентација</comment>
+    <comment xml:lang="tr">Microsoft PowerPoint Sunumu</comment>
+    <comment xml:lang="vi">Trình chiếu MS PowerPoint</comment>
+    <comment xml:lang="zh-TW">Microsoft PowerPoint 簡報</comment>
+    <glob pattern="*.ppt" />
+    <glob pattern="*.pps" />
+    <glob pattern="*.pot" />
   </mime-type>
 </mime-info>
