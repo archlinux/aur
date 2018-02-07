@@ -1,11 +1,10 @@
 pkgbase = adom-noteye
-	pkgdesc = A roguelike game with a quest-centric, plot driven structure (+ GUI)
-	pkgver = 2.3.8
-	pkgrel = 4
-	epoch = 1
+	pkgdesc = A roguelike game with a quest-centric, plot driven structure (+ GUI) - Please consider buying the game on Steam
+	pkgver = 3.0.6
+	pkgrel = 1
 	url = http://www.adom.de/
 	arch = x86_64
-	license = custom: "adom"
+	license = custom:adom
 	depends = ncurses
 	depends = mesa
 	depends = sdl_image
@@ -17,8 +16,12 @@ pkgbase = adom-noteye
 	conflicts = adom
 	conflicts = adom-restricted
 	conflicts = adom-noteye
-	source_x86_64 = https://repo.sshadm.in/archlinux/eldios/x86_64/adom_noteye_64_2.3.8.tar.gz
-	sha256sums_x86_64 = b7bc418e872dbf290f2279d8c554c4ac19f58ae0ace2e8f3c16b1cf4fb87dc26
+	source_x86_64 = https://repo.sshadm.in/archlinux/eldios/x86_64/adom_noteye_64_3.0.6.tar.gz
+	source_x86_64 = https://repo.sshadm.in/archlinux/eldios/common/adom.sh
+	source_x86_64 = https://repo.sshadm.in/archlinux/eldios/common/LICENSE
+	sha256sums_x86_64 = 5a81afa2409af2dde461dcce89f74c89b7807504b75bd5b3796c6187768fa050
+	sha256sums_x86_64 = ffd19a5088bc63dffe386b4052f29b2194ab50c5b01ca1f574cfc51225a8afa8
+	sha256sums_x86_64 = d0b08609c52ab96fb1083b2b0eea3d022549c59c87b793a140f5dfa56099544b
 
 pkgname = adom-noteye
 
