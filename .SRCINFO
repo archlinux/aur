@@ -1,0 +1,11 @@
+pkgbase = civic
+	pkgdesc = CiviC Toolchain used in the UvA Compiler Construction course
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom:UvA Proprietary
+	source = toolchain-linux-x64-static.tgz::https://:@blackboard.uva.nl/bbcswebdav/pid-6926466-dt-content-rid-10679020_1/xid-10679020_1
+	md5sums = a42d166e73b8454e839c1c7d7fcd8036
+
+pkgname = civic
+
