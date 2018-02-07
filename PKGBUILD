@@ -3,7 +3,7 @@
 pkgname=zcash
 pkgver=1.0.14
 _commit=1ddecf644f6bab29545bb6333889fb059eb7970e
-pkgrel=1
+pkgrel=2
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
@@ -13,10 +13,12 @@ makedepends=('boost' 'cargo' 'cmake' 'git' 'gmock' 'python' 'wget')
 checkdepends=('python' 'python2' 'python2-pyzmq')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         "boost-no-mt-suffix.patch"
-        "use-system-rust.patch")
+        "use-system-rust.patch"
+        'zcashd.service')
 sha512sums=('SKIP'
             'fa9ac59839ba6c6aabefb24296ae29914acf7089487377e7948fd684e32b1b499e8e15daccd10baf968905ec69ad2da8b91ff2c8d4724412d8143428ed4de23d'
-            '3663373af04318aa72d877f399f0c9e956d289ac876583e70afa2933bf4171f7441a399e043b2d29b1df6d19d29390bb69d4053cad4b75bef903a8685fcd23bf')
+            '3663373af04318aa72d877f399f0c9e956d289ac876583e70afa2933bf4171f7441a399e043b2d29b1df6d19d29390bb69d4053cad4b75bef903a8685fcd23bf'
+            '2fb8b0a636ca9c7ee15f0fd2c47046c8323ade3de9562f393da7541eee50dd14b12107dd29b0e1ee90ff88963e2f7e25b12435166a1812df5c88c579c12dde88')
 
 prepare() {
     cd ${pkgname}
@@ -62,5 +64,6 @@ package() {
             "${pkgdir}"/usr/share/bash-completion/completions/zcash${ext}
     done
 
+    install -Dm644 -t "${pkgdir}"/usr/lib/systemd/user ../zcashd.service
     install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
 }
