@@ -2,7 +2,7 @@
 
 pkgname=adom-noteye
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A roguelike game with a quest-centric, plot driven structure (+ GUI) - Please consider buying the game on Steam"
 arch=("x86_64")
 url="http://www.adom.de/"
@@ -32,15 +32,12 @@ package() {
 
     # Since the adom binary uses a relative RPATH, it's either
     # this or patching the binary
-    install "${srcdir}/adom.sh" "${pkgdir}/opt/adom/adom.sh"
-    chmod 755 "${pkgdir}/opt/adom/adom.sh"
+    install --mode 755 "${srcdir}/adom.sh" "${pkgdir}/opt/adom/adom.sh"
 
     install -d "${pkgdir}/usr/bin"
     ln -s "${pkgdir}/opt/adom/adom.sh" "${pkgdir}/usr/bin/adom"
 
     # Add the LICENSE file
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    install "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    chmod 644 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install --mode 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
