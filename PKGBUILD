@@ -1,7 +1,9 @@
+# Maintainer: Maarten Baert <maarten-baert@hotmail.com>
+
 pkgname=lib32-simplescreenrecorder-git
 pkgver=0.3.8.r90.g50fced7
 pkgrel=1
-pkgdesc="OpenGL recording of 32-bit applications with SimpleScreenRecorder. (Git version)"
+pkgdesc="Record 32-bit OpenGL applications with SimpleScreenRecorder. (Git version)"
 arch=("x86_64")
 url="http://www.maartenbaert.be/simplescreenrecorder/"
 license=("GPL3")
