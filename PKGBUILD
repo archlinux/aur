@@ -3,12 +3,12 @@
 _gemname=yajl-ruby
 pkgname=ruby-$_gemname
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby C bindings to the excellent Yajl JSON stream-based parser library.'
 arch=('any')
 url='http://github.com/brianmario/yajl-ruby'
 license=('MIT')
-depends=('ruby')
+depends=('ruby' 'ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
