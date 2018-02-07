@@ -1,8 +1,8 @@
-# Maintainer: Daniel M. Capella <polycitizen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 _pkgname=flake8-bugbear
 pkgname=python-flake8-bugbear
-pkgver=17.12.0
+pkgver=18.2.0
 pkgrel=1
 pkgdesc='A plugin for Flake8 finding likely bugs and design problems in your program'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('flake8' 'python-attrs')
 makedepends=('python-setuptools')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('13e3b2191f31cf02d270e598bc7ebcc1379b0a5f7271fbd0d32d3c026407fced88eadbe936edb32cdfd7139715a5f041387e0e20f840cce1f7712e29d4150832')
+sha512sums=('b46594a325066f1a2694babf01cfc87e73a392e9bb821d4b5d568ec4f96c04b564bdebf6e3fe2c57a6e788a179988e5ee76c9990dcdf34211e5d987af13f7f7b')
 
 build() {
   cd $_pkgname-$pkgver
