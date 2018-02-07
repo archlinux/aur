@@ -1,16 +1,16 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de> aka DL1CAF
 
 pkgname=gpredict
-pkgver=1.3
-pkgrel=3
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Real-time satellite tracking and orbit prediction application"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://gpredict.oz9aec.net/"
 license=('GPL')
-depends=('curl' 'grig' 'gtk2' 'goocanvas1')
+depends=('curl' 'grig' 'gtk2' 'goocanvas')
 makedepends=('intltool')
 options=('!emptydirs')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/csete/gpredict/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2"
         "${pkgname}.desktop")
 
 build() {
@@ -29,5 +29,5 @@ package() {
 	install -D -m644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
 
-sha256sums=('b0f6beed8da1b2c513ba1f22593195c6097fc7ccfc66cba4bdbc16277238d5a3'
+sha256sums=('e759c4bae0b17b202a7c0f8281ff016f819b502780d3e77b46fe8767e7498e43'
             'f42d3a4d4c7db251b86d36ae2c689dbcc14adb6444a1f14f8d329afba21616c3')
