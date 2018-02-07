@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  echo "$(python setup.py --version).$(git rev-parse --short HEAD)"
+  echo "$(python setup.py --version | tail -n1).$(git rev-parse --short HEAD)"
 }
 
 package() {
