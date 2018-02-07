@@ -2,7 +2,7 @@
 
 _gemname=execjs
 pkgname=ruby-$_gemname
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=2
 pkgdesc='Run JavaScript code from Ruby'
 arch=('any')
@@ -12,11 +12,11 @@ depends=('ruby')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('366e968b8fbec7ebc8117cc507073e3905d51606463c8c25df46047f66a9299e1b8f1d935ca6bed5d6841c07d156f0fff67073ea382aa1beb3f32283c020c1c4')
+sha512sums=('d6456bf36f4f4b3b9a3db36a5c31462c4f6ac09b02fc962b3f5c153ecec4d78acdecfb853c3255d69209e5d4342a3e485a7c59e29aded1e4065e63731e6bb16e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
