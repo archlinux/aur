@@ -62,7 +62,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14.17
+pkgver=4.14.18
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -102,7 +102,7 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '1e62d56e37bd15daec7c3d20a605624e1e0a21c44856880c6dbe0c9e41cabfa8'
+            '8d29e1d10cabd62b32ac56e33de990e0d4f3c6208f57bd3f2c8c02f9eebc0d72'
             'SKIP'
             'fc3033c9f914bf8b6da687b97bca27b897c551993e5737d14e68469793446031'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
