@@ -1,37 +1,35 @@
-# Maintainer: Simon Hanna <simon dot hanna at serve-me dot info>
+# Maintainer: Simon Hanna <thelinuxguy on freenode>
 pkgname=onionshare
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Lets you securely and anonymously share a file of any size with someone"
 url="https://github.com/micahflee/onionshare"
 arch=('any')
 license=('GPL3')
 makedepends=('python-setuptools')
-checkdepends=('python-nose')
-depends=('stem' 'python-flask' 'python-pysocks')
+checkdepends=('python-pytest')
+depends=('stem' 'python-flask' 'tor')
 optdepends=(
           'python-pyqt5: to run onionshare-gui'
-          'tor-browser-en: before you can share a file, you need to open Tor Browser'
-          'tor-messenger-bin: tor-messenger can be used as an alternative to Tor Browser'
           )
 source=(https://github.com/micahflee/onionshare/archive/v$pkgver.tar.gz)
-sha512sums=('6c8030cf610932ec003622738754116410649fbaacdca91475030f1f92c1359922d42a8555ddaae4a10ed30fe6b1f27d5eff2c9f30a1f03cc9c25504c18bc6c3')
+sha512sums=('f410db0866a10d57cbc227a3539f92b3e4fe6b8fdb459abefc315ff3e342aad6876ab963e50ce2c74c8213d07291b9a950a0f61b9cf43767e9befd5f64de01ea')
 
 build() {
- 	cd "$srcdir/onionshare-$pkgver"
-  python setup.py build
+    cd "$srcdir/onionshare-$pkgver"
+    python setup.py build
 }
 
 check() {
- 	cd "$srcdir/onionshare-$pkgver"
-  nosetests test
+    cd "$srcdir/onionshare-$pkgver"
+    pytest test/
 }
 
 package() {
-	cd "$srcdir/onionshare-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1
-	install -D -m 644 install/onionshare.desktop "${pkgdir}/usr/share/applications/onionshare.desktop"
-	install -D -m 644 install/onionshare80.xpm "${pkgdir}/usr/share/pixmaps/onionshare80.xpm"
+    cd "$srcdir/onionshare-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1
+    install -D -m 644 install/onionshare.desktop "${pkgdir}/usr/share/applications/onionshare.desktop"
+    install -D -m 644 install/onionshare80.xpm "${pkgdir}/usr/share/pixmaps/onionshare80.xpm"
 }
 
 # vim:set ts=2 sw=2 et:
