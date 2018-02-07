@@ -14,7 +14,7 @@ echo -e "${BLK} Source code repository:"
 echo -e "${BLK} $(du -sh src/$_name | cut -d' ' -f1)\n "
 
 echo -e "${BLK} Package:"
-echo -e "${BLK} $(du -shD $pkgname-$pkgver-$pkgrel-$arch.pkg.tar.xz)\n "
+echo -e "${BLK} $(du -shD $pkgname-$pkgver-$pkgrel-$arch.pkg.tar)\n "
 
 cd pkg/$pkgname
 echo -e "${BLK} Server types packaged:"
