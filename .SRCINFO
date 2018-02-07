@@ -1,0 +1,40 @@
+pkgbase = zsh-athame-git
+	pkgver = 5.4.2
+	pkgrel = 1
+	url = http://github.com/ardagnir/athame/
+	arch = x86_64
+	license = custom
+	license = GPL
+	license = AGPL
+	makedepends = pcre
+	makedepends = libcap
+	makedepends = gdbm
+	makedepends = git
+	provides = zsh=5.4.2
+	conflicts = zsh
+	source = https://www.zsh.org/pub/zsh-5.4.2.tar.gz
+	source = https://www.zsh.org/pub/zsh-5.4.2.tar.gz.asc
+	source = https://www.zsh.org/pub/zsh-5.4.2-doc.tar.gz
+	source = https://www.zsh.org/pub/zsh-5.4.2-doc.tar.gz.asc
+	source = zprofile
+	source = git://github.com/ardagnir/athame
+	source = git://github.com/ardagnir/vimbed
+	validpgpkeys = F7B2754C7DE2830914661F0EA71D9A9D4BDB27B3
+	sha512sums = 5eaa2ff3dc8052dfb50d2be19bfeed1856b00f7c2dc698129c95c2373a516ee61dba5b42ded390ac20b171abe352b1875f177a4dda8fdc15a4f2a05bb7a024e2
+	sha512sums = SKIP
+	sha512sums = 76cb8ec64d0ddab5562b34415f3b6837e7c6339162488ba3cf2c50e70c571b5597d5fe37d24ba0cad65ef24e6d47bba3077dc1e2016e055ad77bda951fc56b39
+	sha512sums = SKIP
+	sha512sums = b287e00d8de4dc4cfb1c52bb2aef1d4b191de3512baad4c91dc81e78ddc3e5bb07297f43924b022ac44ff401a348d8a9fa366e19ddc8ea1ea72df311f5ed0034
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = zsh-athame-git
+	pkgdesc = Zsh with Athame: provides full vim support for Zsh
+	install = zsh.install
+	depends = pcre
+	depends = libcap
+	depends = gdbm
+	depends = vim
+	backup = etc/zsh/zprofile,
+	backup = etc/athamerc
+
