@@ -1,1 +1,4 @@
-*.deb
+pkg/
+src/
+*.AppImage
+*.pkg.tar*
