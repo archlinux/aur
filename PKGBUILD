@@ -4,7 +4,7 @@
 # Contributor: kuri <sysegv@gmail.com>
 
 pkgname=cjson-git
-pkgver=v1.6.0.r0.gc083421
+pkgver=v1.7.3.r0.ga559eac
 pkgrel=1
 pkgdesc="Dave Gamble's cJSON library. Easily handle JSON data in C (git version)."
 arch=('i686' 'x86_64')
