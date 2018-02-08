@@ -2,7 +2,7 @@
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi/
 
 pkgname=vivaldi-rpi
-pkgver=1.13.1008.40
+pkgver=1.14.1077.45
 pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind for Raspberry Pi'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
     'vivaldi-codecs-ffmpeg-extra-bin-rpi: playback of proprietary video/audio'
 )
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-1_armhf.deb")
-sha512sums=('7b636a8d4f9be825c126863e6761e2e0a1c4a07147984872f46678f1014b70c712071ba7ce15e65d0253d37a70c08e74a2a9fefa0c1f6c356445cb9e2dbcc84a')
+sha512sums=('ace2a414729464ad38a278c8fa6ef6a085cc393d14e6f64a0e36c414fbbe42d26b246ffe5eb2b6b20783a12506260d7b9353acb48f3844519e87e37719bc28b5')
 
 prepare() {
  tar -xf data.tar.xz
