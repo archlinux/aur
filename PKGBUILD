@@ -14,7 +14,7 @@
 pkgname=go-git
 epoch=1
 pkgver=1.10rc1
-pkgrel=1
+pkgrel=2
 pkgrepo=go
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(i686 x86_64)
