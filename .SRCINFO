@@ -1,7 +1,7 @@
 pkgbase = ruby-gli
 	pkgdesc = Make awesome command-line applications the easy way
 	pkgver = 2.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davetron5000/gli
 	arch = any
 	license = APACHE
