@@ -1,0 +1,10 @@
+diff -ura onionshare-1.2.orig/setup.py onionshare-1.2.new/setup.py
+--- onionshare-1.2.orig/setup.py	2018-02-08 16:08:34.170828571 +0100
++++ onionshare-1.2.new/setup.py	2018-02-08 16:08:57.864345962 +0100
+@@ -62,6 +62,5 @@
+         (os.path.join(sys.prefix, 'share/onionshare/images'), file_list('share/images')),
+         (os.path.join(sys.prefix, 'share/onionshare/locale'), file_list('share/locale')),
+         (os.path.join(sys.prefix, 'share/onionshare/html'), file_list('share/html')),
+-        ('/usr/share/nautilus-python/extensions/', ['install/scripts/onionshare-nautilus.py'])
+     ]
+ )

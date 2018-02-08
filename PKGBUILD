@@ -11,14 +11,24 @@ checkdepends=('python-pytest')
 depends=('stem' 'python-flask' 'tor')
 optdepends=(
           'python-pyqt5: to run onionshare-gui'
+          'obfs4proxy: for tor bridge support'
           )
-source=(https://github.com/micahflee/onionshare/archive/v$pkgver.tar.gz)
-sha512sums=('f410db0866a10d57cbc227a3539f92b3e4fe6b8fdb459abefc315ff3e342aad6876ab963e50ce2c74c8213d07291b9a950a0f61b9cf43767e9befd5f64de01ea')
+source=(
+    https://github.com/micahflee/onionshare/archive/v$pkgver.tar.gz
+    nautilus-python.patch
+    )
+sha512sums=('f410db0866a10d57cbc227a3539f92b3e4fe6b8fdb459abefc315ff3e342aad6876ab963e50ce2c74c8213d07291b9a950a0f61b9cf43767e9befd5f64de01ea'
+            '6cc3b3d178bea9cd9fecaf735e82ad7ff7161ad4396086881d7e45a9a70bd55c1074ec65c6359a64417a42493f305caf7ba89e1c40c9a9def03dd1d11cb7efb7')
 
-build() {
+
+prepare() {
     cd "$srcdir/onionshare-$pkgver"
-    python setup.py build
+    patch  -i "${srcdir}/nautilus-python.patch"
 }
+#build() {
+#    cd "$srcdir/onionshare-$pkgver"
+#    python setup.py build
+#}
 
 check() {
     cd "$srcdir/onionshare-$pkgver"
