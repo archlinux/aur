@@ -1,7 +1,7 @@
 # Maintainer: Alexander Fasching <fasching.a91@gmail.com>
 pkgname=direwolf-git
 _pkgname=direwolf
-pkgver=1.4.dev.E.r12.gb6254da
+pkgver=1.5.beta.r3.g2328ecd
 pkgrel=1
 pkgdesc="Dire Wolf is a software modem/TNC and APRS encoder/decoder"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,18 +11,19 @@ depends=('alsa-lib' 'gpsd')
 makedepends=('make' 'gcc' 'patch')
 provides=('direwolf')
 conflicts=('direwolf')
-source=("git+https://github.com/wb2osz/direwolf.git#branch=dev"
+source=('git+https://github.com/wb2osz/direwolf.git#branch=dev'
         'Makefile.patch'
         'direwolf.service'
         'direwolf-kiss.service')
 sha1sums=('SKIP'
-          'f94b193a8e49bae073de3cedff4394821d6148fa'
+          '8fd025e2df746a4c776c482f04ce93791aad01f6'
           '66366c7a4e8d3768013f9036f2681a86d4b8ad88'
           'eea3a3fb334645cd8a1e2604dc6c6b024148722a')
 sha256sums=('SKIP'
-            '5a4bee3543da1bbe9cd8bd5edb3bb9b502728841c4c34da332a19f34f876a140'
+            'd3f93a6cabe348d410c630f612dd49373f9932f747588dfd915283f3167e2a48'
             'a1efe2bb96470bc52faa747708b195a685dc454f3d9c91f6bf4d39ab94d3608a'
             '2a2e4acc769a20afebdfdcd21640fd17b0c4217ceb7ecb3378f9ee5c45fadc68')
+
 
 pkgver() {
     cd "$_pkgname"
@@ -31,7 +32,7 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    patch -p1 < ../Makefile.patch
+    git apply ../Makefile.patch
 }
 
 build() {
@@ -39,16 +40,12 @@ build() {
     make
 }
 
-check() {
-    :
-}
-
 package() {
     cd "$_pkgname"
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/usr/share/doc/$_pkgname"
     mkdir -p "$pkgdir/var/log/direwolf"
-    make INSTALLDIR="$pkgdir/usr" install
+    make DESTDIR="$pkgdir/usr" ROOTDIR="$pkgdir" install
 
     mkdir -p "$pkgdir/etc/direwolf"
     install -D -m 644 direwolf.conf "$pkgdir/etc/direwolf/direwolf.conf"
