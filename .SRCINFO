@@ -1,6 +1,6 @@
 pkgbase = mackerel-agent
 	pkgdesc = A revolutionary new kind of application performance management
-	pkgver = 0.51.0
+	pkgver = 0.52.0
 	pkgrel = 1
 	url = https://github.com/mackerelio/mackerel-agent
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = mackerel-agent
 	depends = glibc
 	conflicts = mackerel-agent-git
 	backup = etc/mackerel-agent/mackerel-agent.conf
-	source = https://github.com/mackerelio/mackerel-agent/archive/v0.51.0.tar.gz
-	md5sums = 1d780f5d5a38a1a19cd6518e3cf5c087
+	source = https://github.com/mackerelio/mackerel-agent/archive/v0.52.0.tar.gz
+	md5sums = a0d726a22ea1049d6824d56523df070b
 
 pkgname = mackerel-agent
 
