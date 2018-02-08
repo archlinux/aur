@@ -7,22 +7,19 @@
 
 pkgname=mythtv
 pkgver=29.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
-depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva' 'libiec61883' 'python2'
+depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva' 'libiec61883' 'perl-net-upnp' 'urlgrabber'
 		 'qt5-webkit' 'x265' 'libx264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr')
-# 'ttf-liberation' 
 makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec' 'x264' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww' 'mysql-python'
              'perl-dbd-mysql' 'python2-lxml')
 optdepends=('glew: for GPU commercial flagging'
             'libcec: for consumer electronics control capabilities'
             'libxml2: to read blu-ray metadata'
-            'perl-net-upnp: UPnP backend'
-            'urlgrabber: Downloading files'
             'mariadb: Database-Backend for server deployment'
             'mariadb-clients: Database-Frontend for client deployment'
             'python2-future: for metadata-lookup / cover art'
