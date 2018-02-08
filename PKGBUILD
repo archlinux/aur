@@ -1,6 +1,6 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=mpb-git
-pkgver=1.5.r60.g654c4a1
+pkgver=1.6.1.r5.g866d2f6
 pkgrel=1
 pkgdesc='MIT Photonic-Bands: computation of photonic band structures in periodic media'
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source=('git+https://github.com/stevengj/mpb.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/mpb"
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+	cd "${srcdir}/mpb"
+	git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -58,16 +58,16 @@ build() {
 	make
 }
 
-package() { 
+package() {
 	cd "$srcdir"/mpb
-	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install 
+	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install
 
 	cd ../mpbi
-	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install 
+	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install
 
 	cd ../mpb-mpi
-	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install 
+	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install
 
 	cd ../mpbi-mpi
-	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install 
+	make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install
 }
