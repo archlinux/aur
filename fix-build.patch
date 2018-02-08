@@ -1,0 +1,16 @@
+--- lostirc-0.4.6.orig/src/gtkmm/TextWidget.cpp
++++ lostirc-0.4.6/src/gtkmm/TextWidget.cpp
+@@ -210,11 +210,11 @@
+     std::vector< Glib::RefPtr<Gtk::TextTag> > tags;
+ 
+     Glib::RefPtr<Gtk::TextTag> fg = buffer->get_tag_table()->lookup(Glib::ustring("f")+crop(tp.fgnumber));
+-    if (fg == 0)
++    if (!fg)
+           fg = buffer->get_tag_table()->lookup("f0");
+ 
+     Glib::RefPtr<Gtk::TextTag> bg = buffer->get_tag_table()->lookup(Glib::ustring("b")+crop(tp.bgnumber));
+-    if (bg == 0)
++    if (!bg)
+           bg = buffer->get_tag_table()->lookup("b0");
+ 
+     tags.push_back(fg);

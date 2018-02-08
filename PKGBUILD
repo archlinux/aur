@@ -10,14 +10,17 @@ license=('GPL')
 depends=('gtk2' 'gtkmm' 'libsigc++')
 makedepends=('patch')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz
-        $pkgname-$pkgver-gcc.diff)
+        $pkgname-$pkgver-gcc.diff
+        fix-build.patch)
 md5sums=('501cd56bc0740d599540fb415718b939'
-         '5ac26f2e3beaa233b350de2cf8330923')
+         '5ac26f2e3beaa233b350de2cf8330923'
+         'cb7d5e5f0bf6ae7055f79de8a2f24763')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
 
   patch -Np0 -i "${srcdir}"/$pkgname-$pkgver-gcc.diff
+  patch -Np1 -i "${srcdir}"/fix-build.patch
 }
 
 build() {

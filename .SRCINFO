@@ -12,8 +12,10 @@ pkgbase = lostirc
 	depends = libsigc++
 	source = http://downloads.sourceforge.net/sourceforge/lostirc/lostirc-0.4.6.tar.gz
 	source = lostirc-0.4.6-gcc.diff
+	source = fix-build.patch
 	md5sums = 501cd56bc0740d599540fb415718b939
 	md5sums = 5ac26f2e3beaa233b350de2cf8330923
+	md5sums = cb7d5e5f0bf6ae7055f79de8a2f24763
 
 pkgname = lostirc
 
