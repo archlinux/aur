@@ -8,7 +8,7 @@
 pkgname=go4
 _Pkgname=Go4
 pkgver=5.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('i686' 'x86_64')
 depends=('root=6.10.08' 'qt4')
@@ -69,7 +69,7 @@ package() {
 
   install -d ${pkgdir}/etc/profile.d
 
-  echo <<EOF > ${srcdir}/go4.sh
+  cat <<- EOF > ${srcdir}/go4.sh
   # source go4login script
   source /usr/bin/go4login
 
