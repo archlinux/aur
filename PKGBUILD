@@ -3,8 +3,7 @@
 
 pkgname=code
 pkgdesc='Microsoft Code -- The Open Source build of Visual Studio Code (vscode)'
-pkgver=1.19.3
-_pkgver=v$pkgver
+pkgver=1.20.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
@@ -15,14 +14,14 @@ depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
 conflicts=('vscode-oss' 'visual-studio-code-oss')
 provides=('vscode-oss' 'visual-studio-code-oss')
 
-source=("vscode::git+https://github.com/Microsoft/vscode#tag=${_pkgver}"
+source=("vscode::git+https://github.com/Microsoft/vscode#tag=${pkgver}"
         "${pkgname}.desktop"
         "startup_script.patch"
         "product_json.patch")
 sha256sums=('SKIP'
-            'f472fb49852ae9048966f02278110efbbe451192a8ae312ec05d1c31093a0ff4'
+            'cd10a8532c0722298098cd9657df4ef05fcfe952e5be41f2294f50bb562a23dc'
             '8b2feded3382e5bf6b5b292c14083bfc536c05cd00f3235dd22b75b67fba134d'
-            '7970996eaddbb0265373e71c5452064465472ebb5bd6a393b94e8b84bde24854')
+            '055bd73b72d7289dfc3834f2e7b2359d8c5ffea6f2fd266df7bad96bb6a7f3f6')
 
 case "$CARCH" in
     i686)
