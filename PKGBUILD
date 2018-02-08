@@ -21,10 +21,6 @@ pkgver() {
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  sed -e '/^meson.add_install_script/ s/^#*/#/' -i Marker/meson.build
-}
-
 build() {
   cd Marker
   meson --prefix=/usr build
