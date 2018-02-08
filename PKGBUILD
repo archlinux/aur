@@ -18,6 +18,7 @@ depends=(graphviz
 	qt5-webkit		# Web inspector
 )
 source=(https://github.com/KDAB/GammaRay/archive/v$pkgver.tar.gz)
+sha256sums=('f86159c77cff4aaf22feed6fb2ee012028df179f54e0e441642115f93ffc41b5')
 build() {
 	cd "$srcdir/GammaRay-$pkgver"
 	mkdir -p build
