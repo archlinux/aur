@@ -1,6 +1,6 @@
 pkgbase = tiny-media-manager
 	pkgdesc = A multi-OS media managment tool
-	pkgver = 2.9.7
+	pkgver = 2.9.8
 	pkgrel = 1
 	url = http://www.tinymediamanager.org
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = tiny-media-manager
 	makedepends = maven
 	depends = libmediainfo
 	depends = java-environment>=8
-	source = https://github.com/tinyMediaManager/tinyMediaManager/archive/tinyMediaManager-2.9.7.1.tar.gz
+	source = https://github.com/tinyMediaManager/tinyMediaManager/archive/tinyMediaManager-2.9.8.1.tar.gz
 	source = tinyMediaManager.desktop
 	source = tinymediamanager
 	source = tinymediamanager-cli
