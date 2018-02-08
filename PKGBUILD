@@ -1,13 +1,14 @@
 # Contributor: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 #
 # Note to self. It is necessary to remove the current Go4 installation -if any- otherwise the compilation fails.
+#               Also, after removal, use a fresh terminal as go4login variables are no longer valid
 #
 # It looks that ROOT6 requires the modification/definition of the variable ROOT_INCLUDE_PATH to /usr/include/go4
 #
 pkgname=go4
 _Pkgname=Go4
 pkgver=5.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('i686' 'x86_64')
 depends=('root=6.10.08' 'qt4')
@@ -66,14 +67,25 @@ package() {
 	" > $srcdir/$pkgname.desktop
   install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
-  ## new ROOT_INCLUDE_PATH definition
   install -d ${pkgdir}/etc/profile.d
-  echo 'source /usr/bin/go4login' > ${srcdir}/go4.sh
 
-  echo 'export ROOT_INCLUDE_PATH=$ROOT_INCLUDE_PATH:/usr/include/go4' >> ${srcdir}/go4.sh
-  echo 'setenv ROOT_INCLUDE_PATH $ROOT_INCLUDE_PATH:/usr/include/go4' >> ${srcdir}/go4.csh
+  echo <<EOF > ${srcdir}/go4.sh
+  # source go4login script
+  source /usr/bin/go4login
+
+  # If ROOT_INCLUDE_PATH already exists, then add Go4 to it, otherwise do nothing
+  export ROOT_INCLUDE_PATH=${ROOT_INCLUDE_PATH:+$ROOT_INCLUDE_PATH:/usr/include/go4}
+
+  # if ROOT_INCLUDE_PATH does not exist, define it as the one from Go4, otherwise do nothing
+  export ROOT_INCLUDE_PATH=${ROOT_INCLUDE_PATH:-/usr/include/go4}
+
+EOF
 
   install -m755 ${srcdir}/go4.sh  ${pkgdir}/etc/profile.d/go4.sh
-  install -m755 ${srcdir}/go4.csh ${pkgdir}/etc/profile.d/go4.csh
+
+  # Csh no longer supported. Go4 itself does not seem to support it.
+
+  # for later maybe? uninstall and therefore remove packages
+  # PATH="${PATH/\/path\/to\/remove/}"
 
 }
