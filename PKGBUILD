@@ -12,7 +12,7 @@
 
 set -u
 pkgname='turboprint'
-pkgver='2.44'; _pkgrev='1'
+pkgver='2.45'; _pkgrev='1'
 pkgrel='1'
 pkgdesc='High-quality printer driver system for Linux'
 arch=('i686' 'x86_64')
@@ -29,6 +29,7 @@ optdepends=(
 backup=('etc/turboprint/system.cfg')
 options=('!strip')
 install="${pkgname}.install"
+_verwatch=('http://www.turboprint.info/history.html' '[0-9][0-9]-[a-z][a-z][a-z]-[0-9][0-9] - \([0-9\.]\+\).*' 'f')
 source=('turboprint.desktop'
         'turboprint-monitor.desktop'
         'tprintdaemon.service')
@@ -42,13 +43,13 @@ source_x86_64=("http://www.turboprint.info/tp2/${_srcdir}.x86_64.tgz")
 md5sums=('e3c504b2c1b7deb01d03fde710b117d7'
          '60a1754b2abd30e75e51acd9576cda43'
          '2640e1d95c3579d6cef590d18b4476df')
-md5sums_i686=('ce35e359a863f6e44de115501ffecdbe')
-md5sums_x86_64=('450d17952aec5f4982e09d587fc1fa31')
+md5sums_i686=('73faf86c6ff4fd6d28e8d491ffa91349')
+md5sums_x86_64=('cd3c9c123de1e8ccd9ea8c7a7f5841d2')
 sha256sums=('c90e4f71a234dc0638d15305184daeed212ebf1f7efc2f5a2a09895ca09bea6d'
             'de0c92b665150ceaf33c3cfd94b0afb422609194db9416aff59add5123bb8a2f'
             'a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad')
-sha256sums_i686=('8ae2795d2cd67c636b340f1660d3350f4173600a828f1d67f985fd27c8fc2bf6')
-sha256sums_x86_64=('f5ae087cdd87ae08cfa8a5769f0ccb2c422df862cac36a31b49189dc7091345b')
+sha256sums_i686=('957a9ff7ae2bf4dc0f7f4d2d6cf39091831e7b10fa10f27616e4b4b8127a2c82')
+sha256sums_x86_64=('c31ab20119cb7a3e32fb3eea06dd6c4f88dbd5ed54d792a869286903be4bf733')
 
 prepare() {
   set -u
