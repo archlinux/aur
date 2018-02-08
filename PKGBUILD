@@ -1,13 +1,13 @@
 pkgname=initcpio-overlayfs
 pkgver=r2.f37f141
 pkgrel=1
-pkgdesc="Initcpio hook for overlayfs"
-url="https://github.com/felixsinger/initcpio-overlayfs"
+pkgdesc="Don't use this package! Please use mkinitcpio-overlayfs."
+url="https://github.com/felixsinger/mkinitcpio-overlayfs"
 arch=(any)
 license=('GPL3')
 makedepends=('git')
 depends=()
-source=("git+https://github.com/felixsinger/initcpio-overlayfs.git")
+source=("git+https://github.com/felixsinger/mkinitcpio-overlayfs.git")
 sha512sums=('SKIP')
 
 pkgver() {
