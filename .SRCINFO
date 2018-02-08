@@ -35,7 +35,7 @@ pkgbase = iamcarbonman
 	depends = xorg-xmodmap
 	depends = xorg-xrdb
 	depends = xorg-xsetroot
-	depends = yadm
+	depends = yadm-git
 	depends = yay
 
 pkgname = iamcarbonman
