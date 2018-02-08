@@ -1,19 +1,20 @@
-# Maintainer: Remy Adriaanse <remy@adriaanse.it>
+# Maintainer: Benoit Brummer < trougnouf at gmail dot com >
+# Contributor: Remy Adriaanse <remy@adriaanse.it>
 
 _gemname=nokogiri
 pkgname="ruby-${_gemname}"
-pkgver=1.7.0.1
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc='HTML, XML, SAX, and Reader parser'
 arch=('any')
 url='http://nokogiri.org'
 license=('MIT')
 depends=('libxml2' 'libxslt' 'ruby' 'ruby-mini_portile2')
-makedepends=('ruby-pkg-config')
+makedepends=('ruby-pkg-config' 'ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha512sums=('5be8529b809d210bd10a70c8dbcafec5750585ff47e05de07776f6086ab197a4f195d42ff1c534e6e0eeca19ad257a4ae0fcc62af4ff3b514bb47525d6e106d4')
+sha256sums=('382af505a11b735e97f52ec6279ea484be7a7560d5599e81def40943601fd515')
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
