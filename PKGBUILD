@@ -2,7 +2,7 @@
 
 pkgname=dxvk-git
 _srcname=dxvk
-pkgver=20180124.e4d49ae
+pkgver=20180208.8f134ba
 pkgrel=1
 epoch=
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine."
@@ -26,6 +26,8 @@ noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
+destdir64=/usr/local/dxvk/w64
+destdir32=/usr/local/dxvk/w32
 
 pkgver() {
         cd "$_srcname"
@@ -37,8 +39,13 @@ build() {
 	cd "$_srcname"
 	meson --cross-file build-win64.txt build.w64
 	cd build.w64
-        meson configure -Dprefix=/usr/local/ -Dbuildtype=release
+        meson configure -Dprefix="$destdir64" -Dbuildtype=release
         ninja
+	cd ..
+	meson --cross-file build-win32.txt build.w32
+	cd build.w32
+	meson configure -Dprefix="$destdir32" -Dbuildtype=release
+	ninja
 }
 
 
@@ -46,4 +53,9 @@ build() {
 package() {
 	cd "$_srcname"/build.w64
 	DESTDIR="$pkgdir/" ninja install
+	mkdir -p "$pkgdir/usr/local/bin"
+	ln -s "$destdir64/bin/setup_dxvk.sh" "$pkgdir/usr/local/bin/setup_dxvk64"
+        cd ../build.w32
+        DESTDIR="$pkgdir/" ninja install
+        ln -s "$destdir32/bin/setup_dxvk.sh" "$pkgdir/usr/local/bin/setup_dxvk32"
 }
