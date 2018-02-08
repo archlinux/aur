@@ -1,22 +1,23 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
+
 pkgname=substance-designer
-pkgver=2017.2.2
+pkgver=2017.2.3
+_build=889
 pkgrel=1
 pkgdesc="Node-based, non-destructive PBR material authoring tool."
 arch=('x86_64')
 url='https://www.allegorithmic.com/products/substance-designer'
 license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
-options=('!strip')
-source=('https://download.allegorithmic.com/substance-designer/2017.x/Substance_Designer-2017.2.2-687-linux-x64-standard-full.rpm'
+options=('!strip' '!optipng') # PNG assets here should be left untouched!
+source=("https://download.allegorithmic.com/substance-designer/2017.x/Substance_Designer-${pkgver}-${_build}-linux-x64-standard-full.rpm"
         'substance-designer-icon.png'
         'substance-designer.desktop'
         'substance-designer')
-noextract=()
-sha256sums=('c7281a1674cfd2c40c7ad91c8e326d41e254562ece8f6660a10a92b53204b457'
+sha256sums=('1084968a735d3eca57c9ccac364e87897d89ddae97592fa4ffc2e0ee40b09359'
             '8f7f090d96dbb3535747d2c09c32970343c8887df610bc7ef92b59871a9bfb35'
-            '5598647d382a41149ce70742dbf6d64a9a3798e0eed176bf034ca953c6f59cce'
+            '0f0bc6643360203fa86bbe0db525fe1df57a9ae7a970e0cb440a1e1b4431db0e'
             '714d4484f5ca6d1ac0de77729ab60fc6aee53a7dc217fda5a6401fb6f8eee156')
 validpgpkeys=()
 
