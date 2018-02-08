@@ -6,7 +6,7 @@ pkgbase = loqui
 	arch = x86_64
 	license = GPL2
 	makedepends = python
-	depends = glib2
+	depends = gtk2
 	source = http://launchpad.net/loqui/0.6/0.6.4/+download/loqui-0.6.4.tar.gz
 	md5sums = 5130fb5b280bed07dbfbbd5cfc82b6c8
 
