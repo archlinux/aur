@@ -8,7 +8,7 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
 pkgver=2.31
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -16,8 +16,10 @@ makedepends=('git' 'go-pie' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs
 conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
-source=("$pkgname-$pkgver::https://github.com/snapcore/${pkgname}/archive/$pkgver.tar.gz")
-sha256sums=('973e7e8098f5780d71a0633a0fa7c3371ef7fb7ae120d464b2e25af9588c1f89')
+source=("$pkgname-$pkgver::https://github.com/snapcore/${pkgname}/archive/$pkgver.tar.gz"
+        "0001-cmd-snap-seccomp-drop-link-flags-that-will-be-reject.patch")
+sha256sums=('973e7e8098f5780d71a0633a0fa7c3371ef7fb7ae120d464b2e25af9588c1f89'
+           'ba4591f70b032b5e6f63d251cf6463ef93f3b963b8f19aac098b4c7dbed0309d')
 
 _gourl=github.com/snapcore/snapd
 
@@ -33,8 +35,7 @@ prepare() {
   mkdir -p "$(dirname "$GOPATH/src/${_gourl}")"
   ln --no-target-directory -fs "$srcdir/$pkgname-$pkgver" "$GOPATH/src/${_gourl}"
 
-  # Patch snap-seccomp build flags not to link libseccomp statically.
-  sed -i -e 's/-Wl,-Bstatic -lseccomp -Wl,-Bdynamic/-lseccomp/' "cmd/snap-seccomp/main.go"
+  patch -Np1 -i "${srcdir}/0001-cmd-snap-seccomp-drop-link-flags-that-will-be-reject.patch"
 }
 
 build() {
