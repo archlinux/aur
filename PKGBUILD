@@ -1,7 +1,7 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 PN="pcloud"
 pkgname="pcloud-drive"
 pkgdesc="pCloud drive. Electron edition."
@@ -26,7 +26,8 @@ prepare() {
 package() {
   install -d "$pkgdir"/{/usr/bin,opt}
   cp -r "${srcdir}/squashfs-root/app" "${pkgdir}/opt/${PN}"
-  cp -r "${srcdir}/squashfs-root/usr" "${pkgdir}/usr"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor"
+  cp -r "${srcdir}/squashfs-root/usr/share/icons/" "${pkgdir}/usr/share/"
   ln -s "/opt/${PN}/${PN}" "${pkgdir}/usr/bin/${PN}"
   install -Dm644 "${srcdir}/squashfs-root/${PN}.desktop" "${pkgdir}/usr/share/applications/${PN}.desktop"
   sed -i 's/AppRun/pcloud/' "${pkgdir}/usr/share/applications/${PN}.desktop"
