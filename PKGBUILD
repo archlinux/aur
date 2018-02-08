@@ -1,27 +1,20 @@
-# Maintainer: Jérémie Detrey <Jeremie.Detrey@loria.fr>
-# Based on PKGBUILD firefox-extension-useragentswitcher
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Contributor: Jérémie Detrey <Jeremie.Detrey@loria.fr>
 
-_plugin_name=tree_style_tab
-_plugin_version=2.4.8
-_plugin_id=5890
-_plugin_filename="${_plugin_name}-${_plugin_version}-an+fx-linux"
-
-pkgdesc="Firefox extension to show tabs like a tree"
-license=('MPL 1.1' 'GPL 2.0' 'LGPL 2.1')
-
-pkgname=firefox-extension-tree-style-tab
-pkgver=${_plugin_version}
+_pkgname=tree_style_tab
+pkgname=firefox-tree-style-tab
+pkgver=2.4.8
 pkgrel=1
+pkgdesc='Firefox extension to show tabs like a tree'
 arch=('any')
-url="http://piro.sakura.ne.jp/xul/_treestyletab.html.en"
-depends=("firefox>=57")
-source=("https://addons.cdn.mozilla.net/user-media/addons/${_plugin_id}/${_plugin_filename}.xpi")
-noextract=("${_plugin_filename}.xpi")
+license=('MPL 1.1' 'GPL 2.0' 'LGPL 2.1')
+url=http://piro.sakura.ne.jp/xul/_treestyletab.html.en
+source=("https://addons.cdn.mozilla.net/user-media/addons/5890/$_pkgname-$pkgver-an+fx-linux.xpi")
+noextract=("${source##*/}")
 sha256sums=('9128be116d7c4441d223e446ca911a7c4fd13508e3ed48d8310a801aad1882be')
 
 package() {
-  cd "${srcdir}"
-  _extension_id="treestyletab@piro.sakura.ne.jp"
-  _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
-  install -Dm644 ${_plugin_filename}.xpi "${_extension_dest}.xpi"
+  install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/treestyletab@piro.sakura.ne.jp.xpi
 }
+
+# vim:set ts=2 sw=2 et:
