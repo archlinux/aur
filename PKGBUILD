@@ -143,6 +143,7 @@ package() {
   make -C cmd install DESTDIR="$pkgdir/"
 
   # Install man file
+  mkdir -p "$pkgdir/usr/share/man/man1"
   "$GOPATH/bin/snap" help --man > "$pkgdir/usr/share/man/man1/snap.1"
 
   # Install the "info" data file with snapd version
