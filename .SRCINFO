@@ -1,0 +1,18 @@
+pkgbase = imagecap
+	pkgdesc = A shell script to add captions to images
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://code.agnibho.com/imagecap
+	arch = any
+	license = GPL
+	depends = bash
+	depends = coreutils
+	depends = gvim
+	depends = sed
+	depends = perl-image-exiftool
+	depends = feh
+	source = https://code.agnibho.com/imagecap/download/imagecap-1.0.tar.gz
+	md5sums = 42fb17695ae8cd6af4d997b62d463966
+
+pkgname = imagecap
+
