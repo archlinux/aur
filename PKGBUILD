@@ -4,8 +4,8 @@
 
 pkgname=conky-lua-archers
 _pkgname=conky
-pkgver=1.10.7
-pkgrel=2
+pkgver=1.10.8
+pkgrel=1
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -38,7 +38,7 @@ makedepends=(
 	'perl-xml-sax-expat'
 )
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('23bb9609c522f248cba287146943a872cc045b45cecfa5668bca76e95ecc06ac')
+sha256sums=('2ebd655a27c816bd613538b71d4ec1c096252cb522feaa05f64781dcedea8857')
 options=('strip' '!debug')
 
 prepare() {
