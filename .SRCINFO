@@ -1,0 +1,73 @@
+pkgbase = linux-ck-vfiomsitest
+	pkgver = 4.14.18
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Linux-ck
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.18.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.18.sign
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	source = enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch
+	source = http://ck.kolivas.org/patches/4.0/4.14/4.14-ck1/patch-4.14-ck1.xz
+	source = https://github.com/ckolivas/linux/pull/7/commits/811cb391e71c1d60387dbbd6ae0bbc4e61f06acb.patch
+	source = https://github.com/ckolivas/linux/pull/7/commits/6bfb805cbac27b18fb4ad7537fe90dfc39e17f35.patch
+	source = https://github.com/ckolivas/linux/pull/7/commits/1588e6bf316231685204e358dfe172851b39fd1e.patch
+	source = https://github.com/ckolivas/linux/pull/7/commits/df2a75f4864b30011ab6a6f365d9378d8eafa53b.patch
+	source = https://github.com/ckolivas/linux/pull/7/commits/a79d648fcde72fc98048d4435bc86864a59fd01b.patch
+	source = unfuck_MuQSS_for_4.14.15+.patch::https://github.com/ckolivas/linux/commit/25849740d77dfc089fdbfb53623e50d38a972aff.patch
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	source = 0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
+	source = 0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
+	source = 0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+	source = 0005-vfio-msi-test.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
+	sha256sums = SKIP
+	sha256sums = 8d29e1d10cabd62b32ac56e33de990e0d4f3c6208f57bd3f2c8c02f9eebc0d72
+	sha256sums = SKIP
+	sha256sums = fc3033c9f914bf8b6da687b97bca27b897c551993e5737d14e68469793446031
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8
+	sha256sums = 44d10c573112dc2b64d39ea33c2a10fbbdd84f9877b8d736acc09b2516299474
+	sha256sums = 24b74a975e61293cdd4ce37845a27f550102b0481017336e15df3334a82cef02
+	sha256sums = 453ccb01d9e56ea3a33621516f0d52568e836d1932ff14e26567cc3fe2101a17
+	sha256sums = d2f59cf1c5187204eced6e53806b187e90698fcb2309955aed4020a15c659ae1
+	sha256sums = 3d4d2506795c4bd914959758f5b69ccf5a4f5a21f5d4bfc87bf0aa3b4b58f4c6
+	sha256sums = 0dbf2d23df0b5d023794332872b8b346d0c4994576b778396364e803acac4498
+	sha256sums = e0f40fc665ca9fa3cd1f3c9055aa11ea3d5f2790c7c9face69254a24ef27ec04
+	sha256sums = d8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f
+	sha256sums = 6ce57b8dba43db4c6ee167a8891167b7d1e1e101d5112e776113eb37de5c37d8
+	sha256sums = 1c1f5792c98369c546840950e6569a690cd88e33d4f0931d2b0b5b88f705aa4d
+	sha256sums = ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d
+	sha256sums = e6aa60a699d14c7aec1c50278570a38add87c5ebf8cd5227bf67cda9160e21c3
+
+pkgname = linux-ck-vfiomsitest
+	pkgdesc = The Linux-ck-vfiomsitest kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.162
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux-ck=4.14.18
+	backup = etc/mkinitcpio.d/linux-ck-vfiomsitest.preset
+
+pkgname = linux-ck-vfiomsitest-headers
+	pkgdesc = Header files and scripts for building modules for Linux-ck-vfiomsitest kernel
+	depends = linux-ck
+	provides = linux-ck-headers=4.14.18
+	provides = linux-headers=4.14.18
+
