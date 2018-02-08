@@ -1,18 +1,18 @@
 # Maintainer: Romain Bazile <gromain.baz@gmail.com>
 
 pkgname=wpan-tools
-pkgver=0.7
+pkgver=0.8
 pkgrel=0
 pkgdesc="Userspace tools for Linux IEEE 802.15.4 stack."
 epoch=
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="http://wpan.cakelab.org/"
 license=('ISC')
 depends=('libnl')
 provides=('iwpan' 'wpan-ping')
 source=("https://github.com/linux-wpan/wpan-tools/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha1sums=('be322fae8412afaaad8c4d98524882b66544bdb3')
+sha1sums=('c0504e7c7e8064ca93395bb59a2857361b8f23f4')
 
 package() {
         cd ${srcdir}/${pkgname}-${pkgver};
