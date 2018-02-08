@@ -1,0 +1,13 @@
+pkgbase = libjudydebian1
+	pkgdesc = judy, libjudydebian1.deb
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://packages.debian.org/jessie/libjudydebian1
+	arch = armv7h
+	license = unknown
+	conflicts = judy
+	options = !strip
+	source = http://ftp.cn.debian.org/debian/pool/main/j/judy/libjudydebian1_1.0.5-1_armhf.deb
+
+pkgname = libjudydebian1
+
