@@ -12,8 +12,8 @@ depends=('cairo' 'libxtst' 'libxi' 'gtk2' 'libxrandr' 'pango' 'fontconfig' 'libx
 makedepends=('tar')
 conflicts=('bilibili-live-helper-git')
 provides=('bilibili-live-helper')
-source=('git+https://github.com/OriginCode/AURFiles' "${entryname}.desktop")
-md5sums=('SKIP' 'SKIP')
+source=('git+https://github.com/OriginCode/AURFiles' "${entryname}.desktop" "${pkgname}.ico")
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 build() {
 	cd "$srcdir/AURFiles"
@@ -22,7 +22,7 @@ build() {
 
 package() {
 	install -d "${pkgdir}/opt/${pkgname}"
-	install -d "${pkgdir}/usr/share/applications"
 	cp -r ${srcdir}/AURFiles/${pkgname}/* "${pkgdir}/opt/${pkgname}"
 	install -Dm755 ./"${entryname}.desktop" "${pkgdir}/usr/share/applications/${entryname}.desktop"
+	install -Dm444 ./"${pkgname}.ico" "${pkgdir}/usr/share/icons/hicolor/128x128/${pkgname}.ico"
 }
