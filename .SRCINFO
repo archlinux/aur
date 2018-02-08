@@ -1,7 +1,7 @@
 pkgbase = electron-ssr-source
 	pkgdesc = Install electron-ssr from tarball
 	pkgver = 0.2.0beta2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/erguotou520/electron-ssr
 	arch = x86_64
 	license = MIT
