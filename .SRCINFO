@@ -11,6 +11,9 @@ pkgbase = dxvk-git
 	makedepends = mingw-w64-gcc
 	depends = vulkan-icd-loader
 	depends = wine-staging
+	options = !strip
+	options = !buildflags
+	options = staticlibs
 	source = git+https://github.com/doitsujin/dxvk.git
 	md5sums = SKIP
 

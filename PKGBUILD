@@ -18,7 +18,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip !buildflags staticlibs)
 install=
 changelog=
 source=("git+https://github.com/doitsujin/dxvk.git")
@@ -26,8 +26,6 @@ noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
-destdir64=/usr/local/dxvk/w64
-destdir32=/usr/local/dxvk/w32
 
 pkgver() {
         cd "$_srcname"
@@ -39,12 +37,12 @@ build() {
 	cd "$_srcname"
 	meson --cross-file build-win64.txt build.w64
 	cd build.w64
-        meson configure -Dprefix="$destdir64" -Dbuildtype=release
+        meson configure -Dprefix=/opt/dxvk/w64 -Dbuildtype=release
         ninja
 	cd ..
 	meson --cross-file build-win32.txt build.w32
 	cd build.w32
-	meson configure -Dprefix="$destdir32" -Dbuildtype=release
+	meson configure -Dprefix=/opt/dxvk/w32 -Dbuildtype=release
 	ninja
 }
 
@@ -54,8 +52,8 @@ package() {
 	cd "$_srcname"/build.w64
 	DESTDIR="$pkgdir/" ninja install
 	mkdir -p "$pkgdir/usr/local/bin"
-	ln -s "$destdir64/bin/setup_dxvk.sh" "$pkgdir/usr/local/bin/setup_dxvk64"
+	ln -s "/opt/dxvk/w64/bin/setup_dxvk.sh" "$pkgdir/usr/local/bin/setup_dxvk64"
         cd ../build.w32
         DESTDIR="$pkgdir/" ninja install
-        ln -s "$destdir32/bin/setup_dxvk.sh" "$pkgdir/usr/local/bin/setup_dxvk32"
+        ln -s "/opt/dxvk/w32/bin/setup_dxvk.sh" "$pkgdir/usr/local/bin/setup_dxvk32"
 }
