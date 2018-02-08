@@ -1,4 +1,8 @@
-# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+# Maintainer: Dragoon Aethis <dragoon@dragonic.eu>
+# Note that this is a temporary package - don't expect updates.
+# See package comments for more info.
+
+# Original Maintainer: Vaporeon <vaporeon@vaporeon.io>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
@@ -6,7 +10,7 @@ pkgbase=qemu-patched-vfiomsitest
 pkgname=(qemu-patched-vfiomsitest qemu-patched-vfiomsitest-headless
          qemu-patched-vfiomsitest-block-{iscsi,rbd,gluster} qemu-patched-vfiomsitest-guest-agent)
 _pkgname=qemu
-pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
+pkgdesc="QEMU with extra VFIO MSI interrupt patches from https://redd.it/7vsfv7"
 pkgver=2.11.0
 pkgrel=3
 arch=(x86_64)
