@@ -1,0 +1,16 @@
+pkgbase = mega-happy-sprite
+	pkgdesc = Sega Mega Drive (Genesis) Sprite Editor
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = http://theadesilva.com/mega/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	depends = glibc
+	depends = sdl
+	source = https://github.com/ExtraordinaryBen/mega-happy-sprite/archive/v1.3.3.tar.gz
+	md5sums = d3cecc47bf81ed0c4a4e926226a14c13
+
+pkgname = mega-happy-sprite
+
