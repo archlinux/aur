@@ -1,8 +1,8 @@
 # Maintainer: Irvine <irvinemcminn_at_that gmail_place>
 
 pkgbase=linux-hardened-apparmor
-_srcname=linux-4.14
-_pkgver=4.14.17
+_srcname=linux-4.15
+_pkgver=4.15.1
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/copperhead/linux-hardened'
@@ -20,33 +20,28 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         90-linux.hook  # pacman hook for initramfs regeneration
         linux.preset   # standard config files for mkinitcpio ramdisk
 
-        # https://bugs.archlinux.org/task/56605
-        xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-lookup.patch
         # https://bugs.archlinux.org/task/56711
         drm-i915-edp-Only-use-the-alternate-fixed-mode-if-its-asked-for.patch
-
-        CVE-2017-8824-dccp-use-after-free-in-DCCP-code.patch
 )
 replaces=('linux-grsec')
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '1e62d56e37bd15daec7c3d20a605624e1e0a21c44856880c6dbe0c9e41cabfa8'
+            '202a0a34f221ae335de096c292927d7a7d4bcdbc2dd46d43b8a5f6420f95a0cf'
             'SKIP'
-            '77b6c3188a029d3a03164b2ca75bcd9781ea8a32b1e021114667e4a39c1b4bd1'
+            'd132bb3455f7e9749e85673717e962f62dbfb8260137f457b06a1cffc558ec40'
             'SKIP'
-            '1c09d2e73fc7940ff7304141430403ea5ba91453abe94755acc361148fe6ff04'
+            '43201173c7ff59ee4ce5062d1c379043ecf61ee7a77deb1068d8ba4c39d3debd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '294c928b8252112d621df1d13fbfeade13f28ddea034d44e89db41b66d2b7d45'
-            'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148'
-            '6be803c62b7ce41f1b4de6c867715398812b1c1a3e68a0078512f2872e2a3fa9')
+            'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
               '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A' # Daniel Micay
              )
 _kernelname=${pkgbase#linux}
+: ${_kernelname:=-ARCH}
 
 prepare() {
   cd ${_srcname}
@@ -54,8 +49,6 @@ prepare() {
   # add upstream patch
   msg2 "Applying upstream patch"
   patch -Np1 < ../patch-${_pkgver}
-  # XXX: GNU patch doesn't support git-style file mode
-  chmod +x tools/objtool/sync-check.sh
 
   # apply all patches
   for _patch in "${source[@]}"; do
@@ -75,15 +68,13 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  cp -Tf ../config.${CARCH} .config
-
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
+  cat ../config.x86_64 - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
 
   # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -128,7 +119,7 @@ _package() {
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  local _extramodules="extramodules-${_basekernel}${_kernelname}"
   ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook
