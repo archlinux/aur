@@ -17,3 +17,6 @@ cookies
 *.h
 *.hpp
 *.o
+
+*.log
+rtorrent-0.9.6/
