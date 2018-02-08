@@ -5,12 +5,12 @@
 
 _pkgbase=snapd
 pkgname=snapd-git
-pkgver=2.30.r1155.gefd597409
+pkgver=2.31.r152.gf586f737d
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
-makedepends=('git' 'go-pie' 'go-tools' 'libseccomp' 'libcap' 'python-docutils' 'systemd' 'xfsprogs' 'libseccomp')
+makedepends=('git' 'go-pie' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'libseccomp')
 # the following checkdepends are only required for static checks and unit tests,
 # both are currently disabled
 # checkdepends=('python' 'squashfs-tools' 'indent' 'shellcheck')
