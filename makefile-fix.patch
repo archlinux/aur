@@ -1,0 +1,98 @@
+diff -ruN librsvg-2.42.2/Makefile.am librsvg-2.42.2-patched/Makefile.am
+--- librsvg-2.42.2/Makefile.am	2018-02-02 08:40:42.000000000 +0800
++++ librsvg-2.42.2-patched/Makefile.am	2018-02-08 12:06:11.167282697 +0800
+@@ -112,7 +112,7 @@
+ endif
+ 
+ if CROSS_COMPILING
+-CARGO_TARGET_ARGS=--target=$(host)
++CARGO_TARGET_ARGS=--target=$(rust_target)
+ endif
+ 
+ CARGO_VERBOSE = $(cargo_verbose_$(V))
+@@ -121,6 +121,7 @@
+ cargo_verbose_1 = --verbose
+ 
+ RUST_LIB=@abs_top_builddir@/rust/target/@RUST_TARGET_SUBDIR@/librsvg_internals.a
++RUST_LIB_WIN=@abs_top_builddir@/rust/target/@RUST_TARGET_SUBDIR@/rsvg_internals.lib
+ CARGO_TARGET_DIR=@abs_top_builddir@/rust/target
+ 
+ check-local:
+@@ -142,7 +143,8 @@
+ 	PKG_CONFIG_ALLOW_CROSS=1						\
+ 	PKG_CONFIG='$(PKG_CONFIG)'						\
+ 	CARGO_TARGET_DIR=$(CARGO_TARGET_DIR)					\
+-	cargo build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS)
++	cargo build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) \
++	&& cp $(RUST_LIB_WIN) $(RUST_LIB)
+ 
+ librsvg_@RSVG_API_MAJOR_VERSION@_la_CPPFLAGS = \
+ 	-I$(top_srcdir) 			\
+@@ -168,8 +170,7 @@
+ 
+ librsvg_@RSVG_API_MAJOR_VERSION@_la_LIBADD = \
+ 	$(LIBRSVG_LIBS) 	\
+-	$(LIBM)			\
+-	$(RUST_LIB)
++	$(LIBM)
+ 
+ librsvgincdir = $(includedir)/librsvg-$(RSVG_API_VERSION)/librsvg
+ librsvginc_HEADERS = 	\
+diff -ruN librsvg-2.42.2/Makefile.in librsvg-2.42.2-patched/Makefile.in
+--- librsvg-2.42.2/Makefile.in	2018-02-02 08:41:23.000000000 +0800
++++ librsvg-2.42.2-patched/Makefile.in	2018-02-08 12:06:12.882321904 +0800
+@@ -223,7 +223,7 @@
+ LTLIBRARIES = $(lib_LTLIBRARIES)
+ am__DEPENDENCIES_1 =
+ librsvg_@RSVG_API_MAJOR_VERSION@_la_DEPENDENCIES =  \
+-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) $(RUST_LIB)
++	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+ am__objects_1 =
+ am_librsvg_@RSVG_API_MAJOR_VERSION@_la_OBJECTS =  \
+ 	librsvg_@RSVG_API_MAJOR_VERSION@_la-librsvg-enum-types.lo \
+@@ -698,12 +699,13 @@
+ 
+ @DEBUG_RELEASE_FALSE@CARGO_RELEASE_ARGS = --release
+ @DEBUG_RELEASE_TRUE@CARGO_RELEASE_ARGS = 
+-@CROSS_COMPILING_TRUE@CARGO_TARGET_ARGS = --target=$(host)
++@CROSS_COMPILING_TRUE@CARGO_TARGET_ARGS = --target=$(rust_target)
+ CARGO_VERBOSE = $(cargo_verbose_$(V))
+ cargo_verbose_ = $(cargo_verbose_$(AM_DEFAULT_VERBOSITY))
+ cargo_verbose_0 = 
+ cargo_verbose_1 = --verbose
+ RUST_LIB = @abs_top_builddir@/rust/target/@RUST_TARGET_SUBDIR@/librsvg_internals.a
++RUST_LIB_WIN = @abs_top_builddir@/rust/target/@RUST_TARGET_SUBDIR@/rsvg_internals.lib
+ CARGO_TARGET_DIR = @abs_top_builddir@/rust/target
+ librsvg_@RSVG_API_MAJOR_VERSION@_la_CPPFLAGS = \
+ 	-I$(top_srcdir) 			\
+@@ -729,8 +731,7 @@
+ 
+ librsvg_@RSVG_API_MAJOR_VERSION@_la_LIBADD = \
+ 	$(LIBRSVG_LIBS) 	\
+-	$(LIBM)			\
+-	$(RUST_LIB)
++	$(LIBM)
+ 
+ librsvgincdir = $(includedir)/librsvg-$(RSVG_API_VERSION)/librsvg
+ librsvginc_HEADERS = \
+@@ -1005,8 +1006,8 @@
+ 	  rm -f $${locs}; \
+ 	}
+ 
+-librsvg-@RSVG_API_MAJOR_VERSION@.la: $(librsvg_@RSVG_API_MAJOR_VERSION@_la_OBJECTS) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_DEPENDENCIES) $(EXTRA_librsvg_@RSVG_API_MAJOR_VERSION@_la_DEPENDENCIES) 
+-	$(AM_V_CCLD)$(librsvg_@RSVG_API_MAJOR_VERSION@_la_LINK) -rpath $(libdir) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_OBJECTS) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_LIBADD) $(LIBS)
++librsvg-@RSVG_API_MAJOR_VERSION@.la: $(librsvg_@RSVG_API_MAJOR_VERSION@_la_OBJECTS) $(RUST_LIB) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_DEPENDENCIES) $(EXTRA_librsvg_@RSVG_API_MAJOR_VERSION@_la_DEPENDENCIES) 
++	$(AM_V_CCLD)$(librsvg_@RSVG_API_MAJOR_VERSION@_la_LINK) -rpath $(libdir) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_OBJECTS) $(RUST_LIB) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_LIBADD) $(LIBS)
+ install-binPROGRAMS: $(bin_PROGRAMS)
+ 	@$(NORMAL_INSTALL)
+ 	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
+@@ -1943,7 +1944,8 @@
+ 	PKG_CONFIG_ALLOW_CROSS=1						\
+ 	PKG_CONFIG='$(PKG_CONFIG)'						\
+ 	CARGO_TARGET_DIR=$(CARGO_TARGET_DIR)					\
+-	cargo build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS)
++	cargo build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) \
++	&& cp $(RUST_LIB_WIN) $(RUST_LIB)
+ 
+ librsvg-enum-types.h: s-enum-types-h
+ 	@true
