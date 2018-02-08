@@ -1,14 +1,14 @@
 # Maintainer: Tamvana Makuluni <emakman@gmail.com>
 pkgname=neovim-latex-previewer-git
 pkgver=r8.a3dcdd0
-pkgrel=1
+pkgrel=3
 pkgdesc="Neovim plugin to provide a live-updating PDF preview of LaTeX documents."
 arch=('any')
 url="http://github.com/emakman/neovim-latex-previewer"
 conflicts=('neovim-latex-previewer')
 provides=('neovim-latex-previewer')
 license=('custom:Public Domain')
-depends=('texlive-core' 'vim' 'xdotool' 'mupdf' 'unionfs-fuse')
+depends=('texlive-core' 'neovim' 'xdotool' 'mupdf' 'unionfs-fuse')
 makedepends=('git')
 source=('git+https://github.com/emakman/neovim-latex-previewer.git')
 md5sums=('SKIP')

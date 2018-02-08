@@ -1,13 +1,13 @@
 pkgbase = neovim-latex-previewer-git
 	pkgdesc = Neovim plugin to provide a live-updating PDF preview of LaTeX documents.
 	pkgver = r8.a3dcdd0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://github.com/emakman/neovim-latex-previewer
 	arch = any
 	license = custom:Public Domain
 	makedepends = git
 	depends = texlive-core
-	depends = vim
+	depends = neovim
 	depends = xdotool
 	depends = mupdf
 	depends = unionfs-fuse
