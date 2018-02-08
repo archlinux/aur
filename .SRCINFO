@@ -1,16 +1,17 @@
 pkgbase = fmo
 	pkgdesc = A tool for locating installed AUR orphans.
-	pkgver = 1.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/craftyguy/fmo
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = cower
+	depends = auracle-git
+	depends = python3
 	provides = fmo
 	conflicts = fmo
-	source = https://github.com/craftyguy/fmo/archive/1.1.tar.gz
-	md5sums = 16c339707debdebfc2e8b0fcc26a5186
+	source = https://github.com/craftyguy/fmo/archive/2.0.tar.gz
+	sha512sums = 52d3e2587b6f376ffe2986bacb794bea47b8c6771b7d207bf2ad268adbc64c6c77443ad550f7c00be7c4528c991641381f932180e28488ec715fe8b5217c3759
 
 pkgname = fmo
 
