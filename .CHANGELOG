@@ -1,6 +1,42 @@
 Version history
 ===============
 
+0.9.11
+------
+
+2018-02-07
+
+New multiplayer maps: Schism 2p by me, Team Attack 2p by Yung. Fixed exit
+order in Pave the Way 4p.
+
+Implemented geoo's design for a splat ruler with only two bars. Both bars snap
+to terrain up to 16 pixels away. Hidden user option SPLAT_RULER_DESIGN in the
+config file can be set to 0 for this ruler, or to 1 or 2 for the three-pronged
+rulers from Lix 0.9.4 or 0.9.10.
+
+Fix #220: On losing network connection, don't crash, but go back to the
+Connect screen of the lobby.
+
+Fix #297: In the singleplayer browser, removed the gap between the delete and
+back buttons.
+
+Fix #298: Option to invert the hold-to-scroll direction.
+
+Fix #292: geoo/construction/Laser* flashes more clearly, to distinguish the
+lasers frmo red abstract pipes.
+
+Fix #303: Print names of missing tiles on the level preview.
+
+Previews in level browsers downscale the level more smoothly.
+
+Mitigate #296 (RAM balloons to 1.5 GB on Windows) without solving it:
+Auto-savestate every 12 frames, not every 10, and keep 3 pairs, not 4.
+
+Option to display torus seams is off by default.
+
+In data/transl/*.txt, merged option titles and option descriptions in the same
+line per option, instead of having two lines per option.
+
 0.9.10
 ------
 
