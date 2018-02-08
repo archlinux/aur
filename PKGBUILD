@@ -1,45 +1,52 @@
-# Maintainer: picard <info@fr32k.de>
-# Contributor: Richard "Nothing4You" Schwab <mail NOSPAM w.tf-w.tf>
+# Maintainer: Nicola Hinssen <nicola.hinssen@gmail.com>
+# Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-_gitname=nzbget
-pkgver=r1444.e81b42f
+pkgver=v20.0.r2169
 pkgrel=1
-epoch=1
 pkgdesc="Download from Usenet using .nzb files"
-arch=('any')
-#backup=('etc/nzbget.conf')
-url="http://nzbget.net/"
-depends=('libxml2' 'ncurses' 'libgcrypt' 'openssl')
-makedepends=('git' 'autoconf' 'automake')
-conflicts=('nzbget nzbget-svn')
-provides=('nzbget')
+arch=('x86_64')
+url="https://github.com/nzbget/nzbget"
 license=('GPL')
-source=('git://github.com/nzbget/nzbget.git' 'nzbget.service')
-install='nzbget.install'
-sha512sums=('SKIP'
-'d33dc707bb4f0265b08208f5e3be0c33f4ba8197717548160fc2b10dcd9c88dc299bf2c48a80ab6b7b8c86f5c3777f786ef55d317803315955dabd4bb28ed93a')
+depends=('libxml2')
+makedepends=('git')
+optdepends=('python: run scripts'
+			'unrar: unpacking archives' 
+			'p7zip: unpacking archives' 
+			'par2cmdline: verificate and repair PAR 2.0 files')
+provides=('nzbget'
+		  'nzbget-systemd')
+conflicts=('nzbget')
+install=nzbget.install
+source=("$pkgname::git+https://github.com/nzbget/nzbget.git"
+		"nzbget.service")
+sha256sums=('SKIP'
+            '66b2c2fbe949f6406a49674d28a2bdd258b20780ba47a586b640d6cc4d99f7c2')
 
 pkgver() {
-cd "$_gitname"
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$pkgname"
+	printf "%s.r%s" "$(git describe --tags | cut -d- -f1)" "$(git rev-list --count HEAD)"
 }
 
 build() {
-cd "${srcdir}/$_gitname"
+  cd "$pkgname"
 
-./configure --prefix=/usr --sbindir=/usr/bin --enable-parcheck --with-tlslib=OpenSSL
-make
+  ./configure --prefix=/usr --sbindir='/usr/bin' --enable-parcheck --with-tlslib=OpenSSL
+  make
 }
 
 package() {
-cd "${srcdir}/$_gitname"
+  cd "$pkgname"
 
-make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir/" install
 
-install -d "$pkgdir/usr/share/nzbget"
-install -m644 -t "$pkgdir/usr/share/nzbget" ChangeLog README
+  install -d "${pkgdir}/usr/share/$pkgname"
+  install -m 644 -t "${pkgdir}/usr/share/$pkgname" README
 
-install -d "$pkgdir/usr/lib/systemd/system"
-install -m644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/nzbget.service" 
+  cd "$srcdir"
+
+  install -d "${pkgdir}/usr/lib/systemd/system"
+  install -m 644 -t "${pkgdir}/usr/lib/systemd/system" nzbget.service
+  
+  install -dm 750 "${pkgdir}/var/lib/nzbget"
 }
