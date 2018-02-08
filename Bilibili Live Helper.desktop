@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.1.2
+Name=bilibili-live-helper
+Comment=A helper for Bilibili Live.
+Path=/usr/bin/bilibili-live-helper
+Exec=bilibili-live-helper --enable-transparent-visuals --disable-gpu
+Terminal=false
+Categories=Internet;Multimedia;

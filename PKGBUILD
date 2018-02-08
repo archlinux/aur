@@ -1,5 +1,6 @@
 # Maintainer: Jack Wu <origincoder@yahoo.com>
 pkgname=bilibili-live-helper
+entryname="Bilibili Live Helper"
 pkgver=1.1.2
 pkgrel=1
 pkgdesc="A Helper for Bilibili Live."
@@ -11,8 +12,8 @@ depends=('cairo' 'libxtst' 'libxi' 'gtk2' 'libxrandr' 'pango' 'fontconfig' 'libx
 makedepends=('tar')
 conflicts=('bilibili-live-helper-git')
 provides=('bilibili-live-helper')
-source=('git+https://github.com/OriginCode/AURFiles')
-md5sums=('SKIP')
+source=('git+https://github.com/OriginCode/AURFiles' "${entryname}.desktop")
+md5sums=('SKIP' 'SKIP')
 
 build() {
 	cd "$srcdir/AURFiles"
@@ -21,5 +22,7 @@ build() {
 
 package() {
 	install -d "${pkgdir}/opt/${pkgname}"
+	install -d "${pkgdir}/usr/share/applications"
 	cp -r ${srcdir}/AURFiles/${pkgname}/* "${pkgdir}/opt/${pkgname}"
+	cp ./"${entryname}.desktop" "${pkgdir}/usr/share/applications/${entryname}.desktop"
 }

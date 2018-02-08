@@ -33,6 +33,8 @@ pkgbase = bilibili-live-helper
 	provides = bilibili-live-helper
 	conflicts = bilibili-live-helper-git
 	source = git+https://github.com/OriginCode/AURFiles
+	source = Bilibili Live Helper.desktop
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = bilibili-live-helper
