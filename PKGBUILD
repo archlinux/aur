@@ -1,7 +1,7 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=ruby-gli
 _gemname=gli
-pkgver=2.16.1
+pkgver=2.17.1
 pkgrel=1
 pkgdesc="Make awesome command-line applications the easy way"
 arch=('any')
@@ -17,4 +17,4 @@ package() {
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" \
     -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
 }
-md5sums=('b3983067656ddaeb937c5fdb8204b6cd')
+md5sums=('75a8f269052ac8ca5c30881777c7e584')
