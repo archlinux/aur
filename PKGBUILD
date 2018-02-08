@@ -1,22 +1,22 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
 pkgname=substance-player
-pkgver=2017.2.1
+pkgver=2017.2.3
+_build=893
 pkgrel=1
 pkgdesc="PBR material preview, visualization and tweaking software."
 arch=('x86_64')
 url='https://www.allegorithmic.com/products/substance-player'
 license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
-options=('!strip')
-source=('https://download.allegorithmic.com/substance-player/2017.x/Substance_Player-2017.2.1-590-linux-x64-standard-full.rpm'
+options=('!strip' '!optipng') # PNG assets here should be left untouched!
+source=("https://download.allegorithmic.com/substance-player/2017.x/Substance_Player-${pkgver}-${_build}-linux-x64-standard-full.rpm"
         'substance-player-icon.png'
         'substance-player.desktop'
         'substance-player')
-noextract=()
-sha256sums=('9d9b9acb99b423a775ef7105748787cabb552ec02fb65ea8dee951cf4a5587ac'
+sha256sums=('1852281400deface80c394c57567e6fab8aa9a5fb17b368110bceee3b210927b'
             '87d2e879c24a26e63334614b9f1c5d24bfb2eb2b606762b63ce5a2fe6a54345e'
-            '9451928371c7730ddc568ad431dffcdba1c4a408215863e812256ca18ac16b32'
+            'c4b3d0efdfdf00ef1e770f3e69ea30214f26ef2cde80aa5e5157bb0eda8dca31'
             'f024998986230fe480ea77c62c655e0e468e0b3664dbc0120d865311db19944e')
 validpgpkeys=()
 
