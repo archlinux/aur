@@ -1,0 +1,331 @@
+As of commit 660c97eef6f8 ("ivshmem: use kvm irqfd for msi notifications"),
+QEMU crashes with:
+
+  kvm_irqchip_commit_routes: Assertion `ret == 0' failed.
+
+if the ivshmem device is configured with more vectors than what the server
+supports. This is caused by the ivshmem_vector_unmask() being called on
+vectors that have not been initialized by ivshmem_add_kvm_msi_virq().
+
+This commit fixes it by adding a simple check to the mask and unmask
+callbacks.
+
+Note that the opposite mismatch, if the server supplies more vectors than
+what the device is configured for, is already handled and leads to output
+like:
+
+  Too many eventfd received, device has 1 vectors
+
+To reproduce the assert, run:
+
+  ivshmem-server -n 0
+
+and QEMU with:
+
+  -device ivshmem-doorbell,chardev=iv
+  -chardev socket,path=/tmp/ivshmem_socket,id=iv
+
+then load the Windows driver, at the time of writing available at:
+
+https://github.com/virtio-win/kvm-guest-drivers-windows/tree/master/ivshmem
+
+The issue is believed to have been masked by other guest drivers, notably
+Linux ones, not enabling MSI-X on the device.
+
+Fixes: 660c97eef6f8 ("ivshmem: use kvm irqfd for msi notifications")
+Signed-off-by: Ladi Prosek <address@hidden>
+Reviewed-by: Marc-André Lureau <address@hidden>
+Reviewed-by: Markus Armbruster <address@hidden>
+---
+ hw/misc/ivshmem.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index a5a46827fe..6e46669744 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -317,6 +317,10 @@ static int ivshmem_vector_unmask(PCIDevice *dev, unsigned vector,
+     int ret;
+ 
+     IVSHMEM_DPRINTF("vector unmask %p %d\n", dev, vector);
++    if (!v->pdev) {
++        error_report("ivshmem: vector %d route does not exist", vector);
++        return -EINVAL;
++    }
+ 
+     ret = kvm_irqchip_update_msi_route(kvm_state, v->virq, msg, dev);
+     if (ret < 0) {
+@@ -331,12 +335,16 @@ static void ivshmem_vector_mask(PCIDevice *dev, unsigned vector)
+ {
+     IVShmemState *s = IVSHMEM_COMMON(dev);
+     EventNotifier *n = &s->peers[s->vm_id].eventfds[vector];
++    MSIVector *v = &s->msi_vectors[vector];
+     int ret;
+ 
+     IVSHMEM_DPRINTF("vector mask %p %d\n", dev, vector);
++    if (!v->pdev) {
++        error_report("ivshmem: vector %d route does not exist", vector);
++        return;
++    }
+ 
+-    ret = kvm_irqchip_remove_irqfd_notifier_gsi(kvm_state, n,
+-                                                s->msi_vectors[vector].virq);
++    ret = kvm_irqchip_remove_irqfd_notifier_gsi(kvm_state, n, v->virq);
+     if (ret != 0) {
+         error_report("remove_irqfd_notifier_gsi failed");
+     }
+-- 
+2.13.6
+As of commit 660c97eef6f8 ("ivshmem: use kvm irqfd for msi notifications"),
+QEMU crashes with:
+
+ivshmem: msix_set_vector_notifiers failed
+msix_unset_vector_notifiers: Assertion `dev->msix_vector_use_notifier && 
+dev->msix_vector_release_notifier' failed.
+
+if MSI-X is repeatedly enabled and disabled on the ivshmem device, for example
+by loading and unloading the Windows ivshmem driver. This is because
+msix_unset_vector_notifiers() doesn't call any of the release notifier callbacks
+since MSI-X is already disabled at that point (msix_enabled() returning false
+is how this transition is detected in the first place). Thus 
+ivshmem_vector_mask()
+doesn't run and when MSI-X is subsequently enabled again ivshmem_vector_unmask()
+fails.
+
+This is fixed by keeping track of unmasked vectors and making sure that
+ivshmem_vector_mask() always runs on MSI-X disable.
+
+Fixes: 660c97eef6f8 ("ivshmem: use kvm irqfd for msi notifications")
+Signed-off-by: Ladi Prosek <address@hidden>
+Reviewed-by: Markus Armbruster <address@hidden>
+---
+ hw/misc/ivshmem.c | 32 ++++++++++++++++++++++++++------
+ 1 file changed, 26 insertions(+), 6 deletions(-)
+
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index 6e46669744..91364d8364 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -77,6 +77,7 @@ typedef struct Peer {
+ typedef struct MSIVector {
+     PCIDevice *pdev;
+     int virq;
++    bool unmasked;
+ } MSIVector;
+ 
+ typedef struct IVShmemState {
+@@ -321,6 +322,7 @@ static int ivshmem_vector_unmask(PCIDevice *dev, unsigned vector,
+         error_report("ivshmem: vector %d route does not exist", vector);
+         return -EINVAL;
+     }
++    assert(!v->unmasked);
+ 
+     ret = kvm_irqchip_update_msi_route(kvm_state, v->virq, msg, dev);
+     if (ret < 0) {
+@@ -328,7 +330,13 @@ static int ivshmem_vector_unmask(PCIDevice *dev, unsigned vector,
+     }
+     kvm_irqchip_commit_routes(kvm_state);
+ 
+-    return kvm_irqchip_add_irqfd_notifier_gsi(kvm_state, n, NULL, v->virq);
++    ret = kvm_irqchip_add_irqfd_notifier_gsi(kvm_state, n, NULL, v->virq);
++    if (ret < 0) {
++        return ret;
++    }
++    v->unmasked = true;
++
++    return 0;
+ }
+ 
+ static void ivshmem_vector_mask(PCIDevice *dev, unsigned vector)
+@@ -343,11 +351,14 @@ static void ivshmem_vector_mask(PCIDevice *dev, unsigned vector)
+         error_report("ivshmem: vector %d route does not exist", vector);
+         return;
+     }
++    assert(v->unmasked);
+ 
+     ret = kvm_irqchip_remove_irqfd_notifier_gsi(kvm_state, n, v->virq);
+-    if (ret != 0) {
++    if (ret < 0) {
+         error_report("remove_irqfd_notifier_gsi failed");
++        return;
+     }
++    v->unmasked = false;
+ }
+ 
+ static void ivshmem_vector_poll(PCIDevice *dev,
+@@ -817,11 +828,20 @@ static void ivshmem_disable_irqfd(IVShmemState *s)
+     PCIDevice *pdev = PCI_DEVICE(s);
+     int i;
+ 
+-    for (i = 0; i < s->peers[s->vm_id].nb_eventfds; i++) {
+-        ivshmem_remove_kvm_msi_virq(s, i);
+-    }
+-
+     msix_unset_vector_notifiers(pdev);
++
++    for (i = 0; i < s->peers[s->vm_id].nb_eventfds; i++) {
++        /*
++         * MSI-X is already disabled here so msix_unset_vector_notifiers()
++         * didn't call our release notifier.  Do it now to keep our masks and
++         * unmasks balanced.
++         */
++        if (s->msi_vectors[i].unmasked) {
++            ivshmem_vector_mask(pdev, i);
++        }
++        ivshmem_remove_kvm_msi_virq(s, i);
++    }
++
+ }
+ 
+ static void ivshmem_write_config(PCIDevice *pdev, uint32_t address,
+-- 
+2.13.6
+Adds a rollback path to ivshmem_enable_irqfd() and fixes
+ivshmem_disable_irqfd() to bail if irqfd has not been enabled.
+
+To reproduce, run:
+
+  ivshmem-server -n 0
+
+and QEMU with:
+
+  -device ivshmem-doorbell,chardev=iv
+  -chardev socket,path=/tmp/ivshmem_socket,id=iv
+
+then load, unload, and load again the Windows driver, at the time of writing
+available at:
+
+https://github.com/virtio-win/kvm-guest-drivers-windows/tree/master/ivshmem
+
+The issue is believed to have been masked by other guest drivers, notably
+Linux ones, not enabling MSI-X on the device.
+
+Signed-off-by: Ladi Prosek <address@hidden>
+Reviewed-by: Markus Armbruster <address@hidden>
+---
+ hw/misc/ivshmem.c | 37 ++++++++++++++++++++++++-------------
+ 1 file changed, 24 insertions(+), 13 deletions(-)
+
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index 91364d8364..d1bb246d12 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -786,6 +786,20 @@ static int ivshmem_setup_interrupts(IVShmemState *s, Error **errp)
+     return 0;
+ }
+ 
++static void ivshmem_remove_kvm_msi_virq(IVShmemState *s, int vector)
++{
++    IVSHMEM_DPRINTF("ivshmem_remove_kvm_msi_virq vector:%d\n", vector);
++
++    if (s->msi_vectors[vector].pdev == NULL) {
++        return;
++    }
++
++    /* it was cleaned when masked in the frontend. */
++    kvm_irqchip_release_virq(kvm_state, s->msi_vectors[vector].virq);
++
++    s->msi_vectors[vector].pdev = NULL;
++}
++
+ static void ivshmem_enable_irqfd(IVShmemState *s)
+ {
+     PCIDevice *pdev = PCI_DEVICE(s);
+@@ -797,7 +811,7 @@ static void ivshmem_enable_irqfd(IVShmemState *s)
+         ivshmem_add_kvm_msi_virq(s, i, &err);
+         if (err) {
+             error_report_err(err);
+-            /* TODO do we need to handle the error? */
++            goto undo;
+         }
+     }
+ 
+@@ -806,21 +820,14 @@ static void ivshmem_enable_irqfd(IVShmemState *s)
+                                   ivshmem_vector_mask,
+                                   ivshmem_vector_poll)) {
+         error_report("ivshmem: msix_set_vector_notifiers failed");
++        goto undo;
+     }
+-}
++    return;
+ 
+-static void ivshmem_remove_kvm_msi_virq(IVShmemState *s, int vector)
+-{
+-    IVSHMEM_DPRINTF("ivshmem_remove_kvm_msi_virq vector:%d\n", vector);
+-
+-    if (s->msi_vectors[vector].pdev == NULL) {
+-        return;
++undo:
++    while (--i >= 0) {
++        ivshmem_remove_kvm_msi_virq(s, i);
+     }
+-
+-    /* it was cleaned when masked in the frontend. */
+-    kvm_irqchip_release_virq(kvm_state, s->msi_vectors[vector].virq);
+-
+-    s->msi_vectors[vector].pdev = NULL;
+ }
+ 
+ static void ivshmem_disable_irqfd(IVShmemState *s)
+@@ -828,6 +835,10 @@ static void ivshmem_disable_irqfd(IVShmemState *s)
+     PCIDevice *pdev = PCI_DEVICE(s);
+     int i;
+ 
++    if (!pdev->msix_vector_use_notifier) {
++        return;
++    }
++
+     msix_unset_vector_notifiers(pdev);
+ 
+     for (i = 0; i < s->peers[s->vm_id].nb_eventfds; i++) {
+-- 
+2.13.6
+The effects of ivshmem_enable_irqfd() was not undone on device reset.
+
+This manifested as:
+ivshmem_add_kvm_msi_virq: Assertion `!s->msi_vectors[vector].pdev' failed.
+
+when irqfd was enabled before reset and then enabled again after reset, making
+ivshmem_enable_irqfd() run for the second time.
+
+To reproduce, run:
+
+  ivshmem-server
+
+and QEMU with:
+
+  -device ivshmem-doorbell,chardev=iv
+  -chardev socket,path=/tmp/ivshmem_socket,id=iv
+
+then install the Windows driver, at the time of writing available at:
+
+https://github.com/virtio-win/kvm-guest-drivers-windows/tree/master/ivshmem
+
+and crash-reboot the guest by inducing a BSOD.
+
+Signed-off-by: Ladi Prosek <address@hidden>
+---
+ hw/misc/ivshmem.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index d1bb246d12..9c7e74ef12 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -758,10 +758,14 @@ static void ivshmem_msix_vector_use(IVShmemState *s)
+     }
+ }
+ 
++static void ivshmem_disable_irqfd(IVShmemState *s);
++
+ static void ivshmem_reset(DeviceState *d)
+ {
+     IVShmemState *s = IVSHMEM_COMMON(d);
+ 
++    ivshmem_disable_irqfd(s);
++
+     s->intrstatus = 0;
+     s->intrmask = 0;
+     if (ivshmem_has_feature(s, IVSHMEM_MSI)) {
+-- 
+2.13.6

@@ -1,0 +1,170 @@
+Record data writes that come through the NVIDIA BAR0 quirk, if we get
+enough in a row that we're only passing through, automatically enable
+an ioeventfd for it.  The primary target for this is the MSI-ACK
+that NVIDIA uses to allow the MSI interrupt to re-trigger, which is a
+4-byte write, data value 0x0 to offset 0x704 into the quirk, 0x88704
+into BAR0 MMIO space.  For an interrupt latency sensitive micro-
+benchmark, this takes us from 83% of performance versus disabling the
+quirk entirely (which GeForce cannot do), to to almost 90%.
+
+Signed-off-by: Alex Williamson <address@hidden>
+---
+ hw/vfio/pci-quirks.c |   89 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ hw/vfio/pci.h        |    2 +
+ 2 files changed, 89 insertions(+), 2 deletions(-)
+
+diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+index e4cf4ea2dd9c..e739efe601b1 100644
+--- a/hw/vfio/pci-quirks.c
++++ b/hw/vfio/pci-quirks.c
+@@ -203,6 +203,7 @@ typedef struct VFIOConfigMirrorQuirk {
+     uint32_t offset;
+     uint8_t bar;
+     MemoryRegion *mem;
++    uint8_t data[];
+ } VFIOConfigMirrorQuirk;
+
+ static uint64_t vfio_generic_quirk_mirror_read(void *opaque,
+@@ -297,6 +298,50 @@ static void vfio_ioeventfd_exit(VFIOIOEventFD *ioeventfd)
+     g_free(ioeventfd);
+ }
+
++static void vfio_ioeventfd_handler(void *opaque)
++{
++    VFIOIOEventFD *ioeventfd = opaque;
++
++    if (event_notifier_test_and_clear(&ioeventfd->e)) {
++        vfio_region_write(ioeventfd->region, ioeventfd->region_addr,
++                          ioeventfd->data, ioeventfd->size);
++    }
++}
++
++static VFIOIOEventFD *vfio_ioeventfd_init(VFIOPCIDevice *vdev,
++                                          MemoryRegion *mr, hwaddr addr,
++                                          unsigned size, uint64_t data,
++                                          VFIORegion *region,
++                                          hwaddr region_addr)
++{
++    VFIOIOEventFD *ioeventfd = g_malloc0(sizeof(*ioeventfd));
++
++    if (event_notifier_init(&ioeventfd->e, 0)) {
++        g_free(ioeventfd);
++        return NULL;
++    }
++
++    ioeventfd->mr = mr;
++    ioeventfd->addr = addr;
++    ioeventfd->size = size;
++    ioeventfd->match_data = true;
++    ioeventfd->data = data;
++    ioeventfd->region = region;
++    ioeventfd->region_addr = region_addr;
++
++    qemu_set_fd_handler(event_notifier_get_fd(&ioeventfd->e),
++                        vfio_ioeventfd_handler, NULL, ioeventfd);
++    memory_region_add_eventfd(ioeventfd->mr, ioeventfd->addr,
++                              ioeventfd->size, ioeventfd->match_data,
++                              ioeventfd->data, &ioeventfd->e);
++
++    info_report("Enabled automatic ioeventfd acceleration for %s region %d, "
++                "offset 0x%"HWADDR_PRIx", data 0x%"PRIx64", size %u",
++                vdev->vbasedev.name, region->nr, region_addr, data, size);
++
++    return ioeventfd;
++}
++
+ static void vfio_vga_probe_ati_3c3_quirk(VFIOPCIDevice *vdev)
+ {
+     VFIOQuirk *quirk;
+@@ -732,6 +777,13 @@ static void vfio_probe_nvidia_bar5_quirk(VFIOPCIDevice *vdev, int nr)
+     trace_vfio_quirk_nvidia_bar5_probe(vdev->vbasedev.name);
+ }
+
++typedef struct LastDataSet {
++    hwaddr addr;
++    uint64_t data;
++    unsigned size;
++    int count;
++} LastDataSet;
++
+ /*
+  * Finally, BAR0 itself.  We want to redirect any accesses to either
+  * 0x1800 or 0x88000 through the PCI config space access functions.
+@@ -742,6 +794,7 @@ static void vfio_nvidia_quirk_mirror_write(void *opaque, hwaddr addr,
+     VFIOConfigMirrorQuirk *mirror = opaque;
+     VFIOPCIDevice *vdev = mirror->vdev;
+     PCIDevice *pdev = &vdev->pdev;
++    LastDataSet *last = (LastDataSet *)&mirror->data;
+
+     vfio_generic_quirk_mirror_write(opaque, addr, data, size);
+
+@@ -756,6 +809,38 @@ static void vfio_nvidia_quirk_mirror_write(void *opaque, hwaddr addr,
+                           addr + mirror->offset, data, size);
+         trace_vfio_quirk_nvidia_bar0_msi_ack(vdev->vbasedev.name);
+     }
++
++    /*
++     * Automatically add an ioeventfd to handle any repeated write with the
++     * same data and size above the standard PCI config space header.  This is
++     * primarily expected to accelerate the MSI-ACK behavior, such as noted
++     * above.  Current hardware/drivers should trigger an ioeventfd at config
++     * offset 0x704 (region offset 0x88704), with data 0x0, size 4.
++     */
++    if (addr > PCI_STD_HEADER_SIZEOF) {
++        if (addr != last->addr || data != last->data || size != last->size) {
++            last->addr = addr;
++            last->data = data;
++            last->size = size;
++            last->count = 1;
++        } else if (++last->count > 10) {
++            VFIOIOEventFD *ioeventfd;
++
++            ioeventfd = vfio_ioeventfd_init(vdev, mirror->mem, addr, size, data,
++                                            &vdev->bars[mirror->bar].region,
++                                            mirror->offset + addr);
++            if (ioeventfd) {
++                VFIOQuirk *quirk;
++
++                QLIST_FOREACH(quirk, &vdev->bars[mirror->bar].quirks, next) {
++                    if (quirk->data == mirror) {
++                        QLIST_INSERT_HEAD(&quirk->ioeventfds, ioeventfd, next);
++                        break;
++                    }
++                }
++            }
++        }
++    }
+ }
+
+ static const MemoryRegionOps vfio_nvidia_mirror_quirk = {
+@@ -776,7 +861,7 @@ static void vfio_probe_nvidia_bar0_quirk(VFIOPCIDevice *vdev, int nr)
+     }
+
+     quirk = vfio_quirk_alloc(1);
+-    mirror = quirk->data = g_malloc0(sizeof(*mirror));
++    mirror = quirk->data = g_malloc0(sizeof(*mirror) + sizeof(LastDataSet));
+     mirror->mem = quirk->mem;
+     mirror->vdev = vdev;
+     mirror->offset = 0x88000;
+@@ -794,7 +879,7 @@ static void vfio_probe_nvidia_bar0_quirk(VFIOPCIDevice *vdev, int nr)
+     /* The 0x1800 offset mirror only seems to get used by legacy VGA */
+     if (vdev->vga) {
+         quirk = vfio_quirk_alloc(1);
+-        mirror = quirk->data = g_malloc0(sizeof(*mirror));
++        mirror = quirk->data = g_malloc0(sizeof(*mirror) + sizeof(LastDataSet));
+         mirror->mem = quirk->mem;
+         mirror->vdev = vdev;
+         mirror->offset = 0x1800;
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index 146065c2f715..ec53b9935725 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -32,6 +32,8 @@ typedef struct VFIOIOEventFD {
+     bool match_data;
+     uint64_t data;
+     EventNotifier e;
++    VFIORegion *region;
++    hwaddr region_addr;
+ } VFIOIOEventFD;
+
+ typedef struct VFIOQuirk {
