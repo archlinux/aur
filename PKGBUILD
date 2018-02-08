@@ -1,6 +1,6 @@
 # Maintainer: Ryan Gonzalez <rymg19@gmail.com>
 pkgname=qldv-git
-pkgver=r8.665b5ee
+pkgver=r13.c165a62
 pkgrel=1
 pkgdesc="create a patched ld-linux.so without version information warnings"
 arch=('i686' 'x86_64')
