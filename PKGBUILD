@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/$_pkgname-$pkgver"
   ./configure --prefix=/opt/openresty/luajit \
     --with-lua=/opt/openresty/luajit/ \
-    --lua-suffix=jit-2.1.0-beta2\
+    --lua-suffix=jit\
     --force-config \
     --lua-version=5.1 \
     --with-lua-include=/opt/openresty/luajit/include/luajit-2.1
