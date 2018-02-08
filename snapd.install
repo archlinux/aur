@@ -10,11 +10,6 @@ pre_remove() {
   _stop_services
 
   /usr/lib/snapd/snap-mgmt --purge || :
-
-  # TODO: this are handled by snap-mgmt in v2.31+
-  rm -rf /var/lib/snapd/cookie/*
-  rm -rf /var/lib/snapd/cache/*
-  rm -f /var/lib/snapd/state.json
 }
 
 pre_upgrade() {
