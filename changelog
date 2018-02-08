@@ -1,3 +1,8 @@
+2018-02-08 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.1.0.1-1:
+    Turned off linker optimizations in OS-specific builds due to a few more bugs that need correction.
+    Fixed a few IPC GUI-related issues and exceptions.
+    Small amount of other code improvements, optimizations and bugfixes.
 2018-02-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.1.0.0-1:
     [!] Fixed Steam breaking change that made ASF 2FA unable to fetch confirmations in all previous versions.
