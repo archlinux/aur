@@ -1,0 +1,20 @@
+pkgbase = python-jupyter_kernel_gateway
+	pkgdesc = A web server for spawning and communicating with Jupyter kernels
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/jupyter/kernel_gateway
+	arch = any
+	license = BSD
+	makedepends = python
+	depends = python
+	depends = python-jupyter_core
+	depends = python-jupyter_client
+	depends = jupyter-notebook
+	depends = python-traitlets
+	depends = python-tornado
+	depends = python-requests
+	source = https://pypi.python.org/packages/a9/e5/34b171dec6a1172c8358717c76ecd9dd1fb154c44c73e05f10697491d01b/jupyter_kernel_gateway-2.0.2.tar.gz
+	md5sums = de5435b1f865f357385ec15a3ab989ab
+
+pkgname = python-jupyter_kernel_gateway
+
