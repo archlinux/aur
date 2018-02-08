@@ -7,7 +7,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='Small but very powerful text-based mail client - slang version'
 url='http://www.mutt.org/'
@@ -19,7 +19,7 @@ arch=('x86_64')
 optdepends=('smtp-forwarder: to send mail')
 depends=('gpgme' 'slang' 'openssl' 'libsasl' 'gdbm' 'libidn' 'mime-types' 'krb5')
 source=("http://ftp.mutt.org/pub/mutt/${_pkgbase}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('a2e152a352bbf02d222d54074199d9c53821c19f700c4cb85f78fa85faed7896'
+sha256sums=('431a85d6933ddf75cae51c9966c17d33e32fb0588cb3bbec9d32e01b267b76e1'
             'SKIP')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
 
@@ -49,7 +49,5 @@ package() {
 	make DESTDIR="${pkgdir}" install
 
 	rm "${pkgdir}"/etc/mime.types{,.dist}
-	rm "${pkgdir}"/usr/bin/{flea,muttbug}
-	rm "${pkgdir}"/usr/share/man/man1/{flea,muttbug}.1
 	install -Dm644 contrib/gpg.rc "${pkgdir}"/etc/Muttrc.gpg.dist
 }
