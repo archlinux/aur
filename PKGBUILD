@@ -3,7 +3,7 @@
 pkgbase=python-acme-git
 pkgname=("python-acme-git" "python2-acme-git")
 _reponame="certbot"
-pkgver=0.19.0.r39.g686fa36b3
+pkgver=0.21.0.r18.g4f0aeb12f
 pkgrel=1
 pkgdesc="ACME protocol implementation for Python"
 arch=('any')
@@ -69,5 +69,4 @@ package_python2-acme-git() {
 
 	cd "${srcdir}/${_reponame}/acme-py2"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
-	mv "${pkgdir}"/usr/bin/jws{,2}
 }
