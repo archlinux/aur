@@ -1,13 +1,13 @@
 
 # Maintainer: lisuke <1657787678@qq.com>
-pkgname=libjudydebian1
-pkgver=1.0.5
+pkgname=miredo-debian
+pkgver=1.2.6
 pkgrel=1
 
-pkgdesc="judy, libjudydebian1.deb"
+pkgdesc="miredo, miredo.deb"
 arch=('armv7h')
 conflicts=('judy')
-url="https://packages.debian.org/jessie/libjudydebian1"
+url="https://packages.debian.org/jessie/miredo"
 license=('unknown')
 options=('!strip')
 
