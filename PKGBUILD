@@ -2,8 +2,8 @@
 # Contributor: Matthew Ellison <matt+aur@arroyonetworks.com>
 
 pkgname=pybind11
-pkgver=2.2.1
-pkgrel=3
+pkgver=2.2.2
+pkgrel=1
 pkgdesc='A lightweight header-only library to create Python bindings of existing C++ code'
 arch=('any')
 url='http://pybind11.readthedocs.org/'
@@ -17,15 +17,8 @@ makedepends=(
         'python-breathe'
 )
 checkdepends=('cmake' 'python-pytest' 'python-numpy')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz"
-        'pybind11-numpy1.14-fix.patch')
-sha256sums=('f8bd1509578b2a1e7407d52e6ee8afe64268909a1bbda620ca407318598927e7'
-            '6b797fcb9c3f8a121bbfc7ff005e3573d80630fcc12f4231fb388f1c5ba1f736')
-
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    patch -Np1 -i "${srcdir}/pybind11-numpy1.14-fix.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz")
+sha256sums=('b639a2b2cbf1c467849660801c4665ffc1a4d0a9e153ae1996ed6f21c492064e')
 
 build () {
     cd "${pkgname}-${pkgver}/docs"
