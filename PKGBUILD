@@ -7,7 +7,7 @@ pkgdesc="Astropy affilated package for region handling"
 arch=('i686' 'x86_64')
 url="http://astropy-regions.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'python-astropy-helpers' 'python-sphinx')
+makedepends=('cython' 'python-astropy>=1.2' 'python-astropy-helpers' 'python-sphinx')
 #checkdepends=('python-pytest-arraydiff')
 source=("https://files.pythonhosted.org/packages/source/r/regions/regions-${pkgver}.tar.gz")
 md5sums=('48597dc17906e478292040dae2df5596')
