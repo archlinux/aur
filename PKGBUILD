@@ -7,6 +7,7 @@ _pkgver=2_1_2
 pkgrel=1
 pkgdesc="GUI for the avrdude Atmel progammer tool"
 url="http://burn-o-mat.net/"
+depends=("avrdude")
 license=("GPL3")
 arch=('x86_64')
 source=("http://burn-o-mat.net/${_pkgname}_${_pkgver}.zip"
@@ -25,5 +26,5 @@ package() {
 	cp "AVR8_Burn-O-Mat_Icon_16.png" "${pkgdir}/usr/share/${pkgname}"
 	cp lib/*.jar "${pkgdir}/usr/share/${pkgname}/lib/"
 	
-	cp -a "${srcdir}/avr-burn-o-mat" "${pkgdir}/usr/bin/avr-burn-o-mat"
+	cp "${srcdir}/avr-burn-o-mat" "${pkgdir}/usr/bin/avr-burn-o-mat"
 }
