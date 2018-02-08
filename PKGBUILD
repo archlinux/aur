@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
 pkgver=0.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
@@ -21,8 +21,8 @@ sha256sums=('0759c5c1a46260eb6f78fc22484088307a7b5f0692c092d8b2d59e57cad7c3f5'
 
 package() {
   cd "$srcdir/$pkgname-$pkgver-"*
-  # "Patching" for scipy 1.0 support
-  sed -i 's/scipy==0\.\*/scipy/g' requirements.txt
+  # "Patching" for Pillow>=5.0 support
+  sed -i 's/Pillow>=3\.2\.0,<5\.0/Pillow>=3\.2\.0/g' requirements.txt
 
   python setup.py install --root="$pkgdir/" --optimize=1
   
