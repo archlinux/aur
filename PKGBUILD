@@ -2,8 +2,8 @@
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=v20.0.r2169
-pkgrel=1
+pkgver=20.0.r2169
+pkgrel=2
 pkgdesc="Download from Usenet using .nzb files"
 arch=('x86_64')
 url="https://github.com/nzbget/nzbget"
