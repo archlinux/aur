@@ -34,6 +34,8 @@ pkgbase = bilibili-live-helper
 	conflicts = bilibili-live-helper-git
 	source = git+https://github.com/OriginCode/AURFiles
 	source = Bilibili Live Helper.desktop
+	source = bilibili-live-helper.ico
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
