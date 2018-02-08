@@ -5,14 +5,14 @@
 pkgname=camlidl
 pkgver=1.06
 _pkgver=${pkgver/\./}
-pkgrel=1
+pkgrel=2
 pkgdesc="A stub code generator and COM binding for Objective Caml (OCaml)"
 arch=('i686' 'x86_64')
 url="https://github.com/xavierleroy/camlidl"
 license=('custom')
 depends=('ocaml')
 options=(staticlibs)
-source=(https://github.com/xavierleroy/$pkgname/archive/$pkgname$_pkgver.tar.gz
+source=("https://github.com/xavierleroy/$pkgname/archive/$pkgname$_pkgver.tar.gz"
         META.camlidl)
 
 build() {
@@ -24,14 +24,14 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgname$_pkgver"
 
-  local _bindir=$pkgdir/usr/bin
-  local _ocamldir=$pkgdir/$(ocamlc -where)
-  mkdir -p $_bindir $_ocamldir/{caml,stublibs,$pkgname}
+  local _bindir="$pkgdir/usr/bin"
+  local _ocamldir="$pkgdir/$(ocamlc -where)"
+  mkdir -p "$_bindir" "$_ocamldir"/{caml,stublibs,"$pkgname"}
 
-  make BINDIR=$_bindir OCAMLLIB=$_ocamldir install
+  make BINDIR="$_bindir" OCAMLLIB="$_ocamldir" install
 
-  install -Dm644 ${srcdir}/META.camlidl ${pkgdir}/${_ocamldir}/${pkgname}/META
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 "$srcdir/META.camlidl" "$_ocamldir/$pkgname/META"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 sha1sums=('674c75608faa841caea5a3d3c75dc8ff58d5c5a4'
