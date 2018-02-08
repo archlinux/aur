@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=isobmff-git
-pkgver=r128.7802f2e
+pkgver=r132.fc315a1
 pkgrel=1
 pkgdesc='Library for reading/parsing files in the ISO Base Media File Format (git version)'
 arch=('i686' 'x86_64')
@@ -17,8 +17,10 @@ conflicts=('isobmff')
 source=("$pkgname"::'git+https://github.com/DigiDNA/ISOBMFF.git'
         'submodule-PIMPL'::'git+https://github.com/macmade/PIMPL.git'
         'submodule-gmock-xcode'::'git+https://github.com/macmade/gmock-xcode.git'
-        'submodule-makelib'::'git+https://github.com/macmade/makelib.git')
+        'submodule-makelib'::'git+https://github.com/macmade/makelib.git'
+        'submodule-xcconfig'::'git+https://github.com/macmade/xcconfig.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -26,7 +28,7 @@ sha256sums=('SKIP'
 prepare() {
     cd "$pkgname"
     
-    local _submodule_list='PIMPL gmock-xcode makelib'
+    local _submodule_list='PIMPL gmock-xcode makelib xcconfig'
     
     git submodule init
     
