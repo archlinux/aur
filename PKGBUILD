@@ -54,6 +54,9 @@ check() {
 }
 
 package() {
+  provides=(go)
+  conflicts=(go)
+
   cd $pkgrepo
 
   install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib/go" "$pkgdir/usr/share/doc/go"
