@@ -18,6 +18,5 @@ cookies
 *.hpp
 *.o
 
-patch-handle-ipv4-6-default-address.patch
-fixing-memleak-with-getifaddrs.patch
-libtorrent-openssl-1.1.patch
+*.log
+libtorrent-0.13.6/
