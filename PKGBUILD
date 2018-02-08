@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=blackmagic-decklink-sdk
-pkgver=10.9.5
+pkgver=10.9.10
 pkgrel=1
 pkgdesc='Blackmagic DeckLink SDK'
 arch=('any')
-url='https://www.blackmagicdesign.com/support/family/capture-and-playback/'
+url='https://www.blackmagicdesign.com/support/family/capture-and-playback'
 license=('custom')
 provides=('decklink-sdk')
 conflicts=('decklink-sdk')
@@ -13,14 +13,14 @@ source=('LICENSE')
 sha256sums=('cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 
 _srcfile="Blackmagic_DeckLink_SDK_${pkgver}.zip"
-_downloadid='627a3b1bcfdb4996a2bcc0d70af9ee3b'
-_referid='c4985c77ccb24b48b4be5ae7e309e92d'
+_downloadid='9db40f9eb8734f03aa9406e1c178f67d'
+_referid='c86915b1f3ca4e26bd08957630bc334f'
 _srcurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
-_expected_sha256sum='1aa0fd45714ee955badbe986254cd6c7537f25e6ff596cbc1b9499bf5dcaf32b'
+_expected_sha256sum='fb564eb8e8ef14da7be035871b1ff172fb8eead9649f049baa3a1695a3ec55ed'
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/60.0.3112.90 \
+                        Chrome/64.0.3282.140 \
                         Safari/537.36"
 _reqjson="{ \
     \"platform\": \"Linux\", \
@@ -54,7 +54,7 @@ prepare() {
             -H 'Upgrade-Insecure-Requests: 1' \
             -H "$_useragent" \
             -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' \
-            -H 'Accept-Language: en-US,en;q=0.8' \
+            -H 'Accept-Language: en-US,en;q=0.9' \
             --compressed \
             "$(curl \
                 -s \
@@ -64,8 +64,10 @@ prepare() {
                 -H "$_useragent" \
                 -H 'Content-Type: application/json;charset=UTF-8' \
                 -H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
-                -H 'Accept-Language: en-US,en;q=0.8' \
-                -H 'Cookie: _ga=GA1.3.853760154.1498322710; _gid=GA1.3.1693019090.1500064482' \
+                -H 'Accept-Encoding: gzip, deflate, br' \
+                -H 'Accept-Language: en-US,en;q=0.9' \
+                -H 'Authority: www.blackmagicdesign.com' \
+                -H 'Cookie: _ga=GA1.2.1849503966.1518103294; _gid=GA1.2.953840595.1518103294' \
                 --data-binary "$_reqjson" \
                 --compressed \
                 "$_srcurl" \
