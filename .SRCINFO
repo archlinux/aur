@@ -1,0 +1,15 @@
+pkgbase = vim-jq-git
+	pkgdesc = Syntax highlighting for jq script files
+	pkgver = r20.99d55a3
+	pkgrel = 1
+	url = https://github.com/vito-c/jq.vim
+	arch = any
+	makedepends = git
+	depends = vim
+	provides = vim-jq
+	conflicts = vim-jq
+	source = vim-jq::git+https://github.com/vito-c/jq.vim
+	md5sums = SKIP
+
+pkgname = vim-jq-git
+
