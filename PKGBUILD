@@ -2,7 +2,7 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=miredo-debian
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 
 pkgdesc="miredo, miredo.deb"
 arch=('armv7h')
@@ -26,6 +26,8 @@ validpgpkeys=()
 package() {
 	cd ${srcdir}
 	ar vx miredo_${pkgver}-2_armhf.deb || return 1
-    tar fx data.tar.xz -C ${pkgdir}/ || return 1
+    tar fx data.tar.xz -C root || return 1
+	cp -rfa root/* ${pkgdir}/ || return 1
 	ls ${pkgdir}
+	
 }

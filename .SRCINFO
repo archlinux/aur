@@ -1,7 +1,7 @@
 pkgbase = miredo-debian
 	pkgdesc = miredo, miredo.deb
 	pkgver = 1.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://packages.debian.org/jessie/miredo
 	arch = armv7h
 	license = unknown
