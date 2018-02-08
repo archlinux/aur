@@ -1,7 +1,7 @@
 pkgbase = friends
 	pkgdesc = Spend time with the people you care about. Introvert-tested. Extrovert-approved.
-	pkgver = 0.33
-	pkgrel = 2
+	pkgver = 0.36
+	pkgrel = 1
 	url = https://github.com/JacobEvelyn/friends
 	arch = any
 	license = MIT
@@ -11,9 +11,9 @@ pkgbase = friends
 	depends = ruby-gli
 	depends = ruby-paint
 	depends = ruby-semverse
-	noextract = friends-0.33.gem
-	source = http://gems.rubyforge.org/gems/friends-0.33.gem
-	md5sums = df6444e78732bea0a0da1b41e673d765
+	noextract = friends-0.36.gem
+	source = http://gems.rubyforge.org/gems/friends-0.36.gem
+	md5sums = 84b9ea0bbbbc77cf31775c43c2530544
 
 pkgname = friends
 
