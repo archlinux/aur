@@ -1,6 +1,6 @@
 # Maintainer: Louis des Landes <aur@psykar.com>
 pkgname=deepgit
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A tool to investigate the history of source code."
 arch=('any')
@@ -13,12 +13,12 @@ depends=(
 )
 
 source=(
-    "https://www.syntevo.com/static/smart/download/$pkgname/$pkgname-linux-${pkgver//./_}.tar.gz"
+    "https://www.syntevo.com//downloads/$pkgname/$pkgname-linux-${pkgver//./_}.tar.gz"
     "deepgit.sh"
     "deepgit.desktop"
 )
 sha1sums=(
-    28e65d17221d3182d3abd583bc0917237227b065
+    7ac9138395cf92a4a36124f059095338efc097d1
     5e59abc4997dbdfc110df414129950164a01cab1
     8ab2e36b3cb2e6f7b5af70a4ddbe2e9d307d3988
 )
