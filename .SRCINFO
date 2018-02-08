@@ -1,9 +1,8 @@
 pkgbase = advancecomp-git
 	pkgdesc = Recompression tools for gz, mng, png, and zip files using Zopfli and 7-Zip DEFLATE algorithms
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.0+2+gea4f30c
+	pkgrel = 1
 	url = https://github.com/amadvance/advancecomp
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
