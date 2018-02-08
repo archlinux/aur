@@ -4,7 +4,7 @@
 # Based on tracktion-6 aur package from boltbuckle <amygdala@cheerful.com>
 
 pkgname=tracktion-waveform-beta
-pkgver=9.0.28
+pkgver=9.0.30
 pkgrel=1
 pkgdesc="Audio and MIDI Workstation (DAW)"
 arch=('x86_64')
@@ -16,8 +16,8 @@ optdepends=(
   'ladspa-plugins: A set of ladspa plugins'
 )
 conflicts=('waveform-bundle')
-source=(https://cdn.tracktion.com/file/tracktiondownload/waveform/9028/Waveform-installer-64bit-linux-9.0.28.deb)
-md5sums=('079583e0e968623d11751053ce1b6699')
+source=(https://cdn.tracktion.com/file/tracktiondownload/waveform/9030/Waveform-installer-64bit-linux-9.0.30.deb)
+md5sums=('9435f1e39dcc28ef6edcb6cbdddabf57')
 
 package() {
     executable=Waveform9
