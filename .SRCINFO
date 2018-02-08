@@ -1,0 +1,17 @@
+pkgbase = nlohmann-json-bin
+	pkgdesc = Header-only JSON library for Modern C++ (quick installation without testing)
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/nlohmann/json
+	arch = any
+	license = MIT
+	provides = nlohmann-json
+	conflicts = nlohmann-json
+	conflicts = nlohmann-json-git
+	source = https://github.com/nlohmann/json/releases/download/v3.1.0/include.zip
+	source = https://raw.githubusercontent.com/nlohmann/json/v3.1.0/LICENSE.MIT
+	sha256sums = 2b7234fca394d1e27b7e017117ed80b7518fafbb4f4c13a7c069624f6f924673
+	sha256sums = SKIP
+
+pkgname = nlohmann-json-bin
+
