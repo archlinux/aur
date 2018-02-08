@@ -8,13 +8,13 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythgallery'
          'mythplugins-mythgame'
          'mythplugins-mythmusic'
-#         'mythplugins-mythnetvision'
+         'mythplugins-mythnetvision'
          'mythplugins-mythnews'
          'mythplugins-mythweather'
-         'mythplugins-mythweb')
-#         'mythplugins-mythzoneminder')
+         'mythplugins-mythweb'
+         'mythplugins-mythzoneminder')
 pkgver=29.1
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url="http://www.mythtv.org"
@@ -22,7 +22,8 @@ license=('GPL')
 makedepends=('dvdauthor' 'dvd+rw-tools' 'ffmpeg' 'libexif' 'mesa-libgl' "mythtv=$epoch:$pkgver"
              'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size' 'perl-cgi'
              'perl-json' 'perl-libwww' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath'
-             'python2-pillow' 'python2-pycurl' 'gdb')
+             'python2-pillow' 'python2-pycurl' 'python2-oauth' 'gdb' 'libmariadbclient'
+             'python2-lxml' 'mysql-python' 'urlgrabber' 'python2-future')
 source=("mythtv-$pkgver.tar.gz::https://github.com/MythTV/mythtv/archive/v$pkgver.tar.gz"
         "mythweb-$pkgver.tar.gz::https://github.com/MythTV/mythweb/archive/v$pkgver.tar.gz"
         'cdparanoia.patch')
@@ -91,13 +92,13 @@ package_mythplugins-mythmusic() {
   make INSTALL_ROOT="$pkgdir" install
 }
 
-#package_mythplugins-mythnetvision() {
-#  pkgdesc="MythNetvision plugin for MythTV"
-#  depends=('mythtv' 'python2-oauth')
-#
-#  cd "$srcdir/mythtv-$pkgver/$pkgbase/mythnetvision"
-#  make INSTALL_ROOT="$pkgdir" install
-#}
+package_mythplugins-mythnetvision() {
+  pkgdesc="MythNetvision plugin for MythTV"
+  depends=('mythtv' 'python2-oauth')
+
+  cd "$srcdir/mythtv-$pkgver/$pkgbase/mythnetvision"
+  make INSTALL_ROOT="$pkgdir" install
+}
 
 package_mythplugins-mythnews() {
   pkgdesc="News checking plugin for MythTV"
@@ -130,11 +131,11 @@ package_mythplugins-mythweb() {
   chmod g+rw "$pkgdir/var/lib/mythtv/mythweb"/{image_cache,php_sessions}
 }
 
-#package_mythplugins-mythzoneminder() {
-#  pkgdesc="View CCTV footage from zoneminder in MythTV"
-#  depends=('mythtv')
-#  install='mythplugins-mythzoneminder.install'
-#
-#  cd "$srcdir/mythtv-$pkgver/$pkgbase/mythzoneminder"
-#  make INSTALL_ROOT="$pkgdir" install
-#}
+package_mythplugins-mythzoneminder() {
+  pkgdesc="View CCTV footage from zoneminder in MythTV"
+  depends=('mythtv' 'libmariadbclient')
+  install='mythplugins-mythzoneminder.install'
+
+  cd "$srcdir/mythtv-$pkgver/$pkgbase/mythzoneminder"
+  make INSTALL_ROOT="$pkgdir" install
+}

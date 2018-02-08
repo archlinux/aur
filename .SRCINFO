@@ -1,6 +1,6 @@
 pkgbase = mythplugins
 	pkgver = 29.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.mythtv.org
 	arch = x86_64
@@ -22,7 +22,13 @@ pkgbase = mythplugins
 	makedepends = perl-xml-xpath
 	makedepends = python2-pillow
 	makedepends = python2-pycurl
+	makedepends = python2-oauth
 	makedepends = gdb
+	makedepends = libmariadbclient
+	makedepends = python2-lxml
+	makedepends = mysql-python
+	makedepends = urlgrabber
+	makedepends = python2-future
 	source = mythtv-29.1.tar.gz::https://github.com/MythTV/mythtv/archive/v29.1.tar.gz
 	source = mythweb-29.1.tar.gz::https://github.com/MythTV/mythweb/archive/v29.1.tar.gz
 	source = cdparanoia.patch
@@ -56,6 +62,11 @@ pkgname = mythplugins-mythmusic
 	depends = mythtv
 	depends = libcdio-paranoia
 
+pkgname = mythplugins-mythnetvision
+	pkgdesc = MythNetvision plugin for MythTV
+	depends = mythtv
+	depends = python2-oauth
+
 pkgname = mythplugins-mythnews
 	pkgdesc = News checking plugin for MythTV
 	depends = mythtv
@@ -78,4 +89,10 @@ pkgname = mythplugins-mythweb
 	depends = perl-cgi
 	optdepends = lighttpd
 	optdepends = php-apache
+
+pkgname = mythplugins-mythzoneminder
+	pkgdesc = View CCTV footage from zoneminder in MythTV
+	install = mythplugins-mythzoneminder.install
+	depends = mythtv
+	depends = libmariadbclient
 
