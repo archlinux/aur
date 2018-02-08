@@ -1,7 +1,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.7.6966
+pkgver=1.8.7.6987
 pkgrel=1
 _harfbuzzver=1.3.4-1
 _cairover=1.14.10-1
@@ -29,7 +29,7 @@ source=("https://downloads.sourceforge.net/project/singularityview/alphas/Singul
 	"singularityviewer.launcher"
 	"https://archive.archlinux.org/packages/h/harfbuzz/harfbuzz-${_harfbuzzver}-x86_64.pkg.tar.xz"
 	"https://archive.archlinux.org/packages/c/cairo/cairo-${_cairover}-x86_64.pkg.tar.xz")
-md5sums=('153b4dfa937e3e6ba79083e83a73c488'
+md5sums=('7c903b72c2b63ad680829080a2cd218a'
          'ff7aa34dcd7548e3acdb3c2d44ae6604'
          'eb596f5cf7b6f2d0c55c0082fb99a905'
          '0a3e4654c3009d740a6be09e58a2d451'
