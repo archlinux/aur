@@ -2,7 +2,7 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=miredo-debian
 pkgver=1.2.6
-pkgrel=5
+pkgrel=1
 
 pkgdesc="miredo, miredo.deb"
 arch=('armv7h')
@@ -37,16 +37,16 @@ package() {
 	install -D -m644 etc/miredo/miredo.conf ${pkgdir}/etc/miredo/miredo.conf || return 1
 	install -D -m755 etc/network/if-up.d/miredo ${pkgdir}/etc/network/if-up.d/miredo || return 1
 	
-#/lib
-	install -D -m644 lib/systemd/system/miredo.service ${pkgdir}/lib/systemd/system/miredo.service || return 1
 	
 #/usr
+	##lib
+	install -D -m644 lib/systemd/system/miredo.service ${pkgdir}/usr/lib/systemd/system/miredo.service || return 1
 	
 	##bin
 	install -D -m755 usr/bin/teredo-mire ${pkgdir}/usr/bin/teredo-mire || return 1
 	install -D -m755 usr/lib/arm-linux-gnueabihf/miredo/miredo-privproc ${pkgdir}/usr/lib/arm-linux-gnueabihf/miredo/miredo-privproc || return 1
-	install -D -m755 usr/sbin/miredo ${pkgdir}/usr/sbin/miredo || return 1
-	install -D -m755 usr/sbin/miredo-checkconf ${pkgdir}/usr/sbin/miredo-checkconf || return 1
+	install -D -m755 usr/sbin/miredo ${pkgdir}/usr/bin/miredo || return 1
+	install -D -m755 usr/sbin/miredo-checkconf ${pkgdir}/usr/bin/miredo-checkconf || return 1
 	
 	##doc
 	install -D -m644 usr/share/doc/miredo/AUTHORS ${pkgdir}/usr/share/doc/miredo/AUTHORS || return 1
