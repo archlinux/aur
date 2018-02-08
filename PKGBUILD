@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 277489 2017-12-30 21:56:48Z alucryd $
-# Maintainer:
+# Maintainer: Taijian <taijian@posteo.de>
 # Contributor: Jonathan Conder <jonno.conder@gmail.com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
@@ -9,38 +8,33 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythgallery'
          'mythplugins-mythgame'
          'mythplugins-mythmusic'
-         'mythplugins-mythnetvision'
+#         'mythplugins-mythnetvision'
          'mythplugins-mythnews'
          'mythplugins-mythweather'
-         'mythplugins-mythweb'
-         'mythplugins-mythzoneminder')
-pkgver=29.0
-pkgrel=4
+         'mythplugins-mythweb')
+#         'mythplugins-mythzoneminder')
+pkgver=29.1
+pkgrel=1
 epoch=1
 arch=('x86_64')
 url="http://www.mythtv.org"
 license=('GPL')
-makedepends=('cdrtools' 'dvdauthor' 'dvd+rw-tools' 'ffmpeg' 'flac' 'libexif'
-             'libvorbis' 'mesa' 'mesa-libgl' "mythtv=$epoch:$pkgver"
-             'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size'
-             'perl-json' 'perl-libwww' 'perl-soap-lite' 'perl-xml-sax'
-             'perl-xml-simple' 'perl-xml-xpath' 'python2-oauth' 'python2-pillow'
-             'python2-pycurl' 'zlib' 'gdb' 'perl-cgi')
+makedepends=('dvdauthor' 'dvd+rw-tools' 'ffmpeg' 'libexif' 'mesa-libgl' "mythtv=$epoch:$pkgver"
+             'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size' 'perl-cgi'
+             'perl-json' 'perl-libwww' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath'
+             'python2-pillow' 'python2-pycurl' 'gdb')
 source=("mythtv-$pkgver.tar.gz::https://github.com/MythTV/mythtv/archive/v$pkgver.tar.gz"
         "mythweb-$pkgver.tar.gz::https://github.com/MythTV/mythweb/archive/v$pkgver.tar.gz"
-        'cdparanoia.patch'
-        'qt510.patch')
-sha512sums=('6d79d943b95b1816b4fce52f3de3e01ebcdcc2779f852ec8cf5e3a81f8be4c730a254ff78b52e36ac522ff99b125501f0cba33a2d4c01571552e09fb4dba18c2'
-            'bc6f4f6b73136f5c0342b055dd4814ed177b7ca05d70dcb43e7966c3cd854f77dcd7a391eef2b870acf87c82d09c018cf8fb5176724ab55b59a6f2ab3845e0fe'
-            '6a8c5e3f7500a657cef56d30b7141ab10bd14c65bf3c2d14a768ed180f38deaee6367224e6b0b2d09c26fae78908df08747f8c805250d71c42faaa2931ac577b'
-            'da82e43545cf6c0e882e9729d30cdb1786019da6a1aaf59667594a3a9bebd613422557e470969d35dcad52bc9b255c5d762301eff4c8e759fb2b6a22cd0c8841')
+        'cdparanoia.patch')
+sha512sums=('0ac0dc2061ac6165d2a5eb14a4cd984d5d79aadc3452f3df5c02c86ba057285a29b20f29fed4381c5867aaee7b0088797f588e69a0d9d225be2edac600c885fd'
+            'bab3f6facb0715c83f21a070f4e4f2299c93ce75e5294b7daac43cd6e10276e37c9853809012627fad0ab10683c25afaf35f0099adb8a8e8a98c383b8804d3ab'
+            '6a8c5e3f7500a657cef56d30b7141ab10bd14c65bf3c2d14a768ed180f38deaee6367224e6b0b2d09c26fae78908df08747f8c805250d71c42faaa2931ac577b')
 
 prepare() {
   cd "$srcdir/mythtv-$pkgver/$pkgbase"
 
   find . -name '*.py' -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
   patch -Np1 -i "$srcdir/cdparanoia.patch"
-  patch -Np2 -i ../../qt510.patch
 
   cd "$srcdir/mythweb-$pkgver"
 
@@ -59,8 +53,7 @@ build() {
 
 package_mythplugins-mytharchive() {
   pkgdesc="Create DVDs or archive recorded shows in MythTV"
-  depends=('cdrtools' 'dvdauthor' 'dvd+rw-tools' 'ffmpeg' 'mythtv'
-           'python2-pillow')
+  depends=('dvdauthor' 'dvd+rw-tools' 'ffmpeg' 'mythtv' 'python2-pillow')
 
   cd "$srcdir/mythtv-$pkgver/$pkgbase/mytharchive"
   make INSTALL_ROOT="$pkgdir" install
@@ -98,13 +91,13 @@ package_mythplugins-mythmusic() {
   make INSTALL_ROOT="$pkgdir" install
 }
 
-package_mythplugins-mythnetvision() {
-  pkgdesc="MythNetvision plugin for MythTV"
-  depends=('mythtv' 'python2-oauth')
-
-  cd "$srcdir/mythtv-$pkgver/$pkgbase/mythnetvision"
-  make INSTALL_ROOT="$pkgdir" install
-}
+#package_mythplugins-mythnetvision() {
+#  pkgdesc="MythNetvision plugin for MythTV"
+#  depends=('mythtv' 'python2-oauth')
+#
+#  cd "$srcdir/mythtv-$pkgver/$pkgbase/mythnetvision"
+#  make INSTALL_ROOT="$pkgdir" install
+#}
 
 package_mythplugins-mythnews() {
   pkgdesc="News checking plugin for MythTV"
@@ -117,7 +110,7 @@ package_mythplugins-mythnews() {
 package_mythplugins-mythweather() {
   pkgdesc="Weather checking plugin for MythTV"
   depends=('mythtv' 'perl-date-manip' 'perl-json' 'perl-soap-lite'
-           'perl-xml-sax' 'perl-xml-simple' 'perl-xml-xpath' 'perl-image-size'
+           'perl-xml-simple' 'perl-xml-xpath' 'perl-image-size'
            'perl-datetime-format-iso8601')
 
   cd "$srcdir/mythtv-$pkgver/$pkgbase/mythweather"
@@ -137,11 +130,11 @@ package_mythplugins-mythweb() {
   chmod g+rw "$pkgdir/var/lib/mythtv/mythweb"/{image_cache,php_sessions}
 }
 
-package_mythplugins-mythzoneminder() {
-  pkgdesc="View CCTV footage from zoneminder in MythTV"
-  depends=('mythtv')
-  install='mythplugins-mythzoneminder.install'
-
-  cd "$srcdir/mythtv-$pkgver/$pkgbase/mythzoneminder"
-  make INSTALL_ROOT="$pkgdir" install
-}
+#package_mythplugins-mythzoneminder() {
+#  pkgdesc="View CCTV footage from zoneminder in MythTV"
+#  depends=('mythtv')
+#  install='mythplugins-mythzoneminder.install'
+#
+#  cd "$srcdir/mythtv-$pkgver/$pkgbase/mythzoneminder"
+#  make INSTALL_ROOT="$pkgdir" install
+#}
