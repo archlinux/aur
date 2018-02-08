@@ -9,8 +9,8 @@ pkgbase=notmuch-git
 arch=('i686' 'x86_64')
 _pkgbase=notmuch
 pkgname=('notmuch-emacs-git' 'notmuch-runtime-git' 'notmuch-python-git' 'notmuch-python2-git' 'notmuch-ruby-git' 'notmuch-vim-git' 'notmuch-mutt-git')
-epoch=2
-pkgver=0.26.12.g12541fea
+epoch=3
+pkgver=0.26.1.14.g9f1c7c2
 pkgrel=1
 url="https://notmuchmail.org/"
 license=('GPL3')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgbase"
-  git describe --long --tags|tr - .
+  git describe --long --tags|tr - . |tr -d "debian/"
 }
 
 prepare(){

@@ -1,7 +1,7 @@
 pkgbase = notmuch-git
-	pkgver = 0.26.12.g12541fea
+	pkgver = 0.26.1.14.g9f1c7c2
 	pkgrel = 1
-	epoch = 2
+	epoch = 3
 	url = https://notmuchmail.org/
 	arch = i686
 	arch = x86_64
