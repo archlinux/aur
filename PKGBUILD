@@ -1,6 +1,7 @@
 # OLD Maintainer: xduugu
 # OLD Maintainer: MrSerenity
-# Maintainer: derlafff (aur@2-47.ru)
+# OLD Maintainer: derlafff (aur@2-47.ru)
+# Maintainer: Doron Behar <doron.behar@gmail.com>
 
 pkgname=qsyncthingtray
 pkgver=0.5.8
