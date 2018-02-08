@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=17.11.1.2.r205.g489b01de6a
+pkgver=17.11.3.2.r303.gd5f98518f1
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -63,6 +63,7 @@ build() {
 
 	# Slurm requires a relaxed build environment, see https://bugs.schedmd.com/show_bug.cgi?id=2443
 	export CFLAGS="${CFLAGS//-z,now/-z,lazy}"
+	export CFLAGS="${CFLAGS//-fno-plt/}"
 	export LDFLAGS="${LDFLAGS//-z,now/-z,lazy}"
 
 	./autogen.sh
