@@ -1,0 +1,14 @@
+pkgbase = clipnotify
+	pkgdesc = Polling-free clipboard notifier
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cdown/clipnotify
+	arch = any
+	license = Public Domain
+	depends = libx11
+	depends = libxfixes
+	source = https://github.com/cdown/clipnotify/archive/1.0.0.zip
+	md5sums = da59bbb2cae9b3bf74200fe46d0630bf
+
+pkgname = clipnotify
+
