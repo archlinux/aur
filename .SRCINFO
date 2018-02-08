@@ -9,10 +9,10 @@ pkgbase = cl-ppcre
 	license = BSD
 	depends = common-lisp
 	depends = cl-asdf
-	source = $pkgname-$pkgver.tar.gz::https://github.com/edicl/cl-ppcre/archive/v$pkgver.tar.gz
+	source = cl-ppcre-2.0.11.tar.gz::https://github.com/edicl/cl-ppcre/archive/v2.0.11.tar.gz
 	source = LICENSE
-	md5sums = 6d5250467c05eb661a76d395186a1da0
-	md5sums = c6aa01dce26b45aa916329701a448d11
+	sha256sums = ed8571915216788dc4f6cdb44e49b0e0782e203ed547fe2e58cd5b0e5c57edc4
+	sha256sums = 47da9448a5379928cd3a56d327d7de89db1c2444498f5e5fa4878834c2538bb7
 
 pkgname = cl-ppcre
 

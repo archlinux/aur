@@ -11,14 +11,11 @@ pkgdesc="Perl-compatible, portable regexp library for Common Lisp"
 arch=('i686' 'x86_64')
 url="http://www.weitz.de/cl-ppcre/"
 license=('BSD')
-
 depends=('common-lisp' 'cl-asdf')
-
 install=cl-ppcre.install
-source=('$pkgname-$pkgver.tar.gz::https://github.com/edicl/cl-ppcre/archive/v$pkgver.tar.gz' 'LICENSE')
-
-md5sums=('6d5250467c05eb661a76d395186a1da0'
-         'c6aa01dce26b45aa916329701a448d11')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/edicl/cl-ppcre/archive/v$pkgver.tar.gz" 'LICENSE')
+sha256sums=('ed8571915216788dc4f6cdb44e49b0e0782e203ed547fe2e58cd5b0e5c57edc4'
+            '47da9448a5379928cd3a56d327d7de89db1c2444498f5e5fa4878834c2538bb7')
 
 package() {
     install -d ${pkgdir}/usr/share/common-lisp/source/${pkgname}
