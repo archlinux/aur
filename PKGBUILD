@@ -5,7 +5,7 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.14.17
+pkgver=4.14.18
 _srcname=linux-4.14
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
@@ -15,7 +15,7 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=80d6f250c03d7999a35bf421391106875e973a9e
+arch_config_trunk=3d60a37bad1ef43e3f4a3856aad16f909bc8a6c2
 
 # Arch additional patches
 arch_patches=(
@@ -33,20 +33,20 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         # Arch stock configuration files are directly pulled from specefic trunk
-        "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}"
+        "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${arch_config_trunk}"
         # main BLD patch
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
-for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
+for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux-lts&id=${arch_config_trunk}") ; done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '1e62d56e37bd15daec7c3d20a605624e1e0a21c44856880c6dbe0c9e41cabfa8'
+            '8d29e1d10cabd62b32ac56e33de990e0d4f3c6208f57bd3f2c8c02f9eebc0d72'
             'SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            'edaf7bebcaf3032e3bf15353e0773e39872c73fc024ca4d23383195a13745b2e'
+            'c645053c4525a1a70d5c10b52257ac136da7e9059b6a4a566a857a3d42046426'
             '80b697edb27534e0651609708faaa9f933c8bbc198d410f6cd50ef9ae2128794'
             '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
             '5694022613bb49a77d3dfafdd2e635e9015e0a9069c58a07e99bdc5df6520311'
