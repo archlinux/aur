@@ -7,7 +7,7 @@ pkgdesc="A python package to help astronomers plan observations"
 arch=('i686' 'x86_64')
 url="https://astroplan.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'python-astropy-helpers' 'python-sphinx')
+makedepends=('cython' 'python-astropy>=1.3' 'python-pytz' 'python-astropy-helpers' 'python-sphinx')
 #checkdepends=('python-matplotlib' 'python-pytest-mpl')
 source=("https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-${pkgver}.tar.gz"
         'python-astroplan.patch')
