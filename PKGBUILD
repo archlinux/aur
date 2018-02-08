@@ -2,20 +2,20 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=miredo-debian
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 
 pkgdesc="miredo, miredo.deb"
 arch=('armv7h')
-conflicts=('judy')
+conflicts=('miredo')
 url="https://packages.debian.org/jessie/miredo"
 license=('unknown')
 options=('!strip')
-
+depends=('libjudydebian1' 'iproute2' 'libcap')
 makedepends=('tar')
 checkdepends=()
 
 source=(
-	"http://ftp.cn.debian.org/debian/pool/main/m/${pkgname}/${pkgname}_${pkgver}-2_armhf.deb"
+	"http://ftp.cn.debian.org/debian/pool/main/m/miredo/miredo_${pkgver}-2_armhf.deb"
 		)
 noextract=()
 md5sums=(
@@ -25,7 +25,7 @@ validpgpkeys=()
 
 package() {
 	cd ${srcdir}
-	ar vx ${pkgname}_${pkgver}-2_armhf.deb || return 1
+	ar vx miredo_${pkgver}-2_armhf.deb || return 1
     tar fx data.tar.xz -C ${pkgdir}/ || return 1
 	ls ${pkgdir}
 }

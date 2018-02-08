@@ -1,14 +1,17 @@
 pkgbase = miredo-debian
 	pkgdesc = miredo, miredo.deb
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/jessie/miredo
 	arch = armv7h
 	license = unknown
 	makedepends = tar
-	conflicts = judy
+	depends = libjudydebian1
+	depends = iproute2
+	depends = libcap
+	conflicts = miredo
 	options = !strip
-	source = http://ftp.cn.debian.org/debian/pool/main/m/miredo-debian/miredo-debian_1.2.6-2_armhf.deb
+	source = http://ftp.cn.debian.org/debian/pool/main/m/miredo/miredo_1.2.6-2_armhf.deb
 	md5sums = 4680e1bf2fa322d442be326f94490114
 
 pkgname = miredo-debian
