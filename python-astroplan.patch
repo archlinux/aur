@@ -1,5 +1,5 @@
---- a/astroplan/conftest.py	2017-10-24 09:42:38.000000000 +0800
-+++ b/astroplan/conftest.py	2018-02-03 17:18:18.183223264 +0800
+--- a/astroplan/conftest.py	2018-02-08 20:25:42.248064331 +0800
++++ b/astroplan/conftest.py	2018-02-08 20:22:39.068329472 +0800
 @@ -40,7 +40,7 @@
  try:
      PYTEST_HEADER_MODULES['Astropy'] = 'astropy'
@@ -9,3 +9,14 @@
      PYTEST_HEADER_MODULES['matplotlib'] = 'matplotlib'
      PYTEST_HEADER_MODULES['nose'] = 'nose'
      PYTEST_HEADER_MODULES['pytest-mpl'] = 'pytest_mpl'
+--- a/setup.cfg	2017-10-24 09:42:38.000000000 +0800
++++ b/setup.cfg	2018-02-08 20:24:32.376333521 +0800
+@@ -13,7 +13,7 @@
+ doctest_plus = enabled
+ 
+ [ah_bootstrap]
+-auto_use = True
++auto_use = False
+ 
+ [metadata]
+ package_name = astroplan
