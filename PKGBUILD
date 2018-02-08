@@ -1,28 +1,28 @@
 # Maintainer: robertfoster
 
 pkgname=simonpi-git
-pkgver=88.fefa91f
+pkgver=1.0.r1.g3e19823
 pkgrel=1
 epoch=
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
 arch=(any)
 url="https://github.com/M0Rf30/simonpi"
 license=('GPL')
-depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'gawk' 'grep' 'iproute2' 'iptables' 'libarchive' 'procps-ng' 'qemu-arch-extra' 'sudo' 'util-linux' 'wget')
+depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'gawk' 'grep' 'iproute2' 'iptables' 'libarchive' 'procps-ng' 'qemu-headless-arch-extra' 'sudo' 'util-linux' 'wget')
 makedepends=('git')
 install=
 source=("simonpi::git+https://github.com/M0Rf30/simonpi.git")
 
 pkgver() {
-  cd $srcdir/simonpi
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+	cd $srcdir/simonpi
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
 	cd $srcdir/simonpi
 	install -Dm755 simonpi $pkgdir/usr/bin/simonpi
-        install -dm755 $pkgdir/opt/simonpiemu/
-        cp simonpiemu/* $pkgdir/opt/simonpiemu/
+	install -dm755 $pkgdir/opt/simonpiemu/
+	cp simonpiemu/* $pkgdir/opt/simonpiemu/
 	sed -i "s/OPT=./OPT=\/opt/g" $pkgdir/usr/bin/simonpi
 }
 
