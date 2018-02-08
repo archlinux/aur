@@ -99,6 +99,7 @@ package_apparmor() {
 package_apparmor-parser() {
 	pkgdesc='AppArmor parser - loads AA profiles to kernel module'
 	depends=('apparmor-libapparmor')
+	backup=('etc/apparmor/parser.conf' 'etc/apparmor/subdomain.conf')
 
 	cd "${srcdir}/${pkgbase}-${_majorver}"
 	make -C parser DESTDIR="${pkgdir}" install
@@ -119,6 +120,7 @@ package_apparmor-libapparmor() {
 package_apparmor-utils() {
 	pkgdesc='AppArmor userspace utilities'
 	depends=('perl' 'perl-locale-gettext' 'perl-term-readkey' 'perl-file-tail' 'perl-rpc-xml' 'python')
+	backup=('etc/apparmor/easyprof.conf' 'etc/apparmor/logprof.conf' 'etc/apparmor/notify.conf' 'etc/apparmor/severity.db')
 
 	cd "${srcdir}/${pkgbase}-${_majorver}"
 	make -C utils DESTDIR="${pkgdir}" BINDIR="${pkgdir}/usr/bin" install

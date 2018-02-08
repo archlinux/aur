@@ -39,6 +39,8 @@ pkgname = apparmor
 pkgname = apparmor-parser
 	pkgdesc = AppArmor parser - loads AA profiles to kernel module
 	depends = apparmor-libapparmor
+	backup = etc/apparmor/parser.conf
+	backup = etc/apparmor/subdomain.conf
 
 pkgname = apparmor-libapparmor
 	pkgdesc = AppArmor library
@@ -52,6 +54,10 @@ pkgname = apparmor-utils
 	depends = perl-file-tail
 	depends = perl-rpc-xml
 	depends = python
+	backup = etc/apparmor/easyprof.conf
+	backup = etc/apparmor/logprof.conf
+	backup = etc/apparmor/notify.conf
+	backup = etc/apparmor/severity.db
 
 pkgname = apparmor-profiles
 	pkgdesc = AppArmor sample pre-made profiles
