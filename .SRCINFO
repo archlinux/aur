@@ -1,6 +1,6 @@
 pkgbase = iamcarbonman
 	pkgdesc = Meta package for /u/IamCarbonMan
-	pkgver = 1518132981
+	pkgver = 1518133676
 	pkgrel = 1
 	url = https://reddit.com/u/IamCarbonMan
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = iamcarbonman
 	depends = google-chrome
 	depends = intel-ucode
 	depends = neofetch
+	depends = neovim
 	depends = openssh
 	depends = pkgfile
 	depends = pulseaudio
