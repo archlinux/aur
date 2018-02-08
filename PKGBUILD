@@ -2,7 +2,7 @@
 pkgbase=python-astroplan
 pkgname=('python-astroplan' 'python-astroplan-doc')
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A python package to help astronomers plan observations"
 arch=('i686' 'x86_64')
 url="https://astroplan.readthedocs.io/en/latest/"
