@@ -2,7 +2,7 @@
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=2.2.1.r266.gf8f7d65
+pkgver=2.2.1.r272.g8855159
 pkgrel=1
 pkgdesc="An open-source exploitation framework dedicated to embedded devices."
 arch=('any')
