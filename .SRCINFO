@@ -7,6 +7,7 @@ pkgbase = mega-happy-sprite
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	makedepends = gendesk
 	depends = glibc
 	depends = sdl
 	source = https://github.com/ExtraordinaryBen/mega-happy-sprite/archive/v1.3.3.tar.gz
