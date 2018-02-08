@@ -7,10 +7,11 @@ pkgbase = php-alpm
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
-	depends = php>=7.0
-	depends = pacman>=5.0
+	makedepends = php
 	source = php-alpm-0.4.3.tar.gz::https://github.com/markzz/php-alpm/archive/0.4.3.tar.gz
 	md5sums = 64708bef3727f94ecdfc88c524fa4ae3
 
 pkgname = php-alpm
+	depends = php>=
+	depends = pacman>=5.0
 
