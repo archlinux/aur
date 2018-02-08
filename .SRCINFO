@@ -1,8 +1,7 @@
 pkgbase = steamforwarder-git
 	pkgdesc = Tool that allows interaction between windows games under wine and the linux steam. (Cutting edge experimental features)
-	pkgver = r141.92e25ce
+	pkgver = r151.c0dc1f3
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/xomachine/SteamForwarder
 	arch = x86_64
 	arch = i686
