@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-meta
-pkgver=5.11
+pkgver=5.12
 pkgrel=1
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
@@ -10,7 +10,6 @@ url='https://www.archlinux.org/'
 license=(GPL)
 depends=(bluedevil
          drkonqi
-         kde-gtk-config
          kdeplasma-addons
          kinfocenter
          ksysguard
@@ -34,3 +33,4 @@ depends=(bluedevil
          discover
          xdg-desktop-portal-kde
 )
+optdepends=('kde-gtk-config: GTK Theme configuration KCM' 'breeze-grub: Breeze theme for GRUB')
