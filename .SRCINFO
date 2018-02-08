@@ -11,6 +11,7 @@ pkgbase = gitit
 	makedepends = ghc-static
 	depends = libffi
 	depends = gmp
+	depends = mailcap
 	depends = zlib
 	optdepends = git: git support
 	optdepends = mercurial: mercurial support
