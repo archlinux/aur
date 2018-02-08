@@ -24,5 +24,5 @@ package() {
 	install -d "${pkgdir}/opt/${pkgname}"
 	install -d "${pkgdir}/usr/share/applications"
 	cp -r ${srcdir}/AURFiles/${pkgname}/* "${pkgdir}/opt/${pkgname}"
-	install -Dm644 ./"${entryname}.desktop" "${pkgdir}/usr/share/applications/${entryname}.desktop"
+	install -Dm755 ./"${entryname}.desktop" "${pkgdir}/usr/share/applications/${entryname}.desktop"
 }
