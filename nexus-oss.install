@@ -32,7 +32,7 @@ post_upgrade()
 	cat <<EOF
 
 See Release Notes at
-	https://help.sonatype.com/display/NXRM3/2017+Release+Notes
+	https://help.sonatype.com/display/NXRM3/2018+Release+Notes
 
 EOF
 }

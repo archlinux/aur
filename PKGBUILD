@@ -5,7 +5,7 @@ _patch=02
 
 pkgname=nexus-oss
 pkgver=${_version}.${_patch}
-pkgrel=1
+pkgrel=2
 pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
@@ -13,7 +13,9 @@ license=('custom:sonatype')
 depends=('jre8-openjdk-headless')
 replaces=('nexus3')
 provides=($pkgname)
-backup=("var/lib/$pkgname/etc/nexus.properties")
+backup=("var/lib/$pkgname/etc/nexus.properties"
+		"usr/lib/$pkgname/bin/nexus.vmoptions"
+		)
 source=("http://download.sonatype.com/nexus/3/nexus-$_version-$_patch-unix.tar.gz"
 		"$pkgname"
 		"$pkgname.install"
@@ -27,7 +29,7 @@ source=("http://download.sonatype.com/nexus/3/nexus-$_version-$_patch-unix.tar.g
 sha256sums=(
 		"949e2e5e99a685ebce6a63ba1ca0d56bc794068922a5279bca59d15bd3ae677c"
 		"3d2ebc2a796dbdc7e7e3b97e4c3272292169c898776e111f503f0517e434caff"
-		"20521101814cbdd61749ad6d531d6cffa7b8efdc3171b02dc430e43bce25cd2a"
+		"361e03d395dd78603f58775f49b4d517a1a394d6ee8cabf2643083bb6feb0190"
 		"dcdef5614db12f38b3da0b9de1b52fb7fa402af6621a825981c6168a34a6ad9b"
 		"0fa963f12b4f2d7da4b25cf7027ced34dc73a361e4c8ddc9b939c00faaeb531e"
 		"77d699b5ccf6387fa2f69df2cd71cdb75b4ffbf46a10110dd6c0e2802783dbef"
