@@ -1,0 +1,13 @@
+pkgbase = mkinitcpio-overlayfs
+	pkgdesc = mkinitcpio hook for overlayfs
+	pkgver = r2.f37f141
+	pkgrel = 1
+	url = https://github.com/felixsinger/mkinitcpio-overlayfs
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/felixsinger/mkinitcpio-overlayfs.git
+	sha512sums = SKIP
+
+pkgname = mkinitcpio-overlayfs
+
