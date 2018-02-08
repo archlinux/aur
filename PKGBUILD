@@ -7,7 +7,7 @@
 
 pkgname=mythtv
 pkgver=29.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -23,9 +23,11 @@ optdepends=('glew: for GPU commercial flagging'
             'libxml2: to read blu-ray metadata'
             'perl-net-upnp: UPnP backend'
             'urlgrabber: Downloading files'
-            'python-future: for metadata-lookup / cover art'
-            'python-requests: for metadata-lookup / cover art'
-            'python-requests-cache: for metadata-lookup / cover art')
+            'mariadb: Database-Backend for server deployment'
+            'mariadb-clients: Database-Frontend for client deployment'
+            'python2-future: for metadata-lookup / cover art'
+            'python2-requests: for metadata-lookup / cover art'
+            'python2-requests-cache: for metadata-lookup / cover art')
 conflicts=('myththemes' 'mythplugins-mythvideo')
 replaces=('myththemes' 'mythplugins-mythvideo')
 install='mythtv.install'
