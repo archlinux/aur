@@ -1,7 +1,7 @@
 pkgbase = libjudydebian1
 	pkgdesc = judy, libjudydebian1.deb
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/jessie/libjudydebian1
 	arch = armv7h
 	license = unknown
