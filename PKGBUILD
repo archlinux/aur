@@ -2,7 +2,7 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=libjudydebian1
 pkgver=1.0.5
-pkgrel=2
+pkgrel=1
 
 pkgdesc="judy, libjudydebian1.deb"
 arch=('armv7h')
