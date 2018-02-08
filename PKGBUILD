@@ -7,8 +7,8 @@
 
 pkgname=laptop-mode-tools
 pkgver=1.72.2
-pkgrel=1
-pkgdesc='Power Savings tool for Linux'
+pkgrel=2
+pkgdesc='Power Saving tool for Linux'
 arch=('any')
 url='https://github.com/rickysarraf/laptop-mode-tools/'
 license=('GPL')
@@ -19,7 +19,7 @@ optdepends=('acpid: ACPI support'
     'ethtool: Ethernet support'
     'wireless_tools: Wi-Fi support'
     'xorg-xset: DPMS standby support'
-    'python2-pyside: LMT GUI')
+    'python-pyqt5: LMT GUI')
 backup=('etc/laptop-mode/conf.d/ac97-powersave.conf'
     'etc/laptop-mode/conf.d/auto-hibernate.conf'
     'etc/laptop-mode/conf.d/battery-level-polling.conf'
@@ -58,6 +58,9 @@ package() {
     # use '/bin' instead of '/sbin'
     mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
     find "$pkgdir" -type f -exec sed -i 's|sbin/laptop_mode|bin/laptop_mode|g' '{}' ';'
-
+    
     install -D -m755 gui/LMT.py "${pkgdir}/usr/bin/lmt-gui"
+    
+    # fix path of gui on config script
+    sed -i 's|/usr/share/laptop-mode-tools/lmt\.py$|/usr/bin/lmt-gui|' "${pkgdir}/usr/bin/lmt-config-gui"
 }
