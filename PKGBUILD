@@ -1,7 +1,8 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=friends
+_gemname=$pkgname
 pkgver=0.36
-pkgrel=3
+pkgrel=4
 pkgdesc="Spend time with the people you care about. Introvert-tested. Extrovert-approved."
 arch=('any')
 url="https://github.com/JacobEvelyn/friends"

@@ -1,7 +1,7 @@
 pkgbase = friends
 	pkgdesc = Spend time with the people you care about. Introvert-tested. Extrovert-approved.
 	pkgver = 0.36
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JacobEvelyn/friends
 	arch = any
 	license = MIT
