@@ -2,7 +2,7 @@
 # Contributor: Blair Bonnett <blair.bonnett at gmail dot com>
 
 pkgname=htop-temperature
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Interactive process viewer with added support for CPU temperature"
 arch=('i686' 'x86_64')
@@ -16,15 +16,15 @@ provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
 source=("http://hisham.hm/htop/releases/$pkgver/htop-$pkgver.tar.gz"
-        "htop-$pkgver-temperature.patch")
-sha256sums=('179be9dccb80cee0c5e1a1f58c8f72ce7b2328ede30fb71dcdf336539be2f487'
+        "htop-temperature.patch")
+sha256sums=('3260be990d26e25b6b49fc9d96dbc935ad46e61083c0b7f6df413e513bf80748'
             '68a96dc51a9cb847e40ad95ecf91a80979ca377f6b947e5cc9b2ef2c7dcb333e')
 
 prepare() {
   cd "htop-$pkgver"
 
   # Add CPU temperature patch.
-  patch -p1 -N < ../htop-$pkgver-temperature.patch
+  patch -p1 -N < ../htop-temperature.patch
 }
 
 build() {

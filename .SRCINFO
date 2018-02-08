@@ -1,6 +1,6 @@
 pkgbase = htop-temperature
 	pkgdesc = Interactive process viewer with added support for CPU temperature
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://hisham.hm/htop/
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = htop-temperature
 	provides = htop
 	conflicts = htop
 	options = !emptydirs
-	source = http://hisham.hm/htop/releases/2.0.2/htop-2.0.2.tar.gz
-	source = htop-2.0.2-temperature.patch
-	sha256sums = 179be9dccb80cee0c5e1a1f58c8f72ce7b2328ede30fb71dcdf336539be2f487
+	source = http://hisham.hm/htop/releases/2.1.0/htop-2.1.0.tar.gz
+	source = htop-temperature.patch
+	sha256sums = 3260be990d26e25b6b49fc9d96dbc935ad46e61083c0b7f6df413e513bf80748
 	sha256sums = 68a96dc51a9cb847e40ad95ecf91a80979ca377f6b947e5cc9b2ef2c7dcb333e
 
 pkgname = htop-temperature
