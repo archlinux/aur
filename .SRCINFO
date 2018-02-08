@@ -5,6 +5,7 @@ pkgbase = libjudydebian1
 	url = https://packages.debian.org/jessie/libjudydebian1
 	arch = armv7h
 	license = unknown
+	makedepends = tar
 	conflicts = judy
 	options = !strip
 	source = http://ftp.cn.debian.org/debian/pool/main/j/judy/libjudydebian1_1.0.5-4_armhf.deb

@@ -11,7 +11,7 @@ url="https://packages.debian.org/jessie/libjudydebian1"
 license=('unknown')
 options=('!strip')
 
-makedepends=()
+makedepends=('tar')
 checkdepends=()
 
 source=(
