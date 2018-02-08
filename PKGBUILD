@@ -3,7 +3,7 @@
 pkgname=odin-git
 _pkgname=odin
 pkgver=r973.0134c38
-pkgrel=1
+pkgrel=2
 pkgdesc="compiler for the odin programming language"
 arch=('x86_64')
 url="http://github.com/odin-lang/odin"
@@ -31,7 +31,7 @@ package() {
     install -Dm755 "./odin" "${pkgdir}/opt/${_pkgname}/odin"
 
     install -d "${pkgdir}/usr/bin"
-    ln -sf "${pkgdir}/opt/${_pkgname}/odin" "${pkgdir}/usr/bin/odin"
+    ln -sf "/opt/${_pkgname}/odin" "${pkgdir}/usr/bin/odin"
 
     cp -av "./core" "${pkgdir}/opt/${_pkgname}"
 
