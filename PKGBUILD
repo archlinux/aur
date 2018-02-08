@@ -1,5 +1,5 @@
 pkgname=mkinitcpio-overlayfs
-pkgver=r2.f37f141
+pkgver=r3.6111251
 pkgrel=1
 pkgdesc="mkinitcpio hook for overlayfs"
 url="https://github.com/felixsinger/mkinitcpio-overlayfs"

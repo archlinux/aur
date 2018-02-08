@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-overlayfs
 	pkgdesc = mkinitcpio hook for overlayfs
-	pkgver = r2.f37f141
+	pkgver = r3.6111251
 	pkgrel = 1
 	url = https://github.com/felixsinger/mkinitcpio-overlayfs
 	arch = any
