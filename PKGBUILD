@@ -6,7 +6,7 @@
 
 pkgname=conky-nvidia
 _pkgname=conky
-pkgver=1.10.7
+pkgver=1.10.8
 pkgrel=1
 pkgdesc='Lightweight system monitor for X'
 provides=('conky')
@@ -19,8 +19,8 @@ depends=('glib2' 'curl' 'lua' 'wireless_tools' 'libxml2' 'libxft' 'libxdamage' '
 source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz"
 	'lua53.patch')
 
-sha1sums=('65f8ec4899ad4d26875d30030b819984b325cc7d'
-          'a3a74542b6524e5663ad37aaba292b48e8bea3b1')
+md5sums=('b02bc92e4b02d4f18259ab3a26c8c5ba'
+         '44cdadfe92266e99698e5424b7c6e265')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
