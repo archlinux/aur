@@ -1,31 +1,25 @@
 # Maintainer: Wes Barnett <wes AT w barnett DOT us>
 pkgname=dcdfort
-pkgver=1.1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Modern Fortran toolkit for reading in and analyzing DCD simulation trajectories from LAMMPS"
 arch=(any)
 url="https://github.com/wesbarnett/dcdfort"
 license=('GPL')
 depends=('gcc-fortran')
-makedepends=('cmake')
-source=(https://github.com/wesbarnett/${pkgname}/releases/download/${pkgver}/${pkgname}.${pkgver}.tar.gz{,.sig})
-validpgpkeys=('8535CEF3F3C38EE69555BF67E4B5E45AA3B8C5C3')
-sha512sums=('650d82558580492c66b95e3adcc3cf0b80d453a13e65dd4dd905acf992541ca58bcee1fa7f535de1998ef1417cf84daf07f51b0eba2a71cb1f77af9326bec524'
-            'SKIP')
+makedepends=('meson')
+source=(https://github.com/wesbarnett/${pkgname}/archive/${pkgver}.tar.gz)
+sha512sums=('873d7c133d16a6f1dc598e641be05f0ff545c323cb9eaba48ac5bcf6e91dc36d7e927afc079ecbc525080bae13d8150c5350b915c01fa09ae0b05ef8379f86fc')
 
 build() {
-    mkdir -p build
-    cd build
-    cmake "${srcdir}/${pkgname}" -DCMAKE_INSTALL_PREFIX=/usr
-    make
+    meson --prefix=/usr "${srcdir}/${pkgname}-${pkgver}" builddir
+    ninja -C builddir
 }
 
 check() {
-    cd build
-    make test
+    ninja -C builddir test
 }
 
 package() {
-    cd build
-    make DESTDIR="$pkgdir" install
+    DESTDIR="${pkgdir}" ninja -C builddir install
 }
