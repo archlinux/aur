@@ -1,5 +1,5 @@
 pkgbase = postgresql-src
-	pkgver = 10.1
+	pkgver = 10.2
 	pkgrel = 6
 	url = http://www.postgresql.org/
 	arch = aarch64
@@ -9,19 +9,19 @@ pkgbase = postgresql-src
 	makedepends = python
 	makedepends = perl
 	makedepends = openssl>=1.0.0
-	source = http://ftp.postgresql.org/pub/source/v10.1/postgresql-10.1.tar.bz2
+	source = http://ftp.postgresql.org/pub/source/v10.2/postgresql-10.2.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql.pam
 	source = postgresql.logrotate
 	source = postgresql.service
 	source = postgresql-check-db-dir
-	md5sums = 0a92328d9970bfb85dcecd011817238a
+	md5sums = e97c3cc72bdf661441f29069299b260a
 	md5sums = 75c579eed03ffb2312631f0b649175b4
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
 	md5sums = d28e443f9f65a5712c52018b84e27137
 	md5sums = 5a7933453a572bbe12320b088272ee71
 	md5sums = f763a2cf07c08df2ee074a9f7e286da5
-	sha256sums = 3ccb4e25fe7a7ea6308dea103cac202963e6b746697366d72ec2900449a5e713
+	sha256sums = fe32009b62ddb97f7f014307ce9d0edb6972f5a698e63cb531088e147d145bad
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
@@ -47,7 +47,7 @@ pkgname = postgresql-src-docs
 pkgname = postgresql-src
 	pkgdesc = A sophisticated object-relational DBMS (from source, LTO enabled)
 	install = postgresql.install
-	depends = postgresql-src-libs>=10.1
+	depends = postgresql-src-libs>=10.2
 	depends = krb5
 	depends = readline>=6.0
 	depends = openssl>=1.0.0
