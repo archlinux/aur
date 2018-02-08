@@ -26,7 +26,7 @@ pkgbase = pcl
 	optdepends = openni2
 	optdepends = python2-sphinx
 	source = pcl-1.8.1.tar.gz::https://github.com/PointCloudLibrary/pcl/archive/pcl-1.8.1.tar.gz
-	sha256sums = 5a102a2fbe2ba77c775bf92c4a5d2e3d8170be53a68c3a76cfc72434ff7b9783
+	sha256sums = 6e2c8763655322ec7bec08ab831c70f72eeefeb61ec28f16bfdd23aaeeba5dba
 
 pkgname = pcl
 
