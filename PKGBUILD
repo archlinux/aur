@@ -2,7 +2,7 @@
 # Submitter: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-miniupnpc
-pkgver=2.0.20171212
+pkgver=2.0.20180203
 pkgrel=1
 pkgdesc="A small UPnP client library/tool to access Internet Gateway Devices (python2 module only)"
 arch=('i686' 'x86_64')
@@ -29,4 +29,4 @@ package() {
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
-md5sums=('9d4a454806a8d3d7ccf09858ab2df81c')
+md5sums=('48fd9c899f77e898c74d2166590da076')
