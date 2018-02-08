@@ -1,0 +1,40 @@
+post_install() {
+  dname='sks-local'
+
+  echo -n "adding sks system group... "
+  getent group sks || groupadd -r sks && echo -n "done."
+  echo
+
+  echo -n "adding sks system user... "
+  getent passwd sks || useradd -c "Synchronizing OpenPGP Key Server" -r -d /var/lib/sks -g sks -s /bin/bash sks && echo -n "done."
+  echo
+
+  # chowns
+  for d in /var/run/${dname} /var/log/${dname} /var/lib/${dname} /var/spool/${dname}
+  do
+	  chown sks:sks ${d}
+  done
+
+  echo "NOTE: sks-db-local needs to have a database imported before it can be started."
+  echo "      Please reference the following documentation:"
+  echo
+  echo "      https://bitbucket.org/skskeyserver/sks-keyserver/wiki/Peering#!initial-keydump"
+  echo "      https://mirror.square-r00t.net/#dumps-importing"
+}
+
+post_remove() {
+  echo -n -e "\nremoving sks system user (if needed)... "
+  pacman -Q sks > /dev/null 2>&1 || userdel sks && echo "done."
+ 
+  rm -r /var/run/sks-local
+
+  echo "Keeping /var/lib/sks-local, /var/spool/sks-local, and /var/log/sks-local;"
+  echo "Remove them manually if you want."
+}
+
+op=$1
+shift
+
+$op $*
+
+# vim: ft=sh ts=2 sw=2

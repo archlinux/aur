@@ -1,0 +1,14 @@
+diff -urN cryptokit-1.7-orig/src/stubs-md5.c cryptokit-1.7/src/stubs-md5.c
+--- cryptokit-1.7-orig/src/stubs-md5.c	2010-08-30 05:53:00.000000000 -0500
++++ cryptokit-1.7/src/stubs-md5.c	2015-08-05 21:35:16.192104184 -0500
+@@ -18,8 +18,8 @@
+ #include <caml/alloc.h>
+ 
+ struct MD5Context {
+-        uint32 buf[4];
+-        uint32 bits[2];
++        uint32_t buf[4];
++        uint32_t bits[2];
+         unsigned char in[64];
+ };
+ 

@@ -1,0 +1,15 @@
+[Unit]
+Description=Synchronizing key server db instance (Local sync/dumps)
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+User=sks
+Group=sks
+PIDFile=/var/run/sks-local/sksdb.pid
+ExecStart=/usr/bin/sks-local db
+RuntimeDirectory=sks-local
+RuntimeDirectoryMode=0755
+
+[Install]
+WantedBy=multi-user.target
