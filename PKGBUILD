@@ -26,10 +26,8 @@ arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
 depends=('libxfixes' 'libmagick6' 'librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'dbus' 'alsa-lib' 'gnutls' 'libxrandr' 'libxinerama')
-__mirror_url__=https://github.com/emacs-mirror/emacs/archive
-source=($__mirror_url__/emacs-$pkgver.tar.gz)
+source=(https://github.com/emacs-mirror/emacs/archive/emacs-$pkgver.tar.gz)
 sha1sums=('be49ce6c4c42bdb663f8066aba1c4079a6e1bb17')
-# validpgpkeys=()
 
 build() {
   cd "$srcdir"/emacs-emacs-$pkgver
