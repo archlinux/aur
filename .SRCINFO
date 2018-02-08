@@ -1,6 +1,6 @@
 pkgbase = h5utils-git
 	pkgdesc = A set of utilities for visualization and conversion of scientific data in the free, portable HDF5 format
-	pkgver = 1.13.r7.g830b7f9
+	pkgver = 1.13.r9.ge17b135
 	pkgrel = 1
 	url = https://github.com/stevengj/h5utils
 	arch = i686
