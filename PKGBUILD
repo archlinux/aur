@@ -2,7 +2,7 @@
 # Based on python2-miniupnpc AUR package
 
 pkgname=python-miniupnpc
-pkgver=1.9
+pkgver=2.0.20180203
 pkgrel=1
 pkgdesc="Repack of the original miniupnp project to facilitate install via PyPi"
 arch=('i686' 'x86_64')
@@ -11,9 +11,8 @@ makedepends=('python-setuptools')
 url="https://github.com/chenhouwu/miniupnpc"
 license=('custom')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/m/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
-md5sums=('396f0e9a694582e422d2f140ae9781d2')
-sha256sums=('498b35c5443e8de566f3a4de4bceae28fbf6e08ed59afb5ffd516d0bb718bca6')
+source=(http://miniupnp.free.fr/files/miniupnpc-${pkgver}.tar.gz)
+md5sums=('48fd9c899f77e898c74d2166590da076')
 
 prepare(){
   cd $srcdir/${pkgname#python-}-$pkgver
