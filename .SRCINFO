@@ -1,6 +1,6 @@
 pkgbase = harminv-git
 	pkgdesc = Harmonic inversion algorithm of Mandelshtam: decompose signal into sum of decaying sinusoids
-	pkgver = 1.4.1.r3.gfe6f73d
+	pkgver = 1.4.1.r4.gc3c7a16
 	pkgrel = 1
 	url = https://github.com/stevengj/harminv
 	arch = i686
