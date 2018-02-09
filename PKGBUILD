@@ -2,8 +2,8 @@
 
 _pkgname=lxqt-desktop
 pkgname=$_pkgname-git
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="The LXQt desktop"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
@@ -31,7 +31,7 @@ optdepends=(
 	"openbox: Recommended window manager"
 	"sddm-git: Recommended display manager"
 	"qterminal-git: Pure Qt terminal"
-	"juffed-qt5-git: Pure Qt text editor (Kate clone)"
+	"featherpad-git: Pure Qt text editor"
 	"screengrab-git: Screenshot capture"
 	"qps-git: Task Monitoring"
 	"nm-tray-git: Qt front-end to NetworkManager"
