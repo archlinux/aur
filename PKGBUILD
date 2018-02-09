@@ -5,7 +5,7 @@
 pkgname=camlidl
 pkgver=1.06
 _pkgver=${pkgver/\./}
-pkgrel=2
+pkgrel=3
 pkgdesc="A stub code generator and COM binding for Objective Caml (OCaml)"
 arch=('i686' 'x86_64')
 url="https://github.com/xavierleroy/camlidl"
@@ -35,6 +35,6 @@ package() {
 }
 
 sha1sums=('674c75608faa841caea5a3d3c75dc8ff58d5c5a4'
-          '2e26acb071e62574ced84ff7aa3a7164e27daef0')
+          'aeaa511cd2e98e312182cb49da3ecc8da8d72e76')
 sha256sums=('abf490f1b07f23ed8c9f050475832436c56db22c40083c87f89cb5d4250cf12a'
-            '1a060499f884670ad3ad5f9dbd8421ea3754947b0ee955424490848acb39ce42')
+            'ed7c8db53b950f62bfe3d1f99081a42787f7b17358dcdcc0e842daacdd5c70b2')
