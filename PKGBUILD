@@ -1,19 +1,18 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2017-12-17.
+# PKGBUILD last time manually edited: At least on 2018-02-09.
 
 _year='18'
 _prevyear="$(( ${_year} - 1 ))"
 
 _pkgname="idos-timetable-data-zsr-sk-20${_year}"
 pkgname="${_pkgname}-latest"
-epoch=0
-pkgver=2018_01_22
+epoch=1
+pkgver=2018_2_8
 pkgrel=1
-pkgdesc="20${_prevyear}/20${_year} Timetable data for the offline railway and other public transport timetable search engines by CHAPS: Slovak train data, provided by ŽSR."
+pkgdesc="20${_prevyear}/20${_year} Timetable data for the offline railway and other public transport timetable search engines by CHAPS: Slovak train data, provided by Inprop (Slovakia)."
 arch=(any)
-# url="http://www2.zsr.sk/pre-cestujucich/elis-vas-pocitac/instalacny-program-elis-k-cestovnemu-poriadku-cp-2016-2017-vnutrostatne-spoje-2.html"
-url="http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-cp2017-2018-a-aktualizacia-dat-na-stiahnutie.html?page_id=5772"
+url="http://www.inprop.sk/download.aspx"
 license=('custom')
 
 groups=(
@@ -54,7 +53,7 @@ conflicts=(
 )
 
 _get_download_url() {
-  wget -O- -nv "${url}" | grep -i "vlak${_year}sk.exe" | sed -n "s|^.*<a href=[\"']\([^\"']*\)[\"'].*$|\1|p"
+  echo "http://www.inprop.sk/Data/Vlak${_year}Sk.exe"
 }
 
 _source0="$(_get_download_url)"
@@ -71,14 +70,9 @@ sha256sums=(
 )
 
 pkgver() {
-  # Do not use metadata of the source file, but do website parsing: So we do not need to download the file to (AUR-)update the package version with our own crude hacked script 'idos-aur-update-versions.sh'.
-  #date -r "${srcdir}/${_target0}" +"%Y_%m_%d"
-  
-  _day="$(basename "${_source0}" .exe | cut -d- -f4)"
-  _month="$(basename "${_source0}" .exe | cut -d- -f3)"
-  _year="$(basename "${_source0}" .exe | cut -d- -f2)"
-  
-  echo "${_year}_${_month}_${_day}"
+  _ver="$(wget -nv -O- "${url}" | grep --text -E "Data/Vlak${_year}Sk\.exe" | sed -r 's|[^0-9]([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4})[^0-9]|\n\1\n|' | grep --text -E '^[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}$' | awk -F. '{print $3"_"$2"_"$1}')"
+
+  echo "${_ver}"
 }
 
 
