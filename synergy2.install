@@ -7,7 +7,7 @@ post_install() {
 		systemctl enable synergy.service >/dev/null || true
 		if [ -d /run/systemd/system ]; then
 			systemctl --system daemon-reload >/dev/null || true
-			systemctl start synergy.service >/dev/null || true
+			systemctl restart synergy.service >/dev/null || true
 		fi
 	fi
 
