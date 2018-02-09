@@ -1,16 +1,18 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2017-12-17.
+# PKGBUILD last time manually edited: At least on 2018-02-09.
 
-_pkgname=idos-timetable-data-zsr-europe+sk-2017
+_year='17'
+_prevyear="$(( ${_year} - 1 ))"
+
+_pkgname="idos-timetable-data-zsr-europe+sk-20${_year}"
 pkgname="${_pkgname}-latest"
-epoch=0
-pkgver=2017_12_05
-pkgrel=2
-pkgdesc="2016/2017 Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by ŽSR."
+epoch=1
+pkgver=2018_2_8
+pkgrel=1
+pkgdesc="20${_prevyear}/20${_year} Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by Inprop (Slovakia)."
 arch=(any)
-# url="http://www.zsr.sk/slovensky.html?page_id=378"
-url="http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-elis-cp-2015-2016-a-aktualizacia-dat-na-stiahnutie.html?page_id=378"
+url="http://www.inprop.sk/download.aspx"
 license=('custom')
 
 groups=(
@@ -42,23 +44,29 @@ provides=(
   "idos-timetable-data-trains=${pkgver}"
 
   "idos-timetable-data-trains-sk=${pkgver}"
+  "idos-timetable-data-trains-sk-20${_year}=${pkgver}"
   "idos-timetable-data-trains-europe=${pkgver}"
-  "idos-timetable-data-trains-sk-2017=${pkgver}"
-  "idos-timetable-data-trains-europe-2017=${pkgver}"
+  "idos-timetable-data-trains-europe-20${_year}=${pkgver}"
+)
+
+replaces=(
+  'idos-timetable-data-zsr-europe+sk-latest'
+  "${_pkgname}<=${pkgver}"
 )
 
 conflicts=(
   "${_pkgname}"
 )
 
-_get_download_url_2017() {
-  wget -O- -nv "${url}" | grep -i 'vlak17e_sk.exe' | sed -n "s|^.*<a href=[\"']\([^\"']*\)[\"'].*$|\1|p"
+_get_download_url() {
+  echo "http://www.inprop.sk/Data/Vlak${_year}E_Sk.exe"
 }
 
-_source0="$(_get_download_url_2017)"
+_source0="$(_get_download_url)"
+_target0="vlak${_year}e_sk.exe"
 
 source=(
-  "vlak17e_sk.exe::${_source0}"
+  "${_target0}::${_source0}"
   "license-dummy.txt"
 )
 
@@ -68,11 +76,12 @@ sha256sums=(
 )
 
 pkgver() {
-  _day="$(basename "${_source0}" .exe | cut -d- -f4)"
-  _month="$(basename "${_source0}" .exe | cut -d- -f3)"
-  _year="$(basename "${_source0}" .exe | cut -d- -f2)"
+  # Do not use metadata of the source file, but do website parsing: So we do not need to download the file to (AUR-)update the package version with our own crude hacked script 'idos-aur-update-versions.sh'.
+  #date -r "${srcdir}/${_target0}" +"%Y_%m_%d"
   
-  echo "${_year}_${_month}_${_day}"
+  _ver="$(wget -nv -O- "${url}" | grep --text -E "Data/Vlak${_year}E_Sk\.exe" | sed -r 's|[^0-9]([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4})[^0-9]|\n\1\n|' | grep --text -E '^[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}$' | awk -F. '{print $3"_"$2"_"$1}')"
+
+  echo "${_ver}"
 }
 
 
@@ -83,7 +92,7 @@ package() {
   install -d -m755 "${_instdir}"
 
   cd "${_instdir}" && {
-    7z x "${srcdir}/vlak17e_sk.exe"
+    7z x "${srcdir}/${_target0}"
     chmod 755 Data*
     chmod 644 Data*/*
   }
