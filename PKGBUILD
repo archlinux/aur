@@ -42,6 +42,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         "ffmpeg-full-rkmpp-remove-stream-start.patch"
         "LICENSE"
 )
+validpgpkeys=("FCF986EA15E6E293A5644F10B4322F04D67658D8")
 sha256sums=("5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0"
             "142923fd02851343bfbfd31b201ba014dced8a8c8898373c72d71d30d59f5851"
             "cac8577126c3e49f8c915fa289f3f5aa624dc55f897b8b7a5613191bcfa9c097"
@@ -57,7 +58,7 @@ prepare() {
 build() {
     cd "ffmpeg-${pkgver}"
 
-    msg2 'Running ffmpeg configure script. Please wait...'
+    msg2 "Running ffmpeg configure script. Please wait..."
 
     ./configure \
         --prefix="/usr" \
