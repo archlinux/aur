@@ -4,7 +4,7 @@
 # Contributor: orbisvicis <gmail.com>
 
 pkgname=xmonad-contrib-git
-pkgver=v0.13.r49.g12227d3
+pkgver=v0.13.r81.g3044577
 pkgrel=1
 pkgdesc="Add-ons for xmonad"
 arch=('i686' 'x86_64')
@@ -33,12 +33,10 @@ pkgver() {
 
 build() {
   cd "$srcdir"/${pkgname/-git}
-
-  runhaskell Setup.lhs configure -O --enable-shared --enable-executable-dynamic \
-             --prefix=/usr -fuse_xft --libsubdir=\$compiler/site-local/\$pkgid \
-             --docdir=/usr/share/doc/${pkgname}
+  runhaskell Setup.lhs configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+    --prefix=/usr -fuse_xft --libsubdir=\$compiler/site-local/\$pkgid \
+    --docdir=/usr/share/doc/${pkgname}
   runhaskell Setup build
-  runhaskell Setup haddock
   runhaskell Setup register --gen-script
   runhaskell Setup unregister --gen-script
   sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
