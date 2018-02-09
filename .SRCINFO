@@ -9,7 +9,7 @@ pkgbase = adlmidi-git
 	license = GPL2+
 	makedepends = git
 	optdepends = ffmpeg: recording output to video file
-	provides = adlmidi
+	conflicts = adlmidi
 	source = git://bisqwit.iki.fi/adlmidi.git
 	sha256sums = SKIP
 
