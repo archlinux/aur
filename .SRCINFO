@@ -1,7 +1,7 @@
 pkgbase = tempus-themes-xfce4-terminal
 	pkgdesc = Tempus themes for Xfce4 terminal (minimum WCAG AA colour contrast compliance)
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/protesilaos/tempus-themes-xfce4-terminal
 	arch = any
 	license = GPL3
