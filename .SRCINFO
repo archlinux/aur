@@ -47,14 +47,17 @@ pkgbase = vtk-py3-qt4
 	optdepends = mariadb
 	optdepends = ffmpeg
 	optdepends = jsoncpp
+	conflicts = vtk
+	conflicts = python-constantly
+	conflicts = python-incremental
 	options = staticlibs
 	options = !strip
 	source = http://www.vtk.org/files/release/8.0/VTK-8.0.0.tar.gz
 	source = http://www.vtk.org/files/release/8.0/VTKData-8.0.0.tar.gz
 	source = http://www.vtk.org/files/release/8.0/VTKLargeData-8.0.0.tar.gz
-        sha1sums = a1bc6a8335b02f01a23cb6e96c4613d12ab598ed
-        sha1sums = e4d7315f27f42ce0820721b5d4304913fd4720c3
-        sha1sums = 2167822c8ebda61e04c3fce71692621f2b24d06b
+	sha1sums = a1bc6a8335b02f01a23cb6e96c4613d12ab598ed
+	sha1sums = e4d7315f27f42ce0820721b5d4304913fd4720c3
+	sha1sums = 2167822c8ebda61e04c3fce71692621f2b24d06b
 
 pkgname = vtk-py3-qt4
 
