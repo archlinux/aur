@@ -3,7 +3,7 @@
 pkgname=('steamforwarder-git')
 _pkgname=SteamForwarder
 pkgdesc="Tool that allows interaction between windows games under wine and the linux steam. (Cutting edge experimental features)"
-pkgver=r151.c0dc1f3
+pkgver=r157.789cb0a
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/xomachine/SteamForwarder"
@@ -14,6 +14,7 @@ makedepends=()
 provides=('steamforwarder')
 source=("git+https://github.com/xomachine/SteamForwarder.git#branch=devel")
 sha256sums=('SKIP')
+options=(!strip)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
