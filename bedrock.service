@@ -5,7 +5,8 @@ After=network.target remote-fs.target nss-lookup.target
 [Service]
 Type=simple
 SyslogIdentifier=bedrock
-ExecStart= /usr/bin/bedrock -db /var/lib/bedrock/bedrock.db -serverHost 0.0.0.0:8888 -nodeHost 0.0.0.0:8889 -priority 200 -pidfile /var/run/bedrock.pid -quorumCheckpoint 100 -readThreads 4 -plugins db,jobs,cache,mysql -v -cache 10001
+EnvironmentFile=/etc/bedrock.conf
+ExecStart=/usr/bin/bedrock -nodeName $NODE_NAME -db $DATABASE -serverHost $SERVER_HOST -nodeHost $NODE_HOST -priority $PRIORITY -pidfile $PIDFILE -workerThreads $WORKER_THREADS -plugins $PLUGINS -cacheSize $CACHE_SIZE $BEDROCK_EXTRA_ARGS
 TimeoutSec=10
 
 [Install]

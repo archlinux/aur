@@ -1,0 +1,9 @@
+post_install() {
+  if [ ! -e "/var/lib/bedrock/bedrock.db" ]; then
+    touch /var/lib/bedrock/bedrock.db
+  fi
+}
+
+post_upgrade() {
+  post_install
+}

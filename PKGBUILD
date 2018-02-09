@@ -8,11 +8,14 @@ pkgdesc="Rock solid distributed database specializing in active/active automatic
 url="http://bedrockdb.com"
 license=("GPL")
 arch=('i686' 'x86_64')
+install=$pkgname.install
 source=(
   'git://github.com/Expensify/Bedrock'
+  'bedrock.conf'
   'bedrock.service'
 )
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP')
+backup=('etc/bedrock.conf')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -51,9 +54,9 @@ package() {
 
   install -Dm755 bedrock $pkgdir/usr/bin/bedrock
 
-  install -d ${pkgdir}/var/lib/bedrock/
+  install -d ${pkgdir}/etc/
 
-  touch ${pkgdir}/var/lib/bedrock/bedrock.db
+  install -d ${pkgdir}/var/lib/bedrock/
 
   install -d "$pkgdir/usr/share/doc/$pkgname"
 
@@ -61,5 +64,6 @@ package() {
 
   cd ../../
 
+  install -Dm644 bedrock.conf $pkgdir/etc/bedrock.conf
   install -Dm755 bedrock.service $pkgdir/usr/lib/systemd/system/bedrock.service
 }
