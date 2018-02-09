@@ -1,6 +1,6 @@
 pkgbase = iamcarbonman
 	pkgdesc = Meta package for /u/IamCarbonMan
-	pkgver = 1518149558
+	pkgver = 1518149973
 	pkgrel = 1
 	url = https://reddit.com/u/IamCarbonMan
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = iamcarbonman
 	depends = cli-visualizer
 	depends = dmenu
 	depends = git
+	depends = git-annex
 	depends = google-chrome
 	depends = ifplugd
 	depends = intel-ucode
