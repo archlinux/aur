@@ -17,7 +17,14 @@ int main(int argc, char* argv[]) {
     FILE* fp = fopen(portfolio_file, "a+");
     if (fp == NULL) {
         printf("Could not open portfolio file\n");
+        fclose(fp);
         free((void*) portfolio_file);
+        return 0;
+    }
+    if (argc == 2 && strcmp(argv[1], "convert") == 0){
+        portfolio_legacy_convert();
+        free((void*) portfolio_file);
+        fclose(fp);
         return 0;
     }
     for (int i = 0; argv[2][i] != '\0'; i++)
@@ -39,7 +46,7 @@ int main(int argc, char* argv[]) {
         if (argc == 3 && strcmp(argv[1], "check") == 0) {
             if (strcmp(argv[2], "ALL") == 0)
                 portfolio_print_all(fp);
-            else free(portfolio_print_stock(argv[2], fp));
+            else free(portfolio_print_stock(argv[2], fp, NULL));
         } else printf("Invalid arguments.\n");
     }
     free((void*) portfolio_file);

@@ -1,4 +1,4 @@
-.TH TICK "1" "January 2018" "Tick 1.6.4" "User Commands"
+.TH TICK "1" "January 2018" "Tick 1.7.0" "User Commands"
 
 .SH NAME
 Tick - Command line stock and cryptocurrency portfolio tracker.
@@ -28,6 +28,11 @@ are not reinvested into a specific security, you should update your portfolio wi
 Prints information about your current portfolio holdings. Either a symbol or the keyword 'all' can be used. The keyword "all"
 will print information about all your current holdings, as well as a grand total.
 
+.TP
+[convert]
+If it exists, removes $HOME/.tick_portfolio.json and adds your current holding from the legacy portfolio, located at
+$HOME/.tick_portfolio.
+
 .SS
 News:
 
@@ -39,9 +44,14 @@ your phrase in double quotes. Technically, the input may be something completely
 in the future.
 
 .SH FILES
-.I ~/.tick_portfolio
+.I ~/.tick_portfolio.json
 .RS
 Portfolio file.
+
+.RE
+.I ~/.tick_portfolio
+.RS
+Portfolio file (legacy).
 
 .SH GITHUB
 Please report any bugs using the GitHub issue tracker: https://github.com/aokellermann/tick/issues

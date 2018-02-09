@@ -44,6 +44,11 @@ $ tick news [symbol]
 If you wish to use spaces in your input, you can either surround the phrase
 with quotes or replace spaces with underscores.
 
+As of version 1.7, the portfolio file has been reconstructed and formatted
+in JSON. To convert your existing portfolio, run
+```bash
+$ tick convert
+```
 Once installed, you may read the man page for more information.
 
 #### License
@@ -58,7 +63,8 @@ license for more information.
 #### Future Ideas
 * Command to get info about a security
 * Historical support -- 7d/28d profits
-* Change portfolio structure to JSON format
 * Different ways to sort "check all"
 * Look for API to replace Morningstar for MUTF/OTCMKTS data, preferably with
 intraday data
+* Encrypt data
+* Debian/RPM package
