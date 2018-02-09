@@ -1,7 +1,7 @@
 # Maintainer: unstartdev <guo.yongan@outlook.com>
 pkgname=electron-ssr-source
 pkgver=0.2.0beta3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Install electron-ssr from tarball"
 arch=('x86_64')
@@ -19,29 +19,29 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/erguotou520/electron-ssr/releases/download/v0.2.0-beta-3/electron-ssr-0.2.0-beta-3.tar.gz"
+source=("https://github.com/erguotou520/electron-ssr/releases/download/v0.2.0-beta-2/electron-ssr-0.2.0-beta-2.tar.gz"
 	"desktop.tar.gz"
 	"icons.tar.gz")
 noextract=()
-md5sums=('3520dc50e5c57c3f1d04535614b0ef13'
+md5sums=('d60ea1933cd47867e6671a382d1ff2f7'
          '4abbf552004cddffc22230070b622f7b'
          '679cf82afcc498d1db4dba5aed8bd0a0')
 validpgpkeys=()
 
 package() {
-	install -d electron-ssr-*/ $pkgdir/opt/$pkgname
-	install -D electron-ssr-*/*pak $pkgdir/opt/$pkgname
-	install -D electron-ssr-*/icudtl.dat $pkgdir/opt/$pkgname
-	install -D electron-ssr-*/libffmpeg.so $pkgdir/opt/$pkgname
-	install -D electron-ssr-*/libnode.so $pkgdir/opt/$pkgname
-	install -D electron-ssr-*/LICENSE.electron.txt $pkgdir/opt/$pkgname
-	install -D electron-ssr-*/LICENSES.chromium.html $pkgdir/opt/$pkgname
-	install -D electron-ssr-*/*bin $pkgdir/opt/$pkgname
-	install -d electron-ssr-*/locales $pkgdir/opt/$pkgname/locales
-	install -d electron-ssr-*/resources $pkgdir/opt/$pkgname/resources
-	install -D electron-ssr-*/locales/* $pkgdir/opt/$pkgname/locales
-	install -D electron-ssr-*/resources/* $pkgdir/opt/$pkgname/resources
-	install -D electron-ssr-*/electron-ssr $pkgdir/opt/$pkgname
+	install -d electron-ssr-0.2.0-beta-2/ $pkgdir/opt/$pkgname
+	install -D electron-ssr-0.2.0-beta-2/*pak $pkgdir/opt/$pkgname
+	install -D electron-ssr-0.2.0-beta-2/icudtl.dat $pkgdir/opt/$pkgname
+	install -D electron-ssr-0.2.0-beta-2/libffmpeg.so $pkgdir/opt/$pkgname
+	install -D electron-ssr-0.2.0-beta-2/libnode.so $pkgdir/opt/$pkgname
+	install -D electron-ssr-0.2.0-beta-2/LICENSE.electron.txt $pkgdir/opt/$pkgname
+	install -D electron-ssr-0.2.0-beta-2/LICENSES.chromium.html $pkgdir/opt/$pkgname
+	install -D electron-ssr-0.2.0-beta-2/*bin $pkgdir/opt/$pkgname
+	install -d electron-ssr-0.2.0-beta-2/locales $pkgdir/opt/$pkgname/locales
+	install -d electron-ssr-0.2.0-beta-2/resources $pkgdir/opt/$pkgname/resources
+	install -D electron-ssr-0.2.0-beta-2/locales/* $pkgdir/opt/$pkgname/locales
+	install -D electron-ssr-0.2.0-beta-2/resources/* $pkgdir/opt/$pkgname/resources
+	install -D electron-ssr-0.2.0-beta-2/electron-ssr $pkgdir/opt/$pkgname
 	install -D ./electron-ssr.desktop $pkgdir/usr/share/applications/electron-ssr.desktop
 	install -D icons/hicolor/128x128/apps/electron-ssr.png $pkgdir/usr/share/icons/hicolor/128x128/apps/electron-ssr.png
 	install -D icons/hicolor/16x16/apps/electron-ssr.png $pkgdir/usr/share/icons/hicolor/128x128/apps/electron-ssr.png
