@@ -1,0 +1,9 @@
+[Unit]
+Description=Asofe daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/asofed
+
+[Install]
+WantedBy=default.target
