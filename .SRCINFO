@@ -1,0 +1,19 @@
+pkgbase = canmatrix-git
+	pkgdesc = Utility for converting CAN database formats
+	pkgver = 0.4.r327.g53e47b2
+	pkgrel = 1
+	url = https://github.com/ebroecker/canmatrix
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-lxml
+	depends = python-xlwt
+	depends = python-xlrd
+	depends = python-xlsxwriter
+	depends = python-yaml
+	depends = python-future
+	source = git+https://github.com/ebroecker/canmatrix.git
+	sha256sums = SKIP
+
+pkgname = canmatrix-git
+
