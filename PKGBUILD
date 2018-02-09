@@ -1,14 +1,14 @@
 # Maintainer: Willem Mulder <14mRh4X0r@gmail.com>
 pkgname=argon
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="the noble lightweight GUI package manager + update notifier (with full AUR support)"
 url="https://github.com/14mRh4X0r/arch-argon"
 license=('GPL')
 arch=('any')
-depends=(bash cower pacaur libnotify python python-gobject gtk3 vte3)
+depends=(bash auracle pacaur libnotify python python-gobject gtk3 vte3)
 source=("https://github.com/14mRh4X0r/arch-argon/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('d5ee909df1e215c2c0df28df1f105a6a85ea2858b75e1f47ac6aa970b77cb2cfa996f9950063fba10b46a0bda6938367fbef3eaadb0cfb631d096f0eaec21440')
+sha512sums=('09a5e22fd9006457e25fd6110ab04eb171f8b6051fcdab12ca9c7fd2ddfe784dd2d4498f3fd5a881f9b7bc477687f1074813e8028c7be38e080307678a462b2e')
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
