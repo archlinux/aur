@@ -2,7 +2,7 @@
 
 pkgname=latex-includetikz-git
 pkgname_=latex-includetikz
-pkgver=v0.2.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Latex package to include external tikz figures and similarly to \includegraphics command.'
 arch=(any)
