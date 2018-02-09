@@ -1,6 +1,6 @@
 # Maintainer: ahrs <Forward dot to at hotmail dot co dot uk>
 pkgname=('python-pulse-control-git' 'python2-pulse-control-git')
-pkgver=r146.0d14c59
+pkgver=r155.7ff0cc1
 pkgrel=1
 pkgdesc="Python bindings for pulseaudio"
 arch=('any')
@@ -27,6 +27,7 @@ build() {
 
 package_python-pulse-control-git() {
   depends=('python' 'pulseaudio')
+  provides=('python-pulse-control')
 
   cd python-pulse-control-git
 
@@ -35,6 +36,7 @@ package_python-pulse-control-git() {
 
 package_python2-pulse-control-git() {
   depends=('python2' 'pulseaudio')
+  provides=('python2-pulse-control')
 
   cd python2-pulse-control-git
 
