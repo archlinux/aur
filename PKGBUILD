@@ -2,7 +2,7 @@
 
 pkgname=bedrock
 _gitname=Bedrock
-pkgver=r1318.8187835
+pkgver=r1323.649c63f
 pkgrel=1
 pkgdesc="Rock solid distributed database specializing in active/active automatic failover and WAN replication."
 url="http://bedrockdb.com"
@@ -34,8 +34,10 @@ prepare() {
   sed -i "s|/mbedtls/include -Werror -Wno-unu|/mbedtls/include -Wno-unu|" \
     Makefile
 
-  sed -i 's|"Timestamp"), 1ul)|"Timestamp"), 1ull)|' \
-    libstuff/STCPNode.cpp
+  if [[ $CARCH == "armv7h" ]]; then
+    sed -i 's|"Timestamp"), 1ul)|"Timestamp"), 1ull)|' \
+      libstuff/STCPNode.cpp
+  fi
 }
 
 build() {
