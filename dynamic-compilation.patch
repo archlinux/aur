@@ -1,0 +1,11 @@
+diff -ura xmonad-0.13.orig/src/XMonad/Core.hs xmonad-0.13/src/XMonad/Core.hs
+--- xmonad-0.13.orig/src/XMonad/Core.hs	2017-06-23 17:13:06.154600231 +0300
++++ xmonad-0.13/src/XMonad/Core.hs	2017-06-23 17:13:51.021867441 +0300
+@@ -626,6 +626,7 @@
+                           , "-ilib"
+                           , "-fforce-recomp"
+                           , "-main-is", "main"
++                          , "-dynamic"
+                           , "-v0"
+                           , "-o", bin
+                           ] (Just dir) Nothing Nothing Nothing (Just errHandle)

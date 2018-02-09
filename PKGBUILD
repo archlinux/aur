@@ -4,8 +4,8 @@
 # Contributor: shild <shildv@gmail.com>
 
 pkgname=xmonad-git
-pkgver=v0.13.r5.g2e63127
-pkgrel=2
+pkgver=v0.13.r7.g12a45b4
+pkgrel=1
 pkgdesc="Lightweight X11 tiled window manager written in Haskell"
 arch=('i686' 'x86_64')
 url="http://xmonad.org/"
@@ -24,8 +24,10 @@ conflicts=('xmonad')
 provides=('xmonad')
 install='xmonad.install'
 source=('git://github.com/xmonad/xmonad.git'
+        'dynamic-compilation.patch'
         'xmonad.svg')
 md5sums=('SKIP'
+         'b2e645bb5aa91c64f85004806e049b8d'
          '72bfa5e62e4e44fe7fa59b6a7593d993')
 options=('staticlibs')
 
@@ -36,15 +38,16 @@ pkgver() {
 
 prepare() {
   gendesk --pkgname "${pkgname/-git}" --pkgdesc "$pkgdesc"
+  cd "$srcdir"/${pkgname/-git}
+  patch -p1 -i "${srcdir}/dynamic-compilation.patch"
 }
 
 build() {
   cd "$srcdir"/${pkgname/-git}
-  runhaskell Setup configure -O --enable-shared --enable-executable-dynamic \
-    --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
-    --libsubdir=\$compiler/site-local/\$pkgid
+  runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+    --prefix=/usr --docdir="/usr/share/doc/${pkgname}" --datasubdir="$pkgname" \
+    --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
   runhaskell Setup build
-  runhaskell Setup haddock
   runhaskell Setup register --gen-script
   runhaskell Setup unregister --gen-script
   sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
