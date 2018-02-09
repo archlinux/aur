@@ -1,6 +1,6 @@
 pkgbase = iamcarbonman
 	pkgdesc = Meta package for /u/IamCarbonMan
-	pkgver = 1518150565
+	pkgver = 1518151303
 	pkgrel = 1
 	url = https://reddit.com/u/IamCarbonMan
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = iamcarbonman
 	depends = pulseaudio-bluetooth
 	depends = pulsemixer
 	depends = python-pywal
+	depends = python-wal-steam-git
 	depends = rxvt-unicode
 	depends = scrot
 	depends = steam
