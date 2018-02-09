@@ -1,0 +1,8 @@
+diff -U1 -ra uqmi.orig/CMakeLists.txt uqmi/CMakeLists.txt
+--- uqmi.orig/CMakeLists.txt	2018-02-09 23:03:34.772414540 +0100
++++ uqmi/CMakeLists.txt	2018-02-09 23:04:28.329744981 +0100
+@@ -69,3 +69,3 @@
+ INSTALL(TARGETS uqmi
+-	RUNTIME DESTINATION sbin
++	RUNTIME DESTINATION bin
+ )
