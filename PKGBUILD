@@ -3,7 +3,7 @@
 # Contributor: Sebastien Binet <binet@cern.ch>
 
 pkgname=waf
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='General-purpose build system modelled after Scons'
 url='http://waf.io/'
@@ -15,10 +15,10 @@ provides=('python-waf')
 source=("https://waf.io/${pkgname}-${pkgver}.tar.bz2"
         'wafdir.patch'
         'building-waf.md')
-md5sums=('8638e8e650edd4ad766245fdfecf00b4'
+md5sums=('ca96066c6fe30948dd5eb6ae2772a2ef'
          'ff472805caa81e02cb15bcf87031f722'
          '93fd94b3dc4616c35e9bf13adc63b23c')
-sha256sums=('36aaa3ee6aff75058a694b6c53c3cdf3080c882e134811dd8d4716ccd8e3b67e'
+sha256sums=('33f75aa730a8228564cbfd23ee1124263795133f4c707c1c7390852b9e117296'
             '432fb8e21fe31047e16ac068b761961f1a3965785e570bf54aca1c4c07d253f4'
             '3103524b61ac3f3af9bb71f1ac8fcb836a1e67e2bfcf59150f08dbf70a595675')
 
