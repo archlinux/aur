@@ -17,15 +17,11 @@ optdepends=('catalyst-utils: For AMD Catalyst'
 options=('!emptydirs')
 install=$pkgname.install
 source=("google-earth-stable_${pkgver}_amd64.deb::https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-stable/google-earth-stable_7.1.8.3036-r0_amd64.deb"
-        'googleearth.sh'
-        'baifaao.cpp'
         'Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html'
         'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
 md5sums=('77cb0eacde195c224767a77ccf54c8ef'
-         'e84f5d51ea3545c131d1794f89f6464a'
-         '598d579a1c3199c77850d86ba78f7b44'
          'SKIP'
          'SKIP'
          'SKIP'
