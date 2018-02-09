@@ -1,11 +1,11 @@
 pkgname=bashbullet2
-pkgver=20180114
+pkgver=20180209
 pkgrel=1
 pkgdesc="A pushbullet systray notification daemon for linux. also a simple client to receive, mirror, and send pushes. version 2"
 arch=('any')
 url="https://github.com/Boteium/bashbullet2"
 license=('GPL')
-depends=(libnotify yad xclip websocketpp-git-dev curl)
+depends=(libnotify yad xclip websocketpp-git-dev curl openssl)
 install="bashbullet2.install"
 source=('git://github.com/Boteium/bashbullet2.git')
 md5sums=('SKIP')
