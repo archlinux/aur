@@ -1,15 +1,15 @@
 # Maintainer: Petron <petron@archlinuxcn.org>
 pkgname=vim-tern
-pkgver=80.8364d69
+pkgver=94.3cffc28
 pkgrel=1
 pkgdesc="Tern plugin for Vim"
 arch=('any')
-url="https://github.com/marijnh/tern_for_vim"
-license=('GPL3')
+url="https://github.com/ternjs/tern_for_vim"
+license=('MIT')
 groups=('vim-plugins')
 depends=('vim' 'nodejs')
 makedepends=('git')
-source=("git+https://github.com/marijnh/tern_for_vim")
+source=("git+https://github.com/ternjs/tern_for_vim")
 sha256sums=('SKIP')
 _gitname='tern_for_vim'
 
