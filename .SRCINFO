@@ -1,7 +1,7 @@
 pkgbase = ruby-ascii85
 	pkgdesc = Ascii85 encoder/decoder
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datawraith/ascii85gem
 	arch = any
 	license = MIT

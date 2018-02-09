@@ -5,7 +5,7 @@
 _gemname=ascii85
 pkgname=ruby-$_gemname
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Ascii85 encoder/decoder'
 arch=('any')
 url='https://github.com/datawraith/ascii85gem'
@@ -18,7 +18,7 @@ sha256sums=('7ae3f2eb83ef5962016802caf0ce7db500c1cc25f385877f6ec64a29cfa8a818')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" ${_gemname//a/A}-$pkgver.gem
+  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" ${_gemname//a/A}-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/${_gemname//a/A}-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/${_gemname//a/A}-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
