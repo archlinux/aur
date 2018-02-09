@@ -1,0 +1,11 @@
+pkgbase = raspberrypi-udev
+	pkgdesc = Udev rules for Raspberry Pi found in Raspbian
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = unknown
+	source = raspberrypi.rules
+	md5sums = 22509313cf920303517c1154a0dbfa8f
+
+pkgname = raspberrypi-udev
+
