@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-gcomplex'
-pkgver='0.07'
+pkgver='0.08'
 pkgrel='1'
 pkgdesc="Math::GComplex - generic complex number library for Perl."
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=()
 optdepends=('perl-math-anynum: support for arbitrary large numbers')
 url='https://metacpan.org/release/Math-GComplex'
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Math-GComplex-${pkgver}.tar.gz")
-md5sums=('620d36b7421324409d60fb8bcbf9c4f4')
-sha512sums=('276c970cec0d4124c6e3bb2eaa6267e9b0b24516bfe669659e2915c0cc12feaa1e3ddbfba5f81388aaded73791a7270200a883ee9b57792ed73539bb8f33c08b')
+md5sums=('37731b2278224ebf9e2baa4d90b5cfca')
+sha512sums=('329c25aad4e87fbe17e05543bddf73499053bed5c1a3375c01d589b0a73d3b82d254537db45f123869812e761b163061831b6ec4ad8f173c22f83bc2b98de9b0')
 _distdir="Math-GComplex-${pkgver}"
 
 build() {
