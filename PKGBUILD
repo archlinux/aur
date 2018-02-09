@@ -5,7 +5,7 @@
 _gemname=hashery
 pkgname=ruby-$_gemname
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Facets-bread collection of Hash-like classes.'
 arch=('any')
 url='http://rubyworks.github.com/hashery'
@@ -18,7 +18,7 @@ sha256sums=('d239cc2310401903f6b79d458c2bbef5bf74c46f3f974ae9c1061fb74a404862')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
