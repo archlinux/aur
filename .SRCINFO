@@ -1,6 +1,6 @@
 pkgbase = ttf-typopro
 	pkgdesc = TypoPRO fonts from http://typopro.org/
-	pkgver = 3.4.9
+	pkgver = 3.7.6
 	pkgrel = 1
 	install = ttf-typopro.install
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ttf-typopro
 	license = CC0
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/rse/typopro-web/archive/3.4.9.zip
-	sha256sums = 98ea13ad9ca6a1ac99bb6e9ebf6cba70f79c432b36ccff07563959aa6f4b3bb8
+	source = https://github.com/rse/typopro-web/archive/3.7.6.zip
+	sha256sums = d97ebe94244c391f9c9384abc03d66669bad8d73867c4e7d0e5518c6bef88f01
 
 pkgname = ttf-typopro
 

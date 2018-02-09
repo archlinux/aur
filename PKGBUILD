@@ -1,6 +1,6 @@
 # Maintainer: Samuele Santi <samuele+aur@samuelesanti.com>
 pkgname=ttf-typopro
-pkgver=3.4.9
+pkgver=3.7.6
 pkgrel=1
 pkgdesc="TypoPRO fonts from http://typopro.org/"
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT' 'Apache' 'OFL' 'CC0')
 depends=(fontconfig xorg-font-utils)
 install=$pkgname.install
 source=("https://github.com/rse/typopro-web/archive/${pkgver}.zip")
-sha256sums=('98ea13ad9ca6a1ac99bb6e9ebf6cba70f79c432b36ccff07563959aa6f4b3bb8')
+sha256sums=('d97ebe94244c391f9c9384abc03d66669bad8d73867c4e7d0e5518c6bef88f01')
 
 package() {
   cd ${srcdir}
