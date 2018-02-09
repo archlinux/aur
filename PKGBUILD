@@ -44,7 +44,7 @@ package() {
   install -Dm644 "${srcdir}/init/linux-systemd/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
   install -Dm644 "${srcdir}/init/linux-systemd/README.md" "${pkgdir}/usr/share/doc/${_realname}/service.txt"
   install -Dm644 "${srcdir}/LICENSES.txt" "${pkgdir}/usr/share/licenses/${_realname}/LICENSE"
-  install -Dm644 "${srcdir}/README.txt" "${pkgdir}/usr/share/doc/${_realgname}/README.md"
+  install -Dm644 "${srcdir}/README.txt" "${pkgdir}/usr/share/doc/${_realname}/README.md"
   cat <<HEREDOC
 NOTE: The 'proxy_header' directive is deprectated and now called 'header_upstream'!
 Use 'caddy -validate -conf=/path/to/config' to check your config BEFORE restarting the service!
