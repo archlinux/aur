@@ -1,14 +1,14 @@
 pkgbase = pokemmo-deb
 	pkgdesc = An MMO based on the Pokémon Universe.
-	pkgver = 1.3_1
+	pkgver = 1.4_1
 	pkgrel = 1
 	url = https://pokemmo.eu
 	install = pokemmo-deb.install
 	arch = x86_64
 	license = custom
 	depends = java-runtime-common
-	source = https://dl.pokemmo.eu/download/pokemmo-launcher_1.3-1.deb
-	md5sums = 6cc938bc77af26e34553f49d7388df3f
+	source = https://dl.pokemmo.eu/download/pokemmo-launcher_1.4-1.deb
+	md5sums = 6bf53a77e50effd31091c66e9d100e32
 
 pkgname = pokemmo-deb
 
