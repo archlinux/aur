@@ -1,0 +1,14 @@
+pkgbase = latex-includetikz-git
+	pkgdesc = Latex package to include external tikz figures and similarly to \includegraphics command.
+	pkgver = v0.2.1
+	pkgrel = 1
+	url = https://github.com/gdolle/latex-includetikz
+	install = includetikz.install
+	arch = any
+	license = GPL
+	depends = tetex
+	source = latex-includetikz::git+https://github.com/gdolle/latex-includetikz.git
+	sha256sums = SKIP
+
+pkgname = latex-includetikz-git
+
