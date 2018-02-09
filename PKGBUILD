@@ -18,15 +18,11 @@ options=('!emptydirs')
 install=$pkgname.install
 #source=("google-earth-pro-stable_${pkgver}_amd64.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_amd64.deb"
 source=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_$pkgver-r0_amd64.deb"
-        'googleearth.sh'
-        'baifaao.cpp'
         'Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html'
         'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
 md5sums=('befce3733761cc529bdb3e9289ddbc03'
-         '34c413a93b06010e66a1a1c4c9386696'
-         '598d579a1c3199c77850d86ba78f7b44'
          'SKIP'
          'SKIP'
          'SKIP'
