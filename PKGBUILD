@@ -1,10 +1,11 @@
-# Maintainer: end222 <pabloorduna98 at gmail dot com>
+# Maintainer:levinit <levinit at outlook dot com>  https://github.com/levinit/aur-pkgbuilds
+# Ex-Maintainer: end222 <pabloorduna98 at gmail dot com>
 # Ex-maintainer: ValHue <vhuelamo at gmail dot com>
 # https://github.com/ValHue/AUR-PKGBUILDs
 
 pkgname="nautilus-megasync"
-pkgver="3.1.4"
-pkgrel="2"
+pkgver="3.6.0"
+pkgrel="1"
 pkgdesc="Upload your files to your Mega account from nautilus."
 arch=('i686' 'x86_64')
 url="https://mega.co.nz/#sync"
@@ -13,7 +14,7 @@ depends=('libnautilus-extension' 'megasync>=2.9.8' 'qt4')
 provides=("${pkgname}")
 
 source=("https://mega.nz/linux/MEGAsync/Debian_9.0/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('23c6d743e49d0eac950f780f9eb24991c4a1f2e1adcfb3fa77bba1561b77bd80')
+sha256sums=('SKIP')
 
 install="${pkgname}.install"
 
