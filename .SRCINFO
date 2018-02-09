@@ -12,7 +12,6 @@ pkgbase = barnowl
 	makedepends = zip
 	depends = glib-perl
 	depends = perl-authen-sasl
-	depends = perl-digest-sha1
 	depends = perl-io-socket-ssl
 	depends = perl-class-accessor
 	depends = perl-net-dns

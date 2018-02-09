@@ -8,7 +8,7 @@ pkgdesc="Ncurses-based client with support for Zephyr, XMPP, IRC and Twitter pro
 arch=('x86_64')
 url="https://barnowl.mit.edu/"
 license=('BSD' 'GPL')
-depends=('glib-perl' 'perl-authen-sasl' 'perl-digest-sha1'
+depends=('glib-perl' 'perl-authen-sasl'
      'perl-io-socket-ssl' 'perl-class-accessor' 'perl-net-dns'
      'perl-par' 'perl-json' 'perl-net-twitter-lite'
      'perl-text-autoformat' 'perl-anyevent' 
