@@ -1,0 +1,192 @@
+
+diff --git a/vmmon-only/include/compat_timer.h b/vmmon-only/include/compat_timer.h
+index e69de29..b68d9b2 100644
+--- vmmon-only/include/compat_timer.h
++++ vmmon-only/include/compat_timer.h
+@@ -0,0 +1,26 @@
++#ifndef __COMPAT_TIMER_H__
++#   define __COMPAT_TIMER_H__
++
++#include <linux/timer.h>
++
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0)) && !defined(timer_setup)
++
++typedef unsigned long compat_timer_arg_t;
++
++static inline void timer_setup(struct timer_list *timer,
++				      void (*func)(compat_timer_arg_t),
++				      unsigned int flags)
++{
++	init_timer(timer);
++	timer->function = func;
++	timer->data = 0;
++	timer->flags = flags;
++}
++
++#else /* new timer interface since 4.15 */
++
++typedef struct timer_list *compat_timer_arg_t;
++
++#endif /* new timer interface since 4.15 */
++
++#endif /* __COMPAT_TIMER_H__ */
+diff --git a/vmmon-only/linux/driver.c b/vmmon-only/linux/driver.c
+index 3595237..1056695 100644
+--- vmmon-only/linux/driver.c
++++ vmmon-only/linux/driver.c
+@@ -21,6 +21,7 @@
+ 
+ #define EXPORT_SYMTAB
+ 
++#include "compat_timer.h"
+ #include <linux/file.h>
+ #include <linux/highmem.h>
+ #include <linux/poll.h>
+@@ -115,7 +116,7 @@ static struct page *LinuxDriverNoPage(struct vm_area_struct *vma,
+ #endif
+ static int LinuxDriverMmap(struct file *filp, struct vm_area_struct *vma);
+ 
+-static void LinuxDriverPollTimeout(unsigned long clientData);
++static void LinuxDriverPollTimeout(compat_timer_arg_t unused);
+ static unsigned int LinuxDriverEstimateTSCkHz(void);
+ 
+ static struct vm_operations_struct vmuser_mops = {
+@@ -227,7 +228,7 @@ LinuxDriverEstimateTSCkHz(void)
+  *----------------------------------------------------------------------
+  */
+ static void
+-LinuxDriverEstimateTSCkHzDeferred(unsigned long data)
++LinuxDriverEstimateTSCkHzDeferred(compat_timer_arg_t unused)
+ {
+    LinuxDriverEstimateTSCkHz();
+ }
+@@ -265,9 +266,7 @@ LinuxDriverInitTSCkHz(void)
+    }
+ 
+    Vmx86_ReadTSCAndUptime(&tsckHzStartTime);
+-   tscTimer.function = LinuxDriverEstimateTSCkHzDeferred;
+    tscTimer.expires  = jiffies + 4 * HZ;
+-   tscTimer.data     = 0;
+    add_timer(&tscTimer);
+ }
+ 
+@@ -309,9 +308,7 @@ init_module(void)
+     */
+ 
+    init_waitqueue_head(&linuxState.pollQueue);
+-   init_timer(&linuxState.pollTimer);
+-   linuxState.pollTimer.data = 0;
+-   linuxState.pollTimer.function = LinuxDriverPollTimeout;
++   timer_setup(&linuxState.pollTimer, LinuxDriverPollTimeout, 0);
+ 
+    linuxState.fastClockThread = NULL;
+    linuxState.fastClockFile = NULL;
+@@ -360,7 +357,7 @@ init_module(void)
+        linuxState.deviceName, linuxState.major, linuxState.minor);
+ 
+    HostIF_InitUptime();
+-   init_timer(&tscTimer);
++   timer_setup(&tscTimer, LinuxDriverEstimateTSCkHzDeferred, 0);
+    LinuxDriverInitTSCkHz();
+    Vmx86_InitIDList();
+ 
+@@ -858,7 +855,7 @@ LinuxDriverPoll(struct file *filp,  // IN:
+  */
+ 
+ static void
+-LinuxDriverPollTimeout(unsigned long clientData)  // IN:
++LinuxDriverPollTimeout(compat_timer_arg_t unused)  // IN:
+ {
+    LinuxDriverWakeUp(FALSE);
+ }
+diff --git a/a/vmmon-only/linux/hostif.c b/b/vmmon-only/linux/hostif.c
+index 80b5787..dc113f2 100644
+--- vmmon-only/linux/hostif.c
++++ vmmon-only/linux/hostif.c
+@@ -29,6 +29,7 @@
+ #include "driver-config.h"
+ 
+ /* Must come before vmware.h --hpreg */
++#include "compat_timer.h"
+ #include "compat_page.h"
+ #include <linux/binfmts.h>
+ #include <linux/delay.h>
+@@ -99,6 +100,37 @@
+ #include "vmmonInt.h"
+ #include "versioned_atomic.h"
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0)
++#define global_zone_page_state global_page_state
++#endif
++
++static unsigned long get_nr_slab_unreclaimable(void)
++{
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
++    return global_node_page_state(NR_SLAB_UNRECLAIMABLE);
++#else
++    return global_page_state(NR_SLAB_UNRECLAIMABLE);
++#endif
++}
++
++static unsigned long get_nr_unevictable(void)
++{
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
++    return global_node_page_state(NR_UNEVICTABLE);
++#else
++    return global_page_state(NR_UNEVICTABLE);
++#endif
++}
++
++static unsigned long get_nr_anon_mapped(void)
++{
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
++    return global_node_page_state(NR_ANON_MAPPED);
++#else
++    return global_page_state(NR_ANON_PAGES);
++#endif
++}
++
+ /*
+  * Determine if we can use high resolution timers.
+  */
+@@ -1594,16 +1626,11 @@ HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
+    unsigned int reservedPages = MEMDEFAULTS_MIN_HOST_PAGES;
+    unsigned int hugePages = (vm == NULL) ? 0 :
+       BYTES_2_PAGES(vm->memInfo.hugePageBytes);
+-   unsigned int lockedPages = global_page_state(NR_PAGETABLE) +
+-                              global_page_state(NR_SLAB_UNRECLAIMABLE) +
+-                              global_page_state(NR_UNEVICTABLE) +
+-                              hugePages + reservedPages;
+-   unsigned int anonPages =
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
+-      global_page_state(NR_ANON_MAPPED);
+-#else
+-      global_page_state(NR_ANON_PAGES);
+-#endif
++   unsigned int lockedPages = global_zone_page_state(NR_PAGETABLE) +
++           get_nr_slab_unreclaimable() +
++           get_nr_unevictable() +
++           hugePages + reservedPages;
++   unsigned int anonPages = get_nr_anon_mapped();
+    unsigned int swapPages = BYTES_2_PAGES(linuxState.swapSize);
+ 
+    if (anonPages > swapPages) {
+@@ -1767,7 +1794,7 @@ HostIFReadUptimeWork(unsigned long *j)  // OUT: current jiffies
+  */
+ 
+ static void
+-HostIFUptimeResyncMono(unsigned long data)  // IN: ignored
++HostIFUptimeResyncMono(compat_timer_arg_t unused)  // IN: ignored
+ {
+    unsigned long jifs;
+    uintptr_t flags;
+@@ -1829,8 +1856,7 @@ HostIF_InitUptime(void)
+                   -(tv.tv_usec * (UPTIME_FREQ / 1000000) + 
+                     tv.tv_sec * UPTIME_FREQ));
+ 
+-   init_timer(&uptimeState.timer);
+-   uptimeState.timer.function = HostIFUptimeResyncMono;
++   timer_setup(&uptimeState.timer, HostIFUptimeResyncMono, 0);
+    mod_timer(&uptimeState.timer, jiffies + HZ);
+ }
+ 

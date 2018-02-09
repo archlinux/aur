@@ -1,0 +1,13 @@
+diff --git a/bridge.c b/bridge.c2
+index 8cdaf11..83ae152 100644
+--- vmnet-only/bridge.c
++++ vmnet-only/bridge.c
+@@ -636,7 +636,7 @@ VNetBridgeReceiveFromVNet(VNetJack        *this, // IN: jack
+ 	 unsigned long flags;
+ 	 int i;
+ 
+-	 atomic_inc(&clone->users);
++         clone = skb_get(clone);
+ 
+ 	 clone->dev = dev;
+ 	 clone->protocol = eth_type_trans(clone, dev);

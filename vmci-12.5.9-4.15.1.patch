@@ -1,0 +1,232 @@
+diff --git a/vmci-only/linux/driver.c b/vmci-only/linux/driver.c
+index 1da7ab7..6eb5d09 10064
+--- vmci-only/linux/driver.c
++++ vmci-only/linux/driver.c
+@@ -26,6 +26,7 @@
+ 
+ #include <linux/file.h>
+ #include <linux/fs.h>
++#include <linux/vmalloc.h>
+ #include <linux/init.h>
+ #if defined(__x86_64__) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+ #   include <linux/ioctl32.h>
+@@ -1467,7 +1468,13 @@ VMCIUserVALockPage(VA addr) // IN:
+ 
+    down_read(&current->mm->mmap_sem);
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+-   retval = get_user_pages(addr, 1, 1, 0, &page, NULL);
++   retval = get_user_pages(addr, 1,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
++                                    1, 0,
++#else 
++                                    FOLL_WRITE,
++#endif
++                                    &page, NULL);                                                                       
+ #else
+    retval = get_user_pages(current, current->mm, addr,
+                            1, 1, 0, &page, NULL);
+@@ -1686,7 +1693,7 @@ vmci_guest_init(void)
+    /* This should be last to make sure we are done initializing. */
+    retval = pci_register_driver(&vmci_driver);
+    if (retval < 0) {
+-      vfree(data_buffer);
++      kvfree(data_buffer);
+       data_buffer = NULL;
+       return retval;
+    }
+@@ -1722,12 +1729,25 @@ vmci_enable_msix(struct pci_dev *pdev) // IN
+       vmci_dev.msix_entries[i].vector = i;
+    }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0)
+    result = pci_enable_msix(pdev, vmci_dev.msix_entries, VMCI_MAX_INTRS);
+    if (!result) {
+       vmci_dev.exclusive_vectors = TRUE;
+    } else if (result > 0) {
+       result = pci_enable_msix(pdev, vmci_dev.msix_entries, 1);
+    }
++#else
++    result = pci_enable_msix_range(pdev, vmci_dev.msix_entries, VMCI_MAX_INTRS,
++                                   VMCI_MAX_INTRS);
++    if (result > 0) {
++       vmci_dev.exclusive_vectors = TRUE;
++    } else if (result == -ENOSPC) {
++       result = pci_enable_msix_range(pdev, vmci_dev.msix_entries, 1, 1);
++    }
++
++    if (result > 0)
++        result = 0;
++#endif
+    return result;
+ }
+ 
+@@ -2473,7 +2493,7 @@ vmci_exit(void)
+ 
+    if (guestDeviceInit) {
+       pci_unregister_driver(&vmci_driver);
+-      vfree(data_buffer);
++      kvfree(data_buffer);
+       guestDeviceInit = FALSE;
+    }
+ 
+@@ -2482,7 +2502,7 @@ vmci_exit(void)
+ 
+       VMCI_HostCleanup();
+ 
+-      retval = misc_deregister(&linuxState.misc);
++      retval = compat_misc_deregister(&linuxState.misc);
+       if (retval) {
+          Warning(LGPFX "Module %s: error unregistering\n", VMCI_MODULE_NAME);
+       } else {
+diff --git a/a/vmci-only/linux/vmciKernelIf.c b/b/vmci-only/linux/vmciKernelIf.c
+index 3fba8b6..a09e44e 100644
+--- vmci-only/linux/vmciKernelIf.c
++++ vmci-only/linux/vmciKernelIf.c
+@@ -40,6 +40,10 @@
+ #include <linux/socket.h>       /* For memcpy_{to,from}iovec(). */
+ #include <linux/vmalloc.h>
+ #include <linux/wait.h>
++#include <linux/skbuff.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
++#include <linux/sched/signal.h>
++#endif
+ 
+ #include "compat_highmem.h"
+ #include "compat_interrupt.h"
+@@ -1197,20 +1201,20 @@ __VMCIMemcpyToQueue(VMCIQueue *queue,   // OUT:
+          toCopy = size - bytesCopied;
+       }
+ 
++      /* Code cloned from kernels drivers/misc/vmw_vmci/vmci_queue_pair.c */
+       if (isIovec) {
+-         struct iovec *iov = (struct iovec *)src;
+-         int err;
+-
+-         /* The iovec will track bytesCopied internally. */
+-         err = memcpy_fromiovec((uint8 *)va + pageOffset, iov, toCopy);
+-         if (err != 0) {
+-            if (kernelIf->host) {
+-               kunmap(kernelIf->u.h.page[pageIndex]);
+-            }
+-            return VMCI_ERROR_INVALID_ARGS;
+-         }
+-      } else {
+-         memcpy((uint8 *)va + pageOffset, (uint8 *)src + bytesCopied, toCopy);
++           struct msghdr *msg = (struct msghdr *)src;
++           int err;
++
++            /* The iovec will track bytes_copied internally. */
++            err = memcpy_from_msg((u8 *)va + pageOffset, msg, toCopy);
++            if (err != 0) {
++                if (kernelIf->host)
++                    kunmap(kernelIf->u.h.page[pageIndex]);
++                return VMCI_ERROR_INVALID_ARGS;
++             }
++          } else {
++             memcpy((u8 *)va + pageOffset,(u8 *)src + bytesCopied, toCopy);
+       }
+ 
+       bytesCopied += toCopy;
+@@ -1273,11 +1277,11 @@ __VMCIMemcpyFromQueue(void *dest,             // OUT:
+       }
+ 
+       if (isIovec) {
+-         struct iovec *iov = (struct iovec *)dest;
++         struct msghdr *msg = (struct msghdr *)dest;
+          int err;
+ 
+          /* The iovec will track bytesCopied internally. */
+-         err = memcpy_toiovec(iov, (uint8 *)va + pageOffset, toCopy);
++         err = memcpy_to_msg(msg, (uint8 *)va + pageOffset, toCopy);
+          if (err != 0) {
+             if (kernelIf->host) {
+                kunmap(kernelIf->u.h.page[pageIndex]);
+@@ -1834,7 +1838,11 @@ VMCIReleasePages(struct page **pages,  // IN
+       if (dirty) {
+          set_page_dirty(pages[i]);
+       }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 99)
++      put_page(pages[i]);
++#else
+       page_cache_release(pages[i]);
++#endif
+       pages[i] = NULL;
+    }
+ }
+@@ -2050,19 +2058,20 @@ VMCIHost_GetUserMemory(VA64 produceUVA,       // IN
+    down_write(&current->mm->mmap_sem);
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+    retval = get_user_pages((VA)produceUVA,
+-                           produceQ->kernelIf->numPages,
+-                           1, 0,
+-                           produceQ->kernelIf->u.h.headerPage,
+-                           NULL);
+ #else
+    retval = get_user_pages(current,
+                            current->mm,
+                            (VA)produceUVA,
++#endif                  
+                            produceQ->kernelIf->numPages,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)                           
+                            1, 0,
++#else                           
++                           FOLL_WRITE,
++#endif                           
+                            produceQ->kernelIf->u.h.headerPage,
+                            NULL);
+-#endif
++
+    if (retval < produceQ->kernelIf->numPages) {
+       Log("get_user_pages(produce) failed (retval=%d)\n", retval);
+       VMCIReleasePages(produceQ->kernelIf->u.h.headerPage, retval, FALSE);
+@@ -2070,11 +2079,19 @@ VMCIHost_GetUserMemory(VA64 produceUVA,       // IN
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
++   retval = get_user_pages((VA)consumeUVA,
++#else                   
+    retval = get_user_pages(current,
+                            current->mm,
+                            (VA)consumeUVA,
++#endif                           
+                            consumeQ->kernelIf->numPages,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)                           
+                            1, 0,
++#else
++                           FOLL_WRITE,                           
++#endif                           
+                            consumeQ->kernelIf->u.h.headerPage,
+                            NULL);
+    if (retval < consumeQ->kernelIf->numPages) {
+diff --git a/a/vmci-only/shared/compat_module.h b/b/vmci-only/shared/compat_module.h
+index 2af7372..9df784c 100644
+--- vmci-only/shared/compat_module.h
++++ vmci-only/shared/compat_module.h
+@@ -80,4 +80,13 @@ static const char __module_cat(tag, __LINE__)[]                               \
+    typedef int compat_mod_param_bool;
+ #endif
+ 
++/*
++ * Linux kernel >= 4.2.99 does not return anything from misc_deregister
++ */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 3, 0)
++#define compat_misc_deregister(misc) misc_deregister(misc)
++#else
++#define compat_misc_deregister(misc) ({misc_deregister(misc);0;})
++#endif
++
+ #endif /* __COMPAT_MODULE_H__ */
+diff --git a/a/vmci-only/shared/vmci_kernel_if.h b/b/vmci-only/shared/vmci_kernel_if.h
+index 9def671..082fe59 100644
+--- vmci-only/shared/vmci_kernel_if.h
++++ vmci-only/shared/vmci_kernel_if.h
+@@ -93,7 +93,7 @@
+   typedef Semaphore VMCIEvent;
+   typedef Semaphore VMCIMutex;
+   typedef World_ID VMCIHostVmID;
+-  typedef uint32 VMCIHostUser;
++  typedef uint32_t VMCIHostUser;
+   typedef PPN *VMCIQPGuestMem;
+ #elif defined(linux)
+   typedef spinlock_t VMCILock;

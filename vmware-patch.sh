@@ -29,7 +29,7 @@ while [[ $1 ]]; do
             -a* | --all-kernels)  all=1 ;;
             -f* | --force)        force=1 ;;
             -k* | --kernel)       kernel=1 ;; 
-            -v* | --verbose)      verbose=1 ;;
+            -v* | --verbose)      verbose=1; ;;
             -V* | --version)      print_version; exit 0 ;;
             -h* | --help)         usage; exit 0 ;;
             -*)                   echo "$(basename $0): error: bad argument: $opt"
@@ -138,6 +138,9 @@ for kernel in ${kernels[@]}; do
 
     # Detect applicable patches (/usr/lib/vmware/modules/patches/[mod]-[ver]-[kernel].patch)
     unset patches
+    if [[ $verbose ]]; then
+      printf '# Computer status: Patch: %s, Kernel: %s\n' "$ver" "$kernel"
+    fi
     for patch in patches/*; do
         # Some variables
         ver_patch=$(echo $patch | cut -d "-" -f2)
@@ -151,6 +154,9 @@ for kernel in ${kernels[@]}; do
             ver2=$major.${ver#*.}
         fi
 
+        if [[ $verbose ]]; then
+          printf '# Checking Patch: %s, Kernel: %s\n' "$ver2" "$kernel_major"
+        fi
         # Is product version not lower and kernel version not higher in patch name?
         if (( $(vercmp "$ver_patch" "$ver2") == 0 )) && (( $(vercmp "$kernel_patch" "$kernel_major") >= 0 )); then
             printf 'Patch: %s, %s\n' "$ver_patch" "$ver2"

@@ -3,7 +3,7 @@
 
 pkgname=vmware-patch
 pkgver=14.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/VMware#Configuration"
@@ -16,6 +16,10 @@ source=('vmware-patch.sh' 'vmware-unpatch.sh' 'common-functions.sh' 'vmware.serv
         'vmmon-14.0.0-4.13.3.patch'
         'vmnet-14.0.0-4.13.3.patch'
         'vmci-14.0.0-4.13.3.patch'
+        # Workstation Pro/Player 12.5.9
+        'vmmon-12.5.9-4.15.1.patch'
+        'vmnet-12.5.9-4.15.1.patch'
+        'vmci-12.5.9-4.15.1.patch'
         # Workstation Pro/Player 12.5.8
         'vmnet-12.5.8-4.13.12.patch'
         'vmmon-12.5.8-4.13.12.patch'
@@ -71,7 +75,7 @@ package() {
 }
 
 # Generated using 'updpkgsums'
-md5sums=('5242a190e20e6366fd90a745a2b8410c'
+md5sums=('eea90d7b8053d996d6e02653409a3634'
          'ba054b375308442d43a408dbae5e9401'
          'ca1382966804d694894539c7bcac6bbb'
          'c12e765985b324585a548718a6ac9b43'
@@ -80,6 +84,9 @@ md5sums=('5242a190e20e6366fd90a745a2b8410c'
          '3c165edb6847fc9bfa04657f346ac4cc'
          'eca2542e4c484ea2ca06b7e9c065b8af'
          'ced58cf32a21adfe21d612366c52116a'
+         '3316750fdc46fee3c167421924aa2ef8'
+         '05932f9797d1c3cca52f4d523d6f759d'
+         'd5bf82487a40369477e2bd71739ce708'
          '05932f9797d1c3cca52f4d523d6f759d'
          '3c165edb6847fc9bfa04657f346ac4cc'
          '3c165edb6847fc9bfa04657f346ac4cc'
