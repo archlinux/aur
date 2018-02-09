@@ -1,18 +1,18 @@
 # Maintainer: Aztorius <william.bonnaventure at gmail dot com>
 # Maintainer: ZeroDot1 <zerodot1 at bk dot ru>
 pkgname=magicfountain
-pkgver=1.0.0alpha8
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A Fountain syntax editor and viewer."
 arch=('i686' 'x86_64')
 url="https://github.com/Aztorius/magicfountain"
 license=('GPL3')
-depends=('qt5-base' 'hicolor-icon-theme')
+depends=('qt5-base' 'hicolor-icon-theme' 'qt5-webengine')
 optdepends=('qt5-translations')
 makedepends=('qt5-base')
 
 source=("https://github.com/Aztorius/magicfountain/archive/${pkgver}.tar.gz")
-md5sums=('427168f7ca49662682ea85c22acb0a12')
+md5sums=('c7c61053fe9b91abd2a2611572c4055f')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}

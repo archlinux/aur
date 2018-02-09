@@ -1,6 +1,6 @@
 pkgbase = magicfountain
 	pkgdesc = A Fountain syntax editor and viewer.
-	pkgver = 1.0.0alpha8
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Aztorius/magicfountain
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = magicfountain
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	optdepends = qt5-translations
-	source = https://github.com/Aztorius/magicfountain/archive/1.0.0alpha8.tar.gz
-	md5sums = 427168f7ca49662682ea85c22acb0a12
+	source = https://github.com/Aztorius/magicfountain/archive/1.0.0.tar.gz
+	md5sums = c7c61053fe9b91abd2a2611572c4055f
 
 pkgname = magicfountain
-
