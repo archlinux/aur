@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 url='http://www.vtk.org/'
 license=('BSD')
 depends=('gcc-libs' 'gl2ps' 'qt4')
-coflicts=('vtk')
+conflicts=('vtk' 'python-constantly' 'python-incremental')
 makedepends=('boost' 'cmake' 'ninja' 'java-environment' 'doxygen' 'gnuplot' 'tk' 'wget' 'python-matplotlib' 'python-twisted' 'python-mpi4py' 'python-autobahn' 'unixodbc' 'gdal' 'openmpi' 'mariadb' 'glew' 'ffmpeg' 'lesstif' 'qtwebkit' 'qt5-webkit' 'jsoncpp')
 optdepends=('python: python bindings'
             'java-runtime: java bindings'
