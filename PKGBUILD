@@ -8,7 +8,7 @@ pkgver=4.3
 pkgrel=1
 pkgdesc='Qt-based Jabber/XMPP and Gadu-Gadu client'
 arch=('i686' 'x86_64')
-url='http://www.kadu.net/'
+url='http://www.kadu.im/'
 license=('GPL')
 depends=('enchant' 'hicolor-icon-theme' 'injeqt' 'libarchive' 'libgadu' 'libmpdclient' 'libotr'
          'libxss' 'qt5-multimedia' 'qt5-script' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'qxmpp')
