@@ -1,6 +1,6 @@
 pkgbase = iamcarbonman
 	pkgdesc = Meta package for /u/IamCarbonMan
-	pkgver = 1518156748
+	pkgver = 1518158758
 	pkgrel = 1
 	url = https://reddit.com/u/IamCarbonMan
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = iamcarbonman
 	depends = base-meta
 	depends = base-devel-meta
 	depends = bash-completion
+	depends = beets-git
 	depends = bluez-utils
 	depends = bspwm
 	depends = cli-visualizer
