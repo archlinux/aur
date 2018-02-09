@@ -2,42 +2,30 @@
 # Contributor: TDY <tdy@gmx.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=barnowl
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
-pkgdesc="A curses-based client, it supports AOL Instant Messenger, MIT Zephyr, Jabber, IRC, and Twitter."
-arch=('i686' 'x86_64')
-url="http://barnowl.mit.edu/"
+pkgdesc="Ncurses-based client with support for Zephyr, XMPP, IRC and Twitter protocols"
+arch=('x86_64')
+url="https://barnowl.mit.edu/"
 license=('BSD' 'GPL')
 depends=('glib-perl' 'perl-authen-sasl' 'perl-digest-sha1'
      'perl-io-socket-ssl' 'perl-class-accessor' 'perl-net-dns'
      'perl-par' 'perl-json' 'perl-net-twitter-lite'
      'perl-text-autoformat' 'perl-anyevent' 
-     'perl-anyevent-irc' 'zephyr')
-makedepends=('zip')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=('mit-barnowl')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("http://barnowl.mit.edu/dist/$pkgname-$pkgver-src.tgz")
-noextract=()
-md5sum=('bee663fae54476e46fdbe48f69febb38')
-sha1sums=('5ff6ff46e5945b68a3d5cb2f541558790f984126')
-sha256sums=('7586299c2c2c028afd2a6457c4de3bdd230ae33443fc00097c081c96a3c693d2')
+     'perl-anyevent-irc' 'zephyr' 'openssl-1.0')
+makedepends=('perl-extutils-depends' 'perl-module-install' 'python' 'zip')
+source=("https://barnowl.mit.edu/dist/$pkgname-$pkgver-src.tgz")
+sha256sums=('4aa88536506516e1a88a59a8a06407fe155b563e64aeea5637fa332633f7b5e1')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver-src
+  cd $srcdir/$pkgname-$pkgver
   sed -i "s/ncursesw\///" owl.h
   sed -i "s/ncursesw\///" tester.c
-
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver-src
+  cd $srcdir/$pkgname-$pkgver
+  CFLAGS="-I/usr/include/openssl-1.0" LDFLAGS="-L/usr/lib/openssl-1.0" \
   ./configure --prefix=/usr   \
     --includedir=/usr/include \
     --mandir=/usr/share/man   \
@@ -45,13 +33,8 @@ build() {
   make
 }
 
-check() {
-  cd $srcdir/$pkgname-$pkgver-src
-  make -k check
-}
-
 package() {
-  cd $srcdir/$pkgname-$pkgver-src
+  cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
   mkdir -p $pkgdir/usr/share/$pkgname/examples
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
