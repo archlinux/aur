@@ -1,17 +1,18 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgbase=phonon-gstreamer
-pkgname=('phonon-qt4-gstreamer' 'phonon-qt5-gstreamer')
+pkgname=(phonon-qt4-gstreamer phonon-qt5-gstreamer)
 pkgver=4.9.0
-pkgrel=3
-arch=('x86_64')
+pkgrel=4
+arch=(x86_64)
 url='http://phonon.kde.org/'
-license=('LGPL')
+license=(LGPL)
 optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support and good codecs' 'gst-plugins-bad: additional codecs'
 	'gst-plugins-ugly: additional codecs' 'gst-libav: libav codec')
-makedepends=('gst-plugins-base' 'extra-cmake-modules' 'automoc4' 'phonon-qt4' 'phonon-qt5' 'qt5-x11extras')
-source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/phonon-backend-gstreamer-${pkgver}.tar.xz")
-md5sums=('b2b0ca327908948ce8cdba117e31bf80')
+makedepends=(gst-plugins-base extra-cmake-modules phonon-qt4 phonon-qt5 qt5-x11extras)
+source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/$pkgver/phonon-backend-gstreamer-$pkgver.tar.xz")
+sha256sums=('cec3e5ece1261d344b68363ef0606ebf49772628ba94bb55b0c0d18773b885f1')
 
 prepare() {
   mkdir build-qt4
@@ -20,7 +21,7 @@ prepare() {
 
 build() {
   cd build-qt4
-  cmake ../${pkgbase}-${pkgver} \
+  cmake ../$pkgbase-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
@@ -29,7 +30,7 @@ build() {
   make
 
   cd ../build-qt5
-  cmake ../${pkgbase}-${pkgver} \
+  cmake ../$pkgbase-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
@@ -45,7 +46,7 @@ package_phonon-qt4-gstreamer() {
   provides=(phonon-qt4-backend)
 
   cd build-qt4
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 
 # Conflict with -qt5
   rm -r "$pkgdir"/usr/share/icons
@@ -57,5 +58,5 @@ package_phonon-qt5-gstreamer() {
   provides=(phonon-qt5-backend)
 
   cd build-qt5
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }
