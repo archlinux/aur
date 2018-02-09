@@ -2,7 +2,7 @@
 
 pkgname=uci-lua-git
 _gitname=uci
-pkgver=r491.e1bf435
+pkgver=r505.5beb95d
 pkgrel=1
 pkgdesc='C library for the Unified Configuration Interface (UCI)'
 url='http://git.openwrt.org/?p=project/uci.git'
