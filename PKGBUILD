@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-sdk-git
-pkgver=1.2a.r40.gff56d31
+pkgver=1.2a.r44.gbb93dc5
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
@@ -47,6 +47,13 @@ prepare() {
             patch -Np1 -i "${srcdir}/${_patch}"
         fi
     done
+    
+    # change plugins directory
+    if ! grep -q '^set(MFX_PLUGINS_DIR[[:space:]]/usr/lib64)$' CMakeLists.txt
+    then
+        sed -i '20i\\' CMakeLists.txt
+        sed -i '21iset(MFX_PLUGINS_DIR /usr/lib64)' CMakeLists.txt
+    fi
 }
 
 pkgver() {
@@ -91,13 +98,6 @@ package() {
         cd mfx
         ln -sf ../"$_header" "$_header"
         cd ..
-    done
-    
-    # plugins
-    cd "${pkgdir}/usr/plugins"
-    for _plugin in *
-    do
-        ln -sf ../plugins/"$_plugin" ../lib/"$_plugin"
     done
     
     # move samples to a better place
