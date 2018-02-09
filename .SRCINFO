@@ -1,0 +1,17 @@
+pkgbase = perl-net-twitter-lite
+	pkgdesc = A perl interface to the Twitter API
+	pkgver = 0.12008
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-Twitter-Lite/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build-tiny
+	depends = perl-json
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MM/MMIMS/Net-Twitter-Lite-0.12008.tar.gz
+	md5sums = 3aa6ffd531f154ac17bc6f9f9134e23b
+
+pkgname = perl-net-twitter-lite
+
