@@ -1,15 +1,22 @@
 pkgbase = pikaur-git
 	pkgdesc = AUR helper with minimal dependencies. Review PKGBUILDs all in once, next build them all without user interaction.
-	pkgver = 0.3
-	pkgrel = 2
+	pkgver = 0.4
+	pkgrel = 1
 	url = https://github.com/actionless/pikaur
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPLv3
 	makedepends = nuitka
+	makedepends = chrpath
 	depends = python
 	depends = pacman
 	depends = git
 	depends = sudo
+	depends = fakeroot
 	source = pikaur-git::git+https://github.com/actionless/pikaur.git#branch=master
 	md5sums = SKIP
 
