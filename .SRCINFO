@@ -1,7 +1,7 @@
 pkgbase = ruby-ruby-rc4
 	pkgdesc = RubyRC4 is a pure Ruby implementation of the RC4 algorithm.
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/caiges/Ruby-RC4
 	arch = any
 	license = MIT
