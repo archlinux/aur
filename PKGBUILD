@@ -28,6 +28,7 @@ build() {
 package_python-pulse-control-git() {
   depends=('python' 'pulseaudio')
   provides=('python-pulse-control')
+  conflicts=('python-pulse-control')
 
   cd python-pulse-control-git
 
@@ -37,6 +38,7 @@ package_python-pulse-control-git() {
 package_python2-pulse-control-git() {
   depends=('python2' 'pulseaudio')
   provides=('python2-pulse-control')
+  conflicts=('python2-pulse-control')
 
   cd python2-pulse-control-git
 
