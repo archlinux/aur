@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-data-zsr-europe+sk-2018-latest
-	pkgdesc = 2017/2018 Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by ŽSR.
-	pkgver = 2018_01_22
+	pkgdesc = 2017/2018 Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by Inprop (Slovakia).
+	pkgver = 2018_2_8
 	pkgrel = 1
-	epoch = 0
-	url = http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-cp2017-2018-a-aktualizacia-dat-na-stiahnutie.html?page_id=5772
+	epoch = 1
+	url = http://www.inprop.sk/download.aspx
 	arch = any
 	groups = idos-timetable
 	license = custom
@@ -16,17 +16,17 @@ pkgbase = idos-timetable-data-zsr-europe+sk-2018-latest
 	optdepends = idos-timetable-maps-trains-europe: For displaying routes.
 	optdepends = idos-timetable-maps-trains-cz: For displaying routes (Czech republic only).
 	optdepends = idos-timetable-maps-trains-sk: For displaying routes (Slovakia only).
-	provides = idos-timetable-data-zsr-europe+sk-2018=2018_01_22
-	provides = idos-timetable-data=2018_01_22
-	provides = idos-timetable-data-trains=2018_01_22
-	provides = idos-timetable-data-trains-sk=2018_01_22
-	provides = idos-timetable-data-trains-sk-2018=2018_01_22
-	provides = idos-timetable-data-trains-europe=2018_01_22
-	provides = idos-timetable-data-trains-europe-2018=2018_01_22
+	provides = idos-timetable-data-zsr-europe+sk-2018=2018_2_8
+	provides = idos-timetable-data=2018_2_8
+	provides = idos-timetable-data-trains=2018_2_8
+	provides = idos-timetable-data-trains-sk=2018_2_8
+	provides = idos-timetable-data-trains-sk-2018=2018_2_8
+	provides = idos-timetable-data-trains-europe=2018_2_8
+	provides = idos-timetable-data-trains-europe-2018=2018_2_8
 	conflicts = idos-timetable-data-zsr-europe+sk-2018
 	replaces = idos-timetable-data-zsr-europe+sk-latest
-	replaces = idos-timetable-data-zsr-europe+sk-2018<=2018_01_22
-	source = vlak18e_sk.exe::http://www.zsr.sk/buxus/docs/elis/subory/2018_01_22/vlak18e_sk-2018-01-22.exe
+	replaces = idos-timetable-data-zsr-europe+sk-2018<=2018_2_8
+	source = vlak18e_sk.exe::http://www.inprop.sk/Data/Vlak18E_Sk.exe
 	source = license-dummy.txt
 	sha256sums = SKIP
 	sha256sums = 14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946
