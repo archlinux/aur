@@ -49,6 +49,8 @@ package() {
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_gitname}"
   npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr" ../*.tar.gz
+  
+  [ -z "$HOMEBRIDGE_KEEP_GIT_HISTORY" ] && rm -rf "${pkgdir}/usr/lib/node_modules/${_gitname}/.git"
 
   install -D -m644 "${srcdir}/${_gitname}-system.service" "$pkgdir/usr/lib/systemd/system/${_gitname}.service"
   install -D -m644 "${srcdir}/${_gitname}-user.service" "$pkgdir/usr/lib/systemd/user/${_gitname}.service"
