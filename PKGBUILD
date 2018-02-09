@@ -1,7 +1,7 @@
 # Maintainer: arjan5 <aur@anymore.nl>
 
 pkgname=nextcloud-app-files-external-dropbox-git
-pkgver=r49.17675f5
+pkgver=r50.bf208cd
 pkgrel=1
 pkgdesc="Dropbox V2 app for Nextcloud"
 arch=('any')

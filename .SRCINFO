@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-files-external-dropbox-git
 	pkgdesc = Dropbox V2 app for Nextcloud
-	pkgver = r49.17675f5
+	pkgver = r50.bf208cd
 	pkgrel = 1
 	url = https://github.com/icewind1991/files_external_dropbox
 	install = nextcloud-app-files-external-dropbox-git.install
