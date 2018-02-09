@@ -1,6 +1,6 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=bfs
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A breadth-first version of find."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,8 +16,8 @@ backup=()
 options=()
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tavianator/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('68cb2752a5d3d47a8eca9407e1229a4c')
-sha256sums=('1589d7c5bd11d99d6d46b77727112dcdd53f3b228b88b807b04de1b5a4e84c88')
+md5sums=('5be8b81ca449a4bcd22aa6d99f9a4118')
+sha256sums=('e3e7fb7d8d7508b0b9e789b32c492d962b5726f9b6b7951cf3359c97d47b2f82')
 noextract=()
 
 build() {
