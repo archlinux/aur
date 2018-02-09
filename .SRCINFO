@@ -1,6 +1,6 @@
 pkgbase = iamcarbonman
 	pkgdesc = Meta package for /u/IamCarbonMan
-	pkgver = 1518145078
+	pkgver = 1518149558
 	pkgrel = 1
 	url = https://reddit.com/u/IamCarbonMan
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = iamcarbonman
 	depends = pulsemixer
 	depends = python-pywal
 	depends = rxvt-unicode
+	depends = scrot
 	depends = steam
 	depends = sxhkd
 	depends = systemd-boot-pacman-hook
