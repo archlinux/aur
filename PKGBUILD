@@ -2,24 +2,22 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=sahel-fonts
-pkgver=1.0.0_alpha9
+pkgver=1.0.0_alpha14
 pkgrel=1
 pkgdesc="A beautiful Persian font."
-url="https://rastikerdar.github.io/sahel-font/"
+url="https://github.com/rastikerdar/sahel-font"
 arch=(any)
 license=('OFL')
 depends=('fontconfig')
-provides=('ttf-sahel' "$pkgname")
-conflicts=('ttf-sahel' "$pkgname")
-replaces=('ttf-sahel')
-source=("$pkgname-$pkgver.zip::https://github.com/rastikerdar/sahel-font/releases/download/v${pkgver//_/-}/sahel-font-v${pkgver//_/-}.zip")
-sha256sums=('07a5f04b23e86980d463c9e08267cc2e82eae59ab685ba5c584866c00311490b')
+provides=('ttf-sahel')
+conflicts=('ttf-sahel')
+source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver//_/-}/sahel-font-v${pkgver//_/-}.zip")
+sha256sums=('04e63f6d1a0100b9c4fe09504d97cfabc66e4834003d2c8288f09fac0337728c')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
-  install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 ./Sahel*.{eot,ttf,woff}
-  install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 ./{Farsi*,Without-Latin}/Sahel*.{eot,ttf,woff}  
+  install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 ./Sahel*.ttf
+  install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 ./{Farsi*,Without-Latin}/Sahel*.ttf  
   install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
 # vim:set ts=2 sw=2 et:
