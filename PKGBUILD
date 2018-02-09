@@ -2,6 +2,7 @@
 #
 # Note to self. It is necessary to remove the current Go4 installation -if any- otherwise the compilation fails.
 #               Also, after removal, use a fresh terminal as go4login variables are no longer valid
+#               Maybe just unsetting GO4SYS is enough(?)
 #
 # It looks that ROOT6 requires the modification/definition of the variable ROOT_INCLUDE_PATH to /usr/include/go4
 #
@@ -20,6 +21,8 @@ md5sums=('eede668b446e899da12487f182957ed0')
 _USEQT=4 # qt4 - Qt 4.6.x and higher (recommended) <-- from the source code 5.1.2
 
 prepare() {
+
+  unset GO4SYS
 
   cd go4-${pkgver}
 
@@ -77,10 +80,10 @@ package() {
   source /usr/bin/go4login
 
   # If ROOT_INCLUDE_PATH already exists, then add Go4 to it, otherwise do nothing
-  export ROOT_INCLUDE_PATH=${ROOT_INCLUDE_PATH:+$ROOT_INCLUDE_PATH:/usr/include/go4}
+  export ROOT_INCLUDE_PATH=\${ROOT_INCLUDE_PATH:+\$ROOT_INCLUDE_PATH:/usr/include/go4}
 
   # if ROOT_INCLUDE_PATH does not exist, define it as the one from Go4, otherwise do nothing
-  export ROOT_INCLUDE_PATH=${ROOT_INCLUDE_PATH:-/usr/include/go4}
+  export ROOT_INCLUDE_PATH=\${ROOT_INCLUDE_PATH:-/usr/include/go4}
 
 EOF
 
