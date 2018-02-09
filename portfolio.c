@@ -18,11 +18,11 @@ char* portfolio_file_get_string(FILE* fp) {
 }
 
 void portfolio_modify(char* ticker_name_string, double quantity_shares, double usd_spent, FILE* fp, int option) {
-    if (quantity_shares < 0 || usd_spent < 0){
+    if (quantity_shares < 0 || usd_spent < 0) {
         printf("You must use positive values.\n");
         return;
     }
-    if (option != SET && quantity_shares == 0 && usd_spent == 0){
+    if (option != SET && quantity_shares == 0 && usd_spent == 0) {
         printf("You cannot add or remove values of 0.\n");
         return;
     }
@@ -41,7 +41,7 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
             json_object_put(jobj);
             return;
         }
-        if (api_get_current_price(ticker_name_string) == NULL){
+        if (strcmp("USD$", ticker_name_string) != 0 && api_get_current_price(ticker_name_string) == NULL) {
             printf("Invalid symbol.\n");
             json_object_put(jobj);
             free(portfolio_string);
@@ -62,7 +62,8 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
         if (option == SET) {
             current_shares = quantity_shares;
             current_spent = usd_spent;
-            printf("Set amount of %s in portfolio to %lf bought for %lf.\n", ticker_name_string, quantity_shares, usd_spent);
+            printf("Set amount of %s in portfolio to %lf bought for %lf.\n", ticker_name_string, quantity_shares,
+                   usd_spent);
         } else if (option == ADD) {
             current_shares += quantity_shares;
             current_spent += usd_spent;
@@ -81,8 +82,10 @@ void portfolio_modify(char* ticker_name_string, double quantity_shares, double u
         if (current_shares == 0 && usd_spent == 0) //deletes index from portfolio if values are 0
             json_object_array_del_idx(jobj, (size_t) index, 1);
         else {
-            json_object_object_add(current_index, "Shares", json_object_new_double(round(current_shares * 100) / 100)); //adds computed values to index
-            json_object_object_add(current_index, "USD_Spent", json_object_new_double(round(current_spent * 100) / 100));
+            json_object_object_add(current_index, "Shares", json_object_new_double(
+                    round(current_shares * 100) / 100)); //adds computed values to index
+            json_object_object_add(current_index, "USD_Spent",
+                                   json_object_new_double(round(current_spent * 100) / 100));
         }
     }
     fp = fopen(portfolio_file, "w");
@@ -185,7 +188,7 @@ char* portfolio_legacy_get_next_val(FILE* fp) {
     char c;
     for (int i = 0; i < 16; i++) {
         c = (char) fgetc(fp);
-        if (c == ' ' || c == '\n'|| feof(fp))
+        if (c == ' ' || c == '\n' || feof(fp))
             break;
         val[i] = c;
     }
@@ -197,14 +200,16 @@ void portfolio_legacy_convert() {
     char c = 0;
     while (c != 'y' && c != 'n')
         scanf("%c", &c);
-    if (c == 'n'){
+    if (c == 'n') {
         printf("Aborted.\n");
         return;
     }
-    FILE* fp = fopen(portfolio_file, "a+");
+    FILE* fp = fopen(portfolio_file, "w");
     char* pf = portfolio_file_get_string(fp);
     if (strcmp(pf, "") != 0)
         remove(portfolio_file);
+    fclose(fp);
+    fp = fopen(portfolio_file, "a+");
     free(pf);
     char* legacy_path = malloc(64);
     strcpy(legacy_path, portfolio_file);
@@ -217,8 +222,6 @@ void portfolio_legacy_convert() {
     }
     char* symbol, * amount, * spent;
     while (1) {
-        if (feof(fp_legacy))
-            break;
         symbol = portfolio_legacy_get_next_val(fp_legacy);
         amount = portfolio_legacy_get_next_val(fp_legacy);
         spent = portfolio_legacy_get_next_val(fp_legacy);
@@ -226,6 +229,8 @@ void portfolio_legacy_convert() {
         free(symbol);
         free(amount);
         free(spent);
+        if (feof(fp_legacy))
+            break;
     }
     printf("Successfully converted portfolio!\n");
     fclose(fp_legacy);

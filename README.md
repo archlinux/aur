@@ -20,6 +20,11 @@ For example, to add 3 shares of Tesla bought for $918.12 total, run
 ```bash
 $ tick add tsla 3 918.12
 ```
+You can also specify the price per share instead of total spent:
+```bash
+$ tick add tsla 3 306.04ea
+```
+
 The parameter "add" will add your input to the current portfolio, "rm" will
 subtract from your current portfolio, and "set" will set your portfolio to
 the input, discarding any existing data about that security. Trading costs/fees
@@ -33,7 +38,7 @@ To get info about your current holdings, run
 $ tick check [symbol/crypto_id/all]
 ```
 The string "all" will list your entire portfolio, as well as produce a grand
-total.
+total. Running "check" with no other arguments will also list your entire portfolio.
 
 To get the top three news articles on a specific stock or cryptocurrency,
 you can run
@@ -68,3 +73,5 @@ license for more information.
 intraday data
 * Encrypt data
 * Debian/RPM package
+* List whether stock/etf/mutual fund/crypto/etc. in portfolio for less API calls
+and portfolio distribution

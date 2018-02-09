@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     }
 
     //Convert legacy porfolio
-    if (argc == 2 && strcmp(argv[1], "convert") == 0){
+    if (argc == 2 && strcmp(argv[1], "convert") == 0) {
         portfolio_legacy_convert();
         free((void*) portfolio_file);
         fclose(fp);

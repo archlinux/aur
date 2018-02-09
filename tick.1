@@ -13,7 +13,7 @@ Create your portfolio by adding your current holdings. Then, use the option "che
 Portfolio:
 
 .TP
-[add/rm/set] [symbol/crypto_id/USD$] [quantity of shares] [USD spent]
+[add/rm/set] [symbol/crypto_id/USD$] [quantity of shares] [USD spent/SharePriceEA]
 Either adds, removes, or sets the amount of the given stock with respect to the given values. The parameter "add" will add
 your input to the current portfolio, "rm" will subtract from your current portfolio, and "set" will set your portfolio to
 the input, discarding any existing data about that security. Trading fees should be factored into "USD SPENT". As an exception,
@@ -22,11 +22,13 @@ US stock market and the cryptocurrency market. You may also input as "usd$" for 
 track of how much money is unallocated in your brokerage account. Typically, your initial amount of USD can be added as
 "tick add USD$ [amount] [amount]", where [amount] is the same number. When you are paid dividends or capital gains that
 are not reinvested into a specific security, you should update your portfolio with "tick add USD$ [dividend/capital gain amount] 0".
+You may also specify the share price instead of the total amount you spent by appending "ea" to the end of the share price.
 
 .TP
 [check] [currency name/crypto_id/all]
 Prints information about your current portfolio holdings. Either a symbol or the keyword 'all' can be used. The keyword "all"
-will print information about all your current holdings, as well as a grand total.
+will print information about all your current holdings, as well as a grand total. Running only 'tick check' will do the same
+thing as 'tick check all'.
 
 .TP
 [convert]
@@ -42,6 +44,31 @@ Prints information on the top three news articles in the past 14 days. The artic
 will be displayed. If you would like to use a space in your search, you must either use an underscore instead of the space or wrap
 your phrase in double quotes. Technically, the input may be something completely unrelated to investing. This may be amended
 in the future.
+
+.SH EXAMPLES
+To add 3 shares of Tesla bought for $918.12 total, run
+.RS
+$ tick add tsla 3 918.12
+
+.RE
+You can also specify the price per share instead of total spent:
+.RS
+$ tick add tsla 3 306.04ea
+
+.RE
+To get info about your current holdings in a Tesla, run
+.RS
+$ tick check tsla
+
+.RE
+Or to get info about all your holdings, run
+.RS
+$ tick check all
+
+.RE
+To get the top three news articles on Tesla in the past two weeks, run
+.RS
+$ tick news tesla
 
 .SH FILES
 .I ~/.tick_portfolio.json
