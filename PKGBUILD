@@ -1,4 +1,4 @@
-pkgname=cloudshell_lcd-git
+pkgname=cloudshell-lcd
 _pkgname=cloudshell_lcd
 pkgver=r21.1fd2a58
 pkgrel=1
