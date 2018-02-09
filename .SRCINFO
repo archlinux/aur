@@ -1,6 +1,6 @@
 pkgbase = iamcarbonman
 	pkgdesc = Meta package for /u/IamCarbonMan
-	pkgver = 1518149973
+	pkgver = 1518150565
 	pkgrel = 1
 	url = https://reddit.com/u/IamCarbonMan
 	arch = x86_64
@@ -42,7 +42,6 @@ pkgbase = iamcarbonman
 	depends = xorg-xmodmap
 	depends = xorg-xrdb
 	depends = xorg-xsetroot
-	depends = yadm-git
 	depends = yay
 
 pkgname = iamcarbonman
