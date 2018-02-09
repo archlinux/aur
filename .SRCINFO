@@ -1,7 +1,7 @@
 pkgbase = prot16-xfce4-terminal
 	pkgdesc = Prot16 collection of themes for Xfce4 terminal
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/protesilaos/prot16-xfce4-terminal
 	arch = any
 	license = GPL3
