@@ -1,0 +1,16 @@
+pkgbase = scrot-slabua-git
+	pkgdesc = Simple command-line screenshot utility for X - Slabua fork
+	pkgver = 0.8.26.r19.gd856d56
+	pkgrel = 1
+	url = https://github.com/slabua/scrot
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = giblib
+	provides = scrot
+	conflicts = scrot
+	source = scrot-slabua-git::git+https://github.com/slabua/scrot
+	sha256sums = SKIP
+
+pkgname = scrot-slabua-git
+
