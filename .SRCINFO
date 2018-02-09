@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full3.4
 	pkgdesc = FFmpeg 3.4, designed to fix linking issues with packages that require this version of FFmpeg.
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = custom: nonfree and unredistributable

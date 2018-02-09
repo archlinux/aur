@@ -1,7 +1,7 @@
 # Maintainer: Jesse Bryan <jesse@winneon.moe>
 pkgname=ffmpeg-full3.4
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FFmpeg 3.4, designed to fix linking issues with packages that require this version of FFmpeg."
 arch=("x86_64")
 url="https://ffmpeg.org/"
