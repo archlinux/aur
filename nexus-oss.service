@@ -8,7 +8,7 @@ LimitNOFILE=65536
 User=nexus
 Group=nexus
 ExecStart=/usr/bin/nexus-oss start
-ExecStop=/usr/bin/nexus-oss start
+ExecStop=/usr/bin/nexus-oss stop
 Restart=on-abort
 
 [Install]
