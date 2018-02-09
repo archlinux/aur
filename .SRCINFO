@@ -1,0 +1,16 @@
+pkgbase = perl-anyevent-irc
+	pkgdesc = An event system independend IRC protocol module
+	pkgver = 0.97
+	pkgrel = 1
+	url = http://search.cpan.org/dist/AnyEvent-IRC/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-anyevent
+	depends = perl-object-event
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EL/ELMEX/AnyEvent-IRC-0.97.tar.gz
+	md5sums = 7bba2370468f4517b4ab04c2e4880047
+
+pkgname = perl-anyevent-irc
+
