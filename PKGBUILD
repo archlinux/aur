@@ -56,10 +56,11 @@ build()
 
     export OS=unix
 
-    ./configure --prefix=/usr     \
-                --libexecdir=/lib \
-                --enable-shared   \
-                --enable-gpl
+    ./configure --prefix=/usr       \
+                --libexecdir=/lib   \
+                --enable-shared     \
+                --enable-gpl        \
+                --enable-projects
 
     make PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R
 }
