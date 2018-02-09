@@ -1,0 +1,16 @@
+pkgbase = electron-ssr-appimage
+	pkgdesc = Install electron-ssr from appimage
+	pkgver = v0.2.0beta4
+	pkgrel = 1
+	url = https://github.com/erguotou520/electron-ssr
+	arch = x86_64
+	license = MIT
+	provides = electron-ssr-0.2.0-beta-3
+	provides = electron-ssr-source
+	noextract = electron-ssr-0.2.0-beta-4-x86_64.AppImage
+	source = https://github.com/erguotou520/electron-ssr/releases/download/v0.2.0-beta-4/electron-ssr-0.2.0-beta-4-x86_64.AppImage
+	source = desktop.tar.gz
+	source = icons.tar.gz
+
+pkgname = electron-ssr-appimage
+
