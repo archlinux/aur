@@ -1,5 +1,5 @@
 # $Id: PKGBUILD 208988 2017-01-25 08:21:35Z arojas $
-# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Mateusz Herych
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
 
@@ -10,16 +10,21 @@ pkgdesc='Qt-based Jabber/XMPP and Gadu-Gadu client'
 arch=('i686' 'x86_64')
 url='http://www.kadu.net/'
 license=('GPL')
-depends=('libgadu' 'libxss' 'enchant' 'libmpdclient' 'libotr' 'libarchive' 'injeqt' 'xdg-utils' 'qt5-multimedia'
-         'qt5-x11extras' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'hicolor-icon-theme')
-makedepends=('cmake' 'libao' 'libsndfile' 'libxtst' 'curl' 'qt5-tools' 'qxmpp')
-optdepends=('qxmpp: Jabber protocol')
-source=(http://download.kadu.im/stable/$pkgname-$pkgver.tar.bz2)
-md5sums=('011899121ca5a7e653892f29072032e2')
+depends=('enchant' 'hicolor-icon-theme' 'injeqt' 'libarchive' 'libgadu' 'libmpdclient' 'libotr'
+         'libxss' 'qt5-multimedia' 'qt5-script' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'qxmpp')
+makedepends=('cmake' 'qt5-tools')
+options=('!emptydirs')
+source=(http://download.kadu.im/stable/$pkgname-$pkgver.tar.bz2
+        gcc7.patch)
+md5sums=('011899121ca5a7e653892f29072032e2'
+         'bc2c5ad95bc492cefd92964b4dfe24ca')
 
 prepare() {
-  sed -i 's/unity_integration//g' $pkgname-$pkgver/Plugins.cmake
-  sed -i 's/indicator_docking//g' $pkgname-$pkgver/Plugins.cmake
+  cd $pkgname-$pkgver
+  patch -Np1 -i ../gcc7.patch
+  sed -i 's/ENCHANT enchant/ENCHANT enchant-2/' plugins/spellchecker/CMakeLists.txt
+  sed -i 's/unity_integration//g' Plugins.cmake
+  sed -i 's/indicator_docking//g' Plugins.cmake
 }
 
 build() {
