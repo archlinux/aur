@@ -1,0 +1,8 @@
+
+# Remove bash script that was installed in /opt/beaker-browser before v0.7.11-2
+post_upgrade() {
+    if [ -e /opt/beaker-browser/beaker-browser.sh ];
+    then
+        rm /opt/beaker-browser/beaker-browser.sh;
+    fi
+}

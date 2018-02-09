@@ -2,7 +2,7 @@
 Name=beaker-browser
 Comment=Peer-to-peer browser with tools to create and host website
 GenericName=Beaker Browser
-Exec=/opt/beaker-browser/beaker-browser.sh
+Exec=/usr/bin/beaker-browser
 Icon=beaker
 Type=Application
 StartupNotify=true
