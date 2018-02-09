@@ -9,7 +9,9 @@ pkgbase = injeqt
 	makedepends = cmake
 	depends = qt5-base
 	source = injeqt-1.1.0.tar.gz::https://github.com/vogel/injeqt/archive/1.1.0.tar.gz
+	source = gcc7-fix.patch
 	md5sums = 9a582037c454b1355e808bb2e07126bb
+	md5sums = 19e2666e706984b3b774c11c4379e7fe
 
 pkgname = injeqt
 

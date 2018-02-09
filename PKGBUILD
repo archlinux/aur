@@ -10,8 +10,15 @@ url='https://github.com/vogel/injeqt'
 license=('LGPL2.1')
 depends=('qt5-base')
 makedepends=('cmake')
-source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-md5sums=('9a582037c454b1355e808bb2e07126bb')
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz
+        gcc7-fix.patch)
+md5sums=('9a582037c454b1355e808bb2e07126bb'
+         '19e2666e706984b3b774c11c4379e7fe')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -Np1 -i ../gcc7-fix.patch
+}
 
 build() {
   cd $pkgname-$pkgver
