@@ -2,4 +2,4 @@
 /src
 /*.tar.bz2
 /*.asc
-/*.tar.xz
+/*.pkg.*
