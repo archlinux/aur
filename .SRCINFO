@@ -1,0 +1,18 @@
+pkgbase = gpdfx-ng-git
+	pkgdesc = gpdfx-ng is a GTK application written in Python using the Poppler library to render the PDF.
+	pkgver = r22.c42ef90
+	pkgrel = 1
+	url = https://github.com/yishilin14/gpdfx-ng
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = poppler-glib
+	depends = texlive-core
+	source = git+https://github.com/yishilin14/gpdfx-ng
+	md5sums = SKIP
+
+pkgname = gpdfx-ng-git
+
