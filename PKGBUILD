@@ -1,30 +1,34 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
+# Contributor: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=mqttfx-bin
-pkgver=1.5.0
+_pkgbasename=mqttfx
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A MQTT Client written in Java based on Eclipse Paho"
-arch=('x86_64')
+arch=("x86_64")
 url="http://mqttfx.org"
-license=('Apache')
-options=('!strip' '!upx')
+license=("Apache")
+depends=("java-runtime")
+options=("!strip" "!upx")
 source=(
-  "http://www.jensd.de/apps/mqttfx/${pkgver}/mqttfx-${pkgver}-64bit.deb"
-  "mqttfx.desktop")
+  "http://www.jensd.de/apps/${_pkgbasename}/${pkgver}/${_pkgbasename}-${pkgver}-linux.deb"
+  "${_pkgbasename}.desktop")
 sha256sums=(
-  "f350eb74b60b77ac8f2ce258216223f3a0f2aaa27ef55c2d7799a401a42efcca"
-  "7037ab12fe192a62ef745e93a7661d9f5dc40a2ad5b07624201eac04f5ed070c"
+  "2a4f11f1a599471be34486a6e7443052dd0548ba5750ef380c81bdfb4efdcef9"
+  "27abc38d59d94d1d8e8e171d1d15d392fd65774d89235be734145ae4c50c6c0b"
 )
 
 package() {
   cd "${srcdir}"
-  tar -xf data.tar.xz -C "${pkgdir}"
 
-  install -d -m755 "${pkgdir}/opt/MQTTfx"
-  install -d -m755 "${pkgdir}/usr/bin"
-  install -d -m755 "${pkgdir}/usr/share/applications"
-  install -d -m755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-  
-  ln -s "/opt/MQTTfx/MQTTfx" "${pkgdir}/usr/bin/mqttfx"
-  ln -s "/opt/MQTTfx/MQTTfx.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/MQTTfx.png"
-  install -D -m644 "mqttfx.desktop" "${pkgdir}/usr/share/applications/MQTTfx.desktop"
+  # Extract the application data into the package directory root
+  tar -xzf data.tar.gz -C "${pkgdir}"
+
+  # Install the binary directory and link into package
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${_pkgbasename}/${_pkgbasename}" "${pkgdir}/usr/bin/${_pkgbasename}"
+
+  # Install the application logo icon and desktop launcher
+  install -Dm644 "${pkgdir}/opt/${_pkgbasename}/.install4j/${_pkgbasename}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgbasename}.png"
+  install -Dm644 "${_pkgbasename}.desktop" "${pkgdir}/usr/share/applications/${_pkgbasename}.desktop"
 }
