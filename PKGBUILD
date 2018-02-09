@@ -1,7 +1,7 @@
 # Maintainer: unstartdev <guo.yongan@outlook.com>
 pkgname=electron-ssr-appimage
 pkgver=v0.2.0beta4
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Install electron-ssr from appimage"
 arch=('x86_64')
