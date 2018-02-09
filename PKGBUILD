@@ -34,14 +34,14 @@ prepare() {
 build() {
     cd ${pkgname}
 
-    HOST="$(./depends/config.guess)" BUILD="$(./depends/config.guess)" make -j8 -C ./depends/ V=1
+    HOST="$(./depends/config.guess)" BUILD="$(./depends/config.guess)" make -C ./depends/ V=1
 
     CPPFLAGS="${CPPFLAGS} -I$PWD/depends/${CARCH}-unknown-linux-gnu/include"
     LDFLAGS="${LDFLAGS} -L${PWD}/depends/${CARCH}-unknown-linux-gnu/lib -L${PWD}/depends/x86_64-unknown-linux-gnu/lib64"
 
     ./autogen.sh
     depends_prefix="${PWD}/depends/x86_64-unknown-linux-gnu" ./configure --prefix=/usr
-    make -i -j8
+    make -i
 }
 
 check() {
