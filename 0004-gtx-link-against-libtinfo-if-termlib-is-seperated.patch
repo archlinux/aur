@@ -1,4 +1,4 @@
-From 7942412eecdf8920e381d8281316ec92c1b88f58 Mon Sep 17 00:00:00 2001
+From 72cfb6ff6ea9bf762f39f1d8a367d04c530b1020 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <lass@mail.uni-paderborn.de>
 Date: Thu, 2 Nov 2017 21:16:49 +0100
 Subject: [PATCH 4/4] gtx: link against libtinfo if termlib is seperated
@@ -41,5 +41,5 @@ index dc01469f5..261305ce1 100644
  	  [AC_CHECK_LIB([Hcurses], [initscr], [openafs_cv_curses_lib=-lHcurses])])
      AS_IF([test "x$openafs_cv_curses_lib" = x],
 -- 
-2.15.1
+2.16.1
 
