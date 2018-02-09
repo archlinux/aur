@@ -14,13 +14,13 @@ optdepends=('postgresql' 'sqlite3')
 provides=('gnatcoll')
 conflicts=('gnatcoll')
 
-source=('http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed016'
+source=('http://mirrors.cdn.adacore.com/art/5a15c79cc7a4479a23674c66'
         'use_fpic_for_shared.patch'
         'use_fpic_for_gtk.patch'
         'use_fpic_for_python.patch'
         'expose-cargs-and-largs-makefile.patch')
 
-sha1sums=('241286105770716ed39857c446dd04267ea30b88'
+sha1sums=('f7a0862a6fd7ac0c70a56cd3e12b48345d045995'
           'd926f5153773937dea4b03e4ba46b2fe61a6bbc5'
           '55cf395f2ea53d22459bcc926dd7ad65d81cd315'
           '7dec45682d4a1c44e9517ecb9c4e2f5afccd08c2'
