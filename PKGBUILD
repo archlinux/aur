@@ -8,7 +8,7 @@ url='https://github.com/amberframework/amber'
 license=(MIT)
 depends=('crystal' 'shards' 'sqlite')
 source=("https://github.com/amberframework/amber/archive/v$pkgver.tar.gz")
-sha256sums=('3668dc5d5a0342dfe804973391727999bf10d572a369147e170fc989d1699e0a')
+sha256sums=('a70b62cd3e470005a5ac804273088f444613942eafdfc1d237b6444f1e4851f2')
 
 build() {
   cd "amber-$pkgver"
