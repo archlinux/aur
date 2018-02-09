@@ -5,8 +5,8 @@ pkgbase=linux-clear
 __basekernel=4.15
 _minor=1
 pkgver=${__basekernel}.${_minor}
-_clearver=${__basekernel}.0-517
-pkgrel=1
+_clearver=${__basekernel}.1-522
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -46,7 +46,6 @@ prepare() {
   
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
-  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
   
   cp -Tf $srcdir/clearlinux/config .config
   cp -a /usr/lib/firmware/i915 firmware/
