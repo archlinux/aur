@@ -1,6 +1,6 @@
 pkgbase = uci-lua-git
 	pkgdesc = C library for the Unified Configuration Interface (UCI)
-	pkgver = r491.e1bf435
+	pkgver = r505.5beb95d
 	pkgrel = 1
 	url = http://git.openwrt.org/?p=project/uci.git
 	arch = i686
