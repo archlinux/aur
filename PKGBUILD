@@ -2,7 +2,7 @@
 
 pkgname=nodejs-svgo
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Nodejs-based tool for optimizing SVG vector graphics files'
 arch=('any')
 url='https://github.com/svg/svgo'
@@ -18,6 +18,9 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}
     ln -s $(realpath -m --relative-to=/usr/share/licenses/${pkgname} ${appdir}/LICENSE) \
         "${pkgdir}"/usr/share/licenses/${pkgname}
+
+    # Fix directory permissions
+    find "${pkgdir}" -type d -exec chmod 755 {} \;
 
     # Clean up
     rm "${pkgdir}"${appdir}/Makefile

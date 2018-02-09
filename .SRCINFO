@@ -1,7 +1,7 @@
 pkgbase = nodejs-svgo
 	pkgdesc = Nodejs-based tool for optimizing SVG vector graphics files
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svg/svgo
 	arch = any
 	license = MIT
