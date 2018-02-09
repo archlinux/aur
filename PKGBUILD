@@ -2,10 +2,6 @@
 # Check the latest version with:
 # $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 "Version: \K[^-]*"
 
-# Attempt to fix crashes and blank Panoramio: "1" to enable.
-# - http://forums.fedoraforum.org/showthread.php?p=1678303#post1678303
-_attempt_fix=0
-
 pkgname=google-earth-pro
 pkgver=7.3.1.4507
 pkgrel=1
@@ -15,7 +11,6 @@ url="https://www.google.com/earth/index.html"
 license=('custom:earth')
 depends=('glu' 'hicolor-icon-theme' 'ld-lsb>=3-5' 'libsm' 'libxrender' 'nss'
          'libproxy' 'gst-plugins-base-libs' 'libxi' 'fontconfig' 'alsa-lib' 'libcups')
-[[ $_attempt_fix = 1 ]] && depends+=('freeimage' 'libpng15' 'qtwebkit')
 optdepends=('catalyst-utils: For AMD Catalyst'
             'nvidia-utils: For the NVIDIA driver')
 provides=('google-earth')
@@ -38,13 +33,6 @@ md5sums=('befce3733761cc529bdb3e9289ddbc03'
          'SKIP')
 
 _instdir=/opt/google/earth/pro/
-
-# Build the baifaao.so
-if [[ $_attempt_fix = 1 ]]; then
-  build() {
-    gcc -I /usr/include/qt4/ -O3 -fPIC --shared baifaao.cpp -o baifaao.so
-  }
-fi
 
 package() {
   msg2 "Extracting the data.tar.xz..."
@@ -71,16 +59,4 @@ package() {
   # Fix Search
   msg2 "Attempting fix for search..."
   sed -i '/googleearth-bin/s/^/LC_NUMERIC=en_US.UTF-8 /' "$pkgdir"/$_instdir/googleearth
-
-  if [[ $_attempt_fix = 1 ]]; then
-    msg2 "Attempting a fix on Panoramio and certain crashes..."
-    # Install baifaao.so
-    install -m755 baifaao.so "$pkgdir"/$_instdir/
-
-    # Preload it
-    install -m755 googleearth.sh "$pkgdir"/$_instdir/googleearth
-
-    # Remove the old, bundled Qt libs
-    rm "$pkgdir"/$_instdir/libQt*
-  fi
 }
