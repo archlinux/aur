@@ -1,7 +1,7 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=firefox-referer-control
-pkgver=1.24
+pkgver=1.30
 pkgrel=1
 pkgdesc='Control the HTTP Referer on a per-site basis'
 url=https://addons.mozilla.org/en-US/firefox/addon/referercontrol
@@ -9,7 +9,7 @@ arch=('any')
 license=('custom:MPLv2')
 source=("https://addons.cdn.mozilla.net/user-media/addons/793120/referer_control-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
-sha512sums=('165b4ad3a26330246dec15f4cf24487b55808765b7deb8d3eb2b9c057f1b4932f803c83d8cda0a024f6309b79b2af737bf7a55c358518711e4ff9c94f7ed15ff')
+sha256sums=('b272fa496b52e25bd6406d645b26d169d3c5361c3178cd64833c1f4b92af1641')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/{cde47992-8aa7-4206-9e98-680a2d20f798}.xpi
