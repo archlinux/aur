@@ -1,7 +1,7 @@
 #!/bin/bash
 
 UPDATE_CHECK_CMD_ARCH="/usr/bin/checkupdates"
-UPDATE_CHECK_CMD_AUR="/usr/bin/cower --color=never -u"
+UPDATE_CHECK_CMD_AUR="/usr/bin/auracle sync"
 NO_UPDATES_TEXT="No updates available."
 VERBOSE="false"
 LOCKFILE="${HOME}/.$(basename $0).lock"
