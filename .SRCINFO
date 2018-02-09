@@ -1,0 +1,18 @@
+pkgbase = kdstatemachineeditor
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/KDAB/KDStateMachineEditor/
+	arch = any
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = qt5-tools
+	depends = qt5-declarative
+	depends = qt5-remoteobjects
+	depends = qt5-scxml
+	depends = graphviz
+	source = https://github.com/KDAB/KDStateMachineEditor/archive/v1.2.2.tar.gz
+	sha256sums = d616acc9cea6dc6ad4731d3a2fe12e19cf9ce6d3a59b4cd685cf719bd1b82637
+
+pkgname = kdstatemachineeditor
+
