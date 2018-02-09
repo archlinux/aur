@@ -1,7 +1,7 @@
 # Maintainer: unstartdev <guo.yongan@outlook.com>
 pkgname=electron-ssr-appimage
 pkgver=v0.2.0beta4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Install electron-ssr from appimage"
 arch=('x86_64')
@@ -24,12 +24,13 @@ source=("https://github.com/erguotou520/electron-ssr/releases/download/v0.2.0-be
 	"desktop.tar.gz"
 	"icons.tar.gz")
 noextract=("electron-ssr-0.2.0-beta-4-x86_64.AppImage")
-md5sums=()
-sha256sums=()
+md5sums=('7345e662db86db012f49c03d450c0d65'
+         '84f39007ef78543f8cd2f29b253afa42'
+         '679cf82afcc498d1db4dba5aed8bd0a0')
 validpgpkeys=()
 
 package() {
-	install -D electron-ssr-*-*-*-*.AppImage $pkgdir/opt/
+	install -D electron-ssr-*-*-*-*.AppImage $pkgdir/opt/electron-ssr.AppImage
 	install -D ./electron-ssr.desktop $pkgdir/usr/share/applications/electron-ssr.desktop
 	install -D icons/hicolor/128x128/apps/electron-ssr.png $pkgdir/usr/share/icons/hicolor/128x128/apps/electron-ssr.png
 	install -D icons/hicolor/16x16/apps/electron-ssr.png $pkgdir/usr/share/icons/hicolor/128x128/apps/electron-ssr.png
@@ -40,6 +41,3 @@ package() {
 	install -D icons/hicolor/64x64/apps/electron-ssr.png $pkgdir/usr/share/icons/hicolor/64x64/apps/electron-ssr.png
 	install -D icons/hicolor/96x96/apps/electron-ssr.png $pkgdir/usr/share/icons/hicolor/96x96/apps/electron-ssr.png
 }
-md5sums=('7345e662db86db012f49c03d450c0d65'
-         '4abbf552004cddffc22230070b622f7b'
-         '679cf82afcc498d1db4dba5aed8bd0a0')
