@@ -7,7 +7,7 @@ pkgdesc="Xlib-compatible API for the Present extension"
 arch=('i686' 'x86_64')
 url="http://cgit.freedesktop.org/xorg/lib/libXpresent/"
 license=('custom')
-depends=('presentproto' 'libxfixes' 'libxrandr')
+depends=('xorgproto' 'libxfixes' 'libxrandr')
 makedepends=('git' 'xorg-util-macros')
 _commit=dd6771cdf6f04cde37eb14891573c0e55be83241
 source=("git+https://anongit.freedesktop.org/git/xorg/lib/libXpresent.git#commit=${_commit}")
