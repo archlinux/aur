@@ -1,6 +1,6 @@
 pkgname=dpdk-lts
 pkgver=17.08.1
-pkgrel=0
+pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=(x86_64 i686)
 url='http://dpdk.org'
