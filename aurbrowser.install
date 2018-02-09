@@ -26,6 +26,6 @@
 #}
 
 ## arg 1:  the old package version
-#post_remove() {
-	# do something here
-#}
+post_remove() {
+	rm /usr/bin/aurbrowser-askpass
+}
