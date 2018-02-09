@@ -1,8 +1,8 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_srcname=linux-4.14
-pkgver=4.14.17
+_srcname=linux-4.15
+pkgver=4.15.2
 pkgrel=1
 arch=('x86_64')
 url="https://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -13,20 +13,23 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        # the main kernel config files
+        # the main kernel config file
         'config.x86_64'
+        # pacman hook for depmod
+        '60-linux.hook'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-xhci-demote-annoying-warning.patch'
         )
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '1e62d56e37bd15daec7c3d20a605624e1e0a21c44856880c6dbe0c9e41cabfa8'
+            '812499c5d0cc5183606dc9388084df162ca2eb5fa374d8f8b00136fd82825847'
             'SKIP'
-            'dd4614f3700ddb394d510f6a19b3b573cc6559dc3d4b8c75416a625991b64150'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            '24c4bddca64e232a9af6c0a6193cbd4e9a36e2c060f46ffa73bcbc45c41345cb'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'fc21139a4b77d2739f4aaa4e3d35229c395c311de89709904de15f653b8991fd'
             'ee24bffa6acedfd842416b66a477810108482c97808ec7db0fcc102d13319974')
 validpgpkeys=(
@@ -37,7 +40,7 @@ validpgpkeys=(
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   dots="${pkgver//[^.]}"
   dotcount="${#dots}"
@@ -53,15 +56,13 @@ prepare() {
 
   chmod +x tools/objtool/sync-check.sh
 
-  cp -L "${srcdir}/config.${CARCH}" .config
-
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
+  cat ../config.x86_64 - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
 
   # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -71,7 +72,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -92,48 +93,28 @@ _package() {
 
   cd ${_srcname}
 
-  KARCH=x86
-
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
-  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-
-  # set correct depmod command for install
-  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
-    "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
-
-  # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" ../linux.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-
-  # remove build and source links
-  rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-
-  # remove the firmware
-  rm -r "${pkgdir}/lib/firmware"
+  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  local _extramodules="extramodules-${_basekernel}${_kernelname}"
+  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
-  # add real version for building modules and running depmod from post_install/upgrade
+  # add real version for building modules and running depmod from hook
   echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
 
-  # Now we call depmod...
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
+  # remove build and source links
+  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
 
-  # move module tree /lib -> /usr/lib
-  mv -t "${pkgdir}/usr" "${pkgdir}/lib"
+  # now we call depmod...
+  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 
   # Install vmlinux in -debug
   debugpkg="${pkgdir}/../${pkgbase}-debug"
@@ -156,6 +137,27 @@ _package() {
   # information in /usr/lib/debug/lib/modules.
   install -dm755 "${debugpkg}/usr/lib/debug/lib/modules"
   ln -s ../../usr/lib/modules/${_kernver} "${debugpkg}/usr/lib/debug/lib/modules/${_kernver}"
+
+  # sed expression for following substitutions
+  local _subst="
+    s|%PKGBASE%|${pkgbase}|g
+    s|%KERNVER%|${_kernver}|g
+    s|%EXTRAMODULES%|${_extramodules}|g
+  "
+
+  # hack to allow specifying an initially nonexisting install file
+  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
+  true && install=${install}.pkg
+
+  # install mkinitcpio preset file
+  sed "${_subst}" ../linux.preset |
+    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hooks
+  sed "${_subst}" ../60-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "${_subst}" ../90-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 }
 
 _package-headers() {
@@ -163,35 +165,20 @@ _package-headers() {
   provides=("linux-headers=${pkgver}")
   options=('!strip')
 
-  install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
-
-  cd "${srcdir}/${_srcname}"
-  install -D -m644 System.map \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/System.map"
-  install -D -m644 Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
-  install -D -m644 kernel/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
-  install -D -m644 .config \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
-
+  cd ${_srcname}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
-  install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
+  install -Dt "${_builddir}" -m644 System.map Makefile .config Module.symvers
   install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
 
   mkdir "${_builddir}/.tmp_versions"
 
   cp -t "${_builddir}" -a include scripts
 
-  install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
-  install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
+  install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
+  install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-  if [[ ${CARCH} = i686 ]]; then
-    install -t "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile_32.cpu
-  fi
-
-  cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
+  cp -t "${_builddir}/arch/x86" -a arch/x86/include
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
@@ -200,7 +187,6 @@ _package-headers() {
   install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
   # http://bugs.archlinux.org/task/20402
@@ -215,20 +201,20 @@ _package-headers() {
   find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
   # add objtool for external module building and enabled VALIDATION_STACK option
-  if [[ -e tools/objtool/objtool ]]; then
-    install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
-  fi
+  install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
 
   # remove unneeded architectures
   local _arch
   for _arch in "${_builddir}"/arch/*/; do
-    if [[ ${_arch} != */${KARCH}/ ]]; then
-      rm -r "${_arch}"
-    fi
+    [[ ${_arch} == */x86/ ]] && continue
+    rm -r "${_arch}"
   done
 
   # remove files already in linux-docs package
   rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"
