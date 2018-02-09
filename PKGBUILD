@@ -8,10 +8,10 @@
 pkgname=go4
 _Pkgname=Go4
 pkgver=5.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
-arch=('i686' 'x86_64')
-depends=('root=6.10.08' 'qt4')
+arch=('x86_64')
+depends=('root' 'qt4')
 url="https://www.gsi.de/en/work/research/electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
@@ -32,6 +32,9 @@ prepare() {
   # Does not seem needed since 5.2.0
   #msg "fixing QGo4Widget.cpp:324:25: error: cannot convert ‘bool’ to ‘TGo4ViewPanel*’ in initialization"
   #sed -i 's#TGo4ViewPanel\* res = false;#TGo4ViewPanel\* res = 0;#g' qt4/Go4GUI/QGo4Widget.cpp
+
+  msg "Fixing lack of Riosfwd.h from ROOT 6.12"
+  sed -i 's/#include "Riosfwd.h"/#include <iosfwd>/g' Go4EventServer/TGo4MbsFile.cxx
 
 }
 
@@ -88,4 +91,8 @@ EOF
   # for later maybe? uninstall and therefore remove packages
   # PATH="${PATH/\/path\/to\/remove/}"
 
+  #/usr/include/root/Riosfwd.h:25:2: warning:
+  #warning "Riosfwd.h is deprecated. It will be removed in ROOT v6.12. Please use #include <iosfwd>, instead."
+
+  #sed -i 's#\$HOME#/usr#g' go
 }
