@@ -5,7 +5,7 @@
 
 _pkgname=antigen
 pkgname=antigen-git
-pkgver=v2.2.2.r2.gd04bff1
+pkgver=v2.2.3.r6.gc91f77c
 pkgrel=1
 pkgdesc="A plugin manager for zsh, inspired by oh-my-zsh and vundle."
 arch=('any')
