@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Chrome's no-wifi dino game lazily ported to the terminal"
 url="https://github.com/arcticmatt/dino-brick"
 arch=("x86_64")
-license=("MIT")
+license=("BSD")
 makedepends=("stack")
 optdepends=()
 depends=()
@@ -18,6 +18,6 @@ build() {
 }
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+    install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm 755 "$(find .stack-work/install -type f -name dino -executable)" "$pkgdir/usr/bin/dino"
 }
