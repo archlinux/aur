@@ -3,14 +3,14 @@
 
 _pkgname=lximage-qt
 pkgname=$_pkgname-git
-pkgver=0.5.1.23.g88eef99
+pkgver=0.6.0.4.ge7e4831
 pkgrel=1
 pkgdesc="The LXQt image viewer"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("pcmanfm-qt" "libfm-qt" "qt5-x11extras")
-makedepends=("git" "cmake" "qt5-tools")
+depends=("pcmanfm-qt-git" "libfm-qt-git" "qt5-x11extras")
+makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
