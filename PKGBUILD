@@ -3,7 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Aurélien Wailly <aurelien.wailly@gmail.com>
 
-pkgname=protobuf-c
+pkgname=protobuf2-c
 pkgver=1.2.1
 pkgrel=1
 pkgdesc='Protocol Buffers implementation in C'
