@@ -1,7 +1,7 @@
 # Maintainer: Victor Roest <victor@xirion.net>
 pkgname=dice-roller-git
 pkgver=10c0697
-pkgrel=1
+pkgrel=2
 pkgdesc="A python dice rolling application using the standard dice notation"
 url="https://git.xirion.net/victor/dice-roller"
 license=('GPL3')
@@ -19,5 +19,5 @@ pkgver() {
 
 package() {
     cd "$srcdir/dice-roller"
-    python setup.py install --root="$pkgdir"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
