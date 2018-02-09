@@ -1,15 +1,14 @@
 pkgbase = opendaylight
 	pkgdesc = OpenDaylight is leading the transformation to Open SDN.
-	pkgver = 0.5.1_Boron_SR1
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://www.opendaylight.org/
 	install = opendaylight.install
-	arch = i686
 	arch = x86_64
 	license = EPL
-	depends = java-runtime
-	source = https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.5.1-Boron-SR1/distribution-karaf-0.5.1-Boron-SR1.tar.gz
-	sha256sums = c4ed8cf493e0b24d1ff67644adb65a4bf436490ff55787d6ec4a72b9e22c72bd
+	depends = jre8-openjdk
+	source = https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/integration/karaf/0.7.1/karaf-0.7.1.tar.gz
+	sha256sums = 301da64f8abaeaa887f778400eebc8e1e21855187a83658668484c84d15b2412
 
 pkgname = opendaylight
 
