@@ -1,0 +1,17 @@
+pkgbase = dice-roller
+	pkgdesc = A python dice rolling application using the standard dice notation
+	pkgver = f3c7ae1
+	pkgrel = 1
+	url = https://git.xirion.net/victor/dice-roller
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = python
+	provides = dice-roller
+	source = git+https://git.xirion.net/victor/dice-roller.git
+	sha256sums = SKIP
+
+pkgname = dice-roller
+
