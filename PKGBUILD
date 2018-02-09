@@ -1,4 +1,4 @@
-# Mainintainer : Lucas Rooyakkers <lucas.rooyakkers@queensu.ca>
+# Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 
 _pkgname=pykml
 pkgname=python-pykml
