@@ -3,7 +3,7 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.1')
@@ -105,7 +105,7 @@ prepare() {
   # setting up and securing webpage.sh script
   sed -n "/SetWebPassword() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 1" && return 1 ; fi
-  sed -i '/SetWebPassword() {/,+40d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
+  sed -i '/SetWebPassword() {/,+42d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
 
   sed -n "/SetTemperatureUnit() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 2" && return 1 ; fi
@@ -157,6 +157,9 @@ prepare() {
   sed -n "/\"privacymode/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 15" && return 1 ; fi
   sed -i '/\"privacymode/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
+
+  sed -i "s|/usr/local/bin/|/usr/bin/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 15" && return 1 ; fi
 
 }
 
