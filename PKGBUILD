@@ -5,7 +5,7 @@
 # Contributor: Link Dupont <link@subpop.net>
 #
 pkgname=dbus-nosystemd
-pkgver=1.12.2
+pkgver=1.12.4
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -22,7 +22,7 @@ provides=('dbus-core' "dbus=${pkgver}" "libdbus=${pkgver}")
 conflicts=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 replaces=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 install=dbus-nosystemd.install
-_commit=0f0968336b9711349023e1d41f075b2bccf7c20b  # tags/dbus-1.12.2^0
+_commit=636963fd753b538ee5e55c531e2fe7651b233b67  # tags/dbus-1.12.4^0
 source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit"
 	30-dbus.sh dbus.rc)
 md5sums=('SKIP'
