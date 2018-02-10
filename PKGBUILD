@@ -270,6 +270,7 @@ package() {
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/webpage.sh "$pkgdir"/opt/pihole/webpage.sh
   install -Dm755 $_pkgname-$pkgver/advanced/Scripts/COL_TABLE "$pkgdir"/opt/pihole/COL_TABLE
 
+  install -Dm755 piholeDebug.sh "$pkgdir"/opt/pihole/piholeDebug.sh
   install -Dm755 mimic_setupVars.conf.sh "$pkgdir"/opt/pihole/mimic_setupVars.conf.sh
 
   install -dm750 "$pkgdir"/etc/sudoers.d
