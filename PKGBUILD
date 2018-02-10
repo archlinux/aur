@@ -2,17 +2,17 @@
 # Maintainer: Sergio Tridente <tioduke (at) gmail (dot) com>
 
 pkgname=writerperfect
-pkgver=0.9.5
-pkgrel=1
+pkgver=0.9.6
+pkgrel=2
 pkgdesc="libwpd utilities for converting WordPerfect(tm) and Visio(tm) documents to odt and odg"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/libwpd"
 license=('LGPL')
-depends=('libodfgen' 'librevenge' 'libwpd' 'libwpg' 'libvisio')
+depends=('libetonyek' 'libmwaw' 'libodfgen' 'libvisio' 'libwps' 'libzmf')
 makedepends=('boost' 'glibc' 'libtool')
-optdepends=('libabw' 'libcdr' 'libe-book' 'libepubgen' 'libfreehand' 'libgsf' 'libmspub' 'libpagemaker')
+optdepends=('libabw' 'libcdr' 'libe-book' 'libfreehand' 'libmspub' 'libpagemaker')
 source=(http://downloads.sourceforge.net/project/libwpd/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('916e86f7005b441399cf8e62fbde5650')
+md5sums=('8807a94e844f56018179bcf21e1d391e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
