@@ -10,7 +10,7 @@ _minor=15
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=1
+_pfrel=2
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -85,6 +85,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         "60-linux.hook"
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
+        '0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
@@ -103,6 +104,8 @@ prepare() {
   
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  # https://bugs.archlinux.org/task/57327
+  patch -Np1 -i ../0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
   # end linux-ARCH patches
 
   # fix ci  invalid PC card inserted issue hopefully
@@ -678,9 +681,10 @@ sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
             '943e1e6e1518edc8ab86023805f8f88f3672871a4039ccf8a9e97c33e95ae395'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '8621c69b3cb7a2ebe085e0b54d6eab9e3f3f6c113671a905e6a8e39b25c995b9'
+            '25b06ca29edab2f7b8a2546de382c4ba05d2c23bbfc9fbd30a0363da374997ea'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '7b7363b53c68f52b119df994c9c08d4f29271b408f021366ab23f862518bd9bc'
-            'ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215')
+            'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
+            '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
+            'b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be')
 
