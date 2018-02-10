@@ -3,12 +3,15 @@
 _gemname=tty-spinner
 pkgname=ruby-$_gemname
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal spinner for tasks that have non-deterministic time frame."
 arch=('any')
 url="http://github.com/piotrmurach/tty-spinner"
 license=('MIT')
-depends=('ruby')
+depends=(
+  'ruby'
+  'ruby-tty-cursor>=0.5'
+)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
