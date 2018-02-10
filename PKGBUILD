@@ -4,7 +4,7 @@
 _gemname=fastimage
 pkgname=ruby-$_gemname
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='FastImage - Image info fast'
 arch=(any)
 url='http://github.com/sdsykes/fastimage'
