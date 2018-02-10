@@ -1,7 +1,7 @@
 pkgbase = gcc5
 	pkgdesc = The GNU Compiler Collection (5.x.x)
 	pkgver = 5.5.0
-	pkgrel = 2
+	pkgrel = 4
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = gcc5
 	license = LGPL
 	license = FDL
 	license = custom
-	makedepends = binutils>=2.26
-	makedepends = libmpc
+	depends = glibc>=2.23
+	depends = binutils>=2.26
+	depends = libmpc
 	options = !emptydirs
 	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.5.0/gcc-5.5.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
