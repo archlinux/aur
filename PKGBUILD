@@ -4,7 +4,7 @@
 _gemname=terminal-table
 pkgname=ruby-$_gemname
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, feature rich ascii table generation library'
 arch=(any)
 url='https://github.com/tj/terminal-table'
