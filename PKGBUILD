@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgbase=deadbeef-plugin-musical-spectrum-git
 pkgname=(deadbeef-plugin-musical-spectrum-gtk2-git deadbeef-plugin-musical-spectrum-gtk3-git)
-pkgver=r143
+pkgver=r143.215bbad
 pkgrel=1
 _pkgdesc="Musical Spectrum Plugin for the DeaDBeeF audio player (development version)."
 url="https://github.com/cboxdoerfer/ddb_musical_spectrum"
@@ -17,15 +17,11 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  printf "r""$(git rev-list --count HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "${_gitname}"
-
-  touch AUTHORS
-  touch ChangeLog
-
   make
 }
 
