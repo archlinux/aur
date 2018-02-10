@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.2.1
-pkgrel=4
+pkgrel=5
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.2.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -36,6 +36,7 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 	$_pkgname-logtruncate.timer
 	mimic_setupVars.conf.sh
 	version.patch
+	piholeDebug.sh
   )
 
 md5sums=('a0ff29ba87d22b695baa48194b1ebfd2'
@@ -50,7 +51,8 @@ md5sums=('a0ff29ba87d22b695baa48194b1ebfd2'
          '20c5b0c6b4e23e55b25ab6c28dda709d'
          '291d3c95e445fe65caf40c3605efd186'
          'c227ffa88ddebc34cb715b73640cd845'
-         '93fe5e50cf3fcb08b24cf29b0cace85b')
+         '93fe5e50cf3fcb08b24cf29b0cace85b'
+         'd7b69ae51db0e8ac8e27f20a234eed85')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
@@ -60,9 +62,9 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: the return of service management" && return 1 ; fi
 
   # setting up and securing pihole wrapper script
-  sed -n "/debugFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 1" && return 1 ; fi
-  sed -i '/debugFunc() {/,+16d' "$srcdir"/$_pkgname-$pkgver/pihole
+  #sed -n "/debugFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  #if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 1" && return 1 ; fi
+  #sed -i '/debugFunc() {/,+16d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/updatePiholeFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 2" && return 1 ; fi
@@ -84,13 +86,13 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 6" && return 1 ; fi
   sed -i '/tricorderFunc() {/,+29d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/\"\-[d,r,up]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/\"\-[r,up]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 7" && return 1 ; fi
-  sed -i '/\"\-[d,r,up]/d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/\"\-[r,up]/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/^  \-d/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 8" && return 1 ; fi
-  sed -i '/^  \-d/,+2d' "$srcdir"/$_pkgname-$pkgver/pihole
+  #sed -n "/^  \-d/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  #if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 8" && return 1 ; fi
+  #sed -i '/^  \-d/,+2d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/^  \-up/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 9" && return 1 ; fi
@@ -218,6 +220,16 @@ prepare() {
   sed -n "/{{webver}}/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 14" && return 1 ; fi
   sed -i "s/{{webver}}/$_wwwpkgver/" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
+
+# -----------------
+
+  # web admin footer update setup
+  sed -i "s|https:\/\/github.com\/pi-hole\/pi-hole\/releases|https:\/\/aur.archlinux.org\/packages\/pi-hole-server|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: web admin footer update setup 1" && return 1 ; fi
+  sed -i "s|https:\/\/github.com\/pi-hole\/AdminLTE\/releases|https:\/\/aur.archlinux.org\/packages\/pi-hole-server|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: web admin footer update setup 2" && return 1 ; fi
+  sed -i "s|https:\/\/github.com\/pi-hole\/FTL\/releases|https:\/\/aur.archlinux.org\/packages\/pi-hole-server|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: web admin footer update setup 3" && return 1 ; fi
 
 # -----------------
 
