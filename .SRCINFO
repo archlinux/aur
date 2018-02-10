@@ -1,14 +1,14 @@
 pkgbase = apache-tomcat
 	pkgdesc = Open source implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies.
-	pkgver = 8.5.23
+	pkgver = 8.5.27
 	pkgrel = 1
 	url = http://tomcat.apache.org/
 	arch = any
 	license = apache
 	depends = jre7-openjdk>=7
-	source = http://apache.mirror.iweb.ca/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz
-	md5sums = c4addea2c8c166530f11bdeb4730c26e
-	sha1sums = 1ba27c1bb86ab9c8404e98068800f90bd662523c
+	source = http://apache.mirror.iweb.ca/tomcat/tomcat-8/v8.5.27/bin/apache-tomcat-8.5.27.tar.gz
+	md5sums = 2d39cb3293ec3308d5235004adf0d134
+	sha1sums = dc63fe7cefd5eb4f746d17b68578acc92e8af576
 
 pkgname = apache-tomcat
 
