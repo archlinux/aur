@@ -2,7 +2,7 @@
 
 pkgname=dam-git
 pkgver=1771439
-pkgrel=3
+pkgrel=4
 pkgdesc="DAM git"
 arch=('any')
 url="https://github.com/dudoslav/dam"
@@ -10,7 +10,7 @@ licence=('GPL3')
 depends=('git' 'pacman' 'ruby' 'ruby-bundler')
 source=("git+https://github.com/dudoslav/dam.git" "dam.service")
 sha256sums=('SKIP'
-            'f8c7d5732fce7f08b8f101dbe37b4b76a590f99504e253c0348a089c2d4196f6')
+            'caddf94924deec8ad04f1434631805cc9c4e360b75b70d5fd14c272e08fb7894')
 
 pkgver() {
     cd dam

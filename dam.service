@@ -5,7 +5,7 @@ Requires=network.target
 [Service]
 Type=simple
 WorkingDirectory=/usr/lib/dam
-ExecStart=/bin/bash -c 'bundle exec rackup -o 0.0.0.0 -p 9669'
+ExecStart=/usr/bin/bash -c 'bundle exec rackup -o 0.0.0.0 -p 9669'
 TimeoutSec=30
 RestartSec=15s
 Restart=always
