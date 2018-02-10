@@ -15,7 +15,7 @@ license=('GPL')
 depends=(
   'libpulse'
   'wxgtk'
-  'soapysdr'
+  'soapysdr-git'
   'liquid-dsp-git'
 )
 optdepends=(
