@@ -1,4 +1,4 @@
-# Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) >
+# Maintainer: aimileus <me at aimileus dot nl>
 pkgname=python-snowboy-git
 _pkgname=snowboy
 pkgver=v1.2.0.r128.g4ee4811
