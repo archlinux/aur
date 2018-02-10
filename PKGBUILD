@@ -24,11 +24,11 @@
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
 _pkgname=kodi
-pkgver=17.4
+pkgver=17.6
 _codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://kodi.tv"
+url="https://github.com/xbmc/xbmc"
 license=('GPL2')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'glew'
@@ -41,7 +41,7 @@ makedepends=(
   'mesa' 'libcrossguid'
 )
 source=("$_pkgname-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz")
-sha512sums=('fc4eff6606c84459ab24323888d39bf1f5d433aaf7136c17d85631f768761f61e498297c500befc986dd6de14de87a5a28f7a9c36c8d7c35d49ca15c99db37ef')
+sha512sums=('1f1ba91e6129ab423f9ad47b63d7bb75775dbf18638a96413a572aaa790f4f0d738ca35486513e158a7f55d501f78f08dd9d68aabe2fbb80a729c6091b264111')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
