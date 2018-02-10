@@ -3,7 +3,7 @@
 
 _gemname=xcodeproj
 pkgname=ruby-$_gemname
-pkgver=1.5.4
+pkgver=1.5.6
 pkgrel=1
 pkgdesc='Create and modify Xcode projects from Ruby.'
 arch=(any)
@@ -11,6 +11,7 @@ url='https://github.com/cocoapods/xcodeproj'
 license=(MIT)
 depends=(
   ruby
+  'ruby-atomos>=0.1.2' 'ruby-atomos<0.2'
   'ruby-cfpropertylist>=2.3.3' 'ruby-cfpropertylist<2.4'
   'ruby-claide>=1.0.2' 'ruby-claide<2'
   'ruby-colored2>=3.1' 'ruby-colored2<4'
