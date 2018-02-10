@@ -1,7 +1,7 @@
 pkgbase = fstrcmp
 	pkgdesc = A library that is used to make fuzzy comparisons of strings and byte arrays, including multi-byte character strings
 	pkgver = 0.7.D001
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fstrcmp.sourceforge.net/
 	arch = i686
 	arch = x86_64
