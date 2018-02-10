@@ -4,7 +4,7 @@
 _gemname=xcpretty
 pkgname=ruby-$_gemname
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc='xcodebuild formatter done right'
 arch=(any)
 url='https://github.com/supermarin/xcpretty'
