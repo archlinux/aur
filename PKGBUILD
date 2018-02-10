@@ -1,8 +1,9 @@
 # Maintainer: Gicu Gorodenco <cyclopsihus 'at' gmail 'dot' com>
 # Contributor: rafael ff1 (aka josephgbr)
+
 _pkgbase=libsigc++
 pkgbase=lib32-libsigc++
-pkgname='libsigc++'
+pkgname=${pkgbase}
 pkgver=2.10.0
 pkgrel=1
 arch=('x86_64')

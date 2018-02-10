@@ -1,16 +1,19 @@
 pkgbase = lib32-libsigc++
-	pkgdesc = Libsigc++ implements a full callback system for use in widget libraries - V2 (32 bit)
-	pkgver = 2.8.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = http://libsigc.sourceforge.net/
 	arch = x86_64
 	license = LGPL
-	makedepends = gcc-multilib
-	depends = libsigc++
-	options = !libtool
+	makedepends = gcc-libs
+	makedepends = git
+	makedepends = mm-common
+	makedepends = libxslt
+	makedepends = graphviz
 	options = !emptydirs
-	source = http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.8/libsigc++-2.8.0.tar.xz
-	sha256sums = 774980d027c52947cb9ee4fac6ffe2ca60cc2f753068a89dfd281c83dbff9651
+	source = git://git.gnome.org/libsigcplusplus#commit=83f1e2fe7855f85af570b9653903d2c426d67e72
+	sha256sums = SKIP
 
 pkgname = lib32-libsigc++
+	pkgdesc = Libsigc++ implements a full callback system for use in widget libraries - V2
+	depends = gcc-libs
 
