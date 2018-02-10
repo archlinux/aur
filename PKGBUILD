@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgbase=deadbeef-plugin-waveform-git
 pkgname=(deadbeef-plugin-waveform-gtk2-git deadbeef-plugin-waveform-gtk3-git)
-pkgver=r158
+pkgver=v0.5.r66.g8420ca0
 pkgrel=1
 _pkgdesc="Waveform Seekbar Plugin for the DeaDBeeF audio player (development version)"
 url="https://github.com/cboxdoerfer/ddb_waveform_seekbar"
@@ -16,16 +16,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  printf "r""$(git rev-list --count HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 build() {
   cd "${_gitname}"
-
-  touch AUTHORS
-  touch ChangeLog
-
   make
 }
 
@@ -34,7 +30,6 @@ package_deadbeef-plugin-waveform-gtk2-git() {
   depends=('deadbeef' 'sqlite' 'gtk2')
   conflicts=('deadbeef-plugin-waveform-gtk2')
   provides=('deadbeef-plugin-waveform-gtk2')
-
   install -D -v -c "${srcdir}/${_gitname}/gtk2/ddb_misc_waveform_GTK2.so" "${pkgdir}/usr/lib/deadbeef/ddb_misc_waveform_GTK2.so"
 }
 
