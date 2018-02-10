@@ -3,7 +3,7 @@
 _srcname=vmaf
 pkgname=libvmaf
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for perceptual video quality assessment based on multi-method fusion'
 arch=('i686' 'x86_64')
 url='https://github.com/netflix/vmaf/'
@@ -20,4 +20,7 @@ build() {
 package() {
     cd "${_srcname}-${pkgver}"
     make DESTDIR="$pkgdir" PREFIX='/usr' install
+    
+    # fix prefixes on pkgconfig file
+    sed -i 's|/usr/local|/usr|g' "${pkgdir}/usr/lib/pkgconfig/libvmaf.pc"
 }
