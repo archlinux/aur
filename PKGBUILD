@@ -4,7 +4,7 @@
 _gemname=colored2
 pkgname=ruby-$_gemname
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Add even more color to your life.'
 arch=(any)
 url='http://github.com/kigster/colored2'
