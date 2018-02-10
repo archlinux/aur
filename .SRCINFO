@@ -1,0 +1,18 @@
+pkgbase = iwd
+	pkgdesc = Internet Wireless Daemon
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.kernel.org/cgit/network/wireless/iwd.git/
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	provides = iwd
+	conflicts = iwd
+	source = https://www.kernel.org/pub/linux/network/wireless/iwd-0.1.tar.xz
+	source = https://www.kernel.org/pub/linux/network/wireless/iwd-0.1.tar.sign
+	validpgpkeys = E932D120BC2AEC444E558F0106CA9F5D1DCF2659
+	sha512sums = a0c0f1761edcc779509d77c9f32bf4e590976ae8806a0b34784eb2a937a758786cf839caa62e0cab853686f5940102bb2fa346f95eae502d25d912ae872c52d4
+	sha512sums = SKIP
+
+pkgname = iwd
+
