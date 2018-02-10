@@ -1,6 +1,6 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=microsip
-pkgver=3.16.9
+pkgver=3.17.3
 pkgrel=1
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=("MicroSIP-${pkgver}.zip"::"https://www.microsip.org/downloads/?file=Micr
 		"${pkgname}"
 		"${pkgname}.desktop")
 
-sha256sums=('20c7a41d82ad37c0348e058bab3967b880f1c3b9556b2a12e5ef755251f596dd'
-            '1789cd581dae8e664a94b9e9eaef5236bf8a3378efa911baa3da2fbe76880de5'
+sha256sums=('bdd38a4f09191f4e3b11f928107ca2d505d20bca9d8438a05b8c4ace9a6f9183'
+            '5aec6639c625bfa73edcdbc90ddbd59e730b31651c9b4249254a54fe63f2563a'
             'd588c2b2e38e12d2be3dfdd9f2a63690293b884c7df240c441e271725b9a2ca2')
 
 prepare() {
@@ -36,7 +36,7 @@ package() {
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "ringin.wav"
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "ringin2.wav"
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "ringout.wav"
-	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "SDL.dll"
+	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "SDL2.dll"
 	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "avcodec-57.dll"
 	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "avformat-57.dll"
 	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "avutil-55.dll"
