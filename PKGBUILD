@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.2.beta3.r0.g56a4bc7e76
+pkgver=8.2.beta5.r0.ge6cae6d88d
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -37,7 +37,8 @@ makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhom
 source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-threejs.patch pari-stackwarn.patch
-        sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-matplotlib2.patch sagemath-scipy-1.0.patch sagemath-lrs.patch)
+        sagemath-detect-igraph.patch sagemath-networkx2.patch sagemath-scipy-1.0.patch sagemath-lrs.patch
+        sagemath-singular-4.1.0.p4.patch)
 sha256sums=('SKIP'
             '39b76a189365464998cab9355d177581bc2b15dff10858f316faa85f2efa0426'
             'c41ae665499c6cd775d40bbe178f8786830b0931ee26bf11ee02f7d83bcc8107'
@@ -51,9 +52,9 @@ sha256sums=('SKIP'
             'e4a2f1de73dc3a6deedc1a05d716facd94afc9fe98239c4300e1b67375f95fc1'
             '28d7789b8d777922ab8871ca43b6afab751428cae875c0343d3962e6a2030b88'
             '1024f3a6a9a1a6ae96d9962bb7d1f5842f4a4a5ff5098afad81a60188b7d5160'
-            'b9ab2bb5f381ea425e8763b81b8b3a108a3951c594fb1f37f7df921e7c77e26d'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
-            'c0f65534a845ba802de6196229159fe67fcc3f72f0cb1ce57d4ae5c9fe10282c')
+            'c0f65534a845ba802de6196229159fe67fcc3f72f0cb1ce57d4ae5c9fe10282c'
+            'cc679321c2968d5e74b0ec060979c74019df2995857906bdd1397695b1f24c5c')
 
 pkgver() {
   cd sage
@@ -93,15 +94,16 @@ prepare(){
   patch -p1 -i ../pari-stackwarn.patch
 # remove deprecated scipy parameters
   patch -p1 -i ../sagemath-scipy-1.0.patch
+# fix build with Singular 4.1.0.p4
+  patch -p1 -i ../sagemath-singular-4.1.0.p4.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
   patch -p1 -i ../fes02.patch
-# port away from deprecated and removed functions in matplotlib 2 https://trac.sagemath.org/ticket/23696
-  patch -p1 -i ../sagemath-matplotlib2.patch
 
 # use python2
-  sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
+  sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|\<#!/usr/bin/env sage-python\>|#!/usr/bin/env python2|' \
+    -e 's|\<exec python\>|exec python2|' -i src/bin/*
   sed -e 's|cython {OPT}|cython2 {OPT}|' -e 's|python setup.py|python2 setup.py|' -i src/sage/misc/cython.py
   sed -e 's|exec ipython|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
