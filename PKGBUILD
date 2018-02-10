@@ -1,4 +1,4 @@
-# Maintainer: Chris Lane <chris at chrislane dot com>
+# Maintainer: Chris Lane <aur at chrislane dot com>
 
 pkgname=scrot-slabua-git
 pkgver=0.8.26.r19.gd856d56
