@@ -3,7 +3,7 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=3.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.1')
@@ -74,24 +74,40 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 9" && return 1 ; fi
   sed -i '/tricorderFunc() {/,+29d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/\"\-[r,up]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/^  \"\-[r,up,l,t,f,c,a]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 10" && return 1 ; fi
-  sed -i '/\"\-[r,up]/d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/^  \"\-[r,up,l,t,f,c,a]/d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/^  \-[r,t,l,f],/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 11" && return 1 ; fi
+  sed -i '/^  \-[r,t,l,f],/d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/^  \-up,/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 13" && return 1 ; fi
+  sed -i '/^  \-up,/d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/^  \-a,/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 14" && return 1 ; fi
+  sed -i '/^  \-a,/,+1d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/uninstall/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 11" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 15" && return 1 ; fi
   sed -i '/uninstall/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -i "s|^  checkout.*$|\";|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 12" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 16" && return 1 ; fi
 
   sed -n "/checkout/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 13" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 17" && return 1 ; fi
   sed -i '/checkout/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/tricorder/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 10" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 18" && return 1 ; fi
   sed -i '/tricorder/d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/updatechecker/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 19" && return 1 ; fi
+  sed -i '/updatechecker/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
 # -----------------
 
