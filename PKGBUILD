@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Courtois <lasalade.verte@free.fr>
 
 pkgname=ync-tools
-pkgver=0.83.4
+pkgver=0.83.5
 pkgrel=1
 pkgdesc="Yamaha network players control tools"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gtk3' 'sfml' 'tinyxml2' 'libglade' 'libconfig')
 makedepends=('cmake' 'gendesk')
 source=("https://github.com/Guitar-Man/ync-tools/raw/master/ync-tools-${pkgver}.tar.gz")
-md5sums=('4e314c1b3f9b5663425f6837ee84965a')
+md5sums=('1e0d494607a204c2ba3dc1269c183a54')
 #options=('!buildflags')
 
 prepare() {
