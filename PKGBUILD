@@ -3,7 +3,7 @@
 
 _gemname=gh_inspector
 pkgname=ruby-$_gemname
-pkgver=1.0.3
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Search through GitHub issues for your project for existing issues about a Ruby Error.'
 arch=(any)
