@@ -61,7 +61,7 @@
  {
 -        struct net_device *dev = (struct net_device *)__opaque;
 -        struct rtl8101_private *tp = netdev_priv(dev);
-+        struct rtl0101_private *tp = (struct rtl8101_private *)__opaque;
++        struct rtl8101_private *tp = (struct rtl8101_private *)__opaque;
 +#else
 +rtl8101_esd_timer(struct timer_list *timer_list)
 +{

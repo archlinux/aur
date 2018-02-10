@@ -4,7 +4,7 @@
 _pkgbase=r8101
 pkgname=r8101-dkms
 pkgver=1.032.04
-pkgrel=3
+pkgrel=4
 pkgdesc="r8101 realtek lan drivers (DKMS)"
 arch=('i686' 'x86_64')
 url="http://www.realtek.com.tw/"
@@ -39,5 +39,5 @@ package() {
         "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
 sha256sums=('cb73c2bae347709009db0de657f7bd0e4a293abf6e8e60a07a97a47867f7b5f7'
-            'dc568a0d1f265ae96c76919eab289b727990594906c4ea340c9f9a6f5d4384f6'
+            '53f8fcb27ec16a3b29721339184f2f84a4ead26490bf5a9cafedc5edb0524abf'
             '2846e89fe3fd68c64c71a0f1150873a061571acc63e65cca6d825df7985ad7b5')
