@@ -1,24 +1,20 @@
 pkgbase = ekg2
 	pkgdesc = Ncurses based Jabber, Gadu-Gadu, Tlen and IRC client
-	pkgver = 20140406
+	pkgver = 0.3.1+5815+gaef7c7e1
 	pkgrel = 1
-	url = http://ekg2.org/
-	arch = i686
+	url = http://en.ekg2.org/
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = aspell
-	depends = libjpeg
-	depends = python2
-	depends = libgadu
-	depends = gnutls
+	depends = gpgme
 	depends = gpm
-	depends = libidn
-	depends = giflib
-	optdepends = xosd: xosd support
-	optdepends = sqlite: sqlite support
-	optdepends = gtk2: gtk support
-	source = https://github.com/jnbek/ekg2/archive/20140406.tar.gz
-	md5sums = df3cbe4a4b72513423765d8408b13e69
+	depends = libgadu
+	depends = python2
+	source = git+https://github.com/ekg2/ekg2#commit=aef7c7e1a1e8ff64e1503571ffd75029468548a5
+	source = openssl-1.1.patch
+	md5sums = SKIP
+	md5sums = 8d0528fbfb182b5c75723f9d84f0e3bc
 
 pkgname = ekg2
 

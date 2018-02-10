@@ -3,45 +3,41 @@
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 
 pkgname=ekg2
-pkgver=20140406
+pkgver=0.3.1+5815+gaef7c7e1
+_pkgver=0.3.1
 pkgrel=1
 pkgdesc='Ncurses based Jabber, Gadu-Gadu, Tlen and IRC client'
-arch=('i686' 'x86_64')
-url='http://ekg2.org/'
+arch=('x86_64')
+url='http://en.ekg2.org/'
 license=('GPL')
-depends=('aspell' 'libjpeg' 'python2' 'libgadu' 'gnutls' 'gpm' 'libidn' 'giflib')
-optdepends=('xosd: xosd support'
-	    'sqlite: sqlite support'
-            'gtk2: gtk support')
-source=('https://github.com/jnbek/ekg2/archive/20140406.tar.gz')
-md5sums=('df3cbe4a4b72513423765d8408b13e69')
+depends=('aspell' 'gpgme' 'gpm' 'libgadu' 'python2')
+makedepends=('git')
+_commit=aef7c7e1a1e8ff64e1503571ffd75029468548a5  # master
+source=("git+https://github.com/ekg2/ekg2#commit=$_commit"
+         openssl-1.1.patch)
+md5sums=('SKIP'
+         '8d0528fbfb182b5c75723f9d84f0e3bc')
 
-#prepare() {
-#  cd $pkgname-$pkgver
-#  sed -i 's|ncursesw/ncurses.h|ncurses.h|g' configure plugins/ncurses/ecurses.h
-#  patch -Np1 -i ../ekg2-0.3.1-giflib5.patch
-#}
+pkgver() {
+  cd $pkgname
+  printf "$_pkgver+%s+g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd $pkgname
+  patch -Np1 -i ../openssl-1.1.patch
+  sed -i 's@^#!.*python$@#!/usr/bin/python2@' contrib/python/notify-bubble.py
+}
 
 build() {
-  cd $pkgname-$pkgver
-
-  export PYTHON=/usr/bin/python2
-  ./autogen.sh
-  ./configure --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib/ekg2 \
-    --enable-shared
-
+  cd $pkgname
+  ./autogen.sh --prefix=/usr PYTHON=python2
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
-
-  rm -rf "$pkgdir"/usr/lib/perl5/core_perl/perllocal.pod
-  rm -rf "$pkgdir"/usr/libexec
-  chmod -R 755 "$pkgdir"/usr/lib/perl5
+  rm -r "$pkgdir"/usr/lib/perl5/5.*/core_perl
 }
-
-# vim:set ts=2 sw=2 et:
