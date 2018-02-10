@@ -41,10 +41,12 @@ package() {
   msg2 "Starting make install..."
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/COPYING
+  for i in COPYING*; do
+    install -Dm644 $i "$pkgdir"/usr/share/licenses/$_pkgname/$i
+  done
 
   # Cleanup
   rm -f "$pkgdir"/usr/include/X11/extensions/{apple,windows}*
-  rm -f "$pkgdir"/usr/share/licenses/$pkgname/COPYING-{apple,windows}wmproto
+  rm -f "$pkgdir"/usr/share/licenses/$_pkgname/COPYING-{apple,windows}wmproto
   rm -f "$pkgdir"/usr/share/pkgconfig/{apple,windows}wmproto.pc
 }
