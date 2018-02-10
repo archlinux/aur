@@ -4,7 +4,7 @@
 _gemname=google-api-client
 pkgname=ruby-$_gemname
 pkgver=0.13.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Client for accessing Google APIs'
 arch=(any)
 url='https://github.com/google/google-api-ruby-client'
