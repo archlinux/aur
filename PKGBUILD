@@ -4,7 +4,7 @@
 _gemname=fastlane
 pkgname=$_gemname
 pkgver=2.80.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
 url='https://fastlane.tools'
@@ -46,6 +46,7 @@ depends=(
   'ruby-xcpretty<1' 'ruby-xcpretty>=0.2.4' 
   'ruby-xcpretty-travis-formatter>=0.0.3'
 )
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
