@@ -1,0 +1,18 @@
+pkgbase = textilosaurus
+	pkgdesc = Simple cross-platform text editor based on Qt and Scintilla
+	pkgver = 2018.02.05
+	pkgrel = 1
+	url = https://github.com/martinrotter/textilosaurus
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-svg
+	provides = textilosaurus
+	conflicts = textilosaurus
+	conflicts = textilosaurus-git
+	source = https://github.com/martinrotter/textilosaurus/archive/2018.02.05.tar.gz
+	md5sums = 93c0138b5d5faf474bfa0c3730cab102
+
+pkgname = textilosaurus
+
