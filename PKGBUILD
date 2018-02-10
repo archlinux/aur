@@ -28,13 +28,13 @@ package_deadbeef-plugin-spectrogram-gtk2-git() {
   pkgdesc="${_pkgdesc} GTK2 version."
   depends=('deadbeef' 'fftw' 'gtk2')
   provides=('deadbeef-plugin-spectrogram-gtk2')
-  conflicts=('deadbeef-plugin-spectrogram-gtk2')
+  conflicts=('deadbeef-plugin-spectrogram-gtk2' 'deadbeef-plugin-spectrogram-git')
   install -D -v -c "${srcdir}/${_gitname}/gtk2/ddb_vis_spectrogram_GTK2.so" "${pkgdir}/usr/lib/deadbeef/ddb_vis_spectrogram_GTK2.so"
 }
 package_deadbeef-plugin-spectrogram-gtk3-git() {
   pkgdesc="${_pkgdesc} GTK3 version."
   depends=('deadbeef' 'fftw' 'gtk3')
   provides=('deadbeef-plugin-spectrogram-gtk3')
-  conflicts=('deadbeef-plugin-spectrogram-gtk3')
+  conflicts=('deadbeef-plugin-spectrogram-gtk3' 'deadbeef-plugin-spectrogram-git')
   install -D -v -c "${srcdir}/${_gitname}/gtk3/ddb_vis_spectrogram_GTK3.so" "${pkgdir}/usr/lib/deadbeef/ddb_vis_spectrogram_GTK3.so"
 }
