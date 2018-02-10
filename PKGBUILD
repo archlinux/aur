@@ -1,6 +1,6 @@
 # Maintainer: Fahad Hossain <8bit.demoncoder AT gmail.com>
 pkgname=vivaldi-codecs-ffmpeg-extra-bin
-pkgver=64.0.3282.119
+pkgver=64.0.3282.140
 pkgrel=1
 pkgdesc="Prebuilt ffmpeg-codecs package for vivaldi"
 arch=(
@@ -19,7 +19,7 @@ source=(
   "http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-0ubuntu0.17.10.${pkgrel}_amd64.deb"
 )
 md5sums=(
-  "09f6f88156f80d275b079df34fe9f02e"
+  "e5f53416219464448afaae745fa45053"
 )
 install=vivaldi-codecs-ffmpeg-extra-bin.install
 
