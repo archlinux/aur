@@ -1,8 +1,8 @@
 # Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) >
 pkgname=firefox-ubuntu-bin
 _pkgname=firefox
-pkgver=58.0.1
-_ubuntuver="$pkgver+build1-0ubuntu0.17.10.1_amd64"
+pkgver=58.0.2
+_ubuntuver="$pkgver+build1-0ubuntu1_amd64"
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with Ubuntu patches (binary)"
 arch=("x86_64")
