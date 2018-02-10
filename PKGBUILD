@@ -3,7 +3,7 @@
 # Contributor: Samed Beyribey <ras0ir@eventualis.org>
 pkgname=python-postfix-policyd-spf
 _pkgname=pypolicyd-spf
-pkgver=2.0.1
+pkgver=2.0.2
 _pkgver=2.0
 pkgrel=1
 pkgdesc="Python Postfix Sender Policy Framework (SPF) filter"
@@ -16,7 +16,7 @@ conflicts=('python2-postfix-policyd-spf')
 options=(!emptydirs)
 backup=(etc/python-policyd-spf/policyd-spf.conf)
 source=(https://launchpad.net/$_pkgname/$_pkgver/$pkgver/+download/$_pkgname-$pkgver.tar.gz)
-md5sums=('d93d14bb41bccd076ee05535822cbb80')
+md5sums=('cc50281cc13a8984de058ddc5ae8dcaf')
  
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
