@@ -1,17 +1,14 @@
 pkgbase = dcdfort
 	pkgdesc = Modern Fortran toolkit for reading in and analyzing DCD simulation trajectories from LAMMPS
-	pkgver = 1.1.1
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/wesbarnett/dcdfort
 	arch = any
 	license = GPL
-	makedepends = cmake
+	makedepends = meson
 	depends = gcc-fortran
-	source = https://github.com/wesbarnett/dcdfort/releases/download/1.1.1/dcdfort.1.1.1.tar.gz
-	source = https://github.com/wesbarnett/dcdfort/releases/download/1.1.1/dcdfort.1.1.1.tar.gz.sig
-	validpgpkeys = 8535CEF3F3C38EE69555BF67E4B5E45AA3B8C5C3
-	sha512sums = 650d82558580492c66b95e3adcc3cf0b80d453a13e65dd4dd905acf992541ca58bcee1fa7f535de1998ef1417cf84daf07f51b0eba2a71cb1f77af9326bec524
-	sha512sums = SKIP
+	source = https://github.com/wesbarnett/dcdfort/archive/1.3.tar.gz
+	sha512sums = 75199f301aebd725bb3e4f46cc133caaf0d552d1f002a7de34d3f30e6032b572cd4cf472d72386dbc4350155fd6f338960eb35a6d7d7f1f5d57cd6b08ab0c639
 
 pkgname = dcdfort
 
