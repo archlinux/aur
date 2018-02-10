@@ -2,7 +2,7 @@
 pkgname=libhdate-glib
 libname=libhdate-glib
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Gobject bindings for LibHdate. LibHdate is a small C,C++ library for Hebrew calendar, dates, holidays, and reading sequence (parasha)."
 url="https://github.com/yaacov/libhdate-glib"
 license=("GPL")
@@ -13,6 +13,7 @@ source=("https://github.com/yaacov/$libname/releases/download/v$pkgver/$libname-
 sha1sums=('07e1de96afdce84da1030c13ccab193e97d81292')
 
 package() {
+  LANG=C # fix bug, see: https://bbs.archlinux.org/viewtopic.php?id=175847
   cd $srcdir/$libname-$pkgver
   autoreconf -ivf
   sed -i 's/ac_default_prefix=\/usr\/local/ac_default_prefix=\/usr/' ./configure
