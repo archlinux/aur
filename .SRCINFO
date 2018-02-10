@@ -1,0 +1,17 @@
+pkgbase = morfeusz2-dictionary-sgjp
+	pkgdesc = SGJP dictionary for Morfeusz morphological analyser
+	pkgver = 20180204
+	pkgrel = 1
+	url = http://sgjp.pl/morfeusz/
+	arch = any
+	license = BSD
+	makedepends = python2-morfeuszbuilder
+	source = LICENCE
+	source = http://sgjp.pl/morfeusz/download/20180204/sgjp-20180204.tab.gz
+	source = http://sgjp.pl/morfeusz/download/20180204/morfeusz-src-20180204.tar.gz
+	sha256sums = 16c7ca379ef9fb6368c20d0ee71a9c83dd9c55e3b9fc34aade443c33d731d829
+	sha256sums = a5d43904e42fc640fcb84ba785d6aa138792ad2f07db93af5ef658fe76f66c34
+	sha256sums = 663138c8a73f76b442582582f13a1946d4d70c6cb81a235e113126faa5365722
+
+pkgname = morfeusz2-dictionary-sgjp
+
