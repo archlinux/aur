@@ -1,29 +1,40 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
-pkgname=deadbeef-plugin-spectrogram-git
+pkgbase=deadbeef-plugin-spectrogram-git
+pkgname=(deadbeef-plugin-spectrogram-gtk2-git deadbeef-plugin-spectrogram-gtk3-git)
 pkgver=r25.8d1b371
 pkgrel=1
 pkgdesc="Spectrogram Plugin for the DeaDBeeF audio player (development version)"
 url="https://github.com/cboxdoerfer/ddb_spectrogram"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('deadbeef')
-makedepends=('git')
-conflicts=('deadbeef-plugin-spectrogram')
+makedepends=('git' 'pkg-config' 'deadbeef' 'fftw' 'gtk2'  'gtk3')
+
 source=(git+"${url}")
 sha512sums=('SKIP')
-_reponame=("${url##*/}")
+
+_gitname=("ddb_spectrogram")
 
 pkgver() {
-  cd "${srcdir}/${_reponame}"
+  cd "${srcdir}/${_gitname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  make -C "${srcdir}/${_reponame}"
+  cd "${_gitname}"
+  make
 }
 
-package() {
-  cd "${srcdir}/${_reponame}"
-  install -d "${pkgdir}/usr/lib/deadbeef/"
-  install -p gtk2/ddb_vis_spectrogram_GTK2.so gtk3/ddb_vis_spectrogram_GTK3.so "${pkgdir}/usr/lib/deadbeef"
+package_deadbeef-plugin-spectrogram-gtk2-git() {
+  pkgdesc="${_pkgdesc} GTK2 version."
+  depends=('deadbeef' 'fftw' 'gtk2')
+  provides=('deadbeef-plugin-spectrogram-gtk2')
+  conflicts=('deadbeef-plugin-spectrogram-gtk2')
+  install -D -v -c "${srcdir}/${_gitname}/gtk2/ddb_vis_spectrogram_GTK2.so" "${pkgdir}/usr/lib/deadbeef/ddb_vis_spectrogram_GTK2.so"
+}
+package_deadbeef-plugin-spectrogram-gtk3-git() {
+  pkgdesc="${_pkgdesc} GTK3 version."
+  depends=('deadbeef' 'fftw' 'gtk3')
+  provides=('deadbeef-plugin-spectrogram-gtk3')
+  conflicts=('deadbeef-plugin-spectrogram-gtk3')
+  install -D -v -c "${srcdir}/${_gitname}/gtk3/ddb_vis_spectrogram_GTK3.so" "${pkgdir}/usr/lib/deadbeef/ddb_vis_spectrogram_GTK3.so"
 }
