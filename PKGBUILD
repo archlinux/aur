@@ -4,7 +4,7 @@
 _gemname=uber
 pkgname=ruby-$_gemname
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Gem-authoring tools like generic builders, dynamic options and more.'
 arch=(any)
 url='https://github.com/apotonick/uber'
