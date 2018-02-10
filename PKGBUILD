@@ -11,7 +11,7 @@ pkgver=18.01
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
 _buildver=18.01-1516985668
 _pkgverpostfix=""
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A zooming presentation based on SVG, using JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -411,7 +411,7 @@ source+=(
   "https://registry.npmjs.org/abbrev/-/abbrev-1.1.1.tgz"
   "https://registry.npmjs.org/acorn/-/acorn-4.0.13.tgz"
   "https://registry.npmjs.org/acorn/-/acorn-5.4.1.tgz"
-  "https://registry.npmjs.org/@browserify%2facorn5-object-spread/-/acorn5-object-spread-5.0.1.tgz"
+  "https://registry.npmjs.org/@browserify/acorn5-object-spread/-/acorn5-object-spread-5.0.1.tgz"
   "https://registry.npmjs.org/acorn-node/-/acorn-node-1.3.0.tgz"
   "https://registry.npmjs.org/ajv/-/ajv-5.5.2.tgz"
   "https://registry.npmjs.org/amdefine/-/amdefine-1.0.1.tgz"
