@@ -3,7 +3,7 @@
 pkgname=cryptsetup-keyscript
 cryptsetupver=2.0.1
 pkgver=${cryptsetupver}.keyscript
-pkgrel=2
+pkgrel=1
 pkgdesc="Patched cryptsetup that supports invoking a script to obtain passphrase"
 arch=(i686 x86_64)
 license=('GPL')
