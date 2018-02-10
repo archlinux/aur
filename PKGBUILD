@@ -3,11 +3,11 @@
 # Old Maintainer: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: Tobias Kieslich <tobias@justdreams.de>
-# Contributor: Neil Romig <neil@sixtythree.me.uk>
+# Contributor: Neil Romig <neilromig@gmail.com>
 
 pkgname=courier-authlib
 pkgver=0.68.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Authentication library for the Courier mailserver(s)"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -25,10 +25,12 @@ options=(!libtool !staticlibs emptydirs)
 install=${pkgname}.install
 source=(http://downloads.sourceforge.net/project/courier/authlib/${pkgver}/${pkgname}-${pkgver}.tar.bz2
         courier-authlib.tmpfiles
-	authdaemond.service)
+	authdaemond.service
+	courier.conf)
 sha512sums=('5c4adaf0fd69f4b9e780962aa3f9eeac6b15cea3f302288ff4549ce2b0be9ea0808b4501670ef3c4e0419c3d27505c256c082f795dea4683dd5265fd7dcab93b'
 '5047fea9990cd2cd415e11c81fbd8ff83b70dadf0fc178b2398b2c9930843a4669abb3c6801f2953c1ebfdae73c1f82d0ee8c24e900f3876ee6b3aa689363b62'
-'2168a3d2f92bbc4c24ba80030236dd39a871ccd0f945ea9481518356f6ddfeec3661f161cd6a65d852bce6d9b089d7fa4860337615b9157199aaef336c58d268')
+'ee258f996dc929371f76681a27b174588b3bb30afb1aa474a58be9e596d35aa43f9c0fa50a1a57a30ccf9bdb3caa975ce928991fca44351959cc806591a05ef0'
+'997f755516a64f38abb626790e22e0ad6c3d9fbd7d3e76199cc335ce60f9d5e94dfa083deb637cc36fe039b5b1aa713224e2175b65b1980bf3b304499e3e96e6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -71,6 +73,9 @@ package() {
   install -Dm 444 authldap.schema  "${pkgdir}/etc/openldap/schema/courier.schema"
 
   chown 72:72 "${pkgdir}/usr/lib/courier-authlib"
+
+  # Install systemd sysuser file
+  install -Dm 644 "$srcdir/courier.conf" "${pkgdir}/usr/lib/sysusers.d/courier.conf"
 
   # Install service file
   install -Dm 644 "${srcdir}/authdaemond.service" "${pkgdir}/usr/lib/systemd/system/authdaemond.service"
