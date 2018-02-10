@@ -2,7 +2,7 @@
 
 pkgbase=linux-surfacepro3-git
 _srcname=linux
-pkgver=4.15.r0.gd8a5b80568a9cb6681
+pkgver=4.15.r12370.gc839682c719f0e3dc8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '4633ae19b9a9871a3cfffba98ec7c3cd240f64bef8a0eebcf1212219c80972fd'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             '56152d1f7cac31d0a9a7414e950106c3945d5de8d50bc75cf7385fa46078b1de'
-            'f30544c76c18f8c7c91e34be907601482ec6d24338f7d60891980f9e74736779'
+            '8d1f36685b92421c796377e6f3cc9d3785cf5d9b36110321657f46cef75703d2'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
             '31d109a2f5864d865b3ce3c310158b2e9ae77f9c424f2af5a7e45548d62a2eb3')
@@ -77,9 +77,6 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # get kernel version
-  make prepare
-
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   # make menuconfig # CLI menu for configuration
@@ -108,6 +105,9 @@ prepare() {
   *)
     printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
   esac
+
+  # get kernel version
+  make prepare
 
   # rewrite configuration
   yes "" | make config >/dev/null
