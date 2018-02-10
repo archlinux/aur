@@ -4,7 +4,7 @@
 _gemname=terminal-notifier
 pkgname=ruby-$_gemname
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Send User Notifications on Mac OS X 10.10 or higher.'
 arch=(any)
 url='https://github.com/alloy/terminal-notifier'
