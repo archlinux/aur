@@ -31,7 +31,7 @@ prepare() {
   install -d $srcdir/usr/share/cups/model
   install -d $srcdir/usr/lib/cups/filter
 
-  # go to the cupswrapper directory and find the source file from wich to generate a ppd- and wrapper-file
+  # go to the cupswrapper directory and find the source file from which to generate a ppd- and wrapper-file
   cd `find . -type d -name 'cupswrapper'`
   if [ -f cupswrapper* ]; then
     _wrapper_source=`ls cupswrapper*`
