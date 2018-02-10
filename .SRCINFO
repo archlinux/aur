@@ -1,0 +1,16 @@
+pkgbase = ttf-sw2010
+	pkgdesc = SignWriting 2010 is a typeface for written sign languages which makes the entire International SignWriting Alphabet 2010 symbol set available in TrueType fonts.
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/Slevinski/signwriting_2010_fonts
+	install = ttf-sw2010.install
+	arch = any
+	license = SIL Open Font License 1.1
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = ttf-sw2010-3.0.2.tar.gz::https://codeload.github.com/Slevinski/signwriting_2010_fonts/tar.gz/v3.0.2
+	sha256sums = SKIP
+
+pkgname = ttf-sw2010
+
