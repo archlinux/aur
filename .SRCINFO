@@ -1,19 +1,19 @@
 pkgbase = instead
 	pkgdesc = a quest interpreter
-	pkgver = 3.1.2
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = http://sourceforge.net/projects/instead/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	depends = sdl_image
-	depends = sdl_mixer
-	depends = sdl_ttf
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
 	depends = lua
 	depends = gtk2
 	optdepends = instead-launcher: install and update INSTEAD games from net
-	source = http://downloads.sourceforge.net/project/instead/instead/3.1.2/instead_3.1.2.tar.gz
-	sha256sums = e1990bf8d48471fbc8fce60914e343df6bff87eac9cfbfad7d980c56c54e9282
+	source = http://downloads.sourceforge.net/project/instead/instead/3.2.0/instead_3.2.0.tar.gz
+	sha256sums = ca6cf93b02039df2c6fe36e429566cf52b6a957724f748a45b36edfe6cc3a750
 
 pkgname = instead
 
