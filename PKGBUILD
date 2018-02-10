@@ -7,6 +7,7 @@ pkgdesc="App container tools (DEPRECATED; use OCI opencontainers.org)"
 arch=('x86_64')
 url="https://github.com/appc/spec"
 license=(apache)
+depends=('glibc')
 makedepends=('go')
 provides=('appc')
 source=("https://github.com/appc/spec/archive/v${pkgver}.tar.gz")
