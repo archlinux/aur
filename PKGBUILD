@@ -27,4 +27,6 @@ package() {
     mkdir -p "$pkgdir/usr/lib"
     cp -R dam "$pkgdir/usr/lib"
     install -m 644 -D dam.service "$pkgdir/usr/lib/systemd/system/dam.service"
+    install -m 644 -D "dam/config/config.yml" "$pkgdir/etc/dam.yml"
+    install -d "$pkgdir/var/lib/dam/downloads"
 }
