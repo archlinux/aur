@@ -5,11 +5,11 @@ _pkgbase=libsigc++
 pkgbase=lib32-libsigc++
 pkgname=${pkgbase}
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('LGPL')
 url="http://libsigc.sourceforge.net/"
-makedepends=('gcc-libs' 'git' 'mm-common' 'libxslt' 'graphviz')
+makedepends=('lib32-gcc-libs' 'git' 'mm-common' 'libxslt' 'graphviz')
 options=('!emptydirs')
 _commit=83f1e2fe7855f85af570b9653903d2c426d67e72
 source=("git://git.gnome.org/libsigcplusplus#commit=$_commit")
@@ -33,7 +33,7 @@ build() {
 
 package() {
   pkgdesc="Libsigc++ implements a full callback system for use in widget libraries - V2"
-  depends=('gcc-libs')
+  depends=('lib32-gcc-libs')
 
   cd libsigcplusplus
   sed -i -e 's/^doc_subdirs/#doc_subdirs/' Makefile

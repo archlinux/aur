@@ -1,10 +1,10 @@
 pkgbase = lib32-libsigc++
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libsigc.sourceforge.net/
 	arch = x86_64
 	license = LGPL
-	makedepends = gcc-libs
+	makedepends = lib32-gcc-libs
 	makedepends = git
 	makedepends = mm-common
 	makedepends = libxslt
@@ -15,5 +15,5 @@ pkgbase = lib32-libsigc++
 
 pkgname = lib32-libsigc++
 	pkgdesc = Libsigc++ implements a full callback system for use in widget libraries - V2
-	depends = gcc-libs
+	depends = lib32-gcc-libs
 
