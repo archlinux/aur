@@ -3,7 +3,7 @@
 pkgname=ttf-averia
 pkgver=20120214
 _dlhash="dc61396d0f8e3b0130933b1227022c20"
-pkgrel=2
+pkgrel=3
 pkgdesc='The Average Font'
 url="http://iotic.com/averia/"
 license=('GPL' 'custom:OFL')
@@ -21,5 +21,4 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 FONTLOG.txt "${pkgdir}/usr/share/doc/${pkgname}/"
 }
-sha1sums=('40e22b5adca016d411541da173d28a2ce00ba0ab'
-          '62028e537a7ea090781b5effabd91ba5e946eb75')
+sha1sums=('40e22b5adca016d411541da173d28a2ce00ba0ab')
