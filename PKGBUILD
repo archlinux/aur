@@ -6,12 +6,12 @@
 
 pkgname=courier-imap
 pkgver=4.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP(s)/POP3(s) Server"
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL2')
 url="http://www.courier-mta.org/imap/"
-depends=('courier-maildrop' 'gcc-libs' 'gamin' 'gdbm' 'openssl' 'courier-unicode>=2.0')
+depends=('courier-maildrop' 'gcc-libs' 'gamin' 'gdbm' 'openssl' 'courier-unicode>=2.0' 'courier-authlib')
 backup=('etc/courier-imap/imapd.cnf' 'etc/courier-imap/pop3d.cnf' \
         'etc/courier-imap/imapd' 'etc/courier-imap/imapd-ssl' \
         'etc/courier-imap/pop3d' 'etc/courier-imap/pop3d-ssl')
@@ -24,10 +24,10 @@ source=(http://downloads.sourceforge.net/project/courier/imap/${pkgver}/${pkgnam
 	courier-pop3d.service
 	courier-pop3d-ssl.service)
 sha512sums=('821f0151012f1a357faf705d938d8498a939cc994957398c0d5e2b7a619eabe202549f174e625161545ba6a94b753072458e9f0edc30cbb2443b15405740347e'
-	    'fcbc553e2b4542f246762ed1b20f1ae6a8f2b7c808e9ac537577e21ad933a0b1b4ea04eabb900ef423e2f4d037f973e73bf5f7e8ff6f0e3f7997f26dfd39b09f'
-	    'daec41de02a8b056a0b54e9c5446e144192762e4354875fb18b306473e006eadee74664e65f45e07e071b70158f741720a9acd41c14474d61ee0c619a59e8a98'
-	    '329ae0f76d5db53ed5392584ddfe7c4a10bfcec51a50c80d10fda1c318ab4929251ecc206403e045dba2c1d7388334473e2d8bf04dcfcc3d07301e89a609ea57'
-	    '337639e7c666e972ffc9d9fe58a897b3643582c80c22cf2503d616319c3e69969bba2fc629b4ae7f94a6f6a97ae0524b8c12426c5f05be4240e742a1f7c9d934')
+	    'dfb4caa92e5033fbd5396df2e1718ae1f18d63d41f61e14014edee31f823d0fe49a151af570546767a7bafa31e0517717c1aef82896ff6741696a35bba397925'
+	    '7cd18dc9449255ab7fc945ceb836e470afcfa2e722bd20c19d46a88082eee61d9136a4cbccc082625ba1f0c97d70c287d2b98718694613c32a180decce5f3051'
+	    '419014a8956bb82de36f29afe859b6b2b57818fc7456a734c3447b389ff606c2bfe400506a2c33d4cec005583081e4cb78c38230d126aadc1f62b9ce0ec1e4d0'
+	    '896af7b284e48f1b85f7d485b3ca169b2b5b90f8678018a1473fe18b4852f149623c2883614d5aa8205f1a3debe910b5cbf18904adb4985bb72059704f9ebec1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -65,6 +65,8 @@ package() {
   # this is what usually "make install-configure" does
   # *.dist files get rid of "dist"
   for _distfile in "${pkgdir}/etc/courier-imap/"*.dist; do
+     # change ownership where it is assumed the user & group already exist
+     chown -R 72:72 "${pkgdir}/etc/courier-imap/"
      mv "${_distfile}" "${pkgdir}/etc/courier-imap/"$(basename "${_distfile}" .dist)
   done
   sed -i 's|TLS_CERTFILE=/usr/share/|TLS_CERTFILE=/etc/courier-imap/|' \
@@ -74,6 +76,8 @@ package() {
   #  install -Dm 644 "${_pamfile}" \
   #    "${pkgdir}/etc/pam.d/"$(basename "${_pamfile}" .pam | sed "s/d$//")
   #done
+
+  chown 72:72 "${pkgdir}/usr/lib/courier-imap"
 
   # Install systemd service files
   install -Dm 644 "${srcdir}/courier-imapd.service" 	"${pkgdir}/usr/lib/systemd/system/courier-imapd.service"

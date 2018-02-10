@@ -5,10 +5,13 @@ After=authdaemond.service
 
 [Service]
 Type=forking
+User=courier
+Group=courier
 EnvironmentFile=/etc/courier-imap/pop3d
 ExecStart=/usr/lib/courier-imap/pop3d.rc start
 ExecStop=/usr/lib/courier-imap/pop3d.rc stop
 PIDFile=/var/run/courier/pop3d.pid
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID
 
 [Install]
 WantedBy=multi-user.target
