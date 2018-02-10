@@ -1,0 +1,26 @@
+pkgbase = gnutls-tiny-git
+	pkgdesc = A secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them
+	pkgver = 3.6.0.1.r11.g2b29963b5
+	pkgrel = 1
+	url = https://www.gnutls.org/
+	arch = x86_64
+	license = GPL3
+	license = LGPL2.1
+	checkdepends = net-tools
+	makedepends = git
+	depends = gcc-libs
+	depends = libidn2
+	depends = libtasn1
+	depends = libunistring
+	depends = nettle
+	depends = p11-kit
+	depends = readline
+	depends = zlib
+	optdepends = guile: for use with Guile bindings
+	provides = gnutls
+	conflicts = gnutls
+	source = git+https://gitlab.com/gnutls/gnutls.git
+	sha256sums = SKIP
+
+pkgname = gnutls-tiny-git
+
