@@ -10,6 +10,8 @@ pkgbase = libvmaf-git
 	provides = libvmaf
 	conflicts = libvmaf
 	source = vmaf-git::git+https://github.com/Netflix/vmaf.git
+	source = submodule-sureal::git+https://github.com/Netflix/sureal.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libvmaf-git

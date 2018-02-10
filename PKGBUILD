@@ -11,8 +11,18 @@ license=('APACHE')
 makedepends=('git')
 provides=('libvmaf')
 conflicts=('libvmaf')
-source=("${_srcname}"::"git+https://github.com/Netflix/${_srcname%-git}.git")
-sha256sums=('SKIP')
+source=("${_srcname}"::"git+https://github.com/Netflix/${_srcname%-git}.git"
+        'submodule-sureal'::'git+https://github.com/Netflix/sureal.git')
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+    cd "${_srcname}"
+    
+    git submodule init
+    git config --local submodule.sureal.url "${srcdir}/submodule-sureal"
+    git submodule update
+}
 
 pkgver() {
     cd "${_srcname}"
