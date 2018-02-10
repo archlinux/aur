@@ -1,20 +1,20 @@
-# Maintainer: Peter Hoeg <firstname at lastname dot com>
+# Maintainer: ILMostro7 <ilmostro7@gmail.com>
 
 pkgname=appc
-pkgver=0.7.4
+pkgver=0.8.11
 pkgrel=1
-pkgdesc="App container tools"
+pkgdesc="App container tools (DEPRECATED; use OCI opencontainers.org)"
 arch=('x86_64')
 url="https://github.com/appc/spec"
 license=(apache)
 makedepends=('go')
 provides=('appc')
 source=("https://github.com/appc/spec/archive/v${pkgver}.tar.gz")
-sha1sums=('7946ceb6a0764d5ac209928f0abcdfa07a02dace')
+sha1sums=('8dd9af6648cf367919774eb0613b0697471a8858')
 
 build() {
   cd "spec-${pkgver}"
-  ./build
+  ./build.sh
   strip bin/*
 }
 
