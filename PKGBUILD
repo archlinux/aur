@@ -4,7 +4,7 @@
 _gemname=jwt
 pkgname=ruby-$_gemname
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='JSON Web Token implementation in Ruby'
 arch=(any)
 url='http://github.com/jwt/ruby-jwt'
