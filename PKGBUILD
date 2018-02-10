@@ -9,7 +9,7 @@ pkgdesc="Combined X.Org X11 Protocol headers - Git version"
 arch=('any')
 url="http://cgit.freedesktop.org/xorg/proto/$_pkgname/"
 license=('custom')
-makedepends=('git' 'xorg-util-macros') # 'xmlto' 'libxslt' 'linuxdoc-tools' 'docbook-sgml' 'fop')
+makedepends=('git' 'xorg-util-macros')
 provides=('xorgproto' 'bigreqsproto' 'compositeproto' 'damageproto' 'dmxproto' 'dri2proto' 'dri3proto' 'fixesproto' 'fontsproto' 'glproto' 'inputproto' 'kbproto' 'presentproto' 'printproto' 'randrproto' 'recordproto' 'renderproto' 'resourceproto' 'scrnsaverproto' 'videoproto' 'xcmiscproto' 'xextproto' 'xf86dgaproto' 'xf86driproto' 'xf86miscproto' 'xf86vidmodeproto' 'xineramaproto' 'xproto')
 conflicts=(${provides[@]})
 replaces=(${provides[@]/xorgproto})
@@ -18,7 +18,6 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-
   echo $(git describe --long | cut -d "-" -f2-3 | tr - .).r$(git rev-list HEAD --count).$(git describe --long | cut -d "-" -f4)
 }
 
