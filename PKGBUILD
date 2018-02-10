@@ -4,7 +4,7 @@
 _gemname=nanaimo
 pkgname=ruby-$_gemname
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for (de)serialization of ASCII Plists.'
 arch=(any)
 url='https://github.com/CocoaPods/Nanaimo'

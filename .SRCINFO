@@ -1,7 +1,7 @@
 pkgbase = ruby-nanaimo
 	pkgdesc = A library for (de)serialization of ASCII Plists.
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CocoaPods/Nanaimo
 	arch = any
 	license = MIT
