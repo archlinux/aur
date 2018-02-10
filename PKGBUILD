@@ -4,7 +4,7 @@
 pkgname=nextcloud-app-spreed
 pkgver=3.0.1
 pkgrel=1
-pkgdesc="spreed.memail integration for nextcloud"
+pkgdesc="Video- and audio-conferencing app for Nextcloud"
 arch=('any')
 url="https://apps.nextcloud.com/apps/spreed"
 license=('GPL')
