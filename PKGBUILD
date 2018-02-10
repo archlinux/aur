@@ -1,7 +1,7 @@
 pkgname='ccemux-git'
-pkgver=c13fed3650
+pkgver=bb97056
 pkgrel=1
-source=('git+https://github.com/Lignumm/CCEmuX.git#branch=master'
+source=('git+https://github.com/Lignumm/CCEmuX.git#branch=revival'
         'ccemux.desktop'
         'ccemux'
         'icon.png')
@@ -13,7 +13,10 @@ pkgdesc="Graphical ComputerCraft emulator"
 arch=('any')
 url="https://github.com/lignumm/ccemux"
 license=('MIT')
-depends=('java-environment>=8' 'bash')
+
+depends=('java-runtime>=8')
+makedepends=('java-environment>=8' 'java-openjfx>=8' 'bash')
+optdepends=('java-openjfx>=8: javafx renderer support')
 
 pkgver() {
   cd "${srcdir}/CCEmuX"
@@ -33,7 +36,7 @@ package () {
   install -dm755 "${pkgdir}/usr/share/licenses/$pkgname"
   install -dm755 "${pkgdir}/usr/share/pixmaps"
 
-  cp ${srcdir}/CCEmuX/build/libs/CCEmuX*.jar "${pkgdir}/usr/share/ccemux.jar"
+  cp ${srcdir}/CCEmuX/build/libs/CCEmuX*-all.jar "${pkgdir}/usr/share/ccemux.jar"
   cp "${srcdir}/ccemux.desktop" "${pkgdir}/usr/share/applications"
   cp "${srcdir}/ccemux" "${pkgdir}/usr/bin/"
   chmod 755 "${pkgdir}/usr/bin/ccemux"
