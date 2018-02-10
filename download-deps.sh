@@ -17,6 +17,19 @@ tmpbuildpath="$(realpath tmp-deps-build)"
 
 targetdepspath="$depspath/deps"
 
+getsemverspec() {
+  local dep="$1"
+  local semverspec="$(echo "$dep" | gawk -F'@' '{ print $NF }')"
+  echo "$semverspec"
+}
+
+getpackagename() {
+  local dep="$1"
+  local semverspec="$2"
+  local package="${dep//@$semverspec}"
+  echo "$package"
+}
+
 # move from $depspath or download deps to the $targetdepspath
 # save info in sourcelist sha1sumslist noextractlist files
 onlinebestmatch() {
@@ -80,8 +93,8 @@ recursivedownloaddeps() {
     find "$folder" -mindepth 1 -maxdepth 1 | xargs mv -t .
     rm -r "$folder"
     cat package.json | jq -r '.dependencies | to_entries? | map(.key + "@" + .value) | .[]' | while read dep; do
-      local package="$(echo "$dep" | gawk -F'@' '{ print $1 }')"
-      local semverspec="$(echo "$dep" | gawk -F'@' '{ print $2 }')"
+      local semverspec="$(getsemverspec "$dep")"
+      local package="$(getpackagename "$dep" "$semverspec")"
       if [ ! -d "$tmpbuildpath/${target}/node_modules/$package" ]; then
         local subtarget="$(onlinebestmatch "$package" "$semverspec")"
         recursivedownloaddeps "$subtarget"
@@ -94,8 +107,8 @@ recursivedownloaddeps() {
 downloaddeps() {
   cd "$tmpbuildpath"
   cat "$packagejsonpath" | jq -r '.dependencies, .devDependencies | to_entries? | map(.key + "@" + .value) | .[]' | sort -u | while read dep; do
-    local package="$(echo "$dep" | gawk -F'@' '{ print $1 }')"
-    local semverspec="$(echo "$dep" | gawk -F'@' '{ print $2 }')"
+    local semverspec="$(getsemverspec "$dep")"
+    local package="$(getpackagename "$dep" "$semverspec")"
     local target="$(onlinebestmatch "$package" "$semverspec")"
     recursivedownloaddeps "$target"
   done
