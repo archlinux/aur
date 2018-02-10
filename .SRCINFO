@@ -1,5 +1,5 @@
 pkgbase = linux-surfacepro3-git
-	pkgver = 4.15.r12370.gc839682c719f0e3dc8
+	pkgver = 4.15.r12396.g9a61df9e5f7471fe5b
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
