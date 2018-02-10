@@ -15,18 +15,16 @@ Signed-off-by: Daniel Martin <consume.noise@gmail.com>
 
 diff --git a/drivers/hid/hid-multitouch.c b/drivers/hid/hid-multitouch.c
 index 1cc1108..625f1ee 100644
---- a/drivers/hid/hid-multitouch.c
+--- a/drivers/hid/hid-multitouch.c.orig
 +++ b/drivers/hid/hid-multitouch.c
-@@ -206,7 +206,8 @@ static struct mt_class mt_classes[] = {
- 		.quirks = MT_QUIRK_ALWAYS_VALID |
+@@ -225,6 +225,7 @@ static struct mt_class mt_classes[] = {
  			MT_QUIRK_IGNORE_DUPLICATES |
  			MT_QUIRK_HOVERING |
--			MT_QUIRK_CONTACT_CNT_ACCURATE },
-+			MT_QUIRK_CONTACT_CNT_ACCURATE |
-+			MT_QUIRK_NOT_SEEN_MEANS_UP },
+ 			MT_QUIRK_CONTACT_CNT_ACCURATE |
++			MT_QUIRK_NOT_SEEN_MEANS_UP |
+ 			MT_QUIRK_STICKY_FINGERS },
  	{ .name = MT_CLS_EXPORT_ALL_INPUTS,
- 		.quirks = MT_QUIRK_ALWAYS_VALID |
- 			MT_QUIRK_CONTACT_CNT_ACCURATE,
+ 		.quirks = MT_QUIRK_ALWAYS_VALID |			MT_QUIRK_CONTACT_CNT_ACCURATE,
 @@ -1054,7 +1055,8 @@ static int mt_probe(struct hid_device *hdev, const struct hid_device_id *id)
  		return -ENOMEM;
  	}

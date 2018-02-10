@@ -2,9 +2,9 @@
 # Contributor: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3-rt
-_srcname=linux-4.11.12
+_srcname=linux-4.14.18
 pkgver=${_srcname#linux-}
-_rtver=rt9
+_rtver=rt15
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
@@ -23,18 +23,18 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
 )
 
-sha256sums=('2e37d4e18094f66b8bd632cac0a3c08a39a14a1ada4a1c78a5e336c4d3036192'
+sha256sums=('866a94c1c38d923ae18e74b683d7a8a79b674ebdfe7f40f1a3be9a27d39fe354'
             'SKIP'
-            '6e6112ec9c076c9a7a6ee6fe623d5059e2944622062307ecaca8a874e8908a0e'
+            'ca5923ba7e8430787d2c549a7e452de50752ec6c205d5cb361c41b0c3511da1c'
             'SKIP'
             'ec655100ebc32d6699a258d7682953f928d1eb1042b895b04283d85ae57b80c1'
             'f479a5ca6abe4d50ca4c09e6e83a027369fcd3efff8d5ce60f0699d8fa47beb8'
             '4633ae19b9a9871a3cfffba98ec7c3cd240f64bef8a0eebcf1212219c80972fd'
-            'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
+            '4aba811145ed1d631e6ac9f16ff998e8756d23adabc97e47e82850ea4ef9afc4'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
             '1cd39cdbb20bb58d81e1cd466d714ab45d7f67d97c231b7ef900868440168cca'
             'ed9b9e6efaf4f23e7ae3406322b4d1d3080e8dbc7ab3f03bcbf728ca2010e21b'
-            '4cacf3d594496dd514d2a5b3b0bf4501e266f4088ebe93c15d147f16688543a4'
+            'b8e03c68103ba5af7e1f82892b639057876cf67187f655076fe3dd928066bf7a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c')
 
 validpgpkeys=(
@@ -56,28 +56,33 @@ prepare() {
   patch -p1 -i ${srcdir}/patch-${pkgver}-${_rtver}.patch
 
   # These patches work around buggy hardware implementations
-  # in the surface pro 3 touchscreen module.
+  # in the https://youtu.be/h8H_103VGrwsurface pro 3 touchscreen module.
   patch -p1 -i "${srcdir}/touchscreen_multitouch_fixes1.patch"
   patch -p1 -i "${srcdir}/touchscreen_multitouch_fixes2.patch"
 
   # Personal patches
-  if [ "$personal" = 'y' ]; then
+  if [[ "$personal" == y ]]; then
     for i in init kconfig xattr; do
-      patch -p1 -i "${srcdir}/${i}.patch"
+      patch -p1 -F5 -i "${srcdir}/${i}.patch"
     done
   fi
 
   ## If sp3config='y' use personal config as a base
-  if [ "$sp3config" = 'y' ]; then
+  if [[ "$sp3config" == y ]]; then
     cat "${srcdir}/config.sp3" >./.config
-  elif [ "$CARCH" = "x86_64" ]; then
+  elif [[ "$CARCH" == x86_64 ]]; then
     cat "${srcdir}/config.x86_64" >./.config
   else
     cat "${srcdir}/config" > ./.config
   fi
 
-  if [ "${_kernelname}" != "" ]; then
+  # set localversion to kernel name
+  if [[ -n "${_kernelname}" ]]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
+    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
+  else
+    # set localversion to git commit
+    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
@@ -87,30 +92,37 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make nconfig # new CLI menu for configuration
-  #make olddefconfia # Use current kernel configuration
-  # ... or manually edit .config
-
-  printf '\n \033[32m %s \033[0m ' "[Run local([m]odconfig|[y]esconfig) or [s]kip? (m/y/S)]"; read -r -n 1; echo
-  case $REPLY in
-          [Mm]*) make localmodconfig ;;
-          [Yy]*) make localyesconfig ;;
-          *) printf ' \033[32m %s \n\033[0m ' "Continuing..." ;;
-  esac
-
-  printf '\n \033[32m %s \033[0m ' "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"; read -r -n 1; echo
-  case $REPLY in
-          [Nn]*) make nconfig ;;
-          [Oo]*) make olddefconfig ;;
-          *) printf ' \033[32m %s \n\033[0m ' "Continuing..."; ;;
-  esac
-
   # get kernel version
   make prepare
+
+  # load configuration
+  # Configure the kernel. Replace the line below with one of your choice.
+  # make menuconfig # CLI menu for configuration
+  # make xconfig # X-based configuration
+  # make oldconfig # using old config from previous kernel verson
+  # make nconfig # new CLI menu for configuration
+  # make olddefconfig # old config from previous kernel, defaults for new options
+  # ... or manually edit .config
+
+  printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run local([m]odconfig|[y]esconfig) or [s]kip? (m/y/S)]"
+  read -r; echo; case "${REPLY:0:1}" in
+  [Mm])
+    make localmodconfig ;;
+  [Yy])
+    make localyesconfig ;;
+  *)
+    printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
+  esac
+
+  printf "\n$(tput setaf 2)\t%s $(tput sgr0)" "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"
+  read -r; echo; case "${REPLY:0:1}" in
+  [Nn])
+    make nconfig ;;
+  [Oo])
+    make olddefconfig ;;
+  *)
+    printf "$(tput setaf 3)\t%s $(tput sgr0)\n" "Continuing..." ;;
+  esac
 
   # rewrite configuration
   yes "" | make config >/dev/null
