@@ -19,6 +19,7 @@ pkgbase = palemoon-unstable
 	optdepends = ffmpeg: record, convert, and stream audio and video
 	provides = palemoon=27.8.0a1
 	conflicts = palemoon
+	replaces = palemoon-unstable-bin
 	options = !strip
 	source = palemoon.desktop
 	sha256sums = c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e
