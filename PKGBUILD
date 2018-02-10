@@ -1,7 +1,7 @@
 # Maintainer: aimileus <me at aimileus dot nl>
 pkgname=python-snowboy-git
 _pkgname=snowboy
-pkgver=v1.2.0.r128.g4ee4811
+pkgver=v1.2.0.r134.g7d20d7f
 pkgrel=1
 pkgdesc="A hotword detection engine - Python bindings"
 arch=('x86_64')
