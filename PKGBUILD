@@ -4,7 +4,7 @@
 _gemname=declarative
 pkgname=ruby-$_gemname
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='DSL for nested schemas.'
 arch=(any)
 url=''
