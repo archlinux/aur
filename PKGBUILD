@@ -3,7 +3,7 @@
 _gemname=unicode-display_width
 pkgname=ruby-${_gemname}
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Determines the monospace display width of a string"
 arch=('any')
 depends=('ruby')
