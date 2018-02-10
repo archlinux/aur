@@ -7,39 +7,38 @@ pkgbase="libcups-ipp14"
 ### Commenting the "split packages sections - unsupported by AUR apparently ###
 #pkgname=('libcups-ipp14' 'cups-ipp14')
 pkgname=(${pkgbase})
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.6
+pkgrel=1
 arch=('i686' 'x86_64')
 provides=('libcups' 'libcups-ipp14')
 replaces=('libcups')
 conflicts=('libcups')
 license=('GPL')
-url="http://www.cups.org/"
-makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
+url="https://www.cups.org/"
+makedepends=('libtiff' 'libpng' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
              'cups-filters' 'bc' 'colord' 'xinetd' 'gzip' 'autoconf' 'libusb' 'dbus' 
              'avahi'  'hicolor-icon-theme' 'systemd' 'inetutils' 'libpaper' 'valgrind')
 source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver}-source.tar.gz{,.sig}
         cups.logrotate cups.pam
+        cups.sysusers guid.patch
         # improve build and linking
         cups-no-export-ssllibs.patch
-        cups-no-gcrypt.patch
         cups-no-gzip-man.patch
         cups-1.6.2-statedir.patch
-        cups-1.6.0-fix-install-perms.patch
         # bugfixes
         cups-systemd-socket.patch
         # IPP 1.4
         add-ipp-backend-of-cups-1.4.patch)
 
-sha256sums=('f589bb7d5d1dc3aa0915d7cf2b808571ef2e1530cd1a6ebe76ae8f9f4994e4f6'
+sha256sums=('40385778c2b3bdf55030d1c999734e22774c79e3425d91339ce677825620169b'
             'SKIP'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
+            '06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2'
+            'd4537526c1e075866ae22ad263da000fc2a592d36c26b79a459a1cfdade2bb2d'
             'ff3eb0782af0405f5dafe89e04b1b4ea7a49afc5496860d724343bd04f375832'
-            '1423673e16e374ed372c5b69aebc785b6674bf40601c74a5c08454f672ffa7f1'
             'b8fc2e3bc603495f0278410350ea8f0161d9d83719feb64f573b63430cb4800b'
             '23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af'
-            '4a4a885bb2e111bd67bcb90a5780f33841b18bc02382317fb5e64c384aa0c4c8'
             'cdad3c266cb2abb0f90af3113420fa47a09e3ed974a2ffa9fb6a642e11971d65'
             '375614399e38ddb7af9375472a75e8a83eb3c587595ee079286cbc45094e3c26')
 
@@ -55,24 +54,23 @@ prepare() {
   # improve build and linking
   # Do not export SSL libs in cups-config
   patch -Np1 -i ${srcdir}/cups-no-export-ssllibs.patch
-  # https://www.cups.org/str.php?L4399
-  patch -Np1 -i ${srcdir}/cups-no-gcrypt.patch
   # don't zip man pages in make install, let makepkg do that / Fedora
   patch -Np1 -i ${srcdir}/cups-no-gzip-man.patch
   # move /var/run -> /run for pid file
   patch -Np1 -i ${srcdir}/cups-1.6.2-statedir.patch
-  # fix permissions on some files (by Gentoo) - alternative: cups-0755.patch by FC
-  patch -Np0 -i ${srcdir}/cups-1.6.0-fix-install-perms.patch
 
   # bug fixes
   # make sure network is up when starting and notify systemd - FC
   patch -Np1 -i ${srcdir}/cups-systemd-socket.patch
 
+  # FS#56818 - https://github.com/apple/cups/issues/5236
+  patch -Np1 -i ${srcdir}/guid.patch
+
   # set MaxLogSize to 0 to prevent using cups internal log rotation
   sed -i -e '5i\ ' conf/cupsd.conf.in
   sed -i -e '6i# Disable cups internal logging - use logrotate instead' conf/cupsd.conf.in
   sed -i -e '7iMaxLogSize 0' conf/cupsd.conf.in
-  
+
   # Rebuild configure script for not zipping man-pages.
   aclocal -I config-scripts
   autoconf -I config-scripts
@@ -80,6 +78,8 @@ prepare() {
 
 build() {
   cd ${_pkgbase}-${pkgver}
+
+  # use fixed cups user (id 209) since systemd adds "lp" group without a fixed id
   ./configure --prefix=/usr \
      --sysconfdir=/etc \
      --localstatedir=/var \
@@ -87,8 +87,9 @@ build() {
      --libdir=/usr/lib \
      --with-logdir=/var/log/cups \
      --with-docdir=/usr/share/cups/doc \
-     --with-cups-user=daemon \
-     --with-cups-group=lp \
+     --with-exe-file-perm=0755 \
+     --with-cups-user=209 \
+     --with-cups-group=209 \
      --enable-pam=yes \
      --enable-raw-printing \
      --enable-dbus --with-dbusdir=/etc/dbus-1 \
