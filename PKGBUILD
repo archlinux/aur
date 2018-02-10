@@ -8,10 +8,10 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.14
-_pkgver=4.14.15
-_rtpatchver=rt13
+_pkgver=4.14.18
+_rtpatchver=rt15
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -43,11 +43,11 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
+            '8d29e1d10cabd62b32ac56e33de990e0d4f3c6208f57bd3f2c8c02f9eebc0d72'
             'SKIP'
-            '5b8dbdebc9034b2aa26250e630cad31cfe32044ce2e8b9e81a53fcfae069dfeb'
+            'ca5923ba7e8430787d2c549a7e452de50752ec6c205d5cb361c41b0c3511da1c'
             'SKIP'
-            '8ff52002e8b6b2ec628fc699ff32c989ddc07b59587b73211c5fba6d897eb599'
+            'be24c49a01142458458516972d427fb2e341f9e16b8e631055bcf19e87e94d7b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
