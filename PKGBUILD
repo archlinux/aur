@@ -4,7 +4,7 @@
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
 pkgver=2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Successor to patch-o-matic(-ng). Contains extensions that were not accepted in the main Xtables. DKMS flavor for kernels >= 3.7."
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -16,13 +16,16 @@ makedepends=()
 conflicts=(xtables-addons xtables-addons-git xtables-addons-multikernel)
 replaces=(xtables-addons xtables-addons-git xtables-addons-multikernel)
 source=(dkms.conf
+        kernel-4.15.patch
         https://sourceforge.net/projects/${pkgname%-dkms}/files/Xtables-addons/${pkgname%-dkms}-${pkgver}.tar.xz)
 sha256sums=('c8989ec1ab0c3aaebf557fd19bc0391173a77fb5e7f8b3afc63d3f6593b3b5af'
+            '3cc007d8faa0025e0c2d748b3eb516ad31acbb6781e88efb0b6a7bf0b280db71'
             'd215a9a8b8e66aae04b982fa2e1228e8a71e7dfe42320df99e34e5000cbdf152')
 
 prepare() {
 	# go to builddir
 	cd "${srcdir}/xtables-addons-${pkgver}"
+	patch -p1 -i ../kernel-4.15.patch
 	
 	# disable install-exec-hook (avoids useless calling of depmod -a at 'make install' stage)
 	sed -i 's/^install-exec-hook:$/dont-run:/' Makefile.am
