@@ -1,4 +1,5 @@
 # Maintainer: gbr <gbr@protonmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
@@ -10,7 +11,7 @@
 
 pkgname=ffmpeg3.4
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64')
 url='https://ffmpeg.org/'
