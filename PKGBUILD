@@ -3,7 +3,7 @@
 
 _gemname=fastlane
 pkgname=$_gemname
-pkgver=2.70.3
+pkgver=2.80.0
 pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
@@ -14,14 +14,14 @@ depends=(
   'ruby-addressable<3' 'ruby-addressable>=2.3'
   'ruby-babosa<2' 'ruby-babosa>=1.0.2'
   'ruby-bundler<2' 'ruby-bundler>=1.12'
-  'ruby-cfpropertylist>=2.3' 'ruby-cfpropertylist<3'
+  'ruby-cfpropertylist>=2.3' 'ruby-cfpropertylist<4'
   ruby-colored
   'ruby-commander-fastlane<5' 'ruby-commander-fastlane>=4.4.5'
   'ruby-dotenv<3' 'ruby-dotenv>=2.1.1'
   'ruby-excon<1' 'ruby-excon>=0.45'
   'ruby-faraday<1' 'ruby-faraday>=0.9'
   'ruby-faraday-cookie_jar>=0.0.6' 'ruby-faraday-cookie_jar<0.1'
-  'ruby-faraday_middleware<1' 'ruby-faraday_middleware>=0.9'
+  'ruby-faraday-middleware<1' 'ruby-faraday-middleware>=0.9'
   'ruby-fastimage>=2.1' 'ruby-fastimage<3'
   'ruby-gh_inspector<2' 'ruby-gh_inspector>=1.0.1'
   'ruby-google-api-client>=0.13.1' 'ruby-google-api-client<0.14'
@@ -36,11 +36,11 @@ depends=(
   ruby-public_suffix-2
   'ruby-rubyzip<2' 'ruby-rubyzip>=1.1'
   'ruby-security=0.1.3'
-  # 'ruby-slack-notifier<2' 'ruby-slack-notifier>=1.3'
-  ruby-slack-notifier-1
+  'ruby-slack-notifier<3' 'ruby-slack-notifier>=2'
   'ruby-terminal-notifier<2' 'ruby-terminal-notifier>=1.6.2'
   'ruby-terminal-table<2' 'ruby-terminal-table>=1.4.5'
-  'ruby-tty-screen>=0.6.3' 'ruby-tty-screen<0.7'
+  'ruby-tty-screen>=0.6.3' 'ruby-tty-screen<1'
+  'ruby-tty-spinner>=0.8' 'ruby-tty-spinner<1'
   'ruby-word_wrap<1.1' 'ruby-word_wrap>=1'
   'ruby-xcodeproj>=1.5.2' 'ruby-xcodeproj<2'
   'ruby-xcpretty<1' 'ruby-xcpretty>=0.2.4' 
