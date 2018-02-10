@@ -2,7 +2,7 @@
 
 pkgname=python2-tabulate
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pretty-print tabular data in Python."
 arch=(any)
 url="https://bitbucket.org/astanin/python-tabulate"
