@@ -1,6 +1,6 @@
 pkgbase = nomachine
 	pkgdesc = Remote desktop application
-	pkgver = 6.0.66
+	pkgver = 6.0.78
 	pkgrel = 1
 	url = http://www.nomachine.com
 	install = nomachine.install
@@ -15,16 +15,16 @@ pkgbase = nomachine
 	depends = openssh
 	conflicts = nxmanager nxwebplayer nxserver nxnode nxclient
 	options = !strip
-	source_x86_64 = http://download.nomachine.com/download/6.0/Linux/nomachine_6.0.66_2_x86_64.tar.gz
-	sha512sums_x86_64 = de6bf0bd3fc67a2ae3174f69d20cf455043e313d60e3c116a66609ad7e2b6dcb20c1961944d3013c1ed098c43ee001663a448dfe0df53b5b3d0da62abfd2029d
-	source_i686 = http://download.nomachine.com/download/6.0/Linux/nomachine_6.0.66_2_i686.tar.gz
-	sha512sums_i686 = 5645d5ec581f4c32ac17c4f99a5e3ecaec0e95b7284756b844aeb1416db63feeb9418f7a68eb52c833fe0c195f71de8b1002bab9861166d46c5ff0d9f8fa7c15
-	source_armv6h = http://download.nomachine.com/download/6.0/Linux/nomachine_6.0.66_1_armv6hl.tar.gz
-	sha512sums_armv6h = c4870c7a61bf1383aa9db5195cd1ddfd588b68c099b47a4c09577d735308e04dc7061fa089a052c506a70ea77436e4e3d84498fe52f9897a79dc4e59a04060c0
-	source_armv7h = http://download.nomachine.com/download/6.0/Linux/nomachine_6.0.66_1_armv7hl.tar.gz
-	sha512sums_armv7h = 1d156eed6d65861eaabe4557fd979274a77011a77d65a7eb04e46bf1f628aad7844c6a540d509efde50bdb3e859fddb944cd1f47319b2722453c34fc9c9cf020
-	source_armv8h = http://download.nomachine.com/download/6.0/Linux/nomachine_6.0.66_1_aarch64.tar.gz
-	sha512sums_armv8h = 408017bfe0f287c3ce59f38835cd990a5902041e9faac48b1a2f79f6410e0f09d8eb7be20dea1a5f44ce22b72955f9b78e00c1fc3f1e5aa2d720708f3a68a4d5
+	source_x86_64 = http://download.nomachine.com/download/6.0/Linux/nomachine_6.0.78_1_x86_64.tar.gz
+	sha512sums_x86_64 = 49749ca5bef653045989bd119abe9ec87d83bb41d422bc6702b4211a46745fb27753e8cd409420ab3ca1b6e2ef283a10d19063727eba0a2998e43f8c5265db33
+	source_i686 = http://download.nomachine.com/download/6.0/Linux/nomachine_6.0.78_1_i686.tar.gz
+	sha512sums_i686 = 3044e84b704215f8953ec680281371cf60cf1f2bf63a39ce94a72b0cdef63ffbd0279bf44c9b1854aa1b72f383130be5a4503cf28c08c873f34e13b601f55263
+	source_armv6h = http://download.nomachine.com/download/6.0/Raspberry/nomachine_6.0.78_1_armv6hl.tar.gz
+	sha512sums_armv6h = d023ad2f0571c6ea1e671cbee545f0d203b7eee7111daad33e4cc598bf09dd6862972796d0359c74bfd62c7fa2256a8bdb1da93f1e4cb19b3b17b72fcbef6a16
+	source_armv7h = http://download.nomachine.com/download/6.0/Raspberry/nomachine_6.0.78_1_armv7hl.tar.gz
+	sha512sums_armv7h = 2e5d5f673919ef5869a0bda01c9ad3856b3ed6ba03f97c70d71cb1bdc4d731b1c8ee28e37fc5824967a397dd8d86c764a71fd6498eb4cb43f28d9741ffec2abd
+	source_armv8h = http://download.nomachine.com/download/6.0/Raspberry/nomachine_6.0.78_1_aarch64.tar.gz
+	sha512sums_armv8h = 621032dc376441dad0c1adf731ba631c07642a83cf05c98758d838f31b0b786de317ef628d54575fc1b6368567c4622b3e35c3d1d9eb5732a4267db1403ba3f8
 
 pkgname = nomachine
 
