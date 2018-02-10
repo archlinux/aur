@@ -4,15 +4,15 @@
 # https://github.com/soker90/paquetes-archinux.git
 
 pkgname=betcon
-pkgver=1.6
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="Sports betting management"
-url="https://github.com/soker90/betcon"
+url="http://betcon.eduardoparra.es"
 arch=('any')
 license=('GPLv3')
-depends=('python' 'python-pyqt5' 'sqlite' 'python-pyexcel-ods' 'python-yaml')
+depends=('python' 'python-pyqt5' 'sqlite' 'python-pyexcel-ods' 'python-yaml' 'python-pillow')
 source=("https://github.com/soker90/betcon/archive/$pkgver.tar.gz")
-md5sums=('f1284030540fdb2fe99c2ba00ee85818')
+md5sums=('f5f86748f71bfd92963e3f6cbc0dd402')
 
 package() {
 	mkdir -p ${pkgdir}/usr/share/betcon/default/
@@ -20,6 +20,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/applications/
 	mkdir -p ${pkgdir}/usr/share/pixmaps/
 	mkdir -p ${pkgdir}/usr/bin/
+	mkdir -p ${pkgdir}/usr/share/locale/
 	cp -r ${srcdir}/${pkgname}-${pkgver}/src ${pkgdir}/usr/share/betcon/
 	cp -r ${srcdir}/${pkgname}-${pkgver}/ui ${pkgdir}/usr/share/betcon/
 	cp -r ${srcdir}/${pkgname}-${pkgver}/resources/bookies/ ${pkgdir}/usr/share/betcon/resources/
@@ -29,4 +30,8 @@ package() {
 	cp ${srcdir}/${pkgname}-${pkgver}/resources/icon.png ${pkgdir}/usr/share/pixmaps/betcon.png
 	cp ${srcdir}/${pkgname}-${pkgver}/resources/betcon ${pkgdir}/usr/bin/
 	chmod +x ${pkgdir}/usr/bin/betcon
+	cp -r ${srcdir}/${pkgname}-${pkgver}/lang/mo/* ${pkgdir}/usr/share/locale/
+
 }
+
+
