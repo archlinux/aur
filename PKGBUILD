@@ -1,17 +1,17 @@
 # Maintainer: jjacky
 pkgname=kalu
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news"
 arch=('i686' 'x86_64')
-url="http://jjacky.com/kalu"
+url="https://jjacky.com/kalu"
 license=('GPL3+')
 depends=('dbus' 'polkit' 'gtk3' 'pacman>=5.0' 'pacman<5.1' 'curl' 'libnotify'
          'notification-daemon')
 makedepends=('perl' 'groff')
-source=(http://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
 install=kalu.install
-sha1sums=('dbcc37899302d402717653f11ff303c5dc73b86d')
+sha1sums=('0323a4cfcc269829641f73fd7a0c21a7619660a6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
