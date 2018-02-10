@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=release.2.3.0.r54.gc4fc7e36c
+pkgver=release.2.5.0.r220.g19407a592
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -52,7 +52,6 @@ build() {
       -DUSE_LIBSECRET=On \
       -DUSE_LUA=On \
       -DBUILD_USERMANUAL=False \
-      -DUSE_GNOME_KEYRING=Off \
       -DUSE_COLORD=On \
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DCMAKE_C_FLAGS="-Wno-error=deprecated-declarations -Wno-error=unused-result" \
