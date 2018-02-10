@@ -4,7 +4,7 @@
 _gemname=representable
 pkgname=ruby-$_gemname
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Renders and parses JSON/XML/YAML documents from and to Ruby objects. Includes plain properties, collections, nesting, coercion and more.'
 arch=(any)
 url='https://github.com/apotonick/representable/'
