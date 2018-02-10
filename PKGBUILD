@@ -4,7 +4,7 @@
 _gemname=word_wrap
 pkgname=ruby-$_gemname
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple tool for word-wrapping text'
 arch=(any)
 url='https://github.com/pazdera/word_wrap'
