@@ -1,12 +1,12 @@
 # Maintainer: Vojtech Aschenbrenner <v@asch.cz>
 
 pkgname=lsdn-git
-pkgver=r437.5970e38
+pkgver=r438.14e8230
 pkgrel=1
 pkgdesc="Tool for software defined networking on top of TC"
 arch=('any')
 url="https://github.com/asch/lsdn"
-license=('unknown')
+license=('GPL2')
 groups=()
 depends=('tcl>=8.6.0' 'linux>=4.14' 'uthash' 'libmnl' 'json-c' 'libdaemon')
 makedepends=('git' 'cmake' 'linux>=4.14')
@@ -31,7 +31,11 @@ build() {
 	cd "$srcdir/${pkgname%-git}"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+	cmake .. \
+		-DCMAKE_BUILD_TYPE='Release' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+		-DCMAKE_SKIP_RPATH='TRUE'
 	make
 }
 
