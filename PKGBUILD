@@ -27,5 +27,5 @@ package() {
     mkdir -p "$pkgdir/usr/lib"
     cp -R dam "$pkgdir/usr/lib"
     chmod -R 644 "$pkgdir/usr/lib/dam"
-    install -m 644 -D dam.service "$pkgdir/usr/lib/systemd/system"
+    install -m 644 -D dam.service "$pkgdir/usr/lib/systemd/system/dam.service"
 }
