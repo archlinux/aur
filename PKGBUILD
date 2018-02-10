@@ -4,7 +4,7 @@
 _gemname=signet
 pkgname=ruby-$_gemname
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Signet is an OAuth 1.0 / OAuth 2.0 implementation.'
 arch=(any)
 url='https://github.com/google/signet/'
