@@ -27,12 +27,12 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
-	python setup.py build
+  cd "$_pkgname"
+  python setup.py build
 }
 
 
 package() {
-	cd "$_pkgname"
-	python setup.py install --root="$pkgdir/" --prefix=/usr
+  cd "$_pkgname"
+  python setup.py install --root="$pkgdir/" --prefix=/usr
 }
