@@ -8,8 +8,9 @@ arch=('x86_64')
 url="https://snowboy.kitt.ai/"
 license=('Apache')
 depends=(
-  'python'
-  'atlas-lapack'
+  'cblas'
+  'lapack'
+  'python-pyaudio'
 )
 makedepends=(
   'git'
@@ -31,6 +32,11 @@ build() {
   python setup.py build
 }
 
+prepare() {
+  cd "$_pkgname"
+  sed -i "s|-lf77blas -lcblas -llapack -latlas|-lcblas -llapack|g" \
+    swig/Python3/Makefile
+}
 
 package() {
   cd "$_pkgname"
