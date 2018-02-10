@@ -1,0 +1,5 @@
+*.gz
+*.xz
+pkg/skafos/.[A-Z]*
+pkg/skafos/usr
+src/
