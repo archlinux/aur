@@ -3,17 +3,17 @@
 # Contributor: David Rosenstrauch <darose@darose.net>
 
 pkgname=qps
-pkgver=1.10.16
-pkgrel=5
+pkgver=1.10.17
+pkgrel=1
 pkgdesc="a visual process manager, an X11 version of 'top' or 'ps'."
 url="https://github.com/QtDesktop/qps"
 depends=('qt5-base' 'qt5-x11extras')
 makedepends=('cmake')
 arch=('x86_64')
 license=("GPL")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/QtDesktop/qps/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.xz::https://github.com/QtDesktop/qps/releases/download/1.10.17/$pkgname-$pkgver.tar.xz"
 	"qps.desktop")
-sha256sums=('09015e066c555821c8d7bdcec26bf8d9e0130431664625533b44a73a8de4101f'
+sha256sums=('5142647be1bdee0ed4a4a1785a9aa79f817dbd9ae63c7cc7f42be6d0b4a4e3fe'
             '5216455ce5ce096b36f1b301325fd44c972ff796aa3b40b60807a06dae0ab3f9')
 
 build() {
@@ -29,3 +29,4 @@ package() {
   install -D -m 644 "$srcdir"/qps.desktop "$pkgdir"/usr/share/applications/qps.desktop
   install -D -m 644 icon/icon.xpm "$pkgdir"/usr/share/pixmaps/qps.xpm
 }
+
