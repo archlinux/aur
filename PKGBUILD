@@ -1,4 +1,4 @@
-# Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) >
+# Maintainer: aimileus <me at aimileus dot nl>
 pkgname=firefox-ubuntu-bin
 _pkgname=firefox
 pkgver=58.0.2
