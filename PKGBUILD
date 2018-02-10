@@ -4,7 +4,7 @@
 _gemname=security
 pkgname=ruby-$_gemname
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Security'
 arch=(any)
 url='http://mattt.me'
