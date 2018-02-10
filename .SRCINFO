@@ -1,7 +1,7 @@
 pkgbase = ruby-tty-screen
 	pkgdesc = Terminal screen size detection which works on Linux, OS X and Windows/Cygwin platforms and supports MRI, JRuby and Rubinius interpreters.
 	pkgver = 0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://peter-murach.github.io/tty/
 	arch = any
 	license = MIT
