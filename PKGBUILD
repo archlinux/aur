@@ -2,7 +2,7 @@
 _pkgname=pwntools
 
 pkgname="python2-${_pkgname}-git"
-pkgver=3.12.0beta0.r13.ga208251d
+pkgver=3.12.0beta0.r15.g8a3a5773
 pkgrel=1
 pkgdesc='A CTF framework and exploit development library.'
 arch=('any')
