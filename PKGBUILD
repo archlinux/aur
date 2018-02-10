@@ -5,7 +5,7 @@
 pkgname=hop
 pkgver=3.1.0_pre2
 _pkgver=${pkgver//_/-}
-pkgrel=8
+pkgrel=9
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -13,7 +13,7 @@ depends=('bigloo-devel>=30:4.3alpha11Oct17')
 install=hop.install
 url='http://hop.inria.fr'
 source=("ftp://ftp-sop.inria.fr/indes/fp/Hop/$pkgname-${_pkgver}.tar.gz" hop)
-sha256sums=('1d960dde256e0b1d018d763648f32f8a00f79a26007c48b16fe4cd313e71072f'
+sha256sums=('21a01ab8ae9529d856b31db49151175dc7c4cbea6c881479f3fc5dd6773a782f'
             'd1b40876e3a3d06c32f17c2a50dc950ab8c6ec68d7eea0754fe284ca4c226e5b')
 options=('!makeflags')
 
