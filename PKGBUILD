@@ -4,7 +4,7 @@
 _gemname=commander-fastlane
 pkgname=ruby-$_gemname
 pkgver=4.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='The complete solution for Ruby command-line executables'
 arch=(any)
 url='https://github.com/commander-rb/commander'
