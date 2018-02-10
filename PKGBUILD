@@ -3,7 +3,7 @@ pkgbase=deadbeef-plugin-waveform-git
 pkgname=(deadbeef-plugin-waveform-gtk2-git deadbeef-plugin-waveform-gtk3-git)
 pkgver=0.5.r66.g8420ca0
 pkgrel=1
-_pkgdesc="Waveform Seekbar Plugin for the DeaDBeeF audio player (development version)"
+_pkgdesc="Waveform Seekbar plugin for DeaDBeeF audio player"
 url="https://github.com/cboxdoerfer/ddb_waveform_seekbar"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -26,7 +26,7 @@ build() {
 }
 
 package_deadbeef-plugin-waveform-gtk2-git() {
-  pkgdesc="${_pkgdesc}. GTK2 Ver"
+  pkgdesc="${_pkgdesc} GTK2"
   depends=('deadbeef' 'sqlite' 'gtk2')
   conflicts=('deadbeef-plugin-waveform-gtk2')
   provides=('deadbeef-plugin-waveform-gtk2')
@@ -34,7 +34,7 @@ package_deadbeef-plugin-waveform-gtk2-git() {
 }
 
 package_deadbeef-plugin-waveform-gtk3-git() {
-  pkgdesc=$_pkgdesc". GTK3 Ver"
+  pkgdesc=${_pkgdesc}" GTK3"
   depends=('deadbeef' 'sqlite' 'gtk3')
   conflicts=('deadbeef-plugin-waveform-gtk3')
   provides=('deadbeef-plugin-waveform-gtk3')
