@@ -1,0 +1,16 @@
+pkgbase = compdb-git
+	pkgdesc = The compilation database Swiss army knife
+	pkgver = 143.7a77fec
+	pkgrel = 1
+	url = https://github.com/Sarcasm/compdb
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	conflicts = compdb
+	source = git+https://github.com/Sarcasm/compdb.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = compdb-git
+
