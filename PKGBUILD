@@ -4,19 +4,19 @@
 _gemname=httpclient
 pkgname=ruby-$_gemname
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Gives something like the functionality of libwww-perl (LWP) in Ruby."
 arch=('any')
 url="http://github.com/nahi/httpclient"
 license=('Ruby')
 depends=('ruby')
-source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 sha1sums=('531c6db0b5f371e3d029cbfb2f8d743f7eeb5c1b')
 
 package() {
   cd "$srcdir"
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --no-user-install --ignore-dependencies -i \
     "$pkgdir$_gemdir" $_gemname-$pkgver.gem
 }
