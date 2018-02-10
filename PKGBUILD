@@ -4,7 +4,7 @@
 _gemname=xcpretty-travis-formatter
 pkgname=ruby-$_gemname
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='xcpretty custom formatter for TravisCI'
 arch=(any)
 url='https://github.com/kattrali/xcpretty-travis-formatter'
