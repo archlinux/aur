@@ -3,13 +3,13 @@
 pkgname=ruby-excon
 _gemname=excon
 pkgver=0.60.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EXtended http(s) CONnections"
 arch=('any')
 url="https://github.com/geemus/excon"
 license=('MIT')
 depends=('ruby')
-makedepends=('rubygems')
+makedepends=('rubygems' 'ruby-rdoc')
 source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
 
