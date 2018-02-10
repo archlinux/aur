@@ -4,7 +4,7 @@
 _gemname=googleauth
 pkgname=ruby-$_gemname
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Auth Library for Ruby'
 arch=(any)
 url='https://github.com/google/google-auth-library-ruby'
