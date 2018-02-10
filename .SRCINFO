@@ -1,7 +1,7 @@
 pkgbase = ruby-babosa
 	pkgdesc = A library for creating slugs.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/norman/babosa
 	arch = any
 	depends = ruby

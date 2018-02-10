@@ -4,7 +4,7 @@
 _gemname=babosa
 pkgname=ruby-$_gemname
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for creating slugs.'
 arch=(any)
 url='http://github.com/norman/babosa'
