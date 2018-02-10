@@ -1,28 +1,43 @@
 # Maintainer: Gicu Gorodenco <cyclopsihus 'at' gmail 'dot' com>
 # Contributor: rafael ff1 (aka josephgbr)
-_pkgbasename=libsigc++
-pkgname=lib32-$_pkgbasename
-pkgver=2.8.0
+_pkgbase=libsigc++
+pkgbase=lib32-libsigc++
+pkgname='libsigc++'
+pkgver=2.10.0
 pkgrel=1
-pkgdesc="Libsigc++ implements a full callback system for use in widget libraries - V2 (32 bit)"
 arch=('x86_64')
-url="http://libsigc.sourceforge.net/"
 license=('LGPL')
-depends=("$_pkgbasename")
-makedepends=('gcc-multilib')
-options=(!libtool !emptydirs)
-source=(http://ftp.gnome.org/pub/GNOME/sources/${_pkgbasename}/${pkgver:0:3}/${_pkgbasename}-${pkgver}.tar.xz)
-sha256sums=('774980d027c52947cb9ee4fac6ffe2ca60cc2f753068a89dfd281c83dbff9651')
+url="http://libsigc.sourceforge.net/"
+makedepends=('gcc-libs' 'git' 'mm-common' 'libxslt' 'graphviz')
+options=('!emptydirs')
+_commit=83f1e2fe7855f85af570b9653903d2c426d67e72
+source=("git://git.gnome.org/libsigcplusplus#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd libsigcplusplus
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd libsigcplusplus
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  cd libsigcplusplus
   ./configure --prefix=/usr --libdir=/usr/lib32 CXX='g++ -m32'
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  pkgdesc="Libsigc++ implements a full callback system for use in widget libraries - V2"
+  depends=('gcc-libs')
+
+  cd libsigcplusplus
   sed -i -e 's/^doc_subdirs/#doc_subdirs/' Makefile
   make DESTDIR="${pkgdir}" install
+
+  # Removing files included in base libsigc++ package
   rm -rf ${pkgdir}/usr/include
 }
