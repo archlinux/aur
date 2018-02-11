@@ -1,7 +1,7 @@
 pkgbase = dpm-query-git
 	pkgdesc = DPM query tool and service to workaround bugs or save energy
 	pkgver = r14.9bf8903
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illwieckz/dpm-query
 	arch = x86_64
 	license = ISC
