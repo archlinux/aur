@@ -12,7 +12,6 @@ optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
 provides=("palemoon=$pkgver")
-replaces=('palemoon-unstable-bin')
 conflicts=('palemoon')
 options=('!strip')
 source=(palemoon.desktop)
