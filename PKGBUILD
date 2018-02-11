@@ -1,7 +1,7 @@
 # Maintainer: Archimede Pitagorico <archimede.pitagorico@mail.com>
 
 pkgname=megasync-headless
-pkgver=v3.3.1.1.g20e49538
+pkgver=v3.3.1.1.g199531e6
 pkgrel=1
 pkgdesc="Sync with MEGA. Daemon, fuse and cli client. Original sdk (git)."
 arch=('x86_64')
