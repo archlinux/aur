@@ -24,6 +24,7 @@ wheel==0.24.0
 docutils>=0.10
 behave==1.2.5
 -e git://github.com/boto/jmespath.git@develop#egg=jmespath
+jsonschema==2.5.1
 
 #setup.py
 from setuptools import setup, find_packages
@@ -43,7 +44,7 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}-git"
-pkgver=1.8.36.r4321.g67927b8d
+pkgver=1.8.40.r4347.gaa056991
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -53,6 +54,7 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-bcdoc<0.15.0"    # AUR
   "${_pyver}-wheel>=0.24.0"   # AUR ==
   "${_pyver}-jmespath"{'>=0.7.1','<1.0.0'} # AUR == is possible for repositories. Makes upgrades impossible in AUR.
+  "${_pyver}-jsonschema>=2.5.1"            # COM
   "${_pyver}-tox"{'>=2.5.0','<3.0.0'}      # COM == is possible because this is from a repository. Unfortunatley Arch isn"t the primary dev environment for botocore/aws so our packages are likely to be newer.
   "${_pyver}-dateutil"{">=2.1","<3.0.0"}   # COM
   "${_pyver}-nose>=1.3.0"     # COM ==
@@ -68,7 +70,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('711d1fd3d0c94cabca9a231544316c2a6f3c8905b3965a574bd3a373a0b5b7ff')
+sha256sums=('728c28cc8efb57881ad0b2afcf1ac642c7dccde39a40a34915ea7c9bd0d9fa2b')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
