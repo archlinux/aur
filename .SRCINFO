@@ -1,0 +1,12 @@
+pkgbase = badpng-git
+	pkgdesc = Tool incorrectly re-encodes a PNG.
+	pkgver = r7.06e4ea7a42b3
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	makedepends = mercurial
+	source = hg+https://bitbucket.org/runhello/badpng
+	md5sums = SKIP
+
+pkgname = badpng-git
+
