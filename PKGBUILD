@@ -4,12 +4,13 @@
 pkgname=ruby-ruby2ruby
 _pkgname="${pkgname#ruby-}"
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Easily generate pure ruby code from RubyParser compatible Sexps.'
 arch=(any)
 url='https://github.com/seattlerb/ruby2ruby'
 license=(MIT)
 depends=(ruby-ruby_parser)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_pkgname}-${pkgver}.gem")
 noextract=("${_pkgname}-${pkgver}.gem")
@@ -19,7 +20,6 @@ package() {
   # install gem
   HOME=/tmp gem install \
     --no-user-install \
-    --no-document \
     --ignore-dependencies \
     --install-dir "${pkgdir}$(ruby -e 'puts Gem.default_dir')" \
     --bindir "${pkgdir}/usr/bin" \

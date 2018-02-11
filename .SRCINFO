@@ -1,10 +1,11 @@
 pkgbase = ruby-ruby2ruby
 	pkgdesc = Easily generate pure ruby code from RubyParser compatible Sexps.
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/seattlerb/ruby2ruby
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby-ruby_parser
 	noextract = ruby2ruby-2.4.0.gem
 	options = !emptydirs
