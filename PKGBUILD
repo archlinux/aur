@@ -2,11 +2,11 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw@gmail.com>
 
 pkgname=system76-driver
-pkgver=17.10.16
-pkgrel=2
+pkgver=17.10.17
+pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
-url="https://launchpad.net/system76-driver"
+url="https://github.com/pop-os/system76-driver"
 license=('GPL')
 install="${pkgname}.install"
 depends=(
@@ -29,12 +29,12 @@ optdepends=(
 	'pulseaudio: To apply microphone fix'
 	'xorg-xbacklight: To use the backlight service')
 source=(
-	"https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+files/${pkgname}_${pkgver}.tar.xz"
+	"https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
 	'galu1.patch'
 	'gtk.patch'
 	'cli.patch'
 	'hidpi.patch')
-sha1sums=('c893e0c3123e757a37f2e10fd335fb473b1e2549'
+sha1sums=('6d6121f6e36b58a795c14338fc724c0e1a89f44e'
           'ea8d53a80a26eb05b367f27996c8ce715aafba1e'
           'bf0c37a6226858c768e8ce2c9c3c3801aef14c0e'
           '92f0de2acea6ac69c36378c7139fb84a7eaf7842'
@@ -42,7 +42,7 @@ sha1sums=('c893e0c3123e757a37f2e10fd335fb473b1e2549'
 
 
 package() {
-	cd ${srcdir}/master_artful
+	cd ${srcdir}/${pkgname}-${pkgver}
 
 	###########
 	# Install #
