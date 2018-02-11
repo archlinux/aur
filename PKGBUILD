@@ -1,7 +1,7 @@
-# Maintainer: Sean Enck <enckse@gmail.com>
+# Maintainer: Scott Hansen <firecat4153@gmail.com>
 pkgname=python-pykeepass
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-level library to interact with keepass databases"
 arch=("any")
 url="https://github.com/pschmitt/pykeepass"
