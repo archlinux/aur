@@ -1,6 +1,6 @@
 # Maintainer: Colin Reeder <vpzomtrrfrt@gmail.com>
 _pkgname=badpng
-pkgname=$_pkgname-git
+pkgname=$_pkgname-hg
 source=("hg+https://bitbucket.org/runhello/badpng")
 md5sums=('SKIP')
 pkgdesc="Tool incorrectly re-encodes a PNG."
