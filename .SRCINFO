@@ -1,12 +1,12 @@
-pkgbase = atlassian-confluence
-	pkgdesc = Enterprise wiki
+pkgbase = atlassian-confluence-lts
+	pkgdesc = Enterprise wiki (Enterprise Release)
 	pkgver = 6.6.2
 	pkgrel = 1
 	url = https://www.atlassian.com/software/confluence
 	install = confluence.install
 	arch = any
 	license = custom
-	depends = jdk8
+	depends = java-environment=8
 	optdepends = mysql-connector-java: connect to MySQL
 	backup = etc/conf.d/confluence
 	backup = etc/webapps/atlassian-confluence/server.xml
@@ -17,5 +17,5 @@ pkgbase = atlassian-confluence
 	sha256sums = a6304ba13a8ab1e27761bd3be71d05d2c2e3d61ea308316f4a04723ea4b30fc1
 	sha256sums = d51ad7cb3eb8a4d5553a26fd5567867345bb4ae9a10876fc2bee7b6ab8800824
 
-pkgname = atlassian-confluence
+pkgname = atlassian-confluence-lts
 
