@@ -1,8 +1,8 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=387.34
-pkgrel=6
+pkgver=390.25
+pkgrel=1
 _goodkver=4.15
 _badkver=4.16
 _modver=${_goodkver}-pf
@@ -23,8 +23,8 @@ license=('custom')
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('4e356a75541633ac3f9ac0f53bb65823')
-md5sums_x86_64=('a009bbc502c30e4b483d71be9fa51790')
+md5sums_i686=('024170d6dc8bc83e405c7a73327ec8fb')
+md5sums_x86_64=('e41e28d1f380c64ec2eacae344fb5017')
 
 
 
