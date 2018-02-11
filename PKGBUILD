@@ -6,6 +6,7 @@ pkgdesc="Freeware version of the world's smartest and most feature-full disassem
 arch=('x86_64')
 url='https://www.hex-rays.com/products/ida/'
 license=('custom')
+makedepends=('fakechroot')
 options=('!strip')
 _installer='idafree70_linux.run'
 source=("https://out7.hex-rays.com/files/${_installer}")
