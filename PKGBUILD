@@ -2,7 +2,7 @@
 
 _srcname=mpv
 pkgname=mpv-full
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
 source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz")
-sha256sums=('eeac559d422357470040b83d8cdabec74b8a64ce8f50d5ee421dd3e4c73457b4')
+sha256sums=('0209badcba3c42a54c05d5dc7f59b2d97ecd25b7f957d5fde60b36c362fe2cc4')
 
 build() {
     cd "${_srcname}-${pkgver}"
