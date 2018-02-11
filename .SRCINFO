@@ -1,0 +1,14 @@
+pkgbase = python-sql
+	pkgdesc = Library to write SQL queries
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://python-sql.tryton.org/
+	arch = any
+	license = BSD
+	makedepends = python
+	depends = python
+	source = https://pypi.io/packages/source/p/python-sql/python-sql-0.9.tar.gz
+	md5sums = 63351de94115d5706d8038febb520e82
+
+pkgname = python-sql
+
