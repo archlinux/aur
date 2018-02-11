@@ -2,7 +2,7 @@
 # Contributor: Atterratio <atterratio@gmail.com>
 
 pkgname=q4wine-git
-pkgver=v1.3.2.0.g24a6ca2
+pkgver=v1.3.6.11.ge511d2b
 pkgrel=1
 pkgdesc="A Qt GUI for Wine. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -18,6 +18,7 @@ depends=('qt-solutions-git'
 makedepends=('cmake'
              'git'
              'qt5-tools'
+             'qt5-svg'
              )
 optdepends=('winetricks: Tweak wine'
             'fuseiso: Mount ISO files'
@@ -48,6 +49,7 @@ build() {
 }
 
 package() {
-
   make -C build DESTDIR="${pkgdir}" install
+
+  rm -fr "${pkgdir}/usr/share/icons/ubuntu-mono-dark"
 }
