@@ -3,7 +3,7 @@ _orgname=openorienteering
 _pkgname=mapper
 _branch=master
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.7.93pre.r4331.5c9dbedf
+pkgver=0.8.0.r4369.3552fca5
 pkgrel=1
 pkgdesc="Map drawing program from OpenOrienteering"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ pkgver() {
   count=$(curl -s "$api_url/compare/${base}...${head}" | \
     python -c "import sys, json; print(json.load(sys.stdin)['total_commits'] + 1)")
   release=$(curl -s "$api_url/releases" | \
-    python -c "import sys, json; r = json.load(sys.stdin)[0]; print(r['tag_name'] + 'pre' if r['prerelease'] else '')")
+    python -c "import sys, json; r = json.load(sys.stdin)[0]; print(r['tag_name'] + ('pre' if r['prerelease'] else ''))")
   printf "%s.r%s.%s" "${release#?}" "${count}" "${head}"
 }
 
