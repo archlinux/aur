@@ -1,10 +1,11 @@
 pkgbase = ruby-w3c_validators
 	pkgdesc = A Ruby wrapper for the World Wide Web Consortium's online validation services.
 	pkgver = 1.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/w3c-validators/w3c_validators
 	arch = any
 	license = GPL
+	makedepends = ruby-rdoc
 	depends = ruby-json
 	depends = ruby-nokogiri
 	depends = ruby-pkg-config
