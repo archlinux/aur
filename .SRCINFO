@@ -1,5 +1,5 @@
 pkgbase = zfs-linux-vfio-git
-	pkgver = 2018.02.06.r3280.6d82b7969.4.13.12.2
+	pkgver = 2018.02.09.r3304.ba779f7f7.4.13.12.2
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = zfs-linux-vfio-git
 	makedepends = spl-linux-vfio-git-headers
 	depends = kmod
 	depends = spl-linux-vfio-git
-	depends = zfs-utils-common-git>=2018.02.06.r3280.6d82b7969
+	depends = zfs-utils-common-git>=2018.02.09.r3304.ba779f7f7
 	depends = linux-vfio=4.13.12-2
 	source = git+https://github.com/zfsonlinux/zfs.git
 	sha256sums = SKIP
