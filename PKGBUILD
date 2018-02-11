@@ -2,7 +2,7 @@
 
 pkgname=libnitrokey
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Communicate with Nitrokey stick devices in a clean and easy manner"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
@@ -32,7 +32,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   cd ..
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "${pkgdir}/usr/"
   mv lib64 lib
