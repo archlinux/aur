@@ -1,5 +1,5 @@
 pkgbase = linux-baytrail49
-	pkgver = 4.9.73
+	pkgver = 4.9.80
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = linux-baytrail49
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = git+https://github.com/muhviehstah/linux-baytrail49.git#tag=4.9.73
+	source = git+https://github.com/muhviehstah/linux-baytrail49.git#tag=4.9.80
 	source = config
 	source = config.x86_64
 	source = linux-baytrail49.preset
 	sha256sums = SKIP
 	sha256sums = b77f767226dbd73e2fd9d2b78a12d0224e09aafee1e2cf3e5252934117aebb27
-	sha256sums = 045a375adde9bef6844e37b0a04413abf608cd74a71568d590889c9dfc5c5cfc
+	sha256sums = b7d615e9cd5282848e75ce37f76d5ae0c6d26ec56ffd440010da6d44f1f055db
 	sha256sums = d872b4454a0f7e49bece2c1719dc48aaaff3b6caf55e0fe661681951330f858a
 
 pkgname = linux-baytrail49
