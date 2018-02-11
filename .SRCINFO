@@ -1,6 +1,6 @@
 pkgbase = webkit2gtk-unstable
 	pkgdesc = GTK+ Web content engine library
-	pkgver = 2.19.6
+	pkgver = 2.19.90
 	pkgrel = 1
 	url = http://webkitgtk.org/
 	arch = i686
@@ -34,8 +34,8 @@ pkgbase = webkit2gtk-unstable
 	provides = webkit2gtk
 	conflicts = webkit2gtk
 	options = !emptydirs
-	source = http://webkitgtk.org/releases/webkitgtk-2.19.6.tar.xz
-	sha1sums = 29bd628a38e576e9fb6c61c220aa2248f2acc97e
+	source = http://webkitgtk.org/releases/webkitgtk-2.19.90.tar.xz
+	sha1sums = 1ed0dce02eb46949defb9cdb32fa5ca8b559688f
 
 pkgname = webkit2gtk-unstable
 
