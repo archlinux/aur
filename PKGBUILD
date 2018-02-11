@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=mkosi-git
-pkgver=3.r101.g2f27372
+pkgver=4.r6.ge16f7a9
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -10,8 +10,10 @@ url='https://github.com/systemd/mkosi'
 license=('LGPL2.1')
 depends=('python')
 makedepends=('python-setuptools')
-optdepends=('dnf: build Fedora images'
+optdepends=('dnf: build Fedora or Mageia images'
             'debootstrap: build Debian or Ubuntu images'
+            'debian-archive-keyring: build Debian images'
+            'ubuntu-keyring: build Ubuntu images'
             'arch-install-scripts: build Arch images'
             'zypper-git: build openSUSE images'
             'gnupg: sign images'
@@ -21,7 +23,12 @@ optdepends=('dnf: build Fedora images'
             'squashfs-tools: raw_squashfs output format'
             'tar: tar output format'
             'cryptsetup: add dm-verity partitions'
+            # I don’t understand whether ovmf or edk2-ovmf is needed… let’s point to both for now
             'ovmf: run bootable images in QEMU'
+            'edk2-ovmf: run bootable images in QEMU'
+            # ditto for qemu and qemu-kvm
+            'qemu: run bootable images in QEMU'
+            'qemu-kvm: run bootable images in QEMU'
             'sbsigntools: sign EFI binaries for UEFI SecureBoot')
 provides=('mkosi')
 conflicts=('mkosi')
