@@ -23,7 +23,7 @@ makepkg --printsrcinfo > .SRCINFO
 # install all dependencies
 #cat .SRCINFO |grep -E "\s(make)?depends" | sed -re 's/.* = (.*)(>|<|$).*/\1/' | xargs pacaur -S --needed --noedit --noconfirm
 
-makepkg -i
+makepkg -i --noconfirm
 
 echo "Finished building package"
 
