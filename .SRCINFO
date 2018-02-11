@@ -31,7 +31,7 @@ pkgbase = firefox-ubuntu-bin
 	conflicts = firefox
 	conflicts = firefox-ubuntu
 	source = http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_58.0.2+build1-0ubuntu1_amd64.deb
-	md5sums = 6c5227b9e6058b8ca3b58b7379b62d77
+	md5sums = d4f4e20dec94b7df9b1ac6277a8ed720
 
 pkgname = firefox-ubuntu-bin
 
