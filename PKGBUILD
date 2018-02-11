@@ -12,8 +12,8 @@
 # you also find the URL of (another) binary repository (i686 and x86_64).
 
 pkgname=subtitlecomposer
-pkgver=0.6.5
-pkgrel=2
+pkgver=0.6.6
+pkgrel=1
 pkgdesc="A KDE subtitle editor"
 arch=('i686' 'x86_64')
 url="https://github.com/maxrd2/${pkgname}"
@@ -37,7 +37,7 @@ optdepends=('mplayer: MPlayer backend'
             'python: scripting')
 
 source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('26503c5f7ede37f482bd2da6b4acc8df83c0e5c18f38df011ce0f567a1422563')
+sha256sums=('6cd1d74f7934cdaa5d492f47da4143bd096a6196f2afcb2827cada9a3cdb2ea4')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
