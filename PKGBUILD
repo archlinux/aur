@@ -21,7 +21,7 @@ conflicts=(${pkgname%-kde})
 
 prepare() {
   cd "${pkgname%-kde}-$pkgver"
-  patch -p0 -i ../statusnotifier.patch
+  patch -p0 -i "$srcdir/statusnotifier.patch"
 }
 
 build() {
