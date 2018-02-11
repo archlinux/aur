@@ -1,8 +1,8 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=elisa
-pkgname=$_gitname-git
-pkgver=r790.2646ba2
+pkgname=elisa-git
+pkgver=v0.0.81.r17.ge4be4c4
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="Elisa Music Player"
@@ -10,12 +10,12 @@ url="https://cgit.kde.org/elisa.git/"
 license=(GPL)
 depends=(baloo qt5-quickcontrols qt5-quickcontrols2 kcmutils)
 makedepends=(extra-cmake-modules git python kdoctools qt5-websockets)
-source=("git://anongit.kde.org/$_gitname.git")
+source=("${pkgname}::git://anongit.kde.org/elisa.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname}
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$_gitname \
+  cmake ../${pkgname} \
    -DCMAKE_BUILD_TYPE=Release \
    -DCMAKE_INSTALL_PREFIX=/usr
   make
