@@ -1,10 +1,11 @@
 pkgbase = ruby-ruby_parser
 	pkgdesc = Ruby parser written in pure ruby.
 	pkgver = 3.10.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/seattlerb/ruby_parser
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby-sexp_processor
 	noextract = ruby_parser-3.10.1.gem
 	options = !emptydirs
