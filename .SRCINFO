@@ -1,0 +1,29 @@
+pkgbase = openvas-manager-postgres
+	pkgdesc = A layer between the OpenVAS Scanner and various client applications
+	pkgver = 7.0.2
+	pkgrel = 1
+	url = http://www.openvas.org/
+	install = openvas-manager-postgres.install
+	arch = x86_64
+	groups = openvas
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = xmltoman
+	depends = libxslt
+	depends = openvas-libraries
+	depends = rsync
+	depends = postgresql
+	depends = sqlite3
+	optdepends = python2: SPLIT_PART_SIZE feature via xml_split script
+	provides = openvas-manager
+	source = http://wald.intevation.org/frs/download.php/2448/openvas-manager-7.0.2.tar.gz
+	source = http://wald.intevation.org/frs/download.php/2449/openvas-manager-7.0.2.tar.gz.sig
+	source = postgres-include.patch
+	validpgpkeys = C3B468D2288C68B9D526452248479FF648DB4530
+	sha512sums = 82b35b8bfcfbc781acabec71133d87352887a1e51e4af5a757c0f0a8b3eb86c37137022fdac693cc8802971c2628b52b900b1ec2af3c6434c3e2401bdbd8bfe2
+	sha512sums = SKIP
+	sha512sums = 916b02ef22c310adbfcbb8e6161c9382baec2c038acd5d0fb6f928e93496d67efe8d29b3e862dc65cab0151a70a8299b20ef18f93891b40c27c3b12aca612859
+
+pkgname = openvas-manager-postgres
+

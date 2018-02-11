@@ -1,0 +1,11 @@
+--- src/sql_pg.c
++++ src/sql_pg.c
+@@ -32,7 +32,7 @@
+ #include <glib.h>
+ #include <inttypes.h>
+ #include <netinet/in.h>
+-#include <postgresql/libpq-fe.h>
++#include <libpq-fe.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
