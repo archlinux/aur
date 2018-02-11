@@ -47,5 +47,5 @@ package_flac-doc-git() {
 
   cd "$_gitname"
   make DESTDIR="${pkgdir}" -C doc install
-  sed -i "s|$srcdir/$_gitname|/usr|" "${pkgdir}/usr/share/doc/$_gitname-1.3.1/FLAC.tag"
+  sed -i "s|$srcdir/$_gitname|/usr|" "${pkgdir}/usr/share/doc/$_gitname/FLAC.tag"
 }
