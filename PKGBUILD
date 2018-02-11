@@ -3,7 +3,7 @@
 
 pkgname=tsc
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Jump'n'run game with editor and scripting facilities, fork of SMC"
 arch=('x86_64')
 url='https://secretchronicles.org/en/'
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('sdl_image' 'sdl_ttf' 'sdl_mixer' 'devil' 'boost-libs' 'libxml++2.6'
          'glew' 'pcre' 'gtk-update-icon-cache' 'desktop-file-utils'
          'cegui-0.7')
-makedepends=('cmake' 'ruby' 'gperf' 'boost')
+makedepends=('cmake' 'ruby-rake' 'gperf' 'boost')
 source=("https://ftp.secretchronicles.org/releases/TSC-$pkgver.tar.xz"
         'tsc-2.0.0-mga-mandir.patch'
         'tsc-2.0.0-issue457-utf8-rakefile.patch'
