@@ -3,7 +3,7 @@
 
 pkgname=polo-donation-plugins
 _channel=beta.10
-pkgver=17.9.1
+pkgver=18.2
 pkgrel=1
 pkgdesc="Complimentary package for users who have donated to Polo or contributed in other ways such as translations, code changes, etc."
 arch=('i686' 'x86_64')
@@ -15,17 +15,17 @@ depends=('polo'
          'pdftk-bin' )
 provides=('polo-donations-plugins')
 conflicts=('polo-donations-plugins')
-source_i686=("local://${pkgname}-v${pkgver}-${_channel}-i386.deb") 
-source_x86_64=("local://${pkgname}-v${pkgver}-${_channel}-amd64.deb") 
-md5sums_i686=('c81eac4680726c3b2eba6b716dcf69c3')
-md5sums_x86_64=('dc900b17a75ce6734f1d2bf6c3701cdb')
+source_i686=("local://${pkgname}-v${pkgver}-i386.deb") 
+source_x86_64=("local://${pkgname}-v${pkgver}-amd64.deb") 
+md5sums_i686=('648e3e55a3c8fc5f02559814683ce461')
+md5sums_x86_64=('f471ffeace0aa90368e68f8fbdcb9684')
 
 package() {
 if [[ "${CARCH}" = 'i686' ]]; then
-        bsdtar xf "${pkgname}-v${pkgver}-${_channel}-i386.deb"
+        bsdtar xf "${pkgname}-v${pkgver}-i386.deb"
     fi
 if [[ "${CARCH}" = 'x86_64' ]]; then
-        bsdtar xf "${pkgname}-v${pkgver}-${_channel}-amd64.deb"
+        bsdtar xf "${pkgname}-v${pkgver}-amd64.deb"
     fi
   bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
 }
