@@ -18,22 +18,22 @@
 pkgbase="spl-linux-hardened-git"
 pkgname=("spl-linux-hardened-git" "spl-linux-hardened-git-headers")
 
-pkgver=2018.01.24.r1062.23602fd.4.14.17.a.1
+pkgver=2018.02.07.r1064.48ef8ba.4.15.2.a.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.14.17.a-1" "git")
+makedepends=("linux-hardened-headers=4.15.2.a-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#commit=23602fdb39e1254c669707ec9d2d0e6bcdbf1771")
+source=("git+https://github.com/zfsonlinux/spl.git#commit=48ef8ba07094afcd67355940ca8db92d76f7c096")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git=2018.01.24.r1062.23602fd" "kmod" "linux-hardened=4.14.17.a-1")
+depends=("spl-utils-common-git=2018.02.07.r1064.48ef8ba" "kmod" "linux-hardened=4.15.2.a-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.14.17-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.14.17-1-hardened/build \
+                --with-linux=/usr/lib/modules/4.15.2-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.15.2-1-hardened/build \
                 --with-config=kernel
     make
 }
@@ -58,5 +58,5 @@ package_spl-linux-hardened-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.14.17-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.15.2-1-hardened/Module.symvers
 }
