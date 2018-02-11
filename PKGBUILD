@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=molotov
-pkgver=1.8.0
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Molotov gives a streaming access to french TV channels."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('p7zip')
 options=('!strip')
 source=("Molotov-${pkgver}.AppImage::http://desktop-auto-upgrade.molotov.tv/linux/${pkgver}/molotov"
         'molotov')
-sha256sums=('1fef7f93216e152edd4d56dbaecf7a9388484bc24643cd60e8f00459f36d7d8f'
+sha256sums=('84703fe524d264c1d530d7b9ee8b84a6de8a6920a46077a3752b7318c6e65675'
             '2be51f427383ccf086485dc49f5d93855550598371b5ea9e583d4a7d6726534e')
 
 build() {
