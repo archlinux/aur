@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=networkd-dispatcher
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="A dispatcher daemon for systemd-networkd events"
 arch=('any')
@@ -12,19 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 backup=('etc/conf.d/networkd-dispatcher.conf')
 source=("https://github.com/craftyguy/networkd-dispatcher/archive/${pkgver}.tar.gz")
-sha512sums=('e4c544bfe216f7b557ed3a98e142e4f1fcf42d90ec79414797fd9f6ed270a188cca23f1f3a4c49a26d79a7593825a76c3564b1a643c1c6c14f298efa5cf5a61c')
-
-prepare() {
-        cd "$pkgname-$pkgver"
-}
-
-build() {
-        cd "$pkgname-$pkgver"
-}
-
-check() {
-        cd "$pkgname-$pkgver"
-}
+sha512sums=('cbd3a747dcaa3c94dda61c42219f9768394c7c4591cbc4c6bc4b7ad385eb2e0e9cde65f1928c92814208540ddd271441bea8d618862ba514728bae592797fb6c')
 
 package() {
         cd "$pkgname-$pkgver"
@@ -35,4 +23,3 @@ package() {
         install -m644 -D "$srcdir/$pkgname-$pkgver/networkd-dispatcher.conf" "${pkgdir}/etc/conf.d/networkd-dispatcher.conf"
         mkdir -p "$pkgdir/etc/networkd-dispatcher/"{off.d,routable.d,dormant.d,no-carrier.d}
 }
-
