@@ -1,25 +1,30 @@
 pkgbase = python-moto
 	pkgdesc = Moto is a library to mock out the boto library.
-	pkgver = 1.1.25
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/spulec/moto
 	arch = any
 	license = Apache
 	checkdepends = python-freezegun
+	checkdepends = python-jsondiff
 	checkdepends = python-nose
 	checkdepends = python-sure
 	makedepends = python-setuptools
 	depends = python
+	depends = python-aws-xray-sdk
 	depends = python-boto3
 	depends = python-cookies
+	depends = python-cryptography
+	depends = python-dateutil
+	depends = python-docker
+	depends = python-mock
+	depends = python-pyaml
 	depends = python-requests
 	depends = python-xmltodict
-	depends = python-dicttoxml
 	depends = python-werkzeug
-	depends = python-dateutil
 	optdepends = python-boto
-	source = https://github.com/spulec/moto/archive/1.1.25.tar.gz
-	sha256sums = 39e3d38756746132296bc6abf36061bbc2d3d9babe98bd5d4ffc0653f4838117
+	source = https://github.com/spulec/moto/archive/1.2.0.tar.gz
+	sha256sums = 86fb4b968fba16648dd17d7097ee9898ce9286e5a021c2c0126f4b5eee39fe36
 
 pkgname = python-moto
 
