@@ -3,13 +3,13 @@
 # Contributor: Vlad M. <vlad@archlinux.net>
 
 pkgname=atlassian-confluence
-pkgver=6.4.1
-pkgrel=2
+pkgver=6.7.0
+pkgrel=1
 pkgdesc="Enterprise wiki"
 url="https://www.atlassian.com/software/confluence"
 license=('custom')
 arch=('any')
-depends=('jdk8')
+depends=('java-environment=8')
 optdepends=('mysql-connector-java: connect to MySQL')
 backup=('etc/conf.d/confluence'
         'etc/webapps/atlassian-confluence/server.xml')
