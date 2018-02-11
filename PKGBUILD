@@ -10,6 +10,8 @@ license=('GPL2, LGPL2.1')
 arch=('x86_64')
 depends=('a52dec' 'faad2' 'ffmpeg2.8' 'libdca' 'libdvbpsi' 'libdvdnav' 'libmad' 'libmatroska' 'libmpcdec' 'libmpeg2' 'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp' 'libxinerama' 'libxpm' 'lua' 'sdl_image' 'taglib' 'xcb-util-keysyms' 'zvbi')
 makedepends=('aalib' 'flac' 'gtk2' 'kdelibs' 'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss' 'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg' 'libssh2' 'lirc' 'live-media' 'mesa' 'opus' 'portaudio' 'projectm' 'qt4' 'smbclient' 'twolame' 'vcdimager' 'xosd')
+conflicts=("$_pkgname" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
+provides=("$_pkgname=$pkgver")
 source=("http://get.videolan.org/vlc/3.0.0/vlc-3.0.0.tar.xz"
 	"https://gist.github.com/ErnyTech/0b18995e092d93e429db085041fc2ddc/raw/f0006a0757fa7452d6c783b74c7e79c92504b14a/fixlua_503.patch"
 	"https://gist.github.com/ErnyTech/ca58899bb74b87c3be5e84386fb8f9e3/raw/103ab9c302591f53e0c3746945e1c00e97735761/update-vlc-plugin-cache.hook")

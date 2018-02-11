@@ -53,6 +53,11 @@ pkgbase = vlc3
 	depends = taglib
 	depends = xcb-util-keysyms
 	depends = zvbi
+	provides = vlc=3.0.0
+	conflicts = vlc
+	conflicts = vlc-dev
+	conflicts = vlc-plugin
+	conflicts = vlc-stable-git
 	source = http://get.videolan.org/vlc/3.0.0/vlc-3.0.0.tar.xz
 	source = https://gist.github.com/ErnyTech/0b18995e092d93e429db085041fc2ddc/raw/f0006a0757fa7452d6c783b74c7e79c92504b14a/fixlua_503.patch
 	source = https://gist.github.com/ErnyTech/ca58899bb74b87c3be5e84386fb8f9e3/raw/103ab9c302591f53e0c3746945e1c00e97735761/update-vlc-plugin-cache.hook
