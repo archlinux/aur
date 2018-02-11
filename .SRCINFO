@@ -2,7 +2,7 @@
 # Mon Jul  4 23:43:40 UTC 2016
 pkgbase = flac-git
 	pkgver = r3581.02a9262
-	pkgrel = 1
+	pkgrel = 2
 	url = http://flac.sourceforge.net/
 	arch = i686
 	arch = x86_64
