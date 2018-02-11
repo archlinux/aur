@@ -1,0 +1,16 @@
+diff -urN dask-0.17.0-orig/dask/bytes/compression.py dask-0.17.0/dask/bytes/compression.py
+--- dask-0.17.0-orig/dask/bytes/compression.py	2018-02-11 12:31:31.342559992 -0500
++++ dask-0.17.0/dask/bytes/compression.py	2018-02-11 12:32:08.678046846 -0500
+@@ -34,9 +34,9 @@
+ 
+ 
+ with ignoring(ImportError):
+-    import lz4
+-    compress['lz4'] = lz4.LZ4_compress
+-    decompress['lz4'] = lz4.LZ4_uncompress
++    import lz4.block
++    compress['lz4'] = lz4.block.compress
++    decompress['lz4'] = lz4.block.decompress
+ 
+ with ignoring(ImportError):
+     from ..compatibility import LZMAFile, lzma_compress, lzma_decompress

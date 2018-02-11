@@ -1,10 +1,9 @@
-# Contributor: Francois Boulogne <fboulogne at april dot org>
-# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
+# Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-dask
 _pkgname=dask
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
@@ -22,8 +21,15 @@ optdepends=('python-bcolz'
   'python-sparse: sparse data support'
   'python-s3fs: S3 support')
 makedepends=('python-setuptools')
-source=("https://github.com/dask/dask/archive/$pkgver.tar.gz")
-sha256sums=('214e838ee7e7a4328e5dfbc7859e0f2d6226636adab98aa59c0f6d7dc561875b')
+source=("https://github.com/dask/dask/archive/$pkgver.tar.gz"
+  "fix_python_lz4.patch")
+sha256sums=('ff006490165aa9b22c73bc162473741ecfb2c41c6c65cf4e4a78e0f85eac23dc'
+            '25812260a5e04030b9287ad1cd462c85a073eabc37f39366951e843de6bff70b')
+
+prepare(){
+  cd "$srcdir/$_pkgname-$pkgver"
+  patch -p1 < ../fix_python_lz4.patch
+}
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
