@@ -51,5 +51,6 @@ package() {
     	install -D -m644 "$srcdir"/"$_name"/share/icons/"${res}"x"${res}"/vlc.png \
                      "$pkgdir"/usr/share/icons/hicolor/"${res}"x"${res}"/apps/vlc.png
     done
+    install -Dm 644 "$srcdir"/update-vlc-plugin-cache.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
 
