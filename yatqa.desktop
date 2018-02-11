@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=YaTQA
+Comment=Tool for managing TeamSpeak 3 servers and instances
+Exec=yatqa
+Icon=yatqa
+Terminal=false
+Type=Application
+Categories=Utility;

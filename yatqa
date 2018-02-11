@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+export WINEARCH=win32 WINEPREFIX="$HOME/.yatqa/wine" WINEDLLOVERRIDES="mscoree,mshtml="
+
+if [ ! -d "$HOME/.yatqa" ] ; then
+    mkdir -p "$HOME/.yatqa/wine"
+    
+    ln -s /usr/share/yatqa/yatqa.exe "$HOME/.yatqa"
+    cp /usr/share/yatqa/yatqa.ini "$HOME/.yatqa"
+fi
+
+wine "$HOME/.yatqa/yatqa.exe"
