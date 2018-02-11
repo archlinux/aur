@@ -1,18 +1,18 @@
 pkgbase = luckybackup
-	pkgdesc = Backup & Sync tool using Rsync and Qt4
-	pkgver = 0.4.8
+	pkgdesc = Backup & Sync tool using Rsync and Qt5
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = http://luckybackup.sourceforge.net/
 	install = luckybackup.install
 	arch = any
 	license = GPL3
-	depends = qt4
+	depends = qt5-base
 	depends = rsync
 	depends = openssh
 	provides = luckybackup
 	conflicts = luckybackup-git
-	source = http://downloads.sourceforge.net/project/luckybackup/0.4.8/source/luckybackup-0.4.8.tar.gz
-	md5sums = f6dcf502c2f11b5d44837189bf00ee01
+	source = http://downloads.sourceforge.net/project/luckybackup/0.4.9/source/luckybackup-0.4.9.tar.gz
+	sha256sums = c161e98a11de5ad0a32a8e060e3fd45695a93ea3adf0581764a6b5d32e8da23b
 
 pkgname = luckybackup
 
