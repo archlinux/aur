@@ -62,12 +62,21 @@ package() {
   # Make destination directories
 	mkdir -p "${pkgdir}"/usr/bin
 	mkdir -p "${pkgdir}"/etc/dpm-query
+	mkdir -p "${pkgdir}"/usr/lib/systemd/system
 
   # Copy stuff over
-  cp src/dpm-query "${pkgdir}"/usr/bin/dpm-query
-	cp src/dpm.cfg "${pkgdir}"/etc/dpm-query/dpm.cfg
+  cp src/dpm-query "${pkgdir}"/usr/bin
+  cp src/dpm-query-service "${pkgdir}"/usr/bin
+
+	cp src/dpm.cfg "${pkgdir}"/etc/dpm-query
+	cp src/service.cfg "${pkgdir}"/etc/dpm-query
+
+	cp src/dpm-query.service "${pkgdir}"/usr/lib/systemd/system
 
   # Set bits
   chmod 755 "${pkgdir}"/usr/bin/dpm-query
+  chmod 755 "${pkgdir}"/usr/bin/dpm-query-service
   chmod 644 "${pkgdir}"/etc/dpm-query/dpm.cfg
+  chmod 644 "${pkgdir}"/etc/dpm-query/service.cfg
+  chmod 644 "${pkgdir}"/usr/lib/systemd/system/dpm-query.service
 }
