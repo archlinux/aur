@@ -8,7 +8,7 @@
 set -u
 _pkgname='phing'
 pkgname="php-${_pkgname}-bin"
-pkgver='2.16.0'
+pkgver='2.16.1'
 pkgrel='1'
 pkgdesc='PHP project build system based on Apache Ant'
 arch=('any')
@@ -22,7 +22,7 @@ conflicts=("${_pkgname}" "php-${_pkgname}")
 options=('!strip')
 _verwatch=('http://pear.phing.info/feed.xml' '\s\+<title>phing \([0-9\.]\+\) (stable)</title>.*' 'f')
 source=("${url}/get/${_pkgname}-${pkgver}.phar")
-sha256sums=('4700f89be74332b83d9a51f7d867b21530b1ef019258ae6a050a9f9b35db11d5')
+sha256sums=('dcc7b63e1a1f8e1599b0fb33a02b053ee9adcdd2885538e36d7e1f5c81062040')
 
 package() {
   set -u
@@ -34,7 +34,7 @@ package() {
   # Command line launchers
   local _phing="#!/usr/bin/bash
 # Installed by ${_pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 %1
 php -d 'open_basedir=NULL' -d 'phar.readonly=0' -d 'extension=phar.so' %2 \\
   '/usr/bin/${_pkgname}.phar' \"\$@\"
