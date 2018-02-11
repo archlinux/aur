@@ -3,7 +3,7 @@
 pkgname=spflashtool-bin
 _pkgname=spflashtool
 pkgver="5.1752"
-pkgrel=1
+pkgrel=2
 pkgdesc="SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone."
 arch=('x86_64')
 url="http://spflashtools.com/category/linux"
@@ -12,11 +12,12 @@ depends=('qtwebkit')
 makedepends=('gendesk')
 provides=('spflashtool')
 conflicts=('spflashtool')
-changelog=
 source=("http://spflashtools.com/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip"
-        'spflashtool.png')
+        'spflashtool.png'
+        '60-spflashtool.rules')
 sha256sums=('d8b41e3f40677e1b18f48d03c62c58b63e21778eb3b0720924f8e8ba36f21df4'
-            'fe0b9c1de77c687623bfc07733041d1387f755493cdf904e6afcb47f784d34c7')
+            'fe0b9c1de77c687623bfc07733041d1387f755493cdf904e6afcb47f784d34c7'
+            'a46a4fc667cf5d6114f3757dc8dbc6cfbc27229319d48f6d78c1e026b34210da')
 
 # Workaround for source file download, which requires the 'Referer' header to be set
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -e %u -o %o %u'
@@ -60,4 +61,7 @@ package() {
 	# Desktop file and icon
 	install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+	# Udev rule
+	install -Dm644 "${srcdir}/60-${_pkgname}.rules" "${pkgdir}/usr/lib/udev/rules.d/60-${_pkgname}.rules"
 }
