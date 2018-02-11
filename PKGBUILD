@@ -82,5 +82,7 @@ package() {
 
   # Install systemd configuration file
   install -Dm 644 "$srcdir/courier-authlib.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/courier-authlib.conf"
+
+  mkdir -p "$pkgdir/var/spool/courier"
 }
 
