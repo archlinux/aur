@@ -1,0 +1,19 @@
+pkgbase = ambiance-rw
+	pkgdesc = A re-interpretation of the Ambiance theme.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1197991/
+	arch = any
+	license = GPL3
+	options = !strip
+	source = https://dl.opendesktop.org/api/files/download/id/1510441834/Ambiance-RW-3.0.tar.xz
+	source = https://dl.opendesktop.org/api/files/download/id/1510441808/Ambiance-RW-3.0-BLUE.tar.xz
+	source = https://dl.opendesktop.org/api/files/download/id/1510441860/Ambiance-RW-3.0-DS.tar.xz
+	source = https://dl.opendesktop.org/api/files/download/id/1510441849/Ambiance-RW-3.0-DS-BLUE.tar.xz
+	sha256sums = bae3858d7ddee3ecb587a03c837f7042acb600e4c785e70acfdbc7bc3aa7c21f
+	sha256sums = 22b19d8c686e825e03526a78f4e295e6b7b9ebbffe01851f1947bdcb646cabbe
+	sha256sums = 34808140e36d582328c6ca3725c69e5be669a605e1a63f36811b02af7d4e554c
+	sha256sums = 2b195b3113684760d0d9a8242aadfe811e3c20f76a7eba38bcd2fee66d01f204
+
+pkgname = ambiance-rw
+
