@@ -2,7 +2,7 @@
 
 pkgname=libnitrokey
 pkgver=3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Communicate with Nitrokey stick devices in a clean and easy manner"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
@@ -15,6 +15,12 @@ sha256sums=('b4ebffcf2143fb2cf535200a1f77ac123d50d87747e40ff8587f3fad2f2cb0fa')
 prepare() {
   cd "$srcdir/$pkgname-$pkgver/"
   mkdir -p build
+
+  # This modify the template file, which will serve to generate the
+  # /usr/lib/pkgconfig/libnitrokey-1.pc final file. Without this line,
+  # the pkgconfig file will keep a reference to /usr/lib64
+  sed -i 's|^libdir=@CMAKE_INSTALL_FULL_LIBDIR@$|libdir=/usr/lib|' \
+      libnitrokey.pc.in
 }
 
 build() {
