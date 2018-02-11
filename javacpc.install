@@ -1,5 +1,7 @@
 post_install() {
   cat << EOF
-Make sure you belong to the input group for gamepad support!
+* Make sure you belong to the input group for gamepad support.
+* Increase the audio buffer size to 4,096 samples
+    if the framerate is bad or audio output is crackling.
 EOF
 }

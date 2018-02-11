@@ -1,19 +1,19 @@
 pkgbase = javacpc
 	pkgdesc = An Amstrad CPC emulator in Java, based on JEMU
-	pkgver = 2.9.6
-	pkgrel = 2
+	pkgver = 2.9.6b
+	pkgrel = 1
 	url = http://sourceforge.net/projects/javacpc/
 	install = javacpc.install
 	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = java-runtime
-	source = https://github.com/mdoege/javacpc-backup/blob/master/JavaCPC_Desktop_2.9.5e.zip?raw=true
+	source = http://downloads.sourceforge.net/project/javacpc/JavaCPC%20Desktop/JavaCPC_Desktop_2.9.6b.zip
 	source = javacpc
 	source = javacpc.desktop
 	source = javacpc_icon.png
-	md5sums = feec9d81e0a286b7fbc10acf41229637
-	md5sums = 1730471294aa32472586a13331547ad0
+	md5sums = 297a9c4bcfe3aef2f4d7b11caa39a72e
+	md5sums = 33ea1029c38c0db8d8a6a83da52f6abe
 	md5sums = ad11d7aba73f349177d8cc2014b9b874
 	md5sums = e7711486f5ab6a9c907745f47eef853d
 
