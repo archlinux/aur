@@ -8,7 +8,7 @@ pkgname=inox-hard
 pk=inox
 name=chromium
 pkgver=64.0.3282.140
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -105,12 +105,12 @@ https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/bp.patch
 https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/CP.patch
 https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/888.patch
 https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/pt.patch
-https://raw.githubusercontent.com/bn0785ac/inox-hardened/meme.patch
-https://raw.githubusercontent.com/bn0785ac/inox-hardened/p1.patch
-https://raw.githubusercontent.com/bn0785ac/inox-hardened/p2.patch
-https://raw.githubusercontent.com/bn0785ac/inox-hardened/e3.patch
-https://raw.githubusercontent.com/bn0785ac/inox-hardened/narnia1.patch
-https://raw.githubusercontent.com/bn0785ac/inox-hardened/edgy.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/meme.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/p1.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/p2.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/e3.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/narnia1.patch
+https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/edgy.patch
 )
 
 
