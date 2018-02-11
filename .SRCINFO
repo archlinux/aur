@@ -1,6 +1,6 @@
 pkgbase = polo
 	pkgdesc = A modern, light-weight GTK file manager for Linux, currently in beta
-	pkgver = 18.1
+	pkgver = 18.2
 	pkgrel = 1
 	url = http://www.teejeetech.in/
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = polo
 	provides = polo
 	conflicts = polo
 	conflicts = polo-bin
-	source = https://github.com/teejee2008/polo/archive/v18.1-beta.tar.gz
-	md5sums = dbbda364cdbd64c4b8e901c0e165356c
+	source = https://github.com/teejee2008/polo/archive/v18.2-beta.tar.gz
+	md5sums = 641153f119579942722ef1486de573a3
 
 pkgname = polo
 

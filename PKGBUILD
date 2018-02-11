@@ -3,7 +3,7 @@
 
 pkgname=polo
 pkgrel=1
-pkgver=18.1
+pkgver=18.2
 _channel=beta
 pkgdesc="A modern, light-weight GTK file manager for Linux,  currently in beta"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ optdepends=('mediainfo: read media properties from audio and video files'
 provides=('polo')
 conflicts=('polo' 'polo-bin')
 source=(https://github.com/teejee2008/polo/archive/v${pkgver}-${_channel}.tar.gz)
-md5sums=('dbbda364cdbd64c4b8e901c0e165356c')
+md5sums=('641153f119579942722ef1486de573a3')
 
 package() {
   cd $srcdir/${pkgname}-${pkgver}-${_channel}
