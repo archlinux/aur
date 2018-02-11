@@ -1,7 +1,7 @@
 # Maintainer: Protesilaos Stavrou <info@protesilaos.com>
 
 pkgname=tempus-themes-xfce4-terminal
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Tempus themes for Xfce4 terminal (minimum WCAG AA colour contrast compliance)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('xfce4-terminal')
 url="https://github.com/protesilaos/$pkgname"
 license=('GPL3')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=('3026e65c01feb63adb8c85eb6b8e7ef6c0679529b52ba097dc067a787900086dc178b0f203a448e251752cf828ee94dd9a654c99f3e7b6faf21bde147f5f350a')
+sha512sums=('16a0663e20e58fcbe7504828ff256fa819f2fc3118e7b69d369235921c2344842edd72a212603ccd08a88d6c35bac9e6bd819cb5c9ea512ef81f52243e10926c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
