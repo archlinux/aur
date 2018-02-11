@@ -5,7 +5,7 @@
 
 pkgbase=linux-covolunablu-gaming
 _srcname=linux-4.15
-pkgver=4.15.1
+pkgver=4.15.2
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -28,6 +28,7 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
   bfq-default.patch
   https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/c4948d923637a956853df0e85a6d530e483bdffa/drivers/input/joystick/xpad.c
 )
@@ -37,15 +38,16 @@ validpgpkeys=(
 )
 sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '202a0a34f221ae335de096c292927d7a7d4bcdbc2dd46d43b8a5f6420f95a0cf'
+            '812499c5d0cc5183606dc9388084df162ca2eb5fa374d8f8b00136fd82825847'
             'SKIP'
-            '048288419f1620d0706b094f704aec69ea6917effa6a758f812d7405d105f6a5'
+            '4d82e6e8fba4d5f693a5b15f59015f3c02653105993c06613d001947862e973b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             # -- patches
-            '7b7363b53c68f52b119df994c9c08d4f29271b408f021366ab23f862518bd9bc'
-            'ac996455cddccc312d93e63845d92b2d8ab8fb53208a221948d28c76c678d215'
+            'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
+            '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
+            'b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be'
             'a20f72660076bc5f73404800da9bc52ceb592bdfbdab19438d66da8c01edc4f4'
             '851b79826c1695acf93faffb17bcb420c11d12cfa96ac6b5082e4306c2d8fb55'
 )
@@ -58,9 +60,6 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
-  chmod +x tools/objtool/sync-check.sh # GNU patch doesn't support git-style file mode
-
-  # security patches
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -70,6 +69,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+
+  # https://bugs.archlinux.org/task/57327
+  patch -Np1 -i ../0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
 
   # use bfq as default scheduler
   patch -p1 -i ../bfq-default.patch
@@ -219,7 +221,7 @@ _package-headers() {
   rm -r "${_builddir}/Documentation"
 
   # remove now broken symlinks
-  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete 
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"
