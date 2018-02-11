@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=psmouse-thinkpad-l570-dkms
 _basepkgname=psmouse-thinkpad-l570
-_srcname=linux-4.14
-pkgver=4.14.10
+_srcname=linux-4.15
+pkgver=4.15.2
 pkgrel=1
 pkgdesc="psmouse kernel module with support for Lenovo Thinkpad L570 ALPS touchpad"
 arch=('any')
@@ -21,9 +21,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '16f560aa713b46c707f04a226f67dc31fdd280aae57dd19e0413d61df5336c74'
+            '812499c5d0cc5183606dc9388084df162ca2eb5fa374d8f8b00136fd82825847'
             'SKIP'
             '06ce2cb1cd713124f4f4e8b196e3b483fb173f21964a90bfb69499154ea5fd54'
             '63c52529f831a9a433d18465b6cf694fc3270d1ff2c11172e50ab05cab04356b')
