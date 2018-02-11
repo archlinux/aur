@@ -1,0 +1,15 @@
+[Unit]
+Description=Open Network Operating System
+After=network-online.target
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/opt/onos/bin/onos-service -server
+Restart=always
+RestartSec=1s
+User=sdn
+Group=sdn
+
+[Install]
+WantedBy=multi-user.target

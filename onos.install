@@ -1,0 +1,13 @@
+post_install() {
+    if ! getent group sdn >/dev/null; then
+        groupadd sdn --system
+    fi
+    if ! getent passwd sdn >/dev/null; then
+        useradd -c 'ONOS user' -g sdn sdn --system
+    fi
+
+    chown -R sdn:sdn /opt/onos
+    chmod -R o-w /opt/onos
+}
+
+# vim: set ts=4 sw=4 et:
