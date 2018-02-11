@@ -1,7 +1,7 @@
 # Maintainer: koneu <koneu93 at googlemail dot com>
 
 pkgname='koneu-misc'
-pkgver='2'
+pkgver='3'
 pkgrel=0
 pkgdesc='random systemd stuff I wanted packaged'
 arch=('any')
@@ -13,8 +13,6 @@ source=('btrfs-snap-daily@.service'
 'btrfs-snap-weekly@.timer'
 'btrfs-snap-monthly@.service'
 'btrfs-snap-monthly@.timer'
-'hosts.service'
-'hosts.timer'
 'pulseaudio.service'
 'resolvconf.service'
 'resolvconf.timer')
@@ -24,9 +22,7 @@ md5sums=('a9d4154e77860db1a19d1aa6be1e81a0'
          '76fe79faa8920e5dfa269d9c32e092d7'
          'b1dba675932f6ef3d60f402cfac7a8e5'
          '2d4c5cd5fbd513d250dc756c011f5fcd'
-         '5d506d10510672d6438c31e399f36001'
-         '0ab8db3f58905b2bdee31685125227eb'
-         '8a636e2d607a5e83f4f5d8936f6b4844'
+         '92ceb9169eeff1c11323b0f99a935560'
          '08e1bce9b6ff0fb38dc1a80d3ea47901'
          '0ab8db3f58905b2bdee31685125227eb')
 
@@ -37,8 +33,6 @@ package() {
 	install -Dm644 "${srcdir}/btrfs-snap-weekly@.timer" "${pkgdir}/usr/lib/systemd/system/btrfs-snap-weekly@.timer"
 	install -Dm644 "${srcdir}/btrfs-snap-monthly@.service" "${pkgdir}/usr/lib/systemd/system/btrfs-snap-monthly@.service"
 	install -Dm644 "${srcdir}/btrfs-snap-monthly@.timer" "${pkgdir}/usr/lib/systemd/system/btrfs-snap-monthly@.timer"
-	install -Dm644 "${srcdir}/hosts.service" "${pkgdir}/usr/lib/systemd/system/hosts.service"
-	install -Dm644 "${srcdir}/hosts.timer" "${pkgdir}/usr/lib/systemd/system/hosts.timer"
 	install -Dm644 "${srcdir}/pulseaudio.service" "${pkgdir}/usr/lib/systemd/system/pulseaudio.service"
 	install -Dm644 "${srcdir}/resolvconf.service" "${pkgdir}/usr/lib/systemd/system/resolvconf.service"
 	install -Dm644 "${srcdir}/resolvconf.timer" "${pkgdir}/usr/lib/systemd/system/resolvconf.timer"

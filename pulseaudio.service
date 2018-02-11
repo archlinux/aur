@@ -1,6 +1,6 @@
 [Service]
 User=pulse
-Type=notify
+Type=simple
 ExecStart=/usr/bin/pulseaudio --daemonize=no
 Restart=on-failure
 [Install]

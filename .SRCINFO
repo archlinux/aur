@@ -1,6 +1,6 @@
 pkgbase = koneu-misc
 	pkgdesc = random systemd stuff I wanted packaged
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 0
 	arch = any
 	optdepends = btrfs-progs: for btrfs snapshots
@@ -11,8 +11,6 @@ pkgbase = koneu-misc
 	source = btrfs-snap-weekly@.timer
 	source = btrfs-snap-monthly@.service
 	source = btrfs-snap-monthly@.timer
-	source = hosts.service
-	source = hosts.timer
 	source = pulseaudio.service
 	source = resolvconf.service
 	source = resolvconf.timer
@@ -22,9 +20,7 @@ pkgbase = koneu-misc
 	md5sums = 76fe79faa8920e5dfa269d9c32e092d7
 	md5sums = b1dba675932f6ef3d60f402cfac7a8e5
 	md5sums = 2d4c5cd5fbd513d250dc756c011f5fcd
-	md5sums = 5d506d10510672d6438c31e399f36001
-	md5sums = 0ab8db3f58905b2bdee31685125227eb
-	md5sums = 8a636e2d607a5e83f4f5d8936f6b4844
+	md5sums = 92ceb9169eeff1c11323b0f99a935560
 	md5sums = 08e1bce9b6ff0fb38dc1a80d3ea47901
 	md5sums = 0ab8db3f58905b2bdee31685125227eb
 
