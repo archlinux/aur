@@ -15,8 +15,8 @@ pkgbase = drpm
 	depends = rpm-org
 	depends = xz
 	depends = zlib
-	source = http://pkgs.fedoraproject.org/repo/pkgs/drpm/drpm-0.3.0.tar.bz2/e1ca38e14f52d0f5229bba45ba8b8904/drpm-0.3.0.tar.bz2
-	md5sums = e1ca38e14f52d0f5229bba45ba8b8904
+	source = https://github.com/rpm-software-management/drpm/archive/f955e6ba5f920dea25d9ec28f93ce650bf9d6c9d/drpm-0.3.0.tar.gz
+	md5sums = f2b03f8821c61a23264becbad01cda63
 
 pkgname = drpm
 

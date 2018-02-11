@@ -1,4 +1,5 @@
 pkgname=drpm
+_commit=f955e6ba5f920dea25d9ec28f93ce650bf9d6c9d
 pkgver=0.3.0
 pkgrel=2
 pkgdesc="A small library for fetching information from deltarpm packages"
@@ -8,10 +9,11 @@ license=('BSD' 'LGPL3')
 depends=('bzip2' 'openssl' 'rpm-org' 'xz' 'zlib')
 makedepends=('cmake' 'doxygen')
 checkdepends=('cmocka')
-md5sums=('e1ca38e14f52d0f5229bba45ba8b8904')
-source=("http://pkgs.fedoraproject.org/repo/pkgs/$pkgname/$pkgname-$pkgver.tar.bz2/${md5sums[0]}/$pkgname-$pkgver.tar.bz2")
+source=("$url/archive/$_commit/$pkgname-$pkgver.tar.gz")
+md5sums=('f2b03f8821c61a23264becbad01cda63')
 
 prepare() {
+	mv "$pkgname-$_commit" "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
