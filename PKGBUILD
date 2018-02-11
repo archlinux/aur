@@ -2,7 +2,7 @@
 pkgname=tealdeer-git
 _name=tealdeer
 pkgver=r108.2d1caf2
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast TLDR client written in Rust."
 arch=('x86_64' 'i686')
 url="https://github.com/dbrgn/tealdeer"
@@ -10,7 +10,8 @@ license=('MIT' 'Apache')
 depends=('')
 makedepends=('git' 'rust' 'cargo')
 provides=('tldr')
-conflicts=('tldr-rs' 'tldr-rs-git' 'nodejs-tldr' 'nodejs-tldr-git' 'tldr-cpp-client' 'tldr-git')
+conflicts=('nodejs-tldr' 'nodejs-tldr-git' 'tealdeer' 'tldr-bash-git' 'tldr-cpp-client'
+           'tldr-git' 'tldr-go-client-git' 'tldr-python-client')
 options=(!emptydirs)
 source=('git+https://github.com/dbrgn/tealdeer')
 md5sums=('SKIP')
