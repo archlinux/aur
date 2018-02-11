@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 8.0.9
+	pkgver = 8.1.0
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = drawio-desktop
 	depends = gconf
 	depends = libnotify
 	conflicts = drawio-desktop-bin
-	noextract = drawio-desktop-8.0.9.zip
-	source = drawio-desktop-8.0.9.zip::https://github.com/jgraph/drawio/releases/download/v8.0.9/draw.war
-	sha256sums = 4b351d422864400654f907c47d6ad4c5550840ab9e53e4bb3cc28099d6b286e3
+	noextract = drawio-desktop-8.1.0.zip
+	source = drawio-desktop-8.1.0.zip::https://github.com/jgraph/drawio/releases/download/v8.1.0/draw.war
+	sha256sums = 1dc337be39be3a4e1efcb6beae6fe91c0f540fdc1e85813f135d7bf16461f720
 
 pkgname = drawio-desktop
 
