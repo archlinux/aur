@@ -1,0 +1,15 @@
+pkgbase = python2-hgnested
+	pkgdesc = Mercurial extension to work with nested repositories
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://bitbucket.org/cedk/hgnested
+	arch = any
+	license = GPL3
+	makedepends = python2
+	depends = python2
+	depends = mercurial
+	source = https://pypi.io/packages/source/h/hgnested/hgnested-0.8.tar.gz
+	md5sums = 39be601066db908b6fd1d4e19f98e0e3
+
+pkgname = python2-hgnested
+
