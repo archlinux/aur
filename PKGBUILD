@@ -6,7 +6,7 @@ pkgdesc="Provides some enhancements to built-in logging module"
 url="https://pypi.python.org/pypi/logging-helper"
 arch=(any)
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' python-better-exceptions python2-better-exceptions)
 source=("https://pypi.io/packages/source/l/logging_helper/logging_helper-${pkgver}.tar.gz")
 md5sums=('a0deb04b50222c733940b51ae074bf03')
 
