@@ -2,35 +2,37 @@
 # Based on the python-pillow package (Maintainer: Kyle Keen <keenerd@gmail.com>, Contributor: minder)
 
 pkgname=python-pillow-simd
-pkgver=4.3.0.post0
+pkgver=5.0.0
 pkgrel=1
-_appname=Pillow-SIMD
+_appname=pillow-simd
 _py3basever=3.6m
 pkgdesc="Python Imaging Library (PIL) fork. Pillow fork for better image processing performance."
 arch=('x86_64')
 url="https://github.com/uploadcare/pillow-simd"
 license=('custom')
-depends=('python' 'lcms2' 'libwebp' 'openjpeg2' 'python-olefile')
-optdepends=('tk: for the ImageTK module'
-            'python-pyqt4: for the ImageQt module')
-makedepends=('python-setuptools' 'lcms2' 'libwebp' 'openjpeg2' 'tk')
-source=("https://files.pythonhosted.org/packages/source/P/$_appname/$_appname-$pkgver.tar.gz")
+depends=('python' 'lcms2' 'libtiff' 'openjpeg2')
+optdepends=('freetype2: for the ImageFont module'
+            'libraqm: for complex text scripts'
+            'libwebp: for webp images'
+            'tk: for the ImageTK module')
+makedepends=('python-setuptools' 'freetype2' 'libraqm' 'libwebp' 'tk')
+checkdepends=('python-pytest')
+source=("https://github.com/uploadcare/$_appname/archive/$pkgver.tar.gz")
 conflicts=('python-pillow')
 provides=('python-pillow')
 
-package() {
+build() {
   cd "$srcdir/$_appname-$pkgver"
-  python3 setup.py install --root="$pkgdir/" --optimize=0
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -dm755 "$pkgdir/usr/include/python$_py3basever/"
-  install -m644 -t "$pkgdir/usr/include/python$_py3basever/" libImaging/*.h
-
-  # clean up bins
-  cd "$pkgdir/usr/bin"
-  for f in *.py; do
-    mv "$f" "${f%.py}"
-  done
+  python3 setup.py build
 }
 
-sha1sums=('1b4b740ac360da459714b18a8e9e7e2a5c31f9b1')
-sha256sums=('29bb005a5d49664649b717d2b0cb410fc6e4a01d99506f602da8fcef52a05bc6')
+package() {
+  cd "$srcdir/$_appname-$pkgver"
+  python3 setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -dm755 "$pkgdir/usr/include/python$_py3basever/"
+  install -m644 -t "$pkgdir/usr/include/python$_py3basever/" src/libImaging/*.h
+}
+
+sha1sums=('9590d2cae1c3488c513e5a8c1fd4ad00f6af6cbe')
+sha256sums=('9bd80979846d3a8cae878096d1b2d12600542bbc23f1c3c7e5f4445796a09fb0')
