@@ -1,10 +1,11 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('python-pyuserinput-git')
 _srcname='PyUserInput'
 pkgdesc='A module for cross-platform control of the mouse and keyboard in python that is simple to install and use'
-pkgver='r1'
+pkgver='r260'
 pkgrel='1'
 arch=('any')
-url="https://github.com/SavinaRoja/${_srcname}"
+url="https://github.com/PyUserInput/${_srcname}"
 license=('GPL3')
 
 depends=('python' 'python-xlib')
