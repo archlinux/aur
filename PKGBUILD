@@ -7,11 +7,11 @@
 pkgbase=lib32-bluez-libs
 pkgname=("${pkgbase}" 'lib32-bluez-plugins')
 pkgver=5.48
-pkgrel=1
+pkgrel=2
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('LGPL2.1')
-makedepends=('gcc-multilib' 'gcc-libs-multilib' 'lib32-glib2' 'lib32-systemd')
+makedepends=('lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2' 'lib32-systemd')
 source=("http://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar."{xz,sign})
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
 sha256sums=('b9a8723072ef66bae7ec301c774902ebcb444c9c5b149b5a199e60a1ba970e90'
@@ -39,6 +39,7 @@ build() {
     --disable-cups \
     --disable-obex \
     --disable-client \
+    --disable-tools \
     --disable-systemd \
     --disable-datafiles \
     --enable-sixaxis \
