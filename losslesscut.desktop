@@ -4,3 +4,4 @@ Name=LosslessCut
 Comment=GUI tool for lossless trimming/cutting of media files
 Exec=losslesscut
 Categories=AudioVideo;
+Icon=losslesscut.svg
