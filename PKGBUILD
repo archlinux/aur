@@ -2,13 +2,13 @@
 
 _pkgname=qrae
 pkgname=qrae-git
-pkgver=111.cf0a5ff
+pkgver=135.26694a8
 pkgrel=1
 pkgdesc="Un cliente del diccionario castellano de la RAE."
 arch=('i686' 'x86_64')
 url="https://github.com/javierllorente/qrae"
 license=('GPL')
-depends=('qt5-base' 'qt5-webkit')
+depends=('qt5-webkit')
 makedepends=('git' 'make')
 conflicts=('qrae')
 provides=('qrae')
@@ -23,15 +23,15 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-  qmake-qt5 qrae.pro DESTDIR="$srcdir/${_pkgname}"
+  qmake-qt5 qdc.pro DESTDIR="$srcdir/${_pkgname}"
   make
 }
 
 package() {
-  install -m755 -d ${pkgdir}/usr/{bin,share/{applications,pixmaps,doc/qrae}}
+  install -m755 -d ${pkgdir}/usr/{bin,share/{applications,pixmaps,doc/qdc}}
 
-  install -m755 "$srcdir/${_pkgname}"/qrae "$pkgdir"/usr/bin/
-  install -m644 "$srcdir/${_pkgname}"/icons/qrae.png "$pkgdir"/usr/share/pixmaps/
-  install -m644 "$srcdir/${_pkgname}"/qrae.desktop "$pkgdir"/usr/share/applications/
-  install -m644 "$srcdir/${_pkgname}"/{ChangeLog,COPYING,gpl-2.0.txt,gpl-3.0.txt} "$pkgdir"/usr/share/doc/qrae/
+  install -m755 "$srcdir/${_pkgname}"/qdc "$pkgdir"/usr/bin/
+  install -m644 "$srcdir/${_pkgname}"/icons/qdc.png "$pkgdir"/usr/share/pixmaps/
+  install -m644 "$srcdir/${_pkgname}"/qdc.desktop "$pkgdir"/usr/share/applications/
+  install -m644 "$srcdir/${_pkgname}"/{ChangeLog,COPYING,gpl-2.0.txt,gpl-3.0.txt} "$pkgdir"/usr/share/doc/qdc/
 }
