@@ -2,7 +2,7 @@
 
 pkgname=skype-electron
 pkgver=20160512
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron Skype app designed for use on Linux systems"
 arch=("any")
 url="https://github.com/GyozaGuy/Skype-Electron"
@@ -12,11 +12,9 @@ _commit="54009c9d19f1d768ca71b75dc5c11a68854c9d47"
 source=("https://github.com/GyozaGuy/Skype-Electron/archive/${_commit}.tar.gz"
 		"skype-electron.desktop"
 		"skype-electron.sh")
-md5sums=("bd644cd1b08807546068f832446027ea"
-         "08c9dec95a58cc95f653844985fa5be2"
-         "36f42eb8958a9468146b3169fdaef660")
-
-install="skype-electron.install"
+md5sums=('5dab311f5ac0c688bc5186b69e9fa7ff'
+         '08c9dec95a58cc95f653844985fa5be2'
+         '36f42eb8958a9468146b3169fdaef660')
 
 package() {
 
