@@ -1,0 +1,3 @@
+#!/bin/bash
+AVDUMP2CL="/opt/avdump2/AVDump2CL.exe"
+exec mono --desktop "$AVDUMP2CL" "$@"
