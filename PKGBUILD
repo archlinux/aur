@@ -2,8 +2,8 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}
-pkgver=0.7.0
-pkgrel=4
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Map drawing program from OpenOrienteering"
 arch=('i686' 'x86_64')
 url="http://www.openorienteering.org/apps/mapper/"
@@ -15,10 +15,10 @@ provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 install=${pkgname}.install
 source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('bc12453bff1863186e5ee7d7d47f43d4ce65a74bd9bb57fada709e0dc68c1065')
+sha256sums=('a52d8b34dadb0777ab78e6e48b9c230b4765b3434edf16ec7d8220ae2ea0ba47')
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
   rm -rf build
   mkdir -p build
@@ -30,11 +30,11 @@ build() {
     -DLICENSING_PROVIDER=arch   \
     -DMapper_PACKAGE_NAME=${pkgname} \
     -Wno-dev
-  make -j$(nproc)
+  make
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}/build
+  cd ${_pkgname}-${pkgver}/build
 
   make DESTDIR=${pkgdir}/ install
 }
