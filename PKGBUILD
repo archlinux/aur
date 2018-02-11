@@ -1,9 +1,9 @@
 pkgname=caitsith-lkm
 _basever=0.2
-_timestamp=20170515
+_timestamp=20171225
 pkgver=${_basever}_${_timestamp}
 _kernver=$(uname -r)
-pkgrel=3
+pkgrel=1
 pkgdesc='CaitSith LKM-based LSM version'
 arch=('i686' 'x86_64')
 url='http://caitsith.osdn.jp/'
@@ -14,8 +14,8 @@ optdepends=('caitsith-tools')
 install=caitsith-lkm.install
 source=("http://jaist.dl.osdn.jp/caitsith/66537/caitsith-patch-${_basever}-${_timestamp}.tar.gz"
 	"http://jaist.dl.osdn.jp/caitsith/66537//caitsith-patch-${_basever}-${_timestamp}.tar.gz.asc")
-sha256sums=('4a68a986ee35c4bd7e6e1554b509d02bd9d0b3a72f1ae5e1e5fae8257ca67e5b'
-	'40ad8ae33eb7cb67093d1b50bcc6180a27e8a96bc5941a3e9954a80ce0ec63a7')
+sha256sums=('fdc2ec063787a58f9f2555e39f617064e2d0b5fbedfb8a6633c212d3b0089f52'
+	'efe54f91d3396cd95933acc357829a492c06bb22d295fb2a70aab83feef8b6bf')
 validpgpkeys=('43C83369623D7AD3A96C2FC7425F128D0C64F52A') # http://I-love.SAKURA.ne.jp/kumaneko-key
 noextract=("caitsith-patch-${_basever}-${_timestamp}.tar.gz")
 
