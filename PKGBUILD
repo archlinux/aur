@@ -6,7 +6,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 _srcname=crawl
 pkgname=crawl-tiles
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 epoch=
 pkgdesc="Dungeon Crawl Stone Soup with graphical tiles and sound support"
@@ -29,8 +29,7 @@ conflicts=('crawl')
 backup=()
 options=()
 source=("https://github.com/crawl/$_srcname/archive/$pkgver.tar.gz")
-md5sums=('0780da66a5afe5af8e6d3013bf9d950c')
-
+md5sums=('634808232f0811c7f16594a8c35d8b72')
 
 prepare() {
 	cd "$_srcname-$pkgver/crawl-ref/source"
