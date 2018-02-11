@@ -1,16 +1,16 @@
 # Maintainer: Uroš Vampl <mobile.leecher at gmail dot com>
 
 pkgname=tigervnc-git
-pkgver=r3320.3821d7e
+pkgver=r3678.8f652339
 pkgrel=1
-_xorgver=1.18.3
+_xorgver=1.19.6
 pkgdesc="Suite of VNC servers and clients. Based on the VNC 4 branch of TightVNC."
 arch=('i686' 'x86_64')
 url="http://www.tigervnc.org"
 license=('GPL')
-depends=('fltk' 'pam' 'gnutls' 'libjpeg-turbo' 'libxtst' 'libxfont' 'pixman'
+depends=('fltk' 'pam' 'gnutls' 'libjpeg-turbo' 'libxtst' 'pixman'
 	 'xorg-xauth' 'xorg-xsetroot' 'xkeyboard-config' 'xorg-xkbcomp'
-	 'libgl' 'libgcrypt' 'perl')
+	 'libgl' 'libgcrypt' 'perl' 'libxdamage' 'libxfont2')
 makedepends=('cmake' 'nasm' 'xorg-font-util' 'xorg-util-macros' 'bigreqsproto'
 	     'compositeproto' 'damageproto' 'randrproto' 'resourceproto'
 	     'scrnsaverproto' 'videoproto' 'xcmiscproto' 'xf86vidmodeproto'
@@ -23,10 +23,10 @@ source=(git+https://github.com/TigerVNC/tigervnc.git
 	ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${_xorgver}.tar.bz2
 	vncserver.service
 	vncviewer.desktop)
-md5sums=('SKIP'
-         '043d720bf2472a65bb8f0daa97f83dfa'
-         'a8a20685c23a50f86a13c33ce96a7ba7'
-         'b200d83c60e80c6f9693ea19a2d9f5b0')
+sha256sums=('SKIP'
+            'a732502f1db000cf36a376cd0c010ffdbf32ecdd7f1fa08ba7f5bdf9601cc197'
+            '80f8fc7598d05e645ae73bc3371bbdededf07136a9f024ce6ebbfe469335b16e'
+            '2ada7da1a926d78f11d2dd8ec376ac5877d2ce2bbb57a99526c13d8fcae6ddd7')
 
 pkgver() {
   cd tigervnc
@@ -35,17 +35,17 @@ pkgver() {
 
 prepare() {
   cd tigervnc
-
-  sed -i 's/iconic/nowin/' unix/vncserver
-
   cd unix/xserver
-  cp -r ${srcdir}/xorg-server-${_xorgver}/* .
-  patch -Np1 -i ../xserver118.patch
+  cp -r "$srcdir"/xorg-server-${_xorgver}/* .
+  patch -Np1 -i ../xserver119.patch
 }
 
 build() {
   cd tigervnc
-  cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake -G "Unix Makefiles" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+
   make
 
   cd unix/xserver
@@ -62,9 +62,11 @@ build() {
 
 package() {
   cd tigervnc
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="$pkgdir" install
   cd unix/xserver/hw/vnc
-  make DESTDIR=${pkgdir} install
-  install -Dm0644 $srcdir/vncserver.service $pkgdir/usr/lib/systemd/system/vncserver.service
-  install -Dm0644 $srcdir/vncviewer.desktop $pkgdir/usr/share/applications/vncviewer.desktop
+  make DESTDIR="$pkgdir" install
+  install -Dm0644 "$srcdir"/tigervnc/contrib/systemd/user/vncserver@.service \
+    "$pkgdir"/usr/lib/systemd/user/vncserver@.service
+  install -Dm0644 "$srcdir"/vncserver.service "$pkgdir"/usr/lib/systemd/system/vncserver.service
+  install -Dm0644 "$srcdir"/vncviewer.desktop "$pkgdir"/usr/share/applications/vncviewer.desktop
 }
