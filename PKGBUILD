@@ -2,7 +2,7 @@
 # Contributor: Byron Clark <byron@theclarkfamily.name>
 
 pkgname=thrift-static
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=2
 pkgdesc='Scalable cross-language services framework for IPC/RPC'
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ conflicts=('thrift')
 provides=('thrift')
 options=(staticlibs)
 source=(thrift-$pkgver.zip::https://github.com/apache/thrift/archive/$pkgver.zip)
-sha1sums=('461cad8da7e73dab11c036760ce76c39b65cd59a')
+sha256sums=('c183e6337ae6d03a019c3581de71d3bd5c6fa92dfe1754398c402e3561d09f23')
 
 build() {
   cd thrift-$pkgver
@@ -27,7 +27,6 @@ build() {
               --without-qt4 \
               --without-qt5 \
               --with-libevent \
-              --with-csharp \
               --without-haskell \
               --without-php \
               --without-ruby \
@@ -40,7 +39,8 @@ build() {
               --without-php \
               --without-go \
               --without-lua \
-              --without-nodejs
+              --without-nodejs \
+              --without-rs
               
   make
 

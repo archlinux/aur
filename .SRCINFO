@@ -1,6 +1,6 @@
 pkgbase = thrift-static
 	pkgdesc = Scalable cross-language services framework for IPC/RPC
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 2
 	url = http://thrift.apache.org/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = thrift-static
 	provides = thrift
 	conflicts = thrift
 	options = staticlibs
-	source = thrift-0.10.0.zip::https://github.com/apache/thrift/archive/0.10.0.zip
-	sha1sums = 461cad8da7e73dab11c036760ce76c39b65cd59a
+	source = thrift-0.11.0.zip::https://github.com/apache/thrift/archive/0.11.0.zip
+	sha256sums = c183e6337ae6d03a019c3581de71d3bd5c6fa92dfe1754398c402e3561d09f23
 
 pkgname = thrift-static
 
