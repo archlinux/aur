@@ -1,14 +1,14 @@
 pkgbase = turtlecoin-bin
 	pkgdesc = Turtlecoin simplewallet and miner
-	pkgver = v0.3.1
-	pkgrel = 2
+	pkgver = v0.3.2
+	pkgrel = 1
 	url = https://turtlecoin.lol
 	install = turtlecoin-bin.install
 	arch = x86_64
-	license = custom
+	license = LGPLv3
 	conflicts = turtlecoin-git
-	source = https://github.com/turtlecoin/turtlecoin/releases/download/v0.3.1/TurtleCoin-v0.3.1-linux-staticboost-CLI.tar.gz
-	sha256sums = 98f95ac907c47eeff63949ec943afa3e04c7def91005bef4eade04bf1302e25d
+	source = https://github.com/turtlecoin/turtlecoin/releases/download/v0.3.2/turtlecoin-v0.3.2-linux-staticboost.tar.gz
+	sha256sums = e7c5224c578fcd0fc50f43d3f0b98b9af9536e0b1c94a1113acece65d7c37981
 
 pkgname = turtlecoin-bin
 
