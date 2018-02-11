@@ -19,7 +19,7 @@ pkgname="${_pyver}-${_pybase}"
 _pyverother='' #python-'
 fi
 _pybase="${_pybase//-/}"
-pkgver='3.12.1'
+pkgver='3.12.2'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -32,7 +32,7 @@ _verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\
 # https://bitbucket.org/pypa/pypi/issues/438/backwards-compatible-un-hashed-package
 # https://bitbucket.org/pypa/pypi/issues/447/direct-links-of-packages-gone
 source=("https://files.pythonhosted.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('7495eca3a80949619eef9f79432a95c927ecf711f0f4f4e37b84e298ccff638b')
+sha256sums=('505e613678c0d1c477d7d8051f0db16082f7b6c2eb230c2ece6560ef06e94fa7')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-
@@ -47,13 +47,12 @@ requires = ['pyyaml>=3.11',
             'botocore>=1.0.1',
             'cement==2.8.2',
             'colorama==0.3.7',
-            'pathspec==0.5.0',
+            'pathspec==0.5.5',
             'setuptools >= 20.0',
             ## For docker-compose
             'docopt >= 0.6.1, < 0.7',
             'requests >= 2.6.1, <= 2.9.1',
             'websocket-client >= 0.11.0, < 1.0',
-            'docker-py >= 1.1.0, <= 1.7.2',
             'dockerpty >= 0.3.2, <= 0.4.1',
             'semantic_version == 2.5.0',
             'tabulate == 0.7.5',
