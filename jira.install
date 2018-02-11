@@ -1,0 +1,16 @@
+post_install() {
+    if ! getent passwd jira > /dev/null; then
+        useradd -r jira
+    fi
+
+    chown -R jira:jira /opt/atlassian-jira/{logs,temp,webapps,work,conf} /var/opt/atlassian-jira
+}
+
+pre_upgrade() {
+    systemctl stop jira.service
+}
+
+post_upgrade() {
+    chown -R jira:jira /opt/atlassian-jira/{logs,temp,webapps,work,conf} /var/opt/atlassian-jira
+    systemctl start jira.service
+    }

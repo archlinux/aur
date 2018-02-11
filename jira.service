@@ -1,0 +1,49 @@
+[Unit]
+Description=Atlassian Jira Service
+After=syslog.target network.target
+
+[Service]
+User=jira
+Type=simple
+SyslogIdentifier=jira
+Environment="CATALINA_HOME=/opt/atlassian-jira"
+Environment="CATALINA_BASE=/opt/atlassian-jira"
+Environment="CATALINA_TMPDIR=/opt/atlassian-jira/temp"
+Environment="JAVA_HOME=/usr/lib/jvm/default"
+Environment="CLASSPATH=/opt/atlassian-jira/bin/bootstrap.jar:/opt/atlassian-jira/bin/tomcat-juli.jar"
+EnvironmentFile=-/etc/conf.d/jira
+SuccessExitStatus=143
+
+ExecStart=/usr/bin/env ${JAVA_HOME}/bin/java \
+$JAVA_OPTS $CATALINA_OPTS \
+-classpath ${CLASSPATH} \
+-Dcatalina.base=${CATALINA_BASE} \
+-Dcatalina.home=${CATALINA_HOME} \
+-Djava.endorsed.dirs=${JAVA_ENDORSED_DIRS} \
+-Djava.io.tmpdir=${CATALINA_TMPDIR} \
+-Dmail.mime.decodeparameters=true \
+-Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true \
+-Djava.awt.headless=true \
+-Datlassian.standalone=JIRA \
+-Dorg.dom4j.factory=com.atlassian.core.xml.InterningDocumentFactory \
+-XX:+PrintGCDateStamps \
+-XX:-OmitStackTraceInFastThrow \
+-Djava.util.logging.config.file=${CATALINA_BASE}/conf/logging.properties \
+-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
+org.apache.catalina.startup.Bootstrap \
+start
+
+ExecStop=/usr/bin/env ${JAVA_HOME}/bin/java \
+$JAVA_OPTS \
+-classpath ${CLASSPATH} \
+-Dcatalina.base=${CATALINA_BASE} \
+-Dcatalina.home=${CATALINA_HOME} \
+-Djava.endorsed.dirs=${JAVA_ENDORSED_DIRS} \
+-Djava.io.tmpdir=${CATALINA_TMPDIR} \
+-Djava.util.logging.config.file=${CATALINA_BASE}/conf/logging.properties \
+-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
+org.apache.catalina.startup.Bootstrap \
+stop
+
+[Install]
+WantedBy=multi-user.target
