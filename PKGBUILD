@@ -6,7 +6,7 @@ pkgbase=linux-odroid-u3-git
 pkgmain=linux-odroid
 pkgname=('linux-odroid-u3-git' 'linux-headers-odroid-u3-git')
 _kernelname=${pkgname#linux}
-_basekernel=4.14.13
+_basekernel=4.15.2
 pkgver=${_basekernel}
 pkgrel=1
 arch=('armv7h')
@@ -20,7 +20,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${pkgver}.tar.xz"
         'arch-logo.ppm'
 	'uEnv-mainline.txt')
 
-md5sums=('4e8bb562f8fd33d5ef1feb0435ed2b02'
+md5sums=('a9b1ca74ab5bc308dd2f1a57408122fd'
          '9e293c7c511474aa74711afe289946f6'
          '8b51e60c925e54b36747f36d9ae7dd37'
          'de302b1a6bc612f6eb95714341003ac0'
