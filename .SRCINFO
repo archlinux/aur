@@ -1,0 +1,17 @@
+pkgbase = chars
+	pkgdesc = Command line tool to display information about unicode characters.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/antifuchs/chars
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	conflicts = chars-git
+	source = 0.2.0.tar.gz::https://github.com/antifuchs/chars/archive/0.2.0.tar.gz
+	sha512sums = 0197b7d3bd3dba359a4ce3eba79717a787844733976cafb19b7f53097493a8c2bd4cb469b2d7c3f9a6ae497c8365eebb9630697594b02f2f9c5ac67d01551c4c
+
+pkgname = chars
+
