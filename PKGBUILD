@@ -3,7 +3,7 @@
 pkgname=libnitrokey-git
 _gitname=libnitrokey
 pkgver=3.2r634.e2e009d
-pkgrel=1
+pkgrel=2
 pkgdesc="Communicate with Nitrokey stick devices in a clean and easy manner"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
@@ -34,8 +34,7 @@ build() {
         -DBUILD_SHARED_LIBS=ON \
         -DCOMPILE_TESTS=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-        -DCMAKE_INSTALL_FULL_LIBDIR=/usr/lib
+        -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
