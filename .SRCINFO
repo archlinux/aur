@@ -1,10 +1,11 @@
 pkgbase = ruby-lumberjack
 	pkgdesc = A simple, powerful, and fast logging implementation in Ruby.
 	pkgver = 1.0.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bdurand/lumberjack
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	noextract = lumberjack-1.0.12.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/lumberjack-1.0.12.gem
