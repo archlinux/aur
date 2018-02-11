@@ -1,6 +1,6 @@
 pkgbase = octave-hg
 	pkgdesc = A high-level language, primarily intended for numerical computations.
-	pkgver = 4.3.0+24625.be37df6e1fb4
+	pkgver = 4.3.0+24737.5be92b26ef8f
 	pkgrel = 1
 	url = http://www.octave.org
 	arch = i686
@@ -28,6 +28,7 @@ pkgbase = octave-hg
 	depends = graphicsmagick
 	depends = mesa
 	depends = julia
+	depends = libsndfile
 	depends = suitesparse
 	depends = java-environment
 	depends = qscintilla-qt5

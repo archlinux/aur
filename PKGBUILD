@@ -3,7 +3,7 @@
 
 pkgname=octave-hg
 pkgrel=1
-pkgver=4.3.0+24625.be37df6e1fb4
+pkgver=4.3.0+24737.5be92b26ef8f
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 # Some of these may be optional, e.g. arpack, lapack, qhull but if they
 # are installed, octave will be linked against them.
 depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'openmp'
-	 'gl2ps' 'qhull' 'graphicsmagick' 'mesa' 'julia'
+	 'gl2ps' 'qhull' 'graphicsmagick' 'mesa' 'julia' 'libsndfile'
 	 'suitesparse' 'java-environment' 'qscintilla-qt5' 'termcap')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gettext'
 	     'transfig' 'epstool' 'texlive-core' 'icoutils')
