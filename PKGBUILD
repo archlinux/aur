@@ -2,29 +2,26 @@
 # Contributor: jjacky
 
 pkgname=kalu-kde
-pkgver=4.1.0
-pkgrel=3
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news; supports autohide in KDE Plasma's panel"
 arch=('i686' 'x86_64')
-url="http://jjacky.com/kalu"
+url="https://jjacky.com/kalu"
 license=('GPL3+')
 depends=('dbus' 'polkit' 'gtk3' 'pacman>=5.0' 'pacman<5.1' 'curl' 'libnotify'
          'notification-daemon' 'statusnotifier')
 makedepends=('perl' 'groff')
 source=(http://jjacky.com/${pkgname%-kde}/${pkgname%-kde}-$pkgver.tar.gz
-        statusnotifier.patch
-        unread_news.patch)
+        statusnotifier.patch)
 install=kalu.install
-sha1sums=('dbcc37899302d402717653f11ff303c5dc73b86d'
-          'd58712ff827df6bea9c5eb5a7e3d9034f3cac506'
-          'c1fd0bd2d77de217742358e45a3d670d11e87dbe')
+sha1sums=('0323a4cfcc269829641f73fd7a0c21a7619660a6'
+          'd58712ff827df6bea9c5eb5a7e3d9034f3cac506')
 provides=(${pkgname%-kde})
 conflicts=(${pkgname%-kde})
 
 prepare() {
   cd "${pkgname%-kde}-$pkgver"
   patch -p0 -i ../statusnotifier.patch
-  patch -p1 -i ../unread_news.patch
 }
 
 build() {
