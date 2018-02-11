@@ -8,12 +8,18 @@ arch=('any')
 url="https://github.com/deadc0de6/dotdrop"
 license=('GPL')
 groups=()
-depends=('python' 'python-jinja' 'python-docopt' 'python-pyaml')
-source=("git+https://github.com/deadc0de6/dotdrop.git")
+depends=('python' 'python-setuptools' 'python-jinja' 'python-docopt' 'python-pyaml')
+makedepends=('git')
+source=("git+https://github.com/deadc0de6/dotdrop.git#tag=v${pkgver}")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  git describe --abbrev=0 --tags | sed 's/^v//g'
+}
 
 package() {
   cd "${pkgname}"
-  python setup.py install --root="${pkgdir}/"
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
 

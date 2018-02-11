@@ -5,11 +5,13 @@ pkgbase = dotdrop
 	url = https://github.com/deadc0de6/dotdrop
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = python
+	depends = python-setuptools
 	depends = python-jinja
 	depends = python-docopt
 	depends = python-pyaml
-	source = git+https://github.com/deadc0de6/dotdrop.git
+	source = git+https://github.com/deadc0de6/dotdrop.git#tag=v0.10
 	md5sums = SKIP
 
 pkgname = dotdrop
