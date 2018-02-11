@@ -3,18 +3,17 @@
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki@gmail.com>
 _gitname='rust'
 pkgname=('rust-git' 'rust-docs-git' 'rust-src-git' 'rust-analysis-git' 'cargo-git' 'rls-git')
-pkgver=1.20.0.r65852.c35a0c1d05
+pkgver=1.25.0.r74258.39abcc0413
 epoch=3
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=('i686' 'x86_64')
 url="https://www.rust-lang.org/"
 license=('MIT' 'Apache')
-makedepends=('git' 'libffi' 'perl' 'python2' 'curl' 'llvm' 'cmake' 
-'jemalloc')
-source=("git+https://github.com/rust-lang/rust.git")
+makedepends=('git' 'libffi' 'perl' 'python2' 'curl' 'llvm' 'cmake')
+source=("git+https://github.com/rust-lang/rust.git" "config.toml")
 options=('staticlibs' '!strip' '!emptydirs')
-sha256sums=('SKIP')
+sha384sums=('SKIP' 'ef5321e440aea799a2b81b702daaab9405d5be8a8ea5fdbd5645aa71b52e8cda4c68b3c6d46a46159511562438536e64')
 
 rustbuild_pkgver() {
     grep '^pub const CFG_RELEASE_NUM' src/bootstrap/channel.rs|head -n1|cut -d\" -f2
@@ -53,17 +52,8 @@ pkgver() {
 build() {
     cd "$_gitname"
 
-    ./configure \
-        --prefix=/usr \
-        --llvm-root=/usr \
-        --disable-codegen-tests \
-        --enable-llvm-link-shared \
-        --jemalloc-root=/usr/lib/ \
-        --disable-dist-src \
-        --enable-extended \
-        --enable-sanitizers
-
-    make dist
+    cp -a "$srcdir/config.toml" .
+    ./x.py dist
 }
 
 package_rust-git() {
