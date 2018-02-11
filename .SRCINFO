@@ -1,7 +1,7 @@
 pkgbase = spl-utils-common-git
 	pkgdesc = Solaris Porting Layer kernel module support files.
-	pkgver = 2018.01.24.r1062.23602fd
-	pkgrel = 2
+	pkgver = 2018.02.07.r1064.48ef8ba
+	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	groups = archzfs-linux-git
@@ -15,7 +15,7 @@ pkgbase = spl-utils-common-git
 	conflicts = spl-utils-linux-lts-git
 	replaces = spl-utils-linux,
 	replaces = spl-utils-linux-lts
-	source = git+https://github.com/zfsonlinux/spl.git#commit=23602fdb39e1254c669707ec9d2d0e6bcdbf1771
+	source = git+https://github.com/zfsonlinux/spl.git#commit=48ef8ba07094afcd67355940ca8db92d76f7c096
 	sha256sums = SKIP
 
 pkgname = spl-utils-common-git
