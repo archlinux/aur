@@ -3,17 +3,17 @@
 
 pkgname=multimc5
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 __pkgver_libnbtplusplus=multimc-0.5.0
 __pkgver_quazip=multimc-2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="http://multimc.org/"
 license=('Apache')
-depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg')
+depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg' 'xorg-xrandr')
+provides=('multimc')
 makedepends=('git' 'patch' 'cmake' 'qt5-tools' 'qt5-x11extras' 'java-environment>=8')
-optdepends=('mcedit: Allows editing of minecraft worlds'
-  'xorg-xrandr: Some modpacks require this to launch')
+optdepends=('mcedit: Allows editing of minecraft worlds')
 conflicts=('multimc5-git' 'multimc-git' 'multimc')
 source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
   "https://github.com/MultiMC/libnbtplusplus/archive/${__pkgver_libnbtplusplus}.tar.gz"
