@@ -1,6 +1,6 @@
 pkgbase = megasync-headless
 	pkgdesc = Sync with MEGA. Daemon, fuse and cli client. Original sdk (git).
-	pkgver = v3.3.1.1.gbcfd5fd9
+	pkgver = v3.3.1.1.g20e49538
 	pkgrel = 1
 	url = https://mega.co.nz/#sync
 	install = megasync-headless.install
