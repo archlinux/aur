@@ -1,7 +1,7 @@
 # Maintainer: Peter Mayr <petermayr@ymail.com>
 
 pkgname=lunzip
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc='For extracting and viewing files in .lzip archives'
 url='http://www.nongnu.org/lzip/lunzip.html'
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 depends=('bzip2' 'bash')
 source=("http://download.savannah.gnu.org/releases/lzip/lunzip/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('cc24cbd3ea3bfdc443e6e37442a0ad47b35db0d6')
+sha1sums=('9a22654fd7a805b0b8631e564bef9ed104edcdae')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
