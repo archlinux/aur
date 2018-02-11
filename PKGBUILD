@@ -48,7 +48,7 @@ package() {
     cd "${srcdir}/$_pkgname-$pkgver"
     make DESTDIR="$pkgdir" install
     for res in 16 32 48 128; do
-    	install -D -m644 "$srcdir"/"$_name"/share/icons/"${res}"x"${res}"/vlc.png \
+    	install -D -m644 "$srcdir"/"$_pkgname-$pkgver"/share/icons/"${res}"x"${res}"/vlc.png \
                      "$pkgdir"/usr/share/icons/hicolor/"${res}"x"${res}"/apps/vlc.png
     done
     install -Dm 644 "$srcdir"/update-vlc-plugin-cache.hook -t "$pkgdir"/usr/share/libalpm/hooks
