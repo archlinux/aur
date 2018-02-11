@@ -4,7 +4,7 @@
 
 pkgname=polo-bin
 _name=polo-file-manager
-pkgver=18.1
+pkgver=18.2
 _channel=beta
 pkgrel=1
 pkgdesc="A modern, light-weight GTK file manager for Linux, currently in beta (.deb binary version)"
@@ -26,8 +26,8 @@ conflicts=('polo' 'polo-bin')
 source_i686=("https://github.com/teejee2008/polo/releases/download/v${pkgver}-${_channel}/${_name}-v${pkgver}-i386.deb")
 source_x86_64=("https://github.com/teejee2008/polo/releases/download/v${pkgver}-${_channel}/${_name}-v${pkgver}-amd64.deb")
 
-sha256sums_i686=('a7b7aa6cfc9fca2a0e1cdc3b5c8a5be90e76f68d4bff0e6054906d2ce09fabf4')
-sha256sums_x86_64=('6913f6ed635b8817554e110dce471482fea31f924a57527ca06fc04869a4a73f')
+sha256sums_i686=('40bf6a1ea2e9041c34836d53114f0a3ab1e5cdffc577f1dea2befaf1b20dd3ab')
+sha256sums_x86_64=('ec4a3e2c40c0271044c9e42a1d1400a72e5d99dd6e0eeba4e778eb7e5eda10e2')
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
