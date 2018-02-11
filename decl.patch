@@ -1,0 +1,13 @@
+diff --git psx_hw.c psx_hw.c
+index 3e2a914..ec5ebf2 100644
+--- psx_hw.c
++++ psx_hw.c
+@@ -55,6 +55,8 @@
+ #include "psx_external.h"
+ #include "psx_internal.h"
+ 
++uint32 ioptimer_lw(struct IOPTIMER_STATE *state, offs_t offset, uint32 mem_mask);
++
+ #if DEBUG_THREADING
+ static char *_ThreadStateNames[TS_MAXSTATE] = { "RUNNING", "DORMANT", "WAITEVFLAG", "WAITSEMA", "WAITDELAY", "SLEEPING" };
+ #endif
