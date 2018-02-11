@@ -1,7 +1,7 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=tealdeer-git
 _name=tealdeer
-pkgver=r96.876898b
+pkgver=r108.2d1caf2
 pkgrel=1
 pkgdesc="A fast TLDR client written in Rust."
 arch=('x86_64' 'i686')
@@ -22,8 +22,14 @@ build() {
 
 package() {
   cd "$srcdir/$_name"
+
+  # Install binary
   mkdir -p $pkgdir/usr/bin
   install -o root -g root -m 755 target/release/tldr $pkgdir/usr/bin
+
+  # Install bash completions
+  mkdir -p $pkgdir/usr/share/bash-completion/completions
+  install -o root -g root -m 644 bash_tealdeer $pkgdir/usr/share/bash-completion/completions/tldr
 }
 
 pkgver() {
