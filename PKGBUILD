@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=mkosi
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -10,8 +10,10 @@ url='https://github.com/systemd/mkosi'
 license=('LGPL2.1')
 depends=('python')
 makedepends=('python-setuptools')
-optdepends=('dnf: build Fedora images'
+optdepends=('dnf: build Fedora or Mageia images'
             'debootstrap: build Debian or Ubuntu images'
+            'debian-archive-keyring: build Debian images'
+            'ubuntu-keyring: build Ubuntu images'
             'arch-install-scripts: build Arch images'
             'zypper-git: build openSUSE images'
             'gnupg: sign images'
@@ -22,9 +24,11 @@ optdepends=('dnf: build Fedora images'
             'tar: tar output format'
             'cryptsetup: add dm-verity partitions'
             'edk2-ovmf: run bootable images in QEMU'
+            'qemu: run bootable images in QEMU'
+            'qemu-kvm: run bootable images in QEMU'
             'sbsigntools: sign EFI binaries for UEFI SecureBoot')
 source=("https://github.com/systemd/mkosi/archive/v$pkgver.tar.gz")
-sha256sums=('3bb606f16a26e08ce071e673cb935e62cecb3559db6b41c620f240666d7c5734')
+sha256sums=('855666aa7a16fcc41b0a2e5f12dc1916d19e03c9d174332ef0fd53cb137da8f2')
 
 package() {
   cd "mkosi-$pkgver"
