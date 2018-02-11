@@ -1,0 +1,19 @@
+pkgbase = python-aws-xray-sdk
+	pkgdesc = AWS X-Ray SDK for Python
+	pkgver = 0.95
+	pkgrel = 1
+	url = https://www.github.com/aws/aws-xray-sdk
+	arch = any
+	license = Apache
+	checkdepends = python-django
+	checkdepends = python-pytest
+	checkdepends = python-aiohttp
+	depends = python
+	depends = python-requests
+	depends = python-jsonpickle
+	depends = python-wrapt
+	source = https://github.com/aws/aws-xray-sdk-python/archive/0.95.tar.gz
+	sha256sums = 8ac94d28a6fb13897d98038ebc6e380a18cc09382907aef2c3120410850bd2ce
+
+pkgname = python-aws-xray-sdk
+
