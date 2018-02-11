@@ -1,0 +1,16 @@
+post_install() {
+    if ! getent passwd confluence > /dev/null; then
+        useradd -r confluence
+    fi
+
+    chown -R confluence:confluence /opt/atlassian-confluence/{logs,temp,webapps,work,conf} /var/opt/atlassian-confluence
+}
+
+pre_upgrade() {
+    systemctl stop confluence.service
+}
+
+post_upgrade() {
+    chown -R confluence:confluence /opt/atlassian-confluence/{logs,temp,webapps,work,conf} /var/opt/atlassian-confluence
+    systemctl start confluence.service
+}
