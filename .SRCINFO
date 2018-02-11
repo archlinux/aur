@@ -1,11 +1,11 @@
 pkgbase = turtlecoin-git
 	pkgdesc = Turtlecoin simplewallet and miner
-	pkgver = r126.f6cf18d
+	pkgver = r135.7fcc6ad
 	pkgrel = 1
 	url = https://turtlecoin.lol
 	install = turtlecoin-git.install
 	arch = x86_64
-	license = custom
+	license = LGPLv3
 	makedepends = git
 	makedepends = cmake
 	depends = boost-libs

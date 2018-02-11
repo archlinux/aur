@@ -7,6 +7,36 @@ binary_message() {
     echo
 }
 
+to_v0.3.2_upgrade_message() {
+cat << EOF
+
+How To Upgrade from an older version to v0.3.2 (r135.7fcc6ad):
+    * run the old TurtleCoind to sync your chain fully
+    * with the old TurtleCoind fully synced, open simplewallet
+    * open your wallet
+    * export your SPEND and VIEW keys with export_keys, this is important.
+    * Close the old version folder TurtleCoind and simplewallet by typing exit into each window
+    * Run the new TurtleCoind
+    * Run the new simplewallet
+    * Press I for IMPORT in simplewallet
+    * Use any filename for the wallet name, it does not have to be the same
+    * Use any password for wallet password, it does not have to be the same as the last
+    * Enter your spend_key and your view_key from step 4
+
+For more information visit:
+    https://github.com/turtlecoin/turtlecoin/releases/tag/v0.3.2
+
+EOF
+}
+
+pre_install() {
+    to_v0.3.2_upgrade_message
+}
+
+pre_upgrade() {
+    to_v0.3.2_upgrade_message
+}
+
 post_install() {
     binary_message
 }

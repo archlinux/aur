@@ -1,10 +1,20 @@
+#
+# Please note:
+#   Export your keys using export_keys command in
+#   trtl-simplewallet before upgrading to version
+#   0.3.2 (r135.7fcc6ad).
+#   
+#   For more information visit:
+#       https://github.com/turtlecoin/turtlecoin/releases/tag/v0.3.2
+#
+
 pkgname=turtlecoin-git
-pkgver=r126.f6cf18d
+pkgver=r135.7fcc6ad
 pkgrel=1
 pkgdesc="Turtlecoin simplewallet and miner"
 arch=('x86_64')
 url="https://turtlecoin.lol"
-license=('custom')
+license=('LGPLv3')
 install="${pkgname}.install"
 makedepends=('git' 'cmake')
 depends=('boost-libs' 'boost')
