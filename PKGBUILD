@@ -1,8 +1,8 @@
-# Maintainer: Marco Pompili <aur (at) odd.red>
+# Maintainer: Marcs <aur (at) odd.red>
 
 pkgname=nightcode
 _name=Nightcode
-pkgver=2.5.4
+pkgver=2.5.7
 pkgrel=1
 pkgdesc="An IDE that bundles a smart editor, the Leiningen and Boot build tools, and a home screen with quick access to the Clojure cheatsheet and REPL."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('java-runtime>7' 'java-openjfx')
 conflicts=('nightcode-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oakes/${_name}/archive/${pkgver}.tar.gz"
         "nightcode.desktop")
-sha256sums=('26e86d224cc3cf17a85155f1c0f2d6d869524a7500c398bc32552c9bd33b3055'
+sha256sums=('306a756b43c45d8948056aa2c0c09d89a811154614fc64424650498f7c8f6d9b'
             'aa94a3cf9028756b4bd6dbb6f9b27dc23f8aa4d29ca18507736561ef66fbd267')
 noextract=('nightcode.desktop')
 
