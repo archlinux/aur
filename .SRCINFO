@@ -1,6 +1,6 @@
 pkgbase = python-pyregion
 	pkgdesc = A python module to parse ds9 and ciao region files
-	pkgver = 1.2
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/astropy/pyregion
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python-pyregion
 	license = MIT
 	depends = python
 	depends = python-numpy>=1.3
-	source = https://files.pythonhosted.org/packages/source/p/pyregion/pyregion-1.2.tar.gz
-	md5sums = b776fc3ac848e17270508023ea1c94a0
+	source = https://files.pythonhosted.org/packages/source/p/pyregion/pyregion-2.0.tar.gz
+	md5sums = c228b133a1573d2017e0857a9fbf23c5
 
 pkgname = python-pyregion
 
