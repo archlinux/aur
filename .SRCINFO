@@ -1,5 +1,5 @@
 pkgbase = shaarli
-	pkgdesc = The personal, minimalist, super-fast, no-database delicious clone - community repo
+	pkgdesc = The personal, minimalist, super-fast, database free, bookmarking service - community repo
 	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/shaarli/Shaarli
