@@ -8,9 +8,9 @@ pkgbase="${_pkgbase}-ipp14"
 #pkgname=('libcups-ipp14' 'cups-ipp14')
 pkgname=(${pkgbase})
 pkgver=2.2.6
-pkgrel=2
+pkgrel=4
 arch=('i686' 'x86_64')
-provides=('cups')
+provides=('cups=2.2.6-4')
 replaces=('cups')
 conflicts=('cups')
 license=('GPL')
