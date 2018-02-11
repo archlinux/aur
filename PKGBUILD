@@ -7,7 +7,7 @@
 
 pkgbase=ppsspp-git
 pkgname=('ppsspp-git' 'ppsspp-headless-git' 'ppsspp-qt-git')
-pkgver=1.4.r255.66dc0ea62
+pkgver=1.5.4.r545.4ccf30d0a
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('x86_64')
@@ -88,7 +88,8 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_SKIP_RPATH='ON' \
-    -DHEADLESS='ON'
+    -DHEADLESS='ON' \
+    -DUSE_SYSTEM_LIBZIP='ON'
   make
 
   cd ../build-qt
@@ -96,6 +97,7 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_SKIP_RPATH='ON' \
+    -DUSE_SYSTEM_LIBZIP='ON' \
     -DUSING_QT_UI='ON'
   make
 }
