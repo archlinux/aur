@@ -1,26 +1,22 @@
 # Maintainer: Luca P <meti at lplab.net>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Jeffrey 'jf' Lim <jfs.world@gmail.com>
 
-pkgname=tnef
-pkgver=1.4.17
+pkgname=hss
+pkgver=1.6
 pkgrel=1
 arch=(x86_64)
-pkgdesc="Program which operates like tar to unpack the files inside an ms-tnef MIME attachment"
-url="https://github.com/verdammelt/tnef"
+pkgdesc="Interactive ssh client for multiple servers."
+url="https://github.com/six-ddc/hss"
 license=('GPL')
-depends=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/verdammelt/tnef/archive/$pkgver.tar.gz")
-sha256sums=('1dd87ebc0ff32c60ce2bc87362b880dc885525051bf3da55e11492565831c6da')
+depends=(readline)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/six-ddc/hss/archive/v$pkgver.tar.gz")
+sha256sums=('8516f3e24c9908f9c7ac02ee5247ce78f2a344e7fcca8a14081a92949db70049')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
-  [ -x configure ] || autoreconf
-  ./configure --prefix=/usr
   make
 }
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  make INSTALL_BIN="$pkgdir" install
 }

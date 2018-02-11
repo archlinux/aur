@@ -1,12 +1,13 @@
-pkgbase = tnef
-	pkgdesc = Program which operates like tar to unpack the files inside an ms-tnef MIME attachment
-	pkgver = 1.4.17
+pkgbase = hss
+	pkgdesc = Interactive ssh client for multiple servers.
+	pkgver = 1.6
 	pkgrel = 1
-	url = https://github.com/verdammelt/tnef
+	url = https://github.com/six-ddc/hss
 	arch = x86_64
 	license = GPL
-	source = tnef-1.4.17.tar.gz::https://github.com/verdammelt/tnef/archive/1.4.17.tar.gz
-	sha256sums = 1dd87ebc0ff32c60ce2bc87362b880dc885525051bf3da55e11492565831c6da
+	depends = readline
+	source = hss-1.6.tar.gz::https://github.com/six-ddc/hss/archive/v1.6.tar.gz
+	sha256sums = 8516f3e24c9908f9c7ac02ee5247ce78f2a344e7fcca8a14081a92949db70049
 
-pkgname = tnef
+pkgname = hss
 
