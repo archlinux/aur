@@ -1,7 +1,7 @@
 # Maintainer: Archimede Pitagorico <archimede.pitagorico@mail.com>
 
 pkgname=megasync-headless
-pkgver=v3.3.1.1.gbcfd5fd9
+pkgver=v3.3.1.1.gf4ba4aec
 pkgrel=1
 pkgdesc="Sync with MEGA. Daemon, fuse and cli client. Original sdk (git)."
 arch=('x86_64')
@@ -68,4 +68,8 @@ package() {
    mkdir -p "${pkgdir}/srv/mega"
    mkdir -p "${pkgdir}/var/mega"
    chmod 0700 "${pkgdir}/var/mega"
+   # pacman does not like /lib and /bin, because they are symlink, so move them to /usr/lib and /usr/bin
+   cp -R ${pkgdir}/lib/* ${pkgdir}/usr/lib
+   rm -rf ${pkgdir}/lib
+   mv ${pkgdir}/bin ${pkgdir}/usr
 }
