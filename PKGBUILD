@@ -3,13 +3,14 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 pkgname=gpxsee
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GPX viewer and analyzer'
 arch=('i686' 'x86_64')
 url="http://www.gpxsee.org/"
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
+optdepends=('qt5-imageformats: Support for TIFF')
 provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 source=("https://github.com/tumic0/GPXSee/archive/${pkgver}.tar.gz")
