@@ -16,8 +16,10 @@ package() {
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/"{icons,applications,licenses/${pkgname}}
 
+    # chroot is needed to prevent the installer from creating a single file outside of prefix
+    mkdir -p ../tmp
     chmod +x ${_installer}
-    ./${_installer} --mode unattended --prefix "${pkgdir}/opt/${pkgname}"
+    fakechroot chroot ../ /${_installer} --mode unattended --prefix "/pkg/${pkgname}/opt/${pkgname}"
     install ../ida-free.desktop "${pkgdir}/usr/share/applications"
 
     # the installer needlessly makes a lot of files executable
