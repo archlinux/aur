@@ -1,0 +1,40 @@
+#!/bin/sh
+# run application with java env = 8
+
+GG_PATH="/usr/share"
+export GG_CONFIG_PATH="${HOME}"
+GG_EXECUTABLE="${GG_PATH}/geogebra/geogebra"
+GG_JAVA_VERSION="8"
+
+run_gg() {
+    exec "${GG_EXECUTABLE}" "$@"
+    exit 0
+}
+
+# check JAVA_HOME first
+if test ! -z "${JAVA_HOME}"; then
+    if test "${JAVA_HOME#*$GG_JAVA_VERSION}" != "${JAVA_HOME}"; then
+        # system environment variable set to required, do nothing
+        echo "Using java environment from JAVA_HOME: ${JAVA_HOME}" >&2
+        run_gg
+    else
+        # unset JAVA_HOME
+        echo "Unset JAVA_HOME for this run: ${JAVA_HOME}" >&2
+        unset JAVA_HOME
+    fi
+fi
+
+# check current environment
+if archlinux-java status | grep "default" | grep -q "${GG_JAVA_VERSION}"; then
+    # required java version is set to default, do nothing
+    echo "Using system enabled java environment" >&2
+    run_gg
+fi
+
+# find valid environment
+GG_JAVA_ENV="$(archlinux-java status | grep "${GG_JAVA_VERSION}" | awk '{ print $1 }')"
+# for some env it returns like java-8-openjdk/jre
+GG_JAVA_ENV="${GG_JAVA_ENV%/*}"
+export PATH="/usr/lib/jvm/${GG_JAVA_ENV}/jre/bin/:${PATH}"
+echo "Run with exported ${GG_JAVA_ENV}" >&2
+run_gg
