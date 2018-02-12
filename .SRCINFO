@@ -1,0 +1,19 @@
+pkgbase = vmaf
+	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/netflix/vmaf/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = gcc-libs
+	provides = libvmaf
+	conflicts = vmaf-git
+	conflicts = libvmaf
+	conflicts = libvmaf-git
+	replaces = libvmaf
+	source = vmaf-1.3.1.tar.gz::https://github.com/Netflix/vmaf/archive/v1.3.1.tar.gz
+	sha256sums = c0c84f0f02cff6ac23b3bcc07199532ccbf04a18d8802385b35b89d26bb07287
+
+pkgname = vmaf
+
