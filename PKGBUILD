@@ -2,7 +2,7 @@
 
 pkgname=ccl
 pkgver=1.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Common Lisp implementation."
 arch=("x86_64")
 url="http://ccl.clozure.com"
@@ -50,8 +50,8 @@ package() {
   bindir="$usrdir/bin"
   install -d $bindir
   cat > "$usrdir/bin/ccl" <<EOF
-  #!/bin/sh
-  exec /usr/lib/$pkgname/lx86cl64 "\$@"
+#!/bin/sh
+exec /usr/lib/$pkgname/lx86cl64 "\$@"
 EOF
   chmod +x "$bindir/ccl"
 
