@@ -6,17 +6,17 @@
 PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
-_version=5.6.2
-_build=f3
-_buildtag=2017.2.0
-_nonce=ee86734cf592
+_version=5.6.5
+_build=f1
+_buildtag=2017.2.1
+_nonce=ce9f6a0436e1+
 pkgver="${_version}x${_buildtag}+${_build}"
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 license=('custom')
 url="https://unity3d.com/"
-depends=('desktop-file-utils' 'xdg-utils' 'gcc-multilib' 'libgl' 'glu' 'nss' 'libpng12' 'libxtst' 'libpqxx' 'monodevelop' 'npm' 'alsa-lib' 'gconf')
+depends=('desktop-file-utils' 'xdg-utils' 'gcc-libs' 'lib32-gcc-libs' 'gconf' 'libgl' 'glu' 'nss' 'libpng12' 'libxtst' 'libpqxx' 'npm')
 optdepends=('ffmpeg: for WebGL exporting'
 	'nodejs: for WebGL exporting'
 	'java-runtime: for WebGL exporting'
@@ -28,7 +28,7 @@ provides=("unity-editor=${pkgver}")
 conflicts=('unity-editor')
 options=(!strip)
 source=("https://beta.unity3d.com/download/${_nonce}/unity-editor_amd64-${_buildtag}${_build}.deb")
-sha512sums=('3d64fdc4f124d52738d6c74f22f20bab448289573f74b771bf007b7675a3ce8b0d4338d77626ff1d367365537eba404fa27d07e44de0632faf7488c931c1fb8c')
+sha512sums=('72933f53ee42fd3ddc11241cf81965ffad13905ebcc102cca603d0d5770f07936849f4445dd11137dfec559e481f96e1d655e1139bcf3e581d1670e3d10bce1b')
 
 prepare() {
 	if [[ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]]; then
