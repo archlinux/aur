@@ -1,6 +1,6 @@
 pkgbase = cdi
 	pkgdesc = CDI is a general purpose C-library with an additional Fortran interface for file IO in the geoscience area. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. CDI is the IO part of CDO
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 0
 	url = https://code.zmaw.de/projects/cdi
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = cdi
 	depends = netcdf
 	depends = eccodes
 	depends = libaec
-	source = https://code.zmaw.de/attachments/download/16032/cdi-1.9.2.tar.gz
-	md5sums = e494540ea37e4401344e023c67cba112
+	source = https://code.zmaw.de/attachments/download/16436/cdi-1.9.3.tar.gz
+	md5sums = 3702754326319545164576995d419826
 
 pkgname = cdi
 
