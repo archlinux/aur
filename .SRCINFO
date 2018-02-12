@@ -1,0 +1,13 @@
+pkgbase = pmidi
+	pkgdesc = Command line MIDI player using the ALSA sequencer
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = http://www.parabola.me.uk/alsa/pmidi.html
+	arch = x86_64
+	license = GPL2
+	depends = alsa-lib
+	source = pmidi-1.7.1.tar.gz::https://sourceforge.net/projects/pmidi/files/pmidi/1.7.1/pmidi-1.7.1.tar.gz/download
+	sha512sums = a0ceb6c95120ae86ce7919c7801d765a405de3d1199cc7c3fd3a7c127f0d57e7ef3f1aeed3e220fff9a3827be37b9fec67c5afa26cee1381ff9f53d139c7efda
+
+pkgname = pmidi
+
