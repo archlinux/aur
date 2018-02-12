@@ -1,6 +1,6 @@
 pkgbase = sch_cake-dkms
 	pkgdesc = The CAKE scheduler, bufferbloat.net
-	pkgver = r358.e5ede00
+	pkgver = r424.b8b6ad1
 	pkgrel = 1
 	url = bufferbloat.net
 	install = sch_cake-dkms.install
