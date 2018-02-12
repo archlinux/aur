@@ -1,0 +1,24 @@
+pkgbase = kms-filters
+	pkgdesc = Kurento filters module
+	pkgver = 6.6.2
+	pkgrel = 1
+	url = http://www.kurento.org/
+	arch = any
+	license = LGPL v2.1
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = libsoup
+	makedepends = kms-core
+	makedepends = kms-elements
+	makedepends = opencv
+	depends = libsoup
+	depends = kms-core
+	depends = kms-elements
+	depends = opencv
+	provides = kms-filters
+	conflicts = kms-filters
+	source = https://github.com/Kurento/kms-filters/archive/6.6.2.tar.gz
+	sha256sums = d970382ace5e03587a3107ef133095a5be7bbd9ae0dac90157051442277c0506
+
+pkgname = kms-filters
+
