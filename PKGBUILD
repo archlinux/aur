@@ -6,8 +6,8 @@
 # Contributor: Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-9.6
-pkgver=9.6.6
-pkgrel=2
+pkgver=9.6.7
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
 pkgdesc="A powerful, open source object-relational database system"
@@ -27,7 +27,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql.logrotate
         postgresql.service
         postgresql-check-db-dir)
-sha256sums=('399cdffcb872f785ba67e25d275463d74521566318cfef8fe219050d063c8154'
+sha256sums=('2ebe3df3c1d1eab78023bdc3ffa55a154aa84300416b075ef996598d78a624c6'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
