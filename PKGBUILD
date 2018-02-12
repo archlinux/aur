@@ -6,13 +6,13 @@ pkgver=0.2.0
 pkgrel=1
 pkgdesc="Sparse multidimensional arrays on top of numpy and scipy"
 arch=('any')
-url="https://github.com/mrocklin/sparse"
+url="https://sparse.pydata.org"
 license=('BSD')
 depends=('python' 'python-numpy' 'python-scipy')
 checkdepends=('python-pytest')
 optdepends=()
 makedepends=('python-setuptools')
-source=("https://github.com/mrocklin/sparse/archive/$pkgver.tar.gz")
+source=("https://github.com/pydata/sparse/archive/$pkgver.tar.gz")
 sha256sums=('11a506ca9b14ff974387b79f540045ddfc0d32043abe61b6bea4d1fa2c60d955')
 
 package(){

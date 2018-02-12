@@ -2,7 +2,7 @@ pkgbase = python-sparse
 	pkgdesc = Sparse multidimensional arrays on top of numpy and scipy
 	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/mrocklin/sparse
+	url = https://sparse.pydata.org
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
@@ -10,7 +10,7 @@ pkgbase = python-sparse
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
-	source = https://github.com/mrocklin/sparse/archive/0.2.0.tar.gz
+	source = https://github.com/pydata/sparse/archive/0.2.0.tar.gz
 	sha256sums = 11a506ca9b14ff974387b79f540045ddfc0d32043abe61b6bea4d1fa2c60d955
 
 pkgname = python-sparse
