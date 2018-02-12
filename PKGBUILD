@@ -1,14 +1,17 @@
 # Contributor: Raffaele Zamorano
 # Maintainer: Jose Riha <jose1711 gmail com>
 pkgname=gpxsee-git
+_pkgname=gpxsee
 pkgrel=1
-pkgver=r699.53a4b45
+pkgver=r794.18fc6cc
 pkgdesc='GPX viewer and analyzer'
 arch=('any')
 url="http://www.gpxsee.org/"
 license=('gpl3')
 depends=('qt5-tools')
 makedepends=('git')
+conflicts=('gpxsee')
+provides=('gpxsee')
 md5sums=('SKIP'
          '4226c05418da218c2a271e1c5d1453fd')
 
@@ -28,8 +31,22 @@ build() {
 }
 
 package() {
-  install -Dm755 ${srcdir}/${pkgname}/GPXSee ${pkgdir}/usr/bin/gpxsee
-  install -Dm644 ${srcdir}/${pkgname}/pkg/maps.txt ${pkgdir}/usr/share/gpxsee/maps.txt
-  install -Dm644 ${srcdir}/${pkgname}/icons/gpxsee.png ${pkgdir}/usr/share/pixmaps/gpxsee.png
-  install -Dm644 ${srcdir}/gpxsee.desktop ${pkgdir}/usr/share/applications/gpxsee.desktop
+  cd "${pkgname}"
+
+  install -d 755 ${pkgdir}/usr/bin
+  install -d 755 ${pkgdir}/usr/share/applications
+  install -d 755 ${pkgdir}/usr/share/pixmaps
+  install -d 755 ${pkgdir}/usr/share/mime/packages
+  install -d 755 ${pkgdir}/usr/share/${_pkgname}
+  install -d 755 ${pkgdir}/usr/share/${_pkgname}/maps
+  install -d 755 ${pkgdir}/usr/share/${_pkgname}/csv
+  install -d 755 ${pkgdir}/usr/share/${_pkgname}/translations
+
+  install -m 755 GPXSee ${pkgdir}/usr/bin/${_pkgname}
+  install -m 644 pkg/maps/* ${pkgdir}/usr/share/${_pkgname}/maps
+  install -m 644 pkg/csv/* ${pkgdir}/usr/share/${_pkgname}/csv
+  install -m 644 lang/*.qm ${pkgdir}/usr/share/${_pkgname}/translations
+  install -m 644 icons/gpxsee.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
+  install -m 644 pkg/gpxsee.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  install -m 644 pkg/gpxsee.xml ${pkgdir}/usr/share/mime/packages/${_pkgname}.xml
 }
