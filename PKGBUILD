@@ -17,7 +17,7 @@ options=('!emptydirs')
 source=("git://github.com/haecker-felix/${_pkgname}.git")
 md5sums=('SKIP')
 conflicts=('gradio' 'gradio-bin')
-provides=("gradio=$pkgver")
+provides=("gradio=${pkgver}")
 
 build() {
 	cd "${srcdir}/${_pkgname}"
