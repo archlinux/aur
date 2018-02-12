@@ -15,7 +15,7 @@ provides=('kde-cdemu-manager')
 conflicts=('kde-cdemu-manager')
 makedepends=('extra-cmake-modules' 'kdoctools' 'qt5-tools' 'python')
 source=(https://github.com/Real-Gecko/KDE-CDEmu/archive/$pkgver.tar.gz)
-md5sums=('59d0c471d9257e598f1f848ea8187329')
+md5sums=('36e70c79b82b27b22a9ab42a9235d030')
 
 prepare() {
   mkdir -p build
