@@ -2,11 +2,12 @@
 
 pkgname=capsimage4
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="capsimage library to access IPF and CTR files - maybe needed by some emulators, like hatari/libretro"
 arch=('i686' 'x86_64')
 url="http://www.softpres.org/"
 license=('custom:SPS License')
+conflicts=('capsimage')
 
 source_i686=('ipflib42_linux-i686.tar.gz::http://www.softpres.org/_media/files:ipflib42_linux-i686.tar.gz')
 source_x86_64=('ipflib42_linux-x86_64.tar.gz::http://www.softpres.org/_media/files:ipflib42_linux-x86_64.tar.gz')
