@@ -5,14 +5,12 @@ pkgver=1.4.0
 pkgrel=1
 pkgdesc="Tsuru client"
 arch=('x86_64')
-license=('custom:"Copyright (c) 2015, tsuru-client authors')
+license=('Copyright (c) 2015, tsuru-client authors')
 
 url="https://github.com/tsuru/tsuru-client"
 
 source=("https://github.com/tsuru/tsuru-client/releases/download/${pkgver}/tsuru_${pkgver}_linux_amd64.tar.gz" 
 	"LICENSE")
-
-depends=('bash-completion')
 
 package(){
 	cd "${srcdir}"
