@@ -7,8 +7,8 @@
 
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=v4.15
-pkgver=4.15
+_tag=v4.16-rc1
+pkgver=4.16rc1
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -26,17 +26,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
-            'SKIP'
-            '812499c5d0cc5183606dc9388084df162ca2eb5fa374d8f8b00136fd82825847'
-            'SKIP'
+sha256sums=('SKIP'
             '699ad86e5c6076fc5c544d72191efb7eb302f68169dad8495add0f1d156203ab'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
-            '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
-            'b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be')
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -159,7 +153,7 @@ _package-headers() {
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
 
   # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
+  #install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h

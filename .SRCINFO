@@ -1,5 +1,5 @@
 pkgbase = linux-mainline
-	pkgver = 4.15
+	pkgver = 4.16rc1
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -11,24 +11,18 @@ pkgbase = linux-mainline
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v4.15
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v4.16-rc1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769
-	sha256sums = SKIP
-	sha256sums = 812499c5d0cc5183606dc9388084df162ca2eb5fa374d8f8b00136fd82825847
 	sha256sums = SKIP
 	sha256sums = 699ad86e5c6076fc5c544d72191efb7eb302f68169dad8495add0f1d156203ab
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe
-	sha256sums = 68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e
-	sha256sums = b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be
 
 pkgname = linux-mainline
 	pkgdesc = The Linux-mainline kernel and modules
