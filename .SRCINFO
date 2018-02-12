@@ -1,0 +1,22 @@
+pkgbase = kms-jsonrpc
+	pkgdesc = Kurento jsonrpc library
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://www.kurento.org/
+	arch = any
+	license = LGPL v2.1
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = jsoncpp
+	makedepends = boost
+	makedepends = boost-libs
+	makedepends = kms-cmake-utils>=1.3.2
+	depends = boost-libs
+	depends = jsoncpp
+	provides = kms-jsonrpc
+	conflicts = kms-jsonrpc
+	source = https://github.com/Kurento/kms-jsonrpc/archive/1.1.3.tar.gz
+	sha256sums = 62bde88410a5e4ac31732fb4fa2b2c5a04352d726c5cb636d1fd809eeb4032fe
+
+pkgname = kms-jsonrpc
+
