@@ -1,6 +1,6 @@
 pkgbase = kde-cdemu-manager-kf5
 	pkgdesc = KDE CDEmu Manager is a simple frontend for CDEmu.KF5 version
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/Real-Gecko/KDE-CDEmu
 	arch = i686
