@@ -1,26 +1,18 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
-# NOTE:
-# In order to build the package, you need to manually download the source file
-# from NewTek's website (registration required). Place the downloaded file
-# in the PKGBUILD directory and run makepkg.
-# Download website:
-#   https://www.newtek.com/ndi/sdk/
-# Alternative link:
-#   http://pages.newtek.com/NDI-Developers.html
-
 pkgname=ndi-sdk
 pkgver=3.20171009.r82134
-pkgrel=1
-pkgdesc='NewTek NDI SDK (needs registration at upstream URL and manual download)'
+pkgrel=2
+pkgdesc='NewTek NDI SDK'
 arch=('i686' 'x86_64')
 url='https://www.newtek.com/ndi/sdk/'
 license=('custom')
+depends=('gcc-libs')
 makedepends=('poppler')
 provides=('libndi' 'libndi.so')
 conflicts=('libndi')
 options=('!strip')
-source=("file://InstallNDISDK_v${pkgver%%.*}_Linux.sh")
+source=("http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v${pkgver%%.*}_Linux.sh")
 sha256sums=('6fc5d3c3f2d10837187b0db8fb332a88ef7bca311214d7b05e87497789e97a16')
 
 prepare() {
