@@ -8,6 +8,7 @@ pkgbase = gnome-shell-communitheme-git
 	makedepends = meson
 	makedepends = ninja
 	depends = gtk3
+	depends = gnome-shell
 	source = gnome-shell-communitheme-git::git+https://github.com/Ubuntu/gnome-shell-communitheme.git
 	sha256sums = SKIP
 
