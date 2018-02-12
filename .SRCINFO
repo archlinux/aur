@@ -1,0 +1,30 @@
+pkgbase = kms-elements
+	pkgdesc = Kurento elements module
+	pkgver = 6.6.3
+	pkgrel = 1
+	url = http://www.kurento.org/
+	arch = any
+	license = LGPL v2.1
+	makedepends = cmake
+	makedepends = libnice
+	makedepends = boost-libs
+	makedepends = gstreamer
+	makedepends = gst-plugins-openwebrtc
+	makedepends = libsoup
+	makedepends = openssl-1.0
+	makedepends = kms-core
+	makedepends = valgrind
+	depends = boost-libs
+	depends = libnice
+	depends = gstreamer
+	depends = gst-plugins-openwebrtc
+	depends = libsoup
+	depends = openssl-1.0
+	depends = kms-core
+	provides = kms-elements
+	conflicts = kms-elements
+	source = https://github.com/Kurento/kms-elements/archive/6.6.3.tar.gz
+	sha256sums = 38b69a36009a17f3f74d822a594bb1faff7e0859733893667bcd936e10dfe26d
+
+pkgname = kms-elements
+
