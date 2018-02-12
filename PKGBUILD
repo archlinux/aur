@@ -20,11 +20,11 @@ conflicts=('gradio' 'gradio-bin')
 provides=("gradio=${pkgver}")
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	meson builddir --prefix=/usr
+  cd "${srcdir}/${_pkgname}"
+  meson builddir --prefix=/usr
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   DESTDIR="${pkgdir}" ninja -C builddir install
 }
