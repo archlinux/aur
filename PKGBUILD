@@ -1,47 +1,38 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Maintainer: robertfoster
 # Contributor: Techmeology <techmeology@techmeology.co.uk>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgbase=python-miniupnpc
 pkgname=('python-miniupnpc' 'python2-miniupnpc')
 pkgver=2.0.20180203
 pkgrel=3
-pkgdesc="A small UPnP client library/tool to access Internet Gateway Devices"
-arch=('x86_64')
-makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools' 'sh')
+pkgdesc="A small UPnP client library/tool to access Internet Gateway Devices (python2 module only)"
+arch=('i686' 'x86_64')
 url="http://miniupnp.free.fr"
 license=('BSD')
-source=(http://miniupnp.free.fr/files/miniupnpc-${pkgver}.tar.gz)
-md5sums=('48fd9c899f77e898c74d2166590da076')
+source=("http://miniupnp.free.fr/files/${pkgbase#python-}-$pkgver.tar.gz")
 
-prepare () {
-    cp -a miniupnpc{,-py2}-$pkgver 
-    find miniupnpc-py2-$pkgver -name \*.py -exec sed -r 's|^#!(.*)python$|#!\1python2|' -i {} +
-}
+package_python2-miniupnpc() {
+	depends=('python2')
+	makedepends=('python2-setuptools')
 
-build() {
-  echo "Building Python3"
-  cd miniupnpc-$pkgver
-  make
-  python setup.py build
+	cd $srcdir/${pkgbase#python-}-$pkgver
 
-  echo "Building Python2"
-  cd ../miniupnpc-py2-$pkgver
-  make
-  python2 setup.py build
+	python2 setup.py build
+	python2 setup.py install --root="$pkgdir" --optimize=1
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_python-miniupnpc() {
-  depends=('python')
+	depends=('python')
+	makedepends=('python-setuptools')
 
-  cd miniupnpc-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd $srcdir/${pkgbase#python-}-$pkgver
+
+	python setup.py build
+	python setup.py install --root="$pkgdir" --optimize=1
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_python2-miniupnpc() {
-  depends=('python2')
-
-  cd miniupnpc-py2-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+md5sums=('48fd9c899f77e898c74d2166590da076')
