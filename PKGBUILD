@@ -1,15 +1,15 @@
 #  Maintainer: Archadept
-#    Revision: 2013-10-18
+#    Revision: 2018-02-12
 
 pkgname=hunspell-la
 pkgver=20130331
-pkgrel=1
+pkgrel=2
 pkgdesc='Latin dictionary for Hunspell'
 arch=('any')
 url="http://extensions.libreoffice.org/extension-center/latin-spelling-and-hyphenation-dictionaries"
 license=('GPL')
 optdepends=('hunspell:	the spell checking libraries and apps')
-source=('http://extensions.libreoffice.org/extension-center/latin-spelling-and-hyphenation-dictionaries/pscreleasefolder.2011-11-05.0070960452/2013.03.31/dict-la_2013-03-31.oxt')
+source=('https://extensions.libreoffice.org/extensions/latin-spelling-and-hyphenation-dictionaries/2013.03.31/@@download/file/dict-la_2013-03-31.oxt')
 md5sums=('46674c8e9985b97e3f71555ed83a90cd')
 
 package() {
