@@ -1,6 +1,6 @@
 pkgbase = snapd-git
 	pkgdesc = Service and tools for management of snap packages.
-	pkgver = 2.31.r152.gf586f737d
+	pkgver = 2.31.r188.g74843c18e
 	pkgrel = 1
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
@@ -23,7 +23,9 @@ pkgbase = snapd-git
 	options = !strip
 	options = emptydirs
 	source = git+https://github.com/snapcore/snapd.git
-	md5sums = SKIP
+	source = 0001-cmd-snap-seccomp-drop-link-flags-that-will-be-reject.patch
+	sha256sums = SKIP
+	sha256sums = ba4591f70b032b5e6f63d251cf6463ef93f3b963b8f19aac098b4c7dbed0309d
 
 pkgname = snapd-git
 
