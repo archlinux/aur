@@ -1,4 +1,5 @@
-# Maintainer: Wayne Hartmann (DH4) <wayne@bitstorm.pw>
+# Maintainer: Ben Denhartog <ben@denhartog.io>
+# Contributor: Wayne Hartmann (DH4) <wayne@bitstorm.pw>
 
 pkgname=protocase-designer
 pkgver=4.5.2
