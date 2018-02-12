@@ -1,6 +1,6 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 pkgname=nano-git
-pkgver=20160530
+pkgver=20180208
 pkgrel=1
 pkgdesc="Pico editor clone with enhancements, git version"
 arch=(i686 x86_64)
@@ -21,10 +21,11 @@ pkgver() {
     git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
-build() {
-    # Compiling nano.
+prepare() {
+    # Running the configure script.
     cd $srcdir/nano
     ./autogen.sh
+
     ./configure                     \
         --prefix=/usr               \
 	--sysconfdir=/etc           \
@@ -34,7 +35,11 @@ build() {
 	--bindir=/usr/bin           \
 	--sbindir=/usr/bin          \
 	--disable-wrapping-as-root
-	make
+}
+
+build() {
+    cd $srcdir/nano
+    make
 }
 
 package(){
