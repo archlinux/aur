@@ -5,17 +5,16 @@
 # Maintainer: George Amanakis <g_amanakis@yahoo.com>
 
 pkgname=iproute2-cake
-pkgver=4.14.1
-pkgrel=3
+pkgver=4.15.0
+pkgrel=1
 pkgdesc='IP Routing Utilities'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL2')
-url='https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git'
+url='https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
 depends=('glibc' 'iptables' 'libelf')
 optdepends=('linux-atm: ATM support')
 groups=('base')
 provides=('iproute' 'iproute2')
-#950 patch: https://raw.githubusercontent.com/lede-project/source/master/package/network/utils/iproute2/patches/950-add-cake-to-tc.patch
 #tc-cake.8 man page: https://github.com/dtaht/tc-adv/blob/master/man/man8/tc-cake.8
 # Upstream commit b2fd7a0e6efa7b85a041b5cb9ea6fc1a6a798fd3 removed old documentation.
 # Add conflict and replace to get rid of the package. TODO: Remove anytime soon.
@@ -63,7 +62,7 @@ package() {
   install -Dm0644 lib/libnetlink.a "${pkgdir}/usr/lib/libnetlink.a"
 }
 
-md5sums=('1075423d7029e02a8f23ed4f42b7e372'
+md5sums=('0681bf4664b2649ad4e12551a3a7a1f9'
          'SKIP'
          '5345bd18b521fb2f305acb2ab1203269'
-         '032369649a4cddc4bfd06736b6abfd7e')
+         '227492c1a9f2ee4b3897f609ea049274')

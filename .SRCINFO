@@ -1,9 +1,8 @@
 pkgbase = iproute2-cake
 	pkgdesc = IP Routing Utilities
-	pkgver = 4.14.1
-	pkgrel = 2
-	url = https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git
-	arch = i686
+	pkgver = 4.15.0
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
 	arch = x86_64
 	groups = base
 	license = GPL2
@@ -25,15 +24,15 @@ pkgbase = iproute2-cake
 	backup = etc/iproute2/rt_realms
 	backup = etc/iproute2/rt_scopes
 	backup = etc/iproute2/rt_tables
-	source = https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.14.1.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.14.1.tar.sign
+	source = https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.15.0.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.15.0.tar.sign
 	source = 0001-make-iproute2-fhs-compliant.patch
 	source = 950c-add-cake-to-tc.patch
 	validpgpkeys = 9F6FC345B05BE7E766B83C8F80A77F6095CDE47E
-	md5sums = 1075423d7029e02a8f23ed4f42b7e372
+	md5sums = 0681bf4664b2649ad4e12551a3a7a1f9
 	md5sums = SKIP
 	md5sums = 5345bd18b521fb2f305acb2ab1203269
-	md5sums = 032369649a4cddc4bfd06736b6abfd7e
+	md5sums = 227492c1a9f2ee4b3897f609ea049274
 
 pkgname = iproute2-cake
 

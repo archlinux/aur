@@ -1,11 +1,10 @@
-diff -ruPN a/include/uapi/linux/pkt_sched.h b/include/uapi/linux/pkt_sched.h
---- a/include/uapi/linux/pkt_sched.h	2017-11-13 13:09:57.000000000 -0500
-+++ b/include/uapi/linux/pkt_sched.h	2017-11-21 09:08:22.840713533 -0500
-@@ -872,4 +872,86 @@
- 	__u32 maxq;             /* maximum queue size */
- 	__u32 ecn_mark;         /* packets marked with ecn*/
- };
-+
+diff -rupN ./a/include/uapi/linux/pkt_sched.h ./b/include/uapi/linux/pkt_sched.h
+--- a/include/uapi/linux/pkt_sched.h	2018-01-29 11:08:52.000000000 -0500
++++ b/include/uapi/linux/pkt_sched.h	2018-02-11 21:56:46.281099613 -0500
+@@ -934,4 +934,85 @@ enum {
+ 
+ #define TCA_CBS_MAX (__TCA_CBS_MAX - 1)
+ 
 +/* CAKE */
 +enum {
 +	TCA_CAKE_UNSPEC,
@@ -19,7 +18,7 @@ diff -ruPN a/include/uapi/linux/pkt_sched.h b/include/uapi/linux/pkt_sched.h
 +	TCA_CAKE_AUTORATE,
 +	TCA_CAKE_MEMORY,
 +	TCA_CAKE_NAT,
-+	TCA_CAKE_ETHERNET,
++	TCA_CAKE_RAW, // was _ETHERNET
 +	TCA_CAKE_WASH,
 +	TCA_CAKE_MPU,
 +	TCA_CAKE_INGRESS,
@@ -88,9 +87,9 @@ diff -ruPN a/include/uapi/linux/pkt_sched.h b/include/uapi/linux/pkt_sched.h
 +};
 +
  #endif
-diff -ruPN a/man/man8/tc-cake.8 b/man/man8/tc-cake.8
+diff -rupN ./a/man/man8/tc-cake.8 ./b/man/man8/tc-cake.8
 --- a/man/man8/tc-cake.8	1969-12-31 19:00:00.000000000 -0500
-+++ b/man/man8/tc-cake.8	2017-11-21 09:08:45.887499181 -0500
++++ b/man/man8/tc-cake.8	2018-02-11 21:57:23.784123762 -0500
 @@ -0,0 +1,530 @@
 +.TH CAKE 8 "15 October 2015" "iproute2" "Linux"
 +.SH NAME
@@ -622,10 +621,10 @@ diff -ruPN a/man/man8/tc-cake.8 b/man/man8/tc-cake.8
 +Kevin Darbyshire-Bryant, Toke Hoiland-Jorgensen and Loganaden Velvindron.
 +This manual page was written by Loganaden Velvindron. Please report corrections
 +to the Linux Networking mailing list <netdev@vger.kernel.org>.
-diff -ruPN a/tc/Makefile b/tc/Makefile
---- a/tc/Makefile	2017-11-13 13:09:57.000000000 -0500
-+++ b/tc/Makefile	2017-11-21 09:10:10.654034612 -0500
-@@ -65,6 +65,7 @@
+diff -rupN ./a/tc/Makefile ./b/tc/Makefile
+--- a/tc/Makefile	2018-01-29 11:08:52.000000000 -0500
++++ b/tc/Makefile	2018-02-11 21:58:11.261655453 -0500
+@@ -66,6 +66,7 @@ TCMODULES += q_codel.o
  TCMODULES += q_fq_codel.o
  TCMODULES += q_fq.o
  TCMODULES += q_pie.o
@@ -633,10 +632,10 @@ diff -ruPN a/tc/Makefile b/tc/Makefile
  TCMODULES += q_hhf.o
  TCMODULES += q_clsact.o
  TCMODULES += e_bpf.o
-diff -ruPN a/tc/q_cake.c b/tc/q_cake.c
+diff -rupN ./a/tc/q_cake.c ./b/tc/q_cake.c
 --- a/tc/q_cake.c	1969-12-31 19:00:00.000000000 -0500
-+++ b/tc/q_cake.c	2017-11-21 09:11:39.465359749 -0500
-@@ -0,0 +1,736 @@
++++ b/tc/q_cake.c	2018-02-11 21:58:39.979171243 -0500
+@@ -0,0 +1,728 @@
 +/*
 + * Common Applications Kept Enhanced  --  CAKE
 + *
@@ -776,8 +775,8 @@ diff -ruPN a/tc/q_cake.c b/tc/q_cake.c
 +			interval = 1000000;
 +			target   =   50000;
 +		} else if (strcmp(*argv, "interplanetary") == 0) {
-+                       interval = 1000000000;
-+                       target   =   50000000;
++			interval = 1000000000;
++			target   =   50000000;
 +
 +		} else if (strcmp(*argv, "besteffort") == 0) {
 +			diffserv = 1;
@@ -987,7 +986,7 @@ diff -ruPN a/tc/q_cake.c b/tc/q_cake.c
 +		addattr_l(n, 1024, TCA_CAKE_OVERHEAD, &overhead, sizeof(overhead));
 +	if (overhead_override) {
 +		unsigned zero = 0;
-+		addattr_l(n, 1024, TCA_CAKE_ETHERNET, &zero, sizeof(zero));
++		addattr_l(n, 1024, TCA_CAKE_RAW, &zero, sizeof(zero));
 +	}
 +	if (mpu > 0)
 +		addattr_l(n, 1024, TCA_CAKE_MPU, &mpu, sizeof(mpu));
@@ -1022,7 +1021,7 @@ diff -ruPN a/tc/q_cake.c b/tc/q_cake.c
 +	unsigned interval = 0;
 +	unsigned memlimit = 0;
 +	int overhead = 0;
-+	int ethernet = 0;
++	int raw = 0;
 +	int mpu = 0;
 +	int atm = 0;
 +	int nat = 0;
@@ -1143,9 +1142,8 @@ diff -ruPN a/tc/q_cake.c b/tc/q_cake.c
 +	    RTA_PAYLOAD(tb[TCA_CAKE_ACK_FILTER]) >= sizeof(__u32)) {
 +		ack_filter = rta_getattr_u32(tb[TCA_CAKE_ACK_FILTER]);
 +	}
-+	if (tb[TCA_CAKE_ETHERNET] &&
-+	    RTA_PAYLOAD(tb[TCA_CAKE_ETHERNET]) >= sizeof(__u32)) {
-+		ethernet = rta_getattr_u32(tb[TCA_CAKE_ETHERNET]);
++	if (tb[TCA_CAKE_RAW]) {
++		raw = 1;
 +	}
 +	if (tb[TCA_CAKE_RTT] &&
 +	    RTA_PAYLOAD(tb[TCA_CAKE_RTT]) >= sizeof(__u32)) {
@@ -1166,27 +1164,20 @@ diff -ruPN a/tc/q_cake.c b/tc/q_cake.c
 +	if (interval)
 +		fprintf(f, "rtt %s ", sprint_time(interval, b2));
 +
-+	if (!atm && overhead == ethernet) {
++	if (raw)
 +		fprintf(f, "raw ");
-+	} else {
-+		if (atm == 1)
-+			fprintf(f, "atm ");
-+		else if (atm == 2)
-+			fprintf(f, "ptm ");
-+		else
-+			fprintf(f, "noatm ");
 +
-+		fprintf(f, "overhead %d ", overhead);
++	if (atm == 1)
++		fprintf(f, "atm ");
++	else if (atm == 2)
++		fprintf(f, "ptm ");
++	else if (!raw)
++		fprintf(f, "noatm ");
 +
-+		// This is actually the *amount* of automatic compensation, but we only report
-+		// its presence as a boolean for now.
-+		if (ethernet)
-+			fprintf(f, "via-ethernet ");
-+	}
++	fprintf(f, "overhead %d ", overhead);
 +
-+	if (mpu) {
++	if (mpu)
 +		fprintf(f, "mpu %d ", mpu);
-+	}
 +
 +	if (memlimit)
 +		fprintf(f, "memlimit %s", sprint_size(memlimit, b1));
