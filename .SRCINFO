@@ -1,0 +1,16 @@
+pkgbase = kms-cmake-utils
+	pkgdesc = Kurento cmake utilities
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://www.kurento.org/
+	arch = any
+	license = LGPL v2.1
+	makedepends = cmake
+	depends = cmake
+	provides = kms-cmake-utils
+	conflicts = kms-cmake-utils
+	source = https://github.com/Kurento/kms-cmake-utils/archive/1.4.0.tar.gz
+	sha256sums = 13616dc4b760d9aea1031e3c2f638c44b029a18e5f7117e51cb29d0f6071a857
+
+pkgname = kms-cmake-utils
+
