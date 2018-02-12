@@ -1,6 +1,6 @@
 pkgbase = python-sparse
 	pkgdesc = Sparse multidimensional arrays on top of numpy and scipy
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mrocklin/sparse
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-sparse
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
-	source = https://github.com/mrocklin/sparse/archive/0.1.1.tar.gz
-	sha256sums = cdb4b4cd47eefc705f632c19dcbcae1963464a609da7376021fabcd1d6af21bb
+	source = https://github.com/mrocklin/sparse/archive/0.2.0.tar.gz
+	sha256sums = 11a506ca9b14ff974387b79f540045ddfc0d32043abe61b6bea4d1fa2c60d955
 
 pkgname = python-sparse
 
