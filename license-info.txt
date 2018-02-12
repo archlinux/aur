@@ -1,0 +1,3 @@
+The copyright information for this package is included as a commend at the head of the executable itself. See there.
+
+The file "license.txt" is an attempt to automatically extract that copyright notice; it might have failed and is there only for your convenience. Please see executable itself.

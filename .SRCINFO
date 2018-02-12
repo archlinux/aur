@@ -1,16 +1,23 @@
 pkgbase = arandr-indicator-git
 	pkgdesc = Quick and simple tray icon menu for changing the monitor layout.
-	pkgver = 1
+	pkgver = 20150516+2ebd165
 	pkgrel = 2
+	epoch = 1
 	url = https://github.com/denilsonsa/arandr-indicator
 	arch = any
-	license = BSD-2
+	license = custom
 	makedepends = git
 	depends = pygtk
-	depends = libappindicator
+	depends = python2>=2.7
+	depends = python2-libappindicator
 	depends = python2-xdg
-	optdepends = arandr: to configure monitor layouts
-	source = git+https://github.com/denilsonsa/arandr-indicator.git
+	optdepends = arandr: To configure monitor layouts.
+	provides = arandr-indicator=20150516+2ebd165
+	conflicts = arandr-indicator
+	replaces = arandr-indicator<=20150516+2ebd165
+	source = arandr-indicator::git+https://github.com/denilsonsa/arandr-indicator.git
+	source = license-info.txt
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = arandr-indicator-git
