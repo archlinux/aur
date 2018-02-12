@@ -3,7 +3,7 @@
 
 _pkgname=inadyn-fork
 pkgname=$_pkgname-git
-pkgver=2.2.1.r0.gb9d9196
+pkgver=2.3.1.r0.gedd31bd
 pkgrel=1
 pkgdesc="Dynamic DNS client with SSL/TLS support"
 arch=('i686' 'x86_64')
@@ -31,11 +31,7 @@ build() {
 
 package() {
   cd $pkgname
-  install -Dm600 debian/inadyn.conf "$pkgdir/etc/inadyn.conf"
-
-  install -dm755 "$pkgdir/usr/share/doc/inadyn/examples"
-  install -Dm644 examples/* "$pkgdir/usr/share/doc/inadyn/examples"
-
+  install -Dm600 examples/inadyn.conf "$pkgdir/etc/inadyn.conf"
   make DESTDIR="$pkgdir" install-strip
 }
 
