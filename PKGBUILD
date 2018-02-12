@@ -7,7 +7,7 @@
 _name=inadyn
 pkgname=inadyn-fork
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic DNS client with SSL/TLS support"
 arch=('i686' 'x86_64')
 url="http://troglobit.com/inadyn.html"
@@ -15,10 +15,8 @@ license=('GPL')
 depends=('ca-certificates' 'confuse' 'openssl')
 provides=('inadyn')
 backup=('etc/inadyn.conf')
-source=(https://github.com/troglobit/inadyn/releases/download/v$pkgver/$_name-$pkgver.tar.xz
-        inadyn.conf)
-sha256sums=('81c942db6eab27fa16e868175bdb7aff963eeee06d48bc5443e0dcd6f7c2da40'
-            'a8203feb57e02d52f2ce4857e0ee8193b51da945b5f6966d223dd04dc6efdcbc')
+source=(https://github.com/troglobit/inadyn/releases/download/v$pkgver/$_name-$pkgver.tar.xz)
+sha256sums=('81c942db6eab27fa16e868175bdb7aff963eeee06d48bc5443e0dcd6f7c2da40')
 
 build() {
   cd $_name-$pkgver
@@ -27,9 +25,8 @@ build() {
 }
 
 package() {
-  install -Dm600 inadyn.conf "$pkgdir/etc/inadyn.conf"
-
   cd $_name-$pkgver
+  install -Dm600 examples/inadyn.conf "$pkgdir/etc/inadyn.conf"
   make DESTDIR="$pkgdir" install-strip
 }
 
