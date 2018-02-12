@@ -1,12 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# NOTE:
-# To enable NewTek NDI (libndi), install the package 'ndi-sdk'
-# and add '--enable-libndi_newtek' to the configure options.
-
 pkgname=ffmpeg-full-git
-pkgver=3.5.r89950.g8e50bd61e4
-pkgrel=2
+pkgver=3.5.r90023.g192ea5bb77
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -25,7 +21,8 @@ depends=(
         'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'libbs2b' 'libilbc' 'kvazaar' 'openh264'
-        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'libmysofa' 'rockchip-mpp'
+        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
+        'rockchip-mpp'
 )
 depends_x86_64=('cuda' 'nvidia-utils')
 optdepends_x86_64=(
@@ -179,6 +176,7 @@ build() {
         --enable-lv2 \
         --enable-lzma \
         --enable-decklink \
+        --enable-libndi_newtek \
         --enable-libmysofa \
         --enable-openal \
         --enable-opencl \
