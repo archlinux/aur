@@ -1,8 +1,5 @@
 # Maintainer: Edwin Peters <slimed13 at hotmail dot com>
 
-# You can always get the latest version on GitHub (those are unstable) with the
-# command:
-# sudo pip2 install --upgrade git+https://github.com/lebedov/scikits.cuda.git#egg=scikit
 
 pkgname=python-scikit-cuda-git
 pkgver=57213a9
