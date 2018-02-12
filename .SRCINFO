@@ -1,0 +1,18 @@
+pkgbase = kurento-module-creator
+	pkgdesc = Kurento module creator
+	pkgver = 4.0.8
+	pkgrel = 1
+	url = http://www.kurento.org/
+	arch = any
+	license = LGPL v2.1
+	makedepends = cmake
+	makedepends = java-environment
+	makedepends = maven
+	depends = java-runtime
+	provides = kurento-module-creator
+	conflicts = kurento-module-creator
+	source = https://github.com/Kurento/kurento-module-creator/archive/4.0.8.tar.gz
+	sha256sums = 7b0902f408062dc5b67ed7ac919cd118818c82276012c038823742a4cae1dff1
+
+pkgname = kurento-module-creator
+
