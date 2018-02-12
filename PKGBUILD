@@ -22,6 +22,8 @@ optdepends=('dnf: build Fedora or Mageia images'
             'btrfs-progs: raw_btrfs and subvolume output formats'
             'dosfstools: build bootable images'
             'squashfs-tools: raw_squashfs output format'
+            'e2fsprogs: raw_ext4 output format'
+            'xfs-progs: raw_xfs output format'
             'tar: tar output format'
             'cryptsetup: add dm-verity partitions'
             # I don’t understand whether ovmf or edk2-ovmf is needed… let’s point to both for now
