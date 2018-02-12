@@ -2,19 +2,18 @@
 # Contributor: Ruslan Nabioullin <rnabioullin at gmail dot com>
 # Contributor: Gordon JC Pearce <gordon at gjcp dot net>
 pkgname=xastir
-pkgver=2.0.8
-gitver=208
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Full featured APRS Tracking/Information Reporting System"
 url="http://www.xastir.org/"
 license=('GPL' 'LGPL')
-source=(https://github.com/Xastir/$pkgname/archive/$pkgname$gitver.tar.gz
+source=(https://github.com/Xastir/Xastir/archive/Release-$pkgver.tar.gz
         https://github.com/Xastir/$pkgname-sounds/archive/v1.0.tar.gz
         $pkgname.desktop
         $pkgname-festival.desktop
         $pkgname-speech
         $pkgname.png)
-sha512sums=('bfc5248e0f04ea6be8fe54527714490700538a73722b9d545e01e33cc5f75124044f5bf76f17d054f61fee7ac624360852c087a113414f66bf02505ef40b2291'
+sha512sums=('32c1297d6399c34078158853beba32a4d018d060088b014be004b0837a887c6360e417e1d59ed7865ea1caa3c07f59d7bb4ee3cf9c035e2aabf6ba4783e3d288'
             '77f55f40ba9bd818e10488feb462c5fc97cab90295774a0c6b1344c6e95ac3ef215a26ba461132c4c59f857ce3a301b17e8bc3bb6fea8451327b1e8debf12f71'
             'f3d4b611dad7c14feb0b3bc46110a6c3e74da12e69d8acdbcb987eeaaec6f2a015b316cc58340f3c0b188e885d8716631d5943cdbb6ac4e8e6c1790013c540db'
             '1fa98400ab344d206b714ae45bc51b82d8a8395b3a4a39878b099176571a53cc91a4fcb0a1f011a631aea2c5c4a030e2346c537dc8d934a01382c85dd130adc5'
@@ -27,7 +26,7 @@ makedepends=('autoconf' 'automake')
 conflicts=('xastir-cvs')
 
 build() {
-  cd $srcdir/Xastir-$pkgname$gitver
+  cd $srcdir/Xastir-Release-$pkgver
   ./bootstrap.sh
   ./configure --prefix=/usr
   
@@ -37,7 +36,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/Xastir-$pkgname$gitver
+  cd $srcdir/Xastir-Release-$pkgver
   make DESTDIR=$pkgdir install
 
   mkdir -p $pkgdir/usr/share/applications
