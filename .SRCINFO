@@ -1,6 +1,6 @@
 pkgbase = iamcarbonman
 	pkgdesc = Meta package for /u/IamCarbonMan
-	pkgver = 1518210019
+	pkgver = 1518476912
 	pkgrel = 1
 	url = https://reddit.com/u/IamCarbonMan
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = iamcarbonman
 	depends = intel-ucode
 	depends = lostfiles
 	depends = minecraft
+	depends = mpv
 	depends = neofetch
 	depends = neovim
 	depends = nodejs
@@ -51,6 +52,7 @@ pkgbase = iamcarbonman
 	depends = xorg-xrdb
 	depends = xorg-xsetroot
 	depends = yay-git
+	depends = youtube-dl
 
 pkgname = iamcarbonman
 
