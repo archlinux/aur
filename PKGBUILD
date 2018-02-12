@@ -4,8 +4,8 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-x205ta
-_srcname=linux-4.14
-pkgver=4.14.15
+_srcname=linux-4.15
+pkgver=4.15.2
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -13,55 +13,56 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-  '60-linux.hook'  # pacman hook for depmod
-  '90-linux.hook'  # pacman hook for initramfs regeneration
-  'linux.preset'   # standard config files for mkinitcpio ramdisk
+  https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  60-linux.hook  # pacman hook for depmod
+  90-linux.hook  # pacman hook for initramfs regeneration
+  linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-  0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-  0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  '9000-fix_c-state_patchv4.14.patch'
-  '9002-brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch'
-  '9001-rpmb.patch'
-  '9003-brcmfmac-properly-align-buffers-on-certain-platform-swith-64-bit-DMA.patch'
+  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/fix_c-state_patch_v4.15.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/Revert-several-pm-4.15-rc1-merges-for-low-power-suspend.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/Revert-several-pm-4.15-rc1-merges-for-low-power-suspend-2-rc6.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/rpmb.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/fix-null-hwmon-info.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/i2c_touch_fix_initialize_delay.patch
+  #'9003-brcmfmac-properly-align-buffers-on-certain-platform-swith-64-bit-DMA.patch' # Excluding this patch. Not sure if it helps.
   'config_x205ta'  
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
             'SKIP'
-            '54a6359ed333e619db8c5c88020ff20f1e25635337f01f50a7488ec2fc0fe030'
+            '812499c5d0cc5183606dc9388084df162ca2eb5fa374d8f8b00136fd82825847'
             'SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
-            '5694022613bb49a77d3dfafdd2e635e9015e0a9069c58a07e99bdc5df6520311'
-            '2f46093fde72eabc0fd25eff5065d780619fc5e7d2143d048877a8220d6291b0'
-            '6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794'
-            'dfbef29d75d08010223379500be62b7866c4606386d863eae1ba41bee16807de'
-            'ad0f318809d074ee387f48fdfcb711b0fa3eb378867ac65c6da3d490834e649d'
+            'b20e25656c9423591afd0325fe26320f50bc3421ff204acbfe5dd88ffb3866fe'
+            '68575230693b374eb68e6100e719c71a196db57fe0ac79ddae02fe72b404e09e'
+            'b21406c060cf601f879528cfa1b83f524c44d8ecd99689c331a7c6326653d0be'
+            'e576fcf6b61c50b7ea358e9980c4d04901adfe9b050b87bf45506a8452202505'
+            'dfc7fe519d8b95fbe263889ad8e432c55a89d915e905b7729a2ffc958c310754'
+            '1772125253dbe3cd6e191bc8ab5c0297e294d4778857c9e90e22e4999af00929'
             'f69b0f127f8f1a2b4b34dedaf3c37ef3e561e75fea4de031993341a93c0456d9'
-            '139b6357a092ecc0284ba8f4440f7babcb6f5ac81a52420ad950de4cd2f281dd'
-            'bc5a0627d2ece60073ad93a14c8710dec0fdd22fb0455a159ac219fef813c211')
+            'ad0f318809d074ee387f48fdfcb711b0fa3eb378867ac65c6da3d490834e649d'
+            'e3e3873d7d5d781913e1e2f3a7968d0cf0967ee70be0db58bff91c31b37fabe8'
+            'e9d407c4e437c6e93d8c985fcd496dee0115dcc6c616ee56129fe7a9e96bb746'
+            '2d8638cc71ffa3277315a171a60bcb5fd7fd07e2c6e9c0a6d1615e15f9f647d7')
 
 
 _kernelname=${pkgbase#linux}
+: ${_kernelname:=-ARCH}
 
 prepare() {
   cd ${_srcname}
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
-  chmod +x tools/objtool/sync-check.sh  # GNU patch doesn't support git-style file mode
-
-  # security patches
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -69,51 +70,66 @@ prepare() {
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
-  # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
-
-  # https://bugs.archlinux.org/task/56605
-  patch -Np1 -i ../0003-xfrm-Fix-stack-out-of-bounds-read-on-socket-policy-l.patch
-
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0004-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+
+  # https://bugs.archlinux.org/task/57327
+  patch -Np1 -i ../0003-ssb-Do-not-disable-PCI-host-on-non-Mips.patch
 
   # Here start x205ta patches, refer to https://goo.gl/dcXIM0 for harryharryharry's guide which is the main starting point
   # for info on these patches.
   
-  # patch no. 1 (attempts to prevents baytrail kernel freezes - thanks to jbMacAZ)
+  # patch attempts to prevents baytrail kernel freezes - thanks to jbMacAZ
   # refer to https://bugzilla.kernel.org/show_bug.cgi?id=109051#c829 for statement that this seems the more effective patch.
   # refer to https://drive.google.com/file/d/1uZeTQa6sWdtwXBIa8de5hkwEKeDeUR30/view for the patch, but to
   # https://drive.google.com/drive/folders/0B4s5KNXf2Z36Nkxac245LTBGdjQ for an overview of patches for ASUS T100H, where this
   # patch is published.
-  patch -Np1 -i ../9000-fix_c-state_patchv4.14.patch
+  patch -Np1 -i ../fix_c-state_patch_v4.15.patch
 
-  # patch no. 2 (hide unnecessary mmcblkXrpmb block devices, which can cause hangups)
+  # The next two patches come from harryharryharry and should bring a lower power suspend.
+  # Refer to https://ubuntuforums.org/showthread.php?t=2254322&page=188&p=13735931#post13735931
+  # and https://bugzilla.kernel.org/show_bug.cgi?id=198631
+  patch -Rp1 -i ../Revert-several-pm-4.15-rc1-merges-for-low-power-suspend.patch
+  patch -Rp1 -i ../Revert-several-pm-4.15-rc1-merges-for-low-power-suspend-2-rc6.patch
+
+  # patch not needed anymore? Hide unnecessary mmcblkXrpmb block devices, which can cause hangups)
   # refer to https://dev-nell.com/rpmb-emmc-errors-under-linux.html
-  patch -Np1 -i ../9001-rpmb.patch
+  # This patch is no longer needed, refer to https://github.com/torvalds/linux/commit/97548575bef38abd06690a5a6f6816200c7e77f7
+  #patch -Np1 -i ../rpmb.patch
 
-  # patch no. 3 (hide dmesg errors of brcmfmac trying to enable a p2p device)
+  # patch to hide dmesg errors of brcmfmac trying to enable a p2p device
   # refer to https://patchwork.kernel.org/patch/9592913/
-  patch -Np1 -i ../9002-brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
+  patch -Np1 -i ../brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
 
-  # patch no. 4 (revert a patch in the mainline kernel which reduces wifi stability.
+  # Sources for next two patches to be looked up.
+  patch -Np1 -i ../fix-null-hwmon-info.patch
+  patch -Np1 -i ../i2c_touch_fix_initialize_delay.patch
+
+  # next patch reverts a patch in the mainline kernel which reduces wifi stability.
   # refer to https://github.com/torvalds/linux/commit/6e84ab604bdedaa16239bd1c6e5fcb5660309f02.diff
-  patch -Rp1 -i ../9003-brcmfmac-properly-align-buffers-on-certain-platform-swith-64-bit-DMA.patch
+  # This patch does not work at this point. Not clear if it is needed either... TODO: find out if we need it...
+  # patch -Np1 -i ../9003-brcmfmac-properly-align-buffers-on-certain-platform-swith-64-bit-DMA.patch
 
   # x205ta patches end here
 
   # copying the x205ta config.
-  # harryharryharry's x205ta config file, updated to 4.14.9
-  # upstream is not always available. Should be at http://x205ta.myftp.org:1337/kernel/.config
+  # harryharryharry's x205ta config file, updated to current package version.
+  # Upstream is not always available and not always at the version of core-x86_64.
+  # Upstream should be at http://x205ta.myftp.org:1337/kernel/.config
+
+  # Config changes required to build more closely to arch.
+  # Set the kernel name with a local version suffix: LOCALVERSION=-x205ta
+  #
+  # Harryharryharry seems to prefer STACK_VALIDATION and HAVE_STACK_VALIDATION = n , but arch's default kernel wants that to y.
+  # That's related to the unwinder, where arch prefers ORC and not Frame point unwinder like H.
+  # Therefore, don't forget to enable ORC unwinder, which enables STACK_VALIDATION, which provides objtool
+  # In menuconfig, kernel hacking, choose kernel unwinder at bottom, ORC
   cp -Tf ../config_x205ta .config
 
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
+  # Here ends x205ta stuff.
 
   # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -159,7 +175,7 @@ _package() {
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  local _extramodules="extramodules-${_basekernel}${_kernelname}"
   ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook
