@@ -18,5 +18,4 @@ build() {
 package() {
 	cd Hitman
 	install -Dm755 target/release/hitman "$pkgdir/usr/bin/hitman"
-	install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 }
