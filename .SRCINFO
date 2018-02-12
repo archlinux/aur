@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full-git
 	pkgdesc = Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)
 	pkgver = 3.5.r89950.g8e50bd61e4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ffmpeg-full-git
 	makedepends = opencl-headers
 	makedepends = blackmagic-decklink-sdk
 	makedepends = libmfx
-	makedepends = libvmaf-git
+	makedepends = vmaf-git
 	depends = glibc
 	depends = alsa-lib
 	depends = jack

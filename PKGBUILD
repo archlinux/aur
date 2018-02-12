@@ -6,7 +6,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=3.5.r89950.g8e50bd61e4
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -36,7 +36,7 @@ makedepends=(
     # official repositories:
         'git' 'nasm' 'opencl-headers'
     # AUR:
-        'blackmagic-decklink-sdk' 'libmfx' 'libvmaf-git'
+        'blackmagic-decklink-sdk' 'libmfx' 'vmaf-git'
 )
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
