@@ -1,0 +1,18 @@
+pkgbase = spaceship-prompt-git
+	pkgdesc = A Zsh prompt for Astronauts
+	pkgver = LATEST
+	pkgrel = 1
+	url = https://denysdovhan.com/spaceship-prompt/
+	install = spaceship-prompt-git.install
+	arch = any
+	license = MIT
+	depends = zsh
+	conflicts = spaceship-zsh-theme-git
+	conflicts = spaceship-prompt
+	source = git+https://github.com/denysdovhan/spaceship-prompt.git
+	source = spaceship-prompt-git.install
+	md5sums = SKIP
+	md5sums = bd24fc2d741cb12ba49b36742d879f64
+
+pkgname = spaceship-prompt-git
+
