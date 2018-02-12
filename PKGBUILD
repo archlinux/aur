@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/r-type/hatari2"
 license=('GPL2')
 groups=('libretro')
-depends=('capsimage' 'zlib' 'glibc' 'libretro-core-info' 'sdl2')
+depends=('capsimage4' 'zlib' 'glibc' 'libretro-core-info' 'sdl2')
 makedepends=('git')
 
 _libname=hatari2_enhanced_libretro
