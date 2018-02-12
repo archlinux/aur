@@ -15,7 +15,7 @@ pkgbase = kde-cdemu-manager-kf5
 	depends = cdemu-daemon>=2.0
 	provides = kde-cdemu-manager
 	conflicts = kde-cdemu-manager
-	source = https://github.com/Real-Gecko/KDE-CDEmu/archive/0.6.1.tar.gz
+	source = https://github.com/Real-Gecko/KDE-CDEmu/archive/0.6.3.tar.gz
 	md5sums = 59d0c471d9257e598f1f848ea8187329
 
 pkgname = kde-cdemu-manager-kf5
