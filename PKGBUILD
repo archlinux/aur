@@ -1,5 +1,5 @@
-# : Julian Daube <joposter at gmail.com>
-# Maintainer : Julian Daube <joposter at gmail.com>
+# Maintainer: Julian Daube <joposter at gmail dot com>
+# Contributor: Julian Daube <joposter at gmail dot com>
 
 pkgname=libmacspoof
 pkgver=1.0.1
