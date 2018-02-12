@@ -41,4 +41,4 @@ package() {
 	rm "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc"
 }
 
-sha256sums=('2594119bdaa40123826c6afddaa81d003806f94c588369a5ae2af72134856873')
+sha256sums=('bad1d504266e3956146d728ec9919704a96feb81f9b72ade11d71a3385a81c99')
