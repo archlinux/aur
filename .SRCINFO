@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full
 	pkgdesc = Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)
 	pkgver = 3.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -90,6 +90,7 @@ pkgbase = ffmpeg-full
 	depends = shine
 	depends = vo-amrwbenc
 	depends = xavs
+	depends = ndi-sdk
 	depends = libmysofa
 	depends = rockchip-mpp
 	provides = ffmpeg
