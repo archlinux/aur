@@ -1,15 +1,15 @@
 # Maintainer: Marcel Huber <marcelhuberfoo@gmail.com>
 
 pkgname=cevelop
-pkgver=1.8.0
-_srctimestamp=201707131430
+pkgver=1.9.0
+_srctimestamp=201802051526
 pkgrel=1
 pkgdesc="The C++ IDE for professional developers"
 license=('custom')
 arch=('i686' 'x86_64')
 url='https://www.cevelop.com'
 makedepends=(gendesk libarchive)
-depends=(java-environment unzip "glibc>2.14" python)
+depends=('java-environment>=8' unzip "glibc>2.14" python)
 optdepends=(hicolor-icon-theme boost)
 provides=('cevelop')
 install=${pkgname}.install
@@ -26,8 +26,8 @@ sha256sums=('cedcc248a90de4b96277ffc788371db2f2090d9a6c285db3b14e3d6a27f5cb30'
             '98ab055ecde507b6603743ab40db3dfdb6d6b3b24cb5fff244982ae641d865a0'
             'd99f2f3b58aef682fcab7d1cedf20fc4fc44152c6b964af49212a9e7f4d35def'
             'ebd2b54d0487de845093cabda98d5e0977f436fc10d40f15d2cb1598084222e4')
-sha256sums_i686=('dbd7ab3bcd0d8efe29a82177b1631ab6016c1029e515c9781b0db4c917f608d5')
-sha256sums_x86_64=('f063f30cd831bc07f07c0faa37a3ad244a21ca5ff2722a65109ad6f2363b4eab')
+sha256sums_i686=('f55d70a624fdf913f78ca977a45e068e4082b18486312d436c62c9da469b9955')
+sha256sums_x86_64=('b8508744989367a4b053938f40d43ebc51416d1c4024ec810f2de923f9638f3f')
 
 prepare() {
   gendesk -n --pkgname "$pkgname" \
