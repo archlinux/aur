@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=SQL Operations Studio
+Comment=SQL Operations Studio
+GenericName=Text Editor
+Exec=/usr/bin/sqlops --unity-launch %F
+Icon=/usr/share/sqlops/resources/app/resources/linux/code.png
+Type=Application
+StartupNotify=true
+StartupWMClass=sqlops
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=sqlops;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/usr/share/sqlops/sqlops --new-window %F
+Icon=sqlops
