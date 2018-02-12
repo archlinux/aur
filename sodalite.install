@@ -1,0 +1,11 @@
+# arg 1:  the new package version
+post_install() {
+    bold=$(tput bold)
+    normal=$(tput sgr0)
+    echo "
+    ===> For proper ${bold}shell integration ${normal}(supported: bash, zsh), add following line to your .bashrc/.zshrc:
+
+            ${bold}source /usr/share/sodalite/shell-integration.sh
+
+    "
+}
