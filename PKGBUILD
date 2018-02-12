@@ -4,7 +4,7 @@
 pkgname=scilab-bin
 _pkgname=${pkgname%-bin}
 pkgver=6.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications."
 arch=("x86_64" "i686")
 license=("BSD" "custom:CeCILL")
@@ -26,6 +26,7 @@ prepare() {
   sed -i "s|Terminal=false|Terminal=true|" scilab.desktop
   sed -i "s|Exec=scinotes|Exec=/opt/scilab/bin/scinotes|" scinotes.desktop
   sed -i "s|Exec=xcos|Exec=/opt/scilab/bin/xcos|" xcos.desktop
+  sed -i "s|Terminal=false|Terminal=true|" xcos.desktop
   cd "${srcdir}/${_pkgname}-${pkgver}"
 }
 
