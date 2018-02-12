@@ -6,7 +6,7 @@
 pkgbase=python-miniupnpc
 pkgname=('python-miniupnpc' 'python2-miniupnpc')
 pkgver=2.0.20180203
-pkgrel=3
+pkgrel=4
 pkgdesc="A small UPnP client library/tool to access Internet Gateway Devices (python2 module only)"
 arch=('i686' 'x86_64')
 url="http://miniupnp.free.fr"
