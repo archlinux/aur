@@ -1,6 +1,6 @@
 pkgbase = linux-ryzen-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 4.15.724894.d439339c4486
+	pkgver = 4.15.725892.9778e0d1a858
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = linux-ryzen-amd-staging-drm-next-git
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = linux-ryzen-amd-staging-drm-next-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-drm-next
+	source = linux-ryzen-amd-staging-drm-next-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-4.17-wip
 	source = config.x86_64
 	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch
 	source = 90-linux.hook
