@@ -1,6 +1,6 @@
 pkgbase = hdf5_18-mpich
 	pkgdesc = The hdf5 legacy 1.8 series compiled with mpich support
-	pkgver = 1.8.19
+	pkgver = 1.8.20
 	pkgrel = 1
 	url = https://support.hdfgroup.org/HDF5/
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = hdf5_18-mpich
 	conflicts = hdf5_18-cpp-fortran
 	conflicts = hdf5-fortran-mpich
 	replaces = hdf5-fortran-mpich
-	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.19/src/hdf5-1.8.19.tar.bz2
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.20/src/hdf5-1.8.20.tar.bz2
 	source = mpi.patch
-	md5sums = 6f0353ee33e99089c110a1c8d2dd1b22
-	md5sums = b7165950c96ba4a2540984d07886accf
+	md5sums = 23078d57975903e9536d1e7b299cc39c
+	md5sums = c261676f9ee4b5a2f3bca9f5d4ba89aa
 
 pkgname = hdf5_18-mpich
 

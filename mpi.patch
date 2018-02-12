@@ -1,5 +1,6 @@
 Prevent accidental inclusion of mpi c++ headers
-when hdf5.h is included third party library
+when hdf5.h is included by a user application or
+library
 
 https://bugs.gentoo.org/show_bug.cgi?id=420777
 https://bugs.archlinux.org/task/33343

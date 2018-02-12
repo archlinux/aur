@@ -2,7 +2,7 @@
 
 pkgname=hdf5_18-mpich
 _pkgname=hdf5
-pkgver=1.8.19
+pkgver=1.8.20
 pkgrel=1
 pkgdesc="The hdf5 legacy 1.8 series compiled with mpich support"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ conflicts=('hdf5_18' 'hdf5_18-cpp-fortran' 'hdf5-fortran-mpich')
 replaces=('hdf5-fortran-mpich')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:3}/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2"
         "mpi.patch")
-md5sums=('6f0353ee33e99089c110a1c8d2dd1b22'
-         'b7165950c96ba4a2540984d07886accf')
+md5sums=('23078d57975903e9536d1e7b299cc39c'
+         'c261676f9ee4b5a2f3bca9f5d4ba89aa')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
