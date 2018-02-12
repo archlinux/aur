@@ -7,9 +7,9 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=4.5
+_pkgvermajmin=4.6
 pkgver=${_pkgvermajmin}.0
-_verpostfix=""
+_verpostfix="beta1"
 pkgrel=1
 _pkgver=${pkgver}
 _urlbase="https://download.qt.io/official_releases"
@@ -24,7 +24,7 @@ url='http://qt.io/ide'
 license=('GPL')
 provides=('qtcreator' 'qbs')
 conflicts=('qtcreator' 'qbs')
-depends=('qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'llvm')
+depends=('python2-beautifulsoup4' 'qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'llvm')
 optdepends=('qbs'
             'qt5-doc: integrated Qt documentation'
             'qt5-examples: welcome page examples'
@@ -38,7 +38,7 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('140256a5d99e9e6060a492699a68118f16afcebce70d4221fabff7215475d9f9')
+sha256sums=('f7368153d4527a9058e11c5e61e9e719896d2b1f7411f5a81c82aed0f7cdb9cf')
 
 _qmake_cmd=qmake
 _tmp_dir=$(mktemp -d)
@@ -56,6 +56,7 @@ prepare() {
 }
 
 build() {
+  export PATH=${startdir}:$PATH
   set -o nounset
   local src_dir=${srcdir}/${_filename}
   [[ -d build ]] && rm -r build
