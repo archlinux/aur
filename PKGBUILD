@@ -4,7 +4,7 @@
 pkgname=libmacspoof
 pkgver=1.0.1
 pkgrel=1
-pkgdesc=A simple library to preload for spoofing the mac address
+pkgdesc="A simple library to preload for spoofing the mac address"
 
 source=("ioctl_preload.64b.c"
 	"Makefile")
