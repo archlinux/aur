@@ -3,7 +3,7 @@
 
 pkgname=lilypond-devel
 pkgver=2.19.81
-pkgrel=1
+pkgrel=2
 pkgdesc="An automated music engraving system (development version)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
@@ -20,7 +20,7 @@ makedepends=('fontforge'
 	     'ghostscript'
              'texlive-core'
 	     'tex-gyre-fonts'
-)
+	     'dblatex')
 optdepends=('netpbm: building HTML documentation'
             'imagemagick: building HTML documentation'
             'ttf-kochi-substitute: building HTML documentation'
@@ -29,7 +29,7 @@ optdepends=('netpbm: building HTML documentation'
 	    'extractpdfmark: for reducing the size of pdf output significantly')
 provides=("lilypond=$pkgver")
 conflicts=('lilypond' 'lilypond-git')
-source=("http://lilypond.org/download/source/v2.19/lilypond-${pkgver}.tar.gz" "no_fontforge-versioncheck.patch")
+source=("http://lilypond.org/downloads/sources/v2.19/lilypond-${pkgver}.tar.gz" "no_fontforge-versioncheck.patch")
 sha256sums=('2ac299045dc4a8fa3bd7c67af7b06877b21cdb50321fec5baa558e3173ed646c'
             'e74391f718babb984c5f637397162cf096c4716f5b9a21346ec76035cfc80817')
 

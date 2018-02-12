@@ -1,7 +1,7 @@
 pkgbase = lilypond-devel
 	pkgdesc = An automated music engraving system (development version)
 	pkgver = 2.19.81
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lilypond.org/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = lilypond-devel
 	makedepends = ghostscript
 	makedepends = texlive-core
 	makedepends = tex-gyre-fonts
+	makedepends = dblatex
 	depends = fontconfig
 	depends = freetype2
 	depends = guile1.8
@@ -27,7 +28,7 @@ pkgbase = lilypond-devel
 	provides = lilypond=2.19.81
 	conflicts = lilypond
 	conflicts = lilypond-git
-	source = http://lilypond.org/download/source/v2.19/lilypond-2.19.81.tar.gz
+	source = http://lilypond.org/downloads/sources/v2.19/lilypond-2.19.81.tar.gz
 	source = no_fontforge-versioncheck.patch
 	sha256sums = 2ac299045dc4a8fa3bd7c67af7b06877b21cdb50321fec5baa558e3173ed646c
 	sha256sums = e74391f718babb984c5f637397162cf096c4716f5b9a21346ec76035cfc80817
