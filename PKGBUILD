@@ -3,7 +3,7 @@
 # Contributor: RealGecko <realgecko@realgecko.com>
 
 pkgname=kde-cdemu-manager-kf5
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="KDE CDEmu Manager is a simple frontend for CDEmu.KF5 version"
 arch=('i686' 'x86_64')
