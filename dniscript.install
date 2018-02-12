@@ -1,0 +1,14 @@
+post_install() {
+  echo -n "Updating font cache ... "
+  fc-cache -s
+  mkfontscale /usr/share/fonts/dniscript
+  mkfontdir /usr/share/fonts/dniscript
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+post_remove() {
+  post_install "$@"
+}

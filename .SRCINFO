@@ -1,0 +1,25 @@
+pkgbase = ttf-dni
+	pkgdesc = TrueType D'ni font (from the Myst game series). Contains a normal version, a version with character mapping according to new standard, and an angular (non-round) version.
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://linguists.riedl.org/old/sebastian/
+	install = dniscript.install
+	arch = any
+	license = custom
+	makedepends = fontconfig
+	makedepends = unzip
+	makedepends = xorg-mkfontscale
+	makedepends = xorg-mkfontdir
+	makedepends = xorg-xset
+	provides = ttf-dniscript=2.2
+	source = http://linguists.riedl.org/old/sebastian/dniscrpt22.zip
+	source = website.html::http://linguists.riedl.org/old/sebastian/
+	source = license-dummy.txt
+	source = dniscript.install
+	sha256sums = 11e684041c2a8baecb4868442ecb6036c42f97d5bd96785f562ca1855697c466
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ttf-dni
+
