@@ -8,7 +8,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -38,7 +38,7 @@ makedepends=(
     # official repositories:
         'nasm' 'opencl-headers'
     # AUR:
-        'blackmagic-decklink-sdk' 'libmfx' 'libvmaf'
+        'blackmagic-decklink-sdk' 'libmfx' 'vmaf'
 )
 provides=(
     'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
