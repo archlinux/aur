@@ -14,7 +14,7 @@ url='https://www.musicpd.org/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libmms' 'libid3tag' 'libmpdclient'
-         'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'libcdio-paranoia' 'libgme')
+         'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'libgme')
 makedepends=('doxygen' 'boost')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
@@ -34,11 +34,9 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
-		--enable-cdio-paranoia \
 		--enable-libmpdclient \
 		--disable-ao \
 		--disable-ffmpeg \
-		--disable-iso9660 \
 		--disable-jack \
 		--disable-modplug \
 		--disable-pulse \
