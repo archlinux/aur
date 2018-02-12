@@ -4,7 +4,6 @@ Before=postfix.service
 
 [Service]
 Type=forking
-PIDFile=/run/pwhois_milter/pwhois_milter.pid
 ExecStart=/usr/local/bin/pwhois_milter \
 	-i /run/pwhois_milter/pwhois_milter.pid \
 	-l /var/log/mail/mail.log \
