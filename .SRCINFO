@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-communitheme-git
+	pkgdesc = GNOME Shell Ubuntu community theme communitheme
+	pkgver = a6ca20f
+	pkgrel = 1
+	url = https://github.com/Ubuntu/gnome-shell-communitheme
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	source = gnome-shell-communitheme-git::git+https://github.com/Ubuntu/gnome-shell-communitheme.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-communitheme-git
+
