@@ -26,6 +26,6 @@ validpgpkeys=()
 
 package() {
 	install -Dm755 ioscheduler $pkgdir/usr/lib/systemd/scripts/ioscheduler
-	install -Dm644 conffile $pkgdir/etc/default/ioschheduler
+	install -Dm644 conffile $pkgdir/etc/default/ioscheduler
 	install -Dm644 ioscheduler.service $pkgdir/usr/lib/systemd/system/ioscheduler.service
 }
