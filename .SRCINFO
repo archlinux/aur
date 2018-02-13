@@ -1,0 +1,12 @@
+pkgbase = python2-openupgradelib
+	pkgdesc = A library with support functions to be called from Odoo migration scripts.
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/OCA/openupgradelib
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	depends = python
+
+pkgname = python2-openupgradelib
+
