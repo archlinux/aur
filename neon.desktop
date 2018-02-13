@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Neon
+Comment=Light wallet for NEO blockchain
+Exec="/opt/Neon/neon" %U
+Terminal=false
+Type=Application
+Icon=neon
+Categories=Utility;
