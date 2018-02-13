@@ -1,12 +1,11 @@
 pkgbase = panasonic-mfp
 	pkgdesc = Minimal drivers pack for Panasonic multi-function printers
-	pkgver = 2.0.10.1.3.1
+	pkgver = 3.3.11
 	pkgrel = 1
 	url = https://panasonic.net/cns/pcc/support/fax/common/table/linuxdriver.html
 	arch = x86_64
 	arch = i686
 	license = custom:panasonic
-	makedepends = vim
 	depends = libusb-compat
 	optdepends = cups: printer support
 	optdepends = sane: scanner support
