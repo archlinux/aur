@@ -11,15 +11,14 @@ groups=('pantheon-unstable')
 depends=('cairo' 'glib2' 'glibc' 'gtk3' 'gtksourceview3' 'libgee' 'libpeas'
          'libsoup' 'pango' 'zeitgeist'
          'libgranite.so')
-makedepends=('git' 'gobject-introspection' 'granite-git' 'gtkspell3'
-             'intltool' 'meson' 'vala' 'vte3' 'webkit2gtk')
+makedepends=('appstream' 'git' 'gobject-introspection' 'granite-git'
+             'gtkspell3' 'intltool' 'meson' 'vala' 'vte3' 'webkit2gtk')
 optdepends=('gtkspell3: Spell Check extension'
             'vala: Outline extension'
             'vte3: Terminal extension'
             'webkit2gtk: Browser Preview extension')
 provides=('scratch-text-editor')
 conflicts=('scratch-text-editor')
-replaces=('scratch-text-editor-bzr')
 source=('scratch-text-editor::git+https://github.com/elementary/scratch.git')
 sha256sums=('SKIP')
 
