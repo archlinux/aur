@@ -1,20 +1,19 @@
-# Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
+# Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 
 pkgname=python-ginga
-pkgver=2.6.2
-pkgrel=3
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://ejeschke.github.io/ginga/"
 license=('BSD')
 depends=('python'
          'python-astropy'
-         'python-astropy-helpers'
          'python-matplotlib'
          'python-scipy'
          'python-qtpy')
 source=("https://files.pythonhosted.org/packages/source/g/ginga/ginga-${pkgver}.tar.gz")
-md5sums=('a98559abd5532d41a7e6bd243bf9c1f3')
+md5sums=('9943993e23af3069ada93dcd12f11c87')
 
 package(){
   cd $srcdir/ginga-$pkgver
