@@ -1,7 +1,7 @@
 pkgbase = ioscheduler-aur
 	pkgdesc = Select ioscheduler
 	pkgver = 0.1b1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/unstartdev/ioscheduler
 	arch = any
 	license = GPL
