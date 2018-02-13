@@ -1,6 +1,6 @@
 pkgbase = mypaint-git
 	pkgdesc = Simple drawing & painting program that works well with graphics tablets (git).
-	pkgver = 1.3.0.alpha.r4869.0b19fce4
+	pkgver = 1.3.0.alpha.r4897.046ec8fb
 	pkgrel = 1
 	url = http://mypaint.org/
 	install = mypaint-git.install
