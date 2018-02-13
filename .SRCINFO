@@ -1,7 +1,7 @@
 pkgbase = hdf4-java
 	pkgdesc = General purpose library and file format for storing scientific data (full version including the Java Native Interfaces - JNI)
 	pkgver = 2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.hdfgroup.org/hdf4.html
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,9 @@ pkgbase = hdf4-java
 	depends = zlib
 	depends = libjpeg-turbo
 	provides = hdf4
-	conflicts = netcdf
 	conflicts = hdf4
-	source = http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/hdf-4.2.13.tar.gz
-	sha256sums = be9813c1dc3712c2df977d4960e1f13f20f447dfa8c3ce53331d610c1f470483
+	source = http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/hdf-4.2.13.tar.bz2
+	md5sums = 2c1b6c7fdf97738251154680b37bd86a
 
 pkgname = hdf4-java
 
