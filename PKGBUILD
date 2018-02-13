@@ -2,7 +2,7 @@
 
 pkgname=collabora-online-server-nodocker
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -90,6 +90,7 @@ _upstream_equiv='
   libxcb-render0      = libxcb
   libxcb-shm0         = libxcb
   libxinerama1        = libxinerama
+  libxrender1         = libxrender
   zlib1g              = zlib
 '
 _upstream_handle_dep() {
