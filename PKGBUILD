@@ -2,7 +2,7 @@
 
 pkgname=cura-plugin-octoprint-git
 _pkgname=cura-plugin-octoprint
-pkgver=r74.0d400df
+pkgver=r147.16e5909
 pkgrel=1
 pkgdesc="Cura plugin which enables printing directly to OctoPrint and monitoring the progress"
 arch=('any')
