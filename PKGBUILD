@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=cura-fdm-materials-git
-pkgver=jedi.master.2017.10.19.2.g84e6ce7
+pkgver=jedi.master.2018.02.09
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 arch=('any')
