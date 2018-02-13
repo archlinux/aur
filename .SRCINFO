@@ -1,0 +1,16 @@
+pkgbase = glasscalc
+	pkgdesc = A small script that calculates IVSHMEM device size for Looking Glass
+	pkgver = 1
+	pkgrel = 1
+	url = https://gist.github.com/NeoTheFox/c867fbfcaea74749e96f3006b12675fb
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = WTFPL
+	depends = bash
+	depends = bc
+	source = glasscalc.sh::https://gist.githubusercontent.com/NeoTheFox/c867fbfcaea74749e96f3006b12675fb/raw/d9447400c99edb71b6d654df6b07eda3dbb042ca/glasscalc.sh
+	md5sums = SKIP
+
+pkgname = glasscalc
+
