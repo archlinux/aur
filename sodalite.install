@@ -3,9 +3,19 @@ post_install() {
     bold=$(tput bold)
     normal=$(tput sgr0)
     echo "
-    ===> For proper ${bold}shell integration ${normal}(supported: bash, zsh), add following line to your .bashrc/.zshrc:
+    ===> ${bold}Sodalite wants to be part of your shell ${normal}(supported: bash, zsh, fish)
 
-            ${bold}source /usr/share/sodalite/shell-integration.sh
+    ${bold}bash, zsh:
+
+        ${normal}Add following line to your .bashrc/.zshrc:
+            source /usr/share/sodalite/shell-integration.sh
+
+    ${bold}fish:
+
+        ${normal}Create function 'fish_user_key_bindings' in '"'$XDG_CONFIG_HOME'"/fish/functions/fish_user_key_bindings.fish' and insert following line into the function:
+            source /usr/share/sodalite/shell-integration.fish
 
     "
 }
+
+post_install
