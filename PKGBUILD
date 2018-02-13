@@ -5,7 +5,7 @@
 
 pkgname=cubicsdr-git
 _pkgname=cubicsdr
-pkgver=r1316.e173eec
+pkgver=r1486.490f72c
 pkgrel=1
 epoch=2
 pkgdesc="Cross-Platform Software-Defined Radio Application"
@@ -26,6 +26,7 @@ optdepends=(
   'soapyhackrf-git: support for HackRF'
   'soapylms7-git: support for LimeSDR'
   'soapyosmo-git: support for MiriSDR and RFSpace'
+  'soapyplutosdr-git: support for PlutoSDR'
   'soapyremote-git: use any SoapySDR device remotely over network'
   'hamlib: hamlib support'
 )
