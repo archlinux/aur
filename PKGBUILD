@@ -1,7 +1,7 @@
 # Package maintainer: Leonid B <leonid dot bloch at esrf dot fr>
 # Upstream contact: silx at esrf dot fr
 pkgname=python-fabio
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="I/O library for images produced by 2D X-ray detectors."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-numpy' 'python-pillow' 'python-lxml')
 optdepends=('python-pyqt4: for the fabio_viewer program')
 makedepends=('cython')
 source=("https://github.com/silx-kit/${pkgname#*-}/archive/v${pkgver}.tar.gz")
-sha256sums=('597bbd3c551687e98d84fe89b9fa87eca2a726fbbed56e841168119efd95baf9')
+sha256sums=('a4379e35519446202fbeb725023746a8bdcb8870a5b806d7a6c7bb7f2868767d')
 
 build() {
     cd "${pkgname#*-}-${pkgver}"
