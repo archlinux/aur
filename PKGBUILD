@@ -1,24 +1,32 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: Andy Weidenbaum <archbaum at gmail dot com>
 
-pkgname=ruby-ruby-progressbar
-pkgver=1.8.1
+_gemname=ruby-progressbar
+pkgname=ruby-$_gemname
+pkgver=1.9.0
 pkgrel=1
-pkgdesc="Flexible text progress bar library for Ruby"
+pkgdesc="Flexible text progress bar library for Ruby."
 arch=('any')
 url="https://github.com/jfelchner/ruby-progressbar"
 license=('MIT')
-depends=('ruby')
-source=(https://rubygems.org/downloads/${pkgname##ruby-}-${pkgver}.gem)
-sha256sums=('95ded755295440de814704970d7ccaf3cb259854534f03a03a6d05918f3eece3')
-noextract=("${pkgname#*-}-${pkgver}.gem")
+depends=('ruby' 'ruby-rdoc')
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+sha256sums=('d32d1b046400e58007e7043e3b07c9e2c32a248964a55afc780516b7630ff0c5')
+noextract=($_gemname-$pkgver.gem)
+options=(!emptydirs)
 
 package() {
-  cd "$srcdir"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
-  msg2 'Installing...'
   gem install \
-    --no-user-install \
     --ignore-dependencies \
-    -i "$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')" \
-    ${pkgname##ruby-}-$pkgver.gem
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+
+  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
