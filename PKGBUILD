@@ -1,7 +1,7 @@
 # Maintainer: bb010g <bb010g@gmail.com>
 pkgname=betterdiscordctl-git
 pkgver=r10.8c5008b
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for managing BetterDiscord on Linux"
 arch=('any')
 url="https://github.com/bb010g/betterdiscordctl"
