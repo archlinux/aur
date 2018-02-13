@@ -1,18 +1,16 @@
-  # Maintainer:  danyf90 <daniele.formichelli@gmail.com>
-# Contributor: mac <poczciwiec at gmail dot com>
-
+  # Maintainer:  solaraquarion <shlomochoina@gmial.com>
 pkgname=extraterm
-pkgver=0.29.1
-pkgrel=2
-pkgdesc="The swiss army chainsaw of terminal emulators . "
+pkgver=0.29.2
+pkgrel=1
+pkgdesc="The swiss army chainsaw of terminal emulators."
 arch=("i686" "x86_64")
 url="https://github.com/sedwards2009/extraterm"
 license=("MIT")
 depends=("nodejs")
 source_i686=("$url/releases/download/v$pkgver/extraterm-$pkgver-linux-ia32.zip")
 source_x86_64=("$url/releases/download/v$pkgver/extraterm-$pkgver-linux-x64.zip")
-sha256sums_i686=('ec1b81547ed8c0e83409624c88b471819a9fc9c27252dc20d796d3ef55c5162d')
-sha256sums_x86_64=('0cdce9e4d68a659d4d89f87ff0e46b7204a145148a17cc8e7bebd0ae03afe690')
+sha256sums_i686=('0a9a153335714892b9c8357826f9f4f3ee862c467a7e480c054ffa0d4211e9b2')
+sha256sums_x86_64=('9f0a36908c064c039c5e28e2e9c6c2d07df00c0fe1ad591f6914b0a63a757007')
 
 prepare(){
 rm -rf "$srcdir/$pkgname-$pkgver"
