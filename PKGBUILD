@@ -18,6 +18,7 @@ sha256sums=('b74018259ee2aa5efca093bc5accbdf2173f787b38d02a82c4cf7393d5e04ad5'
             '72420b6c8588df601b973b715fc88f3d9e4d75ce53b633abff8c7ff848aed59a'
             '9b09686c82ac5670ece59608288ab2124ee3147d404b77ac58c6ba332a6a148a')
 
+
 package() {
   install -d ${pkgdir}/opt/${pkgname}
   cp -R ${srcdir}/Oni-${pkgver}-x64-linux/* ${pkgdir}/opt/${pkgname}
