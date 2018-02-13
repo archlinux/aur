@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Bit Chat
+Comment=Secure, peer-to-peer instant messenger
+Exec=bitchat
+Icon=bitchat
+Categories=Network;InstantMessaging;

@@ -1,0 +1,19 @@
+pkgbase = bitchat
+	pkgdesc = Secure, peer-to-peer instant messenger
+	pkgver = 4.6.3
+	pkgrel = 1
+	url = https://bitchat.im/
+	arch = any
+	license = GPL3
+	makedepends = imagemagick
+	makedepends = git
+	depends = mono
+	source = git+https://github.com/TechnitiumSoftware/BitChatClient#commit=50d2c949b598e1abaa5088442055f4962f7f0b53
+	source = bitchat.sh
+	source = bitchat.desktop
+	sha256sums = SKIP
+	sha256sums = a630f23eb2b9044a1ceab3b2a0db6f18544710e60fa874ff6025eb45aa6795c3
+	sha256sums = 406048fc6b7540c9d23a9ef01685821a4fc437c7b0ed1a9b0cd4be8444c426c2
+
+pkgname = bitchat
+
