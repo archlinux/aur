@@ -13,7 +13,7 @@
 # http://pkgbuild.com/git/aur-mirror.git/tree/lib32-libmumble/PKGBUILD
 
 pkgname=lib32-libmumble
-pkgver=1.2.18
+pkgver=1.2.19
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A voice chat application similar to TeamSpeak (32-bit overlay library)"
@@ -22,8 +22,8 @@ depends=("mumble=$pkgver" 'lib32-libgl')
 makedepends=('boost' 'mesa' 'gcc-multilib')
 url="http://mumble.sourceforge.net/"
 source=("https://github.com/mumble-voip/mumble/releases/download/${pkgver}/mumble-${pkgver}.tar.gz")
-md5sums=('3c448632142e0f38e693250965e8b6b1')
-sha512sums=('bd8b10cb34733d566fd6aae2410e8fe5f098efe5c5b106f569112d4e5205d8a045d43a0adc02a7a9d3e16b15e3515d908784596f293a7e2972fba20830161074')
+md5sums=('d101068ed27ce119effdb3765a8cf8e4')
+sha512sums=('f91111194a899149b500a94afcf7cc5b9691c7ce8669f07fca2c66adbb3916ddb863bf703d04fb8387133fb75f3c8edb52974d1acf3febfafa1f73da19946de4')
 
 build() {
   cd "$srcdir/mumble-$pkgver/overlay_gl" || exit
