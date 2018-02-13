@@ -12,7 +12,7 @@ post_install() {
 
     ${bold}fish:
 
-        ${normal}Create function 'fish_user_key_bindings' in '"'$XDG_CONFIG_HOME'"/fish/functions/fish_user_key_bindings.fish' and insert following line into the function:
+        ${normal}If not exists, create function 'fish_user_key_bindings' in your config.fish and insert following line into the function:
             source /usr/share/sodalite/shell-integration.fish
 
     "

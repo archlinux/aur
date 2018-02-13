@@ -1,7 +1,7 @@
 pkgbase = sodalite-git
 	pkgdesc = Keyboard-driven terminal file navigator and launcher
 	pkgver = r45.ece430f
-	pkgrel = 2
+	pkgrel = 3
 	url = www.github.com/hnicke/sodalite
 	install = sodalite.install
 	arch = any
