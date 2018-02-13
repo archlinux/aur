@@ -1,6 +1,6 @@
 pkgbase = hyperledger-indy-plenum
 	pkgdesc = The heart of the distributed ledger technology inside Hyperledger Indy
-	pkgver = 1.2.230
+	pkgver = 1.2.244
 	pkgrel = 1
 	url = https://github.com/hyperledger/indy-plenum
 	arch = i686
@@ -28,8 +28,8 @@ pkgbase = hyperledger-indy-plenum
 	depends = python-semantic-version
 	depends = python-sortedcontainers
 	depends = python-ujson
-	source = https://github.com/hyperledger/indy-plenum/archive/1.2.230-master.tar.gz
-	md5sums = 009ffae9dd8c116a31aa4bfa70cbede4
+	source = https://github.com/hyperledger/indy-plenum/archive/1.2.244-master.tar.gz
+	md5sums = 27778bdd34fbee61ba95e4188fb8eadf
 
 pkgname = hyperledger-indy-plenum
 
