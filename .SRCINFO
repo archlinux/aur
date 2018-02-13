@@ -1,15 +1,15 @@
 pkgbase = sodalite-git
 	pkgdesc = Keyboard-driven terminal file navigator and launcher
 	pkgver = r45.ece430f
-	pkgrel = 1
+	pkgrel = 2
 	url = www.github.com/hnicke/sodalite
+	install = sodalite.install
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = awk
 	depends = python-binaryornot
 	depends = python-npyscreen-git
-	depends = sqlite
 	source = git+https://github.com/hnicke/sodalite.git
 	md5sums = SKIP
 
