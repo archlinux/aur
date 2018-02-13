@@ -1,6 +1,6 @@
 # Maintainer: James Hendrie <hendrie.james@gmail.com>
 pkgname=bin2dec
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 epoch=
 pkgdesc="Converts binary numbers to decimal integers or ASCII text"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("http://www.someplacedumb.net/content/progs/$pkgname/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('557ea228f812755145c79a817633585b')
+md5sums=('69994b8ebaa65903ce249db371b9817c')
 validpgpkeys=()
 
 build() {

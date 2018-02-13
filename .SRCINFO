@@ -1,6 +1,6 @@
 pkgbase = bin2dec
 	pkgdesc = Converts binary numbers to decimal integers or ASCII text
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/jahendrie/bin2dec
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = bin2dec
 	license = FreeBSD
 	makedepends = gcc
 	makedepends = make
-	source = http://www.someplacedumb.net/content/progs/bin2dec/bin2dec-1.5.tar.gz
-	md5sums = 557ea228f812755145c79a817633585b
+	source = http://www.someplacedumb.net/content/progs/bin2dec/bin2dec-1.6.tar.gz
+	md5sums = 69994b8ebaa65903ce249db371b9817c
 	depends_i686 = lib32-glibc
 	depends_x86_64 = glibc
 
