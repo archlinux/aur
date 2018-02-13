@@ -1,3 +1,4 @@
+# Maintainer: Parker Reed <parker.l.reed@gmail.com>
 # Valerio Pizzi (Pival81) <pival81@yahoo.com>
 
 pkgname=doomsday-bin
