@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=scratch-text-editor-git
-pkgver=r2477.0a016808
+pkgver=r2826.e3686e34
 pkgrel=1
 pkgdesc='The Pantheon Text Editor'
 arch=('x86_64')
@@ -11,8 +11,8 @@ groups=('pantheon-unstable')
 depends=('cairo' 'glib2' 'glibc' 'gtk3' 'gtksourceview3' 'libgee' 'libpeas'
          'libsoup' 'pango' 'zeitgeist'
          'libgranite.so')
-makedepends=('cmake' 'git' 'gobject-introspection' 'granite-git' 'gtkspell3'
-             'intltool' 'vala' 'vte3' 'webkit2gtk')
+makedepends=('git' 'gobject-introspection' 'granite-git' 'gtkspell3'
+             'intltool' 'meson' 'vala' 'vte3' 'webkit2gtk')
 optdepends=('gtkspell3: Spell Check extension'
             'vala: Outline extension'
             'vte3: Terminal extension'
@@ -30,29 +30,25 @@ pkgver() {
 }
 
 prepare() {
-  cd scratch-text-editor
-
   if [[ -d build ]]; then
     rm -rf build
   fi
   mkdir build
+
+  sed 's/libvala-0.36/libvala-0.38/' -i scratch-text-editor/plugins/outline/meson.build
 }
 
 build() {
-  cd scratch-text-editor/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DGSETTINGS_COMPILE='OFF'
-  make
+  arch-meson ../scratch-text-editor
+  ninja
 }
 
 package() {
-  cd scratch-text-editor/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
