@@ -9,7 +9,7 @@ url="https://github.com/pentix/$pkgname/"
 license=('GPL')
 depends=('qt5-base')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b25d89f27541c63ebcaf088847da0966394d4bc256880f9c83184dbd394f900f')
+sha256sums=('37303cf1c817cbe722ca18c0f2a01adfe9c07a01c55c0838cb459478fb564453')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -18,7 +18,15 @@ build() {
 }
 
 package() {
+	cd "$pkgname-$pkgver"
+	make
+	make DESTDIR="$pkgdir" install
+}
+
+install() {
 	install -Dm755 "$pkgname-$pkgver/$pkgname" -t "$pkgdir/usr/bin/"
 	install -Dm644 "$pkgname-$pkgver/ui/$pkgname.png" -t "/usr/share/pixmaps/"
 	install -Dm644 "$pkgname-$pkgver/ui/$pkgname.desktop" -t "/usr/share/applications/"
+
+	
 }
