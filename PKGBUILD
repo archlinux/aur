@@ -4,8 +4,8 @@
 # Contributor: Andre Wayand <aur-awl@awayand.sleepmail.com>
 
 pkgname='awl'
-pkgver='0.57'
-pkgrel=6
+pkgver='0.59'
+pkgrel=1
 pkgdesc="Andrew's php Web Libraries"
 arch=('any')
 url="https://gitlab.com/davical-project/awl/"
@@ -14,7 +14,7 @@ depends=('php')
 makedepends=('apigen' 'php-sqlite')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/davical-project/${pkgname}/repository/archive.tar.bz2?ref=r${pkgver}")
-sha512sums=('7db59244c0af706d8679bcaeb57e4e496867a2cb934f976d85fa6db6d4377c5d639a7d8d85b7f0cd67523c49a5a953864510fe8283e4f1b38f6cdb2799a1d4e4')
+sha512sums=('3f8aba5f8a2e2afbd7574a7a585815a504f5154ab8e345c1ebcc8e5a3428f0e0a8a0b9ae2b0c9aa553aff50baf136d12e7bc3bc985f91bd947678b689e4ef4de')
 
 prepare() {
     cd "${srcdir}"
