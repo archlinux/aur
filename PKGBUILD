@@ -22,12 +22,13 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-storage-python-plugin")
 
 pkgver=17.2.4
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
+makedepends=('libmariadbclient' 'postgresql-libs' 'sqlite3')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/$pkgver")
 md5sums=('SKIP')
 

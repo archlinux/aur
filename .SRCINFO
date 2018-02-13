@@ -1,12 +1,15 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
 	pkgver = 17.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
 	groups = bareos
 	license = AGPL3
+	makedepends = libmariadbclient
+	makedepends = postgresql-libs
+	makedepends = sqlite3
 	source = git+https://github.com/bareos/bareos.git#tag=Release/17.2.4
 	md5sums = SKIP
 
