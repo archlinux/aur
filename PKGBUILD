@@ -2,7 +2,7 @@
 
 pkgname=bit-babbler
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Read entropy from BitBabbler hardware RNG devices'
 arch=('i686' 'x86_64')
 url='http://www.bitbabbler.org'
@@ -28,6 +28,6 @@ package() {
 
   make install DESTDIR="${pkgdir}"
   install -Dm644 debian/bit-babbler-sysctl.conf "${pkgdir}"/etc/sysctl.d/bit-babbler-sysctl.conf
-  install -Dm644 debian/bit-babbler.udev "${pkgdir}"/etc/udev/rules.d/bit-babbler.rules
+  install -Dm644 debian/bit-babbler.udev "${pkgdir}"/usr/lib/udev/rules.d/60-bit-babbler.rules
   mv "${pkgdir}"/lib "${pkgdir}"/usr/lib
 }
