@@ -1,10 +1,9 @@
-# Maintainer: balwierz <user_name at the_most_popular_google_email_service>
 pkgbase=cura-bin
 pkgname=cura-bin
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker. This package contains both the binary Cura engine and the python front-end."
-depends=('python>=3.5' 'python-pyqt5' 'curaengine', 'uranium', 'libarcus-git', 'python-numpy', 'python-scipy', 'python-protobuf', 'python-pyserial', 'python-sip')
+depends=('python>=3.5' 'python-pyqt5' 'curaengine', 'uranium', 'libarcus-git', 'python-numpy', 'python-scipy', 'protobuf', 'python-pyserial', 'python-sip')
 
 replaces=('cura')
 conflicts=('libarcus' 'cura', 'cura-git')
