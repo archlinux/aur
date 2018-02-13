@@ -1,8 +1,8 @@
 # Maintainer: Manuel Coenen <manuel dot coenen at gmail dot com>
 _pkgbase=c2_gpio
 pkgname=c2_gpio-dkms-git
-pkgver=r62.2bc8b52
-pkgrel=2
+pkgver=r64.baf98d2
+pkgrel=1
 pkgdesc="Linux GPIO C2 Bus Master Implementation"
 arch=('any')
 url="https://github.com/dimhoff/si4010prog"
