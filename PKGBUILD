@@ -2,7 +2,7 @@
 
 pkgname=arduino-samd-core
 pkgver=1.6.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino support for SAMD21 series ARM 32 bit microcontrollers (used on Arduino M0 Pro, MKR1000, Arduino Zero etc.)"
 arch=('any')
 url="https://github.com/arduino/ArduinoCore-samd"
@@ -11,7 +11,7 @@ depends=('arm-none-eabi-gcc'
          'openocd')
 makedepends=('')
 optdepends=('arduino: Arduino IDE: IDE'
-            'avr-dude: M0 uploading support'
+            'avrdude: M0 uploading support'
             'bossa: Zero uploading support')
 options=(!strip)
 source=("https://github.com/arduino/ArduinoCore-samd/archive/1.6.16.tar.gz"
