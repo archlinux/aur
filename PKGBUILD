@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=kde-servicemenus-pastebinit
-pkgver=20151105
+pkgver=20180213
 pkgrel=1
 pkgdesc="A KDE service menu for sending files to pastebin like sites"
 url="https://aur.archlinux.org/packages/${pkgname}"
@@ -13,8 +13,5 @@ install=pastebinit.install
 sha256sums=('db67bbf3ab0c831504dd95622199025b5a63d6849d2b82aafe6dd3e009fdac4a')
 
 package() {
-    install -dm755 ${pkgdir}/usr/share/kservices5/ServiceMenus/ 
-    install -dm755 ${pkgdir}/usr/share/kde4/services/ServiceMenus/
-    install -D -m644 pastebinit.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus/
-    install -D -m644 pastebinit.desktop ${pkgdir}/usr/share/kde4/services/ServiceMenus/
+    install -Dm644 -t "${pkgdir}/usr/share/kservices5/ServiceMenus/"    ${srcdir}/pastebinit.desktop
 }

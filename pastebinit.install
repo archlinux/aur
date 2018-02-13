@@ -1,8 +1,7 @@
 post_install() {
     echo
     echo " In default this service will be sent text to paste2.org"
-    echo " If You want change it edit a files"
-    echo " /usr/share/kde4/services/ServiceMenus/pastebinit.desktop"
+    echo " If You want change it edit file"
     echo " /usr/share/kservices5/ServiceMenus/pastebinit.desktop"
     echo
 }
