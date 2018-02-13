@@ -1,19 +1,18 @@
 pkgbase = ruby-skinny
 	pkgdesc = Simple, upgradable Thin WebSockets.
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = http://github.com/sj26/skinny
 	arch = any
 	license = MIT
 	makedepends = rubygems
-	depends = ruby
+	depends = ruby-eventmachine-1.0
+	depends = ruby-thin-1.6
 	provides = $_gemname=$pkgver
 	conflicts = $_gemname
-	noextract = skinny-0.2.3.gem
-	source = http://gems.rubyforge.org/gems/skinny-0.2.3.gem
-	source = dependency.patch
-	md5sums = bf45ec49e628b05c88eac37fb9e8e8f1
-	md5sums = 0aac231bc310037862c31d422da3c651
+	noextract = skinny-0.2.4.gem
+	source = http://gems.rubyforge.org/gems/skinny-0.2.4.gem
+	md5sums = a4eaef212a0d09644133321f60ffec94
 
 pkgname = ruby-skinny
 
