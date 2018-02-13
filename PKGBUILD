@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-sdk-git
-pkgver=1.2a.r44.gbb93dc5
-pkgrel=2
+pkgver=1.2a.r47.gc2ad93a
+pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -17,14 +17,12 @@ makedepends=(
     # official repositories:
         'git' 'perl' 'cmake'
     # AUR:
-        'git-lfs' 'gcc49'
+        'git-lfs'
 )
 provides=('intel-media-sdk' 'libmfx')
 conflicts=('intel-media-sdk' 'libmfx')
-source=('intel-media-sdk-change-gcc-version.patch'
-        'intel-media-sdk-detect-intel-opencl.patch')
-sha256sums=('d9fc114d06624504891b545df2913b01d4b07edfb99512388490eae40f9b9ab7'
-            '689ebc270532c0e1e5132d39898ff2a93fe3483a5a2673aea396a24fc07ad24c')
+source=('intel-media-sdk-detect-intel-opencl.patch')
+sha256sums=('689ebc270532c0e1e5132d39898ff2a93fe3483a5a2673aea396a24fc07ad24c')
 
 prepare() {
     # makepkg does not support cloning git-lfs repositories
@@ -40,8 +38,7 @@ prepare() {
         cd "$pkgname"
     fi
     
-    for _patch in intel-media-sdk-change-gcc-version.patch \
-                  intel-media-sdk-detect-intel-opencl.patch
+    for _patch in intel-media-sdk-detect-intel-opencl.patch
     do
         printf '%s\n' "Checking patch '${_patch}'"
         if patch -Np1 --dry-run -i "${srcdir}/${_patch}" >/dev/null
