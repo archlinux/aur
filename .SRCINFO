@@ -1,7 +1,7 @@
 pkgbase = seafile-server
 	pkgdesc = Seafile is an online file storage and collaboration tool
 	pkgver = 6.2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/haiwen/seafile-server
 	changelog = ChangeLog
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = seafile-server
 	license = AGPL3
 	makedepends = vala
 	makedepends = intltool
-	depends = ccnet-server
+	depends = ccnet-server=6.2.5
 	depends = libevhtp-seafile
 	depends = libarchive
 	depends = wget
