@@ -11,19 +11,19 @@
 pkgname=gnucash-git
 _pkgname=gnucash
 __pkgname=Gnucash
-pkgver=2.7.3
-#.r1.g310442ffe
+pkgver=2.7.4
+#.r4.gfb7426b60
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application - GIT version"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
 depends=('aqbanking' 'libdbi-drivers' 'libgnomecanvas' 'boost-libs' \
-	 'slib' 'webkit2gtk' 'libgnome-keyring' 'sqlite2')
+	 'slib' 'webkit2gtk')
 optdepends=('evince: for print preview'
 	    'perl-date-manip: for stock information lookups'
 	    'perl-finance-quote: for stock information lookups')
-makedepends=('git' 'intltool' 'boost' 'swig' 'gtest' 'gmock' 'gconf')
+makedepends=('git' 'intltool' 'boost' 'swig' 'gtest' 'gmock' 'cmake' 'sqlite3' 'libmariadbclient' 'postgresql-libs')
 options=('!emptydirs')
 conflicts=('gnucash' 'gnucash-devel' 'gnucash-latest' 'gnucash-gtk3-git' 'gnucash-python' 'gnucash-xbt')
 provides=('gnucash')
@@ -39,25 +39,20 @@ pkgver() {
 	)
 }
 
-prepare() {
-	cd "$srcdir/$pkgname"
-
-	# add -O to the boost c++11 compatibility detection so that -D_FORTIFY_SOURCE doesn't cause an error
-	sed -i '/CXXFLAGS="-Werror -std=gnu++11 $BOOST_CPPFLAGS"/s/-Werror/-Werror -O/' configure.ac
-
-	./autogen.sh
-}
-
 build() {
 	cd "$srcdir/$pkgname"
 
-	# Consider using `sed` for this stuff if it is still needed.
+	mkdir -p build
+	cd build
+	cmake .. \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
+		-DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+		-DWITH_OFX=ON \
+		-DWITH_AQBANKING=ON \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo
 
-	./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
-	  --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking \
-	  --disable-error-on-warning	
-
-	make
+	make VERBOSE=1
 }
 
 #check() {
@@ -68,22 +63,16 @@ build() {
 #}
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname/build"
 
-	make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install
 
-	cd libgnucash/doc/design
-
-	make DESTDIR="${pkgdir}" install-info
-
-	install -dm755 "${pkgdir}/usr/share/gconf/schemas"
-	gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/gnucash.schemas" --domain gnucash \
-	  "${pkgdir}"/etc/gconf/schemas/*.schemas
-	rm -f "${pkgdir}"/etc/gconf/schemas/*.schemas
+	# TODO: tell cmake not to make this file in the first place
+	rm -f "${pkgdir}"/usr/share/glib-2.0/schemas/*.compiled
 
 	# Delete the gnucash-valgrind executable because the source files
-	  # are not included with the package and the executable is hardlinked
-	  # to the location that it was built at.
+	# are not included with the package and the executable is hardlinked
+	# to the location that it was built at.
 	rm -f "${pkgdir}"/usr/bin/gnucash-valgrind
 }
 md5sums=('SKIP')
