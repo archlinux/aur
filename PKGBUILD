@@ -4,11 +4,11 @@
 # Based on package by: Denis Saintilma <1068des@gmail.com>
 
 pkgname=tautulli-beta
-pkgver=2.0.17
+pkgver=2.0.18
 pkgrel=1
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
-url="https://github.com/JonnyWong16/plexpy"
+url="https://github.com/Tautulli/Tautulli"
 license=('GPL')
 makedepends=('curl')
 depends=('python2')
@@ -16,27 +16,27 @@ conflicts=('plexpy-git' 'tautulli' 'plexpy')
 provides=("tautulli")
 replaces=("plexpy")
 install='tautulli.install'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/JonnyWong16/plexpy/archive/v$pkgver-beta.tar.gz" 
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Tautulli/Tautulli/archive/v$pkgver-beta.tar.gz" 
         'tautulli.service'
         'tautulli.install')
-sha256sums=('533bab27150f902bb68e58c1f1058d65363d60737f975293da24600747c2aed2'
-            '2e80d7e628b4b87c44db209360aecc0babbad3b214750da08c0c39021d330fb8'
-            'd64f63ecada4d08349cd6bd1805416d7d542b345e7c2d6d6e02e0e7615bb2923')
+sha256sums=('a20ee2910892ae32d9579331fff762a74efed13f5e40f2a11a6679faab10a6c6'
+            '7aaf4461f0798bf12553eb647b8ee6b0553b38e23673cf78f5514e6d416512f4'
+            '5cb8a2b3b5428fb5485e2163c27f1df2d0f96410d0495589937d7e17b5d0abad')
 
 prepare() {
-	echo "v${pkgver}" > "${srcdir}/plexpy-${pkgver}-beta/version.txt"
+	echo "v${pkgver}" > "${srcdir}/Tautulli-${pkgver}-beta/version.txt"
 }
 
 package() {
-	cd "${srcdir}/plexpy-${pkgver}-beta"
-	install -Dm755 PlexPy.py "${pkgdir}/opt/plexpy/PlexPy.py"
-	install -Dm644 pylintrc  "${pkgdir}/opt/plexpy/"
-	install -Dm644 CHANGELOG.md "${pkgdir}/opt/plexpy/"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/plexpy/LICENSE"
+	cd "${srcdir}/Tautulli-${pkgver}-beta"
+	install -Dm755 PlexPy.py "${pkgdir}/opt/tautulli/PlexPy.py"
+	install -Dm644 pylintrc  "${pkgdir}/opt/tautulli/"
+	install -Dm644 CHANGELOG.md "${pkgdir}/opt/tautulli/"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/tautulli/LICENSE"
 
-	cp -a data/ lib/ plexpy/ "${pkgdir}/opt/plexpy/"
+	cp -a data/ lib/ plexpy/ "${pkgdir}/opt/tautulli/"
 
 	install -Dm644 "${srcdir}/tautulli.service" "${pkgdir}/usr/lib/systemd/system/tautulli.service"
-	install -Dm644 "version.txt" "${pkgdir}/opt/plexpy/"
+	install -Dm644 "version.txt" "${pkgdir}/opt/tautulli/"
 }
 
