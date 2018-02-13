@@ -4,8 +4,8 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mingw-w64-l-smash
-pkgver=2.9.1
-pkgrel=3
+pkgver=2.14.5
+pkgrel=1
 pkgdesc='MP4 muxer and other tools'
 arch=('any')
 url='https://github.com/l-smash/l-smash'
@@ -14,24 +14,32 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'fakeroot')
 options=(!strip !buildflags staticlibs)
 source=("l-smash-${pkgver}.tar.gz::https://github.com/l-smash/l-smash/archive/v${pkgver}.tar.gz")
-sha256sums=('17f24fc8bffba753f8c628f1732fc3581b80362341274747ef6fb96af1cac45c')
+sha256sums=('e6f7c31de684f4b89ee27e5cd6262bf96f2a5b117ba938d2d606cf6220f05935')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   for _arch in ${_architectures}; do
-    mkdir -p ${srcdir}/build-${_arch} && cd ${srcdir}/build-${_arch}
+    mkdir -p ${srcdir}/l-smash-${pkgver}/build-${_arch} && cd ${srcdir}/l-smash-${pkgver}/build-${_arch}
+
+    mingw_c_flags="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+    LDFLAGS=""
+    export CFLAGS="$mingw_c_flags $CFLAGS"
+    export CXXFLAGS="$mingw_c_flags $CXXFLAGS"
 
     ${srcdir}/l-smash-${pkgver}/configure \
        --prefix=/usr/${_arch} \
        --cross-prefix=${_arch}- \
-       --enable-shared
+       --enable-shared \
+       --extra-cflags="$CFLAGS" \
+       --extra-ldflags="$LDFLAGS"
+
     make
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd ${srcdir}/build-${_arch}
+    cd ${srcdir}/l-smash-${pkgver}/build-${_arch}
 
     make DESTDIR="${pkgdir}" install
 
