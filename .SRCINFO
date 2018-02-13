@@ -1,6 +1,6 @@
 pkgbase = obbrowser
 	pkgdesc = Recursively browse the filesystem through openbox3 pipe menus. (with icons)
-	pkgver = 0.08
+	pkgver = 0.09
 	pkgrel = 1
 	url = https://github.com/trizen/obbrowser
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = obbrowser
 	depends = perl-data-dump
 	depends = gtk2-perl
 	depends = perl-file-mimeinfo
-	source = obbrowser-0.08.tar.gz::https://github.com/trizen/obbrowser/archive/0.08.tar.gz
-	sha256sums = 639897c0c201fe5ae7bae5d10e2d57cd1610ecefe7e60a47b2f01c79401af179
+	source = obbrowser-0.09.tar.gz::https://github.com/trizen/obbrowser/archive/0.09.tar.gz
+	sha256sums = 751bb8ec806198dbcd37fee133c8adeed02937e3bea39f142ef315621f392ade
 
 pkgname = obbrowser
 
