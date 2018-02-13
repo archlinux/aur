@@ -15,7 +15,7 @@ post_upgrade(){
         if [ ! -d `grep tautulli /etc/passwd | cut -d ":" -f6` ]; then
                 usermod -d /opt/tautulli tautulli >/dev/null
         fi
-        if [ -d '/var/lib/plexpy' ]; then
+        if [ -d '/var/lib/plexpy' ] && [ ! -d '/var/lib/tautulli' ]; then
                 mv '/var/lib/plexpy' '/var/lib/tautulli'
                 sed 's#\/var\/lib\/plexpy#\/var\/lib\/tautulli#g' -i /var/lib/tautulli/config.ini
         fi
