@@ -39,4 +39,4 @@ package() {
     install -m644 -D COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
 
-sha256sums=('f3c36bf8370c38105f44c377b41d0fafae22ef27a8c8ec0c2d8f3bd31e4c56e4')
+sha256sums=('d58f07fd0e229a84e76c435d488df8eff4e85726360064d4f56ebc0d088d7772')

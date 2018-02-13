@@ -17,7 +17,7 @@ pkgbase = libva-intel-driver-g45-h264
 	conflicts = libva-intel-driver
 	replaces = libva-intel-driver
 	source = https://bitbucket.org/alium/g45-h264/downloads/intel-driver-g45-h264-2.1.0.tar.gz
-	sha256sums = f3c36bf8370c38105f44c377b41d0fafae22ef27a8c8ec0c2d8f3bd31e4c56e4
+	sha256sums = d58f07fd0e229a84e76c435d488df8eff4e85726360064d4f56ebc0d088d7772
 
 pkgname = libva-intel-driver-g45-h264
 
