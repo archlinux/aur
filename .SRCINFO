@@ -6,6 +6,7 @@ pkgbase = mingw-w64-librsvg
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-rust
 	makedepends = gdk-pixbuf2
 	makedepends = intltool
 	makedepends = setconf

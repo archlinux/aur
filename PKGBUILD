@@ -8,7 +8,7 @@ pkgdesc="A SVG viewing library (mingw-w64)"
 arch=(any)
 url="https://wiki.gnome.org/action/show/Projects/LibRsvg"
 license=("LGPL")
-makedepends=(mingw-w64-configure gdk-pixbuf2 intltool setconf)
+makedepends=(mingw-w64-configure mingw-w64-rust gdk-pixbuf2 intltool setconf)
 depends=(mingw-w64-gdk-pixbuf2 mingw-w64-pango mingw-w64-libcroco)
 options=(staticlibs !strip !buildflags)
 source=("https://download.gnome.org/sources/librsvg/${pkgver%.*}/librsvg-$pkgver.tar.xz"
@@ -35,6 +35,15 @@ prepare() {
 }
 
 build() {
+  if [[ -d "$RUST_PATH" ]] ; then
+    export PATH="$RUST_PATH:$PATH"
+  else
+    export PATH="/opt/rust/bin:$PATH"
+  fi
+  if [[ ! -d "$CARGO_HOME" ]] ; then
+    export CARGO_HOME="/opt/rust/cargo"
+  fi
+
   cd "${srcdir}/librsvg-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
