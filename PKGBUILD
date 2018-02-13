@@ -1,7 +1,9 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-rstr
-pkgver=2.2.4
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="Generate random strings in Python"
 arch=('any')
@@ -9,21 +11,15 @@ depends=('python')
 makedepends=('python-setuptools')
 url="https://bitbucket.org/leapfrogdevelopment/rstr"
 license=('BSD')
-options=(!emptydirs)
-source=(https://pypi.python.org/packages/34/73/bf268029482255aa125f015baab1522a22ad201ea5e324038fb542bc3706/rstr-2.2.4.tar.gz)
-md5sums=('26ac863c4df7e5b75d8a9315992d9dc8')
-sha256sums=('64a086a7449a576de7f40327f8cd0a7752efbbb298e65dc68363ee7db0a1c8cf')
+source=(https://pypi.python.org/packages/be/52/f87d6a9c691329dc71eaa6263f63cc262bd818df89e2dc981720db9dc9c5/rstr-${pkgver}.tar.gz)
 
 build() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg2 'Building...'
+  cd "${pkgname#python-}-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg2 'Installing...'
+  cd "${pkgname#python-}-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
 }
+md5sums=('be2d1a655e3adb5d55db981846fe9761')
