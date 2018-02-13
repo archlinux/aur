@@ -1,7 +1,7 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname=ruby-multi_xml
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides swappable XML backends utilizing LibXML, Nokogiri, Ox, or REXML."
 arch=('any')
 url="https://rubygems.org/gems/multi_xml"
@@ -18,7 +18,6 @@ package() {
   gem install \
     --no-user-install \
     --ignore-dependencies \
-    -i "$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')" \
+    -i "$pkgdir$(ruby -e'puts Gem.default_dir')" \
     ${pkgname#*-}-$pkgver.gem
 }
-
