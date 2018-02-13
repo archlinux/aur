@@ -15,7 +15,7 @@ depends=('python2>=2.7')
 makedepends=("python2-setuptools")
 options=("strip")
 source=("https://github.com/csparpa/pyowm/archive/$pkgver.tar.gz")
-md5sums=('2628c6364530d54d39a09f607584c9b6')
+md5sums=('e0c1e3a435e1ea3d6de409b6c8232788')
 
 prepare() {
 	cd "pyowm-$pkgver"
