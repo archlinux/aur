@@ -1,22 +1,24 @@
 pkgbase = fluxgui
-	pkgdesc = (f.lux for X) Changes monitor color temperature based on time of day and position in world to ease eye strain.
-	pkgver = 1.1.8
-	pkgrel = 12
+	pkgdesc = Better lighting for Linux. Open source GUI for xflux
+	pkgver = 1.1.10
+	pkgrel = 1
 	url = https://justgetflux.com/
-	install = fluxgui.install
+	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = python2-pip
+	depends = hicolor-icon-theme
 	depends = libindicator-gtk2
-	depends = libdbusmenu-glib
-	depends = libdbusmenu-gtk2
 	depends = libappindicator-gtk2
+	depends = python2-libappindicator
 	depends = python2-pexpect
 	depends = python2-xdg
 	depends = python2-gconf
+	provides = fluxgui
 	conflicts = xflux
-	source = git://github.com/xflux-gui/xflux-gui
-	md5sums = SKIP
+	conflicts = xflux-gui-git
+	source = https://github.com/xflux-gui/fluxgui/archive/v1.1.10.tar.gz
+	sha256sums = 04f4205f996e4e8019f48403c4a99804bdb681bd5d12149f8e46be2c77000868
 
 pkgname = fluxgui
 
