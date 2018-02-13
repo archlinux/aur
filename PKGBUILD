@@ -14,8 +14,7 @@ source=('git://github.com/muhammadsayuti/lightdm-webkit-theme-luminos.git')
 provides=('lightdm-webkit-theme-luminos')
 conflicts=('lightdm-webkit-theme-luminos')
 md5sums=('SKIP')
-_gitroot="git://github.com/muhammadsayuti/lightdm-webkit-theme-luminos.git"
-_pkgname="lightdm-webkit-theme-luminos"
+_gitname="lightdm-webkit-theme-luminos"
 
 
 package()
@@ -23,7 +22,7 @@ package()
   cd ${pkgdir}
   mkdir -p usr/share/lightdm-webkit/themes
   cd usr/share/lightdm-webkit/themes
-  cp -dpr --no-preserve=ownership ${srcdir}/${_pkgname} ${_pkgname}
+  cp -dpr --no-preserve=ownership ${srcdir}/${_gitname} ${_pkgname}
   msg "Removing .git files"
   cd ${_pkgname}
   rm -rf .git
