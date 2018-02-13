@@ -1,0 +1,14 @@
+pkgbase = ps3xport-git
+	pkgdesc = PS3 backup extractor
+	pkgver = r70.95479d3
+	pkgrel = 1
+	url = https://github.com/kakaroto/ps3xport
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	source = ps3xport::git+https://github.com/kakaroto/ps3xport
+	md5sums = SKIP
+
+pkgname = ps3xport-git
+
