@@ -1,7 +1,7 @@
 # Maintainer: unstartdev <guo.yongan@outlook.vom>
 pkgname=ioscheduler-aur
 pkgver=0.1b1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Select ioscheduler"
 arch=('any')
