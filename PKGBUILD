@@ -12,10 +12,10 @@ arch=('i686' 'x86_64')
 url="http://miniupnp.free.fr"
 license=('BSD')
 source=("http://miniupnp.free.fr/files/${pkgbase#python-}-$pkgver.tar.gz")
+makedepends=('python2-setuptools' 'python-setuptools')
 
 package_python2-miniupnpc() {
 	depends=('python2')
-	makedepends=('python2-setuptools')
 
 	cd $srcdir/${pkgbase#python-}-$pkgver
 
@@ -26,7 +26,6 @@ package_python2-miniupnpc() {
 
 package_python-miniupnpc() {
 	depends=('python')
-	makedepends=('python-setuptools')
 
 	cd $srcdir/${pkgbase#python-}-$pkgver
 

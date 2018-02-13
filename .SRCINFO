@@ -6,6 +6,8 @@ pkgbase = python-miniupnpc
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	source = http://miniupnp.free.fr/files/miniupnpc-2.0.20180203.tar.gz
 	md5sums = 48fd9c899f77e898c74d2166590da076
 
