@@ -6,12 +6,12 @@ pkgver=1.4.0.7
 pkgrel=6
 pkgdesc="Create and share your own interactive stories, games, music and art"
 arch=('x86_64')
-url="http://scratch.mit.edu"
+url="https://scratch.mit.edu"
 license=('GPL2')
 depends=('squeak-vm' 'shared-mime-info' 'desktop-file-utils' 'pango'
          'gtk-update-icon-cache')
 backup=('usr/lib/scratch/Scratch.ini')
-source=(http://download.scratch.mit.edu/$pkgname-$pkgver.src.tar.gz)
+source=(https://download.scratch.mit.edu/$pkgname-$pkgver.src.tar.gz)
 md5sums=('f948e9e6de3ec9c7c7b4cc2a1975eb5a')
 
 prepare() {
