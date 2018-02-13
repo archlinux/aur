@@ -1,5 +1,5 @@
 pkgname=passff-host
-pkgver=1.0.7linux
+pkgver=1.1
 pkgrel=1
 pkgdesc="PassFF native messaging host application for Firefox, Chromium, Chrome, Vivaldi"
 pkgurl=https://github.com/passff/passff
