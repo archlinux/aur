@@ -7,7 +7,7 @@ pkgname=hdfview-beta
 _pkgname=HDFView
 __pkgname=${pkgname%-beta}
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a GUI browser for reading hdf5 files (created with versions up to 1.10)"
 arch=('i686' 'x86_64')
 url="https://support.hdfgroup.org/products/java/release/hdfview3.html"
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd "${__pkgname}-${pkgver}"
-  HDFLIBS=/usr HDF5LIBS=/usr ant package
+  HDFLIBS=/opt/hdf4 HDF5LIBS=/usr ant package
 }
 
 package() {

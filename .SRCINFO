@@ -1,7 +1,7 @@
 pkgbase = hdfview-beta
 	pkgdesc = a GUI browser for reading hdf5 files (created with versions up to 1.10)
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.hdfgroup.org/products/java/release/hdfview3.html
 	arch = i686
 	arch = x86_64
