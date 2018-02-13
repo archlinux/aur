@@ -2,7 +2,7 @@
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 
 pkgname=ocaml-batteries-git
-pkgver=20171204
+pkgver=20180122
 pkgrel=1
 pkgdesc="Batteries Included for OCaml"
 arch=('i686' 'x86_64')
@@ -13,35 +13,18 @@ makedepends=('ocamlbuild')
 optdepends=('ocaml-bisect')
 provides=('ocaml-batteries')
 conflicts=('ocaml-batteries')
+source=("${pkgname}::git://github.com/ocaml-batteries-team/batteries-included.git")
+md5sums=('SKIP')
 install=$pkgname.install
 
-_gitroot="git://github.com/ocaml-batteries-team/batteries-included.git"
-_gitname="batteries-included"
-
 pkgver () {
-  cd "$srcdir/$_gitname"
+  cd "$pkgname"
   git log -1 --pretty=format:%cd --date=short | sed 's/-//g'
 }
 
 build () {
-  cd "$srcdir"
+  cd "$pkgname"
 
-  msg "Connecting to GIT server..."
-
-  if [ -d "$srcdir/$_gitname" ]; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  cp -r "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  # build
   make all || return 1
   rm -f *.cma *.cmi *.cmo
   make doc || return 1
@@ -51,7 +34,7 @@ package () {
   destdir="$pkgdir/$(ocamlfind printconf destdir)"
   docdir="$pkgdir/usr/share/doc/ocaml-batteries"
 
-  cd "$srcdir/$_gitname-build"
+  cd "$pkgname"
 
   mkdir -p "$destdir/batteries" "$destdir/stublibs" || return 1
   make DESTDIR="$destdir/" OCAMLFIND_DESTDIR="$destdir/" install || return 1
