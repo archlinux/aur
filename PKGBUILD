@@ -22,7 +22,7 @@ pkgname=('kodi-gb-git' 'kodi-gb-eventclients-git'  'kodi-gb-tools-texturepacker-
          'kodi-gb-addon-game-libretro-git' 'kodi-gb-addon-game-libretro-snes9x2010-git' 'kodi-gb-addon-game-libretro-genplus-git')
 _gitname='xbmc'
 pkgver=18.0.r48226.3837206eaa
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -224,7 +224,7 @@ package_kodi-gb-dev-git() {
 
 # kodi-gb-addon-peripheral-joystick-git
 package_kodi-gb-addon-peripheral-joystick-git() {
-  pkgdesc=""
+  pkgdesc="Joystick support for Kodi"
   depends=('kodi')
   groups=('kodi-addons' 'kodi-addons-peripheral')
   

@@ -1,6 +1,6 @@
 pkgbase = kodi-gb-git
 	pkgver = 18.0.r48226.3837206eaa
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kodi.tv
 	arch = i686
 	arch = x86_64
@@ -115,7 +115,7 @@ pkgname = kodi-gb-dev-git
 	conflicts = kodi-dev-git
 
 pkgname = kodi-gb-addon-peripheral-joystick-git
-	pkgdesc = 
+	pkgdesc = Joystick support for Kodi
 	groups = kodi-addons
 	groups = kodi-addons-peripheral
 	depends = kodi
