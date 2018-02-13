@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-music-git
-pkgver=r2949.5385ace5
+pkgver=r3342.f2e6c45e
 pkgrel=1
 pkgdesc='The Pantheon Music Player'
 arch=('x86_64')
@@ -12,16 +12,15 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gst-plugins-base-libs'
          'libgpod' 'libgsignon-glib' 'libpeas' 'libsoup' 'pango' 'taglib'
          'zeitgeist'
          'libgranite.so')
-makedepends=('cmake' 'git' 'gobject-introspection' 'granite-git' 'intltool'
-             'vala')
+makedepends=('appstream' 'git' 'gobject-introspection' 'granite-git' 'intltool'
+             'meson' 'vala')
 optdepends=('gst-plugins-base: "Base" plugin libraries'
             'gst-plugins-good: "Good" plugin libraries'
             'gst-plugins-bad: "Bad" plugin libraries'
             'gst-plugins-ugly: "Ugly" plugin libraries'
             'gst-libav: Libav plugin')
 provides=('pantheon-music')
-conflicts=('noise' 'noise-player' 'pantheon-music')
-replaces=('noise-player-bzr')
+conflicts=('pantheon-music')
 source=('pantheon-music::git+https://github.com/elementary/music.git'
         'mesa-demos-conflict.patch'
         'noise-install-dirs.patch')
@@ -36,11 +35,6 @@ pkgver() {
 }
 
 prepare() {
-  cd pantheon-music
-
-  patch -Np1 -i ../mesa-demos-conflict.patch
-  patch -Np1 -i ../noise-install-dirs.patch
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -48,20 +42,16 @@ prepare() {
 }
 
 build() {
-  cd pantheon-music/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DGSETTINGS_COMPILE='FALSE'
-  make -j1
+  arch-meson ../pantheon-music
+  ninja
 }
 
 package() {
-  cd pantheon-music/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
