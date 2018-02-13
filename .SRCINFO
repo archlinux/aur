@@ -1,0 +1,22 @@
+pkgbase = python-keepmenu-git
+	pkgdesc = Read Keepass databases via dmenu/rofi
+	pkgver = r8.7418838
+	pkgrel = 1
+	url = https://github.com/firecat53/keepmenu
+	install = python-keepmenu.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pykeepass
+	depends = python-pygpgme
+	depends = python-pyuserinput-git
+	optdepends = dmenu: either dmenu or rofi is required
+	optdepends = rofi: either dmenu or rofi is required
+	provides = python-keepmenu
+	conflicts = python-keepmenu
+	source = git://github.com/firecat53/keepmenu.git
+	md5sums = SKIP
+
+pkgname = python-keepmenu-git
+
