@@ -4,7 +4,10 @@ post_install()    {
 	echo
 	echo "==> Configure ${_pkgname} by editing /etc/default/${_pkgname}"
 	echo "==> You can also configure udev rules at"
-	echo "==> /usr/lib/etc/udev/rules.d/98-aclidswitch.rules"
-	echo "==> /usr/lib/etc/udev/rules.d/99-low-battery-action.rules"
+	echo "==> /usr/lib/udev/rules.d/98-aclidswitch.rules"
+	echo "==> /usr/lib/udev/rules.d/99-low-battery-action.rules"
 	echo
+
+	sed -i "s|local/|""|g" $pkgdir/usr/lib/udev/rules.d/99-low-battery-action.rules
+	sed -i "s|local/|""|g" $pkgdir/usr/lib/udev/rules.d/98-aclidswitch.rules
 }
