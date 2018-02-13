@@ -1,0 +1,22 @@
+pkgbase = ccminer-allium-git
+	pkgdesc = Cryptocurrency miner for nVidia GPUs using CUDA (with support for Allium algorithm used by Garlicoin).
+	pkgver = r925.81931e3
+	pkgrel = 1
+	url = http://ccminer.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cuda
+	makedepends = nvidia-utils
+	depends = cuda
+	depends = curl
+	depends = jansson
+	depends = nvidia-utils
+	provides = ccminer
+	conflicts = ccminer
+	options = !emptydirs
+	source = git+https://github.com/lenis0012/ccminer/
+	sha256sums = SKIP
+
+pkgname = ccminer-allium-git
+
