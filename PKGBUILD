@@ -2,8 +2,8 @@
 
 pkgname=pylon
 pkgdesc="Basler camera Software suite"
-pkgver=5.0.9.10389
-pkgrel=2
+pkgver=5.0.11.10914
+pkgrel=1
 arch=(x86_64)
 license=(custom)
 url=http://www.baslerweb.com/en/products/software
@@ -16,7 +16,7 @@ source=(
 	"69-basler-cameras.rules"
 	"LICENSE"
 )
-sha512sums=('677c2062d57f86131581bfd3163c00a044585e2adc503912eee2ed741945fbc15d3e1b26385391d66e12050c42d297a7d7f01fbbc6b63135fcac30a1fefe94c6'
+sha512sums=('706752d455aefecf4f645e7bac7f35de351664e12f69f29e47d9c1c543f2f149cb8053ede7bdc1e1779bd26334c24cb21c6e56476df19b667ea700af41e11096'
             'a3348a3fb03228b031be9ff805663fc8ee164ff69869a88f466689645135757a6cb6b823d1a2a01f4da3bb0f06ec2555d90d3d1e1cdcdc275f6604940f24d500'
             'bce692263803b235c25e734049fc72e61f0df841fcee0bb238772c4b18ec209f58f6790457c4f20e75e6daf8de45cb091f04ad34d7c20e11f3d97435be816a6d')
 
