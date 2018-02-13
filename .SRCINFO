@@ -1,6 +1,6 @@
 pkgbase = ouroboros-git
 	pkgdesc = Inter-Process Communications (IPC) subsystem for POSIX operating systems
-	pkgver = 0.9.9.r0.g544ad6f
+	pkgver = 0.10.0.r0.ge095d0a
 	pkgrel = 1
 	url = https://ouroboros.ilabt.imec.be
 	arch = x86_64
