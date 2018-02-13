@@ -1,6 +1,6 @@
 # Maintainer: bb010g <bb010g@gmail.com>
 pkgname=betterdiscordctl-git
-pkgver=r3.be6d4c1
+pkgver=r10.8c5008b
 pkgrel=1
 pkgdesc="A utility for managing BetterDiscord on Linux"
 arch=('any')
@@ -13,8 +13,10 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/bb010g/betterdiscordctl.git')
 md5sums=('SKIP')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  sed -i 's/^DISABLE_UPGRADE=$/DISABLE_UPGRADE=yes/' betterdiscordctl
+}
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
