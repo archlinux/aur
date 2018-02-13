@@ -24,6 +24,20 @@ sha256sums_x86_64=('e2532473a3843f859c0207f91483dd4a156a167e5244e7a7fd605578e851
 sha256sums_i686=('536060e3cc75b54c1f08c1c02aa100a6ba9c82b2a60adc6c6ef939e0c73c72da'
                  '4f3481370b94790431b71538e9d556f96272689f1da228f08245ffcd604175b8')
 
+pkgver() {
+  local v0 v1 v2
+  v0=()
+  v1=(`tr '.' ' ' <<< "${_pkgver_print}"`)
+  v2=(`tr '.' ' ' <<< "${_pkgver_scan}"`)
+
+  local i
+  for i in `seq 0 $(("${#v1[@]}" - 1))`; do
+    v0+=($(("${v1[$i]}" + "${v2[$i]}")))
+  done
+
+  (IFS=.; echo "${v0[*]}")
+}
+
 package() {
   findhere() { find . -mindepth 1 -maxdepth 1 -name "$1"; }
   tohex() { od -An -tx1 -v | tr '\n' ' ' | sed 's/ //g'; }
