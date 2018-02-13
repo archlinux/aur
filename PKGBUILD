@@ -11,11 +11,8 @@ url="https://github.com/Ultimaker/Cura"
 license=('AGPLv3')
 arch=('x86_64')
 debver=3.2.0~201802101704~rev2728~pkg200~ubuntu18.04.1
-sha1sums=('45c9290bca87299ffc627d6b809360eac4c722da' '87e068e5706ed99110ef71dd57fe52ee1b783b53')
-if [ "$CARCH" == x86_64 ]; then
-	source+=(https://launchpad.net/~thopiekar/+archive/ubuntu/cura/+build/14333835/+files/cura_${debver}_all.deb)
-	sha256sums+=('44949e64355f526ccde6f111c2bc339c041a52c218e153f3fead85e50d420998')
-fi
+source+=(https://launchpad.net/~thopiekar/+archive/ubuntu/cura/+build/14333835/+files/cura_${debver}_all.deb)
+sha256sums+=('44949e64355f526ccde6f111c2bc339c041a52c218e153f3fead85e50d420998')
 
 install=.install
 
