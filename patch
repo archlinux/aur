@@ -1,18 +1,12 @@
 --- a/indy_node/utils/node_control_tool.py	2018-01-30 16:28:34.000000000 +0100
 +++ b/indy_node/utils/node_control_tool.py	2018-01-30 17:39:24.603319237 +0100
-@@ -1,4 +1,5 @@
- import os
-+import platform
- import re
- import select
- import shutil
-@@ -272,7 +273,8 @@
+@@ -272,7 +271,8 @@ class NodeControlTool:
                                timeout=timeout)
  
      def start(self):
 -        self._hold_packages()
-+    	if 'ubuntu' in platform.platform().lower():
-+	self._hold_packages()
++        if shutil.which("apt-mark"):
++            self._hold_packages()
  
          # Sockets from which we expect to read
          readers = [self.server]

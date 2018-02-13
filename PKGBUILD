@@ -2,7 +2,7 @@
 
 _pkgname=indy-node
 pkgname=hyperledger-${_pkgname}
-pkgver=1.2.289
+pkgver=1.3.307
 pkgrel=1
 pkgdesc="A self-sovereign identity ecosystem on top of a distributed ledger. It is the core project for Indy"
 arch=(i686 x86_64)
@@ -14,27 +14,27 @@ makedepends=('python')
 source=("https://github.com/hyperledger/${_pkgname}/archive/$pkgver-master.tar.gz"
 	indy-node.conf
 	indy-node-control.service
-	indy-node.service  
-	init_indy_node  
+	indy-node.service
+	init_indy_node
 	node_control.conf
 	patch
 )
 
 package() {
-  cd $srcdir/${_pkgname}-$pkgver-master
-  patch -Np1 -i ../patch
-  python setup.py install -O1 --root="$pkgdir"
+	cd $srcdir/${_pkgname}-$pkgver-master
+	patch -Np1 -i ../patch
+	python setup.py install -O1 --root="$pkgdir"
 
-# dirs to be created
-  node_dirs="/etc/indy /var/log/indy /usr/lib/systemd/system /usr/lib/sysusers.d"
+	# dirs to be created
+	node_dirs="/etc/indy /var/log/indy /usr/lib/systemd/system /usr/lib/sysusers.d"
 
-# create dirs
-  for dr in $node_dirs
-  do
-      mkdir -p $pkgdir$dr
-  done
+	# create dirs
+	for dr in $node_dirs
+	do
+		mkdir -p $pkgdir$dr
+	done
 
-cat << EOF > $pkgdir/etc/indy/indy_config.py
+	cat << EOF > $pkgdir/etc/indy/indy_config.py
 NETWORK_NAME = 'sandbox'
 LEDGER_DIR = '/var/lib/indy'
 LOG_DIR = '/var/log/indy'
@@ -47,23 +47,23 @@ CLI_BASE_DIR = '~/.indy-cli/'
 CLI_NETWORK_DIR = '~/.indy-cli/networks'
 EOF
 
-install -Dm755 ../init_indy_node $pkgdir/usr/bin/init_indy_node
-cp ../*.service $pkgdir/usr/lib/systemd/system
-cp ../node_control.conf $pkgdir/etc/indy/
+	install -Dm755 ../init_indy_node $pkgdir/usr/bin/init_indy_node
+	cp ../*.service $pkgdir/usr/lib/systemd/system
+	cp ../node_control.conf $pkgdir/etc/indy/
 
-# cleaning
-  rm -rf $pkgdir/home
-  rm -rf $pkgdir/usr/bin/{create_dirs.sh,get_keys,init_bls_keys,*.bat}
-  rm -rf $pkgdir/usr/lib/python3.6/site-packages/data/{__init__.py,__pycache__}
+	# cleaning
+	rm -rf $pkgdir/home
+	rm -rf $pkgdir/usr/bin/{create_dirs.sh,get_keys,init_bls_keys,*.bat}
+	rm -rf $pkgdir/usr/lib/python3.6/site-packages/data/{__init__.py,__pycache__}
 
-# creating user indy
-  cp ../indy-node.conf $pkgdir/usr/lib/sysusers.d
+	# creating user indy
+	cp ../indy-node.conf $pkgdir/usr/lib/sysusers.d
 }
 
-md5sums=('d4dae2a46cfed11d3a1279eed64c01a8'
-         '800c812d8a6bfb1cbc9a2361413746db'
-         '02486863bad2eab23a40510a3d6f0747'
-         '6d0ef3bcbfe3dead0a875768f8d133eb'
-         '1882142ad925365e0aa4ce269ce6b7ed'
-         'ae156c4380f773d48f51650932d2b518'
-         '0d28567fd81dabdf178a2f8bc7c6dfc8')
+md5sums=('d2123e6f07dd4fb040deaaca98fda3b1'
+	'800c812d8a6bfb1cbc9a2361413746db'
+	'02486863bad2eab23a40510a3d6f0747'
+	'6d0ef3bcbfe3dead0a875768f8d133eb'
+	'1882142ad925365e0aa4ce269ce6b7ed'
+	'ae156c4380f773d48f51650932d2b518'
+'6fe531a34a82941de372e1d15b776b37')
