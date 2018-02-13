@@ -4,7 +4,7 @@
 
 pkgname=mp3diags
 pkgver=1.2.03
-pkgrel=3
+pkgrel=4
 pkgdesc="Fix and identify issues with MP3 files"
 url="http://mp3diags.sourceforge.net/"
 license=("GPL")
@@ -37,8 +37,8 @@ package() {
 
 	for i in "16" "22" "24" "32" "36" "40" "48"; do
 		install -m755 -d "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
-		install -m644 -t "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps" \
-		                 "MP3Diags${i}.png"
+		install -p -m644 "MP3Diags${i}.png" \
+		                 "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/MP3Diags.png"
 	done
 
 	cd "${srcdir}/MP3Diags-${pkgver}/src/translations"
