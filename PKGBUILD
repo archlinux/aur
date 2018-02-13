@@ -8,7 +8,7 @@
 # Contributor: Dan Guzek <dguzek@gmail.com>
 pkgname=stepmania-git
 _shortname=stepmania
-pkgver=5.1.0a3+83+gffe7ba244a
+pkgver=5.1.0a3+183+g500cfdfb62
 pkgrel=1
 pkgdesc="Advanced cross-platform rhythm game designed for home and arcade use"
 arch=('i686' 'x86_64')
@@ -21,7 +21,8 @@ conflicts=('stepmania')
 replaces=('sm-ssc-hg')
 install="$pkgname.install"
 source=("git+https://github.com/$_shortname/$_shortname.git"
-        "git+https://github.com/$_shortname/fmt.git"
+        # Renamed to avoid conflict with clones from old URL
+        "fmtlib::git+https://github.com/fmtlib/fmt.git"
         "git+https://github.com/$_shortname/ffmpeg.git"
         "git+https://github.com/$_shortname/googletest.git"
         "git+https://github.com/$_shortname/ogg.git"
@@ -49,7 +50,7 @@ prepare() {
 
   # Use local clones for submodules
   git submodule init
-  git config submodule.extern/cppformat.url "$srcdir/fmt"
+  git config submodule.extern/cppformat.url "$srcdir/fmtlib"
   git config submodule.extern/ffmpeg-git.url "$srcdir/ffmpeg"
   git config submodule.extern/googletest.url "$srcdir/googletest"
   git config submodule.extern/libogg-git.url "$srcdir/ogg"
@@ -61,7 +62,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_shortname/Build"
-  cmake ..
+  cmake -D WITH_MINIMAID=OFF ..
   make
 }
 
