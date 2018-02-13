@@ -1,11 +1,19 @@
 # Maintainer: Denbeigh Stevens <denbeigh at denbeighstevens dot com>
 # Contributor: Denbeigh Stevens
 
+GITHUB_URL='github.com/denbeigh2000/goi3bar'
+
+pkgver() {
+  pushd "$GOPATH/src/$GITHUB_URL" >/dev/null
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  popd >/dev/null
+}
+
 pkgname='goi3bar-git'
 pkgrel=1
-pkgver=026f1a
+pkgver="$(pkgver)"
 pkgdesc='A configurable, extensivle replacement for i3status written in Go'
-url='https://github.com/denbeigh2000/goi3bar'
+url="https://$GITHUB_URL"
 arch=('x86_64' 'i686')
 license=('GPL2')
 conflicts=('goi3bar')
@@ -13,7 +21,7 @@ provides=('goi3bar')
 depends=()
 makedepends=('git' 'go>=1.5.0')
 optdepends=('wireless_tools: WLAN plugin support')
-_gourl=github.com/denbeigh2000/goi3bar
+_gourl="$GITHUB_URL"
 
 build() {
   GOPATH="$srcdir" go get -u -v ${_gourl}/...
