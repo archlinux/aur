@@ -1,4 +1,5 @@
-# Maintainer: Zesen Qian <quartus at riaqn dot org>
+# Submitter: Zesen Qian <quartus at riaqn dot org>
+# Maintainer Sequencer <liujiuyang1994 at gmail dot com>
 #
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
 # NOTE: Altera has dramatically changed their packing in regards to version 12. This
@@ -6,8 +7,8 @@
 #       is around 13GB.
 #
 pkgname=quartus-standard
-pkgver=16.1.2.203
-_oldver=16.1.0.196
+pkgver=17.1.1.593
+_oldver=17.1.0.590
 pkgrel=1
 pkgdesc="Quartus Prime Standard Edition design software for Altera FPGA's. Modular package"
 arch=('i686' 'x86_64')
@@ -40,11 +41,11 @@ then
    'lib32-libxtst')
 fi
 
-source=("http://download.altera.com/akdlm/software/acdsinst/${_oldver%.*.*}/${_oldver##*.}/ib_installers/QuartusSetup-${_oldver}-linux.run"
-	"http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*}/${pkgver##*.}/update/QuartusSetup-${pkgver}-linux.run"
+source=("http://download.altera.com/akdlm/software/acdsinst/17.1std.1/593/update/QuartusSetup-${pkgver}-linux.run"
+	"http://download.altera.com/akdlm/software/acdsinst/17.1std/590/ib_installers/QuartusSetup-${_oldver}-linux.run"
 	"quartus.sh" "quartus.desktop" "51-usbblaster.rules" "quartus.install")
-md5sums=('0ff8c051c26f7b4c15bf5d203efae13e'
-         '32dd0d62ef5a93c16fc9e6a5846dbdcc'
+md5sums=('skip'
+         'skip'
          '067c444cae7fe31d3608245712b43ce8'
          '32b17cb8b992fc2dccd33d87f0dcd8ce'
          'f5744dc4820725b93917e3a24df13da9'
@@ -85,7 +86,7 @@ EOF
     sed -i.bak "s,_alteradir,$_alteradir,g" quartus.desktop
 
     # Copy license file
-    install -D -m644 "${pkgdir}${_alteradir}/licenses/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${pkgdir}${_alteradir}/licenses/license.txt" "${pkgdir}/usr/share/licenses/${pkgnam}/eLICENSE"
 
     # Install integration files
     install -D -m755 quartus.sh "${pkgdir}/etc/profile.d/quartus.sh"
