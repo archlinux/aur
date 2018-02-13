@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-_pkgver=1.4.8
+_pkgver=1.4.9
 _rpmrel=1
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
@@ -15,7 +15,7 @@ pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
 license=('GPL2')
-depends=('distribution-gpg-keys' 'python' 'python-distro' 'python-pyroute2')
+depends=('mock-core-configs' 'python' 'python-distro' 'python-pyroute2')
 ((_with_usermode)) && depends+=('usermode')
 optdepends=('createrepo_c: for mockchain command'
             'dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia'
@@ -29,7 +29,7 @@ backup=("etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('d18f29762862dc50f4bf3c2c846a6f6c'
+md5sums=('59f55938dc21a42e1b5cb5442048c83c'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
@@ -105,12 +105,6 @@ package() {
 		    -i "$pkgdir/etc/security/console.apps/$pkgname"
 		ln -s /usr/bin/consolehelper "$pkgdir/usr/bin/$pkgname"
 	fi
-
-	popd >/dev/null
-
-	pushd mock-core-configs >/dev/null
-
-	install -Dp -m644 etc/mock/*.cfg "$pkgdir/$_sysconfdir/"mock/
 
 	popd >/dev/null
 
