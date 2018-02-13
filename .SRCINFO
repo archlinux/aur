@@ -1,0 +1,15 @@
+pkgbase = brother-hll2375dw
+	pkgdesc = Brother HL-L2375DW CUPS driver
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = perl
+	source = http://download.brother.com/welcome/dlf103533/hll2375dwpdrv-4.0.0-1.i386.rpm
+	sha256sums = ce32797b7f344d2cd7dec958a65a35887ab604a5e47f108de096e8caeb098a85
+
+pkgname = brother-hll2375dw
+
