@@ -3,7 +3,7 @@
 
 pkgname=cura-binary-data-git
 _pkgname=cura-binary-data
-pkgver=3.0.3.3.g8fe620b
+pkgver=3.1.0.12.g502ba7a
 pkgrel=1
 pkgdesc="Binary data (firmwares) for cura"
 depends=()
