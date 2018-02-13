@@ -18,4 +18,6 @@ package() {
     cd "${srcdir}"
     install -Dm644 LICENSE.MIT "${pkgdir}/usr/share/licenses/nlohmann-json/LICENSE.MIT"
     cp -R include "${pkgdir}/usr"
+    # include.zip has to be deleted to ensure it gets re-downloaded whenever the package updates
+    rm ../include.zip
 }
