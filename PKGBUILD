@@ -5,15 +5,17 @@ _commit='934c36b9d0f01af04de23c35d63b5916ee7b3102'
 _srcname=MediaSDK
 pkgname=intel-media-sdk
 pkgver=1.2a
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=(
+    # official repositories:
+        'libva'
     # AUR:
-        'libva-git' 'intel-media-driver-git'
+        'intel-media-driver-git'
 )
 makedepends=(
     # official repositories:
@@ -63,8 +65,8 @@ build() {
     
     perl tools/builder/build_mfx.pl \
                             --cmake='intel64.make.release' \
-                            --prefix='/usr' \
-    
+                            --prefix='/usr'
+                            
     make -C __cmake/intel64.make.release
 }
 
@@ -75,21 +77,20 @@ package() {
         -C __cmake/intel64.make.release \
         DESTDIR="$pkgdir" \
         install
+        
+    mv -f "$pkgdir"/usr/lib64/* "${pkgdir}/usr/lib"
+    rm -rf "${pkgdir}/usr/lib64"
     
-    [ "$CARCH" = 'x86_64' ] && _arch='x64' && _libarch='64'
-    [ "$CARCH" = 'i686'   ] && _arch='x86' && _libarch='32'
-    
-    mkdir -p "${pkgdir}/usr/"{include/mfx,lib/pkgconfig,share/"$pkgname"}
-    
-    # remove unneeded directory '/usb/lib64' (or '/usr/lib32')
-    mv -f  "${pkgdir}/usr/lib${_libarch}"/* "${pkgdir}/usr/lib"
-    rm -rf "${pkgdir}/usr/lib${_libarch}"
+    mkdir -p "${pkgdir}/usr/"{include/mfx,lib/pkgconfig,lib/"$pkgname"}
     
     # move samples to a better place
-    mv -f "${pkgdir}/usr/samples" "${pkgdir}/usr/share/${pkgname}"
+    mv -f "${pkgdir}/usr/samples" "${pkgdir}/usr/lib/${pkgname}"
     
-    # bellow are fixes for building ffmpeg
-    # (use symlinks to preserve compatibility with binary-only Intel products)
+    # license
+    cd "${srcdir}/${_srcname}-${pkgver}"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    # bellow are fixes for ffmpeg (some paths are hardcoded, use symlinks)
     
     # includes
     cd "${pkgdir}/usr/include"
@@ -101,20 +102,20 @@ package() {
     done
     
     # libraries
-    cd "${pkgdir}/usr/lib/lin_${_arch}"
+    cd "${pkgdir}/usr/lib/lin_x64"
     for _lib in *.a
     do
         cd ..
-        ln -sf "lin_${_arch}/$_lib" "$_lib"
-        cd "lin_${_arch}"
+        ln -sf "lin_x64/$_lib" "$_lib"
+        cd "lin_x64"
     done
     
     # pkgconfig files
-    cd "${pkgdir}/usr/lib/lin_${_arch}/pkgconfig"
+    cd "${pkgdir}/usr/lib/lin_x64/pkgconfig"
     ln -sf mfx.pc libmfx.pc
     cd "${pkgdir}/usr/lib/pkgconfig"
-    ln -sf ../"lin_${_arch}/pkgconfig/mfx.pc"       mfx.pc
-    ln -sf ../"lin_${_arch}/pkgconfig/libmfx.pc" libmfx.pc
+    ln -sf ../"lin_x64/pkgconfig/mfx.pc"       mfx.pc
+    ln -sf ../"lin_x64/pkgconfig/libmfx.pc" libmfx.pc
     
     # plugins
     cd "${pkgdir}/usr/plugins"
@@ -122,8 +123,4 @@ package() {
     do
         ln -sf ../plugins/"$_plugin" ../lib/"$_plugin"
     done
-    
-    # license
-    cd "${srcdir}/${_srcname}-${pkgver}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
