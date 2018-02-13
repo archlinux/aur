@@ -9,6 +9,7 @@ pkgbase = twitch-indicator
 	depends = python3
 	depends = python-gobject
 	depends = desktop-file-utils
+	depends = libappindicator-gtk3
 	options = !emptydirs
 	source = git+https://github.com/buzz/twitch-indicator.git
 	md5sums = SKIP

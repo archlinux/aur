@@ -1,4 +1,5 @@
-# Maintainer: buzz <buzz-AT-l4m1-DOT-de>
+# Maintainer: dude <brrtsm-AT-gmail-DOT-com>
+# Contributor: buzz <buzz-AT-l4m1-DOT-de>
 pkgname=twitch-indicator
 _gitname=twitch-indicator
 pkgver=0.26.r4.g14a49ae
@@ -7,7 +8,7 @@ pkgdesc="Twitch.tv indicator for Linux. Tracks your followed channels and notifi
 arch=("any")
 url="https://github.com/buzz/twitch-indicator"
 license=("ZLIB")
-depends=("python3" "python-gobject" "desktop-file-utils")
+depends=("python3" "python-gobject" "desktop-file-utils" "libappindicator-gtk3")
 makedepends=("git")
 options=(!emptydirs)
 source=("git+https://github.com/buzz/twitch-indicator.git")
@@ -21,6 +22,8 @@ pkgver() {
 package() {
     cd "${_gitname}"
     python3 setup.py install --root="${pkgdir}/" --optimize=1
+    cd "${pkgdir}/usr/bin"
+    ln -s "${pkgname}.py" "${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
