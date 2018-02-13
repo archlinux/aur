@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/hackerspace-bootstrap/strichliste-web"
 license=('MIT')
 depends=()
-optdepends=('ngnix: http server for frontend'
+optdepends=('nginx: http server for frontend'
             'strichliste: backend')
 makedepends=('npm' 'git')
 _html_dir='usr/share/nginx/html/strichliste'
