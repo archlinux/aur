@@ -2,7 +2,7 @@
 
 pkgname=ti99sim
 pkgver=0.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Texas Instruments TI-99/4A Home Computer Emulator'
 arch=('i686' 'x86_64')
 url='http://www.mrousseau.org/programs/ti99sim'
@@ -35,7 +35,7 @@ package() {
 
   local DATA_ROOT="/opt/${pkgname}"
   export DATA_DIR="${pkgdir}${DATA_ROOT}"
-  export SYS_BIN="${pkgdir}/usr/local/bin"
+  export SYS_BIN="${pkgdir}/usr/bin"
   mkdir -p "${DATA_DIR}" "${SYS_BIN}"
 
   make install
