@@ -4,7 +4,7 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
 pkgname=asterisk
-pkgver=15.1.0
+pkgver=15.2.0
 pkgrel=1
 pkgdesc="A complete PBX solution"
 arch=('i686' 'x86_64' 'armv7h')
@@ -119,7 +119,7 @@ backup=('etc/asterisk/acl.conf'
         'etc/asterisk/xmpp.conf')
 url='http://www.asterisk.org'
 license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'opus' 'termcap')
+depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'opus' 'termcap' 'pjproject')
 makedepends=('sqlite3' 'gsm')
 optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2' 'iksemel' 'radiusclient-ng' 'dahdi')
 source=("http://downloads.asterisk.org/pub/telephony/asterisk/releases/${pkgname}-${pkgver}.tar.gz"
@@ -127,15 +127,16 @@ source=("http://downloads.asterisk.org/pub/telephony/asterisk/releases/${pkgname
         "${pkgname}.logrotated"
         "${pkgname}.tmpfile")
 install=${pkgname}.install
-sha256sums=('23a34342c410009ab35566bf85ca2a1a0573f1848dc0ac74f65f5e0bca51f898'
+sha256sums=('5ab2c80e3cb1a933013415d49dbb100e5d2045aeaf926f8eb0ed3b77460a6d83'
             '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   #./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-libedit=internal
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+  # ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --without-pjproject-bundled
   make
 }
 
@@ -151,7 +152,7 @@ package(){
 
   mv ${pkgdir}/var/run ${pkgdir}
 
-  install -D -m 644 ${srcdir}/asterisk.logrotated ${pkgdir}/etc/logrotate.d/asterisk
-  install -D -m 644 ${srcdir}/asterisk.service ${pkgdir}/usr/lib/systemd/system/asterisk.service
-  install -D -m 644 ${srcdir}/asterisk.tmpfile ${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf
+  install -D -m 644 ${srcdir}/${pkgname}.logrotated ${pkgdir}/etc/logrotate.d/asterisk
+  install -D -m 644 ${srcdir}/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/asterisk.service
+  install -D -m 644 ${srcdir}/${pkgname}.tmpfile ${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf
  }
