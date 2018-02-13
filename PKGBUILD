@@ -1,28 +1,19 @@
-# Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
+# Maintainer : pianoslum <pianoslum@mailbox.org>
 
 pkgname=gprof2dot
-pkgver=2015.12.1
+pkgver=2017.9.19
 pkgrel=1
-pkgdesc="A Python script to convert the output from many profilers into a dot graph."
-arch=("any")
-url="http://jrfonseca.googlecode.com/"
+pkgdesc='A Python script to convert the output from many profilers into a dot graph.'
+arch=('any')
+url='https://github.com/jrfonseca/gprof2dot/'
 license=('LGPL')
-depends=('python' 'python-setuptools')
-makedepends=('git')
+depends=('python' 'graphviz')
+makedepends=('python-setuptools')
 provides=(gprof2dot)
-source=("https://pypi.python.org/packages/source/g/gprof2dot/gprof2dot-$pkgver.tar.gz")
-md5sums=('e23bf4e2f94db032750c193384b4165b')
-build() {
-cd "$srcdir/gprof2dot-$pkgver"
-python setup.py build
-# move this "old" version out of the way
-#mv "$pkgdir/usr/bin/smiley" "$pkgdir/usr/bin/smiley2"
-# should report this upstream as still not fixed...
-#sed -i "s|#!/usr/bin/env python$|#!/usr/bin/env python2|" \
-#$pkgdir/usr/lib/python2.7/site-packages/smiley.py
+source=("https://pypi.python.org/packages/9d/36/f977122502979f3dfb50704979c9ed70e6b620787942b089bf1af15f5aba/${pkgname}-${pkgver}.tar.gz")
+md5sums=('cda2d552bb0d0b9f16e6824a9aabd225')
 
-}
 package() {
-cd "$srcdir/gprof2dot-$pkgver"
-python setup.py install --prefix=/usr --root="$pkgdir"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py install --prefix=/usr --root="$pkgdir"
 }
