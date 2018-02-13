@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Ardour
 Comment=Multitrack hard disk recorder
-Exec=ardour5
-Icon=/usr/share/ardour5/icons/application-x-ardour_48px.png
+Exec=ardour6
+Icon=/usr/share/ardour6/icons/application-x-ardour_48px.png
 Terminal=false
 Type=Application
 X-MultipleArgs=false
