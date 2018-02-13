@@ -27,4 +27,6 @@ package() {
   # install
   msg "Running setup.py"
   python2 setup.py install --root="${pkgdir}" --prefix=/usr
+  install -d "${pkgdir}/usr/share/man/man1"
+  install man/escrotum.1 "${pkgdir}/usr/share/man/man1"
 }
