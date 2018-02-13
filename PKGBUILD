@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/systemd/mkosi'
 license=('LGPL2.1')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 optdepends=('dnf: build Fedora or Mageia images'
             'debootstrap: build Debian or Ubuntu images'
             'debian-archive-keyring: build Debian images'
