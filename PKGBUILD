@@ -2,14 +2,16 @@
 
 pkgname=intel-media-sdk-git
 pkgver=1.2a.r44.gbb93dc5
-pkgrel=1
+pkgrel=2
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=(
+    # official repositories:
+        'libva'
     # AUR:
-        'libva-git' 'intel-media-driver-git'
+        'intel-media-driver-git'
 )
 makedepends=(
     # official repositories:
@@ -75,7 +77,7 @@ build() {
                             --no-warn-as-error \
                             --cmake='intel64.make.release' \
                             --prefix='/usr'
-    
+                            
     make -C __cmake/intel64.make.release
 }
 
@@ -86,8 +88,8 @@ package() {
         -C __cmake/intel64.make.release \
         DESTDIR="$pkgdir" \
         install
-    
-    mv -f  "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
+        
+    mv -f "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
     
     mkdir -p "${pkgdir}/usr/"{include/mfx,lib/"$pkgname"}
     
