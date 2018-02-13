@@ -1,0 +1,19 @@
+pkgbase = python-arch-signoff-git
+	pkgdesc = Sign off Arch Linux test packages
+	pkgver = 0.1.dev17+g5ee9f14
+	pkgrel = 1
+	url = https://github.com/haavard/arch-signoff
+	arch = any
+	license = custom:ISC
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = pyalpm
+	depends = python-click
+	depends = python-dateutil
+	depends = python-requests
+	source = python-arch-signoff-git::git+https://github.com/haavard/arch-signoff.git
+	sha256sums = SKIP
+
+pkgname = python-arch-signoff-git
+
