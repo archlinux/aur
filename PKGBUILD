@@ -1,7 +1,7 @@
 # Maintainer: unstartdev <guo.yongan@outlook.vom>
 pkgname=ioscheduler-aur
 pkgver=0.1b1
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Select ioscheduler"
 arch=('any')
@@ -27,5 +27,5 @@ validpgpkeys=()
 package() {
 	install -Dm755 ioscheduler $pkgdir/usr/lib/systemd/scripts/ioscheduler
 	install -Dm644 conffile $pkgdir/etc/default/ioschheduler
-	install -Dm644 ioscheduler.service $pkgdir/usr/lib/systemd/system/ioscheduler.serivce
+	install -Dm644 ioscheduler.service $pkgdir/usr/lib/systemd/system/ioscheduler.service
 }
